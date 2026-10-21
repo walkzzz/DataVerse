@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_search_johnson"
+
+// Values
+pub fn graph_search_johnson_buffer_make(Int32) -> GraphsearchjohnsonBuffer
+
+pub fn graph_search_johnson_cluster_make(Int32) -> GraphsearchjohnsonCluster
+
+pub fn graph_search_johnson_cursor_make(Int32) -> GraphsearchjohnsonCursor
+
+pub fn graph_search_johnson_edge_make(Int32) -> GraphsearchjohnsonEdge
+
+pub fn graph_search_johnson_frame_make(Int32) -> GraphsearchjohnsonFrame
+
+pub fn graph_search_johnson_graphn_make(Int32) -> GraphsearchjohnsonGraphN
+
+pub fn graph_search_johnson_layer_make(Int32) -> GraphsearchjohnsonLayer
+
+pub fn graph_search_johnson_make_matrix(Int32, Int32, Double) -> GraphsearchjohnsonMatrix
+
+pub fn graph_search_johnson_make_point(Double, Double) -> GraphsearchjohnsonPoint
+
+pub fn graph_search_johnson_make_point3(Double, Double, Double) -> GraphsearchjohnsonPoint
+
+pub fn graph_search_johnson_make_series(Array[Double], String) -> GraphsearchjohnsonSeries
+
+pub fn graph_search_johnson_make_vector(Array[Double]) -> GraphsearchjohnsonVector
+
+pub fn graph_search_johnson_matrix_identity(Int32) -> GraphsearchjohnsonMatrix
+
+pub fn graph_search_johnson_model_make(Int32) -> GraphsearchjohnsonModel
+
+pub fn graph_search_johnson_node_make(Int32) -> GraphsearchjohnsonNode
+
+pub fn graph_search_johnson_path_make(Int32) -> GraphsearchjohnsonPath
+
+pub fn graph_search_johnson_range_make(Int32) -> GraphsearchjohnsonRange
+
+pub fn graph_search_johnson_slice_make(Int32) -> GraphsearchjohnsonSlice
+
+pub fn graph_search_johnson_table_make(Int32) -> GraphsearchjohnsonTable
+
+pub fn graph_search_johnson_vector_zero(Int32) -> GraphsearchjohnsonVector
+
+pub fn graph_search_johnson_view_make(Int32) -> GraphsearchjohnsonView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphsearchjohnsonBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchjohnsonBuffer::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonBuffer::copy(Self) -> Self
+pub fn GraphsearchjohnsonBuffer::fill(Self, Double) -> Self
+pub fn GraphsearchjohnsonBuffer::get(Self, Int32) -> Double
+pub fn GraphsearchjohnsonBuffer::len(Self) -> Int32
+pub fn GraphsearchjohnsonBuffer::max(Self) -> Double
+pub fn GraphsearchjohnsonBuffer::mean(Self) -> Double
+pub fn GraphsearchjohnsonBuffer::min(Self) -> Double
+pub fn GraphsearchjohnsonBuffer::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphsearchjohnsonBuffer::sum(Self) -> Double
+pub fn GraphsearchjohnsonBuffer::to_string(Self) -> String
+
+pub(all) struct GraphsearchjohnsonCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchjohnsonCluster::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonCluster::copy(Self) -> Self
+pub fn GraphsearchjohnsonCluster::fill(Self, Double) -> Self
+pub fn GraphsearchjohnsonCluster::get(Self, Int32) -> Double
+pub fn GraphsearchjohnsonCluster::len(Self) -> Int32
+pub fn GraphsearchjohnsonCluster::max(Self) -> Double
+pub fn GraphsearchjohnsonCluster::mean(Self) -> Double
+pub fn GraphsearchjohnsonCluster::min(Self) -> Double
+pub fn GraphsearchjohnsonCluster::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonCluster::set(Self, Int32, Double) -> Self
+pub fn GraphsearchjohnsonCluster::sum(Self) -> Double
+pub fn GraphsearchjohnsonCluster::to_string(Self) -> String
+
+pub(all) struct GraphsearchjohnsonCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchjohnsonCursor::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonCursor::copy(Self) -> Self
+pub fn GraphsearchjohnsonCursor::fill(Self, Double) -> Self
+pub fn GraphsearchjohnsonCursor::get(Self, Int32) -> Double
+pub fn GraphsearchjohnsonCursor::len(Self) -> Int32
+pub fn GraphsearchjohnsonCursor::max(Self) -> Double
+pub fn GraphsearchjohnsonCursor::mean(Self) -> Double
+pub fn GraphsearchjohnsonCursor::min(Self) -> Double
+pub fn GraphsearchjohnsonCursor::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonCursor::set(Self, Int32, Double) -> Self
+pub fn GraphsearchjohnsonCursor::sum(Self) -> Double
+pub fn GraphsearchjohnsonCursor::to_string(Self) -> String
+
+pub(all) struct GraphsearchjohnsonEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchjohnsonEdge::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonEdge::copy(Self) -> Self
+pub fn GraphsearchjohnsonEdge::fill(Self, Double) -> Self
+pub fn GraphsearchjohnsonEdge::get(Self, Int32) -> Double
+pub fn GraphsearchjohnsonEdge::len(Self) -> Int32
+pub fn GraphsearchjohnsonEdge::max(Self) -> Double
+pub fn GraphsearchjohnsonEdge::mean(Self) -> Double
+pub fn GraphsearchjohnsonEdge::min(Self) -> Double
+pub fn GraphsearchjohnsonEdge::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonEdge::set(Self, Int32, Double) -> Self
+pub fn GraphsearchjohnsonEdge::sum(Self) -> Double
+pub fn GraphsearchjohnsonEdge::to_string(Self) -> String
+
+pub(all) struct GraphsearchjohnsonFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchjohnsonFrame::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonFrame::copy(Self) -> Self
+pub fn GraphsearchjohnsonFrame::fill(Self, Double) -> Self
+pub fn GraphsearchjohnsonFrame::get(Self, Int32) -> Double
+pub fn GraphsearchjohnsonFrame::len(Self) -> Int32
+pub fn GraphsearchjohnsonFrame::max(Self) -> Double
+pub fn GraphsearchjohnsonFrame::mean(Self) -> Double
+pub fn GraphsearchjohnsonFrame::min(Self) -> Double
+pub fn GraphsearchjohnsonFrame::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonFrame::set(Self, Int32, Double) -> Self
+pub fn GraphsearchjohnsonFrame::sum(Self) -> Double
+pub fn GraphsearchjohnsonFrame::to_string(Self) -> String
+
+pub(all) struct GraphsearchjohnsonGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchjohnsonGraphN::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonGraphN::copy(Self) -> Self
+pub fn GraphsearchjohnsonGraphN::fill(Self, Double) -> Self
+pub fn GraphsearchjohnsonGraphN::get(Self, Int32) -> Double
+pub fn GraphsearchjohnsonGraphN::len(Self) -> Int32
+pub fn GraphsearchjohnsonGraphN::max(Self) -> Double
+pub fn GraphsearchjohnsonGraphN::mean(Self) -> Double
+pub fn GraphsearchjohnsonGraphN::min(Self) -> Double
+pub fn GraphsearchjohnsonGraphN::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphsearchjohnsonGraphN::sum(Self) -> Double
+pub fn GraphsearchjohnsonGraphN::to_string(Self) -> String
+
+pub(all) struct GraphsearchjohnsonLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchjohnsonLayer::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonLayer::copy(Self) -> Self
+pub fn GraphsearchjohnsonLayer::fill(Self, Double) -> Self
+pub fn GraphsearchjohnsonLayer::get(Self, Int32) -> Double
+pub fn GraphsearchjohnsonLayer::len(Self) -> Int32
+pub fn GraphsearchjohnsonLayer::max(Self) -> Double
+pub fn GraphsearchjohnsonLayer::mean(Self) -> Double
+pub fn GraphsearchjohnsonLayer::min(Self) -> Double
+pub fn GraphsearchjohnsonLayer::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonLayer::set(Self, Int32, Double) -> Self
+pub fn GraphsearchjohnsonLayer::sum(Self) -> Double
+pub fn GraphsearchjohnsonLayer::to_string(Self) -> String
+
+pub(all) struct GraphsearchjohnsonMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphsearchjohnsonMatrix::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonMatrix::det(Self) -> Double
+pub fn GraphsearchjohnsonMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphsearchjohnsonMatrix::multiply(Self, Self) -> Self
+pub fn GraphsearchjohnsonMatrix::norm(Self) -> Double
+pub fn GraphsearchjohnsonMatrix::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonMatrix::to_string(Self) -> String
+pub fn GraphsearchjohnsonMatrix::trace(Self) -> Double
+pub fn GraphsearchjohnsonMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphsearchjohnsonModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchjohnsonModel::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonModel::copy(Self) -> Self
+pub fn GraphsearchjohnsonModel::fill(Self, Double) -> Self
+pub fn GraphsearchjohnsonModel::get(Self, Int32) -> Double
+pub fn GraphsearchjohnsonModel::len(Self) -> Int32
+pub fn GraphsearchjohnsonModel::max(Self) -> Double
+pub fn GraphsearchjohnsonModel::mean(Self) -> Double
+pub fn GraphsearchjohnsonModel::min(Self) -> Double
+pub fn GraphsearchjohnsonModel::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonModel::set(Self, Int32, Double) -> Self
+pub fn GraphsearchjohnsonModel::sum(Self) -> Double
+pub fn GraphsearchjohnsonModel::to_string(Self) -> String
+
+pub(all) struct GraphsearchjohnsonNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchjohnsonNode::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonNode::copy(Self) -> Self
+pub fn GraphsearchjohnsonNode::fill(Self, Double) -> Self
+pub fn GraphsearchjohnsonNode::get(Self, Int32) -> Double
+pub fn GraphsearchjohnsonNode::len(Self) -> Int32
+pub fn GraphsearchjohnsonNode::max(Self) -> Double
+pub fn GraphsearchjohnsonNode::mean(Self) -> Double
+pub fn GraphsearchjohnsonNode::min(Self) -> Double
+pub fn GraphsearchjohnsonNode::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonNode::set(Self, Int32, Double) -> Self
+pub fn GraphsearchjohnsonNode::sum(Self) -> Double
+pub fn GraphsearchjohnsonNode::to_string(Self) -> String
+
+pub(all) struct GraphsearchjohnsonPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchjohnsonPath::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonPath::copy(Self) -> Self
+pub fn GraphsearchjohnsonPath::fill(Self, Double) -> Self
+pub fn GraphsearchjohnsonPath::get(Self, Int32) -> Double
+pub fn GraphsearchjohnsonPath::len(Self) -> Int32
+pub fn GraphsearchjohnsonPath::max(Self) -> Double
+pub fn GraphsearchjohnsonPath::mean(Self) -> Double
+pub fn GraphsearchjohnsonPath::min(Self) -> Double
+pub fn GraphsearchjohnsonPath::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonPath::set(Self, Int32, Double) -> Self
+pub fn GraphsearchjohnsonPath::sum(Self) -> Double
+pub fn GraphsearchjohnsonPath::to_string(Self) -> String
+
+pub(all) struct GraphsearchjohnsonPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphsearchjohnsonPoint::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonPoint::cross(Self, Self) -> Self
+pub fn GraphsearchjohnsonPoint::dist(Self, Self) -> Double
+pub fn GraphsearchjohnsonPoint::dot(Self, Self) -> Double
+pub fn GraphsearchjohnsonPoint::label(Self) -> Int32
+pub fn GraphsearchjohnsonPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphsearchjohnsonPoint::mid(Self, Self) -> Self
+pub fn GraphsearchjohnsonPoint::negate(Self) -> Self
+pub fn GraphsearchjohnsonPoint::norm(Self) -> Double
+pub fn GraphsearchjohnsonPoint::normalize(Self) -> Self
+pub fn GraphsearchjohnsonPoint::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonPoint::sub(Self, Self) -> Self
+pub fn GraphsearchjohnsonPoint::to_string(Self) -> String
+pub fn GraphsearchjohnsonPoint::x(Self) -> Double
+pub fn GraphsearchjohnsonPoint::y(Self) -> Double
+pub fn GraphsearchjohnsonPoint::z(Self) -> Double
+
+pub(all) struct GraphsearchjohnsonRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchjohnsonRange::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonRange::copy(Self) -> Self
+pub fn GraphsearchjohnsonRange::fill(Self, Double) -> Self
+pub fn GraphsearchjohnsonRange::get(Self, Int32) -> Double
+pub fn GraphsearchjohnsonRange::len(Self) -> Int32
+pub fn GraphsearchjohnsonRange::max(Self) -> Double
+pub fn GraphsearchjohnsonRange::mean(Self) -> Double
+pub fn GraphsearchjohnsonRange::min(Self) -> Double
+pub fn GraphsearchjohnsonRange::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonRange::set(Self, Int32, Double) -> Self
+pub fn GraphsearchjohnsonRange::sum(Self) -> Double
+pub fn GraphsearchjohnsonRange::to_string(Self) -> String
+
+pub(all) struct GraphsearchjohnsonSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphsearchjohnsonSeries::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonSeries::cumsum(Self) -> Self
+pub fn GraphsearchjohnsonSeries::len(Self) -> Int32
+pub fn GraphsearchjohnsonSeries::max(Self) -> Double
+pub fn GraphsearchjohnsonSeries::mean(Self) -> Double
+pub fn GraphsearchjohnsonSeries::median(Self) -> Double
+pub fn GraphsearchjohnsonSeries::min(Self) -> Double
+pub fn GraphsearchjohnsonSeries::normalize(Self) -> Self
+pub fn GraphsearchjohnsonSeries::range(Self) -> Double
+pub fn GraphsearchjohnsonSeries::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonSeries::std(Self) -> Double
+pub fn GraphsearchjohnsonSeries::sub(Self, Self) -> Self
+pub fn GraphsearchjohnsonSeries::sum(Self) -> Double
+pub fn GraphsearchjohnsonSeries::to_string(Self) -> String
+pub fn GraphsearchjohnsonSeries::variance(Self) -> Double
+
+pub(all) struct GraphsearchjohnsonSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchjohnsonSlice::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonSlice::copy(Self) -> Self
+pub fn GraphsearchjohnsonSlice::fill(Self, Double) -> Self
+pub fn GraphsearchjohnsonSlice::get(Self, Int32) -> Double
+pub fn GraphsearchjohnsonSlice::len(Self) -> Int32
+pub fn GraphsearchjohnsonSlice::max(Self) -> Double
+pub fn GraphsearchjohnsonSlice::mean(Self) -> Double
+pub fn GraphsearchjohnsonSlice::min(Self) -> Double
+pub fn GraphsearchjohnsonSlice::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonSlice::set(Self, Int32, Double) -> Self
+pub fn GraphsearchjohnsonSlice::sum(Self) -> Double
+pub fn GraphsearchjohnsonSlice::to_string(Self) -> String
+
+pub(all) struct GraphsearchjohnsonTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchjohnsonTable::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonTable::copy(Self) -> Self
+pub fn GraphsearchjohnsonTable::fill(Self, Double) -> Self
+pub fn GraphsearchjohnsonTable::get(Self, Int32) -> Double
+pub fn GraphsearchjohnsonTable::len(Self) -> Int32
+pub fn GraphsearchjohnsonTable::max(Self) -> Double
+pub fn GraphsearchjohnsonTable::mean(Self) -> Double
+pub fn GraphsearchjohnsonTable::min(Self) -> Double
+pub fn GraphsearchjohnsonTable::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonTable::set(Self, Int32, Double) -> Self
+pub fn GraphsearchjohnsonTable::sum(Self) -> Double
+pub fn GraphsearchjohnsonTable::to_string(Self) -> String
+
+pub(all) struct GraphsearchjohnsonVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphsearchjohnsonVector::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonVector::dist(Self, Self) -> Double
+pub fn GraphsearchjohnsonVector::dot(Self, Self) -> Double
+pub fn GraphsearchjohnsonVector::norm(Self) -> Double
+pub fn GraphsearchjohnsonVector::normalize(Self) -> Self
+pub fn GraphsearchjohnsonVector::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonVector::sub(Self, Self) -> Self
+pub fn GraphsearchjohnsonVector::to_string(Self) -> String
+
+pub(all) struct GraphsearchjohnsonView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchjohnsonView::add(Self, Self) -> Self
+pub fn GraphsearchjohnsonView::copy(Self) -> Self
+pub fn GraphsearchjohnsonView::fill(Self, Double) -> Self
+pub fn GraphsearchjohnsonView::get(Self, Int32) -> Double
+pub fn GraphsearchjohnsonView::len(Self) -> Int32
+pub fn GraphsearchjohnsonView::max(Self) -> Double
+pub fn GraphsearchjohnsonView::mean(Self) -> Double
+pub fn GraphsearchjohnsonView::min(Self) -> Double
+pub fn GraphsearchjohnsonView::scale(Self, Double) -> Self
+pub fn GraphsearchjohnsonView::set(Self, Int32, Double) -> Self
+pub fn GraphsearchjohnsonView::sum(Self) -> Double
+pub fn GraphsearchjohnsonView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

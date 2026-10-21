@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/voting_rt"
+
+// Values
+pub fn voting_rt_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn voting_rt_corr(Array[Double], Array[Double]) -> Double
+
+pub fn voting_rt_cov(Array[Double], Array[Double]) -> Double
+
+pub fn voting_rt_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn voting_rt_mae(Array[Double], Array[Double]) -> Double
+
+pub fn voting_rt_make_labeled_point(Double, Double, Int32) -> Voting_rtPoint
+
+pub fn voting_rt_make_matrix(Int32, Int32, Double) -> Voting_rtMatrix
+
+pub fn voting_rt_make_point(Double, Double) -> Voting_rtPoint
+
+pub fn voting_rt_make_series(Array[Double], String) -> Voting_rtSeries
+
+pub fn voting_rt_make_vector(Array[Double]) -> Voting_rtVector
+
+pub fn voting_rt_matrix_add(Voting_rtMatrix, Voting_rtMatrix) -> Voting_rtMatrix
+
+pub fn voting_rt_matrix_get(Voting_rtMatrix, Int32, Int32) -> Double
+
+pub fn voting_rt_matrix_identity(Int32) -> Voting_rtMatrix
+
+pub fn voting_rt_matrix_multiply(Voting_rtMatrix, Voting_rtMatrix) -> Voting_rtMatrix
+
+pub fn voting_rt_matrix_norm(Voting_rtMatrix) -> Double
+
+pub fn voting_rt_matrix_scale(Voting_rtMatrix, Double) -> Voting_rtMatrix
+
+pub fn voting_rt_matrix_to_string(Voting_rtMatrix) -> String
+
+pub fn voting_rt_matrix_trace(Voting_rtMatrix) -> Double
+
+pub fn voting_rt_matrix_transpose(Voting_rtMatrix) -> Voting_rtMatrix
+
+pub fn voting_rt_mse(Array[Double], Array[Double]) -> Double
+
+pub fn voting_rt_point_add(Voting_rtPoint, Voting_rtPoint) -> Voting_rtPoint
+
+pub fn voting_rt_point_dist(Voting_rtPoint, Voting_rtPoint) -> Double
+
+pub fn voting_rt_point_dot(Voting_rtPoint, Voting_rtPoint) -> Double
+
+pub fn voting_rt_point_label(Voting_rtPoint) -> Int32
+
+pub fn voting_rt_point_norm(Voting_rtPoint) -> Double
+
+pub fn voting_rt_point_scale(Voting_rtPoint, Double) -> Voting_rtPoint
+
+pub fn voting_rt_point_sub(Voting_rtPoint, Voting_rtPoint) -> Voting_rtPoint
+
+pub fn voting_rt_point_to_string(Voting_rtPoint) -> String
+
+pub fn voting_rt_point_x(Voting_rtPoint) -> Double
+
+pub fn voting_rt_point_y(Voting_rtPoint) -> Double
+
+pub fn voting_rt_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn voting_rt_r2(Array[Double], Array[Double]) -> Double
+
+pub fn voting_rt_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn voting_rt_series_add(Voting_rtSeries, Voting_rtSeries) -> Voting_rtSeries
+
+pub fn voting_rt_series_len(Voting_rtSeries) -> Int32
+
+pub fn voting_rt_series_max(Voting_rtSeries) -> Double
+
+pub fn voting_rt_series_mean(Voting_rtSeries) -> Double
+
+pub fn voting_rt_series_min(Voting_rtSeries) -> Double
+
+pub fn voting_rt_series_scale(Voting_rtSeries, Double) -> Voting_rtSeries
+
+pub fn voting_rt_series_std(Voting_rtSeries) -> Double
+
+pub fn voting_rt_series_sum(Voting_rtSeries) -> Double
+
+pub fn voting_rt_series_to_string(Voting_rtSeries) -> String
+
+pub fn voting_rt_series_var(Voting_rtSeries) -> Double
+
+pub fn voting_rt_std(Array[Double]) -> Double
+
+pub fn voting_rt_var(Array[Double]) -> Double
+
+pub fn voting_rt_vector_add(Voting_rtVector, Voting_rtVector) -> Voting_rtVector
+
+pub fn voting_rt_vector_dist(Voting_rtVector, Voting_rtVector) -> Double
+
+pub fn voting_rt_vector_dot(Voting_rtVector, Voting_rtVector) -> Double
+
+pub fn voting_rt_vector_norm(Voting_rtVector) -> Double
+
+pub fn voting_rt_vector_normalize(Voting_rtVector) -> Voting_rtVector
+
+pub fn voting_rt_vector_scale(Voting_rtVector, Double) -> Voting_rtVector
+
+pub fn voting_rt_vector_sub(Voting_rtVector, Voting_rtVector) -> Voting_rtVector
+
+pub fn voting_rt_vector_to_string(Voting_rtVector) -> String
+
+pub fn voting_rt_vector_zero(Int32) -> Voting_rtVector
+
+// Errors
+
+// Types and methods
+pub struct Voting_rtMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Voting_rtPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Voting_rtSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Voting_rtVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

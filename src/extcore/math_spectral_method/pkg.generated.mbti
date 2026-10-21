@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_spectral_method"
+
+// Values
+pub fn math_spectral_method_buffer_make(Int32) -> MathspectralmethodBuffer
+
+pub fn math_spectral_method_cluster_make(Int32) -> MathspectralmethodCluster
+
+pub fn math_spectral_method_cursor_make(Int32) -> MathspectralmethodCursor
+
+pub fn math_spectral_method_edge_make(Int32) -> MathspectralmethodEdge
+
+pub fn math_spectral_method_frame_make(Int32) -> MathspectralmethodFrame
+
+pub fn math_spectral_method_graphn_make(Int32) -> MathspectralmethodGraphN
+
+pub fn math_spectral_method_layer_make(Int32) -> MathspectralmethodLayer
+
+pub fn math_spectral_method_make_matrix(Int32, Int32, Double) -> MathspectralmethodMatrix
+
+pub fn math_spectral_method_make_point(Double, Double) -> MathspectralmethodPoint
+
+pub fn math_spectral_method_make_point3(Double, Double, Double) -> MathspectralmethodPoint
+
+pub fn math_spectral_method_make_series(Array[Double], String) -> MathspectralmethodSeries
+
+pub fn math_spectral_method_make_vector(Array[Double]) -> MathspectralmethodVector
+
+pub fn math_spectral_method_matrix_identity(Int32) -> MathspectralmethodMatrix
+
+pub fn math_spectral_method_model_make(Int32) -> MathspectralmethodModel
+
+pub fn math_spectral_method_node_make(Int32) -> MathspectralmethodNode
+
+pub fn math_spectral_method_path_make(Int32) -> MathspectralmethodPath
+
+pub fn math_spectral_method_range_make(Int32) -> MathspectralmethodRange
+
+pub fn math_spectral_method_slice_make(Int32) -> MathspectralmethodSlice
+
+pub fn math_spectral_method_table_make(Int32) -> MathspectralmethodTable
+
+pub fn math_spectral_method_vector_zero(Int32) -> MathspectralmethodVector
+
+pub fn math_spectral_method_view_make(Int32) -> MathspectralmethodView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathspectralmethodBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspectralmethodBuffer::add(Self, Self) -> Self
+pub fn MathspectralmethodBuffer::copy(Self) -> Self
+pub fn MathspectralmethodBuffer::fill(Self, Double) -> Self
+pub fn MathspectralmethodBuffer::get(Self, Int32) -> Double
+pub fn MathspectralmethodBuffer::len(Self) -> Int32
+pub fn MathspectralmethodBuffer::max(Self) -> Double
+pub fn MathspectralmethodBuffer::mean(Self) -> Double
+pub fn MathspectralmethodBuffer::min(Self) -> Double
+pub fn MathspectralmethodBuffer::scale(Self, Double) -> Self
+pub fn MathspectralmethodBuffer::set(Self, Int32, Double) -> Self
+pub fn MathspectralmethodBuffer::sum(Self) -> Double
+pub fn MathspectralmethodBuffer::to_string(Self) -> String
+
+pub(all) struct MathspectralmethodCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspectralmethodCluster::add(Self, Self) -> Self
+pub fn MathspectralmethodCluster::copy(Self) -> Self
+pub fn MathspectralmethodCluster::fill(Self, Double) -> Self
+pub fn MathspectralmethodCluster::get(Self, Int32) -> Double
+pub fn MathspectralmethodCluster::len(Self) -> Int32
+pub fn MathspectralmethodCluster::max(Self) -> Double
+pub fn MathspectralmethodCluster::mean(Self) -> Double
+pub fn MathspectralmethodCluster::min(Self) -> Double
+pub fn MathspectralmethodCluster::scale(Self, Double) -> Self
+pub fn MathspectralmethodCluster::set(Self, Int32, Double) -> Self
+pub fn MathspectralmethodCluster::sum(Self) -> Double
+pub fn MathspectralmethodCluster::to_string(Self) -> String
+
+pub(all) struct MathspectralmethodCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspectralmethodCursor::add(Self, Self) -> Self
+pub fn MathspectralmethodCursor::copy(Self) -> Self
+pub fn MathspectralmethodCursor::fill(Self, Double) -> Self
+pub fn MathspectralmethodCursor::get(Self, Int32) -> Double
+pub fn MathspectralmethodCursor::len(Self) -> Int32
+pub fn MathspectralmethodCursor::max(Self) -> Double
+pub fn MathspectralmethodCursor::mean(Self) -> Double
+pub fn MathspectralmethodCursor::min(Self) -> Double
+pub fn MathspectralmethodCursor::scale(Self, Double) -> Self
+pub fn MathspectralmethodCursor::set(Self, Int32, Double) -> Self
+pub fn MathspectralmethodCursor::sum(Self) -> Double
+pub fn MathspectralmethodCursor::to_string(Self) -> String
+
+pub(all) struct MathspectralmethodEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspectralmethodEdge::add(Self, Self) -> Self
+pub fn MathspectralmethodEdge::copy(Self) -> Self
+pub fn MathspectralmethodEdge::fill(Self, Double) -> Self
+pub fn MathspectralmethodEdge::get(Self, Int32) -> Double
+pub fn MathspectralmethodEdge::len(Self) -> Int32
+pub fn MathspectralmethodEdge::max(Self) -> Double
+pub fn MathspectralmethodEdge::mean(Self) -> Double
+pub fn MathspectralmethodEdge::min(Self) -> Double
+pub fn MathspectralmethodEdge::scale(Self, Double) -> Self
+pub fn MathspectralmethodEdge::set(Self, Int32, Double) -> Self
+pub fn MathspectralmethodEdge::sum(Self) -> Double
+pub fn MathspectralmethodEdge::to_string(Self) -> String
+
+pub(all) struct MathspectralmethodFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspectralmethodFrame::add(Self, Self) -> Self
+pub fn MathspectralmethodFrame::copy(Self) -> Self
+pub fn MathspectralmethodFrame::fill(Self, Double) -> Self
+pub fn MathspectralmethodFrame::get(Self, Int32) -> Double
+pub fn MathspectralmethodFrame::len(Self) -> Int32
+pub fn MathspectralmethodFrame::max(Self) -> Double
+pub fn MathspectralmethodFrame::mean(Self) -> Double
+pub fn MathspectralmethodFrame::min(Self) -> Double
+pub fn MathspectralmethodFrame::scale(Self, Double) -> Self
+pub fn MathspectralmethodFrame::set(Self, Int32, Double) -> Self
+pub fn MathspectralmethodFrame::sum(Self) -> Double
+pub fn MathspectralmethodFrame::to_string(Self) -> String
+
+pub(all) struct MathspectralmethodGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspectralmethodGraphN::add(Self, Self) -> Self
+pub fn MathspectralmethodGraphN::copy(Self) -> Self
+pub fn MathspectralmethodGraphN::fill(Self, Double) -> Self
+pub fn MathspectralmethodGraphN::get(Self, Int32) -> Double
+pub fn MathspectralmethodGraphN::len(Self) -> Int32
+pub fn MathspectralmethodGraphN::max(Self) -> Double
+pub fn MathspectralmethodGraphN::mean(Self) -> Double
+pub fn MathspectralmethodGraphN::min(Self) -> Double
+pub fn MathspectralmethodGraphN::scale(Self, Double) -> Self
+pub fn MathspectralmethodGraphN::set(Self, Int32, Double) -> Self
+pub fn MathspectralmethodGraphN::sum(Self) -> Double
+pub fn MathspectralmethodGraphN::to_string(Self) -> String
+
+pub(all) struct MathspectralmethodLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspectralmethodLayer::add(Self, Self) -> Self
+pub fn MathspectralmethodLayer::copy(Self) -> Self
+pub fn MathspectralmethodLayer::fill(Self, Double) -> Self
+pub fn MathspectralmethodLayer::get(Self, Int32) -> Double
+pub fn MathspectralmethodLayer::len(Self) -> Int32
+pub fn MathspectralmethodLayer::max(Self) -> Double
+pub fn MathspectralmethodLayer::mean(Self) -> Double
+pub fn MathspectralmethodLayer::min(Self) -> Double
+pub fn MathspectralmethodLayer::scale(Self, Double) -> Self
+pub fn MathspectralmethodLayer::set(Self, Int32, Double) -> Self
+pub fn MathspectralmethodLayer::sum(Self) -> Double
+pub fn MathspectralmethodLayer::to_string(Self) -> String
+
+pub(all) struct MathspectralmethodMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathspectralmethodMatrix::add(Self, Self) -> Self
+pub fn MathspectralmethodMatrix::det(Self) -> Double
+pub fn MathspectralmethodMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathspectralmethodMatrix::multiply(Self, Self) -> Self
+pub fn MathspectralmethodMatrix::norm(Self) -> Double
+pub fn MathspectralmethodMatrix::scale(Self, Double) -> Self
+pub fn MathspectralmethodMatrix::to_string(Self) -> String
+pub fn MathspectralmethodMatrix::trace(Self) -> Double
+pub fn MathspectralmethodMatrix::transpose(Self) -> Self
+
+pub(all) struct MathspectralmethodModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspectralmethodModel::add(Self, Self) -> Self
+pub fn MathspectralmethodModel::copy(Self) -> Self
+pub fn MathspectralmethodModel::fill(Self, Double) -> Self
+pub fn MathspectralmethodModel::get(Self, Int32) -> Double
+pub fn MathspectralmethodModel::len(Self) -> Int32
+pub fn MathspectralmethodModel::max(Self) -> Double
+pub fn MathspectralmethodModel::mean(Self) -> Double
+pub fn MathspectralmethodModel::min(Self) -> Double
+pub fn MathspectralmethodModel::scale(Self, Double) -> Self
+pub fn MathspectralmethodModel::set(Self, Int32, Double) -> Self
+pub fn MathspectralmethodModel::sum(Self) -> Double
+pub fn MathspectralmethodModel::to_string(Self) -> String
+
+pub(all) struct MathspectralmethodNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspectralmethodNode::add(Self, Self) -> Self
+pub fn MathspectralmethodNode::copy(Self) -> Self
+pub fn MathspectralmethodNode::fill(Self, Double) -> Self
+pub fn MathspectralmethodNode::get(Self, Int32) -> Double
+pub fn MathspectralmethodNode::len(Self) -> Int32
+pub fn MathspectralmethodNode::max(Self) -> Double
+pub fn MathspectralmethodNode::mean(Self) -> Double
+pub fn MathspectralmethodNode::min(Self) -> Double
+pub fn MathspectralmethodNode::scale(Self, Double) -> Self
+pub fn MathspectralmethodNode::set(Self, Int32, Double) -> Self
+pub fn MathspectralmethodNode::sum(Self) -> Double
+pub fn MathspectralmethodNode::to_string(Self) -> String
+
+pub(all) struct MathspectralmethodPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspectralmethodPath::add(Self, Self) -> Self
+pub fn MathspectralmethodPath::copy(Self) -> Self
+pub fn MathspectralmethodPath::fill(Self, Double) -> Self
+pub fn MathspectralmethodPath::get(Self, Int32) -> Double
+pub fn MathspectralmethodPath::len(Self) -> Int32
+pub fn MathspectralmethodPath::max(Self) -> Double
+pub fn MathspectralmethodPath::mean(Self) -> Double
+pub fn MathspectralmethodPath::min(Self) -> Double
+pub fn MathspectralmethodPath::scale(Self, Double) -> Self
+pub fn MathspectralmethodPath::set(Self, Int32, Double) -> Self
+pub fn MathspectralmethodPath::sum(Self) -> Double
+pub fn MathspectralmethodPath::to_string(Self) -> String
+
+pub(all) struct MathspectralmethodPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathspectralmethodPoint::add(Self, Self) -> Self
+pub fn MathspectralmethodPoint::cross(Self, Self) -> Self
+pub fn MathspectralmethodPoint::dist(Self, Self) -> Double
+pub fn MathspectralmethodPoint::dot(Self, Self) -> Double
+pub fn MathspectralmethodPoint::label(Self) -> Int32
+pub fn MathspectralmethodPoint::lerp(Self, Self, Double) -> Self
+pub fn MathspectralmethodPoint::mid(Self, Self) -> Self
+pub fn MathspectralmethodPoint::negate(Self) -> Self
+pub fn MathspectralmethodPoint::norm(Self) -> Double
+pub fn MathspectralmethodPoint::normalize(Self) -> Self
+pub fn MathspectralmethodPoint::scale(Self, Double) -> Self
+pub fn MathspectralmethodPoint::sub(Self, Self) -> Self
+pub fn MathspectralmethodPoint::to_string(Self) -> String
+pub fn MathspectralmethodPoint::x(Self) -> Double
+pub fn MathspectralmethodPoint::y(Self) -> Double
+pub fn MathspectralmethodPoint::z(Self) -> Double
+
+pub(all) struct MathspectralmethodRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspectralmethodRange::add(Self, Self) -> Self
+pub fn MathspectralmethodRange::copy(Self) -> Self
+pub fn MathspectralmethodRange::fill(Self, Double) -> Self
+pub fn MathspectralmethodRange::get(Self, Int32) -> Double
+pub fn MathspectralmethodRange::len(Self) -> Int32
+pub fn MathspectralmethodRange::max(Self) -> Double
+pub fn MathspectralmethodRange::mean(Self) -> Double
+pub fn MathspectralmethodRange::min(Self) -> Double
+pub fn MathspectralmethodRange::scale(Self, Double) -> Self
+pub fn MathspectralmethodRange::set(Self, Int32, Double) -> Self
+pub fn MathspectralmethodRange::sum(Self) -> Double
+pub fn MathspectralmethodRange::to_string(Self) -> String
+
+pub(all) struct MathspectralmethodSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathspectralmethodSeries::add(Self, Self) -> Self
+pub fn MathspectralmethodSeries::cumsum(Self) -> Self
+pub fn MathspectralmethodSeries::len(Self) -> Int32
+pub fn MathspectralmethodSeries::max(Self) -> Double
+pub fn MathspectralmethodSeries::mean(Self) -> Double
+pub fn MathspectralmethodSeries::median(Self) -> Double
+pub fn MathspectralmethodSeries::min(Self) -> Double
+pub fn MathspectralmethodSeries::normalize(Self) -> Self
+pub fn MathspectralmethodSeries::range(Self) -> Double
+pub fn MathspectralmethodSeries::scale(Self, Double) -> Self
+pub fn MathspectralmethodSeries::std(Self) -> Double
+pub fn MathspectralmethodSeries::sub(Self, Self) -> Self
+pub fn MathspectralmethodSeries::sum(Self) -> Double
+pub fn MathspectralmethodSeries::to_string(Self) -> String
+pub fn MathspectralmethodSeries::variance(Self) -> Double
+
+pub(all) struct MathspectralmethodSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspectralmethodSlice::add(Self, Self) -> Self
+pub fn MathspectralmethodSlice::copy(Self) -> Self
+pub fn MathspectralmethodSlice::fill(Self, Double) -> Self
+pub fn MathspectralmethodSlice::get(Self, Int32) -> Double
+pub fn MathspectralmethodSlice::len(Self) -> Int32
+pub fn MathspectralmethodSlice::max(Self) -> Double
+pub fn MathspectralmethodSlice::mean(Self) -> Double
+pub fn MathspectralmethodSlice::min(Self) -> Double
+pub fn MathspectralmethodSlice::scale(Self, Double) -> Self
+pub fn MathspectralmethodSlice::set(Self, Int32, Double) -> Self
+pub fn MathspectralmethodSlice::sum(Self) -> Double
+pub fn MathspectralmethodSlice::to_string(Self) -> String
+
+pub(all) struct MathspectralmethodTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspectralmethodTable::add(Self, Self) -> Self
+pub fn MathspectralmethodTable::copy(Self) -> Self
+pub fn MathspectralmethodTable::fill(Self, Double) -> Self
+pub fn MathspectralmethodTable::get(Self, Int32) -> Double
+pub fn MathspectralmethodTable::len(Self) -> Int32
+pub fn MathspectralmethodTable::max(Self) -> Double
+pub fn MathspectralmethodTable::mean(Self) -> Double
+pub fn MathspectralmethodTable::min(Self) -> Double
+pub fn MathspectralmethodTable::scale(Self, Double) -> Self
+pub fn MathspectralmethodTable::set(Self, Int32, Double) -> Self
+pub fn MathspectralmethodTable::sum(Self) -> Double
+pub fn MathspectralmethodTable::to_string(Self) -> String
+
+pub(all) struct MathspectralmethodVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathspectralmethodVector::add(Self, Self) -> Self
+pub fn MathspectralmethodVector::dist(Self, Self) -> Double
+pub fn MathspectralmethodVector::dot(Self, Self) -> Double
+pub fn MathspectralmethodVector::norm(Self) -> Double
+pub fn MathspectralmethodVector::normalize(Self) -> Self
+pub fn MathspectralmethodVector::scale(Self, Double) -> Self
+pub fn MathspectralmethodVector::sub(Self, Self) -> Self
+pub fn MathspectralmethodVector::to_string(Self) -> String
+
+pub(all) struct MathspectralmethodView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspectralmethodView::add(Self, Self) -> Self
+pub fn MathspectralmethodView::copy(Self) -> Self
+pub fn MathspectralmethodView::fill(Self, Double) -> Self
+pub fn MathspectralmethodView::get(Self, Int32) -> Double
+pub fn MathspectralmethodView::len(Self) -> Int32
+pub fn MathspectralmethodView::max(Self) -> Double
+pub fn MathspectralmethodView::mean(Self) -> Double
+pub fn MathspectralmethodView::min(Self) -> Double
+pub fn MathspectralmethodView::scale(Self, Double) -> Self
+pub fn MathspectralmethodView::set(Self, Int32, Double) -> Self
+pub fn MathspectralmethodView::sum(Self) -> Double
+pub fn MathspectralmethodView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

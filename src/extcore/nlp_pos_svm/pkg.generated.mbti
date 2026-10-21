@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_pos_svm"
+
+// Values
+pub fn nlp_pos_svm_buffer_make(Int32) -> NlppossvmBuffer
+
+pub fn nlp_pos_svm_cluster_make(Int32) -> NlppossvmCluster
+
+pub fn nlp_pos_svm_cursor_make(Int32) -> NlppossvmCursor
+
+pub fn nlp_pos_svm_edge_make(Int32) -> NlppossvmEdge
+
+pub fn nlp_pos_svm_frame_make(Int32) -> NlppossvmFrame
+
+pub fn nlp_pos_svm_graphn_make(Int32) -> NlppossvmGraphN
+
+pub fn nlp_pos_svm_layer_make(Int32) -> NlppossvmLayer
+
+pub fn nlp_pos_svm_make_matrix(Int32, Int32, Double) -> NlppossvmMatrix
+
+pub fn nlp_pos_svm_make_point(Double, Double) -> NlppossvmPoint
+
+pub fn nlp_pos_svm_make_point3(Double, Double, Double) -> NlppossvmPoint
+
+pub fn nlp_pos_svm_make_series(Array[Double], String) -> NlppossvmSeries
+
+pub fn nlp_pos_svm_make_vector(Array[Double]) -> NlppossvmVector
+
+pub fn nlp_pos_svm_matrix_identity(Int32) -> NlppossvmMatrix
+
+pub fn nlp_pos_svm_model_make(Int32) -> NlppossvmModel
+
+pub fn nlp_pos_svm_node_make(Int32) -> NlppossvmNode
+
+pub fn nlp_pos_svm_path_make(Int32) -> NlppossvmPath
+
+pub fn nlp_pos_svm_range_make(Int32) -> NlppossvmRange
+
+pub fn nlp_pos_svm_slice_make(Int32) -> NlppossvmSlice
+
+pub fn nlp_pos_svm_table_make(Int32) -> NlppossvmTable
+
+pub fn nlp_pos_svm_vector_zero(Int32) -> NlppossvmVector
+
+pub fn nlp_pos_svm_view_make(Int32) -> NlppossvmView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlppossvmBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppossvmBuffer::add(Self, Self) -> Self
+pub fn NlppossvmBuffer::copy(Self) -> Self
+pub fn NlppossvmBuffer::fill(Self, Double) -> Self
+pub fn NlppossvmBuffer::get(Self, Int32) -> Double
+pub fn NlppossvmBuffer::len(Self) -> Int32
+pub fn NlppossvmBuffer::max(Self) -> Double
+pub fn NlppossvmBuffer::mean(Self) -> Double
+pub fn NlppossvmBuffer::min(Self) -> Double
+pub fn NlppossvmBuffer::scale(Self, Double) -> Self
+pub fn NlppossvmBuffer::set(Self, Int32, Double) -> Self
+pub fn NlppossvmBuffer::sum(Self) -> Double
+pub fn NlppossvmBuffer::to_string(Self) -> String
+
+pub(all) struct NlppossvmCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppossvmCluster::add(Self, Self) -> Self
+pub fn NlppossvmCluster::copy(Self) -> Self
+pub fn NlppossvmCluster::fill(Self, Double) -> Self
+pub fn NlppossvmCluster::get(Self, Int32) -> Double
+pub fn NlppossvmCluster::len(Self) -> Int32
+pub fn NlppossvmCluster::max(Self) -> Double
+pub fn NlppossvmCluster::mean(Self) -> Double
+pub fn NlppossvmCluster::min(Self) -> Double
+pub fn NlppossvmCluster::scale(Self, Double) -> Self
+pub fn NlppossvmCluster::set(Self, Int32, Double) -> Self
+pub fn NlppossvmCluster::sum(Self) -> Double
+pub fn NlppossvmCluster::to_string(Self) -> String
+
+pub(all) struct NlppossvmCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppossvmCursor::add(Self, Self) -> Self
+pub fn NlppossvmCursor::copy(Self) -> Self
+pub fn NlppossvmCursor::fill(Self, Double) -> Self
+pub fn NlppossvmCursor::get(Self, Int32) -> Double
+pub fn NlppossvmCursor::len(Self) -> Int32
+pub fn NlppossvmCursor::max(Self) -> Double
+pub fn NlppossvmCursor::mean(Self) -> Double
+pub fn NlppossvmCursor::min(Self) -> Double
+pub fn NlppossvmCursor::scale(Self, Double) -> Self
+pub fn NlppossvmCursor::set(Self, Int32, Double) -> Self
+pub fn NlppossvmCursor::sum(Self) -> Double
+pub fn NlppossvmCursor::to_string(Self) -> String
+
+pub(all) struct NlppossvmEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppossvmEdge::add(Self, Self) -> Self
+pub fn NlppossvmEdge::copy(Self) -> Self
+pub fn NlppossvmEdge::fill(Self, Double) -> Self
+pub fn NlppossvmEdge::get(Self, Int32) -> Double
+pub fn NlppossvmEdge::len(Self) -> Int32
+pub fn NlppossvmEdge::max(Self) -> Double
+pub fn NlppossvmEdge::mean(Self) -> Double
+pub fn NlppossvmEdge::min(Self) -> Double
+pub fn NlppossvmEdge::scale(Self, Double) -> Self
+pub fn NlppossvmEdge::set(Self, Int32, Double) -> Self
+pub fn NlppossvmEdge::sum(Self) -> Double
+pub fn NlppossvmEdge::to_string(Self) -> String
+
+pub(all) struct NlppossvmFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppossvmFrame::add(Self, Self) -> Self
+pub fn NlppossvmFrame::copy(Self) -> Self
+pub fn NlppossvmFrame::fill(Self, Double) -> Self
+pub fn NlppossvmFrame::get(Self, Int32) -> Double
+pub fn NlppossvmFrame::len(Self) -> Int32
+pub fn NlppossvmFrame::max(Self) -> Double
+pub fn NlppossvmFrame::mean(Self) -> Double
+pub fn NlppossvmFrame::min(Self) -> Double
+pub fn NlppossvmFrame::scale(Self, Double) -> Self
+pub fn NlppossvmFrame::set(Self, Int32, Double) -> Self
+pub fn NlppossvmFrame::sum(Self) -> Double
+pub fn NlppossvmFrame::to_string(Self) -> String
+
+pub(all) struct NlppossvmGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppossvmGraphN::add(Self, Self) -> Self
+pub fn NlppossvmGraphN::copy(Self) -> Self
+pub fn NlppossvmGraphN::fill(Self, Double) -> Self
+pub fn NlppossvmGraphN::get(Self, Int32) -> Double
+pub fn NlppossvmGraphN::len(Self) -> Int32
+pub fn NlppossvmGraphN::max(Self) -> Double
+pub fn NlppossvmGraphN::mean(Self) -> Double
+pub fn NlppossvmGraphN::min(Self) -> Double
+pub fn NlppossvmGraphN::scale(Self, Double) -> Self
+pub fn NlppossvmGraphN::set(Self, Int32, Double) -> Self
+pub fn NlppossvmGraphN::sum(Self) -> Double
+pub fn NlppossvmGraphN::to_string(Self) -> String
+
+pub(all) struct NlppossvmLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppossvmLayer::add(Self, Self) -> Self
+pub fn NlppossvmLayer::copy(Self) -> Self
+pub fn NlppossvmLayer::fill(Self, Double) -> Self
+pub fn NlppossvmLayer::get(Self, Int32) -> Double
+pub fn NlppossvmLayer::len(Self) -> Int32
+pub fn NlppossvmLayer::max(Self) -> Double
+pub fn NlppossvmLayer::mean(Self) -> Double
+pub fn NlppossvmLayer::min(Self) -> Double
+pub fn NlppossvmLayer::scale(Self, Double) -> Self
+pub fn NlppossvmLayer::set(Self, Int32, Double) -> Self
+pub fn NlppossvmLayer::sum(Self) -> Double
+pub fn NlppossvmLayer::to_string(Self) -> String
+
+pub(all) struct NlppossvmMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlppossvmMatrix::add(Self, Self) -> Self
+pub fn NlppossvmMatrix::det(Self) -> Double
+pub fn NlppossvmMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlppossvmMatrix::multiply(Self, Self) -> Self
+pub fn NlppossvmMatrix::norm(Self) -> Double
+pub fn NlppossvmMatrix::scale(Self, Double) -> Self
+pub fn NlppossvmMatrix::to_string(Self) -> String
+pub fn NlppossvmMatrix::trace(Self) -> Double
+pub fn NlppossvmMatrix::transpose(Self) -> Self
+
+pub(all) struct NlppossvmModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppossvmModel::add(Self, Self) -> Self
+pub fn NlppossvmModel::copy(Self) -> Self
+pub fn NlppossvmModel::fill(Self, Double) -> Self
+pub fn NlppossvmModel::get(Self, Int32) -> Double
+pub fn NlppossvmModel::len(Self) -> Int32
+pub fn NlppossvmModel::max(Self) -> Double
+pub fn NlppossvmModel::mean(Self) -> Double
+pub fn NlppossvmModel::min(Self) -> Double
+pub fn NlppossvmModel::scale(Self, Double) -> Self
+pub fn NlppossvmModel::set(Self, Int32, Double) -> Self
+pub fn NlppossvmModel::sum(Self) -> Double
+pub fn NlppossvmModel::to_string(Self) -> String
+
+pub(all) struct NlppossvmNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppossvmNode::add(Self, Self) -> Self
+pub fn NlppossvmNode::copy(Self) -> Self
+pub fn NlppossvmNode::fill(Self, Double) -> Self
+pub fn NlppossvmNode::get(Self, Int32) -> Double
+pub fn NlppossvmNode::len(Self) -> Int32
+pub fn NlppossvmNode::max(Self) -> Double
+pub fn NlppossvmNode::mean(Self) -> Double
+pub fn NlppossvmNode::min(Self) -> Double
+pub fn NlppossvmNode::scale(Self, Double) -> Self
+pub fn NlppossvmNode::set(Self, Int32, Double) -> Self
+pub fn NlppossvmNode::sum(Self) -> Double
+pub fn NlppossvmNode::to_string(Self) -> String
+
+pub(all) struct NlppossvmPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppossvmPath::add(Self, Self) -> Self
+pub fn NlppossvmPath::copy(Self) -> Self
+pub fn NlppossvmPath::fill(Self, Double) -> Self
+pub fn NlppossvmPath::get(Self, Int32) -> Double
+pub fn NlppossvmPath::len(Self) -> Int32
+pub fn NlppossvmPath::max(Self) -> Double
+pub fn NlppossvmPath::mean(Self) -> Double
+pub fn NlppossvmPath::min(Self) -> Double
+pub fn NlppossvmPath::scale(Self, Double) -> Self
+pub fn NlppossvmPath::set(Self, Int32, Double) -> Self
+pub fn NlppossvmPath::sum(Self) -> Double
+pub fn NlppossvmPath::to_string(Self) -> String
+
+pub(all) struct NlppossvmPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlppossvmPoint::add(Self, Self) -> Self
+pub fn NlppossvmPoint::cross(Self, Self) -> Self
+pub fn NlppossvmPoint::dist(Self, Self) -> Double
+pub fn NlppossvmPoint::dot(Self, Self) -> Double
+pub fn NlppossvmPoint::label(Self) -> Int32
+pub fn NlppossvmPoint::lerp(Self, Self, Double) -> Self
+pub fn NlppossvmPoint::mid(Self, Self) -> Self
+pub fn NlppossvmPoint::negate(Self) -> Self
+pub fn NlppossvmPoint::norm(Self) -> Double
+pub fn NlppossvmPoint::normalize(Self) -> Self
+pub fn NlppossvmPoint::scale(Self, Double) -> Self
+pub fn NlppossvmPoint::sub(Self, Self) -> Self
+pub fn NlppossvmPoint::to_string(Self) -> String
+pub fn NlppossvmPoint::x(Self) -> Double
+pub fn NlppossvmPoint::y(Self) -> Double
+pub fn NlppossvmPoint::z(Self) -> Double
+
+pub(all) struct NlppossvmRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppossvmRange::add(Self, Self) -> Self
+pub fn NlppossvmRange::copy(Self) -> Self
+pub fn NlppossvmRange::fill(Self, Double) -> Self
+pub fn NlppossvmRange::get(Self, Int32) -> Double
+pub fn NlppossvmRange::len(Self) -> Int32
+pub fn NlppossvmRange::max(Self) -> Double
+pub fn NlppossvmRange::mean(Self) -> Double
+pub fn NlppossvmRange::min(Self) -> Double
+pub fn NlppossvmRange::scale(Self, Double) -> Self
+pub fn NlppossvmRange::set(Self, Int32, Double) -> Self
+pub fn NlppossvmRange::sum(Self) -> Double
+pub fn NlppossvmRange::to_string(Self) -> String
+
+pub(all) struct NlppossvmSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlppossvmSeries::add(Self, Self) -> Self
+pub fn NlppossvmSeries::cumsum(Self) -> Self
+pub fn NlppossvmSeries::len(Self) -> Int32
+pub fn NlppossvmSeries::max(Self) -> Double
+pub fn NlppossvmSeries::mean(Self) -> Double
+pub fn NlppossvmSeries::median(Self) -> Double
+pub fn NlppossvmSeries::min(Self) -> Double
+pub fn NlppossvmSeries::normalize(Self) -> Self
+pub fn NlppossvmSeries::range(Self) -> Double
+pub fn NlppossvmSeries::scale(Self, Double) -> Self
+pub fn NlppossvmSeries::std(Self) -> Double
+pub fn NlppossvmSeries::sub(Self, Self) -> Self
+pub fn NlppossvmSeries::sum(Self) -> Double
+pub fn NlppossvmSeries::to_string(Self) -> String
+pub fn NlppossvmSeries::variance(Self) -> Double
+
+pub(all) struct NlppossvmSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppossvmSlice::add(Self, Self) -> Self
+pub fn NlppossvmSlice::copy(Self) -> Self
+pub fn NlppossvmSlice::fill(Self, Double) -> Self
+pub fn NlppossvmSlice::get(Self, Int32) -> Double
+pub fn NlppossvmSlice::len(Self) -> Int32
+pub fn NlppossvmSlice::max(Self) -> Double
+pub fn NlppossvmSlice::mean(Self) -> Double
+pub fn NlppossvmSlice::min(Self) -> Double
+pub fn NlppossvmSlice::scale(Self, Double) -> Self
+pub fn NlppossvmSlice::set(Self, Int32, Double) -> Self
+pub fn NlppossvmSlice::sum(Self) -> Double
+pub fn NlppossvmSlice::to_string(Self) -> String
+
+pub(all) struct NlppossvmTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppossvmTable::add(Self, Self) -> Self
+pub fn NlppossvmTable::copy(Self) -> Self
+pub fn NlppossvmTable::fill(Self, Double) -> Self
+pub fn NlppossvmTable::get(Self, Int32) -> Double
+pub fn NlppossvmTable::len(Self) -> Int32
+pub fn NlppossvmTable::max(Self) -> Double
+pub fn NlppossvmTable::mean(Self) -> Double
+pub fn NlppossvmTable::min(Self) -> Double
+pub fn NlppossvmTable::scale(Self, Double) -> Self
+pub fn NlppossvmTable::set(Self, Int32, Double) -> Self
+pub fn NlppossvmTable::sum(Self) -> Double
+pub fn NlppossvmTable::to_string(Self) -> String
+
+pub(all) struct NlppossvmVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlppossvmVector::add(Self, Self) -> Self
+pub fn NlppossvmVector::dist(Self, Self) -> Double
+pub fn NlppossvmVector::dot(Self, Self) -> Double
+pub fn NlppossvmVector::norm(Self) -> Double
+pub fn NlppossvmVector::normalize(Self) -> Self
+pub fn NlppossvmVector::scale(Self, Double) -> Self
+pub fn NlppossvmVector::sub(Self, Self) -> Self
+pub fn NlppossvmVector::to_string(Self) -> String
+
+pub(all) struct NlppossvmView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppossvmView::add(Self, Self) -> Self
+pub fn NlppossvmView::copy(Self) -> Self
+pub fn NlppossvmView::fill(Self, Double) -> Self
+pub fn NlppossvmView::get(Self, Int32) -> Double
+pub fn NlppossvmView::len(Self) -> Int32
+pub fn NlppossvmView::max(Self) -> Double
+pub fn NlppossvmView::mean(Self) -> Double
+pub fn NlppossvmView::min(Self) -> Double
+pub fn NlppossvmView::scale(Self, Double) -> Self
+pub fn NlppossvmView::set(Self, Int32, Double) -> Self
+pub fn NlppossvmView::sum(Self) -> Double
+pub fn NlppossvmView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,104 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/parallel/cpu_parallel"
+
+import {
+  "dataverse/dataobject",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn compute_parallel_stats(Int32, Int32, Int32) -> ParallelStats
+
+pub fn cpu_parallel_id() -> String
+
+pub fn gather_mode_name(GatherMode) -> String
+
+pub fn gather_results(Array[Int32], GatherMode) -> Int32
+
+pub fn make_parallel_plan(PartitionConfig, Int32, ShuffleConfig, GatherMode) -> ParallelExecPlan
+
+pub fn make_partition_config(PartitionStrategy, Int32, String) -> PartitionConfig
+
+pub fn make_shuffle_config(ShuffleType, Int32) -> ShuffleConfig
+
+pub fn parallel_plan_uri(ParallelExecPlan) -> String
+
+pub fn partition_data(Array[@dataobject.DataObject], PartitionConfig) -> Array[Int32]
+
+pub fn partition_strategy_name(PartitionStrategy) -> String
+
+pub fn shuffle_data(Array[@dataobject.DataObject], ShuffleConfig) -> Array[Int32]
+
+pub fn shuffle_type_name(ShuffleType) -> String
+
+// Errors
+
+// Types and methods
+pub(all) enum GatherMode {
+  Concat
+  MergeSorted
+  Union
+} derive(Eq, @debug.Debug)
+pub fn GatherMode::equal(Self, Self) -> Bool
+pub fn GatherMode::not_equal(Self, Self) -> Bool
+pub fn GatherMode::to_repr(Self) -> @debug.Repr
+
+pub struct ParallelExecPlan {
+  partition_config : PartitionConfig
+  worker_count : Int32
+  shuffle_config : ShuffleConfig
+  gather_mode : GatherMode
+} derive(Eq, @debug.Debug)
+pub fn ParallelExecPlan::equal(Self, Self) -> Bool
+pub fn ParallelExecPlan::not_equal(Self, Self) -> Bool
+pub fn ParallelExecPlan::to_repr(Self) -> @debug.Repr
+
+pub struct ParallelStats {
+  total_items : Int32
+  partition_count : Int32
+  worker_count : Int32
+  items_per_worker : Int32
+  estimated_latency_ms : Int32
+} derive(Eq, @debug.Debug)
+pub fn ParallelStats::equal(Self, Self) -> Bool
+pub fn ParallelStats::not_equal(Self, Self) -> Bool
+pub fn ParallelStats::to_repr(Self) -> @debug.Repr
+
+pub struct PartitionConfig {
+  strategy : PartitionStrategy
+  partition_count : Int32
+  key_field : String
+} derive(Eq, @debug.Debug)
+pub fn PartitionConfig::equal(Self, Self) -> Bool
+pub fn PartitionConfig::not_equal(Self, Self) -> Bool
+pub fn PartitionConfig::to_repr(Self) -> @debug.Repr
+
+pub(all) enum PartitionStrategy {
+  ByCount
+  BySize
+  ByKeyHash
+} derive(Eq, @debug.Debug)
+pub fn PartitionStrategy::equal(Self, Self) -> Bool
+pub fn PartitionStrategy::not_equal(Self, Self) -> Bool
+pub fn PartitionStrategy::to_repr(Self) -> @debug.Repr
+
+pub struct ShuffleConfig {
+  shuffle_type : ShuffleType
+  target_partitions : Int32
+} derive(Eq, @debug.Debug)
+pub fn ShuffleConfig::equal(Self, Self) -> Bool
+pub fn ShuffleConfig::not_equal(Self, Self) -> Bool
+pub fn ShuffleConfig::to_repr(Self) -> @debug.Repr
+
+pub(all) enum ShuffleType {
+  HashShuffle
+  RangeShuffle
+  RandomShuffle
+} derive(Eq, @debug.Debug)
+pub fn ShuffleType::equal(Self, Self) -> Bool
+pub fn ShuffleType::not_equal(Self, Self) -> Bool
+pub fn ShuffleType::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

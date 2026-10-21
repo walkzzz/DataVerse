@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_ode_solver"
+
+// Values
+pub fn math_ode_solver_buffer_make(Int32) -> MathodesolverBuffer
+
+pub fn math_ode_solver_cluster_make(Int32) -> MathodesolverCluster
+
+pub fn math_ode_solver_cursor_make(Int32) -> MathodesolverCursor
+
+pub fn math_ode_solver_edge_make(Int32) -> MathodesolverEdge
+
+pub fn math_ode_solver_frame_make(Int32) -> MathodesolverFrame
+
+pub fn math_ode_solver_graphn_make(Int32) -> MathodesolverGraphN
+
+pub fn math_ode_solver_layer_make(Int32) -> MathodesolverLayer
+
+pub fn math_ode_solver_make_matrix(Int32, Int32, Double) -> MathodesolverMatrix
+
+pub fn math_ode_solver_make_point(Double, Double) -> MathodesolverPoint
+
+pub fn math_ode_solver_make_point3(Double, Double, Double) -> MathodesolverPoint
+
+pub fn math_ode_solver_make_series(Array[Double], String) -> MathodesolverSeries
+
+pub fn math_ode_solver_make_vector(Array[Double]) -> MathodesolverVector
+
+pub fn math_ode_solver_matrix_identity(Int32) -> MathodesolverMatrix
+
+pub fn math_ode_solver_model_make(Int32) -> MathodesolverModel
+
+pub fn math_ode_solver_node_make(Int32) -> MathodesolverNode
+
+pub fn math_ode_solver_path_make(Int32) -> MathodesolverPath
+
+pub fn math_ode_solver_range_make(Int32) -> MathodesolverRange
+
+pub fn math_ode_solver_slice_make(Int32) -> MathodesolverSlice
+
+pub fn math_ode_solver_table_make(Int32) -> MathodesolverTable
+
+pub fn math_ode_solver_vector_zero(Int32) -> MathodesolverVector
+
+pub fn math_ode_solver_view_make(Int32) -> MathodesolverView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathodesolverBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathodesolverBuffer::add(Self, Self) -> Self
+pub fn MathodesolverBuffer::copy(Self) -> Self
+pub fn MathodesolverBuffer::fill(Self, Double) -> Self
+pub fn MathodesolverBuffer::get(Self, Int32) -> Double
+pub fn MathodesolverBuffer::len(Self) -> Int32
+pub fn MathodesolverBuffer::max(Self) -> Double
+pub fn MathodesolverBuffer::mean(Self) -> Double
+pub fn MathodesolverBuffer::min(Self) -> Double
+pub fn MathodesolverBuffer::scale(Self, Double) -> Self
+pub fn MathodesolverBuffer::set(Self, Int32, Double) -> Self
+pub fn MathodesolverBuffer::sum(Self) -> Double
+pub fn MathodesolverBuffer::to_string(Self) -> String
+
+pub(all) struct MathodesolverCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathodesolverCluster::add(Self, Self) -> Self
+pub fn MathodesolverCluster::copy(Self) -> Self
+pub fn MathodesolverCluster::fill(Self, Double) -> Self
+pub fn MathodesolverCluster::get(Self, Int32) -> Double
+pub fn MathodesolverCluster::len(Self) -> Int32
+pub fn MathodesolverCluster::max(Self) -> Double
+pub fn MathodesolverCluster::mean(Self) -> Double
+pub fn MathodesolverCluster::min(Self) -> Double
+pub fn MathodesolverCluster::scale(Self, Double) -> Self
+pub fn MathodesolverCluster::set(Self, Int32, Double) -> Self
+pub fn MathodesolverCluster::sum(Self) -> Double
+pub fn MathodesolverCluster::to_string(Self) -> String
+
+pub(all) struct MathodesolverCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathodesolverCursor::add(Self, Self) -> Self
+pub fn MathodesolverCursor::copy(Self) -> Self
+pub fn MathodesolverCursor::fill(Self, Double) -> Self
+pub fn MathodesolverCursor::get(Self, Int32) -> Double
+pub fn MathodesolverCursor::len(Self) -> Int32
+pub fn MathodesolverCursor::max(Self) -> Double
+pub fn MathodesolverCursor::mean(Self) -> Double
+pub fn MathodesolverCursor::min(Self) -> Double
+pub fn MathodesolverCursor::scale(Self, Double) -> Self
+pub fn MathodesolverCursor::set(Self, Int32, Double) -> Self
+pub fn MathodesolverCursor::sum(Self) -> Double
+pub fn MathodesolverCursor::to_string(Self) -> String
+
+pub(all) struct MathodesolverEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathodesolverEdge::add(Self, Self) -> Self
+pub fn MathodesolverEdge::copy(Self) -> Self
+pub fn MathodesolverEdge::fill(Self, Double) -> Self
+pub fn MathodesolverEdge::get(Self, Int32) -> Double
+pub fn MathodesolverEdge::len(Self) -> Int32
+pub fn MathodesolverEdge::max(Self) -> Double
+pub fn MathodesolverEdge::mean(Self) -> Double
+pub fn MathodesolverEdge::min(Self) -> Double
+pub fn MathodesolverEdge::scale(Self, Double) -> Self
+pub fn MathodesolverEdge::set(Self, Int32, Double) -> Self
+pub fn MathodesolverEdge::sum(Self) -> Double
+pub fn MathodesolverEdge::to_string(Self) -> String
+
+pub(all) struct MathodesolverFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathodesolverFrame::add(Self, Self) -> Self
+pub fn MathodesolverFrame::copy(Self) -> Self
+pub fn MathodesolverFrame::fill(Self, Double) -> Self
+pub fn MathodesolverFrame::get(Self, Int32) -> Double
+pub fn MathodesolverFrame::len(Self) -> Int32
+pub fn MathodesolverFrame::max(Self) -> Double
+pub fn MathodesolverFrame::mean(Self) -> Double
+pub fn MathodesolverFrame::min(Self) -> Double
+pub fn MathodesolverFrame::scale(Self, Double) -> Self
+pub fn MathodesolverFrame::set(Self, Int32, Double) -> Self
+pub fn MathodesolverFrame::sum(Self) -> Double
+pub fn MathodesolverFrame::to_string(Self) -> String
+
+pub(all) struct MathodesolverGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathodesolverGraphN::add(Self, Self) -> Self
+pub fn MathodesolverGraphN::copy(Self) -> Self
+pub fn MathodesolverGraphN::fill(Self, Double) -> Self
+pub fn MathodesolverGraphN::get(Self, Int32) -> Double
+pub fn MathodesolverGraphN::len(Self) -> Int32
+pub fn MathodesolverGraphN::max(Self) -> Double
+pub fn MathodesolverGraphN::mean(Self) -> Double
+pub fn MathodesolverGraphN::min(Self) -> Double
+pub fn MathodesolverGraphN::scale(Self, Double) -> Self
+pub fn MathodesolverGraphN::set(Self, Int32, Double) -> Self
+pub fn MathodesolverGraphN::sum(Self) -> Double
+pub fn MathodesolverGraphN::to_string(Self) -> String
+
+pub(all) struct MathodesolverLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathodesolverLayer::add(Self, Self) -> Self
+pub fn MathodesolverLayer::copy(Self) -> Self
+pub fn MathodesolverLayer::fill(Self, Double) -> Self
+pub fn MathodesolverLayer::get(Self, Int32) -> Double
+pub fn MathodesolverLayer::len(Self) -> Int32
+pub fn MathodesolverLayer::max(Self) -> Double
+pub fn MathodesolverLayer::mean(Self) -> Double
+pub fn MathodesolverLayer::min(Self) -> Double
+pub fn MathodesolverLayer::scale(Self, Double) -> Self
+pub fn MathodesolverLayer::set(Self, Int32, Double) -> Self
+pub fn MathodesolverLayer::sum(Self) -> Double
+pub fn MathodesolverLayer::to_string(Self) -> String
+
+pub(all) struct MathodesolverMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathodesolverMatrix::add(Self, Self) -> Self
+pub fn MathodesolverMatrix::det(Self) -> Double
+pub fn MathodesolverMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathodesolverMatrix::multiply(Self, Self) -> Self
+pub fn MathodesolverMatrix::norm(Self) -> Double
+pub fn MathodesolverMatrix::scale(Self, Double) -> Self
+pub fn MathodesolverMatrix::to_string(Self) -> String
+pub fn MathodesolverMatrix::trace(Self) -> Double
+pub fn MathodesolverMatrix::transpose(Self) -> Self
+
+pub(all) struct MathodesolverModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathodesolverModel::add(Self, Self) -> Self
+pub fn MathodesolverModel::copy(Self) -> Self
+pub fn MathodesolverModel::fill(Self, Double) -> Self
+pub fn MathodesolverModel::get(Self, Int32) -> Double
+pub fn MathodesolverModel::len(Self) -> Int32
+pub fn MathodesolverModel::max(Self) -> Double
+pub fn MathodesolverModel::mean(Self) -> Double
+pub fn MathodesolverModel::min(Self) -> Double
+pub fn MathodesolverModel::scale(Self, Double) -> Self
+pub fn MathodesolverModel::set(Self, Int32, Double) -> Self
+pub fn MathodesolverModel::sum(Self) -> Double
+pub fn MathodesolverModel::to_string(Self) -> String
+
+pub(all) struct MathodesolverNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathodesolverNode::add(Self, Self) -> Self
+pub fn MathodesolverNode::copy(Self) -> Self
+pub fn MathodesolverNode::fill(Self, Double) -> Self
+pub fn MathodesolverNode::get(Self, Int32) -> Double
+pub fn MathodesolverNode::len(Self) -> Int32
+pub fn MathodesolverNode::max(Self) -> Double
+pub fn MathodesolverNode::mean(Self) -> Double
+pub fn MathodesolverNode::min(Self) -> Double
+pub fn MathodesolverNode::scale(Self, Double) -> Self
+pub fn MathodesolverNode::set(Self, Int32, Double) -> Self
+pub fn MathodesolverNode::sum(Self) -> Double
+pub fn MathodesolverNode::to_string(Self) -> String
+
+pub(all) struct MathodesolverPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathodesolverPath::add(Self, Self) -> Self
+pub fn MathodesolverPath::copy(Self) -> Self
+pub fn MathodesolverPath::fill(Self, Double) -> Self
+pub fn MathodesolverPath::get(Self, Int32) -> Double
+pub fn MathodesolverPath::len(Self) -> Int32
+pub fn MathodesolverPath::max(Self) -> Double
+pub fn MathodesolverPath::mean(Self) -> Double
+pub fn MathodesolverPath::min(Self) -> Double
+pub fn MathodesolverPath::scale(Self, Double) -> Self
+pub fn MathodesolverPath::set(Self, Int32, Double) -> Self
+pub fn MathodesolverPath::sum(Self) -> Double
+pub fn MathodesolverPath::to_string(Self) -> String
+
+pub(all) struct MathodesolverPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathodesolverPoint::add(Self, Self) -> Self
+pub fn MathodesolverPoint::cross(Self, Self) -> Self
+pub fn MathodesolverPoint::dist(Self, Self) -> Double
+pub fn MathodesolverPoint::dot(Self, Self) -> Double
+pub fn MathodesolverPoint::label(Self) -> Int32
+pub fn MathodesolverPoint::lerp(Self, Self, Double) -> Self
+pub fn MathodesolverPoint::mid(Self, Self) -> Self
+pub fn MathodesolverPoint::negate(Self) -> Self
+pub fn MathodesolverPoint::norm(Self) -> Double
+pub fn MathodesolverPoint::normalize(Self) -> Self
+pub fn MathodesolverPoint::scale(Self, Double) -> Self
+pub fn MathodesolverPoint::sub(Self, Self) -> Self
+pub fn MathodesolverPoint::to_string(Self) -> String
+pub fn MathodesolverPoint::x(Self) -> Double
+pub fn MathodesolverPoint::y(Self) -> Double
+pub fn MathodesolverPoint::z(Self) -> Double
+
+pub(all) struct MathodesolverRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathodesolverRange::add(Self, Self) -> Self
+pub fn MathodesolverRange::copy(Self) -> Self
+pub fn MathodesolverRange::fill(Self, Double) -> Self
+pub fn MathodesolverRange::get(Self, Int32) -> Double
+pub fn MathodesolverRange::len(Self) -> Int32
+pub fn MathodesolverRange::max(Self) -> Double
+pub fn MathodesolverRange::mean(Self) -> Double
+pub fn MathodesolverRange::min(Self) -> Double
+pub fn MathodesolverRange::scale(Self, Double) -> Self
+pub fn MathodesolverRange::set(Self, Int32, Double) -> Self
+pub fn MathodesolverRange::sum(Self) -> Double
+pub fn MathodesolverRange::to_string(Self) -> String
+
+pub(all) struct MathodesolverSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathodesolverSeries::add(Self, Self) -> Self
+pub fn MathodesolverSeries::cumsum(Self) -> Self
+pub fn MathodesolverSeries::len(Self) -> Int32
+pub fn MathodesolverSeries::max(Self) -> Double
+pub fn MathodesolverSeries::mean(Self) -> Double
+pub fn MathodesolverSeries::median(Self) -> Double
+pub fn MathodesolverSeries::min(Self) -> Double
+pub fn MathodesolverSeries::normalize(Self) -> Self
+pub fn MathodesolverSeries::range(Self) -> Double
+pub fn MathodesolverSeries::scale(Self, Double) -> Self
+pub fn MathodesolverSeries::std(Self) -> Double
+pub fn MathodesolverSeries::sub(Self, Self) -> Self
+pub fn MathodesolverSeries::sum(Self) -> Double
+pub fn MathodesolverSeries::to_string(Self) -> String
+pub fn MathodesolverSeries::variance(Self) -> Double
+
+pub(all) struct MathodesolverSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathodesolverSlice::add(Self, Self) -> Self
+pub fn MathodesolverSlice::copy(Self) -> Self
+pub fn MathodesolverSlice::fill(Self, Double) -> Self
+pub fn MathodesolverSlice::get(Self, Int32) -> Double
+pub fn MathodesolverSlice::len(Self) -> Int32
+pub fn MathodesolverSlice::max(Self) -> Double
+pub fn MathodesolverSlice::mean(Self) -> Double
+pub fn MathodesolverSlice::min(Self) -> Double
+pub fn MathodesolverSlice::scale(Self, Double) -> Self
+pub fn MathodesolverSlice::set(Self, Int32, Double) -> Self
+pub fn MathodesolverSlice::sum(Self) -> Double
+pub fn MathodesolverSlice::to_string(Self) -> String
+
+pub(all) struct MathodesolverTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathodesolverTable::add(Self, Self) -> Self
+pub fn MathodesolverTable::copy(Self) -> Self
+pub fn MathodesolverTable::fill(Self, Double) -> Self
+pub fn MathodesolverTable::get(Self, Int32) -> Double
+pub fn MathodesolverTable::len(Self) -> Int32
+pub fn MathodesolverTable::max(Self) -> Double
+pub fn MathodesolverTable::mean(Self) -> Double
+pub fn MathodesolverTable::min(Self) -> Double
+pub fn MathodesolverTable::scale(Self, Double) -> Self
+pub fn MathodesolverTable::set(Self, Int32, Double) -> Self
+pub fn MathodesolverTable::sum(Self) -> Double
+pub fn MathodesolverTable::to_string(Self) -> String
+
+pub(all) struct MathodesolverVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathodesolverVector::add(Self, Self) -> Self
+pub fn MathodesolverVector::dist(Self, Self) -> Double
+pub fn MathodesolverVector::dot(Self, Self) -> Double
+pub fn MathodesolverVector::norm(Self) -> Double
+pub fn MathodesolverVector::normalize(Self) -> Self
+pub fn MathodesolverVector::scale(Self, Double) -> Self
+pub fn MathodesolverVector::sub(Self, Self) -> Self
+pub fn MathodesolverVector::to_string(Self) -> String
+
+pub(all) struct MathodesolverView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathodesolverView::add(Self, Self) -> Self
+pub fn MathodesolverView::copy(Self) -> Self
+pub fn MathodesolverView::fill(Self, Double) -> Self
+pub fn MathodesolverView::get(Self, Int32) -> Double
+pub fn MathodesolverView::len(Self) -> Int32
+pub fn MathodesolverView::max(Self) -> Double
+pub fn MathodesolverView::mean(Self) -> Double
+pub fn MathodesolverView::min(Self) -> Double
+pub fn MathodesolverView::scale(Self, Double) -> Self
+pub fn MathodesolverView::set(Self, Int32, Double) -> Self
+pub fn MathodesolverView::sum(Self) -> Double
+pub fn MathodesolverView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

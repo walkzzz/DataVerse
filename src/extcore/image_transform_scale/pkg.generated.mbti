@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_transform_scale"
+
+// Values
+pub fn image_transform_scale_buffer_make(Int32) -> ImagetransformscaleBuffer
+
+pub fn image_transform_scale_cluster_make(Int32) -> ImagetransformscaleCluster
+
+pub fn image_transform_scale_cursor_make(Int32) -> ImagetransformscaleCursor
+
+pub fn image_transform_scale_edge_make(Int32) -> ImagetransformscaleEdge
+
+pub fn image_transform_scale_frame_make(Int32) -> ImagetransformscaleFrame
+
+pub fn image_transform_scale_graphn_make(Int32) -> ImagetransformscaleGraphN
+
+pub fn image_transform_scale_layer_make(Int32) -> ImagetransformscaleLayer
+
+pub fn image_transform_scale_make_matrix(Int32, Int32, Double) -> ImagetransformscaleMatrix
+
+pub fn image_transform_scale_make_point(Double, Double) -> ImagetransformscalePoint
+
+pub fn image_transform_scale_make_point3(Double, Double, Double) -> ImagetransformscalePoint
+
+pub fn image_transform_scale_make_series(Array[Double], String) -> ImagetransformscaleSeries
+
+pub fn image_transform_scale_make_vector(Array[Double]) -> ImagetransformscaleVector
+
+pub fn image_transform_scale_matrix_identity(Int32) -> ImagetransformscaleMatrix
+
+pub fn image_transform_scale_model_make(Int32) -> ImagetransformscaleModel
+
+pub fn image_transform_scale_node_make(Int32) -> ImagetransformscaleNode
+
+pub fn image_transform_scale_path_make(Int32) -> ImagetransformscalePath
+
+pub fn image_transform_scale_range_make(Int32) -> ImagetransformscaleRange
+
+pub fn image_transform_scale_slice_make(Int32) -> ImagetransformscaleSlice
+
+pub fn image_transform_scale_table_make(Int32) -> ImagetransformscaleTable
+
+pub fn image_transform_scale_vector_zero(Int32) -> ImagetransformscaleVector
+
+pub fn image_transform_scale_view_make(Int32) -> ImagetransformscaleView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagetransformscaleBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformscaleBuffer::add(Self, Self) -> Self
+pub fn ImagetransformscaleBuffer::copy(Self) -> Self
+pub fn ImagetransformscaleBuffer::fill(Self, Double) -> Self
+pub fn ImagetransformscaleBuffer::get(Self, Int32) -> Double
+pub fn ImagetransformscaleBuffer::len(Self) -> Int32
+pub fn ImagetransformscaleBuffer::max(Self) -> Double
+pub fn ImagetransformscaleBuffer::mean(Self) -> Double
+pub fn ImagetransformscaleBuffer::min(Self) -> Double
+pub fn ImagetransformscaleBuffer::scale(Self, Double) -> Self
+pub fn ImagetransformscaleBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagetransformscaleBuffer::sum(Self) -> Double
+pub fn ImagetransformscaleBuffer::to_string(Self) -> String
+
+pub(all) struct ImagetransformscaleCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformscaleCluster::add(Self, Self) -> Self
+pub fn ImagetransformscaleCluster::copy(Self) -> Self
+pub fn ImagetransformscaleCluster::fill(Self, Double) -> Self
+pub fn ImagetransformscaleCluster::get(Self, Int32) -> Double
+pub fn ImagetransformscaleCluster::len(Self) -> Int32
+pub fn ImagetransformscaleCluster::max(Self) -> Double
+pub fn ImagetransformscaleCluster::mean(Self) -> Double
+pub fn ImagetransformscaleCluster::min(Self) -> Double
+pub fn ImagetransformscaleCluster::scale(Self, Double) -> Self
+pub fn ImagetransformscaleCluster::set(Self, Int32, Double) -> Self
+pub fn ImagetransformscaleCluster::sum(Self) -> Double
+pub fn ImagetransformscaleCluster::to_string(Self) -> String
+
+pub(all) struct ImagetransformscaleCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformscaleCursor::add(Self, Self) -> Self
+pub fn ImagetransformscaleCursor::copy(Self) -> Self
+pub fn ImagetransformscaleCursor::fill(Self, Double) -> Self
+pub fn ImagetransformscaleCursor::get(Self, Int32) -> Double
+pub fn ImagetransformscaleCursor::len(Self) -> Int32
+pub fn ImagetransformscaleCursor::max(Self) -> Double
+pub fn ImagetransformscaleCursor::mean(Self) -> Double
+pub fn ImagetransformscaleCursor::min(Self) -> Double
+pub fn ImagetransformscaleCursor::scale(Self, Double) -> Self
+pub fn ImagetransformscaleCursor::set(Self, Int32, Double) -> Self
+pub fn ImagetransformscaleCursor::sum(Self) -> Double
+pub fn ImagetransformscaleCursor::to_string(Self) -> String
+
+pub(all) struct ImagetransformscaleEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformscaleEdge::add(Self, Self) -> Self
+pub fn ImagetransformscaleEdge::copy(Self) -> Self
+pub fn ImagetransformscaleEdge::fill(Self, Double) -> Self
+pub fn ImagetransformscaleEdge::get(Self, Int32) -> Double
+pub fn ImagetransformscaleEdge::len(Self) -> Int32
+pub fn ImagetransformscaleEdge::max(Self) -> Double
+pub fn ImagetransformscaleEdge::mean(Self) -> Double
+pub fn ImagetransformscaleEdge::min(Self) -> Double
+pub fn ImagetransformscaleEdge::scale(Self, Double) -> Self
+pub fn ImagetransformscaleEdge::set(Self, Int32, Double) -> Self
+pub fn ImagetransformscaleEdge::sum(Self) -> Double
+pub fn ImagetransformscaleEdge::to_string(Self) -> String
+
+pub(all) struct ImagetransformscaleFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformscaleFrame::add(Self, Self) -> Self
+pub fn ImagetransformscaleFrame::copy(Self) -> Self
+pub fn ImagetransformscaleFrame::fill(Self, Double) -> Self
+pub fn ImagetransformscaleFrame::get(Self, Int32) -> Double
+pub fn ImagetransformscaleFrame::len(Self) -> Int32
+pub fn ImagetransformscaleFrame::max(Self) -> Double
+pub fn ImagetransformscaleFrame::mean(Self) -> Double
+pub fn ImagetransformscaleFrame::min(Self) -> Double
+pub fn ImagetransformscaleFrame::scale(Self, Double) -> Self
+pub fn ImagetransformscaleFrame::set(Self, Int32, Double) -> Self
+pub fn ImagetransformscaleFrame::sum(Self) -> Double
+pub fn ImagetransformscaleFrame::to_string(Self) -> String
+
+pub(all) struct ImagetransformscaleGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformscaleGraphN::add(Self, Self) -> Self
+pub fn ImagetransformscaleGraphN::copy(Self) -> Self
+pub fn ImagetransformscaleGraphN::fill(Self, Double) -> Self
+pub fn ImagetransformscaleGraphN::get(Self, Int32) -> Double
+pub fn ImagetransformscaleGraphN::len(Self) -> Int32
+pub fn ImagetransformscaleGraphN::max(Self) -> Double
+pub fn ImagetransformscaleGraphN::mean(Self) -> Double
+pub fn ImagetransformscaleGraphN::min(Self) -> Double
+pub fn ImagetransformscaleGraphN::scale(Self, Double) -> Self
+pub fn ImagetransformscaleGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagetransformscaleGraphN::sum(Self) -> Double
+pub fn ImagetransformscaleGraphN::to_string(Self) -> String
+
+pub(all) struct ImagetransformscaleLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformscaleLayer::add(Self, Self) -> Self
+pub fn ImagetransformscaleLayer::copy(Self) -> Self
+pub fn ImagetransformscaleLayer::fill(Self, Double) -> Self
+pub fn ImagetransformscaleLayer::get(Self, Int32) -> Double
+pub fn ImagetransformscaleLayer::len(Self) -> Int32
+pub fn ImagetransformscaleLayer::max(Self) -> Double
+pub fn ImagetransformscaleLayer::mean(Self) -> Double
+pub fn ImagetransformscaleLayer::min(Self) -> Double
+pub fn ImagetransformscaleLayer::scale(Self, Double) -> Self
+pub fn ImagetransformscaleLayer::set(Self, Int32, Double) -> Self
+pub fn ImagetransformscaleLayer::sum(Self) -> Double
+pub fn ImagetransformscaleLayer::to_string(Self) -> String
+
+pub(all) struct ImagetransformscaleMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagetransformscaleMatrix::add(Self, Self) -> Self
+pub fn ImagetransformscaleMatrix::det(Self) -> Double
+pub fn ImagetransformscaleMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagetransformscaleMatrix::multiply(Self, Self) -> Self
+pub fn ImagetransformscaleMatrix::norm(Self) -> Double
+pub fn ImagetransformscaleMatrix::scale(Self, Double) -> Self
+pub fn ImagetransformscaleMatrix::to_string(Self) -> String
+pub fn ImagetransformscaleMatrix::trace(Self) -> Double
+pub fn ImagetransformscaleMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagetransformscaleModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformscaleModel::add(Self, Self) -> Self
+pub fn ImagetransformscaleModel::copy(Self) -> Self
+pub fn ImagetransformscaleModel::fill(Self, Double) -> Self
+pub fn ImagetransformscaleModel::get(Self, Int32) -> Double
+pub fn ImagetransformscaleModel::len(Self) -> Int32
+pub fn ImagetransformscaleModel::max(Self) -> Double
+pub fn ImagetransformscaleModel::mean(Self) -> Double
+pub fn ImagetransformscaleModel::min(Self) -> Double
+pub fn ImagetransformscaleModel::scale(Self, Double) -> Self
+pub fn ImagetransformscaleModel::set(Self, Int32, Double) -> Self
+pub fn ImagetransformscaleModel::sum(Self) -> Double
+pub fn ImagetransformscaleModel::to_string(Self) -> String
+
+pub(all) struct ImagetransformscaleNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformscaleNode::add(Self, Self) -> Self
+pub fn ImagetransformscaleNode::copy(Self) -> Self
+pub fn ImagetransformscaleNode::fill(Self, Double) -> Self
+pub fn ImagetransformscaleNode::get(Self, Int32) -> Double
+pub fn ImagetransformscaleNode::len(Self) -> Int32
+pub fn ImagetransformscaleNode::max(Self) -> Double
+pub fn ImagetransformscaleNode::mean(Self) -> Double
+pub fn ImagetransformscaleNode::min(Self) -> Double
+pub fn ImagetransformscaleNode::scale(Self, Double) -> Self
+pub fn ImagetransformscaleNode::set(Self, Int32, Double) -> Self
+pub fn ImagetransformscaleNode::sum(Self) -> Double
+pub fn ImagetransformscaleNode::to_string(Self) -> String
+
+pub(all) struct ImagetransformscalePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformscalePath::add(Self, Self) -> Self
+pub fn ImagetransformscalePath::copy(Self) -> Self
+pub fn ImagetransformscalePath::fill(Self, Double) -> Self
+pub fn ImagetransformscalePath::get(Self, Int32) -> Double
+pub fn ImagetransformscalePath::len(Self) -> Int32
+pub fn ImagetransformscalePath::max(Self) -> Double
+pub fn ImagetransformscalePath::mean(Self) -> Double
+pub fn ImagetransformscalePath::min(Self) -> Double
+pub fn ImagetransformscalePath::scale(Self, Double) -> Self
+pub fn ImagetransformscalePath::set(Self, Int32, Double) -> Self
+pub fn ImagetransformscalePath::sum(Self) -> Double
+pub fn ImagetransformscalePath::to_string(Self) -> String
+
+pub(all) struct ImagetransformscalePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagetransformscalePoint::add(Self, Self) -> Self
+pub fn ImagetransformscalePoint::cross(Self, Self) -> Self
+pub fn ImagetransformscalePoint::dist(Self, Self) -> Double
+pub fn ImagetransformscalePoint::dot(Self, Self) -> Double
+pub fn ImagetransformscalePoint::label(Self) -> Int32
+pub fn ImagetransformscalePoint::lerp(Self, Self, Double) -> Self
+pub fn ImagetransformscalePoint::mid(Self, Self) -> Self
+pub fn ImagetransformscalePoint::negate(Self) -> Self
+pub fn ImagetransformscalePoint::norm(Self) -> Double
+pub fn ImagetransformscalePoint::normalize(Self) -> Self
+pub fn ImagetransformscalePoint::scale(Self, Double) -> Self
+pub fn ImagetransformscalePoint::sub(Self, Self) -> Self
+pub fn ImagetransformscalePoint::to_string(Self) -> String
+pub fn ImagetransformscalePoint::x(Self) -> Double
+pub fn ImagetransformscalePoint::y(Self) -> Double
+pub fn ImagetransformscalePoint::z(Self) -> Double
+
+pub(all) struct ImagetransformscaleRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformscaleRange::add(Self, Self) -> Self
+pub fn ImagetransformscaleRange::copy(Self) -> Self
+pub fn ImagetransformscaleRange::fill(Self, Double) -> Self
+pub fn ImagetransformscaleRange::get(Self, Int32) -> Double
+pub fn ImagetransformscaleRange::len(Self) -> Int32
+pub fn ImagetransformscaleRange::max(Self) -> Double
+pub fn ImagetransformscaleRange::mean(Self) -> Double
+pub fn ImagetransformscaleRange::min(Self) -> Double
+pub fn ImagetransformscaleRange::scale(Self, Double) -> Self
+pub fn ImagetransformscaleRange::set(Self, Int32, Double) -> Self
+pub fn ImagetransformscaleRange::sum(Self) -> Double
+pub fn ImagetransformscaleRange::to_string(Self) -> String
+
+pub(all) struct ImagetransformscaleSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagetransformscaleSeries::add(Self, Self) -> Self
+pub fn ImagetransformscaleSeries::cumsum(Self) -> Self
+pub fn ImagetransformscaleSeries::len(Self) -> Int32
+pub fn ImagetransformscaleSeries::max(Self) -> Double
+pub fn ImagetransformscaleSeries::mean(Self) -> Double
+pub fn ImagetransformscaleSeries::median(Self) -> Double
+pub fn ImagetransformscaleSeries::min(Self) -> Double
+pub fn ImagetransformscaleSeries::normalize(Self) -> Self
+pub fn ImagetransformscaleSeries::range(Self) -> Double
+pub fn ImagetransformscaleSeries::scale(Self, Double) -> Self
+pub fn ImagetransformscaleSeries::std(Self) -> Double
+pub fn ImagetransformscaleSeries::sub(Self, Self) -> Self
+pub fn ImagetransformscaleSeries::sum(Self) -> Double
+pub fn ImagetransformscaleSeries::to_string(Self) -> String
+pub fn ImagetransformscaleSeries::variance(Self) -> Double
+
+pub(all) struct ImagetransformscaleSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformscaleSlice::add(Self, Self) -> Self
+pub fn ImagetransformscaleSlice::copy(Self) -> Self
+pub fn ImagetransformscaleSlice::fill(Self, Double) -> Self
+pub fn ImagetransformscaleSlice::get(Self, Int32) -> Double
+pub fn ImagetransformscaleSlice::len(Self) -> Int32
+pub fn ImagetransformscaleSlice::max(Self) -> Double
+pub fn ImagetransformscaleSlice::mean(Self) -> Double
+pub fn ImagetransformscaleSlice::min(Self) -> Double
+pub fn ImagetransformscaleSlice::scale(Self, Double) -> Self
+pub fn ImagetransformscaleSlice::set(Self, Int32, Double) -> Self
+pub fn ImagetransformscaleSlice::sum(Self) -> Double
+pub fn ImagetransformscaleSlice::to_string(Self) -> String
+
+pub(all) struct ImagetransformscaleTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformscaleTable::add(Self, Self) -> Self
+pub fn ImagetransformscaleTable::copy(Self) -> Self
+pub fn ImagetransformscaleTable::fill(Self, Double) -> Self
+pub fn ImagetransformscaleTable::get(Self, Int32) -> Double
+pub fn ImagetransformscaleTable::len(Self) -> Int32
+pub fn ImagetransformscaleTable::max(Self) -> Double
+pub fn ImagetransformscaleTable::mean(Self) -> Double
+pub fn ImagetransformscaleTable::min(Self) -> Double
+pub fn ImagetransformscaleTable::scale(Self, Double) -> Self
+pub fn ImagetransformscaleTable::set(Self, Int32, Double) -> Self
+pub fn ImagetransformscaleTable::sum(Self) -> Double
+pub fn ImagetransformscaleTable::to_string(Self) -> String
+
+pub(all) struct ImagetransformscaleVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagetransformscaleVector::add(Self, Self) -> Self
+pub fn ImagetransformscaleVector::dist(Self, Self) -> Double
+pub fn ImagetransformscaleVector::dot(Self, Self) -> Double
+pub fn ImagetransformscaleVector::norm(Self) -> Double
+pub fn ImagetransformscaleVector::normalize(Self) -> Self
+pub fn ImagetransformscaleVector::scale(Self, Double) -> Self
+pub fn ImagetransformscaleVector::sub(Self, Self) -> Self
+pub fn ImagetransformscaleVector::to_string(Self) -> String
+
+pub(all) struct ImagetransformscaleView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformscaleView::add(Self, Self) -> Self
+pub fn ImagetransformscaleView::copy(Self) -> Self
+pub fn ImagetransformscaleView::fill(Self, Double) -> Self
+pub fn ImagetransformscaleView::get(Self, Int32) -> Double
+pub fn ImagetransformscaleView::len(Self) -> Int32
+pub fn ImagetransformscaleView::max(Self) -> Double
+pub fn ImagetransformscaleView::mean(Self) -> Double
+pub fn ImagetransformscaleView::min(Self) -> Double
+pub fn ImagetransformscaleView::scale(Self, Double) -> Self
+pub fn ImagetransformscaleView::set(Self, Int32, Double) -> Self
+pub fn ImagetransformscaleView::sum(Self) -> Double
+pub fn ImagetransformscaleView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

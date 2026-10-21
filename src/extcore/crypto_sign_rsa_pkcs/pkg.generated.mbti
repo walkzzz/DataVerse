@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/crypto_sign_rsa_pkcs"
+
+// Values
+pub fn crypto_sign_rsa_pkcs_buffer_make(Int32) -> CryptosignrsapkcsBuffer
+
+pub fn crypto_sign_rsa_pkcs_cluster_make(Int32) -> CryptosignrsapkcsCluster
+
+pub fn crypto_sign_rsa_pkcs_cursor_make(Int32) -> CryptosignrsapkcsCursor
+
+pub fn crypto_sign_rsa_pkcs_edge_make(Int32) -> CryptosignrsapkcsEdge
+
+pub fn crypto_sign_rsa_pkcs_frame_make(Int32) -> CryptosignrsapkcsFrame
+
+pub fn crypto_sign_rsa_pkcs_graphn_make(Int32) -> CryptosignrsapkcsGraphN
+
+pub fn crypto_sign_rsa_pkcs_layer_make(Int32) -> CryptosignrsapkcsLayer
+
+pub fn crypto_sign_rsa_pkcs_make_matrix(Int32, Int32, Double) -> CryptosignrsapkcsMatrix
+
+pub fn crypto_sign_rsa_pkcs_make_point(Double, Double) -> CryptosignrsapkcsPoint
+
+pub fn crypto_sign_rsa_pkcs_make_point3(Double, Double, Double) -> CryptosignrsapkcsPoint
+
+pub fn crypto_sign_rsa_pkcs_make_series(Array[Double], String) -> CryptosignrsapkcsSeries
+
+pub fn crypto_sign_rsa_pkcs_make_vector(Array[Double]) -> CryptosignrsapkcsVector
+
+pub fn crypto_sign_rsa_pkcs_matrix_identity(Int32) -> CryptosignrsapkcsMatrix
+
+pub fn crypto_sign_rsa_pkcs_model_make(Int32) -> CryptosignrsapkcsModel
+
+pub fn crypto_sign_rsa_pkcs_node_make(Int32) -> CryptosignrsapkcsNode
+
+pub fn crypto_sign_rsa_pkcs_path_make(Int32) -> CryptosignrsapkcsPath
+
+pub fn crypto_sign_rsa_pkcs_range_make(Int32) -> CryptosignrsapkcsRange
+
+pub fn crypto_sign_rsa_pkcs_slice_make(Int32) -> CryptosignrsapkcsSlice
+
+pub fn crypto_sign_rsa_pkcs_table_make(Int32) -> CryptosignrsapkcsTable
+
+pub fn crypto_sign_rsa_pkcs_vector_zero(Int32) -> CryptosignrsapkcsVector
+
+pub fn crypto_sign_rsa_pkcs_view_make(Int32) -> CryptosignrsapkcsView
+
+// Errors
+
+// Types and methods
+pub(all) struct CryptosignrsapkcsBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignrsapkcsBuffer::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsBuffer::copy(Self) -> Self
+pub fn CryptosignrsapkcsBuffer::fill(Self, Double) -> Self
+pub fn CryptosignrsapkcsBuffer::get(Self, Int32) -> Double
+pub fn CryptosignrsapkcsBuffer::len(Self) -> Int32
+pub fn CryptosignrsapkcsBuffer::max(Self) -> Double
+pub fn CryptosignrsapkcsBuffer::mean(Self) -> Double
+pub fn CryptosignrsapkcsBuffer::min(Self) -> Double
+pub fn CryptosignrsapkcsBuffer::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsBuffer::set(Self, Int32, Double) -> Self
+pub fn CryptosignrsapkcsBuffer::sum(Self) -> Double
+pub fn CryptosignrsapkcsBuffer::to_string(Self) -> String
+
+pub(all) struct CryptosignrsapkcsCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignrsapkcsCluster::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsCluster::copy(Self) -> Self
+pub fn CryptosignrsapkcsCluster::fill(Self, Double) -> Self
+pub fn CryptosignrsapkcsCluster::get(Self, Int32) -> Double
+pub fn CryptosignrsapkcsCluster::len(Self) -> Int32
+pub fn CryptosignrsapkcsCluster::max(Self) -> Double
+pub fn CryptosignrsapkcsCluster::mean(Self) -> Double
+pub fn CryptosignrsapkcsCluster::min(Self) -> Double
+pub fn CryptosignrsapkcsCluster::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsCluster::set(Self, Int32, Double) -> Self
+pub fn CryptosignrsapkcsCluster::sum(Self) -> Double
+pub fn CryptosignrsapkcsCluster::to_string(Self) -> String
+
+pub(all) struct CryptosignrsapkcsCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignrsapkcsCursor::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsCursor::copy(Self) -> Self
+pub fn CryptosignrsapkcsCursor::fill(Self, Double) -> Self
+pub fn CryptosignrsapkcsCursor::get(Self, Int32) -> Double
+pub fn CryptosignrsapkcsCursor::len(Self) -> Int32
+pub fn CryptosignrsapkcsCursor::max(Self) -> Double
+pub fn CryptosignrsapkcsCursor::mean(Self) -> Double
+pub fn CryptosignrsapkcsCursor::min(Self) -> Double
+pub fn CryptosignrsapkcsCursor::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsCursor::set(Self, Int32, Double) -> Self
+pub fn CryptosignrsapkcsCursor::sum(Self) -> Double
+pub fn CryptosignrsapkcsCursor::to_string(Self) -> String
+
+pub(all) struct CryptosignrsapkcsEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignrsapkcsEdge::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsEdge::copy(Self) -> Self
+pub fn CryptosignrsapkcsEdge::fill(Self, Double) -> Self
+pub fn CryptosignrsapkcsEdge::get(Self, Int32) -> Double
+pub fn CryptosignrsapkcsEdge::len(Self) -> Int32
+pub fn CryptosignrsapkcsEdge::max(Self) -> Double
+pub fn CryptosignrsapkcsEdge::mean(Self) -> Double
+pub fn CryptosignrsapkcsEdge::min(Self) -> Double
+pub fn CryptosignrsapkcsEdge::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsEdge::set(Self, Int32, Double) -> Self
+pub fn CryptosignrsapkcsEdge::sum(Self) -> Double
+pub fn CryptosignrsapkcsEdge::to_string(Self) -> String
+
+pub(all) struct CryptosignrsapkcsFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignrsapkcsFrame::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsFrame::copy(Self) -> Self
+pub fn CryptosignrsapkcsFrame::fill(Self, Double) -> Self
+pub fn CryptosignrsapkcsFrame::get(Self, Int32) -> Double
+pub fn CryptosignrsapkcsFrame::len(Self) -> Int32
+pub fn CryptosignrsapkcsFrame::max(Self) -> Double
+pub fn CryptosignrsapkcsFrame::mean(Self) -> Double
+pub fn CryptosignrsapkcsFrame::min(Self) -> Double
+pub fn CryptosignrsapkcsFrame::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsFrame::set(Self, Int32, Double) -> Self
+pub fn CryptosignrsapkcsFrame::sum(Self) -> Double
+pub fn CryptosignrsapkcsFrame::to_string(Self) -> String
+
+pub(all) struct CryptosignrsapkcsGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignrsapkcsGraphN::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsGraphN::copy(Self) -> Self
+pub fn CryptosignrsapkcsGraphN::fill(Self, Double) -> Self
+pub fn CryptosignrsapkcsGraphN::get(Self, Int32) -> Double
+pub fn CryptosignrsapkcsGraphN::len(Self) -> Int32
+pub fn CryptosignrsapkcsGraphN::max(Self) -> Double
+pub fn CryptosignrsapkcsGraphN::mean(Self) -> Double
+pub fn CryptosignrsapkcsGraphN::min(Self) -> Double
+pub fn CryptosignrsapkcsGraphN::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsGraphN::set(Self, Int32, Double) -> Self
+pub fn CryptosignrsapkcsGraphN::sum(Self) -> Double
+pub fn CryptosignrsapkcsGraphN::to_string(Self) -> String
+
+pub(all) struct CryptosignrsapkcsLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignrsapkcsLayer::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsLayer::copy(Self) -> Self
+pub fn CryptosignrsapkcsLayer::fill(Self, Double) -> Self
+pub fn CryptosignrsapkcsLayer::get(Self, Int32) -> Double
+pub fn CryptosignrsapkcsLayer::len(Self) -> Int32
+pub fn CryptosignrsapkcsLayer::max(Self) -> Double
+pub fn CryptosignrsapkcsLayer::mean(Self) -> Double
+pub fn CryptosignrsapkcsLayer::min(Self) -> Double
+pub fn CryptosignrsapkcsLayer::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsLayer::set(Self, Int32, Double) -> Self
+pub fn CryptosignrsapkcsLayer::sum(Self) -> Double
+pub fn CryptosignrsapkcsLayer::to_string(Self) -> String
+
+pub(all) struct CryptosignrsapkcsMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn CryptosignrsapkcsMatrix::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsMatrix::det(Self) -> Double
+pub fn CryptosignrsapkcsMatrix::get(Self, Int32, Int32) -> Double
+pub fn CryptosignrsapkcsMatrix::multiply(Self, Self) -> Self
+pub fn CryptosignrsapkcsMatrix::norm(Self) -> Double
+pub fn CryptosignrsapkcsMatrix::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsMatrix::to_string(Self) -> String
+pub fn CryptosignrsapkcsMatrix::trace(Self) -> Double
+pub fn CryptosignrsapkcsMatrix::transpose(Self) -> Self
+
+pub(all) struct CryptosignrsapkcsModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignrsapkcsModel::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsModel::copy(Self) -> Self
+pub fn CryptosignrsapkcsModel::fill(Self, Double) -> Self
+pub fn CryptosignrsapkcsModel::get(Self, Int32) -> Double
+pub fn CryptosignrsapkcsModel::len(Self) -> Int32
+pub fn CryptosignrsapkcsModel::max(Self) -> Double
+pub fn CryptosignrsapkcsModel::mean(Self) -> Double
+pub fn CryptosignrsapkcsModel::min(Self) -> Double
+pub fn CryptosignrsapkcsModel::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsModel::set(Self, Int32, Double) -> Self
+pub fn CryptosignrsapkcsModel::sum(Self) -> Double
+pub fn CryptosignrsapkcsModel::to_string(Self) -> String
+
+pub(all) struct CryptosignrsapkcsNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignrsapkcsNode::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsNode::copy(Self) -> Self
+pub fn CryptosignrsapkcsNode::fill(Self, Double) -> Self
+pub fn CryptosignrsapkcsNode::get(Self, Int32) -> Double
+pub fn CryptosignrsapkcsNode::len(Self) -> Int32
+pub fn CryptosignrsapkcsNode::max(Self) -> Double
+pub fn CryptosignrsapkcsNode::mean(Self) -> Double
+pub fn CryptosignrsapkcsNode::min(Self) -> Double
+pub fn CryptosignrsapkcsNode::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsNode::set(Self, Int32, Double) -> Self
+pub fn CryptosignrsapkcsNode::sum(Self) -> Double
+pub fn CryptosignrsapkcsNode::to_string(Self) -> String
+
+pub(all) struct CryptosignrsapkcsPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignrsapkcsPath::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsPath::copy(Self) -> Self
+pub fn CryptosignrsapkcsPath::fill(Self, Double) -> Self
+pub fn CryptosignrsapkcsPath::get(Self, Int32) -> Double
+pub fn CryptosignrsapkcsPath::len(Self) -> Int32
+pub fn CryptosignrsapkcsPath::max(Self) -> Double
+pub fn CryptosignrsapkcsPath::mean(Self) -> Double
+pub fn CryptosignrsapkcsPath::min(Self) -> Double
+pub fn CryptosignrsapkcsPath::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsPath::set(Self, Int32, Double) -> Self
+pub fn CryptosignrsapkcsPath::sum(Self) -> Double
+pub fn CryptosignrsapkcsPath::to_string(Self) -> String
+
+pub(all) struct CryptosignrsapkcsPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn CryptosignrsapkcsPoint::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsPoint::cross(Self, Self) -> Self
+pub fn CryptosignrsapkcsPoint::dist(Self, Self) -> Double
+pub fn CryptosignrsapkcsPoint::dot(Self, Self) -> Double
+pub fn CryptosignrsapkcsPoint::label(Self) -> Int32
+pub fn CryptosignrsapkcsPoint::lerp(Self, Self, Double) -> Self
+pub fn CryptosignrsapkcsPoint::mid(Self, Self) -> Self
+pub fn CryptosignrsapkcsPoint::negate(Self) -> Self
+pub fn CryptosignrsapkcsPoint::norm(Self) -> Double
+pub fn CryptosignrsapkcsPoint::normalize(Self) -> Self
+pub fn CryptosignrsapkcsPoint::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsPoint::sub(Self, Self) -> Self
+pub fn CryptosignrsapkcsPoint::to_string(Self) -> String
+pub fn CryptosignrsapkcsPoint::x(Self) -> Double
+pub fn CryptosignrsapkcsPoint::y(Self) -> Double
+pub fn CryptosignrsapkcsPoint::z(Self) -> Double
+
+pub(all) struct CryptosignrsapkcsRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignrsapkcsRange::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsRange::copy(Self) -> Self
+pub fn CryptosignrsapkcsRange::fill(Self, Double) -> Self
+pub fn CryptosignrsapkcsRange::get(Self, Int32) -> Double
+pub fn CryptosignrsapkcsRange::len(Self) -> Int32
+pub fn CryptosignrsapkcsRange::max(Self) -> Double
+pub fn CryptosignrsapkcsRange::mean(Self) -> Double
+pub fn CryptosignrsapkcsRange::min(Self) -> Double
+pub fn CryptosignrsapkcsRange::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsRange::set(Self, Int32, Double) -> Self
+pub fn CryptosignrsapkcsRange::sum(Self) -> Double
+pub fn CryptosignrsapkcsRange::to_string(Self) -> String
+
+pub(all) struct CryptosignrsapkcsSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn CryptosignrsapkcsSeries::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsSeries::cumsum(Self) -> Self
+pub fn CryptosignrsapkcsSeries::len(Self) -> Int32
+pub fn CryptosignrsapkcsSeries::max(Self) -> Double
+pub fn CryptosignrsapkcsSeries::mean(Self) -> Double
+pub fn CryptosignrsapkcsSeries::median(Self) -> Double
+pub fn CryptosignrsapkcsSeries::min(Self) -> Double
+pub fn CryptosignrsapkcsSeries::normalize(Self) -> Self
+pub fn CryptosignrsapkcsSeries::range(Self) -> Double
+pub fn CryptosignrsapkcsSeries::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsSeries::std(Self) -> Double
+pub fn CryptosignrsapkcsSeries::sub(Self, Self) -> Self
+pub fn CryptosignrsapkcsSeries::sum(Self) -> Double
+pub fn CryptosignrsapkcsSeries::to_string(Self) -> String
+pub fn CryptosignrsapkcsSeries::variance(Self) -> Double
+
+pub(all) struct CryptosignrsapkcsSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignrsapkcsSlice::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsSlice::copy(Self) -> Self
+pub fn CryptosignrsapkcsSlice::fill(Self, Double) -> Self
+pub fn CryptosignrsapkcsSlice::get(Self, Int32) -> Double
+pub fn CryptosignrsapkcsSlice::len(Self) -> Int32
+pub fn CryptosignrsapkcsSlice::max(Self) -> Double
+pub fn CryptosignrsapkcsSlice::mean(Self) -> Double
+pub fn CryptosignrsapkcsSlice::min(Self) -> Double
+pub fn CryptosignrsapkcsSlice::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsSlice::set(Self, Int32, Double) -> Self
+pub fn CryptosignrsapkcsSlice::sum(Self) -> Double
+pub fn CryptosignrsapkcsSlice::to_string(Self) -> String
+
+pub(all) struct CryptosignrsapkcsTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignrsapkcsTable::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsTable::copy(Self) -> Self
+pub fn CryptosignrsapkcsTable::fill(Self, Double) -> Self
+pub fn CryptosignrsapkcsTable::get(Self, Int32) -> Double
+pub fn CryptosignrsapkcsTable::len(Self) -> Int32
+pub fn CryptosignrsapkcsTable::max(Self) -> Double
+pub fn CryptosignrsapkcsTable::mean(Self) -> Double
+pub fn CryptosignrsapkcsTable::min(Self) -> Double
+pub fn CryptosignrsapkcsTable::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsTable::set(Self, Int32, Double) -> Self
+pub fn CryptosignrsapkcsTable::sum(Self) -> Double
+pub fn CryptosignrsapkcsTable::to_string(Self) -> String
+
+pub(all) struct CryptosignrsapkcsVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn CryptosignrsapkcsVector::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsVector::dist(Self, Self) -> Double
+pub fn CryptosignrsapkcsVector::dot(Self, Self) -> Double
+pub fn CryptosignrsapkcsVector::norm(Self) -> Double
+pub fn CryptosignrsapkcsVector::normalize(Self) -> Self
+pub fn CryptosignrsapkcsVector::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsVector::sub(Self, Self) -> Self
+pub fn CryptosignrsapkcsVector::to_string(Self) -> String
+
+pub(all) struct CryptosignrsapkcsView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignrsapkcsView::add(Self, Self) -> Self
+pub fn CryptosignrsapkcsView::copy(Self) -> Self
+pub fn CryptosignrsapkcsView::fill(Self, Double) -> Self
+pub fn CryptosignrsapkcsView::get(Self, Int32) -> Double
+pub fn CryptosignrsapkcsView::len(Self) -> Int32
+pub fn CryptosignrsapkcsView::max(Self) -> Double
+pub fn CryptosignrsapkcsView::mean(Self) -> Double
+pub fn CryptosignrsapkcsView::min(Self) -> Double
+pub fn CryptosignrsapkcsView::scale(Self, Double) -> Self
+pub fn CryptosignrsapkcsView::set(Self, Int32, Double) -> Self
+pub fn CryptosignrsapkcsView::sum(Self) -> Double
+pub fn CryptosignrsapkcsView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_classify_qda"
+
+// Values
+pub fn ml_classify_qda_buffer_make(Int32) -> MlclassifyqdaBuffer
+
+pub fn ml_classify_qda_cluster_make(Int32) -> MlclassifyqdaCluster
+
+pub fn ml_classify_qda_cursor_make(Int32) -> MlclassifyqdaCursor
+
+pub fn ml_classify_qda_edge_make(Int32) -> MlclassifyqdaEdge
+
+pub fn ml_classify_qda_frame_make(Int32) -> MlclassifyqdaFrame
+
+pub fn ml_classify_qda_graphn_make(Int32) -> MlclassifyqdaGraphN
+
+pub fn ml_classify_qda_layer_make(Int32) -> MlclassifyqdaLayer
+
+pub fn ml_classify_qda_make_matrix(Int32, Int32, Double) -> MlclassifyqdaMatrix
+
+pub fn ml_classify_qda_make_point(Double, Double) -> MlclassifyqdaPoint
+
+pub fn ml_classify_qda_make_point3(Double, Double, Double) -> MlclassifyqdaPoint
+
+pub fn ml_classify_qda_make_series(Array[Double], String) -> MlclassifyqdaSeries
+
+pub fn ml_classify_qda_make_vector(Array[Double]) -> MlclassifyqdaVector
+
+pub fn ml_classify_qda_matrix_identity(Int32) -> MlclassifyqdaMatrix
+
+pub fn ml_classify_qda_model_make(Int32) -> MlclassifyqdaModel
+
+pub fn ml_classify_qda_node_make(Int32) -> MlclassifyqdaNode
+
+pub fn ml_classify_qda_path_make(Int32) -> MlclassifyqdaPath
+
+pub fn ml_classify_qda_range_make(Int32) -> MlclassifyqdaRange
+
+pub fn ml_classify_qda_slice_make(Int32) -> MlclassifyqdaSlice
+
+pub fn ml_classify_qda_table_make(Int32) -> MlclassifyqdaTable
+
+pub fn ml_classify_qda_vector_zero(Int32) -> MlclassifyqdaVector
+
+pub fn ml_classify_qda_view_make(Int32) -> MlclassifyqdaView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlclassifyqdaBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyqdaBuffer::add(Self, Self) -> Self
+pub fn MlclassifyqdaBuffer::copy(Self) -> Self
+pub fn MlclassifyqdaBuffer::fill(Self, Double) -> Self
+pub fn MlclassifyqdaBuffer::get(Self, Int32) -> Double
+pub fn MlclassifyqdaBuffer::len(Self) -> Int32
+pub fn MlclassifyqdaBuffer::max(Self) -> Double
+pub fn MlclassifyqdaBuffer::mean(Self) -> Double
+pub fn MlclassifyqdaBuffer::min(Self) -> Double
+pub fn MlclassifyqdaBuffer::scale(Self, Double) -> Self
+pub fn MlclassifyqdaBuffer::set(Self, Int32, Double) -> Self
+pub fn MlclassifyqdaBuffer::sum(Self) -> Double
+pub fn MlclassifyqdaBuffer::to_string(Self) -> String
+
+pub(all) struct MlclassifyqdaCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyqdaCluster::add(Self, Self) -> Self
+pub fn MlclassifyqdaCluster::copy(Self) -> Self
+pub fn MlclassifyqdaCluster::fill(Self, Double) -> Self
+pub fn MlclassifyqdaCluster::get(Self, Int32) -> Double
+pub fn MlclassifyqdaCluster::len(Self) -> Int32
+pub fn MlclassifyqdaCluster::max(Self) -> Double
+pub fn MlclassifyqdaCluster::mean(Self) -> Double
+pub fn MlclassifyqdaCluster::min(Self) -> Double
+pub fn MlclassifyqdaCluster::scale(Self, Double) -> Self
+pub fn MlclassifyqdaCluster::set(Self, Int32, Double) -> Self
+pub fn MlclassifyqdaCluster::sum(Self) -> Double
+pub fn MlclassifyqdaCluster::to_string(Self) -> String
+
+pub(all) struct MlclassifyqdaCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyqdaCursor::add(Self, Self) -> Self
+pub fn MlclassifyqdaCursor::copy(Self) -> Self
+pub fn MlclassifyqdaCursor::fill(Self, Double) -> Self
+pub fn MlclassifyqdaCursor::get(Self, Int32) -> Double
+pub fn MlclassifyqdaCursor::len(Self) -> Int32
+pub fn MlclassifyqdaCursor::max(Self) -> Double
+pub fn MlclassifyqdaCursor::mean(Self) -> Double
+pub fn MlclassifyqdaCursor::min(Self) -> Double
+pub fn MlclassifyqdaCursor::scale(Self, Double) -> Self
+pub fn MlclassifyqdaCursor::set(Self, Int32, Double) -> Self
+pub fn MlclassifyqdaCursor::sum(Self) -> Double
+pub fn MlclassifyqdaCursor::to_string(Self) -> String
+
+pub(all) struct MlclassifyqdaEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyqdaEdge::add(Self, Self) -> Self
+pub fn MlclassifyqdaEdge::copy(Self) -> Self
+pub fn MlclassifyqdaEdge::fill(Self, Double) -> Self
+pub fn MlclassifyqdaEdge::get(Self, Int32) -> Double
+pub fn MlclassifyqdaEdge::len(Self) -> Int32
+pub fn MlclassifyqdaEdge::max(Self) -> Double
+pub fn MlclassifyqdaEdge::mean(Self) -> Double
+pub fn MlclassifyqdaEdge::min(Self) -> Double
+pub fn MlclassifyqdaEdge::scale(Self, Double) -> Self
+pub fn MlclassifyqdaEdge::set(Self, Int32, Double) -> Self
+pub fn MlclassifyqdaEdge::sum(Self) -> Double
+pub fn MlclassifyqdaEdge::to_string(Self) -> String
+
+pub(all) struct MlclassifyqdaFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyqdaFrame::add(Self, Self) -> Self
+pub fn MlclassifyqdaFrame::copy(Self) -> Self
+pub fn MlclassifyqdaFrame::fill(Self, Double) -> Self
+pub fn MlclassifyqdaFrame::get(Self, Int32) -> Double
+pub fn MlclassifyqdaFrame::len(Self) -> Int32
+pub fn MlclassifyqdaFrame::max(Self) -> Double
+pub fn MlclassifyqdaFrame::mean(Self) -> Double
+pub fn MlclassifyqdaFrame::min(Self) -> Double
+pub fn MlclassifyqdaFrame::scale(Self, Double) -> Self
+pub fn MlclassifyqdaFrame::set(Self, Int32, Double) -> Self
+pub fn MlclassifyqdaFrame::sum(Self) -> Double
+pub fn MlclassifyqdaFrame::to_string(Self) -> String
+
+pub(all) struct MlclassifyqdaGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyqdaGraphN::add(Self, Self) -> Self
+pub fn MlclassifyqdaGraphN::copy(Self) -> Self
+pub fn MlclassifyqdaGraphN::fill(Self, Double) -> Self
+pub fn MlclassifyqdaGraphN::get(Self, Int32) -> Double
+pub fn MlclassifyqdaGraphN::len(Self) -> Int32
+pub fn MlclassifyqdaGraphN::max(Self) -> Double
+pub fn MlclassifyqdaGraphN::mean(Self) -> Double
+pub fn MlclassifyqdaGraphN::min(Self) -> Double
+pub fn MlclassifyqdaGraphN::scale(Self, Double) -> Self
+pub fn MlclassifyqdaGraphN::set(Self, Int32, Double) -> Self
+pub fn MlclassifyqdaGraphN::sum(Self) -> Double
+pub fn MlclassifyqdaGraphN::to_string(Self) -> String
+
+pub(all) struct MlclassifyqdaLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyqdaLayer::add(Self, Self) -> Self
+pub fn MlclassifyqdaLayer::copy(Self) -> Self
+pub fn MlclassifyqdaLayer::fill(Self, Double) -> Self
+pub fn MlclassifyqdaLayer::get(Self, Int32) -> Double
+pub fn MlclassifyqdaLayer::len(Self) -> Int32
+pub fn MlclassifyqdaLayer::max(Self) -> Double
+pub fn MlclassifyqdaLayer::mean(Self) -> Double
+pub fn MlclassifyqdaLayer::min(Self) -> Double
+pub fn MlclassifyqdaLayer::scale(Self, Double) -> Self
+pub fn MlclassifyqdaLayer::set(Self, Int32, Double) -> Self
+pub fn MlclassifyqdaLayer::sum(Self) -> Double
+pub fn MlclassifyqdaLayer::to_string(Self) -> String
+
+pub(all) struct MlclassifyqdaMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlclassifyqdaMatrix::add(Self, Self) -> Self
+pub fn MlclassifyqdaMatrix::det(Self) -> Double
+pub fn MlclassifyqdaMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlclassifyqdaMatrix::multiply(Self, Self) -> Self
+pub fn MlclassifyqdaMatrix::norm(Self) -> Double
+pub fn MlclassifyqdaMatrix::scale(Self, Double) -> Self
+pub fn MlclassifyqdaMatrix::to_string(Self) -> String
+pub fn MlclassifyqdaMatrix::trace(Self) -> Double
+pub fn MlclassifyqdaMatrix::transpose(Self) -> Self
+
+pub(all) struct MlclassifyqdaModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyqdaModel::add(Self, Self) -> Self
+pub fn MlclassifyqdaModel::copy(Self) -> Self
+pub fn MlclassifyqdaModel::fill(Self, Double) -> Self
+pub fn MlclassifyqdaModel::get(Self, Int32) -> Double
+pub fn MlclassifyqdaModel::len(Self) -> Int32
+pub fn MlclassifyqdaModel::max(Self) -> Double
+pub fn MlclassifyqdaModel::mean(Self) -> Double
+pub fn MlclassifyqdaModel::min(Self) -> Double
+pub fn MlclassifyqdaModel::scale(Self, Double) -> Self
+pub fn MlclassifyqdaModel::set(Self, Int32, Double) -> Self
+pub fn MlclassifyqdaModel::sum(Self) -> Double
+pub fn MlclassifyqdaModel::to_string(Self) -> String
+
+pub(all) struct MlclassifyqdaNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyqdaNode::add(Self, Self) -> Self
+pub fn MlclassifyqdaNode::copy(Self) -> Self
+pub fn MlclassifyqdaNode::fill(Self, Double) -> Self
+pub fn MlclassifyqdaNode::get(Self, Int32) -> Double
+pub fn MlclassifyqdaNode::len(Self) -> Int32
+pub fn MlclassifyqdaNode::max(Self) -> Double
+pub fn MlclassifyqdaNode::mean(Self) -> Double
+pub fn MlclassifyqdaNode::min(Self) -> Double
+pub fn MlclassifyqdaNode::scale(Self, Double) -> Self
+pub fn MlclassifyqdaNode::set(Self, Int32, Double) -> Self
+pub fn MlclassifyqdaNode::sum(Self) -> Double
+pub fn MlclassifyqdaNode::to_string(Self) -> String
+
+pub(all) struct MlclassifyqdaPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyqdaPath::add(Self, Self) -> Self
+pub fn MlclassifyqdaPath::copy(Self) -> Self
+pub fn MlclassifyqdaPath::fill(Self, Double) -> Self
+pub fn MlclassifyqdaPath::get(Self, Int32) -> Double
+pub fn MlclassifyqdaPath::len(Self) -> Int32
+pub fn MlclassifyqdaPath::max(Self) -> Double
+pub fn MlclassifyqdaPath::mean(Self) -> Double
+pub fn MlclassifyqdaPath::min(Self) -> Double
+pub fn MlclassifyqdaPath::scale(Self, Double) -> Self
+pub fn MlclassifyqdaPath::set(Self, Int32, Double) -> Self
+pub fn MlclassifyqdaPath::sum(Self) -> Double
+pub fn MlclassifyqdaPath::to_string(Self) -> String
+
+pub(all) struct MlclassifyqdaPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlclassifyqdaPoint::add(Self, Self) -> Self
+pub fn MlclassifyqdaPoint::cross(Self, Self) -> Self
+pub fn MlclassifyqdaPoint::dist(Self, Self) -> Double
+pub fn MlclassifyqdaPoint::dot(Self, Self) -> Double
+pub fn MlclassifyqdaPoint::label(Self) -> Int32
+pub fn MlclassifyqdaPoint::lerp(Self, Self, Double) -> Self
+pub fn MlclassifyqdaPoint::mid(Self, Self) -> Self
+pub fn MlclassifyqdaPoint::negate(Self) -> Self
+pub fn MlclassifyqdaPoint::norm(Self) -> Double
+pub fn MlclassifyqdaPoint::normalize(Self) -> Self
+pub fn MlclassifyqdaPoint::scale(Self, Double) -> Self
+pub fn MlclassifyqdaPoint::sub(Self, Self) -> Self
+pub fn MlclassifyqdaPoint::to_string(Self) -> String
+pub fn MlclassifyqdaPoint::x(Self) -> Double
+pub fn MlclassifyqdaPoint::y(Self) -> Double
+pub fn MlclassifyqdaPoint::z(Self) -> Double
+
+pub(all) struct MlclassifyqdaRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyqdaRange::add(Self, Self) -> Self
+pub fn MlclassifyqdaRange::copy(Self) -> Self
+pub fn MlclassifyqdaRange::fill(Self, Double) -> Self
+pub fn MlclassifyqdaRange::get(Self, Int32) -> Double
+pub fn MlclassifyqdaRange::len(Self) -> Int32
+pub fn MlclassifyqdaRange::max(Self) -> Double
+pub fn MlclassifyqdaRange::mean(Self) -> Double
+pub fn MlclassifyqdaRange::min(Self) -> Double
+pub fn MlclassifyqdaRange::scale(Self, Double) -> Self
+pub fn MlclassifyqdaRange::set(Self, Int32, Double) -> Self
+pub fn MlclassifyqdaRange::sum(Self) -> Double
+pub fn MlclassifyqdaRange::to_string(Self) -> String
+
+pub(all) struct MlclassifyqdaSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlclassifyqdaSeries::add(Self, Self) -> Self
+pub fn MlclassifyqdaSeries::cumsum(Self) -> Self
+pub fn MlclassifyqdaSeries::len(Self) -> Int32
+pub fn MlclassifyqdaSeries::max(Self) -> Double
+pub fn MlclassifyqdaSeries::mean(Self) -> Double
+pub fn MlclassifyqdaSeries::median(Self) -> Double
+pub fn MlclassifyqdaSeries::min(Self) -> Double
+pub fn MlclassifyqdaSeries::normalize(Self) -> Self
+pub fn MlclassifyqdaSeries::range(Self) -> Double
+pub fn MlclassifyqdaSeries::scale(Self, Double) -> Self
+pub fn MlclassifyqdaSeries::std(Self) -> Double
+pub fn MlclassifyqdaSeries::sub(Self, Self) -> Self
+pub fn MlclassifyqdaSeries::sum(Self) -> Double
+pub fn MlclassifyqdaSeries::to_string(Self) -> String
+pub fn MlclassifyqdaSeries::variance(Self) -> Double
+
+pub(all) struct MlclassifyqdaSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyqdaSlice::add(Self, Self) -> Self
+pub fn MlclassifyqdaSlice::copy(Self) -> Self
+pub fn MlclassifyqdaSlice::fill(Self, Double) -> Self
+pub fn MlclassifyqdaSlice::get(Self, Int32) -> Double
+pub fn MlclassifyqdaSlice::len(Self) -> Int32
+pub fn MlclassifyqdaSlice::max(Self) -> Double
+pub fn MlclassifyqdaSlice::mean(Self) -> Double
+pub fn MlclassifyqdaSlice::min(Self) -> Double
+pub fn MlclassifyqdaSlice::scale(Self, Double) -> Self
+pub fn MlclassifyqdaSlice::set(Self, Int32, Double) -> Self
+pub fn MlclassifyqdaSlice::sum(Self) -> Double
+pub fn MlclassifyqdaSlice::to_string(Self) -> String
+
+pub(all) struct MlclassifyqdaTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyqdaTable::add(Self, Self) -> Self
+pub fn MlclassifyqdaTable::copy(Self) -> Self
+pub fn MlclassifyqdaTable::fill(Self, Double) -> Self
+pub fn MlclassifyqdaTable::get(Self, Int32) -> Double
+pub fn MlclassifyqdaTable::len(Self) -> Int32
+pub fn MlclassifyqdaTable::max(Self) -> Double
+pub fn MlclassifyqdaTable::mean(Self) -> Double
+pub fn MlclassifyqdaTable::min(Self) -> Double
+pub fn MlclassifyqdaTable::scale(Self, Double) -> Self
+pub fn MlclassifyqdaTable::set(Self, Int32, Double) -> Self
+pub fn MlclassifyqdaTable::sum(Self) -> Double
+pub fn MlclassifyqdaTable::to_string(Self) -> String
+
+pub(all) struct MlclassifyqdaVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlclassifyqdaVector::add(Self, Self) -> Self
+pub fn MlclassifyqdaVector::dist(Self, Self) -> Double
+pub fn MlclassifyqdaVector::dot(Self, Self) -> Double
+pub fn MlclassifyqdaVector::norm(Self) -> Double
+pub fn MlclassifyqdaVector::normalize(Self) -> Self
+pub fn MlclassifyqdaVector::scale(Self, Double) -> Self
+pub fn MlclassifyqdaVector::sub(Self, Self) -> Self
+pub fn MlclassifyqdaVector::to_string(Self) -> String
+
+pub(all) struct MlclassifyqdaView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyqdaView::add(Self, Self) -> Self
+pub fn MlclassifyqdaView::copy(Self) -> Self
+pub fn MlclassifyqdaView::fill(Self, Double) -> Self
+pub fn MlclassifyqdaView::get(Self, Int32) -> Double
+pub fn MlclassifyqdaView::len(Self) -> Int32
+pub fn MlclassifyqdaView::max(Self) -> Double
+pub fn MlclassifyqdaView::mean(Self) -> Double
+pub fn MlclassifyqdaView::min(Self) -> Double
+pub fn MlclassifyqdaView::scale(Self, Double) -> Self
+pub fn MlclassifyqdaView::set(Self, Int32, Double) -> Self
+pub fn MlclassifyqdaView::sum(Self) -> Double
+pub fn MlclassifyqdaView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

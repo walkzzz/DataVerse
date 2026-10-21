@@ -1,0 +1,135 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/time_series_adv"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn make_ts_data(Array[Double], Array[Int32], Int32) -> TsData
+
+pub fn time_series_adv_id() -> String
+
+pub fn ts_acf(Array[Double], Int32) -> Array[Double]
+
+pub fn ts_adf_test(Array[Double]) -> Double
+
+pub fn ts_anomaly_score(Array[Double], Int32) -> Array[Double]
+
+pub fn ts_ar_model(Array[Double], Array[Double], Int32) -> Array[Double]
+
+pub fn ts_arch_model(Array[Double], Double, Double, Int32) -> Array[Double]
+
+pub fn ts_arima_model(Array[Double], Int32, Array[Double], Array[Double], Int32) -> Array[Double]
+
+pub fn ts_arma_model(Array[Double], Array[Double], Array[Double], Int32) -> Array[Double]
+
+pub fn ts_backtest_expanding(Array[Double], Int32, Int32, (Array[Double], Int32) -> Array[Double]) -> Array[Double]
+
+pub fn ts_backtest_rolling(Array[Double], Int32, Int32, (Array[Double], Int32) -> Array[Double]) -> Array[Double]
+
+pub fn ts_bandpass_filter(Array[Double], Double, Double) -> Array[Double]
+
+pub fn ts_ccf(Array[Double], Array[Double], Int32) -> Array[Double]
+
+pub fn ts_change_point(Array[Double], Double) -> Array[Int32]
+
+pub fn ts_cointegration(Array[Double], Array[Double]) -> Double
+
+pub fn ts_cross_validate_ts(Array[Double], Int32, (Array[Double], Int32) -> Array[Double]) -> Array[Double]
+
+pub fn ts_decompose_stl(Array[Double], Int32) -> (Array[Double], Array[Double], Array[Double])
+
+pub fn ts_deseasonalize(Array[Double], Int32) -> Array[Double]
+
+pub fn ts_detrend(Array[Double]) -> Array[Double]
+
+pub fn ts_distance_dtw(Array[Double], Array[Double]) -> Double
+
+pub fn ts_distance_euclidean(Array[Double], Array[Double]) -> Double
+
+pub fn ts_extrapolate(Array[Double], Int32) -> Double
+
+pub fn ts_feature_extract(Array[Double]) -> Array[Double]
+
+pub fn ts_feature_matrix(Array[Array[Double]]) -> Array[Array[Double]]
+
+pub fn ts_fft_filter(Array[Double], Double) -> Array[Double]
+
+pub fn ts_forecast_combination(Array[Array[Double]], Array[Double]) -> Array[Double]
+
+pub fn ts_forecast_ensemble(Array[Array[Double]]) -> Array[Double]
+
+pub fn ts_garch_model(Array[Double], Double, Double, Double, Int32) -> Array[Double]
+
+pub fn ts_granger_causality(Array[Double], Array[Double], Int32) -> Double
+
+pub fn ts_grid_search_ts(Array[Double], Array[Double], (Array[Double], Double) -> Double) -> (Double, Double)
+
+pub fn ts_interpolate(Array[Double], Int32) -> Double
+
+pub fn ts_kalman_filter(StateSpace, Double) -> StateSpace
+
+pub fn ts_kalman_smooth(StateSpace, Array[Double]) -> Array[Double]
+
+pub fn ts_kpss_test(Array[Double]) -> Double
+
+pub fn ts_lowpass_filter_ts(Array[Double], Double) -> Array[Double]
+
+pub fn ts_ma_model(Array[Double], Array[Double], Int32) -> Array[Double]
+
+pub fn ts_mcmc_sampling(Array[Double], Int32, Double) -> Array[Double]
+
+pub fn ts_outlier_detect(Array[Double], Double) -> Array[Int32]
+
+pub fn ts_pacf(Array[Double], Int32) -> Array[Double]
+
+pub fn ts_particle_filter(Array[Double], Int32) -> Array[Double]
+
+pub fn ts_pp_test(Array[Double]) -> Double
+
+pub fn ts_regime_detect(Array[Double], Int32) -> Array[Int32]
+
+pub fn ts_resample(TsData, Int32) -> TsData
+
+pub fn ts_segment(Array[Double], Array[Int32]) -> Array[Array[Double]]
+
+pub fn ts_similarity(Array[Double], Array[Double]) -> Double
+
+pub fn ts_state_space(Array[Array[Double]], Array[Array[Double]], Array[Double]) -> StateSpace
+
+pub fn ts_var_model(Array[Array[Double]], Array[Array[Double]], Int32) -> Array[Array[Double]]
+
+pub fn ts_vecm_model(Array[Array[Double]], Array[Double], Int32) -> Array[Array[Double]]
+
+pub fn ts_volatility(Array[Double], Int32) -> Array[Double]
+
+pub fn ts_wavelet_decompose(Array[Double]) -> (Array[Double], Array[Double])
+
+pub fn ts_wavelet_reconstruct(Array[Double], Array[Double]) -> Array[Double]
+
+// Errors
+
+// Types and methods
+pub struct StateSpace {
+  transition : Array[Array[Double]]
+  observation : Array[Array[Double]]
+  state : Array[Double]
+  covariance : Array[Array[Double]]
+} derive(Eq, @debug.Debug)
+pub fn StateSpace::equal(Self, Self) -> Bool
+pub fn StateSpace::not_equal(Self, Self) -> Bool
+pub fn StateSpace::to_repr(Self) -> @debug.Repr
+
+pub struct TsData {
+  values : Array[Double]
+  timestamps : Array[Int32]
+  freq : Int32
+} derive(Eq, @debug.Debug)
+pub fn TsData::equal(Self, Self) -> Bool
+pub fn TsData::not_equal(Self, Self) -> Bool
+pub fn TsData::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

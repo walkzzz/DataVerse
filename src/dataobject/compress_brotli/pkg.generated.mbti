@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/compress_brotli"
+
+// Values
+pub fn compress_brotli_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn compress_brotli_corr(Array[Double], Array[Double]) -> Double
+
+pub fn compress_brotli_cov(Array[Double], Array[Double]) -> Double
+
+pub fn compress_brotli_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn compress_brotli_mae(Array[Double], Array[Double]) -> Double
+
+pub fn compress_brotli_make_labeled_point(Double, Double, Int32) -> Compress_brotliPoint
+
+pub fn compress_brotli_make_matrix(Int32, Int32, Double) -> Compress_brotliMatrix
+
+pub fn compress_brotli_make_point(Double, Double) -> Compress_brotliPoint
+
+pub fn compress_brotli_make_series(Array[Double], String) -> Compress_brotliSeries
+
+pub fn compress_brotli_make_vector(Array[Double]) -> Compress_brotliVector
+
+pub fn compress_brotli_matrix_add(Compress_brotliMatrix, Compress_brotliMatrix) -> Compress_brotliMatrix
+
+pub fn compress_brotli_matrix_get(Compress_brotliMatrix, Int32, Int32) -> Double
+
+pub fn compress_brotli_matrix_identity(Int32) -> Compress_brotliMatrix
+
+pub fn compress_brotli_matrix_multiply(Compress_brotliMatrix, Compress_brotliMatrix) -> Compress_brotliMatrix
+
+pub fn compress_brotli_matrix_norm(Compress_brotliMatrix) -> Double
+
+pub fn compress_brotli_matrix_scale(Compress_brotliMatrix, Double) -> Compress_brotliMatrix
+
+pub fn compress_brotli_matrix_to_string(Compress_brotliMatrix) -> String
+
+pub fn compress_brotli_matrix_trace(Compress_brotliMatrix) -> Double
+
+pub fn compress_brotli_matrix_transpose(Compress_brotliMatrix) -> Compress_brotliMatrix
+
+pub fn compress_brotli_mse(Array[Double], Array[Double]) -> Double
+
+pub fn compress_brotli_point_add(Compress_brotliPoint, Compress_brotliPoint) -> Compress_brotliPoint
+
+pub fn compress_brotli_point_dist(Compress_brotliPoint, Compress_brotliPoint) -> Double
+
+pub fn compress_brotli_point_dot(Compress_brotliPoint, Compress_brotliPoint) -> Double
+
+pub fn compress_brotli_point_label(Compress_brotliPoint) -> Int32
+
+pub fn compress_brotli_point_norm(Compress_brotliPoint) -> Double
+
+pub fn compress_brotli_point_scale(Compress_brotliPoint, Double) -> Compress_brotliPoint
+
+pub fn compress_brotli_point_sub(Compress_brotliPoint, Compress_brotliPoint) -> Compress_brotliPoint
+
+pub fn compress_brotli_point_to_string(Compress_brotliPoint) -> String
+
+pub fn compress_brotli_point_x(Compress_brotliPoint) -> Double
+
+pub fn compress_brotli_point_y(Compress_brotliPoint) -> Double
+
+pub fn compress_brotli_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn compress_brotli_r2(Array[Double], Array[Double]) -> Double
+
+pub fn compress_brotli_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn compress_brotli_series_add(Compress_brotliSeries, Compress_brotliSeries) -> Compress_brotliSeries
+
+pub fn compress_brotli_series_len(Compress_brotliSeries) -> Int32
+
+pub fn compress_brotli_series_max(Compress_brotliSeries) -> Double
+
+pub fn compress_brotli_series_mean(Compress_brotliSeries) -> Double
+
+pub fn compress_brotli_series_min(Compress_brotliSeries) -> Double
+
+pub fn compress_brotli_series_scale(Compress_brotliSeries, Double) -> Compress_brotliSeries
+
+pub fn compress_brotli_series_std(Compress_brotliSeries) -> Double
+
+pub fn compress_brotli_series_sum(Compress_brotliSeries) -> Double
+
+pub fn compress_brotli_series_to_string(Compress_brotliSeries) -> String
+
+pub fn compress_brotli_series_var(Compress_brotliSeries) -> Double
+
+pub fn compress_brotli_std(Array[Double]) -> Double
+
+pub fn compress_brotli_var(Array[Double]) -> Double
+
+pub fn compress_brotli_vector_add(Compress_brotliVector, Compress_brotliVector) -> Compress_brotliVector
+
+pub fn compress_brotli_vector_dist(Compress_brotliVector, Compress_brotliVector) -> Double
+
+pub fn compress_brotli_vector_dot(Compress_brotliVector, Compress_brotliVector) -> Double
+
+pub fn compress_brotli_vector_norm(Compress_brotliVector) -> Double
+
+pub fn compress_brotli_vector_normalize(Compress_brotliVector) -> Compress_brotliVector
+
+pub fn compress_brotli_vector_scale(Compress_brotliVector, Double) -> Compress_brotliVector
+
+pub fn compress_brotli_vector_sub(Compress_brotliVector, Compress_brotliVector) -> Compress_brotliVector
+
+pub fn compress_brotli_vector_to_string(Compress_brotliVector) -> String
+
+pub fn compress_brotli_vector_zero(Int32) -> Compress_brotliVector
+
+// Errors
+
+// Types and methods
+pub struct Compress_brotliMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Compress_brotliPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Compress_brotliSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Compress_brotliVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

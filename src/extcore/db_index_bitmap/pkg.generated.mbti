@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_index_bitmap"
+
+// Values
+pub fn db_index_bitmap_buffer_make(Int32) -> DbindexbitmapBuffer
+
+pub fn db_index_bitmap_cluster_make(Int32) -> DbindexbitmapCluster
+
+pub fn db_index_bitmap_cursor_make(Int32) -> DbindexbitmapCursor
+
+pub fn db_index_bitmap_edge_make(Int32) -> DbindexbitmapEdge
+
+pub fn db_index_bitmap_frame_make(Int32) -> DbindexbitmapFrame
+
+pub fn db_index_bitmap_graphn_make(Int32) -> DbindexbitmapGraphN
+
+pub fn db_index_bitmap_layer_make(Int32) -> DbindexbitmapLayer
+
+pub fn db_index_bitmap_make_matrix(Int32, Int32, Double) -> DbindexbitmapMatrix
+
+pub fn db_index_bitmap_make_point(Double, Double) -> DbindexbitmapPoint
+
+pub fn db_index_bitmap_make_point3(Double, Double, Double) -> DbindexbitmapPoint
+
+pub fn db_index_bitmap_make_series(Array[Double], String) -> DbindexbitmapSeries
+
+pub fn db_index_bitmap_make_vector(Array[Double]) -> DbindexbitmapVector
+
+pub fn db_index_bitmap_matrix_identity(Int32) -> DbindexbitmapMatrix
+
+pub fn db_index_bitmap_model_make(Int32) -> DbindexbitmapModel
+
+pub fn db_index_bitmap_node_make(Int32) -> DbindexbitmapNode
+
+pub fn db_index_bitmap_path_make(Int32) -> DbindexbitmapPath
+
+pub fn db_index_bitmap_range_make(Int32) -> DbindexbitmapRange
+
+pub fn db_index_bitmap_slice_make(Int32) -> DbindexbitmapSlice
+
+pub fn db_index_bitmap_table_make(Int32) -> DbindexbitmapTable
+
+pub fn db_index_bitmap_vector_zero(Int32) -> DbindexbitmapVector
+
+pub fn db_index_bitmap_view_make(Int32) -> DbindexbitmapView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbindexbitmapBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbitmapBuffer::add(Self, Self) -> Self
+pub fn DbindexbitmapBuffer::copy(Self) -> Self
+pub fn DbindexbitmapBuffer::fill(Self, Double) -> Self
+pub fn DbindexbitmapBuffer::get(Self, Int32) -> Double
+pub fn DbindexbitmapBuffer::len(Self) -> Int32
+pub fn DbindexbitmapBuffer::max(Self) -> Double
+pub fn DbindexbitmapBuffer::mean(Self) -> Double
+pub fn DbindexbitmapBuffer::min(Self) -> Double
+pub fn DbindexbitmapBuffer::scale(Self, Double) -> Self
+pub fn DbindexbitmapBuffer::set(Self, Int32, Double) -> Self
+pub fn DbindexbitmapBuffer::sum(Self) -> Double
+pub fn DbindexbitmapBuffer::to_string(Self) -> String
+
+pub(all) struct DbindexbitmapCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbitmapCluster::add(Self, Self) -> Self
+pub fn DbindexbitmapCluster::copy(Self) -> Self
+pub fn DbindexbitmapCluster::fill(Self, Double) -> Self
+pub fn DbindexbitmapCluster::get(Self, Int32) -> Double
+pub fn DbindexbitmapCluster::len(Self) -> Int32
+pub fn DbindexbitmapCluster::max(Self) -> Double
+pub fn DbindexbitmapCluster::mean(Self) -> Double
+pub fn DbindexbitmapCluster::min(Self) -> Double
+pub fn DbindexbitmapCluster::scale(Self, Double) -> Self
+pub fn DbindexbitmapCluster::set(Self, Int32, Double) -> Self
+pub fn DbindexbitmapCluster::sum(Self) -> Double
+pub fn DbindexbitmapCluster::to_string(Self) -> String
+
+pub(all) struct DbindexbitmapCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbitmapCursor::add(Self, Self) -> Self
+pub fn DbindexbitmapCursor::copy(Self) -> Self
+pub fn DbindexbitmapCursor::fill(Self, Double) -> Self
+pub fn DbindexbitmapCursor::get(Self, Int32) -> Double
+pub fn DbindexbitmapCursor::len(Self) -> Int32
+pub fn DbindexbitmapCursor::max(Self) -> Double
+pub fn DbindexbitmapCursor::mean(Self) -> Double
+pub fn DbindexbitmapCursor::min(Self) -> Double
+pub fn DbindexbitmapCursor::scale(Self, Double) -> Self
+pub fn DbindexbitmapCursor::set(Self, Int32, Double) -> Self
+pub fn DbindexbitmapCursor::sum(Self) -> Double
+pub fn DbindexbitmapCursor::to_string(Self) -> String
+
+pub(all) struct DbindexbitmapEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbitmapEdge::add(Self, Self) -> Self
+pub fn DbindexbitmapEdge::copy(Self) -> Self
+pub fn DbindexbitmapEdge::fill(Self, Double) -> Self
+pub fn DbindexbitmapEdge::get(Self, Int32) -> Double
+pub fn DbindexbitmapEdge::len(Self) -> Int32
+pub fn DbindexbitmapEdge::max(Self) -> Double
+pub fn DbindexbitmapEdge::mean(Self) -> Double
+pub fn DbindexbitmapEdge::min(Self) -> Double
+pub fn DbindexbitmapEdge::scale(Self, Double) -> Self
+pub fn DbindexbitmapEdge::set(Self, Int32, Double) -> Self
+pub fn DbindexbitmapEdge::sum(Self) -> Double
+pub fn DbindexbitmapEdge::to_string(Self) -> String
+
+pub(all) struct DbindexbitmapFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbitmapFrame::add(Self, Self) -> Self
+pub fn DbindexbitmapFrame::copy(Self) -> Self
+pub fn DbindexbitmapFrame::fill(Self, Double) -> Self
+pub fn DbindexbitmapFrame::get(Self, Int32) -> Double
+pub fn DbindexbitmapFrame::len(Self) -> Int32
+pub fn DbindexbitmapFrame::max(Self) -> Double
+pub fn DbindexbitmapFrame::mean(Self) -> Double
+pub fn DbindexbitmapFrame::min(Self) -> Double
+pub fn DbindexbitmapFrame::scale(Self, Double) -> Self
+pub fn DbindexbitmapFrame::set(Self, Int32, Double) -> Self
+pub fn DbindexbitmapFrame::sum(Self) -> Double
+pub fn DbindexbitmapFrame::to_string(Self) -> String
+
+pub(all) struct DbindexbitmapGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbitmapGraphN::add(Self, Self) -> Self
+pub fn DbindexbitmapGraphN::copy(Self) -> Self
+pub fn DbindexbitmapGraphN::fill(Self, Double) -> Self
+pub fn DbindexbitmapGraphN::get(Self, Int32) -> Double
+pub fn DbindexbitmapGraphN::len(Self) -> Int32
+pub fn DbindexbitmapGraphN::max(Self) -> Double
+pub fn DbindexbitmapGraphN::mean(Self) -> Double
+pub fn DbindexbitmapGraphN::min(Self) -> Double
+pub fn DbindexbitmapGraphN::scale(Self, Double) -> Self
+pub fn DbindexbitmapGraphN::set(Self, Int32, Double) -> Self
+pub fn DbindexbitmapGraphN::sum(Self) -> Double
+pub fn DbindexbitmapGraphN::to_string(Self) -> String
+
+pub(all) struct DbindexbitmapLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbitmapLayer::add(Self, Self) -> Self
+pub fn DbindexbitmapLayer::copy(Self) -> Self
+pub fn DbindexbitmapLayer::fill(Self, Double) -> Self
+pub fn DbindexbitmapLayer::get(Self, Int32) -> Double
+pub fn DbindexbitmapLayer::len(Self) -> Int32
+pub fn DbindexbitmapLayer::max(Self) -> Double
+pub fn DbindexbitmapLayer::mean(Self) -> Double
+pub fn DbindexbitmapLayer::min(Self) -> Double
+pub fn DbindexbitmapLayer::scale(Self, Double) -> Self
+pub fn DbindexbitmapLayer::set(Self, Int32, Double) -> Self
+pub fn DbindexbitmapLayer::sum(Self) -> Double
+pub fn DbindexbitmapLayer::to_string(Self) -> String
+
+pub(all) struct DbindexbitmapMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbindexbitmapMatrix::add(Self, Self) -> Self
+pub fn DbindexbitmapMatrix::det(Self) -> Double
+pub fn DbindexbitmapMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbindexbitmapMatrix::multiply(Self, Self) -> Self
+pub fn DbindexbitmapMatrix::norm(Self) -> Double
+pub fn DbindexbitmapMatrix::scale(Self, Double) -> Self
+pub fn DbindexbitmapMatrix::to_string(Self) -> String
+pub fn DbindexbitmapMatrix::trace(Self) -> Double
+pub fn DbindexbitmapMatrix::transpose(Self) -> Self
+
+pub(all) struct DbindexbitmapModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbitmapModel::add(Self, Self) -> Self
+pub fn DbindexbitmapModel::copy(Self) -> Self
+pub fn DbindexbitmapModel::fill(Self, Double) -> Self
+pub fn DbindexbitmapModel::get(Self, Int32) -> Double
+pub fn DbindexbitmapModel::len(Self) -> Int32
+pub fn DbindexbitmapModel::max(Self) -> Double
+pub fn DbindexbitmapModel::mean(Self) -> Double
+pub fn DbindexbitmapModel::min(Self) -> Double
+pub fn DbindexbitmapModel::scale(Self, Double) -> Self
+pub fn DbindexbitmapModel::set(Self, Int32, Double) -> Self
+pub fn DbindexbitmapModel::sum(Self) -> Double
+pub fn DbindexbitmapModel::to_string(Self) -> String
+
+pub(all) struct DbindexbitmapNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbitmapNode::add(Self, Self) -> Self
+pub fn DbindexbitmapNode::copy(Self) -> Self
+pub fn DbindexbitmapNode::fill(Self, Double) -> Self
+pub fn DbindexbitmapNode::get(Self, Int32) -> Double
+pub fn DbindexbitmapNode::len(Self) -> Int32
+pub fn DbindexbitmapNode::max(Self) -> Double
+pub fn DbindexbitmapNode::mean(Self) -> Double
+pub fn DbindexbitmapNode::min(Self) -> Double
+pub fn DbindexbitmapNode::scale(Self, Double) -> Self
+pub fn DbindexbitmapNode::set(Self, Int32, Double) -> Self
+pub fn DbindexbitmapNode::sum(Self) -> Double
+pub fn DbindexbitmapNode::to_string(Self) -> String
+
+pub(all) struct DbindexbitmapPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbitmapPath::add(Self, Self) -> Self
+pub fn DbindexbitmapPath::copy(Self) -> Self
+pub fn DbindexbitmapPath::fill(Self, Double) -> Self
+pub fn DbindexbitmapPath::get(Self, Int32) -> Double
+pub fn DbindexbitmapPath::len(Self) -> Int32
+pub fn DbindexbitmapPath::max(Self) -> Double
+pub fn DbindexbitmapPath::mean(Self) -> Double
+pub fn DbindexbitmapPath::min(Self) -> Double
+pub fn DbindexbitmapPath::scale(Self, Double) -> Self
+pub fn DbindexbitmapPath::set(Self, Int32, Double) -> Self
+pub fn DbindexbitmapPath::sum(Self) -> Double
+pub fn DbindexbitmapPath::to_string(Self) -> String
+
+pub(all) struct DbindexbitmapPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbindexbitmapPoint::add(Self, Self) -> Self
+pub fn DbindexbitmapPoint::cross(Self, Self) -> Self
+pub fn DbindexbitmapPoint::dist(Self, Self) -> Double
+pub fn DbindexbitmapPoint::dot(Self, Self) -> Double
+pub fn DbindexbitmapPoint::label(Self) -> Int32
+pub fn DbindexbitmapPoint::lerp(Self, Self, Double) -> Self
+pub fn DbindexbitmapPoint::mid(Self, Self) -> Self
+pub fn DbindexbitmapPoint::negate(Self) -> Self
+pub fn DbindexbitmapPoint::norm(Self) -> Double
+pub fn DbindexbitmapPoint::normalize(Self) -> Self
+pub fn DbindexbitmapPoint::scale(Self, Double) -> Self
+pub fn DbindexbitmapPoint::sub(Self, Self) -> Self
+pub fn DbindexbitmapPoint::to_string(Self) -> String
+pub fn DbindexbitmapPoint::x(Self) -> Double
+pub fn DbindexbitmapPoint::y(Self) -> Double
+pub fn DbindexbitmapPoint::z(Self) -> Double
+
+pub(all) struct DbindexbitmapRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbitmapRange::add(Self, Self) -> Self
+pub fn DbindexbitmapRange::copy(Self) -> Self
+pub fn DbindexbitmapRange::fill(Self, Double) -> Self
+pub fn DbindexbitmapRange::get(Self, Int32) -> Double
+pub fn DbindexbitmapRange::len(Self) -> Int32
+pub fn DbindexbitmapRange::max(Self) -> Double
+pub fn DbindexbitmapRange::mean(Self) -> Double
+pub fn DbindexbitmapRange::min(Self) -> Double
+pub fn DbindexbitmapRange::scale(Self, Double) -> Self
+pub fn DbindexbitmapRange::set(Self, Int32, Double) -> Self
+pub fn DbindexbitmapRange::sum(Self) -> Double
+pub fn DbindexbitmapRange::to_string(Self) -> String
+
+pub(all) struct DbindexbitmapSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbindexbitmapSeries::add(Self, Self) -> Self
+pub fn DbindexbitmapSeries::cumsum(Self) -> Self
+pub fn DbindexbitmapSeries::len(Self) -> Int32
+pub fn DbindexbitmapSeries::max(Self) -> Double
+pub fn DbindexbitmapSeries::mean(Self) -> Double
+pub fn DbindexbitmapSeries::median(Self) -> Double
+pub fn DbindexbitmapSeries::min(Self) -> Double
+pub fn DbindexbitmapSeries::normalize(Self) -> Self
+pub fn DbindexbitmapSeries::range(Self) -> Double
+pub fn DbindexbitmapSeries::scale(Self, Double) -> Self
+pub fn DbindexbitmapSeries::std(Self) -> Double
+pub fn DbindexbitmapSeries::sub(Self, Self) -> Self
+pub fn DbindexbitmapSeries::sum(Self) -> Double
+pub fn DbindexbitmapSeries::to_string(Self) -> String
+pub fn DbindexbitmapSeries::variance(Self) -> Double
+
+pub(all) struct DbindexbitmapSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbitmapSlice::add(Self, Self) -> Self
+pub fn DbindexbitmapSlice::copy(Self) -> Self
+pub fn DbindexbitmapSlice::fill(Self, Double) -> Self
+pub fn DbindexbitmapSlice::get(Self, Int32) -> Double
+pub fn DbindexbitmapSlice::len(Self) -> Int32
+pub fn DbindexbitmapSlice::max(Self) -> Double
+pub fn DbindexbitmapSlice::mean(Self) -> Double
+pub fn DbindexbitmapSlice::min(Self) -> Double
+pub fn DbindexbitmapSlice::scale(Self, Double) -> Self
+pub fn DbindexbitmapSlice::set(Self, Int32, Double) -> Self
+pub fn DbindexbitmapSlice::sum(Self) -> Double
+pub fn DbindexbitmapSlice::to_string(Self) -> String
+
+pub(all) struct DbindexbitmapTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbitmapTable::add(Self, Self) -> Self
+pub fn DbindexbitmapTable::copy(Self) -> Self
+pub fn DbindexbitmapTable::fill(Self, Double) -> Self
+pub fn DbindexbitmapTable::get(Self, Int32) -> Double
+pub fn DbindexbitmapTable::len(Self) -> Int32
+pub fn DbindexbitmapTable::max(Self) -> Double
+pub fn DbindexbitmapTable::mean(Self) -> Double
+pub fn DbindexbitmapTable::min(Self) -> Double
+pub fn DbindexbitmapTable::scale(Self, Double) -> Self
+pub fn DbindexbitmapTable::set(Self, Int32, Double) -> Self
+pub fn DbindexbitmapTable::sum(Self) -> Double
+pub fn DbindexbitmapTable::to_string(Self) -> String
+
+pub(all) struct DbindexbitmapVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbindexbitmapVector::add(Self, Self) -> Self
+pub fn DbindexbitmapVector::dist(Self, Self) -> Double
+pub fn DbindexbitmapVector::dot(Self, Self) -> Double
+pub fn DbindexbitmapVector::norm(Self) -> Double
+pub fn DbindexbitmapVector::normalize(Self) -> Self
+pub fn DbindexbitmapVector::scale(Self, Double) -> Self
+pub fn DbindexbitmapVector::sub(Self, Self) -> Self
+pub fn DbindexbitmapVector::to_string(Self) -> String
+
+pub(all) struct DbindexbitmapView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbitmapView::add(Self, Self) -> Self
+pub fn DbindexbitmapView::copy(Self) -> Self
+pub fn DbindexbitmapView::fill(Self, Double) -> Self
+pub fn DbindexbitmapView::get(Self, Int32) -> Double
+pub fn DbindexbitmapView::len(Self) -> Int32
+pub fn DbindexbitmapView::max(Self) -> Double
+pub fn DbindexbitmapView::mean(Self) -> Double
+pub fn DbindexbitmapView::min(Self) -> Double
+pub fn DbindexbitmapView::scale(Self, Double) -> Self
+pub fn DbindexbitmapView::set(Self, Int32, Double) -> Self
+pub fn DbindexbitmapView::sum(Self) -> Double
+pub fn DbindexbitmapView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

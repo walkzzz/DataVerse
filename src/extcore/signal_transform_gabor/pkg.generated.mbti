@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_transform_gabor"
+
+// Values
+pub fn signal_transform_gabor_buffer_make(Int32) -> SignaltransformgaborBuffer
+
+pub fn signal_transform_gabor_cluster_make(Int32) -> SignaltransformgaborCluster
+
+pub fn signal_transform_gabor_cursor_make(Int32) -> SignaltransformgaborCursor
+
+pub fn signal_transform_gabor_edge_make(Int32) -> SignaltransformgaborEdge
+
+pub fn signal_transform_gabor_frame_make(Int32) -> SignaltransformgaborFrame
+
+pub fn signal_transform_gabor_graphn_make(Int32) -> SignaltransformgaborGraphN
+
+pub fn signal_transform_gabor_layer_make(Int32) -> SignaltransformgaborLayer
+
+pub fn signal_transform_gabor_make_matrix(Int32, Int32, Double) -> SignaltransformgaborMatrix
+
+pub fn signal_transform_gabor_make_point(Double, Double) -> SignaltransformgaborPoint
+
+pub fn signal_transform_gabor_make_point3(Double, Double, Double) -> SignaltransformgaborPoint
+
+pub fn signal_transform_gabor_make_series(Array[Double], String) -> SignaltransformgaborSeries
+
+pub fn signal_transform_gabor_make_vector(Array[Double]) -> SignaltransformgaborVector
+
+pub fn signal_transform_gabor_matrix_identity(Int32) -> SignaltransformgaborMatrix
+
+pub fn signal_transform_gabor_model_make(Int32) -> SignaltransformgaborModel
+
+pub fn signal_transform_gabor_node_make(Int32) -> SignaltransformgaborNode
+
+pub fn signal_transform_gabor_path_make(Int32) -> SignaltransformgaborPath
+
+pub fn signal_transform_gabor_range_make(Int32) -> SignaltransformgaborRange
+
+pub fn signal_transform_gabor_slice_make(Int32) -> SignaltransformgaborSlice
+
+pub fn signal_transform_gabor_table_make(Int32) -> SignaltransformgaborTable
+
+pub fn signal_transform_gabor_vector_zero(Int32) -> SignaltransformgaborVector
+
+pub fn signal_transform_gabor_view_make(Int32) -> SignaltransformgaborView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignaltransformgaborBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformgaborBuffer::add(Self, Self) -> Self
+pub fn SignaltransformgaborBuffer::copy(Self) -> Self
+pub fn SignaltransformgaborBuffer::fill(Self, Double) -> Self
+pub fn SignaltransformgaborBuffer::get(Self, Int32) -> Double
+pub fn SignaltransformgaborBuffer::len(Self) -> Int32
+pub fn SignaltransformgaborBuffer::max(Self) -> Double
+pub fn SignaltransformgaborBuffer::mean(Self) -> Double
+pub fn SignaltransformgaborBuffer::min(Self) -> Double
+pub fn SignaltransformgaborBuffer::scale(Self, Double) -> Self
+pub fn SignaltransformgaborBuffer::set(Self, Int32, Double) -> Self
+pub fn SignaltransformgaborBuffer::sum(Self) -> Double
+pub fn SignaltransformgaborBuffer::to_string(Self) -> String
+
+pub(all) struct SignaltransformgaborCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformgaborCluster::add(Self, Self) -> Self
+pub fn SignaltransformgaborCluster::copy(Self) -> Self
+pub fn SignaltransformgaborCluster::fill(Self, Double) -> Self
+pub fn SignaltransformgaborCluster::get(Self, Int32) -> Double
+pub fn SignaltransformgaborCluster::len(Self) -> Int32
+pub fn SignaltransformgaborCluster::max(Self) -> Double
+pub fn SignaltransformgaborCluster::mean(Self) -> Double
+pub fn SignaltransformgaborCluster::min(Self) -> Double
+pub fn SignaltransformgaborCluster::scale(Self, Double) -> Self
+pub fn SignaltransformgaborCluster::set(Self, Int32, Double) -> Self
+pub fn SignaltransformgaborCluster::sum(Self) -> Double
+pub fn SignaltransformgaborCluster::to_string(Self) -> String
+
+pub(all) struct SignaltransformgaborCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformgaborCursor::add(Self, Self) -> Self
+pub fn SignaltransformgaborCursor::copy(Self) -> Self
+pub fn SignaltransformgaborCursor::fill(Self, Double) -> Self
+pub fn SignaltransformgaborCursor::get(Self, Int32) -> Double
+pub fn SignaltransformgaborCursor::len(Self) -> Int32
+pub fn SignaltransformgaborCursor::max(Self) -> Double
+pub fn SignaltransformgaborCursor::mean(Self) -> Double
+pub fn SignaltransformgaborCursor::min(Self) -> Double
+pub fn SignaltransformgaborCursor::scale(Self, Double) -> Self
+pub fn SignaltransformgaborCursor::set(Self, Int32, Double) -> Self
+pub fn SignaltransformgaborCursor::sum(Self) -> Double
+pub fn SignaltransformgaborCursor::to_string(Self) -> String
+
+pub(all) struct SignaltransformgaborEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformgaborEdge::add(Self, Self) -> Self
+pub fn SignaltransformgaborEdge::copy(Self) -> Self
+pub fn SignaltransformgaborEdge::fill(Self, Double) -> Self
+pub fn SignaltransformgaborEdge::get(Self, Int32) -> Double
+pub fn SignaltransformgaborEdge::len(Self) -> Int32
+pub fn SignaltransformgaborEdge::max(Self) -> Double
+pub fn SignaltransformgaborEdge::mean(Self) -> Double
+pub fn SignaltransformgaborEdge::min(Self) -> Double
+pub fn SignaltransformgaborEdge::scale(Self, Double) -> Self
+pub fn SignaltransformgaborEdge::set(Self, Int32, Double) -> Self
+pub fn SignaltransformgaborEdge::sum(Self) -> Double
+pub fn SignaltransformgaborEdge::to_string(Self) -> String
+
+pub(all) struct SignaltransformgaborFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformgaborFrame::add(Self, Self) -> Self
+pub fn SignaltransformgaborFrame::copy(Self) -> Self
+pub fn SignaltransformgaborFrame::fill(Self, Double) -> Self
+pub fn SignaltransformgaborFrame::get(Self, Int32) -> Double
+pub fn SignaltransformgaborFrame::len(Self) -> Int32
+pub fn SignaltransformgaborFrame::max(Self) -> Double
+pub fn SignaltransformgaborFrame::mean(Self) -> Double
+pub fn SignaltransformgaborFrame::min(Self) -> Double
+pub fn SignaltransformgaborFrame::scale(Self, Double) -> Self
+pub fn SignaltransformgaborFrame::set(Self, Int32, Double) -> Self
+pub fn SignaltransformgaborFrame::sum(Self) -> Double
+pub fn SignaltransformgaborFrame::to_string(Self) -> String
+
+pub(all) struct SignaltransformgaborGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformgaborGraphN::add(Self, Self) -> Self
+pub fn SignaltransformgaborGraphN::copy(Self) -> Self
+pub fn SignaltransformgaborGraphN::fill(Self, Double) -> Self
+pub fn SignaltransformgaborGraphN::get(Self, Int32) -> Double
+pub fn SignaltransformgaborGraphN::len(Self) -> Int32
+pub fn SignaltransformgaborGraphN::max(Self) -> Double
+pub fn SignaltransformgaborGraphN::mean(Self) -> Double
+pub fn SignaltransformgaborGraphN::min(Self) -> Double
+pub fn SignaltransformgaborGraphN::scale(Self, Double) -> Self
+pub fn SignaltransformgaborGraphN::set(Self, Int32, Double) -> Self
+pub fn SignaltransformgaborGraphN::sum(Self) -> Double
+pub fn SignaltransformgaborGraphN::to_string(Self) -> String
+
+pub(all) struct SignaltransformgaborLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformgaborLayer::add(Self, Self) -> Self
+pub fn SignaltransformgaborLayer::copy(Self) -> Self
+pub fn SignaltransformgaborLayer::fill(Self, Double) -> Self
+pub fn SignaltransformgaborLayer::get(Self, Int32) -> Double
+pub fn SignaltransformgaborLayer::len(Self) -> Int32
+pub fn SignaltransformgaborLayer::max(Self) -> Double
+pub fn SignaltransformgaborLayer::mean(Self) -> Double
+pub fn SignaltransformgaborLayer::min(Self) -> Double
+pub fn SignaltransformgaborLayer::scale(Self, Double) -> Self
+pub fn SignaltransformgaborLayer::set(Self, Int32, Double) -> Self
+pub fn SignaltransformgaborLayer::sum(Self) -> Double
+pub fn SignaltransformgaborLayer::to_string(Self) -> String
+
+pub(all) struct SignaltransformgaborMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignaltransformgaborMatrix::add(Self, Self) -> Self
+pub fn SignaltransformgaborMatrix::det(Self) -> Double
+pub fn SignaltransformgaborMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignaltransformgaborMatrix::multiply(Self, Self) -> Self
+pub fn SignaltransformgaborMatrix::norm(Self) -> Double
+pub fn SignaltransformgaborMatrix::scale(Self, Double) -> Self
+pub fn SignaltransformgaborMatrix::to_string(Self) -> String
+pub fn SignaltransformgaborMatrix::trace(Self) -> Double
+pub fn SignaltransformgaborMatrix::transpose(Self) -> Self
+
+pub(all) struct SignaltransformgaborModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformgaborModel::add(Self, Self) -> Self
+pub fn SignaltransformgaborModel::copy(Self) -> Self
+pub fn SignaltransformgaborModel::fill(Self, Double) -> Self
+pub fn SignaltransformgaborModel::get(Self, Int32) -> Double
+pub fn SignaltransformgaborModel::len(Self) -> Int32
+pub fn SignaltransformgaborModel::max(Self) -> Double
+pub fn SignaltransformgaborModel::mean(Self) -> Double
+pub fn SignaltransformgaborModel::min(Self) -> Double
+pub fn SignaltransformgaborModel::scale(Self, Double) -> Self
+pub fn SignaltransformgaborModel::set(Self, Int32, Double) -> Self
+pub fn SignaltransformgaborModel::sum(Self) -> Double
+pub fn SignaltransformgaborModel::to_string(Self) -> String
+
+pub(all) struct SignaltransformgaborNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformgaborNode::add(Self, Self) -> Self
+pub fn SignaltransformgaborNode::copy(Self) -> Self
+pub fn SignaltransformgaborNode::fill(Self, Double) -> Self
+pub fn SignaltransformgaborNode::get(Self, Int32) -> Double
+pub fn SignaltransformgaborNode::len(Self) -> Int32
+pub fn SignaltransformgaborNode::max(Self) -> Double
+pub fn SignaltransformgaborNode::mean(Self) -> Double
+pub fn SignaltransformgaborNode::min(Self) -> Double
+pub fn SignaltransformgaborNode::scale(Self, Double) -> Self
+pub fn SignaltransformgaborNode::set(Self, Int32, Double) -> Self
+pub fn SignaltransformgaborNode::sum(Self) -> Double
+pub fn SignaltransformgaborNode::to_string(Self) -> String
+
+pub(all) struct SignaltransformgaborPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformgaborPath::add(Self, Self) -> Self
+pub fn SignaltransformgaborPath::copy(Self) -> Self
+pub fn SignaltransformgaborPath::fill(Self, Double) -> Self
+pub fn SignaltransformgaborPath::get(Self, Int32) -> Double
+pub fn SignaltransformgaborPath::len(Self) -> Int32
+pub fn SignaltransformgaborPath::max(Self) -> Double
+pub fn SignaltransformgaborPath::mean(Self) -> Double
+pub fn SignaltransformgaborPath::min(Self) -> Double
+pub fn SignaltransformgaborPath::scale(Self, Double) -> Self
+pub fn SignaltransformgaborPath::set(Self, Int32, Double) -> Self
+pub fn SignaltransformgaborPath::sum(Self) -> Double
+pub fn SignaltransformgaborPath::to_string(Self) -> String
+
+pub(all) struct SignaltransformgaborPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignaltransformgaborPoint::add(Self, Self) -> Self
+pub fn SignaltransformgaborPoint::cross(Self, Self) -> Self
+pub fn SignaltransformgaborPoint::dist(Self, Self) -> Double
+pub fn SignaltransformgaborPoint::dot(Self, Self) -> Double
+pub fn SignaltransformgaborPoint::label(Self) -> Int32
+pub fn SignaltransformgaborPoint::lerp(Self, Self, Double) -> Self
+pub fn SignaltransformgaborPoint::mid(Self, Self) -> Self
+pub fn SignaltransformgaborPoint::negate(Self) -> Self
+pub fn SignaltransformgaborPoint::norm(Self) -> Double
+pub fn SignaltransformgaborPoint::normalize(Self) -> Self
+pub fn SignaltransformgaborPoint::scale(Self, Double) -> Self
+pub fn SignaltransformgaborPoint::sub(Self, Self) -> Self
+pub fn SignaltransformgaborPoint::to_string(Self) -> String
+pub fn SignaltransformgaborPoint::x(Self) -> Double
+pub fn SignaltransformgaborPoint::y(Self) -> Double
+pub fn SignaltransformgaborPoint::z(Self) -> Double
+
+pub(all) struct SignaltransformgaborRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformgaborRange::add(Self, Self) -> Self
+pub fn SignaltransformgaborRange::copy(Self) -> Self
+pub fn SignaltransformgaborRange::fill(Self, Double) -> Self
+pub fn SignaltransformgaborRange::get(Self, Int32) -> Double
+pub fn SignaltransformgaborRange::len(Self) -> Int32
+pub fn SignaltransformgaborRange::max(Self) -> Double
+pub fn SignaltransformgaborRange::mean(Self) -> Double
+pub fn SignaltransformgaborRange::min(Self) -> Double
+pub fn SignaltransformgaborRange::scale(Self, Double) -> Self
+pub fn SignaltransformgaborRange::set(Self, Int32, Double) -> Self
+pub fn SignaltransformgaborRange::sum(Self) -> Double
+pub fn SignaltransformgaborRange::to_string(Self) -> String
+
+pub(all) struct SignaltransformgaborSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignaltransformgaborSeries::add(Self, Self) -> Self
+pub fn SignaltransformgaborSeries::cumsum(Self) -> Self
+pub fn SignaltransformgaborSeries::len(Self) -> Int32
+pub fn SignaltransformgaborSeries::max(Self) -> Double
+pub fn SignaltransformgaborSeries::mean(Self) -> Double
+pub fn SignaltransformgaborSeries::median(Self) -> Double
+pub fn SignaltransformgaborSeries::min(Self) -> Double
+pub fn SignaltransformgaborSeries::normalize(Self) -> Self
+pub fn SignaltransformgaborSeries::range(Self) -> Double
+pub fn SignaltransformgaborSeries::scale(Self, Double) -> Self
+pub fn SignaltransformgaborSeries::std(Self) -> Double
+pub fn SignaltransformgaborSeries::sub(Self, Self) -> Self
+pub fn SignaltransformgaborSeries::sum(Self) -> Double
+pub fn SignaltransformgaborSeries::to_string(Self) -> String
+pub fn SignaltransformgaborSeries::variance(Self) -> Double
+
+pub(all) struct SignaltransformgaborSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformgaborSlice::add(Self, Self) -> Self
+pub fn SignaltransformgaborSlice::copy(Self) -> Self
+pub fn SignaltransformgaborSlice::fill(Self, Double) -> Self
+pub fn SignaltransformgaborSlice::get(Self, Int32) -> Double
+pub fn SignaltransformgaborSlice::len(Self) -> Int32
+pub fn SignaltransformgaborSlice::max(Self) -> Double
+pub fn SignaltransformgaborSlice::mean(Self) -> Double
+pub fn SignaltransformgaborSlice::min(Self) -> Double
+pub fn SignaltransformgaborSlice::scale(Self, Double) -> Self
+pub fn SignaltransformgaborSlice::set(Self, Int32, Double) -> Self
+pub fn SignaltransformgaborSlice::sum(Self) -> Double
+pub fn SignaltransformgaborSlice::to_string(Self) -> String
+
+pub(all) struct SignaltransformgaborTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformgaborTable::add(Self, Self) -> Self
+pub fn SignaltransformgaborTable::copy(Self) -> Self
+pub fn SignaltransformgaborTable::fill(Self, Double) -> Self
+pub fn SignaltransformgaborTable::get(Self, Int32) -> Double
+pub fn SignaltransformgaborTable::len(Self) -> Int32
+pub fn SignaltransformgaborTable::max(Self) -> Double
+pub fn SignaltransformgaborTable::mean(Self) -> Double
+pub fn SignaltransformgaborTable::min(Self) -> Double
+pub fn SignaltransformgaborTable::scale(Self, Double) -> Self
+pub fn SignaltransformgaborTable::set(Self, Int32, Double) -> Self
+pub fn SignaltransformgaborTable::sum(Self) -> Double
+pub fn SignaltransformgaborTable::to_string(Self) -> String
+
+pub(all) struct SignaltransformgaborVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignaltransformgaborVector::add(Self, Self) -> Self
+pub fn SignaltransformgaborVector::dist(Self, Self) -> Double
+pub fn SignaltransformgaborVector::dot(Self, Self) -> Double
+pub fn SignaltransformgaborVector::norm(Self) -> Double
+pub fn SignaltransformgaborVector::normalize(Self) -> Self
+pub fn SignaltransformgaborVector::scale(Self, Double) -> Self
+pub fn SignaltransformgaborVector::sub(Self, Self) -> Self
+pub fn SignaltransformgaborVector::to_string(Self) -> String
+
+pub(all) struct SignaltransformgaborView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformgaborView::add(Self, Self) -> Self
+pub fn SignaltransformgaborView::copy(Self) -> Self
+pub fn SignaltransformgaborView::fill(Self, Double) -> Self
+pub fn SignaltransformgaborView::get(Self, Int32) -> Double
+pub fn SignaltransformgaborView::len(Self) -> Int32
+pub fn SignaltransformgaborView::max(Self) -> Double
+pub fn SignaltransformgaborView::mean(Self) -> Double
+pub fn SignaltransformgaborView::min(Self) -> Double
+pub fn SignaltransformgaborView::scale(Self, Double) -> Self
+pub fn SignaltransformgaborView::set(Self, Int32, Double) -> Self
+pub fn SignaltransformgaborView::sum(Self) -> Double
+pub fn SignaltransformgaborView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,133 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/neighborhood"
+
+import {
+  "dataverse/opcore/hydrology",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn block_count(@hydrology.RasterGrid, Int32, Int32, Int32) -> Int32
+
+pub fn block_majority(@hydrology.RasterGrid, Int32, Int32, Int32) -> Double
+
+pub fn block_max(@hydrology.RasterGrid, Int32, Int32, Int32) -> Double
+
+pub fn block_mean(@hydrology.RasterGrid, Int32, Int32, Int32) -> Double
+
+pub fn block_median(@hydrology.RasterGrid, Int32, Int32, Int32) -> Double
+
+pub fn block_min(@hydrology.RasterGrid, Int32, Int32, Int32) -> Double
+
+pub fn block_minority(@hydrology.RasterGrid, Int32, Int32, Int32) -> Double
+
+pub fn block_range(@hydrology.RasterGrid, Int32, Int32, Int32) -> Double
+
+pub fn block_results_grid(@hydrology.RasterGrid, Int32, BlockStat) -> Array[Array[BlockResult]]
+
+pub fn block_stat_name(BlockStat) -> String
+
+pub fn block_statistics(@hydrology.RasterGrid, Int32, Int32, Int32, BlockStat) -> Double
+
+pub fn block_statistics_grid(@hydrology.RasterGrid, Int32, BlockStat) -> @hydrology.RasterGrid
+
+pub fn block_std(@hydrology.RasterGrid, Int32, Int32, Int32) -> Double
+
+pub fn block_sum(@hydrology.RasterGrid, Int32, Int32, Int32) -> Double
+
+pub fn line_count(@hydrology.RasterGrid, Int32) -> Int32
+
+pub fn line_max(@hydrology.RasterGrid, Int32) -> Double
+
+pub fn line_mean(@hydrology.RasterGrid, Int32) -> Double
+
+pub fn line_min(@hydrology.RasterGrid, Int32) -> Double
+
+pub fn line_range(@hydrology.RasterGrid, Int32) -> Double
+
+pub fn line_stat_name(LineStat) -> String
+
+pub fn line_statistics(@hydrology.RasterGrid, Int32, LineStat) -> Double
+
+pub fn line_statistics_col(@hydrology.RasterGrid, Int32, LineStat) -> Double
+
+pub fn line_std(@hydrology.RasterGrid, Int32) -> Double
+
+pub fn line_sum(@hydrology.RasterGrid, Int32) -> Double
+
+pub fn make_block_result(Double, Int32, Int32) -> BlockResult
+
+pub fn make_neighborhood_config(NeighborhoodKind, Int32, Int32) -> NeighborhoodConfig
+
+pub fn neighborhood_cell_count(NeighborhoodConfig) -> Int32
+
+pub fn neighborhood_cells(NeighborhoodConfig) -> Array[(Int32, Int32)]
+
+pub fn neighborhood_expand(@hydrology.RasterGrid, Int32, Int32, NeighborhoodConfig) -> Array[Double]
+
+pub fn neighborhood_kind_name(NeighborhoodKind) -> String
+
+// Errors
+
+// Types and methods
+pub struct BlockResult {
+  value : Double
+  block_row : Int32
+  block_col : Int32
+} derive(Eq, @debug.Debug)
+pub fn BlockResult::equal(Self, Self) -> Bool
+pub fn BlockResult::not_equal(Self, Self) -> Bool
+pub fn BlockResult::to_repr(Self) -> @debug.Repr
+
+pub(all) enum BlockStat {
+  BlockMean
+  BlockSum
+  BlockMin
+  BlockMax
+  BlockRange
+  BlockStd
+  BlockCount
+  BlockMajority
+  BlockMinority
+  BlockMedian
+} derive(Eq, @debug.Debug)
+pub fn BlockStat::equal(Self, Self) -> Bool
+pub fn BlockStat::not_equal(Self, Self) -> Bool
+pub fn BlockStat::to_repr(Self) -> @debug.Repr
+
+pub(all) enum LineStat {
+  LineMean
+  LineSum
+  LineMin
+  LineMax
+  LineCount
+  LineRange
+  LineStd
+} derive(Eq, @debug.Debug)
+pub fn LineStat::equal(Self, Self) -> Bool
+pub fn LineStat::not_equal(Self, Self) -> Bool
+pub fn LineStat::to_repr(Self) -> @debug.Repr
+
+pub struct NeighborhoodConfig {
+  kind : NeighborhoodKind
+  radius1 : Int32
+  radius2 : Int32
+} derive(Eq, @debug.Debug)
+pub fn NeighborhoodConfig::equal(Self, Self) -> Bool
+pub fn NeighborhoodConfig::not_equal(Self, Self) -> Bool
+pub fn NeighborhoodConfig::to_repr(Self) -> @debug.Repr
+
+pub(all) enum NeighborhoodKind {
+  NHRectangle
+  NHCircle
+  NHAnnulus
+  NHWedge
+  NHRing
+} derive(Eq, @debug.Debug)
+pub fn NeighborhoodKind::equal(Self, Self) -> Bool
+pub fn NeighborhoodKind::not_equal(Self, Self) -> Bool
+pub fn NeighborhoodKind::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

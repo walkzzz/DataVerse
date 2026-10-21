@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_store_time"
+
+// Values
+pub fn db_store_time_buffer_make(Int32) -> DbstoretimeBuffer
+
+pub fn db_store_time_cluster_make(Int32) -> DbstoretimeCluster
+
+pub fn db_store_time_cursor_make(Int32) -> DbstoretimeCursor
+
+pub fn db_store_time_edge_make(Int32) -> DbstoretimeEdge
+
+pub fn db_store_time_frame_make(Int32) -> DbstoretimeFrame
+
+pub fn db_store_time_graphn_make(Int32) -> DbstoretimeGraphN
+
+pub fn db_store_time_layer_make(Int32) -> DbstoretimeLayer
+
+pub fn db_store_time_make_matrix(Int32, Int32, Double) -> DbstoretimeMatrix
+
+pub fn db_store_time_make_point(Double, Double) -> DbstoretimePoint
+
+pub fn db_store_time_make_point3(Double, Double, Double) -> DbstoretimePoint
+
+pub fn db_store_time_make_series(Array[Double], String) -> DbstoretimeSeries
+
+pub fn db_store_time_make_vector(Array[Double]) -> DbstoretimeVector
+
+pub fn db_store_time_matrix_identity(Int32) -> DbstoretimeMatrix
+
+pub fn db_store_time_model_make(Int32) -> DbstoretimeModel
+
+pub fn db_store_time_node_make(Int32) -> DbstoretimeNode
+
+pub fn db_store_time_path_make(Int32) -> DbstoretimePath
+
+pub fn db_store_time_range_make(Int32) -> DbstoretimeRange
+
+pub fn db_store_time_slice_make(Int32) -> DbstoretimeSlice
+
+pub fn db_store_time_table_make(Int32) -> DbstoretimeTable
+
+pub fn db_store_time_vector_zero(Int32) -> DbstoretimeVector
+
+pub fn db_store_time_view_make(Int32) -> DbstoretimeView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbstoretimeBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretimeBuffer::add(Self, Self) -> Self
+pub fn DbstoretimeBuffer::copy(Self) -> Self
+pub fn DbstoretimeBuffer::fill(Self, Double) -> Self
+pub fn DbstoretimeBuffer::get(Self, Int32) -> Double
+pub fn DbstoretimeBuffer::len(Self) -> Int32
+pub fn DbstoretimeBuffer::max(Self) -> Double
+pub fn DbstoretimeBuffer::mean(Self) -> Double
+pub fn DbstoretimeBuffer::min(Self) -> Double
+pub fn DbstoretimeBuffer::scale(Self, Double) -> Self
+pub fn DbstoretimeBuffer::set(Self, Int32, Double) -> Self
+pub fn DbstoretimeBuffer::sum(Self) -> Double
+pub fn DbstoretimeBuffer::to_string(Self) -> String
+
+pub(all) struct DbstoretimeCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretimeCluster::add(Self, Self) -> Self
+pub fn DbstoretimeCluster::copy(Self) -> Self
+pub fn DbstoretimeCluster::fill(Self, Double) -> Self
+pub fn DbstoretimeCluster::get(Self, Int32) -> Double
+pub fn DbstoretimeCluster::len(Self) -> Int32
+pub fn DbstoretimeCluster::max(Self) -> Double
+pub fn DbstoretimeCluster::mean(Self) -> Double
+pub fn DbstoretimeCluster::min(Self) -> Double
+pub fn DbstoretimeCluster::scale(Self, Double) -> Self
+pub fn DbstoretimeCluster::set(Self, Int32, Double) -> Self
+pub fn DbstoretimeCluster::sum(Self) -> Double
+pub fn DbstoretimeCluster::to_string(Self) -> String
+
+pub(all) struct DbstoretimeCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretimeCursor::add(Self, Self) -> Self
+pub fn DbstoretimeCursor::copy(Self) -> Self
+pub fn DbstoretimeCursor::fill(Self, Double) -> Self
+pub fn DbstoretimeCursor::get(Self, Int32) -> Double
+pub fn DbstoretimeCursor::len(Self) -> Int32
+pub fn DbstoretimeCursor::max(Self) -> Double
+pub fn DbstoretimeCursor::mean(Self) -> Double
+pub fn DbstoretimeCursor::min(Self) -> Double
+pub fn DbstoretimeCursor::scale(Self, Double) -> Self
+pub fn DbstoretimeCursor::set(Self, Int32, Double) -> Self
+pub fn DbstoretimeCursor::sum(Self) -> Double
+pub fn DbstoretimeCursor::to_string(Self) -> String
+
+pub(all) struct DbstoretimeEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretimeEdge::add(Self, Self) -> Self
+pub fn DbstoretimeEdge::copy(Self) -> Self
+pub fn DbstoretimeEdge::fill(Self, Double) -> Self
+pub fn DbstoretimeEdge::get(Self, Int32) -> Double
+pub fn DbstoretimeEdge::len(Self) -> Int32
+pub fn DbstoretimeEdge::max(Self) -> Double
+pub fn DbstoretimeEdge::mean(Self) -> Double
+pub fn DbstoretimeEdge::min(Self) -> Double
+pub fn DbstoretimeEdge::scale(Self, Double) -> Self
+pub fn DbstoretimeEdge::set(Self, Int32, Double) -> Self
+pub fn DbstoretimeEdge::sum(Self) -> Double
+pub fn DbstoretimeEdge::to_string(Self) -> String
+
+pub(all) struct DbstoretimeFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretimeFrame::add(Self, Self) -> Self
+pub fn DbstoretimeFrame::copy(Self) -> Self
+pub fn DbstoretimeFrame::fill(Self, Double) -> Self
+pub fn DbstoretimeFrame::get(Self, Int32) -> Double
+pub fn DbstoretimeFrame::len(Self) -> Int32
+pub fn DbstoretimeFrame::max(Self) -> Double
+pub fn DbstoretimeFrame::mean(Self) -> Double
+pub fn DbstoretimeFrame::min(Self) -> Double
+pub fn DbstoretimeFrame::scale(Self, Double) -> Self
+pub fn DbstoretimeFrame::set(Self, Int32, Double) -> Self
+pub fn DbstoretimeFrame::sum(Self) -> Double
+pub fn DbstoretimeFrame::to_string(Self) -> String
+
+pub(all) struct DbstoretimeGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretimeGraphN::add(Self, Self) -> Self
+pub fn DbstoretimeGraphN::copy(Self) -> Self
+pub fn DbstoretimeGraphN::fill(Self, Double) -> Self
+pub fn DbstoretimeGraphN::get(Self, Int32) -> Double
+pub fn DbstoretimeGraphN::len(Self) -> Int32
+pub fn DbstoretimeGraphN::max(Self) -> Double
+pub fn DbstoretimeGraphN::mean(Self) -> Double
+pub fn DbstoretimeGraphN::min(Self) -> Double
+pub fn DbstoretimeGraphN::scale(Self, Double) -> Self
+pub fn DbstoretimeGraphN::set(Self, Int32, Double) -> Self
+pub fn DbstoretimeGraphN::sum(Self) -> Double
+pub fn DbstoretimeGraphN::to_string(Self) -> String
+
+pub(all) struct DbstoretimeLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretimeLayer::add(Self, Self) -> Self
+pub fn DbstoretimeLayer::copy(Self) -> Self
+pub fn DbstoretimeLayer::fill(Self, Double) -> Self
+pub fn DbstoretimeLayer::get(Self, Int32) -> Double
+pub fn DbstoretimeLayer::len(Self) -> Int32
+pub fn DbstoretimeLayer::max(Self) -> Double
+pub fn DbstoretimeLayer::mean(Self) -> Double
+pub fn DbstoretimeLayer::min(Self) -> Double
+pub fn DbstoretimeLayer::scale(Self, Double) -> Self
+pub fn DbstoretimeLayer::set(Self, Int32, Double) -> Self
+pub fn DbstoretimeLayer::sum(Self) -> Double
+pub fn DbstoretimeLayer::to_string(Self) -> String
+
+pub(all) struct DbstoretimeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbstoretimeMatrix::add(Self, Self) -> Self
+pub fn DbstoretimeMatrix::det(Self) -> Double
+pub fn DbstoretimeMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbstoretimeMatrix::multiply(Self, Self) -> Self
+pub fn DbstoretimeMatrix::norm(Self) -> Double
+pub fn DbstoretimeMatrix::scale(Self, Double) -> Self
+pub fn DbstoretimeMatrix::to_string(Self) -> String
+pub fn DbstoretimeMatrix::trace(Self) -> Double
+pub fn DbstoretimeMatrix::transpose(Self) -> Self
+
+pub(all) struct DbstoretimeModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretimeModel::add(Self, Self) -> Self
+pub fn DbstoretimeModel::copy(Self) -> Self
+pub fn DbstoretimeModel::fill(Self, Double) -> Self
+pub fn DbstoretimeModel::get(Self, Int32) -> Double
+pub fn DbstoretimeModel::len(Self) -> Int32
+pub fn DbstoretimeModel::max(Self) -> Double
+pub fn DbstoretimeModel::mean(Self) -> Double
+pub fn DbstoretimeModel::min(Self) -> Double
+pub fn DbstoretimeModel::scale(Self, Double) -> Self
+pub fn DbstoretimeModel::set(Self, Int32, Double) -> Self
+pub fn DbstoretimeModel::sum(Self) -> Double
+pub fn DbstoretimeModel::to_string(Self) -> String
+
+pub(all) struct DbstoretimeNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretimeNode::add(Self, Self) -> Self
+pub fn DbstoretimeNode::copy(Self) -> Self
+pub fn DbstoretimeNode::fill(Self, Double) -> Self
+pub fn DbstoretimeNode::get(Self, Int32) -> Double
+pub fn DbstoretimeNode::len(Self) -> Int32
+pub fn DbstoretimeNode::max(Self) -> Double
+pub fn DbstoretimeNode::mean(Self) -> Double
+pub fn DbstoretimeNode::min(Self) -> Double
+pub fn DbstoretimeNode::scale(Self, Double) -> Self
+pub fn DbstoretimeNode::set(Self, Int32, Double) -> Self
+pub fn DbstoretimeNode::sum(Self) -> Double
+pub fn DbstoretimeNode::to_string(Self) -> String
+
+pub(all) struct DbstoretimePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretimePath::add(Self, Self) -> Self
+pub fn DbstoretimePath::copy(Self) -> Self
+pub fn DbstoretimePath::fill(Self, Double) -> Self
+pub fn DbstoretimePath::get(Self, Int32) -> Double
+pub fn DbstoretimePath::len(Self) -> Int32
+pub fn DbstoretimePath::max(Self) -> Double
+pub fn DbstoretimePath::mean(Self) -> Double
+pub fn DbstoretimePath::min(Self) -> Double
+pub fn DbstoretimePath::scale(Self, Double) -> Self
+pub fn DbstoretimePath::set(Self, Int32, Double) -> Self
+pub fn DbstoretimePath::sum(Self) -> Double
+pub fn DbstoretimePath::to_string(Self) -> String
+
+pub(all) struct DbstoretimePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbstoretimePoint::add(Self, Self) -> Self
+pub fn DbstoretimePoint::cross(Self, Self) -> Self
+pub fn DbstoretimePoint::dist(Self, Self) -> Double
+pub fn DbstoretimePoint::dot(Self, Self) -> Double
+pub fn DbstoretimePoint::label(Self) -> Int32
+pub fn DbstoretimePoint::lerp(Self, Self, Double) -> Self
+pub fn DbstoretimePoint::mid(Self, Self) -> Self
+pub fn DbstoretimePoint::negate(Self) -> Self
+pub fn DbstoretimePoint::norm(Self) -> Double
+pub fn DbstoretimePoint::normalize(Self) -> Self
+pub fn DbstoretimePoint::scale(Self, Double) -> Self
+pub fn DbstoretimePoint::sub(Self, Self) -> Self
+pub fn DbstoretimePoint::to_string(Self) -> String
+pub fn DbstoretimePoint::x(Self) -> Double
+pub fn DbstoretimePoint::y(Self) -> Double
+pub fn DbstoretimePoint::z(Self) -> Double
+
+pub(all) struct DbstoretimeRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretimeRange::add(Self, Self) -> Self
+pub fn DbstoretimeRange::copy(Self) -> Self
+pub fn DbstoretimeRange::fill(Self, Double) -> Self
+pub fn DbstoretimeRange::get(Self, Int32) -> Double
+pub fn DbstoretimeRange::len(Self) -> Int32
+pub fn DbstoretimeRange::max(Self) -> Double
+pub fn DbstoretimeRange::mean(Self) -> Double
+pub fn DbstoretimeRange::min(Self) -> Double
+pub fn DbstoretimeRange::scale(Self, Double) -> Self
+pub fn DbstoretimeRange::set(Self, Int32, Double) -> Self
+pub fn DbstoretimeRange::sum(Self) -> Double
+pub fn DbstoretimeRange::to_string(Self) -> String
+
+pub(all) struct DbstoretimeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbstoretimeSeries::add(Self, Self) -> Self
+pub fn DbstoretimeSeries::cumsum(Self) -> Self
+pub fn DbstoretimeSeries::len(Self) -> Int32
+pub fn DbstoretimeSeries::max(Self) -> Double
+pub fn DbstoretimeSeries::mean(Self) -> Double
+pub fn DbstoretimeSeries::median(Self) -> Double
+pub fn DbstoretimeSeries::min(Self) -> Double
+pub fn DbstoretimeSeries::normalize(Self) -> Self
+pub fn DbstoretimeSeries::range(Self) -> Double
+pub fn DbstoretimeSeries::scale(Self, Double) -> Self
+pub fn DbstoretimeSeries::std(Self) -> Double
+pub fn DbstoretimeSeries::sub(Self, Self) -> Self
+pub fn DbstoretimeSeries::sum(Self) -> Double
+pub fn DbstoretimeSeries::to_string(Self) -> String
+pub fn DbstoretimeSeries::variance(Self) -> Double
+
+pub(all) struct DbstoretimeSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretimeSlice::add(Self, Self) -> Self
+pub fn DbstoretimeSlice::copy(Self) -> Self
+pub fn DbstoretimeSlice::fill(Self, Double) -> Self
+pub fn DbstoretimeSlice::get(Self, Int32) -> Double
+pub fn DbstoretimeSlice::len(Self) -> Int32
+pub fn DbstoretimeSlice::max(Self) -> Double
+pub fn DbstoretimeSlice::mean(Self) -> Double
+pub fn DbstoretimeSlice::min(Self) -> Double
+pub fn DbstoretimeSlice::scale(Self, Double) -> Self
+pub fn DbstoretimeSlice::set(Self, Int32, Double) -> Self
+pub fn DbstoretimeSlice::sum(Self) -> Double
+pub fn DbstoretimeSlice::to_string(Self) -> String
+
+pub(all) struct DbstoretimeTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretimeTable::add(Self, Self) -> Self
+pub fn DbstoretimeTable::copy(Self) -> Self
+pub fn DbstoretimeTable::fill(Self, Double) -> Self
+pub fn DbstoretimeTable::get(Self, Int32) -> Double
+pub fn DbstoretimeTable::len(Self) -> Int32
+pub fn DbstoretimeTable::max(Self) -> Double
+pub fn DbstoretimeTable::mean(Self) -> Double
+pub fn DbstoretimeTable::min(Self) -> Double
+pub fn DbstoretimeTable::scale(Self, Double) -> Self
+pub fn DbstoretimeTable::set(Self, Int32, Double) -> Self
+pub fn DbstoretimeTable::sum(Self) -> Double
+pub fn DbstoretimeTable::to_string(Self) -> String
+
+pub(all) struct DbstoretimeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbstoretimeVector::add(Self, Self) -> Self
+pub fn DbstoretimeVector::dist(Self, Self) -> Double
+pub fn DbstoretimeVector::dot(Self, Self) -> Double
+pub fn DbstoretimeVector::norm(Self) -> Double
+pub fn DbstoretimeVector::normalize(Self) -> Self
+pub fn DbstoretimeVector::scale(Self, Double) -> Self
+pub fn DbstoretimeVector::sub(Self, Self) -> Self
+pub fn DbstoretimeVector::to_string(Self) -> String
+
+pub(all) struct DbstoretimeView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretimeView::add(Self, Self) -> Self
+pub fn DbstoretimeView::copy(Self) -> Self
+pub fn DbstoretimeView::fill(Self, Double) -> Self
+pub fn DbstoretimeView::get(Self, Int32) -> Double
+pub fn DbstoretimeView::len(Self) -> Int32
+pub fn DbstoretimeView::max(Self) -> Double
+pub fn DbstoretimeView::mean(Self) -> Double
+pub fn DbstoretimeView::min(Self) -> Double
+pub fn DbstoretimeView::scale(Self, Double) -> Self
+pub fn DbstoretimeView::set(Self, Int32, Double) -> Self
+pub fn DbstoretimeView::sum(Self) -> Double
+pub fn DbstoretimeView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

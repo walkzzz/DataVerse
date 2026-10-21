@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_exponential"
+
+// Values
+pub fn timeseries_exponential_buffer_make(Int32) -> TimeseriesexponentialBuffer
+
+pub fn timeseries_exponential_cluster_make(Int32) -> TimeseriesexponentialCluster
+
+pub fn timeseries_exponential_cursor_make(Int32) -> TimeseriesexponentialCursor
+
+pub fn timeseries_exponential_edge_make(Int32) -> TimeseriesexponentialEdge
+
+pub fn timeseries_exponential_frame_make(Int32) -> TimeseriesexponentialFrame
+
+pub fn timeseries_exponential_graphn_make(Int32) -> TimeseriesexponentialGraphN
+
+pub fn timeseries_exponential_layer_make(Int32) -> TimeseriesexponentialLayer
+
+pub fn timeseries_exponential_make_matrix(Int32, Int32, Double) -> TimeseriesexponentialMatrix
+
+pub fn timeseries_exponential_make_point(Double, Double) -> TimeseriesexponentialPoint
+
+pub fn timeseries_exponential_make_point3(Double, Double, Double) -> TimeseriesexponentialPoint
+
+pub fn timeseries_exponential_make_series(Array[Double], String) -> TimeseriesexponentialSeries
+
+pub fn timeseries_exponential_make_vector(Array[Double]) -> TimeseriesexponentialVector
+
+pub fn timeseries_exponential_matrix_identity(Int32) -> TimeseriesexponentialMatrix
+
+pub fn timeseries_exponential_model_make(Int32) -> TimeseriesexponentialModel
+
+pub fn timeseries_exponential_node_make(Int32) -> TimeseriesexponentialNode
+
+pub fn timeseries_exponential_path_make(Int32) -> TimeseriesexponentialPath
+
+pub fn timeseries_exponential_range_make(Int32) -> TimeseriesexponentialRange
+
+pub fn timeseries_exponential_slice_make(Int32) -> TimeseriesexponentialSlice
+
+pub fn timeseries_exponential_table_make(Int32) -> TimeseriesexponentialTable
+
+pub fn timeseries_exponential_vector_zero(Int32) -> TimeseriesexponentialVector
+
+pub fn timeseries_exponential_view_make(Int32) -> TimeseriesexponentialView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriesexponentialBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesexponentialBuffer::add(Self, Self) -> Self
+pub fn TimeseriesexponentialBuffer::copy(Self) -> Self
+pub fn TimeseriesexponentialBuffer::fill(Self, Double) -> Self
+pub fn TimeseriesexponentialBuffer::get(Self, Int32) -> Double
+pub fn TimeseriesexponentialBuffer::len(Self) -> Int32
+pub fn TimeseriesexponentialBuffer::max(Self) -> Double
+pub fn TimeseriesexponentialBuffer::mean(Self) -> Double
+pub fn TimeseriesexponentialBuffer::min(Self) -> Double
+pub fn TimeseriesexponentialBuffer::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesexponentialBuffer::sum(Self) -> Double
+pub fn TimeseriesexponentialBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriesexponentialCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesexponentialCluster::add(Self, Self) -> Self
+pub fn TimeseriesexponentialCluster::copy(Self) -> Self
+pub fn TimeseriesexponentialCluster::fill(Self, Double) -> Self
+pub fn TimeseriesexponentialCluster::get(Self, Int32) -> Double
+pub fn TimeseriesexponentialCluster::len(Self) -> Int32
+pub fn TimeseriesexponentialCluster::max(Self) -> Double
+pub fn TimeseriesexponentialCluster::mean(Self) -> Double
+pub fn TimeseriesexponentialCluster::min(Self) -> Double
+pub fn TimeseriesexponentialCluster::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriesexponentialCluster::sum(Self) -> Double
+pub fn TimeseriesexponentialCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriesexponentialCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesexponentialCursor::add(Self, Self) -> Self
+pub fn TimeseriesexponentialCursor::copy(Self) -> Self
+pub fn TimeseriesexponentialCursor::fill(Self, Double) -> Self
+pub fn TimeseriesexponentialCursor::get(Self, Int32) -> Double
+pub fn TimeseriesexponentialCursor::len(Self) -> Int32
+pub fn TimeseriesexponentialCursor::max(Self) -> Double
+pub fn TimeseriesexponentialCursor::mean(Self) -> Double
+pub fn TimeseriesexponentialCursor::min(Self) -> Double
+pub fn TimeseriesexponentialCursor::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriesexponentialCursor::sum(Self) -> Double
+pub fn TimeseriesexponentialCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriesexponentialEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesexponentialEdge::add(Self, Self) -> Self
+pub fn TimeseriesexponentialEdge::copy(Self) -> Self
+pub fn TimeseriesexponentialEdge::fill(Self, Double) -> Self
+pub fn TimeseriesexponentialEdge::get(Self, Int32) -> Double
+pub fn TimeseriesexponentialEdge::len(Self) -> Int32
+pub fn TimeseriesexponentialEdge::max(Self) -> Double
+pub fn TimeseriesexponentialEdge::mean(Self) -> Double
+pub fn TimeseriesexponentialEdge::min(Self) -> Double
+pub fn TimeseriesexponentialEdge::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriesexponentialEdge::sum(Self) -> Double
+pub fn TimeseriesexponentialEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriesexponentialFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesexponentialFrame::add(Self, Self) -> Self
+pub fn TimeseriesexponentialFrame::copy(Self) -> Self
+pub fn TimeseriesexponentialFrame::fill(Self, Double) -> Self
+pub fn TimeseriesexponentialFrame::get(Self, Int32) -> Double
+pub fn TimeseriesexponentialFrame::len(Self) -> Int32
+pub fn TimeseriesexponentialFrame::max(Self) -> Double
+pub fn TimeseriesexponentialFrame::mean(Self) -> Double
+pub fn TimeseriesexponentialFrame::min(Self) -> Double
+pub fn TimeseriesexponentialFrame::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriesexponentialFrame::sum(Self) -> Double
+pub fn TimeseriesexponentialFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriesexponentialGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesexponentialGraphN::add(Self, Self) -> Self
+pub fn TimeseriesexponentialGraphN::copy(Self) -> Self
+pub fn TimeseriesexponentialGraphN::fill(Self, Double) -> Self
+pub fn TimeseriesexponentialGraphN::get(Self, Int32) -> Double
+pub fn TimeseriesexponentialGraphN::len(Self) -> Int32
+pub fn TimeseriesexponentialGraphN::max(Self) -> Double
+pub fn TimeseriesexponentialGraphN::mean(Self) -> Double
+pub fn TimeseriesexponentialGraphN::min(Self) -> Double
+pub fn TimeseriesexponentialGraphN::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriesexponentialGraphN::sum(Self) -> Double
+pub fn TimeseriesexponentialGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriesexponentialLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesexponentialLayer::add(Self, Self) -> Self
+pub fn TimeseriesexponentialLayer::copy(Self) -> Self
+pub fn TimeseriesexponentialLayer::fill(Self, Double) -> Self
+pub fn TimeseriesexponentialLayer::get(Self, Int32) -> Double
+pub fn TimeseriesexponentialLayer::len(Self) -> Int32
+pub fn TimeseriesexponentialLayer::max(Self) -> Double
+pub fn TimeseriesexponentialLayer::mean(Self) -> Double
+pub fn TimeseriesexponentialLayer::min(Self) -> Double
+pub fn TimeseriesexponentialLayer::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesexponentialLayer::sum(Self) -> Double
+pub fn TimeseriesexponentialLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriesexponentialMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriesexponentialMatrix::add(Self, Self) -> Self
+pub fn TimeseriesexponentialMatrix::det(Self) -> Double
+pub fn TimeseriesexponentialMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriesexponentialMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriesexponentialMatrix::norm(Self) -> Double
+pub fn TimeseriesexponentialMatrix::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialMatrix::to_string(Self) -> String
+pub fn TimeseriesexponentialMatrix::trace(Self) -> Double
+pub fn TimeseriesexponentialMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriesexponentialModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesexponentialModel::add(Self, Self) -> Self
+pub fn TimeseriesexponentialModel::copy(Self) -> Self
+pub fn TimeseriesexponentialModel::fill(Self, Double) -> Self
+pub fn TimeseriesexponentialModel::get(Self, Int32) -> Double
+pub fn TimeseriesexponentialModel::len(Self) -> Int32
+pub fn TimeseriesexponentialModel::max(Self) -> Double
+pub fn TimeseriesexponentialModel::mean(Self) -> Double
+pub fn TimeseriesexponentialModel::min(Self) -> Double
+pub fn TimeseriesexponentialModel::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriesexponentialModel::sum(Self) -> Double
+pub fn TimeseriesexponentialModel::to_string(Self) -> String
+
+pub(all) struct TimeseriesexponentialNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesexponentialNode::add(Self, Self) -> Self
+pub fn TimeseriesexponentialNode::copy(Self) -> Self
+pub fn TimeseriesexponentialNode::fill(Self, Double) -> Self
+pub fn TimeseriesexponentialNode::get(Self, Int32) -> Double
+pub fn TimeseriesexponentialNode::len(Self) -> Int32
+pub fn TimeseriesexponentialNode::max(Self) -> Double
+pub fn TimeseriesexponentialNode::mean(Self) -> Double
+pub fn TimeseriesexponentialNode::min(Self) -> Double
+pub fn TimeseriesexponentialNode::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriesexponentialNode::sum(Self) -> Double
+pub fn TimeseriesexponentialNode::to_string(Self) -> String
+
+pub(all) struct TimeseriesexponentialPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesexponentialPath::add(Self, Self) -> Self
+pub fn TimeseriesexponentialPath::copy(Self) -> Self
+pub fn TimeseriesexponentialPath::fill(Self, Double) -> Self
+pub fn TimeseriesexponentialPath::get(Self, Int32) -> Double
+pub fn TimeseriesexponentialPath::len(Self) -> Int32
+pub fn TimeseriesexponentialPath::max(Self) -> Double
+pub fn TimeseriesexponentialPath::mean(Self) -> Double
+pub fn TimeseriesexponentialPath::min(Self) -> Double
+pub fn TimeseriesexponentialPath::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialPath::set(Self, Int32, Double) -> Self
+pub fn TimeseriesexponentialPath::sum(Self) -> Double
+pub fn TimeseriesexponentialPath::to_string(Self) -> String
+
+pub(all) struct TimeseriesexponentialPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriesexponentialPoint::add(Self, Self) -> Self
+pub fn TimeseriesexponentialPoint::cross(Self, Self) -> Self
+pub fn TimeseriesexponentialPoint::dist(Self, Self) -> Double
+pub fn TimeseriesexponentialPoint::dot(Self, Self) -> Double
+pub fn TimeseriesexponentialPoint::label(Self) -> Int32
+pub fn TimeseriesexponentialPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriesexponentialPoint::mid(Self, Self) -> Self
+pub fn TimeseriesexponentialPoint::negate(Self) -> Self
+pub fn TimeseriesexponentialPoint::norm(Self) -> Double
+pub fn TimeseriesexponentialPoint::normalize(Self) -> Self
+pub fn TimeseriesexponentialPoint::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialPoint::sub(Self, Self) -> Self
+pub fn TimeseriesexponentialPoint::to_string(Self) -> String
+pub fn TimeseriesexponentialPoint::x(Self) -> Double
+pub fn TimeseriesexponentialPoint::y(Self) -> Double
+pub fn TimeseriesexponentialPoint::z(Self) -> Double
+
+pub(all) struct TimeseriesexponentialRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesexponentialRange::add(Self, Self) -> Self
+pub fn TimeseriesexponentialRange::copy(Self) -> Self
+pub fn TimeseriesexponentialRange::fill(Self, Double) -> Self
+pub fn TimeseriesexponentialRange::get(Self, Int32) -> Double
+pub fn TimeseriesexponentialRange::len(Self) -> Int32
+pub fn TimeseriesexponentialRange::max(Self) -> Double
+pub fn TimeseriesexponentialRange::mean(Self) -> Double
+pub fn TimeseriesexponentialRange::min(Self) -> Double
+pub fn TimeseriesexponentialRange::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriesexponentialRange::sum(Self) -> Double
+pub fn TimeseriesexponentialRange::to_string(Self) -> String
+
+pub(all) struct TimeseriesexponentialSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriesexponentialSeries::add(Self, Self) -> Self
+pub fn TimeseriesexponentialSeries::cumsum(Self) -> Self
+pub fn TimeseriesexponentialSeries::len(Self) -> Int32
+pub fn TimeseriesexponentialSeries::max(Self) -> Double
+pub fn TimeseriesexponentialSeries::mean(Self) -> Double
+pub fn TimeseriesexponentialSeries::median(Self) -> Double
+pub fn TimeseriesexponentialSeries::min(Self) -> Double
+pub fn TimeseriesexponentialSeries::normalize(Self) -> Self
+pub fn TimeseriesexponentialSeries::range(Self) -> Double
+pub fn TimeseriesexponentialSeries::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialSeries::std(Self) -> Double
+pub fn TimeseriesexponentialSeries::sub(Self, Self) -> Self
+pub fn TimeseriesexponentialSeries::sum(Self) -> Double
+pub fn TimeseriesexponentialSeries::to_string(Self) -> String
+pub fn TimeseriesexponentialSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriesexponentialSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesexponentialSlice::add(Self, Self) -> Self
+pub fn TimeseriesexponentialSlice::copy(Self) -> Self
+pub fn TimeseriesexponentialSlice::fill(Self, Double) -> Self
+pub fn TimeseriesexponentialSlice::get(Self, Int32) -> Double
+pub fn TimeseriesexponentialSlice::len(Self) -> Int32
+pub fn TimeseriesexponentialSlice::max(Self) -> Double
+pub fn TimeseriesexponentialSlice::mean(Self) -> Double
+pub fn TimeseriesexponentialSlice::min(Self) -> Double
+pub fn TimeseriesexponentialSlice::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriesexponentialSlice::sum(Self) -> Double
+pub fn TimeseriesexponentialSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriesexponentialTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesexponentialTable::add(Self, Self) -> Self
+pub fn TimeseriesexponentialTable::copy(Self) -> Self
+pub fn TimeseriesexponentialTable::fill(Self, Double) -> Self
+pub fn TimeseriesexponentialTable::get(Self, Int32) -> Double
+pub fn TimeseriesexponentialTable::len(Self) -> Int32
+pub fn TimeseriesexponentialTable::max(Self) -> Double
+pub fn TimeseriesexponentialTable::mean(Self) -> Double
+pub fn TimeseriesexponentialTable::min(Self) -> Double
+pub fn TimeseriesexponentialTable::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriesexponentialTable::sum(Self) -> Double
+pub fn TimeseriesexponentialTable::to_string(Self) -> String
+
+pub(all) struct TimeseriesexponentialVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriesexponentialVector::add(Self, Self) -> Self
+pub fn TimeseriesexponentialVector::dist(Self, Self) -> Double
+pub fn TimeseriesexponentialVector::dot(Self, Self) -> Double
+pub fn TimeseriesexponentialVector::norm(Self) -> Double
+pub fn TimeseriesexponentialVector::normalize(Self) -> Self
+pub fn TimeseriesexponentialVector::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialVector::sub(Self, Self) -> Self
+pub fn TimeseriesexponentialVector::to_string(Self) -> String
+
+pub(all) struct TimeseriesexponentialView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesexponentialView::add(Self, Self) -> Self
+pub fn TimeseriesexponentialView::copy(Self) -> Self
+pub fn TimeseriesexponentialView::fill(Self, Double) -> Self
+pub fn TimeseriesexponentialView::get(Self, Int32) -> Double
+pub fn TimeseriesexponentialView::len(Self) -> Int32
+pub fn TimeseriesexponentialView::max(Self) -> Double
+pub fn TimeseriesexponentialView::mean(Self) -> Double
+pub fn TimeseriesexponentialView::min(Self) -> Double
+pub fn TimeseriesexponentialView::scale(Self, Double) -> Self
+pub fn TimeseriesexponentialView::set(Self, Int32, Double) -> Self
+pub fn TimeseriesexponentialView::sum(Self) -> Double
+pub fn TimeseriesexponentialView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

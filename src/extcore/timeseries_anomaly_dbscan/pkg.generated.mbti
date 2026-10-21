@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_anomaly_dbscan"
+
+// Values
+pub fn timeseries_anomaly_dbscan_buffer_make(Int32) -> TimeseriesanomalydbscanBuffer
+
+pub fn timeseries_anomaly_dbscan_cluster_make(Int32) -> TimeseriesanomalydbscanCluster
+
+pub fn timeseries_anomaly_dbscan_cursor_make(Int32) -> TimeseriesanomalydbscanCursor
+
+pub fn timeseries_anomaly_dbscan_edge_make(Int32) -> TimeseriesanomalydbscanEdge
+
+pub fn timeseries_anomaly_dbscan_frame_make(Int32) -> TimeseriesanomalydbscanFrame
+
+pub fn timeseries_anomaly_dbscan_graphn_make(Int32) -> TimeseriesanomalydbscanGraphN
+
+pub fn timeseries_anomaly_dbscan_layer_make(Int32) -> TimeseriesanomalydbscanLayer
+
+pub fn timeseries_anomaly_dbscan_make_matrix(Int32, Int32, Double) -> TimeseriesanomalydbscanMatrix
+
+pub fn timeseries_anomaly_dbscan_make_point(Double, Double) -> TimeseriesanomalydbscanPoint
+
+pub fn timeseries_anomaly_dbscan_make_point3(Double, Double, Double) -> TimeseriesanomalydbscanPoint
+
+pub fn timeseries_anomaly_dbscan_make_series(Array[Double], String) -> TimeseriesanomalydbscanSeries
+
+pub fn timeseries_anomaly_dbscan_make_vector(Array[Double]) -> TimeseriesanomalydbscanVector
+
+pub fn timeseries_anomaly_dbscan_matrix_identity(Int32) -> TimeseriesanomalydbscanMatrix
+
+pub fn timeseries_anomaly_dbscan_model_make(Int32) -> TimeseriesanomalydbscanModel
+
+pub fn timeseries_anomaly_dbscan_node_make(Int32) -> TimeseriesanomalydbscanNode
+
+pub fn timeseries_anomaly_dbscan_path_make(Int32) -> TimeseriesanomalydbscanPath
+
+pub fn timeseries_anomaly_dbscan_range_make(Int32) -> TimeseriesanomalydbscanRange
+
+pub fn timeseries_anomaly_dbscan_slice_make(Int32) -> TimeseriesanomalydbscanSlice
+
+pub fn timeseries_anomaly_dbscan_table_make(Int32) -> TimeseriesanomalydbscanTable
+
+pub fn timeseries_anomaly_dbscan_vector_zero(Int32) -> TimeseriesanomalydbscanVector
+
+pub fn timeseries_anomaly_dbscan_view_make(Int32) -> TimeseriesanomalydbscanView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriesanomalydbscanBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalydbscanBuffer::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanBuffer::copy(Self) -> Self
+pub fn TimeseriesanomalydbscanBuffer::fill(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanBuffer::get(Self, Int32) -> Double
+pub fn TimeseriesanomalydbscanBuffer::len(Self) -> Int32
+pub fn TimeseriesanomalydbscanBuffer::max(Self) -> Double
+pub fn TimeseriesanomalydbscanBuffer::mean(Self) -> Double
+pub fn TimeseriesanomalydbscanBuffer::min(Self) -> Double
+pub fn TimeseriesanomalydbscanBuffer::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalydbscanBuffer::sum(Self) -> Double
+pub fn TimeseriesanomalydbscanBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalydbscanCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalydbscanCluster::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanCluster::copy(Self) -> Self
+pub fn TimeseriesanomalydbscanCluster::fill(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanCluster::get(Self, Int32) -> Double
+pub fn TimeseriesanomalydbscanCluster::len(Self) -> Int32
+pub fn TimeseriesanomalydbscanCluster::max(Self) -> Double
+pub fn TimeseriesanomalydbscanCluster::mean(Self) -> Double
+pub fn TimeseriesanomalydbscanCluster::min(Self) -> Double
+pub fn TimeseriesanomalydbscanCluster::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalydbscanCluster::sum(Self) -> Double
+pub fn TimeseriesanomalydbscanCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalydbscanCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalydbscanCursor::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanCursor::copy(Self) -> Self
+pub fn TimeseriesanomalydbscanCursor::fill(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanCursor::get(Self, Int32) -> Double
+pub fn TimeseriesanomalydbscanCursor::len(Self) -> Int32
+pub fn TimeseriesanomalydbscanCursor::max(Self) -> Double
+pub fn TimeseriesanomalydbscanCursor::mean(Self) -> Double
+pub fn TimeseriesanomalydbscanCursor::min(Self) -> Double
+pub fn TimeseriesanomalydbscanCursor::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalydbscanCursor::sum(Self) -> Double
+pub fn TimeseriesanomalydbscanCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalydbscanEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalydbscanEdge::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanEdge::copy(Self) -> Self
+pub fn TimeseriesanomalydbscanEdge::fill(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanEdge::get(Self, Int32) -> Double
+pub fn TimeseriesanomalydbscanEdge::len(Self) -> Int32
+pub fn TimeseriesanomalydbscanEdge::max(Self) -> Double
+pub fn TimeseriesanomalydbscanEdge::mean(Self) -> Double
+pub fn TimeseriesanomalydbscanEdge::min(Self) -> Double
+pub fn TimeseriesanomalydbscanEdge::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalydbscanEdge::sum(Self) -> Double
+pub fn TimeseriesanomalydbscanEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalydbscanFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalydbscanFrame::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanFrame::copy(Self) -> Self
+pub fn TimeseriesanomalydbscanFrame::fill(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanFrame::get(Self, Int32) -> Double
+pub fn TimeseriesanomalydbscanFrame::len(Self) -> Int32
+pub fn TimeseriesanomalydbscanFrame::max(Self) -> Double
+pub fn TimeseriesanomalydbscanFrame::mean(Self) -> Double
+pub fn TimeseriesanomalydbscanFrame::min(Self) -> Double
+pub fn TimeseriesanomalydbscanFrame::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalydbscanFrame::sum(Self) -> Double
+pub fn TimeseriesanomalydbscanFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalydbscanGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalydbscanGraphN::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanGraphN::copy(Self) -> Self
+pub fn TimeseriesanomalydbscanGraphN::fill(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanGraphN::get(Self, Int32) -> Double
+pub fn TimeseriesanomalydbscanGraphN::len(Self) -> Int32
+pub fn TimeseriesanomalydbscanGraphN::max(Self) -> Double
+pub fn TimeseriesanomalydbscanGraphN::mean(Self) -> Double
+pub fn TimeseriesanomalydbscanGraphN::min(Self) -> Double
+pub fn TimeseriesanomalydbscanGraphN::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalydbscanGraphN::sum(Self) -> Double
+pub fn TimeseriesanomalydbscanGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalydbscanLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalydbscanLayer::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanLayer::copy(Self) -> Self
+pub fn TimeseriesanomalydbscanLayer::fill(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanLayer::get(Self, Int32) -> Double
+pub fn TimeseriesanomalydbscanLayer::len(Self) -> Int32
+pub fn TimeseriesanomalydbscanLayer::max(Self) -> Double
+pub fn TimeseriesanomalydbscanLayer::mean(Self) -> Double
+pub fn TimeseriesanomalydbscanLayer::min(Self) -> Double
+pub fn TimeseriesanomalydbscanLayer::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalydbscanLayer::sum(Self) -> Double
+pub fn TimeseriesanomalydbscanLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalydbscanMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriesanomalydbscanMatrix::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanMatrix::det(Self) -> Double
+pub fn TimeseriesanomalydbscanMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriesanomalydbscanMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanMatrix::norm(Self) -> Double
+pub fn TimeseriesanomalydbscanMatrix::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanMatrix::to_string(Self) -> String
+pub fn TimeseriesanomalydbscanMatrix::trace(Self) -> Double
+pub fn TimeseriesanomalydbscanMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriesanomalydbscanModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalydbscanModel::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanModel::copy(Self) -> Self
+pub fn TimeseriesanomalydbscanModel::fill(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanModel::get(Self, Int32) -> Double
+pub fn TimeseriesanomalydbscanModel::len(Self) -> Int32
+pub fn TimeseriesanomalydbscanModel::max(Self) -> Double
+pub fn TimeseriesanomalydbscanModel::mean(Self) -> Double
+pub fn TimeseriesanomalydbscanModel::min(Self) -> Double
+pub fn TimeseriesanomalydbscanModel::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalydbscanModel::sum(Self) -> Double
+pub fn TimeseriesanomalydbscanModel::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalydbscanNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalydbscanNode::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanNode::copy(Self) -> Self
+pub fn TimeseriesanomalydbscanNode::fill(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanNode::get(Self, Int32) -> Double
+pub fn TimeseriesanomalydbscanNode::len(Self) -> Int32
+pub fn TimeseriesanomalydbscanNode::max(Self) -> Double
+pub fn TimeseriesanomalydbscanNode::mean(Self) -> Double
+pub fn TimeseriesanomalydbscanNode::min(Self) -> Double
+pub fn TimeseriesanomalydbscanNode::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalydbscanNode::sum(Self) -> Double
+pub fn TimeseriesanomalydbscanNode::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalydbscanPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalydbscanPath::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanPath::copy(Self) -> Self
+pub fn TimeseriesanomalydbscanPath::fill(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanPath::get(Self, Int32) -> Double
+pub fn TimeseriesanomalydbscanPath::len(Self) -> Int32
+pub fn TimeseriesanomalydbscanPath::max(Self) -> Double
+pub fn TimeseriesanomalydbscanPath::mean(Self) -> Double
+pub fn TimeseriesanomalydbscanPath::min(Self) -> Double
+pub fn TimeseriesanomalydbscanPath::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanPath::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalydbscanPath::sum(Self) -> Double
+pub fn TimeseriesanomalydbscanPath::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalydbscanPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriesanomalydbscanPoint::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanPoint::cross(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanPoint::dist(Self, Self) -> Double
+pub fn TimeseriesanomalydbscanPoint::dot(Self, Self) -> Double
+pub fn TimeseriesanomalydbscanPoint::label(Self) -> Int32
+pub fn TimeseriesanomalydbscanPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriesanomalydbscanPoint::mid(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanPoint::negate(Self) -> Self
+pub fn TimeseriesanomalydbscanPoint::norm(Self) -> Double
+pub fn TimeseriesanomalydbscanPoint::normalize(Self) -> Self
+pub fn TimeseriesanomalydbscanPoint::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanPoint::sub(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanPoint::to_string(Self) -> String
+pub fn TimeseriesanomalydbscanPoint::x(Self) -> Double
+pub fn TimeseriesanomalydbscanPoint::y(Self) -> Double
+pub fn TimeseriesanomalydbscanPoint::z(Self) -> Double
+
+pub(all) struct TimeseriesanomalydbscanRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalydbscanRange::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanRange::copy(Self) -> Self
+pub fn TimeseriesanomalydbscanRange::fill(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanRange::get(Self, Int32) -> Double
+pub fn TimeseriesanomalydbscanRange::len(Self) -> Int32
+pub fn TimeseriesanomalydbscanRange::max(Self) -> Double
+pub fn TimeseriesanomalydbscanRange::mean(Self) -> Double
+pub fn TimeseriesanomalydbscanRange::min(Self) -> Double
+pub fn TimeseriesanomalydbscanRange::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalydbscanRange::sum(Self) -> Double
+pub fn TimeseriesanomalydbscanRange::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalydbscanSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriesanomalydbscanSeries::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanSeries::cumsum(Self) -> Self
+pub fn TimeseriesanomalydbscanSeries::len(Self) -> Int32
+pub fn TimeseriesanomalydbscanSeries::max(Self) -> Double
+pub fn TimeseriesanomalydbscanSeries::mean(Self) -> Double
+pub fn TimeseriesanomalydbscanSeries::median(Self) -> Double
+pub fn TimeseriesanomalydbscanSeries::min(Self) -> Double
+pub fn TimeseriesanomalydbscanSeries::normalize(Self) -> Self
+pub fn TimeseriesanomalydbscanSeries::range(Self) -> Double
+pub fn TimeseriesanomalydbscanSeries::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanSeries::std(Self) -> Double
+pub fn TimeseriesanomalydbscanSeries::sub(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanSeries::sum(Self) -> Double
+pub fn TimeseriesanomalydbscanSeries::to_string(Self) -> String
+pub fn TimeseriesanomalydbscanSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriesanomalydbscanSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalydbscanSlice::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanSlice::copy(Self) -> Self
+pub fn TimeseriesanomalydbscanSlice::fill(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanSlice::get(Self, Int32) -> Double
+pub fn TimeseriesanomalydbscanSlice::len(Self) -> Int32
+pub fn TimeseriesanomalydbscanSlice::max(Self) -> Double
+pub fn TimeseriesanomalydbscanSlice::mean(Self) -> Double
+pub fn TimeseriesanomalydbscanSlice::min(Self) -> Double
+pub fn TimeseriesanomalydbscanSlice::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalydbscanSlice::sum(Self) -> Double
+pub fn TimeseriesanomalydbscanSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalydbscanTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalydbscanTable::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanTable::copy(Self) -> Self
+pub fn TimeseriesanomalydbscanTable::fill(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanTable::get(Self, Int32) -> Double
+pub fn TimeseriesanomalydbscanTable::len(Self) -> Int32
+pub fn TimeseriesanomalydbscanTable::max(Self) -> Double
+pub fn TimeseriesanomalydbscanTable::mean(Self) -> Double
+pub fn TimeseriesanomalydbscanTable::min(Self) -> Double
+pub fn TimeseriesanomalydbscanTable::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalydbscanTable::sum(Self) -> Double
+pub fn TimeseriesanomalydbscanTable::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalydbscanVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriesanomalydbscanVector::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanVector::dist(Self, Self) -> Double
+pub fn TimeseriesanomalydbscanVector::dot(Self, Self) -> Double
+pub fn TimeseriesanomalydbscanVector::norm(Self) -> Double
+pub fn TimeseriesanomalydbscanVector::normalize(Self) -> Self
+pub fn TimeseriesanomalydbscanVector::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanVector::sub(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanVector::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalydbscanView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalydbscanView::add(Self, Self) -> Self
+pub fn TimeseriesanomalydbscanView::copy(Self) -> Self
+pub fn TimeseriesanomalydbscanView::fill(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanView::get(Self, Int32) -> Double
+pub fn TimeseriesanomalydbscanView::len(Self) -> Int32
+pub fn TimeseriesanomalydbscanView::max(Self) -> Double
+pub fn TimeseriesanomalydbscanView::mean(Self) -> Double
+pub fn TimeseriesanomalydbscanView::min(Self) -> Double
+pub fn TimeseriesanomalydbscanView::scale(Self, Double) -> Self
+pub fn TimeseriesanomalydbscanView::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalydbscanView::sum(Self) -> Double
+pub fn TimeseriesanomalydbscanView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

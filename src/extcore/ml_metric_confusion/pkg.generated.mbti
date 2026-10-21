@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_metric_confusion"
+
+// Values
+pub fn ml_metric_confusion_buffer_make(Int32) -> MlmetricconfusionBuffer
+
+pub fn ml_metric_confusion_cluster_make(Int32) -> MlmetricconfusionCluster
+
+pub fn ml_metric_confusion_cursor_make(Int32) -> MlmetricconfusionCursor
+
+pub fn ml_metric_confusion_edge_make(Int32) -> MlmetricconfusionEdge
+
+pub fn ml_metric_confusion_frame_make(Int32) -> MlmetricconfusionFrame
+
+pub fn ml_metric_confusion_graphn_make(Int32) -> MlmetricconfusionGraphN
+
+pub fn ml_metric_confusion_layer_make(Int32) -> MlmetricconfusionLayer
+
+pub fn ml_metric_confusion_make_matrix(Int32, Int32, Double) -> MlmetricconfusionMatrix
+
+pub fn ml_metric_confusion_make_point(Double, Double) -> MlmetricconfusionPoint
+
+pub fn ml_metric_confusion_make_point3(Double, Double, Double) -> MlmetricconfusionPoint
+
+pub fn ml_metric_confusion_make_series(Array[Double], String) -> MlmetricconfusionSeries
+
+pub fn ml_metric_confusion_make_vector(Array[Double]) -> MlmetricconfusionVector
+
+pub fn ml_metric_confusion_matrix_identity(Int32) -> MlmetricconfusionMatrix
+
+pub fn ml_metric_confusion_model_make(Int32) -> MlmetricconfusionModel
+
+pub fn ml_metric_confusion_node_make(Int32) -> MlmetricconfusionNode
+
+pub fn ml_metric_confusion_path_make(Int32) -> MlmetricconfusionPath
+
+pub fn ml_metric_confusion_range_make(Int32) -> MlmetricconfusionRange
+
+pub fn ml_metric_confusion_slice_make(Int32) -> MlmetricconfusionSlice
+
+pub fn ml_metric_confusion_table_make(Int32) -> MlmetricconfusionTable
+
+pub fn ml_metric_confusion_vector_zero(Int32) -> MlmetricconfusionVector
+
+pub fn ml_metric_confusion_view_make(Int32) -> MlmetricconfusionView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlmetricconfusionBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricconfusionBuffer::add(Self, Self) -> Self
+pub fn MlmetricconfusionBuffer::copy(Self) -> Self
+pub fn MlmetricconfusionBuffer::fill(Self, Double) -> Self
+pub fn MlmetricconfusionBuffer::get(Self, Int32) -> Double
+pub fn MlmetricconfusionBuffer::len(Self) -> Int32
+pub fn MlmetricconfusionBuffer::max(Self) -> Double
+pub fn MlmetricconfusionBuffer::mean(Self) -> Double
+pub fn MlmetricconfusionBuffer::min(Self) -> Double
+pub fn MlmetricconfusionBuffer::scale(Self, Double) -> Self
+pub fn MlmetricconfusionBuffer::set(Self, Int32, Double) -> Self
+pub fn MlmetricconfusionBuffer::sum(Self) -> Double
+pub fn MlmetricconfusionBuffer::to_string(Self) -> String
+
+pub(all) struct MlmetricconfusionCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricconfusionCluster::add(Self, Self) -> Self
+pub fn MlmetricconfusionCluster::copy(Self) -> Self
+pub fn MlmetricconfusionCluster::fill(Self, Double) -> Self
+pub fn MlmetricconfusionCluster::get(Self, Int32) -> Double
+pub fn MlmetricconfusionCluster::len(Self) -> Int32
+pub fn MlmetricconfusionCluster::max(Self) -> Double
+pub fn MlmetricconfusionCluster::mean(Self) -> Double
+pub fn MlmetricconfusionCluster::min(Self) -> Double
+pub fn MlmetricconfusionCluster::scale(Self, Double) -> Self
+pub fn MlmetricconfusionCluster::set(Self, Int32, Double) -> Self
+pub fn MlmetricconfusionCluster::sum(Self) -> Double
+pub fn MlmetricconfusionCluster::to_string(Self) -> String
+
+pub(all) struct MlmetricconfusionCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricconfusionCursor::add(Self, Self) -> Self
+pub fn MlmetricconfusionCursor::copy(Self) -> Self
+pub fn MlmetricconfusionCursor::fill(Self, Double) -> Self
+pub fn MlmetricconfusionCursor::get(Self, Int32) -> Double
+pub fn MlmetricconfusionCursor::len(Self) -> Int32
+pub fn MlmetricconfusionCursor::max(Self) -> Double
+pub fn MlmetricconfusionCursor::mean(Self) -> Double
+pub fn MlmetricconfusionCursor::min(Self) -> Double
+pub fn MlmetricconfusionCursor::scale(Self, Double) -> Self
+pub fn MlmetricconfusionCursor::set(Self, Int32, Double) -> Self
+pub fn MlmetricconfusionCursor::sum(Self) -> Double
+pub fn MlmetricconfusionCursor::to_string(Self) -> String
+
+pub(all) struct MlmetricconfusionEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricconfusionEdge::add(Self, Self) -> Self
+pub fn MlmetricconfusionEdge::copy(Self) -> Self
+pub fn MlmetricconfusionEdge::fill(Self, Double) -> Self
+pub fn MlmetricconfusionEdge::get(Self, Int32) -> Double
+pub fn MlmetricconfusionEdge::len(Self) -> Int32
+pub fn MlmetricconfusionEdge::max(Self) -> Double
+pub fn MlmetricconfusionEdge::mean(Self) -> Double
+pub fn MlmetricconfusionEdge::min(Self) -> Double
+pub fn MlmetricconfusionEdge::scale(Self, Double) -> Self
+pub fn MlmetricconfusionEdge::set(Self, Int32, Double) -> Self
+pub fn MlmetricconfusionEdge::sum(Self) -> Double
+pub fn MlmetricconfusionEdge::to_string(Self) -> String
+
+pub(all) struct MlmetricconfusionFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricconfusionFrame::add(Self, Self) -> Self
+pub fn MlmetricconfusionFrame::copy(Self) -> Self
+pub fn MlmetricconfusionFrame::fill(Self, Double) -> Self
+pub fn MlmetricconfusionFrame::get(Self, Int32) -> Double
+pub fn MlmetricconfusionFrame::len(Self) -> Int32
+pub fn MlmetricconfusionFrame::max(Self) -> Double
+pub fn MlmetricconfusionFrame::mean(Self) -> Double
+pub fn MlmetricconfusionFrame::min(Self) -> Double
+pub fn MlmetricconfusionFrame::scale(Self, Double) -> Self
+pub fn MlmetricconfusionFrame::set(Self, Int32, Double) -> Self
+pub fn MlmetricconfusionFrame::sum(Self) -> Double
+pub fn MlmetricconfusionFrame::to_string(Self) -> String
+
+pub(all) struct MlmetricconfusionGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricconfusionGraphN::add(Self, Self) -> Self
+pub fn MlmetricconfusionGraphN::copy(Self) -> Self
+pub fn MlmetricconfusionGraphN::fill(Self, Double) -> Self
+pub fn MlmetricconfusionGraphN::get(Self, Int32) -> Double
+pub fn MlmetricconfusionGraphN::len(Self) -> Int32
+pub fn MlmetricconfusionGraphN::max(Self) -> Double
+pub fn MlmetricconfusionGraphN::mean(Self) -> Double
+pub fn MlmetricconfusionGraphN::min(Self) -> Double
+pub fn MlmetricconfusionGraphN::scale(Self, Double) -> Self
+pub fn MlmetricconfusionGraphN::set(Self, Int32, Double) -> Self
+pub fn MlmetricconfusionGraphN::sum(Self) -> Double
+pub fn MlmetricconfusionGraphN::to_string(Self) -> String
+
+pub(all) struct MlmetricconfusionLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricconfusionLayer::add(Self, Self) -> Self
+pub fn MlmetricconfusionLayer::copy(Self) -> Self
+pub fn MlmetricconfusionLayer::fill(Self, Double) -> Self
+pub fn MlmetricconfusionLayer::get(Self, Int32) -> Double
+pub fn MlmetricconfusionLayer::len(Self) -> Int32
+pub fn MlmetricconfusionLayer::max(Self) -> Double
+pub fn MlmetricconfusionLayer::mean(Self) -> Double
+pub fn MlmetricconfusionLayer::min(Self) -> Double
+pub fn MlmetricconfusionLayer::scale(Self, Double) -> Self
+pub fn MlmetricconfusionLayer::set(Self, Int32, Double) -> Self
+pub fn MlmetricconfusionLayer::sum(Self) -> Double
+pub fn MlmetricconfusionLayer::to_string(Self) -> String
+
+pub(all) struct MlmetricconfusionMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlmetricconfusionMatrix::add(Self, Self) -> Self
+pub fn MlmetricconfusionMatrix::det(Self) -> Double
+pub fn MlmetricconfusionMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlmetricconfusionMatrix::multiply(Self, Self) -> Self
+pub fn MlmetricconfusionMatrix::norm(Self) -> Double
+pub fn MlmetricconfusionMatrix::scale(Self, Double) -> Self
+pub fn MlmetricconfusionMatrix::to_string(Self) -> String
+pub fn MlmetricconfusionMatrix::trace(Self) -> Double
+pub fn MlmetricconfusionMatrix::transpose(Self) -> Self
+
+pub(all) struct MlmetricconfusionModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricconfusionModel::add(Self, Self) -> Self
+pub fn MlmetricconfusionModel::copy(Self) -> Self
+pub fn MlmetricconfusionModel::fill(Self, Double) -> Self
+pub fn MlmetricconfusionModel::get(Self, Int32) -> Double
+pub fn MlmetricconfusionModel::len(Self) -> Int32
+pub fn MlmetricconfusionModel::max(Self) -> Double
+pub fn MlmetricconfusionModel::mean(Self) -> Double
+pub fn MlmetricconfusionModel::min(Self) -> Double
+pub fn MlmetricconfusionModel::scale(Self, Double) -> Self
+pub fn MlmetricconfusionModel::set(Self, Int32, Double) -> Self
+pub fn MlmetricconfusionModel::sum(Self) -> Double
+pub fn MlmetricconfusionModel::to_string(Self) -> String
+
+pub(all) struct MlmetricconfusionNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricconfusionNode::add(Self, Self) -> Self
+pub fn MlmetricconfusionNode::copy(Self) -> Self
+pub fn MlmetricconfusionNode::fill(Self, Double) -> Self
+pub fn MlmetricconfusionNode::get(Self, Int32) -> Double
+pub fn MlmetricconfusionNode::len(Self) -> Int32
+pub fn MlmetricconfusionNode::max(Self) -> Double
+pub fn MlmetricconfusionNode::mean(Self) -> Double
+pub fn MlmetricconfusionNode::min(Self) -> Double
+pub fn MlmetricconfusionNode::scale(Self, Double) -> Self
+pub fn MlmetricconfusionNode::set(Self, Int32, Double) -> Self
+pub fn MlmetricconfusionNode::sum(Self) -> Double
+pub fn MlmetricconfusionNode::to_string(Self) -> String
+
+pub(all) struct MlmetricconfusionPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricconfusionPath::add(Self, Self) -> Self
+pub fn MlmetricconfusionPath::copy(Self) -> Self
+pub fn MlmetricconfusionPath::fill(Self, Double) -> Self
+pub fn MlmetricconfusionPath::get(Self, Int32) -> Double
+pub fn MlmetricconfusionPath::len(Self) -> Int32
+pub fn MlmetricconfusionPath::max(Self) -> Double
+pub fn MlmetricconfusionPath::mean(Self) -> Double
+pub fn MlmetricconfusionPath::min(Self) -> Double
+pub fn MlmetricconfusionPath::scale(Self, Double) -> Self
+pub fn MlmetricconfusionPath::set(Self, Int32, Double) -> Self
+pub fn MlmetricconfusionPath::sum(Self) -> Double
+pub fn MlmetricconfusionPath::to_string(Self) -> String
+
+pub(all) struct MlmetricconfusionPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlmetricconfusionPoint::add(Self, Self) -> Self
+pub fn MlmetricconfusionPoint::cross(Self, Self) -> Self
+pub fn MlmetricconfusionPoint::dist(Self, Self) -> Double
+pub fn MlmetricconfusionPoint::dot(Self, Self) -> Double
+pub fn MlmetricconfusionPoint::label(Self) -> Int32
+pub fn MlmetricconfusionPoint::lerp(Self, Self, Double) -> Self
+pub fn MlmetricconfusionPoint::mid(Self, Self) -> Self
+pub fn MlmetricconfusionPoint::negate(Self) -> Self
+pub fn MlmetricconfusionPoint::norm(Self) -> Double
+pub fn MlmetricconfusionPoint::normalize(Self) -> Self
+pub fn MlmetricconfusionPoint::scale(Self, Double) -> Self
+pub fn MlmetricconfusionPoint::sub(Self, Self) -> Self
+pub fn MlmetricconfusionPoint::to_string(Self) -> String
+pub fn MlmetricconfusionPoint::x(Self) -> Double
+pub fn MlmetricconfusionPoint::y(Self) -> Double
+pub fn MlmetricconfusionPoint::z(Self) -> Double
+
+pub(all) struct MlmetricconfusionRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricconfusionRange::add(Self, Self) -> Self
+pub fn MlmetricconfusionRange::copy(Self) -> Self
+pub fn MlmetricconfusionRange::fill(Self, Double) -> Self
+pub fn MlmetricconfusionRange::get(Self, Int32) -> Double
+pub fn MlmetricconfusionRange::len(Self) -> Int32
+pub fn MlmetricconfusionRange::max(Self) -> Double
+pub fn MlmetricconfusionRange::mean(Self) -> Double
+pub fn MlmetricconfusionRange::min(Self) -> Double
+pub fn MlmetricconfusionRange::scale(Self, Double) -> Self
+pub fn MlmetricconfusionRange::set(Self, Int32, Double) -> Self
+pub fn MlmetricconfusionRange::sum(Self) -> Double
+pub fn MlmetricconfusionRange::to_string(Self) -> String
+
+pub(all) struct MlmetricconfusionSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlmetricconfusionSeries::add(Self, Self) -> Self
+pub fn MlmetricconfusionSeries::cumsum(Self) -> Self
+pub fn MlmetricconfusionSeries::len(Self) -> Int32
+pub fn MlmetricconfusionSeries::max(Self) -> Double
+pub fn MlmetricconfusionSeries::mean(Self) -> Double
+pub fn MlmetricconfusionSeries::median(Self) -> Double
+pub fn MlmetricconfusionSeries::min(Self) -> Double
+pub fn MlmetricconfusionSeries::normalize(Self) -> Self
+pub fn MlmetricconfusionSeries::range(Self) -> Double
+pub fn MlmetricconfusionSeries::scale(Self, Double) -> Self
+pub fn MlmetricconfusionSeries::std(Self) -> Double
+pub fn MlmetricconfusionSeries::sub(Self, Self) -> Self
+pub fn MlmetricconfusionSeries::sum(Self) -> Double
+pub fn MlmetricconfusionSeries::to_string(Self) -> String
+pub fn MlmetricconfusionSeries::variance(Self) -> Double
+
+pub(all) struct MlmetricconfusionSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricconfusionSlice::add(Self, Self) -> Self
+pub fn MlmetricconfusionSlice::copy(Self) -> Self
+pub fn MlmetricconfusionSlice::fill(Self, Double) -> Self
+pub fn MlmetricconfusionSlice::get(Self, Int32) -> Double
+pub fn MlmetricconfusionSlice::len(Self) -> Int32
+pub fn MlmetricconfusionSlice::max(Self) -> Double
+pub fn MlmetricconfusionSlice::mean(Self) -> Double
+pub fn MlmetricconfusionSlice::min(Self) -> Double
+pub fn MlmetricconfusionSlice::scale(Self, Double) -> Self
+pub fn MlmetricconfusionSlice::set(Self, Int32, Double) -> Self
+pub fn MlmetricconfusionSlice::sum(Self) -> Double
+pub fn MlmetricconfusionSlice::to_string(Self) -> String
+
+pub(all) struct MlmetricconfusionTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricconfusionTable::add(Self, Self) -> Self
+pub fn MlmetricconfusionTable::copy(Self) -> Self
+pub fn MlmetricconfusionTable::fill(Self, Double) -> Self
+pub fn MlmetricconfusionTable::get(Self, Int32) -> Double
+pub fn MlmetricconfusionTable::len(Self) -> Int32
+pub fn MlmetricconfusionTable::max(Self) -> Double
+pub fn MlmetricconfusionTable::mean(Self) -> Double
+pub fn MlmetricconfusionTable::min(Self) -> Double
+pub fn MlmetricconfusionTable::scale(Self, Double) -> Self
+pub fn MlmetricconfusionTable::set(Self, Int32, Double) -> Self
+pub fn MlmetricconfusionTable::sum(Self) -> Double
+pub fn MlmetricconfusionTable::to_string(Self) -> String
+
+pub(all) struct MlmetricconfusionVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlmetricconfusionVector::add(Self, Self) -> Self
+pub fn MlmetricconfusionVector::dist(Self, Self) -> Double
+pub fn MlmetricconfusionVector::dot(Self, Self) -> Double
+pub fn MlmetricconfusionVector::norm(Self) -> Double
+pub fn MlmetricconfusionVector::normalize(Self) -> Self
+pub fn MlmetricconfusionVector::scale(Self, Double) -> Self
+pub fn MlmetricconfusionVector::sub(Self, Self) -> Self
+pub fn MlmetricconfusionVector::to_string(Self) -> String
+
+pub(all) struct MlmetricconfusionView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricconfusionView::add(Self, Self) -> Self
+pub fn MlmetricconfusionView::copy(Self) -> Self
+pub fn MlmetricconfusionView::fill(Self, Double) -> Self
+pub fn MlmetricconfusionView::get(Self, Int32) -> Double
+pub fn MlmetricconfusionView::len(Self) -> Int32
+pub fn MlmetricconfusionView::max(Self) -> Double
+pub fn MlmetricconfusionView::mean(Self) -> Double
+pub fn MlmetricconfusionView::min(Self) -> Double
+pub fn MlmetricconfusionView::scale(Self, Double) -> Self
+pub fn MlmetricconfusionView::set(Self, Int32, Double) -> Self
+pub fn MlmetricconfusionView::sum(Self) -> Double
+pub fn MlmetricconfusionView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

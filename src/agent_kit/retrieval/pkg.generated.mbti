@@ -1,0 +1,51 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/retrieval"
+
+// Values
+pub fn cosine_similarity(Array[Double], Array[Double]) -> Double
+
+pub fn deduplicate_results(Array[RetrievalResult]) -> Array[RetrievalResult]
+
+pub fn hybrid_search(String, Array[Double], Array[Document], Int32, Double) -> Array[RetrievalResult]
+
+pub fn keyword_search(String, Array[Document], Int32) -> Array[RetrievalResult]
+
+pub fn make_document(String, String, Array[Double], String) -> Document
+
+pub fn make_retrieval_result(Document, RetrievalMethod, Int32) -> RetrievalResult
+
+pub fn method_name(RetrievalMethod) -> String
+
+pub fn rerank(Array[RetrievalResult]) -> Array[RetrievalResult]
+
+pub fn retrieval_id() -> String
+
+pub fn vector_search(Array[Double], Array[Document], Int32) -> Array[RetrievalResult]
+
+// Errors
+
+// Types and methods
+pub(all) struct Document {
+  id : String
+  content : String
+  embedding : Array[Double]
+  metadata : String
+  score : Double
+}
+
+pub(all) enum RetrievalMethod {
+  VectorSearch
+  KeywordSearch
+  HybridSearch
+  SemanticSearch
+}
+
+pub struct RetrievalResult {
+  document : Document
+  method_ : RetrievalMethod
+  rank : Int32
+}
+
+// Type aliases
+
+// Traits

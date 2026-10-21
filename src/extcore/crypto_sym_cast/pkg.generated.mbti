@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/crypto_sym_cast"
+
+// Values
+pub fn crypto_sym_cast_buffer_make(Int32) -> CryptosymcastBuffer
+
+pub fn crypto_sym_cast_cluster_make(Int32) -> CryptosymcastCluster
+
+pub fn crypto_sym_cast_cursor_make(Int32) -> CryptosymcastCursor
+
+pub fn crypto_sym_cast_edge_make(Int32) -> CryptosymcastEdge
+
+pub fn crypto_sym_cast_frame_make(Int32) -> CryptosymcastFrame
+
+pub fn crypto_sym_cast_graphn_make(Int32) -> CryptosymcastGraphN
+
+pub fn crypto_sym_cast_layer_make(Int32) -> CryptosymcastLayer
+
+pub fn crypto_sym_cast_make_matrix(Int32, Int32, Double) -> CryptosymcastMatrix
+
+pub fn crypto_sym_cast_make_point(Double, Double) -> CryptosymcastPoint
+
+pub fn crypto_sym_cast_make_point3(Double, Double, Double) -> CryptosymcastPoint
+
+pub fn crypto_sym_cast_make_series(Array[Double], String) -> CryptosymcastSeries
+
+pub fn crypto_sym_cast_make_vector(Array[Double]) -> CryptosymcastVector
+
+pub fn crypto_sym_cast_matrix_identity(Int32) -> CryptosymcastMatrix
+
+pub fn crypto_sym_cast_model_make(Int32) -> CryptosymcastModel
+
+pub fn crypto_sym_cast_node_make(Int32) -> CryptosymcastNode
+
+pub fn crypto_sym_cast_path_make(Int32) -> CryptosymcastPath
+
+pub fn crypto_sym_cast_range_make(Int32) -> CryptosymcastRange
+
+pub fn crypto_sym_cast_slice_make(Int32) -> CryptosymcastSlice
+
+pub fn crypto_sym_cast_table_make(Int32) -> CryptosymcastTable
+
+pub fn crypto_sym_cast_vector_zero(Int32) -> CryptosymcastVector
+
+pub fn crypto_sym_cast_view_make(Int32) -> CryptosymcastView
+
+// Errors
+
+// Types and methods
+pub(all) struct CryptosymcastBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcastBuffer::add(Self, Self) -> Self
+pub fn CryptosymcastBuffer::copy(Self) -> Self
+pub fn CryptosymcastBuffer::fill(Self, Double) -> Self
+pub fn CryptosymcastBuffer::get(Self, Int32) -> Double
+pub fn CryptosymcastBuffer::len(Self) -> Int32
+pub fn CryptosymcastBuffer::max(Self) -> Double
+pub fn CryptosymcastBuffer::mean(Self) -> Double
+pub fn CryptosymcastBuffer::min(Self) -> Double
+pub fn CryptosymcastBuffer::scale(Self, Double) -> Self
+pub fn CryptosymcastBuffer::set(Self, Int32, Double) -> Self
+pub fn CryptosymcastBuffer::sum(Self) -> Double
+pub fn CryptosymcastBuffer::to_string(Self) -> String
+
+pub(all) struct CryptosymcastCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcastCluster::add(Self, Self) -> Self
+pub fn CryptosymcastCluster::copy(Self) -> Self
+pub fn CryptosymcastCluster::fill(Self, Double) -> Self
+pub fn CryptosymcastCluster::get(Self, Int32) -> Double
+pub fn CryptosymcastCluster::len(Self) -> Int32
+pub fn CryptosymcastCluster::max(Self) -> Double
+pub fn CryptosymcastCluster::mean(Self) -> Double
+pub fn CryptosymcastCluster::min(Self) -> Double
+pub fn CryptosymcastCluster::scale(Self, Double) -> Self
+pub fn CryptosymcastCluster::set(Self, Int32, Double) -> Self
+pub fn CryptosymcastCluster::sum(Self) -> Double
+pub fn CryptosymcastCluster::to_string(Self) -> String
+
+pub(all) struct CryptosymcastCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcastCursor::add(Self, Self) -> Self
+pub fn CryptosymcastCursor::copy(Self) -> Self
+pub fn CryptosymcastCursor::fill(Self, Double) -> Self
+pub fn CryptosymcastCursor::get(Self, Int32) -> Double
+pub fn CryptosymcastCursor::len(Self) -> Int32
+pub fn CryptosymcastCursor::max(Self) -> Double
+pub fn CryptosymcastCursor::mean(Self) -> Double
+pub fn CryptosymcastCursor::min(Self) -> Double
+pub fn CryptosymcastCursor::scale(Self, Double) -> Self
+pub fn CryptosymcastCursor::set(Self, Int32, Double) -> Self
+pub fn CryptosymcastCursor::sum(Self) -> Double
+pub fn CryptosymcastCursor::to_string(Self) -> String
+
+pub(all) struct CryptosymcastEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcastEdge::add(Self, Self) -> Self
+pub fn CryptosymcastEdge::copy(Self) -> Self
+pub fn CryptosymcastEdge::fill(Self, Double) -> Self
+pub fn CryptosymcastEdge::get(Self, Int32) -> Double
+pub fn CryptosymcastEdge::len(Self) -> Int32
+pub fn CryptosymcastEdge::max(Self) -> Double
+pub fn CryptosymcastEdge::mean(Self) -> Double
+pub fn CryptosymcastEdge::min(Self) -> Double
+pub fn CryptosymcastEdge::scale(Self, Double) -> Self
+pub fn CryptosymcastEdge::set(Self, Int32, Double) -> Self
+pub fn CryptosymcastEdge::sum(Self) -> Double
+pub fn CryptosymcastEdge::to_string(Self) -> String
+
+pub(all) struct CryptosymcastFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcastFrame::add(Self, Self) -> Self
+pub fn CryptosymcastFrame::copy(Self) -> Self
+pub fn CryptosymcastFrame::fill(Self, Double) -> Self
+pub fn CryptosymcastFrame::get(Self, Int32) -> Double
+pub fn CryptosymcastFrame::len(Self) -> Int32
+pub fn CryptosymcastFrame::max(Self) -> Double
+pub fn CryptosymcastFrame::mean(Self) -> Double
+pub fn CryptosymcastFrame::min(Self) -> Double
+pub fn CryptosymcastFrame::scale(Self, Double) -> Self
+pub fn CryptosymcastFrame::set(Self, Int32, Double) -> Self
+pub fn CryptosymcastFrame::sum(Self) -> Double
+pub fn CryptosymcastFrame::to_string(Self) -> String
+
+pub(all) struct CryptosymcastGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcastGraphN::add(Self, Self) -> Self
+pub fn CryptosymcastGraphN::copy(Self) -> Self
+pub fn CryptosymcastGraphN::fill(Self, Double) -> Self
+pub fn CryptosymcastGraphN::get(Self, Int32) -> Double
+pub fn CryptosymcastGraphN::len(Self) -> Int32
+pub fn CryptosymcastGraphN::max(Self) -> Double
+pub fn CryptosymcastGraphN::mean(Self) -> Double
+pub fn CryptosymcastGraphN::min(Self) -> Double
+pub fn CryptosymcastGraphN::scale(Self, Double) -> Self
+pub fn CryptosymcastGraphN::set(Self, Int32, Double) -> Self
+pub fn CryptosymcastGraphN::sum(Self) -> Double
+pub fn CryptosymcastGraphN::to_string(Self) -> String
+
+pub(all) struct CryptosymcastLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcastLayer::add(Self, Self) -> Self
+pub fn CryptosymcastLayer::copy(Self) -> Self
+pub fn CryptosymcastLayer::fill(Self, Double) -> Self
+pub fn CryptosymcastLayer::get(Self, Int32) -> Double
+pub fn CryptosymcastLayer::len(Self) -> Int32
+pub fn CryptosymcastLayer::max(Self) -> Double
+pub fn CryptosymcastLayer::mean(Self) -> Double
+pub fn CryptosymcastLayer::min(Self) -> Double
+pub fn CryptosymcastLayer::scale(Self, Double) -> Self
+pub fn CryptosymcastLayer::set(Self, Int32, Double) -> Self
+pub fn CryptosymcastLayer::sum(Self) -> Double
+pub fn CryptosymcastLayer::to_string(Self) -> String
+
+pub(all) struct CryptosymcastMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn CryptosymcastMatrix::add(Self, Self) -> Self
+pub fn CryptosymcastMatrix::det(Self) -> Double
+pub fn CryptosymcastMatrix::get(Self, Int32, Int32) -> Double
+pub fn CryptosymcastMatrix::multiply(Self, Self) -> Self
+pub fn CryptosymcastMatrix::norm(Self) -> Double
+pub fn CryptosymcastMatrix::scale(Self, Double) -> Self
+pub fn CryptosymcastMatrix::to_string(Self) -> String
+pub fn CryptosymcastMatrix::trace(Self) -> Double
+pub fn CryptosymcastMatrix::transpose(Self) -> Self
+
+pub(all) struct CryptosymcastModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcastModel::add(Self, Self) -> Self
+pub fn CryptosymcastModel::copy(Self) -> Self
+pub fn CryptosymcastModel::fill(Self, Double) -> Self
+pub fn CryptosymcastModel::get(Self, Int32) -> Double
+pub fn CryptosymcastModel::len(Self) -> Int32
+pub fn CryptosymcastModel::max(Self) -> Double
+pub fn CryptosymcastModel::mean(Self) -> Double
+pub fn CryptosymcastModel::min(Self) -> Double
+pub fn CryptosymcastModel::scale(Self, Double) -> Self
+pub fn CryptosymcastModel::set(Self, Int32, Double) -> Self
+pub fn CryptosymcastModel::sum(Self) -> Double
+pub fn CryptosymcastModel::to_string(Self) -> String
+
+pub(all) struct CryptosymcastNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcastNode::add(Self, Self) -> Self
+pub fn CryptosymcastNode::copy(Self) -> Self
+pub fn CryptosymcastNode::fill(Self, Double) -> Self
+pub fn CryptosymcastNode::get(Self, Int32) -> Double
+pub fn CryptosymcastNode::len(Self) -> Int32
+pub fn CryptosymcastNode::max(Self) -> Double
+pub fn CryptosymcastNode::mean(Self) -> Double
+pub fn CryptosymcastNode::min(Self) -> Double
+pub fn CryptosymcastNode::scale(Self, Double) -> Self
+pub fn CryptosymcastNode::set(Self, Int32, Double) -> Self
+pub fn CryptosymcastNode::sum(Self) -> Double
+pub fn CryptosymcastNode::to_string(Self) -> String
+
+pub(all) struct CryptosymcastPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcastPath::add(Self, Self) -> Self
+pub fn CryptosymcastPath::copy(Self) -> Self
+pub fn CryptosymcastPath::fill(Self, Double) -> Self
+pub fn CryptosymcastPath::get(Self, Int32) -> Double
+pub fn CryptosymcastPath::len(Self) -> Int32
+pub fn CryptosymcastPath::max(Self) -> Double
+pub fn CryptosymcastPath::mean(Self) -> Double
+pub fn CryptosymcastPath::min(Self) -> Double
+pub fn CryptosymcastPath::scale(Self, Double) -> Self
+pub fn CryptosymcastPath::set(Self, Int32, Double) -> Self
+pub fn CryptosymcastPath::sum(Self) -> Double
+pub fn CryptosymcastPath::to_string(Self) -> String
+
+pub(all) struct CryptosymcastPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn CryptosymcastPoint::add(Self, Self) -> Self
+pub fn CryptosymcastPoint::cross(Self, Self) -> Self
+pub fn CryptosymcastPoint::dist(Self, Self) -> Double
+pub fn CryptosymcastPoint::dot(Self, Self) -> Double
+pub fn CryptosymcastPoint::label(Self) -> Int32
+pub fn CryptosymcastPoint::lerp(Self, Self, Double) -> Self
+pub fn CryptosymcastPoint::mid(Self, Self) -> Self
+pub fn CryptosymcastPoint::negate(Self) -> Self
+pub fn CryptosymcastPoint::norm(Self) -> Double
+pub fn CryptosymcastPoint::normalize(Self) -> Self
+pub fn CryptosymcastPoint::scale(Self, Double) -> Self
+pub fn CryptosymcastPoint::sub(Self, Self) -> Self
+pub fn CryptosymcastPoint::to_string(Self) -> String
+pub fn CryptosymcastPoint::x(Self) -> Double
+pub fn CryptosymcastPoint::y(Self) -> Double
+pub fn CryptosymcastPoint::z(Self) -> Double
+
+pub(all) struct CryptosymcastRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcastRange::add(Self, Self) -> Self
+pub fn CryptosymcastRange::copy(Self) -> Self
+pub fn CryptosymcastRange::fill(Self, Double) -> Self
+pub fn CryptosymcastRange::get(Self, Int32) -> Double
+pub fn CryptosymcastRange::len(Self) -> Int32
+pub fn CryptosymcastRange::max(Self) -> Double
+pub fn CryptosymcastRange::mean(Self) -> Double
+pub fn CryptosymcastRange::min(Self) -> Double
+pub fn CryptosymcastRange::scale(Self, Double) -> Self
+pub fn CryptosymcastRange::set(Self, Int32, Double) -> Self
+pub fn CryptosymcastRange::sum(Self) -> Double
+pub fn CryptosymcastRange::to_string(Self) -> String
+
+pub(all) struct CryptosymcastSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn CryptosymcastSeries::add(Self, Self) -> Self
+pub fn CryptosymcastSeries::cumsum(Self) -> Self
+pub fn CryptosymcastSeries::len(Self) -> Int32
+pub fn CryptosymcastSeries::max(Self) -> Double
+pub fn CryptosymcastSeries::mean(Self) -> Double
+pub fn CryptosymcastSeries::median(Self) -> Double
+pub fn CryptosymcastSeries::min(Self) -> Double
+pub fn CryptosymcastSeries::normalize(Self) -> Self
+pub fn CryptosymcastSeries::range(Self) -> Double
+pub fn CryptosymcastSeries::scale(Self, Double) -> Self
+pub fn CryptosymcastSeries::std(Self) -> Double
+pub fn CryptosymcastSeries::sub(Self, Self) -> Self
+pub fn CryptosymcastSeries::sum(Self) -> Double
+pub fn CryptosymcastSeries::to_string(Self) -> String
+pub fn CryptosymcastSeries::variance(Self) -> Double
+
+pub(all) struct CryptosymcastSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcastSlice::add(Self, Self) -> Self
+pub fn CryptosymcastSlice::copy(Self) -> Self
+pub fn CryptosymcastSlice::fill(Self, Double) -> Self
+pub fn CryptosymcastSlice::get(Self, Int32) -> Double
+pub fn CryptosymcastSlice::len(Self) -> Int32
+pub fn CryptosymcastSlice::max(Self) -> Double
+pub fn CryptosymcastSlice::mean(Self) -> Double
+pub fn CryptosymcastSlice::min(Self) -> Double
+pub fn CryptosymcastSlice::scale(Self, Double) -> Self
+pub fn CryptosymcastSlice::set(Self, Int32, Double) -> Self
+pub fn CryptosymcastSlice::sum(Self) -> Double
+pub fn CryptosymcastSlice::to_string(Self) -> String
+
+pub(all) struct CryptosymcastTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcastTable::add(Self, Self) -> Self
+pub fn CryptosymcastTable::copy(Self) -> Self
+pub fn CryptosymcastTable::fill(Self, Double) -> Self
+pub fn CryptosymcastTable::get(Self, Int32) -> Double
+pub fn CryptosymcastTable::len(Self) -> Int32
+pub fn CryptosymcastTable::max(Self) -> Double
+pub fn CryptosymcastTable::mean(Self) -> Double
+pub fn CryptosymcastTable::min(Self) -> Double
+pub fn CryptosymcastTable::scale(Self, Double) -> Self
+pub fn CryptosymcastTable::set(Self, Int32, Double) -> Self
+pub fn CryptosymcastTable::sum(Self) -> Double
+pub fn CryptosymcastTable::to_string(Self) -> String
+
+pub(all) struct CryptosymcastVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn CryptosymcastVector::add(Self, Self) -> Self
+pub fn CryptosymcastVector::dist(Self, Self) -> Double
+pub fn CryptosymcastVector::dot(Self, Self) -> Double
+pub fn CryptosymcastVector::norm(Self) -> Double
+pub fn CryptosymcastVector::normalize(Self) -> Self
+pub fn CryptosymcastVector::scale(Self, Double) -> Self
+pub fn CryptosymcastVector::sub(Self, Self) -> Self
+pub fn CryptosymcastVector::to_string(Self) -> String
+
+pub(all) struct CryptosymcastView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcastView::add(Self, Self) -> Self
+pub fn CryptosymcastView::copy(Self) -> Self
+pub fn CryptosymcastView::fill(Self, Double) -> Self
+pub fn CryptosymcastView::get(Self, Int32) -> Double
+pub fn CryptosymcastView::len(Self) -> Int32
+pub fn CryptosymcastView::max(Self) -> Double
+pub fn CryptosymcastView::mean(Self) -> Double
+pub fn CryptosymcastView::min(Self) -> Double
+pub fn CryptosymcastView::scale(Self, Double) -> Self
+pub fn CryptosymcastView::set(Self, Int32, Double) -> Self
+pub fn CryptosymcastView::sum(Self) -> Double
+pub fn CryptosymcastView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

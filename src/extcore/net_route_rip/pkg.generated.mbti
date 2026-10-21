@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_route_rip"
+
+// Values
+pub fn net_route_rip_buffer_make(Int32) -> NetrouteripBuffer
+
+pub fn net_route_rip_cluster_make(Int32) -> NetrouteripCluster
+
+pub fn net_route_rip_cursor_make(Int32) -> NetrouteripCursor
+
+pub fn net_route_rip_edge_make(Int32) -> NetrouteripEdge
+
+pub fn net_route_rip_frame_make(Int32) -> NetrouteripFrame
+
+pub fn net_route_rip_graphn_make(Int32) -> NetrouteripGraphN
+
+pub fn net_route_rip_layer_make(Int32) -> NetrouteripLayer
+
+pub fn net_route_rip_make_matrix(Int32, Int32, Double) -> NetrouteripMatrix
+
+pub fn net_route_rip_make_point(Double, Double) -> NetrouteripPoint
+
+pub fn net_route_rip_make_point3(Double, Double, Double) -> NetrouteripPoint
+
+pub fn net_route_rip_make_series(Array[Double], String) -> NetrouteripSeries
+
+pub fn net_route_rip_make_vector(Array[Double]) -> NetrouteripVector
+
+pub fn net_route_rip_matrix_identity(Int32) -> NetrouteripMatrix
+
+pub fn net_route_rip_model_make(Int32) -> NetrouteripModel
+
+pub fn net_route_rip_node_make(Int32) -> NetrouteripNode
+
+pub fn net_route_rip_path_make(Int32) -> NetrouteripPath
+
+pub fn net_route_rip_range_make(Int32) -> NetrouteripRange
+
+pub fn net_route_rip_slice_make(Int32) -> NetrouteripSlice
+
+pub fn net_route_rip_table_make(Int32) -> NetrouteripTable
+
+pub fn net_route_rip_vector_zero(Int32) -> NetrouteripVector
+
+pub fn net_route_rip_view_make(Int32) -> NetrouteripView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetrouteripBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteripBuffer::add(Self, Self) -> Self
+pub fn NetrouteripBuffer::copy(Self) -> Self
+pub fn NetrouteripBuffer::fill(Self, Double) -> Self
+pub fn NetrouteripBuffer::get(Self, Int32) -> Double
+pub fn NetrouteripBuffer::len(Self) -> Int32
+pub fn NetrouteripBuffer::max(Self) -> Double
+pub fn NetrouteripBuffer::mean(Self) -> Double
+pub fn NetrouteripBuffer::min(Self) -> Double
+pub fn NetrouteripBuffer::scale(Self, Double) -> Self
+pub fn NetrouteripBuffer::set(Self, Int32, Double) -> Self
+pub fn NetrouteripBuffer::sum(Self) -> Double
+pub fn NetrouteripBuffer::to_string(Self) -> String
+
+pub(all) struct NetrouteripCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteripCluster::add(Self, Self) -> Self
+pub fn NetrouteripCluster::copy(Self) -> Self
+pub fn NetrouteripCluster::fill(Self, Double) -> Self
+pub fn NetrouteripCluster::get(Self, Int32) -> Double
+pub fn NetrouteripCluster::len(Self) -> Int32
+pub fn NetrouteripCluster::max(Self) -> Double
+pub fn NetrouteripCluster::mean(Self) -> Double
+pub fn NetrouteripCluster::min(Self) -> Double
+pub fn NetrouteripCluster::scale(Self, Double) -> Self
+pub fn NetrouteripCluster::set(Self, Int32, Double) -> Self
+pub fn NetrouteripCluster::sum(Self) -> Double
+pub fn NetrouteripCluster::to_string(Self) -> String
+
+pub(all) struct NetrouteripCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteripCursor::add(Self, Self) -> Self
+pub fn NetrouteripCursor::copy(Self) -> Self
+pub fn NetrouteripCursor::fill(Self, Double) -> Self
+pub fn NetrouteripCursor::get(Self, Int32) -> Double
+pub fn NetrouteripCursor::len(Self) -> Int32
+pub fn NetrouteripCursor::max(Self) -> Double
+pub fn NetrouteripCursor::mean(Self) -> Double
+pub fn NetrouteripCursor::min(Self) -> Double
+pub fn NetrouteripCursor::scale(Self, Double) -> Self
+pub fn NetrouteripCursor::set(Self, Int32, Double) -> Self
+pub fn NetrouteripCursor::sum(Self) -> Double
+pub fn NetrouteripCursor::to_string(Self) -> String
+
+pub(all) struct NetrouteripEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteripEdge::add(Self, Self) -> Self
+pub fn NetrouteripEdge::copy(Self) -> Self
+pub fn NetrouteripEdge::fill(Self, Double) -> Self
+pub fn NetrouteripEdge::get(Self, Int32) -> Double
+pub fn NetrouteripEdge::len(Self) -> Int32
+pub fn NetrouteripEdge::max(Self) -> Double
+pub fn NetrouteripEdge::mean(Self) -> Double
+pub fn NetrouteripEdge::min(Self) -> Double
+pub fn NetrouteripEdge::scale(Self, Double) -> Self
+pub fn NetrouteripEdge::set(Self, Int32, Double) -> Self
+pub fn NetrouteripEdge::sum(Self) -> Double
+pub fn NetrouteripEdge::to_string(Self) -> String
+
+pub(all) struct NetrouteripFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteripFrame::add(Self, Self) -> Self
+pub fn NetrouteripFrame::copy(Self) -> Self
+pub fn NetrouteripFrame::fill(Self, Double) -> Self
+pub fn NetrouteripFrame::get(Self, Int32) -> Double
+pub fn NetrouteripFrame::len(Self) -> Int32
+pub fn NetrouteripFrame::max(Self) -> Double
+pub fn NetrouteripFrame::mean(Self) -> Double
+pub fn NetrouteripFrame::min(Self) -> Double
+pub fn NetrouteripFrame::scale(Self, Double) -> Self
+pub fn NetrouteripFrame::set(Self, Int32, Double) -> Self
+pub fn NetrouteripFrame::sum(Self) -> Double
+pub fn NetrouteripFrame::to_string(Self) -> String
+
+pub(all) struct NetrouteripGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteripGraphN::add(Self, Self) -> Self
+pub fn NetrouteripGraphN::copy(Self) -> Self
+pub fn NetrouteripGraphN::fill(Self, Double) -> Self
+pub fn NetrouteripGraphN::get(Self, Int32) -> Double
+pub fn NetrouteripGraphN::len(Self) -> Int32
+pub fn NetrouteripGraphN::max(Self) -> Double
+pub fn NetrouteripGraphN::mean(Self) -> Double
+pub fn NetrouteripGraphN::min(Self) -> Double
+pub fn NetrouteripGraphN::scale(Self, Double) -> Self
+pub fn NetrouteripGraphN::set(Self, Int32, Double) -> Self
+pub fn NetrouteripGraphN::sum(Self) -> Double
+pub fn NetrouteripGraphN::to_string(Self) -> String
+
+pub(all) struct NetrouteripLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteripLayer::add(Self, Self) -> Self
+pub fn NetrouteripLayer::copy(Self) -> Self
+pub fn NetrouteripLayer::fill(Self, Double) -> Self
+pub fn NetrouteripLayer::get(Self, Int32) -> Double
+pub fn NetrouteripLayer::len(Self) -> Int32
+pub fn NetrouteripLayer::max(Self) -> Double
+pub fn NetrouteripLayer::mean(Self) -> Double
+pub fn NetrouteripLayer::min(Self) -> Double
+pub fn NetrouteripLayer::scale(Self, Double) -> Self
+pub fn NetrouteripLayer::set(Self, Int32, Double) -> Self
+pub fn NetrouteripLayer::sum(Self) -> Double
+pub fn NetrouteripLayer::to_string(Self) -> String
+
+pub(all) struct NetrouteripMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetrouteripMatrix::add(Self, Self) -> Self
+pub fn NetrouteripMatrix::det(Self) -> Double
+pub fn NetrouteripMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetrouteripMatrix::multiply(Self, Self) -> Self
+pub fn NetrouteripMatrix::norm(Self) -> Double
+pub fn NetrouteripMatrix::scale(Self, Double) -> Self
+pub fn NetrouteripMatrix::to_string(Self) -> String
+pub fn NetrouteripMatrix::trace(Self) -> Double
+pub fn NetrouteripMatrix::transpose(Self) -> Self
+
+pub(all) struct NetrouteripModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteripModel::add(Self, Self) -> Self
+pub fn NetrouteripModel::copy(Self) -> Self
+pub fn NetrouteripModel::fill(Self, Double) -> Self
+pub fn NetrouteripModel::get(Self, Int32) -> Double
+pub fn NetrouteripModel::len(Self) -> Int32
+pub fn NetrouteripModel::max(Self) -> Double
+pub fn NetrouteripModel::mean(Self) -> Double
+pub fn NetrouteripModel::min(Self) -> Double
+pub fn NetrouteripModel::scale(Self, Double) -> Self
+pub fn NetrouteripModel::set(Self, Int32, Double) -> Self
+pub fn NetrouteripModel::sum(Self) -> Double
+pub fn NetrouteripModel::to_string(Self) -> String
+
+pub(all) struct NetrouteripNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteripNode::add(Self, Self) -> Self
+pub fn NetrouteripNode::copy(Self) -> Self
+pub fn NetrouteripNode::fill(Self, Double) -> Self
+pub fn NetrouteripNode::get(Self, Int32) -> Double
+pub fn NetrouteripNode::len(Self) -> Int32
+pub fn NetrouteripNode::max(Self) -> Double
+pub fn NetrouteripNode::mean(Self) -> Double
+pub fn NetrouteripNode::min(Self) -> Double
+pub fn NetrouteripNode::scale(Self, Double) -> Self
+pub fn NetrouteripNode::set(Self, Int32, Double) -> Self
+pub fn NetrouteripNode::sum(Self) -> Double
+pub fn NetrouteripNode::to_string(Self) -> String
+
+pub(all) struct NetrouteripPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteripPath::add(Self, Self) -> Self
+pub fn NetrouteripPath::copy(Self) -> Self
+pub fn NetrouteripPath::fill(Self, Double) -> Self
+pub fn NetrouteripPath::get(Self, Int32) -> Double
+pub fn NetrouteripPath::len(Self) -> Int32
+pub fn NetrouteripPath::max(Self) -> Double
+pub fn NetrouteripPath::mean(Self) -> Double
+pub fn NetrouteripPath::min(Self) -> Double
+pub fn NetrouteripPath::scale(Self, Double) -> Self
+pub fn NetrouteripPath::set(Self, Int32, Double) -> Self
+pub fn NetrouteripPath::sum(Self) -> Double
+pub fn NetrouteripPath::to_string(Self) -> String
+
+pub(all) struct NetrouteripPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetrouteripPoint::add(Self, Self) -> Self
+pub fn NetrouteripPoint::cross(Self, Self) -> Self
+pub fn NetrouteripPoint::dist(Self, Self) -> Double
+pub fn NetrouteripPoint::dot(Self, Self) -> Double
+pub fn NetrouteripPoint::label(Self) -> Int32
+pub fn NetrouteripPoint::lerp(Self, Self, Double) -> Self
+pub fn NetrouteripPoint::mid(Self, Self) -> Self
+pub fn NetrouteripPoint::negate(Self) -> Self
+pub fn NetrouteripPoint::norm(Self) -> Double
+pub fn NetrouteripPoint::normalize(Self) -> Self
+pub fn NetrouteripPoint::scale(Self, Double) -> Self
+pub fn NetrouteripPoint::sub(Self, Self) -> Self
+pub fn NetrouteripPoint::to_string(Self) -> String
+pub fn NetrouteripPoint::x(Self) -> Double
+pub fn NetrouteripPoint::y(Self) -> Double
+pub fn NetrouteripPoint::z(Self) -> Double
+
+pub(all) struct NetrouteripRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteripRange::add(Self, Self) -> Self
+pub fn NetrouteripRange::copy(Self) -> Self
+pub fn NetrouteripRange::fill(Self, Double) -> Self
+pub fn NetrouteripRange::get(Self, Int32) -> Double
+pub fn NetrouteripRange::len(Self) -> Int32
+pub fn NetrouteripRange::max(Self) -> Double
+pub fn NetrouteripRange::mean(Self) -> Double
+pub fn NetrouteripRange::min(Self) -> Double
+pub fn NetrouteripRange::scale(Self, Double) -> Self
+pub fn NetrouteripRange::set(Self, Int32, Double) -> Self
+pub fn NetrouteripRange::sum(Self) -> Double
+pub fn NetrouteripRange::to_string(Self) -> String
+
+pub(all) struct NetrouteripSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetrouteripSeries::add(Self, Self) -> Self
+pub fn NetrouteripSeries::cumsum(Self) -> Self
+pub fn NetrouteripSeries::len(Self) -> Int32
+pub fn NetrouteripSeries::max(Self) -> Double
+pub fn NetrouteripSeries::mean(Self) -> Double
+pub fn NetrouteripSeries::median(Self) -> Double
+pub fn NetrouteripSeries::min(Self) -> Double
+pub fn NetrouteripSeries::normalize(Self) -> Self
+pub fn NetrouteripSeries::range(Self) -> Double
+pub fn NetrouteripSeries::scale(Self, Double) -> Self
+pub fn NetrouteripSeries::std(Self) -> Double
+pub fn NetrouteripSeries::sub(Self, Self) -> Self
+pub fn NetrouteripSeries::sum(Self) -> Double
+pub fn NetrouteripSeries::to_string(Self) -> String
+pub fn NetrouteripSeries::variance(Self) -> Double
+
+pub(all) struct NetrouteripSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteripSlice::add(Self, Self) -> Self
+pub fn NetrouteripSlice::copy(Self) -> Self
+pub fn NetrouteripSlice::fill(Self, Double) -> Self
+pub fn NetrouteripSlice::get(Self, Int32) -> Double
+pub fn NetrouteripSlice::len(Self) -> Int32
+pub fn NetrouteripSlice::max(Self) -> Double
+pub fn NetrouteripSlice::mean(Self) -> Double
+pub fn NetrouteripSlice::min(Self) -> Double
+pub fn NetrouteripSlice::scale(Self, Double) -> Self
+pub fn NetrouteripSlice::set(Self, Int32, Double) -> Self
+pub fn NetrouteripSlice::sum(Self) -> Double
+pub fn NetrouteripSlice::to_string(Self) -> String
+
+pub(all) struct NetrouteripTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteripTable::add(Self, Self) -> Self
+pub fn NetrouteripTable::copy(Self) -> Self
+pub fn NetrouteripTable::fill(Self, Double) -> Self
+pub fn NetrouteripTable::get(Self, Int32) -> Double
+pub fn NetrouteripTable::len(Self) -> Int32
+pub fn NetrouteripTable::max(Self) -> Double
+pub fn NetrouteripTable::mean(Self) -> Double
+pub fn NetrouteripTable::min(Self) -> Double
+pub fn NetrouteripTable::scale(Self, Double) -> Self
+pub fn NetrouteripTable::set(Self, Int32, Double) -> Self
+pub fn NetrouteripTable::sum(Self) -> Double
+pub fn NetrouteripTable::to_string(Self) -> String
+
+pub(all) struct NetrouteripVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetrouteripVector::add(Self, Self) -> Self
+pub fn NetrouteripVector::dist(Self, Self) -> Double
+pub fn NetrouteripVector::dot(Self, Self) -> Double
+pub fn NetrouteripVector::norm(Self) -> Double
+pub fn NetrouteripVector::normalize(Self) -> Self
+pub fn NetrouteripVector::scale(Self, Double) -> Self
+pub fn NetrouteripVector::sub(Self, Self) -> Self
+pub fn NetrouteripVector::to_string(Self) -> String
+
+pub(all) struct NetrouteripView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteripView::add(Self, Self) -> Self
+pub fn NetrouteripView::copy(Self) -> Self
+pub fn NetrouteripView::fill(Self, Double) -> Self
+pub fn NetrouteripView::get(Self, Int32) -> Double
+pub fn NetrouteripView::len(Self) -> Int32
+pub fn NetrouteripView::max(Self) -> Double
+pub fn NetrouteripView::mean(Self) -> Double
+pub fn NetrouteripView::min(Self) -> Double
+pub fn NetrouteripView::scale(Self, Double) -> Self
+pub fn NetrouteripView::set(Self, Int32, Double) -> Self
+pub fn NetrouteripView::sum(Self) -> Double
+pub fn NetrouteripView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

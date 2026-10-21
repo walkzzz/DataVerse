@@ -1,0 +1,40 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn learncore_id() -> String
+
+pub fn make_hyperparams(String, Array[String]) -> Hyperparams
+
+pub fn model_space_name(ModelSpace) -> String
+
+// Errors
+
+// Types and methods
+pub struct Hyperparams {
+  name : String
+  values : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn Hyperparams::equal(Self, Self) -> Bool
+pub fn Hyperparams::not_equal(Self, Self) -> Bool
+pub fn Hyperparams::to_repr(Self) -> @debug.Repr
+
+pub(all) enum ModelSpace {
+  ML
+  DL
+  SSL
+  Eval
+  Adapt
+  Optim
+} derive(Eq, @debug.Debug)
+pub fn ModelSpace::equal(Self, Self) -> Bool
+pub fn ModelSpace::not_equal(Self, Self) -> Bool
+pub fn ModelSpace::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

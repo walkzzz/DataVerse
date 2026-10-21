@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/stats_infer_confidence"
+
+// Values
+pub fn stats_infer_confidence_buffer_make(Int32) -> StatsinferconfidenceBuffer
+
+pub fn stats_infer_confidence_cluster_make(Int32) -> StatsinferconfidenceCluster
+
+pub fn stats_infer_confidence_cursor_make(Int32) -> StatsinferconfidenceCursor
+
+pub fn stats_infer_confidence_edge_make(Int32) -> StatsinferconfidenceEdge
+
+pub fn stats_infer_confidence_frame_make(Int32) -> StatsinferconfidenceFrame
+
+pub fn stats_infer_confidence_graphn_make(Int32) -> StatsinferconfidenceGraphN
+
+pub fn stats_infer_confidence_layer_make(Int32) -> StatsinferconfidenceLayer
+
+pub fn stats_infer_confidence_make_matrix(Int32, Int32, Double) -> StatsinferconfidenceMatrix
+
+pub fn stats_infer_confidence_make_point(Double, Double) -> StatsinferconfidencePoint
+
+pub fn stats_infer_confidence_make_point3(Double, Double, Double) -> StatsinferconfidencePoint
+
+pub fn stats_infer_confidence_make_series(Array[Double], String) -> StatsinferconfidenceSeries
+
+pub fn stats_infer_confidence_make_vector(Array[Double]) -> StatsinferconfidenceVector
+
+pub fn stats_infer_confidence_matrix_identity(Int32) -> StatsinferconfidenceMatrix
+
+pub fn stats_infer_confidence_model_make(Int32) -> StatsinferconfidenceModel
+
+pub fn stats_infer_confidence_node_make(Int32) -> StatsinferconfidenceNode
+
+pub fn stats_infer_confidence_path_make(Int32) -> StatsinferconfidencePath
+
+pub fn stats_infer_confidence_range_make(Int32) -> StatsinferconfidenceRange
+
+pub fn stats_infer_confidence_slice_make(Int32) -> StatsinferconfidenceSlice
+
+pub fn stats_infer_confidence_table_make(Int32) -> StatsinferconfidenceTable
+
+pub fn stats_infer_confidence_vector_zero(Int32) -> StatsinferconfidenceVector
+
+pub fn stats_infer_confidence_view_make(Int32) -> StatsinferconfidenceView
+
+// Errors
+
+// Types and methods
+pub(all) struct StatsinferconfidenceBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferconfidenceBuffer::add(Self, Self) -> Self
+pub fn StatsinferconfidenceBuffer::copy(Self) -> Self
+pub fn StatsinferconfidenceBuffer::fill(Self, Double) -> Self
+pub fn StatsinferconfidenceBuffer::get(Self, Int32) -> Double
+pub fn StatsinferconfidenceBuffer::len(Self) -> Int32
+pub fn StatsinferconfidenceBuffer::max(Self) -> Double
+pub fn StatsinferconfidenceBuffer::mean(Self) -> Double
+pub fn StatsinferconfidenceBuffer::min(Self) -> Double
+pub fn StatsinferconfidenceBuffer::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceBuffer::set(Self, Int32, Double) -> Self
+pub fn StatsinferconfidenceBuffer::sum(Self) -> Double
+pub fn StatsinferconfidenceBuffer::to_string(Self) -> String
+
+pub(all) struct StatsinferconfidenceCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferconfidenceCluster::add(Self, Self) -> Self
+pub fn StatsinferconfidenceCluster::copy(Self) -> Self
+pub fn StatsinferconfidenceCluster::fill(Self, Double) -> Self
+pub fn StatsinferconfidenceCluster::get(Self, Int32) -> Double
+pub fn StatsinferconfidenceCluster::len(Self) -> Int32
+pub fn StatsinferconfidenceCluster::max(Self) -> Double
+pub fn StatsinferconfidenceCluster::mean(Self) -> Double
+pub fn StatsinferconfidenceCluster::min(Self) -> Double
+pub fn StatsinferconfidenceCluster::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceCluster::set(Self, Int32, Double) -> Self
+pub fn StatsinferconfidenceCluster::sum(Self) -> Double
+pub fn StatsinferconfidenceCluster::to_string(Self) -> String
+
+pub(all) struct StatsinferconfidenceCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferconfidenceCursor::add(Self, Self) -> Self
+pub fn StatsinferconfidenceCursor::copy(Self) -> Self
+pub fn StatsinferconfidenceCursor::fill(Self, Double) -> Self
+pub fn StatsinferconfidenceCursor::get(Self, Int32) -> Double
+pub fn StatsinferconfidenceCursor::len(Self) -> Int32
+pub fn StatsinferconfidenceCursor::max(Self) -> Double
+pub fn StatsinferconfidenceCursor::mean(Self) -> Double
+pub fn StatsinferconfidenceCursor::min(Self) -> Double
+pub fn StatsinferconfidenceCursor::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceCursor::set(Self, Int32, Double) -> Self
+pub fn StatsinferconfidenceCursor::sum(Self) -> Double
+pub fn StatsinferconfidenceCursor::to_string(Self) -> String
+
+pub(all) struct StatsinferconfidenceEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferconfidenceEdge::add(Self, Self) -> Self
+pub fn StatsinferconfidenceEdge::copy(Self) -> Self
+pub fn StatsinferconfidenceEdge::fill(Self, Double) -> Self
+pub fn StatsinferconfidenceEdge::get(Self, Int32) -> Double
+pub fn StatsinferconfidenceEdge::len(Self) -> Int32
+pub fn StatsinferconfidenceEdge::max(Self) -> Double
+pub fn StatsinferconfidenceEdge::mean(Self) -> Double
+pub fn StatsinferconfidenceEdge::min(Self) -> Double
+pub fn StatsinferconfidenceEdge::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceEdge::set(Self, Int32, Double) -> Self
+pub fn StatsinferconfidenceEdge::sum(Self) -> Double
+pub fn StatsinferconfidenceEdge::to_string(Self) -> String
+
+pub(all) struct StatsinferconfidenceFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferconfidenceFrame::add(Self, Self) -> Self
+pub fn StatsinferconfidenceFrame::copy(Self) -> Self
+pub fn StatsinferconfidenceFrame::fill(Self, Double) -> Self
+pub fn StatsinferconfidenceFrame::get(Self, Int32) -> Double
+pub fn StatsinferconfidenceFrame::len(Self) -> Int32
+pub fn StatsinferconfidenceFrame::max(Self) -> Double
+pub fn StatsinferconfidenceFrame::mean(Self) -> Double
+pub fn StatsinferconfidenceFrame::min(Self) -> Double
+pub fn StatsinferconfidenceFrame::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceFrame::set(Self, Int32, Double) -> Self
+pub fn StatsinferconfidenceFrame::sum(Self) -> Double
+pub fn StatsinferconfidenceFrame::to_string(Self) -> String
+
+pub(all) struct StatsinferconfidenceGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferconfidenceGraphN::add(Self, Self) -> Self
+pub fn StatsinferconfidenceGraphN::copy(Self) -> Self
+pub fn StatsinferconfidenceGraphN::fill(Self, Double) -> Self
+pub fn StatsinferconfidenceGraphN::get(Self, Int32) -> Double
+pub fn StatsinferconfidenceGraphN::len(Self) -> Int32
+pub fn StatsinferconfidenceGraphN::max(Self) -> Double
+pub fn StatsinferconfidenceGraphN::mean(Self) -> Double
+pub fn StatsinferconfidenceGraphN::min(Self) -> Double
+pub fn StatsinferconfidenceGraphN::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceGraphN::set(Self, Int32, Double) -> Self
+pub fn StatsinferconfidenceGraphN::sum(Self) -> Double
+pub fn StatsinferconfidenceGraphN::to_string(Self) -> String
+
+pub(all) struct StatsinferconfidenceLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferconfidenceLayer::add(Self, Self) -> Self
+pub fn StatsinferconfidenceLayer::copy(Self) -> Self
+pub fn StatsinferconfidenceLayer::fill(Self, Double) -> Self
+pub fn StatsinferconfidenceLayer::get(Self, Int32) -> Double
+pub fn StatsinferconfidenceLayer::len(Self) -> Int32
+pub fn StatsinferconfidenceLayer::max(Self) -> Double
+pub fn StatsinferconfidenceLayer::mean(Self) -> Double
+pub fn StatsinferconfidenceLayer::min(Self) -> Double
+pub fn StatsinferconfidenceLayer::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceLayer::set(Self, Int32, Double) -> Self
+pub fn StatsinferconfidenceLayer::sum(Self) -> Double
+pub fn StatsinferconfidenceLayer::to_string(Self) -> String
+
+pub(all) struct StatsinferconfidenceMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn StatsinferconfidenceMatrix::add(Self, Self) -> Self
+pub fn StatsinferconfidenceMatrix::det(Self) -> Double
+pub fn StatsinferconfidenceMatrix::get(Self, Int32, Int32) -> Double
+pub fn StatsinferconfidenceMatrix::multiply(Self, Self) -> Self
+pub fn StatsinferconfidenceMatrix::norm(Self) -> Double
+pub fn StatsinferconfidenceMatrix::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceMatrix::to_string(Self) -> String
+pub fn StatsinferconfidenceMatrix::trace(Self) -> Double
+pub fn StatsinferconfidenceMatrix::transpose(Self) -> Self
+
+pub(all) struct StatsinferconfidenceModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferconfidenceModel::add(Self, Self) -> Self
+pub fn StatsinferconfidenceModel::copy(Self) -> Self
+pub fn StatsinferconfidenceModel::fill(Self, Double) -> Self
+pub fn StatsinferconfidenceModel::get(Self, Int32) -> Double
+pub fn StatsinferconfidenceModel::len(Self) -> Int32
+pub fn StatsinferconfidenceModel::max(Self) -> Double
+pub fn StatsinferconfidenceModel::mean(Self) -> Double
+pub fn StatsinferconfidenceModel::min(Self) -> Double
+pub fn StatsinferconfidenceModel::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceModel::set(Self, Int32, Double) -> Self
+pub fn StatsinferconfidenceModel::sum(Self) -> Double
+pub fn StatsinferconfidenceModel::to_string(Self) -> String
+
+pub(all) struct StatsinferconfidenceNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferconfidenceNode::add(Self, Self) -> Self
+pub fn StatsinferconfidenceNode::copy(Self) -> Self
+pub fn StatsinferconfidenceNode::fill(Self, Double) -> Self
+pub fn StatsinferconfidenceNode::get(Self, Int32) -> Double
+pub fn StatsinferconfidenceNode::len(Self) -> Int32
+pub fn StatsinferconfidenceNode::max(Self) -> Double
+pub fn StatsinferconfidenceNode::mean(Self) -> Double
+pub fn StatsinferconfidenceNode::min(Self) -> Double
+pub fn StatsinferconfidenceNode::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceNode::set(Self, Int32, Double) -> Self
+pub fn StatsinferconfidenceNode::sum(Self) -> Double
+pub fn StatsinferconfidenceNode::to_string(Self) -> String
+
+pub(all) struct StatsinferconfidencePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferconfidencePath::add(Self, Self) -> Self
+pub fn StatsinferconfidencePath::copy(Self) -> Self
+pub fn StatsinferconfidencePath::fill(Self, Double) -> Self
+pub fn StatsinferconfidencePath::get(Self, Int32) -> Double
+pub fn StatsinferconfidencePath::len(Self) -> Int32
+pub fn StatsinferconfidencePath::max(Self) -> Double
+pub fn StatsinferconfidencePath::mean(Self) -> Double
+pub fn StatsinferconfidencePath::min(Self) -> Double
+pub fn StatsinferconfidencePath::scale(Self, Double) -> Self
+pub fn StatsinferconfidencePath::set(Self, Int32, Double) -> Self
+pub fn StatsinferconfidencePath::sum(Self) -> Double
+pub fn StatsinferconfidencePath::to_string(Self) -> String
+
+pub(all) struct StatsinferconfidencePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn StatsinferconfidencePoint::add(Self, Self) -> Self
+pub fn StatsinferconfidencePoint::cross(Self, Self) -> Self
+pub fn StatsinferconfidencePoint::dist(Self, Self) -> Double
+pub fn StatsinferconfidencePoint::dot(Self, Self) -> Double
+pub fn StatsinferconfidencePoint::label(Self) -> Int32
+pub fn StatsinferconfidencePoint::lerp(Self, Self, Double) -> Self
+pub fn StatsinferconfidencePoint::mid(Self, Self) -> Self
+pub fn StatsinferconfidencePoint::negate(Self) -> Self
+pub fn StatsinferconfidencePoint::norm(Self) -> Double
+pub fn StatsinferconfidencePoint::normalize(Self) -> Self
+pub fn StatsinferconfidencePoint::scale(Self, Double) -> Self
+pub fn StatsinferconfidencePoint::sub(Self, Self) -> Self
+pub fn StatsinferconfidencePoint::to_string(Self) -> String
+pub fn StatsinferconfidencePoint::x(Self) -> Double
+pub fn StatsinferconfidencePoint::y(Self) -> Double
+pub fn StatsinferconfidencePoint::z(Self) -> Double
+
+pub(all) struct StatsinferconfidenceRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferconfidenceRange::add(Self, Self) -> Self
+pub fn StatsinferconfidenceRange::copy(Self) -> Self
+pub fn StatsinferconfidenceRange::fill(Self, Double) -> Self
+pub fn StatsinferconfidenceRange::get(Self, Int32) -> Double
+pub fn StatsinferconfidenceRange::len(Self) -> Int32
+pub fn StatsinferconfidenceRange::max(Self) -> Double
+pub fn StatsinferconfidenceRange::mean(Self) -> Double
+pub fn StatsinferconfidenceRange::min(Self) -> Double
+pub fn StatsinferconfidenceRange::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceRange::set(Self, Int32, Double) -> Self
+pub fn StatsinferconfidenceRange::sum(Self) -> Double
+pub fn StatsinferconfidenceRange::to_string(Self) -> String
+
+pub(all) struct StatsinferconfidenceSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn StatsinferconfidenceSeries::add(Self, Self) -> Self
+pub fn StatsinferconfidenceSeries::cumsum(Self) -> Self
+pub fn StatsinferconfidenceSeries::len(Self) -> Int32
+pub fn StatsinferconfidenceSeries::max(Self) -> Double
+pub fn StatsinferconfidenceSeries::mean(Self) -> Double
+pub fn StatsinferconfidenceSeries::median(Self) -> Double
+pub fn StatsinferconfidenceSeries::min(Self) -> Double
+pub fn StatsinferconfidenceSeries::normalize(Self) -> Self
+pub fn StatsinferconfidenceSeries::range(Self) -> Double
+pub fn StatsinferconfidenceSeries::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceSeries::std(Self) -> Double
+pub fn StatsinferconfidenceSeries::sub(Self, Self) -> Self
+pub fn StatsinferconfidenceSeries::sum(Self) -> Double
+pub fn StatsinferconfidenceSeries::to_string(Self) -> String
+pub fn StatsinferconfidenceSeries::variance(Self) -> Double
+
+pub(all) struct StatsinferconfidenceSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferconfidenceSlice::add(Self, Self) -> Self
+pub fn StatsinferconfidenceSlice::copy(Self) -> Self
+pub fn StatsinferconfidenceSlice::fill(Self, Double) -> Self
+pub fn StatsinferconfidenceSlice::get(Self, Int32) -> Double
+pub fn StatsinferconfidenceSlice::len(Self) -> Int32
+pub fn StatsinferconfidenceSlice::max(Self) -> Double
+pub fn StatsinferconfidenceSlice::mean(Self) -> Double
+pub fn StatsinferconfidenceSlice::min(Self) -> Double
+pub fn StatsinferconfidenceSlice::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceSlice::set(Self, Int32, Double) -> Self
+pub fn StatsinferconfidenceSlice::sum(Self) -> Double
+pub fn StatsinferconfidenceSlice::to_string(Self) -> String
+
+pub(all) struct StatsinferconfidenceTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferconfidenceTable::add(Self, Self) -> Self
+pub fn StatsinferconfidenceTable::copy(Self) -> Self
+pub fn StatsinferconfidenceTable::fill(Self, Double) -> Self
+pub fn StatsinferconfidenceTable::get(Self, Int32) -> Double
+pub fn StatsinferconfidenceTable::len(Self) -> Int32
+pub fn StatsinferconfidenceTable::max(Self) -> Double
+pub fn StatsinferconfidenceTable::mean(Self) -> Double
+pub fn StatsinferconfidenceTable::min(Self) -> Double
+pub fn StatsinferconfidenceTable::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceTable::set(Self, Int32, Double) -> Self
+pub fn StatsinferconfidenceTable::sum(Self) -> Double
+pub fn StatsinferconfidenceTable::to_string(Self) -> String
+
+pub(all) struct StatsinferconfidenceVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn StatsinferconfidenceVector::add(Self, Self) -> Self
+pub fn StatsinferconfidenceVector::dist(Self, Self) -> Double
+pub fn StatsinferconfidenceVector::dot(Self, Self) -> Double
+pub fn StatsinferconfidenceVector::norm(Self) -> Double
+pub fn StatsinferconfidenceVector::normalize(Self) -> Self
+pub fn StatsinferconfidenceVector::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceVector::sub(Self, Self) -> Self
+pub fn StatsinferconfidenceVector::to_string(Self) -> String
+
+pub(all) struct StatsinferconfidenceView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferconfidenceView::add(Self, Self) -> Self
+pub fn StatsinferconfidenceView::copy(Self) -> Self
+pub fn StatsinferconfidenceView::fill(Self, Double) -> Self
+pub fn StatsinferconfidenceView::get(Self, Int32) -> Double
+pub fn StatsinferconfidenceView::len(Self) -> Int32
+pub fn StatsinferconfidenceView::max(Self) -> Double
+pub fn StatsinferconfidenceView::mean(Self) -> Double
+pub fn StatsinferconfidenceView::min(Self) -> Double
+pub fn StatsinferconfidenceView::scale(Self, Double) -> Self
+pub fn StatsinferconfidenceView::set(Self, Int32, Double) -> Self
+pub fn StatsinferconfidenceView::sum(Self) -> Double
+pub fn StatsinferconfidenceView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

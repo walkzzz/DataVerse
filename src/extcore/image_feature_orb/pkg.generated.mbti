@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_feature_orb"
+
+// Values
+pub fn image_feature_orb_buffer_make(Int32) -> ImagefeatureorbBuffer
+
+pub fn image_feature_orb_cluster_make(Int32) -> ImagefeatureorbCluster
+
+pub fn image_feature_orb_cursor_make(Int32) -> ImagefeatureorbCursor
+
+pub fn image_feature_orb_edge_make(Int32) -> ImagefeatureorbEdge
+
+pub fn image_feature_orb_frame_make(Int32) -> ImagefeatureorbFrame
+
+pub fn image_feature_orb_graphn_make(Int32) -> ImagefeatureorbGraphN
+
+pub fn image_feature_orb_layer_make(Int32) -> ImagefeatureorbLayer
+
+pub fn image_feature_orb_make_matrix(Int32, Int32, Double) -> ImagefeatureorbMatrix
+
+pub fn image_feature_orb_make_point(Double, Double) -> ImagefeatureorbPoint
+
+pub fn image_feature_orb_make_point3(Double, Double, Double) -> ImagefeatureorbPoint
+
+pub fn image_feature_orb_make_series(Array[Double], String) -> ImagefeatureorbSeries
+
+pub fn image_feature_orb_make_vector(Array[Double]) -> ImagefeatureorbVector
+
+pub fn image_feature_orb_matrix_identity(Int32) -> ImagefeatureorbMatrix
+
+pub fn image_feature_orb_model_make(Int32) -> ImagefeatureorbModel
+
+pub fn image_feature_orb_node_make(Int32) -> ImagefeatureorbNode
+
+pub fn image_feature_orb_path_make(Int32) -> ImagefeatureorbPath
+
+pub fn image_feature_orb_range_make(Int32) -> ImagefeatureorbRange
+
+pub fn image_feature_orb_slice_make(Int32) -> ImagefeatureorbSlice
+
+pub fn image_feature_orb_table_make(Int32) -> ImagefeatureorbTable
+
+pub fn image_feature_orb_vector_zero(Int32) -> ImagefeatureorbVector
+
+pub fn image_feature_orb_view_make(Int32) -> ImagefeatureorbView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagefeatureorbBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureorbBuffer::add(Self, Self) -> Self
+pub fn ImagefeatureorbBuffer::copy(Self) -> Self
+pub fn ImagefeatureorbBuffer::fill(Self, Double) -> Self
+pub fn ImagefeatureorbBuffer::get(Self, Int32) -> Double
+pub fn ImagefeatureorbBuffer::len(Self) -> Int32
+pub fn ImagefeatureorbBuffer::max(Self) -> Double
+pub fn ImagefeatureorbBuffer::mean(Self) -> Double
+pub fn ImagefeatureorbBuffer::min(Self) -> Double
+pub fn ImagefeatureorbBuffer::scale(Self, Double) -> Self
+pub fn ImagefeatureorbBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureorbBuffer::sum(Self) -> Double
+pub fn ImagefeatureorbBuffer::to_string(Self) -> String
+
+pub(all) struct ImagefeatureorbCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureorbCluster::add(Self, Self) -> Self
+pub fn ImagefeatureorbCluster::copy(Self) -> Self
+pub fn ImagefeatureorbCluster::fill(Self, Double) -> Self
+pub fn ImagefeatureorbCluster::get(Self, Int32) -> Double
+pub fn ImagefeatureorbCluster::len(Self) -> Int32
+pub fn ImagefeatureorbCluster::max(Self) -> Double
+pub fn ImagefeatureorbCluster::mean(Self) -> Double
+pub fn ImagefeatureorbCluster::min(Self) -> Double
+pub fn ImagefeatureorbCluster::scale(Self, Double) -> Self
+pub fn ImagefeatureorbCluster::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureorbCluster::sum(Self) -> Double
+pub fn ImagefeatureorbCluster::to_string(Self) -> String
+
+pub(all) struct ImagefeatureorbCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureorbCursor::add(Self, Self) -> Self
+pub fn ImagefeatureorbCursor::copy(Self) -> Self
+pub fn ImagefeatureorbCursor::fill(Self, Double) -> Self
+pub fn ImagefeatureorbCursor::get(Self, Int32) -> Double
+pub fn ImagefeatureorbCursor::len(Self) -> Int32
+pub fn ImagefeatureorbCursor::max(Self) -> Double
+pub fn ImagefeatureorbCursor::mean(Self) -> Double
+pub fn ImagefeatureorbCursor::min(Self) -> Double
+pub fn ImagefeatureorbCursor::scale(Self, Double) -> Self
+pub fn ImagefeatureorbCursor::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureorbCursor::sum(Self) -> Double
+pub fn ImagefeatureorbCursor::to_string(Self) -> String
+
+pub(all) struct ImagefeatureorbEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureorbEdge::add(Self, Self) -> Self
+pub fn ImagefeatureorbEdge::copy(Self) -> Self
+pub fn ImagefeatureorbEdge::fill(Self, Double) -> Self
+pub fn ImagefeatureorbEdge::get(Self, Int32) -> Double
+pub fn ImagefeatureorbEdge::len(Self) -> Int32
+pub fn ImagefeatureorbEdge::max(Self) -> Double
+pub fn ImagefeatureorbEdge::mean(Self) -> Double
+pub fn ImagefeatureorbEdge::min(Self) -> Double
+pub fn ImagefeatureorbEdge::scale(Self, Double) -> Self
+pub fn ImagefeatureorbEdge::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureorbEdge::sum(Self) -> Double
+pub fn ImagefeatureorbEdge::to_string(Self) -> String
+
+pub(all) struct ImagefeatureorbFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureorbFrame::add(Self, Self) -> Self
+pub fn ImagefeatureorbFrame::copy(Self) -> Self
+pub fn ImagefeatureorbFrame::fill(Self, Double) -> Self
+pub fn ImagefeatureorbFrame::get(Self, Int32) -> Double
+pub fn ImagefeatureorbFrame::len(Self) -> Int32
+pub fn ImagefeatureorbFrame::max(Self) -> Double
+pub fn ImagefeatureorbFrame::mean(Self) -> Double
+pub fn ImagefeatureorbFrame::min(Self) -> Double
+pub fn ImagefeatureorbFrame::scale(Self, Double) -> Self
+pub fn ImagefeatureorbFrame::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureorbFrame::sum(Self) -> Double
+pub fn ImagefeatureorbFrame::to_string(Self) -> String
+
+pub(all) struct ImagefeatureorbGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureorbGraphN::add(Self, Self) -> Self
+pub fn ImagefeatureorbGraphN::copy(Self) -> Self
+pub fn ImagefeatureorbGraphN::fill(Self, Double) -> Self
+pub fn ImagefeatureorbGraphN::get(Self, Int32) -> Double
+pub fn ImagefeatureorbGraphN::len(Self) -> Int32
+pub fn ImagefeatureorbGraphN::max(Self) -> Double
+pub fn ImagefeatureorbGraphN::mean(Self) -> Double
+pub fn ImagefeatureorbGraphN::min(Self) -> Double
+pub fn ImagefeatureorbGraphN::scale(Self, Double) -> Self
+pub fn ImagefeatureorbGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureorbGraphN::sum(Self) -> Double
+pub fn ImagefeatureorbGraphN::to_string(Self) -> String
+
+pub(all) struct ImagefeatureorbLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureorbLayer::add(Self, Self) -> Self
+pub fn ImagefeatureorbLayer::copy(Self) -> Self
+pub fn ImagefeatureorbLayer::fill(Self, Double) -> Self
+pub fn ImagefeatureorbLayer::get(Self, Int32) -> Double
+pub fn ImagefeatureorbLayer::len(Self) -> Int32
+pub fn ImagefeatureorbLayer::max(Self) -> Double
+pub fn ImagefeatureorbLayer::mean(Self) -> Double
+pub fn ImagefeatureorbLayer::min(Self) -> Double
+pub fn ImagefeatureorbLayer::scale(Self, Double) -> Self
+pub fn ImagefeatureorbLayer::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureorbLayer::sum(Self) -> Double
+pub fn ImagefeatureorbLayer::to_string(Self) -> String
+
+pub(all) struct ImagefeatureorbMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagefeatureorbMatrix::add(Self, Self) -> Self
+pub fn ImagefeatureorbMatrix::det(Self) -> Double
+pub fn ImagefeatureorbMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagefeatureorbMatrix::multiply(Self, Self) -> Self
+pub fn ImagefeatureorbMatrix::norm(Self) -> Double
+pub fn ImagefeatureorbMatrix::scale(Self, Double) -> Self
+pub fn ImagefeatureorbMatrix::to_string(Self) -> String
+pub fn ImagefeatureorbMatrix::trace(Self) -> Double
+pub fn ImagefeatureorbMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagefeatureorbModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureorbModel::add(Self, Self) -> Self
+pub fn ImagefeatureorbModel::copy(Self) -> Self
+pub fn ImagefeatureorbModel::fill(Self, Double) -> Self
+pub fn ImagefeatureorbModel::get(Self, Int32) -> Double
+pub fn ImagefeatureorbModel::len(Self) -> Int32
+pub fn ImagefeatureorbModel::max(Self) -> Double
+pub fn ImagefeatureorbModel::mean(Self) -> Double
+pub fn ImagefeatureorbModel::min(Self) -> Double
+pub fn ImagefeatureorbModel::scale(Self, Double) -> Self
+pub fn ImagefeatureorbModel::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureorbModel::sum(Self) -> Double
+pub fn ImagefeatureorbModel::to_string(Self) -> String
+
+pub(all) struct ImagefeatureorbNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureorbNode::add(Self, Self) -> Self
+pub fn ImagefeatureorbNode::copy(Self) -> Self
+pub fn ImagefeatureorbNode::fill(Self, Double) -> Self
+pub fn ImagefeatureorbNode::get(Self, Int32) -> Double
+pub fn ImagefeatureorbNode::len(Self) -> Int32
+pub fn ImagefeatureorbNode::max(Self) -> Double
+pub fn ImagefeatureorbNode::mean(Self) -> Double
+pub fn ImagefeatureorbNode::min(Self) -> Double
+pub fn ImagefeatureorbNode::scale(Self, Double) -> Self
+pub fn ImagefeatureorbNode::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureorbNode::sum(Self) -> Double
+pub fn ImagefeatureorbNode::to_string(Self) -> String
+
+pub(all) struct ImagefeatureorbPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureorbPath::add(Self, Self) -> Self
+pub fn ImagefeatureorbPath::copy(Self) -> Self
+pub fn ImagefeatureorbPath::fill(Self, Double) -> Self
+pub fn ImagefeatureorbPath::get(Self, Int32) -> Double
+pub fn ImagefeatureorbPath::len(Self) -> Int32
+pub fn ImagefeatureorbPath::max(Self) -> Double
+pub fn ImagefeatureorbPath::mean(Self) -> Double
+pub fn ImagefeatureorbPath::min(Self) -> Double
+pub fn ImagefeatureorbPath::scale(Self, Double) -> Self
+pub fn ImagefeatureorbPath::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureorbPath::sum(Self) -> Double
+pub fn ImagefeatureorbPath::to_string(Self) -> String
+
+pub(all) struct ImagefeatureorbPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagefeatureorbPoint::add(Self, Self) -> Self
+pub fn ImagefeatureorbPoint::cross(Self, Self) -> Self
+pub fn ImagefeatureorbPoint::dist(Self, Self) -> Double
+pub fn ImagefeatureorbPoint::dot(Self, Self) -> Double
+pub fn ImagefeatureorbPoint::label(Self) -> Int32
+pub fn ImagefeatureorbPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagefeatureorbPoint::mid(Self, Self) -> Self
+pub fn ImagefeatureorbPoint::negate(Self) -> Self
+pub fn ImagefeatureorbPoint::norm(Self) -> Double
+pub fn ImagefeatureorbPoint::normalize(Self) -> Self
+pub fn ImagefeatureorbPoint::scale(Self, Double) -> Self
+pub fn ImagefeatureorbPoint::sub(Self, Self) -> Self
+pub fn ImagefeatureorbPoint::to_string(Self) -> String
+pub fn ImagefeatureorbPoint::x(Self) -> Double
+pub fn ImagefeatureorbPoint::y(Self) -> Double
+pub fn ImagefeatureorbPoint::z(Self) -> Double
+
+pub(all) struct ImagefeatureorbRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureorbRange::add(Self, Self) -> Self
+pub fn ImagefeatureorbRange::copy(Self) -> Self
+pub fn ImagefeatureorbRange::fill(Self, Double) -> Self
+pub fn ImagefeatureorbRange::get(Self, Int32) -> Double
+pub fn ImagefeatureorbRange::len(Self) -> Int32
+pub fn ImagefeatureorbRange::max(Self) -> Double
+pub fn ImagefeatureorbRange::mean(Self) -> Double
+pub fn ImagefeatureorbRange::min(Self) -> Double
+pub fn ImagefeatureorbRange::scale(Self, Double) -> Self
+pub fn ImagefeatureorbRange::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureorbRange::sum(Self) -> Double
+pub fn ImagefeatureorbRange::to_string(Self) -> String
+
+pub(all) struct ImagefeatureorbSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagefeatureorbSeries::add(Self, Self) -> Self
+pub fn ImagefeatureorbSeries::cumsum(Self) -> Self
+pub fn ImagefeatureorbSeries::len(Self) -> Int32
+pub fn ImagefeatureorbSeries::max(Self) -> Double
+pub fn ImagefeatureorbSeries::mean(Self) -> Double
+pub fn ImagefeatureorbSeries::median(Self) -> Double
+pub fn ImagefeatureorbSeries::min(Self) -> Double
+pub fn ImagefeatureorbSeries::normalize(Self) -> Self
+pub fn ImagefeatureorbSeries::range(Self) -> Double
+pub fn ImagefeatureorbSeries::scale(Self, Double) -> Self
+pub fn ImagefeatureorbSeries::std(Self) -> Double
+pub fn ImagefeatureorbSeries::sub(Self, Self) -> Self
+pub fn ImagefeatureorbSeries::sum(Self) -> Double
+pub fn ImagefeatureorbSeries::to_string(Self) -> String
+pub fn ImagefeatureorbSeries::variance(Self) -> Double
+
+pub(all) struct ImagefeatureorbSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureorbSlice::add(Self, Self) -> Self
+pub fn ImagefeatureorbSlice::copy(Self) -> Self
+pub fn ImagefeatureorbSlice::fill(Self, Double) -> Self
+pub fn ImagefeatureorbSlice::get(Self, Int32) -> Double
+pub fn ImagefeatureorbSlice::len(Self) -> Int32
+pub fn ImagefeatureorbSlice::max(Self) -> Double
+pub fn ImagefeatureorbSlice::mean(Self) -> Double
+pub fn ImagefeatureorbSlice::min(Self) -> Double
+pub fn ImagefeatureorbSlice::scale(Self, Double) -> Self
+pub fn ImagefeatureorbSlice::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureorbSlice::sum(Self) -> Double
+pub fn ImagefeatureorbSlice::to_string(Self) -> String
+
+pub(all) struct ImagefeatureorbTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureorbTable::add(Self, Self) -> Self
+pub fn ImagefeatureorbTable::copy(Self) -> Self
+pub fn ImagefeatureorbTable::fill(Self, Double) -> Self
+pub fn ImagefeatureorbTable::get(Self, Int32) -> Double
+pub fn ImagefeatureorbTable::len(Self) -> Int32
+pub fn ImagefeatureorbTable::max(Self) -> Double
+pub fn ImagefeatureorbTable::mean(Self) -> Double
+pub fn ImagefeatureorbTable::min(Self) -> Double
+pub fn ImagefeatureorbTable::scale(Self, Double) -> Self
+pub fn ImagefeatureorbTable::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureorbTable::sum(Self) -> Double
+pub fn ImagefeatureorbTable::to_string(Self) -> String
+
+pub(all) struct ImagefeatureorbVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagefeatureorbVector::add(Self, Self) -> Self
+pub fn ImagefeatureorbVector::dist(Self, Self) -> Double
+pub fn ImagefeatureorbVector::dot(Self, Self) -> Double
+pub fn ImagefeatureorbVector::norm(Self) -> Double
+pub fn ImagefeatureorbVector::normalize(Self) -> Self
+pub fn ImagefeatureorbVector::scale(Self, Double) -> Self
+pub fn ImagefeatureorbVector::sub(Self, Self) -> Self
+pub fn ImagefeatureorbVector::to_string(Self) -> String
+
+pub(all) struct ImagefeatureorbView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureorbView::add(Self, Self) -> Self
+pub fn ImagefeatureorbView::copy(Self) -> Self
+pub fn ImagefeatureorbView::fill(Self, Double) -> Self
+pub fn ImagefeatureorbView::get(Self, Int32) -> Double
+pub fn ImagefeatureorbView::len(Self) -> Int32
+pub fn ImagefeatureorbView::max(Self) -> Double
+pub fn ImagefeatureorbView::mean(Self) -> Double
+pub fn ImagefeatureorbView::min(Self) -> Double
+pub fn ImagefeatureorbView::scale(Self, Double) -> Self
+pub fn ImagefeatureorbView::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureorbView::sum(Self) -> Double
+pub fn ImagefeatureorbView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

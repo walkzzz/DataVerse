@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/theorem_prove"
+
+// Values
+pub fn theorem_prove_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn theorem_prove_corr(Array[Double], Array[Double]) -> Double
+
+pub fn theorem_prove_cov(Array[Double], Array[Double]) -> Double
+
+pub fn theorem_prove_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn theorem_prove_mae(Array[Double], Array[Double]) -> Double
+
+pub fn theorem_prove_make_labeled_point(Double, Double, Int32) -> Theorem_provePoint
+
+pub fn theorem_prove_make_matrix(Int32, Int32, Double) -> Theorem_proveMatrix
+
+pub fn theorem_prove_make_point(Double, Double) -> Theorem_provePoint
+
+pub fn theorem_prove_make_series(Array[Double], String) -> Theorem_proveSeries
+
+pub fn theorem_prove_make_vector(Array[Double]) -> Theorem_proveVector
+
+pub fn theorem_prove_matrix_add(Theorem_proveMatrix, Theorem_proveMatrix) -> Theorem_proveMatrix
+
+pub fn theorem_prove_matrix_get(Theorem_proveMatrix, Int32, Int32) -> Double
+
+pub fn theorem_prove_matrix_identity(Int32) -> Theorem_proveMatrix
+
+pub fn theorem_prove_matrix_multiply(Theorem_proveMatrix, Theorem_proveMatrix) -> Theorem_proveMatrix
+
+pub fn theorem_prove_matrix_norm(Theorem_proveMatrix) -> Double
+
+pub fn theorem_prove_matrix_scale(Theorem_proveMatrix, Double) -> Theorem_proveMatrix
+
+pub fn theorem_prove_matrix_to_string(Theorem_proveMatrix) -> String
+
+pub fn theorem_prove_matrix_trace(Theorem_proveMatrix) -> Double
+
+pub fn theorem_prove_matrix_transpose(Theorem_proveMatrix) -> Theorem_proveMatrix
+
+pub fn theorem_prove_mse(Array[Double], Array[Double]) -> Double
+
+pub fn theorem_prove_point_add(Theorem_provePoint, Theorem_provePoint) -> Theorem_provePoint
+
+pub fn theorem_prove_point_dist(Theorem_provePoint, Theorem_provePoint) -> Double
+
+pub fn theorem_prove_point_dot(Theorem_provePoint, Theorem_provePoint) -> Double
+
+pub fn theorem_prove_point_label(Theorem_provePoint) -> Int32
+
+pub fn theorem_prove_point_norm(Theorem_provePoint) -> Double
+
+pub fn theorem_prove_point_scale(Theorem_provePoint, Double) -> Theorem_provePoint
+
+pub fn theorem_prove_point_sub(Theorem_provePoint, Theorem_provePoint) -> Theorem_provePoint
+
+pub fn theorem_prove_point_to_string(Theorem_provePoint) -> String
+
+pub fn theorem_prove_point_x(Theorem_provePoint) -> Double
+
+pub fn theorem_prove_point_y(Theorem_provePoint) -> Double
+
+pub fn theorem_prove_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn theorem_prove_r2(Array[Double], Array[Double]) -> Double
+
+pub fn theorem_prove_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn theorem_prove_series_add(Theorem_proveSeries, Theorem_proveSeries) -> Theorem_proveSeries
+
+pub fn theorem_prove_series_len(Theorem_proveSeries) -> Int32
+
+pub fn theorem_prove_series_max(Theorem_proveSeries) -> Double
+
+pub fn theorem_prove_series_mean(Theorem_proveSeries) -> Double
+
+pub fn theorem_prove_series_min(Theorem_proveSeries) -> Double
+
+pub fn theorem_prove_series_scale(Theorem_proveSeries, Double) -> Theorem_proveSeries
+
+pub fn theorem_prove_series_std(Theorem_proveSeries) -> Double
+
+pub fn theorem_prove_series_sum(Theorem_proveSeries) -> Double
+
+pub fn theorem_prove_series_to_string(Theorem_proveSeries) -> String
+
+pub fn theorem_prove_series_var(Theorem_proveSeries) -> Double
+
+pub fn theorem_prove_std(Array[Double]) -> Double
+
+pub fn theorem_prove_var(Array[Double]) -> Double
+
+pub fn theorem_prove_vector_add(Theorem_proveVector, Theorem_proveVector) -> Theorem_proveVector
+
+pub fn theorem_prove_vector_dist(Theorem_proveVector, Theorem_proveVector) -> Double
+
+pub fn theorem_prove_vector_dot(Theorem_proveVector, Theorem_proveVector) -> Double
+
+pub fn theorem_prove_vector_norm(Theorem_proveVector) -> Double
+
+pub fn theorem_prove_vector_normalize(Theorem_proveVector) -> Theorem_proveVector
+
+pub fn theorem_prove_vector_scale(Theorem_proveVector, Double) -> Theorem_proveVector
+
+pub fn theorem_prove_vector_sub(Theorem_proveVector, Theorem_proveVector) -> Theorem_proveVector
+
+pub fn theorem_prove_vector_to_string(Theorem_proveVector) -> String
+
+pub fn theorem_prove_vector_zero(Int32) -> Theorem_proveVector
+
+// Errors
+
+// Types and methods
+pub struct Theorem_proveMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Theorem_provePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Theorem_proveSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Theorem_proveVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

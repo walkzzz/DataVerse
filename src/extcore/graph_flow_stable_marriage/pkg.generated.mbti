@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_flow_stable_marriage"
+
+// Values
+pub fn graph_flow_stable_marriage_buffer_make(Int32) -> GraphflowstablemarriageBuffer
+
+pub fn graph_flow_stable_marriage_cluster_make(Int32) -> GraphflowstablemarriageCluster
+
+pub fn graph_flow_stable_marriage_cursor_make(Int32) -> GraphflowstablemarriageCursor
+
+pub fn graph_flow_stable_marriage_edge_make(Int32) -> GraphflowstablemarriageEdge
+
+pub fn graph_flow_stable_marriage_frame_make(Int32) -> GraphflowstablemarriageFrame
+
+pub fn graph_flow_stable_marriage_graphn_make(Int32) -> GraphflowstablemarriageGraphN
+
+pub fn graph_flow_stable_marriage_layer_make(Int32) -> GraphflowstablemarriageLayer
+
+pub fn graph_flow_stable_marriage_make_matrix(Int32, Int32, Double) -> GraphflowstablemarriageMatrix
+
+pub fn graph_flow_stable_marriage_make_point(Double, Double) -> GraphflowstablemarriagePoint
+
+pub fn graph_flow_stable_marriage_make_point3(Double, Double, Double) -> GraphflowstablemarriagePoint
+
+pub fn graph_flow_stable_marriage_make_series(Array[Double], String) -> GraphflowstablemarriageSeries
+
+pub fn graph_flow_stable_marriage_make_vector(Array[Double]) -> GraphflowstablemarriageVector
+
+pub fn graph_flow_stable_marriage_matrix_identity(Int32) -> GraphflowstablemarriageMatrix
+
+pub fn graph_flow_stable_marriage_model_make(Int32) -> GraphflowstablemarriageModel
+
+pub fn graph_flow_stable_marriage_node_make(Int32) -> GraphflowstablemarriageNode
+
+pub fn graph_flow_stable_marriage_path_make(Int32) -> GraphflowstablemarriagePath
+
+pub fn graph_flow_stable_marriage_range_make(Int32) -> GraphflowstablemarriageRange
+
+pub fn graph_flow_stable_marriage_slice_make(Int32) -> GraphflowstablemarriageSlice
+
+pub fn graph_flow_stable_marriage_table_make(Int32) -> GraphflowstablemarriageTable
+
+pub fn graph_flow_stable_marriage_vector_zero(Int32) -> GraphflowstablemarriageVector
+
+pub fn graph_flow_stable_marriage_view_make(Int32) -> GraphflowstablemarriageView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphflowstablemarriageBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowstablemarriageBuffer::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageBuffer::copy(Self) -> Self
+pub fn GraphflowstablemarriageBuffer::fill(Self, Double) -> Self
+pub fn GraphflowstablemarriageBuffer::get(Self, Int32) -> Double
+pub fn GraphflowstablemarriageBuffer::len(Self) -> Int32
+pub fn GraphflowstablemarriageBuffer::max(Self) -> Double
+pub fn GraphflowstablemarriageBuffer::mean(Self) -> Double
+pub fn GraphflowstablemarriageBuffer::min(Self) -> Double
+pub fn GraphflowstablemarriageBuffer::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphflowstablemarriageBuffer::sum(Self) -> Double
+pub fn GraphflowstablemarriageBuffer::to_string(Self) -> String
+
+pub(all) struct GraphflowstablemarriageCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowstablemarriageCluster::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageCluster::copy(Self) -> Self
+pub fn GraphflowstablemarriageCluster::fill(Self, Double) -> Self
+pub fn GraphflowstablemarriageCluster::get(Self, Int32) -> Double
+pub fn GraphflowstablemarriageCluster::len(Self) -> Int32
+pub fn GraphflowstablemarriageCluster::max(Self) -> Double
+pub fn GraphflowstablemarriageCluster::mean(Self) -> Double
+pub fn GraphflowstablemarriageCluster::min(Self) -> Double
+pub fn GraphflowstablemarriageCluster::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageCluster::set(Self, Int32, Double) -> Self
+pub fn GraphflowstablemarriageCluster::sum(Self) -> Double
+pub fn GraphflowstablemarriageCluster::to_string(Self) -> String
+
+pub(all) struct GraphflowstablemarriageCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowstablemarriageCursor::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageCursor::copy(Self) -> Self
+pub fn GraphflowstablemarriageCursor::fill(Self, Double) -> Self
+pub fn GraphflowstablemarriageCursor::get(Self, Int32) -> Double
+pub fn GraphflowstablemarriageCursor::len(Self) -> Int32
+pub fn GraphflowstablemarriageCursor::max(Self) -> Double
+pub fn GraphflowstablemarriageCursor::mean(Self) -> Double
+pub fn GraphflowstablemarriageCursor::min(Self) -> Double
+pub fn GraphflowstablemarriageCursor::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageCursor::set(Self, Int32, Double) -> Self
+pub fn GraphflowstablemarriageCursor::sum(Self) -> Double
+pub fn GraphflowstablemarriageCursor::to_string(Self) -> String
+
+pub(all) struct GraphflowstablemarriageEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowstablemarriageEdge::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageEdge::copy(Self) -> Self
+pub fn GraphflowstablemarriageEdge::fill(Self, Double) -> Self
+pub fn GraphflowstablemarriageEdge::get(Self, Int32) -> Double
+pub fn GraphflowstablemarriageEdge::len(Self) -> Int32
+pub fn GraphflowstablemarriageEdge::max(Self) -> Double
+pub fn GraphflowstablemarriageEdge::mean(Self) -> Double
+pub fn GraphflowstablemarriageEdge::min(Self) -> Double
+pub fn GraphflowstablemarriageEdge::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageEdge::set(Self, Int32, Double) -> Self
+pub fn GraphflowstablemarriageEdge::sum(Self) -> Double
+pub fn GraphflowstablemarriageEdge::to_string(Self) -> String
+
+pub(all) struct GraphflowstablemarriageFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowstablemarriageFrame::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageFrame::copy(Self) -> Self
+pub fn GraphflowstablemarriageFrame::fill(Self, Double) -> Self
+pub fn GraphflowstablemarriageFrame::get(Self, Int32) -> Double
+pub fn GraphflowstablemarriageFrame::len(Self) -> Int32
+pub fn GraphflowstablemarriageFrame::max(Self) -> Double
+pub fn GraphflowstablemarriageFrame::mean(Self) -> Double
+pub fn GraphflowstablemarriageFrame::min(Self) -> Double
+pub fn GraphflowstablemarriageFrame::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageFrame::set(Self, Int32, Double) -> Self
+pub fn GraphflowstablemarriageFrame::sum(Self) -> Double
+pub fn GraphflowstablemarriageFrame::to_string(Self) -> String
+
+pub(all) struct GraphflowstablemarriageGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowstablemarriageGraphN::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageGraphN::copy(Self) -> Self
+pub fn GraphflowstablemarriageGraphN::fill(Self, Double) -> Self
+pub fn GraphflowstablemarriageGraphN::get(Self, Int32) -> Double
+pub fn GraphflowstablemarriageGraphN::len(Self) -> Int32
+pub fn GraphflowstablemarriageGraphN::max(Self) -> Double
+pub fn GraphflowstablemarriageGraphN::mean(Self) -> Double
+pub fn GraphflowstablemarriageGraphN::min(Self) -> Double
+pub fn GraphflowstablemarriageGraphN::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphflowstablemarriageGraphN::sum(Self) -> Double
+pub fn GraphflowstablemarriageGraphN::to_string(Self) -> String
+
+pub(all) struct GraphflowstablemarriageLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowstablemarriageLayer::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageLayer::copy(Self) -> Self
+pub fn GraphflowstablemarriageLayer::fill(Self, Double) -> Self
+pub fn GraphflowstablemarriageLayer::get(Self, Int32) -> Double
+pub fn GraphflowstablemarriageLayer::len(Self) -> Int32
+pub fn GraphflowstablemarriageLayer::max(Self) -> Double
+pub fn GraphflowstablemarriageLayer::mean(Self) -> Double
+pub fn GraphflowstablemarriageLayer::min(Self) -> Double
+pub fn GraphflowstablemarriageLayer::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageLayer::set(Self, Int32, Double) -> Self
+pub fn GraphflowstablemarriageLayer::sum(Self) -> Double
+pub fn GraphflowstablemarriageLayer::to_string(Self) -> String
+
+pub(all) struct GraphflowstablemarriageMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphflowstablemarriageMatrix::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageMatrix::det(Self) -> Double
+pub fn GraphflowstablemarriageMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphflowstablemarriageMatrix::multiply(Self, Self) -> Self
+pub fn GraphflowstablemarriageMatrix::norm(Self) -> Double
+pub fn GraphflowstablemarriageMatrix::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageMatrix::to_string(Self) -> String
+pub fn GraphflowstablemarriageMatrix::trace(Self) -> Double
+pub fn GraphflowstablemarriageMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphflowstablemarriageModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowstablemarriageModel::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageModel::copy(Self) -> Self
+pub fn GraphflowstablemarriageModel::fill(Self, Double) -> Self
+pub fn GraphflowstablemarriageModel::get(Self, Int32) -> Double
+pub fn GraphflowstablemarriageModel::len(Self) -> Int32
+pub fn GraphflowstablemarriageModel::max(Self) -> Double
+pub fn GraphflowstablemarriageModel::mean(Self) -> Double
+pub fn GraphflowstablemarriageModel::min(Self) -> Double
+pub fn GraphflowstablemarriageModel::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageModel::set(Self, Int32, Double) -> Self
+pub fn GraphflowstablemarriageModel::sum(Self) -> Double
+pub fn GraphflowstablemarriageModel::to_string(Self) -> String
+
+pub(all) struct GraphflowstablemarriageNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowstablemarriageNode::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageNode::copy(Self) -> Self
+pub fn GraphflowstablemarriageNode::fill(Self, Double) -> Self
+pub fn GraphflowstablemarriageNode::get(Self, Int32) -> Double
+pub fn GraphflowstablemarriageNode::len(Self) -> Int32
+pub fn GraphflowstablemarriageNode::max(Self) -> Double
+pub fn GraphflowstablemarriageNode::mean(Self) -> Double
+pub fn GraphflowstablemarriageNode::min(Self) -> Double
+pub fn GraphflowstablemarriageNode::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageNode::set(Self, Int32, Double) -> Self
+pub fn GraphflowstablemarriageNode::sum(Self) -> Double
+pub fn GraphflowstablemarriageNode::to_string(Self) -> String
+
+pub(all) struct GraphflowstablemarriagePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowstablemarriagePath::add(Self, Self) -> Self
+pub fn GraphflowstablemarriagePath::copy(Self) -> Self
+pub fn GraphflowstablemarriagePath::fill(Self, Double) -> Self
+pub fn GraphflowstablemarriagePath::get(Self, Int32) -> Double
+pub fn GraphflowstablemarriagePath::len(Self) -> Int32
+pub fn GraphflowstablemarriagePath::max(Self) -> Double
+pub fn GraphflowstablemarriagePath::mean(Self) -> Double
+pub fn GraphflowstablemarriagePath::min(Self) -> Double
+pub fn GraphflowstablemarriagePath::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriagePath::set(Self, Int32, Double) -> Self
+pub fn GraphflowstablemarriagePath::sum(Self) -> Double
+pub fn GraphflowstablemarriagePath::to_string(Self) -> String
+
+pub(all) struct GraphflowstablemarriagePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphflowstablemarriagePoint::add(Self, Self) -> Self
+pub fn GraphflowstablemarriagePoint::cross(Self, Self) -> Self
+pub fn GraphflowstablemarriagePoint::dist(Self, Self) -> Double
+pub fn GraphflowstablemarriagePoint::dot(Self, Self) -> Double
+pub fn GraphflowstablemarriagePoint::label(Self) -> Int32
+pub fn GraphflowstablemarriagePoint::lerp(Self, Self, Double) -> Self
+pub fn GraphflowstablemarriagePoint::mid(Self, Self) -> Self
+pub fn GraphflowstablemarriagePoint::negate(Self) -> Self
+pub fn GraphflowstablemarriagePoint::norm(Self) -> Double
+pub fn GraphflowstablemarriagePoint::normalize(Self) -> Self
+pub fn GraphflowstablemarriagePoint::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriagePoint::sub(Self, Self) -> Self
+pub fn GraphflowstablemarriagePoint::to_string(Self) -> String
+pub fn GraphflowstablemarriagePoint::x(Self) -> Double
+pub fn GraphflowstablemarriagePoint::y(Self) -> Double
+pub fn GraphflowstablemarriagePoint::z(Self) -> Double
+
+pub(all) struct GraphflowstablemarriageRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowstablemarriageRange::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageRange::copy(Self) -> Self
+pub fn GraphflowstablemarriageRange::fill(Self, Double) -> Self
+pub fn GraphflowstablemarriageRange::get(Self, Int32) -> Double
+pub fn GraphflowstablemarriageRange::len(Self) -> Int32
+pub fn GraphflowstablemarriageRange::max(Self) -> Double
+pub fn GraphflowstablemarriageRange::mean(Self) -> Double
+pub fn GraphflowstablemarriageRange::min(Self) -> Double
+pub fn GraphflowstablemarriageRange::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageRange::set(Self, Int32, Double) -> Self
+pub fn GraphflowstablemarriageRange::sum(Self) -> Double
+pub fn GraphflowstablemarriageRange::to_string(Self) -> String
+
+pub(all) struct GraphflowstablemarriageSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphflowstablemarriageSeries::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageSeries::cumsum(Self) -> Self
+pub fn GraphflowstablemarriageSeries::len(Self) -> Int32
+pub fn GraphflowstablemarriageSeries::max(Self) -> Double
+pub fn GraphflowstablemarriageSeries::mean(Self) -> Double
+pub fn GraphflowstablemarriageSeries::median(Self) -> Double
+pub fn GraphflowstablemarriageSeries::min(Self) -> Double
+pub fn GraphflowstablemarriageSeries::normalize(Self) -> Self
+pub fn GraphflowstablemarriageSeries::range(Self) -> Double
+pub fn GraphflowstablemarriageSeries::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageSeries::std(Self) -> Double
+pub fn GraphflowstablemarriageSeries::sub(Self, Self) -> Self
+pub fn GraphflowstablemarriageSeries::sum(Self) -> Double
+pub fn GraphflowstablemarriageSeries::to_string(Self) -> String
+pub fn GraphflowstablemarriageSeries::variance(Self) -> Double
+
+pub(all) struct GraphflowstablemarriageSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowstablemarriageSlice::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageSlice::copy(Self) -> Self
+pub fn GraphflowstablemarriageSlice::fill(Self, Double) -> Self
+pub fn GraphflowstablemarriageSlice::get(Self, Int32) -> Double
+pub fn GraphflowstablemarriageSlice::len(Self) -> Int32
+pub fn GraphflowstablemarriageSlice::max(Self) -> Double
+pub fn GraphflowstablemarriageSlice::mean(Self) -> Double
+pub fn GraphflowstablemarriageSlice::min(Self) -> Double
+pub fn GraphflowstablemarriageSlice::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageSlice::set(Self, Int32, Double) -> Self
+pub fn GraphflowstablemarriageSlice::sum(Self) -> Double
+pub fn GraphflowstablemarriageSlice::to_string(Self) -> String
+
+pub(all) struct GraphflowstablemarriageTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowstablemarriageTable::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageTable::copy(Self) -> Self
+pub fn GraphflowstablemarriageTable::fill(Self, Double) -> Self
+pub fn GraphflowstablemarriageTable::get(Self, Int32) -> Double
+pub fn GraphflowstablemarriageTable::len(Self) -> Int32
+pub fn GraphflowstablemarriageTable::max(Self) -> Double
+pub fn GraphflowstablemarriageTable::mean(Self) -> Double
+pub fn GraphflowstablemarriageTable::min(Self) -> Double
+pub fn GraphflowstablemarriageTable::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageTable::set(Self, Int32, Double) -> Self
+pub fn GraphflowstablemarriageTable::sum(Self) -> Double
+pub fn GraphflowstablemarriageTable::to_string(Self) -> String
+
+pub(all) struct GraphflowstablemarriageVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphflowstablemarriageVector::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageVector::dist(Self, Self) -> Double
+pub fn GraphflowstablemarriageVector::dot(Self, Self) -> Double
+pub fn GraphflowstablemarriageVector::norm(Self) -> Double
+pub fn GraphflowstablemarriageVector::normalize(Self) -> Self
+pub fn GraphflowstablemarriageVector::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageVector::sub(Self, Self) -> Self
+pub fn GraphflowstablemarriageVector::to_string(Self) -> String
+
+pub(all) struct GraphflowstablemarriageView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowstablemarriageView::add(Self, Self) -> Self
+pub fn GraphflowstablemarriageView::copy(Self) -> Self
+pub fn GraphflowstablemarriageView::fill(Self, Double) -> Self
+pub fn GraphflowstablemarriageView::get(Self, Int32) -> Double
+pub fn GraphflowstablemarriageView::len(Self) -> Int32
+pub fn GraphflowstablemarriageView::max(Self) -> Double
+pub fn GraphflowstablemarriageView::mean(Self) -> Double
+pub fn GraphflowstablemarriageView::min(Self) -> Double
+pub fn GraphflowstablemarriageView::scale(Self, Double) -> Self
+pub fn GraphflowstablemarriageView::set(Self, Int32, Double) -> Self
+pub fn GraphflowstablemarriageView::sum(Self) -> Double
+pub fn GraphflowstablemarriageView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

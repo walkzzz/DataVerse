@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/laplace_transform"
+
+// Values
+pub fn laplace_transform_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn laplace_transform_corr(Array[Double], Array[Double]) -> Double
+
+pub fn laplace_transform_cov(Array[Double], Array[Double]) -> Double
+
+pub fn laplace_transform_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn laplace_transform_mae(Array[Double], Array[Double]) -> Double
+
+pub fn laplace_transform_make_labeled_point(Double, Double, Int32) -> Laplace_transformPoint
+
+pub fn laplace_transform_make_matrix(Int32, Int32, Double) -> Laplace_transformMatrix
+
+pub fn laplace_transform_make_point(Double, Double) -> Laplace_transformPoint
+
+pub fn laplace_transform_make_series(Array[Double], String) -> Laplace_transformSeries
+
+pub fn laplace_transform_make_vector(Array[Double]) -> Laplace_transformVector
+
+pub fn laplace_transform_matrix_add(Laplace_transformMatrix, Laplace_transformMatrix) -> Laplace_transformMatrix
+
+pub fn laplace_transform_matrix_get(Laplace_transformMatrix, Int32, Int32) -> Double
+
+pub fn laplace_transform_matrix_identity(Int32) -> Laplace_transformMatrix
+
+pub fn laplace_transform_matrix_multiply(Laplace_transformMatrix, Laplace_transformMatrix) -> Laplace_transformMatrix
+
+pub fn laplace_transform_matrix_norm(Laplace_transformMatrix) -> Double
+
+pub fn laplace_transform_matrix_scale(Laplace_transformMatrix, Double) -> Laplace_transformMatrix
+
+pub fn laplace_transform_matrix_to_string(Laplace_transformMatrix) -> String
+
+pub fn laplace_transform_matrix_trace(Laplace_transformMatrix) -> Double
+
+pub fn laplace_transform_matrix_transpose(Laplace_transformMatrix) -> Laplace_transformMatrix
+
+pub fn laplace_transform_mse(Array[Double], Array[Double]) -> Double
+
+pub fn laplace_transform_point_add(Laplace_transformPoint, Laplace_transformPoint) -> Laplace_transformPoint
+
+pub fn laplace_transform_point_dist(Laplace_transformPoint, Laplace_transformPoint) -> Double
+
+pub fn laplace_transform_point_dot(Laplace_transformPoint, Laplace_transformPoint) -> Double
+
+pub fn laplace_transform_point_label(Laplace_transformPoint) -> Int32
+
+pub fn laplace_transform_point_norm(Laplace_transformPoint) -> Double
+
+pub fn laplace_transform_point_scale(Laplace_transformPoint, Double) -> Laplace_transformPoint
+
+pub fn laplace_transform_point_sub(Laplace_transformPoint, Laplace_transformPoint) -> Laplace_transformPoint
+
+pub fn laplace_transform_point_to_string(Laplace_transformPoint) -> String
+
+pub fn laplace_transform_point_x(Laplace_transformPoint) -> Double
+
+pub fn laplace_transform_point_y(Laplace_transformPoint) -> Double
+
+pub fn laplace_transform_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn laplace_transform_r2(Array[Double], Array[Double]) -> Double
+
+pub fn laplace_transform_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn laplace_transform_series_add(Laplace_transformSeries, Laplace_transformSeries) -> Laplace_transformSeries
+
+pub fn laplace_transform_series_len(Laplace_transformSeries) -> Int32
+
+pub fn laplace_transform_series_max(Laplace_transformSeries) -> Double
+
+pub fn laplace_transform_series_mean(Laplace_transformSeries) -> Double
+
+pub fn laplace_transform_series_min(Laplace_transformSeries) -> Double
+
+pub fn laplace_transform_series_scale(Laplace_transformSeries, Double) -> Laplace_transformSeries
+
+pub fn laplace_transform_series_std(Laplace_transformSeries) -> Double
+
+pub fn laplace_transform_series_sum(Laplace_transformSeries) -> Double
+
+pub fn laplace_transform_series_to_string(Laplace_transformSeries) -> String
+
+pub fn laplace_transform_series_var(Laplace_transformSeries) -> Double
+
+pub fn laplace_transform_std(Array[Double]) -> Double
+
+pub fn laplace_transform_var(Array[Double]) -> Double
+
+pub fn laplace_transform_vector_add(Laplace_transformVector, Laplace_transformVector) -> Laplace_transformVector
+
+pub fn laplace_transform_vector_dist(Laplace_transformVector, Laplace_transformVector) -> Double
+
+pub fn laplace_transform_vector_dot(Laplace_transformVector, Laplace_transformVector) -> Double
+
+pub fn laplace_transform_vector_norm(Laplace_transformVector) -> Double
+
+pub fn laplace_transform_vector_normalize(Laplace_transformVector) -> Laplace_transformVector
+
+pub fn laplace_transform_vector_scale(Laplace_transformVector, Double) -> Laplace_transformVector
+
+pub fn laplace_transform_vector_sub(Laplace_transformVector, Laplace_transformVector) -> Laplace_transformVector
+
+pub fn laplace_transform_vector_to_string(Laplace_transformVector) -> String
+
+pub fn laplace_transform_vector_zero(Int32) -> Laplace_transformVector
+
+// Errors
+
+// Types and methods
+pub struct Laplace_transformMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Laplace_transformPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Laplace_transformSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Laplace_transformVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

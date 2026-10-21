@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_ensemble_rf"
+
+// Values
+pub fn ml_ensemble_rf_buffer_make(Int32) -> MlensemblerfBuffer
+
+pub fn ml_ensemble_rf_cluster_make(Int32) -> MlensemblerfCluster
+
+pub fn ml_ensemble_rf_cursor_make(Int32) -> MlensemblerfCursor
+
+pub fn ml_ensemble_rf_edge_make(Int32) -> MlensemblerfEdge
+
+pub fn ml_ensemble_rf_frame_make(Int32) -> MlensemblerfFrame
+
+pub fn ml_ensemble_rf_graphn_make(Int32) -> MlensemblerfGraphN
+
+pub fn ml_ensemble_rf_layer_make(Int32) -> MlensemblerfLayer
+
+pub fn ml_ensemble_rf_make_matrix(Int32, Int32, Double) -> MlensemblerfMatrix
+
+pub fn ml_ensemble_rf_make_point(Double, Double) -> MlensemblerfPoint
+
+pub fn ml_ensemble_rf_make_point3(Double, Double, Double) -> MlensemblerfPoint
+
+pub fn ml_ensemble_rf_make_series(Array[Double], String) -> MlensemblerfSeries
+
+pub fn ml_ensemble_rf_make_vector(Array[Double]) -> MlensemblerfVector
+
+pub fn ml_ensemble_rf_matrix_identity(Int32) -> MlensemblerfMatrix
+
+pub fn ml_ensemble_rf_model_make(Int32) -> MlensemblerfModel
+
+pub fn ml_ensemble_rf_node_make(Int32) -> MlensemblerfNode
+
+pub fn ml_ensemble_rf_path_make(Int32) -> MlensemblerfPath
+
+pub fn ml_ensemble_rf_range_make(Int32) -> MlensemblerfRange
+
+pub fn ml_ensemble_rf_slice_make(Int32) -> MlensemblerfSlice
+
+pub fn ml_ensemble_rf_table_make(Int32) -> MlensemblerfTable
+
+pub fn ml_ensemble_rf_vector_zero(Int32) -> MlensemblerfVector
+
+pub fn ml_ensemble_rf_view_make(Int32) -> MlensemblerfView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlensemblerfBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblerfBuffer::add(Self, Self) -> Self
+pub fn MlensemblerfBuffer::copy(Self) -> Self
+pub fn MlensemblerfBuffer::fill(Self, Double) -> Self
+pub fn MlensemblerfBuffer::get(Self, Int32) -> Double
+pub fn MlensemblerfBuffer::len(Self) -> Int32
+pub fn MlensemblerfBuffer::max(Self) -> Double
+pub fn MlensemblerfBuffer::mean(Self) -> Double
+pub fn MlensemblerfBuffer::min(Self) -> Double
+pub fn MlensemblerfBuffer::scale(Self, Double) -> Self
+pub fn MlensemblerfBuffer::set(Self, Int32, Double) -> Self
+pub fn MlensemblerfBuffer::sum(Self) -> Double
+pub fn MlensemblerfBuffer::to_string(Self) -> String
+
+pub(all) struct MlensemblerfCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblerfCluster::add(Self, Self) -> Self
+pub fn MlensemblerfCluster::copy(Self) -> Self
+pub fn MlensemblerfCluster::fill(Self, Double) -> Self
+pub fn MlensemblerfCluster::get(Self, Int32) -> Double
+pub fn MlensemblerfCluster::len(Self) -> Int32
+pub fn MlensemblerfCluster::max(Self) -> Double
+pub fn MlensemblerfCluster::mean(Self) -> Double
+pub fn MlensemblerfCluster::min(Self) -> Double
+pub fn MlensemblerfCluster::scale(Self, Double) -> Self
+pub fn MlensemblerfCluster::set(Self, Int32, Double) -> Self
+pub fn MlensemblerfCluster::sum(Self) -> Double
+pub fn MlensemblerfCluster::to_string(Self) -> String
+
+pub(all) struct MlensemblerfCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblerfCursor::add(Self, Self) -> Self
+pub fn MlensemblerfCursor::copy(Self) -> Self
+pub fn MlensemblerfCursor::fill(Self, Double) -> Self
+pub fn MlensemblerfCursor::get(Self, Int32) -> Double
+pub fn MlensemblerfCursor::len(Self) -> Int32
+pub fn MlensemblerfCursor::max(Self) -> Double
+pub fn MlensemblerfCursor::mean(Self) -> Double
+pub fn MlensemblerfCursor::min(Self) -> Double
+pub fn MlensemblerfCursor::scale(Self, Double) -> Self
+pub fn MlensemblerfCursor::set(Self, Int32, Double) -> Self
+pub fn MlensemblerfCursor::sum(Self) -> Double
+pub fn MlensemblerfCursor::to_string(Self) -> String
+
+pub(all) struct MlensemblerfEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblerfEdge::add(Self, Self) -> Self
+pub fn MlensemblerfEdge::copy(Self) -> Self
+pub fn MlensemblerfEdge::fill(Self, Double) -> Self
+pub fn MlensemblerfEdge::get(Self, Int32) -> Double
+pub fn MlensemblerfEdge::len(Self) -> Int32
+pub fn MlensemblerfEdge::max(Self) -> Double
+pub fn MlensemblerfEdge::mean(Self) -> Double
+pub fn MlensemblerfEdge::min(Self) -> Double
+pub fn MlensemblerfEdge::scale(Self, Double) -> Self
+pub fn MlensemblerfEdge::set(Self, Int32, Double) -> Self
+pub fn MlensemblerfEdge::sum(Self) -> Double
+pub fn MlensemblerfEdge::to_string(Self) -> String
+
+pub(all) struct MlensemblerfFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblerfFrame::add(Self, Self) -> Self
+pub fn MlensemblerfFrame::copy(Self) -> Self
+pub fn MlensemblerfFrame::fill(Self, Double) -> Self
+pub fn MlensemblerfFrame::get(Self, Int32) -> Double
+pub fn MlensemblerfFrame::len(Self) -> Int32
+pub fn MlensemblerfFrame::max(Self) -> Double
+pub fn MlensemblerfFrame::mean(Self) -> Double
+pub fn MlensemblerfFrame::min(Self) -> Double
+pub fn MlensemblerfFrame::scale(Self, Double) -> Self
+pub fn MlensemblerfFrame::set(Self, Int32, Double) -> Self
+pub fn MlensemblerfFrame::sum(Self) -> Double
+pub fn MlensemblerfFrame::to_string(Self) -> String
+
+pub(all) struct MlensemblerfGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblerfGraphN::add(Self, Self) -> Self
+pub fn MlensemblerfGraphN::copy(Self) -> Self
+pub fn MlensemblerfGraphN::fill(Self, Double) -> Self
+pub fn MlensemblerfGraphN::get(Self, Int32) -> Double
+pub fn MlensemblerfGraphN::len(Self) -> Int32
+pub fn MlensemblerfGraphN::max(Self) -> Double
+pub fn MlensemblerfGraphN::mean(Self) -> Double
+pub fn MlensemblerfGraphN::min(Self) -> Double
+pub fn MlensemblerfGraphN::scale(Self, Double) -> Self
+pub fn MlensemblerfGraphN::set(Self, Int32, Double) -> Self
+pub fn MlensemblerfGraphN::sum(Self) -> Double
+pub fn MlensemblerfGraphN::to_string(Self) -> String
+
+pub(all) struct MlensemblerfLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblerfLayer::add(Self, Self) -> Self
+pub fn MlensemblerfLayer::copy(Self) -> Self
+pub fn MlensemblerfLayer::fill(Self, Double) -> Self
+pub fn MlensemblerfLayer::get(Self, Int32) -> Double
+pub fn MlensemblerfLayer::len(Self) -> Int32
+pub fn MlensemblerfLayer::max(Self) -> Double
+pub fn MlensemblerfLayer::mean(Self) -> Double
+pub fn MlensemblerfLayer::min(Self) -> Double
+pub fn MlensemblerfLayer::scale(Self, Double) -> Self
+pub fn MlensemblerfLayer::set(Self, Int32, Double) -> Self
+pub fn MlensemblerfLayer::sum(Self) -> Double
+pub fn MlensemblerfLayer::to_string(Self) -> String
+
+pub(all) struct MlensemblerfMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlensemblerfMatrix::add(Self, Self) -> Self
+pub fn MlensemblerfMatrix::det(Self) -> Double
+pub fn MlensemblerfMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlensemblerfMatrix::multiply(Self, Self) -> Self
+pub fn MlensemblerfMatrix::norm(Self) -> Double
+pub fn MlensemblerfMatrix::scale(Self, Double) -> Self
+pub fn MlensemblerfMatrix::to_string(Self) -> String
+pub fn MlensemblerfMatrix::trace(Self) -> Double
+pub fn MlensemblerfMatrix::transpose(Self) -> Self
+
+pub(all) struct MlensemblerfModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblerfModel::add(Self, Self) -> Self
+pub fn MlensemblerfModel::copy(Self) -> Self
+pub fn MlensemblerfModel::fill(Self, Double) -> Self
+pub fn MlensemblerfModel::get(Self, Int32) -> Double
+pub fn MlensemblerfModel::len(Self) -> Int32
+pub fn MlensemblerfModel::max(Self) -> Double
+pub fn MlensemblerfModel::mean(Self) -> Double
+pub fn MlensemblerfModel::min(Self) -> Double
+pub fn MlensemblerfModel::scale(Self, Double) -> Self
+pub fn MlensemblerfModel::set(Self, Int32, Double) -> Self
+pub fn MlensemblerfModel::sum(Self) -> Double
+pub fn MlensemblerfModel::to_string(Self) -> String
+
+pub(all) struct MlensemblerfNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblerfNode::add(Self, Self) -> Self
+pub fn MlensemblerfNode::copy(Self) -> Self
+pub fn MlensemblerfNode::fill(Self, Double) -> Self
+pub fn MlensemblerfNode::get(Self, Int32) -> Double
+pub fn MlensemblerfNode::len(Self) -> Int32
+pub fn MlensemblerfNode::max(Self) -> Double
+pub fn MlensemblerfNode::mean(Self) -> Double
+pub fn MlensemblerfNode::min(Self) -> Double
+pub fn MlensemblerfNode::scale(Self, Double) -> Self
+pub fn MlensemblerfNode::set(Self, Int32, Double) -> Self
+pub fn MlensemblerfNode::sum(Self) -> Double
+pub fn MlensemblerfNode::to_string(Self) -> String
+
+pub(all) struct MlensemblerfPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblerfPath::add(Self, Self) -> Self
+pub fn MlensemblerfPath::copy(Self) -> Self
+pub fn MlensemblerfPath::fill(Self, Double) -> Self
+pub fn MlensemblerfPath::get(Self, Int32) -> Double
+pub fn MlensemblerfPath::len(Self) -> Int32
+pub fn MlensemblerfPath::max(Self) -> Double
+pub fn MlensemblerfPath::mean(Self) -> Double
+pub fn MlensemblerfPath::min(Self) -> Double
+pub fn MlensemblerfPath::scale(Self, Double) -> Self
+pub fn MlensemblerfPath::set(Self, Int32, Double) -> Self
+pub fn MlensemblerfPath::sum(Self) -> Double
+pub fn MlensemblerfPath::to_string(Self) -> String
+
+pub(all) struct MlensemblerfPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlensemblerfPoint::add(Self, Self) -> Self
+pub fn MlensemblerfPoint::cross(Self, Self) -> Self
+pub fn MlensemblerfPoint::dist(Self, Self) -> Double
+pub fn MlensemblerfPoint::dot(Self, Self) -> Double
+pub fn MlensemblerfPoint::label(Self) -> Int32
+pub fn MlensemblerfPoint::lerp(Self, Self, Double) -> Self
+pub fn MlensemblerfPoint::mid(Self, Self) -> Self
+pub fn MlensemblerfPoint::negate(Self) -> Self
+pub fn MlensemblerfPoint::norm(Self) -> Double
+pub fn MlensemblerfPoint::normalize(Self) -> Self
+pub fn MlensemblerfPoint::scale(Self, Double) -> Self
+pub fn MlensemblerfPoint::sub(Self, Self) -> Self
+pub fn MlensemblerfPoint::to_string(Self) -> String
+pub fn MlensemblerfPoint::x(Self) -> Double
+pub fn MlensemblerfPoint::y(Self) -> Double
+pub fn MlensemblerfPoint::z(Self) -> Double
+
+pub(all) struct MlensemblerfRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblerfRange::add(Self, Self) -> Self
+pub fn MlensemblerfRange::copy(Self) -> Self
+pub fn MlensemblerfRange::fill(Self, Double) -> Self
+pub fn MlensemblerfRange::get(Self, Int32) -> Double
+pub fn MlensemblerfRange::len(Self) -> Int32
+pub fn MlensemblerfRange::max(Self) -> Double
+pub fn MlensemblerfRange::mean(Self) -> Double
+pub fn MlensemblerfRange::min(Self) -> Double
+pub fn MlensemblerfRange::scale(Self, Double) -> Self
+pub fn MlensemblerfRange::set(Self, Int32, Double) -> Self
+pub fn MlensemblerfRange::sum(Self) -> Double
+pub fn MlensemblerfRange::to_string(Self) -> String
+
+pub(all) struct MlensemblerfSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlensemblerfSeries::add(Self, Self) -> Self
+pub fn MlensemblerfSeries::cumsum(Self) -> Self
+pub fn MlensemblerfSeries::len(Self) -> Int32
+pub fn MlensemblerfSeries::max(Self) -> Double
+pub fn MlensemblerfSeries::mean(Self) -> Double
+pub fn MlensemblerfSeries::median(Self) -> Double
+pub fn MlensemblerfSeries::min(Self) -> Double
+pub fn MlensemblerfSeries::normalize(Self) -> Self
+pub fn MlensemblerfSeries::range(Self) -> Double
+pub fn MlensemblerfSeries::scale(Self, Double) -> Self
+pub fn MlensemblerfSeries::std(Self) -> Double
+pub fn MlensemblerfSeries::sub(Self, Self) -> Self
+pub fn MlensemblerfSeries::sum(Self) -> Double
+pub fn MlensemblerfSeries::to_string(Self) -> String
+pub fn MlensemblerfSeries::variance(Self) -> Double
+
+pub(all) struct MlensemblerfSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblerfSlice::add(Self, Self) -> Self
+pub fn MlensemblerfSlice::copy(Self) -> Self
+pub fn MlensemblerfSlice::fill(Self, Double) -> Self
+pub fn MlensemblerfSlice::get(Self, Int32) -> Double
+pub fn MlensemblerfSlice::len(Self) -> Int32
+pub fn MlensemblerfSlice::max(Self) -> Double
+pub fn MlensemblerfSlice::mean(Self) -> Double
+pub fn MlensemblerfSlice::min(Self) -> Double
+pub fn MlensemblerfSlice::scale(Self, Double) -> Self
+pub fn MlensemblerfSlice::set(Self, Int32, Double) -> Self
+pub fn MlensemblerfSlice::sum(Self) -> Double
+pub fn MlensemblerfSlice::to_string(Self) -> String
+
+pub(all) struct MlensemblerfTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblerfTable::add(Self, Self) -> Self
+pub fn MlensemblerfTable::copy(Self) -> Self
+pub fn MlensemblerfTable::fill(Self, Double) -> Self
+pub fn MlensemblerfTable::get(Self, Int32) -> Double
+pub fn MlensemblerfTable::len(Self) -> Int32
+pub fn MlensemblerfTable::max(Self) -> Double
+pub fn MlensemblerfTable::mean(Self) -> Double
+pub fn MlensemblerfTable::min(Self) -> Double
+pub fn MlensemblerfTable::scale(Self, Double) -> Self
+pub fn MlensemblerfTable::set(Self, Int32, Double) -> Self
+pub fn MlensemblerfTable::sum(Self) -> Double
+pub fn MlensemblerfTable::to_string(Self) -> String
+
+pub(all) struct MlensemblerfVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlensemblerfVector::add(Self, Self) -> Self
+pub fn MlensemblerfVector::dist(Self, Self) -> Double
+pub fn MlensemblerfVector::dot(Self, Self) -> Double
+pub fn MlensemblerfVector::norm(Self) -> Double
+pub fn MlensemblerfVector::normalize(Self) -> Self
+pub fn MlensemblerfVector::scale(Self, Double) -> Self
+pub fn MlensemblerfVector::sub(Self, Self) -> Self
+pub fn MlensemblerfVector::to_string(Self) -> String
+
+pub(all) struct MlensemblerfView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblerfView::add(Self, Self) -> Self
+pub fn MlensemblerfView::copy(Self) -> Self
+pub fn MlensemblerfView::fill(Self, Double) -> Self
+pub fn MlensemblerfView::get(Self, Int32) -> Double
+pub fn MlensemblerfView::len(Self) -> Int32
+pub fn MlensemblerfView::max(Self) -> Double
+pub fn MlensemblerfView::mean(Self) -> Double
+pub fn MlensemblerfView::min(Self) -> Double
+pub fn MlensemblerfView::scale(Self, Double) -> Self
+pub fn MlensemblerfView::set(Self, Int32, Double) -> Self
+pub fn MlensemblerfView::sum(Self) -> Double
+pub fn MlensemblerfView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

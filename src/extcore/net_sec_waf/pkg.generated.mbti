@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_sec_waf"
+
+// Values
+pub fn net_sec_waf_buffer_make(Int32) -> NetsecwafBuffer
+
+pub fn net_sec_waf_cluster_make(Int32) -> NetsecwafCluster
+
+pub fn net_sec_waf_cursor_make(Int32) -> NetsecwafCursor
+
+pub fn net_sec_waf_edge_make(Int32) -> NetsecwafEdge
+
+pub fn net_sec_waf_frame_make(Int32) -> NetsecwafFrame
+
+pub fn net_sec_waf_graphn_make(Int32) -> NetsecwafGraphN
+
+pub fn net_sec_waf_layer_make(Int32) -> NetsecwafLayer
+
+pub fn net_sec_waf_make_matrix(Int32, Int32, Double) -> NetsecwafMatrix
+
+pub fn net_sec_waf_make_point(Double, Double) -> NetsecwafPoint
+
+pub fn net_sec_waf_make_point3(Double, Double, Double) -> NetsecwafPoint
+
+pub fn net_sec_waf_make_series(Array[Double], String) -> NetsecwafSeries
+
+pub fn net_sec_waf_make_vector(Array[Double]) -> NetsecwafVector
+
+pub fn net_sec_waf_matrix_identity(Int32) -> NetsecwafMatrix
+
+pub fn net_sec_waf_model_make(Int32) -> NetsecwafModel
+
+pub fn net_sec_waf_node_make(Int32) -> NetsecwafNode
+
+pub fn net_sec_waf_path_make(Int32) -> NetsecwafPath
+
+pub fn net_sec_waf_range_make(Int32) -> NetsecwafRange
+
+pub fn net_sec_waf_slice_make(Int32) -> NetsecwafSlice
+
+pub fn net_sec_waf_table_make(Int32) -> NetsecwafTable
+
+pub fn net_sec_waf_vector_zero(Int32) -> NetsecwafVector
+
+pub fn net_sec_waf_view_make(Int32) -> NetsecwafView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetsecwafBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecwafBuffer::add(Self, Self) -> Self
+pub fn NetsecwafBuffer::copy(Self) -> Self
+pub fn NetsecwafBuffer::fill(Self, Double) -> Self
+pub fn NetsecwafBuffer::get(Self, Int32) -> Double
+pub fn NetsecwafBuffer::len(Self) -> Int32
+pub fn NetsecwafBuffer::max(Self) -> Double
+pub fn NetsecwafBuffer::mean(Self) -> Double
+pub fn NetsecwafBuffer::min(Self) -> Double
+pub fn NetsecwafBuffer::scale(Self, Double) -> Self
+pub fn NetsecwafBuffer::set(Self, Int32, Double) -> Self
+pub fn NetsecwafBuffer::sum(Self) -> Double
+pub fn NetsecwafBuffer::to_string(Self) -> String
+
+pub(all) struct NetsecwafCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecwafCluster::add(Self, Self) -> Self
+pub fn NetsecwafCluster::copy(Self) -> Self
+pub fn NetsecwafCluster::fill(Self, Double) -> Self
+pub fn NetsecwafCluster::get(Self, Int32) -> Double
+pub fn NetsecwafCluster::len(Self) -> Int32
+pub fn NetsecwafCluster::max(Self) -> Double
+pub fn NetsecwafCluster::mean(Self) -> Double
+pub fn NetsecwafCluster::min(Self) -> Double
+pub fn NetsecwafCluster::scale(Self, Double) -> Self
+pub fn NetsecwafCluster::set(Self, Int32, Double) -> Self
+pub fn NetsecwafCluster::sum(Self) -> Double
+pub fn NetsecwafCluster::to_string(Self) -> String
+
+pub(all) struct NetsecwafCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecwafCursor::add(Self, Self) -> Self
+pub fn NetsecwafCursor::copy(Self) -> Self
+pub fn NetsecwafCursor::fill(Self, Double) -> Self
+pub fn NetsecwafCursor::get(Self, Int32) -> Double
+pub fn NetsecwafCursor::len(Self) -> Int32
+pub fn NetsecwafCursor::max(Self) -> Double
+pub fn NetsecwafCursor::mean(Self) -> Double
+pub fn NetsecwafCursor::min(Self) -> Double
+pub fn NetsecwafCursor::scale(Self, Double) -> Self
+pub fn NetsecwafCursor::set(Self, Int32, Double) -> Self
+pub fn NetsecwafCursor::sum(Self) -> Double
+pub fn NetsecwafCursor::to_string(Self) -> String
+
+pub(all) struct NetsecwafEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecwafEdge::add(Self, Self) -> Self
+pub fn NetsecwafEdge::copy(Self) -> Self
+pub fn NetsecwafEdge::fill(Self, Double) -> Self
+pub fn NetsecwafEdge::get(Self, Int32) -> Double
+pub fn NetsecwafEdge::len(Self) -> Int32
+pub fn NetsecwafEdge::max(Self) -> Double
+pub fn NetsecwafEdge::mean(Self) -> Double
+pub fn NetsecwafEdge::min(Self) -> Double
+pub fn NetsecwafEdge::scale(Self, Double) -> Self
+pub fn NetsecwafEdge::set(Self, Int32, Double) -> Self
+pub fn NetsecwafEdge::sum(Self) -> Double
+pub fn NetsecwafEdge::to_string(Self) -> String
+
+pub(all) struct NetsecwafFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecwafFrame::add(Self, Self) -> Self
+pub fn NetsecwafFrame::copy(Self) -> Self
+pub fn NetsecwafFrame::fill(Self, Double) -> Self
+pub fn NetsecwafFrame::get(Self, Int32) -> Double
+pub fn NetsecwafFrame::len(Self) -> Int32
+pub fn NetsecwafFrame::max(Self) -> Double
+pub fn NetsecwafFrame::mean(Self) -> Double
+pub fn NetsecwafFrame::min(Self) -> Double
+pub fn NetsecwafFrame::scale(Self, Double) -> Self
+pub fn NetsecwafFrame::set(Self, Int32, Double) -> Self
+pub fn NetsecwafFrame::sum(Self) -> Double
+pub fn NetsecwafFrame::to_string(Self) -> String
+
+pub(all) struct NetsecwafGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecwafGraphN::add(Self, Self) -> Self
+pub fn NetsecwafGraphN::copy(Self) -> Self
+pub fn NetsecwafGraphN::fill(Self, Double) -> Self
+pub fn NetsecwafGraphN::get(Self, Int32) -> Double
+pub fn NetsecwafGraphN::len(Self) -> Int32
+pub fn NetsecwafGraphN::max(Self) -> Double
+pub fn NetsecwafGraphN::mean(Self) -> Double
+pub fn NetsecwafGraphN::min(Self) -> Double
+pub fn NetsecwafGraphN::scale(Self, Double) -> Self
+pub fn NetsecwafGraphN::set(Self, Int32, Double) -> Self
+pub fn NetsecwafGraphN::sum(Self) -> Double
+pub fn NetsecwafGraphN::to_string(Self) -> String
+
+pub(all) struct NetsecwafLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecwafLayer::add(Self, Self) -> Self
+pub fn NetsecwafLayer::copy(Self) -> Self
+pub fn NetsecwafLayer::fill(Self, Double) -> Self
+pub fn NetsecwafLayer::get(Self, Int32) -> Double
+pub fn NetsecwafLayer::len(Self) -> Int32
+pub fn NetsecwafLayer::max(Self) -> Double
+pub fn NetsecwafLayer::mean(Self) -> Double
+pub fn NetsecwafLayer::min(Self) -> Double
+pub fn NetsecwafLayer::scale(Self, Double) -> Self
+pub fn NetsecwafLayer::set(Self, Int32, Double) -> Self
+pub fn NetsecwafLayer::sum(Self) -> Double
+pub fn NetsecwafLayer::to_string(Self) -> String
+
+pub(all) struct NetsecwafMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetsecwafMatrix::add(Self, Self) -> Self
+pub fn NetsecwafMatrix::det(Self) -> Double
+pub fn NetsecwafMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetsecwafMatrix::multiply(Self, Self) -> Self
+pub fn NetsecwafMatrix::norm(Self) -> Double
+pub fn NetsecwafMatrix::scale(Self, Double) -> Self
+pub fn NetsecwafMatrix::to_string(Self) -> String
+pub fn NetsecwafMatrix::trace(Self) -> Double
+pub fn NetsecwafMatrix::transpose(Self) -> Self
+
+pub(all) struct NetsecwafModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecwafModel::add(Self, Self) -> Self
+pub fn NetsecwafModel::copy(Self) -> Self
+pub fn NetsecwafModel::fill(Self, Double) -> Self
+pub fn NetsecwafModel::get(Self, Int32) -> Double
+pub fn NetsecwafModel::len(Self) -> Int32
+pub fn NetsecwafModel::max(Self) -> Double
+pub fn NetsecwafModel::mean(Self) -> Double
+pub fn NetsecwafModel::min(Self) -> Double
+pub fn NetsecwafModel::scale(Self, Double) -> Self
+pub fn NetsecwafModel::set(Self, Int32, Double) -> Self
+pub fn NetsecwafModel::sum(Self) -> Double
+pub fn NetsecwafModel::to_string(Self) -> String
+
+pub(all) struct NetsecwafNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecwafNode::add(Self, Self) -> Self
+pub fn NetsecwafNode::copy(Self) -> Self
+pub fn NetsecwafNode::fill(Self, Double) -> Self
+pub fn NetsecwafNode::get(Self, Int32) -> Double
+pub fn NetsecwafNode::len(Self) -> Int32
+pub fn NetsecwafNode::max(Self) -> Double
+pub fn NetsecwafNode::mean(Self) -> Double
+pub fn NetsecwafNode::min(Self) -> Double
+pub fn NetsecwafNode::scale(Self, Double) -> Self
+pub fn NetsecwafNode::set(Self, Int32, Double) -> Self
+pub fn NetsecwafNode::sum(Self) -> Double
+pub fn NetsecwafNode::to_string(Self) -> String
+
+pub(all) struct NetsecwafPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecwafPath::add(Self, Self) -> Self
+pub fn NetsecwafPath::copy(Self) -> Self
+pub fn NetsecwafPath::fill(Self, Double) -> Self
+pub fn NetsecwafPath::get(Self, Int32) -> Double
+pub fn NetsecwafPath::len(Self) -> Int32
+pub fn NetsecwafPath::max(Self) -> Double
+pub fn NetsecwafPath::mean(Self) -> Double
+pub fn NetsecwafPath::min(Self) -> Double
+pub fn NetsecwafPath::scale(Self, Double) -> Self
+pub fn NetsecwafPath::set(Self, Int32, Double) -> Self
+pub fn NetsecwafPath::sum(Self) -> Double
+pub fn NetsecwafPath::to_string(Self) -> String
+
+pub(all) struct NetsecwafPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetsecwafPoint::add(Self, Self) -> Self
+pub fn NetsecwafPoint::cross(Self, Self) -> Self
+pub fn NetsecwafPoint::dist(Self, Self) -> Double
+pub fn NetsecwafPoint::dot(Self, Self) -> Double
+pub fn NetsecwafPoint::label(Self) -> Int32
+pub fn NetsecwafPoint::lerp(Self, Self, Double) -> Self
+pub fn NetsecwafPoint::mid(Self, Self) -> Self
+pub fn NetsecwafPoint::negate(Self) -> Self
+pub fn NetsecwafPoint::norm(Self) -> Double
+pub fn NetsecwafPoint::normalize(Self) -> Self
+pub fn NetsecwafPoint::scale(Self, Double) -> Self
+pub fn NetsecwafPoint::sub(Self, Self) -> Self
+pub fn NetsecwafPoint::to_string(Self) -> String
+pub fn NetsecwafPoint::x(Self) -> Double
+pub fn NetsecwafPoint::y(Self) -> Double
+pub fn NetsecwafPoint::z(Self) -> Double
+
+pub(all) struct NetsecwafRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecwafRange::add(Self, Self) -> Self
+pub fn NetsecwafRange::copy(Self) -> Self
+pub fn NetsecwafRange::fill(Self, Double) -> Self
+pub fn NetsecwafRange::get(Self, Int32) -> Double
+pub fn NetsecwafRange::len(Self) -> Int32
+pub fn NetsecwafRange::max(Self) -> Double
+pub fn NetsecwafRange::mean(Self) -> Double
+pub fn NetsecwafRange::min(Self) -> Double
+pub fn NetsecwafRange::scale(Self, Double) -> Self
+pub fn NetsecwafRange::set(Self, Int32, Double) -> Self
+pub fn NetsecwafRange::sum(Self) -> Double
+pub fn NetsecwafRange::to_string(Self) -> String
+
+pub(all) struct NetsecwafSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetsecwafSeries::add(Self, Self) -> Self
+pub fn NetsecwafSeries::cumsum(Self) -> Self
+pub fn NetsecwafSeries::len(Self) -> Int32
+pub fn NetsecwafSeries::max(Self) -> Double
+pub fn NetsecwafSeries::mean(Self) -> Double
+pub fn NetsecwafSeries::median(Self) -> Double
+pub fn NetsecwafSeries::min(Self) -> Double
+pub fn NetsecwafSeries::normalize(Self) -> Self
+pub fn NetsecwafSeries::range(Self) -> Double
+pub fn NetsecwafSeries::scale(Self, Double) -> Self
+pub fn NetsecwafSeries::std(Self) -> Double
+pub fn NetsecwafSeries::sub(Self, Self) -> Self
+pub fn NetsecwafSeries::sum(Self) -> Double
+pub fn NetsecwafSeries::to_string(Self) -> String
+pub fn NetsecwafSeries::variance(Self) -> Double
+
+pub(all) struct NetsecwafSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecwafSlice::add(Self, Self) -> Self
+pub fn NetsecwafSlice::copy(Self) -> Self
+pub fn NetsecwafSlice::fill(Self, Double) -> Self
+pub fn NetsecwafSlice::get(Self, Int32) -> Double
+pub fn NetsecwafSlice::len(Self) -> Int32
+pub fn NetsecwafSlice::max(Self) -> Double
+pub fn NetsecwafSlice::mean(Self) -> Double
+pub fn NetsecwafSlice::min(Self) -> Double
+pub fn NetsecwafSlice::scale(Self, Double) -> Self
+pub fn NetsecwafSlice::set(Self, Int32, Double) -> Self
+pub fn NetsecwafSlice::sum(Self) -> Double
+pub fn NetsecwafSlice::to_string(Self) -> String
+
+pub(all) struct NetsecwafTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecwafTable::add(Self, Self) -> Self
+pub fn NetsecwafTable::copy(Self) -> Self
+pub fn NetsecwafTable::fill(Self, Double) -> Self
+pub fn NetsecwafTable::get(Self, Int32) -> Double
+pub fn NetsecwafTable::len(Self) -> Int32
+pub fn NetsecwafTable::max(Self) -> Double
+pub fn NetsecwafTable::mean(Self) -> Double
+pub fn NetsecwafTable::min(Self) -> Double
+pub fn NetsecwafTable::scale(Self, Double) -> Self
+pub fn NetsecwafTable::set(Self, Int32, Double) -> Self
+pub fn NetsecwafTable::sum(Self) -> Double
+pub fn NetsecwafTable::to_string(Self) -> String
+
+pub(all) struct NetsecwafVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetsecwafVector::add(Self, Self) -> Self
+pub fn NetsecwafVector::dist(Self, Self) -> Double
+pub fn NetsecwafVector::dot(Self, Self) -> Double
+pub fn NetsecwafVector::norm(Self) -> Double
+pub fn NetsecwafVector::normalize(Self) -> Self
+pub fn NetsecwafVector::scale(Self, Double) -> Self
+pub fn NetsecwafVector::sub(Self, Self) -> Self
+pub fn NetsecwafVector::to_string(Self) -> String
+
+pub(all) struct NetsecwafView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecwafView::add(Self, Self) -> Self
+pub fn NetsecwafView::copy(Self) -> Self
+pub fn NetsecwafView::fill(Self, Double) -> Self
+pub fn NetsecwafView::get(Self, Int32) -> Double
+pub fn NetsecwafView::len(Self) -> Int32
+pub fn NetsecwafView::max(Self) -> Double
+pub fn NetsecwafView::mean(Self) -> Double
+pub fn NetsecwafView::min(Self) -> Double
+pub fn NetsecwafView::scale(Self, Double) -> Self
+pub fn NetsecwafView::set(Self, Int32, Double) -> Self
+pub fn NetsecwafView::sum(Self) -> Double
+pub fn NetsecwafView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

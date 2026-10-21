@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_ensemble_gbm"
+
+// Values
+pub fn ml_ensemble_gbm_buffer_make(Int32) -> MlensemblegbmBuffer
+
+pub fn ml_ensemble_gbm_cluster_make(Int32) -> MlensemblegbmCluster
+
+pub fn ml_ensemble_gbm_cursor_make(Int32) -> MlensemblegbmCursor
+
+pub fn ml_ensemble_gbm_edge_make(Int32) -> MlensemblegbmEdge
+
+pub fn ml_ensemble_gbm_frame_make(Int32) -> MlensemblegbmFrame
+
+pub fn ml_ensemble_gbm_graphn_make(Int32) -> MlensemblegbmGraphN
+
+pub fn ml_ensemble_gbm_layer_make(Int32) -> MlensemblegbmLayer
+
+pub fn ml_ensemble_gbm_make_matrix(Int32, Int32, Double) -> MlensemblegbmMatrix
+
+pub fn ml_ensemble_gbm_make_point(Double, Double) -> MlensemblegbmPoint
+
+pub fn ml_ensemble_gbm_make_point3(Double, Double, Double) -> MlensemblegbmPoint
+
+pub fn ml_ensemble_gbm_make_series(Array[Double], String) -> MlensemblegbmSeries
+
+pub fn ml_ensemble_gbm_make_vector(Array[Double]) -> MlensemblegbmVector
+
+pub fn ml_ensemble_gbm_matrix_identity(Int32) -> MlensemblegbmMatrix
+
+pub fn ml_ensemble_gbm_model_make(Int32) -> MlensemblegbmModel
+
+pub fn ml_ensemble_gbm_node_make(Int32) -> MlensemblegbmNode
+
+pub fn ml_ensemble_gbm_path_make(Int32) -> MlensemblegbmPath
+
+pub fn ml_ensemble_gbm_range_make(Int32) -> MlensemblegbmRange
+
+pub fn ml_ensemble_gbm_slice_make(Int32) -> MlensemblegbmSlice
+
+pub fn ml_ensemble_gbm_table_make(Int32) -> MlensemblegbmTable
+
+pub fn ml_ensemble_gbm_vector_zero(Int32) -> MlensemblegbmVector
+
+pub fn ml_ensemble_gbm_view_make(Int32) -> MlensemblegbmView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlensemblegbmBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblegbmBuffer::add(Self, Self) -> Self
+pub fn MlensemblegbmBuffer::copy(Self) -> Self
+pub fn MlensemblegbmBuffer::fill(Self, Double) -> Self
+pub fn MlensemblegbmBuffer::get(Self, Int32) -> Double
+pub fn MlensemblegbmBuffer::len(Self) -> Int32
+pub fn MlensemblegbmBuffer::max(Self) -> Double
+pub fn MlensemblegbmBuffer::mean(Self) -> Double
+pub fn MlensemblegbmBuffer::min(Self) -> Double
+pub fn MlensemblegbmBuffer::scale(Self, Double) -> Self
+pub fn MlensemblegbmBuffer::set(Self, Int32, Double) -> Self
+pub fn MlensemblegbmBuffer::sum(Self) -> Double
+pub fn MlensemblegbmBuffer::to_string(Self) -> String
+
+pub(all) struct MlensemblegbmCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblegbmCluster::add(Self, Self) -> Self
+pub fn MlensemblegbmCluster::copy(Self) -> Self
+pub fn MlensemblegbmCluster::fill(Self, Double) -> Self
+pub fn MlensemblegbmCluster::get(Self, Int32) -> Double
+pub fn MlensemblegbmCluster::len(Self) -> Int32
+pub fn MlensemblegbmCluster::max(Self) -> Double
+pub fn MlensemblegbmCluster::mean(Self) -> Double
+pub fn MlensemblegbmCluster::min(Self) -> Double
+pub fn MlensemblegbmCluster::scale(Self, Double) -> Self
+pub fn MlensemblegbmCluster::set(Self, Int32, Double) -> Self
+pub fn MlensemblegbmCluster::sum(Self) -> Double
+pub fn MlensemblegbmCluster::to_string(Self) -> String
+
+pub(all) struct MlensemblegbmCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblegbmCursor::add(Self, Self) -> Self
+pub fn MlensemblegbmCursor::copy(Self) -> Self
+pub fn MlensemblegbmCursor::fill(Self, Double) -> Self
+pub fn MlensemblegbmCursor::get(Self, Int32) -> Double
+pub fn MlensemblegbmCursor::len(Self) -> Int32
+pub fn MlensemblegbmCursor::max(Self) -> Double
+pub fn MlensemblegbmCursor::mean(Self) -> Double
+pub fn MlensemblegbmCursor::min(Self) -> Double
+pub fn MlensemblegbmCursor::scale(Self, Double) -> Self
+pub fn MlensemblegbmCursor::set(Self, Int32, Double) -> Self
+pub fn MlensemblegbmCursor::sum(Self) -> Double
+pub fn MlensemblegbmCursor::to_string(Self) -> String
+
+pub(all) struct MlensemblegbmEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblegbmEdge::add(Self, Self) -> Self
+pub fn MlensemblegbmEdge::copy(Self) -> Self
+pub fn MlensemblegbmEdge::fill(Self, Double) -> Self
+pub fn MlensemblegbmEdge::get(Self, Int32) -> Double
+pub fn MlensemblegbmEdge::len(Self) -> Int32
+pub fn MlensemblegbmEdge::max(Self) -> Double
+pub fn MlensemblegbmEdge::mean(Self) -> Double
+pub fn MlensemblegbmEdge::min(Self) -> Double
+pub fn MlensemblegbmEdge::scale(Self, Double) -> Self
+pub fn MlensemblegbmEdge::set(Self, Int32, Double) -> Self
+pub fn MlensemblegbmEdge::sum(Self) -> Double
+pub fn MlensemblegbmEdge::to_string(Self) -> String
+
+pub(all) struct MlensemblegbmFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblegbmFrame::add(Self, Self) -> Self
+pub fn MlensemblegbmFrame::copy(Self) -> Self
+pub fn MlensemblegbmFrame::fill(Self, Double) -> Self
+pub fn MlensemblegbmFrame::get(Self, Int32) -> Double
+pub fn MlensemblegbmFrame::len(Self) -> Int32
+pub fn MlensemblegbmFrame::max(Self) -> Double
+pub fn MlensemblegbmFrame::mean(Self) -> Double
+pub fn MlensemblegbmFrame::min(Self) -> Double
+pub fn MlensemblegbmFrame::scale(Self, Double) -> Self
+pub fn MlensemblegbmFrame::set(Self, Int32, Double) -> Self
+pub fn MlensemblegbmFrame::sum(Self) -> Double
+pub fn MlensemblegbmFrame::to_string(Self) -> String
+
+pub(all) struct MlensemblegbmGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblegbmGraphN::add(Self, Self) -> Self
+pub fn MlensemblegbmGraphN::copy(Self) -> Self
+pub fn MlensemblegbmGraphN::fill(Self, Double) -> Self
+pub fn MlensemblegbmGraphN::get(Self, Int32) -> Double
+pub fn MlensemblegbmGraphN::len(Self) -> Int32
+pub fn MlensemblegbmGraphN::max(Self) -> Double
+pub fn MlensemblegbmGraphN::mean(Self) -> Double
+pub fn MlensemblegbmGraphN::min(Self) -> Double
+pub fn MlensemblegbmGraphN::scale(Self, Double) -> Self
+pub fn MlensemblegbmGraphN::set(Self, Int32, Double) -> Self
+pub fn MlensemblegbmGraphN::sum(Self) -> Double
+pub fn MlensemblegbmGraphN::to_string(Self) -> String
+
+pub(all) struct MlensemblegbmLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblegbmLayer::add(Self, Self) -> Self
+pub fn MlensemblegbmLayer::copy(Self) -> Self
+pub fn MlensemblegbmLayer::fill(Self, Double) -> Self
+pub fn MlensemblegbmLayer::get(Self, Int32) -> Double
+pub fn MlensemblegbmLayer::len(Self) -> Int32
+pub fn MlensemblegbmLayer::max(Self) -> Double
+pub fn MlensemblegbmLayer::mean(Self) -> Double
+pub fn MlensemblegbmLayer::min(Self) -> Double
+pub fn MlensemblegbmLayer::scale(Self, Double) -> Self
+pub fn MlensemblegbmLayer::set(Self, Int32, Double) -> Self
+pub fn MlensemblegbmLayer::sum(Self) -> Double
+pub fn MlensemblegbmLayer::to_string(Self) -> String
+
+pub(all) struct MlensemblegbmMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlensemblegbmMatrix::add(Self, Self) -> Self
+pub fn MlensemblegbmMatrix::det(Self) -> Double
+pub fn MlensemblegbmMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlensemblegbmMatrix::multiply(Self, Self) -> Self
+pub fn MlensemblegbmMatrix::norm(Self) -> Double
+pub fn MlensemblegbmMatrix::scale(Self, Double) -> Self
+pub fn MlensemblegbmMatrix::to_string(Self) -> String
+pub fn MlensemblegbmMatrix::trace(Self) -> Double
+pub fn MlensemblegbmMatrix::transpose(Self) -> Self
+
+pub(all) struct MlensemblegbmModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblegbmModel::add(Self, Self) -> Self
+pub fn MlensemblegbmModel::copy(Self) -> Self
+pub fn MlensemblegbmModel::fill(Self, Double) -> Self
+pub fn MlensemblegbmModel::get(Self, Int32) -> Double
+pub fn MlensemblegbmModel::len(Self) -> Int32
+pub fn MlensemblegbmModel::max(Self) -> Double
+pub fn MlensemblegbmModel::mean(Self) -> Double
+pub fn MlensemblegbmModel::min(Self) -> Double
+pub fn MlensemblegbmModel::scale(Self, Double) -> Self
+pub fn MlensemblegbmModel::set(Self, Int32, Double) -> Self
+pub fn MlensemblegbmModel::sum(Self) -> Double
+pub fn MlensemblegbmModel::to_string(Self) -> String
+
+pub(all) struct MlensemblegbmNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblegbmNode::add(Self, Self) -> Self
+pub fn MlensemblegbmNode::copy(Self) -> Self
+pub fn MlensemblegbmNode::fill(Self, Double) -> Self
+pub fn MlensemblegbmNode::get(Self, Int32) -> Double
+pub fn MlensemblegbmNode::len(Self) -> Int32
+pub fn MlensemblegbmNode::max(Self) -> Double
+pub fn MlensemblegbmNode::mean(Self) -> Double
+pub fn MlensemblegbmNode::min(Self) -> Double
+pub fn MlensemblegbmNode::scale(Self, Double) -> Self
+pub fn MlensemblegbmNode::set(Self, Int32, Double) -> Self
+pub fn MlensemblegbmNode::sum(Self) -> Double
+pub fn MlensemblegbmNode::to_string(Self) -> String
+
+pub(all) struct MlensemblegbmPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblegbmPath::add(Self, Self) -> Self
+pub fn MlensemblegbmPath::copy(Self) -> Self
+pub fn MlensemblegbmPath::fill(Self, Double) -> Self
+pub fn MlensemblegbmPath::get(Self, Int32) -> Double
+pub fn MlensemblegbmPath::len(Self) -> Int32
+pub fn MlensemblegbmPath::max(Self) -> Double
+pub fn MlensemblegbmPath::mean(Self) -> Double
+pub fn MlensemblegbmPath::min(Self) -> Double
+pub fn MlensemblegbmPath::scale(Self, Double) -> Self
+pub fn MlensemblegbmPath::set(Self, Int32, Double) -> Self
+pub fn MlensemblegbmPath::sum(Self) -> Double
+pub fn MlensemblegbmPath::to_string(Self) -> String
+
+pub(all) struct MlensemblegbmPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlensemblegbmPoint::add(Self, Self) -> Self
+pub fn MlensemblegbmPoint::cross(Self, Self) -> Self
+pub fn MlensemblegbmPoint::dist(Self, Self) -> Double
+pub fn MlensemblegbmPoint::dot(Self, Self) -> Double
+pub fn MlensemblegbmPoint::label(Self) -> Int32
+pub fn MlensemblegbmPoint::lerp(Self, Self, Double) -> Self
+pub fn MlensemblegbmPoint::mid(Self, Self) -> Self
+pub fn MlensemblegbmPoint::negate(Self) -> Self
+pub fn MlensemblegbmPoint::norm(Self) -> Double
+pub fn MlensemblegbmPoint::normalize(Self) -> Self
+pub fn MlensemblegbmPoint::scale(Self, Double) -> Self
+pub fn MlensemblegbmPoint::sub(Self, Self) -> Self
+pub fn MlensemblegbmPoint::to_string(Self) -> String
+pub fn MlensemblegbmPoint::x(Self) -> Double
+pub fn MlensemblegbmPoint::y(Self) -> Double
+pub fn MlensemblegbmPoint::z(Self) -> Double
+
+pub(all) struct MlensemblegbmRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblegbmRange::add(Self, Self) -> Self
+pub fn MlensemblegbmRange::copy(Self) -> Self
+pub fn MlensemblegbmRange::fill(Self, Double) -> Self
+pub fn MlensemblegbmRange::get(Self, Int32) -> Double
+pub fn MlensemblegbmRange::len(Self) -> Int32
+pub fn MlensemblegbmRange::max(Self) -> Double
+pub fn MlensemblegbmRange::mean(Self) -> Double
+pub fn MlensemblegbmRange::min(Self) -> Double
+pub fn MlensemblegbmRange::scale(Self, Double) -> Self
+pub fn MlensemblegbmRange::set(Self, Int32, Double) -> Self
+pub fn MlensemblegbmRange::sum(Self) -> Double
+pub fn MlensemblegbmRange::to_string(Self) -> String
+
+pub(all) struct MlensemblegbmSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlensemblegbmSeries::add(Self, Self) -> Self
+pub fn MlensemblegbmSeries::cumsum(Self) -> Self
+pub fn MlensemblegbmSeries::len(Self) -> Int32
+pub fn MlensemblegbmSeries::max(Self) -> Double
+pub fn MlensemblegbmSeries::mean(Self) -> Double
+pub fn MlensemblegbmSeries::median(Self) -> Double
+pub fn MlensemblegbmSeries::min(Self) -> Double
+pub fn MlensemblegbmSeries::normalize(Self) -> Self
+pub fn MlensemblegbmSeries::range(Self) -> Double
+pub fn MlensemblegbmSeries::scale(Self, Double) -> Self
+pub fn MlensemblegbmSeries::std(Self) -> Double
+pub fn MlensemblegbmSeries::sub(Self, Self) -> Self
+pub fn MlensemblegbmSeries::sum(Self) -> Double
+pub fn MlensemblegbmSeries::to_string(Self) -> String
+pub fn MlensemblegbmSeries::variance(Self) -> Double
+
+pub(all) struct MlensemblegbmSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblegbmSlice::add(Self, Self) -> Self
+pub fn MlensemblegbmSlice::copy(Self) -> Self
+pub fn MlensemblegbmSlice::fill(Self, Double) -> Self
+pub fn MlensemblegbmSlice::get(Self, Int32) -> Double
+pub fn MlensemblegbmSlice::len(Self) -> Int32
+pub fn MlensemblegbmSlice::max(Self) -> Double
+pub fn MlensemblegbmSlice::mean(Self) -> Double
+pub fn MlensemblegbmSlice::min(Self) -> Double
+pub fn MlensemblegbmSlice::scale(Self, Double) -> Self
+pub fn MlensemblegbmSlice::set(Self, Int32, Double) -> Self
+pub fn MlensemblegbmSlice::sum(Self) -> Double
+pub fn MlensemblegbmSlice::to_string(Self) -> String
+
+pub(all) struct MlensemblegbmTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblegbmTable::add(Self, Self) -> Self
+pub fn MlensemblegbmTable::copy(Self) -> Self
+pub fn MlensemblegbmTable::fill(Self, Double) -> Self
+pub fn MlensemblegbmTable::get(Self, Int32) -> Double
+pub fn MlensemblegbmTable::len(Self) -> Int32
+pub fn MlensemblegbmTable::max(Self) -> Double
+pub fn MlensemblegbmTable::mean(Self) -> Double
+pub fn MlensemblegbmTable::min(Self) -> Double
+pub fn MlensemblegbmTable::scale(Self, Double) -> Self
+pub fn MlensemblegbmTable::set(Self, Int32, Double) -> Self
+pub fn MlensemblegbmTable::sum(Self) -> Double
+pub fn MlensemblegbmTable::to_string(Self) -> String
+
+pub(all) struct MlensemblegbmVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlensemblegbmVector::add(Self, Self) -> Self
+pub fn MlensemblegbmVector::dist(Self, Self) -> Double
+pub fn MlensemblegbmVector::dot(Self, Self) -> Double
+pub fn MlensemblegbmVector::norm(Self) -> Double
+pub fn MlensemblegbmVector::normalize(Self) -> Self
+pub fn MlensemblegbmVector::scale(Self, Double) -> Self
+pub fn MlensemblegbmVector::sub(Self, Self) -> Self
+pub fn MlensemblegbmVector::to_string(Self) -> String
+
+pub(all) struct MlensemblegbmView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblegbmView::add(Self, Self) -> Self
+pub fn MlensemblegbmView::copy(Self) -> Self
+pub fn MlensemblegbmView::fill(Self, Double) -> Self
+pub fn MlensemblegbmView::get(Self, Int32) -> Double
+pub fn MlensemblegbmView::len(Self) -> Int32
+pub fn MlensemblegbmView::max(Self) -> Double
+pub fn MlensemblegbmView::mean(Self) -> Double
+pub fn MlensemblegbmView::min(Self) -> Double
+pub fn MlensemblegbmView::scale(Self, Double) -> Self
+pub fn MlensemblegbmView::set(Self, Int32, Double) -> Self
+pub fn MlensemblegbmView::sum(Self) -> Double
+pub fn MlensemblegbmView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

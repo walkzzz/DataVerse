@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/index_hash"
+
+// Values
+pub fn index_hash_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn index_hash_corr(Array[Double], Array[Double]) -> Double
+
+pub fn index_hash_cov(Array[Double], Array[Double]) -> Double
+
+pub fn index_hash_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_hash_mae(Array[Double], Array[Double]) -> Double
+
+pub fn index_hash_make_labeled_point(Double, Double, Int32) -> Index_hashPoint
+
+pub fn index_hash_make_matrix(Int32, Int32, Double) -> Index_hashMatrix
+
+pub fn index_hash_make_point(Double, Double) -> Index_hashPoint
+
+pub fn index_hash_make_series(Array[Double], String) -> Index_hashSeries
+
+pub fn index_hash_make_vector(Array[Double]) -> Index_hashVector
+
+pub fn index_hash_matrix_add(Index_hashMatrix, Index_hashMatrix) -> Index_hashMatrix
+
+pub fn index_hash_matrix_get(Index_hashMatrix, Int32, Int32) -> Double
+
+pub fn index_hash_matrix_identity(Int32) -> Index_hashMatrix
+
+pub fn index_hash_matrix_multiply(Index_hashMatrix, Index_hashMatrix) -> Index_hashMatrix
+
+pub fn index_hash_matrix_norm(Index_hashMatrix) -> Double
+
+pub fn index_hash_matrix_scale(Index_hashMatrix, Double) -> Index_hashMatrix
+
+pub fn index_hash_matrix_to_string(Index_hashMatrix) -> String
+
+pub fn index_hash_matrix_trace(Index_hashMatrix) -> Double
+
+pub fn index_hash_matrix_transpose(Index_hashMatrix) -> Index_hashMatrix
+
+pub fn index_hash_mse(Array[Double], Array[Double]) -> Double
+
+pub fn index_hash_point_add(Index_hashPoint, Index_hashPoint) -> Index_hashPoint
+
+pub fn index_hash_point_dist(Index_hashPoint, Index_hashPoint) -> Double
+
+pub fn index_hash_point_dot(Index_hashPoint, Index_hashPoint) -> Double
+
+pub fn index_hash_point_label(Index_hashPoint) -> Int32
+
+pub fn index_hash_point_norm(Index_hashPoint) -> Double
+
+pub fn index_hash_point_scale(Index_hashPoint, Double) -> Index_hashPoint
+
+pub fn index_hash_point_sub(Index_hashPoint, Index_hashPoint) -> Index_hashPoint
+
+pub fn index_hash_point_to_string(Index_hashPoint) -> String
+
+pub fn index_hash_point_x(Index_hashPoint) -> Double
+
+pub fn index_hash_point_y(Index_hashPoint) -> Double
+
+pub fn index_hash_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_hash_r2(Array[Double], Array[Double]) -> Double
+
+pub fn index_hash_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_hash_series_add(Index_hashSeries, Index_hashSeries) -> Index_hashSeries
+
+pub fn index_hash_series_len(Index_hashSeries) -> Int32
+
+pub fn index_hash_series_max(Index_hashSeries) -> Double
+
+pub fn index_hash_series_mean(Index_hashSeries) -> Double
+
+pub fn index_hash_series_min(Index_hashSeries) -> Double
+
+pub fn index_hash_series_scale(Index_hashSeries, Double) -> Index_hashSeries
+
+pub fn index_hash_series_std(Index_hashSeries) -> Double
+
+pub fn index_hash_series_sum(Index_hashSeries) -> Double
+
+pub fn index_hash_series_to_string(Index_hashSeries) -> String
+
+pub fn index_hash_series_var(Index_hashSeries) -> Double
+
+pub fn index_hash_std(Array[Double]) -> Double
+
+pub fn index_hash_var(Array[Double]) -> Double
+
+pub fn index_hash_vector_add(Index_hashVector, Index_hashVector) -> Index_hashVector
+
+pub fn index_hash_vector_dist(Index_hashVector, Index_hashVector) -> Double
+
+pub fn index_hash_vector_dot(Index_hashVector, Index_hashVector) -> Double
+
+pub fn index_hash_vector_norm(Index_hashVector) -> Double
+
+pub fn index_hash_vector_normalize(Index_hashVector) -> Index_hashVector
+
+pub fn index_hash_vector_scale(Index_hashVector, Double) -> Index_hashVector
+
+pub fn index_hash_vector_sub(Index_hashVector, Index_hashVector) -> Index_hashVector
+
+pub fn index_hash_vector_to_string(Index_hashVector) -> String
+
+pub fn index_hash_vector_zero(Int32) -> Index_hashVector
+
+// Errors
+
+// Types and methods
+pub struct Index_hashMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Index_hashPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Index_hashSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Index_hashVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

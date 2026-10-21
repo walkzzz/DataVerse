@@ -1,0 +1,364 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/deep_learning"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn adadelta_step(AdaDeltaState, Array[Double]) -> Array[Double]
+
+pub fn adagrad_step(AdaGradState, Array[Double]) -> Array[Double]
+
+pub fn adam_step(AdamState, Array[Double]) -> Array[Double]
+
+pub fn adam_update(AdamState, Array[Double]) -> AdamState
+
+pub fn attention_forward(Array[Double], Array[Double], Array[Double]) -> Array[Double]
+
+pub fn autoencoder_decode(Array[Double], AutoEncoderMeta) -> Array[Double]
+
+pub fn autoencoder_encode(Array[Double], AutoEncoderMeta) -> Array[Double]
+
+pub fn avgpool_backward(Array[Array[Double]], Array[Array[Double]], AvgPoolMeta) -> Array[Array[Double]]
+
+pub fn avgpool_forward(Array[Array[Double]], AvgPoolMeta) -> Array[Array[Double]]
+
+pub fn batchnorm_backward(Array[Double], Array[Double], BatchNormMeta) -> Array[Double]
+
+pub fn batchnorm_forward(Array[Double], BatchNormMeta) -> Array[Double]
+
+pub fn conv2d_backward(Array[Array[Double]], Array[Array[Double]], Conv2dMeta) -> Array[Array[Double]]
+
+pub fn conv2d_forward(Array[Array[Double]], Array[Array[Double]], Conv2dMeta) -> Array[Array[Double]]
+
+pub fn cross_entropy_loss(Array[Double], Array[Double]) -> Double
+
+pub fn deep_learning_id() -> String
+
+pub fn dropout_backward(Array[Double], DropoutMeta) -> Array[Double]
+
+pub fn dropout_forward(Array[Double], DropoutMeta) -> Array[Double]
+
+pub fn gan_discriminator(Array[Double], GANMeta) -> Double
+
+pub fn gan_generator(Array[Double], GANMeta) -> Array[Double]
+
+pub fn gan_loss(Double, Double) -> Double
+
+pub fn gradient_check((Double) -> Double, Double, Double) -> Bool
+
+pub fn gru_cell(Array[Double], Array[Double], GRUMeta) -> Array[Double]
+
+pub fn gru_forward(Array[Array[Double]], Array[Double], GRUMeta) -> Array[Array[Double]]
+
+pub fn gru_gate(Double, Double, GRUMeta) -> (Double, Double, Double)
+
+pub fn huber_loss(Array[Double], Array[Double], Double) -> Double
+
+pub fn kl_loss(Array[Double], Array[Double]) -> Double
+
+pub fn layernorm_backward(Array[Double], Array[Double], LayerNormMeta) -> Array[Double]
+
+pub fn layernorm_forward(Array[Double], LayerNormMeta) -> Array[Double]
+
+pub fn lr_cosine(SchedulerMeta, Int32) -> Double
+
+pub fn lr_exponential(SchedulerMeta, Int32) -> Double
+
+pub fn lr_step(SchedulerMeta, Int32) -> Double
+
+pub fn lstm_cell(Array[Double], Array[Double], Array[Double], LSTMMeta) -> (Array[Double], Array[Double])
+
+pub fn lstm_forward(Array[Array[Double]], Array[Double], Array[Double], LSTMMeta) -> Array[Array[Double]]
+
+pub fn lstm_gate(Double, Double, LSTMMeta) -> (Double, Double, Double, Double)
+
+pub fn mae_loss(Array[Double], Array[Double]) -> Double
+
+pub fn make_attention(Int32, Int32) -> AttentionMeta
+
+pub fn make_autoencoder(Int32, Int32, Int32) -> AutoEncoderMeta
+
+pub fn make_avgpool(Int32, Int32) -> AvgPoolMeta
+
+pub fn make_batchnorm(Int32, Double) -> BatchNormMeta
+
+pub fn make_conv2d(Int32, Int32, Int32, Int32, Int32) -> Conv2dMeta
+
+pub fn make_dropout(Double, Bool) -> DropoutMeta
+
+pub fn make_gan(Int32, Int32, Int32) -> GANMeta
+
+pub fn make_gru(Int32, Int32) -> GRUMeta
+
+pub fn make_layernorm(Int32, Double) -> LayerNormMeta
+
+pub fn make_loss_cross_entropy() -> Int32
+
+pub fn make_loss_huber(Double) -> Double
+
+pub fn make_loss_kl() -> Int32
+
+pub fn make_loss_mae() -> Int32
+
+pub fn make_loss_mse() -> Int32
+
+pub fn make_lstm(Int32, Int32) -> LSTMMeta
+
+pub fn make_maxpool(Int32, Int32) -> MaxPoolMeta
+
+pub fn make_optimizer_adadelta(Double, Array[Double]) -> AdaDeltaState
+
+pub fn make_optimizer_adagrad(Double, Array[Double]) -> AdaGradState
+
+pub fn make_optimizer_adam(Double, Array[Double]) -> AdamState
+
+pub fn make_optimizer_sgd(Double, Array[Double]) -> SGDState
+
+pub fn make_scheduler(Double, Int32, Double) -> SchedulerMeta
+
+pub fn make_tensor(Array[Int32], Array[Double]) -> Tensor
+
+pub fn make_transformer(Int32, Int32, Int32, Int32) -> TransformerMeta
+
+pub fn make_vae(Int32, Int32, Int32) -> VAEMeta
+
+pub fn maxpool_backward(Array[Array[Double]], Array[Array[Double]], MaxPoolMeta) -> Array[Array[Double]]
+
+pub fn maxpool_forward(Array[Array[Double]], MaxPoolMeta) -> Array[Array[Double]]
+
+pub fn model_load(String) -> Array[Double]
+
+pub fn model_save(Array[Double]) -> String
+
+pub fn model_summary(Array[Double]) -> String
+
+pub fn mse_loss(Array[Double], Array[Double]) -> Double
+
+pub fn multi_head_attention(Array[Double], Array[Double], Array[Double], AttentionMeta) -> Array[Double]
+
+pub fn numerical_gradient_check(Array[Double], Array[Double], Double) -> Bool
+
+pub fn sgd_step(SGDState, Array[Double]) -> Array[Double]
+
+pub fn sgd_update(SGDState, Array[Double]) -> SGDState
+
+pub fn tensor_add(Tensor, Tensor) -> Tensor
+
+pub fn tensor_div(Tensor, Tensor) -> Tensor
+
+pub fn tensor_dot(Tensor, Tensor) -> Double
+
+pub fn tensor_matmul(Tensor, Tensor) -> Tensor
+
+pub fn tensor_mul(Tensor, Tensor) -> Tensor
+
+pub fn tensor_reshape(Tensor, Array[Int32]) -> Tensor
+
+pub fn tensor_shape(Tensor) -> Array[Int32]
+
+pub fn tensor_size(Tensor) -> Int32
+
+pub fn tensor_sub(Tensor, Tensor) -> Tensor
+
+pub fn tensor_transpose(Tensor) -> Tensor
+
+pub fn transformer_forward(Array[Array[Double]], TransformerMeta) -> Array[Array[Double]]
+
+pub fn transformer_layer(Array[Array[Double]], TransformerMeta) -> Array[Array[Double]]
+
+pub fn vae_decode(Array[Double], VAEMeta) -> Array[Double]
+
+pub fn vae_encode(Array[Double], VAEMeta) -> (Array[Double], Array[Double])
+
+pub fn vae_loss(Array[Double], Array[Double], Array[Double], Array[Double]) -> Double
+
+// Errors
+
+// Types and methods
+pub struct AdaDeltaState {
+  lr : Double
+  rho : Double
+  epsilon : Double
+  params : Array[Double]
+  eg : Array[Double]
+  edx : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn AdaDeltaState::equal(Self, Self) -> Bool
+pub fn AdaDeltaState::not_equal(Self, Self) -> Bool
+pub fn AdaDeltaState::to_repr(Self) -> @debug.Repr
+
+pub struct AdaGradState {
+  lr : Double
+  epsilon : Double
+  params : Array[Double]
+  cache : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn AdaGradState::equal(Self, Self) -> Bool
+pub fn AdaGradState::not_equal(Self, Self) -> Bool
+pub fn AdaGradState::to_repr(Self) -> @debug.Repr
+
+pub struct AdamState {
+  lr : Double
+  beta1 : Double
+  beta2 : Double
+  epsilon : Double
+  params : Array[Double]
+  m : Array[Double]
+  v : Array[Double]
+  step_count : Int32
+} derive(Eq, @debug.Debug)
+pub fn AdamState::equal(Self, Self) -> Bool
+pub fn AdamState::not_equal(Self, Self) -> Bool
+pub fn AdamState::to_repr(Self) -> @debug.Repr
+
+pub struct AttentionMeta {
+  num_heads : Int32
+  d_model : Int32
+  d_k : Int32
+  d_v : Int32
+} derive(Eq, @debug.Debug)
+pub fn AttentionMeta::equal(Self, Self) -> Bool
+pub fn AttentionMeta::not_equal(Self, Self) -> Bool
+pub fn AttentionMeta::to_repr(Self) -> @debug.Repr
+
+pub struct AutoEncoderMeta {
+  input_dim : Int32
+  hidden_dim : Int32
+  latent_dim : Int32
+} derive(Eq, @debug.Debug)
+pub fn AutoEncoderMeta::equal(Self, Self) -> Bool
+pub fn AutoEncoderMeta::not_equal(Self, Self) -> Bool
+pub fn AutoEncoderMeta::to_repr(Self) -> @debug.Repr
+
+pub struct AvgPoolMeta {
+  kernel_size : Int32
+  stride : Int32
+} derive(Eq, @debug.Debug)
+pub fn AvgPoolMeta::equal(Self, Self) -> Bool
+pub fn AvgPoolMeta::not_equal(Self, Self) -> Bool
+pub fn AvgPoolMeta::to_repr(Self) -> @debug.Repr
+
+pub struct BatchNormMeta {
+  num_features : Int32
+  epsilon : Double
+  gamma : Array[Double]
+  beta : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn BatchNormMeta::equal(Self, Self) -> Bool
+pub fn BatchNormMeta::not_equal(Self, Self) -> Bool
+pub fn BatchNormMeta::to_repr(Self) -> @debug.Repr
+
+pub struct Conv2dMeta {
+  in_channels : Int32
+  out_channels : Int32
+  kernel_size : Int32
+  stride : Int32
+  padding : Int32
+} derive(Eq, @debug.Debug)
+pub fn Conv2dMeta::equal(Self, Self) -> Bool
+pub fn Conv2dMeta::not_equal(Self, Self) -> Bool
+pub fn Conv2dMeta::to_repr(Self) -> @debug.Repr
+
+pub struct DropoutMeta {
+  rate : Double
+  training : Bool
+} derive(Eq, @debug.Debug)
+pub fn DropoutMeta::equal(Self, Self) -> Bool
+pub fn DropoutMeta::not_equal(Self, Self) -> Bool
+pub fn DropoutMeta::to_repr(Self) -> @debug.Repr
+
+pub struct GANMeta {
+  generator_dim : Int32
+  discriminator_dim : Int32
+  noise_dim : Int32
+} derive(Eq, @debug.Debug)
+pub fn GANMeta::equal(Self, Self) -> Bool
+pub fn GANMeta::not_equal(Self, Self) -> Bool
+pub fn GANMeta::to_repr(Self) -> @debug.Repr
+
+pub struct GRUMeta {
+  input_size : Int32
+  hidden_size : Int32
+} derive(Eq, @debug.Debug)
+pub fn GRUMeta::equal(Self, Self) -> Bool
+pub fn GRUMeta::not_equal(Self, Self) -> Bool
+pub fn GRUMeta::to_repr(Self) -> @debug.Repr
+
+pub struct LSTMMeta {
+  input_size : Int32
+  hidden_size : Int32
+} derive(Eq, @debug.Debug)
+pub fn LSTMMeta::equal(Self, Self) -> Bool
+pub fn LSTMMeta::not_equal(Self, Self) -> Bool
+pub fn LSTMMeta::to_repr(Self) -> @debug.Repr
+
+pub struct LayerNormMeta {
+  num_features : Int32
+  epsilon : Double
+  gamma : Array[Double]
+  beta : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn LayerNormMeta::equal(Self, Self) -> Bool
+pub fn LayerNormMeta::not_equal(Self, Self) -> Bool
+pub fn LayerNormMeta::to_repr(Self) -> @debug.Repr
+
+pub struct MaxPoolMeta {
+  kernel_size : Int32
+  stride : Int32
+} derive(Eq, @debug.Debug)
+pub fn MaxPoolMeta::equal(Self, Self) -> Bool
+pub fn MaxPoolMeta::not_equal(Self, Self) -> Bool
+pub fn MaxPoolMeta::to_repr(Self) -> @debug.Repr
+
+pub struct SGDState {
+  lr : Double
+  momentum : Double
+  params : Array[Double]
+  velocity : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn SGDState::equal(Self, Self) -> Bool
+pub fn SGDState::not_equal(Self, Self) -> Bool
+pub fn SGDState::to_repr(Self) -> @debug.Repr
+
+pub struct SchedulerMeta {
+  init_lr : Double
+  step_size : Int32
+  gamma : Double
+  total_steps : Int32
+} derive(Eq, @debug.Debug)
+pub fn SchedulerMeta::equal(Self, Self) -> Bool
+pub fn SchedulerMeta::not_equal(Self, Self) -> Bool
+pub fn SchedulerMeta::to_repr(Self) -> @debug.Repr
+
+pub struct Tensor {
+  shape : Array[Int32]
+  data : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn Tensor::equal(Self, Self) -> Bool
+pub fn Tensor::not_equal(Self, Self) -> Bool
+pub fn Tensor::to_repr(Self) -> @debug.Repr
+
+pub struct TransformerMeta {
+  num_layers : Int32
+  num_heads : Int32
+  d_model : Int32
+  d_ff : Int32
+} derive(Eq, @debug.Debug)
+pub fn TransformerMeta::equal(Self, Self) -> Bool
+pub fn TransformerMeta::not_equal(Self, Self) -> Bool
+pub fn TransformerMeta::to_repr(Self) -> @debug.Repr
+
+pub struct VAEMeta {
+  input_dim : Int32
+  hidden_dim : Int32
+  latent_dim : Int32
+} derive(Eq, @debug.Debug)
+pub fn VAEMeta::equal(Self, Self) -> Bool
+pub fn VAEMeta::not_equal(Self, Self) -> Bool
+pub fn VAEMeta::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

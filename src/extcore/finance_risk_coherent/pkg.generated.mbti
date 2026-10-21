@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/finance_risk_coherent"
+
+// Values
+pub fn finance_risk_coherent_buffer_make(Int32) -> FinanceriskcoherentBuffer
+
+pub fn finance_risk_coherent_cluster_make(Int32) -> FinanceriskcoherentCluster
+
+pub fn finance_risk_coherent_cursor_make(Int32) -> FinanceriskcoherentCursor
+
+pub fn finance_risk_coherent_edge_make(Int32) -> FinanceriskcoherentEdge
+
+pub fn finance_risk_coherent_frame_make(Int32) -> FinanceriskcoherentFrame
+
+pub fn finance_risk_coherent_graphn_make(Int32) -> FinanceriskcoherentGraphN
+
+pub fn finance_risk_coherent_layer_make(Int32) -> FinanceriskcoherentLayer
+
+pub fn finance_risk_coherent_make_matrix(Int32, Int32, Double) -> FinanceriskcoherentMatrix
+
+pub fn finance_risk_coherent_make_point(Double, Double) -> FinanceriskcoherentPoint
+
+pub fn finance_risk_coherent_make_point3(Double, Double, Double) -> FinanceriskcoherentPoint
+
+pub fn finance_risk_coherent_make_series(Array[Double], String) -> FinanceriskcoherentSeries
+
+pub fn finance_risk_coherent_make_vector(Array[Double]) -> FinanceriskcoherentVector
+
+pub fn finance_risk_coherent_matrix_identity(Int32) -> FinanceriskcoherentMatrix
+
+pub fn finance_risk_coherent_model_make(Int32) -> FinanceriskcoherentModel
+
+pub fn finance_risk_coherent_node_make(Int32) -> FinanceriskcoherentNode
+
+pub fn finance_risk_coherent_path_make(Int32) -> FinanceriskcoherentPath
+
+pub fn finance_risk_coherent_range_make(Int32) -> FinanceriskcoherentRange
+
+pub fn finance_risk_coherent_slice_make(Int32) -> FinanceriskcoherentSlice
+
+pub fn finance_risk_coherent_table_make(Int32) -> FinanceriskcoherentTable
+
+pub fn finance_risk_coherent_vector_zero(Int32) -> FinanceriskcoherentVector
+
+pub fn finance_risk_coherent_view_make(Int32) -> FinanceriskcoherentView
+
+// Errors
+
+// Types and methods
+pub(all) struct FinanceriskcoherentBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskcoherentBuffer::add(Self, Self) -> Self
+pub fn FinanceriskcoherentBuffer::copy(Self) -> Self
+pub fn FinanceriskcoherentBuffer::fill(Self, Double) -> Self
+pub fn FinanceriskcoherentBuffer::get(Self, Int32) -> Double
+pub fn FinanceriskcoherentBuffer::len(Self) -> Int32
+pub fn FinanceriskcoherentBuffer::max(Self) -> Double
+pub fn FinanceriskcoherentBuffer::mean(Self) -> Double
+pub fn FinanceriskcoherentBuffer::min(Self) -> Double
+pub fn FinanceriskcoherentBuffer::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentBuffer::set(Self, Int32, Double) -> Self
+pub fn FinanceriskcoherentBuffer::sum(Self) -> Double
+pub fn FinanceriskcoherentBuffer::to_string(Self) -> String
+
+pub(all) struct FinanceriskcoherentCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskcoherentCluster::add(Self, Self) -> Self
+pub fn FinanceriskcoherentCluster::copy(Self) -> Self
+pub fn FinanceriskcoherentCluster::fill(Self, Double) -> Self
+pub fn FinanceriskcoherentCluster::get(Self, Int32) -> Double
+pub fn FinanceriskcoherentCluster::len(Self) -> Int32
+pub fn FinanceriskcoherentCluster::max(Self) -> Double
+pub fn FinanceriskcoherentCluster::mean(Self) -> Double
+pub fn FinanceriskcoherentCluster::min(Self) -> Double
+pub fn FinanceriskcoherentCluster::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentCluster::set(Self, Int32, Double) -> Self
+pub fn FinanceriskcoherentCluster::sum(Self) -> Double
+pub fn FinanceriskcoherentCluster::to_string(Self) -> String
+
+pub(all) struct FinanceriskcoherentCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskcoherentCursor::add(Self, Self) -> Self
+pub fn FinanceriskcoherentCursor::copy(Self) -> Self
+pub fn FinanceriskcoherentCursor::fill(Self, Double) -> Self
+pub fn FinanceriskcoherentCursor::get(Self, Int32) -> Double
+pub fn FinanceriskcoherentCursor::len(Self) -> Int32
+pub fn FinanceriskcoherentCursor::max(Self) -> Double
+pub fn FinanceriskcoherentCursor::mean(Self) -> Double
+pub fn FinanceriskcoherentCursor::min(Self) -> Double
+pub fn FinanceriskcoherentCursor::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentCursor::set(Self, Int32, Double) -> Self
+pub fn FinanceriskcoherentCursor::sum(Self) -> Double
+pub fn FinanceriskcoherentCursor::to_string(Self) -> String
+
+pub(all) struct FinanceriskcoherentEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskcoherentEdge::add(Self, Self) -> Self
+pub fn FinanceriskcoherentEdge::copy(Self) -> Self
+pub fn FinanceriskcoherentEdge::fill(Self, Double) -> Self
+pub fn FinanceriskcoherentEdge::get(Self, Int32) -> Double
+pub fn FinanceriskcoherentEdge::len(Self) -> Int32
+pub fn FinanceriskcoherentEdge::max(Self) -> Double
+pub fn FinanceriskcoherentEdge::mean(Self) -> Double
+pub fn FinanceriskcoherentEdge::min(Self) -> Double
+pub fn FinanceriskcoherentEdge::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentEdge::set(Self, Int32, Double) -> Self
+pub fn FinanceriskcoherentEdge::sum(Self) -> Double
+pub fn FinanceriskcoherentEdge::to_string(Self) -> String
+
+pub(all) struct FinanceriskcoherentFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskcoherentFrame::add(Self, Self) -> Self
+pub fn FinanceriskcoherentFrame::copy(Self) -> Self
+pub fn FinanceriskcoherentFrame::fill(Self, Double) -> Self
+pub fn FinanceriskcoherentFrame::get(Self, Int32) -> Double
+pub fn FinanceriskcoherentFrame::len(Self) -> Int32
+pub fn FinanceriskcoherentFrame::max(Self) -> Double
+pub fn FinanceriskcoherentFrame::mean(Self) -> Double
+pub fn FinanceriskcoherentFrame::min(Self) -> Double
+pub fn FinanceriskcoherentFrame::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentFrame::set(Self, Int32, Double) -> Self
+pub fn FinanceriskcoherentFrame::sum(Self) -> Double
+pub fn FinanceriskcoherentFrame::to_string(Self) -> String
+
+pub(all) struct FinanceriskcoherentGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskcoherentGraphN::add(Self, Self) -> Self
+pub fn FinanceriskcoherentGraphN::copy(Self) -> Self
+pub fn FinanceriskcoherentGraphN::fill(Self, Double) -> Self
+pub fn FinanceriskcoherentGraphN::get(Self, Int32) -> Double
+pub fn FinanceriskcoherentGraphN::len(Self) -> Int32
+pub fn FinanceriskcoherentGraphN::max(Self) -> Double
+pub fn FinanceriskcoherentGraphN::mean(Self) -> Double
+pub fn FinanceriskcoherentGraphN::min(Self) -> Double
+pub fn FinanceriskcoherentGraphN::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentGraphN::set(Self, Int32, Double) -> Self
+pub fn FinanceriskcoherentGraphN::sum(Self) -> Double
+pub fn FinanceriskcoherentGraphN::to_string(Self) -> String
+
+pub(all) struct FinanceriskcoherentLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskcoherentLayer::add(Self, Self) -> Self
+pub fn FinanceriskcoherentLayer::copy(Self) -> Self
+pub fn FinanceriskcoherentLayer::fill(Self, Double) -> Self
+pub fn FinanceriskcoherentLayer::get(Self, Int32) -> Double
+pub fn FinanceriskcoherentLayer::len(Self) -> Int32
+pub fn FinanceriskcoherentLayer::max(Self) -> Double
+pub fn FinanceriskcoherentLayer::mean(Self) -> Double
+pub fn FinanceriskcoherentLayer::min(Self) -> Double
+pub fn FinanceriskcoherentLayer::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentLayer::set(Self, Int32, Double) -> Self
+pub fn FinanceriskcoherentLayer::sum(Self) -> Double
+pub fn FinanceriskcoherentLayer::to_string(Self) -> String
+
+pub(all) struct FinanceriskcoherentMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn FinanceriskcoherentMatrix::add(Self, Self) -> Self
+pub fn FinanceriskcoherentMatrix::det(Self) -> Double
+pub fn FinanceriskcoherentMatrix::get(Self, Int32, Int32) -> Double
+pub fn FinanceriskcoherentMatrix::multiply(Self, Self) -> Self
+pub fn FinanceriskcoherentMatrix::norm(Self) -> Double
+pub fn FinanceriskcoherentMatrix::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentMatrix::to_string(Self) -> String
+pub fn FinanceriskcoherentMatrix::trace(Self) -> Double
+pub fn FinanceriskcoherentMatrix::transpose(Self) -> Self
+
+pub(all) struct FinanceriskcoherentModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskcoherentModel::add(Self, Self) -> Self
+pub fn FinanceriskcoherentModel::copy(Self) -> Self
+pub fn FinanceriskcoherentModel::fill(Self, Double) -> Self
+pub fn FinanceriskcoherentModel::get(Self, Int32) -> Double
+pub fn FinanceriskcoherentModel::len(Self) -> Int32
+pub fn FinanceriskcoherentModel::max(Self) -> Double
+pub fn FinanceriskcoherentModel::mean(Self) -> Double
+pub fn FinanceriskcoherentModel::min(Self) -> Double
+pub fn FinanceriskcoherentModel::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentModel::set(Self, Int32, Double) -> Self
+pub fn FinanceriskcoherentModel::sum(Self) -> Double
+pub fn FinanceriskcoherentModel::to_string(Self) -> String
+
+pub(all) struct FinanceriskcoherentNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskcoherentNode::add(Self, Self) -> Self
+pub fn FinanceriskcoherentNode::copy(Self) -> Self
+pub fn FinanceriskcoherentNode::fill(Self, Double) -> Self
+pub fn FinanceriskcoherentNode::get(Self, Int32) -> Double
+pub fn FinanceriskcoherentNode::len(Self) -> Int32
+pub fn FinanceriskcoherentNode::max(Self) -> Double
+pub fn FinanceriskcoherentNode::mean(Self) -> Double
+pub fn FinanceriskcoherentNode::min(Self) -> Double
+pub fn FinanceriskcoherentNode::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentNode::set(Self, Int32, Double) -> Self
+pub fn FinanceriskcoherentNode::sum(Self) -> Double
+pub fn FinanceriskcoherentNode::to_string(Self) -> String
+
+pub(all) struct FinanceriskcoherentPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskcoherentPath::add(Self, Self) -> Self
+pub fn FinanceriskcoherentPath::copy(Self) -> Self
+pub fn FinanceriskcoherentPath::fill(Self, Double) -> Self
+pub fn FinanceriskcoherentPath::get(Self, Int32) -> Double
+pub fn FinanceriskcoherentPath::len(Self) -> Int32
+pub fn FinanceriskcoherentPath::max(Self) -> Double
+pub fn FinanceriskcoherentPath::mean(Self) -> Double
+pub fn FinanceriskcoherentPath::min(Self) -> Double
+pub fn FinanceriskcoherentPath::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentPath::set(Self, Int32, Double) -> Self
+pub fn FinanceriskcoherentPath::sum(Self) -> Double
+pub fn FinanceriskcoherentPath::to_string(Self) -> String
+
+pub(all) struct FinanceriskcoherentPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn FinanceriskcoherentPoint::add(Self, Self) -> Self
+pub fn FinanceriskcoherentPoint::cross(Self, Self) -> Self
+pub fn FinanceriskcoherentPoint::dist(Self, Self) -> Double
+pub fn FinanceriskcoherentPoint::dot(Self, Self) -> Double
+pub fn FinanceriskcoherentPoint::label(Self) -> Int32
+pub fn FinanceriskcoherentPoint::lerp(Self, Self, Double) -> Self
+pub fn FinanceriskcoherentPoint::mid(Self, Self) -> Self
+pub fn FinanceriskcoherentPoint::negate(Self) -> Self
+pub fn FinanceriskcoherentPoint::norm(Self) -> Double
+pub fn FinanceriskcoherentPoint::normalize(Self) -> Self
+pub fn FinanceriskcoherentPoint::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentPoint::sub(Self, Self) -> Self
+pub fn FinanceriskcoherentPoint::to_string(Self) -> String
+pub fn FinanceriskcoherentPoint::x(Self) -> Double
+pub fn FinanceriskcoherentPoint::y(Self) -> Double
+pub fn FinanceriskcoherentPoint::z(Self) -> Double
+
+pub(all) struct FinanceriskcoherentRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskcoherentRange::add(Self, Self) -> Self
+pub fn FinanceriskcoherentRange::copy(Self) -> Self
+pub fn FinanceriskcoherentRange::fill(Self, Double) -> Self
+pub fn FinanceriskcoherentRange::get(Self, Int32) -> Double
+pub fn FinanceriskcoherentRange::len(Self) -> Int32
+pub fn FinanceriskcoherentRange::max(Self) -> Double
+pub fn FinanceriskcoherentRange::mean(Self) -> Double
+pub fn FinanceriskcoherentRange::min(Self) -> Double
+pub fn FinanceriskcoherentRange::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentRange::set(Self, Int32, Double) -> Self
+pub fn FinanceriskcoherentRange::sum(Self) -> Double
+pub fn FinanceriskcoherentRange::to_string(Self) -> String
+
+pub(all) struct FinanceriskcoherentSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn FinanceriskcoherentSeries::add(Self, Self) -> Self
+pub fn FinanceriskcoherentSeries::cumsum(Self) -> Self
+pub fn FinanceriskcoherentSeries::len(Self) -> Int32
+pub fn FinanceriskcoherentSeries::max(Self) -> Double
+pub fn FinanceriskcoherentSeries::mean(Self) -> Double
+pub fn FinanceriskcoherentSeries::median(Self) -> Double
+pub fn FinanceriskcoherentSeries::min(Self) -> Double
+pub fn FinanceriskcoherentSeries::normalize(Self) -> Self
+pub fn FinanceriskcoherentSeries::range(Self) -> Double
+pub fn FinanceriskcoherentSeries::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentSeries::std(Self) -> Double
+pub fn FinanceriskcoherentSeries::sub(Self, Self) -> Self
+pub fn FinanceriskcoherentSeries::sum(Self) -> Double
+pub fn FinanceriskcoherentSeries::to_string(Self) -> String
+pub fn FinanceriskcoherentSeries::variance(Self) -> Double
+
+pub(all) struct FinanceriskcoherentSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskcoherentSlice::add(Self, Self) -> Self
+pub fn FinanceriskcoherentSlice::copy(Self) -> Self
+pub fn FinanceriskcoherentSlice::fill(Self, Double) -> Self
+pub fn FinanceriskcoherentSlice::get(Self, Int32) -> Double
+pub fn FinanceriskcoherentSlice::len(Self) -> Int32
+pub fn FinanceriskcoherentSlice::max(Self) -> Double
+pub fn FinanceriskcoherentSlice::mean(Self) -> Double
+pub fn FinanceriskcoherentSlice::min(Self) -> Double
+pub fn FinanceriskcoherentSlice::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentSlice::set(Self, Int32, Double) -> Self
+pub fn FinanceriskcoherentSlice::sum(Self) -> Double
+pub fn FinanceriskcoherentSlice::to_string(Self) -> String
+
+pub(all) struct FinanceriskcoherentTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskcoherentTable::add(Self, Self) -> Self
+pub fn FinanceriskcoherentTable::copy(Self) -> Self
+pub fn FinanceriskcoherentTable::fill(Self, Double) -> Self
+pub fn FinanceriskcoherentTable::get(Self, Int32) -> Double
+pub fn FinanceriskcoherentTable::len(Self) -> Int32
+pub fn FinanceriskcoherentTable::max(Self) -> Double
+pub fn FinanceriskcoherentTable::mean(Self) -> Double
+pub fn FinanceriskcoherentTable::min(Self) -> Double
+pub fn FinanceriskcoherentTable::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentTable::set(Self, Int32, Double) -> Self
+pub fn FinanceriskcoherentTable::sum(Self) -> Double
+pub fn FinanceriskcoherentTable::to_string(Self) -> String
+
+pub(all) struct FinanceriskcoherentVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn FinanceriskcoherentVector::add(Self, Self) -> Self
+pub fn FinanceriskcoherentVector::dist(Self, Self) -> Double
+pub fn FinanceriskcoherentVector::dot(Self, Self) -> Double
+pub fn FinanceriskcoherentVector::norm(Self) -> Double
+pub fn FinanceriskcoherentVector::normalize(Self) -> Self
+pub fn FinanceriskcoherentVector::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentVector::sub(Self, Self) -> Self
+pub fn FinanceriskcoherentVector::to_string(Self) -> String
+
+pub(all) struct FinanceriskcoherentView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskcoherentView::add(Self, Self) -> Self
+pub fn FinanceriskcoherentView::copy(Self) -> Self
+pub fn FinanceriskcoherentView::fill(Self, Double) -> Self
+pub fn FinanceriskcoherentView::get(Self, Int32) -> Double
+pub fn FinanceriskcoherentView::len(Self) -> Int32
+pub fn FinanceriskcoherentView::max(Self) -> Double
+pub fn FinanceriskcoherentView::mean(Self) -> Double
+pub fn FinanceriskcoherentView::min(Self) -> Double
+pub fn FinanceriskcoherentView::scale(Self, Double) -> Self
+pub fn FinanceriskcoherentView::set(Self, Int32, Double) -> Self
+pub fn FinanceriskcoherentView::sum(Self) -> Double
+pub fn FinanceriskcoherentView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

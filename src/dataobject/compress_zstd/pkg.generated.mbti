@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/compress_zstd"
+
+// Values
+pub fn compress_zstd_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn compress_zstd_corr(Array[Double], Array[Double]) -> Double
+
+pub fn compress_zstd_cov(Array[Double], Array[Double]) -> Double
+
+pub fn compress_zstd_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn compress_zstd_mae(Array[Double], Array[Double]) -> Double
+
+pub fn compress_zstd_make_labeled_point(Double, Double, Int32) -> Compress_zstdPoint
+
+pub fn compress_zstd_make_matrix(Int32, Int32, Double) -> Compress_zstdMatrix
+
+pub fn compress_zstd_make_point(Double, Double) -> Compress_zstdPoint
+
+pub fn compress_zstd_make_series(Array[Double], String) -> Compress_zstdSeries
+
+pub fn compress_zstd_make_vector(Array[Double]) -> Compress_zstdVector
+
+pub fn compress_zstd_matrix_add(Compress_zstdMatrix, Compress_zstdMatrix) -> Compress_zstdMatrix
+
+pub fn compress_zstd_matrix_get(Compress_zstdMatrix, Int32, Int32) -> Double
+
+pub fn compress_zstd_matrix_identity(Int32) -> Compress_zstdMatrix
+
+pub fn compress_zstd_matrix_multiply(Compress_zstdMatrix, Compress_zstdMatrix) -> Compress_zstdMatrix
+
+pub fn compress_zstd_matrix_norm(Compress_zstdMatrix) -> Double
+
+pub fn compress_zstd_matrix_scale(Compress_zstdMatrix, Double) -> Compress_zstdMatrix
+
+pub fn compress_zstd_matrix_to_string(Compress_zstdMatrix) -> String
+
+pub fn compress_zstd_matrix_trace(Compress_zstdMatrix) -> Double
+
+pub fn compress_zstd_matrix_transpose(Compress_zstdMatrix) -> Compress_zstdMatrix
+
+pub fn compress_zstd_mse(Array[Double], Array[Double]) -> Double
+
+pub fn compress_zstd_point_add(Compress_zstdPoint, Compress_zstdPoint) -> Compress_zstdPoint
+
+pub fn compress_zstd_point_dist(Compress_zstdPoint, Compress_zstdPoint) -> Double
+
+pub fn compress_zstd_point_dot(Compress_zstdPoint, Compress_zstdPoint) -> Double
+
+pub fn compress_zstd_point_label(Compress_zstdPoint) -> Int32
+
+pub fn compress_zstd_point_norm(Compress_zstdPoint) -> Double
+
+pub fn compress_zstd_point_scale(Compress_zstdPoint, Double) -> Compress_zstdPoint
+
+pub fn compress_zstd_point_sub(Compress_zstdPoint, Compress_zstdPoint) -> Compress_zstdPoint
+
+pub fn compress_zstd_point_to_string(Compress_zstdPoint) -> String
+
+pub fn compress_zstd_point_x(Compress_zstdPoint) -> Double
+
+pub fn compress_zstd_point_y(Compress_zstdPoint) -> Double
+
+pub fn compress_zstd_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn compress_zstd_r2(Array[Double], Array[Double]) -> Double
+
+pub fn compress_zstd_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn compress_zstd_series_add(Compress_zstdSeries, Compress_zstdSeries) -> Compress_zstdSeries
+
+pub fn compress_zstd_series_len(Compress_zstdSeries) -> Int32
+
+pub fn compress_zstd_series_max(Compress_zstdSeries) -> Double
+
+pub fn compress_zstd_series_mean(Compress_zstdSeries) -> Double
+
+pub fn compress_zstd_series_min(Compress_zstdSeries) -> Double
+
+pub fn compress_zstd_series_scale(Compress_zstdSeries, Double) -> Compress_zstdSeries
+
+pub fn compress_zstd_series_std(Compress_zstdSeries) -> Double
+
+pub fn compress_zstd_series_sum(Compress_zstdSeries) -> Double
+
+pub fn compress_zstd_series_to_string(Compress_zstdSeries) -> String
+
+pub fn compress_zstd_series_var(Compress_zstdSeries) -> Double
+
+pub fn compress_zstd_std(Array[Double]) -> Double
+
+pub fn compress_zstd_var(Array[Double]) -> Double
+
+pub fn compress_zstd_vector_add(Compress_zstdVector, Compress_zstdVector) -> Compress_zstdVector
+
+pub fn compress_zstd_vector_dist(Compress_zstdVector, Compress_zstdVector) -> Double
+
+pub fn compress_zstd_vector_dot(Compress_zstdVector, Compress_zstdVector) -> Double
+
+pub fn compress_zstd_vector_norm(Compress_zstdVector) -> Double
+
+pub fn compress_zstd_vector_normalize(Compress_zstdVector) -> Compress_zstdVector
+
+pub fn compress_zstd_vector_scale(Compress_zstdVector, Double) -> Compress_zstdVector
+
+pub fn compress_zstd_vector_sub(Compress_zstdVector, Compress_zstdVector) -> Compress_zstdVector
+
+pub fn compress_zstd_vector_to_string(Compress_zstdVector) -> String
+
+pub fn compress_zstd_vector_zero(Int32) -> Compress_zstdVector
+
+// Errors
+
+// Types and methods
+pub struct Compress_zstdMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Compress_zstdPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Compress_zstdSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Compress_zstdVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

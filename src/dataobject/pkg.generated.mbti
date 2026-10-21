@@ -1,0 +1,79 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject"
+
+import {
+  "dataverse/dataobject/schema",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn content_length(DataObject) -> Int32
+
+pub fn dataobject_id() -> String
+
+pub fn empty_dataobject(Modality) -> DataObject
+
+pub fn empty_lineage() -> Lineage
+
+pub fn has_lineage(DataObject) -> Bool
+
+pub fn make_dataobject(String, Modality, @schema.Schema) -> DataObject
+
+pub fn make_dataobject_with_metadata(String, Modality, @schema.Schema, Array[(String, String)]) -> DataObject
+
+pub fn make_lineage(String, String, String, String, String) -> Lineage
+
+pub fn make_quality_card(Array[(String, Double)], Array[(String, Double)], Bool) -> QualityCard
+
+pub fn passing_quality_card() -> QualityCard
+
+// Errors
+
+// Types and methods
+pub struct DataObject {
+  content : String
+  modality : Modality
+  schema : @schema.Schema
+  metadata : Array[(String, String)]
+  lineage : Lineage?
+} derive(Eq, @debug.Debug)
+pub fn DataObject::equal(Self, Self) -> Bool
+pub fn DataObject::not_equal(Self, Self) -> Bool
+pub fn DataObject::to_repr(Self) -> @debug.Repr
+
+pub struct Lineage {
+  operator_graph : String
+  input_fingerprint : String
+  output_fingerprint : String
+  params : String
+  environment : String
+} derive(Eq, @debug.Debug)
+pub fn Lineage::equal(Self, Self) -> Bool
+pub fn Lineage::not_equal(Self, Self) -> Bool
+pub fn Lineage::to_repr(Self) -> @debug.Repr
+
+pub(all) enum Modality {
+  Text
+  Image
+  Audio
+  Video
+  Table
+  Code
+  Multi
+} derive(Eq, @debug.Debug)
+pub fn Modality::equal(Self, Self) -> Bool
+pub fn Modality::not_equal(Self, Self) -> Bool
+pub fn Modality::to_repr(Self) -> @debug.Repr
+
+pub struct QualityCard {
+  metrics : Array[(String, Double)]
+  thresholds : Array[(String, Double)]
+  verdict : Bool
+} derive(Eq, @debug.Debug)
+pub fn QualityCard::equal(Self, Self) -> Bool
+pub fn QualityCard::not_equal(Self, Self) -> Bool
+pub fn QualityCard::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

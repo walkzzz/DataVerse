@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/opt_meta_aco"
+
+// Values
+pub fn opt_meta_aco_buffer_make(Int32) -> OptmetaacoBuffer
+
+pub fn opt_meta_aco_cluster_make(Int32) -> OptmetaacoCluster
+
+pub fn opt_meta_aco_cursor_make(Int32) -> OptmetaacoCursor
+
+pub fn opt_meta_aco_edge_make(Int32) -> OptmetaacoEdge
+
+pub fn opt_meta_aco_frame_make(Int32) -> OptmetaacoFrame
+
+pub fn opt_meta_aco_graphn_make(Int32) -> OptmetaacoGraphN
+
+pub fn opt_meta_aco_layer_make(Int32) -> OptmetaacoLayer
+
+pub fn opt_meta_aco_make_matrix(Int32, Int32, Double) -> OptmetaacoMatrix
+
+pub fn opt_meta_aco_make_point(Double, Double) -> OptmetaacoPoint
+
+pub fn opt_meta_aco_make_point3(Double, Double, Double) -> OptmetaacoPoint
+
+pub fn opt_meta_aco_make_series(Array[Double], String) -> OptmetaacoSeries
+
+pub fn opt_meta_aco_make_vector(Array[Double]) -> OptmetaacoVector
+
+pub fn opt_meta_aco_matrix_identity(Int32) -> OptmetaacoMatrix
+
+pub fn opt_meta_aco_model_make(Int32) -> OptmetaacoModel
+
+pub fn opt_meta_aco_node_make(Int32) -> OptmetaacoNode
+
+pub fn opt_meta_aco_path_make(Int32) -> OptmetaacoPath
+
+pub fn opt_meta_aco_range_make(Int32) -> OptmetaacoRange
+
+pub fn opt_meta_aco_slice_make(Int32) -> OptmetaacoSlice
+
+pub fn opt_meta_aco_table_make(Int32) -> OptmetaacoTable
+
+pub fn opt_meta_aco_vector_zero(Int32) -> OptmetaacoVector
+
+pub fn opt_meta_aco_view_make(Int32) -> OptmetaacoView
+
+// Errors
+
+// Types and methods
+pub(all) struct OptmetaacoBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaacoBuffer::add(Self, Self) -> Self
+pub fn OptmetaacoBuffer::copy(Self) -> Self
+pub fn OptmetaacoBuffer::fill(Self, Double) -> Self
+pub fn OptmetaacoBuffer::get(Self, Int32) -> Double
+pub fn OptmetaacoBuffer::len(Self) -> Int32
+pub fn OptmetaacoBuffer::max(Self) -> Double
+pub fn OptmetaacoBuffer::mean(Self) -> Double
+pub fn OptmetaacoBuffer::min(Self) -> Double
+pub fn OptmetaacoBuffer::scale(Self, Double) -> Self
+pub fn OptmetaacoBuffer::set(Self, Int32, Double) -> Self
+pub fn OptmetaacoBuffer::sum(Self) -> Double
+pub fn OptmetaacoBuffer::to_string(Self) -> String
+
+pub(all) struct OptmetaacoCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaacoCluster::add(Self, Self) -> Self
+pub fn OptmetaacoCluster::copy(Self) -> Self
+pub fn OptmetaacoCluster::fill(Self, Double) -> Self
+pub fn OptmetaacoCluster::get(Self, Int32) -> Double
+pub fn OptmetaacoCluster::len(Self) -> Int32
+pub fn OptmetaacoCluster::max(Self) -> Double
+pub fn OptmetaacoCluster::mean(Self) -> Double
+pub fn OptmetaacoCluster::min(Self) -> Double
+pub fn OptmetaacoCluster::scale(Self, Double) -> Self
+pub fn OptmetaacoCluster::set(Self, Int32, Double) -> Self
+pub fn OptmetaacoCluster::sum(Self) -> Double
+pub fn OptmetaacoCluster::to_string(Self) -> String
+
+pub(all) struct OptmetaacoCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaacoCursor::add(Self, Self) -> Self
+pub fn OptmetaacoCursor::copy(Self) -> Self
+pub fn OptmetaacoCursor::fill(Self, Double) -> Self
+pub fn OptmetaacoCursor::get(Self, Int32) -> Double
+pub fn OptmetaacoCursor::len(Self) -> Int32
+pub fn OptmetaacoCursor::max(Self) -> Double
+pub fn OptmetaacoCursor::mean(Self) -> Double
+pub fn OptmetaacoCursor::min(Self) -> Double
+pub fn OptmetaacoCursor::scale(Self, Double) -> Self
+pub fn OptmetaacoCursor::set(Self, Int32, Double) -> Self
+pub fn OptmetaacoCursor::sum(Self) -> Double
+pub fn OptmetaacoCursor::to_string(Self) -> String
+
+pub(all) struct OptmetaacoEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaacoEdge::add(Self, Self) -> Self
+pub fn OptmetaacoEdge::copy(Self) -> Self
+pub fn OptmetaacoEdge::fill(Self, Double) -> Self
+pub fn OptmetaacoEdge::get(Self, Int32) -> Double
+pub fn OptmetaacoEdge::len(Self) -> Int32
+pub fn OptmetaacoEdge::max(Self) -> Double
+pub fn OptmetaacoEdge::mean(Self) -> Double
+pub fn OptmetaacoEdge::min(Self) -> Double
+pub fn OptmetaacoEdge::scale(Self, Double) -> Self
+pub fn OptmetaacoEdge::set(Self, Int32, Double) -> Self
+pub fn OptmetaacoEdge::sum(Self) -> Double
+pub fn OptmetaacoEdge::to_string(Self) -> String
+
+pub(all) struct OptmetaacoFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaacoFrame::add(Self, Self) -> Self
+pub fn OptmetaacoFrame::copy(Self) -> Self
+pub fn OptmetaacoFrame::fill(Self, Double) -> Self
+pub fn OptmetaacoFrame::get(Self, Int32) -> Double
+pub fn OptmetaacoFrame::len(Self) -> Int32
+pub fn OptmetaacoFrame::max(Self) -> Double
+pub fn OptmetaacoFrame::mean(Self) -> Double
+pub fn OptmetaacoFrame::min(Self) -> Double
+pub fn OptmetaacoFrame::scale(Self, Double) -> Self
+pub fn OptmetaacoFrame::set(Self, Int32, Double) -> Self
+pub fn OptmetaacoFrame::sum(Self) -> Double
+pub fn OptmetaacoFrame::to_string(Self) -> String
+
+pub(all) struct OptmetaacoGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaacoGraphN::add(Self, Self) -> Self
+pub fn OptmetaacoGraphN::copy(Self) -> Self
+pub fn OptmetaacoGraphN::fill(Self, Double) -> Self
+pub fn OptmetaacoGraphN::get(Self, Int32) -> Double
+pub fn OptmetaacoGraphN::len(Self) -> Int32
+pub fn OptmetaacoGraphN::max(Self) -> Double
+pub fn OptmetaacoGraphN::mean(Self) -> Double
+pub fn OptmetaacoGraphN::min(Self) -> Double
+pub fn OptmetaacoGraphN::scale(Self, Double) -> Self
+pub fn OptmetaacoGraphN::set(Self, Int32, Double) -> Self
+pub fn OptmetaacoGraphN::sum(Self) -> Double
+pub fn OptmetaacoGraphN::to_string(Self) -> String
+
+pub(all) struct OptmetaacoLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaacoLayer::add(Self, Self) -> Self
+pub fn OptmetaacoLayer::copy(Self) -> Self
+pub fn OptmetaacoLayer::fill(Self, Double) -> Self
+pub fn OptmetaacoLayer::get(Self, Int32) -> Double
+pub fn OptmetaacoLayer::len(Self) -> Int32
+pub fn OptmetaacoLayer::max(Self) -> Double
+pub fn OptmetaacoLayer::mean(Self) -> Double
+pub fn OptmetaacoLayer::min(Self) -> Double
+pub fn OptmetaacoLayer::scale(Self, Double) -> Self
+pub fn OptmetaacoLayer::set(Self, Int32, Double) -> Self
+pub fn OptmetaacoLayer::sum(Self) -> Double
+pub fn OptmetaacoLayer::to_string(Self) -> String
+
+pub(all) struct OptmetaacoMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn OptmetaacoMatrix::add(Self, Self) -> Self
+pub fn OptmetaacoMatrix::det(Self) -> Double
+pub fn OptmetaacoMatrix::get(Self, Int32, Int32) -> Double
+pub fn OptmetaacoMatrix::multiply(Self, Self) -> Self
+pub fn OptmetaacoMatrix::norm(Self) -> Double
+pub fn OptmetaacoMatrix::scale(Self, Double) -> Self
+pub fn OptmetaacoMatrix::to_string(Self) -> String
+pub fn OptmetaacoMatrix::trace(Self) -> Double
+pub fn OptmetaacoMatrix::transpose(Self) -> Self
+
+pub(all) struct OptmetaacoModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaacoModel::add(Self, Self) -> Self
+pub fn OptmetaacoModel::copy(Self) -> Self
+pub fn OptmetaacoModel::fill(Self, Double) -> Self
+pub fn OptmetaacoModel::get(Self, Int32) -> Double
+pub fn OptmetaacoModel::len(Self) -> Int32
+pub fn OptmetaacoModel::max(Self) -> Double
+pub fn OptmetaacoModel::mean(Self) -> Double
+pub fn OptmetaacoModel::min(Self) -> Double
+pub fn OptmetaacoModel::scale(Self, Double) -> Self
+pub fn OptmetaacoModel::set(Self, Int32, Double) -> Self
+pub fn OptmetaacoModel::sum(Self) -> Double
+pub fn OptmetaacoModel::to_string(Self) -> String
+
+pub(all) struct OptmetaacoNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaacoNode::add(Self, Self) -> Self
+pub fn OptmetaacoNode::copy(Self) -> Self
+pub fn OptmetaacoNode::fill(Self, Double) -> Self
+pub fn OptmetaacoNode::get(Self, Int32) -> Double
+pub fn OptmetaacoNode::len(Self) -> Int32
+pub fn OptmetaacoNode::max(Self) -> Double
+pub fn OptmetaacoNode::mean(Self) -> Double
+pub fn OptmetaacoNode::min(Self) -> Double
+pub fn OptmetaacoNode::scale(Self, Double) -> Self
+pub fn OptmetaacoNode::set(Self, Int32, Double) -> Self
+pub fn OptmetaacoNode::sum(Self) -> Double
+pub fn OptmetaacoNode::to_string(Self) -> String
+
+pub(all) struct OptmetaacoPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaacoPath::add(Self, Self) -> Self
+pub fn OptmetaacoPath::copy(Self) -> Self
+pub fn OptmetaacoPath::fill(Self, Double) -> Self
+pub fn OptmetaacoPath::get(Self, Int32) -> Double
+pub fn OptmetaacoPath::len(Self) -> Int32
+pub fn OptmetaacoPath::max(Self) -> Double
+pub fn OptmetaacoPath::mean(Self) -> Double
+pub fn OptmetaacoPath::min(Self) -> Double
+pub fn OptmetaacoPath::scale(Self, Double) -> Self
+pub fn OptmetaacoPath::set(Self, Int32, Double) -> Self
+pub fn OptmetaacoPath::sum(Self) -> Double
+pub fn OptmetaacoPath::to_string(Self) -> String
+
+pub(all) struct OptmetaacoPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn OptmetaacoPoint::add(Self, Self) -> Self
+pub fn OptmetaacoPoint::cross(Self, Self) -> Self
+pub fn OptmetaacoPoint::dist(Self, Self) -> Double
+pub fn OptmetaacoPoint::dot(Self, Self) -> Double
+pub fn OptmetaacoPoint::label(Self) -> Int32
+pub fn OptmetaacoPoint::lerp(Self, Self, Double) -> Self
+pub fn OptmetaacoPoint::mid(Self, Self) -> Self
+pub fn OptmetaacoPoint::negate(Self) -> Self
+pub fn OptmetaacoPoint::norm(Self) -> Double
+pub fn OptmetaacoPoint::normalize(Self) -> Self
+pub fn OptmetaacoPoint::scale(Self, Double) -> Self
+pub fn OptmetaacoPoint::sub(Self, Self) -> Self
+pub fn OptmetaacoPoint::to_string(Self) -> String
+pub fn OptmetaacoPoint::x(Self) -> Double
+pub fn OptmetaacoPoint::y(Self) -> Double
+pub fn OptmetaacoPoint::z(Self) -> Double
+
+pub(all) struct OptmetaacoRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaacoRange::add(Self, Self) -> Self
+pub fn OptmetaacoRange::copy(Self) -> Self
+pub fn OptmetaacoRange::fill(Self, Double) -> Self
+pub fn OptmetaacoRange::get(Self, Int32) -> Double
+pub fn OptmetaacoRange::len(Self) -> Int32
+pub fn OptmetaacoRange::max(Self) -> Double
+pub fn OptmetaacoRange::mean(Self) -> Double
+pub fn OptmetaacoRange::min(Self) -> Double
+pub fn OptmetaacoRange::scale(Self, Double) -> Self
+pub fn OptmetaacoRange::set(Self, Int32, Double) -> Self
+pub fn OptmetaacoRange::sum(Self) -> Double
+pub fn OptmetaacoRange::to_string(Self) -> String
+
+pub(all) struct OptmetaacoSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn OptmetaacoSeries::add(Self, Self) -> Self
+pub fn OptmetaacoSeries::cumsum(Self) -> Self
+pub fn OptmetaacoSeries::len(Self) -> Int32
+pub fn OptmetaacoSeries::max(Self) -> Double
+pub fn OptmetaacoSeries::mean(Self) -> Double
+pub fn OptmetaacoSeries::median(Self) -> Double
+pub fn OptmetaacoSeries::min(Self) -> Double
+pub fn OptmetaacoSeries::normalize(Self) -> Self
+pub fn OptmetaacoSeries::range(Self) -> Double
+pub fn OptmetaacoSeries::scale(Self, Double) -> Self
+pub fn OptmetaacoSeries::std(Self) -> Double
+pub fn OptmetaacoSeries::sub(Self, Self) -> Self
+pub fn OptmetaacoSeries::sum(Self) -> Double
+pub fn OptmetaacoSeries::to_string(Self) -> String
+pub fn OptmetaacoSeries::variance(Self) -> Double
+
+pub(all) struct OptmetaacoSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaacoSlice::add(Self, Self) -> Self
+pub fn OptmetaacoSlice::copy(Self) -> Self
+pub fn OptmetaacoSlice::fill(Self, Double) -> Self
+pub fn OptmetaacoSlice::get(Self, Int32) -> Double
+pub fn OptmetaacoSlice::len(Self) -> Int32
+pub fn OptmetaacoSlice::max(Self) -> Double
+pub fn OptmetaacoSlice::mean(Self) -> Double
+pub fn OptmetaacoSlice::min(Self) -> Double
+pub fn OptmetaacoSlice::scale(Self, Double) -> Self
+pub fn OptmetaacoSlice::set(Self, Int32, Double) -> Self
+pub fn OptmetaacoSlice::sum(Self) -> Double
+pub fn OptmetaacoSlice::to_string(Self) -> String
+
+pub(all) struct OptmetaacoTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaacoTable::add(Self, Self) -> Self
+pub fn OptmetaacoTable::copy(Self) -> Self
+pub fn OptmetaacoTable::fill(Self, Double) -> Self
+pub fn OptmetaacoTable::get(Self, Int32) -> Double
+pub fn OptmetaacoTable::len(Self) -> Int32
+pub fn OptmetaacoTable::max(Self) -> Double
+pub fn OptmetaacoTable::mean(Self) -> Double
+pub fn OptmetaacoTable::min(Self) -> Double
+pub fn OptmetaacoTable::scale(Self, Double) -> Self
+pub fn OptmetaacoTable::set(Self, Int32, Double) -> Self
+pub fn OptmetaacoTable::sum(Self) -> Double
+pub fn OptmetaacoTable::to_string(Self) -> String
+
+pub(all) struct OptmetaacoVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn OptmetaacoVector::add(Self, Self) -> Self
+pub fn OptmetaacoVector::dist(Self, Self) -> Double
+pub fn OptmetaacoVector::dot(Self, Self) -> Double
+pub fn OptmetaacoVector::norm(Self) -> Double
+pub fn OptmetaacoVector::normalize(Self) -> Self
+pub fn OptmetaacoVector::scale(Self, Double) -> Self
+pub fn OptmetaacoVector::sub(Self, Self) -> Self
+pub fn OptmetaacoVector::to_string(Self) -> String
+
+pub(all) struct OptmetaacoView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaacoView::add(Self, Self) -> Self
+pub fn OptmetaacoView::copy(Self) -> Self
+pub fn OptmetaacoView::fill(Self, Double) -> Self
+pub fn OptmetaacoView::get(Self, Int32) -> Double
+pub fn OptmetaacoView::len(Self) -> Int32
+pub fn OptmetaacoView::max(Self) -> Double
+pub fn OptmetaacoView::mean(Self) -> Double
+pub fn OptmetaacoView::min(Self) -> Double
+pub fn OptmetaacoView::scale(Self, Double) -> Self
+pub fn OptmetaacoView::set(Self, Int32, Double) -> Self
+pub fn OptmetaacoView::sum(Self) -> Double
+pub fn OptmetaacoView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

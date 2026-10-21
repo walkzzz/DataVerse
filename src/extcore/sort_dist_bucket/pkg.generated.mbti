@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_dist_bucket"
+
+// Values
+pub fn sort_dist_bucket_buffer_make(Int32) -> SortdistbucketBuffer
+
+pub fn sort_dist_bucket_cluster_make(Int32) -> SortdistbucketCluster
+
+pub fn sort_dist_bucket_cursor_make(Int32) -> SortdistbucketCursor
+
+pub fn sort_dist_bucket_edge_make(Int32) -> SortdistbucketEdge
+
+pub fn sort_dist_bucket_frame_make(Int32) -> SortdistbucketFrame
+
+pub fn sort_dist_bucket_graphn_make(Int32) -> SortdistbucketGraphN
+
+pub fn sort_dist_bucket_layer_make(Int32) -> SortdistbucketLayer
+
+pub fn sort_dist_bucket_make_matrix(Int32, Int32, Double) -> SortdistbucketMatrix
+
+pub fn sort_dist_bucket_make_point(Double, Double) -> SortdistbucketPoint
+
+pub fn sort_dist_bucket_make_point3(Double, Double, Double) -> SortdistbucketPoint
+
+pub fn sort_dist_bucket_make_series(Array[Double], String) -> SortdistbucketSeries
+
+pub fn sort_dist_bucket_make_vector(Array[Double]) -> SortdistbucketVector
+
+pub fn sort_dist_bucket_matrix_identity(Int32) -> SortdistbucketMatrix
+
+pub fn sort_dist_bucket_model_make(Int32) -> SortdistbucketModel
+
+pub fn sort_dist_bucket_node_make(Int32) -> SortdistbucketNode
+
+pub fn sort_dist_bucket_path_make(Int32) -> SortdistbucketPath
+
+pub fn sort_dist_bucket_range_make(Int32) -> SortdistbucketRange
+
+pub fn sort_dist_bucket_slice_make(Int32) -> SortdistbucketSlice
+
+pub fn sort_dist_bucket_table_make(Int32) -> SortdistbucketTable
+
+pub fn sort_dist_bucket_vector_zero(Int32) -> SortdistbucketVector
+
+pub fn sort_dist_bucket_view_make(Int32) -> SortdistbucketView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortdistbucketBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistbucketBuffer::add(Self, Self) -> Self
+pub fn SortdistbucketBuffer::copy(Self) -> Self
+pub fn SortdistbucketBuffer::fill(Self, Double) -> Self
+pub fn SortdistbucketBuffer::get(Self, Int32) -> Double
+pub fn SortdistbucketBuffer::len(Self) -> Int32
+pub fn SortdistbucketBuffer::max(Self) -> Double
+pub fn SortdistbucketBuffer::mean(Self) -> Double
+pub fn SortdistbucketBuffer::min(Self) -> Double
+pub fn SortdistbucketBuffer::scale(Self, Double) -> Self
+pub fn SortdistbucketBuffer::set(Self, Int32, Double) -> Self
+pub fn SortdistbucketBuffer::sum(Self) -> Double
+pub fn SortdistbucketBuffer::to_string(Self) -> String
+
+pub(all) struct SortdistbucketCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistbucketCluster::add(Self, Self) -> Self
+pub fn SortdistbucketCluster::copy(Self) -> Self
+pub fn SortdistbucketCluster::fill(Self, Double) -> Self
+pub fn SortdistbucketCluster::get(Self, Int32) -> Double
+pub fn SortdistbucketCluster::len(Self) -> Int32
+pub fn SortdistbucketCluster::max(Self) -> Double
+pub fn SortdistbucketCluster::mean(Self) -> Double
+pub fn SortdistbucketCluster::min(Self) -> Double
+pub fn SortdistbucketCluster::scale(Self, Double) -> Self
+pub fn SortdistbucketCluster::set(Self, Int32, Double) -> Self
+pub fn SortdistbucketCluster::sum(Self) -> Double
+pub fn SortdistbucketCluster::to_string(Self) -> String
+
+pub(all) struct SortdistbucketCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistbucketCursor::add(Self, Self) -> Self
+pub fn SortdistbucketCursor::copy(Self) -> Self
+pub fn SortdistbucketCursor::fill(Self, Double) -> Self
+pub fn SortdistbucketCursor::get(Self, Int32) -> Double
+pub fn SortdistbucketCursor::len(Self) -> Int32
+pub fn SortdistbucketCursor::max(Self) -> Double
+pub fn SortdistbucketCursor::mean(Self) -> Double
+pub fn SortdistbucketCursor::min(Self) -> Double
+pub fn SortdistbucketCursor::scale(Self, Double) -> Self
+pub fn SortdistbucketCursor::set(Self, Int32, Double) -> Self
+pub fn SortdistbucketCursor::sum(Self) -> Double
+pub fn SortdistbucketCursor::to_string(Self) -> String
+
+pub(all) struct SortdistbucketEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistbucketEdge::add(Self, Self) -> Self
+pub fn SortdistbucketEdge::copy(Self) -> Self
+pub fn SortdistbucketEdge::fill(Self, Double) -> Self
+pub fn SortdistbucketEdge::get(Self, Int32) -> Double
+pub fn SortdistbucketEdge::len(Self) -> Int32
+pub fn SortdistbucketEdge::max(Self) -> Double
+pub fn SortdistbucketEdge::mean(Self) -> Double
+pub fn SortdistbucketEdge::min(Self) -> Double
+pub fn SortdistbucketEdge::scale(Self, Double) -> Self
+pub fn SortdistbucketEdge::set(Self, Int32, Double) -> Self
+pub fn SortdistbucketEdge::sum(Self) -> Double
+pub fn SortdistbucketEdge::to_string(Self) -> String
+
+pub(all) struct SortdistbucketFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistbucketFrame::add(Self, Self) -> Self
+pub fn SortdistbucketFrame::copy(Self) -> Self
+pub fn SortdistbucketFrame::fill(Self, Double) -> Self
+pub fn SortdistbucketFrame::get(Self, Int32) -> Double
+pub fn SortdistbucketFrame::len(Self) -> Int32
+pub fn SortdistbucketFrame::max(Self) -> Double
+pub fn SortdistbucketFrame::mean(Self) -> Double
+pub fn SortdistbucketFrame::min(Self) -> Double
+pub fn SortdistbucketFrame::scale(Self, Double) -> Self
+pub fn SortdistbucketFrame::set(Self, Int32, Double) -> Self
+pub fn SortdistbucketFrame::sum(Self) -> Double
+pub fn SortdistbucketFrame::to_string(Self) -> String
+
+pub(all) struct SortdistbucketGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistbucketGraphN::add(Self, Self) -> Self
+pub fn SortdistbucketGraphN::copy(Self) -> Self
+pub fn SortdistbucketGraphN::fill(Self, Double) -> Self
+pub fn SortdistbucketGraphN::get(Self, Int32) -> Double
+pub fn SortdistbucketGraphN::len(Self) -> Int32
+pub fn SortdistbucketGraphN::max(Self) -> Double
+pub fn SortdistbucketGraphN::mean(Self) -> Double
+pub fn SortdistbucketGraphN::min(Self) -> Double
+pub fn SortdistbucketGraphN::scale(Self, Double) -> Self
+pub fn SortdistbucketGraphN::set(Self, Int32, Double) -> Self
+pub fn SortdistbucketGraphN::sum(Self) -> Double
+pub fn SortdistbucketGraphN::to_string(Self) -> String
+
+pub(all) struct SortdistbucketLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistbucketLayer::add(Self, Self) -> Self
+pub fn SortdistbucketLayer::copy(Self) -> Self
+pub fn SortdistbucketLayer::fill(Self, Double) -> Self
+pub fn SortdistbucketLayer::get(Self, Int32) -> Double
+pub fn SortdistbucketLayer::len(Self) -> Int32
+pub fn SortdistbucketLayer::max(Self) -> Double
+pub fn SortdistbucketLayer::mean(Self) -> Double
+pub fn SortdistbucketLayer::min(Self) -> Double
+pub fn SortdistbucketLayer::scale(Self, Double) -> Self
+pub fn SortdistbucketLayer::set(Self, Int32, Double) -> Self
+pub fn SortdistbucketLayer::sum(Self) -> Double
+pub fn SortdistbucketLayer::to_string(Self) -> String
+
+pub(all) struct SortdistbucketMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortdistbucketMatrix::add(Self, Self) -> Self
+pub fn SortdistbucketMatrix::det(Self) -> Double
+pub fn SortdistbucketMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortdistbucketMatrix::multiply(Self, Self) -> Self
+pub fn SortdistbucketMatrix::norm(Self) -> Double
+pub fn SortdistbucketMatrix::scale(Self, Double) -> Self
+pub fn SortdistbucketMatrix::to_string(Self) -> String
+pub fn SortdistbucketMatrix::trace(Self) -> Double
+pub fn SortdistbucketMatrix::transpose(Self) -> Self
+
+pub(all) struct SortdistbucketModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistbucketModel::add(Self, Self) -> Self
+pub fn SortdistbucketModel::copy(Self) -> Self
+pub fn SortdistbucketModel::fill(Self, Double) -> Self
+pub fn SortdistbucketModel::get(Self, Int32) -> Double
+pub fn SortdistbucketModel::len(Self) -> Int32
+pub fn SortdistbucketModel::max(Self) -> Double
+pub fn SortdistbucketModel::mean(Self) -> Double
+pub fn SortdistbucketModel::min(Self) -> Double
+pub fn SortdistbucketModel::scale(Self, Double) -> Self
+pub fn SortdistbucketModel::set(Self, Int32, Double) -> Self
+pub fn SortdistbucketModel::sum(Self) -> Double
+pub fn SortdistbucketModel::to_string(Self) -> String
+
+pub(all) struct SortdistbucketNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistbucketNode::add(Self, Self) -> Self
+pub fn SortdistbucketNode::copy(Self) -> Self
+pub fn SortdistbucketNode::fill(Self, Double) -> Self
+pub fn SortdistbucketNode::get(Self, Int32) -> Double
+pub fn SortdistbucketNode::len(Self) -> Int32
+pub fn SortdistbucketNode::max(Self) -> Double
+pub fn SortdistbucketNode::mean(Self) -> Double
+pub fn SortdistbucketNode::min(Self) -> Double
+pub fn SortdistbucketNode::scale(Self, Double) -> Self
+pub fn SortdistbucketNode::set(Self, Int32, Double) -> Self
+pub fn SortdistbucketNode::sum(Self) -> Double
+pub fn SortdistbucketNode::to_string(Self) -> String
+
+pub(all) struct SortdistbucketPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistbucketPath::add(Self, Self) -> Self
+pub fn SortdistbucketPath::copy(Self) -> Self
+pub fn SortdistbucketPath::fill(Self, Double) -> Self
+pub fn SortdistbucketPath::get(Self, Int32) -> Double
+pub fn SortdistbucketPath::len(Self) -> Int32
+pub fn SortdistbucketPath::max(Self) -> Double
+pub fn SortdistbucketPath::mean(Self) -> Double
+pub fn SortdistbucketPath::min(Self) -> Double
+pub fn SortdistbucketPath::scale(Self, Double) -> Self
+pub fn SortdistbucketPath::set(Self, Int32, Double) -> Self
+pub fn SortdistbucketPath::sum(Self) -> Double
+pub fn SortdistbucketPath::to_string(Self) -> String
+
+pub(all) struct SortdistbucketPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortdistbucketPoint::add(Self, Self) -> Self
+pub fn SortdistbucketPoint::cross(Self, Self) -> Self
+pub fn SortdistbucketPoint::dist(Self, Self) -> Double
+pub fn SortdistbucketPoint::dot(Self, Self) -> Double
+pub fn SortdistbucketPoint::label(Self) -> Int32
+pub fn SortdistbucketPoint::lerp(Self, Self, Double) -> Self
+pub fn SortdistbucketPoint::mid(Self, Self) -> Self
+pub fn SortdistbucketPoint::negate(Self) -> Self
+pub fn SortdistbucketPoint::norm(Self) -> Double
+pub fn SortdistbucketPoint::normalize(Self) -> Self
+pub fn SortdistbucketPoint::scale(Self, Double) -> Self
+pub fn SortdistbucketPoint::sub(Self, Self) -> Self
+pub fn SortdistbucketPoint::to_string(Self) -> String
+pub fn SortdistbucketPoint::x(Self) -> Double
+pub fn SortdistbucketPoint::y(Self) -> Double
+pub fn SortdistbucketPoint::z(Self) -> Double
+
+pub(all) struct SortdistbucketRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistbucketRange::add(Self, Self) -> Self
+pub fn SortdistbucketRange::copy(Self) -> Self
+pub fn SortdistbucketRange::fill(Self, Double) -> Self
+pub fn SortdistbucketRange::get(Self, Int32) -> Double
+pub fn SortdistbucketRange::len(Self) -> Int32
+pub fn SortdistbucketRange::max(Self) -> Double
+pub fn SortdistbucketRange::mean(Self) -> Double
+pub fn SortdistbucketRange::min(Self) -> Double
+pub fn SortdistbucketRange::scale(Self, Double) -> Self
+pub fn SortdistbucketRange::set(Self, Int32, Double) -> Self
+pub fn SortdistbucketRange::sum(Self) -> Double
+pub fn SortdistbucketRange::to_string(Self) -> String
+
+pub(all) struct SortdistbucketSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortdistbucketSeries::add(Self, Self) -> Self
+pub fn SortdistbucketSeries::cumsum(Self) -> Self
+pub fn SortdistbucketSeries::len(Self) -> Int32
+pub fn SortdistbucketSeries::max(Self) -> Double
+pub fn SortdistbucketSeries::mean(Self) -> Double
+pub fn SortdistbucketSeries::median(Self) -> Double
+pub fn SortdistbucketSeries::min(Self) -> Double
+pub fn SortdistbucketSeries::normalize(Self) -> Self
+pub fn SortdistbucketSeries::range(Self) -> Double
+pub fn SortdistbucketSeries::scale(Self, Double) -> Self
+pub fn SortdistbucketSeries::std(Self) -> Double
+pub fn SortdistbucketSeries::sub(Self, Self) -> Self
+pub fn SortdistbucketSeries::sum(Self) -> Double
+pub fn SortdistbucketSeries::to_string(Self) -> String
+pub fn SortdistbucketSeries::variance(Self) -> Double
+
+pub(all) struct SortdistbucketSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistbucketSlice::add(Self, Self) -> Self
+pub fn SortdistbucketSlice::copy(Self) -> Self
+pub fn SortdistbucketSlice::fill(Self, Double) -> Self
+pub fn SortdistbucketSlice::get(Self, Int32) -> Double
+pub fn SortdistbucketSlice::len(Self) -> Int32
+pub fn SortdistbucketSlice::max(Self) -> Double
+pub fn SortdistbucketSlice::mean(Self) -> Double
+pub fn SortdistbucketSlice::min(Self) -> Double
+pub fn SortdistbucketSlice::scale(Self, Double) -> Self
+pub fn SortdistbucketSlice::set(Self, Int32, Double) -> Self
+pub fn SortdistbucketSlice::sum(Self) -> Double
+pub fn SortdistbucketSlice::to_string(Self) -> String
+
+pub(all) struct SortdistbucketTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistbucketTable::add(Self, Self) -> Self
+pub fn SortdistbucketTable::copy(Self) -> Self
+pub fn SortdistbucketTable::fill(Self, Double) -> Self
+pub fn SortdistbucketTable::get(Self, Int32) -> Double
+pub fn SortdistbucketTable::len(Self) -> Int32
+pub fn SortdistbucketTable::max(Self) -> Double
+pub fn SortdistbucketTable::mean(Self) -> Double
+pub fn SortdistbucketTable::min(Self) -> Double
+pub fn SortdistbucketTable::scale(Self, Double) -> Self
+pub fn SortdistbucketTable::set(Self, Int32, Double) -> Self
+pub fn SortdistbucketTable::sum(Self) -> Double
+pub fn SortdistbucketTable::to_string(Self) -> String
+
+pub(all) struct SortdistbucketVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortdistbucketVector::add(Self, Self) -> Self
+pub fn SortdistbucketVector::dist(Self, Self) -> Double
+pub fn SortdistbucketVector::dot(Self, Self) -> Double
+pub fn SortdistbucketVector::norm(Self) -> Double
+pub fn SortdistbucketVector::normalize(Self) -> Self
+pub fn SortdistbucketVector::scale(Self, Double) -> Self
+pub fn SortdistbucketVector::sub(Self, Self) -> Self
+pub fn SortdistbucketVector::to_string(Self) -> String
+
+pub(all) struct SortdistbucketView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistbucketView::add(Self, Self) -> Self
+pub fn SortdistbucketView::copy(Self) -> Self
+pub fn SortdistbucketView::fill(Self, Double) -> Self
+pub fn SortdistbucketView::get(Self, Int32) -> Double
+pub fn SortdistbucketView::len(Self) -> Int32
+pub fn SortdistbucketView::max(Self) -> Double
+pub fn SortdistbucketView::mean(Self) -> Double
+pub fn SortdistbucketView::min(Self) -> Double
+pub fn SortdistbucketView::scale(Self, Double) -> Self
+pub fn SortdistbucketView::set(Self, Int32, Double) -> Self
+pub fn SortdistbucketView::sum(Self) -> Double
+pub fn SortdistbucketView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

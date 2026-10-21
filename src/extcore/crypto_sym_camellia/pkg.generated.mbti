@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/crypto_sym_camellia"
+
+// Values
+pub fn crypto_sym_camellia_buffer_make(Int32) -> CryptosymcamelliaBuffer
+
+pub fn crypto_sym_camellia_cluster_make(Int32) -> CryptosymcamelliaCluster
+
+pub fn crypto_sym_camellia_cursor_make(Int32) -> CryptosymcamelliaCursor
+
+pub fn crypto_sym_camellia_edge_make(Int32) -> CryptosymcamelliaEdge
+
+pub fn crypto_sym_camellia_frame_make(Int32) -> CryptosymcamelliaFrame
+
+pub fn crypto_sym_camellia_graphn_make(Int32) -> CryptosymcamelliaGraphN
+
+pub fn crypto_sym_camellia_layer_make(Int32) -> CryptosymcamelliaLayer
+
+pub fn crypto_sym_camellia_make_matrix(Int32, Int32, Double) -> CryptosymcamelliaMatrix
+
+pub fn crypto_sym_camellia_make_point(Double, Double) -> CryptosymcamelliaPoint
+
+pub fn crypto_sym_camellia_make_point3(Double, Double, Double) -> CryptosymcamelliaPoint
+
+pub fn crypto_sym_camellia_make_series(Array[Double], String) -> CryptosymcamelliaSeries
+
+pub fn crypto_sym_camellia_make_vector(Array[Double]) -> CryptosymcamelliaVector
+
+pub fn crypto_sym_camellia_matrix_identity(Int32) -> CryptosymcamelliaMatrix
+
+pub fn crypto_sym_camellia_model_make(Int32) -> CryptosymcamelliaModel
+
+pub fn crypto_sym_camellia_node_make(Int32) -> CryptosymcamelliaNode
+
+pub fn crypto_sym_camellia_path_make(Int32) -> CryptosymcamelliaPath
+
+pub fn crypto_sym_camellia_range_make(Int32) -> CryptosymcamelliaRange
+
+pub fn crypto_sym_camellia_slice_make(Int32) -> CryptosymcamelliaSlice
+
+pub fn crypto_sym_camellia_table_make(Int32) -> CryptosymcamelliaTable
+
+pub fn crypto_sym_camellia_vector_zero(Int32) -> CryptosymcamelliaVector
+
+pub fn crypto_sym_camellia_view_make(Int32) -> CryptosymcamelliaView
+
+// Errors
+
+// Types and methods
+pub(all) struct CryptosymcamelliaBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcamelliaBuffer::add(Self, Self) -> Self
+pub fn CryptosymcamelliaBuffer::copy(Self) -> Self
+pub fn CryptosymcamelliaBuffer::fill(Self, Double) -> Self
+pub fn CryptosymcamelliaBuffer::get(Self, Int32) -> Double
+pub fn CryptosymcamelliaBuffer::len(Self) -> Int32
+pub fn CryptosymcamelliaBuffer::max(Self) -> Double
+pub fn CryptosymcamelliaBuffer::mean(Self) -> Double
+pub fn CryptosymcamelliaBuffer::min(Self) -> Double
+pub fn CryptosymcamelliaBuffer::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaBuffer::set(Self, Int32, Double) -> Self
+pub fn CryptosymcamelliaBuffer::sum(Self) -> Double
+pub fn CryptosymcamelliaBuffer::to_string(Self) -> String
+
+pub(all) struct CryptosymcamelliaCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcamelliaCluster::add(Self, Self) -> Self
+pub fn CryptosymcamelliaCluster::copy(Self) -> Self
+pub fn CryptosymcamelliaCluster::fill(Self, Double) -> Self
+pub fn CryptosymcamelliaCluster::get(Self, Int32) -> Double
+pub fn CryptosymcamelliaCluster::len(Self) -> Int32
+pub fn CryptosymcamelliaCluster::max(Self) -> Double
+pub fn CryptosymcamelliaCluster::mean(Self) -> Double
+pub fn CryptosymcamelliaCluster::min(Self) -> Double
+pub fn CryptosymcamelliaCluster::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaCluster::set(Self, Int32, Double) -> Self
+pub fn CryptosymcamelliaCluster::sum(Self) -> Double
+pub fn CryptosymcamelliaCluster::to_string(Self) -> String
+
+pub(all) struct CryptosymcamelliaCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcamelliaCursor::add(Self, Self) -> Self
+pub fn CryptosymcamelliaCursor::copy(Self) -> Self
+pub fn CryptosymcamelliaCursor::fill(Self, Double) -> Self
+pub fn CryptosymcamelliaCursor::get(Self, Int32) -> Double
+pub fn CryptosymcamelliaCursor::len(Self) -> Int32
+pub fn CryptosymcamelliaCursor::max(Self) -> Double
+pub fn CryptosymcamelliaCursor::mean(Self) -> Double
+pub fn CryptosymcamelliaCursor::min(Self) -> Double
+pub fn CryptosymcamelliaCursor::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaCursor::set(Self, Int32, Double) -> Self
+pub fn CryptosymcamelliaCursor::sum(Self) -> Double
+pub fn CryptosymcamelliaCursor::to_string(Self) -> String
+
+pub(all) struct CryptosymcamelliaEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcamelliaEdge::add(Self, Self) -> Self
+pub fn CryptosymcamelliaEdge::copy(Self) -> Self
+pub fn CryptosymcamelliaEdge::fill(Self, Double) -> Self
+pub fn CryptosymcamelliaEdge::get(Self, Int32) -> Double
+pub fn CryptosymcamelliaEdge::len(Self) -> Int32
+pub fn CryptosymcamelliaEdge::max(Self) -> Double
+pub fn CryptosymcamelliaEdge::mean(Self) -> Double
+pub fn CryptosymcamelliaEdge::min(Self) -> Double
+pub fn CryptosymcamelliaEdge::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaEdge::set(Self, Int32, Double) -> Self
+pub fn CryptosymcamelliaEdge::sum(Self) -> Double
+pub fn CryptosymcamelliaEdge::to_string(Self) -> String
+
+pub(all) struct CryptosymcamelliaFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcamelliaFrame::add(Self, Self) -> Self
+pub fn CryptosymcamelliaFrame::copy(Self) -> Self
+pub fn CryptosymcamelliaFrame::fill(Self, Double) -> Self
+pub fn CryptosymcamelliaFrame::get(Self, Int32) -> Double
+pub fn CryptosymcamelliaFrame::len(Self) -> Int32
+pub fn CryptosymcamelliaFrame::max(Self) -> Double
+pub fn CryptosymcamelliaFrame::mean(Self) -> Double
+pub fn CryptosymcamelliaFrame::min(Self) -> Double
+pub fn CryptosymcamelliaFrame::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaFrame::set(Self, Int32, Double) -> Self
+pub fn CryptosymcamelliaFrame::sum(Self) -> Double
+pub fn CryptosymcamelliaFrame::to_string(Self) -> String
+
+pub(all) struct CryptosymcamelliaGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcamelliaGraphN::add(Self, Self) -> Self
+pub fn CryptosymcamelliaGraphN::copy(Self) -> Self
+pub fn CryptosymcamelliaGraphN::fill(Self, Double) -> Self
+pub fn CryptosymcamelliaGraphN::get(Self, Int32) -> Double
+pub fn CryptosymcamelliaGraphN::len(Self) -> Int32
+pub fn CryptosymcamelliaGraphN::max(Self) -> Double
+pub fn CryptosymcamelliaGraphN::mean(Self) -> Double
+pub fn CryptosymcamelliaGraphN::min(Self) -> Double
+pub fn CryptosymcamelliaGraphN::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaGraphN::set(Self, Int32, Double) -> Self
+pub fn CryptosymcamelliaGraphN::sum(Self) -> Double
+pub fn CryptosymcamelliaGraphN::to_string(Self) -> String
+
+pub(all) struct CryptosymcamelliaLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcamelliaLayer::add(Self, Self) -> Self
+pub fn CryptosymcamelliaLayer::copy(Self) -> Self
+pub fn CryptosymcamelliaLayer::fill(Self, Double) -> Self
+pub fn CryptosymcamelliaLayer::get(Self, Int32) -> Double
+pub fn CryptosymcamelliaLayer::len(Self) -> Int32
+pub fn CryptosymcamelliaLayer::max(Self) -> Double
+pub fn CryptosymcamelliaLayer::mean(Self) -> Double
+pub fn CryptosymcamelliaLayer::min(Self) -> Double
+pub fn CryptosymcamelliaLayer::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaLayer::set(Self, Int32, Double) -> Self
+pub fn CryptosymcamelliaLayer::sum(Self) -> Double
+pub fn CryptosymcamelliaLayer::to_string(Self) -> String
+
+pub(all) struct CryptosymcamelliaMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn CryptosymcamelliaMatrix::add(Self, Self) -> Self
+pub fn CryptosymcamelliaMatrix::det(Self) -> Double
+pub fn CryptosymcamelliaMatrix::get(Self, Int32, Int32) -> Double
+pub fn CryptosymcamelliaMatrix::multiply(Self, Self) -> Self
+pub fn CryptosymcamelliaMatrix::norm(Self) -> Double
+pub fn CryptosymcamelliaMatrix::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaMatrix::to_string(Self) -> String
+pub fn CryptosymcamelliaMatrix::trace(Self) -> Double
+pub fn CryptosymcamelliaMatrix::transpose(Self) -> Self
+
+pub(all) struct CryptosymcamelliaModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcamelliaModel::add(Self, Self) -> Self
+pub fn CryptosymcamelliaModel::copy(Self) -> Self
+pub fn CryptosymcamelliaModel::fill(Self, Double) -> Self
+pub fn CryptosymcamelliaModel::get(Self, Int32) -> Double
+pub fn CryptosymcamelliaModel::len(Self) -> Int32
+pub fn CryptosymcamelliaModel::max(Self) -> Double
+pub fn CryptosymcamelliaModel::mean(Self) -> Double
+pub fn CryptosymcamelliaModel::min(Self) -> Double
+pub fn CryptosymcamelliaModel::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaModel::set(Self, Int32, Double) -> Self
+pub fn CryptosymcamelliaModel::sum(Self) -> Double
+pub fn CryptosymcamelliaModel::to_string(Self) -> String
+
+pub(all) struct CryptosymcamelliaNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcamelliaNode::add(Self, Self) -> Self
+pub fn CryptosymcamelliaNode::copy(Self) -> Self
+pub fn CryptosymcamelliaNode::fill(Self, Double) -> Self
+pub fn CryptosymcamelliaNode::get(Self, Int32) -> Double
+pub fn CryptosymcamelliaNode::len(Self) -> Int32
+pub fn CryptosymcamelliaNode::max(Self) -> Double
+pub fn CryptosymcamelliaNode::mean(Self) -> Double
+pub fn CryptosymcamelliaNode::min(Self) -> Double
+pub fn CryptosymcamelliaNode::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaNode::set(Self, Int32, Double) -> Self
+pub fn CryptosymcamelliaNode::sum(Self) -> Double
+pub fn CryptosymcamelliaNode::to_string(Self) -> String
+
+pub(all) struct CryptosymcamelliaPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcamelliaPath::add(Self, Self) -> Self
+pub fn CryptosymcamelliaPath::copy(Self) -> Self
+pub fn CryptosymcamelliaPath::fill(Self, Double) -> Self
+pub fn CryptosymcamelliaPath::get(Self, Int32) -> Double
+pub fn CryptosymcamelliaPath::len(Self) -> Int32
+pub fn CryptosymcamelliaPath::max(Self) -> Double
+pub fn CryptosymcamelliaPath::mean(Self) -> Double
+pub fn CryptosymcamelliaPath::min(Self) -> Double
+pub fn CryptosymcamelliaPath::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaPath::set(Self, Int32, Double) -> Self
+pub fn CryptosymcamelliaPath::sum(Self) -> Double
+pub fn CryptosymcamelliaPath::to_string(Self) -> String
+
+pub(all) struct CryptosymcamelliaPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn CryptosymcamelliaPoint::add(Self, Self) -> Self
+pub fn CryptosymcamelliaPoint::cross(Self, Self) -> Self
+pub fn CryptosymcamelliaPoint::dist(Self, Self) -> Double
+pub fn CryptosymcamelliaPoint::dot(Self, Self) -> Double
+pub fn CryptosymcamelliaPoint::label(Self) -> Int32
+pub fn CryptosymcamelliaPoint::lerp(Self, Self, Double) -> Self
+pub fn CryptosymcamelliaPoint::mid(Self, Self) -> Self
+pub fn CryptosymcamelliaPoint::negate(Self) -> Self
+pub fn CryptosymcamelliaPoint::norm(Self) -> Double
+pub fn CryptosymcamelliaPoint::normalize(Self) -> Self
+pub fn CryptosymcamelliaPoint::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaPoint::sub(Self, Self) -> Self
+pub fn CryptosymcamelliaPoint::to_string(Self) -> String
+pub fn CryptosymcamelliaPoint::x(Self) -> Double
+pub fn CryptosymcamelliaPoint::y(Self) -> Double
+pub fn CryptosymcamelliaPoint::z(Self) -> Double
+
+pub(all) struct CryptosymcamelliaRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcamelliaRange::add(Self, Self) -> Self
+pub fn CryptosymcamelliaRange::copy(Self) -> Self
+pub fn CryptosymcamelliaRange::fill(Self, Double) -> Self
+pub fn CryptosymcamelliaRange::get(Self, Int32) -> Double
+pub fn CryptosymcamelliaRange::len(Self) -> Int32
+pub fn CryptosymcamelliaRange::max(Self) -> Double
+pub fn CryptosymcamelliaRange::mean(Self) -> Double
+pub fn CryptosymcamelliaRange::min(Self) -> Double
+pub fn CryptosymcamelliaRange::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaRange::set(Self, Int32, Double) -> Self
+pub fn CryptosymcamelliaRange::sum(Self) -> Double
+pub fn CryptosymcamelliaRange::to_string(Self) -> String
+
+pub(all) struct CryptosymcamelliaSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn CryptosymcamelliaSeries::add(Self, Self) -> Self
+pub fn CryptosymcamelliaSeries::cumsum(Self) -> Self
+pub fn CryptosymcamelliaSeries::len(Self) -> Int32
+pub fn CryptosymcamelliaSeries::max(Self) -> Double
+pub fn CryptosymcamelliaSeries::mean(Self) -> Double
+pub fn CryptosymcamelliaSeries::median(Self) -> Double
+pub fn CryptosymcamelliaSeries::min(Self) -> Double
+pub fn CryptosymcamelliaSeries::normalize(Self) -> Self
+pub fn CryptosymcamelliaSeries::range(Self) -> Double
+pub fn CryptosymcamelliaSeries::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaSeries::std(Self) -> Double
+pub fn CryptosymcamelliaSeries::sub(Self, Self) -> Self
+pub fn CryptosymcamelliaSeries::sum(Self) -> Double
+pub fn CryptosymcamelliaSeries::to_string(Self) -> String
+pub fn CryptosymcamelliaSeries::variance(Self) -> Double
+
+pub(all) struct CryptosymcamelliaSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcamelliaSlice::add(Self, Self) -> Self
+pub fn CryptosymcamelliaSlice::copy(Self) -> Self
+pub fn CryptosymcamelliaSlice::fill(Self, Double) -> Self
+pub fn CryptosymcamelliaSlice::get(Self, Int32) -> Double
+pub fn CryptosymcamelliaSlice::len(Self) -> Int32
+pub fn CryptosymcamelliaSlice::max(Self) -> Double
+pub fn CryptosymcamelliaSlice::mean(Self) -> Double
+pub fn CryptosymcamelliaSlice::min(Self) -> Double
+pub fn CryptosymcamelliaSlice::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaSlice::set(Self, Int32, Double) -> Self
+pub fn CryptosymcamelliaSlice::sum(Self) -> Double
+pub fn CryptosymcamelliaSlice::to_string(Self) -> String
+
+pub(all) struct CryptosymcamelliaTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcamelliaTable::add(Self, Self) -> Self
+pub fn CryptosymcamelliaTable::copy(Self) -> Self
+pub fn CryptosymcamelliaTable::fill(Self, Double) -> Self
+pub fn CryptosymcamelliaTable::get(Self, Int32) -> Double
+pub fn CryptosymcamelliaTable::len(Self) -> Int32
+pub fn CryptosymcamelliaTable::max(Self) -> Double
+pub fn CryptosymcamelliaTable::mean(Self) -> Double
+pub fn CryptosymcamelliaTable::min(Self) -> Double
+pub fn CryptosymcamelliaTable::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaTable::set(Self, Int32, Double) -> Self
+pub fn CryptosymcamelliaTable::sum(Self) -> Double
+pub fn CryptosymcamelliaTable::to_string(Self) -> String
+
+pub(all) struct CryptosymcamelliaVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn CryptosymcamelliaVector::add(Self, Self) -> Self
+pub fn CryptosymcamelliaVector::dist(Self, Self) -> Double
+pub fn CryptosymcamelliaVector::dot(Self, Self) -> Double
+pub fn CryptosymcamelliaVector::norm(Self) -> Double
+pub fn CryptosymcamelliaVector::normalize(Self) -> Self
+pub fn CryptosymcamelliaVector::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaVector::sub(Self, Self) -> Self
+pub fn CryptosymcamelliaVector::to_string(Self) -> String
+
+pub(all) struct CryptosymcamelliaView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymcamelliaView::add(Self, Self) -> Self
+pub fn CryptosymcamelliaView::copy(Self) -> Self
+pub fn CryptosymcamelliaView::fill(Self, Double) -> Self
+pub fn CryptosymcamelliaView::get(Self, Int32) -> Double
+pub fn CryptosymcamelliaView::len(Self) -> Int32
+pub fn CryptosymcamelliaView::max(Self) -> Double
+pub fn CryptosymcamelliaView::mean(Self) -> Double
+pub fn CryptosymcamelliaView::min(Self) -> Double
+pub fn CryptosymcamelliaView::scale(Self, Double) -> Self
+pub fn CryptosymcamelliaView::set(Self, Int32, Double) -> Self
+pub fn CryptosymcamelliaView::sum(Self) -> Double
+pub fn CryptosymcamelliaView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_decomp_wavelet"
+
+// Values
+pub fn timeseries_decomp_wavelet_buffer_make(Int32) -> TimeseriesdecompwaveletBuffer
+
+pub fn timeseries_decomp_wavelet_cluster_make(Int32) -> TimeseriesdecompwaveletCluster
+
+pub fn timeseries_decomp_wavelet_cursor_make(Int32) -> TimeseriesdecompwaveletCursor
+
+pub fn timeseries_decomp_wavelet_edge_make(Int32) -> TimeseriesdecompwaveletEdge
+
+pub fn timeseries_decomp_wavelet_frame_make(Int32) -> TimeseriesdecompwaveletFrame
+
+pub fn timeseries_decomp_wavelet_graphn_make(Int32) -> TimeseriesdecompwaveletGraphN
+
+pub fn timeseries_decomp_wavelet_layer_make(Int32) -> TimeseriesdecompwaveletLayer
+
+pub fn timeseries_decomp_wavelet_make_matrix(Int32, Int32, Double) -> TimeseriesdecompwaveletMatrix
+
+pub fn timeseries_decomp_wavelet_make_point(Double, Double) -> TimeseriesdecompwaveletPoint
+
+pub fn timeseries_decomp_wavelet_make_point3(Double, Double, Double) -> TimeseriesdecompwaveletPoint
+
+pub fn timeseries_decomp_wavelet_make_series(Array[Double], String) -> TimeseriesdecompwaveletSeries
+
+pub fn timeseries_decomp_wavelet_make_vector(Array[Double]) -> TimeseriesdecompwaveletVector
+
+pub fn timeseries_decomp_wavelet_matrix_identity(Int32) -> TimeseriesdecompwaveletMatrix
+
+pub fn timeseries_decomp_wavelet_model_make(Int32) -> TimeseriesdecompwaveletModel
+
+pub fn timeseries_decomp_wavelet_node_make(Int32) -> TimeseriesdecompwaveletNode
+
+pub fn timeseries_decomp_wavelet_path_make(Int32) -> TimeseriesdecompwaveletPath
+
+pub fn timeseries_decomp_wavelet_range_make(Int32) -> TimeseriesdecompwaveletRange
+
+pub fn timeseries_decomp_wavelet_slice_make(Int32) -> TimeseriesdecompwaveletSlice
+
+pub fn timeseries_decomp_wavelet_table_make(Int32) -> TimeseriesdecompwaveletTable
+
+pub fn timeseries_decomp_wavelet_vector_zero(Int32) -> TimeseriesdecompwaveletVector
+
+pub fn timeseries_decomp_wavelet_view_make(Int32) -> TimeseriesdecompwaveletView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriesdecompwaveletBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompwaveletBuffer::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletBuffer::copy(Self) -> Self
+pub fn TimeseriesdecompwaveletBuffer::fill(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletBuffer::get(Self, Int32) -> Double
+pub fn TimeseriesdecompwaveletBuffer::len(Self) -> Int32
+pub fn TimeseriesdecompwaveletBuffer::max(Self) -> Double
+pub fn TimeseriesdecompwaveletBuffer::mean(Self) -> Double
+pub fn TimeseriesdecompwaveletBuffer::min(Self) -> Double
+pub fn TimeseriesdecompwaveletBuffer::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompwaveletBuffer::sum(Self) -> Double
+pub fn TimeseriesdecompwaveletBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompwaveletCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompwaveletCluster::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletCluster::copy(Self) -> Self
+pub fn TimeseriesdecompwaveletCluster::fill(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletCluster::get(Self, Int32) -> Double
+pub fn TimeseriesdecompwaveletCluster::len(Self) -> Int32
+pub fn TimeseriesdecompwaveletCluster::max(Self) -> Double
+pub fn TimeseriesdecompwaveletCluster::mean(Self) -> Double
+pub fn TimeseriesdecompwaveletCluster::min(Self) -> Double
+pub fn TimeseriesdecompwaveletCluster::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompwaveletCluster::sum(Self) -> Double
+pub fn TimeseriesdecompwaveletCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompwaveletCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompwaveletCursor::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletCursor::copy(Self) -> Self
+pub fn TimeseriesdecompwaveletCursor::fill(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletCursor::get(Self, Int32) -> Double
+pub fn TimeseriesdecompwaveletCursor::len(Self) -> Int32
+pub fn TimeseriesdecompwaveletCursor::max(Self) -> Double
+pub fn TimeseriesdecompwaveletCursor::mean(Self) -> Double
+pub fn TimeseriesdecompwaveletCursor::min(Self) -> Double
+pub fn TimeseriesdecompwaveletCursor::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompwaveletCursor::sum(Self) -> Double
+pub fn TimeseriesdecompwaveletCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompwaveletEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompwaveletEdge::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletEdge::copy(Self) -> Self
+pub fn TimeseriesdecompwaveletEdge::fill(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletEdge::get(Self, Int32) -> Double
+pub fn TimeseriesdecompwaveletEdge::len(Self) -> Int32
+pub fn TimeseriesdecompwaveletEdge::max(Self) -> Double
+pub fn TimeseriesdecompwaveletEdge::mean(Self) -> Double
+pub fn TimeseriesdecompwaveletEdge::min(Self) -> Double
+pub fn TimeseriesdecompwaveletEdge::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompwaveletEdge::sum(Self) -> Double
+pub fn TimeseriesdecompwaveletEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompwaveletFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompwaveletFrame::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletFrame::copy(Self) -> Self
+pub fn TimeseriesdecompwaveletFrame::fill(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletFrame::get(Self, Int32) -> Double
+pub fn TimeseriesdecompwaveletFrame::len(Self) -> Int32
+pub fn TimeseriesdecompwaveletFrame::max(Self) -> Double
+pub fn TimeseriesdecompwaveletFrame::mean(Self) -> Double
+pub fn TimeseriesdecompwaveletFrame::min(Self) -> Double
+pub fn TimeseriesdecompwaveletFrame::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompwaveletFrame::sum(Self) -> Double
+pub fn TimeseriesdecompwaveletFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompwaveletGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompwaveletGraphN::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletGraphN::copy(Self) -> Self
+pub fn TimeseriesdecompwaveletGraphN::fill(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletGraphN::get(Self, Int32) -> Double
+pub fn TimeseriesdecompwaveletGraphN::len(Self) -> Int32
+pub fn TimeseriesdecompwaveletGraphN::max(Self) -> Double
+pub fn TimeseriesdecompwaveletGraphN::mean(Self) -> Double
+pub fn TimeseriesdecompwaveletGraphN::min(Self) -> Double
+pub fn TimeseriesdecompwaveletGraphN::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompwaveletGraphN::sum(Self) -> Double
+pub fn TimeseriesdecompwaveletGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompwaveletLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompwaveletLayer::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletLayer::copy(Self) -> Self
+pub fn TimeseriesdecompwaveletLayer::fill(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletLayer::get(Self, Int32) -> Double
+pub fn TimeseriesdecompwaveletLayer::len(Self) -> Int32
+pub fn TimeseriesdecompwaveletLayer::max(Self) -> Double
+pub fn TimeseriesdecompwaveletLayer::mean(Self) -> Double
+pub fn TimeseriesdecompwaveletLayer::min(Self) -> Double
+pub fn TimeseriesdecompwaveletLayer::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompwaveletLayer::sum(Self) -> Double
+pub fn TimeseriesdecompwaveletLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompwaveletMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriesdecompwaveletMatrix::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletMatrix::det(Self) -> Double
+pub fn TimeseriesdecompwaveletMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriesdecompwaveletMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletMatrix::norm(Self) -> Double
+pub fn TimeseriesdecompwaveletMatrix::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletMatrix::to_string(Self) -> String
+pub fn TimeseriesdecompwaveletMatrix::trace(Self) -> Double
+pub fn TimeseriesdecompwaveletMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriesdecompwaveletModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompwaveletModel::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletModel::copy(Self) -> Self
+pub fn TimeseriesdecompwaveletModel::fill(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletModel::get(Self, Int32) -> Double
+pub fn TimeseriesdecompwaveletModel::len(Self) -> Int32
+pub fn TimeseriesdecompwaveletModel::max(Self) -> Double
+pub fn TimeseriesdecompwaveletModel::mean(Self) -> Double
+pub fn TimeseriesdecompwaveletModel::min(Self) -> Double
+pub fn TimeseriesdecompwaveletModel::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompwaveletModel::sum(Self) -> Double
+pub fn TimeseriesdecompwaveletModel::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompwaveletNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompwaveletNode::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletNode::copy(Self) -> Self
+pub fn TimeseriesdecompwaveletNode::fill(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletNode::get(Self, Int32) -> Double
+pub fn TimeseriesdecompwaveletNode::len(Self) -> Int32
+pub fn TimeseriesdecompwaveletNode::max(Self) -> Double
+pub fn TimeseriesdecompwaveletNode::mean(Self) -> Double
+pub fn TimeseriesdecompwaveletNode::min(Self) -> Double
+pub fn TimeseriesdecompwaveletNode::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompwaveletNode::sum(Self) -> Double
+pub fn TimeseriesdecompwaveletNode::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompwaveletPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompwaveletPath::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletPath::copy(Self) -> Self
+pub fn TimeseriesdecompwaveletPath::fill(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletPath::get(Self, Int32) -> Double
+pub fn TimeseriesdecompwaveletPath::len(Self) -> Int32
+pub fn TimeseriesdecompwaveletPath::max(Self) -> Double
+pub fn TimeseriesdecompwaveletPath::mean(Self) -> Double
+pub fn TimeseriesdecompwaveletPath::min(Self) -> Double
+pub fn TimeseriesdecompwaveletPath::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletPath::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompwaveletPath::sum(Self) -> Double
+pub fn TimeseriesdecompwaveletPath::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompwaveletPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriesdecompwaveletPoint::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletPoint::cross(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletPoint::dist(Self, Self) -> Double
+pub fn TimeseriesdecompwaveletPoint::dot(Self, Self) -> Double
+pub fn TimeseriesdecompwaveletPoint::label(Self) -> Int32
+pub fn TimeseriesdecompwaveletPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriesdecompwaveletPoint::mid(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletPoint::negate(Self) -> Self
+pub fn TimeseriesdecompwaveletPoint::norm(Self) -> Double
+pub fn TimeseriesdecompwaveletPoint::normalize(Self) -> Self
+pub fn TimeseriesdecompwaveletPoint::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletPoint::sub(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletPoint::to_string(Self) -> String
+pub fn TimeseriesdecompwaveletPoint::x(Self) -> Double
+pub fn TimeseriesdecompwaveletPoint::y(Self) -> Double
+pub fn TimeseriesdecompwaveletPoint::z(Self) -> Double
+
+pub(all) struct TimeseriesdecompwaveletRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompwaveletRange::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletRange::copy(Self) -> Self
+pub fn TimeseriesdecompwaveletRange::fill(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletRange::get(Self, Int32) -> Double
+pub fn TimeseriesdecompwaveletRange::len(Self) -> Int32
+pub fn TimeseriesdecompwaveletRange::max(Self) -> Double
+pub fn TimeseriesdecompwaveletRange::mean(Self) -> Double
+pub fn TimeseriesdecompwaveletRange::min(Self) -> Double
+pub fn TimeseriesdecompwaveletRange::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompwaveletRange::sum(Self) -> Double
+pub fn TimeseriesdecompwaveletRange::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompwaveletSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriesdecompwaveletSeries::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletSeries::cumsum(Self) -> Self
+pub fn TimeseriesdecompwaveletSeries::len(Self) -> Int32
+pub fn TimeseriesdecompwaveletSeries::max(Self) -> Double
+pub fn TimeseriesdecompwaveletSeries::mean(Self) -> Double
+pub fn TimeseriesdecompwaveletSeries::median(Self) -> Double
+pub fn TimeseriesdecompwaveletSeries::min(Self) -> Double
+pub fn TimeseriesdecompwaveletSeries::normalize(Self) -> Self
+pub fn TimeseriesdecompwaveletSeries::range(Self) -> Double
+pub fn TimeseriesdecompwaveletSeries::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletSeries::std(Self) -> Double
+pub fn TimeseriesdecompwaveletSeries::sub(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletSeries::sum(Self) -> Double
+pub fn TimeseriesdecompwaveletSeries::to_string(Self) -> String
+pub fn TimeseriesdecompwaveletSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriesdecompwaveletSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompwaveletSlice::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletSlice::copy(Self) -> Self
+pub fn TimeseriesdecompwaveletSlice::fill(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletSlice::get(Self, Int32) -> Double
+pub fn TimeseriesdecompwaveletSlice::len(Self) -> Int32
+pub fn TimeseriesdecompwaveletSlice::max(Self) -> Double
+pub fn TimeseriesdecompwaveletSlice::mean(Self) -> Double
+pub fn TimeseriesdecompwaveletSlice::min(Self) -> Double
+pub fn TimeseriesdecompwaveletSlice::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompwaveletSlice::sum(Self) -> Double
+pub fn TimeseriesdecompwaveletSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompwaveletTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompwaveletTable::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletTable::copy(Self) -> Self
+pub fn TimeseriesdecompwaveletTable::fill(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletTable::get(Self, Int32) -> Double
+pub fn TimeseriesdecompwaveletTable::len(Self) -> Int32
+pub fn TimeseriesdecompwaveletTable::max(Self) -> Double
+pub fn TimeseriesdecompwaveletTable::mean(Self) -> Double
+pub fn TimeseriesdecompwaveletTable::min(Self) -> Double
+pub fn TimeseriesdecompwaveletTable::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompwaveletTable::sum(Self) -> Double
+pub fn TimeseriesdecompwaveletTable::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompwaveletVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriesdecompwaveletVector::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletVector::dist(Self, Self) -> Double
+pub fn TimeseriesdecompwaveletVector::dot(Self, Self) -> Double
+pub fn TimeseriesdecompwaveletVector::norm(Self) -> Double
+pub fn TimeseriesdecompwaveletVector::normalize(Self) -> Self
+pub fn TimeseriesdecompwaveletVector::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletVector::sub(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletVector::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompwaveletView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompwaveletView::add(Self, Self) -> Self
+pub fn TimeseriesdecompwaveletView::copy(Self) -> Self
+pub fn TimeseriesdecompwaveletView::fill(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletView::get(Self, Int32) -> Double
+pub fn TimeseriesdecompwaveletView::len(Self) -> Int32
+pub fn TimeseriesdecompwaveletView::max(Self) -> Double
+pub fn TimeseriesdecompwaveletView::mean(Self) -> Double
+pub fn TimeseriesdecompwaveletView::min(Self) -> Double
+pub fn TimeseriesdecompwaveletView::scale(Self, Double) -> Self
+pub fn TimeseriesdecompwaveletView::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompwaveletView::sum(Self) -> Double
+pub fn TimeseriesdecompwaveletView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

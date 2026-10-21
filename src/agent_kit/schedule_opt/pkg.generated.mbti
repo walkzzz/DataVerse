@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/schedule_opt"
+
+// Values
+pub fn schedule_opt_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn schedule_opt_corr(Array[Double], Array[Double]) -> Double
+
+pub fn schedule_opt_cov(Array[Double], Array[Double]) -> Double
+
+pub fn schedule_opt_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn schedule_opt_mae(Array[Double], Array[Double]) -> Double
+
+pub fn schedule_opt_make_labeled_point(Double, Double, Int32) -> Schedule_optPoint
+
+pub fn schedule_opt_make_matrix(Int32, Int32, Double) -> Schedule_optMatrix
+
+pub fn schedule_opt_make_point(Double, Double) -> Schedule_optPoint
+
+pub fn schedule_opt_make_series(Array[Double], String) -> Schedule_optSeries
+
+pub fn schedule_opt_make_vector(Array[Double]) -> Schedule_optVector
+
+pub fn schedule_opt_matrix_add(Schedule_optMatrix, Schedule_optMatrix) -> Schedule_optMatrix
+
+pub fn schedule_opt_matrix_get(Schedule_optMatrix, Int32, Int32) -> Double
+
+pub fn schedule_opt_matrix_identity(Int32) -> Schedule_optMatrix
+
+pub fn schedule_opt_matrix_multiply(Schedule_optMatrix, Schedule_optMatrix) -> Schedule_optMatrix
+
+pub fn schedule_opt_matrix_norm(Schedule_optMatrix) -> Double
+
+pub fn schedule_opt_matrix_scale(Schedule_optMatrix, Double) -> Schedule_optMatrix
+
+pub fn schedule_opt_matrix_to_string(Schedule_optMatrix) -> String
+
+pub fn schedule_opt_matrix_trace(Schedule_optMatrix) -> Double
+
+pub fn schedule_opt_matrix_transpose(Schedule_optMatrix) -> Schedule_optMatrix
+
+pub fn schedule_opt_mse(Array[Double], Array[Double]) -> Double
+
+pub fn schedule_opt_point_add(Schedule_optPoint, Schedule_optPoint) -> Schedule_optPoint
+
+pub fn schedule_opt_point_dist(Schedule_optPoint, Schedule_optPoint) -> Double
+
+pub fn schedule_opt_point_dot(Schedule_optPoint, Schedule_optPoint) -> Double
+
+pub fn schedule_opt_point_label(Schedule_optPoint) -> Int32
+
+pub fn schedule_opt_point_norm(Schedule_optPoint) -> Double
+
+pub fn schedule_opt_point_scale(Schedule_optPoint, Double) -> Schedule_optPoint
+
+pub fn schedule_opt_point_sub(Schedule_optPoint, Schedule_optPoint) -> Schedule_optPoint
+
+pub fn schedule_opt_point_to_string(Schedule_optPoint) -> String
+
+pub fn schedule_opt_point_x(Schedule_optPoint) -> Double
+
+pub fn schedule_opt_point_y(Schedule_optPoint) -> Double
+
+pub fn schedule_opt_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn schedule_opt_r2(Array[Double], Array[Double]) -> Double
+
+pub fn schedule_opt_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn schedule_opt_series_add(Schedule_optSeries, Schedule_optSeries) -> Schedule_optSeries
+
+pub fn schedule_opt_series_len(Schedule_optSeries) -> Int32
+
+pub fn schedule_opt_series_max(Schedule_optSeries) -> Double
+
+pub fn schedule_opt_series_mean(Schedule_optSeries) -> Double
+
+pub fn schedule_opt_series_min(Schedule_optSeries) -> Double
+
+pub fn schedule_opt_series_scale(Schedule_optSeries, Double) -> Schedule_optSeries
+
+pub fn schedule_opt_series_std(Schedule_optSeries) -> Double
+
+pub fn schedule_opt_series_sum(Schedule_optSeries) -> Double
+
+pub fn schedule_opt_series_to_string(Schedule_optSeries) -> String
+
+pub fn schedule_opt_series_var(Schedule_optSeries) -> Double
+
+pub fn schedule_opt_std(Array[Double]) -> Double
+
+pub fn schedule_opt_var(Array[Double]) -> Double
+
+pub fn schedule_opt_vector_add(Schedule_optVector, Schedule_optVector) -> Schedule_optVector
+
+pub fn schedule_opt_vector_dist(Schedule_optVector, Schedule_optVector) -> Double
+
+pub fn schedule_opt_vector_dot(Schedule_optVector, Schedule_optVector) -> Double
+
+pub fn schedule_opt_vector_norm(Schedule_optVector) -> Double
+
+pub fn schedule_opt_vector_normalize(Schedule_optVector) -> Schedule_optVector
+
+pub fn schedule_opt_vector_scale(Schedule_optVector, Double) -> Schedule_optVector
+
+pub fn schedule_opt_vector_sub(Schedule_optVector, Schedule_optVector) -> Schedule_optVector
+
+pub fn schedule_opt_vector_to_string(Schedule_optVector) -> String
+
+pub fn schedule_opt_vector_zero(Int32) -> Schedule_optVector
+
+// Errors
+
+// Types and methods
+pub struct Schedule_optMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Schedule_optPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Schedule_optSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Schedule_optVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

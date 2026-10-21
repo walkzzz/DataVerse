@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/chem_mol_repr_xyz"
+
+// Values
+pub fn chem_mol_repr_xyz_buffer_make(Int32) -> ChemmolreprxyzBuffer
+
+pub fn chem_mol_repr_xyz_cluster_make(Int32) -> ChemmolreprxyzCluster
+
+pub fn chem_mol_repr_xyz_cursor_make(Int32) -> ChemmolreprxyzCursor
+
+pub fn chem_mol_repr_xyz_edge_make(Int32) -> ChemmolreprxyzEdge
+
+pub fn chem_mol_repr_xyz_frame_make(Int32) -> ChemmolreprxyzFrame
+
+pub fn chem_mol_repr_xyz_graphn_make(Int32) -> ChemmolreprxyzGraphN
+
+pub fn chem_mol_repr_xyz_layer_make(Int32) -> ChemmolreprxyzLayer
+
+pub fn chem_mol_repr_xyz_make_matrix(Int32, Int32, Double) -> ChemmolreprxyzMatrix
+
+pub fn chem_mol_repr_xyz_make_point(Double, Double) -> ChemmolreprxyzPoint
+
+pub fn chem_mol_repr_xyz_make_point3(Double, Double, Double) -> ChemmolreprxyzPoint
+
+pub fn chem_mol_repr_xyz_make_series(Array[Double], String) -> ChemmolreprxyzSeries
+
+pub fn chem_mol_repr_xyz_make_vector(Array[Double]) -> ChemmolreprxyzVector
+
+pub fn chem_mol_repr_xyz_matrix_identity(Int32) -> ChemmolreprxyzMatrix
+
+pub fn chem_mol_repr_xyz_model_make(Int32) -> ChemmolreprxyzModel
+
+pub fn chem_mol_repr_xyz_node_make(Int32) -> ChemmolreprxyzNode
+
+pub fn chem_mol_repr_xyz_path_make(Int32) -> ChemmolreprxyzPath
+
+pub fn chem_mol_repr_xyz_range_make(Int32) -> ChemmolreprxyzRange
+
+pub fn chem_mol_repr_xyz_slice_make(Int32) -> ChemmolreprxyzSlice
+
+pub fn chem_mol_repr_xyz_table_make(Int32) -> ChemmolreprxyzTable
+
+pub fn chem_mol_repr_xyz_vector_zero(Int32) -> ChemmolreprxyzVector
+
+pub fn chem_mol_repr_xyz_view_make(Int32) -> ChemmolreprxyzView
+
+// Errors
+
+// Types and methods
+pub(all) struct ChemmolreprxyzBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprxyzBuffer::add(Self, Self) -> Self
+pub fn ChemmolreprxyzBuffer::copy(Self) -> Self
+pub fn ChemmolreprxyzBuffer::fill(Self, Double) -> Self
+pub fn ChemmolreprxyzBuffer::get(Self, Int32) -> Double
+pub fn ChemmolreprxyzBuffer::len(Self) -> Int32
+pub fn ChemmolreprxyzBuffer::max(Self) -> Double
+pub fn ChemmolreprxyzBuffer::mean(Self) -> Double
+pub fn ChemmolreprxyzBuffer::min(Self) -> Double
+pub fn ChemmolreprxyzBuffer::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzBuffer::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprxyzBuffer::sum(Self) -> Double
+pub fn ChemmolreprxyzBuffer::to_string(Self) -> String
+
+pub(all) struct ChemmolreprxyzCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprxyzCluster::add(Self, Self) -> Self
+pub fn ChemmolreprxyzCluster::copy(Self) -> Self
+pub fn ChemmolreprxyzCluster::fill(Self, Double) -> Self
+pub fn ChemmolreprxyzCluster::get(Self, Int32) -> Double
+pub fn ChemmolreprxyzCluster::len(Self) -> Int32
+pub fn ChemmolreprxyzCluster::max(Self) -> Double
+pub fn ChemmolreprxyzCluster::mean(Self) -> Double
+pub fn ChemmolreprxyzCluster::min(Self) -> Double
+pub fn ChemmolreprxyzCluster::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzCluster::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprxyzCluster::sum(Self) -> Double
+pub fn ChemmolreprxyzCluster::to_string(Self) -> String
+
+pub(all) struct ChemmolreprxyzCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprxyzCursor::add(Self, Self) -> Self
+pub fn ChemmolreprxyzCursor::copy(Self) -> Self
+pub fn ChemmolreprxyzCursor::fill(Self, Double) -> Self
+pub fn ChemmolreprxyzCursor::get(Self, Int32) -> Double
+pub fn ChemmolreprxyzCursor::len(Self) -> Int32
+pub fn ChemmolreprxyzCursor::max(Self) -> Double
+pub fn ChemmolreprxyzCursor::mean(Self) -> Double
+pub fn ChemmolreprxyzCursor::min(Self) -> Double
+pub fn ChemmolreprxyzCursor::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzCursor::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprxyzCursor::sum(Self) -> Double
+pub fn ChemmolreprxyzCursor::to_string(Self) -> String
+
+pub(all) struct ChemmolreprxyzEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprxyzEdge::add(Self, Self) -> Self
+pub fn ChemmolreprxyzEdge::copy(Self) -> Self
+pub fn ChemmolreprxyzEdge::fill(Self, Double) -> Self
+pub fn ChemmolreprxyzEdge::get(Self, Int32) -> Double
+pub fn ChemmolreprxyzEdge::len(Self) -> Int32
+pub fn ChemmolreprxyzEdge::max(Self) -> Double
+pub fn ChemmolreprxyzEdge::mean(Self) -> Double
+pub fn ChemmolreprxyzEdge::min(Self) -> Double
+pub fn ChemmolreprxyzEdge::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzEdge::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprxyzEdge::sum(Self) -> Double
+pub fn ChemmolreprxyzEdge::to_string(Self) -> String
+
+pub(all) struct ChemmolreprxyzFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprxyzFrame::add(Self, Self) -> Self
+pub fn ChemmolreprxyzFrame::copy(Self) -> Self
+pub fn ChemmolreprxyzFrame::fill(Self, Double) -> Self
+pub fn ChemmolreprxyzFrame::get(Self, Int32) -> Double
+pub fn ChemmolreprxyzFrame::len(Self) -> Int32
+pub fn ChemmolreprxyzFrame::max(Self) -> Double
+pub fn ChemmolreprxyzFrame::mean(Self) -> Double
+pub fn ChemmolreprxyzFrame::min(Self) -> Double
+pub fn ChemmolreprxyzFrame::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzFrame::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprxyzFrame::sum(Self) -> Double
+pub fn ChemmolreprxyzFrame::to_string(Self) -> String
+
+pub(all) struct ChemmolreprxyzGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprxyzGraphN::add(Self, Self) -> Self
+pub fn ChemmolreprxyzGraphN::copy(Self) -> Self
+pub fn ChemmolreprxyzGraphN::fill(Self, Double) -> Self
+pub fn ChemmolreprxyzGraphN::get(Self, Int32) -> Double
+pub fn ChemmolreprxyzGraphN::len(Self) -> Int32
+pub fn ChemmolreprxyzGraphN::max(Self) -> Double
+pub fn ChemmolreprxyzGraphN::mean(Self) -> Double
+pub fn ChemmolreprxyzGraphN::min(Self) -> Double
+pub fn ChemmolreprxyzGraphN::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzGraphN::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprxyzGraphN::sum(Self) -> Double
+pub fn ChemmolreprxyzGraphN::to_string(Self) -> String
+
+pub(all) struct ChemmolreprxyzLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprxyzLayer::add(Self, Self) -> Self
+pub fn ChemmolreprxyzLayer::copy(Self) -> Self
+pub fn ChemmolreprxyzLayer::fill(Self, Double) -> Self
+pub fn ChemmolreprxyzLayer::get(Self, Int32) -> Double
+pub fn ChemmolreprxyzLayer::len(Self) -> Int32
+pub fn ChemmolreprxyzLayer::max(Self) -> Double
+pub fn ChemmolreprxyzLayer::mean(Self) -> Double
+pub fn ChemmolreprxyzLayer::min(Self) -> Double
+pub fn ChemmolreprxyzLayer::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzLayer::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprxyzLayer::sum(Self) -> Double
+pub fn ChemmolreprxyzLayer::to_string(Self) -> String
+
+pub(all) struct ChemmolreprxyzMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ChemmolreprxyzMatrix::add(Self, Self) -> Self
+pub fn ChemmolreprxyzMatrix::det(Self) -> Double
+pub fn ChemmolreprxyzMatrix::get(Self, Int32, Int32) -> Double
+pub fn ChemmolreprxyzMatrix::multiply(Self, Self) -> Self
+pub fn ChemmolreprxyzMatrix::norm(Self) -> Double
+pub fn ChemmolreprxyzMatrix::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzMatrix::to_string(Self) -> String
+pub fn ChemmolreprxyzMatrix::trace(Self) -> Double
+pub fn ChemmolreprxyzMatrix::transpose(Self) -> Self
+
+pub(all) struct ChemmolreprxyzModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprxyzModel::add(Self, Self) -> Self
+pub fn ChemmolreprxyzModel::copy(Self) -> Self
+pub fn ChemmolreprxyzModel::fill(Self, Double) -> Self
+pub fn ChemmolreprxyzModel::get(Self, Int32) -> Double
+pub fn ChemmolreprxyzModel::len(Self) -> Int32
+pub fn ChemmolreprxyzModel::max(Self) -> Double
+pub fn ChemmolreprxyzModel::mean(Self) -> Double
+pub fn ChemmolreprxyzModel::min(Self) -> Double
+pub fn ChemmolreprxyzModel::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzModel::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprxyzModel::sum(Self) -> Double
+pub fn ChemmolreprxyzModel::to_string(Self) -> String
+
+pub(all) struct ChemmolreprxyzNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprxyzNode::add(Self, Self) -> Self
+pub fn ChemmolreprxyzNode::copy(Self) -> Self
+pub fn ChemmolreprxyzNode::fill(Self, Double) -> Self
+pub fn ChemmolreprxyzNode::get(Self, Int32) -> Double
+pub fn ChemmolreprxyzNode::len(Self) -> Int32
+pub fn ChemmolreprxyzNode::max(Self) -> Double
+pub fn ChemmolreprxyzNode::mean(Self) -> Double
+pub fn ChemmolreprxyzNode::min(Self) -> Double
+pub fn ChemmolreprxyzNode::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzNode::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprxyzNode::sum(Self) -> Double
+pub fn ChemmolreprxyzNode::to_string(Self) -> String
+
+pub(all) struct ChemmolreprxyzPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprxyzPath::add(Self, Self) -> Self
+pub fn ChemmolreprxyzPath::copy(Self) -> Self
+pub fn ChemmolreprxyzPath::fill(Self, Double) -> Self
+pub fn ChemmolreprxyzPath::get(Self, Int32) -> Double
+pub fn ChemmolreprxyzPath::len(Self) -> Int32
+pub fn ChemmolreprxyzPath::max(Self) -> Double
+pub fn ChemmolreprxyzPath::mean(Self) -> Double
+pub fn ChemmolreprxyzPath::min(Self) -> Double
+pub fn ChemmolreprxyzPath::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzPath::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprxyzPath::sum(Self) -> Double
+pub fn ChemmolreprxyzPath::to_string(Self) -> String
+
+pub(all) struct ChemmolreprxyzPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ChemmolreprxyzPoint::add(Self, Self) -> Self
+pub fn ChemmolreprxyzPoint::cross(Self, Self) -> Self
+pub fn ChemmolreprxyzPoint::dist(Self, Self) -> Double
+pub fn ChemmolreprxyzPoint::dot(Self, Self) -> Double
+pub fn ChemmolreprxyzPoint::label(Self) -> Int32
+pub fn ChemmolreprxyzPoint::lerp(Self, Self, Double) -> Self
+pub fn ChemmolreprxyzPoint::mid(Self, Self) -> Self
+pub fn ChemmolreprxyzPoint::negate(Self) -> Self
+pub fn ChemmolreprxyzPoint::norm(Self) -> Double
+pub fn ChemmolreprxyzPoint::normalize(Self) -> Self
+pub fn ChemmolreprxyzPoint::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzPoint::sub(Self, Self) -> Self
+pub fn ChemmolreprxyzPoint::to_string(Self) -> String
+pub fn ChemmolreprxyzPoint::x(Self) -> Double
+pub fn ChemmolreprxyzPoint::y(Self) -> Double
+pub fn ChemmolreprxyzPoint::z(Self) -> Double
+
+pub(all) struct ChemmolreprxyzRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprxyzRange::add(Self, Self) -> Self
+pub fn ChemmolreprxyzRange::copy(Self) -> Self
+pub fn ChemmolreprxyzRange::fill(Self, Double) -> Self
+pub fn ChemmolreprxyzRange::get(Self, Int32) -> Double
+pub fn ChemmolreprxyzRange::len(Self) -> Int32
+pub fn ChemmolreprxyzRange::max(Self) -> Double
+pub fn ChemmolreprxyzRange::mean(Self) -> Double
+pub fn ChemmolreprxyzRange::min(Self) -> Double
+pub fn ChemmolreprxyzRange::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzRange::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprxyzRange::sum(Self) -> Double
+pub fn ChemmolreprxyzRange::to_string(Self) -> String
+
+pub(all) struct ChemmolreprxyzSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ChemmolreprxyzSeries::add(Self, Self) -> Self
+pub fn ChemmolreprxyzSeries::cumsum(Self) -> Self
+pub fn ChemmolreprxyzSeries::len(Self) -> Int32
+pub fn ChemmolreprxyzSeries::max(Self) -> Double
+pub fn ChemmolreprxyzSeries::mean(Self) -> Double
+pub fn ChemmolreprxyzSeries::median(Self) -> Double
+pub fn ChemmolreprxyzSeries::min(Self) -> Double
+pub fn ChemmolreprxyzSeries::normalize(Self) -> Self
+pub fn ChemmolreprxyzSeries::range(Self) -> Double
+pub fn ChemmolreprxyzSeries::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzSeries::std(Self) -> Double
+pub fn ChemmolreprxyzSeries::sub(Self, Self) -> Self
+pub fn ChemmolreprxyzSeries::sum(Self) -> Double
+pub fn ChemmolreprxyzSeries::to_string(Self) -> String
+pub fn ChemmolreprxyzSeries::variance(Self) -> Double
+
+pub(all) struct ChemmolreprxyzSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprxyzSlice::add(Self, Self) -> Self
+pub fn ChemmolreprxyzSlice::copy(Self) -> Self
+pub fn ChemmolreprxyzSlice::fill(Self, Double) -> Self
+pub fn ChemmolreprxyzSlice::get(Self, Int32) -> Double
+pub fn ChemmolreprxyzSlice::len(Self) -> Int32
+pub fn ChemmolreprxyzSlice::max(Self) -> Double
+pub fn ChemmolreprxyzSlice::mean(Self) -> Double
+pub fn ChemmolreprxyzSlice::min(Self) -> Double
+pub fn ChemmolreprxyzSlice::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzSlice::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprxyzSlice::sum(Self) -> Double
+pub fn ChemmolreprxyzSlice::to_string(Self) -> String
+
+pub(all) struct ChemmolreprxyzTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprxyzTable::add(Self, Self) -> Self
+pub fn ChemmolreprxyzTable::copy(Self) -> Self
+pub fn ChemmolreprxyzTable::fill(Self, Double) -> Self
+pub fn ChemmolreprxyzTable::get(Self, Int32) -> Double
+pub fn ChemmolreprxyzTable::len(Self) -> Int32
+pub fn ChemmolreprxyzTable::max(Self) -> Double
+pub fn ChemmolreprxyzTable::mean(Self) -> Double
+pub fn ChemmolreprxyzTable::min(Self) -> Double
+pub fn ChemmolreprxyzTable::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzTable::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprxyzTable::sum(Self) -> Double
+pub fn ChemmolreprxyzTable::to_string(Self) -> String
+
+pub(all) struct ChemmolreprxyzVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ChemmolreprxyzVector::add(Self, Self) -> Self
+pub fn ChemmolreprxyzVector::dist(Self, Self) -> Double
+pub fn ChemmolreprxyzVector::dot(Self, Self) -> Double
+pub fn ChemmolreprxyzVector::norm(Self) -> Double
+pub fn ChemmolreprxyzVector::normalize(Self) -> Self
+pub fn ChemmolreprxyzVector::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzVector::sub(Self, Self) -> Self
+pub fn ChemmolreprxyzVector::to_string(Self) -> String
+
+pub(all) struct ChemmolreprxyzView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprxyzView::add(Self, Self) -> Self
+pub fn ChemmolreprxyzView::copy(Self) -> Self
+pub fn ChemmolreprxyzView::fill(Self, Double) -> Self
+pub fn ChemmolreprxyzView::get(Self, Int32) -> Double
+pub fn ChemmolreprxyzView::len(Self) -> Int32
+pub fn ChemmolreprxyzView::max(Self) -> Double
+pub fn ChemmolreprxyzView::mean(Self) -> Double
+pub fn ChemmolreprxyzView::min(Self) -> Double
+pub fn ChemmolreprxyzView::scale(Self, Double) -> Self
+pub fn ChemmolreprxyzView::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprxyzView::sum(Self) -> Double
+pub fn ChemmolreprxyzView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

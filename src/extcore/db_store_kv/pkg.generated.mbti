@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_store_kv"
+
+// Values
+pub fn db_store_kv_buffer_make(Int32) -> DbstorekvBuffer
+
+pub fn db_store_kv_cluster_make(Int32) -> DbstorekvCluster
+
+pub fn db_store_kv_cursor_make(Int32) -> DbstorekvCursor
+
+pub fn db_store_kv_edge_make(Int32) -> DbstorekvEdge
+
+pub fn db_store_kv_frame_make(Int32) -> DbstorekvFrame
+
+pub fn db_store_kv_graphn_make(Int32) -> DbstorekvGraphN
+
+pub fn db_store_kv_layer_make(Int32) -> DbstorekvLayer
+
+pub fn db_store_kv_make_matrix(Int32, Int32, Double) -> DbstorekvMatrix
+
+pub fn db_store_kv_make_point(Double, Double) -> DbstorekvPoint
+
+pub fn db_store_kv_make_point3(Double, Double, Double) -> DbstorekvPoint
+
+pub fn db_store_kv_make_series(Array[Double], String) -> DbstorekvSeries
+
+pub fn db_store_kv_make_vector(Array[Double]) -> DbstorekvVector
+
+pub fn db_store_kv_matrix_identity(Int32) -> DbstorekvMatrix
+
+pub fn db_store_kv_model_make(Int32) -> DbstorekvModel
+
+pub fn db_store_kv_node_make(Int32) -> DbstorekvNode
+
+pub fn db_store_kv_path_make(Int32) -> DbstorekvPath
+
+pub fn db_store_kv_range_make(Int32) -> DbstorekvRange
+
+pub fn db_store_kv_slice_make(Int32) -> DbstorekvSlice
+
+pub fn db_store_kv_table_make(Int32) -> DbstorekvTable
+
+pub fn db_store_kv_vector_zero(Int32) -> DbstorekvVector
+
+pub fn db_store_kv_view_make(Int32) -> DbstorekvView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbstorekvBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorekvBuffer::add(Self, Self) -> Self
+pub fn DbstorekvBuffer::copy(Self) -> Self
+pub fn DbstorekvBuffer::fill(Self, Double) -> Self
+pub fn DbstorekvBuffer::get(Self, Int32) -> Double
+pub fn DbstorekvBuffer::len(Self) -> Int32
+pub fn DbstorekvBuffer::max(Self) -> Double
+pub fn DbstorekvBuffer::mean(Self) -> Double
+pub fn DbstorekvBuffer::min(Self) -> Double
+pub fn DbstorekvBuffer::scale(Self, Double) -> Self
+pub fn DbstorekvBuffer::set(Self, Int32, Double) -> Self
+pub fn DbstorekvBuffer::sum(Self) -> Double
+pub fn DbstorekvBuffer::to_string(Self) -> String
+
+pub(all) struct DbstorekvCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorekvCluster::add(Self, Self) -> Self
+pub fn DbstorekvCluster::copy(Self) -> Self
+pub fn DbstorekvCluster::fill(Self, Double) -> Self
+pub fn DbstorekvCluster::get(Self, Int32) -> Double
+pub fn DbstorekvCluster::len(Self) -> Int32
+pub fn DbstorekvCluster::max(Self) -> Double
+pub fn DbstorekvCluster::mean(Self) -> Double
+pub fn DbstorekvCluster::min(Self) -> Double
+pub fn DbstorekvCluster::scale(Self, Double) -> Self
+pub fn DbstorekvCluster::set(Self, Int32, Double) -> Self
+pub fn DbstorekvCluster::sum(Self) -> Double
+pub fn DbstorekvCluster::to_string(Self) -> String
+
+pub(all) struct DbstorekvCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorekvCursor::add(Self, Self) -> Self
+pub fn DbstorekvCursor::copy(Self) -> Self
+pub fn DbstorekvCursor::fill(Self, Double) -> Self
+pub fn DbstorekvCursor::get(Self, Int32) -> Double
+pub fn DbstorekvCursor::len(Self) -> Int32
+pub fn DbstorekvCursor::max(Self) -> Double
+pub fn DbstorekvCursor::mean(Self) -> Double
+pub fn DbstorekvCursor::min(Self) -> Double
+pub fn DbstorekvCursor::scale(Self, Double) -> Self
+pub fn DbstorekvCursor::set(Self, Int32, Double) -> Self
+pub fn DbstorekvCursor::sum(Self) -> Double
+pub fn DbstorekvCursor::to_string(Self) -> String
+
+pub(all) struct DbstorekvEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorekvEdge::add(Self, Self) -> Self
+pub fn DbstorekvEdge::copy(Self) -> Self
+pub fn DbstorekvEdge::fill(Self, Double) -> Self
+pub fn DbstorekvEdge::get(Self, Int32) -> Double
+pub fn DbstorekvEdge::len(Self) -> Int32
+pub fn DbstorekvEdge::max(Self) -> Double
+pub fn DbstorekvEdge::mean(Self) -> Double
+pub fn DbstorekvEdge::min(Self) -> Double
+pub fn DbstorekvEdge::scale(Self, Double) -> Self
+pub fn DbstorekvEdge::set(Self, Int32, Double) -> Self
+pub fn DbstorekvEdge::sum(Self) -> Double
+pub fn DbstorekvEdge::to_string(Self) -> String
+
+pub(all) struct DbstorekvFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorekvFrame::add(Self, Self) -> Self
+pub fn DbstorekvFrame::copy(Self) -> Self
+pub fn DbstorekvFrame::fill(Self, Double) -> Self
+pub fn DbstorekvFrame::get(Self, Int32) -> Double
+pub fn DbstorekvFrame::len(Self) -> Int32
+pub fn DbstorekvFrame::max(Self) -> Double
+pub fn DbstorekvFrame::mean(Self) -> Double
+pub fn DbstorekvFrame::min(Self) -> Double
+pub fn DbstorekvFrame::scale(Self, Double) -> Self
+pub fn DbstorekvFrame::set(Self, Int32, Double) -> Self
+pub fn DbstorekvFrame::sum(Self) -> Double
+pub fn DbstorekvFrame::to_string(Self) -> String
+
+pub(all) struct DbstorekvGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorekvGraphN::add(Self, Self) -> Self
+pub fn DbstorekvGraphN::copy(Self) -> Self
+pub fn DbstorekvGraphN::fill(Self, Double) -> Self
+pub fn DbstorekvGraphN::get(Self, Int32) -> Double
+pub fn DbstorekvGraphN::len(Self) -> Int32
+pub fn DbstorekvGraphN::max(Self) -> Double
+pub fn DbstorekvGraphN::mean(Self) -> Double
+pub fn DbstorekvGraphN::min(Self) -> Double
+pub fn DbstorekvGraphN::scale(Self, Double) -> Self
+pub fn DbstorekvGraphN::set(Self, Int32, Double) -> Self
+pub fn DbstorekvGraphN::sum(Self) -> Double
+pub fn DbstorekvGraphN::to_string(Self) -> String
+
+pub(all) struct DbstorekvLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorekvLayer::add(Self, Self) -> Self
+pub fn DbstorekvLayer::copy(Self) -> Self
+pub fn DbstorekvLayer::fill(Self, Double) -> Self
+pub fn DbstorekvLayer::get(Self, Int32) -> Double
+pub fn DbstorekvLayer::len(Self) -> Int32
+pub fn DbstorekvLayer::max(Self) -> Double
+pub fn DbstorekvLayer::mean(Self) -> Double
+pub fn DbstorekvLayer::min(Self) -> Double
+pub fn DbstorekvLayer::scale(Self, Double) -> Self
+pub fn DbstorekvLayer::set(Self, Int32, Double) -> Self
+pub fn DbstorekvLayer::sum(Self) -> Double
+pub fn DbstorekvLayer::to_string(Self) -> String
+
+pub(all) struct DbstorekvMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbstorekvMatrix::add(Self, Self) -> Self
+pub fn DbstorekvMatrix::det(Self) -> Double
+pub fn DbstorekvMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbstorekvMatrix::multiply(Self, Self) -> Self
+pub fn DbstorekvMatrix::norm(Self) -> Double
+pub fn DbstorekvMatrix::scale(Self, Double) -> Self
+pub fn DbstorekvMatrix::to_string(Self) -> String
+pub fn DbstorekvMatrix::trace(Self) -> Double
+pub fn DbstorekvMatrix::transpose(Self) -> Self
+
+pub(all) struct DbstorekvModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorekvModel::add(Self, Self) -> Self
+pub fn DbstorekvModel::copy(Self) -> Self
+pub fn DbstorekvModel::fill(Self, Double) -> Self
+pub fn DbstorekvModel::get(Self, Int32) -> Double
+pub fn DbstorekvModel::len(Self) -> Int32
+pub fn DbstorekvModel::max(Self) -> Double
+pub fn DbstorekvModel::mean(Self) -> Double
+pub fn DbstorekvModel::min(Self) -> Double
+pub fn DbstorekvModel::scale(Self, Double) -> Self
+pub fn DbstorekvModel::set(Self, Int32, Double) -> Self
+pub fn DbstorekvModel::sum(Self) -> Double
+pub fn DbstorekvModel::to_string(Self) -> String
+
+pub(all) struct DbstorekvNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorekvNode::add(Self, Self) -> Self
+pub fn DbstorekvNode::copy(Self) -> Self
+pub fn DbstorekvNode::fill(Self, Double) -> Self
+pub fn DbstorekvNode::get(Self, Int32) -> Double
+pub fn DbstorekvNode::len(Self) -> Int32
+pub fn DbstorekvNode::max(Self) -> Double
+pub fn DbstorekvNode::mean(Self) -> Double
+pub fn DbstorekvNode::min(Self) -> Double
+pub fn DbstorekvNode::scale(Self, Double) -> Self
+pub fn DbstorekvNode::set(Self, Int32, Double) -> Self
+pub fn DbstorekvNode::sum(Self) -> Double
+pub fn DbstorekvNode::to_string(Self) -> String
+
+pub(all) struct DbstorekvPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorekvPath::add(Self, Self) -> Self
+pub fn DbstorekvPath::copy(Self) -> Self
+pub fn DbstorekvPath::fill(Self, Double) -> Self
+pub fn DbstorekvPath::get(Self, Int32) -> Double
+pub fn DbstorekvPath::len(Self) -> Int32
+pub fn DbstorekvPath::max(Self) -> Double
+pub fn DbstorekvPath::mean(Self) -> Double
+pub fn DbstorekvPath::min(Self) -> Double
+pub fn DbstorekvPath::scale(Self, Double) -> Self
+pub fn DbstorekvPath::set(Self, Int32, Double) -> Self
+pub fn DbstorekvPath::sum(Self) -> Double
+pub fn DbstorekvPath::to_string(Self) -> String
+
+pub(all) struct DbstorekvPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbstorekvPoint::add(Self, Self) -> Self
+pub fn DbstorekvPoint::cross(Self, Self) -> Self
+pub fn DbstorekvPoint::dist(Self, Self) -> Double
+pub fn DbstorekvPoint::dot(Self, Self) -> Double
+pub fn DbstorekvPoint::label(Self) -> Int32
+pub fn DbstorekvPoint::lerp(Self, Self, Double) -> Self
+pub fn DbstorekvPoint::mid(Self, Self) -> Self
+pub fn DbstorekvPoint::negate(Self) -> Self
+pub fn DbstorekvPoint::norm(Self) -> Double
+pub fn DbstorekvPoint::normalize(Self) -> Self
+pub fn DbstorekvPoint::scale(Self, Double) -> Self
+pub fn DbstorekvPoint::sub(Self, Self) -> Self
+pub fn DbstorekvPoint::to_string(Self) -> String
+pub fn DbstorekvPoint::x(Self) -> Double
+pub fn DbstorekvPoint::y(Self) -> Double
+pub fn DbstorekvPoint::z(Self) -> Double
+
+pub(all) struct DbstorekvRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorekvRange::add(Self, Self) -> Self
+pub fn DbstorekvRange::copy(Self) -> Self
+pub fn DbstorekvRange::fill(Self, Double) -> Self
+pub fn DbstorekvRange::get(Self, Int32) -> Double
+pub fn DbstorekvRange::len(Self) -> Int32
+pub fn DbstorekvRange::max(Self) -> Double
+pub fn DbstorekvRange::mean(Self) -> Double
+pub fn DbstorekvRange::min(Self) -> Double
+pub fn DbstorekvRange::scale(Self, Double) -> Self
+pub fn DbstorekvRange::set(Self, Int32, Double) -> Self
+pub fn DbstorekvRange::sum(Self) -> Double
+pub fn DbstorekvRange::to_string(Self) -> String
+
+pub(all) struct DbstorekvSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbstorekvSeries::add(Self, Self) -> Self
+pub fn DbstorekvSeries::cumsum(Self) -> Self
+pub fn DbstorekvSeries::len(Self) -> Int32
+pub fn DbstorekvSeries::max(Self) -> Double
+pub fn DbstorekvSeries::mean(Self) -> Double
+pub fn DbstorekvSeries::median(Self) -> Double
+pub fn DbstorekvSeries::min(Self) -> Double
+pub fn DbstorekvSeries::normalize(Self) -> Self
+pub fn DbstorekvSeries::range(Self) -> Double
+pub fn DbstorekvSeries::scale(Self, Double) -> Self
+pub fn DbstorekvSeries::std(Self) -> Double
+pub fn DbstorekvSeries::sub(Self, Self) -> Self
+pub fn DbstorekvSeries::sum(Self) -> Double
+pub fn DbstorekvSeries::to_string(Self) -> String
+pub fn DbstorekvSeries::variance(Self) -> Double
+
+pub(all) struct DbstorekvSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorekvSlice::add(Self, Self) -> Self
+pub fn DbstorekvSlice::copy(Self) -> Self
+pub fn DbstorekvSlice::fill(Self, Double) -> Self
+pub fn DbstorekvSlice::get(Self, Int32) -> Double
+pub fn DbstorekvSlice::len(Self) -> Int32
+pub fn DbstorekvSlice::max(Self) -> Double
+pub fn DbstorekvSlice::mean(Self) -> Double
+pub fn DbstorekvSlice::min(Self) -> Double
+pub fn DbstorekvSlice::scale(Self, Double) -> Self
+pub fn DbstorekvSlice::set(Self, Int32, Double) -> Self
+pub fn DbstorekvSlice::sum(Self) -> Double
+pub fn DbstorekvSlice::to_string(Self) -> String
+
+pub(all) struct DbstorekvTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorekvTable::add(Self, Self) -> Self
+pub fn DbstorekvTable::copy(Self) -> Self
+pub fn DbstorekvTable::fill(Self, Double) -> Self
+pub fn DbstorekvTable::get(Self, Int32) -> Double
+pub fn DbstorekvTable::len(Self) -> Int32
+pub fn DbstorekvTable::max(Self) -> Double
+pub fn DbstorekvTable::mean(Self) -> Double
+pub fn DbstorekvTable::min(Self) -> Double
+pub fn DbstorekvTable::scale(Self, Double) -> Self
+pub fn DbstorekvTable::set(Self, Int32, Double) -> Self
+pub fn DbstorekvTable::sum(Self) -> Double
+pub fn DbstorekvTable::to_string(Self) -> String
+
+pub(all) struct DbstorekvVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbstorekvVector::add(Self, Self) -> Self
+pub fn DbstorekvVector::dist(Self, Self) -> Double
+pub fn DbstorekvVector::dot(Self, Self) -> Double
+pub fn DbstorekvVector::norm(Self) -> Double
+pub fn DbstorekvVector::normalize(Self) -> Self
+pub fn DbstorekvVector::scale(Self, Double) -> Self
+pub fn DbstorekvVector::sub(Self, Self) -> Self
+pub fn DbstorekvVector::to_string(Self) -> String
+
+pub(all) struct DbstorekvView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorekvView::add(Self, Self) -> Self
+pub fn DbstorekvView::copy(Self) -> Self
+pub fn DbstorekvView::fill(Self, Double) -> Self
+pub fn DbstorekvView::get(Self, Int32) -> Double
+pub fn DbstorekvView::len(Self) -> Int32
+pub fn DbstorekvView::max(Self) -> Double
+pub fn DbstorekvView::mean(Self) -> Double
+pub fn DbstorekvView::min(Self) -> Double
+pub fn DbstorekvView::scale(Self, Double) -> Self
+pub fn DbstorekvView::set(Self, Int32, Double) -> Self
+pub fn DbstorekvView::sum(Self) -> Double
+pub fn DbstorekvView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

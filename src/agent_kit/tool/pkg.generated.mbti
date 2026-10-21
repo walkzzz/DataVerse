@@ -1,0 +1,76 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/tool"
+
+// Values
+pub fn error_result(String, String, Double) -> ToolResult
+
+pub fn get_argument(Array[(String, String)], String) -> String?
+
+pub fn get_required_argument(Array[(String, String)], String) -> String
+
+pub fn make_param(String, ParamType, String, Bool, String) -> ToolParam
+
+pub fn make_tool_call(String, Array[(String, String)], String) -> ToolCall
+
+pub fn make_tool_def(String, String, Array[ToolParam]) -> ToolDef
+
+pub fn make_tool_result(String, Bool, String, String, Double) -> ToolResult
+
+pub fn param_type_name(ParamType) -> String
+
+pub fn result_to_json(ToolResult) -> String
+
+pub fn success_result(String, String, Double) -> ToolResult
+
+pub fn to_bool_arg(String) -> Bool?
+
+pub fn to_double_arg(String) -> Double?
+
+pub fn to_int_arg(String) -> Int32?
+
+pub fn tool_id() -> String
+
+pub fn validate_arguments(ToolDef, Array[(String, String)]) -> Bool
+
+// Errors
+
+// Types and methods
+pub(all) enum ParamType {
+  StringType
+  NumberType
+  BoolType
+  ArrayType
+  ObjectType
+}
+
+pub struct ToolCall {
+  tool_name : String
+  arguments : Array[(String, String)]
+  id : String
+}
+
+pub struct ToolDef {
+  name : String
+  description : String
+  parameters : Array[ToolParam]
+}
+
+pub struct ToolParam {
+  name : String
+  param_type : ParamType
+  description : String
+  required : Bool
+  default_value : String
+}
+
+pub struct ToolResult {
+  call_id : String
+  success : Bool
+  output : String
+  error : String
+  execution_time : Double
+}
+
+// Type aliases
+
+// Traits

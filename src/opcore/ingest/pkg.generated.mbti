@@ -1,0 +1,23 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/ingest"
+
+import {
+  "dataverse/dataobject",
+}
+
+// Values
+pub fn csv_formatter(String) -> @dataobject.DataObject
+
+pub fn ingest_id() -> String
+
+pub fn json_formatter(String) -> @dataobject.DataObject
+
+pub fn text_formatter(String) -> @dataobject.DataObject
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

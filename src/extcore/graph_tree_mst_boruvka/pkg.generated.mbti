@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_tree_mst_boruvka"
+
+// Values
+pub fn graph_tree_mst_boruvka_buffer_make(Int32) -> GraphtreemstboruvkaBuffer
+
+pub fn graph_tree_mst_boruvka_cluster_make(Int32) -> GraphtreemstboruvkaCluster
+
+pub fn graph_tree_mst_boruvka_cursor_make(Int32) -> GraphtreemstboruvkaCursor
+
+pub fn graph_tree_mst_boruvka_edge_make(Int32) -> GraphtreemstboruvkaEdge
+
+pub fn graph_tree_mst_boruvka_frame_make(Int32) -> GraphtreemstboruvkaFrame
+
+pub fn graph_tree_mst_boruvka_graphn_make(Int32) -> GraphtreemstboruvkaGraphN
+
+pub fn graph_tree_mst_boruvka_layer_make(Int32) -> GraphtreemstboruvkaLayer
+
+pub fn graph_tree_mst_boruvka_make_matrix(Int32, Int32, Double) -> GraphtreemstboruvkaMatrix
+
+pub fn graph_tree_mst_boruvka_make_point(Double, Double) -> GraphtreemstboruvkaPoint
+
+pub fn graph_tree_mst_boruvka_make_point3(Double, Double, Double) -> GraphtreemstboruvkaPoint
+
+pub fn graph_tree_mst_boruvka_make_series(Array[Double], String) -> GraphtreemstboruvkaSeries
+
+pub fn graph_tree_mst_boruvka_make_vector(Array[Double]) -> GraphtreemstboruvkaVector
+
+pub fn graph_tree_mst_boruvka_matrix_identity(Int32) -> GraphtreemstboruvkaMatrix
+
+pub fn graph_tree_mst_boruvka_model_make(Int32) -> GraphtreemstboruvkaModel
+
+pub fn graph_tree_mst_boruvka_node_make(Int32) -> GraphtreemstboruvkaNode
+
+pub fn graph_tree_mst_boruvka_path_make(Int32) -> GraphtreemstboruvkaPath
+
+pub fn graph_tree_mst_boruvka_range_make(Int32) -> GraphtreemstboruvkaRange
+
+pub fn graph_tree_mst_boruvka_slice_make(Int32) -> GraphtreemstboruvkaSlice
+
+pub fn graph_tree_mst_boruvka_table_make(Int32) -> GraphtreemstboruvkaTable
+
+pub fn graph_tree_mst_boruvka_vector_zero(Int32) -> GraphtreemstboruvkaVector
+
+pub fn graph_tree_mst_boruvka_view_make(Int32) -> GraphtreemstboruvkaView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphtreemstboruvkaBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstboruvkaBuffer::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaBuffer::copy(Self) -> Self
+pub fn GraphtreemstboruvkaBuffer::fill(Self, Double) -> Self
+pub fn GraphtreemstboruvkaBuffer::get(Self, Int32) -> Double
+pub fn GraphtreemstboruvkaBuffer::len(Self) -> Int32
+pub fn GraphtreemstboruvkaBuffer::max(Self) -> Double
+pub fn GraphtreemstboruvkaBuffer::mean(Self) -> Double
+pub fn GraphtreemstboruvkaBuffer::min(Self) -> Double
+pub fn GraphtreemstboruvkaBuffer::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstboruvkaBuffer::sum(Self) -> Double
+pub fn GraphtreemstboruvkaBuffer::to_string(Self) -> String
+
+pub(all) struct GraphtreemstboruvkaCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstboruvkaCluster::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaCluster::copy(Self) -> Self
+pub fn GraphtreemstboruvkaCluster::fill(Self, Double) -> Self
+pub fn GraphtreemstboruvkaCluster::get(Self, Int32) -> Double
+pub fn GraphtreemstboruvkaCluster::len(Self) -> Int32
+pub fn GraphtreemstboruvkaCluster::max(Self) -> Double
+pub fn GraphtreemstboruvkaCluster::mean(Self) -> Double
+pub fn GraphtreemstboruvkaCluster::min(Self) -> Double
+pub fn GraphtreemstboruvkaCluster::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaCluster::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstboruvkaCluster::sum(Self) -> Double
+pub fn GraphtreemstboruvkaCluster::to_string(Self) -> String
+
+pub(all) struct GraphtreemstboruvkaCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstboruvkaCursor::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaCursor::copy(Self) -> Self
+pub fn GraphtreemstboruvkaCursor::fill(Self, Double) -> Self
+pub fn GraphtreemstboruvkaCursor::get(Self, Int32) -> Double
+pub fn GraphtreemstboruvkaCursor::len(Self) -> Int32
+pub fn GraphtreemstboruvkaCursor::max(Self) -> Double
+pub fn GraphtreemstboruvkaCursor::mean(Self) -> Double
+pub fn GraphtreemstboruvkaCursor::min(Self) -> Double
+pub fn GraphtreemstboruvkaCursor::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaCursor::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstboruvkaCursor::sum(Self) -> Double
+pub fn GraphtreemstboruvkaCursor::to_string(Self) -> String
+
+pub(all) struct GraphtreemstboruvkaEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstboruvkaEdge::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaEdge::copy(Self) -> Self
+pub fn GraphtreemstboruvkaEdge::fill(Self, Double) -> Self
+pub fn GraphtreemstboruvkaEdge::get(Self, Int32) -> Double
+pub fn GraphtreemstboruvkaEdge::len(Self) -> Int32
+pub fn GraphtreemstboruvkaEdge::max(Self) -> Double
+pub fn GraphtreemstboruvkaEdge::mean(Self) -> Double
+pub fn GraphtreemstboruvkaEdge::min(Self) -> Double
+pub fn GraphtreemstboruvkaEdge::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaEdge::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstboruvkaEdge::sum(Self) -> Double
+pub fn GraphtreemstboruvkaEdge::to_string(Self) -> String
+
+pub(all) struct GraphtreemstboruvkaFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstboruvkaFrame::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaFrame::copy(Self) -> Self
+pub fn GraphtreemstboruvkaFrame::fill(Self, Double) -> Self
+pub fn GraphtreemstboruvkaFrame::get(Self, Int32) -> Double
+pub fn GraphtreemstboruvkaFrame::len(Self) -> Int32
+pub fn GraphtreemstboruvkaFrame::max(Self) -> Double
+pub fn GraphtreemstboruvkaFrame::mean(Self) -> Double
+pub fn GraphtreemstboruvkaFrame::min(Self) -> Double
+pub fn GraphtreemstboruvkaFrame::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaFrame::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstboruvkaFrame::sum(Self) -> Double
+pub fn GraphtreemstboruvkaFrame::to_string(Self) -> String
+
+pub(all) struct GraphtreemstboruvkaGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstboruvkaGraphN::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaGraphN::copy(Self) -> Self
+pub fn GraphtreemstboruvkaGraphN::fill(Self, Double) -> Self
+pub fn GraphtreemstboruvkaGraphN::get(Self, Int32) -> Double
+pub fn GraphtreemstboruvkaGraphN::len(Self) -> Int32
+pub fn GraphtreemstboruvkaGraphN::max(Self) -> Double
+pub fn GraphtreemstboruvkaGraphN::mean(Self) -> Double
+pub fn GraphtreemstboruvkaGraphN::min(Self) -> Double
+pub fn GraphtreemstboruvkaGraphN::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstboruvkaGraphN::sum(Self) -> Double
+pub fn GraphtreemstboruvkaGraphN::to_string(Self) -> String
+
+pub(all) struct GraphtreemstboruvkaLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstboruvkaLayer::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaLayer::copy(Self) -> Self
+pub fn GraphtreemstboruvkaLayer::fill(Self, Double) -> Self
+pub fn GraphtreemstboruvkaLayer::get(Self, Int32) -> Double
+pub fn GraphtreemstboruvkaLayer::len(Self) -> Int32
+pub fn GraphtreemstboruvkaLayer::max(Self) -> Double
+pub fn GraphtreemstboruvkaLayer::mean(Self) -> Double
+pub fn GraphtreemstboruvkaLayer::min(Self) -> Double
+pub fn GraphtreemstboruvkaLayer::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaLayer::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstboruvkaLayer::sum(Self) -> Double
+pub fn GraphtreemstboruvkaLayer::to_string(Self) -> String
+
+pub(all) struct GraphtreemstboruvkaMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphtreemstboruvkaMatrix::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaMatrix::det(Self) -> Double
+pub fn GraphtreemstboruvkaMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphtreemstboruvkaMatrix::multiply(Self, Self) -> Self
+pub fn GraphtreemstboruvkaMatrix::norm(Self) -> Double
+pub fn GraphtreemstboruvkaMatrix::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaMatrix::to_string(Self) -> String
+pub fn GraphtreemstboruvkaMatrix::trace(Self) -> Double
+pub fn GraphtreemstboruvkaMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphtreemstboruvkaModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstboruvkaModel::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaModel::copy(Self) -> Self
+pub fn GraphtreemstboruvkaModel::fill(Self, Double) -> Self
+pub fn GraphtreemstboruvkaModel::get(Self, Int32) -> Double
+pub fn GraphtreemstboruvkaModel::len(Self) -> Int32
+pub fn GraphtreemstboruvkaModel::max(Self) -> Double
+pub fn GraphtreemstboruvkaModel::mean(Self) -> Double
+pub fn GraphtreemstboruvkaModel::min(Self) -> Double
+pub fn GraphtreemstboruvkaModel::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaModel::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstboruvkaModel::sum(Self) -> Double
+pub fn GraphtreemstboruvkaModel::to_string(Self) -> String
+
+pub(all) struct GraphtreemstboruvkaNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstboruvkaNode::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaNode::copy(Self) -> Self
+pub fn GraphtreemstboruvkaNode::fill(Self, Double) -> Self
+pub fn GraphtreemstboruvkaNode::get(Self, Int32) -> Double
+pub fn GraphtreemstboruvkaNode::len(Self) -> Int32
+pub fn GraphtreemstboruvkaNode::max(Self) -> Double
+pub fn GraphtreemstboruvkaNode::mean(Self) -> Double
+pub fn GraphtreemstboruvkaNode::min(Self) -> Double
+pub fn GraphtreemstboruvkaNode::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaNode::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstboruvkaNode::sum(Self) -> Double
+pub fn GraphtreemstboruvkaNode::to_string(Self) -> String
+
+pub(all) struct GraphtreemstboruvkaPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstboruvkaPath::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaPath::copy(Self) -> Self
+pub fn GraphtreemstboruvkaPath::fill(Self, Double) -> Self
+pub fn GraphtreemstboruvkaPath::get(Self, Int32) -> Double
+pub fn GraphtreemstboruvkaPath::len(Self) -> Int32
+pub fn GraphtreemstboruvkaPath::max(Self) -> Double
+pub fn GraphtreemstboruvkaPath::mean(Self) -> Double
+pub fn GraphtreemstboruvkaPath::min(Self) -> Double
+pub fn GraphtreemstboruvkaPath::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaPath::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstboruvkaPath::sum(Self) -> Double
+pub fn GraphtreemstboruvkaPath::to_string(Self) -> String
+
+pub(all) struct GraphtreemstboruvkaPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphtreemstboruvkaPoint::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaPoint::cross(Self, Self) -> Self
+pub fn GraphtreemstboruvkaPoint::dist(Self, Self) -> Double
+pub fn GraphtreemstboruvkaPoint::dot(Self, Self) -> Double
+pub fn GraphtreemstboruvkaPoint::label(Self) -> Int32
+pub fn GraphtreemstboruvkaPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphtreemstboruvkaPoint::mid(Self, Self) -> Self
+pub fn GraphtreemstboruvkaPoint::negate(Self) -> Self
+pub fn GraphtreemstboruvkaPoint::norm(Self) -> Double
+pub fn GraphtreemstboruvkaPoint::normalize(Self) -> Self
+pub fn GraphtreemstboruvkaPoint::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaPoint::sub(Self, Self) -> Self
+pub fn GraphtreemstboruvkaPoint::to_string(Self) -> String
+pub fn GraphtreemstboruvkaPoint::x(Self) -> Double
+pub fn GraphtreemstboruvkaPoint::y(Self) -> Double
+pub fn GraphtreemstboruvkaPoint::z(Self) -> Double
+
+pub(all) struct GraphtreemstboruvkaRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstboruvkaRange::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaRange::copy(Self) -> Self
+pub fn GraphtreemstboruvkaRange::fill(Self, Double) -> Self
+pub fn GraphtreemstboruvkaRange::get(Self, Int32) -> Double
+pub fn GraphtreemstboruvkaRange::len(Self) -> Int32
+pub fn GraphtreemstboruvkaRange::max(Self) -> Double
+pub fn GraphtreemstboruvkaRange::mean(Self) -> Double
+pub fn GraphtreemstboruvkaRange::min(Self) -> Double
+pub fn GraphtreemstboruvkaRange::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaRange::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstboruvkaRange::sum(Self) -> Double
+pub fn GraphtreemstboruvkaRange::to_string(Self) -> String
+
+pub(all) struct GraphtreemstboruvkaSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphtreemstboruvkaSeries::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaSeries::cumsum(Self) -> Self
+pub fn GraphtreemstboruvkaSeries::len(Self) -> Int32
+pub fn GraphtreemstboruvkaSeries::max(Self) -> Double
+pub fn GraphtreemstboruvkaSeries::mean(Self) -> Double
+pub fn GraphtreemstboruvkaSeries::median(Self) -> Double
+pub fn GraphtreemstboruvkaSeries::min(Self) -> Double
+pub fn GraphtreemstboruvkaSeries::normalize(Self) -> Self
+pub fn GraphtreemstboruvkaSeries::range(Self) -> Double
+pub fn GraphtreemstboruvkaSeries::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaSeries::std(Self) -> Double
+pub fn GraphtreemstboruvkaSeries::sub(Self, Self) -> Self
+pub fn GraphtreemstboruvkaSeries::sum(Self) -> Double
+pub fn GraphtreemstboruvkaSeries::to_string(Self) -> String
+pub fn GraphtreemstboruvkaSeries::variance(Self) -> Double
+
+pub(all) struct GraphtreemstboruvkaSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstboruvkaSlice::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaSlice::copy(Self) -> Self
+pub fn GraphtreemstboruvkaSlice::fill(Self, Double) -> Self
+pub fn GraphtreemstboruvkaSlice::get(Self, Int32) -> Double
+pub fn GraphtreemstboruvkaSlice::len(Self) -> Int32
+pub fn GraphtreemstboruvkaSlice::max(Self) -> Double
+pub fn GraphtreemstboruvkaSlice::mean(Self) -> Double
+pub fn GraphtreemstboruvkaSlice::min(Self) -> Double
+pub fn GraphtreemstboruvkaSlice::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaSlice::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstboruvkaSlice::sum(Self) -> Double
+pub fn GraphtreemstboruvkaSlice::to_string(Self) -> String
+
+pub(all) struct GraphtreemstboruvkaTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstboruvkaTable::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaTable::copy(Self) -> Self
+pub fn GraphtreemstboruvkaTable::fill(Self, Double) -> Self
+pub fn GraphtreemstboruvkaTable::get(Self, Int32) -> Double
+pub fn GraphtreemstboruvkaTable::len(Self) -> Int32
+pub fn GraphtreemstboruvkaTable::max(Self) -> Double
+pub fn GraphtreemstboruvkaTable::mean(Self) -> Double
+pub fn GraphtreemstboruvkaTable::min(Self) -> Double
+pub fn GraphtreemstboruvkaTable::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaTable::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstboruvkaTable::sum(Self) -> Double
+pub fn GraphtreemstboruvkaTable::to_string(Self) -> String
+
+pub(all) struct GraphtreemstboruvkaVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphtreemstboruvkaVector::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaVector::dist(Self, Self) -> Double
+pub fn GraphtreemstboruvkaVector::dot(Self, Self) -> Double
+pub fn GraphtreemstboruvkaVector::norm(Self) -> Double
+pub fn GraphtreemstboruvkaVector::normalize(Self) -> Self
+pub fn GraphtreemstboruvkaVector::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaVector::sub(Self, Self) -> Self
+pub fn GraphtreemstboruvkaVector::to_string(Self) -> String
+
+pub(all) struct GraphtreemstboruvkaView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstboruvkaView::add(Self, Self) -> Self
+pub fn GraphtreemstboruvkaView::copy(Self) -> Self
+pub fn GraphtreemstboruvkaView::fill(Self, Double) -> Self
+pub fn GraphtreemstboruvkaView::get(Self, Int32) -> Double
+pub fn GraphtreemstboruvkaView::len(Self) -> Int32
+pub fn GraphtreemstboruvkaView::max(Self) -> Double
+pub fn GraphtreemstboruvkaView::mean(Self) -> Double
+pub fn GraphtreemstboruvkaView::min(Self) -> Double
+pub fn GraphtreemstboruvkaView::scale(Self, Double) -> Self
+pub fn GraphtreemstboruvkaView::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstboruvkaView::sum(Self) -> Double
+pub fn GraphtreemstboruvkaView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

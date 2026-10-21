@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/slam_particle"
+
+// Values
+pub fn slam_particle_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn slam_particle_corr(Array[Double], Array[Double]) -> Double
+
+pub fn slam_particle_cov(Array[Double], Array[Double]) -> Double
+
+pub fn slam_particle_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn slam_particle_mae(Array[Double], Array[Double]) -> Double
+
+pub fn slam_particle_make_labeled_point(Double, Double, Int32) -> Slam_particlePoint
+
+pub fn slam_particle_make_matrix(Int32, Int32, Double) -> Slam_particleMatrix
+
+pub fn slam_particle_make_point(Double, Double) -> Slam_particlePoint
+
+pub fn slam_particle_make_series(Array[Double], String) -> Slam_particleSeries
+
+pub fn slam_particle_make_vector(Array[Double]) -> Slam_particleVector
+
+pub fn slam_particle_matrix_add(Slam_particleMatrix, Slam_particleMatrix) -> Slam_particleMatrix
+
+pub fn slam_particle_matrix_get(Slam_particleMatrix, Int32, Int32) -> Double
+
+pub fn slam_particle_matrix_identity(Int32) -> Slam_particleMatrix
+
+pub fn slam_particle_matrix_multiply(Slam_particleMatrix, Slam_particleMatrix) -> Slam_particleMatrix
+
+pub fn slam_particle_matrix_norm(Slam_particleMatrix) -> Double
+
+pub fn slam_particle_matrix_scale(Slam_particleMatrix, Double) -> Slam_particleMatrix
+
+pub fn slam_particle_matrix_to_string(Slam_particleMatrix) -> String
+
+pub fn slam_particle_matrix_trace(Slam_particleMatrix) -> Double
+
+pub fn slam_particle_matrix_transpose(Slam_particleMatrix) -> Slam_particleMatrix
+
+pub fn slam_particle_mse(Array[Double], Array[Double]) -> Double
+
+pub fn slam_particle_point_add(Slam_particlePoint, Slam_particlePoint) -> Slam_particlePoint
+
+pub fn slam_particle_point_dist(Slam_particlePoint, Slam_particlePoint) -> Double
+
+pub fn slam_particle_point_dot(Slam_particlePoint, Slam_particlePoint) -> Double
+
+pub fn slam_particle_point_label(Slam_particlePoint) -> Int32
+
+pub fn slam_particle_point_norm(Slam_particlePoint) -> Double
+
+pub fn slam_particle_point_scale(Slam_particlePoint, Double) -> Slam_particlePoint
+
+pub fn slam_particle_point_sub(Slam_particlePoint, Slam_particlePoint) -> Slam_particlePoint
+
+pub fn slam_particle_point_to_string(Slam_particlePoint) -> String
+
+pub fn slam_particle_point_x(Slam_particlePoint) -> Double
+
+pub fn slam_particle_point_y(Slam_particlePoint) -> Double
+
+pub fn slam_particle_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn slam_particle_r2(Array[Double], Array[Double]) -> Double
+
+pub fn slam_particle_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn slam_particle_series_add(Slam_particleSeries, Slam_particleSeries) -> Slam_particleSeries
+
+pub fn slam_particle_series_len(Slam_particleSeries) -> Int32
+
+pub fn slam_particle_series_max(Slam_particleSeries) -> Double
+
+pub fn slam_particle_series_mean(Slam_particleSeries) -> Double
+
+pub fn slam_particle_series_min(Slam_particleSeries) -> Double
+
+pub fn slam_particle_series_scale(Slam_particleSeries, Double) -> Slam_particleSeries
+
+pub fn slam_particle_series_std(Slam_particleSeries) -> Double
+
+pub fn slam_particle_series_sum(Slam_particleSeries) -> Double
+
+pub fn slam_particle_series_to_string(Slam_particleSeries) -> String
+
+pub fn slam_particle_series_var(Slam_particleSeries) -> Double
+
+pub fn slam_particle_std(Array[Double]) -> Double
+
+pub fn slam_particle_var(Array[Double]) -> Double
+
+pub fn slam_particle_vector_add(Slam_particleVector, Slam_particleVector) -> Slam_particleVector
+
+pub fn slam_particle_vector_dist(Slam_particleVector, Slam_particleVector) -> Double
+
+pub fn slam_particle_vector_dot(Slam_particleVector, Slam_particleVector) -> Double
+
+pub fn slam_particle_vector_norm(Slam_particleVector) -> Double
+
+pub fn slam_particle_vector_normalize(Slam_particleVector) -> Slam_particleVector
+
+pub fn slam_particle_vector_scale(Slam_particleVector, Double) -> Slam_particleVector
+
+pub fn slam_particle_vector_sub(Slam_particleVector, Slam_particleVector) -> Slam_particleVector
+
+pub fn slam_particle_vector_to_string(Slam_particleVector) -> String
+
+pub fn slam_particle_vector_zero(Int32) -> Slam_particleVector
+
+// Errors
+
+// Types and methods
+pub struct Slam_particleMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Slam_particlePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Slam_particleSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Slam_particleVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

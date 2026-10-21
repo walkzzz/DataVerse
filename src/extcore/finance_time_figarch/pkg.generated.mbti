@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/finance_time_figarch"
+
+// Values
+pub fn finance_time_figarch_buffer_make(Int32) -> FinancetimefigarchBuffer
+
+pub fn finance_time_figarch_cluster_make(Int32) -> FinancetimefigarchCluster
+
+pub fn finance_time_figarch_cursor_make(Int32) -> FinancetimefigarchCursor
+
+pub fn finance_time_figarch_edge_make(Int32) -> FinancetimefigarchEdge
+
+pub fn finance_time_figarch_frame_make(Int32) -> FinancetimefigarchFrame
+
+pub fn finance_time_figarch_graphn_make(Int32) -> FinancetimefigarchGraphN
+
+pub fn finance_time_figarch_layer_make(Int32) -> FinancetimefigarchLayer
+
+pub fn finance_time_figarch_make_matrix(Int32, Int32, Double) -> FinancetimefigarchMatrix
+
+pub fn finance_time_figarch_make_point(Double, Double) -> FinancetimefigarchPoint
+
+pub fn finance_time_figarch_make_point3(Double, Double, Double) -> FinancetimefigarchPoint
+
+pub fn finance_time_figarch_make_series(Array[Double], String) -> FinancetimefigarchSeries
+
+pub fn finance_time_figarch_make_vector(Array[Double]) -> FinancetimefigarchVector
+
+pub fn finance_time_figarch_matrix_identity(Int32) -> FinancetimefigarchMatrix
+
+pub fn finance_time_figarch_model_make(Int32) -> FinancetimefigarchModel
+
+pub fn finance_time_figarch_node_make(Int32) -> FinancetimefigarchNode
+
+pub fn finance_time_figarch_path_make(Int32) -> FinancetimefigarchPath
+
+pub fn finance_time_figarch_range_make(Int32) -> FinancetimefigarchRange
+
+pub fn finance_time_figarch_slice_make(Int32) -> FinancetimefigarchSlice
+
+pub fn finance_time_figarch_table_make(Int32) -> FinancetimefigarchTable
+
+pub fn finance_time_figarch_vector_zero(Int32) -> FinancetimefigarchVector
+
+pub fn finance_time_figarch_view_make(Int32) -> FinancetimefigarchView
+
+// Errors
+
+// Types and methods
+pub(all) struct FinancetimefigarchBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimefigarchBuffer::add(Self, Self) -> Self
+pub fn FinancetimefigarchBuffer::copy(Self) -> Self
+pub fn FinancetimefigarchBuffer::fill(Self, Double) -> Self
+pub fn FinancetimefigarchBuffer::get(Self, Int32) -> Double
+pub fn FinancetimefigarchBuffer::len(Self) -> Int32
+pub fn FinancetimefigarchBuffer::max(Self) -> Double
+pub fn FinancetimefigarchBuffer::mean(Self) -> Double
+pub fn FinancetimefigarchBuffer::min(Self) -> Double
+pub fn FinancetimefigarchBuffer::scale(Self, Double) -> Self
+pub fn FinancetimefigarchBuffer::set(Self, Int32, Double) -> Self
+pub fn FinancetimefigarchBuffer::sum(Self) -> Double
+pub fn FinancetimefigarchBuffer::to_string(Self) -> String
+
+pub(all) struct FinancetimefigarchCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimefigarchCluster::add(Self, Self) -> Self
+pub fn FinancetimefigarchCluster::copy(Self) -> Self
+pub fn FinancetimefigarchCluster::fill(Self, Double) -> Self
+pub fn FinancetimefigarchCluster::get(Self, Int32) -> Double
+pub fn FinancetimefigarchCluster::len(Self) -> Int32
+pub fn FinancetimefigarchCluster::max(Self) -> Double
+pub fn FinancetimefigarchCluster::mean(Self) -> Double
+pub fn FinancetimefigarchCluster::min(Self) -> Double
+pub fn FinancetimefigarchCluster::scale(Self, Double) -> Self
+pub fn FinancetimefigarchCluster::set(Self, Int32, Double) -> Self
+pub fn FinancetimefigarchCluster::sum(Self) -> Double
+pub fn FinancetimefigarchCluster::to_string(Self) -> String
+
+pub(all) struct FinancetimefigarchCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimefigarchCursor::add(Self, Self) -> Self
+pub fn FinancetimefigarchCursor::copy(Self) -> Self
+pub fn FinancetimefigarchCursor::fill(Self, Double) -> Self
+pub fn FinancetimefigarchCursor::get(Self, Int32) -> Double
+pub fn FinancetimefigarchCursor::len(Self) -> Int32
+pub fn FinancetimefigarchCursor::max(Self) -> Double
+pub fn FinancetimefigarchCursor::mean(Self) -> Double
+pub fn FinancetimefigarchCursor::min(Self) -> Double
+pub fn FinancetimefigarchCursor::scale(Self, Double) -> Self
+pub fn FinancetimefigarchCursor::set(Self, Int32, Double) -> Self
+pub fn FinancetimefigarchCursor::sum(Self) -> Double
+pub fn FinancetimefigarchCursor::to_string(Self) -> String
+
+pub(all) struct FinancetimefigarchEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimefigarchEdge::add(Self, Self) -> Self
+pub fn FinancetimefigarchEdge::copy(Self) -> Self
+pub fn FinancetimefigarchEdge::fill(Self, Double) -> Self
+pub fn FinancetimefigarchEdge::get(Self, Int32) -> Double
+pub fn FinancetimefigarchEdge::len(Self) -> Int32
+pub fn FinancetimefigarchEdge::max(Self) -> Double
+pub fn FinancetimefigarchEdge::mean(Self) -> Double
+pub fn FinancetimefigarchEdge::min(Self) -> Double
+pub fn FinancetimefigarchEdge::scale(Self, Double) -> Self
+pub fn FinancetimefigarchEdge::set(Self, Int32, Double) -> Self
+pub fn FinancetimefigarchEdge::sum(Self) -> Double
+pub fn FinancetimefigarchEdge::to_string(Self) -> String
+
+pub(all) struct FinancetimefigarchFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimefigarchFrame::add(Self, Self) -> Self
+pub fn FinancetimefigarchFrame::copy(Self) -> Self
+pub fn FinancetimefigarchFrame::fill(Self, Double) -> Self
+pub fn FinancetimefigarchFrame::get(Self, Int32) -> Double
+pub fn FinancetimefigarchFrame::len(Self) -> Int32
+pub fn FinancetimefigarchFrame::max(Self) -> Double
+pub fn FinancetimefigarchFrame::mean(Self) -> Double
+pub fn FinancetimefigarchFrame::min(Self) -> Double
+pub fn FinancetimefigarchFrame::scale(Self, Double) -> Self
+pub fn FinancetimefigarchFrame::set(Self, Int32, Double) -> Self
+pub fn FinancetimefigarchFrame::sum(Self) -> Double
+pub fn FinancetimefigarchFrame::to_string(Self) -> String
+
+pub(all) struct FinancetimefigarchGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimefigarchGraphN::add(Self, Self) -> Self
+pub fn FinancetimefigarchGraphN::copy(Self) -> Self
+pub fn FinancetimefigarchGraphN::fill(Self, Double) -> Self
+pub fn FinancetimefigarchGraphN::get(Self, Int32) -> Double
+pub fn FinancetimefigarchGraphN::len(Self) -> Int32
+pub fn FinancetimefigarchGraphN::max(Self) -> Double
+pub fn FinancetimefigarchGraphN::mean(Self) -> Double
+pub fn FinancetimefigarchGraphN::min(Self) -> Double
+pub fn FinancetimefigarchGraphN::scale(Self, Double) -> Self
+pub fn FinancetimefigarchGraphN::set(Self, Int32, Double) -> Self
+pub fn FinancetimefigarchGraphN::sum(Self) -> Double
+pub fn FinancetimefigarchGraphN::to_string(Self) -> String
+
+pub(all) struct FinancetimefigarchLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimefigarchLayer::add(Self, Self) -> Self
+pub fn FinancetimefigarchLayer::copy(Self) -> Self
+pub fn FinancetimefigarchLayer::fill(Self, Double) -> Self
+pub fn FinancetimefigarchLayer::get(Self, Int32) -> Double
+pub fn FinancetimefigarchLayer::len(Self) -> Int32
+pub fn FinancetimefigarchLayer::max(Self) -> Double
+pub fn FinancetimefigarchLayer::mean(Self) -> Double
+pub fn FinancetimefigarchLayer::min(Self) -> Double
+pub fn FinancetimefigarchLayer::scale(Self, Double) -> Self
+pub fn FinancetimefigarchLayer::set(Self, Int32, Double) -> Self
+pub fn FinancetimefigarchLayer::sum(Self) -> Double
+pub fn FinancetimefigarchLayer::to_string(Self) -> String
+
+pub(all) struct FinancetimefigarchMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn FinancetimefigarchMatrix::add(Self, Self) -> Self
+pub fn FinancetimefigarchMatrix::det(Self) -> Double
+pub fn FinancetimefigarchMatrix::get(Self, Int32, Int32) -> Double
+pub fn FinancetimefigarchMatrix::multiply(Self, Self) -> Self
+pub fn FinancetimefigarchMatrix::norm(Self) -> Double
+pub fn FinancetimefigarchMatrix::scale(Self, Double) -> Self
+pub fn FinancetimefigarchMatrix::to_string(Self) -> String
+pub fn FinancetimefigarchMatrix::trace(Self) -> Double
+pub fn FinancetimefigarchMatrix::transpose(Self) -> Self
+
+pub(all) struct FinancetimefigarchModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimefigarchModel::add(Self, Self) -> Self
+pub fn FinancetimefigarchModel::copy(Self) -> Self
+pub fn FinancetimefigarchModel::fill(Self, Double) -> Self
+pub fn FinancetimefigarchModel::get(Self, Int32) -> Double
+pub fn FinancetimefigarchModel::len(Self) -> Int32
+pub fn FinancetimefigarchModel::max(Self) -> Double
+pub fn FinancetimefigarchModel::mean(Self) -> Double
+pub fn FinancetimefigarchModel::min(Self) -> Double
+pub fn FinancetimefigarchModel::scale(Self, Double) -> Self
+pub fn FinancetimefigarchModel::set(Self, Int32, Double) -> Self
+pub fn FinancetimefigarchModel::sum(Self) -> Double
+pub fn FinancetimefigarchModel::to_string(Self) -> String
+
+pub(all) struct FinancetimefigarchNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimefigarchNode::add(Self, Self) -> Self
+pub fn FinancetimefigarchNode::copy(Self) -> Self
+pub fn FinancetimefigarchNode::fill(Self, Double) -> Self
+pub fn FinancetimefigarchNode::get(Self, Int32) -> Double
+pub fn FinancetimefigarchNode::len(Self) -> Int32
+pub fn FinancetimefigarchNode::max(Self) -> Double
+pub fn FinancetimefigarchNode::mean(Self) -> Double
+pub fn FinancetimefigarchNode::min(Self) -> Double
+pub fn FinancetimefigarchNode::scale(Self, Double) -> Self
+pub fn FinancetimefigarchNode::set(Self, Int32, Double) -> Self
+pub fn FinancetimefigarchNode::sum(Self) -> Double
+pub fn FinancetimefigarchNode::to_string(Self) -> String
+
+pub(all) struct FinancetimefigarchPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimefigarchPath::add(Self, Self) -> Self
+pub fn FinancetimefigarchPath::copy(Self) -> Self
+pub fn FinancetimefigarchPath::fill(Self, Double) -> Self
+pub fn FinancetimefigarchPath::get(Self, Int32) -> Double
+pub fn FinancetimefigarchPath::len(Self) -> Int32
+pub fn FinancetimefigarchPath::max(Self) -> Double
+pub fn FinancetimefigarchPath::mean(Self) -> Double
+pub fn FinancetimefigarchPath::min(Self) -> Double
+pub fn FinancetimefigarchPath::scale(Self, Double) -> Self
+pub fn FinancetimefigarchPath::set(Self, Int32, Double) -> Self
+pub fn FinancetimefigarchPath::sum(Self) -> Double
+pub fn FinancetimefigarchPath::to_string(Self) -> String
+
+pub(all) struct FinancetimefigarchPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn FinancetimefigarchPoint::add(Self, Self) -> Self
+pub fn FinancetimefigarchPoint::cross(Self, Self) -> Self
+pub fn FinancetimefigarchPoint::dist(Self, Self) -> Double
+pub fn FinancetimefigarchPoint::dot(Self, Self) -> Double
+pub fn FinancetimefigarchPoint::label(Self) -> Int32
+pub fn FinancetimefigarchPoint::lerp(Self, Self, Double) -> Self
+pub fn FinancetimefigarchPoint::mid(Self, Self) -> Self
+pub fn FinancetimefigarchPoint::negate(Self) -> Self
+pub fn FinancetimefigarchPoint::norm(Self) -> Double
+pub fn FinancetimefigarchPoint::normalize(Self) -> Self
+pub fn FinancetimefigarchPoint::scale(Self, Double) -> Self
+pub fn FinancetimefigarchPoint::sub(Self, Self) -> Self
+pub fn FinancetimefigarchPoint::to_string(Self) -> String
+pub fn FinancetimefigarchPoint::x(Self) -> Double
+pub fn FinancetimefigarchPoint::y(Self) -> Double
+pub fn FinancetimefigarchPoint::z(Self) -> Double
+
+pub(all) struct FinancetimefigarchRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimefigarchRange::add(Self, Self) -> Self
+pub fn FinancetimefigarchRange::copy(Self) -> Self
+pub fn FinancetimefigarchRange::fill(Self, Double) -> Self
+pub fn FinancetimefigarchRange::get(Self, Int32) -> Double
+pub fn FinancetimefigarchRange::len(Self) -> Int32
+pub fn FinancetimefigarchRange::max(Self) -> Double
+pub fn FinancetimefigarchRange::mean(Self) -> Double
+pub fn FinancetimefigarchRange::min(Self) -> Double
+pub fn FinancetimefigarchRange::scale(Self, Double) -> Self
+pub fn FinancetimefigarchRange::set(Self, Int32, Double) -> Self
+pub fn FinancetimefigarchRange::sum(Self) -> Double
+pub fn FinancetimefigarchRange::to_string(Self) -> String
+
+pub(all) struct FinancetimefigarchSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn FinancetimefigarchSeries::add(Self, Self) -> Self
+pub fn FinancetimefigarchSeries::cumsum(Self) -> Self
+pub fn FinancetimefigarchSeries::len(Self) -> Int32
+pub fn FinancetimefigarchSeries::max(Self) -> Double
+pub fn FinancetimefigarchSeries::mean(Self) -> Double
+pub fn FinancetimefigarchSeries::median(Self) -> Double
+pub fn FinancetimefigarchSeries::min(Self) -> Double
+pub fn FinancetimefigarchSeries::normalize(Self) -> Self
+pub fn FinancetimefigarchSeries::range(Self) -> Double
+pub fn FinancetimefigarchSeries::scale(Self, Double) -> Self
+pub fn FinancetimefigarchSeries::std(Self) -> Double
+pub fn FinancetimefigarchSeries::sub(Self, Self) -> Self
+pub fn FinancetimefigarchSeries::sum(Self) -> Double
+pub fn FinancetimefigarchSeries::to_string(Self) -> String
+pub fn FinancetimefigarchSeries::variance(Self) -> Double
+
+pub(all) struct FinancetimefigarchSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimefigarchSlice::add(Self, Self) -> Self
+pub fn FinancetimefigarchSlice::copy(Self) -> Self
+pub fn FinancetimefigarchSlice::fill(Self, Double) -> Self
+pub fn FinancetimefigarchSlice::get(Self, Int32) -> Double
+pub fn FinancetimefigarchSlice::len(Self) -> Int32
+pub fn FinancetimefigarchSlice::max(Self) -> Double
+pub fn FinancetimefigarchSlice::mean(Self) -> Double
+pub fn FinancetimefigarchSlice::min(Self) -> Double
+pub fn FinancetimefigarchSlice::scale(Self, Double) -> Self
+pub fn FinancetimefigarchSlice::set(Self, Int32, Double) -> Self
+pub fn FinancetimefigarchSlice::sum(Self) -> Double
+pub fn FinancetimefigarchSlice::to_string(Self) -> String
+
+pub(all) struct FinancetimefigarchTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimefigarchTable::add(Self, Self) -> Self
+pub fn FinancetimefigarchTable::copy(Self) -> Self
+pub fn FinancetimefigarchTable::fill(Self, Double) -> Self
+pub fn FinancetimefigarchTable::get(Self, Int32) -> Double
+pub fn FinancetimefigarchTable::len(Self) -> Int32
+pub fn FinancetimefigarchTable::max(Self) -> Double
+pub fn FinancetimefigarchTable::mean(Self) -> Double
+pub fn FinancetimefigarchTable::min(Self) -> Double
+pub fn FinancetimefigarchTable::scale(Self, Double) -> Self
+pub fn FinancetimefigarchTable::set(Self, Int32, Double) -> Self
+pub fn FinancetimefigarchTable::sum(Self) -> Double
+pub fn FinancetimefigarchTable::to_string(Self) -> String
+
+pub(all) struct FinancetimefigarchVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn FinancetimefigarchVector::add(Self, Self) -> Self
+pub fn FinancetimefigarchVector::dist(Self, Self) -> Double
+pub fn FinancetimefigarchVector::dot(Self, Self) -> Double
+pub fn FinancetimefigarchVector::norm(Self) -> Double
+pub fn FinancetimefigarchVector::normalize(Self) -> Self
+pub fn FinancetimefigarchVector::scale(Self, Double) -> Self
+pub fn FinancetimefigarchVector::sub(Self, Self) -> Self
+pub fn FinancetimefigarchVector::to_string(Self) -> String
+
+pub(all) struct FinancetimefigarchView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimefigarchView::add(Self, Self) -> Self
+pub fn FinancetimefigarchView::copy(Self) -> Self
+pub fn FinancetimefigarchView::fill(Self, Double) -> Self
+pub fn FinancetimefigarchView::get(Self, Int32) -> Double
+pub fn FinancetimefigarchView::len(Self) -> Int32
+pub fn FinancetimefigarchView::max(Self) -> Double
+pub fn FinancetimefigarchView::mean(Self) -> Double
+pub fn FinancetimefigarchView::min(Self) -> Double
+pub fn FinancetimefigarchView::scale(Self, Double) -> Self
+pub fn FinancetimefigarchView::set(Self, Int32, Double) -> Self
+pub fn FinancetimefigarchView::sum(Self) -> Double
+pub fn FinancetimefigarchView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

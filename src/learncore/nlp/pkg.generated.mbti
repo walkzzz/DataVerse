@@ -1,0 +1,83 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/nlp"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn bert_embeddings(Array[Int32], Array[Array[Double]], BertConfig) -> Array[Array[Double]]
+
+pub fn bert_forward(Array[Int32], Array[Array[Double]], BertConfig) -> (Array[Array[Double]], Array[Double])
+
+pub fn bert_pooled_output(Array[Array[Double]]) -> Array[Double]
+
+pub fn build_vocab(Array[String]) -> Array[String]
+
+pub fn decode_ids(Array[Int32], Array[String]) -> Array[String]
+
+pub fn embedding_lookup(Array[Int32], Array[Array[Double]]) -> Array[Array[Double]]
+
+pub fn encode_tokens(Array[String], Array[String]) -> Array[Int32]
+
+pub fn gpt_embeddings(Array[Int32], Array[Array[Double]], GptConfig) -> Array[Array[Double]]
+
+pub fn gpt_forward(Array[Int32], Array[Array[Double]], GptConfig) -> Array[Array[Double]]
+
+pub fn gpt_generate_next(Array[Int32], Array[Array[Double]], GptConfig) -> Int32
+
+pub fn make_bert_config(Int32, Int32, Int32, Int32) -> BertConfig
+
+pub fn make_gpt_config(Int32, Int32, Int32, Int32) -> GptConfig
+
+pub fn ngrams(Array[String], Int32) -> Array[Array[String]]
+
+pub fn nlp_id() -> String
+
+pub fn positional_encoding(Int32, Int32) -> Array[Array[Double]]
+
+pub fn term_frequency(Array[String]) -> Array[(String, Int32)]
+
+pub fn text_join(Array[String], String) -> String
+
+pub fn text_length(String) -> Int32
+
+pub fn text_truncate(String, Int32) -> String
+
+pub fn tokenize(TokenizerKind, String) -> Array[String]
+
+pub fn tokenize_char(String) -> Array[String]
+
+pub fn tokenize_whitespace(String) -> Array[String]
+
+pub fn tokenize_word(String) -> Array[String]
+
+// Errors
+
+// Types and methods
+pub struct BertConfig {
+  vocab_size : Int32
+  hidden_size : Int32
+  num_layers : Int32
+  num_heads : Int32
+}
+
+pub struct GptConfig {
+  vocab_size : Int32
+  hidden_size : Int32
+  num_layers : Int32
+  num_heads : Int32
+}
+
+pub(all) enum TokenizerKind {
+  Whitespace
+  Char
+  Word
+} derive(Eq, @debug.Debug)
+pub fn TokenizerKind::equal(Self, Self) -> Bool
+pub fn TokenizerKind::not_equal(Self, Self) -> Bool
+pub fn TokenizerKind::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

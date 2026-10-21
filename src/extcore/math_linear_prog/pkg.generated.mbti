@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_linear_prog"
+
+// Values
+pub fn math_linear_prog_buffer_make(Int32) -> MathlinearprogBuffer
+
+pub fn math_linear_prog_cluster_make(Int32) -> MathlinearprogCluster
+
+pub fn math_linear_prog_cursor_make(Int32) -> MathlinearprogCursor
+
+pub fn math_linear_prog_edge_make(Int32) -> MathlinearprogEdge
+
+pub fn math_linear_prog_frame_make(Int32) -> MathlinearprogFrame
+
+pub fn math_linear_prog_graphn_make(Int32) -> MathlinearprogGraphN
+
+pub fn math_linear_prog_layer_make(Int32) -> MathlinearprogLayer
+
+pub fn math_linear_prog_make_matrix(Int32, Int32, Double) -> MathlinearprogMatrix
+
+pub fn math_linear_prog_make_point(Double, Double) -> MathlinearprogPoint
+
+pub fn math_linear_prog_make_point3(Double, Double, Double) -> MathlinearprogPoint
+
+pub fn math_linear_prog_make_series(Array[Double], String) -> MathlinearprogSeries
+
+pub fn math_linear_prog_make_vector(Array[Double]) -> MathlinearprogVector
+
+pub fn math_linear_prog_matrix_identity(Int32) -> MathlinearprogMatrix
+
+pub fn math_linear_prog_model_make(Int32) -> MathlinearprogModel
+
+pub fn math_linear_prog_node_make(Int32) -> MathlinearprogNode
+
+pub fn math_linear_prog_path_make(Int32) -> MathlinearprogPath
+
+pub fn math_linear_prog_range_make(Int32) -> MathlinearprogRange
+
+pub fn math_linear_prog_slice_make(Int32) -> MathlinearprogSlice
+
+pub fn math_linear_prog_table_make(Int32) -> MathlinearprogTable
+
+pub fn math_linear_prog_vector_zero(Int32) -> MathlinearprogVector
+
+pub fn math_linear_prog_view_make(Int32) -> MathlinearprogView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathlinearprogBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearprogBuffer::add(Self, Self) -> Self
+pub fn MathlinearprogBuffer::copy(Self) -> Self
+pub fn MathlinearprogBuffer::fill(Self, Double) -> Self
+pub fn MathlinearprogBuffer::get(Self, Int32) -> Double
+pub fn MathlinearprogBuffer::len(Self) -> Int32
+pub fn MathlinearprogBuffer::max(Self) -> Double
+pub fn MathlinearprogBuffer::mean(Self) -> Double
+pub fn MathlinearprogBuffer::min(Self) -> Double
+pub fn MathlinearprogBuffer::scale(Self, Double) -> Self
+pub fn MathlinearprogBuffer::set(Self, Int32, Double) -> Self
+pub fn MathlinearprogBuffer::sum(Self) -> Double
+pub fn MathlinearprogBuffer::to_string(Self) -> String
+
+pub(all) struct MathlinearprogCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearprogCluster::add(Self, Self) -> Self
+pub fn MathlinearprogCluster::copy(Self) -> Self
+pub fn MathlinearprogCluster::fill(Self, Double) -> Self
+pub fn MathlinearprogCluster::get(Self, Int32) -> Double
+pub fn MathlinearprogCluster::len(Self) -> Int32
+pub fn MathlinearprogCluster::max(Self) -> Double
+pub fn MathlinearprogCluster::mean(Self) -> Double
+pub fn MathlinearprogCluster::min(Self) -> Double
+pub fn MathlinearprogCluster::scale(Self, Double) -> Self
+pub fn MathlinearprogCluster::set(Self, Int32, Double) -> Self
+pub fn MathlinearprogCluster::sum(Self) -> Double
+pub fn MathlinearprogCluster::to_string(Self) -> String
+
+pub(all) struct MathlinearprogCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearprogCursor::add(Self, Self) -> Self
+pub fn MathlinearprogCursor::copy(Self) -> Self
+pub fn MathlinearprogCursor::fill(Self, Double) -> Self
+pub fn MathlinearprogCursor::get(Self, Int32) -> Double
+pub fn MathlinearprogCursor::len(Self) -> Int32
+pub fn MathlinearprogCursor::max(Self) -> Double
+pub fn MathlinearprogCursor::mean(Self) -> Double
+pub fn MathlinearprogCursor::min(Self) -> Double
+pub fn MathlinearprogCursor::scale(Self, Double) -> Self
+pub fn MathlinearprogCursor::set(Self, Int32, Double) -> Self
+pub fn MathlinearprogCursor::sum(Self) -> Double
+pub fn MathlinearprogCursor::to_string(Self) -> String
+
+pub(all) struct MathlinearprogEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearprogEdge::add(Self, Self) -> Self
+pub fn MathlinearprogEdge::copy(Self) -> Self
+pub fn MathlinearprogEdge::fill(Self, Double) -> Self
+pub fn MathlinearprogEdge::get(Self, Int32) -> Double
+pub fn MathlinearprogEdge::len(Self) -> Int32
+pub fn MathlinearprogEdge::max(Self) -> Double
+pub fn MathlinearprogEdge::mean(Self) -> Double
+pub fn MathlinearprogEdge::min(Self) -> Double
+pub fn MathlinearprogEdge::scale(Self, Double) -> Self
+pub fn MathlinearprogEdge::set(Self, Int32, Double) -> Self
+pub fn MathlinearprogEdge::sum(Self) -> Double
+pub fn MathlinearprogEdge::to_string(Self) -> String
+
+pub(all) struct MathlinearprogFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearprogFrame::add(Self, Self) -> Self
+pub fn MathlinearprogFrame::copy(Self) -> Self
+pub fn MathlinearprogFrame::fill(Self, Double) -> Self
+pub fn MathlinearprogFrame::get(Self, Int32) -> Double
+pub fn MathlinearprogFrame::len(Self) -> Int32
+pub fn MathlinearprogFrame::max(Self) -> Double
+pub fn MathlinearprogFrame::mean(Self) -> Double
+pub fn MathlinearprogFrame::min(Self) -> Double
+pub fn MathlinearprogFrame::scale(Self, Double) -> Self
+pub fn MathlinearprogFrame::set(Self, Int32, Double) -> Self
+pub fn MathlinearprogFrame::sum(Self) -> Double
+pub fn MathlinearprogFrame::to_string(Self) -> String
+
+pub(all) struct MathlinearprogGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearprogGraphN::add(Self, Self) -> Self
+pub fn MathlinearprogGraphN::copy(Self) -> Self
+pub fn MathlinearprogGraphN::fill(Self, Double) -> Self
+pub fn MathlinearprogGraphN::get(Self, Int32) -> Double
+pub fn MathlinearprogGraphN::len(Self) -> Int32
+pub fn MathlinearprogGraphN::max(Self) -> Double
+pub fn MathlinearprogGraphN::mean(Self) -> Double
+pub fn MathlinearprogGraphN::min(Self) -> Double
+pub fn MathlinearprogGraphN::scale(Self, Double) -> Self
+pub fn MathlinearprogGraphN::set(Self, Int32, Double) -> Self
+pub fn MathlinearprogGraphN::sum(Self) -> Double
+pub fn MathlinearprogGraphN::to_string(Self) -> String
+
+pub(all) struct MathlinearprogLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearprogLayer::add(Self, Self) -> Self
+pub fn MathlinearprogLayer::copy(Self) -> Self
+pub fn MathlinearprogLayer::fill(Self, Double) -> Self
+pub fn MathlinearprogLayer::get(Self, Int32) -> Double
+pub fn MathlinearprogLayer::len(Self) -> Int32
+pub fn MathlinearprogLayer::max(Self) -> Double
+pub fn MathlinearprogLayer::mean(Self) -> Double
+pub fn MathlinearprogLayer::min(Self) -> Double
+pub fn MathlinearprogLayer::scale(Self, Double) -> Self
+pub fn MathlinearprogLayer::set(Self, Int32, Double) -> Self
+pub fn MathlinearprogLayer::sum(Self) -> Double
+pub fn MathlinearprogLayer::to_string(Self) -> String
+
+pub(all) struct MathlinearprogMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathlinearprogMatrix::add(Self, Self) -> Self
+pub fn MathlinearprogMatrix::det(Self) -> Double
+pub fn MathlinearprogMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathlinearprogMatrix::multiply(Self, Self) -> Self
+pub fn MathlinearprogMatrix::norm(Self) -> Double
+pub fn MathlinearprogMatrix::scale(Self, Double) -> Self
+pub fn MathlinearprogMatrix::to_string(Self) -> String
+pub fn MathlinearprogMatrix::trace(Self) -> Double
+pub fn MathlinearprogMatrix::transpose(Self) -> Self
+
+pub(all) struct MathlinearprogModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearprogModel::add(Self, Self) -> Self
+pub fn MathlinearprogModel::copy(Self) -> Self
+pub fn MathlinearprogModel::fill(Self, Double) -> Self
+pub fn MathlinearprogModel::get(Self, Int32) -> Double
+pub fn MathlinearprogModel::len(Self) -> Int32
+pub fn MathlinearprogModel::max(Self) -> Double
+pub fn MathlinearprogModel::mean(Self) -> Double
+pub fn MathlinearprogModel::min(Self) -> Double
+pub fn MathlinearprogModel::scale(Self, Double) -> Self
+pub fn MathlinearprogModel::set(Self, Int32, Double) -> Self
+pub fn MathlinearprogModel::sum(Self) -> Double
+pub fn MathlinearprogModel::to_string(Self) -> String
+
+pub(all) struct MathlinearprogNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearprogNode::add(Self, Self) -> Self
+pub fn MathlinearprogNode::copy(Self) -> Self
+pub fn MathlinearprogNode::fill(Self, Double) -> Self
+pub fn MathlinearprogNode::get(Self, Int32) -> Double
+pub fn MathlinearprogNode::len(Self) -> Int32
+pub fn MathlinearprogNode::max(Self) -> Double
+pub fn MathlinearprogNode::mean(Self) -> Double
+pub fn MathlinearprogNode::min(Self) -> Double
+pub fn MathlinearprogNode::scale(Self, Double) -> Self
+pub fn MathlinearprogNode::set(Self, Int32, Double) -> Self
+pub fn MathlinearprogNode::sum(Self) -> Double
+pub fn MathlinearprogNode::to_string(Self) -> String
+
+pub(all) struct MathlinearprogPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearprogPath::add(Self, Self) -> Self
+pub fn MathlinearprogPath::copy(Self) -> Self
+pub fn MathlinearprogPath::fill(Self, Double) -> Self
+pub fn MathlinearprogPath::get(Self, Int32) -> Double
+pub fn MathlinearprogPath::len(Self) -> Int32
+pub fn MathlinearprogPath::max(Self) -> Double
+pub fn MathlinearprogPath::mean(Self) -> Double
+pub fn MathlinearprogPath::min(Self) -> Double
+pub fn MathlinearprogPath::scale(Self, Double) -> Self
+pub fn MathlinearprogPath::set(Self, Int32, Double) -> Self
+pub fn MathlinearprogPath::sum(Self) -> Double
+pub fn MathlinearprogPath::to_string(Self) -> String
+
+pub(all) struct MathlinearprogPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathlinearprogPoint::add(Self, Self) -> Self
+pub fn MathlinearprogPoint::cross(Self, Self) -> Self
+pub fn MathlinearprogPoint::dist(Self, Self) -> Double
+pub fn MathlinearprogPoint::dot(Self, Self) -> Double
+pub fn MathlinearprogPoint::label(Self) -> Int32
+pub fn MathlinearprogPoint::lerp(Self, Self, Double) -> Self
+pub fn MathlinearprogPoint::mid(Self, Self) -> Self
+pub fn MathlinearprogPoint::negate(Self) -> Self
+pub fn MathlinearprogPoint::norm(Self) -> Double
+pub fn MathlinearprogPoint::normalize(Self) -> Self
+pub fn MathlinearprogPoint::scale(Self, Double) -> Self
+pub fn MathlinearprogPoint::sub(Self, Self) -> Self
+pub fn MathlinearprogPoint::to_string(Self) -> String
+pub fn MathlinearprogPoint::x(Self) -> Double
+pub fn MathlinearprogPoint::y(Self) -> Double
+pub fn MathlinearprogPoint::z(Self) -> Double
+
+pub(all) struct MathlinearprogRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearprogRange::add(Self, Self) -> Self
+pub fn MathlinearprogRange::copy(Self) -> Self
+pub fn MathlinearprogRange::fill(Self, Double) -> Self
+pub fn MathlinearprogRange::get(Self, Int32) -> Double
+pub fn MathlinearprogRange::len(Self) -> Int32
+pub fn MathlinearprogRange::max(Self) -> Double
+pub fn MathlinearprogRange::mean(Self) -> Double
+pub fn MathlinearprogRange::min(Self) -> Double
+pub fn MathlinearprogRange::scale(Self, Double) -> Self
+pub fn MathlinearprogRange::set(Self, Int32, Double) -> Self
+pub fn MathlinearprogRange::sum(Self) -> Double
+pub fn MathlinearprogRange::to_string(Self) -> String
+
+pub(all) struct MathlinearprogSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathlinearprogSeries::add(Self, Self) -> Self
+pub fn MathlinearprogSeries::cumsum(Self) -> Self
+pub fn MathlinearprogSeries::len(Self) -> Int32
+pub fn MathlinearprogSeries::max(Self) -> Double
+pub fn MathlinearprogSeries::mean(Self) -> Double
+pub fn MathlinearprogSeries::median(Self) -> Double
+pub fn MathlinearprogSeries::min(Self) -> Double
+pub fn MathlinearprogSeries::normalize(Self) -> Self
+pub fn MathlinearprogSeries::range(Self) -> Double
+pub fn MathlinearprogSeries::scale(Self, Double) -> Self
+pub fn MathlinearprogSeries::std(Self) -> Double
+pub fn MathlinearprogSeries::sub(Self, Self) -> Self
+pub fn MathlinearprogSeries::sum(Self) -> Double
+pub fn MathlinearprogSeries::to_string(Self) -> String
+pub fn MathlinearprogSeries::variance(Self) -> Double
+
+pub(all) struct MathlinearprogSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearprogSlice::add(Self, Self) -> Self
+pub fn MathlinearprogSlice::copy(Self) -> Self
+pub fn MathlinearprogSlice::fill(Self, Double) -> Self
+pub fn MathlinearprogSlice::get(Self, Int32) -> Double
+pub fn MathlinearprogSlice::len(Self) -> Int32
+pub fn MathlinearprogSlice::max(Self) -> Double
+pub fn MathlinearprogSlice::mean(Self) -> Double
+pub fn MathlinearprogSlice::min(Self) -> Double
+pub fn MathlinearprogSlice::scale(Self, Double) -> Self
+pub fn MathlinearprogSlice::set(Self, Int32, Double) -> Self
+pub fn MathlinearprogSlice::sum(Self) -> Double
+pub fn MathlinearprogSlice::to_string(Self) -> String
+
+pub(all) struct MathlinearprogTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearprogTable::add(Self, Self) -> Self
+pub fn MathlinearprogTable::copy(Self) -> Self
+pub fn MathlinearprogTable::fill(Self, Double) -> Self
+pub fn MathlinearprogTable::get(Self, Int32) -> Double
+pub fn MathlinearprogTable::len(Self) -> Int32
+pub fn MathlinearprogTable::max(Self) -> Double
+pub fn MathlinearprogTable::mean(Self) -> Double
+pub fn MathlinearprogTable::min(Self) -> Double
+pub fn MathlinearprogTable::scale(Self, Double) -> Self
+pub fn MathlinearprogTable::set(Self, Int32, Double) -> Self
+pub fn MathlinearprogTable::sum(Self) -> Double
+pub fn MathlinearprogTable::to_string(Self) -> String
+
+pub(all) struct MathlinearprogVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathlinearprogVector::add(Self, Self) -> Self
+pub fn MathlinearprogVector::dist(Self, Self) -> Double
+pub fn MathlinearprogVector::dot(Self, Self) -> Double
+pub fn MathlinearprogVector::norm(Self) -> Double
+pub fn MathlinearprogVector::normalize(Self) -> Self
+pub fn MathlinearprogVector::scale(Self, Double) -> Self
+pub fn MathlinearprogVector::sub(Self, Self) -> Self
+pub fn MathlinearprogVector::to_string(Self) -> String
+
+pub(all) struct MathlinearprogView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearprogView::add(Self, Self) -> Self
+pub fn MathlinearprogView::copy(Self) -> Self
+pub fn MathlinearprogView::fill(Self, Double) -> Self
+pub fn MathlinearprogView::get(Self, Int32) -> Double
+pub fn MathlinearprogView::len(Self) -> Int32
+pub fn MathlinearprogView::max(Self) -> Double
+pub fn MathlinearprogView::mean(Self) -> Double
+pub fn MathlinearprogView::min(Self) -> Double
+pub fn MathlinearprogView::scale(Self, Double) -> Self
+pub fn MathlinearprogView::set(Self, Int32, Double) -> Self
+pub fn MathlinearprogView::sum(Self) -> Double
+pub fn MathlinearprogView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

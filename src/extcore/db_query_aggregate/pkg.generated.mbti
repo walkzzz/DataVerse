@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_query_aggregate"
+
+// Values
+pub fn db_query_aggregate_buffer_make(Int32) -> DbqueryaggregateBuffer
+
+pub fn db_query_aggregate_cluster_make(Int32) -> DbqueryaggregateCluster
+
+pub fn db_query_aggregate_cursor_make(Int32) -> DbqueryaggregateCursor
+
+pub fn db_query_aggregate_edge_make(Int32) -> DbqueryaggregateEdge
+
+pub fn db_query_aggregate_frame_make(Int32) -> DbqueryaggregateFrame
+
+pub fn db_query_aggregate_graphn_make(Int32) -> DbqueryaggregateGraphN
+
+pub fn db_query_aggregate_layer_make(Int32) -> DbqueryaggregateLayer
+
+pub fn db_query_aggregate_make_matrix(Int32, Int32, Double) -> DbqueryaggregateMatrix
+
+pub fn db_query_aggregate_make_point(Double, Double) -> DbqueryaggregatePoint
+
+pub fn db_query_aggregate_make_point3(Double, Double, Double) -> DbqueryaggregatePoint
+
+pub fn db_query_aggregate_make_series(Array[Double], String) -> DbqueryaggregateSeries
+
+pub fn db_query_aggregate_make_vector(Array[Double]) -> DbqueryaggregateVector
+
+pub fn db_query_aggregate_matrix_identity(Int32) -> DbqueryaggregateMatrix
+
+pub fn db_query_aggregate_model_make(Int32) -> DbqueryaggregateModel
+
+pub fn db_query_aggregate_node_make(Int32) -> DbqueryaggregateNode
+
+pub fn db_query_aggregate_path_make(Int32) -> DbqueryaggregatePath
+
+pub fn db_query_aggregate_range_make(Int32) -> DbqueryaggregateRange
+
+pub fn db_query_aggregate_slice_make(Int32) -> DbqueryaggregateSlice
+
+pub fn db_query_aggregate_table_make(Int32) -> DbqueryaggregateTable
+
+pub fn db_query_aggregate_vector_zero(Int32) -> DbqueryaggregateVector
+
+pub fn db_query_aggregate_view_make(Int32) -> DbqueryaggregateView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbqueryaggregateBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryaggregateBuffer::add(Self, Self) -> Self
+pub fn DbqueryaggregateBuffer::copy(Self) -> Self
+pub fn DbqueryaggregateBuffer::fill(Self, Double) -> Self
+pub fn DbqueryaggregateBuffer::get(Self, Int32) -> Double
+pub fn DbqueryaggregateBuffer::len(Self) -> Int32
+pub fn DbqueryaggregateBuffer::max(Self) -> Double
+pub fn DbqueryaggregateBuffer::mean(Self) -> Double
+pub fn DbqueryaggregateBuffer::min(Self) -> Double
+pub fn DbqueryaggregateBuffer::scale(Self, Double) -> Self
+pub fn DbqueryaggregateBuffer::set(Self, Int32, Double) -> Self
+pub fn DbqueryaggregateBuffer::sum(Self) -> Double
+pub fn DbqueryaggregateBuffer::to_string(Self) -> String
+
+pub(all) struct DbqueryaggregateCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryaggregateCluster::add(Self, Self) -> Self
+pub fn DbqueryaggregateCluster::copy(Self) -> Self
+pub fn DbqueryaggregateCluster::fill(Self, Double) -> Self
+pub fn DbqueryaggregateCluster::get(Self, Int32) -> Double
+pub fn DbqueryaggregateCluster::len(Self) -> Int32
+pub fn DbqueryaggregateCluster::max(Self) -> Double
+pub fn DbqueryaggregateCluster::mean(Self) -> Double
+pub fn DbqueryaggregateCluster::min(Self) -> Double
+pub fn DbqueryaggregateCluster::scale(Self, Double) -> Self
+pub fn DbqueryaggregateCluster::set(Self, Int32, Double) -> Self
+pub fn DbqueryaggregateCluster::sum(Self) -> Double
+pub fn DbqueryaggregateCluster::to_string(Self) -> String
+
+pub(all) struct DbqueryaggregateCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryaggregateCursor::add(Self, Self) -> Self
+pub fn DbqueryaggregateCursor::copy(Self) -> Self
+pub fn DbqueryaggregateCursor::fill(Self, Double) -> Self
+pub fn DbqueryaggregateCursor::get(Self, Int32) -> Double
+pub fn DbqueryaggregateCursor::len(Self) -> Int32
+pub fn DbqueryaggregateCursor::max(Self) -> Double
+pub fn DbqueryaggregateCursor::mean(Self) -> Double
+pub fn DbqueryaggregateCursor::min(Self) -> Double
+pub fn DbqueryaggregateCursor::scale(Self, Double) -> Self
+pub fn DbqueryaggregateCursor::set(Self, Int32, Double) -> Self
+pub fn DbqueryaggregateCursor::sum(Self) -> Double
+pub fn DbqueryaggregateCursor::to_string(Self) -> String
+
+pub(all) struct DbqueryaggregateEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryaggregateEdge::add(Self, Self) -> Self
+pub fn DbqueryaggregateEdge::copy(Self) -> Self
+pub fn DbqueryaggregateEdge::fill(Self, Double) -> Self
+pub fn DbqueryaggregateEdge::get(Self, Int32) -> Double
+pub fn DbqueryaggregateEdge::len(Self) -> Int32
+pub fn DbqueryaggregateEdge::max(Self) -> Double
+pub fn DbqueryaggregateEdge::mean(Self) -> Double
+pub fn DbqueryaggregateEdge::min(Self) -> Double
+pub fn DbqueryaggregateEdge::scale(Self, Double) -> Self
+pub fn DbqueryaggregateEdge::set(Self, Int32, Double) -> Self
+pub fn DbqueryaggregateEdge::sum(Self) -> Double
+pub fn DbqueryaggregateEdge::to_string(Self) -> String
+
+pub(all) struct DbqueryaggregateFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryaggregateFrame::add(Self, Self) -> Self
+pub fn DbqueryaggregateFrame::copy(Self) -> Self
+pub fn DbqueryaggregateFrame::fill(Self, Double) -> Self
+pub fn DbqueryaggregateFrame::get(Self, Int32) -> Double
+pub fn DbqueryaggregateFrame::len(Self) -> Int32
+pub fn DbqueryaggregateFrame::max(Self) -> Double
+pub fn DbqueryaggregateFrame::mean(Self) -> Double
+pub fn DbqueryaggregateFrame::min(Self) -> Double
+pub fn DbqueryaggregateFrame::scale(Self, Double) -> Self
+pub fn DbqueryaggregateFrame::set(Self, Int32, Double) -> Self
+pub fn DbqueryaggregateFrame::sum(Self) -> Double
+pub fn DbqueryaggregateFrame::to_string(Self) -> String
+
+pub(all) struct DbqueryaggregateGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryaggregateGraphN::add(Self, Self) -> Self
+pub fn DbqueryaggregateGraphN::copy(Self) -> Self
+pub fn DbqueryaggregateGraphN::fill(Self, Double) -> Self
+pub fn DbqueryaggregateGraphN::get(Self, Int32) -> Double
+pub fn DbqueryaggregateGraphN::len(Self) -> Int32
+pub fn DbqueryaggregateGraphN::max(Self) -> Double
+pub fn DbqueryaggregateGraphN::mean(Self) -> Double
+pub fn DbqueryaggregateGraphN::min(Self) -> Double
+pub fn DbqueryaggregateGraphN::scale(Self, Double) -> Self
+pub fn DbqueryaggregateGraphN::set(Self, Int32, Double) -> Self
+pub fn DbqueryaggregateGraphN::sum(Self) -> Double
+pub fn DbqueryaggregateGraphN::to_string(Self) -> String
+
+pub(all) struct DbqueryaggregateLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryaggregateLayer::add(Self, Self) -> Self
+pub fn DbqueryaggregateLayer::copy(Self) -> Self
+pub fn DbqueryaggregateLayer::fill(Self, Double) -> Self
+pub fn DbqueryaggregateLayer::get(Self, Int32) -> Double
+pub fn DbqueryaggregateLayer::len(Self) -> Int32
+pub fn DbqueryaggregateLayer::max(Self) -> Double
+pub fn DbqueryaggregateLayer::mean(Self) -> Double
+pub fn DbqueryaggregateLayer::min(Self) -> Double
+pub fn DbqueryaggregateLayer::scale(Self, Double) -> Self
+pub fn DbqueryaggregateLayer::set(Self, Int32, Double) -> Self
+pub fn DbqueryaggregateLayer::sum(Self) -> Double
+pub fn DbqueryaggregateLayer::to_string(Self) -> String
+
+pub(all) struct DbqueryaggregateMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbqueryaggregateMatrix::add(Self, Self) -> Self
+pub fn DbqueryaggregateMatrix::det(Self) -> Double
+pub fn DbqueryaggregateMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbqueryaggregateMatrix::multiply(Self, Self) -> Self
+pub fn DbqueryaggregateMatrix::norm(Self) -> Double
+pub fn DbqueryaggregateMatrix::scale(Self, Double) -> Self
+pub fn DbqueryaggregateMatrix::to_string(Self) -> String
+pub fn DbqueryaggregateMatrix::trace(Self) -> Double
+pub fn DbqueryaggregateMatrix::transpose(Self) -> Self
+
+pub(all) struct DbqueryaggregateModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryaggregateModel::add(Self, Self) -> Self
+pub fn DbqueryaggregateModel::copy(Self) -> Self
+pub fn DbqueryaggregateModel::fill(Self, Double) -> Self
+pub fn DbqueryaggregateModel::get(Self, Int32) -> Double
+pub fn DbqueryaggregateModel::len(Self) -> Int32
+pub fn DbqueryaggregateModel::max(Self) -> Double
+pub fn DbqueryaggregateModel::mean(Self) -> Double
+pub fn DbqueryaggregateModel::min(Self) -> Double
+pub fn DbqueryaggregateModel::scale(Self, Double) -> Self
+pub fn DbqueryaggregateModel::set(Self, Int32, Double) -> Self
+pub fn DbqueryaggregateModel::sum(Self) -> Double
+pub fn DbqueryaggregateModel::to_string(Self) -> String
+
+pub(all) struct DbqueryaggregateNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryaggregateNode::add(Self, Self) -> Self
+pub fn DbqueryaggregateNode::copy(Self) -> Self
+pub fn DbqueryaggregateNode::fill(Self, Double) -> Self
+pub fn DbqueryaggregateNode::get(Self, Int32) -> Double
+pub fn DbqueryaggregateNode::len(Self) -> Int32
+pub fn DbqueryaggregateNode::max(Self) -> Double
+pub fn DbqueryaggregateNode::mean(Self) -> Double
+pub fn DbqueryaggregateNode::min(Self) -> Double
+pub fn DbqueryaggregateNode::scale(Self, Double) -> Self
+pub fn DbqueryaggregateNode::set(Self, Int32, Double) -> Self
+pub fn DbqueryaggregateNode::sum(Self) -> Double
+pub fn DbqueryaggregateNode::to_string(Self) -> String
+
+pub(all) struct DbqueryaggregatePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryaggregatePath::add(Self, Self) -> Self
+pub fn DbqueryaggregatePath::copy(Self) -> Self
+pub fn DbqueryaggregatePath::fill(Self, Double) -> Self
+pub fn DbqueryaggregatePath::get(Self, Int32) -> Double
+pub fn DbqueryaggregatePath::len(Self) -> Int32
+pub fn DbqueryaggregatePath::max(Self) -> Double
+pub fn DbqueryaggregatePath::mean(Self) -> Double
+pub fn DbqueryaggregatePath::min(Self) -> Double
+pub fn DbqueryaggregatePath::scale(Self, Double) -> Self
+pub fn DbqueryaggregatePath::set(Self, Int32, Double) -> Self
+pub fn DbqueryaggregatePath::sum(Self) -> Double
+pub fn DbqueryaggregatePath::to_string(Self) -> String
+
+pub(all) struct DbqueryaggregatePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbqueryaggregatePoint::add(Self, Self) -> Self
+pub fn DbqueryaggregatePoint::cross(Self, Self) -> Self
+pub fn DbqueryaggregatePoint::dist(Self, Self) -> Double
+pub fn DbqueryaggregatePoint::dot(Self, Self) -> Double
+pub fn DbqueryaggregatePoint::label(Self) -> Int32
+pub fn DbqueryaggregatePoint::lerp(Self, Self, Double) -> Self
+pub fn DbqueryaggregatePoint::mid(Self, Self) -> Self
+pub fn DbqueryaggregatePoint::negate(Self) -> Self
+pub fn DbqueryaggregatePoint::norm(Self) -> Double
+pub fn DbqueryaggregatePoint::normalize(Self) -> Self
+pub fn DbqueryaggregatePoint::scale(Self, Double) -> Self
+pub fn DbqueryaggregatePoint::sub(Self, Self) -> Self
+pub fn DbqueryaggregatePoint::to_string(Self) -> String
+pub fn DbqueryaggregatePoint::x(Self) -> Double
+pub fn DbqueryaggregatePoint::y(Self) -> Double
+pub fn DbqueryaggregatePoint::z(Self) -> Double
+
+pub(all) struct DbqueryaggregateRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryaggregateRange::add(Self, Self) -> Self
+pub fn DbqueryaggregateRange::copy(Self) -> Self
+pub fn DbqueryaggregateRange::fill(Self, Double) -> Self
+pub fn DbqueryaggregateRange::get(Self, Int32) -> Double
+pub fn DbqueryaggregateRange::len(Self) -> Int32
+pub fn DbqueryaggregateRange::max(Self) -> Double
+pub fn DbqueryaggregateRange::mean(Self) -> Double
+pub fn DbqueryaggregateRange::min(Self) -> Double
+pub fn DbqueryaggregateRange::scale(Self, Double) -> Self
+pub fn DbqueryaggregateRange::set(Self, Int32, Double) -> Self
+pub fn DbqueryaggregateRange::sum(Self) -> Double
+pub fn DbqueryaggregateRange::to_string(Self) -> String
+
+pub(all) struct DbqueryaggregateSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbqueryaggregateSeries::add(Self, Self) -> Self
+pub fn DbqueryaggregateSeries::cumsum(Self) -> Self
+pub fn DbqueryaggregateSeries::len(Self) -> Int32
+pub fn DbqueryaggregateSeries::max(Self) -> Double
+pub fn DbqueryaggregateSeries::mean(Self) -> Double
+pub fn DbqueryaggregateSeries::median(Self) -> Double
+pub fn DbqueryaggregateSeries::min(Self) -> Double
+pub fn DbqueryaggregateSeries::normalize(Self) -> Self
+pub fn DbqueryaggregateSeries::range(Self) -> Double
+pub fn DbqueryaggregateSeries::scale(Self, Double) -> Self
+pub fn DbqueryaggregateSeries::std(Self) -> Double
+pub fn DbqueryaggregateSeries::sub(Self, Self) -> Self
+pub fn DbqueryaggregateSeries::sum(Self) -> Double
+pub fn DbqueryaggregateSeries::to_string(Self) -> String
+pub fn DbqueryaggregateSeries::variance(Self) -> Double
+
+pub(all) struct DbqueryaggregateSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryaggregateSlice::add(Self, Self) -> Self
+pub fn DbqueryaggregateSlice::copy(Self) -> Self
+pub fn DbqueryaggregateSlice::fill(Self, Double) -> Self
+pub fn DbqueryaggregateSlice::get(Self, Int32) -> Double
+pub fn DbqueryaggregateSlice::len(Self) -> Int32
+pub fn DbqueryaggregateSlice::max(Self) -> Double
+pub fn DbqueryaggregateSlice::mean(Self) -> Double
+pub fn DbqueryaggregateSlice::min(Self) -> Double
+pub fn DbqueryaggregateSlice::scale(Self, Double) -> Self
+pub fn DbqueryaggregateSlice::set(Self, Int32, Double) -> Self
+pub fn DbqueryaggregateSlice::sum(Self) -> Double
+pub fn DbqueryaggregateSlice::to_string(Self) -> String
+
+pub(all) struct DbqueryaggregateTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryaggregateTable::add(Self, Self) -> Self
+pub fn DbqueryaggregateTable::copy(Self) -> Self
+pub fn DbqueryaggregateTable::fill(Self, Double) -> Self
+pub fn DbqueryaggregateTable::get(Self, Int32) -> Double
+pub fn DbqueryaggregateTable::len(Self) -> Int32
+pub fn DbqueryaggregateTable::max(Self) -> Double
+pub fn DbqueryaggregateTable::mean(Self) -> Double
+pub fn DbqueryaggregateTable::min(Self) -> Double
+pub fn DbqueryaggregateTable::scale(Self, Double) -> Self
+pub fn DbqueryaggregateTable::set(Self, Int32, Double) -> Self
+pub fn DbqueryaggregateTable::sum(Self) -> Double
+pub fn DbqueryaggregateTable::to_string(Self) -> String
+
+pub(all) struct DbqueryaggregateVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbqueryaggregateVector::add(Self, Self) -> Self
+pub fn DbqueryaggregateVector::dist(Self, Self) -> Double
+pub fn DbqueryaggregateVector::dot(Self, Self) -> Double
+pub fn DbqueryaggregateVector::norm(Self) -> Double
+pub fn DbqueryaggregateVector::normalize(Self) -> Self
+pub fn DbqueryaggregateVector::scale(Self, Double) -> Self
+pub fn DbqueryaggregateVector::sub(Self, Self) -> Self
+pub fn DbqueryaggregateVector::to_string(Self) -> String
+
+pub(all) struct DbqueryaggregateView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryaggregateView::add(Self, Self) -> Self
+pub fn DbqueryaggregateView::copy(Self) -> Self
+pub fn DbqueryaggregateView::fill(Self, Double) -> Self
+pub fn DbqueryaggregateView::get(Self, Int32) -> Double
+pub fn DbqueryaggregateView::len(Self) -> Int32
+pub fn DbqueryaggregateView::max(Self) -> Double
+pub fn DbqueryaggregateView::mean(Self) -> Double
+pub fn DbqueryaggregateView::min(Self) -> Double
+pub fn DbqueryaggregateView::scale(Self, Double) -> Self
+pub fn DbqueryaggregateView::set(Self, Int32, Double) -> Self
+pub fn DbqueryaggregateView::sum(Self) -> Double
+pub fn DbqueryaggregateView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

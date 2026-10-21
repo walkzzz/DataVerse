@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_flow_window"
+
+// Values
+pub fn net_flow_window_buffer_make(Int32) -> NetflowwindowBuffer
+
+pub fn net_flow_window_cluster_make(Int32) -> NetflowwindowCluster
+
+pub fn net_flow_window_cursor_make(Int32) -> NetflowwindowCursor
+
+pub fn net_flow_window_edge_make(Int32) -> NetflowwindowEdge
+
+pub fn net_flow_window_frame_make(Int32) -> NetflowwindowFrame
+
+pub fn net_flow_window_graphn_make(Int32) -> NetflowwindowGraphN
+
+pub fn net_flow_window_layer_make(Int32) -> NetflowwindowLayer
+
+pub fn net_flow_window_make_matrix(Int32, Int32, Double) -> NetflowwindowMatrix
+
+pub fn net_flow_window_make_point(Double, Double) -> NetflowwindowPoint
+
+pub fn net_flow_window_make_point3(Double, Double, Double) -> NetflowwindowPoint
+
+pub fn net_flow_window_make_series(Array[Double], String) -> NetflowwindowSeries
+
+pub fn net_flow_window_make_vector(Array[Double]) -> NetflowwindowVector
+
+pub fn net_flow_window_matrix_identity(Int32) -> NetflowwindowMatrix
+
+pub fn net_flow_window_model_make(Int32) -> NetflowwindowModel
+
+pub fn net_flow_window_node_make(Int32) -> NetflowwindowNode
+
+pub fn net_flow_window_path_make(Int32) -> NetflowwindowPath
+
+pub fn net_flow_window_range_make(Int32) -> NetflowwindowRange
+
+pub fn net_flow_window_slice_make(Int32) -> NetflowwindowSlice
+
+pub fn net_flow_window_table_make(Int32) -> NetflowwindowTable
+
+pub fn net_flow_window_vector_zero(Int32) -> NetflowwindowVector
+
+pub fn net_flow_window_view_make(Int32) -> NetflowwindowView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetflowwindowBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowwindowBuffer::add(Self, Self) -> Self
+pub fn NetflowwindowBuffer::copy(Self) -> Self
+pub fn NetflowwindowBuffer::fill(Self, Double) -> Self
+pub fn NetflowwindowBuffer::get(Self, Int32) -> Double
+pub fn NetflowwindowBuffer::len(Self) -> Int32
+pub fn NetflowwindowBuffer::max(Self) -> Double
+pub fn NetflowwindowBuffer::mean(Self) -> Double
+pub fn NetflowwindowBuffer::min(Self) -> Double
+pub fn NetflowwindowBuffer::scale(Self, Double) -> Self
+pub fn NetflowwindowBuffer::set(Self, Int32, Double) -> Self
+pub fn NetflowwindowBuffer::sum(Self) -> Double
+pub fn NetflowwindowBuffer::to_string(Self) -> String
+
+pub(all) struct NetflowwindowCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowwindowCluster::add(Self, Self) -> Self
+pub fn NetflowwindowCluster::copy(Self) -> Self
+pub fn NetflowwindowCluster::fill(Self, Double) -> Self
+pub fn NetflowwindowCluster::get(Self, Int32) -> Double
+pub fn NetflowwindowCluster::len(Self) -> Int32
+pub fn NetflowwindowCluster::max(Self) -> Double
+pub fn NetflowwindowCluster::mean(Self) -> Double
+pub fn NetflowwindowCluster::min(Self) -> Double
+pub fn NetflowwindowCluster::scale(Self, Double) -> Self
+pub fn NetflowwindowCluster::set(Self, Int32, Double) -> Self
+pub fn NetflowwindowCluster::sum(Self) -> Double
+pub fn NetflowwindowCluster::to_string(Self) -> String
+
+pub(all) struct NetflowwindowCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowwindowCursor::add(Self, Self) -> Self
+pub fn NetflowwindowCursor::copy(Self) -> Self
+pub fn NetflowwindowCursor::fill(Self, Double) -> Self
+pub fn NetflowwindowCursor::get(Self, Int32) -> Double
+pub fn NetflowwindowCursor::len(Self) -> Int32
+pub fn NetflowwindowCursor::max(Self) -> Double
+pub fn NetflowwindowCursor::mean(Self) -> Double
+pub fn NetflowwindowCursor::min(Self) -> Double
+pub fn NetflowwindowCursor::scale(Self, Double) -> Self
+pub fn NetflowwindowCursor::set(Self, Int32, Double) -> Self
+pub fn NetflowwindowCursor::sum(Self) -> Double
+pub fn NetflowwindowCursor::to_string(Self) -> String
+
+pub(all) struct NetflowwindowEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowwindowEdge::add(Self, Self) -> Self
+pub fn NetflowwindowEdge::copy(Self) -> Self
+pub fn NetflowwindowEdge::fill(Self, Double) -> Self
+pub fn NetflowwindowEdge::get(Self, Int32) -> Double
+pub fn NetflowwindowEdge::len(Self) -> Int32
+pub fn NetflowwindowEdge::max(Self) -> Double
+pub fn NetflowwindowEdge::mean(Self) -> Double
+pub fn NetflowwindowEdge::min(Self) -> Double
+pub fn NetflowwindowEdge::scale(Self, Double) -> Self
+pub fn NetflowwindowEdge::set(Self, Int32, Double) -> Self
+pub fn NetflowwindowEdge::sum(Self) -> Double
+pub fn NetflowwindowEdge::to_string(Self) -> String
+
+pub(all) struct NetflowwindowFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowwindowFrame::add(Self, Self) -> Self
+pub fn NetflowwindowFrame::copy(Self) -> Self
+pub fn NetflowwindowFrame::fill(Self, Double) -> Self
+pub fn NetflowwindowFrame::get(Self, Int32) -> Double
+pub fn NetflowwindowFrame::len(Self) -> Int32
+pub fn NetflowwindowFrame::max(Self) -> Double
+pub fn NetflowwindowFrame::mean(Self) -> Double
+pub fn NetflowwindowFrame::min(Self) -> Double
+pub fn NetflowwindowFrame::scale(Self, Double) -> Self
+pub fn NetflowwindowFrame::set(Self, Int32, Double) -> Self
+pub fn NetflowwindowFrame::sum(Self) -> Double
+pub fn NetflowwindowFrame::to_string(Self) -> String
+
+pub(all) struct NetflowwindowGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowwindowGraphN::add(Self, Self) -> Self
+pub fn NetflowwindowGraphN::copy(Self) -> Self
+pub fn NetflowwindowGraphN::fill(Self, Double) -> Self
+pub fn NetflowwindowGraphN::get(Self, Int32) -> Double
+pub fn NetflowwindowGraphN::len(Self) -> Int32
+pub fn NetflowwindowGraphN::max(Self) -> Double
+pub fn NetflowwindowGraphN::mean(Self) -> Double
+pub fn NetflowwindowGraphN::min(Self) -> Double
+pub fn NetflowwindowGraphN::scale(Self, Double) -> Self
+pub fn NetflowwindowGraphN::set(Self, Int32, Double) -> Self
+pub fn NetflowwindowGraphN::sum(Self) -> Double
+pub fn NetflowwindowGraphN::to_string(Self) -> String
+
+pub(all) struct NetflowwindowLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowwindowLayer::add(Self, Self) -> Self
+pub fn NetflowwindowLayer::copy(Self) -> Self
+pub fn NetflowwindowLayer::fill(Self, Double) -> Self
+pub fn NetflowwindowLayer::get(Self, Int32) -> Double
+pub fn NetflowwindowLayer::len(Self) -> Int32
+pub fn NetflowwindowLayer::max(Self) -> Double
+pub fn NetflowwindowLayer::mean(Self) -> Double
+pub fn NetflowwindowLayer::min(Self) -> Double
+pub fn NetflowwindowLayer::scale(Self, Double) -> Self
+pub fn NetflowwindowLayer::set(Self, Int32, Double) -> Self
+pub fn NetflowwindowLayer::sum(Self) -> Double
+pub fn NetflowwindowLayer::to_string(Self) -> String
+
+pub(all) struct NetflowwindowMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetflowwindowMatrix::add(Self, Self) -> Self
+pub fn NetflowwindowMatrix::det(Self) -> Double
+pub fn NetflowwindowMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetflowwindowMatrix::multiply(Self, Self) -> Self
+pub fn NetflowwindowMatrix::norm(Self) -> Double
+pub fn NetflowwindowMatrix::scale(Self, Double) -> Self
+pub fn NetflowwindowMatrix::to_string(Self) -> String
+pub fn NetflowwindowMatrix::trace(Self) -> Double
+pub fn NetflowwindowMatrix::transpose(Self) -> Self
+
+pub(all) struct NetflowwindowModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowwindowModel::add(Self, Self) -> Self
+pub fn NetflowwindowModel::copy(Self) -> Self
+pub fn NetflowwindowModel::fill(Self, Double) -> Self
+pub fn NetflowwindowModel::get(Self, Int32) -> Double
+pub fn NetflowwindowModel::len(Self) -> Int32
+pub fn NetflowwindowModel::max(Self) -> Double
+pub fn NetflowwindowModel::mean(Self) -> Double
+pub fn NetflowwindowModel::min(Self) -> Double
+pub fn NetflowwindowModel::scale(Self, Double) -> Self
+pub fn NetflowwindowModel::set(Self, Int32, Double) -> Self
+pub fn NetflowwindowModel::sum(Self) -> Double
+pub fn NetflowwindowModel::to_string(Self) -> String
+
+pub(all) struct NetflowwindowNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowwindowNode::add(Self, Self) -> Self
+pub fn NetflowwindowNode::copy(Self) -> Self
+pub fn NetflowwindowNode::fill(Self, Double) -> Self
+pub fn NetflowwindowNode::get(Self, Int32) -> Double
+pub fn NetflowwindowNode::len(Self) -> Int32
+pub fn NetflowwindowNode::max(Self) -> Double
+pub fn NetflowwindowNode::mean(Self) -> Double
+pub fn NetflowwindowNode::min(Self) -> Double
+pub fn NetflowwindowNode::scale(Self, Double) -> Self
+pub fn NetflowwindowNode::set(Self, Int32, Double) -> Self
+pub fn NetflowwindowNode::sum(Self) -> Double
+pub fn NetflowwindowNode::to_string(Self) -> String
+
+pub(all) struct NetflowwindowPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowwindowPath::add(Self, Self) -> Self
+pub fn NetflowwindowPath::copy(Self) -> Self
+pub fn NetflowwindowPath::fill(Self, Double) -> Self
+pub fn NetflowwindowPath::get(Self, Int32) -> Double
+pub fn NetflowwindowPath::len(Self) -> Int32
+pub fn NetflowwindowPath::max(Self) -> Double
+pub fn NetflowwindowPath::mean(Self) -> Double
+pub fn NetflowwindowPath::min(Self) -> Double
+pub fn NetflowwindowPath::scale(Self, Double) -> Self
+pub fn NetflowwindowPath::set(Self, Int32, Double) -> Self
+pub fn NetflowwindowPath::sum(Self) -> Double
+pub fn NetflowwindowPath::to_string(Self) -> String
+
+pub(all) struct NetflowwindowPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetflowwindowPoint::add(Self, Self) -> Self
+pub fn NetflowwindowPoint::cross(Self, Self) -> Self
+pub fn NetflowwindowPoint::dist(Self, Self) -> Double
+pub fn NetflowwindowPoint::dot(Self, Self) -> Double
+pub fn NetflowwindowPoint::label(Self) -> Int32
+pub fn NetflowwindowPoint::lerp(Self, Self, Double) -> Self
+pub fn NetflowwindowPoint::mid(Self, Self) -> Self
+pub fn NetflowwindowPoint::negate(Self) -> Self
+pub fn NetflowwindowPoint::norm(Self) -> Double
+pub fn NetflowwindowPoint::normalize(Self) -> Self
+pub fn NetflowwindowPoint::scale(Self, Double) -> Self
+pub fn NetflowwindowPoint::sub(Self, Self) -> Self
+pub fn NetflowwindowPoint::to_string(Self) -> String
+pub fn NetflowwindowPoint::x(Self) -> Double
+pub fn NetflowwindowPoint::y(Self) -> Double
+pub fn NetflowwindowPoint::z(Self) -> Double
+
+pub(all) struct NetflowwindowRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowwindowRange::add(Self, Self) -> Self
+pub fn NetflowwindowRange::copy(Self) -> Self
+pub fn NetflowwindowRange::fill(Self, Double) -> Self
+pub fn NetflowwindowRange::get(Self, Int32) -> Double
+pub fn NetflowwindowRange::len(Self) -> Int32
+pub fn NetflowwindowRange::max(Self) -> Double
+pub fn NetflowwindowRange::mean(Self) -> Double
+pub fn NetflowwindowRange::min(Self) -> Double
+pub fn NetflowwindowRange::scale(Self, Double) -> Self
+pub fn NetflowwindowRange::set(Self, Int32, Double) -> Self
+pub fn NetflowwindowRange::sum(Self) -> Double
+pub fn NetflowwindowRange::to_string(Self) -> String
+
+pub(all) struct NetflowwindowSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetflowwindowSeries::add(Self, Self) -> Self
+pub fn NetflowwindowSeries::cumsum(Self) -> Self
+pub fn NetflowwindowSeries::len(Self) -> Int32
+pub fn NetflowwindowSeries::max(Self) -> Double
+pub fn NetflowwindowSeries::mean(Self) -> Double
+pub fn NetflowwindowSeries::median(Self) -> Double
+pub fn NetflowwindowSeries::min(Self) -> Double
+pub fn NetflowwindowSeries::normalize(Self) -> Self
+pub fn NetflowwindowSeries::range(Self) -> Double
+pub fn NetflowwindowSeries::scale(Self, Double) -> Self
+pub fn NetflowwindowSeries::std(Self) -> Double
+pub fn NetflowwindowSeries::sub(Self, Self) -> Self
+pub fn NetflowwindowSeries::sum(Self) -> Double
+pub fn NetflowwindowSeries::to_string(Self) -> String
+pub fn NetflowwindowSeries::variance(Self) -> Double
+
+pub(all) struct NetflowwindowSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowwindowSlice::add(Self, Self) -> Self
+pub fn NetflowwindowSlice::copy(Self) -> Self
+pub fn NetflowwindowSlice::fill(Self, Double) -> Self
+pub fn NetflowwindowSlice::get(Self, Int32) -> Double
+pub fn NetflowwindowSlice::len(Self) -> Int32
+pub fn NetflowwindowSlice::max(Self) -> Double
+pub fn NetflowwindowSlice::mean(Self) -> Double
+pub fn NetflowwindowSlice::min(Self) -> Double
+pub fn NetflowwindowSlice::scale(Self, Double) -> Self
+pub fn NetflowwindowSlice::set(Self, Int32, Double) -> Self
+pub fn NetflowwindowSlice::sum(Self) -> Double
+pub fn NetflowwindowSlice::to_string(Self) -> String
+
+pub(all) struct NetflowwindowTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowwindowTable::add(Self, Self) -> Self
+pub fn NetflowwindowTable::copy(Self) -> Self
+pub fn NetflowwindowTable::fill(Self, Double) -> Self
+pub fn NetflowwindowTable::get(Self, Int32) -> Double
+pub fn NetflowwindowTable::len(Self) -> Int32
+pub fn NetflowwindowTable::max(Self) -> Double
+pub fn NetflowwindowTable::mean(Self) -> Double
+pub fn NetflowwindowTable::min(Self) -> Double
+pub fn NetflowwindowTable::scale(Self, Double) -> Self
+pub fn NetflowwindowTable::set(Self, Int32, Double) -> Self
+pub fn NetflowwindowTable::sum(Self) -> Double
+pub fn NetflowwindowTable::to_string(Self) -> String
+
+pub(all) struct NetflowwindowVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetflowwindowVector::add(Self, Self) -> Self
+pub fn NetflowwindowVector::dist(Self, Self) -> Double
+pub fn NetflowwindowVector::dot(Self, Self) -> Double
+pub fn NetflowwindowVector::norm(Self) -> Double
+pub fn NetflowwindowVector::normalize(Self) -> Self
+pub fn NetflowwindowVector::scale(Self, Double) -> Self
+pub fn NetflowwindowVector::sub(Self, Self) -> Self
+pub fn NetflowwindowVector::to_string(Self) -> String
+
+pub(all) struct NetflowwindowView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowwindowView::add(Self, Self) -> Self
+pub fn NetflowwindowView::copy(Self) -> Self
+pub fn NetflowwindowView::fill(Self, Double) -> Self
+pub fn NetflowwindowView::get(Self, Int32) -> Double
+pub fn NetflowwindowView::len(Self) -> Int32
+pub fn NetflowwindowView::max(Self) -> Double
+pub fn NetflowwindowView::mean(Self) -> Double
+pub fn NetflowwindowView::min(Self) -> Double
+pub fn NetflowwindowView::scale(Self, Double) -> Self
+pub fn NetflowwindowView::set(Self, Int32, Double) -> Self
+pub fn NetflowwindowView::sum(Self) -> Double
+pub fn NetflowwindowView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

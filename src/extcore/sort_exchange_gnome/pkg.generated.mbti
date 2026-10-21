@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_exchange_gnome"
+
+// Values
+pub fn sort_exchange_gnome_buffer_make(Int32) -> SortexchangegnomeBuffer
+
+pub fn sort_exchange_gnome_cluster_make(Int32) -> SortexchangegnomeCluster
+
+pub fn sort_exchange_gnome_cursor_make(Int32) -> SortexchangegnomeCursor
+
+pub fn sort_exchange_gnome_edge_make(Int32) -> SortexchangegnomeEdge
+
+pub fn sort_exchange_gnome_frame_make(Int32) -> SortexchangegnomeFrame
+
+pub fn sort_exchange_gnome_graphn_make(Int32) -> SortexchangegnomeGraphN
+
+pub fn sort_exchange_gnome_layer_make(Int32) -> SortexchangegnomeLayer
+
+pub fn sort_exchange_gnome_make_matrix(Int32, Int32, Double) -> SortexchangegnomeMatrix
+
+pub fn sort_exchange_gnome_make_point(Double, Double) -> SortexchangegnomePoint
+
+pub fn sort_exchange_gnome_make_point3(Double, Double, Double) -> SortexchangegnomePoint
+
+pub fn sort_exchange_gnome_make_series(Array[Double], String) -> SortexchangegnomeSeries
+
+pub fn sort_exchange_gnome_make_vector(Array[Double]) -> SortexchangegnomeVector
+
+pub fn sort_exchange_gnome_matrix_identity(Int32) -> SortexchangegnomeMatrix
+
+pub fn sort_exchange_gnome_model_make(Int32) -> SortexchangegnomeModel
+
+pub fn sort_exchange_gnome_node_make(Int32) -> SortexchangegnomeNode
+
+pub fn sort_exchange_gnome_path_make(Int32) -> SortexchangegnomePath
+
+pub fn sort_exchange_gnome_range_make(Int32) -> SortexchangegnomeRange
+
+pub fn sort_exchange_gnome_slice_make(Int32) -> SortexchangegnomeSlice
+
+pub fn sort_exchange_gnome_table_make(Int32) -> SortexchangegnomeTable
+
+pub fn sort_exchange_gnome_vector_zero(Int32) -> SortexchangegnomeVector
+
+pub fn sort_exchange_gnome_view_make(Int32) -> SortexchangegnomeView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortexchangegnomeBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangegnomeBuffer::add(Self, Self) -> Self
+pub fn SortexchangegnomeBuffer::copy(Self) -> Self
+pub fn SortexchangegnomeBuffer::fill(Self, Double) -> Self
+pub fn SortexchangegnomeBuffer::get(Self, Int32) -> Double
+pub fn SortexchangegnomeBuffer::len(Self) -> Int32
+pub fn SortexchangegnomeBuffer::max(Self) -> Double
+pub fn SortexchangegnomeBuffer::mean(Self) -> Double
+pub fn SortexchangegnomeBuffer::min(Self) -> Double
+pub fn SortexchangegnomeBuffer::scale(Self, Double) -> Self
+pub fn SortexchangegnomeBuffer::set(Self, Int32, Double) -> Self
+pub fn SortexchangegnomeBuffer::sum(Self) -> Double
+pub fn SortexchangegnomeBuffer::to_string(Self) -> String
+
+pub(all) struct SortexchangegnomeCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangegnomeCluster::add(Self, Self) -> Self
+pub fn SortexchangegnomeCluster::copy(Self) -> Self
+pub fn SortexchangegnomeCluster::fill(Self, Double) -> Self
+pub fn SortexchangegnomeCluster::get(Self, Int32) -> Double
+pub fn SortexchangegnomeCluster::len(Self) -> Int32
+pub fn SortexchangegnomeCluster::max(Self) -> Double
+pub fn SortexchangegnomeCluster::mean(Self) -> Double
+pub fn SortexchangegnomeCluster::min(Self) -> Double
+pub fn SortexchangegnomeCluster::scale(Self, Double) -> Self
+pub fn SortexchangegnomeCluster::set(Self, Int32, Double) -> Self
+pub fn SortexchangegnomeCluster::sum(Self) -> Double
+pub fn SortexchangegnomeCluster::to_string(Self) -> String
+
+pub(all) struct SortexchangegnomeCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangegnomeCursor::add(Self, Self) -> Self
+pub fn SortexchangegnomeCursor::copy(Self) -> Self
+pub fn SortexchangegnomeCursor::fill(Self, Double) -> Self
+pub fn SortexchangegnomeCursor::get(Self, Int32) -> Double
+pub fn SortexchangegnomeCursor::len(Self) -> Int32
+pub fn SortexchangegnomeCursor::max(Self) -> Double
+pub fn SortexchangegnomeCursor::mean(Self) -> Double
+pub fn SortexchangegnomeCursor::min(Self) -> Double
+pub fn SortexchangegnomeCursor::scale(Self, Double) -> Self
+pub fn SortexchangegnomeCursor::set(Self, Int32, Double) -> Self
+pub fn SortexchangegnomeCursor::sum(Self) -> Double
+pub fn SortexchangegnomeCursor::to_string(Self) -> String
+
+pub(all) struct SortexchangegnomeEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangegnomeEdge::add(Self, Self) -> Self
+pub fn SortexchangegnomeEdge::copy(Self) -> Self
+pub fn SortexchangegnomeEdge::fill(Self, Double) -> Self
+pub fn SortexchangegnomeEdge::get(Self, Int32) -> Double
+pub fn SortexchangegnomeEdge::len(Self) -> Int32
+pub fn SortexchangegnomeEdge::max(Self) -> Double
+pub fn SortexchangegnomeEdge::mean(Self) -> Double
+pub fn SortexchangegnomeEdge::min(Self) -> Double
+pub fn SortexchangegnomeEdge::scale(Self, Double) -> Self
+pub fn SortexchangegnomeEdge::set(Self, Int32, Double) -> Self
+pub fn SortexchangegnomeEdge::sum(Self) -> Double
+pub fn SortexchangegnomeEdge::to_string(Self) -> String
+
+pub(all) struct SortexchangegnomeFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangegnomeFrame::add(Self, Self) -> Self
+pub fn SortexchangegnomeFrame::copy(Self) -> Self
+pub fn SortexchangegnomeFrame::fill(Self, Double) -> Self
+pub fn SortexchangegnomeFrame::get(Self, Int32) -> Double
+pub fn SortexchangegnomeFrame::len(Self) -> Int32
+pub fn SortexchangegnomeFrame::max(Self) -> Double
+pub fn SortexchangegnomeFrame::mean(Self) -> Double
+pub fn SortexchangegnomeFrame::min(Self) -> Double
+pub fn SortexchangegnomeFrame::scale(Self, Double) -> Self
+pub fn SortexchangegnomeFrame::set(Self, Int32, Double) -> Self
+pub fn SortexchangegnomeFrame::sum(Self) -> Double
+pub fn SortexchangegnomeFrame::to_string(Self) -> String
+
+pub(all) struct SortexchangegnomeGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangegnomeGraphN::add(Self, Self) -> Self
+pub fn SortexchangegnomeGraphN::copy(Self) -> Self
+pub fn SortexchangegnomeGraphN::fill(Self, Double) -> Self
+pub fn SortexchangegnomeGraphN::get(Self, Int32) -> Double
+pub fn SortexchangegnomeGraphN::len(Self) -> Int32
+pub fn SortexchangegnomeGraphN::max(Self) -> Double
+pub fn SortexchangegnomeGraphN::mean(Self) -> Double
+pub fn SortexchangegnomeGraphN::min(Self) -> Double
+pub fn SortexchangegnomeGraphN::scale(Self, Double) -> Self
+pub fn SortexchangegnomeGraphN::set(Self, Int32, Double) -> Self
+pub fn SortexchangegnomeGraphN::sum(Self) -> Double
+pub fn SortexchangegnomeGraphN::to_string(Self) -> String
+
+pub(all) struct SortexchangegnomeLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangegnomeLayer::add(Self, Self) -> Self
+pub fn SortexchangegnomeLayer::copy(Self) -> Self
+pub fn SortexchangegnomeLayer::fill(Self, Double) -> Self
+pub fn SortexchangegnomeLayer::get(Self, Int32) -> Double
+pub fn SortexchangegnomeLayer::len(Self) -> Int32
+pub fn SortexchangegnomeLayer::max(Self) -> Double
+pub fn SortexchangegnomeLayer::mean(Self) -> Double
+pub fn SortexchangegnomeLayer::min(Self) -> Double
+pub fn SortexchangegnomeLayer::scale(Self, Double) -> Self
+pub fn SortexchangegnomeLayer::set(Self, Int32, Double) -> Self
+pub fn SortexchangegnomeLayer::sum(Self) -> Double
+pub fn SortexchangegnomeLayer::to_string(Self) -> String
+
+pub(all) struct SortexchangegnomeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortexchangegnomeMatrix::add(Self, Self) -> Self
+pub fn SortexchangegnomeMatrix::det(Self) -> Double
+pub fn SortexchangegnomeMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortexchangegnomeMatrix::multiply(Self, Self) -> Self
+pub fn SortexchangegnomeMatrix::norm(Self) -> Double
+pub fn SortexchangegnomeMatrix::scale(Self, Double) -> Self
+pub fn SortexchangegnomeMatrix::to_string(Self) -> String
+pub fn SortexchangegnomeMatrix::trace(Self) -> Double
+pub fn SortexchangegnomeMatrix::transpose(Self) -> Self
+
+pub(all) struct SortexchangegnomeModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangegnomeModel::add(Self, Self) -> Self
+pub fn SortexchangegnomeModel::copy(Self) -> Self
+pub fn SortexchangegnomeModel::fill(Self, Double) -> Self
+pub fn SortexchangegnomeModel::get(Self, Int32) -> Double
+pub fn SortexchangegnomeModel::len(Self) -> Int32
+pub fn SortexchangegnomeModel::max(Self) -> Double
+pub fn SortexchangegnomeModel::mean(Self) -> Double
+pub fn SortexchangegnomeModel::min(Self) -> Double
+pub fn SortexchangegnomeModel::scale(Self, Double) -> Self
+pub fn SortexchangegnomeModel::set(Self, Int32, Double) -> Self
+pub fn SortexchangegnomeModel::sum(Self) -> Double
+pub fn SortexchangegnomeModel::to_string(Self) -> String
+
+pub(all) struct SortexchangegnomeNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangegnomeNode::add(Self, Self) -> Self
+pub fn SortexchangegnomeNode::copy(Self) -> Self
+pub fn SortexchangegnomeNode::fill(Self, Double) -> Self
+pub fn SortexchangegnomeNode::get(Self, Int32) -> Double
+pub fn SortexchangegnomeNode::len(Self) -> Int32
+pub fn SortexchangegnomeNode::max(Self) -> Double
+pub fn SortexchangegnomeNode::mean(Self) -> Double
+pub fn SortexchangegnomeNode::min(Self) -> Double
+pub fn SortexchangegnomeNode::scale(Self, Double) -> Self
+pub fn SortexchangegnomeNode::set(Self, Int32, Double) -> Self
+pub fn SortexchangegnomeNode::sum(Self) -> Double
+pub fn SortexchangegnomeNode::to_string(Self) -> String
+
+pub(all) struct SortexchangegnomePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangegnomePath::add(Self, Self) -> Self
+pub fn SortexchangegnomePath::copy(Self) -> Self
+pub fn SortexchangegnomePath::fill(Self, Double) -> Self
+pub fn SortexchangegnomePath::get(Self, Int32) -> Double
+pub fn SortexchangegnomePath::len(Self) -> Int32
+pub fn SortexchangegnomePath::max(Self) -> Double
+pub fn SortexchangegnomePath::mean(Self) -> Double
+pub fn SortexchangegnomePath::min(Self) -> Double
+pub fn SortexchangegnomePath::scale(Self, Double) -> Self
+pub fn SortexchangegnomePath::set(Self, Int32, Double) -> Self
+pub fn SortexchangegnomePath::sum(Self) -> Double
+pub fn SortexchangegnomePath::to_string(Self) -> String
+
+pub(all) struct SortexchangegnomePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortexchangegnomePoint::add(Self, Self) -> Self
+pub fn SortexchangegnomePoint::cross(Self, Self) -> Self
+pub fn SortexchangegnomePoint::dist(Self, Self) -> Double
+pub fn SortexchangegnomePoint::dot(Self, Self) -> Double
+pub fn SortexchangegnomePoint::label(Self) -> Int32
+pub fn SortexchangegnomePoint::lerp(Self, Self, Double) -> Self
+pub fn SortexchangegnomePoint::mid(Self, Self) -> Self
+pub fn SortexchangegnomePoint::negate(Self) -> Self
+pub fn SortexchangegnomePoint::norm(Self) -> Double
+pub fn SortexchangegnomePoint::normalize(Self) -> Self
+pub fn SortexchangegnomePoint::scale(Self, Double) -> Self
+pub fn SortexchangegnomePoint::sub(Self, Self) -> Self
+pub fn SortexchangegnomePoint::to_string(Self) -> String
+pub fn SortexchangegnomePoint::x(Self) -> Double
+pub fn SortexchangegnomePoint::y(Self) -> Double
+pub fn SortexchangegnomePoint::z(Self) -> Double
+
+pub(all) struct SortexchangegnomeRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangegnomeRange::add(Self, Self) -> Self
+pub fn SortexchangegnomeRange::copy(Self) -> Self
+pub fn SortexchangegnomeRange::fill(Self, Double) -> Self
+pub fn SortexchangegnomeRange::get(Self, Int32) -> Double
+pub fn SortexchangegnomeRange::len(Self) -> Int32
+pub fn SortexchangegnomeRange::max(Self) -> Double
+pub fn SortexchangegnomeRange::mean(Self) -> Double
+pub fn SortexchangegnomeRange::min(Self) -> Double
+pub fn SortexchangegnomeRange::scale(Self, Double) -> Self
+pub fn SortexchangegnomeRange::set(Self, Int32, Double) -> Self
+pub fn SortexchangegnomeRange::sum(Self) -> Double
+pub fn SortexchangegnomeRange::to_string(Self) -> String
+
+pub(all) struct SortexchangegnomeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortexchangegnomeSeries::add(Self, Self) -> Self
+pub fn SortexchangegnomeSeries::cumsum(Self) -> Self
+pub fn SortexchangegnomeSeries::len(Self) -> Int32
+pub fn SortexchangegnomeSeries::max(Self) -> Double
+pub fn SortexchangegnomeSeries::mean(Self) -> Double
+pub fn SortexchangegnomeSeries::median(Self) -> Double
+pub fn SortexchangegnomeSeries::min(Self) -> Double
+pub fn SortexchangegnomeSeries::normalize(Self) -> Self
+pub fn SortexchangegnomeSeries::range(Self) -> Double
+pub fn SortexchangegnomeSeries::scale(Self, Double) -> Self
+pub fn SortexchangegnomeSeries::std(Self) -> Double
+pub fn SortexchangegnomeSeries::sub(Self, Self) -> Self
+pub fn SortexchangegnomeSeries::sum(Self) -> Double
+pub fn SortexchangegnomeSeries::to_string(Self) -> String
+pub fn SortexchangegnomeSeries::variance(Self) -> Double
+
+pub(all) struct SortexchangegnomeSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangegnomeSlice::add(Self, Self) -> Self
+pub fn SortexchangegnomeSlice::copy(Self) -> Self
+pub fn SortexchangegnomeSlice::fill(Self, Double) -> Self
+pub fn SortexchangegnomeSlice::get(Self, Int32) -> Double
+pub fn SortexchangegnomeSlice::len(Self) -> Int32
+pub fn SortexchangegnomeSlice::max(Self) -> Double
+pub fn SortexchangegnomeSlice::mean(Self) -> Double
+pub fn SortexchangegnomeSlice::min(Self) -> Double
+pub fn SortexchangegnomeSlice::scale(Self, Double) -> Self
+pub fn SortexchangegnomeSlice::set(Self, Int32, Double) -> Self
+pub fn SortexchangegnomeSlice::sum(Self) -> Double
+pub fn SortexchangegnomeSlice::to_string(Self) -> String
+
+pub(all) struct SortexchangegnomeTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangegnomeTable::add(Self, Self) -> Self
+pub fn SortexchangegnomeTable::copy(Self) -> Self
+pub fn SortexchangegnomeTable::fill(Self, Double) -> Self
+pub fn SortexchangegnomeTable::get(Self, Int32) -> Double
+pub fn SortexchangegnomeTable::len(Self) -> Int32
+pub fn SortexchangegnomeTable::max(Self) -> Double
+pub fn SortexchangegnomeTable::mean(Self) -> Double
+pub fn SortexchangegnomeTable::min(Self) -> Double
+pub fn SortexchangegnomeTable::scale(Self, Double) -> Self
+pub fn SortexchangegnomeTable::set(Self, Int32, Double) -> Self
+pub fn SortexchangegnomeTable::sum(Self) -> Double
+pub fn SortexchangegnomeTable::to_string(Self) -> String
+
+pub(all) struct SortexchangegnomeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortexchangegnomeVector::add(Self, Self) -> Self
+pub fn SortexchangegnomeVector::dist(Self, Self) -> Double
+pub fn SortexchangegnomeVector::dot(Self, Self) -> Double
+pub fn SortexchangegnomeVector::norm(Self) -> Double
+pub fn SortexchangegnomeVector::normalize(Self) -> Self
+pub fn SortexchangegnomeVector::scale(Self, Double) -> Self
+pub fn SortexchangegnomeVector::sub(Self, Self) -> Self
+pub fn SortexchangegnomeVector::to_string(Self) -> String
+
+pub(all) struct SortexchangegnomeView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangegnomeView::add(Self, Self) -> Self
+pub fn SortexchangegnomeView::copy(Self) -> Self
+pub fn SortexchangegnomeView::fill(Self, Double) -> Self
+pub fn SortexchangegnomeView::get(Self, Int32) -> Double
+pub fn SortexchangegnomeView::len(Self) -> Int32
+pub fn SortexchangegnomeView::max(Self) -> Double
+pub fn SortexchangegnomeView::mean(Self) -> Double
+pub fn SortexchangegnomeView::min(Self) -> Double
+pub fn SortexchangegnomeView::scale(Self, Double) -> Self
+pub fn SortexchangegnomeView::set(Self, Int32, Double) -> Self
+pub fn SortexchangegnomeView::sum(Self) -> Double
+pub fn SortexchangegnomeView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

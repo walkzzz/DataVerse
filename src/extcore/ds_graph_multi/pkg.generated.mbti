@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_graph_multi"
+
+// Values
+pub fn ds_graph_multi_buffer_make(Int32) -> DsgraphmultiBuffer
+
+pub fn ds_graph_multi_cluster_make(Int32) -> DsgraphmultiCluster
+
+pub fn ds_graph_multi_cursor_make(Int32) -> DsgraphmultiCursor
+
+pub fn ds_graph_multi_edge_make(Int32) -> DsgraphmultiEdge
+
+pub fn ds_graph_multi_frame_make(Int32) -> DsgraphmultiFrame
+
+pub fn ds_graph_multi_graphn_make(Int32) -> DsgraphmultiGraphN
+
+pub fn ds_graph_multi_layer_make(Int32) -> DsgraphmultiLayer
+
+pub fn ds_graph_multi_make_matrix(Int32, Int32, Double) -> DsgraphmultiMatrix
+
+pub fn ds_graph_multi_make_point(Double, Double) -> DsgraphmultiPoint
+
+pub fn ds_graph_multi_make_point3(Double, Double, Double) -> DsgraphmultiPoint
+
+pub fn ds_graph_multi_make_series(Array[Double], String) -> DsgraphmultiSeries
+
+pub fn ds_graph_multi_make_vector(Array[Double]) -> DsgraphmultiVector
+
+pub fn ds_graph_multi_matrix_identity(Int32) -> DsgraphmultiMatrix
+
+pub fn ds_graph_multi_model_make(Int32) -> DsgraphmultiModel
+
+pub fn ds_graph_multi_node_make(Int32) -> DsgraphmultiNode
+
+pub fn ds_graph_multi_path_make(Int32) -> DsgraphmultiPath
+
+pub fn ds_graph_multi_range_make(Int32) -> DsgraphmultiRange
+
+pub fn ds_graph_multi_slice_make(Int32) -> DsgraphmultiSlice
+
+pub fn ds_graph_multi_table_make(Int32) -> DsgraphmultiTable
+
+pub fn ds_graph_multi_vector_zero(Int32) -> DsgraphmultiVector
+
+pub fn ds_graph_multi_view_make(Int32) -> DsgraphmultiView
+
+// Errors
+
+// Types and methods
+pub(all) struct DsgraphmultiBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphmultiBuffer::add(Self, Self) -> Self
+pub fn DsgraphmultiBuffer::copy(Self) -> Self
+pub fn DsgraphmultiBuffer::fill(Self, Double) -> Self
+pub fn DsgraphmultiBuffer::get(Self, Int32) -> Double
+pub fn DsgraphmultiBuffer::len(Self) -> Int32
+pub fn DsgraphmultiBuffer::max(Self) -> Double
+pub fn DsgraphmultiBuffer::mean(Self) -> Double
+pub fn DsgraphmultiBuffer::min(Self) -> Double
+pub fn DsgraphmultiBuffer::scale(Self, Double) -> Self
+pub fn DsgraphmultiBuffer::set(Self, Int32, Double) -> Self
+pub fn DsgraphmultiBuffer::sum(Self) -> Double
+pub fn DsgraphmultiBuffer::to_string(Self) -> String
+
+pub(all) struct DsgraphmultiCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphmultiCluster::add(Self, Self) -> Self
+pub fn DsgraphmultiCluster::copy(Self) -> Self
+pub fn DsgraphmultiCluster::fill(Self, Double) -> Self
+pub fn DsgraphmultiCluster::get(Self, Int32) -> Double
+pub fn DsgraphmultiCluster::len(Self) -> Int32
+pub fn DsgraphmultiCluster::max(Self) -> Double
+pub fn DsgraphmultiCluster::mean(Self) -> Double
+pub fn DsgraphmultiCluster::min(Self) -> Double
+pub fn DsgraphmultiCluster::scale(Self, Double) -> Self
+pub fn DsgraphmultiCluster::set(Self, Int32, Double) -> Self
+pub fn DsgraphmultiCluster::sum(Self) -> Double
+pub fn DsgraphmultiCluster::to_string(Self) -> String
+
+pub(all) struct DsgraphmultiCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphmultiCursor::add(Self, Self) -> Self
+pub fn DsgraphmultiCursor::copy(Self) -> Self
+pub fn DsgraphmultiCursor::fill(Self, Double) -> Self
+pub fn DsgraphmultiCursor::get(Self, Int32) -> Double
+pub fn DsgraphmultiCursor::len(Self) -> Int32
+pub fn DsgraphmultiCursor::max(Self) -> Double
+pub fn DsgraphmultiCursor::mean(Self) -> Double
+pub fn DsgraphmultiCursor::min(Self) -> Double
+pub fn DsgraphmultiCursor::scale(Self, Double) -> Self
+pub fn DsgraphmultiCursor::set(Self, Int32, Double) -> Self
+pub fn DsgraphmultiCursor::sum(Self) -> Double
+pub fn DsgraphmultiCursor::to_string(Self) -> String
+
+pub(all) struct DsgraphmultiEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphmultiEdge::add(Self, Self) -> Self
+pub fn DsgraphmultiEdge::copy(Self) -> Self
+pub fn DsgraphmultiEdge::fill(Self, Double) -> Self
+pub fn DsgraphmultiEdge::get(Self, Int32) -> Double
+pub fn DsgraphmultiEdge::len(Self) -> Int32
+pub fn DsgraphmultiEdge::max(Self) -> Double
+pub fn DsgraphmultiEdge::mean(Self) -> Double
+pub fn DsgraphmultiEdge::min(Self) -> Double
+pub fn DsgraphmultiEdge::scale(Self, Double) -> Self
+pub fn DsgraphmultiEdge::set(Self, Int32, Double) -> Self
+pub fn DsgraphmultiEdge::sum(Self) -> Double
+pub fn DsgraphmultiEdge::to_string(Self) -> String
+
+pub(all) struct DsgraphmultiFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphmultiFrame::add(Self, Self) -> Self
+pub fn DsgraphmultiFrame::copy(Self) -> Self
+pub fn DsgraphmultiFrame::fill(Self, Double) -> Self
+pub fn DsgraphmultiFrame::get(Self, Int32) -> Double
+pub fn DsgraphmultiFrame::len(Self) -> Int32
+pub fn DsgraphmultiFrame::max(Self) -> Double
+pub fn DsgraphmultiFrame::mean(Self) -> Double
+pub fn DsgraphmultiFrame::min(Self) -> Double
+pub fn DsgraphmultiFrame::scale(Self, Double) -> Self
+pub fn DsgraphmultiFrame::set(Self, Int32, Double) -> Self
+pub fn DsgraphmultiFrame::sum(Self) -> Double
+pub fn DsgraphmultiFrame::to_string(Self) -> String
+
+pub(all) struct DsgraphmultiGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphmultiGraphN::add(Self, Self) -> Self
+pub fn DsgraphmultiGraphN::copy(Self) -> Self
+pub fn DsgraphmultiGraphN::fill(Self, Double) -> Self
+pub fn DsgraphmultiGraphN::get(Self, Int32) -> Double
+pub fn DsgraphmultiGraphN::len(Self) -> Int32
+pub fn DsgraphmultiGraphN::max(Self) -> Double
+pub fn DsgraphmultiGraphN::mean(Self) -> Double
+pub fn DsgraphmultiGraphN::min(Self) -> Double
+pub fn DsgraphmultiGraphN::scale(Self, Double) -> Self
+pub fn DsgraphmultiGraphN::set(Self, Int32, Double) -> Self
+pub fn DsgraphmultiGraphN::sum(Self) -> Double
+pub fn DsgraphmultiGraphN::to_string(Self) -> String
+
+pub(all) struct DsgraphmultiLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphmultiLayer::add(Self, Self) -> Self
+pub fn DsgraphmultiLayer::copy(Self) -> Self
+pub fn DsgraphmultiLayer::fill(Self, Double) -> Self
+pub fn DsgraphmultiLayer::get(Self, Int32) -> Double
+pub fn DsgraphmultiLayer::len(Self) -> Int32
+pub fn DsgraphmultiLayer::max(Self) -> Double
+pub fn DsgraphmultiLayer::mean(Self) -> Double
+pub fn DsgraphmultiLayer::min(Self) -> Double
+pub fn DsgraphmultiLayer::scale(Self, Double) -> Self
+pub fn DsgraphmultiLayer::set(Self, Int32, Double) -> Self
+pub fn DsgraphmultiLayer::sum(Self) -> Double
+pub fn DsgraphmultiLayer::to_string(Self) -> String
+
+pub(all) struct DsgraphmultiMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DsgraphmultiMatrix::add(Self, Self) -> Self
+pub fn DsgraphmultiMatrix::det(Self) -> Double
+pub fn DsgraphmultiMatrix::get(Self, Int32, Int32) -> Double
+pub fn DsgraphmultiMatrix::multiply(Self, Self) -> Self
+pub fn DsgraphmultiMatrix::norm(Self) -> Double
+pub fn DsgraphmultiMatrix::scale(Self, Double) -> Self
+pub fn DsgraphmultiMatrix::to_string(Self) -> String
+pub fn DsgraphmultiMatrix::trace(Self) -> Double
+pub fn DsgraphmultiMatrix::transpose(Self) -> Self
+
+pub(all) struct DsgraphmultiModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphmultiModel::add(Self, Self) -> Self
+pub fn DsgraphmultiModel::copy(Self) -> Self
+pub fn DsgraphmultiModel::fill(Self, Double) -> Self
+pub fn DsgraphmultiModel::get(Self, Int32) -> Double
+pub fn DsgraphmultiModel::len(Self) -> Int32
+pub fn DsgraphmultiModel::max(Self) -> Double
+pub fn DsgraphmultiModel::mean(Self) -> Double
+pub fn DsgraphmultiModel::min(Self) -> Double
+pub fn DsgraphmultiModel::scale(Self, Double) -> Self
+pub fn DsgraphmultiModel::set(Self, Int32, Double) -> Self
+pub fn DsgraphmultiModel::sum(Self) -> Double
+pub fn DsgraphmultiModel::to_string(Self) -> String
+
+pub(all) struct DsgraphmultiNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphmultiNode::add(Self, Self) -> Self
+pub fn DsgraphmultiNode::copy(Self) -> Self
+pub fn DsgraphmultiNode::fill(Self, Double) -> Self
+pub fn DsgraphmultiNode::get(Self, Int32) -> Double
+pub fn DsgraphmultiNode::len(Self) -> Int32
+pub fn DsgraphmultiNode::max(Self) -> Double
+pub fn DsgraphmultiNode::mean(Self) -> Double
+pub fn DsgraphmultiNode::min(Self) -> Double
+pub fn DsgraphmultiNode::scale(Self, Double) -> Self
+pub fn DsgraphmultiNode::set(Self, Int32, Double) -> Self
+pub fn DsgraphmultiNode::sum(Self) -> Double
+pub fn DsgraphmultiNode::to_string(Self) -> String
+
+pub(all) struct DsgraphmultiPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphmultiPath::add(Self, Self) -> Self
+pub fn DsgraphmultiPath::copy(Self) -> Self
+pub fn DsgraphmultiPath::fill(Self, Double) -> Self
+pub fn DsgraphmultiPath::get(Self, Int32) -> Double
+pub fn DsgraphmultiPath::len(Self) -> Int32
+pub fn DsgraphmultiPath::max(Self) -> Double
+pub fn DsgraphmultiPath::mean(Self) -> Double
+pub fn DsgraphmultiPath::min(Self) -> Double
+pub fn DsgraphmultiPath::scale(Self, Double) -> Self
+pub fn DsgraphmultiPath::set(Self, Int32, Double) -> Self
+pub fn DsgraphmultiPath::sum(Self) -> Double
+pub fn DsgraphmultiPath::to_string(Self) -> String
+
+pub(all) struct DsgraphmultiPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DsgraphmultiPoint::add(Self, Self) -> Self
+pub fn DsgraphmultiPoint::cross(Self, Self) -> Self
+pub fn DsgraphmultiPoint::dist(Self, Self) -> Double
+pub fn DsgraphmultiPoint::dot(Self, Self) -> Double
+pub fn DsgraphmultiPoint::label(Self) -> Int32
+pub fn DsgraphmultiPoint::lerp(Self, Self, Double) -> Self
+pub fn DsgraphmultiPoint::mid(Self, Self) -> Self
+pub fn DsgraphmultiPoint::negate(Self) -> Self
+pub fn DsgraphmultiPoint::norm(Self) -> Double
+pub fn DsgraphmultiPoint::normalize(Self) -> Self
+pub fn DsgraphmultiPoint::scale(Self, Double) -> Self
+pub fn DsgraphmultiPoint::sub(Self, Self) -> Self
+pub fn DsgraphmultiPoint::to_string(Self) -> String
+pub fn DsgraphmultiPoint::x(Self) -> Double
+pub fn DsgraphmultiPoint::y(Self) -> Double
+pub fn DsgraphmultiPoint::z(Self) -> Double
+
+pub(all) struct DsgraphmultiRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphmultiRange::add(Self, Self) -> Self
+pub fn DsgraphmultiRange::copy(Self) -> Self
+pub fn DsgraphmultiRange::fill(Self, Double) -> Self
+pub fn DsgraphmultiRange::get(Self, Int32) -> Double
+pub fn DsgraphmultiRange::len(Self) -> Int32
+pub fn DsgraphmultiRange::max(Self) -> Double
+pub fn DsgraphmultiRange::mean(Self) -> Double
+pub fn DsgraphmultiRange::min(Self) -> Double
+pub fn DsgraphmultiRange::scale(Self, Double) -> Self
+pub fn DsgraphmultiRange::set(Self, Int32, Double) -> Self
+pub fn DsgraphmultiRange::sum(Self) -> Double
+pub fn DsgraphmultiRange::to_string(Self) -> String
+
+pub(all) struct DsgraphmultiSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DsgraphmultiSeries::add(Self, Self) -> Self
+pub fn DsgraphmultiSeries::cumsum(Self) -> Self
+pub fn DsgraphmultiSeries::len(Self) -> Int32
+pub fn DsgraphmultiSeries::max(Self) -> Double
+pub fn DsgraphmultiSeries::mean(Self) -> Double
+pub fn DsgraphmultiSeries::median(Self) -> Double
+pub fn DsgraphmultiSeries::min(Self) -> Double
+pub fn DsgraphmultiSeries::normalize(Self) -> Self
+pub fn DsgraphmultiSeries::range(Self) -> Double
+pub fn DsgraphmultiSeries::scale(Self, Double) -> Self
+pub fn DsgraphmultiSeries::std(Self) -> Double
+pub fn DsgraphmultiSeries::sub(Self, Self) -> Self
+pub fn DsgraphmultiSeries::sum(Self) -> Double
+pub fn DsgraphmultiSeries::to_string(Self) -> String
+pub fn DsgraphmultiSeries::variance(Self) -> Double
+
+pub(all) struct DsgraphmultiSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphmultiSlice::add(Self, Self) -> Self
+pub fn DsgraphmultiSlice::copy(Self) -> Self
+pub fn DsgraphmultiSlice::fill(Self, Double) -> Self
+pub fn DsgraphmultiSlice::get(Self, Int32) -> Double
+pub fn DsgraphmultiSlice::len(Self) -> Int32
+pub fn DsgraphmultiSlice::max(Self) -> Double
+pub fn DsgraphmultiSlice::mean(Self) -> Double
+pub fn DsgraphmultiSlice::min(Self) -> Double
+pub fn DsgraphmultiSlice::scale(Self, Double) -> Self
+pub fn DsgraphmultiSlice::set(Self, Int32, Double) -> Self
+pub fn DsgraphmultiSlice::sum(Self) -> Double
+pub fn DsgraphmultiSlice::to_string(Self) -> String
+
+pub(all) struct DsgraphmultiTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphmultiTable::add(Self, Self) -> Self
+pub fn DsgraphmultiTable::copy(Self) -> Self
+pub fn DsgraphmultiTable::fill(Self, Double) -> Self
+pub fn DsgraphmultiTable::get(Self, Int32) -> Double
+pub fn DsgraphmultiTable::len(Self) -> Int32
+pub fn DsgraphmultiTable::max(Self) -> Double
+pub fn DsgraphmultiTable::mean(Self) -> Double
+pub fn DsgraphmultiTable::min(Self) -> Double
+pub fn DsgraphmultiTable::scale(Self, Double) -> Self
+pub fn DsgraphmultiTable::set(Self, Int32, Double) -> Self
+pub fn DsgraphmultiTable::sum(Self) -> Double
+pub fn DsgraphmultiTable::to_string(Self) -> String
+
+pub(all) struct DsgraphmultiVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DsgraphmultiVector::add(Self, Self) -> Self
+pub fn DsgraphmultiVector::dist(Self, Self) -> Double
+pub fn DsgraphmultiVector::dot(Self, Self) -> Double
+pub fn DsgraphmultiVector::norm(Self) -> Double
+pub fn DsgraphmultiVector::normalize(Self) -> Self
+pub fn DsgraphmultiVector::scale(Self, Double) -> Self
+pub fn DsgraphmultiVector::sub(Self, Self) -> Self
+pub fn DsgraphmultiVector::to_string(Self) -> String
+
+pub(all) struct DsgraphmultiView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphmultiView::add(Self, Self) -> Self
+pub fn DsgraphmultiView::copy(Self) -> Self
+pub fn DsgraphmultiView::fill(Self, Double) -> Self
+pub fn DsgraphmultiView::get(Self, Int32) -> Double
+pub fn DsgraphmultiView::len(Self) -> Int32
+pub fn DsgraphmultiView::max(Self) -> Double
+pub fn DsgraphmultiView::mean(Self) -> Double
+pub fn DsgraphmultiView::min(Self) -> Double
+pub fn DsgraphmultiView::scale(Self, Double) -> Self
+pub fn DsgraphmultiView::set(Self, Int32, Double) -> Self
+pub fn DsgraphmultiView::sum(Self) -> Double
+pub fn DsgraphmultiView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

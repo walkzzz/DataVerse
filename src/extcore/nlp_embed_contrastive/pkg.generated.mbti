@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_embed_contrastive"
+
+// Values
+pub fn nlp_embed_contrastive_buffer_make(Int32) -> NlpembedcontrastiveBuffer
+
+pub fn nlp_embed_contrastive_cluster_make(Int32) -> NlpembedcontrastiveCluster
+
+pub fn nlp_embed_contrastive_cursor_make(Int32) -> NlpembedcontrastiveCursor
+
+pub fn nlp_embed_contrastive_edge_make(Int32) -> NlpembedcontrastiveEdge
+
+pub fn nlp_embed_contrastive_frame_make(Int32) -> NlpembedcontrastiveFrame
+
+pub fn nlp_embed_contrastive_graphn_make(Int32) -> NlpembedcontrastiveGraphN
+
+pub fn nlp_embed_contrastive_layer_make(Int32) -> NlpembedcontrastiveLayer
+
+pub fn nlp_embed_contrastive_make_matrix(Int32, Int32, Double) -> NlpembedcontrastiveMatrix
+
+pub fn nlp_embed_contrastive_make_point(Double, Double) -> NlpembedcontrastivePoint
+
+pub fn nlp_embed_contrastive_make_point3(Double, Double, Double) -> NlpembedcontrastivePoint
+
+pub fn nlp_embed_contrastive_make_series(Array[Double], String) -> NlpembedcontrastiveSeries
+
+pub fn nlp_embed_contrastive_make_vector(Array[Double]) -> NlpembedcontrastiveVector
+
+pub fn nlp_embed_contrastive_matrix_identity(Int32) -> NlpembedcontrastiveMatrix
+
+pub fn nlp_embed_contrastive_model_make(Int32) -> NlpembedcontrastiveModel
+
+pub fn nlp_embed_contrastive_node_make(Int32) -> NlpembedcontrastiveNode
+
+pub fn nlp_embed_contrastive_path_make(Int32) -> NlpembedcontrastivePath
+
+pub fn nlp_embed_contrastive_range_make(Int32) -> NlpembedcontrastiveRange
+
+pub fn nlp_embed_contrastive_slice_make(Int32) -> NlpembedcontrastiveSlice
+
+pub fn nlp_embed_contrastive_table_make(Int32) -> NlpembedcontrastiveTable
+
+pub fn nlp_embed_contrastive_vector_zero(Int32) -> NlpembedcontrastiveVector
+
+pub fn nlp_embed_contrastive_view_make(Int32) -> NlpembedcontrastiveView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlpembedcontrastiveBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedcontrastiveBuffer::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveBuffer::copy(Self) -> Self
+pub fn NlpembedcontrastiveBuffer::fill(Self, Double) -> Self
+pub fn NlpembedcontrastiveBuffer::get(Self, Int32) -> Double
+pub fn NlpembedcontrastiveBuffer::len(Self) -> Int32
+pub fn NlpembedcontrastiveBuffer::max(Self) -> Double
+pub fn NlpembedcontrastiveBuffer::mean(Self) -> Double
+pub fn NlpembedcontrastiveBuffer::min(Self) -> Double
+pub fn NlpembedcontrastiveBuffer::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveBuffer::set(Self, Int32, Double) -> Self
+pub fn NlpembedcontrastiveBuffer::sum(Self) -> Double
+pub fn NlpembedcontrastiveBuffer::to_string(Self) -> String
+
+pub(all) struct NlpembedcontrastiveCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedcontrastiveCluster::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveCluster::copy(Self) -> Self
+pub fn NlpembedcontrastiveCluster::fill(Self, Double) -> Self
+pub fn NlpembedcontrastiveCluster::get(Self, Int32) -> Double
+pub fn NlpembedcontrastiveCluster::len(Self) -> Int32
+pub fn NlpembedcontrastiveCluster::max(Self) -> Double
+pub fn NlpembedcontrastiveCluster::mean(Self) -> Double
+pub fn NlpembedcontrastiveCluster::min(Self) -> Double
+pub fn NlpembedcontrastiveCluster::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveCluster::set(Self, Int32, Double) -> Self
+pub fn NlpembedcontrastiveCluster::sum(Self) -> Double
+pub fn NlpembedcontrastiveCluster::to_string(Self) -> String
+
+pub(all) struct NlpembedcontrastiveCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedcontrastiveCursor::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveCursor::copy(Self) -> Self
+pub fn NlpembedcontrastiveCursor::fill(Self, Double) -> Self
+pub fn NlpembedcontrastiveCursor::get(Self, Int32) -> Double
+pub fn NlpembedcontrastiveCursor::len(Self) -> Int32
+pub fn NlpembedcontrastiveCursor::max(Self) -> Double
+pub fn NlpembedcontrastiveCursor::mean(Self) -> Double
+pub fn NlpembedcontrastiveCursor::min(Self) -> Double
+pub fn NlpembedcontrastiveCursor::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveCursor::set(Self, Int32, Double) -> Self
+pub fn NlpembedcontrastiveCursor::sum(Self) -> Double
+pub fn NlpembedcontrastiveCursor::to_string(Self) -> String
+
+pub(all) struct NlpembedcontrastiveEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedcontrastiveEdge::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveEdge::copy(Self) -> Self
+pub fn NlpembedcontrastiveEdge::fill(Self, Double) -> Self
+pub fn NlpembedcontrastiveEdge::get(Self, Int32) -> Double
+pub fn NlpembedcontrastiveEdge::len(Self) -> Int32
+pub fn NlpembedcontrastiveEdge::max(Self) -> Double
+pub fn NlpembedcontrastiveEdge::mean(Self) -> Double
+pub fn NlpembedcontrastiveEdge::min(Self) -> Double
+pub fn NlpembedcontrastiveEdge::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveEdge::set(Self, Int32, Double) -> Self
+pub fn NlpembedcontrastiveEdge::sum(Self) -> Double
+pub fn NlpembedcontrastiveEdge::to_string(Self) -> String
+
+pub(all) struct NlpembedcontrastiveFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedcontrastiveFrame::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveFrame::copy(Self) -> Self
+pub fn NlpembedcontrastiveFrame::fill(Self, Double) -> Self
+pub fn NlpembedcontrastiveFrame::get(Self, Int32) -> Double
+pub fn NlpembedcontrastiveFrame::len(Self) -> Int32
+pub fn NlpembedcontrastiveFrame::max(Self) -> Double
+pub fn NlpembedcontrastiveFrame::mean(Self) -> Double
+pub fn NlpembedcontrastiveFrame::min(Self) -> Double
+pub fn NlpembedcontrastiveFrame::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveFrame::set(Self, Int32, Double) -> Self
+pub fn NlpembedcontrastiveFrame::sum(Self) -> Double
+pub fn NlpembedcontrastiveFrame::to_string(Self) -> String
+
+pub(all) struct NlpembedcontrastiveGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedcontrastiveGraphN::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveGraphN::copy(Self) -> Self
+pub fn NlpembedcontrastiveGraphN::fill(Self, Double) -> Self
+pub fn NlpembedcontrastiveGraphN::get(Self, Int32) -> Double
+pub fn NlpembedcontrastiveGraphN::len(Self) -> Int32
+pub fn NlpembedcontrastiveGraphN::max(Self) -> Double
+pub fn NlpembedcontrastiveGraphN::mean(Self) -> Double
+pub fn NlpembedcontrastiveGraphN::min(Self) -> Double
+pub fn NlpembedcontrastiveGraphN::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveGraphN::set(Self, Int32, Double) -> Self
+pub fn NlpembedcontrastiveGraphN::sum(Self) -> Double
+pub fn NlpembedcontrastiveGraphN::to_string(Self) -> String
+
+pub(all) struct NlpembedcontrastiveLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedcontrastiveLayer::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveLayer::copy(Self) -> Self
+pub fn NlpembedcontrastiveLayer::fill(Self, Double) -> Self
+pub fn NlpembedcontrastiveLayer::get(Self, Int32) -> Double
+pub fn NlpembedcontrastiveLayer::len(Self) -> Int32
+pub fn NlpembedcontrastiveLayer::max(Self) -> Double
+pub fn NlpembedcontrastiveLayer::mean(Self) -> Double
+pub fn NlpembedcontrastiveLayer::min(Self) -> Double
+pub fn NlpembedcontrastiveLayer::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveLayer::set(Self, Int32, Double) -> Self
+pub fn NlpembedcontrastiveLayer::sum(Self) -> Double
+pub fn NlpembedcontrastiveLayer::to_string(Self) -> String
+
+pub(all) struct NlpembedcontrastiveMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlpembedcontrastiveMatrix::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveMatrix::det(Self) -> Double
+pub fn NlpembedcontrastiveMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlpembedcontrastiveMatrix::multiply(Self, Self) -> Self
+pub fn NlpembedcontrastiveMatrix::norm(Self) -> Double
+pub fn NlpembedcontrastiveMatrix::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveMatrix::to_string(Self) -> String
+pub fn NlpembedcontrastiveMatrix::trace(Self) -> Double
+pub fn NlpembedcontrastiveMatrix::transpose(Self) -> Self
+
+pub(all) struct NlpembedcontrastiveModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedcontrastiveModel::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveModel::copy(Self) -> Self
+pub fn NlpembedcontrastiveModel::fill(Self, Double) -> Self
+pub fn NlpembedcontrastiveModel::get(Self, Int32) -> Double
+pub fn NlpembedcontrastiveModel::len(Self) -> Int32
+pub fn NlpembedcontrastiveModel::max(Self) -> Double
+pub fn NlpembedcontrastiveModel::mean(Self) -> Double
+pub fn NlpembedcontrastiveModel::min(Self) -> Double
+pub fn NlpembedcontrastiveModel::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveModel::set(Self, Int32, Double) -> Self
+pub fn NlpembedcontrastiveModel::sum(Self) -> Double
+pub fn NlpembedcontrastiveModel::to_string(Self) -> String
+
+pub(all) struct NlpembedcontrastiveNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedcontrastiveNode::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveNode::copy(Self) -> Self
+pub fn NlpembedcontrastiveNode::fill(Self, Double) -> Self
+pub fn NlpembedcontrastiveNode::get(Self, Int32) -> Double
+pub fn NlpembedcontrastiveNode::len(Self) -> Int32
+pub fn NlpembedcontrastiveNode::max(Self) -> Double
+pub fn NlpembedcontrastiveNode::mean(Self) -> Double
+pub fn NlpembedcontrastiveNode::min(Self) -> Double
+pub fn NlpembedcontrastiveNode::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveNode::set(Self, Int32, Double) -> Self
+pub fn NlpembedcontrastiveNode::sum(Self) -> Double
+pub fn NlpembedcontrastiveNode::to_string(Self) -> String
+
+pub(all) struct NlpembedcontrastivePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedcontrastivePath::add(Self, Self) -> Self
+pub fn NlpembedcontrastivePath::copy(Self) -> Self
+pub fn NlpembedcontrastivePath::fill(Self, Double) -> Self
+pub fn NlpembedcontrastivePath::get(Self, Int32) -> Double
+pub fn NlpembedcontrastivePath::len(Self) -> Int32
+pub fn NlpembedcontrastivePath::max(Self) -> Double
+pub fn NlpembedcontrastivePath::mean(Self) -> Double
+pub fn NlpembedcontrastivePath::min(Self) -> Double
+pub fn NlpembedcontrastivePath::scale(Self, Double) -> Self
+pub fn NlpembedcontrastivePath::set(Self, Int32, Double) -> Self
+pub fn NlpembedcontrastivePath::sum(Self) -> Double
+pub fn NlpembedcontrastivePath::to_string(Self) -> String
+
+pub(all) struct NlpembedcontrastivePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlpembedcontrastivePoint::add(Self, Self) -> Self
+pub fn NlpembedcontrastivePoint::cross(Self, Self) -> Self
+pub fn NlpembedcontrastivePoint::dist(Self, Self) -> Double
+pub fn NlpembedcontrastivePoint::dot(Self, Self) -> Double
+pub fn NlpembedcontrastivePoint::label(Self) -> Int32
+pub fn NlpembedcontrastivePoint::lerp(Self, Self, Double) -> Self
+pub fn NlpembedcontrastivePoint::mid(Self, Self) -> Self
+pub fn NlpembedcontrastivePoint::negate(Self) -> Self
+pub fn NlpembedcontrastivePoint::norm(Self) -> Double
+pub fn NlpembedcontrastivePoint::normalize(Self) -> Self
+pub fn NlpembedcontrastivePoint::scale(Self, Double) -> Self
+pub fn NlpembedcontrastivePoint::sub(Self, Self) -> Self
+pub fn NlpembedcontrastivePoint::to_string(Self) -> String
+pub fn NlpembedcontrastivePoint::x(Self) -> Double
+pub fn NlpembedcontrastivePoint::y(Self) -> Double
+pub fn NlpembedcontrastivePoint::z(Self) -> Double
+
+pub(all) struct NlpembedcontrastiveRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedcontrastiveRange::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveRange::copy(Self) -> Self
+pub fn NlpembedcontrastiveRange::fill(Self, Double) -> Self
+pub fn NlpembedcontrastiveRange::get(Self, Int32) -> Double
+pub fn NlpembedcontrastiveRange::len(Self) -> Int32
+pub fn NlpembedcontrastiveRange::max(Self) -> Double
+pub fn NlpembedcontrastiveRange::mean(Self) -> Double
+pub fn NlpembedcontrastiveRange::min(Self) -> Double
+pub fn NlpembedcontrastiveRange::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveRange::set(Self, Int32, Double) -> Self
+pub fn NlpembedcontrastiveRange::sum(Self) -> Double
+pub fn NlpembedcontrastiveRange::to_string(Self) -> String
+
+pub(all) struct NlpembedcontrastiveSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlpembedcontrastiveSeries::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveSeries::cumsum(Self) -> Self
+pub fn NlpembedcontrastiveSeries::len(Self) -> Int32
+pub fn NlpembedcontrastiveSeries::max(Self) -> Double
+pub fn NlpembedcontrastiveSeries::mean(Self) -> Double
+pub fn NlpembedcontrastiveSeries::median(Self) -> Double
+pub fn NlpembedcontrastiveSeries::min(Self) -> Double
+pub fn NlpembedcontrastiveSeries::normalize(Self) -> Self
+pub fn NlpembedcontrastiveSeries::range(Self) -> Double
+pub fn NlpembedcontrastiveSeries::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveSeries::std(Self) -> Double
+pub fn NlpembedcontrastiveSeries::sub(Self, Self) -> Self
+pub fn NlpembedcontrastiveSeries::sum(Self) -> Double
+pub fn NlpembedcontrastiveSeries::to_string(Self) -> String
+pub fn NlpembedcontrastiveSeries::variance(Self) -> Double
+
+pub(all) struct NlpembedcontrastiveSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedcontrastiveSlice::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveSlice::copy(Self) -> Self
+pub fn NlpembedcontrastiveSlice::fill(Self, Double) -> Self
+pub fn NlpembedcontrastiveSlice::get(Self, Int32) -> Double
+pub fn NlpembedcontrastiveSlice::len(Self) -> Int32
+pub fn NlpembedcontrastiveSlice::max(Self) -> Double
+pub fn NlpembedcontrastiveSlice::mean(Self) -> Double
+pub fn NlpembedcontrastiveSlice::min(Self) -> Double
+pub fn NlpembedcontrastiveSlice::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveSlice::set(Self, Int32, Double) -> Self
+pub fn NlpembedcontrastiveSlice::sum(Self) -> Double
+pub fn NlpembedcontrastiveSlice::to_string(Self) -> String
+
+pub(all) struct NlpembedcontrastiveTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedcontrastiveTable::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveTable::copy(Self) -> Self
+pub fn NlpembedcontrastiveTable::fill(Self, Double) -> Self
+pub fn NlpembedcontrastiveTable::get(Self, Int32) -> Double
+pub fn NlpembedcontrastiveTable::len(Self) -> Int32
+pub fn NlpembedcontrastiveTable::max(Self) -> Double
+pub fn NlpembedcontrastiveTable::mean(Self) -> Double
+pub fn NlpembedcontrastiveTable::min(Self) -> Double
+pub fn NlpembedcontrastiveTable::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveTable::set(Self, Int32, Double) -> Self
+pub fn NlpembedcontrastiveTable::sum(Self) -> Double
+pub fn NlpembedcontrastiveTable::to_string(Self) -> String
+
+pub(all) struct NlpembedcontrastiveVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlpembedcontrastiveVector::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveVector::dist(Self, Self) -> Double
+pub fn NlpembedcontrastiveVector::dot(Self, Self) -> Double
+pub fn NlpembedcontrastiveVector::norm(Self) -> Double
+pub fn NlpembedcontrastiveVector::normalize(Self) -> Self
+pub fn NlpembedcontrastiveVector::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveVector::sub(Self, Self) -> Self
+pub fn NlpembedcontrastiveVector::to_string(Self) -> String
+
+pub(all) struct NlpembedcontrastiveView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedcontrastiveView::add(Self, Self) -> Self
+pub fn NlpembedcontrastiveView::copy(Self) -> Self
+pub fn NlpembedcontrastiveView::fill(Self, Double) -> Self
+pub fn NlpembedcontrastiveView::get(Self, Int32) -> Double
+pub fn NlpembedcontrastiveView::len(Self) -> Int32
+pub fn NlpembedcontrastiveView::max(Self) -> Double
+pub fn NlpembedcontrastiveView::mean(Self) -> Double
+pub fn NlpembedcontrastiveView::min(Self) -> Double
+pub fn NlpembedcontrastiveView::scale(Self, Double) -> Self
+pub fn NlpembedcontrastiveView::set(Self, Int32, Double) -> Self
+pub fn NlpembedcontrastiveView::sum(Self) -> Double
+pub fn NlpembedcontrastiveView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

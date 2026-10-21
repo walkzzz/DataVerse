@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_proto_https"
+
+// Values
+pub fn net_proto_https_buffer_make(Int32) -> NetprotohttpsBuffer
+
+pub fn net_proto_https_cluster_make(Int32) -> NetprotohttpsCluster
+
+pub fn net_proto_https_cursor_make(Int32) -> NetprotohttpsCursor
+
+pub fn net_proto_https_edge_make(Int32) -> NetprotohttpsEdge
+
+pub fn net_proto_https_frame_make(Int32) -> NetprotohttpsFrame
+
+pub fn net_proto_https_graphn_make(Int32) -> NetprotohttpsGraphN
+
+pub fn net_proto_https_layer_make(Int32) -> NetprotohttpsLayer
+
+pub fn net_proto_https_make_matrix(Int32, Int32, Double) -> NetprotohttpsMatrix
+
+pub fn net_proto_https_make_point(Double, Double) -> NetprotohttpsPoint
+
+pub fn net_proto_https_make_point3(Double, Double, Double) -> NetprotohttpsPoint
+
+pub fn net_proto_https_make_series(Array[Double], String) -> NetprotohttpsSeries
+
+pub fn net_proto_https_make_vector(Array[Double]) -> NetprotohttpsVector
+
+pub fn net_proto_https_matrix_identity(Int32) -> NetprotohttpsMatrix
+
+pub fn net_proto_https_model_make(Int32) -> NetprotohttpsModel
+
+pub fn net_proto_https_node_make(Int32) -> NetprotohttpsNode
+
+pub fn net_proto_https_path_make(Int32) -> NetprotohttpsPath
+
+pub fn net_proto_https_range_make(Int32) -> NetprotohttpsRange
+
+pub fn net_proto_https_slice_make(Int32) -> NetprotohttpsSlice
+
+pub fn net_proto_https_table_make(Int32) -> NetprotohttpsTable
+
+pub fn net_proto_https_vector_zero(Int32) -> NetprotohttpsVector
+
+pub fn net_proto_https_view_make(Int32) -> NetprotohttpsView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetprotohttpsBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpsBuffer::add(Self, Self) -> Self
+pub fn NetprotohttpsBuffer::copy(Self) -> Self
+pub fn NetprotohttpsBuffer::fill(Self, Double) -> Self
+pub fn NetprotohttpsBuffer::get(Self, Int32) -> Double
+pub fn NetprotohttpsBuffer::len(Self) -> Int32
+pub fn NetprotohttpsBuffer::max(Self) -> Double
+pub fn NetprotohttpsBuffer::mean(Self) -> Double
+pub fn NetprotohttpsBuffer::min(Self) -> Double
+pub fn NetprotohttpsBuffer::scale(Self, Double) -> Self
+pub fn NetprotohttpsBuffer::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpsBuffer::sum(Self) -> Double
+pub fn NetprotohttpsBuffer::to_string(Self) -> String
+
+pub(all) struct NetprotohttpsCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpsCluster::add(Self, Self) -> Self
+pub fn NetprotohttpsCluster::copy(Self) -> Self
+pub fn NetprotohttpsCluster::fill(Self, Double) -> Self
+pub fn NetprotohttpsCluster::get(Self, Int32) -> Double
+pub fn NetprotohttpsCluster::len(Self) -> Int32
+pub fn NetprotohttpsCluster::max(Self) -> Double
+pub fn NetprotohttpsCluster::mean(Self) -> Double
+pub fn NetprotohttpsCluster::min(Self) -> Double
+pub fn NetprotohttpsCluster::scale(Self, Double) -> Self
+pub fn NetprotohttpsCluster::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpsCluster::sum(Self) -> Double
+pub fn NetprotohttpsCluster::to_string(Self) -> String
+
+pub(all) struct NetprotohttpsCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpsCursor::add(Self, Self) -> Self
+pub fn NetprotohttpsCursor::copy(Self) -> Self
+pub fn NetprotohttpsCursor::fill(Self, Double) -> Self
+pub fn NetprotohttpsCursor::get(Self, Int32) -> Double
+pub fn NetprotohttpsCursor::len(Self) -> Int32
+pub fn NetprotohttpsCursor::max(Self) -> Double
+pub fn NetprotohttpsCursor::mean(Self) -> Double
+pub fn NetprotohttpsCursor::min(Self) -> Double
+pub fn NetprotohttpsCursor::scale(Self, Double) -> Self
+pub fn NetprotohttpsCursor::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpsCursor::sum(Self) -> Double
+pub fn NetprotohttpsCursor::to_string(Self) -> String
+
+pub(all) struct NetprotohttpsEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpsEdge::add(Self, Self) -> Self
+pub fn NetprotohttpsEdge::copy(Self) -> Self
+pub fn NetprotohttpsEdge::fill(Self, Double) -> Self
+pub fn NetprotohttpsEdge::get(Self, Int32) -> Double
+pub fn NetprotohttpsEdge::len(Self) -> Int32
+pub fn NetprotohttpsEdge::max(Self) -> Double
+pub fn NetprotohttpsEdge::mean(Self) -> Double
+pub fn NetprotohttpsEdge::min(Self) -> Double
+pub fn NetprotohttpsEdge::scale(Self, Double) -> Self
+pub fn NetprotohttpsEdge::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpsEdge::sum(Self) -> Double
+pub fn NetprotohttpsEdge::to_string(Self) -> String
+
+pub(all) struct NetprotohttpsFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpsFrame::add(Self, Self) -> Self
+pub fn NetprotohttpsFrame::copy(Self) -> Self
+pub fn NetprotohttpsFrame::fill(Self, Double) -> Self
+pub fn NetprotohttpsFrame::get(Self, Int32) -> Double
+pub fn NetprotohttpsFrame::len(Self) -> Int32
+pub fn NetprotohttpsFrame::max(Self) -> Double
+pub fn NetprotohttpsFrame::mean(Self) -> Double
+pub fn NetprotohttpsFrame::min(Self) -> Double
+pub fn NetprotohttpsFrame::scale(Self, Double) -> Self
+pub fn NetprotohttpsFrame::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpsFrame::sum(Self) -> Double
+pub fn NetprotohttpsFrame::to_string(Self) -> String
+
+pub(all) struct NetprotohttpsGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpsGraphN::add(Self, Self) -> Self
+pub fn NetprotohttpsGraphN::copy(Self) -> Self
+pub fn NetprotohttpsGraphN::fill(Self, Double) -> Self
+pub fn NetprotohttpsGraphN::get(Self, Int32) -> Double
+pub fn NetprotohttpsGraphN::len(Self) -> Int32
+pub fn NetprotohttpsGraphN::max(Self) -> Double
+pub fn NetprotohttpsGraphN::mean(Self) -> Double
+pub fn NetprotohttpsGraphN::min(Self) -> Double
+pub fn NetprotohttpsGraphN::scale(Self, Double) -> Self
+pub fn NetprotohttpsGraphN::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpsGraphN::sum(Self) -> Double
+pub fn NetprotohttpsGraphN::to_string(Self) -> String
+
+pub(all) struct NetprotohttpsLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpsLayer::add(Self, Self) -> Self
+pub fn NetprotohttpsLayer::copy(Self) -> Self
+pub fn NetprotohttpsLayer::fill(Self, Double) -> Self
+pub fn NetprotohttpsLayer::get(Self, Int32) -> Double
+pub fn NetprotohttpsLayer::len(Self) -> Int32
+pub fn NetprotohttpsLayer::max(Self) -> Double
+pub fn NetprotohttpsLayer::mean(Self) -> Double
+pub fn NetprotohttpsLayer::min(Self) -> Double
+pub fn NetprotohttpsLayer::scale(Self, Double) -> Self
+pub fn NetprotohttpsLayer::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpsLayer::sum(Self) -> Double
+pub fn NetprotohttpsLayer::to_string(Self) -> String
+
+pub(all) struct NetprotohttpsMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetprotohttpsMatrix::add(Self, Self) -> Self
+pub fn NetprotohttpsMatrix::det(Self) -> Double
+pub fn NetprotohttpsMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetprotohttpsMatrix::multiply(Self, Self) -> Self
+pub fn NetprotohttpsMatrix::norm(Self) -> Double
+pub fn NetprotohttpsMatrix::scale(Self, Double) -> Self
+pub fn NetprotohttpsMatrix::to_string(Self) -> String
+pub fn NetprotohttpsMatrix::trace(Self) -> Double
+pub fn NetprotohttpsMatrix::transpose(Self) -> Self
+
+pub(all) struct NetprotohttpsModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpsModel::add(Self, Self) -> Self
+pub fn NetprotohttpsModel::copy(Self) -> Self
+pub fn NetprotohttpsModel::fill(Self, Double) -> Self
+pub fn NetprotohttpsModel::get(Self, Int32) -> Double
+pub fn NetprotohttpsModel::len(Self) -> Int32
+pub fn NetprotohttpsModel::max(Self) -> Double
+pub fn NetprotohttpsModel::mean(Self) -> Double
+pub fn NetprotohttpsModel::min(Self) -> Double
+pub fn NetprotohttpsModel::scale(Self, Double) -> Self
+pub fn NetprotohttpsModel::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpsModel::sum(Self) -> Double
+pub fn NetprotohttpsModel::to_string(Self) -> String
+
+pub(all) struct NetprotohttpsNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpsNode::add(Self, Self) -> Self
+pub fn NetprotohttpsNode::copy(Self) -> Self
+pub fn NetprotohttpsNode::fill(Self, Double) -> Self
+pub fn NetprotohttpsNode::get(Self, Int32) -> Double
+pub fn NetprotohttpsNode::len(Self) -> Int32
+pub fn NetprotohttpsNode::max(Self) -> Double
+pub fn NetprotohttpsNode::mean(Self) -> Double
+pub fn NetprotohttpsNode::min(Self) -> Double
+pub fn NetprotohttpsNode::scale(Self, Double) -> Self
+pub fn NetprotohttpsNode::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpsNode::sum(Self) -> Double
+pub fn NetprotohttpsNode::to_string(Self) -> String
+
+pub(all) struct NetprotohttpsPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpsPath::add(Self, Self) -> Self
+pub fn NetprotohttpsPath::copy(Self) -> Self
+pub fn NetprotohttpsPath::fill(Self, Double) -> Self
+pub fn NetprotohttpsPath::get(Self, Int32) -> Double
+pub fn NetprotohttpsPath::len(Self) -> Int32
+pub fn NetprotohttpsPath::max(Self) -> Double
+pub fn NetprotohttpsPath::mean(Self) -> Double
+pub fn NetprotohttpsPath::min(Self) -> Double
+pub fn NetprotohttpsPath::scale(Self, Double) -> Self
+pub fn NetprotohttpsPath::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpsPath::sum(Self) -> Double
+pub fn NetprotohttpsPath::to_string(Self) -> String
+
+pub(all) struct NetprotohttpsPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetprotohttpsPoint::add(Self, Self) -> Self
+pub fn NetprotohttpsPoint::cross(Self, Self) -> Self
+pub fn NetprotohttpsPoint::dist(Self, Self) -> Double
+pub fn NetprotohttpsPoint::dot(Self, Self) -> Double
+pub fn NetprotohttpsPoint::label(Self) -> Int32
+pub fn NetprotohttpsPoint::lerp(Self, Self, Double) -> Self
+pub fn NetprotohttpsPoint::mid(Self, Self) -> Self
+pub fn NetprotohttpsPoint::negate(Self) -> Self
+pub fn NetprotohttpsPoint::norm(Self) -> Double
+pub fn NetprotohttpsPoint::normalize(Self) -> Self
+pub fn NetprotohttpsPoint::scale(Self, Double) -> Self
+pub fn NetprotohttpsPoint::sub(Self, Self) -> Self
+pub fn NetprotohttpsPoint::to_string(Self) -> String
+pub fn NetprotohttpsPoint::x(Self) -> Double
+pub fn NetprotohttpsPoint::y(Self) -> Double
+pub fn NetprotohttpsPoint::z(Self) -> Double
+
+pub(all) struct NetprotohttpsRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpsRange::add(Self, Self) -> Self
+pub fn NetprotohttpsRange::copy(Self) -> Self
+pub fn NetprotohttpsRange::fill(Self, Double) -> Self
+pub fn NetprotohttpsRange::get(Self, Int32) -> Double
+pub fn NetprotohttpsRange::len(Self) -> Int32
+pub fn NetprotohttpsRange::max(Self) -> Double
+pub fn NetprotohttpsRange::mean(Self) -> Double
+pub fn NetprotohttpsRange::min(Self) -> Double
+pub fn NetprotohttpsRange::scale(Self, Double) -> Self
+pub fn NetprotohttpsRange::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpsRange::sum(Self) -> Double
+pub fn NetprotohttpsRange::to_string(Self) -> String
+
+pub(all) struct NetprotohttpsSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetprotohttpsSeries::add(Self, Self) -> Self
+pub fn NetprotohttpsSeries::cumsum(Self) -> Self
+pub fn NetprotohttpsSeries::len(Self) -> Int32
+pub fn NetprotohttpsSeries::max(Self) -> Double
+pub fn NetprotohttpsSeries::mean(Self) -> Double
+pub fn NetprotohttpsSeries::median(Self) -> Double
+pub fn NetprotohttpsSeries::min(Self) -> Double
+pub fn NetprotohttpsSeries::normalize(Self) -> Self
+pub fn NetprotohttpsSeries::range(Self) -> Double
+pub fn NetprotohttpsSeries::scale(Self, Double) -> Self
+pub fn NetprotohttpsSeries::std(Self) -> Double
+pub fn NetprotohttpsSeries::sub(Self, Self) -> Self
+pub fn NetprotohttpsSeries::sum(Self) -> Double
+pub fn NetprotohttpsSeries::to_string(Self) -> String
+pub fn NetprotohttpsSeries::variance(Self) -> Double
+
+pub(all) struct NetprotohttpsSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpsSlice::add(Self, Self) -> Self
+pub fn NetprotohttpsSlice::copy(Self) -> Self
+pub fn NetprotohttpsSlice::fill(Self, Double) -> Self
+pub fn NetprotohttpsSlice::get(Self, Int32) -> Double
+pub fn NetprotohttpsSlice::len(Self) -> Int32
+pub fn NetprotohttpsSlice::max(Self) -> Double
+pub fn NetprotohttpsSlice::mean(Self) -> Double
+pub fn NetprotohttpsSlice::min(Self) -> Double
+pub fn NetprotohttpsSlice::scale(Self, Double) -> Self
+pub fn NetprotohttpsSlice::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpsSlice::sum(Self) -> Double
+pub fn NetprotohttpsSlice::to_string(Self) -> String
+
+pub(all) struct NetprotohttpsTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpsTable::add(Self, Self) -> Self
+pub fn NetprotohttpsTable::copy(Self) -> Self
+pub fn NetprotohttpsTable::fill(Self, Double) -> Self
+pub fn NetprotohttpsTable::get(Self, Int32) -> Double
+pub fn NetprotohttpsTable::len(Self) -> Int32
+pub fn NetprotohttpsTable::max(Self) -> Double
+pub fn NetprotohttpsTable::mean(Self) -> Double
+pub fn NetprotohttpsTable::min(Self) -> Double
+pub fn NetprotohttpsTable::scale(Self, Double) -> Self
+pub fn NetprotohttpsTable::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpsTable::sum(Self) -> Double
+pub fn NetprotohttpsTable::to_string(Self) -> String
+
+pub(all) struct NetprotohttpsVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetprotohttpsVector::add(Self, Self) -> Self
+pub fn NetprotohttpsVector::dist(Self, Self) -> Double
+pub fn NetprotohttpsVector::dot(Self, Self) -> Double
+pub fn NetprotohttpsVector::norm(Self) -> Double
+pub fn NetprotohttpsVector::normalize(Self) -> Self
+pub fn NetprotohttpsVector::scale(Self, Double) -> Self
+pub fn NetprotohttpsVector::sub(Self, Self) -> Self
+pub fn NetprotohttpsVector::to_string(Self) -> String
+
+pub(all) struct NetprotohttpsView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpsView::add(Self, Self) -> Self
+pub fn NetprotohttpsView::copy(Self) -> Self
+pub fn NetprotohttpsView::fill(Self, Double) -> Self
+pub fn NetprotohttpsView::get(Self, Int32) -> Double
+pub fn NetprotohttpsView::len(Self) -> Int32
+pub fn NetprotohttpsView::max(Self) -> Double
+pub fn NetprotohttpsView::mean(Self) -> Double
+pub fn NetprotohttpsView::min(Self) -> Double
+pub fn NetprotohttpsView::scale(Self, Double) -> Self
+pub fn NetprotohttpsView::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpsView::sum(Self) -> Double
+pub fn NetprotohttpsView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

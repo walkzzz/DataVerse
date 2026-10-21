@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/opt_meta_sa"
+
+// Values
+pub fn opt_meta_sa_buffer_make(Int32) -> OptmetasaBuffer
+
+pub fn opt_meta_sa_cluster_make(Int32) -> OptmetasaCluster
+
+pub fn opt_meta_sa_cursor_make(Int32) -> OptmetasaCursor
+
+pub fn opt_meta_sa_edge_make(Int32) -> OptmetasaEdge
+
+pub fn opt_meta_sa_frame_make(Int32) -> OptmetasaFrame
+
+pub fn opt_meta_sa_graphn_make(Int32) -> OptmetasaGraphN
+
+pub fn opt_meta_sa_layer_make(Int32) -> OptmetasaLayer
+
+pub fn opt_meta_sa_make_matrix(Int32, Int32, Double) -> OptmetasaMatrix
+
+pub fn opt_meta_sa_make_point(Double, Double) -> OptmetasaPoint
+
+pub fn opt_meta_sa_make_point3(Double, Double, Double) -> OptmetasaPoint
+
+pub fn opt_meta_sa_make_series(Array[Double], String) -> OptmetasaSeries
+
+pub fn opt_meta_sa_make_vector(Array[Double]) -> OptmetasaVector
+
+pub fn opt_meta_sa_matrix_identity(Int32) -> OptmetasaMatrix
+
+pub fn opt_meta_sa_model_make(Int32) -> OptmetasaModel
+
+pub fn opt_meta_sa_node_make(Int32) -> OptmetasaNode
+
+pub fn opt_meta_sa_path_make(Int32) -> OptmetasaPath
+
+pub fn opt_meta_sa_range_make(Int32) -> OptmetasaRange
+
+pub fn opt_meta_sa_slice_make(Int32) -> OptmetasaSlice
+
+pub fn opt_meta_sa_table_make(Int32) -> OptmetasaTable
+
+pub fn opt_meta_sa_vector_zero(Int32) -> OptmetasaVector
+
+pub fn opt_meta_sa_view_make(Int32) -> OptmetasaView
+
+// Errors
+
+// Types and methods
+pub(all) struct OptmetasaBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetasaBuffer::add(Self, Self) -> Self
+pub fn OptmetasaBuffer::copy(Self) -> Self
+pub fn OptmetasaBuffer::fill(Self, Double) -> Self
+pub fn OptmetasaBuffer::get(Self, Int32) -> Double
+pub fn OptmetasaBuffer::len(Self) -> Int32
+pub fn OptmetasaBuffer::max(Self) -> Double
+pub fn OptmetasaBuffer::mean(Self) -> Double
+pub fn OptmetasaBuffer::min(Self) -> Double
+pub fn OptmetasaBuffer::scale(Self, Double) -> Self
+pub fn OptmetasaBuffer::set(Self, Int32, Double) -> Self
+pub fn OptmetasaBuffer::sum(Self) -> Double
+pub fn OptmetasaBuffer::to_string(Self) -> String
+
+pub(all) struct OptmetasaCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetasaCluster::add(Self, Self) -> Self
+pub fn OptmetasaCluster::copy(Self) -> Self
+pub fn OptmetasaCluster::fill(Self, Double) -> Self
+pub fn OptmetasaCluster::get(Self, Int32) -> Double
+pub fn OptmetasaCluster::len(Self) -> Int32
+pub fn OptmetasaCluster::max(Self) -> Double
+pub fn OptmetasaCluster::mean(Self) -> Double
+pub fn OptmetasaCluster::min(Self) -> Double
+pub fn OptmetasaCluster::scale(Self, Double) -> Self
+pub fn OptmetasaCluster::set(Self, Int32, Double) -> Self
+pub fn OptmetasaCluster::sum(Self) -> Double
+pub fn OptmetasaCluster::to_string(Self) -> String
+
+pub(all) struct OptmetasaCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetasaCursor::add(Self, Self) -> Self
+pub fn OptmetasaCursor::copy(Self) -> Self
+pub fn OptmetasaCursor::fill(Self, Double) -> Self
+pub fn OptmetasaCursor::get(Self, Int32) -> Double
+pub fn OptmetasaCursor::len(Self) -> Int32
+pub fn OptmetasaCursor::max(Self) -> Double
+pub fn OptmetasaCursor::mean(Self) -> Double
+pub fn OptmetasaCursor::min(Self) -> Double
+pub fn OptmetasaCursor::scale(Self, Double) -> Self
+pub fn OptmetasaCursor::set(Self, Int32, Double) -> Self
+pub fn OptmetasaCursor::sum(Self) -> Double
+pub fn OptmetasaCursor::to_string(Self) -> String
+
+pub(all) struct OptmetasaEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetasaEdge::add(Self, Self) -> Self
+pub fn OptmetasaEdge::copy(Self) -> Self
+pub fn OptmetasaEdge::fill(Self, Double) -> Self
+pub fn OptmetasaEdge::get(Self, Int32) -> Double
+pub fn OptmetasaEdge::len(Self) -> Int32
+pub fn OptmetasaEdge::max(Self) -> Double
+pub fn OptmetasaEdge::mean(Self) -> Double
+pub fn OptmetasaEdge::min(Self) -> Double
+pub fn OptmetasaEdge::scale(Self, Double) -> Self
+pub fn OptmetasaEdge::set(Self, Int32, Double) -> Self
+pub fn OptmetasaEdge::sum(Self) -> Double
+pub fn OptmetasaEdge::to_string(Self) -> String
+
+pub(all) struct OptmetasaFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetasaFrame::add(Self, Self) -> Self
+pub fn OptmetasaFrame::copy(Self) -> Self
+pub fn OptmetasaFrame::fill(Self, Double) -> Self
+pub fn OptmetasaFrame::get(Self, Int32) -> Double
+pub fn OptmetasaFrame::len(Self) -> Int32
+pub fn OptmetasaFrame::max(Self) -> Double
+pub fn OptmetasaFrame::mean(Self) -> Double
+pub fn OptmetasaFrame::min(Self) -> Double
+pub fn OptmetasaFrame::scale(Self, Double) -> Self
+pub fn OptmetasaFrame::set(Self, Int32, Double) -> Self
+pub fn OptmetasaFrame::sum(Self) -> Double
+pub fn OptmetasaFrame::to_string(Self) -> String
+
+pub(all) struct OptmetasaGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetasaGraphN::add(Self, Self) -> Self
+pub fn OptmetasaGraphN::copy(Self) -> Self
+pub fn OptmetasaGraphN::fill(Self, Double) -> Self
+pub fn OptmetasaGraphN::get(Self, Int32) -> Double
+pub fn OptmetasaGraphN::len(Self) -> Int32
+pub fn OptmetasaGraphN::max(Self) -> Double
+pub fn OptmetasaGraphN::mean(Self) -> Double
+pub fn OptmetasaGraphN::min(Self) -> Double
+pub fn OptmetasaGraphN::scale(Self, Double) -> Self
+pub fn OptmetasaGraphN::set(Self, Int32, Double) -> Self
+pub fn OptmetasaGraphN::sum(Self) -> Double
+pub fn OptmetasaGraphN::to_string(Self) -> String
+
+pub(all) struct OptmetasaLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetasaLayer::add(Self, Self) -> Self
+pub fn OptmetasaLayer::copy(Self) -> Self
+pub fn OptmetasaLayer::fill(Self, Double) -> Self
+pub fn OptmetasaLayer::get(Self, Int32) -> Double
+pub fn OptmetasaLayer::len(Self) -> Int32
+pub fn OptmetasaLayer::max(Self) -> Double
+pub fn OptmetasaLayer::mean(Self) -> Double
+pub fn OptmetasaLayer::min(Self) -> Double
+pub fn OptmetasaLayer::scale(Self, Double) -> Self
+pub fn OptmetasaLayer::set(Self, Int32, Double) -> Self
+pub fn OptmetasaLayer::sum(Self) -> Double
+pub fn OptmetasaLayer::to_string(Self) -> String
+
+pub(all) struct OptmetasaMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn OptmetasaMatrix::add(Self, Self) -> Self
+pub fn OptmetasaMatrix::det(Self) -> Double
+pub fn OptmetasaMatrix::get(Self, Int32, Int32) -> Double
+pub fn OptmetasaMatrix::multiply(Self, Self) -> Self
+pub fn OptmetasaMatrix::norm(Self) -> Double
+pub fn OptmetasaMatrix::scale(Self, Double) -> Self
+pub fn OptmetasaMatrix::to_string(Self) -> String
+pub fn OptmetasaMatrix::trace(Self) -> Double
+pub fn OptmetasaMatrix::transpose(Self) -> Self
+
+pub(all) struct OptmetasaModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetasaModel::add(Self, Self) -> Self
+pub fn OptmetasaModel::copy(Self) -> Self
+pub fn OptmetasaModel::fill(Self, Double) -> Self
+pub fn OptmetasaModel::get(Self, Int32) -> Double
+pub fn OptmetasaModel::len(Self) -> Int32
+pub fn OptmetasaModel::max(Self) -> Double
+pub fn OptmetasaModel::mean(Self) -> Double
+pub fn OptmetasaModel::min(Self) -> Double
+pub fn OptmetasaModel::scale(Self, Double) -> Self
+pub fn OptmetasaModel::set(Self, Int32, Double) -> Self
+pub fn OptmetasaModel::sum(Self) -> Double
+pub fn OptmetasaModel::to_string(Self) -> String
+
+pub(all) struct OptmetasaNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetasaNode::add(Self, Self) -> Self
+pub fn OptmetasaNode::copy(Self) -> Self
+pub fn OptmetasaNode::fill(Self, Double) -> Self
+pub fn OptmetasaNode::get(Self, Int32) -> Double
+pub fn OptmetasaNode::len(Self) -> Int32
+pub fn OptmetasaNode::max(Self) -> Double
+pub fn OptmetasaNode::mean(Self) -> Double
+pub fn OptmetasaNode::min(Self) -> Double
+pub fn OptmetasaNode::scale(Self, Double) -> Self
+pub fn OptmetasaNode::set(Self, Int32, Double) -> Self
+pub fn OptmetasaNode::sum(Self) -> Double
+pub fn OptmetasaNode::to_string(Self) -> String
+
+pub(all) struct OptmetasaPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetasaPath::add(Self, Self) -> Self
+pub fn OptmetasaPath::copy(Self) -> Self
+pub fn OptmetasaPath::fill(Self, Double) -> Self
+pub fn OptmetasaPath::get(Self, Int32) -> Double
+pub fn OptmetasaPath::len(Self) -> Int32
+pub fn OptmetasaPath::max(Self) -> Double
+pub fn OptmetasaPath::mean(Self) -> Double
+pub fn OptmetasaPath::min(Self) -> Double
+pub fn OptmetasaPath::scale(Self, Double) -> Self
+pub fn OptmetasaPath::set(Self, Int32, Double) -> Self
+pub fn OptmetasaPath::sum(Self) -> Double
+pub fn OptmetasaPath::to_string(Self) -> String
+
+pub(all) struct OptmetasaPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn OptmetasaPoint::add(Self, Self) -> Self
+pub fn OptmetasaPoint::cross(Self, Self) -> Self
+pub fn OptmetasaPoint::dist(Self, Self) -> Double
+pub fn OptmetasaPoint::dot(Self, Self) -> Double
+pub fn OptmetasaPoint::label(Self) -> Int32
+pub fn OptmetasaPoint::lerp(Self, Self, Double) -> Self
+pub fn OptmetasaPoint::mid(Self, Self) -> Self
+pub fn OptmetasaPoint::negate(Self) -> Self
+pub fn OptmetasaPoint::norm(Self) -> Double
+pub fn OptmetasaPoint::normalize(Self) -> Self
+pub fn OptmetasaPoint::scale(Self, Double) -> Self
+pub fn OptmetasaPoint::sub(Self, Self) -> Self
+pub fn OptmetasaPoint::to_string(Self) -> String
+pub fn OptmetasaPoint::x(Self) -> Double
+pub fn OptmetasaPoint::y(Self) -> Double
+pub fn OptmetasaPoint::z(Self) -> Double
+
+pub(all) struct OptmetasaRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetasaRange::add(Self, Self) -> Self
+pub fn OptmetasaRange::copy(Self) -> Self
+pub fn OptmetasaRange::fill(Self, Double) -> Self
+pub fn OptmetasaRange::get(Self, Int32) -> Double
+pub fn OptmetasaRange::len(Self) -> Int32
+pub fn OptmetasaRange::max(Self) -> Double
+pub fn OptmetasaRange::mean(Self) -> Double
+pub fn OptmetasaRange::min(Self) -> Double
+pub fn OptmetasaRange::scale(Self, Double) -> Self
+pub fn OptmetasaRange::set(Self, Int32, Double) -> Self
+pub fn OptmetasaRange::sum(Self) -> Double
+pub fn OptmetasaRange::to_string(Self) -> String
+
+pub(all) struct OptmetasaSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn OptmetasaSeries::add(Self, Self) -> Self
+pub fn OptmetasaSeries::cumsum(Self) -> Self
+pub fn OptmetasaSeries::len(Self) -> Int32
+pub fn OptmetasaSeries::max(Self) -> Double
+pub fn OptmetasaSeries::mean(Self) -> Double
+pub fn OptmetasaSeries::median(Self) -> Double
+pub fn OptmetasaSeries::min(Self) -> Double
+pub fn OptmetasaSeries::normalize(Self) -> Self
+pub fn OptmetasaSeries::range(Self) -> Double
+pub fn OptmetasaSeries::scale(Self, Double) -> Self
+pub fn OptmetasaSeries::std(Self) -> Double
+pub fn OptmetasaSeries::sub(Self, Self) -> Self
+pub fn OptmetasaSeries::sum(Self) -> Double
+pub fn OptmetasaSeries::to_string(Self) -> String
+pub fn OptmetasaSeries::variance(Self) -> Double
+
+pub(all) struct OptmetasaSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetasaSlice::add(Self, Self) -> Self
+pub fn OptmetasaSlice::copy(Self) -> Self
+pub fn OptmetasaSlice::fill(Self, Double) -> Self
+pub fn OptmetasaSlice::get(Self, Int32) -> Double
+pub fn OptmetasaSlice::len(Self) -> Int32
+pub fn OptmetasaSlice::max(Self) -> Double
+pub fn OptmetasaSlice::mean(Self) -> Double
+pub fn OptmetasaSlice::min(Self) -> Double
+pub fn OptmetasaSlice::scale(Self, Double) -> Self
+pub fn OptmetasaSlice::set(Self, Int32, Double) -> Self
+pub fn OptmetasaSlice::sum(Self) -> Double
+pub fn OptmetasaSlice::to_string(Self) -> String
+
+pub(all) struct OptmetasaTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetasaTable::add(Self, Self) -> Self
+pub fn OptmetasaTable::copy(Self) -> Self
+pub fn OptmetasaTable::fill(Self, Double) -> Self
+pub fn OptmetasaTable::get(Self, Int32) -> Double
+pub fn OptmetasaTable::len(Self) -> Int32
+pub fn OptmetasaTable::max(Self) -> Double
+pub fn OptmetasaTable::mean(Self) -> Double
+pub fn OptmetasaTable::min(Self) -> Double
+pub fn OptmetasaTable::scale(Self, Double) -> Self
+pub fn OptmetasaTable::set(Self, Int32, Double) -> Self
+pub fn OptmetasaTable::sum(Self) -> Double
+pub fn OptmetasaTable::to_string(Self) -> String
+
+pub(all) struct OptmetasaVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn OptmetasaVector::add(Self, Self) -> Self
+pub fn OptmetasaVector::dist(Self, Self) -> Double
+pub fn OptmetasaVector::dot(Self, Self) -> Double
+pub fn OptmetasaVector::norm(Self) -> Double
+pub fn OptmetasaVector::normalize(Self) -> Self
+pub fn OptmetasaVector::scale(Self, Double) -> Self
+pub fn OptmetasaVector::sub(Self, Self) -> Self
+pub fn OptmetasaVector::to_string(Self) -> String
+
+pub(all) struct OptmetasaView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetasaView::add(Self, Self) -> Self
+pub fn OptmetasaView::copy(Self) -> Self
+pub fn OptmetasaView::fill(Self, Double) -> Self
+pub fn OptmetasaView::get(Self, Int32) -> Double
+pub fn OptmetasaView::len(Self) -> Int32
+pub fn OptmetasaView::max(Self) -> Double
+pub fn OptmetasaView::mean(Self) -> Double
+pub fn OptmetasaView::min(Self) -> Double
+pub fn OptmetasaView::scale(Self, Double) -> Self
+pub fn OptmetasaView::set(Self, Int32, Double) -> Self
+pub fn OptmetasaView::sum(Self) -> Double
+pub fn OptmetasaView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

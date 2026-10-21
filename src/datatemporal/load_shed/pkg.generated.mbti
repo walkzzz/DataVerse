@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/load_shed"
+
+// Values
+pub fn load_shed_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn load_shed_corr(Array[Double], Array[Double]) -> Double
+
+pub fn load_shed_cov(Array[Double], Array[Double]) -> Double
+
+pub fn load_shed_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn load_shed_mae(Array[Double], Array[Double]) -> Double
+
+pub fn load_shed_make_labeled_point(Double, Double, Int32) -> Load_shedPoint
+
+pub fn load_shed_make_matrix(Int32, Int32, Double) -> Load_shedMatrix
+
+pub fn load_shed_make_point(Double, Double) -> Load_shedPoint
+
+pub fn load_shed_make_series(Array[Double], String) -> Load_shedSeries
+
+pub fn load_shed_make_vector(Array[Double]) -> Load_shedVector
+
+pub fn load_shed_matrix_add(Load_shedMatrix, Load_shedMatrix) -> Load_shedMatrix
+
+pub fn load_shed_matrix_get(Load_shedMatrix, Int32, Int32) -> Double
+
+pub fn load_shed_matrix_identity(Int32) -> Load_shedMatrix
+
+pub fn load_shed_matrix_multiply(Load_shedMatrix, Load_shedMatrix) -> Load_shedMatrix
+
+pub fn load_shed_matrix_norm(Load_shedMatrix) -> Double
+
+pub fn load_shed_matrix_scale(Load_shedMatrix, Double) -> Load_shedMatrix
+
+pub fn load_shed_matrix_to_string(Load_shedMatrix) -> String
+
+pub fn load_shed_matrix_trace(Load_shedMatrix) -> Double
+
+pub fn load_shed_matrix_transpose(Load_shedMatrix) -> Load_shedMatrix
+
+pub fn load_shed_mse(Array[Double], Array[Double]) -> Double
+
+pub fn load_shed_point_add(Load_shedPoint, Load_shedPoint) -> Load_shedPoint
+
+pub fn load_shed_point_dist(Load_shedPoint, Load_shedPoint) -> Double
+
+pub fn load_shed_point_dot(Load_shedPoint, Load_shedPoint) -> Double
+
+pub fn load_shed_point_label(Load_shedPoint) -> Int32
+
+pub fn load_shed_point_norm(Load_shedPoint) -> Double
+
+pub fn load_shed_point_scale(Load_shedPoint, Double) -> Load_shedPoint
+
+pub fn load_shed_point_sub(Load_shedPoint, Load_shedPoint) -> Load_shedPoint
+
+pub fn load_shed_point_to_string(Load_shedPoint) -> String
+
+pub fn load_shed_point_x(Load_shedPoint) -> Double
+
+pub fn load_shed_point_y(Load_shedPoint) -> Double
+
+pub fn load_shed_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn load_shed_r2(Array[Double], Array[Double]) -> Double
+
+pub fn load_shed_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn load_shed_series_add(Load_shedSeries, Load_shedSeries) -> Load_shedSeries
+
+pub fn load_shed_series_len(Load_shedSeries) -> Int32
+
+pub fn load_shed_series_max(Load_shedSeries) -> Double
+
+pub fn load_shed_series_mean(Load_shedSeries) -> Double
+
+pub fn load_shed_series_min(Load_shedSeries) -> Double
+
+pub fn load_shed_series_scale(Load_shedSeries, Double) -> Load_shedSeries
+
+pub fn load_shed_series_std(Load_shedSeries) -> Double
+
+pub fn load_shed_series_sum(Load_shedSeries) -> Double
+
+pub fn load_shed_series_to_string(Load_shedSeries) -> String
+
+pub fn load_shed_series_var(Load_shedSeries) -> Double
+
+pub fn load_shed_std(Array[Double]) -> Double
+
+pub fn load_shed_var(Array[Double]) -> Double
+
+pub fn load_shed_vector_add(Load_shedVector, Load_shedVector) -> Load_shedVector
+
+pub fn load_shed_vector_dist(Load_shedVector, Load_shedVector) -> Double
+
+pub fn load_shed_vector_dot(Load_shedVector, Load_shedVector) -> Double
+
+pub fn load_shed_vector_norm(Load_shedVector) -> Double
+
+pub fn load_shed_vector_normalize(Load_shedVector) -> Load_shedVector
+
+pub fn load_shed_vector_scale(Load_shedVector, Double) -> Load_shedVector
+
+pub fn load_shed_vector_sub(Load_shedVector, Load_shedVector) -> Load_shedVector
+
+pub fn load_shed_vector_to_string(Load_shedVector) -> String
+
+pub fn load_shed_vector_zero(Int32) -> Load_shedVector
+
+// Errors
+
+// Types and methods
+pub struct Load_shedMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Load_shedPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Load_shedSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Load_shedVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

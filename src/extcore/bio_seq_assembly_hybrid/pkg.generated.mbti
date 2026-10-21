@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/bio_seq_assembly_hybrid"
+
+// Values
+pub fn bio_seq_assembly_hybrid_buffer_make(Int32) -> BioseqassemblyhybridBuffer
+
+pub fn bio_seq_assembly_hybrid_cluster_make(Int32) -> BioseqassemblyhybridCluster
+
+pub fn bio_seq_assembly_hybrid_cursor_make(Int32) -> BioseqassemblyhybridCursor
+
+pub fn bio_seq_assembly_hybrid_edge_make(Int32) -> BioseqassemblyhybridEdge
+
+pub fn bio_seq_assembly_hybrid_frame_make(Int32) -> BioseqassemblyhybridFrame
+
+pub fn bio_seq_assembly_hybrid_graphn_make(Int32) -> BioseqassemblyhybridGraphN
+
+pub fn bio_seq_assembly_hybrid_layer_make(Int32) -> BioseqassemblyhybridLayer
+
+pub fn bio_seq_assembly_hybrid_make_matrix(Int32, Int32, Double) -> BioseqassemblyhybridMatrix
+
+pub fn bio_seq_assembly_hybrid_make_point(Double, Double) -> BioseqassemblyhybridPoint
+
+pub fn bio_seq_assembly_hybrid_make_point3(Double, Double, Double) -> BioseqassemblyhybridPoint
+
+pub fn bio_seq_assembly_hybrid_make_series(Array[Double], String) -> BioseqassemblyhybridSeries
+
+pub fn bio_seq_assembly_hybrid_make_vector(Array[Double]) -> BioseqassemblyhybridVector
+
+pub fn bio_seq_assembly_hybrid_matrix_identity(Int32) -> BioseqassemblyhybridMatrix
+
+pub fn bio_seq_assembly_hybrid_model_make(Int32) -> BioseqassemblyhybridModel
+
+pub fn bio_seq_assembly_hybrid_node_make(Int32) -> BioseqassemblyhybridNode
+
+pub fn bio_seq_assembly_hybrid_path_make(Int32) -> BioseqassemblyhybridPath
+
+pub fn bio_seq_assembly_hybrid_range_make(Int32) -> BioseqassemblyhybridRange
+
+pub fn bio_seq_assembly_hybrid_slice_make(Int32) -> BioseqassemblyhybridSlice
+
+pub fn bio_seq_assembly_hybrid_table_make(Int32) -> BioseqassemblyhybridTable
+
+pub fn bio_seq_assembly_hybrid_vector_zero(Int32) -> BioseqassemblyhybridVector
+
+pub fn bio_seq_assembly_hybrid_view_make(Int32) -> BioseqassemblyhybridView
+
+// Errors
+
+// Types and methods
+pub(all) struct BioseqassemblyhybridBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblyhybridBuffer::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridBuffer::copy(Self) -> Self
+pub fn BioseqassemblyhybridBuffer::fill(Self, Double) -> Self
+pub fn BioseqassemblyhybridBuffer::get(Self, Int32) -> Double
+pub fn BioseqassemblyhybridBuffer::len(Self) -> Int32
+pub fn BioseqassemblyhybridBuffer::max(Self) -> Double
+pub fn BioseqassemblyhybridBuffer::mean(Self) -> Double
+pub fn BioseqassemblyhybridBuffer::min(Self) -> Double
+pub fn BioseqassemblyhybridBuffer::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridBuffer::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblyhybridBuffer::sum(Self) -> Double
+pub fn BioseqassemblyhybridBuffer::to_string(Self) -> String
+
+pub(all) struct BioseqassemblyhybridCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblyhybridCluster::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridCluster::copy(Self) -> Self
+pub fn BioseqassemblyhybridCluster::fill(Self, Double) -> Self
+pub fn BioseqassemblyhybridCluster::get(Self, Int32) -> Double
+pub fn BioseqassemblyhybridCluster::len(Self) -> Int32
+pub fn BioseqassemblyhybridCluster::max(Self) -> Double
+pub fn BioseqassemblyhybridCluster::mean(Self) -> Double
+pub fn BioseqassemblyhybridCluster::min(Self) -> Double
+pub fn BioseqassemblyhybridCluster::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridCluster::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblyhybridCluster::sum(Self) -> Double
+pub fn BioseqassemblyhybridCluster::to_string(Self) -> String
+
+pub(all) struct BioseqassemblyhybridCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblyhybridCursor::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridCursor::copy(Self) -> Self
+pub fn BioseqassemblyhybridCursor::fill(Self, Double) -> Self
+pub fn BioseqassemblyhybridCursor::get(Self, Int32) -> Double
+pub fn BioseqassemblyhybridCursor::len(Self) -> Int32
+pub fn BioseqassemblyhybridCursor::max(Self) -> Double
+pub fn BioseqassemblyhybridCursor::mean(Self) -> Double
+pub fn BioseqassemblyhybridCursor::min(Self) -> Double
+pub fn BioseqassemblyhybridCursor::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridCursor::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblyhybridCursor::sum(Self) -> Double
+pub fn BioseqassemblyhybridCursor::to_string(Self) -> String
+
+pub(all) struct BioseqassemblyhybridEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblyhybridEdge::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridEdge::copy(Self) -> Self
+pub fn BioseqassemblyhybridEdge::fill(Self, Double) -> Self
+pub fn BioseqassemblyhybridEdge::get(Self, Int32) -> Double
+pub fn BioseqassemblyhybridEdge::len(Self) -> Int32
+pub fn BioseqassemblyhybridEdge::max(Self) -> Double
+pub fn BioseqassemblyhybridEdge::mean(Self) -> Double
+pub fn BioseqassemblyhybridEdge::min(Self) -> Double
+pub fn BioseqassemblyhybridEdge::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridEdge::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblyhybridEdge::sum(Self) -> Double
+pub fn BioseqassemblyhybridEdge::to_string(Self) -> String
+
+pub(all) struct BioseqassemblyhybridFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblyhybridFrame::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridFrame::copy(Self) -> Self
+pub fn BioseqassemblyhybridFrame::fill(Self, Double) -> Self
+pub fn BioseqassemblyhybridFrame::get(Self, Int32) -> Double
+pub fn BioseqassemblyhybridFrame::len(Self) -> Int32
+pub fn BioseqassemblyhybridFrame::max(Self) -> Double
+pub fn BioseqassemblyhybridFrame::mean(Self) -> Double
+pub fn BioseqassemblyhybridFrame::min(Self) -> Double
+pub fn BioseqassemblyhybridFrame::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridFrame::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblyhybridFrame::sum(Self) -> Double
+pub fn BioseqassemblyhybridFrame::to_string(Self) -> String
+
+pub(all) struct BioseqassemblyhybridGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblyhybridGraphN::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridGraphN::copy(Self) -> Self
+pub fn BioseqassemblyhybridGraphN::fill(Self, Double) -> Self
+pub fn BioseqassemblyhybridGraphN::get(Self, Int32) -> Double
+pub fn BioseqassemblyhybridGraphN::len(Self) -> Int32
+pub fn BioseqassemblyhybridGraphN::max(Self) -> Double
+pub fn BioseqassemblyhybridGraphN::mean(Self) -> Double
+pub fn BioseqassemblyhybridGraphN::min(Self) -> Double
+pub fn BioseqassemblyhybridGraphN::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridGraphN::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblyhybridGraphN::sum(Self) -> Double
+pub fn BioseqassemblyhybridGraphN::to_string(Self) -> String
+
+pub(all) struct BioseqassemblyhybridLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblyhybridLayer::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridLayer::copy(Self) -> Self
+pub fn BioseqassemblyhybridLayer::fill(Self, Double) -> Self
+pub fn BioseqassemblyhybridLayer::get(Self, Int32) -> Double
+pub fn BioseqassemblyhybridLayer::len(Self) -> Int32
+pub fn BioseqassemblyhybridLayer::max(Self) -> Double
+pub fn BioseqassemblyhybridLayer::mean(Self) -> Double
+pub fn BioseqassemblyhybridLayer::min(Self) -> Double
+pub fn BioseqassemblyhybridLayer::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridLayer::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblyhybridLayer::sum(Self) -> Double
+pub fn BioseqassemblyhybridLayer::to_string(Self) -> String
+
+pub(all) struct BioseqassemblyhybridMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn BioseqassemblyhybridMatrix::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridMatrix::det(Self) -> Double
+pub fn BioseqassemblyhybridMatrix::get(Self, Int32, Int32) -> Double
+pub fn BioseqassemblyhybridMatrix::multiply(Self, Self) -> Self
+pub fn BioseqassemblyhybridMatrix::norm(Self) -> Double
+pub fn BioseqassemblyhybridMatrix::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridMatrix::to_string(Self) -> String
+pub fn BioseqassemblyhybridMatrix::trace(Self) -> Double
+pub fn BioseqassemblyhybridMatrix::transpose(Self) -> Self
+
+pub(all) struct BioseqassemblyhybridModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblyhybridModel::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridModel::copy(Self) -> Self
+pub fn BioseqassemblyhybridModel::fill(Self, Double) -> Self
+pub fn BioseqassemblyhybridModel::get(Self, Int32) -> Double
+pub fn BioseqassemblyhybridModel::len(Self) -> Int32
+pub fn BioseqassemblyhybridModel::max(Self) -> Double
+pub fn BioseqassemblyhybridModel::mean(Self) -> Double
+pub fn BioseqassemblyhybridModel::min(Self) -> Double
+pub fn BioseqassemblyhybridModel::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridModel::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblyhybridModel::sum(Self) -> Double
+pub fn BioseqassemblyhybridModel::to_string(Self) -> String
+
+pub(all) struct BioseqassemblyhybridNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblyhybridNode::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridNode::copy(Self) -> Self
+pub fn BioseqassemblyhybridNode::fill(Self, Double) -> Self
+pub fn BioseqassemblyhybridNode::get(Self, Int32) -> Double
+pub fn BioseqassemblyhybridNode::len(Self) -> Int32
+pub fn BioseqassemblyhybridNode::max(Self) -> Double
+pub fn BioseqassemblyhybridNode::mean(Self) -> Double
+pub fn BioseqassemblyhybridNode::min(Self) -> Double
+pub fn BioseqassemblyhybridNode::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridNode::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblyhybridNode::sum(Self) -> Double
+pub fn BioseqassemblyhybridNode::to_string(Self) -> String
+
+pub(all) struct BioseqassemblyhybridPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblyhybridPath::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridPath::copy(Self) -> Self
+pub fn BioseqassemblyhybridPath::fill(Self, Double) -> Self
+pub fn BioseqassemblyhybridPath::get(Self, Int32) -> Double
+pub fn BioseqassemblyhybridPath::len(Self) -> Int32
+pub fn BioseqassemblyhybridPath::max(Self) -> Double
+pub fn BioseqassemblyhybridPath::mean(Self) -> Double
+pub fn BioseqassemblyhybridPath::min(Self) -> Double
+pub fn BioseqassemblyhybridPath::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridPath::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblyhybridPath::sum(Self) -> Double
+pub fn BioseqassemblyhybridPath::to_string(Self) -> String
+
+pub(all) struct BioseqassemblyhybridPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn BioseqassemblyhybridPoint::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridPoint::cross(Self, Self) -> Self
+pub fn BioseqassemblyhybridPoint::dist(Self, Self) -> Double
+pub fn BioseqassemblyhybridPoint::dot(Self, Self) -> Double
+pub fn BioseqassemblyhybridPoint::label(Self) -> Int32
+pub fn BioseqassemblyhybridPoint::lerp(Self, Self, Double) -> Self
+pub fn BioseqassemblyhybridPoint::mid(Self, Self) -> Self
+pub fn BioseqassemblyhybridPoint::negate(Self) -> Self
+pub fn BioseqassemblyhybridPoint::norm(Self) -> Double
+pub fn BioseqassemblyhybridPoint::normalize(Self) -> Self
+pub fn BioseqassemblyhybridPoint::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridPoint::sub(Self, Self) -> Self
+pub fn BioseqassemblyhybridPoint::to_string(Self) -> String
+pub fn BioseqassemblyhybridPoint::x(Self) -> Double
+pub fn BioseqassemblyhybridPoint::y(Self) -> Double
+pub fn BioseqassemblyhybridPoint::z(Self) -> Double
+
+pub(all) struct BioseqassemblyhybridRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblyhybridRange::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridRange::copy(Self) -> Self
+pub fn BioseqassemblyhybridRange::fill(Self, Double) -> Self
+pub fn BioseqassemblyhybridRange::get(Self, Int32) -> Double
+pub fn BioseqassemblyhybridRange::len(Self) -> Int32
+pub fn BioseqassemblyhybridRange::max(Self) -> Double
+pub fn BioseqassemblyhybridRange::mean(Self) -> Double
+pub fn BioseqassemblyhybridRange::min(Self) -> Double
+pub fn BioseqassemblyhybridRange::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridRange::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblyhybridRange::sum(Self) -> Double
+pub fn BioseqassemblyhybridRange::to_string(Self) -> String
+
+pub(all) struct BioseqassemblyhybridSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn BioseqassemblyhybridSeries::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridSeries::cumsum(Self) -> Self
+pub fn BioseqassemblyhybridSeries::len(Self) -> Int32
+pub fn BioseqassemblyhybridSeries::max(Self) -> Double
+pub fn BioseqassemblyhybridSeries::mean(Self) -> Double
+pub fn BioseqassemblyhybridSeries::median(Self) -> Double
+pub fn BioseqassemblyhybridSeries::min(Self) -> Double
+pub fn BioseqassemblyhybridSeries::normalize(Self) -> Self
+pub fn BioseqassemblyhybridSeries::range(Self) -> Double
+pub fn BioseqassemblyhybridSeries::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridSeries::std(Self) -> Double
+pub fn BioseqassemblyhybridSeries::sub(Self, Self) -> Self
+pub fn BioseqassemblyhybridSeries::sum(Self) -> Double
+pub fn BioseqassemblyhybridSeries::to_string(Self) -> String
+pub fn BioseqassemblyhybridSeries::variance(Self) -> Double
+
+pub(all) struct BioseqassemblyhybridSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblyhybridSlice::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridSlice::copy(Self) -> Self
+pub fn BioseqassemblyhybridSlice::fill(Self, Double) -> Self
+pub fn BioseqassemblyhybridSlice::get(Self, Int32) -> Double
+pub fn BioseqassemblyhybridSlice::len(Self) -> Int32
+pub fn BioseqassemblyhybridSlice::max(Self) -> Double
+pub fn BioseqassemblyhybridSlice::mean(Self) -> Double
+pub fn BioseqassemblyhybridSlice::min(Self) -> Double
+pub fn BioseqassemblyhybridSlice::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridSlice::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblyhybridSlice::sum(Self) -> Double
+pub fn BioseqassemblyhybridSlice::to_string(Self) -> String
+
+pub(all) struct BioseqassemblyhybridTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblyhybridTable::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridTable::copy(Self) -> Self
+pub fn BioseqassemblyhybridTable::fill(Self, Double) -> Self
+pub fn BioseqassemblyhybridTable::get(Self, Int32) -> Double
+pub fn BioseqassemblyhybridTable::len(Self) -> Int32
+pub fn BioseqassemblyhybridTable::max(Self) -> Double
+pub fn BioseqassemblyhybridTable::mean(Self) -> Double
+pub fn BioseqassemblyhybridTable::min(Self) -> Double
+pub fn BioseqassemblyhybridTable::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridTable::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblyhybridTable::sum(Self) -> Double
+pub fn BioseqassemblyhybridTable::to_string(Self) -> String
+
+pub(all) struct BioseqassemblyhybridVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn BioseqassemblyhybridVector::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridVector::dist(Self, Self) -> Double
+pub fn BioseqassemblyhybridVector::dot(Self, Self) -> Double
+pub fn BioseqassemblyhybridVector::norm(Self) -> Double
+pub fn BioseqassemblyhybridVector::normalize(Self) -> Self
+pub fn BioseqassemblyhybridVector::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridVector::sub(Self, Self) -> Self
+pub fn BioseqassemblyhybridVector::to_string(Self) -> String
+
+pub(all) struct BioseqassemblyhybridView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblyhybridView::add(Self, Self) -> Self
+pub fn BioseqassemblyhybridView::copy(Self) -> Self
+pub fn BioseqassemblyhybridView::fill(Self, Double) -> Self
+pub fn BioseqassemblyhybridView::get(Self, Int32) -> Double
+pub fn BioseqassemblyhybridView::len(Self) -> Int32
+pub fn BioseqassemblyhybridView::max(Self) -> Double
+pub fn BioseqassemblyhybridView::mean(Self) -> Double
+pub fn BioseqassemblyhybridView::min(Self) -> Double
+pub fn BioseqassemblyhybridView::scale(Self, Double) -> Self
+pub fn BioseqassemblyhybridView::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblyhybridView::sum(Self) -> Double
+pub fn BioseqassemblyhybridView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_mechanics_static"
+
+// Values
+pub fn physics_mechanics_static_buffer_make(Int32) -> PhysicsmechanicsstaticBuffer
+
+pub fn physics_mechanics_static_cluster_make(Int32) -> PhysicsmechanicsstaticCluster
+
+pub fn physics_mechanics_static_cursor_make(Int32) -> PhysicsmechanicsstaticCursor
+
+pub fn physics_mechanics_static_edge_make(Int32) -> PhysicsmechanicsstaticEdge
+
+pub fn physics_mechanics_static_frame_make(Int32) -> PhysicsmechanicsstaticFrame
+
+pub fn physics_mechanics_static_graphn_make(Int32) -> PhysicsmechanicsstaticGraphN
+
+pub fn physics_mechanics_static_layer_make(Int32) -> PhysicsmechanicsstaticLayer
+
+pub fn physics_mechanics_static_make_matrix(Int32, Int32, Double) -> PhysicsmechanicsstaticMatrix
+
+pub fn physics_mechanics_static_make_point(Double, Double) -> PhysicsmechanicsstaticPoint
+
+pub fn physics_mechanics_static_make_point3(Double, Double, Double) -> PhysicsmechanicsstaticPoint
+
+pub fn physics_mechanics_static_make_series(Array[Double], String) -> PhysicsmechanicsstaticSeries
+
+pub fn physics_mechanics_static_make_vector(Array[Double]) -> PhysicsmechanicsstaticVector
+
+pub fn physics_mechanics_static_matrix_identity(Int32) -> PhysicsmechanicsstaticMatrix
+
+pub fn physics_mechanics_static_model_make(Int32) -> PhysicsmechanicsstaticModel
+
+pub fn physics_mechanics_static_node_make(Int32) -> PhysicsmechanicsstaticNode
+
+pub fn physics_mechanics_static_path_make(Int32) -> PhysicsmechanicsstaticPath
+
+pub fn physics_mechanics_static_range_make(Int32) -> PhysicsmechanicsstaticRange
+
+pub fn physics_mechanics_static_slice_make(Int32) -> PhysicsmechanicsstaticSlice
+
+pub fn physics_mechanics_static_table_make(Int32) -> PhysicsmechanicsstaticTable
+
+pub fn physics_mechanics_static_vector_zero(Int32) -> PhysicsmechanicsstaticVector
+
+pub fn physics_mechanics_static_view_make(Int32) -> PhysicsmechanicsstaticView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsmechanicsstaticBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsstaticBuffer::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticBuffer::copy(Self) -> Self
+pub fn PhysicsmechanicsstaticBuffer::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticBuffer::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsstaticBuffer::len(Self) -> Int32
+pub fn PhysicsmechanicsstaticBuffer::max(Self) -> Double
+pub fn PhysicsmechanicsstaticBuffer::mean(Self) -> Double
+pub fn PhysicsmechanicsstaticBuffer::min(Self) -> Double
+pub fn PhysicsmechanicsstaticBuffer::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsstaticBuffer::sum(Self) -> Double
+pub fn PhysicsmechanicsstaticBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsstaticCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsstaticCluster::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticCluster::copy(Self) -> Self
+pub fn PhysicsmechanicsstaticCluster::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticCluster::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsstaticCluster::len(Self) -> Int32
+pub fn PhysicsmechanicsstaticCluster::max(Self) -> Double
+pub fn PhysicsmechanicsstaticCluster::mean(Self) -> Double
+pub fn PhysicsmechanicsstaticCluster::min(Self) -> Double
+pub fn PhysicsmechanicsstaticCluster::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsstaticCluster::sum(Self) -> Double
+pub fn PhysicsmechanicsstaticCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsstaticCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsstaticCursor::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticCursor::copy(Self) -> Self
+pub fn PhysicsmechanicsstaticCursor::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticCursor::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsstaticCursor::len(Self) -> Int32
+pub fn PhysicsmechanicsstaticCursor::max(Self) -> Double
+pub fn PhysicsmechanicsstaticCursor::mean(Self) -> Double
+pub fn PhysicsmechanicsstaticCursor::min(Self) -> Double
+pub fn PhysicsmechanicsstaticCursor::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsstaticCursor::sum(Self) -> Double
+pub fn PhysicsmechanicsstaticCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsstaticEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsstaticEdge::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticEdge::copy(Self) -> Self
+pub fn PhysicsmechanicsstaticEdge::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticEdge::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsstaticEdge::len(Self) -> Int32
+pub fn PhysicsmechanicsstaticEdge::max(Self) -> Double
+pub fn PhysicsmechanicsstaticEdge::mean(Self) -> Double
+pub fn PhysicsmechanicsstaticEdge::min(Self) -> Double
+pub fn PhysicsmechanicsstaticEdge::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsstaticEdge::sum(Self) -> Double
+pub fn PhysicsmechanicsstaticEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsstaticFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsstaticFrame::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticFrame::copy(Self) -> Self
+pub fn PhysicsmechanicsstaticFrame::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticFrame::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsstaticFrame::len(Self) -> Int32
+pub fn PhysicsmechanicsstaticFrame::max(Self) -> Double
+pub fn PhysicsmechanicsstaticFrame::mean(Self) -> Double
+pub fn PhysicsmechanicsstaticFrame::min(Self) -> Double
+pub fn PhysicsmechanicsstaticFrame::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsstaticFrame::sum(Self) -> Double
+pub fn PhysicsmechanicsstaticFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsstaticGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsstaticGraphN::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticGraphN::copy(Self) -> Self
+pub fn PhysicsmechanicsstaticGraphN::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticGraphN::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsstaticGraphN::len(Self) -> Int32
+pub fn PhysicsmechanicsstaticGraphN::max(Self) -> Double
+pub fn PhysicsmechanicsstaticGraphN::mean(Self) -> Double
+pub fn PhysicsmechanicsstaticGraphN::min(Self) -> Double
+pub fn PhysicsmechanicsstaticGraphN::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsstaticGraphN::sum(Self) -> Double
+pub fn PhysicsmechanicsstaticGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsstaticLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsstaticLayer::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticLayer::copy(Self) -> Self
+pub fn PhysicsmechanicsstaticLayer::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticLayer::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsstaticLayer::len(Self) -> Int32
+pub fn PhysicsmechanicsstaticLayer::max(Self) -> Double
+pub fn PhysicsmechanicsstaticLayer::mean(Self) -> Double
+pub fn PhysicsmechanicsstaticLayer::min(Self) -> Double
+pub fn PhysicsmechanicsstaticLayer::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsstaticLayer::sum(Self) -> Double
+pub fn PhysicsmechanicsstaticLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsstaticMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsmechanicsstaticMatrix::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticMatrix::det(Self) -> Double
+pub fn PhysicsmechanicsstaticMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsmechanicsstaticMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticMatrix::norm(Self) -> Double
+pub fn PhysicsmechanicsstaticMatrix::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticMatrix::to_string(Self) -> String
+pub fn PhysicsmechanicsstaticMatrix::trace(Self) -> Double
+pub fn PhysicsmechanicsstaticMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsmechanicsstaticModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsstaticModel::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticModel::copy(Self) -> Self
+pub fn PhysicsmechanicsstaticModel::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticModel::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsstaticModel::len(Self) -> Int32
+pub fn PhysicsmechanicsstaticModel::max(Self) -> Double
+pub fn PhysicsmechanicsstaticModel::mean(Self) -> Double
+pub fn PhysicsmechanicsstaticModel::min(Self) -> Double
+pub fn PhysicsmechanicsstaticModel::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsstaticModel::sum(Self) -> Double
+pub fn PhysicsmechanicsstaticModel::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsstaticNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsstaticNode::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticNode::copy(Self) -> Self
+pub fn PhysicsmechanicsstaticNode::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticNode::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsstaticNode::len(Self) -> Int32
+pub fn PhysicsmechanicsstaticNode::max(Self) -> Double
+pub fn PhysicsmechanicsstaticNode::mean(Self) -> Double
+pub fn PhysicsmechanicsstaticNode::min(Self) -> Double
+pub fn PhysicsmechanicsstaticNode::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsstaticNode::sum(Self) -> Double
+pub fn PhysicsmechanicsstaticNode::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsstaticPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsstaticPath::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticPath::copy(Self) -> Self
+pub fn PhysicsmechanicsstaticPath::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticPath::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsstaticPath::len(Self) -> Int32
+pub fn PhysicsmechanicsstaticPath::max(Self) -> Double
+pub fn PhysicsmechanicsstaticPath::mean(Self) -> Double
+pub fn PhysicsmechanicsstaticPath::min(Self) -> Double
+pub fn PhysicsmechanicsstaticPath::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsstaticPath::sum(Self) -> Double
+pub fn PhysicsmechanicsstaticPath::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsstaticPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsmechanicsstaticPoint::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticPoint::cross(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticPoint::dist(Self, Self) -> Double
+pub fn PhysicsmechanicsstaticPoint::dot(Self, Self) -> Double
+pub fn PhysicsmechanicsstaticPoint::label(Self) -> Int32
+pub fn PhysicsmechanicsstaticPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsmechanicsstaticPoint::mid(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticPoint::negate(Self) -> Self
+pub fn PhysicsmechanicsstaticPoint::norm(Self) -> Double
+pub fn PhysicsmechanicsstaticPoint::normalize(Self) -> Self
+pub fn PhysicsmechanicsstaticPoint::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticPoint::sub(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticPoint::to_string(Self) -> String
+pub fn PhysicsmechanicsstaticPoint::x(Self) -> Double
+pub fn PhysicsmechanicsstaticPoint::y(Self) -> Double
+pub fn PhysicsmechanicsstaticPoint::z(Self) -> Double
+
+pub(all) struct PhysicsmechanicsstaticRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsstaticRange::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticRange::copy(Self) -> Self
+pub fn PhysicsmechanicsstaticRange::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticRange::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsstaticRange::len(Self) -> Int32
+pub fn PhysicsmechanicsstaticRange::max(Self) -> Double
+pub fn PhysicsmechanicsstaticRange::mean(Self) -> Double
+pub fn PhysicsmechanicsstaticRange::min(Self) -> Double
+pub fn PhysicsmechanicsstaticRange::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsstaticRange::sum(Self) -> Double
+pub fn PhysicsmechanicsstaticRange::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsstaticSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsmechanicsstaticSeries::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticSeries::cumsum(Self) -> Self
+pub fn PhysicsmechanicsstaticSeries::len(Self) -> Int32
+pub fn PhysicsmechanicsstaticSeries::max(Self) -> Double
+pub fn PhysicsmechanicsstaticSeries::mean(Self) -> Double
+pub fn PhysicsmechanicsstaticSeries::median(Self) -> Double
+pub fn PhysicsmechanicsstaticSeries::min(Self) -> Double
+pub fn PhysicsmechanicsstaticSeries::normalize(Self) -> Self
+pub fn PhysicsmechanicsstaticSeries::range(Self) -> Double
+pub fn PhysicsmechanicsstaticSeries::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticSeries::std(Self) -> Double
+pub fn PhysicsmechanicsstaticSeries::sub(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticSeries::sum(Self) -> Double
+pub fn PhysicsmechanicsstaticSeries::to_string(Self) -> String
+pub fn PhysicsmechanicsstaticSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsmechanicsstaticSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsstaticSlice::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticSlice::copy(Self) -> Self
+pub fn PhysicsmechanicsstaticSlice::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticSlice::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsstaticSlice::len(Self) -> Int32
+pub fn PhysicsmechanicsstaticSlice::max(Self) -> Double
+pub fn PhysicsmechanicsstaticSlice::mean(Self) -> Double
+pub fn PhysicsmechanicsstaticSlice::min(Self) -> Double
+pub fn PhysicsmechanicsstaticSlice::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsstaticSlice::sum(Self) -> Double
+pub fn PhysicsmechanicsstaticSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsstaticTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsstaticTable::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticTable::copy(Self) -> Self
+pub fn PhysicsmechanicsstaticTable::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticTable::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsstaticTable::len(Self) -> Int32
+pub fn PhysicsmechanicsstaticTable::max(Self) -> Double
+pub fn PhysicsmechanicsstaticTable::mean(Self) -> Double
+pub fn PhysicsmechanicsstaticTable::min(Self) -> Double
+pub fn PhysicsmechanicsstaticTable::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsstaticTable::sum(Self) -> Double
+pub fn PhysicsmechanicsstaticTable::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsstaticVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsmechanicsstaticVector::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticVector::dist(Self, Self) -> Double
+pub fn PhysicsmechanicsstaticVector::dot(Self, Self) -> Double
+pub fn PhysicsmechanicsstaticVector::norm(Self) -> Double
+pub fn PhysicsmechanicsstaticVector::normalize(Self) -> Self
+pub fn PhysicsmechanicsstaticVector::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticVector::sub(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticVector::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsstaticView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsstaticView::add(Self, Self) -> Self
+pub fn PhysicsmechanicsstaticView::copy(Self) -> Self
+pub fn PhysicsmechanicsstaticView::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticView::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsstaticView::len(Self) -> Int32
+pub fn PhysicsmechanicsstaticView::max(Self) -> Double
+pub fn PhysicsmechanicsstaticView::mean(Self) -> Double
+pub fn PhysicsmechanicsstaticView::min(Self) -> Double
+pub fn PhysicsmechanicsstaticView::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsstaticView::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsstaticView::sum(Self) -> Double
+pub fn PhysicsmechanicsstaticView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

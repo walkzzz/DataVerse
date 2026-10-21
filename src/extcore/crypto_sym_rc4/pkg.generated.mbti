@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/crypto_sym_rc4"
+
+// Values
+pub fn crypto_sym_rc4_buffer_make(Int32) -> Cryptosymrc4Buffer
+
+pub fn crypto_sym_rc4_cluster_make(Int32) -> Cryptosymrc4Cluster
+
+pub fn crypto_sym_rc4_cursor_make(Int32) -> Cryptosymrc4Cursor
+
+pub fn crypto_sym_rc4_edge_make(Int32) -> Cryptosymrc4Edge
+
+pub fn crypto_sym_rc4_frame_make(Int32) -> Cryptosymrc4Frame
+
+pub fn crypto_sym_rc4_graphn_make(Int32) -> Cryptosymrc4GraphN
+
+pub fn crypto_sym_rc4_layer_make(Int32) -> Cryptosymrc4Layer
+
+pub fn crypto_sym_rc4_make_matrix(Int32, Int32, Double) -> Cryptosymrc4Matrix
+
+pub fn crypto_sym_rc4_make_point(Double, Double) -> Cryptosymrc4Point
+
+pub fn crypto_sym_rc4_make_point3(Double, Double, Double) -> Cryptosymrc4Point
+
+pub fn crypto_sym_rc4_make_series(Array[Double], String) -> Cryptosymrc4Series
+
+pub fn crypto_sym_rc4_make_vector(Array[Double]) -> Cryptosymrc4Vector
+
+pub fn crypto_sym_rc4_matrix_identity(Int32) -> Cryptosymrc4Matrix
+
+pub fn crypto_sym_rc4_model_make(Int32) -> Cryptosymrc4Model
+
+pub fn crypto_sym_rc4_node_make(Int32) -> Cryptosymrc4Node
+
+pub fn crypto_sym_rc4_path_make(Int32) -> Cryptosymrc4Path
+
+pub fn crypto_sym_rc4_range_make(Int32) -> Cryptosymrc4Range
+
+pub fn crypto_sym_rc4_slice_make(Int32) -> Cryptosymrc4Slice
+
+pub fn crypto_sym_rc4_table_make(Int32) -> Cryptosymrc4Table
+
+pub fn crypto_sym_rc4_vector_zero(Int32) -> Cryptosymrc4Vector
+
+pub fn crypto_sym_rc4_view_make(Int32) -> Cryptosymrc4View
+
+// Errors
+
+// Types and methods
+pub(all) struct Cryptosymrc4Buffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptosymrc4Buffer::add(Self, Self) -> Self
+pub fn Cryptosymrc4Buffer::copy(Self) -> Self
+pub fn Cryptosymrc4Buffer::fill(Self, Double) -> Self
+pub fn Cryptosymrc4Buffer::get(Self, Int32) -> Double
+pub fn Cryptosymrc4Buffer::len(Self) -> Int32
+pub fn Cryptosymrc4Buffer::max(Self) -> Double
+pub fn Cryptosymrc4Buffer::mean(Self) -> Double
+pub fn Cryptosymrc4Buffer::min(Self) -> Double
+pub fn Cryptosymrc4Buffer::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Buffer::set(Self, Int32, Double) -> Self
+pub fn Cryptosymrc4Buffer::sum(Self) -> Double
+pub fn Cryptosymrc4Buffer::to_string(Self) -> String
+
+pub(all) struct Cryptosymrc4Cluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptosymrc4Cluster::add(Self, Self) -> Self
+pub fn Cryptosymrc4Cluster::copy(Self) -> Self
+pub fn Cryptosymrc4Cluster::fill(Self, Double) -> Self
+pub fn Cryptosymrc4Cluster::get(Self, Int32) -> Double
+pub fn Cryptosymrc4Cluster::len(Self) -> Int32
+pub fn Cryptosymrc4Cluster::max(Self) -> Double
+pub fn Cryptosymrc4Cluster::mean(Self) -> Double
+pub fn Cryptosymrc4Cluster::min(Self) -> Double
+pub fn Cryptosymrc4Cluster::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Cluster::set(Self, Int32, Double) -> Self
+pub fn Cryptosymrc4Cluster::sum(Self) -> Double
+pub fn Cryptosymrc4Cluster::to_string(Self) -> String
+
+pub(all) struct Cryptosymrc4Cursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptosymrc4Cursor::add(Self, Self) -> Self
+pub fn Cryptosymrc4Cursor::copy(Self) -> Self
+pub fn Cryptosymrc4Cursor::fill(Self, Double) -> Self
+pub fn Cryptosymrc4Cursor::get(Self, Int32) -> Double
+pub fn Cryptosymrc4Cursor::len(Self) -> Int32
+pub fn Cryptosymrc4Cursor::max(Self) -> Double
+pub fn Cryptosymrc4Cursor::mean(Self) -> Double
+pub fn Cryptosymrc4Cursor::min(Self) -> Double
+pub fn Cryptosymrc4Cursor::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Cursor::set(Self, Int32, Double) -> Self
+pub fn Cryptosymrc4Cursor::sum(Self) -> Double
+pub fn Cryptosymrc4Cursor::to_string(Self) -> String
+
+pub(all) struct Cryptosymrc4Edge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptosymrc4Edge::add(Self, Self) -> Self
+pub fn Cryptosymrc4Edge::copy(Self) -> Self
+pub fn Cryptosymrc4Edge::fill(Self, Double) -> Self
+pub fn Cryptosymrc4Edge::get(Self, Int32) -> Double
+pub fn Cryptosymrc4Edge::len(Self) -> Int32
+pub fn Cryptosymrc4Edge::max(Self) -> Double
+pub fn Cryptosymrc4Edge::mean(Self) -> Double
+pub fn Cryptosymrc4Edge::min(Self) -> Double
+pub fn Cryptosymrc4Edge::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Edge::set(Self, Int32, Double) -> Self
+pub fn Cryptosymrc4Edge::sum(Self) -> Double
+pub fn Cryptosymrc4Edge::to_string(Self) -> String
+
+pub(all) struct Cryptosymrc4Frame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptosymrc4Frame::add(Self, Self) -> Self
+pub fn Cryptosymrc4Frame::copy(Self) -> Self
+pub fn Cryptosymrc4Frame::fill(Self, Double) -> Self
+pub fn Cryptosymrc4Frame::get(Self, Int32) -> Double
+pub fn Cryptosymrc4Frame::len(Self) -> Int32
+pub fn Cryptosymrc4Frame::max(Self) -> Double
+pub fn Cryptosymrc4Frame::mean(Self) -> Double
+pub fn Cryptosymrc4Frame::min(Self) -> Double
+pub fn Cryptosymrc4Frame::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Frame::set(Self, Int32, Double) -> Self
+pub fn Cryptosymrc4Frame::sum(Self) -> Double
+pub fn Cryptosymrc4Frame::to_string(Self) -> String
+
+pub(all) struct Cryptosymrc4GraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptosymrc4GraphN::add(Self, Self) -> Self
+pub fn Cryptosymrc4GraphN::copy(Self) -> Self
+pub fn Cryptosymrc4GraphN::fill(Self, Double) -> Self
+pub fn Cryptosymrc4GraphN::get(Self, Int32) -> Double
+pub fn Cryptosymrc4GraphN::len(Self) -> Int32
+pub fn Cryptosymrc4GraphN::max(Self) -> Double
+pub fn Cryptosymrc4GraphN::mean(Self) -> Double
+pub fn Cryptosymrc4GraphN::min(Self) -> Double
+pub fn Cryptosymrc4GraphN::scale(Self, Double) -> Self
+pub fn Cryptosymrc4GraphN::set(Self, Int32, Double) -> Self
+pub fn Cryptosymrc4GraphN::sum(Self) -> Double
+pub fn Cryptosymrc4GraphN::to_string(Self) -> String
+
+pub(all) struct Cryptosymrc4Layer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptosymrc4Layer::add(Self, Self) -> Self
+pub fn Cryptosymrc4Layer::copy(Self) -> Self
+pub fn Cryptosymrc4Layer::fill(Self, Double) -> Self
+pub fn Cryptosymrc4Layer::get(Self, Int32) -> Double
+pub fn Cryptosymrc4Layer::len(Self) -> Int32
+pub fn Cryptosymrc4Layer::max(Self) -> Double
+pub fn Cryptosymrc4Layer::mean(Self) -> Double
+pub fn Cryptosymrc4Layer::min(Self) -> Double
+pub fn Cryptosymrc4Layer::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Layer::set(Self, Int32, Double) -> Self
+pub fn Cryptosymrc4Layer::sum(Self) -> Double
+pub fn Cryptosymrc4Layer::to_string(Self) -> String
+
+pub(all) struct Cryptosymrc4Matrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn Cryptosymrc4Matrix::add(Self, Self) -> Self
+pub fn Cryptosymrc4Matrix::det(Self) -> Double
+pub fn Cryptosymrc4Matrix::get(Self, Int32, Int32) -> Double
+pub fn Cryptosymrc4Matrix::multiply(Self, Self) -> Self
+pub fn Cryptosymrc4Matrix::norm(Self) -> Double
+pub fn Cryptosymrc4Matrix::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Matrix::to_string(Self) -> String
+pub fn Cryptosymrc4Matrix::trace(Self) -> Double
+pub fn Cryptosymrc4Matrix::transpose(Self) -> Self
+
+pub(all) struct Cryptosymrc4Model {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptosymrc4Model::add(Self, Self) -> Self
+pub fn Cryptosymrc4Model::copy(Self) -> Self
+pub fn Cryptosymrc4Model::fill(Self, Double) -> Self
+pub fn Cryptosymrc4Model::get(Self, Int32) -> Double
+pub fn Cryptosymrc4Model::len(Self) -> Int32
+pub fn Cryptosymrc4Model::max(Self) -> Double
+pub fn Cryptosymrc4Model::mean(Self) -> Double
+pub fn Cryptosymrc4Model::min(Self) -> Double
+pub fn Cryptosymrc4Model::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Model::set(Self, Int32, Double) -> Self
+pub fn Cryptosymrc4Model::sum(Self) -> Double
+pub fn Cryptosymrc4Model::to_string(Self) -> String
+
+pub(all) struct Cryptosymrc4Node {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptosymrc4Node::add(Self, Self) -> Self
+pub fn Cryptosymrc4Node::copy(Self) -> Self
+pub fn Cryptosymrc4Node::fill(Self, Double) -> Self
+pub fn Cryptosymrc4Node::get(Self, Int32) -> Double
+pub fn Cryptosymrc4Node::len(Self) -> Int32
+pub fn Cryptosymrc4Node::max(Self) -> Double
+pub fn Cryptosymrc4Node::mean(Self) -> Double
+pub fn Cryptosymrc4Node::min(Self) -> Double
+pub fn Cryptosymrc4Node::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Node::set(Self, Int32, Double) -> Self
+pub fn Cryptosymrc4Node::sum(Self) -> Double
+pub fn Cryptosymrc4Node::to_string(Self) -> String
+
+pub(all) struct Cryptosymrc4Path {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptosymrc4Path::add(Self, Self) -> Self
+pub fn Cryptosymrc4Path::copy(Self) -> Self
+pub fn Cryptosymrc4Path::fill(Self, Double) -> Self
+pub fn Cryptosymrc4Path::get(Self, Int32) -> Double
+pub fn Cryptosymrc4Path::len(Self) -> Int32
+pub fn Cryptosymrc4Path::max(Self) -> Double
+pub fn Cryptosymrc4Path::mean(Self) -> Double
+pub fn Cryptosymrc4Path::min(Self) -> Double
+pub fn Cryptosymrc4Path::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Path::set(Self, Int32, Double) -> Self
+pub fn Cryptosymrc4Path::sum(Self) -> Double
+pub fn Cryptosymrc4Path::to_string(Self) -> String
+
+pub(all) struct Cryptosymrc4Point {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn Cryptosymrc4Point::add(Self, Self) -> Self
+pub fn Cryptosymrc4Point::cross(Self, Self) -> Self
+pub fn Cryptosymrc4Point::dist(Self, Self) -> Double
+pub fn Cryptosymrc4Point::dot(Self, Self) -> Double
+pub fn Cryptosymrc4Point::label(Self) -> Int32
+pub fn Cryptosymrc4Point::lerp(Self, Self, Double) -> Self
+pub fn Cryptosymrc4Point::mid(Self, Self) -> Self
+pub fn Cryptosymrc4Point::negate(Self) -> Self
+pub fn Cryptosymrc4Point::norm(Self) -> Double
+pub fn Cryptosymrc4Point::normalize(Self) -> Self
+pub fn Cryptosymrc4Point::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Point::sub(Self, Self) -> Self
+pub fn Cryptosymrc4Point::to_string(Self) -> String
+pub fn Cryptosymrc4Point::x(Self) -> Double
+pub fn Cryptosymrc4Point::y(Self) -> Double
+pub fn Cryptosymrc4Point::z(Self) -> Double
+
+pub(all) struct Cryptosymrc4Range {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptosymrc4Range::add(Self, Self) -> Self
+pub fn Cryptosymrc4Range::copy(Self) -> Self
+pub fn Cryptosymrc4Range::fill(Self, Double) -> Self
+pub fn Cryptosymrc4Range::get(Self, Int32) -> Double
+pub fn Cryptosymrc4Range::len(Self) -> Int32
+pub fn Cryptosymrc4Range::max(Self) -> Double
+pub fn Cryptosymrc4Range::mean(Self) -> Double
+pub fn Cryptosymrc4Range::min(Self) -> Double
+pub fn Cryptosymrc4Range::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Range::set(Self, Int32, Double) -> Self
+pub fn Cryptosymrc4Range::sum(Self) -> Double
+pub fn Cryptosymrc4Range::to_string(Self) -> String
+
+pub(all) struct Cryptosymrc4Series {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn Cryptosymrc4Series::add(Self, Self) -> Self
+pub fn Cryptosymrc4Series::cumsum(Self) -> Self
+pub fn Cryptosymrc4Series::len(Self) -> Int32
+pub fn Cryptosymrc4Series::max(Self) -> Double
+pub fn Cryptosymrc4Series::mean(Self) -> Double
+pub fn Cryptosymrc4Series::median(Self) -> Double
+pub fn Cryptosymrc4Series::min(Self) -> Double
+pub fn Cryptosymrc4Series::normalize(Self) -> Self
+pub fn Cryptosymrc4Series::range(Self) -> Double
+pub fn Cryptosymrc4Series::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Series::std(Self) -> Double
+pub fn Cryptosymrc4Series::sub(Self, Self) -> Self
+pub fn Cryptosymrc4Series::sum(Self) -> Double
+pub fn Cryptosymrc4Series::to_string(Self) -> String
+pub fn Cryptosymrc4Series::variance(Self) -> Double
+
+pub(all) struct Cryptosymrc4Slice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptosymrc4Slice::add(Self, Self) -> Self
+pub fn Cryptosymrc4Slice::copy(Self) -> Self
+pub fn Cryptosymrc4Slice::fill(Self, Double) -> Self
+pub fn Cryptosymrc4Slice::get(Self, Int32) -> Double
+pub fn Cryptosymrc4Slice::len(Self) -> Int32
+pub fn Cryptosymrc4Slice::max(Self) -> Double
+pub fn Cryptosymrc4Slice::mean(Self) -> Double
+pub fn Cryptosymrc4Slice::min(Self) -> Double
+pub fn Cryptosymrc4Slice::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Slice::set(Self, Int32, Double) -> Self
+pub fn Cryptosymrc4Slice::sum(Self) -> Double
+pub fn Cryptosymrc4Slice::to_string(Self) -> String
+
+pub(all) struct Cryptosymrc4Table {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptosymrc4Table::add(Self, Self) -> Self
+pub fn Cryptosymrc4Table::copy(Self) -> Self
+pub fn Cryptosymrc4Table::fill(Self, Double) -> Self
+pub fn Cryptosymrc4Table::get(Self, Int32) -> Double
+pub fn Cryptosymrc4Table::len(Self) -> Int32
+pub fn Cryptosymrc4Table::max(Self) -> Double
+pub fn Cryptosymrc4Table::mean(Self) -> Double
+pub fn Cryptosymrc4Table::min(Self) -> Double
+pub fn Cryptosymrc4Table::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Table::set(Self, Int32, Double) -> Self
+pub fn Cryptosymrc4Table::sum(Self) -> Double
+pub fn Cryptosymrc4Table::to_string(Self) -> String
+
+pub(all) struct Cryptosymrc4Vector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn Cryptosymrc4Vector::add(Self, Self) -> Self
+pub fn Cryptosymrc4Vector::dist(Self, Self) -> Double
+pub fn Cryptosymrc4Vector::dot(Self, Self) -> Double
+pub fn Cryptosymrc4Vector::norm(Self) -> Double
+pub fn Cryptosymrc4Vector::normalize(Self) -> Self
+pub fn Cryptosymrc4Vector::scale(Self, Double) -> Self
+pub fn Cryptosymrc4Vector::sub(Self, Self) -> Self
+pub fn Cryptosymrc4Vector::to_string(Self) -> String
+
+pub(all) struct Cryptosymrc4View {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptosymrc4View::add(Self, Self) -> Self
+pub fn Cryptosymrc4View::copy(Self) -> Self
+pub fn Cryptosymrc4View::fill(Self, Double) -> Self
+pub fn Cryptosymrc4View::get(Self, Int32) -> Double
+pub fn Cryptosymrc4View::len(Self) -> Int32
+pub fn Cryptosymrc4View::max(Self) -> Double
+pub fn Cryptosymrc4View::mean(Self) -> Double
+pub fn Cryptosymrc4View::min(Self) -> Double
+pub fn Cryptosymrc4View::scale(Self, Double) -> Self
+pub fn Cryptosymrc4View::set(Self, Int32, Double) -> Self
+pub fn Cryptosymrc4View::sum(Self) -> Double
+pub fn Cryptosymrc4View::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

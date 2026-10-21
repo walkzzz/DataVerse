@@ -1,0 +1,259 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/automl"
+
+// Values
+pub fn automl_fit(AutoMlConfig, ModelSearchSpace, (String, Array[(String, Double)]) -> Double) -> AutoMlReport
+
+pub fn automl_id() -> String
+
+pub fn automl_leaderboard(AutoMlReport) -> Array[(String, Double)]
+
+pub fn automl_predict(AutoMlReport, (String, Array[Double]) -> Double, Array[Double]) -> Double
+
+pub fn automl_report(AutoMlReport) -> String
+
+pub fn automl_save(AutoMlReport) -> String
+
+pub fn automl_search(AutoMlConfig, ModelSearchSpace, (String, Array[(String, Double)]) -> Double) -> Array[ModelCandidate]
+
+pub fn data_aware_recommend(DataAware, ModelSearchSpace) -> Array[String]
+
+pub fn data_profile_automl(Array[Array[Double]], Array[Int32]) -> DataAware
+
+pub fn ensemble_evaluate(AutoMlEnsemble, (Array[ModelCandidate], Array[Double]) -> Double) -> AutoMlEnsemble
+
+pub fn ensemble_generate(Array[ModelCandidate], String) -> AutoMlEnsemble
+
+pub fn hpo_distributed(HpoAutoMl, (String, Array[(String, Double)]) -> Double, Int32, Int32) -> HpoAutoMl
+
+pub fn hpo_parallel(HpoAutoMl, (String, Array[(String, Double)]) -> Double, Int32, Int32) -> HpoAutoMl
+
+pub fn hpo_run(HpoAutoMl, (String, Array[(String, Double)]) -> Double, Int32) -> HpoAutoMl
+
+pub fn interpret_score(Interpretable) -> Double
+
+pub fn interpret_tradeoff(Interpretable, Double) -> Interpretable
+
+pub fn make_automl_config(Double, Int32, Int32, String, String, Int32, Int32, Int32, Bool) -> AutoMlConfig
+
+pub fn make_automl_pipeline(Array[PipelineStep], Int32) -> AutoMlPipeline
+
+pub fn make_data_aware(Int32, Int32, Int32, Array[String], Double, Double) -> DataAware
+
+pub fn make_ensemble_search(Array[ModelCandidate], Int32) -> Array[AutoMlEnsemble]
+
+pub fn make_hpo_automl(AutoMlConfig, ModelSearchSpace) -> HpoAutoMl
+
+pub fn make_interpretable(Double, Double, Double) -> Interpretable
+
+pub fn make_meta_learner() -> MetaLearner
+
+pub fn make_model_search_space(Array[String], Array[String], Array[String], Array[String], Array[String]) -> ModelSearchSpace
+
+pub fn make_naive_search(ModelSearchSpace, Int32) -> Array[String]
+
+pub fn make_neural_search(Int32, Int32, Int32) -> Array[NeuralArchitecture]
+
+pub fn make_pipeline_search(ModelSearchSpace, Int32) -> Array[AutoMlPipeline]
+
+pub fn make_progressive_search(Int32, Int32, Double) -> ProgressiveSearch
+
+pub fn make_resource_aware(Int32, Int32, Int32, Double) -> ResourceAware
+
+pub fn make_robust_automl(Array[ModelCandidate], Double, Int32) -> RobustAutoMl
+
+pub fn make_time_aware(Double, Double) -> TimeAware
+
+pub fn meta_learn_features(MetaLearner, DataAware) -> MetaLearner
+
+pub fn meta_predict_performance(MetaLearner, String) -> Double
+
+pub fn model_selection(Array[ModelCandidate], String, Double) -> ModelSelection
+
+pub fn naive_enumerate(Array[String], Array[Array[(String, Double)]]) -> Array[(String, Array[(String, Double)])]
+
+pub fn naive_evaluate(Array[(String, Array[(String, Double)])], (String, Array[(String, Double)]) -> Double) -> Array[ModelCandidate]
+
+pub fn neural_arch_optimize(NeuralArchitecture, (NeuralArchitecture) -> Double, Int32, Int32) -> NeuralArchitecture
+
+pub fn neural_arch_search(Int32, Int32, (NeuralArchitecture) -> Double, Int32, Int32) -> NeuralArchitecture
+
+pub fn pipeline_evaluate(AutoMlPipeline, (Array[PipelineStep]) -> Double) -> AutoMlPipeline
+
+pub fn pipeline_generate(ModelSearchSpace, Int32) -> AutoMlPipeline
+
+pub fn pipeline_optimize(AutoMlPipeline, (Array[PipelineStep]) -> Double, Int32) -> AutoMlPipeline
+
+pub fn pipeline_steps(AutoMlPipeline) -> Array[PipelineStep]
+
+pub fn progressive_refine(ProgressiveSearch, Array[ModelCandidate]) -> ProgressiveSearch
+
+pub fn progressive_stop(ProgressiveSearch) -> Bool
+
+pub fn resource_allocate(ResourceAware, Array[String]) -> ResourceAware
+
+pub fn resource_budget(ResourceAware) -> Double
+
+pub fn robust_evaluate(RobustAutoMl, Double) -> Double
+
+pub fn robust_select(RobustAutoMl) -> ModelCandidate
+
+pub fn search_classifiers(ModelSearchSpace, Int32) -> Array[String]
+
+pub fn search_feature_eng(ModelSearchSpace, Int32) -> Array[String]
+
+pub fn search_postprocessing(ModelSearchSpace, Int32) -> Array[String]
+
+pub fn search_preprocessing(ModelSearchSpace, Int32) -> Array[String]
+
+pub fn search_regressors(ModelSearchSpace, Int32) -> Array[String]
+
+pub fn select_best(ModelSelection) -> ModelCandidate
+
+pub fn select_diverse(ModelSelection, Int32) -> Array[ModelCandidate]
+
+pub fn select_top_k(ModelSelection, Int32) -> Array[ModelCandidate]
+
+pub fn time_budget(TimeAware) -> Int32
+
+pub fn time_estimate(TimeAware, Int32) -> Double
+
+// Errors
+
+// Types and methods
+pub(all) struct AutoMlConfig {
+  time_limit : Double
+  n_jobs : Int32
+  seed : Int32
+  metric : String
+  task_type : String
+  ensemble_size : Int32
+  n_folds : Int32
+  max_models : Int32
+  verbose : Bool
+}
+
+pub(all) struct AutoMlEnsemble {
+  ensemble_id : Int32
+  models : Array[ModelCandidate]
+  weights : Array[Double]
+  score : Double
+  combination : String
+}
+
+pub(all) struct AutoMlPipeline {
+  pipeline_id : Int32
+  steps : Array[PipelineStep]
+  score : Double
+  fitted : Bool
+}
+
+pub(all) struct AutoMlReport {
+  best_model : String
+  best_score : Double
+  n_models_tried : Int32
+  total_time : Double
+  leaderboard : Array[(String, Double)]
+  config : AutoMlConfig
+}
+
+pub(all) struct DataAware {
+  n_samples : Int32
+  n_features : Int32
+  n_classes : Int32
+  feature_types : Array[String]
+  missing_ratio : Double
+  imbalance_ratio : Double
+}
+
+pub(all) struct HpoAutoMl {
+  config : AutoMlConfig
+  search_space : ModelSearchSpace
+  trials : Array[ModelCandidate]
+  best_model : ModelCandidate
+}
+
+pub(all) struct Interpretable {
+  interpretability_score : Double
+  accuracy_score : Double
+  tradeoff_alpha : Double
+}
+
+pub(all) struct MetaLearner {
+  dataset_features : Array[Double]
+  model_performances : Array[(String, Double)]
+  trained : Bool
+}
+
+pub(all) struct ModelCandidate {
+  name : String
+  model_type : String
+  params : Array[(String, Double)]
+  score : Double
+  fit_time : Double
+  predict_time : Double
+  complexity : Int32
+}
+
+pub(all) struct ModelSearchSpace {
+  classifiers : Array[String]
+  regressors : Array[String]
+  preprocessing : Array[String]
+  feature_eng : Array[String]
+  postprocessing : Array[String]
+}
+
+pub(all) struct ModelSelection {
+  candidates : Array[ModelCandidate]
+  selection_criteria : String
+  diversity_weight : Double
+}
+
+pub(all) struct NeuralArchitecture {
+  arch_id : Int32
+  layers : Array[Int32]
+  activations : Array[String]
+  connections : Array[(Int32, Int32)]
+  score : Double
+  params_count : Int32
+}
+
+pub(all) struct PipelineStep {
+  step_name : String
+  step_type : String
+  params : Array[(String, Double)]
+}
+
+pub(all) struct ProgressiveSearch {
+  stage : Int32
+  n_stages : Int32
+  candidates_per_stage : Int32
+  refine_factor : Double
+  current_best : Double
+}
+
+pub(all) struct ResourceAware {
+  cpu_budget : Int32
+  memory_budget : Int32
+  gpu_count : Int32
+  time_budget : Double
+  allocated : Array[(String, Int32)]
+}
+
+pub(all) struct RobustAutoMl {
+  candidates : Array[ModelCandidate]
+  noise_tolerance : Double
+  cv_folds : Int32
+  worst_case_score : Double
+}
+
+pub(all) struct TimeAware {
+  total_budget : Double
+  elapsed : Double
+  per_model_estimate : Double
+  remaining : Double
+}
+
+// Type aliases
+
+// Traits

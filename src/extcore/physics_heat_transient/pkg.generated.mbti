@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_heat_transient"
+
+// Values
+pub fn physics_heat_transient_buffer_make(Int32) -> PhysicsheattransientBuffer
+
+pub fn physics_heat_transient_cluster_make(Int32) -> PhysicsheattransientCluster
+
+pub fn physics_heat_transient_cursor_make(Int32) -> PhysicsheattransientCursor
+
+pub fn physics_heat_transient_edge_make(Int32) -> PhysicsheattransientEdge
+
+pub fn physics_heat_transient_frame_make(Int32) -> PhysicsheattransientFrame
+
+pub fn physics_heat_transient_graphn_make(Int32) -> PhysicsheattransientGraphN
+
+pub fn physics_heat_transient_layer_make(Int32) -> PhysicsheattransientLayer
+
+pub fn physics_heat_transient_make_matrix(Int32, Int32, Double) -> PhysicsheattransientMatrix
+
+pub fn physics_heat_transient_make_point(Double, Double) -> PhysicsheattransientPoint
+
+pub fn physics_heat_transient_make_point3(Double, Double, Double) -> PhysicsheattransientPoint
+
+pub fn physics_heat_transient_make_series(Array[Double], String) -> PhysicsheattransientSeries
+
+pub fn physics_heat_transient_make_vector(Array[Double]) -> PhysicsheattransientVector
+
+pub fn physics_heat_transient_matrix_identity(Int32) -> PhysicsheattransientMatrix
+
+pub fn physics_heat_transient_model_make(Int32) -> PhysicsheattransientModel
+
+pub fn physics_heat_transient_node_make(Int32) -> PhysicsheattransientNode
+
+pub fn physics_heat_transient_path_make(Int32) -> PhysicsheattransientPath
+
+pub fn physics_heat_transient_range_make(Int32) -> PhysicsheattransientRange
+
+pub fn physics_heat_transient_slice_make(Int32) -> PhysicsheattransientSlice
+
+pub fn physics_heat_transient_table_make(Int32) -> PhysicsheattransientTable
+
+pub fn physics_heat_transient_vector_zero(Int32) -> PhysicsheattransientVector
+
+pub fn physics_heat_transient_view_make(Int32) -> PhysicsheattransientView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsheattransientBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheattransientBuffer::add(Self, Self) -> Self
+pub fn PhysicsheattransientBuffer::copy(Self) -> Self
+pub fn PhysicsheattransientBuffer::fill(Self, Double) -> Self
+pub fn PhysicsheattransientBuffer::get(Self, Int32) -> Double
+pub fn PhysicsheattransientBuffer::len(Self) -> Int32
+pub fn PhysicsheattransientBuffer::max(Self) -> Double
+pub fn PhysicsheattransientBuffer::mean(Self) -> Double
+pub fn PhysicsheattransientBuffer::min(Self) -> Double
+pub fn PhysicsheattransientBuffer::scale(Self, Double) -> Self
+pub fn PhysicsheattransientBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheattransientBuffer::sum(Self) -> Double
+pub fn PhysicsheattransientBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsheattransientCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheattransientCluster::add(Self, Self) -> Self
+pub fn PhysicsheattransientCluster::copy(Self) -> Self
+pub fn PhysicsheattransientCluster::fill(Self, Double) -> Self
+pub fn PhysicsheattransientCluster::get(Self, Int32) -> Double
+pub fn PhysicsheattransientCluster::len(Self) -> Int32
+pub fn PhysicsheattransientCluster::max(Self) -> Double
+pub fn PhysicsheattransientCluster::mean(Self) -> Double
+pub fn PhysicsheattransientCluster::min(Self) -> Double
+pub fn PhysicsheattransientCluster::scale(Self, Double) -> Self
+pub fn PhysicsheattransientCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsheattransientCluster::sum(Self) -> Double
+pub fn PhysicsheattransientCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsheattransientCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheattransientCursor::add(Self, Self) -> Self
+pub fn PhysicsheattransientCursor::copy(Self) -> Self
+pub fn PhysicsheattransientCursor::fill(Self, Double) -> Self
+pub fn PhysicsheattransientCursor::get(Self, Int32) -> Double
+pub fn PhysicsheattransientCursor::len(Self) -> Int32
+pub fn PhysicsheattransientCursor::max(Self) -> Double
+pub fn PhysicsheattransientCursor::mean(Self) -> Double
+pub fn PhysicsheattransientCursor::min(Self) -> Double
+pub fn PhysicsheattransientCursor::scale(Self, Double) -> Self
+pub fn PhysicsheattransientCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsheattransientCursor::sum(Self) -> Double
+pub fn PhysicsheattransientCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsheattransientEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheattransientEdge::add(Self, Self) -> Self
+pub fn PhysicsheattransientEdge::copy(Self) -> Self
+pub fn PhysicsheattransientEdge::fill(Self, Double) -> Self
+pub fn PhysicsheattransientEdge::get(Self, Int32) -> Double
+pub fn PhysicsheattransientEdge::len(Self) -> Int32
+pub fn PhysicsheattransientEdge::max(Self) -> Double
+pub fn PhysicsheattransientEdge::mean(Self) -> Double
+pub fn PhysicsheattransientEdge::min(Self) -> Double
+pub fn PhysicsheattransientEdge::scale(Self, Double) -> Self
+pub fn PhysicsheattransientEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsheattransientEdge::sum(Self) -> Double
+pub fn PhysicsheattransientEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsheattransientFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheattransientFrame::add(Self, Self) -> Self
+pub fn PhysicsheattransientFrame::copy(Self) -> Self
+pub fn PhysicsheattransientFrame::fill(Self, Double) -> Self
+pub fn PhysicsheattransientFrame::get(Self, Int32) -> Double
+pub fn PhysicsheattransientFrame::len(Self) -> Int32
+pub fn PhysicsheattransientFrame::max(Self) -> Double
+pub fn PhysicsheattransientFrame::mean(Self) -> Double
+pub fn PhysicsheattransientFrame::min(Self) -> Double
+pub fn PhysicsheattransientFrame::scale(Self, Double) -> Self
+pub fn PhysicsheattransientFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsheattransientFrame::sum(Self) -> Double
+pub fn PhysicsheattransientFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsheattransientGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheattransientGraphN::add(Self, Self) -> Self
+pub fn PhysicsheattransientGraphN::copy(Self) -> Self
+pub fn PhysicsheattransientGraphN::fill(Self, Double) -> Self
+pub fn PhysicsheattransientGraphN::get(Self, Int32) -> Double
+pub fn PhysicsheattransientGraphN::len(Self) -> Int32
+pub fn PhysicsheattransientGraphN::max(Self) -> Double
+pub fn PhysicsheattransientGraphN::mean(Self) -> Double
+pub fn PhysicsheattransientGraphN::min(Self) -> Double
+pub fn PhysicsheattransientGraphN::scale(Self, Double) -> Self
+pub fn PhysicsheattransientGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsheattransientGraphN::sum(Self) -> Double
+pub fn PhysicsheattransientGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsheattransientLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheattransientLayer::add(Self, Self) -> Self
+pub fn PhysicsheattransientLayer::copy(Self) -> Self
+pub fn PhysicsheattransientLayer::fill(Self, Double) -> Self
+pub fn PhysicsheattransientLayer::get(Self, Int32) -> Double
+pub fn PhysicsheattransientLayer::len(Self) -> Int32
+pub fn PhysicsheattransientLayer::max(Self) -> Double
+pub fn PhysicsheattransientLayer::mean(Self) -> Double
+pub fn PhysicsheattransientLayer::min(Self) -> Double
+pub fn PhysicsheattransientLayer::scale(Self, Double) -> Self
+pub fn PhysicsheattransientLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheattransientLayer::sum(Self) -> Double
+pub fn PhysicsheattransientLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsheattransientMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsheattransientMatrix::add(Self, Self) -> Self
+pub fn PhysicsheattransientMatrix::det(Self) -> Double
+pub fn PhysicsheattransientMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsheattransientMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsheattransientMatrix::norm(Self) -> Double
+pub fn PhysicsheattransientMatrix::scale(Self, Double) -> Self
+pub fn PhysicsheattransientMatrix::to_string(Self) -> String
+pub fn PhysicsheattransientMatrix::trace(Self) -> Double
+pub fn PhysicsheattransientMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsheattransientModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheattransientModel::add(Self, Self) -> Self
+pub fn PhysicsheattransientModel::copy(Self) -> Self
+pub fn PhysicsheattransientModel::fill(Self, Double) -> Self
+pub fn PhysicsheattransientModel::get(Self, Int32) -> Double
+pub fn PhysicsheattransientModel::len(Self) -> Int32
+pub fn PhysicsheattransientModel::max(Self) -> Double
+pub fn PhysicsheattransientModel::mean(Self) -> Double
+pub fn PhysicsheattransientModel::min(Self) -> Double
+pub fn PhysicsheattransientModel::scale(Self, Double) -> Self
+pub fn PhysicsheattransientModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsheattransientModel::sum(Self) -> Double
+pub fn PhysicsheattransientModel::to_string(Self) -> String
+
+pub(all) struct PhysicsheattransientNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheattransientNode::add(Self, Self) -> Self
+pub fn PhysicsheattransientNode::copy(Self) -> Self
+pub fn PhysicsheattransientNode::fill(Self, Double) -> Self
+pub fn PhysicsheattransientNode::get(Self, Int32) -> Double
+pub fn PhysicsheattransientNode::len(Self) -> Int32
+pub fn PhysicsheattransientNode::max(Self) -> Double
+pub fn PhysicsheattransientNode::mean(Self) -> Double
+pub fn PhysicsheattransientNode::min(Self) -> Double
+pub fn PhysicsheattransientNode::scale(Self, Double) -> Self
+pub fn PhysicsheattransientNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsheattransientNode::sum(Self) -> Double
+pub fn PhysicsheattransientNode::to_string(Self) -> String
+
+pub(all) struct PhysicsheattransientPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheattransientPath::add(Self, Self) -> Self
+pub fn PhysicsheattransientPath::copy(Self) -> Self
+pub fn PhysicsheattransientPath::fill(Self, Double) -> Self
+pub fn PhysicsheattransientPath::get(Self, Int32) -> Double
+pub fn PhysicsheattransientPath::len(Self) -> Int32
+pub fn PhysicsheattransientPath::max(Self) -> Double
+pub fn PhysicsheattransientPath::mean(Self) -> Double
+pub fn PhysicsheattransientPath::min(Self) -> Double
+pub fn PhysicsheattransientPath::scale(Self, Double) -> Self
+pub fn PhysicsheattransientPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsheattransientPath::sum(Self) -> Double
+pub fn PhysicsheattransientPath::to_string(Self) -> String
+
+pub(all) struct PhysicsheattransientPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsheattransientPoint::add(Self, Self) -> Self
+pub fn PhysicsheattransientPoint::cross(Self, Self) -> Self
+pub fn PhysicsheattransientPoint::dist(Self, Self) -> Double
+pub fn PhysicsheattransientPoint::dot(Self, Self) -> Double
+pub fn PhysicsheattransientPoint::label(Self) -> Int32
+pub fn PhysicsheattransientPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsheattransientPoint::mid(Self, Self) -> Self
+pub fn PhysicsheattransientPoint::negate(Self) -> Self
+pub fn PhysicsheattransientPoint::norm(Self) -> Double
+pub fn PhysicsheattransientPoint::normalize(Self) -> Self
+pub fn PhysicsheattransientPoint::scale(Self, Double) -> Self
+pub fn PhysicsheattransientPoint::sub(Self, Self) -> Self
+pub fn PhysicsheattransientPoint::to_string(Self) -> String
+pub fn PhysicsheattransientPoint::x(Self) -> Double
+pub fn PhysicsheattransientPoint::y(Self) -> Double
+pub fn PhysicsheattransientPoint::z(Self) -> Double
+
+pub(all) struct PhysicsheattransientRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheattransientRange::add(Self, Self) -> Self
+pub fn PhysicsheattransientRange::copy(Self) -> Self
+pub fn PhysicsheattransientRange::fill(Self, Double) -> Self
+pub fn PhysicsheattransientRange::get(Self, Int32) -> Double
+pub fn PhysicsheattransientRange::len(Self) -> Int32
+pub fn PhysicsheattransientRange::max(Self) -> Double
+pub fn PhysicsheattransientRange::mean(Self) -> Double
+pub fn PhysicsheattransientRange::min(Self) -> Double
+pub fn PhysicsheattransientRange::scale(Self, Double) -> Self
+pub fn PhysicsheattransientRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsheattransientRange::sum(Self) -> Double
+pub fn PhysicsheattransientRange::to_string(Self) -> String
+
+pub(all) struct PhysicsheattransientSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsheattransientSeries::add(Self, Self) -> Self
+pub fn PhysicsheattransientSeries::cumsum(Self) -> Self
+pub fn PhysicsheattransientSeries::len(Self) -> Int32
+pub fn PhysicsheattransientSeries::max(Self) -> Double
+pub fn PhysicsheattransientSeries::mean(Self) -> Double
+pub fn PhysicsheattransientSeries::median(Self) -> Double
+pub fn PhysicsheattransientSeries::min(Self) -> Double
+pub fn PhysicsheattransientSeries::normalize(Self) -> Self
+pub fn PhysicsheattransientSeries::range(Self) -> Double
+pub fn PhysicsheattransientSeries::scale(Self, Double) -> Self
+pub fn PhysicsheattransientSeries::std(Self) -> Double
+pub fn PhysicsheattransientSeries::sub(Self, Self) -> Self
+pub fn PhysicsheattransientSeries::sum(Self) -> Double
+pub fn PhysicsheattransientSeries::to_string(Self) -> String
+pub fn PhysicsheattransientSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsheattransientSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheattransientSlice::add(Self, Self) -> Self
+pub fn PhysicsheattransientSlice::copy(Self) -> Self
+pub fn PhysicsheattransientSlice::fill(Self, Double) -> Self
+pub fn PhysicsheattransientSlice::get(Self, Int32) -> Double
+pub fn PhysicsheattransientSlice::len(Self) -> Int32
+pub fn PhysicsheattransientSlice::max(Self) -> Double
+pub fn PhysicsheattransientSlice::mean(Self) -> Double
+pub fn PhysicsheattransientSlice::min(Self) -> Double
+pub fn PhysicsheattransientSlice::scale(Self, Double) -> Self
+pub fn PhysicsheattransientSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsheattransientSlice::sum(Self) -> Double
+pub fn PhysicsheattransientSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsheattransientTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheattransientTable::add(Self, Self) -> Self
+pub fn PhysicsheattransientTable::copy(Self) -> Self
+pub fn PhysicsheattransientTable::fill(Self, Double) -> Self
+pub fn PhysicsheattransientTable::get(Self, Int32) -> Double
+pub fn PhysicsheattransientTable::len(Self) -> Int32
+pub fn PhysicsheattransientTable::max(Self) -> Double
+pub fn PhysicsheattransientTable::mean(Self) -> Double
+pub fn PhysicsheattransientTable::min(Self) -> Double
+pub fn PhysicsheattransientTable::scale(Self, Double) -> Self
+pub fn PhysicsheattransientTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsheattransientTable::sum(Self) -> Double
+pub fn PhysicsheattransientTable::to_string(Self) -> String
+
+pub(all) struct PhysicsheattransientVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsheattransientVector::add(Self, Self) -> Self
+pub fn PhysicsheattransientVector::dist(Self, Self) -> Double
+pub fn PhysicsheattransientVector::dot(Self, Self) -> Double
+pub fn PhysicsheattransientVector::norm(Self) -> Double
+pub fn PhysicsheattransientVector::normalize(Self) -> Self
+pub fn PhysicsheattransientVector::scale(Self, Double) -> Self
+pub fn PhysicsheattransientVector::sub(Self, Self) -> Self
+pub fn PhysicsheattransientVector::to_string(Self) -> String
+
+pub(all) struct PhysicsheattransientView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheattransientView::add(Self, Self) -> Self
+pub fn PhysicsheattransientView::copy(Self) -> Self
+pub fn PhysicsheattransientView::fill(Self, Double) -> Self
+pub fn PhysicsheattransientView::get(Self, Int32) -> Double
+pub fn PhysicsheattransientView::len(Self) -> Int32
+pub fn PhysicsheattransientView::max(Self) -> Double
+pub fn PhysicsheattransientView::mean(Self) -> Double
+pub fn PhysicsheattransientView::min(Self) -> Double
+pub fn PhysicsheattransientView::scale(Self, Double) -> Self
+pub fn PhysicsheattransientView::set(Self, Int32, Double) -> Self
+pub fn PhysicsheattransientView::sum(Self) -> Double
+pub fn PhysicsheattransientView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

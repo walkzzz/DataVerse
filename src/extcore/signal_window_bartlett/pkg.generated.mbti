@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_window_bartlett"
+
+// Values
+pub fn signal_window_bartlett_buffer_make(Int32) -> SignalwindowbartlettBuffer
+
+pub fn signal_window_bartlett_cluster_make(Int32) -> SignalwindowbartlettCluster
+
+pub fn signal_window_bartlett_cursor_make(Int32) -> SignalwindowbartlettCursor
+
+pub fn signal_window_bartlett_edge_make(Int32) -> SignalwindowbartlettEdge
+
+pub fn signal_window_bartlett_frame_make(Int32) -> SignalwindowbartlettFrame
+
+pub fn signal_window_bartlett_graphn_make(Int32) -> SignalwindowbartlettGraphN
+
+pub fn signal_window_bartlett_layer_make(Int32) -> SignalwindowbartlettLayer
+
+pub fn signal_window_bartlett_make_matrix(Int32, Int32, Double) -> SignalwindowbartlettMatrix
+
+pub fn signal_window_bartlett_make_point(Double, Double) -> SignalwindowbartlettPoint
+
+pub fn signal_window_bartlett_make_point3(Double, Double, Double) -> SignalwindowbartlettPoint
+
+pub fn signal_window_bartlett_make_series(Array[Double], String) -> SignalwindowbartlettSeries
+
+pub fn signal_window_bartlett_make_vector(Array[Double]) -> SignalwindowbartlettVector
+
+pub fn signal_window_bartlett_matrix_identity(Int32) -> SignalwindowbartlettMatrix
+
+pub fn signal_window_bartlett_model_make(Int32) -> SignalwindowbartlettModel
+
+pub fn signal_window_bartlett_node_make(Int32) -> SignalwindowbartlettNode
+
+pub fn signal_window_bartlett_path_make(Int32) -> SignalwindowbartlettPath
+
+pub fn signal_window_bartlett_range_make(Int32) -> SignalwindowbartlettRange
+
+pub fn signal_window_bartlett_slice_make(Int32) -> SignalwindowbartlettSlice
+
+pub fn signal_window_bartlett_table_make(Int32) -> SignalwindowbartlettTable
+
+pub fn signal_window_bartlett_vector_zero(Int32) -> SignalwindowbartlettVector
+
+pub fn signal_window_bartlett_view_make(Int32) -> SignalwindowbartlettView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalwindowbartlettBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowbartlettBuffer::add(Self, Self) -> Self
+pub fn SignalwindowbartlettBuffer::copy(Self) -> Self
+pub fn SignalwindowbartlettBuffer::fill(Self, Double) -> Self
+pub fn SignalwindowbartlettBuffer::get(Self, Int32) -> Double
+pub fn SignalwindowbartlettBuffer::len(Self) -> Int32
+pub fn SignalwindowbartlettBuffer::max(Self) -> Double
+pub fn SignalwindowbartlettBuffer::mean(Self) -> Double
+pub fn SignalwindowbartlettBuffer::min(Self) -> Double
+pub fn SignalwindowbartlettBuffer::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowbartlettBuffer::sum(Self) -> Double
+pub fn SignalwindowbartlettBuffer::to_string(Self) -> String
+
+pub(all) struct SignalwindowbartlettCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowbartlettCluster::add(Self, Self) -> Self
+pub fn SignalwindowbartlettCluster::copy(Self) -> Self
+pub fn SignalwindowbartlettCluster::fill(Self, Double) -> Self
+pub fn SignalwindowbartlettCluster::get(Self, Int32) -> Double
+pub fn SignalwindowbartlettCluster::len(Self) -> Int32
+pub fn SignalwindowbartlettCluster::max(Self) -> Double
+pub fn SignalwindowbartlettCluster::mean(Self) -> Double
+pub fn SignalwindowbartlettCluster::min(Self) -> Double
+pub fn SignalwindowbartlettCluster::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettCluster::set(Self, Int32, Double) -> Self
+pub fn SignalwindowbartlettCluster::sum(Self) -> Double
+pub fn SignalwindowbartlettCluster::to_string(Self) -> String
+
+pub(all) struct SignalwindowbartlettCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowbartlettCursor::add(Self, Self) -> Self
+pub fn SignalwindowbartlettCursor::copy(Self) -> Self
+pub fn SignalwindowbartlettCursor::fill(Self, Double) -> Self
+pub fn SignalwindowbartlettCursor::get(Self, Int32) -> Double
+pub fn SignalwindowbartlettCursor::len(Self) -> Int32
+pub fn SignalwindowbartlettCursor::max(Self) -> Double
+pub fn SignalwindowbartlettCursor::mean(Self) -> Double
+pub fn SignalwindowbartlettCursor::min(Self) -> Double
+pub fn SignalwindowbartlettCursor::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettCursor::set(Self, Int32, Double) -> Self
+pub fn SignalwindowbartlettCursor::sum(Self) -> Double
+pub fn SignalwindowbartlettCursor::to_string(Self) -> String
+
+pub(all) struct SignalwindowbartlettEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowbartlettEdge::add(Self, Self) -> Self
+pub fn SignalwindowbartlettEdge::copy(Self) -> Self
+pub fn SignalwindowbartlettEdge::fill(Self, Double) -> Self
+pub fn SignalwindowbartlettEdge::get(Self, Int32) -> Double
+pub fn SignalwindowbartlettEdge::len(Self) -> Int32
+pub fn SignalwindowbartlettEdge::max(Self) -> Double
+pub fn SignalwindowbartlettEdge::mean(Self) -> Double
+pub fn SignalwindowbartlettEdge::min(Self) -> Double
+pub fn SignalwindowbartlettEdge::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettEdge::set(Self, Int32, Double) -> Self
+pub fn SignalwindowbartlettEdge::sum(Self) -> Double
+pub fn SignalwindowbartlettEdge::to_string(Self) -> String
+
+pub(all) struct SignalwindowbartlettFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowbartlettFrame::add(Self, Self) -> Self
+pub fn SignalwindowbartlettFrame::copy(Self) -> Self
+pub fn SignalwindowbartlettFrame::fill(Self, Double) -> Self
+pub fn SignalwindowbartlettFrame::get(Self, Int32) -> Double
+pub fn SignalwindowbartlettFrame::len(Self) -> Int32
+pub fn SignalwindowbartlettFrame::max(Self) -> Double
+pub fn SignalwindowbartlettFrame::mean(Self) -> Double
+pub fn SignalwindowbartlettFrame::min(Self) -> Double
+pub fn SignalwindowbartlettFrame::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettFrame::set(Self, Int32, Double) -> Self
+pub fn SignalwindowbartlettFrame::sum(Self) -> Double
+pub fn SignalwindowbartlettFrame::to_string(Self) -> String
+
+pub(all) struct SignalwindowbartlettGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowbartlettGraphN::add(Self, Self) -> Self
+pub fn SignalwindowbartlettGraphN::copy(Self) -> Self
+pub fn SignalwindowbartlettGraphN::fill(Self, Double) -> Self
+pub fn SignalwindowbartlettGraphN::get(Self, Int32) -> Double
+pub fn SignalwindowbartlettGraphN::len(Self) -> Int32
+pub fn SignalwindowbartlettGraphN::max(Self) -> Double
+pub fn SignalwindowbartlettGraphN::mean(Self) -> Double
+pub fn SignalwindowbartlettGraphN::min(Self) -> Double
+pub fn SignalwindowbartlettGraphN::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalwindowbartlettGraphN::sum(Self) -> Double
+pub fn SignalwindowbartlettGraphN::to_string(Self) -> String
+
+pub(all) struct SignalwindowbartlettLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowbartlettLayer::add(Self, Self) -> Self
+pub fn SignalwindowbartlettLayer::copy(Self) -> Self
+pub fn SignalwindowbartlettLayer::fill(Self, Double) -> Self
+pub fn SignalwindowbartlettLayer::get(Self, Int32) -> Double
+pub fn SignalwindowbartlettLayer::len(Self) -> Int32
+pub fn SignalwindowbartlettLayer::max(Self) -> Double
+pub fn SignalwindowbartlettLayer::mean(Self) -> Double
+pub fn SignalwindowbartlettLayer::min(Self) -> Double
+pub fn SignalwindowbartlettLayer::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettLayer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowbartlettLayer::sum(Self) -> Double
+pub fn SignalwindowbartlettLayer::to_string(Self) -> String
+
+pub(all) struct SignalwindowbartlettMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalwindowbartlettMatrix::add(Self, Self) -> Self
+pub fn SignalwindowbartlettMatrix::det(Self) -> Double
+pub fn SignalwindowbartlettMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalwindowbartlettMatrix::multiply(Self, Self) -> Self
+pub fn SignalwindowbartlettMatrix::norm(Self) -> Double
+pub fn SignalwindowbartlettMatrix::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettMatrix::to_string(Self) -> String
+pub fn SignalwindowbartlettMatrix::trace(Self) -> Double
+pub fn SignalwindowbartlettMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalwindowbartlettModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowbartlettModel::add(Self, Self) -> Self
+pub fn SignalwindowbartlettModel::copy(Self) -> Self
+pub fn SignalwindowbartlettModel::fill(Self, Double) -> Self
+pub fn SignalwindowbartlettModel::get(Self, Int32) -> Double
+pub fn SignalwindowbartlettModel::len(Self) -> Int32
+pub fn SignalwindowbartlettModel::max(Self) -> Double
+pub fn SignalwindowbartlettModel::mean(Self) -> Double
+pub fn SignalwindowbartlettModel::min(Self) -> Double
+pub fn SignalwindowbartlettModel::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettModel::set(Self, Int32, Double) -> Self
+pub fn SignalwindowbartlettModel::sum(Self) -> Double
+pub fn SignalwindowbartlettModel::to_string(Self) -> String
+
+pub(all) struct SignalwindowbartlettNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowbartlettNode::add(Self, Self) -> Self
+pub fn SignalwindowbartlettNode::copy(Self) -> Self
+pub fn SignalwindowbartlettNode::fill(Self, Double) -> Self
+pub fn SignalwindowbartlettNode::get(Self, Int32) -> Double
+pub fn SignalwindowbartlettNode::len(Self) -> Int32
+pub fn SignalwindowbartlettNode::max(Self) -> Double
+pub fn SignalwindowbartlettNode::mean(Self) -> Double
+pub fn SignalwindowbartlettNode::min(Self) -> Double
+pub fn SignalwindowbartlettNode::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettNode::set(Self, Int32, Double) -> Self
+pub fn SignalwindowbartlettNode::sum(Self) -> Double
+pub fn SignalwindowbartlettNode::to_string(Self) -> String
+
+pub(all) struct SignalwindowbartlettPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowbartlettPath::add(Self, Self) -> Self
+pub fn SignalwindowbartlettPath::copy(Self) -> Self
+pub fn SignalwindowbartlettPath::fill(Self, Double) -> Self
+pub fn SignalwindowbartlettPath::get(Self, Int32) -> Double
+pub fn SignalwindowbartlettPath::len(Self) -> Int32
+pub fn SignalwindowbartlettPath::max(Self) -> Double
+pub fn SignalwindowbartlettPath::mean(Self) -> Double
+pub fn SignalwindowbartlettPath::min(Self) -> Double
+pub fn SignalwindowbartlettPath::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettPath::set(Self, Int32, Double) -> Self
+pub fn SignalwindowbartlettPath::sum(Self) -> Double
+pub fn SignalwindowbartlettPath::to_string(Self) -> String
+
+pub(all) struct SignalwindowbartlettPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalwindowbartlettPoint::add(Self, Self) -> Self
+pub fn SignalwindowbartlettPoint::cross(Self, Self) -> Self
+pub fn SignalwindowbartlettPoint::dist(Self, Self) -> Double
+pub fn SignalwindowbartlettPoint::dot(Self, Self) -> Double
+pub fn SignalwindowbartlettPoint::label(Self) -> Int32
+pub fn SignalwindowbartlettPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalwindowbartlettPoint::mid(Self, Self) -> Self
+pub fn SignalwindowbartlettPoint::negate(Self) -> Self
+pub fn SignalwindowbartlettPoint::norm(Self) -> Double
+pub fn SignalwindowbartlettPoint::normalize(Self) -> Self
+pub fn SignalwindowbartlettPoint::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettPoint::sub(Self, Self) -> Self
+pub fn SignalwindowbartlettPoint::to_string(Self) -> String
+pub fn SignalwindowbartlettPoint::x(Self) -> Double
+pub fn SignalwindowbartlettPoint::y(Self) -> Double
+pub fn SignalwindowbartlettPoint::z(Self) -> Double
+
+pub(all) struct SignalwindowbartlettRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowbartlettRange::add(Self, Self) -> Self
+pub fn SignalwindowbartlettRange::copy(Self) -> Self
+pub fn SignalwindowbartlettRange::fill(Self, Double) -> Self
+pub fn SignalwindowbartlettRange::get(Self, Int32) -> Double
+pub fn SignalwindowbartlettRange::len(Self) -> Int32
+pub fn SignalwindowbartlettRange::max(Self) -> Double
+pub fn SignalwindowbartlettRange::mean(Self) -> Double
+pub fn SignalwindowbartlettRange::min(Self) -> Double
+pub fn SignalwindowbartlettRange::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettRange::set(Self, Int32, Double) -> Self
+pub fn SignalwindowbartlettRange::sum(Self) -> Double
+pub fn SignalwindowbartlettRange::to_string(Self) -> String
+
+pub(all) struct SignalwindowbartlettSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalwindowbartlettSeries::add(Self, Self) -> Self
+pub fn SignalwindowbartlettSeries::cumsum(Self) -> Self
+pub fn SignalwindowbartlettSeries::len(Self) -> Int32
+pub fn SignalwindowbartlettSeries::max(Self) -> Double
+pub fn SignalwindowbartlettSeries::mean(Self) -> Double
+pub fn SignalwindowbartlettSeries::median(Self) -> Double
+pub fn SignalwindowbartlettSeries::min(Self) -> Double
+pub fn SignalwindowbartlettSeries::normalize(Self) -> Self
+pub fn SignalwindowbartlettSeries::range(Self) -> Double
+pub fn SignalwindowbartlettSeries::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettSeries::std(Self) -> Double
+pub fn SignalwindowbartlettSeries::sub(Self, Self) -> Self
+pub fn SignalwindowbartlettSeries::sum(Self) -> Double
+pub fn SignalwindowbartlettSeries::to_string(Self) -> String
+pub fn SignalwindowbartlettSeries::variance(Self) -> Double
+
+pub(all) struct SignalwindowbartlettSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowbartlettSlice::add(Self, Self) -> Self
+pub fn SignalwindowbartlettSlice::copy(Self) -> Self
+pub fn SignalwindowbartlettSlice::fill(Self, Double) -> Self
+pub fn SignalwindowbartlettSlice::get(Self, Int32) -> Double
+pub fn SignalwindowbartlettSlice::len(Self) -> Int32
+pub fn SignalwindowbartlettSlice::max(Self) -> Double
+pub fn SignalwindowbartlettSlice::mean(Self) -> Double
+pub fn SignalwindowbartlettSlice::min(Self) -> Double
+pub fn SignalwindowbartlettSlice::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettSlice::set(Self, Int32, Double) -> Self
+pub fn SignalwindowbartlettSlice::sum(Self) -> Double
+pub fn SignalwindowbartlettSlice::to_string(Self) -> String
+
+pub(all) struct SignalwindowbartlettTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowbartlettTable::add(Self, Self) -> Self
+pub fn SignalwindowbartlettTable::copy(Self) -> Self
+pub fn SignalwindowbartlettTable::fill(Self, Double) -> Self
+pub fn SignalwindowbartlettTable::get(Self, Int32) -> Double
+pub fn SignalwindowbartlettTable::len(Self) -> Int32
+pub fn SignalwindowbartlettTable::max(Self) -> Double
+pub fn SignalwindowbartlettTable::mean(Self) -> Double
+pub fn SignalwindowbartlettTable::min(Self) -> Double
+pub fn SignalwindowbartlettTable::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettTable::set(Self, Int32, Double) -> Self
+pub fn SignalwindowbartlettTable::sum(Self) -> Double
+pub fn SignalwindowbartlettTable::to_string(Self) -> String
+
+pub(all) struct SignalwindowbartlettVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalwindowbartlettVector::add(Self, Self) -> Self
+pub fn SignalwindowbartlettVector::dist(Self, Self) -> Double
+pub fn SignalwindowbartlettVector::dot(Self, Self) -> Double
+pub fn SignalwindowbartlettVector::norm(Self) -> Double
+pub fn SignalwindowbartlettVector::normalize(Self) -> Self
+pub fn SignalwindowbartlettVector::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettVector::sub(Self, Self) -> Self
+pub fn SignalwindowbartlettVector::to_string(Self) -> String
+
+pub(all) struct SignalwindowbartlettView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowbartlettView::add(Self, Self) -> Self
+pub fn SignalwindowbartlettView::copy(Self) -> Self
+pub fn SignalwindowbartlettView::fill(Self, Double) -> Self
+pub fn SignalwindowbartlettView::get(Self, Int32) -> Double
+pub fn SignalwindowbartlettView::len(Self) -> Int32
+pub fn SignalwindowbartlettView::max(Self) -> Double
+pub fn SignalwindowbartlettView::mean(Self) -> Double
+pub fn SignalwindowbartlettView::min(Self) -> Double
+pub fn SignalwindowbartlettView::scale(Self, Double) -> Self
+pub fn SignalwindowbartlettView::set(Self, Int32, Double) -> Self
+pub fn SignalwindowbartlettView::sum(Self) -> Double
+pub fn SignalwindowbartlettView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

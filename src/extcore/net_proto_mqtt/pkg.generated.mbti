@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_proto_mqtt"
+
+// Values
+pub fn net_proto_mqtt_buffer_make(Int32) -> NetprotomqttBuffer
+
+pub fn net_proto_mqtt_cluster_make(Int32) -> NetprotomqttCluster
+
+pub fn net_proto_mqtt_cursor_make(Int32) -> NetprotomqttCursor
+
+pub fn net_proto_mqtt_edge_make(Int32) -> NetprotomqttEdge
+
+pub fn net_proto_mqtt_frame_make(Int32) -> NetprotomqttFrame
+
+pub fn net_proto_mqtt_graphn_make(Int32) -> NetprotomqttGraphN
+
+pub fn net_proto_mqtt_layer_make(Int32) -> NetprotomqttLayer
+
+pub fn net_proto_mqtt_make_matrix(Int32, Int32, Double) -> NetprotomqttMatrix
+
+pub fn net_proto_mqtt_make_point(Double, Double) -> NetprotomqttPoint
+
+pub fn net_proto_mqtt_make_point3(Double, Double, Double) -> NetprotomqttPoint
+
+pub fn net_proto_mqtt_make_series(Array[Double], String) -> NetprotomqttSeries
+
+pub fn net_proto_mqtt_make_vector(Array[Double]) -> NetprotomqttVector
+
+pub fn net_proto_mqtt_matrix_identity(Int32) -> NetprotomqttMatrix
+
+pub fn net_proto_mqtt_model_make(Int32) -> NetprotomqttModel
+
+pub fn net_proto_mqtt_node_make(Int32) -> NetprotomqttNode
+
+pub fn net_proto_mqtt_path_make(Int32) -> NetprotomqttPath
+
+pub fn net_proto_mqtt_range_make(Int32) -> NetprotomqttRange
+
+pub fn net_proto_mqtt_slice_make(Int32) -> NetprotomqttSlice
+
+pub fn net_proto_mqtt_table_make(Int32) -> NetprotomqttTable
+
+pub fn net_proto_mqtt_vector_zero(Int32) -> NetprotomqttVector
+
+pub fn net_proto_mqtt_view_make(Int32) -> NetprotomqttView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetprotomqttBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotomqttBuffer::add(Self, Self) -> Self
+pub fn NetprotomqttBuffer::copy(Self) -> Self
+pub fn NetprotomqttBuffer::fill(Self, Double) -> Self
+pub fn NetprotomqttBuffer::get(Self, Int32) -> Double
+pub fn NetprotomqttBuffer::len(Self) -> Int32
+pub fn NetprotomqttBuffer::max(Self) -> Double
+pub fn NetprotomqttBuffer::mean(Self) -> Double
+pub fn NetprotomqttBuffer::min(Self) -> Double
+pub fn NetprotomqttBuffer::scale(Self, Double) -> Self
+pub fn NetprotomqttBuffer::set(Self, Int32, Double) -> Self
+pub fn NetprotomqttBuffer::sum(Self) -> Double
+pub fn NetprotomqttBuffer::to_string(Self) -> String
+
+pub(all) struct NetprotomqttCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotomqttCluster::add(Self, Self) -> Self
+pub fn NetprotomqttCluster::copy(Self) -> Self
+pub fn NetprotomqttCluster::fill(Self, Double) -> Self
+pub fn NetprotomqttCluster::get(Self, Int32) -> Double
+pub fn NetprotomqttCluster::len(Self) -> Int32
+pub fn NetprotomqttCluster::max(Self) -> Double
+pub fn NetprotomqttCluster::mean(Self) -> Double
+pub fn NetprotomqttCluster::min(Self) -> Double
+pub fn NetprotomqttCluster::scale(Self, Double) -> Self
+pub fn NetprotomqttCluster::set(Self, Int32, Double) -> Self
+pub fn NetprotomqttCluster::sum(Self) -> Double
+pub fn NetprotomqttCluster::to_string(Self) -> String
+
+pub(all) struct NetprotomqttCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotomqttCursor::add(Self, Self) -> Self
+pub fn NetprotomqttCursor::copy(Self) -> Self
+pub fn NetprotomqttCursor::fill(Self, Double) -> Self
+pub fn NetprotomqttCursor::get(Self, Int32) -> Double
+pub fn NetprotomqttCursor::len(Self) -> Int32
+pub fn NetprotomqttCursor::max(Self) -> Double
+pub fn NetprotomqttCursor::mean(Self) -> Double
+pub fn NetprotomqttCursor::min(Self) -> Double
+pub fn NetprotomqttCursor::scale(Self, Double) -> Self
+pub fn NetprotomqttCursor::set(Self, Int32, Double) -> Self
+pub fn NetprotomqttCursor::sum(Self) -> Double
+pub fn NetprotomqttCursor::to_string(Self) -> String
+
+pub(all) struct NetprotomqttEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotomqttEdge::add(Self, Self) -> Self
+pub fn NetprotomqttEdge::copy(Self) -> Self
+pub fn NetprotomqttEdge::fill(Self, Double) -> Self
+pub fn NetprotomqttEdge::get(Self, Int32) -> Double
+pub fn NetprotomqttEdge::len(Self) -> Int32
+pub fn NetprotomqttEdge::max(Self) -> Double
+pub fn NetprotomqttEdge::mean(Self) -> Double
+pub fn NetprotomqttEdge::min(Self) -> Double
+pub fn NetprotomqttEdge::scale(Self, Double) -> Self
+pub fn NetprotomqttEdge::set(Self, Int32, Double) -> Self
+pub fn NetprotomqttEdge::sum(Self) -> Double
+pub fn NetprotomqttEdge::to_string(Self) -> String
+
+pub(all) struct NetprotomqttFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotomqttFrame::add(Self, Self) -> Self
+pub fn NetprotomqttFrame::copy(Self) -> Self
+pub fn NetprotomqttFrame::fill(Self, Double) -> Self
+pub fn NetprotomqttFrame::get(Self, Int32) -> Double
+pub fn NetprotomqttFrame::len(Self) -> Int32
+pub fn NetprotomqttFrame::max(Self) -> Double
+pub fn NetprotomqttFrame::mean(Self) -> Double
+pub fn NetprotomqttFrame::min(Self) -> Double
+pub fn NetprotomqttFrame::scale(Self, Double) -> Self
+pub fn NetprotomqttFrame::set(Self, Int32, Double) -> Self
+pub fn NetprotomqttFrame::sum(Self) -> Double
+pub fn NetprotomqttFrame::to_string(Self) -> String
+
+pub(all) struct NetprotomqttGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotomqttGraphN::add(Self, Self) -> Self
+pub fn NetprotomqttGraphN::copy(Self) -> Self
+pub fn NetprotomqttGraphN::fill(Self, Double) -> Self
+pub fn NetprotomqttGraphN::get(Self, Int32) -> Double
+pub fn NetprotomqttGraphN::len(Self) -> Int32
+pub fn NetprotomqttGraphN::max(Self) -> Double
+pub fn NetprotomqttGraphN::mean(Self) -> Double
+pub fn NetprotomqttGraphN::min(Self) -> Double
+pub fn NetprotomqttGraphN::scale(Self, Double) -> Self
+pub fn NetprotomqttGraphN::set(Self, Int32, Double) -> Self
+pub fn NetprotomqttGraphN::sum(Self) -> Double
+pub fn NetprotomqttGraphN::to_string(Self) -> String
+
+pub(all) struct NetprotomqttLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotomqttLayer::add(Self, Self) -> Self
+pub fn NetprotomqttLayer::copy(Self) -> Self
+pub fn NetprotomqttLayer::fill(Self, Double) -> Self
+pub fn NetprotomqttLayer::get(Self, Int32) -> Double
+pub fn NetprotomqttLayer::len(Self) -> Int32
+pub fn NetprotomqttLayer::max(Self) -> Double
+pub fn NetprotomqttLayer::mean(Self) -> Double
+pub fn NetprotomqttLayer::min(Self) -> Double
+pub fn NetprotomqttLayer::scale(Self, Double) -> Self
+pub fn NetprotomqttLayer::set(Self, Int32, Double) -> Self
+pub fn NetprotomqttLayer::sum(Self) -> Double
+pub fn NetprotomqttLayer::to_string(Self) -> String
+
+pub(all) struct NetprotomqttMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetprotomqttMatrix::add(Self, Self) -> Self
+pub fn NetprotomqttMatrix::det(Self) -> Double
+pub fn NetprotomqttMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetprotomqttMatrix::multiply(Self, Self) -> Self
+pub fn NetprotomqttMatrix::norm(Self) -> Double
+pub fn NetprotomqttMatrix::scale(Self, Double) -> Self
+pub fn NetprotomqttMatrix::to_string(Self) -> String
+pub fn NetprotomqttMatrix::trace(Self) -> Double
+pub fn NetprotomqttMatrix::transpose(Self) -> Self
+
+pub(all) struct NetprotomqttModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotomqttModel::add(Self, Self) -> Self
+pub fn NetprotomqttModel::copy(Self) -> Self
+pub fn NetprotomqttModel::fill(Self, Double) -> Self
+pub fn NetprotomqttModel::get(Self, Int32) -> Double
+pub fn NetprotomqttModel::len(Self) -> Int32
+pub fn NetprotomqttModel::max(Self) -> Double
+pub fn NetprotomqttModel::mean(Self) -> Double
+pub fn NetprotomqttModel::min(Self) -> Double
+pub fn NetprotomqttModel::scale(Self, Double) -> Self
+pub fn NetprotomqttModel::set(Self, Int32, Double) -> Self
+pub fn NetprotomqttModel::sum(Self) -> Double
+pub fn NetprotomqttModel::to_string(Self) -> String
+
+pub(all) struct NetprotomqttNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotomqttNode::add(Self, Self) -> Self
+pub fn NetprotomqttNode::copy(Self) -> Self
+pub fn NetprotomqttNode::fill(Self, Double) -> Self
+pub fn NetprotomqttNode::get(Self, Int32) -> Double
+pub fn NetprotomqttNode::len(Self) -> Int32
+pub fn NetprotomqttNode::max(Self) -> Double
+pub fn NetprotomqttNode::mean(Self) -> Double
+pub fn NetprotomqttNode::min(Self) -> Double
+pub fn NetprotomqttNode::scale(Self, Double) -> Self
+pub fn NetprotomqttNode::set(Self, Int32, Double) -> Self
+pub fn NetprotomqttNode::sum(Self) -> Double
+pub fn NetprotomqttNode::to_string(Self) -> String
+
+pub(all) struct NetprotomqttPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotomqttPath::add(Self, Self) -> Self
+pub fn NetprotomqttPath::copy(Self) -> Self
+pub fn NetprotomqttPath::fill(Self, Double) -> Self
+pub fn NetprotomqttPath::get(Self, Int32) -> Double
+pub fn NetprotomqttPath::len(Self) -> Int32
+pub fn NetprotomqttPath::max(Self) -> Double
+pub fn NetprotomqttPath::mean(Self) -> Double
+pub fn NetprotomqttPath::min(Self) -> Double
+pub fn NetprotomqttPath::scale(Self, Double) -> Self
+pub fn NetprotomqttPath::set(Self, Int32, Double) -> Self
+pub fn NetprotomqttPath::sum(Self) -> Double
+pub fn NetprotomqttPath::to_string(Self) -> String
+
+pub(all) struct NetprotomqttPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetprotomqttPoint::add(Self, Self) -> Self
+pub fn NetprotomqttPoint::cross(Self, Self) -> Self
+pub fn NetprotomqttPoint::dist(Self, Self) -> Double
+pub fn NetprotomqttPoint::dot(Self, Self) -> Double
+pub fn NetprotomqttPoint::label(Self) -> Int32
+pub fn NetprotomqttPoint::lerp(Self, Self, Double) -> Self
+pub fn NetprotomqttPoint::mid(Self, Self) -> Self
+pub fn NetprotomqttPoint::negate(Self) -> Self
+pub fn NetprotomqttPoint::norm(Self) -> Double
+pub fn NetprotomqttPoint::normalize(Self) -> Self
+pub fn NetprotomqttPoint::scale(Self, Double) -> Self
+pub fn NetprotomqttPoint::sub(Self, Self) -> Self
+pub fn NetprotomqttPoint::to_string(Self) -> String
+pub fn NetprotomqttPoint::x(Self) -> Double
+pub fn NetprotomqttPoint::y(Self) -> Double
+pub fn NetprotomqttPoint::z(Self) -> Double
+
+pub(all) struct NetprotomqttRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotomqttRange::add(Self, Self) -> Self
+pub fn NetprotomqttRange::copy(Self) -> Self
+pub fn NetprotomqttRange::fill(Self, Double) -> Self
+pub fn NetprotomqttRange::get(Self, Int32) -> Double
+pub fn NetprotomqttRange::len(Self) -> Int32
+pub fn NetprotomqttRange::max(Self) -> Double
+pub fn NetprotomqttRange::mean(Self) -> Double
+pub fn NetprotomqttRange::min(Self) -> Double
+pub fn NetprotomqttRange::scale(Self, Double) -> Self
+pub fn NetprotomqttRange::set(Self, Int32, Double) -> Self
+pub fn NetprotomqttRange::sum(Self) -> Double
+pub fn NetprotomqttRange::to_string(Self) -> String
+
+pub(all) struct NetprotomqttSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetprotomqttSeries::add(Self, Self) -> Self
+pub fn NetprotomqttSeries::cumsum(Self) -> Self
+pub fn NetprotomqttSeries::len(Self) -> Int32
+pub fn NetprotomqttSeries::max(Self) -> Double
+pub fn NetprotomqttSeries::mean(Self) -> Double
+pub fn NetprotomqttSeries::median(Self) -> Double
+pub fn NetprotomqttSeries::min(Self) -> Double
+pub fn NetprotomqttSeries::normalize(Self) -> Self
+pub fn NetprotomqttSeries::range(Self) -> Double
+pub fn NetprotomqttSeries::scale(Self, Double) -> Self
+pub fn NetprotomqttSeries::std(Self) -> Double
+pub fn NetprotomqttSeries::sub(Self, Self) -> Self
+pub fn NetprotomqttSeries::sum(Self) -> Double
+pub fn NetprotomqttSeries::to_string(Self) -> String
+pub fn NetprotomqttSeries::variance(Self) -> Double
+
+pub(all) struct NetprotomqttSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotomqttSlice::add(Self, Self) -> Self
+pub fn NetprotomqttSlice::copy(Self) -> Self
+pub fn NetprotomqttSlice::fill(Self, Double) -> Self
+pub fn NetprotomqttSlice::get(Self, Int32) -> Double
+pub fn NetprotomqttSlice::len(Self) -> Int32
+pub fn NetprotomqttSlice::max(Self) -> Double
+pub fn NetprotomqttSlice::mean(Self) -> Double
+pub fn NetprotomqttSlice::min(Self) -> Double
+pub fn NetprotomqttSlice::scale(Self, Double) -> Self
+pub fn NetprotomqttSlice::set(Self, Int32, Double) -> Self
+pub fn NetprotomqttSlice::sum(Self) -> Double
+pub fn NetprotomqttSlice::to_string(Self) -> String
+
+pub(all) struct NetprotomqttTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotomqttTable::add(Self, Self) -> Self
+pub fn NetprotomqttTable::copy(Self) -> Self
+pub fn NetprotomqttTable::fill(Self, Double) -> Self
+pub fn NetprotomqttTable::get(Self, Int32) -> Double
+pub fn NetprotomqttTable::len(Self) -> Int32
+pub fn NetprotomqttTable::max(Self) -> Double
+pub fn NetprotomqttTable::mean(Self) -> Double
+pub fn NetprotomqttTable::min(Self) -> Double
+pub fn NetprotomqttTable::scale(Self, Double) -> Self
+pub fn NetprotomqttTable::set(Self, Int32, Double) -> Self
+pub fn NetprotomqttTable::sum(Self) -> Double
+pub fn NetprotomqttTable::to_string(Self) -> String
+
+pub(all) struct NetprotomqttVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetprotomqttVector::add(Self, Self) -> Self
+pub fn NetprotomqttVector::dist(Self, Self) -> Double
+pub fn NetprotomqttVector::dot(Self, Self) -> Double
+pub fn NetprotomqttVector::norm(Self) -> Double
+pub fn NetprotomqttVector::normalize(Self) -> Self
+pub fn NetprotomqttVector::scale(Self, Double) -> Self
+pub fn NetprotomqttVector::sub(Self, Self) -> Self
+pub fn NetprotomqttVector::to_string(Self) -> String
+
+pub(all) struct NetprotomqttView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotomqttView::add(Self, Self) -> Self
+pub fn NetprotomqttView::copy(Self) -> Self
+pub fn NetprotomqttView::fill(Self, Double) -> Self
+pub fn NetprotomqttView::get(Self, Int32) -> Double
+pub fn NetprotomqttView::len(Self) -> Int32
+pub fn NetprotomqttView::max(Self) -> Double
+pub fn NetprotomqttView::mean(Self) -> Double
+pub fn NetprotomqttView::min(Self) -> Double
+pub fn NetprotomqttView::scale(Self, Double) -> Self
+pub fn NetprotomqttView::set(Self, Int32, Double) -> Self
+pub fn NetprotomqttView::sum(Self) -> Double
+pub fn NetprotomqttView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

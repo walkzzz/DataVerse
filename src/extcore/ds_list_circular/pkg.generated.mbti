@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_list_circular"
+
+// Values
+pub fn ds_list_circular_buffer_make(Int32) -> DslistcircularBuffer
+
+pub fn ds_list_circular_cluster_make(Int32) -> DslistcircularCluster
+
+pub fn ds_list_circular_cursor_make(Int32) -> DslistcircularCursor
+
+pub fn ds_list_circular_edge_make(Int32) -> DslistcircularEdge
+
+pub fn ds_list_circular_frame_make(Int32) -> DslistcircularFrame
+
+pub fn ds_list_circular_graphn_make(Int32) -> DslistcircularGraphN
+
+pub fn ds_list_circular_layer_make(Int32) -> DslistcircularLayer
+
+pub fn ds_list_circular_make_matrix(Int32, Int32, Double) -> DslistcircularMatrix
+
+pub fn ds_list_circular_make_point(Double, Double) -> DslistcircularPoint
+
+pub fn ds_list_circular_make_point3(Double, Double, Double) -> DslistcircularPoint
+
+pub fn ds_list_circular_make_series(Array[Double], String) -> DslistcircularSeries
+
+pub fn ds_list_circular_make_vector(Array[Double]) -> DslistcircularVector
+
+pub fn ds_list_circular_matrix_identity(Int32) -> DslistcircularMatrix
+
+pub fn ds_list_circular_model_make(Int32) -> DslistcircularModel
+
+pub fn ds_list_circular_node_make(Int32) -> DslistcircularNode
+
+pub fn ds_list_circular_path_make(Int32) -> DslistcircularPath
+
+pub fn ds_list_circular_range_make(Int32) -> DslistcircularRange
+
+pub fn ds_list_circular_slice_make(Int32) -> DslistcircularSlice
+
+pub fn ds_list_circular_table_make(Int32) -> DslistcircularTable
+
+pub fn ds_list_circular_vector_zero(Int32) -> DslistcircularVector
+
+pub fn ds_list_circular_view_make(Int32) -> DslistcircularView
+
+// Errors
+
+// Types and methods
+pub(all) struct DslistcircularBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistcircularBuffer::add(Self, Self) -> Self
+pub fn DslistcircularBuffer::copy(Self) -> Self
+pub fn DslistcircularBuffer::fill(Self, Double) -> Self
+pub fn DslistcircularBuffer::get(Self, Int32) -> Double
+pub fn DslistcircularBuffer::len(Self) -> Int32
+pub fn DslistcircularBuffer::max(Self) -> Double
+pub fn DslistcircularBuffer::mean(Self) -> Double
+pub fn DslistcircularBuffer::min(Self) -> Double
+pub fn DslistcircularBuffer::scale(Self, Double) -> Self
+pub fn DslistcircularBuffer::set(Self, Int32, Double) -> Self
+pub fn DslistcircularBuffer::sum(Self) -> Double
+pub fn DslistcircularBuffer::to_string(Self) -> String
+
+pub(all) struct DslistcircularCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistcircularCluster::add(Self, Self) -> Self
+pub fn DslistcircularCluster::copy(Self) -> Self
+pub fn DslistcircularCluster::fill(Self, Double) -> Self
+pub fn DslistcircularCluster::get(Self, Int32) -> Double
+pub fn DslistcircularCluster::len(Self) -> Int32
+pub fn DslistcircularCluster::max(Self) -> Double
+pub fn DslistcircularCluster::mean(Self) -> Double
+pub fn DslistcircularCluster::min(Self) -> Double
+pub fn DslistcircularCluster::scale(Self, Double) -> Self
+pub fn DslistcircularCluster::set(Self, Int32, Double) -> Self
+pub fn DslistcircularCluster::sum(Self) -> Double
+pub fn DslistcircularCluster::to_string(Self) -> String
+
+pub(all) struct DslistcircularCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistcircularCursor::add(Self, Self) -> Self
+pub fn DslistcircularCursor::copy(Self) -> Self
+pub fn DslistcircularCursor::fill(Self, Double) -> Self
+pub fn DslistcircularCursor::get(Self, Int32) -> Double
+pub fn DslistcircularCursor::len(Self) -> Int32
+pub fn DslistcircularCursor::max(Self) -> Double
+pub fn DslistcircularCursor::mean(Self) -> Double
+pub fn DslistcircularCursor::min(Self) -> Double
+pub fn DslistcircularCursor::scale(Self, Double) -> Self
+pub fn DslistcircularCursor::set(Self, Int32, Double) -> Self
+pub fn DslistcircularCursor::sum(Self) -> Double
+pub fn DslistcircularCursor::to_string(Self) -> String
+
+pub(all) struct DslistcircularEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistcircularEdge::add(Self, Self) -> Self
+pub fn DslistcircularEdge::copy(Self) -> Self
+pub fn DslistcircularEdge::fill(Self, Double) -> Self
+pub fn DslistcircularEdge::get(Self, Int32) -> Double
+pub fn DslistcircularEdge::len(Self) -> Int32
+pub fn DslistcircularEdge::max(Self) -> Double
+pub fn DslistcircularEdge::mean(Self) -> Double
+pub fn DslistcircularEdge::min(Self) -> Double
+pub fn DslistcircularEdge::scale(Self, Double) -> Self
+pub fn DslistcircularEdge::set(Self, Int32, Double) -> Self
+pub fn DslistcircularEdge::sum(Self) -> Double
+pub fn DslistcircularEdge::to_string(Self) -> String
+
+pub(all) struct DslistcircularFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistcircularFrame::add(Self, Self) -> Self
+pub fn DslistcircularFrame::copy(Self) -> Self
+pub fn DslistcircularFrame::fill(Self, Double) -> Self
+pub fn DslistcircularFrame::get(Self, Int32) -> Double
+pub fn DslistcircularFrame::len(Self) -> Int32
+pub fn DslistcircularFrame::max(Self) -> Double
+pub fn DslistcircularFrame::mean(Self) -> Double
+pub fn DslistcircularFrame::min(Self) -> Double
+pub fn DslistcircularFrame::scale(Self, Double) -> Self
+pub fn DslistcircularFrame::set(Self, Int32, Double) -> Self
+pub fn DslistcircularFrame::sum(Self) -> Double
+pub fn DslistcircularFrame::to_string(Self) -> String
+
+pub(all) struct DslistcircularGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistcircularGraphN::add(Self, Self) -> Self
+pub fn DslistcircularGraphN::copy(Self) -> Self
+pub fn DslistcircularGraphN::fill(Self, Double) -> Self
+pub fn DslistcircularGraphN::get(Self, Int32) -> Double
+pub fn DslistcircularGraphN::len(Self) -> Int32
+pub fn DslistcircularGraphN::max(Self) -> Double
+pub fn DslistcircularGraphN::mean(Self) -> Double
+pub fn DslistcircularGraphN::min(Self) -> Double
+pub fn DslistcircularGraphN::scale(Self, Double) -> Self
+pub fn DslistcircularGraphN::set(Self, Int32, Double) -> Self
+pub fn DslistcircularGraphN::sum(Self) -> Double
+pub fn DslistcircularGraphN::to_string(Self) -> String
+
+pub(all) struct DslistcircularLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistcircularLayer::add(Self, Self) -> Self
+pub fn DslistcircularLayer::copy(Self) -> Self
+pub fn DslistcircularLayer::fill(Self, Double) -> Self
+pub fn DslistcircularLayer::get(Self, Int32) -> Double
+pub fn DslistcircularLayer::len(Self) -> Int32
+pub fn DslistcircularLayer::max(Self) -> Double
+pub fn DslistcircularLayer::mean(Self) -> Double
+pub fn DslistcircularLayer::min(Self) -> Double
+pub fn DslistcircularLayer::scale(Self, Double) -> Self
+pub fn DslistcircularLayer::set(Self, Int32, Double) -> Self
+pub fn DslistcircularLayer::sum(Self) -> Double
+pub fn DslistcircularLayer::to_string(Self) -> String
+
+pub(all) struct DslistcircularMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DslistcircularMatrix::add(Self, Self) -> Self
+pub fn DslistcircularMatrix::det(Self) -> Double
+pub fn DslistcircularMatrix::get(Self, Int32, Int32) -> Double
+pub fn DslistcircularMatrix::multiply(Self, Self) -> Self
+pub fn DslistcircularMatrix::norm(Self) -> Double
+pub fn DslistcircularMatrix::scale(Self, Double) -> Self
+pub fn DslistcircularMatrix::to_string(Self) -> String
+pub fn DslistcircularMatrix::trace(Self) -> Double
+pub fn DslistcircularMatrix::transpose(Self) -> Self
+
+pub(all) struct DslistcircularModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistcircularModel::add(Self, Self) -> Self
+pub fn DslistcircularModel::copy(Self) -> Self
+pub fn DslistcircularModel::fill(Self, Double) -> Self
+pub fn DslistcircularModel::get(Self, Int32) -> Double
+pub fn DslistcircularModel::len(Self) -> Int32
+pub fn DslistcircularModel::max(Self) -> Double
+pub fn DslistcircularModel::mean(Self) -> Double
+pub fn DslistcircularModel::min(Self) -> Double
+pub fn DslistcircularModel::scale(Self, Double) -> Self
+pub fn DslistcircularModel::set(Self, Int32, Double) -> Self
+pub fn DslistcircularModel::sum(Self) -> Double
+pub fn DslistcircularModel::to_string(Self) -> String
+
+pub(all) struct DslistcircularNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistcircularNode::add(Self, Self) -> Self
+pub fn DslistcircularNode::copy(Self) -> Self
+pub fn DslistcircularNode::fill(Self, Double) -> Self
+pub fn DslistcircularNode::get(Self, Int32) -> Double
+pub fn DslistcircularNode::len(Self) -> Int32
+pub fn DslistcircularNode::max(Self) -> Double
+pub fn DslistcircularNode::mean(Self) -> Double
+pub fn DslistcircularNode::min(Self) -> Double
+pub fn DslistcircularNode::scale(Self, Double) -> Self
+pub fn DslistcircularNode::set(Self, Int32, Double) -> Self
+pub fn DslistcircularNode::sum(Self) -> Double
+pub fn DslistcircularNode::to_string(Self) -> String
+
+pub(all) struct DslistcircularPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistcircularPath::add(Self, Self) -> Self
+pub fn DslistcircularPath::copy(Self) -> Self
+pub fn DslistcircularPath::fill(Self, Double) -> Self
+pub fn DslistcircularPath::get(Self, Int32) -> Double
+pub fn DslistcircularPath::len(Self) -> Int32
+pub fn DslistcircularPath::max(Self) -> Double
+pub fn DslistcircularPath::mean(Self) -> Double
+pub fn DslistcircularPath::min(Self) -> Double
+pub fn DslistcircularPath::scale(Self, Double) -> Self
+pub fn DslistcircularPath::set(Self, Int32, Double) -> Self
+pub fn DslistcircularPath::sum(Self) -> Double
+pub fn DslistcircularPath::to_string(Self) -> String
+
+pub(all) struct DslistcircularPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DslistcircularPoint::add(Self, Self) -> Self
+pub fn DslistcircularPoint::cross(Self, Self) -> Self
+pub fn DslistcircularPoint::dist(Self, Self) -> Double
+pub fn DslistcircularPoint::dot(Self, Self) -> Double
+pub fn DslistcircularPoint::label(Self) -> Int32
+pub fn DslistcircularPoint::lerp(Self, Self, Double) -> Self
+pub fn DslistcircularPoint::mid(Self, Self) -> Self
+pub fn DslistcircularPoint::negate(Self) -> Self
+pub fn DslistcircularPoint::norm(Self) -> Double
+pub fn DslistcircularPoint::normalize(Self) -> Self
+pub fn DslistcircularPoint::scale(Self, Double) -> Self
+pub fn DslistcircularPoint::sub(Self, Self) -> Self
+pub fn DslistcircularPoint::to_string(Self) -> String
+pub fn DslistcircularPoint::x(Self) -> Double
+pub fn DslistcircularPoint::y(Self) -> Double
+pub fn DslistcircularPoint::z(Self) -> Double
+
+pub(all) struct DslistcircularRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistcircularRange::add(Self, Self) -> Self
+pub fn DslistcircularRange::copy(Self) -> Self
+pub fn DslistcircularRange::fill(Self, Double) -> Self
+pub fn DslistcircularRange::get(Self, Int32) -> Double
+pub fn DslistcircularRange::len(Self) -> Int32
+pub fn DslistcircularRange::max(Self) -> Double
+pub fn DslistcircularRange::mean(Self) -> Double
+pub fn DslistcircularRange::min(Self) -> Double
+pub fn DslistcircularRange::scale(Self, Double) -> Self
+pub fn DslistcircularRange::set(Self, Int32, Double) -> Self
+pub fn DslistcircularRange::sum(Self) -> Double
+pub fn DslistcircularRange::to_string(Self) -> String
+
+pub(all) struct DslistcircularSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DslistcircularSeries::add(Self, Self) -> Self
+pub fn DslistcircularSeries::cumsum(Self) -> Self
+pub fn DslistcircularSeries::len(Self) -> Int32
+pub fn DslistcircularSeries::max(Self) -> Double
+pub fn DslistcircularSeries::mean(Self) -> Double
+pub fn DslistcircularSeries::median(Self) -> Double
+pub fn DslistcircularSeries::min(Self) -> Double
+pub fn DslistcircularSeries::normalize(Self) -> Self
+pub fn DslistcircularSeries::range(Self) -> Double
+pub fn DslistcircularSeries::scale(Self, Double) -> Self
+pub fn DslistcircularSeries::std(Self) -> Double
+pub fn DslistcircularSeries::sub(Self, Self) -> Self
+pub fn DslistcircularSeries::sum(Self) -> Double
+pub fn DslistcircularSeries::to_string(Self) -> String
+pub fn DslistcircularSeries::variance(Self) -> Double
+
+pub(all) struct DslistcircularSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistcircularSlice::add(Self, Self) -> Self
+pub fn DslistcircularSlice::copy(Self) -> Self
+pub fn DslistcircularSlice::fill(Self, Double) -> Self
+pub fn DslistcircularSlice::get(Self, Int32) -> Double
+pub fn DslistcircularSlice::len(Self) -> Int32
+pub fn DslistcircularSlice::max(Self) -> Double
+pub fn DslistcircularSlice::mean(Self) -> Double
+pub fn DslistcircularSlice::min(Self) -> Double
+pub fn DslistcircularSlice::scale(Self, Double) -> Self
+pub fn DslistcircularSlice::set(Self, Int32, Double) -> Self
+pub fn DslistcircularSlice::sum(Self) -> Double
+pub fn DslistcircularSlice::to_string(Self) -> String
+
+pub(all) struct DslistcircularTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistcircularTable::add(Self, Self) -> Self
+pub fn DslistcircularTable::copy(Self) -> Self
+pub fn DslistcircularTable::fill(Self, Double) -> Self
+pub fn DslistcircularTable::get(Self, Int32) -> Double
+pub fn DslistcircularTable::len(Self) -> Int32
+pub fn DslistcircularTable::max(Self) -> Double
+pub fn DslistcircularTable::mean(Self) -> Double
+pub fn DslistcircularTable::min(Self) -> Double
+pub fn DslistcircularTable::scale(Self, Double) -> Self
+pub fn DslistcircularTable::set(Self, Int32, Double) -> Self
+pub fn DslistcircularTable::sum(Self) -> Double
+pub fn DslistcircularTable::to_string(Self) -> String
+
+pub(all) struct DslistcircularVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DslistcircularVector::add(Self, Self) -> Self
+pub fn DslistcircularVector::dist(Self, Self) -> Double
+pub fn DslistcircularVector::dot(Self, Self) -> Double
+pub fn DslistcircularVector::norm(Self) -> Double
+pub fn DslistcircularVector::normalize(Self) -> Self
+pub fn DslistcircularVector::scale(Self, Double) -> Self
+pub fn DslistcircularVector::sub(Self, Self) -> Self
+pub fn DslistcircularVector::to_string(Self) -> String
+
+pub(all) struct DslistcircularView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistcircularView::add(Self, Self) -> Self
+pub fn DslistcircularView::copy(Self) -> Self
+pub fn DslistcircularView::fill(Self, Double) -> Self
+pub fn DslistcircularView::get(Self, Int32) -> Double
+pub fn DslistcircularView::len(Self) -> Int32
+pub fn DslistcircularView::max(Self) -> Double
+pub fn DslistcircularView::mean(Self) -> Double
+pub fn DslistcircularView::min(Self) -> Double
+pub fn DslistcircularView::scale(Self, Double) -> Self
+pub fn DslistcircularView::set(Self, Int32, Double) -> Self
+pub fn DslistcircularView::sum(Self) -> Double
+pub fn DslistcircularView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

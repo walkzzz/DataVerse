@@ -1,0 +1,84 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/surface"
+
+import {
+  "dataverse/opcore/hydrology",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn aspect_result(@hydrology.RasterGrid, Int32, Int32, Double) -> SurfaceResult
+
+pub fn make_surface_result(String, Double, Int32, Int32) -> SurfaceResult
+
+pub fn slope_result(@hydrology.RasterGrid, Int32, Int32, Double) -> SurfaceResult
+
+pub fn surface_aspect(@hydrology.RasterGrid, Int32, Int32, Double) -> Double
+
+pub fn surface_aspect_direction(@hydrology.RasterGrid, Int32, Int32, Double) -> AspectDirection
+
+pub fn surface_aspect_grid(@hydrology.RasterGrid, Double) -> Array[Array[Double]]
+
+pub fn surface_contour(@hydrology.RasterGrid, Double) -> Array[ContourLine]
+
+pub fn surface_contour_count(@hydrology.RasterGrid, Double) -> Int32
+
+pub fn surface_curvature(@hydrology.RasterGrid, Int32, Int32, Double) -> Double
+
+pub fn surface_curvature_grid(@hydrology.RasterGrid, Double) -> Array[Array[Double]]
+
+pub fn surface_hillshade(@hydrology.RasterGrid, Int32, Int32, Double, Double, Double) -> Int32
+
+pub fn surface_hillshade_grid(@hydrology.RasterGrid, Double, Double, Double) -> Array[Array[Int32]]
+
+pub fn surface_slope(@hydrology.RasterGrid, Int32, Int32, Double) -> Double
+
+pub fn surface_slope_grid(@hydrology.RasterGrid, Double) -> Array[Array[Double]]
+
+pub fn surface_slope_percent(@hydrology.RasterGrid, Int32, Int32, Double) -> Double
+
+pub fn surface_stats(@hydrology.RasterGrid, Double) -> (Double, Double)
+
+pub fn surface_viewshed(@hydrology.RasterGrid, Int32, Int32, Int32) -> Array[(Int32, Int32)]
+
+pub fn surface_viewshed_stats(@hydrology.RasterGrid, Int32, Int32, Int32) -> (Int32, Int32)
+
+// Errors
+
+// Types and methods
+pub(all) enum AspectDirection {
+  Flat
+  North
+  Northeast
+  East
+  Southeast
+  South
+  Southwest
+  West
+  Northwest
+} derive(Eq, @debug.Debug)
+pub fn AspectDirection::equal(Self, Self) -> Bool
+pub fn AspectDirection::not_equal(Self, Self) -> Bool
+pub fn AspectDirection::to_repr(Self) -> @debug.Repr
+
+pub struct ContourLine {
+  elevation : Double
+  points : Array[(Int32, Int32)]
+} derive(Eq, @debug.Debug)
+pub fn ContourLine::equal(Self, Self) -> Bool
+pub fn ContourLine::not_equal(Self, Self) -> Bool
+pub fn ContourLine::to_repr(Self) -> @debug.Repr
+
+pub struct SurfaceResult {
+  kind : String
+  value : Double
+  row : Int32
+  col : Int32
+} derive(Eq, @debug.Debug)
+pub fn SurfaceResult::equal(Self, Self) -> Bool
+pub fn SurfaceResult::not_equal(Self, Self) -> Bool
+pub fn SurfaceResult::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

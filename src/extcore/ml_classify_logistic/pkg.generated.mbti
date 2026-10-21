@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_classify_logistic"
+
+// Values
+pub fn ml_classify_logistic_buffer_make(Int32) -> MlclassifylogisticBuffer
+
+pub fn ml_classify_logistic_cluster_make(Int32) -> MlclassifylogisticCluster
+
+pub fn ml_classify_logistic_cursor_make(Int32) -> MlclassifylogisticCursor
+
+pub fn ml_classify_logistic_edge_make(Int32) -> MlclassifylogisticEdge
+
+pub fn ml_classify_logistic_frame_make(Int32) -> MlclassifylogisticFrame
+
+pub fn ml_classify_logistic_graphn_make(Int32) -> MlclassifylogisticGraphN
+
+pub fn ml_classify_logistic_layer_make(Int32) -> MlclassifylogisticLayer
+
+pub fn ml_classify_logistic_make_matrix(Int32, Int32, Double) -> MlclassifylogisticMatrix
+
+pub fn ml_classify_logistic_make_point(Double, Double) -> MlclassifylogisticPoint
+
+pub fn ml_classify_logistic_make_point3(Double, Double, Double) -> MlclassifylogisticPoint
+
+pub fn ml_classify_logistic_make_series(Array[Double], String) -> MlclassifylogisticSeries
+
+pub fn ml_classify_logistic_make_vector(Array[Double]) -> MlclassifylogisticVector
+
+pub fn ml_classify_logistic_matrix_identity(Int32) -> MlclassifylogisticMatrix
+
+pub fn ml_classify_logistic_model_make(Int32) -> MlclassifylogisticModel
+
+pub fn ml_classify_logistic_node_make(Int32) -> MlclassifylogisticNode
+
+pub fn ml_classify_logistic_path_make(Int32) -> MlclassifylogisticPath
+
+pub fn ml_classify_logistic_range_make(Int32) -> MlclassifylogisticRange
+
+pub fn ml_classify_logistic_slice_make(Int32) -> MlclassifylogisticSlice
+
+pub fn ml_classify_logistic_table_make(Int32) -> MlclassifylogisticTable
+
+pub fn ml_classify_logistic_vector_zero(Int32) -> MlclassifylogisticVector
+
+pub fn ml_classify_logistic_view_make(Int32) -> MlclassifylogisticView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlclassifylogisticBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifylogisticBuffer::add(Self, Self) -> Self
+pub fn MlclassifylogisticBuffer::copy(Self) -> Self
+pub fn MlclassifylogisticBuffer::fill(Self, Double) -> Self
+pub fn MlclassifylogisticBuffer::get(Self, Int32) -> Double
+pub fn MlclassifylogisticBuffer::len(Self) -> Int32
+pub fn MlclassifylogisticBuffer::max(Self) -> Double
+pub fn MlclassifylogisticBuffer::mean(Self) -> Double
+pub fn MlclassifylogisticBuffer::min(Self) -> Double
+pub fn MlclassifylogisticBuffer::scale(Self, Double) -> Self
+pub fn MlclassifylogisticBuffer::set(Self, Int32, Double) -> Self
+pub fn MlclassifylogisticBuffer::sum(Self) -> Double
+pub fn MlclassifylogisticBuffer::to_string(Self) -> String
+
+pub(all) struct MlclassifylogisticCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifylogisticCluster::add(Self, Self) -> Self
+pub fn MlclassifylogisticCluster::copy(Self) -> Self
+pub fn MlclassifylogisticCluster::fill(Self, Double) -> Self
+pub fn MlclassifylogisticCluster::get(Self, Int32) -> Double
+pub fn MlclassifylogisticCluster::len(Self) -> Int32
+pub fn MlclassifylogisticCluster::max(Self) -> Double
+pub fn MlclassifylogisticCluster::mean(Self) -> Double
+pub fn MlclassifylogisticCluster::min(Self) -> Double
+pub fn MlclassifylogisticCluster::scale(Self, Double) -> Self
+pub fn MlclassifylogisticCluster::set(Self, Int32, Double) -> Self
+pub fn MlclassifylogisticCluster::sum(Self) -> Double
+pub fn MlclassifylogisticCluster::to_string(Self) -> String
+
+pub(all) struct MlclassifylogisticCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifylogisticCursor::add(Self, Self) -> Self
+pub fn MlclassifylogisticCursor::copy(Self) -> Self
+pub fn MlclassifylogisticCursor::fill(Self, Double) -> Self
+pub fn MlclassifylogisticCursor::get(Self, Int32) -> Double
+pub fn MlclassifylogisticCursor::len(Self) -> Int32
+pub fn MlclassifylogisticCursor::max(Self) -> Double
+pub fn MlclassifylogisticCursor::mean(Self) -> Double
+pub fn MlclassifylogisticCursor::min(Self) -> Double
+pub fn MlclassifylogisticCursor::scale(Self, Double) -> Self
+pub fn MlclassifylogisticCursor::set(Self, Int32, Double) -> Self
+pub fn MlclassifylogisticCursor::sum(Self) -> Double
+pub fn MlclassifylogisticCursor::to_string(Self) -> String
+
+pub(all) struct MlclassifylogisticEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifylogisticEdge::add(Self, Self) -> Self
+pub fn MlclassifylogisticEdge::copy(Self) -> Self
+pub fn MlclassifylogisticEdge::fill(Self, Double) -> Self
+pub fn MlclassifylogisticEdge::get(Self, Int32) -> Double
+pub fn MlclassifylogisticEdge::len(Self) -> Int32
+pub fn MlclassifylogisticEdge::max(Self) -> Double
+pub fn MlclassifylogisticEdge::mean(Self) -> Double
+pub fn MlclassifylogisticEdge::min(Self) -> Double
+pub fn MlclassifylogisticEdge::scale(Self, Double) -> Self
+pub fn MlclassifylogisticEdge::set(Self, Int32, Double) -> Self
+pub fn MlclassifylogisticEdge::sum(Self) -> Double
+pub fn MlclassifylogisticEdge::to_string(Self) -> String
+
+pub(all) struct MlclassifylogisticFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifylogisticFrame::add(Self, Self) -> Self
+pub fn MlclassifylogisticFrame::copy(Self) -> Self
+pub fn MlclassifylogisticFrame::fill(Self, Double) -> Self
+pub fn MlclassifylogisticFrame::get(Self, Int32) -> Double
+pub fn MlclassifylogisticFrame::len(Self) -> Int32
+pub fn MlclassifylogisticFrame::max(Self) -> Double
+pub fn MlclassifylogisticFrame::mean(Self) -> Double
+pub fn MlclassifylogisticFrame::min(Self) -> Double
+pub fn MlclassifylogisticFrame::scale(Self, Double) -> Self
+pub fn MlclassifylogisticFrame::set(Self, Int32, Double) -> Self
+pub fn MlclassifylogisticFrame::sum(Self) -> Double
+pub fn MlclassifylogisticFrame::to_string(Self) -> String
+
+pub(all) struct MlclassifylogisticGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifylogisticGraphN::add(Self, Self) -> Self
+pub fn MlclassifylogisticGraphN::copy(Self) -> Self
+pub fn MlclassifylogisticGraphN::fill(Self, Double) -> Self
+pub fn MlclassifylogisticGraphN::get(Self, Int32) -> Double
+pub fn MlclassifylogisticGraphN::len(Self) -> Int32
+pub fn MlclassifylogisticGraphN::max(Self) -> Double
+pub fn MlclassifylogisticGraphN::mean(Self) -> Double
+pub fn MlclassifylogisticGraphN::min(Self) -> Double
+pub fn MlclassifylogisticGraphN::scale(Self, Double) -> Self
+pub fn MlclassifylogisticGraphN::set(Self, Int32, Double) -> Self
+pub fn MlclassifylogisticGraphN::sum(Self) -> Double
+pub fn MlclassifylogisticGraphN::to_string(Self) -> String
+
+pub(all) struct MlclassifylogisticLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifylogisticLayer::add(Self, Self) -> Self
+pub fn MlclassifylogisticLayer::copy(Self) -> Self
+pub fn MlclassifylogisticLayer::fill(Self, Double) -> Self
+pub fn MlclassifylogisticLayer::get(Self, Int32) -> Double
+pub fn MlclassifylogisticLayer::len(Self) -> Int32
+pub fn MlclassifylogisticLayer::max(Self) -> Double
+pub fn MlclassifylogisticLayer::mean(Self) -> Double
+pub fn MlclassifylogisticLayer::min(Self) -> Double
+pub fn MlclassifylogisticLayer::scale(Self, Double) -> Self
+pub fn MlclassifylogisticLayer::set(Self, Int32, Double) -> Self
+pub fn MlclassifylogisticLayer::sum(Self) -> Double
+pub fn MlclassifylogisticLayer::to_string(Self) -> String
+
+pub(all) struct MlclassifylogisticMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlclassifylogisticMatrix::add(Self, Self) -> Self
+pub fn MlclassifylogisticMatrix::det(Self) -> Double
+pub fn MlclassifylogisticMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlclassifylogisticMatrix::multiply(Self, Self) -> Self
+pub fn MlclassifylogisticMatrix::norm(Self) -> Double
+pub fn MlclassifylogisticMatrix::scale(Self, Double) -> Self
+pub fn MlclassifylogisticMatrix::to_string(Self) -> String
+pub fn MlclassifylogisticMatrix::trace(Self) -> Double
+pub fn MlclassifylogisticMatrix::transpose(Self) -> Self
+
+pub(all) struct MlclassifylogisticModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifylogisticModel::add(Self, Self) -> Self
+pub fn MlclassifylogisticModel::copy(Self) -> Self
+pub fn MlclassifylogisticModel::fill(Self, Double) -> Self
+pub fn MlclassifylogisticModel::get(Self, Int32) -> Double
+pub fn MlclassifylogisticModel::len(Self) -> Int32
+pub fn MlclassifylogisticModel::max(Self) -> Double
+pub fn MlclassifylogisticModel::mean(Self) -> Double
+pub fn MlclassifylogisticModel::min(Self) -> Double
+pub fn MlclassifylogisticModel::scale(Self, Double) -> Self
+pub fn MlclassifylogisticModel::set(Self, Int32, Double) -> Self
+pub fn MlclassifylogisticModel::sum(Self) -> Double
+pub fn MlclassifylogisticModel::to_string(Self) -> String
+
+pub(all) struct MlclassifylogisticNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifylogisticNode::add(Self, Self) -> Self
+pub fn MlclassifylogisticNode::copy(Self) -> Self
+pub fn MlclassifylogisticNode::fill(Self, Double) -> Self
+pub fn MlclassifylogisticNode::get(Self, Int32) -> Double
+pub fn MlclassifylogisticNode::len(Self) -> Int32
+pub fn MlclassifylogisticNode::max(Self) -> Double
+pub fn MlclassifylogisticNode::mean(Self) -> Double
+pub fn MlclassifylogisticNode::min(Self) -> Double
+pub fn MlclassifylogisticNode::scale(Self, Double) -> Self
+pub fn MlclassifylogisticNode::set(Self, Int32, Double) -> Self
+pub fn MlclassifylogisticNode::sum(Self) -> Double
+pub fn MlclassifylogisticNode::to_string(Self) -> String
+
+pub(all) struct MlclassifylogisticPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifylogisticPath::add(Self, Self) -> Self
+pub fn MlclassifylogisticPath::copy(Self) -> Self
+pub fn MlclassifylogisticPath::fill(Self, Double) -> Self
+pub fn MlclassifylogisticPath::get(Self, Int32) -> Double
+pub fn MlclassifylogisticPath::len(Self) -> Int32
+pub fn MlclassifylogisticPath::max(Self) -> Double
+pub fn MlclassifylogisticPath::mean(Self) -> Double
+pub fn MlclassifylogisticPath::min(Self) -> Double
+pub fn MlclassifylogisticPath::scale(Self, Double) -> Self
+pub fn MlclassifylogisticPath::set(Self, Int32, Double) -> Self
+pub fn MlclassifylogisticPath::sum(Self) -> Double
+pub fn MlclassifylogisticPath::to_string(Self) -> String
+
+pub(all) struct MlclassifylogisticPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlclassifylogisticPoint::add(Self, Self) -> Self
+pub fn MlclassifylogisticPoint::cross(Self, Self) -> Self
+pub fn MlclassifylogisticPoint::dist(Self, Self) -> Double
+pub fn MlclassifylogisticPoint::dot(Self, Self) -> Double
+pub fn MlclassifylogisticPoint::label(Self) -> Int32
+pub fn MlclassifylogisticPoint::lerp(Self, Self, Double) -> Self
+pub fn MlclassifylogisticPoint::mid(Self, Self) -> Self
+pub fn MlclassifylogisticPoint::negate(Self) -> Self
+pub fn MlclassifylogisticPoint::norm(Self) -> Double
+pub fn MlclassifylogisticPoint::normalize(Self) -> Self
+pub fn MlclassifylogisticPoint::scale(Self, Double) -> Self
+pub fn MlclassifylogisticPoint::sub(Self, Self) -> Self
+pub fn MlclassifylogisticPoint::to_string(Self) -> String
+pub fn MlclassifylogisticPoint::x(Self) -> Double
+pub fn MlclassifylogisticPoint::y(Self) -> Double
+pub fn MlclassifylogisticPoint::z(Self) -> Double
+
+pub(all) struct MlclassifylogisticRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifylogisticRange::add(Self, Self) -> Self
+pub fn MlclassifylogisticRange::copy(Self) -> Self
+pub fn MlclassifylogisticRange::fill(Self, Double) -> Self
+pub fn MlclassifylogisticRange::get(Self, Int32) -> Double
+pub fn MlclassifylogisticRange::len(Self) -> Int32
+pub fn MlclassifylogisticRange::max(Self) -> Double
+pub fn MlclassifylogisticRange::mean(Self) -> Double
+pub fn MlclassifylogisticRange::min(Self) -> Double
+pub fn MlclassifylogisticRange::scale(Self, Double) -> Self
+pub fn MlclassifylogisticRange::set(Self, Int32, Double) -> Self
+pub fn MlclassifylogisticRange::sum(Self) -> Double
+pub fn MlclassifylogisticRange::to_string(Self) -> String
+
+pub(all) struct MlclassifylogisticSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlclassifylogisticSeries::add(Self, Self) -> Self
+pub fn MlclassifylogisticSeries::cumsum(Self) -> Self
+pub fn MlclassifylogisticSeries::len(Self) -> Int32
+pub fn MlclassifylogisticSeries::max(Self) -> Double
+pub fn MlclassifylogisticSeries::mean(Self) -> Double
+pub fn MlclassifylogisticSeries::median(Self) -> Double
+pub fn MlclassifylogisticSeries::min(Self) -> Double
+pub fn MlclassifylogisticSeries::normalize(Self) -> Self
+pub fn MlclassifylogisticSeries::range(Self) -> Double
+pub fn MlclassifylogisticSeries::scale(Self, Double) -> Self
+pub fn MlclassifylogisticSeries::std(Self) -> Double
+pub fn MlclassifylogisticSeries::sub(Self, Self) -> Self
+pub fn MlclassifylogisticSeries::sum(Self) -> Double
+pub fn MlclassifylogisticSeries::to_string(Self) -> String
+pub fn MlclassifylogisticSeries::variance(Self) -> Double
+
+pub(all) struct MlclassifylogisticSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifylogisticSlice::add(Self, Self) -> Self
+pub fn MlclassifylogisticSlice::copy(Self) -> Self
+pub fn MlclassifylogisticSlice::fill(Self, Double) -> Self
+pub fn MlclassifylogisticSlice::get(Self, Int32) -> Double
+pub fn MlclassifylogisticSlice::len(Self) -> Int32
+pub fn MlclassifylogisticSlice::max(Self) -> Double
+pub fn MlclassifylogisticSlice::mean(Self) -> Double
+pub fn MlclassifylogisticSlice::min(Self) -> Double
+pub fn MlclassifylogisticSlice::scale(Self, Double) -> Self
+pub fn MlclassifylogisticSlice::set(Self, Int32, Double) -> Self
+pub fn MlclassifylogisticSlice::sum(Self) -> Double
+pub fn MlclassifylogisticSlice::to_string(Self) -> String
+
+pub(all) struct MlclassifylogisticTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifylogisticTable::add(Self, Self) -> Self
+pub fn MlclassifylogisticTable::copy(Self) -> Self
+pub fn MlclassifylogisticTable::fill(Self, Double) -> Self
+pub fn MlclassifylogisticTable::get(Self, Int32) -> Double
+pub fn MlclassifylogisticTable::len(Self) -> Int32
+pub fn MlclassifylogisticTable::max(Self) -> Double
+pub fn MlclassifylogisticTable::mean(Self) -> Double
+pub fn MlclassifylogisticTable::min(Self) -> Double
+pub fn MlclassifylogisticTable::scale(Self, Double) -> Self
+pub fn MlclassifylogisticTable::set(Self, Int32, Double) -> Self
+pub fn MlclassifylogisticTable::sum(Self) -> Double
+pub fn MlclassifylogisticTable::to_string(Self) -> String
+
+pub(all) struct MlclassifylogisticVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlclassifylogisticVector::add(Self, Self) -> Self
+pub fn MlclassifylogisticVector::dist(Self, Self) -> Double
+pub fn MlclassifylogisticVector::dot(Self, Self) -> Double
+pub fn MlclassifylogisticVector::norm(Self) -> Double
+pub fn MlclassifylogisticVector::normalize(Self) -> Self
+pub fn MlclassifylogisticVector::scale(Self, Double) -> Self
+pub fn MlclassifylogisticVector::sub(Self, Self) -> Self
+pub fn MlclassifylogisticVector::to_string(Self) -> String
+
+pub(all) struct MlclassifylogisticView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifylogisticView::add(Self, Self) -> Self
+pub fn MlclassifylogisticView::copy(Self) -> Self
+pub fn MlclassifylogisticView::fill(Self, Double) -> Self
+pub fn MlclassifylogisticView::get(Self, Int32) -> Double
+pub fn MlclassifylogisticView::len(Self) -> Int32
+pub fn MlclassifylogisticView::max(Self) -> Double
+pub fn MlclassifylogisticView::mean(Self) -> Double
+pub fn MlclassifylogisticView::min(Self) -> Double
+pub fn MlclassifylogisticView::scale(Self, Double) -> Self
+pub fn MlclassifylogisticView::set(Self, Int32, Double) -> Self
+pub fn MlclassifylogisticView::sum(Self) -> Double
+pub fn MlclassifylogisticView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

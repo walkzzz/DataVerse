@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_mechanics_joint"
+
+// Values
+pub fn physics_mechanics_joint_buffer_make(Int32) -> PhysicsmechanicsjointBuffer
+
+pub fn physics_mechanics_joint_cluster_make(Int32) -> PhysicsmechanicsjointCluster
+
+pub fn physics_mechanics_joint_cursor_make(Int32) -> PhysicsmechanicsjointCursor
+
+pub fn physics_mechanics_joint_edge_make(Int32) -> PhysicsmechanicsjointEdge
+
+pub fn physics_mechanics_joint_frame_make(Int32) -> PhysicsmechanicsjointFrame
+
+pub fn physics_mechanics_joint_graphn_make(Int32) -> PhysicsmechanicsjointGraphN
+
+pub fn physics_mechanics_joint_layer_make(Int32) -> PhysicsmechanicsjointLayer
+
+pub fn physics_mechanics_joint_make_matrix(Int32, Int32, Double) -> PhysicsmechanicsjointMatrix
+
+pub fn physics_mechanics_joint_make_point(Double, Double) -> PhysicsmechanicsjointPoint
+
+pub fn physics_mechanics_joint_make_point3(Double, Double, Double) -> PhysicsmechanicsjointPoint
+
+pub fn physics_mechanics_joint_make_series(Array[Double], String) -> PhysicsmechanicsjointSeries
+
+pub fn physics_mechanics_joint_make_vector(Array[Double]) -> PhysicsmechanicsjointVector
+
+pub fn physics_mechanics_joint_matrix_identity(Int32) -> PhysicsmechanicsjointMatrix
+
+pub fn physics_mechanics_joint_model_make(Int32) -> PhysicsmechanicsjointModel
+
+pub fn physics_mechanics_joint_node_make(Int32) -> PhysicsmechanicsjointNode
+
+pub fn physics_mechanics_joint_path_make(Int32) -> PhysicsmechanicsjointPath
+
+pub fn physics_mechanics_joint_range_make(Int32) -> PhysicsmechanicsjointRange
+
+pub fn physics_mechanics_joint_slice_make(Int32) -> PhysicsmechanicsjointSlice
+
+pub fn physics_mechanics_joint_table_make(Int32) -> PhysicsmechanicsjointTable
+
+pub fn physics_mechanics_joint_vector_zero(Int32) -> PhysicsmechanicsjointVector
+
+pub fn physics_mechanics_joint_view_make(Int32) -> PhysicsmechanicsjointView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsmechanicsjointBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsjointBuffer::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointBuffer::copy(Self) -> Self
+pub fn PhysicsmechanicsjointBuffer::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsjointBuffer::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsjointBuffer::len(Self) -> Int32
+pub fn PhysicsmechanicsjointBuffer::max(Self) -> Double
+pub fn PhysicsmechanicsjointBuffer::mean(Self) -> Double
+pub fn PhysicsmechanicsjointBuffer::min(Self) -> Double
+pub fn PhysicsmechanicsjointBuffer::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsjointBuffer::sum(Self) -> Double
+pub fn PhysicsmechanicsjointBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsjointCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsjointCluster::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointCluster::copy(Self) -> Self
+pub fn PhysicsmechanicsjointCluster::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsjointCluster::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsjointCluster::len(Self) -> Int32
+pub fn PhysicsmechanicsjointCluster::max(Self) -> Double
+pub fn PhysicsmechanicsjointCluster::mean(Self) -> Double
+pub fn PhysicsmechanicsjointCluster::min(Self) -> Double
+pub fn PhysicsmechanicsjointCluster::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsjointCluster::sum(Self) -> Double
+pub fn PhysicsmechanicsjointCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsjointCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsjointCursor::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointCursor::copy(Self) -> Self
+pub fn PhysicsmechanicsjointCursor::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsjointCursor::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsjointCursor::len(Self) -> Int32
+pub fn PhysicsmechanicsjointCursor::max(Self) -> Double
+pub fn PhysicsmechanicsjointCursor::mean(Self) -> Double
+pub fn PhysicsmechanicsjointCursor::min(Self) -> Double
+pub fn PhysicsmechanicsjointCursor::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsjointCursor::sum(Self) -> Double
+pub fn PhysicsmechanicsjointCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsjointEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsjointEdge::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointEdge::copy(Self) -> Self
+pub fn PhysicsmechanicsjointEdge::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsjointEdge::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsjointEdge::len(Self) -> Int32
+pub fn PhysicsmechanicsjointEdge::max(Self) -> Double
+pub fn PhysicsmechanicsjointEdge::mean(Self) -> Double
+pub fn PhysicsmechanicsjointEdge::min(Self) -> Double
+pub fn PhysicsmechanicsjointEdge::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsjointEdge::sum(Self) -> Double
+pub fn PhysicsmechanicsjointEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsjointFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsjointFrame::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointFrame::copy(Self) -> Self
+pub fn PhysicsmechanicsjointFrame::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsjointFrame::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsjointFrame::len(Self) -> Int32
+pub fn PhysicsmechanicsjointFrame::max(Self) -> Double
+pub fn PhysicsmechanicsjointFrame::mean(Self) -> Double
+pub fn PhysicsmechanicsjointFrame::min(Self) -> Double
+pub fn PhysicsmechanicsjointFrame::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsjointFrame::sum(Self) -> Double
+pub fn PhysicsmechanicsjointFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsjointGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsjointGraphN::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointGraphN::copy(Self) -> Self
+pub fn PhysicsmechanicsjointGraphN::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsjointGraphN::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsjointGraphN::len(Self) -> Int32
+pub fn PhysicsmechanicsjointGraphN::max(Self) -> Double
+pub fn PhysicsmechanicsjointGraphN::mean(Self) -> Double
+pub fn PhysicsmechanicsjointGraphN::min(Self) -> Double
+pub fn PhysicsmechanicsjointGraphN::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsjointGraphN::sum(Self) -> Double
+pub fn PhysicsmechanicsjointGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsjointLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsjointLayer::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointLayer::copy(Self) -> Self
+pub fn PhysicsmechanicsjointLayer::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsjointLayer::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsjointLayer::len(Self) -> Int32
+pub fn PhysicsmechanicsjointLayer::max(Self) -> Double
+pub fn PhysicsmechanicsjointLayer::mean(Self) -> Double
+pub fn PhysicsmechanicsjointLayer::min(Self) -> Double
+pub fn PhysicsmechanicsjointLayer::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsjointLayer::sum(Self) -> Double
+pub fn PhysicsmechanicsjointLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsjointMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsmechanicsjointMatrix::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointMatrix::det(Self) -> Double
+pub fn PhysicsmechanicsjointMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsmechanicsjointMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsmechanicsjointMatrix::norm(Self) -> Double
+pub fn PhysicsmechanicsjointMatrix::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointMatrix::to_string(Self) -> String
+pub fn PhysicsmechanicsjointMatrix::trace(Self) -> Double
+pub fn PhysicsmechanicsjointMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsmechanicsjointModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsjointModel::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointModel::copy(Self) -> Self
+pub fn PhysicsmechanicsjointModel::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsjointModel::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsjointModel::len(Self) -> Int32
+pub fn PhysicsmechanicsjointModel::max(Self) -> Double
+pub fn PhysicsmechanicsjointModel::mean(Self) -> Double
+pub fn PhysicsmechanicsjointModel::min(Self) -> Double
+pub fn PhysicsmechanicsjointModel::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsjointModel::sum(Self) -> Double
+pub fn PhysicsmechanicsjointModel::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsjointNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsjointNode::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointNode::copy(Self) -> Self
+pub fn PhysicsmechanicsjointNode::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsjointNode::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsjointNode::len(Self) -> Int32
+pub fn PhysicsmechanicsjointNode::max(Self) -> Double
+pub fn PhysicsmechanicsjointNode::mean(Self) -> Double
+pub fn PhysicsmechanicsjointNode::min(Self) -> Double
+pub fn PhysicsmechanicsjointNode::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsjointNode::sum(Self) -> Double
+pub fn PhysicsmechanicsjointNode::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsjointPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsjointPath::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointPath::copy(Self) -> Self
+pub fn PhysicsmechanicsjointPath::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsjointPath::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsjointPath::len(Self) -> Int32
+pub fn PhysicsmechanicsjointPath::max(Self) -> Double
+pub fn PhysicsmechanicsjointPath::mean(Self) -> Double
+pub fn PhysicsmechanicsjointPath::min(Self) -> Double
+pub fn PhysicsmechanicsjointPath::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsjointPath::sum(Self) -> Double
+pub fn PhysicsmechanicsjointPath::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsjointPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsmechanicsjointPoint::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointPoint::cross(Self, Self) -> Self
+pub fn PhysicsmechanicsjointPoint::dist(Self, Self) -> Double
+pub fn PhysicsmechanicsjointPoint::dot(Self, Self) -> Double
+pub fn PhysicsmechanicsjointPoint::label(Self) -> Int32
+pub fn PhysicsmechanicsjointPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsmechanicsjointPoint::mid(Self, Self) -> Self
+pub fn PhysicsmechanicsjointPoint::negate(Self) -> Self
+pub fn PhysicsmechanicsjointPoint::norm(Self) -> Double
+pub fn PhysicsmechanicsjointPoint::normalize(Self) -> Self
+pub fn PhysicsmechanicsjointPoint::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointPoint::sub(Self, Self) -> Self
+pub fn PhysicsmechanicsjointPoint::to_string(Self) -> String
+pub fn PhysicsmechanicsjointPoint::x(Self) -> Double
+pub fn PhysicsmechanicsjointPoint::y(Self) -> Double
+pub fn PhysicsmechanicsjointPoint::z(Self) -> Double
+
+pub(all) struct PhysicsmechanicsjointRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsjointRange::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointRange::copy(Self) -> Self
+pub fn PhysicsmechanicsjointRange::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsjointRange::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsjointRange::len(Self) -> Int32
+pub fn PhysicsmechanicsjointRange::max(Self) -> Double
+pub fn PhysicsmechanicsjointRange::mean(Self) -> Double
+pub fn PhysicsmechanicsjointRange::min(Self) -> Double
+pub fn PhysicsmechanicsjointRange::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsjointRange::sum(Self) -> Double
+pub fn PhysicsmechanicsjointRange::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsjointSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsmechanicsjointSeries::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointSeries::cumsum(Self) -> Self
+pub fn PhysicsmechanicsjointSeries::len(Self) -> Int32
+pub fn PhysicsmechanicsjointSeries::max(Self) -> Double
+pub fn PhysicsmechanicsjointSeries::mean(Self) -> Double
+pub fn PhysicsmechanicsjointSeries::median(Self) -> Double
+pub fn PhysicsmechanicsjointSeries::min(Self) -> Double
+pub fn PhysicsmechanicsjointSeries::normalize(Self) -> Self
+pub fn PhysicsmechanicsjointSeries::range(Self) -> Double
+pub fn PhysicsmechanicsjointSeries::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointSeries::std(Self) -> Double
+pub fn PhysicsmechanicsjointSeries::sub(Self, Self) -> Self
+pub fn PhysicsmechanicsjointSeries::sum(Self) -> Double
+pub fn PhysicsmechanicsjointSeries::to_string(Self) -> String
+pub fn PhysicsmechanicsjointSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsmechanicsjointSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsjointSlice::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointSlice::copy(Self) -> Self
+pub fn PhysicsmechanicsjointSlice::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsjointSlice::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsjointSlice::len(Self) -> Int32
+pub fn PhysicsmechanicsjointSlice::max(Self) -> Double
+pub fn PhysicsmechanicsjointSlice::mean(Self) -> Double
+pub fn PhysicsmechanicsjointSlice::min(Self) -> Double
+pub fn PhysicsmechanicsjointSlice::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsjointSlice::sum(Self) -> Double
+pub fn PhysicsmechanicsjointSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsjointTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsjointTable::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointTable::copy(Self) -> Self
+pub fn PhysicsmechanicsjointTable::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsjointTable::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsjointTable::len(Self) -> Int32
+pub fn PhysicsmechanicsjointTable::max(Self) -> Double
+pub fn PhysicsmechanicsjointTable::mean(Self) -> Double
+pub fn PhysicsmechanicsjointTable::min(Self) -> Double
+pub fn PhysicsmechanicsjointTable::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsjointTable::sum(Self) -> Double
+pub fn PhysicsmechanicsjointTable::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsjointVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsmechanicsjointVector::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointVector::dist(Self, Self) -> Double
+pub fn PhysicsmechanicsjointVector::dot(Self, Self) -> Double
+pub fn PhysicsmechanicsjointVector::norm(Self) -> Double
+pub fn PhysicsmechanicsjointVector::normalize(Self) -> Self
+pub fn PhysicsmechanicsjointVector::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointVector::sub(Self, Self) -> Self
+pub fn PhysicsmechanicsjointVector::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsjointView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsjointView::add(Self, Self) -> Self
+pub fn PhysicsmechanicsjointView::copy(Self) -> Self
+pub fn PhysicsmechanicsjointView::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsjointView::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsjointView::len(Self) -> Int32
+pub fn PhysicsmechanicsjointView::max(Self) -> Double
+pub fn PhysicsmechanicsjointView::mean(Self) -> Double
+pub fn PhysicsmechanicsjointView::min(Self) -> Double
+pub fn PhysicsmechanicsjointView::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsjointView::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsjointView::sum(Self) -> Double
+pub fn PhysicsmechanicsjointView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/cuckoo"
+
+// Values
+pub fn cuckoo_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn cuckoo_corr(Array[Double], Array[Double]) -> Double
+
+pub fn cuckoo_cov(Array[Double], Array[Double]) -> Double
+
+pub fn cuckoo_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn cuckoo_mae(Array[Double], Array[Double]) -> Double
+
+pub fn cuckoo_make_labeled_point(Double, Double, Int32) -> CuckooPoint
+
+pub fn cuckoo_make_matrix(Int32, Int32, Double) -> CuckooMatrix
+
+pub fn cuckoo_make_point(Double, Double) -> CuckooPoint
+
+pub fn cuckoo_make_series(Array[Double], String) -> CuckooSeries
+
+pub fn cuckoo_make_vector(Array[Double]) -> CuckooVector
+
+pub fn cuckoo_matrix_add(CuckooMatrix, CuckooMatrix) -> CuckooMatrix
+
+pub fn cuckoo_matrix_get(CuckooMatrix, Int32, Int32) -> Double
+
+pub fn cuckoo_matrix_identity(Int32) -> CuckooMatrix
+
+pub fn cuckoo_matrix_multiply(CuckooMatrix, CuckooMatrix) -> CuckooMatrix
+
+pub fn cuckoo_matrix_norm(CuckooMatrix) -> Double
+
+pub fn cuckoo_matrix_scale(CuckooMatrix, Double) -> CuckooMatrix
+
+pub fn cuckoo_matrix_to_string(CuckooMatrix) -> String
+
+pub fn cuckoo_matrix_trace(CuckooMatrix) -> Double
+
+pub fn cuckoo_matrix_transpose(CuckooMatrix) -> CuckooMatrix
+
+pub fn cuckoo_mse(Array[Double], Array[Double]) -> Double
+
+pub fn cuckoo_point_add(CuckooPoint, CuckooPoint) -> CuckooPoint
+
+pub fn cuckoo_point_dist(CuckooPoint, CuckooPoint) -> Double
+
+pub fn cuckoo_point_dot(CuckooPoint, CuckooPoint) -> Double
+
+pub fn cuckoo_point_label(CuckooPoint) -> Int32
+
+pub fn cuckoo_point_norm(CuckooPoint) -> Double
+
+pub fn cuckoo_point_scale(CuckooPoint, Double) -> CuckooPoint
+
+pub fn cuckoo_point_sub(CuckooPoint, CuckooPoint) -> CuckooPoint
+
+pub fn cuckoo_point_to_string(CuckooPoint) -> String
+
+pub fn cuckoo_point_x(CuckooPoint) -> Double
+
+pub fn cuckoo_point_y(CuckooPoint) -> Double
+
+pub fn cuckoo_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn cuckoo_r2(Array[Double], Array[Double]) -> Double
+
+pub fn cuckoo_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn cuckoo_series_add(CuckooSeries, CuckooSeries) -> CuckooSeries
+
+pub fn cuckoo_series_len(CuckooSeries) -> Int32
+
+pub fn cuckoo_series_max(CuckooSeries) -> Double
+
+pub fn cuckoo_series_mean(CuckooSeries) -> Double
+
+pub fn cuckoo_series_min(CuckooSeries) -> Double
+
+pub fn cuckoo_series_scale(CuckooSeries, Double) -> CuckooSeries
+
+pub fn cuckoo_series_std(CuckooSeries) -> Double
+
+pub fn cuckoo_series_sum(CuckooSeries) -> Double
+
+pub fn cuckoo_series_to_string(CuckooSeries) -> String
+
+pub fn cuckoo_series_var(CuckooSeries) -> Double
+
+pub fn cuckoo_std(Array[Double]) -> Double
+
+pub fn cuckoo_var(Array[Double]) -> Double
+
+pub fn cuckoo_vector_add(CuckooVector, CuckooVector) -> CuckooVector
+
+pub fn cuckoo_vector_dist(CuckooVector, CuckooVector) -> Double
+
+pub fn cuckoo_vector_dot(CuckooVector, CuckooVector) -> Double
+
+pub fn cuckoo_vector_norm(CuckooVector) -> Double
+
+pub fn cuckoo_vector_normalize(CuckooVector) -> CuckooVector
+
+pub fn cuckoo_vector_scale(CuckooVector, Double) -> CuckooVector
+
+pub fn cuckoo_vector_sub(CuckooVector, CuckooVector) -> CuckooVector
+
+pub fn cuckoo_vector_to_string(CuckooVector) -> String
+
+pub fn cuckoo_vector_zero(Int32) -> CuckooVector
+
+// Errors
+
+// Types and methods
+pub struct CuckooMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct CuckooPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct CuckooSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct CuckooVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

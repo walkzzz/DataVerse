@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_rl_sarsa"
+
+// Values
+pub fn ml_rl_sarsa_buffer_make(Int32) -> MlrlsarsaBuffer
+
+pub fn ml_rl_sarsa_cluster_make(Int32) -> MlrlsarsaCluster
+
+pub fn ml_rl_sarsa_cursor_make(Int32) -> MlrlsarsaCursor
+
+pub fn ml_rl_sarsa_edge_make(Int32) -> MlrlsarsaEdge
+
+pub fn ml_rl_sarsa_frame_make(Int32) -> MlrlsarsaFrame
+
+pub fn ml_rl_sarsa_graphn_make(Int32) -> MlrlsarsaGraphN
+
+pub fn ml_rl_sarsa_layer_make(Int32) -> MlrlsarsaLayer
+
+pub fn ml_rl_sarsa_make_matrix(Int32, Int32, Double) -> MlrlsarsaMatrix
+
+pub fn ml_rl_sarsa_make_point(Double, Double) -> MlrlsarsaPoint
+
+pub fn ml_rl_sarsa_make_point3(Double, Double, Double) -> MlrlsarsaPoint
+
+pub fn ml_rl_sarsa_make_series(Array[Double], String) -> MlrlsarsaSeries
+
+pub fn ml_rl_sarsa_make_vector(Array[Double]) -> MlrlsarsaVector
+
+pub fn ml_rl_sarsa_matrix_identity(Int32) -> MlrlsarsaMatrix
+
+pub fn ml_rl_sarsa_model_make(Int32) -> MlrlsarsaModel
+
+pub fn ml_rl_sarsa_node_make(Int32) -> MlrlsarsaNode
+
+pub fn ml_rl_sarsa_path_make(Int32) -> MlrlsarsaPath
+
+pub fn ml_rl_sarsa_range_make(Int32) -> MlrlsarsaRange
+
+pub fn ml_rl_sarsa_slice_make(Int32) -> MlrlsarsaSlice
+
+pub fn ml_rl_sarsa_table_make(Int32) -> MlrlsarsaTable
+
+pub fn ml_rl_sarsa_vector_zero(Int32) -> MlrlsarsaVector
+
+pub fn ml_rl_sarsa_view_make(Int32) -> MlrlsarsaView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlrlsarsaBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsarsaBuffer::add(Self, Self) -> Self
+pub fn MlrlsarsaBuffer::copy(Self) -> Self
+pub fn MlrlsarsaBuffer::fill(Self, Double) -> Self
+pub fn MlrlsarsaBuffer::get(Self, Int32) -> Double
+pub fn MlrlsarsaBuffer::len(Self) -> Int32
+pub fn MlrlsarsaBuffer::max(Self) -> Double
+pub fn MlrlsarsaBuffer::mean(Self) -> Double
+pub fn MlrlsarsaBuffer::min(Self) -> Double
+pub fn MlrlsarsaBuffer::scale(Self, Double) -> Self
+pub fn MlrlsarsaBuffer::set(Self, Int32, Double) -> Self
+pub fn MlrlsarsaBuffer::sum(Self) -> Double
+pub fn MlrlsarsaBuffer::to_string(Self) -> String
+
+pub(all) struct MlrlsarsaCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsarsaCluster::add(Self, Self) -> Self
+pub fn MlrlsarsaCluster::copy(Self) -> Self
+pub fn MlrlsarsaCluster::fill(Self, Double) -> Self
+pub fn MlrlsarsaCluster::get(Self, Int32) -> Double
+pub fn MlrlsarsaCluster::len(Self) -> Int32
+pub fn MlrlsarsaCluster::max(Self) -> Double
+pub fn MlrlsarsaCluster::mean(Self) -> Double
+pub fn MlrlsarsaCluster::min(Self) -> Double
+pub fn MlrlsarsaCluster::scale(Self, Double) -> Self
+pub fn MlrlsarsaCluster::set(Self, Int32, Double) -> Self
+pub fn MlrlsarsaCluster::sum(Self) -> Double
+pub fn MlrlsarsaCluster::to_string(Self) -> String
+
+pub(all) struct MlrlsarsaCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsarsaCursor::add(Self, Self) -> Self
+pub fn MlrlsarsaCursor::copy(Self) -> Self
+pub fn MlrlsarsaCursor::fill(Self, Double) -> Self
+pub fn MlrlsarsaCursor::get(Self, Int32) -> Double
+pub fn MlrlsarsaCursor::len(Self) -> Int32
+pub fn MlrlsarsaCursor::max(Self) -> Double
+pub fn MlrlsarsaCursor::mean(Self) -> Double
+pub fn MlrlsarsaCursor::min(Self) -> Double
+pub fn MlrlsarsaCursor::scale(Self, Double) -> Self
+pub fn MlrlsarsaCursor::set(Self, Int32, Double) -> Self
+pub fn MlrlsarsaCursor::sum(Self) -> Double
+pub fn MlrlsarsaCursor::to_string(Self) -> String
+
+pub(all) struct MlrlsarsaEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsarsaEdge::add(Self, Self) -> Self
+pub fn MlrlsarsaEdge::copy(Self) -> Self
+pub fn MlrlsarsaEdge::fill(Self, Double) -> Self
+pub fn MlrlsarsaEdge::get(Self, Int32) -> Double
+pub fn MlrlsarsaEdge::len(Self) -> Int32
+pub fn MlrlsarsaEdge::max(Self) -> Double
+pub fn MlrlsarsaEdge::mean(Self) -> Double
+pub fn MlrlsarsaEdge::min(Self) -> Double
+pub fn MlrlsarsaEdge::scale(Self, Double) -> Self
+pub fn MlrlsarsaEdge::set(Self, Int32, Double) -> Self
+pub fn MlrlsarsaEdge::sum(Self) -> Double
+pub fn MlrlsarsaEdge::to_string(Self) -> String
+
+pub(all) struct MlrlsarsaFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsarsaFrame::add(Self, Self) -> Self
+pub fn MlrlsarsaFrame::copy(Self) -> Self
+pub fn MlrlsarsaFrame::fill(Self, Double) -> Self
+pub fn MlrlsarsaFrame::get(Self, Int32) -> Double
+pub fn MlrlsarsaFrame::len(Self) -> Int32
+pub fn MlrlsarsaFrame::max(Self) -> Double
+pub fn MlrlsarsaFrame::mean(Self) -> Double
+pub fn MlrlsarsaFrame::min(Self) -> Double
+pub fn MlrlsarsaFrame::scale(Self, Double) -> Self
+pub fn MlrlsarsaFrame::set(Self, Int32, Double) -> Self
+pub fn MlrlsarsaFrame::sum(Self) -> Double
+pub fn MlrlsarsaFrame::to_string(Self) -> String
+
+pub(all) struct MlrlsarsaGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsarsaGraphN::add(Self, Self) -> Self
+pub fn MlrlsarsaGraphN::copy(Self) -> Self
+pub fn MlrlsarsaGraphN::fill(Self, Double) -> Self
+pub fn MlrlsarsaGraphN::get(Self, Int32) -> Double
+pub fn MlrlsarsaGraphN::len(Self) -> Int32
+pub fn MlrlsarsaGraphN::max(Self) -> Double
+pub fn MlrlsarsaGraphN::mean(Self) -> Double
+pub fn MlrlsarsaGraphN::min(Self) -> Double
+pub fn MlrlsarsaGraphN::scale(Self, Double) -> Self
+pub fn MlrlsarsaGraphN::set(Self, Int32, Double) -> Self
+pub fn MlrlsarsaGraphN::sum(Self) -> Double
+pub fn MlrlsarsaGraphN::to_string(Self) -> String
+
+pub(all) struct MlrlsarsaLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsarsaLayer::add(Self, Self) -> Self
+pub fn MlrlsarsaLayer::copy(Self) -> Self
+pub fn MlrlsarsaLayer::fill(Self, Double) -> Self
+pub fn MlrlsarsaLayer::get(Self, Int32) -> Double
+pub fn MlrlsarsaLayer::len(Self) -> Int32
+pub fn MlrlsarsaLayer::max(Self) -> Double
+pub fn MlrlsarsaLayer::mean(Self) -> Double
+pub fn MlrlsarsaLayer::min(Self) -> Double
+pub fn MlrlsarsaLayer::scale(Self, Double) -> Self
+pub fn MlrlsarsaLayer::set(Self, Int32, Double) -> Self
+pub fn MlrlsarsaLayer::sum(Self) -> Double
+pub fn MlrlsarsaLayer::to_string(Self) -> String
+
+pub(all) struct MlrlsarsaMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlrlsarsaMatrix::add(Self, Self) -> Self
+pub fn MlrlsarsaMatrix::det(Self) -> Double
+pub fn MlrlsarsaMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlrlsarsaMatrix::multiply(Self, Self) -> Self
+pub fn MlrlsarsaMatrix::norm(Self) -> Double
+pub fn MlrlsarsaMatrix::scale(Self, Double) -> Self
+pub fn MlrlsarsaMatrix::to_string(Self) -> String
+pub fn MlrlsarsaMatrix::trace(Self) -> Double
+pub fn MlrlsarsaMatrix::transpose(Self) -> Self
+
+pub(all) struct MlrlsarsaModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsarsaModel::add(Self, Self) -> Self
+pub fn MlrlsarsaModel::copy(Self) -> Self
+pub fn MlrlsarsaModel::fill(Self, Double) -> Self
+pub fn MlrlsarsaModel::get(Self, Int32) -> Double
+pub fn MlrlsarsaModel::len(Self) -> Int32
+pub fn MlrlsarsaModel::max(Self) -> Double
+pub fn MlrlsarsaModel::mean(Self) -> Double
+pub fn MlrlsarsaModel::min(Self) -> Double
+pub fn MlrlsarsaModel::scale(Self, Double) -> Self
+pub fn MlrlsarsaModel::set(Self, Int32, Double) -> Self
+pub fn MlrlsarsaModel::sum(Self) -> Double
+pub fn MlrlsarsaModel::to_string(Self) -> String
+
+pub(all) struct MlrlsarsaNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsarsaNode::add(Self, Self) -> Self
+pub fn MlrlsarsaNode::copy(Self) -> Self
+pub fn MlrlsarsaNode::fill(Self, Double) -> Self
+pub fn MlrlsarsaNode::get(Self, Int32) -> Double
+pub fn MlrlsarsaNode::len(Self) -> Int32
+pub fn MlrlsarsaNode::max(Self) -> Double
+pub fn MlrlsarsaNode::mean(Self) -> Double
+pub fn MlrlsarsaNode::min(Self) -> Double
+pub fn MlrlsarsaNode::scale(Self, Double) -> Self
+pub fn MlrlsarsaNode::set(Self, Int32, Double) -> Self
+pub fn MlrlsarsaNode::sum(Self) -> Double
+pub fn MlrlsarsaNode::to_string(Self) -> String
+
+pub(all) struct MlrlsarsaPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsarsaPath::add(Self, Self) -> Self
+pub fn MlrlsarsaPath::copy(Self) -> Self
+pub fn MlrlsarsaPath::fill(Self, Double) -> Self
+pub fn MlrlsarsaPath::get(Self, Int32) -> Double
+pub fn MlrlsarsaPath::len(Self) -> Int32
+pub fn MlrlsarsaPath::max(Self) -> Double
+pub fn MlrlsarsaPath::mean(Self) -> Double
+pub fn MlrlsarsaPath::min(Self) -> Double
+pub fn MlrlsarsaPath::scale(Self, Double) -> Self
+pub fn MlrlsarsaPath::set(Self, Int32, Double) -> Self
+pub fn MlrlsarsaPath::sum(Self) -> Double
+pub fn MlrlsarsaPath::to_string(Self) -> String
+
+pub(all) struct MlrlsarsaPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlrlsarsaPoint::add(Self, Self) -> Self
+pub fn MlrlsarsaPoint::cross(Self, Self) -> Self
+pub fn MlrlsarsaPoint::dist(Self, Self) -> Double
+pub fn MlrlsarsaPoint::dot(Self, Self) -> Double
+pub fn MlrlsarsaPoint::label(Self) -> Int32
+pub fn MlrlsarsaPoint::lerp(Self, Self, Double) -> Self
+pub fn MlrlsarsaPoint::mid(Self, Self) -> Self
+pub fn MlrlsarsaPoint::negate(Self) -> Self
+pub fn MlrlsarsaPoint::norm(Self) -> Double
+pub fn MlrlsarsaPoint::normalize(Self) -> Self
+pub fn MlrlsarsaPoint::scale(Self, Double) -> Self
+pub fn MlrlsarsaPoint::sub(Self, Self) -> Self
+pub fn MlrlsarsaPoint::to_string(Self) -> String
+pub fn MlrlsarsaPoint::x(Self) -> Double
+pub fn MlrlsarsaPoint::y(Self) -> Double
+pub fn MlrlsarsaPoint::z(Self) -> Double
+
+pub(all) struct MlrlsarsaRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsarsaRange::add(Self, Self) -> Self
+pub fn MlrlsarsaRange::copy(Self) -> Self
+pub fn MlrlsarsaRange::fill(Self, Double) -> Self
+pub fn MlrlsarsaRange::get(Self, Int32) -> Double
+pub fn MlrlsarsaRange::len(Self) -> Int32
+pub fn MlrlsarsaRange::max(Self) -> Double
+pub fn MlrlsarsaRange::mean(Self) -> Double
+pub fn MlrlsarsaRange::min(Self) -> Double
+pub fn MlrlsarsaRange::scale(Self, Double) -> Self
+pub fn MlrlsarsaRange::set(Self, Int32, Double) -> Self
+pub fn MlrlsarsaRange::sum(Self) -> Double
+pub fn MlrlsarsaRange::to_string(Self) -> String
+
+pub(all) struct MlrlsarsaSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlrlsarsaSeries::add(Self, Self) -> Self
+pub fn MlrlsarsaSeries::cumsum(Self) -> Self
+pub fn MlrlsarsaSeries::len(Self) -> Int32
+pub fn MlrlsarsaSeries::max(Self) -> Double
+pub fn MlrlsarsaSeries::mean(Self) -> Double
+pub fn MlrlsarsaSeries::median(Self) -> Double
+pub fn MlrlsarsaSeries::min(Self) -> Double
+pub fn MlrlsarsaSeries::normalize(Self) -> Self
+pub fn MlrlsarsaSeries::range(Self) -> Double
+pub fn MlrlsarsaSeries::scale(Self, Double) -> Self
+pub fn MlrlsarsaSeries::std(Self) -> Double
+pub fn MlrlsarsaSeries::sub(Self, Self) -> Self
+pub fn MlrlsarsaSeries::sum(Self) -> Double
+pub fn MlrlsarsaSeries::to_string(Self) -> String
+pub fn MlrlsarsaSeries::variance(Self) -> Double
+
+pub(all) struct MlrlsarsaSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsarsaSlice::add(Self, Self) -> Self
+pub fn MlrlsarsaSlice::copy(Self) -> Self
+pub fn MlrlsarsaSlice::fill(Self, Double) -> Self
+pub fn MlrlsarsaSlice::get(Self, Int32) -> Double
+pub fn MlrlsarsaSlice::len(Self) -> Int32
+pub fn MlrlsarsaSlice::max(Self) -> Double
+pub fn MlrlsarsaSlice::mean(Self) -> Double
+pub fn MlrlsarsaSlice::min(Self) -> Double
+pub fn MlrlsarsaSlice::scale(Self, Double) -> Self
+pub fn MlrlsarsaSlice::set(Self, Int32, Double) -> Self
+pub fn MlrlsarsaSlice::sum(Self) -> Double
+pub fn MlrlsarsaSlice::to_string(Self) -> String
+
+pub(all) struct MlrlsarsaTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsarsaTable::add(Self, Self) -> Self
+pub fn MlrlsarsaTable::copy(Self) -> Self
+pub fn MlrlsarsaTable::fill(Self, Double) -> Self
+pub fn MlrlsarsaTable::get(Self, Int32) -> Double
+pub fn MlrlsarsaTable::len(Self) -> Int32
+pub fn MlrlsarsaTable::max(Self) -> Double
+pub fn MlrlsarsaTable::mean(Self) -> Double
+pub fn MlrlsarsaTable::min(Self) -> Double
+pub fn MlrlsarsaTable::scale(Self, Double) -> Self
+pub fn MlrlsarsaTable::set(Self, Int32, Double) -> Self
+pub fn MlrlsarsaTable::sum(Self) -> Double
+pub fn MlrlsarsaTable::to_string(Self) -> String
+
+pub(all) struct MlrlsarsaVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlrlsarsaVector::add(Self, Self) -> Self
+pub fn MlrlsarsaVector::dist(Self, Self) -> Double
+pub fn MlrlsarsaVector::dot(Self, Self) -> Double
+pub fn MlrlsarsaVector::norm(Self) -> Double
+pub fn MlrlsarsaVector::normalize(Self) -> Self
+pub fn MlrlsarsaVector::scale(Self, Double) -> Self
+pub fn MlrlsarsaVector::sub(Self, Self) -> Self
+pub fn MlrlsarsaVector::to_string(Self) -> String
+
+pub(all) struct MlrlsarsaView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsarsaView::add(Self, Self) -> Self
+pub fn MlrlsarsaView::copy(Self) -> Self
+pub fn MlrlsarsaView::fill(Self, Double) -> Self
+pub fn MlrlsarsaView::get(Self, Int32) -> Double
+pub fn MlrlsarsaView::len(Self) -> Int32
+pub fn MlrlsarsaView::max(Self) -> Double
+pub fn MlrlsarsaView::mean(Self) -> Double
+pub fn MlrlsarsaView::min(Self) -> Double
+pub fn MlrlsarsaView::scale(Self, Double) -> Self
+pub fn MlrlsarsaView::set(Self, Int32, Double) -> Self
+pub fn MlrlsarsaView::sum(Self) -> Double
+pub fn MlrlsarsaView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

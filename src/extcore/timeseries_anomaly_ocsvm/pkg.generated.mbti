@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_anomaly_ocsvm"
+
+// Values
+pub fn timeseries_anomaly_ocsvm_buffer_make(Int32) -> TimeseriesanomalyocsvmBuffer
+
+pub fn timeseries_anomaly_ocsvm_cluster_make(Int32) -> TimeseriesanomalyocsvmCluster
+
+pub fn timeseries_anomaly_ocsvm_cursor_make(Int32) -> TimeseriesanomalyocsvmCursor
+
+pub fn timeseries_anomaly_ocsvm_edge_make(Int32) -> TimeseriesanomalyocsvmEdge
+
+pub fn timeseries_anomaly_ocsvm_frame_make(Int32) -> TimeseriesanomalyocsvmFrame
+
+pub fn timeseries_anomaly_ocsvm_graphn_make(Int32) -> TimeseriesanomalyocsvmGraphN
+
+pub fn timeseries_anomaly_ocsvm_layer_make(Int32) -> TimeseriesanomalyocsvmLayer
+
+pub fn timeseries_anomaly_ocsvm_make_matrix(Int32, Int32, Double) -> TimeseriesanomalyocsvmMatrix
+
+pub fn timeseries_anomaly_ocsvm_make_point(Double, Double) -> TimeseriesanomalyocsvmPoint
+
+pub fn timeseries_anomaly_ocsvm_make_point3(Double, Double, Double) -> TimeseriesanomalyocsvmPoint
+
+pub fn timeseries_anomaly_ocsvm_make_series(Array[Double], String) -> TimeseriesanomalyocsvmSeries
+
+pub fn timeseries_anomaly_ocsvm_make_vector(Array[Double]) -> TimeseriesanomalyocsvmVector
+
+pub fn timeseries_anomaly_ocsvm_matrix_identity(Int32) -> TimeseriesanomalyocsvmMatrix
+
+pub fn timeseries_anomaly_ocsvm_model_make(Int32) -> TimeseriesanomalyocsvmModel
+
+pub fn timeseries_anomaly_ocsvm_node_make(Int32) -> TimeseriesanomalyocsvmNode
+
+pub fn timeseries_anomaly_ocsvm_path_make(Int32) -> TimeseriesanomalyocsvmPath
+
+pub fn timeseries_anomaly_ocsvm_range_make(Int32) -> TimeseriesanomalyocsvmRange
+
+pub fn timeseries_anomaly_ocsvm_slice_make(Int32) -> TimeseriesanomalyocsvmSlice
+
+pub fn timeseries_anomaly_ocsvm_table_make(Int32) -> TimeseriesanomalyocsvmTable
+
+pub fn timeseries_anomaly_ocsvm_vector_zero(Int32) -> TimeseriesanomalyocsvmVector
+
+pub fn timeseries_anomaly_ocsvm_view_make(Int32) -> TimeseriesanomalyocsvmView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriesanomalyocsvmBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyocsvmBuffer::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmBuffer::copy(Self) -> Self
+pub fn TimeseriesanomalyocsvmBuffer::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmBuffer::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyocsvmBuffer::len(Self) -> Int32
+pub fn TimeseriesanomalyocsvmBuffer::max(Self) -> Double
+pub fn TimeseriesanomalyocsvmBuffer::mean(Self) -> Double
+pub fn TimeseriesanomalyocsvmBuffer::min(Self) -> Double
+pub fn TimeseriesanomalyocsvmBuffer::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyocsvmBuffer::sum(Self) -> Double
+pub fn TimeseriesanomalyocsvmBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyocsvmCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyocsvmCluster::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmCluster::copy(Self) -> Self
+pub fn TimeseriesanomalyocsvmCluster::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmCluster::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyocsvmCluster::len(Self) -> Int32
+pub fn TimeseriesanomalyocsvmCluster::max(Self) -> Double
+pub fn TimeseriesanomalyocsvmCluster::mean(Self) -> Double
+pub fn TimeseriesanomalyocsvmCluster::min(Self) -> Double
+pub fn TimeseriesanomalyocsvmCluster::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyocsvmCluster::sum(Self) -> Double
+pub fn TimeseriesanomalyocsvmCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyocsvmCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyocsvmCursor::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmCursor::copy(Self) -> Self
+pub fn TimeseriesanomalyocsvmCursor::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmCursor::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyocsvmCursor::len(Self) -> Int32
+pub fn TimeseriesanomalyocsvmCursor::max(Self) -> Double
+pub fn TimeseriesanomalyocsvmCursor::mean(Self) -> Double
+pub fn TimeseriesanomalyocsvmCursor::min(Self) -> Double
+pub fn TimeseriesanomalyocsvmCursor::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyocsvmCursor::sum(Self) -> Double
+pub fn TimeseriesanomalyocsvmCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyocsvmEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyocsvmEdge::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmEdge::copy(Self) -> Self
+pub fn TimeseriesanomalyocsvmEdge::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmEdge::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyocsvmEdge::len(Self) -> Int32
+pub fn TimeseriesanomalyocsvmEdge::max(Self) -> Double
+pub fn TimeseriesanomalyocsvmEdge::mean(Self) -> Double
+pub fn TimeseriesanomalyocsvmEdge::min(Self) -> Double
+pub fn TimeseriesanomalyocsvmEdge::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyocsvmEdge::sum(Self) -> Double
+pub fn TimeseriesanomalyocsvmEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyocsvmFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyocsvmFrame::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmFrame::copy(Self) -> Self
+pub fn TimeseriesanomalyocsvmFrame::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmFrame::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyocsvmFrame::len(Self) -> Int32
+pub fn TimeseriesanomalyocsvmFrame::max(Self) -> Double
+pub fn TimeseriesanomalyocsvmFrame::mean(Self) -> Double
+pub fn TimeseriesanomalyocsvmFrame::min(Self) -> Double
+pub fn TimeseriesanomalyocsvmFrame::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyocsvmFrame::sum(Self) -> Double
+pub fn TimeseriesanomalyocsvmFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyocsvmGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyocsvmGraphN::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmGraphN::copy(Self) -> Self
+pub fn TimeseriesanomalyocsvmGraphN::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmGraphN::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyocsvmGraphN::len(Self) -> Int32
+pub fn TimeseriesanomalyocsvmGraphN::max(Self) -> Double
+pub fn TimeseriesanomalyocsvmGraphN::mean(Self) -> Double
+pub fn TimeseriesanomalyocsvmGraphN::min(Self) -> Double
+pub fn TimeseriesanomalyocsvmGraphN::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyocsvmGraphN::sum(Self) -> Double
+pub fn TimeseriesanomalyocsvmGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyocsvmLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyocsvmLayer::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmLayer::copy(Self) -> Self
+pub fn TimeseriesanomalyocsvmLayer::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmLayer::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyocsvmLayer::len(Self) -> Int32
+pub fn TimeseriesanomalyocsvmLayer::max(Self) -> Double
+pub fn TimeseriesanomalyocsvmLayer::mean(Self) -> Double
+pub fn TimeseriesanomalyocsvmLayer::min(Self) -> Double
+pub fn TimeseriesanomalyocsvmLayer::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyocsvmLayer::sum(Self) -> Double
+pub fn TimeseriesanomalyocsvmLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyocsvmMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriesanomalyocsvmMatrix::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmMatrix::det(Self) -> Double
+pub fn TimeseriesanomalyocsvmMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriesanomalyocsvmMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmMatrix::norm(Self) -> Double
+pub fn TimeseriesanomalyocsvmMatrix::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmMatrix::to_string(Self) -> String
+pub fn TimeseriesanomalyocsvmMatrix::trace(Self) -> Double
+pub fn TimeseriesanomalyocsvmMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriesanomalyocsvmModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyocsvmModel::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmModel::copy(Self) -> Self
+pub fn TimeseriesanomalyocsvmModel::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmModel::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyocsvmModel::len(Self) -> Int32
+pub fn TimeseriesanomalyocsvmModel::max(Self) -> Double
+pub fn TimeseriesanomalyocsvmModel::mean(Self) -> Double
+pub fn TimeseriesanomalyocsvmModel::min(Self) -> Double
+pub fn TimeseriesanomalyocsvmModel::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyocsvmModel::sum(Self) -> Double
+pub fn TimeseriesanomalyocsvmModel::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyocsvmNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyocsvmNode::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmNode::copy(Self) -> Self
+pub fn TimeseriesanomalyocsvmNode::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmNode::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyocsvmNode::len(Self) -> Int32
+pub fn TimeseriesanomalyocsvmNode::max(Self) -> Double
+pub fn TimeseriesanomalyocsvmNode::mean(Self) -> Double
+pub fn TimeseriesanomalyocsvmNode::min(Self) -> Double
+pub fn TimeseriesanomalyocsvmNode::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyocsvmNode::sum(Self) -> Double
+pub fn TimeseriesanomalyocsvmNode::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyocsvmPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyocsvmPath::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmPath::copy(Self) -> Self
+pub fn TimeseriesanomalyocsvmPath::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmPath::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyocsvmPath::len(Self) -> Int32
+pub fn TimeseriesanomalyocsvmPath::max(Self) -> Double
+pub fn TimeseriesanomalyocsvmPath::mean(Self) -> Double
+pub fn TimeseriesanomalyocsvmPath::min(Self) -> Double
+pub fn TimeseriesanomalyocsvmPath::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmPath::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyocsvmPath::sum(Self) -> Double
+pub fn TimeseriesanomalyocsvmPath::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyocsvmPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriesanomalyocsvmPoint::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmPoint::cross(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmPoint::dist(Self, Self) -> Double
+pub fn TimeseriesanomalyocsvmPoint::dot(Self, Self) -> Double
+pub fn TimeseriesanomalyocsvmPoint::label(Self) -> Int32
+pub fn TimeseriesanomalyocsvmPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmPoint::mid(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmPoint::negate(Self) -> Self
+pub fn TimeseriesanomalyocsvmPoint::norm(Self) -> Double
+pub fn TimeseriesanomalyocsvmPoint::normalize(Self) -> Self
+pub fn TimeseriesanomalyocsvmPoint::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmPoint::sub(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmPoint::to_string(Self) -> String
+pub fn TimeseriesanomalyocsvmPoint::x(Self) -> Double
+pub fn TimeseriesanomalyocsvmPoint::y(Self) -> Double
+pub fn TimeseriesanomalyocsvmPoint::z(Self) -> Double
+
+pub(all) struct TimeseriesanomalyocsvmRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyocsvmRange::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmRange::copy(Self) -> Self
+pub fn TimeseriesanomalyocsvmRange::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmRange::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyocsvmRange::len(Self) -> Int32
+pub fn TimeseriesanomalyocsvmRange::max(Self) -> Double
+pub fn TimeseriesanomalyocsvmRange::mean(Self) -> Double
+pub fn TimeseriesanomalyocsvmRange::min(Self) -> Double
+pub fn TimeseriesanomalyocsvmRange::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyocsvmRange::sum(Self) -> Double
+pub fn TimeseriesanomalyocsvmRange::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyocsvmSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriesanomalyocsvmSeries::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmSeries::cumsum(Self) -> Self
+pub fn TimeseriesanomalyocsvmSeries::len(Self) -> Int32
+pub fn TimeseriesanomalyocsvmSeries::max(Self) -> Double
+pub fn TimeseriesanomalyocsvmSeries::mean(Self) -> Double
+pub fn TimeseriesanomalyocsvmSeries::median(Self) -> Double
+pub fn TimeseriesanomalyocsvmSeries::min(Self) -> Double
+pub fn TimeseriesanomalyocsvmSeries::normalize(Self) -> Self
+pub fn TimeseriesanomalyocsvmSeries::range(Self) -> Double
+pub fn TimeseriesanomalyocsvmSeries::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmSeries::std(Self) -> Double
+pub fn TimeseriesanomalyocsvmSeries::sub(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmSeries::sum(Self) -> Double
+pub fn TimeseriesanomalyocsvmSeries::to_string(Self) -> String
+pub fn TimeseriesanomalyocsvmSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriesanomalyocsvmSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyocsvmSlice::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmSlice::copy(Self) -> Self
+pub fn TimeseriesanomalyocsvmSlice::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmSlice::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyocsvmSlice::len(Self) -> Int32
+pub fn TimeseriesanomalyocsvmSlice::max(Self) -> Double
+pub fn TimeseriesanomalyocsvmSlice::mean(Self) -> Double
+pub fn TimeseriesanomalyocsvmSlice::min(Self) -> Double
+pub fn TimeseriesanomalyocsvmSlice::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyocsvmSlice::sum(Self) -> Double
+pub fn TimeseriesanomalyocsvmSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyocsvmTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyocsvmTable::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmTable::copy(Self) -> Self
+pub fn TimeseriesanomalyocsvmTable::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmTable::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyocsvmTable::len(Self) -> Int32
+pub fn TimeseriesanomalyocsvmTable::max(Self) -> Double
+pub fn TimeseriesanomalyocsvmTable::mean(Self) -> Double
+pub fn TimeseriesanomalyocsvmTable::min(Self) -> Double
+pub fn TimeseriesanomalyocsvmTable::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyocsvmTable::sum(Self) -> Double
+pub fn TimeseriesanomalyocsvmTable::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyocsvmVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriesanomalyocsvmVector::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmVector::dist(Self, Self) -> Double
+pub fn TimeseriesanomalyocsvmVector::dot(Self, Self) -> Double
+pub fn TimeseriesanomalyocsvmVector::norm(Self) -> Double
+pub fn TimeseriesanomalyocsvmVector::normalize(Self) -> Self
+pub fn TimeseriesanomalyocsvmVector::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmVector::sub(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmVector::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyocsvmView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyocsvmView::add(Self, Self) -> Self
+pub fn TimeseriesanomalyocsvmView::copy(Self) -> Self
+pub fn TimeseriesanomalyocsvmView::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmView::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyocsvmView::len(Self) -> Int32
+pub fn TimeseriesanomalyocsvmView::max(Self) -> Double
+pub fn TimeseriesanomalyocsvmView::mean(Self) -> Double
+pub fn TimeseriesanomalyocsvmView::min(Self) -> Double
+pub fn TimeseriesanomalyocsvmView::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyocsvmView::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyocsvmView::sum(Self) -> Double
+pub fn TimeseriesanomalyocsvmView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

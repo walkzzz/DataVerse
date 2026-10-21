@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_morph_bothat"
+
+// Values
+pub fn image_morph_bothat_buffer_make(Int32) -> ImagemorphbothatBuffer
+
+pub fn image_morph_bothat_cluster_make(Int32) -> ImagemorphbothatCluster
+
+pub fn image_morph_bothat_cursor_make(Int32) -> ImagemorphbothatCursor
+
+pub fn image_morph_bothat_edge_make(Int32) -> ImagemorphbothatEdge
+
+pub fn image_morph_bothat_frame_make(Int32) -> ImagemorphbothatFrame
+
+pub fn image_morph_bothat_graphn_make(Int32) -> ImagemorphbothatGraphN
+
+pub fn image_morph_bothat_layer_make(Int32) -> ImagemorphbothatLayer
+
+pub fn image_morph_bothat_make_matrix(Int32, Int32, Double) -> ImagemorphbothatMatrix
+
+pub fn image_morph_bothat_make_point(Double, Double) -> ImagemorphbothatPoint
+
+pub fn image_morph_bothat_make_point3(Double, Double, Double) -> ImagemorphbothatPoint
+
+pub fn image_morph_bothat_make_series(Array[Double], String) -> ImagemorphbothatSeries
+
+pub fn image_morph_bothat_make_vector(Array[Double]) -> ImagemorphbothatVector
+
+pub fn image_morph_bothat_matrix_identity(Int32) -> ImagemorphbothatMatrix
+
+pub fn image_morph_bothat_model_make(Int32) -> ImagemorphbothatModel
+
+pub fn image_morph_bothat_node_make(Int32) -> ImagemorphbothatNode
+
+pub fn image_morph_bothat_path_make(Int32) -> ImagemorphbothatPath
+
+pub fn image_morph_bothat_range_make(Int32) -> ImagemorphbothatRange
+
+pub fn image_morph_bothat_slice_make(Int32) -> ImagemorphbothatSlice
+
+pub fn image_morph_bothat_table_make(Int32) -> ImagemorphbothatTable
+
+pub fn image_morph_bothat_vector_zero(Int32) -> ImagemorphbothatVector
+
+pub fn image_morph_bothat_view_make(Int32) -> ImagemorphbothatView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagemorphbothatBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphbothatBuffer::add(Self, Self) -> Self
+pub fn ImagemorphbothatBuffer::copy(Self) -> Self
+pub fn ImagemorphbothatBuffer::fill(Self, Double) -> Self
+pub fn ImagemorphbothatBuffer::get(Self, Int32) -> Double
+pub fn ImagemorphbothatBuffer::len(Self) -> Int32
+pub fn ImagemorphbothatBuffer::max(Self) -> Double
+pub fn ImagemorphbothatBuffer::mean(Self) -> Double
+pub fn ImagemorphbothatBuffer::min(Self) -> Double
+pub fn ImagemorphbothatBuffer::scale(Self, Double) -> Self
+pub fn ImagemorphbothatBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagemorphbothatBuffer::sum(Self) -> Double
+pub fn ImagemorphbothatBuffer::to_string(Self) -> String
+
+pub(all) struct ImagemorphbothatCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphbothatCluster::add(Self, Self) -> Self
+pub fn ImagemorphbothatCluster::copy(Self) -> Self
+pub fn ImagemorphbothatCluster::fill(Self, Double) -> Self
+pub fn ImagemorphbothatCluster::get(Self, Int32) -> Double
+pub fn ImagemorphbothatCluster::len(Self) -> Int32
+pub fn ImagemorphbothatCluster::max(Self) -> Double
+pub fn ImagemorphbothatCluster::mean(Self) -> Double
+pub fn ImagemorphbothatCluster::min(Self) -> Double
+pub fn ImagemorphbothatCluster::scale(Self, Double) -> Self
+pub fn ImagemorphbothatCluster::set(Self, Int32, Double) -> Self
+pub fn ImagemorphbothatCluster::sum(Self) -> Double
+pub fn ImagemorphbothatCluster::to_string(Self) -> String
+
+pub(all) struct ImagemorphbothatCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphbothatCursor::add(Self, Self) -> Self
+pub fn ImagemorphbothatCursor::copy(Self) -> Self
+pub fn ImagemorphbothatCursor::fill(Self, Double) -> Self
+pub fn ImagemorphbothatCursor::get(Self, Int32) -> Double
+pub fn ImagemorphbothatCursor::len(Self) -> Int32
+pub fn ImagemorphbothatCursor::max(Self) -> Double
+pub fn ImagemorphbothatCursor::mean(Self) -> Double
+pub fn ImagemorphbothatCursor::min(Self) -> Double
+pub fn ImagemorphbothatCursor::scale(Self, Double) -> Self
+pub fn ImagemorphbothatCursor::set(Self, Int32, Double) -> Self
+pub fn ImagemorphbothatCursor::sum(Self) -> Double
+pub fn ImagemorphbothatCursor::to_string(Self) -> String
+
+pub(all) struct ImagemorphbothatEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphbothatEdge::add(Self, Self) -> Self
+pub fn ImagemorphbothatEdge::copy(Self) -> Self
+pub fn ImagemorphbothatEdge::fill(Self, Double) -> Self
+pub fn ImagemorphbothatEdge::get(Self, Int32) -> Double
+pub fn ImagemorphbothatEdge::len(Self) -> Int32
+pub fn ImagemorphbothatEdge::max(Self) -> Double
+pub fn ImagemorphbothatEdge::mean(Self) -> Double
+pub fn ImagemorphbothatEdge::min(Self) -> Double
+pub fn ImagemorphbothatEdge::scale(Self, Double) -> Self
+pub fn ImagemorphbothatEdge::set(Self, Int32, Double) -> Self
+pub fn ImagemorphbothatEdge::sum(Self) -> Double
+pub fn ImagemorphbothatEdge::to_string(Self) -> String
+
+pub(all) struct ImagemorphbothatFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphbothatFrame::add(Self, Self) -> Self
+pub fn ImagemorphbothatFrame::copy(Self) -> Self
+pub fn ImagemorphbothatFrame::fill(Self, Double) -> Self
+pub fn ImagemorphbothatFrame::get(Self, Int32) -> Double
+pub fn ImagemorphbothatFrame::len(Self) -> Int32
+pub fn ImagemorphbothatFrame::max(Self) -> Double
+pub fn ImagemorphbothatFrame::mean(Self) -> Double
+pub fn ImagemorphbothatFrame::min(Self) -> Double
+pub fn ImagemorphbothatFrame::scale(Self, Double) -> Self
+pub fn ImagemorphbothatFrame::set(Self, Int32, Double) -> Self
+pub fn ImagemorphbothatFrame::sum(Self) -> Double
+pub fn ImagemorphbothatFrame::to_string(Self) -> String
+
+pub(all) struct ImagemorphbothatGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphbothatGraphN::add(Self, Self) -> Self
+pub fn ImagemorphbothatGraphN::copy(Self) -> Self
+pub fn ImagemorphbothatGraphN::fill(Self, Double) -> Self
+pub fn ImagemorphbothatGraphN::get(Self, Int32) -> Double
+pub fn ImagemorphbothatGraphN::len(Self) -> Int32
+pub fn ImagemorphbothatGraphN::max(Self) -> Double
+pub fn ImagemorphbothatGraphN::mean(Self) -> Double
+pub fn ImagemorphbothatGraphN::min(Self) -> Double
+pub fn ImagemorphbothatGraphN::scale(Self, Double) -> Self
+pub fn ImagemorphbothatGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagemorphbothatGraphN::sum(Self) -> Double
+pub fn ImagemorphbothatGraphN::to_string(Self) -> String
+
+pub(all) struct ImagemorphbothatLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphbothatLayer::add(Self, Self) -> Self
+pub fn ImagemorphbothatLayer::copy(Self) -> Self
+pub fn ImagemorphbothatLayer::fill(Self, Double) -> Self
+pub fn ImagemorphbothatLayer::get(Self, Int32) -> Double
+pub fn ImagemorphbothatLayer::len(Self) -> Int32
+pub fn ImagemorphbothatLayer::max(Self) -> Double
+pub fn ImagemorphbothatLayer::mean(Self) -> Double
+pub fn ImagemorphbothatLayer::min(Self) -> Double
+pub fn ImagemorphbothatLayer::scale(Self, Double) -> Self
+pub fn ImagemorphbothatLayer::set(Self, Int32, Double) -> Self
+pub fn ImagemorphbothatLayer::sum(Self) -> Double
+pub fn ImagemorphbothatLayer::to_string(Self) -> String
+
+pub(all) struct ImagemorphbothatMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagemorphbothatMatrix::add(Self, Self) -> Self
+pub fn ImagemorphbothatMatrix::det(Self) -> Double
+pub fn ImagemorphbothatMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagemorphbothatMatrix::multiply(Self, Self) -> Self
+pub fn ImagemorphbothatMatrix::norm(Self) -> Double
+pub fn ImagemorphbothatMatrix::scale(Self, Double) -> Self
+pub fn ImagemorphbothatMatrix::to_string(Self) -> String
+pub fn ImagemorphbothatMatrix::trace(Self) -> Double
+pub fn ImagemorphbothatMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagemorphbothatModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphbothatModel::add(Self, Self) -> Self
+pub fn ImagemorphbothatModel::copy(Self) -> Self
+pub fn ImagemorphbothatModel::fill(Self, Double) -> Self
+pub fn ImagemorphbothatModel::get(Self, Int32) -> Double
+pub fn ImagemorphbothatModel::len(Self) -> Int32
+pub fn ImagemorphbothatModel::max(Self) -> Double
+pub fn ImagemorphbothatModel::mean(Self) -> Double
+pub fn ImagemorphbothatModel::min(Self) -> Double
+pub fn ImagemorphbothatModel::scale(Self, Double) -> Self
+pub fn ImagemorphbothatModel::set(Self, Int32, Double) -> Self
+pub fn ImagemorphbothatModel::sum(Self) -> Double
+pub fn ImagemorphbothatModel::to_string(Self) -> String
+
+pub(all) struct ImagemorphbothatNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphbothatNode::add(Self, Self) -> Self
+pub fn ImagemorphbothatNode::copy(Self) -> Self
+pub fn ImagemorphbothatNode::fill(Self, Double) -> Self
+pub fn ImagemorphbothatNode::get(Self, Int32) -> Double
+pub fn ImagemorphbothatNode::len(Self) -> Int32
+pub fn ImagemorphbothatNode::max(Self) -> Double
+pub fn ImagemorphbothatNode::mean(Self) -> Double
+pub fn ImagemorphbothatNode::min(Self) -> Double
+pub fn ImagemorphbothatNode::scale(Self, Double) -> Self
+pub fn ImagemorphbothatNode::set(Self, Int32, Double) -> Self
+pub fn ImagemorphbothatNode::sum(Self) -> Double
+pub fn ImagemorphbothatNode::to_string(Self) -> String
+
+pub(all) struct ImagemorphbothatPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphbothatPath::add(Self, Self) -> Self
+pub fn ImagemorphbothatPath::copy(Self) -> Self
+pub fn ImagemorphbothatPath::fill(Self, Double) -> Self
+pub fn ImagemorphbothatPath::get(Self, Int32) -> Double
+pub fn ImagemorphbothatPath::len(Self) -> Int32
+pub fn ImagemorphbothatPath::max(Self) -> Double
+pub fn ImagemorphbothatPath::mean(Self) -> Double
+pub fn ImagemorphbothatPath::min(Self) -> Double
+pub fn ImagemorphbothatPath::scale(Self, Double) -> Self
+pub fn ImagemorphbothatPath::set(Self, Int32, Double) -> Self
+pub fn ImagemorphbothatPath::sum(Self) -> Double
+pub fn ImagemorphbothatPath::to_string(Self) -> String
+
+pub(all) struct ImagemorphbothatPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagemorphbothatPoint::add(Self, Self) -> Self
+pub fn ImagemorphbothatPoint::cross(Self, Self) -> Self
+pub fn ImagemorphbothatPoint::dist(Self, Self) -> Double
+pub fn ImagemorphbothatPoint::dot(Self, Self) -> Double
+pub fn ImagemorphbothatPoint::label(Self) -> Int32
+pub fn ImagemorphbothatPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagemorphbothatPoint::mid(Self, Self) -> Self
+pub fn ImagemorphbothatPoint::negate(Self) -> Self
+pub fn ImagemorphbothatPoint::norm(Self) -> Double
+pub fn ImagemorphbothatPoint::normalize(Self) -> Self
+pub fn ImagemorphbothatPoint::scale(Self, Double) -> Self
+pub fn ImagemorphbothatPoint::sub(Self, Self) -> Self
+pub fn ImagemorphbothatPoint::to_string(Self) -> String
+pub fn ImagemorphbothatPoint::x(Self) -> Double
+pub fn ImagemorphbothatPoint::y(Self) -> Double
+pub fn ImagemorphbothatPoint::z(Self) -> Double
+
+pub(all) struct ImagemorphbothatRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphbothatRange::add(Self, Self) -> Self
+pub fn ImagemorphbothatRange::copy(Self) -> Self
+pub fn ImagemorphbothatRange::fill(Self, Double) -> Self
+pub fn ImagemorphbothatRange::get(Self, Int32) -> Double
+pub fn ImagemorphbothatRange::len(Self) -> Int32
+pub fn ImagemorphbothatRange::max(Self) -> Double
+pub fn ImagemorphbothatRange::mean(Self) -> Double
+pub fn ImagemorphbothatRange::min(Self) -> Double
+pub fn ImagemorphbothatRange::scale(Self, Double) -> Self
+pub fn ImagemorphbothatRange::set(Self, Int32, Double) -> Self
+pub fn ImagemorphbothatRange::sum(Self) -> Double
+pub fn ImagemorphbothatRange::to_string(Self) -> String
+
+pub(all) struct ImagemorphbothatSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagemorphbothatSeries::add(Self, Self) -> Self
+pub fn ImagemorphbothatSeries::cumsum(Self) -> Self
+pub fn ImagemorphbothatSeries::len(Self) -> Int32
+pub fn ImagemorphbothatSeries::max(Self) -> Double
+pub fn ImagemorphbothatSeries::mean(Self) -> Double
+pub fn ImagemorphbothatSeries::median(Self) -> Double
+pub fn ImagemorphbothatSeries::min(Self) -> Double
+pub fn ImagemorphbothatSeries::normalize(Self) -> Self
+pub fn ImagemorphbothatSeries::range(Self) -> Double
+pub fn ImagemorphbothatSeries::scale(Self, Double) -> Self
+pub fn ImagemorphbothatSeries::std(Self) -> Double
+pub fn ImagemorphbothatSeries::sub(Self, Self) -> Self
+pub fn ImagemorphbothatSeries::sum(Self) -> Double
+pub fn ImagemorphbothatSeries::to_string(Self) -> String
+pub fn ImagemorphbothatSeries::variance(Self) -> Double
+
+pub(all) struct ImagemorphbothatSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphbothatSlice::add(Self, Self) -> Self
+pub fn ImagemorphbothatSlice::copy(Self) -> Self
+pub fn ImagemorphbothatSlice::fill(Self, Double) -> Self
+pub fn ImagemorphbothatSlice::get(Self, Int32) -> Double
+pub fn ImagemorphbothatSlice::len(Self) -> Int32
+pub fn ImagemorphbothatSlice::max(Self) -> Double
+pub fn ImagemorphbothatSlice::mean(Self) -> Double
+pub fn ImagemorphbothatSlice::min(Self) -> Double
+pub fn ImagemorphbothatSlice::scale(Self, Double) -> Self
+pub fn ImagemorphbothatSlice::set(Self, Int32, Double) -> Self
+pub fn ImagemorphbothatSlice::sum(Self) -> Double
+pub fn ImagemorphbothatSlice::to_string(Self) -> String
+
+pub(all) struct ImagemorphbothatTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphbothatTable::add(Self, Self) -> Self
+pub fn ImagemorphbothatTable::copy(Self) -> Self
+pub fn ImagemorphbothatTable::fill(Self, Double) -> Self
+pub fn ImagemorphbothatTable::get(Self, Int32) -> Double
+pub fn ImagemorphbothatTable::len(Self) -> Int32
+pub fn ImagemorphbothatTable::max(Self) -> Double
+pub fn ImagemorphbothatTable::mean(Self) -> Double
+pub fn ImagemorphbothatTable::min(Self) -> Double
+pub fn ImagemorphbothatTable::scale(Self, Double) -> Self
+pub fn ImagemorphbothatTable::set(Self, Int32, Double) -> Self
+pub fn ImagemorphbothatTable::sum(Self) -> Double
+pub fn ImagemorphbothatTable::to_string(Self) -> String
+
+pub(all) struct ImagemorphbothatVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagemorphbothatVector::add(Self, Self) -> Self
+pub fn ImagemorphbothatVector::dist(Self, Self) -> Double
+pub fn ImagemorphbothatVector::dot(Self, Self) -> Double
+pub fn ImagemorphbothatVector::norm(Self) -> Double
+pub fn ImagemorphbothatVector::normalize(Self) -> Self
+pub fn ImagemorphbothatVector::scale(Self, Double) -> Self
+pub fn ImagemorphbothatVector::sub(Self, Self) -> Self
+pub fn ImagemorphbothatVector::to_string(Self) -> String
+
+pub(all) struct ImagemorphbothatView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphbothatView::add(Self, Self) -> Self
+pub fn ImagemorphbothatView::copy(Self) -> Self
+pub fn ImagemorphbothatView::fill(Self, Double) -> Self
+pub fn ImagemorphbothatView::get(Self, Int32) -> Double
+pub fn ImagemorphbothatView::len(Self) -> Int32
+pub fn ImagemorphbothatView::max(Self) -> Double
+pub fn ImagemorphbothatView::mean(Self) -> Double
+pub fn ImagemorphbothatView::min(Self) -> Double
+pub fn ImagemorphbothatView::scale(Self, Double) -> Self
+pub fn ImagemorphbothatView::set(Self, Int32, Double) -> Self
+pub fn ImagemorphbothatView::sum(Self) -> Double
+pub fn ImagemorphbothatView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

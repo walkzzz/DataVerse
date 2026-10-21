@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_graph_labeled"
+
+// Values
+pub fn ds_graph_labeled_buffer_make(Int32) -> DsgraphlabeledBuffer
+
+pub fn ds_graph_labeled_cluster_make(Int32) -> DsgraphlabeledCluster
+
+pub fn ds_graph_labeled_cursor_make(Int32) -> DsgraphlabeledCursor
+
+pub fn ds_graph_labeled_edge_make(Int32) -> DsgraphlabeledEdge
+
+pub fn ds_graph_labeled_frame_make(Int32) -> DsgraphlabeledFrame
+
+pub fn ds_graph_labeled_graphn_make(Int32) -> DsgraphlabeledGraphN
+
+pub fn ds_graph_labeled_layer_make(Int32) -> DsgraphlabeledLayer
+
+pub fn ds_graph_labeled_make_matrix(Int32, Int32, Double) -> DsgraphlabeledMatrix
+
+pub fn ds_graph_labeled_make_point(Double, Double) -> DsgraphlabeledPoint
+
+pub fn ds_graph_labeled_make_point3(Double, Double, Double) -> DsgraphlabeledPoint
+
+pub fn ds_graph_labeled_make_series(Array[Double], String) -> DsgraphlabeledSeries
+
+pub fn ds_graph_labeled_make_vector(Array[Double]) -> DsgraphlabeledVector
+
+pub fn ds_graph_labeled_matrix_identity(Int32) -> DsgraphlabeledMatrix
+
+pub fn ds_graph_labeled_model_make(Int32) -> DsgraphlabeledModel
+
+pub fn ds_graph_labeled_node_make(Int32) -> DsgraphlabeledNode
+
+pub fn ds_graph_labeled_path_make(Int32) -> DsgraphlabeledPath
+
+pub fn ds_graph_labeled_range_make(Int32) -> DsgraphlabeledRange
+
+pub fn ds_graph_labeled_slice_make(Int32) -> DsgraphlabeledSlice
+
+pub fn ds_graph_labeled_table_make(Int32) -> DsgraphlabeledTable
+
+pub fn ds_graph_labeled_vector_zero(Int32) -> DsgraphlabeledVector
+
+pub fn ds_graph_labeled_view_make(Int32) -> DsgraphlabeledView
+
+// Errors
+
+// Types and methods
+pub(all) struct DsgraphlabeledBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphlabeledBuffer::add(Self, Self) -> Self
+pub fn DsgraphlabeledBuffer::copy(Self) -> Self
+pub fn DsgraphlabeledBuffer::fill(Self, Double) -> Self
+pub fn DsgraphlabeledBuffer::get(Self, Int32) -> Double
+pub fn DsgraphlabeledBuffer::len(Self) -> Int32
+pub fn DsgraphlabeledBuffer::max(Self) -> Double
+pub fn DsgraphlabeledBuffer::mean(Self) -> Double
+pub fn DsgraphlabeledBuffer::min(Self) -> Double
+pub fn DsgraphlabeledBuffer::scale(Self, Double) -> Self
+pub fn DsgraphlabeledBuffer::set(Self, Int32, Double) -> Self
+pub fn DsgraphlabeledBuffer::sum(Self) -> Double
+pub fn DsgraphlabeledBuffer::to_string(Self) -> String
+
+pub(all) struct DsgraphlabeledCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphlabeledCluster::add(Self, Self) -> Self
+pub fn DsgraphlabeledCluster::copy(Self) -> Self
+pub fn DsgraphlabeledCluster::fill(Self, Double) -> Self
+pub fn DsgraphlabeledCluster::get(Self, Int32) -> Double
+pub fn DsgraphlabeledCluster::len(Self) -> Int32
+pub fn DsgraphlabeledCluster::max(Self) -> Double
+pub fn DsgraphlabeledCluster::mean(Self) -> Double
+pub fn DsgraphlabeledCluster::min(Self) -> Double
+pub fn DsgraphlabeledCluster::scale(Self, Double) -> Self
+pub fn DsgraphlabeledCluster::set(Self, Int32, Double) -> Self
+pub fn DsgraphlabeledCluster::sum(Self) -> Double
+pub fn DsgraphlabeledCluster::to_string(Self) -> String
+
+pub(all) struct DsgraphlabeledCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphlabeledCursor::add(Self, Self) -> Self
+pub fn DsgraphlabeledCursor::copy(Self) -> Self
+pub fn DsgraphlabeledCursor::fill(Self, Double) -> Self
+pub fn DsgraphlabeledCursor::get(Self, Int32) -> Double
+pub fn DsgraphlabeledCursor::len(Self) -> Int32
+pub fn DsgraphlabeledCursor::max(Self) -> Double
+pub fn DsgraphlabeledCursor::mean(Self) -> Double
+pub fn DsgraphlabeledCursor::min(Self) -> Double
+pub fn DsgraphlabeledCursor::scale(Self, Double) -> Self
+pub fn DsgraphlabeledCursor::set(Self, Int32, Double) -> Self
+pub fn DsgraphlabeledCursor::sum(Self) -> Double
+pub fn DsgraphlabeledCursor::to_string(Self) -> String
+
+pub(all) struct DsgraphlabeledEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphlabeledEdge::add(Self, Self) -> Self
+pub fn DsgraphlabeledEdge::copy(Self) -> Self
+pub fn DsgraphlabeledEdge::fill(Self, Double) -> Self
+pub fn DsgraphlabeledEdge::get(Self, Int32) -> Double
+pub fn DsgraphlabeledEdge::len(Self) -> Int32
+pub fn DsgraphlabeledEdge::max(Self) -> Double
+pub fn DsgraphlabeledEdge::mean(Self) -> Double
+pub fn DsgraphlabeledEdge::min(Self) -> Double
+pub fn DsgraphlabeledEdge::scale(Self, Double) -> Self
+pub fn DsgraphlabeledEdge::set(Self, Int32, Double) -> Self
+pub fn DsgraphlabeledEdge::sum(Self) -> Double
+pub fn DsgraphlabeledEdge::to_string(Self) -> String
+
+pub(all) struct DsgraphlabeledFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphlabeledFrame::add(Self, Self) -> Self
+pub fn DsgraphlabeledFrame::copy(Self) -> Self
+pub fn DsgraphlabeledFrame::fill(Self, Double) -> Self
+pub fn DsgraphlabeledFrame::get(Self, Int32) -> Double
+pub fn DsgraphlabeledFrame::len(Self) -> Int32
+pub fn DsgraphlabeledFrame::max(Self) -> Double
+pub fn DsgraphlabeledFrame::mean(Self) -> Double
+pub fn DsgraphlabeledFrame::min(Self) -> Double
+pub fn DsgraphlabeledFrame::scale(Self, Double) -> Self
+pub fn DsgraphlabeledFrame::set(Self, Int32, Double) -> Self
+pub fn DsgraphlabeledFrame::sum(Self) -> Double
+pub fn DsgraphlabeledFrame::to_string(Self) -> String
+
+pub(all) struct DsgraphlabeledGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphlabeledGraphN::add(Self, Self) -> Self
+pub fn DsgraphlabeledGraphN::copy(Self) -> Self
+pub fn DsgraphlabeledGraphN::fill(Self, Double) -> Self
+pub fn DsgraphlabeledGraphN::get(Self, Int32) -> Double
+pub fn DsgraphlabeledGraphN::len(Self) -> Int32
+pub fn DsgraphlabeledGraphN::max(Self) -> Double
+pub fn DsgraphlabeledGraphN::mean(Self) -> Double
+pub fn DsgraphlabeledGraphN::min(Self) -> Double
+pub fn DsgraphlabeledGraphN::scale(Self, Double) -> Self
+pub fn DsgraphlabeledGraphN::set(Self, Int32, Double) -> Self
+pub fn DsgraphlabeledGraphN::sum(Self) -> Double
+pub fn DsgraphlabeledGraphN::to_string(Self) -> String
+
+pub(all) struct DsgraphlabeledLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphlabeledLayer::add(Self, Self) -> Self
+pub fn DsgraphlabeledLayer::copy(Self) -> Self
+pub fn DsgraphlabeledLayer::fill(Self, Double) -> Self
+pub fn DsgraphlabeledLayer::get(Self, Int32) -> Double
+pub fn DsgraphlabeledLayer::len(Self) -> Int32
+pub fn DsgraphlabeledLayer::max(Self) -> Double
+pub fn DsgraphlabeledLayer::mean(Self) -> Double
+pub fn DsgraphlabeledLayer::min(Self) -> Double
+pub fn DsgraphlabeledLayer::scale(Self, Double) -> Self
+pub fn DsgraphlabeledLayer::set(Self, Int32, Double) -> Self
+pub fn DsgraphlabeledLayer::sum(Self) -> Double
+pub fn DsgraphlabeledLayer::to_string(Self) -> String
+
+pub(all) struct DsgraphlabeledMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DsgraphlabeledMatrix::add(Self, Self) -> Self
+pub fn DsgraphlabeledMatrix::det(Self) -> Double
+pub fn DsgraphlabeledMatrix::get(Self, Int32, Int32) -> Double
+pub fn DsgraphlabeledMatrix::multiply(Self, Self) -> Self
+pub fn DsgraphlabeledMatrix::norm(Self) -> Double
+pub fn DsgraphlabeledMatrix::scale(Self, Double) -> Self
+pub fn DsgraphlabeledMatrix::to_string(Self) -> String
+pub fn DsgraphlabeledMatrix::trace(Self) -> Double
+pub fn DsgraphlabeledMatrix::transpose(Self) -> Self
+
+pub(all) struct DsgraphlabeledModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphlabeledModel::add(Self, Self) -> Self
+pub fn DsgraphlabeledModel::copy(Self) -> Self
+pub fn DsgraphlabeledModel::fill(Self, Double) -> Self
+pub fn DsgraphlabeledModel::get(Self, Int32) -> Double
+pub fn DsgraphlabeledModel::len(Self) -> Int32
+pub fn DsgraphlabeledModel::max(Self) -> Double
+pub fn DsgraphlabeledModel::mean(Self) -> Double
+pub fn DsgraphlabeledModel::min(Self) -> Double
+pub fn DsgraphlabeledModel::scale(Self, Double) -> Self
+pub fn DsgraphlabeledModel::set(Self, Int32, Double) -> Self
+pub fn DsgraphlabeledModel::sum(Self) -> Double
+pub fn DsgraphlabeledModel::to_string(Self) -> String
+
+pub(all) struct DsgraphlabeledNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphlabeledNode::add(Self, Self) -> Self
+pub fn DsgraphlabeledNode::copy(Self) -> Self
+pub fn DsgraphlabeledNode::fill(Self, Double) -> Self
+pub fn DsgraphlabeledNode::get(Self, Int32) -> Double
+pub fn DsgraphlabeledNode::len(Self) -> Int32
+pub fn DsgraphlabeledNode::max(Self) -> Double
+pub fn DsgraphlabeledNode::mean(Self) -> Double
+pub fn DsgraphlabeledNode::min(Self) -> Double
+pub fn DsgraphlabeledNode::scale(Self, Double) -> Self
+pub fn DsgraphlabeledNode::set(Self, Int32, Double) -> Self
+pub fn DsgraphlabeledNode::sum(Self) -> Double
+pub fn DsgraphlabeledNode::to_string(Self) -> String
+
+pub(all) struct DsgraphlabeledPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphlabeledPath::add(Self, Self) -> Self
+pub fn DsgraphlabeledPath::copy(Self) -> Self
+pub fn DsgraphlabeledPath::fill(Self, Double) -> Self
+pub fn DsgraphlabeledPath::get(Self, Int32) -> Double
+pub fn DsgraphlabeledPath::len(Self) -> Int32
+pub fn DsgraphlabeledPath::max(Self) -> Double
+pub fn DsgraphlabeledPath::mean(Self) -> Double
+pub fn DsgraphlabeledPath::min(Self) -> Double
+pub fn DsgraphlabeledPath::scale(Self, Double) -> Self
+pub fn DsgraphlabeledPath::set(Self, Int32, Double) -> Self
+pub fn DsgraphlabeledPath::sum(Self) -> Double
+pub fn DsgraphlabeledPath::to_string(Self) -> String
+
+pub(all) struct DsgraphlabeledPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DsgraphlabeledPoint::add(Self, Self) -> Self
+pub fn DsgraphlabeledPoint::cross(Self, Self) -> Self
+pub fn DsgraphlabeledPoint::dist(Self, Self) -> Double
+pub fn DsgraphlabeledPoint::dot(Self, Self) -> Double
+pub fn DsgraphlabeledPoint::label(Self) -> Int32
+pub fn DsgraphlabeledPoint::lerp(Self, Self, Double) -> Self
+pub fn DsgraphlabeledPoint::mid(Self, Self) -> Self
+pub fn DsgraphlabeledPoint::negate(Self) -> Self
+pub fn DsgraphlabeledPoint::norm(Self) -> Double
+pub fn DsgraphlabeledPoint::normalize(Self) -> Self
+pub fn DsgraphlabeledPoint::scale(Self, Double) -> Self
+pub fn DsgraphlabeledPoint::sub(Self, Self) -> Self
+pub fn DsgraphlabeledPoint::to_string(Self) -> String
+pub fn DsgraphlabeledPoint::x(Self) -> Double
+pub fn DsgraphlabeledPoint::y(Self) -> Double
+pub fn DsgraphlabeledPoint::z(Self) -> Double
+
+pub(all) struct DsgraphlabeledRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphlabeledRange::add(Self, Self) -> Self
+pub fn DsgraphlabeledRange::copy(Self) -> Self
+pub fn DsgraphlabeledRange::fill(Self, Double) -> Self
+pub fn DsgraphlabeledRange::get(Self, Int32) -> Double
+pub fn DsgraphlabeledRange::len(Self) -> Int32
+pub fn DsgraphlabeledRange::max(Self) -> Double
+pub fn DsgraphlabeledRange::mean(Self) -> Double
+pub fn DsgraphlabeledRange::min(Self) -> Double
+pub fn DsgraphlabeledRange::scale(Self, Double) -> Self
+pub fn DsgraphlabeledRange::set(Self, Int32, Double) -> Self
+pub fn DsgraphlabeledRange::sum(Self) -> Double
+pub fn DsgraphlabeledRange::to_string(Self) -> String
+
+pub(all) struct DsgraphlabeledSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DsgraphlabeledSeries::add(Self, Self) -> Self
+pub fn DsgraphlabeledSeries::cumsum(Self) -> Self
+pub fn DsgraphlabeledSeries::len(Self) -> Int32
+pub fn DsgraphlabeledSeries::max(Self) -> Double
+pub fn DsgraphlabeledSeries::mean(Self) -> Double
+pub fn DsgraphlabeledSeries::median(Self) -> Double
+pub fn DsgraphlabeledSeries::min(Self) -> Double
+pub fn DsgraphlabeledSeries::normalize(Self) -> Self
+pub fn DsgraphlabeledSeries::range(Self) -> Double
+pub fn DsgraphlabeledSeries::scale(Self, Double) -> Self
+pub fn DsgraphlabeledSeries::std(Self) -> Double
+pub fn DsgraphlabeledSeries::sub(Self, Self) -> Self
+pub fn DsgraphlabeledSeries::sum(Self) -> Double
+pub fn DsgraphlabeledSeries::to_string(Self) -> String
+pub fn DsgraphlabeledSeries::variance(Self) -> Double
+
+pub(all) struct DsgraphlabeledSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphlabeledSlice::add(Self, Self) -> Self
+pub fn DsgraphlabeledSlice::copy(Self) -> Self
+pub fn DsgraphlabeledSlice::fill(Self, Double) -> Self
+pub fn DsgraphlabeledSlice::get(Self, Int32) -> Double
+pub fn DsgraphlabeledSlice::len(Self) -> Int32
+pub fn DsgraphlabeledSlice::max(Self) -> Double
+pub fn DsgraphlabeledSlice::mean(Self) -> Double
+pub fn DsgraphlabeledSlice::min(Self) -> Double
+pub fn DsgraphlabeledSlice::scale(Self, Double) -> Self
+pub fn DsgraphlabeledSlice::set(Self, Int32, Double) -> Self
+pub fn DsgraphlabeledSlice::sum(Self) -> Double
+pub fn DsgraphlabeledSlice::to_string(Self) -> String
+
+pub(all) struct DsgraphlabeledTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphlabeledTable::add(Self, Self) -> Self
+pub fn DsgraphlabeledTable::copy(Self) -> Self
+pub fn DsgraphlabeledTable::fill(Self, Double) -> Self
+pub fn DsgraphlabeledTable::get(Self, Int32) -> Double
+pub fn DsgraphlabeledTable::len(Self) -> Int32
+pub fn DsgraphlabeledTable::max(Self) -> Double
+pub fn DsgraphlabeledTable::mean(Self) -> Double
+pub fn DsgraphlabeledTable::min(Self) -> Double
+pub fn DsgraphlabeledTable::scale(Self, Double) -> Self
+pub fn DsgraphlabeledTable::set(Self, Int32, Double) -> Self
+pub fn DsgraphlabeledTable::sum(Self) -> Double
+pub fn DsgraphlabeledTable::to_string(Self) -> String
+
+pub(all) struct DsgraphlabeledVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DsgraphlabeledVector::add(Self, Self) -> Self
+pub fn DsgraphlabeledVector::dist(Self, Self) -> Double
+pub fn DsgraphlabeledVector::dot(Self, Self) -> Double
+pub fn DsgraphlabeledVector::norm(Self) -> Double
+pub fn DsgraphlabeledVector::normalize(Self) -> Self
+pub fn DsgraphlabeledVector::scale(Self, Double) -> Self
+pub fn DsgraphlabeledVector::sub(Self, Self) -> Self
+pub fn DsgraphlabeledVector::to_string(Self) -> String
+
+pub(all) struct DsgraphlabeledView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphlabeledView::add(Self, Self) -> Self
+pub fn DsgraphlabeledView::copy(Self) -> Self
+pub fn DsgraphlabeledView::fill(Self, Double) -> Self
+pub fn DsgraphlabeledView::get(Self, Int32) -> Double
+pub fn DsgraphlabeledView::len(Self) -> Int32
+pub fn DsgraphlabeledView::max(Self) -> Double
+pub fn DsgraphlabeledView::mean(Self) -> Double
+pub fn DsgraphlabeledView::min(Self) -> Double
+pub fn DsgraphlabeledView::scale(Self, Double) -> Self
+pub fn DsgraphlabeledView::set(Self, Int32, Double) -> Self
+pub fn DsgraphlabeledView::sum(Self) -> Double
+pub fn DsgraphlabeledView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

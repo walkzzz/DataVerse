@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_filter_sobel"
+
+// Values
+pub fn image_filter_sobel_buffer_make(Int32) -> ImagefiltersobelBuffer
+
+pub fn image_filter_sobel_cluster_make(Int32) -> ImagefiltersobelCluster
+
+pub fn image_filter_sobel_cursor_make(Int32) -> ImagefiltersobelCursor
+
+pub fn image_filter_sobel_edge_make(Int32) -> ImagefiltersobelEdge
+
+pub fn image_filter_sobel_frame_make(Int32) -> ImagefiltersobelFrame
+
+pub fn image_filter_sobel_graphn_make(Int32) -> ImagefiltersobelGraphN
+
+pub fn image_filter_sobel_layer_make(Int32) -> ImagefiltersobelLayer
+
+pub fn image_filter_sobel_make_matrix(Int32, Int32, Double) -> ImagefiltersobelMatrix
+
+pub fn image_filter_sobel_make_point(Double, Double) -> ImagefiltersobelPoint
+
+pub fn image_filter_sobel_make_point3(Double, Double, Double) -> ImagefiltersobelPoint
+
+pub fn image_filter_sobel_make_series(Array[Double], String) -> ImagefiltersobelSeries
+
+pub fn image_filter_sobel_make_vector(Array[Double]) -> ImagefiltersobelVector
+
+pub fn image_filter_sobel_matrix_identity(Int32) -> ImagefiltersobelMatrix
+
+pub fn image_filter_sobel_model_make(Int32) -> ImagefiltersobelModel
+
+pub fn image_filter_sobel_node_make(Int32) -> ImagefiltersobelNode
+
+pub fn image_filter_sobel_path_make(Int32) -> ImagefiltersobelPath
+
+pub fn image_filter_sobel_range_make(Int32) -> ImagefiltersobelRange
+
+pub fn image_filter_sobel_slice_make(Int32) -> ImagefiltersobelSlice
+
+pub fn image_filter_sobel_table_make(Int32) -> ImagefiltersobelTable
+
+pub fn image_filter_sobel_vector_zero(Int32) -> ImagefiltersobelVector
+
+pub fn image_filter_sobel_view_make(Int32) -> ImagefiltersobelView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagefiltersobelBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltersobelBuffer::add(Self, Self) -> Self
+pub fn ImagefiltersobelBuffer::copy(Self) -> Self
+pub fn ImagefiltersobelBuffer::fill(Self, Double) -> Self
+pub fn ImagefiltersobelBuffer::get(Self, Int32) -> Double
+pub fn ImagefiltersobelBuffer::len(Self) -> Int32
+pub fn ImagefiltersobelBuffer::max(Self) -> Double
+pub fn ImagefiltersobelBuffer::mean(Self) -> Double
+pub fn ImagefiltersobelBuffer::min(Self) -> Double
+pub fn ImagefiltersobelBuffer::scale(Self, Double) -> Self
+pub fn ImagefiltersobelBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagefiltersobelBuffer::sum(Self) -> Double
+pub fn ImagefiltersobelBuffer::to_string(Self) -> String
+
+pub(all) struct ImagefiltersobelCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltersobelCluster::add(Self, Self) -> Self
+pub fn ImagefiltersobelCluster::copy(Self) -> Self
+pub fn ImagefiltersobelCluster::fill(Self, Double) -> Self
+pub fn ImagefiltersobelCluster::get(Self, Int32) -> Double
+pub fn ImagefiltersobelCluster::len(Self) -> Int32
+pub fn ImagefiltersobelCluster::max(Self) -> Double
+pub fn ImagefiltersobelCluster::mean(Self) -> Double
+pub fn ImagefiltersobelCluster::min(Self) -> Double
+pub fn ImagefiltersobelCluster::scale(Self, Double) -> Self
+pub fn ImagefiltersobelCluster::set(Self, Int32, Double) -> Self
+pub fn ImagefiltersobelCluster::sum(Self) -> Double
+pub fn ImagefiltersobelCluster::to_string(Self) -> String
+
+pub(all) struct ImagefiltersobelCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltersobelCursor::add(Self, Self) -> Self
+pub fn ImagefiltersobelCursor::copy(Self) -> Self
+pub fn ImagefiltersobelCursor::fill(Self, Double) -> Self
+pub fn ImagefiltersobelCursor::get(Self, Int32) -> Double
+pub fn ImagefiltersobelCursor::len(Self) -> Int32
+pub fn ImagefiltersobelCursor::max(Self) -> Double
+pub fn ImagefiltersobelCursor::mean(Self) -> Double
+pub fn ImagefiltersobelCursor::min(Self) -> Double
+pub fn ImagefiltersobelCursor::scale(Self, Double) -> Self
+pub fn ImagefiltersobelCursor::set(Self, Int32, Double) -> Self
+pub fn ImagefiltersobelCursor::sum(Self) -> Double
+pub fn ImagefiltersobelCursor::to_string(Self) -> String
+
+pub(all) struct ImagefiltersobelEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltersobelEdge::add(Self, Self) -> Self
+pub fn ImagefiltersobelEdge::copy(Self) -> Self
+pub fn ImagefiltersobelEdge::fill(Self, Double) -> Self
+pub fn ImagefiltersobelEdge::get(Self, Int32) -> Double
+pub fn ImagefiltersobelEdge::len(Self) -> Int32
+pub fn ImagefiltersobelEdge::max(Self) -> Double
+pub fn ImagefiltersobelEdge::mean(Self) -> Double
+pub fn ImagefiltersobelEdge::min(Self) -> Double
+pub fn ImagefiltersobelEdge::scale(Self, Double) -> Self
+pub fn ImagefiltersobelEdge::set(Self, Int32, Double) -> Self
+pub fn ImagefiltersobelEdge::sum(Self) -> Double
+pub fn ImagefiltersobelEdge::to_string(Self) -> String
+
+pub(all) struct ImagefiltersobelFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltersobelFrame::add(Self, Self) -> Self
+pub fn ImagefiltersobelFrame::copy(Self) -> Self
+pub fn ImagefiltersobelFrame::fill(Self, Double) -> Self
+pub fn ImagefiltersobelFrame::get(Self, Int32) -> Double
+pub fn ImagefiltersobelFrame::len(Self) -> Int32
+pub fn ImagefiltersobelFrame::max(Self) -> Double
+pub fn ImagefiltersobelFrame::mean(Self) -> Double
+pub fn ImagefiltersobelFrame::min(Self) -> Double
+pub fn ImagefiltersobelFrame::scale(Self, Double) -> Self
+pub fn ImagefiltersobelFrame::set(Self, Int32, Double) -> Self
+pub fn ImagefiltersobelFrame::sum(Self) -> Double
+pub fn ImagefiltersobelFrame::to_string(Self) -> String
+
+pub(all) struct ImagefiltersobelGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltersobelGraphN::add(Self, Self) -> Self
+pub fn ImagefiltersobelGraphN::copy(Self) -> Self
+pub fn ImagefiltersobelGraphN::fill(Self, Double) -> Self
+pub fn ImagefiltersobelGraphN::get(Self, Int32) -> Double
+pub fn ImagefiltersobelGraphN::len(Self) -> Int32
+pub fn ImagefiltersobelGraphN::max(Self) -> Double
+pub fn ImagefiltersobelGraphN::mean(Self) -> Double
+pub fn ImagefiltersobelGraphN::min(Self) -> Double
+pub fn ImagefiltersobelGraphN::scale(Self, Double) -> Self
+pub fn ImagefiltersobelGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagefiltersobelGraphN::sum(Self) -> Double
+pub fn ImagefiltersobelGraphN::to_string(Self) -> String
+
+pub(all) struct ImagefiltersobelLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltersobelLayer::add(Self, Self) -> Self
+pub fn ImagefiltersobelLayer::copy(Self) -> Self
+pub fn ImagefiltersobelLayer::fill(Self, Double) -> Self
+pub fn ImagefiltersobelLayer::get(Self, Int32) -> Double
+pub fn ImagefiltersobelLayer::len(Self) -> Int32
+pub fn ImagefiltersobelLayer::max(Self) -> Double
+pub fn ImagefiltersobelLayer::mean(Self) -> Double
+pub fn ImagefiltersobelLayer::min(Self) -> Double
+pub fn ImagefiltersobelLayer::scale(Self, Double) -> Self
+pub fn ImagefiltersobelLayer::set(Self, Int32, Double) -> Self
+pub fn ImagefiltersobelLayer::sum(Self) -> Double
+pub fn ImagefiltersobelLayer::to_string(Self) -> String
+
+pub(all) struct ImagefiltersobelMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagefiltersobelMatrix::add(Self, Self) -> Self
+pub fn ImagefiltersobelMatrix::det(Self) -> Double
+pub fn ImagefiltersobelMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagefiltersobelMatrix::multiply(Self, Self) -> Self
+pub fn ImagefiltersobelMatrix::norm(Self) -> Double
+pub fn ImagefiltersobelMatrix::scale(Self, Double) -> Self
+pub fn ImagefiltersobelMatrix::to_string(Self) -> String
+pub fn ImagefiltersobelMatrix::trace(Self) -> Double
+pub fn ImagefiltersobelMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagefiltersobelModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltersobelModel::add(Self, Self) -> Self
+pub fn ImagefiltersobelModel::copy(Self) -> Self
+pub fn ImagefiltersobelModel::fill(Self, Double) -> Self
+pub fn ImagefiltersobelModel::get(Self, Int32) -> Double
+pub fn ImagefiltersobelModel::len(Self) -> Int32
+pub fn ImagefiltersobelModel::max(Self) -> Double
+pub fn ImagefiltersobelModel::mean(Self) -> Double
+pub fn ImagefiltersobelModel::min(Self) -> Double
+pub fn ImagefiltersobelModel::scale(Self, Double) -> Self
+pub fn ImagefiltersobelModel::set(Self, Int32, Double) -> Self
+pub fn ImagefiltersobelModel::sum(Self) -> Double
+pub fn ImagefiltersobelModel::to_string(Self) -> String
+
+pub(all) struct ImagefiltersobelNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltersobelNode::add(Self, Self) -> Self
+pub fn ImagefiltersobelNode::copy(Self) -> Self
+pub fn ImagefiltersobelNode::fill(Self, Double) -> Self
+pub fn ImagefiltersobelNode::get(Self, Int32) -> Double
+pub fn ImagefiltersobelNode::len(Self) -> Int32
+pub fn ImagefiltersobelNode::max(Self) -> Double
+pub fn ImagefiltersobelNode::mean(Self) -> Double
+pub fn ImagefiltersobelNode::min(Self) -> Double
+pub fn ImagefiltersobelNode::scale(Self, Double) -> Self
+pub fn ImagefiltersobelNode::set(Self, Int32, Double) -> Self
+pub fn ImagefiltersobelNode::sum(Self) -> Double
+pub fn ImagefiltersobelNode::to_string(Self) -> String
+
+pub(all) struct ImagefiltersobelPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltersobelPath::add(Self, Self) -> Self
+pub fn ImagefiltersobelPath::copy(Self) -> Self
+pub fn ImagefiltersobelPath::fill(Self, Double) -> Self
+pub fn ImagefiltersobelPath::get(Self, Int32) -> Double
+pub fn ImagefiltersobelPath::len(Self) -> Int32
+pub fn ImagefiltersobelPath::max(Self) -> Double
+pub fn ImagefiltersobelPath::mean(Self) -> Double
+pub fn ImagefiltersobelPath::min(Self) -> Double
+pub fn ImagefiltersobelPath::scale(Self, Double) -> Self
+pub fn ImagefiltersobelPath::set(Self, Int32, Double) -> Self
+pub fn ImagefiltersobelPath::sum(Self) -> Double
+pub fn ImagefiltersobelPath::to_string(Self) -> String
+
+pub(all) struct ImagefiltersobelPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagefiltersobelPoint::add(Self, Self) -> Self
+pub fn ImagefiltersobelPoint::cross(Self, Self) -> Self
+pub fn ImagefiltersobelPoint::dist(Self, Self) -> Double
+pub fn ImagefiltersobelPoint::dot(Self, Self) -> Double
+pub fn ImagefiltersobelPoint::label(Self) -> Int32
+pub fn ImagefiltersobelPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagefiltersobelPoint::mid(Self, Self) -> Self
+pub fn ImagefiltersobelPoint::negate(Self) -> Self
+pub fn ImagefiltersobelPoint::norm(Self) -> Double
+pub fn ImagefiltersobelPoint::normalize(Self) -> Self
+pub fn ImagefiltersobelPoint::scale(Self, Double) -> Self
+pub fn ImagefiltersobelPoint::sub(Self, Self) -> Self
+pub fn ImagefiltersobelPoint::to_string(Self) -> String
+pub fn ImagefiltersobelPoint::x(Self) -> Double
+pub fn ImagefiltersobelPoint::y(Self) -> Double
+pub fn ImagefiltersobelPoint::z(Self) -> Double
+
+pub(all) struct ImagefiltersobelRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltersobelRange::add(Self, Self) -> Self
+pub fn ImagefiltersobelRange::copy(Self) -> Self
+pub fn ImagefiltersobelRange::fill(Self, Double) -> Self
+pub fn ImagefiltersobelRange::get(Self, Int32) -> Double
+pub fn ImagefiltersobelRange::len(Self) -> Int32
+pub fn ImagefiltersobelRange::max(Self) -> Double
+pub fn ImagefiltersobelRange::mean(Self) -> Double
+pub fn ImagefiltersobelRange::min(Self) -> Double
+pub fn ImagefiltersobelRange::scale(Self, Double) -> Self
+pub fn ImagefiltersobelRange::set(Self, Int32, Double) -> Self
+pub fn ImagefiltersobelRange::sum(Self) -> Double
+pub fn ImagefiltersobelRange::to_string(Self) -> String
+
+pub(all) struct ImagefiltersobelSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagefiltersobelSeries::add(Self, Self) -> Self
+pub fn ImagefiltersobelSeries::cumsum(Self) -> Self
+pub fn ImagefiltersobelSeries::len(Self) -> Int32
+pub fn ImagefiltersobelSeries::max(Self) -> Double
+pub fn ImagefiltersobelSeries::mean(Self) -> Double
+pub fn ImagefiltersobelSeries::median(Self) -> Double
+pub fn ImagefiltersobelSeries::min(Self) -> Double
+pub fn ImagefiltersobelSeries::normalize(Self) -> Self
+pub fn ImagefiltersobelSeries::range(Self) -> Double
+pub fn ImagefiltersobelSeries::scale(Self, Double) -> Self
+pub fn ImagefiltersobelSeries::std(Self) -> Double
+pub fn ImagefiltersobelSeries::sub(Self, Self) -> Self
+pub fn ImagefiltersobelSeries::sum(Self) -> Double
+pub fn ImagefiltersobelSeries::to_string(Self) -> String
+pub fn ImagefiltersobelSeries::variance(Self) -> Double
+
+pub(all) struct ImagefiltersobelSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltersobelSlice::add(Self, Self) -> Self
+pub fn ImagefiltersobelSlice::copy(Self) -> Self
+pub fn ImagefiltersobelSlice::fill(Self, Double) -> Self
+pub fn ImagefiltersobelSlice::get(Self, Int32) -> Double
+pub fn ImagefiltersobelSlice::len(Self) -> Int32
+pub fn ImagefiltersobelSlice::max(Self) -> Double
+pub fn ImagefiltersobelSlice::mean(Self) -> Double
+pub fn ImagefiltersobelSlice::min(Self) -> Double
+pub fn ImagefiltersobelSlice::scale(Self, Double) -> Self
+pub fn ImagefiltersobelSlice::set(Self, Int32, Double) -> Self
+pub fn ImagefiltersobelSlice::sum(Self) -> Double
+pub fn ImagefiltersobelSlice::to_string(Self) -> String
+
+pub(all) struct ImagefiltersobelTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltersobelTable::add(Self, Self) -> Self
+pub fn ImagefiltersobelTable::copy(Self) -> Self
+pub fn ImagefiltersobelTable::fill(Self, Double) -> Self
+pub fn ImagefiltersobelTable::get(Self, Int32) -> Double
+pub fn ImagefiltersobelTable::len(Self) -> Int32
+pub fn ImagefiltersobelTable::max(Self) -> Double
+pub fn ImagefiltersobelTable::mean(Self) -> Double
+pub fn ImagefiltersobelTable::min(Self) -> Double
+pub fn ImagefiltersobelTable::scale(Self, Double) -> Self
+pub fn ImagefiltersobelTable::set(Self, Int32, Double) -> Self
+pub fn ImagefiltersobelTable::sum(Self) -> Double
+pub fn ImagefiltersobelTable::to_string(Self) -> String
+
+pub(all) struct ImagefiltersobelVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagefiltersobelVector::add(Self, Self) -> Self
+pub fn ImagefiltersobelVector::dist(Self, Self) -> Double
+pub fn ImagefiltersobelVector::dot(Self, Self) -> Double
+pub fn ImagefiltersobelVector::norm(Self) -> Double
+pub fn ImagefiltersobelVector::normalize(Self) -> Self
+pub fn ImagefiltersobelVector::scale(Self, Double) -> Self
+pub fn ImagefiltersobelVector::sub(Self, Self) -> Self
+pub fn ImagefiltersobelVector::to_string(Self) -> String
+
+pub(all) struct ImagefiltersobelView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltersobelView::add(Self, Self) -> Self
+pub fn ImagefiltersobelView::copy(Self) -> Self
+pub fn ImagefiltersobelView::fill(Self, Double) -> Self
+pub fn ImagefiltersobelView::get(Self, Int32) -> Double
+pub fn ImagefiltersobelView::len(Self) -> Int32
+pub fn ImagefiltersobelView::max(Self) -> Double
+pub fn ImagefiltersobelView::mean(Self) -> Double
+pub fn ImagefiltersobelView::min(Self) -> Double
+pub fn ImagefiltersobelView::scale(Self, Double) -> Self
+pub fn ImagefiltersobelView::set(Self, Int32, Double) -> Self
+pub fn ImagefiltersobelView::sum(Self) -> Double
+pub fn ImagefiltersobelView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

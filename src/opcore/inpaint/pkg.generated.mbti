@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/inpaint"
+
+// Values
+pub fn inpaint_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn inpaint_corr(Array[Double], Array[Double]) -> Double
+
+pub fn inpaint_cov(Array[Double], Array[Double]) -> Double
+
+pub fn inpaint_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn inpaint_mae(Array[Double], Array[Double]) -> Double
+
+pub fn inpaint_make_labeled_point(Double, Double, Int32) -> InpaintPoint
+
+pub fn inpaint_make_matrix(Int32, Int32, Double) -> InpaintMatrix
+
+pub fn inpaint_make_point(Double, Double) -> InpaintPoint
+
+pub fn inpaint_make_series(Array[Double], String) -> InpaintSeries
+
+pub fn inpaint_make_vector(Array[Double]) -> InpaintVector
+
+pub fn inpaint_matrix_add(InpaintMatrix, InpaintMatrix) -> InpaintMatrix
+
+pub fn inpaint_matrix_get(InpaintMatrix, Int32, Int32) -> Double
+
+pub fn inpaint_matrix_identity(Int32) -> InpaintMatrix
+
+pub fn inpaint_matrix_multiply(InpaintMatrix, InpaintMatrix) -> InpaintMatrix
+
+pub fn inpaint_matrix_norm(InpaintMatrix) -> Double
+
+pub fn inpaint_matrix_scale(InpaintMatrix, Double) -> InpaintMatrix
+
+pub fn inpaint_matrix_to_string(InpaintMatrix) -> String
+
+pub fn inpaint_matrix_trace(InpaintMatrix) -> Double
+
+pub fn inpaint_matrix_transpose(InpaintMatrix) -> InpaintMatrix
+
+pub fn inpaint_mse(Array[Double], Array[Double]) -> Double
+
+pub fn inpaint_point_add(InpaintPoint, InpaintPoint) -> InpaintPoint
+
+pub fn inpaint_point_dist(InpaintPoint, InpaintPoint) -> Double
+
+pub fn inpaint_point_dot(InpaintPoint, InpaintPoint) -> Double
+
+pub fn inpaint_point_label(InpaintPoint) -> Int32
+
+pub fn inpaint_point_norm(InpaintPoint) -> Double
+
+pub fn inpaint_point_scale(InpaintPoint, Double) -> InpaintPoint
+
+pub fn inpaint_point_sub(InpaintPoint, InpaintPoint) -> InpaintPoint
+
+pub fn inpaint_point_to_string(InpaintPoint) -> String
+
+pub fn inpaint_point_x(InpaintPoint) -> Double
+
+pub fn inpaint_point_y(InpaintPoint) -> Double
+
+pub fn inpaint_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn inpaint_r2(Array[Double], Array[Double]) -> Double
+
+pub fn inpaint_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn inpaint_series_add(InpaintSeries, InpaintSeries) -> InpaintSeries
+
+pub fn inpaint_series_len(InpaintSeries) -> Int32
+
+pub fn inpaint_series_max(InpaintSeries) -> Double
+
+pub fn inpaint_series_mean(InpaintSeries) -> Double
+
+pub fn inpaint_series_min(InpaintSeries) -> Double
+
+pub fn inpaint_series_scale(InpaintSeries, Double) -> InpaintSeries
+
+pub fn inpaint_series_std(InpaintSeries) -> Double
+
+pub fn inpaint_series_sum(InpaintSeries) -> Double
+
+pub fn inpaint_series_to_string(InpaintSeries) -> String
+
+pub fn inpaint_series_var(InpaintSeries) -> Double
+
+pub fn inpaint_std(Array[Double]) -> Double
+
+pub fn inpaint_var(Array[Double]) -> Double
+
+pub fn inpaint_vector_add(InpaintVector, InpaintVector) -> InpaintVector
+
+pub fn inpaint_vector_dist(InpaintVector, InpaintVector) -> Double
+
+pub fn inpaint_vector_dot(InpaintVector, InpaintVector) -> Double
+
+pub fn inpaint_vector_norm(InpaintVector) -> Double
+
+pub fn inpaint_vector_normalize(InpaintVector) -> InpaintVector
+
+pub fn inpaint_vector_scale(InpaintVector, Double) -> InpaintVector
+
+pub fn inpaint_vector_sub(InpaintVector, InpaintVector) -> InpaintVector
+
+pub fn inpaint_vector_to_string(InpaintVector) -> String
+
+pub fn inpaint_vector_zero(Int32) -> InpaintVector
+
+// Errors
+
+// Types and methods
+pub struct InpaintMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct InpaintPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct InpaintSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct InpaintVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/denoise_wavelet"
+
+// Values
+pub fn denoise_wavelet_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn denoise_wavelet_corr(Array[Double], Array[Double]) -> Double
+
+pub fn denoise_wavelet_cov(Array[Double], Array[Double]) -> Double
+
+pub fn denoise_wavelet_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn denoise_wavelet_mae(Array[Double], Array[Double]) -> Double
+
+pub fn denoise_wavelet_make_labeled_point(Double, Double, Int32) -> Denoise_waveletPoint
+
+pub fn denoise_wavelet_make_matrix(Int32, Int32, Double) -> Denoise_waveletMatrix
+
+pub fn denoise_wavelet_make_point(Double, Double) -> Denoise_waveletPoint
+
+pub fn denoise_wavelet_make_series(Array[Double], String) -> Denoise_waveletSeries
+
+pub fn denoise_wavelet_make_vector(Array[Double]) -> Denoise_waveletVector
+
+pub fn denoise_wavelet_matrix_add(Denoise_waveletMatrix, Denoise_waveletMatrix) -> Denoise_waveletMatrix
+
+pub fn denoise_wavelet_matrix_get(Denoise_waveletMatrix, Int32, Int32) -> Double
+
+pub fn denoise_wavelet_matrix_identity(Int32) -> Denoise_waveletMatrix
+
+pub fn denoise_wavelet_matrix_multiply(Denoise_waveletMatrix, Denoise_waveletMatrix) -> Denoise_waveletMatrix
+
+pub fn denoise_wavelet_matrix_norm(Denoise_waveletMatrix) -> Double
+
+pub fn denoise_wavelet_matrix_scale(Denoise_waveletMatrix, Double) -> Denoise_waveletMatrix
+
+pub fn denoise_wavelet_matrix_to_string(Denoise_waveletMatrix) -> String
+
+pub fn denoise_wavelet_matrix_trace(Denoise_waveletMatrix) -> Double
+
+pub fn denoise_wavelet_matrix_transpose(Denoise_waveletMatrix) -> Denoise_waveletMatrix
+
+pub fn denoise_wavelet_mse(Array[Double], Array[Double]) -> Double
+
+pub fn denoise_wavelet_point_add(Denoise_waveletPoint, Denoise_waveletPoint) -> Denoise_waveletPoint
+
+pub fn denoise_wavelet_point_dist(Denoise_waveletPoint, Denoise_waveletPoint) -> Double
+
+pub fn denoise_wavelet_point_dot(Denoise_waveletPoint, Denoise_waveletPoint) -> Double
+
+pub fn denoise_wavelet_point_label(Denoise_waveletPoint) -> Int32
+
+pub fn denoise_wavelet_point_norm(Denoise_waveletPoint) -> Double
+
+pub fn denoise_wavelet_point_scale(Denoise_waveletPoint, Double) -> Denoise_waveletPoint
+
+pub fn denoise_wavelet_point_sub(Denoise_waveletPoint, Denoise_waveletPoint) -> Denoise_waveletPoint
+
+pub fn denoise_wavelet_point_to_string(Denoise_waveletPoint) -> String
+
+pub fn denoise_wavelet_point_x(Denoise_waveletPoint) -> Double
+
+pub fn denoise_wavelet_point_y(Denoise_waveletPoint) -> Double
+
+pub fn denoise_wavelet_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn denoise_wavelet_r2(Array[Double], Array[Double]) -> Double
+
+pub fn denoise_wavelet_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn denoise_wavelet_series_add(Denoise_waveletSeries, Denoise_waveletSeries) -> Denoise_waveletSeries
+
+pub fn denoise_wavelet_series_len(Denoise_waveletSeries) -> Int32
+
+pub fn denoise_wavelet_series_max(Denoise_waveletSeries) -> Double
+
+pub fn denoise_wavelet_series_mean(Denoise_waveletSeries) -> Double
+
+pub fn denoise_wavelet_series_min(Denoise_waveletSeries) -> Double
+
+pub fn denoise_wavelet_series_scale(Denoise_waveletSeries, Double) -> Denoise_waveletSeries
+
+pub fn denoise_wavelet_series_std(Denoise_waveletSeries) -> Double
+
+pub fn denoise_wavelet_series_sum(Denoise_waveletSeries) -> Double
+
+pub fn denoise_wavelet_series_to_string(Denoise_waveletSeries) -> String
+
+pub fn denoise_wavelet_series_var(Denoise_waveletSeries) -> Double
+
+pub fn denoise_wavelet_std(Array[Double]) -> Double
+
+pub fn denoise_wavelet_var(Array[Double]) -> Double
+
+pub fn denoise_wavelet_vector_add(Denoise_waveletVector, Denoise_waveletVector) -> Denoise_waveletVector
+
+pub fn denoise_wavelet_vector_dist(Denoise_waveletVector, Denoise_waveletVector) -> Double
+
+pub fn denoise_wavelet_vector_dot(Denoise_waveletVector, Denoise_waveletVector) -> Double
+
+pub fn denoise_wavelet_vector_norm(Denoise_waveletVector) -> Double
+
+pub fn denoise_wavelet_vector_normalize(Denoise_waveletVector) -> Denoise_waveletVector
+
+pub fn denoise_wavelet_vector_scale(Denoise_waveletVector, Double) -> Denoise_waveletVector
+
+pub fn denoise_wavelet_vector_sub(Denoise_waveletVector, Denoise_waveletVector) -> Denoise_waveletVector
+
+pub fn denoise_wavelet_vector_to_string(Denoise_waveletVector) -> String
+
+pub fn denoise_wavelet_vector_zero(Int32) -> Denoise_waveletVector
+
+// Errors
+
+// Types and methods
+pub struct Denoise_waveletMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Denoise_waveletPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Denoise_waveletSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Denoise_waveletVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

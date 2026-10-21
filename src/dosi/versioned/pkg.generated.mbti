@@ -1,0 +1,39 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dosi/versioned"
+
+import {
+  "dataverse/dosi",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn advance_version(VersionedIndex, @dosi.DOSIIndex) -> VersionedIndex
+
+pub fn current(VersionedIndex) -> @dosi.DOSIIndex
+
+pub fn empty_versioned_index() -> VersionedIndex
+
+pub fn get_version(VersionedIndex, Int32) -> @dosi.DOSIIndex?
+
+pub fn make_versioned_index(@dosi.DOSIIndex) -> VersionedIndex
+
+pub fn rollback(VersionedIndex, Int32) -> VersionedIndex
+
+pub fn version_count(VersionedIndex) -> Int32
+
+pub fn versioned_id() -> String
+
+// Errors
+
+// Types and methods
+pub struct VersionedIndex {
+  versions : Array[(Int32, @dosi.DOSIIndex)]
+  current_version : Int32
+} derive(Eq, @debug.Debug)
+pub fn VersionedIndex::equal(Self, Self) -> Bool
+pub fn VersionedIndex::not_equal(Self, Self) -> Bool
+pub fn VersionedIndex::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

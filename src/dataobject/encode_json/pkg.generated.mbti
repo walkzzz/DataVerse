@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/encode_json"
+
+// Values
+pub fn encode_json_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn encode_json_corr(Array[Double], Array[Double]) -> Double
+
+pub fn encode_json_cov(Array[Double], Array[Double]) -> Double
+
+pub fn encode_json_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_json_mae(Array[Double], Array[Double]) -> Double
+
+pub fn encode_json_make_labeled_point(Double, Double, Int32) -> Encode_jsonPoint
+
+pub fn encode_json_make_matrix(Int32, Int32, Double) -> Encode_jsonMatrix
+
+pub fn encode_json_make_point(Double, Double) -> Encode_jsonPoint
+
+pub fn encode_json_make_series(Array[Double], String) -> Encode_jsonSeries
+
+pub fn encode_json_make_vector(Array[Double]) -> Encode_jsonVector
+
+pub fn encode_json_matrix_add(Encode_jsonMatrix, Encode_jsonMatrix) -> Encode_jsonMatrix
+
+pub fn encode_json_matrix_get(Encode_jsonMatrix, Int32, Int32) -> Double
+
+pub fn encode_json_matrix_identity(Int32) -> Encode_jsonMatrix
+
+pub fn encode_json_matrix_multiply(Encode_jsonMatrix, Encode_jsonMatrix) -> Encode_jsonMatrix
+
+pub fn encode_json_matrix_norm(Encode_jsonMatrix) -> Double
+
+pub fn encode_json_matrix_scale(Encode_jsonMatrix, Double) -> Encode_jsonMatrix
+
+pub fn encode_json_matrix_to_string(Encode_jsonMatrix) -> String
+
+pub fn encode_json_matrix_trace(Encode_jsonMatrix) -> Double
+
+pub fn encode_json_matrix_transpose(Encode_jsonMatrix) -> Encode_jsonMatrix
+
+pub fn encode_json_mse(Array[Double], Array[Double]) -> Double
+
+pub fn encode_json_point_add(Encode_jsonPoint, Encode_jsonPoint) -> Encode_jsonPoint
+
+pub fn encode_json_point_dist(Encode_jsonPoint, Encode_jsonPoint) -> Double
+
+pub fn encode_json_point_dot(Encode_jsonPoint, Encode_jsonPoint) -> Double
+
+pub fn encode_json_point_label(Encode_jsonPoint) -> Int32
+
+pub fn encode_json_point_norm(Encode_jsonPoint) -> Double
+
+pub fn encode_json_point_scale(Encode_jsonPoint, Double) -> Encode_jsonPoint
+
+pub fn encode_json_point_sub(Encode_jsonPoint, Encode_jsonPoint) -> Encode_jsonPoint
+
+pub fn encode_json_point_to_string(Encode_jsonPoint) -> String
+
+pub fn encode_json_point_x(Encode_jsonPoint) -> Double
+
+pub fn encode_json_point_y(Encode_jsonPoint) -> Double
+
+pub fn encode_json_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_json_r2(Array[Double], Array[Double]) -> Double
+
+pub fn encode_json_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_json_series_add(Encode_jsonSeries, Encode_jsonSeries) -> Encode_jsonSeries
+
+pub fn encode_json_series_len(Encode_jsonSeries) -> Int32
+
+pub fn encode_json_series_max(Encode_jsonSeries) -> Double
+
+pub fn encode_json_series_mean(Encode_jsonSeries) -> Double
+
+pub fn encode_json_series_min(Encode_jsonSeries) -> Double
+
+pub fn encode_json_series_scale(Encode_jsonSeries, Double) -> Encode_jsonSeries
+
+pub fn encode_json_series_std(Encode_jsonSeries) -> Double
+
+pub fn encode_json_series_sum(Encode_jsonSeries) -> Double
+
+pub fn encode_json_series_to_string(Encode_jsonSeries) -> String
+
+pub fn encode_json_series_var(Encode_jsonSeries) -> Double
+
+pub fn encode_json_std(Array[Double]) -> Double
+
+pub fn encode_json_var(Array[Double]) -> Double
+
+pub fn encode_json_vector_add(Encode_jsonVector, Encode_jsonVector) -> Encode_jsonVector
+
+pub fn encode_json_vector_dist(Encode_jsonVector, Encode_jsonVector) -> Double
+
+pub fn encode_json_vector_dot(Encode_jsonVector, Encode_jsonVector) -> Double
+
+pub fn encode_json_vector_norm(Encode_jsonVector) -> Double
+
+pub fn encode_json_vector_normalize(Encode_jsonVector) -> Encode_jsonVector
+
+pub fn encode_json_vector_scale(Encode_jsonVector, Double) -> Encode_jsonVector
+
+pub fn encode_json_vector_sub(Encode_jsonVector, Encode_jsonVector) -> Encode_jsonVector
+
+pub fn encode_json_vector_to_string(Encode_jsonVector) -> String
+
+pub fn encode_json_vector_zero(Int32) -> Encode_jsonVector
+
+// Errors
+
+// Types and methods
+pub struct Encode_jsonMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Encode_jsonPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Encode_jsonSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Encode_jsonVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

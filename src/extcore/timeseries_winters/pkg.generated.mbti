@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_winters"
+
+// Values
+pub fn timeseries_winters_buffer_make(Int32) -> TimeserieswintersBuffer
+
+pub fn timeseries_winters_cluster_make(Int32) -> TimeserieswintersCluster
+
+pub fn timeseries_winters_cursor_make(Int32) -> TimeserieswintersCursor
+
+pub fn timeseries_winters_edge_make(Int32) -> TimeserieswintersEdge
+
+pub fn timeseries_winters_frame_make(Int32) -> TimeserieswintersFrame
+
+pub fn timeseries_winters_graphn_make(Int32) -> TimeserieswintersGraphN
+
+pub fn timeseries_winters_layer_make(Int32) -> TimeserieswintersLayer
+
+pub fn timeseries_winters_make_matrix(Int32, Int32, Double) -> TimeserieswintersMatrix
+
+pub fn timeseries_winters_make_point(Double, Double) -> TimeserieswintersPoint
+
+pub fn timeseries_winters_make_point3(Double, Double, Double) -> TimeserieswintersPoint
+
+pub fn timeseries_winters_make_series(Array[Double], String) -> TimeserieswintersSeries
+
+pub fn timeseries_winters_make_vector(Array[Double]) -> TimeserieswintersVector
+
+pub fn timeseries_winters_matrix_identity(Int32) -> TimeserieswintersMatrix
+
+pub fn timeseries_winters_model_make(Int32) -> TimeserieswintersModel
+
+pub fn timeseries_winters_node_make(Int32) -> TimeserieswintersNode
+
+pub fn timeseries_winters_path_make(Int32) -> TimeserieswintersPath
+
+pub fn timeseries_winters_range_make(Int32) -> TimeserieswintersRange
+
+pub fn timeseries_winters_slice_make(Int32) -> TimeserieswintersSlice
+
+pub fn timeseries_winters_table_make(Int32) -> TimeserieswintersTable
+
+pub fn timeseries_winters_vector_zero(Int32) -> TimeserieswintersVector
+
+pub fn timeseries_winters_view_make(Int32) -> TimeserieswintersView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeserieswintersBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeserieswintersBuffer::add(Self, Self) -> Self
+pub fn TimeserieswintersBuffer::copy(Self) -> Self
+pub fn TimeserieswintersBuffer::fill(Self, Double) -> Self
+pub fn TimeserieswintersBuffer::get(Self, Int32) -> Double
+pub fn TimeserieswintersBuffer::len(Self) -> Int32
+pub fn TimeserieswintersBuffer::max(Self) -> Double
+pub fn TimeserieswintersBuffer::mean(Self) -> Double
+pub fn TimeserieswintersBuffer::min(Self) -> Double
+pub fn TimeserieswintersBuffer::scale(Self, Double) -> Self
+pub fn TimeserieswintersBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeserieswintersBuffer::sum(Self) -> Double
+pub fn TimeserieswintersBuffer::to_string(Self) -> String
+
+pub(all) struct TimeserieswintersCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeserieswintersCluster::add(Self, Self) -> Self
+pub fn TimeserieswintersCluster::copy(Self) -> Self
+pub fn TimeserieswintersCluster::fill(Self, Double) -> Self
+pub fn TimeserieswintersCluster::get(Self, Int32) -> Double
+pub fn TimeserieswintersCluster::len(Self) -> Int32
+pub fn TimeserieswintersCluster::max(Self) -> Double
+pub fn TimeserieswintersCluster::mean(Self) -> Double
+pub fn TimeserieswintersCluster::min(Self) -> Double
+pub fn TimeserieswintersCluster::scale(Self, Double) -> Self
+pub fn TimeserieswintersCluster::set(Self, Int32, Double) -> Self
+pub fn TimeserieswintersCluster::sum(Self) -> Double
+pub fn TimeserieswintersCluster::to_string(Self) -> String
+
+pub(all) struct TimeserieswintersCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeserieswintersCursor::add(Self, Self) -> Self
+pub fn TimeserieswintersCursor::copy(Self) -> Self
+pub fn TimeserieswintersCursor::fill(Self, Double) -> Self
+pub fn TimeserieswintersCursor::get(Self, Int32) -> Double
+pub fn TimeserieswintersCursor::len(Self) -> Int32
+pub fn TimeserieswintersCursor::max(Self) -> Double
+pub fn TimeserieswintersCursor::mean(Self) -> Double
+pub fn TimeserieswintersCursor::min(Self) -> Double
+pub fn TimeserieswintersCursor::scale(Self, Double) -> Self
+pub fn TimeserieswintersCursor::set(Self, Int32, Double) -> Self
+pub fn TimeserieswintersCursor::sum(Self) -> Double
+pub fn TimeserieswintersCursor::to_string(Self) -> String
+
+pub(all) struct TimeserieswintersEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeserieswintersEdge::add(Self, Self) -> Self
+pub fn TimeserieswintersEdge::copy(Self) -> Self
+pub fn TimeserieswintersEdge::fill(Self, Double) -> Self
+pub fn TimeserieswintersEdge::get(Self, Int32) -> Double
+pub fn TimeserieswintersEdge::len(Self) -> Int32
+pub fn TimeserieswintersEdge::max(Self) -> Double
+pub fn TimeserieswintersEdge::mean(Self) -> Double
+pub fn TimeserieswintersEdge::min(Self) -> Double
+pub fn TimeserieswintersEdge::scale(Self, Double) -> Self
+pub fn TimeserieswintersEdge::set(Self, Int32, Double) -> Self
+pub fn TimeserieswintersEdge::sum(Self) -> Double
+pub fn TimeserieswintersEdge::to_string(Self) -> String
+
+pub(all) struct TimeserieswintersFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeserieswintersFrame::add(Self, Self) -> Self
+pub fn TimeserieswintersFrame::copy(Self) -> Self
+pub fn TimeserieswintersFrame::fill(Self, Double) -> Self
+pub fn TimeserieswintersFrame::get(Self, Int32) -> Double
+pub fn TimeserieswintersFrame::len(Self) -> Int32
+pub fn TimeserieswintersFrame::max(Self) -> Double
+pub fn TimeserieswintersFrame::mean(Self) -> Double
+pub fn TimeserieswintersFrame::min(Self) -> Double
+pub fn TimeserieswintersFrame::scale(Self, Double) -> Self
+pub fn TimeserieswintersFrame::set(Self, Int32, Double) -> Self
+pub fn TimeserieswintersFrame::sum(Self) -> Double
+pub fn TimeserieswintersFrame::to_string(Self) -> String
+
+pub(all) struct TimeserieswintersGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeserieswintersGraphN::add(Self, Self) -> Self
+pub fn TimeserieswintersGraphN::copy(Self) -> Self
+pub fn TimeserieswintersGraphN::fill(Self, Double) -> Self
+pub fn TimeserieswintersGraphN::get(Self, Int32) -> Double
+pub fn TimeserieswintersGraphN::len(Self) -> Int32
+pub fn TimeserieswintersGraphN::max(Self) -> Double
+pub fn TimeserieswintersGraphN::mean(Self) -> Double
+pub fn TimeserieswintersGraphN::min(Self) -> Double
+pub fn TimeserieswintersGraphN::scale(Self, Double) -> Self
+pub fn TimeserieswintersGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeserieswintersGraphN::sum(Self) -> Double
+pub fn TimeserieswintersGraphN::to_string(Self) -> String
+
+pub(all) struct TimeserieswintersLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeserieswintersLayer::add(Self, Self) -> Self
+pub fn TimeserieswintersLayer::copy(Self) -> Self
+pub fn TimeserieswintersLayer::fill(Self, Double) -> Self
+pub fn TimeserieswintersLayer::get(Self, Int32) -> Double
+pub fn TimeserieswintersLayer::len(Self) -> Int32
+pub fn TimeserieswintersLayer::max(Self) -> Double
+pub fn TimeserieswintersLayer::mean(Self) -> Double
+pub fn TimeserieswintersLayer::min(Self) -> Double
+pub fn TimeserieswintersLayer::scale(Self, Double) -> Self
+pub fn TimeserieswintersLayer::set(Self, Int32, Double) -> Self
+pub fn TimeserieswintersLayer::sum(Self) -> Double
+pub fn TimeserieswintersLayer::to_string(Self) -> String
+
+pub(all) struct TimeserieswintersMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeserieswintersMatrix::add(Self, Self) -> Self
+pub fn TimeserieswintersMatrix::det(Self) -> Double
+pub fn TimeserieswintersMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeserieswintersMatrix::multiply(Self, Self) -> Self
+pub fn TimeserieswintersMatrix::norm(Self) -> Double
+pub fn TimeserieswintersMatrix::scale(Self, Double) -> Self
+pub fn TimeserieswintersMatrix::to_string(Self) -> String
+pub fn TimeserieswintersMatrix::trace(Self) -> Double
+pub fn TimeserieswintersMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeserieswintersModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeserieswintersModel::add(Self, Self) -> Self
+pub fn TimeserieswintersModel::copy(Self) -> Self
+pub fn TimeserieswintersModel::fill(Self, Double) -> Self
+pub fn TimeserieswintersModel::get(Self, Int32) -> Double
+pub fn TimeserieswintersModel::len(Self) -> Int32
+pub fn TimeserieswintersModel::max(Self) -> Double
+pub fn TimeserieswintersModel::mean(Self) -> Double
+pub fn TimeserieswintersModel::min(Self) -> Double
+pub fn TimeserieswintersModel::scale(Self, Double) -> Self
+pub fn TimeserieswintersModel::set(Self, Int32, Double) -> Self
+pub fn TimeserieswintersModel::sum(Self) -> Double
+pub fn TimeserieswintersModel::to_string(Self) -> String
+
+pub(all) struct TimeserieswintersNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeserieswintersNode::add(Self, Self) -> Self
+pub fn TimeserieswintersNode::copy(Self) -> Self
+pub fn TimeserieswintersNode::fill(Self, Double) -> Self
+pub fn TimeserieswintersNode::get(Self, Int32) -> Double
+pub fn TimeserieswintersNode::len(Self) -> Int32
+pub fn TimeserieswintersNode::max(Self) -> Double
+pub fn TimeserieswintersNode::mean(Self) -> Double
+pub fn TimeserieswintersNode::min(Self) -> Double
+pub fn TimeserieswintersNode::scale(Self, Double) -> Self
+pub fn TimeserieswintersNode::set(Self, Int32, Double) -> Self
+pub fn TimeserieswintersNode::sum(Self) -> Double
+pub fn TimeserieswintersNode::to_string(Self) -> String
+
+pub(all) struct TimeserieswintersPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeserieswintersPath::add(Self, Self) -> Self
+pub fn TimeserieswintersPath::copy(Self) -> Self
+pub fn TimeserieswintersPath::fill(Self, Double) -> Self
+pub fn TimeserieswintersPath::get(Self, Int32) -> Double
+pub fn TimeserieswintersPath::len(Self) -> Int32
+pub fn TimeserieswintersPath::max(Self) -> Double
+pub fn TimeserieswintersPath::mean(Self) -> Double
+pub fn TimeserieswintersPath::min(Self) -> Double
+pub fn TimeserieswintersPath::scale(Self, Double) -> Self
+pub fn TimeserieswintersPath::set(Self, Int32, Double) -> Self
+pub fn TimeserieswintersPath::sum(Self) -> Double
+pub fn TimeserieswintersPath::to_string(Self) -> String
+
+pub(all) struct TimeserieswintersPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeserieswintersPoint::add(Self, Self) -> Self
+pub fn TimeserieswintersPoint::cross(Self, Self) -> Self
+pub fn TimeserieswintersPoint::dist(Self, Self) -> Double
+pub fn TimeserieswintersPoint::dot(Self, Self) -> Double
+pub fn TimeserieswintersPoint::label(Self) -> Int32
+pub fn TimeserieswintersPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeserieswintersPoint::mid(Self, Self) -> Self
+pub fn TimeserieswintersPoint::negate(Self) -> Self
+pub fn TimeserieswintersPoint::norm(Self) -> Double
+pub fn TimeserieswintersPoint::normalize(Self) -> Self
+pub fn TimeserieswintersPoint::scale(Self, Double) -> Self
+pub fn TimeserieswintersPoint::sub(Self, Self) -> Self
+pub fn TimeserieswintersPoint::to_string(Self) -> String
+pub fn TimeserieswintersPoint::x(Self) -> Double
+pub fn TimeserieswintersPoint::y(Self) -> Double
+pub fn TimeserieswintersPoint::z(Self) -> Double
+
+pub(all) struct TimeserieswintersRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeserieswintersRange::add(Self, Self) -> Self
+pub fn TimeserieswintersRange::copy(Self) -> Self
+pub fn TimeserieswintersRange::fill(Self, Double) -> Self
+pub fn TimeserieswintersRange::get(Self, Int32) -> Double
+pub fn TimeserieswintersRange::len(Self) -> Int32
+pub fn TimeserieswintersRange::max(Self) -> Double
+pub fn TimeserieswintersRange::mean(Self) -> Double
+pub fn TimeserieswintersRange::min(Self) -> Double
+pub fn TimeserieswintersRange::scale(Self, Double) -> Self
+pub fn TimeserieswintersRange::set(Self, Int32, Double) -> Self
+pub fn TimeserieswintersRange::sum(Self) -> Double
+pub fn TimeserieswintersRange::to_string(Self) -> String
+
+pub(all) struct TimeserieswintersSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeserieswintersSeries::add(Self, Self) -> Self
+pub fn TimeserieswintersSeries::cumsum(Self) -> Self
+pub fn TimeserieswintersSeries::len(Self) -> Int32
+pub fn TimeserieswintersSeries::max(Self) -> Double
+pub fn TimeserieswintersSeries::mean(Self) -> Double
+pub fn TimeserieswintersSeries::median(Self) -> Double
+pub fn TimeserieswintersSeries::min(Self) -> Double
+pub fn TimeserieswintersSeries::normalize(Self) -> Self
+pub fn TimeserieswintersSeries::range(Self) -> Double
+pub fn TimeserieswintersSeries::scale(Self, Double) -> Self
+pub fn TimeserieswintersSeries::std(Self) -> Double
+pub fn TimeserieswintersSeries::sub(Self, Self) -> Self
+pub fn TimeserieswintersSeries::sum(Self) -> Double
+pub fn TimeserieswintersSeries::to_string(Self) -> String
+pub fn TimeserieswintersSeries::variance(Self) -> Double
+
+pub(all) struct TimeserieswintersSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeserieswintersSlice::add(Self, Self) -> Self
+pub fn TimeserieswintersSlice::copy(Self) -> Self
+pub fn TimeserieswintersSlice::fill(Self, Double) -> Self
+pub fn TimeserieswintersSlice::get(Self, Int32) -> Double
+pub fn TimeserieswintersSlice::len(Self) -> Int32
+pub fn TimeserieswintersSlice::max(Self) -> Double
+pub fn TimeserieswintersSlice::mean(Self) -> Double
+pub fn TimeserieswintersSlice::min(Self) -> Double
+pub fn TimeserieswintersSlice::scale(Self, Double) -> Self
+pub fn TimeserieswintersSlice::set(Self, Int32, Double) -> Self
+pub fn TimeserieswintersSlice::sum(Self) -> Double
+pub fn TimeserieswintersSlice::to_string(Self) -> String
+
+pub(all) struct TimeserieswintersTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeserieswintersTable::add(Self, Self) -> Self
+pub fn TimeserieswintersTable::copy(Self) -> Self
+pub fn TimeserieswintersTable::fill(Self, Double) -> Self
+pub fn TimeserieswintersTable::get(Self, Int32) -> Double
+pub fn TimeserieswintersTable::len(Self) -> Int32
+pub fn TimeserieswintersTable::max(Self) -> Double
+pub fn TimeserieswintersTable::mean(Self) -> Double
+pub fn TimeserieswintersTable::min(Self) -> Double
+pub fn TimeserieswintersTable::scale(Self, Double) -> Self
+pub fn TimeserieswintersTable::set(Self, Int32, Double) -> Self
+pub fn TimeserieswintersTable::sum(Self) -> Double
+pub fn TimeserieswintersTable::to_string(Self) -> String
+
+pub(all) struct TimeserieswintersVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeserieswintersVector::add(Self, Self) -> Self
+pub fn TimeserieswintersVector::dist(Self, Self) -> Double
+pub fn TimeserieswintersVector::dot(Self, Self) -> Double
+pub fn TimeserieswintersVector::norm(Self) -> Double
+pub fn TimeserieswintersVector::normalize(Self) -> Self
+pub fn TimeserieswintersVector::scale(Self, Double) -> Self
+pub fn TimeserieswintersVector::sub(Self, Self) -> Self
+pub fn TimeserieswintersVector::to_string(Self) -> String
+
+pub(all) struct TimeserieswintersView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeserieswintersView::add(Self, Self) -> Self
+pub fn TimeserieswintersView::copy(Self) -> Self
+pub fn TimeserieswintersView::fill(Self, Double) -> Self
+pub fn TimeserieswintersView::get(Self, Int32) -> Double
+pub fn TimeserieswintersView::len(Self) -> Int32
+pub fn TimeserieswintersView::max(Self) -> Double
+pub fn TimeserieswintersView::mean(Self) -> Double
+pub fn TimeserieswintersView::min(Self) -> Double
+pub fn TimeserieswintersView::scale(Self, Double) -> Self
+pub fn TimeserieswintersView::set(Self, Int32, Double) -> Self
+pub fn TimeserieswintersView::sum(Self) -> Double
+pub fn TimeserieswintersView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

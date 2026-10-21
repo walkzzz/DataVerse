@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/graph_store"
+
+// Values
+pub fn graph_store_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn graph_store_corr(Array[Double], Array[Double]) -> Double
+
+pub fn graph_store_cov(Array[Double], Array[Double]) -> Double
+
+pub fn graph_store_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn graph_store_mae(Array[Double], Array[Double]) -> Double
+
+pub fn graph_store_make_labeled_point(Double, Double, Int32) -> Graph_storePoint
+
+pub fn graph_store_make_matrix(Int32, Int32, Double) -> Graph_storeMatrix
+
+pub fn graph_store_make_point(Double, Double) -> Graph_storePoint
+
+pub fn graph_store_make_series(Array[Double], String) -> Graph_storeSeries
+
+pub fn graph_store_make_vector(Array[Double]) -> Graph_storeVector
+
+pub fn graph_store_matrix_add(Graph_storeMatrix, Graph_storeMatrix) -> Graph_storeMatrix
+
+pub fn graph_store_matrix_get(Graph_storeMatrix, Int32, Int32) -> Double
+
+pub fn graph_store_matrix_identity(Int32) -> Graph_storeMatrix
+
+pub fn graph_store_matrix_multiply(Graph_storeMatrix, Graph_storeMatrix) -> Graph_storeMatrix
+
+pub fn graph_store_matrix_norm(Graph_storeMatrix) -> Double
+
+pub fn graph_store_matrix_scale(Graph_storeMatrix, Double) -> Graph_storeMatrix
+
+pub fn graph_store_matrix_to_string(Graph_storeMatrix) -> String
+
+pub fn graph_store_matrix_trace(Graph_storeMatrix) -> Double
+
+pub fn graph_store_matrix_transpose(Graph_storeMatrix) -> Graph_storeMatrix
+
+pub fn graph_store_mse(Array[Double], Array[Double]) -> Double
+
+pub fn graph_store_point_add(Graph_storePoint, Graph_storePoint) -> Graph_storePoint
+
+pub fn graph_store_point_dist(Graph_storePoint, Graph_storePoint) -> Double
+
+pub fn graph_store_point_dot(Graph_storePoint, Graph_storePoint) -> Double
+
+pub fn graph_store_point_label(Graph_storePoint) -> Int32
+
+pub fn graph_store_point_norm(Graph_storePoint) -> Double
+
+pub fn graph_store_point_scale(Graph_storePoint, Double) -> Graph_storePoint
+
+pub fn graph_store_point_sub(Graph_storePoint, Graph_storePoint) -> Graph_storePoint
+
+pub fn graph_store_point_to_string(Graph_storePoint) -> String
+
+pub fn graph_store_point_x(Graph_storePoint) -> Double
+
+pub fn graph_store_point_y(Graph_storePoint) -> Double
+
+pub fn graph_store_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn graph_store_r2(Array[Double], Array[Double]) -> Double
+
+pub fn graph_store_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn graph_store_series_add(Graph_storeSeries, Graph_storeSeries) -> Graph_storeSeries
+
+pub fn graph_store_series_len(Graph_storeSeries) -> Int32
+
+pub fn graph_store_series_max(Graph_storeSeries) -> Double
+
+pub fn graph_store_series_mean(Graph_storeSeries) -> Double
+
+pub fn graph_store_series_min(Graph_storeSeries) -> Double
+
+pub fn graph_store_series_scale(Graph_storeSeries, Double) -> Graph_storeSeries
+
+pub fn graph_store_series_std(Graph_storeSeries) -> Double
+
+pub fn graph_store_series_sum(Graph_storeSeries) -> Double
+
+pub fn graph_store_series_to_string(Graph_storeSeries) -> String
+
+pub fn graph_store_series_var(Graph_storeSeries) -> Double
+
+pub fn graph_store_std(Array[Double]) -> Double
+
+pub fn graph_store_var(Array[Double]) -> Double
+
+pub fn graph_store_vector_add(Graph_storeVector, Graph_storeVector) -> Graph_storeVector
+
+pub fn graph_store_vector_dist(Graph_storeVector, Graph_storeVector) -> Double
+
+pub fn graph_store_vector_dot(Graph_storeVector, Graph_storeVector) -> Double
+
+pub fn graph_store_vector_norm(Graph_storeVector) -> Double
+
+pub fn graph_store_vector_normalize(Graph_storeVector) -> Graph_storeVector
+
+pub fn graph_store_vector_scale(Graph_storeVector, Double) -> Graph_storeVector
+
+pub fn graph_store_vector_sub(Graph_storeVector, Graph_storeVector) -> Graph_storeVector
+
+pub fn graph_store_vector_to_string(Graph_storeVector) -> String
+
+pub fn graph_store_vector_zero(Int32) -> Graph_storeVector
+
+// Errors
+
+// Types and methods
+pub struct Graph_storeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Graph_storePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Graph_storeSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Graph_storeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

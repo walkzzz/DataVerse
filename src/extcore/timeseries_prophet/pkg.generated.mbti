@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_prophet"
+
+// Values
+pub fn timeseries_prophet_buffer_make(Int32) -> TimeseriesprophetBuffer
+
+pub fn timeseries_prophet_cluster_make(Int32) -> TimeseriesprophetCluster
+
+pub fn timeseries_prophet_cursor_make(Int32) -> TimeseriesprophetCursor
+
+pub fn timeseries_prophet_edge_make(Int32) -> TimeseriesprophetEdge
+
+pub fn timeseries_prophet_frame_make(Int32) -> TimeseriesprophetFrame
+
+pub fn timeseries_prophet_graphn_make(Int32) -> TimeseriesprophetGraphN
+
+pub fn timeseries_prophet_layer_make(Int32) -> TimeseriesprophetLayer
+
+pub fn timeseries_prophet_make_matrix(Int32, Int32, Double) -> TimeseriesprophetMatrix
+
+pub fn timeseries_prophet_make_point(Double, Double) -> TimeseriesprophetPoint
+
+pub fn timeseries_prophet_make_point3(Double, Double, Double) -> TimeseriesprophetPoint
+
+pub fn timeseries_prophet_make_series(Array[Double], String) -> TimeseriesprophetSeries
+
+pub fn timeseries_prophet_make_vector(Array[Double]) -> TimeseriesprophetVector
+
+pub fn timeseries_prophet_matrix_identity(Int32) -> TimeseriesprophetMatrix
+
+pub fn timeseries_prophet_model_make(Int32) -> TimeseriesprophetModel
+
+pub fn timeseries_prophet_node_make(Int32) -> TimeseriesprophetNode
+
+pub fn timeseries_prophet_path_make(Int32) -> TimeseriesprophetPath
+
+pub fn timeseries_prophet_range_make(Int32) -> TimeseriesprophetRange
+
+pub fn timeseries_prophet_slice_make(Int32) -> TimeseriesprophetSlice
+
+pub fn timeseries_prophet_table_make(Int32) -> TimeseriesprophetTable
+
+pub fn timeseries_prophet_vector_zero(Int32) -> TimeseriesprophetVector
+
+pub fn timeseries_prophet_view_make(Int32) -> TimeseriesprophetView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriesprophetBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesprophetBuffer::add(Self, Self) -> Self
+pub fn TimeseriesprophetBuffer::copy(Self) -> Self
+pub fn TimeseriesprophetBuffer::fill(Self, Double) -> Self
+pub fn TimeseriesprophetBuffer::get(Self, Int32) -> Double
+pub fn TimeseriesprophetBuffer::len(Self) -> Int32
+pub fn TimeseriesprophetBuffer::max(Self) -> Double
+pub fn TimeseriesprophetBuffer::mean(Self) -> Double
+pub fn TimeseriesprophetBuffer::min(Self) -> Double
+pub fn TimeseriesprophetBuffer::scale(Self, Double) -> Self
+pub fn TimeseriesprophetBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesprophetBuffer::sum(Self) -> Double
+pub fn TimeseriesprophetBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriesprophetCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesprophetCluster::add(Self, Self) -> Self
+pub fn TimeseriesprophetCluster::copy(Self) -> Self
+pub fn TimeseriesprophetCluster::fill(Self, Double) -> Self
+pub fn TimeseriesprophetCluster::get(Self, Int32) -> Double
+pub fn TimeseriesprophetCluster::len(Self) -> Int32
+pub fn TimeseriesprophetCluster::max(Self) -> Double
+pub fn TimeseriesprophetCluster::mean(Self) -> Double
+pub fn TimeseriesprophetCluster::min(Self) -> Double
+pub fn TimeseriesprophetCluster::scale(Self, Double) -> Self
+pub fn TimeseriesprophetCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriesprophetCluster::sum(Self) -> Double
+pub fn TimeseriesprophetCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriesprophetCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesprophetCursor::add(Self, Self) -> Self
+pub fn TimeseriesprophetCursor::copy(Self) -> Self
+pub fn TimeseriesprophetCursor::fill(Self, Double) -> Self
+pub fn TimeseriesprophetCursor::get(Self, Int32) -> Double
+pub fn TimeseriesprophetCursor::len(Self) -> Int32
+pub fn TimeseriesprophetCursor::max(Self) -> Double
+pub fn TimeseriesprophetCursor::mean(Self) -> Double
+pub fn TimeseriesprophetCursor::min(Self) -> Double
+pub fn TimeseriesprophetCursor::scale(Self, Double) -> Self
+pub fn TimeseriesprophetCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriesprophetCursor::sum(Self) -> Double
+pub fn TimeseriesprophetCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriesprophetEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesprophetEdge::add(Self, Self) -> Self
+pub fn TimeseriesprophetEdge::copy(Self) -> Self
+pub fn TimeseriesprophetEdge::fill(Self, Double) -> Self
+pub fn TimeseriesprophetEdge::get(Self, Int32) -> Double
+pub fn TimeseriesprophetEdge::len(Self) -> Int32
+pub fn TimeseriesprophetEdge::max(Self) -> Double
+pub fn TimeseriesprophetEdge::mean(Self) -> Double
+pub fn TimeseriesprophetEdge::min(Self) -> Double
+pub fn TimeseriesprophetEdge::scale(Self, Double) -> Self
+pub fn TimeseriesprophetEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriesprophetEdge::sum(Self) -> Double
+pub fn TimeseriesprophetEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriesprophetFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesprophetFrame::add(Self, Self) -> Self
+pub fn TimeseriesprophetFrame::copy(Self) -> Self
+pub fn TimeseriesprophetFrame::fill(Self, Double) -> Self
+pub fn TimeseriesprophetFrame::get(Self, Int32) -> Double
+pub fn TimeseriesprophetFrame::len(Self) -> Int32
+pub fn TimeseriesprophetFrame::max(Self) -> Double
+pub fn TimeseriesprophetFrame::mean(Self) -> Double
+pub fn TimeseriesprophetFrame::min(Self) -> Double
+pub fn TimeseriesprophetFrame::scale(Self, Double) -> Self
+pub fn TimeseriesprophetFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriesprophetFrame::sum(Self) -> Double
+pub fn TimeseriesprophetFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriesprophetGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesprophetGraphN::add(Self, Self) -> Self
+pub fn TimeseriesprophetGraphN::copy(Self) -> Self
+pub fn TimeseriesprophetGraphN::fill(Self, Double) -> Self
+pub fn TimeseriesprophetGraphN::get(Self, Int32) -> Double
+pub fn TimeseriesprophetGraphN::len(Self) -> Int32
+pub fn TimeseriesprophetGraphN::max(Self) -> Double
+pub fn TimeseriesprophetGraphN::mean(Self) -> Double
+pub fn TimeseriesprophetGraphN::min(Self) -> Double
+pub fn TimeseriesprophetGraphN::scale(Self, Double) -> Self
+pub fn TimeseriesprophetGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriesprophetGraphN::sum(Self) -> Double
+pub fn TimeseriesprophetGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriesprophetLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesprophetLayer::add(Self, Self) -> Self
+pub fn TimeseriesprophetLayer::copy(Self) -> Self
+pub fn TimeseriesprophetLayer::fill(Self, Double) -> Self
+pub fn TimeseriesprophetLayer::get(Self, Int32) -> Double
+pub fn TimeseriesprophetLayer::len(Self) -> Int32
+pub fn TimeseriesprophetLayer::max(Self) -> Double
+pub fn TimeseriesprophetLayer::mean(Self) -> Double
+pub fn TimeseriesprophetLayer::min(Self) -> Double
+pub fn TimeseriesprophetLayer::scale(Self, Double) -> Self
+pub fn TimeseriesprophetLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesprophetLayer::sum(Self) -> Double
+pub fn TimeseriesprophetLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriesprophetMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriesprophetMatrix::add(Self, Self) -> Self
+pub fn TimeseriesprophetMatrix::det(Self) -> Double
+pub fn TimeseriesprophetMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriesprophetMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriesprophetMatrix::norm(Self) -> Double
+pub fn TimeseriesprophetMatrix::scale(Self, Double) -> Self
+pub fn TimeseriesprophetMatrix::to_string(Self) -> String
+pub fn TimeseriesprophetMatrix::trace(Self) -> Double
+pub fn TimeseriesprophetMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriesprophetModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesprophetModel::add(Self, Self) -> Self
+pub fn TimeseriesprophetModel::copy(Self) -> Self
+pub fn TimeseriesprophetModel::fill(Self, Double) -> Self
+pub fn TimeseriesprophetModel::get(Self, Int32) -> Double
+pub fn TimeseriesprophetModel::len(Self) -> Int32
+pub fn TimeseriesprophetModel::max(Self) -> Double
+pub fn TimeseriesprophetModel::mean(Self) -> Double
+pub fn TimeseriesprophetModel::min(Self) -> Double
+pub fn TimeseriesprophetModel::scale(Self, Double) -> Self
+pub fn TimeseriesprophetModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriesprophetModel::sum(Self) -> Double
+pub fn TimeseriesprophetModel::to_string(Self) -> String
+
+pub(all) struct TimeseriesprophetNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesprophetNode::add(Self, Self) -> Self
+pub fn TimeseriesprophetNode::copy(Self) -> Self
+pub fn TimeseriesprophetNode::fill(Self, Double) -> Self
+pub fn TimeseriesprophetNode::get(Self, Int32) -> Double
+pub fn TimeseriesprophetNode::len(Self) -> Int32
+pub fn TimeseriesprophetNode::max(Self) -> Double
+pub fn TimeseriesprophetNode::mean(Self) -> Double
+pub fn TimeseriesprophetNode::min(Self) -> Double
+pub fn TimeseriesprophetNode::scale(Self, Double) -> Self
+pub fn TimeseriesprophetNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriesprophetNode::sum(Self) -> Double
+pub fn TimeseriesprophetNode::to_string(Self) -> String
+
+pub(all) struct TimeseriesprophetPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesprophetPath::add(Self, Self) -> Self
+pub fn TimeseriesprophetPath::copy(Self) -> Self
+pub fn TimeseriesprophetPath::fill(Self, Double) -> Self
+pub fn TimeseriesprophetPath::get(Self, Int32) -> Double
+pub fn TimeseriesprophetPath::len(Self) -> Int32
+pub fn TimeseriesprophetPath::max(Self) -> Double
+pub fn TimeseriesprophetPath::mean(Self) -> Double
+pub fn TimeseriesprophetPath::min(Self) -> Double
+pub fn TimeseriesprophetPath::scale(Self, Double) -> Self
+pub fn TimeseriesprophetPath::set(Self, Int32, Double) -> Self
+pub fn TimeseriesprophetPath::sum(Self) -> Double
+pub fn TimeseriesprophetPath::to_string(Self) -> String
+
+pub(all) struct TimeseriesprophetPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriesprophetPoint::add(Self, Self) -> Self
+pub fn TimeseriesprophetPoint::cross(Self, Self) -> Self
+pub fn TimeseriesprophetPoint::dist(Self, Self) -> Double
+pub fn TimeseriesprophetPoint::dot(Self, Self) -> Double
+pub fn TimeseriesprophetPoint::label(Self) -> Int32
+pub fn TimeseriesprophetPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriesprophetPoint::mid(Self, Self) -> Self
+pub fn TimeseriesprophetPoint::negate(Self) -> Self
+pub fn TimeseriesprophetPoint::norm(Self) -> Double
+pub fn TimeseriesprophetPoint::normalize(Self) -> Self
+pub fn TimeseriesprophetPoint::scale(Self, Double) -> Self
+pub fn TimeseriesprophetPoint::sub(Self, Self) -> Self
+pub fn TimeseriesprophetPoint::to_string(Self) -> String
+pub fn TimeseriesprophetPoint::x(Self) -> Double
+pub fn TimeseriesprophetPoint::y(Self) -> Double
+pub fn TimeseriesprophetPoint::z(Self) -> Double
+
+pub(all) struct TimeseriesprophetRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesprophetRange::add(Self, Self) -> Self
+pub fn TimeseriesprophetRange::copy(Self) -> Self
+pub fn TimeseriesprophetRange::fill(Self, Double) -> Self
+pub fn TimeseriesprophetRange::get(Self, Int32) -> Double
+pub fn TimeseriesprophetRange::len(Self) -> Int32
+pub fn TimeseriesprophetRange::max(Self) -> Double
+pub fn TimeseriesprophetRange::mean(Self) -> Double
+pub fn TimeseriesprophetRange::min(Self) -> Double
+pub fn TimeseriesprophetRange::scale(Self, Double) -> Self
+pub fn TimeseriesprophetRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriesprophetRange::sum(Self) -> Double
+pub fn TimeseriesprophetRange::to_string(Self) -> String
+
+pub(all) struct TimeseriesprophetSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriesprophetSeries::add(Self, Self) -> Self
+pub fn TimeseriesprophetSeries::cumsum(Self) -> Self
+pub fn TimeseriesprophetSeries::len(Self) -> Int32
+pub fn TimeseriesprophetSeries::max(Self) -> Double
+pub fn TimeseriesprophetSeries::mean(Self) -> Double
+pub fn TimeseriesprophetSeries::median(Self) -> Double
+pub fn TimeseriesprophetSeries::min(Self) -> Double
+pub fn TimeseriesprophetSeries::normalize(Self) -> Self
+pub fn TimeseriesprophetSeries::range(Self) -> Double
+pub fn TimeseriesprophetSeries::scale(Self, Double) -> Self
+pub fn TimeseriesprophetSeries::std(Self) -> Double
+pub fn TimeseriesprophetSeries::sub(Self, Self) -> Self
+pub fn TimeseriesprophetSeries::sum(Self) -> Double
+pub fn TimeseriesprophetSeries::to_string(Self) -> String
+pub fn TimeseriesprophetSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriesprophetSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesprophetSlice::add(Self, Self) -> Self
+pub fn TimeseriesprophetSlice::copy(Self) -> Self
+pub fn TimeseriesprophetSlice::fill(Self, Double) -> Self
+pub fn TimeseriesprophetSlice::get(Self, Int32) -> Double
+pub fn TimeseriesprophetSlice::len(Self) -> Int32
+pub fn TimeseriesprophetSlice::max(Self) -> Double
+pub fn TimeseriesprophetSlice::mean(Self) -> Double
+pub fn TimeseriesprophetSlice::min(Self) -> Double
+pub fn TimeseriesprophetSlice::scale(Self, Double) -> Self
+pub fn TimeseriesprophetSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriesprophetSlice::sum(Self) -> Double
+pub fn TimeseriesprophetSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriesprophetTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesprophetTable::add(Self, Self) -> Self
+pub fn TimeseriesprophetTable::copy(Self) -> Self
+pub fn TimeseriesprophetTable::fill(Self, Double) -> Self
+pub fn TimeseriesprophetTable::get(Self, Int32) -> Double
+pub fn TimeseriesprophetTable::len(Self) -> Int32
+pub fn TimeseriesprophetTable::max(Self) -> Double
+pub fn TimeseriesprophetTable::mean(Self) -> Double
+pub fn TimeseriesprophetTable::min(Self) -> Double
+pub fn TimeseriesprophetTable::scale(Self, Double) -> Self
+pub fn TimeseriesprophetTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriesprophetTable::sum(Self) -> Double
+pub fn TimeseriesprophetTable::to_string(Self) -> String
+
+pub(all) struct TimeseriesprophetVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriesprophetVector::add(Self, Self) -> Self
+pub fn TimeseriesprophetVector::dist(Self, Self) -> Double
+pub fn TimeseriesprophetVector::dot(Self, Self) -> Double
+pub fn TimeseriesprophetVector::norm(Self) -> Double
+pub fn TimeseriesprophetVector::normalize(Self) -> Self
+pub fn TimeseriesprophetVector::scale(Self, Double) -> Self
+pub fn TimeseriesprophetVector::sub(Self, Self) -> Self
+pub fn TimeseriesprophetVector::to_string(Self) -> String
+
+pub(all) struct TimeseriesprophetView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesprophetView::add(Self, Self) -> Self
+pub fn TimeseriesprophetView::copy(Self) -> Self
+pub fn TimeseriesprophetView::fill(Self, Double) -> Self
+pub fn TimeseriesprophetView::get(Self, Int32) -> Double
+pub fn TimeseriesprophetView::len(Self) -> Int32
+pub fn TimeseriesprophetView::max(Self) -> Double
+pub fn TimeseriesprophetView::mean(Self) -> Double
+pub fn TimeseriesprophetView::min(Self) -> Double
+pub fn TimeseriesprophetView::scale(Self, Double) -> Self
+pub fn TimeseriesprophetView::set(Self, Int32, Double) -> Self
+pub fn TimeseriesprophetView::sum(Self) -> Double
+pub fn TimeseriesprophetView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

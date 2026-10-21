@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_fluid_compressible"
+
+// Values
+pub fn physics_fluid_compressible_buffer_make(Int32) -> PhysicsfluidcompressibleBuffer
+
+pub fn physics_fluid_compressible_cluster_make(Int32) -> PhysicsfluidcompressibleCluster
+
+pub fn physics_fluid_compressible_cursor_make(Int32) -> PhysicsfluidcompressibleCursor
+
+pub fn physics_fluid_compressible_edge_make(Int32) -> PhysicsfluidcompressibleEdge
+
+pub fn physics_fluid_compressible_frame_make(Int32) -> PhysicsfluidcompressibleFrame
+
+pub fn physics_fluid_compressible_graphn_make(Int32) -> PhysicsfluidcompressibleGraphN
+
+pub fn physics_fluid_compressible_layer_make(Int32) -> PhysicsfluidcompressibleLayer
+
+pub fn physics_fluid_compressible_make_matrix(Int32, Int32, Double) -> PhysicsfluidcompressibleMatrix
+
+pub fn physics_fluid_compressible_make_point(Double, Double) -> PhysicsfluidcompressiblePoint
+
+pub fn physics_fluid_compressible_make_point3(Double, Double, Double) -> PhysicsfluidcompressiblePoint
+
+pub fn physics_fluid_compressible_make_series(Array[Double], String) -> PhysicsfluidcompressibleSeries
+
+pub fn physics_fluid_compressible_make_vector(Array[Double]) -> PhysicsfluidcompressibleVector
+
+pub fn physics_fluid_compressible_matrix_identity(Int32) -> PhysicsfluidcompressibleMatrix
+
+pub fn physics_fluid_compressible_model_make(Int32) -> PhysicsfluidcompressibleModel
+
+pub fn physics_fluid_compressible_node_make(Int32) -> PhysicsfluidcompressibleNode
+
+pub fn physics_fluid_compressible_path_make(Int32) -> PhysicsfluidcompressiblePath
+
+pub fn physics_fluid_compressible_range_make(Int32) -> PhysicsfluidcompressibleRange
+
+pub fn physics_fluid_compressible_slice_make(Int32) -> PhysicsfluidcompressibleSlice
+
+pub fn physics_fluid_compressible_table_make(Int32) -> PhysicsfluidcompressibleTable
+
+pub fn physics_fluid_compressible_vector_zero(Int32) -> PhysicsfluidcompressibleVector
+
+pub fn physics_fluid_compressible_view_make(Int32) -> PhysicsfluidcompressibleView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsfluidcompressibleBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidcompressibleBuffer::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleBuffer::copy(Self) -> Self
+pub fn PhysicsfluidcompressibleBuffer::fill(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleBuffer::get(Self, Int32) -> Double
+pub fn PhysicsfluidcompressibleBuffer::len(Self) -> Int32
+pub fn PhysicsfluidcompressibleBuffer::max(Self) -> Double
+pub fn PhysicsfluidcompressibleBuffer::mean(Self) -> Double
+pub fn PhysicsfluidcompressibleBuffer::min(Self) -> Double
+pub fn PhysicsfluidcompressibleBuffer::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidcompressibleBuffer::sum(Self) -> Double
+pub fn PhysicsfluidcompressibleBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidcompressibleCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidcompressibleCluster::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleCluster::copy(Self) -> Self
+pub fn PhysicsfluidcompressibleCluster::fill(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleCluster::get(Self, Int32) -> Double
+pub fn PhysicsfluidcompressibleCluster::len(Self) -> Int32
+pub fn PhysicsfluidcompressibleCluster::max(Self) -> Double
+pub fn PhysicsfluidcompressibleCluster::mean(Self) -> Double
+pub fn PhysicsfluidcompressibleCluster::min(Self) -> Double
+pub fn PhysicsfluidcompressibleCluster::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidcompressibleCluster::sum(Self) -> Double
+pub fn PhysicsfluidcompressibleCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidcompressibleCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidcompressibleCursor::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleCursor::copy(Self) -> Self
+pub fn PhysicsfluidcompressibleCursor::fill(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleCursor::get(Self, Int32) -> Double
+pub fn PhysicsfluidcompressibleCursor::len(Self) -> Int32
+pub fn PhysicsfluidcompressibleCursor::max(Self) -> Double
+pub fn PhysicsfluidcompressibleCursor::mean(Self) -> Double
+pub fn PhysicsfluidcompressibleCursor::min(Self) -> Double
+pub fn PhysicsfluidcompressibleCursor::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidcompressibleCursor::sum(Self) -> Double
+pub fn PhysicsfluidcompressibleCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidcompressibleEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidcompressibleEdge::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleEdge::copy(Self) -> Self
+pub fn PhysicsfluidcompressibleEdge::fill(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleEdge::get(Self, Int32) -> Double
+pub fn PhysicsfluidcompressibleEdge::len(Self) -> Int32
+pub fn PhysicsfluidcompressibleEdge::max(Self) -> Double
+pub fn PhysicsfluidcompressibleEdge::mean(Self) -> Double
+pub fn PhysicsfluidcompressibleEdge::min(Self) -> Double
+pub fn PhysicsfluidcompressibleEdge::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidcompressibleEdge::sum(Self) -> Double
+pub fn PhysicsfluidcompressibleEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidcompressibleFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidcompressibleFrame::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleFrame::copy(Self) -> Self
+pub fn PhysicsfluidcompressibleFrame::fill(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleFrame::get(Self, Int32) -> Double
+pub fn PhysicsfluidcompressibleFrame::len(Self) -> Int32
+pub fn PhysicsfluidcompressibleFrame::max(Self) -> Double
+pub fn PhysicsfluidcompressibleFrame::mean(Self) -> Double
+pub fn PhysicsfluidcompressibleFrame::min(Self) -> Double
+pub fn PhysicsfluidcompressibleFrame::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidcompressibleFrame::sum(Self) -> Double
+pub fn PhysicsfluidcompressibleFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidcompressibleGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidcompressibleGraphN::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleGraphN::copy(Self) -> Self
+pub fn PhysicsfluidcompressibleGraphN::fill(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleGraphN::get(Self, Int32) -> Double
+pub fn PhysicsfluidcompressibleGraphN::len(Self) -> Int32
+pub fn PhysicsfluidcompressibleGraphN::max(Self) -> Double
+pub fn PhysicsfluidcompressibleGraphN::mean(Self) -> Double
+pub fn PhysicsfluidcompressibleGraphN::min(Self) -> Double
+pub fn PhysicsfluidcompressibleGraphN::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidcompressibleGraphN::sum(Self) -> Double
+pub fn PhysicsfluidcompressibleGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidcompressibleLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidcompressibleLayer::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleLayer::copy(Self) -> Self
+pub fn PhysicsfluidcompressibleLayer::fill(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleLayer::get(Self, Int32) -> Double
+pub fn PhysicsfluidcompressibleLayer::len(Self) -> Int32
+pub fn PhysicsfluidcompressibleLayer::max(Self) -> Double
+pub fn PhysicsfluidcompressibleLayer::mean(Self) -> Double
+pub fn PhysicsfluidcompressibleLayer::min(Self) -> Double
+pub fn PhysicsfluidcompressibleLayer::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidcompressibleLayer::sum(Self) -> Double
+pub fn PhysicsfluidcompressibleLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidcompressibleMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsfluidcompressibleMatrix::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleMatrix::det(Self) -> Double
+pub fn PhysicsfluidcompressibleMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsfluidcompressibleMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleMatrix::norm(Self) -> Double
+pub fn PhysicsfluidcompressibleMatrix::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleMatrix::to_string(Self) -> String
+pub fn PhysicsfluidcompressibleMatrix::trace(Self) -> Double
+pub fn PhysicsfluidcompressibleMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsfluidcompressibleModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidcompressibleModel::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleModel::copy(Self) -> Self
+pub fn PhysicsfluidcompressibleModel::fill(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleModel::get(Self, Int32) -> Double
+pub fn PhysicsfluidcompressibleModel::len(Self) -> Int32
+pub fn PhysicsfluidcompressibleModel::max(Self) -> Double
+pub fn PhysicsfluidcompressibleModel::mean(Self) -> Double
+pub fn PhysicsfluidcompressibleModel::min(Self) -> Double
+pub fn PhysicsfluidcompressibleModel::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidcompressibleModel::sum(Self) -> Double
+pub fn PhysicsfluidcompressibleModel::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidcompressibleNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidcompressibleNode::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleNode::copy(Self) -> Self
+pub fn PhysicsfluidcompressibleNode::fill(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleNode::get(Self, Int32) -> Double
+pub fn PhysicsfluidcompressibleNode::len(Self) -> Int32
+pub fn PhysicsfluidcompressibleNode::max(Self) -> Double
+pub fn PhysicsfluidcompressibleNode::mean(Self) -> Double
+pub fn PhysicsfluidcompressibleNode::min(Self) -> Double
+pub fn PhysicsfluidcompressibleNode::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidcompressibleNode::sum(Self) -> Double
+pub fn PhysicsfluidcompressibleNode::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidcompressiblePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidcompressiblePath::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressiblePath::copy(Self) -> Self
+pub fn PhysicsfluidcompressiblePath::fill(Self, Double) -> Self
+pub fn PhysicsfluidcompressiblePath::get(Self, Int32) -> Double
+pub fn PhysicsfluidcompressiblePath::len(Self) -> Int32
+pub fn PhysicsfluidcompressiblePath::max(Self) -> Double
+pub fn PhysicsfluidcompressiblePath::mean(Self) -> Double
+pub fn PhysicsfluidcompressiblePath::min(Self) -> Double
+pub fn PhysicsfluidcompressiblePath::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressiblePath::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidcompressiblePath::sum(Self) -> Double
+pub fn PhysicsfluidcompressiblePath::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidcompressiblePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsfluidcompressiblePoint::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressiblePoint::cross(Self, Self) -> Self
+pub fn PhysicsfluidcompressiblePoint::dist(Self, Self) -> Double
+pub fn PhysicsfluidcompressiblePoint::dot(Self, Self) -> Double
+pub fn PhysicsfluidcompressiblePoint::label(Self) -> Int32
+pub fn PhysicsfluidcompressiblePoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsfluidcompressiblePoint::mid(Self, Self) -> Self
+pub fn PhysicsfluidcompressiblePoint::negate(Self) -> Self
+pub fn PhysicsfluidcompressiblePoint::norm(Self) -> Double
+pub fn PhysicsfluidcompressiblePoint::normalize(Self) -> Self
+pub fn PhysicsfluidcompressiblePoint::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressiblePoint::sub(Self, Self) -> Self
+pub fn PhysicsfluidcompressiblePoint::to_string(Self) -> String
+pub fn PhysicsfluidcompressiblePoint::x(Self) -> Double
+pub fn PhysicsfluidcompressiblePoint::y(Self) -> Double
+pub fn PhysicsfluidcompressiblePoint::z(Self) -> Double
+
+pub(all) struct PhysicsfluidcompressibleRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidcompressibleRange::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleRange::copy(Self) -> Self
+pub fn PhysicsfluidcompressibleRange::fill(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleRange::get(Self, Int32) -> Double
+pub fn PhysicsfluidcompressibleRange::len(Self) -> Int32
+pub fn PhysicsfluidcompressibleRange::max(Self) -> Double
+pub fn PhysicsfluidcompressibleRange::mean(Self) -> Double
+pub fn PhysicsfluidcompressibleRange::min(Self) -> Double
+pub fn PhysicsfluidcompressibleRange::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidcompressibleRange::sum(Self) -> Double
+pub fn PhysicsfluidcompressibleRange::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidcompressibleSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsfluidcompressibleSeries::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleSeries::cumsum(Self) -> Self
+pub fn PhysicsfluidcompressibleSeries::len(Self) -> Int32
+pub fn PhysicsfluidcompressibleSeries::max(Self) -> Double
+pub fn PhysicsfluidcompressibleSeries::mean(Self) -> Double
+pub fn PhysicsfluidcompressibleSeries::median(Self) -> Double
+pub fn PhysicsfluidcompressibleSeries::min(Self) -> Double
+pub fn PhysicsfluidcompressibleSeries::normalize(Self) -> Self
+pub fn PhysicsfluidcompressibleSeries::range(Self) -> Double
+pub fn PhysicsfluidcompressibleSeries::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleSeries::std(Self) -> Double
+pub fn PhysicsfluidcompressibleSeries::sub(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleSeries::sum(Self) -> Double
+pub fn PhysicsfluidcompressibleSeries::to_string(Self) -> String
+pub fn PhysicsfluidcompressibleSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsfluidcompressibleSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidcompressibleSlice::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleSlice::copy(Self) -> Self
+pub fn PhysicsfluidcompressibleSlice::fill(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleSlice::get(Self, Int32) -> Double
+pub fn PhysicsfluidcompressibleSlice::len(Self) -> Int32
+pub fn PhysicsfluidcompressibleSlice::max(Self) -> Double
+pub fn PhysicsfluidcompressibleSlice::mean(Self) -> Double
+pub fn PhysicsfluidcompressibleSlice::min(Self) -> Double
+pub fn PhysicsfluidcompressibleSlice::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidcompressibleSlice::sum(Self) -> Double
+pub fn PhysicsfluidcompressibleSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidcompressibleTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidcompressibleTable::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleTable::copy(Self) -> Self
+pub fn PhysicsfluidcompressibleTable::fill(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleTable::get(Self, Int32) -> Double
+pub fn PhysicsfluidcompressibleTable::len(Self) -> Int32
+pub fn PhysicsfluidcompressibleTable::max(Self) -> Double
+pub fn PhysicsfluidcompressibleTable::mean(Self) -> Double
+pub fn PhysicsfluidcompressibleTable::min(Self) -> Double
+pub fn PhysicsfluidcompressibleTable::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidcompressibleTable::sum(Self) -> Double
+pub fn PhysicsfluidcompressibleTable::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidcompressibleVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsfluidcompressibleVector::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleVector::dist(Self, Self) -> Double
+pub fn PhysicsfluidcompressibleVector::dot(Self, Self) -> Double
+pub fn PhysicsfluidcompressibleVector::norm(Self) -> Double
+pub fn PhysicsfluidcompressibleVector::normalize(Self) -> Self
+pub fn PhysicsfluidcompressibleVector::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleVector::sub(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleVector::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidcompressibleView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidcompressibleView::add(Self, Self) -> Self
+pub fn PhysicsfluidcompressibleView::copy(Self) -> Self
+pub fn PhysicsfluidcompressibleView::fill(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleView::get(Self, Int32) -> Double
+pub fn PhysicsfluidcompressibleView::len(Self) -> Int32
+pub fn PhysicsfluidcompressibleView::max(Self) -> Double
+pub fn PhysicsfluidcompressibleView::mean(Self) -> Double
+pub fn PhysicsfluidcompressibleView::min(Self) -> Double
+pub fn PhysicsfluidcompressibleView::scale(Self, Double) -> Self
+pub fn PhysicsfluidcompressibleView::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidcompressibleView::sum(Self) -> Double
+pub fn PhysicsfluidcompressibleView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

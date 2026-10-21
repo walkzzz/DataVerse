@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_filter_bessel"
+
+// Values
+pub fn signal_filter_bessel_buffer_make(Int32) -> SignalfilterbesselBuffer
+
+pub fn signal_filter_bessel_cluster_make(Int32) -> SignalfilterbesselCluster
+
+pub fn signal_filter_bessel_cursor_make(Int32) -> SignalfilterbesselCursor
+
+pub fn signal_filter_bessel_edge_make(Int32) -> SignalfilterbesselEdge
+
+pub fn signal_filter_bessel_frame_make(Int32) -> SignalfilterbesselFrame
+
+pub fn signal_filter_bessel_graphn_make(Int32) -> SignalfilterbesselGraphN
+
+pub fn signal_filter_bessel_layer_make(Int32) -> SignalfilterbesselLayer
+
+pub fn signal_filter_bessel_make_matrix(Int32, Int32, Double) -> SignalfilterbesselMatrix
+
+pub fn signal_filter_bessel_make_point(Double, Double) -> SignalfilterbesselPoint
+
+pub fn signal_filter_bessel_make_point3(Double, Double, Double) -> SignalfilterbesselPoint
+
+pub fn signal_filter_bessel_make_series(Array[Double], String) -> SignalfilterbesselSeries
+
+pub fn signal_filter_bessel_make_vector(Array[Double]) -> SignalfilterbesselVector
+
+pub fn signal_filter_bessel_matrix_identity(Int32) -> SignalfilterbesselMatrix
+
+pub fn signal_filter_bessel_model_make(Int32) -> SignalfilterbesselModel
+
+pub fn signal_filter_bessel_node_make(Int32) -> SignalfilterbesselNode
+
+pub fn signal_filter_bessel_path_make(Int32) -> SignalfilterbesselPath
+
+pub fn signal_filter_bessel_range_make(Int32) -> SignalfilterbesselRange
+
+pub fn signal_filter_bessel_slice_make(Int32) -> SignalfilterbesselSlice
+
+pub fn signal_filter_bessel_table_make(Int32) -> SignalfilterbesselTable
+
+pub fn signal_filter_bessel_vector_zero(Int32) -> SignalfilterbesselVector
+
+pub fn signal_filter_bessel_view_make(Int32) -> SignalfilterbesselView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalfilterbesselBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbesselBuffer::add(Self, Self) -> Self
+pub fn SignalfilterbesselBuffer::copy(Self) -> Self
+pub fn SignalfilterbesselBuffer::fill(Self, Double) -> Self
+pub fn SignalfilterbesselBuffer::get(Self, Int32) -> Double
+pub fn SignalfilterbesselBuffer::len(Self) -> Int32
+pub fn SignalfilterbesselBuffer::max(Self) -> Double
+pub fn SignalfilterbesselBuffer::mean(Self) -> Double
+pub fn SignalfilterbesselBuffer::min(Self) -> Double
+pub fn SignalfilterbesselBuffer::scale(Self, Double) -> Self
+pub fn SignalfilterbesselBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbesselBuffer::sum(Self) -> Double
+pub fn SignalfilterbesselBuffer::to_string(Self) -> String
+
+pub(all) struct SignalfilterbesselCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbesselCluster::add(Self, Self) -> Self
+pub fn SignalfilterbesselCluster::copy(Self) -> Self
+pub fn SignalfilterbesselCluster::fill(Self, Double) -> Self
+pub fn SignalfilterbesselCluster::get(Self, Int32) -> Double
+pub fn SignalfilterbesselCluster::len(Self) -> Int32
+pub fn SignalfilterbesselCluster::max(Self) -> Double
+pub fn SignalfilterbesselCluster::mean(Self) -> Double
+pub fn SignalfilterbesselCluster::min(Self) -> Double
+pub fn SignalfilterbesselCluster::scale(Self, Double) -> Self
+pub fn SignalfilterbesselCluster::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbesselCluster::sum(Self) -> Double
+pub fn SignalfilterbesselCluster::to_string(Self) -> String
+
+pub(all) struct SignalfilterbesselCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbesselCursor::add(Self, Self) -> Self
+pub fn SignalfilterbesselCursor::copy(Self) -> Self
+pub fn SignalfilterbesselCursor::fill(Self, Double) -> Self
+pub fn SignalfilterbesselCursor::get(Self, Int32) -> Double
+pub fn SignalfilterbesselCursor::len(Self) -> Int32
+pub fn SignalfilterbesselCursor::max(Self) -> Double
+pub fn SignalfilterbesselCursor::mean(Self) -> Double
+pub fn SignalfilterbesselCursor::min(Self) -> Double
+pub fn SignalfilterbesselCursor::scale(Self, Double) -> Self
+pub fn SignalfilterbesselCursor::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbesselCursor::sum(Self) -> Double
+pub fn SignalfilterbesselCursor::to_string(Self) -> String
+
+pub(all) struct SignalfilterbesselEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbesselEdge::add(Self, Self) -> Self
+pub fn SignalfilterbesselEdge::copy(Self) -> Self
+pub fn SignalfilterbesselEdge::fill(Self, Double) -> Self
+pub fn SignalfilterbesselEdge::get(Self, Int32) -> Double
+pub fn SignalfilterbesselEdge::len(Self) -> Int32
+pub fn SignalfilterbesselEdge::max(Self) -> Double
+pub fn SignalfilterbesselEdge::mean(Self) -> Double
+pub fn SignalfilterbesselEdge::min(Self) -> Double
+pub fn SignalfilterbesselEdge::scale(Self, Double) -> Self
+pub fn SignalfilterbesselEdge::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbesselEdge::sum(Self) -> Double
+pub fn SignalfilterbesselEdge::to_string(Self) -> String
+
+pub(all) struct SignalfilterbesselFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbesselFrame::add(Self, Self) -> Self
+pub fn SignalfilterbesselFrame::copy(Self) -> Self
+pub fn SignalfilterbesselFrame::fill(Self, Double) -> Self
+pub fn SignalfilterbesselFrame::get(Self, Int32) -> Double
+pub fn SignalfilterbesselFrame::len(Self) -> Int32
+pub fn SignalfilterbesselFrame::max(Self) -> Double
+pub fn SignalfilterbesselFrame::mean(Self) -> Double
+pub fn SignalfilterbesselFrame::min(Self) -> Double
+pub fn SignalfilterbesselFrame::scale(Self, Double) -> Self
+pub fn SignalfilterbesselFrame::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbesselFrame::sum(Self) -> Double
+pub fn SignalfilterbesselFrame::to_string(Self) -> String
+
+pub(all) struct SignalfilterbesselGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbesselGraphN::add(Self, Self) -> Self
+pub fn SignalfilterbesselGraphN::copy(Self) -> Self
+pub fn SignalfilterbesselGraphN::fill(Self, Double) -> Self
+pub fn SignalfilterbesselGraphN::get(Self, Int32) -> Double
+pub fn SignalfilterbesselGraphN::len(Self) -> Int32
+pub fn SignalfilterbesselGraphN::max(Self) -> Double
+pub fn SignalfilterbesselGraphN::mean(Self) -> Double
+pub fn SignalfilterbesselGraphN::min(Self) -> Double
+pub fn SignalfilterbesselGraphN::scale(Self, Double) -> Self
+pub fn SignalfilterbesselGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbesselGraphN::sum(Self) -> Double
+pub fn SignalfilterbesselGraphN::to_string(Self) -> String
+
+pub(all) struct SignalfilterbesselLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbesselLayer::add(Self, Self) -> Self
+pub fn SignalfilterbesselLayer::copy(Self) -> Self
+pub fn SignalfilterbesselLayer::fill(Self, Double) -> Self
+pub fn SignalfilterbesselLayer::get(Self, Int32) -> Double
+pub fn SignalfilterbesselLayer::len(Self) -> Int32
+pub fn SignalfilterbesselLayer::max(Self) -> Double
+pub fn SignalfilterbesselLayer::mean(Self) -> Double
+pub fn SignalfilterbesselLayer::min(Self) -> Double
+pub fn SignalfilterbesselLayer::scale(Self, Double) -> Self
+pub fn SignalfilterbesselLayer::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbesselLayer::sum(Self) -> Double
+pub fn SignalfilterbesselLayer::to_string(Self) -> String
+
+pub(all) struct SignalfilterbesselMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalfilterbesselMatrix::add(Self, Self) -> Self
+pub fn SignalfilterbesselMatrix::det(Self) -> Double
+pub fn SignalfilterbesselMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalfilterbesselMatrix::multiply(Self, Self) -> Self
+pub fn SignalfilterbesselMatrix::norm(Self) -> Double
+pub fn SignalfilterbesselMatrix::scale(Self, Double) -> Self
+pub fn SignalfilterbesselMatrix::to_string(Self) -> String
+pub fn SignalfilterbesselMatrix::trace(Self) -> Double
+pub fn SignalfilterbesselMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalfilterbesselModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbesselModel::add(Self, Self) -> Self
+pub fn SignalfilterbesselModel::copy(Self) -> Self
+pub fn SignalfilterbesselModel::fill(Self, Double) -> Self
+pub fn SignalfilterbesselModel::get(Self, Int32) -> Double
+pub fn SignalfilterbesselModel::len(Self) -> Int32
+pub fn SignalfilterbesselModel::max(Self) -> Double
+pub fn SignalfilterbesselModel::mean(Self) -> Double
+pub fn SignalfilterbesselModel::min(Self) -> Double
+pub fn SignalfilterbesselModel::scale(Self, Double) -> Self
+pub fn SignalfilterbesselModel::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbesselModel::sum(Self) -> Double
+pub fn SignalfilterbesselModel::to_string(Self) -> String
+
+pub(all) struct SignalfilterbesselNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbesselNode::add(Self, Self) -> Self
+pub fn SignalfilterbesselNode::copy(Self) -> Self
+pub fn SignalfilterbesselNode::fill(Self, Double) -> Self
+pub fn SignalfilterbesselNode::get(Self, Int32) -> Double
+pub fn SignalfilterbesselNode::len(Self) -> Int32
+pub fn SignalfilterbesselNode::max(Self) -> Double
+pub fn SignalfilterbesselNode::mean(Self) -> Double
+pub fn SignalfilterbesselNode::min(Self) -> Double
+pub fn SignalfilterbesselNode::scale(Self, Double) -> Self
+pub fn SignalfilterbesselNode::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbesselNode::sum(Self) -> Double
+pub fn SignalfilterbesselNode::to_string(Self) -> String
+
+pub(all) struct SignalfilterbesselPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbesselPath::add(Self, Self) -> Self
+pub fn SignalfilterbesselPath::copy(Self) -> Self
+pub fn SignalfilterbesselPath::fill(Self, Double) -> Self
+pub fn SignalfilterbesselPath::get(Self, Int32) -> Double
+pub fn SignalfilterbesselPath::len(Self) -> Int32
+pub fn SignalfilterbesselPath::max(Self) -> Double
+pub fn SignalfilterbesselPath::mean(Self) -> Double
+pub fn SignalfilterbesselPath::min(Self) -> Double
+pub fn SignalfilterbesselPath::scale(Self, Double) -> Self
+pub fn SignalfilterbesselPath::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbesselPath::sum(Self) -> Double
+pub fn SignalfilterbesselPath::to_string(Self) -> String
+
+pub(all) struct SignalfilterbesselPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalfilterbesselPoint::add(Self, Self) -> Self
+pub fn SignalfilterbesselPoint::cross(Self, Self) -> Self
+pub fn SignalfilterbesselPoint::dist(Self, Self) -> Double
+pub fn SignalfilterbesselPoint::dot(Self, Self) -> Double
+pub fn SignalfilterbesselPoint::label(Self) -> Int32
+pub fn SignalfilterbesselPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalfilterbesselPoint::mid(Self, Self) -> Self
+pub fn SignalfilterbesselPoint::negate(Self) -> Self
+pub fn SignalfilterbesselPoint::norm(Self) -> Double
+pub fn SignalfilterbesselPoint::normalize(Self) -> Self
+pub fn SignalfilterbesselPoint::scale(Self, Double) -> Self
+pub fn SignalfilterbesselPoint::sub(Self, Self) -> Self
+pub fn SignalfilterbesselPoint::to_string(Self) -> String
+pub fn SignalfilterbesselPoint::x(Self) -> Double
+pub fn SignalfilterbesselPoint::y(Self) -> Double
+pub fn SignalfilterbesselPoint::z(Self) -> Double
+
+pub(all) struct SignalfilterbesselRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbesselRange::add(Self, Self) -> Self
+pub fn SignalfilterbesselRange::copy(Self) -> Self
+pub fn SignalfilterbesselRange::fill(Self, Double) -> Self
+pub fn SignalfilterbesselRange::get(Self, Int32) -> Double
+pub fn SignalfilterbesselRange::len(Self) -> Int32
+pub fn SignalfilterbesselRange::max(Self) -> Double
+pub fn SignalfilterbesselRange::mean(Self) -> Double
+pub fn SignalfilterbesselRange::min(Self) -> Double
+pub fn SignalfilterbesselRange::scale(Self, Double) -> Self
+pub fn SignalfilterbesselRange::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbesselRange::sum(Self) -> Double
+pub fn SignalfilterbesselRange::to_string(Self) -> String
+
+pub(all) struct SignalfilterbesselSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalfilterbesselSeries::add(Self, Self) -> Self
+pub fn SignalfilterbesselSeries::cumsum(Self) -> Self
+pub fn SignalfilterbesselSeries::len(Self) -> Int32
+pub fn SignalfilterbesselSeries::max(Self) -> Double
+pub fn SignalfilterbesselSeries::mean(Self) -> Double
+pub fn SignalfilterbesselSeries::median(Self) -> Double
+pub fn SignalfilterbesselSeries::min(Self) -> Double
+pub fn SignalfilterbesselSeries::normalize(Self) -> Self
+pub fn SignalfilterbesselSeries::range(Self) -> Double
+pub fn SignalfilterbesselSeries::scale(Self, Double) -> Self
+pub fn SignalfilterbesselSeries::std(Self) -> Double
+pub fn SignalfilterbesselSeries::sub(Self, Self) -> Self
+pub fn SignalfilterbesselSeries::sum(Self) -> Double
+pub fn SignalfilterbesselSeries::to_string(Self) -> String
+pub fn SignalfilterbesselSeries::variance(Self) -> Double
+
+pub(all) struct SignalfilterbesselSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbesselSlice::add(Self, Self) -> Self
+pub fn SignalfilterbesselSlice::copy(Self) -> Self
+pub fn SignalfilterbesselSlice::fill(Self, Double) -> Self
+pub fn SignalfilterbesselSlice::get(Self, Int32) -> Double
+pub fn SignalfilterbesselSlice::len(Self) -> Int32
+pub fn SignalfilterbesselSlice::max(Self) -> Double
+pub fn SignalfilterbesselSlice::mean(Self) -> Double
+pub fn SignalfilterbesselSlice::min(Self) -> Double
+pub fn SignalfilterbesselSlice::scale(Self, Double) -> Self
+pub fn SignalfilterbesselSlice::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbesselSlice::sum(Self) -> Double
+pub fn SignalfilterbesselSlice::to_string(Self) -> String
+
+pub(all) struct SignalfilterbesselTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbesselTable::add(Self, Self) -> Self
+pub fn SignalfilterbesselTable::copy(Self) -> Self
+pub fn SignalfilterbesselTable::fill(Self, Double) -> Self
+pub fn SignalfilterbesselTable::get(Self, Int32) -> Double
+pub fn SignalfilterbesselTable::len(Self) -> Int32
+pub fn SignalfilterbesselTable::max(Self) -> Double
+pub fn SignalfilterbesselTable::mean(Self) -> Double
+pub fn SignalfilterbesselTable::min(Self) -> Double
+pub fn SignalfilterbesselTable::scale(Self, Double) -> Self
+pub fn SignalfilterbesselTable::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbesselTable::sum(Self) -> Double
+pub fn SignalfilterbesselTable::to_string(Self) -> String
+
+pub(all) struct SignalfilterbesselVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalfilterbesselVector::add(Self, Self) -> Self
+pub fn SignalfilterbesselVector::dist(Self, Self) -> Double
+pub fn SignalfilterbesselVector::dot(Self, Self) -> Double
+pub fn SignalfilterbesselVector::norm(Self) -> Double
+pub fn SignalfilterbesselVector::normalize(Self) -> Self
+pub fn SignalfilterbesselVector::scale(Self, Double) -> Self
+pub fn SignalfilterbesselVector::sub(Self, Self) -> Self
+pub fn SignalfilterbesselVector::to_string(Self) -> String
+
+pub(all) struct SignalfilterbesselView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbesselView::add(Self, Self) -> Self
+pub fn SignalfilterbesselView::copy(Self) -> Self
+pub fn SignalfilterbesselView::fill(Self, Double) -> Self
+pub fn SignalfilterbesselView::get(Self, Int32) -> Double
+pub fn SignalfilterbesselView::len(Self) -> Int32
+pub fn SignalfilterbesselView::max(Self) -> Double
+pub fn SignalfilterbesselView::mean(Self) -> Double
+pub fn SignalfilterbesselView::min(Self) -> Double
+pub fn SignalfilterbesselView::scale(Self, Double) -> Self
+pub fn SignalfilterbesselView::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbesselView::sum(Self) -> Double
+pub fn SignalfilterbesselView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

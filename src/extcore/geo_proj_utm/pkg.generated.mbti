@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_proj_utm"
+
+// Values
+pub fn geo_proj_utm_buffer_make(Int32) -> GeoprojutmBuffer
+
+pub fn geo_proj_utm_cluster_make(Int32) -> GeoprojutmCluster
+
+pub fn geo_proj_utm_cursor_make(Int32) -> GeoprojutmCursor
+
+pub fn geo_proj_utm_edge_make(Int32) -> GeoprojutmEdge
+
+pub fn geo_proj_utm_frame_make(Int32) -> GeoprojutmFrame
+
+pub fn geo_proj_utm_graphn_make(Int32) -> GeoprojutmGraphN
+
+pub fn geo_proj_utm_layer_make(Int32) -> GeoprojutmLayer
+
+pub fn geo_proj_utm_make_matrix(Int32, Int32, Double) -> GeoprojutmMatrix
+
+pub fn geo_proj_utm_make_point(Double, Double) -> GeoprojutmPoint
+
+pub fn geo_proj_utm_make_point3(Double, Double, Double) -> GeoprojutmPoint
+
+pub fn geo_proj_utm_make_series(Array[Double], String) -> GeoprojutmSeries
+
+pub fn geo_proj_utm_make_vector(Array[Double]) -> GeoprojutmVector
+
+pub fn geo_proj_utm_matrix_identity(Int32) -> GeoprojutmMatrix
+
+pub fn geo_proj_utm_model_make(Int32) -> GeoprojutmModel
+
+pub fn geo_proj_utm_node_make(Int32) -> GeoprojutmNode
+
+pub fn geo_proj_utm_path_make(Int32) -> GeoprojutmPath
+
+pub fn geo_proj_utm_range_make(Int32) -> GeoprojutmRange
+
+pub fn geo_proj_utm_slice_make(Int32) -> GeoprojutmSlice
+
+pub fn geo_proj_utm_table_make(Int32) -> GeoprojutmTable
+
+pub fn geo_proj_utm_vector_zero(Int32) -> GeoprojutmVector
+
+pub fn geo_proj_utm_view_make(Int32) -> GeoprojutmView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeoprojutmBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojutmBuffer::add(Self, Self) -> Self
+pub fn GeoprojutmBuffer::copy(Self) -> Self
+pub fn GeoprojutmBuffer::fill(Self, Double) -> Self
+pub fn GeoprojutmBuffer::get(Self, Int32) -> Double
+pub fn GeoprojutmBuffer::len(Self) -> Int32
+pub fn GeoprojutmBuffer::max(Self) -> Double
+pub fn GeoprojutmBuffer::mean(Self) -> Double
+pub fn GeoprojutmBuffer::min(Self) -> Double
+pub fn GeoprojutmBuffer::scale(Self, Double) -> Self
+pub fn GeoprojutmBuffer::set(Self, Int32, Double) -> Self
+pub fn GeoprojutmBuffer::sum(Self) -> Double
+pub fn GeoprojutmBuffer::to_string(Self) -> String
+
+pub(all) struct GeoprojutmCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojutmCluster::add(Self, Self) -> Self
+pub fn GeoprojutmCluster::copy(Self) -> Self
+pub fn GeoprojutmCluster::fill(Self, Double) -> Self
+pub fn GeoprojutmCluster::get(Self, Int32) -> Double
+pub fn GeoprojutmCluster::len(Self) -> Int32
+pub fn GeoprojutmCluster::max(Self) -> Double
+pub fn GeoprojutmCluster::mean(Self) -> Double
+pub fn GeoprojutmCluster::min(Self) -> Double
+pub fn GeoprojutmCluster::scale(Self, Double) -> Self
+pub fn GeoprojutmCluster::set(Self, Int32, Double) -> Self
+pub fn GeoprojutmCluster::sum(Self) -> Double
+pub fn GeoprojutmCluster::to_string(Self) -> String
+
+pub(all) struct GeoprojutmCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojutmCursor::add(Self, Self) -> Self
+pub fn GeoprojutmCursor::copy(Self) -> Self
+pub fn GeoprojutmCursor::fill(Self, Double) -> Self
+pub fn GeoprojutmCursor::get(Self, Int32) -> Double
+pub fn GeoprojutmCursor::len(Self) -> Int32
+pub fn GeoprojutmCursor::max(Self) -> Double
+pub fn GeoprojutmCursor::mean(Self) -> Double
+pub fn GeoprojutmCursor::min(Self) -> Double
+pub fn GeoprojutmCursor::scale(Self, Double) -> Self
+pub fn GeoprojutmCursor::set(Self, Int32, Double) -> Self
+pub fn GeoprojutmCursor::sum(Self) -> Double
+pub fn GeoprojutmCursor::to_string(Self) -> String
+
+pub(all) struct GeoprojutmEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojutmEdge::add(Self, Self) -> Self
+pub fn GeoprojutmEdge::copy(Self) -> Self
+pub fn GeoprojutmEdge::fill(Self, Double) -> Self
+pub fn GeoprojutmEdge::get(Self, Int32) -> Double
+pub fn GeoprojutmEdge::len(Self) -> Int32
+pub fn GeoprojutmEdge::max(Self) -> Double
+pub fn GeoprojutmEdge::mean(Self) -> Double
+pub fn GeoprojutmEdge::min(Self) -> Double
+pub fn GeoprojutmEdge::scale(Self, Double) -> Self
+pub fn GeoprojutmEdge::set(Self, Int32, Double) -> Self
+pub fn GeoprojutmEdge::sum(Self) -> Double
+pub fn GeoprojutmEdge::to_string(Self) -> String
+
+pub(all) struct GeoprojutmFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojutmFrame::add(Self, Self) -> Self
+pub fn GeoprojutmFrame::copy(Self) -> Self
+pub fn GeoprojutmFrame::fill(Self, Double) -> Self
+pub fn GeoprojutmFrame::get(Self, Int32) -> Double
+pub fn GeoprojutmFrame::len(Self) -> Int32
+pub fn GeoprojutmFrame::max(Self) -> Double
+pub fn GeoprojutmFrame::mean(Self) -> Double
+pub fn GeoprojutmFrame::min(Self) -> Double
+pub fn GeoprojutmFrame::scale(Self, Double) -> Self
+pub fn GeoprojutmFrame::set(Self, Int32, Double) -> Self
+pub fn GeoprojutmFrame::sum(Self) -> Double
+pub fn GeoprojutmFrame::to_string(Self) -> String
+
+pub(all) struct GeoprojutmGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojutmGraphN::add(Self, Self) -> Self
+pub fn GeoprojutmGraphN::copy(Self) -> Self
+pub fn GeoprojutmGraphN::fill(Self, Double) -> Self
+pub fn GeoprojutmGraphN::get(Self, Int32) -> Double
+pub fn GeoprojutmGraphN::len(Self) -> Int32
+pub fn GeoprojutmGraphN::max(Self) -> Double
+pub fn GeoprojutmGraphN::mean(Self) -> Double
+pub fn GeoprojutmGraphN::min(Self) -> Double
+pub fn GeoprojutmGraphN::scale(Self, Double) -> Self
+pub fn GeoprojutmGraphN::set(Self, Int32, Double) -> Self
+pub fn GeoprojutmGraphN::sum(Self) -> Double
+pub fn GeoprojutmGraphN::to_string(Self) -> String
+
+pub(all) struct GeoprojutmLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojutmLayer::add(Self, Self) -> Self
+pub fn GeoprojutmLayer::copy(Self) -> Self
+pub fn GeoprojutmLayer::fill(Self, Double) -> Self
+pub fn GeoprojutmLayer::get(Self, Int32) -> Double
+pub fn GeoprojutmLayer::len(Self) -> Int32
+pub fn GeoprojutmLayer::max(Self) -> Double
+pub fn GeoprojutmLayer::mean(Self) -> Double
+pub fn GeoprojutmLayer::min(Self) -> Double
+pub fn GeoprojutmLayer::scale(Self, Double) -> Self
+pub fn GeoprojutmLayer::set(Self, Int32, Double) -> Self
+pub fn GeoprojutmLayer::sum(Self) -> Double
+pub fn GeoprojutmLayer::to_string(Self) -> String
+
+pub(all) struct GeoprojutmMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeoprojutmMatrix::add(Self, Self) -> Self
+pub fn GeoprojutmMatrix::det(Self) -> Double
+pub fn GeoprojutmMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeoprojutmMatrix::multiply(Self, Self) -> Self
+pub fn GeoprojutmMatrix::norm(Self) -> Double
+pub fn GeoprojutmMatrix::scale(Self, Double) -> Self
+pub fn GeoprojutmMatrix::to_string(Self) -> String
+pub fn GeoprojutmMatrix::trace(Self) -> Double
+pub fn GeoprojutmMatrix::transpose(Self) -> Self
+
+pub(all) struct GeoprojutmModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojutmModel::add(Self, Self) -> Self
+pub fn GeoprojutmModel::copy(Self) -> Self
+pub fn GeoprojutmModel::fill(Self, Double) -> Self
+pub fn GeoprojutmModel::get(Self, Int32) -> Double
+pub fn GeoprojutmModel::len(Self) -> Int32
+pub fn GeoprojutmModel::max(Self) -> Double
+pub fn GeoprojutmModel::mean(Self) -> Double
+pub fn GeoprojutmModel::min(Self) -> Double
+pub fn GeoprojutmModel::scale(Self, Double) -> Self
+pub fn GeoprojutmModel::set(Self, Int32, Double) -> Self
+pub fn GeoprojutmModel::sum(Self) -> Double
+pub fn GeoprojutmModel::to_string(Self) -> String
+
+pub(all) struct GeoprojutmNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojutmNode::add(Self, Self) -> Self
+pub fn GeoprojutmNode::copy(Self) -> Self
+pub fn GeoprojutmNode::fill(Self, Double) -> Self
+pub fn GeoprojutmNode::get(Self, Int32) -> Double
+pub fn GeoprojutmNode::len(Self) -> Int32
+pub fn GeoprojutmNode::max(Self) -> Double
+pub fn GeoprojutmNode::mean(Self) -> Double
+pub fn GeoprojutmNode::min(Self) -> Double
+pub fn GeoprojutmNode::scale(Self, Double) -> Self
+pub fn GeoprojutmNode::set(Self, Int32, Double) -> Self
+pub fn GeoprojutmNode::sum(Self) -> Double
+pub fn GeoprojutmNode::to_string(Self) -> String
+
+pub(all) struct GeoprojutmPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojutmPath::add(Self, Self) -> Self
+pub fn GeoprojutmPath::copy(Self) -> Self
+pub fn GeoprojutmPath::fill(Self, Double) -> Self
+pub fn GeoprojutmPath::get(Self, Int32) -> Double
+pub fn GeoprojutmPath::len(Self) -> Int32
+pub fn GeoprojutmPath::max(Self) -> Double
+pub fn GeoprojutmPath::mean(Self) -> Double
+pub fn GeoprojutmPath::min(Self) -> Double
+pub fn GeoprojutmPath::scale(Self, Double) -> Self
+pub fn GeoprojutmPath::set(Self, Int32, Double) -> Self
+pub fn GeoprojutmPath::sum(Self) -> Double
+pub fn GeoprojutmPath::to_string(Self) -> String
+
+pub(all) struct GeoprojutmPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeoprojutmPoint::add(Self, Self) -> Self
+pub fn GeoprojutmPoint::cross(Self, Self) -> Self
+pub fn GeoprojutmPoint::dist(Self, Self) -> Double
+pub fn GeoprojutmPoint::dot(Self, Self) -> Double
+pub fn GeoprojutmPoint::label(Self) -> Int32
+pub fn GeoprojutmPoint::lerp(Self, Self, Double) -> Self
+pub fn GeoprojutmPoint::mid(Self, Self) -> Self
+pub fn GeoprojutmPoint::negate(Self) -> Self
+pub fn GeoprojutmPoint::norm(Self) -> Double
+pub fn GeoprojutmPoint::normalize(Self) -> Self
+pub fn GeoprojutmPoint::scale(Self, Double) -> Self
+pub fn GeoprojutmPoint::sub(Self, Self) -> Self
+pub fn GeoprojutmPoint::to_string(Self) -> String
+pub fn GeoprojutmPoint::x(Self) -> Double
+pub fn GeoprojutmPoint::y(Self) -> Double
+pub fn GeoprojutmPoint::z(Self) -> Double
+
+pub(all) struct GeoprojutmRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojutmRange::add(Self, Self) -> Self
+pub fn GeoprojutmRange::copy(Self) -> Self
+pub fn GeoprojutmRange::fill(Self, Double) -> Self
+pub fn GeoprojutmRange::get(Self, Int32) -> Double
+pub fn GeoprojutmRange::len(Self) -> Int32
+pub fn GeoprojutmRange::max(Self) -> Double
+pub fn GeoprojutmRange::mean(Self) -> Double
+pub fn GeoprojutmRange::min(Self) -> Double
+pub fn GeoprojutmRange::scale(Self, Double) -> Self
+pub fn GeoprojutmRange::set(Self, Int32, Double) -> Self
+pub fn GeoprojutmRange::sum(Self) -> Double
+pub fn GeoprojutmRange::to_string(Self) -> String
+
+pub(all) struct GeoprojutmSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeoprojutmSeries::add(Self, Self) -> Self
+pub fn GeoprojutmSeries::cumsum(Self) -> Self
+pub fn GeoprojutmSeries::len(Self) -> Int32
+pub fn GeoprojutmSeries::max(Self) -> Double
+pub fn GeoprojutmSeries::mean(Self) -> Double
+pub fn GeoprojutmSeries::median(Self) -> Double
+pub fn GeoprojutmSeries::min(Self) -> Double
+pub fn GeoprojutmSeries::normalize(Self) -> Self
+pub fn GeoprojutmSeries::range(Self) -> Double
+pub fn GeoprojutmSeries::scale(Self, Double) -> Self
+pub fn GeoprojutmSeries::std(Self) -> Double
+pub fn GeoprojutmSeries::sub(Self, Self) -> Self
+pub fn GeoprojutmSeries::sum(Self) -> Double
+pub fn GeoprojutmSeries::to_string(Self) -> String
+pub fn GeoprojutmSeries::variance(Self) -> Double
+
+pub(all) struct GeoprojutmSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojutmSlice::add(Self, Self) -> Self
+pub fn GeoprojutmSlice::copy(Self) -> Self
+pub fn GeoprojutmSlice::fill(Self, Double) -> Self
+pub fn GeoprojutmSlice::get(Self, Int32) -> Double
+pub fn GeoprojutmSlice::len(Self) -> Int32
+pub fn GeoprojutmSlice::max(Self) -> Double
+pub fn GeoprojutmSlice::mean(Self) -> Double
+pub fn GeoprojutmSlice::min(Self) -> Double
+pub fn GeoprojutmSlice::scale(Self, Double) -> Self
+pub fn GeoprojutmSlice::set(Self, Int32, Double) -> Self
+pub fn GeoprojutmSlice::sum(Self) -> Double
+pub fn GeoprojutmSlice::to_string(Self) -> String
+
+pub(all) struct GeoprojutmTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojutmTable::add(Self, Self) -> Self
+pub fn GeoprojutmTable::copy(Self) -> Self
+pub fn GeoprojutmTable::fill(Self, Double) -> Self
+pub fn GeoprojutmTable::get(Self, Int32) -> Double
+pub fn GeoprojutmTable::len(Self) -> Int32
+pub fn GeoprojutmTable::max(Self) -> Double
+pub fn GeoprojutmTable::mean(Self) -> Double
+pub fn GeoprojutmTable::min(Self) -> Double
+pub fn GeoprojutmTable::scale(Self, Double) -> Self
+pub fn GeoprojutmTable::set(Self, Int32, Double) -> Self
+pub fn GeoprojutmTable::sum(Self) -> Double
+pub fn GeoprojutmTable::to_string(Self) -> String
+
+pub(all) struct GeoprojutmVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeoprojutmVector::add(Self, Self) -> Self
+pub fn GeoprojutmVector::dist(Self, Self) -> Double
+pub fn GeoprojutmVector::dot(Self, Self) -> Double
+pub fn GeoprojutmVector::norm(Self) -> Double
+pub fn GeoprojutmVector::normalize(Self) -> Self
+pub fn GeoprojutmVector::scale(Self, Double) -> Self
+pub fn GeoprojutmVector::sub(Self, Self) -> Self
+pub fn GeoprojutmVector::to_string(Self) -> String
+
+pub(all) struct GeoprojutmView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojutmView::add(Self, Self) -> Self
+pub fn GeoprojutmView::copy(Self) -> Self
+pub fn GeoprojutmView::fill(Self, Double) -> Self
+pub fn GeoprojutmView::get(Self, Int32) -> Double
+pub fn GeoprojutmView::len(Self) -> Int32
+pub fn GeoprojutmView::max(Self) -> Double
+pub fn GeoprojutmView::mean(Self) -> Double
+pub fn GeoprojutmView::min(Self) -> Double
+pub fn GeoprojutmView::scale(Self, Double) -> Self
+pub fn GeoprojutmView::set(Self, Int32, Double) -> Self
+pub fn GeoprojutmView::sum(Self) -> Double
+pub fn GeoprojutmView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

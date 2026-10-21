@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_hash_robin"
+
+// Values
+pub fn ds_hash_robin_buffer_make(Int32) -> DshashrobinBuffer
+
+pub fn ds_hash_robin_cluster_make(Int32) -> DshashrobinCluster
+
+pub fn ds_hash_robin_cursor_make(Int32) -> DshashrobinCursor
+
+pub fn ds_hash_robin_edge_make(Int32) -> DshashrobinEdge
+
+pub fn ds_hash_robin_frame_make(Int32) -> DshashrobinFrame
+
+pub fn ds_hash_robin_graphn_make(Int32) -> DshashrobinGraphN
+
+pub fn ds_hash_robin_layer_make(Int32) -> DshashrobinLayer
+
+pub fn ds_hash_robin_make_matrix(Int32, Int32, Double) -> DshashrobinMatrix
+
+pub fn ds_hash_robin_make_point(Double, Double) -> DshashrobinPoint
+
+pub fn ds_hash_robin_make_point3(Double, Double, Double) -> DshashrobinPoint
+
+pub fn ds_hash_robin_make_series(Array[Double], String) -> DshashrobinSeries
+
+pub fn ds_hash_robin_make_vector(Array[Double]) -> DshashrobinVector
+
+pub fn ds_hash_robin_matrix_identity(Int32) -> DshashrobinMatrix
+
+pub fn ds_hash_robin_model_make(Int32) -> DshashrobinModel
+
+pub fn ds_hash_robin_node_make(Int32) -> DshashrobinNode
+
+pub fn ds_hash_robin_path_make(Int32) -> DshashrobinPath
+
+pub fn ds_hash_robin_range_make(Int32) -> DshashrobinRange
+
+pub fn ds_hash_robin_slice_make(Int32) -> DshashrobinSlice
+
+pub fn ds_hash_robin_table_make(Int32) -> DshashrobinTable
+
+pub fn ds_hash_robin_vector_zero(Int32) -> DshashrobinVector
+
+pub fn ds_hash_robin_view_make(Int32) -> DshashrobinView
+
+// Errors
+
+// Types and methods
+pub(all) struct DshashrobinBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashrobinBuffer::add(Self, Self) -> Self
+pub fn DshashrobinBuffer::copy(Self) -> Self
+pub fn DshashrobinBuffer::fill(Self, Double) -> Self
+pub fn DshashrobinBuffer::get(Self, Int32) -> Double
+pub fn DshashrobinBuffer::len(Self) -> Int32
+pub fn DshashrobinBuffer::max(Self) -> Double
+pub fn DshashrobinBuffer::mean(Self) -> Double
+pub fn DshashrobinBuffer::min(Self) -> Double
+pub fn DshashrobinBuffer::scale(Self, Double) -> Self
+pub fn DshashrobinBuffer::set(Self, Int32, Double) -> Self
+pub fn DshashrobinBuffer::sum(Self) -> Double
+pub fn DshashrobinBuffer::to_string(Self) -> String
+
+pub(all) struct DshashrobinCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashrobinCluster::add(Self, Self) -> Self
+pub fn DshashrobinCluster::copy(Self) -> Self
+pub fn DshashrobinCluster::fill(Self, Double) -> Self
+pub fn DshashrobinCluster::get(Self, Int32) -> Double
+pub fn DshashrobinCluster::len(Self) -> Int32
+pub fn DshashrobinCluster::max(Self) -> Double
+pub fn DshashrobinCluster::mean(Self) -> Double
+pub fn DshashrobinCluster::min(Self) -> Double
+pub fn DshashrobinCluster::scale(Self, Double) -> Self
+pub fn DshashrobinCluster::set(Self, Int32, Double) -> Self
+pub fn DshashrobinCluster::sum(Self) -> Double
+pub fn DshashrobinCluster::to_string(Self) -> String
+
+pub(all) struct DshashrobinCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashrobinCursor::add(Self, Self) -> Self
+pub fn DshashrobinCursor::copy(Self) -> Self
+pub fn DshashrobinCursor::fill(Self, Double) -> Self
+pub fn DshashrobinCursor::get(Self, Int32) -> Double
+pub fn DshashrobinCursor::len(Self) -> Int32
+pub fn DshashrobinCursor::max(Self) -> Double
+pub fn DshashrobinCursor::mean(Self) -> Double
+pub fn DshashrobinCursor::min(Self) -> Double
+pub fn DshashrobinCursor::scale(Self, Double) -> Self
+pub fn DshashrobinCursor::set(Self, Int32, Double) -> Self
+pub fn DshashrobinCursor::sum(Self) -> Double
+pub fn DshashrobinCursor::to_string(Self) -> String
+
+pub(all) struct DshashrobinEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashrobinEdge::add(Self, Self) -> Self
+pub fn DshashrobinEdge::copy(Self) -> Self
+pub fn DshashrobinEdge::fill(Self, Double) -> Self
+pub fn DshashrobinEdge::get(Self, Int32) -> Double
+pub fn DshashrobinEdge::len(Self) -> Int32
+pub fn DshashrobinEdge::max(Self) -> Double
+pub fn DshashrobinEdge::mean(Self) -> Double
+pub fn DshashrobinEdge::min(Self) -> Double
+pub fn DshashrobinEdge::scale(Self, Double) -> Self
+pub fn DshashrobinEdge::set(Self, Int32, Double) -> Self
+pub fn DshashrobinEdge::sum(Self) -> Double
+pub fn DshashrobinEdge::to_string(Self) -> String
+
+pub(all) struct DshashrobinFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashrobinFrame::add(Self, Self) -> Self
+pub fn DshashrobinFrame::copy(Self) -> Self
+pub fn DshashrobinFrame::fill(Self, Double) -> Self
+pub fn DshashrobinFrame::get(Self, Int32) -> Double
+pub fn DshashrobinFrame::len(Self) -> Int32
+pub fn DshashrobinFrame::max(Self) -> Double
+pub fn DshashrobinFrame::mean(Self) -> Double
+pub fn DshashrobinFrame::min(Self) -> Double
+pub fn DshashrobinFrame::scale(Self, Double) -> Self
+pub fn DshashrobinFrame::set(Self, Int32, Double) -> Self
+pub fn DshashrobinFrame::sum(Self) -> Double
+pub fn DshashrobinFrame::to_string(Self) -> String
+
+pub(all) struct DshashrobinGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashrobinGraphN::add(Self, Self) -> Self
+pub fn DshashrobinGraphN::copy(Self) -> Self
+pub fn DshashrobinGraphN::fill(Self, Double) -> Self
+pub fn DshashrobinGraphN::get(Self, Int32) -> Double
+pub fn DshashrobinGraphN::len(Self) -> Int32
+pub fn DshashrobinGraphN::max(Self) -> Double
+pub fn DshashrobinGraphN::mean(Self) -> Double
+pub fn DshashrobinGraphN::min(Self) -> Double
+pub fn DshashrobinGraphN::scale(Self, Double) -> Self
+pub fn DshashrobinGraphN::set(Self, Int32, Double) -> Self
+pub fn DshashrobinGraphN::sum(Self) -> Double
+pub fn DshashrobinGraphN::to_string(Self) -> String
+
+pub(all) struct DshashrobinLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashrobinLayer::add(Self, Self) -> Self
+pub fn DshashrobinLayer::copy(Self) -> Self
+pub fn DshashrobinLayer::fill(Self, Double) -> Self
+pub fn DshashrobinLayer::get(Self, Int32) -> Double
+pub fn DshashrobinLayer::len(Self) -> Int32
+pub fn DshashrobinLayer::max(Self) -> Double
+pub fn DshashrobinLayer::mean(Self) -> Double
+pub fn DshashrobinLayer::min(Self) -> Double
+pub fn DshashrobinLayer::scale(Self, Double) -> Self
+pub fn DshashrobinLayer::set(Self, Int32, Double) -> Self
+pub fn DshashrobinLayer::sum(Self) -> Double
+pub fn DshashrobinLayer::to_string(Self) -> String
+
+pub(all) struct DshashrobinMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DshashrobinMatrix::add(Self, Self) -> Self
+pub fn DshashrobinMatrix::det(Self) -> Double
+pub fn DshashrobinMatrix::get(Self, Int32, Int32) -> Double
+pub fn DshashrobinMatrix::multiply(Self, Self) -> Self
+pub fn DshashrobinMatrix::norm(Self) -> Double
+pub fn DshashrobinMatrix::scale(Self, Double) -> Self
+pub fn DshashrobinMatrix::to_string(Self) -> String
+pub fn DshashrobinMatrix::trace(Self) -> Double
+pub fn DshashrobinMatrix::transpose(Self) -> Self
+
+pub(all) struct DshashrobinModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashrobinModel::add(Self, Self) -> Self
+pub fn DshashrobinModel::copy(Self) -> Self
+pub fn DshashrobinModel::fill(Self, Double) -> Self
+pub fn DshashrobinModel::get(Self, Int32) -> Double
+pub fn DshashrobinModel::len(Self) -> Int32
+pub fn DshashrobinModel::max(Self) -> Double
+pub fn DshashrobinModel::mean(Self) -> Double
+pub fn DshashrobinModel::min(Self) -> Double
+pub fn DshashrobinModel::scale(Self, Double) -> Self
+pub fn DshashrobinModel::set(Self, Int32, Double) -> Self
+pub fn DshashrobinModel::sum(Self) -> Double
+pub fn DshashrobinModel::to_string(Self) -> String
+
+pub(all) struct DshashrobinNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashrobinNode::add(Self, Self) -> Self
+pub fn DshashrobinNode::copy(Self) -> Self
+pub fn DshashrobinNode::fill(Self, Double) -> Self
+pub fn DshashrobinNode::get(Self, Int32) -> Double
+pub fn DshashrobinNode::len(Self) -> Int32
+pub fn DshashrobinNode::max(Self) -> Double
+pub fn DshashrobinNode::mean(Self) -> Double
+pub fn DshashrobinNode::min(Self) -> Double
+pub fn DshashrobinNode::scale(Self, Double) -> Self
+pub fn DshashrobinNode::set(Self, Int32, Double) -> Self
+pub fn DshashrobinNode::sum(Self) -> Double
+pub fn DshashrobinNode::to_string(Self) -> String
+
+pub(all) struct DshashrobinPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashrobinPath::add(Self, Self) -> Self
+pub fn DshashrobinPath::copy(Self) -> Self
+pub fn DshashrobinPath::fill(Self, Double) -> Self
+pub fn DshashrobinPath::get(Self, Int32) -> Double
+pub fn DshashrobinPath::len(Self) -> Int32
+pub fn DshashrobinPath::max(Self) -> Double
+pub fn DshashrobinPath::mean(Self) -> Double
+pub fn DshashrobinPath::min(Self) -> Double
+pub fn DshashrobinPath::scale(Self, Double) -> Self
+pub fn DshashrobinPath::set(Self, Int32, Double) -> Self
+pub fn DshashrobinPath::sum(Self) -> Double
+pub fn DshashrobinPath::to_string(Self) -> String
+
+pub(all) struct DshashrobinPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DshashrobinPoint::add(Self, Self) -> Self
+pub fn DshashrobinPoint::cross(Self, Self) -> Self
+pub fn DshashrobinPoint::dist(Self, Self) -> Double
+pub fn DshashrobinPoint::dot(Self, Self) -> Double
+pub fn DshashrobinPoint::label(Self) -> Int32
+pub fn DshashrobinPoint::lerp(Self, Self, Double) -> Self
+pub fn DshashrobinPoint::mid(Self, Self) -> Self
+pub fn DshashrobinPoint::negate(Self) -> Self
+pub fn DshashrobinPoint::norm(Self) -> Double
+pub fn DshashrobinPoint::normalize(Self) -> Self
+pub fn DshashrobinPoint::scale(Self, Double) -> Self
+pub fn DshashrobinPoint::sub(Self, Self) -> Self
+pub fn DshashrobinPoint::to_string(Self) -> String
+pub fn DshashrobinPoint::x(Self) -> Double
+pub fn DshashrobinPoint::y(Self) -> Double
+pub fn DshashrobinPoint::z(Self) -> Double
+
+pub(all) struct DshashrobinRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashrobinRange::add(Self, Self) -> Self
+pub fn DshashrobinRange::copy(Self) -> Self
+pub fn DshashrobinRange::fill(Self, Double) -> Self
+pub fn DshashrobinRange::get(Self, Int32) -> Double
+pub fn DshashrobinRange::len(Self) -> Int32
+pub fn DshashrobinRange::max(Self) -> Double
+pub fn DshashrobinRange::mean(Self) -> Double
+pub fn DshashrobinRange::min(Self) -> Double
+pub fn DshashrobinRange::scale(Self, Double) -> Self
+pub fn DshashrobinRange::set(Self, Int32, Double) -> Self
+pub fn DshashrobinRange::sum(Self) -> Double
+pub fn DshashrobinRange::to_string(Self) -> String
+
+pub(all) struct DshashrobinSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DshashrobinSeries::add(Self, Self) -> Self
+pub fn DshashrobinSeries::cumsum(Self) -> Self
+pub fn DshashrobinSeries::len(Self) -> Int32
+pub fn DshashrobinSeries::max(Self) -> Double
+pub fn DshashrobinSeries::mean(Self) -> Double
+pub fn DshashrobinSeries::median(Self) -> Double
+pub fn DshashrobinSeries::min(Self) -> Double
+pub fn DshashrobinSeries::normalize(Self) -> Self
+pub fn DshashrobinSeries::range(Self) -> Double
+pub fn DshashrobinSeries::scale(Self, Double) -> Self
+pub fn DshashrobinSeries::std(Self) -> Double
+pub fn DshashrobinSeries::sub(Self, Self) -> Self
+pub fn DshashrobinSeries::sum(Self) -> Double
+pub fn DshashrobinSeries::to_string(Self) -> String
+pub fn DshashrobinSeries::variance(Self) -> Double
+
+pub(all) struct DshashrobinSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashrobinSlice::add(Self, Self) -> Self
+pub fn DshashrobinSlice::copy(Self) -> Self
+pub fn DshashrobinSlice::fill(Self, Double) -> Self
+pub fn DshashrobinSlice::get(Self, Int32) -> Double
+pub fn DshashrobinSlice::len(Self) -> Int32
+pub fn DshashrobinSlice::max(Self) -> Double
+pub fn DshashrobinSlice::mean(Self) -> Double
+pub fn DshashrobinSlice::min(Self) -> Double
+pub fn DshashrobinSlice::scale(Self, Double) -> Self
+pub fn DshashrobinSlice::set(Self, Int32, Double) -> Self
+pub fn DshashrobinSlice::sum(Self) -> Double
+pub fn DshashrobinSlice::to_string(Self) -> String
+
+pub(all) struct DshashrobinTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashrobinTable::add(Self, Self) -> Self
+pub fn DshashrobinTable::copy(Self) -> Self
+pub fn DshashrobinTable::fill(Self, Double) -> Self
+pub fn DshashrobinTable::get(Self, Int32) -> Double
+pub fn DshashrobinTable::len(Self) -> Int32
+pub fn DshashrobinTable::max(Self) -> Double
+pub fn DshashrobinTable::mean(Self) -> Double
+pub fn DshashrobinTable::min(Self) -> Double
+pub fn DshashrobinTable::scale(Self, Double) -> Self
+pub fn DshashrobinTable::set(Self, Int32, Double) -> Self
+pub fn DshashrobinTable::sum(Self) -> Double
+pub fn DshashrobinTable::to_string(Self) -> String
+
+pub(all) struct DshashrobinVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DshashrobinVector::add(Self, Self) -> Self
+pub fn DshashrobinVector::dist(Self, Self) -> Double
+pub fn DshashrobinVector::dot(Self, Self) -> Double
+pub fn DshashrobinVector::norm(Self) -> Double
+pub fn DshashrobinVector::normalize(Self) -> Self
+pub fn DshashrobinVector::scale(Self, Double) -> Self
+pub fn DshashrobinVector::sub(Self, Self) -> Self
+pub fn DshashrobinVector::to_string(Self) -> String
+
+pub(all) struct DshashrobinView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashrobinView::add(Self, Self) -> Self
+pub fn DshashrobinView::copy(Self) -> Self
+pub fn DshashrobinView::fill(Self, Double) -> Self
+pub fn DshashrobinView::get(Self, Int32) -> Double
+pub fn DshashrobinView::len(Self) -> Int32
+pub fn DshashrobinView::max(Self) -> Double
+pub fn DshashrobinView::mean(Self) -> Double
+pub fn DshashrobinView::min(Self) -> Double
+pub fn DshashrobinView::scale(Self, Double) -> Self
+pub fn DshashrobinView::set(Self, Int32, Double) -> Self
+pub fn DshashrobinView::sum(Self) -> Double
+pub fn DshashrobinView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

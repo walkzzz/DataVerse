@@ -1,0 +1,229 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/transfer_learning"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn adapt_domain(DomainAdapter, Array[Double]) -> Array[Double]
+
+pub fn adapter_forward(AdapterModule, Array[Double]) -> Array[Double]
+
+pub fn adapter_train(AdapterModule, Array[Double], Array[Double], Double) -> AdapterModule
+
+pub fn coral_loss(Array[Array[Double]], Array[Array[Double]]) -> Double
+
+pub fn dann_forward(DANNModel, Array[Double]) -> (Array[Double], Double)
+
+pub fn dann_gradient_reversal(Array[Double], Double) -> Array[Double]
+
+pub fn dann_loss(Array[Double], Array[Int32], Double, Int32, Double) -> Double
+
+pub fn distill_knowledge(DistillationConfig, Array[Double]) -> (Array[Double], Array[Double])
+
+pub fn domain_alignment(Array[Array[Double]], Array[Array[Double]]) -> Double
+
+pub fn evaluate_transfer(Double, Double) -> Double
+
+pub fn extract_features_transfer(FeatureExtractor, Array[Double]) -> Array[Double]
+
+pub fn freeze_backbone(FeatureExtractor) -> FeatureExtractor
+
+pub fn freeze_layers(PretrainedModel, Array[Int32]) -> PretrainedModel
+
+pub fn layer_matching(PretrainedModel, PretrainedModel) -> Array[(Int32, Int32)]
+
+pub fn lora_forward(LoRAModule, Array[Double]) -> Array[Double]
+
+pub fn lora_train(LoRAModule, Array[Double], Array[Double], Double) -> LoRAModule
+
+pub fn make_adapter(Int32, Int32, Int32) -> AdapterModule
+
+pub fn make_dann(Int32, Int32, Double, Int32) -> DANNModel
+
+pub fn make_distillation(PretrainedModel, PretrainedModel, Double, Double) -> DistillationConfig
+
+pub fn make_domain_adapter(Int32, Int32, Int32) -> DomainAdapter
+
+pub fn make_feature_extractor(PretrainedModel, Int32, Bool) -> FeatureExtractor
+
+pub fn make_lora(Int32, Int32, Double, Int32) -> LoRAModule
+
+pub fn make_mmd_loss(Array[Array[Double]], Array[Array[Double]]) -> Double
+
+pub fn make_prefix_tuning(Int32, Int32, Int32, Int32) -> PrefixTuning
+
+pub fn make_progressive(Int32, Int32) -> ProgressiveModel
+
+pub fn make_prompt_tuning(Int32, Int32, Int32) -> PromptTuning
+
+pub fn make_source_target(Array[Array[Double]], Array[Array[Double]], Array[Int32], Array[Int32]) -> SourceTarget
+
+pub fn make_transfer_config(String, String, Double, Double, Int32, Int32) -> TransferConfig
+
+pub fn mmd_distance(Array[Array[Double]], Array[Array[Double]]) -> Double
+
+pub fn negative_transfer_check(Double, Double, Double) -> Bool
+
+pub fn prefix_forward(PrefixTuning, Array[Double], Int32) -> Array[Double]
+
+pub fn prefix_train(PrefixTuning, Array[Double], Double) -> PrefixTuning
+
+pub fn progressive_grow(ProgressiveModel) -> ProgressiveModel
+
+pub fn progressive_transfer(ProgressiveModel, Array[Array[Double]]) -> ProgressiveModel
+
+pub fn prompt_forward(PromptTuning, Array[Double]) -> Array[Double]
+
+pub fn prompt_train(PromptTuning, Array[Double], Double) -> PromptTuning
+
+pub fn source_data(SourceTarget) -> Array[Array[Double]]
+
+pub fn target_data(SourceTarget) -> Array[Array[Double]]
+
+pub fn teacher_student_loss(Array[Double], Array[Double], Array[Double], Double, Double) -> Double
+
+pub fn transfer_efficiency(Double, Double) -> Double
+
+pub fn transfer_finetune(TransferConfig, PretrainedModel, Array[Array[Double]]) -> PretrainedModel
+
+pub fn transfer_learning_id() -> String
+
+pub fn transfer_pretrained(TransferConfig, PretrainedModel) -> PretrainedModel
+
+pub fn unfreeze_layers(PretrainedModel, Array[Int32]) -> PretrainedModel
+
+pub fn weight_init_transfer(PretrainedModel, Int32) -> PretrainedModel
+
+pub fn weight_transfer(PretrainedModel, PretrainedModel, Array[(Int32, Int32)]) -> PretrainedModel
+
+// Errors
+
+// Types and methods
+pub struct AdapterModule {
+  input_dim : Int32
+  bottleneck_dim : Int32
+  down_weights : Array[Array[Double]]
+  up_weights : Array[Array[Double]]
+} derive(Eq, @debug.Debug)
+pub fn AdapterModule::equal(Self, Self) -> Bool
+pub fn AdapterModule::not_equal(Self, Self) -> Bool
+pub fn AdapterModule::to_repr(Self) -> @debug.Repr
+
+pub struct DANNModel {
+  feature_dim : Int32
+  num_classes : Int32
+  lambda_grl : Double
+  feature_weights : Array[Array[Double]]
+  class_weights : Array[Array[Double]]
+  domain_weights : Array[Array[Double]]
+} derive(Eq, @debug.Debug)
+pub fn DANNModel::equal(Self, Self) -> Bool
+pub fn DANNModel::not_equal(Self, Self) -> Bool
+pub fn DANNModel::to_repr(Self) -> @debug.Repr
+
+pub struct DistillationConfig {
+  teacher : PretrainedModel
+  student : PretrainedModel
+  temperature : Double
+  alpha : Double
+} derive(Eq, @debug.Debug)
+pub fn DistillationConfig::equal(Self, Self) -> Bool
+pub fn DistillationConfig::not_equal(Self, Self) -> Bool
+pub fn DistillationConfig::to_repr(Self) -> @debug.Repr
+
+pub struct DomainAdapter {
+  source_dim : Int32
+  target_dim : Int32
+  weights : Array[Array[Double]]
+  bias : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn DomainAdapter::equal(Self, Self) -> Bool
+pub fn DomainAdapter::not_equal(Self, Self) -> Bool
+pub fn DomainAdapter::to_repr(Self) -> @debug.Repr
+
+pub struct FeatureExtractor {
+  backbone : PretrainedModel
+  output_dim : Int32
+  frozen : Bool
+} derive(Eq, @debug.Debug)
+pub fn FeatureExtractor::equal(Self, Self) -> Bool
+pub fn FeatureExtractor::not_equal(Self, Self) -> Bool
+pub fn FeatureExtractor::to_repr(Self) -> @debug.Repr
+
+pub struct LoRAModule {
+  input_dim : Int32
+  rank : Int32
+  a_weights : Array[Array[Double]]
+  b_weights : Array[Array[Double]]
+  scaling : Double
+} derive(Eq, @debug.Debug)
+pub fn LoRAModule::equal(Self, Self) -> Bool
+pub fn LoRAModule::not_equal(Self, Self) -> Bool
+pub fn LoRAModule::to_repr(Self) -> @debug.Repr
+
+pub struct PrefixTuning {
+  num_layers : Int32
+  prefix_len : Int32
+  embed_dim : Int32
+  prefix_weights : Array[Array[Double]]
+} derive(Eq, @debug.Debug)
+pub fn PrefixTuning::equal(Self, Self) -> Bool
+pub fn PrefixTuning::not_equal(Self, Self) -> Bool
+pub fn PrefixTuning::to_repr(Self) -> @debug.Repr
+
+pub struct PretrainedModel {
+  name : String
+  layers : Array[Array[Double]]
+  layer_names : Array[String]
+  input_dim : Int32
+  output_dim : Int32
+} derive(Eq, @debug.Debug)
+pub fn PretrainedModel::equal(Self, Self) -> Bool
+pub fn PretrainedModel::not_equal(Self, Self) -> Bool
+pub fn PretrainedModel::to_repr(Self) -> @debug.Repr
+
+pub struct ProgressiveModel {
+  max_layers : Int32
+  current_layers : Int32
+  layer_weights : Array[Array[Array[Double]]]
+} derive(Eq, @debug.Debug)
+pub fn ProgressiveModel::equal(Self, Self) -> Bool
+pub fn ProgressiveModel::not_equal(Self, Self) -> Bool
+pub fn ProgressiveModel::to_repr(Self) -> @debug.Repr
+
+pub struct PromptTuning {
+  prompt_len : Int32
+  embed_dim : Int32
+  prompt_params : Array[Array[Double]]
+} derive(Eq, @debug.Debug)
+pub fn PromptTuning::equal(Self, Self) -> Bool
+pub fn PromptTuning::not_equal(Self, Self) -> Bool
+pub fn PromptTuning::to_repr(Self) -> @debug.Repr
+
+pub struct SourceTarget {
+  source_data : Array[Array[Double]]
+  target_data : Array[Array[Double]]
+  source_labels : Array[Int32]
+  target_labels : Array[Int32]
+} derive(Eq, @debug.Debug)
+pub fn SourceTarget::equal(Self, Self) -> Bool
+pub fn SourceTarget::not_equal(Self, Self) -> Bool
+pub fn SourceTarget::to_repr(Self) -> @debug.Repr
+
+pub struct TransferConfig {
+  source_model : String
+  target_task : String
+  freeze_ratio : Double
+  lr : Double
+  num_layers : Int32
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn TransferConfig::equal(Self, Self) -> Bool
+pub fn TransferConfig::not_equal(Self, Self) -> Bool
+pub fn TransferConfig::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

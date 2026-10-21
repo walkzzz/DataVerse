@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_route_multipath"
+
+// Values
+pub fn net_route_multipath_buffer_make(Int32) -> NetroutemultipathBuffer
+
+pub fn net_route_multipath_cluster_make(Int32) -> NetroutemultipathCluster
+
+pub fn net_route_multipath_cursor_make(Int32) -> NetroutemultipathCursor
+
+pub fn net_route_multipath_edge_make(Int32) -> NetroutemultipathEdge
+
+pub fn net_route_multipath_frame_make(Int32) -> NetroutemultipathFrame
+
+pub fn net_route_multipath_graphn_make(Int32) -> NetroutemultipathGraphN
+
+pub fn net_route_multipath_layer_make(Int32) -> NetroutemultipathLayer
+
+pub fn net_route_multipath_make_matrix(Int32, Int32, Double) -> NetroutemultipathMatrix
+
+pub fn net_route_multipath_make_point(Double, Double) -> NetroutemultipathPoint
+
+pub fn net_route_multipath_make_point3(Double, Double, Double) -> NetroutemultipathPoint
+
+pub fn net_route_multipath_make_series(Array[Double], String) -> NetroutemultipathSeries
+
+pub fn net_route_multipath_make_vector(Array[Double]) -> NetroutemultipathVector
+
+pub fn net_route_multipath_matrix_identity(Int32) -> NetroutemultipathMatrix
+
+pub fn net_route_multipath_model_make(Int32) -> NetroutemultipathModel
+
+pub fn net_route_multipath_node_make(Int32) -> NetroutemultipathNode
+
+pub fn net_route_multipath_path_make(Int32) -> NetroutemultipathPath
+
+pub fn net_route_multipath_range_make(Int32) -> NetroutemultipathRange
+
+pub fn net_route_multipath_slice_make(Int32) -> NetroutemultipathSlice
+
+pub fn net_route_multipath_table_make(Int32) -> NetroutemultipathTable
+
+pub fn net_route_multipath_vector_zero(Int32) -> NetroutemultipathVector
+
+pub fn net_route_multipath_view_make(Int32) -> NetroutemultipathView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetroutemultipathBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutemultipathBuffer::add(Self, Self) -> Self
+pub fn NetroutemultipathBuffer::copy(Self) -> Self
+pub fn NetroutemultipathBuffer::fill(Self, Double) -> Self
+pub fn NetroutemultipathBuffer::get(Self, Int32) -> Double
+pub fn NetroutemultipathBuffer::len(Self) -> Int32
+pub fn NetroutemultipathBuffer::max(Self) -> Double
+pub fn NetroutemultipathBuffer::mean(Self) -> Double
+pub fn NetroutemultipathBuffer::min(Self) -> Double
+pub fn NetroutemultipathBuffer::scale(Self, Double) -> Self
+pub fn NetroutemultipathBuffer::set(Self, Int32, Double) -> Self
+pub fn NetroutemultipathBuffer::sum(Self) -> Double
+pub fn NetroutemultipathBuffer::to_string(Self) -> String
+
+pub(all) struct NetroutemultipathCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutemultipathCluster::add(Self, Self) -> Self
+pub fn NetroutemultipathCluster::copy(Self) -> Self
+pub fn NetroutemultipathCluster::fill(Self, Double) -> Self
+pub fn NetroutemultipathCluster::get(Self, Int32) -> Double
+pub fn NetroutemultipathCluster::len(Self) -> Int32
+pub fn NetroutemultipathCluster::max(Self) -> Double
+pub fn NetroutemultipathCluster::mean(Self) -> Double
+pub fn NetroutemultipathCluster::min(Self) -> Double
+pub fn NetroutemultipathCluster::scale(Self, Double) -> Self
+pub fn NetroutemultipathCluster::set(Self, Int32, Double) -> Self
+pub fn NetroutemultipathCluster::sum(Self) -> Double
+pub fn NetroutemultipathCluster::to_string(Self) -> String
+
+pub(all) struct NetroutemultipathCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutemultipathCursor::add(Self, Self) -> Self
+pub fn NetroutemultipathCursor::copy(Self) -> Self
+pub fn NetroutemultipathCursor::fill(Self, Double) -> Self
+pub fn NetroutemultipathCursor::get(Self, Int32) -> Double
+pub fn NetroutemultipathCursor::len(Self) -> Int32
+pub fn NetroutemultipathCursor::max(Self) -> Double
+pub fn NetroutemultipathCursor::mean(Self) -> Double
+pub fn NetroutemultipathCursor::min(Self) -> Double
+pub fn NetroutemultipathCursor::scale(Self, Double) -> Self
+pub fn NetroutemultipathCursor::set(Self, Int32, Double) -> Self
+pub fn NetroutemultipathCursor::sum(Self) -> Double
+pub fn NetroutemultipathCursor::to_string(Self) -> String
+
+pub(all) struct NetroutemultipathEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutemultipathEdge::add(Self, Self) -> Self
+pub fn NetroutemultipathEdge::copy(Self) -> Self
+pub fn NetroutemultipathEdge::fill(Self, Double) -> Self
+pub fn NetroutemultipathEdge::get(Self, Int32) -> Double
+pub fn NetroutemultipathEdge::len(Self) -> Int32
+pub fn NetroutemultipathEdge::max(Self) -> Double
+pub fn NetroutemultipathEdge::mean(Self) -> Double
+pub fn NetroutemultipathEdge::min(Self) -> Double
+pub fn NetroutemultipathEdge::scale(Self, Double) -> Self
+pub fn NetroutemultipathEdge::set(Self, Int32, Double) -> Self
+pub fn NetroutemultipathEdge::sum(Self) -> Double
+pub fn NetroutemultipathEdge::to_string(Self) -> String
+
+pub(all) struct NetroutemultipathFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutemultipathFrame::add(Self, Self) -> Self
+pub fn NetroutemultipathFrame::copy(Self) -> Self
+pub fn NetroutemultipathFrame::fill(Self, Double) -> Self
+pub fn NetroutemultipathFrame::get(Self, Int32) -> Double
+pub fn NetroutemultipathFrame::len(Self) -> Int32
+pub fn NetroutemultipathFrame::max(Self) -> Double
+pub fn NetroutemultipathFrame::mean(Self) -> Double
+pub fn NetroutemultipathFrame::min(Self) -> Double
+pub fn NetroutemultipathFrame::scale(Self, Double) -> Self
+pub fn NetroutemultipathFrame::set(Self, Int32, Double) -> Self
+pub fn NetroutemultipathFrame::sum(Self) -> Double
+pub fn NetroutemultipathFrame::to_string(Self) -> String
+
+pub(all) struct NetroutemultipathGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutemultipathGraphN::add(Self, Self) -> Self
+pub fn NetroutemultipathGraphN::copy(Self) -> Self
+pub fn NetroutemultipathGraphN::fill(Self, Double) -> Self
+pub fn NetroutemultipathGraphN::get(Self, Int32) -> Double
+pub fn NetroutemultipathGraphN::len(Self) -> Int32
+pub fn NetroutemultipathGraphN::max(Self) -> Double
+pub fn NetroutemultipathGraphN::mean(Self) -> Double
+pub fn NetroutemultipathGraphN::min(Self) -> Double
+pub fn NetroutemultipathGraphN::scale(Self, Double) -> Self
+pub fn NetroutemultipathGraphN::set(Self, Int32, Double) -> Self
+pub fn NetroutemultipathGraphN::sum(Self) -> Double
+pub fn NetroutemultipathGraphN::to_string(Self) -> String
+
+pub(all) struct NetroutemultipathLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutemultipathLayer::add(Self, Self) -> Self
+pub fn NetroutemultipathLayer::copy(Self) -> Self
+pub fn NetroutemultipathLayer::fill(Self, Double) -> Self
+pub fn NetroutemultipathLayer::get(Self, Int32) -> Double
+pub fn NetroutemultipathLayer::len(Self) -> Int32
+pub fn NetroutemultipathLayer::max(Self) -> Double
+pub fn NetroutemultipathLayer::mean(Self) -> Double
+pub fn NetroutemultipathLayer::min(Self) -> Double
+pub fn NetroutemultipathLayer::scale(Self, Double) -> Self
+pub fn NetroutemultipathLayer::set(Self, Int32, Double) -> Self
+pub fn NetroutemultipathLayer::sum(Self) -> Double
+pub fn NetroutemultipathLayer::to_string(Self) -> String
+
+pub(all) struct NetroutemultipathMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetroutemultipathMatrix::add(Self, Self) -> Self
+pub fn NetroutemultipathMatrix::det(Self) -> Double
+pub fn NetroutemultipathMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetroutemultipathMatrix::multiply(Self, Self) -> Self
+pub fn NetroutemultipathMatrix::norm(Self) -> Double
+pub fn NetroutemultipathMatrix::scale(Self, Double) -> Self
+pub fn NetroutemultipathMatrix::to_string(Self) -> String
+pub fn NetroutemultipathMatrix::trace(Self) -> Double
+pub fn NetroutemultipathMatrix::transpose(Self) -> Self
+
+pub(all) struct NetroutemultipathModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutemultipathModel::add(Self, Self) -> Self
+pub fn NetroutemultipathModel::copy(Self) -> Self
+pub fn NetroutemultipathModel::fill(Self, Double) -> Self
+pub fn NetroutemultipathModel::get(Self, Int32) -> Double
+pub fn NetroutemultipathModel::len(Self) -> Int32
+pub fn NetroutemultipathModel::max(Self) -> Double
+pub fn NetroutemultipathModel::mean(Self) -> Double
+pub fn NetroutemultipathModel::min(Self) -> Double
+pub fn NetroutemultipathModel::scale(Self, Double) -> Self
+pub fn NetroutemultipathModel::set(Self, Int32, Double) -> Self
+pub fn NetroutemultipathModel::sum(Self) -> Double
+pub fn NetroutemultipathModel::to_string(Self) -> String
+
+pub(all) struct NetroutemultipathNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutemultipathNode::add(Self, Self) -> Self
+pub fn NetroutemultipathNode::copy(Self) -> Self
+pub fn NetroutemultipathNode::fill(Self, Double) -> Self
+pub fn NetroutemultipathNode::get(Self, Int32) -> Double
+pub fn NetroutemultipathNode::len(Self) -> Int32
+pub fn NetroutemultipathNode::max(Self) -> Double
+pub fn NetroutemultipathNode::mean(Self) -> Double
+pub fn NetroutemultipathNode::min(Self) -> Double
+pub fn NetroutemultipathNode::scale(Self, Double) -> Self
+pub fn NetroutemultipathNode::set(Self, Int32, Double) -> Self
+pub fn NetroutemultipathNode::sum(Self) -> Double
+pub fn NetroutemultipathNode::to_string(Self) -> String
+
+pub(all) struct NetroutemultipathPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutemultipathPath::add(Self, Self) -> Self
+pub fn NetroutemultipathPath::copy(Self) -> Self
+pub fn NetroutemultipathPath::fill(Self, Double) -> Self
+pub fn NetroutemultipathPath::get(Self, Int32) -> Double
+pub fn NetroutemultipathPath::len(Self) -> Int32
+pub fn NetroutemultipathPath::max(Self) -> Double
+pub fn NetroutemultipathPath::mean(Self) -> Double
+pub fn NetroutemultipathPath::min(Self) -> Double
+pub fn NetroutemultipathPath::scale(Self, Double) -> Self
+pub fn NetroutemultipathPath::set(Self, Int32, Double) -> Self
+pub fn NetroutemultipathPath::sum(Self) -> Double
+pub fn NetroutemultipathPath::to_string(Self) -> String
+
+pub(all) struct NetroutemultipathPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetroutemultipathPoint::add(Self, Self) -> Self
+pub fn NetroutemultipathPoint::cross(Self, Self) -> Self
+pub fn NetroutemultipathPoint::dist(Self, Self) -> Double
+pub fn NetroutemultipathPoint::dot(Self, Self) -> Double
+pub fn NetroutemultipathPoint::label(Self) -> Int32
+pub fn NetroutemultipathPoint::lerp(Self, Self, Double) -> Self
+pub fn NetroutemultipathPoint::mid(Self, Self) -> Self
+pub fn NetroutemultipathPoint::negate(Self) -> Self
+pub fn NetroutemultipathPoint::norm(Self) -> Double
+pub fn NetroutemultipathPoint::normalize(Self) -> Self
+pub fn NetroutemultipathPoint::scale(Self, Double) -> Self
+pub fn NetroutemultipathPoint::sub(Self, Self) -> Self
+pub fn NetroutemultipathPoint::to_string(Self) -> String
+pub fn NetroutemultipathPoint::x(Self) -> Double
+pub fn NetroutemultipathPoint::y(Self) -> Double
+pub fn NetroutemultipathPoint::z(Self) -> Double
+
+pub(all) struct NetroutemultipathRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutemultipathRange::add(Self, Self) -> Self
+pub fn NetroutemultipathRange::copy(Self) -> Self
+pub fn NetroutemultipathRange::fill(Self, Double) -> Self
+pub fn NetroutemultipathRange::get(Self, Int32) -> Double
+pub fn NetroutemultipathRange::len(Self) -> Int32
+pub fn NetroutemultipathRange::max(Self) -> Double
+pub fn NetroutemultipathRange::mean(Self) -> Double
+pub fn NetroutemultipathRange::min(Self) -> Double
+pub fn NetroutemultipathRange::scale(Self, Double) -> Self
+pub fn NetroutemultipathRange::set(Self, Int32, Double) -> Self
+pub fn NetroutemultipathRange::sum(Self) -> Double
+pub fn NetroutemultipathRange::to_string(Self) -> String
+
+pub(all) struct NetroutemultipathSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetroutemultipathSeries::add(Self, Self) -> Self
+pub fn NetroutemultipathSeries::cumsum(Self) -> Self
+pub fn NetroutemultipathSeries::len(Self) -> Int32
+pub fn NetroutemultipathSeries::max(Self) -> Double
+pub fn NetroutemultipathSeries::mean(Self) -> Double
+pub fn NetroutemultipathSeries::median(Self) -> Double
+pub fn NetroutemultipathSeries::min(Self) -> Double
+pub fn NetroutemultipathSeries::normalize(Self) -> Self
+pub fn NetroutemultipathSeries::range(Self) -> Double
+pub fn NetroutemultipathSeries::scale(Self, Double) -> Self
+pub fn NetroutemultipathSeries::std(Self) -> Double
+pub fn NetroutemultipathSeries::sub(Self, Self) -> Self
+pub fn NetroutemultipathSeries::sum(Self) -> Double
+pub fn NetroutemultipathSeries::to_string(Self) -> String
+pub fn NetroutemultipathSeries::variance(Self) -> Double
+
+pub(all) struct NetroutemultipathSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutemultipathSlice::add(Self, Self) -> Self
+pub fn NetroutemultipathSlice::copy(Self) -> Self
+pub fn NetroutemultipathSlice::fill(Self, Double) -> Self
+pub fn NetroutemultipathSlice::get(Self, Int32) -> Double
+pub fn NetroutemultipathSlice::len(Self) -> Int32
+pub fn NetroutemultipathSlice::max(Self) -> Double
+pub fn NetroutemultipathSlice::mean(Self) -> Double
+pub fn NetroutemultipathSlice::min(Self) -> Double
+pub fn NetroutemultipathSlice::scale(Self, Double) -> Self
+pub fn NetroutemultipathSlice::set(Self, Int32, Double) -> Self
+pub fn NetroutemultipathSlice::sum(Self) -> Double
+pub fn NetroutemultipathSlice::to_string(Self) -> String
+
+pub(all) struct NetroutemultipathTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutemultipathTable::add(Self, Self) -> Self
+pub fn NetroutemultipathTable::copy(Self) -> Self
+pub fn NetroutemultipathTable::fill(Self, Double) -> Self
+pub fn NetroutemultipathTable::get(Self, Int32) -> Double
+pub fn NetroutemultipathTable::len(Self) -> Int32
+pub fn NetroutemultipathTable::max(Self) -> Double
+pub fn NetroutemultipathTable::mean(Self) -> Double
+pub fn NetroutemultipathTable::min(Self) -> Double
+pub fn NetroutemultipathTable::scale(Self, Double) -> Self
+pub fn NetroutemultipathTable::set(Self, Int32, Double) -> Self
+pub fn NetroutemultipathTable::sum(Self) -> Double
+pub fn NetroutemultipathTable::to_string(Self) -> String
+
+pub(all) struct NetroutemultipathVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetroutemultipathVector::add(Self, Self) -> Self
+pub fn NetroutemultipathVector::dist(Self, Self) -> Double
+pub fn NetroutemultipathVector::dot(Self, Self) -> Double
+pub fn NetroutemultipathVector::norm(Self) -> Double
+pub fn NetroutemultipathVector::normalize(Self) -> Self
+pub fn NetroutemultipathVector::scale(Self, Double) -> Self
+pub fn NetroutemultipathVector::sub(Self, Self) -> Self
+pub fn NetroutemultipathVector::to_string(Self) -> String
+
+pub(all) struct NetroutemultipathView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutemultipathView::add(Self, Self) -> Self
+pub fn NetroutemultipathView::copy(Self) -> Self
+pub fn NetroutemultipathView::fill(Self, Double) -> Self
+pub fn NetroutemultipathView::get(Self, Int32) -> Double
+pub fn NetroutemultipathView::len(Self) -> Int32
+pub fn NetroutemultipathView::max(Self) -> Double
+pub fn NetroutemultipathView::mean(Self) -> Double
+pub fn NetroutemultipathView::min(Self) -> Double
+pub fn NetroutemultipathView::scale(Self, Double) -> Self
+pub fn NetroutemultipathView::set(Self, Int32, Double) -> Self
+pub fn NetroutemultipathView::sum(Self) -> Double
+pub fn NetroutemultipathView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

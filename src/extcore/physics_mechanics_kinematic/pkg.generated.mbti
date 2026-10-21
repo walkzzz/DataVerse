@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_mechanics_kinematic"
+
+// Values
+pub fn physics_mechanics_kinematic_buffer_make(Int32) -> PhysicsmechanicskinematicBuffer
+
+pub fn physics_mechanics_kinematic_cluster_make(Int32) -> PhysicsmechanicskinematicCluster
+
+pub fn physics_mechanics_kinematic_cursor_make(Int32) -> PhysicsmechanicskinematicCursor
+
+pub fn physics_mechanics_kinematic_edge_make(Int32) -> PhysicsmechanicskinematicEdge
+
+pub fn physics_mechanics_kinematic_frame_make(Int32) -> PhysicsmechanicskinematicFrame
+
+pub fn physics_mechanics_kinematic_graphn_make(Int32) -> PhysicsmechanicskinematicGraphN
+
+pub fn physics_mechanics_kinematic_layer_make(Int32) -> PhysicsmechanicskinematicLayer
+
+pub fn physics_mechanics_kinematic_make_matrix(Int32, Int32, Double) -> PhysicsmechanicskinematicMatrix
+
+pub fn physics_mechanics_kinematic_make_point(Double, Double) -> PhysicsmechanicskinematicPoint
+
+pub fn physics_mechanics_kinematic_make_point3(Double, Double, Double) -> PhysicsmechanicskinematicPoint
+
+pub fn physics_mechanics_kinematic_make_series(Array[Double], String) -> PhysicsmechanicskinematicSeries
+
+pub fn physics_mechanics_kinematic_make_vector(Array[Double]) -> PhysicsmechanicskinematicVector
+
+pub fn physics_mechanics_kinematic_matrix_identity(Int32) -> PhysicsmechanicskinematicMatrix
+
+pub fn physics_mechanics_kinematic_model_make(Int32) -> PhysicsmechanicskinematicModel
+
+pub fn physics_mechanics_kinematic_node_make(Int32) -> PhysicsmechanicskinematicNode
+
+pub fn physics_mechanics_kinematic_path_make(Int32) -> PhysicsmechanicskinematicPath
+
+pub fn physics_mechanics_kinematic_range_make(Int32) -> PhysicsmechanicskinematicRange
+
+pub fn physics_mechanics_kinematic_slice_make(Int32) -> PhysicsmechanicskinematicSlice
+
+pub fn physics_mechanics_kinematic_table_make(Int32) -> PhysicsmechanicskinematicTable
+
+pub fn physics_mechanics_kinematic_vector_zero(Int32) -> PhysicsmechanicskinematicVector
+
+pub fn physics_mechanics_kinematic_view_make(Int32) -> PhysicsmechanicskinematicView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsmechanicskinematicBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicskinematicBuffer::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicBuffer::copy(Self) -> Self
+pub fn PhysicsmechanicskinematicBuffer::fill(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicBuffer::get(Self, Int32) -> Double
+pub fn PhysicsmechanicskinematicBuffer::len(Self) -> Int32
+pub fn PhysicsmechanicskinematicBuffer::max(Self) -> Double
+pub fn PhysicsmechanicskinematicBuffer::mean(Self) -> Double
+pub fn PhysicsmechanicskinematicBuffer::min(Self) -> Double
+pub fn PhysicsmechanicskinematicBuffer::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicskinematicBuffer::sum(Self) -> Double
+pub fn PhysicsmechanicskinematicBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicskinematicCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicskinematicCluster::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicCluster::copy(Self) -> Self
+pub fn PhysicsmechanicskinematicCluster::fill(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicCluster::get(Self, Int32) -> Double
+pub fn PhysicsmechanicskinematicCluster::len(Self) -> Int32
+pub fn PhysicsmechanicskinematicCluster::max(Self) -> Double
+pub fn PhysicsmechanicskinematicCluster::mean(Self) -> Double
+pub fn PhysicsmechanicskinematicCluster::min(Self) -> Double
+pub fn PhysicsmechanicskinematicCluster::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicskinematicCluster::sum(Self) -> Double
+pub fn PhysicsmechanicskinematicCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicskinematicCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicskinematicCursor::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicCursor::copy(Self) -> Self
+pub fn PhysicsmechanicskinematicCursor::fill(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicCursor::get(Self, Int32) -> Double
+pub fn PhysicsmechanicskinematicCursor::len(Self) -> Int32
+pub fn PhysicsmechanicskinematicCursor::max(Self) -> Double
+pub fn PhysicsmechanicskinematicCursor::mean(Self) -> Double
+pub fn PhysicsmechanicskinematicCursor::min(Self) -> Double
+pub fn PhysicsmechanicskinematicCursor::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicskinematicCursor::sum(Self) -> Double
+pub fn PhysicsmechanicskinematicCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicskinematicEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicskinematicEdge::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicEdge::copy(Self) -> Self
+pub fn PhysicsmechanicskinematicEdge::fill(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicEdge::get(Self, Int32) -> Double
+pub fn PhysicsmechanicskinematicEdge::len(Self) -> Int32
+pub fn PhysicsmechanicskinematicEdge::max(Self) -> Double
+pub fn PhysicsmechanicskinematicEdge::mean(Self) -> Double
+pub fn PhysicsmechanicskinematicEdge::min(Self) -> Double
+pub fn PhysicsmechanicskinematicEdge::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicskinematicEdge::sum(Self) -> Double
+pub fn PhysicsmechanicskinematicEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicskinematicFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicskinematicFrame::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicFrame::copy(Self) -> Self
+pub fn PhysicsmechanicskinematicFrame::fill(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicFrame::get(Self, Int32) -> Double
+pub fn PhysicsmechanicskinematicFrame::len(Self) -> Int32
+pub fn PhysicsmechanicskinematicFrame::max(Self) -> Double
+pub fn PhysicsmechanicskinematicFrame::mean(Self) -> Double
+pub fn PhysicsmechanicskinematicFrame::min(Self) -> Double
+pub fn PhysicsmechanicskinematicFrame::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicskinematicFrame::sum(Self) -> Double
+pub fn PhysicsmechanicskinematicFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicskinematicGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicskinematicGraphN::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicGraphN::copy(Self) -> Self
+pub fn PhysicsmechanicskinematicGraphN::fill(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicGraphN::get(Self, Int32) -> Double
+pub fn PhysicsmechanicskinematicGraphN::len(Self) -> Int32
+pub fn PhysicsmechanicskinematicGraphN::max(Self) -> Double
+pub fn PhysicsmechanicskinematicGraphN::mean(Self) -> Double
+pub fn PhysicsmechanicskinematicGraphN::min(Self) -> Double
+pub fn PhysicsmechanicskinematicGraphN::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicskinematicGraphN::sum(Self) -> Double
+pub fn PhysicsmechanicskinematicGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicskinematicLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicskinematicLayer::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicLayer::copy(Self) -> Self
+pub fn PhysicsmechanicskinematicLayer::fill(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicLayer::get(Self, Int32) -> Double
+pub fn PhysicsmechanicskinematicLayer::len(Self) -> Int32
+pub fn PhysicsmechanicskinematicLayer::max(Self) -> Double
+pub fn PhysicsmechanicskinematicLayer::mean(Self) -> Double
+pub fn PhysicsmechanicskinematicLayer::min(Self) -> Double
+pub fn PhysicsmechanicskinematicLayer::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicskinematicLayer::sum(Self) -> Double
+pub fn PhysicsmechanicskinematicLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicskinematicMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsmechanicskinematicMatrix::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicMatrix::det(Self) -> Double
+pub fn PhysicsmechanicskinematicMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsmechanicskinematicMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicMatrix::norm(Self) -> Double
+pub fn PhysicsmechanicskinematicMatrix::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicMatrix::to_string(Self) -> String
+pub fn PhysicsmechanicskinematicMatrix::trace(Self) -> Double
+pub fn PhysicsmechanicskinematicMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsmechanicskinematicModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicskinematicModel::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicModel::copy(Self) -> Self
+pub fn PhysicsmechanicskinematicModel::fill(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicModel::get(Self, Int32) -> Double
+pub fn PhysicsmechanicskinematicModel::len(Self) -> Int32
+pub fn PhysicsmechanicskinematicModel::max(Self) -> Double
+pub fn PhysicsmechanicskinematicModel::mean(Self) -> Double
+pub fn PhysicsmechanicskinematicModel::min(Self) -> Double
+pub fn PhysicsmechanicskinematicModel::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicskinematicModel::sum(Self) -> Double
+pub fn PhysicsmechanicskinematicModel::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicskinematicNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicskinematicNode::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicNode::copy(Self) -> Self
+pub fn PhysicsmechanicskinematicNode::fill(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicNode::get(Self, Int32) -> Double
+pub fn PhysicsmechanicskinematicNode::len(Self) -> Int32
+pub fn PhysicsmechanicskinematicNode::max(Self) -> Double
+pub fn PhysicsmechanicskinematicNode::mean(Self) -> Double
+pub fn PhysicsmechanicskinematicNode::min(Self) -> Double
+pub fn PhysicsmechanicskinematicNode::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicskinematicNode::sum(Self) -> Double
+pub fn PhysicsmechanicskinematicNode::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicskinematicPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicskinematicPath::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicPath::copy(Self) -> Self
+pub fn PhysicsmechanicskinematicPath::fill(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicPath::get(Self, Int32) -> Double
+pub fn PhysicsmechanicskinematicPath::len(Self) -> Int32
+pub fn PhysicsmechanicskinematicPath::max(Self) -> Double
+pub fn PhysicsmechanicskinematicPath::mean(Self) -> Double
+pub fn PhysicsmechanicskinematicPath::min(Self) -> Double
+pub fn PhysicsmechanicskinematicPath::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicskinematicPath::sum(Self) -> Double
+pub fn PhysicsmechanicskinematicPath::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicskinematicPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsmechanicskinematicPoint::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicPoint::cross(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicPoint::dist(Self, Self) -> Double
+pub fn PhysicsmechanicskinematicPoint::dot(Self, Self) -> Double
+pub fn PhysicsmechanicskinematicPoint::label(Self) -> Int32
+pub fn PhysicsmechanicskinematicPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsmechanicskinematicPoint::mid(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicPoint::negate(Self) -> Self
+pub fn PhysicsmechanicskinematicPoint::norm(Self) -> Double
+pub fn PhysicsmechanicskinematicPoint::normalize(Self) -> Self
+pub fn PhysicsmechanicskinematicPoint::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicPoint::sub(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicPoint::to_string(Self) -> String
+pub fn PhysicsmechanicskinematicPoint::x(Self) -> Double
+pub fn PhysicsmechanicskinematicPoint::y(Self) -> Double
+pub fn PhysicsmechanicskinematicPoint::z(Self) -> Double
+
+pub(all) struct PhysicsmechanicskinematicRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicskinematicRange::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicRange::copy(Self) -> Self
+pub fn PhysicsmechanicskinematicRange::fill(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicRange::get(Self, Int32) -> Double
+pub fn PhysicsmechanicskinematicRange::len(Self) -> Int32
+pub fn PhysicsmechanicskinematicRange::max(Self) -> Double
+pub fn PhysicsmechanicskinematicRange::mean(Self) -> Double
+pub fn PhysicsmechanicskinematicRange::min(Self) -> Double
+pub fn PhysicsmechanicskinematicRange::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicskinematicRange::sum(Self) -> Double
+pub fn PhysicsmechanicskinematicRange::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicskinematicSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsmechanicskinematicSeries::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicSeries::cumsum(Self) -> Self
+pub fn PhysicsmechanicskinematicSeries::len(Self) -> Int32
+pub fn PhysicsmechanicskinematicSeries::max(Self) -> Double
+pub fn PhysicsmechanicskinematicSeries::mean(Self) -> Double
+pub fn PhysicsmechanicskinematicSeries::median(Self) -> Double
+pub fn PhysicsmechanicskinematicSeries::min(Self) -> Double
+pub fn PhysicsmechanicskinematicSeries::normalize(Self) -> Self
+pub fn PhysicsmechanicskinematicSeries::range(Self) -> Double
+pub fn PhysicsmechanicskinematicSeries::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicSeries::std(Self) -> Double
+pub fn PhysicsmechanicskinematicSeries::sub(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicSeries::sum(Self) -> Double
+pub fn PhysicsmechanicskinematicSeries::to_string(Self) -> String
+pub fn PhysicsmechanicskinematicSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsmechanicskinematicSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicskinematicSlice::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicSlice::copy(Self) -> Self
+pub fn PhysicsmechanicskinematicSlice::fill(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicSlice::get(Self, Int32) -> Double
+pub fn PhysicsmechanicskinematicSlice::len(Self) -> Int32
+pub fn PhysicsmechanicskinematicSlice::max(Self) -> Double
+pub fn PhysicsmechanicskinematicSlice::mean(Self) -> Double
+pub fn PhysicsmechanicskinematicSlice::min(Self) -> Double
+pub fn PhysicsmechanicskinematicSlice::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicskinematicSlice::sum(Self) -> Double
+pub fn PhysicsmechanicskinematicSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicskinematicTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicskinematicTable::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicTable::copy(Self) -> Self
+pub fn PhysicsmechanicskinematicTable::fill(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicTable::get(Self, Int32) -> Double
+pub fn PhysicsmechanicskinematicTable::len(Self) -> Int32
+pub fn PhysicsmechanicskinematicTable::max(Self) -> Double
+pub fn PhysicsmechanicskinematicTable::mean(Self) -> Double
+pub fn PhysicsmechanicskinematicTable::min(Self) -> Double
+pub fn PhysicsmechanicskinematicTable::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicskinematicTable::sum(Self) -> Double
+pub fn PhysicsmechanicskinematicTable::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicskinematicVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsmechanicskinematicVector::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicVector::dist(Self, Self) -> Double
+pub fn PhysicsmechanicskinematicVector::dot(Self, Self) -> Double
+pub fn PhysicsmechanicskinematicVector::norm(Self) -> Double
+pub fn PhysicsmechanicskinematicVector::normalize(Self) -> Self
+pub fn PhysicsmechanicskinematicVector::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicVector::sub(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicVector::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicskinematicView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicskinematicView::add(Self, Self) -> Self
+pub fn PhysicsmechanicskinematicView::copy(Self) -> Self
+pub fn PhysicsmechanicskinematicView::fill(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicView::get(Self, Int32) -> Double
+pub fn PhysicsmechanicskinematicView::len(Self) -> Int32
+pub fn PhysicsmechanicskinematicView::max(Self) -> Double
+pub fn PhysicsmechanicskinematicView::mean(Self) -> Double
+pub fn PhysicsmechanicskinematicView::min(Self) -> Double
+pub fn PhysicsmechanicskinematicView::scale(Self, Double) -> Self
+pub fn PhysicsmechanicskinematicView::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicskinematicView::sum(Self) -> Double
+pub fn PhysicsmechanicskinematicView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

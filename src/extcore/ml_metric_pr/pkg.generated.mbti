@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_metric_pr"
+
+// Values
+pub fn ml_metric_pr_buffer_make(Int32) -> MlmetricprBuffer
+
+pub fn ml_metric_pr_cluster_make(Int32) -> MlmetricprCluster
+
+pub fn ml_metric_pr_cursor_make(Int32) -> MlmetricprCursor
+
+pub fn ml_metric_pr_edge_make(Int32) -> MlmetricprEdge
+
+pub fn ml_metric_pr_frame_make(Int32) -> MlmetricprFrame
+
+pub fn ml_metric_pr_graphn_make(Int32) -> MlmetricprGraphN
+
+pub fn ml_metric_pr_layer_make(Int32) -> MlmetricprLayer
+
+pub fn ml_metric_pr_make_matrix(Int32, Int32, Double) -> MlmetricprMatrix
+
+pub fn ml_metric_pr_make_point(Double, Double) -> MlmetricprPoint
+
+pub fn ml_metric_pr_make_point3(Double, Double, Double) -> MlmetricprPoint
+
+pub fn ml_metric_pr_make_series(Array[Double], String) -> MlmetricprSeries
+
+pub fn ml_metric_pr_make_vector(Array[Double]) -> MlmetricprVector
+
+pub fn ml_metric_pr_matrix_identity(Int32) -> MlmetricprMatrix
+
+pub fn ml_metric_pr_model_make(Int32) -> MlmetricprModel
+
+pub fn ml_metric_pr_node_make(Int32) -> MlmetricprNode
+
+pub fn ml_metric_pr_path_make(Int32) -> MlmetricprPath
+
+pub fn ml_metric_pr_range_make(Int32) -> MlmetricprRange
+
+pub fn ml_metric_pr_slice_make(Int32) -> MlmetricprSlice
+
+pub fn ml_metric_pr_table_make(Int32) -> MlmetricprTable
+
+pub fn ml_metric_pr_vector_zero(Int32) -> MlmetricprVector
+
+pub fn ml_metric_pr_view_make(Int32) -> MlmetricprView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlmetricprBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricprBuffer::add(Self, Self) -> Self
+pub fn MlmetricprBuffer::copy(Self) -> Self
+pub fn MlmetricprBuffer::fill(Self, Double) -> Self
+pub fn MlmetricprBuffer::get(Self, Int32) -> Double
+pub fn MlmetricprBuffer::len(Self) -> Int32
+pub fn MlmetricprBuffer::max(Self) -> Double
+pub fn MlmetricprBuffer::mean(Self) -> Double
+pub fn MlmetricprBuffer::min(Self) -> Double
+pub fn MlmetricprBuffer::scale(Self, Double) -> Self
+pub fn MlmetricprBuffer::set(Self, Int32, Double) -> Self
+pub fn MlmetricprBuffer::sum(Self) -> Double
+pub fn MlmetricprBuffer::to_string(Self) -> String
+
+pub(all) struct MlmetricprCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricprCluster::add(Self, Self) -> Self
+pub fn MlmetricprCluster::copy(Self) -> Self
+pub fn MlmetricprCluster::fill(Self, Double) -> Self
+pub fn MlmetricprCluster::get(Self, Int32) -> Double
+pub fn MlmetricprCluster::len(Self) -> Int32
+pub fn MlmetricprCluster::max(Self) -> Double
+pub fn MlmetricprCluster::mean(Self) -> Double
+pub fn MlmetricprCluster::min(Self) -> Double
+pub fn MlmetricprCluster::scale(Self, Double) -> Self
+pub fn MlmetricprCluster::set(Self, Int32, Double) -> Self
+pub fn MlmetricprCluster::sum(Self) -> Double
+pub fn MlmetricprCluster::to_string(Self) -> String
+
+pub(all) struct MlmetricprCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricprCursor::add(Self, Self) -> Self
+pub fn MlmetricprCursor::copy(Self) -> Self
+pub fn MlmetricprCursor::fill(Self, Double) -> Self
+pub fn MlmetricprCursor::get(Self, Int32) -> Double
+pub fn MlmetricprCursor::len(Self) -> Int32
+pub fn MlmetricprCursor::max(Self) -> Double
+pub fn MlmetricprCursor::mean(Self) -> Double
+pub fn MlmetricprCursor::min(Self) -> Double
+pub fn MlmetricprCursor::scale(Self, Double) -> Self
+pub fn MlmetricprCursor::set(Self, Int32, Double) -> Self
+pub fn MlmetricprCursor::sum(Self) -> Double
+pub fn MlmetricprCursor::to_string(Self) -> String
+
+pub(all) struct MlmetricprEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricprEdge::add(Self, Self) -> Self
+pub fn MlmetricprEdge::copy(Self) -> Self
+pub fn MlmetricprEdge::fill(Self, Double) -> Self
+pub fn MlmetricprEdge::get(Self, Int32) -> Double
+pub fn MlmetricprEdge::len(Self) -> Int32
+pub fn MlmetricprEdge::max(Self) -> Double
+pub fn MlmetricprEdge::mean(Self) -> Double
+pub fn MlmetricprEdge::min(Self) -> Double
+pub fn MlmetricprEdge::scale(Self, Double) -> Self
+pub fn MlmetricprEdge::set(Self, Int32, Double) -> Self
+pub fn MlmetricprEdge::sum(Self) -> Double
+pub fn MlmetricprEdge::to_string(Self) -> String
+
+pub(all) struct MlmetricprFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricprFrame::add(Self, Self) -> Self
+pub fn MlmetricprFrame::copy(Self) -> Self
+pub fn MlmetricprFrame::fill(Self, Double) -> Self
+pub fn MlmetricprFrame::get(Self, Int32) -> Double
+pub fn MlmetricprFrame::len(Self) -> Int32
+pub fn MlmetricprFrame::max(Self) -> Double
+pub fn MlmetricprFrame::mean(Self) -> Double
+pub fn MlmetricprFrame::min(Self) -> Double
+pub fn MlmetricprFrame::scale(Self, Double) -> Self
+pub fn MlmetricprFrame::set(Self, Int32, Double) -> Self
+pub fn MlmetricprFrame::sum(Self) -> Double
+pub fn MlmetricprFrame::to_string(Self) -> String
+
+pub(all) struct MlmetricprGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricprGraphN::add(Self, Self) -> Self
+pub fn MlmetricprGraphN::copy(Self) -> Self
+pub fn MlmetricprGraphN::fill(Self, Double) -> Self
+pub fn MlmetricprGraphN::get(Self, Int32) -> Double
+pub fn MlmetricprGraphN::len(Self) -> Int32
+pub fn MlmetricprGraphN::max(Self) -> Double
+pub fn MlmetricprGraphN::mean(Self) -> Double
+pub fn MlmetricprGraphN::min(Self) -> Double
+pub fn MlmetricprGraphN::scale(Self, Double) -> Self
+pub fn MlmetricprGraphN::set(Self, Int32, Double) -> Self
+pub fn MlmetricprGraphN::sum(Self) -> Double
+pub fn MlmetricprGraphN::to_string(Self) -> String
+
+pub(all) struct MlmetricprLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricprLayer::add(Self, Self) -> Self
+pub fn MlmetricprLayer::copy(Self) -> Self
+pub fn MlmetricprLayer::fill(Self, Double) -> Self
+pub fn MlmetricprLayer::get(Self, Int32) -> Double
+pub fn MlmetricprLayer::len(Self) -> Int32
+pub fn MlmetricprLayer::max(Self) -> Double
+pub fn MlmetricprLayer::mean(Self) -> Double
+pub fn MlmetricprLayer::min(Self) -> Double
+pub fn MlmetricprLayer::scale(Self, Double) -> Self
+pub fn MlmetricprLayer::set(Self, Int32, Double) -> Self
+pub fn MlmetricprLayer::sum(Self) -> Double
+pub fn MlmetricprLayer::to_string(Self) -> String
+
+pub(all) struct MlmetricprMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlmetricprMatrix::add(Self, Self) -> Self
+pub fn MlmetricprMatrix::det(Self) -> Double
+pub fn MlmetricprMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlmetricprMatrix::multiply(Self, Self) -> Self
+pub fn MlmetricprMatrix::norm(Self) -> Double
+pub fn MlmetricprMatrix::scale(Self, Double) -> Self
+pub fn MlmetricprMatrix::to_string(Self) -> String
+pub fn MlmetricprMatrix::trace(Self) -> Double
+pub fn MlmetricprMatrix::transpose(Self) -> Self
+
+pub(all) struct MlmetricprModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricprModel::add(Self, Self) -> Self
+pub fn MlmetricprModel::copy(Self) -> Self
+pub fn MlmetricprModel::fill(Self, Double) -> Self
+pub fn MlmetricprModel::get(Self, Int32) -> Double
+pub fn MlmetricprModel::len(Self) -> Int32
+pub fn MlmetricprModel::max(Self) -> Double
+pub fn MlmetricprModel::mean(Self) -> Double
+pub fn MlmetricprModel::min(Self) -> Double
+pub fn MlmetricprModel::scale(Self, Double) -> Self
+pub fn MlmetricprModel::set(Self, Int32, Double) -> Self
+pub fn MlmetricprModel::sum(Self) -> Double
+pub fn MlmetricprModel::to_string(Self) -> String
+
+pub(all) struct MlmetricprNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricprNode::add(Self, Self) -> Self
+pub fn MlmetricprNode::copy(Self) -> Self
+pub fn MlmetricprNode::fill(Self, Double) -> Self
+pub fn MlmetricprNode::get(Self, Int32) -> Double
+pub fn MlmetricprNode::len(Self) -> Int32
+pub fn MlmetricprNode::max(Self) -> Double
+pub fn MlmetricprNode::mean(Self) -> Double
+pub fn MlmetricprNode::min(Self) -> Double
+pub fn MlmetricprNode::scale(Self, Double) -> Self
+pub fn MlmetricprNode::set(Self, Int32, Double) -> Self
+pub fn MlmetricprNode::sum(Self) -> Double
+pub fn MlmetricprNode::to_string(Self) -> String
+
+pub(all) struct MlmetricprPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricprPath::add(Self, Self) -> Self
+pub fn MlmetricprPath::copy(Self) -> Self
+pub fn MlmetricprPath::fill(Self, Double) -> Self
+pub fn MlmetricprPath::get(Self, Int32) -> Double
+pub fn MlmetricprPath::len(Self) -> Int32
+pub fn MlmetricprPath::max(Self) -> Double
+pub fn MlmetricprPath::mean(Self) -> Double
+pub fn MlmetricprPath::min(Self) -> Double
+pub fn MlmetricprPath::scale(Self, Double) -> Self
+pub fn MlmetricprPath::set(Self, Int32, Double) -> Self
+pub fn MlmetricprPath::sum(Self) -> Double
+pub fn MlmetricprPath::to_string(Self) -> String
+
+pub(all) struct MlmetricprPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlmetricprPoint::add(Self, Self) -> Self
+pub fn MlmetricprPoint::cross(Self, Self) -> Self
+pub fn MlmetricprPoint::dist(Self, Self) -> Double
+pub fn MlmetricprPoint::dot(Self, Self) -> Double
+pub fn MlmetricprPoint::label(Self) -> Int32
+pub fn MlmetricprPoint::lerp(Self, Self, Double) -> Self
+pub fn MlmetricprPoint::mid(Self, Self) -> Self
+pub fn MlmetricprPoint::negate(Self) -> Self
+pub fn MlmetricprPoint::norm(Self) -> Double
+pub fn MlmetricprPoint::normalize(Self) -> Self
+pub fn MlmetricprPoint::scale(Self, Double) -> Self
+pub fn MlmetricprPoint::sub(Self, Self) -> Self
+pub fn MlmetricprPoint::to_string(Self) -> String
+pub fn MlmetricprPoint::x(Self) -> Double
+pub fn MlmetricprPoint::y(Self) -> Double
+pub fn MlmetricprPoint::z(Self) -> Double
+
+pub(all) struct MlmetricprRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricprRange::add(Self, Self) -> Self
+pub fn MlmetricprRange::copy(Self) -> Self
+pub fn MlmetricprRange::fill(Self, Double) -> Self
+pub fn MlmetricprRange::get(Self, Int32) -> Double
+pub fn MlmetricprRange::len(Self) -> Int32
+pub fn MlmetricprRange::max(Self) -> Double
+pub fn MlmetricprRange::mean(Self) -> Double
+pub fn MlmetricprRange::min(Self) -> Double
+pub fn MlmetricprRange::scale(Self, Double) -> Self
+pub fn MlmetricprRange::set(Self, Int32, Double) -> Self
+pub fn MlmetricprRange::sum(Self) -> Double
+pub fn MlmetricprRange::to_string(Self) -> String
+
+pub(all) struct MlmetricprSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlmetricprSeries::add(Self, Self) -> Self
+pub fn MlmetricprSeries::cumsum(Self) -> Self
+pub fn MlmetricprSeries::len(Self) -> Int32
+pub fn MlmetricprSeries::max(Self) -> Double
+pub fn MlmetricprSeries::mean(Self) -> Double
+pub fn MlmetricprSeries::median(Self) -> Double
+pub fn MlmetricprSeries::min(Self) -> Double
+pub fn MlmetricprSeries::normalize(Self) -> Self
+pub fn MlmetricprSeries::range(Self) -> Double
+pub fn MlmetricprSeries::scale(Self, Double) -> Self
+pub fn MlmetricprSeries::std(Self) -> Double
+pub fn MlmetricprSeries::sub(Self, Self) -> Self
+pub fn MlmetricprSeries::sum(Self) -> Double
+pub fn MlmetricprSeries::to_string(Self) -> String
+pub fn MlmetricprSeries::variance(Self) -> Double
+
+pub(all) struct MlmetricprSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricprSlice::add(Self, Self) -> Self
+pub fn MlmetricprSlice::copy(Self) -> Self
+pub fn MlmetricprSlice::fill(Self, Double) -> Self
+pub fn MlmetricprSlice::get(Self, Int32) -> Double
+pub fn MlmetricprSlice::len(Self) -> Int32
+pub fn MlmetricprSlice::max(Self) -> Double
+pub fn MlmetricprSlice::mean(Self) -> Double
+pub fn MlmetricprSlice::min(Self) -> Double
+pub fn MlmetricprSlice::scale(Self, Double) -> Self
+pub fn MlmetricprSlice::set(Self, Int32, Double) -> Self
+pub fn MlmetricprSlice::sum(Self) -> Double
+pub fn MlmetricprSlice::to_string(Self) -> String
+
+pub(all) struct MlmetricprTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricprTable::add(Self, Self) -> Self
+pub fn MlmetricprTable::copy(Self) -> Self
+pub fn MlmetricprTable::fill(Self, Double) -> Self
+pub fn MlmetricprTable::get(Self, Int32) -> Double
+pub fn MlmetricprTable::len(Self) -> Int32
+pub fn MlmetricprTable::max(Self) -> Double
+pub fn MlmetricprTable::mean(Self) -> Double
+pub fn MlmetricprTable::min(Self) -> Double
+pub fn MlmetricprTable::scale(Self, Double) -> Self
+pub fn MlmetricprTable::set(Self, Int32, Double) -> Self
+pub fn MlmetricprTable::sum(Self) -> Double
+pub fn MlmetricprTable::to_string(Self) -> String
+
+pub(all) struct MlmetricprVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlmetricprVector::add(Self, Self) -> Self
+pub fn MlmetricprVector::dist(Self, Self) -> Double
+pub fn MlmetricprVector::dot(Self, Self) -> Double
+pub fn MlmetricprVector::norm(Self) -> Double
+pub fn MlmetricprVector::normalize(Self) -> Self
+pub fn MlmetricprVector::scale(Self, Double) -> Self
+pub fn MlmetricprVector::sub(Self, Self) -> Self
+pub fn MlmetricprVector::to_string(Self) -> String
+
+pub(all) struct MlmetricprView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricprView::add(Self, Self) -> Self
+pub fn MlmetricprView::copy(Self) -> Self
+pub fn MlmetricprView::fill(Self, Double) -> Self
+pub fn MlmetricprView::get(Self, Int32) -> Double
+pub fn MlmetricprView::len(Self) -> Int32
+pub fn MlmetricprView::max(Self) -> Double
+pub fn MlmetricprView::mean(Self) -> Double
+pub fn MlmetricprView::min(Self) -> Double
+pub fn MlmetricprView::scale(Self, Double) -> Self
+pub fn MlmetricprView::set(Self, Int32, Double) -> Self
+pub fn MlmetricprView::sum(Self) -> Double
+pub fn MlmetricprView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

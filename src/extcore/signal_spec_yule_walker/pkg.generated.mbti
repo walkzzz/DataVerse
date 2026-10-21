@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_spec_yule_walker"
+
+// Values
+pub fn signal_spec_yule_walker_buffer_make(Int32) -> SignalspecyulewalkerBuffer
+
+pub fn signal_spec_yule_walker_cluster_make(Int32) -> SignalspecyulewalkerCluster
+
+pub fn signal_spec_yule_walker_cursor_make(Int32) -> SignalspecyulewalkerCursor
+
+pub fn signal_spec_yule_walker_edge_make(Int32) -> SignalspecyulewalkerEdge
+
+pub fn signal_spec_yule_walker_frame_make(Int32) -> SignalspecyulewalkerFrame
+
+pub fn signal_spec_yule_walker_graphn_make(Int32) -> SignalspecyulewalkerGraphN
+
+pub fn signal_spec_yule_walker_layer_make(Int32) -> SignalspecyulewalkerLayer
+
+pub fn signal_spec_yule_walker_make_matrix(Int32, Int32, Double) -> SignalspecyulewalkerMatrix
+
+pub fn signal_spec_yule_walker_make_point(Double, Double) -> SignalspecyulewalkerPoint
+
+pub fn signal_spec_yule_walker_make_point3(Double, Double, Double) -> SignalspecyulewalkerPoint
+
+pub fn signal_spec_yule_walker_make_series(Array[Double], String) -> SignalspecyulewalkerSeries
+
+pub fn signal_spec_yule_walker_make_vector(Array[Double]) -> SignalspecyulewalkerVector
+
+pub fn signal_spec_yule_walker_matrix_identity(Int32) -> SignalspecyulewalkerMatrix
+
+pub fn signal_spec_yule_walker_model_make(Int32) -> SignalspecyulewalkerModel
+
+pub fn signal_spec_yule_walker_node_make(Int32) -> SignalspecyulewalkerNode
+
+pub fn signal_spec_yule_walker_path_make(Int32) -> SignalspecyulewalkerPath
+
+pub fn signal_spec_yule_walker_range_make(Int32) -> SignalspecyulewalkerRange
+
+pub fn signal_spec_yule_walker_slice_make(Int32) -> SignalspecyulewalkerSlice
+
+pub fn signal_spec_yule_walker_table_make(Int32) -> SignalspecyulewalkerTable
+
+pub fn signal_spec_yule_walker_vector_zero(Int32) -> SignalspecyulewalkerVector
+
+pub fn signal_spec_yule_walker_view_make(Int32) -> SignalspecyulewalkerView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalspecyulewalkerBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecyulewalkerBuffer::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerBuffer::copy(Self) -> Self
+pub fn SignalspecyulewalkerBuffer::fill(Self, Double) -> Self
+pub fn SignalspecyulewalkerBuffer::get(Self, Int32) -> Double
+pub fn SignalspecyulewalkerBuffer::len(Self) -> Int32
+pub fn SignalspecyulewalkerBuffer::max(Self) -> Double
+pub fn SignalspecyulewalkerBuffer::mean(Self) -> Double
+pub fn SignalspecyulewalkerBuffer::min(Self) -> Double
+pub fn SignalspecyulewalkerBuffer::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalspecyulewalkerBuffer::sum(Self) -> Double
+pub fn SignalspecyulewalkerBuffer::to_string(Self) -> String
+
+pub(all) struct SignalspecyulewalkerCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecyulewalkerCluster::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerCluster::copy(Self) -> Self
+pub fn SignalspecyulewalkerCluster::fill(Self, Double) -> Self
+pub fn SignalspecyulewalkerCluster::get(Self, Int32) -> Double
+pub fn SignalspecyulewalkerCluster::len(Self) -> Int32
+pub fn SignalspecyulewalkerCluster::max(Self) -> Double
+pub fn SignalspecyulewalkerCluster::mean(Self) -> Double
+pub fn SignalspecyulewalkerCluster::min(Self) -> Double
+pub fn SignalspecyulewalkerCluster::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerCluster::set(Self, Int32, Double) -> Self
+pub fn SignalspecyulewalkerCluster::sum(Self) -> Double
+pub fn SignalspecyulewalkerCluster::to_string(Self) -> String
+
+pub(all) struct SignalspecyulewalkerCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecyulewalkerCursor::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerCursor::copy(Self) -> Self
+pub fn SignalspecyulewalkerCursor::fill(Self, Double) -> Self
+pub fn SignalspecyulewalkerCursor::get(Self, Int32) -> Double
+pub fn SignalspecyulewalkerCursor::len(Self) -> Int32
+pub fn SignalspecyulewalkerCursor::max(Self) -> Double
+pub fn SignalspecyulewalkerCursor::mean(Self) -> Double
+pub fn SignalspecyulewalkerCursor::min(Self) -> Double
+pub fn SignalspecyulewalkerCursor::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerCursor::set(Self, Int32, Double) -> Self
+pub fn SignalspecyulewalkerCursor::sum(Self) -> Double
+pub fn SignalspecyulewalkerCursor::to_string(Self) -> String
+
+pub(all) struct SignalspecyulewalkerEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecyulewalkerEdge::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerEdge::copy(Self) -> Self
+pub fn SignalspecyulewalkerEdge::fill(Self, Double) -> Self
+pub fn SignalspecyulewalkerEdge::get(Self, Int32) -> Double
+pub fn SignalspecyulewalkerEdge::len(Self) -> Int32
+pub fn SignalspecyulewalkerEdge::max(Self) -> Double
+pub fn SignalspecyulewalkerEdge::mean(Self) -> Double
+pub fn SignalspecyulewalkerEdge::min(Self) -> Double
+pub fn SignalspecyulewalkerEdge::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerEdge::set(Self, Int32, Double) -> Self
+pub fn SignalspecyulewalkerEdge::sum(Self) -> Double
+pub fn SignalspecyulewalkerEdge::to_string(Self) -> String
+
+pub(all) struct SignalspecyulewalkerFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecyulewalkerFrame::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerFrame::copy(Self) -> Self
+pub fn SignalspecyulewalkerFrame::fill(Self, Double) -> Self
+pub fn SignalspecyulewalkerFrame::get(Self, Int32) -> Double
+pub fn SignalspecyulewalkerFrame::len(Self) -> Int32
+pub fn SignalspecyulewalkerFrame::max(Self) -> Double
+pub fn SignalspecyulewalkerFrame::mean(Self) -> Double
+pub fn SignalspecyulewalkerFrame::min(Self) -> Double
+pub fn SignalspecyulewalkerFrame::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerFrame::set(Self, Int32, Double) -> Self
+pub fn SignalspecyulewalkerFrame::sum(Self) -> Double
+pub fn SignalspecyulewalkerFrame::to_string(Self) -> String
+
+pub(all) struct SignalspecyulewalkerGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecyulewalkerGraphN::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerGraphN::copy(Self) -> Self
+pub fn SignalspecyulewalkerGraphN::fill(Self, Double) -> Self
+pub fn SignalspecyulewalkerGraphN::get(Self, Int32) -> Double
+pub fn SignalspecyulewalkerGraphN::len(Self) -> Int32
+pub fn SignalspecyulewalkerGraphN::max(Self) -> Double
+pub fn SignalspecyulewalkerGraphN::mean(Self) -> Double
+pub fn SignalspecyulewalkerGraphN::min(Self) -> Double
+pub fn SignalspecyulewalkerGraphN::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalspecyulewalkerGraphN::sum(Self) -> Double
+pub fn SignalspecyulewalkerGraphN::to_string(Self) -> String
+
+pub(all) struct SignalspecyulewalkerLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecyulewalkerLayer::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerLayer::copy(Self) -> Self
+pub fn SignalspecyulewalkerLayer::fill(Self, Double) -> Self
+pub fn SignalspecyulewalkerLayer::get(Self, Int32) -> Double
+pub fn SignalspecyulewalkerLayer::len(Self) -> Int32
+pub fn SignalspecyulewalkerLayer::max(Self) -> Double
+pub fn SignalspecyulewalkerLayer::mean(Self) -> Double
+pub fn SignalspecyulewalkerLayer::min(Self) -> Double
+pub fn SignalspecyulewalkerLayer::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerLayer::set(Self, Int32, Double) -> Self
+pub fn SignalspecyulewalkerLayer::sum(Self) -> Double
+pub fn SignalspecyulewalkerLayer::to_string(Self) -> String
+
+pub(all) struct SignalspecyulewalkerMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalspecyulewalkerMatrix::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerMatrix::det(Self) -> Double
+pub fn SignalspecyulewalkerMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalspecyulewalkerMatrix::multiply(Self, Self) -> Self
+pub fn SignalspecyulewalkerMatrix::norm(Self) -> Double
+pub fn SignalspecyulewalkerMatrix::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerMatrix::to_string(Self) -> String
+pub fn SignalspecyulewalkerMatrix::trace(Self) -> Double
+pub fn SignalspecyulewalkerMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalspecyulewalkerModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecyulewalkerModel::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerModel::copy(Self) -> Self
+pub fn SignalspecyulewalkerModel::fill(Self, Double) -> Self
+pub fn SignalspecyulewalkerModel::get(Self, Int32) -> Double
+pub fn SignalspecyulewalkerModel::len(Self) -> Int32
+pub fn SignalspecyulewalkerModel::max(Self) -> Double
+pub fn SignalspecyulewalkerModel::mean(Self) -> Double
+pub fn SignalspecyulewalkerModel::min(Self) -> Double
+pub fn SignalspecyulewalkerModel::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerModel::set(Self, Int32, Double) -> Self
+pub fn SignalspecyulewalkerModel::sum(Self) -> Double
+pub fn SignalspecyulewalkerModel::to_string(Self) -> String
+
+pub(all) struct SignalspecyulewalkerNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecyulewalkerNode::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerNode::copy(Self) -> Self
+pub fn SignalspecyulewalkerNode::fill(Self, Double) -> Self
+pub fn SignalspecyulewalkerNode::get(Self, Int32) -> Double
+pub fn SignalspecyulewalkerNode::len(Self) -> Int32
+pub fn SignalspecyulewalkerNode::max(Self) -> Double
+pub fn SignalspecyulewalkerNode::mean(Self) -> Double
+pub fn SignalspecyulewalkerNode::min(Self) -> Double
+pub fn SignalspecyulewalkerNode::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerNode::set(Self, Int32, Double) -> Self
+pub fn SignalspecyulewalkerNode::sum(Self) -> Double
+pub fn SignalspecyulewalkerNode::to_string(Self) -> String
+
+pub(all) struct SignalspecyulewalkerPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecyulewalkerPath::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerPath::copy(Self) -> Self
+pub fn SignalspecyulewalkerPath::fill(Self, Double) -> Self
+pub fn SignalspecyulewalkerPath::get(Self, Int32) -> Double
+pub fn SignalspecyulewalkerPath::len(Self) -> Int32
+pub fn SignalspecyulewalkerPath::max(Self) -> Double
+pub fn SignalspecyulewalkerPath::mean(Self) -> Double
+pub fn SignalspecyulewalkerPath::min(Self) -> Double
+pub fn SignalspecyulewalkerPath::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerPath::set(Self, Int32, Double) -> Self
+pub fn SignalspecyulewalkerPath::sum(Self) -> Double
+pub fn SignalspecyulewalkerPath::to_string(Self) -> String
+
+pub(all) struct SignalspecyulewalkerPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalspecyulewalkerPoint::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerPoint::cross(Self, Self) -> Self
+pub fn SignalspecyulewalkerPoint::dist(Self, Self) -> Double
+pub fn SignalspecyulewalkerPoint::dot(Self, Self) -> Double
+pub fn SignalspecyulewalkerPoint::label(Self) -> Int32
+pub fn SignalspecyulewalkerPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalspecyulewalkerPoint::mid(Self, Self) -> Self
+pub fn SignalspecyulewalkerPoint::negate(Self) -> Self
+pub fn SignalspecyulewalkerPoint::norm(Self) -> Double
+pub fn SignalspecyulewalkerPoint::normalize(Self) -> Self
+pub fn SignalspecyulewalkerPoint::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerPoint::sub(Self, Self) -> Self
+pub fn SignalspecyulewalkerPoint::to_string(Self) -> String
+pub fn SignalspecyulewalkerPoint::x(Self) -> Double
+pub fn SignalspecyulewalkerPoint::y(Self) -> Double
+pub fn SignalspecyulewalkerPoint::z(Self) -> Double
+
+pub(all) struct SignalspecyulewalkerRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecyulewalkerRange::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerRange::copy(Self) -> Self
+pub fn SignalspecyulewalkerRange::fill(Self, Double) -> Self
+pub fn SignalspecyulewalkerRange::get(Self, Int32) -> Double
+pub fn SignalspecyulewalkerRange::len(Self) -> Int32
+pub fn SignalspecyulewalkerRange::max(Self) -> Double
+pub fn SignalspecyulewalkerRange::mean(Self) -> Double
+pub fn SignalspecyulewalkerRange::min(Self) -> Double
+pub fn SignalspecyulewalkerRange::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerRange::set(Self, Int32, Double) -> Self
+pub fn SignalspecyulewalkerRange::sum(Self) -> Double
+pub fn SignalspecyulewalkerRange::to_string(Self) -> String
+
+pub(all) struct SignalspecyulewalkerSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalspecyulewalkerSeries::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerSeries::cumsum(Self) -> Self
+pub fn SignalspecyulewalkerSeries::len(Self) -> Int32
+pub fn SignalspecyulewalkerSeries::max(Self) -> Double
+pub fn SignalspecyulewalkerSeries::mean(Self) -> Double
+pub fn SignalspecyulewalkerSeries::median(Self) -> Double
+pub fn SignalspecyulewalkerSeries::min(Self) -> Double
+pub fn SignalspecyulewalkerSeries::normalize(Self) -> Self
+pub fn SignalspecyulewalkerSeries::range(Self) -> Double
+pub fn SignalspecyulewalkerSeries::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerSeries::std(Self) -> Double
+pub fn SignalspecyulewalkerSeries::sub(Self, Self) -> Self
+pub fn SignalspecyulewalkerSeries::sum(Self) -> Double
+pub fn SignalspecyulewalkerSeries::to_string(Self) -> String
+pub fn SignalspecyulewalkerSeries::variance(Self) -> Double
+
+pub(all) struct SignalspecyulewalkerSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecyulewalkerSlice::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerSlice::copy(Self) -> Self
+pub fn SignalspecyulewalkerSlice::fill(Self, Double) -> Self
+pub fn SignalspecyulewalkerSlice::get(Self, Int32) -> Double
+pub fn SignalspecyulewalkerSlice::len(Self) -> Int32
+pub fn SignalspecyulewalkerSlice::max(Self) -> Double
+pub fn SignalspecyulewalkerSlice::mean(Self) -> Double
+pub fn SignalspecyulewalkerSlice::min(Self) -> Double
+pub fn SignalspecyulewalkerSlice::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerSlice::set(Self, Int32, Double) -> Self
+pub fn SignalspecyulewalkerSlice::sum(Self) -> Double
+pub fn SignalspecyulewalkerSlice::to_string(Self) -> String
+
+pub(all) struct SignalspecyulewalkerTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecyulewalkerTable::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerTable::copy(Self) -> Self
+pub fn SignalspecyulewalkerTable::fill(Self, Double) -> Self
+pub fn SignalspecyulewalkerTable::get(Self, Int32) -> Double
+pub fn SignalspecyulewalkerTable::len(Self) -> Int32
+pub fn SignalspecyulewalkerTable::max(Self) -> Double
+pub fn SignalspecyulewalkerTable::mean(Self) -> Double
+pub fn SignalspecyulewalkerTable::min(Self) -> Double
+pub fn SignalspecyulewalkerTable::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerTable::set(Self, Int32, Double) -> Self
+pub fn SignalspecyulewalkerTable::sum(Self) -> Double
+pub fn SignalspecyulewalkerTable::to_string(Self) -> String
+
+pub(all) struct SignalspecyulewalkerVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalspecyulewalkerVector::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerVector::dist(Self, Self) -> Double
+pub fn SignalspecyulewalkerVector::dot(Self, Self) -> Double
+pub fn SignalspecyulewalkerVector::norm(Self) -> Double
+pub fn SignalspecyulewalkerVector::normalize(Self) -> Self
+pub fn SignalspecyulewalkerVector::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerVector::sub(Self, Self) -> Self
+pub fn SignalspecyulewalkerVector::to_string(Self) -> String
+
+pub(all) struct SignalspecyulewalkerView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecyulewalkerView::add(Self, Self) -> Self
+pub fn SignalspecyulewalkerView::copy(Self) -> Self
+pub fn SignalspecyulewalkerView::fill(Self, Double) -> Self
+pub fn SignalspecyulewalkerView::get(Self, Int32) -> Double
+pub fn SignalspecyulewalkerView::len(Self) -> Int32
+pub fn SignalspecyulewalkerView::max(Self) -> Double
+pub fn SignalspecyulewalkerView::mean(Self) -> Double
+pub fn SignalspecyulewalkerView::min(Self) -> Double
+pub fn SignalspecyulewalkerView::scale(Self, Double) -> Self
+pub fn SignalspecyulewalkerView::set(Self, Int32, Double) -> Self
+pub fn SignalspecyulewalkerView::sum(Self) -> Double
+pub fn SignalspecyulewalkerView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

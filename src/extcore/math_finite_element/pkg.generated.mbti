@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_finite_element"
+
+// Values
+pub fn math_finite_element_buffer_make(Int32) -> MathfiniteelementBuffer
+
+pub fn math_finite_element_cluster_make(Int32) -> MathfiniteelementCluster
+
+pub fn math_finite_element_cursor_make(Int32) -> MathfiniteelementCursor
+
+pub fn math_finite_element_edge_make(Int32) -> MathfiniteelementEdge
+
+pub fn math_finite_element_frame_make(Int32) -> MathfiniteelementFrame
+
+pub fn math_finite_element_graphn_make(Int32) -> MathfiniteelementGraphN
+
+pub fn math_finite_element_layer_make(Int32) -> MathfiniteelementLayer
+
+pub fn math_finite_element_make_matrix(Int32, Int32, Double) -> MathfiniteelementMatrix
+
+pub fn math_finite_element_make_point(Double, Double) -> MathfiniteelementPoint
+
+pub fn math_finite_element_make_point3(Double, Double, Double) -> MathfiniteelementPoint
+
+pub fn math_finite_element_make_series(Array[Double], String) -> MathfiniteelementSeries
+
+pub fn math_finite_element_make_vector(Array[Double]) -> MathfiniteelementVector
+
+pub fn math_finite_element_matrix_identity(Int32) -> MathfiniteelementMatrix
+
+pub fn math_finite_element_model_make(Int32) -> MathfiniteelementModel
+
+pub fn math_finite_element_node_make(Int32) -> MathfiniteelementNode
+
+pub fn math_finite_element_path_make(Int32) -> MathfiniteelementPath
+
+pub fn math_finite_element_range_make(Int32) -> MathfiniteelementRange
+
+pub fn math_finite_element_slice_make(Int32) -> MathfiniteelementSlice
+
+pub fn math_finite_element_table_make(Int32) -> MathfiniteelementTable
+
+pub fn math_finite_element_vector_zero(Int32) -> MathfiniteelementVector
+
+pub fn math_finite_element_view_make(Int32) -> MathfiniteelementView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathfiniteelementBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfiniteelementBuffer::add(Self, Self) -> Self
+pub fn MathfiniteelementBuffer::copy(Self) -> Self
+pub fn MathfiniteelementBuffer::fill(Self, Double) -> Self
+pub fn MathfiniteelementBuffer::get(Self, Int32) -> Double
+pub fn MathfiniteelementBuffer::len(Self) -> Int32
+pub fn MathfiniteelementBuffer::max(Self) -> Double
+pub fn MathfiniteelementBuffer::mean(Self) -> Double
+pub fn MathfiniteelementBuffer::min(Self) -> Double
+pub fn MathfiniteelementBuffer::scale(Self, Double) -> Self
+pub fn MathfiniteelementBuffer::set(Self, Int32, Double) -> Self
+pub fn MathfiniteelementBuffer::sum(Self) -> Double
+pub fn MathfiniteelementBuffer::to_string(Self) -> String
+
+pub(all) struct MathfiniteelementCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfiniteelementCluster::add(Self, Self) -> Self
+pub fn MathfiniteelementCluster::copy(Self) -> Self
+pub fn MathfiniteelementCluster::fill(Self, Double) -> Self
+pub fn MathfiniteelementCluster::get(Self, Int32) -> Double
+pub fn MathfiniteelementCluster::len(Self) -> Int32
+pub fn MathfiniteelementCluster::max(Self) -> Double
+pub fn MathfiniteelementCluster::mean(Self) -> Double
+pub fn MathfiniteelementCluster::min(Self) -> Double
+pub fn MathfiniteelementCluster::scale(Self, Double) -> Self
+pub fn MathfiniteelementCluster::set(Self, Int32, Double) -> Self
+pub fn MathfiniteelementCluster::sum(Self) -> Double
+pub fn MathfiniteelementCluster::to_string(Self) -> String
+
+pub(all) struct MathfiniteelementCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfiniteelementCursor::add(Self, Self) -> Self
+pub fn MathfiniteelementCursor::copy(Self) -> Self
+pub fn MathfiniteelementCursor::fill(Self, Double) -> Self
+pub fn MathfiniteelementCursor::get(Self, Int32) -> Double
+pub fn MathfiniteelementCursor::len(Self) -> Int32
+pub fn MathfiniteelementCursor::max(Self) -> Double
+pub fn MathfiniteelementCursor::mean(Self) -> Double
+pub fn MathfiniteelementCursor::min(Self) -> Double
+pub fn MathfiniteelementCursor::scale(Self, Double) -> Self
+pub fn MathfiniteelementCursor::set(Self, Int32, Double) -> Self
+pub fn MathfiniteelementCursor::sum(Self) -> Double
+pub fn MathfiniteelementCursor::to_string(Self) -> String
+
+pub(all) struct MathfiniteelementEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfiniteelementEdge::add(Self, Self) -> Self
+pub fn MathfiniteelementEdge::copy(Self) -> Self
+pub fn MathfiniteelementEdge::fill(Self, Double) -> Self
+pub fn MathfiniteelementEdge::get(Self, Int32) -> Double
+pub fn MathfiniteelementEdge::len(Self) -> Int32
+pub fn MathfiniteelementEdge::max(Self) -> Double
+pub fn MathfiniteelementEdge::mean(Self) -> Double
+pub fn MathfiniteelementEdge::min(Self) -> Double
+pub fn MathfiniteelementEdge::scale(Self, Double) -> Self
+pub fn MathfiniteelementEdge::set(Self, Int32, Double) -> Self
+pub fn MathfiniteelementEdge::sum(Self) -> Double
+pub fn MathfiniteelementEdge::to_string(Self) -> String
+
+pub(all) struct MathfiniteelementFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfiniteelementFrame::add(Self, Self) -> Self
+pub fn MathfiniteelementFrame::copy(Self) -> Self
+pub fn MathfiniteelementFrame::fill(Self, Double) -> Self
+pub fn MathfiniteelementFrame::get(Self, Int32) -> Double
+pub fn MathfiniteelementFrame::len(Self) -> Int32
+pub fn MathfiniteelementFrame::max(Self) -> Double
+pub fn MathfiniteelementFrame::mean(Self) -> Double
+pub fn MathfiniteelementFrame::min(Self) -> Double
+pub fn MathfiniteelementFrame::scale(Self, Double) -> Self
+pub fn MathfiniteelementFrame::set(Self, Int32, Double) -> Self
+pub fn MathfiniteelementFrame::sum(Self) -> Double
+pub fn MathfiniteelementFrame::to_string(Self) -> String
+
+pub(all) struct MathfiniteelementGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfiniteelementGraphN::add(Self, Self) -> Self
+pub fn MathfiniteelementGraphN::copy(Self) -> Self
+pub fn MathfiniteelementGraphN::fill(Self, Double) -> Self
+pub fn MathfiniteelementGraphN::get(Self, Int32) -> Double
+pub fn MathfiniteelementGraphN::len(Self) -> Int32
+pub fn MathfiniteelementGraphN::max(Self) -> Double
+pub fn MathfiniteelementGraphN::mean(Self) -> Double
+pub fn MathfiniteelementGraphN::min(Self) -> Double
+pub fn MathfiniteelementGraphN::scale(Self, Double) -> Self
+pub fn MathfiniteelementGraphN::set(Self, Int32, Double) -> Self
+pub fn MathfiniteelementGraphN::sum(Self) -> Double
+pub fn MathfiniteelementGraphN::to_string(Self) -> String
+
+pub(all) struct MathfiniteelementLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfiniteelementLayer::add(Self, Self) -> Self
+pub fn MathfiniteelementLayer::copy(Self) -> Self
+pub fn MathfiniteelementLayer::fill(Self, Double) -> Self
+pub fn MathfiniteelementLayer::get(Self, Int32) -> Double
+pub fn MathfiniteelementLayer::len(Self) -> Int32
+pub fn MathfiniteelementLayer::max(Self) -> Double
+pub fn MathfiniteelementLayer::mean(Self) -> Double
+pub fn MathfiniteelementLayer::min(Self) -> Double
+pub fn MathfiniteelementLayer::scale(Self, Double) -> Self
+pub fn MathfiniteelementLayer::set(Self, Int32, Double) -> Self
+pub fn MathfiniteelementLayer::sum(Self) -> Double
+pub fn MathfiniteelementLayer::to_string(Self) -> String
+
+pub(all) struct MathfiniteelementMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathfiniteelementMatrix::add(Self, Self) -> Self
+pub fn MathfiniteelementMatrix::det(Self) -> Double
+pub fn MathfiniteelementMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathfiniteelementMatrix::multiply(Self, Self) -> Self
+pub fn MathfiniteelementMatrix::norm(Self) -> Double
+pub fn MathfiniteelementMatrix::scale(Self, Double) -> Self
+pub fn MathfiniteelementMatrix::to_string(Self) -> String
+pub fn MathfiniteelementMatrix::trace(Self) -> Double
+pub fn MathfiniteelementMatrix::transpose(Self) -> Self
+
+pub(all) struct MathfiniteelementModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfiniteelementModel::add(Self, Self) -> Self
+pub fn MathfiniteelementModel::copy(Self) -> Self
+pub fn MathfiniteelementModel::fill(Self, Double) -> Self
+pub fn MathfiniteelementModel::get(Self, Int32) -> Double
+pub fn MathfiniteelementModel::len(Self) -> Int32
+pub fn MathfiniteelementModel::max(Self) -> Double
+pub fn MathfiniteelementModel::mean(Self) -> Double
+pub fn MathfiniteelementModel::min(Self) -> Double
+pub fn MathfiniteelementModel::scale(Self, Double) -> Self
+pub fn MathfiniteelementModel::set(Self, Int32, Double) -> Self
+pub fn MathfiniteelementModel::sum(Self) -> Double
+pub fn MathfiniteelementModel::to_string(Self) -> String
+
+pub(all) struct MathfiniteelementNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfiniteelementNode::add(Self, Self) -> Self
+pub fn MathfiniteelementNode::copy(Self) -> Self
+pub fn MathfiniteelementNode::fill(Self, Double) -> Self
+pub fn MathfiniteelementNode::get(Self, Int32) -> Double
+pub fn MathfiniteelementNode::len(Self) -> Int32
+pub fn MathfiniteelementNode::max(Self) -> Double
+pub fn MathfiniteelementNode::mean(Self) -> Double
+pub fn MathfiniteelementNode::min(Self) -> Double
+pub fn MathfiniteelementNode::scale(Self, Double) -> Self
+pub fn MathfiniteelementNode::set(Self, Int32, Double) -> Self
+pub fn MathfiniteelementNode::sum(Self) -> Double
+pub fn MathfiniteelementNode::to_string(Self) -> String
+
+pub(all) struct MathfiniteelementPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfiniteelementPath::add(Self, Self) -> Self
+pub fn MathfiniteelementPath::copy(Self) -> Self
+pub fn MathfiniteelementPath::fill(Self, Double) -> Self
+pub fn MathfiniteelementPath::get(Self, Int32) -> Double
+pub fn MathfiniteelementPath::len(Self) -> Int32
+pub fn MathfiniteelementPath::max(Self) -> Double
+pub fn MathfiniteelementPath::mean(Self) -> Double
+pub fn MathfiniteelementPath::min(Self) -> Double
+pub fn MathfiniteelementPath::scale(Self, Double) -> Self
+pub fn MathfiniteelementPath::set(Self, Int32, Double) -> Self
+pub fn MathfiniteelementPath::sum(Self) -> Double
+pub fn MathfiniteelementPath::to_string(Self) -> String
+
+pub(all) struct MathfiniteelementPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathfiniteelementPoint::add(Self, Self) -> Self
+pub fn MathfiniteelementPoint::cross(Self, Self) -> Self
+pub fn MathfiniteelementPoint::dist(Self, Self) -> Double
+pub fn MathfiniteelementPoint::dot(Self, Self) -> Double
+pub fn MathfiniteelementPoint::label(Self) -> Int32
+pub fn MathfiniteelementPoint::lerp(Self, Self, Double) -> Self
+pub fn MathfiniteelementPoint::mid(Self, Self) -> Self
+pub fn MathfiniteelementPoint::negate(Self) -> Self
+pub fn MathfiniteelementPoint::norm(Self) -> Double
+pub fn MathfiniteelementPoint::normalize(Self) -> Self
+pub fn MathfiniteelementPoint::scale(Self, Double) -> Self
+pub fn MathfiniteelementPoint::sub(Self, Self) -> Self
+pub fn MathfiniteelementPoint::to_string(Self) -> String
+pub fn MathfiniteelementPoint::x(Self) -> Double
+pub fn MathfiniteelementPoint::y(Self) -> Double
+pub fn MathfiniteelementPoint::z(Self) -> Double
+
+pub(all) struct MathfiniteelementRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfiniteelementRange::add(Self, Self) -> Self
+pub fn MathfiniteelementRange::copy(Self) -> Self
+pub fn MathfiniteelementRange::fill(Self, Double) -> Self
+pub fn MathfiniteelementRange::get(Self, Int32) -> Double
+pub fn MathfiniteelementRange::len(Self) -> Int32
+pub fn MathfiniteelementRange::max(Self) -> Double
+pub fn MathfiniteelementRange::mean(Self) -> Double
+pub fn MathfiniteelementRange::min(Self) -> Double
+pub fn MathfiniteelementRange::scale(Self, Double) -> Self
+pub fn MathfiniteelementRange::set(Self, Int32, Double) -> Self
+pub fn MathfiniteelementRange::sum(Self) -> Double
+pub fn MathfiniteelementRange::to_string(Self) -> String
+
+pub(all) struct MathfiniteelementSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathfiniteelementSeries::add(Self, Self) -> Self
+pub fn MathfiniteelementSeries::cumsum(Self) -> Self
+pub fn MathfiniteelementSeries::len(Self) -> Int32
+pub fn MathfiniteelementSeries::max(Self) -> Double
+pub fn MathfiniteelementSeries::mean(Self) -> Double
+pub fn MathfiniteelementSeries::median(Self) -> Double
+pub fn MathfiniteelementSeries::min(Self) -> Double
+pub fn MathfiniteelementSeries::normalize(Self) -> Self
+pub fn MathfiniteelementSeries::range(Self) -> Double
+pub fn MathfiniteelementSeries::scale(Self, Double) -> Self
+pub fn MathfiniteelementSeries::std(Self) -> Double
+pub fn MathfiniteelementSeries::sub(Self, Self) -> Self
+pub fn MathfiniteelementSeries::sum(Self) -> Double
+pub fn MathfiniteelementSeries::to_string(Self) -> String
+pub fn MathfiniteelementSeries::variance(Self) -> Double
+
+pub(all) struct MathfiniteelementSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfiniteelementSlice::add(Self, Self) -> Self
+pub fn MathfiniteelementSlice::copy(Self) -> Self
+pub fn MathfiniteelementSlice::fill(Self, Double) -> Self
+pub fn MathfiniteelementSlice::get(Self, Int32) -> Double
+pub fn MathfiniteelementSlice::len(Self) -> Int32
+pub fn MathfiniteelementSlice::max(Self) -> Double
+pub fn MathfiniteelementSlice::mean(Self) -> Double
+pub fn MathfiniteelementSlice::min(Self) -> Double
+pub fn MathfiniteelementSlice::scale(Self, Double) -> Self
+pub fn MathfiniteelementSlice::set(Self, Int32, Double) -> Self
+pub fn MathfiniteelementSlice::sum(Self) -> Double
+pub fn MathfiniteelementSlice::to_string(Self) -> String
+
+pub(all) struct MathfiniteelementTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfiniteelementTable::add(Self, Self) -> Self
+pub fn MathfiniteelementTable::copy(Self) -> Self
+pub fn MathfiniteelementTable::fill(Self, Double) -> Self
+pub fn MathfiniteelementTable::get(Self, Int32) -> Double
+pub fn MathfiniteelementTable::len(Self) -> Int32
+pub fn MathfiniteelementTable::max(Self) -> Double
+pub fn MathfiniteelementTable::mean(Self) -> Double
+pub fn MathfiniteelementTable::min(Self) -> Double
+pub fn MathfiniteelementTable::scale(Self, Double) -> Self
+pub fn MathfiniteelementTable::set(Self, Int32, Double) -> Self
+pub fn MathfiniteelementTable::sum(Self) -> Double
+pub fn MathfiniteelementTable::to_string(Self) -> String
+
+pub(all) struct MathfiniteelementVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathfiniteelementVector::add(Self, Self) -> Self
+pub fn MathfiniteelementVector::dist(Self, Self) -> Double
+pub fn MathfiniteelementVector::dot(Self, Self) -> Double
+pub fn MathfiniteelementVector::norm(Self) -> Double
+pub fn MathfiniteelementVector::normalize(Self) -> Self
+pub fn MathfiniteelementVector::scale(Self, Double) -> Self
+pub fn MathfiniteelementVector::sub(Self, Self) -> Self
+pub fn MathfiniteelementVector::to_string(Self) -> String
+
+pub(all) struct MathfiniteelementView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfiniteelementView::add(Self, Self) -> Self
+pub fn MathfiniteelementView::copy(Self) -> Self
+pub fn MathfiniteelementView::fill(Self, Double) -> Self
+pub fn MathfiniteelementView::get(Self, Int32) -> Double
+pub fn MathfiniteelementView::len(Self) -> Int32
+pub fn MathfiniteelementView::max(Self) -> Double
+pub fn MathfiniteelementView::mean(Self) -> Double
+pub fn MathfiniteelementView::min(Self) -> Double
+pub fn MathfiniteelementView::scale(Self, Double) -> Self
+pub fn MathfiniteelementView::set(Self, Int32, Double) -> Self
+pub fn MathfiniteelementView::sum(Self) -> Double
+pub fn MathfiniteelementView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

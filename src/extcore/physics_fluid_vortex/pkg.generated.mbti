@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_fluid_vortex"
+
+// Values
+pub fn physics_fluid_vortex_buffer_make(Int32) -> PhysicsfluidvortexBuffer
+
+pub fn physics_fluid_vortex_cluster_make(Int32) -> PhysicsfluidvortexCluster
+
+pub fn physics_fluid_vortex_cursor_make(Int32) -> PhysicsfluidvortexCursor
+
+pub fn physics_fluid_vortex_edge_make(Int32) -> PhysicsfluidvortexEdge
+
+pub fn physics_fluid_vortex_frame_make(Int32) -> PhysicsfluidvortexFrame
+
+pub fn physics_fluid_vortex_graphn_make(Int32) -> PhysicsfluidvortexGraphN
+
+pub fn physics_fluid_vortex_layer_make(Int32) -> PhysicsfluidvortexLayer
+
+pub fn physics_fluid_vortex_make_matrix(Int32, Int32, Double) -> PhysicsfluidvortexMatrix
+
+pub fn physics_fluid_vortex_make_point(Double, Double) -> PhysicsfluidvortexPoint
+
+pub fn physics_fluid_vortex_make_point3(Double, Double, Double) -> PhysicsfluidvortexPoint
+
+pub fn physics_fluid_vortex_make_series(Array[Double], String) -> PhysicsfluidvortexSeries
+
+pub fn physics_fluid_vortex_make_vector(Array[Double]) -> PhysicsfluidvortexVector
+
+pub fn physics_fluid_vortex_matrix_identity(Int32) -> PhysicsfluidvortexMatrix
+
+pub fn physics_fluid_vortex_model_make(Int32) -> PhysicsfluidvortexModel
+
+pub fn physics_fluid_vortex_node_make(Int32) -> PhysicsfluidvortexNode
+
+pub fn physics_fluid_vortex_path_make(Int32) -> PhysicsfluidvortexPath
+
+pub fn physics_fluid_vortex_range_make(Int32) -> PhysicsfluidvortexRange
+
+pub fn physics_fluid_vortex_slice_make(Int32) -> PhysicsfluidvortexSlice
+
+pub fn physics_fluid_vortex_table_make(Int32) -> PhysicsfluidvortexTable
+
+pub fn physics_fluid_vortex_vector_zero(Int32) -> PhysicsfluidvortexVector
+
+pub fn physics_fluid_vortex_view_make(Int32) -> PhysicsfluidvortexView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsfluidvortexBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvortexBuffer::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexBuffer::copy(Self) -> Self
+pub fn PhysicsfluidvortexBuffer::fill(Self, Double) -> Self
+pub fn PhysicsfluidvortexBuffer::get(Self, Int32) -> Double
+pub fn PhysicsfluidvortexBuffer::len(Self) -> Int32
+pub fn PhysicsfluidvortexBuffer::max(Self) -> Double
+pub fn PhysicsfluidvortexBuffer::mean(Self) -> Double
+pub fn PhysicsfluidvortexBuffer::min(Self) -> Double
+pub fn PhysicsfluidvortexBuffer::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvortexBuffer::sum(Self) -> Double
+pub fn PhysicsfluidvortexBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvortexCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvortexCluster::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexCluster::copy(Self) -> Self
+pub fn PhysicsfluidvortexCluster::fill(Self, Double) -> Self
+pub fn PhysicsfluidvortexCluster::get(Self, Int32) -> Double
+pub fn PhysicsfluidvortexCluster::len(Self) -> Int32
+pub fn PhysicsfluidvortexCluster::max(Self) -> Double
+pub fn PhysicsfluidvortexCluster::mean(Self) -> Double
+pub fn PhysicsfluidvortexCluster::min(Self) -> Double
+pub fn PhysicsfluidvortexCluster::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvortexCluster::sum(Self) -> Double
+pub fn PhysicsfluidvortexCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvortexCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvortexCursor::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexCursor::copy(Self) -> Self
+pub fn PhysicsfluidvortexCursor::fill(Self, Double) -> Self
+pub fn PhysicsfluidvortexCursor::get(Self, Int32) -> Double
+pub fn PhysicsfluidvortexCursor::len(Self) -> Int32
+pub fn PhysicsfluidvortexCursor::max(Self) -> Double
+pub fn PhysicsfluidvortexCursor::mean(Self) -> Double
+pub fn PhysicsfluidvortexCursor::min(Self) -> Double
+pub fn PhysicsfluidvortexCursor::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvortexCursor::sum(Self) -> Double
+pub fn PhysicsfluidvortexCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvortexEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvortexEdge::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexEdge::copy(Self) -> Self
+pub fn PhysicsfluidvortexEdge::fill(Self, Double) -> Self
+pub fn PhysicsfluidvortexEdge::get(Self, Int32) -> Double
+pub fn PhysicsfluidvortexEdge::len(Self) -> Int32
+pub fn PhysicsfluidvortexEdge::max(Self) -> Double
+pub fn PhysicsfluidvortexEdge::mean(Self) -> Double
+pub fn PhysicsfluidvortexEdge::min(Self) -> Double
+pub fn PhysicsfluidvortexEdge::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvortexEdge::sum(Self) -> Double
+pub fn PhysicsfluidvortexEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvortexFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvortexFrame::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexFrame::copy(Self) -> Self
+pub fn PhysicsfluidvortexFrame::fill(Self, Double) -> Self
+pub fn PhysicsfluidvortexFrame::get(Self, Int32) -> Double
+pub fn PhysicsfluidvortexFrame::len(Self) -> Int32
+pub fn PhysicsfluidvortexFrame::max(Self) -> Double
+pub fn PhysicsfluidvortexFrame::mean(Self) -> Double
+pub fn PhysicsfluidvortexFrame::min(Self) -> Double
+pub fn PhysicsfluidvortexFrame::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvortexFrame::sum(Self) -> Double
+pub fn PhysicsfluidvortexFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvortexGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvortexGraphN::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexGraphN::copy(Self) -> Self
+pub fn PhysicsfluidvortexGraphN::fill(Self, Double) -> Self
+pub fn PhysicsfluidvortexGraphN::get(Self, Int32) -> Double
+pub fn PhysicsfluidvortexGraphN::len(Self) -> Int32
+pub fn PhysicsfluidvortexGraphN::max(Self) -> Double
+pub fn PhysicsfluidvortexGraphN::mean(Self) -> Double
+pub fn PhysicsfluidvortexGraphN::min(Self) -> Double
+pub fn PhysicsfluidvortexGraphN::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvortexGraphN::sum(Self) -> Double
+pub fn PhysicsfluidvortexGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvortexLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvortexLayer::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexLayer::copy(Self) -> Self
+pub fn PhysicsfluidvortexLayer::fill(Self, Double) -> Self
+pub fn PhysicsfluidvortexLayer::get(Self, Int32) -> Double
+pub fn PhysicsfluidvortexLayer::len(Self) -> Int32
+pub fn PhysicsfluidvortexLayer::max(Self) -> Double
+pub fn PhysicsfluidvortexLayer::mean(Self) -> Double
+pub fn PhysicsfluidvortexLayer::min(Self) -> Double
+pub fn PhysicsfluidvortexLayer::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvortexLayer::sum(Self) -> Double
+pub fn PhysicsfluidvortexLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvortexMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsfluidvortexMatrix::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexMatrix::det(Self) -> Double
+pub fn PhysicsfluidvortexMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsfluidvortexMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsfluidvortexMatrix::norm(Self) -> Double
+pub fn PhysicsfluidvortexMatrix::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexMatrix::to_string(Self) -> String
+pub fn PhysicsfluidvortexMatrix::trace(Self) -> Double
+pub fn PhysicsfluidvortexMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsfluidvortexModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvortexModel::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexModel::copy(Self) -> Self
+pub fn PhysicsfluidvortexModel::fill(Self, Double) -> Self
+pub fn PhysicsfluidvortexModel::get(Self, Int32) -> Double
+pub fn PhysicsfluidvortexModel::len(Self) -> Int32
+pub fn PhysicsfluidvortexModel::max(Self) -> Double
+pub fn PhysicsfluidvortexModel::mean(Self) -> Double
+pub fn PhysicsfluidvortexModel::min(Self) -> Double
+pub fn PhysicsfluidvortexModel::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvortexModel::sum(Self) -> Double
+pub fn PhysicsfluidvortexModel::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvortexNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvortexNode::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexNode::copy(Self) -> Self
+pub fn PhysicsfluidvortexNode::fill(Self, Double) -> Self
+pub fn PhysicsfluidvortexNode::get(Self, Int32) -> Double
+pub fn PhysicsfluidvortexNode::len(Self) -> Int32
+pub fn PhysicsfluidvortexNode::max(Self) -> Double
+pub fn PhysicsfluidvortexNode::mean(Self) -> Double
+pub fn PhysicsfluidvortexNode::min(Self) -> Double
+pub fn PhysicsfluidvortexNode::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvortexNode::sum(Self) -> Double
+pub fn PhysicsfluidvortexNode::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvortexPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvortexPath::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexPath::copy(Self) -> Self
+pub fn PhysicsfluidvortexPath::fill(Self, Double) -> Self
+pub fn PhysicsfluidvortexPath::get(Self, Int32) -> Double
+pub fn PhysicsfluidvortexPath::len(Self) -> Int32
+pub fn PhysicsfluidvortexPath::max(Self) -> Double
+pub fn PhysicsfluidvortexPath::mean(Self) -> Double
+pub fn PhysicsfluidvortexPath::min(Self) -> Double
+pub fn PhysicsfluidvortexPath::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvortexPath::sum(Self) -> Double
+pub fn PhysicsfluidvortexPath::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvortexPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsfluidvortexPoint::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexPoint::cross(Self, Self) -> Self
+pub fn PhysicsfluidvortexPoint::dist(Self, Self) -> Double
+pub fn PhysicsfluidvortexPoint::dot(Self, Self) -> Double
+pub fn PhysicsfluidvortexPoint::label(Self) -> Int32
+pub fn PhysicsfluidvortexPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsfluidvortexPoint::mid(Self, Self) -> Self
+pub fn PhysicsfluidvortexPoint::negate(Self) -> Self
+pub fn PhysicsfluidvortexPoint::norm(Self) -> Double
+pub fn PhysicsfluidvortexPoint::normalize(Self) -> Self
+pub fn PhysicsfluidvortexPoint::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexPoint::sub(Self, Self) -> Self
+pub fn PhysicsfluidvortexPoint::to_string(Self) -> String
+pub fn PhysicsfluidvortexPoint::x(Self) -> Double
+pub fn PhysicsfluidvortexPoint::y(Self) -> Double
+pub fn PhysicsfluidvortexPoint::z(Self) -> Double
+
+pub(all) struct PhysicsfluidvortexRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvortexRange::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexRange::copy(Self) -> Self
+pub fn PhysicsfluidvortexRange::fill(Self, Double) -> Self
+pub fn PhysicsfluidvortexRange::get(Self, Int32) -> Double
+pub fn PhysicsfluidvortexRange::len(Self) -> Int32
+pub fn PhysicsfluidvortexRange::max(Self) -> Double
+pub fn PhysicsfluidvortexRange::mean(Self) -> Double
+pub fn PhysicsfluidvortexRange::min(Self) -> Double
+pub fn PhysicsfluidvortexRange::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvortexRange::sum(Self) -> Double
+pub fn PhysicsfluidvortexRange::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvortexSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsfluidvortexSeries::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexSeries::cumsum(Self) -> Self
+pub fn PhysicsfluidvortexSeries::len(Self) -> Int32
+pub fn PhysicsfluidvortexSeries::max(Self) -> Double
+pub fn PhysicsfluidvortexSeries::mean(Self) -> Double
+pub fn PhysicsfluidvortexSeries::median(Self) -> Double
+pub fn PhysicsfluidvortexSeries::min(Self) -> Double
+pub fn PhysicsfluidvortexSeries::normalize(Self) -> Self
+pub fn PhysicsfluidvortexSeries::range(Self) -> Double
+pub fn PhysicsfluidvortexSeries::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexSeries::std(Self) -> Double
+pub fn PhysicsfluidvortexSeries::sub(Self, Self) -> Self
+pub fn PhysicsfluidvortexSeries::sum(Self) -> Double
+pub fn PhysicsfluidvortexSeries::to_string(Self) -> String
+pub fn PhysicsfluidvortexSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsfluidvortexSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvortexSlice::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexSlice::copy(Self) -> Self
+pub fn PhysicsfluidvortexSlice::fill(Self, Double) -> Self
+pub fn PhysicsfluidvortexSlice::get(Self, Int32) -> Double
+pub fn PhysicsfluidvortexSlice::len(Self) -> Int32
+pub fn PhysicsfluidvortexSlice::max(Self) -> Double
+pub fn PhysicsfluidvortexSlice::mean(Self) -> Double
+pub fn PhysicsfluidvortexSlice::min(Self) -> Double
+pub fn PhysicsfluidvortexSlice::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvortexSlice::sum(Self) -> Double
+pub fn PhysicsfluidvortexSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvortexTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvortexTable::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexTable::copy(Self) -> Self
+pub fn PhysicsfluidvortexTable::fill(Self, Double) -> Self
+pub fn PhysicsfluidvortexTable::get(Self, Int32) -> Double
+pub fn PhysicsfluidvortexTable::len(Self) -> Int32
+pub fn PhysicsfluidvortexTable::max(Self) -> Double
+pub fn PhysicsfluidvortexTable::mean(Self) -> Double
+pub fn PhysicsfluidvortexTable::min(Self) -> Double
+pub fn PhysicsfluidvortexTable::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvortexTable::sum(Self) -> Double
+pub fn PhysicsfluidvortexTable::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvortexVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsfluidvortexVector::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexVector::dist(Self, Self) -> Double
+pub fn PhysicsfluidvortexVector::dot(Self, Self) -> Double
+pub fn PhysicsfluidvortexVector::norm(Self) -> Double
+pub fn PhysicsfluidvortexVector::normalize(Self) -> Self
+pub fn PhysicsfluidvortexVector::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexVector::sub(Self, Self) -> Self
+pub fn PhysicsfluidvortexVector::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvortexView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvortexView::add(Self, Self) -> Self
+pub fn PhysicsfluidvortexView::copy(Self) -> Self
+pub fn PhysicsfluidvortexView::fill(Self, Double) -> Self
+pub fn PhysicsfluidvortexView::get(Self, Int32) -> Double
+pub fn PhysicsfluidvortexView::len(Self) -> Int32
+pub fn PhysicsfluidvortexView::max(Self) -> Double
+pub fn PhysicsfluidvortexView::mean(Self) -> Double
+pub fn PhysicsfluidvortexView::min(Self) -> Double
+pub fn PhysicsfluidvortexView::scale(Self, Double) -> Self
+pub fn PhysicsfluidvortexView::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvortexView::sum(Self) -> Double
+pub fn PhysicsfluidvortexView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

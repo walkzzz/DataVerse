@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/motion_plan"
+
+// Values
+pub fn motion_plan_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn motion_plan_corr(Array[Double], Array[Double]) -> Double
+
+pub fn motion_plan_cov(Array[Double], Array[Double]) -> Double
+
+pub fn motion_plan_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn motion_plan_mae(Array[Double], Array[Double]) -> Double
+
+pub fn motion_plan_make_labeled_point(Double, Double, Int32) -> Motion_planPoint
+
+pub fn motion_plan_make_matrix(Int32, Int32, Double) -> Motion_planMatrix
+
+pub fn motion_plan_make_point(Double, Double) -> Motion_planPoint
+
+pub fn motion_plan_make_series(Array[Double], String) -> Motion_planSeries
+
+pub fn motion_plan_make_vector(Array[Double]) -> Motion_planVector
+
+pub fn motion_plan_matrix_add(Motion_planMatrix, Motion_planMatrix) -> Motion_planMatrix
+
+pub fn motion_plan_matrix_get(Motion_planMatrix, Int32, Int32) -> Double
+
+pub fn motion_plan_matrix_identity(Int32) -> Motion_planMatrix
+
+pub fn motion_plan_matrix_multiply(Motion_planMatrix, Motion_planMatrix) -> Motion_planMatrix
+
+pub fn motion_plan_matrix_norm(Motion_planMatrix) -> Double
+
+pub fn motion_plan_matrix_scale(Motion_planMatrix, Double) -> Motion_planMatrix
+
+pub fn motion_plan_matrix_to_string(Motion_planMatrix) -> String
+
+pub fn motion_plan_matrix_trace(Motion_planMatrix) -> Double
+
+pub fn motion_plan_matrix_transpose(Motion_planMatrix) -> Motion_planMatrix
+
+pub fn motion_plan_mse(Array[Double], Array[Double]) -> Double
+
+pub fn motion_plan_point_add(Motion_planPoint, Motion_planPoint) -> Motion_planPoint
+
+pub fn motion_plan_point_dist(Motion_planPoint, Motion_planPoint) -> Double
+
+pub fn motion_plan_point_dot(Motion_planPoint, Motion_planPoint) -> Double
+
+pub fn motion_plan_point_label(Motion_planPoint) -> Int32
+
+pub fn motion_plan_point_norm(Motion_planPoint) -> Double
+
+pub fn motion_plan_point_scale(Motion_planPoint, Double) -> Motion_planPoint
+
+pub fn motion_plan_point_sub(Motion_planPoint, Motion_planPoint) -> Motion_planPoint
+
+pub fn motion_plan_point_to_string(Motion_planPoint) -> String
+
+pub fn motion_plan_point_x(Motion_planPoint) -> Double
+
+pub fn motion_plan_point_y(Motion_planPoint) -> Double
+
+pub fn motion_plan_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn motion_plan_r2(Array[Double], Array[Double]) -> Double
+
+pub fn motion_plan_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn motion_plan_series_add(Motion_planSeries, Motion_planSeries) -> Motion_planSeries
+
+pub fn motion_plan_series_len(Motion_planSeries) -> Int32
+
+pub fn motion_plan_series_max(Motion_planSeries) -> Double
+
+pub fn motion_plan_series_mean(Motion_planSeries) -> Double
+
+pub fn motion_plan_series_min(Motion_planSeries) -> Double
+
+pub fn motion_plan_series_scale(Motion_planSeries, Double) -> Motion_planSeries
+
+pub fn motion_plan_series_std(Motion_planSeries) -> Double
+
+pub fn motion_plan_series_sum(Motion_planSeries) -> Double
+
+pub fn motion_plan_series_to_string(Motion_planSeries) -> String
+
+pub fn motion_plan_series_var(Motion_planSeries) -> Double
+
+pub fn motion_plan_std(Array[Double]) -> Double
+
+pub fn motion_plan_var(Array[Double]) -> Double
+
+pub fn motion_plan_vector_add(Motion_planVector, Motion_planVector) -> Motion_planVector
+
+pub fn motion_plan_vector_dist(Motion_planVector, Motion_planVector) -> Double
+
+pub fn motion_plan_vector_dot(Motion_planVector, Motion_planVector) -> Double
+
+pub fn motion_plan_vector_norm(Motion_planVector) -> Double
+
+pub fn motion_plan_vector_normalize(Motion_planVector) -> Motion_planVector
+
+pub fn motion_plan_vector_scale(Motion_planVector, Double) -> Motion_planVector
+
+pub fn motion_plan_vector_sub(Motion_planVector, Motion_planVector) -> Motion_planVector
+
+pub fn motion_plan_vector_to_string(Motion_planVector) -> String
+
+pub fn motion_plan_vector_zero(Int32) -> Motion_planVector
+
+// Errors
+
+// Types and methods
+pub struct Motion_planMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Motion_planPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Motion_planSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Motion_planVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

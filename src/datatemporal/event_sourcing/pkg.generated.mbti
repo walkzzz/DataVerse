@@ -1,0 +1,271 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/event_sourcing"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn aggregate_apply(Aggregate, Event) -> Aggregate
+
+pub fn aggregate_id(String, Int32) -> String
+
+pub fn aggregate_state(Aggregate) -> String
+
+pub fn command_execute(Command, Int32) -> Event
+
+pub fn command_validate(Command) -> Bool
+
+pub fn correlation_id(String, Int32) -> String
+
+pub fn cqrs_command_side(Cqrs, Command, Int32) -> Cqrs
+
+pub fn cqrs_query_side(Cqrs, String) -> String
+
+pub fn cqrs_sync(Cqrs) -> Cqrs
+
+pub fn dead_letter_queue(DeadLetter, Event) -> DeadLetter
+
+pub fn event_aggregate_version(Array[Event], String) -> Int32
+
+pub fn event_archive(Array[Event], Int32) -> (Array[Event], Array[Event])
+
+pub fn event_batch_load(EventStore, Array[String]) -> Array[Event]
+
+pub fn event_batch_size(Int32, Int32) -> Int32
+
+pub fn event_batch_store(EventStore, Array[Event]) -> EventStore
+
+pub fn event_causality(Event, Event) -> Bool
+
+pub fn event_compact(EventStore) -> EventStore
+
+pub fn event_count_by_type(Array[Event], String) -> Int32
+
+pub fn event_dedup(Array[Event]) -> Array[Event]
+
+pub fn event_dependency(Event, Event) -> Bool
+
+pub fn event_deserialize(String) -> Event
+
+pub fn event_filter_by_type(Array[Event], String) -> Array[Event]
+
+pub fn event_id_gen(String, Int32) -> String
+
+pub fn event_idempotent(Array[Event], Event) -> Bool
+
+pub fn event_order(Event, Event) -> Int32
+
+pub fn event_ordering(Array[Event]) -> Array[Event]
+
+pub fn event_replay_from(Array[Event], Int32) -> Array[Event]
+
+pub fn event_replay_range(Array[Event], Int32, Int32) -> Array[Event]
+
+pub fn event_replay_to(Array[Event], Int32) -> Array[Event]
+
+pub fn event_restore(Array[Event], Array[Event]) -> Array[Event]
+
+pub fn event_serialize(Event) -> String
+
+pub fn event_sourcing_id() -> String
+
+pub fn event_store_clear(EventStore) -> EventStore
+
+pub fn event_store_merge(EventStore, EventStore) -> EventStore
+
+pub fn event_store_size(EventStore) -> Int32
+
+pub fn event_timestamp_range(Array[Event]) -> (Int32, Int32)
+
+pub fn event_ttl_check(Array[Event], Int32, Int32) -> Array[Event]
+
+pub fn load_events(EventStore, String) -> Array[Event]
+
+pub fn make_aggregate(String) -> Aggregate
+
+pub fn make_command(String, String, String, String) -> Command
+
+pub fn make_cqrs(String, String) -> Cqrs
+
+pub fn make_dead_letter(Int32) -> DeadLetter
+
+pub fn make_event(String, String, String, String, Int32) -> Event
+
+pub fn make_event_bus(String) -> EventBus
+
+pub fn make_event_store(String) -> EventStore
+
+pub fn make_event_version(Int32, Int32, Int32) -> EventVersion
+
+pub fn make_projection(String) -> Projection
+
+pub fn make_saga(String, Array[String], Array[String]) -> Saga
+
+pub fn make_snapshot(String, String, Int32) -> Snapshot
+
+pub fn make_subscription(String, String, Array[String]) -> Subscription
+
+pub fn notify(Subscription, Event) -> Bool
+
+pub fn projection_apply(Projection, Event) -> Projection
+
+pub fn projection_query(Projection, String) -> String
+
+pub fn projection_rebuild(Projection, Array[Event]) -> Projection
+
+pub fn publish_event(EventBus, Event) -> Int32
+
+pub fn replay_events(Array[Event]) -> String
+
+pub fn retry_event(DeadLetter, Int32) -> Bool
+
+pub fn saga_compensate(Saga) -> Saga
+
+pub fn saga_execute(Saga) -> Saga
+
+pub fn saga_rollback(Saga) -> Saga
+
+pub fn saga_status(Saga) -> String
+
+pub fn snapshot_interval(Int32, Int32) -> Int32
+
+pub fn snapshot_load(Snapshot) -> Aggregate
+
+pub fn snapshot_replay(Snapshot, Array[Event]) -> Aggregate
+
+pub fn snapshot_save(Aggregate, Int32) -> Snapshot
+
+pub fn store_event(EventStore, Event) -> EventStore
+
+pub fn subscribe(String, String, Array[String]) -> Subscription
+
+pub fn subscribe_event(EventBus, Subscription) -> EventBus
+
+pub fn subscription_count(Array[Subscription]) -> Int32
+
+pub fn unsubscribe(Subscription) -> Subscription
+
+pub fn version_check(EventVersion, EventVersion) -> Bool
+
+pub fn version_compare(EventVersion, EventVersion) -> Int32
+
+pub fn version_upgrade(EventVersion) -> EventVersion
+
+// Errors
+
+// Types and methods
+pub struct Aggregate {
+  id : String
+  state : String
+  version : Int32
+} derive(Eq, @debug.Debug)
+pub fn Aggregate::equal(Self, Self) -> Bool
+pub fn Aggregate::not_equal(Self, Self) -> Bool
+pub fn Aggregate::to_repr(Self) -> @debug.Repr
+
+pub struct Command {
+  id : String
+  aggregate_id : String
+  command_type : String
+  payload : String
+} derive(Eq, @debug.Debug)
+pub fn Command::equal(Self, Self) -> Bool
+pub fn Command::not_equal(Self, Self) -> Bool
+pub fn Command::to_repr(Self) -> @debug.Repr
+
+pub struct Cqrs {
+  command_store : EventStore
+  query_projection : Projection
+} derive(Eq, @debug.Debug)
+pub fn Cqrs::equal(Self, Self) -> Bool
+pub fn Cqrs::not_equal(Self, Self) -> Bool
+pub fn Cqrs::to_repr(Self) -> @debug.Repr
+
+pub struct DeadLetter {
+  queue : Array[Event]
+  max_retries : Int32
+} derive(Eq, @debug.Debug)
+pub fn DeadLetter::equal(Self, Self) -> Bool
+pub fn DeadLetter::not_equal(Self, Self) -> Bool
+pub fn DeadLetter::to_repr(Self) -> @debug.Repr
+
+pub struct Event {
+  id : String
+  aggregate_id : String
+  event_type : String
+  payload : String
+  timestamp : Int32
+  version : Int32
+} derive(Eq, @debug.Debug)
+pub fn Event::equal(Self, Self) -> Bool
+pub fn Event::not_equal(Self, Self) -> Bool
+pub fn Event::to_repr(Self) -> @debug.Repr
+
+pub struct EventBus {
+  name : String
+  subscribers : Array[Subscription]
+} derive(Eq, @debug.Debug)
+pub fn EventBus::equal(Self, Self) -> Bool
+pub fn EventBus::not_equal(Self, Self) -> Bool
+pub fn EventBus::to_repr(Self) -> @debug.Repr
+
+pub struct EventStore {
+  id : String
+  events : Array[Event]
+  next_version : Int32
+} derive(Eq, @debug.Debug)
+pub fn EventStore::equal(Self, Self) -> Bool
+pub fn EventStore::not_equal(Self, Self) -> Bool
+pub fn EventStore::to_repr(Self) -> @debug.Repr
+
+pub struct EventVersion {
+  major : Int32
+  minor : Int32
+  patch : Int32
+} derive(Eq, @debug.Debug)
+pub fn EventVersion::equal(Self, Self) -> Bool
+pub fn EventVersion::not_equal(Self, Self) -> Bool
+pub fn EventVersion::to_repr(Self) -> @debug.Repr
+
+pub struct Projection {
+  name : String
+  read_model : Array[(String, String)]
+} derive(Eq, @debug.Debug)
+pub fn Projection::equal(Self, Self) -> Bool
+pub fn Projection::not_equal(Self, Self) -> Bool
+pub fn Projection::to_repr(Self) -> @debug.Repr
+
+pub struct Saga {
+  id : String
+  steps : Array[String]
+  compensations : Array[String]
+  current_step : Int32
+} derive(Eq, @debug.Debug)
+pub fn Saga::equal(Self, Self) -> Bool
+pub fn Saga::not_equal(Self, Self) -> Bool
+pub fn Saga::to_repr(Self) -> @debug.Repr
+
+pub struct Snapshot {
+  aggregate_id : String
+  state : String
+  version : Int32
+  timestamp : Int32
+} derive(Eq, @debug.Debug)
+pub fn Snapshot::equal(Self, Self) -> Bool
+pub fn Snapshot::not_equal(Self, Self) -> Bool
+pub fn Snapshot::to_repr(Self) -> @debug.Repr
+
+pub struct Subscription {
+  id : String
+  subscriber : String
+  event_types : Array[String]
+  active : Bool
+} derive(Eq, @debug.Debug)
+pub fn Subscription::equal(Self, Self) -> Bool
+pub fn Subscription::not_equal(Self, Self) -> Bool
+pub fn Subscription::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

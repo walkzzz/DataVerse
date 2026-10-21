@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_forecast_seasonal"
+
+// Values
+pub fn timeseries_forecast_seasonal_buffer_make(Int32) -> TimeseriesforecastseasonalBuffer
+
+pub fn timeseries_forecast_seasonal_cluster_make(Int32) -> TimeseriesforecastseasonalCluster
+
+pub fn timeseries_forecast_seasonal_cursor_make(Int32) -> TimeseriesforecastseasonalCursor
+
+pub fn timeseries_forecast_seasonal_edge_make(Int32) -> TimeseriesforecastseasonalEdge
+
+pub fn timeseries_forecast_seasonal_frame_make(Int32) -> TimeseriesforecastseasonalFrame
+
+pub fn timeseries_forecast_seasonal_graphn_make(Int32) -> TimeseriesforecastseasonalGraphN
+
+pub fn timeseries_forecast_seasonal_layer_make(Int32) -> TimeseriesforecastseasonalLayer
+
+pub fn timeseries_forecast_seasonal_make_matrix(Int32, Int32, Double) -> TimeseriesforecastseasonalMatrix
+
+pub fn timeseries_forecast_seasonal_make_point(Double, Double) -> TimeseriesforecastseasonalPoint
+
+pub fn timeseries_forecast_seasonal_make_point3(Double, Double, Double) -> TimeseriesforecastseasonalPoint
+
+pub fn timeseries_forecast_seasonal_make_series(Array[Double], String) -> TimeseriesforecastseasonalSeries
+
+pub fn timeseries_forecast_seasonal_make_vector(Array[Double]) -> TimeseriesforecastseasonalVector
+
+pub fn timeseries_forecast_seasonal_matrix_identity(Int32) -> TimeseriesforecastseasonalMatrix
+
+pub fn timeseries_forecast_seasonal_model_make(Int32) -> TimeseriesforecastseasonalModel
+
+pub fn timeseries_forecast_seasonal_node_make(Int32) -> TimeseriesforecastseasonalNode
+
+pub fn timeseries_forecast_seasonal_path_make(Int32) -> TimeseriesforecastseasonalPath
+
+pub fn timeseries_forecast_seasonal_range_make(Int32) -> TimeseriesforecastseasonalRange
+
+pub fn timeseries_forecast_seasonal_slice_make(Int32) -> TimeseriesforecastseasonalSlice
+
+pub fn timeseries_forecast_seasonal_table_make(Int32) -> TimeseriesforecastseasonalTable
+
+pub fn timeseries_forecast_seasonal_vector_zero(Int32) -> TimeseriesforecastseasonalVector
+
+pub fn timeseries_forecast_seasonal_view_make(Int32) -> TimeseriesforecastseasonalView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriesforecastseasonalBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastseasonalBuffer::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalBuffer::copy(Self) -> Self
+pub fn TimeseriesforecastseasonalBuffer::fill(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalBuffer::get(Self, Int32) -> Double
+pub fn TimeseriesforecastseasonalBuffer::len(Self) -> Int32
+pub fn TimeseriesforecastseasonalBuffer::max(Self) -> Double
+pub fn TimeseriesforecastseasonalBuffer::mean(Self) -> Double
+pub fn TimeseriesforecastseasonalBuffer::min(Self) -> Double
+pub fn TimeseriesforecastseasonalBuffer::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastseasonalBuffer::sum(Self) -> Double
+pub fn TimeseriesforecastseasonalBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastseasonalCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastseasonalCluster::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalCluster::copy(Self) -> Self
+pub fn TimeseriesforecastseasonalCluster::fill(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalCluster::get(Self, Int32) -> Double
+pub fn TimeseriesforecastseasonalCluster::len(Self) -> Int32
+pub fn TimeseriesforecastseasonalCluster::max(Self) -> Double
+pub fn TimeseriesforecastseasonalCluster::mean(Self) -> Double
+pub fn TimeseriesforecastseasonalCluster::min(Self) -> Double
+pub fn TimeseriesforecastseasonalCluster::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastseasonalCluster::sum(Self) -> Double
+pub fn TimeseriesforecastseasonalCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastseasonalCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastseasonalCursor::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalCursor::copy(Self) -> Self
+pub fn TimeseriesforecastseasonalCursor::fill(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalCursor::get(Self, Int32) -> Double
+pub fn TimeseriesforecastseasonalCursor::len(Self) -> Int32
+pub fn TimeseriesforecastseasonalCursor::max(Self) -> Double
+pub fn TimeseriesforecastseasonalCursor::mean(Self) -> Double
+pub fn TimeseriesforecastseasonalCursor::min(Self) -> Double
+pub fn TimeseriesforecastseasonalCursor::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastseasonalCursor::sum(Self) -> Double
+pub fn TimeseriesforecastseasonalCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastseasonalEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastseasonalEdge::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalEdge::copy(Self) -> Self
+pub fn TimeseriesforecastseasonalEdge::fill(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalEdge::get(Self, Int32) -> Double
+pub fn TimeseriesforecastseasonalEdge::len(Self) -> Int32
+pub fn TimeseriesforecastseasonalEdge::max(Self) -> Double
+pub fn TimeseriesforecastseasonalEdge::mean(Self) -> Double
+pub fn TimeseriesforecastseasonalEdge::min(Self) -> Double
+pub fn TimeseriesforecastseasonalEdge::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastseasonalEdge::sum(Self) -> Double
+pub fn TimeseriesforecastseasonalEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastseasonalFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastseasonalFrame::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalFrame::copy(Self) -> Self
+pub fn TimeseriesforecastseasonalFrame::fill(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalFrame::get(Self, Int32) -> Double
+pub fn TimeseriesforecastseasonalFrame::len(Self) -> Int32
+pub fn TimeseriesforecastseasonalFrame::max(Self) -> Double
+pub fn TimeseriesforecastseasonalFrame::mean(Self) -> Double
+pub fn TimeseriesforecastseasonalFrame::min(Self) -> Double
+pub fn TimeseriesforecastseasonalFrame::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastseasonalFrame::sum(Self) -> Double
+pub fn TimeseriesforecastseasonalFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastseasonalGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastseasonalGraphN::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalGraphN::copy(Self) -> Self
+pub fn TimeseriesforecastseasonalGraphN::fill(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalGraphN::get(Self, Int32) -> Double
+pub fn TimeseriesforecastseasonalGraphN::len(Self) -> Int32
+pub fn TimeseriesforecastseasonalGraphN::max(Self) -> Double
+pub fn TimeseriesforecastseasonalGraphN::mean(Self) -> Double
+pub fn TimeseriesforecastseasonalGraphN::min(Self) -> Double
+pub fn TimeseriesforecastseasonalGraphN::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastseasonalGraphN::sum(Self) -> Double
+pub fn TimeseriesforecastseasonalGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastseasonalLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastseasonalLayer::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalLayer::copy(Self) -> Self
+pub fn TimeseriesforecastseasonalLayer::fill(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalLayer::get(Self, Int32) -> Double
+pub fn TimeseriesforecastseasonalLayer::len(Self) -> Int32
+pub fn TimeseriesforecastseasonalLayer::max(Self) -> Double
+pub fn TimeseriesforecastseasonalLayer::mean(Self) -> Double
+pub fn TimeseriesforecastseasonalLayer::min(Self) -> Double
+pub fn TimeseriesforecastseasonalLayer::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastseasonalLayer::sum(Self) -> Double
+pub fn TimeseriesforecastseasonalLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastseasonalMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriesforecastseasonalMatrix::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalMatrix::det(Self) -> Double
+pub fn TimeseriesforecastseasonalMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriesforecastseasonalMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalMatrix::norm(Self) -> Double
+pub fn TimeseriesforecastseasonalMatrix::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalMatrix::to_string(Self) -> String
+pub fn TimeseriesforecastseasonalMatrix::trace(Self) -> Double
+pub fn TimeseriesforecastseasonalMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriesforecastseasonalModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastseasonalModel::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalModel::copy(Self) -> Self
+pub fn TimeseriesforecastseasonalModel::fill(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalModel::get(Self, Int32) -> Double
+pub fn TimeseriesforecastseasonalModel::len(Self) -> Int32
+pub fn TimeseriesforecastseasonalModel::max(Self) -> Double
+pub fn TimeseriesforecastseasonalModel::mean(Self) -> Double
+pub fn TimeseriesforecastseasonalModel::min(Self) -> Double
+pub fn TimeseriesforecastseasonalModel::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastseasonalModel::sum(Self) -> Double
+pub fn TimeseriesforecastseasonalModel::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastseasonalNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastseasonalNode::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalNode::copy(Self) -> Self
+pub fn TimeseriesforecastseasonalNode::fill(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalNode::get(Self, Int32) -> Double
+pub fn TimeseriesforecastseasonalNode::len(Self) -> Int32
+pub fn TimeseriesforecastseasonalNode::max(Self) -> Double
+pub fn TimeseriesforecastseasonalNode::mean(Self) -> Double
+pub fn TimeseriesforecastseasonalNode::min(Self) -> Double
+pub fn TimeseriesforecastseasonalNode::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastseasonalNode::sum(Self) -> Double
+pub fn TimeseriesforecastseasonalNode::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastseasonalPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastseasonalPath::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalPath::copy(Self) -> Self
+pub fn TimeseriesforecastseasonalPath::fill(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalPath::get(Self, Int32) -> Double
+pub fn TimeseriesforecastseasonalPath::len(Self) -> Int32
+pub fn TimeseriesforecastseasonalPath::max(Self) -> Double
+pub fn TimeseriesforecastseasonalPath::mean(Self) -> Double
+pub fn TimeseriesforecastseasonalPath::min(Self) -> Double
+pub fn TimeseriesforecastseasonalPath::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalPath::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastseasonalPath::sum(Self) -> Double
+pub fn TimeseriesforecastseasonalPath::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastseasonalPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriesforecastseasonalPoint::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalPoint::cross(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalPoint::dist(Self, Self) -> Double
+pub fn TimeseriesforecastseasonalPoint::dot(Self, Self) -> Double
+pub fn TimeseriesforecastseasonalPoint::label(Self) -> Int32
+pub fn TimeseriesforecastseasonalPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriesforecastseasonalPoint::mid(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalPoint::negate(Self) -> Self
+pub fn TimeseriesforecastseasonalPoint::norm(Self) -> Double
+pub fn TimeseriesforecastseasonalPoint::normalize(Self) -> Self
+pub fn TimeseriesforecastseasonalPoint::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalPoint::sub(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalPoint::to_string(Self) -> String
+pub fn TimeseriesforecastseasonalPoint::x(Self) -> Double
+pub fn TimeseriesforecastseasonalPoint::y(Self) -> Double
+pub fn TimeseriesforecastseasonalPoint::z(Self) -> Double
+
+pub(all) struct TimeseriesforecastseasonalRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastseasonalRange::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalRange::copy(Self) -> Self
+pub fn TimeseriesforecastseasonalRange::fill(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalRange::get(Self, Int32) -> Double
+pub fn TimeseriesforecastseasonalRange::len(Self) -> Int32
+pub fn TimeseriesforecastseasonalRange::max(Self) -> Double
+pub fn TimeseriesforecastseasonalRange::mean(Self) -> Double
+pub fn TimeseriesforecastseasonalRange::min(Self) -> Double
+pub fn TimeseriesforecastseasonalRange::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastseasonalRange::sum(Self) -> Double
+pub fn TimeseriesforecastseasonalRange::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastseasonalSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriesforecastseasonalSeries::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalSeries::cumsum(Self) -> Self
+pub fn TimeseriesforecastseasonalSeries::len(Self) -> Int32
+pub fn TimeseriesforecastseasonalSeries::max(Self) -> Double
+pub fn TimeseriesforecastseasonalSeries::mean(Self) -> Double
+pub fn TimeseriesforecastseasonalSeries::median(Self) -> Double
+pub fn TimeseriesforecastseasonalSeries::min(Self) -> Double
+pub fn TimeseriesforecastseasonalSeries::normalize(Self) -> Self
+pub fn TimeseriesforecastseasonalSeries::range(Self) -> Double
+pub fn TimeseriesforecastseasonalSeries::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalSeries::std(Self) -> Double
+pub fn TimeseriesforecastseasonalSeries::sub(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalSeries::sum(Self) -> Double
+pub fn TimeseriesforecastseasonalSeries::to_string(Self) -> String
+pub fn TimeseriesforecastseasonalSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriesforecastseasonalSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastseasonalSlice::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalSlice::copy(Self) -> Self
+pub fn TimeseriesforecastseasonalSlice::fill(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalSlice::get(Self, Int32) -> Double
+pub fn TimeseriesforecastseasonalSlice::len(Self) -> Int32
+pub fn TimeseriesforecastseasonalSlice::max(Self) -> Double
+pub fn TimeseriesforecastseasonalSlice::mean(Self) -> Double
+pub fn TimeseriesforecastseasonalSlice::min(Self) -> Double
+pub fn TimeseriesforecastseasonalSlice::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastseasonalSlice::sum(Self) -> Double
+pub fn TimeseriesforecastseasonalSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastseasonalTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastseasonalTable::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalTable::copy(Self) -> Self
+pub fn TimeseriesforecastseasonalTable::fill(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalTable::get(Self, Int32) -> Double
+pub fn TimeseriesforecastseasonalTable::len(Self) -> Int32
+pub fn TimeseriesforecastseasonalTable::max(Self) -> Double
+pub fn TimeseriesforecastseasonalTable::mean(Self) -> Double
+pub fn TimeseriesforecastseasonalTable::min(Self) -> Double
+pub fn TimeseriesforecastseasonalTable::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastseasonalTable::sum(Self) -> Double
+pub fn TimeseriesforecastseasonalTable::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastseasonalVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriesforecastseasonalVector::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalVector::dist(Self, Self) -> Double
+pub fn TimeseriesforecastseasonalVector::dot(Self, Self) -> Double
+pub fn TimeseriesforecastseasonalVector::norm(Self) -> Double
+pub fn TimeseriesforecastseasonalVector::normalize(Self) -> Self
+pub fn TimeseriesforecastseasonalVector::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalVector::sub(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalVector::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastseasonalView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastseasonalView::add(Self, Self) -> Self
+pub fn TimeseriesforecastseasonalView::copy(Self) -> Self
+pub fn TimeseriesforecastseasonalView::fill(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalView::get(Self, Int32) -> Double
+pub fn TimeseriesforecastseasonalView::len(Self) -> Int32
+pub fn TimeseriesforecastseasonalView::max(Self) -> Double
+pub fn TimeseriesforecastseasonalView::mean(Self) -> Double
+pub fn TimeseriesforecastseasonalView::min(Self) -> Double
+pub fn TimeseriesforecastseasonalView::scale(Self, Double) -> Self
+pub fn TimeseriesforecastseasonalView::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastseasonalView::sum(Self) -> Double
+pub fn TimeseriesforecastseasonalView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

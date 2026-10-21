@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_parse_cky"
+
+// Values
+pub fn nlp_parse_cky_buffer_make(Int32) -> NlpparseckyBuffer
+
+pub fn nlp_parse_cky_cluster_make(Int32) -> NlpparseckyCluster
+
+pub fn nlp_parse_cky_cursor_make(Int32) -> NlpparseckyCursor
+
+pub fn nlp_parse_cky_edge_make(Int32) -> NlpparseckyEdge
+
+pub fn nlp_parse_cky_frame_make(Int32) -> NlpparseckyFrame
+
+pub fn nlp_parse_cky_graphn_make(Int32) -> NlpparseckyGraphN
+
+pub fn nlp_parse_cky_layer_make(Int32) -> NlpparseckyLayer
+
+pub fn nlp_parse_cky_make_matrix(Int32, Int32, Double) -> NlpparseckyMatrix
+
+pub fn nlp_parse_cky_make_point(Double, Double) -> NlpparseckyPoint
+
+pub fn nlp_parse_cky_make_point3(Double, Double, Double) -> NlpparseckyPoint
+
+pub fn nlp_parse_cky_make_series(Array[Double], String) -> NlpparseckySeries
+
+pub fn nlp_parse_cky_make_vector(Array[Double]) -> NlpparseckyVector
+
+pub fn nlp_parse_cky_matrix_identity(Int32) -> NlpparseckyMatrix
+
+pub fn nlp_parse_cky_model_make(Int32) -> NlpparseckyModel
+
+pub fn nlp_parse_cky_node_make(Int32) -> NlpparseckyNode
+
+pub fn nlp_parse_cky_path_make(Int32) -> NlpparseckyPath
+
+pub fn nlp_parse_cky_range_make(Int32) -> NlpparseckyRange
+
+pub fn nlp_parse_cky_slice_make(Int32) -> NlpparseckySlice
+
+pub fn nlp_parse_cky_table_make(Int32) -> NlpparseckyTable
+
+pub fn nlp_parse_cky_vector_zero(Int32) -> NlpparseckyVector
+
+pub fn nlp_parse_cky_view_make(Int32) -> NlpparseckyView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlpparseckyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseckyBuffer::add(Self, Self) -> Self
+pub fn NlpparseckyBuffer::copy(Self) -> Self
+pub fn NlpparseckyBuffer::fill(Self, Double) -> Self
+pub fn NlpparseckyBuffer::get(Self, Int32) -> Double
+pub fn NlpparseckyBuffer::len(Self) -> Int32
+pub fn NlpparseckyBuffer::max(Self) -> Double
+pub fn NlpparseckyBuffer::mean(Self) -> Double
+pub fn NlpparseckyBuffer::min(Self) -> Double
+pub fn NlpparseckyBuffer::scale(Self, Double) -> Self
+pub fn NlpparseckyBuffer::set(Self, Int32, Double) -> Self
+pub fn NlpparseckyBuffer::sum(Self) -> Double
+pub fn NlpparseckyBuffer::to_string(Self) -> String
+
+pub(all) struct NlpparseckyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseckyCluster::add(Self, Self) -> Self
+pub fn NlpparseckyCluster::copy(Self) -> Self
+pub fn NlpparseckyCluster::fill(Self, Double) -> Self
+pub fn NlpparseckyCluster::get(Self, Int32) -> Double
+pub fn NlpparseckyCluster::len(Self) -> Int32
+pub fn NlpparseckyCluster::max(Self) -> Double
+pub fn NlpparseckyCluster::mean(Self) -> Double
+pub fn NlpparseckyCluster::min(Self) -> Double
+pub fn NlpparseckyCluster::scale(Self, Double) -> Self
+pub fn NlpparseckyCluster::set(Self, Int32, Double) -> Self
+pub fn NlpparseckyCluster::sum(Self) -> Double
+pub fn NlpparseckyCluster::to_string(Self) -> String
+
+pub(all) struct NlpparseckyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseckyCursor::add(Self, Self) -> Self
+pub fn NlpparseckyCursor::copy(Self) -> Self
+pub fn NlpparseckyCursor::fill(Self, Double) -> Self
+pub fn NlpparseckyCursor::get(Self, Int32) -> Double
+pub fn NlpparseckyCursor::len(Self) -> Int32
+pub fn NlpparseckyCursor::max(Self) -> Double
+pub fn NlpparseckyCursor::mean(Self) -> Double
+pub fn NlpparseckyCursor::min(Self) -> Double
+pub fn NlpparseckyCursor::scale(Self, Double) -> Self
+pub fn NlpparseckyCursor::set(Self, Int32, Double) -> Self
+pub fn NlpparseckyCursor::sum(Self) -> Double
+pub fn NlpparseckyCursor::to_string(Self) -> String
+
+pub(all) struct NlpparseckyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseckyEdge::add(Self, Self) -> Self
+pub fn NlpparseckyEdge::copy(Self) -> Self
+pub fn NlpparseckyEdge::fill(Self, Double) -> Self
+pub fn NlpparseckyEdge::get(Self, Int32) -> Double
+pub fn NlpparseckyEdge::len(Self) -> Int32
+pub fn NlpparseckyEdge::max(Self) -> Double
+pub fn NlpparseckyEdge::mean(Self) -> Double
+pub fn NlpparseckyEdge::min(Self) -> Double
+pub fn NlpparseckyEdge::scale(Self, Double) -> Self
+pub fn NlpparseckyEdge::set(Self, Int32, Double) -> Self
+pub fn NlpparseckyEdge::sum(Self) -> Double
+pub fn NlpparseckyEdge::to_string(Self) -> String
+
+pub(all) struct NlpparseckyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseckyFrame::add(Self, Self) -> Self
+pub fn NlpparseckyFrame::copy(Self) -> Self
+pub fn NlpparseckyFrame::fill(Self, Double) -> Self
+pub fn NlpparseckyFrame::get(Self, Int32) -> Double
+pub fn NlpparseckyFrame::len(Self) -> Int32
+pub fn NlpparseckyFrame::max(Self) -> Double
+pub fn NlpparseckyFrame::mean(Self) -> Double
+pub fn NlpparseckyFrame::min(Self) -> Double
+pub fn NlpparseckyFrame::scale(Self, Double) -> Self
+pub fn NlpparseckyFrame::set(Self, Int32, Double) -> Self
+pub fn NlpparseckyFrame::sum(Self) -> Double
+pub fn NlpparseckyFrame::to_string(Self) -> String
+
+pub(all) struct NlpparseckyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseckyGraphN::add(Self, Self) -> Self
+pub fn NlpparseckyGraphN::copy(Self) -> Self
+pub fn NlpparseckyGraphN::fill(Self, Double) -> Self
+pub fn NlpparseckyGraphN::get(Self, Int32) -> Double
+pub fn NlpparseckyGraphN::len(Self) -> Int32
+pub fn NlpparseckyGraphN::max(Self) -> Double
+pub fn NlpparseckyGraphN::mean(Self) -> Double
+pub fn NlpparseckyGraphN::min(Self) -> Double
+pub fn NlpparseckyGraphN::scale(Self, Double) -> Self
+pub fn NlpparseckyGraphN::set(Self, Int32, Double) -> Self
+pub fn NlpparseckyGraphN::sum(Self) -> Double
+pub fn NlpparseckyGraphN::to_string(Self) -> String
+
+pub(all) struct NlpparseckyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseckyLayer::add(Self, Self) -> Self
+pub fn NlpparseckyLayer::copy(Self) -> Self
+pub fn NlpparseckyLayer::fill(Self, Double) -> Self
+pub fn NlpparseckyLayer::get(Self, Int32) -> Double
+pub fn NlpparseckyLayer::len(Self) -> Int32
+pub fn NlpparseckyLayer::max(Self) -> Double
+pub fn NlpparseckyLayer::mean(Self) -> Double
+pub fn NlpparseckyLayer::min(Self) -> Double
+pub fn NlpparseckyLayer::scale(Self, Double) -> Self
+pub fn NlpparseckyLayer::set(Self, Int32, Double) -> Self
+pub fn NlpparseckyLayer::sum(Self) -> Double
+pub fn NlpparseckyLayer::to_string(Self) -> String
+
+pub(all) struct NlpparseckyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlpparseckyMatrix::add(Self, Self) -> Self
+pub fn NlpparseckyMatrix::det(Self) -> Double
+pub fn NlpparseckyMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlpparseckyMatrix::multiply(Self, Self) -> Self
+pub fn NlpparseckyMatrix::norm(Self) -> Double
+pub fn NlpparseckyMatrix::scale(Self, Double) -> Self
+pub fn NlpparseckyMatrix::to_string(Self) -> String
+pub fn NlpparseckyMatrix::trace(Self) -> Double
+pub fn NlpparseckyMatrix::transpose(Self) -> Self
+
+pub(all) struct NlpparseckyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseckyModel::add(Self, Self) -> Self
+pub fn NlpparseckyModel::copy(Self) -> Self
+pub fn NlpparseckyModel::fill(Self, Double) -> Self
+pub fn NlpparseckyModel::get(Self, Int32) -> Double
+pub fn NlpparseckyModel::len(Self) -> Int32
+pub fn NlpparseckyModel::max(Self) -> Double
+pub fn NlpparseckyModel::mean(Self) -> Double
+pub fn NlpparseckyModel::min(Self) -> Double
+pub fn NlpparseckyModel::scale(Self, Double) -> Self
+pub fn NlpparseckyModel::set(Self, Int32, Double) -> Self
+pub fn NlpparseckyModel::sum(Self) -> Double
+pub fn NlpparseckyModel::to_string(Self) -> String
+
+pub(all) struct NlpparseckyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseckyNode::add(Self, Self) -> Self
+pub fn NlpparseckyNode::copy(Self) -> Self
+pub fn NlpparseckyNode::fill(Self, Double) -> Self
+pub fn NlpparseckyNode::get(Self, Int32) -> Double
+pub fn NlpparseckyNode::len(Self) -> Int32
+pub fn NlpparseckyNode::max(Self) -> Double
+pub fn NlpparseckyNode::mean(Self) -> Double
+pub fn NlpparseckyNode::min(Self) -> Double
+pub fn NlpparseckyNode::scale(Self, Double) -> Self
+pub fn NlpparseckyNode::set(Self, Int32, Double) -> Self
+pub fn NlpparseckyNode::sum(Self) -> Double
+pub fn NlpparseckyNode::to_string(Self) -> String
+
+pub(all) struct NlpparseckyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseckyPath::add(Self, Self) -> Self
+pub fn NlpparseckyPath::copy(Self) -> Self
+pub fn NlpparseckyPath::fill(Self, Double) -> Self
+pub fn NlpparseckyPath::get(Self, Int32) -> Double
+pub fn NlpparseckyPath::len(Self) -> Int32
+pub fn NlpparseckyPath::max(Self) -> Double
+pub fn NlpparseckyPath::mean(Self) -> Double
+pub fn NlpparseckyPath::min(Self) -> Double
+pub fn NlpparseckyPath::scale(Self, Double) -> Self
+pub fn NlpparseckyPath::set(Self, Int32, Double) -> Self
+pub fn NlpparseckyPath::sum(Self) -> Double
+pub fn NlpparseckyPath::to_string(Self) -> String
+
+pub(all) struct NlpparseckyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlpparseckyPoint::add(Self, Self) -> Self
+pub fn NlpparseckyPoint::cross(Self, Self) -> Self
+pub fn NlpparseckyPoint::dist(Self, Self) -> Double
+pub fn NlpparseckyPoint::dot(Self, Self) -> Double
+pub fn NlpparseckyPoint::label(Self) -> Int32
+pub fn NlpparseckyPoint::lerp(Self, Self, Double) -> Self
+pub fn NlpparseckyPoint::mid(Self, Self) -> Self
+pub fn NlpparseckyPoint::negate(Self) -> Self
+pub fn NlpparseckyPoint::norm(Self) -> Double
+pub fn NlpparseckyPoint::normalize(Self) -> Self
+pub fn NlpparseckyPoint::scale(Self, Double) -> Self
+pub fn NlpparseckyPoint::sub(Self, Self) -> Self
+pub fn NlpparseckyPoint::to_string(Self) -> String
+pub fn NlpparseckyPoint::x(Self) -> Double
+pub fn NlpparseckyPoint::y(Self) -> Double
+pub fn NlpparseckyPoint::z(Self) -> Double
+
+pub(all) struct NlpparseckyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseckyRange::add(Self, Self) -> Self
+pub fn NlpparseckyRange::copy(Self) -> Self
+pub fn NlpparseckyRange::fill(Self, Double) -> Self
+pub fn NlpparseckyRange::get(Self, Int32) -> Double
+pub fn NlpparseckyRange::len(Self) -> Int32
+pub fn NlpparseckyRange::max(Self) -> Double
+pub fn NlpparseckyRange::mean(Self) -> Double
+pub fn NlpparseckyRange::min(Self) -> Double
+pub fn NlpparseckyRange::scale(Self, Double) -> Self
+pub fn NlpparseckyRange::set(Self, Int32, Double) -> Self
+pub fn NlpparseckyRange::sum(Self) -> Double
+pub fn NlpparseckyRange::to_string(Self) -> String
+
+pub(all) struct NlpparseckySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlpparseckySeries::add(Self, Self) -> Self
+pub fn NlpparseckySeries::cumsum(Self) -> Self
+pub fn NlpparseckySeries::len(Self) -> Int32
+pub fn NlpparseckySeries::max(Self) -> Double
+pub fn NlpparseckySeries::mean(Self) -> Double
+pub fn NlpparseckySeries::median(Self) -> Double
+pub fn NlpparseckySeries::min(Self) -> Double
+pub fn NlpparseckySeries::normalize(Self) -> Self
+pub fn NlpparseckySeries::range(Self) -> Double
+pub fn NlpparseckySeries::scale(Self, Double) -> Self
+pub fn NlpparseckySeries::std(Self) -> Double
+pub fn NlpparseckySeries::sub(Self, Self) -> Self
+pub fn NlpparseckySeries::sum(Self) -> Double
+pub fn NlpparseckySeries::to_string(Self) -> String
+pub fn NlpparseckySeries::variance(Self) -> Double
+
+pub(all) struct NlpparseckySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseckySlice::add(Self, Self) -> Self
+pub fn NlpparseckySlice::copy(Self) -> Self
+pub fn NlpparseckySlice::fill(Self, Double) -> Self
+pub fn NlpparseckySlice::get(Self, Int32) -> Double
+pub fn NlpparseckySlice::len(Self) -> Int32
+pub fn NlpparseckySlice::max(Self) -> Double
+pub fn NlpparseckySlice::mean(Self) -> Double
+pub fn NlpparseckySlice::min(Self) -> Double
+pub fn NlpparseckySlice::scale(Self, Double) -> Self
+pub fn NlpparseckySlice::set(Self, Int32, Double) -> Self
+pub fn NlpparseckySlice::sum(Self) -> Double
+pub fn NlpparseckySlice::to_string(Self) -> String
+
+pub(all) struct NlpparseckyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseckyTable::add(Self, Self) -> Self
+pub fn NlpparseckyTable::copy(Self) -> Self
+pub fn NlpparseckyTable::fill(Self, Double) -> Self
+pub fn NlpparseckyTable::get(Self, Int32) -> Double
+pub fn NlpparseckyTable::len(Self) -> Int32
+pub fn NlpparseckyTable::max(Self) -> Double
+pub fn NlpparseckyTable::mean(Self) -> Double
+pub fn NlpparseckyTable::min(Self) -> Double
+pub fn NlpparseckyTable::scale(Self, Double) -> Self
+pub fn NlpparseckyTable::set(Self, Int32, Double) -> Self
+pub fn NlpparseckyTable::sum(Self) -> Double
+pub fn NlpparseckyTable::to_string(Self) -> String
+
+pub(all) struct NlpparseckyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlpparseckyVector::add(Self, Self) -> Self
+pub fn NlpparseckyVector::dist(Self, Self) -> Double
+pub fn NlpparseckyVector::dot(Self, Self) -> Double
+pub fn NlpparseckyVector::norm(Self) -> Double
+pub fn NlpparseckyVector::normalize(Self) -> Self
+pub fn NlpparseckyVector::scale(Self, Double) -> Self
+pub fn NlpparseckyVector::sub(Self, Self) -> Self
+pub fn NlpparseckyVector::to_string(Self) -> String
+
+pub(all) struct NlpparseckyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseckyView::add(Self, Self) -> Self
+pub fn NlpparseckyView::copy(Self) -> Self
+pub fn NlpparseckyView::fill(Self, Double) -> Self
+pub fn NlpparseckyView::get(Self, Int32) -> Double
+pub fn NlpparseckyView::len(Self) -> Int32
+pub fn NlpparseckyView::max(Self) -> Double
+pub fn NlpparseckyView::mean(Self) -> Double
+pub fn NlpparseckyView::min(Self) -> Double
+pub fn NlpparseckyView::scale(Self, Double) -> Self
+pub fn NlpparseckyView::set(Self, Int32, Double) -> Self
+pub fn NlpparseckyView::sum(Self) -> Double
+pub fn NlpparseckyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

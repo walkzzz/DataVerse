@@ -1,0 +1,97 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/llm"
+
+// Values
+pub fn append_message(LLMRequest, ChatMessage) -> LLMRequest
+
+pub fn assistant_message(String) -> ChatMessage
+
+pub fn estimate_cost(LLMResponse, Double, Double) -> Double
+
+pub fn estimate_message_tokens(Array[ChatMessage]) -> Int32
+
+pub fn estimate_tokens(String) -> Int32
+
+pub fn llm_id() -> String
+
+pub fn make_chunk(String, Bool, Int32) -> StreamChunk
+
+pub fn make_message(LLMRole, String) -> ChatMessage
+
+pub fn make_request(String, LLMProvider, Array[ChatMessage], Int32, Double) -> LLMRequest
+
+pub fn make_response(String, String, Int32, Int32, Bool, String) -> LLMResponse
+
+pub fn merge_chunks(Array[StreamChunk]) -> String
+
+pub fn provider_name(LLMProvider) -> String
+
+pub fn response_ok(LLMResponse) -> Bool
+
+pub fn response_text(LLMResponse) -> String
+
+pub fn role_name(LLMRole) -> String
+
+pub fn system_message(String) -> ChatMessage
+
+pub fn user_message(String) -> ChatMessage
+
+pub fn with_max_tokens(LLMRequest, Int32) -> LLMRequest
+
+pub fn with_stream(LLMRequest) -> LLMRequest
+
+pub fn with_temperature(LLMRequest, Double) -> LLMRequest
+
+pub fn with_top_p(LLMRequest, Double) -> LLMRequest
+
+// Errors
+
+// Types and methods
+pub struct ChatMessage {
+  role : LLMRole
+  content : String
+  tokens : Int32
+}
+
+pub(all) enum LLMProvider {
+  OpenAI
+  Anthropic
+  Local
+  Custom
+}
+
+pub struct LLMRequest {
+  model : String
+  provider : LLMProvider
+  messages : Array[ChatMessage]
+  max_tokens : Int32
+  temperature : Double
+  top_p : Double
+  stream : Bool
+}
+
+pub struct LLMResponse {
+  content : String
+  finish_reason : String
+  prompt_tokens : Int32
+  completion_tokens : Int32
+  total_tokens : Int32
+  success : Bool
+  error : String
+}
+
+pub(all) enum LLMRole {
+  System
+  User
+  Assistant
+}
+
+pub struct StreamChunk {
+  content : String
+  is_final : Bool
+  index : Int32
+}
+
+// Type aliases
+
+// Traits

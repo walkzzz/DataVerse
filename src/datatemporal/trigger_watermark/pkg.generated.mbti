@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/trigger_watermark"
+
+// Values
+pub fn trigger_watermark_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn trigger_watermark_corr(Array[Double], Array[Double]) -> Double
+
+pub fn trigger_watermark_cov(Array[Double], Array[Double]) -> Double
+
+pub fn trigger_watermark_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn trigger_watermark_mae(Array[Double], Array[Double]) -> Double
+
+pub fn trigger_watermark_make_labeled_point(Double, Double, Int32) -> Trigger_watermarkPoint
+
+pub fn trigger_watermark_make_matrix(Int32, Int32, Double) -> Trigger_watermarkMatrix
+
+pub fn trigger_watermark_make_point(Double, Double) -> Trigger_watermarkPoint
+
+pub fn trigger_watermark_make_series(Array[Double], String) -> Trigger_watermarkSeries
+
+pub fn trigger_watermark_make_vector(Array[Double]) -> Trigger_watermarkVector
+
+pub fn trigger_watermark_matrix_add(Trigger_watermarkMatrix, Trigger_watermarkMatrix) -> Trigger_watermarkMatrix
+
+pub fn trigger_watermark_matrix_get(Trigger_watermarkMatrix, Int32, Int32) -> Double
+
+pub fn trigger_watermark_matrix_identity(Int32) -> Trigger_watermarkMatrix
+
+pub fn trigger_watermark_matrix_multiply(Trigger_watermarkMatrix, Trigger_watermarkMatrix) -> Trigger_watermarkMatrix
+
+pub fn trigger_watermark_matrix_norm(Trigger_watermarkMatrix) -> Double
+
+pub fn trigger_watermark_matrix_scale(Trigger_watermarkMatrix, Double) -> Trigger_watermarkMatrix
+
+pub fn trigger_watermark_matrix_to_string(Trigger_watermarkMatrix) -> String
+
+pub fn trigger_watermark_matrix_trace(Trigger_watermarkMatrix) -> Double
+
+pub fn trigger_watermark_matrix_transpose(Trigger_watermarkMatrix) -> Trigger_watermarkMatrix
+
+pub fn trigger_watermark_mse(Array[Double], Array[Double]) -> Double
+
+pub fn trigger_watermark_point_add(Trigger_watermarkPoint, Trigger_watermarkPoint) -> Trigger_watermarkPoint
+
+pub fn trigger_watermark_point_dist(Trigger_watermarkPoint, Trigger_watermarkPoint) -> Double
+
+pub fn trigger_watermark_point_dot(Trigger_watermarkPoint, Trigger_watermarkPoint) -> Double
+
+pub fn trigger_watermark_point_label(Trigger_watermarkPoint) -> Int32
+
+pub fn trigger_watermark_point_norm(Trigger_watermarkPoint) -> Double
+
+pub fn trigger_watermark_point_scale(Trigger_watermarkPoint, Double) -> Trigger_watermarkPoint
+
+pub fn trigger_watermark_point_sub(Trigger_watermarkPoint, Trigger_watermarkPoint) -> Trigger_watermarkPoint
+
+pub fn trigger_watermark_point_to_string(Trigger_watermarkPoint) -> String
+
+pub fn trigger_watermark_point_x(Trigger_watermarkPoint) -> Double
+
+pub fn trigger_watermark_point_y(Trigger_watermarkPoint) -> Double
+
+pub fn trigger_watermark_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn trigger_watermark_r2(Array[Double], Array[Double]) -> Double
+
+pub fn trigger_watermark_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn trigger_watermark_series_add(Trigger_watermarkSeries, Trigger_watermarkSeries) -> Trigger_watermarkSeries
+
+pub fn trigger_watermark_series_len(Trigger_watermarkSeries) -> Int32
+
+pub fn trigger_watermark_series_max(Trigger_watermarkSeries) -> Double
+
+pub fn trigger_watermark_series_mean(Trigger_watermarkSeries) -> Double
+
+pub fn trigger_watermark_series_min(Trigger_watermarkSeries) -> Double
+
+pub fn trigger_watermark_series_scale(Trigger_watermarkSeries, Double) -> Trigger_watermarkSeries
+
+pub fn trigger_watermark_series_std(Trigger_watermarkSeries) -> Double
+
+pub fn trigger_watermark_series_sum(Trigger_watermarkSeries) -> Double
+
+pub fn trigger_watermark_series_to_string(Trigger_watermarkSeries) -> String
+
+pub fn trigger_watermark_series_var(Trigger_watermarkSeries) -> Double
+
+pub fn trigger_watermark_std(Array[Double]) -> Double
+
+pub fn trigger_watermark_var(Array[Double]) -> Double
+
+pub fn trigger_watermark_vector_add(Trigger_watermarkVector, Trigger_watermarkVector) -> Trigger_watermarkVector
+
+pub fn trigger_watermark_vector_dist(Trigger_watermarkVector, Trigger_watermarkVector) -> Double
+
+pub fn trigger_watermark_vector_dot(Trigger_watermarkVector, Trigger_watermarkVector) -> Double
+
+pub fn trigger_watermark_vector_norm(Trigger_watermarkVector) -> Double
+
+pub fn trigger_watermark_vector_normalize(Trigger_watermarkVector) -> Trigger_watermarkVector
+
+pub fn trigger_watermark_vector_scale(Trigger_watermarkVector, Double) -> Trigger_watermarkVector
+
+pub fn trigger_watermark_vector_sub(Trigger_watermarkVector, Trigger_watermarkVector) -> Trigger_watermarkVector
+
+pub fn trigger_watermark_vector_to_string(Trigger_watermarkVector) -> String
+
+pub fn trigger_watermark_vector_zero(Int32) -> Trigger_watermarkVector
+
+// Errors
+
+// Types and methods
+pub struct Trigger_watermarkMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Trigger_watermarkPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Trigger_watermarkSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Trigger_watermarkVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_window_hann"
+
+// Values
+pub fn signal_window_hann_buffer_make(Int32) -> SignalwindowhannBuffer
+
+pub fn signal_window_hann_cluster_make(Int32) -> SignalwindowhannCluster
+
+pub fn signal_window_hann_cursor_make(Int32) -> SignalwindowhannCursor
+
+pub fn signal_window_hann_edge_make(Int32) -> SignalwindowhannEdge
+
+pub fn signal_window_hann_frame_make(Int32) -> SignalwindowhannFrame
+
+pub fn signal_window_hann_graphn_make(Int32) -> SignalwindowhannGraphN
+
+pub fn signal_window_hann_layer_make(Int32) -> SignalwindowhannLayer
+
+pub fn signal_window_hann_make_matrix(Int32, Int32, Double) -> SignalwindowhannMatrix
+
+pub fn signal_window_hann_make_point(Double, Double) -> SignalwindowhannPoint
+
+pub fn signal_window_hann_make_point3(Double, Double, Double) -> SignalwindowhannPoint
+
+pub fn signal_window_hann_make_series(Array[Double], String) -> SignalwindowhannSeries
+
+pub fn signal_window_hann_make_vector(Array[Double]) -> SignalwindowhannVector
+
+pub fn signal_window_hann_matrix_identity(Int32) -> SignalwindowhannMatrix
+
+pub fn signal_window_hann_model_make(Int32) -> SignalwindowhannModel
+
+pub fn signal_window_hann_node_make(Int32) -> SignalwindowhannNode
+
+pub fn signal_window_hann_path_make(Int32) -> SignalwindowhannPath
+
+pub fn signal_window_hann_range_make(Int32) -> SignalwindowhannRange
+
+pub fn signal_window_hann_slice_make(Int32) -> SignalwindowhannSlice
+
+pub fn signal_window_hann_table_make(Int32) -> SignalwindowhannTable
+
+pub fn signal_window_hann_vector_zero(Int32) -> SignalwindowhannVector
+
+pub fn signal_window_hann_view_make(Int32) -> SignalwindowhannView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalwindowhannBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhannBuffer::add(Self, Self) -> Self
+pub fn SignalwindowhannBuffer::copy(Self) -> Self
+pub fn SignalwindowhannBuffer::fill(Self, Double) -> Self
+pub fn SignalwindowhannBuffer::get(Self, Int32) -> Double
+pub fn SignalwindowhannBuffer::len(Self) -> Int32
+pub fn SignalwindowhannBuffer::max(Self) -> Double
+pub fn SignalwindowhannBuffer::mean(Self) -> Double
+pub fn SignalwindowhannBuffer::min(Self) -> Double
+pub fn SignalwindowhannBuffer::scale(Self, Double) -> Self
+pub fn SignalwindowhannBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhannBuffer::sum(Self) -> Double
+pub fn SignalwindowhannBuffer::to_string(Self) -> String
+
+pub(all) struct SignalwindowhannCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhannCluster::add(Self, Self) -> Self
+pub fn SignalwindowhannCluster::copy(Self) -> Self
+pub fn SignalwindowhannCluster::fill(Self, Double) -> Self
+pub fn SignalwindowhannCluster::get(Self, Int32) -> Double
+pub fn SignalwindowhannCluster::len(Self) -> Int32
+pub fn SignalwindowhannCluster::max(Self) -> Double
+pub fn SignalwindowhannCluster::mean(Self) -> Double
+pub fn SignalwindowhannCluster::min(Self) -> Double
+pub fn SignalwindowhannCluster::scale(Self, Double) -> Self
+pub fn SignalwindowhannCluster::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhannCluster::sum(Self) -> Double
+pub fn SignalwindowhannCluster::to_string(Self) -> String
+
+pub(all) struct SignalwindowhannCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhannCursor::add(Self, Self) -> Self
+pub fn SignalwindowhannCursor::copy(Self) -> Self
+pub fn SignalwindowhannCursor::fill(Self, Double) -> Self
+pub fn SignalwindowhannCursor::get(Self, Int32) -> Double
+pub fn SignalwindowhannCursor::len(Self) -> Int32
+pub fn SignalwindowhannCursor::max(Self) -> Double
+pub fn SignalwindowhannCursor::mean(Self) -> Double
+pub fn SignalwindowhannCursor::min(Self) -> Double
+pub fn SignalwindowhannCursor::scale(Self, Double) -> Self
+pub fn SignalwindowhannCursor::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhannCursor::sum(Self) -> Double
+pub fn SignalwindowhannCursor::to_string(Self) -> String
+
+pub(all) struct SignalwindowhannEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhannEdge::add(Self, Self) -> Self
+pub fn SignalwindowhannEdge::copy(Self) -> Self
+pub fn SignalwindowhannEdge::fill(Self, Double) -> Self
+pub fn SignalwindowhannEdge::get(Self, Int32) -> Double
+pub fn SignalwindowhannEdge::len(Self) -> Int32
+pub fn SignalwindowhannEdge::max(Self) -> Double
+pub fn SignalwindowhannEdge::mean(Self) -> Double
+pub fn SignalwindowhannEdge::min(Self) -> Double
+pub fn SignalwindowhannEdge::scale(Self, Double) -> Self
+pub fn SignalwindowhannEdge::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhannEdge::sum(Self) -> Double
+pub fn SignalwindowhannEdge::to_string(Self) -> String
+
+pub(all) struct SignalwindowhannFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhannFrame::add(Self, Self) -> Self
+pub fn SignalwindowhannFrame::copy(Self) -> Self
+pub fn SignalwindowhannFrame::fill(Self, Double) -> Self
+pub fn SignalwindowhannFrame::get(Self, Int32) -> Double
+pub fn SignalwindowhannFrame::len(Self) -> Int32
+pub fn SignalwindowhannFrame::max(Self) -> Double
+pub fn SignalwindowhannFrame::mean(Self) -> Double
+pub fn SignalwindowhannFrame::min(Self) -> Double
+pub fn SignalwindowhannFrame::scale(Self, Double) -> Self
+pub fn SignalwindowhannFrame::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhannFrame::sum(Self) -> Double
+pub fn SignalwindowhannFrame::to_string(Self) -> String
+
+pub(all) struct SignalwindowhannGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhannGraphN::add(Self, Self) -> Self
+pub fn SignalwindowhannGraphN::copy(Self) -> Self
+pub fn SignalwindowhannGraphN::fill(Self, Double) -> Self
+pub fn SignalwindowhannGraphN::get(Self, Int32) -> Double
+pub fn SignalwindowhannGraphN::len(Self) -> Int32
+pub fn SignalwindowhannGraphN::max(Self) -> Double
+pub fn SignalwindowhannGraphN::mean(Self) -> Double
+pub fn SignalwindowhannGraphN::min(Self) -> Double
+pub fn SignalwindowhannGraphN::scale(Self, Double) -> Self
+pub fn SignalwindowhannGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhannGraphN::sum(Self) -> Double
+pub fn SignalwindowhannGraphN::to_string(Self) -> String
+
+pub(all) struct SignalwindowhannLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhannLayer::add(Self, Self) -> Self
+pub fn SignalwindowhannLayer::copy(Self) -> Self
+pub fn SignalwindowhannLayer::fill(Self, Double) -> Self
+pub fn SignalwindowhannLayer::get(Self, Int32) -> Double
+pub fn SignalwindowhannLayer::len(Self) -> Int32
+pub fn SignalwindowhannLayer::max(Self) -> Double
+pub fn SignalwindowhannLayer::mean(Self) -> Double
+pub fn SignalwindowhannLayer::min(Self) -> Double
+pub fn SignalwindowhannLayer::scale(Self, Double) -> Self
+pub fn SignalwindowhannLayer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhannLayer::sum(Self) -> Double
+pub fn SignalwindowhannLayer::to_string(Self) -> String
+
+pub(all) struct SignalwindowhannMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalwindowhannMatrix::add(Self, Self) -> Self
+pub fn SignalwindowhannMatrix::det(Self) -> Double
+pub fn SignalwindowhannMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalwindowhannMatrix::multiply(Self, Self) -> Self
+pub fn SignalwindowhannMatrix::norm(Self) -> Double
+pub fn SignalwindowhannMatrix::scale(Self, Double) -> Self
+pub fn SignalwindowhannMatrix::to_string(Self) -> String
+pub fn SignalwindowhannMatrix::trace(Self) -> Double
+pub fn SignalwindowhannMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalwindowhannModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhannModel::add(Self, Self) -> Self
+pub fn SignalwindowhannModel::copy(Self) -> Self
+pub fn SignalwindowhannModel::fill(Self, Double) -> Self
+pub fn SignalwindowhannModel::get(Self, Int32) -> Double
+pub fn SignalwindowhannModel::len(Self) -> Int32
+pub fn SignalwindowhannModel::max(Self) -> Double
+pub fn SignalwindowhannModel::mean(Self) -> Double
+pub fn SignalwindowhannModel::min(Self) -> Double
+pub fn SignalwindowhannModel::scale(Self, Double) -> Self
+pub fn SignalwindowhannModel::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhannModel::sum(Self) -> Double
+pub fn SignalwindowhannModel::to_string(Self) -> String
+
+pub(all) struct SignalwindowhannNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhannNode::add(Self, Self) -> Self
+pub fn SignalwindowhannNode::copy(Self) -> Self
+pub fn SignalwindowhannNode::fill(Self, Double) -> Self
+pub fn SignalwindowhannNode::get(Self, Int32) -> Double
+pub fn SignalwindowhannNode::len(Self) -> Int32
+pub fn SignalwindowhannNode::max(Self) -> Double
+pub fn SignalwindowhannNode::mean(Self) -> Double
+pub fn SignalwindowhannNode::min(Self) -> Double
+pub fn SignalwindowhannNode::scale(Self, Double) -> Self
+pub fn SignalwindowhannNode::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhannNode::sum(Self) -> Double
+pub fn SignalwindowhannNode::to_string(Self) -> String
+
+pub(all) struct SignalwindowhannPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhannPath::add(Self, Self) -> Self
+pub fn SignalwindowhannPath::copy(Self) -> Self
+pub fn SignalwindowhannPath::fill(Self, Double) -> Self
+pub fn SignalwindowhannPath::get(Self, Int32) -> Double
+pub fn SignalwindowhannPath::len(Self) -> Int32
+pub fn SignalwindowhannPath::max(Self) -> Double
+pub fn SignalwindowhannPath::mean(Self) -> Double
+pub fn SignalwindowhannPath::min(Self) -> Double
+pub fn SignalwindowhannPath::scale(Self, Double) -> Self
+pub fn SignalwindowhannPath::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhannPath::sum(Self) -> Double
+pub fn SignalwindowhannPath::to_string(Self) -> String
+
+pub(all) struct SignalwindowhannPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalwindowhannPoint::add(Self, Self) -> Self
+pub fn SignalwindowhannPoint::cross(Self, Self) -> Self
+pub fn SignalwindowhannPoint::dist(Self, Self) -> Double
+pub fn SignalwindowhannPoint::dot(Self, Self) -> Double
+pub fn SignalwindowhannPoint::label(Self) -> Int32
+pub fn SignalwindowhannPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalwindowhannPoint::mid(Self, Self) -> Self
+pub fn SignalwindowhannPoint::negate(Self) -> Self
+pub fn SignalwindowhannPoint::norm(Self) -> Double
+pub fn SignalwindowhannPoint::normalize(Self) -> Self
+pub fn SignalwindowhannPoint::scale(Self, Double) -> Self
+pub fn SignalwindowhannPoint::sub(Self, Self) -> Self
+pub fn SignalwindowhannPoint::to_string(Self) -> String
+pub fn SignalwindowhannPoint::x(Self) -> Double
+pub fn SignalwindowhannPoint::y(Self) -> Double
+pub fn SignalwindowhannPoint::z(Self) -> Double
+
+pub(all) struct SignalwindowhannRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhannRange::add(Self, Self) -> Self
+pub fn SignalwindowhannRange::copy(Self) -> Self
+pub fn SignalwindowhannRange::fill(Self, Double) -> Self
+pub fn SignalwindowhannRange::get(Self, Int32) -> Double
+pub fn SignalwindowhannRange::len(Self) -> Int32
+pub fn SignalwindowhannRange::max(Self) -> Double
+pub fn SignalwindowhannRange::mean(Self) -> Double
+pub fn SignalwindowhannRange::min(Self) -> Double
+pub fn SignalwindowhannRange::scale(Self, Double) -> Self
+pub fn SignalwindowhannRange::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhannRange::sum(Self) -> Double
+pub fn SignalwindowhannRange::to_string(Self) -> String
+
+pub(all) struct SignalwindowhannSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalwindowhannSeries::add(Self, Self) -> Self
+pub fn SignalwindowhannSeries::cumsum(Self) -> Self
+pub fn SignalwindowhannSeries::len(Self) -> Int32
+pub fn SignalwindowhannSeries::max(Self) -> Double
+pub fn SignalwindowhannSeries::mean(Self) -> Double
+pub fn SignalwindowhannSeries::median(Self) -> Double
+pub fn SignalwindowhannSeries::min(Self) -> Double
+pub fn SignalwindowhannSeries::normalize(Self) -> Self
+pub fn SignalwindowhannSeries::range(Self) -> Double
+pub fn SignalwindowhannSeries::scale(Self, Double) -> Self
+pub fn SignalwindowhannSeries::std(Self) -> Double
+pub fn SignalwindowhannSeries::sub(Self, Self) -> Self
+pub fn SignalwindowhannSeries::sum(Self) -> Double
+pub fn SignalwindowhannSeries::to_string(Self) -> String
+pub fn SignalwindowhannSeries::variance(Self) -> Double
+
+pub(all) struct SignalwindowhannSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhannSlice::add(Self, Self) -> Self
+pub fn SignalwindowhannSlice::copy(Self) -> Self
+pub fn SignalwindowhannSlice::fill(Self, Double) -> Self
+pub fn SignalwindowhannSlice::get(Self, Int32) -> Double
+pub fn SignalwindowhannSlice::len(Self) -> Int32
+pub fn SignalwindowhannSlice::max(Self) -> Double
+pub fn SignalwindowhannSlice::mean(Self) -> Double
+pub fn SignalwindowhannSlice::min(Self) -> Double
+pub fn SignalwindowhannSlice::scale(Self, Double) -> Self
+pub fn SignalwindowhannSlice::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhannSlice::sum(Self) -> Double
+pub fn SignalwindowhannSlice::to_string(Self) -> String
+
+pub(all) struct SignalwindowhannTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhannTable::add(Self, Self) -> Self
+pub fn SignalwindowhannTable::copy(Self) -> Self
+pub fn SignalwindowhannTable::fill(Self, Double) -> Self
+pub fn SignalwindowhannTable::get(Self, Int32) -> Double
+pub fn SignalwindowhannTable::len(Self) -> Int32
+pub fn SignalwindowhannTable::max(Self) -> Double
+pub fn SignalwindowhannTable::mean(Self) -> Double
+pub fn SignalwindowhannTable::min(Self) -> Double
+pub fn SignalwindowhannTable::scale(Self, Double) -> Self
+pub fn SignalwindowhannTable::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhannTable::sum(Self) -> Double
+pub fn SignalwindowhannTable::to_string(Self) -> String
+
+pub(all) struct SignalwindowhannVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalwindowhannVector::add(Self, Self) -> Self
+pub fn SignalwindowhannVector::dist(Self, Self) -> Double
+pub fn SignalwindowhannVector::dot(Self, Self) -> Double
+pub fn SignalwindowhannVector::norm(Self) -> Double
+pub fn SignalwindowhannVector::normalize(Self) -> Self
+pub fn SignalwindowhannVector::scale(Self, Double) -> Self
+pub fn SignalwindowhannVector::sub(Self, Self) -> Self
+pub fn SignalwindowhannVector::to_string(Self) -> String
+
+pub(all) struct SignalwindowhannView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhannView::add(Self, Self) -> Self
+pub fn SignalwindowhannView::copy(Self) -> Self
+pub fn SignalwindowhannView::fill(Self, Double) -> Self
+pub fn SignalwindowhannView::get(Self, Int32) -> Double
+pub fn SignalwindowhannView::len(Self) -> Int32
+pub fn SignalwindowhannView::max(Self) -> Double
+pub fn SignalwindowhannView::mean(Self) -> Double
+pub fn SignalwindowhannView::min(Self) -> Double
+pub fn SignalwindowhannView::scale(Self, Double) -> Self
+pub fn SignalwindowhannView::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhannView::sum(Self) -> Double
+pub fn SignalwindowhannView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_store_spatial"
+
+// Values
+pub fn db_store_spatial_buffer_make(Int32) -> DbstorespatialBuffer
+
+pub fn db_store_spatial_cluster_make(Int32) -> DbstorespatialCluster
+
+pub fn db_store_spatial_cursor_make(Int32) -> DbstorespatialCursor
+
+pub fn db_store_spatial_edge_make(Int32) -> DbstorespatialEdge
+
+pub fn db_store_spatial_frame_make(Int32) -> DbstorespatialFrame
+
+pub fn db_store_spatial_graphn_make(Int32) -> DbstorespatialGraphN
+
+pub fn db_store_spatial_layer_make(Int32) -> DbstorespatialLayer
+
+pub fn db_store_spatial_make_matrix(Int32, Int32, Double) -> DbstorespatialMatrix
+
+pub fn db_store_spatial_make_point(Double, Double) -> DbstorespatialPoint
+
+pub fn db_store_spatial_make_point3(Double, Double, Double) -> DbstorespatialPoint
+
+pub fn db_store_spatial_make_series(Array[Double], String) -> DbstorespatialSeries
+
+pub fn db_store_spatial_make_vector(Array[Double]) -> DbstorespatialVector
+
+pub fn db_store_spatial_matrix_identity(Int32) -> DbstorespatialMatrix
+
+pub fn db_store_spatial_model_make(Int32) -> DbstorespatialModel
+
+pub fn db_store_spatial_node_make(Int32) -> DbstorespatialNode
+
+pub fn db_store_spatial_path_make(Int32) -> DbstorespatialPath
+
+pub fn db_store_spatial_range_make(Int32) -> DbstorespatialRange
+
+pub fn db_store_spatial_slice_make(Int32) -> DbstorespatialSlice
+
+pub fn db_store_spatial_table_make(Int32) -> DbstorespatialTable
+
+pub fn db_store_spatial_vector_zero(Int32) -> DbstorespatialVector
+
+pub fn db_store_spatial_view_make(Int32) -> DbstorespatialView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbstorespatialBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorespatialBuffer::add(Self, Self) -> Self
+pub fn DbstorespatialBuffer::copy(Self) -> Self
+pub fn DbstorespatialBuffer::fill(Self, Double) -> Self
+pub fn DbstorespatialBuffer::get(Self, Int32) -> Double
+pub fn DbstorespatialBuffer::len(Self) -> Int32
+pub fn DbstorespatialBuffer::max(Self) -> Double
+pub fn DbstorespatialBuffer::mean(Self) -> Double
+pub fn DbstorespatialBuffer::min(Self) -> Double
+pub fn DbstorespatialBuffer::scale(Self, Double) -> Self
+pub fn DbstorespatialBuffer::set(Self, Int32, Double) -> Self
+pub fn DbstorespatialBuffer::sum(Self) -> Double
+pub fn DbstorespatialBuffer::to_string(Self) -> String
+
+pub(all) struct DbstorespatialCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorespatialCluster::add(Self, Self) -> Self
+pub fn DbstorespatialCluster::copy(Self) -> Self
+pub fn DbstorespatialCluster::fill(Self, Double) -> Self
+pub fn DbstorespatialCluster::get(Self, Int32) -> Double
+pub fn DbstorespatialCluster::len(Self) -> Int32
+pub fn DbstorespatialCluster::max(Self) -> Double
+pub fn DbstorespatialCluster::mean(Self) -> Double
+pub fn DbstorespatialCluster::min(Self) -> Double
+pub fn DbstorespatialCluster::scale(Self, Double) -> Self
+pub fn DbstorespatialCluster::set(Self, Int32, Double) -> Self
+pub fn DbstorespatialCluster::sum(Self) -> Double
+pub fn DbstorespatialCluster::to_string(Self) -> String
+
+pub(all) struct DbstorespatialCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorespatialCursor::add(Self, Self) -> Self
+pub fn DbstorespatialCursor::copy(Self) -> Self
+pub fn DbstorespatialCursor::fill(Self, Double) -> Self
+pub fn DbstorespatialCursor::get(Self, Int32) -> Double
+pub fn DbstorespatialCursor::len(Self) -> Int32
+pub fn DbstorespatialCursor::max(Self) -> Double
+pub fn DbstorespatialCursor::mean(Self) -> Double
+pub fn DbstorespatialCursor::min(Self) -> Double
+pub fn DbstorespatialCursor::scale(Self, Double) -> Self
+pub fn DbstorespatialCursor::set(Self, Int32, Double) -> Self
+pub fn DbstorespatialCursor::sum(Self) -> Double
+pub fn DbstorespatialCursor::to_string(Self) -> String
+
+pub(all) struct DbstorespatialEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorespatialEdge::add(Self, Self) -> Self
+pub fn DbstorespatialEdge::copy(Self) -> Self
+pub fn DbstorespatialEdge::fill(Self, Double) -> Self
+pub fn DbstorespatialEdge::get(Self, Int32) -> Double
+pub fn DbstorespatialEdge::len(Self) -> Int32
+pub fn DbstorespatialEdge::max(Self) -> Double
+pub fn DbstorespatialEdge::mean(Self) -> Double
+pub fn DbstorespatialEdge::min(Self) -> Double
+pub fn DbstorespatialEdge::scale(Self, Double) -> Self
+pub fn DbstorespatialEdge::set(Self, Int32, Double) -> Self
+pub fn DbstorespatialEdge::sum(Self) -> Double
+pub fn DbstorespatialEdge::to_string(Self) -> String
+
+pub(all) struct DbstorespatialFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorespatialFrame::add(Self, Self) -> Self
+pub fn DbstorespatialFrame::copy(Self) -> Self
+pub fn DbstorespatialFrame::fill(Self, Double) -> Self
+pub fn DbstorespatialFrame::get(Self, Int32) -> Double
+pub fn DbstorespatialFrame::len(Self) -> Int32
+pub fn DbstorespatialFrame::max(Self) -> Double
+pub fn DbstorespatialFrame::mean(Self) -> Double
+pub fn DbstorespatialFrame::min(Self) -> Double
+pub fn DbstorespatialFrame::scale(Self, Double) -> Self
+pub fn DbstorespatialFrame::set(Self, Int32, Double) -> Self
+pub fn DbstorespatialFrame::sum(Self) -> Double
+pub fn DbstorespatialFrame::to_string(Self) -> String
+
+pub(all) struct DbstorespatialGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorespatialGraphN::add(Self, Self) -> Self
+pub fn DbstorespatialGraphN::copy(Self) -> Self
+pub fn DbstorespatialGraphN::fill(Self, Double) -> Self
+pub fn DbstorespatialGraphN::get(Self, Int32) -> Double
+pub fn DbstorespatialGraphN::len(Self) -> Int32
+pub fn DbstorespatialGraphN::max(Self) -> Double
+pub fn DbstorespatialGraphN::mean(Self) -> Double
+pub fn DbstorespatialGraphN::min(Self) -> Double
+pub fn DbstorespatialGraphN::scale(Self, Double) -> Self
+pub fn DbstorespatialGraphN::set(Self, Int32, Double) -> Self
+pub fn DbstorespatialGraphN::sum(Self) -> Double
+pub fn DbstorespatialGraphN::to_string(Self) -> String
+
+pub(all) struct DbstorespatialLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorespatialLayer::add(Self, Self) -> Self
+pub fn DbstorespatialLayer::copy(Self) -> Self
+pub fn DbstorespatialLayer::fill(Self, Double) -> Self
+pub fn DbstorespatialLayer::get(Self, Int32) -> Double
+pub fn DbstorespatialLayer::len(Self) -> Int32
+pub fn DbstorespatialLayer::max(Self) -> Double
+pub fn DbstorespatialLayer::mean(Self) -> Double
+pub fn DbstorespatialLayer::min(Self) -> Double
+pub fn DbstorespatialLayer::scale(Self, Double) -> Self
+pub fn DbstorespatialLayer::set(Self, Int32, Double) -> Self
+pub fn DbstorespatialLayer::sum(Self) -> Double
+pub fn DbstorespatialLayer::to_string(Self) -> String
+
+pub(all) struct DbstorespatialMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbstorespatialMatrix::add(Self, Self) -> Self
+pub fn DbstorespatialMatrix::det(Self) -> Double
+pub fn DbstorespatialMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbstorespatialMatrix::multiply(Self, Self) -> Self
+pub fn DbstorespatialMatrix::norm(Self) -> Double
+pub fn DbstorespatialMatrix::scale(Self, Double) -> Self
+pub fn DbstorespatialMatrix::to_string(Self) -> String
+pub fn DbstorespatialMatrix::trace(Self) -> Double
+pub fn DbstorespatialMatrix::transpose(Self) -> Self
+
+pub(all) struct DbstorespatialModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorespatialModel::add(Self, Self) -> Self
+pub fn DbstorespatialModel::copy(Self) -> Self
+pub fn DbstorespatialModel::fill(Self, Double) -> Self
+pub fn DbstorespatialModel::get(Self, Int32) -> Double
+pub fn DbstorespatialModel::len(Self) -> Int32
+pub fn DbstorespatialModel::max(Self) -> Double
+pub fn DbstorespatialModel::mean(Self) -> Double
+pub fn DbstorespatialModel::min(Self) -> Double
+pub fn DbstorespatialModel::scale(Self, Double) -> Self
+pub fn DbstorespatialModel::set(Self, Int32, Double) -> Self
+pub fn DbstorespatialModel::sum(Self) -> Double
+pub fn DbstorespatialModel::to_string(Self) -> String
+
+pub(all) struct DbstorespatialNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorespatialNode::add(Self, Self) -> Self
+pub fn DbstorespatialNode::copy(Self) -> Self
+pub fn DbstorespatialNode::fill(Self, Double) -> Self
+pub fn DbstorespatialNode::get(Self, Int32) -> Double
+pub fn DbstorespatialNode::len(Self) -> Int32
+pub fn DbstorespatialNode::max(Self) -> Double
+pub fn DbstorespatialNode::mean(Self) -> Double
+pub fn DbstorespatialNode::min(Self) -> Double
+pub fn DbstorespatialNode::scale(Self, Double) -> Self
+pub fn DbstorespatialNode::set(Self, Int32, Double) -> Self
+pub fn DbstorespatialNode::sum(Self) -> Double
+pub fn DbstorespatialNode::to_string(Self) -> String
+
+pub(all) struct DbstorespatialPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorespatialPath::add(Self, Self) -> Self
+pub fn DbstorespatialPath::copy(Self) -> Self
+pub fn DbstorespatialPath::fill(Self, Double) -> Self
+pub fn DbstorespatialPath::get(Self, Int32) -> Double
+pub fn DbstorespatialPath::len(Self) -> Int32
+pub fn DbstorespatialPath::max(Self) -> Double
+pub fn DbstorespatialPath::mean(Self) -> Double
+pub fn DbstorespatialPath::min(Self) -> Double
+pub fn DbstorespatialPath::scale(Self, Double) -> Self
+pub fn DbstorespatialPath::set(Self, Int32, Double) -> Self
+pub fn DbstorespatialPath::sum(Self) -> Double
+pub fn DbstorespatialPath::to_string(Self) -> String
+
+pub(all) struct DbstorespatialPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbstorespatialPoint::add(Self, Self) -> Self
+pub fn DbstorespatialPoint::cross(Self, Self) -> Self
+pub fn DbstorespatialPoint::dist(Self, Self) -> Double
+pub fn DbstorespatialPoint::dot(Self, Self) -> Double
+pub fn DbstorespatialPoint::label(Self) -> Int32
+pub fn DbstorespatialPoint::lerp(Self, Self, Double) -> Self
+pub fn DbstorespatialPoint::mid(Self, Self) -> Self
+pub fn DbstorespatialPoint::negate(Self) -> Self
+pub fn DbstorespatialPoint::norm(Self) -> Double
+pub fn DbstorespatialPoint::normalize(Self) -> Self
+pub fn DbstorespatialPoint::scale(Self, Double) -> Self
+pub fn DbstorespatialPoint::sub(Self, Self) -> Self
+pub fn DbstorespatialPoint::to_string(Self) -> String
+pub fn DbstorespatialPoint::x(Self) -> Double
+pub fn DbstorespatialPoint::y(Self) -> Double
+pub fn DbstorespatialPoint::z(Self) -> Double
+
+pub(all) struct DbstorespatialRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorespatialRange::add(Self, Self) -> Self
+pub fn DbstorespatialRange::copy(Self) -> Self
+pub fn DbstorespatialRange::fill(Self, Double) -> Self
+pub fn DbstorespatialRange::get(Self, Int32) -> Double
+pub fn DbstorespatialRange::len(Self) -> Int32
+pub fn DbstorespatialRange::max(Self) -> Double
+pub fn DbstorespatialRange::mean(Self) -> Double
+pub fn DbstorespatialRange::min(Self) -> Double
+pub fn DbstorespatialRange::scale(Self, Double) -> Self
+pub fn DbstorespatialRange::set(Self, Int32, Double) -> Self
+pub fn DbstorespatialRange::sum(Self) -> Double
+pub fn DbstorespatialRange::to_string(Self) -> String
+
+pub(all) struct DbstorespatialSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbstorespatialSeries::add(Self, Self) -> Self
+pub fn DbstorespatialSeries::cumsum(Self) -> Self
+pub fn DbstorespatialSeries::len(Self) -> Int32
+pub fn DbstorespatialSeries::max(Self) -> Double
+pub fn DbstorespatialSeries::mean(Self) -> Double
+pub fn DbstorespatialSeries::median(Self) -> Double
+pub fn DbstorespatialSeries::min(Self) -> Double
+pub fn DbstorespatialSeries::normalize(Self) -> Self
+pub fn DbstorespatialSeries::range(Self) -> Double
+pub fn DbstorespatialSeries::scale(Self, Double) -> Self
+pub fn DbstorespatialSeries::std(Self) -> Double
+pub fn DbstorespatialSeries::sub(Self, Self) -> Self
+pub fn DbstorespatialSeries::sum(Self) -> Double
+pub fn DbstorespatialSeries::to_string(Self) -> String
+pub fn DbstorespatialSeries::variance(Self) -> Double
+
+pub(all) struct DbstorespatialSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorespatialSlice::add(Self, Self) -> Self
+pub fn DbstorespatialSlice::copy(Self) -> Self
+pub fn DbstorespatialSlice::fill(Self, Double) -> Self
+pub fn DbstorespatialSlice::get(Self, Int32) -> Double
+pub fn DbstorespatialSlice::len(Self) -> Int32
+pub fn DbstorespatialSlice::max(Self) -> Double
+pub fn DbstorespatialSlice::mean(Self) -> Double
+pub fn DbstorespatialSlice::min(Self) -> Double
+pub fn DbstorespatialSlice::scale(Self, Double) -> Self
+pub fn DbstorespatialSlice::set(Self, Int32, Double) -> Self
+pub fn DbstorespatialSlice::sum(Self) -> Double
+pub fn DbstorespatialSlice::to_string(Self) -> String
+
+pub(all) struct DbstorespatialTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorespatialTable::add(Self, Self) -> Self
+pub fn DbstorespatialTable::copy(Self) -> Self
+pub fn DbstorespatialTable::fill(Self, Double) -> Self
+pub fn DbstorespatialTable::get(Self, Int32) -> Double
+pub fn DbstorespatialTable::len(Self) -> Int32
+pub fn DbstorespatialTable::max(Self) -> Double
+pub fn DbstorespatialTable::mean(Self) -> Double
+pub fn DbstorespatialTable::min(Self) -> Double
+pub fn DbstorespatialTable::scale(Self, Double) -> Self
+pub fn DbstorespatialTable::set(Self, Int32, Double) -> Self
+pub fn DbstorespatialTable::sum(Self) -> Double
+pub fn DbstorespatialTable::to_string(Self) -> String
+
+pub(all) struct DbstorespatialVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbstorespatialVector::add(Self, Self) -> Self
+pub fn DbstorespatialVector::dist(Self, Self) -> Double
+pub fn DbstorespatialVector::dot(Self, Self) -> Double
+pub fn DbstorespatialVector::norm(Self) -> Double
+pub fn DbstorespatialVector::normalize(Self) -> Self
+pub fn DbstorespatialVector::scale(Self, Double) -> Self
+pub fn DbstorespatialVector::sub(Self, Self) -> Self
+pub fn DbstorespatialVector::to_string(Self) -> String
+
+pub(all) struct DbstorespatialView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorespatialView::add(Self, Self) -> Self
+pub fn DbstorespatialView::copy(Self) -> Self
+pub fn DbstorespatialView::fill(Self, Double) -> Self
+pub fn DbstorespatialView::get(Self, Int32) -> Double
+pub fn DbstorespatialView::len(Self) -> Int32
+pub fn DbstorespatialView::max(Self) -> Double
+pub fn DbstorespatialView::mean(Self) -> Double
+pub fn DbstorespatialView::min(Self) -> Double
+pub fn DbstorespatialView::scale(Self, Double) -> Self
+pub fn DbstorespatialView::set(Self, Int32, Double) -> Self
+pub fn DbstorespatialView::sum(Self) -> Double
+pub fn DbstorespatialView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

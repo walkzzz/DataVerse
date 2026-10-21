@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_feature_brief"
+
+// Values
+pub fn image_feature_brief_buffer_make(Int32) -> ImagefeaturebriefBuffer
+
+pub fn image_feature_brief_cluster_make(Int32) -> ImagefeaturebriefCluster
+
+pub fn image_feature_brief_cursor_make(Int32) -> ImagefeaturebriefCursor
+
+pub fn image_feature_brief_edge_make(Int32) -> ImagefeaturebriefEdge
+
+pub fn image_feature_brief_frame_make(Int32) -> ImagefeaturebriefFrame
+
+pub fn image_feature_brief_graphn_make(Int32) -> ImagefeaturebriefGraphN
+
+pub fn image_feature_brief_layer_make(Int32) -> ImagefeaturebriefLayer
+
+pub fn image_feature_brief_make_matrix(Int32, Int32, Double) -> ImagefeaturebriefMatrix
+
+pub fn image_feature_brief_make_point(Double, Double) -> ImagefeaturebriefPoint
+
+pub fn image_feature_brief_make_point3(Double, Double, Double) -> ImagefeaturebriefPoint
+
+pub fn image_feature_brief_make_series(Array[Double], String) -> ImagefeaturebriefSeries
+
+pub fn image_feature_brief_make_vector(Array[Double]) -> ImagefeaturebriefVector
+
+pub fn image_feature_brief_matrix_identity(Int32) -> ImagefeaturebriefMatrix
+
+pub fn image_feature_brief_model_make(Int32) -> ImagefeaturebriefModel
+
+pub fn image_feature_brief_node_make(Int32) -> ImagefeaturebriefNode
+
+pub fn image_feature_brief_path_make(Int32) -> ImagefeaturebriefPath
+
+pub fn image_feature_brief_range_make(Int32) -> ImagefeaturebriefRange
+
+pub fn image_feature_brief_slice_make(Int32) -> ImagefeaturebriefSlice
+
+pub fn image_feature_brief_table_make(Int32) -> ImagefeaturebriefTable
+
+pub fn image_feature_brief_vector_zero(Int32) -> ImagefeaturebriefVector
+
+pub fn image_feature_brief_view_make(Int32) -> ImagefeaturebriefView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagefeaturebriefBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturebriefBuffer::add(Self, Self) -> Self
+pub fn ImagefeaturebriefBuffer::copy(Self) -> Self
+pub fn ImagefeaturebriefBuffer::fill(Self, Double) -> Self
+pub fn ImagefeaturebriefBuffer::get(Self, Int32) -> Double
+pub fn ImagefeaturebriefBuffer::len(Self) -> Int32
+pub fn ImagefeaturebriefBuffer::max(Self) -> Double
+pub fn ImagefeaturebriefBuffer::mean(Self) -> Double
+pub fn ImagefeaturebriefBuffer::min(Self) -> Double
+pub fn ImagefeaturebriefBuffer::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturebriefBuffer::sum(Self) -> Double
+pub fn ImagefeaturebriefBuffer::to_string(Self) -> String
+
+pub(all) struct ImagefeaturebriefCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturebriefCluster::add(Self, Self) -> Self
+pub fn ImagefeaturebriefCluster::copy(Self) -> Self
+pub fn ImagefeaturebriefCluster::fill(Self, Double) -> Self
+pub fn ImagefeaturebriefCluster::get(Self, Int32) -> Double
+pub fn ImagefeaturebriefCluster::len(Self) -> Int32
+pub fn ImagefeaturebriefCluster::max(Self) -> Double
+pub fn ImagefeaturebriefCluster::mean(Self) -> Double
+pub fn ImagefeaturebriefCluster::min(Self) -> Double
+pub fn ImagefeaturebriefCluster::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefCluster::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturebriefCluster::sum(Self) -> Double
+pub fn ImagefeaturebriefCluster::to_string(Self) -> String
+
+pub(all) struct ImagefeaturebriefCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturebriefCursor::add(Self, Self) -> Self
+pub fn ImagefeaturebriefCursor::copy(Self) -> Self
+pub fn ImagefeaturebriefCursor::fill(Self, Double) -> Self
+pub fn ImagefeaturebriefCursor::get(Self, Int32) -> Double
+pub fn ImagefeaturebriefCursor::len(Self) -> Int32
+pub fn ImagefeaturebriefCursor::max(Self) -> Double
+pub fn ImagefeaturebriefCursor::mean(Self) -> Double
+pub fn ImagefeaturebriefCursor::min(Self) -> Double
+pub fn ImagefeaturebriefCursor::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefCursor::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturebriefCursor::sum(Self) -> Double
+pub fn ImagefeaturebriefCursor::to_string(Self) -> String
+
+pub(all) struct ImagefeaturebriefEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturebriefEdge::add(Self, Self) -> Self
+pub fn ImagefeaturebriefEdge::copy(Self) -> Self
+pub fn ImagefeaturebriefEdge::fill(Self, Double) -> Self
+pub fn ImagefeaturebriefEdge::get(Self, Int32) -> Double
+pub fn ImagefeaturebriefEdge::len(Self) -> Int32
+pub fn ImagefeaturebriefEdge::max(Self) -> Double
+pub fn ImagefeaturebriefEdge::mean(Self) -> Double
+pub fn ImagefeaturebriefEdge::min(Self) -> Double
+pub fn ImagefeaturebriefEdge::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefEdge::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturebriefEdge::sum(Self) -> Double
+pub fn ImagefeaturebriefEdge::to_string(Self) -> String
+
+pub(all) struct ImagefeaturebriefFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturebriefFrame::add(Self, Self) -> Self
+pub fn ImagefeaturebriefFrame::copy(Self) -> Self
+pub fn ImagefeaturebriefFrame::fill(Self, Double) -> Self
+pub fn ImagefeaturebriefFrame::get(Self, Int32) -> Double
+pub fn ImagefeaturebriefFrame::len(Self) -> Int32
+pub fn ImagefeaturebriefFrame::max(Self) -> Double
+pub fn ImagefeaturebriefFrame::mean(Self) -> Double
+pub fn ImagefeaturebriefFrame::min(Self) -> Double
+pub fn ImagefeaturebriefFrame::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefFrame::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturebriefFrame::sum(Self) -> Double
+pub fn ImagefeaturebriefFrame::to_string(Self) -> String
+
+pub(all) struct ImagefeaturebriefGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturebriefGraphN::add(Self, Self) -> Self
+pub fn ImagefeaturebriefGraphN::copy(Self) -> Self
+pub fn ImagefeaturebriefGraphN::fill(Self, Double) -> Self
+pub fn ImagefeaturebriefGraphN::get(Self, Int32) -> Double
+pub fn ImagefeaturebriefGraphN::len(Self) -> Int32
+pub fn ImagefeaturebriefGraphN::max(Self) -> Double
+pub fn ImagefeaturebriefGraphN::mean(Self) -> Double
+pub fn ImagefeaturebriefGraphN::min(Self) -> Double
+pub fn ImagefeaturebriefGraphN::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturebriefGraphN::sum(Self) -> Double
+pub fn ImagefeaturebriefGraphN::to_string(Self) -> String
+
+pub(all) struct ImagefeaturebriefLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturebriefLayer::add(Self, Self) -> Self
+pub fn ImagefeaturebriefLayer::copy(Self) -> Self
+pub fn ImagefeaturebriefLayer::fill(Self, Double) -> Self
+pub fn ImagefeaturebriefLayer::get(Self, Int32) -> Double
+pub fn ImagefeaturebriefLayer::len(Self) -> Int32
+pub fn ImagefeaturebriefLayer::max(Self) -> Double
+pub fn ImagefeaturebriefLayer::mean(Self) -> Double
+pub fn ImagefeaturebriefLayer::min(Self) -> Double
+pub fn ImagefeaturebriefLayer::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefLayer::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturebriefLayer::sum(Self) -> Double
+pub fn ImagefeaturebriefLayer::to_string(Self) -> String
+
+pub(all) struct ImagefeaturebriefMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagefeaturebriefMatrix::add(Self, Self) -> Self
+pub fn ImagefeaturebriefMatrix::det(Self) -> Double
+pub fn ImagefeaturebriefMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagefeaturebriefMatrix::multiply(Self, Self) -> Self
+pub fn ImagefeaturebriefMatrix::norm(Self) -> Double
+pub fn ImagefeaturebriefMatrix::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefMatrix::to_string(Self) -> String
+pub fn ImagefeaturebriefMatrix::trace(Self) -> Double
+pub fn ImagefeaturebriefMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagefeaturebriefModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturebriefModel::add(Self, Self) -> Self
+pub fn ImagefeaturebriefModel::copy(Self) -> Self
+pub fn ImagefeaturebriefModel::fill(Self, Double) -> Self
+pub fn ImagefeaturebriefModel::get(Self, Int32) -> Double
+pub fn ImagefeaturebriefModel::len(Self) -> Int32
+pub fn ImagefeaturebriefModel::max(Self) -> Double
+pub fn ImagefeaturebriefModel::mean(Self) -> Double
+pub fn ImagefeaturebriefModel::min(Self) -> Double
+pub fn ImagefeaturebriefModel::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefModel::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturebriefModel::sum(Self) -> Double
+pub fn ImagefeaturebriefModel::to_string(Self) -> String
+
+pub(all) struct ImagefeaturebriefNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturebriefNode::add(Self, Self) -> Self
+pub fn ImagefeaturebriefNode::copy(Self) -> Self
+pub fn ImagefeaturebriefNode::fill(Self, Double) -> Self
+pub fn ImagefeaturebriefNode::get(Self, Int32) -> Double
+pub fn ImagefeaturebriefNode::len(Self) -> Int32
+pub fn ImagefeaturebriefNode::max(Self) -> Double
+pub fn ImagefeaturebriefNode::mean(Self) -> Double
+pub fn ImagefeaturebriefNode::min(Self) -> Double
+pub fn ImagefeaturebriefNode::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefNode::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturebriefNode::sum(Self) -> Double
+pub fn ImagefeaturebriefNode::to_string(Self) -> String
+
+pub(all) struct ImagefeaturebriefPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturebriefPath::add(Self, Self) -> Self
+pub fn ImagefeaturebriefPath::copy(Self) -> Self
+pub fn ImagefeaturebriefPath::fill(Self, Double) -> Self
+pub fn ImagefeaturebriefPath::get(Self, Int32) -> Double
+pub fn ImagefeaturebriefPath::len(Self) -> Int32
+pub fn ImagefeaturebriefPath::max(Self) -> Double
+pub fn ImagefeaturebriefPath::mean(Self) -> Double
+pub fn ImagefeaturebriefPath::min(Self) -> Double
+pub fn ImagefeaturebriefPath::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefPath::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturebriefPath::sum(Self) -> Double
+pub fn ImagefeaturebriefPath::to_string(Self) -> String
+
+pub(all) struct ImagefeaturebriefPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagefeaturebriefPoint::add(Self, Self) -> Self
+pub fn ImagefeaturebriefPoint::cross(Self, Self) -> Self
+pub fn ImagefeaturebriefPoint::dist(Self, Self) -> Double
+pub fn ImagefeaturebriefPoint::dot(Self, Self) -> Double
+pub fn ImagefeaturebriefPoint::label(Self) -> Int32
+pub fn ImagefeaturebriefPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagefeaturebriefPoint::mid(Self, Self) -> Self
+pub fn ImagefeaturebriefPoint::negate(Self) -> Self
+pub fn ImagefeaturebriefPoint::norm(Self) -> Double
+pub fn ImagefeaturebriefPoint::normalize(Self) -> Self
+pub fn ImagefeaturebriefPoint::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefPoint::sub(Self, Self) -> Self
+pub fn ImagefeaturebriefPoint::to_string(Self) -> String
+pub fn ImagefeaturebriefPoint::x(Self) -> Double
+pub fn ImagefeaturebriefPoint::y(Self) -> Double
+pub fn ImagefeaturebriefPoint::z(Self) -> Double
+
+pub(all) struct ImagefeaturebriefRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturebriefRange::add(Self, Self) -> Self
+pub fn ImagefeaturebriefRange::copy(Self) -> Self
+pub fn ImagefeaturebriefRange::fill(Self, Double) -> Self
+pub fn ImagefeaturebriefRange::get(Self, Int32) -> Double
+pub fn ImagefeaturebriefRange::len(Self) -> Int32
+pub fn ImagefeaturebriefRange::max(Self) -> Double
+pub fn ImagefeaturebriefRange::mean(Self) -> Double
+pub fn ImagefeaturebriefRange::min(Self) -> Double
+pub fn ImagefeaturebriefRange::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefRange::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturebriefRange::sum(Self) -> Double
+pub fn ImagefeaturebriefRange::to_string(Self) -> String
+
+pub(all) struct ImagefeaturebriefSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagefeaturebriefSeries::add(Self, Self) -> Self
+pub fn ImagefeaturebriefSeries::cumsum(Self) -> Self
+pub fn ImagefeaturebriefSeries::len(Self) -> Int32
+pub fn ImagefeaturebriefSeries::max(Self) -> Double
+pub fn ImagefeaturebriefSeries::mean(Self) -> Double
+pub fn ImagefeaturebriefSeries::median(Self) -> Double
+pub fn ImagefeaturebriefSeries::min(Self) -> Double
+pub fn ImagefeaturebriefSeries::normalize(Self) -> Self
+pub fn ImagefeaturebriefSeries::range(Self) -> Double
+pub fn ImagefeaturebriefSeries::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefSeries::std(Self) -> Double
+pub fn ImagefeaturebriefSeries::sub(Self, Self) -> Self
+pub fn ImagefeaturebriefSeries::sum(Self) -> Double
+pub fn ImagefeaturebriefSeries::to_string(Self) -> String
+pub fn ImagefeaturebriefSeries::variance(Self) -> Double
+
+pub(all) struct ImagefeaturebriefSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturebriefSlice::add(Self, Self) -> Self
+pub fn ImagefeaturebriefSlice::copy(Self) -> Self
+pub fn ImagefeaturebriefSlice::fill(Self, Double) -> Self
+pub fn ImagefeaturebriefSlice::get(Self, Int32) -> Double
+pub fn ImagefeaturebriefSlice::len(Self) -> Int32
+pub fn ImagefeaturebriefSlice::max(Self) -> Double
+pub fn ImagefeaturebriefSlice::mean(Self) -> Double
+pub fn ImagefeaturebriefSlice::min(Self) -> Double
+pub fn ImagefeaturebriefSlice::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefSlice::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturebriefSlice::sum(Self) -> Double
+pub fn ImagefeaturebriefSlice::to_string(Self) -> String
+
+pub(all) struct ImagefeaturebriefTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturebriefTable::add(Self, Self) -> Self
+pub fn ImagefeaturebriefTable::copy(Self) -> Self
+pub fn ImagefeaturebriefTable::fill(Self, Double) -> Self
+pub fn ImagefeaturebriefTable::get(Self, Int32) -> Double
+pub fn ImagefeaturebriefTable::len(Self) -> Int32
+pub fn ImagefeaturebriefTable::max(Self) -> Double
+pub fn ImagefeaturebriefTable::mean(Self) -> Double
+pub fn ImagefeaturebriefTable::min(Self) -> Double
+pub fn ImagefeaturebriefTable::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefTable::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturebriefTable::sum(Self) -> Double
+pub fn ImagefeaturebriefTable::to_string(Self) -> String
+
+pub(all) struct ImagefeaturebriefVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagefeaturebriefVector::add(Self, Self) -> Self
+pub fn ImagefeaturebriefVector::dist(Self, Self) -> Double
+pub fn ImagefeaturebriefVector::dot(Self, Self) -> Double
+pub fn ImagefeaturebriefVector::norm(Self) -> Double
+pub fn ImagefeaturebriefVector::normalize(Self) -> Self
+pub fn ImagefeaturebriefVector::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefVector::sub(Self, Self) -> Self
+pub fn ImagefeaturebriefVector::to_string(Self) -> String
+
+pub(all) struct ImagefeaturebriefView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturebriefView::add(Self, Self) -> Self
+pub fn ImagefeaturebriefView::copy(Self) -> Self
+pub fn ImagefeaturebriefView::fill(Self, Double) -> Self
+pub fn ImagefeaturebriefView::get(Self, Int32) -> Double
+pub fn ImagefeaturebriefView::len(Self) -> Int32
+pub fn ImagefeaturebriefView::max(Self) -> Double
+pub fn ImagefeaturebriefView::mean(Self) -> Double
+pub fn ImagefeaturebriefView::min(Self) -> Double
+pub fn ImagefeaturebriefView::scale(Self, Double) -> Self
+pub fn ImagefeaturebriefView::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturebriefView::sum(Self) -> Double
+pub fn ImagefeaturebriefView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

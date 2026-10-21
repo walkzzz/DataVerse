@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_forecast_ensemble"
+
+// Values
+pub fn timeseries_forecast_ensemble_buffer_make(Int32) -> TimeseriesforecastensembleBuffer
+
+pub fn timeseries_forecast_ensemble_cluster_make(Int32) -> TimeseriesforecastensembleCluster
+
+pub fn timeseries_forecast_ensemble_cursor_make(Int32) -> TimeseriesforecastensembleCursor
+
+pub fn timeseries_forecast_ensemble_edge_make(Int32) -> TimeseriesforecastensembleEdge
+
+pub fn timeseries_forecast_ensemble_frame_make(Int32) -> TimeseriesforecastensembleFrame
+
+pub fn timeseries_forecast_ensemble_graphn_make(Int32) -> TimeseriesforecastensembleGraphN
+
+pub fn timeseries_forecast_ensemble_layer_make(Int32) -> TimeseriesforecastensembleLayer
+
+pub fn timeseries_forecast_ensemble_make_matrix(Int32, Int32, Double) -> TimeseriesforecastensembleMatrix
+
+pub fn timeseries_forecast_ensemble_make_point(Double, Double) -> TimeseriesforecastensemblePoint
+
+pub fn timeseries_forecast_ensemble_make_point3(Double, Double, Double) -> TimeseriesforecastensemblePoint
+
+pub fn timeseries_forecast_ensemble_make_series(Array[Double], String) -> TimeseriesforecastensembleSeries
+
+pub fn timeseries_forecast_ensemble_make_vector(Array[Double]) -> TimeseriesforecastensembleVector
+
+pub fn timeseries_forecast_ensemble_matrix_identity(Int32) -> TimeseriesforecastensembleMatrix
+
+pub fn timeseries_forecast_ensemble_model_make(Int32) -> TimeseriesforecastensembleModel
+
+pub fn timeseries_forecast_ensemble_node_make(Int32) -> TimeseriesforecastensembleNode
+
+pub fn timeseries_forecast_ensemble_path_make(Int32) -> TimeseriesforecastensemblePath
+
+pub fn timeseries_forecast_ensemble_range_make(Int32) -> TimeseriesforecastensembleRange
+
+pub fn timeseries_forecast_ensemble_slice_make(Int32) -> TimeseriesforecastensembleSlice
+
+pub fn timeseries_forecast_ensemble_table_make(Int32) -> TimeseriesforecastensembleTable
+
+pub fn timeseries_forecast_ensemble_vector_zero(Int32) -> TimeseriesforecastensembleVector
+
+pub fn timeseries_forecast_ensemble_view_make(Int32) -> TimeseriesforecastensembleView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriesforecastensembleBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastensembleBuffer::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleBuffer::copy(Self) -> Self
+pub fn TimeseriesforecastensembleBuffer::fill(Self, Double) -> Self
+pub fn TimeseriesforecastensembleBuffer::get(Self, Int32) -> Double
+pub fn TimeseriesforecastensembleBuffer::len(Self) -> Int32
+pub fn TimeseriesforecastensembleBuffer::max(Self) -> Double
+pub fn TimeseriesforecastensembleBuffer::mean(Self) -> Double
+pub fn TimeseriesforecastensembleBuffer::min(Self) -> Double
+pub fn TimeseriesforecastensembleBuffer::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastensembleBuffer::sum(Self) -> Double
+pub fn TimeseriesforecastensembleBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastensembleCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastensembleCluster::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleCluster::copy(Self) -> Self
+pub fn TimeseriesforecastensembleCluster::fill(Self, Double) -> Self
+pub fn TimeseriesforecastensembleCluster::get(Self, Int32) -> Double
+pub fn TimeseriesforecastensembleCluster::len(Self) -> Int32
+pub fn TimeseriesforecastensembleCluster::max(Self) -> Double
+pub fn TimeseriesforecastensembleCluster::mean(Self) -> Double
+pub fn TimeseriesforecastensembleCluster::min(Self) -> Double
+pub fn TimeseriesforecastensembleCluster::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastensembleCluster::sum(Self) -> Double
+pub fn TimeseriesforecastensembleCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastensembleCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastensembleCursor::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleCursor::copy(Self) -> Self
+pub fn TimeseriesforecastensembleCursor::fill(Self, Double) -> Self
+pub fn TimeseriesforecastensembleCursor::get(Self, Int32) -> Double
+pub fn TimeseriesforecastensembleCursor::len(Self) -> Int32
+pub fn TimeseriesforecastensembleCursor::max(Self) -> Double
+pub fn TimeseriesforecastensembleCursor::mean(Self) -> Double
+pub fn TimeseriesforecastensembleCursor::min(Self) -> Double
+pub fn TimeseriesforecastensembleCursor::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastensembleCursor::sum(Self) -> Double
+pub fn TimeseriesforecastensembleCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastensembleEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastensembleEdge::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleEdge::copy(Self) -> Self
+pub fn TimeseriesforecastensembleEdge::fill(Self, Double) -> Self
+pub fn TimeseriesforecastensembleEdge::get(Self, Int32) -> Double
+pub fn TimeseriesforecastensembleEdge::len(Self) -> Int32
+pub fn TimeseriesforecastensembleEdge::max(Self) -> Double
+pub fn TimeseriesforecastensembleEdge::mean(Self) -> Double
+pub fn TimeseriesforecastensembleEdge::min(Self) -> Double
+pub fn TimeseriesforecastensembleEdge::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastensembleEdge::sum(Self) -> Double
+pub fn TimeseriesforecastensembleEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastensembleFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastensembleFrame::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleFrame::copy(Self) -> Self
+pub fn TimeseriesforecastensembleFrame::fill(Self, Double) -> Self
+pub fn TimeseriesforecastensembleFrame::get(Self, Int32) -> Double
+pub fn TimeseriesforecastensembleFrame::len(Self) -> Int32
+pub fn TimeseriesforecastensembleFrame::max(Self) -> Double
+pub fn TimeseriesforecastensembleFrame::mean(Self) -> Double
+pub fn TimeseriesforecastensembleFrame::min(Self) -> Double
+pub fn TimeseriesforecastensembleFrame::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastensembleFrame::sum(Self) -> Double
+pub fn TimeseriesforecastensembleFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastensembleGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastensembleGraphN::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleGraphN::copy(Self) -> Self
+pub fn TimeseriesforecastensembleGraphN::fill(Self, Double) -> Self
+pub fn TimeseriesforecastensembleGraphN::get(Self, Int32) -> Double
+pub fn TimeseriesforecastensembleGraphN::len(Self) -> Int32
+pub fn TimeseriesforecastensembleGraphN::max(Self) -> Double
+pub fn TimeseriesforecastensembleGraphN::mean(Self) -> Double
+pub fn TimeseriesforecastensembleGraphN::min(Self) -> Double
+pub fn TimeseriesforecastensembleGraphN::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastensembleGraphN::sum(Self) -> Double
+pub fn TimeseriesforecastensembleGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastensembleLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastensembleLayer::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleLayer::copy(Self) -> Self
+pub fn TimeseriesforecastensembleLayer::fill(Self, Double) -> Self
+pub fn TimeseriesforecastensembleLayer::get(Self, Int32) -> Double
+pub fn TimeseriesforecastensembleLayer::len(Self) -> Int32
+pub fn TimeseriesforecastensembleLayer::max(Self) -> Double
+pub fn TimeseriesforecastensembleLayer::mean(Self) -> Double
+pub fn TimeseriesforecastensembleLayer::min(Self) -> Double
+pub fn TimeseriesforecastensembleLayer::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastensembleLayer::sum(Self) -> Double
+pub fn TimeseriesforecastensembleLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastensembleMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriesforecastensembleMatrix::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleMatrix::det(Self) -> Double
+pub fn TimeseriesforecastensembleMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriesforecastensembleMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriesforecastensembleMatrix::norm(Self) -> Double
+pub fn TimeseriesforecastensembleMatrix::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleMatrix::to_string(Self) -> String
+pub fn TimeseriesforecastensembleMatrix::trace(Self) -> Double
+pub fn TimeseriesforecastensembleMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriesforecastensembleModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastensembleModel::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleModel::copy(Self) -> Self
+pub fn TimeseriesforecastensembleModel::fill(Self, Double) -> Self
+pub fn TimeseriesforecastensembleModel::get(Self, Int32) -> Double
+pub fn TimeseriesforecastensembleModel::len(Self) -> Int32
+pub fn TimeseriesforecastensembleModel::max(Self) -> Double
+pub fn TimeseriesforecastensembleModel::mean(Self) -> Double
+pub fn TimeseriesforecastensembleModel::min(Self) -> Double
+pub fn TimeseriesforecastensembleModel::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastensembleModel::sum(Self) -> Double
+pub fn TimeseriesforecastensembleModel::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastensembleNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastensembleNode::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleNode::copy(Self) -> Self
+pub fn TimeseriesforecastensembleNode::fill(Self, Double) -> Self
+pub fn TimeseriesforecastensembleNode::get(Self, Int32) -> Double
+pub fn TimeseriesforecastensembleNode::len(Self) -> Int32
+pub fn TimeseriesforecastensembleNode::max(Self) -> Double
+pub fn TimeseriesforecastensembleNode::mean(Self) -> Double
+pub fn TimeseriesforecastensembleNode::min(Self) -> Double
+pub fn TimeseriesforecastensembleNode::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastensembleNode::sum(Self) -> Double
+pub fn TimeseriesforecastensembleNode::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastensemblePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastensemblePath::add(Self, Self) -> Self
+pub fn TimeseriesforecastensemblePath::copy(Self) -> Self
+pub fn TimeseriesforecastensemblePath::fill(Self, Double) -> Self
+pub fn TimeseriesforecastensemblePath::get(Self, Int32) -> Double
+pub fn TimeseriesforecastensemblePath::len(Self) -> Int32
+pub fn TimeseriesforecastensemblePath::max(Self) -> Double
+pub fn TimeseriesforecastensemblePath::mean(Self) -> Double
+pub fn TimeseriesforecastensemblePath::min(Self) -> Double
+pub fn TimeseriesforecastensemblePath::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensemblePath::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastensemblePath::sum(Self) -> Double
+pub fn TimeseriesforecastensemblePath::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastensemblePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriesforecastensemblePoint::add(Self, Self) -> Self
+pub fn TimeseriesforecastensemblePoint::cross(Self, Self) -> Self
+pub fn TimeseriesforecastensemblePoint::dist(Self, Self) -> Double
+pub fn TimeseriesforecastensemblePoint::dot(Self, Self) -> Double
+pub fn TimeseriesforecastensemblePoint::label(Self) -> Int32
+pub fn TimeseriesforecastensemblePoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriesforecastensemblePoint::mid(Self, Self) -> Self
+pub fn TimeseriesforecastensemblePoint::negate(Self) -> Self
+pub fn TimeseriesforecastensemblePoint::norm(Self) -> Double
+pub fn TimeseriesforecastensemblePoint::normalize(Self) -> Self
+pub fn TimeseriesforecastensemblePoint::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensemblePoint::sub(Self, Self) -> Self
+pub fn TimeseriesforecastensemblePoint::to_string(Self) -> String
+pub fn TimeseriesforecastensemblePoint::x(Self) -> Double
+pub fn TimeseriesforecastensemblePoint::y(Self) -> Double
+pub fn TimeseriesforecastensemblePoint::z(Self) -> Double
+
+pub(all) struct TimeseriesforecastensembleRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastensembleRange::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleRange::copy(Self) -> Self
+pub fn TimeseriesforecastensembleRange::fill(Self, Double) -> Self
+pub fn TimeseriesforecastensembleRange::get(Self, Int32) -> Double
+pub fn TimeseriesforecastensembleRange::len(Self) -> Int32
+pub fn TimeseriesforecastensembleRange::max(Self) -> Double
+pub fn TimeseriesforecastensembleRange::mean(Self) -> Double
+pub fn TimeseriesforecastensembleRange::min(Self) -> Double
+pub fn TimeseriesforecastensembleRange::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastensembleRange::sum(Self) -> Double
+pub fn TimeseriesforecastensembleRange::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastensembleSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriesforecastensembleSeries::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleSeries::cumsum(Self) -> Self
+pub fn TimeseriesforecastensembleSeries::len(Self) -> Int32
+pub fn TimeseriesforecastensembleSeries::max(Self) -> Double
+pub fn TimeseriesforecastensembleSeries::mean(Self) -> Double
+pub fn TimeseriesforecastensembleSeries::median(Self) -> Double
+pub fn TimeseriesforecastensembleSeries::min(Self) -> Double
+pub fn TimeseriesforecastensembleSeries::normalize(Self) -> Self
+pub fn TimeseriesforecastensembleSeries::range(Self) -> Double
+pub fn TimeseriesforecastensembleSeries::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleSeries::std(Self) -> Double
+pub fn TimeseriesforecastensembleSeries::sub(Self, Self) -> Self
+pub fn TimeseriesforecastensembleSeries::sum(Self) -> Double
+pub fn TimeseriesforecastensembleSeries::to_string(Self) -> String
+pub fn TimeseriesforecastensembleSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriesforecastensembleSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastensembleSlice::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleSlice::copy(Self) -> Self
+pub fn TimeseriesforecastensembleSlice::fill(Self, Double) -> Self
+pub fn TimeseriesforecastensembleSlice::get(Self, Int32) -> Double
+pub fn TimeseriesforecastensembleSlice::len(Self) -> Int32
+pub fn TimeseriesforecastensembleSlice::max(Self) -> Double
+pub fn TimeseriesforecastensembleSlice::mean(Self) -> Double
+pub fn TimeseriesforecastensembleSlice::min(Self) -> Double
+pub fn TimeseriesforecastensembleSlice::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastensembleSlice::sum(Self) -> Double
+pub fn TimeseriesforecastensembleSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastensembleTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastensembleTable::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleTable::copy(Self) -> Self
+pub fn TimeseriesforecastensembleTable::fill(Self, Double) -> Self
+pub fn TimeseriesforecastensembleTable::get(Self, Int32) -> Double
+pub fn TimeseriesforecastensembleTable::len(Self) -> Int32
+pub fn TimeseriesforecastensembleTable::max(Self) -> Double
+pub fn TimeseriesforecastensembleTable::mean(Self) -> Double
+pub fn TimeseriesforecastensembleTable::min(Self) -> Double
+pub fn TimeseriesforecastensembleTable::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastensembleTable::sum(Self) -> Double
+pub fn TimeseriesforecastensembleTable::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastensembleVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriesforecastensembleVector::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleVector::dist(Self, Self) -> Double
+pub fn TimeseriesforecastensembleVector::dot(Self, Self) -> Double
+pub fn TimeseriesforecastensembleVector::norm(Self) -> Double
+pub fn TimeseriesforecastensembleVector::normalize(Self) -> Self
+pub fn TimeseriesforecastensembleVector::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleVector::sub(Self, Self) -> Self
+pub fn TimeseriesforecastensembleVector::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastensembleView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastensembleView::add(Self, Self) -> Self
+pub fn TimeseriesforecastensembleView::copy(Self) -> Self
+pub fn TimeseriesforecastensembleView::fill(Self, Double) -> Self
+pub fn TimeseriesforecastensembleView::get(Self, Int32) -> Double
+pub fn TimeseriesforecastensembleView::len(Self) -> Int32
+pub fn TimeseriesforecastensembleView::max(Self) -> Double
+pub fn TimeseriesforecastensembleView::mean(Self) -> Double
+pub fn TimeseriesforecastensembleView::min(Self) -> Double
+pub fn TimeseriesforecastensembleView::scale(Self, Double) -> Self
+pub fn TimeseriesforecastensembleView::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastensembleView::sum(Self) -> Double
+pub fn TimeseriesforecastensembleView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

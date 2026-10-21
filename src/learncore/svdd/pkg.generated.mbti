@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/svdd"
+
+// Values
+pub fn svdd_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn svdd_corr(Array[Double], Array[Double]) -> Double
+
+pub fn svdd_cov(Array[Double], Array[Double]) -> Double
+
+pub fn svdd_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn svdd_mae(Array[Double], Array[Double]) -> Double
+
+pub fn svdd_make_labeled_point(Double, Double, Int32) -> SvddPoint
+
+pub fn svdd_make_matrix(Int32, Int32, Double) -> SvddMatrix
+
+pub fn svdd_make_point(Double, Double) -> SvddPoint
+
+pub fn svdd_make_series(Array[Double], String) -> SvddSeries
+
+pub fn svdd_make_vector(Array[Double]) -> SvddVector
+
+pub fn svdd_matrix_add(SvddMatrix, SvddMatrix) -> SvddMatrix
+
+pub fn svdd_matrix_get(SvddMatrix, Int32, Int32) -> Double
+
+pub fn svdd_matrix_identity(Int32) -> SvddMatrix
+
+pub fn svdd_matrix_multiply(SvddMatrix, SvddMatrix) -> SvddMatrix
+
+pub fn svdd_matrix_norm(SvddMatrix) -> Double
+
+pub fn svdd_matrix_scale(SvddMatrix, Double) -> SvddMatrix
+
+pub fn svdd_matrix_to_string(SvddMatrix) -> String
+
+pub fn svdd_matrix_trace(SvddMatrix) -> Double
+
+pub fn svdd_matrix_transpose(SvddMatrix) -> SvddMatrix
+
+pub fn svdd_mse(Array[Double], Array[Double]) -> Double
+
+pub fn svdd_point_add(SvddPoint, SvddPoint) -> SvddPoint
+
+pub fn svdd_point_dist(SvddPoint, SvddPoint) -> Double
+
+pub fn svdd_point_dot(SvddPoint, SvddPoint) -> Double
+
+pub fn svdd_point_label(SvddPoint) -> Int32
+
+pub fn svdd_point_norm(SvddPoint) -> Double
+
+pub fn svdd_point_scale(SvddPoint, Double) -> SvddPoint
+
+pub fn svdd_point_sub(SvddPoint, SvddPoint) -> SvddPoint
+
+pub fn svdd_point_to_string(SvddPoint) -> String
+
+pub fn svdd_point_x(SvddPoint) -> Double
+
+pub fn svdd_point_y(SvddPoint) -> Double
+
+pub fn svdd_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn svdd_r2(Array[Double], Array[Double]) -> Double
+
+pub fn svdd_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn svdd_series_add(SvddSeries, SvddSeries) -> SvddSeries
+
+pub fn svdd_series_len(SvddSeries) -> Int32
+
+pub fn svdd_series_max(SvddSeries) -> Double
+
+pub fn svdd_series_mean(SvddSeries) -> Double
+
+pub fn svdd_series_min(SvddSeries) -> Double
+
+pub fn svdd_series_scale(SvddSeries, Double) -> SvddSeries
+
+pub fn svdd_series_std(SvddSeries) -> Double
+
+pub fn svdd_series_sum(SvddSeries) -> Double
+
+pub fn svdd_series_to_string(SvddSeries) -> String
+
+pub fn svdd_series_var(SvddSeries) -> Double
+
+pub fn svdd_std(Array[Double]) -> Double
+
+pub fn svdd_var(Array[Double]) -> Double
+
+pub fn svdd_vector_add(SvddVector, SvddVector) -> SvddVector
+
+pub fn svdd_vector_dist(SvddVector, SvddVector) -> Double
+
+pub fn svdd_vector_dot(SvddVector, SvddVector) -> Double
+
+pub fn svdd_vector_norm(SvddVector) -> Double
+
+pub fn svdd_vector_normalize(SvddVector) -> SvddVector
+
+pub fn svdd_vector_scale(SvddVector, Double) -> SvddVector
+
+pub fn svdd_vector_sub(SvddVector, SvddVector) -> SvddVector
+
+pub fn svdd_vector_to_string(SvddVector) -> String
+
+pub fn svdd_vector_zero(Int32) -> SvddVector
+
+// Errors
+
+// Types and methods
+pub struct SvddMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct SvddPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct SvddSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct SvddVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

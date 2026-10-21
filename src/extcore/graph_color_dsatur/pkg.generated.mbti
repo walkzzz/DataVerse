@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_color_dsatur"
+
+// Values
+pub fn graph_color_dsatur_buffer_make(Int32) -> GraphcolordsaturBuffer
+
+pub fn graph_color_dsatur_cluster_make(Int32) -> GraphcolordsaturCluster
+
+pub fn graph_color_dsatur_cursor_make(Int32) -> GraphcolordsaturCursor
+
+pub fn graph_color_dsatur_edge_make(Int32) -> GraphcolordsaturEdge
+
+pub fn graph_color_dsatur_frame_make(Int32) -> GraphcolordsaturFrame
+
+pub fn graph_color_dsatur_graphn_make(Int32) -> GraphcolordsaturGraphN
+
+pub fn graph_color_dsatur_layer_make(Int32) -> GraphcolordsaturLayer
+
+pub fn graph_color_dsatur_make_matrix(Int32, Int32, Double) -> GraphcolordsaturMatrix
+
+pub fn graph_color_dsatur_make_point(Double, Double) -> GraphcolordsaturPoint
+
+pub fn graph_color_dsatur_make_point3(Double, Double, Double) -> GraphcolordsaturPoint
+
+pub fn graph_color_dsatur_make_series(Array[Double], String) -> GraphcolordsaturSeries
+
+pub fn graph_color_dsatur_make_vector(Array[Double]) -> GraphcolordsaturVector
+
+pub fn graph_color_dsatur_matrix_identity(Int32) -> GraphcolordsaturMatrix
+
+pub fn graph_color_dsatur_model_make(Int32) -> GraphcolordsaturModel
+
+pub fn graph_color_dsatur_node_make(Int32) -> GraphcolordsaturNode
+
+pub fn graph_color_dsatur_path_make(Int32) -> GraphcolordsaturPath
+
+pub fn graph_color_dsatur_range_make(Int32) -> GraphcolordsaturRange
+
+pub fn graph_color_dsatur_slice_make(Int32) -> GraphcolordsaturSlice
+
+pub fn graph_color_dsatur_table_make(Int32) -> GraphcolordsaturTable
+
+pub fn graph_color_dsatur_vector_zero(Int32) -> GraphcolordsaturVector
+
+pub fn graph_color_dsatur_view_make(Int32) -> GraphcolordsaturView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphcolordsaturBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolordsaturBuffer::add(Self, Self) -> Self
+pub fn GraphcolordsaturBuffer::copy(Self) -> Self
+pub fn GraphcolordsaturBuffer::fill(Self, Double) -> Self
+pub fn GraphcolordsaturBuffer::get(Self, Int32) -> Double
+pub fn GraphcolordsaturBuffer::len(Self) -> Int32
+pub fn GraphcolordsaturBuffer::max(Self) -> Double
+pub fn GraphcolordsaturBuffer::mean(Self) -> Double
+pub fn GraphcolordsaturBuffer::min(Self) -> Double
+pub fn GraphcolordsaturBuffer::scale(Self, Double) -> Self
+pub fn GraphcolordsaturBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphcolordsaturBuffer::sum(Self) -> Double
+pub fn GraphcolordsaturBuffer::to_string(Self) -> String
+
+pub(all) struct GraphcolordsaturCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolordsaturCluster::add(Self, Self) -> Self
+pub fn GraphcolordsaturCluster::copy(Self) -> Self
+pub fn GraphcolordsaturCluster::fill(Self, Double) -> Self
+pub fn GraphcolordsaturCluster::get(Self, Int32) -> Double
+pub fn GraphcolordsaturCluster::len(Self) -> Int32
+pub fn GraphcolordsaturCluster::max(Self) -> Double
+pub fn GraphcolordsaturCluster::mean(Self) -> Double
+pub fn GraphcolordsaturCluster::min(Self) -> Double
+pub fn GraphcolordsaturCluster::scale(Self, Double) -> Self
+pub fn GraphcolordsaturCluster::set(Self, Int32, Double) -> Self
+pub fn GraphcolordsaturCluster::sum(Self) -> Double
+pub fn GraphcolordsaturCluster::to_string(Self) -> String
+
+pub(all) struct GraphcolordsaturCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolordsaturCursor::add(Self, Self) -> Self
+pub fn GraphcolordsaturCursor::copy(Self) -> Self
+pub fn GraphcolordsaturCursor::fill(Self, Double) -> Self
+pub fn GraphcolordsaturCursor::get(Self, Int32) -> Double
+pub fn GraphcolordsaturCursor::len(Self) -> Int32
+pub fn GraphcolordsaturCursor::max(Self) -> Double
+pub fn GraphcolordsaturCursor::mean(Self) -> Double
+pub fn GraphcolordsaturCursor::min(Self) -> Double
+pub fn GraphcolordsaturCursor::scale(Self, Double) -> Self
+pub fn GraphcolordsaturCursor::set(Self, Int32, Double) -> Self
+pub fn GraphcolordsaturCursor::sum(Self) -> Double
+pub fn GraphcolordsaturCursor::to_string(Self) -> String
+
+pub(all) struct GraphcolordsaturEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolordsaturEdge::add(Self, Self) -> Self
+pub fn GraphcolordsaturEdge::copy(Self) -> Self
+pub fn GraphcolordsaturEdge::fill(Self, Double) -> Self
+pub fn GraphcolordsaturEdge::get(Self, Int32) -> Double
+pub fn GraphcolordsaturEdge::len(Self) -> Int32
+pub fn GraphcolordsaturEdge::max(Self) -> Double
+pub fn GraphcolordsaturEdge::mean(Self) -> Double
+pub fn GraphcolordsaturEdge::min(Self) -> Double
+pub fn GraphcolordsaturEdge::scale(Self, Double) -> Self
+pub fn GraphcolordsaturEdge::set(Self, Int32, Double) -> Self
+pub fn GraphcolordsaturEdge::sum(Self) -> Double
+pub fn GraphcolordsaturEdge::to_string(Self) -> String
+
+pub(all) struct GraphcolordsaturFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolordsaturFrame::add(Self, Self) -> Self
+pub fn GraphcolordsaturFrame::copy(Self) -> Self
+pub fn GraphcolordsaturFrame::fill(Self, Double) -> Self
+pub fn GraphcolordsaturFrame::get(Self, Int32) -> Double
+pub fn GraphcolordsaturFrame::len(Self) -> Int32
+pub fn GraphcolordsaturFrame::max(Self) -> Double
+pub fn GraphcolordsaturFrame::mean(Self) -> Double
+pub fn GraphcolordsaturFrame::min(Self) -> Double
+pub fn GraphcolordsaturFrame::scale(Self, Double) -> Self
+pub fn GraphcolordsaturFrame::set(Self, Int32, Double) -> Self
+pub fn GraphcolordsaturFrame::sum(Self) -> Double
+pub fn GraphcolordsaturFrame::to_string(Self) -> String
+
+pub(all) struct GraphcolordsaturGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolordsaturGraphN::add(Self, Self) -> Self
+pub fn GraphcolordsaturGraphN::copy(Self) -> Self
+pub fn GraphcolordsaturGraphN::fill(Self, Double) -> Self
+pub fn GraphcolordsaturGraphN::get(Self, Int32) -> Double
+pub fn GraphcolordsaturGraphN::len(Self) -> Int32
+pub fn GraphcolordsaturGraphN::max(Self) -> Double
+pub fn GraphcolordsaturGraphN::mean(Self) -> Double
+pub fn GraphcolordsaturGraphN::min(Self) -> Double
+pub fn GraphcolordsaturGraphN::scale(Self, Double) -> Self
+pub fn GraphcolordsaturGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphcolordsaturGraphN::sum(Self) -> Double
+pub fn GraphcolordsaturGraphN::to_string(Self) -> String
+
+pub(all) struct GraphcolordsaturLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolordsaturLayer::add(Self, Self) -> Self
+pub fn GraphcolordsaturLayer::copy(Self) -> Self
+pub fn GraphcolordsaturLayer::fill(Self, Double) -> Self
+pub fn GraphcolordsaturLayer::get(Self, Int32) -> Double
+pub fn GraphcolordsaturLayer::len(Self) -> Int32
+pub fn GraphcolordsaturLayer::max(Self) -> Double
+pub fn GraphcolordsaturLayer::mean(Self) -> Double
+pub fn GraphcolordsaturLayer::min(Self) -> Double
+pub fn GraphcolordsaturLayer::scale(Self, Double) -> Self
+pub fn GraphcolordsaturLayer::set(Self, Int32, Double) -> Self
+pub fn GraphcolordsaturLayer::sum(Self) -> Double
+pub fn GraphcolordsaturLayer::to_string(Self) -> String
+
+pub(all) struct GraphcolordsaturMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphcolordsaturMatrix::add(Self, Self) -> Self
+pub fn GraphcolordsaturMatrix::det(Self) -> Double
+pub fn GraphcolordsaturMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphcolordsaturMatrix::multiply(Self, Self) -> Self
+pub fn GraphcolordsaturMatrix::norm(Self) -> Double
+pub fn GraphcolordsaturMatrix::scale(Self, Double) -> Self
+pub fn GraphcolordsaturMatrix::to_string(Self) -> String
+pub fn GraphcolordsaturMatrix::trace(Self) -> Double
+pub fn GraphcolordsaturMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphcolordsaturModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolordsaturModel::add(Self, Self) -> Self
+pub fn GraphcolordsaturModel::copy(Self) -> Self
+pub fn GraphcolordsaturModel::fill(Self, Double) -> Self
+pub fn GraphcolordsaturModel::get(Self, Int32) -> Double
+pub fn GraphcolordsaturModel::len(Self) -> Int32
+pub fn GraphcolordsaturModel::max(Self) -> Double
+pub fn GraphcolordsaturModel::mean(Self) -> Double
+pub fn GraphcolordsaturModel::min(Self) -> Double
+pub fn GraphcolordsaturModel::scale(Self, Double) -> Self
+pub fn GraphcolordsaturModel::set(Self, Int32, Double) -> Self
+pub fn GraphcolordsaturModel::sum(Self) -> Double
+pub fn GraphcolordsaturModel::to_string(Self) -> String
+
+pub(all) struct GraphcolordsaturNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolordsaturNode::add(Self, Self) -> Self
+pub fn GraphcolordsaturNode::copy(Self) -> Self
+pub fn GraphcolordsaturNode::fill(Self, Double) -> Self
+pub fn GraphcolordsaturNode::get(Self, Int32) -> Double
+pub fn GraphcolordsaturNode::len(Self) -> Int32
+pub fn GraphcolordsaturNode::max(Self) -> Double
+pub fn GraphcolordsaturNode::mean(Self) -> Double
+pub fn GraphcolordsaturNode::min(Self) -> Double
+pub fn GraphcolordsaturNode::scale(Self, Double) -> Self
+pub fn GraphcolordsaturNode::set(Self, Int32, Double) -> Self
+pub fn GraphcolordsaturNode::sum(Self) -> Double
+pub fn GraphcolordsaturNode::to_string(Self) -> String
+
+pub(all) struct GraphcolordsaturPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolordsaturPath::add(Self, Self) -> Self
+pub fn GraphcolordsaturPath::copy(Self) -> Self
+pub fn GraphcolordsaturPath::fill(Self, Double) -> Self
+pub fn GraphcolordsaturPath::get(Self, Int32) -> Double
+pub fn GraphcolordsaturPath::len(Self) -> Int32
+pub fn GraphcolordsaturPath::max(Self) -> Double
+pub fn GraphcolordsaturPath::mean(Self) -> Double
+pub fn GraphcolordsaturPath::min(Self) -> Double
+pub fn GraphcolordsaturPath::scale(Self, Double) -> Self
+pub fn GraphcolordsaturPath::set(Self, Int32, Double) -> Self
+pub fn GraphcolordsaturPath::sum(Self) -> Double
+pub fn GraphcolordsaturPath::to_string(Self) -> String
+
+pub(all) struct GraphcolordsaturPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphcolordsaturPoint::add(Self, Self) -> Self
+pub fn GraphcolordsaturPoint::cross(Self, Self) -> Self
+pub fn GraphcolordsaturPoint::dist(Self, Self) -> Double
+pub fn GraphcolordsaturPoint::dot(Self, Self) -> Double
+pub fn GraphcolordsaturPoint::label(Self) -> Int32
+pub fn GraphcolordsaturPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphcolordsaturPoint::mid(Self, Self) -> Self
+pub fn GraphcolordsaturPoint::negate(Self) -> Self
+pub fn GraphcolordsaturPoint::norm(Self) -> Double
+pub fn GraphcolordsaturPoint::normalize(Self) -> Self
+pub fn GraphcolordsaturPoint::scale(Self, Double) -> Self
+pub fn GraphcolordsaturPoint::sub(Self, Self) -> Self
+pub fn GraphcolordsaturPoint::to_string(Self) -> String
+pub fn GraphcolordsaturPoint::x(Self) -> Double
+pub fn GraphcolordsaturPoint::y(Self) -> Double
+pub fn GraphcolordsaturPoint::z(Self) -> Double
+
+pub(all) struct GraphcolordsaturRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolordsaturRange::add(Self, Self) -> Self
+pub fn GraphcolordsaturRange::copy(Self) -> Self
+pub fn GraphcolordsaturRange::fill(Self, Double) -> Self
+pub fn GraphcolordsaturRange::get(Self, Int32) -> Double
+pub fn GraphcolordsaturRange::len(Self) -> Int32
+pub fn GraphcolordsaturRange::max(Self) -> Double
+pub fn GraphcolordsaturRange::mean(Self) -> Double
+pub fn GraphcolordsaturRange::min(Self) -> Double
+pub fn GraphcolordsaturRange::scale(Self, Double) -> Self
+pub fn GraphcolordsaturRange::set(Self, Int32, Double) -> Self
+pub fn GraphcolordsaturRange::sum(Self) -> Double
+pub fn GraphcolordsaturRange::to_string(Self) -> String
+
+pub(all) struct GraphcolordsaturSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphcolordsaturSeries::add(Self, Self) -> Self
+pub fn GraphcolordsaturSeries::cumsum(Self) -> Self
+pub fn GraphcolordsaturSeries::len(Self) -> Int32
+pub fn GraphcolordsaturSeries::max(Self) -> Double
+pub fn GraphcolordsaturSeries::mean(Self) -> Double
+pub fn GraphcolordsaturSeries::median(Self) -> Double
+pub fn GraphcolordsaturSeries::min(Self) -> Double
+pub fn GraphcolordsaturSeries::normalize(Self) -> Self
+pub fn GraphcolordsaturSeries::range(Self) -> Double
+pub fn GraphcolordsaturSeries::scale(Self, Double) -> Self
+pub fn GraphcolordsaturSeries::std(Self) -> Double
+pub fn GraphcolordsaturSeries::sub(Self, Self) -> Self
+pub fn GraphcolordsaturSeries::sum(Self) -> Double
+pub fn GraphcolordsaturSeries::to_string(Self) -> String
+pub fn GraphcolordsaturSeries::variance(Self) -> Double
+
+pub(all) struct GraphcolordsaturSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolordsaturSlice::add(Self, Self) -> Self
+pub fn GraphcolordsaturSlice::copy(Self) -> Self
+pub fn GraphcolordsaturSlice::fill(Self, Double) -> Self
+pub fn GraphcolordsaturSlice::get(Self, Int32) -> Double
+pub fn GraphcolordsaturSlice::len(Self) -> Int32
+pub fn GraphcolordsaturSlice::max(Self) -> Double
+pub fn GraphcolordsaturSlice::mean(Self) -> Double
+pub fn GraphcolordsaturSlice::min(Self) -> Double
+pub fn GraphcolordsaturSlice::scale(Self, Double) -> Self
+pub fn GraphcolordsaturSlice::set(Self, Int32, Double) -> Self
+pub fn GraphcolordsaturSlice::sum(Self) -> Double
+pub fn GraphcolordsaturSlice::to_string(Self) -> String
+
+pub(all) struct GraphcolordsaturTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolordsaturTable::add(Self, Self) -> Self
+pub fn GraphcolordsaturTable::copy(Self) -> Self
+pub fn GraphcolordsaturTable::fill(Self, Double) -> Self
+pub fn GraphcolordsaturTable::get(Self, Int32) -> Double
+pub fn GraphcolordsaturTable::len(Self) -> Int32
+pub fn GraphcolordsaturTable::max(Self) -> Double
+pub fn GraphcolordsaturTable::mean(Self) -> Double
+pub fn GraphcolordsaturTable::min(Self) -> Double
+pub fn GraphcolordsaturTable::scale(Self, Double) -> Self
+pub fn GraphcolordsaturTable::set(Self, Int32, Double) -> Self
+pub fn GraphcolordsaturTable::sum(Self) -> Double
+pub fn GraphcolordsaturTable::to_string(Self) -> String
+
+pub(all) struct GraphcolordsaturVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphcolordsaturVector::add(Self, Self) -> Self
+pub fn GraphcolordsaturVector::dist(Self, Self) -> Double
+pub fn GraphcolordsaturVector::dot(Self, Self) -> Double
+pub fn GraphcolordsaturVector::norm(Self) -> Double
+pub fn GraphcolordsaturVector::normalize(Self) -> Self
+pub fn GraphcolordsaturVector::scale(Self, Double) -> Self
+pub fn GraphcolordsaturVector::sub(Self, Self) -> Self
+pub fn GraphcolordsaturVector::to_string(Self) -> String
+
+pub(all) struct GraphcolordsaturView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolordsaturView::add(Self, Self) -> Self
+pub fn GraphcolordsaturView::copy(Self) -> Self
+pub fn GraphcolordsaturView::fill(Self, Double) -> Self
+pub fn GraphcolordsaturView::get(Self, Int32) -> Double
+pub fn GraphcolordsaturView::len(Self) -> Int32
+pub fn GraphcolordsaturView::max(Self) -> Double
+pub fn GraphcolordsaturView::mean(Self) -> Double
+pub fn GraphcolordsaturView::min(Self) -> Double
+pub fn GraphcolordsaturView::scale(Self, Double) -> Self
+pub fn GraphcolordsaturView::set(Self, Int32, Double) -> Self
+pub fn GraphcolordsaturView::sum(Self) -> Double
+pub fn GraphcolordsaturView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

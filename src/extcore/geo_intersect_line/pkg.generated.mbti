@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_intersect_line"
+
+// Values
+pub fn geo_intersect_line_buffer_make(Int32) -> GeointersectlineBuffer
+
+pub fn geo_intersect_line_cluster_make(Int32) -> GeointersectlineCluster
+
+pub fn geo_intersect_line_cursor_make(Int32) -> GeointersectlineCursor
+
+pub fn geo_intersect_line_edge_make(Int32) -> GeointersectlineEdge
+
+pub fn geo_intersect_line_frame_make(Int32) -> GeointersectlineFrame
+
+pub fn geo_intersect_line_graphn_make(Int32) -> GeointersectlineGraphN
+
+pub fn geo_intersect_line_layer_make(Int32) -> GeointersectlineLayer
+
+pub fn geo_intersect_line_make_matrix(Int32, Int32, Double) -> GeointersectlineMatrix
+
+pub fn geo_intersect_line_make_point(Double, Double) -> GeointersectlinePoint
+
+pub fn geo_intersect_line_make_point3(Double, Double, Double) -> GeointersectlinePoint
+
+pub fn geo_intersect_line_make_series(Array[Double], String) -> GeointersectlineSeries
+
+pub fn geo_intersect_line_make_vector(Array[Double]) -> GeointersectlineVector
+
+pub fn geo_intersect_line_matrix_identity(Int32) -> GeointersectlineMatrix
+
+pub fn geo_intersect_line_model_make(Int32) -> GeointersectlineModel
+
+pub fn geo_intersect_line_node_make(Int32) -> GeointersectlineNode
+
+pub fn geo_intersect_line_path_make(Int32) -> GeointersectlinePath
+
+pub fn geo_intersect_line_range_make(Int32) -> GeointersectlineRange
+
+pub fn geo_intersect_line_slice_make(Int32) -> GeointersectlineSlice
+
+pub fn geo_intersect_line_table_make(Int32) -> GeointersectlineTable
+
+pub fn geo_intersect_line_vector_zero(Int32) -> GeointersectlineVector
+
+pub fn geo_intersect_line_view_make(Int32) -> GeointersectlineView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeointersectlineBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectlineBuffer::add(Self, Self) -> Self
+pub fn GeointersectlineBuffer::copy(Self) -> Self
+pub fn GeointersectlineBuffer::fill(Self, Double) -> Self
+pub fn GeointersectlineBuffer::get(Self, Int32) -> Double
+pub fn GeointersectlineBuffer::len(Self) -> Int32
+pub fn GeointersectlineBuffer::max(Self) -> Double
+pub fn GeointersectlineBuffer::mean(Self) -> Double
+pub fn GeointersectlineBuffer::min(Self) -> Double
+pub fn GeointersectlineBuffer::scale(Self, Double) -> Self
+pub fn GeointersectlineBuffer::set(Self, Int32, Double) -> Self
+pub fn GeointersectlineBuffer::sum(Self) -> Double
+pub fn GeointersectlineBuffer::to_string(Self) -> String
+
+pub(all) struct GeointersectlineCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectlineCluster::add(Self, Self) -> Self
+pub fn GeointersectlineCluster::copy(Self) -> Self
+pub fn GeointersectlineCluster::fill(Self, Double) -> Self
+pub fn GeointersectlineCluster::get(Self, Int32) -> Double
+pub fn GeointersectlineCluster::len(Self) -> Int32
+pub fn GeointersectlineCluster::max(Self) -> Double
+pub fn GeointersectlineCluster::mean(Self) -> Double
+pub fn GeointersectlineCluster::min(Self) -> Double
+pub fn GeointersectlineCluster::scale(Self, Double) -> Self
+pub fn GeointersectlineCluster::set(Self, Int32, Double) -> Self
+pub fn GeointersectlineCluster::sum(Self) -> Double
+pub fn GeointersectlineCluster::to_string(Self) -> String
+
+pub(all) struct GeointersectlineCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectlineCursor::add(Self, Self) -> Self
+pub fn GeointersectlineCursor::copy(Self) -> Self
+pub fn GeointersectlineCursor::fill(Self, Double) -> Self
+pub fn GeointersectlineCursor::get(Self, Int32) -> Double
+pub fn GeointersectlineCursor::len(Self) -> Int32
+pub fn GeointersectlineCursor::max(Self) -> Double
+pub fn GeointersectlineCursor::mean(Self) -> Double
+pub fn GeointersectlineCursor::min(Self) -> Double
+pub fn GeointersectlineCursor::scale(Self, Double) -> Self
+pub fn GeointersectlineCursor::set(Self, Int32, Double) -> Self
+pub fn GeointersectlineCursor::sum(Self) -> Double
+pub fn GeointersectlineCursor::to_string(Self) -> String
+
+pub(all) struct GeointersectlineEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectlineEdge::add(Self, Self) -> Self
+pub fn GeointersectlineEdge::copy(Self) -> Self
+pub fn GeointersectlineEdge::fill(Self, Double) -> Self
+pub fn GeointersectlineEdge::get(Self, Int32) -> Double
+pub fn GeointersectlineEdge::len(Self) -> Int32
+pub fn GeointersectlineEdge::max(Self) -> Double
+pub fn GeointersectlineEdge::mean(Self) -> Double
+pub fn GeointersectlineEdge::min(Self) -> Double
+pub fn GeointersectlineEdge::scale(Self, Double) -> Self
+pub fn GeointersectlineEdge::set(Self, Int32, Double) -> Self
+pub fn GeointersectlineEdge::sum(Self) -> Double
+pub fn GeointersectlineEdge::to_string(Self) -> String
+
+pub(all) struct GeointersectlineFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectlineFrame::add(Self, Self) -> Self
+pub fn GeointersectlineFrame::copy(Self) -> Self
+pub fn GeointersectlineFrame::fill(Self, Double) -> Self
+pub fn GeointersectlineFrame::get(Self, Int32) -> Double
+pub fn GeointersectlineFrame::len(Self) -> Int32
+pub fn GeointersectlineFrame::max(Self) -> Double
+pub fn GeointersectlineFrame::mean(Self) -> Double
+pub fn GeointersectlineFrame::min(Self) -> Double
+pub fn GeointersectlineFrame::scale(Self, Double) -> Self
+pub fn GeointersectlineFrame::set(Self, Int32, Double) -> Self
+pub fn GeointersectlineFrame::sum(Self) -> Double
+pub fn GeointersectlineFrame::to_string(Self) -> String
+
+pub(all) struct GeointersectlineGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectlineGraphN::add(Self, Self) -> Self
+pub fn GeointersectlineGraphN::copy(Self) -> Self
+pub fn GeointersectlineGraphN::fill(Self, Double) -> Self
+pub fn GeointersectlineGraphN::get(Self, Int32) -> Double
+pub fn GeointersectlineGraphN::len(Self) -> Int32
+pub fn GeointersectlineGraphN::max(Self) -> Double
+pub fn GeointersectlineGraphN::mean(Self) -> Double
+pub fn GeointersectlineGraphN::min(Self) -> Double
+pub fn GeointersectlineGraphN::scale(Self, Double) -> Self
+pub fn GeointersectlineGraphN::set(Self, Int32, Double) -> Self
+pub fn GeointersectlineGraphN::sum(Self) -> Double
+pub fn GeointersectlineGraphN::to_string(Self) -> String
+
+pub(all) struct GeointersectlineLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectlineLayer::add(Self, Self) -> Self
+pub fn GeointersectlineLayer::copy(Self) -> Self
+pub fn GeointersectlineLayer::fill(Self, Double) -> Self
+pub fn GeointersectlineLayer::get(Self, Int32) -> Double
+pub fn GeointersectlineLayer::len(Self) -> Int32
+pub fn GeointersectlineLayer::max(Self) -> Double
+pub fn GeointersectlineLayer::mean(Self) -> Double
+pub fn GeointersectlineLayer::min(Self) -> Double
+pub fn GeointersectlineLayer::scale(Self, Double) -> Self
+pub fn GeointersectlineLayer::set(Self, Int32, Double) -> Self
+pub fn GeointersectlineLayer::sum(Self) -> Double
+pub fn GeointersectlineLayer::to_string(Self) -> String
+
+pub(all) struct GeointersectlineMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeointersectlineMatrix::add(Self, Self) -> Self
+pub fn GeointersectlineMatrix::det(Self) -> Double
+pub fn GeointersectlineMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeointersectlineMatrix::multiply(Self, Self) -> Self
+pub fn GeointersectlineMatrix::norm(Self) -> Double
+pub fn GeointersectlineMatrix::scale(Self, Double) -> Self
+pub fn GeointersectlineMatrix::to_string(Self) -> String
+pub fn GeointersectlineMatrix::trace(Self) -> Double
+pub fn GeointersectlineMatrix::transpose(Self) -> Self
+
+pub(all) struct GeointersectlineModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectlineModel::add(Self, Self) -> Self
+pub fn GeointersectlineModel::copy(Self) -> Self
+pub fn GeointersectlineModel::fill(Self, Double) -> Self
+pub fn GeointersectlineModel::get(Self, Int32) -> Double
+pub fn GeointersectlineModel::len(Self) -> Int32
+pub fn GeointersectlineModel::max(Self) -> Double
+pub fn GeointersectlineModel::mean(Self) -> Double
+pub fn GeointersectlineModel::min(Self) -> Double
+pub fn GeointersectlineModel::scale(Self, Double) -> Self
+pub fn GeointersectlineModel::set(Self, Int32, Double) -> Self
+pub fn GeointersectlineModel::sum(Self) -> Double
+pub fn GeointersectlineModel::to_string(Self) -> String
+
+pub(all) struct GeointersectlineNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectlineNode::add(Self, Self) -> Self
+pub fn GeointersectlineNode::copy(Self) -> Self
+pub fn GeointersectlineNode::fill(Self, Double) -> Self
+pub fn GeointersectlineNode::get(Self, Int32) -> Double
+pub fn GeointersectlineNode::len(Self) -> Int32
+pub fn GeointersectlineNode::max(Self) -> Double
+pub fn GeointersectlineNode::mean(Self) -> Double
+pub fn GeointersectlineNode::min(Self) -> Double
+pub fn GeointersectlineNode::scale(Self, Double) -> Self
+pub fn GeointersectlineNode::set(Self, Int32, Double) -> Self
+pub fn GeointersectlineNode::sum(Self) -> Double
+pub fn GeointersectlineNode::to_string(Self) -> String
+
+pub(all) struct GeointersectlinePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectlinePath::add(Self, Self) -> Self
+pub fn GeointersectlinePath::copy(Self) -> Self
+pub fn GeointersectlinePath::fill(Self, Double) -> Self
+pub fn GeointersectlinePath::get(Self, Int32) -> Double
+pub fn GeointersectlinePath::len(Self) -> Int32
+pub fn GeointersectlinePath::max(Self) -> Double
+pub fn GeointersectlinePath::mean(Self) -> Double
+pub fn GeointersectlinePath::min(Self) -> Double
+pub fn GeointersectlinePath::scale(Self, Double) -> Self
+pub fn GeointersectlinePath::set(Self, Int32, Double) -> Self
+pub fn GeointersectlinePath::sum(Self) -> Double
+pub fn GeointersectlinePath::to_string(Self) -> String
+
+pub(all) struct GeointersectlinePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeointersectlinePoint::add(Self, Self) -> Self
+pub fn GeointersectlinePoint::cross(Self, Self) -> Self
+pub fn GeointersectlinePoint::dist(Self, Self) -> Double
+pub fn GeointersectlinePoint::dot(Self, Self) -> Double
+pub fn GeointersectlinePoint::label(Self) -> Int32
+pub fn GeointersectlinePoint::lerp(Self, Self, Double) -> Self
+pub fn GeointersectlinePoint::mid(Self, Self) -> Self
+pub fn GeointersectlinePoint::negate(Self) -> Self
+pub fn GeointersectlinePoint::norm(Self) -> Double
+pub fn GeointersectlinePoint::normalize(Self) -> Self
+pub fn GeointersectlinePoint::scale(Self, Double) -> Self
+pub fn GeointersectlinePoint::sub(Self, Self) -> Self
+pub fn GeointersectlinePoint::to_string(Self) -> String
+pub fn GeointersectlinePoint::x(Self) -> Double
+pub fn GeointersectlinePoint::y(Self) -> Double
+pub fn GeointersectlinePoint::z(Self) -> Double
+
+pub(all) struct GeointersectlineRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectlineRange::add(Self, Self) -> Self
+pub fn GeointersectlineRange::copy(Self) -> Self
+pub fn GeointersectlineRange::fill(Self, Double) -> Self
+pub fn GeointersectlineRange::get(Self, Int32) -> Double
+pub fn GeointersectlineRange::len(Self) -> Int32
+pub fn GeointersectlineRange::max(Self) -> Double
+pub fn GeointersectlineRange::mean(Self) -> Double
+pub fn GeointersectlineRange::min(Self) -> Double
+pub fn GeointersectlineRange::scale(Self, Double) -> Self
+pub fn GeointersectlineRange::set(Self, Int32, Double) -> Self
+pub fn GeointersectlineRange::sum(Self) -> Double
+pub fn GeointersectlineRange::to_string(Self) -> String
+
+pub(all) struct GeointersectlineSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeointersectlineSeries::add(Self, Self) -> Self
+pub fn GeointersectlineSeries::cumsum(Self) -> Self
+pub fn GeointersectlineSeries::len(Self) -> Int32
+pub fn GeointersectlineSeries::max(Self) -> Double
+pub fn GeointersectlineSeries::mean(Self) -> Double
+pub fn GeointersectlineSeries::median(Self) -> Double
+pub fn GeointersectlineSeries::min(Self) -> Double
+pub fn GeointersectlineSeries::normalize(Self) -> Self
+pub fn GeointersectlineSeries::range(Self) -> Double
+pub fn GeointersectlineSeries::scale(Self, Double) -> Self
+pub fn GeointersectlineSeries::std(Self) -> Double
+pub fn GeointersectlineSeries::sub(Self, Self) -> Self
+pub fn GeointersectlineSeries::sum(Self) -> Double
+pub fn GeointersectlineSeries::to_string(Self) -> String
+pub fn GeointersectlineSeries::variance(Self) -> Double
+
+pub(all) struct GeointersectlineSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectlineSlice::add(Self, Self) -> Self
+pub fn GeointersectlineSlice::copy(Self) -> Self
+pub fn GeointersectlineSlice::fill(Self, Double) -> Self
+pub fn GeointersectlineSlice::get(Self, Int32) -> Double
+pub fn GeointersectlineSlice::len(Self) -> Int32
+pub fn GeointersectlineSlice::max(Self) -> Double
+pub fn GeointersectlineSlice::mean(Self) -> Double
+pub fn GeointersectlineSlice::min(Self) -> Double
+pub fn GeointersectlineSlice::scale(Self, Double) -> Self
+pub fn GeointersectlineSlice::set(Self, Int32, Double) -> Self
+pub fn GeointersectlineSlice::sum(Self) -> Double
+pub fn GeointersectlineSlice::to_string(Self) -> String
+
+pub(all) struct GeointersectlineTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectlineTable::add(Self, Self) -> Self
+pub fn GeointersectlineTable::copy(Self) -> Self
+pub fn GeointersectlineTable::fill(Self, Double) -> Self
+pub fn GeointersectlineTable::get(Self, Int32) -> Double
+pub fn GeointersectlineTable::len(Self) -> Int32
+pub fn GeointersectlineTable::max(Self) -> Double
+pub fn GeointersectlineTable::mean(Self) -> Double
+pub fn GeointersectlineTable::min(Self) -> Double
+pub fn GeointersectlineTable::scale(Self, Double) -> Self
+pub fn GeointersectlineTable::set(Self, Int32, Double) -> Self
+pub fn GeointersectlineTable::sum(Self) -> Double
+pub fn GeointersectlineTable::to_string(Self) -> String
+
+pub(all) struct GeointersectlineVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeointersectlineVector::add(Self, Self) -> Self
+pub fn GeointersectlineVector::dist(Self, Self) -> Double
+pub fn GeointersectlineVector::dot(Self, Self) -> Double
+pub fn GeointersectlineVector::norm(Self) -> Double
+pub fn GeointersectlineVector::normalize(Self) -> Self
+pub fn GeointersectlineVector::scale(Self, Double) -> Self
+pub fn GeointersectlineVector::sub(Self, Self) -> Self
+pub fn GeointersectlineVector::to_string(Self) -> String
+
+pub(all) struct GeointersectlineView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectlineView::add(Self, Self) -> Self
+pub fn GeointersectlineView::copy(Self) -> Self
+pub fn GeointersectlineView::fill(Self, Double) -> Self
+pub fn GeointersectlineView::get(Self, Int32) -> Double
+pub fn GeointersectlineView::len(Self) -> Int32
+pub fn GeointersectlineView::max(Self) -> Double
+pub fn GeointersectlineView::mean(Self) -> Double
+pub fn GeointersectlineView::min(Self) -> Double
+pub fn GeointersectlineView::scale(Self, Double) -> Self
+pub fn GeointersectlineView::set(Self, Int32, Double) -> Self
+pub fn GeointersectlineView::sum(Self) -> Double
+pub fn GeointersectlineView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

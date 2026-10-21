@@ -1,0 +1,122 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/edge_detection"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn canney_nms(EdgeImage, EdgeImage) -> EdgeImage
+
+pub fn canny_gaussian(EdgeImage, Double) -> EdgeImage
+
+pub fn canny_gradient(EdgeImage) -> (EdgeImage, EdgeImage)
+
+pub fn canny_threshold(EdgeImage, Double, Double) -> EdgeImage
+
+pub fn edge_canny(EdgeImage, Double, Double, Double) -> EdgeImage
+
+pub fn edge_clone(EdgeImage) -> EdgeImage
+
+pub fn edge_complete(EdgeImage, Int32) -> EdgeImage
+
+pub fn edge_continuity(EdgeImage) -> Double
+
+pub fn edge_detect_all(EdgeImage) -> Array[EdgeImage]
+
+pub fn edge_detection_id() -> String
+
+pub fn edge_dog(EdgeImage, Double, Double) -> EdgeImage
+
+pub fn edge_double_threshold(EdgeImage, Double, Double) -> EdgeImage
+
+pub fn edge_empty_image(Int32, Int32) -> EdgeImage
+
+pub fn edge_hysteresis(EdgeImage) -> EdgeImage
+
+pub fn edge_laplacian_4(EdgeImage) -> EdgeImage
+
+pub fn edge_laplacian_8(EdgeImage) -> EdgeImage
+
+pub fn edge_laplacian_gaussian(EdgeImage, Double) -> EdgeImage
+
+pub fn edge_link(EdgeImage, Double) -> EdgeImage
+
+pub fn edge_log_laplacian(EdgeImage, Double) -> EdgeImage
+
+pub fn edge_marr_hildreth(EdgeImage, Double) -> EdgeImage
+
+pub fn edge_monogenic(EdgeImage) -> EdgeImage
+
+pub fn edge_non_max_suppress(EdgeImage) -> EdgeImage
+
+pub fn edge_phase_congruency(EdgeImage) -> EdgeImage
+
+pub fn edge_prewitt(EdgeImage, Double) -> EdgeImage
+
+pub fn edge_prewitt_magnitude(EdgeImage) -> EdgeImage
+
+pub fn edge_prewitt_x(EdgeImage) -> EdgeImage
+
+pub fn edge_prewitt_y(EdgeImage) -> EdgeImage
+
+pub fn edge_profile(EdgeImage, Int32, Int32, Int32) -> Array[Double]
+
+pub fn edge_quality(EdgeImage, EdgeImage) -> Double
+
+pub fn edge_roberts(EdgeImage, Double) -> EdgeImage
+
+pub fn edge_roberts_magnitude(EdgeImage) -> EdgeImage
+
+pub fn edge_roberts_x(EdgeImage) -> EdgeImage
+
+pub fn edge_roberts_y(EdgeImage) -> EdgeImage
+
+pub fn edge_sobel(EdgeImage, Double) -> EdgeImage
+
+pub fn edge_sobel_direction(EdgeImage) -> EdgeImage
+
+pub fn edge_sobel_magnitude(EdgeImage) -> EdgeImage
+
+pub fn edge_sobel_x(EdgeImage) -> EdgeImage
+
+pub fn edge_sobel_y(EdgeImage) -> EdgeImage
+
+pub fn edge_strength(EdgeImage) -> Double
+
+pub fn edge_thin(EdgeImage) -> EdgeImage
+
+pub fn edge_to_string(EdgeImage) -> String
+
+pub fn edge_zero_crossing(EdgeImage) -> EdgeImage
+
+pub fn make_edge_config(Int32, Double, Double, Double, Int32) -> EdgeConfig
+
+pub fn make_edge_image(Int32, Int32, Array[Double]) -> EdgeImage
+
+// Errors
+
+// Types and methods
+pub struct EdgeConfig {
+  method_ : Int32
+  low_threshold : Double
+  high_threshold : Double
+  sigma : Double
+  kernel_size : Int32
+} derive(Eq, @debug.Debug)
+pub fn EdgeConfig::equal(Self, Self) -> Bool
+pub fn EdgeConfig::not_equal(Self, Self) -> Bool
+pub fn EdgeConfig::to_repr(Self) -> @debug.Repr
+
+pub struct EdgeImage {
+  width : Int32
+  height : Int32
+  data : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn EdgeImage::equal(Self, Self) -> Bool
+pub fn EdgeImage::not_equal(Self, Self) -> Bool
+pub fn EdgeImage::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

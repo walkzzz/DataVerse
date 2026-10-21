@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/stats_dist_inverse_gamma"
+
+// Values
+pub fn stats_dist_inverse_gamma_buffer_make(Int32) -> StatsdistinversegammaBuffer
+
+pub fn stats_dist_inverse_gamma_cluster_make(Int32) -> StatsdistinversegammaCluster
+
+pub fn stats_dist_inverse_gamma_cursor_make(Int32) -> StatsdistinversegammaCursor
+
+pub fn stats_dist_inverse_gamma_edge_make(Int32) -> StatsdistinversegammaEdge
+
+pub fn stats_dist_inverse_gamma_frame_make(Int32) -> StatsdistinversegammaFrame
+
+pub fn stats_dist_inverse_gamma_graphn_make(Int32) -> StatsdistinversegammaGraphN
+
+pub fn stats_dist_inverse_gamma_layer_make(Int32) -> StatsdistinversegammaLayer
+
+pub fn stats_dist_inverse_gamma_make_matrix(Int32, Int32, Double) -> StatsdistinversegammaMatrix
+
+pub fn stats_dist_inverse_gamma_make_point(Double, Double) -> StatsdistinversegammaPoint
+
+pub fn stats_dist_inverse_gamma_make_point3(Double, Double, Double) -> StatsdistinversegammaPoint
+
+pub fn stats_dist_inverse_gamma_make_series(Array[Double], String) -> StatsdistinversegammaSeries
+
+pub fn stats_dist_inverse_gamma_make_vector(Array[Double]) -> StatsdistinversegammaVector
+
+pub fn stats_dist_inverse_gamma_matrix_identity(Int32) -> StatsdistinversegammaMatrix
+
+pub fn stats_dist_inverse_gamma_model_make(Int32) -> StatsdistinversegammaModel
+
+pub fn stats_dist_inverse_gamma_node_make(Int32) -> StatsdistinversegammaNode
+
+pub fn stats_dist_inverse_gamma_path_make(Int32) -> StatsdistinversegammaPath
+
+pub fn stats_dist_inverse_gamma_range_make(Int32) -> StatsdistinversegammaRange
+
+pub fn stats_dist_inverse_gamma_slice_make(Int32) -> StatsdistinversegammaSlice
+
+pub fn stats_dist_inverse_gamma_table_make(Int32) -> StatsdistinversegammaTable
+
+pub fn stats_dist_inverse_gamma_vector_zero(Int32) -> StatsdistinversegammaVector
+
+pub fn stats_dist_inverse_gamma_view_make(Int32) -> StatsdistinversegammaView
+
+// Errors
+
+// Types and methods
+pub(all) struct StatsdistinversegammaBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistinversegammaBuffer::add(Self, Self) -> Self
+pub fn StatsdistinversegammaBuffer::copy(Self) -> Self
+pub fn StatsdistinversegammaBuffer::fill(Self, Double) -> Self
+pub fn StatsdistinversegammaBuffer::get(Self, Int32) -> Double
+pub fn StatsdistinversegammaBuffer::len(Self) -> Int32
+pub fn StatsdistinversegammaBuffer::max(Self) -> Double
+pub fn StatsdistinversegammaBuffer::mean(Self) -> Double
+pub fn StatsdistinversegammaBuffer::min(Self) -> Double
+pub fn StatsdistinversegammaBuffer::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaBuffer::set(Self, Int32, Double) -> Self
+pub fn StatsdistinversegammaBuffer::sum(Self) -> Double
+pub fn StatsdistinversegammaBuffer::to_string(Self) -> String
+
+pub(all) struct StatsdistinversegammaCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistinversegammaCluster::add(Self, Self) -> Self
+pub fn StatsdistinversegammaCluster::copy(Self) -> Self
+pub fn StatsdistinversegammaCluster::fill(Self, Double) -> Self
+pub fn StatsdistinversegammaCluster::get(Self, Int32) -> Double
+pub fn StatsdistinversegammaCluster::len(Self) -> Int32
+pub fn StatsdistinversegammaCluster::max(Self) -> Double
+pub fn StatsdistinversegammaCluster::mean(Self) -> Double
+pub fn StatsdistinversegammaCluster::min(Self) -> Double
+pub fn StatsdistinversegammaCluster::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaCluster::set(Self, Int32, Double) -> Self
+pub fn StatsdistinversegammaCluster::sum(Self) -> Double
+pub fn StatsdistinversegammaCluster::to_string(Self) -> String
+
+pub(all) struct StatsdistinversegammaCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistinversegammaCursor::add(Self, Self) -> Self
+pub fn StatsdistinversegammaCursor::copy(Self) -> Self
+pub fn StatsdistinversegammaCursor::fill(Self, Double) -> Self
+pub fn StatsdistinversegammaCursor::get(Self, Int32) -> Double
+pub fn StatsdistinversegammaCursor::len(Self) -> Int32
+pub fn StatsdistinversegammaCursor::max(Self) -> Double
+pub fn StatsdistinversegammaCursor::mean(Self) -> Double
+pub fn StatsdistinversegammaCursor::min(Self) -> Double
+pub fn StatsdistinversegammaCursor::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaCursor::set(Self, Int32, Double) -> Self
+pub fn StatsdistinversegammaCursor::sum(Self) -> Double
+pub fn StatsdistinversegammaCursor::to_string(Self) -> String
+
+pub(all) struct StatsdistinversegammaEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistinversegammaEdge::add(Self, Self) -> Self
+pub fn StatsdistinversegammaEdge::copy(Self) -> Self
+pub fn StatsdistinversegammaEdge::fill(Self, Double) -> Self
+pub fn StatsdistinversegammaEdge::get(Self, Int32) -> Double
+pub fn StatsdistinversegammaEdge::len(Self) -> Int32
+pub fn StatsdistinversegammaEdge::max(Self) -> Double
+pub fn StatsdistinversegammaEdge::mean(Self) -> Double
+pub fn StatsdistinversegammaEdge::min(Self) -> Double
+pub fn StatsdistinversegammaEdge::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaEdge::set(Self, Int32, Double) -> Self
+pub fn StatsdistinversegammaEdge::sum(Self) -> Double
+pub fn StatsdistinversegammaEdge::to_string(Self) -> String
+
+pub(all) struct StatsdistinversegammaFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistinversegammaFrame::add(Self, Self) -> Self
+pub fn StatsdistinversegammaFrame::copy(Self) -> Self
+pub fn StatsdistinversegammaFrame::fill(Self, Double) -> Self
+pub fn StatsdistinversegammaFrame::get(Self, Int32) -> Double
+pub fn StatsdistinversegammaFrame::len(Self) -> Int32
+pub fn StatsdistinversegammaFrame::max(Self) -> Double
+pub fn StatsdistinversegammaFrame::mean(Self) -> Double
+pub fn StatsdistinversegammaFrame::min(Self) -> Double
+pub fn StatsdistinversegammaFrame::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaFrame::set(Self, Int32, Double) -> Self
+pub fn StatsdistinversegammaFrame::sum(Self) -> Double
+pub fn StatsdistinversegammaFrame::to_string(Self) -> String
+
+pub(all) struct StatsdistinversegammaGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistinversegammaGraphN::add(Self, Self) -> Self
+pub fn StatsdistinversegammaGraphN::copy(Self) -> Self
+pub fn StatsdistinversegammaGraphN::fill(Self, Double) -> Self
+pub fn StatsdistinversegammaGraphN::get(Self, Int32) -> Double
+pub fn StatsdistinversegammaGraphN::len(Self) -> Int32
+pub fn StatsdistinversegammaGraphN::max(Self) -> Double
+pub fn StatsdistinversegammaGraphN::mean(Self) -> Double
+pub fn StatsdistinversegammaGraphN::min(Self) -> Double
+pub fn StatsdistinversegammaGraphN::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaGraphN::set(Self, Int32, Double) -> Self
+pub fn StatsdistinversegammaGraphN::sum(Self) -> Double
+pub fn StatsdistinversegammaGraphN::to_string(Self) -> String
+
+pub(all) struct StatsdistinversegammaLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistinversegammaLayer::add(Self, Self) -> Self
+pub fn StatsdistinversegammaLayer::copy(Self) -> Self
+pub fn StatsdistinversegammaLayer::fill(Self, Double) -> Self
+pub fn StatsdistinversegammaLayer::get(Self, Int32) -> Double
+pub fn StatsdistinversegammaLayer::len(Self) -> Int32
+pub fn StatsdistinversegammaLayer::max(Self) -> Double
+pub fn StatsdistinversegammaLayer::mean(Self) -> Double
+pub fn StatsdistinversegammaLayer::min(Self) -> Double
+pub fn StatsdistinversegammaLayer::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaLayer::set(Self, Int32, Double) -> Self
+pub fn StatsdistinversegammaLayer::sum(Self) -> Double
+pub fn StatsdistinversegammaLayer::to_string(Self) -> String
+
+pub(all) struct StatsdistinversegammaMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn StatsdistinversegammaMatrix::add(Self, Self) -> Self
+pub fn StatsdistinversegammaMatrix::det(Self) -> Double
+pub fn StatsdistinversegammaMatrix::get(Self, Int32, Int32) -> Double
+pub fn StatsdistinversegammaMatrix::multiply(Self, Self) -> Self
+pub fn StatsdistinversegammaMatrix::norm(Self) -> Double
+pub fn StatsdistinversegammaMatrix::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaMatrix::to_string(Self) -> String
+pub fn StatsdistinversegammaMatrix::trace(Self) -> Double
+pub fn StatsdistinversegammaMatrix::transpose(Self) -> Self
+
+pub(all) struct StatsdistinversegammaModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistinversegammaModel::add(Self, Self) -> Self
+pub fn StatsdistinversegammaModel::copy(Self) -> Self
+pub fn StatsdistinversegammaModel::fill(Self, Double) -> Self
+pub fn StatsdistinversegammaModel::get(Self, Int32) -> Double
+pub fn StatsdistinversegammaModel::len(Self) -> Int32
+pub fn StatsdistinversegammaModel::max(Self) -> Double
+pub fn StatsdistinversegammaModel::mean(Self) -> Double
+pub fn StatsdistinversegammaModel::min(Self) -> Double
+pub fn StatsdistinversegammaModel::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaModel::set(Self, Int32, Double) -> Self
+pub fn StatsdistinversegammaModel::sum(Self) -> Double
+pub fn StatsdistinversegammaModel::to_string(Self) -> String
+
+pub(all) struct StatsdistinversegammaNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistinversegammaNode::add(Self, Self) -> Self
+pub fn StatsdistinversegammaNode::copy(Self) -> Self
+pub fn StatsdistinversegammaNode::fill(Self, Double) -> Self
+pub fn StatsdistinversegammaNode::get(Self, Int32) -> Double
+pub fn StatsdistinversegammaNode::len(Self) -> Int32
+pub fn StatsdistinversegammaNode::max(Self) -> Double
+pub fn StatsdistinversegammaNode::mean(Self) -> Double
+pub fn StatsdistinversegammaNode::min(Self) -> Double
+pub fn StatsdistinversegammaNode::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaNode::set(Self, Int32, Double) -> Self
+pub fn StatsdistinversegammaNode::sum(Self) -> Double
+pub fn StatsdistinversegammaNode::to_string(Self) -> String
+
+pub(all) struct StatsdistinversegammaPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistinversegammaPath::add(Self, Self) -> Self
+pub fn StatsdistinversegammaPath::copy(Self) -> Self
+pub fn StatsdistinversegammaPath::fill(Self, Double) -> Self
+pub fn StatsdistinversegammaPath::get(Self, Int32) -> Double
+pub fn StatsdistinversegammaPath::len(Self) -> Int32
+pub fn StatsdistinversegammaPath::max(Self) -> Double
+pub fn StatsdistinversegammaPath::mean(Self) -> Double
+pub fn StatsdistinversegammaPath::min(Self) -> Double
+pub fn StatsdistinversegammaPath::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaPath::set(Self, Int32, Double) -> Self
+pub fn StatsdistinversegammaPath::sum(Self) -> Double
+pub fn StatsdistinversegammaPath::to_string(Self) -> String
+
+pub(all) struct StatsdistinversegammaPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn StatsdistinversegammaPoint::add(Self, Self) -> Self
+pub fn StatsdistinversegammaPoint::cross(Self, Self) -> Self
+pub fn StatsdistinversegammaPoint::dist(Self, Self) -> Double
+pub fn StatsdistinversegammaPoint::dot(Self, Self) -> Double
+pub fn StatsdistinversegammaPoint::label(Self) -> Int32
+pub fn StatsdistinversegammaPoint::lerp(Self, Self, Double) -> Self
+pub fn StatsdistinversegammaPoint::mid(Self, Self) -> Self
+pub fn StatsdistinversegammaPoint::negate(Self) -> Self
+pub fn StatsdistinversegammaPoint::norm(Self) -> Double
+pub fn StatsdistinversegammaPoint::normalize(Self) -> Self
+pub fn StatsdistinversegammaPoint::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaPoint::sub(Self, Self) -> Self
+pub fn StatsdistinversegammaPoint::to_string(Self) -> String
+pub fn StatsdistinversegammaPoint::x(Self) -> Double
+pub fn StatsdistinversegammaPoint::y(Self) -> Double
+pub fn StatsdistinversegammaPoint::z(Self) -> Double
+
+pub(all) struct StatsdistinversegammaRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistinversegammaRange::add(Self, Self) -> Self
+pub fn StatsdistinversegammaRange::copy(Self) -> Self
+pub fn StatsdistinversegammaRange::fill(Self, Double) -> Self
+pub fn StatsdistinversegammaRange::get(Self, Int32) -> Double
+pub fn StatsdistinversegammaRange::len(Self) -> Int32
+pub fn StatsdistinversegammaRange::max(Self) -> Double
+pub fn StatsdistinversegammaRange::mean(Self) -> Double
+pub fn StatsdistinversegammaRange::min(Self) -> Double
+pub fn StatsdistinversegammaRange::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaRange::set(Self, Int32, Double) -> Self
+pub fn StatsdistinversegammaRange::sum(Self) -> Double
+pub fn StatsdistinversegammaRange::to_string(Self) -> String
+
+pub(all) struct StatsdistinversegammaSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn StatsdistinversegammaSeries::add(Self, Self) -> Self
+pub fn StatsdistinversegammaSeries::cumsum(Self) -> Self
+pub fn StatsdistinversegammaSeries::len(Self) -> Int32
+pub fn StatsdistinversegammaSeries::max(Self) -> Double
+pub fn StatsdistinversegammaSeries::mean(Self) -> Double
+pub fn StatsdistinversegammaSeries::median(Self) -> Double
+pub fn StatsdistinversegammaSeries::min(Self) -> Double
+pub fn StatsdistinversegammaSeries::normalize(Self) -> Self
+pub fn StatsdistinversegammaSeries::range(Self) -> Double
+pub fn StatsdistinversegammaSeries::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaSeries::std(Self) -> Double
+pub fn StatsdistinversegammaSeries::sub(Self, Self) -> Self
+pub fn StatsdistinversegammaSeries::sum(Self) -> Double
+pub fn StatsdistinversegammaSeries::to_string(Self) -> String
+pub fn StatsdistinversegammaSeries::variance(Self) -> Double
+
+pub(all) struct StatsdistinversegammaSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistinversegammaSlice::add(Self, Self) -> Self
+pub fn StatsdistinversegammaSlice::copy(Self) -> Self
+pub fn StatsdistinversegammaSlice::fill(Self, Double) -> Self
+pub fn StatsdistinversegammaSlice::get(Self, Int32) -> Double
+pub fn StatsdistinversegammaSlice::len(Self) -> Int32
+pub fn StatsdistinversegammaSlice::max(Self) -> Double
+pub fn StatsdistinversegammaSlice::mean(Self) -> Double
+pub fn StatsdistinversegammaSlice::min(Self) -> Double
+pub fn StatsdistinversegammaSlice::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaSlice::set(Self, Int32, Double) -> Self
+pub fn StatsdistinversegammaSlice::sum(Self) -> Double
+pub fn StatsdistinversegammaSlice::to_string(Self) -> String
+
+pub(all) struct StatsdistinversegammaTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistinversegammaTable::add(Self, Self) -> Self
+pub fn StatsdistinversegammaTable::copy(Self) -> Self
+pub fn StatsdistinversegammaTable::fill(Self, Double) -> Self
+pub fn StatsdistinversegammaTable::get(Self, Int32) -> Double
+pub fn StatsdistinversegammaTable::len(Self) -> Int32
+pub fn StatsdistinversegammaTable::max(Self) -> Double
+pub fn StatsdistinversegammaTable::mean(Self) -> Double
+pub fn StatsdistinversegammaTable::min(Self) -> Double
+pub fn StatsdistinversegammaTable::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaTable::set(Self, Int32, Double) -> Self
+pub fn StatsdistinversegammaTable::sum(Self) -> Double
+pub fn StatsdistinversegammaTable::to_string(Self) -> String
+
+pub(all) struct StatsdistinversegammaVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn StatsdistinversegammaVector::add(Self, Self) -> Self
+pub fn StatsdistinversegammaVector::dist(Self, Self) -> Double
+pub fn StatsdistinversegammaVector::dot(Self, Self) -> Double
+pub fn StatsdistinversegammaVector::norm(Self) -> Double
+pub fn StatsdistinversegammaVector::normalize(Self) -> Self
+pub fn StatsdistinversegammaVector::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaVector::sub(Self, Self) -> Self
+pub fn StatsdistinversegammaVector::to_string(Self) -> String
+
+pub(all) struct StatsdistinversegammaView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistinversegammaView::add(Self, Self) -> Self
+pub fn StatsdistinversegammaView::copy(Self) -> Self
+pub fn StatsdistinversegammaView::fill(Self, Double) -> Self
+pub fn StatsdistinversegammaView::get(Self, Int32) -> Double
+pub fn StatsdistinversegammaView::len(Self) -> Int32
+pub fn StatsdistinversegammaView::max(Self) -> Double
+pub fn StatsdistinversegammaView::mean(Self) -> Double
+pub fn StatsdistinversegammaView::min(Self) -> Double
+pub fn StatsdistinversegammaView::scale(Self, Double) -> Self
+pub fn StatsdistinversegammaView::set(Self, Int32, Double) -> Self
+pub fn StatsdistinversegammaView::sum(Self) -> Double
+pub fn StatsdistinversegammaView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

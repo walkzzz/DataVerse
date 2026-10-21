@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_metric_calibration"
+
+// Values
+pub fn ml_metric_calibration_buffer_make(Int32) -> MlmetriccalibrationBuffer
+
+pub fn ml_metric_calibration_cluster_make(Int32) -> MlmetriccalibrationCluster
+
+pub fn ml_metric_calibration_cursor_make(Int32) -> MlmetriccalibrationCursor
+
+pub fn ml_metric_calibration_edge_make(Int32) -> MlmetriccalibrationEdge
+
+pub fn ml_metric_calibration_frame_make(Int32) -> MlmetriccalibrationFrame
+
+pub fn ml_metric_calibration_graphn_make(Int32) -> MlmetriccalibrationGraphN
+
+pub fn ml_metric_calibration_layer_make(Int32) -> MlmetriccalibrationLayer
+
+pub fn ml_metric_calibration_make_matrix(Int32, Int32, Double) -> MlmetriccalibrationMatrix
+
+pub fn ml_metric_calibration_make_point(Double, Double) -> MlmetriccalibrationPoint
+
+pub fn ml_metric_calibration_make_point3(Double, Double, Double) -> MlmetriccalibrationPoint
+
+pub fn ml_metric_calibration_make_series(Array[Double], String) -> MlmetriccalibrationSeries
+
+pub fn ml_metric_calibration_make_vector(Array[Double]) -> MlmetriccalibrationVector
+
+pub fn ml_metric_calibration_matrix_identity(Int32) -> MlmetriccalibrationMatrix
+
+pub fn ml_metric_calibration_model_make(Int32) -> MlmetriccalibrationModel
+
+pub fn ml_metric_calibration_node_make(Int32) -> MlmetriccalibrationNode
+
+pub fn ml_metric_calibration_path_make(Int32) -> MlmetriccalibrationPath
+
+pub fn ml_metric_calibration_range_make(Int32) -> MlmetriccalibrationRange
+
+pub fn ml_metric_calibration_slice_make(Int32) -> MlmetriccalibrationSlice
+
+pub fn ml_metric_calibration_table_make(Int32) -> MlmetriccalibrationTable
+
+pub fn ml_metric_calibration_vector_zero(Int32) -> MlmetriccalibrationVector
+
+pub fn ml_metric_calibration_view_make(Int32) -> MlmetriccalibrationView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlmetriccalibrationBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetriccalibrationBuffer::add(Self, Self) -> Self
+pub fn MlmetriccalibrationBuffer::copy(Self) -> Self
+pub fn MlmetriccalibrationBuffer::fill(Self, Double) -> Self
+pub fn MlmetriccalibrationBuffer::get(Self, Int32) -> Double
+pub fn MlmetriccalibrationBuffer::len(Self) -> Int32
+pub fn MlmetriccalibrationBuffer::max(Self) -> Double
+pub fn MlmetriccalibrationBuffer::mean(Self) -> Double
+pub fn MlmetriccalibrationBuffer::min(Self) -> Double
+pub fn MlmetriccalibrationBuffer::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationBuffer::set(Self, Int32, Double) -> Self
+pub fn MlmetriccalibrationBuffer::sum(Self) -> Double
+pub fn MlmetriccalibrationBuffer::to_string(Self) -> String
+
+pub(all) struct MlmetriccalibrationCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetriccalibrationCluster::add(Self, Self) -> Self
+pub fn MlmetriccalibrationCluster::copy(Self) -> Self
+pub fn MlmetriccalibrationCluster::fill(Self, Double) -> Self
+pub fn MlmetriccalibrationCluster::get(Self, Int32) -> Double
+pub fn MlmetriccalibrationCluster::len(Self) -> Int32
+pub fn MlmetriccalibrationCluster::max(Self) -> Double
+pub fn MlmetriccalibrationCluster::mean(Self) -> Double
+pub fn MlmetriccalibrationCluster::min(Self) -> Double
+pub fn MlmetriccalibrationCluster::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationCluster::set(Self, Int32, Double) -> Self
+pub fn MlmetriccalibrationCluster::sum(Self) -> Double
+pub fn MlmetriccalibrationCluster::to_string(Self) -> String
+
+pub(all) struct MlmetriccalibrationCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetriccalibrationCursor::add(Self, Self) -> Self
+pub fn MlmetriccalibrationCursor::copy(Self) -> Self
+pub fn MlmetriccalibrationCursor::fill(Self, Double) -> Self
+pub fn MlmetriccalibrationCursor::get(Self, Int32) -> Double
+pub fn MlmetriccalibrationCursor::len(Self) -> Int32
+pub fn MlmetriccalibrationCursor::max(Self) -> Double
+pub fn MlmetriccalibrationCursor::mean(Self) -> Double
+pub fn MlmetriccalibrationCursor::min(Self) -> Double
+pub fn MlmetriccalibrationCursor::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationCursor::set(Self, Int32, Double) -> Self
+pub fn MlmetriccalibrationCursor::sum(Self) -> Double
+pub fn MlmetriccalibrationCursor::to_string(Self) -> String
+
+pub(all) struct MlmetriccalibrationEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetriccalibrationEdge::add(Self, Self) -> Self
+pub fn MlmetriccalibrationEdge::copy(Self) -> Self
+pub fn MlmetriccalibrationEdge::fill(Self, Double) -> Self
+pub fn MlmetriccalibrationEdge::get(Self, Int32) -> Double
+pub fn MlmetriccalibrationEdge::len(Self) -> Int32
+pub fn MlmetriccalibrationEdge::max(Self) -> Double
+pub fn MlmetriccalibrationEdge::mean(Self) -> Double
+pub fn MlmetriccalibrationEdge::min(Self) -> Double
+pub fn MlmetriccalibrationEdge::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationEdge::set(Self, Int32, Double) -> Self
+pub fn MlmetriccalibrationEdge::sum(Self) -> Double
+pub fn MlmetriccalibrationEdge::to_string(Self) -> String
+
+pub(all) struct MlmetriccalibrationFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetriccalibrationFrame::add(Self, Self) -> Self
+pub fn MlmetriccalibrationFrame::copy(Self) -> Self
+pub fn MlmetriccalibrationFrame::fill(Self, Double) -> Self
+pub fn MlmetriccalibrationFrame::get(Self, Int32) -> Double
+pub fn MlmetriccalibrationFrame::len(Self) -> Int32
+pub fn MlmetriccalibrationFrame::max(Self) -> Double
+pub fn MlmetriccalibrationFrame::mean(Self) -> Double
+pub fn MlmetriccalibrationFrame::min(Self) -> Double
+pub fn MlmetriccalibrationFrame::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationFrame::set(Self, Int32, Double) -> Self
+pub fn MlmetriccalibrationFrame::sum(Self) -> Double
+pub fn MlmetriccalibrationFrame::to_string(Self) -> String
+
+pub(all) struct MlmetriccalibrationGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetriccalibrationGraphN::add(Self, Self) -> Self
+pub fn MlmetriccalibrationGraphN::copy(Self) -> Self
+pub fn MlmetriccalibrationGraphN::fill(Self, Double) -> Self
+pub fn MlmetriccalibrationGraphN::get(Self, Int32) -> Double
+pub fn MlmetriccalibrationGraphN::len(Self) -> Int32
+pub fn MlmetriccalibrationGraphN::max(Self) -> Double
+pub fn MlmetriccalibrationGraphN::mean(Self) -> Double
+pub fn MlmetriccalibrationGraphN::min(Self) -> Double
+pub fn MlmetriccalibrationGraphN::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationGraphN::set(Self, Int32, Double) -> Self
+pub fn MlmetriccalibrationGraphN::sum(Self) -> Double
+pub fn MlmetriccalibrationGraphN::to_string(Self) -> String
+
+pub(all) struct MlmetriccalibrationLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetriccalibrationLayer::add(Self, Self) -> Self
+pub fn MlmetriccalibrationLayer::copy(Self) -> Self
+pub fn MlmetriccalibrationLayer::fill(Self, Double) -> Self
+pub fn MlmetriccalibrationLayer::get(Self, Int32) -> Double
+pub fn MlmetriccalibrationLayer::len(Self) -> Int32
+pub fn MlmetriccalibrationLayer::max(Self) -> Double
+pub fn MlmetriccalibrationLayer::mean(Self) -> Double
+pub fn MlmetriccalibrationLayer::min(Self) -> Double
+pub fn MlmetriccalibrationLayer::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationLayer::set(Self, Int32, Double) -> Self
+pub fn MlmetriccalibrationLayer::sum(Self) -> Double
+pub fn MlmetriccalibrationLayer::to_string(Self) -> String
+
+pub(all) struct MlmetriccalibrationMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlmetriccalibrationMatrix::add(Self, Self) -> Self
+pub fn MlmetriccalibrationMatrix::det(Self) -> Double
+pub fn MlmetriccalibrationMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlmetriccalibrationMatrix::multiply(Self, Self) -> Self
+pub fn MlmetriccalibrationMatrix::norm(Self) -> Double
+pub fn MlmetriccalibrationMatrix::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationMatrix::to_string(Self) -> String
+pub fn MlmetriccalibrationMatrix::trace(Self) -> Double
+pub fn MlmetriccalibrationMatrix::transpose(Self) -> Self
+
+pub(all) struct MlmetriccalibrationModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetriccalibrationModel::add(Self, Self) -> Self
+pub fn MlmetriccalibrationModel::copy(Self) -> Self
+pub fn MlmetriccalibrationModel::fill(Self, Double) -> Self
+pub fn MlmetriccalibrationModel::get(Self, Int32) -> Double
+pub fn MlmetriccalibrationModel::len(Self) -> Int32
+pub fn MlmetriccalibrationModel::max(Self) -> Double
+pub fn MlmetriccalibrationModel::mean(Self) -> Double
+pub fn MlmetriccalibrationModel::min(Self) -> Double
+pub fn MlmetriccalibrationModel::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationModel::set(Self, Int32, Double) -> Self
+pub fn MlmetriccalibrationModel::sum(Self) -> Double
+pub fn MlmetriccalibrationModel::to_string(Self) -> String
+
+pub(all) struct MlmetriccalibrationNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetriccalibrationNode::add(Self, Self) -> Self
+pub fn MlmetriccalibrationNode::copy(Self) -> Self
+pub fn MlmetriccalibrationNode::fill(Self, Double) -> Self
+pub fn MlmetriccalibrationNode::get(Self, Int32) -> Double
+pub fn MlmetriccalibrationNode::len(Self) -> Int32
+pub fn MlmetriccalibrationNode::max(Self) -> Double
+pub fn MlmetriccalibrationNode::mean(Self) -> Double
+pub fn MlmetriccalibrationNode::min(Self) -> Double
+pub fn MlmetriccalibrationNode::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationNode::set(Self, Int32, Double) -> Self
+pub fn MlmetriccalibrationNode::sum(Self) -> Double
+pub fn MlmetriccalibrationNode::to_string(Self) -> String
+
+pub(all) struct MlmetriccalibrationPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetriccalibrationPath::add(Self, Self) -> Self
+pub fn MlmetriccalibrationPath::copy(Self) -> Self
+pub fn MlmetriccalibrationPath::fill(Self, Double) -> Self
+pub fn MlmetriccalibrationPath::get(Self, Int32) -> Double
+pub fn MlmetriccalibrationPath::len(Self) -> Int32
+pub fn MlmetriccalibrationPath::max(Self) -> Double
+pub fn MlmetriccalibrationPath::mean(Self) -> Double
+pub fn MlmetriccalibrationPath::min(Self) -> Double
+pub fn MlmetriccalibrationPath::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationPath::set(Self, Int32, Double) -> Self
+pub fn MlmetriccalibrationPath::sum(Self) -> Double
+pub fn MlmetriccalibrationPath::to_string(Self) -> String
+
+pub(all) struct MlmetriccalibrationPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlmetriccalibrationPoint::add(Self, Self) -> Self
+pub fn MlmetriccalibrationPoint::cross(Self, Self) -> Self
+pub fn MlmetriccalibrationPoint::dist(Self, Self) -> Double
+pub fn MlmetriccalibrationPoint::dot(Self, Self) -> Double
+pub fn MlmetriccalibrationPoint::label(Self) -> Int32
+pub fn MlmetriccalibrationPoint::lerp(Self, Self, Double) -> Self
+pub fn MlmetriccalibrationPoint::mid(Self, Self) -> Self
+pub fn MlmetriccalibrationPoint::negate(Self) -> Self
+pub fn MlmetriccalibrationPoint::norm(Self) -> Double
+pub fn MlmetriccalibrationPoint::normalize(Self) -> Self
+pub fn MlmetriccalibrationPoint::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationPoint::sub(Self, Self) -> Self
+pub fn MlmetriccalibrationPoint::to_string(Self) -> String
+pub fn MlmetriccalibrationPoint::x(Self) -> Double
+pub fn MlmetriccalibrationPoint::y(Self) -> Double
+pub fn MlmetriccalibrationPoint::z(Self) -> Double
+
+pub(all) struct MlmetriccalibrationRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetriccalibrationRange::add(Self, Self) -> Self
+pub fn MlmetriccalibrationRange::copy(Self) -> Self
+pub fn MlmetriccalibrationRange::fill(Self, Double) -> Self
+pub fn MlmetriccalibrationRange::get(Self, Int32) -> Double
+pub fn MlmetriccalibrationRange::len(Self) -> Int32
+pub fn MlmetriccalibrationRange::max(Self) -> Double
+pub fn MlmetriccalibrationRange::mean(Self) -> Double
+pub fn MlmetriccalibrationRange::min(Self) -> Double
+pub fn MlmetriccalibrationRange::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationRange::set(Self, Int32, Double) -> Self
+pub fn MlmetriccalibrationRange::sum(Self) -> Double
+pub fn MlmetriccalibrationRange::to_string(Self) -> String
+
+pub(all) struct MlmetriccalibrationSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlmetriccalibrationSeries::add(Self, Self) -> Self
+pub fn MlmetriccalibrationSeries::cumsum(Self) -> Self
+pub fn MlmetriccalibrationSeries::len(Self) -> Int32
+pub fn MlmetriccalibrationSeries::max(Self) -> Double
+pub fn MlmetriccalibrationSeries::mean(Self) -> Double
+pub fn MlmetriccalibrationSeries::median(Self) -> Double
+pub fn MlmetriccalibrationSeries::min(Self) -> Double
+pub fn MlmetriccalibrationSeries::normalize(Self) -> Self
+pub fn MlmetriccalibrationSeries::range(Self) -> Double
+pub fn MlmetriccalibrationSeries::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationSeries::std(Self) -> Double
+pub fn MlmetriccalibrationSeries::sub(Self, Self) -> Self
+pub fn MlmetriccalibrationSeries::sum(Self) -> Double
+pub fn MlmetriccalibrationSeries::to_string(Self) -> String
+pub fn MlmetriccalibrationSeries::variance(Self) -> Double
+
+pub(all) struct MlmetriccalibrationSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetriccalibrationSlice::add(Self, Self) -> Self
+pub fn MlmetriccalibrationSlice::copy(Self) -> Self
+pub fn MlmetriccalibrationSlice::fill(Self, Double) -> Self
+pub fn MlmetriccalibrationSlice::get(Self, Int32) -> Double
+pub fn MlmetriccalibrationSlice::len(Self) -> Int32
+pub fn MlmetriccalibrationSlice::max(Self) -> Double
+pub fn MlmetriccalibrationSlice::mean(Self) -> Double
+pub fn MlmetriccalibrationSlice::min(Self) -> Double
+pub fn MlmetriccalibrationSlice::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationSlice::set(Self, Int32, Double) -> Self
+pub fn MlmetriccalibrationSlice::sum(Self) -> Double
+pub fn MlmetriccalibrationSlice::to_string(Self) -> String
+
+pub(all) struct MlmetriccalibrationTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetriccalibrationTable::add(Self, Self) -> Self
+pub fn MlmetriccalibrationTable::copy(Self) -> Self
+pub fn MlmetriccalibrationTable::fill(Self, Double) -> Self
+pub fn MlmetriccalibrationTable::get(Self, Int32) -> Double
+pub fn MlmetriccalibrationTable::len(Self) -> Int32
+pub fn MlmetriccalibrationTable::max(Self) -> Double
+pub fn MlmetriccalibrationTable::mean(Self) -> Double
+pub fn MlmetriccalibrationTable::min(Self) -> Double
+pub fn MlmetriccalibrationTable::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationTable::set(Self, Int32, Double) -> Self
+pub fn MlmetriccalibrationTable::sum(Self) -> Double
+pub fn MlmetriccalibrationTable::to_string(Self) -> String
+
+pub(all) struct MlmetriccalibrationVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlmetriccalibrationVector::add(Self, Self) -> Self
+pub fn MlmetriccalibrationVector::dist(Self, Self) -> Double
+pub fn MlmetriccalibrationVector::dot(Self, Self) -> Double
+pub fn MlmetriccalibrationVector::norm(Self) -> Double
+pub fn MlmetriccalibrationVector::normalize(Self) -> Self
+pub fn MlmetriccalibrationVector::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationVector::sub(Self, Self) -> Self
+pub fn MlmetriccalibrationVector::to_string(Self) -> String
+
+pub(all) struct MlmetriccalibrationView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetriccalibrationView::add(Self, Self) -> Self
+pub fn MlmetriccalibrationView::copy(Self) -> Self
+pub fn MlmetriccalibrationView::fill(Self, Double) -> Self
+pub fn MlmetriccalibrationView::get(Self, Int32) -> Double
+pub fn MlmetriccalibrationView::len(Self) -> Int32
+pub fn MlmetriccalibrationView::max(Self) -> Double
+pub fn MlmetriccalibrationView::mean(Self) -> Double
+pub fn MlmetriccalibrationView::min(Self) -> Double
+pub fn MlmetriccalibrationView::scale(Self, Double) -> Self
+pub fn MlmetriccalibrationView::set(Self, Int32, Double) -> Self
+pub fn MlmetriccalibrationView::sum(Self) -> Double
+pub fn MlmetriccalibrationView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/crypto_sym_idea"
+
+// Values
+pub fn crypto_sym_idea_buffer_make(Int32) -> CryptosymideaBuffer
+
+pub fn crypto_sym_idea_cluster_make(Int32) -> CryptosymideaCluster
+
+pub fn crypto_sym_idea_cursor_make(Int32) -> CryptosymideaCursor
+
+pub fn crypto_sym_idea_edge_make(Int32) -> CryptosymideaEdge
+
+pub fn crypto_sym_idea_frame_make(Int32) -> CryptosymideaFrame
+
+pub fn crypto_sym_idea_graphn_make(Int32) -> CryptosymideaGraphN
+
+pub fn crypto_sym_idea_layer_make(Int32) -> CryptosymideaLayer
+
+pub fn crypto_sym_idea_make_matrix(Int32, Int32, Double) -> CryptosymideaMatrix
+
+pub fn crypto_sym_idea_make_point(Double, Double) -> CryptosymideaPoint
+
+pub fn crypto_sym_idea_make_point3(Double, Double, Double) -> CryptosymideaPoint
+
+pub fn crypto_sym_idea_make_series(Array[Double], String) -> CryptosymideaSeries
+
+pub fn crypto_sym_idea_make_vector(Array[Double]) -> CryptosymideaVector
+
+pub fn crypto_sym_idea_matrix_identity(Int32) -> CryptosymideaMatrix
+
+pub fn crypto_sym_idea_model_make(Int32) -> CryptosymideaModel
+
+pub fn crypto_sym_idea_node_make(Int32) -> CryptosymideaNode
+
+pub fn crypto_sym_idea_path_make(Int32) -> CryptosymideaPath
+
+pub fn crypto_sym_idea_range_make(Int32) -> CryptosymideaRange
+
+pub fn crypto_sym_idea_slice_make(Int32) -> CryptosymideaSlice
+
+pub fn crypto_sym_idea_table_make(Int32) -> CryptosymideaTable
+
+pub fn crypto_sym_idea_vector_zero(Int32) -> CryptosymideaVector
+
+pub fn crypto_sym_idea_view_make(Int32) -> CryptosymideaView
+
+// Errors
+
+// Types and methods
+pub(all) struct CryptosymideaBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymideaBuffer::add(Self, Self) -> Self
+pub fn CryptosymideaBuffer::copy(Self) -> Self
+pub fn CryptosymideaBuffer::fill(Self, Double) -> Self
+pub fn CryptosymideaBuffer::get(Self, Int32) -> Double
+pub fn CryptosymideaBuffer::len(Self) -> Int32
+pub fn CryptosymideaBuffer::max(Self) -> Double
+pub fn CryptosymideaBuffer::mean(Self) -> Double
+pub fn CryptosymideaBuffer::min(Self) -> Double
+pub fn CryptosymideaBuffer::scale(Self, Double) -> Self
+pub fn CryptosymideaBuffer::set(Self, Int32, Double) -> Self
+pub fn CryptosymideaBuffer::sum(Self) -> Double
+pub fn CryptosymideaBuffer::to_string(Self) -> String
+
+pub(all) struct CryptosymideaCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymideaCluster::add(Self, Self) -> Self
+pub fn CryptosymideaCluster::copy(Self) -> Self
+pub fn CryptosymideaCluster::fill(Self, Double) -> Self
+pub fn CryptosymideaCluster::get(Self, Int32) -> Double
+pub fn CryptosymideaCluster::len(Self) -> Int32
+pub fn CryptosymideaCluster::max(Self) -> Double
+pub fn CryptosymideaCluster::mean(Self) -> Double
+pub fn CryptosymideaCluster::min(Self) -> Double
+pub fn CryptosymideaCluster::scale(Self, Double) -> Self
+pub fn CryptosymideaCluster::set(Self, Int32, Double) -> Self
+pub fn CryptosymideaCluster::sum(Self) -> Double
+pub fn CryptosymideaCluster::to_string(Self) -> String
+
+pub(all) struct CryptosymideaCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymideaCursor::add(Self, Self) -> Self
+pub fn CryptosymideaCursor::copy(Self) -> Self
+pub fn CryptosymideaCursor::fill(Self, Double) -> Self
+pub fn CryptosymideaCursor::get(Self, Int32) -> Double
+pub fn CryptosymideaCursor::len(Self) -> Int32
+pub fn CryptosymideaCursor::max(Self) -> Double
+pub fn CryptosymideaCursor::mean(Self) -> Double
+pub fn CryptosymideaCursor::min(Self) -> Double
+pub fn CryptosymideaCursor::scale(Self, Double) -> Self
+pub fn CryptosymideaCursor::set(Self, Int32, Double) -> Self
+pub fn CryptosymideaCursor::sum(Self) -> Double
+pub fn CryptosymideaCursor::to_string(Self) -> String
+
+pub(all) struct CryptosymideaEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymideaEdge::add(Self, Self) -> Self
+pub fn CryptosymideaEdge::copy(Self) -> Self
+pub fn CryptosymideaEdge::fill(Self, Double) -> Self
+pub fn CryptosymideaEdge::get(Self, Int32) -> Double
+pub fn CryptosymideaEdge::len(Self) -> Int32
+pub fn CryptosymideaEdge::max(Self) -> Double
+pub fn CryptosymideaEdge::mean(Self) -> Double
+pub fn CryptosymideaEdge::min(Self) -> Double
+pub fn CryptosymideaEdge::scale(Self, Double) -> Self
+pub fn CryptosymideaEdge::set(Self, Int32, Double) -> Self
+pub fn CryptosymideaEdge::sum(Self) -> Double
+pub fn CryptosymideaEdge::to_string(Self) -> String
+
+pub(all) struct CryptosymideaFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymideaFrame::add(Self, Self) -> Self
+pub fn CryptosymideaFrame::copy(Self) -> Self
+pub fn CryptosymideaFrame::fill(Self, Double) -> Self
+pub fn CryptosymideaFrame::get(Self, Int32) -> Double
+pub fn CryptosymideaFrame::len(Self) -> Int32
+pub fn CryptosymideaFrame::max(Self) -> Double
+pub fn CryptosymideaFrame::mean(Self) -> Double
+pub fn CryptosymideaFrame::min(Self) -> Double
+pub fn CryptosymideaFrame::scale(Self, Double) -> Self
+pub fn CryptosymideaFrame::set(Self, Int32, Double) -> Self
+pub fn CryptosymideaFrame::sum(Self) -> Double
+pub fn CryptosymideaFrame::to_string(Self) -> String
+
+pub(all) struct CryptosymideaGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymideaGraphN::add(Self, Self) -> Self
+pub fn CryptosymideaGraphN::copy(Self) -> Self
+pub fn CryptosymideaGraphN::fill(Self, Double) -> Self
+pub fn CryptosymideaGraphN::get(Self, Int32) -> Double
+pub fn CryptosymideaGraphN::len(Self) -> Int32
+pub fn CryptosymideaGraphN::max(Self) -> Double
+pub fn CryptosymideaGraphN::mean(Self) -> Double
+pub fn CryptosymideaGraphN::min(Self) -> Double
+pub fn CryptosymideaGraphN::scale(Self, Double) -> Self
+pub fn CryptosymideaGraphN::set(Self, Int32, Double) -> Self
+pub fn CryptosymideaGraphN::sum(Self) -> Double
+pub fn CryptosymideaGraphN::to_string(Self) -> String
+
+pub(all) struct CryptosymideaLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymideaLayer::add(Self, Self) -> Self
+pub fn CryptosymideaLayer::copy(Self) -> Self
+pub fn CryptosymideaLayer::fill(Self, Double) -> Self
+pub fn CryptosymideaLayer::get(Self, Int32) -> Double
+pub fn CryptosymideaLayer::len(Self) -> Int32
+pub fn CryptosymideaLayer::max(Self) -> Double
+pub fn CryptosymideaLayer::mean(Self) -> Double
+pub fn CryptosymideaLayer::min(Self) -> Double
+pub fn CryptosymideaLayer::scale(Self, Double) -> Self
+pub fn CryptosymideaLayer::set(Self, Int32, Double) -> Self
+pub fn CryptosymideaLayer::sum(Self) -> Double
+pub fn CryptosymideaLayer::to_string(Self) -> String
+
+pub(all) struct CryptosymideaMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn CryptosymideaMatrix::add(Self, Self) -> Self
+pub fn CryptosymideaMatrix::det(Self) -> Double
+pub fn CryptosymideaMatrix::get(Self, Int32, Int32) -> Double
+pub fn CryptosymideaMatrix::multiply(Self, Self) -> Self
+pub fn CryptosymideaMatrix::norm(Self) -> Double
+pub fn CryptosymideaMatrix::scale(Self, Double) -> Self
+pub fn CryptosymideaMatrix::to_string(Self) -> String
+pub fn CryptosymideaMatrix::trace(Self) -> Double
+pub fn CryptosymideaMatrix::transpose(Self) -> Self
+
+pub(all) struct CryptosymideaModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymideaModel::add(Self, Self) -> Self
+pub fn CryptosymideaModel::copy(Self) -> Self
+pub fn CryptosymideaModel::fill(Self, Double) -> Self
+pub fn CryptosymideaModel::get(Self, Int32) -> Double
+pub fn CryptosymideaModel::len(Self) -> Int32
+pub fn CryptosymideaModel::max(Self) -> Double
+pub fn CryptosymideaModel::mean(Self) -> Double
+pub fn CryptosymideaModel::min(Self) -> Double
+pub fn CryptosymideaModel::scale(Self, Double) -> Self
+pub fn CryptosymideaModel::set(Self, Int32, Double) -> Self
+pub fn CryptosymideaModel::sum(Self) -> Double
+pub fn CryptosymideaModel::to_string(Self) -> String
+
+pub(all) struct CryptosymideaNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymideaNode::add(Self, Self) -> Self
+pub fn CryptosymideaNode::copy(Self) -> Self
+pub fn CryptosymideaNode::fill(Self, Double) -> Self
+pub fn CryptosymideaNode::get(Self, Int32) -> Double
+pub fn CryptosymideaNode::len(Self) -> Int32
+pub fn CryptosymideaNode::max(Self) -> Double
+pub fn CryptosymideaNode::mean(Self) -> Double
+pub fn CryptosymideaNode::min(Self) -> Double
+pub fn CryptosymideaNode::scale(Self, Double) -> Self
+pub fn CryptosymideaNode::set(Self, Int32, Double) -> Self
+pub fn CryptosymideaNode::sum(Self) -> Double
+pub fn CryptosymideaNode::to_string(Self) -> String
+
+pub(all) struct CryptosymideaPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymideaPath::add(Self, Self) -> Self
+pub fn CryptosymideaPath::copy(Self) -> Self
+pub fn CryptosymideaPath::fill(Self, Double) -> Self
+pub fn CryptosymideaPath::get(Self, Int32) -> Double
+pub fn CryptosymideaPath::len(Self) -> Int32
+pub fn CryptosymideaPath::max(Self) -> Double
+pub fn CryptosymideaPath::mean(Self) -> Double
+pub fn CryptosymideaPath::min(Self) -> Double
+pub fn CryptosymideaPath::scale(Self, Double) -> Self
+pub fn CryptosymideaPath::set(Self, Int32, Double) -> Self
+pub fn CryptosymideaPath::sum(Self) -> Double
+pub fn CryptosymideaPath::to_string(Self) -> String
+
+pub(all) struct CryptosymideaPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn CryptosymideaPoint::add(Self, Self) -> Self
+pub fn CryptosymideaPoint::cross(Self, Self) -> Self
+pub fn CryptosymideaPoint::dist(Self, Self) -> Double
+pub fn CryptosymideaPoint::dot(Self, Self) -> Double
+pub fn CryptosymideaPoint::label(Self) -> Int32
+pub fn CryptosymideaPoint::lerp(Self, Self, Double) -> Self
+pub fn CryptosymideaPoint::mid(Self, Self) -> Self
+pub fn CryptosymideaPoint::negate(Self) -> Self
+pub fn CryptosymideaPoint::norm(Self) -> Double
+pub fn CryptosymideaPoint::normalize(Self) -> Self
+pub fn CryptosymideaPoint::scale(Self, Double) -> Self
+pub fn CryptosymideaPoint::sub(Self, Self) -> Self
+pub fn CryptosymideaPoint::to_string(Self) -> String
+pub fn CryptosymideaPoint::x(Self) -> Double
+pub fn CryptosymideaPoint::y(Self) -> Double
+pub fn CryptosymideaPoint::z(Self) -> Double
+
+pub(all) struct CryptosymideaRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymideaRange::add(Self, Self) -> Self
+pub fn CryptosymideaRange::copy(Self) -> Self
+pub fn CryptosymideaRange::fill(Self, Double) -> Self
+pub fn CryptosymideaRange::get(Self, Int32) -> Double
+pub fn CryptosymideaRange::len(Self) -> Int32
+pub fn CryptosymideaRange::max(Self) -> Double
+pub fn CryptosymideaRange::mean(Self) -> Double
+pub fn CryptosymideaRange::min(Self) -> Double
+pub fn CryptosymideaRange::scale(Self, Double) -> Self
+pub fn CryptosymideaRange::set(Self, Int32, Double) -> Self
+pub fn CryptosymideaRange::sum(Self) -> Double
+pub fn CryptosymideaRange::to_string(Self) -> String
+
+pub(all) struct CryptosymideaSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn CryptosymideaSeries::add(Self, Self) -> Self
+pub fn CryptosymideaSeries::cumsum(Self) -> Self
+pub fn CryptosymideaSeries::len(Self) -> Int32
+pub fn CryptosymideaSeries::max(Self) -> Double
+pub fn CryptosymideaSeries::mean(Self) -> Double
+pub fn CryptosymideaSeries::median(Self) -> Double
+pub fn CryptosymideaSeries::min(Self) -> Double
+pub fn CryptosymideaSeries::normalize(Self) -> Self
+pub fn CryptosymideaSeries::range(Self) -> Double
+pub fn CryptosymideaSeries::scale(Self, Double) -> Self
+pub fn CryptosymideaSeries::std(Self) -> Double
+pub fn CryptosymideaSeries::sub(Self, Self) -> Self
+pub fn CryptosymideaSeries::sum(Self) -> Double
+pub fn CryptosymideaSeries::to_string(Self) -> String
+pub fn CryptosymideaSeries::variance(Self) -> Double
+
+pub(all) struct CryptosymideaSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymideaSlice::add(Self, Self) -> Self
+pub fn CryptosymideaSlice::copy(Self) -> Self
+pub fn CryptosymideaSlice::fill(Self, Double) -> Self
+pub fn CryptosymideaSlice::get(Self, Int32) -> Double
+pub fn CryptosymideaSlice::len(Self) -> Int32
+pub fn CryptosymideaSlice::max(Self) -> Double
+pub fn CryptosymideaSlice::mean(Self) -> Double
+pub fn CryptosymideaSlice::min(Self) -> Double
+pub fn CryptosymideaSlice::scale(Self, Double) -> Self
+pub fn CryptosymideaSlice::set(Self, Int32, Double) -> Self
+pub fn CryptosymideaSlice::sum(Self) -> Double
+pub fn CryptosymideaSlice::to_string(Self) -> String
+
+pub(all) struct CryptosymideaTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymideaTable::add(Self, Self) -> Self
+pub fn CryptosymideaTable::copy(Self) -> Self
+pub fn CryptosymideaTable::fill(Self, Double) -> Self
+pub fn CryptosymideaTable::get(Self, Int32) -> Double
+pub fn CryptosymideaTable::len(Self) -> Int32
+pub fn CryptosymideaTable::max(Self) -> Double
+pub fn CryptosymideaTable::mean(Self) -> Double
+pub fn CryptosymideaTable::min(Self) -> Double
+pub fn CryptosymideaTable::scale(Self, Double) -> Self
+pub fn CryptosymideaTable::set(Self, Int32, Double) -> Self
+pub fn CryptosymideaTable::sum(Self) -> Double
+pub fn CryptosymideaTable::to_string(Self) -> String
+
+pub(all) struct CryptosymideaVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn CryptosymideaVector::add(Self, Self) -> Self
+pub fn CryptosymideaVector::dist(Self, Self) -> Double
+pub fn CryptosymideaVector::dot(Self, Self) -> Double
+pub fn CryptosymideaVector::norm(Self) -> Double
+pub fn CryptosymideaVector::normalize(Self) -> Self
+pub fn CryptosymideaVector::scale(Self, Double) -> Self
+pub fn CryptosymideaVector::sub(Self, Self) -> Self
+pub fn CryptosymideaVector::to_string(Self) -> String
+
+pub(all) struct CryptosymideaView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymideaView::add(Self, Self) -> Self
+pub fn CryptosymideaView::copy(Self) -> Self
+pub fn CryptosymideaView::fill(Self, Double) -> Self
+pub fn CryptosymideaView::get(Self, Int32) -> Double
+pub fn CryptosymideaView::len(Self) -> Int32
+pub fn CryptosymideaView::max(Self) -> Double
+pub fn CryptosymideaView::mean(Self) -> Double
+pub fn CryptosymideaView::min(Self) -> Double
+pub fn CryptosymideaView::scale(Self, Double) -> Self
+pub fn CryptosymideaView::set(Self, Int32, Double) -> Self
+pub fn CryptosymideaView::sum(Self) -> Double
+pub fn CryptosymideaView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

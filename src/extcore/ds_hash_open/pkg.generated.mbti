@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_hash_open"
+
+// Values
+pub fn ds_hash_open_buffer_make(Int32) -> DshashopenBuffer
+
+pub fn ds_hash_open_cluster_make(Int32) -> DshashopenCluster
+
+pub fn ds_hash_open_cursor_make(Int32) -> DshashopenCursor
+
+pub fn ds_hash_open_edge_make(Int32) -> DshashopenEdge
+
+pub fn ds_hash_open_frame_make(Int32) -> DshashopenFrame
+
+pub fn ds_hash_open_graphn_make(Int32) -> DshashopenGraphN
+
+pub fn ds_hash_open_layer_make(Int32) -> DshashopenLayer
+
+pub fn ds_hash_open_make_matrix(Int32, Int32, Double) -> DshashopenMatrix
+
+pub fn ds_hash_open_make_point(Double, Double) -> DshashopenPoint
+
+pub fn ds_hash_open_make_point3(Double, Double, Double) -> DshashopenPoint
+
+pub fn ds_hash_open_make_series(Array[Double], String) -> DshashopenSeries
+
+pub fn ds_hash_open_make_vector(Array[Double]) -> DshashopenVector
+
+pub fn ds_hash_open_matrix_identity(Int32) -> DshashopenMatrix
+
+pub fn ds_hash_open_model_make(Int32) -> DshashopenModel
+
+pub fn ds_hash_open_node_make(Int32) -> DshashopenNode
+
+pub fn ds_hash_open_path_make(Int32) -> DshashopenPath
+
+pub fn ds_hash_open_range_make(Int32) -> DshashopenRange
+
+pub fn ds_hash_open_slice_make(Int32) -> DshashopenSlice
+
+pub fn ds_hash_open_table_make(Int32) -> DshashopenTable
+
+pub fn ds_hash_open_vector_zero(Int32) -> DshashopenVector
+
+pub fn ds_hash_open_view_make(Int32) -> DshashopenView
+
+// Errors
+
+// Types and methods
+pub(all) struct DshashopenBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashopenBuffer::add(Self, Self) -> Self
+pub fn DshashopenBuffer::copy(Self) -> Self
+pub fn DshashopenBuffer::fill(Self, Double) -> Self
+pub fn DshashopenBuffer::get(Self, Int32) -> Double
+pub fn DshashopenBuffer::len(Self) -> Int32
+pub fn DshashopenBuffer::max(Self) -> Double
+pub fn DshashopenBuffer::mean(Self) -> Double
+pub fn DshashopenBuffer::min(Self) -> Double
+pub fn DshashopenBuffer::scale(Self, Double) -> Self
+pub fn DshashopenBuffer::set(Self, Int32, Double) -> Self
+pub fn DshashopenBuffer::sum(Self) -> Double
+pub fn DshashopenBuffer::to_string(Self) -> String
+
+pub(all) struct DshashopenCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashopenCluster::add(Self, Self) -> Self
+pub fn DshashopenCluster::copy(Self) -> Self
+pub fn DshashopenCluster::fill(Self, Double) -> Self
+pub fn DshashopenCluster::get(Self, Int32) -> Double
+pub fn DshashopenCluster::len(Self) -> Int32
+pub fn DshashopenCluster::max(Self) -> Double
+pub fn DshashopenCluster::mean(Self) -> Double
+pub fn DshashopenCluster::min(Self) -> Double
+pub fn DshashopenCluster::scale(Self, Double) -> Self
+pub fn DshashopenCluster::set(Self, Int32, Double) -> Self
+pub fn DshashopenCluster::sum(Self) -> Double
+pub fn DshashopenCluster::to_string(Self) -> String
+
+pub(all) struct DshashopenCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashopenCursor::add(Self, Self) -> Self
+pub fn DshashopenCursor::copy(Self) -> Self
+pub fn DshashopenCursor::fill(Self, Double) -> Self
+pub fn DshashopenCursor::get(Self, Int32) -> Double
+pub fn DshashopenCursor::len(Self) -> Int32
+pub fn DshashopenCursor::max(Self) -> Double
+pub fn DshashopenCursor::mean(Self) -> Double
+pub fn DshashopenCursor::min(Self) -> Double
+pub fn DshashopenCursor::scale(Self, Double) -> Self
+pub fn DshashopenCursor::set(Self, Int32, Double) -> Self
+pub fn DshashopenCursor::sum(Self) -> Double
+pub fn DshashopenCursor::to_string(Self) -> String
+
+pub(all) struct DshashopenEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashopenEdge::add(Self, Self) -> Self
+pub fn DshashopenEdge::copy(Self) -> Self
+pub fn DshashopenEdge::fill(Self, Double) -> Self
+pub fn DshashopenEdge::get(Self, Int32) -> Double
+pub fn DshashopenEdge::len(Self) -> Int32
+pub fn DshashopenEdge::max(Self) -> Double
+pub fn DshashopenEdge::mean(Self) -> Double
+pub fn DshashopenEdge::min(Self) -> Double
+pub fn DshashopenEdge::scale(Self, Double) -> Self
+pub fn DshashopenEdge::set(Self, Int32, Double) -> Self
+pub fn DshashopenEdge::sum(Self) -> Double
+pub fn DshashopenEdge::to_string(Self) -> String
+
+pub(all) struct DshashopenFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashopenFrame::add(Self, Self) -> Self
+pub fn DshashopenFrame::copy(Self) -> Self
+pub fn DshashopenFrame::fill(Self, Double) -> Self
+pub fn DshashopenFrame::get(Self, Int32) -> Double
+pub fn DshashopenFrame::len(Self) -> Int32
+pub fn DshashopenFrame::max(Self) -> Double
+pub fn DshashopenFrame::mean(Self) -> Double
+pub fn DshashopenFrame::min(Self) -> Double
+pub fn DshashopenFrame::scale(Self, Double) -> Self
+pub fn DshashopenFrame::set(Self, Int32, Double) -> Self
+pub fn DshashopenFrame::sum(Self) -> Double
+pub fn DshashopenFrame::to_string(Self) -> String
+
+pub(all) struct DshashopenGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashopenGraphN::add(Self, Self) -> Self
+pub fn DshashopenGraphN::copy(Self) -> Self
+pub fn DshashopenGraphN::fill(Self, Double) -> Self
+pub fn DshashopenGraphN::get(Self, Int32) -> Double
+pub fn DshashopenGraphN::len(Self) -> Int32
+pub fn DshashopenGraphN::max(Self) -> Double
+pub fn DshashopenGraphN::mean(Self) -> Double
+pub fn DshashopenGraphN::min(Self) -> Double
+pub fn DshashopenGraphN::scale(Self, Double) -> Self
+pub fn DshashopenGraphN::set(Self, Int32, Double) -> Self
+pub fn DshashopenGraphN::sum(Self) -> Double
+pub fn DshashopenGraphN::to_string(Self) -> String
+
+pub(all) struct DshashopenLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashopenLayer::add(Self, Self) -> Self
+pub fn DshashopenLayer::copy(Self) -> Self
+pub fn DshashopenLayer::fill(Self, Double) -> Self
+pub fn DshashopenLayer::get(Self, Int32) -> Double
+pub fn DshashopenLayer::len(Self) -> Int32
+pub fn DshashopenLayer::max(Self) -> Double
+pub fn DshashopenLayer::mean(Self) -> Double
+pub fn DshashopenLayer::min(Self) -> Double
+pub fn DshashopenLayer::scale(Self, Double) -> Self
+pub fn DshashopenLayer::set(Self, Int32, Double) -> Self
+pub fn DshashopenLayer::sum(Self) -> Double
+pub fn DshashopenLayer::to_string(Self) -> String
+
+pub(all) struct DshashopenMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DshashopenMatrix::add(Self, Self) -> Self
+pub fn DshashopenMatrix::det(Self) -> Double
+pub fn DshashopenMatrix::get(Self, Int32, Int32) -> Double
+pub fn DshashopenMatrix::multiply(Self, Self) -> Self
+pub fn DshashopenMatrix::norm(Self) -> Double
+pub fn DshashopenMatrix::scale(Self, Double) -> Self
+pub fn DshashopenMatrix::to_string(Self) -> String
+pub fn DshashopenMatrix::trace(Self) -> Double
+pub fn DshashopenMatrix::transpose(Self) -> Self
+
+pub(all) struct DshashopenModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashopenModel::add(Self, Self) -> Self
+pub fn DshashopenModel::copy(Self) -> Self
+pub fn DshashopenModel::fill(Self, Double) -> Self
+pub fn DshashopenModel::get(Self, Int32) -> Double
+pub fn DshashopenModel::len(Self) -> Int32
+pub fn DshashopenModel::max(Self) -> Double
+pub fn DshashopenModel::mean(Self) -> Double
+pub fn DshashopenModel::min(Self) -> Double
+pub fn DshashopenModel::scale(Self, Double) -> Self
+pub fn DshashopenModel::set(Self, Int32, Double) -> Self
+pub fn DshashopenModel::sum(Self) -> Double
+pub fn DshashopenModel::to_string(Self) -> String
+
+pub(all) struct DshashopenNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashopenNode::add(Self, Self) -> Self
+pub fn DshashopenNode::copy(Self) -> Self
+pub fn DshashopenNode::fill(Self, Double) -> Self
+pub fn DshashopenNode::get(Self, Int32) -> Double
+pub fn DshashopenNode::len(Self) -> Int32
+pub fn DshashopenNode::max(Self) -> Double
+pub fn DshashopenNode::mean(Self) -> Double
+pub fn DshashopenNode::min(Self) -> Double
+pub fn DshashopenNode::scale(Self, Double) -> Self
+pub fn DshashopenNode::set(Self, Int32, Double) -> Self
+pub fn DshashopenNode::sum(Self) -> Double
+pub fn DshashopenNode::to_string(Self) -> String
+
+pub(all) struct DshashopenPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashopenPath::add(Self, Self) -> Self
+pub fn DshashopenPath::copy(Self) -> Self
+pub fn DshashopenPath::fill(Self, Double) -> Self
+pub fn DshashopenPath::get(Self, Int32) -> Double
+pub fn DshashopenPath::len(Self) -> Int32
+pub fn DshashopenPath::max(Self) -> Double
+pub fn DshashopenPath::mean(Self) -> Double
+pub fn DshashopenPath::min(Self) -> Double
+pub fn DshashopenPath::scale(Self, Double) -> Self
+pub fn DshashopenPath::set(Self, Int32, Double) -> Self
+pub fn DshashopenPath::sum(Self) -> Double
+pub fn DshashopenPath::to_string(Self) -> String
+
+pub(all) struct DshashopenPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DshashopenPoint::add(Self, Self) -> Self
+pub fn DshashopenPoint::cross(Self, Self) -> Self
+pub fn DshashopenPoint::dist(Self, Self) -> Double
+pub fn DshashopenPoint::dot(Self, Self) -> Double
+pub fn DshashopenPoint::label(Self) -> Int32
+pub fn DshashopenPoint::lerp(Self, Self, Double) -> Self
+pub fn DshashopenPoint::mid(Self, Self) -> Self
+pub fn DshashopenPoint::negate(Self) -> Self
+pub fn DshashopenPoint::norm(Self) -> Double
+pub fn DshashopenPoint::normalize(Self) -> Self
+pub fn DshashopenPoint::scale(Self, Double) -> Self
+pub fn DshashopenPoint::sub(Self, Self) -> Self
+pub fn DshashopenPoint::to_string(Self) -> String
+pub fn DshashopenPoint::x(Self) -> Double
+pub fn DshashopenPoint::y(Self) -> Double
+pub fn DshashopenPoint::z(Self) -> Double
+
+pub(all) struct DshashopenRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashopenRange::add(Self, Self) -> Self
+pub fn DshashopenRange::copy(Self) -> Self
+pub fn DshashopenRange::fill(Self, Double) -> Self
+pub fn DshashopenRange::get(Self, Int32) -> Double
+pub fn DshashopenRange::len(Self) -> Int32
+pub fn DshashopenRange::max(Self) -> Double
+pub fn DshashopenRange::mean(Self) -> Double
+pub fn DshashopenRange::min(Self) -> Double
+pub fn DshashopenRange::scale(Self, Double) -> Self
+pub fn DshashopenRange::set(Self, Int32, Double) -> Self
+pub fn DshashopenRange::sum(Self) -> Double
+pub fn DshashopenRange::to_string(Self) -> String
+
+pub(all) struct DshashopenSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DshashopenSeries::add(Self, Self) -> Self
+pub fn DshashopenSeries::cumsum(Self) -> Self
+pub fn DshashopenSeries::len(Self) -> Int32
+pub fn DshashopenSeries::max(Self) -> Double
+pub fn DshashopenSeries::mean(Self) -> Double
+pub fn DshashopenSeries::median(Self) -> Double
+pub fn DshashopenSeries::min(Self) -> Double
+pub fn DshashopenSeries::normalize(Self) -> Self
+pub fn DshashopenSeries::range(Self) -> Double
+pub fn DshashopenSeries::scale(Self, Double) -> Self
+pub fn DshashopenSeries::std(Self) -> Double
+pub fn DshashopenSeries::sub(Self, Self) -> Self
+pub fn DshashopenSeries::sum(Self) -> Double
+pub fn DshashopenSeries::to_string(Self) -> String
+pub fn DshashopenSeries::variance(Self) -> Double
+
+pub(all) struct DshashopenSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashopenSlice::add(Self, Self) -> Self
+pub fn DshashopenSlice::copy(Self) -> Self
+pub fn DshashopenSlice::fill(Self, Double) -> Self
+pub fn DshashopenSlice::get(Self, Int32) -> Double
+pub fn DshashopenSlice::len(Self) -> Int32
+pub fn DshashopenSlice::max(Self) -> Double
+pub fn DshashopenSlice::mean(Self) -> Double
+pub fn DshashopenSlice::min(Self) -> Double
+pub fn DshashopenSlice::scale(Self, Double) -> Self
+pub fn DshashopenSlice::set(Self, Int32, Double) -> Self
+pub fn DshashopenSlice::sum(Self) -> Double
+pub fn DshashopenSlice::to_string(Self) -> String
+
+pub(all) struct DshashopenTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashopenTable::add(Self, Self) -> Self
+pub fn DshashopenTable::copy(Self) -> Self
+pub fn DshashopenTable::fill(Self, Double) -> Self
+pub fn DshashopenTable::get(Self, Int32) -> Double
+pub fn DshashopenTable::len(Self) -> Int32
+pub fn DshashopenTable::max(Self) -> Double
+pub fn DshashopenTable::mean(Self) -> Double
+pub fn DshashopenTable::min(Self) -> Double
+pub fn DshashopenTable::scale(Self, Double) -> Self
+pub fn DshashopenTable::set(Self, Int32, Double) -> Self
+pub fn DshashopenTable::sum(Self) -> Double
+pub fn DshashopenTable::to_string(Self) -> String
+
+pub(all) struct DshashopenVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DshashopenVector::add(Self, Self) -> Self
+pub fn DshashopenVector::dist(Self, Self) -> Double
+pub fn DshashopenVector::dot(Self, Self) -> Double
+pub fn DshashopenVector::norm(Self) -> Double
+pub fn DshashopenVector::normalize(Self) -> Self
+pub fn DshashopenVector::scale(Self, Double) -> Self
+pub fn DshashopenVector::sub(Self, Self) -> Self
+pub fn DshashopenVector::to_string(Self) -> String
+
+pub(all) struct DshashopenView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashopenView::add(Self, Self) -> Self
+pub fn DshashopenView::copy(Self) -> Self
+pub fn DshashopenView::fill(Self, Double) -> Self
+pub fn DshashopenView::get(Self, Int32) -> Double
+pub fn DshashopenView::len(Self) -> Int32
+pub fn DshashopenView::max(Self) -> Double
+pub fn DshashopenView::mean(Self) -> Double
+pub fn DshashopenView::min(Self) -> Double
+pub fn DshashopenView::scale(Self, Double) -> Self
+pub fn DshashopenView::set(Self, Int32, Double) -> Self
+pub fn DshashopenView::sum(Self) -> Double
+pub fn DshashopenView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

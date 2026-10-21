@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/radar_proc"
+
+// Values
+pub fn radar_proc_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn radar_proc_corr(Array[Double], Array[Double]) -> Double
+
+pub fn radar_proc_cov(Array[Double], Array[Double]) -> Double
+
+pub fn radar_proc_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn radar_proc_mae(Array[Double], Array[Double]) -> Double
+
+pub fn radar_proc_make_labeled_point(Double, Double, Int32) -> Radar_procPoint
+
+pub fn radar_proc_make_matrix(Int32, Int32, Double) -> Radar_procMatrix
+
+pub fn radar_proc_make_point(Double, Double) -> Radar_procPoint
+
+pub fn radar_proc_make_series(Array[Double], String) -> Radar_procSeries
+
+pub fn radar_proc_make_vector(Array[Double]) -> Radar_procVector
+
+pub fn radar_proc_matrix_add(Radar_procMatrix, Radar_procMatrix) -> Radar_procMatrix
+
+pub fn radar_proc_matrix_get(Radar_procMatrix, Int32, Int32) -> Double
+
+pub fn radar_proc_matrix_identity(Int32) -> Radar_procMatrix
+
+pub fn radar_proc_matrix_multiply(Radar_procMatrix, Radar_procMatrix) -> Radar_procMatrix
+
+pub fn radar_proc_matrix_norm(Radar_procMatrix) -> Double
+
+pub fn radar_proc_matrix_scale(Radar_procMatrix, Double) -> Radar_procMatrix
+
+pub fn radar_proc_matrix_to_string(Radar_procMatrix) -> String
+
+pub fn radar_proc_matrix_trace(Radar_procMatrix) -> Double
+
+pub fn radar_proc_matrix_transpose(Radar_procMatrix) -> Radar_procMatrix
+
+pub fn radar_proc_mse(Array[Double], Array[Double]) -> Double
+
+pub fn radar_proc_point_add(Radar_procPoint, Radar_procPoint) -> Radar_procPoint
+
+pub fn radar_proc_point_dist(Radar_procPoint, Radar_procPoint) -> Double
+
+pub fn radar_proc_point_dot(Radar_procPoint, Radar_procPoint) -> Double
+
+pub fn radar_proc_point_label(Radar_procPoint) -> Int32
+
+pub fn radar_proc_point_norm(Radar_procPoint) -> Double
+
+pub fn radar_proc_point_scale(Radar_procPoint, Double) -> Radar_procPoint
+
+pub fn radar_proc_point_sub(Radar_procPoint, Radar_procPoint) -> Radar_procPoint
+
+pub fn radar_proc_point_to_string(Radar_procPoint) -> String
+
+pub fn radar_proc_point_x(Radar_procPoint) -> Double
+
+pub fn radar_proc_point_y(Radar_procPoint) -> Double
+
+pub fn radar_proc_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn radar_proc_r2(Array[Double], Array[Double]) -> Double
+
+pub fn radar_proc_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn radar_proc_series_add(Radar_procSeries, Radar_procSeries) -> Radar_procSeries
+
+pub fn radar_proc_series_len(Radar_procSeries) -> Int32
+
+pub fn radar_proc_series_max(Radar_procSeries) -> Double
+
+pub fn radar_proc_series_mean(Radar_procSeries) -> Double
+
+pub fn radar_proc_series_min(Radar_procSeries) -> Double
+
+pub fn radar_proc_series_scale(Radar_procSeries, Double) -> Radar_procSeries
+
+pub fn radar_proc_series_std(Radar_procSeries) -> Double
+
+pub fn radar_proc_series_sum(Radar_procSeries) -> Double
+
+pub fn radar_proc_series_to_string(Radar_procSeries) -> String
+
+pub fn radar_proc_series_var(Radar_procSeries) -> Double
+
+pub fn radar_proc_std(Array[Double]) -> Double
+
+pub fn radar_proc_var(Array[Double]) -> Double
+
+pub fn radar_proc_vector_add(Radar_procVector, Radar_procVector) -> Radar_procVector
+
+pub fn radar_proc_vector_dist(Radar_procVector, Radar_procVector) -> Double
+
+pub fn radar_proc_vector_dot(Radar_procVector, Radar_procVector) -> Double
+
+pub fn radar_proc_vector_norm(Radar_procVector) -> Double
+
+pub fn radar_proc_vector_normalize(Radar_procVector) -> Radar_procVector
+
+pub fn radar_proc_vector_scale(Radar_procVector, Double) -> Radar_procVector
+
+pub fn radar_proc_vector_sub(Radar_procVector, Radar_procVector) -> Radar_procVector
+
+pub fn radar_proc_vector_to_string(Radar_procVector) -> String
+
+pub fn radar_proc_vector_zero(Int32) -> Radar_procVector
+
+// Errors
+
+// Types and methods
+pub struct Radar_procMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Radar_procPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Radar_procSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Radar_procVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

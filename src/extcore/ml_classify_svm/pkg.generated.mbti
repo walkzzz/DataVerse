@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_classify_svm"
+
+// Values
+pub fn ml_classify_svm_buffer_make(Int32) -> MlclassifysvmBuffer
+
+pub fn ml_classify_svm_cluster_make(Int32) -> MlclassifysvmCluster
+
+pub fn ml_classify_svm_cursor_make(Int32) -> MlclassifysvmCursor
+
+pub fn ml_classify_svm_edge_make(Int32) -> MlclassifysvmEdge
+
+pub fn ml_classify_svm_frame_make(Int32) -> MlclassifysvmFrame
+
+pub fn ml_classify_svm_graphn_make(Int32) -> MlclassifysvmGraphN
+
+pub fn ml_classify_svm_layer_make(Int32) -> MlclassifysvmLayer
+
+pub fn ml_classify_svm_make_matrix(Int32, Int32, Double) -> MlclassifysvmMatrix
+
+pub fn ml_classify_svm_make_point(Double, Double) -> MlclassifysvmPoint
+
+pub fn ml_classify_svm_make_point3(Double, Double, Double) -> MlclassifysvmPoint
+
+pub fn ml_classify_svm_make_series(Array[Double], String) -> MlclassifysvmSeries
+
+pub fn ml_classify_svm_make_vector(Array[Double]) -> MlclassifysvmVector
+
+pub fn ml_classify_svm_matrix_identity(Int32) -> MlclassifysvmMatrix
+
+pub fn ml_classify_svm_model_make(Int32) -> MlclassifysvmModel
+
+pub fn ml_classify_svm_node_make(Int32) -> MlclassifysvmNode
+
+pub fn ml_classify_svm_path_make(Int32) -> MlclassifysvmPath
+
+pub fn ml_classify_svm_range_make(Int32) -> MlclassifysvmRange
+
+pub fn ml_classify_svm_slice_make(Int32) -> MlclassifysvmSlice
+
+pub fn ml_classify_svm_table_make(Int32) -> MlclassifysvmTable
+
+pub fn ml_classify_svm_vector_zero(Int32) -> MlclassifysvmVector
+
+pub fn ml_classify_svm_view_make(Int32) -> MlclassifysvmView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlclassifysvmBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifysvmBuffer::add(Self, Self) -> Self
+pub fn MlclassifysvmBuffer::copy(Self) -> Self
+pub fn MlclassifysvmBuffer::fill(Self, Double) -> Self
+pub fn MlclassifysvmBuffer::get(Self, Int32) -> Double
+pub fn MlclassifysvmBuffer::len(Self) -> Int32
+pub fn MlclassifysvmBuffer::max(Self) -> Double
+pub fn MlclassifysvmBuffer::mean(Self) -> Double
+pub fn MlclassifysvmBuffer::min(Self) -> Double
+pub fn MlclassifysvmBuffer::scale(Self, Double) -> Self
+pub fn MlclassifysvmBuffer::set(Self, Int32, Double) -> Self
+pub fn MlclassifysvmBuffer::sum(Self) -> Double
+pub fn MlclassifysvmBuffer::to_string(Self) -> String
+
+pub(all) struct MlclassifysvmCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifysvmCluster::add(Self, Self) -> Self
+pub fn MlclassifysvmCluster::copy(Self) -> Self
+pub fn MlclassifysvmCluster::fill(Self, Double) -> Self
+pub fn MlclassifysvmCluster::get(Self, Int32) -> Double
+pub fn MlclassifysvmCluster::len(Self) -> Int32
+pub fn MlclassifysvmCluster::max(Self) -> Double
+pub fn MlclassifysvmCluster::mean(Self) -> Double
+pub fn MlclassifysvmCluster::min(Self) -> Double
+pub fn MlclassifysvmCluster::scale(Self, Double) -> Self
+pub fn MlclassifysvmCluster::set(Self, Int32, Double) -> Self
+pub fn MlclassifysvmCluster::sum(Self) -> Double
+pub fn MlclassifysvmCluster::to_string(Self) -> String
+
+pub(all) struct MlclassifysvmCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifysvmCursor::add(Self, Self) -> Self
+pub fn MlclassifysvmCursor::copy(Self) -> Self
+pub fn MlclassifysvmCursor::fill(Self, Double) -> Self
+pub fn MlclassifysvmCursor::get(Self, Int32) -> Double
+pub fn MlclassifysvmCursor::len(Self) -> Int32
+pub fn MlclassifysvmCursor::max(Self) -> Double
+pub fn MlclassifysvmCursor::mean(Self) -> Double
+pub fn MlclassifysvmCursor::min(Self) -> Double
+pub fn MlclassifysvmCursor::scale(Self, Double) -> Self
+pub fn MlclassifysvmCursor::set(Self, Int32, Double) -> Self
+pub fn MlclassifysvmCursor::sum(Self) -> Double
+pub fn MlclassifysvmCursor::to_string(Self) -> String
+
+pub(all) struct MlclassifysvmEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifysvmEdge::add(Self, Self) -> Self
+pub fn MlclassifysvmEdge::copy(Self) -> Self
+pub fn MlclassifysvmEdge::fill(Self, Double) -> Self
+pub fn MlclassifysvmEdge::get(Self, Int32) -> Double
+pub fn MlclassifysvmEdge::len(Self) -> Int32
+pub fn MlclassifysvmEdge::max(Self) -> Double
+pub fn MlclassifysvmEdge::mean(Self) -> Double
+pub fn MlclassifysvmEdge::min(Self) -> Double
+pub fn MlclassifysvmEdge::scale(Self, Double) -> Self
+pub fn MlclassifysvmEdge::set(Self, Int32, Double) -> Self
+pub fn MlclassifysvmEdge::sum(Self) -> Double
+pub fn MlclassifysvmEdge::to_string(Self) -> String
+
+pub(all) struct MlclassifysvmFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifysvmFrame::add(Self, Self) -> Self
+pub fn MlclassifysvmFrame::copy(Self) -> Self
+pub fn MlclassifysvmFrame::fill(Self, Double) -> Self
+pub fn MlclassifysvmFrame::get(Self, Int32) -> Double
+pub fn MlclassifysvmFrame::len(Self) -> Int32
+pub fn MlclassifysvmFrame::max(Self) -> Double
+pub fn MlclassifysvmFrame::mean(Self) -> Double
+pub fn MlclassifysvmFrame::min(Self) -> Double
+pub fn MlclassifysvmFrame::scale(Self, Double) -> Self
+pub fn MlclassifysvmFrame::set(Self, Int32, Double) -> Self
+pub fn MlclassifysvmFrame::sum(Self) -> Double
+pub fn MlclassifysvmFrame::to_string(Self) -> String
+
+pub(all) struct MlclassifysvmGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifysvmGraphN::add(Self, Self) -> Self
+pub fn MlclassifysvmGraphN::copy(Self) -> Self
+pub fn MlclassifysvmGraphN::fill(Self, Double) -> Self
+pub fn MlclassifysvmGraphN::get(Self, Int32) -> Double
+pub fn MlclassifysvmGraphN::len(Self) -> Int32
+pub fn MlclassifysvmGraphN::max(Self) -> Double
+pub fn MlclassifysvmGraphN::mean(Self) -> Double
+pub fn MlclassifysvmGraphN::min(Self) -> Double
+pub fn MlclassifysvmGraphN::scale(Self, Double) -> Self
+pub fn MlclassifysvmGraphN::set(Self, Int32, Double) -> Self
+pub fn MlclassifysvmGraphN::sum(Self) -> Double
+pub fn MlclassifysvmGraphN::to_string(Self) -> String
+
+pub(all) struct MlclassifysvmLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifysvmLayer::add(Self, Self) -> Self
+pub fn MlclassifysvmLayer::copy(Self) -> Self
+pub fn MlclassifysvmLayer::fill(Self, Double) -> Self
+pub fn MlclassifysvmLayer::get(Self, Int32) -> Double
+pub fn MlclassifysvmLayer::len(Self) -> Int32
+pub fn MlclassifysvmLayer::max(Self) -> Double
+pub fn MlclassifysvmLayer::mean(Self) -> Double
+pub fn MlclassifysvmLayer::min(Self) -> Double
+pub fn MlclassifysvmLayer::scale(Self, Double) -> Self
+pub fn MlclassifysvmLayer::set(Self, Int32, Double) -> Self
+pub fn MlclassifysvmLayer::sum(Self) -> Double
+pub fn MlclassifysvmLayer::to_string(Self) -> String
+
+pub(all) struct MlclassifysvmMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlclassifysvmMatrix::add(Self, Self) -> Self
+pub fn MlclassifysvmMatrix::det(Self) -> Double
+pub fn MlclassifysvmMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlclassifysvmMatrix::multiply(Self, Self) -> Self
+pub fn MlclassifysvmMatrix::norm(Self) -> Double
+pub fn MlclassifysvmMatrix::scale(Self, Double) -> Self
+pub fn MlclassifysvmMatrix::to_string(Self) -> String
+pub fn MlclassifysvmMatrix::trace(Self) -> Double
+pub fn MlclassifysvmMatrix::transpose(Self) -> Self
+
+pub(all) struct MlclassifysvmModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifysvmModel::add(Self, Self) -> Self
+pub fn MlclassifysvmModel::copy(Self) -> Self
+pub fn MlclassifysvmModel::fill(Self, Double) -> Self
+pub fn MlclassifysvmModel::get(Self, Int32) -> Double
+pub fn MlclassifysvmModel::len(Self) -> Int32
+pub fn MlclassifysvmModel::max(Self) -> Double
+pub fn MlclassifysvmModel::mean(Self) -> Double
+pub fn MlclassifysvmModel::min(Self) -> Double
+pub fn MlclassifysvmModel::scale(Self, Double) -> Self
+pub fn MlclassifysvmModel::set(Self, Int32, Double) -> Self
+pub fn MlclassifysvmModel::sum(Self) -> Double
+pub fn MlclassifysvmModel::to_string(Self) -> String
+
+pub(all) struct MlclassifysvmNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifysvmNode::add(Self, Self) -> Self
+pub fn MlclassifysvmNode::copy(Self) -> Self
+pub fn MlclassifysvmNode::fill(Self, Double) -> Self
+pub fn MlclassifysvmNode::get(Self, Int32) -> Double
+pub fn MlclassifysvmNode::len(Self) -> Int32
+pub fn MlclassifysvmNode::max(Self) -> Double
+pub fn MlclassifysvmNode::mean(Self) -> Double
+pub fn MlclassifysvmNode::min(Self) -> Double
+pub fn MlclassifysvmNode::scale(Self, Double) -> Self
+pub fn MlclassifysvmNode::set(Self, Int32, Double) -> Self
+pub fn MlclassifysvmNode::sum(Self) -> Double
+pub fn MlclassifysvmNode::to_string(Self) -> String
+
+pub(all) struct MlclassifysvmPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifysvmPath::add(Self, Self) -> Self
+pub fn MlclassifysvmPath::copy(Self) -> Self
+pub fn MlclassifysvmPath::fill(Self, Double) -> Self
+pub fn MlclassifysvmPath::get(Self, Int32) -> Double
+pub fn MlclassifysvmPath::len(Self) -> Int32
+pub fn MlclassifysvmPath::max(Self) -> Double
+pub fn MlclassifysvmPath::mean(Self) -> Double
+pub fn MlclassifysvmPath::min(Self) -> Double
+pub fn MlclassifysvmPath::scale(Self, Double) -> Self
+pub fn MlclassifysvmPath::set(Self, Int32, Double) -> Self
+pub fn MlclassifysvmPath::sum(Self) -> Double
+pub fn MlclassifysvmPath::to_string(Self) -> String
+
+pub(all) struct MlclassifysvmPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlclassifysvmPoint::add(Self, Self) -> Self
+pub fn MlclassifysvmPoint::cross(Self, Self) -> Self
+pub fn MlclassifysvmPoint::dist(Self, Self) -> Double
+pub fn MlclassifysvmPoint::dot(Self, Self) -> Double
+pub fn MlclassifysvmPoint::label(Self) -> Int32
+pub fn MlclassifysvmPoint::lerp(Self, Self, Double) -> Self
+pub fn MlclassifysvmPoint::mid(Self, Self) -> Self
+pub fn MlclassifysvmPoint::negate(Self) -> Self
+pub fn MlclassifysvmPoint::norm(Self) -> Double
+pub fn MlclassifysvmPoint::normalize(Self) -> Self
+pub fn MlclassifysvmPoint::scale(Self, Double) -> Self
+pub fn MlclassifysvmPoint::sub(Self, Self) -> Self
+pub fn MlclassifysvmPoint::to_string(Self) -> String
+pub fn MlclassifysvmPoint::x(Self) -> Double
+pub fn MlclassifysvmPoint::y(Self) -> Double
+pub fn MlclassifysvmPoint::z(Self) -> Double
+
+pub(all) struct MlclassifysvmRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifysvmRange::add(Self, Self) -> Self
+pub fn MlclassifysvmRange::copy(Self) -> Self
+pub fn MlclassifysvmRange::fill(Self, Double) -> Self
+pub fn MlclassifysvmRange::get(Self, Int32) -> Double
+pub fn MlclassifysvmRange::len(Self) -> Int32
+pub fn MlclassifysvmRange::max(Self) -> Double
+pub fn MlclassifysvmRange::mean(Self) -> Double
+pub fn MlclassifysvmRange::min(Self) -> Double
+pub fn MlclassifysvmRange::scale(Self, Double) -> Self
+pub fn MlclassifysvmRange::set(Self, Int32, Double) -> Self
+pub fn MlclassifysvmRange::sum(Self) -> Double
+pub fn MlclassifysvmRange::to_string(Self) -> String
+
+pub(all) struct MlclassifysvmSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlclassifysvmSeries::add(Self, Self) -> Self
+pub fn MlclassifysvmSeries::cumsum(Self) -> Self
+pub fn MlclassifysvmSeries::len(Self) -> Int32
+pub fn MlclassifysvmSeries::max(Self) -> Double
+pub fn MlclassifysvmSeries::mean(Self) -> Double
+pub fn MlclassifysvmSeries::median(Self) -> Double
+pub fn MlclassifysvmSeries::min(Self) -> Double
+pub fn MlclassifysvmSeries::normalize(Self) -> Self
+pub fn MlclassifysvmSeries::range(Self) -> Double
+pub fn MlclassifysvmSeries::scale(Self, Double) -> Self
+pub fn MlclassifysvmSeries::std(Self) -> Double
+pub fn MlclassifysvmSeries::sub(Self, Self) -> Self
+pub fn MlclassifysvmSeries::sum(Self) -> Double
+pub fn MlclassifysvmSeries::to_string(Self) -> String
+pub fn MlclassifysvmSeries::variance(Self) -> Double
+
+pub(all) struct MlclassifysvmSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifysvmSlice::add(Self, Self) -> Self
+pub fn MlclassifysvmSlice::copy(Self) -> Self
+pub fn MlclassifysvmSlice::fill(Self, Double) -> Self
+pub fn MlclassifysvmSlice::get(Self, Int32) -> Double
+pub fn MlclassifysvmSlice::len(Self) -> Int32
+pub fn MlclassifysvmSlice::max(Self) -> Double
+pub fn MlclassifysvmSlice::mean(Self) -> Double
+pub fn MlclassifysvmSlice::min(Self) -> Double
+pub fn MlclassifysvmSlice::scale(Self, Double) -> Self
+pub fn MlclassifysvmSlice::set(Self, Int32, Double) -> Self
+pub fn MlclassifysvmSlice::sum(Self) -> Double
+pub fn MlclassifysvmSlice::to_string(Self) -> String
+
+pub(all) struct MlclassifysvmTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifysvmTable::add(Self, Self) -> Self
+pub fn MlclassifysvmTable::copy(Self) -> Self
+pub fn MlclassifysvmTable::fill(Self, Double) -> Self
+pub fn MlclassifysvmTable::get(Self, Int32) -> Double
+pub fn MlclassifysvmTable::len(Self) -> Int32
+pub fn MlclassifysvmTable::max(Self) -> Double
+pub fn MlclassifysvmTable::mean(Self) -> Double
+pub fn MlclassifysvmTable::min(Self) -> Double
+pub fn MlclassifysvmTable::scale(Self, Double) -> Self
+pub fn MlclassifysvmTable::set(Self, Int32, Double) -> Self
+pub fn MlclassifysvmTable::sum(Self) -> Double
+pub fn MlclassifysvmTable::to_string(Self) -> String
+
+pub(all) struct MlclassifysvmVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlclassifysvmVector::add(Self, Self) -> Self
+pub fn MlclassifysvmVector::dist(Self, Self) -> Double
+pub fn MlclassifysvmVector::dot(Self, Self) -> Double
+pub fn MlclassifysvmVector::norm(Self) -> Double
+pub fn MlclassifysvmVector::normalize(Self) -> Self
+pub fn MlclassifysvmVector::scale(Self, Double) -> Self
+pub fn MlclassifysvmVector::sub(Self, Self) -> Self
+pub fn MlclassifysvmVector::to_string(Self) -> String
+
+pub(all) struct MlclassifysvmView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifysvmView::add(Self, Self) -> Self
+pub fn MlclassifysvmView::copy(Self) -> Self
+pub fn MlclassifysvmView::fill(Self, Double) -> Self
+pub fn MlclassifysvmView::get(Self, Int32) -> Double
+pub fn MlclassifysvmView::len(Self) -> Int32
+pub fn MlclassifysvmView::max(Self) -> Double
+pub fn MlclassifysvmView::mean(Self) -> Double
+pub fn MlclassifysvmView::min(Self) -> Double
+pub fn MlclassifysvmView::scale(Self, Double) -> Self
+pub fn MlclassifysvmView::set(Self, Int32, Double) -> Self
+pub fn MlclassifysvmView::sum(Self) -> Double
+pub fn MlclassifysvmView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

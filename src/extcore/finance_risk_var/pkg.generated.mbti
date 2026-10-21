@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/finance_risk_var"
+
+// Values
+pub fn finance_risk_var_buffer_make(Int32) -> FinanceriskvarBuffer
+
+pub fn finance_risk_var_cluster_make(Int32) -> FinanceriskvarCluster
+
+pub fn finance_risk_var_cursor_make(Int32) -> FinanceriskvarCursor
+
+pub fn finance_risk_var_edge_make(Int32) -> FinanceriskvarEdge
+
+pub fn finance_risk_var_frame_make(Int32) -> FinanceriskvarFrame
+
+pub fn finance_risk_var_graphn_make(Int32) -> FinanceriskvarGraphN
+
+pub fn finance_risk_var_layer_make(Int32) -> FinanceriskvarLayer
+
+pub fn finance_risk_var_make_matrix(Int32, Int32, Double) -> FinanceriskvarMatrix
+
+pub fn finance_risk_var_make_point(Double, Double) -> FinanceriskvarPoint
+
+pub fn finance_risk_var_make_point3(Double, Double, Double) -> FinanceriskvarPoint
+
+pub fn finance_risk_var_make_series(Array[Double], String) -> FinanceriskvarSeries
+
+pub fn finance_risk_var_make_vector(Array[Double]) -> FinanceriskvarVector
+
+pub fn finance_risk_var_matrix_identity(Int32) -> FinanceriskvarMatrix
+
+pub fn finance_risk_var_model_make(Int32) -> FinanceriskvarModel
+
+pub fn finance_risk_var_node_make(Int32) -> FinanceriskvarNode
+
+pub fn finance_risk_var_path_make(Int32) -> FinanceriskvarPath
+
+pub fn finance_risk_var_range_make(Int32) -> FinanceriskvarRange
+
+pub fn finance_risk_var_slice_make(Int32) -> FinanceriskvarSlice
+
+pub fn finance_risk_var_table_make(Int32) -> FinanceriskvarTable
+
+pub fn finance_risk_var_vector_zero(Int32) -> FinanceriskvarVector
+
+pub fn finance_risk_var_view_make(Int32) -> FinanceriskvarView
+
+// Errors
+
+// Types and methods
+pub(all) struct FinanceriskvarBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskvarBuffer::add(Self, Self) -> Self
+pub fn FinanceriskvarBuffer::copy(Self) -> Self
+pub fn FinanceriskvarBuffer::fill(Self, Double) -> Self
+pub fn FinanceriskvarBuffer::get(Self, Int32) -> Double
+pub fn FinanceriskvarBuffer::len(Self) -> Int32
+pub fn FinanceriskvarBuffer::max(Self) -> Double
+pub fn FinanceriskvarBuffer::mean(Self) -> Double
+pub fn FinanceriskvarBuffer::min(Self) -> Double
+pub fn FinanceriskvarBuffer::scale(Self, Double) -> Self
+pub fn FinanceriskvarBuffer::set(Self, Int32, Double) -> Self
+pub fn FinanceriskvarBuffer::sum(Self) -> Double
+pub fn FinanceriskvarBuffer::to_string(Self) -> String
+
+pub(all) struct FinanceriskvarCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskvarCluster::add(Self, Self) -> Self
+pub fn FinanceriskvarCluster::copy(Self) -> Self
+pub fn FinanceriskvarCluster::fill(Self, Double) -> Self
+pub fn FinanceriskvarCluster::get(Self, Int32) -> Double
+pub fn FinanceriskvarCluster::len(Self) -> Int32
+pub fn FinanceriskvarCluster::max(Self) -> Double
+pub fn FinanceriskvarCluster::mean(Self) -> Double
+pub fn FinanceriskvarCluster::min(Self) -> Double
+pub fn FinanceriskvarCluster::scale(Self, Double) -> Self
+pub fn FinanceriskvarCluster::set(Self, Int32, Double) -> Self
+pub fn FinanceriskvarCluster::sum(Self) -> Double
+pub fn FinanceriskvarCluster::to_string(Self) -> String
+
+pub(all) struct FinanceriskvarCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskvarCursor::add(Self, Self) -> Self
+pub fn FinanceriskvarCursor::copy(Self) -> Self
+pub fn FinanceriskvarCursor::fill(Self, Double) -> Self
+pub fn FinanceriskvarCursor::get(Self, Int32) -> Double
+pub fn FinanceriskvarCursor::len(Self) -> Int32
+pub fn FinanceriskvarCursor::max(Self) -> Double
+pub fn FinanceriskvarCursor::mean(Self) -> Double
+pub fn FinanceriskvarCursor::min(Self) -> Double
+pub fn FinanceriskvarCursor::scale(Self, Double) -> Self
+pub fn FinanceriskvarCursor::set(Self, Int32, Double) -> Self
+pub fn FinanceriskvarCursor::sum(Self) -> Double
+pub fn FinanceriskvarCursor::to_string(Self) -> String
+
+pub(all) struct FinanceriskvarEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskvarEdge::add(Self, Self) -> Self
+pub fn FinanceriskvarEdge::copy(Self) -> Self
+pub fn FinanceriskvarEdge::fill(Self, Double) -> Self
+pub fn FinanceriskvarEdge::get(Self, Int32) -> Double
+pub fn FinanceriskvarEdge::len(Self) -> Int32
+pub fn FinanceriskvarEdge::max(Self) -> Double
+pub fn FinanceriskvarEdge::mean(Self) -> Double
+pub fn FinanceriskvarEdge::min(Self) -> Double
+pub fn FinanceriskvarEdge::scale(Self, Double) -> Self
+pub fn FinanceriskvarEdge::set(Self, Int32, Double) -> Self
+pub fn FinanceriskvarEdge::sum(Self) -> Double
+pub fn FinanceriskvarEdge::to_string(Self) -> String
+
+pub(all) struct FinanceriskvarFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskvarFrame::add(Self, Self) -> Self
+pub fn FinanceriskvarFrame::copy(Self) -> Self
+pub fn FinanceriskvarFrame::fill(Self, Double) -> Self
+pub fn FinanceriskvarFrame::get(Self, Int32) -> Double
+pub fn FinanceriskvarFrame::len(Self) -> Int32
+pub fn FinanceriskvarFrame::max(Self) -> Double
+pub fn FinanceriskvarFrame::mean(Self) -> Double
+pub fn FinanceriskvarFrame::min(Self) -> Double
+pub fn FinanceriskvarFrame::scale(Self, Double) -> Self
+pub fn FinanceriskvarFrame::set(Self, Int32, Double) -> Self
+pub fn FinanceriskvarFrame::sum(Self) -> Double
+pub fn FinanceriskvarFrame::to_string(Self) -> String
+
+pub(all) struct FinanceriskvarGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskvarGraphN::add(Self, Self) -> Self
+pub fn FinanceriskvarGraphN::copy(Self) -> Self
+pub fn FinanceriskvarGraphN::fill(Self, Double) -> Self
+pub fn FinanceriskvarGraphN::get(Self, Int32) -> Double
+pub fn FinanceriskvarGraphN::len(Self) -> Int32
+pub fn FinanceriskvarGraphN::max(Self) -> Double
+pub fn FinanceriskvarGraphN::mean(Self) -> Double
+pub fn FinanceriskvarGraphN::min(Self) -> Double
+pub fn FinanceriskvarGraphN::scale(Self, Double) -> Self
+pub fn FinanceriskvarGraphN::set(Self, Int32, Double) -> Self
+pub fn FinanceriskvarGraphN::sum(Self) -> Double
+pub fn FinanceriskvarGraphN::to_string(Self) -> String
+
+pub(all) struct FinanceriskvarLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskvarLayer::add(Self, Self) -> Self
+pub fn FinanceriskvarLayer::copy(Self) -> Self
+pub fn FinanceriskvarLayer::fill(Self, Double) -> Self
+pub fn FinanceriskvarLayer::get(Self, Int32) -> Double
+pub fn FinanceriskvarLayer::len(Self) -> Int32
+pub fn FinanceriskvarLayer::max(Self) -> Double
+pub fn FinanceriskvarLayer::mean(Self) -> Double
+pub fn FinanceriskvarLayer::min(Self) -> Double
+pub fn FinanceriskvarLayer::scale(Self, Double) -> Self
+pub fn FinanceriskvarLayer::set(Self, Int32, Double) -> Self
+pub fn FinanceriskvarLayer::sum(Self) -> Double
+pub fn FinanceriskvarLayer::to_string(Self) -> String
+
+pub(all) struct FinanceriskvarMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn FinanceriskvarMatrix::add(Self, Self) -> Self
+pub fn FinanceriskvarMatrix::det(Self) -> Double
+pub fn FinanceriskvarMatrix::get(Self, Int32, Int32) -> Double
+pub fn FinanceriskvarMatrix::multiply(Self, Self) -> Self
+pub fn FinanceriskvarMatrix::norm(Self) -> Double
+pub fn FinanceriskvarMatrix::scale(Self, Double) -> Self
+pub fn FinanceriskvarMatrix::to_string(Self) -> String
+pub fn FinanceriskvarMatrix::trace(Self) -> Double
+pub fn FinanceriskvarMatrix::transpose(Self) -> Self
+
+pub(all) struct FinanceriskvarModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskvarModel::add(Self, Self) -> Self
+pub fn FinanceriskvarModel::copy(Self) -> Self
+pub fn FinanceriskvarModel::fill(Self, Double) -> Self
+pub fn FinanceriskvarModel::get(Self, Int32) -> Double
+pub fn FinanceriskvarModel::len(Self) -> Int32
+pub fn FinanceriskvarModel::max(Self) -> Double
+pub fn FinanceriskvarModel::mean(Self) -> Double
+pub fn FinanceriskvarModel::min(Self) -> Double
+pub fn FinanceriskvarModel::scale(Self, Double) -> Self
+pub fn FinanceriskvarModel::set(Self, Int32, Double) -> Self
+pub fn FinanceriskvarModel::sum(Self) -> Double
+pub fn FinanceriskvarModel::to_string(Self) -> String
+
+pub(all) struct FinanceriskvarNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskvarNode::add(Self, Self) -> Self
+pub fn FinanceriskvarNode::copy(Self) -> Self
+pub fn FinanceriskvarNode::fill(Self, Double) -> Self
+pub fn FinanceriskvarNode::get(Self, Int32) -> Double
+pub fn FinanceriskvarNode::len(Self) -> Int32
+pub fn FinanceriskvarNode::max(Self) -> Double
+pub fn FinanceriskvarNode::mean(Self) -> Double
+pub fn FinanceriskvarNode::min(Self) -> Double
+pub fn FinanceriskvarNode::scale(Self, Double) -> Self
+pub fn FinanceriskvarNode::set(Self, Int32, Double) -> Self
+pub fn FinanceriskvarNode::sum(Self) -> Double
+pub fn FinanceriskvarNode::to_string(Self) -> String
+
+pub(all) struct FinanceriskvarPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskvarPath::add(Self, Self) -> Self
+pub fn FinanceriskvarPath::copy(Self) -> Self
+pub fn FinanceriskvarPath::fill(Self, Double) -> Self
+pub fn FinanceriskvarPath::get(Self, Int32) -> Double
+pub fn FinanceriskvarPath::len(Self) -> Int32
+pub fn FinanceriskvarPath::max(Self) -> Double
+pub fn FinanceriskvarPath::mean(Self) -> Double
+pub fn FinanceriskvarPath::min(Self) -> Double
+pub fn FinanceriskvarPath::scale(Self, Double) -> Self
+pub fn FinanceriskvarPath::set(Self, Int32, Double) -> Self
+pub fn FinanceriskvarPath::sum(Self) -> Double
+pub fn FinanceriskvarPath::to_string(Self) -> String
+
+pub(all) struct FinanceriskvarPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn FinanceriskvarPoint::add(Self, Self) -> Self
+pub fn FinanceriskvarPoint::cross(Self, Self) -> Self
+pub fn FinanceriskvarPoint::dist(Self, Self) -> Double
+pub fn FinanceriskvarPoint::dot(Self, Self) -> Double
+pub fn FinanceriskvarPoint::label(Self) -> Int32
+pub fn FinanceriskvarPoint::lerp(Self, Self, Double) -> Self
+pub fn FinanceriskvarPoint::mid(Self, Self) -> Self
+pub fn FinanceriskvarPoint::negate(Self) -> Self
+pub fn FinanceriskvarPoint::norm(Self) -> Double
+pub fn FinanceriskvarPoint::normalize(Self) -> Self
+pub fn FinanceriskvarPoint::scale(Self, Double) -> Self
+pub fn FinanceriskvarPoint::sub(Self, Self) -> Self
+pub fn FinanceriskvarPoint::to_string(Self) -> String
+pub fn FinanceriskvarPoint::x(Self) -> Double
+pub fn FinanceriskvarPoint::y(Self) -> Double
+pub fn FinanceriskvarPoint::z(Self) -> Double
+
+pub(all) struct FinanceriskvarRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskvarRange::add(Self, Self) -> Self
+pub fn FinanceriskvarRange::copy(Self) -> Self
+pub fn FinanceriskvarRange::fill(Self, Double) -> Self
+pub fn FinanceriskvarRange::get(Self, Int32) -> Double
+pub fn FinanceriskvarRange::len(Self) -> Int32
+pub fn FinanceriskvarRange::max(Self) -> Double
+pub fn FinanceriskvarRange::mean(Self) -> Double
+pub fn FinanceriskvarRange::min(Self) -> Double
+pub fn FinanceriskvarRange::scale(Self, Double) -> Self
+pub fn FinanceriskvarRange::set(Self, Int32, Double) -> Self
+pub fn FinanceriskvarRange::sum(Self) -> Double
+pub fn FinanceriskvarRange::to_string(Self) -> String
+
+pub(all) struct FinanceriskvarSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn FinanceriskvarSeries::add(Self, Self) -> Self
+pub fn FinanceriskvarSeries::cumsum(Self) -> Self
+pub fn FinanceriskvarSeries::len(Self) -> Int32
+pub fn FinanceriskvarSeries::max(Self) -> Double
+pub fn FinanceriskvarSeries::mean(Self) -> Double
+pub fn FinanceriskvarSeries::median(Self) -> Double
+pub fn FinanceriskvarSeries::min(Self) -> Double
+pub fn FinanceriskvarSeries::normalize(Self) -> Self
+pub fn FinanceriskvarSeries::range(Self) -> Double
+pub fn FinanceriskvarSeries::scale(Self, Double) -> Self
+pub fn FinanceriskvarSeries::std(Self) -> Double
+pub fn FinanceriskvarSeries::sub(Self, Self) -> Self
+pub fn FinanceriskvarSeries::sum(Self) -> Double
+pub fn FinanceriskvarSeries::to_string(Self) -> String
+pub fn FinanceriskvarSeries::variance(Self) -> Double
+
+pub(all) struct FinanceriskvarSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskvarSlice::add(Self, Self) -> Self
+pub fn FinanceriskvarSlice::copy(Self) -> Self
+pub fn FinanceriskvarSlice::fill(Self, Double) -> Self
+pub fn FinanceriskvarSlice::get(Self, Int32) -> Double
+pub fn FinanceriskvarSlice::len(Self) -> Int32
+pub fn FinanceriskvarSlice::max(Self) -> Double
+pub fn FinanceriskvarSlice::mean(Self) -> Double
+pub fn FinanceriskvarSlice::min(Self) -> Double
+pub fn FinanceriskvarSlice::scale(Self, Double) -> Self
+pub fn FinanceriskvarSlice::set(Self, Int32, Double) -> Self
+pub fn FinanceriskvarSlice::sum(Self) -> Double
+pub fn FinanceriskvarSlice::to_string(Self) -> String
+
+pub(all) struct FinanceriskvarTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskvarTable::add(Self, Self) -> Self
+pub fn FinanceriskvarTable::copy(Self) -> Self
+pub fn FinanceriskvarTable::fill(Self, Double) -> Self
+pub fn FinanceriskvarTable::get(Self, Int32) -> Double
+pub fn FinanceriskvarTable::len(Self) -> Int32
+pub fn FinanceriskvarTable::max(Self) -> Double
+pub fn FinanceriskvarTable::mean(Self) -> Double
+pub fn FinanceriskvarTable::min(Self) -> Double
+pub fn FinanceriskvarTable::scale(Self, Double) -> Self
+pub fn FinanceriskvarTable::set(Self, Int32, Double) -> Self
+pub fn FinanceriskvarTable::sum(Self) -> Double
+pub fn FinanceriskvarTable::to_string(Self) -> String
+
+pub(all) struct FinanceriskvarVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn FinanceriskvarVector::add(Self, Self) -> Self
+pub fn FinanceriskvarVector::dist(Self, Self) -> Double
+pub fn FinanceriskvarVector::dot(Self, Self) -> Double
+pub fn FinanceriskvarVector::norm(Self) -> Double
+pub fn FinanceriskvarVector::normalize(Self) -> Self
+pub fn FinanceriskvarVector::scale(Self, Double) -> Self
+pub fn FinanceriskvarVector::sub(Self, Self) -> Self
+pub fn FinanceriskvarVector::to_string(Self) -> String
+
+pub(all) struct FinanceriskvarView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskvarView::add(Self, Self) -> Self
+pub fn FinanceriskvarView::copy(Self) -> Self
+pub fn FinanceriskvarView::fill(Self, Double) -> Self
+pub fn FinanceriskvarView::get(Self, Int32) -> Double
+pub fn FinanceriskvarView::len(Self) -> Int32
+pub fn FinanceriskvarView::max(Self) -> Double
+pub fn FinanceriskvarView::mean(Self) -> Double
+pub fn FinanceriskvarView::min(Self) -> Double
+pub fn FinanceriskvarView::scale(Self, Double) -> Self
+pub fn FinanceriskvarView::set(Self, Int32, Double) -> Self
+pub fn FinanceriskvarView::sum(Self) -> Double
+pub fn FinanceriskvarView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

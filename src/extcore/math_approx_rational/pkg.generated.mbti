@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_approx_rational"
+
+// Values
+pub fn math_approx_rational_buffer_make(Int32) -> MathapproxrationalBuffer
+
+pub fn math_approx_rational_cluster_make(Int32) -> MathapproxrationalCluster
+
+pub fn math_approx_rational_cursor_make(Int32) -> MathapproxrationalCursor
+
+pub fn math_approx_rational_edge_make(Int32) -> MathapproxrationalEdge
+
+pub fn math_approx_rational_frame_make(Int32) -> MathapproxrationalFrame
+
+pub fn math_approx_rational_graphn_make(Int32) -> MathapproxrationalGraphN
+
+pub fn math_approx_rational_layer_make(Int32) -> MathapproxrationalLayer
+
+pub fn math_approx_rational_make_matrix(Int32, Int32, Double) -> MathapproxrationalMatrix
+
+pub fn math_approx_rational_make_point(Double, Double) -> MathapproxrationalPoint
+
+pub fn math_approx_rational_make_point3(Double, Double, Double) -> MathapproxrationalPoint
+
+pub fn math_approx_rational_make_series(Array[Double], String) -> MathapproxrationalSeries
+
+pub fn math_approx_rational_make_vector(Array[Double]) -> MathapproxrationalVector
+
+pub fn math_approx_rational_matrix_identity(Int32) -> MathapproxrationalMatrix
+
+pub fn math_approx_rational_model_make(Int32) -> MathapproxrationalModel
+
+pub fn math_approx_rational_node_make(Int32) -> MathapproxrationalNode
+
+pub fn math_approx_rational_path_make(Int32) -> MathapproxrationalPath
+
+pub fn math_approx_rational_range_make(Int32) -> MathapproxrationalRange
+
+pub fn math_approx_rational_slice_make(Int32) -> MathapproxrationalSlice
+
+pub fn math_approx_rational_table_make(Int32) -> MathapproxrationalTable
+
+pub fn math_approx_rational_vector_zero(Int32) -> MathapproxrationalVector
+
+pub fn math_approx_rational_view_make(Int32) -> MathapproxrationalView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathapproxrationalBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxrationalBuffer::add(Self, Self) -> Self
+pub fn MathapproxrationalBuffer::copy(Self) -> Self
+pub fn MathapproxrationalBuffer::fill(Self, Double) -> Self
+pub fn MathapproxrationalBuffer::get(Self, Int32) -> Double
+pub fn MathapproxrationalBuffer::len(Self) -> Int32
+pub fn MathapproxrationalBuffer::max(Self) -> Double
+pub fn MathapproxrationalBuffer::mean(Self) -> Double
+pub fn MathapproxrationalBuffer::min(Self) -> Double
+pub fn MathapproxrationalBuffer::scale(Self, Double) -> Self
+pub fn MathapproxrationalBuffer::set(Self, Int32, Double) -> Self
+pub fn MathapproxrationalBuffer::sum(Self) -> Double
+pub fn MathapproxrationalBuffer::to_string(Self) -> String
+
+pub(all) struct MathapproxrationalCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxrationalCluster::add(Self, Self) -> Self
+pub fn MathapproxrationalCluster::copy(Self) -> Self
+pub fn MathapproxrationalCluster::fill(Self, Double) -> Self
+pub fn MathapproxrationalCluster::get(Self, Int32) -> Double
+pub fn MathapproxrationalCluster::len(Self) -> Int32
+pub fn MathapproxrationalCluster::max(Self) -> Double
+pub fn MathapproxrationalCluster::mean(Self) -> Double
+pub fn MathapproxrationalCluster::min(Self) -> Double
+pub fn MathapproxrationalCluster::scale(Self, Double) -> Self
+pub fn MathapproxrationalCluster::set(Self, Int32, Double) -> Self
+pub fn MathapproxrationalCluster::sum(Self) -> Double
+pub fn MathapproxrationalCluster::to_string(Self) -> String
+
+pub(all) struct MathapproxrationalCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxrationalCursor::add(Self, Self) -> Self
+pub fn MathapproxrationalCursor::copy(Self) -> Self
+pub fn MathapproxrationalCursor::fill(Self, Double) -> Self
+pub fn MathapproxrationalCursor::get(Self, Int32) -> Double
+pub fn MathapproxrationalCursor::len(Self) -> Int32
+pub fn MathapproxrationalCursor::max(Self) -> Double
+pub fn MathapproxrationalCursor::mean(Self) -> Double
+pub fn MathapproxrationalCursor::min(Self) -> Double
+pub fn MathapproxrationalCursor::scale(Self, Double) -> Self
+pub fn MathapproxrationalCursor::set(Self, Int32, Double) -> Self
+pub fn MathapproxrationalCursor::sum(Self) -> Double
+pub fn MathapproxrationalCursor::to_string(Self) -> String
+
+pub(all) struct MathapproxrationalEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxrationalEdge::add(Self, Self) -> Self
+pub fn MathapproxrationalEdge::copy(Self) -> Self
+pub fn MathapproxrationalEdge::fill(Self, Double) -> Self
+pub fn MathapproxrationalEdge::get(Self, Int32) -> Double
+pub fn MathapproxrationalEdge::len(Self) -> Int32
+pub fn MathapproxrationalEdge::max(Self) -> Double
+pub fn MathapproxrationalEdge::mean(Self) -> Double
+pub fn MathapproxrationalEdge::min(Self) -> Double
+pub fn MathapproxrationalEdge::scale(Self, Double) -> Self
+pub fn MathapproxrationalEdge::set(Self, Int32, Double) -> Self
+pub fn MathapproxrationalEdge::sum(Self) -> Double
+pub fn MathapproxrationalEdge::to_string(Self) -> String
+
+pub(all) struct MathapproxrationalFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxrationalFrame::add(Self, Self) -> Self
+pub fn MathapproxrationalFrame::copy(Self) -> Self
+pub fn MathapproxrationalFrame::fill(Self, Double) -> Self
+pub fn MathapproxrationalFrame::get(Self, Int32) -> Double
+pub fn MathapproxrationalFrame::len(Self) -> Int32
+pub fn MathapproxrationalFrame::max(Self) -> Double
+pub fn MathapproxrationalFrame::mean(Self) -> Double
+pub fn MathapproxrationalFrame::min(Self) -> Double
+pub fn MathapproxrationalFrame::scale(Self, Double) -> Self
+pub fn MathapproxrationalFrame::set(Self, Int32, Double) -> Self
+pub fn MathapproxrationalFrame::sum(Self) -> Double
+pub fn MathapproxrationalFrame::to_string(Self) -> String
+
+pub(all) struct MathapproxrationalGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxrationalGraphN::add(Self, Self) -> Self
+pub fn MathapproxrationalGraphN::copy(Self) -> Self
+pub fn MathapproxrationalGraphN::fill(Self, Double) -> Self
+pub fn MathapproxrationalGraphN::get(Self, Int32) -> Double
+pub fn MathapproxrationalGraphN::len(Self) -> Int32
+pub fn MathapproxrationalGraphN::max(Self) -> Double
+pub fn MathapproxrationalGraphN::mean(Self) -> Double
+pub fn MathapproxrationalGraphN::min(Self) -> Double
+pub fn MathapproxrationalGraphN::scale(Self, Double) -> Self
+pub fn MathapproxrationalGraphN::set(Self, Int32, Double) -> Self
+pub fn MathapproxrationalGraphN::sum(Self) -> Double
+pub fn MathapproxrationalGraphN::to_string(Self) -> String
+
+pub(all) struct MathapproxrationalLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxrationalLayer::add(Self, Self) -> Self
+pub fn MathapproxrationalLayer::copy(Self) -> Self
+pub fn MathapproxrationalLayer::fill(Self, Double) -> Self
+pub fn MathapproxrationalLayer::get(Self, Int32) -> Double
+pub fn MathapproxrationalLayer::len(Self) -> Int32
+pub fn MathapproxrationalLayer::max(Self) -> Double
+pub fn MathapproxrationalLayer::mean(Self) -> Double
+pub fn MathapproxrationalLayer::min(Self) -> Double
+pub fn MathapproxrationalLayer::scale(Self, Double) -> Self
+pub fn MathapproxrationalLayer::set(Self, Int32, Double) -> Self
+pub fn MathapproxrationalLayer::sum(Self) -> Double
+pub fn MathapproxrationalLayer::to_string(Self) -> String
+
+pub(all) struct MathapproxrationalMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathapproxrationalMatrix::add(Self, Self) -> Self
+pub fn MathapproxrationalMatrix::det(Self) -> Double
+pub fn MathapproxrationalMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathapproxrationalMatrix::multiply(Self, Self) -> Self
+pub fn MathapproxrationalMatrix::norm(Self) -> Double
+pub fn MathapproxrationalMatrix::scale(Self, Double) -> Self
+pub fn MathapproxrationalMatrix::to_string(Self) -> String
+pub fn MathapproxrationalMatrix::trace(Self) -> Double
+pub fn MathapproxrationalMatrix::transpose(Self) -> Self
+
+pub(all) struct MathapproxrationalModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxrationalModel::add(Self, Self) -> Self
+pub fn MathapproxrationalModel::copy(Self) -> Self
+pub fn MathapproxrationalModel::fill(Self, Double) -> Self
+pub fn MathapproxrationalModel::get(Self, Int32) -> Double
+pub fn MathapproxrationalModel::len(Self) -> Int32
+pub fn MathapproxrationalModel::max(Self) -> Double
+pub fn MathapproxrationalModel::mean(Self) -> Double
+pub fn MathapproxrationalModel::min(Self) -> Double
+pub fn MathapproxrationalModel::scale(Self, Double) -> Self
+pub fn MathapproxrationalModel::set(Self, Int32, Double) -> Self
+pub fn MathapproxrationalModel::sum(Self) -> Double
+pub fn MathapproxrationalModel::to_string(Self) -> String
+
+pub(all) struct MathapproxrationalNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxrationalNode::add(Self, Self) -> Self
+pub fn MathapproxrationalNode::copy(Self) -> Self
+pub fn MathapproxrationalNode::fill(Self, Double) -> Self
+pub fn MathapproxrationalNode::get(Self, Int32) -> Double
+pub fn MathapproxrationalNode::len(Self) -> Int32
+pub fn MathapproxrationalNode::max(Self) -> Double
+pub fn MathapproxrationalNode::mean(Self) -> Double
+pub fn MathapproxrationalNode::min(Self) -> Double
+pub fn MathapproxrationalNode::scale(Self, Double) -> Self
+pub fn MathapproxrationalNode::set(Self, Int32, Double) -> Self
+pub fn MathapproxrationalNode::sum(Self) -> Double
+pub fn MathapproxrationalNode::to_string(Self) -> String
+
+pub(all) struct MathapproxrationalPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxrationalPath::add(Self, Self) -> Self
+pub fn MathapproxrationalPath::copy(Self) -> Self
+pub fn MathapproxrationalPath::fill(Self, Double) -> Self
+pub fn MathapproxrationalPath::get(Self, Int32) -> Double
+pub fn MathapproxrationalPath::len(Self) -> Int32
+pub fn MathapproxrationalPath::max(Self) -> Double
+pub fn MathapproxrationalPath::mean(Self) -> Double
+pub fn MathapproxrationalPath::min(Self) -> Double
+pub fn MathapproxrationalPath::scale(Self, Double) -> Self
+pub fn MathapproxrationalPath::set(Self, Int32, Double) -> Self
+pub fn MathapproxrationalPath::sum(Self) -> Double
+pub fn MathapproxrationalPath::to_string(Self) -> String
+
+pub(all) struct MathapproxrationalPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathapproxrationalPoint::add(Self, Self) -> Self
+pub fn MathapproxrationalPoint::cross(Self, Self) -> Self
+pub fn MathapproxrationalPoint::dist(Self, Self) -> Double
+pub fn MathapproxrationalPoint::dot(Self, Self) -> Double
+pub fn MathapproxrationalPoint::label(Self) -> Int32
+pub fn MathapproxrationalPoint::lerp(Self, Self, Double) -> Self
+pub fn MathapproxrationalPoint::mid(Self, Self) -> Self
+pub fn MathapproxrationalPoint::negate(Self) -> Self
+pub fn MathapproxrationalPoint::norm(Self) -> Double
+pub fn MathapproxrationalPoint::normalize(Self) -> Self
+pub fn MathapproxrationalPoint::scale(Self, Double) -> Self
+pub fn MathapproxrationalPoint::sub(Self, Self) -> Self
+pub fn MathapproxrationalPoint::to_string(Self) -> String
+pub fn MathapproxrationalPoint::x(Self) -> Double
+pub fn MathapproxrationalPoint::y(Self) -> Double
+pub fn MathapproxrationalPoint::z(Self) -> Double
+
+pub(all) struct MathapproxrationalRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxrationalRange::add(Self, Self) -> Self
+pub fn MathapproxrationalRange::copy(Self) -> Self
+pub fn MathapproxrationalRange::fill(Self, Double) -> Self
+pub fn MathapproxrationalRange::get(Self, Int32) -> Double
+pub fn MathapproxrationalRange::len(Self) -> Int32
+pub fn MathapproxrationalRange::max(Self) -> Double
+pub fn MathapproxrationalRange::mean(Self) -> Double
+pub fn MathapproxrationalRange::min(Self) -> Double
+pub fn MathapproxrationalRange::scale(Self, Double) -> Self
+pub fn MathapproxrationalRange::set(Self, Int32, Double) -> Self
+pub fn MathapproxrationalRange::sum(Self) -> Double
+pub fn MathapproxrationalRange::to_string(Self) -> String
+
+pub(all) struct MathapproxrationalSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathapproxrationalSeries::add(Self, Self) -> Self
+pub fn MathapproxrationalSeries::cumsum(Self) -> Self
+pub fn MathapproxrationalSeries::len(Self) -> Int32
+pub fn MathapproxrationalSeries::max(Self) -> Double
+pub fn MathapproxrationalSeries::mean(Self) -> Double
+pub fn MathapproxrationalSeries::median(Self) -> Double
+pub fn MathapproxrationalSeries::min(Self) -> Double
+pub fn MathapproxrationalSeries::normalize(Self) -> Self
+pub fn MathapproxrationalSeries::range(Self) -> Double
+pub fn MathapproxrationalSeries::scale(Self, Double) -> Self
+pub fn MathapproxrationalSeries::std(Self) -> Double
+pub fn MathapproxrationalSeries::sub(Self, Self) -> Self
+pub fn MathapproxrationalSeries::sum(Self) -> Double
+pub fn MathapproxrationalSeries::to_string(Self) -> String
+pub fn MathapproxrationalSeries::variance(Self) -> Double
+
+pub(all) struct MathapproxrationalSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxrationalSlice::add(Self, Self) -> Self
+pub fn MathapproxrationalSlice::copy(Self) -> Self
+pub fn MathapproxrationalSlice::fill(Self, Double) -> Self
+pub fn MathapproxrationalSlice::get(Self, Int32) -> Double
+pub fn MathapproxrationalSlice::len(Self) -> Int32
+pub fn MathapproxrationalSlice::max(Self) -> Double
+pub fn MathapproxrationalSlice::mean(Self) -> Double
+pub fn MathapproxrationalSlice::min(Self) -> Double
+pub fn MathapproxrationalSlice::scale(Self, Double) -> Self
+pub fn MathapproxrationalSlice::set(Self, Int32, Double) -> Self
+pub fn MathapproxrationalSlice::sum(Self) -> Double
+pub fn MathapproxrationalSlice::to_string(Self) -> String
+
+pub(all) struct MathapproxrationalTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxrationalTable::add(Self, Self) -> Self
+pub fn MathapproxrationalTable::copy(Self) -> Self
+pub fn MathapproxrationalTable::fill(Self, Double) -> Self
+pub fn MathapproxrationalTable::get(Self, Int32) -> Double
+pub fn MathapproxrationalTable::len(Self) -> Int32
+pub fn MathapproxrationalTable::max(Self) -> Double
+pub fn MathapproxrationalTable::mean(Self) -> Double
+pub fn MathapproxrationalTable::min(Self) -> Double
+pub fn MathapproxrationalTable::scale(Self, Double) -> Self
+pub fn MathapproxrationalTable::set(Self, Int32, Double) -> Self
+pub fn MathapproxrationalTable::sum(Self) -> Double
+pub fn MathapproxrationalTable::to_string(Self) -> String
+
+pub(all) struct MathapproxrationalVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathapproxrationalVector::add(Self, Self) -> Self
+pub fn MathapproxrationalVector::dist(Self, Self) -> Double
+pub fn MathapproxrationalVector::dot(Self, Self) -> Double
+pub fn MathapproxrationalVector::norm(Self) -> Double
+pub fn MathapproxrationalVector::normalize(Self) -> Self
+pub fn MathapproxrationalVector::scale(Self, Double) -> Self
+pub fn MathapproxrationalVector::sub(Self, Self) -> Self
+pub fn MathapproxrationalVector::to_string(Self) -> String
+
+pub(all) struct MathapproxrationalView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxrationalView::add(Self, Self) -> Self
+pub fn MathapproxrationalView::copy(Self) -> Self
+pub fn MathapproxrationalView::fill(Self, Double) -> Self
+pub fn MathapproxrationalView::get(Self, Int32) -> Double
+pub fn MathapproxrationalView::len(Self) -> Int32
+pub fn MathapproxrationalView::max(Self) -> Double
+pub fn MathapproxrationalView::mean(Self) -> Double
+pub fn MathapproxrationalView::min(Self) -> Double
+pub fn MathapproxrationalView::scale(Self, Double) -> Self
+pub fn MathapproxrationalView::set(Self, Int32, Double) -> Self
+pub fn MathapproxrationalView::sum(Self) -> Double
+pub fn MathapproxrationalView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

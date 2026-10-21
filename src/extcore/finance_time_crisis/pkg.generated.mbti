@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/finance_time_crisis"
+
+// Values
+pub fn finance_time_crisis_buffer_make(Int32) -> FinancetimecrisisBuffer
+
+pub fn finance_time_crisis_cluster_make(Int32) -> FinancetimecrisisCluster
+
+pub fn finance_time_crisis_cursor_make(Int32) -> FinancetimecrisisCursor
+
+pub fn finance_time_crisis_edge_make(Int32) -> FinancetimecrisisEdge
+
+pub fn finance_time_crisis_frame_make(Int32) -> FinancetimecrisisFrame
+
+pub fn finance_time_crisis_graphn_make(Int32) -> FinancetimecrisisGraphN
+
+pub fn finance_time_crisis_layer_make(Int32) -> FinancetimecrisisLayer
+
+pub fn finance_time_crisis_make_matrix(Int32, Int32, Double) -> FinancetimecrisisMatrix
+
+pub fn finance_time_crisis_make_point(Double, Double) -> FinancetimecrisisPoint
+
+pub fn finance_time_crisis_make_point3(Double, Double, Double) -> FinancetimecrisisPoint
+
+pub fn finance_time_crisis_make_series(Array[Double], String) -> FinancetimecrisisSeries
+
+pub fn finance_time_crisis_make_vector(Array[Double]) -> FinancetimecrisisVector
+
+pub fn finance_time_crisis_matrix_identity(Int32) -> FinancetimecrisisMatrix
+
+pub fn finance_time_crisis_model_make(Int32) -> FinancetimecrisisModel
+
+pub fn finance_time_crisis_node_make(Int32) -> FinancetimecrisisNode
+
+pub fn finance_time_crisis_path_make(Int32) -> FinancetimecrisisPath
+
+pub fn finance_time_crisis_range_make(Int32) -> FinancetimecrisisRange
+
+pub fn finance_time_crisis_slice_make(Int32) -> FinancetimecrisisSlice
+
+pub fn finance_time_crisis_table_make(Int32) -> FinancetimecrisisTable
+
+pub fn finance_time_crisis_vector_zero(Int32) -> FinancetimecrisisVector
+
+pub fn finance_time_crisis_view_make(Int32) -> FinancetimecrisisView
+
+// Errors
+
+// Types and methods
+pub(all) struct FinancetimecrisisBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimecrisisBuffer::add(Self, Self) -> Self
+pub fn FinancetimecrisisBuffer::copy(Self) -> Self
+pub fn FinancetimecrisisBuffer::fill(Self, Double) -> Self
+pub fn FinancetimecrisisBuffer::get(Self, Int32) -> Double
+pub fn FinancetimecrisisBuffer::len(Self) -> Int32
+pub fn FinancetimecrisisBuffer::max(Self) -> Double
+pub fn FinancetimecrisisBuffer::mean(Self) -> Double
+pub fn FinancetimecrisisBuffer::min(Self) -> Double
+pub fn FinancetimecrisisBuffer::scale(Self, Double) -> Self
+pub fn FinancetimecrisisBuffer::set(Self, Int32, Double) -> Self
+pub fn FinancetimecrisisBuffer::sum(Self) -> Double
+pub fn FinancetimecrisisBuffer::to_string(Self) -> String
+
+pub(all) struct FinancetimecrisisCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimecrisisCluster::add(Self, Self) -> Self
+pub fn FinancetimecrisisCluster::copy(Self) -> Self
+pub fn FinancetimecrisisCluster::fill(Self, Double) -> Self
+pub fn FinancetimecrisisCluster::get(Self, Int32) -> Double
+pub fn FinancetimecrisisCluster::len(Self) -> Int32
+pub fn FinancetimecrisisCluster::max(Self) -> Double
+pub fn FinancetimecrisisCluster::mean(Self) -> Double
+pub fn FinancetimecrisisCluster::min(Self) -> Double
+pub fn FinancetimecrisisCluster::scale(Self, Double) -> Self
+pub fn FinancetimecrisisCluster::set(Self, Int32, Double) -> Self
+pub fn FinancetimecrisisCluster::sum(Self) -> Double
+pub fn FinancetimecrisisCluster::to_string(Self) -> String
+
+pub(all) struct FinancetimecrisisCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimecrisisCursor::add(Self, Self) -> Self
+pub fn FinancetimecrisisCursor::copy(Self) -> Self
+pub fn FinancetimecrisisCursor::fill(Self, Double) -> Self
+pub fn FinancetimecrisisCursor::get(Self, Int32) -> Double
+pub fn FinancetimecrisisCursor::len(Self) -> Int32
+pub fn FinancetimecrisisCursor::max(Self) -> Double
+pub fn FinancetimecrisisCursor::mean(Self) -> Double
+pub fn FinancetimecrisisCursor::min(Self) -> Double
+pub fn FinancetimecrisisCursor::scale(Self, Double) -> Self
+pub fn FinancetimecrisisCursor::set(Self, Int32, Double) -> Self
+pub fn FinancetimecrisisCursor::sum(Self) -> Double
+pub fn FinancetimecrisisCursor::to_string(Self) -> String
+
+pub(all) struct FinancetimecrisisEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimecrisisEdge::add(Self, Self) -> Self
+pub fn FinancetimecrisisEdge::copy(Self) -> Self
+pub fn FinancetimecrisisEdge::fill(Self, Double) -> Self
+pub fn FinancetimecrisisEdge::get(Self, Int32) -> Double
+pub fn FinancetimecrisisEdge::len(Self) -> Int32
+pub fn FinancetimecrisisEdge::max(Self) -> Double
+pub fn FinancetimecrisisEdge::mean(Self) -> Double
+pub fn FinancetimecrisisEdge::min(Self) -> Double
+pub fn FinancetimecrisisEdge::scale(Self, Double) -> Self
+pub fn FinancetimecrisisEdge::set(Self, Int32, Double) -> Self
+pub fn FinancetimecrisisEdge::sum(Self) -> Double
+pub fn FinancetimecrisisEdge::to_string(Self) -> String
+
+pub(all) struct FinancetimecrisisFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimecrisisFrame::add(Self, Self) -> Self
+pub fn FinancetimecrisisFrame::copy(Self) -> Self
+pub fn FinancetimecrisisFrame::fill(Self, Double) -> Self
+pub fn FinancetimecrisisFrame::get(Self, Int32) -> Double
+pub fn FinancetimecrisisFrame::len(Self) -> Int32
+pub fn FinancetimecrisisFrame::max(Self) -> Double
+pub fn FinancetimecrisisFrame::mean(Self) -> Double
+pub fn FinancetimecrisisFrame::min(Self) -> Double
+pub fn FinancetimecrisisFrame::scale(Self, Double) -> Self
+pub fn FinancetimecrisisFrame::set(Self, Int32, Double) -> Self
+pub fn FinancetimecrisisFrame::sum(Self) -> Double
+pub fn FinancetimecrisisFrame::to_string(Self) -> String
+
+pub(all) struct FinancetimecrisisGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimecrisisGraphN::add(Self, Self) -> Self
+pub fn FinancetimecrisisGraphN::copy(Self) -> Self
+pub fn FinancetimecrisisGraphN::fill(Self, Double) -> Self
+pub fn FinancetimecrisisGraphN::get(Self, Int32) -> Double
+pub fn FinancetimecrisisGraphN::len(Self) -> Int32
+pub fn FinancetimecrisisGraphN::max(Self) -> Double
+pub fn FinancetimecrisisGraphN::mean(Self) -> Double
+pub fn FinancetimecrisisGraphN::min(Self) -> Double
+pub fn FinancetimecrisisGraphN::scale(Self, Double) -> Self
+pub fn FinancetimecrisisGraphN::set(Self, Int32, Double) -> Self
+pub fn FinancetimecrisisGraphN::sum(Self) -> Double
+pub fn FinancetimecrisisGraphN::to_string(Self) -> String
+
+pub(all) struct FinancetimecrisisLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimecrisisLayer::add(Self, Self) -> Self
+pub fn FinancetimecrisisLayer::copy(Self) -> Self
+pub fn FinancetimecrisisLayer::fill(Self, Double) -> Self
+pub fn FinancetimecrisisLayer::get(Self, Int32) -> Double
+pub fn FinancetimecrisisLayer::len(Self) -> Int32
+pub fn FinancetimecrisisLayer::max(Self) -> Double
+pub fn FinancetimecrisisLayer::mean(Self) -> Double
+pub fn FinancetimecrisisLayer::min(Self) -> Double
+pub fn FinancetimecrisisLayer::scale(Self, Double) -> Self
+pub fn FinancetimecrisisLayer::set(Self, Int32, Double) -> Self
+pub fn FinancetimecrisisLayer::sum(Self) -> Double
+pub fn FinancetimecrisisLayer::to_string(Self) -> String
+
+pub(all) struct FinancetimecrisisMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn FinancetimecrisisMatrix::add(Self, Self) -> Self
+pub fn FinancetimecrisisMatrix::det(Self) -> Double
+pub fn FinancetimecrisisMatrix::get(Self, Int32, Int32) -> Double
+pub fn FinancetimecrisisMatrix::multiply(Self, Self) -> Self
+pub fn FinancetimecrisisMatrix::norm(Self) -> Double
+pub fn FinancetimecrisisMatrix::scale(Self, Double) -> Self
+pub fn FinancetimecrisisMatrix::to_string(Self) -> String
+pub fn FinancetimecrisisMatrix::trace(Self) -> Double
+pub fn FinancetimecrisisMatrix::transpose(Self) -> Self
+
+pub(all) struct FinancetimecrisisModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimecrisisModel::add(Self, Self) -> Self
+pub fn FinancetimecrisisModel::copy(Self) -> Self
+pub fn FinancetimecrisisModel::fill(Self, Double) -> Self
+pub fn FinancetimecrisisModel::get(Self, Int32) -> Double
+pub fn FinancetimecrisisModel::len(Self) -> Int32
+pub fn FinancetimecrisisModel::max(Self) -> Double
+pub fn FinancetimecrisisModel::mean(Self) -> Double
+pub fn FinancetimecrisisModel::min(Self) -> Double
+pub fn FinancetimecrisisModel::scale(Self, Double) -> Self
+pub fn FinancetimecrisisModel::set(Self, Int32, Double) -> Self
+pub fn FinancetimecrisisModel::sum(Self) -> Double
+pub fn FinancetimecrisisModel::to_string(Self) -> String
+
+pub(all) struct FinancetimecrisisNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimecrisisNode::add(Self, Self) -> Self
+pub fn FinancetimecrisisNode::copy(Self) -> Self
+pub fn FinancetimecrisisNode::fill(Self, Double) -> Self
+pub fn FinancetimecrisisNode::get(Self, Int32) -> Double
+pub fn FinancetimecrisisNode::len(Self) -> Int32
+pub fn FinancetimecrisisNode::max(Self) -> Double
+pub fn FinancetimecrisisNode::mean(Self) -> Double
+pub fn FinancetimecrisisNode::min(Self) -> Double
+pub fn FinancetimecrisisNode::scale(Self, Double) -> Self
+pub fn FinancetimecrisisNode::set(Self, Int32, Double) -> Self
+pub fn FinancetimecrisisNode::sum(Self) -> Double
+pub fn FinancetimecrisisNode::to_string(Self) -> String
+
+pub(all) struct FinancetimecrisisPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimecrisisPath::add(Self, Self) -> Self
+pub fn FinancetimecrisisPath::copy(Self) -> Self
+pub fn FinancetimecrisisPath::fill(Self, Double) -> Self
+pub fn FinancetimecrisisPath::get(Self, Int32) -> Double
+pub fn FinancetimecrisisPath::len(Self) -> Int32
+pub fn FinancetimecrisisPath::max(Self) -> Double
+pub fn FinancetimecrisisPath::mean(Self) -> Double
+pub fn FinancetimecrisisPath::min(Self) -> Double
+pub fn FinancetimecrisisPath::scale(Self, Double) -> Self
+pub fn FinancetimecrisisPath::set(Self, Int32, Double) -> Self
+pub fn FinancetimecrisisPath::sum(Self) -> Double
+pub fn FinancetimecrisisPath::to_string(Self) -> String
+
+pub(all) struct FinancetimecrisisPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn FinancetimecrisisPoint::add(Self, Self) -> Self
+pub fn FinancetimecrisisPoint::cross(Self, Self) -> Self
+pub fn FinancetimecrisisPoint::dist(Self, Self) -> Double
+pub fn FinancetimecrisisPoint::dot(Self, Self) -> Double
+pub fn FinancetimecrisisPoint::label(Self) -> Int32
+pub fn FinancetimecrisisPoint::lerp(Self, Self, Double) -> Self
+pub fn FinancetimecrisisPoint::mid(Self, Self) -> Self
+pub fn FinancetimecrisisPoint::negate(Self) -> Self
+pub fn FinancetimecrisisPoint::norm(Self) -> Double
+pub fn FinancetimecrisisPoint::normalize(Self) -> Self
+pub fn FinancetimecrisisPoint::scale(Self, Double) -> Self
+pub fn FinancetimecrisisPoint::sub(Self, Self) -> Self
+pub fn FinancetimecrisisPoint::to_string(Self) -> String
+pub fn FinancetimecrisisPoint::x(Self) -> Double
+pub fn FinancetimecrisisPoint::y(Self) -> Double
+pub fn FinancetimecrisisPoint::z(Self) -> Double
+
+pub(all) struct FinancetimecrisisRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimecrisisRange::add(Self, Self) -> Self
+pub fn FinancetimecrisisRange::copy(Self) -> Self
+pub fn FinancetimecrisisRange::fill(Self, Double) -> Self
+pub fn FinancetimecrisisRange::get(Self, Int32) -> Double
+pub fn FinancetimecrisisRange::len(Self) -> Int32
+pub fn FinancetimecrisisRange::max(Self) -> Double
+pub fn FinancetimecrisisRange::mean(Self) -> Double
+pub fn FinancetimecrisisRange::min(Self) -> Double
+pub fn FinancetimecrisisRange::scale(Self, Double) -> Self
+pub fn FinancetimecrisisRange::set(Self, Int32, Double) -> Self
+pub fn FinancetimecrisisRange::sum(Self) -> Double
+pub fn FinancetimecrisisRange::to_string(Self) -> String
+
+pub(all) struct FinancetimecrisisSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn FinancetimecrisisSeries::add(Self, Self) -> Self
+pub fn FinancetimecrisisSeries::cumsum(Self) -> Self
+pub fn FinancetimecrisisSeries::len(Self) -> Int32
+pub fn FinancetimecrisisSeries::max(Self) -> Double
+pub fn FinancetimecrisisSeries::mean(Self) -> Double
+pub fn FinancetimecrisisSeries::median(Self) -> Double
+pub fn FinancetimecrisisSeries::min(Self) -> Double
+pub fn FinancetimecrisisSeries::normalize(Self) -> Self
+pub fn FinancetimecrisisSeries::range(Self) -> Double
+pub fn FinancetimecrisisSeries::scale(Self, Double) -> Self
+pub fn FinancetimecrisisSeries::std(Self) -> Double
+pub fn FinancetimecrisisSeries::sub(Self, Self) -> Self
+pub fn FinancetimecrisisSeries::sum(Self) -> Double
+pub fn FinancetimecrisisSeries::to_string(Self) -> String
+pub fn FinancetimecrisisSeries::variance(Self) -> Double
+
+pub(all) struct FinancetimecrisisSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimecrisisSlice::add(Self, Self) -> Self
+pub fn FinancetimecrisisSlice::copy(Self) -> Self
+pub fn FinancetimecrisisSlice::fill(Self, Double) -> Self
+pub fn FinancetimecrisisSlice::get(Self, Int32) -> Double
+pub fn FinancetimecrisisSlice::len(Self) -> Int32
+pub fn FinancetimecrisisSlice::max(Self) -> Double
+pub fn FinancetimecrisisSlice::mean(Self) -> Double
+pub fn FinancetimecrisisSlice::min(Self) -> Double
+pub fn FinancetimecrisisSlice::scale(Self, Double) -> Self
+pub fn FinancetimecrisisSlice::set(Self, Int32, Double) -> Self
+pub fn FinancetimecrisisSlice::sum(Self) -> Double
+pub fn FinancetimecrisisSlice::to_string(Self) -> String
+
+pub(all) struct FinancetimecrisisTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimecrisisTable::add(Self, Self) -> Self
+pub fn FinancetimecrisisTable::copy(Self) -> Self
+pub fn FinancetimecrisisTable::fill(Self, Double) -> Self
+pub fn FinancetimecrisisTable::get(Self, Int32) -> Double
+pub fn FinancetimecrisisTable::len(Self) -> Int32
+pub fn FinancetimecrisisTable::max(Self) -> Double
+pub fn FinancetimecrisisTable::mean(Self) -> Double
+pub fn FinancetimecrisisTable::min(Self) -> Double
+pub fn FinancetimecrisisTable::scale(Self, Double) -> Self
+pub fn FinancetimecrisisTable::set(Self, Int32, Double) -> Self
+pub fn FinancetimecrisisTable::sum(Self) -> Double
+pub fn FinancetimecrisisTable::to_string(Self) -> String
+
+pub(all) struct FinancetimecrisisVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn FinancetimecrisisVector::add(Self, Self) -> Self
+pub fn FinancetimecrisisVector::dist(Self, Self) -> Double
+pub fn FinancetimecrisisVector::dot(Self, Self) -> Double
+pub fn FinancetimecrisisVector::norm(Self) -> Double
+pub fn FinancetimecrisisVector::normalize(Self) -> Self
+pub fn FinancetimecrisisVector::scale(Self, Double) -> Self
+pub fn FinancetimecrisisVector::sub(Self, Self) -> Self
+pub fn FinancetimecrisisVector::to_string(Self) -> String
+
+pub(all) struct FinancetimecrisisView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimecrisisView::add(Self, Self) -> Self
+pub fn FinancetimecrisisView::copy(Self) -> Self
+pub fn FinancetimecrisisView::fill(Self, Double) -> Self
+pub fn FinancetimecrisisView::get(Self, Int32) -> Double
+pub fn FinancetimecrisisView::len(Self) -> Int32
+pub fn FinancetimecrisisView::max(Self) -> Double
+pub fn FinancetimecrisisView::mean(Self) -> Double
+pub fn FinancetimecrisisView::min(Self) -> Double
+pub fn FinancetimecrisisView::scale(Self, Double) -> Self
+pub fn FinancetimecrisisView::set(Self, Int32, Double) -> Self
+pub fn FinancetimecrisisView::sum(Self) -> Double
+pub fn FinancetimecrisisView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

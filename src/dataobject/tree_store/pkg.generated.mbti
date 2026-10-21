@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/tree_store"
+
+// Values
+pub fn tree_store_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn tree_store_corr(Array[Double], Array[Double]) -> Double
+
+pub fn tree_store_cov(Array[Double], Array[Double]) -> Double
+
+pub fn tree_store_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn tree_store_mae(Array[Double], Array[Double]) -> Double
+
+pub fn tree_store_make_labeled_point(Double, Double, Int32) -> Tree_storePoint
+
+pub fn tree_store_make_matrix(Int32, Int32, Double) -> Tree_storeMatrix
+
+pub fn tree_store_make_point(Double, Double) -> Tree_storePoint
+
+pub fn tree_store_make_series(Array[Double], String) -> Tree_storeSeries
+
+pub fn tree_store_make_vector(Array[Double]) -> Tree_storeVector
+
+pub fn tree_store_matrix_add(Tree_storeMatrix, Tree_storeMatrix) -> Tree_storeMatrix
+
+pub fn tree_store_matrix_get(Tree_storeMatrix, Int32, Int32) -> Double
+
+pub fn tree_store_matrix_identity(Int32) -> Tree_storeMatrix
+
+pub fn tree_store_matrix_multiply(Tree_storeMatrix, Tree_storeMatrix) -> Tree_storeMatrix
+
+pub fn tree_store_matrix_norm(Tree_storeMatrix) -> Double
+
+pub fn tree_store_matrix_scale(Tree_storeMatrix, Double) -> Tree_storeMatrix
+
+pub fn tree_store_matrix_to_string(Tree_storeMatrix) -> String
+
+pub fn tree_store_matrix_trace(Tree_storeMatrix) -> Double
+
+pub fn tree_store_matrix_transpose(Tree_storeMatrix) -> Tree_storeMatrix
+
+pub fn tree_store_mse(Array[Double], Array[Double]) -> Double
+
+pub fn tree_store_point_add(Tree_storePoint, Tree_storePoint) -> Tree_storePoint
+
+pub fn tree_store_point_dist(Tree_storePoint, Tree_storePoint) -> Double
+
+pub fn tree_store_point_dot(Tree_storePoint, Tree_storePoint) -> Double
+
+pub fn tree_store_point_label(Tree_storePoint) -> Int32
+
+pub fn tree_store_point_norm(Tree_storePoint) -> Double
+
+pub fn tree_store_point_scale(Tree_storePoint, Double) -> Tree_storePoint
+
+pub fn tree_store_point_sub(Tree_storePoint, Tree_storePoint) -> Tree_storePoint
+
+pub fn tree_store_point_to_string(Tree_storePoint) -> String
+
+pub fn tree_store_point_x(Tree_storePoint) -> Double
+
+pub fn tree_store_point_y(Tree_storePoint) -> Double
+
+pub fn tree_store_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn tree_store_r2(Array[Double], Array[Double]) -> Double
+
+pub fn tree_store_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn tree_store_series_add(Tree_storeSeries, Tree_storeSeries) -> Tree_storeSeries
+
+pub fn tree_store_series_len(Tree_storeSeries) -> Int32
+
+pub fn tree_store_series_max(Tree_storeSeries) -> Double
+
+pub fn tree_store_series_mean(Tree_storeSeries) -> Double
+
+pub fn tree_store_series_min(Tree_storeSeries) -> Double
+
+pub fn tree_store_series_scale(Tree_storeSeries, Double) -> Tree_storeSeries
+
+pub fn tree_store_series_std(Tree_storeSeries) -> Double
+
+pub fn tree_store_series_sum(Tree_storeSeries) -> Double
+
+pub fn tree_store_series_to_string(Tree_storeSeries) -> String
+
+pub fn tree_store_series_var(Tree_storeSeries) -> Double
+
+pub fn tree_store_std(Array[Double]) -> Double
+
+pub fn tree_store_var(Array[Double]) -> Double
+
+pub fn tree_store_vector_add(Tree_storeVector, Tree_storeVector) -> Tree_storeVector
+
+pub fn tree_store_vector_dist(Tree_storeVector, Tree_storeVector) -> Double
+
+pub fn tree_store_vector_dot(Tree_storeVector, Tree_storeVector) -> Double
+
+pub fn tree_store_vector_norm(Tree_storeVector) -> Double
+
+pub fn tree_store_vector_normalize(Tree_storeVector) -> Tree_storeVector
+
+pub fn tree_store_vector_scale(Tree_storeVector, Double) -> Tree_storeVector
+
+pub fn tree_store_vector_sub(Tree_storeVector, Tree_storeVector) -> Tree_storeVector
+
+pub fn tree_store_vector_to_string(Tree_storeVector) -> String
+
+pub fn tree_store_vector_zero(Int32) -> Tree_storeVector
+
+// Errors
+
+// Types and methods
+pub struct Tree_storeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Tree_storePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Tree_storeSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Tree_storeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

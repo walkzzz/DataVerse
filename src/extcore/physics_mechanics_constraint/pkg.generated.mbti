@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_mechanics_constraint"
+
+// Values
+pub fn physics_mechanics_constraint_buffer_make(Int32) -> PhysicsmechanicsconstraintBuffer
+
+pub fn physics_mechanics_constraint_cluster_make(Int32) -> PhysicsmechanicsconstraintCluster
+
+pub fn physics_mechanics_constraint_cursor_make(Int32) -> PhysicsmechanicsconstraintCursor
+
+pub fn physics_mechanics_constraint_edge_make(Int32) -> PhysicsmechanicsconstraintEdge
+
+pub fn physics_mechanics_constraint_frame_make(Int32) -> PhysicsmechanicsconstraintFrame
+
+pub fn physics_mechanics_constraint_graphn_make(Int32) -> PhysicsmechanicsconstraintGraphN
+
+pub fn physics_mechanics_constraint_layer_make(Int32) -> PhysicsmechanicsconstraintLayer
+
+pub fn physics_mechanics_constraint_make_matrix(Int32, Int32, Double) -> PhysicsmechanicsconstraintMatrix
+
+pub fn physics_mechanics_constraint_make_point(Double, Double) -> PhysicsmechanicsconstraintPoint
+
+pub fn physics_mechanics_constraint_make_point3(Double, Double, Double) -> PhysicsmechanicsconstraintPoint
+
+pub fn physics_mechanics_constraint_make_series(Array[Double], String) -> PhysicsmechanicsconstraintSeries
+
+pub fn physics_mechanics_constraint_make_vector(Array[Double]) -> PhysicsmechanicsconstraintVector
+
+pub fn physics_mechanics_constraint_matrix_identity(Int32) -> PhysicsmechanicsconstraintMatrix
+
+pub fn physics_mechanics_constraint_model_make(Int32) -> PhysicsmechanicsconstraintModel
+
+pub fn physics_mechanics_constraint_node_make(Int32) -> PhysicsmechanicsconstraintNode
+
+pub fn physics_mechanics_constraint_path_make(Int32) -> PhysicsmechanicsconstraintPath
+
+pub fn physics_mechanics_constraint_range_make(Int32) -> PhysicsmechanicsconstraintRange
+
+pub fn physics_mechanics_constraint_slice_make(Int32) -> PhysicsmechanicsconstraintSlice
+
+pub fn physics_mechanics_constraint_table_make(Int32) -> PhysicsmechanicsconstraintTable
+
+pub fn physics_mechanics_constraint_vector_zero(Int32) -> PhysicsmechanicsconstraintVector
+
+pub fn physics_mechanics_constraint_view_make(Int32) -> PhysicsmechanicsconstraintView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsmechanicsconstraintBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsconstraintBuffer::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintBuffer::copy(Self) -> Self
+pub fn PhysicsmechanicsconstraintBuffer::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintBuffer::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsconstraintBuffer::len(Self) -> Int32
+pub fn PhysicsmechanicsconstraintBuffer::max(Self) -> Double
+pub fn PhysicsmechanicsconstraintBuffer::mean(Self) -> Double
+pub fn PhysicsmechanicsconstraintBuffer::min(Self) -> Double
+pub fn PhysicsmechanicsconstraintBuffer::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsconstraintBuffer::sum(Self) -> Double
+pub fn PhysicsmechanicsconstraintBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsconstraintCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsconstraintCluster::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintCluster::copy(Self) -> Self
+pub fn PhysicsmechanicsconstraintCluster::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintCluster::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsconstraintCluster::len(Self) -> Int32
+pub fn PhysicsmechanicsconstraintCluster::max(Self) -> Double
+pub fn PhysicsmechanicsconstraintCluster::mean(Self) -> Double
+pub fn PhysicsmechanicsconstraintCluster::min(Self) -> Double
+pub fn PhysicsmechanicsconstraintCluster::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsconstraintCluster::sum(Self) -> Double
+pub fn PhysicsmechanicsconstraintCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsconstraintCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsconstraintCursor::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintCursor::copy(Self) -> Self
+pub fn PhysicsmechanicsconstraintCursor::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintCursor::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsconstraintCursor::len(Self) -> Int32
+pub fn PhysicsmechanicsconstraintCursor::max(Self) -> Double
+pub fn PhysicsmechanicsconstraintCursor::mean(Self) -> Double
+pub fn PhysicsmechanicsconstraintCursor::min(Self) -> Double
+pub fn PhysicsmechanicsconstraintCursor::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsconstraintCursor::sum(Self) -> Double
+pub fn PhysicsmechanicsconstraintCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsconstraintEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsconstraintEdge::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintEdge::copy(Self) -> Self
+pub fn PhysicsmechanicsconstraintEdge::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintEdge::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsconstraintEdge::len(Self) -> Int32
+pub fn PhysicsmechanicsconstraintEdge::max(Self) -> Double
+pub fn PhysicsmechanicsconstraintEdge::mean(Self) -> Double
+pub fn PhysicsmechanicsconstraintEdge::min(Self) -> Double
+pub fn PhysicsmechanicsconstraintEdge::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsconstraintEdge::sum(Self) -> Double
+pub fn PhysicsmechanicsconstraintEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsconstraintFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsconstraintFrame::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintFrame::copy(Self) -> Self
+pub fn PhysicsmechanicsconstraintFrame::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintFrame::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsconstraintFrame::len(Self) -> Int32
+pub fn PhysicsmechanicsconstraintFrame::max(Self) -> Double
+pub fn PhysicsmechanicsconstraintFrame::mean(Self) -> Double
+pub fn PhysicsmechanicsconstraintFrame::min(Self) -> Double
+pub fn PhysicsmechanicsconstraintFrame::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsconstraintFrame::sum(Self) -> Double
+pub fn PhysicsmechanicsconstraintFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsconstraintGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsconstraintGraphN::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintGraphN::copy(Self) -> Self
+pub fn PhysicsmechanicsconstraintGraphN::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintGraphN::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsconstraintGraphN::len(Self) -> Int32
+pub fn PhysicsmechanicsconstraintGraphN::max(Self) -> Double
+pub fn PhysicsmechanicsconstraintGraphN::mean(Self) -> Double
+pub fn PhysicsmechanicsconstraintGraphN::min(Self) -> Double
+pub fn PhysicsmechanicsconstraintGraphN::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsconstraintGraphN::sum(Self) -> Double
+pub fn PhysicsmechanicsconstraintGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsconstraintLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsconstraintLayer::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintLayer::copy(Self) -> Self
+pub fn PhysicsmechanicsconstraintLayer::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintLayer::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsconstraintLayer::len(Self) -> Int32
+pub fn PhysicsmechanicsconstraintLayer::max(Self) -> Double
+pub fn PhysicsmechanicsconstraintLayer::mean(Self) -> Double
+pub fn PhysicsmechanicsconstraintLayer::min(Self) -> Double
+pub fn PhysicsmechanicsconstraintLayer::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsconstraintLayer::sum(Self) -> Double
+pub fn PhysicsmechanicsconstraintLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsconstraintMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsmechanicsconstraintMatrix::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintMatrix::det(Self) -> Double
+pub fn PhysicsmechanicsconstraintMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsmechanicsconstraintMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintMatrix::norm(Self) -> Double
+pub fn PhysicsmechanicsconstraintMatrix::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintMatrix::to_string(Self) -> String
+pub fn PhysicsmechanicsconstraintMatrix::trace(Self) -> Double
+pub fn PhysicsmechanicsconstraintMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsmechanicsconstraintModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsconstraintModel::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintModel::copy(Self) -> Self
+pub fn PhysicsmechanicsconstraintModel::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintModel::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsconstraintModel::len(Self) -> Int32
+pub fn PhysicsmechanicsconstraintModel::max(Self) -> Double
+pub fn PhysicsmechanicsconstraintModel::mean(Self) -> Double
+pub fn PhysicsmechanicsconstraintModel::min(Self) -> Double
+pub fn PhysicsmechanicsconstraintModel::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsconstraintModel::sum(Self) -> Double
+pub fn PhysicsmechanicsconstraintModel::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsconstraintNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsconstraintNode::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintNode::copy(Self) -> Self
+pub fn PhysicsmechanicsconstraintNode::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintNode::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsconstraintNode::len(Self) -> Int32
+pub fn PhysicsmechanicsconstraintNode::max(Self) -> Double
+pub fn PhysicsmechanicsconstraintNode::mean(Self) -> Double
+pub fn PhysicsmechanicsconstraintNode::min(Self) -> Double
+pub fn PhysicsmechanicsconstraintNode::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsconstraintNode::sum(Self) -> Double
+pub fn PhysicsmechanicsconstraintNode::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsconstraintPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsconstraintPath::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintPath::copy(Self) -> Self
+pub fn PhysicsmechanicsconstraintPath::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintPath::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsconstraintPath::len(Self) -> Int32
+pub fn PhysicsmechanicsconstraintPath::max(Self) -> Double
+pub fn PhysicsmechanicsconstraintPath::mean(Self) -> Double
+pub fn PhysicsmechanicsconstraintPath::min(Self) -> Double
+pub fn PhysicsmechanicsconstraintPath::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsconstraintPath::sum(Self) -> Double
+pub fn PhysicsmechanicsconstraintPath::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsconstraintPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsmechanicsconstraintPoint::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintPoint::cross(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintPoint::dist(Self, Self) -> Double
+pub fn PhysicsmechanicsconstraintPoint::dot(Self, Self) -> Double
+pub fn PhysicsmechanicsconstraintPoint::label(Self) -> Int32
+pub fn PhysicsmechanicsconstraintPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintPoint::mid(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintPoint::negate(Self) -> Self
+pub fn PhysicsmechanicsconstraintPoint::norm(Self) -> Double
+pub fn PhysicsmechanicsconstraintPoint::normalize(Self) -> Self
+pub fn PhysicsmechanicsconstraintPoint::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintPoint::sub(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintPoint::to_string(Self) -> String
+pub fn PhysicsmechanicsconstraintPoint::x(Self) -> Double
+pub fn PhysicsmechanicsconstraintPoint::y(Self) -> Double
+pub fn PhysicsmechanicsconstraintPoint::z(Self) -> Double
+
+pub(all) struct PhysicsmechanicsconstraintRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsconstraintRange::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintRange::copy(Self) -> Self
+pub fn PhysicsmechanicsconstraintRange::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintRange::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsconstraintRange::len(Self) -> Int32
+pub fn PhysicsmechanicsconstraintRange::max(Self) -> Double
+pub fn PhysicsmechanicsconstraintRange::mean(Self) -> Double
+pub fn PhysicsmechanicsconstraintRange::min(Self) -> Double
+pub fn PhysicsmechanicsconstraintRange::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsconstraintRange::sum(Self) -> Double
+pub fn PhysicsmechanicsconstraintRange::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsconstraintSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsmechanicsconstraintSeries::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintSeries::cumsum(Self) -> Self
+pub fn PhysicsmechanicsconstraintSeries::len(Self) -> Int32
+pub fn PhysicsmechanicsconstraintSeries::max(Self) -> Double
+pub fn PhysicsmechanicsconstraintSeries::mean(Self) -> Double
+pub fn PhysicsmechanicsconstraintSeries::median(Self) -> Double
+pub fn PhysicsmechanicsconstraintSeries::min(Self) -> Double
+pub fn PhysicsmechanicsconstraintSeries::normalize(Self) -> Self
+pub fn PhysicsmechanicsconstraintSeries::range(Self) -> Double
+pub fn PhysicsmechanicsconstraintSeries::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintSeries::std(Self) -> Double
+pub fn PhysicsmechanicsconstraintSeries::sub(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintSeries::sum(Self) -> Double
+pub fn PhysicsmechanicsconstraintSeries::to_string(Self) -> String
+pub fn PhysicsmechanicsconstraintSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsmechanicsconstraintSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsconstraintSlice::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintSlice::copy(Self) -> Self
+pub fn PhysicsmechanicsconstraintSlice::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintSlice::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsconstraintSlice::len(Self) -> Int32
+pub fn PhysicsmechanicsconstraintSlice::max(Self) -> Double
+pub fn PhysicsmechanicsconstraintSlice::mean(Self) -> Double
+pub fn PhysicsmechanicsconstraintSlice::min(Self) -> Double
+pub fn PhysicsmechanicsconstraintSlice::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsconstraintSlice::sum(Self) -> Double
+pub fn PhysicsmechanicsconstraintSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsconstraintTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsconstraintTable::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintTable::copy(Self) -> Self
+pub fn PhysicsmechanicsconstraintTable::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintTable::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsconstraintTable::len(Self) -> Int32
+pub fn PhysicsmechanicsconstraintTable::max(Self) -> Double
+pub fn PhysicsmechanicsconstraintTable::mean(Self) -> Double
+pub fn PhysicsmechanicsconstraintTable::min(Self) -> Double
+pub fn PhysicsmechanicsconstraintTable::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsconstraintTable::sum(Self) -> Double
+pub fn PhysicsmechanicsconstraintTable::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsconstraintVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsmechanicsconstraintVector::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintVector::dist(Self, Self) -> Double
+pub fn PhysicsmechanicsconstraintVector::dot(Self, Self) -> Double
+pub fn PhysicsmechanicsconstraintVector::norm(Self) -> Double
+pub fn PhysicsmechanicsconstraintVector::normalize(Self) -> Self
+pub fn PhysicsmechanicsconstraintVector::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintVector::sub(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintVector::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsconstraintView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsconstraintView::add(Self, Self) -> Self
+pub fn PhysicsmechanicsconstraintView::copy(Self) -> Self
+pub fn PhysicsmechanicsconstraintView::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintView::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsconstraintView::len(Self) -> Int32
+pub fn PhysicsmechanicsconstraintView::max(Self) -> Double
+pub fn PhysicsmechanicsconstraintView::mean(Self) -> Double
+pub fn PhysicsmechanicsconstraintView::min(Self) -> Double
+pub fn PhysicsmechanicsconstraintView::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsconstraintView::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsconstraintView::sum(Self) -> Double
+pub fn PhysicsmechanicsconstraintView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

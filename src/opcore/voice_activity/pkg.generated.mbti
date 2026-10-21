@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/voice_activity"
+
+// Values
+pub fn voice_activity_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn voice_activity_corr(Array[Double], Array[Double]) -> Double
+
+pub fn voice_activity_cov(Array[Double], Array[Double]) -> Double
+
+pub fn voice_activity_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn voice_activity_mae(Array[Double], Array[Double]) -> Double
+
+pub fn voice_activity_make_labeled_point(Double, Double, Int32) -> Voice_activityPoint
+
+pub fn voice_activity_make_matrix(Int32, Int32, Double) -> Voice_activityMatrix
+
+pub fn voice_activity_make_point(Double, Double) -> Voice_activityPoint
+
+pub fn voice_activity_make_series(Array[Double], String) -> Voice_activitySeries
+
+pub fn voice_activity_make_vector(Array[Double]) -> Voice_activityVector
+
+pub fn voice_activity_matrix_add(Voice_activityMatrix, Voice_activityMatrix) -> Voice_activityMatrix
+
+pub fn voice_activity_matrix_get(Voice_activityMatrix, Int32, Int32) -> Double
+
+pub fn voice_activity_matrix_identity(Int32) -> Voice_activityMatrix
+
+pub fn voice_activity_matrix_multiply(Voice_activityMatrix, Voice_activityMatrix) -> Voice_activityMatrix
+
+pub fn voice_activity_matrix_norm(Voice_activityMatrix) -> Double
+
+pub fn voice_activity_matrix_scale(Voice_activityMatrix, Double) -> Voice_activityMatrix
+
+pub fn voice_activity_matrix_to_string(Voice_activityMatrix) -> String
+
+pub fn voice_activity_matrix_trace(Voice_activityMatrix) -> Double
+
+pub fn voice_activity_matrix_transpose(Voice_activityMatrix) -> Voice_activityMatrix
+
+pub fn voice_activity_mse(Array[Double], Array[Double]) -> Double
+
+pub fn voice_activity_point_add(Voice_activityPoint, Voice_activityPoint) -> Voice_activityPoint
+
+pub fn voice_activity_point_dist(Voice_activityPoint, Voice_activityPoint) -> Double
+
+pub fn voice_activity_point_dot(Voice_activityPoint, Voice_activityPoint) -> Double
+
+pub fn voice_activity_point_label(Voice_activityPoint) -> Int32
+
+pub fn voice_activity_point_norm(Voice_activityPoint) -> Double
+
+pub fn voice_activity_point_scale(Voice_activityPoint, Double) -> Voice_activityPoint
+
+pub fn voice_activity_point_sub(Voice_activityPoint, Voice_activityPoint) -> Voice_activityPoint
+
+pub fn voice_activity_point_to_string(Voice_activityPoint) -> String
+
+pub fn voice_activity_point_x(Voice_activityPoint) -> Double
+
+pub fn voice_activity_point_y(Voice_activityPoint) -> Double
+
+pub fn voice_activity_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn voice_activity_r2(Array[Double], Array[Double]) -> Double
+
+pub fn voice_activity_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn voice_activity_series_add(Voice_activitySeries, Voice_activitySeries) -> Voice_activitySeries
+
+pub fn voice_activity_series_len(Voice_activitySeries) -> Int32
+
+pub fn voice_activity_series_max(Voice_activitySeries) -> Double
+
+pub fn voice_activity_series_mean(Voice_activitySeries) -> Double
+
+pub fn voice_activity_series_min(Voice_activitySeries) -> Double
+
+pub fn voice_activity_series_scale(Voice_activitySeries, Double) -> Voice_activitySeries
+
+pub fn voice_activity_series_std(Voice_activitySeries) -> Double
+
+pub fn voice_activity_series_sum(Voice_activitySeries) -> Double
+
+pub fn voice_activity_series_to_string(Voice_activitySeries) -> String
+
+pub fn voice_activity_series_var(Voice_activitySeries) -> Double
+
+pub fn voice_activity_std(Array[Double]) -> Double
+
+pub fn voice_activity_var(Array[Double]) -> Double
+
+pub fn voice_activity_vector_add(Voice_activityVector, Voice_activityVector) -> Voice_activityVector
+
+pub fn voice_activity_vector_dist(Voice_activityVector, Voice_activityVector) -> Double
+
+pub fn voice_activity_vector_dot(Voice_activityVector, Voice_activityVector) -> Double
+
+pub fn voice_activity_vector_norm(Voice_activityVector) -> Double
+
+pub fn voice_activity_vector_normalize(Voice_activityVector) -> Voice_activityVector
+
+pub fn voice_activity_vector_scale(Voice_activityVector, Double) -> Voice_activityVector
+
+pub fn voice_activity_vector_sub(Voice_activityVector, Voice_activityVector) -> Voice_activityVector
+
+pub fn voice_activity_vector_to_string(Voice_activityVector) -> String
+
+pub fn voice_activity_vector_zero(Int32) -> Voice_activityVector
+
+// Errors
+
+// Types and methods
+pub struct Voice_activityMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Voice_activityPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Voice_activitySeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Voice_activityVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

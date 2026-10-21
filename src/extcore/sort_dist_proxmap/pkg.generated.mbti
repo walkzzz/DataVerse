@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_dist_proxmap"
+
+// Values
+pub fn sort_dist_proxmap_buffer_make(Int32) -> SortdistproxmapBuffer
+
+pub fn sort_dist_proxmap_cluster_make(Int32) -> SortdistproxmapCluster
+
+pub fn sort_dist_proxmap_cursor_make(Int32) -> SortdistproxmapCursor
+
+pub fn sort_dist_proxmap_edge_make(Int32) -> SortdistproxmapEdge
+
+pub fn sort_dist_proxmap_frame_make(Int32) -> SortdistproxmapFrame
+
+pub fn sort_dist_proxmap_graphn_make(Int32) -> SortdistproxmapGraphN
+
+pub fn sort_dist_proxmap_layer_make(Int32) -> SortdistproxmapLayer
+
+pub fn sort_dist_proxmap_make_matrix(Int32, Int32, Double) -> SortdistproxmapMatrix
+
+pub fn sort_dist_proxmap_make_point(Double, Double) -> SortdistproxmapPoint
+
+pub fn sort_dist_proxmap_make_point3(Double, Double, Double) -> SortdistproxmapPoint
+
+pub fn sort_dist_proxmap_make_series(Array[Double], String) -> SortdistproxmapSeries
+
+pub fn sort_dist_proxmap_make_vector(Array[Double]) -> SortdistproxmapVector
+
+pub fn sort_dist_proxmap_matrix_identity(Int32) -> SortdistproxmapMatrix
+
+pub fn sort_dist_proxmap_model_make(Int32) -> SortdistproxmapModel
+
+pub fn sort_dist_proxmap_node_make(Int32) -> SortdistproxmapNode
+
+pub fn sort_dist_proxmap_path_make(Int32) -> SortdistproxmapPath
+
+pub fn sort_dist_proxmap_range_make(Int32) -> SortdistproxmapRange
+
+pub fn sort_dist_proxmap_slice_make(Int32) -> SortdistproxmapSlice
+
+pub fn sort_dist_proxmap_table_make(Int32) -> SortdistproxmapTable
+
+pub fn sort_dist_proxmap_vector_zero(Int32) -> SortdistproxmapVector
+
+pub fn sort_dist_proxmap_view_make(Int32) -> SortdistproxmapView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortdistproxmapBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistproxmapBuffer::add(Self, Self) -> Self
+pub fn SortdistproxmapBuffer::copy(Self) -> Self
+pub fn SortdistproxmapBuffer::fill(Self, Double) -> Self
+pub fn SortdistproxmapBuffer::get(Self, Int32) -> Double
+pub fn SortdistproxmapBuffer::len(Self) -> Int32
+pub fn SortdistproxmapBuffer::max(Self) -> Double
+pub fn SortdistproxmapBuffer::mean(Self) -> Double
+pub fn SortdistproxmapBuffer::min(Self) -> Double
+pub fn SortdistproxmapBuffer::scale(Self, Double) -> Self
+pub fn SortdistproxmapBuffer::set(Self, Int32, Double) -> Self
+pub fn SortdistproxmapBuffer::sum(Self) -> Double
+pub fn SortdistproxmapBuffer::to_string(Self) -> String
+
+pub(all) struct SortdistproxmapCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistproxmapCluster::add(Self, Self) -> Self
+pub fn SortdistproxmapCluster::copy(Self) -> Self
+pub fn SortdistproxmapCluster::fill(Self, Double) -> Self
+pub fn SortdistproxmapCluster::get(Self, Int32) -> Double
+pub fn SortdistproxmapCluster::len(Self) -> Int32
+pub fn SortdistproxmapCluster::max(Self) -> Double
+pub fn SortdistproxmapCluster::mean(Self) -> Double
+pub fn SortdistproxmapCluster::min(Self) -> Double
+pub fn SortdistproxmapCluster::scale(Self, Double) -> Self
+pub fn SortdistproxmapCluster::set(Self, Int32, Double) -> Self
+pub fn SortdistproxmapCluster::sum(Self) -> Double
+pub fn SortdistproxmapCluster::to_string(Self) -> String
+
+pub(all) struct SortdistproxmapCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistproxmapCursor::add(Self, Self) -> Self
+pub fn SortdistproxmapCursor::copy(Self) -> Self
+pub fn SortdistproxmapCursor::fill(Self, Double) -> Self
+pub fn SortdistproxmapCursor::get(Self, Int32) -> Double
+pub fn SortdistproxmapCursor::len(Self) -> Int32
+pub fn SortdistproxmapCursor::max(Self) -> Double
+pub fn SortdistproxmapCursor::mean(Self) -> Double
+pub fn SortdistproxmapCursor::min(Self) -> Double
+pub fn SortdistproxmapCursor::scale(Self, Double) -> Self
+pub fn SortdistproxmapCursor::set(Self, Int32, Double) -> Self
+pub fn SortdistproxmapCursor::sum(Self) -> Double
+pub fn SortdistproxmapCursor::to_string(Self) -> String
+
+pub(all) struct SortdistproxmapEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistproxmapEdge::add(Self, Self) -> Self
+pub fn SortdistproxmapEdge::copy(Self) -> Self
+pub fn SortdistproxmapEdge::fill(Self, Double) -> Self
+pub fn SortdistproxmapEdge::get(Self, Int32) -> Double
+pub fn SortdistproxmapEdge::len(Self) -> Int32
+pub fn SortdistproxmapEdge::max(Self) -> Double
+pub fn SortdistproxmapEdge::mean(Self) -> Double
+pub fn SortdistproxmapEdge::min(Self) -> Double
+pub fn SortdistproxmapEdge::scale(Self, Double) -> Self
+pub fn SortdistproxmapEdge::set(Self, Int32, Double) -> Self
+pub fn SortdistproxmapEdge::sum(Self) -> Double
+pub fn SortdistproxmapEdge::to_string(Self) -> String
+
+pub(all) struct SortdistproxmapFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistproxmapFrame::add(Self, Self) -> Self
+pub fn SortdistproxmapFrame::copy(Self) -> Self
+pub fn SortdistproxmapFrame::fill(Self, Double) -> Self
+pub fn SortdistproxmapFrame::get(Self, Int32) -> Double
+pub fn SortdistproxmapFrame::len(Self) -> Int32
+pub fn SortdistproxmapFrame::max(Self) -> Double
+pub fn SortdistproxmapFrame::mean(Self) -> Double
+pub fn SortdistproxmapFrame::min(Self) -> Double
+pub fn SortdistproxmapFrame::scale(Self, Double) -> Self
+pub fn SortdistproxmapFrame::set(Self, Int32, Double) -> Self
+pub fn SortdistproxmapFrame::sum(Self) -> Double
+pub fn SortdistproxmapFrame::to_string(Self) -> String
+
+pub(all) struct SortdistproxmapGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistproxmapGraphN::add(Self, Self) -> Self
+pub fn SortdistproxmapGraphN::copy(Self) -> Self
+pub fn SortdistproxmapGraphN::fill(Self, Double) -> Self
+pub fn SortdistproxmapGraphN::get(Self, Int32) -> Double
+pub fn SortdistproxmapGraphN::len(Self) -> Int32
+pub fn SortdistproxmapGraphN::max(Self) -> Double
+pub fn SortdistproxmapGraphN::mean(Self) -> Double
+pub fn SortdistproxmapGraphN::min(Self) -> Double
+pub fn SortdistproxmapGraphN::scale(Self, Double) -> Self
+pub fn SortdistproxmapGraphN::set(Self, Int32, Double) -> Self
+pub fn SortdistproxmapGraphN::sum(Self) -> Double
+pub fn SortdistproxmapGraphN::to_string(Self) -> String
+
+pub(all) struct SortdistproxmapLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistproxmapLayer::add(Self, Self) -> Self
+pub fn SortdistproxmapLayer::copy(Self) -> Self
+pub fn SortdistproxmapLayer::fill(Self, Double) -> Self
+pub fn SortdistproxmapLayer::get(Self, Int32) -> Double
+pub fn SortdistproxmapLayer::len(Self) -> Int32
+pub fn SortdistproxmapLayer::max(Self) -> Double
+pub fn SortdistproxmapLayer::mean(Self) -> Double
+pub fn SortdistproxmapLayer::min(Self) -> Double
+pub fn SortdistproxmapLayer::scale(Self, Double) -> Self
+pub fn SortdistproxmapLayer::set(Self, Int32, Double) -> Self
+pub fn SortdistproxmapLayer::sum(Self) -> Double
+pub fn SortdistproxmapLayer::to_string(Self) -> String
+
+pub(all) struct SortdistproxmapMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortdistproxmapMatrix::add(Self, Self) -> Self
+pub fn SortdistproxmapMatrix::det(Self) -> Double
+pub fn SortdistproxmapMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortdistproxmapMatrix::multiply(Self, Self) -> Self
+pub fn SortdistproxmapMatrix::norm(Self) -> Double
+pub fn SortdistproxmapMatrix::scale(Self, Double) -> Self
+pub fn SortdistproxmapMatrix::to_string(Self) -> String
+pub fn SortdistproxmapMatrix::trace(Self) -> Double
+pub fn SortdistproxmapMatrix::transpose(Self) -> Self
+
+pub(all) struct SortdistproxmapModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistproxmapModel::add(Self, Self) -> Self
+pub fn SortdistproxmapModel::copy(Self) -> Self
+pub fn SortdistproxmapModel::fill(Self, Double) -> Self
+pub fn SortdistproxmapModel::get(Self, Int32) -> Double
+pub fn SortdistproxmapModel::len(Self) -> Int32
+pub fn SortdistproxmapModel::max(Self) -> Double
+pub fn SortdistproxmapModel::mean(Self) -> Double
+pub fn SortdistproxmapModel::min(Self) -> Double
+pub fn SortdistproxmapModel::scale(Self, Double) -> Self
+pub fn SortdistproxmapModel::set(Self, Int32, Double) -> Self
+pub fn SortdistproxmapModel::sum(Self) -> Double
+pub fn SortdistproxmapModel::to_string(Self) -> String
+
+pub(all) struct SortdistproxmapNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistproxmapNode::add(Self, Self) -> Self
+pub fn SortdistproxmapNode::copy(Self) -> Self
+pub fn SortdistproxmapNode::fill(Self, Double) -> Self
+pub fn SortdistproxmapNode::get(Self, Int32) -> Double
+pub fn SortdistproxmapNode::len(Self) -> Int32
+pub fn SortdistproxmapNode::max(Self) -> Double
+pub fn SortdistproxmapNode::mean(Self) -> Double
+pub fn SortdistproxmapNode::min(Self) -> Double
+pub fn SortdistproxmapNode::scale(Self, Double) -> Self
+pub fn SortdistproxmapNode::set(Self, Int32, Double) -> Self
+pub fn SortdistproxmapNode::sum(Self) -> Double
+pub fn SortdistproxmapNode::to_string(Self) -> String
+
+pub(all) struct SortdistproxmapPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistproxmapPath::add(Self, Self) -> Self
+pub fn SortdistproxmapPath::copy(Self) -> Self
+pub fn SortdistproxmapPath::fill(Self, Double) -> Self
+pub fn SortdistproxmapPath::get(Self, Int32) -> Double
+pub fn SortdistproxmapPath::len(Self) -> Int32
+pub fn SortdistproxmapPath::max(Self) -> Double
+pub fn SortdistproxmapPath::mean(Self) -> Double
+pub fn SortdistproxmapPath::min(Self) -> Double
+pub fn SortdistproxmapPath::scale(Self, Double) -> Self
+pub fn SortdistproxmapPath::set(Self, Int32, Double) -> Self
+pub fn SortdistproxmapPath::sum(Self) -> Double
+pub fn SortdistproxmapPath::to_string(Self) -> String
+
+pub(all) struct SortdistproxmapPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortdistproxmapPoint::add(Self, Self) -> Self
+pub fn SortdistproxmapPoint::cross(Self, Self) -> Self
+pub fn SortdistproxmapPoint::dist(Self, Self) -> Double
+pub fn SortdistproxmapPoint::dot(Self, Self) -> Double
+pub fn SortdistproxmapPoint::label(Self) -> Int32
+pub fn SortdistproxmapPoint::lerp(Self, Self, Double) -> Self
+pub fn SortdistproxmapPoint::mid(Self, Self) -> Self
+pub fn SortdistproxmapPoint::negate(Self) -> Self
+pub fn SortdistproxmapPoint::norm(Self) -> Double
+pub fn SortdistproxmapPoint::normalize(Self) -> Self
+pub fn SortdistproxmapPoint::scale(Self, Double) -> Self
+pub fn SortdistproxmapPoint::sub(Self, Self) -> Self
+pub fn SortdistproxmapPoint::to_string(Self) -> String
+pub fn SortdistproxmapPoint::x(Self) -> Double
+pub fn SortdistproxmapPoint::y(Self) -> Double
+pub fn SortdistproxmapPoint::z(Self) -> Double
+
+pub(all) struct SortdistproxmapRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistproxmapRange::add(Self, Self) -> Self
+pub fn SortdistproxmapRange::copy(Self) -> Self
+pub fn SortdistproxmapRange::fill(Self, Double) -> Self
+pub fn SortdistproxmapRange::get(Self, Int32) -> Double
+pub fn SortdistproxmapRange::len(Self) -> Int32
+pub fn SortdistproxmapRange::max(Self) -> Double
+pub fn SortdistproxmapRange::mean(Self) -> Double
+pub fn SortdistproxmapRange::min(Self) -> Double
+pub fn SortdistproxmapRange::scale(Self, Double) -> Self
+pub fn SortdistproxmapRange::set(Self, Int32, Double) -> Self
+pub fn SortdistproxmapRange::sum(Self) -> Double
+pub fn SortdistproxmapRange::to_string(Self) -> String
+
+pub(all) struct SortdistproxmapSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortdistproxmapSeries::add(Self, Self) -> Self
+pub fn SortdistproxmapSeries::cumsum(Self) -> Self
+pub fn SortdistproxmapSeries::len(Self) -> Int32
+pub fn SortdistproxmapSeries::max(Self) -> Double
+pub fn SortdistproxmapSeries::mean(Self) -> Double
+pub fn SortdistproxmapSeries::median(Self) -> Double
+pub fn SortdistproxmapSeries::min(Self) -> Double
+pub fn SortdistproxmapSeries::normalize(Self) -> Self
+pub fn SortdistproxmapSeries::range(Self) -> Double
+pub fn SortdistproxmapSeries::scale(Self, Double) -> Self
+pub fn SortdistproxmapSeries::std(Self) -> Double
+pub fn SortdistproxmapSeries::sub(Self, Self) -> Self
+pub fn SortdistproxmapSeries::sum(Self) -> Double
+pub fn SortdistproxmapSeries::to_string(Self) -> String
+pub fn SortdistproxmapSeries::variance(Self) -> Double
+
+pub(all) struct SortdistproxmapSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistproxmapSlice::add(Self, Self) -> Self
+pub fn SortdistproxmapSlice::copy(Self) -> Self
+pub fn SortdistproxmapSlice::fill(Self, Double) -> Self
+pub fn SortdistproxmapSlice::get(Self, Int32) -> Double
+pub fn SortdistproxmapSlice::len(Self) -> Int32
+pub fn SortdistproxmapSlice::max(Self) -> Double
+pub fn SortdistproxmapSlice::mean(Self) -> Double
+pub fn SortdistproxmapSlice::min(Self) -> Double
+pub fn SortdistproxmapSlice::scale(Self, Double) -> Self
+pub fn SortdistproxmapSlice::set(Self, Int32, Double) -> Self
+pub fn SortdistproxmapSlice::sum(Self) -> Double
+pub fn SortdistproxmapSlice::to_string(Self) -> String
+
+pub(all) struct SortdistproxmapTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistproxmapTable::add(Self, Self) -> Self
+pub fn SortdistproxmapTable::copy(Self) -> Self
+pub fn SortdistproxmapTable::fill(Self, Double) -> Self
+pub fn SortdistproxmapTable::get(Self, Int32) -> Double
+pub fn SortdistproxmapTable::len(Self) -> Int32
+pub fn SortdistproxmapTable::max(Self) -> Double
+pub fn SortdistproxmapTable::mean(Self) -> Double
+pub fn SortdistproxmapTable::min(Self) -> Double
+pub fn SortdistproxmapTable::scale(Self, Double) -> Self
+pub fn SortdistproxmapTable::set(Self, Int32, Double) -> Self
+pub fn SortdistproxmapTable::sum(Self) -> Double
+pub fn SortdistproxmapTable::to_string(Self) -> String
+
+pub(all) struct SortdistproxmapVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortdistproxmapVector::add(Self, Self) -> Self
+pub fn SortdistproxmapVector::dist(Self, Self) -> Double
+pub fn SortdistproxmapVector::dot(Self, Self) -> Double
+pub fn SortdistproxmapVector::norm(Self) -> Double
+pub fn SortdistproxmapVector::normalize(Self) -> Self
+pub fn SortdistproxmapVector::scale(Self, Double) -> Self
+pub fn SortdistproxmapVector::sub(Self, Self) -> Self
+pub fn SortdistproxmapVector::to_string(Self) -> String
+
+pub(all) struct SortdistproxmapView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistproxmapView::add(Self, Self) -> Self
+pub fn SortdistproxmapView::copy(Self) -> Self
+pub fn SortdistproxmapView::fill(Self, Double) -> Self
+pub fn SortdistproxmapView::get(Self, Int32) -> Double
+pub fn SortdistproxmapView::len(Self) -> Int32
+pub fn SortdistproxmapView::max(Self) -> Double
+pub fn SortdistproxmapView::mean(Self) -> Double
+pub fn SortdistproxmapView::min(Self) -> Double
+pub fn SortdistproxmapView::scale(Self, Double) -> Self
+pub fn SortdistproxmapView::set(Self, Int32, Double) -> Self
+pub fn SortdistproxmapView::sum(Self) -> Double
+pub fn SortdistproxmapView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

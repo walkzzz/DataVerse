@@ -1,0 +1,246 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/data_lineage"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add_lineage_edge(LineageGraph, LineageEdge) -> LineageGraph
+
+pub fn add_lineage_node(LineageGraph, LineageNode) -> LineageGraph
+
+pub fn asset_hash(DataAsset) -> String
+
+pub fn asset_history(VersionedAsset) -> Array[String]
+
+pub fn asset_metadata(DataAsset) -> Array[(String, String)]
+
+pub fn asset_version(VersionedAsset) -> Int32
+
+pub fn catalog_register(DataCatalog, DataAsset) -> DataCatalog
+
+pub fn catalog_search(DataCatalog, String) -> Array[DataAsset]
+
+pub fn column_map(ColumnLineage, String) -> Array[(String, String)]
+
+pub fn column_track(ColumnLineage, String, String, String) -> ColumnLineage
+
+pub fn data_lineage_id() -> String
+
+pub fn dictionary_add(DataDictionary, String, String, String) -> DataDictionary
+
+pub fn dictionary_lookup(DataDictionary, String) -> String
+
+pub fn event_replay_lineage(Array[LineageEvent]) -> LineageGraph
+
+pub fn event_track(Array[LineageEvent], LineageEvent) -> Array[LineageEvent]
+
+pub fn lineage_accuracy(LineageGraph) -> Double
+
+pub fn lineage_completeness(LineageGraph) -> Double
+
+pub fn lineage_compress(LineageGraph) -> LineageGraph
+
+pub fn lineage_dependencies(LineageGraph, String) -> Array[String]
+
+pub fn lineage_dependents(LineageGraph, String) -> Array[String]
+
+pub fn lineage_depth(LineageGraph, String) -> Int32
+
+pub fn lineage_downstream(LineageGraph, String) -> Array[String]
+
+pub fn lineage_edge_count(LineageGraph) -> Int32
+
+pub fn lineage_export(LineageGraph, String) -> String
+
+pub fn lineage_has_cycle(LineageGraph) -> Bool
+
+pub fn lineage_impact(LineageGraph, String) -> Array[String]
+
+pub fn lineage_is_empty(LineageGraph) -> Bool
+
+pub fn lineage_leaf_nodes(LineageGraph) -> Array[String]
+
+pub fn lineage_merge(LineageGraph, LineageGraph) -> LineageGraph
+
+pub fn lineage_node_count(LineageGraph) -> Int32
+
+pub fn lineage_prune(LineageGraph, String) -> LineageGraph
+
+pub fn lineage_report(LineageGraph) -> String
+
+pub fn lineage_root_nodes(LineageGraph) -> Array[String]
+
+pub fn lineage_shortest_path(LineageGraph, String, String) -> Array[String]
+
+pub fn lineage_subgraph(LineageGraph, Array[String]) -> LineageGraph
+
+pub fn lineage_topo_sort(LineageGraph) -> Array[String]
+
+pub fn lineage_trace(LineageGraph, String, String) -> Array[String]
+
+pub fn lineage_upstream(LineageGraph, String) -> Array[String]
+
+pub fn lineage_validate(LineageGraph) -> Bool
+
+pub fn lineage_visualize(LineageGraph) -> String
+
+pub fn make_column_lineage(String) -> ColumnLineage
+
+pub fn make_data_asset(String, String, String) -> DataAsset
+
+pub fn make_data_catalog() -> DataCatalog
+
+pub fn make_data_dictionary() -> DataDictionary
+
+pub fn make_lineage_event(String, String, Double, String) -> LineageEvent
+
+pub fn make_lineage_graph() -> LineageGraph
+
+pub fn make_metadata() -> Metadata
+
+pub fn make_pipeline_lineage(String) -> PipelineLineage
+
+pub fn make_table_lineage(String) -> TableLineage
+
+pub fn make_transformation(String, String, String) -> Transformation
+
+pub fn make_versioned_asset(DataAsset) -> VersionedAsset
+
+pub fn metadata_extract(DataAsset) -> Metadata
+
+pub fn metadata_validate(Metadata) -> Bool
+
+pub fn pipeline_audit(PipelineLineage) -> Array[String]
+
+pub fn pipeline_track(PipelineLineage, Transformation) -> PipelineLineage
+
+pub fn table_map(TableLineage) -> Array[(String, String)]
+
+pub fn table_track(TableLineage, String, String) -> TableLineage
+
+pub fn transformation_input(Transformation) -> Array[String]
+
+pub fn transformation_output(Transformation) -> Array[String]
+
+// Errors
+
+// Types and methods
+pub struct ColumnLineage {
+  table_name : String
+  column_maps : Array[(String, String, String)]
+} derive(Eq, @debug.Debug)
+pub fn ColumnLineage::equal(Self, Self) -> Bool
+pub fn ColumnLineage::not_equal(Self, Self) -> Bool
+pub fn ColumnLineage::to_repr(Self) -> @debug.Repr
+
+pub struct DataAsset {
+  id : String
+  name : String
+  asset_type : String
+  metadata : Array[(String, String)]
+  content_hash : String
+} derive(Eq, @debug.Debug)
+pub fn DataAsset::equal(Self, Self) -> Bool
+pub fn DataAsset::not_equal(Self, Self) -> Bool
+pub fn DataAsset::to_repr(Self) -> @debug.Repr
+
+pub struct DataCatalog {
+  entries : Array[(String, DataAsset)]
+} derive(Eq, @debug.Debug)
+pub fn DataCatalog::equal(Self, Self) -> Bool
+pub fn DataCatalog::not_equal(Self, Self) -> Bool
+pub fn DataCatalog::to_repr(Self) -> @debug.Repr
+
+pub struct DataDictionary {
+  entries : Array[(String, String, String)]
+} derive(Eq, @debug.Debug)
+pub fn DataDictionary::equal(Self, Self) -> Bool
+pub fn DataDictionary::not_equal(Self, Self) -> Bool
+pub fn DataDictionary::to_repr(Self) -> @debug.Repr
+
+pub struct LineageEdge {
+  source : String
+  target : String
+  edge_type : String
+} derive(Eq, @debug.Debug)
+pub fn LineageEdge::equal(Self, Self) -> Bool
+pub fn LineageEdge::not_equal(Self, Self) -> Bool
+pub fn LineageEdge::to_repr(Self) -> @debug.Repr
+
+pub struct LineageEvent {
+  event_id : String
+  event_type : String
+  timestamp : Double
+  payload : String
+} derive(Eq, @debug.Debug)
+pub fn LineageEvent::equal(Self, Self) -> Bool
+pub fn LineageEvent::not_equal(Self, Self) -> Bool
+pub fn LineageEvent::to_repr(Self) -> @debug.Repr
+
+pub struct LineageGraph {
+  nodes : Array[LineageNode]
+  edges : Array[LineageEdge]
+} derive(Eq, @debug.Debug)
+pub fn LineageGraph::equal(Self, Self) -> Bool
+pub fn LineageGraph::not_equal(Self, Self) -> Bool
+pub fn LineageGraph::to_repr(Self) -> @debug.Repr
+
+pub struct LineageNode {
+  id : String
+  name : String
+  node_type : String
+} derive(Eq, @debug.Debug)
+pub fn LineageNode::equal(Self, Self) -> Bool
+pub fn LineageNode::not_equal(Self, Self) -> Bool
+pub fn LineageNode::to_repr(Self) -> @debug.Repr
+
+pub struct Metadata {
+  fields : Array[(String, String)]
+} derive(Eq, @debug.Debug)
+pub fn Metadata::equal(Self, Self) -> Bool
+pub fn Metadata::not_equal(Self, Self) -> Bool
+pub fn Metadata::to_repr(Self) -> @debug.Repr
+
+pub struct PipelineLineage {
+  pipeline_id : String
+  transformations : Array[Transformation]
+  audit_log : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn PipelineLineage::equal(Self, Self) -> Bool
+pub fn PipelineLineage::not_equal(Self, Self) -> Bool
+pub fn PipelineLineage::to_repr(Self) -> @debug.Repr
+
+pub struct TableLineage {
+  table_name : String
+  source_tables : Array[String]
+  target_tables : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn TableLineage::equal(Self, Self) -> Bool
+pub fn TableLineage::not_equal(Self, Self) -> Bool
+pub fn TableLineage::to_repr(Self) -> @debug.Repr
+
+pub struct Transformation {
+  id : String
+  name : String
+  inputs : Array[String]
+  outputs : Array[String]
+  transform_type : String
+} derive(Eq, @debug.Debug)
+pub fn Transformation::equal(Self, Self) -> Bool
+pub fn Transformation::not_equal(Self, Self) -> Bool
+pub fn Transformation::to_repr(Self) -> @debug.Repr
+
+pub struct VersionedAsset {
+  asset : DataAsset
+  version : Int32
+  history : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn VersionedAsset::equal(Self, Self) -> Bool
+pub fn VersionedAsset::not_equal(Self, Self) -> Bool
+pub fn VersionedAsset::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

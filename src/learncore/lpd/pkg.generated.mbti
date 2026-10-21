@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/lpd"
+
+// Values
+pub fn lpd_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn lpd_corr(Array[Double], Array[Double]) -> Double
+
+pub fn lpd_cov(Array[Double], Array[Double]) -> Double
+
+pub fn lpd_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn lpd_mae(Array[Double], Array[Double]) -> Double
+
+pub fn lpd_make_labeled_point(Double, Double, Int32) -> LpdPoint
+
+pub fn lpd_make_matrix(Int32, Int32, Double) -> LpdMatrix
+
+pub fn lpd_make_point(Double, Double) -> LpdPoint
+
+pub fn lpd_make_series(Array[Double], String) -> LpdSeries
+
+pub fn lpd_make_vector(Array[Double]) -> LpdVector
+
+pub fn lpd_matrix_add(LpdMatrix, LpdMatrix) -> LpdMatrix
+
+pub fn lpd_matrix_get(LpdMatrix, Int32, Int32) -> Double
+
+pub fn lpd_matrix_identity(Int32) -> LpdMatrix
+
+pub fn lpd_matrix_multiply(LpdMatrix, LpdMatrix) -> LpdMatrix
+
+pub fn lpd_matrix_norm(LpdMatrix) -> Double
+
+pub fn lpd_matrix_scale(LpdMatrix, Double) -> LpdMatrix
+
+pub fn lpd_matrix_to_string(LpdMatrix) -> String
+
+pub fn lpd_matrix_trace(LpdMatrix) -> Double
+
+pub fn lpd_matrix_transpose(LpdMatrix) -> LpdMatrix
+
+pub fn lpd_mse(Array[Double], Array[Double]) -> Double
+
+pub fn lpd_point_add(LpdPoint, LpdPoint) -> LpdPoint
+
+pub fn lpd_point_dist(LpdPoint, LpdPoint) -> Double
+
+pub fn lpd_point_dot(LpdPoint, LpdPoint) -> Double
+
+pub fn lpd_point_label(LpdPoint) -> Int32
+
+pub fn lpd_point_norm(LpdPoint) -> Double
+
+pub fn lpd_point_scale(LpdPoint, Double) -> LpdPoint
+
+pub fn lpd_point_sub(LpdPoint, LpdPoint) -> LpdPoint
+
+pub fn lpd_point_to_string(LpdPoint) -> String
+
+pub fn lpd_point_x(LpdPoint) -> Double
+
+pub fn lpd_point_y(LpdPoint) -> Double
+
+pub fn lpd_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn lpd_r2(Array[Double], Array[Double]) -> Double
+
+pub fn lpd_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn lpd_series_add(LpdSeries, LpdSeries) -> LpdSeries
+
+pub fn lpd_series_len(LpdSeries) -> Int32
+
+pub fn lpd_series_max(LpdSeries) -> Double
+
+pub fn lpd_series_mean(LpdSeries) -> Double
+
+pub fn lpd_series_min(LpdSeries) -> Double
+
+pub fn lpd_series_scale(LpdSeries, Double) -> LpdSeries
+
+pub fn lpd_series_std(LpdSeries) -> Double
+
+pub fn lpd_series_sum(LpdSeries) -> Double
+
+pub fn lpd_series_to_string(LpdSeries) -> String
+
+pub fn lpd_series_var(LpdSeries) -> Double
+
+pub fn lpd_std(Array[Double]) -> Double
+
+pub fn lpd_var(Array[Double]) -> Double
+
+pub fn lpd_vector_add(LpdVector, LpdVector) -> LpdVector
+
+pub fn lpd_vector_dist(LpdVector, LpdVector) -> Double
+
+pub fn lpd_vector_dot(LpdVector, LpdVector) -> Double
+
+pub fn lpd_vector_norm(LpdVector) -> Double
+
+pub fn lpd_vector_normalize(LpdVector) -> LpdVector
+
+pub fn lpd_vector_scale(LpdVector, Double) -> LpdVector
+
+pub fn lpd_vector_sub(LpdVector, LpdVector) -> LpdVector
+
+pub fn lpd_vector_to_string(LpdVector) -> String
+
+pub fn lpd_vector_zero(Int32) -> LpdVector
+
+// Errors
+
+// Types and methods
+pub struct LpdMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct LpdPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct LpdSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct LpdVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

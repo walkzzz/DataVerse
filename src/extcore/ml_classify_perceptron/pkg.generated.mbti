@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_classify_perceptron"
+
+// Values
+pub fn ml_classify_perceptron_buffer_make(Int32) -> MlclassifyperceptronBuffer
+
+pub fn ml_classify_perceptron_cluster_make(Int32) -> MlclassifyperceptronCluster
+
+pub fn ml_classify_perceptron_cursor_make(Int32) -> MlclassifyperceptronCursor
+
+pub fn ml_classify_perceptron_edge_make(Int32) -> MlclassifyperceptronEdge
+
+pub fn ml_classify_perceptron_frame_make(Int32) -> MlclassifyperceptronFrame
+
+pub fn ml_classify_perceptron_graphn_make(Int32) -> MlclassifyperceptronGraphN
+
+pub fn ml_classify_perceptron_layer_make(Int32) -> MlclassifyperceptronLayer
+
+pub fn ml_classify_perceptron_make_matrix(Int32, Int32, Double) -> MlclassifyperceptronMatrix
+
+pub fn ml_classify_perceptron_make_point(Double, Double) -> MlclassifyperceptronPoint
+
+pub fn ml_classify_perceptron_make_point3(Double, Double, Double) -> MlclassifyperceptronPoint
+
+pub fn ml_classify_perceptron_make_series(Array[Double], String) -> MlclassifyperceptronSeries
+
+pub fn ml_classify_perceptron_make_vector(Array[Double]) -> MlclassifyperceptronVector
+
+pub fn ml_classify_perceptron_matrix_identity(Int32) -> MlclassifyperceptronMatrix
+
+pub fn ml_classify_perceptron_model_make(Int32) -> MlclassifyperceptronModel
+
+pub fn ml_classify_perceptron_node_make(Int32) -> MlclassifyperceptronNode
+
+pub fn ml_classify_perceptron_path_make(Int32) -> MlclassifyperceptronPath
+
+pub fn ml_classify_perceptron_range_make(Int32) -> MlclassifyperceptronRange
+
+pub fn ml_classify_perceptron_slice_make(Int32) -> MlclassifyperceptronSlice
+
+pub fn ml_classify_perceptron_table_make(Int32) -> MlclassifyperceptronTable
+
+pub fn ml_classify_perceptron_vector_zero(Int32) -> MlclassifyperceptronVector
+
+pub fn ml_classify_perceptron_view_make(Int32) -> MlclassifyperceptronView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlclassifyperceptronBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyperceptronBuffer::add(Self, Self) -> Self
+pub fn MlclassifyperceptronBuffer::copy(Self) -> Self
+pub fn MlclassifyperceptronBuffer::fill(Self, Double) -> Self
+pub fn MlclassifyperceptronBuffer::get(Self, Int32) -> Double
+pub fn MlclassifyperceptronBuffer::len(Self) -> Int32
+pub fn MlclassifyperceptronBuffer::max(Self) -> Double
+pub fn MlclassifyperceptronBuffer::mean(Self) -> Double
+pub fn MlclassifyperceptronBuffer::min(Self) -> Double
+pub fn MlclassifyperceptronBuffer::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronBuffer::set(Self, Int32, Double) -> Self
+pub fn MlclassifyperceptronBuffer::sum(Self) -> Double
+pub fn MlclassifyperceptronBuffer::to_string(Self) -> String
+
+pub(all) struct MlclassifyperceptronCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyperceptronCluster::add(Self, Self) -> Self
+pub fn MlclassifyperceptronCluster::copy(Self) -> Self
+pub fn MlclassifyperceptronCluster::fill(Self, Double) -> Self
+pub fn MlclassifyperceptronCluster::get(Self, Int32) -> Double
+pub fn MlclassifyperceptronCluster::len(Self) -> Int32
+pub fn MlclassifyperceptronCluster::max(Self) -> Double
+pub fn MlclassifyperceptronCluster::mean(Self) -> Double
+pub fn MlclassifyperceptronCluster::min(Self) -> Double
+pub fn MlclassifyperceptronCluster::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronCluster::set(Self, Int32, Double) -> Self
+pub fn MlclassifyperceptronCluster::sum(Self) -> Double
+pub fn MlclassifyperceptronCluster::to_string(Self) -> String
+
+pub(all) struct MlclassifyperceptronCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyperceptronCursor::add(Self, Self) -> Self
+pub fn MlclassifyperceptronCursor::copy(Self) -> Self
+pub fn MlclassifyperceptronCursor::fill(Self, Double) -> Self
+pub fn MlclassifyperceptronCursor::get(Self, Int32) -> Double
+pub fn MlclassifyperceptronCursor::len(Self) -> Int32
+pub fn MlclassifyperceptronCursor::max(Self) -> Double
+pub fn MlclassifyperceptronCursor::mean(Self) -> Double
+pub fn MlclassifyperceptronCursor::min(Self) -> Double
+pub fn MlclassifyperceptronCursor::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronCursor::set(Self, Int32, Double) -> Self
+pub fn MlclassifyperceptronCursor::sum(Self) -> Double
+pub fn MlclassifyperceptronCursor::to_string(Self) -> String
+
+pub(all) struct MlclassifyperceptronEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyperceptronEdge::add(Self, Self) -> Self
+pub fn MlclassifyperceptronEdge::copy(Self) -> Self
+pub fn MlclassifyperceptronEdge::fill(Self, Double) -> Self
+pub fn MlclassifyperceptronEdge::get(Self, Int32) -> Double
+pub fn MlclassifyperceptronEdge::len(Self) -> Int32
+pub fn MlclassifyperceptronEdge::max(Self) -> Double
+pub fn MlclassifyperceptronEdge::mean(Self) -> Double
+pub fn MlclassifyperceptronEdge::min(Self) -> Double
+pub fn MlclassifyperceptronEdge::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronEdge::set(Self, Int32, Double) -> Self
+pub fn MlclassifyperceptronEdge::sum(Self) -> Double
+pub fn MlclassifyperceptronEdge::to_string(Self) -> String
+
+pub(all) struct MlclassifyperceptronFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyperceptronFrame::add(Self, Self) -> Self
+pub fn MlclassifyperceptronFrame::copy(Self) -> Self
+pub fn MlclassifyperceptronFrame::fill(Self, Double) -> Self
+pub fn MlclassifyperceptronFrame::get(Self, Int32) -> Double
+pub fn MlclassifyperceptronFrame::len(Self) -> Int32
+pub fn MlclassifyperceptronFrame::max(Self) -> Double
+pub fn MlclassifyperceptronFrame::mean(Self) -> Double
+pub fn MlclassifyperceptronFrame::min(Self) -> Double
+pub fn MlclassifyperceptronFrame::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronFrame::set(Self, Int32, Double) -> Self
+pub fn MlclassifyperceptronFrame::sum(Self) -> Double
+pub fn MlclassifyperceptronFrame::to_string(Self) -> String
+
+pub(all) struct MlclassifyperceptronGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyperceptronGraphN::add(Self, Self) -> Self
+pub fn MlclassifyperceptronGraphN::copy(Self) -> Self
+pub fn MlclassifyperceptronGraphN::fill(Self, Double) -> Self
+pub fn MlclassifyperceptronGraphN::get(Self, Int32) -> Double
+pub fn MlclassifyperceptronGraphN::len(Self) -> Int32
+pub fn MlclassifyperceptronGraphN::max(Self) -> Double
+pub fn MlclassifyperceptronGraphN::mean(Self) -> Double
+pub fn MlclassifyperceptronGraphN::min(Self) -> Double
+pub fn MlclassifyperceptronGraphN::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronGraphN::set(Self, Int32, Double) -> Self
+pub fn MlclassifyperceptronGraphN::sum(Self) -> Double
+pub fn MlclassifyperceptronGraphN::to_string(Self) -> String
+
+pub(all) struct MlclassifyperceptronLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyperceptronLayer::add(Self, Self) -> Self
+pub fn MlclassifyperceptronLayer::copy(Self) -> Self
+pub fn MlclassifyperceptronLayer::fill(Self, Double) -> Self
+pub fn MlclassifyperceptronLayer::get(Self, Int32) -> Double
+pub fn MlclassifyperceptronLayer::len(Self) -> Int32
+pub fn MlclassifyperceptronLayer::max(Self) -> Double
+pub fn MlclassifyperceptronLayer::mean(Self) -> Double
+pub fn MlclassifyperceptronLayer::min(Self) -> Double
+pub fn MlclassifyperceptronLayer::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronLayer::set(Self, Int32, Double) -> Self
+pub fn MlclassifyperceptronLayer::sum(Self) -> Double
+pub fn MlclassifyperceptronLayer::to_string(Self) -> String
+
+pub(all) struct MlclassifyperceptronMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlclassifyperceptronMatrix::add(Self, Self) -> Self
+pub fn MlclassifyperceptronMatrix::det(Self) -> Double
+pub fn MlclassifyperceptronMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlclassifyperceptronMatrix::multiply(Self, Self) -> Self
+pub fn MlclassifyperceptronMatrix::norm(Self) -> Double
+pub fn MlclassifyperceptronMatrix::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronMatrix::to_string(Self) -> String
+pub fn MlclassifyperceptronMatrix::trace(Self) -> Double
+pub fn MlclassifyperceptronMatrix::transpose(Self) -> Self
+
+pub(all) struct MlclassifyperceptronModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyperceptronModel::add(Self, Self) -> Self
+pub fn MlclassifyperceptronModel::copy(Self) -> Self
+pub fn MlclassifyperceptronModel::fill(Self, Double) -> Self
+pub fn MlclassifyperceptronModel::get(Self, Int32) -> Double
+pub fn MlclassifyperceptronModel::len(Self) -> Int32
+pub fn MlclassifyperceptronModel::max(Self) -> Double
+pub fn MlclassifyperceptronModel::mean(Self) -> Double
+pub fn MlclassifyperceptronModel::min(Self) -> Double
+pub fn MlclassifyperceptronModel::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronModel::set(Self, Int32, Double) -> Self
+pub fn MlclassifyperceptronModel::sum(Self) -> Double
+pub fn MlclassifyperceptronModel::to_string(Self) -> String
+
+pub(all) struct MlclassifyperceptronNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyperceptronNode::add(Self, Self) -> Self
+pub fn MlclassifyperceptronNode::copy(Self) -> Self
+pub fn MlclassifyperceptronNode::fill(Self, Double) -> Self
+pub fn MlclassifyperceptronNode::get(Self, Int32) -> Double
+pub fn MlclassifyperceptronNode::len(Self) -> Int32
+pub fn MlclassifyperceptronNode::max(Self) -> Double
+pub fn MlclassifyperceptronNode::mean(Self) -> Double
+pub fn MlclassifyperceptronNode::min(Self) -> Double
+pub fn MlclassifyperceptronNode::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronNode::set(Self, Int32, Double) -> Self
+pub fn MlclassifyperceptronNode::sum(Self) -> Double
+pub fn MlclassifyperceptronNode::to_string(Self) -> String
+
+pub(all) struct MlclassifyperceptronPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyperceptronPath::add(Self, Self) -> Self
+pub fn MlclassifyperceptronPath::copy(Self) -> Self
+pub fn MlclassifyperceptronPath::fill(Self, Double) -> Self
+pub fn MlclassifyperceptronPath::get(Self, Int32) -> Double
+pub fn MlclassifyperceptronPath::len(Self) -> Int32
+pub fn MlclassifyperceptronPath::max(Self) -> Double
+pub fn MlclassifyperceptronPath::mean(Self) -> Double
+pub fn MlclassifyperceptronPath::min(Self) -> Double
+pub fn MlclassifyperceptronPath::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronPath::set(Self, Int32, Double) -> Self
+pub fn MlclassifyperceptronPath::sum(Self) -> Double
+pub fn MlclassifyperceptronPath::to_string(Self) -> String
+
+pub(all) struct MlclassifyperceptronPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlclassifyperceptronPoint::add(Self, Self) -> Self
+pub fn MlclassifyperceptronPoint::cross(Self, Self) -> Self
+pub fn MlclassifyperceptronPoint::dist(Self, Self) -> Double
+pub fn MlclassifyperceptronPoint::dot(Self, Self) -> Double
+pub fn MlclassifyperceptronPoint::label(Self) -> Int32
+pub fn MlclassifyperceptronPoint::lerp(Self, Self, Double) -> Self
+pub fn MlclassifyperceptronPoint::mid(Self, Self) -> Self
+pub fn MlclassifyperceptronPoint::negate(Self) -> Self
+pub fn MlclassifyperceptronPoint::norm(Self) -> Double
+pub fn MlclassifyperceptronPoint::normalize(Self) -> Self
+pub fn MlclassifyperceptronPoint::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronPoint::sub(Self, Self) -> Self
+pub fn MlclassifyperceptronPoint::to_string(Self) -> String
+pub fn MlclassifyperceptronPoint::x(Self) -> Double
+pub fn MlclassifyperceptronPoint::y(Self) -> Double
+pub fn MlclassifyperceptronPoint::z(Self) -> Double
+
+pub(all) struct MlclassifyperceptronRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyperceptronRange::add(Self, Self) -> Self
+pub fn MlclassifyperceptronRange::copy(Self) -> Self
+pub fn MlclassifyperceptronRange::fill(Self, Double) -> Self
+pub fn MlclassifyperceptronRange::get(Self, Int32) -> Double
+pub fn MlclassifyperceptronRange::len(Self) -> Int32
+pub fn MlclassifyperceptronRange::max(Self) -> Double
+pub fn MlclassifyperceptronRange::mean(Self) -> Double
+pub fn MlclassifyperceptronRange::min(Self) -> Double
+pub fn MlclassifyperceptronRange::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronRange::set(Self, Int32, Double) -> Self
+pub fn MlclassifyperceptronRange::sum(Self) -> Double
+pub fn MlclassifyperceptronRange::to_string(Self) -> String
+
+pub(all) struct MlclassifyperceptronSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlclassifyperceptronSeries::add(Self, Self) -> Self
+pub fn MlclassifyperceptronSeries::cumsum(Self) -> Self
+pub fn MlclassifyperceptronSeries::len(Self) -> Int32
+pub fn MlclassifyperceptronSeries::max(Self) -> Double
+pub fn MlclassifyperceptronSeries::mean(Self) -> Double
+pub fn MlclassifyperceptronSeries::median(Self) -> Double
+pub fn MlclassifyperceptronSeries::min(Self) -> Double
+pub fn MlclassifyperceptronSeries::normalize(Self) -> Self
+pub fn MlclassifyperceptronSeries::range(Self) -> Double
+pub fn MlclassifyperceptronSeries::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronSeries::std(Self) -> Double
+pub fn MlclassifyperceptronSeries::sub(Self, Self) -> Self
+pub fn MlclassifyperceptronSeries::sum(Self) -> Double
+pub fn MlclassifyperceptronSeries::to_string(Self) -> String
+pub fn MlclassifyperceptronSeries::variance(Self) -> Double
+
+pub(all) struct MlclassifyperceptronSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyperceptronSlice::add(Self, Self) -> Self
+pub fn MlclassifyperceptronSlice::copy(Self) -> Self
+pub fn MlclassifyperceptronSlice::fill(Self, Double) -> Self
+pub fn MlclassifyperceptronSlice::get(Self, Int32) -> Double
+pub fn MlclassifyperceptronSlice::len(Self) -> Int32
+pub fn MlclassifyperceptronSlice::max(Self) -> Double
+pub fn MlclassifyperceptronSlice::mean(Self) -> Double
+pub fn MlclassifyperceptronSlice::min(Self) -> Double
+pub fn MlclassifyperceptronSlice::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronSlice::set(Self, Int32, Double) -> Self
+pub fn MlclassifyperceptronSlice::sum(Self) -> Double
+pub fn MlclassifyperceptronSlice::to_string(Self) -> String
+
+pub(all) struct MlclassifyperceptronTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyperceptronTable::add(Self, Self) -> Self
+pub fn MlclassifyperceptronTable::copy(Self) -> Self
+pub fn MlclassifyperceptronTable::fill(Self, Double) -> Self
+pub fn MlclassifyperceptronTable::get(Self, Int32) -> Double
+pub fn MlclassifyperceptronTable::len(Self) -> Int32
+pub fn MlclassifyperceptronTable::max(Self) -> Double
+pub fn MlclassifyperceptronTable::mean(Self) -> Double
+pub fn MlclassifyperceptronTable::min(Self) -> Double
+pub fn MlclassifyperceptronTable::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronTable::set(Self, Int32, Double) -> Self
+pub fn MlclassifyperceptronTable::sum(Self) -> Double
+pub fn MlclassifyperceptronTable::to_string(Self) -> String
+
+pub(all) struct MlclassifyperceptronVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlclassifyperceptronVector::add(Self, Self) -> Self
+pub fn MlclassifyperceptronVector::dist(Self, Self) -> Double
+pub fn MlclassifyperceptronVector::dot(Self, Self) -> Double
+pub fn MlclassifyperceptronVector::norm(Self) -> Double
+pub fn MlclassifyperceptronVector::normalize(Self) -> Self
+pub fn MlclassifyperceptronVector::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronVector::sub(Self, Self) -> Self
+pub fn MlclassifyperceptronVector::to_string(Self) -> String
+
+pub(all) struct MlclassifyperceptronView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyperceptronView::add(Self, Self) -> Self
+pub fn MlclassifyperceptronView::copy(Self) -> Self
+pub fn MlclassifyperceptronView::fill(Self, Double) -> Self
+pub fn MlclassifyperceptronView::get(Self, Int32) -> Double
+pub fn MlclassifyperceptronView::len(Self) -> Int32
+pub fn MlclassifyperceptronView::max(Self) -> Double
+pub fn MlclassifyperceptronView::mean(Self) -> Double
+pub fn MlclassifyperceptronView::min(Self) -> Double
+pub fn MlclassifyperceptronView::scale(Self, Double) -> Self
+pub fn MlclassifyperceptronView::set(Self, Int32, Double) -> Self
+pub fn MlclassifyperceptronView::sum(Self) -> Double
+pub fn MlclassifyperceptronView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

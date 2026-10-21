@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_graph_adj_matrix"
+
+// Values
+pub fn ds_graph_adj_matrix_buffer_make(Int32) -> DsgraphadjmatrixBuffer
+
+pub fn ds_graph_adj_matrix_cluster_make(Int32) -> DsgraphadjmatrixCluster
+
+pub fn ds_graph_adj_matrix_cursor_make(Int32) -> DsgraphadjmatrixCursor
+
+pub fn ds_graph_adj_matrix_edge_make(Int32) -> DsgraphadjmatrixEdge
+
+pub fn ds_graph_adj_matrix_frame_make(Int32) -> DsgraphadjmatrixFrame
+
+pub fn ds_graph_adj_matrix_graphn_make(Int32) -> DsgraphadjmatrixGraphN
+
+pub fn ds_graph_adj_matrix_layer_make(Int32) -> DsgraphadjmatrixLayer
+
+pub fn ds_graph_adj_matrix_make_matrix(Int32, Int32, Double) -> DsgraphadjmatrixMatrix
+
+pub fn ds_graph_adj_matrix_make_point(Double, Double) -> DsgraphadjmatrixPoint
+
+pub fn ds_graph_adj_matrix_make_point3(Double, Double, Double) -> DsgraphadjmatrixPoint
+
+pub fn ds_graph_adj_matrix_make_series(Array[Double], String) -> DsgraphadjmatrixSeries
+
+pub fn ds_graph_adj_matrix_make_vector(Array[Double]) -> DsgraphadjmatrixVector
+
+pub fn ds_graph_adj_matrix_matrix_identity(Int32) -> DsgraphadjmatrixMatrix
+
+pub fn ds_graph_adj_matrix_model_make(Int32) -> DsgraphadjmatrixModel
+
+pub fn ds_graph_adj_matrix_node_make(Int32) -> DsgraphadjmatrixNode
+
+pub fn ds_graph_adj_matrix_path_make(Int32) -> DsgraphadjmatrixPath
+
+pub fn ds_graph_adj_matrix_range_make(Int32) -> DsgraphadjmatrixRange
+
+pub fn ds_graph_adj_matrix_slice_make(Int32) -> DsgraphadjmatrixSlice
+
+pub fn ds_graph_adj_matrix_table_make(Int32) -> DsgraphadjmatrixTable
+
+pub fn ds_graph_adj_matrix_vector_zero(Int32) -> DsgraphadjmatrixVector
+
+pub fn ds_graph_adj_matrix_view_make(Int32) -> DsgraphadjmatrixView
+
+// Errors
+
+// Types and methods
+pub(all) struct DsgraphadjmatrixBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphadjmatrixBuffer::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixBuffer::copy(Self) -> Self
+pub fn DsgraphadjmatrixBuffer::fill(Self, Double) -> Self
+pub fn DsgraphadjmatrixBuffer::get(Self, Int32) -> Double
+pub fn DsgraphadjmatrixBuffer::len(Self) -> Int32
+pub fn DsgraphadjmatrixBuffer::max(Self) -> Double
+pub fn DsgraphadjmatrixBuffer::mean(Self) -> Double
+pub fn DsgraphadjmatrixBuffer::min(Self) -> Double
+pub fn DsgraphadjmatrixBuffer::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixBuffer::set(Self, Int32, Double) -> Self
+pub fn DsgraphadjmatrixBuffer::sum(Self) -> Double
+pub fn DsgraphadjmatrixBuffer::to_string(Self) -> String
+
+pub(all) struct DsgraphadjmatrixCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphadjmatrixCluster::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixCluster::copy(Self) -> Self
+pub fn DsgraphadjmatrixCluster::fill(Self, Double) -> Self
+pub fn DsgraphadjmatrixCluster::get(Self, Int32) -> Double
+pub fn DsgraphadjmatrixCluster::len(Self) -> Int32
+pub fn DsgraphadjmatrixCluster::max(Self) -> Double
+pub fn DsgraphadjmatrixCluster::mean(Self) -> Double
+pub fn DsgraphadjmatrixCluster::min(Self) -> Double
+pub fn DsgraphadjmatrixCluster::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixCluster::set(Self, Int32, Double) -> Self
+pub fn DsgraphadjmatrixCluster::sum(Self) -> Double
+pub fn DsgraphadjmatrixCluster::to_string(Self) -> String
+
+pub(all) struct DsgraphadjmatrixCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphadjmatrixCursor::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixCursor::copy(Self) -> Self
+pub fn DsgraphadjmatrixCursor::fill(Self, Double) -> Self
+pub fn DsgraphadjmatrixCursor::get(Self, Int32) -> Double
+pub fn DsgraphadjmatrixCursor::len(Self) -> Int32
+pub fn DsgraphadjmatrixCursor::max(Self) -> Double
+pub fn DsgraphadjmatrixCursor::mean(Self) -> Double
+pub fn DsgraphadjmatrixCursor::min(Self) -> Double
+pub fn DsgraphadjmatrixCursor::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixCursor::set(Self, Int32, Double) -> Self
+pub fn DsgraphadjmatrixCursor::sum(Self) -> Double
+pub fn DsgraphadjmatrixCursor::to_string(Self) -> String
+
+pub(all) struct DsgraphadjmatrixEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphadjmatrixEdge::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixEdge::copy(Self) -> Self
+pub fn DsgraphadjmatrixEdge::fill(Self, Double) -> Self
+pub fn DsgraphadjmatrixEdge::get(Self, Int32) -> Double
+pub fn DsgraphadjmatrixEdge::len(Self) -> Int32
+pub fn DsgraphadjmatrixEdge::max(Self) -> Double
+pub fn DsgraphadjmatrixEdge::mean(Self) -> Double
+pub fn DsgraphadjmatrixEdge::min(Self) -> Double
+pub fn DsgraphadjmatrixEdge::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixEdge::set(Self, Int32, Double) -> Self
+pub fn DsgraphadjmatrixEdge::sum(Self) -> Double
+pub fn DsgraphadjmatrixEdge::to_string(Self) -> String
+
+pub(all) struct DsgraphadjmatrixFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphadjmatrixFrame::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixFrame::copy(Self) -> Self
+pub fn DsgraphadjmatrixFrame::fill(Self, Double) -> Self
+pub fn DsgraphadjmatrixFrame::get(Self, Int32) -> Double
+pub fn DsgraphadjmatrixFrame::len(Self) -> Int32
+pub fn DsgraphadjmatrixFrame::max(Self) -> Double
+pub fn DsgraphadjmatrixFrame::mean(Self) -> Double
+pub fn DsgraphadjmatrixFrame::min(Self) -> Double
+pub fn DsgraphadjmatrixFrame::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixFrame::set(Self, Int32, Double) -> Self
+pub fn DsgraphadjmatrixFrame::sum(Self) -> Double
+pub fn DsgraphadjmatrixFrame::to_string(Self) -> String
+
+pub(all) struct DsgraphadjmatrixGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphadjmatrixGraphN::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixGraphN::copy(Self) -> Self
+pub fn DsgraphadjmatrixGraphN::fill(Self, Double) -> Self
+pub fn DsgraphadjmatrixGraphN::get(Self, Int32) -> Double
+pub fn DsgraphadjmatrixGraphN::len(Self) -> Int32
+pub fn DsgraphadjmatrixGraphN::max(Self) -> Double
+pub fn DsgraphadjmatrixGraphN::mean(Self) -> Double
+pub fn DsgraphadjmatrixGraphN::min(Self) -> Double
+pub fn DsgraphadjmatrixGraphN::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixGraphN::set(Self, Int32, Double) -> Self
+pub fn DsgraphadjmatrixGraphN::sum(Self) -> Double
+pub fn DsgraphadjmatrixGraphN::to_string(Self) -> String
+
+pub(all) struct DsgraphadjmatrixLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphadjmatrixLayer::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixLayer::copy(Self) -> Self
+pub fn DsgraphadjmatrixLayer::fill(Self, Double) -> Self
+pub fn DsgraphadjmatrixLayer::get(Self, Int32) -> Double
+pub fn DsgraphadjmatrixLayer::len(Self) -> Int32
+pub fn DsgraphadjmatrixLayer::max(Self) -> Double
+pub fn DsgraphadjmatrixLayer::mean(Self) -> Double
+pub fn DsgraphadjmatrixLayer::min(Self) -> Double
+pub fn DsgraphadjmatrixLayer::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixLayer::set(Self, Int32, Double) -> Self
+pub fn DsgraphadjmatrixLayer::sum(Self) -> Double
+pub fn DsgraphadjmatrixLayer::to_string(Self) -> String
+
+pub(all) struct DsgraphadjmatrixMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DsgraphadjmatrixMatrix::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixMatrix::det(Self) -> Double
+pub fn DsgraphadjmatrixMatrix::get(Self, Int32, Int32) -> Double
+pub fn DsgraphadjmatrixMatrix::multiply(Self, Self) -> Self
+pub fn DsgraphadjmatrixMatrix::norm(Self) -> Double
+pub fn DsgraphadjmatrixMatrix::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixMatrix::to_string(Self) -> String
+pub fn DsgraphadjmatrixMatrix::trace(Self) -> Double
+pub fn DsgraphadjmatrixMatrix::transpose(Self) -> Self
+
+pub(all) struct DsgraphadjmatrixModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphadjmatrixModel::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixModel::copy(Self) -> Self
+pub fn DsgraphadjmatrixModel::fill(Self, Double) -> Self
+pub fn DsgraphadjmatrixModel::get(Self, Int32) -> Double
+pub fn DsgraphadjmatrixModel::len(Self) -> Int32
+pub fn DsgraphadjmatrixModel::max(Self) -> Double
+pub fn DsgraphadjmatrixModel::mean(Self) -> Double
+pub fn DsgraphadjmatrixModel::min(Self) -> Double
+pub fn DsgraphadjmatrixModel::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixModel::set(Self, Int32, Double) -> Self
+pub fn DsgraphadjmatrixModel::sum(Self) -> Double
+pub fn DsgraphadjmatrixModel::to_string(Self) -> String
+
+pub(all) struct DsgraphadjmatrixNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphadjmatrixNode::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixNode::copy(Self) -> Self
+pub fn DsgraphadjmatrixNode::fill(Self, Double) -> Self
+pub fn DsgraphadjmatrixNode::get(Self, Int32) -> Double
+pub fn DsgraphadjmatrixNode::len(Self) -> Int32
+pub fn DsgraphadjmatrixNode::max(Self) -> Double
+pub fn DsgraphadjmatrixNode::mean(Self) -> Double
+pub fn DsgraphadjmatrixNode::min(Self) -> Double
+pub fn DsgraphadjmatrixNode::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixNode::set(Self, Int32, Double) -> Self
+pub fn DsgraphadjmatrixNode::sum(Self) -> Double
+pub fn DsgraphadjmatrixNode::to_string(Self) -> String
+
+pub(all) struct DsgraphadjmatrixPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphadjmatrixPath::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixPath::copy(Self) -> Self
+pub fn DsgraphadjmatrixPath::fill(Self, Double) -> Self
+pub fn DsgraphadjmatrixPath::get(Self, Int32) -> Double
+pub fn DsgraphadjmatrixPath::len(Self) -> Int32
+pub fn DsgraphadjmatrixPath::max(Self) -> Double
+pub fn DsgraphadjmatrixPath::mean(Self) -> Double
+pub fn DsgraphadjmatrixPath::min(Self) -> Double
+pub fn DsgraphadjmatrixPath::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixPath::set(Self, Int32, Double) -> Self
+pub fn DsgraphadjmatrixPath::sum(Self) -> Double
+pub fn DsgraphadjmatrixPath::to_string(Self) -> String
+
+pub(all) struct DsgraphadjmatrixPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DsgraphadjmatrixPoint::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixPoint::cross(Self, Self) -> Self
+pub fn DsgraphadjmatrixPoint::dist(Self, Self) -> Double
+pub fn DsgraphadjmatrixPoint::dot(Self, Self) -> Double
+pub fn DsgraphadjmatrixPoint::label(Self) -> Int32
+pub fn DsgraphadjmatrixPoint::lerp(Self, Self, Double) -> Self
+pub fn DsgraphadjmatrixPoint::mid(Self, Self) -> Self
+pub fn DsgraphadjmatrixPoint::negate(Self) -> Self
+pub fn DsgraphadjmatrixPoint::norm(Self) -> Double
+pub fn DsgraphadjmatrixPoint::normalize(Self) -> Self
+pub fn DsgraphadjmatrixPoint::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixPoint::sub(Self, Self) -> Self
+pub fn DsgraphadjmatrixPoint::to_string(Self) -> String
+pub fn DsgraphadjmatrixPoint::x(Self) -> Double
+pub fn DsgraphadjmatrixPoint::y(Self) -> Double
+pub fn DsgraphadjmatrixPoint::z(Self) -> Double
+
+pub(all) struct DsgraphadjmatrixRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphadjmatrixRange::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixRange::copy(Self) -> Self
+pub fn DsgraphadjmatrixRange::fill(Self, Double) -> Self
+pub fn DsgraphadjmatrixRange::get(Self, Int32) -> Double
+pub fn DsgraphadjmatrixRange::len(Self) -> Int32
+pub fn DsgraphadjmatrixRange::max(Self) -> Double
+pub fn DsgraphadjmatrixRange::mean(Self) -> Double
+pub fn DsgraphadjmatrixRange::min(Self) -> Double
+pub fn DsgraphadjmatrixRange::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixRange::set(Self, Int32, Double) -> Self
+pub fn DsgraphadjmatrixRange::sum(Self) -> Double
+pub fn DsgraphadjmatrixRange::to_string(Self) -> String
+
+pub(all) struct DsgraphadjmatrixSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DsgraphadjmatrixSeries::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixSeries::cumsum(Self) -> Self
+pub fn DsgraphadjmatrixSeries::len(Self) -> Int32
+pub fn DsgraphadjmatrixSeries::max(Self) -> Double
+pub fn DsgraphadjmatrixSeries::mean(Self) -> Double
+pub fn DsgraphadjmatrixSeries::median(Self) -> Double
+pub fn DsgraphadjmatrixSeries::min(Self) -> Double
+pub fn DsgraphadjmatrixSeries::normalize(Self) -> Self
+pub fn DsgraphadjmatrixSeries::range(Self) -> Double
+pub fn DsgraphadjmatrixSeries::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixSeries::std(Self) -> Double
+pub fn DsgraphadjmatrixSeries::sub(Self, Self) -> Self
+pub fn DsgraphadjmatrixSeries::sum(Self) -> Double
+pub fn DsgraphadjmatrixSeries::to_string(Self) -> String
+pub fn DsgraphadjmatrixSeries::variance(Self) -> Double
+
+pub(all) struct DsgraphadjmatrixSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphadjmatrixSlice::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixSlice::copy(Self) -> Self
+pub fn DsgraphadjmatrixSlice::fill(Self, Double) -> Self
+pub fn DsgraphadjmatrixSlice::get(Self, Int32) -> Double
+pub fn DsgraphadjmatrixSlice::len(Self) -> Int32
+pub fn DsgraphadjmatrixSlice::max(Self) -> Double
+pub fn DsgraphadjmatrixSlice::mean(Self) -> Double
+pub fn DsgraphadjmatrixSlice::min(Self) -> Double
+pub fn DsgraphadjmatrixSlice::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixSlice::set(Self, Int32, Double) -> Self
+pub fn DsgraphadjmatrixSlice::sum(Self) -> Double
+pub fn DsgraphadjmatrixSlice::to_string(Self) -> String
+
+pub(all) struct DsgraphadjmatrixTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphadjmatrixTable::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixTable::copy(Self) -> Self
+pub fn DsgraphadjmatrixTable::fill(Self, Double) -> Self
+pub fn DsgraphadjmatrixTable::get(Self, Int32) -> Double
+pub fn DsgraphadjmatrixTable::len(Self) -> Int32
+pub fn DsgraphadjmatrixTable::max(Self) -> Double
+pub fn DsgraphadjmatrixTable::mean(Self) -> Double
+pub fn DsgraphadjmatrixTable::min(Self) -> Double
+pub fn DsgraphadjmatrixTable::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixTable::set(Self, Int32, Double) -> Self
+pub fn DsgraphadjmatrixTable::sum(Self) -> Double
+pub fn DsgraphadjmatrixTable::to_string(Self) -> String
+
+pub(all) struct DsgraphadjmatrixVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DsgraphadjmatrixVector::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixVector::dist(Self, Self) -> Double
+pub fn DsgraphadjmatrixVector::dot(Self, Self) -> Double
+pub fn DsgraphadjmatrixVector::norm(Self) -> Double
+pub fn DsgraphadjmatrixVector::normalize(Self) -> Self
+pub fn DsgraphadjmatrixVector::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixVector::sub(Self, Self) -> Self
+pub fn DsgraphadjmatrixVector::to_string(Self) -> String
+
+pub(all) struct DsgraphadjmatrixView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphadjmatrixView::add(Self, Self) -> Self
+pub fn DsgraphadjmatrixView::copy(Self) -> Self
+pub fn DsgraphadjmatrixView::fill(Self, Double) -> Self
+pub fn DsgraphadjmatrixView::get(Self, Int32) -> Double
+pub fn DsgraphadjmatrixView::len(Self) -> Int32
+pub fn DsgraphadjmatrixView::max(Self) -> Double
+pub fn DsgraphadjmatrixView::mean(Self) -> Double
+pub fn DsgraphadjmatrixView::min(Self) -> Double
+pub fn DsgraphadjmatrixView::scale(Self, Double) -> Self
+pub fn DsgraphadjmatrixView::set(Self, Int32, Double) -> Self
+pub fn DsgraphadjmatrixView::sum(Self) -> Double
+pub fn DsgraphadjmatrixView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

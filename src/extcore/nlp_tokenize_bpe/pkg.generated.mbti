@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_tokenize_bpe"
+
+// Values
+pub fn nlp_tokenize_bpe_buffer_make(Int32) -> NlptokenizebpeBuffer
+
+pub fn nlp_tokenize_bpe_cluster_make(Int32) -> NlptokenizebpeCluster
+
+pub fn nlp_tokenize_bpe_cursor_make(Int32) -> NlptokenizebpeCursor
+
+pub fn nlp_tokenize_bpe_edge_make(Int32) -> NlptokenizebpeEdge
+
+pub fn nlp_tokenize_bpe_frame_make(Int32) -> NlptokenizebpeFrame
+
+pub fn nlp_tokenize_bpe_graphn_make(Int32) -> NlptokenizebpeGraphN
+
+pub fn nlp_tokenize_bpe_layer_make(Int32) -> NlptokenizebpeLayer
+
+pub fn nlp_tokenize_bpe_make_matrix(Int32, Int32, Double) -> NlptokenizebpeMatrix
+
+pub fn nlp_tokenize_bpe_make_point(Double, Double) -> NlptokenizebpePoint
+
+pub fn nlp_tokenize_bpe_make_point3(Double, Double, Double) -> NlptokenizebpePoint
+
+pub fn nlp_tokenize_bpe_make_series(Array[Double], String) -> NlptokenizebpeSeries
+
+pub fn nlp_tokenize_bpe_make_vector(Array[Double]) -> NlptokenizebpeVector
+
+pub fn nlp_tokenize_bpe_matrix_identity(Int32) -> NlptokenizebpeMatrix
+
+pub fn nlp_tokenize_bpe_model_make(Int32) -> NlptokenizebpeModel
+
+pub fn nlp_tokenize_bpe_node_make(Int32) -> NlptokenizebpeNode
+
+pub fn nlp_tokenize_bpe_path_make(Int32) -> NlptokenizebpePath
+
+pub fn nlp_tokenize_bpe_range_make(Int32) -> NlptokenizebpeRange
+
+pub fn nlp_tokenize_bpe_slice_make(Int32) -> NlptokenizebpeSlice
+
+pub fn nlp_tokenize_bpe_table_make(Int32) -> NlptokenizebpeTable
+
+pub fn nlp_tokenize_bpe_vector_zero(Int32) -> NlptokenizebpeVector
+
+pub fn nlp_tokenize_bpe_view_make(Int32) -> NlptokenizebpeView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlptokenizebpeBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizebpeBuffer::add(Self, Self) -> Self
+pub fn NlptokenizebpeBuffer::copy(Self) -> Self
+pub fn NlptokenizebpeBuffer::fill(Self, Double) -> Self
+pub fn NlptokenizebpeBuffer::get(Self, Int32) -> Double
+pub fn NlptokenizebpeBuffer::len(Self) -> Int32
+pub fn NlptokenizebpeBuffer::max(Self) -> Double
+pub fn NlptokenizebpeBuffer::mean(Self) -> Double
+pub fn NlptokenizebpeBuffer::min(Self) -> Double
+pub fn NlptokenizebpeBuffer::scale(Self, Double) -> Self
+pub fn NlptokenizebpeBuffer::set(Self, Int32, Double) -> Self
+pub fn NlptokenizebpeBuffer::sum(Self) -> Double
+pub fn NlptokenizebpeBuffer::to_string(Self) -> String
+
+pub(all) struct NlptokenizebpeCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizebpeCluster::add(Self, Self) -> Self
+pub fn NlptokenizebpeCluster::copy(Self) -> Self
+pub fn NlptokenizebpeCluster::fill(Self, Double) -> Self
+pub fn NlptokenizebpeCluster::get(Self, Int32) -> Double
+pub fn NlptokenizebpeCluster::len(Self) -> Int32
+pub fn NlptokenizebpeCluster::max(Self) -> Double
+pub fn NlptokenizebpeCluster::mean(Self) -> Double
+pub fn NlptokenizebpeCluster::min(Self) -> Double
+pub fn NlptokenizebpeCluster::scale(Self, Double) -> Self
+pub fn NlptokenizebpeCluster::set(Self, Int32, Double) -> Self
+pub fn NlptokenizebpeCluster::sum(Self) -> Double
+pub fn NlptokenizebpeCluster::to_string(Self) -> String
+
+pub(all) struct NlptokenizebpeCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizebpeCursor::add(Self, Self) -> Self
+pub fn NlptokenizebpeCursor::copy(Self) -> Self
+pub fn NlptokenizebpeCursor::fill(Self, Double) -> Self
+pub fn NlptokenizebpeCursor::get(Self, Int32) -> Double
+pub fn NlptokenizebpeCursor::len(Self) -> Int32
+pub fn NlptokenizebpeCursor::max(Self) -> Double
+pub fn NlptokenizebpeCursor::mean(Self) -> Double
+pub fn NlptokenizebpeCursor::min(Self) -> Double
+pub fn NlptokenizebpeCursor::scale(Self, Double) -> Self
+pub fn NlptokenizebpeCursor::set(Self, Int32, Double) -> Self
+pub fn NlptokenizebpeCursor::sum(Self) -> Double
+pub fn NlptokenizebpeCursor::to_string(Self) -> String
+
+pub(all) struct NlptokenizebpeEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizebpeEdge::add(Self, Self) -> Self
+pub fn NlptokenizebpeEdge::copy(Self) -> Self
+pub fn NlptokenizebpeEdge::fill(Self, Double) -> Self
+pub fn NlptokenizebpeEdge::get(Self, Int32) -> Double
+pub fn NlptokenizebpeEdge::len(Self) -> Int32
+pub fn NlptokenizebpeEdge::max(Self) -> Double
+pub fn NlptokenizebpeEdge::mean(Self) -> Double
+pub fn NlptokenizebpeEdge::min(Self) -> Double
+pub fn NlptokenizebpeEdge::scale(Self, Double) -> Self
+pub fn NlptokenizebpeEdge::set(Self, Int32, Double) -> Self
+pub fn NlptokenizebpeEdge::sum(Self) -> Double
+pub fn NlptokenizebpeEdge::to_string(Self) -> String
+
+pub(all) struct NlptokenizebpeFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizebpeFrame::add(Self, Self) -> Self
+pub fn NlptokenizebpeFrame::copy(Self) -> Self
+pub fn NlptokenizebpeFrame::fill(Self, Double) -> Self
+pub fn NlptokenizebpeFrame::get(Self, Int32) -> Double
+pub fn NlptokenizebpeFrame::len(Self) -> Int32
+pub fn NlptokenizebpeFrame::max(Self) -> Double
+pub fn NlptokenizebpeFrame::mean(Self) -> Double
+pub fn NlptokenizebpeFrame::min(Self) -> Double
+pub fn NlptokenizebpeFrame::scale(Self, Double) -> Self
+pub fn NlptokenizebpeFrame::set(Self, Int32, Double) -> Self
+pub fn NlptokenizebpeFrame::sum(Self) -> Double
+pub fn NlptokenizebpeFrame::to_string(Self) -> String
+
+pub(all) struct NlptokenizebpeGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizebpeGraphN::add(Self, Self) -> Self
+pub fn NlptokenizebpeGraphN::copy(Self) -> Self
+pub fn NlptokenizebpeGraphN::fill(Self, Double) -> Self
+pub fn NlptokenizebpeGraphN::get(Self, Int32) -> Double
+pub fn NlptokenizebpeGraphN::len(Self) -> Int32
+pub fn NlptokenizebpeGraphN::max(Self) -> Double
+pub fn NlptokenizebpeGraphN::mean(Self) -> Double
+pub fn NlptokenizebpeGraphN::min(Self) -> Double
+pub fn NlptokenizebpeGraphN::scale(Self, Double) -> Self
+pub fn NlptokenizebpeGraphN::set(Self, Int32, Double) -> Self
+pub fn NlptokenizebpeGraphN::sum(Self) -> Double
+pub fn NlptokenizebpeGraphN::to_string(Self) -> String
+
+pub(all) struct NlptokenizebpeLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizebpeLayer::add(Self, Self) -> Self
+pub fn NlptokenizebpeLayer::copy(Self) -> Self
+pub fn NlptokenizebpeLayer::fill(Self, Double) -> Self
+pub fn NlptokenizebpeLayer::get(Self, Int32) -> Double
+pub fn NlptokenizebpeLayer::len(Self) -> Int32
+pub fn NlptokenizebpeLayer::max(Self) -> Double
+pub fn NlptokenizebpeLayer::mean(Self) -> Double
+pub fn NlptokenizebpeLayer::min(Self) -> Double
+pub fn NlptokenizebpeLayer::scale(Self, Double) -> Self
+pub fn NlptokenizebpeLayer::set(Self, Int32, Double) -> Self
+pub fn NlptokenizebpeLayer::sum(Self) -> Double
+pub fn NlptokenizebpeLayer::to_string(Self) -> String
+
+pub(all) struct NlptokenizebpeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlptokenizebpeMatrix::add(Self, Self) -> Self
+pub fn NlptokenizebpeMatrix::det(Self) -> Double
+pub fn NlptokenizebpeMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlptokenizebpeMatrix::multiply(Self, Self) -> Self
+pub fn NlptokenizebpeMatrix::norm(Self) -> Double
+pub fn NlptokenizebpeMatrix::scale(Self, Double) -> Self
+pub fn NlptokenizebpeMatrix::to_string(Self) -> String
+pub fn NlptokenizebpeMatrix::trace(Self) -> Double
+pub fn NlptokenizebpeMatrix::transpose(Self) -> Self
+
+pub(all) struct NlptokenizebpeModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizebpeModel::add(Self, Self) -> Self
+pub fn NlptokenizebpeModel::copy(Self) -> Self
+pub fn NlptokenizebpeModel::fill(Self, Double) -> Self
+pub fn NlptokenizebpeModel::get(Self, Int32) -> Double
+pub fn NlptokenizebpeModel::len(Self) -> Int32
+pub fn NlptokenizebpeModel::max(Self) -> Double
+pub fn NlptokenizebpeModel::mean(Self) -> Double
+pub fn NlptokenizebpeModel::min(Self) -> Double
+pub fn NlptokenizebpeModel::scale(Self, Double) -> Self
+pub fn NlptokenizebpeModel::set(Self, Int32, Double) -> Self
+pub fn NlptokenizebpeModel::sum(Self) -> Double
+pub fn NlptokenizebpeModel::to_string(Self) -> String
+
+pub(all) struct NlptokenizebpeNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizebpeNode::add(Self, Self) -> Self
+pub fn NlptokenizebpeNode::copy(Self) -> Self
+pub fn NlptokenizebpeNode::fill(Self, Double) -> Self
+pub fn NlptokenizebpeNode::get(Self, Int32) -> Double
+pub fn NlptokenizebpeNode::len(Self) -> Int32
+pub fn NlptokenizebpeNode::max(Self) -> Double
+pub fn NlptokenizebpeNode::mean(Self) -> Double
+pub fn NlptokenizebpeNode::min(Self) -> Double
+pub fn NlptokenizebpeNode::scale(Self, Double) -> Self
+pub fn NlptokenizebpeNode::set(Self, Int32, Double) -> Self
+pub fn NlptokenizebpeNode::sum(Self) -> Double
+pub fn NlptokenizebpeNode::to_string(Self) -> String
+
+pub(all) struct NlptokenizebpePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizebpePath::add(Self, Self) -> Self
+pub fn NlptokenizebpePath::copy(Self) -> Self
+pub fn NlptokenizebpePath::fill(Self, Double) -> Self
+pub fn NlptokenizebpePath::get(Self, Int32) -> Double
+pub fn NlptokenizebpePath::len(Self) -> Int32
+pub fn NlptokenizebpePath::max(Self) -> Double
+pub fn NlptokenizebpePath::mean(Self) -> Double
+pub fn NlptokenizebpePath::min(Self) -> Double
+pub fn NlptokenizebpePath::scale(Self, Double) -> Self
+pub fn NlptokenizebpePath::set(Self, Int32, Double) -> Self
+pub fn NlptokenizebpePath::sum(Self) -> Double
+pub fn NlptokenizebpePath::to_string(Self) -> String
+
+pub(all) struct NlptokenizebpePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlptokenizebpePoint::add(Self, Self) -> Self
+pub fn NlptokenizebpePoint::cross(Self, Self) -> Self
+pub fn NlptokenizebpePoint::dist(Self, Self) -> Double
+pub fn NlptokenizebpePoint::dot(Self, Self) -> Double
+pub fn NlptokenizebpePoint::label(Self) -> Int32
+pub fn NlptokenizebpePoint::lerp(Self, Self, Double) -> Self
+pub fn NlptokenizebpePoint::mid(Self, Self) -> Self
+pub fn NlptokenizebpePoint::negate(Self) -> Self
+pub fn NlptokenizebpePoint::norm(Self) -> Double
+pub fn NlptokenizebpePoint::normalize(Self) -> Self
+pub fn NlptokenizebpePoint::scale(Self, Double) -> Self
+pub fn NlptokenizebpePoint::sub(Self, Self) -> Self
+pub fn NlptokenizebpePoint::to_string(Self) -> String
+pub fn NlptokenizebpePoint::x(Self) -> Double
+pub fn NlptokenizebpePoint::y(Self) -> Double
+pub fn NlptokenizebpePoint::z(Self) -> Double
+
+pub(all) struct NlptokenizebpeRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizebpeRange::add(Self, Self) -> Self
+pub fn NlptokenizebpeRange::copy(Self) -> Self
+pub fn NlptokenizebpeRange::fill(Self, Double) -> Self
+pub fn NlptokenizebpeRange::get(Self, Int32) -> Double
+pub fn NlptokenizebpeRange::len(Self) -> Int32
+pub fn NlptokenizebpeRange::max(Self) -> Double
+pub fn NlptokenizebpeRange::mean(Self) -> Double
+pub fn NlptokenizebpeRange::min(Self) -> Double
+pub fn NlptokenizebpeRange::scale(Self, Double) -> Self
+pub fn NlptokenizebpeRange::set(Self, Int32, Double) -> Self
+pub fn NlptokenizebpeRange::sum(Self) -> Double
+pub fn NlptokenizebpeRange::to_string(Self) -> String
+
+pub(all) struct NlptokenizebpeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlptokenizebpeSeries::add(Self, Self) -> Self
+pub fn NlptokenizebpeSeries::cumsum(Self) -> Self
+pub fn NlptokenizebpeSeries::len(Self) -> Int32
+pub fn NlptokenizebpeSeries::max(Self) -> Double
+pub fn NlptokenizebpeSeries::mean(Self) -> Double
+pub fn NlptokenizebpeSeries::median(Self) -> Double
+pub fn NlptokenizebpeSeries::min(Self) -> Double
+pub fn NlptokenizebpeSeries::normalize(Self) -> Self
+pub fn NlptokenizebpeSeries::range(Self) -> Double
+pub fn NlptokenizebpeSeries::scale(Self, Double) -> Self
+pub fn NlptokenizebpeSeries::std(Self) -> Double
+pub fn NlptokenizebpeSeries::sub(Self, Self) -> Self
+pub fn NlptokenizebpeSeries::sum(Self) -> Double
+pub fn NlptokenizebpeSeries::to_string(Self) -> String
+pub fn NlptokenizebpeSeries::variance(Self) -> Double
+
+pub(all) struct NlptokenizebpeSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizebpeSlice::add(Self, Self) -> Self
+pub fn NlptokenizebpeSlice::copy(Self) -> Self
+pub fn NlptokenizebpeSlice::fill(Self, Double) -> Self
+pub fn NlptokenizebpeSlice::get(Self, Int32) -> Double
+pub fn NlptokenizebpeSlice::len(Self) -> Int32
+pub fn NlptokenizebpeSlice::max(Self) -> Double
+pub fn NlptokenizebpeSlice::mean(Self) -> Double
+pub fn NlptokenizebpeSlice::min(Self) -> Double
+pub fn NlptokenizebpeSlice::scale(Self, Double) -> Self
+pub fn NlptokenizebpeSlice::set(Self, Int32, Double) -> Self
+pub fn NlptokenizebpeSlice::sum(Self) -> Double
+pub fn NlptokenizebpeSlice::to_string(Self) -> String
+
+pub(all) struct NlptokenizebpeTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizebpeTable::add(Self, Self) -> Self
+pub fn NlptokenizebpeTable::copy(Self) -> Self
+pub fn NlptokenizebpeTable::fill(Self, Double) -> Self
+pub fn NlptokenizebpeTable::get(Self, Int32) -> Double
+pub fn NlptokenizebpeTable::len(Self) -> Int32
+pub fn NlptokenizebpeTable::max(Self) -> Double
+pub fn NlptokenizebpeTable::mean(Self) -> Double
+pub fn NlptokenizebpeTable::min(Self) -> Double
+pub fn NlptokenizebpeTable::scale(Self, Double) -> Self
+pub fn NlptokenizebpeTable::set(Self, Int32, Double) -> Self
+pub fn NlptokenizebpeTable::sum(Self) -> Double
+pub fn NlptokenizebpeTable::to_string(Self) -> String
+
+pub(all) struct NlptokenizebpeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlptokenizebpeVector::add(Self, Self) -> Self
+pub fn NlptokenizebpeVector::dist(Self, Self) -> Double
+pub fn NlptokenizebpeVector::dot(Self, Self) -> Double
+pub fn NlptokenizebpeVector::norm(Self) -> Double
+pub fn NlptokenizebpeVector::normalize(Self) -> Self
+pub fn NlptokenizebpeVector::scale(Self, Double) -> Self
+pub fn NlptokenizebpeVector::sub(Self, Self) -> Self
+pub fn NlptokenizebpeVector::to_string(Self) -> String
+
+pub(all) struct NlptokenizebpeView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizebpeView::add(Self, Self) -> Self
+pub fn NlptokenizebpeView::copy(Self) -> Self
+pub fn NlptokenizebpeView::fill(Self, Double) -> Self
+pub fn NlptokenizebpeView::get(Self, Int32) -> Double
+pub fn NlptokenizebpeView::len(Self) -> Int32
+pub fn NlptokenizebpeView::max(Self) -> Double
+pub fn NlptokenizebpeView::mean(Self) -> Double
+pub fn NlptokenizebpeView::min(Self) -> Double
+pub fn NlptokenizebpeView::scale(Self, Double) -> Self
+pub fn NlptokenizebpeView::set(Self, Int32, Double) -> Self
+pub fn NlptokenizebpeView::sum(Self) -> Double
+pub fn NlptokenizebpeView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

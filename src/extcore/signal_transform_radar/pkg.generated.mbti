@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_transform_radar"
+
+// Values
+pub fn signal_transform_radar_buffer_make(Int32) -> SignaltransformradarBuffer
+
+pub fn signal_transform_radar_cluster_make(Int32) -> SignaltransformradarCluster
+
+pub fn signal_transform_radar_cursor_make(Int32) -> SignaltransformradarCursor
+
+pub fn signal_transform_radar_edge_make(Int32) -> SignaltransformradarEdge
+
+pub fn signal_transform_radar_frame_make(Int32) -> SignaltransformradarFrame
+
+pub fn signal_transform_radar_graphn_make(Int32) -> SignaltransformradarGraphN
+
+pub fn signal_transform_radar_layer_make(Int32) -> SignaltransformradarLayer
+
+pub fn signal_transform_radar_make_matrix(Int32, Int32, Double) -> SignaltransformradarMatrix
+
+pub fn signal_transform_radar_make_point(Double, Double) -> SignaltransformradarPoint
+
+pub fn signal_transform_radar_make_point3(Double, Double, Double) -> SignaltransformradarPoint
+
+pub fn signal_transform_radar_make_series(Array[Double], String) -> SignaltransformradarSeries
+
+pub fn signal_transform_radar_make_vector(Array[Double]) -> SignaltransformradarVector
+
+pub fn signal_transform_radar_matrix_identity(Int32) -> SignaltransformradarMatrix
+
+pub fn signal_transform_radar_model_make(Int32) -> SignaltransformradarModel
+
+pub fn signal_transform_radar_node_make(Int32) -> SignaltransformradarNode
+
+pub fn signal_transform_radar_path_make(Int32) -> SignaltransformradarPath
+
+pub fn signal_transform_radar_range_make(Int32) -> SignaltransformradarRange
+
+pub fn signal_transform_radar_slice_make(Int32) -> SignaltransformradarSlice
+
+pub fn signal_transform_radar_table_make(Int32) -> SignaltransformradarTable
+
+pub fn signal_transform_radar_vector_zero(Int32) -> SignaltransformradarVector
+
+pub fn signal_transform_radar_view_make(Int32) -> SignaltransformradarView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignaltransformradarBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformradarBuffer::add(Self, Self) -> Self
+pub fn SignaltransformradarBuffer::copy(Self) -> Self
+pub fn SignaltransformradarBuffer::fill(Self, Double) -> Self
+pub fn SignaltransformradarBuffer::get(Self, Int32) -> Double
+pub fn SignaltransformradarBuffer::len(Self) -> Int32
+pub fn SignaltransformradarBuffer::max(Self) -> Double
+pub fn SignaltransformradarBuffer::mean(Self) -> Double
+pub fn SignaltransformradarBuffer::min(Self) -> Double
+pub fn SignaltransformradarBuffer::scale(Self, Double) -> Self
+pub fn SignaltransformradarBuffer::set(Self, Int32, Double) -> Self
+pub fn SignaltransformradarBuffer::sum(Self) -> Double
+pub fn SignaltransformradarBuffer::to_string(Self) -> String
+
+pub(all) struct SignaltransformradarCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformradarCluster::add(Self, Self) -> Self
+pub fn SignaltransformradarCluster::copy(Self) -> Self
+pub fn SignaltransformradarCluster::fill(Self, Double) -> Self
+pub fn SignaltransformradarCluster::get(Self, Int32) -> Double
+pub fn SignaltransformradarCluster::len(Self) -> Int32
+pub fn SignaltransformradarCluster::max(Self) -> Double
+pub fn SignaltransformradarCluster::mean(Self) -> Double
+pub fn SignaltransformradarCluster::min(Self) -> Double
+pub fn SignaltransformradarCluster::scale(Self, Double) -> Self
+pub fn SignaltransformradarCluster::set(Self, Int32, Double) -> Self
+pub fn SignaltransformradarCluster::sum(Self) -> Double
+pub fn SignaltransformradarCluster::to_string(Self) -> String
+
+pub(all) struct SignaltransformradarCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformradarCursor::add(Self, Self) -> Self
+pub fn SignaltransformradarCursor::copy(Self) -> Self
+pub fn SignaltransformradarCursor::fill(Self, Double) -> Self
+pub fn SignaltransformradarCursor::get(Self, Int32) -> Double
+pub fn SignaltransformradarCursor::len(Self) -> Int32
+pub fn SignaltransformradarCursor::max(Self) -> Double
+pub fn SignaltransformradarCursor::mean(Self) -> Double
+pub fn SignaltransformradarCursor::min(Self) -> Double
+pub fn SignaltransformradarCursor::scale(Self, Double) -> Self
+pub fn SignaltransformradarCursor::set(Self, Int32, Double) -> Self
+pub fn SignaltransformradarCursor::sum(Self) -> Double
+pub fn SignaltransformradarCursor::to_string(Self) -> String
+
+pub(all) struct SignaltransformradarEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformradarEdge::add(Self, Self) -> Self
+pub fn SignaltransformradarEdge::copy(Self) -> Self
+pub fn SignaltransformradarEdge::fill(Self, Double) -> Self
+pub fn SignaltransformradarEdge::get(Self, Int32) -> Double
+pub fn SignaltransformradarEdge::len(Self) -> Int32
+pub fn SignaltransformradarEdge::max(Self) -> Double
+pub fn SignaltransformradarEdge::mean(Self) -> Double
+pub fn SignaltransformradarEdge::min(Self) -> Double
+pub fn SignaltransformradarEdge::scale(Self, Double) -> Self
+pub fn SignaltransformradarEdge::set(Self, Int32, Double) -> Self
+pub fn SignaltransformradarEdge::sum(Self) -> Double
+pub fn SignaltransformradarEdge::to_string(Self) -> String
+
+pub(all) struct SignaltransformradarFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformradarFrame::add(Self, Self) -> Self
+pub fn SignaltransformradarFrame::copy(Self) -> Self
+pub fn SignaltransformradarFrame::fill(Self, Double) -> Self
+pub fn SignaltransformradarFrame::get(Self, Int32) -> Double
+pub fn SignaltransformradarFrame::len(Self) -> Int32
+pub fn SignaltransformradarFrame::max(Self) -> Double
+pub fn SignaltransformradarFrame::mean(Self) -> Double
+pub fn SignaltransformradarFrame::min(Self) -> Double
+pub fn SignaltransformradarFrame::scale(Self, Double) -> Self
+pub fn SignaltransformradarFrame::set(Self, Int32, Double) -> Self
+pub fn SignaltransformradarFrame::sum(Self) -> Double
+pub fn SignaltransformradarFrame::to_string(Self) -> String
+
+pub(all) struct SignaltransformradarGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformradarGraphN::add(Self, Self) -> Self
+pub fn SignaltransformradarGraphN::copy(Self) -> Self
+pub fn SignaltransformradarGraphN::fill(Self, Double) -> Self
+pub fn SignaltransformradarGraphN::get(Self, Int32) -> Double
+pub fn SignaltransformradarGraphN::len(Self) -> Int32
+pub fn SignaltransformradarGraphN::max(Self) -> Double
+pub fn SignaltransformradarGraphN::mean(Self) -> Double
+pub fn SignaltransformradarGraphN::min(Self) -> Double
+pub fn SignaltransformradarGraphN::scale(Self, Double) -> Self
+pub fn SignaltransformradarGraphN::set(Self, Int32, Double) -> Self
+pub fn SignaltransformradarGraphN::sum(Self) -> Double
+pub fn SignaltransformradarGraphN::to_string(Self) -> String
+
+pub(all) struct SignaltransformradarLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformradarLayer::add(Self, Self) -> Self
+pub fn SignaltransformradarLayer::copy(Self) -> Self
+pub fn SignaltransformradarLayer::fill(Self, Double) -> Self
+pub fn SignaltransformradarLayer::get(Self, Int32) -> Double
+pub fn SignaltransformradarLayer::len(Self) -> Int32
+pub fn SignaltransformradarLayer::max(Self) -> Double
+pub fn SignaltransformradarLayer::mean(Self) -> Double
+pub fn SignaltransformradarLayer::min(Self) -> Double
+pub fn SignaltransformradarLayer::scale(Self, Double) -> Self
+pub fn SignaltransformradarLayer::set(Self, Int32, Double) -> Self
+pub fn SignaltransformradarLayer::sum(Self) -> Double
+pub fn SignaltransformradarLayer::to_string(Self) -> String
+
+pub(all) struct SignaltransformradarMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignaltransformradarMatrix::add(Self, Self) -> Self
+pub fn SignaltransformradarMatrix::det(Self) -> Double
+pub fn SignaltransformradarMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignaltransformradarMatrix::multiply(Self, Self) -> Self
+pub fn SignaltransformradarMatrix::norm(Self) -> Double
+pub fn SignaltransformradarMatrix::scale(Self, Double) -> Self
+pub fn SignaltransformradarMatrix::to_string(Self) -> String
+pub fn SignaltransformradarMatrix::trace(Self) -> Double
+pub fn SignaltransformradarMatrix::transpose(Self) -> Self
+
+pub(all) struct SignaltransformradarModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformradarModel::add(Self, Self) -> Self
+pub fn SignaltransformradarModel::copy(Self) -> Self
+pub fn SignaltransformradarModel::fill(Self, Double) -> Self
+pub fn SignaltransformradarModel::get(Self, Int32) -> Double
+pub fn SignaltransformradarModel::len(Self) -> Int32
+pub fn SignaltransformradarModel::max(Self) -> Double
+pub fn SignaltransformradarModel::mean(Self) -> Double
+pub fn SignaltransformradarModel::min(Self) -> Double
+pub fn SignaltransformradarModel::scale(Self, Double) -> Self
+pub fn SignaltransformradarModel::set(Self, Int32, Double) -> Self
+pub fn SignaltransformradarModel::sum(Self) -> Double
+pub fn SignaltransformradarModel::to_string(Self) -> String
+
+pub(all) struct SignaltransformradarNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformradarNode::add(Self, Self) -> Self
+pub fn SignaltransformradarNode::copy(Self) -> Self
+pub fn SignaltransformradarNode::fill(Self, Double) -> Self
+pub fn SignaltransformradarNode::get(Self, Int32) -> Double
+pub fn SignaltransformradarNode::len(Self) -> Int32
+pub fn SignaltransformradarNode::max(Self) -> Double
+pub fn SignaltransformradarNode::mean(Self) -> Double
+pub fn SignaltransformradarNode::min(Self) -> Double
+pub fn SignaltransformradarNode::scale(Self, Double) -> Self
+pub fn SignaltransformradarNode::set(Self, Int32, Double) -> Self
+pub fn SignaltransformradarNode::sum(Self) -> Double
+pub fn SignaltransformradarNode::to_string(Self) -> String
+
+pub(all) struct SignaltransformradarPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformradarPath::add(Self, Self) -> Self
+pub fn SignaltransformradarPath::copy(Self) -> Self
+pub fn SignaltransformradarPath::fill(Self, Double) -> Self
+pub fn SignaltransformradarPath::get(Self, Int32) -> Double
+pub fn SignaltransformradarPath::len(Self) -> Int32
+pub fn SignaltransformradarPath::max(Self) -> Double
+pub fn SignaltransformradarPath::mean(Self) -> Double
+pub fn SignaltransformradarPath::min(Self) -> Double
+pub fn SignaltransformradarPath::scale(Self, Double) -> Self
+pub fn SignaltransformradarPath::set(Self, Int32, Double) -> Self
+pub fn SignaltransformradarPath::sum(Self) -> Double
+pub fn SignaltransformradarPath::to_string(Self) -> String
+
+pub(all) struct SignaltransformradarPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignaltransformradarPoint::add(Self, Self) -> Self
+pub fn SignaltransformradarPoint::cross(Self, Self) -> Self
+pub fn SignaltransformradarPoint::dist(Self, Self) -> Double
+pub fn SignaltransformradarPoint::dot(Self, Self) -> Double
+pub fn SignaltransformradarPoint::label(Self) -> Int32
+pub fn SignaltransformradarPoint::lerp(Self, Self, Double) -> Self
+pub fn SignaltransformradarPoint::mid(Self, Self) -> Self
+pub fn SignaltransformradarPoint::negate(Self) -> Self
+pub fn SignaltransformradarPoint::norm(Self) -> Double
+pub fn SignaltransformradarPoint::normalize(Self) -> Self
+pub fn SignaltransformradarPoint::scale(Self, Double) -> Self
+pub fn SignaltransformradarPoint::sub(Self, Self) -> Self
+pub fn SignaltransformradarPoint::to_string(Self) -> String
+pub fn SignaltransformradarPoint::x(Self) -> Double
+pub fn SignaltransformradarPoint::y(Self) -> Double
+pub fn SignaltransformradarPoint::z(Self) -> Double
+
+pub(all) struct SignaltransformradarRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformradarRange::add(Self, Self) -> Self
+pub fn SignaltransformradarRange::copy(Self) -> Self
+pub fn SignaltransformradarRange::fill(Self, Double) -> Self
+pub fn SignaltransformradarRange::get(Self, Int32) -> Double
+pub fn SignaltransformradarRange::len(Self) -> Int32
+pub fn SignaltransformradarRange::max(Self) -> Double
+pub fn SignaltransformradarRange::mean(Self) -> Double
+pub fn SignaltransformradarRange::min(Self) -> Double
+pub fn SignaltransformradarRange::scale(Self, Double) -> Self
+pub fn SignaltransformradarRange::set(Self, Int32, Double) -> Self
+pub fn SignaltransformradarRange::sum(Self) -> Double
+pub fn SignaltransformradarRange::to_string(Self) -> String
+
+pub(all) struct SignaltransformradarSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignaltransformradarSeries::add(Self, Self) -> Self
+pub fn SignaltransformradarSeries::cumsum(Self) -> Self
+pub fn SignaltransformradarSeries::len(Self) -> Int32
+pub fn SignaltransformradarSeries::max(Self) -> Double
+pub fn SignaltransformradarSeries::mean(Self) -> Double
+pub fn SignaltransformradarSeries::median(Self) -> Double
+pub fn SignaltransformradarSeries::min(Self) -> Double
+pub fn SignaltransformradarSeries::normalize(Self) -> Self
+pub fn SignaltransformradarSeries::range(Self) -> Double
+pub fn SignaltransformradarSeries::scale(Self, Double) -> Self
+pub fn SignaltransformradarSeries::std(Self) -> Double
+pub fn SignaltransformradarSeries::sub(Self, Self) -> Self
+pub fn SignaltransformradarSeries::sum(Self) -> Double
+pub fn SignaltransformradarSeries::to_string(Self) -> String
+pub fn SignaltransformradarSeries::variance(Self) -> Double
+
+pub(all) struct SignaltransformradarSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformradarSlice::add(Self, Self) -> Self
+pub fn SignaltransformradarSlice::copy(Self) -> Self
+pub fn SignaltransformradarSlice::fill(Self, Double) -> Self
+pub fn SignaltransformradarSlice::get(Self, Int32) -> Double
+pub fn SignaltransformradarSlice::len(Self) -> Int32
+pub fn SignaltransformradarSlice::max(Self) -> Double
+pub fn SignaltransformradarSlice::mean(Self) -> Double
+pub fn SignaltransformradarSlice::min(Self) -> Double
+pub fn SignaltransformradarSlice::scale(Self, Double) -> Self
+pub fn SignaltransformradarSlice::set(Self, Int32, Double) -> Self
+pub fn SignaltransformradarSlice::sum(Self) -> Double
+pub fn SignaltransformradarSlice::to_string(Self) -> String
+
+pub(all) struct SignaltransformradarTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformradarTable::add(Self, Self) -> Self
+pub fn SignaltransformradarTable::copy(Self) -> Self
+pub fn SignaltransformradarTable::fill(Self, Double) -> Self
+pub fn SignaltransformradarTable::get(Self, Int32) -> Double
+pub fn SignaltransformradarTable::len(Self) -> Int32
+pub fn SignaltransformradarTable::max(Self) -> Double
+pub fn SignaltransformradarTable::mean(Self) -> Double
+pub fn SignaltransformradarTable::min(Self) -> Double
+pub fn SignaltransformradarTable::scale(Self, Double) -> Self
+pub fn SignaltransformradarTable::set(Self, Int32, Double) -> Self
+pub fn SignaltransformradarTable::sum(Self) -> Double
+pub fn SignaltransformradarTable::to_string(Self) -> String
+
+pub(all) struct SignaltransformradarVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignaltransformradarVector::add(Self, Self) -> Self
+pub fn SignaltransformradarVector::dist(Self, Self) -> Double
+pub fn SignaltransformradarVector::dot(Self, Self) -> Double
+pub fn SignaltransformradarVector::norm(Self) -> Double
+pub fn SignaltransformradarVector::normalize(Self) -> Self
+pub fn SignaltransformradarVector::scale(Self, Double) -> Self
+pub fn SignaltransformradarVector::sub(Self, Self) -> Self
+pub fn SignaltransformradarVector::to_string(Self) -> String
+
+pub(all) struct SignaltransformradarView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformradarView::add(Self, Self) -> Self
+pub fn SignaltransformradarView::copy(Self) -> Self
+pub fn SignaltransformradarView::fill(Self, Double) -> Self
+pub fn SignaltransformradarView::get(Self, Int32) -> Double
+pub fn SignaltransformradarView::len(Self) -> Int32
+pub fn SignaltransformradarView::max(Self) -> Double
+pub fn SignaltransformradarView::mean(Self) -> Double
+pub fn SignaltransformradarView::min(Self) -> Double
+pub fn SignaltransformradarView::scale(Self, Double) -> Self
+pub fn SignaltransformradarView::set(Self, Int32, Double) -> Self
+pub fn SignaltransformradarView::sum(Self) -> Double
+pub fn SignaltransformradarView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

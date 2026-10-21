@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_cluster_gmm"
+
+// Values
+pub fn ml_cluster_gmm_buffer_make(Int32) -> MlclustergmmBuffer
+
+pub fn ml_cluster_gmm_cluster_make(Int32) -> MlclustergmmCluster
+
+pub fn ml_cluster_gmm_cursor_make(Int32) -> MlclustergmmCursor
+
+pub fn ml_cluster_gmm_edge_make(Int32) -> MlclustergmmEdge
+
+pub fn ml_cluster_gmm_frame_make(Int32) -> MlclustergmmFrame
+
+pub fn ml_cluster_gmm_graphn_make(Int32) -> MlclustergmmGraphN
+
+pub fn ml_cluster_gmm_layer_make(Int32) -> MlclustergmmLayer
+
+pub fn ml_cluster_gmm_make_matrix(Int32, Int32, Double) -> MlclustergmmMatrix
+
+pub fn ml_cluster_gmm_make_point(Double, Double) -> MlclustergmmPoint
+
+pub fn ml_cluster_gmm_make_point3(Double, Double, Double) -> MlclustergmmPoint
+
+pub fn ml_cluster_gmm_make_series(Array[Double], String) -> MlclustergmmSeries
+
+pub fn ml_cluster_gmm_make_vector(Array[Double]) -> MlclustergmmVector
+
+pub fn ml_cluster_gmm_matrix_identity(Int32) -> MlclustergmmMatrix
+
+pub fn ml_cluster_gmm_model_make(Int32) -> MlclustergmmModel
+
+pub fn ml_cluster_gmm_node_make(Int32) -> MlclustergmmNode
+
+pub fn ml_cluster_gmm_path_make(Int32) -> MlclustergmmPath
+
+pub fn ml_cluster_gmm_range_make(Int32) -> MlclustergmmRange
+
+pub fn ml_cluster_gmm_slice_make(Int32) -> MlclustergmmSlice
+
+pub fn ml_cluster_gmm_table_make(Int32) -> MlclustergmmTable
+
+pub fn ml_cluster_gmm_vector_zero(Int32) -> MlclustergmmVector
+
+pub fn ml_cluster_gmm_view_make(Int32) -> MlclustergmmView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlclustergmmBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclustergmmBuffer::add(Self, Self) -> Self
+pub fn MlclustergmmBuffer::copy(Self) -> Self
+pub fn MlclustergmmBuffer::fill(Self, Double) -> Self
+pub fn MlclustergmmBuffer::get(Self, Int32) -> Double
+pub fn MlclustergmmBuffer::len(Self) -> Int32
+pub fn MlclustergmmBuffer::max(Self) -> Double
+pub fn MlclustergmmBuffer::mean(Self) -> Double
+pub fn MlclustergmmBuffer::min(Self) -> Double
+pub fn MlclustergmmBuffer::scale(Self, Double) -> Self
+pub fn MlclustergmmBuffer::set(Self, Int32, Double) -> Self
+pub fn MlclustergmmBuffer::sum(Self) -> Double
+pub fn MlclustergmmBuffer::to_string(Self) -> String
+
+pub(all) struct MlclustergmmCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclustergmmCluster::add(Self, Self) -> Self
+pub fn MlclustergmmCluster::copy(Self) -> Self
+pub fn MlclustergmmCluster::fill(Self, Double) -> Self
+pub fn MlclustergmmCluster::get(Self, Int32) -> Double
+pub fn MlclustergmmCluster::len(Self) -> Int32
+pub fn MlclustergmmCluster::max(Self) -> Double
+pub fn MlclustergmmCluster::mean(Self) -> Double
+pub fn MlclustergmmCluster::min(Self) -> Double
+pub fn MlclustergmmCluster::scale(Self, Double) -> Self
+pub fn MlclustergmmCluster::set(Self, Int32, Double) -> Self
+pub fn MlclustergmmCluster::sum(Self) -> Double
+pub fn MlclustergmmCluster::to_string(Self) -> String
+
+pub(all) struct MlclustergmmCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclustergmmCursor::add(Self, Self) -> Self
+pub fn MlclustergmmCursor::copy(Self) -> Self
+pub fn MlclustergmmCursor::fill(Self, Double) -> Self
+pub fn MlclustergmmCursor::get(Self, Int32) -> Double
+pub fn MlclustergmmCursor::len(Self) -> Int32
+pub fn MlclustergmmCursor::max(Self) -> Double
+pub fn MlclustergmmCursor::mean(Self) -> Double
+pub fn MlclustergmmCursor::min(Self) -> Double
+pub fn MlclustergmmCursor::scale(Self, Double) -> Self
+pub fn MlclustergmmCursor::set(Self, Int32, Double) -> Self
+pub fn MlclustergmmCursor::sum(Self) -> Double
+pub fn MlclustergmmCursor::to_string(Self) -> String
+
+pub(all) struct MlclustergmmEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclustergmmEdge::add(Self, Self) -> Self
+pub fn MlclustergmmEdge::copy(Self) -> Self
+pub fn MlclustergmmEdge::fill(Self, Double) -> Self
+pub fn MlclustergmmEdge::get(Self, Int32) -> Double
+pub fn MlclustergmmEdge::len(Self) -> Int32
+pub fn MlclustergmmEdge::max(Self) -> Double
+pub fn MlclustergmmEdge::mean(Self) -> Double
+pub fn MlclustergmmEdge::min(Self) -> Double
+pub fn MlclustergmmEdge::scale(Self, Double) -> Self
+pub fn MlclustergmmEdge::set(Self, Int32, Double) -> Self
+pub fn MlclustergmmEdge::sum(Self) -> Double
+pub fn MlclustergmmEdge::to_string(Self) -> String
+
+pub(all) struct MlclustergmmFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclustergmmFrame::add(Self, Self) -> Self
+pub fn MlclustergmmFrame::copy(Self) -> Self
+pub fn MlclustergmmFrame::fill(Self, Double) -> Self
+pub fn MlclustergmmFrame::get(Self, Int32) -> Double
+pub fn MlclustergmmFrame::len(Self) -> Int32
+pub fn MlclustergmmFrame::max(Self) -> Double
+pub fn MlclustergmmFrame::mean(Self) -> Double
+pub fn MlclustergmmFrame::min(Self) -> Double
+pub fn MlclustergmmFrame::scale(Self, Double) -> Self
+pub fn MlclustergmmFrame::set(Self, Int32, Double) -> Self
+pub fn MlclustergmmFrame::sum(Self) -> Double
+pub fn MlclustergmmFrame::to_string(Self) -> String
+
+pub(all) struct MlclustergmmGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclustergmmGraphN::add(Self, Self) -> Self
+pub fn MlclustergmmGraphN::copy(Self) -> Self
+pub fn MlclustergmmGraphN::fill(Self, Double) -> Self
+pub fn MlclustergmmGraphN::get(Self, Int32) -> Double
+pub fn MlclustergmmGraphN::len(Self) -> Int32
+pub fn MlclustergmmGraphN::max(Self) -> Double
+pub fn MlclustergmmGraphN::mean(Self) -> Double
+pub fn MlclustergmmGraphN::min(Self) -> Double
+pub fn MlclustergmmGraphN::scale(Self, Double) -> Self
+pub fn MlclustergmmGraphN::set(Self, Int32, Double) -> Self
+pub fn MlclustergmmGraphN::sum(Self) -> Double
+pub fn MlclustergmmGraphN::to_string(Self) -> String
+
+pub(all) struct MlclustergmmLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclustergmmLayer::add(Self, Self) -> Self
+pub fn MlclustergmmLayer::copy(Self) -> Self
+pub fn MlclustergmmLayer::fill(Self, Double) -> Self
+pub fn MlclustergmmLayer::get(Self, Int32) -> Double
+pub fn MlclustergmmLayer::len(Self) -> Int32
+pub fn MlclustergmmLayer::max(Self) -> Double
+pub fn MlclustergmmLayer::mean(Self) -> Double
+pub fn MlclustergmmLayer::min(Self) -> Double
+pub fn MlclustergmmLayer::scale(Self, Double) -> Self
+pub fn MlclustergmmLayer::set(Self, Int32, Double) -> Self
+pub fn MlclustergmmLayer::sum(Self) -> Double
+pub fn MlclustergmmLayer::to_string(Self) -> String
+
+pub(all) struct MlclustergmmMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlclustergmmMatrix::add(Self, Self) -> Self
+pub fn MlclustergmmMatrix::det(Self) -> Double
+pub fn MlclustergmmMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlclustergmmMatrix::multiply(Self, Self) -> Self
+pub fn MlclustergmmMatrix::norm(Self) -> Double
+pub fn MlclustergmmMatrix::scale(Self, Double) -> Self
+pub fn MlclustergmmMatrix::to_string(Self) -> String
+pub fn MlclustergmmMatrix::trace(Self) -> Double
+pub fn MlclustergmmMatrix::transpose(Self) -> Self
+
+pub(all) struct MlclustergmmModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclustergmmModel::add(Self, Self) -> Self
+pub fn MlclustergmmModel::copy(Self) -> Self
+pub fn MlclustergmmModel::fill(Self, Double) -> Self
+pub fn MlclustergmmModel::get(Self, Int32) -> Double
+pub fn MlclustergmmModel::len(Self) -> Int32
+pub fn MlclustergmmModel::max(Self) -> Double
+pub fn MlclustergmmModel::mean(Self) -> Double
+pub fn MlclustergmmModel::min(Self) -> Double
+pub fn MlclustergmmModel::scale(Self, Double) -> Self
+pub fn MlclustergmmModel::set(Self, Int32, Double) -> Self
+pub fn MlclustergmmModel::sum(Self) -> Double
+pub fn MlclustergmmModel::to_string(Self) -> String
+
+pub(all) struct MlclustergmmNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclustergmmNode::add(Self, Self) -> Self
+pub fn MlclustergmmNode::copy(Self) -> Self
+pub fn MlclustergmmNode::fill(Self, Double) -> Self
+pub fn MlclustergmmNode::get(Self, Int32) -> Double
+pub fn MlclustergmmNode::len(Self) -> Int32
+pub fn MlclustergmmNode::max(Self) -> Double
+pub fn MlclustergmmNode::mean(Self) -> Double
+pub fn MlclustergmmNode::min(Self) -> Double
+pub fn MlclustergmmNode::scale(Self, Double) -> Self
+pub fn MlclustergmmNode::set(Self, Int32, Double) -> Self
+pub fn MlclustergmmNode::sum(Self) -> Double
+pub fn MlclustergmmNode::to_string(Self) -> String
+
+pub(all) struct MlclustergmmPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclustergmmPath::add(Self, Self) -> Self
+pub fn MlclustergmmPath::copy(Self) -> Self
+pub fn MlclustergmmPath::fill(Self, Double) -> Self
+pub fn MlclustergmmPath::get(Self, Int32) -> Double
+pub fn MlclustergmmPath::len(Self) -> Int32
+pub fn MlclustergmmPath::max(Self) -> Double
+pub fn MlclustergmmPath::mean(Self) -> Double
+pub fn MlclustergmmPath::min(Self) -> Double
+pub fn MlclustergmmPath::scale(Self, Double) -> Self
+pub fn MlclustergmmPath::set(Self, Int32, Double) -> Self
+pub fn MlclustergmmPath::sum(Self) -> Double
+pub fn MlclustergmmPath::to_string(Self) -> String
+
+pub(all) struct MlclustergmmPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlclustergmmPoint::add(Self, Self) -> Self
+pub fn MlclustergmmPoint::cross(Self, Self) -> Self
+pub fn MlclustergmmPoint::dist(Self, Self) -> Double
+pub fn MlclustergmmPoint::dot(Self, Self) -> Double
+pub fn MlclustergmmPoint::label(Self) -> Int32
+pub fn MlclustergmmPoint::lerp(Self, Self, Double) -> Self
+pub fn MlclustergmmPoint::mid(Self, Self) -> Self
+pub fn MlclustergmmPoint::negate(Self) -> Self
+pub fn MlclustergmmPoint::norm(Self) -> Double
+pub fn MlclustergmmPoint::normalize(Self) -> Self
+pub fn MlclustergmmPoint::scale(Self, Double) -> Self
+pub fn MlclustergmmPoint::sub(Self, Self) -> Self
+pub fn MlclustergmmPoint::to_string(Self) -> String
+pub fn MlclustergmmPoint::x(Self) -> Double
+pub fn MlclustergmmPoint::y(Self) -> Double
+pub fn MlclustergmmPoint::z(Self) -> Double
+
+pub(all) struct MlclustergmmRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclustergmmRange::add(Self, Self) -> Self
+pub fn MlclustergmmRange::copy(Self) -> Self
+pub fn MlclustergmmRange::fill(Self, Double) -> Self
+pub fn MlclustergmmRange::get(Self, Int32) -> Double
+pub fn MlclustergmmRange::len(Self) -> Int32
+pub fn MlclustergmmRange::max(Self) -> Double
+pub fn MlclustergmmRange::mean(Self) -> Double
+pub fn MlclustergmmRange::min(Self) -> Double
+pub fn MlclustergmmRange::scale(Self, Double) -> Self
+pub fn MlclustergmmRange::set(Self, Int32, Double) -> Self
+pub fn MlclustergmmRange::sum(Self) -> Double
+pub fn MlclustergmmRange::to_string(Self) -> String
+
+pub(all) struct MlclustergmmSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlclustergmmSeries::add(Self, Self) -> Self
+pub fn MlclustergmmSeries::cumsum(Self) -> Self
+pub fn MlclustergmmSeries::len(Self) -> Int32
+pub fn MlclustergmmSeries::max(Self) -> Double
+pub fn MlclustergmmSeries::mean(Self) -> Double
+pub fn MlclustergmmSeries::median(Self) -> Double
+pub fn MlclustergmmSeries::min(Self) -> Double
+pub fn MlclustergmmSeries::normalize(Self) -> Self
+pub fn MlclustergmmSeries::range(Self) -> Double
+pub fn MlclustergmmSeries::scale(Self, Double) -> Self
+pub fn MlclustergmmSeries::std(Self) -> Double
+pub fn MlclustergmmSeries::sub(Self, Self) -> Self
+pub fn MlclustergmmSeries::sum(Self) -> Double
+pub fn MlclustergmmSeries::to_string(Self) -> String
+pub fn MlclustergmmSeries::variance(Self) -> Double
+
+pub(all) struct MlclustergmmSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclustergmmSlice::add(Self, Self) -> Self
+pub fn MlclustergmmSlice::copy(Self) -> Self
+pub fn MlclustergmmSlice::fill(Self, Double) -> Self
+pub fn MlclustergmmSlice::get(Self, Int32) -> Double
+pub fn MlclustergmmSlice::len(Self) -> Int32
+pub fn MlclustergmmSlice::max(Self) -> Double
+pub fn MlclustergmmSlice::mean(Self) -> Double
+pub fn MlclustergmmSlice::min(Self) -> Double
+pub fn MlclustergmmSlice::scale(Self, Double) -> Self
+pub fn MlclustergmmSlice::set(Self, Int32, Double) -> Self
+pub fn MlclustergmmSlice::sum(Self) -> Double
+pub fn MlclustergmmSlice::to_string(Self) -> String
+
+pub(all) struct MlclustergmmTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclustergmmTable::add(Self, Self) -> Self
+pub fn MlclustergmmTable::copy(Self) -> Self
+pub fn MlclustergmmTable::fill(Self, Double) -> Self
+pub fn MlclustergmmTable::get(Self, Int32) -> Double
+pub fn MlclustergmmTable::len(Self) -> Int32
+pub fn MlclustergmmTable::max(Self) -> Double
+pub fn MlclustergmmTable::mean(Self) -> Double
+pub fn MlclustergmmTable::min(Self) -> Double
+pub fn MlclustergmmTable::scale(Self, Double) -> Self
+pub fn MlclustergmmTable::set(Self, Int32, Double) -> Self
+pub fn MlclustergmmTable::sum(Self) -> Double
+pub fn MlclustergmmTable::to_string(Self) -> String
+
+pub(all) struct MlclustergmmVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlclustergmmVector::add(Self, Self) -> Self
+pub fn MlclustergmmVector::dist(Self, Self) -> Double
+pub fn MlclustergmmVector::dot(Self, Self) -> Double
+pub fn MlclustergmmVector::norm(Self) -> Double
+pub fn MlclustergmmVector::normalize(Self) -> Self
+pub fn MlclustergmmVector::scale(Self, Double) -> Self
+pub fn MlclustergmmVector::sub(Self, Self) -> Self
+pub fn MlclustergmmVector::to_string(Self) -> String
+
+pub(all) struct MlclustergmmView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclustergmmView::add(Self, Self) -> Self
+pub fn MlclustergmmView::copy(Self) -> Self
+pub fn MlclustergmmView::fill(Self, Double) -> Self
+pub fn MlclustergmmView::get(Self, Int32) -> Double
+pub fn MlclustergmmView::len(Self) -> Int32
+pub fn MlclustergmmView::max(Self) -> Double
+pub fn MlclustergmmView::mean(Self) -> Double
+pub fn MlclustergmmView::min(Self) -> Double
+pub fn MlclustergmmView::scale(Self, Double) -> Self
+pub fn MlclustergmmView::set(Self, Int32, Double) -> Self
+pub fn MlclustergmmView::sum(Self) -> Double
+pub fn MlclustergmmView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

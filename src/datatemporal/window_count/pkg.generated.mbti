@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/window_count"
+
+// Values
+pub fn window_count_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn window_count_corr(Array[Double], Array[Double]) -> Double
+
+pub fn window_count_cov(Array[Double], Array[Double]) -> Double
+
+pub fn window_count_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn window_count_mae(Array[Double], Array[Double]) -> Double
+
+pub fn window_count_make_labeled_point(Double, Double, Int32) -> Window_countPoint
+
+pub fn window_count_make_matrix(Int32, Int32, Double) -> Window_countMatrix
+
+pub fn window_count_make_point(Double, Double) -> Window_countPoint
+
+pub fn window_count_make_series(Array[Double], String) -> Window_countSeries
+
+pub fn window_count_make_vector(Array[Double]) -> Window_countVector
+
+pub fn window_count_matrix_add(Window_countMatrix, Window_countMatrix) -> Window_countMatrix
+
+pub fn window_count_matrix_get(Window_countMatrix, Int32, Int32) -> Double
+
+pub fn window_count_matrix_identity(Int32) -> Window_countMatrix
+
+pub fn window_count_matrix_multiply(Window_countMatrix, Window_countMatrix) -> Window_countMatrix
+
+pub fn window_count_matrix_norm(Window_countMatrix) -> Double
+
+pub fn window_count_matrix_scale(Window_countMatrix, Double) -> Window_countMatrix
+
+pub fn window_count_matrix_to_string(Window_countMatrix) -> String
+
+pub fn window_count_matrix_trace(Window_countMatrix) -> Double
+
+pub fn window_count_matrix_transpose(Window_countMatrix) -> Window_countMatrix
+
+pub fn window_count_mse(Array[Double], Array[Double]) -> Double
+
+pub fn window_count_point_add(Window_countPoint, Window_countPoint) -> Window_countPoint
+
+pub fn window_count_point_dist(Window_countPoint, Window_countPoint) -> Double
+
+pub fn window_count_point_dot(Window_countPoint, Window_countPoint) -> Double
+
+pub fn window_count_point_label(Window_countPoint) -> Int32
+
+pub fn window_count_point_norm(Window_countPoint) -> Double
+
+pub fn window_count_point_scale(Window_countPoint, Double) -> Window_countPoint
+
+pub fn window_count_point_sub(Window_countPoint, Window_countPoint) -> Window_countPoint
+
+pub fn window_count_point_to_string(Window_countPoint) -> String
+
+pub fn window_count_point_x(Window_countPoint) -> Double
+
+pub fn window_count_point_y(Window_countPoint) -> Double
+
+pub fn window_count_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn window_count_r2(Array[Double], Array[Double]) -> Double
+
+pub fn window_count_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn window_count_series_add(Window_countSeries, Window_countSeries) -> Window_countSeries
+
+pub fn window_count_series_len(Window_countSeries) -> Int32
+
+pub fn window_count_series_max(Window_countSeries) -> Double
+
+pub fn window_count_series_mean(Window_countSeries) -> Double
+
+pub fn window_count_series_min(Window_countSeries) -> Double
+
+pub fn window_count_series_scale(Window_countSeries, Double) -> Window_countSeries
+
+pub fn window_count_series_std(Window_countSeries) -> Double
+
+pub fn window_count_series_sum(Window_countSeries) -> Double
+
+pub fn window_count_series_to_string(Window_countSeries) -> String
+
+pub fn window_count_series_var(Window_countSeries) -> Double
+
+pub fn window_count_std(Array[Double]) -> Double
+
+pub fn window_count_var(Array[Double]) -> Double
+
+pub fn window_count_vector_add(Window_countVector, Window_countVector) -> Window_countVector
+
+pub fn window_count_vector_dist(Window_countVector, Window_countVector) -> Double
+
+pub fn window_count_vector_dot(Window_countVector, Window_countVector) -> Double
+
+pub fn window_count_vector_norm(Window_countVector) -> Double
+
+pub fn window_count_vector_normalize(Window_countVector) -> Window_countVector
+
+pub fn window_count_vector_scale(Window_countVector, Double) -> Window_countVector
+
+pub fn window_count_vector_sub(Window_countVector, Window_countVector) -> Window_countVector
+
+pub fn window_count_vector_to_string(Window_countVector) -> String
+
+pub fn window_count_vector_zero(Int32) -> Window_countVector
+
+// Errors
+
+// Types and methods
+pub struct Window_countMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Window_countPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Window_countSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Window_countVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

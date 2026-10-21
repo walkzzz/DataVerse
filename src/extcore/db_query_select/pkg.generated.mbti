@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_query_select"
+
+// Values
+pub fn db_query_select_buffer_make(Int32) -> DbqueryselectBuffer
+
+pub fn db_query_select_cluster_make(Int32) -> DbqueryselectCluster
+
+pub fn db_query_select_cursor_make(Int32) -> DbqueryselectCursor
+
+pub fn db_query_select_edge_make(Int32) -> DbqueryselectEdge
+
+pub fn db_query_select_frame_make(Int32) -> DbqueryselectFrame
+
+pub fn db_query_select_graphn_make(Int32) -> DbqueryselectGraphN
+
+pub fn db_query_select_layer_make(Int32) -> DbqueryselectLayer
+
+pub fn db_query_select_make_matrix(Int32, Int32, Double) -> DbqueryselectMatrix
+
+pub fn db_query_select_make_point(Double, Double) -> DbqueryselectPoint
+
+pub fn db_query_select_make_point3(Double, Double, Double) -> DbqueryselectPoint
+
+pub fn db_query_select_make_series(Array[Double], String) -> DbqueryselectSeries
+
+pub fn db_query_select_make_vector(Array[Double]) -> DbqueryselectVector
+
+pub fn db_query_select_matrix_identity(Int32) -> DbqueryselectMatrix
+
+pub fn db_query_select_model_make(Int32) -> DbqueryselectModel
+
+pub fn db_query_select_node_make(Int32) -> DbqueryselectNode
+
+pub fn db_query_select_path_make(Int32) -> DbqueryselectPath
+
+pub fn db_query_select_range_make(Int32) -> DbqueryselectRange
+
+pub fn db_query_select_slice_make(Int32) -> DbqueryselectSlice
+
+pub fn db_query_select_table_make(Int32) -> DbqueryselectTable
+
+pub fn db_query_select_vector_zero(Int32) -> DbqueryselectVector
+
+pub fn db_query_select_view_make(Int32) -> DbqueryselectView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbqueryselectBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryselectBuffer::add(Self, Self) -> Self
+pub fn DbqueryselectBuffer::copy(Self) -> Self
+pub fn DbqueryselectBuffer::fill(Self, Double) -> Self
+pub fn DbqueryselectBuffer::get(Self, Int32) -> Double
+pub fn DbqueryselectBuffer::len(Self) -> Int32
+pub fn DbqueryselectBuffer::max(Self) -> Double
+pub fn DbqueryselectBuffer::mean(Self) -> Double
+pub fn DbqueryselectBuffer::min(Self) -> Double
+pub fn DbqueryselectBuffer::scale(Self, Double) -> Self
+pub fn DbqueryselectBuffer::set(Self, Int32, Double) -> Self
+pub fn DbqueryselectBuffer::sum(Self) -> Double
+pub fn DbqueryselectBuffer::to_string(Self) -> String
+
+pub(all) struct DbqueryselectCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryselectCluster::add(Self, Self) -> Self
+pub fn DbqueryselectCluster::copy(Self) -> Self
+pub fn DbqueryselectCluster::fill(Self, Double) -> Self
+pub fn DbqueryselectCluster::get(Self, Int32) -> Double
+pub fn DbqueryselectCluster::len(Self) -> Int32
+pub fn DbqueryselectCluster::max(Self) -> Double
+pub fn DbqueryselectCluster::mean(Self) -> Double
+pub fn DbqueryselectCluster::min(Self) -> Double
+pub fn DbqueryselectCluster::scale(Self, Double) -> Self
+pub fn DbqueryselectCluster::set(Self, Int32, Double) -> Self
+pub fn DbqueryselectCluster::sum(Self) -> Double
+pub fn DbqueryselectCluster::to_string(Self) -> String
+
+pub(all) struct DbqueryselectCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryselectCursor::add(Self, Self) -> Self
+pub fn DbqueryselectCursor::copy(Self) -> Self
+pub fn DbqueryselectCursor::fill(Self, Double) -> Self
+pub fn DbqueryselectCursor::get(Self, Int32) -> Double
+pub fn DbqueryselectCursor::len(Self) -> Int32
+pub fn DbqueryselectCursor::max(Self) -> Double
+pub fn DbqueryselectCursor::mean(Self) -> Double
+pub fn DbqueryselectCursor::min(Self) -> Double
+pub fn DbqueryselectCursor::scale(Self, Double) -> Self
+pub fn DbqueryselectCursor::set(Self, Int32, Double) -> Self
+pub fn DbqueryselectCursor::sum(Self) -> Double
+pub fn DbqueryselectCursor::to_string(Self) -> String
+
+pub(all) struct DbqueryselectEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryselectEdge::add(Self, Self) -> Self
+pub fn DbqueryselectEdge::copy(Self) -> Self
+pub fn DbqueryselectEdge::fill(Self, Double) -> Self
+pub fn DbqueryselectEdge::get(Self, Int32) -> Double
+pub fn DbqueryselectEdge::len(Self) -> Int32
+pub fn DbqueryselectEdge::max(Self) -> Double
+pub fn DbqueryselectEdge::mean(Self) -> Double
+pub fn DbqueryselectEdge::min(Self) -> Double
+pub fn DbqueryselectEdge::scale(Self, Double) -> Self
+pub fn DbqueryselectEdge::set(Self, Int32, Double) -> Self
+pub fn DbqueryselectEdge::sum(Self) -> Double
+pub fn DbqueryselectEdge::to_string(Self) -> String
+
+pub(all) struct DbqueryselectFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryselectFrame::add(Self, Self) -> Self
+pub fn DbqueryselectFrame::copy(Self) -> Self
+pub fn DbqueryselectFrame::fill(Self, Double) -> Self
+pub fn DbqueryselectFrame::get(Self, Int32) -> Double
+pub fn DbqueryselectFrame::len(Self) -> Int32
+pub fn DbqueryselectFrame::max(Self) -> Double
+pub fn DbqueryselectFrame::mean(Self) -> Double
+pub fn DbqueryselectFrame::min(Self) -> Double
+pub fn DbqueryselectFrame::scale(Self, Double) -> Self
+pub fn DbqueryselectFrame::set(Self, Int32, Double) -> Self
+pub fn DbqueryselectFrame::sum(Self) -> Double
+pub fn DbqueryselectFrame::to_string(Self) -> String
+
+pub(all) struct DbqueryselectGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryselectGraphN::add(Self, Self) -> Self
+pub fn DbqueryselectGraphN::copy(Self) -> Self
+pub fn DbqueryselectGraphN::fill(Self, Double) -> Self
+pub fn DbqueryselectGraphN::get(Self, Int32) -> Double
+pub fn DbqueryselectGraphN::len(Self) -> Int32
+pub fn DbqueryselectGraphN::max(Self) -> Double
+pub fn DbqueryselectGraphN::mean(Self) -> Double
+pub fn DbqueryselectGraphN::min(Self) -> Double
+pub fn DbqueryselectGraphN::scale(Self, Double) -> Self
+pub fn DbqueryselectGraphN::set(Self, Int32, Double) -> Self
+pub fn DbqueryselectGraphN::sum(Self) -> Double
+pub fn DbqueryselectGraphN::to_string(Self) -> String
+
+pub(all) struct DbqueryselectLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryselectLayer::add(Self, Self) -> Self
+pub fn DbqueryselectLayer::copy(Self) -> Self
+pub fn DbqueryselectLayer::fill(Self, Double) -> Self
+pub fn DbqueryselectLayer::get(Self, Int32) -> Double
+pub fn DbqueryselectLayer::len(Self) -> Int32
+pub fn DbqueryselectLayer::max(Self) -> Double
+pub fn DbqueryselectLayer::mean(Self) -> Double
+pub fn DbqueryselectLayer::min(Self) -> Double
+pub fn DbqueryselectLayer::scale(Self, Double) -> Self
+pub fn DbqueryselectLayer::set(Self, Int32, Double) -> Self
+pub fn DbqueryselectLayer::sum(Self) -> Double
+pub fn DbqueryselectLayer::to_string(Self) -> String
+
+pub(all) struct DbqueryselectMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbqueryselectMatrix::add(Self, Self) -> Self
+pub fn DbqueryselectMatrix::det(Self) -> Double
+pub fn DbqueryselectMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbqueryselectMatrix::multiply(Self, Self) -> Self
+pub fn DbqueryselectMatrix::norm(Self) -> Double
+pub fn DbqueryselectMatrix::scale(Self, Double) -> Self
+pub fn DbqueryselectMatrix::to_string(Self) -> String
+pub fn DbqueryselectMatrix::trace(Self) -> Double
+pub fn DbqueryselectMatrix::transpose(Self) -> Self
+
+pub(all) struct DbqueryselectModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryselectModel::add(Self, Self) -> Self
+pub fn DbqueryselectModel::copy(Self) -> Self
+pub fn DbqueryselectModel::fill(Self, Double) -> Self
+pub fn DbqueryselectModel::get(Self, Int32) -> Double
+pub fn DbqueryselectModel::len(Self) -> Int32
+pub fn DbqueryselectModel::max(Self) -> Double
+pub fn DbqueryselectModel::mean(Self) -> Double
+pub fn DbqueryselectModel::min(Self) -> Double
+pub fn DbqueryselectModel::scale(Self, Double) -> Self
+pub fn DbqueryselectModel::set(Self, Int32, Double) -> Self
+pub fn DbqueryselectModel::sum(Self) -> Double
+pub fn DbqueryselectModel::to_string(Self) -> String
+
+pub(all) struct DbqueryselectNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryselectNode::add(Self, Self) -> Self
+pub fn DbqueryselectNode::copy(Self) -> Self
+pub fn DbqueryselectNode::fill(Self, Double) -> Self
+pub fn DbqueryselectNode::get(Self, Int32) -> Double
+pub fn DbqueryselectNode::len(Self) -> Int32
+pub fn DbqueryselectNode::max(Self) -> Double
+pub fn DbqueryselectNode::mean(Self) -> Double
+pub fn DbqueryselectNode::min(Self) -> Double
+pub fn DbqueryselectNode::scale(Self, Double) -> Self
+pub fn DbqueryselectNode::set(Self, Int32, Double) -> Self
+pub fn DbqueryselectNode::sum(Self) -> Double
+pub fn DbqueryselectNode::to_string(Self) -> String
+
+pub(all) struct DbqueryselectPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryselectPath::add(Self, Self) -> Self
+pub fn DbqueryselectPath::copy(Self) -> Self
+pub fn DbqueryselectPath::fill(Self, Double) -> Self
+pub fn DbqueryselectPath::get(Self, Int32) -> Double
+pub fn DbqueryselectPath::len(Self) -> Int32
+pub fn DbqueryselectPath::max(Self) -> Double
+pub fn DbqueryselectPath::mean(Self) -> Double
+pub fn DbqueryselectPath::min(Self) -> Double
+pub fn DbqueryselectPath::scale(Self, Double) -> Self
+pub fn DbqueryselectPath::set(Self, Int32, Double) -> Self
+pub fn DbqueryselectPath::sum(Self) -> Double
+pub fn DbqueryselectPath::to_string(Self) -> String
+
+pub(all) struct DbqueryselectPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbqueryselectPoint::add(Self, Self) -> Self
+pub fn DbqueryselectPoint::cross(Self, Self) -> Self
+pub fn DbqueryselectPoint::dist(Self, Self) -> Double
+pub fn DbqueryselectPoint::dot(Self, Self) -> Double
+pub fn DbqueryselectPoint::label(Self) -> Int32
+pub fn DbqueryselectPoint::lerp(Self, Self, Double) -> Self
+pub fn DbqueryselectPoint::mid(Self, Self) -> Self
+pub fn DbqueryselectPoint::negate(Self) -> Self
+pub fn DbqueryselectPoint::norm(Self) -> Double
+pub fn DbqueryselectPoint::normalize(Self) -> Self
+pub fn DbqueryselectPoint::scale(Self, Double) -> Self
+pub fn DbqueryselectPoint::sub(Self, Self) -> Self
+pub fn DbqueryselectPoint::to_string(Self) -> String
+pub fn DbqueryselectPoint::x(Self) -> Double
+pub fn DbqueryselectPoint::y(Self) -> Double
+pub fn DbqueryselectPoint::z(Self) -> Double
+
+pub(all) struct DbqueryselectRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryselectRange::add(Self, Self) -> Self
+pub fn DbqueryselectRange::copy(Self) -> Self
+pub fn DbqueryselectRange::fill(Self, Double) -> Self
+pub fn DbqueryselectRange::get(Self, Int32) -> Double
+pub fn DbqueryselectRange::len(Self) -> Int32
+pub fn DbqueryselectRange::max(Self) -> Double
+pub fn DbqueryselectRange::mean(Self) -> Double
+pub fn DbqueryselectRange::min(Self) -> Double
+pub fn DbqueryselectRange::scale(Self, Double) -> Self
+pub fn DbqueryselectRange::set(Self, Int32, Double) -> Self
+pub fn DbqueryselectRange::sum(Self) -> Double
+pub fn DbqueryselectRange::to_string(Self) -> String
+
+pub(all) struct DbqueryselectSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbqueryselectSeries::add(Self, Self) -> Self
+pub fn DbqueryselectSeries::cumsum(Self) -> Self
+pub fn DbqueryselectSeries::len(Self) -> Int32
+pub fn DbqueryselectSeries::max(Self) -> Double
+pub fn DbqueryselectSeries::mean(Self) -> Double
+pub fn DbqueryselectSeries::median(Self) -> Double
+pub fn DbqueryselectSeries::min(Self) -> Double
+pub fn DbqueryselectSeries::normalize(Self) -> Self
+pub fn DbqueryselectSeries::range(Self) -> Double
+pub fn DbqueryselectSeries::scale(Self, Double) -> Self
+pub fn DbqueryselectSeries::std(Self) -> Double
+pub fn DbqueryselectSeries::sub(Self, Self) -> Self
+pub fn DbqueryselectSeries::sum(Self) -> Double
+pub fn DbqueryselectSeries::to_string(Self) -> String
+pub fn DbqueryselectSeries::variance(Self) -> Double
+
+pub(all) struct DbqueryselectSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryselectSlice::add(Self, Self) -> Self
+pub fn DbqueryselectSlice::copy(Self) -> Self
+pub fn DbqueryselectSlice::fill(Self, Double) -> Self
+pub fn DbqueryselectSlice::get(Self, Int32) -> Double
+pub fn DbqueryselectSlice::len(Self) -> Int32
+pub fn DbqueryselectSlice::max(Self) -> Double
+pub fn DbqueryselectSlice::mean(Self) -> Double
+pub fn DbqueryselectSlice::min(Self) -> Double
+pub fn DbqueryselectSlice::scale(Self, Double) -> Self
+pub fn DbqueryselectSlice::set(Self, Int32, Double) -> Self
+pub fn DbqueryselectSlice::sum(Self) -> Double
+pub fn DbqueryselectSlice::to_string(Self) -> String
+
+pub(all) struct DbqueryselectTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryselectTable::add(Self, Self) -> Self
+pub fn DbqueryselectTable::copy(Self) -> Self
+pub fn DbqueryselectTable::fill(Self, Double) -> Self
+pub fn DbqueryselectTable::get(Self, Int32) -> Double
+pub fn DbqueryselectTable::len(Self) -> Int32
+pub fn DbqueryselectTable::max(Self) -> Double
+pub fn DbqueryselectTable::mean(Self) -> Double
+pub fn DbqueryselectTable::min(Self) -> Double
+pub fn DbqueryselectTable::scale(Self, Double) -> Self
+pub fn DbqueryselectTable::set(Self, Int32, Double) -> Self
+pub fn DbqueryselectTable::sum(Self) -> Double
+pub fn DbqueryselectTable::to_string(Self) -> String
+
+pub(all) struct DbqueryselectVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbqueryselectVector::add(Self, Self) -> Self
+pub fn DbqueryselectVector::dist(Self, Self) -> Double
+pub fn DbqueryselectVector::dot(Self, Self) -> Double
+pub fn DbqueryselectVector::norm(Self) -> Double
+pub fn DbqueryselectVector::normalize(Self) -> Self
+pub fn DbqueryselectVector::scale(Self, Double) -> Self
+pub fn DbqueryselectVector::sub(Self, Self) -> Self
+pub fn DbqueryselectVector::to_string(Self) -> String
+
+pub(all) struct DbqueryselectView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryselectView::add(Self, Self) -> Self
+pub fn DbqueryselectView::copy(Self) -> Self
+pub fn DbqueryselectView::fill(Self, Double) -> Self
+pub fn DbqueryselectView::get(Self, Int32) -> Double
+pub fn DbqueryselectView::len(Self) -> Int32
+pub fn DbqueryselectView::max(Self) -> Double
+pub fn DbqueryselectView::mean(Self) -> Double
+pub fn DbqueryselectView::min(Self) -> Double
+pub fn DbqueryselectView::scale(Self, Double) -> Self
+pub fn DbqueryselectView::set(Self, Int32, Double) -> Self
+pub fn DbqueryselectView::sum(Self) -> Double
+pub fn DbqueryselectView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

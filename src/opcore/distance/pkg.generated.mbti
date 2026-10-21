@@ -1,0 +1,67 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/distance"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn cost_get(CostSurface, Int32, Int32) -> Double
+
+pub fn distance_back_link(Array[(Int32, Int32)], CostSurface, Double) -> Array[Array[(Int32, Int32)]]
+
+pub fn distance_corridor(CostSurface, (Int32, Int32), (Int32, Int32), Double) -> Array[(Int32, Int32)]
+
+pub fn distance_cost(Array[(Int32, Int32)], CostSurface, Double) -> DistanceResult
+
+pub fn distance_cost_allocation(Array[(Int32, Int32)], CostSurface, Double) -> Array[Array[Int32]]
+
+pub fn distance_euclidean_allocation(Array[(Int32, Int32)], Int32, Int32) -> Array[Array[Int32]]
+
+pub fn distance_euclidean_grid(Array[(Int32, Int32)], Int32, Int32, Double) -> DistanceResult
+
+pub fn distance_optimal_path(CostSurface, (Int32, Int32), (Int32, Int32)) -> PathResult
+
+pub fn distance_stats(DistanceResult) -> (Double, Double, Double)
+
+pub fn make_cost_surface(Array[Array[Double]]) -> CostSurface
+
+pub fn make_path_result(Array[(Int32, Int32)], Double) -> PathResult
+
+pub fn path_cell_count(PathResult) -> Int32
+
+pub fn path_cost(PathResult) -> Double
+
+// Errors
+
+// Types and methods
+pub(all) struct CostSurface {
+  costs : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+} derive(Eq, @debug.Debug)
+pub fn CostSurface::equal(Self, Self) -> Bool
+pub fn CostSurface::not_equal(Self, Self) -> Bool
+pub fn CostSurface::to_repr(Self) -> @debug.Repr
+
+pub(all) struct DistanceResult {
+  grid : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+} derive(Eq, @debug.Debug)
+pub fn DistanceResult::equal(Self, Self) -> Bool
+pub fn DistanceResult::not_equal(Self, Self) -> Bool
+pub fn DistanceResult::to_repr(Self) -> @debug.Repr
+
+pub struct PathResult {
+  path : Array[(Int32, Int32)]
+  total_cost : Double
+  length : Int32
+} derive(Eq, @debug.Debug)
+pub fn PathResult::equal(Self, Self) -> Bool
+pub fn PathResult::not_equal(Self, Self) -> Bool
+pub fn PathResult::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

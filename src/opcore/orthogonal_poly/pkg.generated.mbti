@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/orthogonal_poly"
+
+// Values
+pub fn orthogonal_poly_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn orthogonal_poly_corr(Array[Double], Array[Double]) -> Double
+
+pub fn orthogonal_poly_cov(Array[Double], Array[Double]) -> Double
+
+pub fn orthogonal_poly_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn orthogonal_poly_mae(Array[Double], Array[Double]) -> Double
+
+pub fn orthogonal_poly_make_labeled_point(Double, Double, Int32) -> Orthogonal_polyPoint
+
+pub fn orthogonal_poly_make_matrix(Int32, Int32, Double) -> Orthogonal_polyMatrix
+
+pub fn orthogonal_poly_make_point(Double, Double) -> Orthogonal_polyPoint
+
+pub fn orthogonal_poly_make_series(Array[Double], String) -> Orthogonal_polySeries
+
+pub fn orthogonal_poly_make_vector(Array[Double]) -> Orthogonal_polyVector
+
+pub fn orthogonal_poly_matrix_add(Orthogonal_polyMatrix, Orthogonal_polyMatrix) -> Orthogonal_polyMatrix
+
+pub fn orthogonal_poly_matrix_get(Orthogonal_polyMatrix, Int32, Int32) -> Double
+
+pub fn orthogonal_poly_matrix_identity(Int32) -> Orthogonal_polyMatrix
+
+pub fn orthogonal_poly_matrix_multiply(Orthogonal_polyMatrix, Orthogonal_polyMatrix) -> Orthogonal_polyMatrix
+
+pub fn orthogonal_poly_matrix_norm(Orthogonal_polyMatrix) -> Double
+
+pub fn orthogonal_poly_matrix_scale(Orthogonal_polyMatrix, Double) -> Orthogonal_polyMatrix
+
+pub fn orthogonal_poly_matrix_to_string(Orthogonal_polyMatrix) -> String
+
+pub fn orthogonal_poly_matrix_trace(Orthogonal_polyMatrix) -> Double
+
+pub fn orthogonal_poly_matrix_transpose(Orthogonal_polyMatrix) -> Orthogonal_polyMatrix
+
+pub fn orthogonal_poly_mse(Array[Double], Array[Double]) -> Double
+
+pub fn orthogonal_poly_point_add(Orthogonal_polyPoint, Orthogonal_polyPoint) -> Orthogonal_polyPoint
+
+pub fn orthogonal_poly_point_dist(Orthogonal_polyPoint, Orthogonal_polyPoint) -> Double
+
+pub fn orthogonal_poly_point_dot(Orthogonal_polyPoint, Orthogonal_polyPoint) -> Double
+
+pub fn orthogonal_poly_point_label(Orthogonal_polyPoint) -> Int32
+
+pub fn orthogonal_poly_point_norm(Orthogonal_polyPoint) -> Double
+
+pub fn orthogonal_poly_point_scale(Orthogonal_polyPoint, Double) -> Orthogonal_polyPoint
+
+pub fn orthogonal_poly_point_sub(Orthogonal_polyPoint, Orthogonal_polyPoint) -> Orthogonal_polyPoint
+
+pub fn orthogonal_poly_point_to_string(Orthogonal_polyPoint) -> String
+
+pub fn orthogonal_poly_point_x(Orthogonal_polyPoint) -> Double
+
+pub fn orthogonal_poly_point_y(Orthogonal_polyPoint) -> Double
+
+pub fn orthogonal_poly_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn orthogonal_poly_r2(Array[Double], Array[Double]) -> Double
+
+pub fn orthogonal_poly_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn orthogonal_poly_series_add(Orthogonal_polySeries, Orthogonal_polySeries) -> Orthogonal_polySeries
+
+pub fn orthogonal_poly_series_len(Orthogonal_polySeries) -> Int32
+
+pub fn orthogonal_poly_series_max(Orthogonal_polySeries) -> Double
+
+pub fn orthogonal_poly_series_mean(Orthogonal_polySeries) -> Double
+
+pub fn orthogonal_poly_series_min(Orthogonal_polySeries) -> Double
+
+pub fn orthogonal_poly_series_scale(Orthogonal_polySeries, Double) -> Orthogonal_polySeries
+
+pub fn orthogonal_poly_series_std(Orthogonal_polySeries) -> Double
+
+pub fn orthogonal_poly_series_sum(Orthogonal_polySeries) -> Double
+
+pub fn orthogonal_poly_series_to_string(Orthogonal_polySeries) -> String
+
+pub fn orthogonal_poly_series_var(Orthogonal_polySeries) -> Double
+
+pub fn orthogonal_poly_std(Array[Double]) -> Double
+
+pub fn orthogonal_poly_var(Array[Double]) -> Double
+
+pub fn orthogonal_poly_vector_add(Orthogonal_polyVector, Orthogonal_polyVector) -> Orthogonal_polyVector
+
+pub fn orthogonal_poly_vector_dist(Orthogonal_polyVector, Orthogonal_polyVector) -> Double
+
+pub fn orthogonal_poly_vector_dot(Orthogonal_polyVector, Orthogonal_polyVector) -> Double
+
+pub fn orthogonal_poly_vector_norm(Orthogonal_polyVector) -> Double
+
+pub fn orthogonal_poly_vector_normalize(Orthogonal_polyVector) -> Orthogonal_polyVector
+
+pub fn orthogonal_poly_vector_scale(Orthogonal_polyVector, Double) -> Orthogonal_polyVector
+
+pub fn orthogonal_poly_vector_sub(Orthogonal_polyVector, Orthogonal_polyVector) -> Orthogonal_polyVector
+
+pub fn orthogonal_poly_vector_to_string(Orthogonal_polyVector) -> String
+
+pub fn orthogonal_poly_vector_zero(Int32) -> Orthogonal_polyVector
+
+// Errors
+
+// Types and methods
+pub struct Orthogonal_polyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Orthogonal_polyPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Orthogonal_polySeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Orthogonal_polyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

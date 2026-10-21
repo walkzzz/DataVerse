@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/crypto_sym_blowfish"
+
+// Values
+pub fn crypto_sym_blowfish_buffer_make(Int32) -> CryptosymblowfishBuffer
+
+pub fn crypto_sym_blowfish_cluster_make(Int32) -> CryptosymblowfishCluster
+
+pub fn crypto_sym_blowfish_cursor_make(Int32) -> CryptosymblowfishCursor
+
+pub fn crypto_sym_blowfish_edge_make(Int32) -> CryptosymblowfishEdge
+
+pub fn crypto_sym_blowfish_frame_make(Int32) -> CryptosymblowfishFrame
+
+pub fn crypto_sym_blowfish_graphn_make(Int32) -> CryptosymblowfishGraphN
+
+pub fn crypto_sym_blowfish_layer_make(Int32) -> CryptosymblowfishLayer
+
+pub fn crypto_sym_blowfish_make_matrix(Int32, Int32, Double) -> CryptosymblowfishMatrix
+
+pub fn crypto_sym_blowfish_make_point(Double, Double) -> CryptosymblowfishPoint
+
+pub fn crypto_sym_blowfish_make_point3(Double, Double, Double) -> CryptosymblowfishPoint
+
+pub fn crypto_sym_blowfish_make_series(Array[Double], String) -> CryptosymblowfishSeries
+
+pub fn crypto_sym_blowfish_make_vector(Array[Double]) -> CryptosymblowfishVector
+
+pub fn crypto_sym_blowfish_matrix_identity(Int32) -> CryptosymblowfishMatrix
+
+pub fn crypto_sym_blowfish_model_make(Int32) -> CryptosymblowfishModel
+
+pub fn crypto_sym_blowfish_node_make(Int32) -> CryptosymblowfishNode
+
+pub fn crypto_sym_blowfish_path_make(Int32) -> CryptosymblowfishPath
+
+pub fn crypto_sym_blowfish_range_make(Int32) -> CryptosymblowfishRange
+
+pub fn crypto_sym_blowfish_slice_make(Int32) -> CryptosymblowfishSlice
+
+pub fn crypto_sym_blowfish_table_make(Int32) -> CryptosymblowfishTable
+
+pub fn crypto_sym_blowfish_vector_zero(Int32) -> CryptosymblowfishVector
+
+pub fn crypto_sym_blowfish_view_make(Int32) -> CryptosymblowfishView
+
+// Errors
+
+// Types and methods
+pub(all) struct CryptosymblowfishBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymblowfishBuffer::add(Self, Self) -> Self
+pub fn CryptosymblowfishBuffer::copy(Self) -> Self
+pub fn CryptosymblowfishBuffer::fill(Self, Double) -> Self
+pub fn CryptosymblowfishBuffer::get(Self, Int32) -> Double
+pub fn CryptosymblowfishBuffer::len(Self) -> Int32
+pub fn CryptosymblowfishBuffer::max(Self) -> Double
+pub fn CryptosymblowfishBuffer::mean(Self) -> Double
+pub fn CryptosymblowfishBuffer::min(Self) -> Double
+pub fn CryptosymblowfishBuffer::scale(Self, Double) -> Self
+pub fn CryptosymblowfishBuffer::set(Self, Int32, Double) -> Self
+pub fn CryptosymblowfishBuffer::sum(Self) -> Double
+pub fn CryptosymblowfishBuffer::to_string(Self) -> String
+
+pub(all) struct CryptosymblowfishCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymblowfishCluster::add(Self, Self) -> Self
+pub fn CryptosymblowfishCluster::copy(Self) -> Self
+pub fn CryptosymblowfishCluster::fill(Self, Double) -> Self
+pub fn CryptosymblowfishCluster::get(Self, Int32) -> Double
+pub fn CryptosymblowfishCluster::len(Self) -> Int32
+pub fn CryptosymblowfishCluster::max(Self) -> Double
+pub fn CryptosymblowfishCluster::mean(Self) -> Double
+pub fn CryptosymblowfishCluster::min(Self) -> Double
+pub fn CryptosymblowfishCluster::scale(Self, Double) -> Self
+pub fn CryptosymblowfishCluster::set(Self, Int32, Double) -> Self
+pub fn CryptosymblowfishCluster::sum(Self) -> Double
+pub fn CryptosymblowfishCluster::to_string(Self) -> String
+
+pub(all) struct CryptosymblowfishCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymblowfishCursor::add(Self, Self) -> Self
+pub fn CryptosymblowfishCursor::copy(Self) -> Self
+pub fn CryptosymblowfishCursor::fill(Self, Double) -> Self
+pub fn CryptosymblowfishCursor::get(Self, Int32) -> Double
+pub fn CryptosymblowfishCursor::len(Self) -> Int32
+pub fn CryptosymblowfishCursor::max(Self) -> Double
+pub fn CryptosymblowfishCursor::mean(Self) -> Double
+pub fn CryptosymblowfishCursor::min(Self) -> Double
+pub fn CryptosymblowfishCursor::scale(Self, Double) -> Self
+pub fn CryptosymblowfishCursor::set(Self, Int32, Double) -> Self
+pub fn CryptosymblowfishCursor::sum(Self) -> Double
+pub fn CryptosymblowfishCursor::to_string(Self) -> String
+
+pub(all) struct CryptosymblowfishEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymblowfishEdge::add(Self, Self) -> Self
+pub fn CryptosymblowfishEdge::copy(Self) -> Self
+pub fn CryptosymblowfishEdge::fill(Self, Double) -> Self
+pub fn CryptosymblowfishEdge::get(Self, Int32) -> Double
+pub fn CryptosymblowfishEdge::len(Self) -> Int32
+pub fn CryptosymblowfishEdge::max(Self) -> Double
+pub fn CryptosymblowfishEdge::mean(Self) -> Double
+pub fn CryptosymblowfishEdge::min(Self) -> Double
+pub fn CryptosymblowfishEdge::scale(Self, Double) -> Self
+pub fn CryptosymblowfishEdge::set(Self, Int32, Double) -> Self
+pub fn CryptosymblowfishEdge::sum(Self) -> Double
+pub fn CryptosymblowfishEdge::to_string(Self) -> String
+
+pub(all) struct CryptosymblowfishFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymblowfishFrame::add(Self, Self) -> Self
+pub fn CryptosymblowfishFrame::copy(Self) -> Self
+pub fn CryptosymblowfishFrame::fill(Self, Double) -> Self
+pub fn CryptosymblowfishFrame::get(Self, Int32) -> Double
+pub fn CryptosymblowfishFrame::len(Self) -> Int32
+pub fn CryptosymblowfishFrame::max(Self) -> Double
+pub fn CryptosymblowfishFrame::mean(Self) -> Double
+pub fn CryptosymblowfishFrame::min(Self) -> Double
+pub fn CryptosymblowfishFrame::scale(Self, Double) -> Self
+pub fn CryptosymblowfishFrame::set(Self, Int32, Double) -> Self
+pub fn CryptosymblowfishFrame::sum(Self) -> Double
+pub fn CryptosymblowfishFrame::to_string(Self) -> String
+
+pub(all) struct CryptosymblowfishGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymblowfishGraphN::add(Self, Self) -> Self
+pub fn CryptosymblowfishGraphN::copy(Self) -> Self
+pub fn CryptosymblowfishGraphN::fill(Self, Double) -> Self
+pub fn CryptosymblowfishGraphN::get(Self, Int32) -> Double
+pub fn CryptosymblowfishGraphN::len(Self) -> Int32
+pub fn CryptosymblowfishGraphN::max(Self) -> Double
+pub fn CryptosymblowfishGraphN::mean(Self) -> Double
+pub fn CryptosymblowfishGraphN::min(Self) -> Double
+pub fn CryptosymblowfishGraphN::scale(Self, Double) -> Self
+pub fn CryptosymblowfishGraphN::set(Self, Int32, Double) -> Self
+pub fn CryptosymblowfishGraphN::sum(Self) -> Double
+pub fn CryptosymblowfishGraphN::to_string(Self) -> String
+
+pub(all) struct CryptosymblowfishLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymblowfishLayer::add(Self, Self) -> Self
+pub fn CryptosymblowfishLayer::copy(Self) -> Self
+pub fn CryptosymblowfishLayer::fill(Self, Double) -> Self
+pub fn CryptosymblowfishLayer::get(Self, Int32) -> Double
+pub fn CryptosymblowfishLayer::len(Self) -> Int32
+pub fn CryptosymblowfishLayer::max(Self) -> Double
+pub fn CryptosymblowfishLayer::mean(Self) -> Double
+pub fn CryptosymblowfishLayer::min(Self) -> Double
+pub fn CryptosymblowfishLayer::scale(Self, Double) -> Self
+pub fn CryptosymblowfishLayer::set(Self, Int32, Double) -> Self
+pub fn CryptosymblowfishLayer::sum(Self) -> Double
+pub fn CryptosymblowfishLayer::to_string(Self) -> String
+
+pub(all) struct CryptosymblowfishMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn CryptosymblowfishMatrix::add(Self, Self) -> Self
+pub fn CryptosymblowfishMatrix::det(Self) -> Double
+pub fn CryptosymblowfishMatrix::get(Self, Int32, Int32) -> Double
+pub fn CryptosymblowfishMatrix::multiply(Self, Self) -> Self
+pub fn CryptosymblowfishMatrix::norm(Self) -> Double
+pub fn CryptosymblowfishMatrix::scale(Self, Double) -> Self
+pub fn CryptosymblowfishMatrix::to_string(Self) -> String
+pub fn CryptosymblowfishMatrix::trace(Self) -> Double
+pub fn CryptosymblowfishMatrix::transpose(Self) -> Self
+
+pub(all) struct CryptosymblowfishModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymblowfishModel::add(Self, Self) -> Self
+pub fn CryptosymblowfishModel::copy(Self) -> Self
+pub fn CryptosymblowfishModel::fill(Self, Double) -> Self
+pub fn CryptosymblowfishModel::get(Self, Int32) -> Double
+pub fn CryptosymblowfishModel::len(Self) -> Int32
+pub fn CryptosymblowfishModel::max(Self) -> Double
+pub fn CryptosymblowfishModel::mean(Self) -> Double
+pub fn CryptosymblowfishModel::min(Self) -> Double
+pub fn CryptosymblowfishModel::scale(Self, Double) -> Self
+pub fn CryptosymblowfishModel::set(Self, Int32, Double) -> Self
+pub fn CryptosymblowfishModel::sum(Self) -> Double
+pub fn CryptosymblowfishModel::to_string(Self) -> String
+
+pub(all) struct CryptosymblowfishNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymblowfishNode::add(Self, Self) -> Self
+pub fn CryptosymblowfishNode::copy(Self) -> Self
+pub fn CryptosymblowfishNode::fill(Self, Double) -> Self
+pub fn CryptosymblowfishNode::get(Self, Int32) -> Double
+pub fn CryptosymblowfishNode::len(Self) -> Int32
+pub fn CryptosymblowfishNode::max(Self) -> Double
+pub fn CryptosymblowfishNode::mean(Self) -> Double
+pub fn CryptosymblowfishNode::min(Self) -> Double
+pub fn CryptosymblowfishNode::scale(Self, Double) -> Self
+pub fn CryptosymblowfishNode::set(Self, Int32, Double) -> Self
+pub fn CryptosymblowfishNode::sum(Self) -> Double
+pub fn CryptosymblowfishNode::to_string(Self) -> String
+
+pub(all) struct CryptosymblowfishPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymblowfishPath::add(Self, Self) -> Self
+pub fn CryptosymblowfishPath::copy(Self) -> Self
+pub fn CryptosymblowfishPath::fill(Self, Double) -> Self
+pub fn CryptosymblowfishPath::get(Self, Int32) -> Double
+pub fn CryptosymblowfishPath::len(Self) -> Int32
+pub fn CryptosymblowfishPath::max(Self) -> Double
+pub fn CryptosymblowfishPath::mean(Self) -> Double
+pub fn CryptosymblowfishPath::min(Self) -> Double
+pub fn CryptosymblowfishPath::scale(Self, Double) -> Self
+pub fn CryptosymblowfishPath::set(Self, Int32, Double) -> Self
+pub fn CryptosymblowfishPath::sum(Self) -> Double
+pub fn CryptosymblowfishPath::to_string(Self) -> String
+
+pub(all) struct CryptosymblowfishPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn CryptosymblowfishPoint::add(Self, Self) -> Self
+pub fn CryptosymblowfishPoint::cross(Self, Self) -> Self
+pub fn CryptosymblowfishPoint::dist(Self, Self) -> Double
+pub fn CryptosymblowfishPoint::dot(Self, Self) -> Double
+pub fn CryptosymblowfishPoint::label(Self) -> Int32
+pub fn CryptosymblowfishPoint::lerp(Self, Self, Double) -> Self
+pub fn CryptosymblowfishPoint::mid(Self, Self) -> Self
+pub fn CryptosymblowfishPoint::negate(Self) -> Self
+pub fn CryptosymblowfishPoint::norm(Self) -> Double
+pub fn CryptosymblowfishPoint::normalize(Self) -> Self
+pub fn CryptosymblowfishPoint::scale(Self, Double) -> Self
+pub fn CryptosymblowfishPoint::sub(Self, Self) -> Self
+pub fn CryptosymblowfishPoint::to_string(Self) -> String
+pub fn CryptosymblowfishPoint::x(Self) -> Double
+pub fn CryptosymblowfishPoint::y(Self) -> Double
+pub fn CryptosymblowfishPoint::z(Self) -> Double
+
+pub(all) struct CryptosymblowfishRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymblowfishRange::add(Self, Self) -> Self
+pub fn CryptosymblowfishRange::copy(Self) -> Self
+pub fn CryptosymblowfishRange::fill(Self, Double) -> Self
+pub fn CryptosymblowfishRange::get(Self, Int32) -> Double
+pub fn CryptosymblowfishRange::len(Self) -> Int32
+pub fn CryptosymblowfishRange::max(Self) -> Double
+pub fn CryptosymblowfishRange::mean(Self) -> Double
+pub fn CryptosymblowfishRange::min(Self) -> Double
+pub fn CryptosymblowfishRange::scale(Self, Double) -> Self
+pub fn CryptosymblowfishRange::set(Self, Int32, Double) -> Self
+pub fn CryptosymblowfishRange::sum(Self) -> Double
+pub fn CryptosymblowfishRange::to_string(Self) -> String
+
+pub(all) struct CryptosymblowfishSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn CryptosymblowfishSeries::add(Self, Self) -> Self
+pub fn CryptosymblowfishSeries::cumsum(Self) -> Self
+pub fn CryptosymblowfishSeries::len(Self) -> Int32
+pub fn CryptosymblowfishSeries::max(Self) -> Double
+pub fn CryptosymblowfishSeries::mean(Self) -> Double
+pub fn CryptosymblowfishSeries::median(Self) -> Double
+pub fn CryptosymblowfishSeries::min(Self) -> Double
+pub fn CryptosymblowfishSeries::normalize(Self) -> Self
+pub fn CryptosymblowfishSeries::range(Self) -> Double
+pub fn CryptosymblowfishSeries::scale(Self, Double) -> Self
+pub fn CryptosymblowfishSeries::std(Self) -> Double
+pub fn CryptosymblowfishSeries::sub(Self, Self) -> Self
+pub fn CryptosymblowfishSeries::sum(Self) -> Double
+pub fn CryptosymblowfishSeries::to_string(Self) -> String
+pub fn CryptosymblowfishSeries::variance(Self) -> Double
+
+pub(all) struct CryptosymblowfishSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymblowfishSlice::add(Self, Self) -> Self
+pub fn CryptosymblowfishSlice::copy(Self) -> Self
+pub fn CryptosymblowfishSlice::fill(Self, Double) -> Self
+pub fn CryptosymblowfishSlice::get(Self, Int32) -> Double
+pub fn CryptosymblowfishSlice::len(Self) -> Int32
+pub fn CryptosymblowfishSlice::max(Self) -> Double
+pub fn CryptosymblowfishSlice::mean(Self) -> Double
+pub fn CryptosymblowfishSlice::min(Self) -> Double
+pub fn CryptosymblowfishSlice::scale(Self, Double) -> Self
+pub fn CryptosymblowfishSlice::set(Self, Int32, Double) -> Self
+pub fn CryptosymblowfishSlice::sum(Self) -> Double
+pub fn CryptosymblowfishSlice::to_string(Self) -> String
+
+pub(all) struct CryptosymblowfishTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymblowfishTable::add(Self, Self) -> Self
+pub fn CryptosymblowfishTable::copy(Self) -> Self
+pub fn CryptosymblowfishTable::fill(Self, Double) -> Self
+pub fn CryptosymblowfishTable::get(Self, Int32) -> Double
+pub fn CryptosymblowfishTable::len(Self) -> Int32
+pub fn CryptosymblowfishTable::max(Self) -> Double
+pub fn CryptosymblowfishTable::mean(Self) -> Double
+pub fn CryptosymblowfishTable::min(Self) -> Double
+pub fn CryptosymblowfishTable::scale(Self, Double) -> Self
+pub fn CryptosymblowfishTable::set(Self, Int32, Double) -> Self
+pub fn CryptosymblowfishTable::sum(Self) -> Double
+pub fn CryptosymblowfishTable::to_string(Self) -> String
+
+pub(all) struct CryptosymblowfishVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn CryptosymblowfishVector::add(Self, Self) -> Self
+pub fn CryptosymblowfishVector::dist(Self, Self) -> Double
+pub fn CryptosymblowfishVector::dot(Self, Self) -> Double
+pub fn CryptosymblowfishVector::norm(Self) -> Double
+pub fn CryptosymblowfishVector::normalize(Self) -> Self
+pub fn CryptosymblowfishVector::scale(Self, Double) -> Self
+pub fn CryptosymblowfishVector::sub(Self, Self) -> Self
+pub fn CryptosymblowfishVector::to_string(Self) -> String
+
+pub(all) struct CryptosymblowfishView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymblowfishView::add(Self, Self) -> Self
+pub fn CryptosymblowfishView::copy(Self) -> Self
+pub fn CryptosymblowfishView::fill(Self, Double) -> Self
+pub fn CryptosymblowfishView::get(Self, Int32) -> Double
+pub fn CryptosymblowfishView::len(Self) -> Int32
+pub fn CryptosymblowfishView::max(Self) -> Double
+pub fn CryptosymblowfishView::mean(Self) -> Double
+pub fn CryptosymblowfishView::min(Self) -> Double
+pub fn CryptosymblowfishView::scale(Self, Double) -> Self
+pub fn CryptosymblowfishView::set(Self, Int32, Double) -> Self
+pub fn CryptosymblowfishView::sum(Self) -> Double
+pub fn CryptosymblowfishView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_filter_median"
+
+// Values
+pub fn image_filter_median_buffer_make(Int32) -> ImagefiltermedianBuffer
+
+pub fn image_filter_median_cluster_make(Int32) -> ImagefiltermedianCluster
+
+pub fn image_filter_median_cursor_make(Int32) -> ImagefiltermedianCursor
+
+pub fn image_filter_median_edge_make(Int32) -> ImagefiltermedianEdge
+
+pub fn image_filter_median_frame_make(Int32) -> ImagefiltermedianFrame
+
+pub fn image_filter_median_graphn_make(Int32) -> ImagefiltermedianGraphN
+
+pub fn image_filter_median_layer_make(Int32) -> ImagefiltermedianLayer
+
+pub fn image_filter_median_make_matrix(Int32, Int32, Double) -> ImagefiltermedianMatrix
+
+pub fn image_filter_median_make_point(Double, Double) -> ImagefiltermedianPoint
+
+pub fn image_filter_median_make_point3(Double, Double, Double) -> ImagefiltermedianPoint
+
+pub fn image_filter_median_make_series(Array[Double], String) -> ImagefiltermedianSeries
+
+pub fn image_filter_median_make_vector(Array[Double]) -> ImagefiltermedianVector
+
+pub fn image_filter_median_matrix_identity(Int32) -> ImagefiltermedianMatrix
+
+pub fn image_filter_median_model_make(Int32) -> ImagefiltermedianModel
+
+pub fn image_filter_median_node_make(Int32) -> ImagefiltermedianNode
+
+pub fn image_filter_median_path_make(Int32) -> ImagefiltermedianPath
+
+pub fn image_filter_median_range_make(Int32) -> ImagefiltermedianRange
+
+pub fn image_filter_median_slice_make(Int32) -> ImagefiltermedianSlice
+
+pub fn image_filter_median_table_make(Int32) -> ImagefiltermedianTable
+
+pub fn image_filter_median_vector_zero(Int32) -> ImagefiltermedianVector
+
+pub fn image_filter_median_view_make(Int32) -> ImagefiltermedianView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagefiltermedianBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermedianBuffer::add(Self, Self) -> Self
+pub fn ImagefiltermedianBuffer::copy(Self) -> Self
+pub fn ImagefiltermedianBuffer::fill(Self, Double) -> Self
+pub fn ImagefiltermedianBuffer::get(Self, Int32) -> Double
+pub fn ImagefiltermedianBuffer::len(Self) -> Int32
+pub fn ImagefiltermedianBuffer::max(Self) -> Double
+pub fn ImagefiltermedianBuffer::mean(Self) -> Double
+pub fn ImagefiltermedianBuffer::min(Self) -> Double
+pub fn ImagefiltermedianBuffer::scale(Self, Double) -> Self
+pub fn ImagefiltermedianBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermedianBuffer::sum(Self) -> Double
+pub fn ImagefiltermedianBuffer::to_string(Self) -> String
+
+pub(all) struct ImagefiltermedianCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermedianCluster::add(Self, Self) -> Self
+pub fn ImagefiltermedianCluster::copy(Self) -> Self
+pub fn ImagefiltermedianCluster::fill(Self, Double) -> Self
+pub fn ImagefiltermedianCluster::get(Self, Int32) -> Double
+pub fn ImagefiltermedianCluster::len(Self) -> Int32
+pub fn ImagefiltermedianCluster::max(Self) -> Double
+pub fn ImagefiltermedianCluster::mean(Self) -> Double
+pub fn ImagefiltermedianCluster::min(Self) -> Double
+pub fn ImagefiltermedianCluster::scale(Self, Double) -> Self
+pub fn ImagefiltermedianCluster::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermedianCluster::sum(Self) -> Double
+pub fn ImagefiltermedianCluster::to_string(Self) -> String
+
+pub(all) struct ImagefiltermedianCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermedianCursor::add(Self, Self) -> Self
+pub fn ImagefiltermedianCursor::copy(Self) -> Self
+pub fn ImagefiltermedianCursor::fill(Self, Double) -> Self
+pub fn ImagefiltermedianCursor::get(Self, Int32) -> Double
+pub fn ImagefiltermedianCursor::len(Self) -> Int32
+pub fn ImagefiltermedianCursor::max(Self) -> Double
+pub fn ImagefiltermedianCursor::mean(Self) -> Double
+pub fn ImagefiltermedianCursor::min(Self) -> Double
+pub fn ImagefiltermedianCursor::scale(Self, Double) -> Self
+pub fn ImagefiltermedianCursor::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermedianCursor::sum(Self) -> Double
+pub fn ImagefiltermedianCursor::to_string(Self) -> String
+
+pub(all) struct ImagefiltermedianEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermedianEdge::add(Self, Self) -> Self
+pub fn ImagefiltermedianEdge::copy(Self) -> Self
+pub fn ImagefiltermedianEdge::fill(Self, Double) -> Self
+pub fn ImagefiltermedianEdge::get(Self, Int32) -> Double
+pub fn ImagefiltermedianEdge::len(Self) -> Int32
+pub fn ImagefiltermedianEdge::max(Self) -> Double
+pub fn ImagefiltermedianEdge::mean(Self) -> Double
+pub fn ImagefiltermedianEdge::min(Self) -> Double
+pub fn ImagefiltermedianEdge::scale(Self, Double) -> Self
+pub fn ImagefiltermedianEdge::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermedianEdge::sum(Self) -> Double
+pub fn ImagefiltermedianEdge::to_string(Self) -> String
+
+pub(all) struct ImagefiltermedianFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermedianFrame::add(Self, Self) -> Self
+pub fn ImagefiltermedianFrame::copy(Self) -> Self
+pub fn ImagefiltermedianFrame::fill(Self, Double) -> Self
+pub fn ImagefiltermedianFrame::get(Self, Int32) -> Double
+pub fn ImagefiltermedianFrame::len(Self) -> Int32
+pub fn ImagefiltermedianFrame::max(Self) -> Double
+pub fn ImagefiltermedianFrame::mean(Self) -> Double
+pub fn ImagefiltermedianFrame::min(Self) -> Double
+pub fn ImagefiltermedianFrame::scale(Self, Double) -> Self
+pub fn ImagefiltermedianFrame::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermedianFrame::sum(Self) -> Double
+pub fn ImagefiltermedianFrame::to_string(Self) -> String
+
+pub(all) struct ImagefiltermedianGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermedianGraphN::add(Self, Self) -> Self
+pub fn ImagefiltermedianGraphN::copy(Self) -> Self
+pub fn ImagefiltermedianGraphN::fill(Self, Double) -> Self
+pub fn ImagefiltermedianGraphN::get(Self, Int32) -> Double
+pub fn ImagefiltermedianGraphN::len(Self) -> Int32
+pub fn ImagefiltermedianGraphN::max(Self) -> Double
+pub fn ImagefiltermedianGraphN::mean(Self) -> Double
+pub fn ImagefiltermedianGraphN::min(Self) -> Double
+pub fn ImagefiltermedianGraphN::scale(Self, Double) -> Self
+pub fn ImagefiltermedianGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermedianGraphN::sum(Self) -> Double
+pub fn ImagefiltermedianGraphN::to_string(Self) -> String
+
+pub(all) struct ImagefiltermedianLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermedianLayer::add(Self, Self) -> Self
+pub fn ImagefiltermedianLayer::copy(Self) -> Self
+pub fn ImagefiltermedianLayer::fill(Self, Double) -> Self
+pub fn ImagefiltermedianLayer::get(Self, Int32) -> Double
+pub fn ImagefiltermedianLayer::len(Self) -> Int32
+pub fn ImagefiltermedianLayer::max(Self) -> Double
+pub fn ImagefiltermedianLayer::mean(Self) -> Double
+pub fn ImagefiltermedianLayer::min(Self) -> Double
+pub fn ImagefiltermedianLayer::scale(Self, Double) -> Self
+pub fn ImagefiltermedianLayer::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermedianLayer::sum(Self) -> Double
+pub fn ImagefiltermedianLayer::to_string(Self) -> String
+
+pub(all) struct ImagefiltermedianMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagefiltermedianMatrix::add(Self, Self) -> Self
+pub fn ImagefiltermedianMatrix::det(Self) -> Double
+pub fn ImagefiltermedianMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagefiltermedianMatrix::multiply(Self, Self) -> Self
+pub fn ImagefiltermedianMatrix::norm(Self) -> Double
+pub fn ImagefiltermedianMatrix::scale(Self, Double) -> Self
+pub fn ImagefiltermedianMatrix::to_string(Self) -> String
+pub fn ImagefiltermedianMatrix::trace(Self) -> Double
+pub fn ImagefiltermedianMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagefiltermedianModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermedianModel::add(Self, Self) -> Self
+pub fn ImagefiltermedianModel::copy(Self) -> Self
+pub fn ImagefiltermedianModel::fill(Self, Double) -> Self
+pub fn ImagefiltermedianModel::get(Self, Int32) -> Double
+pub fn ImagefiltermedianModel::len(Self) -> Int32
+pub fn ImagefiltermedianModel::max(Self) -> Double
+pub fn ImagefiltermedianModel::mean(Self) -> Double
+pub fn ImagefiltermedianModel::min(Self) -> Double
+pub fn ImagefiltermedianModel::scale(Self, Double) -> Self
+pub fn ImagefiltermedianModel::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermedianModel::sum(Self) -> Double
+pub fn ImagefiltermedianModel::to_string(Self) -> String
+
+pub(all) struct ImagefiltermedianNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermedianNode::add(Self, Self) -> Self
+pub fn ImagefiltermedianNode::copy(Self) -> Self
+pub fn ImagefiltermedianNode::fill(Self, Double) -> Self
+pub fn ImagefiltermedianNode::get(Self, Int32) -> Double
+pub fn ImagefiltermedianNode::len(Self) -> Int32
+pub fn ImagefiltermedianNode::max(Self) -> Double
+pub fn ImagefiltermedianNode::mean(Self) -> Double
+pub fn ImagefiltermedianNode::min(Self) -> Double
+pub fn ImagefiltermedianNode::scale(Self, Double) -> Self
+pub fn ImagefiltermedianNode::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermedianNode::sum(Self) -> Double
+pub fn ImagefiltermedianNode::to_string(Self) -> String
+
+pub(all) struct ImagefiltermedianPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermedianPath::add(Self, Self) -> Self
+pub fn ImagefiltermedianPath::copy(Self) -> Self
+pub fn ImagefiltermedianPath::fill(Self, Double) -> Self
+pub fn ImagefiltermedianPath::get(Self, Int32) -> Double
+pub fn ImagefiltermedianPath::len(Self) -> Int32
+pub fn ImagefiltermedianPath::max(Self) -> Double
+pub fn ImagefiltermedianPath::mean(Self) -> Double
+pub fn ImagefiltermedianPath::min(Self) -> Double
+pub fn ImagefiltermedianPath::scale(Self, Double) -> Self
+pub fn ImagefiltermedianPath::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermedianPath::sum(Self) -> Double
+pub fn ImagefiltermedianPath::to_string(Self) -> String
+
+pub(all) struct ImagefiltermedianPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagefiltermedianPoint::add(Self, Self) -> Self
+pub fn ImagefiltermedianPoint::cross(Self, Self) -> Self
+pub fn ImagefiltermedianPoint::dist(Self, Self) -> Double
+pub fn ImagefiltermedianPoint::dot(Self, Self) -> Double
+pub fn ImagefiltermedianPoint::label(Self) -> Int32
+pub fn ImagefiltermedianPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagefiltermedianPoint::mid(Self, Self) -> Self
+pub fn ImagefiltermedianPoint::negate(Self) -> Self
+pub fn ImagefiltermedianPoint::norm(Self) -> Double
+pub fn ImagefiltermedianPoint::normalize(Self) -> Self
+pub fn ImagefiltermedianPoint::scale(Self, Double) -> Self
+pub fn ImagefiltermedianPoint::sub(Self, Self) -> Self
+pub fn ImagefiltermedianPoint::to_string(Self) -> String
+pub fn ImagefiltermedianPoint::x(Self) -> Double
+pub fn ImagefiltermedianPoint::y(Self) -> Double
+pub fn ImagefiltermedianPoint::z(Self) -> Double
+
+pub(all) struct ImagefiltermedianRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermedianRange::add(Self, Self) -> Self
+pub fn ImagefiltermedianRange::copy(Self) -> Self
+pub fn ImagefiltermedianRange::fill(Self, Double) -> Self
+pub fn ImagefiltermedianRange::get(Self, Int32) -> Double
+pub fn ImagefiltermedianRange::len(Self) -> Int32
+pub fn ImagefiltermedianRange::max(Self) -> Double
+pub fn ImagefiltermedianRange::mean(Self) -> Double
+pub fn ImagefiltermedianRange::min(Self) -> Double
+pub fn ImagefiltermedianRange::scale(Self, Double) -> Self
+pub fn ImagefiltermedianRange::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermedianRange::sum(Self) -> Double
+pub fn ImagefiltermedianRange::to_string(Self) -> String
+
+pub(all) struct ImagefiltermedianSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagefiltermedianSeries::add(Self, Self) -> Self
+pub fn ImagefiltermedianSeries::cumsum(Self) -> Self
+pub fn ImagefiltermedianSeries::len(Self) -> Int32
+pub fn ImagefiltermedianSeries::max(Self) -> Double
+pub fn ImagefiltermedianSeries::mean(Self) -> Double
+pub fn ImagefiltermedianSeries::median(Self) -> Double
+pub fn ImagefiltermedianSeries::min(Self) -> Double
+pub fn ImagefiltermedianSeries::normalize(Self) -> Self
+pub fn ImagefiltermedianSeries::range(Self) -> Double
+pub fn ImagefiltermedianSeries::scale(Self, Double) -> Self
+pub fn ImagefiltermedianSeries::std(Self) -> Double
+pub fn ImagefiltermedianSeries::sub(Self, Self) -> Self
+pub fn ImagefiltermedianSeries::sum(Self) -> Double
+pub fn ImagefiltermedianSeries::to_string(Self) -> String
+pub fn ImagefiltermedianSeries::variance(Self) -> Double
+
+pub(all) struct ImagefiltermedianSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermedianSlice::add(Self, Self) -> Self
+pub fn ImagefiltermedianSlice::copy(Self) -> Self
+pub fn ImagefiltermedianSlice::fill(Self, Double) -> Self
+pub fn ImagefiltermedianSlice::get(Self, Int32) -> Double
+pub fn ImagefiltermedianSlice::len(Self) -> Int32
+pub fn ImagefiltermedianSlice::max(Self) -> Double
+pub fn ImagefiltermedianSlice::mean(Self) -> Double
+pub fn ImagefiltermedianSlice::min(Self) -> Double
+pub fn ImagefiltermedianSlice::scale(Self, Double) -> Self
+pub fn ImagefiltermedianSlice::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermedianSlice::sum(Self) -> Double
+pub fn ImagefiltermedianSlice::to_string(Self) -> String
+
+pub(all) struct ImagefiltermedianTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermedianTable::add(Self, Self) -> Self
+pub fn ImagefiltermedianTable::copy(Self) -> Self
+pub fn ImagefiltermedianTable::fill(Self, Double) -> Self
+pub fn ImagefiltermedianTable::get(Self, Int32) -> Double
+pub fn ImagefiltermedianTable::len(Self) -> Int32
+pub fn ImagefiltermedianTable::max(Self) -> Double
+pub fn ImagefiltermedianTable::mean(Self) -> Double
+pub fn ImagefiltermedianTable::min(Self) -> Double
+pub fn ImagefiltermedianTable::scale(Self, Double) -> Self
+pub fn ImagefiltermedianTable::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermedianTable::sum(Self) -> Double
+pub fn ImagefiltermedianTable::to_string(Self) -> String
+
+pub(all) struct ImagefiltermedianVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagefiltermedianVector::add(Self, Self) -> Self
+pub fn ImagefiltermedianVector::dist(Self, Self) -> Double
+pub fn ImagefiltermedianVector::dot(Self, Self) -> Double
+pub fn ImagefiltermedianVector::norm(Self) -> Double
+pub fn ImagefiltermedianVector::normalize(Self) -> Self
+pub fn ImagefiltermedianVector::scale(Self, Double) -> Self
+pub fn ImagefiltermedianVector::sub(Self, Self) -> Self
+pub fn ImagefiltermedianVector::to_string(Self) -> String
+
+pub(all) struct ImagefiltermedianView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermedianView::add(Self, Self) -> Self
+pub fn ImagefiltermedianView::copy(Self) -> Self
+pub fn ImagefiltermedianView::fill(Self, Double) -> Self
+pub fn ImagefiltermedianView::get(Self, Int32) -> Double
+pub fn ImagefiltermedianView::len(Self) -> Int32
+pub fn ImagefiltermedianView::max(Self) -> Double
+pub fn ImagefiltermedianView::mean(Self) -> Double
+pub fn ImagefiltermedianView::min(Self) -> Double
+pub fn ImagefiltermedianView::scale(Self, Double) -> Self
+pub fn ImagefiltermedianView::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermedianView::sum(Self) -> Double
+pub fn ImagefiltermedianView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

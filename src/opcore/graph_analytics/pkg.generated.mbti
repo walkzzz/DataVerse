@@ -1,0 +1,136 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/graph_analytics"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add_edge(Graph, Int32, Int32, Double) -> Graph
+
+pub fn add_vertex(Graph, Int32) -> Graph
+
+pub fn adjacency_matrix(Graph) -> Array[Array[Double]]
+
+pub fn all_paths(Graph, Int32, Int32) -> Array[Array[Int32]]
+
+pub fn bfs(Graph, Int32) -> Array[Int32]
+
+pub fn centrality_betweenness(Graph) -> Array[Double]
+
+pub fn centrality_closeness(Graph) -> Array[Double]
+
+pub fn centrality_degree(Graph) -> Array[Double]
+
+pub fn centrality_eigenvector(Graph, Int32) -> Array[Double]
+
+pub fn centrality_harmonic(Graph) -> Array[Double]
+
+pub fn chromatic_number(Graph) -> Int32
+
+pub fn clique_maximal(Graph) -> Array[Int32]
+
+pub fn clique_maximum(Graph) -> Array[Int32]
+
+pub fn community_detection(Graph) -> Array[Array[Int32]]
+
+pub fn connected_components(Graph) -> Array[Array[Int32]]
+
+pub fn degree(Graph, Int32) -> Int32
+
+pub fn dfs(Graph, Int32) -> Array[Int32]
+
+pub fn edge_count(Graph) -> Int32
+
+pub fn graph_analytics_id() -> String
+
+pub fn graph_coloring(Graph) -> Array[(Int32, Int32)]
+
+pub fn graph_complement(Graph) -> Graph
+
+pub fn graph_diameter(Graph) -> Int32
+
+pub fn graph_difference(Graph, Graph) -> Graph
+
+pub fn graph_eccentricity(Graph, Int32) -> Int32
+
+pub fn graph_intersection(Graph, Graph) -> Graph
+
+pub fn graph_power(Graph, Int32) -> Graph
+
+pub fn graph_radius(Graph) -> Int32
+
+pub fn graph_reverse(Graph) -> Graph
+
+pub fn graph_union(Graph, Graph) -> Graph
+
+pub fn has_cycle(Graph) -> Bool
+
+pub fn in_degree(Graph, Int32) -> Int32
+
+pub fn incidence_matrix(Graph) -> Array[Array[Int32]]
+
+pub fn independent_set(Graph) -> Array[Int32]
+
+pub fn is_acyclic(Graph) -> Bool
+
+pub fn is_connected(Graph) -> Bool
+
+pub fn is_directed(Graph) -> Bool
+
+pub fn is_isomorphic_simple(Graph, Graph) -> Bool
+
+pub fn is_subgraph(Graph, Graph) -> Bool
+
+pub fn is_weighted(Graph) -> Bool
+
+pub fn laplacian_matrix(Graph) -> Array[Array[Double]]
+
+pub fn longest_path_dag(Graph, Int32, Int32) -> Int32
+
+pub fn louvain_method(Graph) -> Array[Array[Int32]]
+
+pub fn make_graph(Bool, Bool) -> Graph
+
+pub fn maximum_flow(Graph, Int32, Int32) -> Double
+
+pub fn min_cut(Graph, Int32, Int32) -> Double
+
+pub fn minimum_spanning_tree(Graph) -> Array[(Int32, Int32, Double)]
+
+pub fn modularity(Graph, Array[Array[Int32]]) -> Double
+
+pub fn neighbors(Graph, Int32) -> Array[Int32]
+
+pub fn out_degree(Graph, Int32) -> Int32
+
+pub fn pagerank(Graph, Int32, Double) -> Array[Double]
+
+pub fn remove_edge(Graph, Int32, Int32) -> Graph
+
+pub fn remove_vertex(Graph, Int32) -> Graph
+
+pub fn shortest_path(Graph, Int32, Int32) -> Array[Int32]
+
+pub fn strongly_connected_components(Graph) -> Array[Array[Int32]]
+
+pub fn topological_sort_dag(Graph) -> Array[Int32]
+
+pub fn vertex_count(Graph) -> Int32
+
+// Errors
+
+// Types and methods
+pub(all) struct Graph {
+  directed : Bool
+  weighted : Bool
+  vertices : Array[Int32]
+  edges : Array[(Int32, Int32, Double)]
+} derive(Eq, @debug.Debug)
+pub fn Graph::equal(Self, Self) -> Bool
+pub fn Graph::not_equal(Self, Self) -> Bool
+pub fn Graph::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

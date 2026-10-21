@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/error_code"
+
+// Values
+pub fn error_code_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn error_code_corr(Array[Double], Array[Double]) -> Double
+
+pub fn error_code_cov(Array[Double], Array[Double]) -> Double
+
+pub fn error_code_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn error_code_mae(Array[Double], Array[Double]) -> Double
+
+pub fn error_code_make_labeled_point(Double, Double, Int32) -> Error_codePoint
+
+pub fn error_code_make_matrix(Int32, Int32, Double) -> Error_codeMatrix
+
+pub fn error_code_make_point(Double, Double) -> Error_codePoint
+
+pub fn error_code_make_series(Array[Double], String) -> Error_codeSeries
+
+pub fn error_code_make_vector(Array[Double]) -> Error_codeVector
+
+pub fn error_code_matrix_add(Error_codeMatrix, Error_codeMatrix) -> Error_codeMatrix
+
+pub fn error_code_matrix_get(Error_codeMatrix, Int32, Int32) -> Double
+
+pub fn error_code_matrix_identity(Int32) -> Error_codeMatrix
+
+pub fn error_code_matrix_multiply(Error_codeMatrix, Error_codeMatrix) -> Error_codeMatrix
+
+pub fn error_code_matrix_norm(Error_codeMatrix) -> Double
+
+pub fn error_code_matrix_scale(Error_codeMatrix, Double) -> Error_codeMatrix
+
+pub fn error_code_matrix_to_string(Error_codeMatrix) -> String
+
+pub fn error_code_matrix_trace(Error_codeMatrix) -> Double
+
+pub fn error_code_matrix_transpose(Error_codeMatrix) -> Error_codeMatrix
+
+pub fn error_code_mse(Array[Double], Array[Double]) -> Double
+
+pub fn error_code_point_add(Error_codePoint, Error_codePoint) -> Error_codePoint
+
+pub fn error_code_point_dist(Error_codePoint, Error_codePoint) -> Double
+
+pub fn error_code_point_dot(Error_codePoint, Error_codePoint) -> Double
+
+pub fn error_code_point_label(Error_codePoint) -> Int32
+
+pub fn error_code_point_norm(Error_codePoint) -> Double
+
+pub fn error_code_point_scale(Error_codePoint, Double) -> Error_codePoint
+
+pub fn error_code_point_sub(Error_codePoint, Error_codePoint) -> Error_codePoint
+
+pub fn error_code_point_to_string(Error_codePoint) -> String
+
+pub fn error_code_point_x(Error_codePoint) -> Double
+
+pub fn error_code_point_y(Error_codePoint) -> Double
+
+pub fn error_code_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn error_code_r2(Array[Double], Array[Double]) -> Double
+
+pub fn error_code_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn error_code_series_add(Error_codeSeries, Error_codeSeries) -> Error_codeSeries
+
+pub fn error_code_series_len(Error_codeSeries) -> Int32
+
+pub fn error_code_series_max(Error_codeSeries) -> Double
+
+pub fn error_code_series_mean(Error_codeSeries) -> Double
+
+pub fn error_code_series_min(Error_codeSeries) -> Double
+
+pub fn error_code_series_scale(Error_codeSeries, Double) -> Error_codeSeries
+
+pub fn error_code_series_std(Error_codeSeries) -> Double
+
+pub fn error_code_series_sum(Error_codeSeries) -> Double
+
+pub fn error_code_series_to_string(Error_codeSeries) -> String
+
+pub fn error_code_series_var(Error_codeSeries) -> Double
+
+pub fn error_code_std(Array[Double]) -> Double
+
+pub fn error_code_var(Array[Double]) -> Double
+
+pub fn error_code_vector_add(Error_codeVector, Error_codeVector) -> Error_codeVector
+
+pub fn error_code_vector_dist(Error_codeVector, Error_codeVector) -> Double
+
+pub fn error_code_vector_dot(Error_codeVector, Error_codeVector) -> Double
+
+pub fn error_code_vector_norm(Error_codeVector) -> Double
+
+pub fn error_code_vector_normalize(Error_codeVector) -> Error_codeVector
+
+pub fn error_code_vector_scale(Error_codeVector, Double) -> Error_codeVector
+
+pub fn error_code_vector_sub(Error_codeVector, Error_codeVector) -> Error_codeVector
+
+pub fn error_code_vector_to_string(Error_codeVector) -> String
+
+pub fn error_code_vector_zero(Int32) -> Error_codeVector
+
+// Errors
+
+// Types and methods
+pub struct Error_codeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Error_codePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Error_codeSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Error_codeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

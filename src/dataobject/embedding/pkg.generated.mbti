@@ -1,0 +1,33 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/embedding"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn dim(Embedding) -> Int32
+
+pub fn embedding_id() -> String
+
+pub fn make(String, Array[Double]) -> Embedding
+
+pub fn make_normalized(String, Array[Double]) -> Embedding
+
+pub fn zero(String) -> Embedding
+
+// Errors
+
+// Types and methods
+pub struct Embedding {
+  model_id : String
+  vector : Array[Double]
+  normalized : Bool
+} derive(Eq, @debug.Debug)
+pub fn Embedding::equal(Self, Self) -> Bool
+pub fn Embedding::not_equal(Self, Self) -> Bool
+pub fn Embedding::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

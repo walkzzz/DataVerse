@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_tx_mvcc"
+
+// Values
+pub fn db_tx_mvcc_buffer_make(Int32) -> DbtxmvccBuffer
+
+pub fn db_tx_mvcc_cluster_make(Int32) -> DbtxmvccCluster
+
+pub fn db_tx_mvcc_cursor_make(Int32) -> DbtxmvccCursor
+
+pub fn db_tx_mvcc_edge_make(Int32) -> DbtxmvccEdge
+
+pub fn db_tx_mvcc_frame_make(Int32) -> DbtxmvccFrame
+
+pub fn db_tx_mvcc_graphn_make(Int32) -> DbtxmvccGraphN
+
+pub fn db_tx_mvcc_layer_make(Int32) -> DbtxmvccLayer
+
+pub fn db_tx_mvcc_make_matrix(Int32, Int32, Double) -> DbtxmvccMatrix
+
+pub fn db_tx_mvcc_make_point(Double, Double) -> DbtxmvccPoint
+
+pub fn db_tx_mvcc_make_point3(Double, Double, Double) -> DbtxmvccPoint
+
+pub fn db_tx_mvcc_make_series(Array[Double], String) -> DbtxmvccSeries
+
+pub fn db_tx_mvcc_make_vector(Array[Double]) -> DbtxmvccVector
+
+pub fn db_tx_mvcc_matrix_identity(Int32) -> DbtxmvccMatrix
+
+pub fn db_tx_mvcc_model_make(Int32) -> DbtxmvccModel
+
+pub fn db_tx_mvcc_node_make(Int32) -> DbtxmvccNode
+
+pub fn db_tx_mvcc_path_make(Int32) -> DbtxmvccPath
+
+pub fn db_tx_mvcc_range_make(Int32) -> DbtxmvccRange
+
+pub fn db_tx_mvcc_slice_make(Int32) -> DbtxmvccSlice
+
+pub fn db_tx_mvcc_table_make(Int32) -> DbtxmvccTable
+
+pub fn db_tx_mvcc_vector_zero(Int32) -> DbtxmvccVector
+
+pub fn db_tx_mvcc_view_make(Int32) -> DbtxmvccView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbtxmvccBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxmvccBuffer::add(Self, Self) -> Self
+pub fn DbtxmvccBuffer::copy(Self) -> Self
+pub fn DbtxmvccBuffer::fill(Self, Double) -> Self
+pub fn DbtxmvccBuffer::get(Self, Int32) -> Double
+pub fn DbtxmvccBuffer::len(Self) -> Int32
+pub fn DbtxmvccBuffer::max(Self) -> Double
+pub fn DbtxmvccBuffer::mean(Self) -> Double
+pub fn DbtxmvccBuffer::min(Self) -> Double
+pub fn DbtxmvccBuffer::scale(Self, Double) -> Self
+pub fn DbtxmvccBuffer::set(Self, Int32, Double) -> Self
+pub fn DbtxmvccBuffer::sum(Self) -> Double
+pub fn DbtxmvccBuffer::to_string(Self) -> String
+
+pub(all) struct DbtxmvccCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxmvccCluster::add(Self, Self) -> Self
+pub fn DbtxmvccCluster::copy(Self) -> Self
+pub fn DbtxmvccCluster::fill(Self, Double) -> Self
+pub fn DbtxmvccCluster::get(Self, Int32) -> Double
+pub fn DbtxmvccCluster::len(Self) -> Int32
+pub fn DbtxmvccCluster::max(Self) -> Double
+pub fn DbtxmvccCluster::mean(Self) -> Double
+pub fn DbtxmvccCluster::min(Self) -> Double
+pub fn DbtxmvccCluster::scale(Self, Double) -> Self
+pub fn DbtxmvccCluster::set(Self, Int32, Double) -> Self
+pub fn DbtxmvccCluster::sum(Self) -> Double
+pub fn DbtxmvccCluster::to_string(Self) -> String
+
+pub(all) struct DbtxmvccCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxmvccCursor::add(Self, Self) -> Self
+pub fn DbtxmvccCursor::copy(Self) -> Self
+pub fn DbtxmvccCursor::fill(Self, Double) -> Self
+pub fn DbtxmvccCursor::get(Self, Int32) -> Double
+pub fn DbtxmvccCursor::len(Self) -> Int32
+pub fn DbtxmvccCursor::max(Self) -> Double
+pub fn DbtxmvccCursor::mean(Self) -> Double
+pub fn DbtxmvccCursor::min(Self) -> Double
+pub fn DbtxmvccCursor::scale(Self, Double) -> Self
+pub fn DbtxmvccCursor::set(Self, Int32, Double) -> Self
+pub fn DbtxmvccCursor::sum(Self) -> Double
+pub fn DbtxmvccCursor::to_string(Self) -> String
+
+pub(all) struct DbtxmvccEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxmvccEdge::add(Self, Self) -> Self
+pub fn DbtxmvccEdge::copy(Self) -> Self
+pub fn DbtxmvccEdge::fill(Self, Double) -> Self
+pub fn DbtxmvccEdge::get(Self, Int32) -> Double
+pub fn DbtxmvccEdge::len(Self) -> Int32
+pub fn DbtxmvccEdge::max(Self) -> Double
+pub fn DbtxmvccEdge::mean(Self) -> Double
+pub fn DbtxmvccEdge::min(Self) -> Double
+pub fn DbtxmvccEdge::scale(Self, Double) -> Self
+pub fn DbtxmvccEdge::set(Self, Int32, Double) -> Self
+pub fn DbtxmvccEdge::sum(Self) -> Double
+pub fn DbtxmvccEdge::to_string(Self) -> String
+
+pub(all) struct DbtxmvccFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxmvccFrame::add(Self, Self) -> Self
+pub fn DbtxmvccFrame::copy(Self) -> Self
+pub fn DbtxmvccFrame::fill(Self, Double) -> Self
+pub fn DbtxmvccFrame::get(Self, Int32) -> Double
+pub fn DbtxmvccFrame::len(Self) -> Int32
+pub fn DbtxmvccFrame::max(Self) -> Double
+pub fn DbtxmvccFrame::mean(Self) -> Double
+pub fn DbtxmvccFrame::min(Self) -> Double
+pub fn DbtxmvccFrame::scale(Self, Double) -> Self
+pub fn DbtxmvccFrame::set(Self, Int32, Double) -> Self
+pub fn DbtxmvccFrame::sum(Self) -> Double
+pub fn DbtxmvccFrame::to_string(Self) -> String
+
+pub(all) struct DbtxmvccGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxmvccGraphN::add(Self, Self) -> Self
+pub fn DbtxmvccGraphN::copy(Self) -> Self
+pub fn DbtxmvccGraphN::fill(Self, Double) -> Self
+pub fn DbtxmvccGraphN::get(Self, Int32) -> Double
+pub fn DbtxmvccGraphN::len(Self) -> Int32
+pub fn DbtxmvccGraphN::max(Self) -> Double
+pub fn DbtxmvccGraphN::mean(Self) -> Double
+pub fn DbtxmvccGraphN::min(Self) -> Double
+pub fn DbtxmvccGraphN::scale(Self, Double) -> Self
+pub fn DbtxmvccGraphN::set(Self, Int32, Double) -> Self
+pub fn DbtxmvccGraphN::sum(Self) -> Double
+pub fn DbtxmvccGraphN::to_string(Self) -> String
+
+pub(all) struct DbtxmvccLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxmvccLayer::add(Self, Self) -> Self
+pub fn DbtxmvccLayer::copy(Self) -> Self
+pub fn DbtxmvccLayer::fill(Self, Double) -> Self
+pub fn DbtxmvccLayer::get(Self, Int32) -> Double
+pub fn DbtxmvccLayer::len(Self) -> Int32
+pub fn DbtxmvccLayer::max(Self) -> Double
+pub fn DbtxmvccLayer::mean(Self) -> Double
+pub fn DbtxmvccLayer::min(Self) -> Double
+pub fn DbtxmvccLayer::scale(Self, Double) -> Self
+pub fn DbtxmvccLayer::set(Self, Int32, Double) -> Self
+pub fn DbtxmvccLayer::sum(Self) -> Double
+pub fn DbtxmvccLayer::to_string(Self) -> String
+
+pub(all) struct DbtxmvccMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbtxmvccMatrix::add(Self, Self) -> Self
+pub fn DbtxmvccMatrix::det(Self) -> Double
+pub fn DbtxmvccMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbtxmvccMatrix::multiply(Self, Self) -> Self
+pub fn DbtxmvccMatrix::norm(Self) -> Double
+pub fn DbtxmvccMatrix::scale(Self, Double) -> Self
+pub fn DbtxmvccMatrix::to_string(Self) -> String
+pub fn DbtxmvccMatrix::trace(Self) -> Double
+pub fn DbtxmvccMatrix::transpose(Self) -> Self
+
+pub(all) struct DbtxmvccModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxmvccModel::add(Self, Self) -> Self
+pub fn DbtxmvccModel::copy(Self) -> Self
+pub fn DbtxmvccModel::fill(Self, Double) -> Self
+pub fn DbtxmvccModel::get(Self, Int32) -> Double
+pub fn DbtxmvccModel::len(Self) -> Int32
+pub fn DbtxmvccModel::max(Self) -> Double
+pub fn DbtxmvccModel::mean(Self) -> Double
+pub fn DbtxmvccModel::min(Self) -> Double
+pub fn DbtxmvccModel::scale(Self, Double) -> Self
+pub fn DbtxmvccModel::set(Self, Int32, Double) -> Self
+pub fn DbtxmvccModel::sum(Self) -> Double
+pub fn DbtxmvccModel::to_string(Self) -> String
+
+pub(all) struct DbtxmvccNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxmvccNode::add(Self, Self) -> Self
+pub fn DbtxmvccNode::copy(Self) -> Self
+pub fn DbtxmvccNode::fill(Self, Double) -> Self
+pub fn DbtxmvccNode::get(Self, Int32) -> Double
+pub fn DbtxmvccNode::len(Self) -> Int32
+pub fn DbtxmvccNode::max(Self) -> Double
+pub fn DbtxmvccNode::mean(Self) -> Double
+pub fn DbtxmvccNode::min(Self) -> Double
+pub fn DbtxmvccNode::scale(Self, Double) -> Self
+pub fn DbtxmvccNode::set(Self, Int32, Double) -> Self
+pub fn DbtxmvccNode::sum(Self) -> Double
+pub fn DbtxmvccNode::to_string(Self) -> String
+
+pub(all) struct DbtxmvccPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxmvccPath::add(Self, Self) -> Self
+pub fn DbtxmvccPath::copy(Self) -> Self
+pub fn DbtxmvccPath::fill(Self, Double) -> Self
+pub fn DbtxmvccPath::get(Self, Int32) -> Double
+pub fn DbtxmvccPath::len(Self) -> Int32
+pub fn DbtxmvccPath::max(Self) -> Double
+pub fn DbtxmvccPath::mean(Self) -> Double
+pub fn DbtxmvccPath::min(Self) -> Double
+pub fn DbtxmvccPath::scale(Self, Double) -> Self
+pub fn DbtxmvccPath::set(Self, Int32, Double) -> Self
+pub fn DbtxmvccPath::sum(Self) -> Double
+pub fn DbtxmvccPath::to_string(Self) -> String
+
+pub(all) struct DbtxmvccPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbtxmvccPoint::add(Self, Self) -> Self
+pub fn DbtxmvccPoint::cross(Self, Self) -> Self
+pub fn DbtxmvccPoint::dist(Self, Self) -> Double
+pub fn DbtxmvccPoint::dot(Self, Self) -> Double
+pub fn DbtxmvccPoint::label(Self) -> Int32
+pub fn DbtxmvccPoint::lerp(Self, Self, Double) -> Self
+pub fn DbtxmvccPoint::mid(Self, Self) -> Self
+pub fn DbtxmvccPoint::negate(Self) -> Self
+pub fn DbtxmvccPoint::norm(Self) -> Double
+pub fn DbtxmvccPoint::normalize(Self) -> Self
+pub fn DbtxmvccPoint::scale(Self, Double) -> Self
+pub fn DbtxmvccPoint::sub(Self, Self) -> Self
+pub fn DbtxmvccPoint::to_string(Self) -> String
+pub fn DbtxmvccPoint::x(Self) -> Double
+pub fn DbtxmvccPoint::y(Self) -> Double
+pub fn DbtxmvccPoint::z(Self) -> Double
+
+pub(all) struct DbtxmvccRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxmvccRange::add(Self, Self) -> Self
+pub fn DbtxmvccRange::copy(Self) -> Self
+pub fn DbtxmvccRange::fill(Self, Double) -> Self
+pub fn DbtxmvccRange::get(Self, Int32) -> Double
+pub fn DbtxmvccRange::len(Self) -> Int32
+pub fn DbtxmvccRange::max(Self) -> Double
+pub fn DbtxmvccRange::mean(Self) -> Double
+pub fn DbtxmvccRange::min(Self) -> Double
+pub fn DbtxmvccRange::scale(Self, Double) -> Self
+pub fn DbtxmvccRange::set(Self, Int32, Double) -> Self
+pub fn DbtxmvccRange::sum(Self) -> Double
+pub fn DbtxmvccRange::to_string(Self) -> String
+
+pub(all) struct DbtxmvccSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbtxmvccSeries::add(Self, Self) -> Self
+pub fn DbtxmvccSeries::cumsum(Self) -> Self
+pub fn DbtxmvccSeries::len(Self) -> Int32
+pub fn DbtxmvccSeries::max(Self) -> Double
+pub fn DbtxmvccSeries::mean(Self) -> Double
+pub fn DbtxmvccSeries::median(Self) -> Double
+pub fn DbtxmvccSeries::min(Self) -> Double
+pub fn DbtxmvccSeries::normalize(Self) -> Self
+pub fn DbtxmvccSeries::range(Self) -> Double
+pub fn DbtxmvccSeries::scale(Self, Double) -> Self
+pub fn DbtxmvccSeries::std(Self) -> Double
+pub fn DbtxmvccSeries::sub(Self, Self) -> Self
+pub fn DbtxmvccSeries::sum(Self) -> Double
+pub fn DbtxmvccSeries::to_string(Self) -> String
+pub fn DbtxmvccSeries::variance(Self) -> Double
+
+pub(all) struct DbtxmvccSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxmvccSlice::add(Self, Self) -> Self
+pub fn DbtxmvccSlice::copy(Self) -> Self
+pub fn DbtxmvccSlice::fill(Self, Double) -> Self
+pub fn DbtxmvccSlice::get(Self, Int32) -> Double
+pub fn DbtxmvccSlice::len(Self) -> Int32
+pub fn DbtxmvccSlice::max(Self) -> Double
+pub fn DbtxmvccSlice::mean(Self) -> Double
+pub fn DbtxmvccSlice::min(Self) -> Double
+pub fn DbtxmvccSlice::scale(Self, Double) -> Self
+pub fn DbtxmvccSlice::set(Self, Int32, Double) -> Self
+pub fn DbtxmvccSlice::sum(Self) -> Double
+pub fn DbtxmvccSlice::to_string(Self) -> String
+
+pub(all) struct DbtxmvccTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxmvccTable::add(Self, Self) -> Self
+pub fn DbtxmvccTable::copy(Self) -> Self
+pub fn DbtxmvccTable::fill(Self, Double) -> Self
+pub fn DbtxmvccTable::get(Self, Int32) -> Double
+pub fn DbtxmvccTable::len(Self) -> Int32
+pub fn DbtxmvccTable::max(Self) -> Double
+pub fn DbtxmvccTable::mean(Self) -> Double
+pub fn DbtxmvccTable::min(Self) -> Double
+pub fn DbtxmvccTable::scale(Self, Double) -> Self
+pub fn DbtxmvccTable::set(Self, Int32, Double) -> Self
+pub fn DbtxmvccTable::sum(Self) -> Double
+pub fn DbtxmvccTable::to_string(Self) -> String
+
+pub(all) struct DbtxmvccVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbtxmvccVector::add(Self, Self) -> Self
+pub fn DbtxmvccVector::dist(Self, Self) -> Double
+pub fn DbtxmvccVector::dot(Self, Self) -> Double
+pub fn DbtxmvccVector::norm(Self) -> Double
+pub fn DbtxmvccVector::normalize(Self) -> Self
+pub fn DbtxmvccVector::scale(Self, Double) -> Self
+pub fn DbtxmvccVector::sub(Self, Self) -> Self
+pub fn DbtxmvccVector::to_string(Self) -> String
+
+pub(all) struct DbtxmvccView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxmvccView::add(Self, Self) -> Self
+pub fn DbtxmvccView::copy(Self) -> Self
+pub fn DbtxmvccView::fill(Self, Double) -> Self
+pub fn DbtxmvccView::get(Self, Int32) -> Double
+pub fn DbtxmvccView::len(Self) -> Int32
+pub fn DbtxmvccView::max(Self) -> Double
+pub fn DbtxmvccView::mean(Self) -> Double
+pub fn DbtxmvccView::min(Self) -> Double
+pub fn DbtxmvccView::scale(Self, Double) -> Self
+pub fn DbtxmvccView::set(Self, Int32, Double) -> Self
+pub fn DbtxmvccView::sum(Self) -> Double
+pub fn DbtxmvccView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

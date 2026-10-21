@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_filter_prewitt"
+
+// Values
+pub fn image_filter_prewitt_buffer_make(Int32) -> ImagefilterprewittBuffer
+
+pub fn image_filter_prewitt_cluster_make(Int32) -> ImagefilterprewittCluster
+
+pub fn image_filter_prewitt_cursor_make(Int32) -> ImagefilterprewittCursor
+
+pub fn image_filter_prewitt_edge_make(Int32) -> ImagefilterprewittEdge
+
+pub fn image_filter_prewitt_frame_make(Int32) -> ImagefilterprewittFrame
+
+pub fn image_filter_prewitt_graphn_make(Int32) -> ImagefilterprewittGraphN
+
+pub fn image_filter_prewitt_layer_make(Int32) -> ImagefilterprewittLayer
+
+pub fn image_filter_prewitt_make_matrix(Int32, Int32, Double) -> ImagefilterprewittMatrix
+
+pub fn image_filter_prewitt_make_point(Double, Double) -> ImagefilterprewittPoint
+
+pub fn image_filter_prewitt_make_point3(Double, Double, Double) -> ImagefilterprewittPoint
+
+pub fn image_filter_prewitt_make_series(Array[Double], String) -> ImagefilterprewittSeries
+
+pub fn image_filter_prewitt_make_vector(Array[Double]) -> ImagefilterprewittVector
+
+pub fn image_filter_prewitt_matrix_identity(Int32) -> ImagefilterprewittMatrix
+
+pub fn image_filter_prewitt_model_make(Int32) -> ImagefilterprewittModel
+
+pub fn image_filter_prewitt_node_make(Int32) -> ImagefilterprewittNode
+
+pub fn image_filter_prewitt_path_make(Int32) -> ImagefilterprewittPath
+
+pub fn image_filter_prewitt_range_make(Int32) -> ImagefilterprewittRange
+
+pub fn image_filter_prewitt_slice_make(Int32) -> ImagefilterprewittSlice
+
+pub fn image_filter_prewitt_table_make(Int32) -> ImagefilterprewittTable
+
+pub fn image_filter_prewitt_vector_zero(Int32) -> ImagefilterprewittVector
+
+pub fn image_filter_prewitt_view_make(Int32) -> ImagefilterprewittView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagefilterprewittBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterprewittBuffer::add(Self, Self) -> Self
+pub fn ImagefilterprewittBuffer::copy(Self) -> Self
+pub fn ImagefilterprewittBuffer::fill(Self, Double) -> Self
+pub fn ImagefilterprewittBuffer::get(Self, Int32) -> Double
+pub fn ImagefilterprewittBuffer::len(Self) -> Int32
+pub fn ImagefilterprewittBuffer::max(Self) -> Double
+pub fn ImagefilterprewittBuffer::mean(Self) -> Double
+pub fn ImagefilterprewittBuffer::min(Self) -> Double
+pub fn ImagefilterprewittBuffer::scale(Self, Double) -> Self
+pub fn ImagefilterprewittBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagefilterprewittBuffer::sum(Self) -> Double
+pub fn ImagefilterprewittBuffer::to_string(Self) -> String
+
+pub(all) struct ImagefilterprewittCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterprewittCluster::add(Self, Self) -> Self
+pub fn ImagefilterprewittCluster::copy(Self) -> Self
+pub fn ImagefilterprewittCluster::fill(Self, Double) -> Self
+pub fn ImagefilterprewittCluster::get(Self, Int32) -> Double
+pub fn ImagefilterprewittCluster::len(Self) -> Int32
+pub fn ImagefilterprewittCluster::max(Self) -> Double
+pub fn ImagefilterprewittCluster::mean(Self) -> Double
+pub fn ImagefilterprewittCluster::min(Self) -> Double
+pub fn ImagefilterprewittCluster::scale(Self, Double) -> Self
+pub fn ImagefilterprewittCluster::set(Self, Int32, Double) -> Self
+pub fn ImagefilterprewittCluster::sum(Self) -> Double
+pub fn ImagefilterprewittCluster::to_string(Self) -> String
+
+pub(all) struct ImagefilterprewittCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterprewittCursor::add(Self, Self) -> Self
+pub fn ImagefilterprewittCursor::copy(Self) -> Self
+pub fn ImagefilterprewittCursor::fill(Self, Double) -> Self
+pub fn ImagefilterprewittCursor::get(Self, Int32) -> Double
+pub fn ImagefilterprewittCursor::len(Self) -> Int32
+pub fn ImagefilterprewittCursor::max(Self) -> Double
+pub fn ImagefilterprewittCursor::mean(Self) -> Double
+pub fn ImagefilterprewittCursor::min(Self) -> Double
+pub fn ImagefilterprewittCursor::scale(Self, Double) -> Self
+pub fn ImagefilterprewittCursor::set(Self, Int32, Double) -> Self
+pub fn ImagefilterprewittCursor::sum(Self) -> Double
+pub fn ImagefilterprewittCursor::to_string(Self) -> String
+
+pub(all) struct ImagefilterprewittEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterprewittEdge::add(Self, Self) -> Self
+pub fn ImagefilterprewittEdge::copy(Self) -> Self
+pub fn ImagefilterprewittEdge::fill(Self, Double) -> Self
+pub fn ImagefilterprewittEdge::get(Self, Int32) -> Double
+pub fn ImagefilterprewittEdge::len(Self) -> Int32
+pub fn ImagefilterprewittEdge::max(Self) -> Double
+pub fn ImagefilterprewittEdge::mean(Self) -> Double
+pub fn ImagefilterprewittEdge::min(Self) -> Double
+pub fn ImagefilterprewittEdge::scale(Self, Double) -> Self
+pub fn ImagefilterprewittEdge::set(Self, Int32, Double) -> Self
+pub fn ImagefilterprewittEdge::sum(Self) -> Double
+pub fn ImagefilterprewittEdge::to_string(Self) -> String
+
+pub(all) struct ImagefilterprewittFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterprewittFrame::add(Self, Self) -> Self
+pub fn ImagefilterprewittFrame::copy(Self) -> Self
+pub fn ImagefilterprewittFrame::fill(Self, Double) -> Self
+pub fn ImagefilterprewittFrame::get(Self, Int32) -> Double
+pub fn ImagefilterprewittFrame::len(Self) -> Int32
+pub fn ImagefilterprewittFrame::max(Self) -> Double
+pub fn ImagefilterprewittFrame::mean(Self) -> Double
+pub fn ImagefilterprewittFrame::min(Self) -> Double
+pub fn ImagefilterprewittFrame::scale(Self, Double) -> Self
+pub fn ImagefilterprewittFrame::set(Self, Int32, Double) -> Self
+pub fn ImagefilterprewittFrame::sum(Self) -> Double
+pub fn ImagefilterprewittFrame::to_string(Self) -> String
+
+pub(all) struct ImagefilterprewittGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterprewittGraphN::add(Self, Self) -> Self
+pub fn ImagefilterprewittGraphN::copy(Self) -> Self
+pub fn ImagefilterprewittGraphN::fill(Self, Double) -> Self
+pub fn ImagefilterprewittGraphN::get(Self, Int32) -> Double
+pub fn ImagefilterprewittGraphN::len(Self) -> Int32
+pub fn ImagefilterprewittGraphN::max(Self) -> Double
+pub fn ImagefilterprewittGraphN::mean(Self) -> Double
+pub fn ImagefilterprewittGraphN::min(Self) -> Double
+pub fn ImagefilterprewittGraphN::scale(Self, Double) -> Self
+pub fn ImagefilterprewittGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagefilterprewittGraphN::sum(Self) -> Double
+pub fn ImagefilterprewittGraphN::to_string(Self) -> String
+
+pub(all) struct ImagefilterprewittLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterprewittLayer::add(Self, Self) -> Self
+pub fn ImagefilterprewittLayer::copy(Self) -> Self
+pub fn ImagefilterprewittLayer::fill(Self, Double) -> Self
+pub fn ImagefilterprewittLayer::get(Self, Int32) -> Double
+pub fn ImagefilterprewittLayer::len(Self) -> Int32
+pub fn ImagefilterprewittLayer::max(Self) -> Double
+pub fn ImagefilterprewittLayer::mean(Self) -> Double
+pub fn ImagefilterprewittLayer::min(Self) -> Double
+pub fn ImagefilterprewittLayer::scale(Self, Double) -> Self
+pub fn ImagefilterprewittLayer::set(Self, Int32, Double) -> Self
+pub fn ImagefilterprewittLayer::sum(Self) -> Double
+pub fn ImagefilterprewittLayer::to_string(Self) -> String
+
+pub(all) struct ImagefilterprewittMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagefilterprewittMatrix::add(Self, Self) -> Self
+pub fn ImagefilterprewittMatrix::det(Self) -> Double
+pub fn ImagefilterprewittMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagefilterprewittMatrix::multiply(Self, Self) -> Self
+pub fn ImagefilterprewittMatrix::norm(Self) -> Double
+pub fn ImagefilterprewittMatrix::scale(Self, Double) -> Self
+pub fn ImagefilterprewittMatrix::to_string(Self) -> String
+pub fn ImagefilterprewittMatrix::trace(Self) -> Double
+pub fn ImagefilterprewittMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagefilterprewittModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterprewittModel::add(Self, Self) -> Self
+pub fn ImagefilterprewittModel::copy(Self) -> Self
+pub fn ImagefilterprewittModel::fill(Self, Double) -> Self
+pub fn ImagefilterprewittModel::get(Self, Int32) -> Double
+pub fn ImagefilterprewittModel::len(Self) -> Int32
+pub fn ImagefilterprewittModel::max(Self) -> Double
+pub fn ImagefilterprewittModel::mean(Self) -> Double
+pub fn ImagefilterprewittModel::min(Self) -> Double
+pub fn ImagefilterprewittModel::scale(Self, Double) -> Self
+pub fn ImagefilterprewittModel::set(Self, Int32, Double) -> Self
+pub fn ImagefilterprewittModel::sum(Self) -> Double
+pub fn ImagefilterprewittModel::to_string(Self) -> String
+
+pub(all) struct ImagefilterprewittNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterprewittNode::add(Self, Self) -> Self
+pub fn ImagefilterprewittNode::copy(Self) -> Self
+pub fn ImagefilterprewittNode::fill(Self, Double) -> Self
+pub fn ImagefilterprewittNode::get(Self, Int32) -> Double
+pub fn ImagefilterprewittNode::len(Self) -> Int32
+pub fn ImagefilterprewittNode::max(Self) -> Double
+pub fn ImagefilterprewittNode::mean(Self) -> Double
+pub fn ImagefilterprewittNode::min(Self) -> Double
+pub fn ImagefilterprewittNode::scale(Self, Double) -> Self
+pub fn ImagefilterprewittNode::set(Self, Int32, Double) -> Self
+pub fn ImagefilterprewittNode::sum(Self) -> Double
+pub fn ImagefilterprewittNode::to_string(Self) -> String
+
+pub(all) struct ImagefilterprewittPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterprewittPath::add(Self, Self) -> Self
+pub fn ImagefilterprewittPath::copy(Self) -> Self
+pub fn ImagefilterprewittPath::fill(Self, Double) -> Self
+pub fn ImagefilterprewittPath::get(Self, Int32) -> Double
+pub fn ImagefilterprewittPath::len(Self) -> Int32
+pub fn ImagefilterprewittPath::max(Self) -> Double
+pub fn ImagefilterprewittPath::mean(Self) -> Double
+pub fn ImagefilterprewittPath::min(Self) -> Double
+pub fn ImagefilterprewittPath::scale(Self, Double) -> Self
+pub fn ImagefilterprewittPath::set(Self, Int32, Double) -> Self
+pub fn ImagefilterprewittPath::sum(Self) -> Double
+pub fn ImagefilterprewittPath::to_string(Self) -> String
+
+pub(all) struct ImagefilterprewittPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagefilterprewittPoint::add(Self, Self) -> Self
+pub fn ImagefilterprewittPoint::cross(Self, Self) -> Self
+pub fn ImagefilterprewittPoint::dist(Self, Self) -> Double
+pub fn ImagefilterprewittPoint::dot(Self, Self) -> Double
+pub fn ImagefilterprewittPoint::label(Self) -> Int32
+pub fn ImagefilterprewittPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagefilterprewittPoint::mid(Self, Self) -> Self
+pub fn ImagefilterprewittPoint::negate(Self) -> Self
+pub fn ImagefilterprewittPoint::norm(Self) -> Double
+pub fn ImagefilterprewittPoint::normalize(Self) -> Self
+pub fn ImagefilterprewittPoint::scale(Self, Double) -> Self
+pub fn ImagefilterprewittPoint::sub(Self, Self) -> Self
+pub fn ImagefilterprewittPoint::to_string(Self) -> String
+pub fn ImagefilterprewittPoint::x(Self) -> Double
+pub fn ImagefilterprewittPoint::y(Self) -> Double
+pub fn ImagefilterprewittPoint::z(Self) -> Double
+
+pub(all) struct ImagefilterprewittRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterprewittRange::add(Self, Self) -> Self
+pub fn ImagefilterprewittRange::copy(Self) -> Self
+pub fn ImagefilterprewittRange::fill(Self, Double) -> Self
+pub fn ImagefilterprewittRange::get(Self, Int32) -> Double
+pub fn ImagefilterprewittRange::len(Self) -> Int32
+pub fn ImagefilterprewittRange::max(Self) -> Double
+pub fn ImagefilterprewittRange::mean(Self) -> Double
+pub fn ImagefilterprewittRange::min(Self) -> Double
+pub fn ImagefilterprewittRange::scale(Self, Double) -> Self
+pub fn ImagefilterprewittRange::set(Self, Int32, Double) -> Self
+pub fn ImagefilterprewittRange::sum(Self) -> Double
+pub fn ImagefilterprewittRange::to_string(Self) -> String
+
+pub(all) struct ImagefilterprewittSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagefilterprewittSeries::add(Self, Self) -> Self
+pub fn ImagefilterprewittSeries::cumsum(Self) -> Self
+pub fn ImagefilterprewittSeries::len(Self) -> Int32
+pub fn ImagefilterprewittSeries::max(Self) -> Double
+pub fn ImagefilterprewittSeries::mean(Self) -> Double
+pub fn ImagefilterprewittSeries::median(Self) -> Double
+pub fn ImagefilterprewittSeries::min(Self) -> Double
+pub fn ImagefilterprewittSeries::normalize(Self) -> Self
+pub fn ImagefilterprewittSeries::range(Self) -> Double
+pub fn ImagefilterprewittSeries::scale(Self, Double) -> Self
+pub fn ImagefilterprewittSeries::std(Self) -> Double
+pub fn ImagefilterprewittSeries::sub(Self, Self) -> Self
+pub fn ImagefilterprewittSeries::sum(Self) -> Double
+pub fn ImagefilterprewittSeries::to_string(Self) -> String
+pub fn ImagefilterprewittSeries::variance(Self) -> Double
+
+pub(all) struct ImagefilterprewittSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterprewittSlice::add(Self, Self) -> Self
+pub fn ImagefilterprewittSlice::copy(Self) -> Self
+pub fn ImagefilterprewittSlice::fill(Self, Double) -> Self
+pub fn ImagefilterprewittSlice::get(Self, Int32) -> Double
+pub fn ImagefilterprewittSlice::len(Self) -> Int32
+pub fn ImagefilterprewittSlice::max(Self) -> Double
+pub fn ImagefilterprewittSlice::mean(Self) -> Double
+pub fn ImagefilterprewittSlice::min(Self) -> Double
+pub fn ImagefilterprewittSlice::scale(Self, Double) -> Self
+pub fn ImagefilterprewittSlice::set(Self, Int32, Double) -> Self
+pub fn ImagefilterprewittSlice::sum(Self) -> Double
+pub fn ImagefilterprewittSlice::to_string(Self) -> String
+
+pub(all) struct ImagefilterprewittTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterprewittTable::add(Self, Self) -> Self
+pub fn ImagefilterprewittTable::copy(Self) -> Self
+pub fn ImagefilterprewittTable::fill(Self, Double) -> Self
+pub fn ImagefilterprewittTable::get(Self, Int32) -> Double
+pub fn ImagefilterprewittTable::len(Self) -> Int32
+pub fn ImagefilterprewittTable::max(Self) -> Double
+pub fn ImagefilterprewittTable::mean(Self) -> Double
+pub fn ImagefilterprewittTable::min(Self) -> Double
+pub fn ImagefilterprewittTable::scale(Self, Double) -> Self
+pub fn ImagefilterprewittTable::set(Self, Int32, Double) -> Self
+pub fn ImagefilterprewittTable::sum(Self) -> Double
+pub fn ImagefilterprewittTable::to_string(Self) -> String
+
+pub(all) struct ImagefilterprewittVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagefilterprewittVector::add(Self, Self) -> Self
+pub fn ImagefilterprewittVector::dist(Self, Self) -> Double
+pub fn ImagefilterprewittVector::dot(Self, Self) -> Double
+pub fn ImagefilterprewittVector::norm(Self) -> Double
+pub fn ImagefilterprewittVector::normalize(Self) -> Self
+pub fn ImagefilterprewittVector::scale(Self, Double) -> Self
+pub fn ImagefilterprewittVector::sub(Self, Self) -> Self
+pub fn ImagefilterprewittVector::to_string(Self) -> String
+
+pub(all) struct ImagefilterprewittView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterprewittView::add(Self, Self) -> Self
+pub fn ImagefilterprewittView::copy(Self) -> Self
+pub fn ImagefilterprewittView::fill(Self, Double) -> Self
+pub fn ImagefilterprewittView::get(Self, Int32) -> Double
+pub fn ImagefilterprewittView::len(Self) -> Int32
+pub fn ImagefilterprewittView::max(Self) -> Double
+pub fn ImagefilterprewittView::mean(Self) -> Double
+pub fn ImagefilterprewittView::min(Self) -> Double
+pub fn ImagefilterprewittView::scale(Self, Double) -> Self
+pub fn ImagefilterprewittView::set(Self, Int32, Double) -> Self
+pub fn ImagefilterprewittView::sum(Self) -> Double
+pub fn ImagefilterprewittView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,47 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/lineage"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn compose(BiLineage, BiLineage) -> BiLineage
+
+pub fn input_count(BiLineage) -> Int32
+
+pub fn lineage_id() -> String
+
+pub fn make_bi_lineage(String, Array[String], Array[String], String) -> BiLineage
+
+pub fn make_field_lineage(String, Array[String], String) -> FieldLineage
+
+pub fn output_count(BiLineage) -> Int32
+
+pub fn reverse(BiLineage) -> BiLineage
+
+// Errors
+
+// Types and methods
+pub struct BiLineage {
+  operator : String
+  inputs : Array[String]
+  outputs : Array[String]
+  params : String
+} derive(Eq, @debug.Debug)
+pub fn BiLineage::equal(Self, Self) -> Bool
+pub fn BiLineage::not_equal(Self, Self) -> Bool
+pub fn BiLineage::to_repr(Self) -> @debug.Repr
+
+pub struct FieldLineage {
+  field_name : String
+  source_fields : Array[String]
+  operator : String
+} derive(Eq, @debug.Debug)
+pub fn FieldLineage::equal(Self, Self) -> Bool
+pub fn FieldLineage::not_equal(Self, Self) -> Bool
+pub fn FieldLineage::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

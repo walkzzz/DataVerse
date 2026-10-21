@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/finance_risk_marginal"
+
+// Values
+pub fn finance_risk_marginal_buffer_make(Int32) -> FinanceriskmarginalBuffer
+
+pub fn finance_risk_marginal_cluster_make(Int32) -> FinanceriskmarginalCluster
+
+pub fn finance_risk_marginal_cursor_make(Int32) -> FinanceriskmarginalCursor
+
+pub fn finance_risk_marginal_edge_make(Int32) -> FinanceriskmarginalEdge
+
+pub fn finance_risk_marginal_frame_make(Int32) -> FinanceriskmarginalFrame
+
+pub fn finance_risk_marginal_graphn_make(Int32) -> FinanceriskmarginalGraphN
+
+pub fn finance_risk_marginal_layer_make(Int32) -> FinanceriskmarginalLayer
+
+pub fn finance_risk_marginal_make_matrix(Int32, Int32, Double) -> FinanceriskmarginalMatrix
+
+pub fn finance_risk_marginal_make_point(Double, Double) -> FinanceriskmarginalPoint
+
+pub fn finance_risk_marginal_make_point3(Double, Double, Double) -> FinanceriskmarginalPoint
+
+pub fn finance_risk_marginal_make_series(Array[Double], String) -> FinanceriskmarginalSeries
+
+pub fn finance_risk_marginal_make_vector(Array[Double]) -> FinanceriskmarginalVector
+
+pub fn finance_risk_marginal_matrix_identity(Int32) -> FinanceriskmarginalMatrix
+
+pub fn finance_risk_marginal_model_make(Int32) -> FinanceriskmarginalModel
+
+pub fn finance_risk_marginal_node_make(Int32) -> FinanceriskmarginalNode
+
+pub fn finance_risk_marginal_path_make(Int32) -> FinanceriskmarginalPath
+
+pub fn finance_risk_marginal_range_make(Int32) -> FinanceriskmarginalRange
+
+pub fn finance_risk_marginal_slice_make(Int32) -> FinanceriskmarginalSlice
+
+pub fn finance_risk_marginal_table_make(Int32) -> FinanceriskmarginalTable
+
+pub fn finance_risk_marginal_vector_zero(Int32) -> FinanceriskmarginalVector
+
+pub fn finance_risk_marginal_view_make(Int32) -> FinanceriskmarginalView
+
+// Errors
+
+// Types and methods
+pub(all) struct FinanceriskmarginalBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskmarginalBuffer::add(Self, Self) -> Self
+pub fn FinanceriskmarginalBuffer::copy(Self) -> Self
+pub fn FinanceriskmarginalBuffer::fill(Self, Double) -> Self
+pub fn FinanceriskmarginalBuffer::get(Self, Int32) -> Double
+pub fn FinanceriskmarginalBuffer::len(Self) -> Int32
+pub fn FinanceriskmarginalBuffer::max(Self) -> Double
+pub fn FinanceriskmarginalBuffer::mean(Self) -> Double
+pub fn FinanceriskmarginalBuffer::min(Self) -> Double
+pub fn FinanceriskmarginalBuffer::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalBuffer::set(Self, Int32, Double) -> Self
+pub fn FinanceriskmarginalBuffer::sum(Self) -> Double
+pub fn FinanceriskmarginalBuffer::to_string(Self) -> String
+
+pub(all) struct FinanceriskmarginalCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskmarginalCluster::add(Self, Self) -> Self
+pub fn FinanceriskmarginalCluster::copy(Self) -> Self
+pub fn FinanceriskmarginalCluster::fill(Self, Double) -> Self
+pub fn FinanceriskmarginalCluster::get(Self, Int32) -> Double
+pub fn FinanceriskmarginalCluster::len(Self) -> Int32
+pub fn FinanceriskmarginalCluster::max(Self) -> Double
+pub fn FinanceriskmarginalCluster::mean(Self) -> Double
+pub fn FinanceriskmarginalCluster::min(Self) -> Double
+pub fn FinanceriskmarginalCluster::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalCluster::set(Self, Int32, Double) -> Self
+pub fn FinanceriskmarginalCluster::sum(Self) -> Double
+pub fn FinanceriskmarginalCluster::to_string(Self) -> String
+
+pub(all) struct FinanceriskmarginalCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskmarginalCursor::add(Self, Self) -> Self
+pub fn FinanceriskmarginalCursor::copy(Self) -> Self
+pub fn FinanceriskmarginalCursor::fill(Self, Double) -> Self
+pub fn FinanceriskmarginalCursor::get(Self, Int32) -> Double
+pub fn FinanceriskmarginalCursor::len(Self) -> Int32
+pub fn FinanceriskmarginalCursor::max(Self) -> Double
+pub fn FinanceriskmarginalCursor::mean(Self) -> Double
+pub fn FinanceriskmarginalCursor::min(Self) -> Double
+pub fn FinanceriskmarginalCursor::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalCursor::set(Self, Int32, Double) -> Self
+pub fn FinanceriskmarginalCursor::sum(Self) -> Double
+pub fn FinanceriskmarginalCursor::to_string(Self) -> String
+
+pub(all) struct FinanceriskmarginalEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskmarginalEdge::add(Self, Self) -> Self
+pub fn FinanceriskmarginalEdge::copy(Self) -> Self
+pub fn FinanceriskmarginalEdge::fill(Self, Double) -> Self
+pub fn FinanceriskmarginalEdge::get(Self, Int32) -> Double
+pub fn FinanceriskmarginalEdge::len(Self) -> Int32
+pub fn FinanceriskmarginalEdge::max(Self) -> Double
+pub fn FinanceriskmarginalEdge::mean(Self) -> Double
+pub fn FinanceriskmarginalEdge::min(Self) -> Double
+pub fn FinanceriskmarginalEdge::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalEdge::set(Self, Int32, Double) -> Self
+pub fn FinanceriskmarginalEdge::sum(Self) -> Double
+pub fn FinanceriskmarginalEdge::to_string(Self) -> String
+
+pub(all) struct FinanceriskmarginalFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskmarginalFrame::add(Self, Self) -> Self
+pub fn FinanceriskmarginalFrame::copy(Self) -> Self
+pub fn FinanceriskmarginalFrame::fill(Self, Double) -> Self
+pub fn FinanceriskmarginalFrame::get(Self, Int32) -> Double
+pub fn FinanceriskmarginalFrame::len(Self) -> Int32
+pub fn FinanceriskmarginalFrame::max(Self) -> Double
+pub fn FinanceriskmarginalFrame::mean(Self) -> Double
+pub fn FinanceriskmarginalFrame::min(Self) -> Double
+pub fn FinanceriskmarginalFrame::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalFrame::set(Self, Int32, Double) -> Self
+pub fn FinanceriskmarginalFrame::sum(Self) -> Double
+pub fn FinanceriskmarginalFrame::to_string(Self) -> String
+
+pub(all) struct FinanceriskmarginalGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskmarginalGraphN::add(Self, Self) -> Self
+pub fn FinanceriskmarginalGraphN::copy(Self) -> Self
+pub fn FinanceriskmarginalGraphN::fill(Self, Double) -> Self
+pub fn FinanceriskmarginalGraphN::get(Self, Int32) -> Double
+pub fn FinanceriskmarginalGraphN::len(Self) -> Int32
+pub fn FinanceriskmarginalGraphN::max(Self) -> Double
+pub fn FinanceriskmarginalGraphN::mean(Self) -> Double
+pub fn FinanceriskmarginalGraphN::min(Self) -> Double
+pub fn FinanceriskmarginalGraphN::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalGraphN::set(Self, Int32, Double) -> Self
+pub fn FinanceriskmarginalGraphN::sum(Self) -> Double
+pub fn FinanceriskmarginalGraphN::to_string(Self) -> String
+
+pub(all) struct FinanceriskmarginalLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskmarginalLayer::add(Self, Self) -> Self
+pub fn FinanceriskmarginalLayer::copy(Self) -> Self
+pub fn FinanceriskmarginalLayer::fill(Self, Double) -> Self
+pub fn FinanceriskmarginalLayer::get(Self, Int32) -> Double
+pub fn FinanceriskmarginalLayer::len(Self) -> Int32
+pub fn FinanceriskmarginalLayer::max(Self) -> Double
+pub fn FinanceriskmarginalLayer::mean(Self) -> Double
+pub fn FinanceriskmarginalLayer::min(Self) -> Double
+pub fn FinanceriskmarginalLayer::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalLayer::set(Self, Int32, Double) -> Self
+pub fn FinanceriskmarginalLayer::sum(Self) -> Double
+pub fn FinanceriskmarginalLayer::to_string(Self) -> String
+
+pub(all) struct FinanceriskmarginalMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn FinanceriskmarginalMatrix::add(Self, Self) -> Self
+pub fn FinanceriskmarginalMatrix::det(Self) -> Double
+pub fn FinanceriskmarginalMatrix::get(Self, Int32, Int32) -> Double
+pub fn FinanceriskmarginalMatrix::multiply(Self, Self) -> Self
+pub fn FinanceriskmarginalMatrix::norm(Self) -> Double
+pub fn FinanceriskmarginalMatrix::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalMatrix::to_string(Self) -> String
+pub fn FinanceriskmarginalMatrix::trace(Self) -> Double
+pub fn FinanceriskmarginalMatrix::transpose(Self) -> Self
+
+pub(all) struct FinanceriskmarginalModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskmarginalModel::add(Self, Self) -> Self
+pub fn FinanceriskmarginalModel::copy(Self) -> Self
+pub fn FinanceriskmarginalModel::fill(Self, Double) -> Self
+pub fn FinanceriskmarginalModel::get(Self, Int32) -> Double
+pub fn FinanceriskmarginalModel::len(Self) -> Int32
+pub fn FinanceriskmarginalModel::max(Self) -> Double
+pub fn FinanceriskmarginalModel::mean(Self) -> Double
+pub fn FinanceriskmarginalModel::min(Self) -> Double
+pub fn FinanceriskmarginalModel::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalModel::set(Self, Int32, Double) -> Self
+pub fn FinanceriskmarginalModel::sum(Self) -> Double
+pub fn FinanceriskmarginalModel::to_string(Self) -> String
+
+pub(all) struct FinanceriskmarginalNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskmarginalNode::add(Self, Self) -> Self
+pub fn FinanceriskmarginalNode::copy(Self) -> Self
+pub fn FinanceriskmarginalNode::fill(Self, Double) -> Self
+pub fn FinanceriskmarginalNode::get(Self, Int32) -> Double
+pub fn FinanceriskmarginalNode::len(Self) -> Int32
+pub fn FinanceriskmarginalNode::max(Self) -> Double
+pub fn FinanceriskmarginalNode::mean(Self) -> Double
+pub fn FinanceriskmarginalNode::min(Self) -> Double
+pub fn FinanceriskmarginalNode::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalNode::set(Self, Int32, Double) -> Self
+pub fn FinanceriskmarginalNode::sum(Self) -> Double
+pub fn FinanceriskmarginalNode::to_string(Self) -> String
+
+pub(all) struct FinanceriskmarginalPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskmarginalPath::add(Self, Self) -> Self
+pub fn FinanceriskmarginalPath::copy(Self) -> Self
+pub fn FinanceriskmarginalPath::fill(Self, Double) -> Self
+pub fn FinanceriskmarginalPath::get(Self, Int32) -> Double
+pub fn FinanceriskmarginalPath::len(Self) -> Int32
+pub fn FinanceriskmarginalPath::max(Self) -> Double
+pub fn FinanceriskmarginalPath::mean(Self) -> Double
+pub fn FinanceriskmarginalPath::min(Self) -> Double
+pub fn FinanceriskmarginalPath::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalPath::set(Self, Int32, Double) -> Self
+pub fn FinanceriskmarginalPath::sum(Self) -> Double
+pub fn FinanceriskmarginalPath::to_string(Self) -> String
+
+pub(all) struct FinanceriskmarginalPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn FinanceriskmarginalPoint::add(Self, Self) -> Self
+pub fn FinanceriskmarginalPoint::cross(Self, Self) -> Self
+pub fn FinanceriskmarginalPoint::dist(Self, Self) -> Double
+pub fn FinanceriskmarginalPoint::dot(Self, Self) -> Double
+pub fn FinanceriskmarginalPoint::label(Self) -> Int32
+pub fn FinanceriskmarginalPoint::lerp(Self, Self, Double) -> Self
+pub fn FinanceriskmarginalPoint::mid(Self, Self) -> Self
+pub fn FinanceriskmarginalPoint::negate(Self) -> Self
+pub fn FinanceriskmarginalPoint::norm(Self) -> Double
+pub fn FinanceriskmarginalPoint::normalize(Self) -> Self
+pub fn FinanceriskmarginalPoint::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalPoint::sub(Self, Self) -> Self
+pub fn FinanceriskmarginalPoint::to_string(Self) -> String
+pub fn FinanceriskmarginalPoint::x(Self) -> Double
+pub fn FinanceriskmarginalPoint::y(Self) -> Double
+pub fn FinanceriskmarginalPoint::z(Self) -> Double
+
+pub(all) struct FinanceriskmarginalRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskmarginalRange::add(Self, Self) -> Self
+pub fn FinanceriskmarginalRange::copy(Self) -> Self
+pub fn FinanceriskmarginalRange::fill(Self, Double) -> Self
+pub fn FinanceriskmarginalRange::get(Self, Int32) -> Double
+pub fn FinanceriskmarginalRange::len(Self) -> Int32
+pub fn FinanceriskmarginalRange::max(Self) -> Double
+pub fn FinanceriskmarginalRange::mean(Self) -> Double
+pub fn FinanceriskmarginalRange::min(Self) -> Double
+pub fn FinanceriskmarginalRange::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalRange::set(Self, Int32, Double) -> Self
+pub fn FinanceriskmarginalRange::sum(Self) -> Double
+pub fn FinanceriskmarginalRange::to_string(Self) -> String
+
+pub(all) struct FinanceriskmarginalSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn FinanceriskmarginalSeries::add(Self, Self) -> Self
+pub fn FinanceriskmarginalSeries::cumsum(Self) -> Self
+pub fn FinanceriskmarginalSeries::len(Self) -> Int32
+pub fn FinanceriskmarginalSeries::max(Self) -> Double
+pub fn FinanceriskmarginalSeries::mean(Self) -> Double
+pub fn FinanceriskmarginalSeries::median(Self) -> Double
+pub fn FinanceriskmarginalSeries::min(Self) -> Double
+pub fn FinanceriskmarginalSeries::normalize(Self) -> Self
+pub fn FinanceriskmarginalSeries::range(Self) -> Double
+pub fn FinanceriskmarginalSeries::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalSeries::std(Self) -> Double
+pub fn FinanceriskmarginalSeries::sub(Self, Self) -> Self
+pub fn FinanceriskmarginalSeries::sum(Self) -> Double
+pub fn FinanceriskmarginalSeries::to_string(Self) -> String
+pub fn FinanceriskmarginalSeries::variance(Self) -> Double
+
+pub(all) struct FinanceriskmarginalSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskmarginalSlice::add(Self, Self) -> Self
+pub fn FinanceriskmarginalSlice::copy(Self) -> Self
+pub fn FinanceriskmarginalSlice::fill(Self, Double) -> Self
+pub fn FinanceriskmarginalSlice::get(Self, Int32) -> Double
+pub fn FinanceriskmarginalSlice::len(Self) -> Int32
+pub fn FinanceriskmarginalSlice::max(Self) -> Double
+pub fn FinanceriskmarginalSlice::mean(Self) -> Double
+pub fn FinanceriskmarginalSlice::min(Self) -> Double
+pub fn FinanceriskmarginalSlice::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalSlice::set(Self, Int32, Double) -> Self
+pub fn FinanceriskmarginalSlice::sum(Self) -> Double
+pub fn FinanceriskmarginalSlice::to_string(Self) -> String
+
+pub(all) struct FinanceriskmarginalTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskmarginalTable::add(Self, Self) -> Self
+pub fn FinanceriskmarginalTable::copy(Self) -> Self
+pub fn FinanceriskmarginalTable::fill(Self, Double) -> Self
+pub fn FinanceriskmarginalTable::get(Self, Int32) -> Double
+pub fn FinanceriskmarginalTable::len(Self) -> Int32
+pub fn FinanceriskmarginalTable::max(Self) -> Double
+pub fn FinanceriskmarginalTable::mean(Self) -> Double
+pub fn FinanceriskmarginalTable::min(Self) -> Double
+pub fn FinanceriskmarginalTable::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalTable::set(Self, Int32, Double) -> Self
+pub fn FinanceriskmarginalTable::sum(Self) -> Double
+pub fn FinanceriskmarginalTable::to_string(Self) -> String
+
+pub(all) struct FinanceriskmarginalVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn FinanceriskmarginalVector::add(Self, Self) -> Self
+pub fn FinanceriskmarginalVector::dist(Self, Self) -> Double
+pub fn FinanceriskmarginalVector::dot(Self, Self) -> Double
+pub fn FinanceriskmarginalVector::norm(Self) -> Double
+pub fn FinanceriskmarginalVector::normalize(Self) -> Self
+pub fn FinanceriskmarginalVector::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalVector::sub(Self, Self) -> Self
+pub fn FinanceriskmarginalVector::to_string(Self) -> String
+
+pub(all) struct FinanceriskmarginalView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskmarginalView::add(Self, Self) -> Self
+pub fn FinanceriskmarginalView::copy(Self) -> Self
+pub fn FinanceriskmarginalView::fill(Self, Double) -> Self
+pub fn FinanceriskmarginalView::get(Self, Int32) -> Double
+pub fn FinanceriskmarginalView::len(Self) -> Int32
+pub fn FinanceriskmarginalView::max(Self) -> Double
+pub fn FinanceriskmarginalView::mean(Self) -> Double
+pub fn FinanceriskmarginalView::min(Self) -> Double
+pub fn FinanceriskmarginalView::scale(Self, Double) -> Self
+pub fn FinanceriskmarginalView::set(Self, Int32, Double) -> Self
+pub fn FinanceriskmarginalView::sum(Self) -> Double
+pub fn FinanceriskmarginalView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

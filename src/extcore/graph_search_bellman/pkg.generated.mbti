@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_search_bellman"
+
+// Values
+pub fn graph_search_bellman_buffer_make(Int32) -> GraphsearchbellmanBuffer
+
+pub fn graph_search_bellman_cluster_make(Int32) -> GraphsearchbellmanCluster
+
+pub fn graph_search_bellman_cursor_make(Int32) -> GraphsearchbellmanCursor
+
+pub fn graph_search_bellman_edge_make(Int32) -> GraphsearchbellmanEdge
+
+pub fn graph_search_bellman_frame_make(Int32) -> GraphsearchbellmanFrame
+
+pub fn graph_search_bellman_graphn_make(Int32) -> GraphsearchbellmanGraphN
+
+pub fn graph_search_bellman_layer_make(Int32) -> GraphsearchbellmanLayer
+
+pub fn graph_search_bellman_make_matrix(Int32, Int32, Double) -> GraphsearchbellmanMatrix
+
+pub fn graph_search_bellman_make_point(Double, Double) -> GraphsearchbellmanPoint
+
+pub fn graph_search_bellman_make_point3(Double, Double, Double) -> GraphsearchbellmanPoint
+
+pub fn graph_search_bellman_make_series(Array[Double], String) -> GraphsearchbellmanSeries
+
+pub fn graph_search_bellman_make_vector(Array[Double]) -> GraphsearchbellmanVector
+
+pub fn graph_search_bellman_matrix_identity(Int32) -> GraphsearchbellmanMatrix
+
+pub fn graph_search_bellman_model_make(Int32) -> GraphsearchbellmanModel
+
+pub fn graph_search_bellman_node_make(Int32) -> GraphsearchbellmanNode
+
+pub fn graph_search_bellman_path_make(Int32) -> GraphsearchbellmanPath
+
+pub fn graph_search_bellman_range_make(Int32) -> GraphsearchbellmanRange
+
+pub fn graph_search_bellman_slice_make(Int32) -> GraphsearchbellmanSlice
+
+pub fn graph_search_bellman_table_make(Int32) -> GraphsearchbellmanTable
+
+pub fn graph_search_bellman_vector_zero(Int32) -> GraphsearchbellmanVector
+
+pub fn graph_search_bellman_view_make(Int32) -> GraphsearchbellmanView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphsearchbellmanBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbellmanBuffer::add(Self, Self) -> Self
+pub fn GraphsearchbellmanBuffer::copy(Self) -> Self
+pub fn GraphsearchbellmanBuffer::fill(Self, Double) -> Self
+pub fn GraphsearchbellmanBuffer::get(Self, Int32) -> Double
+pub fn GraphsearchbellmanBuffer::len(Self) -> Int32
+pub fn GraphsearchbellmanBuffer::max(Self) -> Double
+pub fn GraphsearchbellmanBuffer::mean(Self) -> Double
+pub fn GraphsearchbellmanBuffer::min(Self) -> Double
+pub fn GraphsearchbellmanBuffer::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbellmanBuffer::sum(Self) -> Double
+pub fn GraphsearchbellmanBuffer::to_string(Self) -> String
+
+pub(all) struct GraphsearchbellmanCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbellmanCluster::add(Self, Self) -> Self
+pub fn GraphsearchbellmanCluster::copy(Self) -> Self
+pub fn GraphsearchbellmanCluster::fill(Self, Double) -> Self
+pub fn GraphsearchbellmanCluster::get(Self, Int32) -> Double
+pub fn GraphsearchbellmanCluster::len(Self) -> Int32
+pub fn GraphsearchbellmanCluster::max(Self) -> Double
+pub fn GraphsearchbellmanCluster::mean(Self) -> Double
+pub fn GraphsearchbellmanCluster::min(Self) -> Double
+pub fn GraphsearchbellmanCluster::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanCluster::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbellmanCluster::sum(Self) -> Double
+pub fn GraphsearchbellmanCluster::to_string(Self) -> String
+
+pub(all) struct GraphsearchbellmanCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbellmanCursor::add(Self, Self) -> Self
+pub fn GraphsearchbellmanCursor::copy(Self) -> Self
+pub fn GraphsearchbellmanCursor::fill(Self, Double) -> Self
+pub fn GraphsearchbellmanCursor::get(Self, Int32) -> Double
+pub fn GraphsearchbellmanCursor::len(Self) -> Int32
+pub fn GraphsearchbellmanCursor::max(Self) -> Double
+pub fn GraphsearchbellmanCursor::mean(Self) -> Double
+pub fn GraphsearchbellmanCursor::min(Self) -> Double
+pub fn GraphsearchbellmanCursor::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanCursor::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbellmanCursor::sum(Self) -> Double
+pub fn GraphsearchbellmanCursor::to_string(Self) -> String
+
+pub(all) struct GraphsearchbellmanEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbellmanEdge::add(Self, Self) -> Self
+pub fn GraphsearchbellmanEdge::copy(Self) -> Self
+pub fn GraphsearchbellmanEdge::fill(Self, Double) -> Self
+pub fn GraphsearchbellmanEdge::get(Self, Int32) -> Double
+pub fn GraphsearchbellmanEdge::len(Self) -> Int32
+pub fn GraphsearchbellmanEdge::max(Self) -> Double
+pub fn GraphsearchbellmanEdge::mean(Self) -> Double
+pub fn GraphsearchbellmanEdge::min(Self) -> Double
+pub fn GraphsearchbellmanEdge::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanEdge::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbellmanEdge::sum(Self) -> Double
+pub fn GraphsearchbellmanEdge::to_string(Self) -> String
+
+pub(all) struct GraphsearchbellmanFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbellmanFrame::add(Self, Self) -> Self
+pub fn GraphsearchbellmanFrame::copy(Self) -> Self
+pub fn GraphsearchbellmanFrame::fill(Self, Double) -> Self
+pub fn GraphsearchbellmanFrame::get(Self, Int32) -> Double
+pub fn GraphsearchbellmanFrame::len(Self) -> Int32
+pub fn GraphsearchbellmanFrame::max(Self) -> Double
+pub fn GraphsearchbellmanFrame::mean(Self) -> Double
+pub fn GraphsearchbellmanFrame::min(Self) -> Double
+pub fn GraphsearchbellmanFrame::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanFrame::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbellmanFrame::sum(Self) -> Double
+pub fn GraphsearchbellmanFrame::to_string(Self) -> String
+
+pub(all) struct GraphsearchbellmanGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbellmanGraphN::add(Self, Self) -> Self
+pub fn GraphsearchbellmanGraphN::copy(Self) -> Self
+pub fn GraphsearchbellmanGraphN::fill(Self, Double) -> Self
+pub fn GraphsearchbellmanGraphN::get(Self, Int32) -> Double
+pub fn GraphsearchbellmanGraphN::len(Self) -> Int32
+pub fn GraphsearchbellmanGraphN::max(Self) -> Double
+pub fn GraphsearchbellmanGraphN::mean(Self) -> Double
+pub fn GraphsearchbellmanGraphN::min(Self) -> Double
+pub fn GraphsearchbellmanGraphN::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbellmanGraphN::sum(Self) -> Double
+pub fn GraphsearchbellmanGraphN::to_string(Self) -> String
+
+pub(all) struct GraphsearchbellmanLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbellmanLayer::add(Self, Self) -> Self
+pub fn GraphsearchbellmanLayer::copy(Self) -> Self
+pub fn GraphsearchbellmanLayer::fill(Self, Double) -> Self
+pub fn GraphsearchbellmanLayer::get(Self, Int32) -> Double
+pub fn GraphsearchbellmanLayer::len(Self) -> Int32
+pub fn GraphsearchbellmanLayer::max(Self) -> Double
+pub fn GraphsearchbellmanLayer::mean(Self) -> Double
+pub fn GraphsearchbellmanLayer::min(Self) -> Double
+pub fn GraphsearchbellmanLayer::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanLayer::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbellmanLayer::sum(Self) -> Double
+pub fn GraphsearchbellmanLayer::to_string(Self) -> String
+
+pub(all) struct GraphsearchbellmanMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphsearchbellmanMatrix::add(Self, Self) -> Self
+pub fn GraphsearchbellmanMatrix::det(Self) -> Double
+pub fn GraphsearchbellmanMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphsearchbellmanMatrix::multiply(Self, Self) -> Self
+pub fn GraphsearchbellmanMatrix::norm(Self) -> Double
+pub fn GraphsearchbellmanMatrix::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanMatrix::to_string(Self) -> String
+pub fn GraphsearchbellmanMatrix::trace(Self) -> Double
+pub fn GraphsearchbellmanMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphsearchbellmanModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbellmanModel::add(Self, Self) -> Self
+pub fn GraphsearchbellmanModel::copy(Self) -> Self
+pub fn GraphsearchbellmanModel::fill(Self, Double) -> Self
+pub fn GraphsearchbellmanModel::get(Self, Int32) -> Double
+pub fn GraphsearchbellmanModel::len(Self) -> Int32
+pub fn GraphsearchbellmanModel::max(Self) -> Double
+pub fn GraphsearchbellmanModel::mean(Self) -> Double
+pub fn GraphsearchbellmanModel::min(Self) -> Double
+pub fn GraphsearchbellmanModel::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanModel::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbellmanModel::sum(Self) -> Double
+pub fn GraphsearchbellmanModel::to_string(Self) -> String
+
+pub(all) struct GraphsearchbellmanNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbellmanNode::add(Self, Self) -> Self
+pub fn GraphsearchbellmanNode::copy(Self) -> Self
+pub fn GraphsearchbellmanNode::fill(Self, Double) -> Self
+pub fn GraphsearchbellmanNode::get(Self, Int32) -> Double
+pub fn GraphsearchbellmanNode::len(Self) -> Int32
+pub fn GraphsearchbellmanNode::max(Self) -> Double
+pub fn GraphsearchbellmanNode::mean(Self) -> Double
+pub fn GraphsearchbellmanNode::min(Self) -> Double
+pub fn GraphsearchbellmanNode::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanNode::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbellmanNode::sum(Self) -> Double
+pub fn GraphsearchbellmanNode::to_string(Self) -> String
+
+pub(all) struct GraphsearchbellmanPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbellmanPath::add(Self, Self) -> Self
+pub fn GraphsearchbellmanPath::copy(Self) -> Self
+pub fn GraphsearchbellmanPath::fill(Self, Double) -> Self
+pub fn GraphsearchbellmanPath::get(Self, Int32) -> Double
+pub fn GraphsearchbellmanPath::len(Self) -> Int32
+pub fn GraphsearchbellmanPath::max(Self) -> Double
+pub fn GraphsearchbellmanPath::mean(Self) -> Double
+pub fn GraphsearchbellmanPath::min(Self) -> Double
+pub fn GraphsearchbellmanPath::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanPath::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbellmanPath::sum(Self) -> Double
+pub fn GraphsearchbellmanPath::to_string(Self) -> String
+
+pub(all) struct GraphsearchbellmanPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphsearchbellmanPoint::add(Self, Self) -> Self
+pub fn GraphsearchbellmanPoint::cross(Self, Self) -> Self
+pub fn GraphsearchbellmanPoint::dist(Self, Self) -> Double
+pub fn GraphsearchbellmanPoint::dot(Self, Self) -> Double
+pub fn GraphsearchbellmanPoint::label(Self) -> Int32
+pub fn GraphsearchbellmanPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphsearchbellmanPoint::mid(Self, Self) -> Self
+pub fn GraphsearchbellmanPoint::negate(Self) -> Self
+pub fn GraphsearchbellmanPoint::norm(Self) -> Double
+pub fn GraphsearchbellmanPoint::normalize(Self) -> Self
+pub fn GraphsearchbellmanPoint::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanPoint::sub(Self, Self) -> Self
+pub fn GraphsearchbellmanPoint::to_string(Self) -> String
+pub fn GraphsearchbellmanPoint::x(Self) -> Double
+pub fn GraphsearchbellmanPoint::y(Self) -> Double
+pub fn GraphsearchbellmanPoint::z(Self) -> Double
+
+pub(all) struct GraphsearchbellmanRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbellmanRange::add(Self, Self) -> Self
+pub fn GraphsearchbellmanRange::copy(Self) -> Self
+pub fn GraphsearchbellmanRange::fill(Self, Double) -> Self
+pub fn GraphsearchbellmanRange::get(Self, Int32) -> Double
+pub fn GraphsearchbellmanRange::len(Self) -> Int32
+pub fn GraphsearchbellmanRange::max(Self) -> Double
+pub fn GraphsearchbellmanRange::mean(Self) -> Double
+pub fn GraphsearchbellmanRange::min(Self) -> Double
+pub fn GraphsearchbellmanRange::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanRange::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbellmanRange::sum(Self) -> Double
+pub fn GraphsearchbellmanRange::to_string(Self) -> String
+
+pub(all) struct GraphsearchbellmanSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphsearchbellmanSeries::add(Self, Self) -> Self
+pub fn GraphsearchbellmanSeries::cumsum(Self) -> Self
+pub fn GraphsearchbellmanSeries::len(Self) -> Int32
+pub fn GraphsearchbellmanSeries::max(Self) -> Double
+pub fn GraphsearchbellmanSeries::mean(Self) -> Double
+pub fn GraphsearchbellmanSeries::median(Self) -> Double
+pub fn GraphsearchbellmanSeries::min(Self) -> Double
+pub fn GraphsearchbellmanSeries::normalize(Self) -> Self
+pub fn GraphsearchbellmanSeries::range(Self) -> Double
+pub fn GraphsearchbellmanSeries::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanSeries::std(Self) -> Double
+pub fn GraphsearchbellmanSeries::sub(Self, Self) -> Self
+pub fn GraphsearchbellmanSeries::sum(Self) -> Double
+pub fn GraphsearchbellmanSeries::to_string(Self) -> String
+pub fn GraphsearchbellmanSeries::variance(Self) -> Double
+
+pub(all) struct GraphsearchbellmanSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbellmanSlice::add(Self, Self) -> Self
+pub fn GraphsearchbellmanSlice::copy(Self) -> Self
+pub fn GraphsearchbellmanSlice::fill(Self, Double) -> Self
+pub fn GraphsearchbellmanSlice::get(Self, Int32) -> Double
+pub fn GraphsearchbellmanSlice::len(Self) -> Int32
+pub fn GraphsearchbellmanSlice::max(Self) -> Double
+pub fn GraphsearchbellmanSlice::mean(Self) -> Double
+pub fn GraphsearchbellmanSlice::min(Self) -> Double
+pub fn GraphsearchbellmanSlice::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanSlice::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbellmanSlice::sum(Self) -> Double
+pub fn GraphsearchbellmanSlice::to_string(Self) -> String
+
+pub(all) struct GraphsearchbellmanTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbellmanTable::add(Self, Self) -> Self
+pub fn GraphsearchbellmanTable::copy(Self) -> Self
+pub fn GraphsearchbellmanTable::fill(Self, Double) -> Self
+pub fn GraphsearchbellmanTable::get(Self, Int32) -> Double
+pub fn GraphsearchbellmanTable::len(Self) -> Int32
+pub fn GraphsearchbellmanTable::max(Self) -> Double
+pub fn GraphsearchbellmanTable::mean(Self) -> Double
+pub fn GraphsearchbellmanTable::min(Self) -> Double
+pub fn GraphsearchbellmanTable::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanTable::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbellmanTable::sum(Self) -> Double
+pub fn GraphsearchbellmanTable::to_string(Self) -> String
+
+pub(all) struct GraphsearchbellmanVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphsearchbellmanVector::add(Self, Self) -> Self
+pub fn GraphsearchbellmanVector::dist(Self, Self) -> Double
+pub fn GraphsearchbellmanVector::dot(Self, Self) -> Double
+pub fn GraphsearchbellmanVector::norm(Self) -> Double
+pub fn GraphsearchbellmanVector::normalize(Self) -> Self
+pub fn GraphsearchbellmanVector::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanVector::sub(Self, Self) -> Self
+pub fn GraphsearchbellmanVector::to_string(Self) -> String
+
+pub(all) struct GraphsearchbellmanView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbellmanView::add(Self, Self) -> Self
+pub fn GraphsearchbellmanView::copy(Self) -> Self
+pub fn GraphsearchbellmanView::fill(Self, Double) -> Self
+pub fn GraphsearchbellmanView::get(Self, Int32) -> Double
+pub fn GraphsearchbellmanView::len(Self) -> Int32
+pub fn GraphsearchbellmanView::max(Self) -> Double
+pub fn GraphsearchbellmanView::mean(Self) -> Double
+pub fn GraphsearchbellmanView::min(Self) -> Double
+pub fn GraphsearchbellmanView::scale(Self, Double) -> Self
+pub fn GraphsearchbellmanView::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbellmanView::sum(Self) -> Double
+pub fn GraphsearchbellmanView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

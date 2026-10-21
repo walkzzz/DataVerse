@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_route_bgp"
+
+// Values
+pub fn net_route_bgp_buffer_make(Int32) -> NetroutebgpBuffer
+
+pub fn net_route_bgp_cluster_make(Int32) -> NetroutebgpCluster
+
+pub fn net_route_bgp_cursor_make(Int32) -> NetroutebgpCursor
+
+pub fn net_route_bgp_edge_make(Int32) -> NetroutebgpEdge
+
+pub fn net_route_bgp_frame_make(Int32) -> NetroutebgpFrame
+
+pub fn net_route_bgp_graphn_make(Int32) -> NetroutebgpGraphN
+
+pub fn net_route_bgp_layer_make(Int32) -> NetroutebgpLayer
+
+pub fn net_route_bgp_make_matrix(Int32, Int32, Double) -> NetroutebgpMatrix
+
+pub fn net_route_bgp_make_point(Double, Double) -> NetroutebgpPoint
+
+pub fn net_route_bgp_make_point3(Double, Double, Double) -> NetroutebgpPoint
+
+pub fn net_route_bgp_make_series(Array[Double], String) -> NetroutebgpSeries
+
+pub fn net_route_bgp_make_vector(Array[Double]) -> NetroutebgpVector
+
+pub fn net_route_bgp_matrix_identity(Int32) -> NetroutebgpMatrix
+
+pub fn net_route_bgp_model_make(Int32) -> NetroutebgpModel
+
+pub fn net_route_bgp_node_make(Int32) -> NetroutebgpNode
+
+pub fn net_route_bgp_path_make(Int32) -> NetroutebgpPath
+
+pub fn net_route_bgp_range_make(Int32) -> NetroutebgpRange
+
+pub fn net_route_bgp_slice_make(Int32) -> NetroutebgpSlice
+
+pub fn net_route_bgp_table_make(Int32) -> NetroutebgpTable
+
+pub fn net_route_bgp_vector_zero(Int32) -> NetroutebgpVector
+
+pub fn net_route_bgp_view_make(Int32) -> NetroutebgpView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetroutebgpBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebgpBuffer::add(Self, Self) -> Self
+pub fn NetroutebgpBuffer::copy(Self) -> Self
+pub fn NetroutebgpBuffer::fill(Self, Double) -> Self
+pub fn NetroutebgpBuffer::get(Self, Int32) -> Double
+pub fn NetroutebgpBuffer::len(Self) -> Int32
+pub fn NetroutebgpBuffer::max(Self) -> Double
+pub fn NetroutebgpBuffer::mean(Self) -> Double
+pub fn NetroutebgpBuffer::min(Self) -> Double
+pub fn NetroutebgpBuffer::scale(Self, Double) -> Self
+pub fn NetroutebgpBuffer::set(Self, Int32, Double) -> Self
+pub fn NetroutebgpBuffer::sum(Self) -> Double
+pub fn NetroutebgpBuffer::to_string(Self) -> String
+
+pub(all) struct NetroutebgpCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebgpCluster::add(Self, Self) -> Self
+pub fn NetroutebgpCluster::copy(Self) -> Self
+pub fn NetroutebgpCluster::fill(Self, Double) -> Self
+pub fn NetroutebgpCluster::get(Self, Int32) -> Double
+pub fn NetroutebgpCluster::len(Self) -> Int32
+pub fn NetroutebgpCluster::max(Self) -> Double
+pub fn NetroutebgpCluster::mean(Self) -> Double
+pub fn NetroutebgpCluster::min(Self) -> Double
+pub fn NetroutebgpCluster::scale(Self, Double) -> Self
+pub fn NetroutebgpCluster::set(Self, Int32, Double) -> Self
+pub fn NetroutebgpCluster::sum(Self) -> Double
+pub fn NetroutebgpCluster::to_string(Self) -> String
+
+pub(all) struct NetroutebgpCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebgpCursor::add(Self, Self) -> Self
+pub fn NetroutebgpCursor::copy(Self) -> Self
+pub fn NetroutebgpCursor::fill(Self, Double) -> Self
+pub fn NetroutebgpCursor::get(Self, Int32) -> Double
+pub fn NetroutebgpCursor::len(Self) -> Int32
+pub fn NetroutebgpCursor::max(Self) -> Double
+pub fn NetroutebgpCursor::mean(Self) -> Double
+pub fn NetroutebgpCursor::min(Self) -> Double
+pub fn NetroutebgpCursor::scale(Self, Double) -> Self
+pub fn NetroutebgpCursor::set(Self, Int32, Double) -> Self
+pub fn NetroutebgpCursor::sum(Self) -> Double
+pub fn NetroutebgpCursor::to_string(Self) -> String
+
+pub(all) struct NetroutebgpEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebgpEdge::add(Self, Self) -> Self
+pub fn NetroutebgpEdge::copy(Self) -> Self
+pub fn NetroutebgpEdge::fill(Self, Double) -> Self
+pub fn NetroutebgpEdge::get(Self, Int32) -> Double
+pub fn NetroutebgpEdge::len(Self) -> Int32
+pub fn NetroutebgpEdge::max(Self) -> Double
+pub fn NetroutebgpEdge::mean(Self) -> Double
+pub fn NetroutebgpEdge::min(Self) -> Double
+pub fn NetroutebgpEdge::scale(Self, Double) -> Self
+pub fn NetroutebgpEdge::set(Self, Int32, Double) -> Self
+pub fn NetroutebgpEdge::sum(Self) -> Double
+pub fn NetroutebgpEdge::to_string(Self) -> String
+
+pub(all) struct NetroutebgpFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebgpFrame::add(Self, Self) -> Self
+pub fn NetroutebgpFrame::copy(Self) -> Self
+pub fn NetroutebgpFrame::fill(Self, Double) -> Self
+pub fn NetroutebgpFrame::get(Self, Int32) -> Double
+pub fn NetroutebgpFrame::len(Self) -> Int32
+pub fn NetroutebgpFrame::max(Self) -> Double
+pub fn NetroutebgpFrame::mean(Self) -> Double
+pub fn NetroutebgpFrame::min(Self) -> Double
+pub fn NetroutebgpFrame::scale(Self, Double) -> Self
+pub fn NetroutebgpFrame::set(Self, Int32, Double) -> Self
+pub fn NetroutebgpFrame::sum(Self) -> Double
+pub fn NetroutebgpFrame::to_string(Self) -> String
+
+pub(all) struct NetroutebgpGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebgpGraphN::add(Self, Self) -> Self
+pub fn NetroutebgpGraphN::copy(Self) -> Self
+pub fn NetroutebgpGraphN::fill(Self, Double) -> Self
+pub fn NetroutebgpGraphN::get(Self, Int32) -> Double
+pub fn NetroutebgpGraphN::len(Self) -> Int32
+pub fn NetroutebgpGraphN::max(Self) -> Double
+pub fn NetroutebgpGraphN::mean(Self) -> Double
+pub fn NetroutebgpGraphN::min(Self) -> Double
+pub fn NetroutebgpGraphN::scale(Self, Double) -> Self
+pub fn NetroutebgpGraphN::set(Self, Int32, Double) -> Self
+pub fn NetroutebgpGraphN::sum(Self) -> Double
+pub fn NetroutebgpGraphN::to_string(Self) -> String
+
+pub(all) struct NetroutebgpLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebgpLayer::add(Self, Self) -> Self
+pub fn NetroutebgpLayer::copy(Self) -> Self
+pub fn NetroutebgpLayer::fill(Self, Double) -> Self
+pub fn NetroutebgpLayer::get(Self, Int32) -> Double
+pub fn NetroutebgpLayer::len(Self) -> Int32
+pub fn NetroutebgpLayer::max(Self) -> Double
+pub fn NetroutebgpLayer::mean(Self) -> Double
+pub fn NetroutebgpLayer::min(Self) -> Double
+pub fn NetroutebgpLayer::scale(Self, Double) -> Self
+pub fn NetroutebgpLayer::set(Self, Int32, Double) -> Self
+pub fn NetroutebgpLayer::sum(Self) -> Double
+pub fn NetroutebgpLayer::to_string(Self) -> String
+
+pub(all) struct NetroutebgpMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetroutebgpMatrix::add(Self, Self) -> Self
+pub fn NetroutebgpMatrix::det(Self) -> Double
+pub fn NetroutebgpMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetroutebgpMatrix::multiply(Self, Self) -> Self
+pub fn NetroutebgpMatrix::norm(Self) -> Double
+pub fn NetroutebgpMatrix::scale(Self, Double) -> Self
+pub fn NetroutebgpMatrix::to_string(Self) -> String
+pub fn NetroutebgpMatrix::trace(Self) -> Double
+pub fn NetroutebgpMatrix::transpose(Self) -> Self
+
+pub(all) struct NetroutebgpModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebgpModel::add(Self, Self) -> Self
+pub fn NetroutebgpModel::copy(Self) -> Self
+pub fn NetroutebgpModel::fill(Self, Double) -> Self
+pub fn NetroutebgpModel::get(Self, Int32) -> Double
+pub fn NetroutebgpModel::len(Self) -> Int32
+pub fn NetroutebgpModel::max(Self) -> Double
+pub fn NetroutebgpModel::mean(Self) -> Double
+pub fn NetroutebgpModel::min(Self) -> Double
+pub fn NetroutebgpModel::scale(Self, Double) -> Self
+pub fn NetroutebgpModel::set(Self, Int32, Double) -> Self
+pub fn NetroutebgpModel::sum(Self) -> Double
+pub fn NetroutebgpModel::to_string(Self) -> String
+
+pub(all) struct NetroutebgpNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebgpNode::add(Self, Self) -> Self
+pub fn NetroutebgpNode::copy(Self) -> Self
+pub fn NetroutebgpNode::fill(Self, Double) -> Self
+pub fn NetroutebgpNode::get(Self, Int32) -> Double
+pub fn NetroutebgpNode::len(Self) -> Int32
+pub fn NetroutebgpNode::max(Self) -> Double
+pub fn NetroutebgpNode::mean(Self) -> Double
+pub fn NetroutebgpNode::min(Self) -> Double
+pub fn NetroutebgpNode::scale(Self, Double) -> Self
+pub fn NetroutebgpNode::set(Self, Int32, Double) -> Self
+pub fn NetroutebgpNode::sum(Self) -> Double
+pub fn NetroutebgpNode::to_string(Self) -> String
+
+pub(all) struct NetroutebgpPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebgpPath::add(Self, Self) -> Self
+pub fn NetroutebgpPath::copy(Self) -> Self
+pub fn NetroutebgpPath::fill(Self, Double) -> Self
+pub fn NetroutebgpPath::get(Self, Int32) -> Double
+pub fn NetroutebgpPath::len(Self) -> Int32
+pub fn NetroutebgpPath::max(Self) -> Double
+pub fn NetroutebgpPath::mean(Self) -> Double
+pub fn NetroutebgpPath::min(Self) -> Double
+pub fn NetroutebgpPath::scale(Self, Double) -> Self
+pub fn NetroutebgpPath::set(Self, Int32, Double) -> Self
+pub fn NetroutebgpPath::sum(Self) -> Double
+pub fn NetroutebgpPath::to_string(Self) -> String
+
+pub(all) struct NetroutebgpPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetroutebgpPoint::add(Self, Self) -> Self
+pub fn NetroutebgpPoint::cross(Self, Self) -> Self
+pub fn NetroutebgpPoint::dist(Self, Self) -> Double
+pub fn NetroutebgpPoint::dot(Self, Self) -> Double
+pub fn NetroutebgpPoint::label(Self) -> Int32
+pub fn NetroutebgpPoint::lerp(Self, Self, Double) -> Self
+pub fn NetroutebgpPoint::mid(Self, Self) -> Self
+pub fn NetroutebgpPoint::negate(Self) -> Self
+pub fn NetroutebgpPoint::norm(Self) -> Double
+pub fn NetroutebgpPoint::normalize(Self) -> Self
+pub fn NetroutebgpPoint::scale(Self, Double) -> Self
+pub fn NetroutebgpPoint::sub(Self, Self) -> Self
+pub fn NetroutebgpPoint::to_string(Self) -> String
+pub fn NetroutebgpPoint::x(Self) -> Double
+pub fn NetroutebgpPoint::y(Self) -> Double
+pub fn NetroutebgpPoint::z(Self) -> Double
+
+pub(all) struct NetroutebgpRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebgpRange::add(Self, Self) -> Self
+pub fn NetroutebgpRange::copy(Self) -> Self
+pub fn NetroutebgpRange::fill(Self, Double) -> Self
+pub fn NetroutebgpRange::get(Self, Int32) -> Double
+pub fn NetroutebgpRange::len(Self) -> Int32
+pub fn NetroutebgpRange::max(Self) -> Double
+pub fn NetroutebgpRange::mean(Self) -> Double
+pub fn NetroutebgpRange::min(Self) -> Double
+pub fn NetroutebgpRange::scale(Self, Double) -> Self
+pub fn NetroutebgpRange::set(Self, Int32, Double) -> Self
+pub fn NetroutebgpRange::sum(Self) -> Double
+pub fn NetroutebgpRange::to_string(Self) -> String
+
+pub(all) struct NetroutebgpSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetroutebgpSeries::add(Self, Self) -> Self
+pub fn NetroutebgpSeries::cumsum(Self) -> Self
+pub fn NetroutebgpSeries::len(Self) -> Int32
+pub fn NetroutebgpSeries::max(Self) -> Double
+pub fn NetroutebgpSeries::mean(Self) -> Double
+pub fn NetroutebgpSeries::median(Self) -> Double
+pub fn NetroutebgpSeries::min(Self) -> Double
+pub fn NetroutebgpSeries::normalize(Self) -> Self
+pub fn NetroutebgpSeries::range(Self) -> Double
+pub fn NetroutebgpSeries::scale(Self, Double) -> Self
+pub fn NetroutebgpSeries::std(Self) -> Double
+pub fn NetroutebgpSeries::sub(Self, Self) -> Self
+pub fn NetroutebgpSeries::sum(Self) -> Double
+pub fn NetroutebgpSeries::to_string(Self) -> String
+pub fn NetroutebgpSeries::variance(Self) -> Double
+
+pub(all) struct NetroutebgpSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebgpSlice::add(Self, Self) -> Self
+pub fn NetroutebgpSlice::copy(Self) -> Self
+pub fn NetroutebgpSlice::fill(Self, Double) -> Self
+pub fn NetroutebgpSlice::get(Self, Int32) -> Double
+pub fn NetroutebgpSlice::len(Self) -> Int32
+pub fn NetroutebgpSlice::max(Self) -> Double
+pub fn NetroutebgpSlice::mean(Self) -> Double
+pub fn NetroutebgpSlice::min(Self) -> Double
+pub fn NetroutebgpSlice::scale(Self, Double) -> Self
+pub fn NetroutebgpSlice::set(Self, Int32, Double) -> Self
+pub fn NetroutebgpSlice::sum(Self) -> Double
+pub fn NetroutebgpSlice::to_string(Self) -> String
+
+pub(all) struct NetroutebgpTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebgpTable::add(Self, Self) -> Self
+pub fn NetroutebgpTable::copy(Self) -> Self
+pub fn NetroutebgpTable::fill(Self, Double) -> Self
+pub fn NetroutebgpTable::get(Self, Int32) -> Double
+pub fn NetroutebgpTable::len(Self) -> Int32
+pub fn NetroutebgpTable::max(Self) -> Double
+pub fn NetroutebgpTable::mean(Self) -> Double
+pub fn NetroutebgpTable::min(Self) -> Double
+pub fn NetroutebgpTable::scale(Self, Double) -> Self
+pub fn NetroutebgpTable::set(Self, Int32, Double) -> Self
+pub fn NetroutebgpTable::sum(Self) -> Double
+pub fn NetroutebgpTable::to_string(Self) -> String
+
+pub(all) struct NetroutebgpVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetroutebgpVector::add(Self, Self) -> Self
+pub fn NetroutebgpVector::dist(Self, Self) -> Double
+pub fn NetroutebgpVector::dot(Self, Self) -> Double
+pub fn NetroutebgpVector::norm(Self) -> Double
+pub fn NetroutebgpVector::normalize(Self) -> Self
+pub fn NetroutebgpVector::scale(Self, Double) -> Self
+pub fn NetroutebgpVector::sub(Self, Self) -> Self
+pub fn NetroutebgpVector::to_string(Self) -> String
+
+pub(all) struct NetroutebgpView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebgpView::add(Self, Self) -> Self
+pub fn NetroutebgpView::copy(Self) -> Self
+pub fn NetroutebgpView::fill(Self, Double) -> Self
+pub fn NetroutebgpView::get(Self, Int32) -> Double
+pub fn NetroutebgpView::len(Self) -> Int32
+pub fn NetroutebgpView::max(Self) -> Double
+pub fn NetroutebgpView::mean(Self) -> Double
+pub fn NetroutebgpView::min(Self) -> Double
+pub fn NetroutebgpView::scale(Self, Double) -> Self
+pub fn NetroutebgpView::set(Self, Int32, Double) -> Self
+pub fn NetroutebgpView::sum(Self) -> Double
+pub fn NetroutebgpView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

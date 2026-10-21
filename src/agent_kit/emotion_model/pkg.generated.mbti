@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/emotion_model"
+
+// Values
+pub fn emotion_model_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn emotion_model_corr(Array[Double], Array[Double]) -> Double
+
+pub fn emotion_model_cov(Array[Double], Array[Double]) -> Double
+
+pub fn emotion_model_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn emotion_model_mae(Array[Double], Array[Double]) -> Double
+
+pub fn emotion_model_make_labeled_point(Double, Double, Int32) -> Emotion_modelPoint
+
+pub fn emotion_model_make_matrix(Int32, Int32, Double) -> Emotion_modelMatrix
+
+pub fn emotion_model_make_point(Double, Double) -> Emotion_modelPoint
+
+pub fn emotion_model_make_series(Array[Double], String) -> Emotion_modelSeries
+
+pub fn emotion_model_make_vector(Array[Double]) -> Emotion_modelVector
+
+pub fn emotion_model_matrix_add(Emotion_modelMatrix, Emotion_modelMatrix) -> Emotion_modelMatrix
+
+pub fn emotion_model_matrix_get(Emotion_modelMatrix, Int32, Int32) -> Double
+
+pub fn emotion_model_matrix_identity(Int32) -> Emotion_modelMatrix
+
+pub fn emotion_model_matrix_multiply(Emotion_modelMatrix, Emotion_modelMatrix) -> Emotion_modelMatrix
+
+pub fn emotion_model_matrix_norm(Emotion_modelMatrix) -> Double
+
+pub fn emotion_model_matrix_scale(Emotion_modelMatrix, Double) -> Emotion_modelMatrix
+
+pub fn emotion_model_matrix_to_string(Emotion_modelMatrix) -> String
+
+pub fn emotion_model_matrix_trace(Emotion_modelMatrix) -> Double
+
+pub fn emotion_model_matrix_transpose(Emotion_modelMatrix) -> Emotion_modelMatrix
+
+pub fn emotion_model_mse(Array[Double], Array[Double]) -> Double
+
+pub fn emotion_model_point_add(Emotion_modelPoint, Emotion_modelPoint) -> Emotion_modelPoint
+
+pub fn emotion_model_point_dist(Emotion_modelPoint, Emotion_modelPoint) -> Double
+
+pub fn emotion_model_point_dot(Emotion_modelPoint, Emotion_modelPoint) -> Double
+
+pub fn emotion_model_point_label(Emotion_modelPoint) -> Int32
+
+pub fn emotion_model_point_norm(Emotion_modelPoint) -> Double
+
+pub fn emotion_model_point_scale(Emotion_modelPoint, Double) -> Emotion_modelPoint
+
+pub fn emotion_model_point_sub(Emotion_modelPoint, Emotion_modelPoint) -> Emotion_modelPoint
+
+pub fn emotion_model_point_to_string(Emotion_modelPoint) -> String
+
+pub fn emotion_model_point_x(Emotion_modelPoint) -> Double
+
+pub fn emotion_model_point_y(Emotion_modelPoint) -> Double
+
+pub fn emotion_model_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn emotion_model_r2(Array[Double], Array[Double]) -> Double
+
+pub fn emotion_model_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn emotion_model_series_add(Emotion_modelSeries, Emotion_modelSeries) -> Emotion_modelSeries
+
+pub fn emotion_model_series_len(Emotion_modelSeries) -> Int32
+
+pub fn emotion_model_series_max(Emotion_modelSeries) -> Double
+
+pub fn emotion_model_series_mean(Emotion_modelSeries) -> Double
+
+pub fn emotion_model_series_min(Emotion_modelSeries) -> Double
+
+pub fn emotion_model_series_scale(Emotion_modelSeries, Double) -> Emotion_modelSeries
+
+pub fn emotion_model_series_std(Emotion_modelSeries) -> Double
+
+pub fn emotion_model_series_sum(Emotion_modelSeries) -> Double
+
+pub fn emotion_model_series_to_string(Emotion_modelSeries) -> String
+
+pub fn emotion_model_series_var(Emotion_modelSeries) -> Double
+
+pub fn emotion_model_std(Array[Double]) -> Double
+
+pub fn emotion_model_var(Array[Double]) -> Double
+
+pub fn emotion_model_vector_add(Emotion_modelVector, Emotion_modelVector) -> Emotion_modelVector
+
+pub fn emotion_model_vector_dist(Emotion_modelVector, Emotion_modelVector) -> Double
+
+pub fn emotion_model_vector_dot(Emotion_modelVector, Emotion_modelVector) -> Double
+
+pub fn emotion_model_vector_norm(Emotion_modelVector) -> Double
+
+pub fn emotion_model_vector_normalize(Emotion_modelVector) -> Emotion_modelVector
+
+pub fn emotion_model_vector_scale(Emotion_modelVector, Double) -> Emotion_modelVector
+
+pub fn emotion_model_vector_sub(Emotion_modelVector, Emotion_modelVector) -> Emotion_modelVector
+
+pub fn emotion_model_vector_to_string(Emotion_modelVector) -> String
+
+pub fn emotion_model_vector_zero(Int32) -> Emotion_modelVector
+
+// Errors
+
+// Types and methods
+pub struct Emotion_modelMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Emotion_modelPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Emotion_modelSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Emotion_modelVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

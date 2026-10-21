@@ -1,0 +1,97 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/_common"
+
+// Values
+pub fn abs(Double) -> Double
+
+pub fn accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn add_arr(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn approx_eq(Double, Double) -> Bool
+
+pub fn clamp(Double, Double, Double) -> Double
+
+pub fn clip(Array[Double], Double, Double) -> Array[Double]
+
+pub fn concat(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn copy_arr(Array[Double]) -> Array[Double]
+
+pub fn corr(Array[Double], Array[Double]) -> Double
+
+pub fn cov(Array[Double], Array[Double]) -> Double
+
+pub fn cumsum(Array[Double]) -> Array[Double]
+
+pub fn dbl(Double) -> String
+
+pub fn deg_to_rad(Double) -> Double
+
+pub fn f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn factorial(Int32) -> Double
+
+pub fn fibonacci(Int32) -> Int32
+
+pub fn fill_arr(Int32, Double) -> Array[Double]
+
+pub fn gcd(Int32, Int32) -> Int32
+
+pub fn is_prime(Int32) -> Bool
+
+pub fn lcm(Int32, Int32) -> Int32
+
+pub fn lerp(Double, Double, Double) -> Double
+
+pub fn mae(Array[Double], Array[Double]) -> Double
+
+pub fn max(Array[Double]) -> Double
+
+pub fn mean(Array[Double]) -> Double
+
+pub fn median(Array[Double]) -> Double
+
+pub fn min(Array[Double]) -> Double
+
+pub fn mse(Array[Double], Array[Double]) -> Double
+
+pub fn normalize(Array[Double]) -> Array[Double]
+
+pub fn precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn r2(Array[Double], Array[Double]) -> Double
+
+pub fn rad_to_deg(Double) -> Double
+
+pub fn recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn reverse(Array[Double]) -> Array[Double]
+
+pub fn rmse(Array[Double], Array[Double]) -> Double
+
+pub fn scale_arr(Array[Double], Double) -> Array[Double]
+
+pub fn sort(Array[Double]) -> Array[Double]
+
+pub fn sort_desc(Array[Double]) -> Array[Double]
+
+pub fn sqrt(Double) -> Double
+
+pub fn standardize(Array[Double]) -> Array[Double]
+
+pub fn std(Array[Double]) -> Double
+
+pub fn sub_arr(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn sum(Array[Double]) -> Double
+
+pub fn variance(Array[Double]) -> Double
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

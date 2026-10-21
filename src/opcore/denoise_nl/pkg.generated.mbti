@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/denoise_nl"
+
+// Values
+pub fn denoise_nl_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn denoise_nl_corr(Array[Double], Array[Double]) -> Double
+
+pub fn denoise_nl_cov(Array[Double], Array[Double]) -> Double
+
+pub fn denoise_nl_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn denoise_nl_mae(Array[Double], Array[Double]) -> Double
+
+pub fn denoise_nl_make_labeled_point(Double, Double, Int32) -> Denoise_nlPoint
+
+pub fn denoise_nl_make_matrix(Int32, Int32, Double) -> Denoise_nlMatrix
+
+pub fn denoise_nl_make_point(Double, Double) -> Denoise_nlPoint
+
+pub fn denoise_nl_make_series(Array[Double], String) -> Denoise_nlSeries
+
+pub fn denoise_nl_make_vector(Array[Double]) -> Denoise_nlVector
+
+pub fn denoise_nl_matrix_add(Denoise_nlMatrix, Denoise_nlMatrix) -> Denoise_nlMatrix
+
+pub fn denoise_nl_matrix_get(Denoise_nlMatrix, Int32, Int32) -> Double
+
+pub fn denoise_nl_matrix_identity(Int32) -> Denoise_nlMatrix
+
+pub fn denoise_nl_matrix_multiply(Denoise_nlMatrix, Denoise_nlMatrix) -> Denoise_nlMatrix
+
+pub fn denoise_nl_matrix_norm(Denoise_nlMatrix) -> Double
+
+pub fn denoise_nl_matrix_scale(Denoise_nlMatrix, Double) -> Denoise_nlMatrix
+
+pub fn denoise_nl_matrix_to_string(Denoise_nlMatrix) -> String
+
+pub fn denoise_nl_matrix_trace(Denoise_nlMatrix) -> Double
+
+pub fn denoise_nl_matrix_transpose(Denoise_nlMatrix) -> Denoise_nlMatrix
+
+pub fn denoise_nl_mse(Array[Double], Array[Double]) -> Double
+
+pub fn denoise_nl_point_add(Denoise_nlPoint, Denoise_nlPoint) -> Denoise_nlPoint
+
+pub fn denoise_nl_point_dist(Denoise_nlPoint, Denoise_nlPoint) -> Double
+
+pub fn denoise_nl_point_dot(Denoise_nlPoint, Denoise_nlPoint) -> Double
+
+pub fn denoise_nl_point_label(Denoise_nlPoint) -> Int32
+
+pub fn denoise_nl_point_norm(Denoise_nlPoint) -> Double
+
+pub fn denoise_nl_point_scale(Denoise_nlPoint, Double) -> Denoise_nlPoint
+
+pub fn denoise_nl_point_sub(Denoise_nlPoint, Denoise_nlPoint) -> Denoise_nlPoint
+
+pub fn denoise_nl_point_to_string(Denoise_nlPoint) -> String
+
+pub fn denoise_nl_point_x(Denoise_nlPoint) -> Double
+
+pub fn denoise_nl_point_y(Denoise_nlPoint) -> Double
+
+pub fn denoise_nl_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn denoise_nl_r2(Array[Double], Array[Double]) -> Double
+
+pub fn denoise_nl_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn denoise_nl_series_add(Denoise_nlSeries, Denoise_nlSeries) -> Denoise_nlSeries
+
+pub fn denoise_nl_series_len(Denoise_nlSeries) -> Int32
+
+pub fn denoise_nl_series_max(Denoise_nlSeries) -> Double
+
+pub fn denoise_nl_series_mean(Denoise_nlSeries) -> Double
+
+pub fn denoise_nl_series_min(Denoise_nlSeries) -> Double
+
+pub fn denoise_nl_series_scale(Denoise_nlSeries, Double) -> Denoise_nlSeries
+
+pub fn denoise_nl_series_std(Denoise_nlSeries) -> Double
+
+pub fn denoise_nl_series_sum(Denoise_nlSeries) -> Double
+
+pub fn denoise_nl_series_to_string(Denoise_nlSeries) -> String
+
+pub fn denoise_nl_series_var(Denoise_nlSeries) -> Double
+
+pub fn denoise_nl_std(Array[Double]) -> Double
+
+pub fn denoise_nl_var(Array[Double]) -> Double
+
+pub fn denoise_nl_vector_add(Denoise_nlVector, Denoise_nlVector) -> Denoise_nlVector
+
+pub fn denoise_nl_vector_dist(Denoise_nlVector, Denoise_nlVector) -> Double
+
+pub fn denoise_nl_vector_dot(Denoise_nlVector, Denoise_nlVector) -> Double
+
+pub fn denoise_nl_vector_norm(Denoise_nlVector) -> Double
+
+pub fn denoise_nl_vector_normalize(Denoise_nlVector) -> Denoise_nlVector
+
+pub fn denoise_nl_vector_scale(Denoise_nlVector, Double) -> Denoise_nlVector
+
+pub fn denoise_nl_vector_sub(Denoise_nlVector, Denoise_nlVector) -> Denoise_nlVector
+
+pub fn denoise_nl_vector_to_string(Denoise_nlVector) -> String
+
+pub fn denoise_nl_vector_zero(Int32) -> Denoise_nlVector
+
+// Errors
+
+// Types and methods
+pub struct Denoise_nlMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Denoise_nlPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Denoise_nlSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Denoise_nlVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

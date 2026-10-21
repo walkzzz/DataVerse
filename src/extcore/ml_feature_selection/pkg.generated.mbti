@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_feature_selection"
+
+// Values
+pub fn ml_feature_selection_buffer_make(Int32) -> MlfeatureselectionBuffer
+
+pub fn ml_feature_selection_cluster_make(Int32) -> MlfeatureselectionCluster
+
+pub fn ml_feature_selection_cursor_make(Int32) -> MlfeatureselectionCursor
+
+pub fn ml_feature_selection_edge_make(Int32) -> MlfeatureselectionEdge
+
+pub fn ml_feature_selection_frame_make(Int32) -> MlfeatureselectionFrame
+
+pub fn ml_feature_selection_graphn_make(Int32) -> MlfeatureselectionGraphN
+
+pub fn ml_feature_selection_layer_make(Int32) -> MlfeatureselectionLayer
+
+pub fn ml_feature_selection_make_matrix(Int32, Int32, Double) -> MlfeatureselectionMatrix
+
+pub fn ml_feature_selection_make_point(Double, Double) -> MlfeatureselectionPoint
+
+pub fn ml_feature_selection_make_point3(Double, Double, Double) -> MlfeatureselectionPoint
+
+pub fn ml_feature_selection_make_series(Array[Double], String) -> MlfeatureselectionSeries
+
+pub fn ml_feature_selection_make_vector(Array[Double]) -> MlfeatureselectionVector
+
+pub fn ml_feature_selection_matrix_identity(Int32) -> MlfeatureselectionMatrix
+
+pub fn ml_feature_selection_model_make(Int32) -> MlfeatureselectionModel
+
+pub fn ml_feature_selection_node_make(Int32) -> MlfeatureselectionNode
+
+pub fn ml_feature_selection_path_make(Int32) -> MlfeatureselectionPath
+
+pub fn ml_feature_selection_range_make(Int32) -> MlfeatureselectionRange
+
+pub fn ml_feature_selection_slice_make(Int32) -> MlfeatureselectionSlice
+
+pub fn ml_feature_selection_table_make(Int32) -> MlfeatureselectionTable
+
+pub fn ml_feature_selection_vector_zero(Int32) -> MlfeatureselectionVector
+
+pub fn ml_feature_selection_view_make(Int32) -> MlfeatureselectionView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlfeatureselectionBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureselectionBuffer::add(Self, Self) -> Self
+pub fn MlfeatureselectionBuffer::copy(Self) -> Self
+pub fn MlfeatureselectionBuffer::fill(Self, Double) -> Self
+pub fn MlfeatureselectionBuffer::get(Self, Int32) -> Double
+pub fn MlfeatureselectionBuffer::len(Self) -> Int32
+pub fn MlfeatureselectionBuffer::max(Self) -> Double
+pub fn MlfeatureselectionBuffer::mean(Self) -> Double
+pub fn MlfeatureselectionBuffer::min(Self) -> Double
+pub fn MlfeatureselectionBuffer::scale(Self, Double) -> Self
+pub fn MlfeatureselectionBuffer::set(Self, Int32, Double) -> Self
+pub fn MlfeatureselectionBuffer::sum(Self) -> Double
+pub fn MlfeatureselectionBuffer::to_string(Self) -> String
+
+pub(all) struct MlfeatureselectionCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureselectionCluster::add(Self, Self) -> Self
+pub fn MlfeatureselectionCluster::copy(Self) -> Self
+pub fn MlfeatureselectionCluster::fill(Self, Double) -> Self
+pub fn MlfeatureselectionCluster::get(Self, Int32) -> Double
+pub fn MlfeatureselectionCluster::len(Self) -> Int32
+pub fn MlfeatureselectionCluster::max(Self) -> Double
+pub fn MlfeatureselectionCluster::mean(Self) -> Double
+pub fn MlfeatureselectionCluster::min(Self) -> Double
+pub fn MlfeatureselectionCluster::scale(Self, Double) -> Self
+pub fn MlfeatureselectionCluster::set(Self, Int32, Double) -> Self
+pub fn MlfeatureselectionCluster::sum(Self) -> Double
+pub fn MlfeatureselectionCluster::to_string(Self) -> String
+
+pub(all) struct MlfeatureselectionCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureselectionCursor::add(Self, Self) -> Self
+pub fn MlfeatureselectionCursor::copy(Self) -> Self
+pub fn MlfeatureselectionCursor::fill(Self, Double) -> Self
+pub fn MlfeatureselectionCursor::get(Self, Int32) -> Double
+pub fn MlfeatureselectionCursor::len(Self) -> Int32
+pub fn MlfeatureselectionCursor::max(Self) -> Double
+pub fn MlfeatureselectionCursor::mean(Self) -> Double
+pub fn MlfeatureselectionCursor::min(Self) -> Double
+pub fn MlfeatureselectionCursor::scale(Self, Double) -> Self
+pub fn MlfeatureselectionCursor::set(Self, Int32, Double) -> Self
+pub fn MlfeatureselectionCursor::sum(Self) -> Double
+pub fn MlfeatureselectionCursor::to_string(Self) -> String
+
+pub(all) struct MlfeatureselectionEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureselectionEdge::add(Self, Self) -> Self
+pub fn MlfeatureselectionEdge::copy(Self) -> Self
+pub fn MlfeatureselectionEdge::fill(Self, Double) -> Self
+pub fn MlfeatureselectionEdge::get(Self, Int32) -> Double
+pub fn MlfeatureselectionEdge::len(Self) -> Int32
+pub fn MlfeatureselectionEdge::max(Self) -> Double
+pub fn MlfeatureselectionEdge::mean(Self) -> Double
+pub fn MlfeatureselectionEdge::min(Self) -> Double
+pub fn MlfeatureselectionEdge::scale(Self, Double) -> Self
+pub fn MlfeatureselectionEdge::set(Self, Int32, Double) -> Self
+pub fn MlfeatureselectionEdge::sum(Self) -> Double
+pub fn MlfeatureselectionEdge::to_string(Self) -> String
+
+pub(all) struct MlfeatureselectionFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureselectionFrame::add(Self, Self) -> Self
+pub fn MlfeatureselectionFrame::copy(Self) -> Self
+pub fn MlfeatureselectionFrame::fill(Self, Double) -> Self
+pub fn MlfeatureselectionFrame::get(Self, Int32) -> Double
+pub fn MlfeatureselectionFrame::len(Self) -> Int32
+pub fn MlfeatureselectionFrame::max(Self) -> Double
+pub fn MlfeatureselectionFrame::mean(Self) -> Double
+pub fn MlfeatureselectionFrame::min(Self) -> Double
+pub fn MlfeatureselectionFrame::scale(Self, Double) -> Self
+pub fn MlfeatureselectionFrame::set(Self, Int32, Double) -> Self
+pub fn MlfeatureselectionFrame::sum(Self) -> Double
+pub fn MlfeatureselectionFrame::to_string(Self) -> String
+
+pub(all) struct MlfeatureselectionGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureselectionGraphN::add(Self, Self) -> Self
+pub fn MlfeatureselectionGraphN::copy(Self) -> Self
+pub fn MlfeatureselectionGraphN::fill(Self, Double) -> Self
+pub fn MlfeatureselectionGraphN::get(Self, Int32) -> Double
+pub fn MlfeatureselectionGraphN::len(Self) -> Int32
+pub fn MlfeatureselectionGraphN::max(Self) -> Double
+pub fn MlfeatureselectionGraphN::mean(Self) -> Double
+pub fn MlfeatureselectionGraphN::min(Self) -> Double
+pub fn MlfeatureselectionGraphN::scale(Self, Double) -> Self
+pub fn MlfeatureselectionGraphN::set(Self, Int32, Double) -> Self
+pub fn MlfeatureselectionGraphN::sum(Self) -> Double
+pub fn MlfeatureselectionGraphN::to_string(Self) -> String
+
+pub(all) struct MlfeatureselectionLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureselectionLayer::add(Self, Self) -> Self
+pub fn MlfeatureselectionLayer::copy(Self) -> Self
+pub fn MlfeatureselectionLayer::fill(Self, Double) -> Self
+pub fn MlfeatureselectionLayer::get(Self, Int32) -> Double
+pub fn MlfeatureselectionLayer::len(Self) -> Int32
+pub fn MlfeatureselectionLayer::max(Self) -> Double
+pub fn MlfeatureselectionLayer::mean(Self) -> Double
+pub fn MlfeatureselectionLayer::min(Self) -> Double
+pub fn MlfeatureselectionLayer::scale(Self, Double) -> Self
+pub fn MlfeatureselectionLayer::set(Self, Int32, Double) -> Self
+pub fn MlfeatureselectionLayer::sum(Self) -> Double
+pub fn MlfeatureselectionLayer::to_string(Self) -> String
+
+pub(all) struct MlfeatureselectionMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlfeatureselectionMatrix::add(Self, Self) -> Self
+pub fn MlfeatureselectionMatrix::det(Self) -> Double
+pub fn MlfeatureselectionMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlfeatureselectionMatrix::multiply(Self, Self) -> Self
+pub fn MlfeatureselectionMatrix::norm(Self) -> Double
+pub fn MlfeatureselectionMatrix::scale(Self, Double) -> Self
+pub fn MlfeatureselectionMatrix::to_string(Self) -> String
+pub fn MlfeatureselectionMatrix::trace(Self) -> Double
+pub fn MlfeatureselectionMatrix::transpose(Self) -> Self
+
+pub(all) struct MlfeatureselectionModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureselectionModel::add(Self, Self) -> Self
+pub fn MlfeatureselectionModel::copy(Self) -> Self
+pub fn MlfeatureselectionModel::fill(Self, Double) -> Self
+pub fn MlfeatureselectionModel::get(Self, Int32) -> Double
+pub fn MlfeatureselectionModel::len(Self) -> Int32
+pub fn MlfeatureselectionModel::max(Self) -> Double
+pub fn MlfeatureselectionModel::mean(Self) -> Double
+pub fn MlfeatureselectionModel::min(Self) -> Double
+pub fn MlfeatureselectionModel::scale(Self, Double) -> Self
+pub fn MlfeatureselectionModel::set(Self, Int32, Double) -> Self
+pub fn MlfeatureselectionModel::sum(Self) -> Double
+pub fn MlfeatureselectionModel::to_string(Self) -> String
+
+pub(all) struct MlfeatureselectionNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureselectionNode::add(Self, Self) -> Self
+pub fn MlfeatureselectionNode::copy(Self) -> Self
+pub fn MlfeatureselectionNode::fill(Self, Double) -> Self
+pub fn MlfeatureselectionNode::get(Self, Int32) -> Double
+pub fn MlfeatureselectionNode::len(Self) -> Int32
+pub fn MlfeatureselectionNode::max(Self) -> Double
+pub fn MlfeatureselectionNode::mean(Self) -> Double
+pub fn MlfeatureselectionNode::min(Self) -> Double
+pub fn MlfeatureselectionNode::scale(Self, Double) -> Self
+pub fn MlfeatureselectionNode::set(Self, Int32, Double) -> Self
+pub fn MlfeatureselectionNode::sum(Self) -> Double
+pub fn MlfeatureselectionNode::to_string(Self) -> String
+
+pub(all) struct MlfeatureselectionPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureselectionPath::add(Self, Self) -> Self
+pub fn MlfeatureselectionPath::copy(Self) -> Self
+pub fn MlfeatureselectionPath::fill(Self, Double) -> Self
+pub fn MlfeatureselectionPath::get(Self, Int32) -> Double
+pub fn MlfeatureselectionPath::len(Self) -> Int32
+pub fn MlfeatureselectionPath::max(Self) -> Double
+pub fn MlfeatureselectionPath::mean(Self) -> Double
+pub fn MlfeatureselectionPath::min(Self) -> Double
+pub fn MlfeatureselectionPath::scale(Self, Double) -> Self
+pub fn MlfeatureselectionPath::set(Self, Int32, Double) -> Self
+pub fn MlfeatureselectionPath::sum(Self) -> Double
+pub fn MlfeatureselectionPath::to_string(Self) -> String
+
+pub(all) struct MlfeatureselectionPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlfeatureselectionPoint::add(Self, Self) -> Self
+pub fn MlfeatureselectionPoint::cross(Self, Self) -> Self
+pub fn MlfeatureselectionPoint::dist(Self, Self) -> Double
+pub fn MlfeatureselectionPoint::dot(Self, Self) -> Double
+pub fn MlfeatureselectionPoint::label(Self) -> Int32
+pub fn MlfeatureselectionPoint::lerp(Self, Self, Double) -> Self
+pub fn MlfeatureselectionPoint::mid(Self, Self) -> Self
+pub fn MlfeatureselectionPoint::negate(Self) -> Self
+pub fn MlfeatureselectionPoint::norm(Self) -> Double
+pub fn MlfeatureselectionPoint::normalize(Self) -> Self
+pub fn MlfeatureselectionPoint::scale(Self, Double) -> Self
+pub fn MlfeatureselectionPoint::sub(Self, Self) -> Self
+pub fn MlfeatureselectionPoint::to_string(Self) -> String
+pub fn MlfeatureselectionPoint::x(Self) -> Double
+pub fn MlfeatureselectionPoint::y(Self) -> Double
+pub fn MlfeatureselectionPoint::z(Self) -> Double
+
+pub(all) struct MlfeatureselectionRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureselectionRange::add(Self, Self) -> Self
+pub fn MlfeatureselectionRange::copy(Self) -> Self
+pub fn MlfeatureselectionRange::fill(Self, Double) -> Self
+pub fn MlfeatureselectionRange::get(Self, Int32) -> Double
+pub fn MlfeatureselectionRange::len(Self) -> Int32
+pub fn MlfeatureselectionRange::max(Self) -> Double
+pub fn MlfeatureselectionRange::mean(Self) -> Double
+pub fn MlfeatureselectionRange::min(Self) -> Double
+pub fn MlfeatureselectionRange::scale(Self, Double) -> Self
+pub fn MlfeatureselectionRange::set(Self, Int32, Double) -> Self
+pub fn MlfeatureselectionRange::sum(Self) -> Double
+pub fn MlfeatureselectionRange::to_string(Self) -> String
+
+pub(all) struct MlfeatureselectionSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlfeatureselectionSeries::add(Self, Self) -> Self
+pub fn MlfeatureselectionSeries::cumsum(Self) -> Self
+pub fn MlfeatureselectionSeries::len(Self) -> Int32
+pub fn MlfeatureselectionSeries::max(Self) -> Double
+pub fn MlfeatureselectionSeries::mean(Self) -> Double
+pub fn MlfeatureselectionSeries::median(Self) -> Double
+pub fn MlfeatureselectionSeries::min(Self) -> Double
+pub fn MlfeatureselectionSeries::normalize(Self) -> Self
+pub fn MlfeatureselectionSeries::range(Self) -> Double
+pub fn MlfeatureselectionSeries::scale(Self, Double) -> Self
+pub fn MlfeatureselectionSeries::std(Self) -> Double
+pub fn MlfeatureselectionSeries::sub(Self, Self) -> Self
+pub fn MlfeatureselectionSeries::sum(Self) -> Double
+pub fn MlfeatureselectionSeries::to_string(Self) -> String
+pub fn MlfeatureselectionSeries::variance(Self) -> Double
+
+pub(all) struct MlfeatureselectionSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureselectionSlice::add(Self, Self) -> Self
+pub fn MlfeatureselectionSlice::copy(Self) -> Self
+pub fn MlfeatureselectionSlice::fill(Self, Double) -> Self
+pub fn MlfeatureselectionSlice::get(Self, Int32) -> Double
+pub fn MlfeatureselectionSlice::len(Self) -> Int32
+pub fn MlfeatureselectionSlice::max(Self) -> Double
+pub fn MlfeatureselectionSlice::mean(Self) -> Double
+pub fn MlfeatureselectionSlice::min(Self) -> Double
+pub fn MlfeatureselectionSlice::scale(Self, Double) -> Self
+pub fn MlfeatureselectionSlice::set(Self, Int32, Double) -> Self
+pub fn MlfeatureselectionSlice::sum(Self) -> Double
+pub fn MlfeatureselectionSlice::to_string(Self) -> String
+
+pub(all) struct MlfeatureselectionTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureselectionTable::add(Self, Self) -> Self
+pub fn MlfeatureselectionTable::copy(Self) -> Self
+pub fn MlfeatureselectionTable::fill(Self, Double) -> Self
+pub fn MlfeatureselectionTable::get(Self, Int32) -> Double
+pub fn MlfeatureselectionTable::len(Self) -> Int32
+pub fn MlfeatureselectionTable::max(Self) -> Double
+pub fn MlfeatureselectionTable::mean(Self) -> Double
+pub fn MlfeatureselectionTable::min(Self) -> Double
+pub fn MlfeatureselectionTable::scale(Self, Double) -> Self
+pub fn MlfeatureselectionTable::set(Self, Int32, Double) -> Self
+pub fn MlfeatureselectionTable::sum(Self) -> Double
+pub fn MlfeatureselectionTable::to_string(Self) -> String
+
+pub(all) struct MlfeatureselectionVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlfeatureselectionVector::add(Self, Self) -> Self
+pub fn MlfeatureselectionVector::dist(Self, Self) -> Double
+pub fn MlfeatureselectionVector::dot(Self, Self) -> Double
+pub fn MlfeatureselectionVector::norm(Self) -> Double
+pub fn MlfeatureselectionVector::normalize(Self) -> Self
+pub fn MlfeatureselectionVector::scale(Self, Double) -> Self
+pub fn MlfeatureselectionVector::sub(Self, Self) -> Self
+pub fn MlfeatureselectionVector::to_string(Self) -> String
+
+pub(all) struct MlfeatureselectionView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureselectionView::add(Self, Self) -> Self
+pub fn MlfeatureselectionView::copy(Self) -> Self
+pub fn MlfeatureselectionView::fill(Self, Double) -> Self
+pub fn MlfeatureselectionView::get(Self, Int32) -> Double
+pub fn MlfeatureselectionView::len(Self) -> Int32
+pub fn MlfeatureselectionView::max(Self) -> Double
+pub fn MlfeatureselectionView::mean(Self) -> Double
+pub fn MlfeatureselectionView::min(Self) -> Double
+pub fn MlfeatureselectionView::scale(Self, Double) -> Self
+pub fn MlfeatureselectionView::set(Self, Int32, Double) -> Self
+pub fn MlfeatureselectionView::sum(Self) -> Double
+pub fn MlfeatureselectionView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

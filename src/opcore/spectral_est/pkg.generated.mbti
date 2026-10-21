@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/spectral_est"
+
+// Values
+pub fn spectral_est_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn spectral_est_corr(Array[Double], Array[Double]) -> Double
+
+pub fn spectral_est_cov(Array[Double], Array[Double]) -> Double
+
+pub fn spectral_est_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn spectral_est_mae(Array[Double], Array[Double]) -> Double
+
+pub fn spectral_est_make_labeled_point(Double, Double, Int32) -> Spectral_estPoint
+
+pub fn spectral_est_make_matrix(Int32, Int32, Double) -> Spectral_estMatrix
+
+pub fn spectral_est_make_point(Double, Double) -> Spectral_estPoint
+
+pub fn spectral_est_make_series(Array[Double], String) -> Spectral_estSeries
+
+pub fn spectral_est_make_vector(Array[Double]) -> Spectral_estVector
+
+pub fn spectral_est_matrix_add(Spectral_estMatrix, Spectral_estMatrix) -> Spectral_estMatrix
+
+pub fn spectral_est_matrix_get(Spectral_estMatrix, Int32, Int32) -> Double
+
+pub fn spectral_est_matrix_identity(Int32) -> Spectral_estMatrix
+
+pub fn spectral_est_matrix_multiply(Spectral_estMatrix, Spectral_estMatrix) -> Spectral_estMatrix
+
+pub fn spectral_est_matrix_norm(Spectral_estMatrix) -> Double
+
+pub fn spectral_est_matrix_scale(Spectral_estMatrix, Double) -> Spectral_estMatrix
+
+pub fn spectral_est_matrix_to_string(Spectral_estMatrix) -> String
+
+pub fn spectral_est_matrix_trace(Spectral_estMatrix) -> Double
+
+pub fn spectral_est_matrix_transpose(Spectral_estMatrix) -> Spectral_estMatrix
+
+pub fn spectral_est_mse(Array[Double], Array[Double]) -> Double
+
+pub fn spectral_est_point_add(Spectral_estPoint, Spectral_estPoint) -> Spectral_estPoint
+
+pub fn spectral_est_point_dist(Spectral_estPoint, Spectral_estPoint) -> Double
+
+pub fn spectral_est_point_dot(Spectral_estPoint, Spectral_estPoint) -> Double
+
+pub fn spectral_est_point_label(Spectral_estPoint) -> Int32
+
+pub fn spectral_est_point_norm(Spectral_estPoint) -> Double
+
+pub fn spectral_est_point_scale(Spectral_estPoint, Double) -> Spectral_estPoint
+
+pub fn spectral_est_point_sub(Spectral_estPoint, Spectral_estPoint) -> Spectral_estPoint
+
+pub fn spectral_est_point_to_string(Spectral_estPoint) -> String
+
+pub fn spectral_est_point_x(Spectral_estPoint) -> Double
+
+pub fn spectral_est_point_y(Spectral_estPoint) -> Double
+
+pub fn spectral_est_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn spectral_est_r2(Array[Double], Array[Double]) -> Double
+
+pub fn spectral_est_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn spectral_est_series_add(Spectral_estSeries, Spectral_estSeries) -> Spectral_estSeries
+
+pub fn spectral_est_series_len(Spectral_estSeries) -> Int32
+
+pub fn spectral_est_series_max(Spectral_estSeries) -> Double
+
+pub fn spectral_est_series_mean(Spectral_estSeries) -> Double
+
+pub fn spectral_est_series_min(Spectral_estSeries) -> Double
+
+pub fn spectral_est_series_scale(Spectral_estSeries, Double) -> Spectral_estSeries
+
+pub fn spectral_est_series_std(Spectral_estSeries) -> Double
+
+pub fn spectral_est_series_sum(Spectral_estSeries) -> Double
+
+pub fn spectral_est_series_to_string(Spectral_estSeries) -> String
+
+pub fn spectral_est_series_var(Spectral_estSeries) -> Double
+
+pub fn spectral_est_std(Array[Double]) -> Double
+
+pub fn spectral_est_var(Array[Double]) -> Double
+
+pub fn spectral_est_vector_add(Spectral_estVector, Spectral_estVector) -> Spectral_estVector
+
+pub fn spectral_est_vector_dist(Spectral_estVector, Spectral_estVector) -> Double
+
+pub fn spectral_est_vector_dot(Spectral_estVector, Spectral_estVector) -> Double
+
+pub fn spectral_est_vector_norm(Spectral_estVector) -> Double
+
+pub fn spectral_est_vector_normalize(Spectral_estVector) -> Spectral_estVector
+
+pub fn spectral_est_vector_scale(Spectral_estVector, Double) -> Spectral_estVector
+
+pub fn spectral_est_vector_sub(Spectral_estVector, Spectral_estVector) -> Spectral_estVector
+
+pub fn spectral_est_vector_to_string(Spectral_estVector) -> String
+
+pub fn spectral_est_vector_zero(Int32) -> Spectral_estVector
+
+// Errors
+
+// Types and methods
+pub struct Spectral_estMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Spectral_estPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Spectral_estSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Spectral_estVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,65 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/io/source"
+
+import {
+  "dataverse/dataobject",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn file_source(String, String) -> SourceConfig
+
+pub fn in_memory_source(String) -> SourceConfig
+
+pub fn make_source_config(DataSourceType, String, String, String, String, String) -> SourceConfig
+
+pub fn make_source_meta(SourceConfig, Int32, Int32) -> SourceMeta
+
+pub fn object_storage_source(String, String, String, String) -> SourceConfig
+
+pub fn read_source(SourceConfig, Int32) -> Array[@dataobject.DataObject]
+
+pub fn source_meta_uri(SourceMeta) -> String
+
+pub fn source_type_name(DataSourceType) -> String
+
+pub fn source_uri(SourceConfig) -> String
+
+// Errors
+
+// Types and methods
+pub(all) enum DataSourceType {
+  File
+  ObjectStorage
+  DataLake
+  VectorStore
+  InMemory
+} derive(Eq, @debug.Debug)
+pub fn DataSourceType::equal(Self, Self) -> Bool
+pub fn DataSourceType::not_equal(Self, Self) -> Bool
+pub fn DataSourceType::to_repr(Self) -> @debug.Repr
+
+pub struct SourceConfig {
+  source_type : DataSourceType
+  path : String
+  endpoint : String
+  bucket : String
+  key : String
+  format : String
+} derive(Eq, @debug.Debug)
+pub fn SourceConfig::equal(Self, Self) -> Bool
+pub fn SourceConfig::not_equal(Self, Self) -> Bool
+pub fn SourceConfig::to_repr(Self) -> @debug.Repr
+
+pub struct SourceMeta {
+  config : SourceConfig
+  item_count : Int32
+  total_size_bytes : Int32
+} derive(Eq, @debug.Debug)
+pub fn SourceMeta::equal(Self, Self) -> Bool
+pub fn SourceMeta::not_equal(Self, Self) -> Bool
+pub fn SourceMeta::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

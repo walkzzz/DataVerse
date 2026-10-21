@@ -1,0 +1,21 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/select"
+
+import {
+  "dataverse/dataobject",
+}
+
+// Values
+pub fn select_id() -> String
+
+pub fn threshold_by_length(Array[@dataobject.DataObject], Int32) -> Array[@dataobject.DataObject]
+
+pub fn topk_by_length(Array[@dataobject.DataObject], Int32) -> Array[@dataobject.DataObject]
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_heap_binomial"
+
+// Values
+pub fn ds_heap_binomial_buffer_make(Int32) -> DsheapbinomialBuffer
+
+pub fn ds_heap_binomial_cluster_make(Int32) -> DsheapbinomialCluster
+
+pub fn ds_heap_binomial_cursor_make(Int32) -> DsheapbinomialCursor
+
+pub fn ds_heap_binomial_edge_make(Int32) -> DsheapbinomialEdge
+
+pub fn ds_heap_binomial_frame_make(Int32) -> DsheapbinomialFrame
+
+pub fn ds_heap_binomial_graphn_make(Int32) -> DsheapbinomialGraphN
+
+pub fn ds_heap_binomial_layer_make(Int32) -> DsheapbinomialLayer
+
+pub fn ds_heap_binomial_make_matrix(Int32, Int32, Double) -> DsheapbinomialMatrix
+
+pub fn ds_heap_binomial_make_point(Double, Double) -> DsheapbinomialPoint
+
+pub fn ds_heap_binomial_make_point3(Double, Double, Double) -> DsheapbinomialPoint
+
+pub fn ds_heap_binomial_make_series(Array[Double], String) -> DsheapbinomialSeries
+
+pub fn ds_heap_binomial_make_vector(Array[Double]) -> DsheapbinomialVector
+
+pub fn ds_heap_binomial_matrix_identity(Int32) -> DsheapbinomialMatrix
+
+pub fn ds_heap_binomial_model_make(Int32) -> DsheapbinomialModel
+
+pub fn ds_heap_binomial_node_make(Int32) -> DsheapbinomialNode
+
+pub fn ds_heap_binomial_path_make(Int32) -> DsheapbinomialPath
+
+pub fn ds_heap_binomial_range_make(Int32) -> DsheapbinomialRange
+
+pub fn ds_heap_binomial_slice_make(Int32) -> DsheapbinomialSlice
+
+pub fn ds_heap_binomial_table_make(Int32) -> DsheapbinomialTable
+
+pub fn ds_heap_binomial_vector_zero(Int32) -> DsheapbinomialVector
+
+pub fn ds_heap_binomial_view_make(Int32) -> DsheapbinomialView
+
+// Errors
+
+// Types and methods
+pub(all) struct DsheapbinomialBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapbinomialBuffer::add(Self, Self) -> Self
+pub fn DsheapbinomialBuffer::copy(Self) -> Self
+pub fn DsheapbinomialBuffer::fill(Self, Double) -> Self
+pub fn DsheapbinomialBuffer::get(Self, Int32) -> Double
+pub fn DsheapbinomialBuffer::len(Self) -> Int32
+pub fn DsheapbinomialBuffer::max(Self) -> Double
+pub fn DsheapbinomialBuffer::mean(Self) -> Double
+pub fn DsheapbinomialBuffer::min(Self) -> Double
+pub fn DsheapbinomialBuffer::scale(Self, Double) -> Self
+pub fn DsheapbinomialBuffer::set(Self, Int32, Double) -> Self
+pub fn DsheapbinomialBuffer::sum(Self) -> Double
+pub fn DsheapbinomialBuffer::to_string(Self) -> String
+
+pub(all) struct DsheapbinomialCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapbinomialCluster::add(Self, Self) -> Self
+pub fn DsheapbinomialCluster::copy(Self) -> Self
+pub fn DsheapbinomialCluster::fill(Self, Double) -> Self
+pub fn DsheapbinomialCluster::get(Self, Int32) -> Double
+pub fn DsheapbinomialCluster::len(Self) -> Int32
+pub fn DsheapbinomialCluster::max(Self) -> Double
+pub fn DsheapbinomialCluster::mean(Self) -> Double
+pub fn DsheapbinomialCluster::min(Self) -> Double
+pub fn DsheapbinomialCluster::scale(Self, Double) -> Self
+pub fn DsheapbinomialCluster::set(Self, Int32, Double) -> Self
+pub fn DsheapbinomialCluster::sum(Self) -> Double
+pub fn DsheapbinomialCluster::to_string(Self) -> String
+
+pub(all) struct DsheapbinomialCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapbinomialCursor::add(Self, Self) -> Self
+pub fn DsheapbinomialCursor::copy(Self) -> Self
+pub fn DsheapbinomialCursor::fill(Self, Double) -> Self
+pub fn DsheapbinomialCursor::get(Self, Int32) -> Double
+pub fn DsheapbinomialCursor::len(Self) -> Int32
+pub fn DsheapbinomialCursor::max(Self) -> Double
+pub fn DsheapbinomialCursor::mean(Self) -> Double
+pub fn DsheapbinomialCursor::min(Self) -> Double
+pub fn DsheapbinomialCursor::scale(Self, Double) -> Self
+pub fn DsheapbinomialCursor::set(Self, Int32, Double) -> Self
+pub fn DsheapbinomialCursor::sum(Self) -> Double
+pub fn DsheapbinomialCursor::to_string(Self) -> String
+
+pub(all) struct DsheapbinomialEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapbinomialEdge::add(Self, Self) -> Self
+pub fn DsheapbinomialEdge::copy(Self) -> Self
+pub fn DsheapbinomialEdge::fill(Self, Double) -> Self
+pub fn DsheapbinomialEdge::get(Self, Int32) -> Double
+pub fn DsheapbinomialEdge::len(Self) -> Int32
+pub fn DsheapbinomialEdge::max(Self) -> Double
+pub fn DsheapbinomialEdge::mean(Self) -> Double
+pub fn DsheapbinomialEdge::min(Self) -> Double
+pub fn DsheapbinomialEdge::scale(Self, Double) -> Self
+pub fn DsheapbinomialEdge::set(Self, Int32, Double) -> Self
+pub fn DsheapbinomialEdge::sum(Self) -> Double
+pub fn DsheapbinomialEdge::to_string(Self) -> String
+
+pub(all) struct DsheapbinomialFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapbinomialFrame::add(Self, Self) -> Self
+pub fn DsheapbinomialFrame::copy(Self) -> Self
+pub fn DsheapbinomialFrame::fill(Self, Double) -> Self
+pub fn DsheapbinomialFrame::get(Self, Int32) -> Double
+pub fn DsheapbinomialFrame::len(Self) -> Int32
+pub fn DsheapbinomialFrame::max(Self) -> Double
+pub fn DsheapbinomialFrame::mean(Self) -> Double
+pub fn DsheapbinomialFrame::min(Self) -> Double
+pub fn DsheapbinomialFrame::scale(Self, Double) -> Self
+pub fn DsheapbinomialFrame::set(Self, Int32, Double) -> Self
+pub fn DsheapbinomialFrame::sum(Self) -> Double
+pub fn DsheapbinomialFrame::to_string(Self) -> String
+
+pub(all) struct DsheapbinomialGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapbinomialGraphN::add(Self, Self) -> Self
+pub fn DsheapbinomialGraphN::copy(Self) -> Self
+pub fn DsheapbinomialGraphN::fill(Self, Double) -> Self
+pub fn DsheapbinomialGraphN::get(Self, Int32) -> Double
+pub fn DsheapbinomialGraphN::len(Self) -> Int32
+pub fn DsheapbinomialGraphN::max(Self) -> Double
+pub fn DsheapbinomialGraphN::mean(Self) -> Double
+pub fn DsheapbinomialGraphN::min(Self) -> Double
+pub fn DsheapbinomialGraphN::scale(Self, Double) -> Self
+pub fn DsheapbinomialGraphN::set(Self, Int32, Double) -> Self
+pub fn DsheapbinomialGraphN::sum(Self) -> Double
+pub fn DsheapbinomialGraphN::to_string(Self) -> String
+
+pub(all) struct DsheapbinomialLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapbinomialLayer::add(Self, Self) -> Self
+pub fn DsheapbinomialLayer::copy(Self) -> Self
+pub fn DsheapbinomialLayer::fill(Self, Double) -> Self
+pub fn DsheapbinomialLayer::get(Self, Int32) -> Double
+pub fn DsheapbinomialLayer::len(Self) -> Int32
+pub fn DsheapbinomialLayer::max(Self) -> Double
+pub fn DsheapbinomialLayer::mean(Self) -> Double
+pub fn DsheapbinomialLayer::min(Self) -> Double
+pub fn DsheapbinomialLayer::scale(Self, Double) -> Self
+pub fn DsheapbinomialLayer::set(Self, Int32, Double) -> Self
+pub fn DsheapbinomialLayer::sum(Self) -> Double
+pub fn DsheapbinomialLayer::to_string(Self) -> String
+
+pub(all) struct DsheapbinomialMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DsheapbinomialMatrix::add(Self, Self) -> Self
+pub fn DsheapbinomialMatrix::det(Self) -> Double
+pub fn DsheapbinomialMatrix::get(Self, Int32, Int32) -> Double
+pub fn DsheapbinomialMatrix::multiply(Self, Self) -> Self
+pub fn DsheapbinomialMatrix::norm(Self) -> Double
+pub fn DsheapbinomialMatrix::scale(Self, Double) -> Self
+pub fn DsheapbinomialMatrix::to_string(Self) -> String
+pub fn DsheapbinomialMatrix::trace(Self) -> Double
+pub fn DsheapbinomialMatrix::transpose(Self) -> Self
+
+pub(all) struct DsheapbinomialModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapbinomialModel::add(Self, Self) -> Self
+pub fn DsheapbinomialModel::copy(Self) -> Self
+pub fn DsheapbinomialModel::fill(Self, Double) -> Self
+pub fn DsheapbinomialModel::get(Self, Int32) -> Double
+pub fn DsheapbinomialModel::len(Self) -> Int32
+pub fn DsheapbinomialModel::max(Self) -> Double
+pub fn DsheapbinomialModel::mean(Self) -> Double
+pub fn DsheapbinomialModel::min(Self) -> Double
+pub fn DsheapbinomialModel::scale(Self, Double) -> Self
+pub fn DsheapbinomialModel::set(Self, Int32, Double) -> Self
+pub fn DsheapbinomialModel::sum(Self) -> Double
+pub fn DsheapbinomialModel::to_string(Self) -> String
+
+pub(all) struct DsheapbinomialNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapbinomialNode::add(Self, Self) -> Self
+pub fn DsheapbinomialNode::copy(Self) -> Self
+pub fn DsheapbinomialNode::fill(Self, Double) -> Self
+pub fn DsheapbinomialNode::get(Self, Int32) -> Double
+pub fn DsheapbinomialNode::len(Self) -> Int32
+pub fn DsheapbinomialNode::max(Self) -> Double
+pub fn DsheapbinomialNode::mean(Self) -> Double
+pub fn DsheapbinomialNode::min(Self) -> Double
+pub fn DsheapbinomialNode::scale(Self, Double) -> Self
+pub fn DsheapbinomialNode::set(Self, Int32, Double) -> Self
+pub fn DsheapbinomialNode::sum(Self) -> Double
+pub fn DsheapbinomialNode::to_string(Self) -> String
+
+pub(all) struct DsheapbinomialPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapbinomialPath::add(Self, Self) -> Self
+pub fn DsheapbinomialPath::copy(Self) -> Self
+pub fn DsheapbinomialPath::fill(Self, Double) -> Self
+pub fn DsheapbinomialPath::get(Self, Int32) -> Double
+pub fn DsheapbinomialPath::len(Self) -> Int32
+pub fn DsheapbinomialPath::max(Self) -> Double
+pub fn DsheapbinomialPath::mean(Self) -> Double
+pub fn DsheapbinomialPath::min(Self) -> Double
+pub fn DsheapbinomialPath::scale(Self, Double) -> Self
+pub fn DsheapbinomialPath::set(Self, Int32, Double) -> Self
+pub fn DsheapbinomialPath::sum(Self) -> Double
+pub fn DsheapbinomialPath::to_string(Self) -> String
+
+pub(all) struct DsheapbinomialPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DsheapbinomialPoint::add(Self, Self) -> Self
+pub fn DsheapbinomialPoint::cross(Self, Self) -> Self
+pub fn DsheapbinomialPoint::dist(Self, Self) -> Double
+pub fn DsheapbinomialPoint::dot(Self, Self) -> Double
+pub fn DsheapbinomialPoint::label(Self) -> Int32
+pub fn DsheapbinomialPoint::lerp(Self, Self, Double) -> Self
+pub fn DsheapbinomialPoint::mid(Self, Self) -> Self
+pub fn DsheapbinomialPoint::negate(Self) -> Self
+pub fn DsheapbinomialPoint::norm(Self) -> Double
+pub fn DsheapbinomialPoint::normalize(Self) -> Self
+pub fn DsheapbinomialPoint::scale(Self, Double) -> Self
+pub fn DsheapbinomialPoint::sub(Self, Self) -> Self
+pub fn DsheapbinomialPoint::to_string(Self) -> String
+pub fn DsheapbinomialPoint::x(Self) -> Double
+pub fn DsheapbinomialPoint::y(Self) -> Double
+pub fn DsheapbinomialPoint::z(Self) -> Double
+
+pub(all) struct DsheapbinomialRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapbinomialRange::add(Self, Self) -> Self
+pub fn DsheapbinomialRange::copy(Self) -> Self
+pub fn DsheapbinomialRange::fill(Self, Double) -> Self
+pub fn DsheapbinomialRange::get(Self, Int32) -> Double
+pub fn DsheapbinomialRange::len(Self) -> Int32
+pub fn DsheapbinomialRange::max(Self) -> Double
+pub fn DsheapbinomialRange::mean(Self) -> Double
+pub fn DsheapbinomialRange::min(Self) -> Double
+pub fn DsheapbinomialRange::scale(Self, Double) -> Self
+pub fn DsheapbinomialRange::set(Self, Int32, Double) -> Self
+pub fn DsheapbinomialRange::sum(Self) -> Double
+pub fn DsheapbinomialRange::to_string(Self) -> String
+
+pub(all) struct DsheapbinomialSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DsheapbinomialSeries::add(Self, Self) -> Self
+pub fn DsheapbinomialSeries::cumsum(Self) -> Self
+pub fn DsheapbinomialSeries::len(Self) -> Int32
+pub fn DsheapbinomialSeries::max(Self) -> Double
+pub fn DsheapbinomialSeries::mean(Self) -> Double
+pub fn DsheapbinomialSeries::median(Self) -> Double
+pub fn DsheapbinomialSeries::min(Self) -> Double
+pub fn DsheapbinomialSeries::normalize(Self) -> Self
+pub fn DsheapbinomialSeries::range(Self) -> Double
+pub fn DsheapbinomialSeries::scale(Self, Double) -> Self
+pub fn DsheapbinomialSeries::std(Self) -> Double
+pub fn DsheapbinomialSeries::sub(Self, Self) -> Self
+pub fn DsheapbinomialSeries::sum(Self) -> Double
+pub fn DsheapbinomialSeries::to_string(Self) -> String
+pub fn DsheapbinomialSeries::variance(Self) -> Double
+
+pub(all) struct DsheapbinomialSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapbinomialSlice::add(Self, Self) -> Self
+pub fn DsheapbinomialSlice::copy(Self) -> Self
+pub fn DsheapbinomialSlice::fill(Self, Double) -> Self
+pub fn DsheapbinomialSlice::get(Self, Int32) -> Double
+pub fn DsheapbinomialSlice::len(Self) -> Int32
+pub fn DsheapbinomialSlice::max(Self) -> Double
+pub fn DsheapbinomialSlice::mean(Self) -> Double
+pub fn DsheapbinomialSlice::min(Self) -> Double
+pub fn DsheapbinomialSlice::scale(Self, Double) -> Self
+pub fn DsheapbinomialSlice::set(Self, Int32, Double) -> Self
+pub fn DsheapbinomialSlice::sum(Self) -> Double
+pub fn DsheapbinomialSlice::to_string(Self) -> String
+
+pub(all) struct DsheapbinomialTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapbinomialTable::add(Self, Self) -> Self
+pub fn DsheapbinomialTable::copy(Self) -> Self
+pub fn DsheapbinomialTable::fill(Self, Double) -> Self
+pub fn DsheapbinomialTable::get(Self, Int32) -> Double
+pub fn DsheapbinomialTable::len(Self) -> Int32
+pub fn DsheapbinomialTable::max(Self) -> Double
+pub fn DsheapbinomialTable::mean(Self) -> Double
+pub fn DsheapbinomialTable::min(Self) -> Double
+pub fn DsheapbinomialTable::scale(Self, Double) -> Self
+pub fn DsheapbinomialTable::set(Self, Int32, Double) -> Self
+pub fn DsheapbinomialTable::sum(Self) -> Double
+pub fn DsheapbinomialTable::to_string(Self) -> String
+
+pub(all) struct DsheapbinomialVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DsheapbinomialVector::add(Self, Self) -> Self
+pub fn DsheapbinomialVector::dist(Self, Self) -> Double
+pub fn DsheapbinomialVector::dot(Self, Self) -> Double
+pub fn DsheapbinomialVector::norm(Self) -> Double
+pub fn DsheapbinomialVector::normalize(Self) -> Self
+pub fn DsheapbinomialVector::scale(Self, Double) -> Self
+pub fn DsheapbinomialVector::sub(Self, Self) -> Self
+pub fn DsheapbinomialVector::to_string(Self) -> String
+
+pub(all) struct DsheapbinomialView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapbinomialView::add(Self, Self) -> Self
+pub fn DsheapbinomialView::copy(Self) -> Self
+pub fn DsheapbinomialView::fill(Self, Double) -> Self
+pub fn DsheapbinomialView::get(Self, Int32) -> Double
+pub fn DsheapbinomialView::len(Self) -> Int32
+pub fn DsheapbinomialView::max(Self) -> Double
+pub fn DsheapbinomialView::mean(Self) -> Double
+pub fn DsheapbinomialView::min(Self) -> Double
+pub fn DsheapbinomialView::scale(Self, Double) -> Self
+pub fn DsheapbinomialView::set(Self, Int32, Double) -> Self
+pub fn DsheapbinomialView::sum(Self) -> Double
+pub fn DsheapbinomialView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

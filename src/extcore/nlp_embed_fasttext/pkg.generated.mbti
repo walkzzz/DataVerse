@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_embed_fasttext"
+
+// Values
+pub fn nlp_embed_fasttext_buffer_make(Int32) -> NlpembedfasttextBuffer
+
+pub fn nlp_embed_fasttext_cluster_make(Int32) -> NlpembedfasttextCluster
+
+pub fn nlp_embed_fasttext_cursor_make(Int32) -> NlpembedfasttextCursor
+
+pub fn nlp_embed_fasttext_edge_make(Int32) -> NlpembedfasttextEdge
+
+pub fn nlp_embed_fasttext_frame_make(Int32) -> NlpembedfasttextFrame
+
+pub fn nlp_embed_fasttext_graphn_make(Int32) -> NlpembedfasttextGraphN
+
+pub fn nlp_embed_fasttext_layer_make(Int32) -> NlpembedfasttextLayer
+
+pub fn nlp_embed_fasttext_make_matrix(Int32, Int32, Double) -> NlpembedfasttextMatrix
+
+pub fn nlp_embed_fasttext_make_point(Double, Double) -> NlpembedfasttextPoint
+
+pub fn nlp_embed_fasttext_make_point3(Double, Double, Double) -> NlpembedfasttextPoint
+
+pub fn nlp_embed_fasttext_make_series(Array[Double], String) -> NlpembedfasttextSeries
+
+pub fn nlp_embed_fasttext_make_vector(Array[Double]) -> NlpembedfasttextVector
+
+pub fn nlp_embed_fasttext_matrix_identity(Int32) -> NlpembedfasttextMatrix
+
+pub fn nlp_embed_fasttext_model_make(Int32) -> NlpembedfasttextModel
+
+pub fn nlp_embed_fasttext_node_make(Int32) -> NlpembedfasttextNode
+
+pub fn nlp_embed_fasttext_path_make(Int32) -> NlpembedfasttextPath
+
+pub fn nlp_embed_fasttext_range_make(Int32) -> NlpembedfasttextRange
+
+pub fn nlp_embed_fasttext_slice_make(Int32) -> NlpembedfasttextSlice
+
+pub fn nlp_embed_fasttext_table_make(Int32) -> NlpembedfasttextTable
+
+pub fn nlp_embed_fasttext_vector_zero(Int32) -> NlpembedfasttextVector
+
+pub fn nlp_embed_fasttext_view_make(Int32) -> NlpembedfasttextView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlpembedfasttextBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedfasttextBuffer::add(Self, Self) -> Self
+pub fn NlpembedfasttextBuffer::copy(Self) -> Self
+pub fn NlpembedfasttextBuffer::fill(Self, Double) -> Self
+pub fn NlpembedfasttextBuffer::get(Self, Int32) -> Double
+pub fn NlpembedfasttextBuffer::len(Self) -> Int32
+pub fn NlpembedfasttextBuffer::max(Self) -> Double
+pub fn NlpembedfasttextBuffer::mean(Self) -> Double
+pub fn NlpembedfasttextBuffer::min(Self) -> Double
+pub fn NlpembedfasttextBuffer::scale(Self, Double) -> Self
+pub fn NlpembedfasttextBuffer::set(Self, Int32, Double) -> Self
+pub fn NlpembedfasttextBuffer::sum(Self) -> Double
+pub fn NlpembedfasttextBuffer::to_string(Self) -> String
+
+pub(all) struct NlpembedfasttextCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedfasttextCluster::add(Self, Self) -> Self
+pub fn NlpembedfasttextCluster::copy(Self) -> Self
+pub fn NlpembedfasttextCluster::fill(Self, Double) -> Self
+pub fn NlpembedfasttextCluster::get(Self, Int32) -> Double
+pub fn NlpembedfasttextCluster::len(Self) -> Int32
+pub fn NlpembedfasttextCluster::max(Self) -> Double
+pub fn NlpembedfasttextCluster::mean(Self) -> Double
+pub fn NlpembedfasttextCluster::min(Self) -> Double
+pub fn NlpembedfasttextCluster::scale(Self, Double) -> Self
+pub fn NlpembedfasttextCluster::set(Self, Int32, Double) -> Self
+pub fn NlpembedfasttextCluster::sum(Self) -> Double
+pub fn NlpembedfasttextCluster::to_string(Self) -> String
+
+pub(all) struct NlpembedfasttextCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedfasttextCursor::add(Self, Self) -> Self
+pub fn NlpembedfasttextCursor::copy(Self) -> Self
+pub fn NlpembedfasttextCursor::fill(Self, Double) -> Self
+pub fn NlpembedfasttextCursor::get(Self, Int32) -> Double
+pub fn NlpembedfasttextCursor::len(Self) -> Int32
+pub fn NlpembedfasttextCursor::max(Self) -> Double
+pub fn NlpembedfasttextCursor::mean(Self) -> Double
+pub fn NlpembedfasttextCursor::min(Self) -> Double
+pub fn NlpembedfasttextCursor::scale(Self, Double) -> Self
+pub fn NlpembedfasttextCursor::set(Self, Int32, Double) -> Self
+pub fn NlpembedfasttextCursor::sum(Self) -> Double
+pub fn NlpembedfasttextCursor::to_string(Self) -> String
+
+pub(all) struct NlpembedfasttextEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedfasttextEdge::add(Self, Self) -> Self
+pub fn NlpembedfasttextEdge::copy(Self) -> Self
+pub fn NlpembedfasttextEdge::fill(Self, Double) -> Self
+pub fn NlpembedfasttextEdge::get(Self, Int32) -> Double
+pub fn NlpembedfasttextEdge::len(Self) -> Int32
+pub fn NlpembedfasttextEdge::max(Self) -> Double
+pub fn NlpembedfasttextEdge::mean(Self) -> Double
+pub fn NlpembedfasttextEdge::min(Self) -> Double
+pub fn NlpembedfasttextEdge::scale(Self, Double) -> Self
+pub fn NlpembedfasttextEdge::set(Self, Int32, Double) -> Self
+pub fn NlpembedfasttextEdge::sum(Self) -> Double
+pub fn NlpembedfasttextEdge::to_string(Self) -> String
+
+pub(all) struct NlpembedfasttextFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedfasttextFrame::add(Self, Self) -> Self
+pub fn NlpembedfasttextFrame::copy(Self) -> Self
+pub fn NlpembedfasttextFrame::fill(Self, Double) -> Self
+pub fn NlpembedfasttextFrame::get(Self, Int32) -> Double
+pub fn NlpembedfasttextFrame::len(Self) -> Int32
+pub fn NlpembedfasttextFrame::max(Self) -> Double
+pub fn NlpembedfasttextFrame::mean(Self) -> Double
+pub fn NlpembedfasttextFrame::min(Self) -> Double
+pub fn NlpembedfasttextFrame::scale(Self, Double) -> Self
+pub fn NlpembedfasttextFrame::set(Self, Int32, Double) -> Self
+pub fn NlpembedfasttextFrame::sum(Self) -> Double
+pub fn NlpembedfasttextFrame::to_string(Self) -> String
+
+pub(all) struct NlpembedfasttextGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedfasttextGraphN::add(Self, Self) -> Self
+pub fn NlpembedfasttextGraphN::copy(Self) -> Self
+pub fn NlpembedfasttextGraphN::fill(Self, Double) -> Self
+pub fn NlpembedfasttextGraphN::get(Self, Int32) -> Double
+pub fn NlpembedfasttextGraphN::len(Self) -> Int32
+pub fn NlpembedfasttextGraphN::max(Self) -> Double
+pub fn NlpembedfasttextGraphN::mean(Self) -> Double
+pub fn NlpembedfasttextGraphN::min(Self) -> Double
+pub fn NlpembedfasttextGraphN::scale(Self, Double) -> Self
+pub fn NlpembedfasttextGraphN::set(Self, Int32, Double) -> Self
+pub fn NlpembedfasttextGraphN::sum(Self) -> Double
+pub fn NlpembedfasttextGraphN::to_string(Self) -> String
+
+pub(all) struct NlpembedfasttextLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedfasttextLayer::add(Self, Self) -> Self
+pub fn NlpembedfasttextLayer::copy(Self) -> Self
+pub fn NlpembedfasttextLayer::fill(Self, Double) -> Self
+pub fn NlpembedfasttextLayer::get(Self, Int32) -> Double
+pub fn NlpembedfasttextLayer::len(Self) -> Int32
+pub fn NlpembedfasttextLayer::max(Self) -> Double
+pub fn NlpembedfasttextLayer::mean(Self) -> Double
+pub fn NlpembedfasttextLayer::min(Self) -> Double
+pub fn NlpembedfasttextLayer::scale(Self, Double) -> Self
+pub fn NlpembedfasttextLayer::set(Self, Int32, Double) -> Self
+pub fn NlpembedfasttextLayer::sum(Self) -> Double
+pub fn NlpembedfasttextLayer::to_string(Self) -> String
+
+pub(all) struct NlpembedfasttextMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlpembedfasttextMatrix::add(Self, Self) -> Self
+pub fn NlpembedfasttextMatrix::det(Self) -> Double
+pub fn NlpembedfasttextMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlpembedfasttextMatrix::multiply(Self, Self) -> Self
+pub fn NlpembedfasttextMatrix::norm(Self) -> Double
+pub fn NlpembedfasttextMatrix::scale(Self, Double) -> Self
+pub fn NlpembedfasttextMatrix::to_string(Self) -> String
+pub fn NlpembedfasttextMatrix::trace(Self) -> Double
+pub fn NlpembedfasttextMatrix::transpose(Self) -> Self
+
+pub(all) struct NlpembedfasttextModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedfasttextModel::add(Self, Self) -> Self
+pub fn NlpembedfasttextModel::copy(Self) -> Self
+pub fn NlpembedfasttextModel::fill(Self, Double) -> Self
+pub fn NlpembedfasttextModel::get(Self, Int32) -> Double
+pub fn NlpembedfasttextModel::len(Self) -> Int32
+pub fn NlpembedfasttextModel::max(Self) -> Double
+pub fn NlpembedfasttextModel::mean(Self) -> Double
+pub fn NlpembedfasttextModel::min(Self) -> Double
+pub fn NlpembedfasttextModel::scale(Self, Double) -> Self
+pub fn NlpembedfasttextModel::set(Self, Int32, Double) -> Self
+pub fn NlpembedfasttextModel::sum(Self) -> Double
+pub fn NlpembedfasttextModel::to_string(Self) -> String
+
+pub(all) struct NlpembedfasttextNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedfasttextNode::add(Self, Self) -> Self
+pub fn NlpembedfasttextNode::copy(Self) -> Self
+pub fn NlpembedfasttextNode::fill(Self, Double) -> Self
+pub fn NlpembedfasttextNode::get(Self, Int32) -> Double
+pub fn NlpembedfasttextNode::len(Self) -> Int32
+pub fn NlpembedfasttextNode::max(Self) -> Double
+pub fn NlpembedfasttextNode::mean(Self) -> Double
+pub fn NlpembedfasttextNode::min(Self) -> Double
+pub fn NlpembedfasttextNode::scale(Self, Double) -> Self
+pub fn NlpembedfasttextNode::set(Self, Int32, Double) -> Self
+pub fn NlpembedfasttextNode::sum(Self) -> Double
+pub fn NlpembedfasttextNode::to_string(Self) -> String
+
+pub(all) struct NlpembedfasttextPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedfasttextPath::add(Self, Self) -> Self
+pub fn NlpembedfasttextPath::copy(Self) -> Self
+pub fn NlpembedfasttextPath::fill(Self, Double) -> Self
+pub fn NlpembedfasttextPath::get(Self, Int32) -> Double
+pub fn NlpembedfasttextPath::len(Self) -> Int32
+pub fn NlpembedfasttextPath::max(Self) -> Double
+pub fn NlpembedfasttextPath::mean(Self) -> Double
+pub fn NlpembedfasttextPath::min(Self) -> Double
+pub fn NlpembedfasttextPath::scale(Self, Double) -> Self
+pub fn NlpembedfasttextPath::set(Self, Int32, Double) -> Self
+pub fn NlpembedfasttextPath::sum(Self) -> Double
+pub fn NlpembedfasttextPath::to_string(Self) -> String
+
+pub(all) struct NlpembedfasttextPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlpembedfasttextPoint::add(Self, Self) -> Self
+pub fn NlpembedfasttextPoint::cross(Self, Self) -> Self
+pub fn NlpembedfasttextPoint::dist(Self, Self) -> Double
+pub fn NlpembedfasttextPoint::dot(Self, Self) -> Double
+pub fn NlpembedfasttextPoint::label(Self) -> Int32
+pub fn NlpembedfasttextPoint::lerp(Self, Self, Double) -> Self
+pub fn NlpembedfasttextPoint::mid(Self, Self) -> Self
+pub fn NlpembedfasttextPoint::negate(Self) -> Self
+pub fn NlpembedfasttextPoint::norm(Self) -> Double
+pub fn NlpembedfasttextPoint::normalize(Self) -> Self
+pub fn NlpembedfasttextPoint::scale(Self, Double) -> Self
+pub fn NlpembedfasttextPoint::sub(Self, Self) -> Self
+pub fn NlpembedfasttextPoint::to_string(Self) -> String
+pub fn NlpembedfasttextPoint::x(Self) -> Double
+pub fn NlpembedfasttextPoint::y(Self) -> Double
+pub fn NlpembedfasttextPoint::z(Self) -> Double
+
+pub(all) struct NlpembedfasttextRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedfasttextRange::add(Self, Self) -> Self
+pub fn NlpembedfasttextRange::copy(Self) -> Self
+pub fn NlpembedfasttextRange::fill(Self, Double) -> Self
+pub fn NlpembedfasttextRange::get(Self, Int32) -> Double
+pub fn NlpembedfasttextRange::len(Self) -> Int32
+pub fn NlpembedfasttextRange::max(Self) -> Double
+pub fn NlpembedfasttextRange::mean(Self) -> Double
+pub fn NlpembedfasttextRange::min(Self) -> Double
+pub fn NlpembedfasttextRange::scale(Self, Double) -> Self
+pub fn NlpembedfasttextRange::set(Self, Int32, Double) -> Self
+pub fn NlpembedfasttextRange::sum(Self) -> Double
+pub fn NlpembedfasttextRange::to_string(Self) -> String
+
+pub(all) struct NlpembedfasttextSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlpembedfasttextSeries::add(Self, Self) -> Self
+pub fn NlpembedfasttextSeries::cumsum(Self) -> Self
+pub fn NlpembedfasttextSeries::len(Self) -> Int32
+pub fn NlpembedfasttextSeries::max(Self) -> Double
+pub fn NlpembedfasttextSeries::mean(Self) -> Double
+pub fn NlpembedfasttextSeries::median(Self) -> Double
+pub fn NlpembedfasttextSeries::min(Self) -> Double
+pub fn NlpembedfasttextSeries::normalize(Self) -> Self
+pub fn NlpembedfasttextSeries::range(Self) -> Double
+pub fn NlpembedfasttextSeries::scale(Self, Double) -> Self
+pub fn NlpembedfasttextSeries::std(Self) -> Double
+pub fn NlpembedfasttextSeries::sub(Self, Self) -> Self
+pub fn NlpembedfasttextSeries::sum(Self) -> Double
+pub fn NlpembedfasttextSeries::to_string(Self) -> String
+pub fn NlpembedfasttextSeries::variance(Self) -> Double
+
+pub(all) struct NlpembedfasttextSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedfasttextSlice::add(Self, Self) -> Self
+pub fn NlpembedfasttextSlice::copy(Self) -> Self
+pub fn NlpembedfasttextSlice::fill(Self, Double) -> Self
+pub fn NlpembedfasttextSlice::get(Self, Int32) -> Double
+pub fn NlpembedfasttextSlice::len(Self) -> Int32
+pub fn NlpembedfasttextSlice::max(Self) -> Double
+pub fn NlpembedfasttextSlice::mean(Self) -> Double
+pub fn NlpembedfasttextSlice::min(Self) -> Double
+pub fn NlpembedfasttextSlice::scale(Self, Double) -> Self
+pub fn NlpembedfasttextSlice::set(Self, Int32, Double) -> Self
+pub fn NlpembedfasttextSlice::sum(Self) -> Double
+pub fn NlpembedfasttextSlice::to_string(Self) -> String
+
+pub(all) struct NlpembedfasttextTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedfasttextTable::add(Self, Self) -> Self
+pub fn NlpembedfasttextTable::copy(Self) -> Self
+pub fn NlpembedfasttextTable::fill(Self, Double) -> Self
+pub fn NlpembedfasttextTable::get(Self, Int32) -> Double
+pub fn NlpembedfasttextTable::len(Self) -> Int32
+pub fn NlpembedfasttextTable::max(Self) -> Double
+pub fn NlpembedfasttextTable::mean(Self) -> Double
+pub fn NlpembedfasttextTable::min(Self) -> Double
+pub fn NlpembedfasttextTable::scale(Self, Double) -> Self
+pub fn NlpembedfasttextTable::set(Self, Int32, Double) -> Self
+pub fn NlpembedfasttextTable::sum(Self) -> Double
+pub fn NlpembedfasttextTable::to_string(Self) -> String
+
+pub(all) struct NlpembedfasttextVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlpembedfasttextVector::add(Self, Self) -> Self
+pub fn NlpembedfasttextVector::dist(Self, Self) -> Double
+pub fn NlpembedfasttextVector::dot(Self, Self) -> Double
+pub fn NlpembedfasttextVector::norm(Self) -> Double
+pub fn NlpembedfasttextVector::normalize(Self) -> Self
+pub fn NlpembedfasttextVector::scale(Self, Double) -> Self
+pub fn NlpembedfasttextVector::sub(Self, Self) -> Self
+pub fn NlpembedfasttextVector::to_string(Self) -> String
+
+pub(all) struct NlpembedfasttextView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpembedfasttextView::add(Self, Self) -> Self
+pub fn NlpembedfasttextView::copy(Self) -> Self
+pub fn NlpembedfasttextView::fill(Self, Double) -> Self
+pub fn NlpembedfasttextView::get(Self, Int32) -> Double
+pub fn NlpembedfasttextView::len(Self) -> Int32
+pub fn NlpembedfasttextView::max(Self) -> Double
+pub fn NlpembedfasttextView::mean(Self) -> Double
+pub fn NlpembedfasttextView::min(Self) -> Double
+pub fn NlpembedfasttextView::scale(Self, Double) -> Self
+pub fn NlpembedfasttextView::set(Self, Int32, Double) -> Self
+pub fn NlpembedfasttextView::sum(Self) -> Double
+pub fn NlpembedfasttextView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

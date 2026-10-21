@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/trigger_early"
+
+// Values
+pub fn trigger_early_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn trigger_early_corr(Array[Double], Array[Double]) -> Double
+
+pub fn trigger_early_cov(Array[Double], Array[Double]) -> Double
+
+pub fn trigger_early_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn trigger_early_mae(Array[Double], Array[Double]) -> Double
+
+pub fn trigger_early_make_labeled_point(Double, Double, Int32) -> Trigger_earlyPoint
+
+pub fn trigger_early_make_matrix(Int32, Int32, Double) -> Trigger_earlyMatrix
+
+pub fn trigger_early_make_point(Double, Double) -> Trigger_earlyPoint
+
+pub fn trigger_early_make_series(Array[Double], String) -> Trigger_earlySeries
+
+pub fn trigger_early_make_vector(Array[Double]) -> Trigger_earlyVector
+
+pub fn trigger_early_matrix_add(Trigger_earlyMatrix, Trigger_earlyMatrix) -> Trigger_earlyMatrix
+
+pub fn trigger_early_matrix_get(Trigger_earlyMatrix, Int32, Int32) -> Double
+
+pub fn trigger_early_matrix_identity(Int32) -> Trigger_earlyMatrix
+
+pub fn trigger_early_matrix_multiply(Trigger_earlyMatrix, Trigger_earlyMatrix) -> Trigger_earlyMatrix
+
+pub fn trigger_early_matrix_norm(Trigger_earlyMatrix) -> Double
+
+pub fn trigger_early_matrix_scale(Trigger_earlyMatrix, Double) -> Trigger_earlyMatrix
+
+pub fn trigger_early_matrix_to_string(Trigger_earlyMatrix) -> String
+
+pub fn trigger_early_matrix_trace(Trigger_earlyMatrix) -> Double
+
+pub fn trigger_early_matrix_transpose(Trigger_earlyMatrix) -> Trigger_earlyMatrix
+
+pub fn trigger_early_mse(Array[Double], Array[Double]) -> Double
+
+pub fn trigger_early_point_add(Trigger_earlyPoint, Trigger_earlyPoint) -> Trigger_earlyPoint
+
+pub fn trigger_early_point_dist(Trigger_earlyPoint, Trigger_earlyPoint) -> Double
+
+pub fn trigger_early_point_dot(Trigger_earlyPoint, Trigger_earlyPoint) -> Double
+
+pub fn trigger_early_point_label(Trigger_earlyPoint) -> Int32
+
+pub fn trigger_early_point_norm(Trigger_earlyPoint) -> Double
+
+pub fn trigger_early_point_scale(Trigger_earlyPoint, Double) -> Trigger_earlyPoint
+
+pub fn trigger_early_point_sub(Trigger_earlyPoint, Trigger_earlyPoint) -> Trigger_earlyPoint
+
+pub fn trigger_early_point_to_string(Trigger_earlyPoint) -> String
+
+pub fn trigger_early_point_x(Trigger_earlyPoint) -> Double
+
+pub fn trigger_early_point_y(Trigger_earlyPoint) -> Double
+
+pub fn trigger_early_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn trigger_early_r2(Array[Double], Array[Double]) -> Double
+
+pub fn trigger_early_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn trigger_early_series_add(Trigger_earlySeries, Trigger_earlySeries) -> Trigger_earlySeries
+
+pub fn trigger_early_series_len(Trigger_earlySeries) -> Int32
+
+pub fn trigger_early_series_max(Trigger_earlySeries) -> Double
+
+pub fn trigger_early_series_mean(Trigger_earlySeries) -> Double
+
+pub fn trigger_early_series_min(Trigger_earlySeries) -> Double
+
+pub fn trigger_early_series_scale(Trigger_earlySeries, Double) -> Trigger_earlySeries
+
+pub fn trigger_early_series_std(Trigger_earlySeries) -> Double
+
+pub fn trigger_early_series_sum(Trigger_earlySeries) -> Double
+
+pub fn trigger_early_series_to_string(Trigger_earlySeries) -> String
+
+pub fn trigger_early_series_var(Trigger_earlySeries) -> Double
+
+pub fn trigger_early_std(Array[Double]) -> Double
+
+pub fn trigger_early_var(Array[Double]) -> Double
+
+pub fn trigger_early_vector_add(Trigger_earlyVector, Trigger_earlyVector) -> Trigger_earlyVector
+
+pub fn trigger_early_vector_dist(Trigger_earlyVector, Trigger_earlyVector) -> Double
+
+pub fn trigger_early_vector_dot(Trigger_earlyVector, Trigger_earlyVector) -> Double
+
+pub fn trigger_early_vector_norm(Trigger_earlyVector) -> Double
+
+pub fn trigger_early_vector_normalize(Trigger_earlyVector) -> Trigger_earlyVector
+
+pub fn trigger_early_vector_scale(Trigger_earlyVector, Double) -> Trigger_earlyVector
+
+pub fn trigger_early_vector_sub(Trigger_earlyVector, Trigger_earlyVector) -> Trigger_earlyVector
+
+pub fn trigger_early_vector_to_string(Trigger_earlyVector) -> String
+
+pub fn trigger_early_vector_zero(Int32) -> Trigger_earlyVector
+
+// Errors
+
+// Types and methods
+pub struct Trigger_earlyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Trigger_earlyPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Trigger_earlySeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Trigger_earlyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

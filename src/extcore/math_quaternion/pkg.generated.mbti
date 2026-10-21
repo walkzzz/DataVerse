@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_quaternion"
+
+// Values
+pub fn math_quaternion_buffer_make(Int32) -> MathquaternionBuffer
+
+pub fn math_quaternion_cluster_make(Int32) -> MathquaternionCluster
+
+pub fn math_quaternion_cursor_make(Int32) -> MathquaternionCursor
+
+pub fn math_quaternion_edge_make(Int32) -> MathquaternionEdge
+
+pub fn math_quaternion_frame_make(Int32) -> MathquaternionFrame
+
+pub fn math_quaternion_graphn_make(Int32) -> MathquaternionGraphN
+
+pub fn math_quaternion_layer_make(Int32) -> MathquaternionLayer
+
+pub fn math_quaternion_make_matrix(Int32, Int32, Double) -> MathquaternionMatrix
+
+pub fn math_quaternion_make_point(Double, Double) -> MathquaternionPoint
+
+pub fn math_quaternion_make_point3(Double, Double, Double) -> MathquaternionPoint
+
+pub fn math_quaternion_make_series(Array[Double], String) -> MathquaternionSeries
+
+pub fn math_quaternion_make_vector(Array[Double]) -> MathquaternionVector
+
+pub fn math_quaternion_matrix_identity(Int32) -> MathquaternionMatrix
+
+pub fn math_quaternion_model_make(Int32) -> MathquaternionModel
+
+pub fn math_quaternion_node_make(Int32) -> MathquaternionNode
+
+pub fn math_quaternion_path_make(Int32) -> MathquaternionPath
+
+pub fn math_quaternion_range_make(Int32) -> MathquaternionRange
+
+pub fn math_quaternion_slice_make(Int32) -> MathquaternionSlice
+
+pub fn math_quaternion_table_make(Int32) -> MathquaternionTable
+
+pub fn math_quaternion_vector_zero(Int32) -> MathquaternionVector
+
+pub fn math_quaternion_view_make(Int32) -> MathquaternionView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathquaternionBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquaternionBuffer::add(Self, Self) -> Self
+pub fn MathquaternionBuffer::copy(Self) -> Self
+pub fn MathquaternionBuffer::fill(Self, Double) -> Self
+pub fn MathquaternionBuffer::get(Self, Int32) -> Double
+pub fn MathquaternionBuffer::len(Self) -> Int32
+pub fn MathquaternionBuffer::max(Self) -> Double
+pub fn MathquaternionBuffer::mean(Self) -> Double
+pub fn MathquaternionBuffer::min(Self) -> Double
+pub fn MathquaternionBuffer::scale(Self, Double) -> Self
+pub fn MathquaternionBuffer::set(Self, Int32, Double) -> Self
+pub fn MathquaternionBuffer::sum(Self) -> Double
+pub fn MathquaternionBuffer::to_string(Self) -> String
+
+pub(all) struct MathquaternionCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquaternionCluster::add(Self, Self) -> Self
+pub fn MathquaternionCluster::copy(Self) -> Self
+pub fn MathquaternionCluster::fill(Self, Double) -> Self
+pub fn MathquaternionCluster::get(Self, Int32) -> Double
+pub fn MathquaternionCluster::len(Self) -> Int32
+pub fn MathquaternionCluster::max(Self) -> Double
+pub fn MathquaternionCluster::mean(Self) -> Double
+pub fn MathquaternionCluster::min(Self) -> Double
+pub fn MathquaternionCluster::scale(Self, Double) -> Self
+pub fn MathquaternionCluster::set(Self, Int32, Double) -> Self
+pub fn MathquaternionCluster::sum(Self) -> Double
+pub fn MathquaternionCluster::to_string(Self) -> String
+
+pub(all) struct MathquaternionCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquaternionCursor::add(Self, Self) -> Self
+pub fn MathquaternionCursor::copy(Self) -> Self
+pub fn MathquaternionCursor::fill(Self, Double) -> Self
+pub fn MathquaternionCursor::get(Self, Int32) -> Double
+pub fn MathquaternionCursor::len(Self) -> Int32
+pub fn MathquaternionCursor::max(Self) -> Double
+pub fn MathquaternionCursor::mean(Self) -> Double
+pub fn MathquaternionCursor::min(Self) -> Double
+pub fn MathquaternionCursor::scale(Self, Double) -> Self
+pub fn MathquaternionCursor::set(Self, Int32, Double) -> Self
+pub fn MathquaternionCursor::sum(Self) -> Double
+pub fn MathquaternionCursor::to_string(Self) -> String
+
+pub(all) struct MathquaternionEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquaternionEdge::add(Self, Self) -> Self
+pub fn MathquaternionEdge::copy(Self) -> Self
+pub fn MathquaternionEdge::fill(Self, Double) -> Self
+pub fn MathquaternionEdge::get(Self, Int32) -> Double
+pub fn MathquaternionEdge::len(Self) -> Int32
+pub fn MathquaternionEdge::max(Self) -> Double
+pub fn MathquaternionEdge::mean(Self) -> Double
+pub fn MathquaternionEdge::min(Self) -> Double
+pub fn MathquaternionEdge::scale(Self, Double) -> Self
+pub fn MathquaternionEdge::set(Self, Int32, Double) -> Self
+pub fn MathquaternionEdge::sum(Self) -> Double
+pub fn MathquaternionEdge::to_string(Self) -> String
+
+pub(all) struct MathquaternionFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquaternionFrame::add(Self, Self) -> Self
+pub fn MathquaternionFrame::copy(Self) -> Self
+pub fn MathquaternionFrame::fill(Self, Double) -> Self
+pub fn MathquaternionFrame::get(Self, Int32) -> Double
+pub fn MathquaternionFrame::len(Self) -> Int32
+pub fn MathquaternionFrame::max(Self) -> Double
+pub fn MathquaternionFrame::mean(Self) -> Double
+pub fn MathquaternionFrame::min(Self) -> Double
+pub fn MathquaternionFrame::scale(Self, Double) -> Self
+pub fn MathquaternionFrame::set(Self, Int32, Double) -> Self
+pub fn MathquaternionFrame::sum(Self) -> Double
+pub fn MathquaternionFrame::to_string(Self) -> String
+
+pub(all) struct MathquaternionGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquaternionGraphN::add(Self, Self) -> Self
+pub fn MathquaternionGraphN::copy(Self) -> Self
+pub fn MathquaternionGraphN::fill(Self, Double) -> Self
+pub fn MathquaternionGraphN::get(Self, Int32) -> Double
+pub fn MathquaternionGraphN::len(Self) -> Int32
+pub fn MathquaternionGraphN::max(Self) -> Double
+pub fn MathquaternionGraphN::mean(Self) -> Double
+pub fn MathquaternionGraphN::min(Self) -> Double
+pub fn MathquaternionGraphN::scale(Self, Double) -> Self
+pub fn MathquaternionGraphN::set(Self, Int32, Double) -> Self
+pub fn MathquaternionGraphN::sum(Self) -> Double
+pub fn MathquaternionGraphN::to_string(Self) -> String
+
+pub(all) struct MathquaternionLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquaternionLayer::add(Self, Self) -> Self
+pub fn MathquaternionLayer::copy(Self) -> Self
+pub fn MathquaternionLayer::fill(Self, Double) -> Self
+pub fn MathquaternionLayer::get(Self, Int32) -> Double
+pub fn MathquaternionLayer::len(Self) -> Int32
+pub fn MathquaternionLayer::max(Self) -> Double
+pub fn MathquaternionLayer::mean(Self) -> Double
+pub fn MathquaternionLayer::min(Self) -> Double
+pub fn MathquaternionLayer::scale(Self, Double) -> Self
+pub fn MathquaternionLayer::set(Self, Int32, Double) -> Self
+pub fn MathquaternionLayer::sum(Self) -> Double
+pub fn MathquaternionLayer::to_string(Self) -> String
+
+pub(all) struct MathquaternionMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathquaternionMatrix::add(Self, Self) -> Self
+pub fn MathquaternionMatrix::det(Self) -> Double
+pub fn MathquaternionMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathquaternionMatrix::multiply(Self, Self) -> Self
+pub fn MathquaternionMatrix::norm(Self) -> Double
+pub fn MathquaternionMatrix::scale(Self, Double) -> Self
+pub fn MathquaternionMatrix::to_string(Self) -> String
+pub fn MathquaternionMatrix::trace(Self) -> Double
+pub fn MathquaternionMatrix::transpose(Self) -> Self
+
+pub(all) struct MathquaternionModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquaternionModel::add(Self, Self) -> Self
+pub fn MathquaternionModel::copy(Self) -> Self
+pub fn MathquaternionModel::fill(Self, Double) -> Self
+pub fn MathquaternionModel::get(Self, Int32) -> Double
+pub fn MathquaternionModel::len(Self) -> Int32
+pub fn MathquaternionModel::max(Self) -> Double
+pub fn MathquaternionModel::mean(Self) -> Double
+pub fn MathquaternionModel::min(Self) -> Double
+pub fn MathquaternionModel::scale(Self, Double) -> Self
+pub fn MathquaternionModel::set(Self, Int32, Double) -> Self
+pub fn MathquaternionModel::sum(Self) -> Double
+pub fn MathquaternionModel::to_string(Self) -> String
+
+pub(all) struct MathquaternionNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquaternionNode::add(Self, Self) -> Self
+pub fn MathquaternionNode::copy(Self) -> Self
+pub fn MathquaternionNode::fill(Self, Double) -> Self
+pub fn MathquaternionNode::get(Self, Int32) -> Double
+pub fn MathquaternionNode::len(Self) -> Int32
+pub fn MathquaternionNode::max(Self) -> Double
+pub fn MathquaternionNode::mean(Self) -> Double
+pub fn MathquaternionNode::min(Self) -> Double
+pub fn MathquaternionNode::scale(Self, Double) -> Self
+pub fn MathquaternionNode::set(Self, Int32, Double) -> Self
+pub fn MathquaternionNode::sum(Self) -> Double
+pub fn MathquaternionNode::to_string(Self) -> String
+
+pub(all) struct MathquaternionPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquaternionPath::add(Self, Self) -> Self
+pub fn MathquaternionPath::copy(Self) -> Self
+pub fn MathquaternionPath::fill(Self, Double) -> Self
+pub fn MathquaternionPath::get(Self, Int32) -> Double
+pub fn MathquaternionPath::len(Self) -> Int32
+pub fn MathquaternionPath::max(Self) -> Double
+pub fn MathquaternionPath::mean(Self) -> Double
+pub fn MathquaternionPath::min(Self) -> Double
+pub fn MathquaternionPath::scale(Self, Double) -> Self
+pub fn MathquaternionPath::set(Self, Int32, Double) -> Self
+pub fn MathquaternionPath::sum(Self) -> Double
+pub fn MathquaternionPath::to_string(Self) -> String
+
+pub(all) struct MathquaternionPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathquaternionPoint::add(Self, Self) -> Self
+pub fn MathquaternionPoint::cross(Self, Self) -> Self
+pub fn MathquaternionPoint::dist(Self, Self) -> Double
+pub fn MathquaternionPoint::dot(Self, Self) -> Double
+pub fn MathquaternionPoint::label(Self) -> Int32
+pub fn MathquaternionPoint::lerp(Self, Self, Double) -> Self
+pub fn MathquaternionPoint::mid(Self, Self) -> Self
+pub fn MathquaternionPoint::negate(Self) -> Self
+pub fn MathquaternionPoint::norm(Self) -> Double
+pub fn MathquaternionPoint::normalize(Self) -> Self
+pub fn MathquaternionPoint::scale(Self, Double) -> Self
+pub fn MathquaternionPoint::sub(Self, Self) -> Self
+pub fn MathquaternionPoint::to_string(Self) -> String
+pub fn MathquaternionPoint::x(Self) -> Double
+pub fn MathquaternionPoint::y(Self) -> Double
+pub fn MathquaternionPoint::z(Self) -> Double
+
+pub(all) struct MathquaternionRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquaternionRange::add(Self, Self) -> Self
+pub fn MathquaternionRange::copy(Self) -> Self
+pub fn MathquaternionRange::fill(Self, Double) -> Self
+pub fn MathquaternionRange::get(Self, Int32) -> Double
+pub fn MathquaternionRange::len(Self) -> Int32
+pub fn MathquaternionRange::max(Self) -> Double
+pub fn MathquaternionRange::mean(Self) -> Double
+pub fn MathquaternionRange::min(Self) -> Double
+pub fn MathquaternionRange::scale(Self, Double) -> Self
+pub fn MathquaternionRange::set(Self, Int32, Double) -> Self
+pub fn MathquaternionRange::sum(Self) -> Double
+pub fn MathquaternionRange::to_string(Self) -> String
+
+pub(all) struct MathquaternionSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathquaternionSeries::add(Self, Self) -> Self
+pub fn MathquaternionSeries::cumsum(Self) -> Self
+pub fn MathquaternionSeries::len(Self) -> Int32
+pub fn MathquaternionSeries::max(Self) -> Double
+pub fn MathquaternionSeries::mean(Self) -> Double
+pub fn MathquaternionSeries::median(Self) -> Double
+pub fn MathquaternionSeries::min(Self) -> Double
+pub fn MathquaternionSeries::normalize(Self) -> Self
+pub fn MathquaternionSeries::range(Self) -> Double
+pub fn MathquaternionSeries::scale(Self, Double) -> Self
+pub fn MathquaternionSeries::std(Self) -> Double
+pub fn MathquaternionSeries::sub(Self, Self) -> Self
+pub fn MathquaternionSeries::sum(Self) -> Double
+pub fn MathquaternionSeries::to_string(Self) -> String
+pub fn MathquaternionSeries::variance(Self) -> Double
+
+pub(all) struct MathquaternionSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquaternionSlice::add(Self, Self) -> Self
+pub fn MathquaternionSlice::copy(Self) -> Self
+pub fn MathquaternionSlice::fill(Self, Double) -> Self
+pub fn MathquaternionSlice::get(Self, Int32) -> Double
+pub fn MathquaternionSlice::len(Self) -> Int32
+pub fn MathquaternionSlice::max(Self) -> Double
+pub fn MathquaternionSlice::mean(Self) -> Double
+pub fn MathquaternionSlice::min(Self) -> Double
+pub fn MathquaternionSlice::scale(Self, Double) -> Self
+pub fn MathquaternionSlice::set(Self, Int32, Double) -> Self
+pub fn MathquaternionSlice::sum(Self) -> Double
+pub fn MathquaternionSlice::to_string(Self) -> String
+
+pub(all) struct MathquaternionTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquaternionTable::add(Self, Self) -> Self
+pub fn MathquaternionTable::copy(Self) -> Self
+pub fn MathquaternionTable::fill(Self, Double) -> Self
+pub fn MathquaternionTable::get(Self, Int32) -> Double
+pub fn MathquaternionTable::len(Self) -> Int32
+pub fn MathquaternionTable::max(Self) -> Double
+pub fn MathquaternionTable::mean(Self) -> Double
+pub fn MathquaternionTable::min(Self) -> Double
+pub fn MathquaternionTable::scale(Self, Double) -> Self
+pub fn MathquaternionTable::set(Self, Int32, Double) -> Self
+pub fn MathquaternionTable::sum(Self) -> Double
+pub fn MathquaternionTable::to_string(Self) -> String
+
+pub(all) struct MathquaternionVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathquaternionVector::add(Self, Self) -> Self
+pub fn MathquaternionVector::dist(Self, Self) -> Double
+pub fn MathquaternionVector::dot(Self, Self) -> Double
+pub fn MathquaternionVector::norm(Self) -> Double
+pub fn MathquaternionVector::normalize(Self) -> Self
+pub fn MathquaternionVector::scale(Self, Double) -> Self
+pub fn MathquaternionVector::sub(Self, Self) -> Self
+pub fn MathquaternionVector::to_string(Self) -> String
+
+pub(all) struct MathquaternionView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquaternionView::add(Self, Self) -> Self
+pub fn MathquaternionView::copy(Self) -> Self
+pub fn MathquaternionView::fill(Self, Double) -> Self
+pub fn MathquaternionView::get(Self, Int32) -> Double
+pub fn MathquaternionView::len(Self) -> Int32
+pub fn MathquaternionView::max(Self) -> Double
+pub fn MathquaternionView::mean(Self) -> Double
+pub fn MathquaternionView::min(Self) -> Double
+pub fn MathquaternionView::scale(Self, Double) -> Self
+pub fn MathquaternionView::set(Self, Int32, Double) -> Self
+pub fn MathquaternionView::sum(Self) -> Double
+pub fn MathquaternionView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

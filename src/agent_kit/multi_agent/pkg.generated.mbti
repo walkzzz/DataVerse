@@ -1,0 +1,385 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/multi_agent"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn accept_delegation(Delegation) -> Delegation
+
+pub fn add_agent_to_system(MultiAgentSystem, AgentConfig) -> MultiAgentSystem
+
+pub fn agent_collaboration(Array[String], String) -> String
+
+pub fn agent_communication(String, String, String) -> Message
+
+pub fn agent_competition(Array[String], Double) -> String
+
+pub fn allocate_task(Array[TaskAllocation], TaskAllocation) -> Array[TaskAllocation]
+
+pub fn assign_role(String, Role) -> RoleAssignment
+
+pub fn auction_allocate(Auction) -> String?
+
+pub fn auction_bid(Auction, String, Double) -> Auction
+
+pub fn auction_result(Auction) -> (String, Double)
+
+pub fn blackboard_read(Blackboard, String) -> String?
+
+pub fn blackboard_write(Blackboard, String, String, Double) -> Blackboard
+
+pub fn broadcast(MessageChannel, String, String, Double) -> MessageChannel
+
+pub fn check_role_permission(Role, String) -> Bool
+
+pub fn coalition_value(Coalition) -> Double
+
+pub fn consensus_reach(Consensus) -> Bool
+
+pub fn consensus_result(Consensus) -> (Bool, Double)
+
+pub fn consensus_vote(Consensus, Vote) -> Consensus
+
+pub fn contract_execute(Contract) -> String
+
+pub fn contract_sign(Contract, String) -> Contract
+
+pub fn contract_verify(Contract) -> Bool
+
+pub fn coordinate(CoordinationProtocol, Array[String]) -> String
+
+pub fn deallocate_task(Array[TaskAllocation], String) -> Array[TaskAllocation]
+
+pub fn delegate_task(Delegation) -> Delegation
+
+pub fn env_act(Environment, String, String, String) -> Environment
+
+pub fn env_observe(Environment, String) -> String?
+
+pub fn env_reward_multi(Environment, Array[Double]) -> Environment
+
+pub fn federate_agents(Federation, Array[String]) -> Federation
+
+pub fn federated_learn(Federation, Array[Double]) -> Federation
+
+pub fn form_coalition(Array[String], String) -> Coalition
+
+pub fn hierarchical_delegate(Hierarchy, String, String) -> Hierarchy
+
+pub fn hierarchical_report(Hierarchy, String) -> String
+
+pub fn intervene(SupervisionRecord, String) -> SupervisionRecord
+
+pub fn make_agent_config(String, String, Array[String], Double, Double) -> AgentConfig
+
+pub fn make_auction(String, String, Double) -> Auction
+
+pub fn make_blackboard(String) -> Blackboard
+
+pub fn make_coalition(String, Array[String]) -> Coalition
+
+pub fn make_consensus(String, String, Double) -> Consensus
+
+pub fn make_contract(String, Array[String], String) -> Contract
+
+pub fn make_coordination_protocol(String, String, Array[String]) -> CoordinationProtocol
+
+pub fn make_delegation(String, String, String, String) -> Delegation
+
+pub fn make_environment(String) -> Environment
+
+pub fn make_federation(String) -> Federation
+
+pub fn make_hierarchy(String) -> Hierarchy
+
+pub fn make_market(String) -> Market
+
+pub fn make_message_channel(String, Array[String], Int32) -> MessageChannel
+
+pub fn make_multi_agent_system(String) -> MultiAgentSystem
+
+pub fn make_role(String, Array[String], Int32) -> Role
+
+pub fn make_shared_state(String) -> SharedState
+
+pub fn make_supervisor(String, String) -> SupervisionRecord
+
+pub fn make_swarm(String, String) -> Swarm
+
+pub fn make_task_allocation(String, String, String, Int32) -> TaskAllocation
+
+pub fn market_ask(Market, MarketOrder) -> Market
+
+pub fn market_bid(Market, MarketOrder) -> Market
+
+pub fn market_clear(Market) -> Market
+
+pub fn multi_agent_id() -> String
+
+pub fn negotiate(CoordinationProtocol, String, String) -> String
+
+pub fn read_shared(SharedState, String) -> String?
+
+pub fn receive_message(MessageChannel, String) -> (MessageChannel, Array[Message])
+
+pub fn send_message(MessageChannel, Message) -> MessageChannel
+
+pub fn supervise_agent(SupervisionRecord, String) -> SupervisionRecord
+
+pub fn swarm_behavior(Swarm, String, (Double, Double)) -> Swarm
+
+pub fn swarm_intelligence(Swarm) -> (Double, Double)
+
+pub fn update_shared(SharedState, String, String) -> SharedState
+
+pub fn write_shared(SharedState, String, String) -> SharedState
+
+// Errors
+
+// Types and methods
+pub struct AgentConfig {
+  agent_id : String
+  name : String
+  capabilities : Array[String]
+  capacity : Double
+  reliability : Double
+} derive(Eq, @debug.Debug)
+pub fn AgentConfig::equal(Self, Self) -> Bool
+pub fn AgentConfig::not_equal(Self, Self) -> Bool
+pub fn AgentConfig::to_repr(Self) -> @debug.Repr
+
+pub struct Auction {
+  auction_id : String
+  item : String
+  bids : Array[(String, Double)]
+  reserved_price : Double
+  active : Bool
+} derive(Eq, @debug.Debug)
+pub fn Auction::equal(Self, Self) -> Bool
+pub fn Auction::not_equal(Self, Self) -> Bool
+pub fn Auction::to_repr(Self) -> @debug.Repr
+
+pub(all) enum AuctionType {
+  English
+  Dutch
+  SealedBid
+}
+
+pub struct Blackboard {
+  blackboard_id : String
+  entries : Array[(String, String, Double)]
+} derive(Eq, @debug.Debug)
+pub fn Blackboard::equal(Self, Self) -> Bool
+pub fn Blackboard::not_equal(Self, Self) -> Bool
+pub fn Blackboard::to_repr(Self) -> @debug.Repr
+
+pub struct Coalition {
+  coalition_id : String
+  members : Array[String]
+  value : Double
+} derive(Eq, @debug.Debug)
+pub fn Coalition::equal(Self, Self) -> Bool
+pub fn Coalition::not_equal(Self, Self) -> Bool
+pub fn Coalition::to_repr(Self) -> @debug.Repr
+
+pub struct Consensus {
+  consensus_id : String
+  proposal : String
+  votes : Array[Vote]
+  threshold : Double
+} derive(Eq, @debug.Debug)
+pub fn Consensus::equal(Self, Self) -> Bool
+pub fn Consensus::not_equal(Self, Self) -> Bool
+pub fn Consensus::to_repr(Self) -> @debug.Repr
+
+pub(all) enum ConsensusType {
+  Majority
+  Unanimous
+  Weighted
+}
+
+pub struct Contract {
+  contract_id : String
+  parties : Array[String]
+  terms : String
+  signed : Array[String]
+  active : Bool
+} derive(Eq, @debug.Debug)
+pub fn Contract::equal(Self, Self) -> Bool
+pub fn Contract::not_equal(Self, Self) -> Bool
+pub fn Contract::to_repr(Self) -> @debug.Repr
+
+pub struct CoordinationProtocol {
+  protocol_id : String
+  protocol_type : String
+  participants : Array[String]
+  rules : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn CoordinationProtocol::equal(Self, Self) -> Bool
+pub fn CoordinationProtocol::not_equal(Self, Self) -> Bool
+pub fn CoordinationProtocol::to_repr(Self) -> @debug.Repr
+
+pub struct Delegation {
+  delegation_id : String
+  delegator : String
+  delegatee : String
+  task : String
+  accepted : Bool
+} derive(Eq, @debug.Debug)
+pub fn Delegation::equal(Self, Self) -> Bool
+pub fn Delegation::not_equal(Self, Self) -> Bool
+pub fn Delegation::to_repr(Self) -> @debug.Repr
+
+pub struct Environment {
+  env_id : String
+  state : Array[(String, String)]
+  reward : Double
+  step : Int32
+} derive(Eq, @debug.Debug)
+pub fn Environment::equal(Self, Self) -> Bool
+pub fn Environment::not_equal(Self, Self) -> Bool
+pub fn Environment::to_repr(Self) -> @debug.Repr
+
+pub struct Federation {
+  federation_id : String
+  members : Array[String]
+  round : Int32
+  aggregated_value : Double
+} derive(Eq, @debug.Debug)
+pub fn Federation::equal(Self, Self) -> Bool
+pub fn Federation::not_equal(Self, Self) -> Bool
+pub fn Federation::to_repr(Self) -> @debug.Repr
+
+pub struct Hierarchy {
+  hierarchy_id : String
+  levels : Array[(String, Int32)]
+  parent_map : Array[(String, String)]
+} derive(Eq, @debug.Debug)
+pub fn Hierarchy::equal(Self, Self) -> Bool
+pub fn Hierarchy::not_equal(Self, Self) -> Bool
+pub fn Hierarchy::to_repr(Self) -> @debug.Repr
+
+pub struct Market {
+  market_id : String
+  bids : Array[MarketOrder]
+  asks : Array[MarketOrder]
+  cleared : Bool
+} derive(Eq, @debug.Debug)
+pub fn Market::equal(Self, Self) -> Bool
+pub fn Market::not_equal(Self, Self) -> Bool
+pub fn Market::to_repr(Self) -> @debug.Repr
+
+pub struct MarketOrder {
+  order_id : String
+  agent_id : String
+  side : String
+  price : Double
+  quantity : Double
+} derive(Eq, @debug.Debug)
+pub fn MarketOrder::equal(Self, Self) -> Bool
+pub fn MarketOrder::not_equal(Self, Self) -> Bool
+pub fn MarketOrder::to_repr(Self) -> @debug.Repr
+
+pub struct Message {
+  msg_id : String
+  sender : String
+  receiver : String
+  content : String
+  timestamp : Double
+} derive(Eq, @debug.Debug)
+pub fn Message::equal(Self, Self) -> Bool
+pub fn Message::not_equal(Self, Self) -> Bool
+pub fn Message::to_repr(Self) -> @debug.Repr
+
+pub struct MessageChannel {
+  channel_id : String
+  participants : Array[String]
+  messages : Array[Message]
+  capacity : Int32
+} derive(Eq, @debug.Debug)
+pub fn MessageChannel::equal(Self, Self) -> Bool
+pub fn MessageChannel::not_equal(Self, Self) -> Bool
+pub fn MessageChannel::to_repr(Self) -> @debug.Repr
+
+pub struct MultiAgentSystem {
+  system_id : String
+  agents : Array[AgentConfig]
+  channels : Array[MessageChannel]
+  protocols : Array[CoordinationProtocol]
+} derive(Eq, @debug.Debug)
+pub fn MultiAgentSystem::equal(Self, Self) -> Bool
+pub fn MultiAgentSystem::not_equal(Self, Self) -> Bool
+pub fn MultiAgentSystem::to_repr(Self) -> @debug.Repr
+
+pub struct Role {
+  role_id : String
+  permissions : Array[String]
+  priority : Int32
+} derive(Eq, @debug.Debug)
+pub fn Role::equal(Self, Self) -> Bool
+pub fn Role::not_equal(Self, Self) -> Bool
+pub fn Role::to_repr(Self) -> @debug.Repr
+
+pub struct RoleAssignment {
+  agent_id : String
+  role : Role
+} derive(Eq, @debug.Debug)
+pub fn RoleAssignment::equal(Self, Self) -> Bool
+pub fn RoleAssignment::not_equal(Self, Self) -> Bool
+pub fn RoleAssignment::to_repr(Self) -> @debug.Repr
+
+pub struct SharedState {
+  state_id : String
+  data : Array[(String, String)]
+  version : Int32
+} derive(Eq, @debug.Debug)
+pub fn SharedState::equal(Self, Self) -> Bool
+pub fn SharedState::not_equal(Self, Self) -> Bool
+pub fn SharedState::to_repr(Self) -> @debug.Repr
+
+pub struct SupervisionRecord {
+  supervisor_id : String
+  agent_id : String
+  status : String
+  intervention : String
+} derive(Eq, @debug.Debug)
+pub fn SupervisionRecord::equal(Self, Self) -> Bool
+pub fn SupervisionRecord::not_equal(Self, Self) -> Bool
+pub fn SupervisionRecord::to_repr(Self) -> @debug.Repr
+
+pub struct Swarm {
+  swarm_id : String
+  agents : Array[String]
+  positions : Array[(String, Double, Double)]
+  behavior : String
+} derive(Eq, @debug.Debug)
+pub fn Swarm::equal(Self, Self) -> Bool
+pub fn Swarm::not_equal(Self, Self) -> Bool
+pub fn Swarm::to_repr(Self) -> @debug.Repr
+
+pub struct TaskAllocation {
+  task_id : String
+  agent_id : String
+  task_desc : String
+  priority : Int32
+  status : String
+} derive(Eq, @debug.Debug)
+pub fn TaskAllocation::equal(Self, Self) -> Bool
+pub fn TaskAllocation::not_equal(Self, Self) -> Bool
+pub fn TaskAllocation::to_repr(Self) -> @debug.Repr
+
+pub struct Vote {
+  voter : String
+  proposal : String
+  support : Bool
+  weight : Double
+} derive(Eq, @debug.Debug)
+pub fn Vote::equal(Self, Self) -> Bool
+pub fn Vote::not_equal(Self, Self) -> Bool
+pub fn Vote::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

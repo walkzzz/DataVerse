@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/stats_test_normality"
+
+// Values
+pub fn stats_test_normality_buffer_make(Int32) -> StatstestnormalityBuffer
+
+pub fn stats_test_normality_cluster_make(Int32) -> StatstestnormalityCluster
+
+pub fn stats_test_normality_cursor_make(Int32) -> StatstestnormalityCursor
+
+pub fn stats_test_normality_edge_make(Int32) -> StatstestnormalityEdge
+
+pub fn stats_test_normality_frame_make(Int32) -> StatstestnormalityFrame
+
+pub fn stats_test_normality_graphn_make(Int32) -> StatstestnormalityGraphN
+
+pub fn stats_test_normality_layer_make(Int32) -> StatstestnormalityLayer
+
+pub fn stats_test_normality_make_matrix(Int32, Int32, Double) -> StatstestnormalityMatrix
+
+pub fn stats_test_normality_make_point(Double, Double) -> StatstestnormalityPoint
+
+pub fn stats_test_normality_make_point3(Double, Double, Double) -> StatstestnormalityPoint
+
+pub fn stats_test_normality_make_series(Array[Double], String) -> StatstestnormalitySeries
+
+pub fn stats_test_normality_make_vector(Array[Double]) -> StatstestnormalityVector
+
+pub fn stats_test_normality_matrix_identity(Int32) -> StatstestnormalityMatrix
+
+pub fn stats_test_normality_model_make(Int32) -> StatstestnormalityModel
+
+pub fn stats_test_normality_node_make(Int32) -> StatstestnormalityNode
+
+pub fn stats_test_normality_path_make(Int32) -> StatstestnormalityPath
+
+pub fn stats_test_normality_range_make(Int32) -> StatstestnormalityRange
+
+pub fn stats_test_normality_slice_make(Int32) -> StatstestnormalitySlice
+
+pub fn stats_test_normality_table_make(Int32) -> StatstestnormalityTable
+
+pub fn stats_test_normality_vector_zero(Int32) -> StatstestnormalityVector
+
+pub fn stats_test_normality_view_make(Int32) -> StatstestnormalityView
+
+// Errors
+
+// Types and methods
+pub(all) struct StatstestnormalityBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestnormalityBuffer::add(Self, Self) -> Self
+pub fn StatstestnormalityBuffer::copy(Self) -> Self
+pub fn StatstestnormalityBuffer::fill(Self, Double) -> Self
+pub fn StatstestnormalityBuffer::get(Self, Int32) -> Double
+pub fn StatstestnormalityBuffer::len(Self) -> Int32
+pub fn StatstestnormalityBuffer::max(Self) -> Double
+pub fn StatstestnormalityBuffer::mean(Self) -> Double
+pub fn StatstestnormalityBuffer::min(Self) -> Double
+pub fn StatstestnormalityBuffer::scale(Self, Double) -> Self
+pub fn StatstestnormalityBuffer::set(Self, Int32, Double) -> Self
+pub fn StatstestnormalityBuffer::sum(Self) -> Double
+pub fn StatstestnormalityBuffer::to_string(Self) -> String
+
+pub(all) struct StatstestnormalityCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestnormalityCluster::add(Self, Self) -> Self
+pub fn StatstestnormalityCluster::copy(Self) -> Self
+pub fn StatstestnormalityCluster::fill(Self, Double) -> Self
+pub fn StatstestnormalityCluster::get(Self, Int32) -> Double
+pub fn StatstestnormalityCluster::len(Self) -> Int32
+pub fn StatstestnormalityCluster::max(Self) -> Double
+pub fn StatstestnormalityCluster::mean(Self) -> Double
+pub fn StatstestnormalityCluster::min(Self) -> Double
+pub fn StatstestnormalityCluster::scale(Self, Double) -> Self
+pub fn StatstestnormalityCluster::set(Self, Int32, Double) -> Self
+pub fn StatstestnormalityCluster::sum(Self) -> Double
+pub fn StatstestnormalityCluster::to_string(Self) -> String
+
+pub(all) struct StatstestnormalityCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestnormalityCursor::add(Self, Self) -> Self
+pub fn StatstestnormalityCursor::copy(Self) -> Self
+pub fn StatstestnormalityCursor::fill(Self, Double) -> Self
+pub fn StatstestnormalityCursor::get(Self, Int32) -> Double
+pub fn StatstestnormalityCursor::len(Self) -> Int32
+pub fn StatstestnormalityCursor::max(Self) -> Double
+pub fn StatstestnormalityCursor::mean(Self) -> Double
+pub fn StatstestnormalityCursor::min(Self) -> Double
+pub fn StatstestnormalityCursor::scale(Self, Double) -> Self
+pub fn StatstestnormalityCursor::set(Self, Int32, Double) -> Self
+pub fn StatstestnormalityCursor::sum(Self) -> Double
+pub fn StatstestnormalityCursor::to_string(Self) -> String
+
+pub(all) struct StatstestnormalityEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestnormalityEdge::add(Self, Self) -> Self
+pub fn StatstestnormalityEdge::copy(Self) -> Self
+pub fn StatstestnormalityEdge::fill(Self, Double) -> Self
+pub fn StatstestnormalityEdge::get(Self, Int32) -> Double
+pub fn StatstestnormalityEdge::len(Self) -> Int32
+pub fn StatstestnormalityEdge::max(Self) -> Double
+pub fn StatstestnormalityEdge::mean(Self) -> Double
+pub fn StatstestnormalityEdge::min(Self) -> Double
+pub fn StatstestnormalityEdge::scale(Self, Double) -> Self
+pub fn StatstestnormalityEdge::set(Self, Int32, Double) -> Self
+pub fn StatstestnormalityEdge::sum(Self) -> Double
+pub fn StatstestnormalityEdge::to_string(Self) -> String
+
+pub(all) struct StatstestnormalityFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestnormalityFrame::add(Self, Self) -> Self
+pub fn StatstestnormalityFrame::copy(Self) -> Self
+pub fn StatstestnormalityFrame::fill(Self, Double) -> Self
+pub fn StatstestnormalityFrame::get(Self, Int32) -> Double
+pub fn StatstestnormalityFrame::len(Self) -> Int32
+pub fn StatstestnormalityFrame::max(Self) -> Double
+pub fn StatstestnormalityFrame::mean(Self) -> Double
+pub fn StatstestnormalityFrame::min(Self) -> Double
+pub fn StatstestnormalityFrame::scale(Self, Double) -> Self
+pub fn StatstestnormalityFrame::set(Self, Int32, Double) -> Self
+pub fn StatstestnormalityFrame::sum(Self) -> Double
+pub fn StatstestnormalityFrame::to_string(Self) -> String
+
+pub(all) struct StatstestnormalityGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestnormalityGraphN::add(Self, Self) -> Self
+pub fn StatstestnormalityGraphN::copy(Self) -> Self
+pub fn StatstestnormalityGraphN::fill(Self, Double) -> Self
+pub fn StatstestnormalityGraphN::get(Self, Int32) -> Double
+pub fn StatstestnormalityGraphN::len(Self) -> Int32
+pub fn StatstestnormalityGraphN::max(Self) -> Double
+pub fn StatstestnormalityGraphN::mean(Self) -> Double
+pub fn StatstestnormalityGraphN::min(Self) -> Double
+pub fn StatstestnormalityGraphN::scale(Self, Double) -> Self
+pub fn StatstestnormalityGraphN::set(Self, Int32, Double) -> Self
+pub fn StatstestnormalityGraphN::sum(Self) -> Double
+pub fn StatstestnormalityGraphN::to_string(Self) -> String
+
+pub(all) struct StatstestnormalityLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestnormalityLayer::add(Self, Self) -> Self
+pub fn StatstestnormalityLayer::copy(Self) -> Self
+pub fn StatstestnormalityLayer::fill(Self, Double) -> Self
+pub fn StatstestnormalityLayer::get(Self, Int32) -> Double
+pub fn StatstestnormalityLayer::len(Self) -> Int32
+pub fn StatstestnormalityLayer::max(Self) -> Double
+pub fn StatstestnormalityLayer::mean(Self) -> Double
+pub fn StatstestnormalityLayer::min(Self) -> Double
+pub fn StatstestnormalityLayer::scale(Self, Double) -> Self
+pub fn StatstestnormalityLayer::set(Self, Int32, Double) -> Self
+pub fn StatstestnormalityLayer::sum(Self) -> Double
+pub fn StatstestnormalityLayer::to_string(Self) -> String
+
+pub(all) struct StatstestnormalityMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn StatstestnormalityMatrix::add(Self, Self) -> Self
+pub fn StatstestnormalityMatrix::det(Self) -> Double
+pub fn StatstestnormalityMatrix::get(Self, Int32, Int32) -> Double
+pub fn StatstestnormalityMatrix::multiply(Self, Self) -> Self
+pub fn StatstestnormalityMatrix::norm(Self) -> Double
+pub fn StatstestnormalityMatrix::scale(Self, Double) -> Self
+pub fn StatstestnormalityMatrix::to_string(Self) -> String
+pub fn StatstestnormalityMatrix::trace(Self) -> Double
+pub fn StatstestnormalityMatrix::transpose(Self) -> Self
+
+pub(all) struct StatstestnormalityModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestnormalityModel::add(Self, Self) -> Self
+pub fn StatstestnormalityModel::copy(Self) -> Self
+pub fn StatstestnormalityModel::fill(Self, Double) -> Self
+pub fn StatstestnormalityModel::get(Self, Int32) -> Double
+pub fn StatstestnormalityModel::len(Self) -> Int32
+pub fn StatstestnormalityModel::max(Self) -> Double
+pub fn StatstestnormalityModel::mean(Self) -> Double
+pub fn StatstestnormalityModel::min(Self) -> Double
+pub fn StatstestnormalityModel::scale(Self, Double) -> Self
+pub fn StatstestnormalityModel::set(Self, Int32, Double) -> Self
+pub fn StatstestnormalityModel::sum(Self) -> Double
+pub fn StatstestnormalityModel::to_string(Self) -> String
+
+pub(all) struct StatstestnormalityNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestnormalityNode::add(Self, Self) -> Self
+pub fn StatstestnormalityNode::copy(Self) -> Self
+pub fn StatstestnormalityNode::fill(Self, Double) -> Self
+pub fn StatstestnormalityNode::get(Self, Int32) -> Double
+pub fn StatstestnormalityNode::len(Self) -> Int32
+pub fn StatstestnormalityNode::max(Self) -> Double
+pub fn StatstestnormalityNode::mean(Self) -> Double
+pub fn StatstestnormalityNode::min(Self) -> Double
+pub fn StatstestnormalityNode::scale(Self, Double) -> Self
+pub fn StatstestnormalityNode::set(Self, Int32, Double) -> Self
+pub fn StatstestnormalityNode::sum(Self) -> Double
+pub fn StatstestnormalityNode::to_string(Self) -> String
+
+pub(all) struct StatstestnormalityPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestnormalityPath::add(Self, Self) -> Self
+pub fn StatstestnormalityPath::copy(Self) -> Self
+pub fn StatstestnormalityPath::fill(Self, Double) -> Self
+pub fn StatstestnormalityPath::get(Self, Int32) -> Double
+pub fn StatstestnormalityPath::len(Self) -> Int32
+pub fn StatstestnormalityPath::max(Self) -> Double
+pub fn StatstestnormalityPath::mean(Self) -> Double
+pub fn StatstestnormalityPath::min(Self) -> Double
+pub fn StatstestnormalityPath::scale(Self, Double) -> Self
+pub fn StatstestnormalityPath::set(Self, Int32, Double) -> Self
+pub fn StatstestnormalityPath::sum(Self) -> Double
+pub fn StatstestnormalityPath::to_string(Self) -> String
+
+pub(all) struct StatstestnormalityPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn StatstestnormalityPoint::add(Self, Self) -> Self
+pub fn StatstestnormalityPoint::cross(Self, Self) -> Self
+pub fn StatstestnormalityPoint::dist(Self, Self) -> Double
+pub fn StatstestnormalityPoint::dot(Self, Self) -> Double
+pub fn StatstestnormalityPoint::label(Self) -> Int32
+pub fn StatstestnormalityPoint::lerp(Self, Self, Double) -> Self
+pub fn StatstestnormalityPoint::mid(Self, Self) -> Self
+pub fn StatstestnormalityPoint::negate(Self) -> Self
+pub fn StatstestnormalityPoint::norm(Self) -> Double
+pub fn StatstestnormalityPoint::normalize(Self) -> Self
+pub fn StatstestnormalityPoint::scale(Self, Double) -> Self
+pub fn StatstestnormalityPoint::sub(Self, Self) -> Self
+pub fn StatstestnormalityPoint::to_string(Self) -> String
+pub fn StatstestnormalityPoint::x(Self) -> Double
+pub fn StatstestnormalityPoint::y(Self) -> Double
+pub fn StatstestnormalityPoint::z(Self) -> Double
+
+pub(all) struct StatstestnormalityRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestnormalityRange::add(Self, Self) -> Self
+pub fn StatstestnormalityRange::copy(Self) -> Self
+pub fn StatstestnormalityRange::fill(Self, Double) -> Self
+pub fn StatstestnormalityRange::get(Self, Int32) -> Double
+pub fn StatstestnormalityRange::len(Self) -> Int32
+pub fn StatstestnormalityRange::max(Self) -> Double
+pub fn StatstestnormalityRange::mean(Self) -> Double
+pub fn StatstestnormalityRange::min(Self) -> Double
+pub fn StatstestnormalityRange::scale(Self, Double) -> Self
+pub fn StatstestnormalityRange::set(Self, Int32, Double) -> Self
+pub fn StatstestnormalityRange::sum(Self) -> Double
+pub fn StatstestnormalityRange::to_string(Self) -> String
+
+pub(all) struct StatstestnormalitySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn StatstestnormalitySeries::add(Self, Self) -> Self
+pub fn StatstestnormalitySeries::cumsum(Self) -> Self
+pub fn StatstestnormalitySeries::len(Self) -> Int32
+pub fn StatstestnormalitySeries::max(Self) -> Double
+pub fn StatstestnormalitySeries::mean(Self) -> Double
+pub fn StatstestnormalitySeries::median(Self) -> Double
+pub fn StatstestnormalitySeries::min(Self) -> Double
+pub fn StatstestnormalitySeries::normalize(Self) -> Self
+pub fn StatstestnormalitySeries::range(Self) -> Double
+pub fn StatstestnormalitySeries::scale(Self, Double) -> Self
+pub fn StatstestnormalitySeries::std(Self) -> Double
+pub fn StatstestnormalitySeries::sub(Self, Self) -> Self
+pub fn StatstestnormalitySeries::sum(Self) -> Double
+pub fn StatstestnormalitySeries::to_string(Self) -> String
+pub fn StatstestnormalitySeries::variance(Self) -> Double
+
+pub(all) struct StatstestnormalitySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestnormalitySlice::add(Self, Self) -> Self
+pub fn StatstestnormalitySlice::copy(Self) -> Self
+pub fn StatstestnormalitySlice::fill(Self, Double) -> Self
+pub fn StatstestnormalitySlice::get(Self, Int32) -> Double
+pub fn StatstestnormalitySlice::len(Self) -> Int32
+pub fn StatstestnormalitySlice::max(Self) -> Double
+pub fn StatstestnormalitySlice::mean(Self) -> Double
+pub fn StatstestnormalitySlice::min(Self) -> Double
+pub fn StatstestnormalitySlice::scale(Self, Double) -> Self
+pub fn StatstestnormalitySlice::set(Self, Int32, Double) -> Self
+pub fn StatstestnormalitySlice::sum(Self) -> Double
+pub fn StatstestnormalitySlice::to_string(Self) -> String
+
+pub(all) struct StatstestnormalityTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestnormalityTable::add(Self, Self) -> Self
+pub fn StatstestnormalityTable::copy(Self) -> Self
+pub fn StatstestnormalityTable::fill(Self, Double) -> Self
+pub fn StatstestnormalityTable::get(Self, Int32) -> Double
+pub fn StatstestnormalityTable::len(Self) -> Int32
+pub fn StatstestnormalityTable::max(Self) -> Double
+pub fn StatstestnormalityTable::mean(Self) -> Double
+pub fn StatstestnormalityTable::min(Self) -> Double
+pub fn StatstestnormalityTable::scale(Self, Double) -> Self
+pub fn StatstestnormalityTable::set(Self, Int32, Double) -> Self
+pub fn StatstestnormalityTable::sum(Self) -> Double
+pub fn StatstestnormalityTable::to_string(Self) -> String
+
+pub(all) struct StatstestnormalityVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn StatstestnormalityVector::add(Self, Self) -> Self
+pub fn StatstestnormalityVector::dist(Self, Self) -> Double
+pub fn StatstestnormalityVector::dot(Self, Self) -> Double
+pub fn StatstestnormalityVector::norm(Self) -> Double
+pub fn StatstestnormalityVector::normalize(Self) -> Self
+pub fn StatstestnormalityVector::scale(Self, Double) -> Self
+pub fn StatstestnormalityVector::sub(Self, Self) -> Self
+pub fn StatstestnormalityVector::to_string(Self) -> String
+
+pub(all) struct StatstestnormalityView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestnormalityView::add(Self, Self) -> Self
+pub fn StatstestnormalityView::copy(Self) -> Self
+pub fn StatstestnormalityView::fill(Self, Double) -> Self
+pub fn StatstestnormalityView::get(Self, Int32) -> Double
+pub fn StatstestnormalityView::len(Self) -> Int32
+pub fn StatstestnormalityView::max(Self) -> Double
+pub fn StatstestnormalityView::mean(Self) -> Double
+pub fn StatstestnormalityView::min(Self) -> Double
+pub fn StatstestnormalityView::scale(Self, Double) -> Self
+pub fn StatstestnormalityView::set(Self, Int32, Double) -> Self
+pub fn StatstestnormalityView::sum(Self) -> Double
+pub fn StatstestnormalityView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,5 @@
+import {
+  "dataverse/extcore/_common",
+}
+
+pkgtype(kind: "executable")

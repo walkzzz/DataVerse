@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_stochastic_prog"
+
+// Values
+pub fn math_stochastic_prog_buffer_make(Int32) -> MathstochasticprogBuffer
+
+pub fn math_stochastic_prog_cluster_make(Int32) -> MathstochasticprogCluster
+
+pub fn math_stochastic_prog_cursor_make(Int32) -> MathstochasticprogCursor
+
+pub fn math_stochastic_prog_edge_make(Int32) -> MathstochasticprogEdge
+
+pub fn math_stochastic_prog_frame_make(Int32) -> MathstochasticprogFrame
+
+pub fn math_stochastic_prog_graphn_make(Int32) -> MathstochasticprogGraphN
+
+pub fn math_stochastic_prog_layer_make(Int32) -> MathstochasticprogLayer
+
+pub fn math_stochastic_prog_make_matrix(Int32, Int32, Double) -> MathstochasticprogMatrix
+
+pub fn math_stochastic_prog_make_point(Double, Double) -> MathstochasticprogPoint
+
+pub fn math_stochastic_prog_make_point3(Double, Double, Double) -> MathstochasticprogPoint
+
+pub fn math_stochastic_prog_make_series(Array[Double], String) -> MathstochasticprogSeries
+
+pub fn math_stochastic_prog_make_vector(Array[Double]) -> MathstochasticprogVector
+
+pub fn math_stochastic_prog_matrix_identity(Int32) -> MathstochasticprogMatrix
+
+pub fn math_stochastic_prog_model_make(Int32) -> MathstochasticprogModel
+
+pub fn math_stochastic_prog_node_make(Int32) -> MathstochasticprogNode
+
+pub fn math_stochastic_prog_path_make(Int32) -> MathstochasticprogPath
+
+pub fn math_stochastic_prog_range_make(Int32) -> MathstochasticprogRange
+
+pub fn math_stochastic_prog_slice_make(Int32) -> MathstochasticprogSlice
+
+pub fn math_stochastic_prog_table_make(Int32) -> MathstochasticprogTable
+
+pub fn math_stochastic_prog_vector_zero(Int32) -> MathstochasticprogVector
+
+pub fn math_stochastic_prog_view_make(Int32) -> MathstochasticprogView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathstochasticprogBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathstochasticprogBuffer::add(Self, Self) -> Self
+pub fn MathstochasticprogBuffer::copy(Self) -> Self
+pub fn MathstochasticprogBuffer::fill(Self, Double) -> Self
+pub fn MathstochasticprogBuffer::get(Self, Int32) -> Double
+pub fn MathstochasticprogBuffer::len(Self) -> Int32
+pub fn MathstochasticprogBuffer::max(Self) -> Double
+pub fn MathstochasticprogBuffer::mean(Self) -> Double
+pub fn MathstochasticprogBuffer::min(Self) -> Double
+pub fn MathstochasticprogBuffer::scale(Self, Double) -> Self
+pub fn MathstochasticprogBuffer::set(Self, Int32, Double) -> Self
+pub fn MathstochasticprogBuffer::sum(Self) -> Double
+pub fn MathstochasticprogBuffer::to_string(Self) -> String
+
+pub(all) struct MathstochasticprogCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathstochasticprogCluster::add(Self, Self) -> Self
+pub fn MathstochasticprogCluster::copy(Self) -> Self
+pub fn MathstochasticprogCluster::fill(Self, Double) -> Self
+pub fn MathstochasticprogCluster::get(Self, Int32) -> Double
+pub fn MathstochasticprogCluster::len(Self) -> Int32
+pub fn MathstochasticprogCluster::max(Self) -> Double
+pub fn MathstochasticprogCluster::mean(Self) -> Double
+pub fn MathstochasticprogCluster::min(Self) -> Double
+pub fn MathstochasticprogCluster::scale(Self, Double) -> Self
+pub fn MathstochasticprogCluster::set(Self, Int32, Double) -> Self
+pub fn MathstochasticprogCluster::sum(Self) -> Double
+pub fn MathstochasticprogCluster::to_string(Self) -> String
+
+pub(all) struct MathstochasticprogCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathstochasticprogCursor::add(Self, Self) -> Self
+pub fn MathstochasticprogCursor::copy(Self) -> Self
+pub fn MathstochasticprogCursor::fill(Self, Double) -> Self
+pub fn MathstochasticprogCursor::get(Self, Int32) -> Double
+pub fn MathstochasticprogCursor::len(Self) -> Int32
+pub fn MathstochasticprogCursor::max(Self) -> Double
+pub fn MathstochasticprogCursor::mean(Self) -> Double
+pub fn MathstochasticprogCursor::min(Self) -> Double
+pub fn MathstochasticprogCursor::scale(Self, Double) -> Self
+pub fn MathstochasticprogCursor::set(Self, Int32, Double) -> Self
+pub fn MathstochasticprogCursor::sum(Self) -> Double
+pub fn MathstochasticprogCursor::to_string(Self) -> String
+
+pub(all) struct MathstochasticprogEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathstochasticprogEdge::add(Self, Self) -> Self
+pub fn MathstochasticprogEdge::copy(Self) -> Self
+pub fn MathstochasticprogEdge::fill(Self, Double) -> Self
+pub fn MathstochasticprogEdge::get(Self, Int32) -> Double
+pub fn MathstochasticprogEdge::len(Self) -> Int32
+pub fn MathstochasticprogEdge::max(Self) -> Double
+pub fn MathstochasticprogEdge::mean(Self) -> Double
+pub fn MathstochasticprogEdge::min(Self) -> Double
+pub fn MathstochasticprogEdge::scale(Self, Double) -> Self
+pub fn MathstochasticprogEdge::set(Self, Int32, Double) -> Self
+pub fn MathstochasticprogEdge::sum(Self) -> Double
+pub fn MathstochasticprogEdge::to_string(Self) -> String
+
+pub(all) struct MathstochasticprogFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathstochasticprogFrame::add(Self, Self) -> Self
+pub fn MathstochasticprogFrame::copy(Self) -> Self
+pub fn MathstochasticprogFrame::fill(Self, Double) -> Self
+pub fn MathstochasticprogFrame::get(Self, Int32) -> Double
+pub fn MathstochasticprogFrame::len(Self) -> Int32
+pub fn MathstochasticprogFrame::max(Self) -> Double
+pub fn MathstochasticprogFrame::mean(Self) -> Double
+pub fn MathstochasticprogFrame::min(Self) -> Double
+pub fn MathstochasticprogFrame::scale(Self, Double) -> Self
+pub fn MathstochasticprogFrame::set(Self, Int32, Double) -> Self
+pub fn MathstochasticprogFrame::sum(Self) -> Double
+pub fn MathstochasticprogFrame::to_string(Self) -> String
+
+pub(all) struct MathstochasticprogGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathstochasticprogGraphN::add(Self, Self) -> Self
+pub fn MathstochasticprogGraphN::copy(Self) -> Self
+pub fn MathstochasticprogGraphN::fill(Self, Double) -> Self
+pub fn MathstochasticprogGraphN::get(Self, Int32) -> Double
+pub fn MathstochasticprogGraphN::len(Self) -> Int32
+pub fn MathstochasticprogGraphN::max(Self) -> Double
+pub fn MathstochasticprogGraphN::mean(Self) -> Double
+pub fn MathstochasticprogGraphN::min(Self) -> Double
+pub fn MathstochasticprogGraphN::scale(Self, Double) -> Self
+pub fn MathstochasticprogGraphN::set(Self, Int32, Double) -> Self
+pub fn MathstochasticprogGraphN::sum(Self) -> Double
+pub fn MathstochasticprogGraphN::to_string(Self) -> String
+
+pub(all) struct MathstochasticprogLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathstochasticprogLayer::add(Self, Self) -> Self
+pub fn MathstochasticprogLayer::copy(Self) -> Self
+pub fn MathstochasticprogLayer::fill(Self, Double) -> Self
+pub fn MathstochasticprogLayer::get(Self, Int32) -> Double
+pub fn MathstochasticprogLayer::len(Self) -> Int32
+pub fn MathstochasticprogLayer::max(Self) -> Double
+pub fn MathstochasticprogLayer::mean(Self) -> Double
+pub fn MathstochasticprogLayer::min(Self) -> Double
+pub fn MathstochasticprogLayer::scale(Self, Double) -> Self
+pub fn MathstochasticprogLayer::set(Self, Int32, Double) -> Self
+pub fn MathstochasticprogLayer::sum(Self) -> Double
+pub fn MathstochasticprogLayer::to_string(Self) -> String
+
+pub(all) struct MathstochasticprogMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathstochasticprogMatrix::add(Self, Self) -> Self
+pub fn MathstochasticprogMatrix::det(Self) -> Double
+pub fn MathstochasticprogMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathstochasticprogMatrix::multiply(Self, Self) -> Self
+pub fn MathstochasticprogMatrix::norm(Self) -> Double
+pub fn MathstochasticprogMatrix::scale(Self, Double) -> Self
+pub fn MathstochasticprogMatrix::to_string(Self) -> String
+pub fn MathstochasticprogMatrix::trace(Self) -> Double
+pub fn MathstochasticprogMatrix::transpose(Self) -> Self
+
+pub(all) struct MathstochasticprogModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathstochasticprogModel::add(Self, Self) -> Self
+pub fn MathstochasticprogModel::copy(Self) -> Self
+pub fn MathstochasticprogModel::fill(Self, Double) -> Self
+pub fn MathstochasticprogModel::get(Self, Int32) -> Double
+pub fn MathstochasticprogModel::len(Self) -> Int32
+pub fn MathstochasticprogModel::max(Self) -> Double
+pub fn MathstochasticprogModel::mean(Self) -> Double
+pub fn MathstochasticprogModel::min(Self) -> Double
+pub fn MathstochasticprogModel::scale(Self, Double) -> Self
+pub fn MathstochasticprogModel::set(Self, Int32, Double) -> Self
+pub fn MathstochasticprogModel::sum(Self) -> Double
+pub fn MathstochasticprogModel::to_string(Self) -> String
+
+pub(all) struct MathstochasticprogNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathstochasticprogNode::add(Self, Self) -> Self
+pub fn MathstochasticprogNode::copy(Self) -> Self
+pub fn MathstochasticprogNode::fill(Self, Double) -> Self
+pub fn MathstochasticprogNode::get(Self, Int32) -> Double
+pub fn MathstochasticprogNode::len(Self) -> Int32
+pub fn MathstochasticprogNode::max(Self) -> Double
+pub fn MathstochasticprogNode::mean(Self) -> Double
+pub fn MathstochasticprogNode::min(Self) -> Double
+pub fn MathstochasticprogNode::scale(Self, Double) -> Self
+pub fn MathstochasticprogNode::set(Self, Int32, Double) -> Self
+pub fn MathstochasticprogNode::sum(Self) -> Double
+pub fn MathstochasticprogNode::to_string(Self) -> String
+
+pub(all) struct MathstochasticprogPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathstochasticprogPath::add(Self, Self) -> Self
+pub fn MathstochasticprogPath::copy(Self) -> Self
+pub fn MathstochasticprogPath::fill(Self, Double) -> Self
+pub fn MathstochasticprogPath::get(Self, Int32) -> Double
+pub fn MathstochasticprogPath::len(Self) -> Int32
+pub fn MathstochasticprogPath::max(Self) -> Double
+pub fn MathstochasticprogPath::mean(Self) -> Double
+pub fn MathstochasticprogPath::min(Self) -> Double
+pub fn MathstochasticprogPath::scale(Self, Double) -> Self
+pub fn MathstochasticprogPath::set(Self, Int32, Double) -> Self
+pub fn MathstochasticprogPath::sum(Self) -> Double
+pub fn MathstochasticprogPath::to_string(Self) -> String
+
+pub(all) struct MathstochasticprogPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathstochasticprogPoint::add(Self, Self) -> Self
+pub fn MathstochasticprogPoint::cross(Self, Self) -> Self
+pub fn MathstochasticprogPoint::dist(Self, Self) -> Double
+pub fn MathstochasticprogPoint::dot(Self, Self) -> Double
+pub fn MathstochasticprogPoint::label(Self) -> Int32
+pub fn MathstochasticprogPoint::lerp(Self, Self, Double) -> Self
+pub fn MathstochasticprogPoint::mid(Self, Self) -> Self
+pub fn MathstochasticprogPoint::negate(Self) -> Self
+pub fn MathstochasticprogPoint::norm(Self) -> Double
+pub fn MathstochasticprogPoint::normalize(Self) -> Self
+pub fn MathstochasticprogPoint::scale(Self, Double) -> Self
+pub fn MathstochasticprogPoint::sub(Self, Self) -> Self
+pub fn MathstochasticprogPoint::to_string(Self) -> String
+pub fn MathstochasticprogPoint::x(Self) -> Double
+pub fn MathstochasticprogPoint::y(Self) -> Double
+pub fn MathstochasticprogPoint::z(Self) -> Double
+
+pub(all) struct MathstochasticprogRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathstochasticprogRange::add(Self, Self) -> Self
+pub fn MathstochasticprogRange::copy(Self) -> Self
+pub fn MathstochasticprogRange::fill(Self, Double) -> Self
+pub fn MathstochasticprogRange::get(Self, Int32) -> Double
+pub fn MathstochasticprogRange::len(Self) -> Int32
+pub fn MathstochasticprogRange::max(Self) -> Double
+pub fn MathstochasticprogRange::mean(Self) -> Double
+pub fn MathstochasticprogRange::min(Self) -> Double
+pub fn MathstochasticprogRange::scale(Self, Double) -> Self
+pub fn MathstochasticprogRange::set(Self, Int32, Double) -> Self
+pub fn MathstochasticprogRange::sum(Self) -> Double
+pub fn MathstochasticprogRange::to_string(Self) -> String
+
+pub(all) struct MathstochasticprogSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathstochasticprogSeries::add(Self, Self) -> Self
+pub fn MathstochasticprogSeries::cumsum(Self) -> Self
+pub fn MathstochasticprogSeries::len(Self) -> Int32
+pub fn MathstochasticprogSeries::max(Self) -> Double
+pub fn MathstochasticprogSeries::mean(Self) -> Double
+pub fn MathstochasticprogSeries::median(Self) -> Double
+pub fn MathstochasticprogSeries::min(Self) -> Double
+pub fn MathstochasticprogSeries::normalize(Self) -> Self
+pub fn MathstochasticprogSeries::range(Self) -> Double
+pub fn MathstochasticprogSeries::scale(Self, Double) -> Self
+pub fn MathstochasticprogSeries::std(Self) -> Double
+pub fn MathstochasticprogSeries::sub(Self, Self) -> Self
+pub fn MathstochasticprogSeries::sum(Self) -> Double
+pub fn MathstochasticprogSeries::to_string(Self) -> String
+pub fn MathstochasticprogSeries::variance(Self) -> Double
+
+pub(all) struct MathstochasticprogSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathstochasticprogSlice::add(Self, Self) -> Self
+pub fn MathstochasticprogSlice::copy(Self) -> Self
+pub fn MathstochasticprogSlice::fill(Self, Double) -> Self
+pub fn MathstochasticprogSlice::get(Self, Int32) -> Double
+pub fn MathstochasticprogSlice::len(Self) -> Int32
+pub fn MathstochasticprogSlice::max(Self) -> Double
+pub fn MathstochasticprogSlice::mean(Self) -> Double
+pub fn MathstochasticprogSlice::min(Self) -> Double
+pub fn MathstochasticprogSlice::scale(Self, Double) -> Self
+pub fn MathstochasticprogSlice::set(Self, Int32, Double) -> Self
+pub fn MathstochasticprogSlice::sum(Self) -> Double
+pub fn MathstochasticprogSlice::to_string(Self) -> String
+
+pub(all) struct MathstochasticprogTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathstochasticprogTable::add(Self, Self) -> Self
+pub fn MathstochasticprogTable::copy(Self) -> Self
+pub fn MathstochasticprogTable::fill(Self, Double) -> Self
+pub fn MathstochasticprogTable::get(Self, Int32) -> Double
+pub fn MathstochasticprogTable::len(Self) -> Int32
+pub fn MathstochasticprogTable::max(Self) -> Double
+pub fn MathstochasticprogTable::mean(Self) -> Double
+pub fn MathstochasticprogTable::min(Self) -> Double
+pub fn MathstochasticprogTable::scale(Self, Double) -> Self
+pub fn MathstochasticprogTable::set(Self, Int32, Double) -> Self
+pub fn MathstochasticprogTable::sum(Self) -> Double
+pub fn MathstochasticprogTable::to_string(Self) -> String
+
+pub(all) struct MathstochasticprogVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathstochasticprogVector::add(Self, Self) -> Self
+pub fn MathstochasticprogVector::dist(Self, Self) -> Double
+pub fn MathstochasticprogVector::dot(Self, Self) -> Double
+pub fn MathstochasticprogVector::norm(Self) -> Double
+pub fn MathstochasticprogVector::normalize(Self) -> Self
+pub fn MathstochasticprogVector::scale(Self, Double) -> Self
+pub fn MathstochasticprogVector::sub(Self, Self) -> Self
+pub fn MathstochasticprogVector::to_string(Self) -> String
+
+pub(all) struct MathstochasticprogView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathstochasticprogView::add(Self, Self) -> Self
+pub fn MathstochasticprogView::copy(Self) -> Self
+pub fn MathstochasticprogView::fill(Self, Double) -> Self
+pub fn MathstochasticprogView::get(Self, Int32) -> Double
+pub fn MathstochasticprogView::len(Self) -> Int32
+pub fn MathstochasticprogView::max(Self) -> Double
+pub fn MathstochasticprogView::mean(Self) -> Double
+pub fn MathstochasticprogView::min(Self) -> Double
+pub fn MathstochasticprogView::scale(Self, Double) -> Self
+pub fn MathstochasticprogView::set(Self, Int32, Double) -> Self
+pub fn MathstochasticprogView::sum(Self) -> Double
+pub fn MathstochasticprogView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

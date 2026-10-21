@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/climate_sim"
+
+// Values
+pub fn climate_sim_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn climate_sim_corr(Array[Double], Array[Double]) -> Double
+
+pub fn climate_sim_cov(Array[Double], Array[Double]) -> Double
+
+pub fn climate_sim_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn climate_sim_mae(Array[Double], Array[Double]) -> Double
+
+pub fn climate_sim_make_labeled_point(Double, Double, Int32) -> Climate_simPoint
+
+pub fn climate_sim_make_matrix(Int32, Int32, Double) -> Climate_simMatrix
+
+pub fn climate_sim_make_point(Double, Double) -> Climate_simPoint
+
+pub fn climate_sim_make_series(Array[Double], String) -> Climate_simSeries
+
+pub fn climate_sim_make_vector(Array[Double]) -> Climate_simVector
+
+pub fn climate_sim_matrix_add(Climate_simMatrix, Climate_simMatrix) -> Climate_simMatrix
+
+pub fn climate_sim_matrix_get(Climate_simMatrix, Int32, Int32) -> Double
+
+pub fn climate_sim_matrix_identity(Int32) -> Climate_simMatrix
+
+pub fn climate_sim_matrix_multiply(Climate_simMatrix, Climate_simMatrix) -> Climate_simMatrix
+
+pub fn climate_sim_matrix_norm(Climate_simMatrix) -> Double
+
+pub fn climate_sim_matrix_scale(Climate_simMatrix, Double) -> Climate_simMatrix
+
+pub fn climate_sim_matrix_to_string(Climate_simMatrix) -> String
+
+pub fn climate_sim_matrix_trace(Climate_simMatrix) -> Double
+
+pub fn climate_sim_matrix_transpose(Climate_simMatrix) -> Climate_simMatrix
+
+pub fn climate_sim_mse(Array[Double], Array[Double]) -> Double
+
+pub fn climate_sim_point_add(Climate_simPoint, Climate_simPoint) -> Climate_simPoint
+
+pub fn climate_sim_point_dist(Climate_simPoint, Climate_simPoint) -> Double
+
+pub fn climate_sim_point_dot(Climate_simPoint, Climate_simPoint) -> Double
+
+pub fn climate_sim_point_label(Climate_simPoint) -> Int32
+
+pub fn climate_sim_point_norm(Climate_simPoint) -> Double
+
+pub fn climate_sim_point_scale(Climate_simPoint, Double) -> Climate_simPoint
+
+pub fn climate_sim_point_sub(Climate_simPoint, Climate_simPoint) -> Climate_simPoint
+
+pub fn climate_sim_point_to_string(Climate_simPoint) -> String
+
+pub fn climate_sim_point_x(Climate_simPoint) -> Double
+
+pub fn climate_sim_point_y(Climate_simPoint) -> Double
+
+pub fn climate_sim_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn climate_sim_r2(Array[Double], Array[Double]) -> Double
+
+pub fn climate_sim_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn climate_sim_series_add(Climate_simSeries, Climate_simSeries) -> Climate_simSeries
+
+pub fn climate_sim_series_len(Climate_simSeries) -> Int32
+
+pub fn climate_sim_series_max(Climate_simSeries) -> Double
+
+pub fn climate_sim_series_mean(Climate_simSeries) -> Double
+
+pub fn climate_sim_series_min(Climate_simSeries) -> Double
+
+pub fn climate_sim_series_scale(Climate_simSeries, Double) -> Climate_simSeries
+
+pub fn climate_sim_series_std(Climate_simSeries) -> Double
+
+pub fn climate_sim_series_sum(Climate_simSeries) -> Double
+
+pub fn climate_sim_series_to_string(Climate_simSeries) -> String
+
+pub fn climate_sim_series_var(Climate_simSeries) -> Double
+
+pub fn climate_sim_std(Array[Double]) -> Double
+
+pub fn climate_sim_var(Array[Double]) -> Double
+
+pub fn climate_sim_vector_add(Climate_simVector, Climate_simVector) -> Climate_simVector
+
+pub fn climate_sim_vector_dist(Climate_simVector, Climate_simVector) -> Double
+
+pub fn climate_sim_vector_dot(Climate_simVector, Climate_simVector) -> Double
+
+pub fn climate_sim_vector_norm(Climate_simVector) -> Double
+
+pub fn climate_sim_vector_normalize(Climate_simVector) -> Climate_simVector
+
+pub fn climate_sim_vector_scale(Climate_simVector, Double) -> Climate_simVector
+
+pub fn climate_sim_vector_sub(Climate_simVector, Climate_simVector) -> Climate_simVector
+
+pub fn climate_sim_vector_to_string(Climate_simVector) -> String
+
+pub fn climate_sim_vector_zero(Int32) -> Climate_simVector
+
+// Errors
+
+// Types and methods
+pub struct Climate_simMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Climate_simPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Climate_simSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Climate_simVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

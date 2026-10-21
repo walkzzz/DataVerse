@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/finance_pricing_monte_carlo"
+
+// Values
+pub fn finance_pricing_monte_carlo_buffer_make(Int32) -> FinancepricingmontecarloBuffer
+
+pub fn finance_pricing_monte_carlo_cluster_make(Int32) -> FinancepricingmontecarloCluster
+
+pub fn finance_pricing_monte_carlo_cursor_make(Int32) -> FinancepricingmontecarloCursor
+
+pub fn finance_pricing_monte_carlo_edge_make(Int32) -> FinancepricingmontecarloEdge
+
+pub fn finance_pricing_monte_carlo_frame_make(Int32) -> FinancepricingmontecarloFrame
+
+pub fn finance_pricing_monte_carlo_graphn_make(Int32) -> FinancepricingmontecarloGraphN
+
+pub fn finance_pricing_monte_carlo_layer_make(Int32) -> FinancepricingmontecarloLayer
+
+pub fn finance_pricing_monte_carlo_make_matrix(Int32, Int32, Double) -> FinancepricingmontecarloMatrix
+
+pub fn finance_pricing_monte_carlo_make_point(Double, Double) -> FinancepricingmontecarloPoint
+
+pub fn finance_pricing_monte_carlo_make_point3(Double, Double, Double) -> FinancepricingmontecarloPoint
+
+pub fn finance_pricing_monte_carlo_make_series(Array[Double], String) -> FinancepricingmontecarloSeries
+
+pub fn finance_pricing_monte_carlo_make_vector(Array[Double]) -> FinancepricingmontecarloVector
+
+pub fn finance_pricing_monte_carlo_matrix_identity(Int32) -> FinancepricingmontecarloMatrix
+
+pub fn finance_pricing_monte_carlo_model_make(Int32) -> FinancepricingmontecarloModel
+
+pub fn finance_pricing_monte_carlo_node_make(Int32) -> FinancepricingmontecarloNode
+
+pub fn finance_pricing_monte_carlo_path_make(Int32) -> FinancepricingmontecarloPath
+
+pub fn finance_pricing_monte_carlo_range_make(Int32) -> FinancepricingmontecarloRange
+
+pub fn finance_pricing_monte_carlo_slice_make(Int32) -> FinancepricingmontecarloSlice
+
+pub fn finance_pricing_monte_carlo_table_make(Int32) -> FinancepricingmontecarloTable
+
+pub fn finance_pricing_monte_carlo_vector_zero(Int32) -> FinancepricingmontecarloVector
+
+pub fn finance_pricing_monte_carlo_view_make(Int32) -> FinancepricingmontecarloView
+
+// Errors
+
+// Types and methods
+pub(all) struct FinancepricingmontecarloBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingmontecarloBuffer::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloBuffer::copy(Self) -> Self
+pub fn FinancepricingmontecarloBuffer::fill(Self, Double) -> Self
+pub fn FinancepricingmontecarloBuffer::get(Self, Int32) -> Double
+pub fn FinancepricingmontecarloBuffer::len(Self) -> Int32
+pub fn FinancepricingmontecarloBuffer::max(Self) -> Double
+pub fn FinancepricingmontecarloBuffer::mean(Self) -> Double
+pub fn FinancepricingmontecarloBuffer::min(Self) -> Double
+pub fn FinancepricingmontecarloBuffer::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloBuffer::set(Self, Int32, Double) -> Self
+pub fn FinancepricingmontecarloBuffer::sum(Self) -> Double
+pub fn FinancepricingmontecarloBuffer::to_string(Self) -> String
+
+pub(all) struct FinancepricingmontecarloCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingmontecarloCluster::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloCluster::copy(Self) -> Self
+pub fn FinancepricingmontecarloCluster::fill(Self, Double) -> Self
+pub fn FinancepricingmontecarloCluster::get(Self, Int32) -> Double
+pub fn FinancepricingmontecarloCluster::len(Self) -> Int32
+pub fn FinancepricingmontecarloCluster::max(Self) -> Double
+pub fn FinancepricingmontecarloCluster::mean(Self) -> Double
+pub fn FinancepricingmontecarloCluster::min(Self) -> Double
+pub fn FinancepricingmontecarloCluster::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloCluster::set(Self, Int32, Double) -> Self
+pub fn FinancepricingmontecarloCluster::sum(Self) -> Double
+pub fn FinancepricingmontecarloCluster::to_string(Self) -> String
+
+pub(all) struct FinancepricingmontecarloCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingmontecarloCursor::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloCursor::copy(Self) -> Self
+pub fn FinancepricingmontecarloCursor::fill(Self, Double) -> Self
+pub fn FinancepricingmontecarloCursor::get(Self, Int32) -> Double
+pub fn FinancepricingmontecarloCursor::len(Self) -> Int32
+pub fn FinancepricingmontecarloCursor::max(Self) -> Double
+pub fn FinancepricingmontecarloCursor::mean(Self) -> Double
+pub fn FinancepricingmontecarloCursor::min(Self) -> Double
+pub fn FinancepricingmontecarloCursor::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloCursor::set(Self, Int32, Double) -> Self
+pub fn FinancepricingmontecarloCursor::sum(Self) -> Double
+pub fn FinancepricingmontecarloCursor::to_string(Self) -> String
+
+pub(all) struct FinancepricingmontecarloEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingmontecarloEdge::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloEdge::copy(Self) -> Self
+pub fn FinancepricingmontecarloEdge::fill(Self, Double) -> Self
+pub fn FinancepricingmontecarloEdge::get(Self, Int32) -> Double
+pub fn FinancepricingmontecarloEdge::len(Self) -> Int32
+pub fn FinancepricingmontecarloEdge::max(Self) -> Double
+pub fn FinancepricingmontecarloEdge::mean(Self) -> Double
+pub fn FinancepricingmontecarloEdge::min(Self) -> Double
+pub fn FinancepricingmontecarloEdge::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloEdge::set(Self, Int32, Double) -> Self
+pub fn FinancepricingmontecarloEdge::sum(Self) -> Double
+pub fn FinancepricingmontecarloEdge::to_string(Self) -> String
+
+pub(all) struct FinancepricingmontecarloFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingmontecarloFrame::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloFrame::copy(Self) -> Self
+pub fn FinancepricingmontecarloFrame::fill(Self, Double) -> Self
+pub fn FinancepricingmontecarloFrame::get(Self, Int32) -> Double
+pub fn FinancepricingmontecarloFrame::len(Self) -> Int32
+pub fn FinancepricingmontecarloFrame::max(Self) -> Double
+pub fn FinancepricingmontecarloFrame::mean(Self) -> Double
+pub fn FinancepricingmontecarloFrame::min(Self) -> Double
+pub fn FinancepricingmontecarloFrame::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloFrame::set(Self, Int32, Double) -> Self
+pub fn FinancepricingmontecarloFrame::sum(Self) -> Double
+pub fn FinancepricingmontecarloFrame::to_string(Self) -> String
+
+pub(all) struct FinancepricingmontecarloGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingmontecarloGraphN::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloGraphN::copy(Self) -> Self
+pub fn FinancepricingmontecarloGraphN::fill(Self, Double) -> Self
+pub fn FinancepricingmontecarloGraphN::get(Self, Int32) -> Double
+pub fn FinancepricingmontecarloGraphN::len(Self) -> Int32
+pub fn FinancepricingmontecarloGraphN::max(Self) -> Double
+pub fn FinancepricingmontecarloGraphN::mean(Self) -> Double
+pub fn FinancepricingmontecarloGraphN::min(Self) -> Double
+pub fn FinancepricingmontecarloGraphN::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloGraphN::set(Self, Int32, Double) -> Self
+pub fn FinancepricingmontecarloGraphN::sum(Self) -> Double
+pub fn FinancepricingmontecarloGraphN::to_string(Self) -> String
+
+pub(all) struct FinancepricingmontecarloLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingmontecarloLayer::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloLayer::copy(Self) -> Self
+pub fn FinancepricingmontecarloLayer::fill(Self, Double) -> Self
+pub fn FinancepricingmontecarloLayer::get(Self, Int32) -> Double
+pub fn FinancepricingmontecarloLayer::len(Self) -> Int32
+pub fn FinancepricingmontecarloLayer::max(Self) -> Double
+pub fn FinancepricingmontecarloLayer::mean(Self) -> Double
+pub fn FinancepricingmontecarloLayer::min(Self) -> Double
+pub fn FinancepricingmontecarloLayer::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloLayer::set(Self, Int32, Double) -> Self
+pub fn FinancepricingmontecarloLayer::sum(Self) -> Double
+pub fn FinancepricingmontecarloLayer::to_string(Self) -> String
+
+pub(all) struct FinancepricingmontecarloMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn FinancepricingmontecarloMatrix::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloMatrix::det(Self) -> Double
+pub fn FinancepricingmontecarloMatrix::get(Self, Int32, Int32) -> Double
+pub fn FinancepricingmontecarloMatrix::multiply(Self, Self) -> Self
+pub fn FinancepricingmontecarloMatrix::norm(Self) -> Double
+pub fn FinancepricingmontecarloMatrix::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloMatrix::to_string(Self) -> String
+pub fn FinancepricingmontecarloMatrix::trace(Self) -> Double
+pub fn FinancepricingmontecarloMatrix::transpose(Self) -> Self
+
+pub(all) struct FinancepricingmontecarloModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingmontecarloModel::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloModel::copy(Self) -> Self
+pub fn FinancepricingmontecarloModel::fill(Self, Double) -> Self
+pub fn FinancepricingmontecarloModel::get(Self, Int32) -> Double
+pub fn FinancepricingmontecarloModel::len(Self) -> Int32
+pub fn FinancepricingmontecarloModel::max(Self) -> Double
+pub fn FinancepricingmontecarloModel::mean(Self) -> Double
+pub fn FinancepricingmontecarloModel::min(Self) -> Double
+pub fn FinancepricingmontecarloModel::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloModel::set(Self, Int32, Double) -> Self
+pub fn FinancepricingmontecarloModel::sum(Self) -> Double
+pub fn FinancepricingmontecarloModel::to_string(Self) -> String
+
+pub(all) struct FinancepricingmontecarloNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingmontecarloNode::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloNode::copy(Self) -> Self
+pub fn FinancepricingmontecarloNode::fill(Self, Double) -> Self
+pub fn FinancepricingmontecarloNode::get(Self, Int32) -> Double
+pub fn FinancepricingmontecarloNode::len(Self) -> Int32
+pub fn FinancepricingmontecarloNode::max(Self) -> Double
+pub fn FinancepricingmontecarloNode::mean(Self) -> Double
+pub fn FinancepricingmontecarloNode::min(Self) -> Double
+pub fn FinancepricingmontecarloNode::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloNode::set(Self, Int32, Double) -> Self
+pub fn FinancepricingmontecarloNode::sum(Self) -> Double
+pub fn FinancepricingmontecarloNode::to_string(Self) -> String
+
+pub(all) struct FinancepricingmontecarloPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingmontecarloPath::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloPath::copy(Self) -> Self
+pub fn FinancepricingmontecarloPath::fill(Self, Double) -> Self
+pub fn FinancepricingmontecarloPath::get(Self, Int32) -> Double
+pub fn FinancepricingmontecarloPath::len(Self) -> Int32
+pub fn FinancepricingmontecarloPath::max(Self) -> Double
+pub fn FinancepricingmontecarloPath::mean(Self) -> Double
+pub fn FinancepricingmontecarloPath::min(Self) -> Double
+pub fn FinancepricingmontecarloPath::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloPath::set(Self, Int32, Double) -> Self
+pub fn FinancepricingmontecarloPath::sum(Self) -> Double
+pub fn FinancepricingmontecarloPath::to_string(Self) -> String
+
+pub(all) struct FinancepricingmontecarloPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn FinancepricingmontecarloPoint::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloPoint::cross(Self, Self) -> Self
+pub fn FinancepricingmontecarloPoint::dist(Self, Self) -> Double
+pub fn FinancepricingmontecarloPoint::dot(Self, Self) -> Double
+pub fn FinancepricingmontecarloPoint::label(Self) -> Int32
+pub fn FinancepricingmontecarloPoint::lerp(Self, Self, Double) -> Self
+pub fn FinancepricingmontecarloPoint::mid(Self, Self) -> Self
+pub fn FinancepricingmontecarloPoint::negate(Self) -> Self
+pub fn FinancepricingmontecarloPoint::norm(Self) -> Double
+pub fn FinancepricingmontecarloPoint::normalize(Self) -> Self
+pub fn FinancepricingmontecarloPoint::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloPoint::sub(Self, Self) -> Self
+pub fn FinancepricingmontecarloPoint::to_string(Self) -> String
+pub fn FinancepricingmontecarloPoint::x(Self) -> Double
+pub fn FinancepricingmontecarloPoint::y(Self) -> Double
+pub fn FinancepricingmontecarloPoint::z(Self) -> Double
+
+pub(all) struct FinancepricingmontecarloRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingmontecarloRange::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloRange::copy(Self) -> Self
+pub fn FinancepricingmontecarloRange::fill(Self, Double) -> Self
+pub fn FinancepricingmontecarloRange::get(Self, Int32) -> Double
+pub fn FinancepricingmontecarloRange::len(Self) -> Int32
+pub fn FinancepricingmontecarloRange::max(Self) -> Double
+pub fn FinancepricingmontecarloRange::mean(Self) -> Double
+pub fn FinancepricingmontecarloRange::min(Self) -> Double
+pub fn FinancepricingmontecarloRange::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloRange::set(Self, Int32, Double) -> Self
+pub fn FinancepricingmontecarloRange::sum(Self) -> Double
+pub fn FinancepricingmontecarloRange::to_string(Self) -> String
+
+pub(all) struct FinancepricingmontecarloSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn FinancepricingmontecarloSeries::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloSeries::cumsum(Self) -> Self
+pub fn FinancepricingmontecarloSeries::len(Self) -> Int32
+pub fn FinancepricingmontecarloSeries::max(Self) -> Double
+pub fn FinancepricingmontecarloSeries::mean(Self) -> Double
+pub fn FinancepricingmontecarloSeries::median(Self) -> Double
+pub fn FinancepricingmontecarloSeries::min(Self) -> Double
+pub fn FinancepricingmontecarloSeries::normalize(Self) -> Self
+pub fn FinancepricingmontecarloSeries::range(Self) -> Double
+pub fn FinancepricingmontecarloSeries::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloSeries::std(Self) -> Double
+pub fn FinancepricingmontecarloSeries::sub(Self, Self) -> Self
+pub fn FinancepricingmontecarloSeries::sum(Self) -> Double
+pub fn FinancepricingmontecarloSeries::to_string(Self) -> String
+pub fn FinancepricingmontecarloSeries::variance(Self) -> Double
+
+pub(all) struct FinancepricingmontecarloSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingmontecarloSlice::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloSlice::copy(Self) -> Self
+pub fn FinancepricingmontecarloSlice::fill(Self, Double) -> Self
+pub fn FinancepricingmontecarloSlice::get(Self, Int32) -> Double
+pub fn FinancepricingmontecarloSlice::len(Self) -> Int32
+pub fn FinancepricingmontecarloSlice::max(Self) -> Double
+pub fn FinancepricingmontecarloSlice::mean(Self) -> Double
+pub fn FinancepricingmontecarloSlice::min(Self) -> Double
+pub fn FinancepricingmontecarloSlice::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloSlice::set(Self, Int32, Double) -> Self
+pub fn FinancepricingmontecarloSlice::sum(Self) -> Double
+pub fn FinancepricingmontecarloSlice::to_string(Self) -> String
+
+pub(all) struct FinancepricingmontecarloTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingmontecarloTable::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloTable::copy(Self) -> Self
+pub fn FinancepricingmontecarloTable::fill(Self, Double) -> Self
+pub fn FinancepricingmontecarloTable::get(Self, Int32) -> Double
+pub fn FinancepricingmontecarloTable::len(Self) -> Int32
+pub fn FinancepricingmontecarloTable::max(Self) -> Double
+pub fn FinancepricingmontecarloTable::mean(Self) -> Double
+pub fn FinancepricingmontecarloTable::min(Self) -> Double
+pub fn FinancepricingmontecarloTable::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloTable::set(Self, Int32, Double) -> Self
+pub fn FinancepricingmontecarloTable::sum(Self) -> Double
+pub fn FinancepricingmontecarloTable::to_string(Self) -> String
+
+pub(all) struct FinancepricingmontecarloVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn FinancepricingmontecarloVector::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloVector::dist(Self, Self) -> Double
+pub fn FinancepricingmontecarloVector::dot(Self, Self) -> Double
+pub fn FinancepricingmontecarloVector::norm(Self) -> Double
+pub fn FinancepricingmontecarloVector::normalize(Self) -> Self
+pub fn FinancepricingmontecarloVector::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloVector::sub(Self, Self) -> Self
+pub fn FinancepricingmontecarloVector::to_string(Self) -> String
+
+pub(all) struct FinancepricingmontecarloView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingmontecarloView::add(Self, Self) -> Self
+pub fn FinancepricingmontecarloView::copy(Self) -> Self
+pub fn FinancepricingmontecarloView::fill(Self, Double) -> Self
+pub fn FinancepricingmontecarloView::get(Self, Int32) -> Double
+pub fn FinancepricingmontecarloView::len(Self) -> Int32
+pub fn FinancepricingmontecarloView::max(Self) -> Double
+pub fn FinancepricingmontecarloView::mean(Self) -> Double
+pub fn FinancepricingmontecarloView::min(Self) -> Double
+pub fn FinancepricingmontecarloView::scale(Self, Double) -> Self
+pub fn FinancepricingmontecarloView::set(Self, Int32, Double) -> Self
+pub fn FinancepricingmontecarloView::sum(Self) -> Double
+pub fn FinancepricingmontecarloView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

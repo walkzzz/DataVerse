@@ -1,0 +1,182 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/agent_eval"
+
+// Values
+pub fn agent_eval_id() -> String
+
+pub fn auto_eval_rubric(AutoEval) -> String
+
+pub fn auto_eval_score(AutoEval) -> Double
+
+pub fn benchmark_compare(BenchmarkResult, BenchmarkResult) -> String
+
+pub fn benchmark_run(BenchmarkAgent, Array[TaskResult]) -> BenchmarkResult
+
+pub fn eval_accuracy_agent(Array[String], Array[String]) -> Double
+
+pub fn eval_api_calls(Array[TaskResult]) -> Int32
+
+pub fn eval_bias_agent(Array[(String, Double)]) -> Double
+
+pub fn eval_coherence(Array[String]) -> Double
+
+pub fn eval_conversation(MultiTurnDialog) -> Double
+
+pub fn eval_cost_agent(Array[TaskResult]) -> Double
+
+pub fn eval_creative(Array[String]) -> Double
+
+pub fn eval_dialog_quality(MultiTurnDialog) -> Double
+
+pub fn eval_diversity(Array[String]) -> Double
+
+pub fn eval_efficiency(Array[TaskResult]) -> Double
+
+pub fn eval_factual_accuracy(Array[Bool]) -> Double
+
+pub fn eval_feedback_score(Array[Double]) -> Double
+
+pub fn eval_latency(Array[TaskResult]) -> Double
+
+pub fn eval_memory_use(Array[Bool]) -> Double
+
+pub fn eval_multi_turn(MultiTurnDialog) -> Double
+
+pub fn eval_novelty(Array[String], Array[String]) -> Double
+
+pub fn eval_planning_quality(Array[String], Array[String]) -> Double
+
+pub fn eval_reasoning_quality(Array[String], Array[String]) -> Double
+
+pub fn eval_safety_agent(Array[Bool]) -> Double
+
+pub fn eval_task_completion(Array[TaskResult]) -> Double
+
+pub fn eval_task_success(Array[TaskResult]) -> Double
+
+pub fn eval_token_usage(Array[TaskResult]) -> Int32
+
+pub fn eval_tool_use(Array[Bool], Int32) -> Double
+
+pub fn eval_toxicity_agent(Array[Double]) -> Double
+
+pub fn eval_user_satisfaction(Array[Int32], Int32) -> Double
+
+pub fn human_eval_agreement(Array[Int32], Array[Int32]) -> Double
+
+pub fn human_eval_score(HumanEval) -> Double
+
+pub fn leaderboard_rank(Leaderboard, String) -> Int32
+
+pub fn leaderboard_update(Leaderboard, LeaderboardEntry) -> Leaderboard
+
+pub fn make_auto_eval(Array[(String, Double)], Array[Double]) -> AutoEval
+
+pub fn make_benchmark_agent(String, Array[String], Int32) -> BenchmarkAgent
+
+pub fn make_eval_config(String, Array[String], Double, Int32, Int32) -> EvalConfig
+
+pub fn make_human_eval(Array[HumanEvalItem], Int32) -> HumanEval
+
+pub fn make_leaderboard(String, Array[LeaderboardEntry]) -> Leaderboard
+
+pub fn make_test_suite(String, Array[TestCase]) -> TestSuite
+
+pub fn test_case(String, String, String) -> TestCase
+
+pub fn test_evaluate(Array[TestRunResult]) -> Double
+
+pub fn test_run(TestSuite, (String) -> String) -> Array[TestRunResult]
+
+// Errors
+
+// Types and methods
+pub struct AutoEval {
+  rubric : Array[(String, Double)]
+  weights : Array[Double]
+}
+
+pub struct BenchmarkAgent {
+  name : String
+  tasks : Array[String]
+  iterations : Int32
+}
+
+pub struct BenchmarkResult {
+  name : String
+  avg_latency : Double
+  avg_cost : Double
+  success_rate : Double
+}
+
+pub struct DialogTurn {
+  role : String
+  content : String
+  latency : Double
+}
+
+pub struct EvalConfig {
+  name : String
+  metrics : Array[String]
+  threshold : Double
+  sample_size : Int32
+  seed : Int32
+}
+
+pub struct HumanEval {
+  items : Array[HumanEvalItem]
+  max_rating : Int32
+}
+
+pub struct HumanEvalItem {
+  sample_id : Int32
+  output : String
+  rating : Int32
+}
+
+pub struct Leaderboard {
+  name : String
+  entries : Array[LeaderboardEntry]
+}
+
+pub struct LeaderboardEntry {
+  agent_name : String
+  score : Double
+  rank : Int32
+}
+
+pub struct MultiTurnDialog {
+  id : String
+  turns : Array[DialogTurn]
+}
+
+pub struct TaskResult {
+  task_id : String
+  success : Bool
+  completion : Double
+  latency_ms : Double
+  cost : Double
+  tokens : Int32
+  api_calls : Int32
+}
+
+pub struct TestCase {
+  name : String
+  input : String
+  expected : String
+}
+
+pub struct TestRunResult {
+  name : String
+  passed : Bool
+  actual : String
+}
+
+pub struct TestSuite {
+  name : String
+  cases : Array[TestCase]
+}
+
+// Type aliases
+
+// Traits

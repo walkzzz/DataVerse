@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/epidemic_sim"
+
+// Values
+pub fn epidemic_sim_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn epidemic_sim_corr(Array[Double], Array[Double]) -> Double
+
+pub fn epidemic_sim_cov(Array[Double], Array[Double]) -> Double
+
+pub fn epidemic_sim_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn epidemic_sim_mae(Array[Double], Array[Double]) -> Double
+
+pub fn epidemic_sim_make_labeled_point(Double, Double, Int32) -> Epidemic_simPoint
+
+pub fn epidemic_sim_make_matrix(Int32, Int32, Double) -> Epidemic_simMatrix
+
+pub fn epidemic_sim_make_point(Double, Double) -> Epidemic_simPoint
+
+pub fn epidemic_sim_make_series(Array[Double], String) -> Epidemic_simSeries
+
+pub fn epidemic_sim_make_vector(Array[Double]) -> Epidemic_simVector
+
+pub fn epidemic_sim_matrix_add(Epidemic_simMatrix, Epidemic_simMatrix) -> Epidemic_simMatrix
+
+pub fn epidemic_sim_matrix_get(Epidemic_simMatrix, Int32, Int32) -> Double
+
+pub fn epidemic_sim_matrix_identity(Int32) -> Epidemic_simMatrix
+
+pub fn epidemic_sim_matrix_multiply(Epidemic_simMatrix, Epidemic_simMatrix) -> Epidemic_simMatrix
+
+pub fn epidemic_sim_matrix_norm(Epidemic_simMatrix) -> Double
+
+pub fn epidemic_sim_matrix_scale(Epidemic_simMatrix, Double) -> Epidemic_simMatrix
+
+pub fn epidemic_sim_matrix_to_string(Epidemic_simMatrix) -> String
+
+pub fn epidemic_sim_matrix_trace(Epidemic_simMatrix) -> Double
+
+pub fn epidemic_sim_matrix_transpose(Epidemic_simMatrix) -> Epidemic_simMatrix
+
+pub fn epidemic_sim_mse(Array[Double], Array[Double]) -> Double
+
+pub fn epidemic_sim_point_add(Epidemic_simPoint, Epidemic_simPoint) -> Epidemic_simPoint
+
+pub fn epidemic_sim_point_dist(Epidemic_simPoint, Epidemic_simPoint) -> Double
+
+pub fn epidemic_sim_point_dot(Epidemic_simPoint, Epidemic_simPoint) -> Double
+
+pub fn epidemic_sim_point_label(Epidemic_simPoint) -> Int32
+
+pub fn epidemic_sim_point_norm(Epidemic_simPoint) -> Double
+
+pub fn epidemic_sim_point_scale(Epidemic_simPoint, Double) -> Epidemic_simPoint
+
+pub fn epidemic_sim_point_sub(Epidemic_simPoint, Epidemic_simPoint) -> Epidemic_simPoint
+
+pub fn epidemic_sim_point_to_string(Epidemic_simPoint) -> String
+
+pub fn epidemic_sim_point_x(Epidemic_simPoint) -> Double
+
+pub fn epidemic_sim_point_y(Epidemic_simPoint) -> Double
+
+pub fn epidemic_sim_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn epidemic_sim_r2(Array[Double], Array[Double]) -> Double
+
+pub fn epidemic_sim_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn epidemic_sim_series_add(Epidemic_simSeries, Epidemic_simSeries) -> Epidemic_simSeries
+
+pub fn epidemic_sim_series_len(Epidemic_simSeries) -> Int32
+
+pub fn epidemic_sim_series_max(Epidemic_simSeries) -> Double
+
+pub fn epidemic_sim_series_mean(Epidemic_simSeries) -> Double
+
+pub fn epidemic_sim_series_min(Epidemic_simSeries) -> Double
+
+pub fn epidemic_sim_series_scale(Epidemic_simSeries, Double) -> Epidemic_simSeries
+
+pub fn epidemic_sim_series_std(Epidemic_simSeries) -> Double
+
+pub fn epidemic_sim_series_sum(Epidemic_simSeries) -> Double
+
+pub fn epidemic_sim_series_to_string(Epidemic_simSeries) -> String
+
+pub fn epidemic_sim_series_var(Epidemic_simSeries) -> Double
+
+pub fn epidemic_sim_std(Array[Double]) -> Double
+
+pub fn epidemic_sim_var(Array[Double]) -> Double
+
+pub fn epidemic_sim_vector_add(Epidemic_simVector, Epidemic_simVector) -> Epidemic_simVector
+
+pub fn epidemic_sim_vector_dist(Epidemic_simVector, Epidemic_simVector) -> Double
+
+pub fn epidemic_sim_vector_dot(Epidemic_simVector, Epidemic_simVector) -> Double
+
+pub fn epidemic_sim_vector_norm(Epidemic_simVector) -> Double
+
+pub fn epidemic_sim_vector_normalize(Epidemic_simVector) -> Epidemic_simVector
+
+pub fn epidemic_sim_vector_scale(Epidemic_simVector, Double) -> Epidemic_simVector
+
+pub fn epidemic_sim_vector_sub(Epidemic_simVector, Epidemic_simVector) -> Epidemic_simVector
+
+pub fn epidemic_sim_vector_to_string(Epidemic_simVector) -> String
+
+pub fn epidemic_sim_vector_zero(Int32) -> Epidemic_simVector
+
+// Errors
+
+// Types and methods
+pub struct Epidemic_simMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Epidemic_simPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Epidemic_simSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Epidemic_simVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

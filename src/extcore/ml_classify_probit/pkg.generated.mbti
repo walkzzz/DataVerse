@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_classify_probit"
+
+// Values
+pub fn ml_classify_probit_buffer_make(Int32) -> MlclassifyprobitBuffer
+
+pub fn ml_classify_probit_cluster_make(Int32) -> MlclassifyprobitCluster
+
+pub fn ml_classify_probit_cursor_make(Int32) -> MlclassifyprobitCursor
+
+pub fn ml_classify_probit_edge_make(Int32) -> MlclassifyprobitEdge
+
+pub fn ml_classify_probit_frame_make(Int32) -> MlclassifyprobitFrame
+
+pub fn ml_classify_probit_graphn_make(Int32) -> MlclassifyprobitGraphN
+
+pub fn ml_classify_probit_layer_make(Int32) -> MlclassifyprobitLayer
+
+pub fn ml_classify_probit_make_matrix(Int32, Int32, Double) -> MlclassifyprobitMatrix
+
+pub fn ml_classify_probit_make_point(Double, Double) -> MlclassifyprobitPoint
+
+pub fn ml_classify_probit_make_point3(Double, Double, Double) -> MlclassifyprobitPoint
+
+pub fn ml_classify_probit_make_series(Array[Double], String) -> MlclassifyprobitSeries
+
+pub fn ml_classify_probit_make_vector(Array[Double]) -> MlclassifyprobitVector
+
+pub fn ml_classify_probit_matrix_identity(Int32) -> MlclassifyprobitMatrix
+
+pub fn ml_classify_probit_model_make(Int32) -> MlclassifyprobitModel
+
+pub fn ml_classify_probit_node_make(Int32) -> MlclassifyprobitNode
+
+pub fn ml_classify_probit_path_make(Int32) -> MlclassifyprobitPath
+
+pub fn ml_classify_probit_range_make(Int32) -> MlclassifyprobitRange
+
+pub fn ml_classify_probit_slice_make(Int32) -> MlclassifyprobitSlice
+
+pub fn ml_classify_probit_table_make(Int32) -> MlclassifyprobitTable
+
+pub fn ml_classify_probit_vector_zero(Int32) -> MlclassifyprobitVector
+
+pub fn ml_classify_probit_view_make(Int32) -> MlclassifyprobitView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlclassifyprobitBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyprobitBuffer::add(Self, Self) -> Self
+pub fn MlclassifyprobitBuffer::copy(Self) -> Self
+pub fn MlclassifyprobitBuffer::fill(Self, Double) -> Self
+pub fn MlclassifyprobitBuffer::get(Self, Int32) -> Double
+pub fn MlclassifyprobitBuffer::len(Self) -> Int32
+pub fn MlclassifyprobitBuffer::max(Self) -> Double
+pub fn MlclassifyprobitBuffer::mean(Self) -> Double
+pub fn MlclassifyprobitBuffer::min(Self) -> Double
+pub fn MlclassifyprobitBuffer::scale(Self, Double) -> Self
+pub fn MlclassifyprobitBuffer::set(Self, Int32, Double) -> Self
+pub fn MlclassifyprobitBuffer::sum(Self) -> Double
+pub fn MlclassifyprobitBuffer::to_string(Self) -> String
+
+pub(all) struct MlclassifyprobitCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyprobitCluster::add(Self, Self) -> Self
+pub fn MlclassifyprobitCluster::copy(Self) -> Self
+pub fn MlclassifyprobitCluster::fill(Self, Double) -> Self
+pub fn MlclassifyprobitCluster::get(Self, Int32) -> Double
+pub fn MlclassifyprobitCluster::len(Self) -> Int32
+pub fn MlclassifyprobitCluster::max(Self) -> Double
+pub fn MlclassifyprobitCluster::mean(Self) -> Double
+pub fn MlclassifyprobitCluster::min(Self) -> Double
+pub fn MlclassifyprobitCluster::scale(Self, Double) -> Self
+pub fn MlclassifyprobitCluster::set(Self, Int32, Double) -> Self
+pub fn MlclassifyprobitCluster::sum(Self) -> Double
+pub fn MlclassifyprobitCluster::to_string(Self) -> String
+
+pub(all) struct MlclassifyprobitCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyprobitCursor::add(Self, Self) -> Self
+pub fn MlclassifyprobitCursor::copy(Self) -> Self
+pub fn MlclassifyprobitCursor::fill(Self, Double) -> Self
+pub fn MlclassifyprobitCursor::get(Self, Int32) -> Double
+pub fn MlclassifyprobitCursor::len(Self) -> Int32
+pub fn MlclassifyprobitCursor::max(Self) -> Double
+pub fn MlclassifyprobitCursor::mean(Self) -> Double
+pub fn MlclassifyprobitCursor::min(Self) -> Double
+pub fn MlclassifyprobitCursor::scale(Self, Double) -> Self
+pub fn MlclassifyprobitCursor::set(Self, Int32, Double) -> Self
+pub fn MlclassifyprobitCursor::sum(Self) -> Double
+pub fn MlclassifyprobitCursor::to_string(Self) -> String
+
+pub(all) struct MlclassifyprobitEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyprobitEdge::add(Self, Self) -> Self
+pub fn MlclassifyprobitEdge::copy(Self) -> Self
+pub fn MlclassifyprobitEdge::fill(Self, Double) -> Self
+pub fn MlclassifyprobitEdge::get(Self, Int32) -> Double
+pub fn MlclassifyprobitEdge::len(Self) -> Int32
+pub fn MlclassifyprobitEdge::max(Self) -> Double
+pub fn MlclassifyprobitEdge::mean(Self) -> Double
+pub fn MlclassifyprobitEdge::min(Self) -> Double
+pub fn MlclassifyprobitEdge::scale(Self, Double) -> Self
+pub fn MlclassifyprobitEdge::set(Self, Int32, Double) -> Self
+pub fn MlclassifyprobitEdge::sum(Self) -> Double
+pub fn MlclassifyprobitEdge::to_string(Self) -> String
+
+pub(all) struct MlclassifyprobitFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyprobitFrame::add(Self, Self) -> Self
+pub fn MlclassifyprobitFrame::copy(Self) -> Self
+pub fn MlclassifyprobitFrame::fill(Self, Double) -> Self
+pub fn MlclassifyprobitFrame::get(Self, Int32) -> Double
+pub fn MlclassifyprobitFrame::len(Self) -> Int32
+pub fn MlclassifyprobitFrame::max(Self) -> Double
+pub fn MlclassifyprobitFrame::mean(Self) -> Double
+pub fn MlclassifyprobitFrame::min(Self) -> Double
+pub fn MlclassifyprobitFrame::scale(Self, Double) -> Self
+pub fn MlclassifyprobitFrame::set(Self, Int32, Double) -> Self
+pub fn MlclassifyprobitFrame::sum(Self) -> Double
+pub fn MlclassifyprobitFrame::to_string(Self) -> String
+
+pub(all) struct MlclassifyprobitGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyprobitGraphN::add(Self, Self) -> Self
+pub fn MlclassifyprobitGraphN::copy(Self) -> Self
+pub fn MlclassifyprobitGraphN::fill(Self, Double) -> Self
+pub fn MlclassifyprobitGraphN::get(Self, Int32) -> Double
+pub fn MlclassifyprobitGraphN::len(Self) -> Int32
+pub fn MlclassifyprobitGraphN::max(Self) -> Double
+pub fn MlclassifyprobitGraphN::mean(Self) -> Double
+pub fn MlclassifyprobitGraphN::min(Self) -> Double
+pub fn MlclassifyprobitGraphN::scale(Self, Double) -> Self
+pub fn MlclassifyprobitGraphN::set(Self, Int32, Double) -> Self
+pub fn MlclassifyprobitGraphN::sum(Self) -> Double
+pub fn MlclassifyprobitGraphN::to_string(Self) -> String
+
+pub(all) struct MlclassifyprobitLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyprobitLayer::add(Self, Self) -> Self
+pub fn MlclassifyprobitLayer::copy(Self) -> Self
+pub fn MlclassifyprobitLayer::fill(Self, Double) -> Self
+pub fn MlclassifyprobitLayer::get(Self, Int32) -> Double
+pub fn MlclassifyprobitLayer::len(Self) -> Int32
+pub fn MlclassifyprobitLayer::max(Self) -> Double
+pub fn MlclassifyprobitLayer::mean(Self) -> Double
+pub fn MlclassifyprobitLayer::min(Self) -> Double
+pub fn MlclassifyprobitLayer::scale(Self, Double) -> Self
+pub fn MlclassifyprobitLayer::set(Self, Int32, Double) -> Self
+pub fn MlclassifyprobitLayer::sum(Self) -> Double
+pub fn MlclassifyprobitLayer::to_string(Self) -> String
+
+pub(all) struct MlclassifyprobitMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlclassifyprobitMatrix::add(Self, Self) -> Self
+pub fn MlclassifyprobitMatrix::det(Self) -> Double
+pub fn MlclassifyprobitMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlclassifyprobitMatrix::multiply(Self, Self) -> Self
+pub fn MlclassifyprobitMatrix::norm(Self) -> Double
+pub fn MlclassifyprobitMatrix::scale(Self, Double) -> Self
+pub fn MlclassifyprobitMatrix::to_string(Self) -> String
+pub fn MlclassifyprobitMatrix::trace(Self) -> Double
+pub fn MlclassifyprobitMatrix::transpose(Self) -> Self
+
+pub(all) struct MlclassifyprobitModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyprobitModel::add(Self, Self) -> Self
+pub fn MlclassifyprobitModel::copy(Self) -> Self
+pub fn MlclassifyprobitModel::fill(Self, Double) -> Self
+pub fn MlclassifyprobitModel::get(Self, Int32) -> Double
+pub fn MlclassifyprobitModel::len(Self) -> Int32
+pub fn MlclassifyprobitModel::max(Self) -> Double
+pub fn MlclassifyprobitModel::mean(Self) -> Double
+pub fn MlclassifyprobitModel::min(Self) -> Double
+pub fn MlclassifyprobitModel::scale(Self, Double) -> Self
+pub fn MlclassifyprobitModel::set(Self, Int32, Double) -> Self
+pub fn MlclassifyprobitModel::sum(Self) -> Double
+pub fn MlclassifyprobitModel::to_string(Self) -> String
+
+pub(all) struct MlclassifyprobitNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyprobitNode::add(Self, Self) -> Self
+pub fn MlclassifyprobitNode::copy(Self) -> Self
+pub fn MlclassifyprobitNode::fill(Self, Double) -> Self
+pub fn MlclassifyprobitNode::get(Self, Int32) -> Double
+pub fn MlclassifyprobitNode::len(Self) -> Int32
+pub fn MlclassifyprobitNode::max(Self) -> Double
+pub fn MlclassifyprobitNode::mean(Self) -> Double
+pub fn MlclassifyprobitNode::min(Self) -> Double
+pub fn MlclassifyprobitNode::scale(Self, Double) -> Self
+pub fn MlclassifyprobitNode::set(Self, Int32, Double) -> Self
+pub fn MlclassifyprobitNode::sum(Self) -> Double
+pub fn MlclassifyprobitNode::to_string(Self) -> String
+
+pub(all) struct MlclassifyprobitPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyprobitPath::add(Self, Self) -> Self
+pub fn MlclassifyprobitPath::copy(Self) -> Self
+pub fn MlclassifyprobitPath::fill(Self, Double) -> Self
+pub fn MlclassifyprobitPath::get(Self, Int32) -> Double
+pub fn MlclassifyprobitPath::len(Self) -> Int32
+pub fn MlclassifyprobitPath::max(Self) -> Double
+pub fn MlclassifyprobitPath::mean(Self) -> Double
+pub fn MlclassifyprobitPath::min(Self) -> Double
+pub fn MlclassifyprobitPath::scale(Self, Double) -> Self
+pub fn MlclassifyprobitPath::set(Self, Int32, Double) -> Self
+pub fn MlclassifyprobitPath::sum(Self) -> Double
+pub fn MlclassifyprobitPath::to_string(Self) -> String
+
+pub(all) struct MlclassifyprobitPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlclassifyprobitPoint::add(Self, Self) -> Self
+pub fn MlclassifyprobitPoint::cross(Self, Self) -> Self
+pub fn MlclassifyprobitPoint::dist(Self, Self) -> Double
+pub fn MlclassifyprobitPoint::dot(Self, Self) -> Double
+pub fn MlclassifyprobitPoint::label(Self) -> Int32
+pub fn MlclassifyprobitPoint::lerp(Self, Self, Double) -> Self
+pub fn MlclassifyprobitPoint::mid(Self, Self) -> Self
+pub fn MlclassifyprobitPoint::negate(Self) -> Self
+pub fn MlclassifyprobitPoint::norm(Self) -> Double
+pub fn MlclassifyprobitPoint::normalize(Self) -> Self
+pub fn MlclassifyprobitPoint::scale(Self, Double) -> Self
+pub fn MlclassifyprobitPoint::sub(Self, Self) -> Self
+pub fn MlclassifyprobitPoint::to_string(Self) -> String
+pub fn MlclassifyprobitPoint::x(Self) -> Double
+pub fn MlclassifyprobitPoint::y(Self) -> Double
+pub fn MlclassifyprobitPoint::z(Self) -> Double
+
+pub(all) struct MlclassifyprobitRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyprobitRange::add(Self, Self) -> Self
+pub fn MlclassifyprobitRange::copy(Self) -> Self
+pub fn MlclassifyprobitRange::fill(Self, Double) -> Self
+pub fn MlclassifyprobitRange::get(Self, Int32) -> Double
+pub fn MlclassifyprobitRange::len(Self) -> Int32
+pub fn MlclassifyprobitRange::max(Self) -> Double
+pub fn MlclassifyprobitRange::mean(Self) -> Double
+pub fn MlclassifyprobitRange::min(Self) -> Double
+pub fn MlclassifyprobitRange::scale(Self, Double) -> Self
+pub fn MlclassifyprobitRange::set(Self, Int32, Double) -> Self
+pub fn MlclassifyprobitRange::sum(Self) -> Double
+pub fn MlclassifyprobitRange::to_string(Self) -> String
+
+pub(all) struct MlclassifyprobitSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlclassifyprobitSeries::add(Self, Self) -> Self
+pub fn MlclassifyprobitSeries::cumsum(Self) -> Self
+pub fn MlclassifyprobitSeries::len(Self) -> Int32
+pub fn MlclassifyprobitSeries::max(Self) -> Double
+pub fn MlclassifyprobitSeries::mean(Self) -> Double
+pub fn MlclassifyprobitSeries::median(Self) -> Double
+pub fn MlclassifyprobitSeries::min(Self) -> Double
+pub fn MlclassifyprobitSeries::normalize(Self) -> Self
+pub fn MlclassifyprobitSeries::range(Self) -> Double
+pub fn MlclassifyprobitSeries::scale(Self, Double) -> Self
+pub fn MlclassifyprobitSeries::std(Self) -> Double
+pub fn MlclassifyprobitSeries::sub(Self, Self) -> Self
+pub fn MlclassifyprobitSeries::sum(Self) -> Double
+pub fn MlclassifyprobitSeries::to_string(Self) -> String
+pub fn MlclassifyprobitSeries::variance(Self) -> Double
+
+pub(all) struct MlclassifyprobitSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyprobitSlice::add(Self, Self) -> Self
+pub fn MlclassifyprobitSlice::copy(Self) -> Self
+pub fn MlclassifyprobitSlice::fill(Self, Double) -> Self
+pub fn MlclassifyprobitSlice::get(Self, Int32) -> Double
+pub fn MlclassifyprobitSlice::len(Self) -> Int32
+pub fn MlclassifyprobitSlice::max(Self) -> Double
+pub fn MlclassifyprobitSlice::mean(Self) -> Double
+pub fn MlclassifyprobitSlice::min(Self) -> Double
+pub fn MlclassifyprobitSlice::scale(Self, Double) -> Self
+pub fn MlclassifyprobitSlice::set(Self, Int32, Double) -> Self
+pub fn MlclassifyprobitSlice::sum(Self) -> Double
+pub fn MlclassifyprobitSlice::to_string(Self) -> String
+
+pub(all) struct MlclassifyprobitTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyprobitTable::add(Self, Self) -> Self
+pub fn MlclassifyprobitTable::copy(Self) -> Self
+pub fn MlclassifyprobitTable::fill(Self, Double) -> Self
+pub fn MlclassifyprobitTable::get(Self, Int32) -> Double
+pub fn MlclassifyprobitTable::len(Self) -> Int32
+pub fn MlclassifyprobitTable::max(Self) -> Double
+pub fn MlclassifyprobitTable::mean(Self) -> Double
+pub fn MlclassifyprobitTable::min(Self) -> Double
+pub fn MlclassifyprobitTable::scale(Self, Double) -> Self
+pub fn MlclassifyprobitTable::set(Self, Int32, Double) -> Self
+pub fn MlclassifyprobitTable::sum(Self) -> Double
+pub fn MlclassifyprobitTable::to_string(Self) -> String
+
+pub(all) struct MlclassifyprobitVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlclassifyprobitVector::add(Self, Self) -> Self
+pub fn MlclassifyprobitVector::dist(Self, Self) -> Double
+pub fn MlclassifyprobitVector::dot(Self, Self) -> Double
+pub fn MlclassifyprobitVector::norm(Self) -> Double
+pub fn MlclassifyprobitVector::normalize(Self) -> Self
+pub fn MlclassifyprobitVector::scale(Self, Double) -> Self
+pub fn MlclassifyprobitVector::sub(Self, Self) -> Self
+pub fn MlclassifyprobitVector::to_string(Self) -> String
+
+pub(all) struct MlclassifyprobitView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyprobitView::add(Self, Self) -> Self
+pub fn MlclassifyprobitView::copy(Self) -> Self
+pub fn MlclassifyprobitView::fill(Self, Double) -> Self
+pub fn MlclassifyprobitView::get(Self, Int32) -> Double
+pub fn MlclassifyprobitView::len(Self) -> Int32
+pub fn MlclassifyprobitView::max(Self) -> Double
+pub fn MlclassifyprobitView::mean(Self) -> Double
+pub fn MlclassifyprobitView::min(Self) -> Double
+pub fn MlclassifyprobitView::scale(Self, Double) -> Self
+pub fn MlclassifyprobitView::set(Self, Int32, Double) -> Self
+pub fn MlclassifyprobitView::sum(Self) -> Double
+pub fn MlclassifyprobitView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

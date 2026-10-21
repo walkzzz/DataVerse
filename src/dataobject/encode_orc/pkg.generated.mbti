@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/encode_orc"
+
+// Values
+pub fn encode_orc_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn encode_orc_corr(Array[Double], Array[Double]) -> Double
+
+pub fn encode_orc_cov(Array[Double], Array[Double]) -> Double
+
+pub fn encode_orc_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_orc_mae(Array[Double], Array[Double]) -> Double
+
+pub fn encode_orc_make_labeled_point(Double, Double, Int32) -> Encode_orcPoint
+
+pub fn encode_orc_make_matrix(Int32, Int32, Double) -> Encode_orcMatrix
+
+pub fn encode_orc_make_point(Double, Double) -> Encode_orcPoint
+
+pub fn encode_orc_make_series(Array[Double], String) -> Encode_orcSeries
+
+pub fn encode_orc_make_vector(Array[Double]) -> Encode_orcVector
+
+pub fn encode_orc_matrix_add(Encode_orcMatrix, Encode_orcMatrix) -> Encode_orcMatrix
+
+pub fn encode_orc_matrix_get(Encode_orcMatrix, Int32, Int32) -> Double
+
+pub fn encode_orc_matrix_identity(Int32) -> Encode_orcMatrix
+
+pub fn encode_orc_matrix_multiply(Encode_orcMatrix, Encode_orcMatrix) -> Encode_orcMatrix
+
+pub fn encode_orc_matrix_norm(Encode_orcMatrix) -> Double
+
+pub fn encode_orc_matrix_scale(Encode_orcMatrix, Double) -> Encode_orcMatrix
+
+pub fn encode_orc_matrix_to_string(Encode_orcMatrix) -> String
+
+pub fn encode_orc_matrix_trace(Encode_orcMatrix) -> Double
+
+pub fn encode_orc_matrix_transpose(Encode_orcMatrix) -> Encode_orcMatrix
+
+pub fn encode_orc_mse(Array[Double], Array[Double]) -> Double
+
+pub fn encode_orc_point_add(Encode_orcPoint, Encode_orcPoint) -> Encode_orcPoint
+
+pub fn encode_orc_point_dist(Encode_orcPoint, Encode_orcPoint) -> Double
+
+pub fn encode_orc_point_dot(Encode_orcPoint, Encode_orcPoint) -> Double
+
+pub fn encode_orc_point_label(Encode_orcPoint) -> Int32
+
+pub fn encode_orc_point_norm(Encode_orcPoint) -> Double
+
+pub fn encode_orc_point_scale(Encode_orcPoint, Double) -> Encode_orcPoint
+
+pub fn encode_orc_point_sub(Encode_orcPoint, Encode_orcPoint) -> Encode_orcPoint
+
+pub fn encode_orc_point_to_string(Encode_orcPoint) -> String
+
+pub fn encode_orc_point_x(Encode_orcPoint) -> Double
+
+pub fn encode_orc_point_y(Encode_orcPoint) -> Double
+
+pub fn encode_orc_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_orc_r2(Array[Double], Array[Double]) -> Double
+
+pub fn encode_orc_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_orc_series_add(Encode_orcSeries, Encode_orcSeries) -> Encode_orcSeries
+
+pub fn encode_orc_series_len(Encode_orcSeries) -> Int32
+
+pub fn encode_orc_series_max(Encode_orcSeries) -> Double
+
+pub fn encode_orc_series_mean(Encode_orcSeries) -> Double
+
+pub fn encode_orc_series_min(Encode_orcSeries) -> Double
+
+pub fn encode_orc_series_scale(Encode_orcSeries, Double) -> Encode_orcSeries
+
+pub fn encode_orc_series_std(Encode_orcSeries) -> Double
+
+pub fn encode_orc_series_sum(Encode_orcSeries) -> Double
+
+pub fn encode_orc_series_to_string(Encode_orcSeries) -> String
+
+pub fn encode_orc_series_var(Encode_orcSeries) -> Double
+
+pub fn encode_orc_std(Array[Double]) -> Double
+
+pub fn encode_orc_var(Array[Double]) -> Double
+
+pub fn encode_orc_vector_add(Encode_orcVector, Encode_orcVector) -> Encode_orcVector
+
+pub fn encode_orc_vector_dist(Encode_orcVector, Encode_orcVector) -> Double
+
+pub fn encode_orc_vector_dot(Encode_orcVector, Encode_orcVector) -> Double
+
+pub fn encode_orc_vector_norm(Encode_orcVector) -> Double
+
+pub fn encode_orc_vector_normalize(Encode_orcVector) -> Encode_orcVector
+
+pub fn encode_orc_vector_scale(Encode_orcVector, Double) -> Encode_orcVector
+
+pub fn encode_orc_vector_sub(Encode_orcVector, Encode_orcVector) -> Encode_orcVector
+
+pub fn encode_orc_vector_to_string(Encode_orcVector) -> String
+
+pub fn encode_orc_vector_zero(Int32) -> Encode_orcVector
+
+// Errors
+
+// Types and methods
+pub struct Encode_orcMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Encode_orcPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Encode_orcSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Encode_orcVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

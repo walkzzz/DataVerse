@@ -1,0 +1,19 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/kernel/exact"
+
+// Values
+pub fn consistency_guarantee() -> String
+
+pub fn exact_id() -> String
+
+pub fn handles_empty() -> Bool
+
+pub fn mode_tag() -> String
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_special_elliptic"
+
+// Values
+pub fn math_special_elliptic_buffer_make(Int32) -> MathspecialellipticBuffer
+
+pub fn math_special_elliptic_cluster_make(Int32) -> MathspecialellipticCluster
+
+pub fn math_special_elliptic_cursor_make(Int32) -> MathspecialellipticCursor
+
+pub fn math_special_elliptic_edge_make(Int32) -> MathspecialellipticEdge
+
+pub fn math_special_elliptic_frame_make(Int32) -> MathspecialellipticFrame
+
+pub fn math_special_elliptic_graphn_make(Int32) -> MathspecialellipticGraphN
+
+pub fn math_special_elliptic_layer_make(Int32) -> MathspecialellipticLayer
+
+pub fn math_special_elliptic_make_matrix(Int32, Int32, Double) -> MathspecialellipticMatrix
+
+pub fn math_special_elliptic_make_point(Double, Double) -> MathspecialellipticPoint
+
+pub fn math_special_elliptic_make_point3(Double, Double, Double) -> MathspecialellipticPoint
+
+pub fn math_special_elliptic_make_series(Array[Double], String) -> MathspecialellipticSeries
+
+pub fn math_special_elliptic_make_vector(Array[Double]) -> MathspecialellipticVector
+
+pub fn math_special_elliptic_matrix_identity(Int32) -> MathspecialellipticMatrix
+
+pub fn math_special_elliptic_model_make(Int32) -> MathspecialellipticModel
+
+pub fn math_special_elliptic_node_make(Int32) -> MathspecialellipticNode
+
+pub fn math_special_elliptic_path_make(Int32) -> MathspecialellipticPath
+
+pub fn math_special_elliptic_range_make(Int32) -> MathspecialellipticRange
+
+pub fn math_special_elliptic_slice_make(Int32) -> MathspecialellipticSlice
+
+pub fn math_special_elliptic_table_make(Int32) -> MathspecialellipticTable
+
+pub fn math_special_elliptic_vector_zero(Int32) -> MathspecialellipticVector
+
+pub fn math_special_elliptic_view_make(Int32) -> MathspecialellipticView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathspecialellipticBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialellipticBuffer::add(Self, Self) -> Self
+pub fn MathspecialellipticBuffer::copy(Self) -> Self
+pub fn MathspecialellipticBuffer::fill(Self, Double) -> Self
+pub fn MathspecialellipticBuffer::get(Self, Int32) -> Double
+pub fn MathspecialellipticBuffer::len(Self) -> Int32
+pub fn MathspecialellipticBuffer::max(Self) -> Double
+pub fn MathspecialellipticBuffer::mean(Self) -> Double
+pub fn MathspecialellipticBuffer::min(Self) -> Double
+pub fn MathspecialellipticBuffer::scale(Self, Double) -> Self
+pub fn MathspecialellipticBuffer::set(Self, Int32, Double) -> Self
+pub fn MathspecialellipticBuffer::sum(Self) -> Double
+pub fn MathspecialellipticBuffer::to_string(Self) -> String
+
+pub(all) struct MathspecialellipticCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialellipticCluster::add(Self, Self) -> Self
+pub fn MathspecialellipticCluster::copy(Self) -> Self
+pub fn MathspecialellipticCluster::fill(Self, Double) -> Self
+pub fn MathspecialellipticCluster::get(Self, Int32) -> Double
+pub fn MathspecialellipticCluster::len(Self) -> Int32
+pub fn MathspecialellipticCluster::max(Self) -> Double
+pub fn MathspecialellipticCluster::mean(Self) -> Double
+pub fn MathspecialellipticCluster::min(Self) -> Double
+pub fn MathspecialellipticCluster::scale(Self, Double) -> Self
+pub fn MathspecialellipticCluster::set(Self, Int32, Double) -> Self
+pub fn MathspecialellipticCluster::sum(Self) -> Double
+pub fn MathspecialellipticCluster::to_string(Self) -> String
+
+pub(all) struct MathspecialellipticCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialellipticCursor::add(Self, Self) -> Self
+pub fn MathspecialellipticCursor::copy(Self) -> Self
+pub fn MathspecialellipticCursor::fill(Self, Double) -> Self
+pub fn MathspecialellipticCursor::get(Self, Int32) -> Double
+pub fn MathspecialellipticCursor::len(Self) -> Int32
+pub fn MathspecialellipticCursor::max(Self) -> Double
+pub fn MathspecialellipticCursor::mean(Self) -> Double
+pub fn MathspecialellipticCursor::min(Self) -> Double
+pub fn MathspecialellipticCursor::scale(Self, Double) -> Self
+pub fn MathspecialellipticCursor::set(Self, Int32, Double) -> Self
+pub fn MathspecialellipticCursor::sum(Self) -> Double
+pub fn MathspecialellipticCursor::to_string(Self) -> String
+
+pub(all) struct MathspecialellipticEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialellipticEdge::add(Self, Self) -> Self
+pub fn MathspecialellipticEdge::copy(Self) -> Self
+pub fn MathspecialellipticEdge::fill(Self, Double) -> Self
+pub fn MathspecialellipticEdge::get(Self, Int32) -> Double
+pub fn MathspecialellipticEdge::len(Self) -> Int32
+pub fn MathspecialellipticEdge::max(Self) -> Double
+pub fn MathspecialellipticEdge::mean(Self) -> Double
+pub fn MathspecialellipticEdge::min(Self) -> Double
+pub fn MathspecialellipticEdge::scale(Self, Double) -> Self
+pub fn MathspecialellipticEdge::set(Self, Int32, Double) -> Self
+pub fn MathspecialellipticEdge::sum(Self) -> Double
+pub fn MathspecialellipticEdge::to_string(Self) -> String
+
+pub(all) struct MathspecialellipticFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialellipticFrame::add(Self, Self) -> Self
+pub fn MathspecialellipticFrame::copy(Self) -> Self
+pub fn MathspecialellipticFrame::fill(Self, Double) -> Self
+pub fn MathspecialellipticFrame::get(Self, Int32) -> Double
+pub fn MathspecialellipticFrame::len(Self) -> Int32
+pub fn MathspecialellipticFrame::max(Self) -> Double
+pub fn MathspecialellipticFrame::mean(Self) -> Double
+pub fn MathspecialellipticFrame::min(Self) -> Double
+pub fn MathspecialellipticFrame::scale(Self, Double) -> Self
+pub fn MathspecialellipticFrame::set(Self, Int32, Double) -> Self
+pub fn MathspecialellipticFrame::sum(Self) -> Double
+pub fn MathspecialellipticFrame::to_string(Self) -> String
+
+pub(all) struct MathspecialellipticGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialellipticGraphN::add(Self, Self) -> Self
+pub fn MathspecialellipticGraphN::copy(Self) -> Self
+pub fn MathspecialellipticGraphN::fill(Self, Double) -> Self
+pub fn MathspecialellipticGraphN::get(Self, Int32) -> Double
+pub fn MathspecialellipticGraphN::len(Self) -> Int32
+pub fn MathspecialellipticGraphN::max(Self) -> Double
+pub fn MathspecialellipticGraphN::mean(Self) -> Double
+pub fn MathspecialellipticGraphN::min(Self) -> Double
+pub fn MathspecialellipticGraphN::scale(Self, Double) -> Self
+pub fn MathspecialellipticGraphN::set(Self, Int32, Double) -> Self
+pub fn MathspecialellipticGraphN::sum(Self) -> Double
+pub fn MathspecialellipticGraphN::to_string(Self) -> String
+
+pub(all) struct MathspecialellipticLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialellipticLayer::add(Self, Self) -> Self
+pub fn MathspecialellipticLayer::copy(Self) -> Self
+pub fn MathspecialellipticLayer::fill(Self, Double) -> Self
+pub fn MathspecialellipticLayer::get(Self, Int32) -> Double
+pub fn MathspecialellipticLayer::len(Self) -> Int32
+pub fn MathspecialellipticLayer::max(Self) -> Double
+pub fn MathspecialellipticLayer::mean(Self) -> Double
+pub fn MathspecialellipticLayer::min(Self) -> Double
+pub fn MathspecialellipticLayer::scale(Self, Double) -> Self
+pub fn MathspecialellipticLayer::set(Self, Int32, Double) -> Self
+pub fn MathspecialellipticLayer::sum(Self) -> Double
+pub fn MathspecialellipticLayer::to_string(Self) -> String
+
+pub(all) struct MathspecialellipticMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathspecialellipticMatrix::add(Self, Self) -> Self
+pub fn MathspecialellipticMatrix::det(Self) -> Double
+pub fn MathspecialellipticMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathspecialellipticMatrix::multiply(Self, Self) -> Self
+pub fn MathspecialellipticMatrix::norm(Self) -> Double
+pub fn MathspecialellipticMatrix::scale(Self, Double) -> Self
+pub fn MathspecialellipticMatrix::to_string(Self) -> String
+pub fn MathspecialellipticMatrix::trace(Self) -> Double
+pub fn MathspecialellipticMatrix::transpose(Self) -> Self
+
+pub(all) struct MathspecialellipticModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialellipticModel::add(Self, Self) -> Self
+pub fn MathspecialellipticModel::copy(Self) -> Self
+pub fn MathspecialellipticModel::fill(Self, Double) -> Self
+pub fn MathspecialellipticModel::get(Self, Int32) -> Double
+pub fn MathspecialellipticModel::len(Self) -> Int32
+pub fn MathspecialellipticModel::max(Self) -> Double
+pub fn MathspecialellipticModel::mean(Self) -> Double
+pub fn MathspecialellipticModel::min(Self) -> Double
+pub fn MathspecialellipticModel::scale(Self, Double) -> Self
+pub fn MathspecialellipticModel::set(Self, Int32, Double) -> Self
+pub fn MathspecialellipticModel::sum(Self) -> Double
+pub fn MathspecialellipticModel::to_string(Self) -> String
+
+pub(all) struct MathspecialellipticNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialellipticNode::add(Self, Self) -> Self
+pub fn MathspecialellipticNode::copy(Self) -> Self
+pub fn MathspecialellipticNode::fill(Self, Double) -> Self
+pub fn MathspecialellipticNode::get(Self, Int32) -> Double
+pub fn MathspecialellipticNode::len(Self) -> Int32
+pub fn MathspecialellipticNode::max(Self) -> Double
+pub fn MathspecialellipticNode::mean(Self) -> Double
+pub fn MathspecialellipticNode::min(Self) -> Double
+pub fn MathspecialellipticNode::scale(Self, Double) -> Self
+pub fn MathspecialellipticNode::set(Self, Int32, Double) -> Self
+pub fn MathspecialellipticNode::sum(Self) -> Double
+pub fn MathspecialellipticNode::to_string(Self) -> String
+
+pub(all) struct MathspecialellipticPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialellipticPath::add(Self, Self) -> Self
+pub fn MathspecialellipticPath::copy(Self) -> Self
+pub fn MathspecialellipticPath::fill(Self, Double) -> Self
+pub fn MathspecialellipticPath::get(Self, Int32) -> Double
+pub fn MathspecialellipticPath::len(Self) -> Int32
+pub fn MathspecialellipticPath::max(Self) -> Double
+pub fn MathspecialellipticPath::mean(Self) -> Double
+pub fn MathspecialellipticPath::min(Self) -> Double
+pub fn MathspecialellipticPath::scale(Self, Double) -> Self
+pub fn MathspecialellipticPath::set(Self, Int32, Double) -> Self
+pub fn MathspecialellipticPath::sum(Self) -> Double
+pub fn MathspecialellipticPath::to_string(Self) -> String
+
+pub(all) struct MathspecialellipticPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathspecialellipticPoint::add(Self, Self) -> Self
+pub fn MathspecialellipticPoint::cross(Self, Self) -> Self
+pub fn MathspecialellipticPoint::dist(Self, Self) -> Double
+pub fn MathspecialellipticPoint::dot(Self, Self) -> Double
+pub fn MathspecialellipticPoint::label(Self) -> Int32
+pub fn MathspecialellipticPoint::lerp(Self, Self, Double) -> Self
+pub fn MathspecialellipticPoint::mid(Self, Self) -> Self
+pub fn MathspecialellipticPoint::negate(Self) -> Self
+pub fn MathspecialellipticPoint::norm(Self) -> Double
+pub fn MathspecialellipticPoint::normalize(Self) -> Self
+pub fn MathspecialellipticPoint::scale(Self, Double) -> Self
+pub fn MathspecialellipticPoint::sub(Self, Self) -> Self
+pub fn MathspecialellipticPoint::to_string(Self) -> String
+pub fn MathspecialellipticPoint::x(Self) -> Double
+pub fn MathspecialellipticPoint::y(Self) -> Double
+pub fn MathspecialellipticPoint::z(Self) -> Double
+
+pub(all) struct MathspecialellipticRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialellipticRange::add(Self, Self) -> Self
+pub fn MathspecialellipticRange::copy(Self) -> Self
+pub fn MathspecialellipticRange::fill(Self, Double) -> Self
+pub fn MathspecialellipticRange::get(Self, Int32) -> Double
+pub fn MathspecialellipticRange::len(Self) -> Int32
+pub fn MathspecialellipticRange::max(Self) -> Double
+pub fn MathspecialellipticRange::mean(Self) -> Double
+pub fn MathspecialellipticRange::min(Self) -> Double
+pub fn MathspecialellipticRange::scale(Self, Double) -> Self
+pub fn MathspecialellipticRange::set(Self, Int32, Double) -> Self
+pub fn MathspecialellipticRange::sum(Self) -> Double
+pub fn MathspecialellipticRange::to_string(Self) -> String
+
+pub(all) struct MathspecialellipticSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathspecialellipticSeries::add(Self, Self) -> Self
+pub fn MathspecialellipticSeries::cumsum(Self) -> Self
+pub fn MathspecialellipticSeries::len(Self) -> Int32
+pub fn MathspecialellipticSeries::max(Self) -> Double
+pub fn MathspecialellipticSeries::mean(Self) -> Double
+pub fn MathspecialellipticSeries::median(Self) -> Double
+pub fn MathspecialellipticSeries::min(Self) -> Double
+pub fn MathspecialellipticSeries::normalize(Self) -> Self
+pub fn MathspecialellipticSeries::range(Self) -> Double
+pub fn MathspecialellipticSeries::scale(Self, Double) -> Self
+pub fn MathspecialellipticSeries::std(Self) -> Double
+pub fn MathspecialellipticSeries::sub(Self, Self) -> Self
+pub fn MathspecialellipticSeries::sum(Self) -> Double
+pub fn MathspecialellipticSeries::to_string(Self) -> String
+pub fn MathspecialellipticSeries::variance(Self) -> Double
+
+pub(all) struct MathspecialellipticSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialellipticSlice::add(Self, Self) -> Self
+pub fn MathspecialellipticSlice::copy(Self) -> Self
+pub fn MathspecialellipticSlice::fill(Self, Double) -> Self
+pub fn MathspecialellipticSlice::get(Self, Int32) -> Double
+pub fn MathspecialellipticSlice::len(Self) -> Int32
+pub fn MathspecialellipticSlice::max(Self) -> Double
+pub fn MathspecialellipticSlice::mean(Self) -> Double
+pub fn MathspecialellipticSlice::min(Self) -> Double
+pub fn MathspecialellipticSlice::scale(Self, Double) -> Self
+pub fn MathspecialellipticSlice::set(Self, Int32, Double) -> Self
+pub fn MathspecialellipticSlice::sum(Self) -> Double
+pub fn MathspecialellipticSlice::to_string(Self) -> String
+
+pub(all) struct MathspecialellipticTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialellipticTable::add(Self, Self) -> Self
+pub fn MathspecialellipticTable::copy(Self) -> Self
+pub fn MathspecialellipticTable::fill(Self, Double) -> Self
+pub fn MathspecialellipticTable::get(Self, Int32) -> Double
+pub fn MathspecialellipticTable::len(Self) -> Int32
+pub fn MathspecialellipticTable::max(Self) -> Double
+pub fn MathspecialellipticTable::mean(Self) -> Double
+pub fn MathspecialellipticTable::min(Self) -> Double
+pub fn MathspecialellipticTable::scale(Self, Double) -> Self
+pub fn MathspecialellipticTable::set(Self, Int32, Double) -> Self
+pub fn MathspecialellipticTable::sum(Self) -> Double
+pub fn MathspecialellipticTable::to_string(Self) -> String
+
+pub(all) struct MathspecialellipticVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathspecialellipticVector::add(Self, Self) -> Self
+pub fn MathspecialellipticVector::dist(Self, Self) -> Double
+pub fn MathspecialellipticVector::dot(Self, Self) -> Double
+pub fn MathspecialellipticVector::norm(Self) -> Double
+pub fn MathspecialellipticVector::normalize(Self) -> Self
+pub fn MathspecialellipticVector::scale(Self, Double) -> Self
+pub fn MathspecialellipticVector::sub(Self, Self) -> Self
+pub fn MathspecialellipticVector::to_string(Self) -> String
+
+pub(all) struct MathspecialellipticView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialellipticView::add(Self, Self) -> Self
+pub fn MathspecialellipticView::copy(Self) -> Self
+pub fn MathspecialellipticView::fill(Self, Double) -> Self
+pub fn MathspecialellipticView::get(Self, Int32) -> Double
+pub fn MathspecialellipticView::len(Self) -> Int32
+pub fn MathspecialellipticView::max(Self) -> Double
+pub fn MathspecialellipticView::mean(Self) -> Double
+pub fn MathspecialellipticView::min(Self) -> Double
+pub fn MathspecialellipticView::scale(Self, Double) -> Self
+pub fn MathspecialellipticView::set(Self, Int32, Double) -> Self
+pub fn MathspecialellipticView::sum(Self) -> Double
+pub fn MathspecialellipticView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

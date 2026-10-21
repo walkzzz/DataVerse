@@ -1,0 +1,36 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/transform"
+
+import {
+  "dataverse/dataobject",
+  "dataverse/opcore/hydrology",
+}
+
+// Values
+pub fn to_lowercase(@dataobject.DataObject) -> @dataobject.DataObject
+
+pub fn to_uppercase(@dataobject.DataObject) -> @dataobject.DataObject
+
+pub fn transform_conditional(@hydrology.RasterGrid, @hydrology.RasterGrid, @hydrology.RasterGrid) -> @hydrology.RasterGrid
+
+pub fn transform_id() -> String
+
+pub fn transform_lookup(@hydrology.RasterGrid, Array[Double]) -> @hydrology.RasterGrid
+
+pub fn transform_pick(@hydrology.RasterGrid, Array[@hydrology.RasterGrid]) -> @hydrology.RasterGrid
+
+pub fn transform_reclassify(@hydrology.RasterGrid, Array[(Double, Double, Double)]) -> @hydrology.RasterGrid
+
+pub fn transform_set_null(@hydrology.RasterGrid, @hydrology.RasterGrid) -> @hydrology.RasterGrid
+
+pub fn transform_slice(@hydrology.RasterGrid, Int32) -> @hydrology.RasterGrid
+
+pub fn truncate(@dataobject.DataObject, Int32) -> @dataobject.DataObject
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

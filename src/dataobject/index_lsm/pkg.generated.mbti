@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/index_lsm"
+
+// Values
+pub fn index_lsm_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn index_lsm_corr(Array[Double], Array[Double]) -> Double
+
+pub fn index_lsm_cov(Array[Double], Array[Double]) -> Double
+
+pub fn index_lsm_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_lsm_mae(Array[Double], Array[Double]) -> Double
+
+pub fn index_lsm_make_labeled_point(Double, Double, Int32) -> Index_lsmPoint
+
+pub fn index_lsm_make_matrix(Int32, Int32, Double) -> Index_lsmMatrix
+
+pub fn index_lsm_make_point(Double, Double) -> Index_lsmPoint
+
+pub fn index_lsm_make_series(Array[Double], String) -> Index_lsmSeries
+
+pub fn index_lsm_make_vector(Array[Double]) -> Index_lsmVector
+
+pub fn index_lsm_matrix_add(Index_lsmMatrix, Index_lsmMatrix) -> Index_lsmMatrix
+
+pub fn index_lsm_matrix_get(Index_lsmMatrix, Int32, Int32) -> Double
+
+pub fn index_lsm_matrix_identity(Int32) -> Index_lsmMatrix
+
+pub fn index_lsm_matrix_multiply(Index_lsmMatrix, Index_lsmMatrix) -> Index_lsmMatrix
+
+pub fn index_lsm_matrix_norm(Index_lsmMatrix) -> Double
+
+pub fn index_lsm_matrix_scale(Index_lsmMatrix, Double) -> Index_lsmMatrix
+
+pub fn index_lsm_matrix_to_string(Index_lsmMatrix) -> String
+
+pub fn index_lsm_matrix_trace(Index_lsmMatrix) -> Double
+
+pub fn index_lsm_matrix_transpose(Index_lsmMatrix) -> Index_lsmMatrix
+
+pub fn index_lsm_mse(Array[Double], Array[Double]) -> Double
+
+pub fn index_lsm_point_add(Index_lsmPoint, Index_lsmPoint) -> Index_lsmPoint
+
+pub fn index_lsm_point_dist(Index_lsmPoint, Index_lsmPoint) -> Double
+
+pub fn index_lsm_point_dot(Index_lsmPoint, Index_lsmPoint) -> Double
+
+pub fn index_lsm_point_label(Index_lsmPoint) -> Int32
+
+pub fn index_lsm_point_norm(Index_lsmPoint) -> Double
+
+pub fn index_lsm_point_scale(Index_lsmPoint, Double) -> Index_lsmPoint
+
+pub fn index_lsm_point_sub(Index_lsmPoint, Index_lsmPoint) -> Index_lsmPoint
+
+pub fn index_lsm_point_to_string(Index_lsmPoint) -> String
+
+pub fn index_lsm_point_x(Index_lsmPoint) -> Double
+
+pub fn index_lsm_point_y(Index_lsmPoint) -> Double
+
+pub fn index_lsm_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_lsm_r2(Array[Double], Array[Double]) -> Double
+
+pub fn index_lsm_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_lsm_series_add(Index_lsmSeries, Index_lsmSeries) -> Index_lsmSeries
+
+pub fn index_lsm_series_len(Index_lsmSeries) -> Int32
+
+pub fn index_lsm_series_max(Index_lsmSeries) -> Double
+
+pub fn index_lsm_series_mean(Index_lsmSeries) -> Double
+
+pub fn index_lsm_series_min(Index_lsmSeries) -> Double
+
+pub fn index_lsm_series_scale(Index_lsmSeries, Double) -> Index_lsmSeries
+
+pub fn index_lsm_series_std(Index_lsmSeries) -> Double
+
+pub fn index_lsm_series_sum(Index_lsmSeries) -> Double
+
+pub fn index_lsm_series_to_string(Index_lsmSeries) -> String
+
+pub fn index_lsm_series_var(Index_lsmSeries) -> Double
+
+pub fn index_lsm_std(Array[Double]) -> Double
+
+pub fn index_lsm_var(Array[Double]) -> Double
+
+pub fn index_lsm_vector_add(Index_lsmVector, Index_lsmVector) -> Index_lsmVector
+
+pub fn index_lsm_vector_dist(Index_lsmVector, Index_lsmVector) -> Double
+
+pub fn index_lsm_vector_dot(Index_lsmVector, Index_lsmVector) -> Double
+
+pub fn index_lsm_vector_norm(Index_lsmVector) -> Double
+
+pub fn index_lsm_vector_normalize(Index_lsmVector) -> Index_lsmVector
+
+pub fn index_lsm_vector_scale(Index_lsmVector, Double) -> Index_lsmVector
+
+pub fn index_lsm_vector_sub(Index_lsmVector, Index_lsmVector) -> Index_lsmVector
+
+pub fn index_lsm_vector_to_string(Index_lsmVector) -> String
+
+pub fn index_lsm_vector_zero(Int32) -> Index_lsmVector
+
+// Errors
+
+// Types and methods
+pub struct Index_lsmMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Index_lsmPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Index_lsmSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Index_lsmVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

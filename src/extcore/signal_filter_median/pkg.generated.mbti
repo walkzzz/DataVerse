@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_filter_median"
+
+// Values
+pub fn signal_filter_median_buffer_make(Int32) -> SignalfiltermedianBuffer
+
+pub fn signal_filter_median_cluster_make(Int32) -> SignalfiltermedianCluster
+
+pub fn signal_filter_median_cursor_make(Int32) -> SignalfiltermedianCursor
+
+pub fn signal_filter_median_edge_make(Int32) -> SignalfiltermedianEdge
+
+pub fn signal_filter_median_frame_make(Int32) -> SignalfiltermedianFrame
+
+pub fn signal_filter_median_graphn_make(Int32) -> SignalfiltermedianGraphN
+
+pub fn signal_filter_median_layer_make(Int32) -> SignalfiltermedianLayer
+
+pub fn signal_filter_median_make_matrix(Int32, Int32, Double) -> SignalfiltermedianMatrix
+
+pub fn signal_filter_median_make_point(Double, Double) -> SignalfiltermedianPoint
+
+pub fn signal_filter_median_make_point3(Double, Double, Double) -> SignalfiltermedianPoint
+
+pub fn signal_filter_median_make_series(Array[Double], String) -> SignalfiltermedianSeries
+
+pub fn signal_filter_median_make_vector(Array[Double]) -> SignalfiltermedianVector
+
+pub fn signal_filter_median_matrix_identity(Int32) -> SignalfiltermedianMatrix
+
+pub fn signal_filter_median_model_make(Int32) -> SignalfiltermedianModel
+
+pub fn signal_filter_median_node_make(Int32) -> SignalfiltermedianNode
+
+pub fn signal_filter_median_path_make(Int32) -> SignalfiltermedianPath
+
+pub fn signal_filter_median_range_make(Int32) -> SignalfiltermedianRange
+
+pub fn signal_filter_median_slice_make(Int32) -> SignalfiltermedianSlice
+
+pub fn signal_filter_median_table_make(Int32) -> SignalfiltermedianTable
+
+pub fn signal_filter_median_vector_zero(Int32) -> SignalfiltermedianVector
+
+pub fn signal_filter_median_view_make(Int32) -> SignalfiltermedianView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalfiltermedianBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfiltermedianBuffer::add(Self, Self) -> Self
+pub fn SignalfiltermedianBuffer::copy(Self) -> Self
+pub fn SignalfiltermedianBuffer::fill(Self, Double) -> Self
+pub fn SignalfiltermedianBuffer::get(Self, Int32) -> Double
+pub fn SignalfiltermedianBuffer::len(Self) -> Int32
+pub fn SignalfiltermedianBuffer::max(Self) -> Double
+pub fn SignalfiltermedianBuffer::mean(Self) -> Double
+pub fn SignalfiltermedianBuffer::min(Self) -> Double
+pub fn SignalfiltermedianBuffer::scale(Self, Double) -> Self
+pub fn SignalfiltermedianBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalfiltermedianBuffer::sum(Self) -> Double
+pub fn SignalfiltermedianBuffer::to_string(Self) -> String
+
+pub(all) struct SignalfiltermedianCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfiltermedianCluster::add(Self, Self) -> Self
+pub fn SignalfiltermedianCluster::copy(Self) -> Self
+pub fn SignalfiltermedianCluster::fill(Self, Double) -> Self
+pub fn SignalfiltermedianCluster::get(Self, Int32) -> Double
+pub fn SignalfiltermedianCluster::len(Self) -> Int32
+pub fn SignalfiltermedianCluster::max(Self) -> Double
+pub fn SignalfiltermedianCluster::mean(Self) -> Double
+pub fn SignalfiltermedianCluster::min(Self) -> Double
+pub fn SignalfiltermedianCluster::scale(Self, Double) -> Self
+pub fn SignalfiltermedianCluster::set(Self, Int32, Double) -> Self
+pub fn SignalfiltermedianCluster::sum(Self) -> Double
+pub fn SignalfiltermedianCluster::to_string(Self) -> String
+
+pub(all) struct SignalfiltermedianCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfiltermedianCursor::add(Self, Self) -> Self
+pub fn SignalfiltermedianCursor::copy(Self) -> Self
+pub fn SignalfiltermedianCursor::fill(Self, Double) -> Self
+pub fn SignalfiltermedianCursor::get(Self, Int32) -> Double
+pub fn SignalfiltermedianCursor::len(Self) -> Int32
+pub fn SignalfiltermedianCursor::max(Self) -> Double
+pub fn SignalfiltermedianCursor::mean(Self) -> Double
+pub fn SignalfiltermedianCursor::min(Self) -> Double
+pub fn SignalfiltermedianCursor::scale(Self, Double) -> Self
+pub fn SignalfiltermedianCursor::set(Self, Int32, Double) -> Self
+pub fn SignalfiltermedianCursor::sum(Self) -> Double
+pub fn SignalfiltermedianCursor::to_string(Self) -> String
+
+pub(all) struct SignalfiltermedianEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfiltermedianEdge::add(Self, Self) -> Self
+pub fn SignalfiltermedianEdge::copy(Self) -> Self
+pub fn SignalfiltermedianEdge::fill(Self, Double) -> Self
+pub fn SignalfiltermedianEdge::get(Self, Int32) -> Double
+pub fn SignalfiltermedianEdge::len(Self) -> Int32
+pub fn SignalfiltermedianEdge::max(Self) -> Double
+pub fn SignalfiltermedianEdge::mean(Self) -> Double
+pub fn SignalfiltermedianEdge::min(Self) -> Double
+pub fn SignalfiltermedianEdge::scale(Self, Double) -> Self
+pub fn SignalfiltermedianEdge::set(Self, Int32, Double) -> Self
+pub fn SignalfiltermedianEdge::sum(Self) -> Double
+pub fn SignalfiltermedianEdge::to_string(Self) -> String
+
+pub(all) struct SignalfiltermedianFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfiltermedianFrame::add(Self, Self) -> Self
+pub fn SignalfiltermedianFrame::copy(Self) -> Self
+pub fn SignalfiltermedianFrame::fill(Self, Double) -> Self
+pub fn SignalfiltermedianFrame::get(Self, Int32) -> Double
+pub fn SignalfiltermedianFrame::len(Self) -> Int32
+pub fn SignalfiltermedianFrame::max(Self) -> Double
+pub fn SignalfiltermedianFrame::mean(Self) -> Double
+pub fn SignalfiltermedianFrame::min(Self) -> Double
+pub fn SignalfiltermedianFrame::scale(Self, Double) -> Self
+pub fn SignalfiltermedianFrame::set(Self, Int32, Double) -> Self
+pub fn SignalfiltermedianFrame::sum(Self) -> Double
+pub fn SignalfiltermedianFrame::to_string(Self) -> String
+
+pub(all) struct SignalfiltermedianGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfiltermedianGraphN::add(Self, Self) -> Self
+pub fn SignalfiltermedianGraphN::copy(Self) -> Self
+pub fn SignalfiltermedianGraphN::fill(Self, Double) -> Self
+pub fn SignalfiltermedianGraphN::get(Self, Int32) -> Double
+pub fn SignalfiltermedianGraphN::len(Self) -> Int32
+pub fn SignalfiltermedianGraphN::max(Self) -> Double
+pub fn SignalfiltermedianGraphN::mean(Self) -> Double
+pub fn SignalfiltermedianGraphN::min(Self) -> Double
+pub fn SignalfiltermedianGraphN::scale(Self, Double) -> Self
+pub fn SignalfiltermedianGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalfiltermedianGraphN::sum(Self) -> Double
+pub fn SignalfiltermedianGraphN::to_string(Self) -> String
+
+pub(all) struct SignalfiltermedianLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfiltermedianLayer::add(Self, Self) -> Self
+pub fn SignalfiltermedianLayer::copy(Self) -> Self
+pub fn SignalfiltermedianLayer::fill(Self, Double) -> Self
+pub fn SignalfiltermedianLayer::get(Self, Int32) -> Double
+pub fn SignalfiltermedianLayer::len(Self) -> Int32
+pub fn SignalfiltermedianLayer::max(Self) -> Double
+pub fn SignalfiltermedianLayer::mean(Self) -> Double
+pub fn SignalfiltermedianLayer::min(Self) -> Double
+pub fn SignalfiltermedianLayer::scale(Self, Double) -> Self
+pub fn SignalfiltermedianLayer::set(Self, Int32, Double) -> Self
+pub fn SignalfiltermedianLayer::sum(Self) -> Double
+pub fn SignalfiltermedianLayer::to_string(Self) -> String
+
+pub(all) struct SignalfiltermedianMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalfiltermedianMatrix::add(Self, Self) -> Self
+pub fn SignalfiltermedianMatrix::det(Self) -> Double
+pub fn SignalfiltermedianMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalfiltermedianMatrix::multiply(Self, Self) -> Self
+pub fn SignalfiltermedianMatrix::norm(Self) -> Double
+pub fn SignalfiltermedianMatrix::scale(Self, Double) -> Self
+pub fn SignalfiltermedianMatrix::to_string(Self) -> String
+pub fn SignalfiltermedianMatrix::trace(Self) -> Double
+pub fn SignalfiltermedianMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalfiltermedianModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfiltermedianModel::add(Self, Self) -> Self
+pub fn SignalfiltermedianModel::copy(Self) -> Self
+pub fn SignalfiltermedianModel::fill(Self, Double) -> Self
+pub fn SignalfiltermedianModel::get(Self, Int32) -> Double
+pub fn SignalfiltermedianModel::len(Self) -> Int32
+pub fn SignalfiltermedianModel::max(Self) -> Double
+pub fn SignalfiltermedianModel::mean(Self) -> Double
+pub fn SignalfiltermedianModel::min(Self) -> Double
+pub fn SignalfiltermedianModel::scale(Self, Double) -> Self
+pub fn SignalfiltermedianModel::set(Self, Int32, Double) -> Self
+pub fn SignalfiltermedianModel::sum(Self) -> Double
+pub fn SignalfiltermedianModel::to_string(Self) -> String
+
+pub(all) struct SignalfiltermedianNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfiltermedianNode::add(Self, Self) -> Self
+pub fn SignalfiltermedianNode::copy(Self) -> Self
+pub fn SignalfiltermedianNode::fill(Self, Double) -> Self
+pub fn SignalfiltermedianNode::get(Self, Int32) -> Double
+pub fn SignalfiltermedianNode::len(Self) -> Int32
+pub fn SignalfiltermedianNode::max(Self) -> Double
+pub fn SignalfiltermedianNode::mean(Self) -> Double
+pub fn SignalfiltermedianNode::min(Self) -> Double
+pub fn SignalfiltermedianNode::scale(Self, Double) -> Self
+pub fn SignalfiltermedianNode::set(Self, Int32, Double) -> Self
+pub fn SignalfiltermedianNode::sum(Self) -> Double
+pub fn SignalfiltermedianNode::to_string(Self) -> String
+
+pub(all) struct SignalfiltermedianPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfiltermedianPath::add(Self, Self) -> Self
+pub fn SignalfiltermedianPath::copy(Self) -> Self
+pub fn SignalfiltermedianPath::fill(Self, Double) -> Self
+pub fn SignalfiltermedianPath::get(Self, Int32) -> Double
+pub fn SignalfiltermedianPath::len(Self) -> Int32
+pub fn SignalfiltermedianPath::max(Self) -> Double
+pub fn SignalfiltermedianPath::mean(Self) -> Double
+pub fn SignalfiltermedianPath::min(Self) -> Double
+pub fn SignalfiltermedianPath::scale(Self, Double) -> Self
+pub fn SignalfiltermedianPath::set(Self, Int32, Double) -> Self
+pub fn SignalfiltermedianPath::sum(Self) -> Double
+pub fn SignalfiltermedianPath::to_string(Self) -> String
+
+pub(all) struct SignalfiltermedianPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalfiltermedianPoint::add(Self, Self) -> Self
+pub fn SignalfiltermedianPoint::cross(Self, Self) -> Self
+pub fn SignalfiltermedianPoint::dist(Self, Self) -> Double
+pub fn SignalfiltermedianPoint::dot(Self, Self) -> Double
+pub fn SignalfiltermedianPoint::label(Self) -> Int32
+pub fn SignalfiltermedianPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalfiltermedianPoint::mid(Self, Self) -> Self
+pub fn SignalfiltermedianPoint::negate(Self) -> Self
+pub fn SignalfiltermedianPoint::norm(Self) -> Double
+pub fn SignalfiltermedianPoint::normalize(Self) -> Self
+pub fn SignalfiltermedianPoint::scale(Self, Double) -> Self
+pub fn SignalfiltermedianPoint::sub(Self, Self) -> Self
+pub fn SignalfiltermedianPoint::to_string(Self) -> String
+pub fn SignalfiltermedianPoint::x(Self) -> Double
+pub fn SignalfiltermedianPoint::y(Self) -> Double
+pub fn SignalfiltermedianPoint::z(Self) -> Double
+
+pub(all) struct SignalfiltermedianRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfiltermedianRange::add(Self, Self) -> Self
+pub fn SignalfiltermedianRange::copy(Self) -> Self
+pub fn SignalfiltermedianRange::fill(Self, Double) -> Self
+pub fn SignalfiltermedianRange::get(Self, Int32) -> Double
+pub fn SignalfiltermedianRange::len(Self) -> Int32
+pub fn SignalfiltermedianRange::max(Self) -> Double
+pub fn SignalfiltermedianRange::mean(Self) -> Double
+pub fn SignalfiltermedianRange::min(Self) -> Double
+pub fn SignalfiltermedianRange::scale(Self, Double) -> Self
+pub fn SignalfiltermedianRange::set(Self, Int32, Double) -> Self
+pub fn SignalfiltermedianRange::sum(Self) -> Double
+pub fn SignalfiltermedianRange::to_string(Self) -> String
+
+pub(all) struct SignalfiltermedianSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalfiltermedianSeries::add(Self, Self) -> Self
+pub fn SignalfiltermedianSeries::cumsum(Self) -> Self
+pub fn SignalfiltermedianSeries::len(Self) -> Int32
+pub fn SignalfiltermedianSeries::max(Self) -> Double
+pub fn SignalfiltermedianSeries::mean(Self) -> Double
+pub fn SignalfiltermedianSeries::median(Self) -> Double
+pub fn SignalfiltermedianSeries::min(Self) -> Double
+pub fn SignalfiltermedianSeries::normalize(Self) -> Self
+pub fn SignalfiltermedianSeries::range(Self) -> Double
+pub fn SignalfiltermedianSeries::scale(Self, Double) -> Self
+pub fn SignalfiltermedianSeries::std(Self) -> Double
+pub fn SignalfiltermedianSeries::sub(Self, Self) -> Self
+pub fn SignalfiltermedianSeries::sum(Self) -> Double
+pub fn SignalfiltermedianSeries::to_string(Self) -> String
+pub fn SignalfiltermedianSeries::variance(Self) -> Double
+
+pub(all) struct SignalfiltermedianSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfiltermedianSlice::add(Self, Self) -> Self
+pub fn SignalfiltermedianSlice::copy(Self) -> Self
+pub fn SignalfiltermedianSlice::fill(Self, Double) -> Self
+pub fn SignalfiltermedianSlice::get(Self, Int32) -> Double
+pub fn SignalfiltermedianSlice::len(Self) -> Int32
+pub fn SignalfiltermedianSlice::max(Self) -> Double
+pub fn SignalfiltermedianSlice::mean(Self) -> Double
+pub fn SignalfiltermedianSlice::min(Self) -> Double
+pub fn SignalfiltermedianSlice::scale(Self, Double) -> Self
+pub fn SignalfiltermedianSlice::set(Self, Int32, Double) -> Self
+pub fn SignalfiltermedianSlice::sum(Self) -> Double
+pub fn SignalfiltermedianSlice::to_string(Self) -> String
+
+pub(all) struct SignalfiltermedianTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfiltermedianTable::add(Self, Self) -> Self
+pub fn SignalfiltermedianTable::copy(Self) -> Self
+pub fn SignalfiltermedianTable::fill(Self, Double) -> Self
+pub fn SignalfiltermedianTable::get(Self, Int32) -> Double
+pub fn SignalfiltermedianTable::len(Self) -> Int32
+pub fn SignalfiltermedianTable::max(Self) -> Double
+pub fn SignalfiltermedianTable::mean(Self) -> Double
+pub fn SignalfiltermedianTable::min(Self) -> Double
+pub fn SignalfiltermedianTable::scale(Self, Double) -> Self
+pub fn SignalfiltermedianTable::set(Self, Int32, Double) -> Self
+pub fn SignalfiltermedianTable::sum(Self) -> Double
+pub fn SignalfiltermedianTable::to_string(Self) -> String
+
+pub(all) struct SignalfiltermedianVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalfiltermedianVector::add(Self, Self) -> Self
+pub fn SignalfiltermedianVector::dist(Self, Self) -> Double
+pub fn SignalfiltermedianVector::dot(Self, Self) -> Double
+pub fn SignalfiltermedianVector::norm(Self) -> Double
+pub fn SignalfiltermedianVector::normalize(Self) -> Self
+pub fn SignalfiltermedianVector::scale(Self, Double) -> Self
+pub fn SignalfiltermedianVector::sub(Self, Self) -> Self
+pub fn SignalfiltermedianVector::to_string(Self) -> String
+
+pub(all) struct SignalfiltermedianView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfiltermedianView::add(Self, Self) -> Self
+pub fn SignalfiltermedianView::copy(Self) -> Self
+pub fn SignalfiltermedianView::fill(Self, Double) -> Self
+pub fn SignalfiltermedianView::get(Self, Int32) -> Double
+pub fn SignalfiltermedianView::len(Self) -> Int32
+pub fn SignalfiltermedianView::max(Self) -> Double
+pub fn SignalfiltermedianView::mean(Self) -> Double
+pub fn SignalfiltermedianView::min(Self) -> Double
+pub fn SignalfiltermedianView::scale(Self, Double) -> Self
+pub fn SignalfiltermedianView::set(Self, Int32, Double) -> Self
+pub fn SignalfiltermedianView::sum(Self) -> Double
+pub fn SignalfiltermedianView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

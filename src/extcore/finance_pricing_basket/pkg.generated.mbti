@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/finance_pricing_basket"
+
+// Values
+pub fn finance_pricing_basket_buffer_make(Int32) -> FinancepricingbasketBuffer
+
+pub fn finance_pricing_basket_cluster_make(Int32) -> FinancepricingbasketCluster
+
+pub fn finance_pricing_basket_cursor_make(Int32) -> FinancepricingbasketCursor
+
+pub fn finance_pricing_basket_edge_make(Int32) -> FinancepricingbasketEdge
+
+pub fn finance_pricing_basket_frame_make(Int32) -> FinancepricingbasketFrame
+
+pub fn finance_pricing_basket_graphn_make(Int32) -> FinancepricingbasketGraphN
+
+pub fn finance_pricing_basket_layer_make(Int32) -> FinancepricingbasketLayer
+
+pub fn finance_pricing_basket_make_matrix(Int32, Int32, Double) -> FinancepricingbasketMatrix
+
+pub fn finance_pricing_basket_make_point(Double, Double) -> FinancepricingbasketPoint
+
+pub fn finance_pricing_basket_make_point3(Double, Double, Double) -> FinancepricingbasketPoint
+
+pub fn finance_pricing_basket_make_series(Array[Double], String) -> FinancepricingbasketSeries
+
+pub fn finance_pricing_basket_make_vector(Array[Double]) -> FinancepricingbasketVector
+
+pub fn finance_pricing_basket_matrix_identity(Int32) -> FinancepricingbasketMatrix
+
+pub fn finance_pricing_basket_model_make(Int32) -> FinancepricingbasketModel
+
+pub fn finance_pricing_basket_node_make(Int32) -> FinancepricingbasketNode
+
+pub fn finance_pricing_basket_path_make(Int32) -> FinancepricingbasketPath
+
+pub fn finance_pricing_basket_range_make(Int32) -> FinancepricingbasketRange
+
+pub fn finance_pricing_basket_slice_make(Int32) -> FinancepricingbasketSlice
+
+pub fn finance_pricing_basket_table_make(Int32) -> FinancepricingbasketTable
+
+pub fn finance_pricing_basket_vector_zero(Int32) -> FinancepricingbasketVector
+
+pub fn finance_pricing_basket_view_make(Int32) -> FinancepricingbasketView
+
+// Errors
+
+// Types and methods
+pub(all) struct FinancepricingbasketBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbasketBuffer::add(Self, Self) -> Self
+pub fn FinancepricingbasketBuffer::copy(Self) -> Self
+pub fn FinancepricingbasketBuffer::fill(Self, Double) -> Self
+pub fn FinancepricingbasketBuffer::get(Self, Int32) -> Double
+pub fn FinancepricingbasketBuffer::len(Self) -> Int32
+pub fn FinancepricingbasketBuffer::max(Self) -> Double
+pub fn FinancepricingbasketBuffer::mean(Self) -> Double
+pub fn FinancepricingbasketBuffer::min(Self) -> Double
+pub fn FinancepricingbasketBuffer::scale(Self, Double) -> Self
+pub fn FinancepricingbasketBuffer::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbasketBuffer::sum(Self) -> Double
+pub fn FinancepricingbasketBuffer::to_string(Self) -> String
+
+pub(all) struct FinancepricingbasketCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbasketCluster::add(Self, Self) -> Self
+pub fn FinancepricingbasketCluster::copy(Self) -> Self
+pub fn FinancepricingbasketCluster::fill(Self, Double) -> Self
+pub fn FinancepricingbasketCluster::get(Self, Int32) -> Double
+pub fn FinancepricingbasketCluster::len(Self) -> Int32
+pub fn FinancepricingbasketCluster::max(Self) -> Double
+pub fn FinancepricingbasketCluster::mean(Self) -> Double
+pub fn FinancepricingbasketCluster::min(Self) -> Double
+pub fn FinancepricingbasketCluster::scale(Self, Double) -> Self
+pub fn FinancepricingbasketCluster::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbasketCluster::sum(Self) -> Double
+pub fn FinancepricingbasketCluster::to_string(Self) -> String
+
+pub(all) struct FinancepricingbasketCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbasketCursor::add(Self, Self) -> Self
+pub fn FinancepricingbasketCursor::copy(Self) -> Self
+pub fn FinancepricingbasketCursor::fill(Self, Double) -> Self
+pub fn FinancepricingbasketCursor::get(Self, Int32) -> Double
+pub fn FinancepricingbasketCursor::len(Self) -> Int32
+pub fn FinancepricingbasketCursor::max(Self) -> Double
+pub fn FinancepricingbasketCursor::mean(Self) -> Double
+pub fn FinancepricingbasketCursor::min(Self) -> Double
+pub fn FinancepricingbasketCursor::scale(Self, Double) -> Self
+pub fn FinancepricingbasketCursor::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbasketCursor::sum(Self) -> Double
+pub fn FinancepricingbasketCursor::to_string(Self) -> String
+
+pub(all) struct FinancepricingbasketEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbasketEdge::add(Self, Self) -> Self
+pub fn FinancepricingbasketEdge::copy(Self) -> Self
+pub fn FinancepricingbasketEdge::fill(Self, Double) -> Self
+pub fn FinancepricingbasketEdge::get(Self, Int32) -> Double
+pub fn FinancepricingbasketEdge::len(Self) -> Int32
+pub fn FinancepricingbasketEdge::max(Self) -> Double
+pub fn FinancepricingbasketEdge::mean(Self) -> Double
+pub fn FinancepricingbasketEdge::min(Self) -> Double
+pub fn FinancepricingbasketEdge::scale(Self, Double) -> Self
+pub fn FinancepricingbasketEdge::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbasketEdge::sum(Self) -> Double
+pub fn FinancepricingbasketEdge::to_string(Self) -> String
+
+pub(all) struct FinancepricingbasketFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbasketFrame::add(Self, Self) -> Self
+pub fn FinancepricingbasketFrame::copy(Self) -> Self
+pub fn FinancepricingbasketFrame::fill(Self, Double) -> Self
+pub fn FinancepricingbasketFrame::get(Self, Int32) -> Double
+pub fn FinancepricingbasketFrame::len(Self) -> Int32
+pub fn FinancepricingbasketFrame::max(Self) -> Double
+pub fn FinancepricingbasketFrame::mean(Self) -> Double
+pub fn FinancepricingbasketFrame::min(Self) -> Double
+pub fn FinancepricingbasketFrame::scale(Self, Double) -> Self
+pub fn FinancepricingbasketFrame::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbasketFrame::sum(Self) -> Double
+pub fn FinancepricingbasketFrame::to_string(Self) -> String
+
+pub(all) struct FinancepricingbasketGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbasketGraphN::add(Self, Self) -> Self
+pub fn FinancepricingbasketGraphN::copy(Self) -> Self
+pub fn FinancepricingbasketGraphN::fill(Self, Double) -> Self
+pub fn FinancepricingbasketGraphN::get(Self, Int32) -> Double
+pub fn FinancepricingbasketGraphN::len(Self) -> Int32
+pub fn FinancepricingbasketGraphN::max(Self) -> Double
+pub fn FinancepricingbasketGraphN::mean(Self) -> Double
+pub fn FinancepricingbasketGraphN::min(Self) -> Double
+pub fn FinancepricingbasketGraphN::scale(Self, Double) -> Self
+pub fn FinancepricingbasketGraphN::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbasketGraphN::sum(Self) -> Double
+pub fn FinancepricingbasketGraphN::to_string(Self) -> String
+
+pub(all) struct FinancepricingbasketLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbasketLayer::add(Self, Self) -> Self
+pub fn FinancepricingbasketLayer::copy(Self) -> Self
+pub fn FinancepricingbasketLayer::fill(Self, Double) -> Self
+pub fn FinancepricingbasketLayer::get(Self, Int32) -> Double
+pub fn FinancepricingbasketLayer::len(Self) -> Int32
+pub fn FinancepricingbasketLayer::max(Self) -> Double
+pub fn FinancepricingbasketLayer::mean(Self) -> Double
+pub fn FinancepricingbasketLayer::min(Self) -> Double
+pub fn FinancepricingbasketLayer::scale(Self, Double) -> Self
+pub fn FinancepricingbasketLayer::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbasketLayer::sum(Self) -> Double
+pub fn FinancepricingbasketLayer::to_string(Self) -> String
+
+pub(all) struct FinancepricingbasketMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn FinancepricingbasketMatrix::add(Self, Self) -> Self
+pub fn FinancepricingbasketMatrix::det(Self) -> Double
+pub fn FinancepricingbasketMatrix::get(Self, Int32, Int32) -> Double
+pub fn FinancepricingbasketMatrix::multiply(Self, Self) -> Self
+pub fn FinancepricingbasketMatrix::norm(Self) -> Double
+pub fn FinancepricingbasketMatrix::scale(Self, Double) -> Self
+pub fn FinancepricingbasketMatrix::to_string(Self) -> String
+pub fn FinancepricingbasketMatrix::trace(Self) -> Double
+pub fn FinancepricingbasketMatrix::transpose(Self) -> Self
+
+pub(all) struct FinancepricingbasketModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbasketModel::add(Self, Self) -> Self
+pub fn FinancepricingbasketModel::copy(Self) -> Self
+pub fn FinancepricingbasketModel::fill(Self, Double) -> Self
+pub fn FinancepricingbasketModel::get(Self, Int32) -> Double
+pub fn FinancepricingbasketModel::len(Self) -> Int32
+pub fn FinancepricingbasketModel::max(Self) -> Double
+pub fn FinancepricingbasketModel::mean(Self) -> Double
+pub fn FinancepricingbasketModel::min(Self) -> Double
+pub fn FinancepricingbasketModel::scale(Self, Double) -> Self
+pub fn FinancepricingbasketModel::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbasketModel::sum(Self) -> Double
+pub fn FinancepricingbasketModel::to_string(Self) -> String
+
+pub(all) struct FinancepricingbasketNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbasketNode::add(Self, Self) -> Self
+pub fn FinancepricingbasketNode::copy(Self) -> Self
+pub fn FinancepricingbasketNode::fill(Self, Double) -> Self
+pub fn FinancepricingbasketNode::get(Self, Int32) -> Double
+pub fn FinancepricingbasketNode::len(Self) -> Int32
+pub fn FinancepricingbasketNode::max(Self) -> Double
+pub fn FinancepricingbasketNode::mean(Self) -> Double
+pub fn FinancepricingbasketNode::min(Self) -> Double
+pub fn FinancepricingbasketNode::scale(Self, Double) -> Self
+pub fn FinancepricingbasketNode::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbasketNode::sum(Self) -> Double
+pub fn FinancepricingbasketNode::to_string(Self) -> String
+
+pub(all) struct FinancepricingbasketPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbasketPath::add(Self, Self) -> Self
+pub fn FinancepricingbasketPath::copy(Self) -> Self
+pub fn FinancepricingbasketPath::fill(Self, Double) -> Self
+pub fn FinancepricingbasketPath::get(Self, Int32) -> Double
+pub fn FinancepricingbasketPath::len(Self) -> Int32
+pub fn FinancepricingbasketPath::max(Self) -> Double
+pub fn FinancepricingbasketPath::mean(Self) -> Double
+pub fn FinancepricingbasketPath::min(Self) -> Double
+pub fn FinancepricingbasketPath::scale(Self, Double) -> Self
+pub fn FinancepricingbasketPath::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbasketPath::sum(Self) -> Double
+pub fn FinancepricingbasketPath::to_string(Self) -> String
+
+pub(all) struct FinancepricingbasketPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn FinancepricingbasketPoint::add(Self, Self) -> Self
+pub fn FinancepricingbasketPoint::cross(Self, Self) -> Self
+pub fn FinancepricingbasketPoint::dist(Self, Self) -> Double
+pub fn FinancepricingbasketPoint::dot(Self, Self) -> Double
+pub fn FinancepricingbasketPoint::label(Self) -> Int32
+pub fn FinancepricingbasketPoint::lerp(Self, Self, Double) -> Self
+pub fn FinancepricingbasketPoint::mid(Self, Self) -> Self
+pub fn FinancepricingbasketPoint::negate(Self) -> Self
+pub fn FinancepricingbasketPoint::norm(Self) -> Double
+pub fn FinancepricingbasketPoint::normalize(Self) -> Self
+pub fn FinancepricingbasketPoint::scale(Self, Double) -> Self
+pub fn FinancepricingbasketPoint::sub(Self, Self) -> Self
+pub fn FinancepricingbasketPoint::to_string(Self) -> String
+pub fn FinancepricingbasketPoint::x(Self) -> Double
+pub fn FinancepricingbasketPoint::y(Self) -> Double
+pub fn FinancepricingbasketPoint::z(Self) -> Double
+
+pub(all) struct FinancepricingbasketRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbasketRange::add(Self, Self) -> Self
+pub fn FinancepricingbasketRange::copy(Self) -> Self
+pub fn FinancepricingbasketRange::fill(Self, Double) -> Self
+pub fn FinancepricingbasketRange::get(Self, Int32) -> Double
+pub fn FinancepricingbasketRange::len(Self) -> Int32
+pub fn FinancepricingbasketRange::max(Self) -> Double
+pub fn FinancepricingbasketRange::mean(Self) -> Double
+pub fn FinancepricingbasketRange::min(Self) -> Double
+pub fn FinancepricingbasketRange::scale(Self, Double) -> Self
+pub fn FinancepricingbasketRange::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbasketRange::sum(Self) -> Double
+pub fn FinancepricingbasketRange::to_string(Self) -> String
+
+pub(all) struct FinancepricingbasketSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn FinancepricingbasketSeries::add(Self, Self) -> Self
+pub fn FinancepricingbasketSeries::cumsum(Self) -> Self
+pub fn FinancepricingbasketSeries::len(Self) -> Int32
+pub fn FinancepricingbasketSeries::max(Self) -> Double
+pub fn FinancepricingbasketSeries::mean(Self) -> Double
+pub fn FinancepricingbasketSeries::median(Self) -> Double
+pub fn FinancepricingbasketSeries::min(Self) -> Double
+pub fn FinancepricingbasketSeries::normalize(Self) -> Self
+pub fn FinancepricingbasketSeries::range(Self) -> Double
+pub fn FinancepricingbasketSeries::scale(Self, Double) -> Self
+pub fn FinancepricingbasketSeries::std(Self) -> Double
+pub fn FinancepricingbasketSeries::sub(Self, Self) -> Self
+pub fn FinancepricingbasketSeries::sum(Self) -> Double
+pub fn FinancepricingbasketSeries::to_string(Self) -> String
+pub fn FinancepricingbasketSeries::variance(Self) -> Double
+
+pub(all) struct FinancepricingbasketSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbasketSlice::add(Self, Self) -> Self
+pub fn FinancepricingbasketSlice::copy(Self) -> Self
+pub fn FinancepricingbasketSlice::fill(Self, Double) -> Self
+pub fn FinancepricingbasketSlice::get(Self, Int32) -> Double
+pub fn FinancepricingbasketSlice::len(Self) -> Int32
+pub fn FinancepricingbasketSlice::max(Self) -> Double
+pub fn FinancepricingbasketSlice::mean(Self) -> Double
+pub fn FinancepricingbasketSlice::min(Self) -> Double
+pub fn FinancepricingbasketSlice::scale(Self, Double) -> Self
+pub fn FinancepricingbasketSlice::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbasketSlice::sum(Self) -> Double
+pub fn FinancepricingbasketSlice::to_string(Self) -> String
+
+pub(all) struct FinancepricingbasketTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbasketTable::add(Self, Self) -> Self
+pub fn FinancepricingbasketTable::copy(Self) -> Self
+pub fn FinancepricingbasketTable::fill(Self, Double) -> Self
+pub fn FinancepricingbasketTable::get(Self, Int32) -> Double
+pub fn FinancepricingbasketTable::len(Self) -> Int32
+pub fn FinancepricingbasketTable::max(Self) -> Double
+pub fn FinancepricingbasketTable::mean(Self) -> Double
+pub fn FinancepricingbasketTable::min(Self) -> Double
+pub fn FinancepricingbasketTable::scale(Self, Double) -> Self
+pub fn FinancepricingbasketTable::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbasketTable::sum(Self) -> Double
+pub fn FinancepricingbasketTable::to_string(Self) -> String
+
+pub(all) struct FinancepricingbasketVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn FinancepricingbasketVector::add(Self, Self) -> Self
+pub fn FinancepricingbasketVector::dist(Self, Self) -> Double
+pub fn FinancepricingbasketVector::dot(Self, Self) -> Double
+pub fn FinancepricingbasketVector::norm(Self) -> Double
+pub fn FinancepricingbasketVector::normalize(Self) -> Self
+pub fn FinancepricingbasketVector::scale(Self, Double) -> Self
+pub fn FinancepricingbasketVector::sub(Self, Self) -> Self
+pub fn FinancepricingbasketVector::to_string(Self) -> String
+
+pub(all) struct FinancepricingbasketView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbasketView::add(Self, Self) -> Self
+pub fn FinancepricingbasketView::copy(Self) -> Self
+pub fn FinancepricingbasketView::fill(Self, Double) -> Self
+pub fn FinancepricingbasketView::get(Self, Int32) -> Double
+pub fn FinancepricingbasketView::len(Self) -> Int32
+pub fn FinancepricingbasketView::max(Self) -> Double
+pub fn FinancepricingbasketView::mean(Self) -> Double
+pub fn FinancepricingbasketView::min(Self) -> Double
+pub fn FinancepricingbasketView::scale(Self, Double) -> Self
+pub fn FinancepricingbasketView::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbasketView::sum(Self) -> Double
+pub fn FinancepricingbasketView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

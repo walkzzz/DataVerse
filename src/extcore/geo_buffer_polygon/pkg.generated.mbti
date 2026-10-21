@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_buffer_polygon"
+
+// Values
+pub fn geo_buffer_polygon_buffer_make(Int32) -> GeobufferpolygonBuffer
+
+pub fn geo_buffer_polygon_cluster_make(Int32) -> GeobufferpolygonCluster
+
+pub fn geo_buffer_polygon_cursor_make(Int32) -> GeobufferpolygonCursor
+
+pub fn geo_buffer_polygon_edge_make(Int32) -> GeobufferpolygonEdge
+
+pub fn geo_buffer_polygon_frame_make(Int32) -> GeobufferpolygonFrame
+
+pub fn geo_buffer_polygon_graphn_make(Int32) -> GeobufferpolygonGraphN
+
+pub fn geo_buffer_polygon_layer_make(Int32) -> GeobufferpolygonLayer
+
+pub fn geo_buffer_polygon_make_matrix(Int32, Int32, Double) -> GeobufferpolygonMatrix
+
+pub fn geo_buffer_polygon_make_point(Double, Double) -> GeobufferpolygonPoint
+
+pub fn geo_buffer_polygon_make_point3(Double, Double, Double) -> GeobufferpolygonPoint
+
+pub fn geo_buffer_polygon_make_series(Array[Double], String) -> GeobufferpolygonSeries
+
+pub fn geo_buffer_polygon_make_vector(Array[Double]) -> GeobufferpolygonVector
+
+pub fn geo_buffer_polygon_matrix_identity(Int32) -> GeobufferpolygonMatrix
+
+pub fn geo_buffer_polygon_model_make(Int32) -> GeobufferpolygonModel
+
+pub fn geo_buffer_polygon_node_make(Int32) -> GeobufferpolygonNode
+
+pub fn geo_buffer_polygon_path_make(Int32) -> GeobufferpolygonPath
+
+pub fn geo_buffer_polygon_range_make(Int32) -> GeobufferpolygonRange
+
+pub fn geo_buffer_polygon_slice_make(Int32) -> GeobufferpolygonSlice
+
+pub fn geo_buffer_polygon_table_make(Int32) -> GeobufferpolygonTable
+
+pub fn geo_buffer_polygon_vector_zero(Int32) -> GeobufferpolygonVector
+
+pub fn geo_buffer_polygon_view_make(Int32) -> GeobufferpolygonView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeobufferpolygonBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobufferpolygonBuffer::add(Self, Self) -> Self
+pub fn GeobufferpolygonBuffer::copy(Self) -> Self
+pub fn GeobufferpolygonBuffer::fill(Self, Double) -> Self
+pub fn GeobufferpolygonBuffer::get(Self, Int32) -> Double
+pub fn GeobufferpolygonBuffer::len(Self) -> Int32
+pub fn GeobufferpolygonBuffer::max(Self) -> Double
+pub fn GeobufferpolygonBuffer::mean(Self) -> Double
+pub fn GeobufferpolygonBuffer::min(Self) -> Double
+pub fn GeobufferpolygonBuffer::scale(Self, Double) -> Self
+pub fn GeobufferpolygonBuffer::set(Self, Int32, Double) -> Self
+pub fn GeobufferpolygonBuffer::sum(Self) -> Double
+pub fn GeobufferpolygonBuffer::to_string(Self) -> String
+
+pub(all) struct GeobufferpolygonCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobufferpolygonCluster::add(Self, Self) -> Self
+pub fn GeobufferpolygonCluster::copy(Self) -> Self
+pub fn GeobufferpolygonCluster::fill(Self, Double) -> Self
+pub fn GeobufferpolygonCluster::get(Self, Int32) -> Double
+pub fn GeobufferpolygonCluster::len(Self) -> Int32
+pub fn GeobufferpolygonCluster::max(Self) -> Double
+pub fn GeobufferpolygonCluster::mean(Self) -> Double
+pub fn GeobufferpolygonCluster::min(Self) -> Double
+pub fn GeobufferpolygonCluster::scale(Self, Double) -> Self
+pub fn GeobufferpolygonCluster::set(Self, Int32, Double) -> Self
+pub fn GeobufferpolygonCluster::sum(Self) -> Double
+pub fn GeobufferpolygonCluster::to_string(Self) -> String
+
+pub(all) struct GeobufferpolygonCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobufferpolygonCursor::add(Self, Self) -> Self
+pub fn GeobufferpolygonCursor::copy(Self) -> Self
+pub fn GeobufferpolygonCursor::fill(Self, Double) -> Self
+pub fn GeobufferpolygonCursor::get(Self, Int32) -> Double
+pub fn GeobufferpolygonCursor::len(Self) -> Int32
+pub fn GeobufferpolygonCursor::max(Self) -> Double
+pub fn GeobufferpolygonCursor::mean(Self) -> Double
+pub fn GeobufferpolygonCursor::min(Self) -> Double
+pub fn GeobufferpolygonCursor::scale(Self, Double) -> Self
+pub fn GeobufferpolygonCursor::set(Self, Int32, Double) -> Self
+pub fn GeobufferpolygonCursor::sum(Self) -> Double
+pub fn GeobufferpolygonCursor::to_string(Self) -> String
+
+pub(all) struct GeobufferpolygonEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobufferpolygonEdge::add(Self, Self) -> Self
+pub fn GeobufferpolygonEdge::copy(Self) -> Self
+pub fn GeobufferpolygonEdge::fill(Self, Double) -> Self
+pub fn GeobufferpolygonEdge::get(Self, Int32) -> Double
+pub fn GeobufferpolygonEdge::len(Self) -> Int32
+pub fn GeobufferpolygonEdge::max(Self) -> Double
+pub fn GeobufferpolygonEdge::mean(Self) -> Double
+pub fn GeobufferpolygonEdge::min(Self) -> Double
+pub fn GeobufferpolygonEdge::scale(Self, Double) -> Self
+pub fn GeobufferpolygonEdge::set(Self, Int32, Double) -> Self
+pub fn GeobufferpolygonEdge::sum(Self) -> Double
+pub fn GeobufferpolygonEdge::to_string(Self) -> String
+
+pub(all) struct GeobufferpolygonFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobufferpolygonFrame::add(Self, Self) -> Self
+pub fn GeobufferpolygonFrame::copy(Self) -> Self
+pub fn GeobufferpolygonFrame::fill(Self, Double) -> Self
+pub fn GeobufferpolygonFrame::get(Self, Int32) -> Double
+pub fn GeobufferpolygonFrame::len(Self) -> Int32
+pub fn GeobufferpolygonFrame::max(Self) -> Double
+pub fn GeobufferpolygonFrame::mean(Self) -> Double
+pub fn GeobufferpolygonFrame::min(Self) -> Double
+pub fn GeobufferpolygonFrame::scale(Self, Double) -> Self
+pub fn GeobufferpolygonFrame::set(Self, Int32, Double) -> Self
+pub fn GeobufferpolygonFrame::sum(Self) -> Double
+pub fn GeobufferpolygonFrame::to_string(Self) -> String
+
+pub(all) struct GeobufferpolygonGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobufferpolygonGraphN::add(Self, Self) -> Self
+pub fn GeobufferpolygonGraphN::copy(Self) -> Self
+pub fn GeobufferpolygonGraphN::fill(Self, Double) -> Self
+pub fn GeobufferpolygonGraphN::get(Self, Int32) -> Double
+pub fn GeobufferpolygonGraphN::len(Self) -> Int32
+pub fn GeobufferpolygonGraphN::max(Self) -> Double
+pub fn GeobufferpolygonGraphN::mean(Self) -> Double
+pub fn GeobufferpolygonGraphN::min(Self) -> Double
+pub fn GeobufferpolygonGraphN::scale(Self, Double) -> Self
+pub fn GeobufferpolygonGraphN::set(Self, Int32, Double) -> Self
+pub fn GeobufferpolygonGraphN::sum(Self) -> Double
+pub fn GeobufferpolygonGraphN::to_string(Self) -> String
+
+pub(all) struct GeobufferpolygonLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobufferpolygonLayer::add(Self, Self) -> Self
+pub fn GeobufferpolygonLayer::copy(Self) -> Self
+pub fn GeobufferpolygonLayer::fill(Self, Double) -> Self
+pub fn GeobufferpolygonLayer::get(Self, Int32) -> Double
+pub fn GeobufferpolygonLayer::len(Self) -> Int32
+pub fn GeobufferpolygonLayer::max(Self) -> Double
+pub fn GeobufferpolygonLayer::mean(Self) -> Double
+pub fn GeobufferpolygonLayer::min(Self) -> Double
+pub fn GeobufferpolygonLayer::scale(Self, Double) -> Self
+pub fn GeobufferpolygonLayer::set(Self, Int32, Double) -> Self
+pub fn GeobufferpolygonLayer::sum(Self) -> Double
+pub fn GeobufferpolygonLayer::to_string(Self) -> String
+
+pub(all) struct GeobufferpolygonMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeobufferpolygonMatrix::add(Self, Self) -> Self
+pub fn GeobufferpolygonMatrix::det(Self) -> Double
+pub fn GeobufferpolygonMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeobufferpolygonMatrix::multiply(Self, Self) -> Self
+pub fn GeobufferpolygonMatrix::norm(Self) -> Double
+pub fn GeobufferpolygonMatrix::scale(Self, Double) -> Self
+pub fn GeobufferpolygonMatrix::to_string(Self) -> String
+pub fn GeobufferpolygonMatrix::trace(Self) -> Double
+pub fn GeobufferpolygonMatrix::transpose(Self) -> Self
+
+pub(all) struct GeobufferpolygonModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobufferpolygonModel::add(Self, Self) -> Self
+pub fn GeobufferpolygonModel::copy(Self) -> Self
+pub fn GeobufferpolygonModel::fill(Self, Double) -> Self
+pub fn GeobufferpolygonModel::get(Self, Int32) -> Double
+pub fn GeobufferpolygonModel::len(Self) -> Int32
+pub fn GeobufferpolygonModel::max(Self) -> Double
+pub fn GeobufferpolygonModel::mean(Self) -> Double
+pub fn GeobufferpolygonModel::min(Self) -> Double
+pub fn GeobufferpolygonModel::scale(Self, Double) -> Self
+pub fn GeobufferpolygonModel::set(Self, Int32, Double) -> Self
+pub fn GeobufferpolygonModel::sum(Self) -> Double
+pub fn GeobufferpolygonModel::to_string(Self) -> String
+
+pub(all) struct GeobufferpolygonNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobufferpolygonNode::add(Self, Self) -> Self
+pub fn GeobufferpolygonNode::copy(Self) -> Self
+pub fn GeobufferpolygonNode::fill(Self, Double) -> Self
+pub fn GeobufferpolygonNode::get(Self, Int32) -> Double
+pub fn GeobufferpolygonNode::len(Self) -> Int32
+pub fn GeobufferpolygonNode::max(Self) -> Double
+pub fn GeobufferpolygonNode::mean(Self) -> Double
+pub fn GeobufferpolygonNode::min(Self) -> Double
+pub fn GeobufferpolygonNode::scale(Self, Double) -> Self
+pub fn GeobufferpolygonNode::set(Self, Int32, Double) -> Self
+pub fn GeobufferpolygonNode::sum(Self) -> Double
+pub fn GeobufferpolygonNode::to_string(Self) -> String
+
+pub(all) struct GeobufferpolygonPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobufferpolygonPath::add(Self, Self) -> Self
+pub fn GeobufferpolygonPath::copy(Self) -> Self
+pub fn GeobufferpolygonPath::fill(Self, Double) -> Self
+pub fn GeobufferpolygonPath::get(Self, Int32) -> Double
+pub fn GeobufferpolygonPath::len(Self) -> Int32
+pub fn GeobufferpolygonPath::max(Self) -> Double
+pub fn GeobufferpolygonPath::mean(Self) -> Double
+pub fn GeobufferpolygonPath::min(Self) -> Double
+pub fn GeobufferpolygonPath::scale(Self, Double) -> Self
+pub fn GeobufferpolygonPath::set(Self, Int32, Double) -> Self
+pub fn GeobufferpolygonPath::sum(Self) -> Double
+pub fn GeobufferpolygonPath::to_string(Self) -> String
+
+pub(all) struct GeobufferpolygonPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeobufferpolygonPoint::add(Self, Self) -> Self
+pub fn GeobufferpolygonPoint::cross(Self, Self) -> Self
+pub fn GeobufferpolygonPoint::dist(Self, Self) -> Double
+pub fn GeobufferpolygonPoint::dot(Self, Self) -> Double
+pub fn GeobufferpolygonPoint::label(Self) -> Int32
+pub fn GeobufferpolygonPoint::lerp(Self, Self, Double) -> Self
+pub fn GeobufferpolygonPoint::mid(Self, Self) -> Self
+pub fn GeobufferpolygonPoint::negate(Self) -> Self
+pub fn GeobufferpolygonPoint::norm(Self) -> Double
+pub fn GeobufferpolygonPoint::normalize(Self) -> Self
+pub fn GeobufferpolygonPoint::scale(Self, Double) -> Self
+pub fn GeobufferpolygonPoint::sub(Self, Self) -> Self
+pub fn GeobufferpolygonPoint::to_string(Self) -> String
+pub fn GeobufferpolygonPoint::x(Self) -> Double
+pub fn GeobufferpolygonPoint::y(Self) -> Double
+pub fn GeobufferpolygonPoint::z(Self) -> Double
+
+pub(all) struct GeobufferpolygonRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobufferpolygonRange::add(Self, Self) -> Self
+pub fn GeobufferpolygonRange::copy(Self) -> Self
+pub fn GeobufferpolygonRange::fill(Self, Double) -> Self
+pub fn GeobufferpolygonRange::get(Self, Int32) -> Double
+pub fn GeobufferpolygonRange::len(Self) -> Int32
+pub fn GeobufferpolygonRange::max(Self) -> Double
+pub fn GeobufferpolygonRange::mean(Self) -> Double
+pub fn GeobufferpolygonRange::min(Self) -> Double
+pub fn GeobufferpolygonRange::scale(Self, Double) -> Self
+pub fn GeobufferpolygonRange::set(Self, Int32, Double) -> Self
+pub fn GeobufferpolygonRange::sum(Self) -> Double
+pub fn GeobufferpolygonRange::to_string(Self) -> String
+
+pub(all) struct GeobufferpolygonSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeobufferpolygonSeries::add(Self, Self) -> Self
+pub fn GeobufferpolygonSeries::cumsum(Self) -> Self
+pub fn GeobufferpolygonSeries::len(Self) -> Int32
+pub fn GeobufferpolygonSeries::max(Self) -> Double
+pub fn GeobufferpolygonSeries::mean(Self) -> Double
+pub fn GeobufferpolygonSeries::median(Self) -> Double
+pub fn GeobufferpolygonSeries::min(Self) -> Double
+pub fn GeobufferpolygonSeries::normalize(Self) -> Self
+pub fn GeobufferpolygonSeries::range(Self) -> Double
+pub fn GeobufferpolygonSeries::scale(Self, Double) -> Self
+pub fn GeobufferpolygonSeries::std(Self) -> Double
+pub fn GeobufferpolygonSeries::sub(Self, Self) -> Self
+pub fn GeobufferpolygonSeries::sum(Self) -> Double
+pub fn GeobufferpolygonSeries::to_string(Self) -> String
+pub fn GeobufferpolygonSeries::variance(Self) -> Double
+
+pub(all) struct GeobufferpolygonSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobufferpolygonSlice::add(Self, Self) -> Self
+pub fn GeobufferpolygonSlice::copy(Self) -> Self
+pub fn GeobufferpolygonSlice::fill(Self, Double) -> Self
+pub fn GeobufferpolygonSlice::get(Self, Int32) -> Double
+pub fn GeobufferpolygonSlice::len(Self) -> Int32
+pub fn GeobufferpolygonSlice::max(Self) -> Double
+pub fn GeobufferpolygonSlice::mean(Self) -> Double
+pub fn GeobufferpolygonSlice::min(Self) -> Double
+pub fn GeobufferpolygonSlice::scale(Self, Double) -> Self
+pub fn GeobufferpolygonSlice::set(Self, Int32, Double) -> Self
+pub fn GeobufferpolygonSlice::sum(Self) -> Double
+pub fn GeobufferpolygonSlice::to_string(Self) -> String
+
+pub(all) struct GeobufferpolygonTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobufferpolygonTable::add(Self, Self) -> Self
+pub fn GeobufferpolygonTable::copy(Self) -> Self
+pub fn GeobufferpolygonTable::fill(Self, Double) -> Self
+pub fn GeobufferpolygonTable::get(Self, Int32) -> Double
+pub fn GeobufferpolygonTable::len(Self) -> Int32
+pub fn GeobufferpolygonTable::max(Self) -> Double
+pub fn GeobufferpolygonTable::mean(Self) -> Double
+pub fn GeobufferpolygonTable::min(Self) -> Double
+pub fn GeobufferpolygonTable::scale(Self, Double) -> Self
+pub fn GeobufferpolygonTable::set(Self, Int32, Double) -> Self
+pub fn GeobufferpolygonTable::sum(Self) -> Double
+pub fn GeobufferpolygonTable::to_string(Self) -> String
+
+pub(all) struct GeobufferpolygonVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeobufferpolygonVector::add(Self, Self) -> Self
+pub fn GeobufferpolygonVector::dist(Self, Self) -> Double
+pub fn GeobufferpolygonVector::dot(Self, Self) -> Double
+pub fn GeobufferpolygonVector::norm(Self) -> Double
+pub fn GeobufferpolygonVector::normalize(Self) -> Self
+pub fn GeobufferpolygonVector::scale(Self, Double) -> Self
+pub fn GeobufferpolygonVector::sub(Self, Self) -> Self
+pub fn GeobufferpolygonVector::to_string(Self) -> String
+
+pub(all) struct GeobufferpolygonView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobufferpolygonView::add(Self, Self) -> Self
+pub fn GeobufferpolygonView::copy(Self) -> Self
+pub fn GeobufferpolygonView::fill(Self, Double) -> Self
+pub fn GeobufferpolygonView::get(Self, Int32) -> Double
+pub fn GeobufferpolygonView::len(Self) -> Int32
+pub fn GeobufferpolygonView::max(Self) -> Double
+pub fn GeobufferpolygonView::mean(Self) -> Double
+pub fn GeobufferpolygonView::min(Self) -> Double
+pub fn GeobufferpolygonView::scale(Self, Double) -> Self
+pub fn GeobufferpolygonView::set(Self, Int32, Double) -> Self
+pub fn GeobufferpolygonView::sum(Self) -> Double
+pub fn GeobufferpolygonView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

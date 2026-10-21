@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/opt_convex_trust_region"
+
+// Values
+pub fn opt_convex_trust_region_buffer_make(Int32) -> OptconvextrustregionBuffer
+
+pub fn opt_convex_trust_region_cluster_make(Int32) -> OptconvextrustregionCluster
+
+pub fn opt_convex_trust_region_cursor_make(Int32) -> OptconvextrustregionCursor
+
+pub fn opt_convex_trust_region_edge_make(Int32) -> OptconvextrustregionEdge
+
+pub fn opt_convex_trust_region_frame_make(Int32) -> OptconvextrustregionFrame
+
+pub fn opt_convex_trust_region_graphn_make(Int32) -> OptconvextrustregionGraphN
+
+pub fn opt_convex_trust_region_layer_make(Int32) -> OptconvextrustregionLayer
+
+pub fn opt_convex_trust_region_make_matrix(Int32, Int32, Double) -> OptconvextrustregionMatrix
+
+pub fn opt_convex_trust_region_make_point(Double, Double) -> OptconvextrustregionPoint
+
+pub fn opt_convex_trust_region_make_point3(Double, Double, Double) -> OptconvextrustregionPoint
+
+pub fn opt_convex_trust_region_make_series(Array[Double], String) -> OptconvextrustregionSeries
+
+pub fn opt_convex_trust_region_make_vector(Array[Double]) -> OptconvextrustregionVector
+
+pub fn opt_convex_trust_region_matrix_identity(Int32) -> OptconvextrustregionMatrix
+
+pub fn opt_convex_trust_region_model_make(Int32) -> OptconvextrustregionModel
+
+pub fn opt_convex_trust_region_node_make(Int32) -> OptconvextrustregionNode
+
+pub fn opt_convex_trust_region_path_make(Int32) -> OptconvextrustregionPath
+
+pub fn opt_convex_trust_region_range_make(Int32) -> OptconvextrustregionRange
+
+pub fn opt_convex_trust_region_slice_make(Int32) -> OptconvextrustregionSlice
+
+pub fn opt_convex_trust_region_table_make(Int32) -> OptconvextrustregionTable
+
+pub fn opt_convex_trust_region_vector_zero(Int32) -> OptconvextrustregionVector
+
+pub fn opt_convex_trust_region_view_make(Int32) -> OptconvextrustregionView
+
+// Errors
+
+// Types and methods
+pub(all) struct OptconvextrustregionBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvextrustregionBuffer::add(Self, Self) -> Self
+pub fn OptconvextrustregionBuffer::copy(Self) -> Self
+pub fn OptconvextrustregionBuffer::fill(Self, Double) -> Self
+pub fn OptconvextrustregionBuffer::get(Self, Int32) -> Double
+pub fn OptconvextrustregionBuffer::len(Self) -> Int32
+pub fn OptconvextrustregionBuffer::max(Self) -> Double
+pub fn OptconvextrustregionBuffer::mean(Self) -> Double
+pub fn OptconvextrustregionBuffer::min(Self) -> Double
+pub fn OptconvextrustregionBuffer::scale(Self, Double) -> Self
+pub fn OptconvextrustregionBuffer::set(Self, Int32, Double) -> Self
+pub fn OptconvextrustregionBuffer::sum(Self) -> Double
+pub fn OptconvextrustregionBuffer::to_string(Self) -> String
+
+pub(all) struct OptconvextrustregionCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvextrustregionCluster::add(Self, Self) -> Self
+pub fn OptconvextrustregionCluster::copy(Self) -> Self
+pub fn OptconvextrustregionCluster::fill(Self, Double) -> Self
+pub fn OptconvextrustregionCluster::get(Self, Int32) -> Double
+pub fn OptconvextrustregionCluster::len(Self) -> Int32
+pub fn OptconvextrustregionCluster::max(Self) -> Double
+pub fn OptconvextrustregionCluster::mean(Self) -> Double
+pub fn OptconvextrustregionCluster::min(Self) -> Double
+pub fn OptconvextrustregionCluster::scale(Self, Double) -> Self
+pub fn OptconvextrustregionCluster::set(Self, Int32, Double) -> Self
+pub fn OptconvextrustregionCluster::sum(Self) -> Double
+pub fn OptconvextrustregionCluster::to_string(Self) -> String
+
+pub(all) struct OptconvextrustregionCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvextrustregionCursor::add(Self, Self) -> Self
+pub fn OptconvextrustregionCursor::copy(Self) -> Self
+pub fn OptconvextrustregionCursor::fill(Self, Double) -> Self
+pub fn OptconvextrustregionCursor::get(Self, Int32) -> Double
+pub fn OptconvextrustregionCursor::len(Self) -> Int32
+pub fn OptconvextrustregionCursor::max(Self) -> Double
+pub fn OptconvextrustregionCursor::mean(Self) -> Double
+pub fn OptconvextrustregionCursor::min(Self) -> Double
+pub fn OptconvextrustregionCursor::scale(Self, Double) -> Self
+pub fn OptconvextrustregionCursor::set(Self, Int32, Double) -> Self
+pub fn OptconvextrustregionCursor::sum(Self) -> Double
+pub fn OptconvextrustregionCursor::to_string(Self) -> String
+
+pub(all) struct OptconvextrustregionEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvextrustregionEdge::add(Self, Self) -> Self
+pub fn OptconvextrustregionEdge::copy(Self) -> Self
+pub fn OptconvextrustregionEdge::fill(Self, Double) -> Self
+pub fn OptconvextrustregionEdge::get(Self, Int32) -> Double
+pub fn OptconvextrustregionEdge::len(Self) -> Int32
+pub fn OptconvextrustregionEdge::max(Self) -> Double
+pub fn OptconvextrustregionEdge::mean(Self) -> Double
+pub fn OptconvextrustregionEdge::min(Self) -> Double
+pub fn OptconvextrustregionEdge::scale(Self, Double) -> Self
+pub fn OptconvextrustregionEdge::set(Self, Int32, Double) -> Self
+pub fn OptconvextrustregionEdge::sum(Self) -> Double
+pub fn OptconvextrustregionEdge::to_string(Self) -> String
+
+pub(all) struct OptconvextrustregionFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvextrustregionFrame::add(Self, Self) -> Self
+pub fn OptconvextrustregionFrame::copy(Self) -> Self
+pub fn OptconvextrustregionFrame::fill(Self, Double) -> Self
+pub fn OptconvextrustregionFrame::get(Self, Int32) -> Double
+pub fn OptconvextrustregionFrame::len(Self) -> Int32
+pub fn OptconvextrustregionFrame::max(Self) -> Double
+pub fn OptconvextrustregionFrame::mean(Self) -> Double
+pub fn OptconvextrustregionFrame::min(Self) -> Double
+pub fn OptconvextrustregionFrame::scale(Self, Double) -> Self
+pub fn OptconvextrustregionFrame::set(Self, Int32, Double) -> Self
+pub fn OptconvextrustregionFrame::sum(Self) -> Double
+pub fn OptconvextrustregionFrame::to_string(Self) -> String
+
+pub(all) struct OptconvextrustregionGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvextrustregionGraphN::add(Self, Self) -> Self
+pub fn OptconvextrustregionGraphN::copy(Self) -> Self
+pub fn OptconvextrustregionGraphN::fill(Self, Double) -> Self
+pub fn OptconvextrustregionGraphN::get(Self, Int32) -> Double
+pub fn OptconvextrustregionGraphN::len(Self) -> Int32
+pub fn OptconvextrustregionGraphN::max(Self) -> Double
+pub fn OptconvextrustregionGraphN::mean(Self) -> Double
+pub fn OptconvextrustregionGraphN::min(Self) -> Double
+pub fn OptconvextrustregionGraphN::scale(Self, Double) -> Self
+pub fn OptconvextrustregionGraphN::set(Self, Int32, Double) -> Self
+pub fn OptconvextrustregionGraphN::sum(Self) -> Double
+pub fn OptconvextrustregionGraphN::to_string(Self) -> String
+
+pub(all) struct OptconvextrustregionLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvextrustregionLayer::add(Self, Self) -> Self
+pub fn OptconvextrustregionLayer::copy(Self) -> Self
+pub fn OptconvextrustregionLayer::fill(Self, Double) -> Self
+pub fn OptconvextrustregionLayer::get(Self, Int32) -> Double
+pub fn OptconvextrustregionLayer::len(Self) -> Int32
+pub fn OptconvextrustregionLayer::max(Self) -> Double
+pub fn OptconvextrustregionLayer::mean(Self) -> Double
+pub fn OptconvextrustregionLayer::min(Self) -> Double
+pub fn OptconvextrustregionLayer::scale(Self, Double) -> Self
+pub fn OptconvextrustregionLayer::set(Self, Int32, Double) -> Self
+pub fn OptconvextrustregionLayer::sum(Self) -> Double
+pub fn OptconvextrustregionLayer::to_string(Self) -> String
+
+pub(all) struct OptconvextrustregionMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn OptconvextrustregionMatrix::add(Self, Self) -> Self
+pub fn OptconvextrustregionMatrix::det(Self) -> Double
+pub fn OptconvextrustregionMatrix::get(Self, Int32, Int32) -> Double
+pub fn OptconvextrustregionMatrix::multiply(Self, Self) -> Self
+pub fn OptconvextrustregionMatrix::norm(Self) -> Double
+pub fn OptconvextrustregionMatrix::scale(Self, Double) -> Self
+pub fn OptconvextrustregionMatrix::to_string(Self) -> String
+pub fn OptconvextrustregionMatrix::trace(Self) -> Double
+pub fn OptconvextrustregionMatrix::transpose(Self) -> Self
+
+pub(all) struct OptconvextrustregionModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvextrustregionModel::add(Self, Self) -> Self
+pub fn OptconvextrustregionModel::copy(Self) -> Self
+pub fn OptconvextrustregionModel::fill(Self, Double) -> Self
+pub fn OptconvextrustregionModel::get(Self, Int32) -> Double
+pub fn OptconvextrustregionModel::len(Self) -> Int32
+pub fn OptconvextrustregionModel::max(Self) -> Double
+pub fn OptconvextrustregionModel::mean(Self) -> Double
+pub fn OptconvextrustregionModel::min(Self) -> Double
+pub fn OptconvextrustregionModel::scale(Self, Double) -> Self
+pub fn OptconvextrustregionModel::set(Self, Int32, Double) -> Self
+pub fn OptconvextrustregionModel::sum(Self) -> Double
+pub fn OptconvextrustregionModel::to_string(Self) -> String
+
+pub(all) struct OptconvextrustregionNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvextrustregionNode::add(Self, Self) -> Self
+pub fn OptconvextrustregionNode::copy(Self) -> Self
+pub fn OptconvextrustregionNode::fill(Self, Double) -> Self
+pub fn OptconvextrustregionNode::get(Self, Int32) -> Double
+pub fn OptconvextrustregionNode::len(Self) -> Int32
+pub fn OptconvextrustregionNode::max(Self) -> Double
+pub fn OptconvextrustregionNode::mean(Self) -> Double
+pub fn OptconvextrustregionNode::min(Self) -> Double
+pub fn OptconvextrustregionNode::scale(Self, Double) -> Self
+pub fn OptconvextrustregionNode::set(Self, Int32, Double) -> Self
+pub fn OptconvextrustregionNode::sum(Self) -> Double
+pub fn OptconvextrustregionNode::to_string(Self) -> String
+
+pub(all) struct OptconvextrustregionPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvextrustregionPath::add(Self, Self) -> Self
+pub fn OptconvextrustregionPath::copy(Self) -> Self
+pub fn OptconvextrustregionPath::fill(Self, Double) -> Self
+pub fn OptconvextrustregionPath::get(Self, Int32) -> Double
+pub fn OptconvextrustregionPath::len(Self) -> Int32
+pub fn OptconvextrustregionPath::max(Self) -> Double
+pub fn OptconvextrustregionPath::mean(Self) -> Double
+pub fn OptconvextrustregionPath::min(Self) -> Double
+pub fn OptconvextrustregionPath::scale(Self, Double) -> Self
+pub fn OptconvextrustregionPath::set(Self, Int32, Double) -> Self
+pub fn OptconvextrustregionPath::sum(Self) -> Double
+pub fn OptconvextrustregionPath::to_string(Self) -> String
+
+pub(all) struct OptconvextrustregionPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn OptconvextrustregionPoint::add(Self, Self) -> Self
+pub fn OptconvextrustregionPoint::cross(Self, Self) -> Self
+pub fn OptconvextrustregionPoint::dist(Self, Self) -> Double
+pub fn OptconvextrustregionPoint::dot(Self, Self) -> Double
+pub fn OptconvextrustregionPoint::label(Self) -> Int32
+pub fn OptconvextrustregionPoint::lerp(Self, Self, Double) -> Self
+pub fn OptconvextrustregionPoint::mid(Self, Self) -> Self
+pub fn OptconvextrustregionPoint::negate(Self) -> Self
+pub fn OptconvextrustregionPoint::norm(Self) -> Double
+pub fn OptconvextrustregionPoint::normalize(Self) -> Self
+pub fn OptconvextrustregionPoint::scale(Self, Double) -> Self
+pub fn OptconvextrustregionPoint::sub(Self, Self) -> Self
+pub fn OptconvextrustregionPoint::to_string(Self) -> String
+pub fn OptconvextrustregionPoint::x(Self) -> Double
+pub fn OptconvextrustregionPoint::y(Self) -> Double
+pub fn OptconvextrustregionPoint::z(Self) -> Double
+
+pub(all) struct OptconvextrustregionRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvextrustregionRange::add(Self, Self) -> Self
+pub fn OptconvextrustregionRange::copy(Self) -> Self
+pub fn OptconvextrustregionRange::fill(Self, Double) -> Self
+pub fn OptconvextrustregionRange::get(Self, Int32) -> Double
+pub fn OptconvextrustregionRange::len(Self) -> Int32
+pub fn OptconvextrustregionRange::max(Self) -> Double
+pub fn OptconvextrustregionRange::mean(Self) -> Double
+pub fn OptconvextrustregionRange::min(Self) -> Double
+pub fn OptconvextrustregionRange::scale(Self, Double) -> Self
+pub fn OptconvextrustregionRange::set(Self, Int32, Double) -> Self
+pub fn OptconvextrustregionRange::sum(Self) -> Double
+pub fn OptconvextrustregionRange::to_string(Self) -> String
+
+pub(all) struct OptconvextrustregionSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn OptconvextrustregionSeries::add(Self, Self) -> Self
+pub fn OptconvextrustregionSeries::cumsum(Self) -> Self
+pub fn OptconvextrustregionSeries::len(Self) -> Int32
+pub fn OptconvextrustregionSeries::max(Self) -> Double
+pub fn OptconvextrustregionSeries::mean(Self) -> Double
+pub fn OptconvextrustregionSeries::median(Self) -> Double
+pub fn OptconvextrustregionSeries::min(Self) -> Double
+pub fn OptconvextrustregionSeries::normalize(Self) -> Self
+pub fn OptconvextrustregionSeries::range(Self) -> Double
+pub fn OptconvextrustregionSeries::scale(Self, Double) -> Self
+pub fn OptconvextrustregionSeries::std(Self) -> Double
+pub fn OptconvextrustregionSeries::sub(Self, Self) -> Self
+pub fn OptconvextrustregionSeries::sum(Self) -> Double
+pub fn OptconvextrustregionSeries::to_string(Self) -> String
+pub fn OptconvextrustregionSeries::variance(Self) -> Double
+
+pub(all) struct OptconvextrustregionSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvextrustregionSlice::add(Self, Self) -> Self
+pub fn OptconvextrustregionSlice::copy(Self) -> Self
+pub fn OptconvextrustregionSlice::fill(Self, Double) -> Self
+pub fn OptconvextrustregionSlice::get(Self, Int32) -> Double
+pub fn OptconvextrustregionSlice::len(Self) -> Int32
+pub fn OptconvextrustregionSlice::max(Self) -> Double
+pub fn OptconvextrustregionSlice::mean(Self) -> Double
+pub fn OptconvextrustregionSlice::min(Self) -> Double
+pub fn OptconvextrustregionSlice::scale(Self, Double) -> Self
+pub fn OptconvextrustregionSlice::set(Self, Int32, Double) -> Self
+pub fn OptconvextrustregionSlice::sum(Self) -> Double
+pub fn OptconvextrustregionSlice::to_string(Self) -> String
+
+pub(all) struct OptconvextrustregionTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvextrustregionTable::add(Self, Self) -> Self
+pub fn OptconvextrustregionTable::copy(Self) -> Self
+pub fn OptconvextrustregionTable::fill(Self, Double) -> Self
+pub fn OptconvextrustregionTable::get(Self, Int32) -> Double
+pub fn OptconvextrustregionTable::len(Self) -> Int32
+pub fn OptconvextrustregionTable::max(Self) -> Double
+pub fn OptconvextrustregionTable::mean(Self) -> Double
+pub fn OptconvextrustregionTable::min(Self) -> Double
+pub fn OptconvextrustregionTable::scale(Self, Double) -> Self
+pub fn OptconvextrustregionTable::set(Self, Int32, Double) -> Self
+pub fn OptconvextrustregionTable::sum(Self) -> Double
+pub fn OptconvextrustregionTable::to_string(Self) -> String
+
+pub(all) struct OptconvextrustregionVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn OptconvextrustregionVector::add(Self, Self) -> Self
+pub fn OptconvextrustregionVector::dist(Self, Self) -> Double
+pub fn OptconvextrustregionVector::dot(Self, Self) -> Double
+pub fn OptconvextrustregionVector::norm(Self) -> Double
+pub fn OptconvextrustregionVector::normalize(Self) -> Self
+pub fn OptconvextrustregionVector::scale(Self, Double) -> Self
+pub fn OptconvextrustregionVector::sub(Self, Self) -> Self
+pub fn OptconvextrustregionVector::to_string(Self) -> String
+
+pub(all) struct OptconvextrustregionView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvextrustregionView::add(Self, Self) -> Self
+pub fn OptconvextrustregionView::copy(Self) -> Self
+pub fn OptconvextrustregionView::fill(Self, Double) -> Self
+pub fn OptconvextrustregionView::get(Self, Int32) -> Double
+pub fn OptconvextrustregionView::len(Self) -> Int32
+pub fn OptconvextrustregionView::max(Self) -> Double
+pub fn OptconvextrustregionView::mean(Self) -> Double
+pub fn OptconvextrustregionView::min(Self) -> Double
+pub fn OptconvextrustregionView::scale(Self, Double) -> Self
+pub fn OptconvextrustregionView::set(Self, Int32, Double) -> Self
+pub fn OptconvextrustregionView::sum(Self) -> Double
+pub fn OptconvextrustregionView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

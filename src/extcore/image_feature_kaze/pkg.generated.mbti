@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_feature_kaze"
+
+// Values
+pub fn image_feature_kaze_buffer_make(Int32) -> ImagefeaturekazeBuffer
+
+pub fn image_feature_kaze_cluster_make(Int32) -> ImagefeaturekazeCluster
+
+pub fn image_feature_kaze_cursor_make(Int32) -> ImagefeaturekazeCursor
+
+pub fn image_feature_kaze_edge_make(Int32) -> ImagefeaturekazeEdge
+
+pub fn image_feature_kaze_frame_make(Int32) -> ImagefeaturekazeFrame
+
+pub fn image_feature_kaze_graphn_make(Int32) -> ImagefeaturekazeGraphN
+
+pub fn image_feature_kaze_layer_make(Int32) -> ImagefeaturekazeLayer
+
+pub fn image_feature_kaze_make_matrix(Int32, Int32, Double) -> ImagefeaturekazeMatrix
+
+pub fn image_feature_kaze_make_point(Double, Double) -> ImagefeaturekazePoint
+
+pub fn image_feature_kaze_make_point3(Double, Double, Double) -> ImagefeaturekazePoint
+
+pub fn image_feature_kaze_make_series(Array[Double], String) -> ImagefeaturekazeSeries
+
+pub fn image_feature_kaze_make_vector(Array[Double]) -> ImagefeaturekazeVector
+
+pub fn image_feature_kaze_matrix_identity(Int32) -> ImagefeaturekazeMatrix
+
+pub fn image_feature_kaze_model_make(Int32) -> ImagefeaturekazeModel
+
+pub fn image_feature_kaze_node_make(Int32) -> ImagefeaturekazeNode
+
+pub fn image_feature_kaze_path_make(Int32) -> ImagefeaturekazePath
+
+pub fn image_feature_kaze_range_make(Int32) -> ImagefeaturekazeRange
+
+pub fn image_feature_kaze_slice_make(Int32) -> ImagefeaturekazeSlice
+
+pub fn image_feature_kaze_table_make(Int32) -> ImagefeaturekazeTable
+
+pub fn image_feature_kaze_vector_zero(Int32) -> ImagefeaturekazeVector
+
+pub fn image_feature_kaze_view_make(Int32) -> ImagefeaturekazeView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagefeaturekazeBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturekazeBuffer::add(Self, Self) -> Self
+pub fn ImagefeaturekazeBuffer::copy(Self) -> Self
+pub fn ImagefeaturekazeBuffer::fill(Self, Double) -> Self
+pub fn ImagefeaturekazeBuffer::get(Self, Int32) -> Double
+pub fn ImagefeaturekazeBuffer::len(Self) -> Int32
+pub fn ImagefeaturekazeBuffer::max(Self) -> Double
+pub fn ImagefeaturekazeBuffer::mean(Self) -> Double
+pub fn ImagefeaturekazeBuffer::min(Self) -> Double
+pub fn ImagefeaturekazeBuffer::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturekazeBuffer::sum(Self) -> Double
+pub fn ImagefeaturekazeBuffer::to_string(Self) -> String
+
+pub(all) struct ImagefeaturekazeCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturekazeCluster::add(Self, Self) -> Self
+pub fn ImagefeaturekazeCluster::copy(Self) -> Self
+pub fn ImagefeaturekazeCluster::fill(Self, Double) -> Self
+pub fn ImagefeaturekazeCluster::get(Self, Int32) -> Double
+pub fn ImagefeaturekazeCluster::len(Self) -> Int32
+pub fn ImagefeaturekazeCluster::max(Self) -> Double
+pub fn ImagefeaturekazeCluster::mean(Self) -> Double
+pub fn ImagefeaturekazeCluster::min(Self) -> Double
+pub fn ImagefeaturekazeCluster::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeCluster::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturekazeCluster::sum(Self) -> Double
+pub fn ImagefeaturekazeCluster::to_string(Self) -> String
+
+pub(all) struct ImagefeaturekazeCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturekazeCursor::add(Self, Self) -> Self
+pub fn ImagefeaturekazeCursor::copy(Self) -> Self
+pub fn ImagefeaturekazeCursor::fill(Self, Double) -> Self
+pub fn ImagefeaturekazeCursor::get(Self, Int32) -> Double
+pub fn ImagefeaturekazeCursor::len(Self) -> Int32
+pub fn ImagefeaturekazeCursor::max(Self) -> Double
+pub fn ImagefeaturekazeCursor::mean(Self) -> Double
+pub fn ImagefeaturekazeCursor::min(Self) -> Double
+pub fn ImagefeaturekazeCursor::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeCursor::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturekazeCursor::sum(Self) -> Double
+pub fn ImagefeaturekazeCursor::to_string(Self) -> String
+
+pub(all) struct ImagefeaturekazeEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturekazeEdge::add(Self, Self) -> Self
+pub fn ImagefeaturekazeEdge::copy(Self) -> Self
+pub fn ImagefeaturekazeEdge::fill(Self, Double) -> Self
+pub fn ImagefeaturekazeEdge::get(Self, Int32) -> Double
+pub fn ImagefeaturekazeEdge::len(Self) -> Int32
+pub fn ImagefeaturekazeEdge::max(Self) -> Double
+pub fn ImagefeaturekazeEdge::mean(Self) -> Double
+pub fn ImagefeaturekazeEdge::min(Self) -> Double
+pub fn ImagefeaturekazeEdge::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeEdge::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturekazeEdge::sum(Self) -> Double
+pub fn ImagefeaturekazeEdge::to_string(Self) -> String
+
+pub(all) struct ImagefeaturekazeFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturekazeFrame::add(Self, Self) -> Self
+pub fn ImagefeaturekazeFrame::copy(Self) -> Self
+pub fn ImagefeaturekazeFrame::fill(Self, Double) -> Self
+pub fn ImagefeaturekazeFrame::get(Self, Int32) -> Double
+pub fn ImagefeaturekazeFrame::len(Self) -> Int32
+pub fn ImagefeaturekazeFrame::max(Self) -> Double
+pub fn ImagefeaturekazeFrame::mean(Self) -> Double
+pub fn ImagefeaturekazeFrame::min(Self) -> Double
+pub fn ImagefeaturekazeFrame::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeFrame::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturekazeFrame::sum(Self) -> Double
+pub fn ImagefeaturekazeFrame::to_string(Self) -> String
+
+pub(all) struct ImagefeaturekazeGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturekazeGraphN::add(Self, Self) -> Self
+pub fn ImagefeaturekazeGraphN::copy(Self) -> Self
+pub fn ImagefeaturekazeGraphN::fill(Self, Double) -> Self
+pub fn ImagefeaturekazeGraphN::get(Self, Int32) -> Double
+pub fn ImagefeaturekazeGraphN::len(Self) -> Int32
+pub fn ImagefeaturekazeGraphN::max(Self) -> Double
+pub fn ImagefeaturekazeGraphN::mean(Self) -> Double
+pub fn ImagefeaturekazeGraphN::min(Self) -> Double
+pub fn ImagefeaturekazeGraphN::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturekazeGraphN::sum(Self) -> Double
+pub fn ImagefeaturekazeGraphN::to_string(Self) -> String
+
+pub(all) struct ImagefeaturekazeLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturekazeLayer::add(Self, Self) -> Self
+pub fn ImagefeaturekazeLayer::copy(Self) -> Self
+pub fn ImagefeaturekazeLayer::fill(Self, Double) -> Self
+pub fn ImagefeaturekazeLayer::get(Self, Int32) -> Double
+pub fn ImagefeaturekazeLayer::len(Self) -> Int32
+pub fn ImagefeaturekazeLayer::max(Self) -> Double
+pub fn ImagefeaturekazeLayer::mean(Self) -> Double
+pub fn ImagefeaturekazeLayer::min(Self) -> Double
+pub fn ImagefeaturekazeLayer::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeLayer::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturekazeLayer::sum(Self) -> Double
+pub fn ImagefeaturekazeLayer::to_string(Self) -> String
+
+pub(all) struct ImagefeaturekazeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagefeaturekazeMatrix::add(Self, Self) -> Self
+pub fn ImagefeaturekazeMatrix::det(Self) -> Double
+pub fn ImagefeaturekazeMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagefeaturekazeMatrix::multiply(Self, Self) -> Self
+pub fn ImagefeaturekazeMatrix::norm(Self) -> Double
+pub fn ImagefeaturekazeMatrix::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeMatrix::to_string(Self) -> String
+pub fn ImagefeaturekazeMatrix::trace(Self) -> Double
+pub fn ImagefeaturekazeMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagefeaturekazeModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturekazeModel::add(Self, Self) -> Self
+pub fn ImagefeaturekazeModel::copy(Self) -> Self
+pub fn ImagefeaturekazeModel::fill(Self, Double) -> Self
+pub fn ImagefeaturekazeModel::get(Self, Int32) -> Double
+pub fn ImagefeaturekazeModel::len(Self) -> Int32
+pub fn ImagefeaturekazeModel::max(Self) -> Double
+pub fn ImagefeaturekazeModel::mean(Self) -> Double
+pub fn ImagefeaturekazeModel::min(Self) -> Double
+pub fn ImagefeaturekazeModel::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeModel::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturekazeModel::sum(Self) -> Double
+pub fn ImagefeaturekazeModel::to_string(Self) -> String
+
+pub(all) struct ImagefeaturekazeNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturekazeNode::add(Self, Self) -> Self
+pub fn ImagefeaturekazeNode::copy(Self) -> Self
+pub fn ImagefeaturekazeNode::fill(Self, Double) -> Self
+pub fn ImagefeaturekazeNode::get(Self, Int32) -> Double
+pub fn ImagefeaturekazeNode::len(Self) -> Int32
+pub fn ImagefeaturekazeNode::max(Self) -> Double
+pub fn ImagefeaturekazeNode::mean(Self) -> Double
+pub fn ImagefeaturekazeNode::min(Self) -> Double
+pub fn ImagefeaturekazeNode::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeNode::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturekazeNode::sum(Self) -> Double
+pub fn ImagefeaturekazeNode::to_string(Self) -> String
+
+pub(all) struct ImagefeaturekazePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturekazePath::add(Self, Self) -> Self
+pub fn ImagefeaturekazePath::copy(Self) -> Self
+pub fn ImagefeaturekazePath::fill(Self, Double) -> Self
+pub fn ImagefeaturekazePath::get(Self, Int32) -> Double
+pub fn ImagefeaturekazePath::len(Self) -> Int32
+pub fn ImagefeaturekazePath::max(Self) -> Double
+pub fn ImagefeaturekazePath::mean(Self) -> Double
+pub fn ImagefeaturekazePath::min(Self) -> Double
+pub fn ImagefeaturekazePath::scale(Self, Double) -> Self
+pub fn ImagefeaturekazePath::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturekazePath::sum(Self) -> Double
+pub fn ImagefeaturekazePath::to_string(Self) -> String
+
+pub(all) struct ImagefeaturekazePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagefeaturekazePoint::add(Self, Self) -> Self
+pub fn ImagefeaturekazePoint::cross(Self, Self) -> Self
+pub fn ImagefeaturekazePoint::dist(Self, Self) -> Double
+pub fn ImagefeaturekazePoint::dot(Self, Self) -> Double
+pub fn ImagefeaturekazePoint::label(Self) -> Int32
+pub fn ImagefeaturekazePoint::lerp(Self, Self, Double) -> Self
+pub fn ImagefeaturekazePoint::mid(Self, Self) -> Self
+pub fn ImagefeaturekazePoint::negate(Self) -> Self
+pub fn ImagefeaturekazePoint::norm(Self) -> Double
+pub fn ImagefeaturekazePoint::normalize(Self) -> Self
+pub fn ImagefeaturekazePoint::scale(Self, Double) -> Self
+pub fn ImagefeaturekazePoint::sub(Self, Self) -> Self
+pub fn ImagefeaturekazePoint::to_string(Self) -> String
+pub fn ImagefeaturekazePoint::x(Self) -> Double
+pub fn ImagefeaturekazePoint::y(Self) -> Double
+pub fn ImagefeaturekazePoint::z(Self) -> Double
+
+pub(all) struct ImagefeaturekazeRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturekazeRange::add(Self, Self) -> Self
+pub fn ImagefeaturekazeRange::copy(Self) -> Self
+pub fn ImagefeaturekazeRange::fill(Self, Double) -> Self
+pub fn ImagefeaturekazeRange::get(Self, Int32) -> Double
+pub fn ImagefeaturekazeRange::len(Self) -> Int32
+pub fn ImagefeaturekazeRange::max(Self) -> Double
+pub fn ImagefeaturekazeRange::mean(Self) -> Double
+pub fn ImagefeaturekazeRange::min(Self) -> Double
+pub fn ImagefeaturekazeRange::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeRange::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturekazeRange::sum(Self) -> Double
+pub fn ImagefeaturekazeRange::to_string(Self) -> String
+
+pub(all) struct ImagefeaturekazeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagefeaturekazeSeries::add(Self, Self) -> Self
+pub fn ImagefeaturekazeSeries::cumsum(Self) -> Self
+pub fn ImagefeaturekazeSeries::len(Self) -> Int32
+pub fn ImagefeaturekazeSeries::max(Self) -> Double
+pub fn ImagefeaturekazeSeries::mean(Self) -> Double
+pub fn ImagefeaturekazeSeries::median(Self) -> Double
+pub fn ImagefeaturekazeSeries::min(Self) -> Double
+pub fn ImagefeaturekazeSeries::normalize(Self) -> Self
+pub fn ImagefeaturekazeSeries::range(Self) -> Double
+pub fn ImagefeaturekazeSeries::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeSeries::std(Self) -> Double
+pub fn ImagefeaturekazeSeries::sub(Self, Self) -> Self
+pub fn ImagefeaturekazeSeries::sum(Self) -> Double
+pub fn ImagefeaturekazeSeries::to_string(Self) -> String
+pub fn ImagefeaturekazeSeries::variance(Self) -> Double
+
+pub(all) struct ImagefeaturekazeSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturekazeSlice::add(Self, Self) -> Self
+pub fn ImagefeaturekazeSlice::copy(Self) -> Self
+pub fn ImagefeaturekazeSlice::fill(Self, Double) -> Self
+pub fn ImagefeaturekazeSlice::get(Self, Int32) -> Double
+pub fn ImagefeaturekazeSlice::len(Self) -> Int32
+pub fn ImagefeaturekazeSlice::max(Self) -> Double
+pub fn ImagefeaturekazeSlice::mean(Self) -> Double
+pub fn ImagefeaturekazeSlice::min(Self) -> Double
+pub fn ImagefeaturekazeSlice::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeSlice::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturekazeSlice::sum(Self) -> Double
+pub fn ImagefeaturekazeSlice::to_string(Self) -> String
+
+pub(all) struct ImagefeaturekazeTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturekazeTable::add(Self, Self) -> Self
+pub fn ImagefeaturekazeTable::copy(Self) -> Self
+pub fn ImagefeaturekazeTable::fill(Self, Double) -> Self
+pub fn ImagefeaturekazeTable::get(Self, Int32) -> Double
+pub fn ImagefeaturekazeTable::len(Self) -> Int32
+pub fn ImagefeaturekazeTable::max(Self) -> Double
+pub fn ImagefeaturekazeTable::mean(Self) -> Double
+pub fn ImagefeaturekazeTable::min(Self) -> Double
+pub fn ImagefeaturekazeTable::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeTable::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturekazeTable::sum(Self) -> Double
+pub fn ImagefeaturekazeTable::to_string(Self) -> String
+
+pub(all) struct ImagefeaturekazeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagefeaturekazeVector::add(Self, Self) -> Self
+pub fn ImagefeaturekazeVector::dist(Self, Self) -> Double
+pub fn ImagefeaturekazeVector::dot(Self, Self) -> Double
+pub fn ImagefeaturekazeVector::norm(Self) -> Double
+pub fn ImagefeaturekazeVector::normalize(Self) -> Self
+pub fn ImagefeaturekazeVector::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeVector::sub(Self, Self) -> Self
+pub fn ImagefeaturekazeVector::to_string(Self) -> String
+
+pub(all) struct ImagefeaturekazeView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturekazeView::add(Self, Self) -> Self
+pub fn ImagefeaturekazeView::copy(Self) -> Self
+pub fn ImagefeaturekazeView::fill(Self, Double) -> Self
+pub fn ImagefeaturekazeView::get(Self, Int32) -> Double
+pub fn ImagefeaturekazeView::len(Self) -> Int32
+pub fn ImagefeaturekazeView::max(Self) -> Double
+pub fn ImagefeaturekazeView::mean(Self) -> Double
+pub fn ImagefeaturekazeView::min(Self) -> Double
+pub fn ImagefeaturekazeView::scale(Self, Double) -> Self
+pub fn ImagefeaturekazeView::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturekazeView::sum(Self) -> Double
+pub fn ImagefeaturekazeView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

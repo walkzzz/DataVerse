@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_qr_decomp"
+
+// Values
+pub fn math_qr_decomp_buffer_make(Int32) -> MathqrdecompBuffer
+
+pub fn math_qr_decomp_cluster_make(Int32) -> MathqrdecompCluster
+
+pub fn math_qr_decomp_cursor_make(Int32) -> MathqrdecompCursor
+
+pub fn math_qr_decomp_edge_make(Int32) -> MathqrdecompEdge
+
+pub fn math_qr_decomp_frame_make(Int32) -> MathqrdecompFrame
+
+pub fn math_qr_decomp_graphn_make(Int32) -> MathqrdecompGraphN
+
+pub fn math_qr_decomp_layer_make(Int32) -> MathqrdecompLayer
+
+pub fn math_qr_decomp_make_matrix(Int32, Int32, Double) -> MathqrdecompMatrix
+
+pub fn math_qr_decomp_make_point(Double, Double) -> MathqrdecompPoint
+
+pub fn math_qr_decomp_make_point3(Double, Double, Double) -> MathqrdecompPoint
+
+pub fn math_qr_decomp_make_series(Array[Double], String) -> MathqrdecompSeries
+
+pub fn math_qr_decomp_make_vector(Array[Double]) -> MathqrdecompVector
+
+pub fn math_qr_decomp_matrix_identity(Int32) -> MathqrdecompMatrix
+
+pub fn math_qr_decomp_model_make(Int32) -> MathqrdecompModel
+
+pub fn math_qr_decomp_node_make(Int32) -> MathqrdecompNode
+
+pub fn math_qr_decomp_path_make(Int32) -> MathqrdecompPath
+
+pub fn math_qr_decomp_range_make(Int32) -> MathqrdecompRange
+
+pub fn math_qr_decomp_slice_make(Int32) -> MathqrdecompSlice
+
+pub fn math_qr_decomp_table_make(Int32) -> MathqrdecompTable
+
+pub fn math_qr_decomp_vector_zero(Int32) -> MathqrdecompVector
+
+pub fn math_qr_decomp_view_make(Int32) -> MathqrdecompView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathqrdecompBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathqrdecompBuffer::add(Self, Self) -> Self
+pub fn MathqrdecompBuffer::copy(Self) -> Self
+pub fn MathqrdecompBuffer::fill(Self, Double) -> Self
+pub fn MathqrdecompBuffer::get(Self, Int32) -> Double
+pub fn MathqrdecompBuffer::len(Self) -> Int32
+pub fn MathqrdecompBuffer::max(Self) -> Double
+pub fn MathqrdecompBuffer::mean(Self) -> Double
+pub fn MathqrdecompBuffer::min(Self) -> Double
+pub fn MathqrdecompBuffer::scale(Self, Double) -> Self
+pub fn MathqrdecompBuffer::set(Self, Int32, Double) -> Self
+pub fn MathqrdecompBuffer::sum(Self) -> Double
+pub fn MathqrdecompBuffer::to_string(Self) -> String
+
+pub(all) struct MathqrdecompCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathqrdecompCluster::add(Self, Self) -> Self
+pub fn MathqrdecompCluster::copy(Self) -> Self
+pub fn MathqrdecompCluster::fill(Self, Double) -> Self
+pub fn MathqrdecompCluster::get(Self, Int32) -> Double
+pub fn MathqrdecompCluster::len(Self) -> Int32
+pub fn MathqrdecompCluster::max(Self) -> Double
+pub fn MathqrdecompCluster::mean(Self) -> Double
+pub fn MathqrdecompCluster::min(Self) -> Double
+pub fn MathqrdecompCluster::scale(Self, Double) -> Self
+pub fn MathqrdecompCluster::set(Self, Int32, Double) -> Self
+pub fn MathqrdecompCluster::sum(Self) -> Double
+pub fn MathqrdecompCluster::to_string(Self) -> String
+
+pub(all) struct MathqrdecompCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathqrdecompCursor::add(Self, Self) -> Self
+pub fn MathqrdecompCursor::copy(Self) -> Self
+pub fn MathqrdecompCursor::fill(Self, Double) -> Self
+pub fn MathqrdecompCursor::get(Self, Int32) -> Double
+pub fn MathqrdecompCursor::len(Self) -> Int32
+pub fn MathqrdecompCursor::max(Self) -> Double
+pub fn MathqrdecompCursor::mean(Self) -> Double
+pub fn MathqrdecompCursor::min(Self) -> Double
+pub fn MathqrdecompCursor::scale(Self, Double) -> Self
+pub fn MathqrdecompCursor::set(Self, Int32, Double) -> Self
+pub fn MathqrdecompCursor::sum(Self) -> Double
+pub fn MathqrdecompCursor::to_string(Self) -> String
+
+pub(all) struct MathqrdecompEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathqrdecompEdge::add(Self, Self) -> Self
+pub fn MathqrdecompEdge::copy(Self) -> Self
+pub fn MathqrdecompEdge::fill(Self, Double) -> Self
+pub fn MathqrdecompEdge::get(Self, Int32) -> Double
+pub fn MathqrdecompEdge::len(Self) -> Int32
+pub fn MathqrdecompEdge::max(Self) -> Double
+pub fn MathqrdecompEdge::mean(Self) -> Double
+pub fn MathqrdecompEdge::min(Self) -> Double
+pub fn MathqrdecompEdge::scale(Self, Double) -> Self
+pub fn MathqrdecompEdge::set(Self, Int32, Double) -> Self
+pub fn MathqrdecompEdge::sum(Self) -> Double
+pub fn MathqrdecompEdge::to_string(Self) -> String
+
+pub(all) struct MathqrdecompFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathqrdecompFrame::add(Self, Self) -> Self
+pub fn MathqrdecompFrame::copy(Self) -> Self
+pub fn MathqrdecompFrame::fill(Self, Double) -> Self
+pub fn MathqrdecompFrame::get(Self, Int32) -> Double
+pub fn MathqrdecompFrame::len(Self) -> Int32
+pub fn MathqrdecompFrame::max(Self) -> Double
+pub fn MathqrdecompFrame::mean(Self) -> Double
+pub fn MathqrdecompFrame::min(Self) -> Double
+pub fn MathqrdecompFrame::scale(Self, Double) -> Self
+pub fn MathqrdecompFrame::set(Self, Int32, Double) -> Self
+pub fn MathqrdecompFrame::sum(Self) -> Double
+pub fn MathqrdecompFrame::to_string(Self) -> String
+
+pub(all) struct MathqrdecompGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathqrdecompGraphN::add(Self, Self) -> Self
+pub fn MathqrdecompGraphN::copy(Self) -> Self
+pub fn MathqrdecompGraphN::fill(Self, Double) -> Self
+pub fn MathqrdecompGraphN::get(Self, Int32) -> Double
+pub fn MathqrdecompGraphN::len(Self) -> Int32
+pub fn MathqrdecompGraphN::max(Self) -> Double
+pub fn MathqrdecompGraphN::mean(Self) -> Double
+pub fn MathqrdecompGraphN::min(Self) -> Double
+pub fn MathqrdecompGraphN::scale(Self, Double) -> Self
+pub fn MathqrdecompGraphN::set(Self, Int32, Double) -> Self
+pub fn MathqrdecompGraphN::sum(Self) -> Double
+pub fn MathqrdecompGraphN::to_string(Self) -> String
+
+pub(all) struct MathqrdecompLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathqrdecompLayer::add(Self, Self) -> Self
+pub fn MathqrdecompLayer::copy(Self) -> Self
+pub fn MathqrdecompLayer::fill(Self, Double) -> Self
+pub fn MathqrdecompLayer::get(Self, Int32) -> Double
+pub fn MathqrdecompLayer::len(Self) -> Int32
+pub fn MathqrdecompLayer::max(Self) -> Double
+pub fn MathqrdecompLayer::mean(Self) -> Double
+pub fn MathqrdecompLayer::min(Self) -> Double
+pub fn MathqrdecompLayer::scale(Self, Double) -> Self
+pub fn MathqrdecompLayer::set(Self, Int32, Double) -> Self
+pub fn MathqrdecompLayer::sum(Self) -> Double
+pub fn MathqrdecompLayer::to_string(Self) -> String
+
+pub(all) struct MathqrdecompMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathqrdecompMatrix::add(Self, Self) -> Self
+pub fn MathqrdecompMatrix::det(Self) -> Double
+pub fn MathqrdecompMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathqrdecompMatrix::multiply(Self, Self) -> Self
+pub fn MathqrdecompMatrix::norm(Self) -> Double
+pub fn MathqrdecompMatrix::scale(Self, Double) -> Self
+pub fn MathqrdecompMatrix::to_string(Self) -> String
+pub fn MathqrdecompMatrix::trace(Self) -> Double
+pub fn MathqrdecompMatrix::transpose(Self) -> Self
+
+pub(all) struct MathqrdecompModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathqrdecompModel::add(Self, Self) -> Self
+pub fn MathqrdecompModel::copy(Self) -> Self
+pub fn MathqrdecompModel::fill(Self, Double) -> Self
+pub fn MathqrdecompModel::get(Self, Int32) -> Double
+pub fn MathqrdecompModel::len(Self) -> Int32
+pub fn MathqrdecompModel::max(Self) -> Double
+pub fn MathqrdecompModel::mean(Self) -> Double
+pub fn MathqrdecompModel::min(Self) -> Double
+pub fn MathqrdecompModel::scale(Self, Double) -> Self
+pub fn MathqrdecompModel::set(Self, Int32, Double) -> Self
+pub fn MathqrdecompModel::sum(Self) -> Double
+pub fn MathqrdecompModel::to_string(Self) -> String
+
+pub(all) struct MathqrdecompNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathqrdecompNode::add(Self, Self) -> Self
+pub fn MathqrdecompNode::copy(Self) -> Self
+pub fn MathqrdecompNode::fill(Self, Double) -> Self
+pub fn MathqrdecompNode::get(Self, Int32) -> Double
+pub fn MathqrdecompNode::len(Self) -> Int32
+pub fn MathqrdecompNode::max(Self) -> Double
+pub fn MathqrdecompNode::mean(Self) -> Double
+pub fn MathqrdecompNode::min(Self) -> Double
+pub fn MathqrdecompNode::scale(Self, Double) -> Self
+pub fn MathqrdecompNode::set(Self, Int32, Double) -> Self
+pub fn MathqrdecompNode::sum(Self) -> Double
+pub fn MathqrdecompNode::to_string(Self) -> String
+
+pub(all) struct MathqrdecompPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathqrdecompPath::add(Self, Self) -> Self
+pub fn MathqrdecompPath::copy(Self) -> Self
+pub fn MathqrdecompPath::fill(Self, Double) -> Self
+pub fn MathqrdecompPath::get(Self, Int32) -> Double
+pub fn MathqrdecompPath::len(Self) -> Int32
+pub fn MathqrdecompPath::max(Self) -> Double
+pub fn MathqrdecompPath::mean(Self) -> Double
+pub fn MathqrdecompPath::min(Self) -> Double
+pub fn MathqrdecompPath::scale(Self, Double) -> Self
+pub fn MathqrdecompPath::set(Self, Int32, Double) -> Self
+pub fn MathqrdecompPath::sum(Self) -> Double
+pub fn MathqrdecompPath::to_string(Self) -> String
+
+pub(all) struct MathqrdecompPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathqrdecompPoint::add(Self, Self) -> Self
+pub fn MathqrdecompPoint::cross(Self, Self) -> Self
+pub fn MathqrdecompPoint::dist(Self, Self) -> Double
+pub fn MathqrdecompPoint::dot(Self, Self) -> Double
+pub fn MathqrdecompPoint::label(Self) -> Int32
+pub fn MathqrdecompPoint::lerp(Self, Self, Double) -> Self
+pub fn MathqrdecompPoint::mid(Self, Self) -> Self
+pub fn MathqrdecompPoint::negate(Self) -> Self
+pub fn MathqrdecompPoint::norm(Self) -> Double
+pub fn MathqrdecompPoint::normalize(Self) -> Self
+pub fn MathqrdecompPoint::scale(Self, Double) -> Self
+pub fn MathqrdecompPoint::sub(Self, Self) -> Self
+pub fn MathqrdecompPoint::to_string(Self) -> String
+pub fn MathqrdecompPoint::x(Self) -> Double
+pub fn MathqrdecompPoint::y(Self) -> Double
+pub fn MathqrdecompPoint::z(Self) -> Double
+
+pub(all) struct MathqrdecompRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathqrdecompRange::add(Self, Self) -> Self
+pub fn MathqrdecompRange::copy(Self) -> Self
+pub fn MathqrdecompRange::fill(Self, Double) -> Self
+pub fn MathqrdecompRange::get(Self, Int32) -> Double
+pub fn MathqrdecompRange::len(Self) -> Int32
+pub fn MathqrdecompRange::max(Self) -> Double
+pub fn MathqrdecompRange::mean(Self) -> Double
+pub fn MathqrdecompRange::min(Self) -> Double
+pub fn MathqrdecompRange::scale(Self, Double) -> Self
+pub fn MathqrdecompRange::set(Self, Int32, Double) -> Self
+pub fn MathqrdecompRange::sum(Self) -> Double
+pub fn MathqrdecompRange::to_string(Self) -> String
+
+pub(all) struct MathqrdecompSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathqrdecompSeries::add(Self, Self) -> Self
+pub fn MathqrdecompSeries::cumsum(Self) -> Self
+pub fn MathqrdecompSeries::len(Self) -> Int32
+pub fn MathqrdecompSeries::max(Self) -> Double
+pub fn MathqrdecompSeries::mean(Self) -> Double
+pub fn MathqrdecompSeries::median(Self) -> Double
+pub fn MathqrdecompSeries::min(Self) -> Double
+pub fn MathqrdecompSeries::normalize(Self) -> Self
+pub fn MathqrdecompSeries::range(Self) -> Double
+pub fn MathqrdecompSeries::scale(Self, Double) -> Self
+pub fn MathqrdecompSeries::std(Self) -> Double
+pub fn MathqrdecompSeries::sub(Self, Self) -> Self
+pub fn MathqrdecompSeries::sum(Self) -> Double
+pub fn MathqrdecompSeries::to_string(Self) -> String
+pub fn MathqrdecompSeries::variance(Self) -> Double
+
+pub(all) struct MathqrdecompSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathqrdecompSlice::add(Self, Self) -> Self
+pub fn MathqrdecompSlice::copy(Self) -> Self
+pub fn MathqrdecompSlice::fill(Self, Double) -> Self
+pub fn MathqrdecompSlice::get(Self, Int32) -> Double
+pub fn MathqrdecompSlice::len(Self) -> Int32
+pub fn MathqrdecompSlice::max(Self) -> Double
+pub fn MathqrdecompSlice::mean(Self) -> Double
+pub fn MathqrdecompSlice::min(Self) -> Double
+pub fn MathqrdecompSlice::scale(Self, Double) -> Self
+pub fn MathqrdecompSlice::set(Self, Int32, Double) -> Self
+pub fn MathqrdecompSlice::sum(Self) -> Double
+pub fn MathqrdecompSlice::to_string(Self) -> String
+
+pub(all) struct MathqrdecompTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathqrdecompTable::add(Self, Self) -> Self
+pub fn MathqrdecompTable::copy(Self) -> Self
+pub fn MathqrdecompTable::fill(Self, Double) -> Self
+pub fn MathqrdecompTable::get(Self, Int32) -> Double
+pub fn MathqrdecompTable::len(Self) -> Int32
+pub fn MathqrdecompTable::max(Self) -> Double
+pub fn MathqrdecompTable::mean(Self) -> Double
+pub fn MathqrdecompTable::min(Self) -> Double
+pub fn MathqrdecompTable::scale(Self, Double) -> Self
+pub fn MathqrdecompTable::set(Self, Int32, Double) -> Self
+pub fn MathqrdecompTable::sum(Self) -> Double
+pub fn MathqrdecompTable::to_string(Self) -> String
+
+pub(all) struct MathqrdecompVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathqrdecompVector::add(Self, Self) -> Self
+pub fn MathqrdecompVector::dist(Self, Self) -> Double
+pub fn MathqrdecompVector::dot(Self, Self) -> Double
+pub fn MathqrdecompVector::norm(Self) -> Double
+pub fn MathqrdecompVector::normalize(Self) -> Self
+pub fn MathqrdecompVector::scale(Self, Double) -> Self
+pub fn MathqrdecompVector::sub(Self, Self) -> Self
+pub fn MathqrdecompVector::to_string(Self) -> String
+
+pub(all) struct MathqrdecompView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathqrdecompView::add(Self, Self) -> Self
+pub fn MathqrdecompView::copy(Self) -> Self
+pub fn MathqrdecompView::fill(Self, Double) -> Self
+pub fn MathqrdecompView::get(Self, Int32) -> Double
+pub fn MathqrdecompView::len(Self) -> Int32
+pub fn MathqrdecompView::max(Self) -> Double
+pub fn MathqrdecompView::mean(Self) -> Double
+pub fn MathqrdecompView::min(Self) -> Double
+pub fn MathqrdecompView::scale(Self, Double) -> Self
+pub fn MathqrdecompView::set(Self, Int32, Double) -> Self
+pub fn MathqrdecompView::sum(Self) -> Double
+pub fn MathqrdecompView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

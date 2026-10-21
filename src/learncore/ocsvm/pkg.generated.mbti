@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/ocsvm"
+
+// Values
+pub fn ocsvm_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn ocsvm_corr(Array[Double], Array[Double]) -> Double
+
+pub fn ocsvm_cov(Array[Double], Array[Double]) -> Double
+
+pub fn ocsvm_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn ocsvm_mae(Array[Double], Array[Double]) -> Double
+
+pub fn ocsvm_make_labeled_point(Double, Double, Int32) -> OcsvmPoint
+
+pub fn ocsvm_make_matrix(Int32, Int32, Double) -> OcsvmMatrix
+
+pub fn ocsvm_make_point(Double, Double) -> OcsvmPoint
+
+pub fn ocsvm_make_series(Array[Double], String) -> OcsvmSeries
+
+pub fn ocsvm_make_vector(Array[Double]) -> OcsvmVector
+
+pub fn ocsvm_matrix_add(OcsvmMatrix, OcsvmMatrix) -> OcsvmMatrix
+
+pub fn ocsvm_matrix_get(OcsvmMatrix, Int32, Int32) -> Double
+
+pub fn ocsvm_matrix_identity(Int32) -> OcsvmMatrix
+
+pub fn ocsvm_matrix_multiply(OcsvmMatrix, OcsvmMatrix) -> OcsvmMatrix
+
+pub fn ocsvm_matrix_norm(OcsvmMatrix) -> Double
+
+pub fn ocsvm_matrix_scale(OcsvmMatrix, Double) -> OcsvmMatrix
+
+pub fn ocsvm_matrix_to_string(OcsvmMatrix) -> String
+
+pub fn ocsvm_matrix_trace(OcsvmMatrix) -> Double
+
+pub fn ocsvm_matrix_transpose(OcsvmMatrix) -> OcsvmMatrix
+
+pub fn ocsvm_mse(Array[Double], Array[Double]) -> Double
+
+pub fn ocsvm_point_add(OcsvmPoint, OcsvmPoint) -> OcsvmPoint
+
+pub fn ocsvm_point_dist(OcsvmPoint, OcsvmPoint) -> Double
+
+pub fn ocsvm_point_dot(OcsvmPoint, OcsvmPoint) -> Double
+
+pub fn ocsvm_point_label(OcsvmPoint) -> Int32
+
+pub fn ocsvm_point_norm(OcsvmPoint) -> Double
+
+pub fn ocsvm_point_scale(OcsvmPoint, Double) -> OcsvmPoint
+
+pub fn ocsvm_point_sub(OcsvmPoint, OcsvmPoint) -> OcsvmPoint
+
+pub fn ocsvm_point_to_string(OcsvmPoint) -> String
+
+pub fn ocsvm_point_x(OcsvmPoint) -> Double
+
+pub fn ocsvm_point_y(OcsvmPoint) -> Double
+
+pub fn ocsvm_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn ocsvm_r2(Array[Double], Array[Double]) -> Double
+
+pub fn ocsvm_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn ocsvm_series_add(OcsvmSeries, OcsvmSeries) -> OcsvmSeries
+
+pub fn ocsvm_series_len(OcsvmSeries) -> Int32
+
+pub fn ocsvm_series_max(OcsvmSeries) -> Double
+
+pub fn ocsvm_series_mean(OcsvmSeries) -> Double
+
+pub fn ocsvm_series_min(OcsvmSeries) -> Double
+
+pub fn ocsvm_series_scale(OcsvmSeries, Double) -> OcsvmSeries
+
+pub fn ocsvm_series_std(OcsvmSeries) -> Double
+
+pub fn ocsvm_series_sum(OcsvmSeries) -> Double
+
+pub fn ocsvm_series_to_string(OcsvmSeries) -> String
+
+pub fn ocsvm_series_var(OcsvmSeries) -> Double
+
+pub fn ocsvm_std(Array[Double]) -> Double
+
+pub fn ocsvm_var(Array[Double]) -> Double
+
+pub fn ocsvm_vector_add(OcsvmVector, OcsvmVector) -> OcsvmVector
+
+pub fn ocsvm_vector_dist(OcsvmVector, OcsvmVector) -> Double
+
+pub fn ocsvm_vector_dot(OcsvmVector, OcsvmVector) -> Double
+
+pub fn ocsvm_vector_norm(OcsvmVector) -> Double
+
+pub fn ocsvm_vector_normalize(OcsvmVector) -> OcsvmVector
+
+pub fn ocsvm_vector_scale(OcsvmVector, Double) -> OcsvmVector
+
+pub fn ocsvm_vector_sub(OcsvmVector, OcsvmVector) -> OcsvmVector
+
+pub fn ocsvm_vector_to_string(OcsvmVector) -> String
+
+pub fn ocsvm_vector_zero(Int32) -> OcsvmVector
+
+// Errors
+
+// Types and methods
+pub struct OcsvmMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct OcsvmPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct OcsvmSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct OcsvmVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

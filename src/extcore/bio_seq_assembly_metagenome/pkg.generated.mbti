@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/bio_seq_assembly_metagenome"
+
+// Values
+pub fn bio_seq_assembly_metagenome_buffer_make(Int32) -> BioseqassemblymetagenomeBuffer
+
+pub fn bio_seq_assembly_metagenome_cluster_make(Int32) -> BioseqassemblymetagenomeCluster
+
+pub fn bio_seq_assembly_metagenome_cursor_make(Int32) -> BioseqassemblymetagenomeCursor
+
+pub fn bio_seq_assembly_metagenome_edge_make(Int32) -> BioseqassemblymetagenomeEdge
+
+pub fn bio_seq_assembly_metagenome_frame_make(Int32) -> BioseqassemblymetagenomeFrame
+
+pub fn bio_seq_assembly_metagenome_graphn_make(Int32) -> BioseqassemblymetagenomeGraphN
+
+pub fn bio_seq_assembly_metagenome_layer_make(Int32) -> BioseqassemblymetagenomeLayer
+
+pub fn bio_seq_assembly_metagenome_make_matrix(Int32, Int32, Double) -> BioseqassemblymetagenomeMatrix
+
+pub fn bio_seq_assembly_metagenome_make_point(Double, Double) -> BioseqassemblymetagenomePoint
+
+pub fn bio_seq_assembly_metagenome_make_point3(Double, Double, Double) -> BioseqassemblymetagenomePoint
+
+pub fn bio_seq_assembly_metagenome_make_series(Array[Double], String) -> BioseqassemblymetagenomeSeries
+
+pub fn bio_seq_assembly_metagenome_make_vector(Array[Double]) -> BioseqassemblymetagenomeVector
+
+pub fn bio_seq_assembly_metagenome_matrix_identity(Int32) -> BioseqassemblymetagenomeMatrix
+
+pub fn bio_seq_assembly_metagenome_model_make(Int32) -> BioseqassemblymetagenomeModel
+
+pub fn bio_seq_assembly_metagenome_node_make(Int32) -> BioseqassemblymetagenomeNode
+
+pub fn bio_seq_assembly_metagenome_path_make(Int32) -> BioseqassemblymetagenomePath
+
+pub fn bio_seq_assembly_metagenome_range_make(Int32) -> BioseqassemblymetagenomeRange
+
+pub fn bio_seq_assembly_metagenome_slice_make(Int32) -> BioseqassemblymetagenomeSlice
+
+pub fn bio_seq_assembly_metagenome_table_make(Int32) -> BioseqassemblymetagenomeTable
+
+pub fn bio_seq_assembly_metagenome_vector_zero(Int32) -> BioseqassemblymetagenomeVector
+
+pub fn bio_seq_assembly_metagenome_view_make(Int32) -> BioseqassemblymetagenomeView
+
+// Errors
+
+// Types and methods
+pub(all) struct BioseqassemblymetagenomeBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblymetagenomeBuffer::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeBuffer::copy(Self) -> Self
+pub fn BioseqassemblymetagenomeBuffer::fill(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeBuffer::get(Self, Int32) -> Double
+pub fn BioseqassemblymetagenomeBuffer::len(Self) -> Int32
+pub fn BioseqassemblymetagenomeBuffer::max(Self) -> Double
+pub fn BioseqassemblymetagenomeBuffer::mean(Self) -> Double
+pub fn BioseqassemblymetagenomeBuffer::min(Self) -> Double
+pub fn BioseqassemblymetagenomeBuffer::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeBuffer::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblymetagenomeBuffer::sum(Self) -> Double
+pub fn BioseqassemblymetagenomeBuffer::to_string(Self) -> String
+
+pub(all) struct BioseqassemblymetagenomeCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblymetagenomeCluster::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeCluster::copy(Self) -> Self
+pub fn BioseqassemblymetagenomeCluster::fill(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeCluster::get(Self, Int32) -> Double
+pub fn BioseqassemblymetagenomeCluster::len(Self) -> Int32
+pub fn BioseqassemblymetagenomeCluster::max(Self) -> Double
+pub fn BioseqassemblymetagenomeCluster::mean(Self) -> Double
+pub fn BioseqassemblymetagenomeCluster::min(Self) -> Double
+pub fn BioseqassemblymetagenomeCluster::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeCluster::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblymetagenomeCluster::sum(Self) -> Double
+pub fn BioseqassemblymetagenomeCluster::to_string(Self) -> String
+
+pub(all) struct BioseqassemblymetagenomeCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblymetagenomeCursor::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeCursor::copy(Self) -> Self
+pub fn BioseqassemblymetagenomeCursor::fill(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeCursor::get(Self, Int32) -> Double
+pub fn BioseqassemblymetagenomeCursor::len(Self) -> Int32
+pub fn BioseqassemblymetagenomeCursor::max(Self) -> Double
+pub fn BioseqassemblymetagenomeCursor::mean(Self) -> Double
+pub fn BioseqassemblymetagenomeCursor::min(Self) -> Double
+pub fn BioseqassemblymetagenomeCursor::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeCursor::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblymetagenomeCursor::sum(Self) -> Double
+pub fn BioseqassemblymetagenomeCursor::to_string(Self) -> String
+
+pub(all) struct BioseqassemblymetagenomeEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblymetagenomeEdge::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeEdge::copy(Self) -> Self
+pub fn BioseqassemblymetagenomeEdge::fill(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeEdge::get(Self, Int32) -> Double
+pub fn BioseqassemblymetagenomeEdge::len(Self) -> Int32
+pub fn BioseqassemblymetagenomeEdge::max(Self) -> Double
+pub fn BioseqassemblymetagenomeEdge::mean(Self) -> Double
+pub fn BioseqassemblymetagenomeEdge::min(Self) -> Double
+pub fn BioseqassemblymetagenomeEdge::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeEdge::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblymetagenomeEdge::sum(Self) -> Double
+pub fn BioseqassemblymetagenomeEdge::to_string(Self) -> String
+
+pub(all) struct BioseqassemblymetagenomeFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblymetagenomeFrame::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeFrame::copy(Self) -> Self
+pub fn BioseqassemblymetagenomeFrame::fill(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeFrame::get(Self, Int32) -> Double
+pub fn BioseqassemblymetagenomeFrame::len(Self) -> Int32
+pub fn BioseqassemblymetagenomeFrame::max(Self) -> Double
+pub fn BioseqassemblymetagenomeFrame::mean(Self) -> Double
+pub fn BioseqassemblymetagenomeFrame::min(Self) -> Double
+pub fn BioseqassemblymetagenomeFrame::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeFrame::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblymetagenomeFrame::sum(Self) -> Double
+pub fn BioseqassemblymetagenomeFrame::to_string(Self) -> String
+
+pub(all) struct BioseqassemblymetagenomeGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblymetagenomeGraphN::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeGraphN::copy(Self) -> Self
+pub fn BioseqassemblymetagenomeGraphN::fill(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeGraphN::get(Self, Int32) -> Double
+pub fn BioseqassemblymetagenomeGraphN::len(Self) -> Int32
+pub fn BioseqassemblymetagenomeGraphN::max(Self) -> Double
+pub fn BioseqassemblymetagenomeGraphN::mean(Self) -> Double
+pub fn BioseqassemblymetagenomeGraphN::min(Self) -> Double
+pub fn BioseqassemblymetagenomeGraphN::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeGraphN::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblymetagenomeGraphN::sum(Self) -> Double
+pub fn BioseqassemblymetagenomeGraphN::to_string(Self) -> String
+
+pub(all) struct BioseqassemblymetagenomeLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblymetagenomeLayer::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeLayer::copy(Self) -> Self
+pub fn BioseqassemblymetagenomeLayer::fill(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeLayer::get(Self, Int32) -> Double
+pub fn BioseqassemblymetagenomeLayer::len(Self) -> Int32
+pub fn BioseqassemblymetagenomeLayer::max(Self) -> Double
+pub fn BioseqassemblymetagenomeLayer::mean(Self) -> Double
+pub fn BioseqassemblymetagenomeLayer::min(Self) -> Double
+pub fn BioseqassemblymetagenomeLayer::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeLayer::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblymetagenomeLayer::sum(Self) -> Double
+pub fn BioseqassemblymetagenomeLayer::to_string(Self) -> String
+
+pub(all) struct BioseqassemblymetagenomeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn BioseqassemblymetagenomeMatrix::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeMatrix::det(Self) -> Double
+pub fn BioseqassemblymetagenomeMatrix::get(Self, Int32, Int32) -> Double
+pub fn BioseqassemblymetagenomeMatrix::multiply(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeMatrix::norm(Self) -> Double
+pub fn BioseqassemblymetagenomeMatrix::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeMatrix::to_string(Self) -> String
+pub fn BioseqassemblymetagenomeMatrix::trace(Self) -> Double
+pub fn BioseqassemblymetagenomeMatrix::transpose(Self) -> Self
+
+pub(all) struct BioseqassemblymetagenomeModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblymetagenomeModel::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeModel::copy(Self) -> Self
+pub fn BioseqassemblymetagenomeModel::fill(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeModel::get(Self, Int32) -> Double
+pub fn BioseqassemblymetagenomeModel::len(Self) -> Int32
+pub fn BioseqassemblymetagenomeModel::max(Self) -> Double
+pub fn BioseqassemblymetagenomeModel::mean(Self) -> Double
+pub fn BioseqassemblymetagenomeModel::min(Self) -> Double
+pub fn BioseqassemblymetagenomeModel::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeModel::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblymetagenomeModel::sum(Self) -> Double
+pub fn BioseqassemblymetagenomeModel::to_string(Self) -> String
+
+pub(all) struct BioseqassemblymetagenomeNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblymetagenomeNode::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeNode::copy(Self) -> Self
+pub fn BioseqassemblymetagenomeNode::fill(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeNode::get(Self, Int32) -> Double
+pub fn BioseqassemblymetagenomeNode::len(Self) -> Int32
+pub fn BioseqassemblymetagenomeNode::max(Self) -> Double
+pub fn BioseqassemblymetagenomeNode::mean(Self) -> Double
+pub fn BioseqassemblymetagenomeNode::min(Self) -> Double
+pub fn BioseqassemblymetagenomeNode::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeNode::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblymetagenomeNode::sum(Self) -> Double
+pub fn BioseqassemblymetagenomeNode::to_string(Self) -> String
+
+pub(all) struct BioseqassemblymetagenomePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblymetagenomePath::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomePath::copy(Self) -> Self
+pub fn BioseqassemblymetagenomePath::fill(Self, Double) -> Self
+pub fn BioseqassemblymetagenomePath::get(Self, Int32) -> Double
+pub fn BioseqassemblymetagenomePath::len(Self) -> Int32
+pub fn BioseqassemblymetagenomePath::max(Self) -> Double
+pub fn BioseqassemblymetagenomePath::mean(Self) -> Double
+pub fn BioseqassemblymetagenomePath::min(Self) -> Double
+pub fn BioseqassemblymetagenomePath::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomePath::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblymetagenomePath::sum(Self) -> Double
+pub fn BioseqassemblymetagenomePath::to_string(Self) -> String
+
+pub(all) struct BioseqassemblymetagenomePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn BioseqassemblymetagenomePoint::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomePoint::cross(Self, Self) -> Self
+pub fn BioseqassemblymetagenomePoint::dist(Self, Self) -> Double
+pub fn BioseqassemblymetagenomePoint::dot(Self, Self) -> Double
+pub fn BioseqassemblymetagenomePoint::label(Self) -> Int32
+pub fn BioseqassemblymetagenomePoint::lerp(Self, Self, Double) -> Self
+pub fn BioseqassemblymetagenomePoint::mid(Self, Self) -> Self
+pub fn BioseqassemblymetagenomePoint::negate(Self) -> Self
+pub fn BioseqassemblymetagenomePoint::norm(Self) -> Double
+pub fn BioseqassemblymetagenomePoint::normalize(Self) -> Self
+pub fn BioseqassemblymetagenomePoint::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomePoint::sub(Self, Self) -> Self
+pub fn BioseqassemblymetagenomePoint::to_string(Self) -> String
+pub fn BioseqassemblymetagenomePoint::x(Self) -> Double
+pub fn BioseqassemblymetagenomePoint::y(Self) -> Double
+pub fn BioseqassemblymetagenomePoint::z(Self) -> Double
+
+pub(all) struct BioseqassemblymetagenomeRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblymetagenomeRange::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeRange::copy(Self) -> Self
+pub fn BioseqassemblymetagenomeRange::fill(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeRange::get(Self, Int32) -> Double
+pub fn BioseqassemblymetagenomeRange::len(Self) -> Int32
+pub fn BioseqassemblymetagenomeRange::max(Self) -> Double
+pub fn BioseqassemblymetagenomeRange::mean(Self) -> Double
+pub fn BioseqassemblymetagenomeRange::min(Self) -> Double
+pub fn BioseqassemblymetagenomeRange::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeRange::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblymetagenomeRange::sum(Self) -> Double
+pub fn BioseqassemblymetagenomeRange::to_string(Self) -> String
+
+pub(all) struct BioseqassemblymetagenomeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn BioseqassemblymetagenomeSeries::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeSeries::cumsum(Self) -> Self
+pub fn BioseqassemblymetagenomeSeries::len(Self) -> Int32
+pub fn BioseqassemblymetagenomeSeries::max(Self) -> Double
+pub fn BioseqassemblymetagenomeSeries::mean(Self) -> Double
+pub fn BioseqassemblymetagenomeSeries::median(Self) -> Double
+pub fn BioseqassemblymetagenomeSeries::min(Self) -> Double
+pub fn BioseqassemblymetagenomeSeries::normalize(Self) -> Self
+pub fn BioseqassemblymetagenomeSeries::range(Self) -> Double
+pub fn BioseqassemblymetagenomeSeries::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeSeries::std(Self) -> Double
+pub fn BioseqassemblymetagenomeSeries::sub(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeSeries::sum(Self) -> Double
+pub fn BioseqassemblymetagenomeSeries::to_string(Self) -> String
+pub fn BioseqassemblymetagenomeSeries::variance(Self) -> Double
+
+pub(all) struct BioseqassemblymetagenomeSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblymetagenomeSlice::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeSlice::copy(Self) -> Self
+pub fn BioseqassemblymetagenomeSlice::fill(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeSlice::get(Self, Int32) -> Double
+pub fn BioseqassemblymetagenomeSlice::len(Self) -> Int32
+pub fn BioseqassemblymetagenomeSlice::max(Self) -> Double
+pub fn BioseqassemblymetagenomeSlice::mean(Self) -> Double
+pub fn BioseqassemblymetagenomeSlice::min(Self) -> Double
+pub fn BioseqassemblymetagenomeSlice::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeSlice::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblymetagenomeSlice::sum(Self) -> Double
+pub fn BioseqassemblymetagenomeSlice::to_string(Self) -> String
+
+pub(all) struct BioseqassemblymetagenomeTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblymetagenomeTable::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeTable::copy(Self) -> Self
+pub fn BioseqassemblymetagenomeTable::fill(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeTable::get(Self, Int32) -> Double
+pub fn BioseqassemblymetagenomeTable::len(Self) -> Int32
+pub fn BioseqassemblymetagenomeTable::max(Self) -> Double
+pub fn BioseqassemblymetagenomeTable::mean(Self) -> Double
+pub fn BioseqassemblymetagenomeTable::min(Self) -> Double
+pub fn BioseqassemblymetagenomeTable::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeTable::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblymetagenomeTable::sum(Self) -> Double
+pub fn BioseqassemblymetagenomeTable::to_string(Self) -> String
+
+pub(all) struct BioseqassemblymetagenomeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn BioseqassemblymetagenomeVector::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeVector::dist(Self, Self) -> Double
+pub fn BioseqassemblymetagenomeVector::dot(Self, Self) -> Double
+pub fn BioseqassemblymetagenomeVector::norm(Self) -> Double
+pub fn BioseqassemblymetagenomeVector::normalize(Self) -> Self
+pub fn BioseqassemblymetagenomeVector::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeVector::sub(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeVector::to_string(Self) -> String
+
+pub(all) struct BioseqassemblymetagenomeView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblymetagenomeView::add(Self, Self) -> Self
+pub fn BioseqassemblymetagenomeView::copy(Self) -> Self
+pub fn BioseqassemblymetagenomeView::fill(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeView::get(Self, Int32) -> Double
+pub fn BioseqassemblymetagenomeView::len(Self) -> Int32
+pub fn BioseqassemblymetagenomeView::max(Self) -> Double
+pub fn BioseqassemblymetagenomeView::mean(Self) -> Double
+pub fn BioseqassemblymetagenomeView::min(Self) -> Double
+pub fn BioseqassemblymetagenomeView::scale(Self, Double) -> Self
+pub fn BioseqassemblymetagenomeView::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblymetagenomeView::sum(Self) -> Double
+pub fn BioseqassemblymetagenomeView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

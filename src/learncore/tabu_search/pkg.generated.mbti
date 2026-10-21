@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/tabu_search"
+
+// Values
+pub fn tabu_search_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn tabu_search_corr(Array[Double], Array[Double]) -> Double
+
+pub fn tabu_search_cov(Array[Double], Array[Double]) -> Double
+
+pub fn tabu_search_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn tabu_search_mae(Array[Double], Array[Double]) -> Double
+
+pub fn tabu_search_make_labeled_point(Double, Double, Int32) -> Tabu_searchPoint
+
+pub fn tabu_search_make_matrix(Int32, Int32, Double) -> Tabu_searchMatrix
+
+pub fn tabu_search_make_point(Double, Double) -> Tabu_searchPoint
+
+pub fn tabu_search_make_series(Array[Double], String) -> Tabu_searchSeries
+
+pub fn tabu_search_make_vector(Array[Double]) -> Tabu_searchVector
+
+pub fn tabu_search_matrix_add(Tabu_searchMatrix, Tabu_searchMatrix) -> Tabu_searchMatrix
+
+pub fn tabu_search_matrix_get(Tabu_searchMatrix, Int32, Int32) -> Double
+
+pub fn tabu_search_matrix_identity(Int32) -> Tabu_searchMatrix
+
+pub fn tabu_search_matrix_multiply(Tabu_searchMatrix, Tabu_searchMatrix) -> Tabu_searchMatrix
+
+pub fn tabu_search_matrix_norm(Tabu_searchMatrix) -> Double
+
+pub fn tabu_search_matrix_scale(Tabu_searchMatrix, Double) -> Tabu_searchMatrix
+
+pub fn tabu_search_matrix_to_string(Tabu_searchMatrix) -> String
+
+pub fn tabu_search_matrix_trace(Tabu_searchMatrix) -> Double
+
+pub fn tabu_search_matrix_transpose(Tabu_searchMatrix) -> Tabu_searchMatrix
+
+pub fn tabu_search_mse(Array[Double], Array[Double]) -> Double
+
+pub fn tabu_search_point_add(Tabu_searchPoint, Tabu_searchPoint) -> Tabu_searchPoint
+
+pub fn tabu_search_point_dist(Tabu_searchPoint, Tabu_searchPoint) -> Double
+
+pub fn tabu_search_point_dot(Tabu_searchPoint, Tabu_searchPoint) -> Double
+
+pub fn tabu_search_point_label(Tabu_searchPoint) -> Int32
+
+pub fn tabu_search_point_norm(Tabu_searchPoint) -> Double
+
+pub fn tabu_search_point_scale(Tabu_searchPoint, Double) -> Tabu_searchPoint
+
+pub fn tabu_search_point_sub(Tabu_searchPoint, Tabu_searchPoint) -> Tabu_searchPoint
+
+pub fn tabu_search_point_to_string(Tabu_searchPoint) -> String
+
+pub fn tabu_search_point_x(Tabu_searchPoint) -> Double
+
+pub fn tabu_search_point_y(Tabu_searchPoint) -> Double
+
+pub fn tabu_search_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn tabu_search_r2(Array[Double], Array[Double]) -> Double
+
+pub fn tabu_search_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn tabu_search_series_add(Tabu_searchSeries, Tabu_searchSeries) -> Tabu_searchSeries
+
+pub fn tabu_search_series_len(Tabu_searchSeries) -> Int32
+
+pub fn tabu_search_series_max(Tabu_searchSeries) -> Double
+
+pub fn tabu_search_series_mean(Tabu_searchSeries) -> Double
+
+pub fn tabu_search_series_min(Tabu_searchSeries) -> Double
+
+pub fn tabu_search_series_scale(Tabu_searchSeries, Double) -> Tabu_searchSeries
+
+pub fn tabu_search_series_std(Tabu_searchSeries) -> Double
+
+pub fn tabu_search_series_sum(Tabu_searchSeries) -> Double
+
+pub fn tabu_search_series_to_string(Tabu_searchSeries) -> String
+
+pub fn tabu_search_series_var(Tabu_searchSeries) -> Double
+
+pub fn tabu_search_std(Array[Double]) -> Double
+
+pub fn tabu_search_var(Array[Double]) -> Double
+
+pub fn tabu_search_vector_add(Tabu_searchVector, Tabu_searchVector) -> Tabu_searchVector
+
+pub fn tabu_search_vector_dist(Tabu_searchVector, Tabu_searchVector) -> Double
+
+pub fn tabu_search_vector_dot(Tabu_searchVector, Tabu_searchVector) -> Double
+
+pub fn tabu_search_vector_norm(Tabu_searchVector) -> Double
+
+pub fn tabu_search_vector_normalize(Tabu_searchVector) -> Tabu_searchVector
+
+pub fn tabu_search_vector_scale(Tabu_searchVector, Double) -> Tabu_searchVector
+
+pub fn tabu_search_vector_sub(Tabu_searchVector, Tabu_searchVector) -> Tabu_searchVector
+
+pub fn tabu_search_vector_to_string(Tabu_searchVector) -> String
+
+pub fn tabu_search_vector_zero(Int32) -> Tabu_searchVector
+
+// Errors
+
+// Types and methods
+pub struct Tabu_searchMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Tabu_searchPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Tabu_searchSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Tabu_searchVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

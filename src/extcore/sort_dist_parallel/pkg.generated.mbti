@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_dist_parallel"
+
+// Values
+pub fn sort_dist_parallel_buffer_make(Int32) -> SortdistparallelBuffer
+
+pub fn sort_dist_parallel_cluster_make(Int32) -> SortdistparallelCluster
+
+pub fn sort_dist_parallel_cursor_make(Int32) -> SortdistparallelCursor
+
+pub fn sort_dist_parallel_edge_make(Int32) -> SortdistparallelEdge
+
+pub fn sort_dist_parallel_frame_make(Int32) -> SortdistparallelFrame
+
+pub fn sort_dist_parallel_graphn_make(Int32) -> SortdistparallelGraphN
+
+pub fn sort_dist_parallel_layer_make(Int32) -> SortdistparallelLayer
+
+pub fn sort_dist_parallel_make_matrix(Int32, Int32, Double) -> SortdistparallelMatrix
+
+pub fn sort_dist_parallel_make_point(Double, Double) -> SortdistparallelPoint
+
+pub fn sort_dist_parallel_make_point3(Double, Double, Double) -> SortdistparallelPoint
+
+pub fn sort_dist_parallel_make_series(Array[Double], String) -> SortdistparallelSeries
+
+pub fn sort_dist_parallel_make_vector(Array[Double]) -> SortdistparallelVector
+
+pub fn sort_dist_parallel_matrix_identity(Int32) -> SortdistparallelMatrix
+
+pub fn sort_dist_parallel_model_make(Int32) -> SortdistparallelModel
+
+pub fn sort_dist_parallel_node_make(Int32) -> SortdistparallelNode
+
+pub fn sort_dist_parallel_path_make(Int32) -> SortdistparallelPath
+
+pub fn sort_dist_parallel_range_make(Int32) -> SortdistparallelRange
+
+pub fn sort_dist_parallel_slice_make(Int32) -> SortdistparallelSlice
+
+pub fn sort_dist_parallel_table_make(Int32) -> SortdistparallelTable
+
+pub fn sort_dist_parallel_vector_zero(Int32) -> SortdistparallelVector
+
+pub fn sort_dist_parallel_view_make(Int32) -> SortdistparallelView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortdistparallelBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistparallelBuffer::add(Self, Self) -> Self
+pub fn SortdistparallelBuffer::copy(Self) -> Self
+pub fn SortdistparallelBuffer::fill(Self, Double) -> Self
+pub fn SortdistparallelBuffer::get(Self, Int32) -> Double
+pub fn SortdistparallelBuffer::len(Self) -> Int32
+pub fn SortdistparallelBuffer::max(Self) -> Double
+pub fn SortdistparallelBuffer::mean(Self) -> Double
+pub fn SortdistparallelBuffer::min(Self) -> Double
+pub fn SortdistparallelBuffer::scale(Self, Double) -> Self
+pub fn SortdistparallelBuffer::set(Self, Int32, Double) -> Self
+pub fn SortdistparallelBuffer::sum(Self) -> Double
+pub fn SortdistparallelBuffer::to_string(Self) -> String
+
+pub(all) struct SortdistparallelCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistparallelCluster::add(Self, Self) -> Self
+pub fn SortdistparallelCluster::copy(Self) -> Self
+pub fn SortdistparallelCluster::fill(Self, Double) -> Self
+pub fn SortdistparallelCluster::get(Self, Int32) -> Double
+pub fn SortdistparallelCluster::len(Self) -> Int32
+pub fn SortdistparallelCluster::max(Self) -> Double
+pub fn SortdistparallelCluster::mean(Self) -> Double
+pub fn SortdistparallelCluster::min(Self) -> Double
+pub fn SortdistparallelCluster::scale(Self, Double) -> Self
+pub fn SortdistparallelCluster::set(Self, Int32, Double) -> Self
+pub fn SortdistparallelCluster::sum(Self) -> Double
+pub fn SortdistparallelCluster::to_string(Self) -> String
+
+pub(all) struct SortdistparallelCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistparallelCursor::add(Self, Self) -> Self
+pub fn SortdistparallelCursor::copy(Self) -> Self
+pub fn SortdistparallelCursor::fill(Self, Double) -> Self
+pub fn SortdistparallelCursor::get(Self, Int32) -> Double
+pub fn SortdistparallelCursor::len(Self) -> Int32
+pub fn SortdistparallelCursor::max(Self) -> Double
+pub fn SortdistparallelCursor::mean(Self) -> Double
+pub fn SortdistparallelCursor::min(Self) -> Double
+pub fn SortdistparallelCursor::scale(Self, Double) -> Self
+pub fn SortdistparallelCursor::set(Self, Int32, Double) -> Self
+pub fn SortdistparallelCursor::sum(Self) -> Double
+pub fn SortdistparallelCursor::to_string(Self) -> String
+
+pub(all) struct SortdistparallelEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistparallelEdge::add(Self, Self) -> Self
+pub fn SortdistparallelEdge::copy(Self) -> Self
+pub fn SortdistparallelEdge::fill(Self, Double) -> Self
+pub fn SortdistparallelEdge::get(Self, Int32) -> Double
+pub fn SortdistparallelEdge::len(Self) -> Int32
+pub fn SortdistparallelEdge::max(Self) -> Double
+pub fn SortdistparallelEdge::mean(Self) -> Double
+pub fn SortdistparallelEdge::min(Self) -> Double
+pub fn SortdistparallelEdge::scale(Self, Double) -> Self
+pub fn SortdistparallelEdge::set(Self, Int32, Double) -> Self
+pub fn SortdistparallelEdge::sum(Self) -> Double
+pub fn SortdistparallelEdge::to_string(Self) -> String
+
+pub(all) struct SortdistparallelFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistparallelFrame::add(Self, Self) -> Self
+pub fn SortdistparallelFrame::copy(Self) -> Self
+pub fn SortdistparallelFrame::fill(Self, Double) -> Self
+pub fn SortdistparallelFrame::get(Self, Int32) -> Double
+pub fn SortdistparallelFrame::len(Self) -> Int32
+pub fn SortdistparallelFrame::max(Self) -> Double
+pub fn SortdistparallelFrame::mean(Self) -> Double
+pub fn SortdistparallelFrame::min(Self) -> Double
+pub fn SortdistparallelFrame::scale(Self, Double) -> Self
+pub fn SortdistparallelFrame::set(Self, Int32, Double) -> Self
+pub fn SortdistparallelFrame::sum(Self) -> Double
+pub fn SortdistparallelFrame::to_string(Self) -> String
+
+pub(all) struct SortdistparallelGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistparallelGraphN::add(Self, Self) -> Self
+pub fn SortdistparallelGraphN::copy(Self) -> Self
+pub fn SortdistparallelGraphN::fill(Self, Double) -> Self
+pub fn SortdistparallelGraphN::get(Self, Int32) -> Double
+pub fn SortdistparallelGraphN::len(Self) -> Int32
+pub fn SortdistparallelGraphN::max(Self) -> Double
+pub fn SortdistparallelGraphN::mean(Self) -> Double
+pub fn SortdistparallelGraphN::min(Self) -> Double
+pub fn SortdistparallelGraphN::scale(Self, Double) -> Self
+pub fn SortdistparallelGraphN::set(Self, Int32, Double) -> Self
+pub fn SortdistparallelGraphN::sum(Self) -> Double
+pub fn SortdistparallelGraphN::to_string(Self) -> String
+
+pub(all) struct SortdistparallelLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistparallelLayer::add(Self, Self) -> Self
+pub fn SortdistparallelLayer::copy(Self) -> Self
+pub fn SortdistparallelLayer::fill(Self, Double) -> Self
+pub fn SortdistparallelLayer::get(Self, Int32) -> Double
+pub fn SortdistparallelLayer::len(Self) -> Int32
+pub fn SortdistparallelLayer::max(Self) -> Double
+pub fn SortdistparallelLayer::mean(Self) -> Double
+pub fn SortdistparallelLayer::min(Self) -> Double
+pub fn SortdistparallelLayer::scale(Self, Double) -> Self
+pub fn SortdistparallelLayer::set(Self, Int32, Double) -> Self
+pub fn SortdistparallelLayer::sum(Self) -> Double
+pub fn SortdistparallelLayer::to_string(Self) -> String
+
+pub(all) struct SortdistparallelMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortdistparallelMatrix::add(Self, Self) -> Self
+pub fn SortdistparallelMatrix::det(Self) -> Double
+pub fn SortdistparallelMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortdistparallelMatrix::multiply(Self, Self) -> Self
+pub fn SortdistparallelMatrix::norm(Self) -> Double
+pub fn SortdistparallelMatrix::scale(Self, Double) -> Self
+pub fn SortdistparallelMatrix::to_string(Self) -> String
+pub fn SortdistparallelMatrix::trace(Self) -> Double
+pub fn SortdistparallelMatrix::transpose(Self) -> Self
+
+pub(all) struct SortdistparallelModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistparallelModel::add(Self, Self) -> Self
+pub fn SortdistparallelModel::copy(Self) -> Self
+pub fn SortdistparallelModel::fill(Self, Double) -> Self
+pub fn SortdistparallelModel::get(Self, Int32) -> Double
+pub fn SortdistparallelModel::len(Self) -> Int32
+pub fn SortdistparallelModel::max(Self) -> Double
+pub fn SortdistparallelModel::mean(Self) -> Double
+pub fn SortdistparallelModel::min(Self) -> Double
+pub fn SortdistparallelModel::scale(Self, Double) -> Self
+pub fn SortdistparallelModel::set(Self, Int32, Double) -> Self
+pub fn SortdistparallelModel::sum(Self) -> Double
+pub fn SortdistparallelModel::to_string(Self) -> String
+
+pub(all) struct SortdistparallelNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistparallelNode::add(Self, Self) -> Self
+pub fn SortdistparallelNode::copy(Self) -> Self
+pub fn SortdistparallelNode::fill(Self, Double) -> Self
+pub fn SortdistparallelNode::get(Self, Int32) -> Double
+pub fn SortdistparallelNode::len(Self) -> Int32
+pub fn SortdistparallelNode::max(Self) -> Double
+pub fn SortdistparallelNode::mean(Self) -> Double
+pub fn SortdistparallelNode::min(Self) -> Double
+pub fn SortdistparallelNode::scale(Self, Double) -> Self
+pub fn SortdistparallelNode::set(Self, Int32, Double) -> Self
+pub fn SortdistparallelNode::sum(Self) -> Double
+pub fn SortdistparallelNode::to_string(Self) -> String
+
+pub(all) struct SortdistparallelPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistparallelPath::add(Self, Self) -> Self
+pub fn SortdistparallelPath::copy(Self) -> Self
+pub fn SortdistparallelPath::fill(Self, Double) -> Self
+pub fn SortdistparallelPath::get(Self, Int32) -> Double
+pub fn SortdistparallelPath::len(Self) -> Int32
+pub fn SortdistparallelPath::max(Self) -> Double
+pub fn SortdistparallelPath::mean(Self) -> Double
+pub fn SortdistparallelPath::min(Self) -> Double
+pub fn SortdistparallelPath::scale(Self, Double) -> Self
+pub fn SortdistparallelPath::set(Self, Int32, Double) -> Self
+pub fn SortdistparallelPath::sum(Self) -> Double
+pub fn SortdistparallelPath::to_string(Self) -> String
+
+pub(all) struct SortdistparallelPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortdistparallelPoint::add(Self, Self) -> Self
+pub fn SortdistparallelPoint::cross(Self, Self) -> Self
+pub fn SortdistparallelPoint::dist(Self, Self) -> Double
+pub fn SortdistparallelPoint::dot(Self, Self) -> Double
+pub fn SortdistparallelPoint::label(Self) -> Int32
+pub fn SortdistparallelPoint::lerp(Self, Self, Double) -> Self
+pub fn SortdistparallelPoint::mid(Self, Self) -> Self
+pub fn SortdistparallelPoint::negate(Self) -> Self
+pub fn SortdistparallelPoint::norm(Self) -> Double
+pub fn SortdistparallelPoint::normalize(Self) -> Self
+pub fn SortdistparallelPoint::scale(Self, Double) -> Self
+pub fn SortdistparallelPoint::sub(Self, Self) -> Self
+pub fn SortdistparallelPoint::to_string(Self) -> String
+pub fn SortdistparallelPoint::x(Self) -> Double
+pub fn SortdistparallelPoint::y(Self) -> Double
+pub fn SortdistparallelPoint::z(Self) -> Double
+
+pub(all) struct SortdistparallelRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistparallelRange::add(Self, Self) -> Self
+pub fn SortdistparallelRange::copy(Self) -> Self
+pub fn SortdistparallelRange::fill(Self, Double) -> Self
+pub fn SortdistparallelRange::get(Self, Int32) -> Double
+pub fn SortdistparallelRange::len(Self) -> Int32
+pub fn SortdistparallelRange::max(Self) -> Double
+pub fn SortdistparallelRange::mean(Self) -> Double
+pub fn SortdistparallelRange::min(Self) -> Double
+pub fn SortdistparallelRange::scale(Self, Double) -> Self
+pub fn SortdistparallelRange::set(Self, Int32, Double) -> Self
+pub fn SortdistparallelRange::sum(Self) -> Double
+pub fn SortdistparallelRange::to_string(Self) -> String
+
+pub(all) struct SortdistparallelSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortdistparallelSeries::add(Self, Self) -> Self
+pub fn SortdistparallelSeries::cumsum(Self) -> Self
+pub fn SortdistparallelSeries::len(Self) -> Int32
+pub fn SortdistparallelSeries::max(Self) -> Double
+pub fn SortdistparallelSeries::mean(Self) -> Double
+pub fn SortdistparallelSeries::median(Self) -> Double
+pub fn SortdistparallelSeries::min(Self) -> Double
+pub fn SortdistparallelSeries::normalize(Self) -> Self
+pub fn SortdistparallelSeries::range(Self) -> Double
+pub fn SortdistparallelSeries::scale(Self, Double) -> Self
+pub fn SortdistparallelSeries::std(Self) -> Double
+pub fn SortdistparallelSeries::sub(Self, Self) -> Self
+pub fn SortdistparallelSeries::sum(Self) -> Double
+pub fn SortdistparallelSeries::to_string(Self) -> String
+pub fn SortdistparallelSeries::variance(Self) -> Double
+
+pub(all) struct SortdistparallelSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistparallelSlice::add(Self, Self) -> Self
+pub fn SortdistparallelSlice::copy(Self) -> Self
+pub fn SortdistparallelSlice::fill(Self, Double) -> Self
+pub fn SortdistparallelSlice::get(Self, Int32) -> Double
+pub fn SortdistparallelSlice::len(Self) -> Int32
+pub fn SortdistparallelSlice::max(Self) -> Double
+pub fn SortdistparallelSlice::mean(Self) -> Double
+pub fn SortdistparallelSlice::min(Self) -> Double
+pub fn SortdistparallelSlice::scale(Self, Double) -> Self
+pub fn SortdistparallelSlice::set(Self, Int32, Double) -> Self
+pub fn SortdistparallelSlice::sum(Self) -> Double
+pub fn SortdistparallelSlice::to_string(Self) -> String
+
+pub(all) struct SortdistparallelTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistparallelTable::add(Self, Self) -> Self
+pub fn SortdistparallelTable::copy(Self) -> Self
+pub fn SortdistparallelTable::fill(Self, Double) -> Self
+pub fn SortdistparallelTable::get(Self, Int32) -> Double
+pub fn SortdistparallelTable::len(Self) -> Int32
+pub fn SortdistparallelTable::max(Self) -> Double
+pub fn SortdistparallelTable::mean(Self) -> Double
+pub fn SortdistparallelTable::min(Self) -> Double
+pub fn SortdistparallelTable::scale(Self, Double) -> Self
+pub fn SortdistparallelTable::set(Self, Int32, Double) -> Self
+pub fn SortdistparallelTable::sum(Self) -> Double
+pub fn SortdistparallelTable::to_string(Self) -> String
+
+pub(all) struct SortdistparallelVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortdistparallelVector::add(Self, Self) -> Self
+pub fn SortdistparallelVector::dist(Self, Self) -> Double
+pub fn SortdistparallelVector::dot(Self, Self) -> Double
+pub fn SortdistparallelVector::norm(Self) -> Double
+pub fn SortdistparallelVector::normalize(Self) -> Self
+pub fn SortdistparallelVector::scale(Self, Double) -> Self
+pub fn SortdistparallelVector::sub(Self, Self) -> Self
+pub fn SortdistparallelVector::to_string(Self) -> String
+
+pub(all) struct SortdistparallelView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistparallelView::add(Self, Self) -> Self
+pub fn SortdistparallelView::copy(Self) -> Self
+pub fn SortdistparallelView::fill(Self, Double) -> Self
+pub fn SortdistparallelView::get(Self, Int32) -> Double
+pub fn SortdistparallelView::len(Self) -> Int32
+pub fn SortdistparallelView::max(Self) -> Double
+pub fn SortdistparallelView::mean(Self) -> Double
+pub fn SortdistparallelView::min(Self) -> Double
+pub fn SortdistparallelView::scale(Self, Double) -> Self
+pub fn SortdistparallelView::set(Self, Int32, Double) -> Self
+pub fn SortdistparallelView::sum(Self) -> Double
+pub fn SortdistparallelView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

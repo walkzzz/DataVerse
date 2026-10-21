@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_transform_wigner"
+
+// Values
+pub fn signal_transform_wigner_buffer_make(Int32) -> SignaltransformwignerBuffer
+
+pub fn signal_transform_wigner_cluster_make(Int32) -> SignaltransformwignerCluster
+
+pub fn signal_transform_wigner_cursor_make(Int32) -> SignaltransformwignerCursor
+
+pub fn signal_transform_wigner_edge_make(Int32) -> SignaltransformwignerEdge
+
+pub fn signal_transform_wigner_frame_make(Int32) -> SignaltransformwignerFrame
+
+pub fn signal_transform_wigner_graphn_make(Int32) -> SignaltransformwignerGraphN
+
+pub fn signal_transform_wigner_layer_make(Int32) -> SignaltransformwignerLayer
+
+pub fn signal_transform_wigner_make_matrix(Int32, Int32, Double) -> SignaltransformwignerMatrix
+
+pub fn signal_transform_wigner_make_point(Double, Double) -> SignaltransformwignerPoint
+
+pub fn signal_transform_wigner_make_point3(Double, Double, Double) -> SignaltransformwignerPoint
+
+pub fn signal_transform_wigner_make_series(Array[Double], String) -> SignaltransformwignerSeries
+
+pub fn signal_transform_wigner_make_vector(Array[Double]) -> SignaltransformwignerVector
+
+pub fn signal_transform_wigner_matrix_identity(Int32) -> SignaltransformwignerMatrix
+
+pub fn signal_transform_wigner_model_make(Int32) -> SignaltransformwignerModel
+
+pub fn signal_transform_wigner_node_make(Int32) -> SignaltransformwignerNode
+
+pub fn signal_transform_wigner_path_make(Int32) -> SignaltransformwignerPath
+
+pub fn signal_transform_wigner_range_make(Int32) -> SignaltransformwignerRange
+
+pub fn signal_transform_wigner_slice_make(Int32) -> SignaltransformwignerSlice
+
+pub fn signal_transform_wigner_table_make(Int32) -> SignaltransformwignerTable
+
+pub fn signal_transform_wigner_vector_zero(Int32) -> SignaltransformwignerVector
+
+pub fn signal_transform_wigner_view_make(Int32) -> SignaltransformwignerView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignaltransformwignerBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformwignerBuffer::add(Self, Self) -> Self
+pub fn SignaltransformwignerBuffer::copy(Self) -> Self
+pub fn SignaltransformwignerBuffer::fill(Self, Double) -> Self
+pub fn SignaltransformwignerBuffer::get(Self, Int32) -> Double
+pub fn SignaltransformwignerBuffer::len(Self) -> Int32
+pub fn SignaltransformwignerBuffer::max(Self) -> Double
+pub fn SignaltransformwignerBuffer::mean(Self) -> Double
+pub fn SignaltransformwignerBuffer::min(Self) -> Double
+pub fn SignaltransformwignerBuffer::scale(Self, Double) -> Self
+pub fn SignaltransformwignerBuffer::set(Self, Int32, Double) -> Self
+pub fn SignaltransformwignerBuffer::sum(Self) -> Double
+pub fn SignaltransformwignerBuffer::to_string(Self) -> String
+
+pub(all) struct SignaltransformwignerCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformwignerCluster::add(Self, Self) -> Self
+pub fn SignaltransformwignerCluster::copy(Self) -> Self
+pub fn SignaltransformwignerCluster::fill(Self, Double) -> Self
+pub fn SignaltransformwignerCluster::get(Self, Int32) -> Double
+pub fn SignaltransformwignerCluster::len(Self) -> Int32
+pub fn SignaltransformwignerCluster::max(Self) -> Double
+pub fn SignaltransformwignerCluster::mean(Self) -> Double
+pub fn SignaltransformwignerCluster::min(Self) -> Double
+pub fn SignaltransformwignerCluster::scale(Self, Double) -> Self
+pub fn SignaltransformwignerCluster::set(Self, Int32, Double) -> Self
+pub fn SignaltransformwignerCluster::sum(Self) -> Double
+pub fn SignaltransformwignerCluster::to_string(Self) -> String
+
+pub(all) struct SignaltransformwignerCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformwignerCursor::add(Self, Self) -> Self
+pub fn SignaltransformwignerCursor::copy(Self) -> Self
+pub fn SignaltransformwignerCursor::fill(Self, Double) -> Self
+pub fn SignaltransformwignerCursor::get(Self, Int32) -> Double
+pub fn SignaltransformwignerCursor::len(Self) -> Int32
+pub fn SignaltransformwignerCursor::max(Self) -> Double
+pub fn SignaltransformwignerCursor::mean(Self) -> Double
+pub fn SignaltransformwignerCursor::min(Self) -> Double
+pub fn SignaltransformwignerCursor::scale(Self, Double) -> Self
+pub fn SignaltransformwignerCursor::set(Self, Int32, Double) -> Self
+pub fn SignaltransformwignerCursor::sum(Self) -> Double
+pub fn SignaltransformwignerCursor::to_string(Self) -> String
+
+pub(all) struct SignaltransformwignerEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformwignerEdge::add(Self, Self) -> Self
+pub fn SignaltransformwignerEdge::copy(Self) -> Self
+pub fn SignaltransformwignerEdge::fill(Self, Double) -> Self
+pub fn SignaltransformwignerEdge::get(Self, Int32) -> Double
+pub fn SignaltransformwignerEdge::len(Self) -> Int32
+pub fn SignaltransformwignerEdge::max(Self) -> Double
+pub fn SignaltransformwignerEdge::mean(Self) -> Double
+pub fn SignaltransformwignerEdge::min(Self) -> Double
+pub fn SignaltransformwignerEdge::scale(Self, Double) -> Self
+pub fn SignaltransformwignerEdge::set(Self, Int32, Double) -> Self
+pub fn SignaltransformwignerEdge::sum(Self) -> Double
+pub fn SignaltransformwignerEdge::to_string(Self) -> String
+
+pub(all) struct SignaltransformwignerFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformwignerFrame::add(Self, Self) -> Self
+pub fn SignaltransformwignerFrame::copy(Self) -> Self
+pub fn SignaltransformwignerFrame::fill(Self, Double) -> Self
+pub fn SignaltransformwignerFrame::get(Self, Int32) -> Double
+pub fn SignaltransformwignerFrame::len(Self) -> Int32
+pub fn SignaltransformwignerFrame::max(Self) -> Double
+pub fn SignaltransformwignerFrame::mean(Self) -> Double
+pub fn SignaltransformwignerFrame::min(Self) -> Double
+pub fn SignaltransformwignerFrame::scale(Self, Double) -> Self
+pub fn SignaltransformwignerFrame::set(Self, Int32, Double) -> Self
+pub fn SignaltransformwignerFrame::sum(Self) -> Double
+pub fn SignaltransformwignerFrame::to_string(Self) -> String
+
+pub(all) struct SignaltransformwignerGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformwignerGraphN::add(Self, Self) -> Self
+pub fn SignaltransformwignerGraphN::copy(Self) -> Self
+pub fn SignaltransformwignerGraphN::fill(Self, Double) -> Self
+pub fn SignaltransformwignerGraphN::get(Self, Int32) -> Double
+pub fn SignaltransformwignerGraphN::len(Self) -> Int32
+pub fn SignaltransformwignerGraphN::max(Self) -> Double
+pub fn SignaltransformwignerGraphN::mean(Self) -> Double
+pub fn SignaltransformwignerGraphN::min(Self) -> Double
+pub fn SignaltransformwignerGraphN::scale(Self, Double) -> Self
+pub fn SignaltransformwignerGraphN::set(Self, Int32, Double) -> Self
+pub fn SignaltransformwignerGraphN::sum(Self) -> Double
+pub fn SignaltransformwignerGraphN::to_string(Self) -> String
+
+pub(all) struct SignaltransformwignerLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformwignerLayer::add(Self, Self) -> Self
+pub fn SignaltransformwignerLayer::copy(Self) -> Self
+pub fn SignaltransformwignerLayer::fill(Self, Double) -> Self
+pub fn SignaltransformwignerLayer::get(Self, Int32) -> Double
+pub fn SignaltransformwignerLayer::len(Self) -> Int32
+pub fn SignaltransformwignerLayer::max(Self) -> Double
+pub fn SignaltransformwignerLayer::mean(Self) -> Double
+pub fn SignaltransformwignerLayer::min(Self) -> Double
+pub fn SignaltransformwignerLayer::scale(Self, Double) -> Self
+pub fn SignaltransformwignerLayer::set(Self, Int32, Double) -> Self
+pub fn SignaltransformwignerLayer::sum(Self) -> Double
+pub fn SignaltransformwignerLayer::to_string(Self) -> String
+
+pub(all) struct SignaltransformwignerMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignaltransformwignerMatrix::add(Self, Self) -> Self
+pub fn SignaltransformwignerMatrix::det(Self) -> Double
+pub fn SignaltransformwignerMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignaltransformwignerMatrix::multiply(Self, Self) -> Self
+pub fn SignaltransformwignerMatrix::norm(Self) -> Double
+pub fn SignaltransformwignerMatrix::scale(Self, Double) -> Self
+pub fn SignaltransformwignerMatrix::to_string(Self) -> String
+pub fn SignaltransformwignerMatrix::trace(Self) -> Double
+pub fn SignaltransformwignerMatrix::transpose(Self) -> Self
+
+pub(all) struct SignaltransformwignerModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformwignerModel::add(Self, Self) -> Self
+pub fn SignaltransformwignerModel::copy(Self) -> Self
+pub fn SignaltransformwignerModel::fill(Self, Double) -> Self
+pub fn SignaltransformwignerModel::get(Self, Int32) -> Double
+pub fn SignaltransformwignerModel::len(Self) -> Int32
+pub fn SignaltransformwignerModel::max(Self) -> Double
+pub fn SignaltransformwignerModel::mean(Self) -> Double
+pub fn SignaltransformwignerModel::min(Self) -> Double
+pub fn SignaltransformwignerModel::scale(Self, Double) -> Self
+pub fn SignaltransformwignerModel::set(Self, Int32, Double) -> Self
+pub fn SignaltransformwignerModel::sum(Self) -> Double
+pub fn SignaltransformwignerModel::to_string(Self) -> String
+
+pub(all) struct SignaltransformwignerNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformwignerNode::add(Self, Self) -> Self
+pub fn SignaltransformwignerNode::copy(Self) -> Self
+pub fn SignaltransformwignerNode::fill(Self, Double) -> Self
+pub fn SignaltransformwignerNode::get(Self, Int32) -> Double
+pub fn SignaltransformwignerNode::len(Self) -> Int32
+pub fn SignaltransformwignerNode::max(Self) -> Double
+pub fn SignaltransformwignerNode::mean(Self) -> Double
+pub fn SignaltransformwignerNode::min(Self) -> Double
+pub fn SignaltransformwignerNode::scale(Self, Double) -> Self
+pub fn SignaltransformwignerNode::set(Self, Int32, Double) -> Self
+pub fn SignaltransformwignerNode::sum(Self) -> Double
+pub fn SignaltransformwignerNode::to_string(Self) -> String
+
+pub(all) struct SignaltransformwignerPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformwignerPath::add(Self, Self) -> Self
+pub fn SignaltransformwignerPath::copy(Self) -> Self
+pub fn SignaltransformwignerPath::fill(Self, Double) -> Self
+pub fn SignaltransformwignerPath::get(Self, Int32) -> Double
+pub fn SignaltransformwignerPath::len(Self) -> Int32
+pub fn SignaltransformwignerPath::max(Self) -> Double
+pub fn SignaltransformwignerPath::mean(Self) -> Double
+pub fn SignaltransformwignerPath::min(Self) -> Double
+pub fn SignaltransformwignerPath::scale(Self, Double) -> Self
+pub fn SignaltransformwignerPath::set(Self, Int32, Double) -> Self
+pub fn SignaltransformwignerPath::sum(Self) -> Double
+pub fn SignaltransformwignerPath::to_string(Self) -> String
+
+pub(all) struct SignaltransformwignerPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignaltransformwignerPoint::add(Self, Self) -> Self
+pub fn SignaltransformwignerPoint::cross(Self, Self) -> Self
+pub fn SignaltransformwignerPoint::dist(Self, Self) -> Double
+pub fn SignaltransformwignerPoint::dot(Self, Self) -> Double
+pub fn SignaltransformwignerPoint::label(Self) -> Int32
+pub fn SignaltransformwignerPoint::lerp(Self, Self, Double) -> Self
+pub fn SignaltransformwignerPoint::mid(Self, Self) -> Self
+pub fn SignaltransformwignerPoint::negate(Self) -> Self
+pub fn SignaltransformwignerPoint::norm(Self) -> Double
+pub fn SignaltransformwignerPoint::normalize(Self) -> Self
+pub fn SignaltransformwignerPoint::scale(Self, Double) -> Self
+pub fn SignaltransformwignerPoint::sub(Self, Self) -> Self
+pub fn SignaltransformwignerPoint::to_string(Self) -> String
+pub fn SignaltransformwignerPoint::x(Self) -> Double
+pub fn SignaltransformwignerPoint::y(Self) -> Double
+pub fn SignaltransformwignerPoint::z(Self) -> Double
+
+pub(all) struct SignaltransformwignerRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformwignerRange::add(Self, Self) -> Self
+pub fn SignaltransformwignerRange::copy(Self) -> Self
+pub fn SignaltransformwignerRange::fill(Self, Double) -> Self
+pub fn SignaltransformwignerRange::get(Self, Int32) -> Double
+pub fn SignaltransformwignerRange::len(Self) -> Int32
+pub fn SignaltransformwignerRange::max(Self) -> Double
+pub fn SignaltransformwignerRange::mean(Self) -> Double
+pub fn SignaltransformwignerRange::min(Self) -> Double
+pub fn SignaltransformwignerRange::scale(Self, Double) -> Self
+pub fn SignaltransformwignerRange::set(Self, Int32, Double) -> Self
+pub fn SignaltransformwignerRange::sum(Self) -> Double
+pub fn SignaltransformwignerRange::to_string(Self) -> String
+
+pub(all) struct SignaltransformwignerSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignaltransformwignerSeries::add(Self, Self) -> Self
+pub fn SignaltransformwignerSeries::cumsum(Self) -> Self
+pub fn SignaltransformwignerSeries::len(Self) -> Int32
+pub fn SignaltransformwignerSeries::max(Self) -> Double
+pub fn SignaltransformwignerSeries::mean(Self) -> Double
+pub fn SignaltransformwignerSeries::median(Self) -> Double
+pub fn SignaltransformwignerSeries::min(Self) -> Double
+pub fn SignaltransformwignerSeries::normalize(Self) -> Self
+pub fn SignaltransformwignerSeries::range(Self) -> Double
+pub fn SignaltransformwignerSeries::scale(Self, Double) -> Self
+pub fn SignaltransformwignerSeries::std(Self) -> Double
+pub fn SignaltransformwignerSeries::sub(Self, Self) -> Self
+pub fn SignaltransformwignerSeries::sum(Self) -> Double
+pub fn SignaltransformwignerSeries::to_string(Self) -> String
+pub fn SignaltransformwignerSeries::variance(Self) -> Double
+
+pub(all) struct SignaltransformwignerSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformwignerSlice::add(Self, Self) -> Self
+pub fn SignaltransformwignerSlice::copy(Self) -> Self
+pub fn SignaltransformwignerSlice::fill(Self, Double) -> Self
+pub fn SignaltransformwignerSlice::get(Self, Int32) -> Double
+pub fn SignaltransformwignerSlice::len(Self) -> Int32
+pub fn SignaltransformwignerSlice::max(Self) -> Double
+pub fn SignaltransformwignerSlice::mean(Self) -> Double
+pub fn SignaltransformwignerSlice::min(Self) -> Double
+pub fn SignaltransformwignerSlice::scale(Self, Double) -> Self
+pub fn SignaltransformwignerSlice::set(Self, Int32, Double) -> Self
+pub fn SignaltransformwignerSlice::sum(Self) -> Double
+pub fn SignaltransformwignerSlice::to_string(Self) -> String
+
+pub(all) struct SignaltransformwignerTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformwignerTable::add(Self, Self) -> Self
+pub fn SignaltransformwignerTable::copy(Self) -> Self
+pub fn SignaltransformwignerTable::fill(Self, Double) -> Self
+pub fn SignaltransformwignerTable::get(Self, Int32) -> Double
+pub fn SignaltransformwignerTable::len(Self) -> Int32
+pub fn SignaltransformwignerTable::max(Self) -> Double
+pub fn SignaltransformwignerTable::mean(Self) -> Double
+pub fn SignaltransformwignerTable::min(Self) -> Double
+pub fn SignaltransformwignerTable::scale(Self, Double) -> Self
+pub fn SignaltransformwignerTable::set(Self, Int32, Double) -> Self
+pub fn SignaltransformwignerTable::sum(Self) -> Double
+pub fn SignaltransformwignerTable::to_string(Self) -> String
+
+pub(all) struct SignaltransformwignerVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignaltransformwignerVector::add(Self, Self) -> Self
+pub fn SignaltransformwignerVector::dist(Self, Self) -> Double
+pub fn SignaltransformwignerVector::dot(Self, Self) -> Double
+pub fn SignaltransformwignerVector::norm(Self) -> Double
+pub fn SignaltransformwignerVector::normalize(Self) -> Self
+pub fn SignaltransformwignerVector::scale(Self, Double) -> Self
+pub fn SignaltransformwignerVector::sub(Self, Self) -> Self
+pub fn SignaltransformwignerVector::to_string(Self) -> String
+
+pub(all) struct SignaltransformwignerView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformwignerView::add(Self, Self) -> Self
+pub fn SignaltransformwignerView::copy(Self) -> Self
+pub fn SignaltransformwignerView::fill(Self, Double) -> Self
+pub fn SignaltransformwignerView::get(Self, Int32) -> Double
+pub fn SignaltransformwignerView::len(Self) -> Int32
+pub fn SignaltransformwignerView::max(Self) -> Double
+pub fn SignaltransformwignerView::mean(Self) -> Double
+pub fn SignaltransformwignerView::min(Self) -> Double
+pub fn SignaltransformwignerView::scale(Self, Double) -> Self
+pub fn SignaltransformwignerView::set(Self, Int32, Double) -> Self
+pub fn SignaltransformwignerView::sum(Self) -> Double
+pub fn SignaltransformwignerView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

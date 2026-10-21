@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_feature_mser"
+
+// Values
+pub fn image_feature_mser_buffer_make(Int32) -> ImagefeaturemserBuffer
+
+pub fn image_feature_mser_cluster_make(Int32) -> ImagefeaturemserCluster
+
+pub fn image_feature_mser_cursor_make(Int32) -> ImagefeaturemserCursor
+
+pub fn image_feature_mser_edge_make(Int32) -> ImagefeaturemserEdge
+
+pub fn image_feature_mser_frame_make(Int32) -> ImagefeaturemserFrame
+
+pub fn image_feature_mser_graphn_make(Int32) -> ImagefeaturemserGraphN
+
+pub fn image_feature_mser_layer_make(Int32) -> ImagefeaturemserLayer
+
+pub fn image_feature_mser_make_matrix(Int32, Int32, Double) -> ImagefeaturemserMatrix
+
+pub fn image_feature_mser_make_point(Double, Double) -> ImagefeaturemserPoint
+
+pub fn image_feature_mser_make_point3(Double, Double, Double) -> ImagefeaturemserPoint
+
+pub fn image_feature_mser_make_series(Array[Double], String) -> ImagefeaturemserSeries
+
+pub fn image_feature_mser_make_vector(Array[Double]) -> ImagefeaturemserVector
+
+pub fn image_feature_mser_matrix_identity(Int32) -> ImagefeaturemserMatrix
+
+pub fn image_feature_mser_model_make(Int32) -> ImagefeaturemserModel
+
+pub fn image_feature_mser_node_make(Int32) -> ImagefeaturemserNode
+
+pub fn image_feature_mser_path_make(Int32) -> ImagefeaturemserPath
+
+pub fn image_feature_mser_range_make(Int32) -> ImagefeaturemserRange
+
+pub fn image_feature_mser_slice_make(Int32) -> ImagefeaturemserSlice
+
+pub fn image_feature_mser_table_make(Int32) -> ImagefeaturemserTable
+
+pub fn image_feature_mser_vector_zero(Int32) -> ImagefeaturemserVector
+
+pub fn image_feature_mser_view_make(Int32) -> ImagefeaturemserView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagefeaturemserBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturemserBuffer::add(Self, Self) -> Self
+pub fn ImagefeaturemserBuffer::copy(Self) -> Self
+pub fn ImagefeaturemserBuffer::fill(Self, Double) -> Self
+pub fn ImagefeaturemserBuffer::get(Self, Int32) -> Double
+pub fn ImagefeaturemserBuffer::len(Self) -> Int32
+pub fn ImagefeaturemserBuffer::max(Self) -> Double
+pub fn ImagefeaturemserBuffer::mean(Self) -> Double
+pub fn ImagefeaturemserBuffer::min(Self) -> Double
+pub fn ImagefeaturemserBuffer::scale(Self, Double) -> Self
+pub fn ImagefeaturemserBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturemserBuffer::sum(Self) -> Double
+pub fn ImagefeaturemserBuffer::to_string(Self) -> String
+
+pub(all) struct ImagefeaturemserCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturemserCluster::add(Self, Self) -> Self
+pub fn ImagefeaturemserCluster::copy(Self) -> Self
+pub fn ImagefeaturemserCluster::fill(Self, Double) -> Self
+pub fn ImagefeaturemserCluster::get(Self, Int32) -> Double
+pub fn ImagefeaturemserCluster::len(Self) -> Int32
+pub fn ImagefeaturemserCluster::max(Self) -> Double
+pub fn ImagefeaturemserCluster::mean(Self) -> Double
+pub fn ImagefeaturemserCluster::min(Self) -> Double
+pub fn ImagefeaturemserCluster::scale(Self, Double) -> Self
+pub fn ImagefeaturemserCluster::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturemserCluster::sum(Self) -> Double
+pub fn ImagefeaturemserCluster::to_string(Self) -> String
+
+pub(all) struct ImagefeaturemserCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturemserCursor::add(Self, Self) -> Self
+pub fn ImagefeaturemserCursor::copy(Self) -> Self
+pub fn ImagefeaturemserCursor::fill(Self, Double) -> Self
+pub fn ImagefeaturemserCursor::get(Self, Int32) -> Double
+pub fn ImagefeaturemserCursor::len(Self) -> Int32
+pub fn ImagefeaturemserCursor::max(Self) -> Double
+pub fn ImagefeaturemserCursor::mean(Self) -> Double
+pub fn ImagefeaturemserCursor::min(Self) -> Double
+pub fn ImagefeaturemserCursor::scale(Self, Double) -> Self
+pub fn ImagefeaturemserCursor::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturemserCursor::sum(Self) -> Double
+pub fn ImagefeaturemserCursor::to_string(Self) -> String
+
+pub(all) struct ImagefeaturemserEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturemserEdge::add(Self, Self) -> Self
+pub fn ImagefeaturemserEdge::copy(Self) -> Self
+pub fn ImagefeaturemserEdge::fill(Self, Double) -> Self
+pub fn ImagefeaturemserEdge::get(Self, Int32) -> Double
+pub fn ImagefeaturemserEdge::len(Self) -> Int32
+pub fn ImagefeaturemserEdge::max(Self) -> Double
+pub fn ImagefeaturemserEdge::mean(Self) -> Double
+pub fn ImagefeaturemserEdge::min(Self) -> Double
+pub fn ImagefeaturemserEdge::scale(Self, Double) -> Self
+pub fn ImagefeaturemserEdge::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturemserEdge::sum(Self) -> Double
+pub fn ImagefeaturemserEdge::to_string(Self) -> String
+
+pub(all) struct ImagefeaturemserFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturemserFrame::add(Self, Self) -> Self
+pub fn ImagefeaturemserFrame::copy(Self) -> Self
+pub fn ImagefeaturemserFrame::fill(Self, Double) -> Self
+pub fn ImagefeaturemserFrame::get(Self, Int32) -> Double
+pub fn ImagefeaturemserFrame::len(Self) -> Int32
+pub fn ImagefeaturemserFrame::max(Self) -> Double
+pub fn ImagefeaturemserFrame::mean(Self) -> Double
+pub fn ImagefeaturemserFrame::min(Self) -> Double
+pub fn ImagefeaturemserFrame::scale(Self, Double) -> Self
+pub fn ImagefeaturemserFrame::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturemserFrame::sum(Self) -> Double
+pub fn ImagefeaturemserFrame::to_string(Self) -> String
+
+pub(all) struct ImagefeaturemserGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturemserGraphN::add(Self, Self) -> Self
+pub fn ImagefeaturemserGraphN::copy(Self) -> Self
+pub fn ImagefeaturemserGraphN::fill(Self, Double) -> Self
+pub fn ImagefeaturemserGraphN::get(Self, Int32) -> Double
+pub fn ImagefeaturemserGraphN::len(Self) -> Int32
+pub fn ImagefeaturemserGraphN::max(Self) -> Double
+pub fn ImagefeaturemserGraphN::mean(Self) -> Double
+pub fn ImagefeaturemserGraphN::min(Self) -> Double
+pub fn ImagefeaturemserGraphN::scale(Self, Double) -> Self
+pub fn ImagefeaturemserGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturemserGraphN::sum(Self) -> Double
+pub fn ImagefeaturemserGraphN::to_string(Self) -> String
+
+pub(all) struct ImagefeaturemserLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturemserLayer::add(Self, Self) -> Self
+pub fn ImagefeaturemserLayer::copy(Self) -> Self
+pub fn ImagefeaturemserLayer::fill(Self, Double) -> Self
+pub fn ImagefeaturemserLayer::get(Self, Int32) -> Double
+pub fn ImagefeaturemserLayer::len(Self) -> Int32
+pub fn ImagefeaturemserLayer::max(Self) -> Double
+pub fn ImagefeaturemserLayer::mean(Self) -> Double
+pub fn ImagefeaturemserLayer::min(Self) -> Double
+pub fn ImagefeaturemserLayer::scale(Self, Double) -> Self
+pub fn ImagefeaturemserLayer::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturemserLayer::sum(Self) -> Double
+pub fn ImagefeaturemserLayer::to_string(Self) -> String
+
+pub(all) struct ImagefeaturemserMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagefeaturemserMatrix::add(Self, Self) -> Self
+pub fn ImagefeaturemserMatrix::det(Self) -> Double
+pub fn ImagefeaturemserMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagefeaturemserMatrix::multiply(Self, Self) -> Self
+pub fn ImagefeaturemserMatrix::norm(Self) -> Double
+pub fn ImagefeaturemserMatrix::scale(Self, Double) -> Self
+pub fn ImagefeaturemserMatrix::to_string(Self) -> String
+pub fn ImagefeaturemserMatrix::trace(Self) -> Double
+pub fn ImagefeaturemserMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagefeaturemserModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturemserModel::add(Self, Self) -> Self
+pub fn ImagefeaturemserModel::copy(Self) -> Self
+pub fn ImagefeaturemserModel::fill(Self, Double) -> Self
+pub fn ImagefeaturemserModel::get(Self, Int32) -> Double
+pub fn ImagefeaturemserModel::len(Self) -> Int32
+pub fn ImagefeaturemserModel::max(Self) -> Double
+pub fn ImagefeaturemserModel::mean(Self) -> Double
+pub fn ImagefeaturemserModel::min(Self) -> Double
+pub fn ImagefeaturemserModel::scale(Self, Double) -> Self
+pub fn ImagefeaturemserModel::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturemserModel::sum(Self) -> Double
+pub fn ImagefeaturemserModel::to_string(Self) -> String
+
+pub(all) struct ImagefeaturemserNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturemserNode::add(Self, Self) -> Self
+pub fn ImagefeaturemserNode::copy(Self) -> Self
+pub fn ImagefeaturemserNode::fill(Self, Double) -> Self
+pub fn ImagefeaturemserNode::get(Self, Int32) -> Double
+pub fn ImagefeaturemserNode::len(Self) -> Int32
+pub fn ImagefeaturemserNode::max(Self) -> Double
+pub fn ImagefeaturemserNode::mean(Self) -> Double
+pub fn ImagefeaturemserNode::min(Self) -> Double
+pub fn ImagefeaturemserNode::scale(Self, Double) -> Self
+pub fn ImagefeaturemserNode::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturemserNode::sum(Self) -> Double
+pub fn ImagefeaturemserNode::to_string(Self) -> String
+
+pub(all) struct ImagefeaturemserPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturemserPath::add(Self, Self) -> Self
+pub fn ImagefeaturemserPath::copy(Self) -> Self
+pub fn ImagefeaturemserPath::fill(Self, Double) -> Self
+pub fn ImagefeaturemserPath::get(Self, Int32) -> Double
+pub fn ImagefeaturemserPath::len(Self) -> Int32
+pub fn ImagefeaturemserPath::max(Self) -> Double
+pub fn ImagefeaturemserPath::mean(Self) -> Double
+pub fn ImagefeaturemserPath::min(Self) -> Double
+pub fn ImagefeaturemserPath::scale(Self, Double) -> Self
+pub fn ImagefeaturemserPath::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturemserPath::sum(Self) -> Double
+pub fn ImagefeaturemserPath::to_string(Self) -> String
+
+pub(all) struct ImagefeaturemserPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagefeaturemserPoint::add(Self, Self) -> Self
+pub fn ImagefeaturemserPoint::cross(Self, Self) -> Self
+pub fn ImagefeaturemserPoint::dist(Self, Self) -> Double
+pub fn ImagefeaturemserPoint::dot(Self, Self) -> Double
+pub fn ImagefeaturemserPoint::label(Self) -> Int32
+pub fn ImagefeaturemserPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagefeaturemserPoint::mid(Self, Self) -> Self
+pub fn ImagefeaturemserPoint::negate(Self) -> Self
+pub fn ImagefeaturemserPoint::norm(Self) -> Double
+pub fn ImagefeaturemserPoint::normalize(Self) -> Self
+pub fn ImagefeaturemserPoint::scale(Self, Double) -> Self
+pub fn ImagefeaturemserPoint::sub(Self, Self) -> Self
+pub fn ImagefeaturemserPoint::to_string(Self) -> String
+pub fn ImagefeaturemserPoint::x(Self) -> Double
+pub fn ImagefeaturemserPoint::y(Self) -> Double
+pub fn ImagefeaturemserPoint::z(Self) -> Double
+
+pub(all) struct ImagefeaturemserRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturemserRange::add(Self, Self) -> Self
+pub fn ImagefeaturemserRange::copy(Self) -> Self
+pub fn ImagefeaturemserRange::fill(Self, Double) -> Self
+pub fn ImagefeaturemserRange::get(Self, Int32) -> Double
+pub fn ImagefeaturemserRange::len(Self) -> Int32
+pub fn ImagefeaturemserRange::max(Self) -> Double
+pub fn ImagefeaturemserRange::mean(Self) -> Double
+pub fn ImagefeaturemserRange::min(Self) -> Double
+pub fn ImagefeaturemserRange::scale(Self, Double) -> Self
+pub fn ImagefeaturemserRange::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturemserRange::sum(Self) -> Double
+pub fn ImagefeaturemserRange::to_string(Self) -> String
+
+pub(all) struct ImagefeaturemserSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagefeaturemserSeries::add(Self, Self) -> Self
+pub fn ImagefeaturemserSeries::cumsum(Self) -> Self
+pub fn ImagefeaturemserSeries::len(Self) -> Int32
+pub fn ImagefeaturemserSeries::max(Self) -> Double
+pub fn ImagefeaturemserSeries::mean(Self) -> Double
+pub fn ImagefeaturemserSeries::median(Self) -> Double
+pub fn ImagefeaturemserSeries::min(Self) -> Double
+pub fn ImagefeaturemserSeries::normalize(Self) -> Self
+pub fn ImagefeaturemserSeries::range(Self) -> Double
+pub fn ImagefeaturemserSeries::scale(Self, Double) -> Self
+pub fn ImagefeaturemserSeries::std(Self) -> Double
+pub fn ImagefeaturemserSeries::sub(Self, Self) -> Self
+pub fn ImagefeaturemserSeries::sum(Self) -> Double
+pub fn ImagefeaturemserSeries::to_string(Self) -> String
+pub fn ImagefeaturemserSeries::variance(Self) -> Double
+
+pub(all) struct ImagefeaturemserSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturemserSlice::add(Self, Self) -> Self
+pub fn ImagefeaturemserSlice::copy(Self) -> Self
+pub fn ImagefeaturemserSlice::fill(Self, Double) -> Self
+pub fn ImagefeaturemserSlice::get(Self, Int32) -> Double
+pub fn ImagefeaturemserSlice::len(Self) -> Int32
+pub fn ImagefeaturemserSlice::max(Self) -> Double
+pub fn ImagefeaturemserSlice::mean(Self) -> Double
+pub fn ImagefeaturemserSlice::min(Self) -> Double
+pub fn ImagefeaturemserSlice::scale(Self, Double) -> Self
+pub fn ImagefeaturemserSlice::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturemserSlice::sum(Self) -> Double
+pub fn ImagefeaturemserSlice::to_string(Self) -> String
+
+pub(all) struct ImagefeaturemserTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturemserTable::add(Self, Self) -> Self
+pub fn ImagefeaturemserTable::copy(Self) -> Self
+pub fn ImagefeaturemserTable::fill(Self, Double) -> Self
+pub fn ImagefeaturemserTable::get(Self, Int32) -> Double
+pub fn ImagefeaturemserTable::len(Self) -> Int32
+pub fn ImagefeaturemserTable::max(Self) -> Double
+pub fn ImagefeaturemserTable::mean(Self) -> Double
+pub fn ImagefeaturemserTable::min(Self) -> Double
+pub fn ImagefeaturemserTable::scale(Self, Double) -> Self
+pub fn ImagefeaturemserTable::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturemserTable::sum(Self) -> Double
+pub fn ImagefeaturemserTable::to_string(Self) -> String
+
+pub(all) struct ImagefeaturemserVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagefeaturemserVector::add(Self, Self) -> Self
+pub fn ImagefeaturemserVector::dist(Self, Self) -> Double
+pub fn ImagefeaturemserVector::dot(Self, Self) -> Double
+pub fn ImagefeaturemserVector::norm(Self) -> Double
+pub fn ImagefeaturemserVector::normalize(Self) -> Self
+pub fn ImagefeaturemserVector::scale(Self, Double) -> Self
+pub fn ImagefeaturemserVector::sub(Self, Self) -> Self
+pub fn ImagefeaturemserVector::to_string(Self) -> String
+
+pub(all) struct ImagefeaturemserView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturemserView::add(Self, Self) -> Self
+pub fn ImagefeaturemserView::copy(Self) -> Self
+pub fn ImagefeaturemserView::fill(Self, Double) -> Self
+pub fn ImagefeaturemserView::get(Self, Int32) -> Double
+pub fn ImagefeaturemserView::len(Self) -> Int32
+pub fn ImagefeaturemserView::max(Self) -> Double
+pub fn ImagefeaturemserView::mean(Self) -> Double
+pub fn ImagefeaturemserView::min(Self) -> Double
+pub fn ImagefeaturemserView::scale(Self, Double) -> Self
+pub fn ImagefeaturemserView::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturemserView::sum(Self) -> Double
+pub fn ImagefeaturemserView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

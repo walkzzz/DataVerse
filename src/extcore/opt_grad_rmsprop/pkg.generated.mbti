@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/opt_grad_rmsprop"
+
+// Values
+pub fn opt_grad_rmsprop_buffer_make(Int32) -> OptgradrmspropBuffer
+
+pub fn opt_grad_rmsprop_cluster_make(Int32) -> OptgradrmspropCluster
+
+pub fn opt_grad_rmsprop_cursor_make(Int32) -> OptgradrmspropCursor
+
+pub fn opt_grad_rmsprop_edge_make(Int32) -> OptgradrmspropEdge
+
+pub fn opt_grad_rmsprop_frame_make(Int32) -> OptgradrmspropFrame
+
+pub fn opt_grad_rmsprop_graphn_make(Int32) -> OptgradrmspropGraphN
+
+pub fn opt_grad_rmsprop_layer_make(Int32) -> OptgradrmspropLayer
+
+pub fn opt_grad_rmsprop_make_matrix(Int32, Int32, Double) -> OptgradrmspropMatrix
+
+pub fn opt_grad_rmsprop_make_point(Double, Double) -> OptgradrmspropPoint
+
+pub fn opt_grad_rmsprop_make_point3(Double, Double, Double) -> OptgradrmspropPoint
+
+pub fn opt_grad_rmsprop_make_series(Array[Double], String) -> OptgradrmspropSeries
+
+pub fn opt_grad_rmsprop_make_vector(Array[Double]) -> OptgradrmspropVector
+
+pub fn opt_grad_rmsprop_matrix_identity(Int32) -> OptgradrmspropMatrix
+
+pub fn opt_grad_rmsprop_model_make(Int32) -> OptgradrmspropModel
+
+pub fn opt_grad_rmsprop_node_make(Int32) -> OptgradrmspropNode
+
+pub fn opt_grad_rmsprop_path_make(Int32) -> OptgradrmspropPath
+
+pub fn opt_grad_rmsprop_range_make(Int32) -> OptgradrmspropRange
+
+pub fn opt_grad_rmsprop_slice_make(Int32) -> OptgradrmspropSlice
+
+pub fn opt_grad_rmsprop_table_make(Int32) -> OptgradrmspropTable
+
+pub fn opt_grad_rmsprop_vector_zero(Int32) -> OptgradrmspropVector
+
+pub fn opt_grad_rmsprop_view_make(Int32) -> OptgradrmspropView
+
+// Errors
+
+// Types and methods
+pub(all) struct OptgradrmspropBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradrmspropBuffer::add(Self, Self) -> Self
+pub fn OptgradrmspropBuffer::copy(Self) -> Self
+pub fn OptgradrmspropBuffer::fill(Self, Double) -> Self
+pub fn OptgradrmspropBuffer::get(Self, Int32) -> Double
+pub fn OptgradrmspropBuffer::len(Self) -> Int32
+pub fn OptgradrmspropBuffer::max(Self) -> Double
+pub fn OptgradrmspropBuffer::mean(Self) -> Double
+pub fn OptgradrmspropBuffer::min(Self) -> Double
+pub fn OptgradrmspropBuffer::scale(Self, Double) -> Self
+pub fn OptgradrmspropBuffer::set(Self, Int32, Double) -> Self
+pub fn OptgradrmspropBuffer::sum(Self) -> Double
+pub fn OptgradrmspropBuffer::to_string(Self) -> String
+
+pub(all) struct OptgradrmspropCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradrmspropCluster::add(Self, Self) -> Self
+pub fn OptgradrmspropCluster::copy(Self) -> Self
+pub fn OptgradrmspropCluster::fill(Self, Double) -> Self
+pub fn OptgradrmspropCluster::get(Self, Int32) -> Double
+pub fn OptgradrmspropCluster::len(Self) -> Int32
+pub fn OptgradrmspropCluster::max(Self) -> Double
+pub fn OptgradrmspropCluster::mean(Self) -> Double
+pub fn OptgradrmspropCluster::min(Self) -> Double
+pub fn OptgradrmspropCluster::scale(Self, Double) -> Self
+pub fn OptgradrmspropCluster::set(Self, Int32, Double) -> Self
+pub fn OptgradrmspropCluster::sum(Self) -> Double
+pub fn OptgradrmspropCluster::to_string(Self) -> String
+
+pub(all) struct OptgradrmspropCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradrmspropCursor::add(Self, Self) -> Self
+pub fn OptgradrmspropCursor::copy(Self) -> Self
+pub fn OptgradrmspropCursor::fill(Self, Double) -> Self
+pub fn OptgradrmspropCursor::get(Self, Int32) -> Double
+pub fn OptgradrmspropCursor::len(Self) -> Int32
+pub fn OptgradrmspropCursor::max(Self) -> Double
+pub fn OptgradrmspropCursor::mean(Self) -> Double
+pub fn OptgradrmspropCursor::min(Self) -> Double
+pub fn OptgradrmspropCursor::scale(Self, Double) -> Self
+pub fn OptgradrmspropCursor::set(Self, Int32, Double) -> Self
+pub fn OptgradrmspropCursor::sum(Self) -> Double
+pub fn OptgradrmspropCursor::to_string(Self) -> String
+
+pub(all) struct OptgradrmspropEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradrmspropEdge::add(Self, Self) -> Self
+pub fn OptgradrmspropEdge::copy(Self) -> Self
+pub fn OptgradrmspropEdge::fill(Self, Double) -> Self
+pub fn OptgradrmspropEdge::get(Self, Int32) -> Double
+pub fn OptgradrmspropEdge::len(Self) -> Int32
+pub fn OptgradrmspropEdge::max(Self) -> Double
+pub fn OptgradrmspropEdge::mean(Self) -> Double
+pub fn OptgradrmspropEdge::min(Self) -> Double
+pub fn OptgradrmspropEdge::scale(Self, Double) -> Self
+pub fn OptgradrmspropEdge::set(Self, Int32, Double) -> Self
+pub fn OptgradrmspropEdge::sum(Self) -> Double
+pub fn OptgradrmspropEdge::to_string(Self) -> String
+
+pub(all) struct OptgradrmspropFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradrmspropFrame::add(Self, Self) -> Self
+pub fn OptgradrmspropFrame::copy(Self) -> Self
+pub fn OptgradrmspropFrame::fill(Self, Double) -> Self
+pub fn OptgradrmspropFrame::get(Self, Int32) -> Double
+pub fn OptgradrmspropFrame::len(Self) -> Int32
+pub fn OptgradrmspropFrame::max(Self) -> Double
+pub fn OptgradrmspropFrame::mean(Self) -> Double
+pub fn OptgradrmspropFrame::min(Self) -> Double
+pub fn OptgradrmspropFrame::scale(Self, Double) -> Self
+pub fn OptgradrmspropFrame::set(Self, Int32, Double) -> Self
+pub fn OptgradrmspropFrame::sum(Self) -> Double
+pub fn OptgradrmspropFrame::to_string(Self) -> String
+
+pub(all) struct OptgradrmspropGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradrmspropGraphN::add(Self, Self) -> Self
+pub fn OptgradrmspropGraphN::copy(Self) -> Self
+pub fn OptgradrmspropGraphN::fill(Self, Double) -> Self
+pub fn OptgradrmspropGraphN::get(Self, Int32) -> Double
+pub fn OptgradrmspropGraphN::len(Self) -> Int32
+pub fn OptgradrmspropGraphN::max(Self) -> Double
+pub fn OptgradrmspropGraphN::mean(Self) -> Double
+pub fn OptgradrmspropGraphN::min(Self) -> Double
+pub fn OptgradrmspropGraphN::scale(Self, Double) -> Self
+pub fn OptgradrmspropGraphN::set(Self, Int32, Double) -> Self
+pub fn OptgradrmspropGraphN::sum(Self) -> Double
+pub fn OptgradrmspropGraphN::to_string(Self) -> String
+
+pub(all) struct OptgradrmspropLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradrmspropLayer::add(Self, Self) -> Self
+pub fn OptgradrmspropLayer::copy(Self) -> Self
+pub fn OptgradrmspropLayer::fill(Self, Double) -> Self
+pub fn OptgradrmspropLayer::get(Self, Int32) -> Double
+pub fn OptgradrmspropLayer::len(Self) -> Int32
+pub fn OptgradrmspropLayer::max(Self) -> Double
+pub fn OptgradrmspropLayer::mean(Self) -> Double
+pub fn OptgradrmspropLayer::min(Self) -> Double
+pub fn OptgradrmspropLayer::scale(Self, Double) -> Self
+pub fn OptgradrmspropLayer::set(Self, Int32, Double) -> Self
+pub fn OptgradrmspropLayer::sum(Self) -> Double
+pub fn OptgradrmspropLayer::to_string(Self) -> String
+
+pub(all) struct OptgradrmspropMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn OptgradrmspropMatrix::add(Self, Self) -> Self
+pub fn OptgradrmspropMatrix::det(Self) -> Double
+pub fn OptgradrmspropMatrix::get(Self, Int32, Int32) -> Double
+pub fn OptgradrmspropMatrix::multiply(Self, Self) -> Self
+pub fn OptgradrmspropMatrix::norm(Self) -> Double
+pub fn OptgradrmspropMatrix::scale(Self, Double) -> Self
+pub fn OptgradrmspropMatrix::to_string(Self) -> String
+pub fn OptgradrmspropMatrix::trace(Self) -> Double
+pub fn OptgradrmspropMatrix::transpose(Self) -> Self
+
+pub(all) struct OptgradrmspropModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradrmspropModel::add(Self, Self) -> Self
+pub fn OptgradrmspropModel::copy(Self) -> Self
+pub fn OptgradrmspropModel::fill(Self, Double) -> Self
+pub fn OptgradrmspropModel::get(Self, Int32) -> Double
+pub fn OptgradrmspropModel::len(Self) -> Int32
+pub fn OptgradrmspropModel::max(Self) -> Double
+pub fn OptgradrmspropModel::mean(Self) -> Double
+pub fn OptgradrmspropModel::min(Self) -> Double
+pub fn OptgradrmspropModel::scale(Self, Double) -> Self
+pub fn OptgradrmspropModel::set(Self, Int32, Double) -> Self
+pub fn OptgradrmspropModel::sum(Self) -> Double
+pub fn OptgradrmspropModel::to_string(Self) -> String
+
+pub(all) struct OptgradrmspropNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradrmspropNode::add(Self, Self) -> Self
+pub fn OptgradrmspropNode::copy(Self) -> Self
+pub fn OptgradrmspropNode::fill(Self, Double) -> Self
+pub fn OptgradrmspropNode::get(Self, Int32) -> Double
+pub fn OptgradrmspropNode::len(Self) -> Int32
+pub fn OptgradrmspropNode::max(Self) -> Double
+pub fn OptgradrmspropNode::mean(Self) -> Double
+pub fn OptgradrmspropNode::min(Self) -> Double
+pub fn OptgradrmspropNode::scale(Self, Double) -> Self
+pub fn OptgradrmspropNode::set(Self, Int32, Double) -> Self
+pub fn OptgradrmspropNode::sum(Self) -> Double
+pub fn OptgradrmspropNode::to_string(Self) -> String
+
+pub(all) struct OptgradrmspropPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradrmspropPath::add(Self, Self) -> Self
+pub fn OptgradrmspropPath::copy(Self) -> Self
+pub fn OptgradrmspropPath::fill(Self, Double) -> Self
+pub fn OptgradrmspropPath::get(Self, Int32) -> Double
+pub fn OptgradrmspropPath::len(Self) -> Int32
+pub fn OptgradrmspropPath::max(Self) -> Double
+pub fn OptgradrmspropPath::mean(Self) -> Double
+pub fn OptgradrmspropPath::min(Self) -> Double
+pub fn OptgradrmspropPath::scale(Self, Double) -> Self
+pub fn OptgradrmspropPath::set(Self, Int32, Double) -> Self
+pub fn OptgradrmspropPath::sum(Self) -> Double
+pub fn OptgradrmspropPath::to_string(Self) -> String
+
+pub(all) struct OptgradrmspropPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn OptgradrmspropPoint::add(Self, Self) -> Self
+pub fn OptgradrmspropPoint::cross(Self, Self) -> Self
+pub fn OptgradrmspropPoint::dist(Self, Self) -> Double
+pub fn OptgradrmspropPoint::dot(Self, Self) -> Double
+pub fn OptgradrmspropPoint::label(Self) -> Int32
+pub fn OptgradrmspropPoint::lerp(Self, Self, Double) -> Self
+pub fn OptgradrmspropPoint::mid(Self, Self) -> Self
+pub fn OptgradrmspropPoint::negate(Self) -> Self
+pub fn OptgradrmspropPoint::norm(Self) -> Double
+pub fn OptgradrmspropPoint::normalize(Self) -> Self
+pub fn OptgradrmspropPoint::scale(Self, Double) -> Self
+pub fn OptgradrmspropPoint::sub(Self, Self) -> Self
+pub fn OptgradrmspropPoint::to_string(Self) -> String
+pub fn OptgradrmspropPoint::x(Self) -> Double
+pub fn OptgradrmspropPoint::y(Self) -> Double
+pub fn OptgradrmspropPoint::z(Self) -> Double
+
+pub(all) struct OptgradrmspropRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradrmspropRange::add(Self, Self) -> Self
+pub fn OptgradrmspropRange::copy(Self) -> Self
+pub fn OptgradrmspropRange::fill(Self, Double) -> Self
+pub fn OptgradrmspropRange::get(Self, Int32) -> Double
+pub fn OptgradrmspropRange::len(Self) -> Int32
+pub fn OptgradrmspropRange::max(Self) -> Double
+pub fn OptgradrmspropRange::mean(Self) -> Double
+pub fn OptgradrmspropRange::min(Self) -> Double
+pub fn OptgradrmspropRange::scale(Self, Double) -> Self
+pub fn OptgradrmspropRange::set(Self, Int32, Double) -> Self
+pub fn OptgradrmspropRange::sum(Self) -> Double
+pub fn OptgradrmspropRange::to_string(Self) -> String
+
+pub(all) struct OptgradrmspropSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn OptgradrmspropSeries::add(Self, Self) -> Self
+pub fn OptgradrmspropSeries::cumsum(Self) -> Self
+pub fn OptgradrmspropSeries::len(Self) -> Int32
+pub fn OptgradrmspropSeries::max(Self) -> Double
+pub fn OptgradrmspropSeries::mean(Self) -> Double
+pub fn OptgradrmspropSeries::median(Self) -> Double
+pub fn OptgradrmspropSeries::min(Self) -> Double
+pub fn OptgradrmspropSeries::normalize(Self) -> Self
+pub fn OptgradrmspropSeries::range(Self) -> Double
+pub fn OptgradrmspropSeries::scale(Self, Double) -> Self
+pub fn OptgradrmspropSeries::std(Self) -> Double
+pub fn OptgradrmspropSeries::sub(Self, Self) -> Self
+pub fn OptgradrmspropSeries::sum(Self) -> Double
+pub fn OptgradrmspropSeries::to_string(Self) -> String
+pub fn OptgradrmspropSeries::variance(Self) -> Double
+
+pub(all) struct OptgradrmspropSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradrmspropSlice::add(Self, Self) -> Self
+pub fn OptgradrmspropSlice::copy(Self) -> Self
+pub fn OptgradrmspropSlice::fill(Self, Double) -> Self
+pub fn OptgradrmspropSlice::get(Self, Int32) -> Double
+pub fn OptgradrmspropSlice::len(Self) -> Int32
+pub fn OptgradrmspropSlice::max(Self) -> Double
+pub fn OptgradrmspropSlice::mean(Self) -> Double
+pub fn OptgradrmspropSlice::min(Self) -> Double
+pub fn OptgradrmspropSlice::scale(Self, Double) -> Self
+pub fn OptgradrmspropSlice::set(Self, Int32, Double) -> Self
+pub fn OptgradrmspropSlice::sum(Self) -> Double
+pub fn OptgradrmspropSlice::to_string(Self) -> String
+
+pub(all) struct OptgradrmspropTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradrmspropTable::add(Self, Self) -> Self
+pub fn OptgradrmspropTable::copy(Self) -> Self
+pub fn OptgradrmspropTable::fill(Self, Double) -> Self
+pub fn OptgradrmspropTable::get(Self, Int32) -> Double
+pub fn OptgradrmspropTable::len(Self) -> Int32
+pub fn OptgradrmspropTable::max(Self) -> Double
+pub fn OptgradrmspropTable::mean(Self) -> Double
+pub fn OptgradrmspropTable::min(Self) -> Double
+pub fn OptgradrmspropTable::scale(Self, Double) -> Self
+pub fn OptgradrmspropTable::set(Self, Int32, Double) -> Self
+pub fn OptgradrmspropTable::sum(Self) -> Double
+pub fn OptgradrmspropTable::to_string(Self) -> String
+
+pub(all) struct OptgradrmspropVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn OptgradrmspropVector::add(Self, Self) -> Self
+pub fn OptgradrmspropVector::dist(Self, Self) -> Double
+pub fn OptgradrmspropVector::dot(Self, Self) -> Double
+pub fn OptgradrmspropVector::norm(Self) -> Double
+pub fn OptgradrmspropVector::normalize(Self) -> Self
+pub fn OptgradrmspropVector::scale(Self, Double) -> Self
+pub fn OptgradrmspropVector::sub(Self, Self) -> Self
+pub fn OptgradrmspropVector::to_string(Self) -> String
+
+pub(all) struct OptgradrmspropView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradrmspropView::add(Self, Self) -> Self
+pub fn OptgradrmspropView::copy(Self) -> Self
+pub fn OptgradrmspropView::fill(Self, Double) -> Self
+pub fn OptgradrmspropView::get(Self, Int32) -> Double
+pub fn OptgradrmspropView::len(Self) -> Int32
+pub fn OptgradrmspropView::max(Self) -> Double
+pub fn OptgradrmspropView::mean(Self) -> Double
+pub fn OptgradrmspropView::min(Self) -> Double
+pub fn OptgradrmspropView::scale(Self, Double) -> Self
+pub fn OptgradrmspropView::set(Self, Int32, Double) -> Self
+pub fn OptgradrmspropView::sum(Self) -> Double
+pub fn OptgradrmspropView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

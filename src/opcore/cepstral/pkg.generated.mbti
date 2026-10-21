@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/cepstral"
+
+// Values
+pub fn cepstral_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn cepstral_corr(Array[Double], Array[Double]) -> Double
+
+pub fn cepstral_cov(Array[Double], Array[Double]) -> Double
+
+pub fn cepstral_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn cepstral_mae(Array[Double], Array[Double]) -> Double
+
+pub fn cepstral_make_labeled_point(Double, Double, Int32) -> CepstralPoint
+
+pub fn cepstral_make_matrix(Int32, Int32, Double) -> CepstralMatrix
+
+pub fn cepstral_make_point(Double, Double) -> CepstralPoint
+
+pub fn cepstral_make_series(Array[Double], String) -> CepstralSeries
+
+pub fn cepstral_make_vector(Array[Double]) -> CepstralVector
+
+pub fn cepstral_matrix_add(CepstralMatrix, CepstralMatrix) -> CepstralMatrix
+
+pub fn cepstral_matrix_get(CepstralMatrix, Int32, Int32) -> Double
+
+pub fn cepstral_matrix_identity(Int32) -> CepstralMatrix
+
+pub fn cepstral_matrix_multiply(CepstralMatrix, CepstralMatrix) -> CepstralMatrix
+
+pub fn cepstral_matrix_norm(CepstralMatrix) -> Double
+
+pub fn cepstral_matrix_scale(CepstralMatrix, Double) -> CepstralMatrix
+
+pub fn cepstral_matrix_to_string(CepstralMatrix) -> String
+
+pub fn cepstral_matrix_trace(CepstralMatrix) -> Double
+
+pub fn cepstral_matrix_transpose(CepstralMatrix) -> CepstralMatrix
+
+pub fn cepstral_mse(Array[Double], Array[Double]) -> Double
+
+pub fn cepstral_point_add(CepstralPoint, CepstralPoint) -> CepstralPoint
+
+pub fn cepstral_point_dist(CepstralPoint, CepstralPoint) -> Double
+
+pub fn cepstral_point_dot(CepstralPoint, CepstralPoint) -> Double
+
+pub fn cepstral_point_label(CepstralPoint) -> Int32
+
+pub fn cepstral_point_norm(CepstralPoint) -> Double
+
+pub fn cepstral_point_scale(CepstralPoint, Double) -> CepstralPoint
+
+pub fn cepstral_point_sub(CepstralPoint, CepstralPoint) -> CepstralPoint
+
+pub fn cepstral_point_to_string(CepstralPoint) -> String
+
+pub fn cepstral_point_x(CepstralPoint) -> Double
+
+pub fn cepstral_point_y(CepstralPoint) -> Double
+
+pub fn cepstral_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn cepstral_r2(Array[Double], Array[Double]) -> Double
+
+pub fn cepstral_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn cepstral_series_add(CepstralSeries, CepstralSeries) -> CepstralSeries
+
+pub fn cepstral_series_len(CepstralSeries) -> Int32
+
+pub fn cepstral_series_max(CepstralSeries) -> Double
+
+pub fn cepstral_series_mean(CepstralSeries) -> Double
+
+pub fn cepstral_series_min(CepstralSeries) -> Double
+
+pub fn cepstral_series_scale(CepstralSeries, Double) -> CepstralSeries
+
+pub fn cepstral_series_std(CepstralSeries) -> Double
+
+pub fn cepstral_series_sum(CepstralSeries) -> Double
+
+pub fn cepstral_series_to_string(CepstralSeries) -> String
+
+pub fn cepstral_series_var(CepstralSeries) -> Double
+
+pub fn cepstral_std(Array[Double]) -> Double
+
+pub fn cepstral_var(Array[Double]) -> Double
+
+pub fn cepstral_vector_add(CepstralVector, CepstralVector) -> CepstralVector
+
+pub fn cepstral_vector_dist(CepstralVector, CepstralVector) -> Double
+
+pub fn cepstral_vector_dot(CepstralVector, CepstralVector) -> Double
+
+pub fn cepstral_vector_norm(CepstralVector) -> Double
+
+pub fn cepstral_vector_normalize(CepstralVector) -> CepstralVector
+
+pub fn cepstral_vector_scale(CepstralVector, Double) -> CepstralVector
+
+pub fn cepstral_vector_sub(CepstralVector, CepstralVector) -> CepstralVector
+
+pub fn cepstral_vector_to_string(CepstralVector) -> String
+
+pub fn cepstral_vector_zero(Int32) -> CepstralVector
+
+// Errors
+
+// Types and methods
+pub struct CepstralMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct CepstralPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct CepstralSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct CepstralVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

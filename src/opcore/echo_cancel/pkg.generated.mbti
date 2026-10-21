@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/echo_cancel"
+
+// Values
+pub fn echo_cancel_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn echo_cancel_corr(Array[Double], Array[Double]) -> Double
+
+pub fn echo_cancel_cov(Array[Double], Array[Double]) -> Double
+
+pub fn echo_cancel_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn echo_cancel_mae(Array[Double], Array[Double]) -> Double
+
+pub fn echo_cancel_make_labeled_point(Double, Double, Int32) -> Echo_cancelPoint
+
+pub fn echo_cancel_make_matrix(Int32, Int32, Double) -> Echo_cancelMatrix
+
+pub fn echo_cancel_make_point(Double, Double) -> Echo_cancelPoint
+
+pub fn echo_cancel_make_series(Array[Double], String) -> Echo_cancelSeries
+
+pub fn echo_cancel_make_vector(Array[Double]) -> Echo_cancelVector
+
+pub fn echo_cancel_matrix_add(Echo_cancelMatrix, Echo_cancelMatrix) -> Echo_cancelMatrix
+
+pub fn echo_cancel_matrix_get(Echo_cancelMatrix, Int32, Int32) -> Double
+
+pub fn echo_cancel_matrix_identity(Int32) -> Echo_cancelMatrix
+
+pub fn echo_cancel_matrix_multiply(Echo_cancelMatrix, Echo_cancelMatrix) -> Echo_cancelMatrix
+
+pub fn echo_cancel_matrix_norm(Echo_cancelMatrix) -> Double
+
+pub fn echo_cancel_matrix_scale(Echo_cancelMatrix, Double) -> Echo_cancelMatrix
+
+pub fn echo_cancel_matrix_to_string(Echo_cancelMatrix) -> String
+
+pub fn echo_cancel_matrix_trace(Echo_cancelMatrix) -> Double
+
+pub fn echo_cancel_matrix_transpose(Echo_cancelMatrix) -> Echo_cancelMatrix
+
+pub fn echo_cancel_mse(Array[Double], Array[Double]) -> Double
+
+pub fn echo_cancel_point_add(Echo_cancelPoint, Echo_cancelPoint) -> Echo_cancelPoint
+
+pub fn echo_cancel_point_dist(Echo_cancelPoint, Echo_cancelPoint) -> Double
+
+pub fn echo_cancel_point_dot(Echo_cancelPoint, Echo_cancelPoint) -> Double
+
+pub fn echo_cancel_point_label(Echo_cancelPoint) -> Int32
+
+pub fn echo_cancel_point_norm(Echo_cancelPoint) -> Double
+
+pub fn echo_cancel_point_scale(Echo_cancelPoint, Double) -> Echo_cancelPoint
+
+pub fn echo_cancel_point_sub(Echo_cancelPoint, Echo_cancelPoint) -> Echo_cancelPoint
+
+pub fn echo_cancel_point_to_string(Echo_cancelPoint) -> String
+
+pub fn echo_cancel_point_x(Echo_cancelPoint) -> Double
+
+pub fn echo_cancel_point_y(Echo_cancelPoint) -> Double
+
+pub fn echo_cancel_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn echo_cancel_r2(Array[Double], Array[Double]) -> Double
+
+pub fn echo_cancel_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn echo_cancel_series_add(Echo_cancelSeries, Echo_cancelSeries) -> Echo_cancelSeries
+
+pub fn echo_cancel_series_len(Echo_cancelSeries) -> Int32
+
+pub fn echo_cancel_series_max(Echo_cancelSeries) -> Double
+
+pub fn echo_cancel_series_mean(Echo_cancelSeries) -> Double
+
+pub fn echo_cancel_series_min(Echo_cancelSeries) -> Double
+
+pub fn echo_cancel_series_scale(Echo_cancelSeries, Double) -> Echo_cancelSeries
+
+pub fn echo_cancel_series_std(Echo_cancelSeries) -> Double
+
+pub fn echo_cancel_series_sum(Echo_cancelSeries) -> Double
+
+pub fn echo_cancel_series_to_string(Echo_cancelSeries) -> String
+
+pub fn echo_cancel_series_var(Echo_cancelSeries) -> Double
+
+pub fn echo_cancel_std(Array[Double]) -> Double
+
+pub fn echo_cancel_var(Array[Double]) -> Double
+
+pub fn echo_cancel_vector_add(Echo_cancelVector, Echo_cancelVector) -> Echo_cancelVector
+
+pub fn echo_cancel_vector_dist(Echo_cancelVector, Echo_cancelVector) -> Double
+
+pub fn echo_cancel_vector_dot(Echo_cancelVector, Echo_cancelVector) -> Double
+
+pub fn echo_cancel_vector_norm(Echo_cancelVector) -> Double
+
+pub fn echo_cancel_vector_normalize(Echo_cancelVector) -> Echo_cancelVector
+
+pub fn echo_cancel_vector_scale(Echo_cancelVector, Double) -> Echo_cancelVector
+
+pub fn echo_cancel_vector_sub(Echo_cancelVector, Echo_cancelVector) -> Echo_cancelVector
+
+pub fn echo_cancel_vector_to_string(Echo_cancelVector) -> String
+
+pub fn echo_cancel_vector_zero(Int32) -> Echo_cancelVector
+
+// Errors
+
+// Types and methods
+pub struct Echo_cancelMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Echo_cancelPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Echo_cancelSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Echo_cancelVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

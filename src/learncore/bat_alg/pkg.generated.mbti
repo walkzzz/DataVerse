@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/bat_alg"
+
+// Values
+pub fn bat_alg_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn bat_alg_corr(Array[Double], Array[Double]) -> Double
+
+pub fn bat_alg_cov(Array[Double], Array[Double]) -> Double
+
+pub fn bat_alg_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn bat_alg_mae(Array[Double], Array[Double]) -> Double
+
+pub fn bat_alg_make_labeled_point(Double, Double, Int32) -> Bat_algPoint
+
+pub fn bat_alg_make_matrix(Int32, Int32, Double) -> Bat_algMatrix
+
+pub fn bat_alg_make_point(Double, Double) -> Bat_algPoint
+
+pub fn bat_alg_make_series(Array[Double], String) -> Bat_algSeries
+
+pub fn bat_alg_make_vector(Array[Double]) -> Bat_algVector
+
+pub fn bat_alg_matrix_add(Bat_algMatrix, Bat_algMatrix) -> Bat_algMatrix
+
+pub fn bat_alg_matrix_get(Bat_algMatrix, Int32, Int32) -> Double
+
+pub fn bat_alg_matrix_identity(Int32) -> Bat_algMatrix
+
+pub fn bat_alg_matrix_multiply(Bat_algMatrix, Bat_algMatrix) -> Bat_algMatrix
+
+pub fn bat_alg_matrix_norm(Bat_algMatrix) -> Double
+
+pub fn bat_alg_matrix_scale(Bat_algMatrix, Double) -> Bat_algMatrix
+
+pub fn bat_alg_matrix_to_string(Bat_algMatrix) -> String
+
+pub fn bat_alg_matrix_trace(Bat_algMatrix) -> Double
+
+pub fn bat_alg_matrix_transpose(Bat_algMatrix) -> Bat_algMatrix
+
+pub fn bat_alg_mse(Array[Double], Array[Double]) -> Double
+
+pub fn bat_alg_point_add(Bat_algPoint, Bat_algPoint) -> Bat_algPoint
+
+pub fn bat_alg_point_dist(Bat_algPoint, Bat_algPoint) -> Double
+
+pub fn bat_alg_point_dot(Bat_algPoint, Bat_algPoint) -> Double
+
+pub fn bat_alg_point_label(Bat_algPoint) -> Int32
+
+pub fn bat_alg_point_norm(Bat_algPoint) -> Double
+
+pub fn bat_alg_point_scale(Bat_algPoint, Double) -> Bat_algPoint
+
+pub fn bat_alg_point_sub(Bat_algPoint, Bat_algPoint) -> Bat_algPoint
+
+pub fn bat_alg_point_to_string(Bat_algPoint) -> String
+
+pub fn bat_alg_point_x(Bat_algPoint) -> Double
+
+pub fn bat_alg_point_y(Bat_algPoint) -> Double
+
+pub fn bat_alg_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn bat_alg_r2(Array[Double], Array[Double]) -> Double
+
+pub fn bat_alg_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn bat_alg_series_add(Bat_algSeries, Bat_algSeries) -> Bat_algSeries
+
+pub fn bat_alg_series_len(Bat_algSeries) -> Int32
+
+pub fn bat_alg_series_max(Bat_algSeries) -> Double
+
+pub fn bat_alg_series_mean(Bat_algSeries) -> Double
+
+pub fn bat_alg_series_min(Bat_algSeries) -> Double
+
+pub fn bat_alg_series_scale(Bat_algSeries, Double) -> Bat_algSeries
+
+pub fn bat_alg_series_std(Bat_algSeries) -> Double
+
+pub fn bat_alg_series_sum(Bat_algSeries) -> Double
+
+pub fn bat_alg_series_to_string(Bat_algSeries) -> String
+
+pub fn bat_alg_series_var(Bat_algSeries) -> Double
+
+pub fn bat_alg_std(Array[Double]) -> Double
+
+pub fn bat_alg_var(Array[Double]) -> Double
+
+pub fn bat_alg_vector_add(Bat_algVector, Bat_algVector) -> Bat_algVector
+
+pub fn bat_alg_vector_dist(Bat_algVector, Bat_algVector) -> Double
+
+pub fn bat_alg_vector_dot(Bat_algVector, Bat_algVector) -> Double
+
+pub fn bat_alg_vector_norm(Bat_algVector) -> Double
+
+pub fn bat_alg_vector_normalize(Bat_algVector) -> Bat_algVector
+
+pub fn bat_alg_vector_scale(Bat_algVector, Double) -> Bat_algVector
+
+pub fn bat_alg_vector_sub(Bat_algVector, Bat_algVector) -> Bat_algVector
+
+pub fn bat_alg_vector_to_string(Bat_algVector) -> String
+
+pub fn bat_alg_vector_zero(Int32) -> Bat_algVector
+
+// Errors
+
+// Types and methods
+pub struct Bat_algMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Bat_algPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Bat_algSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Bat_algVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

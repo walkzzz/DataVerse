@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_ensemble_adaboost"
+
+// Values
+pub fn ml_ensemble_adaboost_buffer_make(Int32) -> MlensembleadaboostBuffer
+
+pub fn ml_ensemble_adaboost_cluster_make(Int32) -> MlensembleadaboostCluster
+
+pub fn ml_ensemble_adaboost_cursor_make(Int32) -> MlensembleadaboostCursor
+
+pub fn ml_ensemble_adaboost_edge_make(Int32) -> MlensembleadaboostEdge
+
+pub fn ml_ensemble_adaboost_frame_make(Int32) -> MlensembleadaboostFrame
+
+pub fn ml_ensemble_adaboost_graphn_make(Int32) -> MlensembleadaboostGraphN
+
+pub fn ml_ensemble_adaboost_layer_make(Int32) -> MlensembleadaboostLayer
+
+pub fn ml_ensemble_adaboost_make_matrix(Int32, Int32, Double) -> MlensembleadaboostMatrix
+
+pub fn ml_ensemble_adaboost_make_point(Double, Double) -> MlensembleadaboostPoint
+
+pub fn ml_ensemble_adaboost_make_point3(Double, Double, Double) -> MlensembleadaboostPoint
+
+pub fn ml_ensemble_adaboost_make_series(Array[Double], String) -> MlensembleadaboostSeries
+
+pub fn ml_ensemble_adaboost_make_vector(Array[Double]) -> MlensembleadaboostVector
+
+pub fn ml_ensemble_adaboost_matrix_identity(Int32) -> MlensembleadaboostMatrix
+
+pub fn ml_ensemble_adaboost_model_make(Int32) -> MlensembleadaboostModel
+
+pub fn ml_ensemble_adaboost_node_make(Int32) -> MlensembleadaboostNode
+
+pub fn ml_ensemble_adaboost_path_make(Int32) -> MlensembleadaboostPath
+
+pub fn ml_ensemble_adaboost_range_make(Int32) -> MlensembleadaboostRange
+
+pub fn ml_ensemble_adaboost_slice_make(Int32) -> MlensembleadaboostSlice
+
+pub fn ml_ensemble_adaboost_table_make(Int32) -> MlensembleadaboostTable
+
+pub fn ml_ensemble_adaboost_vector_zero(Int32) -> MlensembleadaboostVector
+
+pub fn ml_ensemble_adaboost_view_make(Int32) -> MlensembleadaboostView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlensembleadaboostBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensembleadaboostBuffer::add(Self, Self) -> Self
+pub fn MlensembleadaboostBuffer::copy(Self) -> Self
+pub fn MlensembleadaboostBuffer::fill(Self, Double) -> Self
+pub fn MlensembleadaboostBuffer::get(Self, Int32) -> Double
+pub fn MlensembleadaboostBuffer::len(Self) -> Int32
+pub fn MlensembleadaboostBuffer::max(Self) -> Double
+pub fn MlensembleadaboostBuffer::mean(Self) -> Double
+pub fn MlensembleadaboostBuffer::min(Self) -> Double
+pub fn MlensembleadaboostBuffer::scale(Self, Double) -> Self
+pub fn MlensembleadaboostBuffer::set(Self, Int32, Double) -> Self
+pub fn MlensembleadaboostBuffer::sum(Self) -> Double
+pub fn MlensembleadaboostBuffer::to_string(Self) -> String
+
+pub(all) struct MlensembleadaboostCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensembleadaboostCluster::add(Self, Self) -> Self
+pub fn MlensembleadaboostCluster::copy(Self) -> Self
+pub fn MlensembleadaboostCluster::fill(Self, Double) -> Self
+pub fn MlensembleadaboostCluster::get(Self, Int32) -> Double
+pub fn MlensembleadaboostCluster::len(Self) -> Int32
+pub fn MlensembleadaboostCluster::max(Self) -> Double
+pub fn MlensembleadaboostCluster::mean(Self) -> Double
+pub fn MlensembleadaboostCluster::min(Self) -> Double
+pub fn MlensembleadaboostCluster::scale(Self, Double) -> Self
+pub fn MlensembleadaboostCluster::set(Self, Int32, Double) -> Self
+pub fn MlensembleadaboostCluster::sum(Self) -> Double
+pub fn MlensembleadaboostCluster::to_string(Self) -> String
+
+pub(all) struct MlensembleadaboostCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensembleadaboostCursor::add(Self, Self) -> Self
+pub fn MlensembleadaboostCursor::copy(Self) -> Self
+pub fn MlensembleadaboostCursor::fill(Self, Double) -> Self
+pub fn MlensembleadaboostCursor::get(Self, Int32) -> Double
+pub fn MlensembleadaboostCursor::len(Self) -> Int32
+pub fn MlensembleadaboostCursor::max(Self) -> Double
+pub fn MlensembleadaboostCursor::mean(Self) -> Double
+pub fn MlensembleadaboostCursor::min(Self) -> Double
+pub fn MlensembleadaboostCursor::scale(Self, Double) -> Self
+pub fn MlensembleadaboostCursor::set(Self, Int32, Double) -> Self
+pub fn MlensembleadaboostCursor::sum(Self) -> Double
+pub fn MlensembleadaboostCursor::to_string(Self) -> String
+
+pub(all) struct MlensembleadaboostEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensembleadaboostEdge::add(Self, Self) -> Self
+pub fn MlensembleadaboostEdge::copy(Self) -> Self
+pub fn MlensembleadaboostEdge::fill(Self, Double) -> Self
+pub fn MlensembleadaboostEdge::get(Self, Int32) -> Double
+pub fn MlensembleadaboostEdge::len(Self) -> Int32
+pub fn MlensembleadaboostEdge::max(Self) -> Double
+pub fn MlensembleadaboostEdge::mean(Self) -> Double
+pub fn MlensembleadaboostEdge::min(Self) -> Double
+pub fn MlensembleadaboostEdge::scale(Self, Double) -> Self
+pub fn MlensembleadaboostEdge::set(Self, Int32, Double) -> Self
+pub fn MlensembleadaboostEdge::sum(Self) -> Double
+pub fn MlensembleadaboostEdge::to_string(Self) -> String
+
+pub(all) struct MlensembleadaboostFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensembleadaboostFrame::add(Self, Self) -> Self
+pub fn MlensembleadaboostFrame::copy(Self) -> Self
+pub fn MlensembleadaboostFrame::fill(Self, Double) -> Self
+pub fn MlensembleadaboostFrame::get(Self, Int32) -> Double
+pub fn MlensembleadaboostFrame::len(Self) -> Int32
+pub fn MlensembleadaboostFrame::max(Self) -> Double
+pub fn MlensembleadaboostFrame::mean(Self) -> Double
+pub fn MlensembleadaboostFrame::min(Self) -> Double
+pub fn MlensembleadaboostFrame::scale(Self, Double) -> Self
+pub fn MlensembleadaboostFrame::set(Self, Int32, Double) -> Self
+pub fn MlensembleadaboostFrame::sum(Self) -> Double
+pub fn MlensembleadaboostFrame::to_string(Self) -> String
+
+pub(all) struct MlensembleadaboostGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensembleadaboostGraphN::add(Self, Self) -> Self
+pub fn MlensembleadaboostGraphN::copy(Self) -> Self
+pub fn MlensembleadaboostGraphN::fill(Self, Double) -> Self
+pub fn MlensembleadaboostGraphN::get(Self, Int32) -> Double
+pub fn MlensembleadaboostGraphN::len(Self) -> Int32
+pub fn MlensembleadaboostGraphN::max(Self) -> Double
+pub fn MlensembleadaboostGraphN::mean(Self) -> Double
+pub fn MlensembleadaboostGraphN::min(Self) -> Double
+pub fn MlensembleadaboostGraphN::scale(Self, Double) -> Self
+pub fn MlensembleadaboostGraphN::set(Self, Int32, Double) -> Self
+pub fn MlensembleadaboostGraphN::sum(Self) -> Double
+pub fn MlensembleadaboostGraphN::to_string(Self) -> String
+
+pub(all) struct MlensembleadaboostLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensembleadaboostLayer::add(Self, Self) -> Self
+pub fn MlensembleadaboostLayer::copy(Self) -> Self
+pub fn MlensembleadaboostLayer::fill(Self, Double) -> Self
+pub fn MlensembleadaboostLayer::get(Self, Int32) -> Double
+pub fn MlensembleadaboostLayer::len(Self) -> Int32
+pub fn MlensembleadaboostLayer::max(Self) -> Double
+pub fn MlensembleadaboostLayer::mean(Self) -> Double
+pub fn MlensembleadaboostLayer::min(Self) -> Double
+pub fn MlensembleadaboostLayer::scale(Self, Double) -> Self
+pub fn MlensembleadaboostLayer::set(Self, Int32, Double) -> Self
+pub fn MlensembleadaboostLayer::sum(Self) -> Double
+pub fn MlensembleadaboostLayer::to_string(Self) -> String
+
+pub(all) struct MlensembleadaboostMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlensembleadaboostMatrix::add(Self, Self) -> Self
+pub fn MlensembleadaboostMatrix::det(Self) -> Double
+pub fn MlensembleadaboostMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlensembleadaboostMatrix::multiply(Self, Self) -> Self
+pub fn MlensembleadaboostMatrix::norm(Self) -> Double
+pub fn MlensembleadaboostMatrix::scale(Self, Double) -> Self
+pub fn MlensembleadaboostMatrix::to_string(Self) -> String
+pub fn MlensembleadaboostMatrix::trace(Self) -> Double
+pub fn MlensembleadaboostMatrix::transpose(Self) -> Self
+
+pub(all) struct MlensembleadaboostModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensembleadaboostModel::add(Self, Self) -> Self
+pub fn MlensembleadaboostModel::copy(Self) -> Self
+pub fn MlensembleadaboostModel::fill(Self, Double) -> Self
+pub fn MlensembleadaboostModel::get(Self, Int32) -> Double
+pub fn MlensembleadaboostModel::len(Self) -> Int32
+pub fn MlensembleadaboostModel::max(Self) -> Double
+pub fn MlensembleadaboostModel::mean(Self) -> Double
+pub fn MlensembleadaboostModel::min(Self) -> Double
+pub fn MlensembleadaboostModel::scale(Self, Double) -> Self
+pub fn MlensembleadaboostModel::set(Self, Int32, Double) -> Self
+pub fn MlensembleadaboostModel::sum(Self) -> Double
+pub fn MlensembleadaboostModel::to_string(Self) -> String
+
+pub(all) struct MlensembleadaboostNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensembleadaboostNode::add(Self, Self) -> Self
+pub fn MlensembleadaboostNode::copy(Self) -> Self
+pub fn MlensembleadaboostNode::fill(Self, Double) -> Self
+pub fn MlensembleadaboostNode::get(Self, Int32) -> Double
+pub fn MlensembleadaboostNode::len(Self) -> Int32
+pub fn MlensembleadaboostNode::max(Self) -> Double
+pub fn MlensembleadaboostNode::mean(Self) -> Double
+pub fn MlensembleadaboostNode::min(Self) -> Double
+pub fn MlensembleadaboostNode::scale(Self, Double) -> Self
+pub fn MlensembleadaboostNode::set(Self, Int32, Double) -> Self
+pub fn MlensembleadaboostNode::sum(Self) -> Double
+pub fn MlensembleadaboostNode::to_string(Self) -> String
+
+pub(all) struct MlensembleadaboostPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensembleadaboostPath::add(Self, Self) -> Self
+pub fn MlensembleadaboostPath::copy(Self) -> Self
+pub fn MlensembleadaboostPath::fill(Self, Double) -> Self
+pub fn MlensembleadaboostPath::get(Self, Int32) -> Double
+pub fn MlensembleadaboostPath::len(Self) -> Int32
+pub fn MlensembleadaboostPath::max(Self) -> Double
+pub fn MlensembleadaboostPath::mean(Self) -> Double
+pub fn MlensembleadaboostPath::min(Self) -> Double
+pub fn MlensembleadaboostPath::scale(Self, Double) -> Self
+pub fn MlensembleadaboostPath::set(Self, Int32, Double) -> Self
+pub fn MlensembleadaboostPath::sum(Self) -> Double
+pub fn MlensembleadaboostPath::to_string(Self) -> String
+
+pub(all) struct MlensembleadaboostPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlensembleadaboostPoint::add(Self, Self) -> Self
+pub fn MlensembleadaboostPoint::cross(Self, Self) -> Self
+pub fn MlensembleadaboostPoint::dist(Self, Self) -> Double
+pub fn MlensembleadaboostPoint::dot(Self, Self) -> Double
+pub fn MlensembleadaboostPoint::label(Self) -> Int32
+pub fn MlensembleadaboostPoint::lerp(Self, Self, Double) -> Self
+pub fn MlensembleadaboostPoint::mid(Self, Self) -> Self
+pub fn MlensembleadaboostPoint::negate(Self) -> Self
+pub fn MlensembleadaboostPoint::norm(Self) -> Double
+pub fn MlensembleadaboostPoint::normalize(Self) -> Self
+pub fn MlensembleadaboostPoint::scale(Self, Double) -> Self
+pub fn MlensembleadaboostPoint::sub(Self, Self) -> Self
+pub fn MlensembleadaboostPoint::to_string(Self) -> String
+pub fn MlensembleadaboostPoint::x(Self) -> Double
+pub fn MlensembleadaboostPoint::y(Self) -> Double
+pub fn MlensembleadaboostPoint::z(Self) -> Double
+
+pub(all) struct MlensembleadaboostRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensembleadaboostRange::add(Self, Self) -> Self
+pub fn MlensembleadaboostRange::copy(Self) -> Self
+pub fn MlensembleadaboostRange::fill(Self, Double) -> Self
+pub fn MlensembleadaboostRange::get(Self, Int32) -> Double
+pub fn MlensembleadaboostRange::len(Self) -> Int32
+pub fn MlensembleadaboostRange::max(Self) -> Double
+pub fn MlensembleadaboostRange::mean(Self) -> Double
+pub fn MlensembleadaboostRange::min(Self) -> Double
+pub fn MlensembleadaboostRange::scale(Self, Double) -> Self
+pub fn MlensembleadaboostRange::set(Self, Int32, Double) -> Self
+pub fn MlensembleadaboostRange::sum(Self) -> Double
+pub fn MlensembleadaboostRange::to_string(Self) -> String
+
+pub(all) struct MlensembleadaboostSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlensembleadaboostSeries::add(Self, Self) -> Self
+pub fn MlensembleadaboostSeries::cumsum(Self) -> Self
+pub fn MlensembleadaboostSeries::len(Self) -> Int32
+pub fn MlensembleadaboostSeries::max(Self) -> Double
+pub fn MlensembleadaboostSeries::mean(Self) -> Double
+pub fn MlensembleadaboostSeries::median(Self) -> Double
+pub fn MlensembleadaboostSeries::min(Self) -> Double
+pub fn MlensembleadaboostSeries::normalize(Self) -> Self
+pub fn MlensembleadaboostSeries::range(Self) -> Double
+pub fn MlensembleadaboostSeries::scale(Self, Double) -> Self
+pub fn MlensembleadaboostSeries::std(Self) -> Double
+pub fn MlensembleadaboostSeries::sub(Self, Self) -> Self
+pub fn MlensembleadaboostSeries::sum(Self) -> Double
+pub fn MlensembleadaboostSeries::to_string(Self) -> String
+pub fn MlensembleadaboostSeries::variance(Self) -> Double
+
+pub(all) struct MlensembleadaboostSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensembleadaboostSlice::add(Self, Self) -> Self
+pub fn MlensembleadaboostSlice::copy(Self) -> Self
+pub fn MlensembleadaboostSlice::fill(Self, Double) -> Self
+pub fn MlensembleadaboostSlice::get(Self, Int32) -> Double
+pub fn MlensembleadaboostSlice::len(Self) -> Int32
+pub fn MlensembleadaboostSlice::max(Self) -> Double
+pub fn MlensembleadaboostSlice::mean(Self) -> Double
+pub fn MlensembleadaboostSlice::min(Self) -> Double
+pub fn MlensembleadaboostSlice::scale(Self, Double) -> Self
+pub fn MlensembleadaboostSlice::set(Self, Int32, Double) -> Self
+pub fn MlensembleadaboostSlice::sum(Self) -> Double
+pub fn MlensembleadaboostSlice::to_string(Self) -> String
+
+pub(all) struct MlensembleadaboostTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensembleadaboostTable::add(Self, Self) -> Self
+pub fn MlensembleadaboostTable::copy(Self) -> Self
+pub fn MlensembleadaboostTable::fill(Self, Double) -> Self
+pub fn MlensembleadaboostTable::get(Self, Int32) -> Double
+pub fn MlensembleadaboostTable::len(Self) -> Int32
+pub fn MlensembleadaboostTable::max(Self) -> Double
+pub fn MlensembleadaboostTable::mean(Self) -> Double
+pub fn MlensembleadaboostTable::min(Self) -> Double
+pub fn MlensembleadaboostTable::scale(Self, Double) -> Self
+pub fn MlensembleadaboostTable::set(Self, Int32, Double) -> Self
+pub fn MlensembleadaboostTable::sum(Self) -> Double
+pub fn MlensembleadaboostTable::to_string(Self) -> String
+
+pub(all) struct MlensembleadaboostVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlensembleadaboostVector::add(Self, Self) -> Self
+pub fn MlensembleadaboostVector::dist(Self, Self) -> Double
+pub fn MlensembleadaboostVector::dot(Self, Self) -> Double
+pub fn MlensembleadaboostVector::norm(Self) -> Double
+pub fn MlensembleadaboostVector::normalize(Self) -> Self
+pub fn MlensembleadaboostVector::scale(Self, Double) -> Self
+pub fn MlensembleadaboostVector::sub(Self, Self) -> Self
+pub fn MlensembleadaboostVector::to_string(Self) -> String
+
+pub(all) struct MlensembleadaboostView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensembleadaboostView::add(Self, Self) -> Self
+pub fn MlensembleadaboostView::copy(Self) -> Self
+pub fn MlensembleadaboostView::fill(Self, Double) -> Self
+pub fn MlensembleadaboostView::get(Self, Int32) -> Double
+pub fn MlensembleadaboostView::len(Self) -> Int32
+pub fn MlensembleadaboostView::max(Self) -> Double
+pub fn MlensembleadaboostView::mean(Self) -> Double
+pub fn MlensembleadaboostView::min(Self) -> Double
+pub fn MlensembleadaboostView::scale(Self, Double) -> Self
+pub fn MlensembleadaboostView::set(Self, Int32, Double) -> Self
+pub fn MlensembleadaboostView::sum(Self) -> Double
+pub fn MlensembleadaboostView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/firefly"
+
+// Values
+pub fn firefly_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn firefly_corr(Array[Double], Array[Double]) -> Double
+
+pub fn firefly_cov(Array[Double], Array[Double]) -> Double
+
+pub fn firefly_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn firefly_mae(Array[Double], Array[Double]) -> Double
+
+pub fn firefly_make_labeled_point(Double, Double, Int32) -> FireflyPoint
+
+pub fn firefly_make_matrix(Int32, Int32, Double) -> FireflyMatrix
+
+pub fn firefly_make_point(Double, Double) -> FireflyPoint
+
+pub fn firefly_make_series(Array[Double], String) -> FireflySeries
+
+pub fn firefly_make_vector(Array[Double]) -> FireflyVector
+
+pub fn firefly_matrix_add(FireflyMatrix, FireflyMatrix) -> FireflyMatrix
+
+pub fn firefly_matrix_get(FireflyMatrix, Int32, Int32) -> Double
+
+pub fn firefly_matrix_identity(Int32) -> FireflyMatrix
+
+pub fn firefly_matrix_multiply(FireflyMatrix, FireflyMatrix) -> FireflyMatrix
+
+pub fn firefly_matrix_norm(FireflyMatrix) -> Double
+
+pub fn firefly_matrix_scale(FireflyMatrix, Double) -> FireflyMatrix
+
+pub fn firefly_matrix_to_string(FireflyMatrix) -> String
+
+pub fn firefly_matrix_trace(FireflyMatrix) -> Double
+
+pub fn firefly_matrix_transpose(FireflyMatrix) -> FireflyMatrix
+
+pub fn firefly_mse(Array[Double], Array[Double]) -> Double
+
+pub fn firefly_point_add(FireflyPoint, FireflyPoint) -> FireflyPoint
+
+pub fn firefly_point_dist(FireflyPoint, FireflyPoint) -> Double
+
+pub fn firefly_point_dot(FireflyPoint, FireflyPoint) -> Double
+
+pub fn firefly_point_label(FireflyPoint) -> Int32
+
+pub fn firefly_point_norm(FireflyPoint) -> Double
+
+pub fn firefly_point_scale(FireflyPoint, Double) -> FireflyPoint
+
+pub fn firefly_point_sub(FireflyPoint, FireflyPoint) -> FireflyPoint
+
+pub fn firefly_point_to_string(FireflyPoint) -> String
+
+pub fn firefly_point_x(FireflyPoint) -> Double
+
+pub fn firefly_point_y(FireflyPoint) -> Double
+
+pub fn firefly_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn firefly_r2(Array[Double], Array[Double]) -> Double
+
+pub fn firefly_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn firefly_series_add(FireflySeries, FireflySeries) -> FireflySeries
+
+pub fn firefly_series_len(FireflySeries) -> Int32
+
+pub fn firefly_series_max(FireflySeries) -> Double
+
+pub fn firefly_series_mean(FireflySeries) -> Double
+
+pub fn firefly_series_min(FireflySeries) -> Double
+
+pub fn firefly_series_scale(FireflySeries, Double) -> FireflySeries
+
+pub fn firefly_series_std(FireflySeries) -> Double
+
+pub fn firefly_series_sum(FireflySeries) -> Double
+
+pub fn firefly_series_to_string(FireflySeries) -> String
+
+pub fn firefly_series_var(FireflySeries) -> Double
+
+pub fn firefly_std(Array[Double]) -> Double
+
+pub fn firefly_var(Array[Double]) -> Double
+
+pub fn firefly_vector_add(FireflyVector, FireflyVector) -> FireflyVector
+
+pub fn firefly_vector_dist(FireflyVector, FireflyVector) -> Double
+
+pub fn firefly_vector_dot(FireflyVector, FireflyVector) -> Double
+
+pub fn firefly_vector_norm(FireflyVector) -> Double
+
+pub fn firefly_vector_normalize(FireflyVector) -> FireflyVector
+
+pub fn firefly_vector_scale(FireflyVector, Double) -> FireflyVector
+
+pub fn firefly_vector_sub(FireflyVector, FireflyVector) -> FireflyVector
+
+pub fn firefly_vector_to_string(FireflyVector) -> String
+
+pub fn firefly_vector_zero(Int32) -> FireflyVector
+
+// Errors
+
+// Types and methods
+pub struct FireflyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct FireflyPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct FireflySeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct FireflyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

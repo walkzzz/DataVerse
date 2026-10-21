@@ -1,0 +1,81 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/serialize"
+
+// Values
+pub fn base64_encode(String) -> String
+
+pub fn bool_to_string(Bool) -> String
+
+pub fn csv_escape(String, String) -> String
+
+pub fn csv_row(Array[String], String) -> String
+
+pub fn csv_table(Array[Array[String]], String) -> String
+
+pub fn format_name(SerializeFormat) -> String
+
+pub fn hex_encode(String) -> String
+
+pub fn int_to_padded(Int32, Int32) -> String
+
+pub fn json_array(Array[String]) -> String
+
+pub fn json_bool_value(String, Bool) -> String
+
+pub fn json_escape(String) -> String
+
+pub fn json_number_value(String, Double) -> String
+
+pub fn json_object(Array[String]) -> String
+
+pub fn json_string_value(String, String) -> String
+
+pub fn make_serialize_result(SerializeFormat, String, Bool, String) -> SerializeResult
+
+pub fn make_validation_result(Bool, Array[String], Array[String]) -> ValidationResult
+
+pub fn serialize_id() -> String
+
+pub fn string_to_bool(String) -> Bool?
+
+pub fn to_double_safe(String) -> Double?
+
+pub fn to_int_safe(String) -> Int32?
+
+pub fn validate_length(String, Int32, Int32, String) -> ValidationResult
+
+pub fn validate_non_empty(String, String) -> ValidationResult
+
+pub fn validate_pattern(String, String, String) -> ValidationResult
+
+pub fn validate_range(Double, Double, Double, String) -> ValidationResult
+
+// Errors
+
+// Types and methods
+pub(all) enum SerializeFormat {
+  JSON
+  CSV
+  TSV
+  Binary
+  XML
+  YAML
+}
+
+pub struct SerializeResult {
+  format : SerializeFormat
+  data : String
+  size : Int32
+  success : Bool
+  error_msg : String
+}
+
+pub struct ValidationResult {
+  valid : Bool
+  errors : Array[String]
+  warnings : Array[String]
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_tokenize_char"
+
+// Values
+pub fn nlp_tokenize_char_buffer_make(Int32) -> NlptokenizecharBuffer
+
+pub fn nlp_tokenize_char_cluster_make(Int32) -> NlptokenizecharCluster
+
+pub fn nlp_tokenize_char_cursor_make(Int32) -> NlptokenizecharCursor
+
+pub fn nlp_tokenize_char_edge_make(Int32) -> NlptokenizecharEdge
+
+pub fn nlp_tokenize_char_frame_make(Int32) -> NlptokenizecharFrame
+
+pub fn nlp_tokenize_char_graphn_make(Int32) -> NlptokenizecharGraphN
+
+pub fn nlp_tokenize_char_layer_make(Int32) -> NlptokenizecharLayer
+
+pub fn nlp_tokenize_char_make_matrix(Int32, Int32, Double) -> NlptokenizecharMatrix
+
+pub fn nlp_tokenize_char_make_point(Double, Double) -> NlptokenizecharPoint
+
+pub fn nlp_tokenize_char_make_point3(Double, Double, Double) -> NlptokenizecharPoint
+
+pub fn nlp_tokenize_char_make_series(Array[Double], String) -> NlptokenizecharSeries
+
+pub fn nlp_tokenize_char_make_vector(Array[Double]) -> NlptokenizecharVector
+
+pub fn nlp_tokenize_char_matrix_identity(Int32) -> NlptokenizecharMatrix
+
+pub fn nlp_tokenize_char_model_make(Int32) -> NlptokenizecharModel
+
+pub fn nlp_tokenize_char_node_make(Int32) -> NlptokenizecharNode
+
+pub fn nlp_tokenize_char_path_make(Int32) -> NlptokenizecharPath
+
+pub fn nlp_tokenize_char_range_make(Int32) -> NlptokenizecharRange
+
+pub fn nlp_tokenize_char_slice_make(Int32) -> NlptokenizecharSlice
+
+pub fn nlp_tokenize_char_table_make(Int32) -> NlptokenizecharTable
+
+pub fn nlp_tokenize_char_vector_zero(Int32) -> NlptokenizecharVector
+
+pub fn nlp_tokenize_char_view_make(Int32) -> NlptokenizecharView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlptokenizecharBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizecharBuffer::add(Self, Self) -> Self
+pub fn NlptokenizecharBuffer::copy(Self) -> Self
+pub fn NlptokenizecharBuffer::fill(Self, Double) -> Self
+pub fn NlptokenizecharBuffer::get(Self, Int32) -> Double
+pub fn NlptokenizecharBuffer::len(Self) -> Int32
+pub fn NlptokenizecharBuffer::max(Self) -> Double
+pub fn NlptokenizecharBuffer::mean(Self) -> Double
+pub fn NlptokenizecharBuffer::min(Self) -> Double
+pub fn NlptokenizecharBuffer::scale(Self, Double) -> Self
+pub fn NlptokenizecharBuffer::set(Self, Int32, Double) -> Self
+pub fn NlptokenizecharBuffer::sum(Self) -> Double
+pub fn NlptokenizecharBuffer::to_string(Self) -> String
+
+pub(all) struct NlptokenizecharCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizecharCluster::add(Self, Self) -> Self
+pub fn NlptokenizecharCluster::copy(Self) -> Self
+pub fn NlptokenizecharCluster::fill(Self, Double) -> Self
+pub fn NlptokenizecharCluster::get(Self, Int32) -> Double
+pub fn NlptokenizecharCluster::len(Self) -> Int32
+pub fn NlptokenizecharCluster::max(Self) -> Double
+pub fn NlptokenizecharCluster::mean(Self) -> Double
+pub fn NlptokenizecharCluster::min(Self) -> Double
+pub fn NlptokenizecharCluster::scale(Self, Double) -> Self
+pub fn NlptokenizecharCluster::set(Self, Int32, Double) -> Self
+pub fn NlptokenizecharCluster::sum(Self) -> Double
+pub fn NlptokenizecharCluster::to_string(Self) -> String
+
+pub(all) struct NlptokenizecharCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizecharCursor::add(Self, Self) -> Self
+pub fn NlptokenizecharCursor::copy(Self) -> Self
+pub fn NlptokenizecharCursor::fill(Self, Double) -> Self
+pub fn NlptokenizecharCursor::get(Self, Int32) -> Double
+pub fn NlptokenizecharCursor::len(Self) -> Int32
+pub fn NlptokenizecharCursor::max(Self) -> Double
+pub fn NlptokenizecharCursor::mean(Self) -> Double
+pub fn NlptokenizecharCursor::min(Self) -> Double
+pub fn NlptokenizecharCursor::scale(Self, Double) -> Self
+pub fn NlptokenizecharCursor::set(Self, Int32, Double) -> Self
+pub fn NlptokenizecharCursor::sum(Self) -> Double
+pub fn NlptokenizecharCursor::to_string(Self) -> String
+
+pub(all) struct NlptokenizecharEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizecharEdge::add(Self, Self) -> Self
+pub fn NlptokenizecharEdge::copy(Self) -> Self
+pub fn NlptokenizecharEdge::fill(Self, Double) -> Self
+pub fn NlptokenizecharEdge::get(Self, Int32) -> Double
+pub fn NlptokenizecharEdge::len(Self) -> Int32
+pub fn NlptokenizecharEdge::max(Self) -> Double
+pub fn NlptokenizecharEdge::mean(Self) -> Double
+pub fn NlptokenizecharEdge::min(Self) -> Double
+pub fn NlptokenizecharEdge::scale(Self, Double) -> Self
+pub fn NlptokenizecharEdge::set(Self, Int32, Double) -> Self
+pub fn NlptokenizecharEdge::sum(Self) -> Double
+pub fn NlptokenizecharEdge::to_string(Self) -> String
+
+pub(all) struct NlptokenizecharFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizecharFrame::add(Self, Self) -> Self
+pub fn NlptokenizecharFrame::copy(Self) -> Self
+pub fn NlptokenizecharFrame::fill(Self, Double) -> Self
+pub fn NlptokenizecharFrame::get(Self, Int32) -> Double
+pub fn NlptokenizecharFrame::len(Self) -> Int32
+pub fn NlptokenizecharFrame::max(Self) -> Double
+pub fn NlptokenizecharFrame::mean(Self) -> Double
+pub fn NlptokenizecharFrame::min(Self) -> Double
+pub fn NlptokenizecharFrame::scale(Self, Double) -> Self
+pub fn NlptokenizecharFrame::set(Self, Int32, Double) -> Self
+pub fn NlptokenizecharFrame::sum(Self) -> Double
+pub fn NlptokenizecharFrame::to_string(Self) -> String
+
+pub(all) struct NlptokenizecharGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizecharGraphN::add(Self, Self) -> Self
+pub fn NlptokenizecharGraphN::copy(Self) -> Self
+pub fn NlptokenizecharGraphN::fill(Self, Double) -> Self
+pub fn NlptokenizecharGraphN::get(Self, Int32) -> Double
+pub fn NlptokenizecharGraphN::len(Self) -> Int32
+pub fn NlptokenizecharGraphN::max(Self) -> Double
+pub fn NlptokenizecharGraphN::mean(Self) -> Double
+pub fn NlptokenizecharGraphN::min(Self) -> Double
+pub fn NlptokenizecharGraphN::scale(Self, Double) -> Self
+pub fn NlptokenizecharGraphN::set(Self, Int32, Double) -> Self
+pub fn NlptokenizecharGraphN::sum(Self) -> Double
+pub fn NlptokenizecharGraphN::to_string(Self) -> String
+
+pub(all) struct NlptokenizecharLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizecharLayer::add(Self, Self) -> Self
+pub fn NlptokenizecharLayer::copy(Self) -> Self
+pub fn NlptokenizecharLayer::fill(Self, Double) -> Self
+pub fn NlptokenizecharLayer::get(Self, Int32) -> Double
+pub fn NlptokenizecharLayer::len(Self) -> Int32
+pub fn NlptokenizecharLayer::max(Self) -> Double
+pub fn NlptokenizecharLayer::mean(Self) -> Double
+pub fn NlptokenizecharLayer::min(Self) -> Double
+pub fn NlptokenizecharLayer::scale(Self, Double) -> Self
+pub fn NlptokenizecharLayer::set(Self, Int32, Double) -> Self
+pub fn NlptokenizecharLayer::sum(Self) -> Double
+pub fn NlptokenizecharLayer::to_string(Self) -> String
+
+pub(all) struct NlptokenizecharMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlptokenizecharMatrix::add(Self, Self) -> Self
+pub fn NlptokenizecharMatrix::det(Self) -> Double
+pub fn NlptokenizecharMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlptokenizecharMatrix::multiply(Self, Self) -> Self
+pub fn NlptokenizecharMatrix::norm(Self) -> Double
+pub fn NlptokenizecharMatrix::scale(Self, Double) -> Self
+pub fn NlptokenizecharMatrix::to_string(Self) -> String
+pub fn NlptokenizecharMatrix::trace(Self) -> Double
+pub fn NlptokenizecharMatrix::transpose(Self) -> Self
+
+pub(all) struct NlptokenizecharModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizecharModel::add(Self, Self) -> Self
+pub fn NlptokenizecharModel::copy(Self) -> Self
+pub fn NlptokenizecharModel::fill(Self, Double) -> Self
+pub fn NlptokenizecharModel::get(Self, Int32) -> Double
+pub fn NlptokenizecharModel::len(Self) -> Int32
+pub fn NlptokenizecharModel::max(Self) -> Double
+pub fn NlptokenizecharModel::mean(Self) -> Double
+pub fn NlptokenizecharModel::min(Self) -> Double
+pub fn NlptokenizecharModel::scale(Self, Double) -> Self
+pub fn NlptokenizecharModel::set(Self, Int32, Double) -> Self
+pub fn NlptokenizecharModel::sum(Self) -> Double
+pub fn NlptokenizecharModel::to_string(Self) -> String
+
+pub(all) struct NlptokenizecharNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizecharNode::add(Self, Self) -> Self
+pub fn NlptokenizecharNode::copy(Self) -> Self
+pub fn NlptokenizecharNode::fill(Self, Double) -> Self
+pub fn NlptokenizecharNode::get(Self, Int32) -> Double
+pub fn NlptokenizecharNode::len(Self) -> Int32
+pub fn NlptokenizecharNode::max(Self) -> Double
+pub fn NlptokenizecharNode::mean(Self) -> Double
+pub fn NlptokenizecharNode::min(Self) -> Double
+pub fn NlptokenizecharNode::scale(Self, Double) -> Self
+pub fn NlptokenizecharNode::set(Self, Int32, Double) -> Self
+pub fn NlptokenizecharNode::sum(Self) -> Double
+pub fn NlptokenizecharNode::to_string(Self) -> String
+
+pub(all) struct NlptokenizecharPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizecharPath::add(Self, Self) -> Self
+pub fn NlptokenizecharPath::copy(Self) -> Self
+pub fn NlptokenizecharPath::fill(Self, Double) -> Self
+pub fn NlptokenizecharPath::get(Self, Int32) -> Double
+pub fn NlptokenizecharPath::len(Self) -> Int32
+pub fn NlptokenizecharPath::max(Self) -> Double
+pub fn NlptokenizecharPath::mean(Self) -> Double
+pub fn NlptokenizecharPath::min(Self) -> Double
+pub fn NlptokenizecharPath::scale(Self, Double) -> Self
+pub fn NlptokenizecharPath::set(Self, Int32, Double) -> Self
+pub fn NlptokenizecharPath::sum(Self) -> Double
+pub fn NlptokenizecharPath::to_string(Self) -> String
+
+pub(all) struct NlptokenizecharPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlptokenizecharPoint::add(Self, Self) -> Self
+pub fn NlptokenizecharPoint::cross(Self, Self) -> Self
+pub fn NlptokenizecharPoint::dist(Self, Self) -> Double
+pub fn NlptokenizecharPoint::dot(Self, Self) -> Double
+pub fn NlptokenizecharPoint::label(Self) -> Int32
+pub fn NlptokenizecharPoint::lerp(Self, Self, Double) -> Self
+pub fn NlptokenizecharPoint::mid(Self, Self) -> Self
+pub fn NlptokenizecharPoint::negate(Self) -> Self
+pub fn NlptokenizecharPoint::norm(Self) -> Double
+pub fn NlptokenizecharPoint::normalize(Self) -> Self
+pub fn NlptokenizecharPoint::scale(Self, Double) -> Self
+pub fn NlptokenizecharPoint::sub(Self, Self) -> Self
+pub fn NlptokenizecharPoint::to_string(Self) -> String
+pub fn NlptokenizecharPoint::x(Self) -> Double
+pub fn NlptokenizecharPoint::y(Self) -> Double
+pub fn NlptokenizecharPoint::z(Self) -> Double
+
+pub(all) struct NlptokenizecharRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizecharRange::add(Self, Self) -> Self
+pub fn NlptokenizecharRange::copy(Self) -> Self
+pub fn NlptokenizecharRange::fill(Self, Double) -> Self
+pub fn NlptokenizecharRange::get(Self, Int32) -> Double
+pub fn NlptokenizecharRange::len(Self) -> Int32
+pub fn NlptokenizecharRange::max(Self) -> Double
+pub fn NlptokenizecharRange::mean(Self) -> Double
+pub fn NlptokenizecharRange::min(Self) -> Double
+pub fn NlptokenizecharRange::scale(Self, Double) -> Self
+pub fn NlptokenizecharRange::set(Self, Int32, Double) -> Self
+pub fn NlptokenizecharRange::sum(Self) -> Double
+pub fn NlptokenizecharRange::to_string(Self) -> String
+
+pub(all) struct NlptokenizecharSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlptokenizecharSeries::add(Self, Self) -> Self
+pub fn NlptokenizecharSeries::cumsum(Self) -> Self
+pub fn NlptokenizecharSeries::len(Self) -> Int32
+pub fn NlptokenizecharSeries::max(Self) -> Double
+pub fn NlptokenizecharSeries::mean(Self) -> Double
+pub fn NlptokenizecharSeries::median(Self) -> Double
+pub fn NlptokenizecharSeries::min(Self) -> Double
+pub fn NlptokenizecharSeries::normalize(Self) -> Self
+pub fn NlptokenizecharSeries::range(Self) -> Double
+pub fn NlptokenizecharSeries::scale(Self, Double) -> Self
+pub fn NlptokenizecharSeries::std(Self) -> Double
+pub fn NlptokenizecharSeries::sub(Self, Self) -> Self
+pub fn NlptokenizecharSeries::sum(Self) -> Double
+pub fn NlptokenizecharSeries::to_string(Self) -> String
+pub fn NlptokenizecharSeries::variance(Self) -> Double
+
+pub(all) struct NlptokenizecharSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizecharSlice::add(Self, Self) -> Self
+pub fn NlptokenizecharSlice::copy(Self) -> Self
+pub fn NlptokenizecharSlice::fill(Self, Double) -> Self
+pub fn NlptokenizecharSlice::get(Self, Int32) -> Double
+pub fn NlptokenizecharSlice::len(Self) -> Int32
+pub fn NlptokenizecharSlice::max(Self) -> Double
+pub fn NlptokenizecharSlice::mean(Self) -> Double
+pub fn NlptokenizecharSlice::min(Self) -> Double
+pub fn NlptokenizecharSlice::scale(Self, Double) -> Self
+pub fn NlptokenizecharSlice::set(Self, Int32, Double) -> Self
+pub fn NlptokenizecharSlice::sum(Self) -> Double
+pub fn NlptokenizecharSlice::to_string(Self) -> String
+
+pub(all) struct NlptokenizecharTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizecharTable::add(Self, Self) -> Self
+pub fn NlptokenizecharTable::copy(Self) -> Self
+pub fn NlptokenizecharTable::fill(Self, Double) -> Self
+pub fn NlptokenizecharTable::get(Self, Int32) -> Double
+pub fn NlptokenizecharTable::len(Self) -> Int32
+pub fn NlptokenizecharTable::max(Self) -> Double
+pub fn NlptokenizecharTable::mean(Self) -> Double
+pub fn NlptokenizecharTable::min(Self) -> Double
+pub fn NlptokenizecharTable::scale(Self, Double) -> Self
+pub fn NlptokenizecharTable::set(Self, Int32, Double) -> Self
+pub fn NlptokenizecharTable::sum(Self) -> Double
+pub fn NlptokenizecharTable::to_string(Self) -> String
+
+pub(all) struct NlptokenizecharVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlptokenizecharVector::add(Self, Self) -> Self
+pub fn NlptokenizecharVector::dist(Self, Self) -> Double
+pub fn NlptokenizecharVector::dot(Self, Self) -> Double
+pub fn NlptokenizecharVector::norm(Self) -> Double
+pub fn NlptokenizecharVector::normalize(Self) -> Self
+pub fn NlptokenizecharVector::scale(Self, Double) -> Self
+pub fn NlptokenizecharVector::sub(Self, Self) -> Self
+pub fn NlptokenizecharVector::to_string(Self) -> String
+
+pub(all) struct NlptokenizecharView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizecharView::add(Self, Self) -> Self
+pub fn NlptokenizecharView::copy(Self) -> Self
+pub fn NlptokenizecharView::fill(Self, Double) -> Self
+pub fn NlptokenizecharView::get(Self, Int32) -> Double
+pub fn NlptokenizecharView::len(Self) -> Int32
+pub fn NlptokenizecharView::max(Self) -> Double
+pub fn NlptokenizecharView::mean(Self) -> Double
+pub fn NlptokenizecharView::min(Self) -> Double
+pub fn NlptokenizecharView::scale(Self, Double) -> Self
+pub fn NlptokenizecharView::set(Self, Int32, Double) -> Self
+pub fn NlptokenizecharView::sum(Self) -> Double
+pub fn NlptokenizecharView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

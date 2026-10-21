@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/path_follow"
+
+// Values
+pub fn path_follow_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn path_follow_corr(Array[Double], Array[Double]) -> Double
+
+pub fn path_follow_cov(Array[Double], Array[Double]) -> Double
+
+pub fn path_follow_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn path_follow_mae(Array[Double], Array[Double]) -> Double
+
+pub fn path_follow_make_labeled_point(Double, Double, Int32) -> Path_followPoint
+
+pub fn path_follow_make_matrix(Int32, Int32, Double) -> Path_followMatrix
+
+pub fn path_follow_make_point(Double, Double) -> Path_followPoint
+
+pub fn path_follow_make_series(Array[Double], String) -> Path_followSeries
+
+pub fn path_follow_make_vector(Array[Double]) -> Path_followVector
+
+pub fn path_follow_matrix_add(Path_followMatrix, Path_followMatrix) -> Path_followMatrix
+
+pub fn path_follow_matrix_get(Path_followMatrix, Int32, Int32) -> Double
+
+pub fn path_follow_matrix_identity(Int32) -> Path_followMatrix
+
+pub fn path_follow_matrix_multiply(Path_followMatrix, Path_followMatrix) -> Path_followMatrix
+
+pub fn path_follow_matrix_norm(Path_followMatrix) -> Double
+
+pub fn path_follow_matrix_scale(Path_followMatrix, Double) -> Path_followMatrix
+
+pub fn path_follow_matrix_to_string(Path_followMatrix) -> String
+
+pub fn path_follow_matrix_trace(Path_followMatrix) -> Double
+
+pub fn path_follow_matrix_transpose(Path_followMatrix) -> Path_followMatrix
+
+pub fn path_follow_mse(Array[Double], Array[Double]) -> Double
+
+pub fn path_follow_point_add(Path_followPoint, Path_followPoint) -> Path_followPoint
+
+pub fn path_follow_point_dist(Path_followPoint, Path_followPoint) -> Double
+
+pub fn path_follow_point_dot(Path_followPoint, Path_followPoint) -> Double
+
+pub fn path_follow_point_label(Path_followPoint) -> Int32
+
+pub fn path_follow_point_norm(Path_followPoint) -> Double
+
+pub fn path_follow_point_scale(Path_followPoint, Double) -> Path_followPoint
+
+pub fn path_follow_point_sub(Path_followPoint, Path_followPoint) -> Path_followPoint
+
+pub fn path_follow_point_to_string(Path_followPoint) -> String
+
+pub fn path_follow_point_x(Path_followPoint) -> Double
+
+pub fn path_follow_point_y(Path_followPoint) -> Double
+
+pub fn path_follow_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn path_follow_r2(Array[Double], Array[Double]) -> Double
+
+pub fn path_follow_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn path_follow_series_add(Path_followSeries, Path_followSeries) -> Path_followSeries
+
+pub fn path_follow_series_len(Path_followSeries) -> Int32
+
+pub fn path_follow_series_max(Path_followSeries) -> Double
+
+pub fn path_follow_series_mean(Path_followSeries) -> Double
+
+pub fn path_follow_series_min(Path_followSeries) -> Double
+
+pub fn path_follow_series_scale(Path_followSeries, Double) -> Path_followSeries
+
+pub fn path_follow_series_std(Path_followSeries) -> Double
+
+pub fn path_follow_series_sum(Path_followSeries) -> Double
+
+pub fn path_follow_series_to_string(Path_followSeries) -> String
+
+pub fn path_follow_series_var(Path_followSeries) -> Double
+
+pub fn path_follow_std(Array[Double]) -> Double
+
+pub fn path_follow_var(Array[Double]) -> Double
+
+pub fn path_follow_vector_add(Path_followVector, Path_followVector) -> Path_followVector
+
+pub fn path_follow_vector_dist(Path_followVector, Path_followVector) -> Double
+
+pub fn path_follow_vector_dot(Path_followVector, Path_followVector) -> Double
+
+pub fn path_follow_vector_norm(Path_followVector) -> Double
+
+pub fn path_follow_vector_normalize(Path_followVector) -> Path_followVector
+
+pub fn path_follow_vector_scale(Path_followVector, Double) -> Path_followVector
+
+pub fn path_follow_vector_sub(Path_followVector, Path_followVector) -> Path_followVector
+
+pub fn path_follow_vector_to_string(Path_followVector) -> String
+
+pub fn path_follow_vector_zero(Int32) -> Path_followVector
+
+// Errors
+
+// Types and methods
+pub struct Path_followMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Path_followPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Path_followSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Path_followVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

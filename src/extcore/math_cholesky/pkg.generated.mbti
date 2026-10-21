@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_cholesky"
+
+// Values
+pub fn math_cholesky_buffer_make(Int32) -> MathcholeskyBuffer
+
+pub fn math_cholesky_cluster_make(Int32) -> MathcholeskyCluster
+
+pub fn math_cholesky_cursor_make(Int32) -> MathcholeskyCursor
+
+pub fn math_cholesky_edge_make(Int32) -> MathcholeskyEdge
+
+pub fn math_cholesky_frame_make(Int32) -> MathcholeskyFrame
+
+pub fn math_cholesky_graphn_make(Int32) -> MathcholeskyGraphN
+
+pub fn math_cholesky_layer_make(Int32) -> MathcholeskyLayer
+
+pub fn math_cholesky_make_matrix(Int32, Int32, Double) -> MathcholeskyMatrix
+
+pub fn math_cholesky_make_point(Double, Double) -> MathcholeskyPoint
+
+pub fn math_cholesky_make_point3(Double, Double, Double) -> MathcholeskyPoint
+
+pub fn math_cholesky_make_series(Array[Double], String) -> MathcholeskySeries
+
+pub fn math_cholesky_make_vector(Array[Double]) -> MathcholeskyVector
+
+pub fn math_cholesky_matrix_identity(Int32) -> MathcholeskyMatrix
+
+pub fn math_cholesky_model_make(Int32) -> MathcholeskyModel
+
+pub fn math_cholesky_node_make(Int32) -> MathcholeskyNode
+
+pub fn math_cholesky_path_make(Int32) -> MathcholeskyPath
+
+pub fn math_cholesky_range_make(Int32) -> MathcholeskyRange
+
+pub fn math_cholesky_slice_make(Int32) -> MathcholeskySlice
+
+pub fn math_cholesky_table_make(Int32) -> MathcholeskyTable
+
+pub fn math_cholesky_vector_zero(Int32) -> MathcholeskyVector
+
+pub fn math_cholesky_view_make(Int32) -> MathcholeskyView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathcholeskyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathcholeskyBuffer::add(Self, Self) -> Self
+pub fn MathcholeskyBuffer::copy(Self) -> Self
+pub fn MathcholeskyBuffer::fill(Self, Double) -> Self
+pub fn MathcholeskyBuffer::get(Self, Int32) -> Double
+pub fn MathcholeskyBuffer::len(Self) -> Int32
+pub fn MathcholeskyBuffer::max(Self) -> Double
+pub fn MathcholeskyBuffer::mean(Self) -> Double
+pub fn MathcholeskyBuffer::min(Self) -> Double
+pub fn MathcholeskyBuffer::scale(Self, Double) -> Self
+pub fn MathcholeskyBuffer::set(Self, Int32, Double) -> Self
+pub fn MathcholeskyBuffer::sum(Self) -> Double
+pub fn MathcholeskyBuffer::to_string(Self) -> String
+
+pub(all) struct MathcholeskyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathcholeskyCluster::add(Self, Self) -> Self
+pub fn MathcholeskyCluster::copy(Self) -> Self
+pub fn MathcholeskyCluster::fill(Self, Double) -> Self
+pub fn MathcholeskyCluster::get(Self, Int32) -> Double
+pub fn MathcholeskyCluster::len(Self) -> Int32
+pub fn MathcholeskyCluster::max(Self) -> Double
+pub fn MathcholeskyCluster::mean(Self) -> Double
+pub fn MathcholeskyCluster::min(Self) -> Double
+pub fn MathcholeskyCluster::scale(Self, Double) -> Self
+pub fn MathcholeskyCluster::set(Self, Int32, Double) -> Self
+pub fn MathcholeskyCluster::sum(Self) -> Double
+pub fn MathcholeskyCluster::to_string(Self) -> String
+
+pub(all) struct MathcholeskyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathcholeskyCursor::add(Self, Self) -> Self
+pub fn MathcholeskyCursor::copy(Self) -> Self
+pub fn MathcholeskyCursor::fill(Self, Double) -> Self
+pub fn MathcholeskyCursor::get(Self, Int32) -> Double
+pub fn MathcholeskyCursor::len(Self) -> Int32
+pub fn MathcholeskyCursor::max(Self) -> Double
+pub fn MathcholeskyCursor::mean(Self) -> Double
+pub fn MathcholeskyCursor::min(Self) -> Double
+pub fn MathcholeskyCursor::scale(Self, Double) -> Self
+pub fn MathcholeskyCursor::set(Self, Int32, Double) -> Self
+pub fn MathcholeskyCursor::sum(Self) -> Double
+pub fn MathcholeskyCursor::to_string(Self) -> String
+
+pub(all) struct MathcholeskyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathcholeskyEdge::add(Self, Self) -> Self
+pub fn MathcholeskyEdge::copy(Self) -> Self
+pub fn MathcholeskyEdge::fill(Self, Double) -> Self
+pub fn MathcholeskyEdge::get(Self, Int32) -> Double
+pub fn MathcholeskyEdge::len(Self) -> Int32
+pub fn MathcholeskyEdge::max(Self) -> Double
+pub fn MathcholeskyEdge::mean(Self) -> Double
+pub fn MathcholeskyEdge::min(Self) -> Double
+pub fn MathcholeskyEdge::scale(Self, Double) -> Self
+pub fn MathcholeskyEdge::set(Self, Int32, Double) -> Self
+pub fn MathcholeskyEdge::sum(Self) -> Double
+pub fn MathcholeskyEdge::to_string(Self) -> String
+
+pub(all) struct MathcholeskyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathcholeskyFrame::add(Self, Self) -> Self
+pub fn MathcholeskyFrame::copy(Self) -> Self
+pub fn MathcholeskyFrame::fill(Self, Double) -> Self
+pub fn MathcholeskyFrame::get(Self, Int32) -> Double
+pub fn MathcholeskyFrame::len(Self) -> Int32
+pub fn MathcholeskyFrame::max(Self) -> Double
+pub fn MathcholeskyFrame::mean(Self) -> Double
+pub fn MathcholeskyFrame::min(Self) -> Double
+pub fn MathcholeskyFrame::scale(Self, Double) -> Self
+pub fn MathcholeskyFrame::set(Self, Int32, Double) -> Self
+pub fn MathcholeskyFrame::sum(Self) -> Double
+pub fn MathcholeskyFrame::to_string(Self) -> String
+
+pub(all) struct MathcholeskyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathcholeskyGraphN::add(Self, Self) -> Self
+pub fn MathcholeskyGraphN::copy(Self) -> Self
+pub fn MathcholeskyGraphN::fill(Self, Double) -> Self
+pub fn MathcholeskyGraphN::get(Self, Int32) -> Double
+pub fn MathcholeskyGraphN::len(Self) -> Int32
+pub fn MathcholeskyGraphN::max(Self) -> Double
+pub fn MathcholeskyGraphN::mean(Self) -> Double
+pub fn MathcholeskyGraphN::min(Self) -> Double
+pub fn MathcholeskyGraphN::scale(Self, Double) -> Self
+pub fn MathcholeskyGraphN::set(Self, Int32, Double) -> Self
+pub fn MathcholeskyGraphN::sum(Self) -> Double
+pub fn MathcholeskyGraphN::to_string(Self) -> String
+
+pub(all) struct MathcholeskyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathcholeskyLayer::add(Self, Self) -> Self
+pub fn MathcholeskyLayer::copy(Self) -> Self
+pub fn MathcholeskyLayer::fill(Self, Double) -> Self
+pub fn MathcholeskyLayer::get(Self, Int32) -> Double
+pub fn MathcholeskyLayer::len(Self) -> Int32
+pub fn MathcholeskyLayer::max(Self) -> Double
+pub fn MathcholeskyLayer::mean(Self) -> Double
+pub fn MathcholeskyLayer::min(Self) -> Double
+pub fn MathcholeskyLayer::scale(Self, Double) -> Self
+pub fn MathcholeskyLayer::set(Self, Int32, Double) -> Self
+pub fn MathcholeskyLayer::sum(Self) -> Double
+pub fn MathcholeskyLayer::to_string(Self) -> String
+
+pub(all) struct MathcholeskyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathcholeskyMatrix::add(Self, Self) -> Self
+pub fn MathcholeskyMatrix::det(Self) -> Double
+pub fn MathcholeskyMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathcholeskyMatrix::multiply(Self, Self) -> Self
+pub fn MathcholeskyMatrix::norm(Self) -> Double
+pub fn MathcholeskyMatrix::scale(Self, Double) -> Self
+pub fn MathcholeskyMatrix::to_string(Self) -> String
+pub fn MathcholeskyMatrix::trace(Self) -> Double
+pub fn MathcholeskyMatrix::transpose(Self) -> Self
+
+pub(all) struct MathcholeskyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathcholeskyModel::add(Self, Self) -> Self
+pub fn MathcholeskyModel::copy(Self) -> Self
+pub fn MathcholeskyModel::fill(Self, Double) -> Self
+pub fn MathcholeskyModel::get(Self, Int32) -> Double
+pub fn MathcholeskyModel::len(Self) -> Int32
+pub fn MathcholeskyModel::max(Self) -> Double
+pub fn MathcholeskyModel::mean(Self) -> Double
+pub fn MathcholeskyModel::min(Self) -> Double
+pub fn MathcholeskyModel::scale(Self, Double) -> Self
+pub fn MathcholeskyModel::set(Self, Int32, Double) -> Self
+pub fn MathcholeskyModel::sum(Self) -> Double
+pub fn MathcholeskyModel::to_string(Self) -> String
+
+pub(all) struct MathcholeskyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathcholeskyNode::add(Self, Self) -> Self
+pub fn MathcholeskyNode::copy(Self) -> Self
+pub fn MathcholeskyNode::fill(Self, Double) -> Self
+pub fn MathcholeskyNode::get(Self, Int32) -> Double
+pub fn MathcholeskyNode::len(Self) -> Int32
+pub fn MathcholeskyNode::max(Self) -> Double
+pub fn MathcholeskyNode::mean(Self) -> Double
+pub fn MathcholeskyNode::min(Self) -> Double
+pub fn MathcholeskyNode::scale(Self, Double) -> Self
+pub fn MathcholeskyNode::set(Self, Int32, Double) -> Self
+pub fn MathcholeskyNode::sum(Self) -> Double
+pub fn MathcholeskyNode::to_string(Self) -> String
+
+pub(all) struct MathcholeskyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathcholeskyPath::add(Self, Self) -> Self
+pub fn MathcholeskyPath::copy(Self) -> Self
+pub fn MathcholeskyPath::fill(Self, Double) -> Self
+pub fn MathcholeskyPath::get(Self, Int32) -> Double
+pub fn MathcholeskyPath::len(Self) -> Int32
+pub fn MathcholeskyPath::max(Self) -> Double
+pub fn MathcholeskyPath::mean(Self) -> Double
+pub fn MathcholeskyPath::min(Self) -> Double
+pub fn MathcholeskyPath::scale(Self, Double) -> Self
+pub fn MathcholeskyPath::set(Self, Int32, Double) -> Self
+pub fn MathcholeskyPath::sum(Self) -> Double
+pub fn MathcholeskyPath::to_string(Self) -> String
+
+pub(all) struct MathcholeskyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathcholeskyPoint::add(Self, Self) -> Self
+pub fn MathcholeskyPoint::cross(Self, Self) -> Self
+pub fn MathcholeskyPoint::dist(Self, Self) -> Double
+pub fn MathcholeskyPoint::dot(Self, Self) -> Double
+pub fn MathcholeskyPoint::label(Self) -> Int32
+pub fn MathcholeskyPoint::lerp(Self, Self, Double) -> Self
+pub fn MathcholeskyPoint::mid(Self, Self) -> Self
+pub fn MathcholeskyPoint::negate(Self) -> Self
+pub fn MathcholeskyPoint::norm(Self) -> Double
+pub fn MathcholeskyPoint::normalize(Self) -> Self
+pub fn MathcholeskyPoint::scale(Self, Double) -> Self
+pub fn MathcholeskyPoint::sub(Self, Self) -> Self
+pub fn MathcholeskyPoint::to_string(Self) -> String
+pub fn MathcholeskyPoint::x(Self) -> Double
+pub fn MathcholeskyPoint::y(Self) -> Double
+pub fn MathcholeskyPoint::z(Self) -> Double
+
+pub(all) struct MathcholeskyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathcholeskyRange::add(Self, Self) -> Self
+pub fn MathcholeskyRange::copy(Self) -> Self
+pub fn MathcholeskyRange::fill(Self, Double) -> Self
+pub fn MathcholeskyRange::get(Self, Int32) -> Double
+pub fn MathcholeskyRange::len(Self) -> Int32
+pub fn MathcholeskyRange::max(Self) -> Double
+pub fn MathcholeskyRange::mean(Self) -> Double
+pub fn MathcholeskyRange::min(Self) -> Double
+pub fn MathcholeskyRange::scale(Self, Double) -> Self
+pub fn MathcholeskyRange::set(Self, Int32, Double) -> Self
+pub fn MathcholeskyRange::sum(Self) -> Double
+pub fn MathcholeskyRange::to_string(Self) -> String
+
+pub(all) struct MathcholeskySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathcholeskySeries::add(Self, Self) -> Self
+pub fn MathcholeskySeries::cumsum(Self) -> Self
+pub fn MathcholeskySeries::len(Self) -> Int32
+pub fn MathcholeskySeries::max(Self) -> Double
+pub fn MathcholeskySeries::mean(Self) -> Double
+pub fn MathcholeskySeries::median(Self) -> Double
+pub fn MathcholeskySeries::min(Self) -> Double
+pub fn MathcholeskySeries::normalize(Self) -> Self
+pub fn MathcholeskySeries::range(Self) -> Double
+pub fn MathcholeskySeries::scale(Self, Double) -> Self
+pub fn MathcholeskySeries::std(Self) -> Double
+pub fn MathcholeskySeries::sub(Self, Self) -> Self
+pub fn MathcholeskySeries::sum(Self) -> Double
+pub fn MathcholeskySeries::to_string(Self) -> String
+pub fn MathcholeskySeries::variance(Self) -> Double
+
+pub(all) struct MathcholeskySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathcholeskySlice::add(Self, Self) -> Self
+pub fn MathcholeskySlice::copy(Self) -> Self
+pub fn MathcholeskySlice::fill(Self, Double) -> Self
+pub fn MathcholeskySlice::get(Self, Int32) -> Double
+pub fn MathcholeskySlice::len(Self) -> Int32
+pub fn MathcholeskySlice::max(Self) -> Double
+pub fn MathcholeskySlice::mean(Self) -> Double
+pub fn MathcholeskySlice::min(Self) -> Double
+pub fn MathcholeskySlice::scale(Self, Double) -> Self
+pub fn MathcholeskySlice::set(Self, Int32, Double) -> Self
+pub fn MathcholeskySlice::sum(Self) -> Double
+pub fn MathcholeskySlice::to_string(Self) -> String
+
+pub(all) struct MathcholeskyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathcholeskyTable::add(Self, Self) -> Self
+pub fn MathcholeskyTable::copy(Self) -> Self
+pub fn MathcholeskyTable::fill(Self, Double) -> Self
+pub fn MathcholeskyTable::get(Self, Int32) -> Double
+pub fn MathcholeskyTable::len(Self) -> Int32
+pub fn MathcholeskyTable::max(Self) -> Double
+pub fn MathcholeskyTable::mean(Self) -> Double
+pub fn MathcholeskyTable::min(Self) -> Double
+pub fn MathcholeskyTable::scale(Self, Double) -> Self
+pub fn MathcholeskyTable::set(Self, Int32, Double) -> Self
+pub fn MathcholeskyTable::sum(Self) -> Double
+pub fn MathcholeskyTable::to_string(Self) -> String
+
+pub(all) struct MathcholeskyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathcholeskyVector::add(Self, Self) -> Self
+pub fn MathcholeskyVector::dist(Self, Self) -> Double
+pub fn MathcholeskyVector::dot(Self, Self) -> Double
+pub fn MathcholeskyVector::norm(Self) -> Double
+pub fn MathcholeskyVector::normalize(Self) -> Self
+pub fn MathcholeskyVector::scale(Self, Double) -> Self
+pub fn MathcholeskyVector::sub(Self, Self) -> Self
+pub fn MathcholeskyVector::to_string(Self) -> String
+
+pub(all) struct MathcholeskyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathcholeskyView::add(Self, Self) -> Self
+pub fn MathcholeskyView::copy(Self) -> Self
+pub fn MathcholeskyView::fill(Self, Double) -> Self
+pub fn MathcholeskyView::get(Self, Int32) -> Double
+pub fn MathcholeskyView::len(Self) -> Int32
+pub fn MathcholeskyView::max(Self) -> Double
+pub fn MathcholeskyView::mean(Self) -> Double
+pub fn MathcholeskyView::min(Self) -> Double
+pub fn MathcholeskyView::scale(Self, Double) -> Self
+pub fn MathcholeskyView::set(Self, Int32, Double) -> Self
+pub fn MathcholeskyView::sum(Self) -> Double
+pub fn MathcholeskyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

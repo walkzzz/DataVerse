@@ -1,0 +1,126 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/signal_proc"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn autocorrelate(Array[Double]) -> Array[Double]
+
+pub fn band_pass_filter(Array[Double], Double, Double) -> Array[Double]
+
+pub fn blackman_window(Int32) -> Array[Double]
+
+pub fn butterworth_filter(Array[Double], Double, Int32) -> Array[Double]
+
+pub fn chebyshev_filter(Array[Double], Double, Double) -> Array[Double]
+
+pub fn convolve(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn correlate(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn cos_(Double) -> Double
+
+pub fn cross_correlate(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn dct(Array[Double]) -> Array[Double]
+
+pub fn dft(Array[Double]) -> Array[Complex]
+
+pub fn dst(Array[Double]) -> Array[Double]
+
+pub fn fft_magnitude(Array[Double]) -> Array[Double]
+
+pub fn fft_phase(Array[Double]) -> Array[Double]
+
+pub fn flattop_window(Int32) -> Array[Double]
+
+pub fn gaussian_filter(Array[Double], Double) -> Array[Double]
+
+pub fn hamming_window(Int32) -> Array[Double]
+
+pub fn hann_window(Int32) -> Array[Double]
+
+pub fn high_pass_filter(Array[Double], Double) -> Array[Double]
+
+pub fn hilbert_transform(Array[Double]) -> Array[Double]
+
+pub fn idft(Array[Complex]) -> Array[Double]
+
+pub fn low_pass_filter(Array[Double], Double) -> Array[Double]
+
+pub fn magnitude_spectrum(Array[Double]) -> Array[Double]
+
+pub fn make_signal(Int32, Double) -> Array[Double]
+
+pub fn median_filter(Array[Double], Int32) -> Array[Double]
+
+pub fn moving_average_filter(Array[Double], Int32) -> Array[Double]
+
+pub fn phase_spectrum(Array[Double]) -> Array[Double]
+
+pub fn power_spectrum(Array[Double]) -> Array[Double]
+
+pub fn rectangular_window(Int32) -> Array[Double]
+
+pub fn signal_add(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn signal_conjugate(Array[Double]) -> Array[Double]
+
+pub fn signal_energy(Array[Double]) -> Double
+
+pub fn signal_length(Array[Double]) -> Int32
+
+pub fn signal_max(Array[Double]) -> Double
+
+pub fn signal_mean(Array[Double]) -> Double
+
+pub fn signal_min(Array[Double]) -> Double
+
+pub fn signal_multiply(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn signal_negate(Array[Double]) -> Array[Double]
+
+pub fn signal_power(Array[Double]) -> Double
+
+pub fn signal_proc_id() -> String
+
+pub fn signal_reverse(Array[Double]) -> Array[Double]
+
+pub fn signal_scale(Array[Double], Double) -> Array[Double]
+
+pub fn signal_shift(Array[Double], Int32) -> Array[Double]
+
+pub fn signal_sum(Array[Double]) -> Double
+
+pub fn sin_(Double) -> Double
+
+pub fn spectral_centroid(Array[Double]) -> Double
+
+pub fn spectral_flux(Array[Double], Array[Double]) -> Double
+
+pub fn spectral_rolloff(Array[Double], Double) -> Double
+
+pub fn spectrogram(Array[Double], Int32) -> Array[Array[Double]]
+
+pub fn sqrt_(Double) -> Double
+
+pub fn triangular_window(Int32) -> Array[Double]
+
+pub fn zero_crossing_rate(Array[Double]) -> Double
+
+// Errors
+
+// Types and methods
+pub struct Complex {
+  re : Double
+  im : Double
+} derive(Eq, @debug.Debug)
+pub fn Complex::equal(Self, Self) -> Bool
+pub fn Complex::not_equal(Self, Self) -> Bool
+pub fn Complex::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

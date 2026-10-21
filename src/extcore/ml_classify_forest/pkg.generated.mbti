@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_classify_forest"
+
+// Values
+pub fn ml_classify_forest_buffer_make(Int32) -> MlclassifyforestBuffer
+
+pub fn ml_classify_forest_cluster_make(Int32) -> MlclassifyforestCluster
+
+pub fn ml_classify_forest_cursor_make(Int32) -> MlclassifyforestCursor
+
+pub fn ml_classify_forest_edge_make(Int32) -> MlclassifyforestEdge
+
+pub fn ml_classify_forest_frame_make(Int32) -> MlclassifyforestFrame
+
+pub fn ml_classify_forest_graphn_make(Int32) -> MlclassifyforestGraphN
+
+pub fn ml_classify_forest_layer_make(Int32) -> MlclassifyforestLayer
+
+pub fn ml_classify_forest_make_matrix(Int32, Int32, Double) -> MlclassifyforestMatrix
+
+pub fn ml_classify_forest_make_point(Double, Double) -> MlclassifyforestPoint
+
+pub fn ml_classify_forest_make_point3(Double, Double, Double) -> MlclassifyforestPoint
+
+pub fn ml_classify_forest_make_series(Array[Double], String) -> MlclassifyforestSeries
+
+pub fn ml_classify_forest_make_vector(Array[Double]) -> MlclassifyforestVector
+
+pub fn ml_classify_forest_matrix_identity(Int32) -> MlclassifyforestMatrix
+
+pub fn ml_classify_forest_model_make(Int32) -> MlclassifyforestModel
+
+pub fn ml_classify_forest_node_make(Int32) -> MlclassifyforestNode
+
+pub fn ml_classify_forest_path_make(Int32) -> MlclassifyforestPath
+
+pub fn ml_classify_forest_range_make(Int32) -> MlclassifyforestRange
+
+pub fn ml_classify_forest_slice_make(Int32) -> MlclassifyforestSlice
+
+pub fn ml_classify_forest_table_make(Int32) -> MlclassifyforestTable
+
+pub fn ml_classify_forest_vector_zero(Int32) -> MlclassifyforestVector
+
+pub fn ml_classify_forest_view_make(Int32) -> MlclassifyforestView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlclassifyforestBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyforestBuffer::add(Self, Self) -> Self
+pub fn MlclassifyforestBuffer::copy(Self) -> Self
+pub fn MlclassifyforestBuffer::fill(Self, Double) -> Self
+pub fn MlclassifyforestBuffer::get(Self, Int32) -> Double
+pub fn MlclassifyforestBuffer::len(Self) -> Int32
+pub fn MlclassifyforestBuffer::max(Self) -> Double
+pub fn MlclassifyforestBuffer::mean(Self) -> Double
+pub fn MlclassifyforestBuffer::min(Self) -> Double
+pub fn MlclassifyforestBuffer::scale(Self, Double) -> Self
+pub fn MlclassifyforestBuffer::set(Self, Int32, Double) -> Self
+pub fn MlclassifyforestBuffer::sum(Self) -> Double
+pub fn MlclassifyforestBuffer::to_string(Self) -> String
+
+pub(all) struct MlclassifyforestCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyforestCluster::add(Self, Self) -> Self
+pub fn MlclassifyforestCluster::copy(Self) -> Self
+pub fn MlclassifyforestCluster::fill(Self, Double) -> Self
+pub fn MlclassifyforestCluster::get(Self, Int32) -> Double
+pub fn MlclassifyforestCluster::len(Self) -> Int32
+pub fn MlclassifyforestCluster::max(Self) -> Double
+pub fn MlclassifyforestCluster::mean(Self) -> Double
+pub fn MlclassifyforestCluster::min(Self) -> Double
+pub fn MlclassifyforestCluster::scale(Self, Double) -> Self
+pub fn MlclassifyforestCluster::set(Self, Int32, Double) -> Self
+pub fn MlclassifyforestCluster::sum(Self) -> Double
+pub fn MlclassifyforestCluster::to_string(Self) -> String
+
+pub(all) struct MlclassifyforestCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyforestCursor::add(Self, Self) -> Self
+pub fn MlclassifyforestCursor::copy(Self) -> Self
+pub fn MlclassifyforestCursor::fill(Self, Double) -> Self
+pub fn MlclassifyforestCursor::get(Self, Int32) -> Double
+pub fn MlclassifyforestCursor::len(Self) -> Int32
+pub fn MlclassifyforestCursor::max(Self) -> Double
+pub fn MlclassifyforestCursor::mean(Self) -> Double
+pub fn MlclassifyforestCursor::min(Self) -> Double
+pub fn MlclassifyforestCursor::scale(Self, Double) -> Self
+pub fn MlclassifyforestCursor::set(Self, Int32, Double) -> Self
+pub fn MlclassifyforestCursor::sum(Self) -> Double
+pub fn MlclassifyforestCursor::to_string(Self) -> String
+
+pub(all) struct MlclassifyforestEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyforestEdge::add(Self, Self) -> Self
+pub fn MlclassifyforestEdge::copy(Self) -> Self
+pub fn MlclassifyforestEdge::fill(Self, Double) -> Self
+pub fn MlclassifyforestEdge::get(Self, Int32) -> Double
+pub fn MlclassifyforestEdge::len(Self) -> Int32
+pub fn MlclassifyforestEdge::max(Self) -> Double
+pub fn MlclassifyforestEdge::mean(Self) -> Double
+pub fn MlclassifyforestEdge::min(Self) -> Double
+pub fn MlclassifyforestEdge::scale(Self, Double) -> Self
+pub fn MlclassifyforestEdge::set(Self, Int32, Double) -> Self
+pub fn MlclassifyforestEdge::sum(Self) -> Double
+pub fn MlclassifyforestEdge::to_string(Self) -> String
+
+pub(all) struct MlclassifyforestFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyforestFrame::add(Self, Self) -> Self
+pub fn MlclassifyforestFrame::copy(Self) -> Self
+pub fn MlclassifyforestFrame::fill(Self, Double) -> Self
+pub fn MlclassifyforestFrame::get(Self, Int32) -> Double
+pub fn MlclassifyforestFrame::len(Self) -> Int32
+pub fn MlclassifyforestFrame::max(Self) -> Double
+pub fn MlclassifyforestFrame::mean(Self) -> Double
+pub fn MlclassifyforestFrame::min(Self) -> Double
+pub fn MlclassifyforestFrame::scale(Self, Double) -> Self
+pub fn MlclassifyforestFrame::set(Self, Int32, Double) -> Self
+pub fn MlclassifyforestFrame::sum(Self) -> Double
+pub fn MlclassifyforestFrame::to_string(Self) -> String
+
+pub(all) struct MlclassifyforestGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyforestGraphN::add(Self, Self) -> Self
+pub fn MlclassifyforestGraphN::copy(Self) -> Self
+pub fn MlclassifyforestGraphN::fill(Self, Double) -> Self
+pub fn MlclassifyforestGraphN::get(Self, Int32) -> Double
+pub fn MlclassifyforestGraphN::len(Self) -> Int32
+pub fn MlclassifyforestGraphN::max(Self) -> Double
+pub fn MlclassifyforestGraphN::mean(Self) -> Double
+pub fn MlclassifyforestGraphN::min(Self) -> Double
+pub fn MlclassifyforestGraphN::scale(Self, Double) -> Self
+pub fn MlclassifyforestGraphN::set(Self, Int32, Double) -> Self
+pub fn MlclassifyforestGraphN::sum(Self) -> Double
+pub fn MlclassifyforestGraphN::to_string(Self) -> String
+
+pub(all) struct MlclassifyforestLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyforestLayer::add(Self, Self) -> Self
+pub fn MlclassifyforestLayer::copy(Self) -> Self
+pub fn MlclassifyforestLayer::fill(Self, Double) -> Self
+pub fn MlclassifyforestLayer::get(Self, Int32) -> Double
+pub fn MlclassifyforestLayer::len(Self) -> Int32
+pub fn MlclassifyforestLayer::max(Self) -> Double
+pub fn MlclassifyforestLayer::mean(Self) -> Double
+pub fn MlclassifyforestLayer::min(Self) -> Double
+pub fn MlclassifyforestLayer::scale(Self, Double) -> Self
+pub fn MlclassifyforestLayer::set(Self, Int32, Double) -> Self
+pub fn MlclassifyforestLayer::sum(Self) -> Double
+pub fn MlclassifyforestLayer::to_string(Self) -> String
+
+pub(all) struct MlclassifyforestMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlclassifyforestMatrix::add(Self, Self) -> Self
+pub fn MlclassifyforestMatrix::det(Self) -> Double
+pub fn MlclassifyforestMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlclassifyforestMatrix::multiply(Self, Self) -> Self
+pub fn MlclassifyforestMatrix::norm(Self) -> Double
+pub fn MlclassifyforestMatrix::scale(Self, Double) -> Self
+pub fn MlclassifyforestMatrix::to_string(Self) -> String
+pub fn MlclassifyforestMatrix::trace(Self) -> Double
+pub fn MlclassifyforestMatrix::transpose(Self) -> Self
+
+pub(all) struct MlclassifyforestModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyforestModel::add(Self, Self) -> Self
+pub fn MlclassifyforestModel::copy(Self) -> Self
+pub fn MlclassifyforestModel::fill(Self, Double) -> Self
+pub fn MlclassifyforestModel::get(Self, Int32) -> Double
+pub fn MlclassifyforestModel::len(Self) -> Int32
+pub fn MlclassifyforestModel::max(Self) -> Double
+pub fn MlclassifyforestModel::mean(Self) -> Double
+pub fn MlclassifyforestModel::min(Self) -> Double
+pub fn MlclassifyforestModel::scale(Self, Double) -> Self
+pub fn MlclassifyforestModel::set(Self, Int32, Double) -> Self
+pub fn MlclassifyforestModel::sum(Self) -> Double
+pub fn MlclassifyforestModel::to_string(Self) -> String
+
+pub(all) struct MlclassifyforestNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyforestNode::add(Self, Self) -> Self
+pub fn MlclassifyforestNode::copy(Self) -> Self
+pub fn MlclassifyforestNode::fill(Self, Double) -> Self
+pub fn MlclassifyforestNode::get(Self, Int32) -> Double
+pub fn MlclassifyforestNode::len(Self) -> Int32
+pub fn MlclassifyforestNode::max(Self) -> Double
+pub fn MlclassifyforestNode::mean(Self) -> Double
+pub fn MlclassifyforestNode::min(Self) -> Double
+pub fn MlclassifyforestNode::scale(Self, Double) -> Self
+pub fn MlclassifyforestNode::set(Self, Int32, Double) -> Self
+pub fn MlclassifyforestNode::sum(Self) -> Double
+pub fn MlclassifyforestNode::to_string(Self) -> String
+
+pub(all) struct MlclassifyforestPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyforestPath::add(Self, Self) -> Self
+pub fn MlclassifyforestPath::copy(Self) -> Self
+pub fn MlclassifyforestPath::fill(Self, Double) -> Self
+pub fn MlclassifyforestPath::get(Self, Int32) -> Double
+pub fn MlclassifyforestPath::len(Self) -> Int32
+pub fn MlclassifyforestPath::max(Self) -> Double
+pub fn MlclassifyforestPath::mean(Self) -> Double
+pub fn MlclassifyforestPath::min(Self) -> Double
+pub fn MlclassifyforestPath::scale(Self, Double) -> Self
+pub fn MlclassifyforestPath::set(Self, Int32, Double) -> Self
+pub fn MlclassifyforestPath::sum(Self) -> Double
+pub fn MlclassifyforestPath::to_string(Self) -> String
+
+pub(all) struct MlclassifyforestPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlclassifyforestPoint::add(Self, Self) -> Self
+pub fn MlclassifyforestPoint::cross(Self, Self) -> Self
+pub fn MlclassifyforestPoint::dist(Self, Self) -> Double
+pub fn MlclassifyforestPoint::dot(Self, Self) -> Double
+pub fn MlclassifyforestPoint::label(Self) -> Int32
+pub fn MlclassifyforestPoint::lerp(Self, Self, Double) -> Self
+pub fn MlclassifyforestPoint::mid(Self, Self) -> Self
+pub fn MlclassifyforestPoint::negate(Self) -> Self
+pub fn MlclassifyforestPoint::norm(Self) -> Double
+pub fn MlclassifyforestPoint::normalize(Self) -> Self
+pub fn MlclassifyforestPoint::scale(Self, Double) -> Self
+pub fn MlclassifyforestPoint::sub(Self, Self) -> Self
+pub fn MlclassifyforestPoint::to_string(Self) -> String
+pub fn MlclassifyforestPoint::x(Self) -> Double
+pub fn MlclassifyforestPoint::y(Self) -> Double
+pub fn MlclassifyforestPoint::z(Self) -> Double
+
+pub(all) struct MlclassifyforestRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyforestRange::add(Self, Self) -> Self
+pub fn MlclassifyforestRange::copy(Self) -> Self
+pub fn MlclassifyforestRange::fill(Self, Double) -> Self
+pub fn MlclassifyforestRange::get(Self, Int32) -> Double
+pub fn MlclassifyforestRange::len(Self) -> Int32
+pub fn MlclassifyforestRange::max(Self) -> Double
+pub fn MlclassifyforestRange::mean(Self) -> Double
+pub fn MlclassifyforestRange::min(Self) -> Double
+pub fn MlclassifyforestRange::scale(Self, Double) -> Self
+pub fn MlclassifyforestRange::set(Self, Int32, Double) -> Self
+pub fn MlclassifyforestRange::sum(Self) -> Double
+pub fn MlclassifyforestRange::to_string(Self) -> String
+
+pub(all) struct MlclassifyforestSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlclassifyforestSeries::add(Self, Self) -> Self
+pub fn MlclassifyforestSeries::cumsum(Self) -> Self
+pub fn MlclassifyforestSeries::len(Self) -> Int32
+pub fn MlclassifyforestSeries::max(Self) -> Double
+pub fn MlclassifyforestSeries::mean(Self) -> Double
+pub fn MlclassifyforestSeries::median(Self) -> Double
+pub fn MlclassifyforestSeries::min(Self) -> Double
+pub fn MlclassifyforestSeries::normalize(Self) -> Self
+pub fn MlclassifyforestSeries::range(Self) -> Double
+pub fn MlclassifyforestSeries::scale(Self, Double) -> Self
+pub fn MlclassifyforestSeries::std(Self) -> Double
+pub fn MlclassifyforestSeries::sub(Self, Self) -> Self
+pub fn MlclassifyforestSeries::sum(Self) -> Double
+pub fn MlclassifyforestSeries::to_string(Self) -> String
+pub fn MlclassifyforestSeries::variance(Self) -> Double
+
+pub(all) struct MlclassifyforestSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyforestSlice::add(Self, Self) -> Self
+pub fn MlclassifyforestSlice::copy(Self) -> Self
+pub fn MlclassifyforestSlice::fill(Self, Double) -> Self
+pub fn MlclassifyforestSlice::get(Self, Int32) -> Double
+pub fn MlclassifyforestSlice::len(Self) -> Int32
+pub fn MlclassifyforestSlice::max(Self) -> Double
+pub fn MlclassifyforestSlice::mean(Self) -> Double
+pub fn MlclassifyforestSlice::min(Self) -> Double
+pub fn MlclassifyforestSlice::scale(Self, Double) -> Self
+pub fn MlclassifyforestSlice::set(Self, Int32, Double) -> Self
+pub fn MlclassifyforestSlice::sum(Self) -> Double
+pub fn MlclassifyforestSlice::to_string(Self) -> String
+
+pub(all) struct MlclassifyforestTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyforestTable::add(Self, Self) -> Self
+pub fn MlclassifyforestTable::copy(Self) -> Self
+pub fn MlclassifyforestTable::fill(Self, Double) -> Self
+pub fn MlclassifyforestTable::get(Self, Int32) -> Double
+pub fn MlclassifyforestTable::len(Self) -> Int32
+pub fn MlclassifyforestTable::max(Self) -> Double
+pub fn MlclassifyforestTable::mean(Self) -> Double
+pub fn MlclassifyforestTable::min(Self) -> Double
+pub fn MlclassifyforestTable::scale(Self, Double) -> Self
+pub fn MlclassifyforestTable::set(Self, Int32, Double) -> Self
+pub fn MlclassifyforestTable::sum(Self) -> Double
+pub fn MlclassifyforestTable::to_string(Self) -> String
+
+pub(all) struct MlclassifyforestVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlclassifyforestVector::add(Self, Self) -> Self
+pub fn MlclassifyforestVector::dist(Self, Self) -> Double
+pub fn MlclassifyforestVector::dot(Self, Self) -> Double
+pub fn MlclassifyforestVector::norm(Self) -> Double
+pub fn MlclassifyforestVector::normalize(Self) -> Self
+pub fn MlclassifyforestVector::scale(Self, Double) -> Self
+pub fn MlclassifyforestVector::sub(Self, Self) -> Self
+pub fn MlclassifyforestVector::to_string(Self) -> String
+
+pub(all) struct MlclassifyforestView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclassifyforestView::add(Self, Self) -> Self
+pub fn MlclassifyforestView::copy(Self) -> Self
+pub fn MlclassifyforestView::fill(Self, Double) -> Self
+pub fn MlclassifyforestView::get(Self, Int32) -> Double
+pub fn MlclassifyforestView::len(Self) -> Int32
+pub fn MlclassifyforestView::max(Self) -> Double
+pub fn MlclassifyforestView::mean(Self) -> Double
+pub fn MlclassifyforestView::min(Self) -> Double
+pub fn MlclassifyforestView::scale(Self, Double) -> Self
+pub fn MlclassifyforestView::set(Self, Int32, Double) -> Self
+pub fn MlclassifyforestView::sum(Self) -> Double
+pub fn MlclassifyforestView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

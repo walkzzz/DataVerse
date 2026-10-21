@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_metric_clustering"
+
+// Values
+pub fn ml_metric_clustering_buffer_make(Int32) -> MlmetricclusteringBuffer
+
+pub fn ml_metric_clustering_cluster_make(Int32) -> MlmetricclusteringCluster
+
+pub fn ml_metric_clustering_cursor_make(Int32) -> MlmetricclusteringCursor
+
+pub fn ml_metric_clustering_edge_make(Int32) -> MlmetricclusteringEdge
+
+pub fn ml_metric_clustering_frame_make(Int32) -> MlmetricclusteringFrame
+
+pub fn ml_metric_clustering_graphn_make(Int32) -> MlmetricclusteringGraphN
+
+pub fn ml_metric_clustering_layer_make(Int32) -> MlmetricclusteringLayer
+
+pub fn ml_metric_clustering_make_matrix(Int32, Int32, Double) -> MlmetricclusteringMatrix
+
+pub fn ml_metric_clustering_make_point(Double, Double) -> MlmetricclusteringPoint
+
+pub fn ml_metric_clustering_make_point3(Double, Double, Double) -> MlmetricclusteringPoint
+
+pub fn ml_metric_clustering_make_series(Array[Double], String) -> MlmetricclusteringSeries
+
+pub fn ml_metric_clustering_make_vector(Array[Double]) -> MlmetricclusteringVector
+
+pub fn ml_metric_clustering_matrix_identity(Int32) -> MlmetricclusteringMatrix
+
+pub fn ml_metric_clustering_model_make(Int32) -> MlmetricclusteringModel
+
+pub fn ml_metric_clustering_node_make(Int32) -> MlmetricclusteringNode
+
+pub fn ml_metric_clustering_path_make(Int32) -> MlmetricclusteringPath
+
+pub fn ml_metric_clustering_range_make(Int32) -> MlmetricclusteringRange
+
+pub fn ml_metric_clustering_slice_make(Int32) -> MlmetricclusteringSlice
+
+pub fn ml_metric_clustering_table_make(Int32) -> MlmetricclusteringTable
+
+pub fn ml_metric_clustering_vector_zero(Int32) -> MlmetricclusteringVector
+
+pub fn ml_metric_clustering_view_make(Int32) -> MlmetricclusteringView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlmetricclusteringBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricclusteringBuffer::add(Self, Self) -> Self
+pub fn MlmetricclusteringBuffer::copy(Self) -> Self
+pub fn MlmetricclusteringBuffer::fill(Self, Double) -> Self
+pub fn MlmetricclusteringBuffer::get(Self, Int32) -> Double
+pub fn MlmetricclusteringBuffer::len(Self) -> Int32
+pub fn MlmetricclusteringBuffer::max(Self) -> Double
+pub fn MlmetricclusteringBuffer::mean(Self) -> Double
+pub fn MlmetricclusteringBuffer::min(Self) -> Double
+pub fn MlmetricclusteringBuffer::scale(Self, Double) -> Self
+pub fn MlmetricclusteringBuffer::set(Self, Int32, Double) -> Self
+pub fn MlmetricclusteringBuffer::sum(Self) -> Double
+pub fn MlmetricclusteringBuffer::to_string(Self) -> String
+
+pub(all) struct MlmetricclusteringCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricclusteringCluster::add(Self, Self) -> Self
+pub fn MlmetricclusteringCluster::copy(Self) -> Self
+pub fn MlmetricclusteringCluster::fill(Self, Double) -> Self
+pub fn MlmetricclusteringCluster::get(Self, Int32) -> Double
+pub fn MlmetricclusteringCluster::len(Self) -> Int32
+pub fn MlmetricclusteringCluster::max(Self) -> Double
+pub fn MlmetricclusteringCluster::mean(Self) -> Double
+pub fn MlmetricclusteringCluster::min(Self) -> Double
+pub fn MlmetricclusteringCluster::scale(Self, Double) -> Self
+pub fn MlmetricclusteringCluster::set(Self, Int32, Double) -> Self
+pub fn MlmetricclusteringCluster::sum(Self) -> Double
+pub fn MlmetricclusteringCluster::to_string(Self) -> String
+
+pub(all) struct MlmetricclusteringCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricclusteringCursor::add(Self, Self) -> Self
+pub fn MlmetricclusteringCursor::copy(Self) -> Self
+pub fn MlmetricclusteringCursor::fill(Self, Double) -> Self
+pub fn MlmetricclusteringCursor::get(Self, Int32) -> Double
+pub fn MlmetricclusteringCursor::len(Self) -> Int32
+pub fn MlmetricclusteringCursor::max(Self) -> Double
+pub fn MlmetricclusteringCursor::mean(Self) -> Double
+pub fn MlmetricclusteringCursor::min(Self) -> Double
+pub fn MlmetricclusteringCursor::scale(Self, Double) -> Self
+pub fn MlmetricclusteringCursor::set(Self, Int32, Double) -> Self
+pub fn MlmetricclusteringCursor::sum(Self) -> Double
+pub fn MlmetricclusteringCursor::to_string(Self) -> String
+
+pub(all) struct MlmetricclusteringEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricclusteringEdge::add(Self, Self) -> Self
+pub fn MlmetricclusteringEdge::copy(Self) -> Self
+pub fn MlmetricclusteringEdge::fill(Self, Double) -> Self
+pub fn MlmetricclusteringEdge::get(Self, Int32) -> Double
+pub fn MlmetricclusteringEdge::len(Self) -> Int32
+pub fn MlmetricclusteringEdge::max(Self) -> Double
+pub fn MlmetricclusteringEdge::mean(Self) -> Double
+pub fn MlmetricclusteringEdge::min(Self) -> Double
+pub fn MlmetricclusteringEdge::scale(Self, Double) -> Self
+pub fn MlmetricclusteringEdge::set(Self, Int32, Double) -> Self
+pub fn MlmetricclusteringEdge::sum(Self) -> Double
+pub fn MlmetricclusteringEdge::to_string(Self) -> String
+
+pub(all) struct MlmetricclusteringFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricclusteringFrame::add(Self, Self) -> Self
+pub fn MlmetricclusteringFrame::copy(Self) -> Self
+pub fn MlmetricclusteringFrame::fill(Self, Double) -> Self
+pub fn MlmetricclusteringFrame::get(Self, Int32) -> Double
+pub fn MlmetricclusteringFrame::len(Self) -> Int32
+pub fn MlmetricclusteringFrame::max(Self) -> Double
+pub fn MlmetricclusteringFrame::mean(Self) -> Double
+pub fn MlmetricclusteringFrame::min(Self) -> Double
+pub fn MlmetricclusteringFrame::scale(Self, Double) -> Self
+pub fn MlmetricclusteringFrame::set(Self, Int32, Double) -> Self
+pub fn MlmetricclusteringFrame::sum(Self) -> Double
+pub fn MlmetricclusteringFrame::to_string(Self) -> String
+
+pub(all) struct MlmetricclusteringGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricclusteringGraphN::add(Self, Self) -> Self
+pub fn MlmetricclusteringGraphN::copy(Self) -> Self
+pub fn MlmetricclusteringGraphN::fill(Self, Double) -> Self
+pub fn MlmetricclusteringGraphN::get(Self, Int32) -> Double
+pub fn MlmetricclusteringGraphN::len(Self) -> Int32
+pub fn MlmetricclusteringGraphN::max(Self) -> Double
+pub fn MlmetricclusteringGraphN::mean(Self) -> Double
+pub fn MlmetricclusteringGraphN::min(Self) -> Double
+pub fn MlmetricclusteringGraphN::scale(Self, Double) -> Self
+pub fn MlmetricclusteringGraphN::set(Self, Int32, Double) -> Self
+pub fn MlmetricclusteringGraphN::sum(Self) -> Double
+pub fn MlmetricclusteringGraphN::to_string(Self) -> String
+
+pub(all) struct MlmetricclusteringLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricclusteringLayer::add(Self, Self) -> Self
+pub fn MlmetricclusteringLayer::copy(Self) -> Self
+pub fn MlmetricclusteringLayer::fill(Self, Double) -> Self
+pub fn MlmetricclusteringLayer::get(Self, Int32) -> Double
+pub fn MlmetricclusteringLayer::len(Self) -> Int32
+pub fn MlmetricclusteringLayer::max(Self) -> Double
+pub fn MlmetricclusteringLayer::mean(Self) -> Double
+pub fn MlmetricclusteringLayer::min(Self) -> Double
+pub fn MlmetricclusteringLayer::scale(Self, Double) -> Self
+pub fn MlmetricclusteringLayer::set(Self, Int32, Double) -> Self
+pub fn MlmetricclusteringLayer::sum(Self) -> Double
+pub fn MlmetricclusteringLayer::to_string(Self) -> String
+
+pub(all) struct MlmetricclusteringMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlmetricclusteringMatrix::add(Self, Self) -> Self
+pub fn MlmetricclusteringMatrix::det(Self) -> Double
+pub fn MlmetricclusteringMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlmetricclusteringMatrix::multiply(Self, Self) -> Self
+pub fn MlmetricclusteringMatrix::norm(Self) -> Double
+pub fn MlmetricclusteringMatrix::scale(Self, Double) -> Self
+pub fn MlmetricclusteringMatrix::to_string(Self) -> String
+pub fn MlmetricclusteringMatrix::trace(Self) -> Double
+pub fn MlmetricclusteringMatrix::transpose(Self) -> Self
+
+pub(all) struct MlmetricclusteringModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricclusteringModel::add(Self, Self) -> Self
+pub fn MlmetricclusteringModel::copy(Self) -> Self
+pub fn MlmetricclusteringModel::fill(Self, Double) -> Self
+pub fn MlmetricclusteringModel::get(Self, Int32) -> Double
+pub fn MlmetricclusteringModel::len(Self) -> Int32
+pub fn MlmetricclusteringModel::max(Self) -> Double
+pub fn MlmetricclusteringModel::mean(Self) -> Double
+pub fn MlmetricclusteringModel::min(Self) -> Double
+pub fn MlmetricclusteringModel::scale(Self, Double) -> Self
+pub fn MlmetricclusteringModel::set(Self, Int32, Double) -> Self
+pub fn MlmetricclusteringModel::sum(Self) -> Double
+pub fn MlmetricclusteringModel::to_string(Self) -> String
+
+pub(all) struct MlmetricclusteringNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricclusteringNode::add(Self, Self) -> Self
+pub fn MlmetricclusteringNode::copy(Self) -> Self
+pub fn MlmetricclusteringNode::fill(Self, Double) -> Self
+pub fn MlmetricclusteringNode::get(Self, Int32) -> Double
+pub fn MlmetricclusteringNode::len(Self) -> Int32
+pub fn MlmetricclusteringNode::max(Self) -> Double
+pub fn MlmetricclusteringNode::mean(Self) -> Double
+pub fn MlmetricclusteringNode::min(Self) -> Double
+pub fn MlmetricclusteringNode::scale(Self, Double) -> Self
+pub fn MlmetricclusteringNode::set(Self, Int32, Double) -> Self
+pub fn MlmetricclusteringNode::sum(Self) -> Double
+pub fn MlmetricclusteringNode::to_string(Self) -> String
+
+pub(all) struct MlmetricclusteringPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricclusteringPath::add(Self, Self) -> Self
+pub fn MlmetricclusteringPath::copy(Self) -> Self
+pub fn MlmetricclusteringPath::fill(Self, Double) -> Self
+pub fn MlmetricclusteringPath::get(Self, Int32) -> Double
+pub fn MlmetricclusteringPath::len(Self) -> Int32
+pub fn MlmetricclusteringPath::max(Self) -> Double
+pub fn MlmetricclusteringPath::mean(Self) -> Double
+pub fn MlmetricclusteringPath::min(Self) -> Double
+pub fn MlmetricclusteringPath::scale(Self, Double) -> Self
+pub fn MlmetricclusteringPath::set(Self, Int32, Double) -> Self
+pub fn MlmetricclusteringPath::sum(Self) -> Double
+pub fn MlmetricclusteringPath::to_string(Self) -> String
+
+pub(all) struct MlmetricclusteringPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlmetricclusteringPoint::add(Self, Self) -> Self
+pub fn MlmetricclusteringPoint::cross(Self, Self) -> Self
+pub fn MlmetricclusteringPoint::dist(Self, Self) -> Double
+pub fn MlmetricclusteringPoint::dot(Self, Self) -> Double
+pub fn MlmetricclusteringPoint::label(Self) -> Int32
+pub fn MlmetricclusteringPoint::lerp(Self, Self, Double) -> Self
+pub fn MlmetricclusteringPoint::mid(Self, Self) -> Self
+pub fn MlmetricclusteringPoint::negate(Self) -> Self
+pub fn MlmetricclusteringPoint::norm(Self) -> Double
+pub fn MlmetricclusteringPoint::normalize(Self) -> Self
+pub fn MlmetricclusteringPoint::scale(Self, Double) -> Self
+pub fn MlmetricclusteringPoint::sub(Self, Self) -> Self
+pub fn MlmetricclusteringPoint::to_string(Self) -> String
+pub fn MlmetricclusteringPoint::x(Self) -> Double
+pub fn MlmetricclusteringPoint::y(Self) -> Double
+pub fn MlmetricclusteringPoint::z(Self) -> Double
+
+pub(all) struct MlmetricclusteringRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricclusteringRange::add(Self, Self) -> Self
+pub fn MlmetricclusteringRange::copy(Self) -> Self
+pub fn MlmetricclusteringRange::fill(Self, Double) -> Self
+pub fn MlmetricclusteringRange::get(Self, Int32) -> Double
+pub fn MlmetricclusteringRange::len(Self) -> Int32
+pub fn MlmetricclusteringRange::max(Self) -> Double
+pub fn MlmetricclusteringRange::mean(Self) -> Double
+pub fn MlmetricclusteringRange::min(Self) -> Double
+pub fn MlmetricclusteringRange::scale(Self, Double) -> Self
+pub fn MlmetricclusteringRange::set(Self, Int32, Double) -> Self
+pub fn MlmetricclusteringRange::sum(Self) -> Double
+pub fn MlmetricclusteringRange::to_string(Self) -> String
+
+pub(all) struct MlmetricclusteringSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlmetricclusteringSeries::add(Self, Self) -> Self
+pub fn MlmetricclusteringSeries::cumsum(Self) -> Self
+pub fn MlmetricclusteringSeries::len(Self) -> Int32
+pub fn MlmetricclusteringSeries::max(Self) -> Double
+pub fn MlmetricclusteringSeries::mean(Self) -> Double
+pub fn MlmetricclusteringSeries::median(Self) -> Double
+pub fn MlmetricclusteringSeries::min(Self) -> Double
+pub fn MlmetricclusteringSeries::normalize(Self) -> Self
+pub fn MlmetricclusteringSeries::range(Self) -> Double
+pub fn MlmetricclusteringSeries::scale(Self, Double) -> Self
+pub fn MlmetricclusteringSeries::std(Self) -> Double
+pub fn MlmetricclusteringSeries::sub(Self, Self) -> Self
+pub fn MlmetricclusteringSeries::sum(Self) -> Double
+pub fn MlmetricclusteringSeries::to_string(Self) -> String
+pub fn MlmetricclusteringSeries::variance(Self) -> Double
+
+pub(all) struct MlmetricclusteringSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricclusteringSlice::add(Self, Self) -> Self
+pub fn MlmetricclusteringSlice::copy(Self) -> Self
+pub fn MlmetricclusteringSlice::fill(Self, Double) -> Self
+pub fn MlmetricclusteringSlice::get(Self, Int32) -> Double
+pub fn MlmetricclusteringSlice::len(Self) -> Int32
+pub fn MlmetricclusteringSlice::max(Self) -> Double
+pub fn MlmetricclusteringSlice::mean(Self) -> Double
+pub fn MlmetricclusteringSlice::min(Self) -> Double
+pub fn MlmetricclusteringSlice::scale(Self, Double) -> Self
+pub fn MlmetricclusteringSlice::set(Self, Int32, Double) -> Self
+pub fn MlmetricclusteringSlice::sum(Self) -> Double
+pub fn MlmetricclusteringSlice::to_string(Self) -> String
+
+pub(all) struct MlmetricclusteringTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricclusteringTable::add(Self, Self) -> Self
+pub fn MlmetricclusteringTable::copy(Self) -> Self
+pub fn MlmetricclusteringTable::fill(Self, Double) -> Self
+pub fn MlmetricclusteringTable::get(Self, Int32) -> Double
+pub fn MlmetricclusteringTable::len(Self) -> Int32
+pub fn MlmetricclusteringTable::max(Self) -> Double
+pub fn MlmetricclusteringTable::mean(Self) -> Double
+pub fn MlmetricclusteringTable::min(Self) -> Double
+pub fn MlmetricclusteringTable::scale(Self, Double) -> Self
+pub fn MlmetricclusteringTable::set(Self, Int32, Double) -> Self
+pub fn MlmetricclusteringTable::sum(Self) -> Double
+pub fn MlmetricclusteringTable::to_string(Self) -> String
+
+pub(all) struct MlmetricclusteringVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlmetricclusteringVector::add(Self, Self) -> Self
+pub fn MlmetricclusteringVector::dist(Self, Self) -> Double
+pub fn MlmetricclusteringVector::dot(Self, Self) -> Double
+pub fn MlmetricclusteringVector::norm(Self) -> Double
+pub fn MlmetricclusteringVector::normalize(Self) -> Self
+pub fn MlmetricclusteringVector::scale(Self, Double) -> Self
+pub fn MlmetricclusteringVector::sub(Self, Self) -> Self
+pub fn MlmetricclusteringVector::to_string(Self) -> String
+
+pub(all) struct MlmetricclusteringView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricclusteringView::add(Self, Self) -> Self
+pub fn MlmetricclusteringView::copy(Self) -> Self
+pub fn MlmetricclusteringView::fill(Self, Double) -> Self
+pub fn MlmetricclusteringView::get(Self, Int32) -> Double
+pub fn MlmetricclusteringView::len(Self) -> Int32
+pub fn MlmetricclusteringView::max(Self) -> Double
+pub fn MlmetricclusteringView::mean(Self) -> Double
+pub fn MlmetricclusteringView::min(Self) -> Double
+pub fn MlmetricclusteringView::scale(Self, Double) -> Self
+pub fn MlmetricclusteringView::set(Self, Int32, Double) -> Self
+pub fn MlmetricclusteringView::sum(Self) -> Double
+pub fn MlmetricclusteringView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

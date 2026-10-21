@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_heap_pairing"
+
+// Values
+pub fn ds_heap_pairing_buffer_make(Int32) -> DsheappairingBuffer
+
+pub fn ds_heap_pairing_cluster_make(Int32) -> DsheappairingCluster
+
+pub fn ds_heap_pairing_cursor_make(Int32) -> DsheappairingCursor
+
+pub fn ds_heap_pairing_edge_make(Int32) -> DsheappairingEdge
+
+pub fn ds_heap_pairing_frame_make(Int32) -> DsheappairingFrame
+
+pub fn ds_heap_pairing_graphn_make(Int32) -> DsheappairingGraphN
+
+pub fn ds_heap_pairing_layer_make(Int32) -> DsheappairingLayer
+
+pub fn ds_heap_pairing_make_matrix(Int32, Int32, Double) -> DsheappairingMatrix
+
+pub fn ds_heap_pairing_make_point(Double, Double) -> DsheappairingPoint
+
+pub fn ds_heap_pairing_make_point3(Double, Double, Double) -> DsheappairingPoint
+
+pub fn ds_heap_pairing_make_series(Array[Double], String) -> DsheappairingSeries
+
+pub fn ds_heap_pairing_make_vector(Array[Double]) -> DsheappairingVector
+
+pub fn ds_heap_pairing_matrix_identity(Int32) -> DsheappairingMatrix
+
+pub fn ds_heap_pairing_model_make(Int32) -> DsheappairingModel
+
+pub fn ds_heap_pairing_node_make(Int32) -> DsheappairingNode
+
+pub fn ds_heap_pairing_path_make(Int32) -> DsheappairingPath
+
+pub fn ds_heap_pairing_range_make(Int32) -> DsheappairingRange
+
+pub fn ds_heap_pairing_slice_make(Int32) -> DsheappairingSlice
+
+pub fn ds_heap_pairing_table_make(Int32) -> DsheappairingTable
+
+pub fn ds_heap_pairing_vector_zero(Int32) -> DsheappairingVector
+
+pub fn ds_heap_pairing_view_make(Int32) -> DsheappairingView
+
+// Errors
+
+// Types and methods
+pub(all) struct DsheappairingBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheappairingBuffer::add(Self, Self) -> Self
+pub fn DsheappairingBuffer::copy(Self) -> Self
+pub fn DsheappairingBuffer::fill(Self, Double) -> Self
+pub fn DsheappairingBuffer::get(Self, Int32) -> Double
+pub fn DsheappairingBuffer::len(Self) -> Int32
+pub fn DsheappairingBuffer::max(Self) -> Double
+pub fn DsheappairingBuffer::mean(Self) -> Double
+pub fn DsheappairingBuffer::min(Self) -> Double
+pub fn DsheappairingBuffer::scale(Self, Double) -> Self
+pub fn DsheappairingBuffer::set(Self, Int32, Double) -> Self
+pub fn DsheappairingBuffer::sum(Self) -> Double
+pub fn DsheappairingBuffer::to_string(Self) -> String
+
+pub(all) struct DsheappairingCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheappairingCluster::add(Self, Self) -> Self
+pub fn DsheappairingCluster::copy(Self) -> Self
+pub fn DsheappairingCluster::fill(Self, Double) -> Self
+pub fn DsheappairingCluster::get(Self, Int32) -> Double
+pub fn DsheappairingCluster::len(Self) -> Int32
+pub fn DsheappairingCluster::max(Self) -> Double
+pub fn DsheappairingCluster::mean(Self) -> Double
+pub fn DsheappairingCluster::min(Self) -> Double
+pub fn DsheappairingCluster::scale(Self, Double) -> Self
+pub fn DsheappairingCluster::set(Self, Int32, Double) -> Self
+pub fn DsheappairingCluster::sum(Self) -> Double
+pub fn DsheappairingCluster::to_string(Self) -> String
+
+pub(all) struct DsheappairingCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheappairingCursor::add(Self, Self) -> Self
+pub fn DsheappairingCursor::copy(Self) -> Self
+pub fn DsheappairingCursor::fill(Self, Double) -> Self
+pub fn DsheappairingCursor::get(Self, Int32) -> Double
+pub fn DsheappairingCursor::len(Self) -> Int32
+pub fn DsheappairingCursor::max(Self) -> Double
+pub fn DsheappairingCursor::mean(Self) -> Double
+pub fn DsheappairingCursor::min(Self) -> Double
+pub fn DsheappairingCursor::scale(Self, Double) -> Self
+pub fn DsheappairingCursor::set(Self, Int32, Double) -> Self
+pub fn DsheappairingCursor::sum(Self) -> Double
+pub fn DsheappairingCursor::to_string(Self) -> String
+
+pub(all) struct DsheappairingEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheappairingEdge::add(Self, Self) -> Self
+pub fn DsheappairingEdge::copy(Self) -> Self
+pub fn DsheappairingEdge::fill(Self, Double) -> Self
+pub fn DsheappairingEdge::get(Self, Int32) -> Double
+pub fn DsheappairingEdge::len(Self) -> Int32
+pub fn DsheappairingEdge::max(Self) -> Double
+pub fn DsheappairingEdge::mean(Self) -> Double
+pub fn DsheappairingEdge::min(Self) -> Double
+pub fn DsheappairingEdge::scale(Self, Double) -> Self
+pub fn DsheappairingEdge::set(Self, Int32, Double) -> Self
+pub fn DsheappairingEdge::sum(Self) -> Double
+pub fn DsheappairingEdge::to_string(Self) -> String
+
+pub(all) struct DsheappairingFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheappairingFrame::add(Self, Self) -> Self
+pub fn DsheappairingFrame::copy(Self) -> Self
+pub fn DsheappairingFrame::fill(Self, Double) -> Self
+pub fn DsheappairingFrame::get(Self, Int32) -> Double
+pub fn DsheappairingFrame::len(Self) -> Int32
+pub fn DsheappairingFrame::max(Self) -> Double
+pub fn DsheappairingFrame::mean(Self) -> Double
+pub fn DsheappairingFrame::min(Self) -> Double
+pub fn DsheappairingFrame::scale(Self, Double) -> Self
+pub fn DsheappairingFrame::set(Self, Int32, Double) -> Self
+pub fn DsheappairingFrame::sum(Self) -> Double
+pub fn DsheappairingFrame::to_string(Self) -> String
+
+pub(all) struct DsheappairingGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheappairingGraphN::add(Self, Self) -> Self
+pub fn DsheappairingGraphN::copy(Self) -> Self
+pub fn DsheappairingGraphN::fill(Self, Double) -> Self
+pub fn DsheappairingGraphN::get(Self, Int32) -> Double
+pub fn DsheappairingGraphN::len(Self) -> Int32
+pub fn DsheappairingGraphN::max(Self) -> Double
+pub fn DsheappairingGraphN::mean(Self) -> Double
+pub fn DsheappairingGraphN::min(Self) -> Double
+pub fn DsheappairingGraphN::scale(Self, Double) -> Self
+pub fn DsheappairingGraphN::set(Self, Int32, Double) -> Self
+pub fn DsheappairingGraphN::sum(Self) -> Double
+pub fn DsheappairingGraphN::to_string(Self) -> String
+
+pub(all) struct DsheappairingLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheappairingLayer::add(Self, Self) -> Self
+pub fn DsheappairingLayer::copy(Self) -> Self
+pub fn DsheappairingLayer::fill(Self, Double) -> Self
+pub fn DsheappairingLayer::get(Self, Int32) -> Double
+pub fn DsheappairingLayer::len(Self) -> Int32
+pub fn DsheappairingLayer::max(Self) -> Double
+pub fn DsheappairingLayer::mean(Self) -> Double
+pub fn DsheappairingLayer::min(Self) -> Double
+pub fn DsheappairingLayer::scale(Self, Double) -> Self
+pub fn DsheappairingLayer::set(Self, Int32, Double) -> Self
+pub fn DsheappairingLayer::sum(Self) -> Double
+pub fn DsheappairingLayer::to_string(Self) -> String
+
+pub(all) struct DsheappairingMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DsheappairingMatrix::add(Self, Self) -> Self
+pub fn DsheappairingMatrix::det(Self) -> Double
+pub fn DsheappairingMatrix::get(Self, Int32, Int32) -> Double
+pub fn DsheappairingMatrix::multiply(Self, Self) -> Self
+pub fn DsheappairingMatrix::norm(Self) -> Double
+pub fn DsheappairingMatrix::scale(Self, Double) -> Self
+pub fn DsheappairingMatrix::to_string(Self) -> String
+pub fn DsheappairingMatrix::trace(Self) -> Double
+pub fn DsheappairingMatrix::transpose(Self) -> Self
+
+pub(all) struct DsheappairingModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheappairingModel::add(Self, Self) -> Self
+pub fn DsheappairingModel::copy(Self) -> Self
+pub fn DsheappairingModel::fill(Self, Double) -> Self
+pub fn DsheappairingModel::get(Self, Int32) -> Double
+pub fn DsheappairingModel::len(Self) -> Int32
+pub fn DsheappairingModel::max(Self) -> Double
+pub fn DsheappairingModel::mean(Self) -> Double
+pub fn DsheappairingModel::min(Self) -> Double
+pub fn DsheappairingModel::scale(Self, Double) -> Self
+pub fn DsheappairingModel::set(Self, Int32, Double) -> Self
+pub fn DsheappairingModel::sum(Self) -> Double
+pub fn DsheappairingModel::to_string(Self) -> String
+
+pub(all) struct DsheappairingNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheappairingNode::add(Self, Self) -> Self
+pub fn DsheappairingNode::copy(Self) -> Self
+pub fn DsheappairingNode::fill(Self, Double) -> Self
+pub fn DsheappairingNode::get(Self, Int32) -> Double
+pub fn DsheappairingNode::len(Self) -> Int32
+pub fn DsheappairingNode::max(Self) -> Double
+pub fn DsheappairingNode::mean(Self) -> Double
+pub fn DsheappairingNode::min(Self) -> Double
+pub fn DsheappairingNode::scale(Self, Double) -> Self
+pub fn DsheappairingNode::set(Self, Int32, Double) -> Self
+pub fn DsheappairingNode::sum(Self) -> Double
+pub fn DsheappairingNode::to_string(Self) -> String
+
+pub(all) struct DsheappairingPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheappairingPath::add(Self, Self) -> Self
+pub fn DsheappairingPath::copy(Self) -> Self
+pub fn DsheappairingPath::fill(Self, Double) -> Self
+pub fn DsheappairingPath::get(Self, Int32) -> Double
+pub fn DsheappairingPath::len(Self) -> Int32
+pub fn DsheappairingPath::max(Self) -> Double
+pub fn DsheappairingPath::mean(Self) -> Double
+pub fn DsheappairingPath::min(Self) -> Double
+pub fn DsheappairingPath::scale(Self, Double) -> Self
+pub fn DsheappairingPath::set(Self, Int32, Double) -> Self
+pub fn DsheappairingPath::sum(Self) -> Double
+pub fn DsheappairingPath::to_string(Self) -> String
+
+pub(all) struct DsheappairingPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DsheappairingPoint::add(Self, Self) -> Self
+pub fn DsheappairingPoint::cross(Self, Self) -> Self
+pub fn DsheappairingPoint::dist(Self, Self) -> Double
+pub fn DsheappairingPoint::dot(Self, Self) -> Double
+pub fn DsheappairingPoint::label(Self) -> Int32
+pub fn DsheappairingPoint::lerp(Self, Self, Double) -> Self
+pub fn DsheappairingPoint::mid(Self, Self) -> Self
+pub fn DsheappairingPoint::negate(Self) -> Self
+pub fn DsheappairingPoint::norm(Self) -> Double
+pub fn DsheappairingPoint::normalize(Self) -> Self
+pub fn DsheappairingPoint::scale(Self, Double) -> Self
+pub fn DsheappairingPoint::sub(Self, Self) -> Self
+pub fn DsheappairingPoint::to_string(Self) -> String
+pub fn DsheappairingPoint::x(Self) -> Double
+pub fn DsheappairingPoint::y(Self) -> Double
+pub fn DsheappairingPoint::z(Self) -> Double
+
+pub(all) struct DsheappairingRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheappairingRange::add(Self, Self) -> Self
+pub fn DsheappairingRange::copy(Self) -> Self
+pub fn DsheappairingRange::fill(Self, Double) -> Self
+pub fn DsheappairingRange::get(Self, Int32) -> Double
+pub fn DsheappairingRange::len(Self) -> Int32
+pub fn DsheappairingRange::max(Self) -> Double
+pub fn DsheappairingRange::mean(Self) -> Double
+pub fn DsheappairingRange::min(Self) -> Double
+pub fn DsheappairingRange::scale(Self, Double) -> Self
+pub fn DsheappairingRange::set(Self, Int32, Double) -> Self
+pub fn DsheappairingRange::sum(Self) -> Double
+pub fn DsheappairingRange::to_string(Self) -> String
+
+pub(all) struct DsheappairingSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DsheappairingSeries::add(Self, Self) -> Self
+pub fn DsheappairingSeries::cumsum(Self) -> Self
+pub fn DsheappairingSeries::len(Self) -> Int32
+pub fn DsheappairingSeries::max(Self) -> Double
+pub fn DsheappairingSeries::mean(Self) -> Double
+pub fn DsheappairingSeries::median(Self) -> Double
+pub fn DsheappairingSeries::min(Self) -> Double
+pub fn DsheappairingSeries::normalize(Self) -> Self
+pub fn DsheappairingSeries::range(Self) -> Double
+pub fn DsheappairingSeries::scale(Self, Double) -> Self
+pub fn DsheappairingSeries::std(Self) -> Double
+pub fn DsheappairingSeries::sub(Self, Self) -> Self
+pub fn DsheappairingSeries::sum(Self) -> Double
+pub fn DsheappairingSeries::to_string(Self) -> String
+pub fn DsheappairingSeries::variance(Self) -> Double
+
+pub(all) struct DsheappairingSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheappairingSlice::add(Self, Self) -> Self
+pub fn DsheappairingSlice::copy(Self) -> Self
+pub fn DsheappairingSlice::fill(Self, Double) -> Self
+pub fn DsheappairingSlice::get(Self, Int32) -> Double
+pub fn DsheappairingSlice::len(Self) -> Int32
+pub fn DsheappairingSlice::max(Self) -> Double
+pub fn DsheappairingSlice::mean(Self) -> Double
+pub fn DsheappairingSlice::min(Self) -> Double
+pub fn DsheappairingSlice::scale(Self, Double) -> Self
+pub fn DsheappairingSlice::set(Self, Int32, Double) -> Self
+pub fn DsheappairingSlice::sum(Self) -> Double
+pub fn DsheappairingSlice::to_string(Self) -> String
+
+pub(all) struct DsheappairingTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheappairingTable::add(Self, Self) -> Self
+pub fn DsheappairingTable::copy(Self) -> Self
+pub fn DsheappairingTable::fill(Self, Double) -> Self
+pub fn DsheappairingTable::get(Self, Int32) -> Double
+pub fn DsheappairingTable::len(Self) -> Int32
+pub fn DsheappairingTable::max(Self) -> Double
+pub fn DsheappairingTable::mean(Self) -> Double
+pub fn DsheappairingTable::min(Self) -> Double
+pub fn DsheappairingTable::scale(Self, Double) -> Self
+pub fn DsheappairingTable::set(Self, Int32, Double) -> Self
+pub fn DsheappairingTable::sum(Self) -> Double
+pub fn DsheappairingTable::to_string(Self) -> String
+
+pub(all) struct DsheappairingVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DsheappairingVector::add(Self, Self) -> Self
+pub fn DsheappairingVector::dist(Self, Self) -> Double
+pub fn DsheappairingVector::dot(Self, Self) -> Double
+pub fn DsheappairingVector::norm(Self) -> Double
+pub fn DsheappairingVector::normalize(Self) -> Self
+pub fn DsheappairingVector::scale(Self, Double) -> Self
+pub fn DsheappairingVector::sub(Self, Self) -> Self
+pub fn DsheappairingVector::to_string(Self) -> String
+
+pub(all) struct DsheappairingView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheappairingView::add(Self, Self) -> Self
+pub fn DsheappairingView::copy(Self) -> Self
+pub fn DsheappairingView::fill(Self, Double) -> Self
+pub fn DsheappairingView::get(Self, Int32) -> Double
+pub fn DsheappairingView::len(Self) -> Int32
+pub fn DsheappairingView::max(Self) -> Double
+pub fn DsheappairingView::mean(Self) -> Double
+pub fn DsheappairingView::min(Self) -> Double
+pub fn DsheappairingView::scale(Self, Double) -> Self
+pub fn DsheappairingView::set(Self, Int32, Double) -> Self
+pub fn DsheappairingView::sum(Self) -> Double
+pub fn DsheappairingView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/time_store"
+
+// Values
+pub fn time_store_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn time_store_corr(Array[Double], Array[Double]) -> Double
+
+pub fn time_store_cov(Array[Double], Array[Double]) -> Double
+
+pub fn time_store_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn time_store_mae(Array[Double], Array[Double]) -> Double
+
+pub fn time_store_make_labeled_point(Double, Double, Int32) -> Time_storePoint
+
+pub fn time_store_make_matrix(Int32, Int32, Double) -> Time_storeMatrix
+
+pub fn time_store_make_point(Double, Double) -> Time_storePoint
+
+pub fn time_store_make_series(Array[Double], String) -> Time_storeSeries
+
+pub fn time_store_make_vector(Array[Double]) -> Time_storeVector
+
+pub fn time_store_matrix_add(Time_storeMatrix, Time_storeMatrix) -> Time_storeMatrix
+
+pub fn time_store_matrix_get(Time_storeMatrix, Int32, Int32) -> Double
+
+pub fn time_store_matrix_identity(Int32) -> Time_storeMatrix
+
+pub fn time_store_matrix_multiply(Time_storeMatrix, Time_storeMatrix) -> Time_storeMatrix
+
+pub fn time_store_matrix_norm(Time_storeMatrix) -> Double
+
+pub fn time_store_matrix_scale(Time_storeMatrix, Double) -> Time_storeMatrix
+
+pub fn time_store_matrix_to_string(Time_storeMatrix) -> String
+
+pub fn time_store_matrix_trace(Time_storeMatrix) -> Double
+
+pub fn time_store_matrix_transpose(Time_storeMatrix) -> Time_storeMatrix
+
+pub fn time_store_mse(Array[Double], Array[Double]) -> Double
+
+pub fn time_store_point_add(Time_storePoint, Time_storePoint) -> Time_storePoint
+
+pub fn time_store_point_dist(Time_storePoint, Time_storePoint) -> Double
+
+pub fn time_store_point_dot(Time_storePoint, Time_storePoint) -> Double
+
+pub fn time_store_point_label(Time_storePoint) -> Int32
+
+pub fn time_store_point_norm(Time_storePoint) -> Double
+
+pub fn time_store_point_scale(Time_storePoint, Double) -> Time_storePoint
+
+pub fn time_store_point_sub(Time_storePoint, Time_storePoint) -> Time_storePoint
+
+pub fn time_store_point_to_string(Time_storePoint) -> String
+
+pub fn time_store_point_x(Time_storePoint) -> Double
+
+pub fn time_store_point_y(Time_storePoint) -> Double
+
+pub fn time_store_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn time_store_r2(Array[Double], Array[Double]) -> Double
+
+pub fn time_store_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn time_store_series_add(Time_storeSeries, Time_storeSeries) -> Time_storeSeries
+
+pub fn time_store_series_len(Time_storeSeries) -> Int32
+
+pub fn time_store_series_max(Time_storeSeries) -> Double
+
+pub fn time_store_series_mean(Time_storeSeries) -> Double
+
+pub fn time_store_series_min(Time_storeSeries) -> Double
+
+pub fn time_store_series_scale(Time_storeSeries, Double) -> Time_storeSeries
+
+pub fn time_store_series_std(Time_storeSeries) -> Double
+
+pub fn time_store_series_sum(Time_storeSeries) -> Double
+
+pub fn time_store_series_to_string(Time_storeSeries) -> String
+
+pub fn time_store_series_var(Time_storeSeries) -> Double
+
+pub fn time_store_std(Array[Double]) -> Double
+
+pub fn time_store_var(Array[Double]) -> Double
+
+pub fn time_store_vector_add(Time_storeVector, Time_storeVector) -> Time_storeVector
+
+pub fn time_store_vector_dist(Time_storeVector, Time_storeVector) -> Double
+
+pub fn time_store_vector_dot(Time_storeVector, Time_storeVector) -> Double
+
+pub fn time_store_vector_norm(Time_storeVector) -> Double
+
+pub fn time_store_vector_normalize(Time_storeVector) -> Time_storeVector
+
+pub fn time_store_vector_scale(Time_storeVector, Double) -> Time_storeVector
+
+pub fn time_store_vector_sub(Time_storeVector, Time_storeVector) -> Time_storeVector
+
+pub fn time_store_vector_to_string(Time_storeVector) -> String
+
+pub fn time_store_vector_zero(Int32) -> Time_storeVector
+
+// Errors
+
+// Types and methods
+pub struct Time_storeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Time_storePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Time_storeSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Time_storeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

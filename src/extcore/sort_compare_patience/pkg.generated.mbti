@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_compare_patience"
+
+// Values
+pub fn sort_compare_patience_buffer_make(Int32) -> SortcomparepatienceBuffer
+
+pub fn sort_compare_patience_cluster_make(Int32) -> SortcomparepatienceCluster
+
+pub fn sort_compare_patience_cursor_make(Int32) -> SortcomparepatienceCursor
+
+pub fn sort_compare_patience_edge_make(Int32) -> SortcomparepatienceEdge
+
+pub fn sort_compare_patience_frame_make(Int32) -> SortcomparepatienceFrame
+
+pub fn sort_compare_patience_graphn_make(Int32) -> SortcomparepatienceGraphN
+
+pub fn sort_compare_patience_layer_make(Int32) -> SortcomparepatienceLayer
+
+pub fn sort_compare_patience_make_matrix(Int32, Int32, Double) -> SortcomparepatienceMatrix
+
+pub fn sort_compare_patience_make_point(Double, Double) -> SortcomparepatiencePoint
+
+pub fn sort_compare_patience_make_point3(Double, Double, Double) -> SortcomparepatiencePoint
+
+pub fn sort_compare_patience_make_series(Array[Double], String) -> SortcomparepatienceSeries
+
+pub fn sort_compare_patience_make_vector(Array[Double]) -> SortcomparepatienceVector
+
+pub fn sort_compare_patience_matrix_identity(Int32) -> SortcomparepatienceMatrix
+
+pub fn sort_compare_patience_model_make(Int32) -> SortcomparepatienceModel
+
+pub fn sort_compare_patience_node_make(Int32) -> SortcomparepatienceNode
+
+pub fn sort_compare_patience_path_make(Int32) -> SortcomparepatiencePath
+
+pub fn sort_compare_patience_range_make(Int32) -> SortcomparepatienceRange
+
+pub fn sort_compare_patience_slice_make(Int32) -> SortcomparepatienceSlice
+
+pub fn sort_compare_patience_table_make(Int32) -> SortcomparepatienceTable
+
+pub fn sort_compare_patience_vector_zero(Int32) -> SortcomparepatienceVector
+
+pub fn sort_compare_patience_view_make(Int32) -> SortcomparepatienceView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortcomparepatienceBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparepatienceBuffer::add(Self, Self) -> Self
+pub fn SortcomparepatienceBuffer::copy(Self) -> Self
+pub fn SortcomparepatienceBuffer::fill(Self, Double) -> Self
+pub fn SortcomparepatienceBuffer::get(Self, Int32) -> Double
+pub fn SortcomparepatienceBuffer::len(Self) -> Int32
+pub fn SortcomparepatienceBuffer::max(Self) -> Double
+pub fn SortcomparepatienceBuffer::mean(Self) -> Double
+pub fn SortcomparepatienceBuffer::min(Self) -> Double
+pub fn SortcomparepatienceBuffer::scale(Self, Double) -> Self
+pub fn SortcomparepatienceBuffer::set(Self, Int32, Double) -> Self
+pub fn SortcomparepatienceBuffer::sum(Self) -> Double
+pub fn SortcomparepatienceBuffer::to_string(Self) -> String
+
+pub(all) struct SortcomparepatienceCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparepatienceCluster::add(Self, Self) -> Self
+pub fn SortcomparepatienceCluster::copy(Self) -> Self
+pub fn SortcomparepatienceCluster::fill(Self, Double) -> Self
+pub fn SortcomparepatienceCluster::get(Self, Int32) -> Double
+pub fn SortcomparepatienceCluster::len(Self) -> Int32
+pub fn SortcomparepatienceCluster::max(Self) -> Double
+pub fn SortcomparepatienceCluster::mean(Self) -> Double
+pub fn SortcomparepatienceCluster::min(Self) -> Double
+pub fn SortcomparepatienceCluster::scale(Self, Double) -> Self
+pub fn SortcomparepatienceCluster::set(Self, Int32, Double) -> Self
+pub fn SortcomparepatienceCluster::sum(Self) -> Double
+pub fn SortcomparepatienceCluster::to_string(Self) -> String
+
+pub(all) struct SortcomparepatienceCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparepatienceCursor::add(Self, Self) -> Self
+pub fn SortcomparepatienceCursor::copy(Self) -> Self
+pub fn SortcomparepatienceCursor::fill(Self, Double) -> Self
+pub fn SortcomparepatienceCursor::get(Self, Int32) -> Double
+pub fn SortcomparepatienceCursor::len(Self) -> Int32
+pub fn SortcomparepatienceCursor::max(Self) -> Double
+pub fn SortcomparepatienceCursor::mean(Self) -> Double
+pub fn SortcomparepatienceCursor::min(Self) -> Double
+pub fn SortcomparepatienceCursor::scale(Self, Double) -> Self
+pub fn SortcomparepatienceCursor::set(Self, Int32, Double) -> Self
+pub fn SortcomparepatienceCursor::sum(Self) -> Double
+pub fn SortcomparepatienceCursor::to_string(Self) -> String
+
+pub(all) struct SortcomparepatienceEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparepatienceEdge::add(Self, Self) -> Self
+pub fn SortcomparepatienceEdge::copy(Self) -> Self
+pub fn SortcomparepatienceEdge::fill(Self, Double) -> Self
+pub fn SortcomparepatienceEdge::get(Self, Int32) -> Double
+pub fn SortcomparepatienceEdge::len(Self) -> Int32
+pub fn SortcomparepatienceEdge::max(Self) -> Double
+pub fn SortcomparepatienceEdge::mean(Self) -> Double
+pub fn SortcomparepatienceEdge::min(Self) -> Double
+pub fn SortcomparepatienceEdge::scale(Self, Double) -> Self
+pub fn SortcomparepatienceEdge::set(Self, Int32, Double) -> Self
+pub fn SortcomparepatienceEdge::sum(Self) -> Double
+pub fn SortcomparepatienceEdge::to_string(Self) -> String
+
+pub(all) struct SortcomparepatienceFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparepatienceFrame::add(Self, Self) -> Self
+pub fn SortcomparepatienceFrame::copy(Self) -> Self
+pub fn SortcomparepatienceFrame::fill(Self, Double) -> Self
+pub fn SortcomparepatienceFrame::get(Self, Int32) -> Double
+pub fn SortcomparepatienceFrame::len(Self) -> Int32
+pub fn SortcomparepatienceFrame::max(Self) -> Double
+pub fn SortcomparepatienceFrame::mean(Self) -> Double
+pub fn SortcomparepatienceFrame::min(Self) -> Double
+pub fn SortcomparepatienceFrame::scale(Self, Double) -> Self
+pub fn SortcomparepatienceFrame::set(Self, Int32, Double) -> Self
+pub fn SortcomparepatienceFrame::sum(Self) -> Double
+pub fn SortcomparepatienceFrame::to_string(Self) -> String
+
+pub(all) struct SortcomparepatienceGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparepatienceGraphN::add(Self, Self) -> Self
+pub fn SortcomparepatienceGraphN::copy(Self) -> Self
+pub fn SortcomparepatienceGraphN::fill(Self, Double) -> Self
+pub fn SortcomparepatienceGraphN::get(Self, Int32) -> Double
+pub fn SortcomparepatienceGraphN::len(Self) -> Int32
+pub fn SortcomparepatienceGraphN::max(Self) -> Double
+pub fn SortcomparepatienceGraphN::mean(Self) -> Double
+pub fn SortcomparepatienceGraphN::min(Self) -> Double
+pub fn SortcomparepatienceGraphN::scale(Self, Double) -> Self
+pub fn SortcomparepatienceGraphN::set(Self, Int32, Double) -> Self
+pub fn SortcomparepatienceGraphN::sum(Self) -> Double
+pub fn SortcomparepatienceGraphN::to_string(Self) -> String
+
+pub(all) struct SortcomparepatienceLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparepatienceLayer::add(Self, Self) -> Self
+pub fn SortcomparepatienceLayer::copy(Self) -> Self
+pub fn SortcomparepatienceLayer::fill(Self, Double) -> Self
+pub fn SortcomparepatienceLayer::get(Self, Int32) -> Double
+pub fn SortcomparepatienceLayer::len(Self) -> Int32
+pub fn SortcomparepatienceLayer::max(Self) -> Double
+pub fn SortcomparepatienceLayer::mean(Self) -> Double
+pub fn SortcomparepatienceLayer::min(Self) -> Double
+pub fn SortcomparepatienceLayer::scale(Self, Double) -> Self
+pub fn SortcomparepatienceLayer::set(Self, Int32, Double) -> Self
+pub fn SortcomparepatienceLayer::sum(Self) -> Double
+pub fn SortcomparepatienceLayer::to_string(Self) -> String
+
+pub(all) struct SortcomparepatienceMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortcomparepatienceMatrix::add(Self, Self) -> Self
+pub fn SortcomparepatienceMatrix::det(Self) -> Double
+pub fn SortcomparepatienceMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortcomparepatienceMatrix::multiply(Self, Self) -> Self
+pub fn SortcomparepatienceMatrix::norm(Self) -> Double
+pub fn SortcomparepatienceMatrix::scale(Self, Double) -> Self
+pub fn SortcomparepatienceMatrix::to_string(Self) -> String
+pub fn SortcomparepatienceMatrix::trace(Self) -> Double
+pub fn SortcomparepatienceMatrix::transpose(Self) -> Self
+
+pub(all) struct SortcomparepatienceModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparepatienceModel::add(Self, Self) -> Self
+pub fn SortcomparepatienceModel::copy(Self) -> Self
+pub fn SortcomparepatienceModel::fill(Self, Double) -> Self
+pub fn SortcomparepatienceModel::get(Self, Int32) -> Double
+pub fn SortcomparepatienceModel::len(Self) -> Int32
+pub fn SortcomparepatienceModel::max(Self) -> Double
+pub fn SortcomparepatienceModel::mean(Self) -> Double
+pub fn SortcomparepatienceModel::min(Self) -> Double
+pub fn SortcomparepatienceModel::scale(Self, Double) -> Self
+pub fn SortcomparepatienceModel::set(Self, Int32, Double) -> Self
+pub fn SortcomparepatienceModel::sum(Self) -> Double
+pub fn SortcomparepatienceModel::to_string(Self) -> String
+
+pub(all) struct SortcomparepatienceNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparepatienceNode::add(Self, Self) -> Self
+pub fn SortcomparepatienceNode::copy(Self) -> Self
+pub fn SortcomparepatienceNode::fill(Self, Double) -> Self
+pub fn SortcomparepatienceNode::get(Self, Int32) -> Double
+pub fn SortcomparepatienceNode::len(Self) -> Int32
+pub fn SortcomparepatienceNode::max(Self) -> Double
+pub fn SortcomparepatienceNode::mean(Self) -> Double
+pub fn SortcomparepatienceNode::min(Self) -> Double
+pub fn SortcomparepatienceNode::scale(Self, Double) -> Self
+pub fn SortcomparepatienceNode::set(Self, Int32, Double) -> Self
+pub fn SortcomparepatienceNode::sum(Self) -> Double
+pub fn SortcomparepatienceNode::to_string(Self) -> String
+
+pub(all) struct SortcomparepatiencePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparepatiencePath::add(Self, Self) -> Self
+pub fn SortcomparepatiencePath::copy(Self) -> Self
+pub fn SortcomparepatiencePath::fill(Self, Double) -> Self
+pub fn SortcomparepatiencePath::get(Self, Int32) -> Double
+pub fn SortcomparepatiencePath::len(Self) -> Int32
+pub fn SortcomparepatiencePath::max(Self) -> Double
+pub fn SortcomparepatiencePath::mean(Self) -> Double
+pub fn SortcomparepatiencePath::min(Self) -> Double
+pub fn SortcomparepatiencePath::scale(Self, Double) -> Self
+pub fn SortcomparepatiencePath::set(Self, Int32, Double) -> Self
+pub fn SortcomparepatiencePath::sum(Self) -> Double
+pub fn SortcomparepatiencePath::to_string(Self) -> String
+
+pub(all) struct SortcomparepatiencePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortcomparepatiencePoint::add(Self, Self) -> Self
+pub fn SortcomparepatiencePoint::cross(Self, Self) -> Self
+pub fn SortcomparepatiencePoint::dist(Self, Self) -> Double
+pub fn SortcomparepatiencePoint::dot(Self, Self) -> Double
+pub fn SortcomparepatiencePoint::label(Self) -> Int32
+pub fn SortcomparepatiencePoint::lerp(Self, Self, Double) -> Self
+pub fn SortcomparepatiencePoint::mid(Self, Self) -> Self
+pub fn SortcomparepatiencePoint::negate(Self) -> Self
+pub fn SortcomparepatiencePoint::norm(Self) -> Double
+pub fn SortcomparepatiencePoint::normalize(Self) -> Self
+pub fn SortcomparepatiencePoint::scale(Self, Double) -> Self
+pub fn SortcomparepatiencePoint::sub(Self, Self) -> Self
+pub fn SortcomparepatiencePoint::to_string(Self) -> String
+pub fn SortcomparepatiencePoint::x(Self) -> Double
+pub fn SortcomparepatiencePoint::y(Self) -> Double
+pub fn SortcomparepatiencePoint::z(Self) -> Double
+
+pub(all) struct SortcomparepatienceRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparepatienceRange::add(Self, Self) -> Self
+pub fn SortcomparepatienceRange::copy(Self) -> Self
+pub fn SortcomparepatienceRange::fill(Self, Double) -> Self
+pub fn SortcomparepatienceRange::get(Self, Int32) -> Double
+pub fn SortcomparepatienceRange::len(Self) -> Int32
+pub fn SortcomparepatienceRange::max(Self) -> Double
+pub fn SortcomparepatienceRange::mean(Self) -> Double
+pub fn SortcomparepatienceRange::min(Self) -> Double
+pub fn SortcomparepatienceRange::scale(Self, Double) -> Self
+pub fn SortcomparepatienceRange::set(Self, Int32, Double) -> Self
+pub fn SortcomparepatienceRange::sum(Self) -> Double
+pub fn SortcomparepatienceRange::to_string(Self) -> String
+
+pub(all) struct SortcomparepatienceSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortcomparepatienceSeries::add(Self, Self) -> Self
+pub fn SortcomparepatienceSeries::cumsum(Self) -> Self
+pub fn SortcomparepatienceSeries::len(Self) -> Int32
+pub fn SortcomparepatienceSeries::max(Self) -> Double
+pub fn SortcomparepatienceSeries::mean(Self) -> Double
+pub fn SortcomparepatienceSeries::median(Self) -> Double
+pub fn SortcomparepatienceSeries::min(Self) -> Double
+pub fn SortcomparepatienceSeries::normalize(Self) -> Self
+pub fn SortcomparepatienceSeries::range(Self) -> Double
+pub fn SortcomparepatienceSeries::scale(Self, Double) -> Self
+pub fn SortcomparepatienceSeries::std(Self) -> Double
+pub fn SortcomparepatienceSeries::sub(Self, Self) -> Self
+pub fn SortcomparepatienceSeries::sum(Self) -> Double
+pub fn SortcomparepatienceSeries::to_string(Self) -> String
+pub fn SortcomparepatienceSeries::variance(Self) -> Double
+
+pub(all) struct SortcomparepatienceSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparepatienceSlice::add(Self, Self) -> Self
+pub fn SortcomparepatienceSlice::copy(Self) -> Self
+pub fn SortcomparepatienceSlice::fill(Self, Double) -> Self
+pub fn SortcomparepatienceSlice::get(Self, Int32) -> Double
+pub fn SortcomparepatienceSlice::len(Self) -> Int32
+pub fn SortcomparepatienceSlice::max(Self) -> Double
+pub fn SortcomparepatienceSlice::mean(Self) -> Double
+pub fn SortcomparepatienceSlice::min(Self) -> Double
+pub fn SortcomparepatienceSlice::scale(Self, Double) -> Self
+pub fn SortcomparepatienceSlice::set(Self, Int32, Double) -> Self
+pub fn SortcomparepatienceSlice::sum(Self) -> Double
+pub fn SortcomparepatienceSlice::to_string(Self) -> String
+
+pub(all) struct SortcomparepatienceTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparepatienceTable::add(Self, Self) -> Self
+pub fn SortcomparepatienceTable::copy(Self) -> Self
+pub fn SortcomparepatienceTable::fill(Self, Double) -> Self
+pub fn SortcomparepatienceTable::get(Self, Int32) -> Double
+pub fn SortcomparepatienceTable::len(Self) -> Int32
+pub fn SortcomparepatienceTable::max(Self) -> Double
+pub fn SortcomparepatienceTable::mean(Self) -> Double
+pub fn SortcomparepatienceTable::min(Self) -> Double
+pub fn SortcomparepatienceTable::scale(Self, Double) -> Self
+pub fn SortcomparepatienceTable::set(Self, Int32, Double) -> Self
+pub fn SortcomparepatienceTable::sum(Self) -> Double
+pub fn SortcomparepatienceTable::to_string(Self) -> String
+
+pub(all) struct SortcomparepatienceVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortcomparepatienceVector::add(Self, Self) -> Self
+pub fn SortcomparepatienceVector::dist(Self, Self) -> Double
+pub fn SortcomparepatienceVector::dot(Self, Self) -> Double
+pub fn SortcomparepatienceVector::norm(Self) -> Double
+pub fn SortcomparepatienceVector::normalize(Self) -> Self
+pub fn SortcomparepatienceVector::scale(Self, Double) -> Self
+pub fn SortcomparepatienceVector::sub(Self, Self) -> Self
+pub fn SortcomparepatienceVector::to_string(Self) -> String
+
+pub(all) struct SortcomparepatienceView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparepatienceView::add(Self, Self) -> Self
+pub fn SortcomparepatienceView::copy(Self) -> Self
+pub fn SortcomparepatienceView::fill(Self, Double) -> Self
+pub fn SortcomparepatienceView::get(Self, Int32) -> Double
+pub fn SortcomparepatienceView::len(Self) -> Int32
+pub fn SortcomparepatienceView::max(Self) -> Double
+pub fn SortcomparepatienceView::mean(Self) -> Double
+pub fn SortcomparepatienceView::min(Self) -> Double
+pub fn SortcomparepatienceView::scale(Self, Double) -> Self
+pub fn SortcomparepatienceView::set(Self, Int32, Double) -> Self
+pub fn SortcomparepatienceView::sum(Self) -> Double
+pub fn SortcomparepatienceView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

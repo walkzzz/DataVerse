@@ -1,0 +1,41 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/ensemble"
+
+// Values
+pub fn adaboost_alpha(Double) -> Double
+
+pub fn adaboost_error_rate(Array[Double], Array[Int32], Array[Int32]) -> Double
+
+pub fn adaboost_update_weights(Array[Double], Array[Int32], Array[Int32], Double) -> Array[Double]
+
+pub fn aggregate_feature_importance(Array[Array[Double]]) -> Array[Double]
+
+pub fn bagging_predict(Array[Array[Double]]) -> Array[Double]
+
+pub fn bootstrap_sample(Array[Double], Int32) -> Array[Double]
+
+pub fn compute_residuals(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn ensemble_id() -> String
+
+pub fn gradient_boosting_update(Array[Double], Array[Double], Double) -> Array[Double]
+
+pub fn hard_voting(Array[Array[Int32]]) -> Array[Int32]
+
+pub fn random_forest_classify(Array[Array[Int32]]) -> Array[Int32]
+
+pub fn random_forest_predict(Array[Array[Double]]) -> Array[Double]
+
+pub fn soft_voting(Array[Array[Array[Double]]]) -> Array[Array[Double]]
+
+pub fn stacking_predict(Array[Array[Double]], Array[Double]) -> Array[Double]
+
+pub fn weighted_voting(Array[Array[Int32]], Array[Double]) -> Array[Int32]
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

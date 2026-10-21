@@ -1,0 +1,174 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/computer_vision"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn computer_vision_id() -> String
+
+pub fn cv_adaptive_threshold(CVImage, Int32, Double) -> CVImage
+
+pub fn cv_bilateral_filter(CVImage, Int32, Double, Double) -> CVImage
+
+pub fn cv_bounding_rect(Array[(Int32, Int32)]) -> (Int32, Int32, Int32, Int32)
+
+pub fn cv_box_blur(CVImage, Int32) -> CVImage
+
+pub fn cv_canny(CVImage, Double, Double) -> CVImage
+
+pub fn cv_channels(CVImage) -> Int32
+
+pub fn cv_clahe(CVImage, Double, Int32) -> CVImage
+
+pub fn cv_classification_simple(CVImage, Int32) -> Int32
+
+pub fn cv_connected_components(CVImage, Int32) -> CVImage
+
+pub fn cv_contour_area(Array[(Int32, Int32)]) -> Double
+
+pub fn cv_contours(CVImage) -> Array[Array[(Int32, Int32)]]
+
+pub fn cv_corners_fast(CVImage, Double) -> Array[(Int32, Int32)]
+
+pub fn cv_corners_good(CVImage, Int32, Double) -> Array[(Int32, Int32)]
+
+pub fn cv_corners_harris(CVImage, Double, Double) -> Array[(Int32, Int32, Double)]
+
+pub fn cv_correlation_match(CVImage, CVImage) -> Double
+
+pub fn cv_crop(CVImage, Int32, Int32, Int32, Int32) -> CVImage
+
+pub fn cv_depth_from_stereo(CVImage, Double, Double) -> CVImage
+
+pub fn cv_descriptors_match(Array[Array[Double]], Array[Array[Double]]) -> Array[(Int32, Int32)]
+
+pub fn cv_detection_simple(CVImage, Double) -> Array[(Int32, Int32, Int32, Int32)]
+
+pub fn cv_draw_contours(CVImage, Array[Array[(Int32, Int32)]], Double) -> CVImage
+
+pub fn cv_features_orb_simple(CVImage) -> Array[(Int32, Int32)]
+
+pub fn cv_features_sift_simple(CVImage) -> Array[(Int32, Int32, Double)]
+
+pub fn cv_features_surf_simple(CVImage) -> Array[(Int32, Int32, Double)]
+
+pub fn cv_find_contours(CVImage) -> Array[Array[(Int32, Int32)]]
+
+pub fn cv_fit_ellipse(Array[(Int32, Int32)]) -> (Double, Double, Double, Double, Double)
+
+pub fn cv_flip_h(CVImage) -> CVImage
+
+pub fn cv_flip_v(CVImage) -> CVImage
+
+pub fn cv_gaussian_blur(CVImage, Int32, Double) -> CVImage
+
+pub fn cv_get_affine(Array[(Double, Double)], Array[(Double, Double)]) -> Array[Double]
+
+pub fn cv_get_perspective(Array[(Double, Double)], Array[(Double, Double)]) -> Array[Double]
+
+pub fn cv_grayscale(CVImage) -> CVImage
+
+pub fn cv_height(CVImage) -> Int32
+
+pub fn cv_hist_equalize(CVImage) -> CVImage
+
+pub fn cv_histogram(CVImage, Int32) -> Array[Double]
+
+pub fn cv_hough_circles(CVImage, Int32, Int32, Double) -> Array[(Double, Double, Double)]
+
+pub fn cv_hough_lines(CVImage, Double) -> Array[(Double, Double)]
+
+pub fn cv_knn_match(Array[Array[Double]], Array[Array[Double]], Int32) -> Array[Array[Int32]]
+
+pub fn cv_label(CVImage) -> CVImage
+
+pub fn cv_laplacian(CVImage, Int32) -> CVImage
+
+pub fn cv_match_template(CVImage, CVImage) -> (Int32, Int32, Double)
+
+pub fn cv_median_blur(CVImage, Int32) -> CVImage
+
+pub fn cv_min_area_rect(Array[(Int32, Int32)]) -> ((Double, Double), (Double, Double), Double)
+
+pub fn cv_morphology_close(CVImage, Int32) -> CVImage
+
+pub fn cv_morphology_dilate(CVImage, Int32) -> CVImage
+
+pub fn cv_morphology_erode(CVImage, Int32) -> CVImage
+
+pub fn cv_morphology_open(CVImage, Int32) -> CVImage
+
+pub fn cv_mse_cv(CVImage, CVImage) -> Double
+
+pub fn cv_nms(Array[(Int32, Int32, Int32, Int32)], Array[Double], Double) -> Array[Int32]
+
+pub fn cv_object_detect_haar(CVImage, Double, Int32) -> Array[(Int32, Int32, Int32, Int32)]
+
+pub fn cv_object_detect_hog(CVImage) -> Array[(Int32, Int32, Int32, Int32)]
+
+pub fn cv_optical_flow(CVImage, CVImage) -> Array[(Int32, Int32, Double, Double)]
+
+pub fn cv_pad(CVImage, Int32, Int32, Int32, Int32, Double) -> CVImage
+
+pub fn cv_pixel(CVImage, Int32, Int32, Int32) -> Double
+
+pub fn cv_point_cloud_from_depth(CVImage, Double, Double, Double, Double) -> Array[(Double, Double, Double)]
+
+pub fn cv_psnr(CVImage, CVImage) -> Double
+
+pub fn cv_ransac(Array[(Double, Double)], Array[(Double, Double)], Double, Int32) -> Int32
+
+pub fn cv_region_props(CVImage, Double) -> (Int32, Double, Double, Double)
+
+pub fn cv_resize(CVImage, Int32, Int32, Int32) -> CVImage
+
+pub fn cv_resize_bicubic(CVImage, Int32, Int32) -> CVImage
+
+pub fn cv_resize_bilinear(CVImage, Int32, Int32) -> CVImage
+
+pub fn cv_resize_nearest(CVImage, Int32, Int32) -> CVImage
+
+pub fn cv_rotate(CVImage, Double) -> CVImage
+
+pub fn cv_segmentation_simple(CVImage, Int32) -> CVImage
+
+pub fn cv_sobel(CVImage, Int32, Int32, Int32) -> CVImage
+
+pub fn cv_ssim(CVImage, CVImage) -> Double
+
+pub fn cv_stereo_disparity(CVImage, CVImage, Int32) -> CVImage
+
+pub fn cv_template_match(CVImage, CVImage, Int32) -> (Int32, Int32, Double)
+
+pub fn cv_threshold_cv(CVImage, Double, Double) -> CVImage
+
+pub fn cv_track_farneback(CVImage, CVImage) -> Array[(Int32, Int32, Double, Double)]
+
+pub fn cv_track_lucas_kanade(CVImage, CVImage, Array[(Int32, Int32)]) -> Array[(Int32, Int32)]
+
+pub fn cv_warp_affine(CVImage, Array[Double]) -> CVImage
+
+pub fn cv_warp_perspective(CVImage, Array[Double]) -> CVImage
+
+pub fn cv_width(CVImage) -> Int32
+
+pub fn make_image_cv(Int32, Int32, Int32, Array[Double]) -> CVImage
+
+// Errors
+
+// Types and methods
+pub struct CVImage {
+  width : Int32
+  height : Int32
+  channels : Int32
+  data : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn CVImage::equal(Self, Self) -> Bool
+pub fn CVImage::not_equal(Self, Self) -> Bool
+pub fn CVImage::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

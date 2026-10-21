@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_heat_steady"
+
+// Values
+pub fn physics_heat_steady_buffer_make(Int32) -> PhysicsheatsteadyBuffer
+
+pub fn physics_heat_steady_cluster_make(Int32) -> PhysicsheatsteadyCluster
+
+pub fn physics_heat_steady_cursor_make(Int32) -> PhysicsheatsteadyCursor
+
+pub fn physics_heat_steady_edge_make(Int32) -> PhysicsheatsteadyEdge
+
+pub fn physics_heat_steady_frame_make(Int32) -> PhysicsheatsteadyFrame
+
+pub fn physics_heat_steady_graphn_make(Int32) -> PhysicsheatsteadyGraphN
+
+pub fn physics_heat_steady_layer_make(Int32) -> PhysicsheatsteadyLayer
+
+pub fn physics_heat_steady_make_matrix(Int32, Int32, Double) -> PhysicsheatsteadyMatrix
+
+pub fn physics_heat_steady_make_point(Double, Double) -> PhysicsheatsteadyPoint
+
+pub fn physics_heat_steady_make_point3(Double, Double, Double) -> PhysicsheatsteadyPoint
+
+pub fn physics_heat_steady_make_series(Array[Double], String) -> PhysicsheatsteadySeries
+
+pub fn physics_heat_steady_make_vector(Array[Double]) -> PhysicsheatsteadyVector
+
+pub fn physics_heat_steady_matrix_identity(Int32) -> PhysicsheatsteadyMatrix
+
+pub fn physics_heat_steady_model_make(Int32) -> PhysicsheatsteadyModel
+
+pub fn physics_heat_steady_node_make(Int32) -> PhysicsheatsteadyNode
+
+pub fn physics_heat_steady_path_make(Int32) -> PhysicsheatsteadyPath
+
+pub fn physics_heat_steady_range_make(Int32) -> PhysicsheatsteadyRange
+
+pub fn physics_heat_steady_slice_make(Int32) -> PhysicsheatsteadySlice
+
+pub fn physics_heat_steady_table_make(Int32) -> PhysicsheatsteadyTable
+
+pub fn physics_heat_steady_vector_zero(Int32) -> PhysicsheatsteadyVector
+
+pub fn physics_heat_steady_view_make(Int32) -> PhysicsheatsteadyView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsheatsteadyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsteadyBuffer::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyBuffer::copy(Self) -> Self
+pub fn PhysicsheatsteadyBuffer::fill(Self, Double) -> Self
+pub fn PhysicsheatsteadyBuffer::get(Self, Int32) -> Double
+pub fn PhysicsheatsteadyBuffer::len(Self) -> Int32
+pub fn PhysicsheatsteadyBuffer::max(Self) -> Double
+pub fn PhysicsheatsteadyBuffer::mean(Self) -> Double
+pub fn PhysicsheatsteadyBuffer::min(Self) -> Double
+pub fn PhysicsheatsteadyBuffer::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsteadyBuffer::sum(Self) -> Double
+pub fn PhysicsheatsteadyBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsteadyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsteadyCluster::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyCluster::copy(Self) -> Self
+pub fn PhysicsheatsteadyCluster::fill(Self, Double) -> Self
+pub fn PhysicsheatsteadyCluster::get(Self, Int32) -> Double
+pub fn PhysicsheatsteadyCluster::len(Self) -> Int32
+pub fn PhysicsheatsteadyCluster::max(Self) -> Double
+pub fn PhysicsheatsteadyCluster::mean(Self) -> Double
+pub fn PhysicsheatsteadyCluster::min(Self) -> Double
+pub fn PhysicsheatsteadyCluster::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsteadyCluster::sum(Self) -> Double
+pub fn PhysicsheatsteadyCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsteadyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsteadyCursor::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyCursor::copy(Self) -> Self
+pub fn PhysicsheatsteadyCursor::fill(Self, Double) -> Self
+pub fn PhysicsheatsteadyCursor::get(Self, Int32) -> Double
+pub fn PhysicsheatsteadyCursor::len(Self) -> Int32
+pub fn PhysicsheatsteadyCursor::max(Self) -> Double
+pub fn PhysicsheatsteadyCursor::mean(Self) -> Double
+pub fn PhysicsheatsteadyCursor::min(Self) -> Double
+pub fn PhysicsheatsteadyCursor::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsteadyCursor::sum(Self) -> Double
+pub fn PhysicsheatsteadyCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsteadyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsteadyEdge::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyEdge::copy(Self) -> Self
+pub fn PhysicsheatsteadyEdge::fill(Self, Double) -> Self
+pub fn PhysicsheatsteadyEdge::get(Self, Int32) -> Double
+pub fn PhysicsheatsteadyEdge::len(Self) -> Int32
+pub fn PhysicsheatsteadyEdge::max(Self) -> Double
+pub fn PhysicsheatsteadyEdge::mean(Self) -> Double
+pub fn PhysicsheatsteadyEdge::min(Self) -> Double
+pub fn PhysicsheatsteadyEdge::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsteadyEdge::sum(Self) -> Double
+pub fn PhysicsheatsteadyEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsteadyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsteadyFrame::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyFrame::copy(Self) -> Self
+pub fn PhysicsheatsteadyFrame::fill(Self, Double) -> Self
+pub fn PhysicsheatsteadyFrame::get(Self, Int32) -> Double
+pub fn PhysicsheatsteadyFrame::len(Self) -> Int32
+pub fn PhysicsheatsteadyFrame::max(Self) -> Double
+pub fn PhysicsheatsteadyFrame::mean(Self) -> Double
+pub fn PhysicsheatsteadyFrame::min(Self) -> Double
+pub fn PhysicsheatsteadyFrame::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsteadyFrame::sum(Self) -> Double
+pub fn PhysicsheatsteadyFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsteadyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsteadyGraphN::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyGraphN::copy(Self) -> Self
+pub fn PhysicsheatsteadyGraphN::fill(Self, Double) -> Self
+pub fn PhysicsheatsteadyGraphN::get(Self, Int32) -> Double
+pub fn PhysicsheatsteadyGraphN::len(Self) -> Int32
+pub fn PhysicsheatsteadyGraphN::max(Self) -> Double
+pub fn PhysicsheatsteadyGraphN::mean(Self) -> Double
+pub fn PhysicsheatsteadyGraphN::min(Self) -> Double
+pub fn PhysicsheatsteadyGraphN::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsteadyGraphN::sum(Self) -> Double
+pub fn PhysicsheatsteadyGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsteadyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsteadyLayer::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyLayer::copy(Self) -> Self
+pub fn PhysicsheatsteadyLayer::fill(Self, Double) -> Self
+pub fn PhysicsheatsteadyLayer::get(Self, Int32) -> Double
+pub fn PhysicsheatsteadyLayer::len(Self) -> Int32
+pub fn PhysicsheatsteadyLayer::max(Self) -> Double
+pub fn PhysicsheatsteadyLayer::mean(Self) -> Double
+pub fn PhysicsheatsteadyLayer::min(Self) -> Double
+pub fn PhysicsheatsteadyLayer::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsteadyLayer::sum(Self) -> Double
+pub fn PhysicsheatsteadyLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsteadyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsheatsteadyMatrix::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyMatrix::det(Self) -> Double
+pub fn PhysicsheatsteadyMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsheatsteadyMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsheatsteadyMatrix::norm(Self) -> Double
+pub fn PhysicsheatsteadyMatrix::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyMatrix::to_string(Self) -> String
+pub fn PhysicsheatsteadyMatrix::trace(Self) -> Double
+pub fn PhysicsheatsteadyMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsheatsteadyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsteadyModel::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyModel::copy(Self) -> Self
+pub fn PhysicsheatsteadyModel::fill(Self, Double) -> Self
+pub fn PhysicsheatsteadyModel::get(Self, Int32) -> Double
+pub fn PhysicsheatsteadyModel::len(Self) -> Int32
+pub fn PhysicsheatsteadyModel::max(Self) -> Double
+pub fn PhysicsheatsteadyModel::mean(Self) -> Double
+pub fn PhysicsheatsteadyModel::min(Self) -> Double
+pub fn PhysicsheatsteadyModel::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsteadyModel::sum(Self) -> Double
+pub fn PhysicsheatsteadyModel::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsteadyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsteadyNode::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyNode::copy(Self) -> Self
+pub fn PhysicsheatsteadyNode::fill(Self, Double) -> Self
+pub fn PhysicsheatsteadyNode::get(Self, Int32) -> Double
+pub fn PhysicsheatsteadyNode::len(Self) -> Int32
+pub fn PhysicsheatsteadyNode::max(Self) -> Double
+pub fn PhysicsheatsteadyNode::mean(Self) -> Double
+pub fn PhysicsheatsteadyNode::min(Self) -> Double
+pub fn PhysicsheatsteadyNode::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsteadyNode::sum(Self) -> Double
+pub fn PhysicsheatsteadyNode::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsteadyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsteadyPath::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyPath::copy(Self) -> Self
+pub fn PhysicsheatsteadyPath::fill(Self, Double) -> Self
+pub fn PhysicsheatsteadyPath::get(Self, Int32) -> Double
+pub fn PhysicsheatsteadyPath::len(Self) -> Int32
+pub fn PhysicsheatsteadyPath::max(Self) -> Double
+pub fn PhysicsheatsteadyPath::mean(Self) -> Double
+pub fn PhysicsheatsteadyPath::min(Self) -> Double
+pub fn PhysicsheatsteadyPath::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsteadyPath::sum(Self) -> Double
+pub fn PhysicsheatsteadyPath::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsteadyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsheatsteadyPoint::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyPoint::cross(Self, Self) -> Self
+pub fn PhysicsheatsteadyPoint::dist(Self, Self) -> Double
+pub fn PhysicsheatsteadyPoint::dot(Self, Self) -> Double
+pub fn PhysicsheatsteadyPoint::label(Self) -> Int32
+pub fn PhysicsheatsteadyPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsheatsteadyPoint::mid(Self, Self) -> Self
+pub fn PhysicsheatsteadyPoint::negate(Self) -> Self
+pub fn PhysicsheatsteadyPoint::norm(Self) -> Double
+pub fn PhysicsheatsteadyPoint::normalize(Self) -> Self
+pub fn PhysicsheatsteadyPoint::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyPoint::sub(Self, Self) -> Self
+pub fn PhysicsheatsteadyPoint::to_string(Self) -> String
+pub fn PhysicsheatsteadyPoint::x(Self) -> Double
+pub fn PhysicsheatsteadyPoint::y(Self) -> Double
+pub fn PhysicsheatsteadyPoint::z(Self) -> Double
+
+pub(all) struct PhysicsheatsteadyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsteadyRange::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyRange::copy(Self) -> Self
+pub fn PhysicsheatsteadyRange::fill(Self, Double) -> Self
+pub fn PhysicsheatsteadyRange::get(Self, Int32) -> Double
+pub fn PhysicsheatsteadyRange::len(Self) -> Int32
+pub fn PhysicsheatsteadyRange::max(Self) -> Double
+pub fn PhysicsheatsteadyRange::mean(Self) -> Double
+pub fn PhysicsheatsteadyRange::min(Self) -> Double
+pub fn PhysicsheatsteadyRange::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsteadyRange::sum(Self) -> Double
+pub fn PhysicsheatsteadyRange::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsteadySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsheatsteadySeries::add(Self, Self) -> Self
+pub fn PhysicsheatsteadySeries::cumsum(Self) -> Self
+pub fn PhysicsheatsteadySeries::len(Self) -> Int32
+pub fn PhysicsheatsteadySeries::max(Self) -> Double
+pub fn PhysicsheatsteadySeries::mean(Self) -> Double
+pub fn PhysicsheatsteadySeries::median(Self) -> Double
+pub fn PhysicsheatsteadySeries::min(Self) -> Double
+pub fn PhysicsheatsteadySeries::normalize(Self) -> Self
+pub fn PhysicsheatsteadySeries::range(Self) -> Double
+pub fn PhysicsheatsteadySeries::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadySeries::std(Self) -> Double
+pub fn PhysicsheatsteadySeries::sub(Self, Self) -> Self
+pub fn PhysicsheatsteadySeries::sum(Self) -> Double
+pub fn PhysicsheatsteadySeries::to_string(Self) -> String
+pub fn PhysicsheatsteadySeries::variance(Self) -> Double
+
+pub(all) struct PhysicsheatsteadySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsteadySlice::add(Self, Self) -> Self
+pub fn PhysicsheatsteadySlice::copy(Self) -> Self
+pub fn PhysicsheatsteadySlice::fill(Self, Double) -> Self
+pub fn PhysicsheatsteadySlice::get(Self, Int32) -> Double
+pub fn PhysicsheatsteadySlice::len(Self) -> Int32
+pub fn PhysicsheatsteadySlice::max(Self) -> Double
+pub fn PhysicsheatsteadySlice::mean(Self) -> Double
+pub fn PhysicsheatsteadySlice::min(Self) -> Double
+pub fn PhysicsheatsteadySlice::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadySlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsteadySlice::sum(Self) -> Double
+pub fn PhysicsheatsteadySlice::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsteadyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsteadyTable::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyTable::copy(Self) -> Self
+pub fn PhysicsheatsteadyTable::fill(Self, Double) -> Self
+pub fn PhysicsheatsteadyTable::get(Self, Int32) -> Double
+pub fn PhysicsheatsteadyTable::len(Self) -> Int32
+pub fn PhysicsheatsteadyTable::max(Self) -> Double
+pub fn PhysicsheatsteadyTable::mean(Self) -> Double
+pub fn PhysicsheatsteadyTable::min(Self) -> Double
+pub fn PhysicsheatsteadyTable::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsteadyTable::sum(Self) -> Double
+pub fn PhysicsheatsteadyTable::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsteadyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsheatsteadyVector::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyVector::dist(Self, Self) -> Double
+pub fn PhysicsheatsteadyVector::dot(Self, Self) -> Double
+pub fn PhysicsheatsteadyVector::norm(Self) -> Double
+pub fn PhysicsheatsteadyVector::normalize(Self) -> Self
+pub fn PhysicsheatsteadyVector::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyVector::sub(Self, Self) -> Self
+pub fn PhysicsheatsteadyVector::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsteadyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsteadyView::add(Self, Self) -> Self
+pub fn PhysicsheatsteadyView::copy(Self) -> Self
+pub fn PhysicsheatsteadyView::fill(Self, Double) -> Self
+pub fn PhysicsheatsteadyView::get(Self, Int32) -> Double
+pub fn PhysicsheatsteadyView::len(Self) -> Int32
+pub fn PhysicsheatsteadyView::max(Self) -> Double
+pub fn PhysicsheatsteadyView::mean(Self) -> Double
+pub fn PhysicsheatsteadyView::min(Self) -> Double
+pub fn PhysicsheatsteadyView::scale(Self, Double) -> Self
+pub fn PhysicsheatsteadyView::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsteadyView::sum(Self) -> Double
+pub fn PhysicsheatsteadyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

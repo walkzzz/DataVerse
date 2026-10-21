@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/robotics_sim"
+
+// Values
+pub fn robotics_sim_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn robotics_sim_corr(Array[Double], Array[Double]) -> Double
+
+pub fn robotics_sim_cov(Array[Double], Array[Double]) -> Double
+
+pub fn robotics_sim_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn robotics_sim_mae(Array[Double], Array[Double]) -> Double
+
+pub fn robotics_sim_make_labeled_point(Double, Double, Int32) -> Robotics_simPoint
+
+pub fn robotics_sim_make_matrix(Int32, Int32, Double) -> Robotics_simMatrix
+
+pub fn robotics_sim_make_point(Double, Double) -> Robotics_simPoint
+
+pub fn robotics_sim_make_series(Array[Double], String) -> Robotics_simSeries
+
+pub fn robotics_sim_make_vector(Array[Double]) -> Robotics_simVector
+
+pub fn robotics_sim_matrix_add(Robotics_simMatrix, Robotics_simMatrix) -> Robotics_simMatrix
+
+pub fn robotics_sim_matrix_get(Robotics_simMatrix, Int32, Int32) -> Double
+
+pub fn robotics_sim_matrix_identity(Int32) -> Robotics_simMatrix
+
+pub fn robotics_sim_matrix_multiply(Robotics_simMatrix, Robotics_simMatrix) -> Robotics_simMatrix
+
+pub fn robotics_sim_matrix_norm(Robotics_simMatrix) -> Double
+
+pub fn robotics_sim_matrix_scale(Robotics_simMatrix, Double) -> Robotics_simMatrix
+
+pub fn robotics_sim_matrix_to_string(Robotics_simMatrix) -> String
+
+pub fn robotics_sim_matrix_trace(Robotics_simMatrix) -> Double
+
+pub fn robotics_sim_matrix_transpose(Robotics_simMatrix) -> Robotics_simMatrix
+
+pub fn robotics_sim_mse(Array[Double], Array[Double]) -> Double
+
+pub fn robotics_sim_point_add(Robotics_simPoint, Robotics_simPoint) -> Robotics_simPoint
+
+pub fn robotics_sim_point_dist(Robotics_simPoint, Robotics_simPoint) -> Double
+
+pub fn robotics_sim_point_dot(Robotics_simPoint, Robotics_simPoint) -> Double
+
+pub fn robotics_sim_point_label(Robotics_simPoint) -> Int32
+
+pub fn robotics_sim_point_norm(Robotics_simPoint) -> Double
+
+pub fn robotics_sim_point_scale(Robotics_simPoint, Double) -> Robotics_simPoint
+
+pub fn robotics_sim_point_sub(Robotics_simPoint, Robotics_simPoint) -> Robotics_simPoint
+
+pub fn robotics_sim_point_to_string(Robotics_simPoint) -> String
+
+pub fn robotics_sim_point_x(Robotics_simPoint) -> Double
+
+pub fn robotics_sim_point_y(Robotics_simPoint) -> Double
+
+pub fn robotics_sim_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn robotics_sim_r2(Array[Double], Array[Double]) -> Double
+
+pub fn robotics_sim_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn robotics_sim_series_add(Robotics_simSeries, Robotics_simSeries) -> Robotics_simSeries
+
+pub fn robotics_sim_series_len(Robotics_simSeries) -> Int32
+
+pub fn robotics_sim_series_max(Robotics_simSeries) -> Double
+
+pub fn robotics_sim_series_mean(Robotics_simSeries) -> Double
+
+pub fn robotics_sim_series_min(Robotics_simSeries) -> Double
+
+pub fn robotics_sim_series_scale(Robotics_simSeries, Double) -> Robotics_simSeries
+
+pub fn robotics_sim_series_std(Robotics_simSeries) -> Double
+
+pub fn robotics_sim_series_sum(Robotics_simSeries) -> Double
+
+pub fn robotics_sim_series_to_string(Robotics_simSeries) -> String
+
+pub fn robotics_sim_series_var(Robotics_simSeries) -> Double
+
+pub fn robotics_sim_std(Array[Double]) -> Double
+
+pub fn robotics_sim_var(Array[Double]) -> Double
+
+pub fn robotics_sim_vector_add(Robotics_simVector, Robotics_simVector) -> Robotics_simVector
+
+pub fn robotics_sim_vector_dist(Robotics_simVector, Robotics_simVector) -> Double
+
+pub fn robotics_sim_vector_dot(Robotics_simVector, Robotics_simVector) -> Double
+
+pub fn robotics_sim_vector_norm(Robotics_simVector) -> Double
+
+pub fn robotics_sim_vector_normalize(Robotics_simVector) -> Robotics_simVector
+
+pub fn robotics_sim_vector_scale(Robotics_simVector, Double) -> Robotics_simVector
+
+pub fn robotics_sim_vector_sub(Robotics_simVector, Robotics_simVector) -> Robotics_simVector
+
+pub fn robotics_sim_vector_to_string(Robotics_simVector) -> String
+
+pub fn robotics_sim_vector_zero(Int32) -> Robotics_simVector
+
+// Errors
+
+// Types and methods
+pub struct Robotics_simMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Robotics_simPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Robotics_simSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Robotics_simVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/chem_desc_atompair"
+
+// Values
+pub fn chem_desc_atompair_buffer_make(Int32) -> ChemdescatompairBuffer
+
+pub fn chem_desc_atompair_cluster_make(Int32) -> ChemdescatompairCluster
+
+pub fn chem_desc_atompair_cursor_make(Int32) -> ChemdescatompairCursor
+
+pub fn chem_desc_atompair_edge_make(Int32) -> ChemdescatompairEdge
+
+pub fn chem_desc_atompair_frame_make(Int32) -> ChemdescatompairFrame
+
+pub fn chem_desc_atompair_graphn_make(Int32) -> ChemdescatompairGraphN
+
+pub fn chem_desc_atompair_layer_make(Int32) -> ChemdescatompairLayer
+
+pub fn chem_desc_atompair_make_matrix(Int32, Int32, Double) -> ChemdescatompairMatrix
+
+pub fn chem_desc_atompair_make_point(Double, Double) -> ChemdescatompairPoint
+
+pub fn chem_desc_atompair_make_point3(Double, Double, Double) -> ChemdescatompairPoint
+
+pub fn chem_desc_atompair_make_series(Array[Double], String) -> ChemdescatompairSeries
+
+pub fn chem_desc_atompair_make_vector(Array[Double]) -> ChemdescatompairVector
+
+pub fn chem_desc_atompair_matrix_identity(Int32) -> ChemdescatompairMatrix
+
+pub fn chem_desc_atompair_model_make(Int32) -> ChemdescatompairModel
+
+pub fn chem_desc_atompair_node_make(Int32) -> ChemdescatompairNode
+
+pub fn chem_desc_atompair_path_make(Int32) -> ChemdescatompairPath
+
+pub fn chem_desc_atompair_range_make(Int32) -> ChemdescatompairRange
+
+pub fn chem_desc_atompair_slice_make(Int32) -> ChemdescatompairSlice
+
+pub fn chem_desc_atompair_table_make(Int32) -> ChemdescatompairTable
+
+pub fn chem_desc_atompair_vector_zero(Int32) -> ChemdescatompairVector
+
+pub fn chem_desc_atompair_view_make(Int32) -> ChemdescatompairView
+
+// Errors
+
+// Types and methods
+pub(all) struct ChemdescatompairBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescatompairBuffer::add(Self, Self) -> Self
+pub fn ChemdescatompairBuffer::copy(Self) -> Self
+pub fn ChemdescatompairBuffer::fill(Self, Double) -> Self
+pub fn ChemdescatompairBuffer::get(Self, Int32) -> Double
+pub fn ChemdescatompairBuffer::len(Self) -> Int32
+pub fn ChemdescatompairBuffer::max(Self) -> Double
+pub fn ChemdescatompairBuffer::mean(Self) -> Double
+pub fn ChemdescatompairBuffer::min(Self) -> Double
+pub fn ChemdescatompairBuffer::scale(Self, Double) -> Self
+pub fn ChemdescatompairBuffer::set(Self, Int32, Double) -> Self
+pub fn ChemdescatompairBuffer::sum(Self) -> Double
+pub fn ChemdescatompairBuffer::to_string(Self) -> String
+
+pub(all) struct ChemdescatompairCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescatompairCluster::add(Self, Self) -> Self
+pub fn ChemdescatompairCluster::copy(Self) -> Self
+pub fn ChemdescatompairCluster::fill(Self, Double) -> Self
+pub fn ChemdescatompairCluster::get(Self, Int32) -> Double
+pub fn ChemdescatompairCluster::len(Self) -> Int32
+pub fn ChemdescatompairCluster::max(Self) -> Double
+pub fn ChemdescatompairCluster::mean(Self) -> Double
+pub fn ChemdescatompairCluster::min(Self) -> Double
+pub fn ChemdescatompairCluster::scale(Self, Double) -> Self
+pub fn ChemdescatompairCluster::set(Self, Int32, Double) -> Self
+pub fn ChemdescatompairCluster::sum(Self) -> Double
+pub fn ChemdescatompairCluster::to_string(Self) -> String
+
+pub(all) struct ChemdescatompairCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescatompairCursor::add(Self, Self) -> Self
+pub fn ChemdescatompairCursor::copy(Self) -> Self
+pub fn ChemdescatompairCursor::fill(Self, Double) -> Self
+pub fn ChemdescatompairCursor::get(Self, Int32) -> Double
+pub fn ChemdescatompairCursor::len(Self) -> Int32
+pub fn ChemdescatompairCursor::max(Self) -> Double
+pub fn ChemdescatompairCursor::mean(Self) -> Double
+pub fn ChemdescatompairCursor::min(Self) -> Double
+pub fn ChemdescatompairCursor::scale(Self, Double) -> Self
+pub fn ChemdescatompairCursor::set(Self, Int32, Double) -> Self
+pub fn ChemdescatompairCursor::sum(Self) -> Double
+pub fn ChemdescatompairCursor::to_string(Self) -> String
+
+pub(all) struct ChemdescatompairEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescatompairEdge::add(Self, Self) -> Self
+pub fn ChemdescatompairEdge::copy(Self) -> Self
+pub fn ChemdescatompairEdge::fill(Self, Double) -> Self
+pub fn ChemdescatompairEdge::get(Self, Int32) -> Double
+pub fn ChemdescatompairEdge::len(Self) -> Int32
+pub fn ChemdescatompairEdge::max(Self) -> Double
+pub fn ChemdescatompairEdge::mean(Self) -> Double
+pub fn ChemdescatompairEdge::min(Self) -> Double
+pub fn ChemdescatompairEdge::scale(Self, Double) -> Self
+pub fn ChemdescatompairEdge::set(Self, Int32, Double) -> Self
+pub fn ChemdescatompairEdge::sum(Self) -> Double
+pub fn ChemdescatompairEdge::to_string(Self) -> String
+
+pub(all) struct ChemdescatompairFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescatompairFrame::add(Self, Self) -> Self
+pub fn ChemdescatompairFrame::copy(Self) -> Self
+pub fn ChemdescatompairFrame::fill(Self, Double) -> Self
+pub fn ChemdescatompairFrame::get(Self, Int32) -> Double
+pub fn ChemdescatompairFrame::len(Self) -> Int32
+pub fn ChemdescatompairFrame::max(Self) -> Double
+pub fn ChemdescatompairFrame::mean(Self) -> Double
+pub fn ChemdescatompairFrame::min(Self) -> Double
+pub fn ChemdescatompairFrame::scale(Self, Double) -> Self
+pub fn ChemdescatompairFrame::set(Self, Int32, Double) -> Self
+pub fn ChemdescatompairFrame::sum(Self) -> Double
+pub fn ChemdescatompairFrame::to_string(Self) -> String
+
+pub(all) struct ChemdescatompairGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescatompairGraphN::add(Self, Self) -> Self
+pub fn ChemdescatompairGraphN::copy(Self) -> Self
+pub fn ChemdescatompairGraphN::fill(Self, Double) -> Self
+pub fn ChemdescatompairGraphN::get(Self, Int32) -> Double
+pub fn ChemdescatompairGraphN::len(Self) -> Int32
+pub fn ChemdescatompairGraphN::max(Self) -> Double
+pub fn ChemdescatompairGraphN::mean(Self) -> Double
+pub fn ChemdescatompairGraphN::min(Self) -> Double
+pub fn ChemdescatompairGraphN::scale(Self, Double) -> Self
+pub fn ChemdescatompairGraphN::set(Self, Int32, Double) -> Self
+pub fn ChemdescatompairGraphN::sum(Self) -> Double
+pub fn ChemdescatompairGraphN::to_string(Self) -> String
+
+pub(all) struct ChemdescatompairLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescatompairLayer::add(Self, Self) -> Self
+pub fn ChemdescatompairLayer::copy(Self) -> Self
+pub fn ChemdescatompairLayer::fill(Self, Double) -> Self
+pub fn ChemdescatompairLayer::get(Self, Int32) -> Double
+pub fn ChemdescatompairLayer::len(Self) -> Int32
+pub fn ChemdescatompairLayer::max(Self) -> Double
+pub fn ChemdescatompairLayer::mean(Self) -> Double
+pub fn ChemdescatompairLayer::min(Self) -> Double
+pub fn ChemdescatompairLayer::scale(Self, Double) -> Self
+pub fn ChemdescatompairLayer::set(Self, Int32, Double) -> Self
+pub fn ChemdescatompairLayer::sum(Self) -> Double
+pub fn ChemdescatompairLayer::to_string(Self) -> String
+
+pub(all) struct ChemdescatompairMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ChemdescatompairMatrix::add(Self, Self) -> Self
+pub fn ChemdescatompairMatrix::det(Self) -> Double
+pub fn ChemdescatompairMatrix::get(Self, Int32, Int32) -> Double
+pub fn ChemdescatompairMatrix::multiply(Self, Self) -> Self
+pub fn ChemdescatompairMatrix::norm(Self) -> Double
+pub fn ChemdescatompairMatrix::scale(Self, Double) -> Self
+pub fn ChemdescatompairMatrix::to_string(Self) -> String
+pub fn ChemdescatompairMatrix::trace(Self) -> Double
+pub fn ChemdescatompairMatrix::transpose(Self) -> Self
+
+pub(all) struct ChemdescatompairModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescatompairModel::add(Self, Self) -> Self
+pub fn ChemdescatompairModel::copy(Self) -> Self
+pub fn ChemdescatompairModel::fill(Self, Double) -> Self
+pub fn ChemdescatompairModel::get(Self, Int32) -> Double
+pub fn ChemdescatompairModel::len(Self) -> Int32
+pub fn ChemdescatompairModel::max(Self) -> Double
+pub fn ChemdescatompairModel::mean(Self) -> Double
+pub fn ChemdescatompairModel::min(Self) -> Double
+pub fn ChemdescatompairModel::scale(Self, Double) -> Self
+pub fn ChemdescatompairModel::set(Self, Int32, Double) -> Self
+pub fn ChemdescatompairModel::sum(Self) -> Double
+pub fn ChemdescatompairModel::to_string(Self) -> String
+
+pub(all) struct ChemdescatompairNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescatompairNode::add(Self, Self) -> Self
+pub fn ChemdescatompairNode::copy(Self) -> Self
+pub fn ChemdescatompairNode::fill(Self, Double) -> Self
+pub fn ChemdescatompairNode::get(Self, Int32) -> Double
+pub fn ChemdescatompairNode::len(Self) -> Int32
+pub fn ChemdescatompairNode::max(Self) -> Double
+pub fn ChemdescatompairNode::mean(Self) -> Double
+pub fn ChemdescatompairNode::min(Self) -> Double
+pub fn ChemdescatompairNode::scale(Self, Double) -> Self
+pub fn ChemdescatompairNode::set(Self, Int32, Double) -> Self
+pub fn ChemdescatompairNode::sum(Self) -> Double
+pub fn ChemdescatompairNode::to_string(Self) -> String
+
+pub(all) struct ChemdescatompairPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescatompairPath::add(Self, Self) -> Self
+pub fn ChemdescatompairPath::copy(Self) -> Self
+pub fn ChemdescatompairPath::fill(Self, Double) -> Self
+pub fn ChemdescatompairPath::get(Self, Int32) -> Double
+pub fn ChemdescatompairPath::len(Self) -> Int32
+pub fn ChemdescatompairPath::max(Self) -> Double
+pub fn ChemdescatompairPath::mean(Self) -> Double
+pub fn ChemdescatompairPath::min(Self) -> Double
+pub fn ChemdescatompairPath::scale(Self, Double) -> Self
+pub fn ChemdescatompairPath::set(Self, Int32, Double) -> Self
+pub fn ChemdescatompairPath::sum(Self) -> Double
+pub fn ChemdescatompairPath::to_string(Self) -> String
+
+pub(all) struct ChemdescatompairPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ChemdescatompairPoint::add(Self, Self) -> Self
+pub fn ChemdescatompairPoint::cross(Self, Self) -> Self
+pub fn ChemdescatompairPoint::dist(Self, Self) -> Double
+pub fn ChemdescatompairPoint::dot(Self, Self) -> Double
+pub fn ChemdescatompairPoint::label(Self) -> Int32
+pub fn ChemdescatompairPoint::lerp(Self, Self, Double) -> Self
+pub fn ChemdescatompairPoint::mid(Self, Self) -> Self
+pub fn ChemdescatompairPoint::negate(Self) -> Self
+pub fn ChemdescatompairPoint::norm(Self) -> Double
+pub fn ChemdescatompairPoint::normalize(Self) -> Self
+pub fn ChemdescatompairPoint::scale(Self, Double) -> Self
+pub fn ChemdescatompairPoint::sub(Self, Self) -> Self
+pub fn ChemdescatompairPoint::to_string(Self) -> String
+pub fn ChemdescatompairPoint::x(Self) -> Double
+pub fn ChemdescatompairPoint::y(Self) -> Double
+pub fn ChemdescatompairPoint::z(Self) -> Double
+
+pub(all) struct ChemdescatompairRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescatompairRange::add(Self, Self) -> Self
+pub fn ChemdescatompairRange::copy(Self) -> Self
+pub fn ChemdescatompairRange::fill(Self, Double) -> Self
+pub fn ChemdescatompairRange::get(Self, Int32) -> Double
+pub fn ChemdescatompairRange::len(Self) -> Int32
+pub fn ChemdescatompairRange::max(Self) -> Double
+pub fn ChemdescatompairRange::mean(Self) -> Double
+pub fn ChemdescatompairRange::min(Self) -> Double
+pub fn ChemdescatompairRange::scale(Self, Double) -> Self
+pub fn ChemdescatompairRange::set(Self, Int32, Double) -> Self
+pub fn ChemdescatompairRange::sum(Self) -> Double
+pub fn ChemdescatompairRange::to_string(Self) -> String
+
+pub(all) struct ChemdescatompairSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ChemdescatompairSeries::add(Self, Self) -> Self
+pub fn ChemdescatompairSeries::cumsum(Self) -> Self
+pub fn ChemdescatompairSeries::len(Self) -> Int32
+pub fn ChemdescatompairSeries::max(Self) -> Double
+pub fn ChemdescatompairSeries::mean(Self) -> Double
+pub fn ChemdescatompairSeries::median(Self) -> Double
+pub fn ChemdescatompairSeries::min(Self) -> Double
+pub fn ChemdescatompairSeries::normalize(Self) -> Self
+pub fn ChemdescatompairSeries::range(Self) -> Double
+pub fn ChemdescatompairSeries::scale(Self, Double) -> Self
+pub fn ChemdescatompairSeries::std(Self) -> Double
+pub fn ChemdescatompairSeries::sub(Self, Self) -> Self
+pub fn ChemdescatompairSeries::sum(Self) -> Double
+pub fn ChemdescatompairSeries::to_string(Self) -> String
+pub fn ChemdescatompairSeries::variance(Self) -> Double
+
+pub(all) struct ChemdescatompairSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescatompairSlice::add(Self, Self) -> Self
+pub fn ChemdescatompairSlice::copy(Self) -> Self
+pub fn ChemdescatompairSlice::fill(Self, Double) -> Self
+pub fn ChemdescatompairSlice::get(Self, Int32) -> Double
+pub fn ChemdescatompairSlice::len(Self) -> Int32
+pub fn ChemdescatompairSlice::max(Self) -> Double
+pub fn ChemdescatompairSlice::mean(Self) -> Double
+pub fn ChemdescatompairSlice::min(Self) -> Double
+pub fn ChemdescatompairSlice::scale(Self, Double) -> Self
+pub fn ChemdescatompairSlice::set(Self, Int32, Double) -> Self
+pub fn ChemdescatompairSlice::sum(Self) -> Double
+pub fn ChemdescatompairSlice::to_string(Self) -> String
+
+pub(all) struct ChemdescatompairTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescatompairTable::add(Self, Self) -> Self
+pub fn ChemdescatompairTable::copy(Self) -> Self
+pub fn ChemdescatompairTable::fill(Self, Double) -> Self
+pub fn ChemdescatompairTable::get(Self, Int32) -> Double
+pub fn ChemdescatompairTable::len(Self) -> Int32
+pub fn ChemdescatompairTable::max(Self) -> Double
+pub fn ChemdescatompairTable::mean(Self) -> Double
+pub fn ChemdescatompairTable::min(Self) -> Double
+pub fn ChemdescatompairTable::scale(Self, Double) -> Self
+pub fn ChemdescatompairTable::set(Self, Int32, Double) -> Self
+pub fn ChemdescatompairTable::sum(Self) -> Double
+pub fn ChemdescatompairTable::to_string(Self) -> String
+
+pub(all) struct ChemdescatompairVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ChemdescatompairVector::add(Self, Self) -> Self
+pub fn ChemdescatompairVector::dist(Self, Self) -> Double
+pub fn ChemdescatompairVector::dot(Self, Self) -> Double
+pub fn ChemdescatompairVector::norm(Self) -> Double
+pub fn ChemdescatompairVector::normalize(Self) -> Self
+pub fn ChemdescatompairVector::scale(Self, Double) -> Self
+pub fn ChemdescatompairVector::sub(Self, Self) -> Self
+pub fn ChemdescatompairVector::to_string(Self) -> String
+
+pub(all) struct ChemdescatompairView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescatompairView::add(Self, Self) -> Self
+pub fn ChemdescatompairView::copy(Self) -> Self
+pub fn ChemdescatompairView::fill(Self, Double) -> Self
+pub fn ChemdescatompairView::get(Self, Int32) -> Double
+pub fn ChemdescatompairView::len(Self) -> Int32
+pub fn ChemdescatompairView::max(Self) -> Double
+pub fn ChemdescatompairView::mean(Self) -> Double
+pub fn ChemdescatompairView::min(Self) -> Double
+pub fn ChemdescatompairView::scale(Self, Double) -> Self
+pub fn ChemdescatompairView::set(Self, Int32, Double) -> Self
+pub fn ChemdescatompairView::sum(Self) -> Double
+pub fn ChemdescatompairView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

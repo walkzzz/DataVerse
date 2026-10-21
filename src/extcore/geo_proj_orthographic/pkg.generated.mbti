@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_proj_orthographic"
+
+// Values
+pub fn geo_proj_orthographic_buffer_make(Int32) -> GeoprojorthographicBuffer
+
+pub fn geo_proj_orthographic_cluster_make(Int32) -> GeoprojorthographicCluster
+
+pub fn geo_proj_orthographic_cursor_make(Int32) -> GeoprojorthographicCursor
+
+pub fn geo_proj_orthographic_edge_make(Int32) -> GeoprojorthographicEdge
+
+pub fn geo_proj_orthographic_frame_make(Int32) -> GeoprojorthographicFrame
+
+pub fn geo_proj_orthographic_graphn_make(Int32) -> GeoprojorthographicGraphN
+
+pub fn geo_proj_orthographic_layer_make(Int32) -> GeoprojorthographicLayer
+
+pub fn geo_proj_orthographic_make_matrix(Int32, Int32, Double) -> GeoprojorthographicMatrix
+
+pub fn geo_proj_orthographic_make_point(Double, Double) -> GeoprojorthographicPoint
+
+pub fn geo_proj_orthographic_make_point3(Double, Double, Double) -> GeoprojorthographicPoint
+
+pub fn geo_proj_orthographic_make_series(Array[Double], String) -> GeoprojorthographicSeries
+
+pub fn geo_proj_orthographic_make_vector(Array[Double]) -> GeoprojorthographicVector
+
+pub fn geo_proj_orthographic_matrix_identity(Int32) -> GeoprojorthographicMatrix
+
+pub fn geo_proj_orthographic_model_make(Int32) -> GeoprojorthographicModel
+
+pub fn geo_proj_orthographic_node_make(Int32) -> GeoprojorthographicNode
+
+pub fn geo_proj_orthographic_path_make(Int32) -> GeoprojorthographicPath
+
+pub fn geo_proj_orthographic_range_make(Int32) -> GeoprojorthographicRange
+
+pub fn geo_proj_orthographic_slice_make(Int32) -> GeoprojorthographicSlice
+
+pub fn geo_proj_orthographic_table_make(Int32) -> GeoprojorthographicTable
+
+pub fn geo_proj_orthographic_vector_zero(Int32) -> GeoprojorthographicVector
+
+pub fn geo_proj_orthographic_view_make(Int32) -> GeoprojorthographicView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeoprojorthographicBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojorthographicBuffer::add(Self, Self) -> Self
+pub fn GeoprojorthographicBuffer::copy(Self) -> Self
+pub fn GeoprojorthographicBuffer::fill(Self, Double) -> Self
+pub fn GeoprojorthographicBuffer::get(Self, Int32) -> Double
+pub fn GeoprojorthographicBuffer::len(Self) -> Int32
+pub fn GeoprojorthographicBuffer::max(Self) -> Double
+pub fn GeoprojorthographicBuffer::mean(Self) -> Double
+pub fn GeoprojorthographicBuffer::min(Self) -> Double
+pub fn GeoprojorthographicBuffer::scale(Self, Double) -> Self
+pub fn GeoprojorthographicBuffer::set(Self, Int32, Double) -> Self
+pub fn GeoprojorthographicBuffer::sum(Self) -> Double
+pub fn GeoprojorthographicBuffer::to_string(Self) -> String
+
+pub(all) struct GeoprojorthographicCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojorthographicCluster::add(Self, Self) -> Self
+pub fn GeoprojorthographicCluster::copy(Self) -> Self
+pub fn GeoprojorthographicCluster::fill(Self, Double) -> Self
+pub fn GeoprojorthographicCluster::get(Self, Int32) -> Double
+pub fn GeoprojorthographicCluster::len(Self) -> Int32
+pub fn GeoprojorthographicCluster::max(Self) -> Double
+pub fn GeoprojorthographicCluster::mean(Self) -> Double
+pub fn GeoprojorthographicCluster::min(Self) -> Double
+pub fn GeoprojorthographicCluster::scale(Self, Double) -> Self
+pub fn GeoprojorthographicCluster::set(Self, Int32, Double) -> Self
+pub fn GeoprojorthographicCluster::sum(Self) -> Double
+pub fn GeoprojorthographicCluster::to_string(Self) -> String
+
+pub(all) struct GeoprojorthographicCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojorthographicCursor::add(Self, Self) -> Self
+pub fn GeoprojorthographicCursor::copy(Self) -> Self
+pub fn GeoprojorthographicCursor::fill(Self, Double) -> Self
+pub fn GeoprojorthographicCursor::get(Self, Int32) -> Double
+pub fn GeoprojorthographicCursor::len(Self) -> Int32
+pub fn GeoprojorthographicCursor::max(Self) -> Double
+pub fn GeoprojorthographicCursor::mean(Self) -> Double
+pub fn GeoprojorthographicCursor::min(Self) -> Double
+pub fn GeoprojorthographicCursor::scale(Self, Double) -> Self
+pub fn GeoprojorthographicCursor::set(Self, Int32, Double) -> Self
+pub fn GeoprojorthographicCursor::sum(Self) -> Double
+pub fn GeoprojorthographicCursor::to_string(Self) -> String
+
+pub(all) struct GeoprojorthographicEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojorthographicEdge::add(Self, Self) -> Self
+pub fn GeoprojorthographicEdge::copy(Self) -> Self
+pub fn GeoprojorthographicEdge::fill(Self, Double) -> Self
+pub fn GeoprojorthographicEdge::get(Self, Int32) -> Double
+pub fn GeoprojorthographicEdge::len(Self) -> Int32
+pub fn GeoprojorthographicEdge::max(Self) -> Double
+pub fn GeoprojorthographicEdge::mean(Self) -> Double
+pub fn GeoprojorthographicEdge::min(Self) -> Double
+pub fn GeoprojorthographicEdge::scale(Self, Double) -> Self
+pub fn GeoprojorthographicEdge::set(Self, Int32, Double) -> Self
+pub fn GeoprojorthographicEdge::sum(Self) -> Double
+pub fn GeoprojorthographicEdge::to_string(Self) -> String
+
+pub(all) struct GeoprojorthographicFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojorthographicFrame::add(Self, Self) -> Self
+pub fn GeoprojorthographicFrame::copy(Self) -> Self
+pub fn GeoprojorthographicFrame::fill(Self, Double) -> Self
+pub fn GeoprojorthographicFrame::get(Self, Int32) -> Double
+pub fn GeoprojorthographicFrame::len(Self) -> Int32
+pub fn GeoprojorthographicFrame::max(Self) -> Double
+pub fn GeoprojorthographicFrame::mean(Self) -> Double
+pub fn GeoprojorthographicFrame::min(Self) -> Double
+pub fn GeoprojorthographicFrame::scale(Self, Double) -> Self
+pub fn GeoprojorthographicFrame::set(Self, Int32, Double) -> Self
+pub fn GeoprojorthographicFrame::sum(Self) -> Double
+pub fn GeoprojorthographicFrame::to_string(Self) -> String
+
+pub(all) struct GeoprojorthographicGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojorthographicGraphN::add(Self, Self) -> Self
+pub fn GeoprojorthographicGraphN::copy(Self) -> Self
+pub fn GeoprojorthographicGraphN::fill(Self, Double) -> Self
+pub fn GeoprojorthographicGraphN::get(Self, Int32) -> Double
+pub fn GeoprojorthographicGraphN::len(Self) -> Int32
+pub fn GeoprojorthographicGraphN::max(Self) -> Double
+pub fn GeoprojorthographicGraphN::mean(Self) -> Double
+pub fn GeoprojorthographicGraphN::min(Self) -> Double
+pub fn GeoprojorthographicGraphN::scale(Self, Double) -> Self
+pub fn GeoprojorthographicGraphN::set(Self, Int32, Double) -> Self
+pub fn GeoprojorthographicGraphN::sum(Self) -> Double
+pub fn GeoprojorthographicGraphN::to_string(Self) -> String
+
+pub(all) struct GeoprojorthographicLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojorthographicLayer::add(Self, Self) -> Self
+pub fn GeoprojorthographicLayer::copy(Self) -> Self
+pub fn GeoprojorthographicLayer::fill(Self, Double) -> Self
+pub fn GeoprojorthographicLayer::get(Self, Int32) -> Double
+pub fn GeoprojorthographicLayer::len(Self) -> Int32
+pub fn GeoprojorthographicLayer::max(Self) -> Double
+pub fn GeoprojorthographicLayer::mean(Self) -> Double
+pub fn GeoprojorthographicLayer::min(Self) -> Double
+pub fn GeoprojorthographicLayer::scale(Self, Double) -> Self
+pub fn GeoprojorthographicLayer::set(Self, Int32, Double) -> Self
+pub fn GeoprojorthographicLayer::sum(Self) -> Double
+pub fn GeoprojorthographicLayer::to_string(Self) -> String
+
+pub(all) struct GeoprojorthographicMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeoprojorthographicMatrix::add(Self, Self) -> Self
+pub fn GeoprojorthographicMatrix::det(Self) -> Double
+pub fn GeoprojorthographicMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeoprojorthographicMatrix::multiply(Self, Self) -> Self
+pub fn GeoprojorthographicMatrix::norm(Self) -> Double
+pub fn GeoprojorthographicMatrix::scale(Self, Double) -> Self
+pub fn GeoprojorthographicMatrix::to_string(Self) -> String
+pub fn GeoprojorthographicMatrix::trace(Self) -> Double
+pub fn GeoprojorthographicMatrix::transpose(Self) -> Self
+
+pub(all) struct GeoprojorthographicModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojorthographicModel::add(Self, Self) -> Self
+pub fn GeoprojorthographicModel::copy(Self) -> Self
+pub fn GeoprojorthographicModel::fill(Self, Double) -> Self
+pub fn GeoprojorthographicModel::get(Self, Int32) -> Double
+pub fn GeoprojorthographicModel::len(Self) -> Int32
+pub fn GeoprojorthographicModel::max(Self) -> Double
+pub fn GeoprojorthographicModel::mean(Self) -> Double
+pub fn GeoprojorthographicModel::min(Self) -> Double
+pub fn GeoprojorthographicModel::scale(Self, Double) -> Self
+pub fn GeoprojorthographicModel::set(Self, Int32, Double) -> Self
+pub fn GeoprojorthographicModel::sum(Self) -> Double
+pub fn GeoprojorthographicModel::to_string(Self) -> String
+
+pub(all) struct GeoprojorthographicNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojorthographicNode::add(Self, Self) -> Self
+pub fn GeoprojorthographicNode::copy(Self) -> Self
+pub fn GeoprojorthographicNode::fill(Self, Double) -> Self
+pub fn GeoprojorthographicNode::get(Self, Int32) -> Double
+pub fn GeoprojorthographicNode::len(Self) -> Int32
+pub fn GeoprojorthographicNode::max(Self) -> Double
+pub fn GeoprojorthographicNode::mean(Self) -> Double
+pub fn GeoprojorthographicNode::min(Self) -> Double
+pub fn GeoprojorthographicNode::scale(Self, Double) -> Self
+pub fn GeoprojorthographicNode::set(Self, Int32, Double) -> Self
+pub fn GeoprojorthographicNode::sum(Self) -> Double
+pub fn GeoprojorthographicNode::to_string(Self) -> String
+
+pub(all) struct GeoprojorthographicPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojorthographicPath::add(Self, Self) -> Self
+pub fn GeoprojorthographicPath::copy(Self) -> Self
+pub fn GeoprojorthographicPath::fill(Self, Double) -> Self
+pub fn GeoprojorthographicPath::get(Self, Int32) -> Double
+pub fn GeoprojorthographicPath::len(Self) -> Int32
+pub fn GeoprojorthographicPath::max(Self) -> Double
+pub fn GeoprojorthographicPath::mean(Self) -> Double
+pub fn GeoprojorthographicPath::min(Self) -> Double
+pub fn GeoprojorthographicPath::scale(Self, Double) -> Self
+pub fn GeoprojorthographicPath::set(Self, Int32, Double) -> Self
+pub fn GeoprojorthographicPath::sum(Self) -> Double
+pub fn GeoprojorthographicPath::to_string(Self) -> String
+
+pub(all) struct GeoprojorthographicPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeoprojorthographicPoint::add(Self, Self) -> Self
+pub fn GeoprojorthographicPoint::cross(Self, Self) -> Self
+pub fn GeoprojorthographicPoint::dist(Self, Self) -> Double
+pub fn GeoprojorthographicPoint::dot(Self, Self) -> Double
+pub fn GeoprojorthographicPoint::label(Self) -> Int32
+pub fn GeoprojorthographicPoint::lerp(Self, Self, Double) -> Self
+pub fn GeoprojorthographicPoint::mid(Self, Self) -> Self
+pub fn GeoprojorthographicPoint::negate(Self) -> Self
+pub fn GeoprojorthographicPoint::norm(Self) -> Double
+pub fn GeoprojorthographicPoint::normalize(Self) -> Self
+pub fn GeoprojorthographicPoint::scale(Self, Double) -> Self
+pub fn GeoprojorthographicPoint::sub(Self, Self) -> Self
+pub fn GeoprojorthographicPoint::to_string(Self) -> String
+pub fn GeoprojorthographicPoint::x(Self) -> Double
+pub fn GeoprojorthographicPoint::y(Self) -> Double
+pub fn GeoprojorthographicPoint::z(Self) -> Double
+
+pub(all) struct GeoprojorthographicRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojorthographicRange::add(Self, Self) -> Self
+pub fn GeoprojorthographicRange::copy(Self) -> Self
+pub fn GeoprojorthographicRange::fill(Self, Double) -> Self
+pub fn GeoprojorthographicRange::get(Self, Int32) -> Double
+pub fn GeoprojorthographicRange::len(Self) -> Int32
+pub fn GeoprojorthographicRange::max(Self) -> Double
+pub fn GeoprojorthographicRange::mean(Self) -> Double
+pub fn GeoprojorthographicRange::min(Self) -> Double
+pub fn GeoprojorthographicRange::scale(Self, Double) -> Self
+pub fn GeoprojorthographicRange::set(Self, Int32, Double) -> Self
+pub fn GeoprojorthographicRange::sum(Self) -> Double
+pub fn GeoprojorthographicRange::to_string(Self) -> String
+
+pub(all) struct GeoprojorthographicSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeoprojorthographicSeries::add(Self, Self) -> Self
+pub fn GeoprojorthographicSeries::cumsum(Self) -> Self
+pub fn GeoprojorthographicSeries::len(Self) -> Int32
+pub fn GeoprojorthographicSeries::max(Self) -> Double
+pub fn GeoprojorthographicSeries::mean(Self) -> Double
+pub fn GeoprojorthographicSeries::median(Self) -> Double
+pub fn GeoprojorthographicSeries::min(Self) -> Double
+pub fn GeoprojorthographicSeries::normalize(Self) -> Self
+pub fn GeoprojorthographicSeries::range(Self) -> Double
+pub fn GeoprojorthographicSeries::scale(Self, Double) -> Self
+pub fn GeoprojorthographicSeries::std(Self) -> Double
+pub fn GeoprojorthographicSeries::sub(Self, Self) -> Self
+pub fn GeoprojorthographicSeries::sum(Self) -> Double
+pub fn GeoprojorthographicSeries::to_string(Self) -> String
+pub fn GeoprojorthographicSeries::variance(Self) -> Double
+
+pub(all) struct GeoprojorthographicSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojorthographicSlice::add(Self, Self) -> Self
+pub fn GeoprojorthographicSlice::copy(Self) -> Self
+pub fn GeoprojorthographicSlice::fill(Self, Double) -> Self
+pub fn GeoprojorthographicSlice::get(Self, Int32) -> Double
+pub fn GeoprojorthographicSlice::len(Self) -> Int32
+pub fn GeoprojorthographicSlice::max(Self) -> Double
+pub fn GeoprojorthographicSlice::mean(Self) -> Double
+pub fn GeoprojorthographicSlice::min(Self) -> Double
+pub fn GeoprojorthographicSlice::scale(Self, Double) -> Self
+pub fn GeoprojorthographicSlice::set(Self, Int32, Double) -> Self
+pub fn GeoprojorthographicSlice::sum(Self) -> Double
+pub fn GeoprojorthographicSlice::to_string(Self) -> String
+
+pub(all) struct GeoprojorthographicTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojorthographicTable::add(Self, Self) -> Self
+pub fn GeoprojorthographicTable::copy(Self) -> Self
+pub fn GeoprojorthographicTable::fill(Self, Double) -> Self
+pub fn GeoprojorthographicTable::get(Self, Int32) -> Double
+pub fn GeoprojorthographicTable::len(Self) -> Int32
+pub fn GeoprojorthographicTable::max(Self) -> Double
+pub fn GeoprojorthographicTable::mean(Self) -> Double
+pub fn GeoprojorthographicTable::min(Self) -> Double
+pub fn GeoprojorthographicTable::scale(Self, Double) -> Self
+pub fn GeoprojorthographicTable::set(Self, Int32, Double) -> Self
+pub fn GeoprojorthographicTable::sum(Self) -> Double
+pub fn GeoprojorthographicTable::to_string(Self) -> String
+
+pub(all) struct GeoprojorthographicVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeoprojorthographicVector::add(Self, Self) -> Self
+pub fn GeoprojorthographicVector::dist(Self, Self) -> Double
+pub fn GeoprojorthographicVector::dot(Self, Self) -> Double
+pub fn GeoprojorthographicVector::norm(Self) -> Double
+pub fn GeoprojorthographicVector::normalize(Self) -> Self
+pub fn GeoprojorthographicVector::scale(Self, Double) -> Self
+pub fn GeoprojorthographicVector::sub(Self, Self) -> Self
+pub fn GeoprojorthographicVector::to_string(Self) -> String
+
+pub(all) struct GeoprojorthographicView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojorthographicView::add(Self, Self) -> Self
+pub fn GeoprojorthographicView::copy(Self) -> Self
+pub fn GeoprojorthographicView::fill(Self, Double) -> Self
+pub fn GeoprojorthographicView::get(Self, Int32) -> Double
+pub fn GeoprojorthographicView::len(Self) -> Int32
+pub fn GeoprojorthographicView::max(Self) -> Double
+pub fn GeoprojorthographicView::mean(Self) -> Double
+pub fn GeoprojorthographicView::min(Self) -> Double
+pub fn GeoprojorthographicView::scale(Self, Double) -> Self
+pub fn GeoprojorthographicView::set(Self, Int32, Double) -> Self
+pub fn GeoprojorthographicView::sum(Self) -> Double
+pub fn GeoprojorthographicView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

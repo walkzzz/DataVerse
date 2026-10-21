@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/finance_time_extreme"
+
+// Values
+pub fn finance_time_extreme_buffer_make(Int32) -> FinancetimeextremeBuffer
+
+pub fn finance_time_extreme_cluster_make(Int32) -> FinancetimeextremeCluster
+
+pub fn finance_time_extreme_cursor_make(Int32) -> FinancetimeextremeCursor
+
+pub fn finance_time_extreme_edge_make(Int32) -> FinancetimeextremeEdge
+
+pub fn finance_time_extreme_frame_make(Int32) -> FinancetimeextremeFrame
+
+pub fn finance_time_extreme_graphn_make(Int32) -> FinancetimeextremeGraphN
+
+pub fn finance_time_extreme_layer_make(Int32) -> FinancetimeextremeLayer
+
+pub fn finance_time_extreme_make_matrix(Int32, Int32, Double) -> FinancetimeextremeMatrix
+
+pub fn finance_time_extreme_make_point(Double, Double) -> FinancetimeextremePoint
+
+pub fn finance_time_extreme_make_point3(Double, Double, Double) -> FinancetimeextremePoint
+
+pub fn finance_time_extreme_make_series(Array[Double], String) -> FinancetimeextremeSeries
+
+pub fn finance_time_extreme_make_vector(Array[Double]) -> FinancetimeextremeVector
+
+pub fn finance_time_extreme_matrix_identity(Int32) -> FinancetimeextremeMatrix
+
+pub fn finance_time_extreme_model_make(Int32) -> FinancetimeextremeModel
+
+pub fn finance_time_extreme_node_make(Int32) -> FinancetimeextremeNode
+
+pub fn finance_time_extreme_path_make(Int32) -> FinancetimeextremePath
+
+pub fn finance_time_extreme_range_make(Int32) -> FinancetimeextremeRange
+
+pub fn finance_time_extreme_slice_make(Int32) -> FinancetimeextremeSlice
+
+pub fn finance_time_extreme_table_make(Int32) -> FinancetimeextremeTable
+
+pub fn finance_time_extreme_vector_zero(Int32) -> FinancetimeextremeVector
+
+pub fn finance_time_extreme_view_make(Int32) -> FinancetimeextremeView
+
+// Errors
+
+// Types and methods
+pub(all) struct FinancetimeextremeBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimeextremeBuffer::add(Self, Self) -> Self
+pub fn FinancetimeextremeBuffer::copy(Self) -> Self
+pub fn FinancetimeextremeBuffer::fill(Self, Double) -> Self
+pub fn FinancetimeextremeBuffer::get(Self, Int32) -> Double
+pub fn FinancetimeextremeBuffer::len(Self) -> Int32
+pub fn FinancetimeextremeBuffer::max(Self) -> Double
+pub fn FinancetimeextremeBuffer::mean(Self) -> Double
+pub fn FinancetimeextremeBuffer::min(Self) -> Double
+pub fn FinancetimeextremeBuffer::scale(Self, Double) -> Self
+pub fn FinancetimeextremeBuffer::set(Self, Int32, Double) -> Self
+pub fn FinancetimeextremeBuffer::sum(Self) -> Double
+pub fn FinancetimeextremeBuffer::to_string(Self) -> String
+
+pub(all) struct FinancetimeextremeCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimeextremeCluster::add(Self, Self) -> Self
+pub fn FinancetimeextremeCluster::copy(Self) -> Self
+pub fn FinancetimeextremeCluster::fill(Self, Double) -> Self
+pub fn FinancetimeextremeCluster::get(Self, Int32) -> Double
+pub fn FinancetimeextremeCluster::len(Self) -> Int32
+pub fn FinancetimeextremeCluster::max(Self) -> Double
+pub fn FinancetimeextremeCluster::mean(Self) -> Double
+pub fn FinancetimeextremeCluster::min(Self) -> Double
+pub fn FinancetimeextremeCluster::scale(Self, Double) -> Self
+pub fn FinancetimeextremeCluster::set(Self, Int32, Double) -> Self
+pub fn FinancetimeextremeCluster::sum(Self) -> Double
+pub fn FinancetimeextremeCluster::to_string(Self) -> String
+
+pub(all) struct FinancetimeextremeCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimeextremeCursor::add(Self, Self) -> Self
+pub fn FinancetimeextremeCursor::copy(Self) -> Self
+pub fn FinancetimeextremeCursor::fill(Self, Double) -> Self
+pub fn FinancetimeextremeCursor::get(Self, Int32) -> Double
+pub fn FinancetimeextremeCursor::len(Self) -> Int32
+pub fn FinancetimeextremeCursor::max(Self) -> Double
+pub fn FinancetimeextremeCursor::mean(Self) -> Double
+pub fn FinancetimeextremeCursor::min(Self) -> Double
+pub fn FinancetimeextremeCursor::scale(Self, Double) -> Self
+pub fn FinancetimeextremeCursor::set(Self, Int32, Double) -> Self
+pub fn FinancetimeextremeCursor::sum(Self) -> Double
+pub fn FinancetimeextremeCursor::to_string(Self) -> String
+
+pub(all) struct FinancetimeextremeEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimeextremeEdge::add(Self, Self) -> Self
+pub fn FinancetimeextremeEdge::copy(Self) -> Self
+pub fn FinancetimeextremeEdge::fill(Self, Double) -> Self
+pub fn FinancetimeextremeEdge::get(Self, Int32) -> Double
+pub fn FinancetimeextremeEdge::len(Self) -> Int32
+pub fn FinancetimeextremeEdge::max(Self) -> Double
+pub fn FinancetimeextremeEdge::mean(Self) -> Double
+pub fn FinancetimeextremeEdge::min(Self) -> Double
+pub fn FinancetimeextremeEdge::scale(Self, Double) -> Self
+pub fn FinancetimeextremeEdge::set(Self, Int32, Double) -> Self
+pub fn FinancetimeextremeEdge::sum(Self) -> Double
+pub fn FinancetimeextremeEdge::to_string(Self) -> String
+
+pub(all) struct FinancetimeextremeFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimeextremeFrame::add(Self, Self) -> Self
+pub fn FinancetimeextremeFrame::copy(Self) -> Self
+pub fn FinancetimeextremeFrame::fill(Self, Double) -> Self
+pub fn FinancetimeextremeFrame::get(Self, Int32) -> Double
+pub fn FinancetimeextremeFrame::len(Self) -> Int32
+pub fn FinancetimeextremeFrame::max(Self) -> Double
+pub fn FinancetimeextremeFrame::mean(Self) -> Double
+pub fn FinancetimeextremeFrame::min(Self) -> Double
+pub fn FinancetimeextremeFrame::scale(Self, Double) -> Self
+pub fn FinancetimeextremeFrame::set(Self, Int32, Double) -> Self
+pub fn FinancetimeextremeFrame::sum(Self) -> Double
+pub fn FinancetimeextremeFrame::to_string(Self) -> String
+
+pub(all) struct FinancetimeextremeGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimeextremeGraphN::add(Self, Self) -> Self
+pub fn FinancetimeextremeGraphN::copy(Self) -> Self
+pub fn FinancetimeextremeGraphN::fill(Self, Double) -> Self
+pub fn FinancetimeextremeGraphN::get(Self, Int32) -> Double
+pub fn FinancetimeextremeGraphN::len(Self) -> Int32
+pub fn FinancetimeextremeGraphN::max(Self) -> Double
+pub fn FinancetimeextremeGraphN::mean(Self) -> Double
+pub fn FinancetimeextremeGraphN::min(Self) -> Double
+pub fn FinancetimeextremeGraphN::scale(Self, Double) -> Self
+pub fn FinancetimeextremeGraphN::set(Self, Int32, Double) -> Self
+pub fn FinancetimeextremeGraphN::sum(Self) -> Double
+pub fn FinancetimeextremeGraphN::to_string(Self) -> String
+
+pub(all) struct FinancetimeextremeLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimeextremeLayer::add(Self, Self) -> Self
+pub fn FinancetimeextremeLayer::copy(Self) -> Self
+pub fn FinancetimeextremeLayer::fill(Self, Double) -> Self
+pub fn FinancetimeextremeLayer::get(Self, Int32) -> Double
+pub fn FinancetimeextremeLayer::len(Self) -> Int32
+pub fn FinancetimeextremeLayer::max(Self) -> Double
+pub fn FinancetimeextremeLayer::mean(Self) -> Double
+pub fn FinancetimeextremeLayer::min(Self) -> Double
+pub fn FinancetimeextremeLayer::scale(Self, Double) -> Self
+pub fn FinancetimeextremeLayer::set(Self, Int32, Double) -> Self
+pub fn FinancetimeextremeLayer::sum(Self) -> Double
+pub fn FinancetimeextremeLayer::to_string(Self) -> String
+
+pub(all) struct FinancetimeextremeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn FinancetimeextremeMatrix::add(Self, Self) -> Self
+pub fn FinancetimeextremeMatrix::det(Self) -> Double
+pub fn FinancetimeextremeMatrix::get(Self, Int32, Int32) -> Double
+pub fn FinancetimeextremeMatrix::multiply(Self, Self) -> Self
+pub fn FinancetimeextremeMatrix::norm(Self) -> Double
+pub fn FinancetimeextremeMatrix::scale(Self, Double) -> Self
+pub fn FinancetimeextremeMatrix::to_string(Self) -> String
+pub fn FinancetimeextremeMatrix::trace(Self) -> Double
+pub fn FinancetimeextremeMatrix::transpose(Self) -> Self
+
+pub(all) struct FinancetimeextremeModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimeextremeModel::add(Self, Self) -> Self
+pub fn FinancetimeextremeModel::copy(Self) -> Self
+pub fn FinancetimeextremeModel::fill(Self, Double) -> Self
+pub fn FinancetimeextremeModel::get(Self, Int32) -> Double
+pub fn FinancetimeextremeModel::len(Self) -> Int32
+pub fn FinancetimeextremeModel::max(Self) -> Double
+pub fn FinancetimeextremeModel::mean(Self) -> Double
+pub fn FinancetimeextremeModel::min(Self) -> Double
+pub fn FinancetimeextremeModel::scale(Self, Double) -> Self
+pub fn FinancetimeextremeModel::set(Self, Int32, Double) -> Self
+pub fn FinancetimeextremeModel::sum(Self) -> Double
+pub fn FinancetimeextremeModel::to_string(Self) -> String
+
+pub(all) struct FinancetimeextremeNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimeextremeNode::add(Self, Self) -> Self
+pub fn FinancetimeextremeNode::copy(Self) -> Self
+pub fn FinancetimeextremeNode::fill(Self, Double) -> Self
+pub fn FinancetimeextremeNode::get(Self, Int32) -> Double
+pub fn FinancetimeextremeNode::len(Self) -> Int32
+pub fn FinancetimeextremeNode::max(Self) -> Double
+pub fn FinancetimeextremeNode::mean(Self) -> Double
+pub fn FinancetimeextremeNode::min(Self) -> Double
+pub fn FinancetimeextremeNode::scale(Self, Double) -> Self
+pub fn FinancetimeextremeNode::set(Self, Int32, Double) -> Self
+pub fn FinancetimeextremeNode::sum(Self) -> Double
+pub fn FinancetimeextremeNode::to_string(Self) -> String
+
+pub(all) struct FinancetimeextremePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimeextremePath::add(Self, Self) -> Self
+pub fn FinancetimeextremePath::copy(Self) -> Self
+pub fn FinancetimeextremePath::fill(Self, Double) -> Self
+pub fn FinancetimeextremePath::get(Self, Int32) -> Double
+pub fn FinancetimeextremePath::len(Self) -> Int32
+pub fn FinancetimeextremePath::max(Self) -> Double
+pub fn FinancetimeextremePath::mean(Self) -> Double
+pub fn FinancetimeextremePath::min(Self) -> Double
+pub fn FinancetimeextremePath::scale(Self, Double) -> Self
+pub fn FinancetimeextremePath::set(Self, Int32, Double) -> Self
+pub fn FinancetimeextremePath::sum(Self) -> Double
+pub fn FinancetimeextremePath::to_string(Self) -> String
+
+pub(all) struct FinancetimeextremePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn FinancetimeextremePoint::add(Self, Self) -> Self
+pub fn FinancetimeextremePoint::cross(Self, Self) -> Self
+pub fn FinancetimeextremePoint::dist(Self, Self) -> Double
+pub fn FinancetimeextremePoint::dot(Self, Self) -> Double
+pub fn FinancetimeextremePoint::label(Self) -> Int32
+pub fn FinancetimeextremePoint::lerp(Self, Self, Double) -> Self
+pub fn FinancetimeextremePoint::mid(Self, Self) -> Self
+pub fn FinancetimeextremePoint::negate(Self) -> Self
+pub fn FinancetimeextremePoint::norm(Self) -> Double
+pub fn FinancetimeextremePoint::normalize(Self) -> Self
+pub fn FinancetimeextremePoint::scale(Self, Double) -> Self
+pub fn FinancetimeextremePoint::sub(Self, Self) -> Self
+pub fn FinancetimeextremePoint::to_string(Self) -> String
+pub fn FinancetimeextremePoint::x(Self) -> Double
+pub fn FinancetimeextremePoint::y(Self) -> Double
+pub fn FinancetimeextremePoint::z(Self) -> Double
+
+pub(all) struct FinancetimeextremeRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimeextremeRange::add(Self, Self) -> Self
+pub fn FinancetimeextremeRange::copy(Self) -> Self
+pub fn FinancetimeextremeRange::fill(Self, Double) -> Self
+pub fn FinancetimeextremeRange::get(Self, Int32) -> Double
+pub fn FinancetimeextremeRange::len(Self) -> Int32
+pub fn FinancetimeextremeRange::max(Self) -> Double
+pub fn FinancetimeextremeRange::mean(Self) -> Double
+pub fn FinancetimeextremeRange::min(Self) -> Double
+pub fn FinancetimeextremeRange::scale(Self, Double) -> Self
+pub fn FinancetimeextremeRange::set(Self, Int32, Double) -> Self
+pub fn FinancetimeextremeRange::sum(Self) -> Double
+pub fn FinancetimeextremeRange::to_string(Self) -> String
+
+pub(all) struct FinancetimeextremeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn FinancetimeextremeSeries::add(Self, Self) -> Self
+pub fn FinancetimeextremeSeries::cumsum(Self) -> Self
+pub fn FinancetimeextremeSeries::len(Self) -> Int32
+pub fn FinancetimeextremeSeries::max(Self) -> Double
+pub fn FinancetimeextremeSeries::mean(Self) -> Double
+pub fn FinancetimeextremeSeries::median(Self) -> Double
+pub fn FinancetimeextremeSeries::min(Self) -> Double
+pub fn FinancetimeextremeSeries::normalize(Self) -> Self
+pub fn FinancetimeextremeSeries::range(Self) -> Double
+pub fn FinancetimeextremeSeries::scale(Self, Double) -> Self
+pub fn FinancetimeextremeSeries::std(Self) -> Double
+pub fn FinancetimeextremeSeries::sub(Self, Self) -> Self
+pub fn FinancetimeextremeSeries::sum(Self) -> Double
+pub fn FinancetimeextremeSeries::to_string(Self) -> String
+pub fn FinancetimeextremeSeries::variance(Self) -> Double
+
+pub(all) struct FinancetimeextremeSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimeextremeSlice::add(Self, Self) -> Self
+pub fn FinancetimeextremeSlice::copy(Self) -> Self
+pub fn FinancetimeextremeSlice::fill(Self, Double) -> Self
+pub fn FinancetimeextremeSlice::get(Self, Int32) -> Double
+pub fn FinancetimeextremeSlice::len(Self) -> Int32
+pub fn FinancetimeextremeSlice::max(Self) -> Double
+pub fn FinancetimeextremeSlice::mean(Self) -> Double
+pub fn FinancetimeextremeSlice::min(Self) -> Double
+pub fn FinancetimeextremeSlice::scale(Self, Double) -> Self
+pub fn FinancetimeextremeSlice::set(Self, Int32, Double) -> Self
+pub fn FinancetimeextremeSlice::sum(Self) -> Double
+pub fn FinancetimeextremeSlice::to_string(Self) -> String
+
+pub(all) struct FinancetimeextremeTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimeextremeTable::add(Self, Self) -> Self
+pub fn FinancetimeextremeTable::copy(Self) -> Self
+pub fn FinancetimeextremeTable::fill(Self, Double) -> Self
+pub fn FinancetimeextremeTable::get(Self, Int32) -> Double
+pub fn FinancetimeextremeTable::len(Self) -> Int32
+pub fn FinancetimeextremeTable::max(Self) -> Double
+pub fn FinancetimeextremeTable::mean(Self) -> Double
+pub fn FinancetimeextremeTable::min(Self) -> Double
+pub fn FinancetimeextremeTable::scale(Self, Double) -> Self
+pub fn FinancetimeextremeTable::set(Self, Int32, Double) -> Self
+pub fn FinancetimeextremeTable::sum(Self) -> Double
+pub fn FinancetimeextremeTable::to_string(Self) -> String
+
+pub(all) struct FinancetimeextremeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn FinancetimeextremeVector::add(Self, Self) -> Self
+pub fn FinancetimeextremeVector::dist(Self, Self) -> Double
+pub fn FinancetimeextremeVector::dot(Self, Self) -> Double
+pub fn FinancetimeextremeVector::norm(Self) -> Double
+pub fn FinancetimeextremeVector::normalize(Self) -> Self
+pub fn FinancetimeextremeVector::scale(Self, Double) -> Self
+pub fn FinancetimeextremeVector::sub(Self, Self) -> Self
+pub fn FinancetimeextremeVector::to_string(Self) -> String
+
+pub(all) struct FinancetimeextremeView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancetimeextremeView::add(Self, Self) -> Self
+pub fn FinancetimeextremeView::copy(Self) -> Self
+pub fn FinancetimeextremeView::fill(Self, Double) -> Self
+pub fn FinancetimeextremeView::get(Self, Int32) -> Double
+pub fn FinancetimeextremeView::len(Self) -> Int32
+pub fn FinancetimeextremeView::max(Self) -> Double
+pub fn FinancetimeextremeView::mean(Self) -> Double
+pub fn FinancetimeextremeView::min(Self) -> Double
+pub fn FinancetimeextremeView::scale(Self, Double) -> Self
+pub fn FinancetimeextremeView::set(Self, Int32, Double) -> Self
+pub fn FinancetimeextremeView::sum(Self) -> Double
+pub fn FinancetimeextremeView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

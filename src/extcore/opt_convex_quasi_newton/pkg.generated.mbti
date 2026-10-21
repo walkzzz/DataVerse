@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/opt_convex_quasi_newton"
+
+// Values
+pub fn opt_convex_quasi_newton_buffer_make(Int32) -> OptconvexquasinewtonBuffer
+
+pub fn opt_convex_quasi_newton_cluster_make(Int32) -> OptconvexquasinewtonCluster
+
+pub fn opt_convex_quasi_newton_cursor_make(Int32) -> OptconvexquasinewtonCursor
+
+pub fn opt_convex_quasi_newton_edge_make(Int32) -> OptconvexquasinewtonEdge
+
+pub fn opt_convex_quasi_newton_frame_make(Int32) -> OptconvexquasinewtonFrame
+
+pub fn opt_convex_quasi_newton_graphn_make(Int32) -> OptconvexquasinewtonGraphN
+
+pub fn opt_convex_quasi_newton_layer_make(Int32) -> OptconvexquasinewtonLayer
+
+pub fn opt_convex_quasi_newton_make_matrix(Int32, Int32, Double) -> OptconvexquasinewtonMatrix
+
+pub fn opt_convex_quasi_newton_make_point(Double, Double) -> OptconvexquasinewtonPoint
+
+pub fn opt_convex_quasi_newton_make_point3(Double, Double, Double) -> OptconvexquasinewtonPoint
+
+pub fn opt_convex_quasi_newton_make_series(Array[Double], String) -> OptconvexquasinewtonSeries
+
+pub fn opt_convex_quasi_newton_make_vector(Array[Double]) -> OptconvexquasinewtonVector
+
+pub fn opt_convex_quasi_newton_matrix_identity(Int32) -> OptconvexquasinewtonMatrix
+
+pub fn opt_convex_quasi_newton_model_make(Int32) -> OptconvexquasinewtonModel
+
+pub fn opt_convex_quasi_newton_node_make(Int32) -> OptconvexquasinewtonNode
+
+pub fn opt_convex_quasi_newton_path_make(Int32) -> OptconvexquasinewtonPath
+
+pub fn opt_convex_quasi_newton_range_make(Int32) -> OptconvexquasinewtonRange
+
+pub fn opt_convex_quasi_newton_slice_make(Int32) -> OptconvexquasinewtonSlice
+
+pub fn opt_convex_quasi_newton_table_make(Int32) -> OptconvexquasinewtonTable
+
+pub fn opt_convex_quasi_newton_vector_zero(Int32) -> OptconvexquasinewtonVector
+
+pub fn opt_convex_quasi_newton_view_make(Int32) -> OptconvexquasinewtonView
+
+// Errors
+
+// Types and methods
+pub(all) struct OptconvexquasinewtonBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexquasinewtonBuffer::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonBuffer::copy(Self) -> Self
+pub fn OptconvexquasinewtonBuffer::fill(Self, Double) -> Self
+pub fn OptconvexquasinewtonBuffer::get(Self, Int32) -> Double
+pub fn OptconvexquasinewtonBuffer::len(Self) -> Int32
+pub fn OptconvexquasinewtonBuffer::max(Self) -> Double
+pub fn OptconvexquasinewtonBuffer::mean(Self) -> Double
+pub fn OptconvexquasinewtonBuffer::min(Self) -> Double
+pub fn OptconvexquasinewtonBuffer::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonBuffer::set(Self, Int32, Double) -> Self
+pub fn OptconvexquasinewtonBuffer::sum(Self) -> Double
+pub fn OptconvexquasinewtonBuffer::to_string(Self) -> String
+
+pub(all) struct OptconvexquasinewtonCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexquasinewtonCluster::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonCluster::copy(Self) -> Self
+pub fn OptconvexquasinewtonCluster::fill(Self, Double) -> Self
+pub fn OptconvexquasinewtonCluster::get(Self, Int32) -> Double
+pub fn OptconvexquasinewtonCluster::len(Self) -> Int32
+pub fn OptconvexquasinewtonCluster::max(Self) -> Double
+pub fn OptconvexquasinewtonCluster::mean(Self) -> Double
+pub fn OptconvexquasinewtonCluster::min(Self) -> Double
+pub fn OptconvexquasinewtonCluster::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonCluster::set(Self, Int32, Double) -> Self
+pub fn OptconvexquasinewtonCluster::sum(Self) -> Double
+pub fn OptconvexquasinewtonCluster::to_string(Self) -> String
+
+pub(all) struct OptconvexquasinewtonCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexquasinewtonCursor::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonCursor::copy(Self) -> Self
+pub fn OptconvexquasinewtonCursor::fill(Self, Double) -> Self
+pub fn OptconvexquasinewtonCursor::get(Self, Int32) -> Double
+pub fn OptconvexquasinewtonCursor::len(Self) -> Int32
+pub fn OptconvexquasinewtonCursor::max(Self) -> Double
+pub fn OptconvexquasinewtonCursor::mean(Self) -> Double
+pub fn OptconvexquasinewtonCursor::min(Self) -> Double
+pub fn OptconvexquasinewtonCursor::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonCursor::set(Self, Int32, Double) -> Self
+pub fn OptconvexquasinewtonCursor::sum(Self) -> Double
+pub fn OptconvexquasinewtonCursor::to_string(Self) -> String
+
+pub(all) struct OptconvexquasinewtonEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexquasinewtonEdge::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonEdge::copy(Self) -> Self
+pub fn OptconvexquasinewtonEdge::fill(Self, Double) -> Self
+pub fn OptconvexquasinewtonEdge::get(Self, Int32) -> Double
+pub fn OptconvexquasinewtonEdge::len(Self) -> Int32
+pub fn OptconvexquasinewtonEdge::max(Self) -> Double
+pub fn OptconvexquasinewtonEdge::mean(Self) -> Double
+pub fn OptconvexquasinewtonEdge::min(Self) -> Double
+pub fn OptconvexquasinewtonEdge::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonEdge::set(Self, Int32, Double) -> Self
+pub fn OptconvexquasinewtonEdge::sum(Self) -> Double
+pub fn OptconvexquasinewtonEdge::to_string(Self) -> String
+
+pub(all) struct OptconvexquasinewtonFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexquasinewtonFrame::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonFrame::copy(Self) -> Self
+pub fn OptconvexquasinewtonFrame::fill(Self, Double) -> Self
+pub fn OptconvexquasinewtonFrame::get(Self, Int32) -> Double
+pub fn OptconvexquasinewtonFrame::len(Self) -> Int32
+pub fn OptconvexquasinewtonFrame::max(Self) -> Double
+pub fn OptconvexquasinewtonFrame::mean(Self) -> Double
+pub fn OptconvexquasinewtonFrame::min(Self) -> Double
+pub fn OptconvexquasinewtonFrame::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonFrame::set(Self, Int32, Double) -> Self
+pub fn OptconvexquasinewtonFrame::sum(Self) -> Double
+pub fn OptconvexquasinewtonFrame::to_string(Self) -> String
+
+pub(all) struct OptconvexquasinewtonGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexquasinewtonGraphN::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonGraphN::copy(Self) -> Self
+pub fn OptconvexquasinewtonGraphN::fill(Self, Double) -> Self
+pub fn OptconvexquasinewtonGraphN::get(Self, Int32) -> Double
+pub fn OptconvexquasinewtonGraphN::len(Self) -> Int32
+pub fn OptconvexquasinewtonGraphN::max(Self) -> Double
+pub fn OptconvexquasinewtonGraphN::mean(Self) -> Double
+pub fn OptconvexquasinewtonGraphN::min(Self) -> Double
+pub fn OptconvexquasinewtonGraphN::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonGraphN::set(Self, Int32, Double) -> Self
+pub fn OptconvexquasinewtonGraphN::sum(Self) -> Double
+pub fn OptconvexquasinewtonGraphN::to_string(Self) -> String
+
+pub(all) struct OptconvexquasinewtonLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexquasinewtonLayer::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonLayer::copy(Self) -> Self
+pub fn OptconvexquasinewtonLayer::fill(Self, Double) -> Self
+pub fn OptconvexquasinewtonLayer::get(Self, Int32) -> Double
+pub fn OptconvexquasinewtonLayer::len(Self) -> Int32
+pub fn OptconvexquasinewtonLayer::max(Self) -> Double
+pub fn OptconvexquasinewtonLayer::mean(Self) -> Double
+pub fn OptconvexquasinewtonLayer::min(Self) -> Double
+pub fn OptconvexquasinewtonLayer::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonLayer::set(Self, Int32, Double) -> Self
+pub fn OptconvexquasinewtonLayer::sum(Self) -> Double
+pub fn OptconvexquasinewtonLayer::to_string(Self) -> String
+
+pub(all) struct OptconvexquasinewtonMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn OptconvexquasinewtonMatrix::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonMatrix::det(Self) -> Double
+pub fn OptconvexquasinewtonMatrix::get(Self, Int32, Int32) -> Double
+pub fn OptconvexquasinewtonMatrix::multiply(Self, Self) -> Self
+pub fn OptconvexquasinewtonMatrix::norm(Self) -> Double
+pub fn OptconvexquasinewtonMatrix::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonMatrix::to_string(Self) -> String
+pub fn OptconvexquasinewtonMatrix::trace(Self) -> Double
+pub fn OptconvexquasinewtonMatrix::transpose(Self) -> Self
+
+pub(all) struct OptconvexquasinewtonModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexquasinewtonModel::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonModel::copy(Self) -> Self
+pub fn OptconvexquasinewtonModel::fill(Self, Double) -> Self
+pub fn OptconvexquasinewtonModel::get(Self, Int32) -> Double
+pub fn OptconvexquasinewtonModel::len(Self) -> Int32
+pub fn OptconvexquasinewtonModel::max(Self) -> Double
+pub fn OptconvexquasinewtonModel::mean(Self) -> Double
+pub fn OptconvexquasinewtonModel::min(Self) -> Double
+pub fn OptconvexquasinewtonModel::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonModel::set(Self, Int32, Double) -> Self
+pub fn OptconvexquasinewtonModel::sum(Self) -> Double
+pub fn OptconvexquasinewtonModel::to_string(Self) -> String
+
+pub(all) struct OptconvexquasinewtonNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexquasinewtonNode::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonNode::copy(Self) -> Self
+pub fn OptconvexquasinewtonNode::fill(Self, Double) -> Self
+pub fn OptconvexquasinewtonNode::get(Self, Int32) -> Double
+pub fn OptconvexquasinewtonNode::len(Self) -> Int32
+pub fn OptconvexquasinewtonNode::max(Self) -> Double
+pub fn OptconvexquasinewtonNode::mean(Self) -> Double
+pub fn OptconvexquasinewtonNode::min(Self) -> Double
+pub fn OptconvexquasinewtonNode::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonNode::set(Self, Int32, Double) -> Self
+pub fn OptconvexquasinewtonNode::sum(Self) -> Double
+pub fn OptconvexquasinewtonNode::to_string(Self) -> String
+
+pub(all) struct OptconvexquasinewtonPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexquasinewtonPath::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonPath::copy(Self) -> Self
+pub fn OptconvexquasinewtonPath::fill(Self, Double) -> Self
+pub fn OptconvexquasinewtonPath::get(Self, Int32) -> Double
+pub fn OptconvexquasinewtonPath::len(Self) -> Int32
+pub fn OptconvexquasinewtonPath::max(Self) -> Double
+pub fn OptconvexquasinewtonPath::mean(Self) -> Double
+pub fn OptconvexquasinewtonPath::min(Self) -> Double
+pub fn OptconvexquasinewtonPath::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonPath::set(Self, Int32, Double) -> Self
+pub fn OptconvexquasinewtonPath::sum(Self) -> Double
+pub fn OptconvexquasinewtonPath::to_string(Self) -> String
+
+pub(all) struct OptconvexquasinewtonPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn OptconvexquasinewtonPoint::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonPoint::cross(Self, Self) -> Self
+pub fn OptconvexquasinewtonPoint::dist(Self, Self) -> Double
+pub fn OptconvexquasinewtonPoint::dot(Self, Self) -> Double
+pub fn OptconvexquasinewtonPoint::label(Self) -> Int32
+pub fn OptconvexquasinewtonPoint::lerp(Self, Self, Double) -> Self
+pub fn OptconvexquasinewtonPoint::mid(Self, Self) -> Self
+pub fn OptconvexquasinewtonPoint::negate(Self) -> Self
+pub fn OptconvexquasinewtonPoint::norm(Self) -> Double
+pub fn OptconvexquasinewtonPoint::normalize(Self) -> Self
+pub fn OptconvexquasinewtonPoint::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonPoint::sub(Self, Self) -> Self
+pub fn OptconvexquasinewtonPoint::to_string(Self) -> String
+pub fn OptconvexquasinewtonPoint::x(Self) -> Double
+pub fn OptconvexquasinewtonPoint::y(Self) -> Double
+pub fn OptconvexquasinewtonPoint::z(Self) -> Double
+
+pub(all) struct OptconvexquasinewtonRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexquasinewtonRange::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonRange::copy(Self) -> Self
+pub fn OptconvexquasinewtonRange::fill(Self, Double) -> Self
+pub fn OptconvexquasinewtonRange::get(Self, Int32) -> Double
+pub fn OptconvexquasinewtonRange::len(Self) -> Int32
+pub fn OptconvexquasinewtonRange::max(Self) -> Double
+pub fn OptconvexquasinewtonRange::mean(Self) -> Double
+pub fn OptconvexquasinewtonRange::min(Self) -> Double
+pub fn OptconvexquasinewtonRange::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonRange::set(Self, Int32, Double) -> Self
+pub fn OptconvexquasinewtonRange::sum(Self) -> Double
+pub fn OptconvexquasinewtonRange::to_string(Self) -> String
+
+pub(all) struct OptconvexquasinewtonSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn OptconvexquasinewtonSeries::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonSeries::cumsum(Self) -> Self
+pub fn OptconvexquasinewtonSeries::len(Self) -> Int32
+pub fn OptconvexquasinewtonSeries::max(Self) -> Double
+pub fn OptconvexquasinewtonSeries::mean(Self) -> Double
+pub fn OptconvexquasinewtonSeries::median(Self) -> Double
+pub fn OptconvexquasinewtonSeries::min(Self) -> Double
+pub fn OptconvexquasinewtonSeries::normalize(Self) -> Self
+pub fn OptconvexquasinewtonSeries::range(Self) -> Double
+pub fn OptconvexquasinewtonSeries::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonSeries::std(Self) -> Double
+pub fn OptconvexquasinewtonSeries::sub(Self, Self) -> Self
+pub fn OptconvexquasinewtonSeries::sum(Self) -> Double
+pub fn OptconvexquasinewtonSeries::to_string(Self) -> String
+pub fn OptconvexquasinewtonSeries::variance(Self) -> Double
+
+pub(all) struct OptconvexquasinewtonSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexquasinewtonSlice::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonSlice::copy(Self) -> Self
+pub fn OptconvexquasinewtonSlice::fill(Self, Double) -> Self
+pub fn OptconvexquasinewtonSlice::get(Self, Int32) -> Double
+pub fn OptconvexquasinewtonSlice::len(Self) -> Int32
+pub fn OptconvexquasinewtonSlice::max(Self) -> Double
+pub fn OptconvexquasinewtonSlice::mean(Self) -> Double
+pub fn OptconvexquasinewtonSlice::min(Self) -> Double
+pub fn OptconvexquasinewtonSlice::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonSlice::set(Self, Int32, Double) -> Self
+pub fn OptconvexquasinewtonSlice::sum(Self) -> Double
+pub fn OptconvexquasinewtonSlice::to_string(Self) -> String
+
+pub(all) struct OptconvexquasinewtonTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexquasinewtonTable::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonTable::copy(Self) -> Self
+pub fn OptconvexquasinewtonTable::fill(Self, Double) -> Self
+pub fn OptconvexquasinewtonTable::get(Self, Int32) -> Double
+pub fn OptconvexquasinewtonTable::len(Self) -> Int32
+pub fn OptconvexquasinewtonTable::max(Self) -> Double
+pub fn OptconvexquasinewtonTable::mean(Self) -> Double
+pub fn OptconvexquasinewtonTable::min(Self) -> Double
+pub fn OptconvexquasinewtonTable::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonTable::set(Self, Int32, Double) -> Self
+pub fn OptconvexquasinewtonTable::sum(Self) -> Double
+pub fn OptconvexquasinewtonTable::to_string(Self) -> String
+
+pub(all) struct OptconvexquasinewtonVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn OptconvexquasinewtonVector::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonVector::dist(Self, Self) -> Double
+pub fn OptconvexquasinewtonVector::dot(Self, Self) -> Double
+pub fn OptconvexquasinewtonVector::norm(Self) -> Double
+pub fn OptconvexquasinewtonVector::normalize(Self) -> Self
+pub fn OptconvexquasinewtonVector::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonVector::sub(Self, Self) -> Self
+pub fn OptconvexquasinewtonVector::to_string(Self) -> String
+
+pub(all) struct OptconvexquasinewtonView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexquasinewtonView::add(Self, Self) -> Self
+pub fn OptconvexquasinewtonView::copy(Self) -> Self
+pub fn OptconvexquasinewtonView::fill(Self, Double) -> Self
+pub fn OptconvexquasinewtonView::get(Self, Int32) -> Double
+pub fn OptconvexquasinewtonView::len(Self) -> Int32
+pub fn OptconvexquasinewtonView::max(Self) -> Double
+pub fn OptconvexquasinewtonView::mean(Self) -> Double
+pub fn OptconvexquasinewtonView::min(Self) -> Double
+pub fn OptconvexquasinewtonView::scale(Self, Double) -> Self
+pub fn OptconvexquasinewtonView::set(Self, Int32, Double) -> Self
+pub fn OptconvexquasinewtonView::sum(Self) -> Double
+pub fn OptconvexquasinewtonView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

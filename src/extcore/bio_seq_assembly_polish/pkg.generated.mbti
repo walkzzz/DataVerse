@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/bio_seq_assembly_polish"
+
+// Values
+pub fn bio_seq_assembly_polish_buffer_make(Int32) -> BioseqassemblypolishBuffer
+
+pub fn bio_seq_assembly_polish_cluster_make(Int32) -> BioseqassemblypolishCluster
+
+pub fn bio_seq_assembly_polish_cursor_make(Int32) -> BioseqassemblypolishCursor
+
+pub fn bio_seq_assembly_polish_edge_make(Int32) -> BioseqassemblypolishEdge
+
+pub fn bio_seq_assembly_polish_frame_make(Int32) -> BioseqassemblypolishFrame
+
+pub fn bio_seq_assembly_polish_graphn_make(Int32) -> BioseqassemblypolishGraphN
+
+pub fn bio_seq_assembly_polish_layer_make(Int32) -> BioseqassemblypolishLayer
+
+pub fn bio_seq_assembly_polish_make_matrix(Int32, Int32, Double) -> BioseqassemblypolishMatrix
+
+pub fn bio_seq_assembly_polish_make_point(Double, Double) -> BioseqassemblypolishPoint
+
+pub fn bio_seq_assembly_polish_make_point3(Double, Double, Double) -> BioseqassemblypolishPoint
+
+pub fn bio_seq_assembly_polish_make_series(Array[Double], String) -> BioseqassemblypolishSeries
+
+pub fn bio_seq_assembly_polish_make_vector(Array[Double]) -> BioseqassemblypolishVector
+
+pub fn bio_seq_assembly_polish_matrix_identity(Int32) -> BioseqassemblypolishMatrix
+
+pub fn bio_seq_assembly_polish_model_make(Int32) -> BioseqassemblypolishModel
+
+pub fn bio_seq_assembly_polish_node_make(Int32) -> BioseqassemblypolishNode
+
+pub fn bio_seq_assembly_polish_path_make(Int32) -> BioseqassemblypolishPath
+
+pub fn bio_seq_assembly_polish_range_make(Int32) -> BioseqassemblypolishRange
+
+pub fn bio_seq_assembly_polish_slice_make(Int32) -> BioseqassemblypolishSlice
+
+pub fn bio_seq_assembly_polish_table_make(Int32) -> BioseqassemblypolishTable
+
+pub fn bio_seq_assembly_polish_vector_zero(Int32) -> BioseqassemblypolishVector
+
+pub fn bio_seq_assembly_polish_view_make(Int32) -> BioseqassemblypolishView
+
+// Errors
+
+// Types and methods
+pub(all) struct BioseqassemblypolishBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblypolishBuffer::add(Self, Self) -> Self
+pub fn BioseqassemblypolishBuffer::copy(Self) -> Self
+pub fn BioseqassemblypolishBuffer::fill(Self, Double) -> Self
+pub fn BioseqassemblypolishBuffer::get(Self, Int32) -> Double
+pub fn BioseqassemblypolishBuffer::len(Self) -> Int32
+pub fn BioseqassemblypolishBuffer::max(Self) -> Double
+pub fn BioseqassemblypolishBuffer::mean(Self) -> Double
+pub fn BioseqassemblypolishBuffer::min(Self) -> Double
+pub fn BioseqassemblypolishBuffer::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishBuffer::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblypolishBuffer::sum(Self) -> Double
+pub fn BioseqassemblypolishBuffer::to_string(Self) -> String
+
+pub(all) struct BioseqassemblypolishCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblypolishCluster::add(Self, Self) -> Self
+pub fn BioseqassemblypolishCluster::copy(Self) -> Self
+pub fn BioseqassemblypolishCluster::fill(Self, Double) -> Self
+pub fn BioseqassemblypolishCluster::get(Self, Int32) -> Double
+pub fn BioseqassemblypolishCluster::len(Self) -> Int32
+pub fn BioseqassemblypolishCluster::max(Self) -> Double
+pub fn BioseqassemblypolishCluster::mean(Self) -> Double
+pub fn BioseqassemblypolishCluster::min(Self) -> Double
+pub fn BioseqassemblypolishCluster::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishCluster::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblypolishCluster::sum(Self) -> Double
+pub fn BioseqassemblypolishCluster::to_string(Self) -> String
+
+pub(all) struct BioseqassemblypolishCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblypolishCursor::add(Self, Self) -> Self
+pub fn BioseqassemblypolishCursor::copy(Self) -> Self
+pub fn BioseqassemblypolishCursor::fill(Self, Double) -> Self
+pub fn BioseqassemblypolishCursor::get(Self, Int32) -> Double
+pub fn BioseqassemblypolishCursor::len(Self) -> Int32
+pub fn BioseqassemblypolishCursor::max(Self) -> Double
+pub fn BioseqassemblypolishCursor::mean(Self) -> Double
+pub fn BioseqassemblypolishCursor::min(Self) -> Double
+pub fn BioseqassemblypolishCursor::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishCursor::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblypolishCursor::sum(Self) -> Double
+pub fn BioseqassemblypolishCursor::to_string(Self) -> String
+
+pub(all) struct BioseqassemblypolishEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblypolishEdge::add(Self, Self) -> Self
+pub fn BioseqassemblypolishEdge::copy(Self) -> Self
+pub fn BioseqassemblypolishEdge::fill(Self, Double) -> Self
+pub fn BioseqassemblypolishEdge::get(Self, Int32) -> Double
+pub fn BioseqassemblypolishEdge::len(Self) -> Int32
+pub fn BioseqassemblypolishEdge::max(Self) -> Double
+pub fn BioseqassemblypolishEdge::mean(Self) -> Double
+pub fn BioseqassemblypolishEdge::min(Self) -> Double
+pub fn BioseqassemblypolishEdge::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishEdge::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblypolishEdge::sum(Self) -> Double
+pub fn BioseqassemblypolishEdge::to_string(Self) -> String
+
+pub(all) struct BioseqassemblypolishFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblypolishFrame::add(Self, Self) -> Self
+pub fn BioseqassemblypolishFrame::copy(Self) -> Self
+pub fn BioseqassemblypolishFrame::fill(Self, Double) -> Self
+pub fn BioseqassemblypolishFrame::get(Self, Int32) -> Double
+pub fn BioseqassemblypolishFrame::len(Self) -> Int32
+pub fn BioseqassemblypolishFrame::max(Self) -> Double
+pub fn BioseqassemblypolishFrame::mean(Self) -> Double
+pub fn BioseqassemblypolishFrame::min(Self) -> Double
+pub fn BioseqassemblypolishFrame::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishFrame::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblypolishFrame::sum(Self) -> Double
+pub fn BioseqassemblypolishFrame::to_string(Self) -> String
+
+pub(all) struct BioseqassemblypolishGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblypolishGraphN::add(Self, Self) -> Self
+pub fn BioseqassemblypolishGraphN::copy(Self) -> Self
+pub fn BioseqassemblypolishGraphN::fill(Self, Double) -> Self
+pub fn BioseqassemblypolishGraphN::get(Self, Int32) -> Double
+pub fn BioseqassemblypolishGraphN::len(Self) -> Int32
+pub fn BioseqassemblypolishGraphN::max(Self) -> Double
+pub fn BioseqassemblypolishGraphN::mean(Self) -> Double
+pub fn BioseqassemblypolishGraphN::min(Self) -> Double
+pub fn BioseqassemblypolishGraphN::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishGraphN::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblypolishGraphN::sum(Self) -> Double
+pub fn BioseqassemblypolishGraphN::to_string(Self) -> String
+
+pub(all) struct BioseqassemblypolishLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblypolishLayer::add(Self, Self) -> Self
+pub fn BioseqassemblypolishLayer::copy(Self) -> Self
+pub fn BioseqassemblypolishLayer::fill(Self, Double) -> Self
+pub fn BioseqassemblypolishLayer::get(Self, Int32) -> Double
+pub fn BioseqassemblypolishLayer::len(Self) -> Int32
+pub fn BioseqassemblypolishLayer::max(Self) -> Double
+pub fn BioseqassemblypolishLayer::mean(Self) -> Double
+pub fn BioseqassemblypolishLayer::min(Self) -> Double
+pub fn BioseqassemblypolishLayer::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishLayer::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblypolishLayer::sum(Self) -> Double
+pub fn BioseqassemblypolishLayer::to_string(Self) -> String
+
+pub(all) struct BioseqassemblypolishMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn BioseqassemblypolishMatrix::add(Self, Self) -> Self
+pub fn BioseqassemblypolishMatrix::det(Self) -> Double
+pub fn BioseqassemblypolishMatrix::get(Self, Int32, Int32) -> Double
+pub fn BioseqassemblypolishMatrix::multiply(Self, Self) -> Self
+pub fn BioseqassemblypolishMatrix::norm(Self) -> Double
+pub fn BioseqassemblypolishMatrix::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishMatrix::to_string(Self) -> String
+pub fn BioseqassemblypolishMatrix::trace(Self) -> Double
+pub fn BioseqassemblypolishMatrix::transpose(Self) -> Self
+
+pub(all) struct BioseqassemblypolishModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblypolishModel::add(Self, Self) -> Self
+pub fn BioseqassemblypolishModel::copy(Self) -> Self
+pub fn BioseqassemblypolishModel::fill(Self, Double) -> Self
+pub fn BioseqassemblypolishModel::get(Self, Int32) -> Double
+pub fn BioseqassemblypolishModel::len(Self) -> Int32
+pub fn BioseqassemblypolishModel::max(Self) -> Double
+pub fn BioseqassemblypolishModel::mean(Self) -> Double
+pub fn BioseqassemblypolishModel::min(Self) -> Double
+pub fn BioseqassemblypolishModel::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishModel::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblypolishModel::sum(Self) -> Double
+pub fn BioseqassemblypolishModel::to_string(Self) -> String
+
+pub(all) struct BioseqassemblypolishNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblypolishNode::add(Self, Self) -> Self
+pub fn BioseqassemblypolishNode::copy(Self) -> Self
+pub fn BioseqassemblypolishNode::fill(Self, Double) -> Self
+pub fn BioseqassemblypolishNode::get(Self, Int32) -> Double
+pub fn BioseqassemblypolishNode::len(Self) -> Int32
+pub fn BioseqassemblypolishNode::max(Self) -> Double
+pub fn BioseqassemblypolishNode::mean(Self) -> Double
+pub fn BioseqassemblypolishNode::min(Self) -> Double
+pub fn BioseqassemblypolishNode::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishNode::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblypolishNode::sum(Self) -> Double
+pub fn BioseqassemblypolishNode::to_string(Self) -> String
+
+pub(all) struct BioseqassemblypolishPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblypolishPath::add(Self, Self) -> Self
+pub fn BioseqassemblypolishPath::copy(Self) -> Self
+pub fn BioseqassemblypolishPath::fill(Self, Double) -> Self
+pub fn BioseqassemblypolishPath::get(Self, Int32) -> Double
+pub fn BioseqassemblypolishPath::len(Self) -> Int32
+pub fn BioseqassemblypolishPath::max(Self) -> Double
+pub fn BioseqassemblypolishPath::mean(Self) -> Double
+pub fn BioseqassemblypolishPath::min(Self) -> Double
+pub fn BioseqassemblypolishPath::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishPath::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblypolishPath::sum(Self) -> Double
+pub fn BioseqassemblypolishPath::to_string(Self) -> String
+
+pub(all) struct BioseqassemblypolishPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn BioseqassemblypolishPoint::add(Self, Self) -> Self
+pub fn BioseqassemblypolishPoint::cross(Self, Self) -> Self
+pub fn BioseqassemblypolishPoint::dist(Self, Self) -> Double
+pub fn BioseqassemblypolishPoint::dot(Self, Self) -> Double
+pub fn BioseqassemblypolishPoint::label(Self) -> Int32
+pub fn BioseqassemblypolishPoint::lerp(Self, Self, Double) -> Self
+pub fn BioseqassemblypolishPoint::mid(Self, Self) -> Self
+pub fn BioseqassemblypolishPoint::negate(Self) -> Self
+pub fn BioseqassemblypolishPoint::norm(Self) -> Double
+pub fn BioseqassemblypolishPoint::normalize(Self) -> Self
+pub fn BioseqassemblypolishPoint::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishPoint::sub(Self, Self) -> Self
+pub fn BioseqassemblypolishPoint::to_string(Self) -> String
+pub fn BioseqassemblypolishPoint::x(Self) -> Double
+pub fn BioseqassemblypolishPoint::y(Self) -> Double
+pub fn BioseqassemblypolishPoint::z(Self) -> Double
+
+pub(all) struct BioseqassemblypolishRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblypolishRange::add(Self, Self) -> Self
+pub fn BioseqassemblypolishRange::copy(Self) -> Self
+pub fn BioseqassemblypolishRange::fill(Self, Double) -> Self
+pub fn BioseqassemblypolishRange::get(Self, Int32) -> Double
+pub fn BioseqassemblypolishRange::len(Self) -> Int32
+pub fn BioseqassemblypolishRange::max(Self) -> Double
+pub fn BioseqassemblypolishRange::mean(Self) -> Double
+pub fn BioseqassemblypolishRange::min(Self) -> Double
+pub fn BioseqassemblypolishRange::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishRange::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblypolishRange::sum(Self) -> Double
+pub fn BioseqassemblypolishRange::to_string(Self) -> String
+
+pub(all) struct BioseqassemblypolishSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn BioseqassemblypolishSeries::add(Self, Self) -> Self
+pub fn BioseqassemblypolishSeries::cumsum(Self) -> Self
+pub fn BioseqassemblypolishSeries::len(Self) -> Int32
+pub fn BioseqassemblypolishSeries::max(Self) -> Double
+pub fn BioseqassemblypolishSeries::mean(Self) -> Double
+pub fn BioseqassemblypolishSeries::median(Self) -> Double
+pub fn BioseqassemblypolishSeries::min(Self) -> Double
+pub fn BioseqassemblypolishSeries::normalize(Self) -> Self
+pub fn BioseqassemblypolishSeries::range(Self) -> Double
+pub fn BioseqassemblypolishSeries::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishSeries::std(Self) -> Double
+pub fn BioseqassemblypolishSeries::sub(Self, Self) -> Self
+pub fn BioseqassemblypolishSeries::sum(Self) -> Double
+pub fn BioseqassemblypolishSeries::to_string(Self) -> String
+pub fn BioseqassemblypolishSeries::variance(Self) -> Double
+
+pub(all) struct BioseqassemblypolishSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblypolishSlice::add(Self, Self) -> Self
+pub fn BioseqassemblypolishSlice::copy(Self) -> Self
+pub fn BioseqassemblypolishSlice::fill(Self, Double) -> Self
+pub fn BioseqassemblypolishSlice::get(Self, Int32) -> Double
+pub fn BioseqassemblypolishSlice::len(Self) -> Int32
+pub fn BioseqassemblypolishSlice::max(Self) -> Double
+pub fn BioseqassemblypolishSlice::mean(Self) -> Double
+pub fn BioseqassemblypolishSlice::min(Self) -> Double
+pub fn BioseqassemblypolishSlice::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishSlice::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblypolishSlice::sum(Self) -> Double
+pub fn BioseqassemblypolishSlice::to_string(Self) -> String
+
+pub(all) struct BioseqassemblypolishTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblypolishTable::add(Self, Self) -> Self
+pub fn BioseqassemblypolishTable::copy(Self) -> Self
+pub fn BioseqassemblypolishTable::fill(Self, Double) -> Self
+pub fn BioseqassemblypolishTable::get(Self, Int32) -> Double
+pub fn BioseqassemblypolishTable::len(Self) -> Int32
+pub fn BioseqassemblypolishTable::max(Self) -> Double
+pub fn BioseqassemblypolishTable::mean(Self) -> Double
+pub fn BioseqassemblypolishTable::min(Self) -> Double
+pub fn BioseqassemblypolishTable::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishTable::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblypolishTable::sum(Self) -> Double
+pub fn BioseqassemblypolishTable::to_string(Self) -> String
+
+pub(all) struct BioseqassemblypolishVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn BioseqassemblypolishVector::add(Self, Self) -> Self
+pub fn BioseqassemblypolishVector::dist(Self, Self) -> Double
+pub fn BioseqassemblypolishVector::dot(Self, Self) -> Double
+pub fn BioseqassemblypolishVector::norm(Self) -> Double
+pub fn BioseqassemblypolishVector::normalize(Self) -> Self
+pub fn BioseqassemblypolishVector::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishVector::sub(Self, Self) -> Self
+pub fn BioseqassemblypolishVector::to_string(Self) -> String
+
+pub(all) struct BioseqassemblypolishView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblypolishView::add(Self, Self) -> Self
+pub fn BioseqassemblypolishView::copy(Self) -> Self
+pub fn BioseqassemblypolishView::fill(Self, Double) -> Self
+pub fn BioseqassemblypolishView::get(Self, Int32) -> Double
+pub fn BioseqassemblypolishView::len(Self) -> Int32
+pub fn BioseqassemblypolishView::max(Self) -> Double
+pub fn BioseqassemblypolishView::mean(Self) -> Double
+pub fn BioseqassemblypolishView::min(Self) -> Double
+pub fn BioseqassemblypolishView::scale(Self, Double) -> Self
+pub fn BioseqassemblypolishView::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblypolishView::sum(Self) -> Double
+pub fn BioseqassemblypolishView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_index_brin"
+
+// Values
+pub fn db_index_brin_buffer_make(Int32) -> DbindexbrinBuffer
+
+pub fn db_index_brin_cluster_make(Int32) -> DbindexbrinCluster
+
+pub fn db_index_brin_cursor_make(Int32) -> DbindexbrinCursor
+
+pub fn db_index_brin_edge_make(Int32) -> DbindexbrinEdge
+
+pub fn db_index_brin_frame_make(Int32) -> DbindexbrinFrame
+
+pub fn db_index_brin_graphn_make(Int32) -> DbindexbrinGraphN
+
+pub fn db_index_brin_layer_make(Int32) -> DbindexbrinLayer
+
+pub fn db_index_brin_make_matrix(Int32, Int32, Double) -> DbindexbrinMatrix
+
+pub fn db_index_brin_make_point(Double, Double) -> DbindexbrinPoint
+
+pub fn db_index_brin_make_point3(Double, Double, Double) -> DbindexbrinPoint
+
+pub fn db_index_brin_make_series(Array[Double], String) -> DbindexbrinSeries
+
+pub fn db_index_brin_make_vector(Array[Double]) -> DbindexbrinVector
+
+pub fn db_index_brin_matrix_identity(Int32) -> DbindexbrinMatrix
+
+pub fn db_index_brin_model_make(Int32) -> DbindexbrinModel
+
+pub fn db_index_brin_node_make(Int32) -> DbindexbrinNode
+
+pub fn db_index_brin_path_make(Int32) -> DbindexbrinPath
+
+pub fn db_index_brin_range_make(Int32) -> DbindexbrinRange
+
+pub fn db_index_brin_slice_make(Int32) -> DbindexbrinSlice
+
+pub fn db_index_brin_table_make(Int32) -> DbindexbrinTable
+
+pub fn db_index_brin_vector_zero(Int32) -> DbindexbrinVector
+
+pub fn db_index_brin_view_make(Int32) -> DbindexbrinView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbindexbrinBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbrinBuffer::add(Self, Self) -> Self
+pub fn DbindexbrinBuffer::copy(Self) -> Self
+pub fn DbindexbrinBuffer::fill(Self, Double) -> Self
+pub fn DbindexbrinBuffer::get(Self, Int32) -> Double
+pub fn DbindexbrinBuffer::len(Self) -> Int32
+pub fn DbindexbrinBuffer::max(Self) -> Double
+pub fn DbindexbrinBuffer::mean(Self) -> Double
+pub fn DbindexbrinBuffer::min(Self) -> Double
+pub fn DbindexbrinBuffer::scale(Self, Double) -> Self
+pub fn DbindexbrinBuffer::set(Self, Int32, Double) -> Self
+pub fn DbindexbrinBuffer::sum(Self) -> Double
+pub fn DbindexbrinBuffer::to_string(Self) -> String
+
+pub(all) struct DbindexbrinCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbrinCluster::add(Self, Self) -> Self
+pub fn DbindexbrinCluster::copy(Self) -> Self
+pub fn DbindexbrinCluster::fill(Self, Double) -> Self
+pub fn DbindexbrinCluster::get(Self, Int32) -> Double
+pub fn DbindexbrinCluster::len(Self) -> Int32
+pub fn DbindexbrinCluster::max(Self) -> Double
+pub fn DbindexbrinCluster::mean(Self) -> Double
+pub fn DbindexbrinCluster::min(Self) -> Double
+pub fn DbindexbrinCluster::scale(Self, Double) -> Self
+pub fn DbindexbrinCluster::set(Self, Int32, Double) -> Self
+pub fn DbindexbrinCluster::sum(Self) -> Double
+pub fn DbindexbrinCluster::to_string(Self) -> String
+
+pub(all) struct DbindexbrinCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbrinCursor::add(Self, Self) -> Self
+pub fn DbindexbrinCursor::copy(Self) -> Self
+pub fn DbindexbrinCursor::fill(Self, Double) -> Self
+pub fn DbindexbrinCursor::get(Self, Int32) -> Double
+pub fn DbindexbrinCursor::len(Self) -> Int32
+pub fn DbindexbrinCursor::max(Self) -> Double
+pub fn DbindexbrinCursor::mean(Self) -> Double
+pub fn DbindexbrinCursor::min(Self) -> Double
+pub fn DbindexbrinCursor::scale(Self, Double) -> Self
+pub fn DbindexbrinCursor::set(Self, Int32, Double) -> Self
+pub fn DbindexbrinCursor::sum(Self) -> Double
+pub fn DbindexbrinCursor::to_string(Self) -> String
+
+pub(all) struct DbindexbrinEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbrinEdge::add(Self, Self) -> Self
+pub fn DbindexbrinEdge::copy(Self) -> Self
+pub fn DbindexbrinEdge::fill(Self, Double) -> Self
+pub fn DbindexbrinEdge::get(Self, Int32) -> Double
+pub fn DbindexbrinEdge::len(Self) -> Int32
+pub fn DbindexbrinEdge::max(Self) -> Double
+pub fn DbindexbrinEdge::mean(Self) -> Double
+pub fn DbindexbrinEdge::min(Self) -> Double
+pub fn DbindexbrinEdge::scale(Self, Double) -> Self
+pub fn DbindexbrinEdge::set(Self, Int32, Double) -> Self
+pub fn DbindexbrinEdge::sum(Self) -> Double
+pub fn DbindexbrinEdge::to_string(Self) -> String
+
+pub(all) struct DbindexbrinFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbrinFrame::add(Self, Self) -> Self
+pub fn DbindexbrinFrame::copy(Self) -> Self
+pub fn DbindexbrinFrame::fill(Self, Double) -> Self
+pub fn DbindexbrinFrame::get(Self, Int32) -> Double
+pub fn DbindexbrinFrame::len(Self) -> Int32
+pub fn DbindexbrinFrame::max(Self) -> Double
+pub fn DbindexbrinFrame::mean(Self) -> Double
+pub fn DbindexbrinFrame::min(Self) -> Double
+pub fn DbindexbrinFrame::scale(Self, Double) -> Self
+pub fn DbindexbrinFrame::set(Self, Int32, Double) -> Self
+pub fn DbindexbrinFrame::sum(Self) -> Double
+pub fn DbindexbrinFrame::to_string(Self) -> String
+
+pub(all) struct DbindexbrinGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbrinGraphN::add(Self, Self) -> Self
+pub fn DbindexbrinGraphN::copy(Self) -> Self
+pub fn DbindexbrinGraphN::fill(Self, Double) -> Self
+pub fn DbindexbrinGraphN::get(Self, Int32) -> Double
+pub fn DbindexbrinGraphN::len(Self) -> Int32
+pub fn DbindexbrinGraphN::max(Self) -> Double
+pub fn DbindexbrinGraphN::mean(Self) -> Double
+pub fn DbindexbrinGraphN::min(Self) -> Double
+pub fn DbindexbrinGraphN::scale(Self, Double) -> Self
+pub fn DbindexbrinGraphN::set(Self, Int32, Double) -> Self
+pub fn DbindexbrinGraphN::sum(Self) -> Double
+pub fn DbindexbrinGraphN::to_string(Self) -> String
+
+pub(all) struct DbindexbrinLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbrinLayer::add(Self, Self) -> Self
+pub fn DbindexbrinLayer::copy(Self) -> Self
+pub fn DbindexbrinLayer::fill(Self, Double) -> Self
+pub fn DbindexbrinLayer::get(Self, Int32) -> Double
+pub fn DbindexbrinLayer::len(Self) -> Int32
+pub fn DbindexbrinLayer::max(Self) -> Double
+pub fn DbindexbrinLayer::mean(Self) -> Double
+pub fn DbindexbrinLayer::min(Self) -> Double
+pub fn DbindexbrinLayer::scale(Self, Double) -> Self
+pub fn DbindexbrinLayer::set(Self, Int32, Double) -> Self
+pub fn DbindexbrinLayer::sum(Self) -> Double
+pub fn DbindexbrinLayer::to_string(Self) -> String
+
+pub(all) struct DbindexbrinMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbindexbrinMatrix::add(Self, Self) -> Self
+pub fn DbindexbrinMatrix::det(Self) -> Double
+pub fn DbindexbrinMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbindexbrinMatrix::multiply(Self, Self) -> Self
+pub fn DbindexbrinMatrix::norm(Self) -> Double
+pub fn DbindexbrinMatrix::scale(Self, Double) -> Self
+pub fn DbindexbrinMatrix::to_string(Self) -> String
+pub fn DbindexbrinMatrix::trace(Self) -> Double
+pub fn DbindexbrinMatrix::transpose(Self) -> Self
+
+pub(all) struct DbindexbrinModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbrinModel::add(Self, Self) -> Self
+pub fn DbindexbrinModel::copy(Self) -> Self
+pub fn DbindexbrinModel::fill(Self, Double) -> Self
+pub fn DbindexbrinModel::get(Self, Int32) -> Double
+pub fn DbindexbrinModel::len(Self) -> Int32
+pub fn DbindexbrinModel::max(Self) -> Double
+pub fn DbindexbrinModel::mean(Self) -> Double
+pub fn DbindexbrinModel::min(Self) -> Double
+pub fn DbindexbrinModel::scale(Self, Double) -> Self
+pub fn DbindexbrinModel::set(Self, Int32, Double) -> Self
+pub fn DbindexbrinModel::sum(Self) -> Double
+pub fn DbindexbrinModel::to_string(Self) -> String
+
+pub(all) struct DbindexbrinNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbrinNode::add(Self, Self) -> Self
+pub fn DbindexbrinNode::copy(Self) -> Self
+pub fn DbindexbrinNode::fill(Self, Double) -> Self
+pub fn DbindexbrinNode::get(Self, Int32) -> Double
+pub fn DbindexbrinNode::len(Self) -> Int32
+pub fn DbindexbrinNode::max(Self) -> Double
+pub fn DbindexbrinNode::mean(Self) -> Double
+pub fn DbindexbrinNode::min(Self) -> Double
+pub fn DbindexbrinNode::scale(Self, Double) -> Self
+pub fn DbindexbrinNode::set(Self, Int32, Double) -> Self
+pub fn DbindexbrinNode::sum(Self) -> Double
+pub fn DbindexbrinNode::to_string(Self) -> String
+
+pub(all) struct DbindexbrinPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbrinPath::add(Self, Self) -> Self
+pub fn DbindexbrinPath::copy(Self) -> Self
+pub fn DbindexbrinPath::fill(Self, Double) -> Self
+pub fn DbindexbrinPath::get(Self, Int32) -> Double
+pub fn DbindexbrinPath::len(Self) -> Int32
+pub fn DbindexbrinPath::max(Self) -> Double
+pub fn DbindexbrinPath::mean(Self) -> Double
+pub fn DbindexbrinPath::min(Self) -> Double
+pub fn DbindexbrinPath::scale(Self, Double) -> Self
+pub fn DbindexbrinPath::set(Self, Int32, Double) -> Self
+pub fn DbindexbrinPath::sum(Self) -> Double
+pub fn DbindexbrinPath::to_string(Self) -> String
+
+pub(all) struct DbindexbrinPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbindexbrinPoint::add(Self, Self) -> Self
+pub fn DbindexbrinPoint::cross(Self, Self) -> Self
+pub fn DbindexbrinPoint::dist(Self, Self) -> Double
+pub fn DbindexbrinPoint::dot(Self, Self) -> Double
+pub fn DbindexbrinPoint::label(Self) -> Int32
+pub fn DbindexbrinPoint::lerp(Self, Self, Double) -> Self
+pub fn DbindexbrinPoint::mid(Self, Self) -> Self
+pub fn DbindexbrinPoint::negate(Self) -> Self
+pub fn DbindexbrinPoint::norm(Self) -> Double
+pub fn DbindexbrinPoint::normalize(Self) -> Self
+pub fn DbindexbrinPoint::scale(Self, Double) -> Self
+pub fn DbindexbrinPoint::sub(Self, Self) -> Self
+pub fn DbindexbrinPoint::to_string(Self) -> String
+pub fn DbindexbrinPoint::x(Self) -> Double
+pub fn DbindexbrinPoint::y(Self) -> Double
+pub fn DbindexbrinPoint::z(Self) -> Double
+
+pub(all) struct DbindexbrinRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbrinRange::add(Self, Self) -> Self
+pub fn DbindexbrinRange::copy(Self) -> Self
+pub fn DbindexbrinRange::fill(Self, Double) -> Self
+pub fn DbindexbrinRange::get(Self, Int32) -> Double
+pub fn DbindexbrinRange::len(Self) -> Int32
+pub fn DbindexbrinRange::max(Self) -> Double
+pub fn DbindexbrinRange::mean(Self) -> Double
+pub fn DbindexbrinRange::min(Self) -> Double
+pub fn DbindexbrinRange::scale(Self, Double) -> Self
+pub fn DbindexbrinRange::set(Self, Int32, Double) -> Self
+pub fn DbindexbrinRange::sum(Self) -> Double
+pub fn DbindexbrinRange::to_string(Self) -> String
+
+pub(all) struct DbindexbrinSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbindexbrinSeries::add(Self, Self) -> Self
+pub fn DbindexbrinSeries::cumsum(Self) -> Self
+pub fn DbindexbrinSeries::len(Self) -> Int32
+pub fn DbindexbrinSeries::max(Self) -> Double
+pub fn DbindexbrinSeries::mean(Self) -> Double
+pub fn DbindexbrinSeries::median(Self) -> Double
+pub fn DbindexbrinSeries::min(Self) -> Double
+pub fn DbindexbrinSeries::normalize(Self) -> Self
+pub fn DbindexbrinSeries::range(Self) -> Double
+pub fn DbindexbrinSeries::scale(Self, Double) -> Self
+pub fn DbindexbrinSeries::std(Self) -> Double
+pub fn DbindexbrinSeries::sub(Self, Self) -> Self
+pub fn DbindexbrinSeries::sum(Self) -> Double
+pub fn DbindexbrinSeries::to_string(Self) -> String
+pub fn DbindexbrinSeries::variance(Self) -> Double
+
+pub(all) struct DbindexbrinSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbrinSlice::add(Self, Self) -> Self
+pub fn DbindexbrinSlice::copy(Self) -> Self
+pub fn DbindexbrinSlice::fill(Self, Double) -> Self
+pub fn DbindexbrinSlice::get(Self, Int32) -> Double
+pub fn DbindexbrinSlice::len(Self) -> Int32
+pub fn DbindexbrinSlice::max(Self) -> Double
+pub fn DbindexbrinSlice::mean(Self) -> Double
+pub fn DbindexbrinSlice::min(Self) -> Double
+pub fn DbindexbrinSlice::scale(Self, Double) -> Self
+pub fn DbindexbrinSlice::set(Self, Int32, Double) -> Self
+pub fn DbindexbrinSlice::sum(Self) -> Double
+pub fn DbindexbrinSlice::to_string(Self) -> String
+
+pub(all) struct DbindexbrinTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbrinTable::add(Self, Self) -> Self
+pub fn DbindexbrinTable::copy(Self) -> Self
+pub fn DbindexbrinTable::fill(Self, Double) -> Self
+pub fn DbindexbrinTable::get(Self, Int32) -> Double
+pub fn DbindexbrinTable::len(Self) -> Int32
+pub fn DbindexbrinTable::max(Self) -> Double
+pub fn DbindexbrinTable::mean(Self) -> Double
+pub fn DbindexbrinTable::min(Self) -> Double
+pub fn DbindexbrinTable::scale(Self, Double) -> Self
+pub fn DbindexbrinTable::set(Self, Int32, Double) -> Self
+pub fn DbindexbrinTable::sum(Self) -> Double
+pub fn DbindexbrinTable::to_string(Self) -> String
+
+pub(all) struct DbindexbrinVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbindexbrinVector::add(Self, Self) -> Self
+pub fn DbindexbrinVector::dist(Self, Self) -> Double
+pub fn DbindexbrinVector::dot(Self, Self) -> Double
+pub fn DbindexbrinVector::norm(Self) -> Double
+pub fn DbindexbrinVector::normalize(Self) -> Self
+pub fn DbindexbrinVector::scale(Self, Double) -> Self
+pub fn DbindexbrinVector::sub(Self, Self) -> Self
+pub fn DbindexbrinVector::to_string(Self) -> String
+
+pub(all) struct DbindexbrinView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbrinView::add(Self, Self) -> Self
+pub fn DbindexbrinView::copy(Self) -> Self
+pub fn DbindexbrinView::fill(Self, Double) -> Self
+pub fn DbindexbrinView::get(Self, Int32) -> Double
+pub fn DbindexbrinView::len(Self) -> Int32
+pub fn DbindexbrinView::max(Self) -> Double
+pub fn DbindexbrinView::mean(Self) -> Double
+pub fn DbindexbrinView::min(Self) -> Double
+pub fn DbindexbrinView::scale(Self, Double) -> Self
+pub fn DbindexbrinView::set(Self, Int32, Double) -> Self
+pub fn DbindexbrinView::sum(Self) -> Double
+pub fn DbindexbrinView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

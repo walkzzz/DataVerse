@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/throttle"
+
+// Values
+pub fn throttle_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn throttle_corr(Array[Double], Array[Double]) -> Double
+
+pub fn throttle_cov(Array[Double], Array[Double]) -> Double
+
+pub fn throttle_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn throttle_mae(Array[Double], Array[Double]) -> Double
+
+pub fn throttle_make_labeled_point(Double, Double, Int32) -> ThrottlePoint
+
+pub fn throttle_make_matrix(Int32, Int32, Double) -> ThrottleMatrix
+
+pub fn throttle_make_point(Double, Double) -> ThrottlePoint
+
+pub fn throttle_make_series(Array[Double], String) -> ThrottleSeries
+
+pub fn throttle_make_vector(Array[Double]) -> ThrottleVector
+
+pub fn throttle_matrix_add(ThrottleMatrix, ThrottleMatrix) -> ThrottleMatrix
+
+pub fn throttle_matrix_get(ThrottleMatrix, Int32, Int32) -> Double
+
+pub fn throttle_matrix_identity(Int32) -> ThrottleMatrix
+
+pub fn throttle_matrix_multiply(ThrottleMatrix, ThrottleMatrix) -> ThrottleMatrix
+
+pub fn throttle_matrix_norm(ThrottleMatrix) -> Double
+
+pub fn throttle_matrix_scale(ThrottleMatrix, Double) -> ThrottleMatrix
+
+pub fn throttle_matrix_to_string(ThrottleMatrix) -> String
+
+pub fn throttle_matrix_trace(ThrottleMatrix) -> Double
+
+pub fn throttle_matrix_transpose(ThrottleMatrix) -> ThrottleMatrix
+
+pub fn throttle_mse(Array[Double], Array[Double]) -> Double
+
+pub fn throttle_point_add(ThrottlePoint, ThrottlePoint) -> ThrottlePoint
+
+pub fn throttle_point_dist(ThrottlePoint, ThrottlePoint) -> Double
+
+pub fn throttle_point_dot(ThrottlePoint, ThrottlePoint) -> Double
+
+pub fn throttle_point_label(ThrottlePoint) -> Int32
+
+pub fn throttle_point_norm(ThrottlePoint) -> Double
+
+pub fn throttle_point_scale(ThrottlePoint, Double) -> ThrottlePoint
+
+pub fn throttle_point_sub(ThrottlePoint, ThrottlePoint) -> ThrottlePoint
+
+pub fn throttle_point_to_string(ThrottlePoint) -> String
+
+pub fn throttle_point_x(ThrottlePoint) -> Double
+
+pub fn throttle_point_y(ThrottlePoint) -> Double
+
+pub fn throttle_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn throttle_r2(Array[Double], Array[Double]) -> Double
+
+pub fn throttle_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn throttle_series_add(ThrottleSeries, ThrottleSeries) -> ThrottleSeries
+
+pub fn throttle_series_len(ThrottleSeries) -> Int32
+
+pub fn throttle_series_max(ThrottleSeries) -> Double
+
+pub fn throttle_series_mean(ThrottleSeries) -> Double
+
+pub fn throttle_series_min(ThrottleSeries) -> Double
+
+pub fn throttle_series_scale(ThrottleSeries, Double) -> ThrottleSeries
+
+pub fn throttle_series_std(ThrottleSeries) -> Double
+
+pub fn throttle_series_sum(ThrottleSeries) -> Double
+
+pub fn throttle_series_to_string(ThrottleSeries) -> String
+
+pub fn throttle_series_var(ThrottleSeries) -> Double
+
+pub fn throttle_std(Array[Double]) -> Double
+
+pub fn throttle_var(Array[Double]) -> Double
+
+pub fn throttle_vector_add(ThrottleVector, ThrottleVector) -> ThrottleVector
+
+pub fn throttle_vector_dist(ThrottleVector, ThrottleVector) -> Double
+
+pub fn throttle_vector_dot(ThrottleVector, ThrottleVector) -> Double
+
+pub fn throttle_vector_norm(ThrottleVector) -> Double
+
+pub fn throttle_vector_normalize(ThrottleVector) -> ThrottleVector
+
+pub fn throttle_vector_scale(ThrottleVector, Double) -> ThrottleVector
+
+pub fn throttle_vector_sub(ThrottleVector, ThrottleVector) -> ThrottleVector
+
+pub fn throttle_vector_to_string(ThrottleVector) -> String
+
+pub fn throttle_vector_zero(Int32) -> ThrottleVector
+
+// Errors
+
+// Types and methods
+pub struct ThrottleMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct ThrottlePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct ThrottleSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct ThrottleVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

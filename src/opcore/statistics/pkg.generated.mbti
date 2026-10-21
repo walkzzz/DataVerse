@@ -1,0 +1,185 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/statistics"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn adjusted_r_squared(Array[Double], Array[Double]) -> Double
+
+pub fn angular_mean(Array[Double]) -> Double
+
+pub fn beta_func(Double, Double) -> Double
+
+pub fn chi_square_cdf(Double, Int32) -> Double
+
+pub fn chi_square_pdf(Double, Int32) -> Double
+
+pub fn chi_square_test(Array[Double], Array[Double]) -> TestResult
+
+pub fn coefficient_of_variation(Array[Double]) -> Double
+
+pub fn confidence_interval_mean(Array[Double], Double) -> ConfidenceInterval
+
+pub fn confidence_interval_proportion(Int32, Int32, Double) -> ConfidenceInterval
+
+pub fn correlation(Array[Double], Array[Double]) -> Double
+
+pub fn covariance(Array[Double], Array[Double]) -> Double
+
+pub fn erf(Double) -> Double
+
+pub fn exponential_cdf(Double, Double) -> Double
+
+pub fn exponential_pdf(Double, Double) -> Double
+
+pub fn f_cdf(Double, Int32, Int32) -> Double
+
+pub fn f_pdf(Double, Int32, Int32) -> Double
+
+pub fn f_test(Array[Double], Array[Double]) -> TestResult
+
+pub fn factorial(Int32) -> Double
+
+pub fn gamma_func(Double) -> Double
+
+pub fn geometric_mean(Array[Double]) -> Double
+
+pub fn harmonic_mean(Array[Double]) -> Double
+
+pub fn inv_normal_cdf(Double, Double, Double) -> Double
+
+pub fn iqr(Array[Double]) -> Double
+
+pub fn kurtosis(Array[Double]) -> Double
+
+pub fn lgamma(Double) -> Double
+
+pub fn linear_regression(Array[Double], Array[Double]) -> RegressionResult
+
+pub fn margin_of_error(Double, Int32, Double) -> Double
+
+pub fn max(Array[Double]) -> Double
+
+pub fn mean(Array[Double]) -> Double
+
+pub fn median(Array[Double]) -> Double
+
+pub fn min(Array[Double]) -> Double
+
+pub fn mode(Array[Double]) -> Double
+
+pub fn normal_cdf(Double, Double, Double) -> Double
+
+pub fn normal_pdf(Double, Double, Double) -> Double
+
+pub fn p_value_normal(Double, TestKind) -> Double
+
+pub fn p_value_t(Double, Int32, TestKind) -> Double
+
+pub fn percentile(Array[Double], Double) -> Double
+
+pub fn product(Array[Double]) -> Double
+
+pub fn quartiles(Array[Double]) -> Quartiles
+
+pub fn r_squared(Array[Double], Array[Double]) -> Double
+
+pub fn range(Array[Double]) -> Double
+
+pub fn sample_size_estimate(Double, Double, Double) -> Int32
+
+pub fn skewness(Array[Double]) -> Double
+
+pub fn standardize(Array[Double]) -> Array[Double]
+
+pub fn statistics_id() -> String
+
+pub fn std_dev(Array[Double]) -> Double
+
+pub fn sum(Array[Double]) -> Double
+
+pub fn t_cdf(Double, Int32) -> Double
+
+pub fn t_pdf(Double, Int32) -> Double
+
+pub fn t_test_one_sample(Array[Double], Double, TestKind) -> TestResult
+
+pub fn t_test_two_sample(Array[Double], Array[Double], TestKind) -> TestResult
+
+pub fn uniform_cdf(Double, Double, Double) -> Double
+
+pub fn uniform_pdf(Double, Double, Double) -> Double
+
+pub fn variance(Array[Double]) -> Double
+
+pub fn weighted_mean(Array[Double], Array[Double]) -> Double
+
+pub fn z_score(Double, Array[Double]) -> Double
+
+pub fn z_test(Array[Double], Double, Double, TestKind) -> TestResult
+
+// Errors
+
+// Types and methods
+pub struct ConfidenceInterval {
+  lower : Double
+  upper : Double
+  confidence : Double
+} derive(Eq, @debug.Debug)
+pub fn ConfidenceInterval::equal(Self, Self) -> Bool
+pub fn ConfidenceInterval::not_equal(Self, Self) -> Bool
+pub fn ConfidenceInterval::to_repr(Self) -> @debug.Repr
+
+pub(all) enum DistributionKind {
+  NormalDist
+  TDist
+  ChiSquareDist
+  FDist
+  ExponentialDist
+  UniformDist
+} derive(Eq, @debug.Debug)
+pub fn DistributionKind::equal(Self, Self) -> Bool
+pub fn DistributionKind::not_equal(Self, Self) -> Bool
+pub fn DistributionKind::to_repr(Self) -> @debug.Repr
+
+pub struct Quartiles {
+  q1 : Double
+  q2 : Double
+  q3 : Double
+} derive(Eq, @debug.Debug)
+pub fn Quartiles::equal(Self, Self) -> Bool
+pub fn Quartiles::not_equal(Self, Self) -> Bool
+pub fn Quartiles::to_repr(Self) -> @debug.Repr
+
+pub struct RegressionResult {
+  slope : Double
+  intercept : Double
+  r_value : Double
+} derive(Eq, @debug.Debug)
+pub fn RegressionResult::equal(Self, Self) -> Bool
+pub fn RegressionResult::not_equal(Self, Self) -> Bool
+pub fn RegressionResult::to_repr(Self) -> @debug.Repr
+
+pub(all) enum TestKind {
+  TwoSided
+  OneSidedLeft
+  OneSidedRight
+} derive(Eq, @debug.Debug)
+pub fn TestKind::equal(Self, Self) -> Bool
+pub fn TestKind::not_equal(Self, Self) -> Bool
+pub fn TestKind::to_repr(Self) -> @debug.Repr
+
+pub struct TestResult {
+  statistic : Double
+  p_value : Double
+  reject_null : Bool
+} derive(Eq, @debug.Debug)
+pub fn TestResult::equal(Self, Self) -> Bool
+pub fn TestResult::not_equal(Self, Self) -> Bool
+pub fn TestResult::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

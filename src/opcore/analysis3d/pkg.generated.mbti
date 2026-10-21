@@ -1,0 +1,65 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/analysis3d"
+
+// Values
+pub fn analysis3d_id() -> String
+
+pub fn bbox3d(Array[Point3D]) -> BBox3D
+
+pub fn bbox3d_center(BBox3D) -> Point3D
+
+pub fn bbox3d_contains(BBox3D, Point3D) -> Bool
+
+pub fn bbox3d_intersects(BBox3D, BBox3D) -> Bool
+
+pub fn bbox3d_volume(BBox3D) -> Double
+
+pub fn buffer3d(Point3D, Double) -> BBox3D
+
+pub fn centroid3d(Array[Point3D]) -> Point3D
+
+pub fn chebyshev3d(Point3D, Point3D) -> Double
+
+pub fn distance3d(Point3D, Point3D) -> Double
+
+pub fn line_of_sight(Point3D, Point3D, Array[Point3D]) -> Bool
+
+pub fn make_bbox3d(Double, Double, Double, Double, Double, Double) -> BBox3D
+
+pub fn make_point3d(Double, Double, Double) -> Point3D
+
+pub fn manhattan3d(Point3D, Point3D) -> Double
+
+pub fn scale3d(Point3D, Double, Double, Double) -> Point3D
+
+pub fn skyline(Point3D, Array[Point3D], Int32) -> Array[Double]
+
+pub fn surface_area3d(Array[Point3D]) -> Double
+
+pub fn translate3d(Point3D, Double, Double, Double) -> Point3D
+
+pub fn viewshed3d(Point3D, Array[Point3D], Array[Point3D]) -> Int32
+
+pub fn volume3d(Array[Point3D]) -> Double
+
+// Errors
+
+// Types and methods
+pub struct BBox3D {
+  min_x : Double
+  min_y : Double
+  min_z : Double
+  max_x : Double
+  max_y : Double
+  max_z : Double
+}
+
+pub struct Point3D {
+  x : Double
+  y : Double
+  z : Double
+}
+
+// Type aliases
+
+// Traits

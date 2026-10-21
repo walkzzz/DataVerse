@@ -1,0 +1,113 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/image"
+
+import {
+  "dataverse/dataobject",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn adjust_brightness(GrayImage, Double) -> GrayImage
+
+pub fn adjust_contrast(GrayImage, Double) -> GrayImage
+
+pub fn aspect_ratio(ImageMeta) -> Double
+
+pub fn aspect_ratio_filter(ImageMeta, Double, Double) -> Bool
+
+pub fn dilate(GrayImage) -> GrayImage
+
+pub fn downsample(GrayImage) -> GrayImage
+
+pub fn edge_magnitude(GrayImage) -> GrayImage
+
+pub fn empty_image_meta() -> ImageMeta
+
+pub fn erode(GrayImage) -> GrayImage
+
+pub fn flip_axis_name(FlipAxis) -> String
+
+pub fn gamma_correction(GrayImage, Double) -> GrayImage
+
+pub fn histogram(GrayImage) -> Array[Int32]
+
+pub fn image_crop(ImageMeta, Int32, Int32, Int32, Int32) -> ImageMeta
+
+pub fn image_flip(ImageMeta, FlipAxis) -> ImageMeta
+
+pub fn image_id() -> String
+
+pub fn image_max(GrayImage) -> Double
+
+pub fn image_mean(GrayImage) -> Double
+
+pub fn image_min(GrayImage) -> Double
+
+pub fn image_resize(ImageMeta, Int32, Int32) -> ImageMeta
+
+pub fn image_rotate(ImageMeta, RotateAngle) -> ImageMeta
+
+pub fn image_size(ImageMeta) -> (Int32, Int32)
+
+pub fn image_std(GrayImage) -> Double
+
+pub fn image_to_dataobject(ImageMeta) -> @dataobject.DataObject
+
+pub fn make_gray_image(Int32, Int32, Array[Double]) -> GrayImage
+
+pub fn make_image_meta(Int32, Int32, Int32, String) -> ImageMeta
+
+pub fn mean_filter(GrayImage) -> GrayImage
+
+pub fn median_filter(GrayImage) -> GrayImage
+
+pub fn rgb_to_gray(Int32, Int32, Array[(Double, Double, Double)]) -> GrayImage
+
+pub fn rotate_angle_name(RotateAngle) -> String
+
+pub fn sobel_x(GrayImage) -> GrayImage
+
+pub fn sobel_y(GrayImage) -> GrayImage
+
+pub fn threshold(GrayImage, Double) -> GrayImage
+
+// Errors
+
+// Types and methods
+pub(all) enum FlipAxis {
+  Horizontal
+  Vertical
+  Both
+} derive(Eq, @debug.Debug)
+pub fn FlipAxis::equal(Self, Self) -> Bool
+pub fn FlipAxis::not_equal(Self, Self) -> Bool
+pub fn FlipAxis::to_repr(Self) -> @debug.Repr
+
+pub struct GrayImage {
+  width : Int32
+  height : Int32
+  pixels : Array[Double]
+}
+
+pub struct ImageMeta {
+  width : Int32
+  height : Int32
+  channels : Int32
+  format : String
+} derive(Eq, @debug.Debug)
+pub fn ImageMeta::equal(Self, Self) -> Bool
+pub fn ImageMeta::not_equal(Self, Self) -> Bool
+pub fn ImageMeta::to_repr(Self) -> @debug.Repr
+
+pub(all) enum RotateAngle {
+  D90
+  D180
+  D270
+} derive(Eq, @debug.Debug)
+pub fn RotateAngle::equal(Self, Self) -> Bool
+pub fn RotateAngle::not_equal(Self, Self) -> Bool
+pub fn RotateAngle::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

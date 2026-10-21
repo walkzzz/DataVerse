@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/stats_infer_nonparam"
+
+// Values
+pub fn stats_infer_nonparam_buffer_make(Int32) -> StatsinfernonparamBuffer
+
+pub fn stats_infer_nonparam_cluster_make(Int32) -> StatsinfernonparamCluster
+
+pub fn stats_infer_nonparam_cursor_make(Int32) -> StatsinfernonparamCursor
+
+pub fn stats_infer_nonparam_edge_make(Int32) -> StatsinfernonparamEdge
+
+pub fn stats_infer_nonparam_frame_make(Int32) -> StatsinfernonparamFrame
+
+pub fn stats_infer_nonparam_graphn_make(Int32) -> StatsinfernonparamGraphN
+
+pub fn stats_infer_nonparam_layer_make(Int32) -> StatsinfernonparamLayer
+
+pub fn stats_infer_nonparam_make_matrix(Int32, Int32, Double) -> StatsinfernonparamMatrix
+
+pub fn stats_infer_nonparam_make_point(Double, Double) -> StatsinfernonparamPoint
+
+pub fn stats_infer_nonparam_make_point3(Double, Double, Double) -> StatsinfernonparamPoint
+
+pub fn stats_infer_nonparam_make_series(Array[Double], String) -> StatsinfernonparamSeries
+
+pub fn stats_infer_nonparam_make_vector(Array[Double]) -> StatsinfernonparamVector
+
+pub fn stats_infer_nonparam_matrix_identity(Int32) -> StatsinfernonparamMatrix
+
+pub fn stats_infer_nonparam_model_make(Int32) -> StatsinfernonparamModel
+
+pub fn stats_infer_nonparam_node_make(Int32) -> StatsinfernonparamNode
+
+pub fn stats_infer_nonparam_path_make(Int32) -> StatsinfernonparamPath
+
+pub fn stats_infer_nonparam_range_make(Int32) -> StatsinfernonparamRange
+
+pub fn stats_infer_nonparam_slice_make(Int32) -> StatsinfernonparamSlice
+
+pub fn stats_infer_nonparam_table_make(Int32) -> StatsinfernonparamTable
+
+pub fn stats_infer_nonparam_vector_zero(Int32) -> StatsinfernonparamVector
+
+pub fn stats_infer_nonparam_view_make(Int32) -> StatsinfernonparamView
+
+// Errors
+
+// Types and methods
+pub(all) struct StatsinfernonparamBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinfernonparamBuffer::add(Self, Self) -> Self
+pub fn StatsinfernonparamBuffer::copy(Self) -> Self
+pub fn StatsinfernonparamBuffer::fill(Self, Double) -> Self
+pub fn StatsinfernonparamBuffer::get(Self, Int32) -> Double
+pub fn StatsinfernonparamBuffer::len(Self) -> Int32
+pub fn StatsinfernonparamBuffer::max(Self) -> Double
+pub fn StatsinfernonparamBuffer::mean(Self) -> Double
+pub fn StatsinfernonparamBuffer::min(Self) -> Double
+pub fn StatsinfernonparamBuffer::scale(Self, Double) -> Self
+pub fn StatsinfernonparamBuffer::set(Self, Int32, Double) -> Self
+pub fn StatsinfernonparamBuffer::sum(Self) -> Double
+pub fn StatsinfernonparamBuffer::to_string(Self) -> String
+
+pub(all) struct StatsinfernonparamCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinfernonparamCluster::add(Self, Self) -> Self
+pub fn StatsinfernonparamCluster::copy(Self) -> Self
+pub fn StatsinfernonparamCluster::fill(Self, Double) -> Self
+pub fn StatsinfernonparamCluster::get(Self, Int32) -> Double
+pub fn StatsinfernonparamCluster::len(Self) -> Int32
+pub fn StatsinfernonparamCluster::max(Self) -> Double
+pub fn StatsinfernonparamCluster::mean(Self) -> Double
+pub fn StatsinfernonparamCluster::min(Self) -> Double
+pub fn StatsinfernonparamCluster::scale(Self, Double) -> Self
+pub fn StatsinfernonparamCluster::set(Self, Int32, Double) -> Self
+pub fn StatsinfernonparamCluster::sum(Self) -> Double
+pub fn StatsinfernonparamCluster::to_string(Self) -> String
+
+pub(all) struct StatsinfernonparamCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinfernonparamCursor::add(Self, Self) -> Self
+pub fn StatsinfernonparamCursor::copy(Self) -> Self
+pub fn StatsinfernonparamCursor::fill(Self, Double) -> Self
+pub fn StatsinfernonparamCursor::get(Self, Int32) -> Double
+pub fn StatsinfernonparamCursor::len(Self) -> Int32
+pub fn StatsinfernonparamCursor::max(Self) -> Double
+pub fn StatsinfernonparamCursor::mean(Self) -> Double
+pub fn StatsinfernonparamCursor::min(Self) -> Double
+pub fn StatsinfernonparamCursor::scale(Self, Double) -> Self
+pub fn StatsinfernonparamCursor::set(Self, Int32, Double) -> Self
+pub fn StatsinfernonparamCursor::sum(Self) -> Double
+pub fn StatsinfernonparamCursor::to_string(Self) -> String
+
+pub(all) struct StatsinfernonparamEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinfernonparamEdge::add(Self, Self) -> Self
+pub fn StatsinfernonparamEdge::copy(Self) -> Self
+pub fn StatsinfernonparamEdge::fill(Self, Double) -> Self
+pub fn StatsinfernonparamEdge::get(Self, Int32) -> Double
+pub fn StatsinfernonparamEdge::len(Self) -> Int32
+pub fn StatsinfernonparamEdge::max(Self) -> Double
+pub fn StatsinfernonparamEdge::mean(Self) -> Double
+pub fn StatsinfernonparamEdge::min(Self) -> Double
+pub fn StatsinfernonparamEdge::scale(Self, Double) -> Self
+pub fn StatsinfernonparamEdge::set(Self, Int32, Double) -> Self
+pub fn StatsinfernonparamEdge::sum(Self) -> Double
+pub fn StatsinfernonparamEdge::to_string(Self) -> String
+
+pub(all) struct StatsinfernonparamFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinfernonparamFrame::add(Self, Self) -> Self
+pub fn StatsinfernonparamFrame::copy(Self) -> Self
+pub fn StatsinfernonparamFrame::fill(Self, Double) -> Self
+pub fn StatsinfernonparamFrame::get(Self, Int32) -> Double
+pub fn StatsinfernonparamFrame::len(Self) -> Int32
+pub fn StatsinfernonparamFrame::max(Self) -> Double
+pub fn StatsinfernonparamFrame::mean(Self) -> Double
+pub fn StatsinfernonparamFrame::min(Self) -> Double
+pub fn StatsinfernonparamFrame::scale(Self, Double) -> Self
+pub fn StatsinfernonparamFrame::set(Self, Int32, Double) -> Self
+pub fn StatsinfernonparamFrame::sum(Self) -> Double
+pub fn StatsinfernonparamFrame::to_string(Self) -> String
+
+pub(all) struct StatsinfernonparamGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinfernonparamGraphN::add(Self, Self) -> Self
+pub fn StatsinfernonparamGraphN::copy(Self) -> Self
+pub fn StatsinfernonparamGraphN::fill(Self, Double) -> Self
+pub fn StatsinfernonparamGraphN::get(Self, Int32) -> Double
+pub fn StatsinfernonparamGraphN::len(Self) -> Int32
+pub fn StatsinfernonparamGraphN::max(Self) -> Double
+pub fn StatsinfernonparamGraphN::mean(Self) -> Double
+pub fn StatsinfernonparamGraphN::min(Self) -> Double
+pub fn StatsinfernonparamGraphN::scale(Self, Double) -> Self
+pub fn StatsinfernonparamGraphN::set(Self, Int32, Double) -> Self
+pub fn StatsinfernonparamGraphN::sum(Self) -> Double
+pub fn StatsinfernonparamGraphN::to_string(Self) -> String
+
+pub(all) struct StatsinfernonparamLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinfernonparamLayer::add(Self, Self) -> Self
+pub fn StatsinfernonparamLayer::copy(Self) -> Self
+pub fn StatsinfernonparamLayer::fill(Self, Double) -> Self
+pub fn StatsinfernonparamLayer::get(Self, Int32) -> Double
+pub fn StatsinfernonparamLayer::len(Self) -> Int32
+pub fn StatsinfernonparamLayer::max(Self) -> Double
+pub fn StatsinfernonparamLayer::mean(Self) -> Double
+pub fn StatsinfernonparamLayer::min(Self) -> Double
+pub fn StatsinfernonparamLayer::scale(Self, Double) -> Self
+pub fn StatsinfernonparamLayer::set(Self, Int32, Double) -> Self
+pub fn StatsinfernonparamLayer::sum(Self) -> Double
+pub fn StatsinfernonparamLayer::to_string(Self) -> String
+
+pub(all) struct StatsinfernonparamMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn StatsinfernonparamMatrix::add(Self, Self) -> Self
+pub fn StatsinfernonparamMatrix::det(Self) -> Double
+pub fn StatsinfernonparamMatrix::get(Self, Int32, Int32) -> Double
+pub fn StatsinfernonparamMatrix::multiply(Self, Self) -> Self
+pub fn StatsinfernonparamMatrix::norm(Self) -> Double
+pub fn StatsinfernonparamMatrix::scale(Self, Double) -> Self
+pub fn StatsinfernonparamMatrix::to_string(Self) -> String
+pub fn StatsinfernonparamMatrix::trace(Self) -> Double
+pub fn StatsinfernonparamMatrix::transpose(Self) -> Self
+
+pub(all) struct StatsinfernonparamModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinfernonparamModel::add(Self, Self) -> Self
+pub fn StatsinfernonparamModel::copy(Self) -> Self
+pub fn StatsinfernonparamModel::fill(Self, Double) -> Self
+pub fn StatsinfernonparamModel::get(Self, Int32) -> Double
+pub fn StatsinfernonparamModel::len(Self) -> Int32
+pub fn StatsinfernonparamModel::max(Self) -> Double
+pub fn StatsinfernonparamModel::mean(Self) -> Double
+pub fn StatsinfernonparamModel::min(Self) -> Double
+pub fn StatsinfernonparamModel::scale(Self, Double) -> Self
+pub fn StatsinfernonparamModel::set(Self, Int32, Double) -> Self
+pub fn StatsinfernonparamModel::sum(Self) -> Double
+pub fn StatsinfernonparamModel::to_string(Self) -> String
+
+pub(all) struct StatsinfernonparamNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinfernonparamNode::add(Self, Self) -> Self
+pub fn StatsinfernonparamNode::copy(Self) -> Self
+pub fn StatsinfernonparamNode::fill(Self, Double) -> Self
+pub fn StatsinfernonparamNode::get(Self, Int32) -> Double
+pub fn StatsinfernonparamNode::len(Self) -> Int32
+pub fn StatsinfernonparamNode::max(Self) -> Double
+pub fn StatsinfernonparamNode::mean(Self) -> Double
+pub fn StatsinfernonparamNode::min(Self) -> Double
+pub fn StatsinfernonparamNode::scale(Self, Double) -> Self
+pub fn StatsinfernonparamNode::set(Self, Int32, Double) -> Self
+pub fn StatsinfernonparamNode::sum(Self) -> Double
+pub fn StatsinfernonparamNode::to_string(Self) -> String
+
+pub(all) struct StatsinfernonparamPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinfernonparamPath::add(Self, Self) -> Self
+pub fn StatsinfernonparamPath::copy(Self) -> Self
+pub fn StatsinfernonparamPath::fill(Self, Double) -> Self
+pub fn StatsinfernonparamPath::get(Self, Int32) -> Double
+pub fn StatsinfernonparamPath::len(Self) -> Int32
+pub fn StatsinfernonparamPath::max(Self) -> Double
+pub fn StatsinfernonparamPath::mean(Self) -> Double
+pub fn StatsinfernonparamPath::min(Self) -> Double
+pub fn StatsinfernonparamPath::scale(Self, Double) -> Self
+pub fn StatsinfernonparamPath::set(Self, Int32, Double) -> Self
+pub fn StatsinfernonparamPath::sum(Self) -> Double
+pub fn StatsinfernonparamPath::to_string(Self) -> String
+
+pub(all) struct StatsinfernonparamPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn StatsinfernonparamPoint::add(Self, Self) -> Self
+pub fn StatsinfernonparamPoint::cross(Self, Self) -> Self
+pub fn StatsinfernonparamPoint::dist(Self, Self) -> Double
+pub fn StatsinfernonparamPoint::dot(Self, Self) -> Double
+pub fn StatsinfernonparamPoint::label(Self) -> Int32
+pub fn StatsinfernonparamPoint::lerp(Self, Self, Double) -> Self
+pub fn StatsinfernonparamPoint::mid(Self, Self) -> Self
+pub fn StatsinfernonparamPoint::negate(Self) -> Self
+pub fn StatsinfernonparamPoint::norm(Self) -> Double
+pub fn StatsinfernonparamPoint::normalize(Self) -> Self
+pub fn StatsinfernonparamPoint::scale(Self, Double) -> Self
+pub fn StatsinfernonparamPoint::sub(Self, Self) -> Self
+pub fn StatsinfernonparamPoint::to_string(Self) -> String
+pub fn StatsinfernonparamPoint::x(Self) -> Double
+pub fn StatsinfernonparamPoint::y(Self) -> Double
+pub fn StatsinfernonparamPoint::z(Self) -> Double
+
+pub(all) struct StatsinfernonparamRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinfernonparamRange::add(Self, Self) -> Self
+pub fn StatsinfernonparamRange::copy(Self) -> Self
+pub fn StatsinfernonparamRange::fill(Self, Double) -> Self
+pub fn StatsinfernonparamRange::get(Self, Int32) -> Double
+pub fn StatsinfernonparamRange::len(Self) -> Int32
+pub fn StatsinfernonparamRange::max(Self) -> Double
+pub fn StatsinfernonparamRange::mean(Self) -> Double
+pub fn StatsinfernonparamRange::min(Self) -> Double
+pub fn StatsinfernonparamRange::scale(Self, Double) -> Self
+pub fn StatsinfernonparamRange::set(Self, Int32, Double) -> Self
+pub fn StatsinfernonparamRange::sum(Self) -> Double
+pub fn StatsinfernonparamRange::to_string(Self) -> String
+
+pub(all) struct StatsinfernonparamSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn StatsinfernonparamSeries::add(Self, Self) -> Self
+pub fn StatsinfernonparamSeries::cumsum(Self) -> Self
+pub fn StatsinfernonparamSeries::len(Self) -> Int32
+pub fn StatsinfernonparamSeries::max(Self) -> Double
+pub fn StatsinfernonparamSeries::mean(Self) -> Double
+pub fn StatsinfernonparamSeries::median(Self) -> Double
+pub fn StatsinfernonparamSeries::min(Self) -> Double
+pub fn StatsinfernonparamSeries::normalize(Self) -> Self
+pub fn StatsinfernonparamSeries::range(Self) -> Double
+pub fn StatsinfernonparamSeries::scale(Self, Double) -> Self
+pub fn StatsinfernonparamSeries::std(Self) -> Double
+pub fn StatsinfernonparamSeries::sub(Self, Self) -> Self
+pub fn StatsinfernonparamSeries::sum(Self) -> Double
+pub fn StatsinfernonparamSeries::to_string(Self) -> String
+pub fn StatsinfernonparamSeries::variance(Self) -> Double
+
+pub(all) struct StatsinfernonparamSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinfernonparamSlice::add(Self, Self) -> Self
+pub fn StatsinfernonparamSlice::copy(Self) -> Self
+pub fn StatsinfernonparamSlice::fill(Self, Double) -> Self
+pub fn StatsinfernonparamSlice::get(Self, Int32) -> Double
+pub fn StatsinfernonparamSlice::len(Self) -> Int32
+pub fn StatsinfernonparamSlice::max(Self) -> Double
+pub fn StatsinfernonparamSlice::mean(Self) -> Double
+pub fn StatsinfernonparamSlice::min(Self) -> Double
+pub fn StatsinfernonparamSlice::scale(Self, Double) -> Self
+pub fn StatsinfernonparamSlice::set(Self, Int32, Double) -> Self
+pub fn StatsinfernonparamSlice::sum(Self) -> Double
+pub fn StatsinfernonparamSlice::to_string(Self) -> String
+
+pub(all) struct StatsinfernonparamTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinfernonparamTable::add(Self, Self) -> Self
+pub fn StatsinfernonparamTable::copy(Self) -> Self
+pub fn StatsinfernonparamTable::fill(Self, Double) -> Self
+pub fn StatsinfernonparamTable::get(Self, Int32) -> Double
+pub fn StatsinfernonparamTable::len(Self) -> Int32
+pub fn StatsinfernonparamTable::max(Self) -> Double
+pub fn StatsinfernonparamTable::mean(Self) -> Double
+pub fn StatsinfernonparamTable::min(Self) -> Double
+pub fn StatsinfernonparamTable::scale(Self, Double) -> Self
+pub fn StatsinfernonparamTable::set(Self, Int32, Double) -> Self
+pub fn StatsinfernonparamTable::sum(Self) -> Double
+pub fn StatsinfernonparamTable::to_string(Self) -> String
+
+pub(all) struct StatsinfernonparamVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn StatsinfernonparamVector::add(Self, Self) -> Self
+pub fn StatsinfernonparamVector::dist(Self, Self) -> Double
+pub fn StatsinfernonparamVector::dot(Self, Self) -> Double
+pub fn StatsinfernonparamVector::norm(Self) -> Double
+pub fn StatsinfernonparamVector::normalize(Self) -> Self
+pub fn StatsinfernonparamVector::scale(Self, Double) -> Self
+pub fn StatsinfernonparamVector::sub(Self, Self) -> Self
+pub fn StatsinfernonparamVector::to_string(Self) -> String
+
+pub(all) struct StatsinfernonparamView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinfernonparamView::add(Self, Self) -> Self
+pub fn StatsinfernonparamView::copy(Self) -> Self
+pub fn StatsinfernonparamView::fill(Self, Double) -> Self
+pub fn StatsinfernonparamView::get(Self, Int32) -> Double
+pub fn StatsinfernonparamView::len(Self) -> Int32
+pub fn StatsinfernonparamView::max(Self) -> Double
+pub fn StatsinfernonparamView::mean(Self) -> Double
+pub fn StatsinfernonparamView::min(Self) -> Double
+pub fn StatsinfernonparamView::scale(Self, Double) -> Self
+pub fn StatsinfernonparamView::set(Self, Int32, Double) -> Self
+pub fn StatsinfernonparamView::sum(Self) -> Double
+pub fn StatsinfernonparamView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

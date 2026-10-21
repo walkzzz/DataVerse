@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/filter_iir"
+
+// Values
+pub fn filter_iir_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn filter_iir_corr(Array[Double], Array[Double]) -> Double
+
+pub fn filter_iir_cov(Array[Double], Array[Double]) -> Double
+
+pub fn filter_iir_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn filter_iir_mae(Array[Double], Array[Double]) -> Double
+
+pub fn filter_iir_make_labeled_point(Double, Double, Int32) -> Filter_iirPoint
+
+pub fn filter_iir_make_matrix(Int32, Int32, Double) -> Filter_iirMatrix
+
+pub fn filter_iir_make_point(Double, Double) -> Filter_iirPoint
+
+pub fn filter_iir_make_series(Array[Double], String) -> Filter_iirSeries
+
+pub fn filter_iir_make_vector(Array[Double]) -> Filter_iirVector
+
+pub fn filter_iir_matrix_add(Filter_iirMatrix, Filter_iirMatrix) -> Filter_iirMatrix
+
+pub fn filter_iir_matrix_get(Filter_iirMatrix, Int32, Int32) -> Double
+
+pub fn filter_iir_matrix_identity(Int32) -> Filter_iirMatrix
+
+pub fn filter_iir_matrix_multiply(Filter_iirMatrix, Filter_iirMatrix) -> Filter_iirMatrix
+
+pub fn filter_iir_matrix_norm(Filter_iirMatrix) -> Double
+
+pub fn filter_iir_matrix_scale(Filter_iirMatrix, Double) -> Filter_iirMatrix
+
+pub fn filter_iir_matrix_to_string(Filter_iirMatrix) -> String
+
+pub fn filter_iir_matrix_trace(Filter_iirMatrix) -> Double
+
+pub fn filter_iir_matrix_transpose(Filter_iirMatrix) -> Filter_iirMatrix
+
+pub fn filter_iir_mse(Array[Double], Array[Double]) -> Double
+
+pub fn filter_iir_point_add(Filter_iirPoint, Filter_iirPoint) -> Filter_iirPoint
+
+pub fn filter_iir_point_dist(Filter_iirPoint, Filter_iirPoint) -> Double
+
+pub fn filter_iir_point_dot(Filter_iirPoint, Filter_iirPoint) -> Double
+
+pub fn filter_iir_point_label(Filter_iirPoint) -> Int32
+
+pub fn filter_iir_point_norm(Filter_iirPoint) -> Double
+
+pub fn filter_iir_point_scale(Filter_iirPoint, Double) -> Filter_iirPoint
+
+pub fn filter_iir_point_sub(Filter_iirPoint, Filter_iirPoint) -> Filter_iirPoint
+
+pub fn filter_iir_point_to_string(Filter_iirPoint) -> String
+
+pub fn filter_iir_point_x(Filter_iirPoint) -> Double
+
+pub fn filter_iir_point_y(Filter_iirPoint) -> Double
+
+pub fn filter_iir_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn filter_iir_r2(Array[Double], Array[Double]) -> Double
+
+pub fn filter_iir_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn filter_iir_series_add(Filter_iirSeries, Filter_iirSeries) -> Filter_iirSeries
+
+pub fn filter_iir_series_len(Filter_iirSeries) -> Int32
+
+pub fn filter_iir_series_max(Filter_iirSeries) -> Double
+
+pub fn filter_iir_series_mean(Filter_iirSeries) -> Double
+
+pub fn filter_iir_series_min(Filter_iirSeries) -> Double
+
+pub fn filter_iir_series_scale(Filter_iirSeries, Double) -> Filter_iirSeries
+
+pub fn filter_iir_series_std(Filter_iirSeries) -> Double
+
+pub fn filter_iir_series_sum(Filter_iirSeries) -> Double
+
+pub fn filter_iir_series_to_string(Filter_iirSeries) -> String
+
+pub fn filter_iir_series_var(Filter_iirSeries) -> Double
+
+pub fn filter_iir_std(Array[Double]) -> Double
+
+pub fn filter_iir_var(Array[Double]) -> Double
+
+pub fn filter_iir_vector_add(Filter_iirVector, Filter_iirVector) -> Filter_iirVector
+
+pub fn filter_iir_vector_dist(Filter_iirVector, Filter_iirVector) -> Double
+
+pub fn filter_iir_vector_dot(Filter_iirVector, Filter_iirVector) -> Double
+
+pub fn filter_iir_vector_norm(Filter_iirVector) -> Double
+
+pub fn filter_iir_vector_normalize(Filter_iirVector) -> Filter_iirVector
+
+pub fn filter_iir_vector_scale(Filter_iirVector, Double) -> Filter_iirVector
+
+pub fn filter_iir_vector_sub(Filter_iirVector, Filter_iirVector) -> Filter_iirVector
+
+pub fn filter_iir_vector_to_string(Filter_iirVector) -> String
+
+pub fn filter_iir_vector_zero(Int32) -> Filter_iirVector
+
+// Errors
+
+// Types and methods
+pub struct Filter_iirMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Filter_iirPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Filter_iirSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Filter_iirVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

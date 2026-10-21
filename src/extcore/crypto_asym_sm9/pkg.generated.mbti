@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/crypto_asym_sm9"
+
+// Values
+pub fn crypto_asym_sm9_buffer_make(Int32) -> Cryptoasymsm9Buffer
+
+pub fn crypto_asym_sm9_cluster_make(Int32) -> Cryptoasymsm9Cluster
+
+pub fn crypto_asym_sm9_cursor_make(Int32) -> Cryptoasymsm9Cursor
+
+pub fn crypto_asym_sm9_edge_make(Int32) -> Cryptoasymsm9Edge
+
+pub fn crypto_asym_sm9_frame_make(Int32) -> Cryptoasymsm9Frame
+
+pub fn crypto_asym_sm9_graphn_make(Int32) -> Cryptoasymsm9GraphN
+
+pub fn crypto_asym_sm9_layer_make(Int32) -> Cryptoasymsm9Layer
+
+pub fn crypto_asym_sm9_make_matrix(Int32, Int32, Double) -> Cryptoasymsm9Matrix
+
+pub fn crypto_asym_sm9_make_point(Double, Double) -> Cryptoasymsm9Point
+
+pub fn crypto_asym_sm9_make_point3(Double, Double, Double) -> Cryptoasymsm9Point
+
+pub fn crypto_asym_sm9_make_series(Array[Double], String) -> Cryptoasymsm9Series
+
+pub fn crypto_asym_sm9_make_vector(Array[Double]) -> Cryptoasymsm9Vector
+
+pub fn crypto_asym_sm9_matrix_identity(Int32) -> Cryptoasymsm9Matrix
+
+pub fn crypto_asym_sm9_model_make(Int32) -> Cryptoasymsm9Model
+
+pub fn crypto_asym_sm9_node_make(Int32) -> Cryptoasymsm9Node
+
+pub fn crypto_asym_sm9_path_make(Int32) -> Cryptoasymsm9Path
+
+pub fn crypto_asym_sm9_range_make(Int32) -> Cryptoasymsm9Range
+
+pub fn crypto_asym_sm9_slice_make(Int32) -> Cryptoasymsm9Slice
+
+pub fn crypto_asym_sm9_table_make(Int32) -> Cryptoasymsm9Table
+
+pub fn crypto_asym_sm9_vector_zero(Int32) -> Cryptoasymsm9Vector
+
+pub fn crypto_asym_sm9_view_make(Int32) -> Cryptoasymsm9View
+
+// Errors
+
+// Types and methods
+pub(all) struct Cryptoasymsm9Buffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptoasymsm9Buffer::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Buffer::copy(Self) -> Self
+pub fn Cryptoasymsm9Buffer::fill(Self, Double) -> Self
+pub fn Cryptoasymsm9Buffer::get(Self, Int32) -> Double
+pub fn Cryptoasymsm9Buffer::len(Self) -> Int32
+pub fn Cryptoasymsm9Buffer::max(Self) -> Double
+pub fn Cryptoasymsm9Buffer::mean(Self) -> Double
+pub fn Cryptoasymsm9Buffer::min(Self) -> Double
+pub fn Cryptoasymsm9Buffer::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Buffer::set(Self, Int32, Double) -> Self
+pub fn Cryptoasymsm9Buffer::sum(Self) -> Double
+pub fn Cryptoasymsm9Buffer::to_string(Self) -> String
+
+pub(all) struct Cryptoasymsm9Cluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptoasymsm9Cluster::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Cluster::copy(Self) -> Self
+pub fn Cryptoasymsm9Cluster::fill(Self, Double) -> Self
+pub fn Cryptoasymsm9Cluster::get(Self, Int32) -> Double
+pub fn Cryptoasymsm9Cluster::len(Self) -> Int32
+pub fn Cryptoasymsm9Cluster::max(Self) -> Double
+pub fn Cryptoasymsm9Cluster::mean(Self) -> Double
+pub fn Cryptoasymsm9Cluster::min(Self) -> Double
+pub fn Cryptoasymsm9Cluster::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Cluster::set(Self, Int32, Double) -> Self
+pub fn Cryptoasymsm9Cluster::sum(Self) -> Double
+pub fn Cryptoasymsm9Cluster::to_string(Self) -> String
+
+pub(all) struct Cryptoasymsm9Cursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptoasymsm9Cursor::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Cursor::copy(Self) -> Self
+pub fn Cryptoasymsm9Cursor::fill(Self, Double) -> Self
+pub fn Cryptoasymsm9Cursor::get(Self, Int32) -> Double
+pub fn Cryptoasymsm9Cursor::len(Self) -> Int32
+pub fn Cryptoasymsm9Cursor::max(Self) -> Double
+pub fn Cryptoasymsm9Cursor::mean(Self) -> Double
+pub fn Cryptoasymsm9Cursor::min(Self) -> Double
+pub fn Cryptoasymsm9Cursor::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Cursor::set(Self, Int32, Double) -> Self
+pub fn Cryptoasymsm9Cursor::sum(Self) -> Double
+pub fn Cryptoasymsm9Cursor::to_string(Self) -> String
+
+pub(all) struct Cryptoasymsm9Edge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptoasymsm9Edge::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Edge::copy(Self) -> Self
+pub fn Cryptoasymsm9Edge::fill(Self, Double) -> Self
+pub fn Cryptoasymsm9Edge::get(Self, Int32) -> Double
+pub fn Cryptoasymsm9Edge::len(Self) -> Int32
+pub fn Cryptoasymsm9Edge::max(Self) -> Double
+pub fn Cryptoasymsm9Edge::mean(Self) -> Double
+pub fn Cryptoasymsm9Edge::min(Self) -> Double
+pub fn Cryptoasymsm9Edge::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Edge::set(Self, Int32, Double) -> Self
+pub fn Cryptoasymsm9Edge::sum(Self) -> Double
+pub fn Cryptoasymsm9Edge::to_string(Self) -> String
+
+pub(all) struct Cryptoasymsm9Frame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptoasymsm9Frame::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Frame::copy(Self) -> Self
+pub fn Cryptoasymsm9Frame::fill(Self, Double) -> Self
+pub fn Cryptoasymsm9Frame::get(Self, Int32) -> Double
+pub fn Cryptoasymsm9Frame::len(Self) -> Int32
+pub fn Cryptoasymsm9Frame::max(Self) -> Double
+pub fn Cryptoasymsm9Frame::mean(Self) -> Double
+pub fn Cryptoasymsm9Frame::min(Self) -> Double
+pub fn Cryptoasymsm9Frame::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Frame::set(Self, Int32, Double) -> Self
+pub fn Cryptoasymsm9Frame::sum(Self) -> Double
+pub fn Cryptoasymsm9Frame::to_string(Self) -> String
+
+pub(all) struct Cryptoasymsm9GraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptoasymsm9GraphN::add(Self, Self) -> Self
+pub fn Cryptoasymsm9GraphN::copy(Self) -> Self
+pub fn Cryptoasymsm9GraphN::fill(Self, Double) -> Self
+pub fn Cryptoasymsm9GraphN::get(Self, Int32) -> Double
+pub fn Cryptoasymsm9GraphN::len(Self) -> Int32
+pub fn Cryptoasymsm9GraphN::max(Self) -> Double
+pub fn Cryptoasymsm9GraphN::mean(Self) -> Double
+pub fn Cryptoasymsm9GraphN::min(Self) -> Double
+pub fn Cryptoasymsm9GraphN::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9GraphN::set(Self, Int32, Double) -> Self
+pub fn Cryptoasymsm9GraphN::sum(Self) -> Double
+pub fn Cryptoasymsm9GraphN::to_string(Self) -> String
+
+pub(all) struct Cryptoasymsm9Layer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptoasymsm9Layer::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Layer::copy(Self) -> Self
+pub fn Cryptoasymsm9Layer::fill(Self, Double) -> Self
+pub fn Cryptoasymsm9Layer::get(Self, Int32) -> Double
+pub fn Cryptoasymsm9Layer::len(Self) -> Int32
+pub fn Cryptoasymsm9Layer::max(Self) -> Double
+pub fn Cryptoasymsm9Layer::mean(Self) -> Double
+pub fn Cryptoasymsm9Layer::min(Self) -> Double
+pub fn Cryptoasymsm9Layer::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Layer::set(Self, Int32, Double) -> Self
+pub fn Cryptoasymsm9Layer::sum(Self) -> Double
+pub fn Cryptoasymsm9Layer::to_string(Self) -> String
+
+pub(all) struct Cryptoasymsm9Matrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn Cryptoasymsm9Matrix::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Matrix::det(Self) -> Double
+pub fn Cryptoasymsm9Matrix::get(Self, Int32, Int32) -> Double
+pub fn Cryptoasymsm9Matrix::multiply(Self, Self) -> Self
+pub fn Cryptoasymsm9Matrix::norm(Self) -> Double
+pub fn Cryptoasymsm9Matrix::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Matrix::to_string(Self) -> String
+pub fn Cryptoasymsm9Matrix::trace(Self) -> Double
+pub fn Cryptoasymsm9Matrix::transpose(Self) -> Self
+
+pub(all) struct Cryptoasymsm9Model {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptoasymsm9Model::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Model::copy(Self) -> Self
+pub fn Cryptoasymsm9Model::fill(Self, Double) -> Self
+pub fn Cryptoasymsm9Model::get(Self, Int32) -> Double
+pub fn Cryptoasymsm9Model::len(Self) -> Int32
+pub fn Cryptoasymsm9Model::max(Self) -> Double
+pub fn Cryptoasymsm9Model::mean(Self) -> Double
+pub fn Cryptoasymsm9Model::min(Self) -> Double
+pub fn Cryptoasymsm9Model::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Model::set(Self, Int32, Double) -> Self
+pub fn Cryptoasymsm9Model::sum(Self) -> Double
+pub fn Cryptoasymsm9Model::to_string(Self) -> String
+
+pub(all) struct Cryptoasymsm9Node {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptoasymsm9Node::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Node::copy(Self) -> Self
+pub fn Cryptoasymsm9Node::fill(Self, Double) -> Self
+pub fn Cryptoasymsm9Node::get(Self, Int32) -> Double
+pub fn Cryptoasymsm9Node::len(Self) -> Int32
+pub fn Cryptoasymsm9Node::max(Self) -> Double
+pub fn Cryptoasymsm9Node::mean(Self) -> Double
+pub fn Cryptoasymsm9Node::min(Self) -> Double
+pub fn Cryptoasymsm9Node::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Node::set(Self, Int32, Double) -> Self
+pub fn Cryptoasymsm9Node::sum(Self) -> Double
+pub fn Cryptoasymsm9Node::to_string(Self) -> String
+
+pub(all) struct Cryptoasymsm9Path {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptoasymsm9Path::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Path::copy(Self) -> Self
+pub fn Cryptoasymsm9Path::fill(Self, Double) -> Self
+pub fn Cryptoasymsm9Path::get(Self, Int32) -> Double
+pub fn Cryptoasymsm9Path::len(Self) -> Int32
+pub fn Cryptoasymsm9Path::max(Self) -> Double
+pub fn Cryptoasymsm9Path::mean(Self) -> Double
+pub fn Cryptoasymsm9Path::min(Self) -> Double
+pub fn Cryptoasymsm9Path::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Path::set(Self, Int32, Double) -> Self
+pub fn Cryptoasymsm9Path::sum(Self) -> Double
+pub fn Cryptoasymsm9Path::to_string(Self) -> String
+
+pub(all) struct Cryptoasymsm9Point {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn Cryptoasymsm9Point::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Point::cross(Self, Self) -> Self
+pub fn Cryptoasymsm9Point::dist(Self, Self) -> Double
+pub fn Cryptoasymsm9Point::dot(Self, Self) -> Double
+pub fn Cryptoasymsm9Point::label(Self) -> Int32
+pub fn Cryptoasymsm9Point::lerp(Self, Self, Double) -> Self
+pub fn Cryptoasymsm9Point::mid(Self, Self) -> Self
+pub fn Cryptoasymsm9Point::negate(Self) -> Self
+pub fn Cryptoasymsm9Point::norm(Self) -> Double
+pub fn Cryptoasymsm9Point::normalize(Self) -> Self
+pub fn Cryptoasymsm9Point::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Point::sub(Self, Self) -> Self
+pub fn Cryptoasymsm9Point::to_string(Self) -> String
+pub fn Cryptoasymsm9Point::x(Self) -> Double
+pub fn Cryptoasymsm9Point::y(Self) -> Double
+pub fn Cryptoasymsm9Point::z(Self) -> Double
+
+pub(all) struct Cryptoasymsm9Range {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptoasymsm9Range::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Range::copy(Self) -> Self
+pub fn Cryptoasymsm9Range::fill(Self, Double) -> Self
+pub fn Cryptoasymsm9Range::get(Self, Int32) -> Double
+pub fn Cryptoasymsm9Range::len(Self) -> Int32
+pub fn Cryptoasymsm9Range::max(Self) -> Double
+pub fn Cryptoasymsm9Range::mean(Self) -> Double
+pub fn Cryptoasymsm9Range::min(Self) -> Double
+pub fn Cryptoasymsm9Range::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Range::set(Self, Int32, Double) -> Self
+pub fn Cryptoasymsm9Range::sum(Self) -> Double
+pub fn Cryptoasymsm9Range::to_string(Self) -> String
+
+pub(all) struct Cryptoasymsm9Series {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn Cryptoasymsm9Series::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Series::cumsum(Self) -> Self
+pub fn Cryptoasymsm9Series::len(Self) -> Int32
+pub fn Cryptoasymsm9Series::max(Self) -> Double
+pub fn Cryptoasymsm9Series::mean(Self) -> Double
+pub fn Cryptoasymsm9Series::median(Self) -> Double
+pub fn Cryptoasymsm9Series::min(Self) -> Double
+pub fn Cryptoasymsm9Series::normalize(Self) -> Self
+pub fn Cryptoasymsm9Series::range(Self) -> Double
+pub fn Cryptoasymsm9Series::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Series::std(Self) -> Double
+pub fn Cryptoasymsm9Series::sub(Self, Self) -> Self
+pub fn Cryptoasymsm9Series::sum(Self) -> Double
+pub fn Cryptoasymsm9Series::to_string(Self) -> String
+pub fn Cryptoasymsm9Series::variance(Self) -> Double
+
+pub(all) struct Cryptoasymsm9Slice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptoasymsm9Slice::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Slice::copy(Self) -> Self
+pub fn Cryptoasymsm9Slice::fill(Self, Double) -> Self
+pub fn Cryptoasymsm9Slice::get(Self, Int32) -> Double
+pub fn Cryptoasymsm9Slice::len(Self) -> Int32
+pub fn Cryptoasymsm9Slice::max(Self) -> Double
+pub fn Cryptoasymsm9Slice::mean(Self) -> Double
+pub fn Cryptoasymsm9Slice::min(Self) -> Double
+pub fn Cryptoasymsm9Slice::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Slice::set(Self, Int32, Double) -> Self
+pub fn Cryptoasymsm9Slice::sum(Self) -> Double
+pub fn Cryptoasymsm9Slice::to_string(Self) -> String
+
+pub(all) struct Cryptoasymsm9Table {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptoasymsm9Table::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Table::copy(Self) -> Self
+pub fn Cryptoasymsm9Table::fill(Self, Double) -> Self
+pub fn Cryptoasymsm9Table::get(Self, Int32) -> Double
+pub fn Cryptoasymsm9Table::len(Self) -> Int32
+pub fn Cryptoasymsm9Table::max(Self) -> Double
+pub fn Cryptoasymsm9Table::mean(Self) -> Double
+pub fn Cryptoasymsm9Table::min(Self) -> Double
+pub fn Cryptoasymsm9Table::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Table::set(Self, Int32, Double) -> Self
+pub fn Cryptoasymsm9Table::sum(Self) -> Double
+pub fn Cryptoasymsm9Table::to_string(Self) -> String
+
+pub(all) struct Cryptoasymsm9Vector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn Cryptoasymsm9Vector::add(Self, Self) -> Self
+pub fn Cryptoasymsm9Vector::dist(Self, Self) -> Double
+pub fn Cryptoasymsm9Vector::dot(Self, Self) -> Double
+pub fn Cryptoasymsm9Vector::norm(Self) -> Double
+pub fn Cryptoasymsm9Vector::normalize(Self) -> Self
+pub fn Cryptoasymsm9Vector::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9Vector::sub(Self, Self) -> Self
+pub fn Cryptoasymsm9Vector::to_string(Self) -> String
+
+pub(all) struct Cryptoasymsm9View {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Cryptoasymsm9View::add(Self, Self) -> Self
+pub fn Cryptoasymsm9View::copy(Self) -> Self
+pub fn Cryptoasymsm9View::fill(Self, Double) -> Self
+pub fn Cryptoasymsm9View::get(Self, Int32) -> Double
+pub fn Cryptoasymsm9View::len(Self) -> Int32
+pub fn Cryptoasymsm9View::max(Self) -> Double
+pub fn Cryptoasymsm9View::mean(Self) -> Double
+pub fn Cryptoasymsm9View::min(Self) -> Double
+pub fn Cryptoasymsm9View::scale(Self, Double) -> Self
+pub fn Cryptoasymsm9View::set(Self, Int32, Double) -> Self
+pub fn Cryptoasymsm9View::sum(Self) -> Double
+pub fn Cryptoasymsm9View::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

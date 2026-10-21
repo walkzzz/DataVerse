@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_proto_http2"
+
+// Values
+pub fn net_proto_http2_buffer_make(Int32) -> Netprotohttp2Buffer
+
+pub fn net_proto_http2_cluster_make(Int32) -> Netprotohttp2Cluster
+
+pub fn net_proto_http2_cursor_make(Int32) -> Netprotohttp2Cursor
+
+pub fn net_proto_http2_edge_make(Int32) -> Netprotohttp2Edge
+
+pub fn net_proto_http2_frame_make(Int32) -> Netprotohttp2Frame
+
+pub fn net_proto_http2_graphn_make(Int32) -> Netprotohttp2GraphN
+
+pub fn net_proto_http2_layer_make(Int32) -> Netprotohttp2Layer
+
+pub fn net_proto_http2_make_matrix(Int32, Int32, Double) -> Netprotohttp2Matrix
+
+pub fn net_proto_http2_make_point(Double, Double) -> Netprotohttp2Point
+
+pub fn net_proto_http2_make_point3(Double, Double, Double) -> Netprotohttp2Point
+
+pub fn net_proto_http2_make_series(Array[Double], String) -> Netprotohttp2Series
+
+pub fn net_proto_http2_make_vector(Array[Double]) -> Netprotohttp2Vector
+
+pub fn net_proto_http2_matrix_identity(Int32) -> Netprotohttp2Matrix
+
+pub fn net_proto_http2_model_make(Int32) -> Netprotohttp2Model
+
+pub fn net_proto_http2_node_make(Int32) -> Netprotohttp2Node
+
+pub fn net_proto_http2_path_make(Int32) -> Netprotohttp2Path
+
+pub fn net_proto_http2_range_make(Int32) -> Netprotohttp2Range
+
+pub fn net_proto_http2_slice_make(Int32) -> Netprotohttp2Slice
+
+pub fn net_proto_http2_table_make(Int32) -> Netprotohttp2Table
+
+pub fn net_proto_http2_vector_zero(Int32) -> Netprotohttp2Vector
+
+pub fn net_proto_http2_view_make(Int32) -> Netprotohttp2View
+
+// Errors
+
+// Types and methods
+pub(all) struct Netprotohttp2Buffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Netprotohttp2Buffer::add(Self, Self) -> Self
+pub fn Netprotohttp2Buffer::copy(Self) -> Self
+pub fn Netprotohttp2Buffer::fill(Self, Double) -> Self
+pub fn Netprotohttp2Buffer::get(Self, Int32) -> Double
+pub fn Netprotohttp2Buffer::len(Self) -> Int32
+pub fn Netprotohttp2Buffer::max(Self) -> Double
+pub fn Netprotohttp2Buffer::mean(Self) -> Double
+pub fn Netprotohttp2Buffer::min(Self) -> Double
+pub fn Netprotohttp2Buffer::scale(Self, Double) -> Self
+pub fn Netprotohttp2Buffer::set(Self, Int32, Double) -> Self
+pub fn Netprotohttp2Buffer::sum(Self) -> Double
+pub fn Netprotohttp2Buffer::to_string(Self) -> String
+
+pub(all) struct Netprotohttp2Cluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Netprotohttp2Cluster::add(Self, Self) -> Self
+pub fn Netprotohttp2Cluster::copy(Self) -> Self
+pub fn Netprotohttp2Cluster::fill(Self, Double) -> Self
+pub fn Netprotohttp2Cluster::get(Self, Int32) -> Double
+pub fn Netprotohttp2Cluster::len(Self) -> Int32
+pub fn Netprotohttp2Cluster::max(Self) -> Double
+pub fn Netprotohttp2Cluster::mean(Self) -> Double
+pub fn Netprotohttp2Cluster::min(Self) -> Double
+pub fn Netprotohttp2Cluster::scale(Self, Double) -> Self
+pub fn Netprotohttp2Cluster::set(Self, Int32, Double) -> Self
+pub fn Netprotohttp2Cluster::sum(Self) -> Double
+pub fn Netprotohttp2Cluster::to_string(Self) -> String
+
+pub(all) struct Netprotohttp2Cursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Netprotohttp2Cursor::add(Self, Self) -> Self
+pub fn Netprotohttp2Cursor::copy(Self) -> Self
+pub fn Netprotohttp2Cursor::fill(Self, Double) -> Self
+pub fn Netprotohttp2Cursor::get(Self, Int32) -> Double
+pub fn Netprotohttp2Cursor::len(Self) -> Int32
+pub fn Netprotohttp2Cursor::max(Self) -> Double
+pub fn Netprotohttp2Cursor::mean(Self) -> Double
+pub fn Netprotohttp2Cursor::min(Self) -> Double
+pub fn Netprotohttp2Cursor::scale(Self, Double) -> Self
+pub fn Netprotohttp2Cursor::set(Self, Int32, Double) -> Self
+pub fn Netprotohttp2Cursor::sum(Self) -> Double
+pub fn Netprotohttp2Cursor::to_string(Self) -> String
+
+pub(all) struct Netprotohttp2Edge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Netprotohttp2Edge::add(Self, Self) -> Self
+pub fn Netprotohttp2Edge::copy(Self) -> Self
+pub fn Netprotohttp2Edge::fill(Self, Double) -> Self
+pub fn Netprotohttp2Edge::get(Self, Int32) -> Double
+pub fn Netprotohttp2Edge::len(Self) -> Int32
+pub fn Netprotohttp2Edge::max(Self) -> Double
+pub fn Netprotohttp2Edge::mean(Self) -> Double
+pub fn Netprotohttp2Edge::min(Self) -> Double
+pub fn Netprotohttp2Edge::scale(Self, Double) -> Self
+pub fn Netprotohttp2Edge::set(Self, Int32, Double) -> Self
+pub fn Netprotohttp2Edge::sum(Self) -> Double
+pub fn Netprotohttp2Edge::to_string(Self) -> String
+
+pub(all) struct Netprotohttp2Frame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Netprotohttp2Frame::add(Self, Self) -> Self
+pub fn Netprotohttp2Frame::copy(Self) -> Self
+pub fn Netprotohttp2Frame::fill(Self, Double) -> Self
+pub fn Netprotohttp2Frame::get(Self, Int32) -> Double
+pub fn Netprotohttp2Frame::len(Self) -> Int32
+pub fn Netprotohttp2Frame::max(Self) -> Double
+pub fn Netprotohttp2Frame::mean(Self) -> Double
+pub fn Netprotohttp2Frame::min(Self) -> Double
+pub fn Netprotohttp2Frame::scale(Self, Double) -> Self
+pub fn Netprotohttp2Frame::set(Self, Int32, Double) -> Self
+pub fn Netprotohttp2Frame::sum(Self) -> Double
+pub fn Netprotohttp2Frame::to_string(Self) -> String
+
+pub(all) struct Netprotohttp2GraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Netprotohttp2GraphN::add(Self, Self) -> Self
+pub fn Netprotohttp2GraphN::copy(Self) -> Self
+pub fn Netprotohttp2GraphN::fill(Self, Double) -> Self
+pub fn Netprotohttp2GraphN::get(Self, Int32) -> Double
+pub fn Netprotohttp2GraphN::len(Self) -> Int32
+pub fn Netprotohttp2GraphN::max(Self) -> Double
+pub fn Netprotohttp2GraphN::mean(Self) -> Double
+pub fn Netprotohttp2GraphN::min(Self) -> Double
+pub fn Netprotohttp2GraphN::scale(Self, Double) -> Self
+pub fn Netprotohttp2GraphN::set(Self, Int32, Double) -> Self
+pub fn Netprotohttp2GraphN::sum(Self) -> Double
+pub fn Netprotohttp2GraphN::to_string(Self) -> String
+
+pub(all) struct Netprotohttp2Layer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Netprotohttp2Layer::add(Self, Self) -> Self
+pub fn Netprotohttp2Layer::copy(Self) -> Self
+pub fn Netprotohttp2Layer::fill(Self, Double) -> Self
+pub fn Netprotohttp2Layer::get(Self, Int32) -> Double
+pub fn Netprotohttp2Layer::len(Self) -> Int32
+pub fn Netprotohttp2Layer::max(Self) -> Double
+pub fn Netprotohttp2Layer::mean(Self) -> Double
+pub fn Netprotohttp2Layer::min(Self) -> Double
+pub fn Netprotohttp2Layer::scale(Self, Double) -> Self
+pub fn Netprotohttp2Layer::set(Self, Int32, Double) -> Self
+pub fn Netprotohttp2Layer::sum(Self) -> Double
+pub fn Netprotohttp2Layer::to_string(Self) -> String
+
+pub(all) struct Netprotohttp2Matrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn Netprotohttp2Matrix::add(Self, Self) -> Self
+pub fn Netprotohttp2Matrix::det(Self) -> Double
+pub fn Netprotohttp2Matrix::get(Self, Int32, Int32) -> Double
+pub fn Netprotohttp2Matrix::multiply(Self, Self) -> Self
+pub fn Netprotohttp2Matrix::norm(Self) -> Double
+pub fn Netprotohttp2Matrix::scale(Self, Double) -> Self
+pub fn Netprotohttp2Matrix::to_string(Self) -> String
+pub fn Netprotohttp2Matrix::trace(Self) -> Double
+pub fn Netprotohttp2Matrix::transpose(Self) -> Self
+
+pub(all) struct Netprotohttp2Model {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Netprotohttp2Model::add(Self, Self) -> Self
+pub fn Netprotohttp2Model::copy(Self) -> Self
+pub fn Netprotohttp2Model::fill(Self, Double) -> Self
+pub fn Netprotohttp2Model::get(Self, Int32) -> Double
+pub fn Netprotohttp2Model::len(Self) -> Int32
+pub fn Netprotohttp2Model::max(Self) -> Double
+pub fn Netprotohttp2Model::mean(Self) -> Double
+pub fn Netprotohttp2Model::min(Self) -> Double
+pub fn Netprotohttp2Model::scale(Self, Double) -> Self
+pub fn Netprotohttp2Model::set(Self, Int32, Double) -> Self
+pub fn Netprotohttp2Model::sum(Self) -> Double
+pub fn Netprotohttp2Model::to_string(Self) -> String
+
+pub(all) struct Netprotohttp2Node {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Netprotohttp2Node::add(Self, Self) -> Self
+pub fn Netprotohttp2Node::copy(Self) -> Self
+pub fn Netprotohttp2Node::fill(Self, Double) -> Self
+pub fn Netprotohttp2Node::get(Self, Int32) -> Double
+pub fn Netprotohttp2Node::len(Self) -> Int32
+pub fn Netprotohttp2Node::max(Self) -> Double
+pub fn Netprotohttp2Node::mean(Self) -> Double
+pub fn Netprotohttp2Node::min(Self) -> Double
+pub fn Netprotohttp2Node::scale(Self, Double) -> Self
+pub fn Netprotohttp2Node::set(Self, Int32, Double) -> Self
+pub fn Netprotohttp2Node::sum(Self) -> Double
+pub fn Netprotohttp2Node::to_string(Self) -> String
+
+pub(all) struct Netprotohttp2Path {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Netprotohttp2Path::add(Self, Self) -> Self
+pub fn Netprotohttp2Path::copy(Self) -> Self
+pub fn Netprotohttp2Path::fill(Self, Double) -> Self
+pub fn Netprotohttp2Path::get(Self, Int32) -> Double
+pub fn Netprotohttp2Path::len(Self) -> Int32
+pub fn Netprotohttp2Path::max(Self) -> Double
+pub fn Netprotohttp2Path::mean(Self) -> Double
+pub fn Netprotohttp2Path::min(Self) -> Double
+pub fn Netprotohttp2Path::scale(Self, Double) -> Self
+pub fn Netprotohttp2Path::set(Self, Int32, Double) -> Self
+pub fn Netprotohttp2Path::sum(Self) -> Double
+pub fn Netprotohttp2Path::to_string(Self) -> String
+
+pub(all) struct Netprotohttp2Point {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn Netprotohttp2Point::add(Self, Self) -> Self
+pub fn Netprotohttp2Point::cross(Self, Self) -> Self
+pub fn Netprotohttp2Point::dist(Self, Self) -> Double
+pub fn Netprotohttp2Point::dot(Self, Self) -> Double
+pub fn Netprotohttp2Point::label(Self) -> Int32
+pub fn Netprotohttp2Point::lerp(Self, Self, Double) -> Self
+pub fn Netprotohttp2Point::mid(Self, Self) -> Self
+pub fn Netprotohttp2Point::negate(Self) -> Self
+pub fn Netprotohttp2Point::norm(Self) -> Double
+pub fn Netprotohttp2Point::normalize(Self) -> Self
+pub fn Netprotohttp2Point::scale(Self, Double) -> Self
+pub fn Netprotohttp2Point::sub(Self, Self) -> Self
+pub fn Netprotohttp2Point::to_string(Self) -> String
+pub fn Netprotohttp2Point::x(Self) -> Double
+pub fn Netprotohttp2Point::y(Self) -> Double
+pub fn Netprotohttp2Point::z(Self) -> Double
+
+pub(all) struct Netprotohttp2Range {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Netprotohttp2Range::add(Self, Self) -> Self
+pub fn Netprotohttp2Range::copy(Self) -> Self
+pub fn Netprotohttp2Range::fill(Self, Double) -> Self
+pub fn Netprotohttp2Range::get(Self, Int32) -> Double
+pub fn Netprotohttp2Range::len(Self) -> Int32
+pub fn Netprotohttp2Range::max(Self) -> Double
+pub fn Netprotohttp2Range::mean(Self) -> Double
+pub fn Netprotohttp2Range::min(Self) -> Double
+pub fn Netprotohttp2Range::scale(Self, Double) -> Self
+pub fn Netprotohttp2Range::set(Self, Int32, Double) -> Self
+pub fn Netprotohttp2Range::sum(Self) -> Double
+pub fn Netprotohttp2Range::to_string(Self) -> String
+
+pub(all) struct Netprotohttp2Series {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn Netprotohttp2Series::add(Self, Self) -> Self
+pub fn Netprotohttp2Series::cumsum(Self) -> Self
+pub fn Netprotohttp2Series::len(Self) -> Int32
+pub fn Netprotohttp2Series::max(Self) -> Double
+pub fn Netprotohttp2Series::mean(Self) -> Double
+pub fn Netprotohttp2Series::median(Self) -> Double
+pub fn Netprotohttp2Series::min(Self) -> Double
+pub fn Netprotohttp2Series::normalize(Self) -> Self
+pub fn Netprotohttp2Series::range(Self) -> Double
+pub fn Netprotohttp2Series::scale(Self, Double) -> Self
+pub fn Netprotohttp2Series::std(Self) -> Double
+pub fn Netprotohttp2Series::sub(Self, Self) -> Self
+pub fn Netprotohttp2Series::sum(Self) -> Double
+pub fn Netprotohttp2Series::to_string(Self) -> String
+pub fn Netprotohttp2Series::variance(Self) -> Double
+
+pub(all) struct Netprotohttp2Slice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Netprotohttp2Slice::add(Self, Self) -> Self
+pub fn Netprotohttp2Slice::copy(Self) -> Self
+pub fn Netprotohttp2Slice::fill(Self, Double) -> Self
+pub fn Netprotohttp2Slice::get(Self, Int32) -> Double
+pub fn Netprotohttp2Slice::len(Self) -> Int32
+pub fn Netprotohttp2Slice::max(Self) -> Double
+pub fn Netprotohttp2Slice::mean(Self) -> Double
+pub fn Netprotohttp2Slice::min(Self) -> Double
+pub fn Netprotohttp2Slice::scale(Self, Double) -> Self
+pub fn Netprotohttp2Slice::set(Self, Int32, Double) -> Self
+pub fn Netprotohttp2Slice::sum(Self) -> Double
+pub fn Netprotohttp2Slice::to_string(Self) -> String
+
+pub(all) struct Netprotohttp2Table {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Netprotohttp2Table::add(Self, Self) -> Self
+pub fn Netprotohttp2Table::copy(Self) -> Self
+pub fn Netprotohttp2Table::fill(Self, Double) -> Self
+pub fn Netprotohttp2Table::get(Self, Int32) -> Double
+pub fn Netprotohttp2Table::len(Self) -> Int32
+pub fn Netprotohttp2Table::max(Self) -> Double
+pub fn Netprotohttp2Table::mean(Self) -> Double
+pub fn Netprotohttp2Table::min(Self) -> Double
+pub fn Netprotohttp2Table::scale(Self, Double) -> Self
+pub fn Netprotohttp2Table::set(Self, Int32, Double) -> Self
+pub fn Netprotohttp2Table::sum(Self) -> Double
+pub fn Netprotohttp2Table::to_string(Self) -> String
+
+pub(all) struct Netprotohttp2Vector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn Netprotohttp2Vector::add(Self, Self) -> Self
+pub fn Netprotohttp2Vector::dist(Self, Self) -> Double
+pub fn Netprotohttp2Vector::dot(Self, Self) -> Double
+pub fn Netprotohttp2Vector::norm(Self) -> Double
+pub fn Netprotohttp2Vector::normalize(Self) -> Self
+pub fn Netprotohttp2Vector::scale(Self, Double) -> Self
+pub fn Netprotohttp2Vector::sub(Self, Self) -> Self
+pub fn Netprotohttp2Vector::to_string(Self) -> String
+
+pub(all) struct Netprotohttp2View {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn Netprotohttp2View::add(Self, Self) -> Self
+pub fn Netprotohttp2View::copy(Self) -> Self
+pub fn Netprotohttp2View::fill(Self, Double) -> Self
+pub fn Netprotohttp2View::get(Self, Int32) -> Double
+pub fn Netprotohttp2View::len(Self) -> Int32
+pub fn Netprotohttp2View::max(Self) -> Double
+pub fn Netprotohttp2View::mean(Self) -> Double
+pub fn Netprotohttp2View::min(Self) -> Double
+pub fn Netprotohttp2View::scale(Self, Double) -> Self
+pub fn Netprotohttp2View::set(Self, Int32, Double) -> Self
+pub fn Netprotohttp2View::sum(Self) -> Double
+pub fn Netprotohttp2View::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

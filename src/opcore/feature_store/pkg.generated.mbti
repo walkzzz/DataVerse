@@ -1,0 +1,239 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/feature_store"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn embedding_register(EmbeddingStore, String, Array[Double]) -> EmbeddingStore
+
+pub fn embedding_search(EmbeddingStore, Array[Double], Int32) -> Array[(String, Double)]
+
+pub fn feature_drift_store(Array[Double], Array[Double]) -> Double
+
+pub fn feature_dtype(FeatureDef) -> FeatureDType
+
+pub fn feature_name(FeatureDef) -> String
+
+pub fn feature_quality_store(Array[Double]) -> Double
+
+pub fn feature_stats_store(Array[Double]) -> (Double, Double, Double, Double)
+
+pub fn feature_store_id() -> String
+
+pub fn feature_type(FeatureDef) -> FeatureType
+
+pub fn fs_audit(FeatureStore) -> Array[String]
+
+pub fn fs_cache_strategy(String) -> CacheStrategy
+
+pub fn fs_delete(FeatureStore, String) -> FeatureStore
+
+pub fn fs_feature_vector(FeatureStore, Array[String]) -> Array[Double]
+
+pub fn fs_get(FeatureStore, String) -> FeatureDef?
+
+pub fn fs_join_features(Array[(String, Array[Double])], Array[(String, Array[Double])]) -> Array[(String, Array[Double])]
+
+pub fn fs_lineage(FeatureStore) -> Array[String]
+
+pub fn fs_offline_read(FeatureStore, String) -> Array[Double]
+
+pub fn fs_offline_write(FeatureStore, String, Array[Double]) -> FeatureStore
+
+pub fn fs_on_demand(FeatureStore, String) -> Array[Double]
+
+pub fn fs_online_read(FeatureStore, String) -> Array[Double]
+
+pub fn fs_online_write(FeatureStore, String, Array[Double]) -> FeatureStore
+
+pub fn fs_point_in_time(FeatureStore, String, Double) -> Array[(String, Double)]
+
+pub fn fs_pre_compute(FeatureStore, Array[String]) -> FeatureStore
+
+pub fn fs_register(FeatureStore, FeatureDef) -> FeatureStore
+
+pub fn fs_schema_check(FeatureStore, FeatureDef) -> Bool
+
+pub fn fs_type_check(Array[Double], FeatureType) -> Bool
+
+pub fn fs_validation(FeatureStore) -> Bool
+
+pub fn fs_versioning(FeatureStore) -> Int32
+
+pub fn group_add(FeatureGroup, FeatureDef) -> FeatureGroup
+
+pub fn group_list(FeatureGroup) -> Array[String]
+
+pub fn group_remove(FeatureGroup, String) -> FeatureGroup
+
+pub fn index_build(FeatureIndex, Array[(String, Int32)]) -> FeatureIndex
+
+pub fn index_query(FeatureIndex, String) -> Int32
+
+pub fn index_update(FeatureIndex, String, Int32) -> FeatureIndex
+
+pub fn make_embedding_store(Int32) -> EmbeddingStore
+
+pub fn make_feature_def(String, FeatureType, FeatureDType) -> FeatureDef
+
+pub fn make_feature_group(String, String) -> FeatureGroup
+
+pub fn make_feature_index(String) -> FeatureIndex
+
+pub fn make_feature_monitor(String, Double, Double) -> FeatureMonitor
+
+pub fn make_feature_pipeline(String, String) -> FeaturePipeline
+
+pub fn make_feature_store() -> FeatureStore
+
+pub fn make_feature_transform(String, String) -> FeatureTransform
+
+pub fn make_feature_view(String, String) -> FeatureView
+
+pub fn monitor_drift(FeatureMonitor, Double) -> FeatureMonitor
+
+pub fn monitor_quality(FeatureMonitor, Double) -> FeatureMonitor
+
+pub fn pipeline_compute(FeaturePipeline, Array[Double]) -> Array[Double]
+
+pub fn pipeline_schedule(FeaturePipeline, String) -> FeaturePipeline
+
+pub fn transform_apply(FeatureTransform, Double) -> Double
+
+pub fn transform_chain(Array[FeatureTransform], Double) -> Double
+
+pub fn view_create(String, Array[String], String) -> FeatureView
+
+pub fn view_materialize(FeatureView) -> FeatureView
+
+pub fn view_query(FeatureView, String) -> String
+
+// Errors
+
+// Types and methods
+pub(all) enum CacheStrategy {
+  CacheAll
+  CacheNone
+  CacheLRU
+  CacheTTL
+} derive(Eq, @debug.Debug)
+pub fn CacheStrategy::equal(Self, Self) -> Bool
+pub fn CacheStrategy::not_equal(Self, Self) -> Bool
+pub fn CacheStrategy::to_repr(Self) -> @debug.Repr
+
+pub struct EmbeddingStore {
+  embeddings : Array[(String, Array[Double])]
+  dimension : Int32
+} derive(Eq, @debug.Debug)
+pub fn EmbeddingStore::equal(Self, Self) -> Bool
+pub fn EmbeddingStore::not_equal(Self, Self) -> Bool
+pub fn EmbeddingStore::to_repr(Self) -> @debug.Repr
+
+pub(all) enum FeatureDType {
+  Float32
+  Float64
+  Int32
+  Int64
+  String_
+  Bool_
+} derive(Eq, @debug.Debug)
+pub fn FeatureDType::equal(Self, Self) -> Bool
+pub fn FeatureDType::not_equal(Self, Self) -> Bool
+pub fn FeatureDType::to_repr(Self) -> @debug.Repr
+
+pub struct FeatureDef {
+  name : String
+  feature_type : FeatureType
+  dtype : FeatureDType
+  description : String
+  tags : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn FeatureDef::equal(Self, Self) -> Bool
+pub fn FeatureDef::not_equal(Self, Self) -> Bool
+pub fn FeatureDef::to_repr(Self) -> @debug.Repr
+
+pub struct FeatureGroup {
+  name : String
+  features : Array[FeatureDef]
+  description : String
+} derive(Eq, @debug.Debug)
+pub fn FeatureGroup::equal(Self, Self) -> Bool
+pub fn FeatureGroup::not_equal(Self, Self) -> Bool
+pub fn FeatureGroup::to_repr(Self) -> @debug.Repr
+
+pub struct FeatureIndex {
+  name : String
+  keys : Array[String]
+  values : Array[Int32]
+} derive(Eq, @debug.Debug)
+pub fn FeatureIndex::equal(Self, Self) -> Bool
+pub fn FeatureIndex::not_equal(Self, Self) -> Bool
+pub fn FeatureIndex::to_repr(Self) -> @debug.Repr
+
+pub struct FeatureMonitor {
+  feature_name : String
+  drift_threshold : Double
+  quality_threshold : Double
+  alerts : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn FeatureMonitor::equal(Self, Self) -> Bool
+pub fn FeatureMonitor::not_equal(Self, Self) -> Bool
+pub fn FeatureMonitor::to_repr(Self) -> @debug.Repr
+
+pub struct FeaturePipeline {
+  name : String
+  steps : Array[String]
+  schedule : String
+  last_run : Double
+} derive(Eq, @debug.Debug)
+pub fn FeaturePipeline::equal(Self, Self) -> Bool
+pub fn FeaturePipeline::not_equal(Self, Self) -> Bool
+pub fn FeaturePipeline::to_repr(Self) -> @debug.Repr
+
+pub struct FeatureStore {
+  features : Array[(String, FeatureDef)]
+  groups : Array[FeatureGroup]
+  views : Array[FeatureView]
+  online_data : Array[(String, Array[Double])]
+  offline_data : Array[(String, Array[Double])]
+  audit_log : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn FeatureStore::equal(Self, Self) -> Bool
+pub fn FeatureStore::not_equal(Self, Self) -> Bool
+pub fn FeatureStore::to_repr(Self) -> @debug.Repr
+
+pub struct FeatureTransform {
+  name : String
+  transform_type : String
+  params : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn FeatureTransform::equal(Self, Self) -> Bool
+pub fn FeatureTransform::not_equal(Self, Self) -> Bool
+pub fn FeatureTransform::to_repr(Self) -> @debug.Repr
+
+pub(all) enum FeatureType {
+  Numerical
+  Categorical
+  Binary
+  Text
+  Embedding
+} derive(Eq, @debug.Debug)
+pub fn FeatureType::equal(Self, Self) -> Bool
+pub fn FeatureType::not_equal(Self, Self) -> Bool
+pub fn FeatureType::to_repr(Self) -> @debug.Repr
+
+pub struct FeatureView {
+  name : String
+  feature_names : Array[String]
+  entity_column : String
+  materialized : Bool
+} derive(Eq, @debug.Debug)
+pub fn FeatureView::equal(Self, Self) -> Bool
+pub fn FeatureView::not_equal(Self, Self) -> Bool
+pub fn FeatureView::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

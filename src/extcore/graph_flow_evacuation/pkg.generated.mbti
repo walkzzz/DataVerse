@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_flow_evacuation"
+
+// Values
+pub fn graph_flow_evacuation_buffer_make(Int32) -> GraphflowevacuationBuffer
+
+pub fn graph_flow_evacuation_cluster_make(Int32) -> GraphflowevacuationCluster
+
+pub fn graph_flow_evacuation_cursor_make(Int32) -> GraphflowevacuationCursor
+
+pub fn graph_flow_evacuation_edge_make(Int32) -> GraphflowevacuationEdge
+
+pub fn graph_flow_evacuation_frame_make(Int32) -> GraphflowevacuationFrame
+
+pub fn graph_flow_evacuation_graphn_make(Int32) -> GraphflowevacuationGraphN
+
+pub fn graph_flow_evacuation_layer_make(Int32) -> GraphflowevacuationLayer
+
+pub fn graph_flow_evacuation_make_matrix(Int32, Int32, Double) -> GraphflowevacuationMatrix
+
+pub fn graph_flow_evacuation_make_point(Double, Double) -> GraphflowevacuationPoint
+
+pub fn graph_flow_evacuation_make_point3(Double, Double, Double) -> GraphflowevacuationPoint
+
+pub fn graph_flow_evacuation_make_series(Array[Double], String) -> GraphflowevacuationSeries
+
+pub fn graph_flow_evacuation_make_vector(Array[Double]) -> GraphflowevacuationVector
+
+pub fn graph_flow_evacuation_matrix_identity(Int32) -> GraphflowevacuationMatrix
+
+pub fn graph_flow_evacuation_model_make(Int32) -> GraphflowevacuationModel
+
+pub fn graph_flow_evacuation_node_make(Int32) -> GraphflowevacuationNode
+
+pub fn graph_flow_evacuation_path_make(Int32) -> GraphflowevacuationPath
+
+pub fn graph_flow_evacuation_range_make(Int32) -> GraphflowevacuationRange
+
+pub fn graph_flow_evacuation_slice_make(Int32) -> GraphflowevacuationSlice
+
+pub fn graph_flow_evacuation_table_make(Int32) -> GraphflowevacuationTable
+
+pub fn graph_flow_evacuation_vector_zero(Int32) -> GraphflowevacuationVector
+
+pub fn graph_flow_evacuation_view_make(Int32) -> GraphflowevacuationView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphflowevacuationBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowevacuationBuffer::add(Self, Self) -> Self
+pub fn GraphflowevacuationBuffer::copy(Self) -> Self
+pub fn GraphflowevacuationBuffer::fill(Self, Double) -> Self
+pub fn GraphflowevacuationBuffer::get(Self, Int32) -> Double
+pub fn GraphflowevacuationBuffer::len(Self) -> Int32
+pub fn GraphflowevacuationBuffer::max(Self) -> Double
+pub fn GraphflowevacuationBuffer::mean(Self) -> Double
+pub fn GraphflowevacuationBuffer::min(Self) -> Double
+pub fn GraphflowevacuationBuffer::scale(Self, Double) -> Self
+pub fn GraphflowevacuationBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphflowevacuationBuffer::sum(Self) -> Double
+pub fn GraphflowevacuationBuffer::to_string(Self) -> String
+
+pub(all) struct GraphflowevacuationCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowevacuationCluster::add(Self, Self) -> Self
+pub fn GraphflowevacuationCluster::copy(Self) -> Self
+pub fn GraphflowevacuationCluster::fill(Self, Double) -> Self
+pub fn GraphflowevacuationCluster::get(Self, Int32) -> Double
+pub fn GraphflowevacuationCluster::len(Self) -> Int32
+pub fn GraphflowevacuationCluster::max(Self) -> Double
+pub fn GraphflowevacuationCluster::mean(Self) -> Double
+pub fn GraphflowevacuationCluster::min(Self) -> Double
+pub fn GraphflowevacuationCluster::scale(Self, Double) -> Self
+pub fn GraphflowevacuationCluster::set(Self, Int32, Double) -> Self
+pub fn GraphflowevacuationCluster::sum(Self) -> Double
+pub fn GraphflowevacuationCluster::to_string(Self) -> String
+
+pub(all) struct GraphflowevacuationCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowevacuationCursor::add(Self, Self) -> Self
+pub fn GraphflowevacuationCursor::copy(Self) -> Self
+pub fn GraphflowevacuationCursor::fill(Self, Double) -> Self
+pub fn GraphflowevacuationCursor::get(Self, Int32) -> Double
+pub fn GraphflowevacuationCursor::len(Self) -> Int32
+pub fn GraphflowevacuationCursor::max(Self) -> Double
+pub fn GraphflowevacuationCursor::mean(Self) -> Double
+pub fn GraphflowevacuationCursor::min(Self) -> Double
+pub fn GraphflowevacuationCursor::scale(Self, Double) -> Self
+pub fn GraphflowevacuationCursor::set(Self, Int32, Double) -> Self
+pub fn GraphflowevacuationCursor::sum(Self) -> Double
+pub fn GraphflowevacuationCursor::to_string(Self) -> String
+
+pub(all) struct GraphflowevacuationEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowevacuationEdge::add(Self, Self) -> Self
+pub fn GraphflowevacuationEdge::copy(Self) -> Self
+pub fn GraphflowevacuationEdge::fill(Self, Double) -> Self
+pub fn GraphflowevacuationEdge::get(Self, Int32) -> Double
+pub fn GraphflowevacuationEdge::len(Self) -> Int32
+pub fn GraphflowevacuationEdge::max(Self) -> Double
+pub fn GraphflowevacuationEdge::mean(Self) -> Double
+pub fn GraphflowevacuationEdge::min(Self) -> Double
+pub fn GraphflowevacuationEdge::scale(Self, Double) -> Self
+pub fn GraphflowevacuationEdge::set(Self, Int32, Double) -> Self
+pub fn GraphflowevacuationEdge::sum(Self) -> Double
+pub fn GraphflowevacuationEdge::to_string(Self) -> String
+
+pub(all) struct GraphflowevacuationFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowevacuationFrame::add(Self, Self) -> Self
+pub fn GraphflowevacuationFrame::copy(Self) -> Self
+pub fn GraphflowevacuationFrame::fill(Self, Double) -> Self
+pub fn GraphflowevacuationFrame::get(Self, Int32) -> Double
+pub fn GraphflowevacuationFrame::len(Self) -> Int32
+pub fn GraphflowevacuationFrame::max(Self) -> Double
+pub fn GraphflowevacuationFrame::mean(Self) -> Double
+pub fn GraphflowevacuationFrame::min(Self) -> Double
+pub fn GraphflowevacuationFrame::scale(Self, Double) -> Self
+pub fn GraphflowevacuationFrame::set(Self, Int32, Double) -> Self
+pub fn GraphflowevacuationFrame::sum(Self) -> Double
+pub fn GraphflowevacuationFrame::to_string(Self) -> String
+
+pub(all) struct GraphflowevacuationGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowevacuationGraphN::add(Self, Self) -> Self
+pub fn GraphflowevacuationGraphN::copy(Self) -> Self
+pub fn GraphflowevacuationGraphN::fill(Self, Double) -> Self
+pub fn GraphflowevacuationGraphN::get(Self, Int32) -> Double
+pub fn GraphflowevacuationGraphN::len(Self) -> Int32
+pub fn GraphflowevacuationGraphN::max(Self) -> Double
+pub fn GraphflowevacuationGraphN::mean(Self) -> Double
+pub fn GraphflowevacuationGraphN::min(Self) -> Double
+pub fn GraphflowevacuationGraphN::scale(Self, Double) -> Self
+pub fn GraphflowevacuationGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphflowevacuationGraphN::sum(Self) -> Double
+pub fn GraphflowevacuationGraphN::to_string(Self) -> String
+
+pub(all) struct GraphflowevacuationLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowevacuationLayer::add(Self, Self) -> Self
+pub fn GraphflowevacuationLayer::copy(Self) -> Self
+pub fn GraphflowevacuationLayer::fill(Self, Double) -> Self
+pub fn GraphflowevacuationLayer::get(Self, Int32) -> Double
+pub fn GraphflowevacuationLayer::len(Self) -> Int32
+pub fn GraphflowevacuationLayer::max(Self) -> Double
+pub fn GraphflowevacuationLayer::mean(Self) -> Double
+pub fn GraphflowevacuationLayer::min(Self) -> Double
+pub fn GraphflowevacuationLayer::scale(Self, Double) -> Self
+pub fn GraphflowevacuationLayer::set(Self, Int32, Double) -> Self
+pub fn GraphflowevacuationLayer::sum(Self) -> Double
+pub fn GraphflowevacuationLayer::to_string(Self) -> String
+
+pub(all) struct GraphflowevacuationMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphflowevacuationMatrix::add(Self, Self) -> Self
+pub fn GraphflowevacuationMatrix::det(Self) -> Double
+pub fn GraphflowevacuationMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphflowevacuationMatrix::multiply(Self, Self) -> Self
+pub fn GraphflowevacuationMatrix::norm(Self) -> Double
+pub fn GraphflowevacuationMatrix::scale(Self, Double) -> Self
+pub fn GraphflowevacuationMatrix::to_string(Self) -> String
+pub fn GraphflowevacuationMatrix::trace(Self) -> Double
+pub fn GraphflowevacuationMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphflowevacuationModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowevacuationModel::add(Self, Self) -> Self
+pub fn GraphflowevacuationModel::copy(Self) -> Self
+pub fn GraphflowevacuationModel::fill(Self, Double) -> Self
+pub fn GraphflowevacuationModel::get(Self, Int32) -> Double
+pub fn GraphflowevacuationModel::len(Self) -> Int32
+pub fn GraphflowevacuationModel::max(Self) -> Double
+pub fn GraphflowevacuationModel::mean(Self) -> Double
+pub fn GraphflowevacuationModel::min(Self) -> Double
+pub fn GraphflowevacuationModel::scale(Self, Double) -> Self
+pub fn GraphflowevacuationModel::set(Self, Int32, Double) -> Self
+pub fn GraphflowevacuationModel::sum(Self) -> Double
+pub fn GraphflowevacuationModel::to_string(Self) -> String
+
+pub(all) struct GraphflowevacuationNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowevacuationNode::add(Self, Self) -> Self
+pub fn GraphflowevacuationNode::copy(Self) -> Self
+pub fn GraphflowevacuationNode::fill(Self, Double) -> Self
+pub fn GraphflowevacuationNode::get(Self, Int32) -> Double
+pub fn GraphflowevacuationNode::len(Self) -> Int32
+pub fn GraphflowevacuationNode::max(Self) -> Double
+pub fn GraphflowevacuationNode::mean(Self) -> Double
+pub fn GraphflowevacuationNode::min(Self) -> Double
+pub fn GraphflowevacuationNode::scale(Self, Double) -> Self
+pub fn GraphflowevacuationNode::set(Self, Int32, Double) -> Self
+pub fn GraphflowevacuationNode::sum(Self) -> Double
+pub fn GraphflowevacuationNode::to_string(Self) -> String
+
+pub(all) struct GraphflowevacuationPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowevacuationPath::add(Self, Self) -> Self
+pub fn GraphflowevacuationPath::copy(Self) -> Self
+pub fn GraphflowevacuationPath::fill(Self, Double) -> Self
+pub fn GraphflowevacuationPath::get(Self, Int32) -> Double
+pub fn GraphflowevacuationPath::len(Self) -> Int32
+pub fn GraphflowevacuationPath::max(Self) -> Double
+pub fn GraphflowevacuationPath::mean(Self) -> Double
+pub fn GraphflowevacuationPath::min(Self) -> Double
+pub fn GraphflowevacuationPath::scale(Self, Double) -> Self
+pub fn GraphflowevacuationPath::set(Self, Int32, Double) -> Self
+pub fn GraphflowevacuationPath::sum(Self) -> Double
+pub fn GraphflowevacuationPath::to_string(Self) -> String
+
+pub(all) struct GraphflowevacuationPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphflowevacuationPoint::add(Self, Self) -> Self
+pub fn GraphflowevacuationPoint::cross(Self, Self) -> Self
+pub fn GraphflowevacuationPoint::dist(Self, Self) -> Double
+pub fn GraphflowevacuationPoint::dot(Self, Self) -> Double
+pub fn GraphflowevacuationPoint::label(Self) -> Int32
+pub fn GraphflowevacuationPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphflowevacuationPoint::mid(Self, Self) -> Self
+pub fn GraphflowevacuationPoint::negate(Self) -> Self
+pub fn GraphflowevacuationPoint::norm(Self) -> Double
+pub fn GraphflowevacuationPoint::normalize(Self) -> Self
+pub fn GraphflowevacuationPoint::scale(Self, Double) -> Self
+pub fn GraphflowevacuationPoint::sub(Self, Self) -> Self
+pub fn GraphflowevacuationPoint::to_string(Self) -> String
+pub fn GraphflowevacuationPoint::x(Self) -> Double
+pub fn GraphflowevacuationPoint::y(Self) -> Double
+pub fn GraphflowevacuationPoint::z(Self) -> Double
+
+pub(all) struct GraphflowevacuationRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowevacuationRange::add(Self, Self) -> Self
+pub fn GraphflowevacuationRange::copy(Self) -> Self
+pub fn GraphflowevacuationRange::fill(Self, Double) -> Self
+pub fn GraphflowevacuationRange::get(Self, Int32) -> Double
+pub fn GraphflowevacuationRange::len(Self) -> Int32
+pub fn GraphflowevacuationRange::max(Self) -> Double
+pub fn GraphflowevacuationRange::mean(Self) -> Double
+pub fn GraphflowevacuationRange::min(Self) -> Double
+pub fn GraphflowevacuationRange::scale(Self, Double) -> Self
+pub fn GraphflowevacuationRange::set(Self, Int32, Double) -> Self
+pub fn GraphflowevacuationRange::sum(Self) -> Double
+pub fn GraphflowevacuationRange::to_string(Self) -> String
+
+pub(all) struct GraphflowevacuationSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphflowevacuationSeries::add(Self, Self) -> Self
+pub fn GraphflowevacuationSeries::cumsum(Self) -> Self
+pub fn GraphflowevacuationSeries::len(Self) -> Int32
+pub fn GraphflowevacuationSeries::max(Self) -> Double
+pub fn GraphflowevacuationSeries::mean(Self) -> Double
+pub fn GraphflowevacuationSeries::median(Self) -> Double
+pub fn GraphflowevacuationSeries::min(Self) -> Double
+pub fn GraphflowevacuationSeries::normalize(Self) -> Self
+pub fn GraphflowevacuationSeries::range(Self) -> Double
+pub fn GraphflowevacuationSeries::scale(Self, Double) -> Self
+pub fn GraphflowevacuationSeries::std(Self) -> Double
+pub fn GraphflowevacuationSeries::sub(Self, Self) -> Self
+pub fn GraphflowevacuationSeries::sum(Self) -> Double
+pub fn GraphflowevacuationSeries::to_string(Self) -> String
+pub fn GraphflowevacuationSeries::variance(Self) -> Double
+
+pub(all) struct GraphflowevacuationSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowevacuationSlice::add(Self, Self) -> Self
+pub fn GraphflowevacuationSlice::copy(Self) -> Self
+pub fn GraphflowevacuationSlice::fill(Self, Double) -> Self
+pub fn GraphflowevacuationSlice::get(Self, Int32) -> Double
+pub fn GraphflowevacuationSlice::len(Self) -> Int32
+pub fn GraphflowevacuationSlice::max(Self) -> Double
+pub fn GraphflowevacuationSlice::mean(Self) -> Double
+pub fn GraphflowevacuationSlice::min(Self) -> Double
+pub fn GraphflowevacuationSlice::scale(Self, Double) -> Self
+pub fn GraphflowevacuationSlice::set(Self, Int32, Double) -> Self
+pub fn GraphflowevacuationSlice::sum(Self) -> Double
+pub fn GraphflowevacuationSlice::to_string(Self) -> String
+
+pub(all) struct GraphflowevacuationTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowevacuationTable::add(Self, Self) -> Self
+pub fn GraphflowevacuationTable::copy(Self) -> Self
+pub fn GraphflowevacuationTable::fill(Self, Double) -> Self
+pub fn GraphflowevacuationTable::get(Self, Int32) -> Double
+pub fn GraphflowevacuationTable::len(Self) -> Int32
+pub fn GraphflowevacuationTable::max(Self) -> Double
+pub fn GraphflowevacuationTable::mean(Self) -> Double
+pub fn GraphflowevacuationTable::min(Self) -> Double
+pub fn GraphflowevacuationTable::scale(Self, Double) -> Self
+pub fn GraphflowevacuationTable::set(Self, Int32, Double) -> Self
+pub fn GraphflowevacuationTable::sum(Self) -> Double
+pub fn GraphflowevacuationTable::to_string(Self) -> String
+
+pub(all) struct GraphflowevacuationVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphflowevacuationVector::add(Self, Self) -> Self
+pub fn GraphflowevacuationVector::dist(Self, Self) -> Double
+pub fn GraphflowevacuationVector::dot(Self, Self) -> Double
+pub fn GraphflowevacuationVector::norm(Self) -> Double
+pub fn GraphflowevacuationVector::normalize(Self) -> Self
+pub fn GraphflowevacuationVector::scale(Self, Double) -> Self
+pub fn GraphflowevacuationVector::sub(Self, Self) -> Self
+pub fn GraphflowevacuationVector::to_string(Self) -> String
+
+pub(all) struct GraphflowevacuationView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowevacuationView::add(Self, Self) -> Self
+pub fn GraphflowevacuationView::copy(Self) -> Self
+pub fn GraphflowevacuationView::fill(Self, Double) -> Self
+pub fn GraphflowevacuationView::get(Self, Int32) -> Double
+pub fn GraphflowevacuationView::len(Self) -> Int32
+pub fn GraphflowevacuationView::max(Self) -> Double
+pub fn GraphflowevacuationView::mean(Self) -> Double
+pub fn GraphflowevacuationView::min(Self) -> Double
+pub fn GraphflowevacuationView::scale(Self, Double) -> Self
+pub fn GraphflowevacuationView::set(Self, Int32, Double) -> Self
+pub fn GraphflowevacuationView::sum(Self) -> Double
+pub fn GraphflowevacuationView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,44 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/remotesensing"
+
+// Values
+pub fn band_count(MultiBandImage) -> Int32
+
+pub fn band_ratio(MultiBandImage, Int32, Int32) -> Array[Double]
+
+pub fn band_stats(MultiBandImage, Int32) -> (Double, Double, Double, Double)
+
+pub fn band_subtract(MultiBandImage, Int32, Int32) -> Array[Double]
+
+pub fn evi(MultiBandImage, Int32, Int32, Int32) -> Array[Double]
+
+pub fn make_multiband(Int32, Int32, Array[Array[Double]]) -> MultiBandImage
+
+pub fn mndwi(MultiBandImage, Int32, Int32) -> Array[Double]
+
+pub fn ndbi(MultiBandImage, Int32, Int32) -> Array[Double]
+
+pub fn ndvi(MultiBandImage, Int32, Int32) -> Array[Double]
+
+pub fn ndwi(MultiBandImage, Int32, Int32) -> Array[Double]
+
+pub fn remotesensing_id() -> String
+
+pub fn savi(MultiBandImage, Int32, Int32, Double) -> Array[Double]
+
+pub fn supervised_classify(Array[Double], Array[(Int32, Double)]) -> Array[Int32]
+
+pub fn threshold_classify(Array[Double], Array[Double]) -> Array[Int32]
+
+// Errors
+
+// Types and methods
+pub struct MultiBandImage {
+  width : Int32
+  height : Int32
+  bands : Array[Array[Double]]
+}
+
+// Type aliases
+
+// Traits

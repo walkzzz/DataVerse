@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/special_func"
+
+// Values
+pub fn special_func_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn special_func_corr(Array[Double], Array[Double]) -> Double
+
+pub fn special_func_cov(Array[Double], Array[Double]) -> Double
+
+pub fn special_func_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn special_func_mae(Array[Double], Array[Double]) -> Double
+
+pub fn special_func_make_labeled_point(Double, Double, Int32) -> Special_funcPoint
+
+pub fn special_func_make_matrix(Int32, Int32, Double) -> Special_funcMatrix
+
+pub fn special_func_make_point(Double, Double) -> Special_funcPoint
+
+pub fn special_func_make_series(Array[Double], String) -> Special_funcSeries
+
+pub fn special_func_make_vector(Array[Double]) -> Special_funcVector
+
+pub fn special_func_matrix_add(Special_funcMatrix, Special_funcMatrix) -> Special_funcMatrix
+
+pub fn special_func_matrix_get(Special_funcMatrix, Int32, Int32) -> Double
+
+pub fn special_func_matrix_identity(Int32) -> Special_funcMatrix
+
+pub fn special_func_matrix_multiply(Special_funcMatrix, Special_funcMatrix) -> Special_funcMatrix
+
+pub fn special_func_matrix_norm(Special_funcMatrix) -> Double
+
+pub fn special_func_matrix_scale(Special_funcMatrix, Double) -> Special_funcMatrix
+
+pub fn special_func_matrix_to_string(Special_funcMatrix) -> String
+
+pub fn special_func_matrix_trace(Special_funcMatrix) -> Double
+
+pub fn special_func_matrix_transpose(Special_funcMatrix) -> Special_funcMatrix
+
+pub fn special_func_mse(Array[Double], Array[Double]) -> Double
+
+pub fn special_func_point_add(Special_funcPoint, Special_funcPoint) -> Special_funcPoint
+
+pub fn special_func_point_dist(Special_funcPoint, Special_funcPoint) -> Double
+
+pub fn special_func_point_dot(Special_funcPoint, Special_funcPoint) -> Double
+
+pub fn special_func_point_label(Special_funcPoint) -> Int32
+
+pub fn special_func_point_norm(Special_funcPoint) -> Double
+
+pub fn special_func_point_scale(Special_funcPoint, Double) -> Special_funcPoint
+
+pub fn special_func_point_sub(Special_funcPoint, Special_funcPoint) -> Special_funcPoint
+
+pub fn special_func_point_to_string(Special_funcPoint) -> String
+
+pub fn special_func_point_x(Special_funcPoint) -> Double
+
+pub fn special_func_point_y(Special_funcPoint) -> Double
+
+pub fn special_func_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn special_func_r2(Array[Double], Array[Double]) -> Double
+
+pub fn special_func_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn special_func_series_add(Special_funcSeries, Special_funcSeries) -> Special_funcSeries
+
+pub fn special_func_series_len(Special_funcSeries) -> Int32
+
+pub fn special_func_series_max(Special_funcSeries) -> Double
+
+pub fn special_func_series_mean(Special_funcSeries) -> Double
+
+pub fn special_func_series_min(Special_funcSeries) -> Double
+
+pub fn special_func_series_scale(Special_funcSeries, Double) -> Special_funcSeries
+
+pub fn special_func_series_std(Special_funcSeries) -> Double
+
+pub fn special_func_series_sum(Special_funcSeries) -> Double
+
+pub fn special_func_series_to_string(Special_funcSeries) -> String
+
+pub fn special_func_series_var(Special_funcSeries) -> Double
+
+pub fn special_func_std(Array[Double]) -> Double
+
+pub fn special_func_var(Array[Double]) -> Double
+
+pub fn special_func_vector_add(Special_funcVector, Special_funcVector) -> Special_funcVector
+
+pub fn special_func_vector_dist(Special_funcVector, Special_funcVector) -> Double
+
+pub fn special_func_vector_dot(Special_funcVector, Special_funcVector) -> Double
+
+pub fn special_func_vector_norm(Special_funcVector) -> Double
+
+pub fn special_func_vector_normalize(Special_funcVector) -> Special_funcVector
+
+pub fn special_func_vector_scale(Special_funcVector, Double) -> Special_funcVector
+
+pub fn special_func_vector_sub(Special_funcVector, Special_funcVector) -> Special_funcVector
+
+pub fn special_func_vector_to_string(Special_funcVector) -> String
+
+pub fn special_func_vector_zero(Int32) -> Special_funcVector
+
+// Errors
+
+// Types and methods
+pub struct Special_funcMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Special_funcPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Special_funcSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Special_funcVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

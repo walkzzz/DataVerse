@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_dist_vincenty"
+
+// Values
+pub fn geo_dist_vincenty_buffer_make(Int32) -> GeodistvincentyBuffer
+
+pub fn geo_dist_vincenty_cluster_make(Int32) -> GeodistvincentyCluster
+
+pub fn geo_dist_vincenty_cursor_make(Int32) -> GeodistvincentyCursor
+
+pub fn geo_dist_vincenty_edge_make(Int32) -> GeodistvincentyEdge
+
+pub fn geo_dist_vincenty_frame_make(Int32) -> GeodistvincentyFrame
+
+pub fn geo_dist_vincenty_graphn_make(Int32) -> GeodistvincentyGraphN
+
+pub fn geo_dist_vincenty_layer_make(Int32) -> GeodistvincentyLayer
+
+pub fn geo_dist_vincenty_make_matrix(Int32, Int32, Double) -> GeodistvincentyMatrix
+
+pub fn geo_dist_vincenty_make_point(Double, Double) -> GeodistvincentyPoint
+
+pub fn geo_dist_vincenty_make_point3(Double, Double, Double) -> GeodistvincentyPoint
+
+pub fn geo_dist_vincenty_make_series(Array[Double], String) -> GeodistvincentySeries
+
+pub fn geo_dist_vincenty_make_vector(Array[Double]) -> GeodistvincentyVector
+
+pub fn geo_dist_vincenty_matrix_identity(Int32) -> GeodistvincentyMatrix
+
+pub fn geo_dist_vincenty_model_make(Int32) -> GeodistvincentyModel
+
+pub fn geo_dist_vincenty_node_make(Int32) -> GeodistvincentyNode
+
+pub fn geo_dist_vincenty_path_make(Int32) -> GeodistvincentyPath
+
+pub fn geo_dist_vincenty_range_make(Int32) -> GeodistvincentyRange
+
+pub fn geo_dist_vincenty_slice_make(Int32) -> GeodistvincentySlice
+
+pub fn geo_dist_vincenty_table_make(Int32) -> GeodistvincentyTable
+
+pub fn geo_dist_vincenty_vector_zero(Int32) -> GeodistvincentyVector
+
+pub fn geo_dist_vincenty_view_make(Int32) -> GeodistvincentyView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeodistvincentyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistvincentyBuffer::add(Self, Self) -> Self
+pub fn GeodistvincentyBuffer::copy(Self) -> Self
+pub fn GeodistvincentyBuffer::fill(Self, Double) -> Self
+pub fn GeodistvincentyBuffer::get(Self, Int32) -> Double
+pub fn GeodistvincentyBuffer::len(Self) -> Int32
+pub fn GeodistvincentyBuffer::max(Self) -> Double
+pub fn GeodistvincentyBuffer::mean(Self) -> Double
+pub fn GeodistvincentyBuffer::min(Self) -> Double
+pub fn GeodistvincentyBuffer::scale(Self, Double) -> Self
+pub fn GeodistvincentyBuffer::set(Self, Int32, Double) -> Self
+pub fn GeodistvincentyBuffer::sum(Self) -> Double
+pub fn GeodistvincentyBuffer::to_string(Self) -> String
+
+pub(all) struct GeodistvincentyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistvincentyCluster::add(Self, Self) -> Self
+pub fn GeodistvincentyCluster::copy(Self) -> Self
+pub fn GeodistvincentyCluster::fill(Self, Double) -> Self
+pub fn GeodistvincentyCluster::get(Self, Int32) -> Double
+pub fn GeodistvincentyCluster::len(Self) -> Int32
+pub fn GeodistvincentyCluster::max(Self) -> Double
+pub fn GeodistvincentyCluster::mean(Self) -> Double
+pub fn GeodistvincentyCluster::min(Self) -> Double
+pub fn GeodistvincentyCluster::scale(Self, Double) -> Self
+pub fn GeodistvincentyCluster::set(Self, Int32, Double) -> Self
+pub fn GeodistvincentyCluster::sum(Self) -> Double
+pub fn GeodistvincentyCluster::to_string(Self) -> String
+
+pub(all) struct GeodistvincentyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistvincentyCursor::add(Self, Self) -> Self
+pub fn GeodistvincentyCursor::copy(Self) -> Self
+pub fn GeodistvincentyCursor::fill(Self, Double) -> Self
+pub fn GeodistvincentyCursor::get(Self, Int32) -> Double
+pub fn GeodistvincentyCursor::len(Self) -> Int32
+pub fn GeodistvincentyCursor::max(Self) -> Double
+pub fn GeodistvincentyCursor::mean(Self) -> Double
+pub fn GeodistvincentyCursor::min(Self) -> Double
+pub fn GeodistvincentyCursor::scale(Self, Double) -> Self
+pub fn GeodistvincentyCursor::set(Self, Int32, Double) -> Self
+pub fn GeodistvincentyCursor::sum(Self) -> Double
+pub fn GeodistvincentyCursor::to_string(Self) -> String
+
+pub(all) struct GeodistvincentyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistvincentyEdge::add(Self, Self) -> Self
+pub fn GeodistvincentyEdge::copy(Self) -> Self
+pub fn GeodistvincentyEdge::fill(Self, Double) -> Self
+pub fn GeodistvincentyEdge::get(Self, Int32) -> Double
+pub fn GeodistvincentyEdge::len(Self) -> Int32
+pub fn GeodistvincentyEdge::max(Self) -> Double
+pub fn GeodistvincentyEdge::mean(Self) -> Double
+pub fn GeodistvincentyEdge::min(Self) -> Double
+pub fn GeodistvincentyEdge::scale(Self, Double) -> Self
+pub fn GeodistvincentyEdge::set(Self, Int32, Double) -> Self
+pub fn GeodistvincentyEdge::sum(Self) -> Double
+pub fn GeodistvincentyEdge::to_string(Self) -> String
+
+pub(all) struct GeodistvincentyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistvincentyFrame::add(Self, Self) -> Self
+pub fn GeodistvincentyFrame::copy(Self) -> Self
+pub fn GeodistvincentyFrame::fill(Self, Double) -> Self
+pub fn GeodistvincentyFrame::get(Self, Int32) -> Double
+pub fn GeodistvincentyFrame::len(Self) -> Int32
+pub fn GeodistvincentyFrame::max(Self) -> Double
+pub fn GeodistvincentyFrame::mean(Self) -> Double
+pub fn GeodistvincentyFrame::min(Self) -> Double
+pub fn GeodistvincentyFrame::scale(Self, Double) -> Self
+pub fn GeodistvincentyFrame::set(Self, Int32, Double) -> Self
+pub fn GeodistvincentyFrame::sum(Self) -> Double
+pub fn GeodistvincentyFrame::to_string(Self) -> String
+
+pub(all) struct GeodistvincentyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistvincentyGraphN::add(Self, Self) -> Self
+pub fn GeodistvincentyGraphN::copy(Self) -> Self
+pub fn GeodistvincentyGraphN::fill(Self, Double) -> Self
+pub fn GeodistvincentyGraphN::get(Self, Int32) -> Double
+pub fn GeodistvincentyGraphN::len(Self) -> Int32
+pub fn GeodistvincentyGraphN::max(Self) -> Double
+pub fn GeodistvincentyGraphN::mean(Self) -> Double
+pub fn GeodistvincentyGraphN::min(Self) -> Double
+pub fn GeodistvincentyGraphN::scale(Self, Double) -> Self
+pub fn GeodistvincentyGraphN::set(Self, Int32, Double) -> Self
+pub fn GeodistvincentyGraphN::sum(Self) -> Double
+pub fn GeodistvincentyGraphN::to_string(Self) -> String
+
+pub(all) struct GeodistvincentyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistvincentyLayer::add(Self, Self) -> Self
+pub fn GeodistvincentyLayer::copy(Self) -> Self
+pub fn GeodistvincentyLayer::fill(Self, Double) -> Self
+pub fn GeodistvincentyLayer::get(Self, Int32) -> Double
+pub fn GeodistvincentyLayer::len(Self) -> Int32
+pub fn GeodistvincentyLayer::max(Self) -> Double
+pub fn GeodistvincentyLayer::mean(Self) -> Double
+pub fn GeodistvincentyLayer::min(Self) -> Double
+pub fn GeodistvincentyLayer::scale(Self, Double) -> Self
+pub fn GeodistvincentyLayer::set(Self, Int32, Double) -> Self
+pub fn GeodistvincentyLayer::sum(Self) -> Double
+pub fn GeodistvincentyLayer::to_string(Self) -> String
+
+pub(all) struct GeodistvincentyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeodistvincentyMatrix::add(Self, Self) -> Self
+pub fn GeodistvincentyMatrix::det(Self) -> Double
+pub fn GeodistvincentyMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeodistvincentyMatrix::multiply(Self, Self) -> Self
+pub fn GeodistvincentyMatrix::norm(Self) -> Double
+pub fn GeodistvincentyMatrix::scale(Self, Double) -> Self
+pub fn GeodistvincentyMatrix::to_string(Self) -> String
+pub fn GeodistvincentyMatrix::trace(Self) -> Double
+pub fn GeodistvincentyMatrix::transpose(Self) -> Self
+
+pub(all) struct GeodistvincentyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistvincentyModel::add(Self, Self) -> Self
+pub fn GeodistvincentyModel::copy(Self) -> Self
+pub fn GeodistvincentyModel::fill(Self, Double) -> Self
+pub fn GeodistvincentyModel::get(Self, Int32) -> Double
+pub fn GeodistvincentyModel::len(Self) -> Int32
+pub fn GeodistvincentyModel::max(Self) -> Double
+pub fn GeodistvincentyModel::mean(Self) -> Double
+pub fn GeodistvincentyModel::min(Self) -> Double
+pub fn GeodistvincentyModel::scale(Self, Double) -> Self
+pub fn GeodistvincentyModel::set(Self, Int32, Double) -> Self
+pub fn GeodistvincentyModel::sum(Self) -> Double
+pub fn GeodistvincentyModel::to_string(Self) -> String
+
+pub(all) struct GeodistvincentyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistvincentyNode::add(Self, Self) -> Self
+pub fn GeodistvincentyNode::copy(Self) -> Self
+pub fn GeodistvincentyNode::fill(Self, Double) -> Self
+pub fn GeodistvincentyNode::get(Self, Int32) -> Double
+pub fn GeodistvincentyNode::len(Self) -> Int32
+pub fn GeodistvincentyNode::max(Self) -> Double
+pub fn GeodistvincentyNode::mean(Self) -> Double
+pub fn GeodistvincentyNode::min(Self) -> Double
+pub fn GeodistvincentyNode::scale(Self, Double) -> Self
+pub fn GeodistvincentyNode::set(Self, Int32, Double) -> Self
+pub fn GeodistvincentyNode::sum(Self) -> Double
+pub fn GeodistvincentyNode::to_string(Self) -> String
+
+pub(all) struct GeodistvincentyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistvincentyPath::add(Self, Self) -> Self
+pub fn GeodistvincentyPath::copy(Self) -> Self
+pub fn GeodistvincentyPath::fill(Self, Double) -> Self
+pub fn GeodistvincentyPath::get(Self, Int32) -> Double
+pub fn GeodistvincentyPath::len(Self) -> Int32
+pub fn GeodistvincentyPath::max(Self) -> Double
+pub fn GeodistvincentyPath::mean(Self) -> Double
+pub fn GeodistvincentyPath::min(Self) -> Double
+pub fn GeodistvincentyPath::scale(Self, Double) -> Self
+pub fn GeodistvincentyPath::set(Self, Int32, Double) -> Self
+pub fn GeodistvincentyPath::sum(Self) -> Double
+pub fn GeodistvincentyPath::to_string(Self) -> String
+
+pub(all) struct GeodistvincentyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeodistvincentyPoint::add(Self, Self) -> Self
+pub fn GeodistvincentyPoint::cross(Self, Self) -> Self
+pub fn GeodistvincentyPoint::dist(Self, Self) -> Double
+pub fn GeodistvincentyPoint::dot(Self, Self) -> Double
+pub fn GeodistvincentyPoint::label(Self) -> Int32
+pub fn GeodistvincentyPoint::lerp(Self, Self, Double) -> Self
+pub fn GeodistvincentyPoint::mid(Self, Self) -> Self
+pub fn GeodistvincentyPoint::negate(Self) -> Self
+pub fn GeodistvincentyPoint::norm(Self) -> Double
+pub fn GeodistvincentyPoint::normalize(Self) -> Self
+pub fn GeodistvincentyPoint::scale(Self, Double) -> Self
+pub fn GeodistvincentyPoint::sub(Self, Self) -> Self
+pub fn GeodistvincentyPoint::to_string(Self) -> String
+pub fn GeodistvincentyPoint::x(Self) -> Double
+pub fn GeodistvincentyPoint::y(Self) -> Double
+pub fn GeodistvincentyPoint::z(Self) -> Double
+
+pub(all) struct GeodistvincentyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistvincentyRange::add(Self, Self) -> Self
+pub fn GeodistvincentyRange::copy(Self) -> Self
+pub fn GeodistvincentyRange::fill(Self, Double) -> Self
+pub fn GeodistvincentyRange::get(Self, Int32) -> Double
+pub fn GeodistvincentyRange::len(Self) -> Int32
+pub fn GeodistvincentyRange::max(Self) -> Double
+pub fn GeodistvincentyRange::mean(Self) -> Double
+pub fn GeodistvincentyRange::min(Self) -> Double
+pub fn GeodistvincentyRange::scale(Self, Double) -> Self
+pub fn GeodistvincentyRange::set(Self, Int32, Double) -> Self
+pub fn GeodistvincentyRange::sum(Self) -> Double
+pub fn GeodistvincentyRange::to_string(Self) -> String
+
+pub(all) struct GeodistvincentySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeodistvincentySeries::add(Self, Self) -> Self
+pub fn GeodistvincentySeries::cumsum(Self) -> Self
+pub fn GeodistvincentySeries::len(Self) -> Int32
+pub fn GeodistvincentySeries::max(Self) -> Double
+pub fn GeodistvincentySeries::mean(Self) -> Double
+pub fn GeodistvincentySeries::median(Self) -> Double
+pub fn GeodistvincentySeries::min(Self) -> Double
+pub fn GeodistvincentySeries::normalize(Self) -> Self
+pub fn GeodistvincentySeries::range(Self) -> Double
+pub fn GeodistvincentySeries::scale(Self, Double) -> Self
+pub fn GeodistvincentySeries::std(Self) -> Double
+pub fn GeodistvincentySeries::sub(Self, Self) -> Self
+pub fn GeodistvincentySeries::sum(Self) -> Double
+pub fn GeodistvincentySeries::to_string(Self) -> String
+pub fn GeodistvincentySeries::variance(Self) -> Double
+
+pub(all) struct GeodistvincentySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistvincentySlice::add(Self, Self) -> Self
+pub fn GeodistvincentySlice::copy(Self) -> Self
+pub fn GeodistvincentySlice::fill(Self, Double) -> Self
+pub fn GeodistvincentySlice::get(Self, Int32) -> Double
+pub fn GeodistvincentySlice::len(Self) -> Int32
+pub fn GeodistvincentySlice::max(Self) -> Double
+pub fn GeodistvincentySlice::mean(Self) -> Double
+pub fn GeodistvincentySlice::min(Self) -> Double
+pub fn GeodistvincentySlice::scale(Self, Double) -> Self
+pub fn GeodistvincentySlice::set(Self, Int32, Double) -> Self
+pub fn GeodistvincentySlice::sum(Self) -> Double
+pub fn GeodistvincentySlice::to_string(Self) -> String
+
+pub(all) struct GeodistvincentyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistvincentyTable::add(Self, Self) -> Self
+pub fn GeodistvincentyTable::copy(Self) -> Self
+pub fn GeodistvincentyTable::fill(Self, Double) -> Self
+pub fn GeodistvincentyTable::get(Self, Int32) -> Double
+pub fn GeodistvincentyTable::len(Self) -> Int32
+pub fn GeodistvincentyTable::max(Self) -> Double
+pub fn GeodistvincentyTable::mean(Self) -> Double
+pub fn GeodistvincentyTable::min(Self) -> Double
+pub fn GeodistvincentyTable::scale(Self, Double) -> Self
+pub fn GeodistvincentyTable::set(Self, Int32, Double) -> Self
+pub fn GeodistvincentyTable::sum(Self) -> Double
+pub fn GeodistvincentyTable::to_string(Self) -> String
+
+pub(all) struct GeodistvincentyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeodistvincentyVector::add(Self, Self) -> Self
+pub fn GeodistvincentyVector::dist(Self, Self) -> Double
+pub fn GeodistvincentyVector::dot(Self, Self) -> Double
+pub fn GeodistvincentyVector::norm(Self) -> Double
+pub fn GeodistvincentyVector::normalize(Self) -> Self
+pub fn GeodistvincentyVector::scale(Self, Double) -> Self
+pub fn GeodistvincentyVector::sub(Self, Self) -> Self
+pub fn GeodistvincentyVector::to_string(Self) -> String
+
+pub(all) struct GeodistvincentyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistvincentyView::add(Self, Self) -> Self
+pub fn GeodistvincentyView::copy(Self) -> Self
+pub fn GeodistvincentyView::fill(Self, Double) -> Self
+pub fn GeodistvincentyView::get(Self, Int32) -> Double
+pub fn GeodistvincentyView::len(Self) -> Int32
+pub fn GeodistvincentyView::max(Self) -> Double
+pub fn GeodistvincentyView::mean(Self) -> Double
+pub fn GeodistvincentyView::min(Self) -> Double
+pub fn GeodistvincentyView::scale(Self, Double) -> Self
+pub fn GeodistvincentyView::set(Self, Int32, Double) -> Self
+pub fn GeodistvincentyView::sum(Self) -> Double
+pub fn GeodistvincentyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

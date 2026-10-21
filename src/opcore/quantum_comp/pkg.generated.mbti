@@ -1,0 +1,152 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/quantum_comp"
+
+// Values
+pub fn add_gate(QuantumCircuit, QuantumGate, Array[Int32]) -> QuantumCircuit
+
+pub fn apply_gate(QuantumGate, QubitState) -> QubitState
+
+pub fn bell_state() -> QubitState
+
+pub fn bit_flip_correct(QubitState) -> QubitState
+
+pub fn cabs(Complex) -> Double
+
+pub fn cabs2(Complex) -> Double
+
+pub fn cadd(Complex, Complex) -> Complex
+
+pub fn cconj(Complex) -> Complex
+
+pub fn ceq(Complex, Complex) -> Bool
+
+pub fn ci() -> Complex
+
+pub fn circuit_depth(QuantumCircuit) -> Int32
+
+pub fn circuit_to_string(QuantumCircuit) -> String
+
+pub fn cmul(Complex, Complex) -> Complex
+
+pub fn cnot_gate() -> QuantumGate
+
+pub fn cone() -> Complex
+
+pub fn cscale(Complex, Double) -> Complex
+
+pub fn csub(Complex, Complex) -> Complex
+
+pub fn cto_string(Complex) -> String
+
+pub fn czero() -> Complex
+
+pub fn entanglement_entropy(QubitState) -> Double
+
+pub fn expectation_value(QubitState, Array[Double]) -> Double
+
+pub fn gate_dagger(QuantumGate) -> QuantumGate
+
+pub fn grover_iterations(Int32, Int32) -> Int32
+
+pub fn grover_search(GroverOracle, Int32) -> Int32
+
+pub fn hadamard_gate() -> QuantumGate
+
+pub fn identity_gate(Int32) -> QuantumGate
+
+pub fn inner_product(QubitState, QubitState) -> Complex
+
+pub fn ket0() -> QubitState
+
+pub fn ket1() -> QubitState
+
+pub fn ket_minus() -> QubitState
+
+pub fn ket_plus() -> QubitState
+
+pub fn make_circuit(Int32) -> QuantumCircuit
+
+pub fn make_complex(Double, Double) -> Complex
+
+pub fn make_gate(Array[Array[Complex]], String, Int32) -> QuantumGate
+
+pub fn make_grover_oracle(Array[Int32]) -> GroverOracle
+
+pub fn make_measurement_result(Int32, Double) -> MeasurementResult
+
+pub fn make_qubit_state(Array[Complex], Int32) -> QubitState
+
+pub fn measure(QubitState, Int32) -> Int32
+
+pub fn measurement_probabilities(QubitState) -> Array[MeasurementResult]
+
+pub fn normalize_state(QubitState) -> QubitState
+
+pub fn oracle_check(GroverOracle, Int32) -> Bool
+
+pub fn partial_trace(QubitState, Array[Int32]) -> Double
+
+pub fn pauli_x_gate() -> QuantumGate
+
+pub fn pauli_y_gate() -> QuantumGate
+
+pub fn pauli_z_gate() -> QuantumGate
+
+pub fn probability(QubitState, Int32) -> Double
+
+pub fn qft_circuit(Int32) -> QuantumCircuit
+
+pub fn repetition_encode(Int32) -> QubitState
+
+pub fn run_circuit(QuantumCircuit, QubitState) -> QubitState
+
+pub fn s_gate() -> QuantumGate
+
+pub fn schmidt_number(QubitState) -> Int32
+
+pub fn swap_gate() -> QuantumGate
+
+pub fn t_gate() -> QuantumGate
+
+pub fn tensor_gate(QuantumGate, QuantumGate) -> QuantumGate
+
+pub fn toffoli_gate() -> QuantumGate
+
+pub fn variance_value(QubitState, Array[Double]) -> Double
+
+// Errors
+
+// Types and methods
+pub struct Complex {
+  re : Double
+  im : Double
+}
+
+pub struct GroverOracle {
+  marked : Array[Int32]
+}
+
+pub struct MeasurementResult {
+  outcome : Int32
+  probability : Double
+}
+
+pub struct QuantumCircuit {
+  gates : Array[(QuantumGate, Array[Int32])]
+  num_qubits : Int32
+}
+
+pub struct QuantumGate {
+  matrix : Array[Array[Complex]]
+  name : String
+  num_qubits : Int32
+}
+
+pub struct QubitState {
+  amplitudes : Array[Complex]
+  num_qubits : Int32
+}
+
+// Type aliases
+
+// Traits

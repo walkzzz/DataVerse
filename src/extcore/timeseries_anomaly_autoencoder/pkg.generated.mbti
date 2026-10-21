@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_anomaly_autoencoder"
+
+// Values
+pub fn timeseries_anomaly_autoencoder_buffer_make(Int32) -> TimeseriesanomalyautoencoderBuffer
+
+pub fn timeseries_anomaly_autoencoder_cluster_make(Int32) -> TimeseriesanomalyautoencoderCluster
+
+pub fn timeseries_anomaly_autoencoder_cursor_make(Int32) -> TimeseriesanomalyautoencoderCursor
+
+pub fn timeseries_anomaly_autoencoder_edge_make(Int32) -> TimeseriesanomalyautoencoderEdge
+
+pub fn timeseries_anomaly_autoencoder_frame_make(Int32) -> TimeseriesanomalyautoencoderFrame
+
+pub fn timeseries_anomaly_autoencoder_graphn_make(Int32) -> TimeseriesanomalyautoencoderGraphN
+
+pub fn timeseries_anomaly_autoencoder_layer_make(Int32) -> TimeseriesanomalyautoencoderLayer
+
+pub fn timeseries_anomaly_autoencoder_make_matrix(Int32, Int32, Double) -> TimeseriesanomalyautoencoderMatrix
+
+pub fn timeseries_anomaly_autoencoder_make_point(Double, Double) -> TimeseriesanomalyautoencoderPoint
+
+pub fn timeseries_anomaly_autoencoder_make_point3(Double, Double, Double) -> TimeseriesanomalyautoencoderPoint
+
+pub fn timeseries_anomaly_autoencoder_make_series(Array[Double], String) -> TimeseriesanomalyautoencoderSeries
+
+pub fn timeseries_anomaly_autoencoder_make_vector(Array[Double]) -> TimeseriesanomalyautoencoderVector
+
+pub fn timeseries_anomaly_autoencoder_matrix_identity(Int32) -> TimeseriesanomalyautoencoderMatrix
+
+pub fn timeseries_anomaly_autoencoder_model_make(Int32) -> TimeseriesanomalyautoencoderModel
+
+pub fn timeseries_anomaly_autoencoder_node_make(Int32) -> TimeseriesanomalyautoencoderNode
+
+pub fn timeseries_anomaly_autoencoder_path_make(Int32) -> TimeseriesanomalyautoencoderPath
+
+pub fn timeseries_anomaly_autoencoder_range_make(Int32) -> TimeseriesanomalyautoencoderRange
+
+pub fn timeseries_anomaly_autoencoder_slice_make(Int32) -> TimeseriesanomalyautoencoderSlice
+
+pub fn timeseries_anomaly_autoencoder_table_make(Int32) -> TimeseriesanomalyautoencoderTable
+
+pub fn timeseries_anomaly_autoencoder_vector_zero(Int32) -> TimeseriesanomalyautoencoderVector
+
+pub fn timeseries_anomaly_autoencoder_view_make(Int32) -> TimeseriesanomalyautoencoderView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriesanomalyautoencoderBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyautoencoderBuffer::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderBuffer::copy(Self) -> Self
+pub fn TimeseriesanomalyautoencoderBuffer::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderBuffer::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyautoencoderBuffer::len(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderBuffer::max(Self) -> Double
+pub fn TimeseriesanomalyautoencoderBuffer::mean(Self) -> Double
+pub fn TimeseriesanomalyautoencoderBuffer::min(Self) -> Double
+pub fn TimeseriesanomalyautoencoderBuffer::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyautoencoderBuffer::sum(Self) -> Double
+pub fn TimeseriesanomalyautoencoderBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyautoencoderCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyautoencoderCluster::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderCluster::copy(Self) -> Self
+pub fn TimeseriesanomalyautoencoderCluster::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderCluster::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyautoencoderCluster::len(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderCluster::max(Self) -> Double
+pub fn TimeseriesanomalyautoencoderCluster::mean(Self) -> Double
+pub fn TimeseriesanomalyautoencoderCluster::min(Self) -> Double
+pub fn TimeseriesanomalyautoencoderCluster::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyautoencoderCluster::sum(Self) -> Double
+pub fn TimeseriesanomalyautoencoderCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyautoencoderCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyautoencoderCursor::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderCursor::copy(Self) -> Self
+pub fn TimeseriesanomalyautoencoderCursor::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderCursor::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyautoencoderCursor::len(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderCursor::max(Self) -> Double
+pub fn TimeseriesanomalyautoencoderCursor::mean(Self) -> Double
+pub fn TimeseriesanomalyautoencoderCursor::min(Self) -> Double
+pub fn TimeseriesanomalyautoencoderCursor::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyautoencoderCursor::sum(Self) -> Double
+pub fn TimeseriesanomalyautoencoderCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyautoencoderEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyautoencoderEdge::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderEdge::copy(Self) -> Self
+pub fn TimeseriesanomalyautoencoderEdge::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderEdge::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyautoencoderEdge::len(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderEdge::max(Self) -> Double
+pub fn TimeseriesanomalyautoencoderEdge::mean(Self) -> Double
+pub fn TimeseriesanomalyautoencoderEdge::min(Self) -> Double
+pub fn TimeseriesanomalyautoencoderEdge::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyautoencoderEdge::sum(Self) -> Double
+pub fn TimeseriesanomalyautoencoderEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyautoencoderFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyautoencoderFrame::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderFrame::copy(Self) -> Self
+pub fn TimeseriesanomalyautoencoderFrame::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderFrame::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyautoencoderFrame::len(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderFrame::max(Self) -> Double
+pub fn TimeseriesanomalyautoencoderFrame::mean(Self) -> Double
+pub fn TimeseriesanomalyautoencoderFrame::min(Self) -> Double
+pub fn TimeseriesanomalyautoencoderFrame::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyautoencoderFrame::sum(Self) -> Double
+pub fn TimeseriesanomalyautoencoderFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyautoencoderGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyautoencoderGraphN::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderGraphN::copy(Self) -> Self
+pub fn TimeseriesanomalyautoencoderGraphN::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderGraphN::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyautoencoderGraphN::len(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderGraphN::max(Self) -> Double
+pub fn TimeseriesanomalyautoencoderGraphN::mean(Self) -> Double
+pub fn TimeseriesanomalyautoencoderGraphN::min(Self) -> Double
+pub fn TimeseriesanomalyautoencoderGraphN::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyautoencoderGraphN::sum(Self) -> Double
+pub fn TimeseriesanomalyautoencoderGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyautoencoderLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyautoencoderLayer::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderLayer::copy(Self) -> Self
+pub fn TimeseriesanomalyautoencoderLayer::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderLayer::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyautoencoderLayer::len(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderLayer::max(Self) -> Double
+pub fn TimeseriesanomalyautoencoderLayer::mean(Self) -> Double
+pub fn TimeseriesanomalyautoencoderLayer::min(Self) -> Double
+pub fn TimeseriesanomalyautoencoderLayer::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyautoencoderLayer::sum(Self) -> Double
+pub fn TimeseriesanomalyautoencoderLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyautoencoderMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriesanomalyautoencoderMatrix::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderMatrix::det(Self) -> Double
+pub fn TimeseriesanomalyautoencoderMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriesanomalyautoencoderMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderMatrix::norm(Self) -> Double
+pub fn TimeseriesanomalyautoencoderMatrix::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderMatrix::to_string(Self) -> String
+pub fn TimeseriesanomalyautoencoderMatrix::trace(Self) -> Double
+pub fn TimeseriesanomalyautoencoderMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriesanomalyautoencoderModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyautoencoderModel::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderModel::copy(Self) -> Self
+pub fn TimeseriesanomalyautoencoderModel::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderModel::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyautoencoderModel::len(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderModel::max(Self) -> Double
+pub fn TimeseriesanomalyautoencoderModel::mean(Self) -> Double
+pub fn TimeseriesanomalyautoencoderModel::min(Self) -> Double
+pub fn TimeseriesanomalyautoencoderModel::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyautoencoderModel::sum(Self) -> Double
+pub fn TimeseriesanomalyautoencoderModel::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyautoencoderNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyautoencoderNode::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderNode::copy(Self) -> Self
+pub fn TimeseriesanomalyautoencoderNode::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderNode::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyautoencoderNode::len(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderNode::max(Self) -> Double
+pub fn TimeseriesanomalyautoencoderNode::mean(Self) -> Double
+pub fn TimeseriesanomalyautoencoderNode::min(Self) -> Double
+pub fn TimeseriesanomalyautoencoderNode::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyautoencoderNode::sum(Self) -> Double
+pub fn TimeseriesanomalyautoencoderNode::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyautoencoderPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyautoencoderPath::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderPath::copy(Self) -> Self
+pub fn TimeseriesanomalyautoencoderPath::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderPath::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyautoencoderPath::len(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderPath::max(Self) -> Double
+pub fn TimeseriesanomalyautoencoderPath::mean(Self) -> Double
+pub fn TimeseriesanomalyautoencoderPath::min(Self) -> Double
+pub fn TimeseriesanomalyautoencoderPath::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderPath::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyautoencoderPath::sum(Self) -> Double
+pub fn TimeseriesanomalyautoencoderPath::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyautoencoderPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriesanomalyautoencoderPoint::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderPoint::cross(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderPoint::dist(Self, Self) -> Double
+pub fn TimeseriesanomalyautoencoderPoint::dot(Self, Self) -> Double
+pub fn TimeseriesanomalyautoencoderPoint::label(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderPoint::mid(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderPoint::negate(Self) -> Self
+pub fn TimeseriesanomalyautoencoderPoint::norm(Self) -> Double
+pub fn TimeseriesanomalyautoencoderPoint::normalize(Self) -> Self
+pub fn TimeseriesanomalyautoencoderPoint::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderPoint::sub(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderPoint::to_string(Self) -> String
+pub fn TimeseriesanomalyautoencoderPoint::x(Self) -> Double
+pub fn TimeseriesanomalyautoencoderPoint::y(Self) -> Double
+pub fn TimeseriesanomalyautoencoderPoint::z(Self) -> Double
+
+pub(all) struct TimeseriesanomalyautoencoderRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyautoencoderRange::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderRange::copy(Self) -> Self
+pub fn TimeseriesanomalyautoencoderRange::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderRange::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyautoencoderRange::len(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderRange::max(Self) -> Double
+pub fn TimeseriesanomalyautoencoderRange::mean(Self) -> Double
+pub fn TimeseriesanomalyautoencoderRange::min(Self) -> Double
+pub fn TimeseriesanomalyautoencoderRange::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyautoencoderRange::sum(Self) -> Double
+pub fn TimeseriesanomalyautoencoderRange::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyautoencoderSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriesanomalyautoencoderSeries::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderSeries::cumsum(Self) -> Self
+pub fn TimeseriesanomalyautoencoderSeries::len(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderSeries::max(Self) -> Double
+pub fn TimeseriesanomalyautoencoderSeries::mean(Self) -> Double
+pub fn TimeseriesanomalyautoencoderSeries::median(Self) -> Double
+pub fn TimeseriesanomalyautoencoderSeries::min(Self) -> Double
+pub fn TimeseriesanomalyautoencoderSeries::normalize(Self) -> Self
+pub fn TimeseriesanomalyautoencoderSeries::range(Self) -> Double
+pub fn TimeseriesanomalyautoencoderSeries::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderSeries::std(Self) -> Double
+pub fn TimeseriesanomalyautoencoderSeries::sub(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderSeries::sum(Self) -> Double
+pub fn TimeseriesanomalyautoencoderSeries::to_string(Self) -> String
+pub fn TimeseriesanomalyautoencoderSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriesanomalyautoencoderSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyautoencoderSlice::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderSlice::copy(Self) -> Self
+pub fn TimeseriesanomalyautoencoderSlice::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderSlice::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyautoencoderSlice::len(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderSlice::max(Self) -> Double
+pub fn TimeseriesanomalyautoencoderSlice::mean(Self) -> Double
+pub fn TimeseriesanomalyautoencoderSlice::min(Self) -> Double
+pub fn TimeseriesanomalyautoencoderSlice::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyautoencoderSlice::sum(Self) -> Double
+pub fn TimeseriesanomalyautoencoderSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyautoencoderTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyautoencoderTable::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderTable::copy(Self) -> Self
+pub fn TimeseriesanomalyautoencoderTable::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderTable::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyautoencoderTable::len(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderTable::max(Self) -> Double
+pub fn TimeseriesanomalyautoencoderTable::mean(Self) -> Double
+pub fn TimeseriesanomalyautoencoderTable::min(Self) -> Double
+pub fn TimeseriesanomalyautoencoderTable::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyautoencoderTable::sum(Self) -> Double
+pub fn TimeseriesanomalyautoencoderTable::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyautoencoderVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriesanomalyautoencoderVector::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderVector::dist(Self, Self) -> Double
+pub fn TimeseriesanomalyautoencoderVector::dot(Self, Self) -> Double
+pub fn TimeseriesanomalyautoencoderVector::norm(Self) -> Double
+pub fn TimeseriesanomalyautoencoderVector::normalize(Self) -> Self
+pub fn TimeseriesanomalyautoencoderVector::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderVector::sub(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderVector::to_string(Self) -> String
+
+pub(all) struct TimeseriesanomalyautoencoderView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesanomalyautoencoderView::add(Self, Self) -> Self
+pub fn TimeseriesanomalyautoencoderView::copy(Self) -> Self
+pub fn TimeseriesanomalyautoencoderView::fill(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderView::get(Self, Int32) -> Double
+pub fn TimeseriesanomalyautoencoderView::len(Self) -> Int32
+pub fn TimeseriesanomalyautoencoderView::max(Self) -> Double
+pub fn TimeseriesanomalyautoencoderView::mean(Self) -> Double
+pub fn TimeseriesanomalyautoencoderView::min(Self) -> Double
+pub fn TimeseriesanomalyautoencoderView::scale(Self, Double) -> Self
+pub fn TimeseriesanomalyautoencoderView::set(Self, Int32, Double) -> Self
+pub fn TimeseriesanomalyautoencoderView::sum(Self) -> Double
+pub fn TimeseriesanomalyautoencoderView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

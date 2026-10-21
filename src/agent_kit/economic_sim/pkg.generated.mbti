@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/economic_sim"
+
+// Values
+pub fn economic_sim_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn economic_sim_corr(Array[Double], Array[Double]) -> Double
+
+pub fn economic_sim_cov(Array[Double], Array[Double]) -> Double
+
+pub fn economic_sim_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn economic_sim_mae(Array[Double], Array[Double]) -> Double
+
+pub fn economic_sim_make_labeled_point(Double, Double, Int32) -> Economic_simPoint
+
+pub fn economic_sim_make_matrix(Int32, Int32, Double) -> Economic_simMatrix
+
+pub fn economic_sim_make_point(Double, Double) -> Economic_simPoint
+
+pub fn economic_sim_make_series(Array[Double], String) -> Economic_simSeries
+
+pub fn economic_sim_make_vector(Array[Double]) -> Economic_simVector
+
+pub fn economic_sim_matrix_add(Economic_simMatrix, Economic_simMatrix) -> Economic_simMatrix
+
+pub fn economic_sim_matrix_get(Economic_simMatrix, Int32, Int32) -> Double
+
+pub fn economic_sim_matrix_identity(Int32) -> Economic_simMatrix
+
+pub fn economic_sim_matrix_multiply(Economic_simMatrix, Economic_simMatrix) -> Economic_simMatrix
+
+pub fn economic_sim_matrix_norm(Economic_simMatrix) -> Double
+
+pub fn economic_sim_matrix_scale(Economic_simMatrix, Double) -> Economic_simMatrix
+
+pub fn economic_sim_matrix_to_string(Economic_simMatrix) -> String
+
+pub fn economic_sim_matrix_trace(Economic_simMatrix) -> Double
+
+pub fn economic_sim_matrix_transpose(Economic_simMatrix) -> Economic_simMatrix
+
+pub fn economic_sim_mse(Array[Double], Array[Double]) -> Double
+
+pub fn economic_sim_point_add(Economic_simPoint, Economic_simPoint) -> Economic_simPoint
+
+pub fn economic_sim_point_dist(Economic_simPoint, Economic_simPoint) -> Double
+
+pub fn economic_sim_point_dot(Economic_simPoint, Economic_simPoint) -> Double
+
+pub fn economic_sim_point_label(Economic_simPoint) -> Int32
+
+pub fn economic_sim_point_norm(Economic_simPoint) -> Double
+
+pub fn economic_sim_point_scale(Economic_simPoint, Double) -> Economic_simPoint
+
+pub fn economic_sim_point_sub(Economic_simPoint, Economic_simPoint) -> Economic_simPoint
+
+pub fn economic_sim_point_to_string(Economic_simPoint) -> String
+
+pub fn economic_sim_point_x(Economic_simPoint) -> Double
+
+pub fn economic_sim_point_y(Economic_simPoint) -> Double
+
+pub fn economic_sim_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn economic_sim_r2(Array[Double], Array[Double]) -> Double
+
+pub fn economic_sim_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn economic_sim_series_add(Economic_simSeries, Economic_simSeries) -> Economic_simSeries
+
+pub fn economic_sim_series_len(Economic_simSeries) -> Int32
+
+pub fn economic_sim_series_max(Economic_simSeries) -> Double
+
+pub fn economic_sim_series_mean(Economic_simSeries) -> Double
+
+pub fn economic_sim_series_min(Economic_simSeries) -> Double
+
+pub fn economic_sim_series_scale(Economic_simSeries, Double) -> Economic_simSeries
+
+pub fn economic_sim_series_std(Economic_simSeries) -> Double
+
+pub fn economic_sim_series_sum(Economic_simSeries) -> Double
+
+pub fn economic_sim_series_to_string(Economic_simSeries) -> String
+
+pub fn economic_sim_series_var(Economic_simSeries) -> Double
+
+pub fn economic_sim_std(Array[Double]) -> Double
+
+pub fn economic_sim_var(Array[Double]) -> Double
+
+pub fn economic_sim_vector_add(Economic_simVector, Economic_simVector) -> Economic_simVector
+
+pub fn economic_sim_vector_dist(Economic_simVector, Economic_simVector) -> Double
+
+pub fn economic_sim_vector_dot(Economic_simVector, Economic_simVector) -> Double
+
+pub fn economic_sim_vector_norm(Economic_simVector) -> Double
+
+pub fn economic_sim_vector_normalize(Economic_simVector) -> Economic_simVector
+
+pub fn economic_sim_vector_scale(Economic_simVector, Double) -> Economic_simVector
+
+pub fn economic_sim_vector_sub(Economic_simVector, Economic_simVector) -> Economic_simVector
+
+pub fn economic_sim_vector_to_string(Economic_simVector) -> String
+
+pub fn economic_sim_vector_zero(Int32) -> Economic_simVector
+
+// Errors
+
+// Types and methods
+pub struct Economic_simMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Economic_simPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Economic_simSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Economic_simVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_neural_gru"
+
+// Values
+pub fn ml_neural_gru_buffer_make(Int32) -> MlneuralgruBuffer
+
+pub fn ml_neural_gru_cluster_make(Int32) -> MlneuralgruCluster
+
+pub fn ml_neural_gru_cursor_make(Int32) -> MlneuralgruCursor
+
+pub fn ml_neural_gru_edge_make(Int32) -> MlneuralgruEdge
+
+pub fn ml_neural_gru_frame_make(Int32) -> MlneuralgruFrame
+
+pub fn ml_neural_gru_graphn_make(Int32) -> MlneuralgruGraphN
+
+pub fn ml_neural_gru_layer_make(Int32) -> MlneuralgruLayer
+
+pub fn ml_neural_gru_make_matrix(Int32, Int32, Double) -> MlneuralgruMatrix
+
+pub fn ml_neural_gru_make_point(Double, Double) -> MlneuralgruPoint
+
+pub fn ml_neural_gru_make_point3(Double, Double, Double) -> MlneuralgruPoint
+
+pub fn ml_neural_gru_make_series(Array[Double], String) -> MlneuralgruSeries
+
+pub fn ml_neural_gru_make_vector(Array[Double]) -> MlneuralgruVector
+
+pub fn ml_neural_gru_matrix_identity(Int32) -> MlneuralgruMatrix
+
+pub fn ml_neural_gru_model_make(Int32) -> MlneuralgruModel
+
+pub fn ml_neural_gru_node_make(Int32) -> MlneuralgruNode
+
+pub fn ml_neural_gru_path_make(Int32) -> MlneuralgruPath
+
+pub fn ml_neural_gru_range_make(Int32) -> MlneuralgruRange
+
+pub fn ml_neural_gru_slice_make(Int32) -> MlneuralgruSlice
+
+pub fn ml_neural_gru_table_make(Int32) -> MlneuralgruTable
+
+pub fn ml_neural_gru_vector_zero(Int32) -> MlneuralgruVector
+
+pub fn ml_neural_gru_view_make(Int32) -> MlneuralgruView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlneuralgruBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralgruBuffer::add(Self, Self) -> Self
+pub fn MlneuralgruBuffer::copy(Self) -> Self
+pub fn MlneuralgruBuffer::fill(Self, Double) -> Self
+pub fn MlneuralgruBuffer::get(Self, Int32) -> Double
+pub fn MlneuralgruBuffer::len(Self) -> Int32
+pub fn MlneuralgruBuffer::max(Self) -> Double
+pub fn MlneuralgruBuffer::mean(Self) -> Double
+pub fn MlneuralgruBuffer::min(Self) -> Double
+pub fn MlneuralgruBuffer::scale(Self, Double) -> Self
+pub fn MlneuralgruBuffer::set(Self, Int32, Double) -> Self
+pub fn MlneuralgruBuffer::sum(Self) -> Double
+pub fn MlneuralgruBuffer::to_string(Self) -> String
+
+pub(all) struct MlneuralgruCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralgruCluster::add(Self, Self) -> Self
+pub fn MlneuralgruCluster::copy(Self) -> Self
+pub fn MlneuralgruCluster::fill(Self, Double) -> Self
+pub fn MlneuralgruCluster::get(Self, Int32) -> Double
+pub fn MlneuralgruCluster::len(Self) -> Int32
+pub fn MlneuralgruCluster::max(Self) -> Double
+pub fn MlneuralgruCluster::mean(Self) -> Double
+pub fn MlneuralgruCluster::min(Self) -> Double
+pub fn MlneuralgruCluster::scale(Self, Double) -> Self
+pub fn MlneuralgruCluster::set(Self, Int32, Double) -> Self
+pub fn MlneuralgruCluster::sum(Self) -> Double
+pub fn MlneuralgruCluster::to_string(Self) -> String
+
+pub(all) struct MlneuralgruCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralgruCursor::add(Self, Self) -> Self
+pub fn MlneuralgruCursor::copy(Self) -> Self
+pub fn MlneuralgruCursor::fill(Self, Double) -> Self
+pub fn MlneuralgruCursor::get(Self, Int32) -> Double
+pub fn MlneuralgruCursor::len(Self) -> Int32
+pub fn MlneuralgruCursor::max(Self) -> Double
+pub fn MlneuralgruCursor::mean(Self) -> Double
+pub fn MlneuralgruCursor::min(Self) -> Double
+pub fn MlneuralgruCursor::scale(Self, Double) -> Self
+pub fn MlneuralgruCursor::set(Self, Int32, Double) -> Self
+pub fn MlneuralgruCursor::sum(Self) -> Double
+pub fn MlneuralgruCursor::to_string(Self) -> String
+
+pub(all) struct MlneuralgruEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralgruEdge::add(Self, Self) -> Self
+pub fn MlneuralgruEdge::copy(Self) -> Self
+pub fn MlneuralgruEdge::fill(Self, Double) -> Self
+pub fn MlneuralgruEdge::get(Self, Int32) -> Double
+pub fn MlneuralgruEdge::len(Self) -> Int32
+pub fn MlneuralgruEdge::max(Self) -> Double
+pub fn MlneuralgruEdge::mean(Self) -> Double
+pub fn MlneuralgruEdge::min(Self) -> Double
+pub fn MlneuralgruEdge::scale(Self, Double) -> Self
+pub fn MlneuralgruEdge::set(Self, Int32, Double) -> Self
+pub fn MlneuralgruEdge::sum(Self) -> Double
+pub fn MlneuralgruEdge::to_string(Self) -> String
+
+pub(all) struct MlneuralgruFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralgruFrame::add(Self, Self) -> Self
+pub fn MlneuralgruFrame::copy(Self) -> Self
+pub fn MlneuralgruFrame::fill(Self, Double) -> Self
+pub fn MlneuralgruFrame::get(Self, Int32) -> Double
+pub fn MlneuralgruFrame::len(Self) -> Int32
+pub fn MlneuralgruFrame::max(Self) -> Double
+pub fn MlneuralgruFrame::mean(Self) -> Double
+pub fn MlneuralgruFrame::min(Self) -> Double
+pub fn MlneuralgruFrame::scale(Self, Double) -> Self
+pub fn MlneuralgruFrame::set(Self, Int32, Double) -> Self
+pub fn MlneuralgruFrame::sum(Self) -> Double
+pub fn MlneuralgruFrame::to_string(Self) -> String
+
+pub(all) struct MlneuralgruGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralgruGraphN::add(Self, Self) -> Self
+pub fn MlneuralgruGraphN::copy(Self) -> Self
+pub fn MlneuralgruGraphN::fill(Self, Double) -> Self
+pub fn MlneuralgruGraphN::get(Self, Int32) -> Double
+pub fn MlneuralgruGraphN::len(Self) -> Int32
+pub fn MlneuralgruGraphN::max(Self) -> Double
+pub fn MlneuralgruGraphN::mean(Self) -> Double
+pub fn MlneuralgruGraphN::min(Self) -> Double
+pub fn MlneuralgruGraphN::scale(Self, Double) -> Self
+pub fn MlneuralgruGraphN::set(Self, Int32, Double) -> Self
+pub fn MlneuralgruGraphN::sum(Self) -> Double
+pub fn MlneuralgruGraphN::to_string(Self) -> String
+
+pub(all) struct MlneuralgruLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralgruLayer::add(Self, Self) -> Self
+pub fn MlneuralgruLayer::copy(Self) -> Self
+pub fn MlneuralgruLayer::fill(Self, Double) -> Self
+pub fn MlneuralgruLayer::get(Self, Int32) -> Double
+pub fn MlneuralgruLayer::len(Self) -> Int32
+pub fn MlneuralgruLayer::max(Self) -> Double
+pub fn MlneuralgruLayer::mean(Self) -> Double
+pub fn MlneuralgruLayer::min(Self) -> Double
+pub fn MlneuralgruLayer::scale(Self, Double) -> Self
+pub fn MlneuralgruLayer::set(Self, Int32, Double) -> Self
+pub fn MlneuralgruLayer::sum(Self) -> Double
+pub fn MlneuralgruLayer::to_string(Self) -> String
+
+pub(all) struct MlneuralgruMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlneuralgruMatrix::add(Self, Self) -> Self
+pub fn MlneuralgruMatrix::det(Self) -> Double
+pub fn MlneuralgruMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlneuralgruMatrix::multiply(Self, Self) -> Self
+pub fn MlneuralgruMatrix::norm(Self) -> Double
+pub fn MlneuralgruMatrix::scale(Self, Double) -> Self
+pub fn MlneuralgruMatrix::to_string(Self) -> String
+pub fn MlneuralgruMatrix::trace(Self) -> Double
+pub fn MlneuralgruMatrix::transpose(Self) -> Self
+
+pub(all) struct MlneuralgruModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralgruModel::add(Self, Self) -> Self
+pub fn MlneuralgruModel::copy(Self) -> Self
+pub fn MlneuralgruModel::fill(Self, Double) -> Self
+pub fn MlneuralgruModel::get(Self, Int32) -> Double
+pub fn MlneuralgruModel::len(Self) -> Int32
+pub fn MlneuralgruModel::max(Self) -> Double
+pub fn MlneuralgruModel::mean(Self) -> Double
+pub fn MlneuralgruModel::min(Self) -> Double
+pub fn MlneuralgruModel::scale(Self, Double) -> Self
+pub fn MlneuralgruModel::set(Self, Int32, Double) -> Self
+pub fn MlneuralgruModel::sum(Self) -> Double
+pub fn MlneuralgruModel::to_string(Self) -> String
+
+pub(all) struct MlneuralgruNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralgruNode::add(Self, Self) -> Self
+pub fn MlneuralgruNode::copy(Self) -> Self
+pub fn MlneuralgruNode::fill(Self, Double) -> Self
+pub fn MlneuralgruNode::get(Self, Int32) -> Double
+pub fn MlneuralgruNode::len(Self) -> Int32
+pub fn MlneuralgruNode::max(Self) -> Double
+pub fn MlneuralgruNode::mean(Self) -> Double
+pub fn MlneuralgruNode::min(Self) -> Double
+pub fn MlneuralgruNode::scale(Self, Double) -> Self
+pub fn MlneuralgruNode::set(Self, Int32, Double) -> Self
+pub fn MlneuralgruNode::sum(Self) -> Double
+pub fn MlneuralgruNode::to_string(Self) -> String
+
+pub(all) struct MlneuralgruPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralgruPath::add(Self, Self) -> Self
+pub fn MlneuralgruPath::copy(Self) -> Self
+pub fn MlneuralgruPath::fill(Self, Double) -> Self
+pub fn MlneuralgruPath::get(Self, Int32) -> Double
+pub fn MlneuralgruPath::len(Self) -> Int32
+pub fn MlneuralgruPath::max(Self) -> Double
+pub fn MlneuralgruPath::mean(Self) -> Double
+pub fn MlneuralgruPath::min(Self) -> Double
+pub fn MlneuralgruPath::scale(Self, Double) -> Self
+pub fn MlneuralgruPath::set(Self, Int32, Double) -> Self
+pub fn MlneuralgruPath::sum(Self) -> Double
+pub fn MlneuralgruPath::to_string(Self) -> String
+
+pub(all) struct MlneuralgruPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlneuralgruPoint::add(Self, Self) -> Self
+pub fn MlneuralgruPoint::cross(Self, Self) -> Self
+pub fn MlneuralgruPoint::dist(Self, Self) -> Double
+pub fn MlneuralgruPoint::dot(Self, Self) -> Double
+pub fn MlneuralgruPoint::label(Self) -> Int32
+pub fn MlneuralgruPoint::lerp(Self, Self, Double) -> Self
+pub fn MlneuralgruPoint::mid(Self, Self) -> Self
+pub fn MlneuralgruPoint::negate(Self) -> Self
+pub fn MlneuralgruPoint::norm(Self) -> Double
+pub fn MlneuralgruPoint::normalize(Self) -> Self
+pub fn MlneuralgruPoint::scale(Self, Double) -> Self
+pub fn MlneuralgruPoint::sub(Self, Self) -> Self
+pub fn MlneuralgruPoint::to_string(Self) -> String
+pub fn MlneuralgruPoint::x(Self) -> Double
+pub fn MlneuralgruPoint::y(Self) -> Double
+pub fn MlneuralgruPoint::z(Self) -> Double
+
+pub(all) struct MlneuralgruRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralgruRange::add(Self, Self) -> Self
+pub fn MlneuralgruRange::copy(Self) -> Self
+pub fn MlneuralgruRange::fill(Self, Double) -> Self
+pub fn MlneuralgruRange::get(Self, Int32) -> Double
+pub fn MlneuralgruRange::len(Self) -> Int32
+pub fn MlneuralgruRange::max(Self) -> Double
+pub fn MlneuralgruRange::mean(Self) -> Double
+pub fn MlneuralgruRange::min(Self) -> Double
+pub fn MlneuralgruRange::scale(Self, Double) -> Self
+pub fn MlneuralgruRange::set(Self, Int32, Double) -> Self
+pub fn MlneuralgruRange::sum(Self) -> Double
+pub fn MlneuralgruRange::to_string(Self) -> String
+
+pub(all) struct MlneuralgruSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlneuralgruSeries::add(Self, Self) -> Self
+pub fn MlneuralgruSeries::cumsum(Self) -> Self
+pub fn MlneuralgruSeries::len(Self) -> Int32
+pub fn MlneuralgruSeries::max(Self) -> Double
+pub fn MlneuralgruSeries::mean(Self) -> Double
+pub fn MlneuralgruSeries::median(Self) -> Double
+pub fn MlneuralgruSeries::min(Self) -> Double
+pub fn MlneuralgruSeries::normalize(Self) -> Self
+pub fn MlneuralgruSeries::range(Self) -> Double
+pub fn MlneuralgruSeries::scale(Self, Double) -> Self
+pub fn MlneuralgruSeries::std(Self) -> Double
+pub fn MlneuralgruSeries::sub(Self, Self) -> Self
+pub fn MlneuralgruSeries::sum(Self) -> Double
+pub fn MlneuralgruSeries::to_string(Self) -> String
+pub fn MlneuralgruSeries::variance(Self) -> Double
+
+pub(all) struct MlneuralgruSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralgruSlice::add(Self, Self) -> Self
+pub fn MlneuralgruSlice::copy(Self) -> Self
+pub fn MlneuralgruSlice::fill(Self, Double) -> Self
+pub fn MlneuralgruSlice::get(Self, Int32) -> Double
+pub fn MlneuralgruSlice::len(Self) -> Int32
+pub fn MlneuralgruSlice::max(Self) -> Double
+pub fn MlneuralgruSlice::mean(Self) -> Double
+pub fn MlneuralgruSlice::min(Self) -> Double
+pub fn MlneuralgruSlice::scale(Self, Double) -> Self
+pub fn MlneuralgruSlice::set(Self, Int32, Double) -> Self
+pub fn MlneuralgruSlice::sum(Self) -> Double
+pub fn MlneuralgruSlice::to_string(Self) -> String
+
+pub(all) struct MlneuralgruTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralgruTable::add(Self, Self) -> Self
+pub fn MlneuralgruTable::copy(Self) -> Self
+pub fn MlneuralgruTable::fill(Self, Double) -> Self
+pub fn MlneuralgruTable::get(Self, Int32) -> Double
+pub fn MlneuralgruTable::len(Self) -> Int32
+pub fn MlneuralgruTable::max(Self) -> Double
+pub fn MlneuralgruTable::mean(Self) -> Double
+pub fn MlneuralgruTable::min(Self) -> Double
+pub fn MlneuralgruTable::scale(Self, Double) -> Self
+pub fn MlneuralgruTable::set(Self, Int32, Double) -> Self
+pub fn MlneuralgruTable::sum(Self) -> Double
+pub fn MlneuralgruTable::to_string(Self) -> String
+
+pub(all) struct MlneuralgruVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlneuralgruVector::add(Self, Self) -> Self
+pub fn MlneuralgruVector::dist(Self, Self) -> Double
+pub fn MlneuralgruVector::dot(Self, Self) -> Double
+pub fn MlneuralgruVector::norm(Self) -> Double
+pub fn MlneuralgruVector::normalize(Self) -> Self
+pub fn MlneuralgruVector::scale(Self, Double) -> Self
+pub fn MlneuralgruVector::sub(Self, Self) -> Self
+pub fn MlneuralgruVector::to_string(Self) -> String
+
+pub(all) struct MlneuralgruView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralgruView::add(Self, Self) -> Self
+pub fn MlneuralgruView::copy(Self) -> Self
+pub fn MlneuralgruView::fill(Self, Double) -> Self
+pub fn MlneuralgruView::get(Self, Int32) -> Double
+pub fn MlneuralgruView::len(Self) -> Int32
+pub fn MlneuralgruView::max(Self) -> Double
+pub fn MlneuralgruView::mean(Self) -> Double
+pub fn MlneuralgruView::min(Self) -> Double
+pub fn MlneuralgruView::scale(Self, Double) -> Self
+pub fn MlneuralgruView::set(Self, Int32, Double) -> Self
+pub fn MlneuralgruView::sum(Self) -> Double
+pub fn MlneuralgruView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

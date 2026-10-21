@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/index_gpu"
+
+// Values
+pub fn index_gpu_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn index_gpu_corr(Array[Double], Array[Double]) -> Double
+
+pub fn index_gpu_cov(Array[Double], Array[Double]) -> Double
+
+pub fn index_gpu_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_gpu_mae(Array[Double], Array[Double]) -> Double
+
+pub fn index_gpu_make_labeled_point(Double, Double, Int32) -> Index_gpuPoint
+
+pub fn index_gpu_make_matrix(Int32, Int32, Double) -> Index_gpuMatrix
+
+pub fn index_gpu_make_point(Double, Double) -> Index_gpuPoint
+
+pub fn index_gpu_make_series(Array[Double], String) -> Index_gpuSeries
+
+pub fn index_gpu_make_vector(Array[Double]) -> Index_gpuVector
+
+pub fn index_gpu_matrix_add(Index_gpuMatrix, Index_gpuMatrix) -> Index_gpuMatrix
+
+pub fn index_gpu_matrix_get(Index_gpuMatrix, Int32, Int32) -> Double
+
+pub fn index_gpu_matrix_identity(Int32) -> Index_gpuMatrix
+
+pub fn index_gpu_matrix_multiply(Index_gpuMatrix, Index_gpuMatrix) -> Index_gpuMatrix
+
+pub fn index_gpu_matrix_norm(Index_gpuMatrix) -> Double
+
+pub fn index_gpu_matrix_scale(Index_gpuMatrix, Double) -> Index_gpuMatrix
+
+pub fn index_gpu_matrix_to_string(Index_gpuMatrix) -> String
+
+pub fn index_gpu_matrix_trace(Index_gpuMatrix) -> Double
+
+pub fn index_gpu_matrix_transpose(Index_gpuMatrix) -> Index_gpuMatrix
+
+pub fn index_gpu_mse(Array[Double], Array[Double]) -> Double
+
+pub fn index_gpu_point_add(Index_gpuPoint, Index_gpuPoint) -> Index_gpuPoint
+
+pub fn index_gpu_point_dist(Index_gpuPoint, Index_gpuPoint) -> Double
+
+pub fn index_gpu_point_dot(Index_gpuPoint, Index_gpuPoint) -> Double
+
+pub fn index_gpu_point_label(Index_gpuPoint) -> Int32
+
+pub fn index_gpu_point_norm(Index_gpuPoint) -> Double
+
+pub fn index_gpu_point_scale(Index_gpuPoint, Double) -> Index_gpuPoint
+
+pub fn index_gpu_point_sub(Index_gpuPoint, Index_gpuPoint) -> Index_gpuPoint
+
+pub fn index_gpu_point_to_string(Index_gpuPoint) -> String
+
+pub fn index_gpu_point_x(Index_gpuPoint) -> Double
+
+pub fn index_gpu_point_y(Index_gpuPoint) -> Double
+
+pub fn index_gpu_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_gpu_r2(Array[Double], Array[Double]) -> Double
+
+pub fn index_gpu_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_gpu_series_add(Index_gpuSeries, Index_gpuSeries) -> Index_gpuSeries
+
+pub fn index_gpu_series_len(Index_gpuSeries) -> Int32
+
+pub fn index_gpu_series_max(Index_gpuSeries) -> Double
+
+pub fn index_gpu_series_mean(Index_gpuSeries) -> Double
+
+pub fn index_gpu_series_min(Index_gpuSeries) -> Double
+
+pub fn index_gpu_series_scale(Index_gpuSeries, Double) -> Index_gpuSeries
+
+pub fn index_gpu_series_std(Index_gpuSeries) -> Double
+
+pub fn index_gpu_series_sum(Index_gpuSeries) -> Double
+
+pub fn index_gpu_series_to_string(Index_gpuSeries) -> String
+
+pub fn index_gpu_series_var(Index_gpuSeries) -> Double
+
+pub fn index_gpu_std(Array[Double]) -> Double
+
+pub fn index_gpu_var(Array[Double]) -> Double
+
+pub fn index_gpu_vector_add(Index_gpuVector, Index_gpuVector) -> Index_gpuVector
+
+pub fn index_gpu_vector_dist(Index_gpuVector, Index_gpuVector) -> Double
+
+pub fn index_gpu_vector_dot(Index_gpuVector, Index_gpuVector) -> Double
+
+pub fn index_gpu_vector_norm(Index_gpuVector) -> Double
+
+pub fn index_gpu_vector_normalize(Index_gpuVector) -> Index_gpuVector
+
+pub fn index_gpu_vector_scale(Index_gpuVector, Double) -> Index_gpuVector
+
+pub fn index_gpu_vector_sub(Index_gpuVector, Index_gpuVector) -> Index_gpuVector
+
+pub fn index_gpu_vector_to_string(Index_gpuVector) -> String
+
+pub fn index_gpu_vector_zero(Int32) -> Index_gpuVector
+
+// Errors
+
+// Types and methods
+pub struct Index_gpuMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Index_gpuPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Index_gpuSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Index_gpuVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

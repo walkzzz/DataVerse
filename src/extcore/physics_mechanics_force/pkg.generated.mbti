@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_mechanics_force"
+
+// Values
+pub fn physics_mechanics_force_buffer_make(Int32) -> PhysicsmechanicsforceBuffer
+
+pub fn physics_mechanics_force_cluster_make(Int32) -> PhysicsmechanicsforceCluster
+
+pub fn physics_mechanics_force_cursor_make(Int32) -> PhysicsmechanicsforceCursor
+
+pub fn physics_mechanics_force_edge_make(Int32) -> PhysicsmechanicsforceEdge
+
+pub fn physics_mechanics_force_frame_make(Int32) -> PhysicsmechanicsforceFrame
+
+pub fn physics_mechanics_force_graphn_make(Int32) -> PhysicsmechanicsforceGraphN
+
+pub fn physics_mechanics_force_layer_make(Int32) -> PhysicsmechanicsforceLayer
+
+pub fn physics_mechanics_force_make_matrix(Int32, Int32, Double) -> PhysicsmechanicsforceMatrix
+
+pub fn physics_mechanics_force_make_point(Double, Double) -> PhysicsmechanicsforcePoint
+
+pub fn physics_mechanics_force_make_point3(Double, Double, Double) -> PhysicsmechanicsforcePoint
+
+pub fn physics_mechanics_force_make_series(Array[Double], String) -> PhysicsmechanicsforceSeries
+
+pub fn physics_mechanics_force_make_vector(Array[Double]) -> PhysicsmechanicsforceVector
+
+pub fn physics_mechanics_force_matrix_identity(Int32) -> PhysicsmechanicsforceMatrix
+
+pub fn physics_mechanics_force_model_make(Int32) -> PhysicsmechanicsforceModel
+
+pub fn physics_mechanics_force_node_make(Int32) -> PhysicsmechanicsforceNode
+
+pub fn physics_mechanics_force_path_make(Int32) -> PhysicsmechanicsforcePath
+
+pub fn physics_mechanics_force_range_make(Int32) -> PhysicsmechanicsforceRange
+
+pub fn physics_mechanics_force_slice_make(Int32) -> PhysicsmechanicsforceSlice
+
+pub fn physics_mechanics_force_table_make(Int32) -> PhysicsmechanicsforceTable
+
+pub fn physics_mechanics_force_vector_zero(Int32) -> PhysicsmechanicsforceVector
+
+pub fn physics_mechanics_force_view_make(Int32) -> PhysicsmechanicsforceView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsmechanicsforceBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsforceBuffer::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceBuffer::copy(Self) -> Self
+pub fn PhysicsmechanicsforceBuffer::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsforceBuffer::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsforceBuffer::len(Self) -> Int32
+pub fn PhysicsmechanicsforceBuffer::max(Self) -> Double
+pub fn PhysicsmechanicsforceBuffer::mean(Self) -> Double
+pub fn PhysicsmechanicsforceBuffer::min(Self) -> Double
+pub fn PhysicsmechanicsforceBuffer::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsforceBuffer::sum(Self) -> Double
+pub fn PhysicsmechanicsforceBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsforceCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsforceCluster::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceCluster::copy(Self) -> Self
+pub fn PhysicsmechanicsforceCluster::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsforceCluster::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsforceCluster::len(Self) -> Int32
+pub fn PhysicsmechanicsforceCluster::max(Self) -> Double
+pub fn PhysicsmechanicsforceCluster::mean(Self) -> Double
+pub fn PhysicsmechanicsforceCluster::min(Self) -> Double
+pub fn PhysicsmechanicsforceCluster::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsforceCluster::sum(Self) -> Double
+pub fn PhysicsmechanicsforceCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsforceCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsforceCursor::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceCursor::copy(Self) -> Self
+pub fn PhysicsmechanicsforceCursor::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsforceCursor::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsforceCursor::len(Self) -> Int32
+pub fn PhysicsmechanicsforceCursor::max(Self) -> Double
+pub fn PhysicsmechanicsforceCursor::mean(Self) -> Double
+pub fn PhysicsmechanicsforceCursor::min(Self) -> Double
+pub fn PhysicsmechanicsforceCursor::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsforceCursor::sum(Self) -> Double
+pub fn PhysicsmechanicsforceCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsforceEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsforceEdge::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceEdge::copy(Self) -> Self
+pub fn PhysicsmechanicsforceEdge::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsforceEdge::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsforceEdge::len(Self) -> Int32
+pub fn PhysicsmechanicsforceEdge::max(Self) -> Double
+pub fn PhysicsmechanicsforceEdge::mean(Self) -> Double
+pub fn PhysicsmechanicsforceEdge::min(Self) -> Double
+pub fn PhysicsmechanicsforceEdge::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsforceEdge::sum(Self) -> Double
+pub fn PhysicsmechanicsforceEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsforceFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsforceFrame::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceFrame::copy(Self) -> Self
+pub fn PhysicsmechanicsforceFrame::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsforceFrame::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsforceFrame::len(Self) -> Int32
+pub fn PhysicsmechanicsforceFrame::max(Self) -> Double
+pub fn PhysicsmechanicsforceFrame::mean(Self) -> Double
+pub fn PhysicsmechanicsforceFrame::min(Self) -> Double
+pub fn PhysicsmechanicsforceFrame::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsforceFrame::sum(Self) -> Double
+pub fn PhysicsmechanicsforceFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsforceGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsforceGraphN::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceGraphN::copy(Self) -> Self
+pub fn PhysicsmechanicsforceGraphN::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsforceGraphN::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsforceGraphN::len(Self) -> Int32
+pub fn PhysicsmechanicsforceGraphN::max(Self) -> Double
+pub fn PhysicsmechanicsforceGraphN::mean(Self) -> Double
+pub fn PhysicsmechanicsforceGraphN::min(Self) -> Double
+pub fn PhysicsmechanicsforceGraphN::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsforceGraphN::sum(Self) -> Double
+pub fn PhysicsmechanicsforceGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsforceLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsforceLayer::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceLayer::copy(Self) -> Self
+pub fn PhysicsmechanicsforceLayer::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsforceLayer::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsforceLayer::len(Self) -> Int32
+pub fn PhysicsmechanicsforceLayer::max(Self) -> Double
+pub fn PhysicsmechanicsforceLayer::mean(Self) -> Double
+pub fn PhysicsmechanicsforceLayer::min(Self) -> Double
+pub fn PhysicsmechanicsforceLayer::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsforceLayer::sum(Self) -> Double
+pub fn PhysicsmechanicsforceLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsforceMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsmechanicsforceMatrix::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceMatrix::det(Self) -> Double
+pub fn PhysicsmechanicsforceMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsmechanicsforceMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsmechanicsforceMatrix::norm(Self) -> Double
+pub fn PhysicsmechanicsforceMatrix::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceMatrix::to_string(Self) -> String
+pub fn PhysicsmechanicsforceMatrix::trace(Self) -> Double
+pub fn PhysicsmechanicsforceMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsmechanicsforceModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsforceModel::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceModel::copy(Self) -> Self
+pub fn PhysicsmechanicsforceModel::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsforceModel::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsforceModel::len(Self) -> Int32
+pub fn PhysicsmechanicsforceModel::max(Self) -> Double
+pub fn PhysicsmechanicsforceModel::mean(Self) -> Double
+pub fn PhysicsmechanicsforceModel::min(Self) -> Double
+pub fn PhysicsmechanicsforceModel::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsforceModel::sum(Self) -> Double
+pub fn PhysicsmechanicsforceModel::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsforceNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsforceNode::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceNode::copy(Self) -> Self
+pub fn PhysicsmechanicsforceNode::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsforceNode::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsforceNode::len(Self) -> Int32
+pub fn PhysicsmechanicsforceNode::max(Self) -> Double
+pub fn PhysicsmechanicsforceNode::mean(Self) -> Double
+pub fn PhysicsmechanicsforceNode::min(Self) -> Double
+pub fn PhysicsmechanicsforceNode::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsforceNode::sum(Self) -> Double
+pub fn PhysicsmechanicsforceNode::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsforcePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsforcePath::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforcePath::copy(Self) -> Self
+pub fn PhysicsmechanicsforcePath::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsforcePath::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsforcePath::len(Self) -> Int32
+pub fn PhysicsmechanicsforcePath::max(Self) -> Double
+pub fn PhysicsmechanicsforcePath::mean(Self) -> Double
+pub fn PhysicsmechanicsforcePath::min(Self) -> Double
+pub fn PhysicsmechanicsforcePath::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforcePath::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsforcePath::sum(Self) -> Double
+pub fn PhysicsmechanicsforcePath::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsforcePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsmechanicsforcePoint::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforcePoint::cross(Self, Self) -> Self
+pub fn PhysicsmechanicsforcePoint::dist(Self, Self) -> Double
+pub fn PhysicsmechanicsforcePoint::dot(Self, Self) -> Double
+pub fn PhysicsmechanicsforcePoint::label(Self) -> Int32
+pub fn PhysicsmechanicsforcePoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsmechanicsforcePoint::mid(Self, Self) -> Self
+pub fn PhysicsmechanicsforcePoint::negate(Self) -> Self
+pub fn PhysicsmechanicsforcePoint::norm(Self) -> Double
+pub fn PhysicsmechanicsforcePoint::normalize(Self) -> Self
+pub fn PhysicsmechanicsforcePoint::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforcePoint::sub(Self, Self) -> Self
+pub fn PhysicsmechanicsforcePoint::to_string(Self) -> String
+pub fn PhysicsmechanicsforcePoint::x(Self) -> Double
+pub fn PhysicsmechanicsforcePoint::y(Self) -> Double
+pub fn PhysicsmechanicsforcePoint::z(Self) -> Double
+
+pub(all) struct PhysicsmechanicsforceRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsforceRange::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceRange::copy(Self) -> Self
+pub fn PhysicsmechanicsforceRange::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsforceRange::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsforceRange::len(Self) -> Int32
+pub fn PhysicsmechanicsforceRange::max(Self) -> Double
+pub fn PhysicsmechanicsforceRange::mean(Self) -> Double
+pub fn PhysicsmechanicsforceRange::min(Self) -> Double
+pub fn PhysicsmechanicsforceRange::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsforceRange::sum(Self) -> Double
+pub fn PhysicsmechanicsforceRange::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsforceSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsmechanicsforceSeries::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceSeries::cumsum(Self) -> Self
+pub fn PhysicsmechanicsforceSeries::len(Self) -> Int32
+pub fn PhysicsmechanicsforceSeries::max(Self) -> Double
+pub fn PhysicsmechanicsforceSeries::mean(Self) -> Double
+pub fn PhysicsmechanicsforceSeries::median(Self) -> Double
+pub fn PhysicsmechanicsforceSeries::min(Self) -> Double
+pub fn PhysicsmechanicsforceSeries::normalize(Self) -> Self
+pub fn PhysicsmechanicsforceSeries::range(Self) -> Double
+pub fn PhysicsmechanicsforceSeries::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceSeries::std(Self) -> Double
+pub fn PhysicsmechanicsforceSeries::sub(Self, Self) -> Self
+pub fn PhysicsmechanicsforceSeries::sum(Self) -> Double
+pub fn PhysicsmechanicsforceSeries::to_string(Self) -> String
+pub fn PhysicsmechanicsforceSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsmechanicsforceSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsforceSlice::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceSlice::copy(Self) -> Self
+pub fn PhysicsmechanicsforceSlice::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsforceSlice::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsforceSlice::len(Self) -> Int32
+pub fn PhysicsmechanicsforceSlice::max(Self) -> Double
+pub fn PhysicsmechanicsforceSlice::mean(Self) -> Double
+pub fn PhysicsmechanicsforceSlice::min(Self) -> Double
+pub fn PhysicsmechanicsforceSlice::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsforceSlice::sum(Self) -> Double
+pub fn PhysicsmechanicsforceSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsforceTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsforceTable::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceTable::copy(Self) -> Self
+pub fn PhysicsmechanicsforceTable::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsforceTable::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsforceTable::len(Self) -> Int32
+pub fn PhysicsmechanicsforceTable::max(Self) -> Double
+pub fn PhysicsmechanicsforceTable::mean(Self) -> Double
+pub fn PhysicsmechanicsforceTable::min(Self) -> Double
+pub fn PhysicsmechanicsforceTable::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsforceTable::sum(Self) -> Double
+pub fn PhysicsmechanicsforceTable::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsforceVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsmechanicsforceVector::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceVector::dist(Self, Self) -> Double
+pub fn PhysicsmechanicsforceVector::dot(Self, Self) -> Double
+pub fn PhysicsmechanicsforceVector::norm(Self) -> Double
+pub fn PhysicsmechanicsforceVector::normalize(Self) -> Self
+pub fn PhysicsmechanicsforceVector::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceVector::sub(Self, Self) -> Self
+pub fn PhysicsmechanicsforceVector::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsforceView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsforceView::add(Self, Self) -> Self
+pub fn PhysicsmechanicsforceView::copy(Self) -> Self
+pub fn PhysicsmechanicsforceView::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsforceView::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsforceView::len(Self) -> Int32
+pub fn PhysicsmechanicsforceView::max(Self) -> Double
+pub fn PhysicsmechanicsforceView::mean(Self) -> Double
+pub fn PhysicsmechanicsforceView::min(Self) -> Double
+pub fn PhysicsmechanicsforceView::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsforceView::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsforceView::sum(Self) -> Double
+pub fn PhysicsmechanicsforceView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

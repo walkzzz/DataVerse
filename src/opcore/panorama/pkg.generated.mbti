@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/panorama"
+
+// Values
+pub fn panorama_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn panorama_corr(Array[Double], Array[Double]) -> Double
+
+pub fn panorama_cov(Array[Double], Array[Double]) -> Double
+
+pub fn panorama_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn panorama_mae(Array[Double], Array[Double]) -> Double
+
+pub fn panorama_make_labeled_point(Double, Double, Int32) -> PanoramaPoint
+
+pub fn panorama_make_matrix(Int32, Int32, Double) -> PanoramaMatrix
+
+pub fn panorama_make_point(Double, Double) -> PanoramaPoint
+
+pub fn panorama_make_series(Array[Double], String) -> PanoramaSeries
+
+pub fn panorama_make_vector(Array[Double]) -> PanoramaVector
+
+pub fn panorama_matrix_add(PanoramaMatrix, PanoramaMatrix) -> PanoramaMatrix
+
+pub fn panorama_matrix_get(PanoramaMatrix, Int32, Int32) -> Double
+
+pub fn panorama_matrix_identity(Int32) -> PanoramaMatrix
+
+pub fn panorama_matrix_multiply(PanoramaMatrix, PanoramaMatrix) -> PanoramaMatrix
+
+pub fn panorama_matrix_norm(PanoramaMatrix) -> Double
+
+pub fn panorama_matrix_scale(PanoramaMatrix, Double) -> PanoramaMatrix
+
+pub fn panorama_matrix_to_string(PanoramaMatrix) -> String
+
+pub fn panorama_matrix_trace(PanoramaMatrix) -> Double
+
+pub fn panorama_matrix_transpose(PanoramaMatrix) -> PanoramaMatrix
+
+pub fn panorama_mse(Array[Double], Array[Double]) -> Double
+
+pub fn panorama_point_add(PanoramaPoint, PanoramaPoint) -> PanoramaPoint
+
+pub fn panorama_point_dist(PanoramaPoint, PanoramaPoint) -> Double
+
+pub fn panorama_point_dot(PanoramaPoint, PanoramaPoint) -> Double
+
+pub fn panorama_point_label(PanoramaPoint) -> Int32
+
+pub fn panorama_point_norm(PanoramaPoint) -> Double
+
+pub fn panorama_point_scale(PanoramaPoint, Double) -> PanoramaPoint
+
+pub fn panorama_point_sub(PanoramaPoint, PanoramaPoint) -> PanoramaPoint
+
+pub fn panorama_point_to_string(PanoramaPoint) -> String
+
+pub fn panorama_point_x(PanoramaPoint) -> Double
+
+pub fn panorama_point_y(PanoramaPoint) -> Double
+
+pub fn panorama_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn panorama_r2(Array[Double], Array[Double]) -> Double
+
+pub fn panorama_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn panorama_series_add(PanoramaSeries, PanoramaSeries) -> PanoramaSeries
+
+pub fn panorama_series_len(PanoramaSeries) -> Int32
+
+pub fn panorama_series_max(PanoramaSeries) -> Double
+
+pub fn panorama_series_mean(PanoramaSeries) -> Double
+
+pub fn panorama_series_min(PanoramaSeries) -> Double
+
+pub fn panorama_series_scale(PanoramaSeries, Double) -> PanoramaSeries
+
+pub fn panorama_series_std(PanoramaSeries) -> Double
+
+pub fn panorama_series_sum(PanoramaSeries) -> Double
+
+pub fn panorama_series_to_string(PanoramaSeries) -> String
+
+pub fn panorama_series_var(PanoramaSeries) -> Double
+
+pub fn panorama_std(Array[Double]) -> Double
+
+pub fn panorama_var(Array[Double]) -> Double
+
+pub fn panorama_vector_add(PanoramaVector, PanoramaVector) -> PanoramaVector
+
+pub fn panorama_vector_dist(PanoramaVector, PanoramaVector) -> Double
+
+pub fn panorama_vector_dot(PanoramaVector, PanoramaVector) -> Double
+
+pub fn panorama_vector_norm(PanoramaVector) -> Double
+
+pub fn panorama_vector_normalize(PanoramaVector) -> PanoramaVector
+
+pub fn panorama_vector_scale(PanoramaVector, Double) -> PanoramaVector
+
+pub fn panorama_vector_sub(PanoramaVector, PanoramaVector) -> PanoramaVector
+
+pub fn panorama_vector_to_string(PanoramaVector) -> String
+
+pub fn panorama_vector_zero(Int32) -> PanoramaVector
+
+// Errors
+
+// Types and methods
+pub struct PanoramaMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct PanoramaPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct PanoramaSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct PanoramaVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_compare_bubble"
+
+// Values
+pub fn sort_compare_bubble_buffer_make(Int32) -> SortcomparebubbleBuffer
+
+pub fn sort_compare_bubble_cluster_make(Int32) -> SortcomparebubbleCluster
+
+pub fn sort_compare_bubble_cursor_make(Int32) -> SortcomparebubbleCursor
+
+pub fn sort_compare_bubble_edge_make(Int32) -> SortcomparebubbleEdge
+
+pub fn sort_compare_bubble_frame_make(Int32) -> SortcomparebubbleFrame
+
+pub fn sort_compare_bubble_graphn_make(Int32) -> SortcomparebubbleGraphN
+
+pub fn sort_compare_bubble_layer_make(Int32) -> SortcomparebubbleLayer
+
+pub fn sort_compare_bubble_make_matrix(Int32, Int32, Double) -> SortcomparebubbleMatrix
+
+pub fn sort_compare_bubble_make_point(Double, Double) -> SortcomparebubblePoint
+
+pub fn sort_compare_bubble_make_point3(Double, Double, Double) -> SortcomparebubblePoint
+
+pub fn sort_compare_bubble_make_series(Array[Double], String) -> SortcomparebubbleSeries
+
+pub fn sort_compare_bubble_make_vector(Array[Double]) -> SortcomparebubbleVector
+
+pub fn sort_compare_bubble_matrix_identity(Int32) -> SortcomparebubbleMatrix
+
+pub fn sort_compare_bubble_model_make(Int32) -> SortcomparebubbleModel
+
+pub fn sort_compare_bubble_node_make(Int32) -> SortcomparebubbleNode
+
+pub fn sort_compare_bubble_path_make(Int32) -> SortcomparebubblePath
+
+pub fn sort_compare_bubble_range_make(Int32) -> SortcomparebubbleRange
+
+pub fn sort_compare_bubble_slice_make(Int32) -> SortcomparebubbleSlice
+
+pub fn sort_compare_bubble_table_make(Int32) -> SortcomparebubbleTable
+
+pub fn sort_compare_bubble_vector_zero(Int32) -> SortcomparebubbleVector
+
+pub fn sort_compare_bubble_view_make(Int32) -> SortcomparebubbleView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortcomparebubbleBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparebubbleBuffer::add(Self, Self) -> Self
+pub fn SortcomparebubbleBuffer::copy(Self) -> Self
+pub fn SortcomparebubbleBuffer::fill(Self, Double) -> Self
+pub fn SortcomparebubbleBuffer::get(Self, Int32) -> Double
+pub fn SortcomparebubbleBuffer::len(Self) -> Int32
+pub fn SortcomparebubbleBuffer::max(Self) -> Double
+pub fn SortcomparebubbleBuffer::mean(Self) -> Double
+pub fn SortcomparebubbleBuffer::min(Self) -> Double
+pub fn SortcomparebubbleBuffer::scale(Self, Double) -> Self
+pub fn SortcomparebubbleBuffer::set(Self, Int32, Double) -> Self
+pub fn SortcomparebubbleBuffer::sum(Self) -> Double
+pub fn SortcomparebubbleBuffer::to_string(Self) -> String
+
+pub(all) struct SortcomparebubbleCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparebubbleCluster::add(Self, Self) -> Self
+pub fn SortcomparebubbleCluster::copy(Self) -> Self
+pub fn SortcomparebubbleCluster::fill(Self, Double) -> Self
+pub fn SortcomparebubbleCluster::get(Self, Int32) -> Double
+pub fn SortcomparebubbleCluster::len(Self) -> Int32
+pub fn SortcomparebubbleCluster::max(Self) -> Double
+pub fn SortcomparebubbleCluster::mean(Self) -> Double
+pub fn SortcomparebubbleCluster::min(Self) -> Double
+pub fn SortcomparebubbleCluster::scale(Self, Double) -> Self
+pub fn SortcomparebubbleCluster::set(Self, Int32, Double) -> Self
+pub fn SortcomparebubbleCluster::sum(Self) -> Double
+pub fn SortcomparebubbleCluster::to_string(Self) -> String
+
+pub(all) struct SortcomparebubbleCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparebubbleCursor::add(Self, Self) -> Self
+pub fn SortcomparebubbleCursor::copy(Self) -> Self
+pub fn SortcomparebubbleCursor::fill(Self, Double) -> Self
+pub fn SortcomparebubbleCursor::get(Self, Int32) -> Double
+pub fn SortcomparebubbleCursor::len(Self) -> Int32
+pub fn SortcomparebubbleCursor::max(Self) -> Double
+pub fn SortcomparebubbleCursor::mean(Self) -> Double
+pub fn SortcomparebubbleCursor::min(Self) -> Double
+pub fn SortcomparebubbleCursor::scale(Self, Double) -> Self
+pub fn SortcomparebubbleCursor::set(Self, Int32, Double) -> Self
+pub fn SortcomparebubbleCursor::sum(Self) -> Double
+pub fn SortcomparebubbleCursor::to_string(Self) -> String
+
+pub(all) struct SortcomparebubbleEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparebubbleEdge::add(Self, Self) -> Self
+pub fn SortcomparebubbleEdge::copy(Self) -> Self
+pub fn SortcomparebubbleEdge::fill(Self, Double) -> Self
+pub fn SortcomparebubbleEdge::get(Self, Int32) -> Double
+pub fn SortcomparebubbleEdge::len(Self) -> Int32
+pub fn SortcomparebubbleEdge::max(Self) -> Double
+pub fn SortcomparebubbleEdge::mean(Self) -> Double
+pub fn SortcomparebubbleEdge::min(Self) -> Double
+pub fn SortcomparebubbleEdge::scale(Self, Double) -> Self
+pub fn SortcomparebubbleEdge::set(Self, Int32, Double) -> Self
+pub fn SortcomparebubbleEdge::sum(Self) -> Double
+pub fn SortcomparebubbleEdge::to_string(Self) -> String
+
+pub(all) struct SortcomparebubbleFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparebubbleFrame::add(Self, Self) -> Self
+pub fn SortcomparebubbleFrame::copy(Self) -> Self
+pub fn SortcomparebubbleFrame::fill(Self, Double) -> Self
+pub fn SortcomparebubbleFrame::get(Self, Int32) -> Double
+pub fn SortcomparebubbleFrame::len(Self) -> Int32
+pub fn SortcomparebubbleFrame::max(Self) -> Double
+pub fn SortcomparebubbleFrame::mean(Self) -> Double
+pub fn SortcomparebubbleFrame::min(Self) -> Double
+pub fn SortcomparebubbleFrame::scale(Self, Double) -> Self
+pub fn SortcomparebubbleFrame::set(Self, Int32, Double) -> Self
+pub fn SortcomparebubbleFrame::sum(Self) -> Double
+pub fn SortcomparebubbleFrame::to_string(Self) -> String
+
+pub(all) struct SortcomparebubbleGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparebubbleGraphN::add(Self, Self) -> Self
+pub fn SortcomparebubbleGraphN::copy(Self) -> Self
+pub fn SortcomparebubbleGraphN::fill(Self, Double) -> Self
+pub fn SortcomparebubbleGraphN::get(Self, Int32) -> Double
+pub fn SortcomparebubbleGraphN::len(Self) -> Int32
+pub fn SortcomparebubbleGraphN::max(Self) -> Double
+pub fn SortcomparebubbleGraphN::mean(Self) -> Double
+pub fn SortcomparebubbleGraphN::min(Self) -> Double
+pub fn SortcomparebubbleGraphN::scale(Self, Double) -> Self
+pub fn SortcomparebubbleGraphN::set(Self, Int32, Double) -> Self
+pub fn SortcomparebubbleGraphN::sum(Self) -> Double
+pub fn SortcomparebubbleGraphN::to_string(Self) -> String
+
+pub(all) struct SortcomparebubbleLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparebubbleLayer::add(Self, Self) -> Self
+pub fn SortcomparebubbleLayer::copy(Self) -> Self
+pub fn SortcomparebubbleLayer::fill(Self, Double) -> Self
+pub fn SortcomparebubbleLayer::get(Self, Int32) -> Double
+pub fn SortcomparebubbleLayer::len(Self) -> Int32
+pub fn SortcomparebubbleLayer::max(Self) -> Double
+pub fn SortcomparebubbleLayer::mean(Self) -> Double
+pub fn SortcomparebubbleLayer::min(Self) -> Double
+pub fn SortcomparebubbleLayer::scale(Self, Double) -> Self
+pub fn SortcomparebubbleLayer::set(Self, Int32, Double) -> Self
+pub fn SortcomparebubbleLayer::sum(Self) -> Double
+pub fn SortcomparebubbleLayer::to_string(Self) -> String
+
+pub(all) struct SortcomparebubbleMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortcomparebubbleMatrix::add(Self, Self) -> Self
+pub fn SortcomparebubbleMatrix::det(Self) -> Double
+pub fn SortcomparebubbleMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortcomparebubbleMatrix::multiply(Self, Self) -> Self
+pub fn SortcomparebubbleMatrix::norm(Self) -> Double
+pub fn SortcomparebubbleMatrix::scale(Self, Double) -> Self
+pub fn SortcomparebubbleMatrix::to_string(Self) -> String
+pub fn SortcomparebubbleMatrix::trace(Self) -> Double
+pub fn SortcomparebubbleMatrix::transpose(Self) -> Self
+
+pub(all) struct SortcomparebubbleModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparebubbleModel::add(Self, Self) -> Self
+pub fn SortcomparebubbleModel::copy(Self) -> Self
+pub fn SortcomparebubbleModel::fill(Self, Double) -> Self
+pub fn SortcomparebubbleModel::get(Self, Int32) -> Double
+pub fn SortcomparebubbleModel::len(Self) -> Int32
+pub fn SortcomparebubbleModel::max(Self) -> Double
+pub fn SortcomparebubbleModel::mean(Self) -> Double
+pub fn SortcomparebubbleModel::min(Self) -> Double
+pub fn SortcomparebubbleModel::scale(Self, Double) -> Self
+pub fn SortcomparebubbleModel::set(Self, Int32, Double) -> Self
+pub fn SortcomparebubbleModel::sum(Self) -> Double
+pub fn SortcomparebubbleModel::to_string(Self) -> String
+
+pub(all) struct SortcomparebubbleNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparebubbleNode::add(Self, Self) -> Self
+pub fn SortcomparebubbleNode::copy(Self) -> Self
+pub fn SortcomparebubbleNode::fill(Self, Double) -> Self
+pub fn SortcomparebubbleNode::get(Self, Int32) -> Double
+pub fn SortcomparebubbleNode::len(Self) -> Int32
+pub fn SortcomparebubbleNode::max(Self) -> Double
+pub fn SortcomparebubbleNode::mean(Self) -> Double
+pub fn SortcomparebubbleNode::min(Self) -> Double
+pub fn SortcomparebubbleNode::scale(Self, Double) -> Self
+pub fn SortcomparebubbleNode::set(Self, Int32, Double) -> Self
+pub fn SortcomparebubbleNode::sum(Self) -> Double
+pub fn SortcomparebubbleNode::to_string(Self) -> String
+
+pub(all) struct SortcomparebubblePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparebubblePath::add(Self, Self) -> Self
+pub fn SortcomparebubblePath::copy(Self) -> Self
+pub fn SortcomparebubblePath::fill(Self, Double) -> Self
+pub fn SortcomparebubblePath::get(Self, Int32) -> Double
+pub fn SortcomparebubblePath::len(Self) -> Int32
+pub fn SortcomparebubblePath::max(Self) -> Double
+pub fn SortcomparebubblePath::mean(Self) -> Double
+pub fn SortcomparebubblePath::min(Self) -> Double
+pub fn SortcomparebubblePath::scale(Self, Double) -> Self
+pub fn SortcomparebubblePath::set(Self, Int32, Double) -> Self
+pub fn SortcomparebubblePath::sum(Self) -> Double
+pub fn SortcomparebubblePath::to_string(Self) -> String
+
+pub(all) struct SortcomparebubblePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortcomparebubblePoint::add(Self, Self) -> Self
+pub fn SortcomparebubblePoint::cross(Self, Self) -> Self
+pub fn SortcomparebubblePoint::dist(Self, Self) -> Double
+pub fn SortcomparebubblePoint::dot(Self, Self) -> Double
+pub fn SortcomparebubblePoint::label(Self) -> Int32
+pub fn SortcomparebubblePoint::lerp(Self, Self, Double) -> Self
+pub fn SortcomparebubblePoint::mid(Self, Self) -> Self
+pub fn SortcomparebubblePoint::negate(Self) -> Self
+pub fn SortcomparebubblePoint::norm(Self) -> Double
+pub fn SortcomparebubblePoint::normalize(Self) -> Self
+pub fn SortcomparebubblePoint::scale(Self, Double) -> Self
+pub fn SortcomparebubblePoint::sub(Self, Self) -> Self
+pub fn SortcomparebubblePoint::to_string(Self) -> String
+pub fn SortcomparebubblePoint::x(Self) -> Double
+pub fn SortcomparebubblePoint::y(Self) -> Double
+pub fn SortcomparebubblePoint::z(Self) -> Double
+
+pub(all) struct SortcomparebubbleRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparebubbleRange::add(Self, Self) -> Self
+pub fn SortcomparebubbleRange::copy(Self) -> Self
+pub fn SortcomparebubbleRange::fill(Self, Double) -> Self
+pub fn SortcomparebubbleRange::get(Self, Int32) -> Double
+pub fn SortcomparebubbleRange::len(Self) -> Int32
+pub fn SortcomparebubbleRange::max(Self) -> Double
+pub fn SortcomparebubbleRange::mean(Self) -> Double
+pub fn SortcomparebubbleRange::min(Self) -> Double
+pub fn SortcomparebubbleRange::scale(Self, Double) -> Self
+pub fn SortcomparebubbleRange::set(Self, Int32, Double) -> Self
+pub fn SortcomparebubbleRange::sum(Self) -> Double
+pub fn SortcomparebubbleRange::to_string(Self) -> String
+
+pub(all) struct SortcomparebubbleSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortcomparebubbleSeries::add(Self, Self) -> Self
+pub fn SortcomparebubbleSeries::cumsum(Self) -> Self
+pub fn SortcomparebubbleSeries::len(Self) -> Int32
+pub fn SortcomparebubbleSeries::max(Self) -> Double
+pub fn SortcomparebubbleSeries::mean(Self) -> Double
+pub fn SortcomparebubbleSeries::median(Self) -> Double
+pub fn SortcomparebubbleSeries::min(Self) -> Double
+pub fn SortcomparebubbleSeries::normalize(Self) -> Self
+pub fn SortcomparebubbleSeries::range(Self) -> Double
+pub fn SortcomparebubbleSeries::scale(Self, Double) -> Self
+pub fn SortcomparebubbleSeries::std(Self) -> Double
+pub fn SortcomparebubbleSeries::sub(Self, Self) -> Self
+pub fn SortcomparebubbleSeries::sum(Self) -> Double
+pub fn SortcomparebubbleSeries::to_string(Self) -> String
+pub fn SortcomparebubbleSeries::variance(Self) -> Double
+
+pub(all) struct SortcomparebubbleSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparebubbleSlice::add(Self, Self) -> Self
+pub fn SortcomparebubbleSlice::copy(Self) -> Self
+pub fn SortcomparebubbleSlice::fill(Self, Double) -> Self
+pub fn SortcomparebubbleSlice::get(Self, Int32) -> Double
+pub fn SortcomparebubbleSlice::len(Self) -> Int32
+pub fn SortcomparebubbleSlice::max(Self) -> Double
+pub fn SortcomparebubbleSlice::mean(Self) -> Double
+pub fn SortcomparebubbleSlice::min(Self) -> Double
+pub fn SortcomparebubbleSlice::scale(Self, Double) -> Self
+pub fn SortcomparebubbleSlice::set(Self, Int32, Double) -> Self
+pub fn SortcomparebubbleSlice::sum(Self) -> Double
+pub fn SortcomparebubbleSlice::to_string(Self) -> String
+
+pub(all) struct SortcomparebubbleTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparebubbleTable::add(Self, Self) -> Self
+pub fn SortcomparebubbleTable::copy(Self) -> Self
+pub fn SortcomparebubbleTable::fill(Self, Double) -> Self
+pub fn SortcomparebubbleTable::get(Self, Int32) -> Double
+pub fn SortcomparebubbleTable::len(Self) -> Int32
+pub fn SortcomparebubbleTable::max(Self) -> Double
+pub fn SortcomparebubbleTable::mean(Self) -> Double
+pub fn SortcomparebubbleTable::min(Self) -> Double
+pub fn SortcomparebubbleTable::scale(Self, Double) -> Self
+pub fn SortcomparebubbleTable::set(Self, Int32, Double) -> Self
+pub fn SortcomparebubbleTable::sum(Self) -> Double
+pub fn SortcomparebubbleTable::to_string(Self) -> String
+
+pub(all) struct SortcomparebubbleVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortcomparebubbleVector::add(Self, Self) -> Self
+pub fn SortcomparebubbleVector::dist(Self, Self) -> Double
+pub fn SortcomparebubbleVector::dot(Self, Self) -> Double
+pub fn SortcomparebubbleVector::norm(Self) -> Double
+pub fn SortcomparebubbleVector::normalize(Self) -> Self
+pub fn SortcomparebubbleVector::scale(Self, Double) -> Self
+pub fn SortcomparebubbleVector::sub(Self, Self) -> Self
+pub fn SortcomparebubbleVector::to_string(Self) -> String
+
+pub(all) struct SortcomparebubbleView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparebubbleView::add(Self, Self) -> Self
+pub fn SortcomparebubbleView::copy(Self) -> Self
+pub fn SortcomparebubbleView::fill(Self, Double) -> Self
+pub fn SortcomparebubbleView::get(Self, Int32) -> Double
+pub fn SortcomparebubbleView::len(Self) -> Int32
+pub fn SortcomparebubbleView::max(Self) -> Double
+pub fn SortcomparebubbleView::mean(Self) -> Double
+pub fn SortcomparebubbleView::min(Self) -> Double
+pub fn SortcomparebubbleView::scale(Self, Double) -> Self
+pub fn SortcomparebubbleView::set(Self, Int32, Double) -> Self
+pub fn SortcomparebubbleView::sum(Self) -> Double
+pub fn SortcomparebubbleView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

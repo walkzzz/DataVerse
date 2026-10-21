@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/filter_fir"
+
+// Values
+pub fn filter_fir_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn filter_fir_corr(Array[Double], Array[Double]) -> Double
+
+pub fn filter_fir_cov(Array[Double], Array[Double]) -> Double
+
+pub fn filter_fir_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn filter_fir_mae(Array[Double], Array[Double]) -> Double
+
+pub fn filter_fir_make_labeled_point(Double, Double, Int32) -> Filter_firPoint
+
+pub fn filter_fir_make_matrix(Int32, Int32, Double) -> Filter_firMatrix
+
+pub fn filter_fir_make_point(Double, Double) -> Filter_firPoint
+
+pub fn filter_fir_make_series(Array[Double], String) -> Filter_firSeries
+
+pub fn filter_fir_make_vector(Array[Double]) -> Filter_firVector
+
+pub fn filter_fir_matrix_add(Filter_firMatrix, Filter_firMatrix) -> Filter_firMatrix
+
+pub fn filter_fir_matrix_get(Filter_firMatrix, Int32, Int32) -> Double
+
+pub fn filter_fir_matrix_identity(Int32) -> Filter_firMatrix
+
+pub fn filter_fir_matrix_multiply(Filter_firMatrix, Filter_firMatrix) -> Filter_firMatrix
+
+pub fn filter_fir_matrix_norm(Filter_firMatrix) -> Double
+
+pub fn filter_fir_matrix_scale(Filter_firMatrix, Double) -> Filter_firMatrix
+
+pub fn filter_fir_matrix_to_string(Filter_firMatrix) -> String
+
+pub fn filter_fir_matrix_trace(Filter_firMatrix) -> Double
+
+pub fn filter_fir_matrix_transpose(Filter_firMatrix) -> Filter_firMatrix
+
+pub fn filter_fir_mse(Array[Double], Array[Double]) -> Double
+
+pub fn filter_fir_point_add(Filter_firPoint, Filter_firPoint) -> Filter_firPoint
+
+pub fn filter_fir_point_dist(Filter_firPoint, Filter_firPoint) -> Double
+
+pub fn filter_fir_point_dot(Filter_firPoint, Filter_firPoint) -> Double
+
+pub fn filter_fir_point_label(Filter_firPoint) -> Int32
+
+pub fn filter_fir_point_norm(Filter_firPoint) -> Double
+
+pub fn filter_fir_point_scale(Filter_firPoint, Double) -> Filter_firPoint
+
+pub fn filter_fir_point_sub(Filter_firPoint, Filter_firPoint) -> Filter_firPoint
+
+pub fn filter_fir_point_to_string(Filter_firPoint) -> String
+
+pub fn filter_fir_point_x(Filter_firPoint) -> Double
+
+pub fn filter_fir_point_y(Filter_firPoint) -> Double
+
+pub fn filter_fir_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn filter_fir_r2(Array[Double], Array[Double]) -> Double
+
+pub fn filter_fir_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn filter_fir_series_add(Filter_firSeries, Filter_firSeries) -> Filter_firSeries
+
+pub fn filter_fir_series_len(Filter_firSeries) -> Int32
+
+pub fn filter_fir_series_max(Filter_firSeries) -> Double
+
+pub fn filter_fir_series_mean(Filter_firSeries) -> Double
+
+pub fn filter_fir_series_min(Filter_firSeries) -> Double
+
+pub fn filter_fir_series_scale(Filter_firSeries, Double) -> Filter_firSeries
+
+pub fn filter_fir_series_std(Filter_firSeries) -> Double
+
+pub fn filter_fir_series_sum(Filter_firSeries) -> Double
+
+pub fn filter_fir_series_to_string(Filter_firSeries) -> String
+
+pub fn filter_fir_series_var(Filter_firSeries) -> Double
+
+pub fn filter_fir_std(Array[Double]) -> Double
+
+pub fn filter_fir_var(Array[Double]) -> Double
+
+pub fn filter_fir_vector_add(Filter_firVector, Filter_firVector) -> Filter_firVector
+
+pub fn filter_fir_vector_dist(Filter_firVector, Filter_firVector) -> Double
+
+pub fn filter_fir_vector_dot(Filter_firVector, Filter_firVector) -> Double
+
+pub fn filter_fir_vector_norm(Filter_firVector) -> Double
+
+pub fn filter_fir_vector_normalize(Filter_firVector) -> Filter_firVector
+
+pub fn filter_fir_vector_scale(Filter_firVector, Double) -> Filter_firVector
+
+pub fn filter_fir_vector_sub(Filter_firVector, Filter_firVector) -> Filter_firVector
+
+pub fn filter_fir_vector_to_string(Filter_firVector) -> String
+
+pub fn filter_fir_vector_zero(Int32) -> Filter_firVector
+
+// Errors
+
+// Types and methods
+pub struct Filter_firMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Filter_firPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Filter_firSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Filter_firVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

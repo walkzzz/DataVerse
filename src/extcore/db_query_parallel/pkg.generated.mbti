@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_query_parallel"
+
+// Values
+pub fn db_query_parallel_buffer_make(Int32) -> DbqueryparallelBuffer
+
+pub fn db_query_parallel_cluster_make(Int32) -> DbqueryparallelCluster
+
+pub fn db_query_parallel_cursor_make(Int32) -> DbqueryparallelCursor
+
+pub fn db_query_parallel_edge_make(Int32) -> DbqueryparallelEdge
+
+pub fn db_query_parallel_frame_make(Int32) -> DbqueryparallelFrame
+
+pub fn db_query_parallel_graphn_make(Int32) -> DbqueryparallelGraphN
+
+pub fn db_query_parallel_layer_make(Int32) -> DbqueryparallelLayer
+
+pub fn db_query_parallel_make_matrix(Int32, Int32, Double) -> DbqueryparallelMatrix
+
+pub fn db_query_parallel_make_point(Double, Double) -> DbqueryparallelPoint
+
+pub fn db_query_parallel_make_point3(Double, Double, Double) -> DbqueryparallelPoint
+
+pub fn db_query_parallel_make_series(Array[Double], String) -> DbqueryparallelSeries
+
+pub fn db_query_parallel_make_vector(Array[Double]) -> DbqueryparallelVector
+
+pub fn db_query_parallel_matrix_identity(Int32) -> DbqueryparallelMatrix
+
+pub fn db_query_parallel_model_make(Int32) -> DbqueryparallelModel
+
+pub fn db_query_parallel_node_make(Int32) -> DbqueryparallelNode
+
+pub fn db_query_parallel_path_make(Int32) -> DbqueryparallelPath
+
+pub fn db_query_parallel_range_make(Int32) -> DbqueryparallelRange
+
+pub fn db_query_parallel_slice_make(Int32) -> DbqueryparallelSlice
+
+pub fn db_query_parallel_table_make(Int32) -> DbqueryparallelTable
+
+pub fn db_query_parallel_vector_zero(Int32) -> DbqueryparallelVector
+
+pub fn db_query_parallel_view_make(Int32) -> DbqueryparallelView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbqueryparallelBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryparallelBuffer::add(Self, Self) -> Self
+pub fn DbqueryparallelBuffer::copy(Self) -> Self
+pub fn DbqueryparallelBuffer::fill(Self, Double) -> Self
+pub fn DbqueryparallelBuffer::get(Self, Int32) -> Double
+pub fn DbqueryparallelBuffer::len(Self) -> Int32
+pub fn DbqueryparallelBuffer::max(Self) -> Double
+pub fn DbqueryparallelBuffer::mean(Self) -> Double
+pub fn DbqueryparallelBuffer::min(Self) -> Double
+pub fn DbqueryparallelBuffer::scale(Self, Double) -> Self
+pub fn DbqueryparallelBuffer::set(Self, Int32, Double) -> Self
+pub fn DbqueryparallelBuffer::sum(Self) -> Double
+pub fn DbqueryparallelBuffer::to_string(Self) -> String
+
+pub(all) struct DbqueryparallelCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryparallelCluster::add(Self, Self) -> Self
+pub fn DbqueryparallelCluster::copy(Self) -> Self
+pub fn DbqueryparallelCluster::fill(Self, Double) -> Self
+pub fn DbqueryparallelCluster::get(Self, Int32) -> Double
+pub fn DbqueryparallelCluster::len(Self) -> Int32
+pub fn DbqueryparallelCluster::max(Self) -> Double
+pub fn DbqueryparallelCluster::mean(Self) -> Double
+pub fn DbqueryparallelCluster::min(Self) -> Double
+pub fn DbqueryparallelCluster::scale(Self, Double) -> Self
+pub fn DbqueryparallelCluster::set(Self, Int32, Double) -> Self
+pub fn DbqueryparallelCluster::sum(Self) -> Double
+pub fn DbqueryparallelCluster::to_string(Self) -> String
+
+pub(all) struct DbqueryparallelCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryparallelCursor::add(Self, Self) -> Self
+pub fn DbqueryparallelCursor::copy(Self) -> Self
+pub fn DbqueryparallelCursor::fill(Self, Double) -> Self
+pub fn DbqueryparallelCursor::get(Self, Int32) -> Double
+pub fn DbqueryparallelCursor::len(Self) -> Int32
+pub fn DbqueryparallelCursor::max(Self) -> Double
+pub fn DbqueryparallelCursor::mean(Self) -> Double
+pub fn DbqueryparallelCursor::min(Self) -> Double
+pub fn DbqueryparallelCursor::scale(Self, Double) -> Self
+pub fn DbqueryparallelCursor::set(Self, Int32, Double) -> Self
+pub fn DbqueryparallelCursor::sum(Self) -> Double
+pub fn DbqueryparallelCursor::to_string(Self) -> String
+
+pub(all) struct DbqueryparallelEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryparallelEdge::add(Self, Self) -> Self
+pub fn DbqueryparallelEdge::copy(Self) -> Self
+pub fn DbqueryparallelEdge::fill(Self, Double) -> Self
+pub fn DbqueryparallelEdge::get(Self, Int32) -> Double
+pub fn DbqueryparallelEdge::len(Self) -> Int32
+pub fn DbqueryparallelEdge::max(Self) -> Double
+pub fn DbqueryparallelEdge::mean(Self) -> Double
+pub fn DbqueryparallelEdge::min(Self) -> Double
+pub fn DbqueryparallelEdge::scale(Self, Double) -> Self
+pub fn DbqueryparallelEdge::set(Self, Int32, Double) -> Self
+pub fn DbqueryparallelEdge::sum(Self) -> Double
+pub fn DbqueryparallelEdge::to_string(Self) -> String
+
+pub(all) struct DbqueryparallelFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryparallelFrame::add(Self, Self) -> Self
+pub fn DbqueryparallelFrame::copy(Self) -> Self
+pub fn DbqueryparallelFrame::fill(Self, Double) -> Self
+pub fn DbqueryparallelFrame::get(Self, Int32) -> Double
+pub fn DbqueryparallelFrame::len(Self) -> Int32
+pub fn DbqueryparallelFrame::max(Self) -> Double
+pub fn DbqueryparallelFrame::mean(Self) -> Double
+pub fn DbqueryparallelFrame::min(Self) -> Double
+pub fn DbqueryparallelFrame::scale(Self, Double) -> Self
+pub fn DbqueryparallelFrame::set(Self, Int32, Double) -> Self
+pub fn DbqueryparallelFrame::sum(Self) -> Double
+pub fn DbqueryparallelFrame::to_string(Self) -> String
+
+pub(all) struct DbqueryparallelGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryparallelGraphN::add(Self, Self) -> Self
+pub fn DbqueryparallelGraphN::copy(Self) -> Self
+pub fn DbqueryparallelGraphN::fill(Self, Double) -> Self
+pub fn DbqueryparallelGraphN::get(Self, Int32) -> Double
+pub fn DbqueryparallelGraphN::len(Self) -> Int32
+pub fn DbqueryparallelGraphN::max(Self) -> Double
+pub fn DbqueryparallelGraphN::mean(Self) -> Double
+pub fn DbqueryparallelGraphN::min(Self) -> Double
+pub fn DbqueryparallelGraphN::scale(Self, Double) -> Self
+pub fn DbqueryparallelGraphN::set(Self, Int32, Double) -> Self
+pub fn DbqueryparallelGraphN::sum(Self) -> Double
+pub fn DbqueryparallelGraphN::to_string(Self) -> String
+
+pub(all) struct DbqueryparallelLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryparallelLayer::add(Self, Self) -> Self
+pub fn DbqueryparallelLayer::copy(Self) -> Self
+pub fn DbqueryparallelLayer::fill(Self, Double) -> Self
+pub fn DbqueryparallelLayer::get(Self, Int32) -> Double
+pub fn DbqueryparallelLayer::len(Self) -> Int32
+pub fn DbqueryparallelLayer::max(Self) -> Double
+pub fn DbqueryparallelLayer::mean(Self) -> Double
+pub fn DbqueryparallelLayer::min(Self) -> Double
+pub fn DbqueryparallelLayer::scale(Self, Double) -> Self
+pub fn DbqueryparallelLayer::set(Self, Int32, Double) -> Self
+pub fn DbqueryparallelLayer::sum(Self) -> Double
+pub fn DbqueryparallelLayer::to_string(Self) -> String
+
+pub(all) struct DbqueryparallelMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbqueryparallelMatrix::add(Self, Self) -> Self
+pub fn DbqueryparallelMatrix::det(Self) -> Double
+pub fn DbqueryparallelMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbqueryparallelMatrix::multiply(Self, Self) -> Self
+pub fn DbqueryparallelMatrix::norm(Self) -> Double
+pub fn DbqueryparallelMatrix::scale(Self, Double) -> Self
+pub fn DbqueryparallelMatrix::to_string(Self) -> String
+pub fn DbqueryparallelMatrix::trace(Self) -> Double
+pub fn DbqueryparallelMatrix::transpose(Self) -> Self
+
+pub(all) struct DbqueryparallelModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryparallelModel::add(Self, Self) -> Self
+pub fn DbqueryparallelModel::copy(Self) -> Self
+pub fn DbqueryparallelModel::fill(Self, Double) -> Self
+pub fn DbqueryparallelModel::get(Self, Int32) -> Double
+pub fn DbqueryparallelModel::len(Self) -> Int32
+pub fn DbqueryparallelModel::max(Self) -> Double
+pub fn DbqueryparallelModel::mean(Self) -> Double
+pub fn DbqueryparallelModel::min(Self) -> Double
+pub fn DbqueryparallelModel::scale(Self, Double) -> Self
+pub fn DbqueryparallelModel::set(Self, Int32, Double) -> Self
+pub fn DbqueryparallelModel::sum(Self) -> Double
+pub fn DbqueryparallelModel::to_string(Self) -> String
+
+pub(all) struct DbqueryparallelNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryparallelNode::add(Self, Self) -> Self
+pub fn DbqueryparallelNode::copy(Self) -> Self
+pub fn DbqueryparallelNode::fill(Self, Double) -> Self
+pub fn DbqueryparallelNode::get(Self, Int32) -> Double
+pub fn DbqueryparallelNode::len(Self) -> Int32
+pub fn DbqueryparallelNode::max(Self) -> Double
+pub fn DbqueryparallelNode::mean(Self) -> Double
+pub fn DbqueryparallelNode::min(Self) -> Double
+pub fn DbqueryparallelNode::scale(Self, Double) -> Self
+pub fn DbqueryparallelNode::set(Self, Int32, Double) -> Self
+pub fn DbqueryparallelNode::sum(Self) -> Double
+pub fn DbqueryparallelNode::to_string(Self) -> String
+
+pub(all) struct DbqueryparallelPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryparallelPath::add(Self, Self) -> Self
+pub fn DbqueryparallelPath::copy(Self) -> Self
+pub fn DbqueryparallelPath::fill(Self, Double) -> Self
+pub fn DbqueryparallelPath::get(Self, Int32) -> Double
+pub fn DbqueryparallelPath::len(Self) -> Int32
+pub fn DbqueryparallelPath::max(Self) -> Double
+pub fn DbqueryparallelPath::mean(Self) -> Double
+pub fn DbqueryparallelPath::min(Self) -> Double
+pub fn DbqueryparallelPath::scale(Self, Double) -> Self
+pub fn DbqueryparallelPath::set(Self, Int32, Double) -> Self
+pub fn DbqueryparallelPath::sum(Self) -> Double
+pub fn DbqueryparallelPath::to_string(Self) -> String
+
+pub(all) struct DbqueryparallelPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbqueryparallelPoint::add(Self, Self) -> Self
+pub fn DbqueryparallelPoint::cross(Self, Self) -> Self
+pub fn DbqueryparallelPoint::dist(Self, Self) -> Double
+pub fn DbqueryparallelPoint::dot(Self, Self) -> Double
+pub fn DbqueryparallelPoint::label(Self) -> Int32
+pub fn DbqueryparallelPoint::lerp(Self, Self, Double) -> Self
+pub fn DbqueryparallelPoint::mid(Self, Self) -> Self
+pub fn DbqueryparallelPoint::negate(Self) -> Self
+pub fn DbqueryparallelPoint::norm(Self) -> Double
+pub fn DbqueryparallelPoint::normalize(Self) -> Self
+pub fn DbqueryparallelPoint::scale(Self, Double) -> Self
+pub fn DbqueryparallelPoint::sub(Self, Self) -> Self
+pub fn DbqueryparallelPoint::to_string(Self) -> String
+pub fn DbqueryparallelPoint::x(Self) -> Double
+pub fn DbqueryparallelPoint::y(Self) -> Double
+pub fn DbqueryparallelPoint::z(Self) -> Double
+
+pub(all) struct DbqueryparallelRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryparallelRange::add(Self, Self) -> Self
+pub fn DbqueryparallelRange::copy(Self) -> Self
+pub fn DbqueryparallelRange::fill(Self, Double) -> Self
+pub fn DbqueryparallelRange::get(Self, Int32) -> Double
+pub fn DbqueryparallelRange::len(Self) -> Int32
+pub fn DbqueryparallelRange::max(Self) -> Double
+pub fn DbqueryparallelRange::mean(Self) -> Double
+pub fn DbqueryparallelRange::min(Self) -> Double
+pub fn DbqueryparallelRange::scale(Self, Double) -> Self
+pub fn DbqueryparallelRange::set(Self, Int32, Double) -> Self
+pub fn DbqueryparallelRange::sum(Self) -> Double
+pub fn DbqueryparallelRange::to_string(Self) -> String
+
+pub(all) struct DbqueryparallelSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbqueryparallelSeries::add(Self, Self) -> Self
+pub fn DbqueryparallelSeries::cumsum(Self) -> Self
+pub fn DbqueryparallelSeries::len(Self) -> Int32
+pub fn DbqueryparallelSeries::max(Self) -> Double
+pub fn DbqueryparallelSeries::mean(Self) -> Double
+pub fn DbqueryparallelSeries::median(Self) -> Double
+pub fn DbqueryparallelSeries::min(Self) -> Double
+pub fn DbqueryparallelSeries::normalize(Self) -> Self
+pub fn DbqueryparallelSeries::range(Self) -> Double
+pub fn DbqueryparallelSeries::scale(Self, Double) -> Self
+pub fn DbqueryparallelSeries::std(Self) -> Double
+pub fn DbqueryparallelSeries::sub(Self, Self) -> Self
+pub fn DbqueryparallelSeries::sum(Self) -> Double
+pub fn DbqueryparallelSeries::to_string(Self) -> String
+pub fn DbqueryparallelSeries::variance(Self) -> Double
+
+pub(all) struct DbqueryparallelSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryparallelSlice::add(Self, Self) -> Self
+pub fn DbqueryparallelSlice::copy(Self) -> Self
+pub fn DbqueryparallelSlice::fill(Self, Double) -> Self
+pub fn DbqueryparallelSlice::get(Self, Int32) -> Double
+pub fn DbqueryparallelSlice::len(Self) -> Int32
+pub fn DbqueryparallelSlice::max(Self) -> Double
+pub fn DbqueryparallelSlice::mean(Self) -> Double
+pub fn DbqueryparallelSlice::min(Self) -> Double
+pub fn DbqueryparallelSlice::scale(Self, Double) -> Self
+pub fn DbqueryparallelSlice::set(Self, Int32, Double) -> Self
+pub fn DbqueryparallelSlice::sum(Self) -> Double
+pub fn DbqueryparallelSlice::to_string(Self) -> String
+
+pub(all) struct DbqueryparallelTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryparallelTable::add(Self, Self) -> Self
+pub fn DbqueryparallelTable::copy(Self) -> Self
+pub fn DbqueryparallelTable::fill(Self, Double) -> Self
+pub fn DbqueryparallelTable::get(Self, Int32) -> Double
+pub fn DbqueryparallelTable::len(Self) -> Int32
+pub fn DbqueryparallelTable::max(Self) -> Double
+pub fn DbqueryparallelTable::mean(Self) -> Double
+pub fn DbqueryparallelTable::min(Self) -> Double
+pub fn DbqueryparallelTable::scale(Self, Double) -> Self
+pub fn DbqueryparallelTable::set(Self, Int32, Double) -> Self
+pub fn DbqueryparallelTable::sum(Self) -> Double
+pub fn DbqueryparallelTable::to_string(Self) -> String
+
+pub(all) struct DbqueryparallelVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbqueryparallelVector::add(Self, Self) -> Self
+pub fn DbqueryparallelVector::dist(Self, Self) -> Double
+pub fn DbqueryparallelVector::dot(Self, Self) -> Double
+pub fn DbqueryparallelVector::norm(Self) -> Double
+pub fn DbqueryparallelVector::normalize(Self) -> Self
+pub fn DbqueryparallelVector::scale(Self, Double) -> Self
+pub fn DbqueryparallelVector::sub(Self, Self) -> Self
+pub fn DbqueryparallelVector::to_string(Self) -> String
+
+pub(all) struct DbqueryparallelView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbqueryparallelView::add(Self, Self) -> Self
+pub fn DbqueryparallelView::copy(Self) -> Self
+pub fn DbqueryparallelView::fill(Self, Double) -> Self
+pub fn DbqueryparallelView::get(Self, Int32) -> Double
+pub fn DbqueryparallelView::len(Self) -> Int32
+pub fn DbqueryparallelView::max(Self) -> Double
+pub fn DbqueryparallelView::mean(Self) -> Double
+pub fn DbqueryparallelView::min(Self) -> Double
+pub fn DbqueryparallelView::scale(Self, Double) -> Self
+pub fn DbqueryparallelView::set(Self, Int32, Double) -> Self
+pub fn DbqueryparallelView::sum(Self) -> Double
+pub fn DbqueryparallelView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

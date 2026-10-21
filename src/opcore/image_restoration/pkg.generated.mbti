@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/image_restoration"
+
+// Values
+pub fn image_restoration_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn image_restoration_corr(Array[Double], Array[Double]) -> Double
+
+pub fn image_restoration_cov(Array[Double], Array[Double]) -> Double
+
+pub fn image_restoration_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn image_restoration_mae(Array[Double], Array[Double]) -> Double
+
+pub fn image_restoration_make_labeled_point(Double, Double, Int32) -> Image_restorationPoint
+
+pub fn image_restoration_make_matrix(Int32, Int32, Double) -> Image_restorationMatrix
+
+pub fn image_restoration_make_point(Double, Double) -> Image_restorationPoint
+
+pub fn image_restoration_make_series(Array[Double], String) -> Image_restorationSeries
+
+pub fn image_restoration_make_vector(Array[Double]) -> Image_restorationVector
+
+pub fn image_restoration_matrix_add(Image_restorationMatrix, Image_restorationMatrix) -> Image_restorationMatrix
+
+pub fn image_restoration_matrix_get(Image_restorationMatrix, Int32, Int32) -> Double
+
+pub fn image_restoration_matrix_identity(Int32) -> Image_restorationMatrix
+
+pub fn image_restoration_matrix_multiply(Image_restorationMatrix, Image_restorationMatrix) -> Image_restorationMatrix
+
+pub fn image_restoration_matrix_norm(Image_restorationMatrix) -> Double
+
+pub fn image_restoration_matrix_scale(Image_restorationMatrix, Double) -> Image_restorationMatrix
+
+pub fn image_restoration_matrix_to_string(Image_restorationMatrix) -> String
+
+pub fn image_restoration_matrix_trace(Image_restorationMatrix) -> Double
+
+pub fn image_restoration_matrix_transpose(Image_restorationMatrix) -> Image_restorationMatrix
+
+pub fn image_restoration_mse(Array[Double], Array[Double]) -> Double
+
+pub fn image_restoration_point_add(Image_restorationPoint, Image_restorationPoint) -> Image_restorationPoint
+
+pub fn image_restoration_point_dist(Image_restorationPoint, Image_restorationPoint) -> Double
+
+pub fn image_restoration_point_dot(Image_restorationPoint, Image_restorationPoint) -> Double
+
+pub fn image_restoration_point_label(Image_restorationPoint) -> Int32
+
+pub fn image_restoration_point_norm(Image_restorationPoint) -> Double
+
+pub fn image_restoration_point_scale(Image_restorationPoint, Double) -> Image_restorationPoint
+
+pub fn image_restoration_point_sub(Image_restorationPoint, Image_restorationPoint) -> Image_restorationPoint
+
+pub fn image_restoration_point_to_string(Image_restorationPoint) -> String
+
+pub fn image_restoration_point_x(Image_restorationPoint) -> Double
+
+pub fn image_restoration_point_y(Image_restorationPoint) -> Double
+
+pub fn image_restoration_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn image_restoration_r2(Array[Double], Array[Double]) -> Double
+
+pub fn image_restoration_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn image_restoration_series_add(Image_restorationSeries, Image_restorationSeries) -> Image_restorationSeries
+
+pub fn image_restoration_series_len(Image_restorationSeries) -> Int32
+
+pub fn image_restoration_series_max(Image_restorationSeries) -> Double
+
+pub fn image_restoration_series_mean(Image_restorationSeries) -> Double
+
+pub fn image_restoration_series_min(Image_restorationSeries) -> Double
+
+pub fn image_restoration_series_scale(Image_restorationSeries, Double) -> Image_restorationSeries
+
+pub fn image_restoration_series_std(Image_restorationSeries) -> Double
+
+pub fn image_restoration_series_sum(Image_restorationSeries) -> Double
+
+pub fn image_restoration_series_to_string(Image_restorationSeries) -> String
+
+pub fn image_restoration_series_var(Image_restorationSeries) -> Double
+
+pub fn image_restoration_std(Array[Double]) -> Double
+
+pub fn image_restoration_var(Array[Double]) -> Double
+
+pub fn image_restoration_vector_add(Image_restorationVector, Image_restorationVector) -> Image_restorationVector
+
+pub fn image_restoration_vector_dist(Image_restorationVector, Image_restorationVector) -> Double
+
+pub fn image_restoration_vector_dot(Image_restorationVector, Image_restorationVector) -> Double
+
+pub fn image_restoration_vector_norm(Image_restorationVector) -> Double
+
+pub fn image_restoration_vector_normalize(Image_restorationVector) -> Image_restorationVector
+
+pub fn image_restoration_vector_scale(Image_restorationVector, Double) -> Image_restorationVector
+
+pub fn image_restoration_vector_sub(Image_restorationVector, Image_restorationVector) -> Image_restorationVector
+
+pub fn image_restoration_vector_to_string(Image_restorationVector) -> String
+
+pub fn image_restoration_vector_zero(Int32) -> Image_restorationVector
+
+// Errors
+
+// Types and methods
+pub struct Image_restorationMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Image_restorationPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Image_restorationSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Image_restorationVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

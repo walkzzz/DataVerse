@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/mobile_agent"
+
+// Values
+pub fn mobile_agent_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn mobile_agent_corr(Array[Double], Array[Double]) -> Double
+
+pub fn mobile_agent_cov(Array[Double], Array[Double]) -> Double
+
+pub fn mobile_agent_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn mobile_agent_mae(Array[Double], Array[Double]) -> Double
+
+pub fn mobile_agent_make_labeled_point(Double, Double, Int32) -> Mobile_agentPoint
+
+pub fn mobile_agent_make_matrix(Int32, Int32, Double) -> Mobile_agentMatrix
+
+pub fn mobile_agent_make_point(Double, Double) -> Mobile_agentPoint
+
+pub fn mobile_agent_make_series(Array[Double], String) -> Mobile_agentSeries
+
+pub fn mobile_agent_make_vector(Array[Double]) -> Mobile_agentVector
+
+pub fn mobile_agent_matrix_add(Mobile_agentMatrix, Mobile_agentMatrix) -> Mobile_agentMatrix
+
+pub fn mobile_agent_matrix_get(Mobile_agentMatrix, Int32, Int32) -> Double
+
+pub fn mobile_agent_matrix_identity(Int32) -> Mobile_agentMatrix
+
+pub fn mobile_agent_matrix_multiply(Mobile_agentMatrix, Mobile_agentMatrix) -> Mobile_agentMatrix
+
+pub fn mobile_agent_matrix_norm(Mobile_agentMatrix) -> Double
+
+pub fn mobile_agent_matrix_scale(Mobile_agentMatrix, Double) -> Mobile_agentMatrix
+
+pub fn mobile_agent_matrix_to_string(Mobile_agentMatrix) -> String
+
+pub fn mobile_agent_matrix_trace(Mobile_agentMatrix) -> Double
+
+pub fn mobile_agent_matrix_transpose(Mobile_agentMatrix) -> Mobile_agentMatrix
+
+pub fn mobile_agent_mse(Array[Double], Array[Double]) -> Double
+
+pub fn mobile_agent_point_add(Mobile_agentPoint, Mobile_agentPoint) -> Mobile_agentPoint
+
+pub fn mobile_agent_point_dist(Mobile_agentPoint, Mobile_agentPoint) -> Double
+
+pub fn mobile_agent_point_dot(Mobile_agentPoint, Mobile_agentPoint) -> Double
+
+pub fn mobile_agent_point_label(Mobile_agentPoint) -> Int32
+
+pub fn mobile_agent_point_norm(Mobile_agentPoint) -> Double
+
+pub fn mobile_agent_point_scale(Mobile_agentPoint, Double) -> Mobile_agentPoint
+
+pub fn mobile_agent_point_sub(Mobile_agentPoint, Mobile_agentPoint) -> Mobile_agentPoint
+
+pub fn mobile_agent_point_to_string(Mobile_agentPoint) -> String
+
+pub fn mobile_agent_point_x(Mobile_agentPoint) -> Double
+
+pub fn mobile_agent_point_y(Mobile_agentPoint) -> Double
+
+pub fn mobile_agent_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn mobile_agent_r2(Array[Double], Array[Double]) -> Double
+
+pub fn mobile_agent_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn mobile_agent_series_add(Mobile_agentSeries, Mobile_agentSeries) -> Mobile_agentSeries
+
+pub fn mobile_agent_series_len(Mobile_agentSeries) -> Int32
+
+pub fn mobile_agent_series_max(Mobile_agentSeries) -> Double
+
+pub fn mobile_agent_series_mean(Mobile_agentSeries) -> Double
+
+pub fn mobile_agent_series_min(Mobile_agentSeries) -> Double
+
+pub fn mobile_agent_series_scale(Mobile_agentSeries, Double) -> Mobile_agentSeries
+
+pub fn mobile_agent_series_std(Mobile_agentSeries) -> Double
+
+pub fn mobile_agent_series_sum(Mobile_agentSeries) -> Double
+
+pub fn mobile_agent_series_to_string(Mobile_agentSeries) -> String
+
+pub fn mobile_agent_series_var(Mobile_agentSeries) -> Double
+
+pub fn mobile_agent_std(Array[Double]) -> Double
+
+pub fn mobile_agent_var(Array[Double]) -> Double
+
+pub fn mobile_agent_vector_add(Mobile_agentVector, Mobile_agentVector) -> Mobile_agentVector
+
+pub fn mobile_agent_vector_dist(Mobile_agentVector, Mobile_agentVector) -> Double
+
+pub fn mobile_agent_vector_dot(Mobile_agentVector, Mobile_agentVector) -> Double
+
+pub fn mobile_agent_vector_norm(Mobile_agentVector) -> Double
+
+pub fn mobile_agent_vector_normalize(Mobile_agentVector) -> Mobile_agentVector
+
+pub fn mobile_agent_vector_scale(Mobile_agentVector, Double) -> Mobile_agentVector
+
+pub fn mobile_agent_vector_sub(Mobile_agentVector, Mobile_agentVector) -> Mobile_agentVector
+
+pub fn mobile_agent_vector_to_string(Mobile_agentVector) -> String
+
+pub fn mobile_agent_vector_zero(Int32) -> Mobile_agentVector
+
+// Errors
+
+// Types and methods
+pub struct Mobile_agentMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Mobile_agentPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Mobile_agentSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Mobile_agentVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

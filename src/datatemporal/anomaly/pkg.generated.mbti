@@ -1,0 +1,126 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/anomaly"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn anomaly_id() -> String
+
+pub fn anomaly_report(Array[AnomalyResult]) -> String
+
+pub fn anomaly_score(Array[Double], Int32) -> Double
+
+pub fn anomaly_threshold(Array[Double], Double) -> Double
+
+pub fn change_point_detect(Array[Double], Int32) -> Array[Int32]
+
+pub fn classify_anomaly(Double) -> AnomalySeverity
+
+pub fn collective_anomaly(Array[Double], Int32, Double) -> Array[Int32]
+
+pub fn contextual_anomaly(Array[Double], Array[Double], Double) -> Array[Int32]
+
+pub fn cusum_test(Array[Double], Double, Double) -> Array[Int32]
+
+pub fn density_based_anomaly(Array[Double], Int32, Double) -> Double
+
+pub fn dip_detect(Array[Double], Double) -> Array[Int32]
+
+pub fn distance_based_anomaly(Array[Double], Int32, Double) -> Bool
+
+pub fn exponential_smoothing_anomaly(Array[Double], Double, Double) -> Array[Int32]
+
+pub fn iqr_anomaly(Array[Double], Double) -> Array[Int32]
+
+pub fn isolation_forest_score(Array[Double], Int32) -> Double
+
+pub fn level_shift_anomaly(Array[Double], Int32, Double) -> Array[Int32]
+
+pub fn local_outlier_factor(Array[Double], Int32, Int32) -> Double
+
+pub fn mad_(Array[Double]) -> Double
+
+pub fn make_anomaly_result(Int32, Double, Double, AnomalyType) -> AnomalyResult
+
+pub fn mean_(Array[Double]) -> Double
+
+pub fn median_(Array[Double]) -> Double
+
+pub fn modified_z_score(Array[Double], Double) -> Array[Int32]
+
+pub fn moving_average_anomaly(Array[Double], Int32, Double) -> Array[Int32]
+
+pub fn page_hinkley_test(Array[Double], Double, Double) -> Array[Int32]
+
+pub fn pattern_anomaly(Array[Double], Array[Double], Double) -> Array[Int32]
+
+pub fn percentile_(Array[Double], Double) -> Double
+
+pub fn point_anomaly(Array[Double], Double) -> Array[AnomalyResult]
+
+pub fn range_anomaly(Array[Double], Double, Double) -> Array[Int32]
+
+pub fn rule_based_anomaly(Array[Double], Double, Double) -> Array[Int32]
+
+pub fn seasonal_anomaly(Array[Double], Int32, Double) -> Array[Int32]
+
+pub fn spike_detect(Array[Double], Double) -> Array[Int32]
+
+pub fn sqrt_(Double) -> Double
+
+pub fn statistical_anomaly(Array[Double], Double) -> Array[AnomalyResult]
+
+pub fn std_dev_(Array[Double]) -> Double
+
+pub fn trend_anomaly(Array[Double], Int32, Double) -> Array[Int32]
+
+pub fn z_score_anomaly(Array[Double], Double) -> Array[Int32]
+
+// Errors
+
+// Types and methods
+pub struct AnomalyConfig {
+  threshold : Double
+  window_size : Int32
+  sensitivity : Double
+} derive(Eq, @debug.Debug)
+pub fn AnomalyConfig::equal(Self, Self) -> Bool
+pub fn AnomalyConfig::not_equal(Self, Self) -> Bool
+pub fn AnomalyConfig::to_repr(Self) -> @debug.Repr
+
+pub struct AnomalyResult {
+  index : Int32
+  value : Double
+  score : Double
+  anomaly_type : AnomalyType
+  severity : AnomalySeverity
+} derive(Eq, @debug.Debug)
+pub fn AnomalyResult::equal(Self, Self) -> Bool
+pub fn AnomalyResult::not_equal(Self, Self) -> Bool
+pub fn AnomalyResult::to_repr(Self) -> @debug.Repr
+
+pub(all) enum AnomalySeverity {
+  Low
+  Medium
+  High
+  Critical
+} derive(Eq, @debug.Debug)
+pub fn AnomalySeverity::equal(Self, Self) -> Bool
+pub fn AnomalySeverity::not_equal(Self, Self) -> Bool
+pub fn AnomalySeverity::to_repr(Self) -> @debug.Repr
+
+pub(all) enum AnomalyType {
+  PointAnomaly
+  ContextualAnomaly
+  CollectiveAnomaly
+  PatternAnomaly
+} derive(Eq, @debug.Debug)
+pub fn AnomalyType::equal(Self, Self) -> Bool
+pub fn AnomalyType::not_equal(Self, Self) -> Bool
+pub fn AnomalyType::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

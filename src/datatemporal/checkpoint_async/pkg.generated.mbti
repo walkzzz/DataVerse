@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/checkpoint_async"
+
+// Values
+pub fn checkpoint_async_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn checkpoint_async_corr(Array[Double], Array[Double]) -> Double
+
+pub fn checkpoint_async_cov(Array[Double], Array[Double]) -> Double
+
+pub fn checkpoint_async_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn checkpoint_async_mae(Array[Double], Array[Double]) -> Double
+
+pub fn checkpoint_async_make_labeled_point(Double, Double, Int32) -> Checkpoint_asyncPoint
+
+pub fn checkpoint_async_make_matrix(Int32, Int32, Double) -> Checkpoint_asyncMatrix
+
+pub fn checkpoint_async_make_point(Double, Double) -> Checkpoint_asyncPoint
+
+pub fn checkpoint_async_make_series(Array[Double], String) -> Checkpoint_asyncSeries
+
+pub fn checkpoint_async_make_vector(Array[Double]) -> Checkpoint_asyncVector
+
+pub fn checkpoint_async_matrix_add(Checkpoint_asyncMatrix, Checkpoint_asyncMatrix) -> Checkpoint_asyncMatrix
+
+pub fn checkpoint_async_matrix_get(Checkpoint_asyncMatrix, Int32, Int32) -> Double
+
+pub fn checkpoint_async_matrix_identity(Int32) -> Checkpoint_asyncMatrix
+
+pub fn checkpoint_async_matrix_multiply(Checkpoint_asyncMatrix, Checkpoint_asyncMatrix) -> Checkpoint_asyncMatrix
+
+pub fn checkpoint_async_matrix_norm(Checkpoint_asyncMatrix) -> Double
+
+pub fn checkpoint_async_matrix_scale(Checkpoint_asyncMatrix, Double) -> Checkpoint_asyncMatrix
+
+pub fn checkpoint_async_matrix_to_string(Checkpoint_asyncMatrix) -> String
+
+pub fn checkpoint_async_matrix_trace(Checkpoint_asyncMatrix) -> Double
+
+pub fn checkpoint_async_matrix_transpose(Checkpoint_asyncMatrix) -> Checkpoint_asyncMatrix
+
+pub fn checkpoint_async_mse(Array[Double], Array[Double]) -> Double
+
+pub fn checkpoint_async_point_add(Checkpoint_asyncPoint, Checkpoint_asyncPoint) -> Checkpoint_asyncPoint
+
+pub fn checkpoint_async_point_dist(Checkpoint_asyncPoint, Checkpoint_asyncPoint) -> Double
+
+pub fn checkpoint_async_point_dot(Checkpoint_asyncPoint, Checkpoint_asyncPoint) -> Double
+
+pub fn checkpoint_async_point_label(Checkpoint_asyncPoint) -> Int32
+
+pub fn checkpoint_async_point_norm(Checkpoint_asyncPoint) -> Double
+
+pub fn checkpoint_async_point_scale(Checkpoint_asyncPoint, Double) -> Checkpoint_asyncPoint
+
+pub fn checkpoint_async_point_sub(Checkpoint_asyncPoint, Checkpoint_asyncPoint) -> Checkpoint_asyncPoint
+
+pub fn checkpoint_async_point_to_string(Checkpoint_asyncPoint) -> String
+
+pub fn checkpoint_async_point_x(Checkpoint_asyncPoint) -> Double
+
+pub fn checkpoint_async_point_y(Checkpoint_asyncPoint) -> Double
+
+pub fn checkpoint_async_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn checkpoint_async_r2(Array[Double], Array[Double]) -> Double
+
+pub fn checkpoint_async_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn checkpoint_async_series_add(Checkpoint_asyncSeries, Checkpoint_asyncSeries) -> Checkpoint_asyncSeries
+
+pub fn checkpoint_async_series_len(Checkpoint_asyncSeries) -> Int32
+
+pub fn checkpoint_async_series_max(Checkpoint_asyncSeries) -> Double
+
+pub fn checkpoint_async_series_mean(Checkpoint_asyncSeries) -> Double
+
+pub fn checkpoint_async_series_min(Checkpoint_asyncSeries) -> Double
+
+pub fn checkpoint_async_series_scale(Checkpoint_asyncSeries, Double) -> Checkpoint_asyncSeries
+
+pub fn checkpoint_async_series_std(Checkpoint_asyncSeries) -> Double
+
+pub fn checkpoint_async_series_sum(Checkpoint_asyncSeries) -> Double
+
+pub fn checkpoint_async_series_to_string(Checkpoint_asyncSeries) -> String
+
+pub fn checkpoint_async_series_var(Checkpoint_asyncSeries) -> Double
+
+pub fn checkpoint_async_std(Array[Double]) -> Double
+
+pub fn checkpoint_async_var(Array[Double]) -> Double
+
+pub fn checkpoint_async_vector_add(Checkpoint_asyncVector, Checkpoint_asyncVector) -> Checkpoint_asyncVector
+
+pub fn checkpoint_async_vector_dist(Checkpoint_asyncVector, Checkpoint_asyncVector) -> Double
+
+pub fn checkpoint_async_vector_dot(Checkpoint_asyncVector, Checkpoint_asyncVector) -> Double
+
+pub fn checkpoint_async_vector_norm(Checkpoint_asyncVector) -> Double
+
+pub fn checkpoint_async_vector_normalize(Checkpoint_asyncVector) -> Checkpoint_asyncVector
+
+pub fn checkpoint_async_vector_scale(Checkpoint_asyncVector, Double) -> Checkpoint_asyncVector
+
+pub fn checkpoint_async_vector_sub(Checkpoint_asyncVector, Checkpoint_asyncVector) -> Checkpoint_asyncVector
+
+pub fn checkpoint_async_vector_to_string(Checkpoint_asyncVector) -> String
+
+pub fn checkpoint_async_vector_zero(Int32) -> Checkpoint_asyncVector
+
+// Errors
+
+// Types and methods
+pub struct Checkpoint_asyncMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Checkpoint_asyncPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Checkpoint_asyncSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Checkpoint_asyncVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

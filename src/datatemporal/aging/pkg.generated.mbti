@@ -1,0 +1,30 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/aging"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn aging_id() -> String
+
+pub fn aging_score(Array[Double], AgingConfig) -> Double
+
+pub fn aging_weight(Double, AgingConfig) -> Double
+
+pub fn make_aging_config(Double, Double) -> AgingConfig
+
+// Errors
+
+// Types and methods
+pub struct AgingConfig {
+  half_life_days : Double
+  reference_time_days : Double
+} derive(Eq, @debug.Debug)
+pub fn AgingConfig::equal(Self, Self) -> Bool
+pub fn AgingConfig::not_equal(Self, Self) -> Bool
+pub fn AgingConfig::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/encode_avro"
+
+// Values
+pub fn encode_avro_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn encode_avro_corr(Array[Double], Array[Double]) -> Double
+
+pub fn encode_avro_cov(Array[Double], Array[Double]) -> Double
+
+pub fn encode_avro_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_avro_mae(Array[Double], Array[Double]) -> Double
+
+pub fn encode_avro_make_labeled_point(Double, Double, Int32) -> Encode_avroPoint
+
+pub fn encode_avro_make_matrix(Int32, Int32, Double) -> Encode_avroMatrix
+
+pub fn encode_avro_make_point(Double, Double) -> Encode_avroPoint
+
+pub fn encode_avro_make_series(Array[Double], String) -> Encode_avroSeries
+
+pub fn encode_avro_make_vector(Array[Double]) -> Encode_avroVector
+
+pub fn encode_avro_matrix_add(Encode_avroMatrix, Encode_avroMatrix) -> Encode_avroMatrix
+
+pub fn encode_avro_matrix_get(Encode_avroMatrix, Int32, Int32) -> Double
+
+pub fn encode_avro_matrix_identity(Int32) -> Encode_avroMatrix
+
+pub fn encode_avro_matrix_multiply(Encode_avroMatrix, Encode_avroMatrix) -> Encode_avroMatrix
+
+pub fn encode_avro_matrix_norm(Encode_avroMatrix) -> Double
+
+pub fn encode_avro_matrix_scale(Encode_avroMatrix, Double) -> Encode_avroMatrix
+
+pub fn encode_avro_matrix_to_string(Encode_avroMatrix) -> String
+
+pub fn encode_avro_matrix_trace(Encode_avroMatrix) -> Double
+
+pub fn encode_avro_matrix_transpose(Encode_avroMatrix) -> Encode_avroMatrix
+
+pub fn encode_avro_mse(Array[Double], Array[Double]) -> Double
+
+pub fn encode_avro_point_add(Encode_avroPoint, Encode_avroPoint) -> Encode_avroPoint
+
+pub fn encode_avro_point_dist(Encode_avroPoint, Encode_avroPoint) -> Double
+
+pub fn encode_avro_point_dot(Encode_avroPoint, Encode_avroPoint) -> Double
+
+pub fn encode_avro_point_label(Encode_avroPoint) -> Int32
+
+pub fn encode_avro_point_norm(Encode_avroPoint) -> Double
+
+pub fn encode_avro_point_scale(Encode_avroPoint, Double) -> Encode_avroPoint
+
+pub fn encode_avro_point_sub(Encode_avroPoint, Encode_avroPoint) -> Encode_avroPoint
+
+pub fn encode_avro_point_to_string(Encode_avroPoint) -> String
+
+pub fn encode_avro_point_x(Encode_avroPoint) -> Double
+
+pub fn encode_avro_point_y(Encode_avroPoint) -> Double
+
+pub fn encode_avro_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_avro_r2(Array[Double], Array[Double]) -> Double
+
+pub fn encode_avro_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_avro_series_add(Encode_avroSeries, Encode_avroSeries) -> Encode_avroSeries
+
+pub fn encode_avro_series_len(Encode_avroSeries) -> Int32
+
+pub fn encode_avro_series_max(Encode_avroSeries) -> Double
+
+pub fn encode_avro_series_mean(Encode_avroSeries) -> Double
+
+pub fn encode_avro_series_min(Encode_avroSeries) -> Double
+
+pub fn encode_avro_series_scale(Encode_avroSeries, Double) -> Encode_avroSeries
+
+pub fn encode_avro_series_std(Encode_avroSeries) -> Double
+
+pub fn encode_avro_series_sum(Encode_avroSeries) -> Double
+
+pub fn encode_avro_series_to_string(Encode_avroSeries) -> String
+
+pub fn encode_avro_series_var(Encode_avroSeries) -> Double
+
+pub fn encode_avro_std(Array[Double]) -> Double
+
+pub fn encode_avro_var(Array[Double]) -> Double
+
+pub fn encode_avro_vector_add(Encode_avroVector, Encode_avroVector) -> Encode_avroVector
+
+pub fn encode_avro_vector_dist(Encode_avroVector, Encode_avroVector) -> Double
+
+pub fn encode_avro_vector_dot(Encode_avroVector, Encode_avroVector) -> Double
+
+pub fn encode_avro_vector_norm(Encode_avroVector) -> Double
+
+pub fn encode_avro_vector_normalize(Encode_avroVector) -> Encode_avroVector
+
+pub fn encode_avro_vector_scale(Encode_avroVector, Double) -> Encode_avroVector
+
+pub fn encode_avro_vector_sub(Encode_avroVector, Encode_avroVector) -> Encode_avroVector
+
+pub fn encode_avro_vector_to_string(Encode_avroVector) -> String
+
+pub fn encode_avro_vector_zero(Int32) -> Encode_avroVector
+
+// Errors
+
+// Types and methods
+pub struct Encode_avroMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Encode_avroPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Encode_avroSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Encode_avroVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

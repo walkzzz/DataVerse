@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_index_btree"
+
+// Values
+pub fn db_index_btree_buffer_make(Int32) -> DbindexbtreeBuffer
+
+pub fn db_index_btree_cluster_make(Int32) -> DbindexbtreeCluster
+
+pub fn db_index_btree_cursor_make(Int32) -> DbindexbtreeCursor
+
+pub fn db_index_btree_edge_make(Int32) -> DbindexbtreeEdge
+
+pub fn db_index_btree_frame_make(Int32) -> DbindexbtreeFrame
+
+pub fn db_index_btree_graphn_make(Int32) -> DbindexbtreeGraphN
+
+pub fn db_index_btree_layer_make(Int32) -> DbindexbtreeLayer
+
+pub fn db_index_btree_make_matrix(Int32, Int32, Double) -> DbindexbtreeMatrix
+
+pub fn db_index_btree_make_point(Double, Double) -> DbindexbtreePoint
+
+pub fn db_index_btree_make_point3(Double, Double, Double) -> DbindexbtreePoint
+
+pub fn db_index_btree_make_series(Array[Double], String) -> DbindexbtreeSeries
+
+pub fn db_index_btree_make_vector(Array[Double]) -> DbindexbtreeVector
+
+pub fn db_index_btree_matrix_identity(Int32) -> DbindexbtreeMatrix
+
+pub fn db_index_btree_model_make(Int32) -> DbindexbtreeModel
+
+pub fn db_index_btree_node_make(Int32) -> DbindexbtreeNode
+
+pub fn db_index_btree_path_make(Int32) -> DbindexbtreePath
+
+pub fn db_index_btree_range_make(Int32) -> DbindexbtreeRange
+
+pub fn db_index_btree_slice_make(Int32) -> DbindexbtreeSlice
+
+pub fn db_index_btree_table_make(Int32) -> DbindexbtreeTable
+
+pub fn db_index_btree_vector_zero(Int32) -> DbindexbtreeVector
+
+pub fn db_index_btree_view_make(Int32) -> DbindexbtreeView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbindexbtreeBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbtreeBuffer::add(Self, Self) -> Self
+pub fn DbindexbtreeBuffer::copy(Self) -> Self
+pub fn DbindexbtreeBuffer::fill(Self, Double) -> Self
+pub fn DbindexbtreeBuffer::get(Self, Int32) -> Double
+pub fn DbindexbtreeBuffer::len(Self) -> Int32
+pub fn DbindexbtreeBuffer::max(Self) -> Double
+pub fn DbindexbtreeBuffer::mean(Self) -> Double
+pub fn DbindexbtreeBuffer::min(Self) -> Double
+pub fn DbindexbtreeBuffer::scale(Self, Double) -> Self
+pub fn DbindexbtreeBuffer::set(Self, Int32, Double) -> Self
+pub fn DbindexbtreeBuffer::sum(Self) -> Double
+pub fn DbindexbtreeBuffer::to_string(Self) -> String
+
+pub(all) struct DbindexbtreeCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbtreeCluster::add(Self, Self) -> Self
+pub fn DbindexbtreeCluster::copy(Self) -> Self
+pub fn DbindexbtreeCluster::fill(Self, Double) -> Self
+pub fn DbindexbtreeCluster::get(Self, Int32) -> Double
+pub fn DbindexbtreeCluster::len(Self) -> Int32
+pub fn DbindexbtreeCluster::max(Self) -> Double
+pub fn DbindexbtreeCluster::mean(Self) -> Double
+pub fn DbindexbtreeCluster::min(Self) -> Double
+pub fn DbindexbtreeCluster::scale(Self, Double) -> Self
+pub fn DbindexbtreeCluster::set(Self, Int32, Double) -> Self
+pub fn DbindexbtreeCluster::sum(Self) -> Double
+pub fn DbindexbtreeCluster::to_string(Self) -> String
+
+pub(all) struct DbindexbtreeCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbtreeCursor::add(Self, Self) -> Self
+pub fn DbindexbtreeCursor::copy(Self) -> Self
+pub fn DbindexbtreeCursor::fill(Self, Double) -> Self
+pub fn DbindexbtreeCursor::get(Self, Int32) -> Double
+pub fn DbindexbtreeCursor::len(Self) -> Int32
+pub fn DbindexbtreeCursor::max(Self) -> Double
+pub fn DbindexbtreeCursor::mean(Self) -> Double
+pub fn DbindexbtreeCursor::min(Self) -> Double
+pub fn DbindexbtreeCursor::scale(Self, Double) -> Self
+pub fn DbindexbtreeCursor::set(Self, Int32, Double) -> Self
+pub fn DbindexbtreeCursor::sum(Self) -> Double
+pub fn DbindexbtreeCursor::to_string(Self) -> String
+
+pub(all) struct DbindexbtreeEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbtreeEdge::add(Self, Self) -> Self
+pub fn DbindexbtreeEdge::copy(Self) -> Self
+pub fn DbindexbtreeEdge::fill(Self, Double) -> Self
+pub fn DbindexbtreeEdge::get(Self, Int32) -> Double
+pub fn DbindexbtreeEdge::len(Self) -> Int32
+pub fn DbindexbtreeEdge::max(Self) -> Double
+pub fn DbindexbtreeEdge::mean(Self) -> Double
+pub fn DbindexbtreeEdge::min(Self) -> Double
+pub fn DbindexbtreeEdge::scale(Self, Double) -> Self
+pub fn DbindexbtreeEdge::set(Self, Int32, Double) -> Self
+pub fn DbindexbtreeEdge::sum(Self) -> Double
+pub fn DbindexbtreeEdge::to_string(Self) -> String
+
+pub(all) struct DbindexbtreeFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbtreeFrame::add(Self, Self) -> Self
+pub fn DbindexbtreeFrame::copy(Self) -> Self
+pub fn DbindexbtreeFrame::fill(Self, Double) -> Self
+pub fn DbindexbtreeFrame::get(Self, Int32) -> Double
+pub fn DbindexbtreeFrame::len(Self) -> Int32
+pub fn DbindexbtreeFrame::max(Self) -> Double
+pub fn DbindexbtreeFrame::mean(Self) -> Double
+pub fn DbindexbtreeFrame::min(Self) -> Double
+pub fn DbindexbtreeFrame::scale(Self, Double) -> Self
+pub fn DbindexbtreeFrame::set(Self, Int32, Double) -> Self
+pub fn DbindexbtreeFrame::sum(Self) -> Double
+pub fn DbindexbtreeFrame::to_string(Self) -> String
+
+pub(all) struct DbindexbtreeGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbtreeGraphN::add(Self, Self) -> Self
+pub fn DbindexbtreeGraphN::copy(Self) -> Self
+pub fn DbindexbtreeGraphN::fill(Self, Double) -> Self
+pub fn DbindexbtreeGraphN::get(Self, Int32) -> Double
+pub fn DbindexbtreeGraphN::len(Self) -> Int32
+pub fn DbindexbtreeGraphN::max(Self) -> Double
+pub fn DbindexbtreeGraphN::mean(Self) -> Double
+pub fn DbindexbtreeGraphN::min(Self) -> Double
+pub fn DbindexbtreeGraphN::scale(Self, Double) -> Self
+pub fn DbindexbtreeGraphN::set(Self, Int32, Double) -> Self
+pub fn DbindexbtreeGraphN::sum(Self) -> Double
+pub fn DbindexbtreeGraphN::to_string(Self) -> String
+
+pub(all) struct DbindexbtreeLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbtreeLayer::add(Self, Self) -> Self
+pub fn DbindexbtreeLayer::copy(Self) -> Self
+pub fn DbindexbtreeLayer::fill(Self, Double) -> Self
+pub fn DbindexbtreeLayer::get(Self, Int32) -> Double
+pub fn DbindexbtreeLayer::len(Self) -> Int32
+pub fn DbindexbtreeLayer::max(Self) -> Double
+pub fn DbindexbtreeLayer::mean(Self) -> Double
+pub fn DbindexbtreeLayer::min(Self) -> Double
+pub fn DbindexbtreeLayer::scale(Self, Double) -> Self
+pub fn DbindexbtreeLayer::set(Self, Int32, Double) -> Self
+pub fn DbindexbtreeLayer::sum(Self) -> Double
+pub fn DbindexbtreeLayer::to_string(Self) -> String
+
+pub(all) struct DbindexbtreeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbindexbtreeMatrix::add(Self, Self) -> Self
+pub fn DbindexbtreeMatrix::det(Self) -> Double
+pub fn DbindexbtreeMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbindexbtreeMatrix::multiply(Self, Self) -> Self
+pub fn DbindexbtreeMatrix::norm(Self) -> Double
+pub fn DbindexbtreeMatrix::scale(Self, Double) -> Self
+pub fn DbindexbtreeMatrix::to_string(Self) -> String
+pub fn DbindexbtreeMatrix::trace(Self) -> Double
+pub fn DbindexbtreeMatrix::transpose(Self) -> Self
+
+pub(all) struct DbindexbtreeModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbtreeModel::add(Self, Self) -> Self
+pub fn DbindexbtreeModel::copy(Self) -> Self
+pub fn DbindexbtreeModel::fill(Self, Double) -> Self
+pub fn DbindexbtreeModel::get(Self, Int32) -> Double
+pub fn DbindexbtreeModel::len(Self) -> Int32
+pub fn DbindexbtreeModel::max(Self) -> Double
+pub fn DbindexbtreeModel::mean(Self) -> Double
+pub fn DbindexbtreeModel::min(Self) -> Double
+pub fn DbindexbtreeModel::scale(Self, Double) -> Self
+pub fn DbindexbtreeModel::set(Self, Int32, Double) -> Self
+pub fn DbindexbtreeModel::sum(Self) -> Double
+pub fn DbindexbtreeModel::to_string(Self) -> String
+
+pub(all) struct DbindexbtreeNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbtreeNode::add(Self, Self) -> Self
+pub fn DbindexbtreeNode::copy(Self) -> Self
+pub fn DbindexbtreeNode::fill(Self, Double) -> Self
+pub fn DbindexbtreeNode::get(Self, Int32) -> Double
+pub fn DbindexbtreeNode::len(Self) -> Int32
+pub fn DbindexbtreeNode::max(Self) -> Double
+pub fn DbindexbtreeNode::mean(Self) -> Double
+pub fn DbindexbtreeNode::min(Self) -> Double
+pub fn DbindexbtreeNode::scale(Self, Double) -> Self
+pub fn DbindexbtreeNode::set(Self, Int32, Double) -> Self
+pub fn DbindexbtreeNode::sum(Self) -> Double
+pub fn DbindexbtreeNode::to_string(Self) -> String
+
+pub(all) struct DbindexbtreePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbtreePath::add(Self, Self) -> Self
+pub fn DbindexbtreePath::copy(Self) -> Self
+pub fn DbindexbtreePath::fill(Self, Double) -> Self
+pub fn DbindexbtreePath::get(Self, Int32) -> Double
+pub fn DbindexbtreePath::len(Self) -> Int32
+pub fn DbindexbtreePath::max(Self) -> Double
+pub fn DbindexbtreePath::mean(Self) -> Double
+pub fn DbindexbtreePath::min(Self) -> Double
+pub fn DbindexbtreePath::scale(Self, Double) -> Self
+pub fn DbindexbtreePath::set(Self, Int32, Double) -> Self
+pub fn DbindexbtreePath::sum(Self) -> Double
+pub fn DbindexbtreePath::to_string(Self) -> String
+
+pub(all) struct DbindexbtreePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbindexbtreePoint::add(Self, Self) -> Self
+pub fn DbindexbtreePoint::cross(Self, Self) -> Self
+pub fn DbindexbtreePoint::dist(Self, Self) -> Double
+pub fn DbindexbtreePoint::dot(Self, Self) -> Double
+pub fn DbindexbtreePoint::label(Self) -> Int32
+pub fn DbindexbtreePoint::lerp(Self, Self, Double) -> Self
+pub fn DbindexbtreePoint::mid(Self, Self) -> Self
+pub fn DbindexbtreePoint::negate(Self) -> Self
+pub fn DbindexbtreePoint::norm(Self) -> Double
+pub fn DbindexbtreePoint::normalize(Self) -> Self
+pub fn DbindexbtreePoint::scale(Self, Double) -> Self
+pub fn DbindexbtreePoint::sub(Self, Self) -> Self
+pub fn DbindexbtreePoint::to_string(Self) -> String
+pub fn DbindexbtreePoint::x(Self) -> Double
+pub fn DbindexbtreePoint::y(Self) -> Double
+pub fn DbindexbtreePoint::z(Self) -> Double
+
+pub(all) struct DbindexbtreeRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbtreeRange::add(Self, Self) -> Self
+pub fn DbindexbtreeRange::copy(Self) -> Self
+pub fn DbindexbtreeRange::fill(Self, Double) -> Self
+pub fn DbindexbtreeRange::get(Self, Int32) -> Double
+pub fn DbindexbtreeRange::len(Self) -> Int32
+pub fn DbindexbtreeRange::max(Self) -> Double
+pub fn DbindexbtreeRange::mean(Self) -> Double
+pub fn DbindexbtreeRange::min(Self) -> Double
+pub fn DbindexbtreeRange::scale(Self, Double) -> Self
+pub fn DbindexbtreeRange::set(Self, Int32, Double) -> Self
+pub fn DbindexbtreeRange::sum(Self) -> Double
+pub fn DbindexbtreeRange::to_string(Self) -> String
+
+pub(all) struct DbindexbtreeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbindexbtreeSeries::add(Self, Self) -> Self
+pub fn DbindexbtreeSeries::cumsum(Self) -> Self
+pub fn DbindexbtreeSeries::len(Self) -> Int32
+pub fn DbindexbtreeSeries::max(Self) -> Double
+pub fn DbindexbtreeSeries::mean(Self) -> Double
+pub fn DbindexbtreeSeries::median(Self) -> Double
+pub fn DbindexbtreeSeries::min(Self) -> Double
+pub fn DbindexbtreeSeries::normalize(Self) -> Self
+pub fn DbindexbtreeSeries::range(Self) -> Double
+pub fn DbindexbtreeSeries::scale(Self, Double) -> Self
+pub fn DbindexbtreeSeries::std(Self) -> Double
+pub fn DbindexbtreeSeries::sub(Self, Self) -> Self
+pub fn DbindexbtreeSeries::sum(Self) -> Double
+pub fn DbindexbtreeSeries::to_string(Self) -> String
+pub fn DbindexbtreeSeries::variance(Self) -> Double
+
+pub(all) struct DbindexbtreeSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbtreeSlice::add(Self, Self) -> Self
+pub fn DbindexbtreeSlice::copy(Self) -> Self
+pub fn DbindexbtreeSlice::fill(Self, Double) -> Self
+pub fn DbindexbtreeSlice::get(Self, Int32) -> Double
+pub fn DbindexbtreeSlice::len(Self) -> Int32
+pub fn DbindexbtreeSlice::max(Self) -> Double
+pub fn DbindexbtreeSlice::mean(Self) -> Double
+pub fn DbindexbtreeSlice::min(Self) -> Double
+pub fn DbindexbtreeSlice::scale(Self, Double) -> Self
+pub fn DbindexbtreeSlice::set(Self, Int32, Double) -> Self
+pub fn DbindexbtreeSlice::sum(Self) -> Double
+pub fn DbindexbtreeSlice::to_string(Self) -> String
+
+pub(all) struct DbindexbtreeTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbtreeTable::add(Self, Self) -> Self
+pub fn DbindexbtreeTable::copy(Self) -> Self
+pub fn DbindexbtreeTable::fill(Self, Double) -> Self
+pub fn DbindexbtreeTable::get(Self, Int32) -> Double
+pub fn DbindexbtreeTable::len(Self) -> Int32
+pub fn DbindexbtreeTable::max(Self) -> Double
+pub fn DbindexbtreeTable::mean(Self) -> Double
+pub fn DbindexbtreeTable::min(Self) -> Double
+pub fn DbindexbtreeTable::scale(Self, Double) -> Self
+pub fn DbindexbtreeTable::set(Self, Int32, Double) -> Self
+pub fn DbindexbtreeTable::sum(Self) -> Double
+pub fn DbindexbtreeTable::to_string(Self) -> String
+
+pub(all) struct DbindexbtreeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbindexbtreeVector::add(Self, Self) -> Self
+pub fn DbindexbtreeVector::dist(Self, Self) -> Double
+pub fn DbindexbtreeVector::dot(Self, Self) -> Double
+pub fn DbindexbtreeVector::norm(Self) -> Double
+pub fn DbindexbtreeVector::normalize(Self) -> Self
+pub fn DbindexbtreeVector::scale(Self, Double) -> Self
+pub fn DbindexbtreeVector::sub(Self, Self) -> Self
+pub fn DbindexbtreeVector::to_string(Self) -> String
+
+pub(all) struct DbindexbtreeView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexbtreeView::add(Self, Self) -> Self
+pub fn DbindexbtreeView::copy(Self) -> Self
+pub fn DbindexbtreeView::fill(Self, Double) -> Self
+pub fn DbindexbtreeView::get(Self, Int32) -> Double
+pub fn DbindexbtreeView::len(Self) -> Int32
+pub fn DbindexbtreeView::max(Self) -> Double
+pub fn DbindexbtreeView::mean(Self) -> Double
+pub fn DbindexbtreeView::min(Self) -> Double
+pub fn DbindexbtreeView::scale(Self, Double) -> Self
+pub fn DbindexbtreeView::set(Self, Int32, Double) -> Self
+pub fn DbindexbtreeView::sum(Self) -> Double
+pub fn DbindexbtreeView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

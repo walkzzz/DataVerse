@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/bio_struct_contact"
+
+// Values
+pub fn bio_struct_contact_buffer_make(Int32) -> BiostructcontactBuffer
+
+pub fn bio_struct_contact_cluster_make(Int32) -> BiostructcontactCluster
+
+pub fn bio_struct_contact_cursor_make(Int32) -> BiostructcontactCursor
+
+pub fn bio_struct_contact_edge_make(Int32) -> BiostructcontactEdge
+
+pub fn bio_struct_contact_frame_make(Int32) -> BiostructcontactFrame
+
+pub fn bio_struct_contact_graphn_make(Int32) -> BiostructcontactGraphN
+
+pub fn bio_struct_contact_layer_make(Int32) -> BiostructcontactLayer
+
+pub fn bio_struct_contact_make_matrix(Int32, Int32, Double) -> BiostructcontactMatrix
+
+pub fn bio_struct_contact_make_point(Double, Double) -> BiostructcontactPoint
+
+pub fn bio_struct_contact_make_point3(Double, Double, Double) -> BiostructcontactPoint
+
+pub fn bio_struct_contact_make_series(Array[Double], String) -> BiostructcontactSeries
+
+pub fn bio_struct_contact_make_vector(Array[Double]) -> BiostructcontactVector
+
+pub fn bio_struct_contact_matrix_identity(Int32) -> BiostructcontactMatrix
+
+pub fn bio_struct_contact_model_make(Int32) -> BiostructcontactModel
+
+pub fn bio_struct_contact_node_make(Int32) -> BiostructcontactNode
+
+pub fn bio_struct_contact_path_make(Int32) -> BiostructcontactPath
+
+pub fn bio_struct_contact_range_make(Int32) -> BiostructcontactRange
+
+pub fn bio_struct_contact_slice_make(Int32) -> BiostructcontactSlice
+
+pub fn bio_struct_contact_table_make(Int32) -> BiostructcontactTable
+
+pub fn bio_struct_contact_vector_zero(Int32) -> BiostructcontactVector
+
+pub fn bio_struct_contact_view_make(Int32) -> BiostructcontactView
+
+// Errors
+
+// Types and methods
+pub(all) struct BiostructcontactBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructcontactBuffer::add(Self, Self) -> Self
+pub fn BiostructcontactBuffer::copy(Self) -> Self
+pub fn BiostructcontactBuffer::fill(Self, Double) -> Self
+pub fn BiostructcontactBuffer::get(Self, Int32) -> Double
+pub fn BiostructcontactBuffer::len(Self) -> Int32
+pub fn BiostructcontactBuffer::max(Self) -> Double
+pub fn BiostructcontactBuffer::mean(Self) -> Double
+pub fn BiostructcontactBuffer::min(Self) -> Double
+pub fn BiostructcontactBuffer::scale(Self, Double) -> Self
+pub fn BiostructcontactBuffer::set(Self, Int32, Double) -> Self
+pub fn BiostructcontactBuffer::sum(Self) -> Double
+pub fn BiostructcontactBuffer::to_string(Self) -> String
+
+pub(all) struct BiostructcontactCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructcontactCluster::add(Self, Self) -> Self
+pub fn BiostructcontactCluster::copy(Self) -> Self
+pub fn BiostructcontactCluster::fill(Self, Double) -> Self
+pub fn BiostructcontactCluster::get(Self, Int32) -> Double
+pub fn BiostructcontactCluster::len(Self) -> Int32
+pub fn BiostructcontactCluster::max(Self) -> Double
+pub fn BiostructcontactCluster::mean(Self) -> Double
+pub fn BiostructcontactCluster::min(Self) -> Double
+pub fn BiostructcontactCluster::scale(Self, Double) -> Self
+pub fn BiostructcontactCluster::set(Self, Int32, Double) -> Self
+pub fn BiostructcontactCluster::sum(Self) -> Double
+pub fn BiostructcontactCluster::to_string(Self) -> String
+
+pub(all) struct BiostructcontactCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructcontactCursor::add(Self, Self) -> Self
+pub fn BiostructcontactCursor::copy(Self) -> Self
+pub fn BiostructcontactCursor::fill(Self, Double) -> Self
+pub fn BiostructcontactCursor::get(Self, Int32) -> Double
+pub fn BiostructcontactCursor::len(Self) -> Int32
+pub fn BiostructcontactCursor::max(Self) -> Double
+pub fn BiostructcontactCursor::mean(Self) -> Double
+pub fn BiostructcontactCursor::min(Self) -> Double
+pub fn BiostructcontactCursor::scale(Self, Double) -> Self
+pub fn BiostructcontactCursor::set(Self, Int32, Double) -> Self
+pub fn BiostructcontactCursor::sum(Self) -> Double
+pub fn BiostructcontactCursor::to_string(Self) -> String
+
+pub(all) struct BiostructcontactEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructcontactEdge::add(Self, Self) -> Self
+pub fn BiostructcontactEdge::copy(Self) -> Self
+pub fn BiostructcontactEdge::fill(Self, Double) -> Self
+pub fn BiostructcontactEdge::get(Self, Int32) -> Double
+pub fn BiostructcontactEdge::len(Self) -> Int32
+pub fn BiostructcontactEdge::max(Self) -> Double
+pub fn BiostructcontactEdge::mean(Self) -> Double
+pub fn BiostructcontactEdge::min(Self) -> Double
+pub fn BiostructcontactEdge::scale(Self, Double) -> Self
+pub fn BiostructcontactEdge::set(Self, Int32, Double) -> Self
+pub fn BiostructcontactEdge::sum(Self) -> Double
+pub fn BiostructcontactEdge::to_string(Self) -> String
+
+pub(all) struct BiostructcontactFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructcontactFrame::add(Self, Self) -> Self
+pub fn BiostructcontactFrame::copy(Self) -> Self
+pub fn BiostructcontactFrame::fill(Self, Double) -> Self
+pub fn BiostructcontactFrame::get(Self, Int32) -> Double
+pub fn BiostructcontactFrame::len(Self) -> Int32
+pub fn BiostructcontactFrame::max(Self) -> Double
+pub fn BiostructcontactFrame::mean(Self) -> Double
+pub fn BiostructcontactFrame::min(Self) -> Double
+pub fn BiostructcontactFrame::scale(Self, Double) -> Self
+pub fn BiostructcontactFrame::set(Self, Int32, Double) -> Self
+pub fn BiostructcontactFrame::sum(Self) -> Double
+pub fn BiostructcontactFrame::to_string(Self) -> String
+
+pub(all) struct BiostructcontactGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructcontactGraphN::add(Self, Self) -> Self
+pub fn BiostructcontactGraphN::copy(Self) -> Self
+pub fn BiostructcontactGraphN::fill(Self, Double) -> Self
+pub fn BiostructcontactGraphN::get(Self, Int32) -> Double
+pub fn BiostructcontactGraphN::len(Self) -> Int32
+pub fn BiostructcontactGraphN::max(Self) -> Double
+pub fn BiostructcontactGraphN::mean(Self) -> Double
+pub fn BiostructcontactGraphN::min(Self) -> Double
+pub fn BiostructcontactGraphN::scale(Self, Double) -> Self
+pub fn BiostructcontactGraphN::set(Self, Int32, Double) -> Self
+pub fn BiostructcontactGraphN::sum(Self) -> Double
+pub fn BiostructcontactGraphN::to_string(Self) -> String
+
+pub(all) struct BiostructcontactLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructcontactLayer::add(Self, Self) -> Self
+pub fn BiostructcontactLayer::copy(Self) -> Self
+pub fn BiostructcontactLayer::fill(Self, Double) -> Self
+pub fn BiostructcontactLayer::get(Self, Int32) -> Double
+pub fn BiostructcontactLayer::len(Self) -> Int32
+pub fn BiostructcontactLayer::max(Self) -> Double
+pub fn BiostructcontactLayer::mean(Self) -> Double
+pub fn BiostructcontactLayer::min(Self) -> Double
+pub fn BiostructcontactLayer::scale(Self, Double) -> Self
+pub fn BiostructcontactLayer::set(Self, Int32, Double) -> Self
+pub fn BiostructcontactLayer::sum(Self) -> Double
+pub fn BiostructcontactLayer::to_string(Self) -> String
+
+pub(all) struct BiostructcontactMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn BiostructcontactMatrix::add(Self, Self) -> Self
+pub fn BiostructcontactMatrix::det(Self) -> Double
+pub fn BiostructcontactMatrix::get(Self, Int32, Int32) -> Double
+pub fn BiostructcontactMatrix::multiply(Self, Self) -> Self
+pub fn BiostructcontactMatrix::norm(Self) -> Double
+pub fn BiostructcontactMatrix::scale(Self, Double) -> Self
+pub fn BiostructcontactMatrix::to_string(Self) -> String
+pub fn BiostructcontactMatrix::trace(Self) -> Double
+pub fn BiostructcontactMatrix::transpose(Self) -> Self
+
+pub(all) struct BiostructcontactModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructcontactModel::add(Self, Self) -> Self
+pub fn BiostructcontactModel::copy(Self) -> Self
+pub fn BiostructcontactModel::fill(Self, Double) -> Self
+pub fn BiostructcontactModel::get(Self, Int32) -> Double
+pub fn BiostructcontactModel::len(Self) -> Int32
+pub fn BiostructcontactModel::max(Self) -> Double
+pub fn BiostructcontactModel::mean(Self) -> Double
+pub fn BiostructcontactModel::min(Self) -> Double
+pub fn BiostructcontactModel::scale(Self, Double) -> Self
+pub fn BiostructcontactModel::set(Self, Int32, Double) -> Self
+pub fn BiostructcontactModel::sum(Self) -> Double
+pub fn BiostructcontactModel::to_string(Self) -> String
+
+pub(all) struct BiostructcontactNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructcontactNode::add(Self, Self) -> Self
+pub fn BiostructcontactNode::copy(Self) -> Self
+pub fn BiostructcontactNode::fill(Self, Double) -> Self
+pub fn BiostructcontactNode::get(Self, Int32) -> Double
+pub fn BiostructcontactNode::len(Self) -> Int32
+pub fn BiostructcontactNode::max(Self) -> Double
+pub fn BiostructcontactNode::mean(Self) -> Double
+pub fn BiostructcontactNode::min(Self) -> Double
+pub fn BiostructcontactNode::scale(Self, Double) -> Self
+pub fn BiostructcontactNode::set(Self, Int32, Double) -> Self
+pub fn BiostructcontactNode::sum(Self) -> Double
+pub fn BiostructcontactNode::to_string(Self) -> String
+
+pub(all) struct BiostructcontactPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructcontactPath::add(Self, Self) -> Self
+pub fn BiostructcontactPath::copy(Self) -> Self
+pub fn BiostructcontactPath::fill(Self, Double) -> Self
+pub fn BiostructcontactPath::get(Self, Int32) -> Double
+pub fn BiostructcontactPath::len(Self) -> Int32
+pub fn BiostructcontactPath::max(Self) -> Double
+pub fn BiostructcontactPath::mean(Self) -> Double
+pub fn BiostructcontactPath::min(Self) -> Double
+pub fn BiostructcontactPath::scale(Self, Double) -> Self
+pub fn BiostructcontactPath::set(Self, Int32, Double) -> Self
+pub fn BiostructcontactPath::sum(Self) -> Double
+pub fn BiostructcontactPath::to_string(Self) -> String
+
+pub(all) struct BiostructcontactPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn BiostructcontactPoint::add(Self, Self) -> Self
+pub fn BiostructcontactPoint::cross(Self, Self) -> Self
+pub fn BiostructcontactPoint::dist(Self, Self) -> Double
+pub fn BiostructcontactPoint::dot(Self, Self) -> Double
+pub fn BiostructcontactPoint::label(Self) -> Int32
+pub fn BiostructcontactPoint::lerp(Self, Self, Double) -> Self
+pub fn BiostructcontactPoint::mid(Self, Self) -> Self
+pub fn BiostructcontactPoint::negate(Self) -> Self
+pub fn BiostructcontactPoint::norm(Self) -> Double
+pub fn BiostructcontactPoint::normalize(Self) -> Self
+pub fn BiostructcontactPoint::scale(Self, Double) -> Self
+pub fn BiostructcontactPoint::sub(Self, Self) -> Self
+pub fn BiostructcontactPoint::to_string(Self) -> String
+pub fn BiostructcontactPoint::x(Self) -> Double
+pub fn BiostructcontactPoint::y(Self) -> Double
+pub fn BiostructcontactPoint::z(Self) -> Double
+
+pub(all) struct BiostructcontactRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructcontactRange::add(Self, Self) -> Self
+pub fn BiostructcontactRange::copy(Self) -> Self
+pub fn BiostructcontactRange::fill(Self, Double) -> Self
+pub fn BiostructcontactRange::get(Self, Int32) -> Double
+pub fn BiostructcontactRange::len(Self) -> Int32
+pub fn BiostructcontactRange::max(Self) -> Double
+pub fn BiostructcontactRange::mean(Self) -> Double
+pub fn BiostructcontactRange::min(Self) -> Double
+pub fn BiostructcontactRange::scale(Self, Double) -> Self
+pub fn BiostructcontactRange::set(Self, Int32, Double) -> Self
+pub fn BiostructcontactRange::sum(Self) -> Double
+pub fn BiostructcontactRange::to_string(Self) -> String
+
+pub(all) struct BiostructcontactSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn BiostructcontactSeries::add(Self, Self) -> Self
+pub fn BiostructcontactSeries::cumsum(Self) -> Self
+pub fn BiostructcontactSeries::len(Self) -> Int32
+pub fn BiostructcontactSeries::max(Self) -> Double
+pub fn BiostructcontactSeries::mean(Self) -> Double
+pub fn BiostructcontactSeries::median(Self) -> Double
+pub fn BiostructcontactSeries::min(Self) -> Double
+pub fn BiostructcontactSeries::normalize(Self) -> Self
+pub fn BiostructcontactSeries::range(Self) -> Double
+pub fn BiostructcontactSeries::scale(Self, Double) -> Self
+pub fn BiostructcontactSeries::std(Self) -> Double
+pub fn BiostructcontactSeries::sub(Self, Self) -> Self
+pub fn BiostructcontactSeries::sum(Self) -> Double
+pub fn BiostructcontactSeries::to_string(Self) -> String
+pub fn BiostructcontactSeries::variance(Self) -> Double
+
+pub(all) struct BiostructcontactSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructcontactSlice::add(Self, Self) -> Self
+pub fn BiostructcontactSlice::copy(Self) -> Self
+pub fn BiostructcontactSlice::fill(Self, Double) -> Self
+pub fn BiostructcontactSlice::get(Self, Int32) -> Double
+pub fn BiostructcontactSlice::len(Self) -> Int32
+pub fn BiostructcontactSlice::max(Self) -> Double
+pub fn BiostructcontactSlice::mean(Self) -> Double
+pub fn BiostructcontactSlice::min(Self) -> Double
+pub fn BiostructcontactSlice::scale(Self, Double) -> Self
+pub fn BiostructcontactSlice::set(Self, Int32, Double) -> Self
+pub fn BiostructcontactSlice::sum(Self) -> Double
+pub fn BiostructcontactSlice::to_string(Self) -> String
+
+pub(all) struct BiostructcontactTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructcontactTable::add(Self, Self) -> Self
+pub fn BiostructcontactTable::copy(Self) -> Self
+pub fn BiostructcontactTable::fill(Self, Double) -> Self
+pub fn BiostructcontactTable::get(Self, Int32) -> Double
+pub fn BiostructcontactTable::len(Self) -> Int32
+pub fn BiostructcontactTable::max(Self) -> Double
+pub fn BiostructcontactTable::mean(Self) -> Double
+pub fn BiostructcontactTable::min(Self) -> Double
+pub fn BiostructcontactTable::scale(Self, Double) -> Self
+pub fn BiostructcontactTable::set(Self, Int32, Double) -> Self
+pub fn BiostructcontactTable::sum(Self) -> Double
+pub fn BiostructcontactTable::to_string(Self) -> String
+
+pub(all) struct BiostructcontactVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn BiostructcontactVector::add(Self, Self) -> Self
+pub fn BiostructcontactVector::dist(Self, Self) -> Double
+pub fn BiostructcontactVector::dot(Self, Self) -> Double
+pub fn BiostructcontactVector::norm(Self) -> Double
+pub fn BiostructcontactVector::normalize(Self) -> Self
+pub fn BiostructcontactVector::scale(Self, Double) -> Self
+pub fn BiostructcontactVector::sub(Self, Self) -> Self
+pub fn BiostructcontactVector::to_string(Self) -> String
+
+pub(all) struct BiostructcontactView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructcontactView::add(Self, Self) -> Self
+pub fn BiostructcontactView::copy(Self) -> Self
+pub fn BiostructcontactView::fill(Self, Double) -> Self
+pub fn BiostructcontactView::get(Self, Int32) -> Double
+pub fn BiostructcontactView::len(Self) -> Int32
+pub fn BiostructcontactView::max(Self) -> Double
+pub fn BiostructcontactView::mean(Self) -> Double
+pub fn BiostructcontactView::min(Self) -> Double
+pub fn BiostructcontactView::scale(Self, Double) -> Self
+pub fn BiostructcontactView::set(Self, Int32, Double) -> Self
+pub fn BiostructcontactView::sum(Self) -> Double
+pub fn BiostructcontactView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,50 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/schema"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn empty() -> Schema
+
+pub fn field(String, FieldType) -> Field
+
+pub fn make(Array[Field]) -> Schema
+
+pub fn schema_id() -> String
+
+pub fn size(Schema) -> Int32
+
+// Errors
+
+// Types and methods
+pub struct Field {
+  name : String
+  field_type : FieldType
+} derive(Eq, @debug.Debug)
+pub fn Field::equal(Self, Self) -> Bool
+pub fn Field::not_equal(Self, Self) -> Bool
+pub fn Field::to_repr(Self) -> @debug.Repr
+
+pub(all) enum FieldType {
+  Text
+  Integer
+  Float
+  Boolean
+  Nested
+} derive(Eq, @debug.Debug)
+pub fn FieldType::equal(Self, Self) -> Bool
+pub fn FieldType::not_equal(Self, Self) -> Bool
+pub fn FieldType::to_repr(Self) -> @debug.Repr
+
+pub struct Schema {
+  fields : Array[Field]
+} derive(Eq, @debug.Debug)
+pub fn Schema::equal(Self, Self) -> Bool
+pub fn Schema::not_equal(Self, Self) -> Bool
+pub fn Schema::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

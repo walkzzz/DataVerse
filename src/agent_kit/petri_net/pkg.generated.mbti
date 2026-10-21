@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/petri_net"
+
+// Values
+pub fn petri_net_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn petri_net_corr(Array[Double], Array[Double]) -> Double
+
+pub fn petri_net_cov(Array[Double], Array[Double]) -> Double
+
+pub fn petri_net_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn petri_net_mae(Array[Double], Array[Double]) -> Double
+
+pub fn petri_net_make_labeled_point(Double, Double, Int32) -> Petri_netPoint
+
+pub fn petri_net_make_matrix(Int32, Int32, Double) -> Petri_netMatrix
+
+pub fn petri_net_make_point(Double, Double) -> Petri_netPoint
+
+pub fn petri_net_make_series(Array[Double], String) -> Petri_netSeries
+
+pub fn petri_net_make_vector(Array[Double]) -> Petri_netVector
+
+pub fn petri_net_matrix_add(Petri_netMatrix, Petri_netMatrix) -> Petri_netMatrix
+
+pub fn petri_net_matrix_get(Petri_netMatrix, Int32, Int32) -> Double
+
+pub fn petri_net_matrix_identity(Int32) -> Petri_netMatrix
+
+pub fn petri_net_matrix_multiply(Petri_netMatrix, Petri_netMatrix) -> Petri_netMatrix
+
+pub fn petri_net_matrix_norm(Petri_netMatrix) -> Double
+
+pub fn petri_net_matrix_scale(Petri_netMatrix, Double) -> Petri_netMatrix
+
+pub fn petri_net_matrix_to_string(Petri_netMatrix) -> String
+
+pub fn petri_net_matrix_trace(Petri_netMatrix) -> Double
+
+pub fn petri_net_matrix_transpose(Petri_netMatrix) -> Petri_netMatrix
+
+pub fn petri_net_mse(Array[Double], Array[Double]) -> Double
+
+pub fn petri_net_point_add(Petri_netPoint, Petri_netPoint) -> Petri_netPoint
+
+pub fn petri_net_point_dist(Petri_netPoint, Petri_netPoint) -> Double
+
+pub fn petri_net_point_dot(Petri_netPoint, Petri_netPoint) -> Double
+
+pub fn petri_net_point_label(Petri_netPoint) -> Int32
+
+pub fn petri_net_point_norm(Petri_netPoint) -> Double
+
+pub fn petri_net_point_scale(Petri_netPoint, Double) -> Petri_netPoint
+
+pub fn petri_net_point_sub(Petri_netPoint, Petri_netPoint) -> Petri_netPoint
+
+pub fn petri_net_point_to_string(Petri_netPoint) -> String
+
+pub fn petri_net_point_x(Petri_netPoint) -> Double
+
+pub fn petri_net_point_y(Petri_netPoint) -> Double
+
+pub fn petri_net_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn petri_net_r2(Array[Double], Array[Double]) -> Double
+
+pub fn petri_net_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn petri_net_series_add(Petri_netSeries, Petri_netSeries) -> Petri_netSeries
+
+pub fn petri_net_series_len(Petri_netSeries) -> Int32
+
+pub fn petri_net_series_max(Petri_netSeries) -> Double
+
+pub fn petri_net_series_mean(Petri_netSeries) -> Double
+
+pub fn petri_net_series_min(Petri_netSeries) -> Double
+
+pub fn petri_net_series_scale(Petri_netSeries, Double) -> Petri_netSeries
+
+pub fn petri_net_series_std(Petri_netSeries) -> Double
+
+pub fn petri_net_series_sum(Petri_netSeries) -> Double
+
+pub fn petri_net_series_to_string(Petri_netSeries) -> String
+
+pub fn petri_net_series_var(Petri_netSeries) -> Double
+
+pub fn petri_net_std(Array[Double]) -> Double
+
+pub fn petri_net_var(Array[Double]) -> Double
+
+pub fn petri_net_vector_add(Petri_netVector, Petri_netVector) -> Petri_netVector
+
+pub fn petri_net_vector_dist(Petri_netVector, Petri_netVector) -> Double
+
+pub fn petri_net_vector_dot(Petri_netVector, Petri_netVector) -> Double
+
+pub fn petri_net_vector_norm(Petri_netVector) -> Double
+
+pub fn petri_net_vector_normalize(Petri_netVector) -> Petri_netVector
+
+pub fn petri_net_vector_scale(Petri_netVector, Double) -> Petri_netVector
+
+pub fn petri_net_vector_sub(Petri_netVector, Petri_netVector) -> Petri_netVector
+
+pub fn petri_net_vector_to_string(Petri_netVector) -> String
+
+pub fn petri_net_vector_zero(Int32) -> Petri_netVector
+
+// Errors
+
+// Types and methods
+pub struct Petri_netMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Petri_netPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Petri_netSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Petri_netVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

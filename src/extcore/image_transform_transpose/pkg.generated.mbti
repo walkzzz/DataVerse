@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_transform_transpose"
+
+// Values
+pub fn image_transform_transpose_buffer_make(Int32) -> ImagetransformtransposeBuffer
+
+pub fn image_transform_transpose_cluster_make(Int32) -> ImagetransformtransposeCluster
+
+pub fn image_transform_transpose_cursor_make(Int32) -> ImagetransformtransposeCursor
+
+pub fn image_transform_transpose_edge_make(Int32) -> ImagetransformtransposeEdge
+
+pub fn image_transform_transpose_frame_make(Int32) -> ImagetransformtransposeFrame
+
+pub fn image_transform_transpose_graphn_make(Int32) -> ImagetransformtransposeGraphN
+
+pub fn image_transform_transpose_layer_make(Int32) -> ImagetransformtransposeLayer
+
+pub fn image_transform_transpose_make_matrix(Int32, Int32, Double) -> ImagetransformtransposeMatrix
+
+pub fn image_transform_transpose_make_point(Double, Double) -> ImagetransformtransposePoint
+
+pub fn image_transform_transpose_make_point3(Double, Double, Double) -> ImagetransformtransposePoint
+
+pub fn image_transform_transpose_make_series(Array[Double], String) -> ImagetransformtransposeSeries
+
+pub fn image_transform_transpose_make_vector(Array[Double]) -> ImagetransformtransposeVector
+
+pub fn image_transform_transpose_matrix_identity(Int32) -> ImagetransformtransposeMatrix
+
+pub fn image_transform_transpose_model_make(Int32) -> ImagetransformtransposeModel
+
+pub fn image_transform_transpose_node_make(Int32) -> ImagetransformtransposeNode
+
+pub fn image_transform_transpose_path_make(Int32) -> ImagetransformtransposePath
+
+pub fn image_transform_transpose_range_make(Int32) -> ImagetransformtransposeRange
+
+pub fn image_transform_transpose_slice_make(Int32) -> ImagetransformtransposeSlice
+
+pub fn image_transform_transpose_table_make(Int32) -> ImagetransformtransposeTable
+
+pub fn image_transform_transpose_vector_zero(Int32) -> ImagetransformtransposeVector
+
+pub fn image_transform_transpose_view_make(Int32) -> ImagetransformtransposeView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagetransformtransposeBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformtransposeBuffer::add(Self, Self) -> Self
+pub fn ImagetransformtransposeBuffer::copy(Self) -> Self
+pub fn ImagetransformtransposeBuffer::fill(Self, Double) -> Self
+pub fn ImagetransformtransposeBuffer::get(Self, Int32) -> Double
+pub fn ImagetransformtransposeBuffer::len(Self) -> Int32
+pub fn ImagetransformtransposeBuffer::max(Self) -> Double
+pub fn ImagetransformtransposeBuffer::mean(Self) -> Double
+pub fn ImagetransformtransposeBuffer::min(Self) -> Double
+pub fn ImagetransformtransposeBuffer::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagetransformtransposeBuffer::sum(Self) -> Double
+pub fn ImagetransformtransposeBuffer::to_string(Self) -> String
+
+pub(all) struct ImagetransformtransposeCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformtransposeCluster::add(Self, Self) -> Self
+pub fn ImagetransformtransposeCluster::copy(Self) -> Self
+pub fn ImagetransformtransposeCluster::fill(Self, Double) -> Self
+pub fn ImagetransformtransposeCluster::get(Self, Int32) -> Double
+pub fn ImagetransformtransposeCluster::len(Self) -> Int32
+pub fn ImagetransformtransposeCluster::max(Self) -> Double
+pub fn ImagetransformtransposeCluster::mean(Self) -> Double
+pub fn ImagetransformtransposeCluster::min(Self) -> Double
+pub fn ImagetransformtransposeCluster::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeCluster::set(Self, Int32, Double) -> Self
+pub fn ImagetransformtransposeCluster::sum(Self) -> Double
+pub fn ImagetransformtransposeCluster::to_string(Self) -> String
+
+pub(all) struct ImagetransformtransposeCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformtransposeCursor::add(Self, Self) -> Self
+pub fn ImagetransformtransposeCursor::copy(Self) -> Self
+pub fn ImagetransformtransposeCursor::fill(Self, Double) -> Self
+pub fn ImagetransformtransposeCursor::get(Self, Int32) -> Double
+pub fn ImagetransformtransposeCursor::len(Self) -> Int32
+pub fn ImagetransformtransposeCursor::max(Self) -> Double
+pub fn ImagetransformtransposeCursor::mean(Self) -> Double
+pub fn ImagetransformtransposeCursor::min(Self) -> Double
+pub fn ImagetransformtransposeCursor::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeCursor::set(Self, Int32, Double) -> Self
+pub fn ImagetransformtransposeCursor::sum(Self) -> Double
+pub fn ImagetransformtransposeCursor::to_string(Self) -> String
+
+pub(all) struct ImagetransformtransposeEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformtransposeEdge::add(Self, Self) -> Self
+pub fn ImagetransformtransposeEdge::copy(Self) -> Self
+pub fn ImagetransformtransposeEdge::fill(Self, Double) -> Self
+pub fn ImagetransformtransposeEdge::get(Self, Int32) -> Double
+pub fn ImagetransformtransposeEdge::len(Self) -> Int32
+pub fn ImagetransformtransposeEdge::max(Self) -> Double
+pub fn ImagetransformtransposeEdge::mean(Self) -> Double
+pub fn ImagetransformtransposeEdge::min(Self) -> Double
+pub fn ImagetransformtransposeEdge::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeEdge::set(Self, Int32, Double) -> Self
+pub fn ImagetransformtransposeEdge::sum(Self) -> Double
+pub fn ImagetransformtransposeEdge::to_string(Self) -> String
+
+pub(all) struct ImagetransformtransposeFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformtransposeFrame::add(Self, Self) -> Self
+pub fn ImagetransformtransposeFrame::copy(Self) -> Self
+pub fn ImagetransformtransposeFrame::fill(Self, Double) -> Self
+pub fn ImagetransformtransposeFrame::get(Self, Int32) -> Double
+pub fn ImagetransformtransposeFrame::len(Self) -> Int32
+pub fn ImagetransformtransposeFrame::max(Self) -> Double
+pub fn ImagetransformtransposeFrame::mean(Self) -> Double
+pub fn ImagetransformtransposeFrame::min(Self) -> Double
+pub fn ImagetransformtransposeFrame::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeFrame::set(Self, Int32, Double) -> Self
+pub fn ImagetransformtransposeFrame::sum(Self) -> Double
+pub fn ImagetransformtransposeFrame::to_string(Self) -> String
+
+pub(all) struct ImagetransformtransposeGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformtransposeGraphN::add(Self, Self) -> Self
+pub fn ImagetransformtransposeGraphN::copy(Self) -> Self
+pub fn ImagetransformtransposeGraphN::fill(Self, Double) -> Self
+pub fn ImagetransformtransposeGraphN::get(Self, Int32) -> Double
+pub fn ImagetransformtransposeGraphN::len(Self) -> Int32
+pub fn ImagetransformtransposeGraphN::max(Self) -> Double
+pub fn ImagetransformtransposeGraphN::mean(Self) -> Double
+pub fn ImagetransformtransposeGraphN::min(Self) -> Double
+pub fn ImagetransformtransposeGraphN::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagetransformtransposeGraphN::sum(Self) -> Double
+pub fn ImagetransformtransposeGraphN::to_string(Self) -> String
+
+pub(all) struct ImagetransformtransposeLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformtransposeLayer::add(Self, Self) -> Self
+pub fn ImagetransformtransposeLayer::copy(Self) -> Self
+pub fn ImagetransformtransposeLayer::fill(Self, Double) -> Self
+pub fn ImagetransformtransposeLayer::get(Self, Int32) -> Double
+pub fn ImagetransformtransposeLayer::len(Self) -> Int32
+pub fn ImagetransformtransposeLayer::max(Self) -> Double
+pub fn ImagetransformtransposeLayer::mean(Self) -> Double
+pub fn ImagetransformtransposeLayer::min(Self) -> Double
+pub fn ImagetransformtransposeLayer::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeLayer::set(Self, Int32, Double) -> Self
+pub fn ImagetransformtransposeLayer::sum(Self) -> Double
+pub fn ImagetransformtransposeLayer::to_string(Self) -> String
+
+pub(all) struct ImagetransformtransposeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagetransformtransposeMatrix::add(Self, Self) -> Self
+pub fn ImagetransformtransposeMatrix::det(Self) -> Double
+pub fn ImagetransformtransposeMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagetransformtransposeMatrix::multiply(Self, Self) -> Self
+pub fn ImagetransformtransposeMatrix::norm(Self) -> Double
+pub fn ImagetransformtransposeMatrix::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeMatrix::to_string(Self) -> String
+pub fn ImagetransformtransposeMatrix::trace(Self) -> Double
+pub fn ImagetransformtransposeMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagetransformtransposeModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformtransposeModel::add(Self, Self) -> Self
+pub fn ImagetransformtransposeModel::copy(Self) -> Self
+pub fn ImagetransformtransposeModel::fill(Self, Double) -> Self
+pub fn ImagetransformtransposeModel::get(Self, Int32) -> Double
+pub fn ImagetransformtransposeModel::len(Self) -> Int32
+pub fn ImagetransformtransposeModel::max(Self) -> Double
+pub fn ImagetransformtransposeModel::mean(Self) -> Double
+pub fn ImagetransformtransposeModel::min(Self) -> Double
+pub fn ImagetransformtransposeModel::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeModel::set(Self, Int32, Double) -> Self
+pub fn ImagetransformtransposeModel::sum(Self) -> Double
+pub fn ImagetransformtransposeModel::to_string(Self) -> String
+
+pub(all) struct ImagetransformtransposeNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformtransposeNode::add(Self, Self) -> Self
+pub fn ImagetransformtransposeNode::copy(Self) -> Self
+pub fn ImagetransformtransposeNode::fill(Self, Double) -> Self
+pub fn ImagetransformtransposeNode::get(Self, Int32) -> Double
+pub fn ImagetransformtransposeNode::len(Self) -> Int32
+pub fn ImagetransformtransposeNode::max(Self) -> Double
+pub fn ImagetransformtransposeNode::mean(Self) -> Double
+pub fn ImagetransformtransposeNode::min(Self) -> Double
+pub fn ImagetransformtransposeNode::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeNode::set(Self, Int32, Double) -> Self
+pub fn ImagetransformtransposeNode::sum(Self) -> Double
+pub fn ImagetransformtransposeNode::to_string(Self) -> String
+
+pub(all) struct ImagetransformtransposePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformtransposePath::add(Self, Self) -> Self
+pub fn ImagetransformtransposePath::copy(Self) -> Self
+pub fn ImagetransformtransposePath::fill(Self, Double) -> Self
+pub fn ImagetransformtransposePath::get(Self, Int32) -> Double
+pub fn ImagetransformtransposePath::len(Self) -> Int32
+pub fn ImagetransformtransposePath::max(Self) -> Double
+pub fn ImagetransformtransposePath::mean(Self) -> Double
+pub fn ImagetransformtransposePath::min(Self) -> Double
+pub fn ImagetransformtransposePath::scale(Self, Double) -> Self
+pub fn ImagetransformtransposePath::set(Self, Int32, Double) -> Self
+pub fn ImagetransformtransposePath::sum(Self) -> Double
+pub fn ImagetransformtransposePath::to_string(Self) -> String
+
+pub(all) struct ImagetransformtransposePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagetransformtransposePoint::add(Self, Self) -> Self
+pub fn ImagetransformtransposePoint::cross(Self, Self) -> Self
+pub fn ImagetransformtransposePoint::dist(Self, Self) -> Double
+pub fn ImagetransformtransposePoint::dot(Self, Self) -> Double
+pub fn ImagetransformtransposePoint::label(Self) -> Int32
+pub fn ImagetransformtransposePoint::lerp(Self, Self, Double) -> Self
+pub fn ImagetransformtransposePoint::mid(Self, Self) -> Self
+pub fn ImagetransformtransposePoint::negate(Self) -> Self
+pub fn ImagetransformtransposePoint::norm(Self) -> Double
+pub fn ImagetransformtransposePoint::normalize(Self) -> Self
+pub fn ImagetransformtransposePoint::scale(Self, Double) -> Self
+pub fn ImagetransformtransposePoint::sub(Self, Self) -> Self
+pub fn ImagetransformtransposePoint::to_string(Self) -> String
+pub fn ImagetransformtransposePoint::x(Self) -> Double
+pub fn ImagetransformtransposePoint::y(Self) -> Double
+pub fn ImagetransformtransposePoint::z(Self) -> Double
+
+pub(all) struct ImagetransformtransposeRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformtransposeRange::add(Self, Self) -> Self
+pub fn ImagetransformtransposeRange::copy(Self) -> Self
+pub fn ImagetransformtransposeRange::fill(Self, Double) -> Self
+pub fn ImagetransformtransposeRange::get(Self, Int32) -> Double
+pub fn ImagetransformtransposeRange::len(Self) -> Int32
+pub fn ImagetransformtransposeRange::max(Self) -> Double
+pub fn ImagetransformtransposeRange::mean(Self) -> Double
+pub fn ImagetransformtransposeRange::min(Self) -> Double
+pub fn ImagetransformtransposeRange::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeRange::set(Self, Int32, Double) -> Self
+pub fn ImagetransformtransposeRange::sum(Self) -> Double
+pub fn ImagetransformtransposeRange::to_string(Self) -> String
+
+pub(all) struct ImagetransformtransposeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagetransformtransposeSeries::add(Self, Self) -> Self
+pub fn ImagetransformtransposeSeries::cumsum(Self) -> Self
+pub fn ImagetransformtransposeSeries::len(Self) -> Int32
+pub fn ImagetransformtransposeSeries::max(Self) -> Double
+pub fn ImagetransformtransposeSeries::mean(Self) -> Double
+pub fn ImagetransformtransposeSeries::median(Self) -> Double
+pub fn ImagetransformtransposeSeries::min(Self) -> Double
+pub fn ImagetransformtransposeSeries::normalize(Self) -> Self
+pub fn ImagetransformtransposeSeries::range(Self) -> Double
+pub fn ImagetransformtransposeSeries::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeSeries::std(Self) -> Double
+pub fn ImagetransformtransposeSeries::sub(Self, Self) -> Self
+pub fn ImagetransformtransposeSeries::sum(Self) -> Double
+pub fn ImagetransformtransposeSeries::to_string(Self) -> String
+pub fn ImagetransformtransposeSeries::variance(Self) -> Double
+
+pub(all) struct ImagetransformtransposeSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformtransposeSlice::add(Self, Self) -> Self
+pub fn ImagetransformtransposeSlice::copy(Self) -> Self
+pub fn ImagetransformtransposeSlice::fill(Self, Double) -> Self
+pub fn ImagetransformtransposeSlice::get(Self, Int32) -> Double
+pub fn ImagetransformtransposeSlice::len(Self) -> Int32
+pub fn ImagetransformtransposeSlice::max(Self) -> Double
+pub fn ImagetransformtransposeSlice::mean(Self) -> Double
+pub fn ImagetransformtransposeSlice::min(Self) -> Double
+pub fn ImagetransformtransposeSlice::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeSlice::set(Self, Int32, Double) -> Self
+pub fn ImagetransformtransposeSlice::sum(Self) -> Double
+pub fn ImagetransformtransposeSlice::to_string(Self) -> String
+
+pub(all) struct ImagetransformtransposeTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformtransposeTable::add(Self, Self) -> Self
+pub fn ImagetransformtransposeTable::copy(Self) -> Self
+pub fn ImagetransformtransposeTable::fill(Self, Double) -> Self
+pub fn ImagetransformtransposeTable::get(Self, Int32) -> Double
+pub fn ImagetransformtransposeTable::len(Self) -> Int32
+pub fn ImagetransformtransposeTable::max(Self) -> Double
+pub fn ImagetransformtransposeTable::mean(Self) -> Double
+pub fn ImagetransformtransposeTable::min(Self) -> Double
+pub fn ImagetransformtransposeTable::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeTable::set(Self, Int32, Double) -> Self
+pub fn ImagetransformtransposeTable::sum(Self) -> Double
+pub fn ImagetransformtransposeTable::to_string(Self) -> String
+
+pub(all) struct ImagetransformtransposeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagetransformtransposeVector::add(Self, Self) -> Self
+pub fn ImagetransformtransposeVector::dist(Self, Self) -> Double
+pub fn ImagetransformtransposeVector::dot(Self, Self) -> Double
+pub fn ImagetransformtransposeVector::norm(Self) -> Double
+pub fn ImagetransformtransposeVector::normalize(Self) -> Self
+pub fn ImagetransformtransposeVector::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeVector::sub(Self, Self) -> Self
+pub fn ImagetransformtransposeVector::to_string(Self) -> String
+
+pub(all) struct ImagetransformtransposeView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformtransposeView::add(Self, Self) -> Self
+pub fn ImagetransformtransposeView::copy(Self) -> Self
+pub fn ImagetransformtransposeView::fill(Self, Double) -> Self
+pub fn ImagetransformtransposeView::get(Self, Int32) -> Double
+pub fn ImagetransformtransposeView::len(Self) -> Int32
+pub fn ImagetransformtransposeView::max(Self) -> Double
+pub fn ImagetransformtransposeView::mean(Self) -> Double
+pub fn ImagetransformtransposeView::min(Self) -> Double
+pub fn ImagetransformtransposeView::scale(Self, Double) -> Self
+pub fn ImagetransformtransposeView::set(Self, Int32, Double) -> Self
+pub fn ImagetransformtransposeView::sum(Self) -> Double
+pub fn ImagetransformtransposeView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

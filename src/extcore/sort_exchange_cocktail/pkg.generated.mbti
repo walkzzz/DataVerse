@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_exchange_cocktail"
+
+// Values
+pub fn sort_exchange_cocktail_buffer_make(Int32) -> SortexchangecocktailBuffer
+
+pub fn sort_exchange_cocktail_cluster_make(Int32) -> SortexchangecocktailCluster
+
+pub fn sort_exchange_cocktail_cursor_make(Int32) -> SortexchangecocktailCursor
+
+pub fn sort_exchange_cocktail_edge_make(Int32) -> SortexchangecocktailEdge
+
+pub fn sort_exchange_cocktail_frame_make(Int32) -> SortexchangecocktailFrame
+
+pub fn sort_exchange_cocktail_graphn_make(Int32) -> SortexchangecocktailGraphN
+
+pub fn sort_exchange_cocktail_layer_make(Int32) -> SortexchangecocktailLayer
+
+pub fn sort_exchange_cocktail_make_matrix(Int32, Int32, Double) -> SortexchangecocktailMatrix
+
+pub fn sort_exchange_cocktail_make_point(Double, Double) -> SortexchangecocktailPoint
+
+pub fn sort_exchange_cocktail_make_point3(Double, Double, Double) -> SortexchangecocktailPoint
+
+pub fn sort_exchange_cocktail_make_series(Array[Double], String) -> SortexchangecocktailSeries
+
+pub fn sort_exchange_cocktail_make_vector(Array[Double]) -> SortexchangecocktailVector
+
+pub fn sort_exchange_cocktail_matrix_identity(Int32) -> SortexchangecocktailMatrix
+
+pub fn sort_exchange_cocktail_model_make(Int32) -> SortexchangecocktailModel
+
+pub fn sort_exchange_cocktail_node_make(Int32) -> SortexchangecocktailNode
+
+pub fn sort_exchange_cocktail_path_make(Int32) -> SortexchangecocktailPath
+
+pub fn sort_exchange_cocktail_range_make(Int32) -> SortexchangecocktailRange
+
+pub fn sort_exchange_cocktail_slice_make(Int32) -> SortexchangecocktailSlice
+
+pub fn sort_exchange_cocktail_table_make(Int32) -> SortexchangecocktailTable
+
+pub fn sort_exchange_cocktail_vector_zero(Int32) -> SortexchangecocktailVector
+
+pub fn sort_exchange_cocktail_view_make(Int32) -> SortexchangecocktailView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortexchangecocktailBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecocktailBuffer::add(Self, Self) -> Self
+pub fn SortexchangecocktailBuffer::copy(Self) -> Self
+pub fn SortexchangecocktailBuffer::fill(Self, Double) -> Self
+pub fn SortexchangecocktailBuffer::get(Self, Int32) -> Double
+pub fn SortexchangecocktailBuffer::len(Self) -> Int32
+pub fn SortexchangecocktailBuffer::max(Self) -> Double
+pub fn SortexchangecocktailBuffer::mean(Self) -> Double
+pub fn SortexchangecocktailBuffer::min(Self) -> Double
+pub fn SortexchangecocktailBuffer::scale(Self, Double) -> Self
+pub fn SortexchangecocktailBuffer::set(Self, Int32, Double) -> Self
+pub fn SortexchangecocktailBuffer::sum(Self) -> Double
+pub fn SortexchangecocktailBuffer::to_string(Self) -> String
+
+pub(all) struct SortexchangecocktailCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecocktailCluster::add(Self, Self) -> Self
+pub fn SortexchangecocktailCluster::copy(Self) -> Self
+pub fn SortexchangecocktailCluster::fill(Self, Double) -> Self
+pub fn SortexchangecocktailCluster::get(Self, Int32) -> Double
+pub fn SortexchangecocktailCluster::len(Self) -> Int32
+pub fn SortexchangecocktailCluster::max(Self) -> Double
+pub fn SortexchangecocktailCluster::mean(Self) -> Double
+pub fn SortexchangecocktailCluster::min(Self) -> Double
+pub fn SortexchangecocktailCluster::scale(Self, Double) -> Self
+pub fn SortexchangecocktailCluster::set(Self, Int32, Double) -> Self
+pub fn SortexchangecocktailCluster::sum(Self) -> Double
+pub fn SortexchangecocktailCluster::to_string(Self) -> String
+
+pub(all) struct SortexchangecocktailCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecocktailCursor::add(Self, Self) -> Self
+pub fn SortexchangecocktailCursor::copy(Self) -> Self
+pub fn SortexchangecocktailCursor::fill(Self, Double) -> Self
+pub fn SortexchangecocktailCursor::get(Self, Int32) -> Double
+pub fn SortexchangecocktailCursor::len(Self) -> Int32
+pub fn SortexchangecocktailCursor::max(Self) -> Double
+pub fn SortexchangecocktailCursor::mean(Self) -> Double
+pub fn SortexchangecocktailCursor::min(Self) -> Double
+pub fn SortexchangecocktailCursor::scale(Self, Double) -> Self
+pub fn SortexchangecocktailCursor::set(Self, Int32, Double) -> Self
+pub fn SortexchangecocktailCursor::sum(Self) -> Double
+pub fn SortexchangecocktailCursor::to_string(Self) -> String
+
+pub(all) struct SortexchangecocktailEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecocktailEdge::add(Self, Self) -> Self
+pub fn SortexchangecocktailEdge::copy(Self) -> Self
+pub fn SortexchangecocktailEdge::fill(Self, Double) -> Self
+pub fn SortexchangecocktailEdge::get(Self, Int32) -> Double
+pub fn SortexchangecocktailEdge::len(Self) -> Int32
+pub fn SortexchangecocktailEdge::max(Self) -> Double
+pub fn SortexchangecocktailEdge::mean(Self) -> Double
+pub fn SortexchangecocktailEdge::min(Self) -> Double
+pub fn SortexchangecocktailEdge::scale(Self, Double) -> Self
+pub fn SortexchangecocktailEdge::set(Self, Int32, Double) -> Self
+pub fn SortexchangecocktailEdge::sum(Self) -> Double
+pub fn SortexchangecocktailEdge::to_string(Self) -> String
+
+pub(all) struct SortexchangecocktailFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecocktailFrame::add(Self, Self) -> Self
+pub fn SortexchangecocktailFrame::copy(Self) -> Self
+pub fn SortexchangecocktailFrame::fill(Self, Double) -> Self
+pub fn SortexchangecocktailFrame::get(Self, Int32) -> Double
+pub fn SortexchangecocktailFrame::len(Self) -> Int32
+pub fn SortexchangecocktailFrame::max(Self) -> Double
+pub fn SortexchangecocktailFrame::mean(Self) -> Double
+pub fn SortexchangecocktailFrame::min(Self) -> Double
+pub fn SortexchangecocktailFrame::scale(Self, Double) -> Self
+pub fn SortexchangecocktailFrame::set(Self, Int32, Double) -> Self
+pub fn SortexchangecocktailFrame::sum(Self) -> Double
+pub fn SortexchangecocktailFrame::to_string(Self) -> String
+
+pub(all) struct SortexchangecocktailGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecocktailGraphN::add(Self, Self) -> Self
+pub fn SortexchangecocktailGraphN::copy(Self) -> Self
+pub fn SortexchangecocktailGraphN::fill(Self, Double) -> Self
+pub fn SortexchangecocktailGraphN::get(Self, Int32) -> Double
+pub fn SortexchangecocktailGraphN::len(Self) -> Int32
+pub fn SortexchangecocktailGraphN::max(Self) -> Double
+pub fn SortexchangecocktailGraphN::mean(Self) -> Double
+pub fn SortexchangecocktailGraphN::min(Self) -> Double
+pub fn SortexchangecocktailGraphN::scale(Self, Double) -> Self
+pub fn SortexchangecocktailGraphN::set(Self, Int32, Double) -> Self
+pub fn SortexchangecocktailGraphN::sum(Self) -> Double
+pub fn SortexchangecocktailGraphN::to_string(Self) -> String
+
+pub(all) struct SortexchangecocktailLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecocktailLayer::add(Self, Self) -> Self
+pub fn SortexchangecocktailLayer::copy(Self) -> Self
+pub fn SortexchangecocktailLayer::fill(Self, Double) -> Self
+pub fn SortexchangecocktailLayer::get(Self, Int32) -> Double
+pub fn SortexchangecocktailLayer::len(Self) -> Int32
+pub fn SortexchangecocktailLayer::max(Self) -> Double
+pub fn SortexchangecocktailLayer::mean(Self) -> Double
+pub fn SortexchangecocktailLayer::min(Self) -> Double
+pub fn SortexchangecocktailLayer::scale(Self, Double) -> Self
+pub fn SortexchangecocktailLayer::set(Self, Int32, Double) -> Self
+pub fn SortexchangecocktailLayer::sum(Self) -> Double
+pub fn SortexchangecocktailLayer::to_string(Self) -> String
+
+pub(all) struct SortexchangecocktailMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortexchangecocktailMatrix::add(Self, Self) -> Self
+pub fn SortexchangecocktailMatrix::det(Self) -> Double
+pub fn SortexchangecocktailMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortexchangecocktailMatrix::multiply(Self, Self) -> Self
+pub fn SortexchangecocktailMatrix::norm(Self) -> Double
+pub fn SortexchangecocktailMatrix::scale(Self, Double) -> Self
+pub fn SortexchangecocktailMatrix::to_string(Self) -> String
+pub fn SortexchangecocktailMatrix::trace(Self) -> Double
+pub fn SortexchangecocktailMatrix::transpose(Self) -> Self
+
+pub(all) struct SortexchangecocktailModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecocktailModel::add(Self, Self) -> Self
+pub fn SortexchangecocktailModel::copy(Self) -> Self
+pub fn SortexchangecocktailModel::fill(Self, Double) -> Self
+pub fn SortexchangecocktailModel::get(Self, Int32) -> Double
+pub fn SortexchangecocktailModel::len(Self) -> Int32
+pub fn SortexchangecocktailModel::max(Self) -> Double
+pub fn SortexchangecocktailModel::mean(Self) -> Double
+pub fn SortexchangecocktailModel::min(Self) -> Double
+pub fn SortexchangecocktailModel::scale(Self, Double) -> Self
+pub fn SortexchangecocktailModel::set(Self, Int32, Double) -> Self
+pub fn SortexchangecocktailModel::sum(Self) -> Double
+pub fn SortexchangecocktailModel::to_string(Self) -> String
+
+pub(all) struct SortexchangecocktailNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecocktailNode::add(Self, Self) -> Self
+pub fn SortexchangecocktailNode::copy(Self) -> Self
+pub fn SortexchangecocktailNode::fill(Self, Double) -> Self
+pub fn SortexchangecocktailNode::get(Self, Int32) -> Double
+pub fn SortexchangecocktailNode::len(Self) -> Int32
+pub fn SortexchangecocktailNode::max(Self) -> Double
+pub fn SortexchangecocktailNode::mean(Self) -> Double
+pub fn SortexchangecocktailNode::min(Self) -> Double
+pub fn SortexchangecocktailNode::scale(Self, Double) -> Self
+pub fn SortexchangecocktailNode::set(Self, Int32, Double) -> Self
+pub fn SortexchangecocktailNode::sum(Self) -> Double
+pub fn SortexchangecocktailNode::to_string(Self) -> String
+
+pub(all) struct SortexchangecocktailPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecocktailPath::add(Self, Self) -> Self
+pub fn SortexchangecocktailPath::copy(Self) -> Self
+pub fn SortexchangecocktailPath::fill(Self, Double) -> Self
+pub fn SortexchangecocktailPath::get(Self, Int32) -> Double
+pub fn SortexchangecocktailPath::len(Self) -> Int32
+pub fn SortexchangecocktailPath::max(Self) -> Double
+pub fn SortexchangecocktailPath::mean(Self) -> Double
+pub fn SortexchangecocktailPath::min(Self) -> Double
+pub fn SortexchangecocktailPath::scale(Self, Double) -> Self
+pub fn SortexchangecocktailPath::set(Self, Int32, Double) -> Self
+pub fn SortexchangecocktailPath::sum(Self) -> Double
+pub fn SortexchangecocktailPath::to_string(Self) -> String
+
+pub(all) struct SortexchangecocktailPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortexchangecocktailPoint::add(Self, Self) -> Self
+pub fn SortexchangecocktailPoint::cross(Self, Self) -> Self
+pub fn SortexchangecocktailPoint::dist(Self, Self) -> Double
+pub fn SortexchangecocktailPoint::dot(Self, Self) -> Double
+pub fn SortexchangecocktailPoint::label(Self) -> Int32
+pub fn SortexchangecocktailPoint::lerp(Self, Self, Double) -> Self
+pub fn SortexchangecocktailPoint::mid(Self, Self) -> Self
+pub fn SortexchangecocktailPoint::negate(Self) -> Self
+pub fn SortexchangecocktailPoint::norm(Self) -> Double
+pub fn SortexchangecocktailPoint::normalize(Self) -> Self
+pub fn SortexchangecocktailPoint::scale(Self, Double) -> Self
+pub fn SortexchangecocktailPoint::sub(Self, Self) -> Self
+pub fn SortexchangecocktailPoint::to_string(Self) -> String
+pub fn SortexchangecocktailPoint::x(Self) -> Double
+pub fn SortexchangecocktailPoint::y(Self) -> Double
+pub fn SortexchangecocktailPoint::z(Self) -> Double
+
+pub(all) struct SortexchangecocktailRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecocktailRange::add(Self, Self) -> Self
+pub fn SortexchangecocktailRange::copy(Self) -> Self
+pub fn SortexchangecocktailRange::fill(Self, Double) -> Self
+pub fn SortexchangecocktailRange::get(Self, Int32) -> Double
+pub fn SortexchangecocktailRange::len(Self) -> Int32
+pub fn SortexchangecocktailRange::max(Self) -> Double
+pub fn SortexchangecocktailRange::mean(Self) -> Double
+pub fn SortexchangecocktailRange::min(Self) -> Double
+pub fn SortexchangecocktailRange::scale(Self, Double) -> Self
+pub fn SortexchangecocktailRange::set(Self, Int32, Double) -> Self
+pub fn SortexchangecocktailRange::sum(Self) -> Double
+pub fn SortexchangecocktailRange::to_string(Self) -> String
+
+pub(all) struct SortexchangecocktailSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortexchangecocktailSeries::add(Self, Self) -> Self
+pub fn SortexchangecocktailSeries::cumsum(Self) -> Self
+pub fn SortexchangecocktailSeries::len(Self) -> Int32
+pub fn SortexchangecocktailSeries::max(Self) -> Double
+pub fn SortexchangecocktailSeries::mean(Self) -> Double
+pub fn SortexchangecocktailSeries::median(Self) -> Double
+pub fn SortexchangecocktailSeries::min(Self) -> Double
+pub fn SortexchangecocktailSeries::normalize(Self) -> Self
+pub fn SortexchangecocktailSeries::range(Self) -> Double
+pub fn SortexchangecocktailSeries::scale(Self, Double) -> Self
+pub fn SortexchangecocktailSeries::std(Self) -> Double
+pub fn SortexchangecocktailSeries::sub(Self, Self) -> Self
+pub fn SortexchangecocktailSeries::sum(Self) -> Double
+pub fn SortexchangecocktailSeries::to_string(Self) -> String
+pub fn SortexchangecocktailSeries::variance(Self) -> Double
+
+pub(all) struct SortexchangecocktailSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecocktailSlice::add(Self, Self) -> Self
+pub fn SortexchangecocktailSlice::copy(Self) -> Self
+pub fn SortexchangecocktailSlice::fill(Self, Double) -> Self
+pub fn SortexchangecocktailSlice::get(Self, Int32) -> Double
+pub fn SortexchangecocktailSlice::len(Self) -> Int32
+pub fn SortexchangecocktailSlice::max(Self) -> Double
+pub fn SortexchangecocktailSlice::mean(Self) -> Double
+pub fn SortexchangecocktailSlice::min(Self) -> Double
+pub fn SortexchangecocktailSlice::scale(Self, Double) -> Self
+pub fn SortexchangecocktailSlice::set(Self, Int32, Double) -> Self
+pub fn SortexchangecocktailSlice::sum(Self) -> Double
+pub fn SortexchangecocktailSlice::to_string(Self) -> String
+
+pub(all) struct SortexchangecocktailTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecocktailTable::add(Self, Self) -> Self
+pub fn SortexchangecocktailTable::copy(Self) -> Self
+pub fn SortexchangecocktailTable::fill(Self, Double) -> Self
+pub fn SortexchangecocktailTable::get(Self, Int32) -> Double
+pub fn SortexchangecocktailTable::len(Self) -> Int32
+pub fn SortexchangecocktailTable::max(Self) -> Double
+pub fn SortexchangecocktailTable::mean(Self) -> Double
+pub fn SortexchangecocktailTable::min(Self) -> Double
+pub fn SortexchangecocktailTable::scale(Self, Double) -> Self
+pub fn SortexchangecocktailTable::set(Self, Int32, Double) -> Self
+pub fn SortexchangecocktailTable::sum(Self) -> Double
+pub fn SortexchangecocktailTable::to_string(Self) -> String
+
+pub(all) struct SortexchangecocktailVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortexchangecocktailVector::add(Self, Self) -> Self
+pub fn SortexchangecocktailVector::dist(Self, Self) -> Double
+pub fn SortexchangecocktailVector::dot(Self, Self) -> Double
+pub fn SortexchangecocktailVector::norm(Self) -> Double
+pub fn SortexchangecocktailVector::normalize(Self) -> Self
+pub fn SortexchangecocktailVector::scale(Self, Double) -> Self
+pub fn SortexchangecocktailVector::sub(Self, Self) -> Self
+pub fn SortexchangecocktailVector::to_string(Self) -> String
+
+pub(all) struct SortexchangecocktailView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecocktailView::add(Self, Self) -> Self
+pub fn SortexchangecocktailView::copy(Self) -> Self
+pub fn SortexchangecocktailView::fill(Self, Double) -> Self
+pub fn SortexchangecocktailView::get(Self, Int32) -> Double
+pub fn SortexchangecocktailView::len(Self) -> Int32
+pub fn SortexchangecocktailView::max(Self) -> Double
+pub fn SortexchangecocktailView::mean(Self) -> Double
+pub fn SortexchangecocktailView::min(Self) -> Double
+pub fn SortexchangecocktailView::scale(Self, Double) -> Self
+pub fn SortexchangecocktailView::set(Self, Int32, Double) -> Self
+pub fn SortexchangecocktailView::sum(Self) -> Double
+pub fn SortexchangecocktailView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

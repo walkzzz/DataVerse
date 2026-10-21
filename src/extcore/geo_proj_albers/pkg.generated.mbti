@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_proj_albers"
+
+// Values
+pub fn geo_proj_albers_buffer_make(Int32) -> GeoprojalbersBuffer
+
+pub fn geo_proj_albers_cluster_make(Int32) -> GeoprojalbersCluster
+
+pub fn geo_proj_albers_cursor_make(Int32) -> GeoprojalbersCursor
+
+pub fn geo_proj_albers_edge_make(Int32) -> GeoprojalbersEdge
+
+pub fn geo_proj_albers_frame_make(Int32) -> GeoprojalbersFrame
+
+pub fn geo_proj_albers_graphn_make(Int32) -> GeoprojalbersGraphN
+
+pub fn geo_proj_albers_layer_make(Int32) -> GeoprojalbersLayer
+
+pub fn geo_proj_albers_make_matrix(Int32, Int32, Double) -> GeoprojalbersMatrix
+
+pub fn geo_proj_albers_make_point(Double, Double) -> GeoprojalbersPoint
+
+pub fn geo_proj_albers_make_point3(Double, Double, Double) -> GeoprojalbersPoint
+
+pub fn geo_proj_albers_make_series(Array[Double], String) -> GeoprojalbersSeries
+
+pub fn geo_proj_albers_make_vector(Array[Double]) -> GeoprojalbersVector
+
+pub fn geo_proj_albers_matrix_identity(Int32) -> GeoprojalbersMatrix
+
+pub fn geo_proj_albers_model_make(Int32) -> GeoprojalbersModel
+
+pub fn geo_proj_albers_node_make(Int32) -> GeoprojalbersNode
+
+pub fn geo_proj_albers_path_make(Int32) -> GeoprojalbersPath
+
+pub fn geo_proj_albers_range_make(Int32) -> GeoprojalbersRange
+
+pub fn geo_proj_albers_slice_make(Int32) -> GeoprojalbersSlice
+
+pub fn geo_proj_albers_table_make(Int32) -> GeoprojalbersTable
+
+pub fn geo_proj_albers_vector_zero(Int32) -> GeoprojalbersVector
+
+pub fn geo_proj_albers_view_make(Int32) -> GeoprojalbersView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeoprojalbersBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojalbersBuffer::add(Self, Self) -> Self
+pub fn GeoprojalbersBuffer::copy(Self) -> Self
+pub fn GeoprojalbersBuffer::fill(Self, Double) -> Self
+pub fn GeoprojalbersBuffer::get(Self, Int32) -> Double
+pub fn GeoprojalbersBuffer::len(Self) -> Int32
+pub fn GeoprojalbersBuffer::max(Self) -> Double
+pub fn GeoprojalbersBuffer::mean(Self) -> Double
+pub fn GeoprojalbersBuffer::min(Self) -> Double
+pub fn GeoprojalbersBuffer::scale(Self, Double) -> Self
+pub fn GeoprojalbersBuffer::set(Self, Int32, Double) -> Self
+pub fn GeoprojalbersBuffer::sum(Self) -> Double
+pub fn GeoprojalbersBuffer::to_string(Self) -> String
+
+pub(all) struct GeoprojalbersCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojalbersCluster::add(Self, Self) -> Self
+pub fn GeoprojalbersCluster::copy(Self) -> Self
+pub fn GeoprojalbersCluster::fill(Self, Double) -> Self
+pub fn GeoprojalbersCluster::get(Self, Int32) -> Double
+pub fn GeoprojalbersCluster::len(Self) -> Int32
+pub fn GeoprojalbersCluster::max(Self) -> Double
+pub fn GeoprojalbersCluster::mean(Self) -> Double
+pub fn GeoprojalbersCluster::min(Self) -> Double
+pub fn GeoprojalbersCluster::scale(Self, Double) -> Self
+pub fn GeoprojalbersCluster::set(Self, Int32, Double) -> Self
+pub fn GeoprojalbersCluster::sum(Self) -> Double
+pub fn GeoprojalbersCluster::to_string(Self) -> String
+
+pub(all) struct GeoprojalbersCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojalbersCursor::add(Self, Self) -> Self
+pub fn GeoprojalbersCursor::copy(Self) -> Self
+pub fn GeoprojalbersCursor::fill(Self, Double) -> Self
+pub fn GeoprojalbersCursor::get(Self, Int32) -> Double
+pub fn GeoprojalbersCursor::len(Self) -> Int32
+pub fn GeoprojalbersCursor::max(Self) -> Double
+pub fn GeoprojalbersCursor::mean(Self) -> Double
+pub fn GeoprojalbersCursor::min(Self) -> Double
+pub fn GeoprojalbersCursor::scale(Self, Double) -> Self
+pub fn GeoprojalbersCursor::set(Self, Int32, Double) -> Self
+pub fn GeoprojalbersCursor::sum(Self) -> Double
+pub fn GeoprojalbersCursor::to_string(Self) -> String
+
+pub(all) struct GeoprojalbersEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojalbersEdge::add(Self, Self) -> Self
+pub fn GeoprojalbersEdge::copy(Self) -> Self
+pub fn GeoprojalbersEdge::fill(Self, Double) -> Self
+pub fn GeoprojalbersEdge::get(Self, Int32) -> Double
+pub fn GeoprojalbersEdge::len(Self) -> Int32
+pub fn GeoprojalbersEdge::max(Self) -> Double
+pub fn GeoprojalbersEdge::mean(Self) -> Double
+pub fn GeoprojalbersEdge::min(Self) -> Double
+pub fn GeoprojalbersEdge::scale(Self, Double) -> Self
+pub fn GeoprojalbersEdge::set(Self, Int32, Double) -> Self
+pub fn GeoprojalbersEdge::sum(Self) -> Double
+pub fn GeoprojalbersEdge::to_string(Self) -> String
+
+pub(all) struct GeoprojalbersFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojalbersFrame::add(Self, Self) -> Self
+pub fn GeoprojalbersFrame::copy(Self) -> Self
+pub fn GeoprojalbersFrame::fill(Self, Double) -> Self
+pub fn GeoprojalbersFrame::get(Self, Int32) -> Double
+pub fn GeoprojalbersFrame::len(Self) -> Int32
+pub fn GeoprojalbersFrame::max(Self) -> Double
+pub fn GeoprojalbersFrame::mean(Self) -> Double
+pub fn GeoprojalbersFrame::min(Self) -> Double
+pub fn GeoprojalbersFrame::scale(Self, Double) -> Self
+pub fn GeoprojalbersFrame::set(Self, Int32, Double) -> Self
+pub fn GeoprojalbersFrame::sum(Self) -> Double
+pub fn GeoprojalbersFrame::to_string(Self) -> String
+
+pub(all) struct GeoprojalbersGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojalbersGraphN::add(Self, Self) -> Self
+pub fn GeoprojalbersGraphN::copy(Self) -> Self
+pub fn GeoprojalbersGraphN::fill(Self, Double) -> Self
+pub fn GeoprojalbersGraphN::get(Self, Int32) -> Double
+pub fn GeoprojalbersGraphN::len(Self) -> Int32
+pub fn GeoprojalbersGraphN::max(Self) -> Double
+pub fn GeoprojalbersGraphN::mean(Self) -> Double
+pub fn GeoprojalbersGraphN::min(Self) -> Double
+pub fn GeoprojalbersGraphN::scale(Self, Double) -> Self
+pub fn GeoprojalbersGraphN::set(Self, Int32, Double) -> Self
+pub fn GeoprojalbersGraphN::sum(Self) -> Double
+pub fn GeoprojalbersGraphN::to_string(Self) -> String
+
+pub(all) struct GeoprojalbersLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojalbersLayer::add(Self, Self) -> Self
+pub fn GeoprojalbersLayer::copy(Self) -> Self
+pub fn GeoprojalbersLayer::fill(Self, Double) -> Self
+pub fn GeoprojalbersLayer::get(Self, Int32) -> Double
+pub fn GeoprojalbersLayer::len(Self) -> Int32
+pub fn GeoprojalbersLayer::max(Self) -> Double
+pub fn GeoprojalbersLayer::mean(Self) -> Double
+pub fn GeoprojalbersLayer::min(Self) -> Double
+pub fn GeoprojalbersLayer::scale(Self, Double) -> Self
+pub fn GeoprojalbersLayer::set(Self, Int32, Double) -> Self
+pub fn GeoprojalbersLayer::sum(Self) -> Double
+pub fn GeoprojalbersLayer::to_string(Self) -> String
+
+pub(all) struct GeoprojalbersMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeoprojalbersMatrix::add(Self, Self) -> Self
+pub fn GeoprojalbersMatrix::det(Self) -> Double
+pub fn GeoprojalbersMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeoprojalbersMatrix::multiply(Self, Self) -> Self
+pub fn GeoprojalbersMatrix::norm(Self) -> Double
+pub fn GeoprojalbersMatrix::scale(Self, Double) -> Self
+pub fn GeoprojalbersMatrix::to_string(Self) -> String
+pub fn GeoprojalbersMatrix::trace(Self) -> Double
+pub fn GeoprojalbersMatrix::transpose(Self) -> Self
+
+pub(all) struct GeoprojalbersModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojalbersModel::add(Self, Self) -> Self
+pub fn GeoprojalbersModel::copy(Self) -> Self
+pub fn GeoprojalbersModel::fill(Self, Double) -> Self
+pub fn GeoprojalbersModel::get(Self, Int32) -> Double
+pub fn GeoprojalbersModel::len(Self) -> Int32
+pub fn GeoprojalbersModel::max(Self) -> Double
+pub fn GeoprojalbersModel::mean(Self) -> Double
+pub fn GeoprojalbersModel::min(Self) -> Double
+pub fn GeoprojalbersModel::scale(Self, Double) -> Self
+pub fn GeoprojalbersModel::set(Self, Int32, Double) -> Self
+pub fn GeoprojalbersModel::sum(Self) -> Double
+pub fn GeoprojalbersModel::to_string(Self) -> String
+
+pub(all) struct GeoprojalbersNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojalbersNode::add(Self, Self) -> Self
+pub fn GeoprojalbersNode::copy(Self) -> Self
+pub fn GeoprojalbersNode::fill(Self, Double) -> Self
+pub fn GeoprojalbersNode::get(Self, Int32) -> Double
+pub fn GeoprojalbersNode::len(Self) -> Int32
+pub fn GeoprojalbersNode::max(Self) -> Double
+pub fn GeoprojalbersNode::mean(Self) -> Double
+pub fn GeoprojalbersNode::min(Self) -> Double
+pub fn GeoprojalbersNode::scale(Self, Double) -> Self
+pub fn GeoprojalbersNode::set(Self, Int32, Double) -> Self
+pub fn GeoprojalbersNode::sum(Self) -> Double
+pub fn GeoprojalbersNode::to_string(Self) -> String
+
+pub(all) struct GeoprojalbersPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojalbersPath::add(Self, Self) -> Self
+pub fn GeoprojalbersPath::copy(Self) -> Self
+pub fn GeoprojalbersPath::fill(Self, Double) -> Self
+pub fn GeoprojalbersPath::get(Self, Int32) -> Double
+pub fn GeoprojalbersPath::len(Self) -> Int32
+pub fn GeoprojalbersPath::max(Self) -> Double
+pub fn GeoprojalbersPath::mean(Self) -> Double
+pub fn GeoprojalbersPath::min(Self) -> Double
+pub fn GeoprojalbersPath::scale(Self, Double) -> Self
+pub fn GeoprojalbersPath::set(Self, Int32, Double) -> Self
+pub fn GeoprojalbersPath::sum(Self) -> Double
+pub fn GeoprojalbersPath::to_string(Self) -> String
+
+pub(all) struct GeoprojalbersPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeoprojalbersPoint::add(Self, Self) -> Self
+pub fn GeoprojalbersPoint::cross(Self, Self) -> Self
+pub fn GeoprojalbersPoint::dist(Self, Self) -> Double
+pub fn GeoprojalbersPoint::dot(Self, Self) -> Double
+pub fn GeoprojalbersPoint::label(Self) -> Int32
+pub fn GeoprojalbersPoint::lerp(Self, Self, Double) -> Self
+pub fn GeoprojalbersPoint::mid(Self, Self) -> Self
+pub fn GeoprojalbersPoint::negate(Self) -> Self
+pub fn GeoprojalbersPoint::norm(Self) -> Double
+pub fn GeoprojalbersPoint::normalize(Self) -> Self
+pub fn GeoprojalbersPoint::scale(Self, Double) -> Self
+pub fn GeoprojalbersPoint::sub(Self, Self) -> Self
+pub fn GeoprojalbersPoint::to_string(Self) -> String
+pub fn GeoprojalbersPoint::x(Self) -> Double
+pub fn GeoprojalbersPoint::y(Self) -> Double
+pub fn GeoprojalbersPoint::z(Self) -> Double
+
+pub(all) struct GeoprojalbersRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojalbersRange::add(Self, Self) -> Self
+pub fn GeoprojalbersRange::copy(Self) -> Self
+pub fn GeoprojalbersRange::fill(Self, Double) -> Self
+pub fn GeoprojalbersRange::get(Self, Int32) -> Double
+pub fn GeoprojalbersRange::len(Self) -> Int32
+pub fn GeoprojalbersRange::max(Self) -> Double
+pub fn GeoprojalbersRange::mean(Self) -> Double
+pub fn GeoprojalbersRange::min(Self) -> Double
+pub fn GeoprojalbersRange::scale(Self, Double) -> Self
+pub fn GeoprojalbersRange::set(Self, Int32, Double) -> Self
+pub fn GeoprojalbersRange::sum(Self) -> Double
+pub fn GeoprojalbersRange::to_string(Self) -> String
+
+pub(all) struct GeoprojalbersSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeoprojalbersSeries::add(Self, Self) -> Self
+pub fn GeoprojalbersSeries::cumsum(Self) -> Self
+pub fn GeoprojalbersSeries::len(Self) -> Int32
+pub fn GeoprojalbersSeries::max(Self) -> Double
+pub fn GeoprojalbersSeries::mean(Self) -> Double
+pub fn GeoprojalbersSeries::median(Self) -> Double
+pub fn GeoprojalbersSeries::min(Self) -> Double
+pub fn GeoprojalbersSeries::normalize(Self) -> Self
+pub fn GeoprojalbersSeries::range(Self) -> Double
+pub fn GeoprojalbersSeries::scale(Self, Double) -> Self
+pub fn GeoprojalbersSeries::std(Self) -> Double
+pub fn GeoprojalbersSeries::sub(Self, Self) -> Self
+pub fn GeoprojalbersSeries::sum(Self) -> Double
+pub fn GeoprojalbersSeries::to_string(Self) -> String
+pub fn GeoprojalbersSeries::variance(Self) -> Double
+
+pub(all) struct GeoprojalbersSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojalbersSlice::add(Self, Self) -> Self
+pub fn GeoprojalbersSlice::copy(Self) -> Self
+pub fn GeoprojalbersSlice::fill(Self, Double) -> Self
+pub fn GeoprojalbersSlice::get(Self, Int32) -> Double
+pub fn GeoprojalbersSlice::len(Self) -> Int32
+pub fn GeoprojalbersSlice::max(Self) -> Double
+pub fn GeoprojalbersSlice::mean(Self) -> Double
+pub fn GeoprojalbersSlice::min(Self) -> Double
+pub fn GeoprojalbersSlice::scale(Self, Double) -> Self
+pub fn GeoprojalbersSlice::set(Self, Int32, Double) -> Self
+pub fn GeoprojalbersSlice::sum(Self) -> Double
+pub fn GeoprojalbersSlice::to_string(Self) -> String
+
+pub(all) struct GeoprojalbersTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojalbersTable::add(Self, Self) -> Self
+pub fn GeoprojalbersTable::copy(Self) -> Self
+pub fn GeoprojalbersTable::fill(Self, Double) -> Self
+pub fn GeoprojalbersTable::get(Self, Int32) -> Double
+pub fn GeoprojalbersTable::len(Self) -> Int32
+pub fn GeoprojalbersTable::max(Self) -> Double
+pub fn GeoprojalbersTable::mean(Self) -> Double
+pub fn GeoprojalbersTable::min(Self) -> Double
+pub fn GeoprojalbersTable::scale(Self, Double) -> Self
+pub fn GeoprojalbersTable::set(Self, Int32, Double) -> Self
+pub fn GeoprojalbersTable::sum(Self) -> Double
+pub fn GeoprojalbersTable::to_string(Self) -> String
+
+pub(all) struct GeoprojalbersVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeoprojalbersVector::add(Self, Self) -> Self
+pub fn GeoprojalbersVector::dist(Self, Self) -> Double
+pub fn GeoprojalbersVector::dot(Self, Self) -> Double
+pub fn GeoprojalbersVector::norm(Self) -> Double
+pub fn GeoprojalbersVector::normalize(Self) -> Self
+pub fn GeoprojalbersVector::scale(Self, Double) -> Self
+pub fn GeoprojalbersVector::sub(Self, Self) -> Self
+pub fn GeoprojalbersVector::to_string(Self) -> String
+
+pub(all) struct GeoprojalbersView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojalbersView::add(Self, Self) -> Self
+pub fn GeoprojalbersView::copy(Self) -> Self
+pub fn GeoprojalbersView::fill(Self, Double) -> Self
+pub fn GeoprojalbersView::get(Self, Int32) -> Double
+pub fn GeoprojalbersView::len(Self) -> Int32
+pub fn GeoprojalbersView::max(Self) -> Double
+pub fn GeoprojalbersView::mean(Self) -> Double
+pub fn GeoprojalbersView::min(Self) -> Double
+pub fn GeoprojalbersView::scale(Self, Double) -> Self
+pub fn GeoprojalbersView::set(Self, Int32, Double) -> Self
+pub fn GeoprojalbersView::sum(Self) -> Double
+pub fn GeoprojalbersView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

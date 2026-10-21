@@ -1,0 +1,253 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/explainable"
+
+// Values
+pub fn ale_1d(ALEConfig, Array[Array[Double]], Int32, (Array[Double]) -> Double) -> (Array[Double], Array[Double])
+
+pub fn ale_2d(ALEConfig, Array[Array[Double]], Int32, Int32, (Array[Double]) -> Double) -> (Array[Double], Array[Double], Array[Array[Double]])
+
+pub fn ale_explain(ALEConfig, Array[Array[Double]], Int32, (Array[Double]) -> Double) -> Explanation
+
+pub fn anchors_explain(AnchorsConfig, Array[Double], Array[Array[Double]], (Array[Double]) -> Double) -> Explanation
+
+pub fn anchors_find(AnchorsConfig, Array[Double], Array[Array[Double]], (Array[Double]) -> Double) -> Array[(Int32, Double)]
+
+pub fn anchors_precision(Array[(Int32, Double)], Array[Array[Double]], Array[Double], (Array[Double]) -> Double) -> Double
+
+pub fn attention_rollout(Array[Array[Array[Double]]]) -> Array[Array[Double]]
+
+pub fn attention_weights(AttentionVizConfig, Array[Array[Double]]) -> Array[Array[Double]]
+
+pub fn cf_distance(Array[Double], Array[Double]) -> Double
+
+pub fn cf_explain(CounterfactualConfig, Array[Double], Double, (Array[Double]) -> Double, Array[(Double, Double)]) -> Explanation
+
+pub fn cf_find(CounterfactualConfig, Array[Double], Double, (Array[Double]) -> Double, Array[(Double, Double)]) -> Array[Double]
+
+pub fn completeness_eval(Explanation, Array[Double], (Array[Double]) -> Double) -> Double
+
+pub fn drop_col_importance(FeatureImportanceConfig, Array[Array[Double]], Array[Double], (Array[Double]) -> Double, (Array[Double], Int32) -> Double) -> Array[Double]
+
+pub fn explainable_id() -> String
+
+pub fn explanation_format(Explanation) -> String
+
+pub fn explanation_visualize(Explanation) -> String
+
+pub fn faithfulness_eval(Explanation, Array[Double], (Array[Double]) -> Double) -> Double
+
+pub fn grad_cam_explain(GradCAMConfig, Array[Array[Double]], Array[Array[Double]], Double) -> Explanation
+
+pub fn grad_cam_heatmap(GradCAMConfig, Array[Array[Double]], Array[Array[Double]]) -> Array[Array[Double]]
+
+pub fn ig_baseline(Array[Double]) -> Array[Double]
+
+pub fn ig_explain(IGConfig, Array[Double], (Array[Double]) -> Array[Double], (Array[Double]) -> Double) -> Explanation
+
+pub fn ig_path(IGConfig, Array[Double], Double) -> Array[Double]
+
+pub fn lime_explain(LIMEConfig, Array[Double], (Array[Double]) -> Double) -> Explanation
+
+pub fn lime_fit_local(LIMEConfig, Array[Double], Array[Double]) -> Array[Double]
+
+pub fn lime_sample(LIMEConfig, Array[Double]) -> Array[Array[Double]]
+
+pub fn make_ale(Int32, Array[String]) -> ALEConfig
+
+pub fn make_anchors(Double, Int32, Int32) -> AnchorsConfig
+
+pub fn make_attention_viz(Int32, Int32, Bool) -> AttentionVizConfig
+
+pub fn make_contribution(String, Double, Double) -> FeatureContribution
+
+pub fn make_counterfactual(Int32, Double, Int32) -> CounterfactualConfig
+
+pub fn make_decision_tree_explain(Array[TreeNode], Array[String]) -> DecisionTreeExplainConfig
+
+pub fn make_explanation(XAIMethod, Double, Double, Array[FeatureContribution]) -> Explanation
+
+pub fn make_feature_importance_xai(Int32, Int32, Array[String]) -> FeatureImportanceConfig
+
+pub fn make_grad_cam(Int32, Bool) -> GradCAMConfig
+
+pub fn make_integrated_gradients(Int32, Array[Double]) -> IGConfig
+
+pub fn make_lime(Int32, Double, Int32, Array[String]) -> LIMEConfig
+
+pub fn make_partial_dependence(Int32, Array[String]) -> PDPConfig
+
+pub fn make_rule_extraction(Double, Int32, Array[String]) -> RuleExtractionConfig
+
+pub fn make_shap(Int32, Int32, Array[String]) -> SHAPConfig
+
+pub fn make_surrogate(String, Int32, Array[String]) -> SurrogateConfig
+
+pub fn make_xai_config(XAIMethod, Int32, Int32, Double) -> XAIConfig
+
+pub fn monotonicity_eval(Explanation, Array[Double], (Array[Double]) -> Double) -> Double
+
+pub fn pdp_2d(PDPConfig, Array[Array[Double]], Int32, Int32, (Array[Double]) -> Double) -> (Array[Double], Array[Double], Array[Array[Double]])
+
+pub fn pdp_explain(PDPConfig, Array[Array[Double]], Int32, (Array[Double]) -> Double) -> (Array[Double], Array[Double])
+
+pub fn pdp_ice(PDPConfig, Array[Array[Double]], Int32, (Array[Double]) -> Double) -> Array[Array[Double]]
+
+pub fn permutation_importance(FeatureImportanceConfig, Array[Array[Double]], Array[Double], (Array[Double]) -> Double) -> Array[Double]
+
+pub fn rule_extract(RuleExtractionConfig, Array[Array[Double]], Array[Double]) -> Array[Rule]
+
+pub fn rule_simplify(Array[Rule]) -> Array[Rule]
+
+pub fn shap_explain(SHAPConfig, Array[Double], Array[Double], (Array[Double]) -> Double) -> Explanation
+
+pub fn shap_kernel(Int32, Int32) -> Double
+
+pub fn shap_value(SHAPConfig, Array[Double], Array[Double], (Array[Double]) -> Double) -> Array[Double]
+
+pub fn surrogate_explain(SurrogateConfig, Array[Double], Array[Double], Double) -> Explanation
+
+pub fn surrogate_fit(SurrogateConfig, Array[Array[Double]], Array[Double]) -> Array[Double]
+
+pub fn tree_feature_importance(DecisionTreeExplainConfig) -> Array[Double]
+
+pub fn tree_path(DecisionTreeExplainConfig, Array[Double]) -> Array[Int32]
+
+pub fn tree_rules(DecisionTreeExplainConfig, Array[Int32]) -> String
+
+pub fn xai_evaluate(Explanation, Array[Double], (Array[Double]) -> Double) -> Double
+
+pub fn xai_explain(XAIConfig, Array[Double], (Array[Double]) -> Double) -> Explanation
+
+// Errors
+
+// Types and methods
+pub struct ALEConfig {
+  grid_resolution : Int32
+  feature_names : Array[String]
+}
+
+pub struct AnchorsConfig {
+  precision_threshold : Double
+  num_candidates : Int32
+  seed : Int32
+}
+
+pub struct AttentionVizConfig {
+  num_heads : Int32
+  num_layers : Int32
+  rollout : Bool
+}
+
+pub struct CounterfactualConfig {
+  max_features_to_change : Int32
+  distance_threshold : Double
+  seed : Int32
+}
+
+pub struct DecisionTreeExplainConfig {
+  nodes : Array[TreeNode]
+  feature_names : Array[String]
+}
+
+pub struct Explanation {
+  xai_method : XAIMethod
+  base_value : Double
+  prediction : Double
+  contributions : Array[FeatureContribution]
+  meta : String
+}
+
+pub struct FeatureContribution {
+  feature : String
+  value : Double
+  contribution : Double
+}
+
+pub struct FeatureImportanceConfig {
+  num_repeats : Int32
+  seed : Int32
+  feature_names : Array[String]
+}
+
+pub struct GradCAMConfig {
+  target_layer : Int32
+  relu : Bool
+}
+
+pub struct IGConfig {
+  num_steps : Int32
+  baseline : Array[Double]
+}
+
+pub struct LIMEConfig {
+  num_samples : Int32
+  kernel_width : Double
+  seed : Int32
+  feature_names : Array[String]
+}
+
+pub struct PDPConfig {
+  grid_resolution : Int32
+  feature_names : Array[String]
+}
+
+pub struct Rule {
+  conditions : Array[(Int32, Double, Bool)]
+  consequence : Double
+  confidence : Double
+}
+
+pub struct RuleExtractionConfig {
+  min_confidence : Double
+  max_rules : Int32
+  feature_names : Array[String]
+}
+
+pub struct SHAPConfig {
+  num_samples : Int32
+  seed : Int32
+  feature_names : Array[String]
+}
+
+pub struct SurrogateConfig {
+  model_type : String
+  max_depth : Int32
+  feature_names : Array[String]
+}
+
+pub struct TreeNode {
+  feature : Int32
+  threshold : Double
+  left : Int32
+  right : Int32
+  value : Double
+  is_leaf : Bool
+}
+
+pub struct XAIConfig {
+  xai_method : XAIMethod
+  num_samples : Int32
+  seed : Int32
+  tolerance : Double
+  baseline : Array[Double]
+}
+
+pub(all) enum XAIMethod {
+  LIME
+  SHAP
+  IntegratedGradients
+  GradCAM
+  Attention
+  FeatureImportance
+  PartialDependence
+  Anchors
+  Counterfactual
+  DecisionTree
+  RuleExtraction
+  Surrogate
+  ALE
+}
+
+// Type aliases
+
+// Traits

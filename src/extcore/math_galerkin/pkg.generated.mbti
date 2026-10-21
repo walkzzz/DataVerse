@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_galerkin"
+
+// Values
+pub fn math_galerkin_buffer_make(Int32) -> MathgalerkinBuffer
+
+pub fn math_galerkin_cluster_make(Int32) -> MathgalerkinCluster
+
+pub fn math_galerkin_cursor_make(Int32) -> MathgalerkinCursor
+
+pub fn math_galerkin_edge_make(Int32) -> MathgalerkinEdge
+
+pub fn math_galerkin_frame_make(Int32) -> MathgalerkinFrame
+
+pub fn math_galerkin_graphn_make(Int32) -> MathgalerkinGraphN
+
+pub fn math_galerkin_layer_make(Int32) -> MathgalerkinLayer
+
+pub fn math_galerkin_make_matrix(Int32, Int32, Double) -> MathgalerkinMatrix
+
+pub fn math_galerkin_make_point(Double, Double) -> MathgalerkinPoint
+
+pub fn math_galerkin_make_point3(Double, Double, Double) -> MathgalerkinPoint
+
+pub fn math_galerkin_make_series(Array[Double], String) -> MathgalerkinSeries
+
+pub fn math_galerkin_make_vector(Array[Double]) -> MathgalerkinVector
+
+pub fn math_galerkin_matrix_identity(Int32) -> MathgalerkinMatrix
+
+pub fn math_galerkin_model_make(Int32) -> MathgalerkinModel
+
+pub fn math_galerkin_node_make(Int32) -> MathgalerkinNode
+
+pub fn math_galerkin_path_make(Int32) -> MathgalerkinPath
+
+pub fn math_galerkin_range_make(Int32) -> MathgalerkinRange
+
+pub fn math_galerkin_slice_make(Int32) -> MathgalerkinSlice
+
+pub fn math_galerkin_table_make(Int32) -> MathgalerkinTable
+
+pub fn math_galerkin_vector_zero(Int32) -> MathgalerkinVector
+
+pub fn math_galerkin_view_make(Int32) -> MathgalerkinView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathgalerkinBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathgalerkinBuffer::add(Self, Self) -> Self
+pub fn MathgalerkinBuffer::copy(Self) -> Self
+pub fn MathgalerkinBuffer::fill(Self, Double) -> Self
+pub fn MathgalerkinBuffer::get(Self, Int32) -> Double
+pub fn MathgalerkinBuffer::len(Self) -> Int32
+pub fn MathgalerkinBuffer::max(Self) -> Double
+pub fn MathgalerkinBuffer::mean(Self) -> Double
+pub fn MathgalerkinBuffer::min(Self) -> Double
+pub fn MathgalerkinBuffer::scale(Self, Double) -> Self
+pub fn MathgalerkinBuffer::set(Self, Int32, Double) -> Self
+pub fn MathgalerkinBuffer::sum(Self) -> Double
+pub fn MathgalerkinBuffer::to_string(Self) -> String
+
+pub(all) struct MathgalerkinCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathgalerkinCluster::add(Self, Self) -> Self
+pub fn MathgalerkinCluster::copy(Self) -> Self
+pub fn MathgalerkinCluster::fill(Self, Double) -> Self
+pub fn MathgalerkinCluster::get(Self, Int32) -> Double
+pub fn MathgalerkinCluster::len(Self) -> Int32
+pub fn MathgalerkinCluster::max(Self) -> Double
+pub fn MathgalerkinCluster::mean(Self) -> Double
+pub fn MathgalerkinCluster::min(Self) -> Double
+pub fn MathgalerkinCluster::scale(Self, Double) -> Self
+pub fn MathgalerkinCluster::set(Self, Int32, Double) -> Self
+pub fn MathgalerkinCluster::sum(Self) -> Double
+pub fn MathgalerkinCluster::to_string(Self) -> String
+
+pub(all) struct MathgalerkinCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathgalerkinCursor::add(Self, Self) -> Self
+pub fn MathgalerkinCursor::copy(Self) -> Self
+pub fn MathgalerkinCursor::fill(Self, Double) -> Self
+pub fn MathgalerkinCursor::get(Self, Int32) -> Double
+pub fn MathgalerkinCursor::len(Self) -> Int32
+pub fn MathgalerkinCursor::max(Self) -> Double
+pub fn MathgalerkinCursor::mean(Self) -> Double
+pub fn MathgalerkinCursor::min(Self) -> Double
+pub fn MathgalerkinCursor::scale(Self, Double) -> Self
+pub fn MathgalerkinCursor::set(Self, Int32, Double) -> Self
+pub fn MathgalerkinCursor::sum(Self) -> Double
+pub fn MathgalerkinCursor::to_string(Self) -> String
+
+pub(all) struct MathgalerkinEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathgalerkinEdge::add(Self, Self) -> Self
+pub fn MathgalerkinEdge::copy(Self) -> Self
+pub fn MathgalerkinEdge::fill(Self, Double) -> Self
+pub fn MathgalerkinEdge::get(Self, Int32) -> Double
+pub fn MathgalerkinEdge::len(Self) -> Int32
+pub fn MathgalerkinEdge::max(Self) -> Double
+pub fn MathgalerkinEdge::mean(Self) -> Double
+pub fn MathgalerkinEdge::min(Self) -> Double
+pub fn MathgalerkinEdge::scale(Self, Double) -> Self
+pub fn MathgalerkinEdge::set(Self, Int32, Double) -> Self
+pub fn MathgalerkinEdge::sum(Self) -> Double
+pub fn MathgalerkinEdge::to_string(Self) -> String
+
+pub(all) struct MathgalerkinFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathgalerkinFrame::add(Self, Self) -> Self
+pub fn MathgalerkinFrame::copy(Self) -> Self
+pub fn MathgalerkinFrame::fill(Self, Double) -> Self
+pub fn MathgalerkinFrame::get(Self, Int32) -> Double
+pub fn MathgalerkinFrame::len(Self) -> Int32
+pub fn MathgalerkinFrame::max(Self) -> Double
+pub fn MathgalerkinFrame::mean(Self) -> Double
+pub fn MathgalerkinFrame::min(Self) -> Double
+pub fn MathgalerkinFrame::scale(Self, Double) -> Self
+pub fn MathgalerkinFrame::set(Self, Int32, Double) -> Self
+pub fn MathgalerkinFrame::sum(Self) -> Double
+pub fn MathgalerkinFrame::to_string(Self) -> String
+
+pub(all) struct MathgalerkinGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathgalerkinGraphN::add(Self, Self) -> Self
+pub fn MathgalerkinGraphN::copy(Self) -> Self
+pub fn MathgalerkinGraphN::fill(Self, Double) -> Self
+pub fn MathgalerkinGraphN::get(Self, Int32) -> Double
+pub fn MathgalerkinGraphN::len(Self) -> Int32
+pub fn MathgalerkinGraphN::max(Self) -> Double
+pub fn MathgalerkinGraphN::mean(Self) -> Double
+pub fn MathgalerkinGraphN::min(Self) -> Double
+pub fn MathgalerkinGraphN::scale(Self, Double) -> Self
+pub fn MathgalerkinGraphN::set(Self, Int32, Double) -> Self
+pub fn MathgalerkinGraphN::sum(Self) -> Double
+pub fn MathgalerkinGraphN::to_string(Self) -> String
+
+pub(all) struct MathgalerkinLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathgalerkinLayer::add(Self, Self) -> Self
+pub fn MathgalerkinLayer::copy(Self) -> Self
+pub fn MathgalerkinLayer::fill(Self, Double) -> Self
+pub fn MathgalerkinLayer::get(Self, Int32) -> Double
+pub fn MathgalerkinLayer::len(Self) -> Int32
+pub fn MathgalerkinLayer::max(Self) -> Double
+pub fn MathgalerkinLayer::mean(Self) -> Double
+pub fn MathgalerkinLayer::min(Self) -> Double
+pub fn MathgalerkinLayer::scale(Self, Double) -> Self
+pub fn MathgalerkinLayer::set(Self, Int32, Double) -> Self
+pub fn MathgalerkinLayer::sum(Self) -> Double
+pub fn MathgalerkinLayer::to_string(Self) -> String
+
+pub(all) struct MathgalerkinMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathgalerkinMatrix::add(Self, Self) -> Self
+pub fn MathgalerkinMatrix::det(Self) -> Double
+pub fn MathgalerkinMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathgalerkinMatrix::multiply(Self, Self) -> Self
+pub fn MathgalerkinMatrix::norm(Self) -> Double
+pub fn MathgalerkinMatrix::scale(Self, Double) -> Self
+pub fn MathgalerkinMatrix::to_string(Self) -> String
+pub fn MathgalerkinMatrix::trace(Self) -> Double
+pub fn MathgalerkinMatrix::transpose(Self) -> Self
+
+pub(all) struct MathgalerkinModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathgalerkinModel::add(Self, Self) -> Self
+pub fn MathgalerkinModel::copy(Self) -> Self
+pub fn MathgalerkinModel::fill(Self, Double) -> Self
+pub fn MathgalerkinModel::get(Self, Int32) -> Double
+pub fn MathgalerkinModel::len(Self) -> Int32
+pub fn MathgalerkinModel::max(Self) -> Double
+pub fn MathgalerkinModel::mean(Self) -> Double
+pub fn MathgalerkinModel::min(Self) -> Double
+pub fn MathgalerkinModel::scale(Self, Double) -> Self
+pub fn MathgalerkinModel::set(Self, Int32, Double) -> Self
+pub fn MathgalerkinModel::sum(Self) -> Double
+pub fn MathgalerkinModel::to_string(Self) -> String
+
+pub(all) struct MathgalerkinNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathgalerkinNode::add(Self, Self) -> Self
+pub fn MathgalerkinNode::copy(Self) -> Self
+pub fn MathgalerkinNode::fill(Self, Double) -> Self
+pub fn MathgalerkinNode::get(Self, Int32) -> Double
+pub fn MathgalerkinNode::len(Self) -> Int32
+pub fn MathgalerkinNode::max(Self) -> Double
+pub fn MathgalerkinNode::mean(Self) -> Double
+pub fn MathgalerkinNode::min(Self) -> Double
+pub fn MathgalerkinNode::scale(Self, Double) -> Self
+pub fn MathgalerkinNode::set(Self, Int32, Double) -> Self
+pub fn MathgalerkinNode::sum(Self) -> Double
+pub fn MathgalerkinNode::to_string(Self) -> String
+
+pub(all) struct MathgalerkinPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathgalerkinPath::add(Self, Self) -> Self
+pub fn MathgalerkinPath::copy(Self) -> Self
+pub fn MathgalerkinPath::fill(Self, Double) -> Self
+pub fn MathgalerkinPath::get(Self, Int32) -> Double
+pub fn MathgalerkinPath::len(Self) -> Int32
+pub fn MathgalerkinPath::max(Self) -> Double
+pub fn MathgalerkinPath::mean(Self) -> Double
+pub fn MathgalerkinPath::min(Self) -> Double
+pub fn MathgalerkinPath::scale(Self, Double) -> Self
+pub fn MathgalerkinPath::set(Self, Int32, Double) -> Self
+pub fn MathgalerkinPath::sum(Self) -> Double
+pub fn MathgalerkinPath::to_string(Self) -> String
+
+pub(all) struct MathgalerkinPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathgalerkinPoint::add(Self, Self) -> Self
+pub fn MathgalerkinPoint::cross(Self, Self) -> Self
+pub fn MathgalerkinPoint::dist(Self, Self) -> Double
+pub fn MathgalerkinPoint::dot(Self, Self) -> Double
+pub fn MathgalerkinPoint::label(Self) -> Int32
+pub fn MathgalerkinPoint::lerp(Self, Self, Double) -> Self
+pub fn MathgalerkinPoint::mid(Self, Self) -> Self
+pub fn MathgalerkinPoint::negate(Self) -> Self
+pub fn MathgalerkinPoint::norm(Self) -> Double
+pub fn MathgalerkinPoint::normalize(Self) -> Self
+pub fn MathgalerkinPoint::scale(Self, Double) -> Self
+pub fn MathgalerkinPoint::sub(Self, Self) -> Self
+pub fn MathgalerkinPoint::to_string(Self) -> String
+pub fn MathgalerkinPoint::x(Self) -> Double
+pub fn MathgalerkinPoint::y(Self) -> Double
+pub fn MathgalerkinPoint::z(Self) -> Double
+
+pub(all) struct MathgalerkinRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathgalerkinRange::add(Self, Self) -> Self
+pub fn MathgalerkinRange::copy(Self) -> Self
+pub fn MathgalerkinRange::fill(Self, Double) -> Self
+pub fn MathgalerkinRange::get(Self, Int32) -> Double
+pub fn MathgalerkinRange::len(Self) -> Int32
+pub fn MathgalerkinRange::max(Self) -> Double
+pub fn MathgalerkinRange::mean(Self) -> Double
+pub fn MathgalerkinRange::min(Self) -> Double
+pub fn MathgalerkinRange::scale(Self, Double) -> Self
+pub fn MathgalerkinRange::set(Self, Int32, Double) -> Self
+pub fn MathgalerkinRange::sum(Self) -> Double
+pub fn MathgalerkinRange::to_string(Self) -> String
+
+pub(all) struct MathgalerkinSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathgalerkinSeries::add(Self, Self) -> Self
+pub fn MathgalerkinSeries::cumsum(Self) -> Self
+pub fn MathgalerkinSeries::len(Self) -> Int32
+pub fn MathgalerkinSeries::max(Self) -> Double
+pub fn MathgalerkinSeries::mean(Self) -> Double
+pub fn MathgalerkinSeries::median(Self) -> Double
+pub fn MathgalerkinSeries::min(Self) -> Double
+pub fn MathgalerkinSeries::normalize(Self) -> Self
+pub fn MathgalerkinSeries::range(Self) -> Double
+pub fn MathgalerkinSeries::scale(Self, Double) -> Self
+pub fn MathgalerkinSeries::std(Self) -> Double
+pub fn MathgalerkinSeries::sub(Self, Self) -> Self
+pub fn MathgalerkinSeries::sum(Self) -> Double
+pub fn MathgalerkinSeries::to_string(Self) -> String
+pub fn MathgalerkinSeries::variance(Self) -> Double
+
+pub(all) struct MathgalerkinSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathgalerkinSlice::add(Self, Self) -> Self
+pub fn MathgalerkinSlice::copy(Self) -> Self
+pub fn MathgalerkinSlice::fill(Self, Double) -> Self
+pub fn MathgalerkinSlice::get(Self, Int32) -> Double
+pub fn MathgalerkinSlice::len(Self) -> Int32
+pub fn MathgalerkinSlice::max(Self) -> Double
+pub fn MathgalerkinSlice::mean(Self) -> Double
+pub fn MathgalerkinSlice::min(Self) -> Double
+pub fn MathgalerkinSlice::scale(Self, Double) -> Self
+pub fn MathgalerkinSlice::set(Self, Int32, Double) -> Self
+pub fn MathgalerkinSlice::sum(Self) -> Double
+pub fn MathgalerkinSlice::to_string(Self) -> String
+
+pub(all) struct MathgalerkinTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathgalerkinTable::add(Self, Self) -> Self
+pub fn MathgalerkinTable::copy(Self) -> Self
+pub fn MathgalerkinTable::fill(Self, Double) -> Self
+pub fn MathgalerkinTable::get(Self, Int32) -> Double
+pub fn MathgalerkinTable::len(Self) -> Int32
+pub fn MathgalerkinTable::max(Self) -> Double
+pub fn MathgalerkinTable::mean(Self) -> Double
+pub fn MathgalerkinTable::min(Self) -> Double
+pub fn MathgalerkinTable::scale(Self, Double) -> Self
+pub fn MathgalerkinTable::set(Self, Int32, Double) -> Self
+pub fn MathgalerkinTable::sum(Self) -> Double
+pub fn MathgalerkinTable::to_string(Self) -> String
+
+pub(all) struct MathgalerkinVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathgalerkinVector::add(Self, Self) -> Self
+pub fn MathgalerkinVector::dist(Self, Self) -> Double
+pub fn MathgalerkinVector::dot(Self, Self) -> Double
+pub fn MathgalerkinVector::norm(Self) -> Double
+pub fn MathgalerkinVector::normalize(Self) -> Self
+pub fn MathgalerkinVector::scale(Self, Double) -> Self
+pub fn MathgalerkinVector::sub(Self, Self) -> Self
+pub fn MathgalerkinVector::to_string(Self) -> String
+
+pub(all) struct MathgalerkinView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathgalerkinView::add(Self, Self) -> Self
+pub fn MathgalerkinView::copy(Self) -> Self
+pub fn MathgalerkinView::fill(Self, Double) -> Self
+pub fn MathgalerkinView::get(Self, Int32) -> Double
+pub fn MathgalerkinView::len(Self) -> Int32
+pub fn MathgalerkinView::max(Self) -> Double
+pub fn MathgalerkinView::mean(Self) -> Double
+pub fn MathgalerkinView::min(Self) -> Double
+pub fn MathgalerkinView::scale(Self, Double) -> Self
+pub fn MathgalerkinView::set(Self, Int32, Double) -> Self
+pub fn MathgalerkinView::sum(Self) -> Double
+pub fn MathgalerkinView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

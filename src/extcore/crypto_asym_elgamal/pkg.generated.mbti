@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/crypto_asym_elgamal"
+
+// Values
+pub fn crypto_asym_elgamal_buffer_make(Int32) -> CryptoasymelgamalBuffer
+
+pub fn crypto_asym_elgamal_cluster_make(Int32) -> CryptoasymelgamalCluster
+
+pub fn crypto_asym_elgamal_cursor_make(Int32) -> CryptoasymelgamalCursor
+
+pub fn crypto_asym_elgamal_edge_make(Int32) -> CryptoasymelgamalEdge
+
+pub fn crypto_asym_elgamal_frame_make(Int32) -> CryptoasymelgamalFrame
+
+pub fn crypto_asym_elgamal_graphn_make(Int32) -> CryptoasymelgamalGraphN
+
+pub fn crypto_asym_elgamal_layer_make(Int32) -> CryptoasymelgamalLayer
+
+pub fn crypto_asym_elgamal_make_matrix(Int32, Int32, Double) -> CryptoasymelgamalMatrix
+
+pub fn crypto_asym_elgamal_make_point(Double, Double) -> CryptoasymelgamalPoint
+
+pub fn crypto_asym_elgamal_make_point3(Double, Double, Double) -> CryptoasymelgamalPoint
+
+pub fn crypto_asym_elgamal_make_series(Array[Double], String) -> CryptoasymelgamalSeries
+
+pub fn crypto_asym_elgamal_make_vector(Array[Double]) -> CryptoasymelgamalVector
+
+pub fn crypto_asym_elgamal_matrix_identity(Int32) -> CryptoasymelgamalMatrix
+
+pub fn crypto_asym_elgamal_model_make(Int32) -> CryptoasymelgamalModel
+
+pub fn crypto_asym_elgamal_node_make(Int32) -> CryptoasymelgamalNode
+
+pub fn crypto_asym_elgamal_path_make(Int32) -> CryptoasymelgamalPath
+
+pub fn crypto_asym_elgamal_range_make(Int32) -> CryptoasymelgamalRange
+
+pub fn crypto_asym_elgamal_slice_make(Int32) -> CryptoasymelgamalSlice
+
+pub fn crypto_asym_elgamal_table_make(Int32) -> CryptoasymelgamalTable
+
+pub fn crypto_asym_elgamal_vector_zero(Int32) -> CryptoasymelgamalVector
+
+pub fn crypto_asym_elgamal_view_make(Int32) -> CryptoasymelgamalView
+
+// Errors
+
+// Types and methods
+pub(all) struct CryptoasymelgamalBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymelgamalBuffer::add(Self, Self) -> Self
+pub fn CryptoasymelgamalBuffer::copy(Self) -> Self
+pub fn CryptoasymelgamalBuffer::fill(Self, Double) -> Self
+pub fn CryptoasymelgamalBuffer::get(Self, Int32) -> Double
+pub fn CryptoasymelgamalBuffer::len(Self) -> Int32
+pub fn CryptoasymelgamalBuffer::max(Self) -> Double
+pub fn CryptoasymelgamalBuffer::mean(Self) -> Double
+pub fn CryptoasymelgamalBuffer::min(Self) -> Double
+pub fn CryptoasymelgamalBuffer::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalBuffer::set(Self, Int32, Double) -> Self
+pub fn CryptoasymelgamalBuffer::sum(Self) -> Double
+pub fn CryptoasymelgamalBuffer::to_string(Self) -> String
+
+pub(all) struct CryptoasymelgamalCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymelgamalCluster::add(Self, Self) -> Self
+pub fn CryptoasymelgamalCluster::copy(Self) -> Self
+pub fn CryptoasymelgamalCluster::fill(Self, Double) -> Self
+pub fn CryptoasymelgamalCluster::get(Self, Int32) -> Double
+pub fn CryptoasymelgamalCluster::len(Self) -> Int32
+pub fn CryptoasymelgamalCluster::max(Self) -> Double
+pub fn CryptoasymelgamalCluster::mean(Self) -> Double
+pub fn CryptoasymelgamalCluster::min(Self) -> Double
+pub fn CryptoasymelgamalCluster::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalCluster::set(Self, Int32, Double) -> Self
+pub fn CryptoasymelgamalCluster::sum(Self) -> Double
+pub fn CryptoasymelgamalCluster::to_string(Self) -> String
+
+pub(all) struct CryptoasymelgamalCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymelgamalCursor::add(Self, Self) -> Self
+pub fn CryptoasymelgamalCursor::copy(Self) -> Self
+pub fn CryptoasymelgamalCursor::fill(Self, Double) -> Self
+pub fn CryptoasymelgamalCursor::get(Self, Int32) -> Double
+pub fn CryptoasymelgamalCursor::len(Self) -> Int32
+pub fn CryptoasymelgamalCursor::max(Self) -> Double
+pub fn CryptoasymelgamalCursor::mean(Self) -> Double
+pub fn CryptoasymelgamalCursor::min(Self) -> Double
+pub fn CryptoasymelgamalCursor::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalCursor::set(Self, Int32, Double) -> Self
+pub fn CryptoasymelgamalCursor::sum(Self) -> Double
+pub fn CryptoasymelgamalCursor::to_string(Self) -> String
+
+pub(all) struct CryptoasymelgamalEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymelgamalEdge::add(Self, Self) -> Self
+pub fn CryptoasymelgamalEdge::copy(Self) -> Self
+pub fn CryptoasymelgamalEdge::fill(Self, Double) -> Self
+pub fn CryptoasymelgamalEdge::get(Self, Int32) -> Double
+pub fn CryptoasymelgamalEdge::len(Self) -> Int32
+pub fn CryptoasymelgamalEdge::max(Self) -> Double
+pub fn CryptoasymelgamalEdge::mean(Self) -> Double
+pub fn CryptoasymelgamalEdge::min(Self) -> Double
+pub fn CryptoasymelgamalEdge::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalEdge::set(Self, Int32, Double) -> Self
+pub fn CryptoasymelgamalEdge::sum(Self) -> Double
+pub fn CryptoasymelgamalEdge::to_string(Self) -> String
+
+pub(all) struct CryptoasymelgamalFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymelgamalFrame::add(Self, Self) -> Self
+pub fn CryptoasymelgamalFrame::copy(Self) -> Self
+pub fn CryptoasymelgamalFrame::fill(Self, Double) -> Self
+pub fn CryptoasymelgamalFrame::get(Self, Int32) -> Double
+pub fn CryptoasymelgamalFrame::len(Self) -> Int32
+pub fn CryptoasymelgamalFrame::max(Self) -> Double
+pub fn CryptoasymelgamalFrame::mean(Self) -> Double
+pub fn CryptoasymelgamalFrame::min(Self) -> Double
+pub fn CryptoasymelgamalFrame::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalFrame::set(Self, Int32, Double) -> Self
+pub fn CryptoasymelgamalFrame::sum(Self) -> Double
+pub fn CryptoasymelgamalFrame::to_string(Self) -> String
+
+pub(all) struct CryptoasymelgamalGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymelgamalGraphN::add(Self, Self) -> Self
+pub fn CryptoasymelgamalGraphN::copy(Self) -> Self
+pub fn CryptoasymelgamalGraphN::fill(Self, Double) -> Self
+pub fn CryptoasymelgamalGraphN::get(Self, Int32) -> Double
+pub fn CryptoasymelgamalGraphN::len(Self) -> Int32
+pub fn CryptoasymelgamalGraphN::max(Self) -> Double
+pub fn CryptoasymelgamalGraphN::mean(Self) -> Double
+pub fn CryptoasymelgamalGraphN::min(Self) -> Double
+pub fn CryptoasymelgamalGraphN::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalGraphN::set(Self, Int32, Double) -> Self
+pub fn CryptoasymelgamalGraphN::sum(Self) -> Double
+pub fn CryptoasymelgamalGraphN::to_string(Self) -> String
+
+pub(all) struct CryptoasymelgamalLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymelgamalLayer::add(Self, Self) -> Self
+pub fn CryptoasymelgamalLayer::copy(Self) -> Self
+pub fn CryptoasymelgamalLayer::fill(Self, Double) -> Self
+pub fn CryptoasymelgamalLayer::get(Self, Int32) -> Double
+pub fn CryptoasymelgamalLayer::len(Self) -> Int32
+pub fn CryptoasymelgamalLayer::max(Self) -> Double
+pub fn CryptoasymelgamalLayer::mean(Self) -> Double
+pub fn CryptoasymelgamalLayer::min(Self) -> Double
+pub fn CryptoasymelgamalLayer::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalLayer::set(Self, Int32, Double) -> Self
+pub fn CryptoasymelgamalLayer::sum(Self) -> Double
+pub fn CryptoasymelgamalLayer::to_string(Self) -> String
+
+pub(all) struct CryptoasymelgamalMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn CryptoasymelgamalMatrix::add(Self, Self) -> Self
+pub fn CryptoasymelgamalMatrix::det(Self) -> Double
+pub fn CryptoasymelgamalMatrix::get(Self, Int32, Int32) -> Double
+pub fn CryptoasymelgamalMatrix::multiply(Self, Self) -> Self
+pub fn CryptoasymelgamalMatrix::norm(Self) -> Double
+pub fn CryptoasymelgamalMatrix::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalMatrix::to_string(Self) -> String
+pub fn CryptoasymelgamalMatrix::trace(Self) -> Double
+pub fn CryptoasymelgamalMatrix::transpose(Self) -> Self
+
+pub(all) struct CryptoasymelgamalModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymelgamalModel::add(Self, Self) -> Self
+pub fn CryptoasymelgamalModel::copy(Self) -> Self
+pub fn CryptoasymelgamalModel::fill(Self, Double) -> Self
+pub fn CryptoasymelgamalModel::get(Self, Int32) -> Double
+pub fn CryptoasymelgamalModel::len(Self) -> Int32
+pub fn CryptoasymelgamalModel::max(Self) -> Double
+pub fn CryptoasymelgamalModel::mean(Self) -> Double
+pub fn CryptoasymelgamalModel::min(Self) -> Double
+pub fn CryptoasymelgamalModel::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalModel::set(Self, Int32, Double) -> Self
+pub fn CryptoasymelgamalModel::sum(Self) -> Double
+pub fn CryptoasymelgamalModel::to_string(Self) -> String
+
+pub(all) struct CryptoasymelgamalNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymelgamalNode::add(Self, Self) -> Self
+pub fn CryptoasymelgamalNode::copy(Self) -> Self
+pub fn CryptoasymelgamalNode::fill(Self, Double) -> Self
+pub fn CryptoasymelgamalNode::get(Self, Int32) -> Double
+pub fn CryptoasymelgamalNode::len(Self) -> Int32
+pub fn CryptoasymelgamalNode::max(Self) -> Double
+pub fn CryptoasymelgamalNode::mean(Self) -> Double
+pub fn CryptoasymelgamalNode::min(Self) -> Double
+pub fn CryptoasymelgamalNode::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalNode::set(Self, Int32, Double) -> Self
+pub fn CryptoasymelgamalNode::sum(Self) -> Double
+pub fn CryptoasymelgamalNode::to_string(Self) -> String
+
+pub(all) struct CryptoasymelgamalPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymelgamalPath::add(Self, Self) -> Self
+pub fn CryptoasymelgamalPath::copy(Self) -> Self
+pub fn CryptoasymelgamalPath::fill(Self, Double) -> Self
+pub fn CryptoasymelgamalPath::get(Self, Int32) -> Double
+pub fn CryptoasymelgamalPath::len(Self) -> Int32
+pub fn CryptoasymelgamalPath::max(Self) -> Double
+pub fn CryptoasymelgamalPath::mean(Self) -> Double
+pub fn CryptoasymelgamalPath::min(Self) -> Double
+pub fn CryptoasymelgamalPath::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalPath::set(Self, Int32, Double) -> Self
+pub fn CryptoasymelgamalPath::sum(Self) -> Double
+pub fn CryptoasymelgamalPath::to_string(Self) -> String
+
+pub(all) struct CryptoasymelgamalPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn CryptoasymelgamalPoint::add(Self, Self) -> Self
+pub fn CryptoasymelgamalPoint::cross(Self, Self) -> Self
+pub fn CryptoasymelgamalPoint::dist(Self, Self) -> Double
+pub fn CryptoasymelgamalPoint::dot(Self, Self) -> Double
+pub fn CryptoasymelgamalPoint::label(Self) -> Int32
+pub fn CryptoasymelgamalPoint::lerp(Self, Self, Double) -> Self
+pub fn CryptoasymelgamalPoint::mid(Self, Self) -> Self
+pub fn CryptoasymelgamalPoint::negate(Self) -> Self
+pub fn CryptoasymelgamalPoint::norm(Self) -> Double
+pub fn CryptoasymelgamalPoint::normalize(Self) -> Self
+pub fn CryptoasymelgamalPoint::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalPoint::sub(Self, Self) -> Self
+pub fn CryptoasymelgamalPoint::to_string(Self) -> String
+pub fn CryptoasymelgamalPoint::x(Self) -> Double
+pub fn CryptoasymelgamalPoint::y(Self) -> Double
+pub fn CryptoasymelgamalPoint::z(Self) -> Double
+
+pub(all) struct CryptoasymelgamalRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymelgamalRange::add(Self, Self) -> Self
+pub fn CryptoasymelgamalRange::copy(Self) -> Self
+pub fn CryptoasymelgamalRange::fill(Self, Double) -> Self
+pub fn CryptoasymelgamalRange::get(Self, Int32) -> Double
+pub fn CryptoasymelgamalRange::len(Self) -> Int32
+pub fn CryptoasymelgamalRange::max(Self) -> Double
+pub fn CryptoasymelgamalRange::mean(Self) -> Double
+pub fn CryptoasymelgamalRange::min(Self) -> Double
+pub fn CryptoasymelgamalRange::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalRange::set(Self, Int32, Double) -> Self
+pub fn CryptoasymelgamalRange::sum(Self) -> Double
+pub fn CryptoasymelgamalRange::to_string(Self) -> String
+
+pub(all) struct CryptoasymelgamalSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn CryptoasymelgamalSeries::add(Self, Self) -> Self
+pub fn CryptoasymelgamalSeries::cumsum(Self) -> Self
+pub fn CryptoasymelgamalSeries::len(Self) -> Int32
+pub fn CryptoasymelgamalSeries::max(Self) -> Double
+pub fn CryptoasymelgamalSeries::mean(Self) -> Double
+pub fn CryptoasymelgamalSeries::median(Self) -> Double
+pub fn CryptoasymelgamalSeries::min(Self) -> Double
+pub fn CryptoasymelgamalSeries::normalize(Self) -> Self
+pub fn CryptoasymelgamalSeries::range(Self) -> Double
+pub fn CryptoasymelgamalSeries::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalSeries::std(Self) -> Double
+pub fn CryptoasymelgamalSeries::sub(Self, Self) -> Self
+pub fn CryptoasymelgamalSeries::sum(Self) -> Double
+pub fn CryptoasymelgamalSeries::to_string(Self) -> String
+pub fn CryptoasymelgamalSeries::variance(Self) -> Double
+
+pub(all) struct CryptoasymelgamalSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymelgamalSlice::add(Self, Self) -> Self
+pub fn CryptoasymelgamalSlice::copy(Self) -> Self
+pub fn CryptoasymelgamalSlice::fill(Self, Double) -> Self
+pub fn CryptoasymelgamalSlice::get(Self, Int32) -> Double
+pub fn CryptoasymelgamalSlice::len(Self) -> Int32
+pub fn CryptoasymelgamalSlice::max(Self) -> Double
+pub fn CryptoasymelgamalSlice::mean(Self) -> Double
+pub fn CryptoasymelgamalSlice::min(Self) -> Double
+pub fn CryptoasymelgamalSlice::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalSlice::set(Self, Int32, Double) -> Self
+pub fn CryptoasymelgamalSlice::sum(Self) -> Double
+pub fn CryptoasymelgamalSlice::to_string(Self) -> String
+
+pub(all) struct CryptoasymelgamalTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymelgamalTable::add(Self, Self) -> Self
+pub fn CryptoasymelgamalTable::copy(Self) -> Self
+pub fn CryptoasymelgamalTable::fill(Self, Double) -> Self
+pub fn CryptoasymelgamalTable::get(Self, Int32) -> Double
+pub fn CryptoasymelgamalTable::len(Self) -> Int32
+pub fn CryptoasymelgamalTable::max(Self) -> Double
+pub fn CryptoasymelgamalTable::mean(Self) -> Double
+pub fn CryptoasymelgamalTable::min(Self) -> Double
+pub fn CryptoasymelgamalTable::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalTable::set(Self, Int32, Double) -> Self
+pub fn CryptoasymelgamalTable::sum(Self) -> Double
+pub fn CryptoasymelgamalTable::to_string(Self) -> String
+
+pub(all) struct CryptoasymelgamalVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn CryptoasymelgamalVector::add(Self, Self) -> Self
+pub fn CryptoasymelgamalVector::dist(Self, Self) -> Double
+pub fn CryptoasymelgamalVector::dot(Self, Self) -> Double
+pub fn CryptoasymelgamalVector::norm(Self) -> Double
+pub fn CryptoasymelgamalVector::normalize(Self) -> Self
+pub fn CryptoasymelgamalVector::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalVector::sub(Self, Self) -> Self
+pub fn CryptoasymelgamalVector::to_string(Self) -> String
+
+pub(all) struct CryptoasymelgamalView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymelgamalView::add(Self, Self) -> Self
+pub fn CryptoasymelgamalView::copy(Self) -> Self
+pub fn CryptoasymelgamalView::fill(Self, Double) -> Self
+pub fn CryptoasymelgamalView::get(Self, Int32) -> Double
+pub fn CryptoasymelgamalView::len(Self) -> Int32
+pub fn CryptoasymelgamalView::max(Self) -> Double
+pub fn CryptoasymelgamalView::mean(Self) -> Double
+pub fn CryptoasymelgamalView::min(Self) -> Double
+pub fn CryptoasymelgamalView::scale(Self, Double) -> Self
+pub fn CryptoasymelgamalView::set(Self, Int32, Double) -> Self
+pub fn CryptoasymelgamalView::sum(Self) -> Double
+pub fn CryptoasymelgamalView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

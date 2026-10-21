@@ -1,0 +1,50 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/hyperparam_search"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn empty_grid_result() -> GridResult
+
+pub fn grid_combinations(Array[GridConfig]) -> Array[Array[(String, Double)]]
+
+pub fn grid_search(Array[GridConfig], (Array[(String, Double)]) -> Double) -> GridResult
+
+pub fn hyperparam_search_id() -> String
+
+pub fn make_grid_config(String, Array[Double]) -> GridConfig
+
+// Errors
+
+// Types and methods
+pub struct GridConfig {
+  param_name : String
+  param_values : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn GridConfig::equal(Self, Self) -> Bool
+pub fn GridConfig::not_equal(Self, Self) -> Bool
+pub fn GridConfig::to_repr(Self) -> @debug.Repr
+
+pub struct GridResult {
+  best_params : Array[(String, Double)]
+  best_score : Double
+  all_results : Array[ParamCombo]
+  total_configs : Int32
+} derive(Eq, @debug.Debug)
+pub fn GridResult::equal(Self, Self) -> Bool
+pub fn GridResult::not_equal(Self, Self) -> Bool
+pub fn GridResult::to_repr(Self) -> @debug.Repr
+
+pub struct ParamCombo {
+  params : Array[(String, Double)]
+  score : Double
+} derive(Eq, @debug.Debug)
+pub fn ParamCombo::equal(Self, Self) -> Bool
+pub fn ParamCombo::not_equal(Self, Self) -> Bool
+pub fn ParamCombo::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

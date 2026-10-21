@@ -1,0 +1,54 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/memory"
+
+// Values
+pub fn access_memory(MemoryStore, String) -> MemoryStore
+
+pub fn add_memory(MemoryStore, MemoryEntry) -> MemoryStore
+
+pub fn clear_short_term(MemoryStore) -> MemoryStore
+
+pub fn make_memory_entry(String, String, MemoryType, Double, Double) -> MemoryEntry
+
+pub fn make_memory_store(Int32, Int32) -> MemoryStore
+
+pub fn memory_count(MemoryStore) -> Int32
+
+pub fn memory_count_by_type(MemoryStore, MemoryType) -> Int32
+
+pub fn memory_id() -> String
+
+pub fn memory_type_name(MemoryType) -> String
+
+pub fn retrieve_by_keyword(MemoryStore, String) -> Array[MemoryEntry]
+
+pub fn retrieve_by_type(MemoryStore, MemoryType) -> Array[MemoryEntry]
+
+// Errors
+
+// Types and methods
+pub struct MemoryEntry {
+  id : String
+  content : String
+  memory_type : MemoryType
+  timestamp : Double
+  importance : Double
+  access_count : Int32
+}
+
+pub struct MemoryStore {
+  entries : Array[MemoryEntry]
+  max_short_term : Int32
+  max_long_term : Int32
+}
+
+pub(all) enum MemoryType {
+  ShortTerm
+  LongTerm
+  Working
+  Episodic
+}
+
+// Type aliases
+
+// Traits

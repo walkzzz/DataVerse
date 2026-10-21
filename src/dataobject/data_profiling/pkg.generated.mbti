@@ -1,0 +1,222 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/data_profiling"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn data_profiling_id() -> String
+
+pub fn make_column_profile_result(String, ColumnKind, Int32, Int32, Int32, Int32, Double, Double, Double, Double, Double, Double, Double) -> ColumnProfileResult
+
+pub fn make_dataset_profile_result(String, Array[TableProfileResult]) -> DatasetProfileResult
+
+pub fn make_profile(String, ColumnKind, Array[Double]) -> ColumnProfileResult
+
+pub fn make_profile_config(Int32, Int32, String, Double) -> ProfileConfig
+
+pub fn make_table_profile_result(String, Int32, Array[ColumnProfileResult]) -> TableProfileResult
+
+pub fn profile_anomaly_profile(Array[Double], Double) -> AnomalyProfile
+
+pub fn profile_cardinality(Array[Double]) -> Int32
+
+pub fn profile_categorical(String, Array[String]) -> ColumnProfileResult
+
+pub fn profile_column(String, Array[Double]) -> ColumnProfileResult
+
+pub fn profile_compare(Array[Double], Array[Double]) -> ProfileCompare
+
+pub fn profile_completeness(Array[Double]) -> Double
+
+pub fn profile_correlation(Array[Double], Array[Double]) -> Double
+
+pub fn profile_covariance(Array[Double], Array[Double]) -> Double
+
+pub fn profile_dataset(String, Array[TableProfileResult]) -> DatasetProfileResult
+
+pub fn profile_datetime(String, Array[Double]) -> ColumnProfileResult
+
+pub fn profile_density(Array[Double]) -> Double
+
+pub fn profile_diff(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn profile_distinct_count(Array[Double]) -> Int32
+
+pub fn profile_distribution(Array[Double]) -> (Double, Double, Double, Double)
+
+pub fn profile_drift(Array[Double], Array[Double], Double) -> DriftResult
+
+pub fn profile_duplicate(Array[Double]) -> (Int32, Double)
+
+pub fn profile_entropy(Array[Double]) -> Double
+
+pub fn profile_format_detect(Array[String]) -> String
+
+pub fn profile_frequency(Array[Double]) -> Array[(Double, Double)]
+
+pub fn profile_histogram(Array[Double], Int32) -> Histogram
+
+pub fn profile_kurt_p(Array[Double]) -> Double
+
+pub fn profile_max(Array[Double]) -> Double
+
+pub fn profile_mean_p(Array[Double]) -> Double
+
+pub fn profile_median_p(Array[Double]) -> Double
+
+pub fn profile_min(Array[Double]) -> Double
+
+pub fn profile_missing(Array[Double]) -> (Int32, Double)
+
+pub fn profile_missing_count(Array[Double]) -> Int32
+
+pub fn profile_mutual_info(Array[Double], Array[Double], Int32) -> Double
+
+pub fn profile_numeric(String, Array[Double]) -> ColumnProfileResult
+
+pub fn profile_outlier(Array[Double], Double) -> Array[Int32]
+
+pub fn profile_pattern_detect(Array[String]) -> String
+
+pub fn profile_quality_score(Array[Double]) -> Double
+
+pub fn profile_quantiles(Array[Double]) -> Quantiles
+
+pub fn profile_report(String, Array[ProfileSummary], Double) -> ProfileReport
+
+pub fn profile_skew_p(Array[Double]) -> Double
+
+pub fn profile_std_p(Array[Double]) -> Double
+
+pub fn profile_summary(String, Array[Double]) -> ProfileSummary
+
+pub fn profile_table(String, Array[String], Array[Array[Double]]) -> TableProfileResult
+
+pub fn profile_text(String, Array[String]) -> ColumnProfileResult
+
+pub fn profile_top_values(Array[Double], Int32) -> Array[(Double, Int32)]
+
+pub fn profile_type_infer(Array[String]) -> ColumnKind
+
+pub fn profile_unique(Array[Double]) -> Int32
+
+pub fn profile_validity(Array[Double], Double, Double) -> Double
+
+pub fn profile_value_counts(Array[Double]) -> Array[(Double, Int32)]
+
+pub fn profile_var_p(Array[Double]) -> Double
+
+pub fn profile_visualize(Array[Double], Int32) -> String
+
+// Errors
+
+// Types and methods
+pub struct AnomalyProfile {
+  outlier_indices : Array[Int32]
+  outlier_count : Int32
+  outlier_ratio : Double
+  method_ : String
+}
+
+pub(all) enum ColumnKind {
+  NumericKind
+  CategoricalKind
+  DatetimeKind
+  TextKind
+  UnknownKind
+} derive(Eq, @debug.Debug)
+pub fn ColumnKind::equal(Self, Self) -> Bool
+pub fn ColumnKind::not_equal(Self, Self) -> Bool
+pub fn ColumnKind::to_repr(Self) -> @debug.Repr
+
+pub struct ColumnProfileResult {
+  name : String
+  kind : ColumnKind
+  count : Int32
+  nulls : Int32
+  distinct : Int32
+  duplicates : Int32
+  min_val : Double
+  max_val : Double
+  mean_val : Double
+  std_val : Double
+  completeness : Double
+  uniqueness : Double
+  quality_score : Double
+}
+
+pub struct DatasetProfileResult {
+  dataset_name : String
+  tables : Array[TableProfileResult]
+  total_rows : Int32
+  total_cols : Int32
+  overall_quality : Double
+}
+
+pub struct DriftResult {
+  drift_score : Double
+  is_drifted : Bool
+  threshold : Double
+}
+
+pub struct Histogram {
+  bin_edges : Array[Double]
+  bin_counts : Array[Int32]
+  total : Int32
+}
+
+pub struct ProfileCompare {
+  base_name : String
+  target_name : String
+  diff_count : Int32
+  diff_mean : Double
+  diff_std : Double
+  diff_quality : Double
+}
+
+pub struct ProfileConfig {
+  sample_size : Int32
+  bin_count : Int32
+  outlier_method : String
+  drift_threshold : Double
+  enable_histogram : Bool
+  enable_correlation : Bool
+}
+
+pub struct ProfileReport {
+  title : String
+  summaries : Array[ProfileSummary]
+  generated_at : Double
+}
+
+pub struct ProfileSummary {
+  total_count : Int32
+  missing_count : Int32
+  unique_count : Int32
+  duplicate_count : Int32
+  mean_value : Double
+  std_value : Double
+  quality_score : Double
+}
+
+pub struct Quantiles {
+  q0 : Double
+  q1 : Double
+  q2 : Double
+  q3 : Double
+  q4 : Double
+}
+
+pub struct TableProfileResult {
+  table_name : String
+  row_count : Int32
+  col_count : Int32
+  columns : Array[ColumnProfileResult]
+  overall_quality : Double
+}
+
+// Type aliases
+
+// Traits

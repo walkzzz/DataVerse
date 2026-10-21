@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_flow_mcmf"
+
+// Values
+pub fn graph_flow_mcmf_buffer_make(Int32) -> GraphflowmcmfBuffer
+
+pub fn graph_flow_mcmf_cluster_make(Int32) -> GraphflowmcmfCluster
+
+pub fn graph_flow_mcmf_cursor_make(Int32) -> GraphflowmcmfCursor
+
+pub fn graph_flow_mcmf_edge_make(Int32) -> GraphflowmcmfEdge
+
+pub fn graph_flow_mcmf_frame_make(Int32) -> GraphflowmcmfFrame
+
+pub fn graph_flow_mcmf_graphn_make(Int32) -> GraphflowmcmfGraphN
+
+pub fn graph_flow_mcmf_layer_make(Int32) -> GraphflowmcmfLayer
+
+pub fn graph_flow_mcmf_make_matrix(Int32, Int32, Double) -> GraphflowmcmfMatrix
+
+pub fn graph_flow_mcmf_make_point(Double, Double) -> GraphflowmcmfPoint
+
+pub fn graph_flow_mcmf_make_point3(Double, Double, Double) -> GraphflowmcmfPoint
+
+pub fn graph_flow_mcmf_make_series(Array[Double], String) -> GraphflowmcmfSeries
+
+pub fn graph_flow_mcmf_make_vector(Array[Double]) -> GraphflowmcmfVector
+
+pub fn graph_flow_mcmf_matrix_identity(Int32) -> GraphflowmcmfMatrix
+
+pub fn graph_flow_mcmf_model_make(Int32) -> GraphflowmcmfModel
+
+pub fn graph_flow_mcmf_node_make(Int32) -> GraphflowmcmfNode
+
+pub fn graph_flow_mcmf_path_make(Int32) -> GraphflowmcmfPath
+
+pub fn graph_flow_mcmf_range_make(Int32) -> GraphflowmcmfRange
+
+pub fn graph_flow_mcmf_slice_make(Int32) -> GraphflowmcmfSlice
+
+pub fn graph_flow_mcmf_table_make(Int32) -> GraphflowmcmfTable
+
+pub fn graph_flow_mcmf_vector_zero(Int32) -> GraphflowmcmfVector
+
+pub fn graph_flow_mcmf_view_make(Int32) -> GraphflowmcmfView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphflowmcmfBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmcmfBuffer::add(Self, Self) -> Self
+pub fn GraphflowmcmfBuffer::copy(Self) -> Self
+pub fn GraphflowmcmfBuffer::fill(Self, Double) -> Self
+pub fn GraphflowmcmfBuffer::get(Self, Int32) -> Double
+pub fn GraphflowmcmfBuffer::len(Self) -> Int32
+pub fn GraphflowmcmfBuffer::max(Self) -> Double
+pub fn GraphflowmcmfBuffer::mean(Self) -> Double
+pub fn GraphflowmcmfBuffer::min(Self) -> Double
+pub fn GraphflowmcmfBuffer::scale(Self, Double) -> Self
+pub fn GraphflowmcmfBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphflowmcmfBuffer::sum(Self) -> Double
+pub fn GraphflowmcmfBuffer::to_string(Self) -> String
+
+pub(all) struct GraphflowmcmfCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmcmfCluster::add(Self, Self) -> Self
+pub fn GraphflowmcmfCluster::copy(Self) -> Self
+pub fn GraphflowmcmfCluster::fill(Self, Double) -> Self
+pub fn GraphflowmcmfCluster::get(Self, Int32) -> Double
+pub fn GraphflowmcmfCluster::len(Self) -> Int32
+pub fn GraphflowmcmfCluster::max(Self) -> Double
+pub fn GraphflowmcmfCluster::mean(Self) -> Double
+pub fn GraphflowmcmfCluster::min(Self) -> Double
+pub fn GraphflowmcmfCluster::scale(Self, Double) -> Self
+pub fn GraphflowmcmfCluster::set(Self, Int32, Double) -> Self
+pub fn GraphflowmcmfCluster::sum(Self) -> Double
+pub fn GraphflowmcmfCluster::to_string(Self) -> String
+
+pub(all) struct GraphflowmcmfCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmcmfCursor::add(Self, Self) -> Self
+pub fn GraphflowmcmfCursor::copy(Self) -> Self
+pub fn GraphflowmcmfCursor::fill(Self, Double) -> Self
+pub fn GraphflowmcmfCursor::get(Self, Int32) -> Double
+pub fn GraphflowmcmfCursor::len(Self) -> Int32
+pub fn GraphflowmcmfCursor::max(Self) -> Double
+pub fn GraphflowmcmfCursor::mean(Self) -> Double
+pub fn GraphflowmcmfCursor::min(Self) -> Double
+pub fn GraphflowmcmfCursor::scale(Self, Double) -> Self
+pub fn GraphflowmcmfCursor::set(Self, Int32, Double) -> Self
+pub fn GraphflowmcmfCursor::sum(Self) -> Double
+pub fn GraphflowmcmfCursor::to_string(Self) -> String
+
+pub(all) struct GraphflowmcmfEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmcmfEdge::add(Self, Self) -> Self
+pub fn GraphflowmcmfEdge::copy(Self) -> Self
+pub fn GraphflowmcmfEdge::fill(Self, Double) -> Self
+pub fn GraphflowmcmfEdge::get(Self, Int32) -> Double
+pub fn GraphflowmcmfEdge::len(Self) -> Int32
+pub fn GraphflowmcmfEdge::max(Self) -> Double
+pub fn GraphflowmcmfEdge::mean(Self) -> Double
+pub fn GraphflowmcmfEdge::min(Self) -> Double
+pub fn GraphflowmcmfEdge::scale(Self, Double) -> Self
+pub fn GraphflowmcmfEdge::set(Self, Int32, Double) -> Self
+pub fn GraphflowmcmfEdge::sum(Self) -> Double
+pub fn GraphflowmcmfEdge::to_string(Self) -> String
+
+pub(all) struct GraphflowmcmfFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmcmfFrame::add(Self, Self) -> Self
+pub fn GraphflowmcmfFrame::copy(Self) -> Self
+pub fn GraphflowmcmfFrame::fill(Self, Double) -> Self
+pub fn GraphflowmcmfFrame::get(Self, Int32) -> Double
+pub fn GraphflowmcmfFrame::len(Self) -> Int32
+pub fn GraphflowmcmfFrame::max(Self) -> Double
+pub fn GraphflowmcmfFrame::mean(Self) -> Double
+pub fn GraphflowmcmfFrame::min(Self) -> Double
+pub fn GraphflowmcmfFrame::scale(Self, Double) -> Self
+pub fn GraphflowmcmfFrame::set(Self, Int32, Double) -> Self
+pub fn GraphflowmcmfFrame::sum(Self) -> Double
+pub fn GraphflowmcmfFrame::to_string(Self) -> String
+
+pub(all) struct GraphflowmcmfGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmcmfGraphN::add(Self, Self) -> Self
+pub fn GraphflowmcmfGraphN::copy(Self) -> Self
+pub fn GraphflowmcmfGraphN::fill(Self, Double) -> Self
+pub fn GraphflowmcmfGraphN::get(Self, Int32) -> Double
+pub fn GraphflowmcmfGraphN::len(Self) -> Int32
+pub fn GraphflowmcmfGraphN::max(Self) -> Double
+pub fn GraphflowmcmfGraphN::mean(Self) -> Double
+pub fn GraphflowmcmfGraphN::min(Self) -> Double
+pub fn GraphflowmcmfGraphN::scale(Self, Double) -> Self
+pub fn GraphflowmcmfGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphflowmcmfGraphN::sum(Self) -> Double
+pub fn GraphflowmcmfGraphN::to_string(Self) -> String
+
+pub(all) struct GraphflowmcmfLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmcmfLayer::add(Self, Self) -> Self
+pub fn GraphflowmcmfLayer::copy(Self) -> Self
+pub fn GraphflowmcmfLayer::fill(Self, Double) -> Self
+pub fn GraphflowmcmfLayer::get(Self, Int32) -> Double
+pub fn GraphflowmcmfLayer::len(Self) -> Int32
+pub fn GraphflowmcmfLayer::max(Self) -> Double
+pub fn GraphflowmcmfLayer::mean(Self) -> Double
+pub fn GraphflowmcmfLayer::min(Self) -> Double
+pub fn GraphflowmcmfLayer::scale(Self, Double) -> Self
+pub fn GraphflowmcmfLayer::set(Self, Int32, Double) -> Self
+pub fn GraphflowmcmfLayer::sum(Self) -> Double
+pub fn GraphflowmcmfLayer::to_string(Self) -> String
+
+pub(all) struct GraphflowmcmfMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphflowmcmfMatrix::add(Self, Self) -> Self
+pub fn GraphflowmcmfMatrix::det(Self) -> Double
+pub fn GraphflowmcmfMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphflowmcmfMatrix::multiply(Self, Self) -> Self
+pub fn GraphflowmcmfMatrix::norm(Self) -> Double
+pub fn GraphflowmcmfMatrix::scale(Self, Double) -> Self
+pub fn GraphflowmcmfMatrix::to_string(Self) -> String
+pub fn GraphflowmcmfMatrix::trace(Self) -> Double
+pub fn GraphflowmcmfMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphflowmcmfModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmcmfModel::add(Self, Self) -> Self
+pub fn GraphflowmcmfModel::copy(Self) -> Self
+pub fn GraphflowmcmfModel::fill(Self, Double) -> Self
+pub fn GraphflowmcmfModel::get(Self, Int32) -> Double
+pub fn GraphflowmcmfModel::len(Self) -> Int32
+pub fn GraphflowmcmfModel::max(Self) -> Double
+pub fn GraphflowmcmfModel::mean(Self) -> Double
+pub fn GraphflowmcmfModel::min(Self) -> Double
+pub fn GraphflowmcmfModel::scale(Self, Double) -> Self
+pub fn GraphflowmcmfModel::set(Self, Int32, Double) -> Self
+pub fn GraphflowmcmfModel::sum(Self) -> Double
+pub fn GraphflowmcmfModel::to_string(Self) -> String
+
+pub(all) struct GraphflowmcmfNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmcmfNode::add(Self, Self) -> Self
+pub fn GraphflowmcmfNode::copy(Self) -> Self
+pub fn GraphflowmcmfNode::fill(Self, Double) -> Self
+pub fn GraphflowmcmfNode::get(Self, Int32) -> Double
+pub fn GraphflowmcmfNode::len(Self) -> Int32
+pub fn GraphflowmcmfNode::max(Self) -> Double
+pub fn GraphflowmcmfNode::mean(Self) -> Double
+pub fn GraphflowmcmfNode::min(Self) -> Double
+pub fn GraphflowmcmfNode::scale(Self, Double) -> Self
+pub fn GraphflowmcmfNode::set(Self, Int32, Double) -> Self
+pub fn GraphflowmcmfNode::sum(Self) -> Double
+pub fn GraphflowmcmfNode::to_string(Self) -> String
+
+pub(all) struct GraphflowmcmfPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmcmfPath::add(Self, Self) -> Self
+pub fn GraphflowmcmfPath::copy(Self) -> Self
+pub fn GraphflowmcmfPath::fill(Self, Double) -> Self
+pub fn GraphflowmcmfPath::get(Self, Int32) -> Double
+pub fn GraphflowmcmfPath::len(Self) -> Int32
+pub fn GraphflowmcmfPath::max(Self) -> Double
+pub fn GraphflowmcmfPath::mean(Self) -> Double
+pub fn GraphflowmcmfPath::min(Self) -> Double
+pub fn GraphflowmcmfPath::scale(Self, Double) -> Self
+pub fn GraphflowmcmfPath::set(Self, Int32, Double) -> Self
+pub fn GraphflowmcmfPath::sum(Self) -> Double
+pub fn GraphflowmcmfPath::to_string(Self) -> String
+
+pub(all) struct GraphflowmcmfPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphflowmcmfPoint::add(Self, Self) -> Self
+pub fn GraphflowmcmfPoint::cross(Self, Self) -> Self
+pub fn GraphflowmcmfPoint::dist(Self, Self) -> Double
+pub fn GraphflowmcmfPoint::dot(Self, Self) -> Double
+pub fn GraphflowmcmfPoint::label(Self) -> Int32
+pub fn GraphflowmcmfPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphflowmcmfPoint::mid(Self, Self) -> Self
+pub fn GraphflowmcmfPoint::negate(Self) -> Self
+pub fn GraphflowmcmfPoint::norm(Self) -> Double
+pub fn GraphflowmcmfPoint::normalize(Self) -> Self
+pub fn GraphflowmcmfPoint::scale(Self, Double) -> Self
+pub fn GraphflowmcmfPoint::sub(Self, Self) -> Self
+pub fn GraphflowmcmfPoint::to_string(Self) -> String
+pub fn GraphflowmcmfPoint::x(Self) -> Double
+pub fn GraphflowmcmfPoint::y(Self) -> Double
+pub fn GraphflowmcmfPoint::z(Self) -> Double
+
+pub(all) struct GraphflowmcmfRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmcmfRange::add(Self, Self) -> Self
+pub fn GraphflowmcmfRange::copy(Self) -> Self
+pub fn GraphflowmcmfRange::fill(Self, Double) -> Self
+pub fn GraphflowmcmfRange::get(Self, Int32) -> Double
+pub fn GraphflowmcmfRange::len(Self) -> Int32
+pub fn GraphflowmcmfRange::max(Self) -> Double
+pub fn GraphflowmcmfRange::mean(Self) -> Double
+pub fn GraphflowmcmfRange::min(Self) -> Double
+pub fn GraphflowmcmfRange::scale(Self, Double) -> Self
+pub fn GraphflowmcmfRange::set(Self, Int32, Double) -> Self
+pub fn GraphflowmcmfRange::sum(Self) -> Double
+pub fn GraphflowmcmfRange::to_string(Self) -> String
+
+pub(all) struct GraphflowmcmfSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphflowmcmfSeries::add(Self, Self) -> Self
+pub fn GraphflowmcmfSeries::cumsum(Self) -> Self
+pub fn GraphflowmcmfSeries::len(Self) -> Int32
+pub fn GraphflowmcmfSeries::max(Self) -> Double
+pub fn GraphflowmcmfSeries::mean(Self) -> Double
+pub fn GraphflowmcmfSeries::median(Self) -> Double
+pub fn GraphflowmcmfSeries::min(Self) -> Double
+pub fn GraphflowmcmfSeries::normalize(Self) -> Self
+pub fn GraphflowmcmfSeries::range(Self) -> Double
+pub fn GraphflowmcmfSeries::scale(Self, Double) -> Self
+pub fn GraphflowmcmfSeries::std(Self) -> Double
+pub fn GraphflowmcmfSeries::sub(Self, Self) -> Self
+pub fn GraphflowmcmfSeries::sum(Self) -> Double
+pub fn GraphflowmcmfSeries::to_string(Self) -> String
+pub fn GraphflowmcmfSeries::variance(Self) -> Double
+
+pub(all) struct GraphflowmcmfSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmcmfSlice::add(Self, Self) -> Self
+pub fn GraphflowmcmfSlice::copy(Self) -> Self
+pub fn GraphflowmcmfSlice::fill(Self, Double) -> Self
+pub fn GraphflowmcmfSlice::get(Self, Int32) -> Double
+pub fn GraphflowmcmfSlice::len(Self) -> Int32
+pub fn GraphflowmcmfSlice::max(Self) -> Double
+pub fn GraphflowmcmfSlice::mean(Self) -> Double
+pub fn GraphflowmcmfSlice::min(Self) -> Double
+pub fn GraphflowmcmfSlice::scale(Self, Double) -> Self
+pub fn GraphflowmcmfSlice::set(Self, Int32, Double) -> Self
+pub fn GraphflowmcmfSlice::sum(Self) -> Double
+pub fn GraphflowmcmfSlice::to_string(Self) -> String
+
+pub(all) struct GraphflowmcmfTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmcmfTable::add(Self, Self) -> Self
+pub fn GraphflowmcmfTable::copy(Self) -> Self
+pub fn GraphflowmcmfTable::fill(Self, Double) -> Self
+pub fn GraphflowmcmfTable::get(Self, Int32) -> Double
+pub fn GraphflowmcmfTable::len(Self) -> Int32
+pub fn GraphflowmcmfTable::max(Self) -> Double
+pub fn GraphflowmcmfTable::mean(Self) -> Double
+pub fn GraphflowmcmfTable::min(Self) -> Double
+pub fn GraphflowmcmfTable::scale(Self, Double) -> Self
+pub fn GraphflowmcmfTable::set(Self, Int32, Double) -> Self
+pub fn GraphflowmcmfTable::sum(Self) -> Double
+pub fn GraphflowmcmfTable::to_string(Self) -> String
+
+pub(all) struct GraphflowmcmfVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphflowmcmfVector::add(Self, Self) -> Self
+pub fn GraphflowmcmfVector::dist(Self, Self) -> Double
+pub fn GraphflowmcmfVector::dot(Self, Self) -> Double
+pub fn GraphflowmcmfVector::norm(Self) -> Double
+pub fn GraphflowmcmfVector::normalize(Self) -> Self
+pub fn GraphflowmcmfVector::scale(Self, Double) -> Self
+pub fn GraphflowmcmfVector::sub(Self, Self) -> Self
+pub fn GraphflowmcmfVector::to_string(Self) -> String
+
+pub(all) struct GraphflowmcmfView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmcmfView::add(Self, Self) -> Self
+pub fn GraphflowmcmfView::copy(Self) -> Self
+pub fn GraphflowmcmfView::fill(Self, Double) -> Self
+pub fn GraphflowmcmfView::get(Self, Int32) -> Double
+pub fn GraphflowmcmfView::len(Self) -> Int32
+pub fn GraphflowmcmfView::max(Self) -> Double
+pub fn GraphflowmcmfView::mean(Self) -> Double
+pub fn GraphflowmcmfView::min(Self) -> Double
+pub fn GraphflowmcmfView::scale(Self, Double) -> Self
+pub fn GraphflowmcmfView::set(Self, Int32, Double) -> Self
+pub fn GraphflowmcmfView::sum(Self) -> Double
+pub fn GraphflowmcmfView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

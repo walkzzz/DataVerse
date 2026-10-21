@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/matrix_store"
+
+// Values
+pub fn matrix_store_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn matrix_store_corr(Array[Double], Array[Double]) -> Double
+
+pub fn matrix_store_cov(Array[Double], Array[Double]) -> Double
+
+pub fn matrix_store_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn matrix_store_mae(Array[Double], Array[Double]) -> Double
+
+pub fn matrix_store_make_labeled_point(Double, Double, Int32) -> Matrix_storePoint
+
+pub fn matrix_store_make_matrix(Int32, Int32, Double) -> Matrix_storeMatrix
+
+pub fn matrix_store_make_point(Double, Double) -> Matrix_storePoint
+
+pub fn matrix_store_make_series(Array[Double], String) -> Matrix_storeSeries
+
+pub fn matrix_store_make_vector(Array[Double]) -> Matrix_storeVector
+
+pub fn matrix_store_matrix_add(Matrix_storeMatrix, Matrix_storeMatrix) -> Matrix_storeMatrix
+
+pub fn matrix_store_matrix_get(Matrix_storeMatrix, Int32, Int32) -> Double
+
+pub fn matrix_store_matrix_identity(Int32) -> Matrix_storeMatrix
+
+pub fn matrix_store_matrix_multiply(Matrix_storeMatrix, Matrix_storeMatrix) -> Matrix_storeMatrix
+
+pub fn matrix_store_matrix_norm(Matrix_storeMatrix) -> Double
+
+pub fn matrix_store_matrix_scale(Matrix_storeMatrix, Double) -> Matrix_storeMatrix
+
+pub fn matrix_store_matrix_to_string(Matrix_storeMatrix) -> String
+
+pub fn matrix_store_matrix_trace(Matrix_storeMatrix) -> Double
+
+pub fn matrix_store_matrix_transpose(Matrix_storeMatrix) -> Matrix_storeMatrix
+
+pub fn matrix_store_mse(Array[Double], Array[Double]) -> Double
+
+pub fn matrix_store_point_add(Matrix_storePoint, Matrix_storePoint) -> Matrix_storePoint
+
+pub fn matrix_store_point_dist(Matrix_storePoint, Matrix_storePoint) -> Double
+
+pub fn matrix_store_point_dot(Matrix_storePoint, Matrix_storePoint) -> Double
+
+pub fn matrix_store_point_label(Matrix_storePoint) -> Int32
+
+pub fn matrix_store_point_norm(Matrix_storePoint) -> Double
+
+pub fn matrix_store_point_scale(Matrix_storePoint, Double) -> Matrix_storePoint
+
+pub fn matrix_store_point_sub(Matrix_storePoint, Matrix_storePoint) -> Matrix_storePoint
+
+pub fn matrix_store_point_to_string(Matrix_storePoint) -> String
+
+pub fn matrix_store_point_x(Matrix_storePoint) -> Double
+
+pub fn matrix_store_point_y(Matrix_storePoint) -> Double
+
+pub fn matrix_store_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn matrix_store_r2(Array[Double], Array[Double]) -> Double
+
+pub fn matrix_store_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn matrix_store_series_add(Matrix_storeSeries, Matrix_storeSeries) -> Matrix_storeSeries
+
+pub fn matrix_store_series_len(Matrix_storeSeries) -> Int32
+
+pub fn matrix_store_series_max(Matrix_storeSeries) -> Double
+
+pub fn matrix_store_series_mean(Matrix_storeSeries) -> Double
+
+pub fn matrix_store_series_min(Matrix_storeSeries) -> Double
+
+pub fn matrix_store_series_scale(Matrix_storeSeries, Double) -> Matrix_storeSeries
+
+pub fn matrix_store_series_std(Matrix_storeSeries) -> Double
+
+pub fn matrix_store_series_sum(Matrix_storeSeries) -> Double
+
+pub fn matrix_store_series_to_string(Matrix_storeSeries) -> String
+
+pub fn matrix_store_series_var(Matrix_storeSeries) -> Double
+
+pub fn matrix_store_std(Array[Double]) -> Double
+
+pub fn matrix_store_var(Array[Double]) -> Double
+
+pub fn matrix_store_vector_add(Matrix_storeVector, Matrix_storeVector) -> Matrix_storeVector
+
+pub fn matrix_store_vector_dist(Matrix_storeVector, Matrix_storeVector) -> Double
+
+pub fn matrix_store_vector_dot(Matrix_storeVector, Matrix_storeVector) -> Double
+
+pub fn matrix_store_vector_norm(Matrix_storeVector) -> Double
+
+pub fn matrix_store_vector_normalize(Matrix_storeVector) -> Matrix_storeVector
+
+pub fn matrix_store_vector_scale(Matrix_storeVector, Double) -> Matrix_storeVector
+
+pub fn matrix_store_vector_sub(Matrix_storeVector, Matrix_storeVector) -> Matrix_storeVector
+
+pub fn matrix_store_vector_to_string(Matrix_storeVector) -> String
+
+pub fn matrix_store_vector_zero(Int32) -> Matrix_storeVector
+
+// Errors
+
+// Types and methods
+pub struct Matrix_storeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Matrix_storePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Matrix_storeSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Matrix_storeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

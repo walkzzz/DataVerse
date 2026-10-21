@@ -1,0 +1,112 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/morphology_adv"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn make_morph_image(Int32, Int32, Array[Double]) -> MorphImage
+
+pub fn morph_alternating_sequential_filter(MorphImage, Int32) -> MorphImage
+
+pub fn morph_area_close(MorphImage, Int32) -> MorphImage
+
+pub fn morph_area_open(MorphImage, Int32) -> MorphImage
+
+pub fn morph_attribute_filter(MorphImage, Int32, Bool) -> MorphImage
+
+pub fn morph_blackhat(MorphImage, StructElement) -> MorphImage
+
+pub fn morph_circle_kernel(Int32) -> StructElement
+
+pub fn morph_clone(MorphImage) -> MorphImage
+
+pub fn morph_close_adv(MorphImage, StructElement) -> MorphImage
+
+pub fn morph_closing_by_reconstruction(MorphImage, StructElement) -> MorphImage
+
+pub fn morph_connected_components_morph(MorphImage) -> Int32
+
+pub fn morph_convex_hull_morph(MorphImage) -> MorphImage
+
+pub fn morph_cross_kernel(Int32) -> StructElement
+
+pub fn morph_dilate_adv(MorphImage, StructElement) -> MorphImage
+
+pub fn morph_distance_transform(MorphImage) -> MorphImage
+
+pub fn morph_empty_image(Int32, Int32) -> MorphImage
+
+pub fn morph_erode_adv(MorphImage, StructElement) -> MorphImage
+
+pub fn morph_fill_holes_morph(MorphImage) -> MorphImage
+
+pub fn morph_geodesic(MorphImage, MorphImage) -> MorphImage
+
+pub fn morph_gradient(MorphImage, StructElement) -> MorphImage
+
+pub fn morph_granulometry(MorphImage, Int32) -> Array[Double]
+
+pub fn morph_hit_miss(MorphImage, StructElement, StructElement) -> MorphImage
+
+pub fn morph_label_morph(MorphImage) -> MorphImage
+
+pub fn morph_make_kernel(Int32, Int32, Array[Bool]) -> StructElement
+
+pub fn morph_max_tree(MorphImage) -> Array[(Double, Int32)]
+
+pub fn morph_medial_axis(MorphImage) -> MorphImage
+
+pub fn morph_min_tree(MorphImage) -> Array[(Double, Int32)]
+
+pub fn morph_open_adv(MorphImage, StructElement) -> MorphImage
+
+pub fn morph_opening_by_reconstruction(MorphImage, StructElement) -> MorphImage
+
+pub fn morph_pattern_spectrum(MorphImage, Int32) -> Array[Double]
+
+pub fn morph_reconstruction(MorphImage, MorphImage) -> MorphImage
+
+pub fn morph_size_distribution(MorphImage, Int32) -> Array[Double]
+
+pub fn morph_skeleton(MorphImage) -> MorphImage
+
+pub fn morph_square_kernel(Int32) -> StructElement
+
+pub fn morph_thickening(MorphImage, StructElement) -> MorphImage
+
+pub fn morph_thinning(MorphImage, StructElement) -> MorphImage
+
+pub fn morph_to_string(MorphImage) -> String
+
+pub fn morph_tophat(MorphImage, StructElement) -> MorphImage
+
+pub fn morph_watershed_morph(MorphImage) -> MorphImage
+
+pub fn morphology_adv_id() -> String
+
+// Errors
+
+// Types and methods
+pub struct MorphImage {
+  width : Int32
+  height : Int32
+  data : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn MorphImage::equal(Self, Self) -> Bool
+pub fn MorphImage::not_equal(Self, Self) -> Bool
+pub fn MorphImage::to_repr(Self) -> @debug.Repr
+
+pub struct StructElement {
+  width : Int32
+  height : Int32
+  data : Array[Bool]
+} derive(Eq, @debug.Debug)
+pub fn StructElement::equal(Self, Self) -> Bool
+pub fn StructElement::not_equal(Self, Self) -> Bool
+pub fn StructElement::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

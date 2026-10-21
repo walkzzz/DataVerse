@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/bio_seq_align_multiple"
+
+// Values
+pub fn bio_seq_align_multiple_buffer_make(Int32) -> BioseqalignmultipleBuffer
+
+pub fn bio_seq_align_multiple_cluster_make(Int32) -> BioseqalignmultipleCluster
+
+pub fn bio_seq_align_multiple_cursor_make(Int32) -> BioseqalignmultipleCursor
+
+pub fn bio_seq_align_multiple_edge_make(Int32) -> BioseqalignmultipleEdge
+
+pub fn bio_seq_align_multiple_frame_make(Int32) -> BioseqalignmultipleFrame
+
+pub fn bio_seq_align_multiple_graphn_make(Int32) -> BioseqalignmultipleGraphN
+
+pub fn bio_seq_align_multiple_layer_make(Int32) -> BioseqalignmultipleLayer
+
+pub fn bio_seq_align_multiple_make_matrix(Int32, Int32, Double) -> BioseqalignmultipleMatrix
+
+pub fn bio_seq_align_multiple_make_point(Double, Double) -> BioseqalignmultiplePoint
+
+pub fn bio_seq_align_multiple_make_point3(Double, Double, Double) -> BioseqalignmultiplePoint
+
+pub fn bio_seq_align_multiple_make_series(Array[Double], String) -> BioseqalignmultipleSeries
+
+pub fn bio_seq_align_multiple_make_vector(Array[Double]) -> BioseqalignmultipleVector
+
+pub fn bio_seq_align_multiple_matrix_identity(Int32) -> BioseqalignmultipleMatrix
+
+pub fn bio_seq_align_multiple_model_make(Int32) -> BioseqalignmultipleModel
+
+pub fn bio_seq_align_multiple_node_make(Int32) -> BioseqalignmultipleNode
+
+pub fn bio_seq_align_multiple_path_make(Int32) -> BioseqalignmultiplePath
+
+pub fn bio_seq_align_multiple_range_make(Int32) -> BioseqalignmultipleRange
+
+pub fn bio_seq_align_multiple_slice_make(Int32) -> BioseqalignmultipleSlice
+
+pub fn bio_seq_align_multiple_table_make(Int32) -> BioseqalignmultipleTable
+
+pub fn bio_seq_align_multiple_vector_zero(Int32) -> BioseqalignmultipleVector
+
+pub fn bio_seq_align_multiple_view_make(Int32) -> BioseqalignmultipleView
+
+// Errors
+
+// Types and methods
+pub(all) struct BioseqalignmultipleBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignmultipleBuffer::add(Self, Self) -> Self
+pub fn BioseqalignmultipleBuffer::copy(Self) -> Self
+pub fn BioseqalignmultipleBuffer::fill(Self, Double) -> Self
+pub fn BioseqalignmultipleBuffer::get(Self, Int32) -> Double
+pub fn BioseqalignmultipleBuffer::len(Self) -> Int32
+pub fn BioseqalignmultipleBuffer::max(Self) -> Double
+pub fn BioseqalignmultipleBuffer::mean(Self) -> Double
+pub fn BioseqalignmultipleBuffer::min(Self) -> Double
+pub fn BioseqalignmultipleBuffer::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleBuffer::set(Self, Int32, Double) -> Self
+pub fn BioseqalignmultipleBuffer::sum(Self) -> Double
+pub fn BioseqalignmultipleBuffer::to_string(Self) -> String
+
+pub(all) struct BioseqalignmultipleCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignmultipleCluster::add(Self, Self) -> Self
+pub fn BioseqalignmultipleCluster::copy(Self) -> Self
+pub fn BioseqalignmultipleCluster::fill(Self, Double) -> Self
+pub fn BioseqalignmultipleCluster::get(Self, Int32) -> Double
+pub fn BioseqalignmultipleCluster::len(Self) -> Int32
+pub fn BioseqalignmultipleCluster::max(Self) -> Double
+pub fn BioseqalignmultipleCluster::mean(Self) -> Double
+pub fn BioseqalignmultipleCluster::min(Self) -> Double
+pub fn BioseqalignmultipleCluster::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleCluster::set(Self, Int32, Double) -> Self
+pub fn BioseqalignmultipleCluster::sum(Self) -> Double
+pub fn BioseqalignmultipleCluster::to_string(Self) -> String
+
+pub(all) struct BioseqalignmultipleCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignmultipleCursor::add(Self, Self) -> Self
+pub fn BioseqalignmultipleCursor::copy(Self) -> Self
+pub fn BioseqalignmultipleCursor::fill(Self, Double) -> Self
+pub fn BioseqalignmultipleCursor::get(Self, Int32) -> Double
+pub fn BioseqalignmultipleCursor::len(Self) -> Int32
+pub fn BioseqalignmultipleCursor::max(Self) -> Double
+pub fn BioseqalignmultipleCursor::mean(Self) -> Double
+pub fn BioseqalignmultipleCursor::min(Self) -> Double
+pub fn BioseqalignmultipleCursor::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleCursor::set(Self, Int32, Double) -> Self
+pub fn BioseqalignmultipleCursor::sum(Self) -> Double
+pub fn BioseqalignmultipleCursor::to_string(Self) -> String
+
+pub(all) struct BioseqalignmultipleEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignmultipleEdge::add(Self, Self) -> Self
+pub fn BioseqalignmultipleEdge::copy(Self) -> Self
+pub fn BioseqalignmultipleEdge::fill(Self, Double) -> Self
+pub fn BioseqalignmultipleEdge::get(Self, Int32) -> Double
+pub fn BioseqalignmultipleEdge::len(Self) -> Int32
+pub fn BioseqalignmultipleEdge::max(Self) -> Double
+pub fn BioseqalignmultipleEdge::mean(Self) -> Double
+pub fn BioseqalignmultipleEdge::min(Self) -> Double
+pub fn BioseqalignmultipleEdge::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleEdge::set(Self, Int32, Double) -> Self
+pub fn BioseqalignmultipleEdge::sum(Self) -> Double
+pub fn BioseqalignmultipleEdge::to_string(Self) -> String
+
+pub(all) struct BioseqalignmultipleFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignmultipleFrame::add(Self, Self) -> Self
+pub fn BioseqalignmultipleFrame::copy(Self) -> Self
+pub fn BioseqalignmultipleFrame::fill(Self, Double) -> Self
+pub fn BioseqalignmultipleFrame::get(Self, Int32) -> Double
+pub fn BioseqalignmultipleFrame::len(Self) -> Int32
+pub fn BioseqalignmultipleFrame::max(Self) -> Double
+pub fn BioseqalignmultipleFrame::mean(Self) -> Double
+pub fn BioseqalignmultipleFrame::min(Self) -> Double
+pub fn BioseqalignmultipleFrame::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleFrame::set(Self, Int32, Double) -> Self
+pub fn BioseqalignmultipleFrame::sum(Self) -> Double
+pub fn BioseqalignmultipleFrame::to_string(Self) -> String
+
+pub(all) struct BioseqalignmultipleGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignmultipleGraphN::add(Self, Self) -> Self
+pub fn BioseqalignmultipleGraphN::copy(Self) -> Self
+pub fn BioseqalignmultipleGraphN::fill(Self, Double) -> Self
+pub fn BioseqalignmultipleGraphN::get(Self, Int32) -> Double
+pub fn BioseqalignmultipleGraphN::len(Self) -> Int32
+pub fn BioseqalignmultipleGraphN::max(Self) -> Double
+pub fn BioseqalignmultipleGraphN::mean(Self) -> Double
+pub fn BioseqalignmultipleGraphN::min(Self) -> Double
+pub fn BioseqalignmultipleGraphN::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleGraphN::set(Self, Int32, Double) -> Self
+pub fn BioseqalignmultipleGraphN::sum(Self) -> Double
+pub fn BioseqalignmultipleGraphN::to_string(Self) -> String
+
+pub(all) struct BioseqalignmultipleLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignmultipleLayer::add(Self, Self) -> Self
+pub fn BioseqalignmultipleLayer::copy(Self) -> Self
+pub fn BioseqalignmultipleLayer::fill(Self, Double) -> Self
+pub fn BioseqalignmultipleLayer::get(Self, Int32) -> Double
+pub fn BioseqalignmultipleLayer::len(Self) -> Int32
+pub fn BioseqalignmultipleLayer::max(Self) -> Double
+pub fn BioseqalignmultipleLayer::mean(Self) -> Double
+pub fn BioseqalignmultipleLayer::min(Self) -> Double
+pub fn BioseqalignmultipleLayer::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleLayer::set(Self, Int32, Double) -> Self
+pub fn BioseqalignmultipleLayer::sum(Self) -> Double
+pub fn BioseqalignmultipleLayer::to_string(Self) -> String
+
+pub(all) struct BioseqalignmultipleMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn BioseqalignmultipleMatrix::add(Self, Self) -> Self
+pub fn BioseqalignmultipleMatrix::det(Self) -> Double
+pub fn BioseqalignmultipleMatrix::get(Self, Int32, Int32) -> Double
+pub fn BioseqalignmultipleMatrix::multiply(Self, Self) -> Self
+pub fn BioseqalignmultipleMatrix::norm(Self) -> Double
+pub fn BioseqalignmultipleMatrix::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleMatrix::to_string(Self) -> String
+pub fn BioseqalignmultipleMatrix::trace(Self) -> Double
+pub fn BioseqalignmultipleMatrix::transpose(Self) -> Self
+
+pub(all) struct BioseqalignmultipleModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignmultipleModel::add(Self, Self) -> Self
+pub fn BioseqalignmultipleModel::copy(Self) -> Self
+pub fn BioseqalignmultipleModel::fill(Self, Double) -> Self
+pub fn BioseqalignmultipleModel::get(Self, Int32) -> Double
+pub fn BioseqalignmultipleModel::len(Self) -> Int32
+pub fn BioseqalignmultipleModel::max(Self) -> Double
+pub fn BioseqalignmultipleModel::mean(Self) -> Double
+pub fn BioseqalignmultipleModel::min(Self) -> Double
+pub fn BioseqalignmultipleModel::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleModel::set(Self, Int32, Double) -> Self
+pub fn BioseqalignmultipleModel::sum(Self) -> Double
+pub fn BioseqalignmultipleModel::to_string(Self) -> String
+
+pub(all) struct BioseqalignmultipleNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignmultipleNode::add(Self, Self) -> Self
+pub fn BioseqalignmultipleNode::copy(Self) -> Self
+pub fn BioseqalignmultipleNode::fill(Self, Double) -> Self
+pub fn BioseqalignmultipleNode::get(Self, Int32) -> Double
+pub fn BioseqalignmultipleNode::len(Self) -> Int32
+pub fn BioseqalignmultipleNode::max(Self) -> Double
+pub fn BioseqalignmultipleNode::mean(Self) -> Double
+pub fn BioseqalignmultipleNode::min(Self) -> Double
+pub fn BioseqalignmultipleNode::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleNode::set(Self, Int32, Double) -> Self
+pub fn BioseqalignmultipleNode::sum(Self) -> Double
+pub fn BioseqalignmultipleNode::to_string(Self) -> String
+
+pub(all) struct BioseqalignmultiplePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignmultiplePath::add(Self, Self) -> Self
+pub fn BioseqalignmultiplePath::copy(Self) -> Self
+pub fn BioseqalignmultiplePath::fill(Self, Double) -> Self
+pub fn BioseqalignmultiplePath::get(Self, Int32) -> Double
+pub fn BioseqalignmultiplePath::len(Self) -> Int32
+pub fn BioseqalignmultiplePath::max(Self) -> Double
+pub fn BioseqalignmultiplePath::mean(Self) -> Double
+pub fn BioseqalignmultiplePath::min(Self) -> Double
+pub fn BioseqalignmultiplePath::scale(Self, Double) -> Self
+pub fn BioseqalignmultiplePath::set(Self, Int32, Double) -> Self
+pub fn BioseqalignmultiplePath::sum(Self) -> Double
+pub fn BioseqalignmultiplePath::to_string(Self) -> String
+
+pub(all) struct BioseqalignmultiplePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn BioseqalignmultiplePoint::add(Self, Self) -> Self
+pub fn BioseqalignmultiplePoint::cross(Self, Self) -> Self
+pub fn BioseqalignmultiplePoint::dist(Self, Self) -> Double
+pub fn BioseqalignmultiplePoint::dot(Self, Self) -> Double
+pub fn BioseqalignmultiplePoint::label(Self) -> Int32
+pub fn BioseqalignmultiplePoint::lerp(Self, Self, Double) -> Self
+pub fn BioseqalignmultiplePoint::mid(Self, Self) -> Self
+pub fn BioseqalignmultiplePoint::negate(Self) -> Self
+pub fn BioseqalignmultiplePoint::norm(Self) -> Double
+pub fn BioseqalignmultiplePoint::normalize(Self) -> Self
+pub fn BioseqalignmultiplePoint::scale(Self, Double) -> Self
+pub fn BioseqalignmultiplePoint::sub(Self, Self) -> Self
+pub fn BioseqalignmultiplePoint::to_string(Self) -> String
+pub fn BioseqalignmultiplePoint::x(Self) -> Double
+pub fn BioseqalignmultiplePoint::y(Self) -> Double
+pub fn BioseqalignmultiplePoint::z(Self) -> Double
+
+pub(all) struct BioseqalignmultipleRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignmultipleRange::add(Self, Self) -> Self
+pub fn BioseqalignmultipleRange::copy(Self) -> Self
+pub fn BioseqalignmultipleRange::fill(Self, Double) -> Self
+pub fn BioseqalignmultipleRange::get(Self, Int32) -> Double
+pub fn BioseqalignmultipleRange::len(Self) -> Int32
+pub fn BioseqalignmultipleRange::max(Self) -> Double
+pub fn BioseqalignmultipleRange::mean(Self) -> Double
+pub fn BioseqalignmultipleRange::min(Self) -> Double
+pub fn BioseqalignmultipleRange::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleRange::set(Self, Int32, Double) -> Self
+pub fn BioseqalignmultipleRange::sum(Self) -> Double
+pub fn BioseqalignmultipleRange::to_string(Self) -> String
+
+pub(all) struct BioseqalignmultipleSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn BioseqalignmultipleSeries::add(Self, Self) -> Self
+pub fn BioseqalignmultipleSeries::cumsum(Self) -> Self
+pub fn BioseqalignmultipleSeries::len(Self) -> Int32
+pub fn BioseqalignmultipleSeries::max(Self) -> Double
+pub fn BioseqalignmultipleSeries::mean(Self) -> Double
+pub fn BioseqalignmultipleSeries::median(Self) -> Double
+pub fn BioseqalignmultipleSeries::min(Self) -> Double
+pub fn BioseqalignmultipleSeries::normalize(Self) -> Self
+pub fn BioseqalignmultipleSeries::range(Self) -> Double
+pub fn BioseqalignmultipleSeries::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleSeries::std(Self) -> Double
+pub fn BioseqalignmultipleSeries::sub(Self, Self) -> Self
+pub fn BioseqalignmultipleSeries::sum(Self) -> Double
+pub fn BioseqalignmultipleSeries::to_string(Self) -> String
+pub fn BioseqalignmultipleSeries::variance(Self) -> Double
+
+pub(all) struct BioseqalignmultipleSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignmultipleSlice::add(Self, Self) -> Self
+pub fn BioseqalignmultipleSlice::copy(Self) -> Self
+pub fn BioseqalignmultipleSlice::fill(Self, Double) -> Self
+pub fn BioseqalignmultipleSlice::get(Self, Int32) -> Double
+pub fn BioseqalignmultipleSlice::len(Self) -> Int32
+pub fn BioseqalignmultipleSlice::max(Self) -> Double
+pub fn BioseqalignmultipleSlice::mean(Self) -> Double
+pub fn BioseqalignmultipleSlice::min(Self) -> Double
+pub fn BioseqalignmultipleSlice::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleSlice::set(Self, Int32, Double) -> Self
+pub fn BioseqalignmultipleSlice::sum(Self) -> Double
+pub fn BioseqalignmultipleSlice::to_string(Self) -> String
+
+pub(all) struct BioseqalignmultipleTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignmultipleTable::add(Self, Self) -> Self
+pub fn BioseqalignmultipleTable::copy(Self) -> Self
+pub fn BioseqalignmultipleTable::fill(Self, Double) -> Self
+pub fn BioseqalignmultipleTable::get(Self, Int32) -> Double
+pub fn BioseqalignmultipleTable::len(Self) -> Int32
+pub fn BioseqalignmultipleTable::max(Self) -> Double
+pub fn BioseqalignmultipleTable::mean(Self) -> Double
+pub fn BioseqalignmultipleTable::min(Self) -> Double
+pub fn BioseqalignmultipleTable::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleTable::set(Self, Int32, Double) -> Self
+pub fn BioseqalignmultipleTable::sum(Self) -> Double
+pub fn BioseqalignmultipleTable::to_string(Self) -> String
+
+pub(all) struct BioseqalignmultipleVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn BioseqalignmultipleVector::add(Self, Self) -> Self
+pub fn BioseqalignmultipleVector::dist(Self, Self) -> Double
+pub fn BioseqalignmultipleVector::dot(Self, Self) -> Double
+pub fn BioseqalignmultipleVector::norm(Self) -> Double
+pub fn BioseqalignmultipleVector::normalize(Self) -> Self
+pub fn BioseqalignmultipleVector::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleVector::sub(Self, Self) -> Self
+pub fn BioseqalignmultipleVector::to_string(Self) -> String
+
+pub(all) struct BioseqalignmultipleView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignmultipleView::add(Self, Self) -> Self
+pub fn BioseqalignmultipleView::copy(Self) -> Self
+pub fn BioseqalignmultipleView::fill(Self, Double) -> Self
+pub fn BioseqalignmultipleView::get(Self, Int32) -> Double
+pub fn BioseqalignmultipleView::len(Self) -> Int32
+pub fn BioseqalignmultipleView::max(Self) -> Double
+pub fn BioseqalignmultipleView::mean(Self) -> Double
+pub fn BioseqalignmultipleView::min(Self) -> Double
+pub fn BioseqalignmultipleView::scale(Self, Double) -> Self
+pub fn BioseqalignmultipleView::set(Self, Int32, Double) -> Self
+pub fn BioseqalignmultipleView::sum(Self) -> Double
+pub fn BioseqalignmultipleView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

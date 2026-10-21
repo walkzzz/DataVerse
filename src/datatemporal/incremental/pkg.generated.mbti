@@ -1,0 +1,34 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/incremental"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn detect_conflicts(Array[String], Array[String]) -> Array[String]
+
+pub fn incremental_id() -> String
+
+pub fn make_incremental_update(Int32, Int32, Int32, Array[String]) -> IncrementalUpdate
+
+pub fn merge_incremental(Array[String], Array[String], Array[String]) -> IncrementalUpdate
+
+// Errors
+
+// Types and methods
+pub struct IncrementalUpdate {
+  base_count : Int32
+  added_count : Int32
+  removed_count : Int32
+  conflict_count : Int32
+  final_count : Int32
+  conflicts : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn IncrementalUpdate::equal(Self, Self) -> Bool
+pub fn IncrementalUpdate::not_equal(Self, Self) -> Bool
+pub fn IncrementalUpdate::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

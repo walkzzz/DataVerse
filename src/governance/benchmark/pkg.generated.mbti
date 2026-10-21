@@ -1,0 +1,71 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/governance/benchmark"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add_result(BenchmarkSuite, BenchmarkResult) -> BenchmarkSuite
+
+pub fn benchmark_id() -> String
+
+pub fn benchmark_suite_uri(BenchmarkSuite) -> String
+
+pub fn compute_suite_stats(BenchmarkSuite) -> SuiteStats
+
+pub fn default_benchmark_config() -> BenchmarkConfig
+
+pub fn empty_benchmark_suite(String) -> BenchmarkSuite
+
+pub fn make_benchmark_config(Int32, Int32, Int32) -> BenchmarkConfig
+
+pub fn make_benchmark_suite(String, Array[BenchmarkResult]) -> BenchmarkSuite
+
+pub fn run_benchmark(String, Int32, BenchmarkConfig) -> BenchmarkResult
+
+// Errors
+
+// Types and methods
+pub struct BenchmarkConfig {
+  iterations : Int32
+  warmup : Int32
+  unit_cost_ms : Int32
+} derive(Eq, @debug.Debug)
+pub fn BenchmarkConfig::equal(Self, Self) -> Bool
+pub fn BenchmarkConfig::not_equal(Self, Self) -> Bool
+pub fn BenchmarkConfig::to_repr(Self) -> @debug.Repr
+
+pub struct BenchmarkResult {
+  name : String
+  total_ms : Int32
+  avg_ms : Double
+  min_ms : Int32
+  max_ms : Int32
+  throughput : Double
+} derive(Eq, @debug.Debug)
+pub fn BenchmarkResult::equal(Self, Self) -> Bool
+pub fn BenchmarkResult::not_equal(Self, Self) -> Bool
+pub fn BenchmarkResult::to_repr(Self) -> @debug.Repr
+
+pub struct BenchmarkSuite {
+  name : String
+  results : Array[BenchmarkResult]
+} derive(Eq, @debug.Debug)
+pub fn BenchmarkSuite::equal(Self, Self) -> Bool
+pub fn BenchmarkSuite::not_equal(Self, Self) -> Bool
+pub fn BenchmarkSuite::to_repr(Self) -> @debug.Repr
+
+pub struct SuiteStats {
+  suite_name : String
+  benchmark_count : Int32
+  total_ms : Int32
+  avg_throughput : Double
+} derive(Eq, @debug.Debug)
+pub fn SuiteStats::equal(Self, Self) -> Bool
+pub fn SuiteStats::not_equal(Self, Self) -> Bool
+pub fn SuiteStats::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

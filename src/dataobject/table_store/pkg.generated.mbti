@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/table_store"
+
+// Values
+pub fn table_store_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn table_store_corr(Array[Double], Array[Double]) -> Double
+
+pub fn table_store_cov(Array[Double], Array[Double]) -> Double
+
+pub fn table_store_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn table_store_mae(Array[Double], Array[Double]) -> Double
+
+pub fn table_store_make_labeled_point(Double, Double, Int32) -> Table_storePoint
+
+pub fn table_store_make_matrix(Int32, Int32, Double) -> Table_storeMatrix
+
+pub fn table_store_make_point(Double, Double) -> Table_storePoint
+
+pub fn table_store_make_series(Array[Double], String) -> Table_storeSeries
+
+pub fn table_store_make_vector(Array[Double]) -> Table_storeVector
+
+pub fn table_store_matrix_add(Table_storeMatrix, Table_storeMatrix) -> Table_storeMatrix
+
+pub fn table_store_matrix_get(Table_storeMatrix, Int32, Int32) -> Double
+
+pub fn table_store_matrix_identity(Int32) -> Table_storeMatrix
+
+pub fn table_store_matrix_multiply(Table_storeMatrix, Table_storeMatrix) -> Table_storeMatrix
+
+pub fn table_store_matrix_norm(Table_storeMatrix) -> Double
+
+pub fn table_store_matrix_scale(Table_storeMatrix, Double) -> Table_storeMatrix
+
+pub fn table_store_matrix_to_string(Table_storeMatrix) -> String
+
+pub fn table_store_matrix_trace(Table_storeMatrix) -> Double
+
+pub fn table_store_matrix_transpose(Table_storeMatrix) -> Table_storeMatrix
+
+pub fn table_store_mse(Array[Double], Array[Double]) -> Double
+
+pub fn table_store_point_add(Table_storePoint, Table_storePoint) -> Table_storePoint
+
+pub fn table_store_point_dist(Table_storePoint, Table_storePoint) -> Double
+
+pub fn table_store_point_dot(Table_storePoint, Table_storePoint) -> Double
+
+pub fn table_store_point_label(Table_storePoint) -> Int32
+
+pub fn table_store_point_norm(Table_storePoint) -> Double
+
+pub fn table_store_point_scale(Table_storePoint, Double) -> Table_storePoint
+
+pub fn table_store_point_sub(Table_storePoint, Table_storePoint) -> Table_storePoint
+
+pub fn table_store_point_to_string(Table_storePoint) -> String
+
+pub fn table_store_point_x(Table_storePoint) -> Double
+
+pub fn table_store_point_y(Table_storePoint) -> Double
+
+pub fn table_store_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn table_store_r2(Array[Double], Array[Double]) -> Double
+
+pub fn table_store_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn table_store_series_add(Table_storeSeries, Table_storeSeries) -> Table_storeSeries
+
+pub fn table_store_series_len(Table_storeSeries) -> Int32
+
+pub fn table_store_series_max(Table_storeSeries) -> Double
+
+pub fn table_store_series_mean(Table_storeSeries) -> Double
+
+pub fn table_store_series_min(Table_storeSeries) -> Double
+
+pub fn table_store_series_scale(Table_storeSeries, Double) -> Table_storeSeries
+
+pub fn table_store_series_std(Table_storeSeries) -> Double
+
+pub fn table_store_series_sum(Table_storeSeries) -> Double
+
+pub fn table_store_series_to_string(Table_storeSeries) -> String
+
+pub fn table_store_series_var(Table_storeSeries) -> Double
+
+pub fn table_store_std(Array[Double]) -> Double
+
+pub fn table_store_var(Array[Double]) -> Double
+
+pub fn table_store_vector_add(Table_storeVector, Table_storeVector) -> Table_storeVector
+
+pub fn table_store_vector_dist(Table_storeVector, Table_storeVector) -> Double
+
+pub fn table_store_vector_dot(Table_storeVector, Table_storeVector) -> Double
+
+pub fn table_store_vector_norm(Table_storeVector) -> Double
+
+pub fn table_store_vector_normalize(Table_storeVector) -> Table_storeVector
+
+pub fn table_store_vector_scale(Table_storeVector, Double) -> Table_storeVector
+
+pub fn table_store_vector_sub(Table_storeVector, Table_storeVector) -> Table_storeVector
+
+pub fn table_store_vector_to_string(Table_storeVector) -> String
+
+pub fn table_store_vector_zero(Int32) -> Table_storeVector
+
+// Errors
+
+// Types and methods
+pub struct Table_storeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Table_storePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Table_storeSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Table_storeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

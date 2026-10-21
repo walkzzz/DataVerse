@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_tx_pessimistic"
+
+// Values
+pub fn db_tx_pessimistic_buffer_make(Int32) -> DbtxpessimisticBuffer
+
+pub fn db_tx_pessimistic_cluster_make(Int32) -> DbtxpessimisticCluster
+
+pub fn db_tx_pessimistic_cursor_make(Int32) -> DbtxpessimisticCursor
+
+pub fn db_tx_pessimistic_edge_make(Int32) -> DbtxpessimisticEdge
+
+pub fn db_tx_pessimistic_frame_make(Int32) -> DbtxpessimisticFrame
+
+pub fn db_tx_pessimistic_graphn_make(Int32) -> DbtxpessimisticGraphN
+
+pub fn db_tx_pessimistic_layer_make(Int32) -> DbtxpessimisticLayer
+
+pub fn db_tx_pessimistic_make_matrix(Int32, Int32, Double) -> DbtxpessimisticMatrix
+
+pub fn db_tx_pessimistic_make_point(Double, Double) -> DbtxpessimisticPoint
+
+pub fn db_tx_pessimistic_make_point3(Double, Double, Double) -> DbtxpessimisticPoint
+
+pub fn db_tx_pessimistic_make_series(Array[Double], String) -> DbtxpessimisticSeries
+
+pub fn db_tx_pessimistic_make_vector(Array[Double]) -> DbtxpessimisticVector
+
+pub fn db_tx_pessimistic_matrix_identity(Int32) -> DbtxpessimisticMatrix
+
+pub fn db_tx_pessimistic_model_make(Int32) -> DbtxpessimisticModel
+
+pub fn db_tx_pessimistic_node_make(Int32) -> DbtxpessimisticNode
+
+pub fn db_tx_pessimistic_path_make(Int32) -> DbtxpessimisticPath
+
+pub fn db_tx_pessimistic_range_make(Int32) -> DbtxpessimisticRange
+
+pub fn db_tx_pessimistic_slice_make(Int32) -> DbtxpessimisticSlice
+
+pub fn db_tx_pessimistic_table_make(Int32) -> DbtxpessimisticTable
+
+pub fn db_tx_pessimistic_vector_zero(Int32) -> DbtxpessimisticVector
+
+pub fn db_tx_pessimistic_view_make(Int32) -> DbtxpessimisticView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbtxpessimisticBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxpessimisticBuffer::add(Self, Self) -> Self
+pub fn DbtxpessimisticBuffer::copy(Self) -> Self
+pub fn DbtxpessimisticBuffer::fill(Self, Double) -> Self
+pub fn DbtxpessimisticBuffer::get(Self, Int32) -> Double
+pub fn DbtxpessimisticBuffer::len(Self) -> Int32
+pub fn DbtxpessimisticBuffer::max(Self) -> Double
+pub fn DbtxpessimisticBuffer::mean(Self) -> Double
+pub fn DbtxpessimisticBuffer::min(Self) -> Double
+pub fn DbtxpessimisticBuffer::scale(Self, Double) -> Self
+pub fn DbtxpessimisticBuffer::set(Self, Int32, Double) -> Self
+pub fn DbtxpessimisticBuffer::sum(Self) -> Double
+pub fn DbtxpessimisticBuffer::to_string(Self) -> String
+
+pub(all) struct DbtxpessimisticCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxpessimisticCluster::add(Self, Self) -> Self
+pub fn DbtxpessimisticCluster::copy(Self) -> Self
+pub fn DbtxpessimisticCluster::fill(Self, Double) -> Self
+pub fn DbtxpessimisticCluster::get(Self, Int32) -> Double
+pub fn DbtxpessimisticCluster::len(Self) -> Int32
+pub fn DbtxpessimisticCluster::max(Self) -> Double
+pub fn DbtxpessimisticCluster::mean(Self) -> Double
+pub fn DbtxpessimisticCluster::min(Self) -> Double
+pub fn DbtxpessimisticCluster::scale(Self, Double) -> Self
+pub fn DbtxpessimisticCluster::set(Self, Int32, Double) -> Self
+pub fn DbtxpessimisticCluster::sum(Self) -> Double
+pub fn DbtxpessimisticCluster::to_string(Self) -> String
+
+pub(all) struct DbtxpessimisticCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxpessimisticCursor::add(Self, Self) -> Self
+pub fn DbtxpessimisticCursor::copy(Self) -> Self
+pub fn DbtxpessimisticCursor::fill(Self, Double) -> Self
+pub fn DbtxpessimisticCursor::get(Self, Int32) -> Double
+pub fn DbtxpessimisticCursor::len(Self) -> Int32
+pub fn DbtxpessimisticCursor::max(Self) -> Double
+pub fn DbtxpessimisticCursor::mean(Self) -> Double
+pub fn DbtxpessimisticCursor::min(Self) -> Double
+pub fn DbtxpessimisticCursor::scale(Self, Double) -> Self
+pub fn DbtxpessimisticCursor::set(Self, Int32, Double) -> Self
+pub fn DbtxpessimisticCursor::sum(Self) -> Double
+pub fn DbtxpessimisticCursor::to_string(Self) -> String
+
+pub(all) struct DbtxpessimisticEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxpessimisticEdge::add(Self, Self) -> Self
+pub fn DbtxpessimisticEdge::copy(Self) -> Self
+pub fn DbtxpessimisticEdge::fill(Self, Double) -> Self
+pub fn DbtxpessimisticEdge::get(Self, Int32) -> Double
+pub fn DbtxpessimisticEdge::len(Self) -> Int32
+pub fn DbtxpessimisticEdge::max(Self) -> Double
+pub fn DbtxpessimisticEdge::mean(Self) -> Double
+pub fn DbtxpessimisticEdge::min(Self) -> Double
+pub fn DbtxpessimisticEdge::scale(Self, Double) -> Self
+pub fn DbtxpessimisticEdge::set(Self, Int32, Double) -> Self
+pub fn DbtxpessimisticEdge::sum(Self) -> Double
+pub fn DbtxpessimisticEdge::to_string(Self) -> String
+
+pub(all) struct DbtxpessimisticFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxpessimisticFrame::add(Self, Self) -> Self
+pub fn DbtxpessimisticFrame::copy(Self) -> Self
+pub fn DbtxpessimisticFrame::fill(Self, Double) -> Self
+pub fn DbtxpessimisticFrame::get(Self, Int32) -> Double
+pub fn DbtxpessimisticFrame::len(Self) -> Int32
+pub fn DbtxpessimisticFrame::max(Self) -> Double
+pub fn DbtxpessimisticFrame::mean(Self) -> Double
+pub fn DbtxpessimisticFrame::min(Self) -> Double
+pub fn DbtxpessimisticFrame::scale(Self, Double) -> Self
+pub fn DbtxpessimisticFrame::set(Self, Int32, Double) -> Self
+pub fn DbtxpessimisticFrame::sum(Self) -> Double
+pub fn DbtxpessimisticFrame::to_string(Self) -> String
+
+pub(all) struct DbtxpessimisticGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxpessimisticGraphN::add(Self, Self) -> Self
+pub fn DbtxpessimisticGraphN::copy(Self) -> Self
+pub fn DbtxpessimisticGraphN::fill(Self, Double) -> Self
+pub fn DbtxpessimisticGraphN::get(Self, Int32) -> Double
+pub fn DbtxpessimisticGraphN::len(Self) -> Int32
+pub fn DbtxpessimisticGraphN::max(Self) -> Double
+pub fn DbtxpessimisticGraphN::mean(Self) -> Double
+pub fn DbtxpessimisticGraphN::min(Self) -> Double
+pub fn DbtxpessimisticGraphN::scale(Self, Double) -> Self
+pub fn DbtxpessimisticGraphN::set(Self, Int32, Double) -> Self
+pub fn DbtxpessimisticGraphN::sum(Self) -> Double
+pub fn DbtxpessimisticGraphN::to_string(Self) -> String
+
+pub(all) struct DbtxpessimisticLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxpessimisticLayer::add(Self, Self) -> Self
+pub fn DbtxpessimisticLayer::copy(Self) -> Self
+pub fn DbtxpessimisticLayer::fill(Self, Double) -> Self
+pub fn DbtxpessimisticLayer::get(Self, Int32) -> Double
+pub fn DbtxpessimisticLayer::len(Self) -> Int32
+pub fn DbtxpessimisticLayer::max(Self) -> Double
+pub fn DbtxpessimisticLayer::mean(Self) -> Double
+pub fn DbtxpessimisticLayer::min(Self) -> Double
+pub fn DbtxpessimisticLayer::scale(Self, Double) -> Self
+pub fn DbtxpessimisticLayer::set(Self, Int32, Double) -> Self
+pub fn DbtxpessimisticLayer::sum(Self) -> Double
+pub fn DbtxpessimisticLayer::to_string(Self) -> String
+
+pub(all) struct DbtxpessimisticMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbtxpessimisticMatrix::add(Self, Self) -> Self
+pub fn DbtxpessimisticMatrix::det(Self) -> Double
+pub fn DbtxpessimisticMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbtxpessimisticMatrix::multiply(Self, Self) -> Self
+pub fn DbtxpessimisticMatrix::norm(Self) -> Double
+pub fn DbtxpessimisticMatrix::scale(Self, Double) -> Self
+pub fn DbtxpessimisticMatrix::to_string(Self) -> String
+pub fn DbtxpessimisticMatrix::trace(Self) -> Double
+pub fn DbtxpessimisticMatrix::transpose(Self) -> Self
+
+pub(all) struct DbtxpessimisticModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxpessimisticModel::add(Self, Self) -> Self
+pub fn DbtxpessimisticModel::copy(Self) -> Self
+pub fn DbtxpessimisticModel::fill(Self, Double) -> Self
+pub fn DbtxpessimisticModel::get(Self, Int32) -> Double
+pub fn DbtxpessimisticModel::len(Self) -> Int32
+pub fn DbtxpessimisticModel::max(Self) -> Double
+pub fn DbtxpessimisticModel::mean(Self) -> Double
+pub fn DbtxpessimisticModel::min(Self) -> Double
+pub fn DbtxpessimisticModel::scale(Self, Double) -> Self
+pub fn DbtxpessimisticModel::set(Self, Int32, Double) -> Self
+pub fn DbtxpessimisticModel::sum(Self) -> Double
+pub fn DbtxpessimisticModel::to_string(Self) -> String
+
+pub(all) struct DbtxpessimisticNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxpessimisticNode::add(Self, Self) -> Self
+pub fn DbtxpessimisticNode::copy(Self) -> Self
+pub fn DbtxpessimisticNode::fill(Self, Double) -> Self
+pub fn DbtxpessimisticNode::get(Self, Int32) -> Double
+pub fn DbtxpessimisticNode::len(Self) -> Int32
+pub fn DbtxpessimisticNode::max(Self) -> Double
+pub fn DbtxpessimisticNode::mean(Self) -> Double
+pub fn DbtxpessimisticNode::min(Self) -> Double
+pub fn DbtxpessimisticNode::scale(Self, Double) -> Self
+pub fn DbtxpessimisticNode::set(Self, Int32, Double) -> Self
+pub fn DbtxpessimisticNode::sum(Self) -> Double
+pub fn DbtxpessimisticNode::to_string(Self) -> String
+
+pub(all) struct DbtxpessimisticPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxpessimisticPath::add(Self, Self) -> Self
+pub fn DbtxpessimisticPath::copy(Self) -> Self
+pub fn DbtxpessimisticPath::fill(Self, Double) -> Self
+pub fn DbtxpessimisticPath::get(Self, Int32) -> Double
+pub fn DbtxpessimisticPath::len(Self) -> Int32
+pub fn DbtxpessimisticPath::max(Self) -> Double
+pub fn DbtxpessimisticPath::mean(Self) -> Double
+pub fn DbtxpessimisticPath::min(Self) -> Double
+pub fn DbtxpessimisticPath::scale(Self, Double) -> Self
+pub fn DbtxpessimisticPath::set(Self, Int32, Double) -> Self
+pub fn DbtxpessimisticPath::sum(Self) -> Double
+pub fn DbtxpessimisticPath::to_string(Self) -> String
+
+pub(all) struct DbtxpessimisticPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbtxpessimisticPoint::add(Self, Self) -> Self
+pub fn DbtxpessimisticPoint::cross(Self, Self) -> Self
+pub fn DbtxpessimisticPoint::dist(Self, Self) -> Double
+pub fn DbtxpessimisticPoint::dot(Self, Self) -> Double
+pub fn DbtxpessimisticPoint::label(Self) -> Int32
+pub fn DbtxpessimisticPoint::lerp(Self, Self, Double) -> Self
+pub fn DbtxpessimisticPoint::mid(Self, Self) -> Self
+pub fn DbtxpessimisticPoint::negate(Self) -> Self
+pub fn DbtxpessimisticPoint::norm(Self) -> Double
+pub fn DbtxpessimisticPoint::normalize(Self) -> Self
+pub fn DbtxpessimisticPoint::scale(Self, Double) -> Self
+pub fn DbtxpessimisticPoint::sub(Self, Self) -> Self
+pub fn DbtxpessimisticPoint::to_string(Self) -> String
+pub fn DbtxpessimisticPoint::x(Self) -> Double
+pub fn DbtxpessimisticPoint::y(Self) -> Double
+pub fn DbtxpessimisticPoint::z(Self) -> Double
+
+pub(all) struct DbtxpessimisticRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxpessimisticRange::add(Self, Self) -> Self
+pub fn DbtxpessimisticRange::copy(Self) -> Self
+pub fn DbtxpessimisticRange::fill(Self, Double) -> Self
+pub fn DbtxpessimisticRange::get(Self, Int32) -> Double
+pub fn DbtxpessimisticRange::len(Self) -> Int32
+pub fn DbtxpessimisticRange::max(Self) -> Double
+pub fn DbtxpessimisticRange::mean(Self) -> Double
+pub fn DbtxpessimisticRange::min(Self) -> Double
+pub fn DbtxpessimisticRange::scale(Self, Double) -> Self
+pub fn DbtxpessimisticRange::set(Self, Int32, Double) -> Self
+pub fn DbtxpessimisticRange::sum(Self) -> Double
+pub fn DbtxpessimisticRange::to_string(Self) -> String
+
+pub(all) struct DbtxpessimisticSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbtxpessimisticSeries::add(Self, Self) -> Self
+pub fn DbtxpessimisticSeries::cumsum(Self) -> Self
+pub fn DbtxpessimisticSeries::len(Self) -> Int32
+pub fn DbtxpessimisticSeries::max(Self) -> Double
+pub fn DbtxpessimisticSeries::mean(Self) -> Double
+pub fn DbtxpessimisticSeries::median(Self) -> Double
+pub fn DbtxpessimisticSeries::min(Self) -> Double
+pub fn DbtxpessimisticSeries::normalize(Self) -> Self
+pub fn DbtxpessimisticSeries::range(Self) -> Double
+pub fn DbtxpessimisticSeries::scale(Self, Double) -> Self
+pub fn DbtxpessimisticSeries::std(Self) -> Double
+pub fn DbtxpessimisticSeries::sub(Self, Self) -> Self
+pub fn DbtxpessimisticSeries::sum(Self) -> Double
+pub fn DbtxpessimisticSeries::to_string(Self) -> String
+pub fn DbtxpessimisticSeries::variance(Self) -> Double
+
+pub(all) struct DbtxpessimisticSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxpessimisticSlice::add(Self, Self) -> Self
+pub fn DbtxpessimisticSlice::copy(Self) -> Self
+pub fn DbtxpessimisticSlice::fill(Self, Double) -> Self
+pub fn DbtxpessimisticSlice::get(Self, Int32) -> Double
+pub fn DbtxpessimisticSlice::len(Self) -> Int32
+pub fn DbtxpessimisticSlice::max(Self) -> Double
+pub fn DbtxpessimisticSlice::mean(Self) -> Double
+pub fn DbtxpessimisticSlice::min(Self) -> Double
+pub fn DbtxpessimisticSlice::scale(Self, Double) -> Self
+pub fn DbtxpessimisticSlice::set(Self, Int32, Double) -> Self
+pub fn DbtxpessimisticSlice::sum(Self) -> Double
+pub fn DbtxpessimisticSlice::to_string(Self) -> String
+
+pub(all) struct DbtxpessimisticTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxpessimisticTable::add(Self, Self) -> Self
+pub fn DbtxpessimisticTable::copy(Self) -> Self
+pub fn DbtxpessimisticTable::fill(Self, Double) -> Self
+pub fn DbtxpessimisticTable::get(Self, Int32) -> Double
+pub fn DbtxpessimisticTable::len(Self) -> Int32
+pub fn DbtxpessimisticTable::max(Self) -> Double
+pub fn DbtxpessimisticTable::mean(Self) -> Double
+pub fn DbtxpessimisticTable::min(Self) -> Double
+pub fn DbtxpessimisticTable::scale(Self, Double) -> Self
+pub fn DbtxpessimisticTable::set(Self, Int32, Double) -> Self
+pub fn DbtxpessimisticTable::sum(Self) -> Double
+pub fn DbtxpessimisticTable::to_string(Self) -> String
+
+pub(all) struct DbtxpessimisticVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbtxpessimisticVector::add(Self, Self) -> Self
+pub fn DbtxpessimisticVector::dist(Self, Self) -> Double
+pub fn DbtxpessimisticVector::dot(Self, Self) -> Double
+pub fn DbtxpessimisticVector::norm(Self) -> Double
+pub fn DbtxpessimisticVector::normalize(Self) -> Self
+pub fn DbtxpessimisticVector::scale(Self, Double) -> Self
+pub fn DbtxpessimisticVector::sub(Self, Self) -> Self
+pub fn DbtxpessimisticVector::to_string(Self) -> String
+
+pub(all) struct DbtxpessimisticView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxpessimisticView::add(Self, Self) -> Self
+pub fn DbtxpessimisticView::copy(Self) -> Self
+pub fn DbtxpessimisticView::fill(Self, Double) -> Self
+pub fn DbtxpessimisticView::get(Self, Int32) -> Double
+pub fn DbtxpessimisticView::len(Self) -> Int32
+pub fn DbtxpessimisticView::max(Self) -> Double
+pub fn DbtxpessimisticView::mean(Self) -> Double
+pub fn DbtxpessimisticView::min(Self) -> Double
+pub fn DbtxpessimisticView::scale(Self, Double) -> Self
+pub fn DbtxpessimisticView::set(Self, Int32, Double) -> Self
+pub fn DbtxpessimisticView::sum(Self) -> Double
+pub fn DbtxpessimisticView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

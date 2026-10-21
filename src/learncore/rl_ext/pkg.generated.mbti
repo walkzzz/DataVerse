@@ -1,0 +1,252 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/rl_ext"
+
+// Values
+pub fn a2c_loss(A2C, Array[Double], Double, Array[Double]) -> Double
+
+pub fn a2c_update(A2C, Array[Double], Double, Array[Double], Array[Double]) -> A2C
+
+pub fn actor_critic_update(ActorCritic, Array[Double], Double, Array[Double], Array[Double]) -> ActorCritic
+
+pub fn actor_forward(ActorCritic, Array[Double]) -> Double
+
+pub fn agent_act(Agent, Int32) -> Int32
+
+pub fn agent_learn(Agent, Episode) -> Agent
+
+pub fn agent_observe(Agent, Int32, Int32, Double, Int32) -> Agent
+
+pub fn bellman_update(Double, Double, Double, Double) -> Double
+
+pub fn buffer_add(ReplayBuffer, Experience) -> ReplayBuffer
+
+pub fn buffer_sample(ReplayBuffer, Int32) -> Array[Experience]
+
+pub fn buffer_size(ReplayBuffer) -> Int32
+
+pub fn critic_forward(ActorCritic, Array[Double]) -> Double
+
+pub fn discount_rewards(Array[Double], Double) -> Array[Double]
+
+pub fn dqn_forward(DQN, Array[Double]) -> Double
+
+pub fn dqn_loss(DQN, Array[Double], Double) -> Double
+
+pub fn dqn_update(DQN, Array[Double], Double) -> DQN
+
+pub fn env_reset(EnvWrapper) -> EnvWrapper
+
+pub fn env_step(EnvWrapper, Int32) -> (EnvWrapper, Int32, Double, Bool)
+
+pub fn episode_return(Episode, Double) -> Double
+
+pub fn epsilon_decay(Double, Double, Int32) -> Double
+
+pub fn experience_replay(ReplayBuffer, Int32, QTable, Double, Double) -> QTable
+
+pub fn exploration_rate(Double, Int32) -> Double
+
+pub fn gae_advantage(Array[Double], Array[Double], Double, Double) -> Array[Double]
+
+pub fn importance_sampling(Array[Double], Int32, Double) -> Array[Double]
+
+pub fn lambda_return(Array[Double], Array[Double], Double, Double) -> Array[Double]
+
+pub fn lr_schedule_rl(Double, Double, Int32) -> Double
+
+pub fn make_a2c(Int32, Double, Double, Double) -> A2C
+
+pub fn make_actor_critic(Int32, Double, Double, Double) -> ActorCritic
+
+pub fn make_agent(Int32, Int32, Double, Double, Double) -> Agent
+
+pub fn make_buffer(Int32) -> ReplayBuffer
+
+pub fn make_dqn(Int32, Double, Double) -> DQN
+
+pub fn make_env_wrapper(Int32, Int32) -> EnvWrapper
+
+pub fn make_episode() -> Episode
+
+pub fn make_experience(Array[Double], Int32, Double, Array[Double], Bool) -> Experience
+
+pub fn make_policy(Int32) -> Policy
+
+pub fn make_ppo(Int32, Double, Double, Double) -> PPO
+
+pub fn make_q_table(Int32, Int32) -> QTable
+
+pub fn make_reinforce(Int32, Double, Double) -> Reinforce
+
+pub fn make_reward(Double) -> Double
+
+pub fn make_sac(Int32, Double, Double, Double, Double) -> SAC
+
+pub fn make_td3(Int32, Double, Double, Double, Double) -> TD3
+
+pub fn make_transition(Int32, Int32, Double, Int32, Bool) -> Transition
+
+pub fn monte_carlo_update(Double, Double, Double) -> Double
+
+pub fn n_step_return(Array[Double], Double, Double, Int32) -> Double
+
+pub fn normalize_rewards(Array[Double]) -> Array[Double]
+
+pub fn policy_epsilon_greedy(Array[Double], Double) -> Int32
+
+pub fn policy_greedy(Array[Double]) -> Int32
+
+pub fn policy_softmax(Array[Double]) -> Array[Double]
+
+pub fn ppo_clip(Double, Double) -> Double
+
+pub fn ppo_loss(Double, Double, Double) -> Double
+
+pub fn ppo_update(PPO, Array[Double], Double, Double) -> PPO
+
+pub fn prioritized_replay(ReplayBuffer, Array[Double], Int32) -> Array[Experience]
+
+pub fn q_table_get(QTable, Int32, Int32) -> Double
+
+pub fn q_table_set(QTable, Int32, Int32, Double) -> QTable
+
+pub fn q_table_update(QTable, Int32, Int32, Double, Int32, Double, Double) -> QTable
+
+pub fn reinforce_forward(Reinforce, Array[Double]) -> Double
+
+pub fn reinforce_loss(Reinforce, Array[Double], Int32, Double) -> Double
+
+pub fn rl_ext_id() -> String
+
+pub fn sac_loss(SAC, Double, Double) -> Double
+
+pub fn sac_temperature(SAC) -> Double
+
+pub fn sac_update(SAC, Array[Double], Double, Array[Double], Array[Double]) -> SAC
+
+pub fn sample_batch(ReplayBuffer, Int32) -> Array[Experience]
+
+pub fn td3_target(TD3, Array[Double]) -> Double
+
+pub fn td3_update(TD3, Array[Double], Double, Array[Double]) -> TD3
+
+pub fn td_update(Double, Double, Double, Double, Double) -> Double
+
+pub fn value_function(Array[Double], Int32) -> Double
+
+// Errors
+
+// Types and methods
+pub struct A2C {
+  actor_theta : Array[Double]
+  critic_theta : Array[Double]
+  actor_lr : Double
+  critic_lr : Double
+  gamma : Double
+}
+
+pub struct ActorCritic {
+  actor_theta : Array[Double]
+  critic_theta : Array[Double]
+  actor_lr : Double
+  critic_lr : Double
+  gamma : Double
+}
+
+pub struct Agent {
+  q_table : QTable
+  epsilon : Double
+  alpha : Double
+  gamma : Double
+}
+
+pub struct DQN {
+  weights : Array[Double]
+  bias : Double
+  learning_rate : Double
+  gamma : Double
+}
+
+pub struct EnvWrapper {
+  n_states : Int32
+  n_actions : Int32
+  current_state : Int32
+}
+
+pub struct Episode {
+  transitions : Array[Transition]
+}
+
+pub struct Experience {
+  state : Array[Double]
+  action : Int32
+  reward : Double
+  next_state : Array[Double]
+  done : Bool
+}
+
+pub struct PPO {
+  theta : Array[Double]
+  learning_rate : Double
+  clip_epsilon : Double
+  gamma : Double
+}
+
+pub struct Policy {
+  n_actions : Int32
+  logits : Array[Double]
+}
+
+pub struct PrioritizedItem {
+  experience : Experience
+  priority : Double
+}
+
+pub struct QTable {
+  n_states : Int32
+  n_actions : Int32
+  values : Array[Array[Double]]
+}
+
+pub struct Reinforce {
+  theta : Array[Double]
+  learning_rate : Double
+  gamma : Double
+}
+
+pub struct ReplayBuffer {
+  capacity : Int32
+  buffer : Array[Experience]
+}
+
+pub struct SAC {
+  actor_theta : Array[Double]
+  critic_theta : Array[Double]
+  temperature : Double
+  actor_lr : Double
+  critic_lr : Double
+  gamma : Double
+}
+
+pub struct TD3 {
+  actor_theta : Array[Double]
+  critic_theta : Array[Double]
+  target_actor_theta : Array[Double]
+  target_critic_theta : Array[Double]
+  actor_lr : Double
+  critic_lr : Double
+  gamma : Double
+  tau : Double
+}
+
+pub struct Transition {
+  state : Int32
+  action : Int32
+  reward : Double
+  next_state : Int32
+  done : Bool
+}
+
+// Type aliases
+
+// Traits

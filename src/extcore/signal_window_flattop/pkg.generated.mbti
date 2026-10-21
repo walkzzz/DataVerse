@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_window_flattop"
+
+// Values
+pub fn signal_window_flattop_buffer_make(Int32) -> SignalwindowflattopBuffer
+
+pub fn signal_window_flattop_cluster_make(Int32) -> SignalwindowflattopCluster
+
+pub fn signal_window_flattop_cursor_make(Int32) -> SignalwindowflattopCursor
+
+pub fn signal_window_flattop_edge_make(Int32) -> SignalwindowflattopEdge
+
+pub fn signal_window_flattop_frame_make(Int32) -> SignalwindowflattopFrame
+
+pub fn signal_window_flattop_graphn_make(Int32) -> SignalwindowflattopGraphN
+
+pub fn signal_window_flattop_layer_make(Int32) -> SignalwindowflattopLayer
+
+pub fn signal_window_flattop_make_matrix(Int32, Int32, Double) -> SignalwindowflattopMatrix
+
+pub fn signal_window_flattop_make_point(Double, Double) -> SignalwindowflattopPoint
+
+pub fn signal_window_flattop_make_point3(Double, Double, Double) -> SignalwindowflattopPoint
+
+pub fn signal_window_flattop_make_series(Array[Double], String) -> SignalwindowflattopSeries
+
+pub fn signal_window_flattop_make_vector(Array[Double]) -> SignalwindowflattopVector
+
+pub fn signal_window_flattop_matrix_identity(Int32) -> SignalwindowflattopMatrix
+
+pub fn signal_window_flattop_model_make(Int32) -> SignalwindowflattopModel
+
+pub fn signal_window_flattop_node_make(Int32) -> SignalwindowflattopNode
+
+pub fn signal_window_flattop_path_make(Int32) -> SignalwindowflattopPath
+
+pub fn signal_window_flattop_range_make(Int32) -> SignalwindowflattopRange
+
+pub fn signal_window_flattop_slice_make(Int32) -> SignalwindowflattopSlice
+
+pub fn signal_window_flattop_table_make(Int32) -> SignalwindowflattopTable
+
+pub fn signal_window_flattop_vector_zero(Int32) -> SignalwindowflattopVector
+
+pub fn signal_window_flattop_view_make(Int32) -> SignalwindowflattopView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalwindowflattopBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowflattopBuffer::add(Self, Self) -> Self
+pub fn SignalwindowflattopBuffer::copy(Self) -> Self
+pub fn SignalwindowflattopBuffer::fill(Self, Double) -> Self
+pub fn SignalwindowflattopBuffer::get(Self, Int32) -> Double
+pub fn SignalwindowflattopBuffer::len(Self) -> Int32
+pub fn SignalwindowflattopBuffer::max(Self) -> Double
+pub fn SignalwindowflattopBuffer::mean(Self) -> Double
+pub fn SignalwindowflattopBuffer::min(Self) -> Double
+pub fn SignalwindowflattopBuffer::scale(Self, Double) -> Self
+pub fn SignalwindowflattopBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowflattopBuffer::sum(Self) -> Double
+pub fn SignalwindowflattopBuffer::to_string(Self) -> String
+
+pub(all) struct SignalwindowflattopCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowflattopCluster::add(Self, Self) -> Self
+pub fn SignalwindowflattopCluster::copy(Self) -> Self
+pub fn SignalwindowflattopCluster::fill(Self, Double) -> Self
+pub fn SignalwindowflattopCluster::get(Self, Int32) -> Double
+pub fn SignalwindowflattopCluster::len(Self) -> Int32
+pub fn SignalwindowflattopCluster::max(Self) -> Double
+pub fn SignalwindowflattopCluster::mean(Self) -> Double
+pub fn SignalwindowflattopCluster::min(Self) -> Double
+pub fn SignalwindowflattopCluster::scale(Self, Double) -> Self
+pub fn SignalwindowflattopCluster::set(Self, Int32, Double) -> Self
+pub fn SignalwindowflattopCluster::sum(Self) -> Double
+pub fn SignalwindowflattopCluster::to_string(Self) -> String
+
+pub(all) struct SignalwindowflattopCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowflattopCursor::add(Self, Self) -> Self
+pub fn SignalwindowflattopCursor::copy(Self) -> Self
+pub fn SignalwindowflattopCursor::fill(Self, Double) -> Self
+pub fn SignalwindowflattopCursor::get(Self, Int32) -> Double
+pub fn SignalwindowflattopCursor::len(Self) -> Int32
+pub fn SignalwindowflattopCursor::max(Self) -> Double
+pub fn SignalwindowflattopCursor::mean(Self) -> Double
+pub fn SignalwindowflattopCursor::min(Self) -> Double
+pub fn SignalwindowflattopCursor::scale(Self, Double) -> Self
+pub fn SignalwindowflattopCursor::set(Self, Int32, Double) -> Self
+pub fn SignalwindowflattopCursor::sum(Self) -> Double
+pub fn SignalwindowflattopCursor::to_string(Self) -> String
+
+pub(all) struct SignalwindowflattopEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowflattopEdge::add(Self, Self) -> Self
+pub fn SignalwindowflattopEdge::copy(Self) -> Self
+pub fn SignalwindowflattopEdge::fill(Self, Double) -> Self
+pub fn SignalwindowflattopEdge::get(Self, Int32) -> Double
+pub fn SignalwindowflattopEdge::len(Self) -> Int32
+pub fn SignalwindowflattopEdge::max(Self) -> Double
+pub fn SignalwindowflattopEdge::mean(Self) -> Double
+pub fn SignalwindowflattopEdge::min(Self) -> Double
+pub fn SignalwindowflattopEdge::scale(Self, Double) -> Self
+pub fn SignalwindowflattopEdge::set(Self, Int32, Double) -> Self
+pub fn SignalwindowflattopEdge::sum(Self) -> Double
+pub fn SignalwindowflattopEdge::to_string(Self) -> String
+
+pub(all) struct SignalwindowflattopFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowflattopFrame::add(Self, Self) -> Self
+pub fn SignalwindowflattopFrame::copy(Self) -> Self
+pub fn SignalwindowflattopFrame::fill(Self, Double) -> Self
+pub fn SignalwindowflattopFrame::get(Self, Int32) -> Double
+pub fn SignalwindowflattopFrame::len(Self) -> Int32
+pub fn SignalwindowflattopFrame::max(Self) -> Double
+pub fn SignalwindowflattopFrame::mean(Self) -> Double
+pub fn SignalwindowflattopFrame::min(Self) -> Double
+pub fn SignalwindowflattopFrame::scale(Self, Double) -> Self
+pub fn SignalwindowflattopFrame::set(Self, Int32, Double) -> Self
+pub fn SignalwindowflattopFrame::sum(Self) -> Double
+pub fn SignalwindowflattopFrame::to_string(Self) -> String
+
+pub(all) struct SignalwindowflattopGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowflattopGraphN::add(Self, Self) -> Self
+pub fn SignalwindowflattopGraphN::copy(Self) -> Self
+pub fn SignalwindowflattopGraphN::fill(Self, Double) -> Self
+pub fn SignalwindowflattopGraphN::get(Self, Int32) -> Double
+pub fn SignalwindowflattopGraphN::len(Self) -> Int32
+pub fn SignalwindowflattopGraphN::max(Self) -> Double
+pub fn SignalwindowflattopGraphN::mean(Self) -> Double
+pub fn SignalwindowflattopGraphN::min(Self) -> Double
+pub fn SignalwindowflattopGraphN::scale(Self, Double) -> Self
+pub fn SignalwindowflattopGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalwindowflattopGraphN::sum(Self) -> Double
+pub fn SignalwindowflattopGraphN::to_string(Self) -> String
+
+pub(all) struct SignalwindowflattopLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowflattopLayer::add(Self, Self) -> Self
+pub fn SignalwindowflattopLayer::copy(Self) -> Self
+pub fn SignalwindowflattopLayer::fill(Self, Double) -> Self
+pub fn SignalwindowflattopLayer::get(Self, Int32) -> Double
+pub fn SignalwindowflattopLayer::len(Self) -> Int32
+pub fn SignalwindowflattopLayer::max(Self) -> Double
+pub fn SignalwindowflattopLayer::mean(Self) -> Double
+pub fn SignalwindowflattopLayer::min(Self) -> Double
+pub fn SignalwindowflattopLayer::scale(Self, Double) -> Self
+pub fn SignalwindowflattopLayer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowflattopLayer::sum(Self) -> Double
+pub fn SignalwindowflattopLayer::to_string(Self) -> String
+
+pub(all) struct SignalwindowflattopMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalwindowflattopMatrix::add(Self, Self) -> Self
+pub fn SignalwindowflattopMatrix::det(Self) -> Double
+pub fn SignalwindowflattopMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalwindowflattopMatrix::multiply(Self, Self) -> Self
+pub fn SignalwindowflattopMatrix::norm(Self) -> Double
+pub fn SignalwindowflattopMatrix::scale(Self, Double) -> Self
+pub fn SignalwindowflattopMatrix::to_string(Self) -> String
+pub fn SignalwindowflattopMatrix::trace(Self) -> Double
+pub fn SignalwindowflattopMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalwindowflattopModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowflattopModel::add(Self, Self) -> Self
+pub fn SignalwindowflattopModel::copy(Self) -> Self
+pub fn SignalwindowflattopModel::fill(Self, Double) -> Self
+pub fn SignalwindowflattopModel::get(Self, Int32) -> Double
+pub fn SignalwindowflattopModel::len(Self) -> Int32
+pub fn SignalwindowflattopModel::max(Self) -> Double
+pub fn SignalwindowflattopModel::mean(Self) -> Double
+pub fn SignalwindowflattopModel::min(Self) -> Double
+pub fn SignalwindowflattopModel::scale(Self, Double) -> Self
+pub fn SignalwindowflattopModel::set(Self, Int32, Double) -> Self
+pub fn SignalwindowflattopModel::sum(Self) -> Double
+pub fn SignalwindowflattopModel::to_string(Self) -> String
+
+pub(all) struct SignalwindowflattopNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowflattopNode::add(Self, Self) -> Self
+pub fn SignalwindowflattopNode::copy(Self) -> Self
+pub fn SignalwindowflattopNode::fill(Self, Double) -> Self
+pub fn SignalwindowflattopNode::get(Self, Int32) -> Double
+pub fn SignalwindowflattopNode::len(Self) -> Int32
+pub fn SignalwindowflattopNode::max(Self) -> Double
+pub fn SignalwindowflattopNode::mean(Self) -> Double
+pub fn SignalwindowflattopNode::min(Self) -> Double
+pub fn SignalwindowflattopNode::scale(Self, Double) -> Self
+pub fn SignalwindowflattopNode::set(Self, Int32, Double) -> Self
+pub fn SignalwindowflattopNode::sum(Self) -> Double
+pub fn SignalwindowflattopNode::to_string(Self) -> String
+
+pub(all) struct SignalwindowflattopPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowflattopPath::add(Self, Self) -> Self
+pub fn SignalwindowflattopPath::copy(Self) -> Self
+pub fn SignalwindowflattopPath::fill(Self, Double) -> Self
+pub fn SignalwindowflattopPath::get(Self, Int32) -> Double
+pub fn SignalwindowflattopPath::len(Self) -> Int32
+pub fn SignalwindowflattopPath::max(Self) -> Double
+pub fn SignalwindowflattopPath::mean(Self) -> Double
+pub fn SignalwindowflattopPath::min(Self) -> Double
+pub fn SignalwindowflattopPath::scale(Self, Double) -> Self
+pub fn SignalwindowflattopPath::set(Self, Int32, Double) -> Self
+pub fn SignalwindowflattopPath::sum(Self) -> Double
+pub fn SignalwindowflattopPath::to_string(Self) -> String
+
+pub(all) struct SignalwindowflattopPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalwindowflattopPoint::add(Self, Self) -> Self
+pub fn SignalwindowflattopPoint::cross(Self, Self) -> Self
+pub fn SignalwindowflattopPoint::dist(Self, Self) -> Double
+pub fn SignalwindowflattopPoint::dot(Self, Self) -> Double
+pub fn SignalwindowflattopPoint::label(Self) -> Int32
+pub fn SignalwindowflattopPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalwindowflattopPoint::mid(Self, Self) -> Self
+pub fn SignalwindowflattopPoint::negate(Self) -> Self
+pub fn SignalwindowflattopPoint::norm(Self) -> Double
+pub fn SignalwindowflattopPoint::normalize(Self) -> Self
+pub fn SignalwindowflattopPoint::scale(Self, Double) -> Self
+pub fn SignalwindowflattopPoint::sub(Self, Self) -> Self
+pub fn SignalwindowflattopPoint::to_string(Self) -> String
+pub fn SignalwindowflattopPoint::x(Self) -> Double
+pub fn SignalwindowflattopPoint::y(Self) -> Double
+pub fn SignalwindowflattopPoint::z(Self) -> Double
+
+pub(all) struct SignalwindowflattopRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowflattopRange::add(Self, Self) -> Self
+pub fn SignalwindowflattopRange::copy(Self) -> Self
+pub fn SignalwindowflattopRange::fill(Self, Double) -> Self
+pub fn SignalwindowflattopRange::get(Self, Int32) -> Double
+pub fn SignalwindowflattopRange::len(Self) -> Int32
+pub fn SignalwindowflattopRange::max(Self) -> Double
+pub fn SignalwindowflattopRange::mean(Self) -> Double
+pub fn SignalwindowflattopRange::min(Self) -> Double
+pub fn SignalwindowflattopRange::scale(Self, Double) -> Self
+pub fn SignalwindowflattopRange::set(Self, Int32, Double) -> Self
+pub fn SignalwindowflattopRange::sum(Self) -> Double
+pub fn SignalwindowflattopRange::to_string(Self) -> String
+
+pub(all) struct SignalwindowflattopSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalwindowflattopSeries::add(Self, Self) -> Self
+pub fn SignalwindowflattopSeries::cumsum(Self) -> Self
+pub fn SignalwindowflattopSeries::len(Self) -> Int32
+pub fn SignalwindowflattopSeries::max(Self) -> Double
+pub fn SignalwindowflattopSeries::mean(Self) -> Double
+pub fn SignalwindowflattopSeries::median(Self) -> Double
+pub fn SignalwindowflattopSeries::min(Self) -> Double
+pub fn SignalwindowflattopSeries::normalize(Self) -> Self
+pub fn SignalwindowflattopSeries::range(Self) -> Double
+pub fn SignalwindowflattopSeries::scale(Self, Double) -> Self
+pub fn SignalwindowflattopSeries::std(Self) -> Double
+pub fn SignalwindowflattopSeries::sub(Self, Self) -> Self
+pub fn SignalwindowflattopSeries::sum(Self) -> Double
+pub fn SignalwindowflattopSeries::to_string(Self) -> String
+pub fn SignalwindowflattopSeries::variance(Self) -> Double
+
+pub(all) struct SignalwindowflattopSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowflattopSlice::add(Self, Self) -> Self
+pub fn SignalwindowflattopSlice::copy(Self) -> Self
+pub fn SignalwindowflattopSlice::fill(Self, Double) -> Self
+pub fn SignalwindowflattopSlice::get(Self, Int32) -> Double
+pub fn SignalwindowflattopSlice::len(Self) -> Int32
+pub fn SignalwindowflattopSlice::max(Self) -> Double
+pub fn SignalwindowflattopSlice::mean(Self) -> Double
+pub fn SignalwindowflattopSlice::min(Self) -> Double
+pub fn SignalwindowflattopSlice::scale(Self, Double) -> Self
+pub fn SignalwindowflattopSlice::set(Self, Int32, Double) -> Self
+pub fn SignalwindowflattopSlice::sum(Self) -> Double
+pub fn SignalwindowflattopSlice::to_string(Self) -> String
+
+pub(all) struct SignalwindowflattopTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowflattopTable::add(Self, Self) -> Self
+pub fn SignalwindowflattopTable::copy(Self) -> Self
+pub fn SignalwindowflattopTable::fill(Self, Double) -> Self
+pub fn SignalwindowflattopTable::get(Self, Int32) -> Double
+pub fn SignalwindowflattopTable::len(Self) -> Int32
+pub fn SignalwindowflattopTable::max(Self) -> Double
+pub fn SignalwindowflattopTable::mean(Self) -> Double
+pub fn SignalwindowflattopTable::min(Self) -> Double
+pub fn SignalwindowflattopTable::scale(Self, Double) -> Self
+pub fn SignalwindowflattopTable::set(Self, Int32, Double) -> Self
+pub fn SignalwindowflattopTable::sum(Self) -> Double
+pub fn SignalwindowflattopTable::to_string(Self) -> String
+
+pub(all) struct SignalwindowflattopVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalwindowflattopVector::add(Self, Self) -> Self
+pub fn SignalwindowflattopVector::dist(Self, Self) -> Double
+pub fn SignalwindowflattopVector::dot(Self, Self) -> Double
+pub fn SignalwindowflattopVector::norm(Self) -> Double
+pub fn SignalwindowflattopVector::normalize(Self) -> Self
+pub fn SignalwindowflattopVector::scale(Self, Double) -> Self
+pub fn SignalwindowflattopVector::sub(Self, Self) -> Self
+pub fn SignalwindowflattopVector::to_string(Self) -> String
+
+pub(all) struct SignalwindowflattopView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowflattopView::add(Self, Self) -> Self
+pub fn SignalwindowflattopView::copy(Self) -> Self
+pub fn SignalwindowflattopView::fill(Self, Double) -> Self
+pub fn SignalwindowflattopView::get(Self, Int32) -> Double
+pub fn SignalwindowflattopView::len(Self) -> Int32
+pub fn SignalwindowflattopView::max(Self) -> Double
+pub fn SignalwindowflattopView::mean(Self) -> Double
+pub fn SignalwindowflattopView::min(Self) -> Double
+pub fn SignalwindowflattopView::scale(Self, Double) -> Self
+pub fn SignalwindowflattopView::set(Self, Int32, Double) -> Self
+pub fn SignalwindowflattopView::sum(Self) -> Double
+pub fn SignalwindowflattopView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

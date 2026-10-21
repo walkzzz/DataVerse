@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/chem_rxn_catalyst"
+
+// Values
+pub fn chem_rxn_catalyst_buffer_make(Int32) -> ChemrxncatalystBuffer
+
+pub fn chem_rxn_catalyst_cluster_make(Int32) -> ChemrxncatalystCluster
+
+pub fn chem_rxn_catalyst_cursor_make(Int32) -> ChemrxncatalystCursor
+
+pub fn chem_rxn_catalyst_edge_make(Int32) -> ChemrxncatalystEdge
+
+pub fn chem_rxn_catalyst_frame_make(Int32) -> ChemrxncatalystFrame
+
+pub fn chem_rxn_catalyst_graphn_make(Int32) -> ChemrxncatalystGraphN
+
+pub fn chem_rxn_catalyst_layer_make(Int32) -> ChemrxncatalystLayer
+
+pub fn chem_rxn_catalyst_make_matrix(Int32, Int32, Double) -> ChemrxncatalystMatrix
+
+pub fn chem_rxn_catalyst_make_point(Double, Double) -> ChemrxncatalystPoint
+
+pub fn chem_rxn_catalyst_make_point3(Double, Double, Double) -> ChemrxncatalystPoint
+
+pub fn chem_rxn_catalyst_make_series(Array[Double], String) -> ChemrxncatalystSeries
+
+pub fn chem_rxn_catalyst_make_vector(Array[Double]) -> ChemrxncatalystVector
+
+pub fn chem_rxn_catalyst_matrix_identity(Int32) -> ChemrxncatalystMatrix
+
+pub fn chem_rxn_catalyst_model_make(Int32) -> ChemrxncatalystModel
+
+pub fn chem_rxn_catalyst_node_make(Int32) -> ChemrxncatalystNode
+
+pub fn chem_rxn_catalyst_path_make(Int32) -> ChemrxncatalystPath
+
+pub fn chem_rxn_catalyst_range_make(Int32) -> ChemrxncatalystRange
+
+pub fn chem_rxn_catalyst_slice_make(Int32) -> ChemrxncatalystSlice
+
+pub fn chem_rxn_catalyst_table_make(Int32) -> ChemrxncatalystTable
+
+pub fn chem_rxn_catalyst_vector_zero(Int32) -> ChemrxncatalystVector
+
+pub fn chem_rxn_catalyst_view_make(Int32) -> ChemrxncatalystView
+
+// Errors
+
+// Types and methods
+pub(all) struct ChemrxncatalystBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxncatalystBuffer::add(Self, Self) -> Self
+pub fn ChemrxncatalystBuffer::copy(Self) -> Self
+pub fn ChemrxncatalystBuffer::fill(Self, Double) -> Self
+pub fn ChemrxncatalystBuffer::get(Self, Int32) -> Double
+pub fn ChemrxncatalystBuffer::len(Self) -> Int32
+pub fn ChemrxncatalystBuffer::max(Self) -> Double
+pub fn ChemrxncatalystBuffer::mean(Self) -> Double
+pub fn ChemrxncatalystBuffer::min(Self) -> Double
+pub fn ChemrxncatalystBuffer::scale(Self, Double) -> Self
+pub fn ChemrxncatalystBuffer::set(Self, Int32, Double) -> Self
+pub fn ChemrxncatalystBuffer::sum(Self) -> Double
+pub fn ChemrxncatalystBuffer::to_string(Self) -> String
+
+pub(all) struct ChemrxncatalystCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxncatalystCluster::add(Self, Self) -> Self
+pub fn ChemrxncatalystCluster::copy(Self) -> Self
+pub fn ChemrxncatalystCluster::fill(Self, Double) -> Self
+pub fn ChemrxncatalystCluster::get(Self, Int32) -> Double
+pub fn ChemrxncatalystCluster::len(Self) -> Int32
+pub fn ChemrxncatalystCluster::max(Self) -> Double
+pub fn ChemrxncatalystCluster::mean(Self) -> Double
+pub fn ChemrxncatalystCluster::min(Self) -> Double
+pub fn ChemrxncatalystCluster::scale(Self, Double) -> Self
+pub fn ChemrxncatalystCluster::set(Self, Int32, Double) -> Self
+pub fn ChemrxncatalystCluster::sum(Self) -> Double
+pub fn ChemrxncatalystCluster::to_string(Self) -> String
+
+pub(all) struct ChemrxncatalystCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxncatalystCursor::add(Self, Self) -> Self
+pub fn ChemrxncatalystCursor::copy(Self) -> Self
+pub fn ChemrxncatalystCursor::fill(Self, Double) -> Self
+pub fn ChemrxncatalystCursor::get(Self, Int32) -> Double
+pub fn ChemrxncatalystCursor::len(Self) -> Int32
+pub fn ChemrxncatalystCursor::max(Self) -> Double
+pub fn ChemrxncatalystCursor::mean(Self) -> Double
+pub fn ChemrxncatalystCursor::min(Self) -> Double
+pub fn ChemrxncatalystCursor::scale(Self, Double) -> Self
+pub fn ChemrxncatalystCursor::set(Self, Int32, Double) -> Self
+pub fn ChemrxncatalystCursor::sum(Self) -> Double
+pub fn ChemrxncatalystCursor::to_string(Self) -> String
+
+pub(all) struct ChemrxncatalystEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxncatalystEdge::add(Self, Self) -> Self
+pub fn ChemrxncatalystEdge::copy(Self) -> Self
+pub fn ChemrxncatalystEdge::fill(Self, Double) -> Self
+pub fn ChemrxncatalystEdge::get(Self, Int32) -> Double
+pub fn ChemrxncatalystEdge::len(Self) -> Int32
+pub fn ChemrxncatalystEdge::max(Self) -> Double
+pub fn ChemrxncatalystEdge::mean(Self) -> Double
+pub fn ChemrxncatalystEdge::min(Self) -> Double
+pub fn ChemrxncatalystEdge::scale(Self, Double) -> Self
+pub fn ChemrxncatalystEdge::set(Self, Int32, Double) -> Self
+pub fn ChemrxncatalystEdge::sum(Self) -> Double
+pub fn ChemrxncatalystEdge::to_string(Self) -> String
+
+pub(all) struct ChemrxncatalystFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxncatalystFrame::add(Self, Self) -> Self
+pub fn ChemrxncatalystFrame::copy(Self) -> Self
+pub fn ChemrxncatalystFrame::fill(Self, Double) -> Self
+pub fn ChemrxncatalystFrame::get(Self, Int32) -> Double
+pub fn ChemrxncatalystFrame::len(Self) -> Int32
+pub fn ChemrxncatalystFrame::max(Self) -> Double
+pub fn ChemrxncatalystFrame::mean(Self) -> Double
+pub fn ChemrxncatalystFrame::min(Self) -> Double
+pub fn ChemrxncatalystFrame::scale(Self, Double) -> Self
+pub fn ChemrxncatalystFrame::set(Self, Int32, Double) -> Self
+pub fn ChemrxncatalystFrame::sum(Self) -> Double
+pub fn ChemrxncatalystFrame::to_string(Self) -> String
+
+pub(all) struct ChemrxncatalystGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxncatalystGraphN::add(Self, Self) -> Self
+pub fn ChemrxncatalystGraphN::copy(Self) -> Self
+pub fn ChemrxncatalystGraphN::fill(Self, Double) -> Self
+pub fn ChemrxncatalystGraphN::get(Self, Int32) -> Double
+pub fn ChemrxncatalystGraphN::len(Self) -> Int32
+pub fn ChemrxncatalystGraphN::max(Self) -> Double
+pub fn ChemrxncatalystGraphN::mean(Self) -> Double
+pub fn ChemrxncatalystGraphN::min(Self) -> Double
+pub fn ChemrxncatalystGraphN::scale(Self, Double) -> Self
+pub fn ChemrxncatalystGraphN::set(Self, Int32, Double) -> Self
+pub fn ChemrxncatalystGraphN::sum(Self) -> Double
+pub fn ChemrxncatalystGraphN::to_string(Self) -> String
+
+pub(all) struct ChemrxncatalystLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxncatalystLayer::add(Self, Self) -> Self
+pub fn ChemrxncatalystLayer::copy(Self) -> Self
+pub fn ChemrxncatalystLayer::fill(Self, Double) -> Self
+pub fn ChemrxncatalystLayer::get(Self, Int32) -> Double
+pub fn ChemrxncatalystLayer::len(Self) -> Int32
+pub fn ChemrxncatalystLayer::max(Self) -> Double
+pub fn ChemrxncatalystLayer::mean(Self) -> Double
+pub fn ChemrxncatalystLayer::min(Self) -> Double
+pub fn ChemrxncatalystLayer::scale(Self, Double) -> Self
+pub fn ChemrxncatalystLayer::set(Self, Int32, Double) -> Self
+pub fn ChemrxncatalystLayer::sum(Self) -> Double
+pub fn ChemrxncatalystLayer::to_string(Self) -> String
+
+pub(all) struct ChemrxncatalystMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ChemrxncatalystMatrix::add(Self, Self) -> Self
+pub fn ChemrxncatalystMatrix::det(Self) -> Double
+pub fn ChemrxncatalystMatrix::get(Self, Int32, Int32) -> Double
+pub fn ChemrxncatalystMatrix::multiply(Self, Self) -> Self
+pub fn ChemrxncatalystMatrix::norm(Self) -> Double
+pub fn ChemrxncatalystMatrix::scale(Self, Double) -> Self
+pub fn ChemrxncatalystMatrix::to_string(Self) -> String
+pub fn ChemrxncatalystMatrix::trace(Self) -> Double
+pub fn ChemrxncatalystMatrix::transpose(Self) -> Self
+
+pub(all) struct ChemrxncatalystModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxncatalystModel::add(Self, Self) -> Self
+pub fn ChemrxncatalystModel::copy(Self) -> Self
+pub fn ChemrxncatalystModel::fill(Self, Double) -> Self
+pub fn ChemrxncatalystModel::get(Self, Int32) -> Double
+pub fn ChemrxncatalystModel::len(Self) -> Int32
+pub fn ChemrxncatalystModel::max(Self) -> Double
+pub fn ChemrxncatalystModel::mean(Self) -> Double
+pub fn ChemrxncatalystModel::min(Self) -> Double
+pub fn ChemrxncatalystModel::scale(Self, Double) -> Self
+pub fn ChemrxncatalystModel::set(Self, Int32, Double) -> Self
+pub fn ChemrxncatalystModel::sum(Self) -> Double
+pub fn ChemrxncatalystModel::to_string(Self) -> String
+
+pub(all) struct ChemrxncatalystNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxncatalystNode::add(Self, Self) -> Self
+pub fn ChemrxncatalystNode::copy(Self) -> Self
+pub fn ChemrxncatalystNode::fill(Self, Double) -> Self
+pub fn ChemrxncatalystNode::get(Self, Int32) -> Double
+pub fn ChemrxncatalystNode::len(Self) -> Int32
+pub fn ChemrxncatalystNode::max(Self) -> Double
+pub fn ChemrxncatalystNode::mean(Self) -> Double
+pub fn ChemrxncatalystNode::min(Self) -> Double
+pub fn ChemrxncatalystNode::scale(Self, Double) -> Self
+pub fn ChemrxncatalystNode::set(Self, Int32, Double) -> Self
+pub fn ChemrxncatalystNode::sum(Self) -> Double
+pub fn ChemrxncatalystNode::to_string(Self) -> String
+
+pub(all) struct ChemrxncatalystPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxncatalystPath::add(Self, Self) -> Self
+pub fn ChemrxncatalystPath::copy(Self) -> Self
+pub fn ChemrxncatalystPath::fill(Self, Double) -> Self
+pub fn ChemrxncatalystPath::get(Self, Int32) -> Double
+pub fn ChemrxncatalystPath::len(Self) -> Int32
+pub fn ChemrxncatalystPath::max(Self) -> Double
+pub fn ChemrxncatalystPath::mean(Self) -> Double
+pub fn ChemrxncatalystPath::min(Self) -> Double
+pub fn ChemrxncatalystPath::scale(Self, Double) -> Self
+pub fn ChemrxncatalystPath::set(Self, Int32, Double) -> Self
+pub fn ChemrxncatalystPath::sum(Self) -> Double
+pub fn ChemrxncatalystPath::to_string(Self) -> String
+
+pub(all) struct ChemrxncatalystPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ChemrxncatalystPoint::add(Self, Self) -> Self
+pub fn ChemrxncatalystPoint::cross(Self, Self) -> Self
+pub fn ChemrxncatalystPoint::dist(Self, Self) -> Double
+pub fn ChemrxncatalystPoint::dot(Self, Self) -> Double
+pub fn ChemrxncatalystPoint::label(Self) -> Int32
+pub fn ChemrxncatalystPoint::lerp(Self, Self, Double) -> Self
+pub fn ChemrxncatalystPoint::mid(Self, Self) -> Self
+pub fn ChemrxncatalystPoint::negate(Self) -> Self
+pub fn ChemrxncatalystPoint::norm(Self) -> Double
+pub fn ChemrxncatalystPoint::normalize(Self) -> Self
+pub fn ChemrxncatalystPoint::scale(Self, Double) -> Self
+pub fn ChemrxncatalystPoint::sub(Self, Self) -> Self
+pub fn ChemrxncatalystPoint::to_string(Self) -> String
+pub fn ChemrxncatalystPoint::x(Self) -> Double
+pub fn ChemrxncatalystPoint::y(Self) -> Double
+pub fn ChemrxncatalystPoint::z(Self) -> Double
+
+pub(all) struct ChemrxncatalystRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxncatalystRange::add(Self, Self) -> Self
+pub fn ChemrxncatalystRange::copy(Self) -> Self
+pub fn ChemrxncatalystRange::fill(Self, Double) -> Self
+pub fn ChemrxncatalystRange::get(Self, Int32) -> Double
+pub fn ChemrxncatalystRange::len(Self) -> Int32
+pub fn ChemrxncatalystRange::max(Self) -> Double
+pub fn ChemrxncatalystRange::mean(Self) -> Double
+pub fn ChemrxncatalystRange::min(Self) -> Double
+pub fn ChemrxncatalystRange::scale(Self, Double) -> Self
+pub fn ChemrxncatalystRange::set(Self, Int32, Double) -> Self
+pub fn ChemrxncatalystRange::sum(Self) -> Double
+pub fn ChemrxncatalystRange::to_string(Self) -> String
+
+pub(all) struct ChemrxncatalystSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ChemrxncatalystSeries::add(Self, Self) -> Self
+pub fn ChemrxncatalystSeries::cumsum(Self) -> Self
+pub fn ChemrxncatalystSeries::len(Self) -> Int32
+pub fn ChemrxncatalystSeries::max(Self) -> Double
+pub fn ChemrxncatalystSeries::mean(Self) -> Double
+pub fn ChemrxncatalystSeries::median(Self) -> Double
+pub fn ChemrxncatalystSeries::min(Self) -> Double
+pub fn ChemrxncatalystSeries::normalize(Self) -> Self
+pub fn ChemrxncatalystSeries::range(Self) -> Double
+pub fn ChemrxncatalystSeries::scale(Self, Double) -> Self
+pub fn ChemrxncatalystSeries::std(Self) -> Double
+pub fn ChemrxncatalystSeries::sub(Self, Self) -> Self
+pub fn ChemrxncatalystSeries::sum(Self) -> Double
+pub fn ChemrxncatalystSeries::to_string(Self) -> String
+pub fn ChemrxncatalystSeries::variance(Self) -> Double
+
+pub(all) struct ChemrxncatalystSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxncatalystSlice::add(Self, Self) -> Self
+pub fn ChemrxncatalystSlice::copy(Self) -> Self
+pub fn ChemrxncatalystSlice::fill(Self, Double) -> Self
+pub fn ChemrxncatalystSlice::get(Self, Int32) -> Double
+pub fn ChemrxncatalystSlice::len(Self) -> Int32
+pub fn ChemrxncatalystSlice::max(Self) -> Double
+pub fn ChemrxncatalystSlice::mean(Self) -> Double
+pub fn ChemrxncatalystSlice::min(Self) -> Double
+pub fn ChemrxncatalystSlice::scale(Self, Double) -> Self
+pub fn ChemrxncatalystSlice::set(Self, Int32, Double) -> Self
+pub fn ChemrxncatalystSlice::sum(Self) -> Double
+pub fn ChemrxncatalystSlice::to_string(Self) -> String
+
+pub(all) struct ChemrxncatalystTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxncatalystTable::add(Self, Self) -> Self
+pub fn ChemrxncatalystTable::copy(Self) -> Self
+pub fn ChemrxncatalystTable::fill(Self, Double) -> Self
+pub fn ChemrxncatalystTable::get(Self, Int32) -> Double
+pub fn ChemrxncatalystTable::len(Self) -> Int32
+pub fn ChemrxncatalystTable::max(Self) -> Double
+pub fn ChemrxncatalystTable::mean(Self) -> Double
+pub fn ChemrxncatalystTable::min(Self) -> Double
+pub fn ChemrxncatalystTable::scale(Self, Double) -> Self
+pub fn ChemrxncatalystTable::set(Self, Int32, Double) -> Self
+pub fn ChemrxncatalystTable::sum(Self) -> Double
+pub fn ChemrxncatalystTable::to_string(Self) -> String
+
+pub(all) struct ChemrxncatalystVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ChemrxncatalystVector::add(Self, Self) -> Self
+pub fn ChemrxncatalystVector::dist(Self, Self) -> Double
+pub fn ChemrxncatalystVector::dot(Self, Self) -> Double
+pub fn ChemrxncatalystVector::norm(Self) -> Double
+pub fn ChemrxncatalystVector::normalize(Self) -> Self
+pub fn ChemrxncatalystVector::scale(Self, Double) -> Self
+pub fn ChemrxncatalystVector::sub(Self, Self) -> Self
+pub fn ChemrxncatalystVector::to_string(Self) -> String
+
+pub(all) struct ChemrxncatalystView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxncatalystView::add(Self, Self) -> Self
+pub fn ChemrxncatalystView::copy(Self) -> Self
+pub fn ChemrxncatalystView::fill(Self, Double) -> Self
+pub fn ChemrxncatalystView::get(Self, Int32) -> Double
+pub fn ChemrxncatalystView::len(Self) -> Int32
+pub fn ChemrxncatalystView::max(Self) -> Double
+pub fn ChemrxncatalystView::mean(Self) -> Double
+pub fn ChemrxncatalystView::min(Self) -> Double
+pub fn ChemrxncatalystView::scale(Self, Double) -> Self
+pub fn ChemrxncatalystView::set(Self, Int32, Double) -> Self
+pub fn ChemrxncatalystView::sum(Self) -> Double
+pub fn ChemrxncatalystView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

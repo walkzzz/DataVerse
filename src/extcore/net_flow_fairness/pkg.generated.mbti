@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_flow_fairness"
+
+// Values
+pub fn net_flow_fairness_buffer_make(Int32) -> NetflowfairnessBuffer
+
+pub fn net_flow_fairness_cluster_make(Int32) -> NetflowfairnessCluster
+
+pub fn net_flow_fairness_cursor_make(Int32) -> NetflowfairnessCursor
+
+pub fn net_flow_fairness_edge_make(Int32) -> NetflowfairnessEdge
+
+pub fn net_flow_fairness_frame_make(Int32) -> NetflowfairnessFrame
+
+pub fn net_flow_fairness_graphn_make(Int32) -> NetflowfairnessGraphN
+
+pub fn net_flow_fairness_layer_make(Int32) -> NetflowfairnessLayer
+
+pub fn net_flow_fairness_make_matrix(Int32, Int32, Double) -> NetflowfairnessMatrix
+
+pub fn net_flow_fairness_make_point(Double, Double) -> NetflowfairnessPoint
+
+pub fn net_flow_fairness_make_point3(Double, Double, Double) -> NetflowfairnessPoint
+
+pub fn net_flow_fairness_make_series(Array[Double], String) -> NetflowfairnessSeries
+
+pub fn net_flow_fairness_make_vector(Array[Double]) -> NetflowfairnessVector
+
+pub fn net_flow_fairness_matrix_identity(Int32) -> NetflowfairnessMatrix
+
+pub fn net_flow_fairness_model_make(Int32) -> NetflowfairnessModel
+
+pub fn net_flow_fairness_node_make(Int32) -> NetflowfairnessNode
+
+pub fn net_flow_fairness_path_make(Int32) -> NetflowfairnessPath
+
+pub fn net_flow_fairness_range_make(Int32) -> NetflowfairnessRange
+
+pub fn net_flow_fairness_slice_make(Int32) -> NetflowfairnessSlice
+
+pub fn net_flow_fairness_table_make(Int32) -> NetflowfairnessTable
+
+pub fn net_flow_fairness_vector_zero(Int32) -> NetflowfairnessVector
+
+pub fn net_flow_fairness_view_make(Int32) -> NetflowfairnessView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetflowfairnessBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowfairnessBuffer::add(Self, Self) -> Self
+pub fn NetflowfairnessBuffer::copy(Self) -> Self
+pub fn NetflowfairnessBuffer::fill(Self, Double) -> Self
+pub fn NetflowfairnessBuffer::get(Self, Int32) -> Double
+pub fn NetflowfairnessBuffer::len(Self) -> Int32
+pub fn NetflowfairnessBuffer::max(Self) -> Double
+pub fn NetflowfairnessBuffer::mean(Self) -> Double
+pub fn NetflowfairnessBuffer::min(Self) -> Double
+pub fn NetflowfairnessBuffer::scale(Self, Double) -> Self
+pub fn NetflowfairnessBuffer::set(Self, Int32, Double) -> Self
+pub fn NetflowfairnessBuffer::sum(Self) -> Double
+pub fn NetflowfairnessBuffer::to_string(Self) -> String
+
+pub(all) struct NetflowfairnessCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowfairnessCluster::add(Self, Self) -> Self
+pub fn NetflowfairnessCluster::copy(Self) -> Self
+pub fn NetflowfairnessCluster::fill(Self, Double) -> Self
+pub fn NetflowfairnessCluster::get(Self, Int32) -> Double
+pub fn NetflowfairnessCluster::len(Self) -> Int32
+pub fn NetflowfairnessCluster::max(Self) -> Double
+pub fn NetflowfairnessCluster::mean(Self) -> Double
+pub fn NetflowfairnessCluster::min(Self) -> Double
+pub fn NetflowfairnessCluster::scale(Self, Double) -> Self
+pub fn NetflowfairnessCluster::set(Self, Int32, Double) -> Self
+pub fn NetflowfairnessCluster::sum(Self) -> Double
+pub fn NetflowfairnessCluster::to_string(Self) -> String
+
+pub(all) struct NetflowfairnessCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowfairnessCursor::add(Self, Self) -> Self
+pub fn NetflowfairnessCursor::copy(Self) -> Self
+pub fn NetflowfairnessCursor::fill(Self, Double) -> Self
+pub fn NetflowfairnessCursor::get(Self, Int32) -> Double
+pub fn NetflowfairnessCursor::len(Self) -> Int32
+pub fn NetflowfairnessCursor::max(Self) -> Double
+pub fn NetflowfairnessCursor::mean(Self) -> Double
+pub fn NetflowfairnessCursor::min(Self) -> Double
+pub fn NetflowfairnessCursor::scale(Self, Double) -> Self
+pub fn NetflowfairnessCursor::set(Self, Int32, Double) -> Self
+pub fn NetflowfairnessCursor::sum(Self) -> Double
+pub fn NetflowfairnessCursor::to_string(Self) -> String
+
+pub(all) struct NetflowfairnessEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowfairnessEdge::add(Self, Self) -> Self
+pub fn NetflowfairnessEdge::copy(Self) -> Self
+pub fn NetflowfairnessEdge::fill(Self, Double) -> Self
+pub fn NetflowfairnessEdge::get(Self, Int32) -> Double
+pub fn NetflowfairnessEdge::len(Self) -> Int32
+pub fn NetflowfairnessEdge::max(Self) -> Double
+pub fn NetflowfairnessEdge::mean(Self) -> Double
+pub fn NetflowfairnessEdge::min(Self) -> Double
+pub fn NetflowfairnessEdge::scale(Self, Double) -> Self
+pub fn NetflowfairnessEdge::set(Self, Int32, Double) -> Self
+pub fn NetflowfairnessEdge::sum(Self) -> Double
+pub fn NetflowfairnessEdge::to_string(Self) -> String
+
+pub(all) struct NetflowfairnessFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowfairnessFrame::add(Self, Self) -> Self
+pub fn NetflowfairnessFrame::copy(Self) -> Self
+pub fn NetflowfairnessFrame::fill(Self, Double) -> Self
+pub fn NetflowfairnessFrame::get(Self, Int32) -> Double
+pub fn NetflowfairnessFrame::len(Self) -> Int32
+pub fn NetflowfairnessFrame::max(Self) -> Double
+pub fn NetflowfairnessFrame::mean(Self) -> Double
+pub fn NetflowfairnessFrame::min(Self) -> Double
+pub fn NetflowfairnessFrame::scale(Self, Double) -> Self
+pub fn NetflowfairnessFrame::set(Self, Int32, Double) -> Self
+pub fn NetflowfairnessFrame::sum(Self) -> Double
+pub fn NetflowfairnessFrame::to_string(Self) -> String
+
+pub(all) struct NetflowfairnessGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowfairnessGraphN::add(Self, Self) -> Self
+pub fn NetflowfairnessGraphN::copy(Self) -> Self
+pub fn NetflowfairnessGraphN::fill(Self, Double) -> Self
+pub fn NetflowfairnessGraphN::get(Self, Int32) -> Double
+pub fn NetflowfairnessGraphN::len(Self) -> Int32
+pub fn NetflowfairnessGraphN::max(Self) -> Double
+pub fn NetflowfairnessGraphN::mean(Self) -> Double
+pub fn NetflowfairnessGraphN::min(Self) -> Double
+pub fn NetflowfairnessGraphN::scale(Self, Double) -> Self
+pub fn NetflowfairnessGraphN::set(Self, Int32, Double) -> Self
+pub fn NetflowfairnessGraphN::sum(Self) -> Double
+pub fn NetflowfairnessGraphN::to_string(Self) -> String
+
+pub(all) struct NetflowfairnessLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowfairnessLayer::add(Self, Self) -> Self
+pub fn NetflowfairnessLayer::copy(Self) -> Self
+pub fn NetflowfairnessLayer::fill(Self, Double) -> Self
+pub fn NetflowfairnessLayer::get(Self, Int32) -> Double
+pub fn NetflowfairnessLayer::len(Self) -> Int32
+pub fn NetflowfairnessLayer::max(Self) -> Double
+pub fn NetflowfairnessLayer::mean(Self) -> Double
+pub fn NetflowfairnessLayer::min(Self) -> Double
+pub fn NetflowfairnessLayer::scale(Self, Double) -> Self
+pub fn NetflowfairnessLayer::set(Self, Int32, Double) -> Self
+pub fn NetflowfairnessLayer::sum(Self) -> Double
+pub fn NetflowfairnessLayer::to_string(Self) -> String
+
+pub(all) struct NetflowfairnessMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetflowfairnessMatrix::add(Self, Self) -> Self
+pub fn NetflowfairnessMatrix::det(Self) -> Double
+pub fn NetflowfairnessMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetflowfairnessMatrix::multiply(Self, Self) -> Self
+pub fn NetflowfairnessMatrix::norm(Self) -> Double
+pub fn NetflowfairnessMatrix::scale(Self, Double) -> Self
+pub fn NetflowfairnessMatrix::to_string(Self) -> String
+pub fn NetflowfairnessMatrix::trace(Self) -> Double
+pub fn NetflowfairnessMatrix::transpose(Self) -> Self
+
+pub(all) struct NetflowfairnessModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowfairnessModel::add(Self, Self) -> Self
+pub fn NetflowfairnessModel::copy(Self) -> Self
+pub fn NetflowfairnessModel::fill(Self, Double) -> Self
+pub fn NetflowfairnessModel::get(Self, Int32) -> Double
+pub fn NetflowfairnessModel::len(Self) -> Int32
+pub fn NetflowfairnessModel::max(Self) -> Double
+pub fn NetflowfairnessModel::mean(Self) -> Double
+pub fn NetflowfairnessModel::min(Self) -> Double
+pub fn NetflowfairnessModel::scale(Self, Double) -> Self
+pub fn NetflowfairnessModel::set(Self, Int32, Double) -> Self
+pub fn NetflowfairnessModel::sum(Self) -> Double
+pub fn NetflowfairnessModel::to_string(Self) -> String
+
+pub(all) struct NetflowfairnessNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowfairnessNode::add(Self, Self) -> Self
+pub fn NetflowfairnessNode::copy(Self) -> Self
+pub fn NetflowfairnessNode::fill(Self, Double) -> Self
+pub fn NetflowfairnessNode::get(Self, Int32) -> Double
+pub fn NetflowfairnessNode::len(Self) -> Int32
+pub fn NetflowfairnessNode::max(Self) -> Double
+pub fn NetflowfairnessNode::mean(Self) -> Double
+pub fn NetflowfairnessNode::min(Self) -> Double
+pub fn NetflowfairnessNode::scale(Self, Double) -> Self
+pub fn NetflowfairnessNode::set(Self, Int32, Double) -> Self
+pub fn NetflowfairnessNode::sum(Self) -> Double
+pub fn NetflowfairnessNode::to_string(Self) -> String
+
+pub(all) struct NetflowfairnessPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowfairnessPath::add(Self, Self) -> Self
+pub fn NetflowfairnessPath::copy(Self) -> Self
+pub fn NetflowfairnessPath::fill(Self, Double) -> Self
+pub fn NetflowfairnessPath::get(Self, Int32) -> Double
+pub fn NetflowfairnessPath::len(Self) -> Int32
+pub fn NetflowfairnessPath::max(Self) -> Double
+pub fn NetflowfairnessPath::mean(Self) -> Double
+pub fn NetflowfairnessPath::min(Self) -> Double
+pub fn NetflowfairnessPath::scale(Self, Double) -> Self
+pub fn NetflowfairnessPath::set(Self, Int32, Double) -> Self
+pub fn NetflowfairnessPath::sum(Self) -> Double
+pub fn NetflowfairnessPath::to_string(Self) -> String
+
+pub(all) struct NetflowfairnessPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetflowfairnessPoint::add(Self, Self) -> Self
+pub fn NetflowfairnessPoint::cross(Self, Self) -> Self
+pub fn NetflowfairnessPoint::dist(Self, Self) -> Double
+pub fn NetflowfairnessPoint::dot(Self, Self) -> Double
+pub fn NetflowfairnessPoint::label(Self) -> Int32
+pub fn NetflowfairnessPoint::lerp(Self, Self, Double) -> Self
+pub fn NetflowfairnessPoint::mid(Self, Self) -> Self
+pub fn NetflowfairnessPoint::negate(Self) -> Self
+pub fn NetflowfairnessPoint::norm(Self) -> Double
+pub fn NetflowfairnessPoint::normalize(Self) -> Self
+pub fn NetflowfairnessPoint::scale(Self, Double) -> Self
+pub fn NetflowfairnessPoint::sub(Self, Self) -> Self
+pub fn NetflowfairnessPoint::to_string(Self) -> String
+pub fn NetflowfairnessPoint::x(Self) -> Double
+pub fn NetflowfairnessPoint::y(Self) -> Double
+pub fn NetflowfairnessPoint::z(Self) -> Double
+
+pub(all) struct NetflowfairnessRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowfairnessRange::add(Self, Self) -> Self
+pub fn NetflowfairnessRange::copy(Self) -> Self
+pub fn NetflowfairnessRange::fill(Self, Double) -> Self
+pub fn NetflowfairnessRange::get(Self, Int32) -> Double
+pub fn NetflowfairnessRange::len(Self) -> Int32
+pub fn NetflowfairnessRange::max(Self) -> Double
+pub fn NetflowfairnessRange::mean(Self) -> Double
+pub fn NetflowfairnessRange::min(Self) -> Double
+pub fn NetflowfairnessRange::scale(Self, Double) -> Self
+pub fn NetflowfairnessRange::set(Self, Int32, Double) -> Self
+pub fn NetflowfairnessRange::sum(Self) -> Double
+pub fn NetflowfairnessRange::to_string(Self) -> String
+
+pub(all) struct NetflowfairnessSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetflowfairnessSeries::add(Self, Self) -> Self
+pub fn NetflowfairnessSeries::cumsum(Self) -> Self
+pub fn NetflowfairnessSeries::len(Self) -> Int32
+pub fn NetflowfairnessSeries::max(Self) -> Double
+pub fn NetflowfairnessSeries::mean(Self) -> Double
+pub fn NetflowfairnessSeries::median(Self) -> Double
+pub fn NetflowfairnessSeries::min(Self) -> Double
+pub fn NetflowfairnessSeries::normalize(Self) -> Self
+pub fn NetflowfairnessSeries::range(Self) -> Double
+pub fn NetflowfairnessSeries::scale(Self, Double) -> Self
+pub fn NetflowfairnessSeries::std(Self) -> Double
+pub fn NetflowfairnessSeries::sub(Self, Self) -> Self
+pub fn NetflowfairnessSeries::sum(Self) -> Double
+pub fn NetflowfairnessSeries::to_string(Self) -> String
+pub fn NetflowfairnessSeries::variance(Self) -> Double
+
+pub(all) struct NetflowfairnessSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowfairnessSlice::add(Self, Self) -> Self
+pub fn NetflowfairnessSlice::copy(Self) -> Self
+pub fn NetflowfairnessSlice::fill(Self, Double) -> Self
+pub fn NetflowfairnessSlice::get(Self, Int32) -> Double
+pub fn NetflowfairnessSlice::len(Self) -> Int32
+pub fn NetflowfairnessSlice::max(Self) -> Double
+pub fn NetflowfairnessSlice::mean(Self) -> Double
+pub fn NetflowfairnessSlice::min(Self) -> Double
+pub fn NetflowfairnessSlice::scale(Self, Double) -> Self
+pub fn NetflowfairnessSlice::set(Self, Int32, Double) -> Self
+pub fn NetflowfairnessSlice::sum(Self) -> Double
+pub fn NetflowfairnessSlice::to_string(Self) -> String
+
+pub(all) struct NetflowfairnessTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowfairnessTable::add(Self, Self) -> Self
+pub fn NetflowfairnessTable::copy(Self) -> Self
+pub fn NetflowfairnessTable::fill(Self, Double) -> Self
+pub fn NetflowfairnessTable::get(Self, Int32) -> Double
+pub fn NetflowfairnessTable::len(Self) -> Int32
+pub fn NetflowfairnessTable::max(Self) -> Double
+pub fn NetflowfairnessTable::mean(Self) -> Double
+pub fn NetflowfairnessTable::min(Self) -> Double
+pub fn NetflowfairnessTable::scale(Self, Double) -> Self
+pub fn NetflowfairnessTable::set(Self, Int32, Double) -> Self
+pub fn NetflowfairnessTable::sum(Self) -> Double
+pub fn NetflowfairnessTable::to_string(Self) -> String
+
+pub(all) struct NetflowfairnessVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetflowfairnessVector::add(Self, Self) -> Self
+pub fn NetflowfairnessVector::dist(Self, Self) -> Double
+pub fn NetflowfairnessVector::dot(Self, Self) -> Double
+pub fn NetflowfairnessVector::norm(Self) -> Double
+pub fn NetflowfairnessVector::normalize(Self) -> Self
+pub fn NetflowfairnessVector::scale(Self, Double) -> Self
+pub fn NetflowfairnessVector::sub(Self, Self) -> Self
+pub fn NetflowfairnessVector::to_string(Self) -> String
+
+pub(all) struct NetflowfairnessView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowfairnessView::add(Self, Self) -> Self
+pub fn NetflowfairnessView::copy(Self) -> Self
+pub fn NetflowfairnessView::fill(Self, Double) -> Self
+pub fn NetflowfairnessView::get(Self, Int32) -> Double
+pub fn NetflowfairnessView::len(Self) -> Int32
+pub fn NetflowfairnessView::max(Self) -> Double
+pub fn NetflowfairnessView::mean(Self) -> Double
+pub fn NetflowfairnessView::min(Self) -> Double
+pub fn NetflowfairnessView::scale(Self, Double) -> Self
+pub fn NetflowfairnessView::set(Self, Int32, Double) -> Self
+pub fn NetflowfairnessView::sum(Self) -> Double
+pub fn NetflowfairnessView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

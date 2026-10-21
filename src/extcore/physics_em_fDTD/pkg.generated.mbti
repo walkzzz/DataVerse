@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_em_fDTD"
+
+// Values
+pub fn physics_em_fDTD_buffer_make(Int32) -> PhysicsemfDTDBuffer
+
+pub fn physics_em_fDTD_cluster_make(Int32) -> PhysicsemfDTDCluster
+
+pub fn physics_em_fDTD_cursor_make(Int32) -> PhysicsemfDTDCursor
+
+pub fn physics_em_fDTD_edge_make(Int32) -> PhysicsemfDTDEdge
+
+pub fn physics_em_fDTD_frame_make(Int32) -> PhysicsemfDTDFrame
+
+pub fn physics_em_fDTD_graphn_make(Int32) -> PhysicsemfDTDGraphN
+
+pub fn physics_em_fDTD_layer_make(Int32) -> PhysicsemfDTDLayer
+
+pub fn physics_em_fDTD_make_matrix(Int32, Int32, Double) -> PhysicsemfDTDMatrix
+
+pub fn physics_em_fDTD_make_point(Double, Double) -> PhysicsemfDTDPoint
+
+pub fn physics_em_fDTD_make_point3(Double, Double, Double) -> PhysicsemfDTDPoint
+
+pub fn physics_em_fDTD_make_series(Array[Double], String) -> PhysicsemfDTDSeries
+
+pub fn physics_em_fDTD_make_vector(Array[Double]) -> PhysicsemfDTDVector
+
+pub fn physics_em_fDTD_matrix_identity(Int32) -> PhysicsemfDTDMatrix
+
+pub fn physics_em_fDTD_model_make(Int32) -> PhysicsemfDTDModel
+
+pub fn physics_em_fDTD_node_make(Int32) -> PhysicsemfDTDNode
+
+pub fn physics_em_fDTD_path_make(Int32) -> PhysicsemfDTDPath
+
+pub fn physics_em_fDTD_range_make(Int32) -> PhysicsemfDTDRange
+
+pub fn physics_em_fDTD_slice_make(Int32) -> PhysicsemfDTDSlice
+
+pub fn physics_em_fDTD_table_make(Int32) -> PhysicsemfDTDTable
+
+pub fn physics_em_fDTD_vector_zero(Int32) -> PhysicsemfDTDVector
+
+pub fn physics_em_fDTD_view_make(Int32) -> PhysicsemfDTDView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsemfDTDBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemfDTDBuffer::add(Self, Self) -> Self
+pub fn PhysicsemfDTDBuffer::copy(Self) -> Self
+pub fn PhysicsemfDTDBuffer::fill(Self, Double) -> Self
+pub fn PhysicsemfDTDBuffer::get(Self, Int32) -> Double
+pub fn PhysicsemfDTDBuffer::len(Self) -> Int32
+pub fn PhysicsemfDTDBuffer::max(Self) -> Double
+pub fn PhysicsemfDTDBuffer::mean(Self) -> Double
+pub fn PhysicsemfDTDBuffer::min(Self) -> Double
+pub fn PhysicsemfDTDBuffer::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsemfDTDBuffer::sum(Self) -> Double
+pub fn PhysicsemfDTDBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsemfDTDCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemfDTDCluster::add(Self, Self) -> Self
+pub fn PhysicsemfDTDCluster::copy(Self) -> Self
+pub fn PhysicsemfDTDCluster::fill(Self, Double) -> Self
+pub fn PhysicsemfDTDCluster::get(Self, Int32) -> Double
+pub fn PhysicsemfDTDCluster::len(Self) -> Int32
+pub fn PhysicsemfDTDCluster::max(Self) -> Double
+pub fn PhysicsemfDTDCluster::mean(Self) -> Double
+pub fn PhysicsemfDTDCluster::min(Self) -> Double
+pub fn PhysicsemfDTDCluster::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsemfDTDCluster::sum(Self) -> Double
+pub fn PhysicsemfDTDCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsemfDTDCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemfDTDCursor::add(Self, Self) -> Self
+pub fn PhysicsemfDTDCursor::copy(Self) -> Self
+pub fn PhysicsemfDTDCursor::fill(Self, Double) -> Self
+pub fn PhysicsemfDTDCursor::get(Self, Int32) -> Double
+pub fn PhysicsemfDTDCursor::len(Self) -> Int32
+pub fn PhysicsemfDTDCursor::max(Self) -> Double
+pub fn PhysicsemfDTDCursor::mean(Self) -> Double
+pub fn PhysicsemfDTDCursor::min(Self) -> Double
+pub fn PhysicsemfDTDCursor::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsemfDTDCursor::sum(Self) -> Double
+pub fn PhysicsemfDTDCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsemfDTDEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemfDTDEdge::add(Self, Self) -> Self
+pub fn PhysicsemfDTDEdge::copy(Self) -> Self
+pub fn PhysicsemfDTDEdge::fill(Self, Double) -> Self
+pub fn PhysicsemfDTDEdge::get(Self, Int32) -> Double
+pub fn PhysicsemfDTDEdge::len(Self) -> Int32
+pub fn PhysicsemfDTDEdge::max(Self) -> Double
+pub fn PhysicsemfDTDEdge::mean(Self) -> Double
+pub fn PhysicsemfDTDEdge::min(Self) -> Double
+pub fn PhysicsemfDTDEdge::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsemfDTDEdge::sum(Self) -> Double
+pub fn PhysicsemfDTDEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsemfDTDFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemfDTDFrame::add(Self, Self) -> Self
+pub fn PhysicsemfDTDFrame::copy(Self) -> Self
+pub fn PhysicsemfDTDFrame::fill(Self, Double) -> Self
+pub fn PhysicsemfDTDFrame::get(Self, Int32) -> Double
+pub fn PhysicsemfDTDFrame::len(Self) -> Int32
+pub fn PhysicsemfDTDFrame::max(Self) -> Double
+pub fn PhysicsemfDTDFrame::mean(Self) -> Double
+pub fn PhysicsemfDTDFrame::min(Self) -> Double
+pub fn PhysicsemfDTDFrame::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsemfDTDFrame::sum(Self) -> Double
+pub fn PhysicsemfDTDFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsemfDTDGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemfDTDGraphN::add(Self, Self) -> Self
+pub fn PhysicsemfDTDGraphN::copy(Self) -> Self
+pub fn PhysicsemfDTDGraphN::fill(Self, Double) -> Self
+pub fn PhysicsemfDTDGraphN::get(Self, Int32) -> Double
+pub fn PhysicsemfDTDGraphN::len(Self) -> Int32
+pub fn PhysicsemfDTDGraphN::max(Self) -> Double
+pub fn PhysicsemfDTDGraphN::mean(Self) -> Double
+pub fn PhysicsemfDTDGraphN::min(Self) -> Double
+pub fn PhysicsemfDTDGraphN::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsemfDTDGraphN::sum(Self) -> Double
+pub fn PhysicsemfDTDGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsemfDTDLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemfDTDLayer::add(Self, Self) -> Self
+pub fn PhysicsemfDTDLayer::copy(Self) -> Self
+pub fn PhysicsemfDTDLayer::fill(Self, Double) -> Self
+pub fn PhysicsemfDTDLayer::get(Self, Int32) -> Double
+pub fn PhysicsemfDTDLayer::len(Self) -> Int32
+pub fn PhysicsemfDTDLayer::max(Self) -> Double
+pub fn PhysicsemfDTDLayer::mean(Self) -> Double
+pub fn PhysicsemfDTDLayer::min(Self) -> Double
+pub fn PhysicsemfDTDLayer::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsemfDTDLayer::sum(Self) -> Double
+pub fn PhysicsemfDTDLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsemfDTDMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsemfDTDMatrix::add(Self, Self) -> Self
+pub fn PhysicsemfDTDMatrix::det(Self) -> Double
+pub fn PhysicsemfDTDMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsemfDTDMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsemfDTDMatrix::norm(Self) -> Double
+pub fn PhysicsemfDTDMatrix::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDMatrix::to_string(Self) -> String
+pub fn PhysicsemfDTDMatrix::trace(Self) -> Double
+pub fn PhysicsemfDTDMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsemfDTDModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemfDTDModel::add(Self, Self) -> Self
+pub fn PhysicsemfDTDModel::copy(Self) -> Self
+pub fn PhysicsemfDTDModel::fill(Self, Double) -> Self
+pub fn PhysicsemfDTDModel::get(Self, Int32) -> Double
+pub fn PhysicsemfDTDModel::len(Self) -> Int32
+pub fn PhysicsemfDTDModel::max(Self) -> Double
+pub fn PhysicsemfDTDModel::mean(Self) -> Double
+pub fn PhysicsemfDTDModel::min(Self) -> Double
+pub fn PhysicsemfDTDModel::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsemfDTDModel::sum(Self) -> Double
+pub fn PhysicsemfDTDModel::to_string(Self) -> String
+
+pub(all) struct PhysicsemfDTDNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemfDTDNode::add(Self, Self) -> Self
+pub fn PhysicsemfDTDNode::copy(Self) -> Self
+pub fn PhysicsemfDTDNode::fill(Self, Double) -> Self
+pub fn PhysicsemfDTDNode::get(Self, Int32) -> Double
+pub fn PhysicsemfDTDNode::len(Self) -> Int32
+pub fn PhysicsemfDTDNode::max(Self) -> Double
+pub fn PhysicsemfDTDNode::mean(Self) -> Double
+pub fn PhysicsemfDTDNode::min(Self) -> Double
+pub fn PhysicsemfDTDNode::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsemfDTDNode::sum(Self) -> Double
+pub fn PhysicsemfDTDNode::to_string(Self) -> String
+
+pub(all) struct PhysicsemfDTDPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemfDTDPath::add(Self, Self) -> Self
+pub fn PhysicsemfDTDPath::copy(Self) -> Self
+pub fn PhysicsemfDTDPath::fill(Self, Double) -> Self
+pub fn PhysicsemfDTDPath::get(Self, Int32) -> Double
+pub fn PhysicsemfDTDPath::len(Self) -> Int32
+pub fn PhysicsemfDTDPath::max(Self) -> Double
+pub fn PhysicsemfDTDPath::mean(Self) -> Double
+pub fn PhysicsemfDTDPath::min(Self) -> Double
+pub fn PhysicsemfDTDPath::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsemfDTDPath::sum(Self) -> Double
+pub fn PhysicsemfDTDPath::to_string(Self) -> String
+
+pub(all) struct PhysicsemfDTDPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsemfDTDPoint::add(Self, Self) -> Self
+pub fn PhysicsemfDTDPoint::cross(Self, Self) -> Self
+pub fn PhysicsemfDTDPoint::dist(Self, Self) -> Double
+pub fn PhysicsemfDTDPoint::dot(Self, Self) -> Double
+pub fn PhysicsemfDTDPoint::label(Self) -> Int32
+pub fn PhysicsemfDTDPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsemfDTDPoint::mid(Self, Self) -> Self
+pub fn PhysicsemfDTDPoint::negate(Self) -> Self
+pub fn PhysicsemfDTDPoint::norm(Self) -> Double
+pub fn PhysicsemfDTDPoint::normalize(Self) -> Self
+pub fn PhysicsemfDTDPoint::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDPoint::sub(Self, Self) -> Self
+pub fn PhysicsemfDTDPoint::to_string(Self) -> String
+pub fn PhysicsemfDTDPoint::x(Self) -> Double
+pub fn PhysicsemfDTDPoint::y(Self) -> Double
+pub fn PhysicsemfDTDPoint::z(Self) -> Double
+
+pub(all) struct PhysicsemfDTDRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemfDTDRange::add(Self, Self) -> Self
+pub fn PhysicsemfDTDRange::copy(Self) -> Self
+pub fn PhysicsemfDTDRange::fill(Self, Double) -> Self
+pub fn PhysicsemfDTDRange::get(Self, Int32) -> Double
+pub fn PhysicsemfDTDRange::len(Self) -> Int32
+pub fn PhysicsemfDTDRange::max(Self) -> Double
+pub fn PhysicsemfDTDRange::mean(Self) -> Double
+pub fn PhysicsemfDTDRange::min(Self) -> Double
+pub fn PhysicsemfDTDRange::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsemfDTDRange::sum(Self) -> Double
+pub fn PhysicsemfDTDRange::to_string(Self) -> String
+
+pub(all) struct PhysicsemfDTDSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsemfDTDSeries::add(Self, Self) -> Self
+pub fn PhysicsemfDTDSeries::cumsum(Self) -> Self
+pub fn PhysicsemfDTDSeries::len(Self) -> Int32
+pub fn PhysicsemfDTDSeries::max(Self) -> Double
+pub fn PhysicsemfDTDSeries::mean(Self) -> Double
+pub fn PhysicsemfDTDSeries::median(Self) -> Double
+pub fn PhysicsemfDTDSeries::min(Self) -> Double
+pub fn PhysicsemfDTDSeries::normalize(Self) -> Self
+pub fn PhysicsemfDTDSeries::range(Self) -> Double
+pub fn PhysicsemfDTDSeries::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDSeries::std(Self) -> Double
+pub fn PhysicsemfDTDSeries::sub(Self, Self) -> Self
+pub fn PhysicsemfDTDSeries::sum(Self) -> Double
+pub fn PhysicsemfDTDSeries::to_string(Self) -> String
+pub fn PhysicsemfDTDSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsemfDTDSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemfDTDSlice::add(Self, Self) -> Self
+pub fn PhysicsemfDTDSlice::copy(Self) -> Self
+pub fn PhysicsemfDTDSlice::fill(Self, Double) -> Self
+pub fn PhysicsemfDTDSlice::get(Self, Int32) -> Double
+pub fn PhysicsemfDTDSlice::len(Self) -> Int32
+pub fn PhysicsemfDTDSlice::max(Self) -> Double
+pub fn PhysicsemfDTDSlice::mean(Self) -> Double
+pub fn PhysicsemfDTDSlice::min(Self) -> Double
+pub fn PhysicsemfDTDSlice::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsemfDTDSlice::sum(Self) -> Double
+pub fn PhysicsemfDTDSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsemfDTDTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemfDTDTable::add(Self, Self) -> Self
+pub fn PhysicsemfDTDTable::copy(Self) -> Self
+pub fn PhysicsemfDTDTable::fill(Self, Double) -> Self
+pub fn PhysicsemfDTDTable::get(Self, Int32) -> Double
+pub fn PhysicsemfDTDTable::len(Self) -> Int32
+pub fn PhysicsemfDTDTable::max(Self) -> Double
+pub fn PhysicsemfDTDTable::mean(Self) -> Double
+pub fn PhysicsemfDTDTable::min(Self) -> Double
+pub fn PhysicsemfDTDTable::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsemfDTDTable::sum(Self) -> Double
+pub fn PhysicsemfDTDTable::to_string(Self) -> String
+
+pub(all) struct PhysicsemfDTDVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsemfDTDVector::add(Self, Self) -> Self
+pub fn PhysicsemfDTDVector::dist(Self, Self) -> Double
+pub fn PhysicsemfDTDVector::dot(Self, Self) -> Double
+pub fn PhysicsemfDTDVector::norm(Self) -> Double
+pub fn PhysicsemfDTDVector::normalize(Self) -> Self
+pub fn PhysicsemfDTDVector::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDVector::sub(Self, Self) -> Self
+pub fn PhysicsemfDTDVector::to_string(Self) -> String
+
+pub(all) struct PhysicsemfDTDView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemfDTDView::add(Self, Self) -> Self
+pub fn PhysicsemfDTDView::copy(Self) -> Self
+pub fn PhysicsemfDTDView::fill(Self, Double) -> Self
+pub fn PhysicsemfDTDView::get(Self, Int32) -> Double
+pub fn PhysicsemfDTDView::len(Self) -> Int32
+pub fn PhysicsemfDTDView::max(Self) -> Double
+pub fn PhysicsemfDTDView::mean(Self) -> Double
+pub fn PhysicsemfDTDView::min(Self) -> Double
+pub fn PhysicsemfDTDView::scale(Self, Double) -> Self
+pub fn PhysicsemfDTDView::set(Self, Int32, Double) -> Self
+pub fn PhysicsemfDTDView::sum(Self) -> Double
+pub fn PhysicsemfDTDView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

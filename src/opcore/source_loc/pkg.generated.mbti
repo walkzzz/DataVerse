@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/source_loc"
+
+// Values
+pub fn source_loc_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn source_loc_corr(Array[Double], Array[Double]) -> Double
+
+pub fn source_loc_cov(Array[Double], Array[Double]) -> Double
+
+pub fn source_loc_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn source_loc_mae(Array[Double], Array[Double]) -> Double
+
+pub fn source_loc_make_labeled_point(Double, Double, Int32) -> Source_locPoint
+
+pub fn source_loc_make_matrix(Int32, Int32, Double) -> Source_locMatrix
+
+pub fn source_loc_make_point(Double, Double) -> Source_locPoint
+
+pub fn source_loc_make_series(Array[Double], String) -> Source_locSeries
+
+pub fn source_loc_make_vector(Array[Double]) -> Source_locVector
+
+pub fn source_loc_matrix_add(Source_locMatrix, Source_locMatrix) -> Source_locMatrix
+
+pub fn source_loc_matrix_get(Source_locMatrix, Int32, Int32) -> Double
+
+pub fn source_loc_matrix_identity(Int32) -> Source_locMatrix
+
+pub fn source_loc_matrix_multiply(Source_locMatrix, Source_locMatrix) -> Source_locMatrix
+
+pub fn source_loc_matrix_norm(Source_locMatrix) -> Double
+
+pub fn source_loc_matrix_scale(Source_locMatrix, Double) -> Source_locMatrix
+
+pub fn source_loc_matrix_to_string(Source_locMatrix) -> String
+
+pub fn source_loc_matrix_trace(Source_locMatrix) -> Double
+
+pub fn source_loc_matrix_transpose(Source_locMatrix) -> Source_locMatrix
+
+pub fn source_loc_mse(Array[Double], Array[Double]) -> Double
+
+pub fn source_loc_point_add(Source_locPoint, Source_locPoint) -> Source_locPoint
+
+pub fn source_loc_point_dist(Source_locPoint, Source_locPoint) -> Double
+
+pub fn source_loc_point_dot(Source_locPoint, Source_locPoint) -> Double
+
+pub fn source_loc_point_label(Source_locPoint) -> Int32
+
+pub fn source_loc_point_norm(Source_locPoint) -> Double
+
+pub fn source_loc_point_scale(Source_locPoint, Double) -> Source_locPoint
+
+pub fn source_loc_point_sub(Source_locPoint, Source_locPoint) -> Source_locPoint
+
+pub fn source_loc_point_to_string(Source_locPoint) -> String
+
+pub fn source_loc_point_x(Source_locPoint) -> Double
+
+pub fn source_loc_point_y(Source_locPoint) -> Double
+
+pub fn source_loc_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn source_loc_r2(Array[Double], Array[Double]) -> Double
+
+pub fn source_loc_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn source_loc_series_add(Source_locSeries, Source_locSeries) -> Source_locSeries
+
+pub fn source_loc_series_len(Source_locSeries) -> Int32
+
+pub fn source_loc_series_max(Source_locSeries) -> Double
+
+pub fn source_loc_series_mean(Source_locSeries) -> Double
+
+pub fn source_loc_series_min(Source_locSeries) -> Double
+
+pub fn source_loc_series_scale(Source_locSeries, Double) -> Source_locSeries
+
+pub fn source_loc_series_std(Source_locSeries) -> Double
+
+pub fn source_loc_series_sum(Source_locSeries) -> Double
+
+pub fn source_loc_series_to_string(Source_locSeries) -> String
+
+pub fn source_loc_series_var(Source_locSeries) -> Double
+
+pub fn source_loc_std(Array[Double]) -> Double
+
+pub fn source_loc_var(Array[Double]) -> Double
+
+pub fn source_loc_vector_add(Source_locVector, Source_locVector) -> Source_locVector
+
+pub fn source_loc_vector_dist(Source_locVector, Source_locVector) -> Double
+
+pub fn source_loc_vector_dot(Source_locVector, Source_locVector) -> Double
+
+pub fn source_loc_vector_norm(Source_locVector) -> Double
+
+pub fn source_loc_vector_normalize(Source_locVector) -> Source_locVector
+
+pub fn source_loc_vector_scale(Source_locVector, Double) -> Source_locVector
+
+pub fn source_loc_vector_sub(Source_locVector, Source_locVector) -> Source_locVector
+
+pub fn source_loc_vector_to_string(Source_locVector) -> String
+
+pub fn source_loc_vector_zero(Int32) -> Source_locVector
+
+// Errors
+
+// Types and methods
+pub struct Source_locMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Source_locPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Source_locSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Source_locVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

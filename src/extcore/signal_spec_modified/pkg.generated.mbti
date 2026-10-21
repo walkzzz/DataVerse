@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_spec_modified"
+
+// Values
+pub fn signal_spec_modified_buffer_make(Int32) -> SignalspecmodifiedBuffer
+
+pub fn signal_spec_modified_cluster_make(Int32) -> SignalspecmodifiedCluster
+
+pub fn signal_spec_modified_cursor_make(Int32) -> SignalspecmodifiedCursor
+
+pub fn signal_spec_modified_edge_make(Int32) -> SignalspecmodifiedEdge
+
+pub fn signal_spec_modified_frame_make(Int32) -> SignalspecmodifiedFrame
+
+pub fn signal_spec_modified_graphn_make(Int32) -> SignalspecmodifiedGraphN
+
+pub fn signal_spec_modified_layer_make(Int32) -> SignalspecmodifiedLayer
+
+pub fn signal_spec_modified_make_matrix(Int32, Int32, Double) -> SignalspecmodifiedMatrix
+
+pub fn signal_spec_modified_make_point(Double, Double) -> SignalspecmodifiedPoint
+
+pub fn signal_spec_modified_make_point3(Double, Double, Double) -> SignalspecmodifiedPoint
+
+pub fn signal_spec_modified_make_series(Array[Double], String) -> SignalspecmodifiedSeries
+
+pub fn signal_spec_modified_make_vector(Array[Double]) -> SignalspecmodifiedVector
+
+pub fn signal_spec_modified_matrix_identity(Int32) -> SignalspecmodifiedMatrix
+
+pub fn signal_spec_modified_model_make(Int32) -> SignalspecmodifiedModel
+
+pub fn signal_spec_modified_node_make(Int32) -> SignalspecmodifiedNode
+
+pub fn signal_spec_modified_path_make(Int32) -> SignalspecmodifiedPath
+
+pub fn signal_spec_modified_range_make(Int32) -> SignalspecmodifiedRange
+
+pub fn signal_spec_modified_slice_make(Int32) -> SignalspecmodifiedSlice
+
+pub fn signal_spec_modified_table_make(Int32) -> SignalspecmodifiedTable
+
+pub fn signal_spec_modified_vector_zero(Int32) -> SignalspecmodifiedVector
+
+pub fn signal_spec_modified_view_make(Int32) -> SignalspecmodifiedView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalspecmodifiedBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecmodifiedBuffer::add(Self, Self) -> Self
+pub fn SignalspecmodifiedBuffer::copy(Self) -> Self
+pub fn SignalspecmodifiedBuffer::fill(Self, Double) -> Self
+pub fn SignalspecmodifiedBuffer::get(Self, Int32) -> Double
+pub fn SignalspecmodifiedBuffer::len(Self) -> Int32
+pub fn SignalspecmodifiedBuffer::max(Self) -> Double
+pub fn SignalspecmodifiedBuffer::mean(Self) -> Double
+pub fn SignalspecmodifiedBuffer::min(Self) -> Double
+pub fn SignalspecmodifiedBuffer::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalspecmodifiedBuffer::sum(Self) -> Double
+pub fn SignalspecmodifiedBuffer::to_string(Self) -> String
+
+pub(all) struct SignalspecmodifiedCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecmodifiedCluster::add(Self, Self) -> Self
+pub fn SignalspecmodifiedCluster::copy(Self) -> Self
+pub fn SignalspecmodifiedCluster::fill(Self, Double) -> Self
+pub fn SignalspecmodifiedCluster::get(Self, Int32) -> Double
+pub fn SignalspecmodifiedCluster::len(Self) -> Int32
+pub fn SignalspecmodifiedCluster::max(Self) -> Double
+pub fn SignalspecmodifiedCluster::mean(Self) -> Double
+pub fn SignalspecmodifiedCluster::min(Self) -> Double
+pub fn SignalspecmodifiedCluster::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedCluster::set(Self, Int32, Double) -> Self
+pub fn SignalspecmodifiedCluster::sum(Self) -> Double
+pub fn SignalspecmodifiedCluster::to_string(Self) -> String
+
+pub(all) struct SignalspecmodifiedCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecmodifiedCursor::add(Self, Self) -> Self
+pub fn SignalspecmodifiedCursor::copy(Self) -> Self
+pub fn SignalspecmodifiedCursor::fill(Self, Double) -> Self
+pub fn SignalspecmodifiedCursor::get(Self, Int32) -> Double
+pub fn SignalspecmodifiedCursor::len(Self) -> Int32
+pub fn SignalspecmodifiedCursor::max(Self) -> Double
+pub fn SignalspecmodifiedCursor::mean(Self) -> Double
+pub fn SignalspecmodifiedCursor::min(Self) -> Double
+pub fn SignalspecmodifiedCursor::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedCursor::set(Self, Int32, Double) -> Self
+pub fn SignalspecmodifiedCursor::sum(Self) -> Double
+pub fn SignalspecmodifiedCursor::to_string(Self) -> String
+
+pub(all) struct SignalspecmodifiedEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecmodifiedEdge::add(Self, Self) -> Self
+pub fn SignalspecmodifiedEdge::copy(Self) -> Self
+pub fn SignalspecmodifiedEdge::fill(Self, Double) -> Self
+pub fn SignalspecmodifiedEdge::get(Self, Int32) -> Double
+pub fn SignalspecmodifiedEdge::len(Self) -> Int32
+pub fn SignalspecmodifiedEdge::max(Self) -> Double
+pub fn SignalspecmodifiedEdge::mean(Self) -> Double
+pub fn SignalspecmodifiedEdge::min(Self) -> Double
+pub fn SignalspecmodifiedEdge::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedEdge::set(Self, Int32, Double) -> Self
+pub fn SignalspecmodifiedEdge::sum(Self) -> Double
+pub fn SignalspecmodifiedEdge::to_string(Self) -> String
+
+pub(all) struct SignalspecmodifiedFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecmodifiedFrame::add(Self, Self) -> Self
+pub fn SignalspecmodifiedFrame::copy(Self) -> Self
+pub fn SignalspecmodifiedFrame::fill(Self, Double) -> Self
+pub fn SignalspecmodifiedFrame::get(Self, Int32) -> Double
+pub fn SignalspecmodifiedFrame::len(Self) -> Int32
+pub fn SignalspecmodifiedFrame::max(Self) -> Double
+pub fn SignalspecmodifiedFrame::mean(Self) -> Double
+pub fn SignalspecmodifiedFrame::min(Self) -> Double
+pub fn SignalspecmodifiedFrame::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedFrame::set(Self, Int32, Double) -> Self
+pub fn SignalspecmodifiedFrame::sum(Self) -> Double
+pub fn SignalspecmodifiedFrame::to_string(Self) -> String
+
+pub(all) struct SignalspecmodifiedGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecmodifiedGraphN::add(Self, Self) -> Self
+pub fn SignalspecmodifiedGraphN::copy(Self) -> Self
+pub fn SignalspecmodifiedGraphN::fill(Self, Double) -> Self
+pub fn SignalspecmodifiedGraphN::get(Self, Int32) -> Double
+pub fn SignalspecmodifiedGraphN::len(Self) -> Int32
+pub fn SignalspecmodifiedGraphN::max(Self) -> Double
+pub fn SignalspecmodifiedGraphN::mean(Self) -> Double
+pub fn SignalspecmodifiedGraphN::min(Self) -> Double
+pub fn SignalspecmodifiedGraphN::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalspecmodifiedGraphN::sum(Self) -> Double
+pub fn SignalspecmodifiedGraphN::to_string(Self) -> String
+
+pub(all) struct SignalspecmodifiedLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecmodifiedLayer::add(Self, Self) -> Self
+pub fn SignalspecmodifiedLayer::copy(Self) -> Self
+pub fn SignalspecmodifiedLayer::fill(Self, Double) -> Self
+pub fn SignalspecmodifiedLayer::get(Self, Int32) -> Double
+pub fn SignalspecmodifiedLayer::len(Self) -> Int32
+pub fn SignalspecmodifiedLayer::max(Self) -> Double
+pub fn SignalspecmodifiedLayer::mean(Self) -> Double
+pub fn SignalspecmodifiedLayer::min(Self) -> Double
+pub fn SignalspecmodifiedLayer::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedLayer::set(Self, Int32, Double) -> Self
+pub fn SignalspecmodifiedLayer::sum(Self) -> Double
+pub fn SignalspecmodifiedLayer::to_string(Self) -> String
+
+pub(all) struct SignalspecmodifiedMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalspecmodifiedMatrix::add(Self, Self) -> Self
+pub fn SignalspecmodifiedMatrix::det(Self) -> Double
+pub fn SignalspecmodifiedMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalspecmodifiedMatrix::multiply(Self, Self) -> Self
+pub fn SignalspecmodifiedMatrix::norm(Self) -> Double
+pub fn SignalspecmodifiedMatrix::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedMatrix::to_string(Self) -> String
+pub fn SignalspecmodifiedMatrix::trace(Self) -> Double
+pub fn SignalspecmodifiedMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalspecmodifiedModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecmodifiedModel::add(Self, Self) -> Self
+pub fn SignalspecmodifiedModel::copy(Self) -> Self
+pub fn SignalspecmodifiedModel::fill(Self, Double) -> Self
+pub fn SignalspecmodifiedModel::get(Self, Int32) -> Double
+pub fn SignalspecmodifiedModel::len(Self) -> Int32
+pub fn SignalspecmodifiedModel::max(Self) -> Double
+pub fn SignalspecmodifiedModel::mean(Self) -> Double
+pub fn SignalspecmodifiedModel::min(Self) -> Double
+pub fn SignalspecmodifiedModel::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedModel::set(Self, Int32, Double) -> Self
+pub fn SignalspecmodifiedModel::sum(Self) -> Double
+pub fn SignalspecmodifiedModel::to_string(Self) -> String
+
+pub(all) struct SignalspecmodifiedNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecmodifiedNode::add(Self, Self) -> Self
+pub fn SignalspecmodifiedNode::copy(Self) -> Self
+pub fn SignalspecmodifiedNode::fill(Self, Double) -> Self
+pub fn SignalspecmodifiedNode::get(Self, Int32) -> Double
+pub fn SignalspecmodifiedNode::len(Self) -> Int32
+pub fn SignalspecmodifiedNode::max(Self) -> Double
+pub fn SignalspecmodifiedNode::mean(Self) -> Double
+pub fn SignalspecmodifiedNode::min(Self) -> Double
+pub fn SignalspecmodifiedNode::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedNode::set(Self, Int32, Double) -> Self
+pub fn SignalspecmodifiedNode::sum(Self) -> Double
+pub fn SignalspecmodifiedNode::to_string(Self) -> String
+
+pub(all) struct SignalspecmodifiedPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecmodifiedPath::add(Self, Self) -> Self
+pub fn SignalspecmodifiedPath::copy(Self) -> Self
+pub fn SignalspecmodifiedPath::fill(Self, Double) -> Self
+pub fn SignalspecmodifiedPath::get(Self, Int32) -> Double
+pub fn SignalspecmodifiedPath::len(Self) -> Int32
+pub fn SignalspecmodifiedPath::max(Self) -> Double
+pub fn SignalspecmodifiedPath::mean(Self) -> Double
+pub fn SignalspecmodifiedPath::min(Self) -> Double
+pub fn SignalspecmodifiedPath::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedPath::set(Self, Int32, Double) -> Self
+pub fn SignalspecmodifiedPath::sum(Self) -> Double
+pub fn SignalspecmodifiedPath::to_string(Self) -> String
+
+pub(all) struct SignalspecmodifiedPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalspecmodifiedPoint::add(Self, Self) -> Self
+pub fn SignalspecmodifiedPoint::cross(Self, Self) -> Self
+pub fn SignalspecmodifiedPoint::dist(Self, Self) -> Double
+pub fn SignalspecmodifiedPoint::dot(Self, Self) -> Double
+pub fn SignalspecmodifiedPoint::label(Self) -> Int32
+pub fn SignalspecmodifiedPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalspecmodifiedPoint::mid(Self, Self) -> Self
+pub fn SignalspecmodifiedPoint::negate(Self) -> Self
+pub fn SignalspecmodifiedPoint::norm(Self) -> Double
+pub fn SignalspecmodifiedPoint::normalize(Self) -> Self
+pub fn SignalspecmodifiedPoint::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedPoint::sub(Self, Self) -> Self
+pub fn SignalspecmodifiedPoint::to_string(Self) -> String
+pub fn SignalspecmodifiedPoint::x(Self) -> Double
+pub fn SignalspecmodifiedPoint::y(Self) -> Double
+pub fn SignalspecmodifiedPoint::z(Self) -> Double
+
+pub(all) struct SignalspecmodifiedRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecmodifiedRange::add(Self, Self) -> Self
+pub fn SignalspecmodifiedRange::copy(Self) -> Self
+pub fn SignalspecmodifiedRange::fill(Self, Double) -> Self
+pub fn SignalspecmodifiedRange::get(Self, Int32) -> Double
+pub fn SignalspecmodifiedRange::len(Self) -> Int32
+pub fn SignalspecmodifiedRange::max(Self) -> Double
+pub fn SignalspecmodifiedRange::mean(Self) -> Double
+pub fn SignalspecmodifiedRange::min(Self) -> Double
+pub fn SignalspecmodifiedRange::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedRange::set(Self, Int32, Double) -> Self
+pub fn SignalspecmodifiedRange::sum(Self) -> Double
+pub fn SignalspecmodifiedRange::to_string(Self) -> String
+
+pub(all) struct SignalspecmodifiedSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalspecmodifiedSeries::add(Self, Self) -> Self
+pub fn SignalspecmodifiedSeries::cumsum(Self) -> Self
+pub fn SignalspecmodifiedSeries::len(Self) -> Int32
+pub fn SignalspecmodifiedSeries::max(Self) -> Double
+pub fn SignalspecmodifiedSeries::mean(Self) -> Double
+pub fn SignalspecmodifiedSeries::median(Self) -> Double
+pub fn SignalspecmodifiedSeries::min(Self) -> Double
+pub fn SignalspecmodifiedSeries::normalize(Self) -> Self
+pub fn SignalspecmodifiedSeries::range(Self) -> Double
+pub fn SignalspecmodifiedSeries::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedSeries::std(Self) -> Double
+pub fn SignalspecmodifiedSeries::sub(Self, Self) -> Self
+pub fn SignalspecmodifiedSeries::sum(Self) -> Double
+pub fn SignalspecmodifiedSeries::to_string(Self) -> String
+pub fn SignalspecmodifiedSeries::variance(Self) -> Double
+
+pub(all) struct SignalspecmodifiedSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecmodifiedSlice::add(Self, Self) -> Self
+pub fn SignalspecmodifiedSlice::copy(Self) -> Self
+pub fn SignalspecmodifiedSlice::fill(Self, Double) -> Self
+pub fn SignalspecmodifiedSlice::get(Self, Int32) -> Double
+pub fn SignalspecmodifiedSlice::len(Self) -> Int32
+pub fn SignalspecmodifiedSlice::max(Self) -> Double
+pub fn SignalspecmodifiedSlice::mean(Self) -> Double
+pub fn SignalspecmodifiedSlice::min(Self) -> Double
+pub fn SignalspecmodifiedSlice::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedSlice::set(Self, Int32, Double) -> Self
+pub fn SignalspecmodifiedSlice::sum(Self) -> Double
+pub fn SignalspecmodifiedSlice::to_string(Self) -> String
+
+pub(all) struct SignalspecmodifiedTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecmodifiedTable::add(Self, Self) -> Self
+pub fn SignalspecmodifiedTable::copy(Self) -> Self
+pub fn SignalspecmodifiedTable::fill(Self, Double) -> Self
+pub fn SignalspecmodifiedTable::get(Self, Int32) -> Double
+pub fn SignalspecmodifiedTable::len(Self) -> Int32
+pub fn SignalspecmodifiedTable::max(Self) -> Double
+pub fn SignalspecmodifiedTable::mean(Self) -> Double
+pub fn SignalspecmodifiedTable::min(Self) -> Double
+pub fn SignalspecmodifiedTable::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedTable::set(Self, Int32, Double) -> Self
+pub fn SignalspecmodifiedTable::sum(Self) -> Double
+pub fn SignalspecmodifiedTable::to_string(Self) -> String
+
+pub(all) struct SignalspecmodifiedVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalspecmodifiedVector::add(Self, Self) -> Self
+pub fn SignalspecmodifiedVector::dist(Self, Self) -> Double
+pub fn SignalspecmodifiedVector::dot(Self, Self) -> Double
+pub fn SignalspecmodifiedVector::norm(Self) -> Double
+pub fn SignalspecmodifiedVector::normalize(Self) -> Self
+pub fn SignalspecmodifiedVector::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedVector::sub(Self, Self) -> Self
+pub fn SignalspecmodifiedVector::to_string(Self) -> String
+
+pub(all) struct SignalspecmodifiedView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecmodifiedView::add(Self, Self) -> Self
+pub fn SignalspecmodifiedView::copy(Self) -> Self
+pub fn SignalspecmodifiedView::fill(Self, Double) -> Self
+pub fn SignalspecmodifiedView::get(Self, Int32) -> Double
+pub fn SignalspecmodifiedView::len(Self) -> Int32
+pub fn SignalspecmodifiedView::max(Self) -> Double
+pub fn SignalspecmodifiedView::mean(Self) -> Double
+pub fn SignalspecmodifiedView::min(Self) -> Double
+pub fn SignalspecmodifiedView::scale(Self, Double) -> Self
+pub fn SignalspecmodifiedView::set(Self, Int32, Double) -> Self
+pub fn SignalspecmodifiedView::sum(Self) -> Double
+pub fn SignalspecmodifiedView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/auto_drive"
+
+// Values
+pub fn auto_drive_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn auto_drive_corr(Array[Double], Array[Double]) -> Double
+
+pub fn auto_drive_cov(Array[Double], Array[Double]) -> Double
+
+pub fn auto_drive_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn auto_drive_mae(Array[Double], Array[Double]) -> Double
+
+pub fn auto_drive_make_labeled_point(Double, Double, Int32) -> Auto_drivePoint
+
+pub fn auto_drive_make_matrix(Int32, Int32, Double) -> Auto_driveMatrix
+
+pub fn auto_drive_make_point(Double, Double) -> Auto_drivePoint
+
+pub fn auto_drive_make_series(Array[Double], String) -> Auto_driveSeries
+
+pub fn auto_drive_make_vector(Array[Double]) -> Auto_driveVector
+
+pub fn auto_drive_matrix_add(Auto_driveMatrix, Auto_driveMatrix) -> Auto_driveMatrix
+
+pub fn auto_drive_matrix_get(Auto_driveMatrix, Int32, Int32) -> Double
+
+pub fn auto_drive_matrix_identity(Int32) -> Auto_driveMatrix
+
+pub fn auto_drive_matrix_multiply(Auto_driveMatrix, Auto_driveMatrix) -> Auto_driveMatrix
+
+pub fn auto_drive_matrix_norm(Auto_driveMatrix) -> Double
+
+pub fn auto_drive_matrix_scale(Auto_driveMatrix, Double) -> Auto_driveMatrix
+
+pub fn auto_drive_matrix_to_string(Auto_driveMatrix) -> String
+
+pub fn auto_drive_matrix_trace(Auto_driveMatrix) -> Double
+
+pub fn auto_drive_matrix_transpose(Auto_driveMatrix) -> Auto_driveMatrix
+
+pub fn auto_drive_mse(Array[Double], Array[Double]) -> Double
+
+pub fn auto_drive_point_add(Auto_drivePoint, Auto_drivePoint) -> Auto_drivePoint
+
+pub fn auto_drive_point_dist(Auto_drivePoint, Auto_drivePoint) -> Double
+
+pub fn auto_drive_point_dot(Auto_drivePoint, Auto_drivePoint) -> Double
+
+pub fn auto_drive_point_label(Auto_drivePoint) -> Int32
+
+pub fn auto_drive_point_norm(Auto_drivePoint) -> Double
+
+pub fn auto_drive_point_scale(Auto_drivePoint, Double) -> Auto_drivePoint
+
+pub fn auto_drive_point_sub(Auto_drivePoint, Auto_drivePoint) -> Auto_drivePoint
+
+pub fn auto_drive_point_to_string(Auto_drivePoint) -> String
+
+pub fn auto_drive_point_x(Auto_drivePoint) -> Double
+
+pub fn auto_drive_point_y(Auto_drivePoint) -> Double
+
+pub fn auto_drive_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn auto_drive_r2(Array[Double], Array[Double]) -> Double
+
+pub fn auto_drive_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn auto_drive_series_add(Auto_driveSeries, Auto_driveSeries) -> Auto_driveSeries
+
+pub fn auto_drive_series_len(Auto_driveSeries) -> Int32
+
+pub fn auto_drive_series_max(Auto_driveSeries) -> Double
+
+pub fn auto_drive_series_mean(Auto_driveSeries) -> Double
+
+pub fn auto_drive_series_min(Auto_driveSeries) -> Double
+
+pub fn auto_drive_series_scale(Auto_driveSeries, Double) -> Auto_driveSeries
+
+pub fn auto_drive_series_std(Auto_driveSeries) -> Double
+
+pub fn auto_drive_series_sum(Auto_driveSeries) -> Double
+
+pub fn auto_drive_series_to_string(Auto_driveSeries) -> String
+
+pub fn auto_drive_series_var(Auto_driveSeries) -> Double
+
+pub fn auto_drive_std(Array[Double]) -> Double
+
+pub fn auto_drive_var(Array[Double]) -> Double
+
+pub fn auto_drive_vector_add(Auto_driveVector, Auto_driveVector) -> Auto_driveVector
+
+pub fn auto_drive_vector_dist(Auto_driveVector, Auto_driveVector) -> Double
+
+pub fn auto_drive_vector_dot(Auto_driveVector, Auto_driveVector) -> Double
+
+pub fn auto_drive_vector_norm(Auto_driveVector) -> Double
+
+pub fn auto_drive_vector_normalize(Auto_driveVector) -> Auto_driveVector
+
+pub fn auto_drive_vector_scale(Auto_driveVector, Double) -> Auto_driveVector
+
+pub fn auto_drive_vector_sub(Auto_driveVector, Auto_driveVector) -> Auto_driveVector
+
+pub fn auto_drive_vector_to_string(Auto_driveVector) -> String
+
+pub fn auto_drive_vector_zero(Int32) -> Auto_driveVector
+
+// Errors
+
+// Types and methods
+pub struct Auto_driveMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Auto_drivePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Auto_driveSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Auto_driveVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

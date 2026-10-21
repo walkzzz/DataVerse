@@ -1,0 +1,38 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datair/ir_core"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub struct IRMetadata {
+  tags : Array[String]
+  version : String
+  source : String
+} derive(Eq, @debug.Debug)
+pub fn IRMetadata::empty() -> Self
+pub fn IRMetadata::equal(Self, Self) -> Bool
+pub fn IRMetadata::is_empty(Self) -> Bool
+pub fn IRMetadata::new(Array[String], String, String) -> Self
+pub fn IRMetadata::not_equal(Self, Self) -> Bool
+pub fn IRMetadata::tag_count(Self) -> Int32
+pub fn IRMetadata::to_repr(Self) -> @debug.Repr
+
+pub struct IRNodeId {
+  value : String
+} derive(Eq, @debug.Debug)
+pub fn IRNodeId::equal(Self, Self) -> Bool
+pub fn IRNodeId::is_valid(Self) -> Bool
+pub fn IRNodeId::new(String) -> Self
+pub fn IRNodeId::not_equal(Self, Self) -> Bool
+pub fn IRNodeId::to_repr(Self) -> @debug.Repr
+pub fn IRNodeId::value(Self) -> String
+
+// Type aliases
+
+// Traits

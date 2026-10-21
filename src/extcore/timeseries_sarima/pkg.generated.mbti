@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_sarima"
+
+// Values
+pub fn timeseries_sarima_buffer_make(Int32) -> TimeseriessarimaBuffer
+
+pub fn timeseries_sarima_cluster_make(Int32) -> TimeseriessarimaCluster
+
+pub fn timeseries_sarima_cursor_make(Int32) -> TimeseriessarimaCursor
+
+pub fn timeseries_sarima_edge_make(Int32) -> TimeseriessarimaEdge
+
+pub fn timeseries_sarima_frame_make(Int32) -> TimeseriessarimaFrame
+
+pub fn timeseries_sarima_graphn_make(Int32) -> TimeseriessarimaGraphN
+
+pub fn timeseries_sarima_layer_make(Int32) -> TimeseriessarimaLayer
+
+pub fn timeseries_sarima_make_matrix(Int32, Int32, Double) -> TimeseriessarimaMatrix
+
+pub fn timeseries_sarima_make_point(Double, Double) -> TimeseriessarimaPoint
+
+pub fn timeseries_sarima_make_point3(Double, Double, Double) -> TimeseriessarimaPoint
+
+pub fn timeseries_sarima_make_series(Array[Double], String) -> TimeseriessarimaSeries
+
+pub fn timeseries_sarima_make_vector(Array[Double]) -> TimeseriessarimaVector
+
+pub fn timeseries_sarima_matrix_identity(Int32) -> TimeseriessarimaMatrix
+
+pub fn timeseries_sarima_model_make(Int32) -> TimeseriessarimaModel
+
+pub fn timeseries_sarima_node_make(Int32) -> TimeseriessarimaNode
+
+pub fn timeseries_sarima_path_make(Int32) -> TimeseriessarimaPath
+
+pub fn timeseries_sarima_range_make(Int32) -> TimeseriessarimaRange
+
+pub fn timeseries_sarima_slice_make(Int32) -> TimeseriessarimaSlice
+
+pub fn timeseries_sarima_table_make(Int32) -> TimeseriessarimaTable
+
+pub fn timeseries_sarima_vector_zero(Int32) -> TimeseriessarimaVector
+
+pub fn timeseries_sarima_view_make(Int32) -> TimeseriessarimaView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriessarimaBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriessarimaBuffer::add(Self, Self) -> Self
+pub fn TimeseriessarimaBuffer::copy(Self) -> Self
+pub fn TimeseriessarimaBuffer::fill(Self, Double) -> Self
+pub fn TimeseriessarimaBuffer::get(Self, Int32) -> Double
+pub fn TimeseriessarimaBuffer::len(Self) -> Int32
+pub fn TimeseriessarimaBuffer::max(Self) -> Double
+pub fn TimeseriessarimaBuffer::mean(Self) -> Double
+pub fn TimeseriessarimaBuffer::min(Self) -> Double
+pub fn TimeseriessarimaBuffer::scale(Self, Double) -> Self
+pub fn TimeseriessarimaBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriessarimaBuffer::sum(Self) -> Double
+pub fn TimeseriessarimaBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriessarimaCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriessarimaCluster::add(Self, Self) -> Self
+pub fn TimeseriessarimaCluster::copy(Self) -> Self
+pub fn TimeseriessarimaCluster::fill(Self, Double) -> Self
+pub fn TimeseriessarimaCluster::get(Self, Int32) -> Double
+pub fn TimeseriessarimaCluster::len(Self) -> Int32
+pub fn TimeseriessarimaCluster::max(Self) -> Double
+pub fn TimeseriessarimaCluster::mean(Self) -> Double
+pub fn TimeseriessarimaCluster::min(Self) -> Double
+pub fn TimeseriessarimaCluster::scale(Self, Double) -> Self
+pub fn TimeseriessarimaCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriessarimaCluster::sum(Self) -> Double
+pub fn TimeseriessarimaCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriessarimaCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriessarimaCursor::add(Self, Self) -> Self
+pub fn TimeseriessarimaCursor::copy(Self) -> Self
+pub fn TimeseriessarimaCursor::fill(Self, Double) -> Self
+pub fn TimeseriessarimaCursor::get(Self, Int32) -> Double
+pub fn TimeseriessarimaCursor::len(Self) -> Int32
+pub fn TimeseriessarimaCursor::max(Self) -> Double
+pub fn TimeseriessarimaCursor::mean(Self) -> Double
+pub fn TimeseriessarimaCursor::min(Self) -> Double
+pub fn TimeseriessarimaCursor::scale(Self, Double) -> Self
+pub fn TimeseriessarimaCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriessarimaCursor::sum(Self) -> Double
+pub fn TimeseriessarimaCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriessarimaEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriessarimaEdge::add(Self, Self) -> Self
+pub fn TimeseriessarimaEdge::copy(Self) -> Self
+pub fn TimeseriessarimaEdge::fill(Self, Double) -> Self
+pub fn TimeseriessarimaEdge::get(Self, Int32) -> Double
+pub fn TimeseriessarimaEdge::len(Self) -> Int32
+pub fn TimeseriessarimaEdge::max(Self) -> Double
+pub fn TimeseriessarimaEdge::mean(Self) -> Double
+pub fn TimeseriessarimaEdge::min(Self) -> Double
+pub fn TimeseriessarimaEdge::scale(Self, Double) -> Self
+pub fn TimeseriessarimaEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriessarimaEdge::sum(Self) -> Double
+pub fn TimeseriessarimaEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriessarimaFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriessarimaFrame::add(Self, Self) -> Self
+pub fn TimeseriessarimaFrame::copy(Self) -> Self
+pub fn TimeseriessarimaFrame::fill(Self, Double) -> Self
+pub fn TimeseriessarimaFrame::get(Self, Int32) -> Double
+pub fn TimeseriessarimaFrame::len(Self) -> Int32
+pub fn TimeseriessarimaFrame::max(Self) -> Double
+pub fn TimeseriessarimaFrame::mean(Self) -> Double
+pub fn TimeseriessarimaFrame::min(Self) -> Double
+pub fn TimeseriessarimaFrame::scale(Self, Double) -> Self
+pub fn TimeseriessarimaFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriessarimaFrame::sum(Self) -> Double
+pub fn TimeseriessarimaFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriessarimaGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriessarimaGraphN::add(Self, Self) -> Self
+pub fn TimeseriessarimaGraphN::copy(Self) -> Self
+pub fn TimeseriessarimaGraphN::fill(Self, Double) -> Self
+pub fn TimeseriessarimaGraphN::get(Self, Int32) -> Double
+pub fn TimeseriessarimaGraphN::len(Self) -> Int32
+pub fn TimeseriessarimaGraphN::max(Self) -> Double
+pub fn TimeseriessarimaGraphN::mean(Self) -> Double
+pub fn TimeseriessarimaGraphN::min(Self) -> Double
+pub fn TimeseriessarimaGraphN::scale(Self, Double) -> Self
+pub fn TimeseriessarimaGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriessarimaGraphN::sum(Self) -> Double
+pub fn TimeseriessarimaGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriessarimaLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriessarimaLayer::add(Self, Self) -> Self
+pub fn TimeseriessarimaLayer::copy(Self) -> Self
+pub fn TimeseriessarimaLayer::fill(Self, Double) -> Self
+pub fn TimeseriessarimaLayer::get(Self, Int32) -> Double
+pub fn TimeseriessarimaLayer::len(Self) -> Int32
+pub fn TimeseriessarimaLayer::max(Self) -> Double
+pub fn TimeseriessarimaLayer::mean(Self) -> Double
+pub fn TimeseriessarimaLayer::min(Self) -> Double
+pub fn TimeseriessarimaLayer::scale(Self, Double) -> Self
+pub fn TimeseriessarimaLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriessarimaLayer::sum(Self) -> Double
+pub fn TimeseriessarimaLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriessarimaMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriessarimaMatrix::add(Self, Self) -> Self
+pub fn TimeseriessarimaMatrix::det(Self) -> Double
+pub fn TimeseriessarimaMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriessarimaMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriessarimaMatrix::norm(Self) -> Double
+pub fn TimeseriessarimaMatrix::scale(Self, Double) -> Self
+pub fn TimeseriessarimaMatrix::to_string(Self) -> String
+pub fn TimeseriessarimaMatrix::trace(Self) -> Double
+pub fn TimeseriessarimaMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriessarimaModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriessarimaModel::add(Self, Self) -> Self
+pub fn TimeseriessarimaModel::copy(Self) -> Self
+pub fn TimeseriessarimaModel::fill(Self, Double) -> Self
+pub fn TimeseriessarimaModel::get(Self, Int32) -> Double
+pub fn TimeseriessarimaModel::len(Self) -> Int32
+pub fn TimeseriessarimaModel::max(Self) -> Double
+pub fn TimeseriessarimaModel::mean(Self) -> Double
+pub fn TimeseriessarimaModel::min(Self) -> Double
+pub fn TimeseriessarimaModel::scale(Self, Double) -> Self
+pub fn TimeseriessarimaModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriessarimaModel::sum(Self) -> Double
+pub fn TimeseriessarimaModel::to_string(Self) -> String
+
+pub(all) struct TimeseriessarimaNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriessarimaNode::add(Self, Self) -> Self
+pub fn TimeseriessarimaNode::copy(Self) -> Self
+pub fn TimeseriessarimaNode::fill(Self, Double) -> Self
+pub fn TimeseriessarimaNode::get(Self, Int32) -> Double
+pub fn TimeseriessarimaNode::len(Self) -> Int32
+pub fn TimeseriessarimaNode::max(Self) -> Double
+pub fn TimeseriessarimaNode::mean(Self) -> Double
+pub fn TimeseriessarimaNode::min(Self) -> Double
+pub fn TimeseriessarimaNode::scale(Self, Double) -> Self
+pub fn TimeseriessarimaNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriessarimaNode::sum(Self) -> Double
+pub fn TimeseriessarimaNode::to_string(Self) -> String
+
+pub(all) struct TimeseriessarimaPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriessarimaPath::add(Self, Self) -> Self
+pub fn TimeseriessarimaPath::copy(Self) -> Self
+pub fn TimeseriessarimaPath::fill(Self, Double) -> Self
+pub fn TimeseriessarimaPath::get(Self, Int32) -> Double
+pub fn TimeseriessarimaPath::len(Self) -> Int32
+pub fn TimeseriessarimaPath::max(Self) -> Double
+pub fn TimeseriessarimaPath::mean(Self) -> Double
+pub fn TimeseriessarimaPath::min(Self) -> Double
+pub fn TimeseriessarimaPath::scale(Self, Double) -> Self
+pub fn TimeseriessarimaPath::set(Self, Int32, Double) -> Self
+pub fn TimeseriessarimaPath::sum(Self) -> Double
+pub fn TimeseriessarimaPath::to_string(Self) -> String
+
+pub(all) struct TimeseriessarimaPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriessarimaPoint::add(Self, Self) -> Self
+pub fn TimeseriessarimaPoint::cross(Self, Self) -> Self
+pub fn TimeseriessarimaPoint::dist(Self, Self) -> Double
+pub fn TimeseriessarimaPoint::dot(Self, Self) -> Double
+pub fn TimeseriessarimaPoint::label(Self) -> Int32
+pub fn TimeseriessarimaPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriessarimaPoint::mid(Self, Self) -> Self
+pub fn TimeseriessarimaPoint::negate(Self) -> Self
+pub fn TimeseriessarimaPoint::norm(Self) -> Double
+pub fn TimeseriessarimaPoint::normalize(Self) -> Self
+pub fn TimeseriessarimaPoint::scale(Self, Double) -> Self
+pub fn TimeseriessarimaPoint::sub(Self, Self) -> Self
+pub fn TimeseriessarimaPoint::to_string(Self) -> String
+pub fn TimeseriessarimaPoint::x(Self) -> Double
+pub fn TimeseriessarimaPoint::y(Self) -> Double
+pub fn TimeseriessarimaPoint::z(Self) -> Double
+
+pub(all) struct TimeseriessarimaRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriessarimaRange::add(Self, Self) -> Self
+pub fn TimeseriessarimaRange::copy(Self) -> Self
+pub fn TimeseriessarimaRange::fill(Self, Double) -> Self
+pub fn TimeseriessarimaRange::get(Self, Int32) -> Double
+pub fn TimeseriessarimaRange::len(Self) -> Int32
+pub fn TimeseriessarimaRange::max(Self) -> Double
+pub fn TimeseriessarimaRange::mean(Self) -> Double
+pub fn TimeseriessarimaRange::min(Self) -> Double
+pub fn TimeseriessarimaRange::scale(Self, Double) -> Self
+pub fn TimeseriessarimaRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriessarimaRange::sum(Self) -> Double
+pub fn TimeseriessarimaRange::to_string(Self) -> String
+
+pub(all) struct TimeseriessarimaSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriessarimaSeries::add(Self, Self) -> Self
+pub fn TimeseriessarimaSeries::cumsum(Self) -> Self
+pub fn TimeseriessarimaSeries::len(Self) -> Int32
+pub fn TimeseriessarimaSeries::max(Self) -> Double
+pub fn TimeseriessarimaSeries::mean(Self) -> Double
+pub fn TimeseriessarimaSeries::median(Self) -> Double
+pub fn TimeseriessarimaSeries::min(Self) -> Double
+pub fn TimeseriessarimaSeries::normalize(Self) -> Self
+pub fn TimeseriessarimaSeries::range(Self) -> Double
+pub fn TimeseriessarimaSeries::scale(Self, Double) -> Self
+pub fn TimeseriessarimaSeries::std(Self) -> Double
+pub fn TimeseriessarimaSeries::sub(Self, Self) -> Self
+pub fn TimeseriessarimaSeries::sum(Self) -> Double
+pub fn TimeseriessarimaSeries::to_string(Self) -> String
+pub fn TimeseriessarimaSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriessarimaSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriessarimaSlice::add(Self, Self) -> Self
+pub fn TimeseriessarimaSlice::copy(Self) -> Self
+pub fn TimeseriessarimaSlice::fill(Self, Double) -> Self
+pub fn TimeseriessarimaSlice::get(Self, Int32) -> Double
+pub fn TimeseriessarimaSlice::len(Self) -> Int32
+pub fn TimeseriessarimaSlice::max(Self) -> Double
+pub fn TimeseriessarimaSlice::mean(Self) -> Double
+pub fn TimeseriessarimaSlice::min(Self) -> Double
+pub fn TimeseriessarimaSlice::scale(Self, Double) -> Self
+pub fn TimeseriessarimaSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriessarimaSlice::sum(Self) -> Double
+pub fn TimeseriessarimaSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriessarimaTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriessarimaTable::add(Self, Self) -> Self
+pub fn TimeseriessarimaTable::copy(Self) -> Self
+pub fn TimeseriessarimaTable::fill(Self, Double) -> Self
+pub fn TimeseriessarimaTable::get(Self, Int32) -> Double
+pub fn TimeseriessarimaTable::len(Self) -> Int32
+pub fn TimeseriessarimaTable::max(Self) -> Double
+pub fn TimeseriessarimaTable::mean(Self) -> Double
+pub fn TimeseriessarimaTable::min(Self) -> Double
+pub fn TimeseriessarimaTable::scale(Self, Double) -> Self
+pub fn TimeseriessarimaTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriessarimaTable::sum(Self) -> Double
+pub fn TimeseriessarimaTable::to_string(Self) -> String
+
+pub(all) struct TimeseriessarimaVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriessarimaVector::add(Self, Self) -> Self
+pub fn TimeseriessarimaVector::dist(Self, Self) -> Double
+pub fn TimeseriessarimaVector::dot(Self, Self) -> Double
+pub fn TimeseriessarimaVector::norm(Self) -> Double
+pub fn TimeseriessarimaVector::normalize(Self) -> Self
+pub fn TimeseriessarimaVector::scale(Self, Double) -> Self
+pub fn TimeseriessarimaVector::sub(Self, Self) -> Self
+pub fn TimeseriessarimaVector::to_string(Self) -> String
+
+pub(all) struct TimeseriessarimaView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriessarimaView::add(Self, Self) -> Self
+pub fn TimeseriessarimaView::copy(Self) -> Self
+pub fn TimeseriessarimaView::fill(Self, Double) -> Self
+pub fn TimeseriessarimaView::get(Self, Int32) -> Double
+pub fn TimeseriessarimaView::len(Self) -> Int32
+pub fn TimeseriessarimaView::max(Self) -> Double
+pub fn TimeseriessarimaView::mean(Self) -> Double
+pub fn TimeseriessarimaView::min(Self) -> Double
+pub fn TimeseriessarimaView::scale(Self, Double) -> Self
+pub fn TimeseriessarimaView::set(Self, Int32, Double) -> Self
+pub fn TimeseriessarimaView::sum(Self) -> Double
+pub fn TimeseriessarimaView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

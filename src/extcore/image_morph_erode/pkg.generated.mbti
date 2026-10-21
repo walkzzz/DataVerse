@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_morph_erode"
+
+// Values
+pub fn image_morph_erode_buffer_make(Int32) -> ImagemorpherodeBuffer
+
+pub fn image_morph_erode_cluster_make(Int32) -> ImagemorpherodeCluster
+
+pub fn image_morph_erode_cursor_make(Int32) -> ImagemorpherodeCursor
+
+pub fn image_morph_erode_edge_make(Int32) -> ImagemorpherodeEdge
+
+pub fn image_morph_erode_frame_make(Int32) -> ImagemorpherodeFrame
+
+pub fn image_morph_erode_graphn_make(Int32) -> ImagemorpherodeGraphN
+
+pub fn image_morph_erode_layer_make(Int32) -> ImagemorpherodeLayer
+
+pub fn image_morph_erode_make_matrix(Int32, Int32, Double) -> ImagemorpherodeMatrix
+
+pub fn image_morph_erode_make_point(Double, Double) -> ImagemorpherodePoint
+
+pub fn image_morph_erode_make_point3(Double, Double, Double) -> ImagemorpherodePoint
+
+pub fn image_morph_erode_make_series(Array[Double], String) -> ImagemorpherodeSeries
+
+pub fn image_morph_erode_make_vector(Array[Double]) -> ImagemorpherodeVector
+
+pub fn image_morph_erode_matrix_identity(Int32) -> ImagemorpherodeMatrix
+
+pub fn image_morph_erode_model_make(Int32) -> ImagemorpherodeModel
+
+pub fn image_morph_erode_node_make(Int32) -> ImagemorpherodeNode
+
+pub fn image_morph_erode_path_make(Int32) -> ImagemorpherodePath
+
+pub fn image_morph_erode_range_make(Int32) -> ImagemorpherodeRange
+
+pub fn image_morph_erode_slice_make(Int32) -> ImagemorpherodeSlice
+
+pub fn image_morph_erode_table_make(Int32) -> ImagemorpherodeTable
+
+pub fn image_morph_erode_vector_zero(Int32) -> ImagemorpherodeVector
+
+pub fn image_morph_erode_view_make(Int32) -> ImagemorpherodeView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagemorpherodeBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorpherodeBuffer::add(Self, Self) -> Self
+pub fn ImagemorpherodeBuffer::copy(Self) -> Self
+pub fn ImagemorpherodeBuffer::fill(Self, Double) -> Self
+pub fn ImagemorpherodeBuffer::get(Self, Int32) -> Double
+pub fn ImagemorpherodeBuffer::len(Self) -> Int32
+pub fn ImagemorpherodeBuffer::max(Self) -> Double
+pub fn ImagemorpherodeBuffer::mean(Self) -> Double
+pub fn ImagemorpherodeBuffer::min(Self) -> Double
+pub fn ImagemorpherodeBuffer::scale(Self, Double) -> Self
+pub fn ImagemorpherodeBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagemorpherodeBuffer::sum(Self) -> Double
+pub fn ImagemorpherodeBuffer::to_string(Self) -> String
+
+pub(all) struct ImagemorpherodeCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorpherodeCluster::add(Self, Self) -> Self
+pub fn ImagemorpherodeCluster::copy(Self) -> Self
+pub fn ImagemorpherodeCluster::fill(Self, Double) -> Self
+pub fn ImagemorpherodeCluster::get(Self, Int32) -> Double
+pub fn ImagemorpherodeCluster::len(Self) -> Int32
+pub fn ImagemorpherodeCluster::max(Self) -> Double
+pub fn ImagemorpherodeCluster::mean(Self) -> Double
+pub fn ImagemorpherodeCluster::min(Self) -> Double
+pub fn ImagemorpherodeCluster::scale(Self, Double) -> Self
+pub fn ImagemorpherodeCluster::set(Self, Int32, Double) -> Self
+pub fn ImagemorpherodeCluster::sum(Self) -> Double
+pub fn ImagemorpherodeCluster::to_string(Self) -> String
+
+pub(all) struct ImagemorpherodeCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorpherodeCursor::add(Self, Self) -> Self
+pub fn ImagemorpherodeCursor::copy(Self) -> Self
+pub fn ImagemorpherodeCursor::fill(Self, Double) -> Self
+pub fn ImagemorpherodeCursor::get(Self, Int32) -> Double
+pub fn ImagemorpherodeCursor::len(Self) -> Int32
+pub fn ImagemorpherodeCursor::max(Self) -> Double
+pub fn ImagemorpherodeCursor::mean(Self) -> Double
+pub fn ImagemorpherodeCursor::min(Self) -> Double
+pub fn ImagemorpherodeCursor::scale(Self, Double) -> Self
+pub fn ImagemorpherodeCursor::set(Self, Int32, Double) -> Self
+pub fn ImagemorpherodeCursor::sum(Self) -> Double
+pub fn ImagemorpherodeCursor::to_string(Self) -> String
+
+pub(all) struct ImagemorpherodeEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorpherodeEdge::add(Self, Self) -> Self
+pub fn ImagemorpherodeEdge::copy(Self) -> Self
+pub fn ImagemorpherodeEdge::fill(Self, Double) -> Self
+pub fn ImagemorpherodeEdge::get(Self, Int32) -> Double
+pub fn ImagemorpherodeEdge::len(Self) -> Int32
+pub fn ImagemorpherodeEdge::max(Self) -> Double
+pub fn ImagemorpherodeEdge::mean(Self) -> Double
+pub fn ImagemorpherodeEdge::min(Self) -> Double
+pub fn ImagemorpherodeEdge::scale(Self, Double) -> Self
+pub fn ImagemorpherodeEdge::set(Self, Int32, Double) -> Self
+pub fn ImagemorpherodeEdge::sum(Self) -> Double
+pub fn ImagemorpherodeEdge::to_string(Self) -> String
+
+pub(all) struct ImagemorpherodeFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorpherodeFrame::add(Self, Self) -> Self
+pub fn ImagemorpherodeFrame::copy(Self) -> Self
+pub fn ImagemorpherodeFrame::fill(Self, Double) -> Self
+pub fn ImagemorpherodeFrame::get(Self, Int32) -> Double
+pub fn ImagemorpherodeFrame::len(Self) -> Int32
+pub fn ImagemorpherodeFrame::max(Self) -> Double
+pub fn ImagemorpherodeFrame::mean(Self) -> Double
+pub fn ImagemorpherodeFrame::min(Self) -> Double
+pub fn ImagemorpherodeFrame::scale(Self, Double) -> Self
+pub fn ImagemorpherodeFrame::set(Self, Int32, Double) -> Self
+pub fn ImagemorpherodeFrame::sum(Self) -> Double
+pub fn ImagemorpherodeFrame::to_string(Self) -> String
+
+pub(all) struct ImagemorpherodeGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorpherodeGraphN::add(Self, Self) -> Self
+pub fn ImagemorpherodeGraphN::copy(Self) -> Self
+pub fn ImagemorpherodeGraphN::fill(Self, Double) -> Self
+pub fn ImagemorpherodeGraphN::get(Self, Int32) -> Double
+pub fn ImagemorpherodeGraphN::len(Self) -> Int32
+pub fn ImagemorpherodeGraphN::max(Self) -> Double
+pub fn ImagemorpherodeGraphN::mean(Self) -> Double
+pub fn ImagemorpherodeGraphN::min(Self) -> Double
+pub fn ImagemorpherodeGraphN::scale(Self, Double) -> Self
+pub fn ImagemorpherodeGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagemorpherodeGraphN::sum(Self) -> Double
+pub fn ImagemorpherodeGraphN::to_string(Self) -> String
+
+pub(all) struct ImagemorpherodeLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorpherodeLayer::add(Self, Self) -> Self
+pub fn ImagemorpherodeLayer::copy(Self) -> Self
+pub fn ImagemorpherodeLayer::fill(Self, Double) -> Self
+pub fn ImagemorpherodeLayer::get(Self, Int32) -> Double
+pub fn ImagemorpherodeLayer::len(Self) -> Int32
+pub fn ImagemorpherodeLayer::max(Self) -> Double
+pub fn ImagemorpherodeLayer::mean(Self) -> Double
+pub fn ImagemorpherodeLayer::min(Self) -> Double
+pub fn ImagemorpherodeLayer::scale(Self, Double) -> Self
+pub fn ImagemorpherodeLayer::set(Self, Int32, Double) -> Self
+pub fn ImagemorpherodeLayer::sum(Self) -> Double
+pub fn ImagemorpherodeLayer::to_string(Self) -> String
+
+pub(all) struct ImagemorpherodeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagemorpherodeMatrix::add(Self, Self) -> Self
+pub fn ImagemorpherodeMatrix::det(Self) -> Double
+pub fn ImagemorpherodeMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagemorpherodeMatrix::multiply(Self, Self) -> Self
+pub fn ImagemorpherodeMatrix::norm(Self) -> Double
+pub fn ImagemorpherodeMatrix::scale(Self, Double) -> Self
+pub fn ImagemorpherodeMatrix::to_string(Self) -> String
+pub fn ImagemorpherodeMatrix::trace(Self) -> Double
+pub fn ImagemorpherodeMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagemorpherodeModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorpherodeModel::add(Self, Self) -> Self
+pub fn ImagemorpherodeModel::copy(Self) -> Self
+pub fn ImagemorpherodeModel::fill(Self, Double) -> Self
+pub fn ImagemorpherodeModel::get(Self, Int32) -> Double
+pub fn ImagemorpherodeModel::len(Self) -> Int32
+pub fn ImagemorpherodeModel::max(Self) -> Double
+pub fn ImagemorpherodeModel::mean(Self) -> Double
+pub fn ImagemorpherodeModel::min(Self) -> Double
+pub fn ImagemorpherodeModel::scale(Self, Double) -> Self
+pub fn ImagemorpherodeModel::set(Self, Int32, Double) -> Self
+pub fn ImagemorpherodeModel::sum(Self) -> Double
+pub fn ImagemorpherodeModel::to_string(Self) -> String
+
+pub(all) struct ImagemorpherodeNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorpherodeNode::add(Self, Self) -> Self
+pub fn ImagemorpherodeNode::copy(Self) -> Self
+pub fn ImagemorpherodeNode::fill(Self, Double) -> Self
+pub fn ImagemorpherodeNode::get(Self, Int32) -> Double
+pub fn ImagemorpherodeNode::len(Self) -> Int32
+pub fn ImagemorpherodeNode::max(Self) -> Double
+pub fn ImagemorpherodeNode::mean(Self) -> Double
+pub fn ImagemorpherodeNode::min(Self) -> Double
+pub fn ImagemorpherodeNode::scale(Self, Double) -> Self
+pub fn ImagemorpherodeNode::set(Self, Int32, Double) -> Self
+pub fn ImagemorpherodeNode::sum(Self) -> Double
+pub fn ImagemorpherodeNode::to_string(Self) -> String
+
+pub(all) struct ImagemorpherodePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorpherodePath::add(Self, Self) -> Self
+pub fn ImagemorpherodePath::copy(Self) -> Self
+pub fn ImagemorpherodePath::fill(Self, Double) -> Self
+pub fn ImagemorpherodePath::get(Self, Int32) -> Double
+pub fn ImagemorpherodePath::len(Self) -> Int32
+pub fn ImagemorpherodePath::max(Self) -> Double
+pub fn ImagemorpherodePath::mean(Self) -> Double
+pub fn ImagemorpherodePath::min(Self) -> Double
+pub fn ImagemorpherodePath::scale(Self, Double) -> Self
+pub fn ImagemorpherodePath::set(Self, Int32, Double) -> Self
+pub fn ImagemorpherodePath::sum(Self) -> Double
+pub fn ImagemorpherodePath::to_string(Self) -> String
+
+pub(all) struct ImagemorpherodePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagemorpherodePoint::add(Self, Self) -> Self
+pub fn ImagemorpherodePoint::cross(Self, Self) -> Self
+pub fn ImagemorpherodePoint::dist(Self, Self) -> Double
+pub fn ImagemorpherodePoint::dot(Self, Self) -> Double
+pub fn ImagemorpherodePoint::label(Self) -> Int32
+pub fn ImagemorpherodePoint::lerp(Self, Self, Double) -> Self
+pub fn ImagemorpherodePoint::mid(Self, Self) -> Self
+pub fn ImagemorpherodePoint::negate(Self) -> Self
+pub fn ImagemorpherodePoint::norm(Self) -> Double
+pub fn ImagemorpherodePoint::normalize(Self) -> Self
+pub fn ImagemorpherodePoint::scale(Self, Double) -> Self
+pub fn ImagemorpherodePoint::sub(Self, Self) -> Self
+pub fn ImagemorpherodePoint::to_string(Self) -> String
+pub fn ImagemorpherodePoint::x(Self) -> Double
+pub fn ImagemorpherodePoint::y(Self) -> Double
+pub fn ImagemorpherodePoint::z(Self) -> Double
+
+pub(all) struct ImagemorpherodeRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorpherodeRange::add(Self, Self) -> Self
+pub fn ImagemorpherodeRange::copy(Self) -> Self
+pub fn ImagemorpherodeRange::fill(Self, Double) -> Self
+pub fn ImagemorpherodeRange::get(Self, Int32) -> Double
+pub fn ImagemorpherodeRange::len(Self) -> Int32
+pub fn ImagemorpherodeRange::max(Self) -> Double
+pub fn ImagemorpherodeRange::mean(Self) -> Double
+pub fn ImagemorpherodeRange::min(Self) -> Double
+pub fn ImagemorpherodeRange::scale(Self, Double) -> Self
+pub fn ImagemorpherodeRange::set(Self, Int32, Double) -> Self
+pub fn ImagemorpherodeRange::sum(Self) -> Double
+pub fn ImagemorpherodeRange::to_string(Self) -> String
+
+pub(all) struct ImagemorpherodeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagemorpherodeSeries::add(Self, Self) -> Self
+pub fn ImagemorpherodeSeries::cumsum(Self) -> Self
+pub fn ImagemorpherodeSeries::len(Self) -> Int32
+pub fn ImagemorpherodeSeries::max(Self) -> Double
+pub fn ImagemorpherodeSeries::mean(Self) -> Double
+pub fn ImagemorpherodeSeries::median(Self) -> Double
+pub fn ImagemorpherodeSeries::min(Self) -> Double
+pub fn ImagemorpherodeSeries::normalize(Self) -> Self
+pub fn ImagemorpherodeSeries::range(Self) -> Double
+pub fn ImagemorpherodeSeries::scale(Self, Double) -> Self
+pub fn ImagemorpherodeSeries::std(Self) -> Double
+pub fn ImagemorpherodeSeries::sub(Self, Self) -> Self
+pub fn ImagemorpherodeSeries::sum(Self) -> Double
+pub fn ImagemorpherodeSeries::to_string(Self) -> String
+pub fn ImagemorpherodeSeries::variance(Self) -> Double
+
+pub(all) struct ImagemorpherodeSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorpherodeSlice::add(Self, Self) -> Self
+pub fn ImagemorpherodeSlice::copy(Self) -> Self
+pub fn ImagemorpherodeSlice::fill(Self, Double) -> Self
+pub fn ImagemorpherodeSlice::get(Self, Int32) -> Double
+pub fn ImagemorpherodeSlice::len(Self) -> Int32
+pub fn ImagemorpherodeSlice::max(Self) -> Double
+pub fn ImagemorpherodeSlice::mean(Self) -> Double
+pub fn ImagemorpherodeSlice::min(Self) -> Double
+pub fn ImagemorpherodeSlice::scale(Self, Double) -> Self
+pub fn ImagemorpherodeSlice::set(Self, Int32, Double) -> Self
+pub fn ImagemorpherodeSlice::sum(Self) -> Double
+pub fn ImagemorpherodeSlice::to_string(Self) -> String
+
+pub(all) struct ImagemorpherodeTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorpherodeTable::add(Self, Self) -> Self
+pub fn ImagemorpherodeTable::copy(Self) -> Self
+pub fn ImagemorpherodeTable::fill(Self, Double) -> Self
+pub fn ImagemorpherodeTable::get(Self, Int32) -> Double
+pub fn ImagemorpherodeTable::len(Self) -> Int32
+pub fn ImagemorpherodeTable::max(Self) -> Double
+pub fn ImagemorpherodeTable::mean(Self) -> Double
+pub fn ImagemorpherodeTable::min(Self) -> Double
+pub fn ImagemorpherodeTable::scale(Self, Double) -> Self
+pub fn ImagemorpherodeTable::set(Self, Int32, Double) -> Self
+pub fn ImagemorpherodeTable::sum(Self) -> Double
+pub fn ImagemorpherodeTable::to_string(Self) -> String
+
+pub(all) struct ImagemorpherodeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagemorpherodeVector::add(Self, Self) -> Self
+pub fn ImagemorpherodeVector::dist(Self, Self) -> Double
+pub fn ImagemorpherodeVector::dot(Self, Self) -> Double
+pub fn ImagemorpherodeVector::norm(Self) -> Double
+pub fn ImagemorpherodeVector::normalize(Self) -> Self
+pub fn ImagemorpherodeVector::scale(Self, Double) -> Self
+pub fn ImagemorpherodeVector::sub(Self, Self) -> Self
+pub fn ImagemorpherodeVector::to_string(Self) -> String
+
+pub(all) struct ImagemorpherodeView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorpherodeView::add(Self, Self) -> Self
+pub fn ImagemorpherodeView::copy(Self) -> Self
+pub fn ImagemorpherodeView::fill(Self, Double) -> Self
+pub fn ImagemorpherodeView::get(Self, Int32) -> Double
+pub fn ImagemorpherodeView::len(Self) -> Int32
+pub fn ImagemorpherodeView::max(Self) -> Double
+pub fn ImagemorpherodeView::mean(Self) -> Double
+pub fn ImagemorpherodeView::min(Self) -> Double
+pub fn ImagemorpherodeView::scale(Self, Double) -> Self
+pub fn ImagemorpherodeView::set(Self, Int32, Double) -> Self
+pub fn ImagemorpherodeView::sum(Self) -> Double
+pub fn ImagemorpherodeView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,226 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/data_catalog"
+
+// Values
+pub fn access_check(DataAccess, String, String, String) -> Bool
+
+pub fn access_grant(DataAccess, String, String, String) -> DataAccess
+
+pub fn access_revoke(DataAccess, String, String) -> DataAccess
+
+pub fn catalog_add(DataCatalog, CatalogEntry) -> DataCatalog
+
+pub fn catalog_remove(DataCatalog, String) -> DataCatalog
+
+pub fn catalog_search(DataCatalog, String) -> Array[CatalogEntry]
+
+pub fn contract_create(String, String, String, String, Double) -> DataContract
+
+pub fn contract_enforce(DataContract, Double) -> Bool
+
+pub fn contract_validate(DataContract) -> Bool
+
+pub fn data_catalog_id() -> String
+
+pub fn discovery_recommend(DataDiscovery, String) -> Array[String]
+
+pub fn discovery_search(DataDiscovery, String) -> Array[CatalogEntry]
+
+pub fn domain_classify(DataDomain, Array[String]) -> String
+
+pub fn domain_register(DataDomainRegistry, DataDomain) -> DataDomainRegistry
+
+pub fn entry_metadata(CatalogEntry) -> Array[(String, String)]
+
+pub fn entry_owner(CatalogEntry) -> String
+
+pub fn entry_tags(CatalogEntry) -> Array[String]
+
+pub fn lineage_query_catalog(DataLineageCatalog, String) -> Array[String]
+
+pub fn lineage_track_catalog(DataLineageCatalog, LineageNode) -> DataLineageCatalog
+
+pub fn make_catalog(String) -> DataCatalog
+
+pub fn make_catalog_entry(String, String, String, String, Array[String], Array[(String, String)], Double) -> CatalogEntry
+
+pub fn make_data_access() -> DataAccess
+
+pub fn make_data_contract(String, String, String, String, Double) -> DataContract
+
+pub fn make_data_discovery(DataCatalog) -> DataDiscovery
+
+pub fn make_data_domain(String, String, String, Array[String]) -> DataDomain
+
+pub fn make_data_lineage_catalog() -> DataLineageCatalog
+
+pub fn make_data_pipeline(String, String, String, Array[String]) -> DataPipeline
+
+pub fn make_data_policy(String, String, String) -> DataPolicy
+
+pub fn make_data_product(String, String, String) -> DataProduct
+
+pub fn make_data_quality_catalog() -> DataQualityCatalog
+
+pub fn make_data_sink(String, String, String) -> DataSink
+
+pub fn make_data_source(String, String, String, String) -> DataSource
+
+pub fn make_data_usage() -> DataUsage
+
+pub fn pipeline_register(DataPipelineRegistry, DataPipeline) -> DataPipelineRegistry
+
+pub fn pipeline_validate(DataPipeline) -> Bool
+
+pub fn policy_audit(DataPolicy, String) -> DataPolicy
+
+pub fn policy_create(String, String, String) -> DataPolicy
+
+pub fn policy_enforce(DataPolicy, String) -> Bool
+
+pub fn product_create(String, String, String) -> DataProduct
+
+pub fn product_publish(DataProduct) -> DataProduct
+
+pub fn product_subscribe(DataProduct, String) -> DataProduct
+
+pub fn quality_check_catalog(DataQualityCatalog, String, Double) -> Bool
+
+pub fn quality_register(DataQualityCatalog, QualityRule) -> DataQualityCatalog
+
+pub fn sink_register(DataSinkRegistry, DataSink) -> DataSinkRegistry
+
+pub fn sink_validate(DataSink) -> Bool
+
+pub fn source_health(DataSource) -> Bool
+
+pub fn source_register(DataSourceRegistry, DataSource) -> DataSourceRegistry
+
+pub fn source_validate(DataSource) -> Bool
+
+pub fn usage_analytics(DataUsage) -> Array[(String, Double)]
+
+pub fn usage_report(DataUsage, String) -> Double
+
+pub fn usage_track(DataUsage, String, String, Double) -> DataUsage
+
+// Errors
+
+// Types and methods
+pub struct CatalogEntry {
+  id : String
+  name : String
+  description : String
+  owner : String
+  tags : Array[String]
+  metadata : Array[(String, String)]
+  created_at : Double
+}
+
+pub struct DataAccess {
+  grants : Array[(String, String, String)]
+}
+
+pub struct DataCatalog {
+  name : String
+  entries : Array[CatalogEntry]
+}
+
+pub struct DataContract {
+  id : String
+  producer : String
+  consumer : String
+  schema : String
+  sla : Double
+}
+
+pub struct DataDiscovery {
+  catalog : DataCatalog
+  recommendations : Array[(String, String)]
+}
+
+pub struct DataDomain {
+  id : String
+  name : String
+  description : String
+  owners : Array[String]
+}
+
+pub struct DataDomainRegistry {
+  domains : Array[DataDomain]
+}
+
+pub struct DataLineageCatalog {
+  nodes : Array[LineageNode]
+}
+
+pub struct DataPipeline {
+  id : String
+  source_id : String
+  sink_id : String
+  transformations : Array[String]
+}
+
+pub struct DataPipelineRegistry {
+  pipelines : Array[DataPipeline]
+}
+
+pub struct DataPolicy {
+  id : String
+  rule : String
+  action : String
+  audit_log : Array[String]
+}
+
+pub struct DataProduct {
+  id : String
+  name : String
+  domain_id : String
+  published : Bool
+  subscribers : Array[String]
+}
+
+pub struct DataQualityCatalog {
+  rules : Array[QualityRule]
+}
+
+pub struct DataSink {
+  id : String
+  sink_type : String
+  connection : String
+}
+
+pub struct DataSinkRegistry {
+  sinks : Array[DataSink]
+}
+
+pub struct DataSource {
+  id : String
+  source_type : String
+  connection : String
+  schema : String
+  healthy : Bool
+}
+
+pub struct DataSourceRegistry {
+  sources : Array[DataSource]
+}
+
+pub struct DataUsage {
+  records : Array[(String, String, Double)]
+}
+
+pub struct LineageNode {
+  id : String
+  parents : Array[String]
+}
+
+pub struct QualityRule {
+  id : String
+  metric : String
+  threshold : Double
+}
+
+// Type aliases
+
+// Traits

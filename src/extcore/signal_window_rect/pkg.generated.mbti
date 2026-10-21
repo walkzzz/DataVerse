@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_window_rect"
+
+// Values
+pub fn signal_window_rect_buffer_make(Int32) -> SignalwindowrectBuffer
+
+pub fn signal_window_rect_cluster_make(Int32) -> SignalwindowrectCluster
+
+pub fn signal_window_rect_cursor_make(Int32) -> SignalwindowrectCursor
+
+pub fn signal_window_rect_edge_make(Int32) -> SignalwindowrectEdge
+
+pub fn signal_window_rect_frame_make(Int32) -> SignalwindowrectFrame
+
+pub fn signal_window_rect_graphn_make(Int32) -> SignalwindowrectGraphN
+
+pub fn signal_window_rect_layer_make(Int32) -> SignalwindowrectLayer
+
+pub fn signal_window_rect_make_matrix(Int32, Int32, Double) -> SignalwindowrectMatrix
+
+pub fn signal_window_rect_make_point(Double, Double) -> SignalwindowrectPoint
+
+pub fn signal_window_rect_make_point3(Double, Double, Double) -> SignalwindowrectPoint
+
+pub fn signal_window_rect_make_series(Array[Double], String) -> SignalwindowrectSeries
+
+pub fn signal_window_rect_make_vector(Array[Double]) -> SignalwindowrectVector
+
+pub fn signal_window_rect_matrix_identity(Int32) -> SignalwindowrectMatrix
+
+pub fn signal_window_rect_model_make(Int32) -> SignalwindowrectModel
+
+pub fn signal_window_rect_node_make(Int32) -> SignalwindowrectNode
+
+pub fn signal_window_rect_path_make(Int32) -> SignalwindowrectPath
+
+pub fn signal_window_rect_range_make(Int32) -> SignalwindowrectRange
+
+pub fn signal_window_rect_slice_make(Int32) -> SignalwindowrectSlice
+
+pub fn signal_window_rect_table_make(Int32) -> SignalwindowrectTable
+
+pub fn signal_window_rect_vector_zero(Int32) -> SignalwindowrectVector
+
+pub fn signal_window_rect_view_make(Int32) -> SignalwindowrectView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalwindowrectBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowrectBuffer::add(Self, Self) -> Self
+pub fn SignalwindowrectBuffer::copy(Self) -> Self
+pub fn SignalwindowrectBuffer::fill(Self, Double) -> Self
+pub fn SignalwindowrectBuffer::get(Self, Int32) -> Double
+pub fn SignalwindowrectBuffer::len(Self) -> Int32
+pub fn SignalwindowrectBuffer::max(Self) -> Double
+pub fn SignalwindowrectBuffer::mean(Self) -> Double
+pub fn SignalwindowrectBuffer::min(Self) -> Double
+pub fn SignalwindowrectBuffer::scale(Self, Double) -> Self
+pub fn SignalwindowrectBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowrectBuffer::sum(Self) -> Double
+pub fn SignalwindowrectBuffer::to_string(Self) -> String
+
+pub(all) struct SignalwindowrectCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowrectCluster::add(Self, Self) -> Self
+pub fn SignalwindowrectCluster::copy(Self) -> Self
+pub fn SignalwindowrectCluster::fill(Self, Double) -> Self
+pub fn SignalwindowrectCluster::get(Self, Int32) -> Double
+pub fn SignalwindowrectCluster::len(Self) -> Int32
+pub fn SignalwindowrectCluster::max(Self) -> Double
+pub fn SignalwindowrectCluster::mean(Self) -> Double
+pub fn SignalwindowrectCluster::min(Self) -> Double
+pub fn SignalwindowrectCluster::scale(Self, Double) -> Self
+pub fn SignalwindowrectCluster::set(Self, Int32, Double) -> Self
+pub fn SignalwindowrectCluster::sum(Self) -> Double
+pub fn SignalwindowrectCluster::to_string(Self) -> String
+
+pub(all) struct SignalwindowrectCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowrectCursor::add(Self, Self) -> Self
+pub fn SignalwindowrectCursor::copy(Self) -> Self
+pub fn SignalwindowrectCursor::fill(Self, Double) -> Self
+pub fn SignalwindowrectCursor::get(Self, Int32) -> Double
+pub fn SignalwindowrectCursor::len(Self) -> Int32
+pub fn SignalwindowrectCursor::max(Self) -> Double
+pub fn SignalwindowrectCursor::mean(Self) -> Double
+pub fn SignalwindowrectCursor::min(Self) -> Double
+pub fn SignalwindowrectCursor::scale(Self, Double) -> Self
+pub fn SignalwindowrectCursor::set(Self, Int32, Double) -> Self
+pub fn SignalwindowrectCursor::sum(Self) -> Double
+pub fn SignalwindowrectCursor::to_string(Self) -> String
+
+pub(all) struct SignalwindowrectEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowrectEdge::add(Self, Self) -> Self
+pub fn SignalwindowrectEdge::copy(Self) -> Self
+pub fn SignalwindowrectEdge::fill(Self, Double) -> Self
+pub fn SignalwindowrectEdge::get(Self, Int32) -> Double
+pub fn SignalwindowrectEdge::len(Self) -> Int32
+pub fn SignalwindowrectEdge::max(Self) -> Double
+pub fn SignalwindowrectEdge::mean(Self) -> Double
+pub fn SignalwindowrectEdge::min(Self) -> Double
+pub fn SignalwindowrectEdge::scale(Self, Double) -> Self
+pub fn SignalwindowrectEdge::set(Self, Int32, Double) -> Self
+pub fn SignalwindowrectEdge::sum(Self) -> Double
+pub fn SignalwindowrectEdge::to_string(Self) -> String
+
+pub(all) struct SignalwindowrectFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowrectFrame::add(Self, Self) -> Self
+pub fn SignalwindowrectFrame::copy(Self) -> Self
+pub fn SignalwindowrectFrame::fill(Self, Double) -> Self
+pub fn SignalwindowrectFrame::get(Self, Int32) -> Double
+pub fn SignalwindowrectFrame::len(Self) -> Int32
+pub fn SignalwindowrectFrame::max(Self) -> Double
+pub fn SignalwindowrectFrame::mean(Self) -> Double
+pub fn SignalwindowrectFrame::min(Self) -> Double
+pub fn SignalwindowrectFrame::scale(Self, Double) -> Self
+pub fn SignalwindowrectFrame::set(Self, Int32, Double) -> Self
+pub fn SignalwindowrectFrame::sum(Self) -> Double
+pub fn SignalwindowrectFrame::to_string(Self) -> String
+
+pub(all) struct SignalwindowrectGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowrectGraphN::add(Self, Self) -> Self
+pub fn SignalwindowrectGraphN::copy(Self) -> Self
+pub fn SignalwindowrectGraphN::fill(Self, Double) -> Self
+pub fn SignalwindowrectGraphN::get(Self, Int32) -> Double
+pub fn SignalwindowrectGraphN::len(Self) -> Int32
+pub fn SignalwindowrectGraphN::max(Self) -> Double
+pub fn SignalwindowrectGraphN::mean(Self) -> Double
+pub fn SignalwindowrectGraphN::min(Self) -> Double
+pub fn SignalwindowrectGraphN::scale(Self, Double) -> Self
+pub fn SignalwindowrectGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalwindowrectGraphN::sum(Self) -> Double
+pub fn SignalwindowrectGraphN::to_string(Self) -> String
+
+pub(all) struct SignalwindowrectLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowrectLayer::add(Self, Self) -> Self
+pub fn SignalwindowrectLayer::copy(Self) -> Self
+pub fn SignalwindowrectLayer::fill(Self, Double) -> Self
+pub fn SignalwindowrectLayer::get(Self, Int32) -> Double
+pub fn SignalwindowrectLayer::len(Self) -> Int32
+pub fn SignalwindowrectLayer::max(Self) -> Double
+pub fn SignalwindowrectLayer::mean(Self) -> Double
+pub fn SignalwindowrectLayer::min(Self) -> Double
+pub fn SignalwindowrectLayer::scale(Self, Double) -> Self
+pub fn SignalwindowrectLayer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowrectLayer::sum(Self) -> Double
+pub fn SignalwindowrectLayer::to_string(Self) -> String
+
+pub(all) struct SignalwindowrectMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalwindowrectMatrix::add(Self, Self) -> Self
+pub fn SignalwindowrectMatrix::det(Self) -> Double
+pub fn SignalwindowrectMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalwindowrectMatrix::multiply(Self, Self) -> Self
+pub fn SignalwindowrectMatrix::norm(Self) -> Double
+pub fn SignalwindowrectMatrix::scale(Self, Double) -> Self
+pub fn SignalwindowrectMatrix::to_string(Self) -> String
+pub fn SignalwindowrectMatrix::trace(Self) -> Double
+pub fn SignalwindowrectMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalwindowrectModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowrectModel::add(Self, Self) -> Self
+pub fn SignalwindowrectModel::copy(Self) -> Self
+pub fn SignalwindowrectModel::fill(Self, Double) -> Self
+pub fn SignalwindowrectModel::get(Self, Int32) -> Double
+pub fn SignalwindowrectModel::len(Self) -> Int32
+pub fn SignalwindowrectModel::max(Self) -> Double
+pub fn SignalwindowrectModel::mean(Self) -> Double
+pub fn SignalwindowrectModel::min(Self) -> Double
+pub fn SignalwindowrectModel::scale(Self, Double) -> Self
+pub fn SignalwindowrectModel::set(Self, Int32, Double) -> Self
+pub fn SignalwindowrectModel::sum(Self) -> Double
+pub fn SignalwindowrectModel::to_string(Self) -> String
+
+pub(all) struct SignalwindowrectNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowrectNode::add(Self, Self) -> Self
+pub fn SignalwindowrectNode::copy(Self) -> Self
+pub fn SignalwindowrectNode::fill(Self, Double) -> Self
+pub fn SignalwindowrectNode::get(Self, Int32) -> Double
+pub fn SignalwindowrectNode::len(Self) -> Int32
+pub fn SignalwindowrectNode::max(Self) -> Double
+pub fn SignalwindowrectNode::mean(Self) -> Double
+pub fn SignalwindowrectNode::min(Self) -> Double
+pub fn SignalwindowrectNode::scale(Self, Double) -> Self
+pub fn SignalwindowrectNode::set(Self, Int32, Double) -> Self
+pub fn SignalwindowrectNode::sum(Self) -> Double
+pub fn SignalwindowrectNode::to_string(Self) -> String
+
+pub(all) struct SignalwindowrectPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowrectPath::add(Self, Self) -> Self
+pub fn SignalwindowrectPath::copy(Self) -> Self
+pub fn SignalwindowrectPath::fill(Self, Double) -> Self
+pub fn SignalwindowrectPath::get(Self, Int32) -> Double
+pub fn SignalwindowrectPath::len(Self) -> Int32
+pub fn SignalwindowrectPath::max(Self) -> Double
+pub fn SignalwindowrectPath::mean(Self) -> Double
+pub fn SignalwindowrectPath::min(Self) -> Double
+pub fn SignalwindowrectPath::scale(Self, Double) -> Self
+pub fn SignalwindowrectPath::set(Self, Int32, Double) -> Self
+pub fn SignalwindowrectPath::sum(Self) -> Double
+pub fn SignalwindowrectPath::to_string(Self) -> String
+
+pub(all) struct SignalwindowrectPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalwindowrectPoint::add(Self, Self) -> Self
+pub fn SignalwindowrectPoint::cross(Self, Self) -> Self
+pub fn SignalwindowrectPoint::dist(Self, Self) -> Double
+pub fn SignalwindowrectPoint::dot(Self, Self) -> Double
+pub fn SignalwindowrectPoint::label(Self) -> Int32
+pub fn SignalwindowrectPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalwindowrectPoint::mid(Self, Self) -> Self
+pub fn SignalwindowrectPoint::negate(Self) -> Self
+pub fn SignalwindowrectPoint::norm(Self) -> Double
+pub fn SignalwindowrectPoint::normalize(Self) -> Self
+pub fn SignalwindowrectPoint::scale(Self, Double) -> Self
+pub fn SignalwindowrectPoint::sub(Self, Self) -> Self
+pub fn SignalwindowrectPoint::to_string(Self) -> String
+pub fn SignalwindowrectPoint::x(Self) -> Double
+pub fn SignalwindowrectPoint::y(Self) -> Double
+pub fn SignalwindowrectPoint::z(Self) -> Double
+
+pub(all) struct SignalwindowrectRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowrectRange::add(Self, Self) -> Self
+pub fn SignalwindowrectRange::copy(Self) -> Self
+pub fn SignalwindowrectRange::fill(Self, Double) -> Self
+pub fn SignalwindowrectRange::get(Self, Int32) -> Double
+pub fn SignalwindowrectRange::len(Self) -> Int32
+pub fn SignalwindowrectRange::max(Self) -> Double
+pub fn SignalwindowrectRange::mean(Self) -> Double
+pub fn SignalwindowrectRange::min(Self) -> Double
+pub fn SignalwindowrectRange::scale(Self, Double) -> Self
+pub fn SignalwindowrectRange::set(Self, Int32, Double) -> Self
+pub fn SignalwindowrectRange::sum(Self) -> Double
+pub fn SignalwindowrectRange::to_string(Self) -> String
+
+pub(all) struct SignalwindowrectSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalwindowrectSeries::add(Self, Self) -> Self
+pub fn SignalwindowrectSeries::cumsum(Self) -> Self
+pub fn SignalwindowrectSeries::len(Self) -> Int32
+pub fn SignalwindowrectSeries::max(Self) -> Double
+pub fn SignalwindowrectSeries::mean(Self) -> Double
+pub fn SignalwindowrectSeries::median(Self) -> Double
+pub fn SignalwindowrectSeries::min(Self) -> Double
+pub fn SignalwindowrectSeries::normalize(Self) -> Self
+pub fn SignalwindowrectSeries::range(Self) -> Double
+pub fn SignalwindowrectSeries::scale(Self, Double) -> Self
+pub fn SignalwindowrectSeries::std(Self) -> Double
+pub fn SignalwindowrectSeries::sub(Self, Self) -> Self
+pub fn SignalwindowrectSeries::sum(Self) -> Double
+pub fn SignalwindowrectSeries::to_string(Self) -> String
+pub fn SignalwindowrectSeries::variance(Self) -> Double
+
+pub(all) struct SignalwindowrectSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowrectSlice::add(Self, Self) -> Self
+pub fn SignalwindowrectSlice::copy(Self) -> Self
+pub fn SignalwindowrectSlice::fill(Self, Double) -> Self
+pub fn SignalwindowrectSlice::get(Self, Int32) -> Double
+pub fn SignalwindowrectSlice::len(Self) -> Int32
+pub fn SignalwindowrectSlice::max(Self) -> Double
+pub fn SignalwindowrectSlice::mean(Self) -> Double
+pub fn SignalwindowrectSlice::min(Self) -> Double
+pub fn SignalwindowrectSlice::scale(Self, Double) -> Self
+pub fn SignalwindowrectSlice::set(Self, Int32, Double) -> Self
+pub fn SignalwindowrectSlice::sum(Self) -> Double
+pub fn SignalwindowrectSlice::to_string(Self) -> String
+
+pub(all) struct SignalwindowrectTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowrectTable::add(Self, Self) -> Self
+pub fn SignalwindowrectTable::copy(Self) -> Self
+pub fn SignalwindowrectTable::fill(Self, Double) -> Self
+pub fn SignalwindowrectTable::get(Self, Int32) -> Double
+pub fn SignalwindowrectTable::len(Self) -> Int32
+pub fn SignalwindowrectTable::max(Self) -> Double
+pub fn SignalwindowrectTable::mean(Self) -> Double
+pub fn SignalwindowrectTable::min(Self) -> Double
+pub fn SignalwindowrectTable::scale(Self, Double) -> Self
+pub fn SignalwindowrectTable::set(Self, Int32, Double) -> Self
+pub fn SignalwindowrectTable::sum(Self) -> Double
+pub fn SignalwindowrectTable::to_string(Self) -> String
+
+pub(all) struct SignalwindowrectVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalwindowrectVector::add(Self, Self) -> Self
+pub fn SignalwindowrectVector::dist(Self, Self) -> Double
+pub fn SignalwindowrectVector::dot(Self, Self) -> Double
+pub fn SignalwindowrectVector::norm(Self) -> Double
+pub fn SignalwindowrectVector::normalize(Self) -> Self
+pub fn SignalwindowrectVector::scale(Self, Double) -> Self
+pub fn SignalwindowrectVector::sub(Self, Self) -> Self
+pub fn SignalwindowrectVector::to_string(Self) -> String
+
+pub(all) struct SignalwindowrectView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowrectView::add(Self, Self) -> Self
+pub fn SignalwindowrectView::copy(Self) -> Self
+pub fn SignalwindowrectView::fill(Self, Double) -> Self
+pub fn SignalwindowrectView::get(Self, Int32) -> Double
+pub fn SignalwindowrectView::len(Self) -> Int32
+pub fn SignalwindowrectView::max(Self) -> Double
+pub fn SignalwindowrectView::mean(Self) -> Double
+pub fn SignalwindowrectView::min(Self) -> Double
+pub fn SignalwindowrectView::scale(Self, Double) -> Self
+pub fn SignalwindowrectView::set(Self, Int32, Double) -> Self
+pub fn SignalwindowrectView::sum(Self) -> Double
+pub fn SignalwindowrectView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

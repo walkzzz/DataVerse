@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/planning_htn"
+
+// Values
+pub fn planning_htn_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn planning_htn_corr(Array[Double], Array[Double]) -> Double
+
+pub fn planning_htn_cov(Array[Double], Array[Double]) -> Double
+
+pub fn planning_htn_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn planning_htn_mae(Array[Double], Array[Double]) -> Double
+
+pub fn planning_htn_make_labeled_point(Double, Double, Int32) -> Planning_htnPoint
+
+pub fn planning_htn_make_matrix(Int32, Int32, Double) -> Planning_htnMatrix
+
+pub fn planning_htn_make_point(Double, Double) -> Planning_htnPoint
+
+pub fn planning_htn_make_series(Array[Double], String) -> Planning_htnSeries
+
+pub fn planning_htn_make_vector(Array[Double]) -> Planning_htnVector
+
+pub fn planning_htn_matrix_add(Planning_htnMatrix, Planning_htnMatrix) -> Planning_htnMatrix
+
+pub fn planning_htn_matrix_get(Planning_htnMatrix, Int32, Int32) -> Double
+
+pub fn planning_htn_matrix_identity(Int32) -> Planning_htnMatrix
+
+pub fn planning_htn_matrix_multiply(Planning_htnMatrix, Planning_htnMatrix) -> Planning_htnMatrix
+
+pub fn planning_htn_matrix_norm(Planning_htnMatrix) -> Double
+
+pub fn planning_htn_matrix_scale(Planning_htnMatrix, Double) -> Planning_htnMatrix
+
+pub fn planning_htn_matrix_to_string(Planning_htnMatrix) -> String
+
+pub fn planning_htn_matrix_trace(Planning_htnMatrix) -> Double
+
+pub fn planning_htn_matrix_transpose(Planning_htnMatrix) -> Planning_htnMatrix
+
+pub fn planning_htn_mse(Array[Double], Array[Double]) -> Double
+
+pub fn planning_htn_point_add(Planning_htnPoint, Planning_htnPoint) -> Planning_htnPoint
+
+pub fn planning_htn_point_dist(Planning_htnPoint, Planning_htnPoint) -> Double
+
+pub fn planning_htn_point_dot(Planning_htnPoint, Planning_htnPoint) -> Double
+
+pub fn planning_htn_point_label(Planning_htnPoint) -> Int32
+
+pub fn planning_htn_point_norm(Planning_htnPoint) -> Double
+
+pub fn planning_htn_point_scale(Planning_htnPoint, Double) -> Planning_htnPoint
+
+pub fn planning_htn_point_sub(Planning_htnPoint, Planning_htnPoint) -> Planning_htnPoint
+
+pub fn planning_htn_point_to_string(Planning_htnPoint) -> String
+
+pub fn planning_htn_point_x(Planning_htnPoint) -> Double
+
+pub fn planning_htn_point_y(Planning_htnPoint) -> Double
+
+pub fn planning_htn_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn planning_htn_r2(Array[Double], Array[Double]) -> Double
+
+pub fn planning_htn_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn planning_htn_series_add(Planning_htnSeries, Planning_htnSeries) -> Planning_htnSeries
+
+pub fn planning_htn_series_len(Planning_htnSeries) -> Int32
+
+pub fn planning_htn_series_max(Planning_htnSeries) -> Double
+
+pub fn planning_htn_series_mean(Planning_htnSeries) -> Double
+
+pub fn planning_htn_series_min(Planning_htnSeries) -> Double
+
+pub fn planning_htn_series_scale(Planning_htnSeries, Double) -> Planning_htnSeries
+
+pub fn planning_htn_series_std(Planning_htnSeries) -> Double
+
+pub fn planning_htn_series_sum(Planning_htnSeries) -> Double
+
+pub fn planning_htn_series_to_string(Planning_htnSeries) -> String
+
+pub fn planning_htn_series_var(Planning_htnSeries) -> Double
+
+pub fn planning_htn_std(Array[Double]) -> Double
+
+pub fn planning_htn_var(Array[Double]) -> Double
+
+pub fn planning_htn_vector_add(Planning_htnVector, Planning_htnVector) -> Planning_htnVector
+
+pub fn planning_htn_vector_dist(Planning_htnVector, Planning_htnVector) -> Double
+
+pub fn planning_htn_vector_dot(Planning_htnVector, Planning_htnVector) -> Double
+
+pub fn planning_htn_vector_norm(Planning_htnVector) -> Double
+
+pub fn planning_htn_vector_normalize(Planning_htnVector) -> Planning_htnVector
+
+pub fn planning_htn_vector_scale(Planning_htnVector, Double) -> Planning_htnVector
+
+pub fn planning_htn_vector_sub(Planning_htnVector, Planning_htnVector) -> Planning_htnVector
+
+pub fn planning_htn_vector_to_string(Planning_htnVector) -> String
+
+pub fn planning_htn_vector_zero(Int32) -> Planning_htnVector
+
+// Errors
+
+// Types and methods
+pub struct Planning_htnMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Planning_htnPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Planning_htnSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Planning_htnVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

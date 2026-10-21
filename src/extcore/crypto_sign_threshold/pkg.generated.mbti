@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/crypto_sign_threshold"
+
+// Values
+pub fn crypto_sign_threshold_buffer_make(Int32) -> CryptosignthresholdBuffer
+
+pub fn crypto_sign_threshold_cluster_make(Int32) -> CryptosignthresholdCluster
+
+pub fn crypto_sign_threshold_cursor_make(Int32) -> CryptosignthresholdCursor
+
+pub fn crypto_sign_threshold_edge_make(Int32) -> CryptosignthresholdEdge
+
+pub fn crypto_sign_threshold_frame_make(Int32) -> CryptosignthresholdFrame
+
+pub fn crypto_sign_threshold_graphn_make(Int32) -> CryptosignthresholdGraphN
+
+pub fn crypto_sign_threshold_layer_make(Int32) -> CryptosignthresholdLayer
+
+pub fn crypto_sign_threshold_make_matrix(Int32, Int32, Double) -> CryptosignthresholdMatrix
+
+pub fn crypto_sign_threshold_make_point(Double, Double) -> CryptosignthresholdPoint
+
+pub fn crypto_sign_threshold_make_point3(Double, Double, Double) -> CryptosignthresholdPoint
+
+pub fn crypto_sign_threshold_make_series(Array[Double], String) -> CryptosignthresholdSeries
+
+pub fn crypto_sign_threshold_make_vector(Array[Double]) -> CryptosignthresholdVector
+
+pub fn crypto_sign_threshold_matrix_identity(Int32) -> CryptosignthresholdMatrix
+
+pub fn crypto_sign_threshold_model_make(Int32) -> CryptosignthresholdModel
+
+pub fn crypto_sign_threshold_node_make(Int32) -> CryptosignthresholdNode
+
+pub fn crypto_sign_threshold_path_make(Int32) -> CryptosignthresholdPath
+
+pub fn crypto_sign_threshold_range_make(Int32) -> CryptosignthresholdRange
+
+pub fn crypto_sign_threshold_slice_make(Int32) -> CryptosignthresholdSlice
+
+pub fn crypto_sign_threshold_table_make(Int32) -> CryptosignthresholdTable
+
+pub fn crypto_sign_threshold_vector_zero(Int32) -> CryptosignthresholdVector
+
+pub fn crypto_sign_threshold_view_make(Int32) -> CryptosignthresholdView
+
+// Errors
+
+// Types and methods
+pub(all) struct CryptosignthresholdBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignthresholdBuffer::add(Self, Self) -> Self
+pub fn CryptosignthresholdBuffer::copy(Self) -> Self
+pub fn CryptosignthresholdBuffer::fill(Self, Double) -> Self
+pub fn CryptosignthresholdBuffer::get(Self, Int32) -> Double
+pub fn CryptosignthresholdBuffer::len(Self) -> Int32
+pub fn CryptosignthresholdBuffer::max(Self) -> Double
+pub fn CryptosignthresholdBuffer::mean(Self) -> Double
+pub fn CryptosignthresholdBuffer::min(Self) -> Double
+pub fn CryptosignthresholdBuffer::scale(Self, Double) -> Self
+pub fn CryptosignthresholdBuffer::set(Self, Int32, Double) -> Self
+pub fn CryptosignthresholdBuffer::sum(Self) -> Double
+pub fn CryptosignthresholdBuffer::to_string(Self) -> String
+
+pub(all) struct CryptosignthresholdCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignthresholdCluster::add(Self, Self) -> Self
+pub fn CryptosignthresholdCluster::copy(Self) -> Self
+pub fn CryptosignthresholdCluster::fill(Self, Double) -> Self
+pub fn CryptosignthresholdCluster::get(Self, Int32) -> Double
+pub fn CryptosignthresholdCluster::len(Self) -> Int32
+pub fn CryptosignthresholdCluster::max(Self) -> Double
+pub fn CryptosignthresholdCluster::mean(Self) -> Double
+pub fn CryptosignthresholdCluster::min(Self) -> Double
+pub fn CryptosignthresholdCluster::scale(Self, Double) -> Self
+pub fn CryptosignthresholdCluster::set(Self, Int32, Double) -> Self
+pub fn CryptosignthresholdCluster::sum(Self) -> Double
+pub fn CryptosignthresholdCluster::to_string(Self) -> String
+
+pub(all) struct CryptosignthresholdCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignthresholdCursor::add(Self, Self) -> Self
+pub fn CryptosignthresholdCursor::copy(Self) -> Self
+pub fn CryptosignthresholdCursor::fill(Self, Double) -> Self
+pub fn CryptosignthresholdCursor::get(Self, Int32) -> Double
+pub fn CryptosignthresholdCursor::len(Self) -> Int32
+pub fn CryptosignthresholdCursor::max(Self) -> Double
+pub fn CryptosignthresholdCursor::mean(Self) -> Double
+pub fn CryptosignthresholdCursor::min(Self) -> Double
+pub fn CryptosignthresholdCursor::scale(Self, Double) -> Self
+pub fn CryptosignthresholdCursor::set(Self, Int32, Double) -> Self
+pub fn CryptosignthresholdCursor::sum(Self) -> Double
+pub fn CryptosignthresholdCursor::to_string(Self) -> String
+
+pub(all) struct CryptosignthresholdEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignthresholdEdge::add(Self, Self) -> Self
+pub fn CryptosignthresholdEdge::copy(Self) -> Self
+pub fn CryptosignthresholdEdge::fill(Self, Double) -> Self
+pub fn CryptosignthresholdEdge::get(Self, Int32) -> Double
+pub fn CryptosignthresholdEdge::len(Self) -> Int32
+pub fn CryptosignthresholdEdge::max(Self) -> Double
+pub fn CryptosignthresholdEdge::mean(Self) -> Double
+pub fn CryptosignthresholdEdge::min(Self) -> Double
+pub fn CryptosignthresholdEdge::scale(Self, Double) -> Self
+pub fn CryptosignthresholdEdge::set(Self, Int32, Double) -> Self
+pub fn CryptosignthresholdEdge::sum(Self) -> Double
+pub fn CryptosignthresholdEdge::to_string(Self) -> String
+
+pub(all) struct CryptosignthresholdFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignthresholdFrame::add(Self, Self) -> Self
+pub fn CryptosignthresholdFrame::copy(Self) -> Self
+pub fn CryptosignthresholdFrame::fill(Self, Double) -> Self
+pub fn CryptosignthresholdFrame::get(Self, Int32) -> Double
+pub fn CryptosignthresholdFrame::len(Self) -> Int32
+pub fn CryptosignthresholdFrame::max(Self) -> Double
+pub fn CryptosignthresholdFrame::mean(Self) -> Double
+pub fn CryptosignthresholdFrame::min(Self) -> Double
+pub fn CryptosignthresholdFrame::scale(Self, Double) -> Self
+pub fn CryptosignthresholdFrame::set(Self, Int32, Double) -> Self
+pub fn CryptosignthresholdFrame::sum(Self) -> Double
+pub fn CryptosignthresholdFrame::to_string(Self) -> String
+
+pub(all) struct CryptosignthresholdGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignthresholdGraphN::add(Self, Self) -> Self
+pub fn CryptosignthresholdGraphN::copy(Self) -> Self
+pub fn CryptosignthresholdGraphN::fill(Self, Double) -> Self
+pub fn CryptosignthresholdGraphN::get(Self, Int32) -> Double
+pub fn CryptosignthresholdGraphN::len(Self) -> Int32
+pub fn CryptosignthresholdGraphN::max(Self) -> Double
+pub fn CryptosignthresholdGraphN::mean(Self) -> Double
+pub fn CryptosignthresholdGraphN::min(Self) -> Double
+pub fn CryptosignthresholdGraphN::scale(Self, Double) -> Self
+pub fn CryptosignthresholdGraphN::set(Self, Int32, Double) -> Self
+pub fn CryptosignthresholdGraphN::sum(Self) -> Double
+pub fn CryptosignthresholdGraphN::to_string(Self) -> String
+
+pub(all) struct CryptosignthresholdLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignthresholdLayer::add(Self, Self) -> Self
+pub fn CryptosignthresholdLayer::copy(Self) -> Self
+pub fn CryptosignthresholdLayer::fill(Self, Double) -> Self
+pub fn CryptosignthresholdLayer::get(Self, Int32) -> Double
+pub fn CryptosignthresholdLayer::len(Self) -> Int32
+pub fn CryptosignthresholdLayer::max(Self) -> Double
+pub fn CryptosignthresholdLayer::mean(Self) -> Double
+pub fn CryptosignthresholdLayer::min(Self) -> Double
+pub fn CryptosignthresholdLayer::scale(Self, Double) -> Self
+pub fn CryptosignthresholdLayer::set(Self, Int32, Double) -> Self
+pub fn CryptosignthresholdLayer::sum(Self) -> Double
+pub fn CryptosignthresholdLayer::to_string(Self) -> String
+
+pub(all) struct CryptosignthresholdMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn CryptosignthresholdMatrix::add(Self, Self) -> Self
+pub fn CryptosignthresholdMatrix::det(Self) -> Double
+pub fn CryptosignthresholdMatrix::get(Self, Int32, Int32) -> Double
+pub fn CryptosignthresholdMatrix::multiply(Self, Self) -> Self
+pub fn CryptosignthresholdMatrix::norm(Self) -> Double
+pub fn CryptosignthresholdMatrix::scale(Self, Double) -> Self
+pub fn CryptosignthresholdMatrix::to_string(Self) -> String
+pub fn CryptosignthresholdMatrix::trace(Self) -> Double
+pub fn CryptosignthresholdMatrix::transpose(Self) -> Self
+
+pub(all) struct CryptosignthresholdModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignthresholdModel::add(Self, Self) -> Self
+pub fn CryptosignthresholdModel::copy(Self) -> Self
+pub fn CryptosignthresholdModel::fill(Self, Double) -> Self
+pub fn CryptosignthresholdModel::get(Self, Int32) -> Double
+pub fn CryptosignthresholdModel::len(Self) -> Int32
+pub fn CryptosignthresholdModel::max(Self) -> Double
+pub fn CryptosignthresholdModel::mean(Self) -> Double
+pub fn CryptosignthresholdModel::min(Self) -> Double
+pub fn CryptosignthresholdModel::scale(Self, Double) -> Self
+pub fn CryptosignthresholdModel::set(Self, Int32, Double) -> Self
+pub fn CryptosignthresholdModel::sum(Self) -> Double
+pub fn CryptosignthresholdModel::to_string(Self) -> String
+
+pub(all) struct CryptosignthresholdNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignthresholdNode::add(Self, Self) -> Self
+pub fn CryptosignthresholdNode::copy(Self) -> Self
+pub fn CryptosignthresholdNode::fill(Self, Double) -> Self
+pub fn CryptosignthresholdNode::get(Self, Int32) -> Double
+pub fn CryptosignthresholdNode::len(Self) -> Int32
+pub fn CryptosignthresholdNode::max(Self) -> Double
+pub fn CryptosignthresholdNode::mean(Self) -> Double
+pub fn CryptosignthresholdNode::min(Self) -> Double
+pub fn CryptosignthresholdNode::scale(Self, Double) -> Self
+pub fn CryptosignthresholdNode::set(Self, Int32, Double) -> Self
+pub fn CryptosignthresholdNode::sum(Self) -> Double
+pub fn CryptosignthresholdNode::to_string(Self) -> String
+
+pub(all) struct CryptosignthresholdPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignthresholdPath::add(Self, Self) -> Self
+pub fn CryptosignthresholdPath::copy(Self) -> Self
+pub fn CryptosignthresholdPath::fill(Self, Double) -> Self
+pub fn CryptosignthresholdPath::get(Self, Int32) -> Double
+pub fn CryptosignthresholdPath::len(Self) -> Int32
+pub fn CryptosignthresholdPath::max(Self) -> Double
+pub fn CryptosignthresholdPath::mean(Self) -> Double
+pub fn CryptosignthresholdPath::min(Self) -> Double
+pub fn CryptosignthresholdPath::scale(Self, Double) -> Self
+pub fn CryptosignthresholdPath::set(Self, Int32, Double) -> Self
+pub fn CryptosignthresholdPath::sum(Self) -> Double
+pub fn CryptosignthresholdPath::to_string(Self) -> String
+
+pub(all) struct CryptosignthresholdPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn CryptosignthresholdPoint::add(Self, Self) -> Self
+pub fn CryptosignthresholdPoint::cross(Self, Self) -> Self
+pub fn CryptosignthresholdPoint::dist(Self, Self) -> Double
+pub fn CryptosignthresholdPoint::dot(Self, Self) -> Double
+pub fn CryptosignthresholdPoint::label(Self) -> Int32
+pub fn CryptosignthresholdPoint::lerp(Self, Self, Double) -> Self
+pub fn CryptosignthresholdPoint::mid(Self, Self) -> Self
+pub fn CryptosignthresholdPoint::negate(Self) -> Self
+pub fn CryptosignthresholdPoint::norm(Self) -> Double
+pub fn CryptosignthresholdPoint::normalize(Self) -> Self
+pub fn CryptosignthresholdPoint::scale(Self, Double) -> Self
+pub fn CryptosignthresholdPoint::sub(Self, Self) -> Self
+pub fn CryptosignthresholdPoint::to_string(Self) -> String
+pub fn CryptosignthresholdPoint::x(Self) -> Double
+pub fn CryptosignthresholdPoint::y(Self) -> Double
+pub fn CryptosignthresholdPoint::z(Self) -> Double
+
+pub(all) struct CryptosignthresholdRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignthresholdRange::add(Self, Self) -> Self
+pub fn CryptosignthresholdRange::copy(Self) -> Self
+pub fn CryptosignthresholdRange::fill(Self, Double) -> Self
+pub fn CryptosignthresholdRange::get(Self, Int32) -> Double
+pub fn CryptosignthresholdRange::len(Self) -> Int32
+pub fn CryptosignthresholdRange::max(Self) -> Double
+pub fn CryptosignthresholdRange::mean(Self) -> Double
+pub fn CryptosignthresholdRange::min(Self) -> Double
+pub fn CryptosignthresholdRange::scale(Self, Double) -> Self
+pub fn CryptosignthresholdRange::set(Self, Int32, Double) -> Self
+pub fn CryptosignthresholdRange::sum(Self) -> Double
+pub fn CryptosignthresholdRange::to_string(Self) -> String
+
+pub(all) struct CryptosignthresholdSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn CryptosignthresholdSeries::add(Self, Self) -> Self
+pub fn CryptosignthresholdSeries::cumsum(Self) -> Self
+pub fn CryptosignthresholdSeries::len(Self) -> Int32
+pub fn CryptosignthresholdSeries::max(Self) -> Double
+pub fn CryptosignthresholdSeries::mean(Self) -> Double
+pub fn CryptosignthresholdSeries::median(Self) -> Double
+pub fn CryptosignthresholdSeries::min(Self) -> Double
+pub fn CryptosignthresholdSeries::normalize(Self) -> Self
+pub fn CryptosignthresholdSeries::range(Self) -> Double
+pub fn CryptosignthresholdSeries::scale(Self, Double) -> Self
+pub fn CryptosignthresholdSeries::std(Self) -> Double
+pub fn CryptosignthresholdSeries::sub(Self, Self) -> Self
+pub fn CryptosignthresholdSeries::sum(Self) -> Double
+pub fn CryptosignthresholdSeries::to_string(Self) -> String
+pub fn CryptosignthresholdSeries::variance(Self) -> Double
+
+pub(all) struct CryptosignthresholdSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignthresholdSlice::add(Self, Self) -> Self
+pub fn CryptosignthresholdSlice::copy(Self) -> Self
+pub fn CryptosignthresholdSlice::fill(Self, Double) -> Self
+pub fn CryptosignthresholdSlice::get(Self, Int32) -> Double
+pub fn CryptosignthresholdSlice::len(Self) -> Int32
+pub fn CryptosignthresholdSlice::max(Self) -> Double
+pub fn CryptosignthresholdSlice::mean(Self) -> Double
+pub fn CryptosignthresholdSlice::min(Self) -> Double
+pub fn CryptosignthresholdSlice::scale(Self, Double) -> Self
+pub fn CryptosignthresholdSlice::set(Self, Int32, Double) -> Self
+pub fn CryptosignthresholdSlice::sum(Self) -> Double
+pub fn CryptosignthresholdSlice::to_string(Self) -> String
+
+pub(all) struct CryptosignthresholdTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignthresholdTable::add(Self, Self) -> Self
+pub fn CryptosignthresholdTable::copy(Self) -> Self
+pub fn CryptosignthresholdTable::fill(Self, Double) -> Self
+pub fn CryptosignthresholdTable::get(Self, Int32) -> Double
+pub fn CryptosignthresholdTable::len(Self) -> Int32
+pub fn CryptosignthresholdTable::max(Self) -> Double
+pub fn CryptosignthresholdTable::mean(Self) -> Double
+pub fn CryptosignthresholdTable::min(Self) -> Double
+pub fn CryptosignthresholdTable::scale(Self, Double) -> Self
+pub fn CryptosignthresholdTable::set(Self, Int32, Double) -> Self
+pub fn CryptosignthresholdTable::sum(Self) -> Double
+pub fn CryptosignthresholdTable::to_string(Self) -> String
+
+pub(all) struct CryptosignthresholdVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn CryptosignthresholdVector::add(Self, Self) -> Self
+pub fn CryptosignthresholdVector::dist(Self, Self) -> Double
+pub fn CryptosignthresholdVector::dot(Self, Self) -> Double
+pub fn CryptosignthresholdVector::norm(Self) -> Double
+pub fn CryptosignthresholdVector::normalize(Self) -> Self
+pub fn CryptosignthresholdVector::scale(Self, Double) -> Self
+pub fn CryptosignthresholdVector::sub(Self, Self) -> Self
+pub fn CryptosignthresholdVector::to_string(Self) -> String
+
+pub(all) struct CryptosignthresholdView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosignthresholdView::add(Self, Self) -> Self
+pub fn CryptosignthresholdView::copy(Self) -> Self
+pub fn CryptosignthresholdView::fill(Self, Double) -> Self
+pub fn CryptosignthresholdView::get(Self, Int32) -> Double
+pub fn CryptosignthresholdView::len(Self) -> Int32
+pub fn CryptosignthresholdView::max(Self) -> Double
+pub fn CryptosignthresholdView::mean(Self) -> Double
+pub fn CryptosignthresholdView::min(Self) -> Double
+pub fn CryptosignthresholdView::scale(Self, Double) -> Self
+pub fn CryptosignthresholdView::set(Self, Int32, Double) -> Self
+pub fn CryptosignthresholdView::sum(Self) -> Double
+pub fn CryptosignthresholdView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

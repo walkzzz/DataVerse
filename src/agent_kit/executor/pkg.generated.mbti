@@ -1,0 +1,56 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/executor"
+
+import {
+  "dataverse/agent_kit/planner",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn exec_stats(Array[ExecResult]) -> ExecStats
+
+pub fn exec_status_name(ExecStatus) -> String
+
+pub fn execute_plan(@planner.ExecutionPlan) -> Array[ExecResult]
+
+pub fn executor_id() -> String
+
+pub fn make_exec_result(Int32, ExecStatus, String, String, Int32) -> ExecResult
+
+// Errors
+
+// Types and methods
+pub struct ExecResult {
+  step_id : Int32
+  status : ExecStatus
+  operator_path : String
+  output_summary : String
+  duration_ms : Int32
+} derive(Eq, @debug.Debug)
+pub fn ExecResult::equal(Self, Self) -> Bool
+pub fn ExecResult::not_equal(Self, Self) -> Bool
+pub fn ExecResult::to_repr(Self) -> @debug.Repr
+
+pub struct ExecStats {
+  total_steps : Int32
+  success_count : Int32
+  failed_count : Int32
+  total_duration_ms : Int32
+} derive(Eq, @debug.Debug)
+pub fn ExecStats::equal(Self, Self) -> Bool
+pub fn ExecStats::not_equal(Self, Self) -> Bool
+pub fn ExecStats::to_repr(Self) -> @debug.Repr
+
+pub(all) enum ExecStatus {
+  Pending
+  Running
+  Success
+  Failed
+} derive(Eq, @debug.Debug)
+pub fn ExecStatus::equal(Self, Self) -> Bool
+pub fn ExecStatus::not_equal(Self, Self) -> Bool
+pub fn ExecStatus::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

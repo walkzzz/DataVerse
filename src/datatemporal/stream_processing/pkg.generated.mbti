@@ -1,0 +1,246 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/stream_processing"
+
+// Values
+pub fn agg_avg_sp(Array[StreamEvent]) -> Double
+
+pub fn agg_count_sp(Array[StreamEvent]) -> Int32
+
+pub fn agg_sum_sp(Array[StreamEvent]) -> Double
+
+pub fn checkpoint_restore_sp(CheckpointSp) -> StatefulOp
+
+pub fn checkpoint_save_sp(StatefulOp, Int32, Double) -> CheckpointSp
+
+pub fn dag_add_edge(StreamDag, DagEdge) -> StreamDag
+
+pub fn dag_add_node(StreamDag, DagNode) -> StreamDag
+
+pub fn dag_validate(StreamDag) -> Bool
+
+pub fn dedup_sp(Array[StreamEvent]) -> Array[StreamEvent]
+
+pub fn exactly_once_process_sp(ExactlyOnceSp, StreamEvent) -> (ExactlyOnceSp, Bool)
+
+pub fn join_inner(Array[StreamEvent], Array[StreamEvent]) -> Array[(StreamEvent, StreamEvent)]
+
+pub fn join_outer(Array[StreamEvent], Array[StreamEvent]) -> Array[(StreamEvent?, StreamEvent?)]
+
+pub fn join_temporal(Array[StreamEvent], Array[StreamEvent], Double) -> Array[(StreamEvent, StreamEvent)]
+
+pub fn make_aggregation_op(String) -> AggregationOp
+
+pub fn make_checkpoint_sp(Int32, Array[(String, Double)], Double) -> CheckpointSp
+
+pub fn make_ewatermark(Double, Double) -> EWatermark
+
+pub fn make_exactly_once_sp() -> ExactlyOnceSp
+
+pub fn make_join_op(String, String) -> JoinOp
+
+pub fn make_schema_registry() -> SchemaRegistry
+
+pub fn make_sink_connector(String, String) -> SinkConnector
+
+pub fn make_source_connector(String, String) -> SourceConnector
+
+pub fn make_stateful_op() -> StatefulOp
+
+pub fn make_stream_dag() -> StreamDag
+
+pub fn make_stream_proc(String, StreamDag) -> StreamProc
+
+pub fn make_transform_op(String) -> TransformOp
+
+pub fn make_trigger(TriggerType, Double) -> Trigger
+
+pub fn make_window_op(String, Double, Double) -> WindowOp
+
+pub fn proc_start(StreamProc) -> StreamProc
+
+pub fn proc_status(StreamProc) -> ProcStatus
+
+pub fn proc_stop(StreamProc) -> StreamProc
+
+pub fn schema_register_sp(SchemaRegistry, SchemaSp) -> SchemaRegistry
+
+pub fn schema_validate_sp(SchemaRegistry, String, Array[String]) -> Bool
+
+pub fn sink_close(SinkConnector) -> SinkConnector
+
+pub fn sink_connect(SinkConnector) -> SinkConnector
+
+pub fn sink_write(SinkConnector, Array[StreamEvent]) -> SinkConnector
+
+pub fn source_close(SourceConnector) -> SourceConnector
+
+pub fn source_connect(SourceConnector) -> SourceConnector
+
+pub fn source_read(SourceConnector, Array[StreamEvent]) -> Array[StreamEvent]
+
+pub fn state_query(StatefulOp, String) -> Double?
+
+pub fn state_snapshot(StatefulOp) -> Array[(String, Double)]
+
+pub fn state_update(StatefulOp, String, Double) -> StatefulOp
+
+pub fn stream_alert_sp(StreamMetrics, Double, Double) -> StreamAlert?
+
+pub fn stream_metrics_sp(StreamMonitor, Double) -> StreamMetrics
+
+pub fn stream_monitor_sp(Array[StreamEvent], Int32) -> StreamMonitor
+
+pub fn stream_processing_id() -> String
+
+pub fn transform_filter(Array[StreamEvent], (StreamEvent) -> Bool) -> Array[StreamEvent]
+
+pub fn transform_map(Array[StreamEvent], (StreamEvent) -> StreamEvent) -> Array[StreamEvent]
+
+pub fn transform_reduce(Array[StreamEvent], Double, (Double, StreamEvent) -> Double) -> Double
+
+pub fn trigger_count(Trigger, Int32) -> Trigger
+
+pub fn trigger_event(Trigger, Array[StreamEvent]) -> Trigger
+
+pub fn trigger_time(Trigger, Double, Double) -> Trigger
+
+pub fn watermark_advance(EWatermark, Double) -> EWatermark
+
+pub fn watermark_emit(EWatermark, Double) -> EWatermark
+
+pub fn window_session_sp(Array[StreamEvent], Double) -> Array[Array[StreamEvent]]
+
+pub fn window_sliding_sp(Array[StreamEvent], Double, Double) -> Array[Array[StreamEvent]]
+
+pub fn window_tumbling_sp(Array[StreamEvent], Double) -> Array[Array[StreamEvent]]
+
+// Errors
+
+// Types and methods
+pub struct AggregationOp {
+  agg_type : String
+}
+
+pub struct CheckpointSp {
+  id : Int32
+  state : Array[(String, Double)]
+  timestamp : Double
+}
+
+pub struct DagEdge {
+  from : String
+  to : String
+}
+
+pub struct DagNode {
+  id : String
+  op_type : String
+}
+
+pub struct EWatermark {
+  timestamp : Double
+  max_out_of_order : Double
+}
+
+pub struct ExactlyOnceSp {
+  processed_ids : Array[String]
+}
+
+pub struct JoinOp {
+  join_type : String
+  key : String
+}
+
+pub(all) enum ProcStatus {
+  ProcIdle
+  ProcRunning
+  ProcStopped
+  ProcFailed
+}
+
+pub struct SchemaRegistry {
+  schemas : Array[SchemaSp]
+}
+
+pub struct SchemaSp {
+  id : String
+  fields : Array[String]
+}
+
+pub struct SinkConnector {
+  id : String
+  sink_type : String
+  connected : Bool
+  written : Int32
+}
+
+pub struct SourceConnector {
+  id : String
+  source_type : String
+  connected : Bool
+}
+
+pub struct StatefulOp {
+  state : Array[(String, Double)]
+}
+
+pub struct StreamAlert {
+  alert_type : String
+  message : String
+  severity : Double
+}
+
+pub struct StreamDag {
+  nodes : Array[DagNode]
+  edges : Array[DagEdge]
+}
+
+pub struct StreamEvent {
+  key : String
+  value : Double
+  timestamp : Double
+}
+
+pub struct StreamMetrics {
+  throughput : Double
+  error_rate : Double
+  latency : Double
+}
+
+pub struct StreamMonitor {
+  events_processed : Int32
+  errors : Int32
+  last_event_time : Double
+}
+
+pub struct StreamProc {
+  name : String
+  status : ProcStatus
+  dag : StreamDag
+}
+
+pub struct TransformOp {
+  op_type : String
+}
+
+pub struct Trigger {
+  trigger_type : TriggerType
+  threshold : Double
+  fired : Bool
+}
+
+pub(all) enum TriggerType {
+  TriggerEvent
+  TriggerTime
+  TriggerCount
+}
+
+pub struct WindowOp {
+  window_type : String
+  size : Double
+  slide : Double
+}
+
+// Type aliases
+
+// Traits

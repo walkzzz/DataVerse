@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_store_tensor"
+
+// Values
+pub fn db_store_tensor_buffer_make(Int32) -> DbstoretensorBuffer
+
+pub fn db_store_tensor_cluster_make(Int32) -> DbstoretensorCluster
+
+pub fn db_store_tensor_cursor_make(Int32) -> DbstoretensorCursor
+
+pub fn db_store_tensor_edge_make(Int32) -> DbstoretensorEdge
+
+pub fn db_store_tensor_frame_make(Int32) -> DbstoretensorFrame
+
+pub fn db_store_tensor_graphn_make(Int32) -> DbstoretensorGraphN
+
+pub fn db_store_tensor_layer_make(Int32) -> DbstoretensorLayer
+
+pub fn db_store_tensor_make_matrix(Int32, Int32, Double) -> DbstoretensorMatrix
+
+pub fn db_store_tensor_make_point(Double, Double) -> DbstoretensorPoint
+
+pub fn db_store_tensor_make_point3(Double, Double, Double) -> DbstoretensorPoint
+
+pub fn db_store_tensor_make_series(Array[Double], String) -> DbstoretensorSeries
+
+pub fn db_store_tensor_make_vector(Array[Double]) -> DbstoretensorVector
+
+pub fn db_store_tensor_matrix_identity(Int32) -> DbstoretensorMatrix
+
+pub fn db_store_tensor_model_make(Int32) -> DbstoretensorModel
+
+pub fn db_store_tensor_node_make(Int32) -> DbstoretensorNode
+
+pub fn db_store_tensor_path_make(Int32) -> DbstoretensorPath
+
+pub fn db_store_tensor_range_make(Int32) -> DbstoretensorRange
+
+pub fn db_store_tensor_slice_make(Int32) -> DbstoretensorSlice
+
+pub fn db_store_tensor_table_make(Int32) -> DbstoretensorTable
+
+pub fn db_store_tensor_vector_zero(Int32) -> DbstoretensorVector
+
+pub fn db_store_tensor_view_make(Int32) -> DbstoretensorView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbstoretensorBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretensorBuffer::add(Self, Self) -> Self
+pub fn DbstoretensorBuffer::copy(Self) -> Self
+pub fn DbstoretensorBuffer::fill(Self, Double) -> Self
+pub fn DbstoretensorBuffer::get(Self, Int32) -> Double
+pub fn DbstoretensorBuffer::len(Self) -> Int32
+pub fn DbstoretensorBuffer::max(Self) -> Double
+pub fn DbstoretensorBuffer::mean(Self) -> Double
+pub fn DbstoretensorBuffer::min(Self) -> Double
+pub fn DbstoretensorBuffer::scale(Self, Double) -> Self
+pub fn DbstoretensorBuffer::set(Self, Int32, Double) -> Self
+pub fn DbstoretensorBuffer::sum(Self) -> Double
+pub fn DbstoretensorBuffer::to_string(Self) -> String
+
+pub(all) struct DbstoretensorCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretensorCluster::add(Self, Self) -> Self
+pub fn DbstoretensorCluster::copy(Self) -> Self
+pub fn DbstoretensorCluster::fill(Self, Double) -> Self
+pub fn DbstoretensorCluster::get(Self, Int32) -> Double
+pub fn DbstoretensorCluster::len(Self) -> Int32
+pub fn DbstoretensorCluster::max(Self) -> Double
+pub fn DbstoretensorCluster::mean(Self) -> Double
+pub fn DbstoretensorCluster::min(Self) -> Double
+pub fn DbstoretensorCluster::scale(Self, Double) -> Self
+pub fn DbstoretensorCluster::set(Self, Int32, Double) -> Self
+pub fn DbstoretensorCluster::sum(Self) -> Double
+pub fn DbstoretensorCluster::to_string(Self) -> String
+
+pub(all) struct DbstoretensorCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretensorCursor::add(Self, Self) -> Self
+pub fn DbstoretensorCursor::copy(Self) -> Self
+pub fn DbstoretensorCursor::fill(Self, Double) -> Self
+pub fn DbstoretensorCursor::get(Self, Int32) -> Double
+pub fn DbstoretensorCursor::len(Self) -> Int32
+pub fn DbstoretensorCursor::max(Self) -> Double
+pub fn DbstoretensorCursor::mean(Self) -> Double
+pub fn DbstoretensorCursor::min(Self) -> Double
+pub fn DbstoretensorCursor::scale(Self, Double) -> Self
+pub fn DbstoretensorCursor::set(Self, Int32, Double) -> Self
+pub fn DbstoretensorCursor::sum(Self) -> Double
+pub fn DbstoretensorCursor::to_string(Self) -> String
+
+pub(all) struct DbstoretensorEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretensorEdge::add(Self, Self) -> Self
+pub fn DbstoretensorEdge::copy(Self) -> Self
+pub fn DbstoretensorEdge::fill(Self, Double) -> Self
+pub fn DbstoretensorEdge::get(Self, Int32) -> Double
+pub fn DbstoretensorEdge::len(Self) -> Int32
+pub fn DbstoretensorEdge::max(Self) -> Double
+pub fn DbstoretensorEdge::mean(Self) -> Double
+pub fn DbstoretensorEdge::min(Self) -> Double
+pub fn DbstoretensorEdge::scale(Self, Double) -> Self
+pub fn DbstoretensorEdge::set(Self, Int32, Double) -> Self
+pub fn DbstoretensorEdge::sum(Self) -> Double
+pub fn DbstoretensorEdge::to_string(Self) -> String
+
+pub(all) struct DbstoretensorFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretensorFrame::add(Self, Self) -> Self
+pub fn DbstoretensorFrame::copy(Self) -> Self
+pub fn DbstoretensorFrame::fill(Self, Double) -> Self
+pub fn DbstoretensorFrame::get(Self, Int32) -> Double
+pub fn DbstoretensorFrame::len(Self) -> Int32
+pub fn DbstoretensorFrame::max(Self) -> Double
+pub fn DbstoretensorFrame::mean(Self) -> Double
+pub fn DbstoretensorFrame::min(Self) -> Double
+pub fn DbstoretensorFrame::scale(Self, Double) -> Self
+pub fn DbstoretensorFrame::set(Self, Int32, Double) -> Self
+pub fn DbstoretensorFrame::sum(Self) -> Double
+pub fn DbstoretensorFrame::to_string(Self) -> String
+
+pub(all) struct DbstoretensorGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretensorGraphN::add(Self, Self) -> Self
+pub fn DbstoretensorGraphN::copy(Self) -> Self
+pub fn DbstoretensorGraphN::fill(Self, Double) -> Self
+pub fn DbstoretensorGraphN::get(Self, Int32) -> Double
+pub fn DbstoretensorGraphN::len(Self) -> Int32
+pub fn DbstoretensorGraphN::max(Self) -> Double
+pub fn DbstoretensorGraphN::mean(Self) -> Double
+pub fn DbstoretensorGraphN::min(Self) -> Double
+pub fn DbstoretensorGraphN::scale(Self, Double) -> Self
+pub fn DbstoretensorGraphN::set(Self, Int32, Double) -> Self
+pub fn DbstoretensorGraphN::sum(Self) -> Double
+pub fn DbstoretensorGraphN::to_string(Self) -> String
+
+pub(all) struct DbstoretensorLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretensorLayer::add(Self, Self) -> Self
+pub fn DbstoretensorLayer::copy(Self) -> Self
+pub fn DbstoretensorLayer::fill(Self, Double) -> Self
+pub fn DbstoretensorLayer::get(Self, Int32) -> Double
+pub fn DbstoretensorLayer::len(Self) -> Int32
+pub fn DbstoretensorLayer::max(Self) -> Double
+pub fn DbstoretensorLayer::mean(Self) -> Double
+pub fn DbstoretensorLayer::min(Self) -> Double
+pub fn DbstoretensorLayer::scale(Self, Double) -> Self
+pub fn DbstoretensorLayer::set(Self, Int32, Double) -> Self
+pub fn DbstoretensorLayer::sum(Self) -> Double
+pub fn DbstoretensorLayer::to_string(Self) -> String
+
+pub(all) struct DbstoretensorMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbstoretensorMatrix::add(Self, Self) -> Self
+pub fn DbstoretensorMatrix::det(Self) -> Double
+pub fn DbstoretensorMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbstoretensorMatrix::multiply(Self, Self) -> Self
+pub fn DbstoretensorMatrix::norm(Self) -> Double
+pub fn DbstoretensorMatrix::scale(Self, Double) -> Self
+pub fn DbstoretensorMatrix::to_string(Self) -> String
+pub fn DbstoretensorMatrix::trace(Self) -> Double
+pub fn DbstoretensorMatrix::transpose(Self) -> Self
+
+pub(all) struct DbstoretensorModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretensorModel::add(Self, Self) -> Self
+pub fn DbstoretensorModel::copy(Self) -> Self
+pub fn DbstoretensorModel::fill(Self, Double) -> Self
+pub fn DbstoretensorModel::get(Self, Int32) -> Double
+pub fn DbstoretensorModel::len(Self) -> Int32
+pub fn DbstoretensorModel::max(Self) -> Double
+pub fn DbstoretensorModel::mean(Self) -> Double
+pub fn DbstoretensorModel::min(Self) -> Double
+pub fn DbstoretensorModel::scale(Self, Double) -> Self
+pub fn DbstoretensorModel::set(Self, Int32, Double) -> Self
+pub fn DbstoretensorModel::sum(Self) -> Double
+pub fn DbstoretensorModel::to_string(Self) -> String
+
+pub(all) struct DbstoretensorNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretensorNode::add(Self, Self) -> Self
+pub fn DbstoretensorNode::copy(Self) -> Self
+pub fn DbstoretensorNode::fill(Self, Double) -> Self
+pub fn DbstoretensorNode::get(Self, Int32) -> Double
+pub fn DbstoretensorNode::len(Self) -> Int32
+pub fn DbstoretensorNode::max(Self) -> Double
+pub fn DbstoretensorNode::mean(Self) -> Double
+pub fn DbstoretensorNode::min(Self) -> Double
+pub fn DbstoretensorNode::scale(Self, Double) -> Self
+pub fn DbstoretensorNode::set(Self, Int32, Double) -> Self
+pub fn DbstoretensorNode::sum(Self) -> Double
+pub fn DbstoretensorNode::to_string(Self) -> String
+
+pub(all) struct DbstoretensorPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretensorPath::add(Self, Self) -> Self
+pub fn DbstoretensorPath::copy(Self) -> Self
+pub fn DbstoretensorPath::fill(Self, Double) -> Self
+pub fn DbstoretensorPath::get(Self, Int32) -> Double
+pub fn DbstoretensorPath::len(Self) -> Int32
+pub fn DbstoretensorPath::max(Self) -> Double
+pub fn DbstoretensorPath::mean(Self) -> Double
+pub fn DbstoretensorPath::min(Self) -> Double
+pub fn DbstoretensorPath::scale(Self, Double) -> Self
+pub fn DbstoretensorPath::set(Self, Int32, Double) -> Self
+pub fn DbstoretensorPath::sum(Self) -> Double
+pub fn DbstoretensorPath::to_string(Self) -> String
+
+pub(all) struct DbstoretensorPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbstoretensorPoint::add(Self, Self) -> Self
+pub fn DbstoretensorPoint::cross(Self, Self) -> Self
+pub fn DbstoretensorPoint::dist(Self, Self) -> Double
+pub fn DbstoretensorPoint::dot(Self, Self) -> Double
+pub fn DbstoretensorPoint::label(Self) -> Int32
+pub fn DbstoretensorPoint::lerp(Self, Self, Double) -> Self
+pub fn DbstoretensorPoint::mid(Self, Self) -> Self
+pub fn DbstoretensorPoint::negate(Self) -> Self
+pub fn DbstoretensorPoint::norm(Self) -> Double
+pub fn DbstoretensorPoint::normalize(Self) -> Self
+pub fn DbstoretensorPoint::scale(Self, Double) -> Self
+pub fn DbstoretensorPoint::sub(Self, Self) -> Self
+pub fn DbstoretensorPoint::to_string(Self) -> String
+pub fn DbstoretensorPoint::x(Self) -> Double
+pub fn DbstoretensorPoint::y(Self) -> Double
+pub fn DbstoretensorPoint::z(Self) -> Double
+
+pub(all) struct DbstoretensorRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretensorRange::add(Self, Self) -> Self
+pub fn DbstoretensorRange::copy(Self) -> Self
+pub fn DbstoretensorRange::fill(Self, Double) -> Self
+pub fn DbstoretensorRange::get(Self, Int32) -> Double
+pub fn DbstoretensorRange::len(Self) -> Int32
+pub fn DbstoretensorRange::max(Self) -> Double
+pub fn DbstoretensorRange::mean(Self) -> Double
+pub fn DbstoretensorRange::min(Self) -> Double
+pub fn DbstoretensorRange::scale(Self, Double) -> Self
+pub fn DbstoretensorRange::set(Self, Int32, Double) -> Self
+pub fn DbstoretensorRange::sum(Self) -> Double
+pub fn DbstoretensorRange::to_string(Self) -> String
+
+pub(all) struct DbstoretensorSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbstoretensorSeries::add(Self, Self) -> Self
+pub fn DbstoretensorSeries::cumsum(Self) -> Self
+pub fn DbstoretensorSeries::len(Self) -> Int32
+pub fn DbstoretensorSeries::max(Self) -> Double
+pub fn DbstoretensorSeries::mean(Self) -> Double
+pub fn DbstoretensorSeries::median(Self) -> Double
+pub fn DbstoretensorSeries::min(Self) -> Double
+pub fn DbstoretensorSeries::normalize(Self) -> Self
+pub fn DbstoretensorSeries::range(Self) -> Double
+pub fn DbstoretensorSeries::scale(Self, Double) -> Self
+pub fn DbstoretensorSeries::std(Self) -> Double
+pub fn DbstoretensorSeries::sub(Self, Self) -> Self
+pub fn DbstoretensorSeries::sum(Self) -> Double
+pub fn DbstoretensorSeries::to_string(Self) -> String
+pub fn DbstoretensorSeries::variance(Self) -> Double
+
+pub(all) struct DbstoretensorSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretensorSlice::add(Self, Self) -> Self
+pub fn DbstoretensorSlice::copy(Self) -> Self
+pub fn DbstoretensorSlice::fill(Self, Double) -> Self
+pub fn DbstoretensorSlice::get(Self, Int32) -> Double
+pub fn DbstoretensorSlice::len(Self) -> Int32
+pub fn DbstoretensorSlice::max(Self) -> Double
+pub fn DbstoretensorSlice::mean(Self) -> Double
+pub fn DbstoretensorSlice::min(Self) -> Double
+pub fn DbstoretensorSlice::scale(Self, Double) -> Self
+pub fn DbstoretensorSlice::set(Self, Int32, Double) -> Self
+pub fn DbstoretensorSlice::sum(Self) -> Double
+pub fn DbstoretensorSlice::to_string(Self) -> String
+
+pub(all) struct DbstoretensorTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretensorTable::add(Self, Self) -> Self
+pub fn DbstoretensorTable::copy(Self) -> Self
+pub fn DbstoretensorTable::fill(Self, Double) -> Self
+pub fn DbstoretensorTable::get(Self, Int32) -> Double
+pub fn DbstoretensorTable::len(Self) -> Int32
+pub fn DbstoretensorTable::max(Self) -> Double
+pub fn DbstoretensorTable::mean(Self) -> Double
+pub fn DbstoretensorTable::min(Self) -> Double
+pub fn DbstoretensorTable::scale(Self, Double) -> Self
+pub fn DbstoretensorTable::set(Self, Int32, Double) -> Self
+pub fn DbstoretensorTable::sum(Self) -> Double
+pub fn DbstoretensorTable::to_string(Self) -> String
+
+pub(all) struct DbstoretensorVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbstoretensorVector::add(Self, Self) -> Self
+pub fn DbstoretensorVector::dist(Self, Self) -> Double
+pub fn DbstoretensorVector::dot(Self, Self) -> Double
+pub fn DbstoretensorVector::norm(Self) -> Double
+pub fn DbstoretensorVector::normalize(Self) -> Self
+pub fn DbstoretensorVector::scale(Self, Double) -> Self
+pub fn DbstoretensorVector::sub(Self, Self) -> Self
+pub fn DbstoretensorVector::to_string(Self) -> String
+
+pub(all) struct DbstoretensorView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoretensorView::add(Self, Self) -> Self
+pub fn DbstoretensorView::copy(Self) -> Self
+pub fn DbstoretensorView::fill(Self, Double) -> Self
+pub fn DbstoretensorView::get(Self, Int32) -> Double
+pub fn DbstoretensorView::len(Self) -> Int32
+pub fn DbstoretensorView::max(Self) -> Double
+pub fn DbstoretensorView::mean(Self) -> Double
+pub fn DbstoretensorView::min(Self) -> Double
+pub fn DbstoretensorView::scale(Self, Double) -> Self
+pub fn DbstoretensorView::set(Self, Int32, Double) -> Self
+pub fn DbstoretensorView::sum(Self) -> Double
+pub fn DbstoretensorView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

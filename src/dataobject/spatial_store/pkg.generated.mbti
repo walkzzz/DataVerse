@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/spatial_store"
+
+// Values
+pub fn spatial_store_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn spatial_store_corr(Array[Double], Array[Double]) -> Double
+
+pub fn spatial_store_cov(Array[Double], Array[Double]) -> Double
+
+pub fn spatial_store_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn spatial_store_mae(Array[Double], Array[Double]) -> Double
+
+pub fn spatial_store_make_labeled_point(Double, Double, Int32) -> Spatial_storePoint
+
+pub fn spatial_store_make_matrix(Int32, Int32, Double) -> Spatial_storeMatrix
+
+pub fn spatial_store_make_point(Double, Double) -> Spatial_storePoint
+
+pub fn spatial_store_make_series(Array[Double], String) -> Spatial_storeSeries
+
+pub fn spatial_store_make_vector(Array[Double]) -> Spatial_storeVector
+
+pub fn spatial_store_matrix_add(Spatial_storeMatrix, Spatial_storeMatrix) -> Spatial_storeMatrix
+
+pub fn spatial_store_matrix_get(Spatial_storeMatrix, Int32, Int32) -> Double
+
+pub fn spatial_store_matrix_identity(Int32) -> Spatial_storeMatrix
+
+pub fn spatial_store_matrix_multiply(Spatial_storeMatrix, Spatial_storeMatrix) -> Spatial_storeMatrix
+
+pub fn spatial_store_matrix_norm(Spatial_storeMatrix) -> Double
+
+pub fn spatial_store_matrix_scale(Spatial_storeMatrix, Double) -> Spatial_storeMatrix
+
+pub fn spatial_store_matrix_to_string(Spatial_storeMatrix) -> String
+
+pub fn spatial_store_matrix_trace(Spatial_storeMatrix) -> Double
+
+pub fn spatial_store_matrix_transpose(Spatial_storeMatrix) -> Spatial_storeMatrix
+
+pub fn spatial_store_mse(Array[Double], Array[Double]) -> Double
+
+pub fn spatial_store_point_add(Spatial_storePoint, Spatial_storePoint) -> Spatial_storePoint
+
+pub fn spatial_store_point_dist(Spatial_storePoint, Spatial_storePoint) -> Double
+
+pub fn spatial_store_point_dot(Spatial_storePoint, Spatial_storePoint) -> Double
+
+pub fn spatial_store_point_label(Spatial_storePoint) -> Int32
+
+pub fn spatial_store_point_norm(Spatial_storePoint) -> Double
+
+pub fn spatial_store_point_scale(Spatial_storePoint, Double) -> Spatial_storePoint
+
+pub fn spatial_store_point_sub(Spatial_storePoint, Spatial_storePoint) -> Spatial_storePoint
+
+pub fn spatial_store_point_to_string(Spatial_storePoint) -> String
+
+pub fn spatial_store_point_x(Spatial_storePoint) -> Double
+
+pub fn spatial_store_point_y(Spatial_storePoint) -> Double
+
+pub fn spatial_store_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn spatial_store_r2(Array[Double], Array[Double]) -> Double
+
+pub fn spatial_store_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn spatial_store_series_add(Spatial_storeSeries, Spatial_storeSeries) -> Spatial_storeSeries
+
+pub fn spatial_store_series_len(Spatial_storeSeries) -> Int32
+
+pub fn spatial_store_series_max(Spatial_storeSeries) -> Double
+
+pub fn spatial_store_series_mean(Spatial_storeSeries) -> Double
+
+pub fn spatial_store_series_min(Spatial_storeSeries) -> Double
+
+pub fn spatial_store_series_scale(Spatial_storeSeries, Double) -> Spatial_storeSeries
+
+pub fn spatial_store_series_std(Spatial_storeSeries) -> Double
+
+pub fn spatial_store_series_sum(Spatial_storeSeries) -> Double
+
+pub fn spatial_store_series_to_string(Spatial_storeSeries) -> String
+
+pub fn spatial_store_series_var(Spatial_storeSeries) -> Double
+
+pub fn spatial_store_std(Array[Double]) -> Double
+
+pub fn spatial_store_var(Array[Double]) -> Double
+
+pub fn spatial_store_vector_add(Spatial_storeVector, Spatial_storeVector) -> Spatial_storeVector
+
+pub fn spatial_store_vector_dist(Spatial_storeVector, Spatial_storeVector) -> Double
+
+pub fn spatial_store_vector_dot(Spatial_storeVector, Spatial_storeVector) -> Double
+
+pub fn spatial_store_vector_norm(Spatial_storeVector) -> Double
+
+pub fn spatial_store_vector_normalize(Spatial_storeVector) -> Spatial_storeVector
+
+pub fn spatial_store_vector_scale(Spatial_storeVector, Double) -> Spatial_storeVector
+
+pub fn spatial_store_vector_sub(Spatial_storeVector, Spatial_storeVector) -> Spatial_storeVector
+
+pub fn spatial_store_vector_to_string(Spatial_storeVector) -> String
+
+pub fn spatial_store_vector_zero(Int32) -> Spatial_storeVector
+
+// Errors
+
+// Types and methods
+pub struct Spatial_storeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Spatial_storePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Spatial_storeSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Spatial_storeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

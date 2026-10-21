@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/chem_desc_ecfp"
+
+// Values
+pub fn chem_desc_ecfp_buffer_make(Int32) -> ChemdescecfpBuffer
+
+pub fn chem_desc_ecfp_cluster_make(Int32) -> ChemdescecfpCluster
+
+pub fn chem_desc_ecfp_cursor_make(Int32) -> ChemdescecfpCursor
+
+pub fn chem_desc_ecfp_edge_make(Int32) -> ChemdescecfpEdge
+
+pub fn chem_desc_ecfp_frame_make(Int32) -> ChemdescecfpFrame
+
+pub fn chem_desc_ecfp_graphn_make(Int32) -> ChemdescecfpGraphN
+
+pub fn chem_desc_ecfp_layer_make(Int32) -> ChemdescecfpLayer
+
+pub fn chem_desc_ecfp_make_matrix(Int32, Int32, Double) -> ChemdescecfpMatrix
+
+pub fn chem_desc_ecfp_make_point(Double, Double) -> ChemdescecfpPoint
+
+pub fn chem_desc_ecfp_make_point3(Double, Double, Double) -> ChemdescecfpPoint
+
+pub fn chem_desc_ecfp_make_series(Array[Double], String) -> ChemdescecfpSeries
+
+pub fn chem_desc_ecfp_make_vector(Array[Double]) -> ChemdescecfpVector
+
+pub fn chem_desc_ecfp_matrix_identity(Int32) -> ChemdescecfpMatrix
+
+pub fn chem_desc_ecfp_model_make(Int32) -> ChemdescecfpModel
+
+pub fn chem_desc_ecfp_node_make(Int32) -> ChemdescecfpNode
+
+pub fn chem_desc_ecfp_path_make(Int32) -> ChemdescecfpPath
+
+pub fn chem_desc_ecfp_range_make(Int32) -> ChemdescecfpRange
+
+pub fn chem_desc_ecfp_slice_make(Int32) -> ChemdescecfpSlice
+
+pub fn chem_desc_ecfp_table_make(Int32) -> ChemdescecfpTable
+
+pub fn chem_desc_ecfp_vector_zero(Int32) -> ChemdescecfpVector
+
+pub fn chem_desc_ecfp_view_make(Int32) -> ChemdescecfpView
+
+// Errors
+
+// Types and methods
+pub(all) struct ChemdescecfpBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescecfpBuffer::add(Self, Self) -> Self
+pub fn ChemdescecfpBuffer::copy(Self) -> Self
+pub fn ChemdescecfpBuffer::fill(Self, Double) -> Self
+pub fn ChemdescecfpBuffer::get(Self, Int32) -> Double
+pub fn ChemdescecfpBuffer::len(Self) -> Int32
+pub fn ChemdescecfpBuffer::max(Self) -> Double
+pub fn ChemdescecfpBuffer::mean(Self) -> Double
+pub fn ChemdescecfpBuffer::min(Self) -> Double
+pub fn ChemdescecfpBuffer::scale(Self, Double) -> Self
+pub fn ChemdescecfpBuffer::set(Self, Int32, Double) -> Self
+pub fn ChemdescecfpBuffer::sum(Self) -> Double
+pub fn ChemdescecfpBuffer::to_string(Self) -> String
+
+pub(all) struct ChemdescecfpCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescecfpCluster::add(Self, Self) -> Self
+pub fn ChemdescecfpCluster::copy(Self) -> Self
+pub fn ChemdescecfpCluster::fill(Self, Double) -> Self
+pub fn ChemdescecfpCluster::get(Self, Int32) -> Double
+pub fn ChemdescecfpCluster::len(Self) -> Int32
+pub fn ChemdescecfpCluster::max(Self) -> Double
+pub fn ChemdescecfpCluster::mean(Self) -> Double
+pub fn ChemdescecfpCluster::min(Self) -> Double
+pub fn ChemdescecfpCluster::scale(Self, Double) -> Self
+pub fn ChemdescecfpCluster::set(Self, Int32, Double) -> Self
+pub fn ChemdescecfpCluster::sum(Self) -> Double
+pub fn ChemdescecfpCluster::to_string(Self) -> String
+
+pub(all) struct ChemdescecfpCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescecfpCursor::add(Self, Self) -> Self
+pub fn ChemdescecfpCursor::copy(Self) -> Self
+pub fn ChemdescecfpCursor::fill(Self, Double) -> Self
+pub fn ChemdescecfpCursor::get(Self, Int32) -> Double
+pub fn ChemdescecfpCursor::len(Self) -> Int32
+pub fn ChemdescecfpCursor::max(Self) -> Double
+pub fn ChemdescecfpCursor::mean(Self) -> Double
+pub fn ChemdescecfpCursor::min(Self) -> Double
+pub fn ChemdescecfpCursor::scale(Self, Double) -> Self
+pub fn ChemdescecfpCursor::set(Self, Int32, Double) -> Self
+pub fn ChemdescecfpCursor::sum(Self) -> Double
+pub fn ChemdescecfpCursor::to_string(Self) -> String
+
+pub(all) struct ChemdescecfpEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescecfpEdge::add(Self, Self) -> Self
+pub fn ChemdescecfpEdge::copy(Self) -> Self
+pub fn ChemdescecfpEdge::fill(Self, Double) -> Self
+pub fn ChemdescecfpEdge::get(Self, Int32) -> Double
+pub fn ChemdescecfpEdge::len(Self) -> Int32
+pub fn ChemdescecfpEdge::max(Self) -> Double
+pub fn ChemdescecfpEdge::mean(Self) -> Double
+pub fn ChemdescecfpEdge::min(Self) -> Double
+pub fn ChemdescecfpEdge::scale(Self, Double) -> Self
+pub fn ChemdescecfpEdge::set(Self, Int32, Double) -> Self
+pub fn ChemdescecfpEdge::sum(Self) -> Double
+pub fn ChemdescecfpEdge::to_string(Self) -> String
+
+pub(all) struct ChemdescecfpFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescecfpFrame::add(Self, Self) -> Self
+pub fn ChemdescecfpFrame::copy(Self) -> Self
+pub fn ChemdescecfpFrame::fill(Self, Double) -> Self
+pub fn ChemdescecfpFrame::get(Self, Int32) -> Double
+pub fn ChemdescecfpFrame::len(Self) -> Int32
+pub fn ChemdescecfpFrame::max(Self) -> Double
+pub fn ChemdescecfpFrame::mean(Self) -> Double
+pub fn ChemdescecfpFrame::min(Self) -> Double
+pub fn ChemdescecfpFrame::scale(Self, Double) -> Self
+pub fn ChemdescecfpFrame::set(Self, Int32, Double) -> Self
+pub fn ChemdescecfpFrame::sum(Self) -> Double
+pub fn ChemdescecfpFrame::to_string(Self) -> String
+
+pub(all) struct ChemdescecfpGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescecfpGraphN::add(Self, Self) -> Self
+pub fn ChemdescecfpGraphN::copy(Self) -> Self
+pub fn ChemdescecfpGraphN::fill(Self, Double) -> Self
+pub fn ChemdescecfpGraphN::get(Self, Int32) -> Double
+pub fn ChemdescecfpGraphN::len(Self) -> Int32
+pub fn ChemdescecfpGraphN::max(Self) -> Double
+pub fn ChemdescecfpGraphN::mean(Self) -> Double
+pub fn ChemdescecfpGraphN::min(Self) -> Double
+pub fn ChemdescecfpGraphN::scale(Self, Double) -> Self
+pub fn ChemdescecfpGraphN::set(Self, Int32, Double) -> Self
+pub fn ChemdescecfpGraphN::sum(Self) -> Double
+pub fn ChemdescecfpGraphN::to_string(Self) -> String
+
+pub(all) struct ChemdescecfpLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescecfpLayer::add(Self, Self) -> Self
+pub fn ChemdescecfpLayer::copy(Self) -> Self
+pub fn ChemdescecfpLayer::fill(Self, Double) -> Self
+pub fn ChemdescecfpLayer::get(Self, Int32) -> Double
+pub fn ChemdescecfpLayer::len(Self) -> Int32
+pub fn ChemdescecfpLayer::max(Self) -> Double
+pub fn ChemdescecfpLayer::mean(Self) -> Double
+pub fn ChemdescecfpLayer::min(Self) -> Double
+pub fn ChemdescecfpLayer::scale(Self, Double) -> Self
+pub fn ChemdescecfpLayer::set(Self, Int32, Double) -> Self
+pub fn ChemdescecfpLayer::sum(Self) -> Double
+pub fn ChemdescecfpLayer::to_string(Self) -> String
+
+pub(all) struct ChemdescecfpMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ChemdescecfpMatrix::add(Self, Self) -> Self
+pub fn ChemdescecfpMatrix::det(Self) -> Double
+pub fn ChemdescecfpMatrix::get(Self, Int32, Int32) -> Double
+pub fn ChemdescecfpMatrix::multiply(Self, Self) -> Self
+pub fn ChemdescecfpMatrix::norm(Self) -> Double
+pub fn ChemdescecfpMatrix::scale(Self, Double) -> Self
+pub fn ChemdescecfpMatrix::to_string(Self) -> String
+pub fn ChemdescecfpMatrix::trace(Self) -> Double
+pub fn ChemdescecfpMatrix::transpose(Self) -> Self
+
+pub(all) struct ChemdescecfpModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescecfpModel::add(Self, Self) -> Self
+pub fn ChemdescecfpModel::copy(Self) -> Self
+pub fn ChemdescecfpModel::fill(Self, Double) -> Self
+pub fn ChemdescecfpModel::get(Self, Int32) -> Double
+pub fn ChemdescecfpModel::len(Self) -> Int32
+pub fn ChemdescecfpModel::max(Self) -> Double
+pub fn ChemdescecfpModel::mean(Self) -> Double
+pub fn ChemdescecfpModel::min(Self) -> Double
+pub fn ChemdescecfpModel::scale(Self, Double) -> Self
+pub fn ChemdescecfpModel::set(Self, Int32, Double) -> Self
+pub fn ChemdescecfpModel::sum(Self) -> Double
+pub fn ChemdescecfpModel::to_string(Self) -> String
+
+pub(all) struct ChemdescecfpNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescecfpNode::add(Self, Self) -> Self
+pub fn ChemdescecfpNode::copy(Self) -> Self
+pub fn ChemdescecfpNode::fill(Self, Double) -> Self
+pub fn ChemdescecfpNode::get(Self, Int32) -> Double
+pub fn ChemdescecfpNode::len(Self) -> Int32
+pub fn ChemdescecfpNode::max(Self) -> Double
+pub fn ChemdescecfpNode::mean(Self) -> Double
+pub fn ChemdescecfpNode::min(Self) -> Double
+pub fn ChemdescecfpNode::scale(Self, Double) -> Self
+pub fn ChemdescecfpNode::set(Self, Int32, Double) -> Self
+pub fn ChemdescecfpNode::sum(Self) -> Double
+pub fn ChemdescecfpNode::to_string(Self) -> String
+
+pub(all) struct ChemdescecfpPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescecfpPath::add(Self, Self) -> Self
+pub fn ChemdescecfpPath::copy(Self) -> Self
+pub fn ChemdescecfpPath::fill(Self, Double) -> Self
+pub fn ChemdescecfpPath::get(Self, Int32) -> Double
+pub fn ChemdescecfpPath::len(Self) -> Int32
+pub fn ChemdescecfpPath::max(Self) -> Double
+pub fn ChemdescecfpPath::mean(Self) -> Double
+pub fn ChemdescecfpPath::min(Self) -> Double
+pub fn ChemdescecfpPath::scale(Self, Double) -> Self
+pub fn ChemdescecfpPath::set(Self, Int32, Double) -> Self
+pub fn ChemdescecfpPath::sum(Self) -> Double
+pub fn ChemdescecfpPath::to_string(Self) -> String
+
+pub(all) struct ChemdescecfpPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ChemdescecfpPoint::add(Self, Self) -> Self
+pub fn ChemdescecfpPoint::cross(Self, Self) -> Self
+pub fn ChemdescecfpPoint::dist(Self, Self) -> Double
+pub fn ChemdescecfpPoint::dot(Self, Self) -> Double
+pub fn ChemdescecfpPoint::label(Self) -> Int32
+pub fn ChemdescecfpPoint::lerp(Self, Self, Double) -> Self
+pub fn ChemdescecfpPoint::mid(Self, Self) -> Self
+pub fn ChemdescecfpPoint::negate(Self) -> Self
+pub fn ChemdescecfpPoint::norm(Self) -> Double
+pub fn ChemdescecfpPoint::normalize(Self) -> Self
+pub fn ChemdescecfpPoint::scale(Self, Double) -> Self
+pub fn ChemdescecfpPoint::sub(Self, Self) -> Self
+pub fn ChemdescecfpPoint::to_string(Self) -> String
+pub fn ChemdescecfpPoint::x(Self) -> Double
+pub fn ChemdescecfpPoint::y(Self) -> Double
+pub fn ChemdescecfpPoint::z(Self) -> Double
+
+pub(all) struct ChemdescecfpRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescecfpRange::add(Self, Self) -> Self
+pub fn ChemdescecfpRange::copy(Self) -> Self
+pub fn ChemdescecfpRange::fill(Self, Double) -> Self
+pub fn ChemdescecfpRange::get(Self, Int32) -> Double
+pub fn ChemdescecfpRange::len(Self) -> Int32
+pub fn ChemdescecfpRange::max(Self) -> Double
+pub fn ChemdescecfpRange::mean(Self) -> Double
+pub fn ChemdescecfpRange::min(Self) -> Double
+pub fn ChemdescecfpRange::scale(Self, Double) -> Self
+pub fn ChemdescecfpRange::set(Self, Int32, Double) -> Self
+pub fn ChemdescecfpRange::sum(Self) -> Double
+pub fn ChemdescecfpRange::to_string(Self) -> String
+
+pub(all) struct ChemdescecfpSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ChemdescecfpSeries::add(Self, Self) -> Self
+pub fn ChemdescecfpSeries::cumsum(Self) -> Self
+pub fn ChemdescecfpSeries::len(Self) -> Int32
+pub fn ChemdescecfpSeries::max(Self) -> Double
+pub fn ChemdescecfpSeries::mean(Self) -> Double
+pub fn ChemdescecfpSeries::median(Self) -> Double
+pub fn ChemdescecfpSeries::min(Self) -> Double
+pub fn ChemdescecfpSeries::normalize(Self) -> Self
+pub fn ChemdescecfpSeries::range(Self) -> Double
+pub fn ChemdescecfpSeries::scale(Self, Double) -> Self
+pub fn ChemdescecfpSeries::std(Self) -> Double
+pub fn ChemdescecfpSeries::sub(Self, Self) -> Self
+pub fn ChemdescecfpSeries::sum(Self) -> Double
+pub fn ChemdescecfpSeries::to_string(Self) -> String
+pub fn ChemdescecfpSeries::variance(Self) -> Double
+
+pub(all) struct ChemdescecfpSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescecfpSlice::add(Self, Self) -> Self
+pub fn ChemdescecfpSlice::copy(Self) -> Self
+pub fn ChemdescecfpSlice::fill(Self, Double) -> Self
+pub fn ChemdescecfpSlice::get(Self, Int32) -> Double
+pub fn ChemdescecfpSlice::len(Self) -> Int32
+pub fn ChemdescecfpSlice::max(Self) -> Double
+pub fn ChemdescecfpSlice::mean(Self) -> Double
+pub fn ChemdescecfpSlice::min(Self) -> Double
+pub fn ChemdescecfpSlice::scale(Self, Double) -> Self
+pub fn ChemdescecfpSlice::set(Self, Int32, Double) -> Self
+pub fn ChemdescecfpSlice::sum(Self) -> Double
+pub fn ChemdescecfpSlice::to_string(Self) -> String
+
+pub(all) struct ChemdescecfpTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescecfpTable::add(Self, Self) -> Self
+pub fn ChemdescecfpTable::copy(Self) -> Self
+pub fn ChemdescecfpTable::fill(Self, Double) -> Self
+pub fn ChemdescecfpTable::get(Self, Int32) -> Double
+pub fn ChemdescecfpTable::len(Self) -> Int32
+pub fn ChemdescecfpTable::max(Self) -> Double
+pub fn ChemdescecfpTable::mean(Self) -> Double
+pub fn ChemdescecfpTable::min(Self) -> Double
+pub fn ChemdescecfpTable::scale(Self, Double) -> Self
+pub fn ChemdescecfpTable::set(Self, Int32, Double) -> Self
+pub fn ChemdescecfpTable::sum(Self) -> Double
+pub fn ChemdescecfpTable::to_string(Self) -> String
+
+pub(all) struct ChemdescecfpVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ChemdescecfpVector::add(Self, Self) -> Self
+pub fn ChemdescecfpVector::dist(Self, Self) -> Double
+pub fn ChemdescecfpVector::dot(Self, Self) -> Double
+pub fn ChemdescecfpVector::norm(Self) -> Double
+pub fn ChemdescecfpVector::normalize(Self) -> Self
+pub fn ChemdescecfpVector::scale(Self, Double) -> Self
+pub fn ChemdescecfpVector::sub(Self, Self) -> Self
+pub fn ChemdescecfpVector::to_string(Self) -> String
+
+pub(all) struct ChemdescecfpView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescecfpView::add(Self, Self) -> Self
+pub fn ChemdescecfpView::copy(Self) -> Self
+pub fn ChemdescecfpView::fill(Self, Double) -> Self
+pub fn ChemdescecfpView::get(Self, Int32) -> Double
+pub fn ChemdescecfpView::len(Self) -> Int32
+pub fn ChemdescecfpView::max(Self) -> Double
+pub fn ChemdescecfpView::mean(Self) -> Double
+pub fn ChemdescecfpView::min(Self) -> Double
+pub fn ChemdescecfpView::scale(Self, Double) -> Self
+pub fn ChemdescecfpView::set(Self, Int32, Double) -> Self
+pub fn ChemdescecfpView::sum(Self) -> Double
+pub fn ChemdescecfpView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

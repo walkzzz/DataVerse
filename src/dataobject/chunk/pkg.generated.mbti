@@ -1,0 +1,41 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/chunk"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn chunk_id() -> String
+
+pub fn empty_chunk(String, ChunkType) -> Chunk
+
+pub fn length(Chunk) -> Int32
+
+pub fn make(String, String, ChunkType) -> Chunk
+
+// Errors
+
+// Types and methods
+pub struct Chunk {
+  id : String
+  content : String
+  chunk_type : ChunkType
+} derive(Eq, @debug.Debug)
+pub fn Chunk::equal(Self, Self) -> Bool
+pub fn Chunk::not_equal(Self, Self) -> Bool
+pub fn Chunk::to_repr(Self) -> @debug.Repr
+
+pub(all) enum ChunkType {
+  TextSlice
+  ImageRegion
+  TableBlock
+  CodeBlock
+} derive(Eq, @debug.Debug)
+pub fn ChunkType::equal(Self, Self) -> Bool
+pub fn ChunkType::not_equal(Self, Self) -> Bool
+pub fn ChunkType::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/color_space"
+
+// Values
+pub fn color_space_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn color_space_corr(Array[Double], Array[Double]) -> Double
+
+pub fn color_space_cov(Array[Double], Array[Double]) -> Double
+
+pub fn color_space_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn color_space_mae(Array[Double], Array[Double]) -> Double
+
+pub fn color_space_make_labeled_point(Double, Double, Int32) -> Color_spacePoint
+
+pub fn color_space_make_matrix(Int32, Int32, Double) -> Color_spaceMatrix
+
+pub fn color_space_make_point(Double, Double) -> Color_spacePoint
+
+pub fn color_space_make_series(Array[Double], String) -> Color_spaceSeries
+
+pub fn color_space_make_vector(Array[Double]) -> Color_spaceVector
+
+pub fn color_space_matrix_add(Color_spaceMatrix, Color_spaceMatrix) -> Color_spaceMatrix
+
+pub fn color_space_matrix_get(Color_spaceMatrix, Int32, Int32) -> Double
+
+pub fn color_space_matrix_identity(Int32) -> Color_spaceMatrix
+
+pub fn color_space_matrix_multiply(Color_spaceMatrix, Color_spaceMatrix) -> Color_spaceMatrix
+
+pub fn color_space_matrix_norm(Color_spaceMatrix) -> Double
+
+pub fn color_space_matrix_scale(Color_spaceMatrix, Double) -> Color_spaceMatrix
+
+pub fn color_space_matrix_to_string(Color_spaceMatrix) -> String
+
+pub fn color_space_matrix_trace(Color_spaceMatrix) -> Double
+
+pub fn color_space_matrix_transpose(Color_spaceMatrix) -> Color_spaceMatrix
+
+pub fn color_space_mse(Array[Double], Array[Double]) -> Double
+
+pub fn color_space_point_add(Color_spacePoint, Color_spacePoint) -> Color_spacePoint
+
+pub fn color_space_point_dist(Color_spacePoint, Color_spacePoint) -> Double
+
+pub fn color_space_point_dot(Color_spacePoint, Color_spacePoint) -> Double
+
+pub fn color_space_point_label(Color_spacePoint) -> Int32
+
+pub fn color_space_point_norm(Color_spacePoint) -> Double
+
+pub fn color_space_point_scale(Color_spacePoint, Double) -> Color_spacePoint
+
+pub fn color_space_point_sub(Color_spacePoint, Color_spacePoint) -> Color_spacePoint
+
+pub fn color_space_point_to_string(Color_spacePoint) -> String
+
+pub fn color_space_point_x(Color_spacePoint) -> Double
+
+pub fn color_space_point_y(Color_spacePoint) -> Double
+
+pub fn color_space_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn color_space_r2(Array[Double], Array[Double]) -> Double
+
+pub fn color_space_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn color_space_series_add(Color_spaceSeries, Color_spaceSeries) -> Color_spaceSeries
+
+pub fn color_space_series_len(Color_spaceSeries) -> Int32
+
+pub fn color_space_series_max(Color_spaceSeries) -> Double
+
+pub fn color_space_series_mean(Color_spaceSeries) -> Double
+
+pub fn color_space_series_min(Color_spaceSeries) -> Double
+
+pub fn color_space_series_scale(Color_spaceSeries, Double) -> Color_spaceSeries
+
+pub fn color_space_series_std(Color_spaceSeries) -> Double
+
+pub fn color_space_series_sum(Color_spaceSeries) -> Double
+
+pub fn color_space_series_to_string(Color_spaceSeries) -> String
+
+pub fn color_space_series_var(Color_spaceSeries) -> Double
+
+pub fn color_space_std(Array[Double]) -> Double
+
+pub fn color_space_var(Array[Double]) -> Double
+
+pub fn color_space_vector_add(Color_spaceVector, Color_spaceVector) -> Color_spaceVector
+
+pub fn color_space_vector_dist(Color_spaceVector, Color_spaceVector) -> Double
+
+pub fn color_space_vector_dot(Color_spaceVector, Color_spaceVector) -> Double
+
+pub fn color_space_vector_norm(Color_spaceVector) -> Double
+
+pub fn color_space_vector_normalize(Color_spaceVector) -> Color_spaceVector
+
+pub fn color_space_vector_scale(Color_spaceVector, Double) -> Color_spaceVector
+
+pub fn color_space_vector_sub(Color_spaceVector, Color_spaceVector) -> Color_spaceVector
+
+pub fn color_space_vector_to_string(Color_spaceVector) -> String
+
+pub fn color_space_vector_zero(Int32) -> Color_spaceVector
+
+// Errors
+
+// Types and methods
+pub struct Color_spaceMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Color_spacePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Color_spaceSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Color_spaceVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_graph_compact"
+
+// Values
+pub fn ds_graph_compact_buffer_make(Int32) -> DsgraphcompactBuffer
+
+pub fn ds_graph_compact_cluster_make(Int32) -> DsgraphcompactCluster
+
+pub fn ds_graph_compact_cursor_make(Int32) -> DsgraphcompactCursor
+
+pub fn ds_graph_compact_edge_make(Int32) -> DsgraphcompactEdge
+
+pub fn ds_graph_compact_frame_make(Int32) -> DsgraphcompactFrame
+
+pub fn ds_graph_compact_graphn_make(Int32) -> DsgraphcompactGraphN
+
+pub fn ds_graph_compact_layer_make(Int32) -> DsgraphcompactLayer
+
+pub fn ds_graph_compact_make_matrix(Int32, Int32, Double) -> DsgraphcompactMatrix
+
+pub fn ds_graph_compact_make_point(Double, Double) -> DsgraphcompactPoint
+
+pub fn ds_graph_compact_make_point3(Double, Double, Double) -> DsgraphcompactPoint
+
+pub fn ds_graph_compact_make_series(Array[Double], String) -> DsgraphcompactSeries
+
+pub fn ds_graph_compact_make_vector(Array[Double]) -> DsgraphcompactVector
+
+pub fn ds_graph_compact_matrix_identity(Int32) -> DsgraphcompactMatrix
+
+pub fn ds_graph_compact_model_make(Int32) -> DsgraphcompactModel
+
+pub fn ds_graph_compact_node_make(Int32) -> DsgraphcompactNode
+
+pub fn ds_graph_compact_path_make(Int32) -> DsgraphcompactPath
+
+pub fn ds_graph_compact_range_make(Int32) -> DsgraphcompactRange
+
+pub fn ds_graph_compact_slice_make(Int32) -> DsgraphcompactSlice
+
+pub fn ds_graph_compact_table_make(Int32) -> DsgraphcompactTable
+
+pub fn ds_graph_compact_vector_zero(Int32) -> DsgraphcompactVector
+
+pub fn ds_graph_compact_view_make(Int32) -> DsgraphcompactView
+
+// Errors
+
+// Types and methods
+pub(all) struct DsgraphcompactBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphcompactBuffer::add(Self, Self) -> Self
+pub fn DsgraphcompactBuffer::copy(Self) -> Self
+pub fn DsgraphcompactBuffer::fill(Self, Double) -> Self
+pub fn DsgraphcompactBuffer::get(Self, Int32) -> Double
+pub fn DsgraphcompactBuffer::len(Self) -> Int32
+pub fn DsgraphcompactBuffer::max(Self) -> Double
+pub fn DsgraphcompactBuffer::mean(Self) -> Double
+pub fn DsgraphcompactBuffer::min(Self) -> Double
+pub fn DsgraphcompactBuffer::scale(Self, Double) -> Self
+pub fn DsgraphcompactBuffer::set(Self, Int32, Double) -> Self
+pub fn DsgraphcompactBuffer::sum(Self) -> Double
+pub fn DsgraphcompactBuffer::to_string(Self) -> String
+
+pub(all) struct DsgraphcompactCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphcompactCluster::add(Self, Self) -> Self
+pub fn DsgraphcompactCluster::copy(Self) -> Self
+pub fn DsgraphcompactCluster::fill(Self, Double) -> Self
+pub fn DsgraphcompactCluster::get(Self, Int32) -> Double
+pub fn DsgraphcompactCluster::len(Self) -> Int32
+pub fn DsgraphcompactCluster::max(Self) -> Double
+pub fn DsgraphcompactCluster::mean(Self) -> Double
+pub fn DsgraphcompactCluster::min(Self) -> Double
+pub fn DsgraphcompactCluster::scale(Self, Double) -> Self
+pub fn DsgraphcompactCluster::set(Self, Int32, Double) -> Self
+pub fn DsgraphcompactCluster::sum(Self) -> Double
+pub fn DsgraphcompactCluster::to_string(Self) -> String
+
+pub(all) struct DsgraphcompactCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphcompactCursor::add(Self, Self) -> Self
+pub fn DsgraphcompactCursor::copy(Self) -> Self
+pub fn DsgraphcompactCursor::fill(Self, Double) -> Self
+pub fn DsgraphcompactCursor::get(Self, Int32) -> Double
+pub fn DsgraphcompactCursor::len(Self) -> Int32
+pub fn DsgraphcompactCursor::max(Self) -> Double
+pub fn DsgraphcompactCursor::mean(Self) -> Double
+pub fn DsgraphcompactCursor::min(Self) -> Double
+pub fn DsgraphcompactCursor::scale(Self, Double) -> Self
+pub fn DsgraphcompactCursor::set(Self, Int32, Double) -> Self
+pub fn DsgraphcompactCursor::sum(Self) -> Double
+pub fn DsgraphcompactCursor::to_string(Self) -> String
+
+pub(all) struct DsgraphcompactEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphcompactEdge::add(Self, Self) -> Self
+pub fn DsgraphcompactEdge::copy(Self) -> Self
+pub fn DsgraphcompactEdge::fill(Self, Double) -> Self
+pub fn DsgraphcompactEdge::get(Self, Int32) -> Double
+pub fn DsgraphcompactEdge::len(Self) -> Int32
+pub fn DsgraphcompactEdge::max(Self) -> Double
+pub fn DsgraphcompactEdge::mean(Self) -> Double
+pub fn DsgraphcompactEdge::min(Self) -> Double
+pub fn DsgraphcompactEdge::scale(Self, Double) -> Self
+pub fn DsgraphcompactEdge::set(Self, Int32, Double) -> Self
+pub fn DsgraphcompactEdge::sum(Self) -> Double
+pub fn DsgraphcompactEdge::to_string(Self) -> String
+
+pub(all) struct DsgraphcompactFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphcompactFrame::add(Self, Self) -> Self
+pub fn DsgraphcompactFrame::copy(Self) -> Self
+pub fn DsgraphcompactFrame::fill(Self, Double) -> Self
+pub fn DsgraphcompactFrame::get(Self, Int32) -> Double
+pub fn DsgraphcompactFrame::len(Self) -> Int32
+pub fn DsgraphcompactFrame::max(Self) -> Double
+pub fn DsgraphcompactFrame::mean(Self) -> Double
+pub fn DsgraphcompactFrame::min(Self) -> Double
+pub fn DsgraphcompactFrame::scale(Self, Double) -> Self
+pub fn DsgraphcompactFrame::set(Self, Int32, Double) -> Self
+pub fn DsgraphcompactFrame::sum(Self) -> Double
+pub fn DsgraphcompactFrame::to_string(Self) -> String
+
+pub(all) struct DsgraphcompactGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphcompactGraphN::add(Self, Self) -> Self
+pub fn DsgraphcompactGraphN::copy(Self) -> Self
+pub fn DsgraphcompactGraphN::fill(Self, Double) -> Self
+pub fn DsgraphcompactGraphN::get(Self, Int32) -> Double
+pub fn DsgraphcompactGraphN::len(Self) -> Int32
+pub fn DsgraphcompactGraphN::max(Self) -> Double
+pub fn DsgraphcompactGraphN::mean(Self) -> Double
+pub fn DsgraphcompactGraphN::min(Self) -> Double
+pub fn DsgraphcompactGraphN::scale(Self, Double) -> Self
+pub fn DsgraphcompactGraphN::set(Self, Int32, Double) -> Self
+pub fn DsgraphcompactGraphN::sum(Self) -> Double
+pub fn DsgraphcompactGraphN::to_string(Self) -> String
+
+pub(all) struct DsgraphcompactLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphcompactLayer::add(Self, Self) -> Self
+pub fn DsgraphcompactLayer::copy(Self) -> Self
+pub fn DsgraphcompactLayer::fill(Self, Double) -> Self
+pub fn DsgraphcompactLayer::get(Self, Int32) -> Double
+pub fn DsgraphcompactLayer::len(Self) -> Int32
+pub fn DsgraphcompactLayer::max(Self) -> Double
+pub fn DsgraphcompactLayer::mean(Self) -> Double
+pub fn DsgraphcompactLayer::min(Self) -> Double
+pub fn DsgraphcompactLayer::scale(Self, Double) -> Self
+pub fn DsgraphcompactLayer::set(Self, Int32, Double) -> Self
+pub fn DsgraphcompactLayer::sum(Self) -> Double
+pub fn DsgraphcompactLayer::to_string(Self) -> String
+
+pub(all) struct DsgraphcompactMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DsgraphcompactMatrix::add(Self, Self) -> Self
+pub fn DsgraphcompactMatrix::det(Self) -> Double
+pub fn DsgraphcompactMatrix::get(Self, Int32, Int32) -> Double
+pub fn DsgraphcompactMatrix::multiply(Self, Self) -> Self
+pub fn DsgraphcompactMatrix::norm(Self) -> Double
+pub fn DsgraphcompactMatrix::scale(Self, Double) -> Self
+pub fn DsgraphcompactMatrix::to_string(Self) -> String
+pub fn DsgraphcompactMatrix::trace(Self) -> Double
+pub fn DsgraphcompactMatrix::transpose(Self) -> Self
+
+pub(all) struct DsgraphcompactModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphcompactModel::add(Self, Self) -> Self
+pub fn DsgraphcompactModel::copy(Self) -> Self
+pub fn DsgraphcompactModel::fill(Self, Double) -> Self
+pub fn DsgraphcompactModel::get(Self, Int32) -> Double
+pub fn DsgraphcompactModel::len(Self) -> Int32
+pub fn DsgraphcompactModel::max(Self) -> Double
+pub fn DsgraphcompactModel::mean(Self) -> Double
+pub fn DsgraphcompactModel::min(Self) -> Double
+pub fn DsgraphcompactModel::scale(Self, Double) -> Self
+pub fn DsgraphcompactModel::set(Self, Int32, Double) -> Self
+pub fn DsgraphcompactModel::sum(Self) -> Double
+pub fn DsgraphcompactModel::to_string(Self) -> String
+
+pub(all) struct DsgraphcompactNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphcompactNode::add(Self, Self) -> Self
+pub fn DsgraphcompactNode::copy(Self) -> Self
+pub fn DsgraphcompactNode::fill(Self, Double) -> Self
+pub fn DsgraphcompactNode::get(Self, Int32) -> Double
+pub fn DsgraphcompactNode::len(Self) -> Int32
+pub fn DsgraphcompactNode::max(Self) -> Double
+pub fn DsgraphcompactNode::mean(Self) -> Double
+pub fn DsgraphcompactNode::min(Self) -> Double
+pub fn DsgraphcompactNode::scale(Self, Double) -> Self
+pub fn DsgraphcompactNode::set(Self, Int32, Double) -> Self
+pub fn DsgraphcompactNode::sum(Self) -> Double
+pub fn DsgraphcompactNode::to_string(Self) -> String
+
+pub(all) struct DsgraphcompactPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphcompactPath::add(Self, Self) -> Self
+pub fn DsgraphcompactPath::copy(Self) -> Self
+pub fn DsgraphcompactPath::fill(Self, Double) -> Self
+pub fn DsgraphcompactPath::get(Self, Int32) -> Double
+pub fn DsgraphcompactPath::len(Self) -> Int32
+pub fn DsgraphcompactPath::max(Self) -> Double
+pub fn DsgraphcompactPath::mean(Self) -> Double
+pub fn DsgraphcompactPath::min(Self) -> Double
+pub fn DsgraphcompactPath::scale(Self, Double) -> Self
+pub fn DsgraphcompactPath::set(Self, Int32, Double) -> Self
+pub fn DsgraphcompactPath::sum(Self) -> Double
+pub fn DsgraphcompactPath::to_string(Self) -> String
+
+pub(all) struct DsgraphcompactPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DsgraphcompactPoint::add(Self, Self) -> Self
+pub fn DsgraphcompactPoint::cross(Self, Self) -> Self
+pub fn DsgraphcompactPoint::dist(Self, Self) -> Double
+pub fn DsgraphcompactPoint::dot(Self, Self) -> Double
+pub fn DsgraphcompactPoint::label(Self) -> Int32
+pub fn DsgraphcompactPoint::lerp(Self, Self, Double) -> Self
+pub fn DsgraphcompactPoint::mid(Self, Self) -> Self
+pub fn DsgraphcompactPoint::negate(Self) -> Self
+pub fn DsgraphcompactPoint::norm(Self) -> Double
+pub fn DsgraphcompactPoint::normalize(Self) -> Self
+pub fn DsgraphcompactPoint::scale(Self, Double) -> Self
+pub fn DsgraphcompactPoint::sub(Self, Self) -> Self
+pub fn DsgraphcompactPoint::to_string(Self) -> String
+pub fn DsgraphcompactPoint::x(Self) -> Double
+pub fn DsgraphcompactPoint::y(Self) -> Double
+pub fn DsgraphcompactPoint::z(Self) -> Double
+
+pub(all) struct DsgraphcompactRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphcompactRange::add(Self, Self) -> Self
+pub fn DsgraphcompactRange::copy(Self) -> Self
+pub fn DsgraphcompactRange::fill(Self, Double) -> Self
+pub fn DsgraphcompactRange::get(Self, Int32) -> Double
+pub fn DsgraphcompactRange::len(Self) -> Int32
+pub fn DsgraphcompactRange::max(Self) -> Double
+pub fn DsgraphcompactRange::mean(Self) -> Double
+pub fn DsgraphcompactRange::min(Self) -> Double
+pub fn DsgraphcompactRange::scale(Self, Double) -> Self
+pub fn DsgraphcompactRange::set(Self, Int32, Double) -> Self
+pub fn DsgraphcompactRange::sum(Self) -> Double
+pub fn DsgraphcompactRange::to_string(Self) -> String
+
+pub(all) struct DsgraphcompactSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DsgraphcompactSeries::add(Self, Self) -> Self
+pub fn DsgraphcompactSeries::cumsum(Self) -> Self
+pub fn DsgraphcompactSeries::len(Self) -> Int32
+pub fn DsgraphcompactSeries::max(Self) -> Double
+pub fn DsgraphcompactSeries::mean(Self) -> Double
+pub fn DsgraphcompactSeries::median(Self) -> Double
+pub fn DsgraphcompactSeries::min(Self) -> Double
+pub fn DsgraphcompactSeries::normalize(Self) -> Self
+pub fn DsgraphcompactSeries::range(Self) -> Double
+pub fn DsgraphcompactSeries::scale(Self, Double) -> Self
+pub fn DsgraphcompactSeries::std(Self) -> Double
+pub fn DsgraphcompactSeries::sub(Self, Self) -> Self
+pub fn DsgraphcompactSeries::sum(Self) -> Double
+pub fn DsgraphcompactSeries::to_string(Self) -> String
+pub fn DsgraphcompactSeries::variance(Self) -> Double
+
+pub(all) struct DsgraphcompactSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphcompactSlice::add(Self, Self) -> Self
+pub fn DsgraphcompactSlice::copy(Self) -> Self
+pub fn DsgraphcompactSlice::fill(Self, Double) -> Self
+pub fn DsgraphcompactSlice::get(Self, Int32) -> Double
+pub fn DsgraphcompactSlice::len(Self) -> Int32
+pub fn DsgraphcompactSlice::max(Self) -> Double
+pub fn DsgraphcompactSlice::mean(Self) -> Double
+pub fn DsgraphcompactSlice::min(Self) -> Double
+pub fn DsgraphcompactSlice::scale(Self, Double) -> Self
+pub fn DsgraphcompactSlice::set(Self, Int32, Double) -> Self
+pub fn DsgraphcompactSlice::sum(Self) -> Double
+pub fn DsgraphcompactSlice::to_string(Self) -> String
+
+pub(all) struct DsgraphcompactTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphcompactTable::add(Self, Self) -> Self
+pub fn DsgraphcompactTable::copy(Self) -> Self
+pub fn DsgraphcompactTable::fill(Self, Double) -> Self
+pub fn DsgraphcompactTable::get(Self, Int32) -> Double
+pub fn DsgraphcompactTable::len(Self) -> Int32
+pub fn DsgraphcompactTable::max(Self) -> Double
+pub fn DsgraphcompactTable::mean(Self) -> Double
+pub fn DsgraphcompactTable::min(Self) -> Double
+pub fn DsgraphcompactTable::scale(Self, Double) -> Self
+pub fn DsgraphcompactTable::set(Self, Int32, Double) -> Self
+pub fn DsgraphcompactTable::sum(Self) -> Double
+pub fn DsgraphcompactTable::to_string(Self) -> String
+
+pub(all) struct DsgraphcompactVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DsgraphcompactVector::add(Self, Self) -> Self
+pub fn DsgraphcompactVector::dist(Self, Self) -> Double
+pub fn DsgraphcompactVector::dot(Self, Self) -> Double
+pub fn DsgraphcompactVector::norm(Self) -> Double
+pub fn DsgraphcompactVector::normalize(Self) -> Self
+pub fn DsgraphcompactVector::scale(Self, Double) -> Self
+pub fn DsgraphcompactVector::sub(Self, Self) -> Self
+pub fn DsgraphcompactVector::to_string(Self) -> String
+
+pub(all) struct DsgraphcompactView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphcompactView::add(Self, Self) -> Self
+pub fn DsgraphcompactView::copy(Self) -> Self
+pub fn DsgraphcompactView::fill(Self, Double) -> Self
+pub fn DsgraphcompactView::get(Self, Int32) -> Double
+pub fn DsgraphcompactView::len(Self) -> Int32
+pub fn DsgraphcompactView::max(Self) -> Double
+pub fn DsgraphcompactView::mean(Self) -> Double
+pub fn DsgraphcompactView::min(Self) -> Double
+pub fn DsgraphcompactView::scale(Self, Double) -> Self
+pub fn DsgraphcompactView::set(Self, Int32, Double) -> Self
+pub fn DsgraphcompactView::sum(Self) -> Double
+pub fn DsgraphcompactView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

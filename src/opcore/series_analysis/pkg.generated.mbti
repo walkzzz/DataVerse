@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/series_analysis"
+
+// Values
+pub fn series_analysis_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn series_analysis_corr(Array[Double], Array[Double]) -> Double
+
+pub fn series_analysis_cov(Array[Double], Array[Double]) -> Double
+
+pub fn series_analysis_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn series_analysis_mae(Array[Double], Array[Double]) -> Double
+
+pub fn series_analysis_make_labeled_point(Double, Double, Int32) -> Series_analysisPoint
+
+pub fn series_analysis_make_matrix(Int32, Int32, Double) -> Series_analysisMatrix
+
+pub fn series_analysis_make_point(Double, Double) -> Series_analysisPoint
+
+pub fn series_analysis_make_series(Array[Double], String) -> Series_analysisSeries
+
+pub fn series_analysis_make_vector(Array[Double]) -> Series_analysisVector
+
+pub fn series_analysis_matrix_add(Series_analysisMatrix, Series_analysisMatrix) -> Series_analysisMatrix
+
+pub fn series_analysis_matrix_get(Series_analysisMatrix, Int32, Int32) -> Double
+
+pub fn series_analysis_matrix_identity(Int32) -> Series_analysisMatrix
+
+pub fn series_analysis_matrix_multiply(Series_analysisMatrix, Series_analysisMatrix) -> Series_analysisMatrix
+
+pub fn series_analysis_matrix_norm(Series_analysisMatrix) -> Double
+
+pub fn series_analysis_matrix_scale(Series_analysisMatrix, Double) -> Series_analysisMatrix
+
+pub fn series_analysis_matrix_to_string(Series_analysisMatrix) -> String
+
+pub fn series_analysis_matrix_trace(Series_analysisMatrix) -> Double
+
+pub fn series_analysis_matrix_transpose(Series_analysisMatrix) -> Series_analysisMatrix
+
+pub fn series_analysis_mse(Array[Double], Array[Double]) -> Double
+
+pub fn series_analysis_point_add(Series_analysisPoint, Series_analysisPoint) -> Series_analysisPoint
+
+pub fn series_analysis_point_dist(Series_analysisPoint, Series_analysisPoint) -> Double
+
+pub fn series_analysis_point_dot(Series_analysisPoint, Series_analysisPoint) -> Double
+
+pub fn series_analysis_point_label(Series_analysisPoint) -> Int32
+
+pub fn series_analysis_point_norm(Series_analysisPoint) -> Double
+
+pub fn series_analysis_point_scale(Series_analysisPoint, Double) -> Series_analysisPoint
+
+pub fn series_analysis_point_sub(Series_analysisPoint, Series_analysisPoint) -> Series_analysisPoint
+
+pub fn series_analysis_point_to_string(Series_analysisPoint) -> String
+
+pub fn series_analysis_point_x(Series_analysisPoint) -> Double
+
+pub fn series_analysis_point_y(Series_analysisPoint) -> Double
+
+pub fn series_analysis_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn series_analysis_r2(Array[Double], Array[Double]) -> Double
+
+pub fn series_analysis_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn series_analysis_series_add(Series_analysisSeries, Series_analysisSeries) -> Series_analysisSeries
+
+pub fn series_analysis_series_len(Series_analysisSeries) -> Int32
+
+pub fn series_analysis_series_max(Series_analysisSeries) -> Double
+
+pub fn series_analysis_series_mean(Series_analysisSeries) -> Double
+
+pub fn series_analysis_series_min(Series_analysisSeries) -> Double
+
+pub fn series_analysis_series_scale(Series_analysisSeries, Double) -> Series_analysisSeries
+
+pub fn series_analysis_series_std(Series_analysisSeries) -> Double
+
+pub fn series_analysis_series_sum(Series_analysisSeries) -> Double
+
+pub fn series_analysis_series_to_string(Series_analysisSeries) -> String
+
+pub fn series_analysis_series_var(Series_analysisSeries) -> Double
+
+pub fn series_analysis_std(Array[Double]) -> Double
+
+pub fn series_analysis_var(Array[Double]) -> Double
+
+pub fn series_analysis_vector_add(Series_analysisVector, Series_analysisVector) -> Series_analysisVector
+
+pub fn series_analysis_vector_dist(Series_analysisVector, Series_analysisVector) -> Double
+
+pub fn series_analysis_vector_dot(Series_analysisVector, Series_analysisVector) -> Double
+
+pub fn series_analysis_vector_norm(Series_analysisVector) -> Double
+
+pub fn series_analysis_vector_normalize(Series_analysisVector) -> Series_analysisVector
+
+pub fn series_analysis_vector_scale(Series_analysisVector, Double) -> Series_analysisVector
+
+pub fn series_analysis_vector_sub(Series_analysisVector, Series_analysisVector) -> Series_analysisVector
+
+pub fn series_analysis_vector_to_string(Series_analysisVector) -> String
+
+pub fn series_analysis_vector_zero(Int32) -> Series_analysisVector
+
+// Errors
+
+// Types and methods
+pub struct Series_analysisMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Series_analysisPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Series_analysisSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Series_analysisVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

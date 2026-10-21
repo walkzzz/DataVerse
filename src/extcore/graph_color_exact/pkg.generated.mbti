@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_color_exact"
+
+// Values
+pub fn graph_color_exact_buffer_make(Int32) -> GraphcolorexactBuffer
+
+pub fn graph_color_exact_cluster_make(Int32) -> GraphcolorexactCluster
+
+pub fn graph_color_exact_cursor_make(Int32) -> GraphcolorexactCursor
+
+pub fn graph_color_exact_edge_make(Int32) -> GraphcolorexactEdge
+
+pub fn graph_color_exact_frame_make(Int32) -> GraphcolorexactFrame
+
+pub fn graph_color_exact_graphn_make(Int32) -> GraphcolorexactGraphN
+
+pub fn graph_color_exact_layer_make(Int32) -> GraphcolorexactLayer
+
+pub fn graph_color_exact_make_matrix(Int32, Int32, Double) -> GraphcolorexactMatrix
+
+pub fn graph_color_exact_make_point(Double, Double) -> GraphcolorexactPoint
+
+pub fn graph_color_exact_make_point3(Double, Double, Double) -> GraphcolorexactPoint
+
+pub fn graph_color_exact_make_series(Array[Double], String) -> GraphcolorexactSeries
+
+pub fn graph_color_exact_make_vector(Array[Double]) -> GraphcolorexactVector
+
+pub fn graph_color_exact_matrix_identity(Int32) -> GraphcolorexactMatrix
+
+pub fn graph_color_exact_model_make(Int32) -> GraphcolorexactModel
+
+pub fn graph_color_exact_node_make(Int32) -> GraphcolorexactNode
+
+pub fn graph_color_exact_path_make(Int32) -> GraphcolorexactPath
+
+pub fn graph_color_exact_range_make(Int32) -> GraphcolorexactRange
+
+pub fn graph_color_exact_slice_make(Int32) -> GraphcolorexactSlice
+
+pub fn graph_color_exact_table_make(Int32) -> GraphcolorexactTable
+
+pub fn graph_color_exact_vector_zero(Int32) -> GraphcolorexactVector
+
+pub fn graph_color_exact_view_make(Int32) -> GraphcolorexactView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphcolorexactBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorexactBuffer::add(Self, Self) -> Self
+pub fn GraphcolorexactBuffer::copy(Self) -> Self
+pub fn GraphcolorexactBuffer::fill(Self, Double) -> Self
+pub fn GraphcolorexactBuffer::get(Self, Int32) -> Double
+pub fn GraphcolorexactBuffer::len(Self) -> Int32
+pub fn GraphcolorexactBuffer::max(Self) -> Double
+pub fn GraphcolorexactBuffer::mean(Self) -> Double
+pub fn GraphcolorexactBuffer::min(Self) -> Double
+pub fn GraphcolorexactBuffer::scale(Self, Double) -> Self
+pub fn GraphcolorexactBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphcolorexactBuffer::sum(Self) -> Double
+pub fn GraphcolorexactBuffer::to_string(Self) -> String
+
+pub(all) struct GraphcolorexactCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorexactCluster::add(Self, Self) -> Self
+pub fn GraphcolorexactCluster::copy(Self) -> Self
+pub fn GraphcolorexactCluster::fill(Self, Double) -> Self
+pub fn GraphcolorexactCluster::get(Self, Int32) -> Double
+pub fn GraphcolorexactCluster::len(Self) -> Int32
+pub fn GraphcolorexactCluster::max(Self) -> Double
+pub fn GraphcolorexactCluster::mean(Self) -> Double
+pub fn GraphcolorexactCluster::min(Self) -> Double
+pub fn GraphcolorexactCluster::scale(Self, Double) -> Self
+pub fn GraphcolorexactCluster::set(Self, Int32, Double) -> Self
+pub fn GraphcolorexactCluster::sum(Self) -> Double
+pub fn GraphcolorexactCluster::to_string(Self) -> String
+
+pub(all) struct GraphcolorexactCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorexactCursor::add(Self, Self) -> Self
+pub fn GraphcolorexactCursor::copy(Self) -> Self
+pub fn GraphcolorexactCursor::fill(Self, Double) -> Self
+pub fn GraphcolorexactCursor::get(Self, Int32) -> Double
+pub fn GraphcolorexactCursor::len(Self) -> Int32
+pub fn GraphcolorexactCursor::max(Self) -> Double
+pub fn GraphcolorexactCursor::mean(Self) -> Double
+pub fn GraphcolorexactCursor::min(Self) -> Double
+pub fn GraphcolorexactCursor::scale(Self, Double) -> Self
+pub fn GraphcolorexactCursor::set(Self, Int32, Double) -> Self
+pub fn GraphcolorexactCursor::sum(Self) -> Double
+pub fn GraphcolorexactCursor::to_string(Self) -> String
+
+pub(all) struct GraphcolorexactEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorexactEdge::add(Self, Self) -> Self
+pub fn GraphcolorexactEdge::copy(Self) -> Self
+pub fn GraphcolorexactEdge::fill(Self, Double) -> Self
+pub fn GraphcolorexactEdge::get(Self, Int32) -> Double
+pub fn GraphcolorexactEdge::len(Self) -> Int32
+pub fn GraphcolorexactEdge::max(Self) -> Double
+pub fn GraphcolorexactEdge::mean(Self) -> Double
+pub fn GraphcolorexactEdge::min(Self) -> Double
+pub fn GraphcolorexactEdge::scale(Self, Double) -> Self
+pub fn GraphcolorexactEdge::set(Self, Int32, Double) -> Self
+pub fn GraphcolorexactEdge::sum(Self) -> Double
+pub fn GraphcolorexactEdge::to_string(Self) -> String
+
+pub(all) struct GraphcolorexactFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorexactFrame::add(Self, Self) -> Self
+pub fn GraphcolorexactFrame::copy(Self) -> Self
+pub fn GraphcolorexactFrame::fill(Self, Double) -> Self
+pub fn GraphcolorexactFrame::get(Self, Int32) -> Double
+pub fn GraphcolorexactFrame::len(Self) -> Int32
+pub fn GraphcolorexactFrame::max(Self) -> Double
+pub fn GraphcolorexactFrame::mean(Self) -> Double
+pub fn GraphcolorexactFrame::min(Self) -> Double
+pub fn GraphcolorexactFrame::scale(Self, Double) -> Self
+pub fn GraphcolorexactFrame::set(Self, Int32, Double) -> Self
+pub fn GraphcolorexactFrame::sum(Self) -> Double
+pub fn GraphcolorexactFrame::to_string(Self) -> String
+
+pub(all) struct GraphcolorexactGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorexactGraphN::add(Self, Self) -> Self
+pub fn GraphcolorexactGraphN::copy(Self) -> Self
+pub fn GraphcolorexactGraphN::fill(Self, Double) -> Self
+pub fn GraphcolorexactGraphN::get(Self, Int32) -> Double
+pub fn GraphcolorexactGraphN::len(Self) -> Int32
+pub fn GraphcolorexactGraphN::max(Self) -> Double
+pub fn GraphcolorexactGraphN::mean(Self) -> Double
+pub fn GraphcolorexactGraphN::min(Self) -> Double
+pub fn GraphcolorexactGraphN::scale(Self, Double) -> Self
+pub fn GraphcolorexactGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphcolorexactGraphN::sum(Self) -> Double
+pub fn GraphcolorexactGraphN::to_string(Self) -> String
+
+pub(all) struct GraphcolorexactLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorexactLayer::add(Self, Self) -> Self
+pub fn GraphcolorexactLayer::copy(Self) -> Self
+pub fn GraphcolorexactLayer::fill(Self, Double) -> Self
+pub fn GraphcolorexactLayer::get(Self, Int32) -> Double
+pub fn GraphcolorexactLayer::len(Self) -> Int32
+pub fn GraphcolorexactLayer::max(Self) -> Double
+pub fn GraphcolorexactLayer::mean(Self) -> Double
+pub fn GraphcolorexactLayer::min(Self) -> Double
+pub fn GraphcolorexactLayer::scale(Self, Double) -> Self
+pub fn GraphcolorexactLayer::set(Self, Int32, Double) -> Self
+pub fn GraphcolorexactLayer::sum(Self) -> Double
+pub fn GraphcolorexactLayer::to_string(Self) -> String
+
+pub(all) struct GraphcolorexactMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphcolorexactMatrix::add(Self, Self) -> Self
+pub fn GraphcolorexactMatrix::det(Self) -> Double
+pub fn GraphcolorexactMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphcolorexactMatrix::multiply(Self, Self) -> Self
+pub fn GraphcolorexactMatrix::norm(Self) -> Double
+pub fn GraphcolorexactMatrix::scale(Self, Double) -> Self
+pub fn GraphcolorexactMatrix::to_string(Self) -> String
+pub fn GraphcolorexactMatrix::trace(Self) -> Double
+pub fn GraphcolorexactMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphcolorexactModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorexactModel::add(Self, Self) -> Self
+pub fn GraphcolorexactModel::copy(Self) -> Self
+pub fn GraphcolorexactModel::fill(Self, Double) -> Self
+pub fn GraphcolorexactModel::get(Self, Int32) -> Double
+pub fn GraphcolorexactModel::len(Self) -> Int32
+pub fn GraphcolorexactModel::max(Self) -> Double
+pub fn GraphcolorexactModel::mean(Self) -> Double
+pub fn GraphcolorexactModel::min(Self) -> Double
+pub fn GraphcolorexactModel::scale(Self, Double) -> Self
+pub fn GraphcolorexactModel::set(Self, Int32, Double) -> Self
+pub fn GraphcolorexactModel::sum(Self) -> Double
+pub fn GraphcolorexactModel::to_string(Self) -> String
+
+pub(all) struct GraphcolorexactNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorexactNode::add(Self, Self) -> Self
+pub fn GraphcolorexactNode::copy(Self) -> Self
+pub fn GraphcolorexactNode::fill(Self, Double) -> Self
+pub fn GraphcolorexactNode::get(Self, Int32) -> Double
+pub fn GraphcolorexactNode::len(Self) -> Int32
+pub fn GraphcolorexactNode::max(Self) -> Double
+pub fn GraphcolorexactNode::mean(Self) -> Double
+pub fn GraphcolorexactNode::min(Self) -> Double
+pub fn GraphcolorexactNode::scale(Self, Double) -> Self
+pub fn GraphcolorexactNode::set(Self, Int32, Double) -> Self
+pub fn GraphcolorexactNode::sum(Self) -> Double
+pub fn GraphcolorexactNode::to_string(Self) -> String
+
+pub(all) struct GraphcolorexactPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorexactPath::add(Self, Self) -> Self
+pub fn GraphcolorexactPath::copy(Self) -> Self
+pub fn GraphcolorexactPath::fill(Self, Double) -> Self
+pub fn GraphcolorexactPath::get(Self, Int32) -> Double
+pub fn GraphcolorexactPath::len(Self) -> Int32
+pub fn GraphcolorexactPath::max(Self) -> Double
+pub fn GraphcolorexactPath::mean(Self) -> Double
+pub fn GraphcolorexactPath::min(Self) -> Double
+pub fn GraphcolorexactPath::scale(Self, Double) -> Self
+pub fn GraphcolorexactPath::set(Self, Int32, Double) -> Self
+pub fn GraphcolorexactPath::sum(Self) -> Double
+pub fn GraphcolorexactPath::to_string(Self) -> String
+
+pub(all) struct GraphcolorexactPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphcolorexactPoint::add(Self, Self) -> Self
+pub fn GraphcolorexactPoint::cross(Self, Self) -> Self
+pub fn GraphcolorexactPoint::dist(Self, Self) -> Double
+pub fn GraphcolorexactPoint::dot(Self, Self) -> Double
+pub fn GraphcolorexactPoint::label(Self) -> Int32
+pub fn GraphcolorexactPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphcolorexactPoint::mid(Self, Self) -> Self
+pub fn GraphcolorexactPoint::negate(Self) -> Self
+pub fn GraphcolorexactPoint::norm(Self) -> Double
+pub fn GraphcolorexactPoint::normalize(Self) -> Self
+pub fn GraphcolorexactPoint::scale(Self, Double) -> Self
+pub fn GraphcolorexactPoint::sub(Self, Self) -> Self
+pub fn GraphcolorexactPoint::to_string(Self) -> String
+pub fn GraphcolorexactPoint::x(Self) -> Double
+pub fn GraphcolorexactPoint::y(Self) -> Double
+pub fn GraphcolorexactPoint::z(Self) -> Double
+
+pub(all) struct GraphcolorexactRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorexactRange::add(Self, Self) -> Self
+pub fn GraphcolorexactRange::copy(Self) -> Self
+pub fn GraphcolorexactRange::fill(Self, Double) -> Self
+pub fn GraphcolorexactRange::get(Self, Int32) -> Double
+pub fn GraphcolorexactRange::len(Self) -> Int32
+pub fn GraphcolorexactRange::max(Self) -> Double
+pub fn GraphcolorexactRange::mean(Self) -> Double
+pub fn GraphcolorexactRange::min(Self) -> Double
+pub fn GraphcolorexactRange::scale(Self, Double) -> Self
+pub fn GraphcolorexactRange::set(Self, Int32, Double) -> Self
+pub fn GraphcolorexactRange::sum(Self) -> Double
+pub fn GraphcolorexactRange::to_string(Self) -> String
+
+pub(all) struct GraphcolorexactSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphcolorexactSeries::add(Self, Self) -> Self
+pub fn GraphcolorexactSeries::cumsum(Self) -> Self
+pub fn GraphcolorexactSeries::len(Self) -> Int32
+pub fn GraphcolorexactSeries::max(Self) -> Double
+pub fn GraphcolorexactSeries::mean(Self) -> Double
+pub fn GraphcolorexactSeries::median(Self) -> Double
+pub fn GraphcolorexactSeries::min(Self) -> Double
+pub fn GraphcolorexactSeries::normalize(Self) -> Self
+pub fn GraphcolorexactSeries::range(Self) -> Double
+pub fn GraphcolorexactSeries::scale(Self, Double) -> Self
+pub fn GraphcolorexactSeries::std(Self) -> Double
+pub fn GraphcolorexactSeries::sub(Self, Self) -> Self
+pub fn GraphcolorexactSeries::sum(Self) -> Double
+pub fn GraphcolorexactSeries::to_string(Self) -> String
+pub fn GraphcolorexactSeries::variance(Self) -> Double
+
+pub(all) struct GraphcolorexactSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorexactSlice::add(Self, Self) -> Self
+pub fn GraphcolorexactSlice::copy(Self) -> Self
+pub fn GraphcolorexactSlice::fill(Self, Double) -> Self
+pub fn GraphcolorexactSlice::get(Self, Int32) -> Double
+pub fn GraphcolorexactSlice::len(Self) -> Int32
+pub fn GraphcolorexactSlice::max(Self) -> Double
+pub fn GraphcolorexactSlice::mean(Self) -> Double
+pub fn GraphcolorexactSlice::min(Self) -> Double
+pub fn GraphcolorexactSlice::scale(Self, Double) -> Self
+pub fn GraphcolorexactSlice::set(Self, Int32, Double) -> Self
+pub fn GraphcolorexactSlice::sum(Self) -> Double
+pub fn GraphcolorexactSlice::to_string(Self) -> String
+
+pub(all) struct GraphcolorexactTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorexactTable::add(Self, Self) -> Self
+pub fn GraphcolorexactTable::copy(Self) -> Self
+pub fn GraphcolorexactTable::fill(Self, Double) -> Self
+pub fn GraphcolorexactTable::get(Self, Int32) -> Double
+pub fn GraphcolorexactTable::len(Self) -> Int32
+pub fn GraphcolorexactTable::max(Self) -> Double
+pub fn GraphcolorexactTable::mean(Self) -> Double
+pub fn GraphcolorexactTable::min(Self) -> Double
+pub fn GraphcolorexactTable::scale(Self, Double) -> Self
+pub fn GraphcolorexactTable::set(Self, Int32, Double) -> Self
+pub fn GraphcolorexactTable::sum(Self) -> Double
+pub fn GraphcolorexactTable::to_string(Self) -> String
+
+pub(all) struct GraphcolorexactVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphcolorexactVector::add(Self, Self) -> Self
+pub fn GraphcolorexactVector::dist(Self, Self) -> Double
+pub fn GraphcolorexactVector::dot(Self, Self) -> Double
+pub fn GraphcolorexactVector::norm(Self) -> Double
+pub fn GraphcolorexactVector::normalize(Self) -> Self
+pub fn GraphcolorexactVector::scale(Self, Double) -> Self
+pub fn GraphcolorexactVector::sub(Self, Self) -> Self
+pub fn GraphcolorexactVector::to_string(Self) -> String
+
+pub(all) struct GraphcolorexactView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorexactView::add(Self, Self) -> Self
+pub fn GraphcolorexactView::copy(Self) -> Self
+pub fn GraphcolorexactView::fill(Self, Double) -> Self
+pub fn GraphcolorexactView::get(Self, Int32) -> Double
+pub fn GraphcolorexactView::len(Self) -> Int32
+pub fn GraphcolorexactView::max(Self) -> Double
+pub fn GraphcolorexactView::mean(Self) -> Double
+pub fn GraphcolorexactView::min(Self) -> Double
+pub fn GraphcolorexactView::scale(Self, Double) -> Self
+pub fn GraphcolorexactView::set(Self, Int32, Double) -> Self
+pub fn GraphcolorexactView::sum(Self) -> Double
+pub fn GraphcolorexactView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

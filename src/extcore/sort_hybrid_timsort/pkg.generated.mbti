@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_hybrid_timsort"
+
+// Values
+pub fn sort_hybrid_timsort_buffer_make(Int32) -> SorthybridtimsortBuffer
+
+pub fn sort_hybrid_timsort_cluster_make(Int32) -> SorthybridtimsortCluster
+
+pub fn sort_hybrid_timsort_cursor_make(Int32) -> SorthybridtimsortCursor
+
+pub fn sort_hybrid_timsort_edge_make(Int32) -> SorthybridtimsortEdge
+
+pub fn sort_hybrid_timsort_frame_make(Int32) -> SorthybridtimsortFrame
+
+pub fn sort_hybrid_timsort_graphn_make(Int32) -> SorthybridtimsortGraphN
+
+pub fn sort_hybrid_timsort_layer_make(Int32) -> SorthybridtimsortLayer
+
+pub fn sort_hybrid_timsort_make_matrix(Int32, Int32, Double) -> SorthybridtimsortMatrix
+
+pub fn sort_hybrid_timsort_make_point(Double, Double) -> SorthybridtimsortPoint
+
+pub fn sort_hybrid_timsort_make_point3(Double, Double, Double) -> SorthybridtimsortPoint
+
+pub fn sort_hybrid_timsort_make_series(Array[Double], String) -> SorthybridtimsortSeries
+
+pub fn sort_hybrid_timsort_make_vector(Array[Double]) -> SorthybridtimsortVector
+
+pub fn sort_hybrid_timsort_matrix_identity(Int32) -> SorthybridtimsortMatrix
+
+pub fn sort_hybrid_timsort_model_make(Int32) -> SorthybridtimsortModel
+
+pub fn sort_hybrid_timsort_node_make(Int32) -> SorthybridtimsortNode
+
+pub fn sort_hybrid_timsort_path_make(Int32) -> SorthybridtimsortPath
+
+pub fn sort_hybrid_timsort_range_make(Int32) -> SorthybridtimsortRange
+
+pub fn sort_hybrid_timsort_slice_make(Int32) -> SorthybridtimsortSlice
+
+pub fn sort_hybrid_timsort_table_make(Int32) -> SorthybridtimsortTable
+
+pub fn sort_hybrid_timsort_vector_zero(Int32) -> SorthybridtimsortVector
+
+pub fn sort_hybrid_timsort_view_make(Int32) -> SorthybridtimsortView
+
+// Errors
+
+// Types and methods
+pub(all) struct SorthybridtimsortBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridtimsortBuffer::add(Self, Self) -> Self
+pub fn SorthybridtimsortBuffer::copy(Self) -> Self
+pub fn SorthybridtimsortBuffer::fill(Self, Double) -> Self
+pub fn SorthybridtimsortBuffer::get(Self, Int32) -> Double
+pub fn SorthybridtimsortBuffer::len(Self) -> Int32
+pub fn SorthybridtimsortBuffer::max(Self) -> Double
+pub fn SorthybridtimsortBuffer::mean(Self) -> Double
+pub fn SorthybridtimsortBuffer::min(Self) -> Double
+pub fn SorthybridtimsortBuffer::scale(Self, Double) -> Self
+pub fn SorthybridtimsortBuffer::set(Self, Int32, Double) -> Self
+pub fn SorthybridtimsortBuffer::sum(Self) -> Double
+pub fn SorthybridtimsortBuffer::to_string(Self) -> String
+
+pub(all) struct SorthybridtimsortCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridtimsortCluster::add(Self, Self) -> Self
+pub fn SorthybridtimsortCluster::copy(Self) -> Self
+pub fn SorthybridtimsortCluster::fill(Self, Double) -> Self
+pub fn SorthybridtimsortCluster::get(Self, Int32) -> Double
+pub fn SorthybridtimsortCluster::len(Self) -> Int32
+pub fn SorthybridtimsortCluster::max(Self) -> Double
+pub fn SorthybridtimsortCluster::mean(Self) -> Double
+pub fn SorthybridtimsortCluster::min(Self) -> Double
+pub fn SorthybridtimsortCluster::scale(Self, Double) -> Self
+pub fn SorthybridtimsortCluster::set(Self, Int32, Double) -> Self
+pub fn SorthybridtimsortCluster::sum(Self) -> Double
+pub fn SorthybridtimsortCluster::to_string(Self) -> String
+
+pub(all) struct SorthybridtimsortCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridtimsortCursor::add(Self, Self) -> Self
+pub fn SorthybridtimsortCursor::copy(Self) -> Self
+pub fn SorthybridtimsortCursor::fill(Self, Double) -> Self
+pub fn SorthybridtimsortCursor::get(Self, Int32) -> Double
+pub fn SorthybridtimsortCursor::len(Self) -> Int32
+pub fn SorthybridtimsortCursor::max(Self) -> Double
+pub fn SorthybridtimsortCursor::mean(Self) -> Double
+pub fn SorthybridtimsortCursor::min(Self) -> Double
+pub fn SorthybridtimsortCursor::scale(Self, Double) -> Self
+pub fn SorthybridtimsortCursor::set(Self, Int32, Double) -> Self
+pub fn SorthybridtimsortCursor::sum(Self) -> Double
+pub fn SorthybridtimsortCursor::to_string(Self) -> String
+
+pub(all) struct SorthybridtimsortEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridtimsortEdge::add(Self, Self) -> Self
+pub fn SorthybridtimsortEdge::copy(Self) -> Self
+pub fn SorthybridtimsortEdge::fill(Self, Double) -> Self
+pub fn SorthybridtimsortEdge::get(Self, Int32) -> Double
+pub fn SorthybridtimsortEdge::len(Self) -> Int32
+pub fn SorthybridtimsortEdge::max(Self) -> Double
+pub fn SorthybridtimsortEdge::mean(Self) -> Double
+pub fn SorthybridtimsortEdge::min(Self) -> Double
+pub fn SorthybridtimsortEdge::scale(Self, Double) -> Self
+pub fn SorthybridtimsortEdge::set(Self, Int32, Double) -> Self
+pub fn SorthybridtimsortEdge::sum(Self) -> Double
+pub fn SorthybridtimsortEdge::to_string(Self) -> String
+
+pub(all) struct SorthybridtimsortFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridtimsortFrame::add(Self, Self) -> Self
+pub fn SorthybridtimsortFrame::copy(Self) -> Self
+pub fn SorthybridtimsortFrame::fill(Self, Double) -> Self
+pub fn SorthybridtimsortFrame::get(Self, Int32) -> Double
+pub fn SorthybridtimsortFrame::len(Self) -> Int32
+pub fn SorthybridtimsortFrame::max(Self) -> Double
+pub fn SorthybridtimsortFrame::mean(Self) -> Double
+pub fn SorthybridtimsortFrame::min(Self) -> Double
+pub fn SorthybridtimsortFrame::scale(Self, Double) -> Self
+pub fn SorthybridtimsortFrame::set(Self, Int32, Double) -> Self
+pub fn SorthybridtimsortFrame::sum(Self) -> Double
+pub fn SorthybridtimsortFrame::to_string(Self) -> String
+
+pub(all) struct SorthybridtimsortGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridtimsortGraphN::add(Self, Self) -> Self
+pub fn SorthybridtimsortGraphN::copy(Self) -> Self
+pub fn SorthybridtimsortGraphN::fill(Self, Double) -> Self
+pub fn SorthybridtimsortGraphN::get(Self, Int32) -> Double
+pub fn SorthybridtimsortGraphN::len(Self) -> Int32
+pub fn SorthybridtimsortGraphN::max(Self) -> Double
+pub fn SorthybridtimsortGraphN::mean(Self) -> Double
+pub fn SorthybridtimsortGraphN::min(Self) -> Double
+pub fn SorthybridtimsortGraphN::scale(Self, Double) -> Self
+pub fn SorthybridtimsortGraphN::set(Self, Int32, Double) -> Self
+pub fn SorthybridtimsortGraphN::sum(Self) -> Double
+pub fn SorthybridtimsortGraphN::to_string(Self) -> String
+
+pub(all) struct SorthybridtimsortLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridtimsortLayer::add(Self, Self) -> Self
+pub fn SorthybridtimsortLayer::copy(Self) -> Self
+pub fn SorthybridtimsortLayer::fill(Self, Double) -> Self
+pub fn SorthybridtimsortLayer::get(Self, Int32) -> Double
+pub fn SorthybridtimsortLayer::len(Self) -> Int32
+pub fn SorthybridtimsortLayer::max(Self) -> Double
+pub fn SorthybridtimsortLayer::mean(Self) -> Double
+pub fn SorthybridtimsortLayer::min(Self) -> Double
+pub fn SorthybridtimsortLayer::scale(Self, Double) -> Self
+pub fn SorthybridtimsortLayer::set(Self, Int32, Double) -> Self
+pub fn SorthybridtimsortLayer::sum(Self) -> Double
+pub fn SorthybridtimsortLayer::to_string(Self) -> String
+
+pub(all) struct SorthybridtimsortMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SorthybridtimsortMatrix::add(Self, Self) -> Self
+pub fn SorthybridtimsortMatrix::det(Self) -> Double
+pub fn SorthybridtimsortMatrix::get(Self, Int32, Int32) -> Double
+pub fn SorthybridtimsortMatrix::multiply(Self, Self) -> Self
+pub fn SorthybridtimsortMatrix::norm(Self) -> Double
+pub fn SorthybridtimsortMatrix::scale(Self, Double) -> Self
+pub fn SorthybridtimsortMatrix::to_string(Self) -> String
+pub fn SorthybridtimsortMatrix::trace(Self) -> Double
+pub fn SorthybridtimsortMatrix::transpose(Self) -> Self
+
+pub(all) struct SorthybridtimsortModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridtimsortModel::add(Self, Self) -> Self
+pub fn SorthybridtimsortModel::copy(Self) -> Self
+pub fn SorthybridtimsortModel::fill(Self, Double) -> Self
+pub fn SorthybridtimsortModel::get(Self, Int32) -> Double
+pub fn SorthybridtimsortModel::len(Self) -> Int32
+pub fn SorthybridtimsortModel::max(Self) -> Double
+pub fn SorthybridtimsortModel::mean(Self) -> Double
+pub fn SorthybridtimsortModel::min(Self) -> Double
+pub fn SorthybridtimsortModel::scale(Self, Double) -> Self
+pub fn SorthybridtimsortModel::set(Self, Int32, Double) -> Self
+pub fn SorthybridtimsortModel::sum(Self) -> Double
+pub fn SorthybridtimsortModel::to_string(Self) -> String
+
+pub(all) struct SorthybridtimsortNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridtimsortNode::add(Self, Self) -> Self
+pub fn SorthybridtimsortNode::copy(Self) -> Self
+pub fn SorthybridtimsortNode::fill(Self, Double) -> Self
+pub fn SorthybridtimsortNode::get(Self, Int32) -> Double
+pub fn SorthybridtimsortNode::len(Self) -> Int32
+pub fn SorthybridtimsortNode::max(Self) -> Double
+pub fn SorthybridtimsortNode::mean(Self) -> Double
+pub fn SorthybridtimsortNode::min(Self) -> Double
+pub fn SorthybridtimsortNode::scale(Self, Double) -> Self
+pub fn SorthybridtimsortNode::set(Self, Int32, Double) -> Self
+pub fn SorthybridtimsortNode::sum(Self) -> Double
+pub fn SorthybridtimsortNode::to_string(Self) -> String
+
+pub(all) struct SorthybridtimsortPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridtimsortPath::add(Self, Self) -> Self
+pub fn SorthybridtimsortPath::copy(Self) -> Self
+pub fn SorthybridtimsortPath::fill(Self, Double) -> Self
+pub fn SorthybridtimsortPath::get(Self, Int32) -> Double
+pub fn SorthybridtimsortPath::len(Self) -> Int32
+pub fn SorthybridtimsortPath::max(Self) -> Double
+pub fn SorthybridtimsortPath::mean(Self) -> Double
+pub fn SorthybridtimsortPath::min(Self) -> Double
+pub fn SorthybridtimsortPath::scale(Self, Double) -> Self
+pub fn SorthybridtimsortPath::set(Self, Int32, Double) -> Self
+pub fn SorthybridtimsortPath::sum(Self) -> Double
+pub fn SorthybridtimsortPath::to_string(Self) -> String
+
+pub(all) struct SorthybridtimsortPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SorthybridtimsortPoint::add(Self, Self) -> Self
+pub fn SorthybridtimsortPoint::cross(Self, Self) -> Self
+pub fn SorthybridtimsortPoint::dist(Self, Self) -> Double
+pub fn SorthybridtimsortPoint::dot(Self, Self) -> Double
+pub fn SorthybridtimsortPoint::label(Self) -> Int32
+pub fn SorthybridtimsortPoint::lerp(Self, Self, Double) -> Self
+pub fn SorthybridtimsortPoint::mid(Self, Self) -> Self
+pub fn SorthybridtimsortPoint::negate(Self) -> Self
+pub fn SorthybridtimsortPoint::norm(Self) -> Double
+pub fn SorthybridtimsortPoint::normalize(Self) -> Self
+pub fn SorthybridtimsortPoint::scale(Self, Double) -> Self
+pub fn SorthybridtimsortPoint::sub(Self, Self) -> Self
+pub fn SorthybridtimsortPoint::to_string(Self) -> String
+pub fn SorthybridtimsortPoint::x(Self) -> Double
+pub fn SorthybridtimsortPoint::y(Self) -> Double
+pub fn SorthybridtimsortPoint::z(Self) -> Double
+
+pub(all) struct SorthybridtimsortRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridtimsortRange::add(Self, Self) -> Self
+pub fn SorthybridtimsortRange::copy(Self) -> Self
+pub fn SorthybridtimsortRange::fill(Self, Double) -> Self
+pub fn SorthybridtimsortRange::get(Self, Int32) -> Double
+pub fn SorthybridtimsortRange::len(Self) -> Int32
+pub fn SorthybridtimsortRange::max(Self) -> Double
+pub fn SorthybridtimsortRange::mean(Self) -> Double
+pub fn SorthybridtimsortRange::min(Self) -> Double
+pub fn SorthybridtimsortRange::scale(Self, Double) -> Self
+pub fn SorthybridtimsortRange::set(Self, Int32, Double) -> Self
+pub fn SorthybridtimsortRange::sum(Self) -> Double
+pub fn SorthybridtimsortRange::to_string(Self) -> String
+
+pub(all) struct SorthybridtimsortSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SorthybridtimsortSeries::add(Self, Self) -> Self
+pub fn SorthybridtimsortSeries::cumsum(Self) -> Self
+pub fn SorthybridtimsortSeries::len(Self) -> Int32
+pub fn SorthybridtimsortSeries::max(Self) -> Double
+pub fn SorthybridtimsortSeries::mean(Self) -> Double
+pub fn SorthybridtimsortSeries::median(Self) -> Double
+pub fn SorthybridtimsortSeries::min(Self) -> Double
+pub fn SorthybridtimsortSeries::normalize(Self) -> Self
+pub fn SorthybridtimsortSeries::range(Self) -> Double
+pub fn SorthybridtimsortSeries::scale(Self, Double) -> Self
+pub fn SorthybridtimsortSeries::std(Self) -> Double
+pub fn SorthybridtimsortSeries::sub(Self, Self) -> Self
+pub fn SorthybridtimsortSeries::sum(Self) -> Double
+pub fn SorthybridtimsortSeries::to_string(Self) -> String
+pub fn SorthybridtimsortSeries::variance(Self) -> Double
+
+pub(all) struct SorthybridtimsortSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridtimsortSlice::add(Self, Self) -> Self
+pub fn SorthybridtimsortSlice::copy(Self) -> Self
+pub fn SorthybridtimsortSlice::fill(Self, Double) -> Self
+pub fn SorthybridtimsortSlice::get(Self, Int32) -> Double
+pub fn SorthybridtimsortSlice::len(Self) -> Int32
+pub fn SorthybridtimsortSlice::max(Self) -> Double
+pub fn SorthybridtimsortSlice::mean(Self) -> Double
+pub fn SorthybridtimsortSlice::min(Self) -> Double
+pub fn SorthybridtimsortSlice::scale(Self, Double) -> Self
+pub fn SorthybridtimsortSlice::set(Self, Int32, Double) -> Self
+pub fn SorthybridtimsortSlice::sum(Self) -> Double
+pub fn SorthybridtimsortSlice::to_string(Self) -> String
+
+pub(all) struct SorthybridtimsortTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridtimsortTable::add(Self, Self) -> Self
+pub fn SorthybridtimsortTable::copy(Self) -> Self
+pub fn SorthybridtimsortTable::fill(Self, Double) -> Self
+pub fn SorthybridtimsortTable::get(Self, Int32) -> Double
+pub fn SorthybridtimsortTable::len(Self) -> Int32
+pub fn SorthybridtimsortTable::max(Self) -> Double
+pub fn SorthybridtimsortTable::mean(Self) -> Double
+pub fn SorthybridtimsortTable::min(Self) -> Double
+pub fn SorthybridtimsortTable::scale(Self, Double) -> Self
+pub fn SorthybridtimsortTable::set(Self, Int32, Double) -> Self
+pub fn SorthybridtimsortTable::sum(Self) -> Double
+pub fn SorthybridtimsortTable::to_string(Self) -> String
+
+pub(all) struct SorthybridtimsortVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SorthybridtimsortVector::add(Self, Self) -> Self
+pub fn SorthybridtimsortVector::dist(Self, Self) -> Double
+pub fn SorthybridtimsortVector::dot(Self, Self) -> Double
+pub fn SorthybridtimsortVector::norm(Self) -> Double
+pub fn SorthybridtimsortVector::normalize(Self) -> Self
+pub fn SorthybridtimsortVector::scale(Self, Double) -> Self
+pub fn SorthybridtimsortVector::sub(Self, Self) -> Self
+pub fn SorthybridtimsortVector::to_string(Self) -> String
+
+pub(all) struct SorthybridtimsortView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridtimsortView::add(Self, Self) -> Self
+pub fn SorthybridtimsortView::copy(Self) -> Self
+pub fn SorthybridtimsortView::fill(Self, Double) -> Self
+pub fn SorthybridtimsortView::get(Self, Int32) -> Double
+pub fn SorthybridtimsortView::len(Self) -> Int32
+pub fn SorthybridtimsortView::max(Self) -> Double
+pub fn SorthybridtimsortView::mean(Self) -> Double
+pub fn SorthybridtimsortView::min(Self) -> Double
+pub fn SorthybridtimsortView::scale(Self, Double) -> Self
+pub fn SorthybridtimsortView::set(Self, Int32, Double) -> Self
+pub fn SorthybridtimsortView::sum(Self) -> Double
+pub fn SorthybridtimsortView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

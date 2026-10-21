@@ -1,0 +1,41 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/field_lineage"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn build_graph(Array[FieldDep]) -> FieldLineageGraph
+
+pub fn field_lineage_id() -> String
+
+pub fn has_cycle(FieldLineageGraph) -> Bool
+
+pub fn impact_analysis(FieldLineageGraph, String) -> Array[String]
+
+pub fn make_field_dep(String, String, String) -> FieldDep
+
+// Errors
+
+// Types and methods
+pub struct FieldDep {
+  source_field : String
+  target_field : String
+  transform : String
+} derive(Eq, @debug.Debug)
+pub fn FieldDep::equal(Self, Self) -> Bool
+pub fn FieldDep::not_equal(Self, Self) -> Bool
+pub fn FieldDep::to_repr(Self) -> @debug.Repr
+
+pub struct FieldLineageGraph {
+  dependencies : Array[FieldDep]
+  fields : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn FieldLineageGraph::equal(Self, Self) -> Bool
+pub fn FieldLineageGraph::not_equal(Self, Self) -> Bool
+pub fn FieldLineageGraph::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

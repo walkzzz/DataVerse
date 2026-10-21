@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_compare_tim"
+
+// Values
+pub fn sort_compare_tim_buffer_make(Int32) -> SortcomparetimBuffer
+
+pub fn sort_compare_tim_cluster_make(Int32) -> SortcomparetimCluster
+
+pub fn sort_compare_tim_cursor_make(Int32) -> SortcomparetimCursor
+
+pub fn sort_compare_tim_edge_make(Int32) -> SortcomparetimEdge
+
+pub fn sort_compare_tim_frame_make(Int32) -> SortcomparetimFrame
+
+pub fn sort_compare_tim_graphn_make(Int32) -> SortcomparetimGraphN
+
+pub fn sort_compare_tim_layer_make(Int32) -> SortcomparetimLayer
+
+pub fn sort_compare_tim_make_matrix(Int32, Int32, Double) -> SortcomparetimMatrix
+
+pub fn sort_compare_tim_make_point(Double, Double) -> SortcomparetimPoint
+
+pub fn sort_compare_tim_make_point3(Double, Double, Double) -> SortcomparetimPoint
+
+pub fn sort_compare_tim_make_series(Array[Double], String) -> SortcomparetimSeries
+
+pub fn sort_compare_tim_make_vector(Array[Double]) -> SortcomparetimVector
+
+pub fn sort_compare_tim_matrix_identity(Int32) -> SortcomparetimMatrix
+
+pub fn sort_compare_tim_model_make(Int32) -> SortcomparetimModel
+
+pub fn sort_compare_tim_node_make(Int32) -> SortcomparetimNode
+
+pub fn sort_compare_tim_path_make(Int32) -> SortcomparetimPath
+
+pub fn sort_compare_tim_range_make(Int32) -> SortcomparetimRange
+
+pub fn sort_compare_tim_slice_make(Int32) -> SortcomparetimSlice
+
+pub fn sort_compare_tim_table_make(Int32) -> SortcomparetimTable
+
+pub fn sort_compare_tim_vector_zero(Int32) -> SortcomparetimVector
+
+pub fn sort_compare_tim_view_make(Int32) -> SortcomparetimView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortcomparetimBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparetimBuffer::add(Self, Self) -> Self
+pub fn SortcomparetimBuffer::copy(Self) -> Self
+pub fn SortcomparetimBuffer::fill(Self, Double) -> Self
+pub fn SortcomparetimBuffer::get(Self, Int32) -> Double
+pub fn SortcomparetimBuffer::len(Self) -> Int32
+pub fn SortcomparetimBuffer::max(Self) -> Double
+pub fn SortcomparetimBuffer::mean(Self) -> Double
+pub fn SortcomparetimBuffer::min(Self) -> Double
+pub fn SortcomparetimBuffer::scale(Self, Double) -> Self
+pub fn SortcomparetimBuffer::set(Self, Int32, Double) -> Self
+pub fn SortcomparetimBuffer::sum(Self) -> Double
+pub fn SortcomparetimBuffer::to_string(Self) -> String
+
+pub(all) struct SortcomparetimCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparetimCluster::add(Self, Self) -> Self
+pub fn SortcomparetimCluster::copy(Self) -> Self
+pub fn SortcomparetimCluster::fill(Self, Double) -> Self
+pub fn SortcomparetimCluster::get(Self, Int32) -> Double
+pub fn SortcomparetimCluster::len(Self) -> Int32
+pub fn SortcomparetimCluster::max(Self) -> Double
+pub fn SortcomparetimCluster::mean(Self) -> Double
+pub fn SortcomparetimCluster::min(Self) -> Double
+pub fn SortcomparetimCluster::scale(Self, Double) -> Self
+pub fn SortcomparetimCluster::set(Self, Int32, Double) -> Self
+pub fn SortcomparetimCluster::sum(Self) -> Double
+pub fn SortcomparetimCluster::to_string(Self) -> String
+
+pub(all) struct SortcomparetimCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparetimCursor::add(Self, Self) -> Self
+pub fn SortcomparetimCursor::copy(Self) -> Self
+pub fn SortcomparetimCursor::fill(Self, Double) -> Self
+pub fn SortcomparetimCursor::get(Self, Int32) -> Double
+pub fn SortcomparetimCursor::len(Self) -> Int32
+pub fn SortcomparetimCursor::max(Self) -> Double
+pub fn SortcomparetimCursor::mean(Self) -> Double
+pub fn SortcomparetimCursor::min(Self) -> Double
+pub fn SortcomparetimCursor::scale(Self, Double) -> Self
+pub fn SortcomparetimCursor::set(Self, Int32, Double) -> Self
+pub fn SortcomparetimCursor::sum(Self) -> Double
+pub fn SortcomparetimCursor::to_string(Self) -> String
+
+pub(all) struct SortcomparetimEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparetimEdge::add(Self, Self) -> Self
+pub fn SortcomparetimEdge::copy(Self) -> Self
+pub fn SortcomparetimEdge::fill(Self, Double) -> Self
+pub fn SortcomparetimEdge::get(Self, Int32) -> Double
+pub fn SortcomparetimEdge::len(Self) -> Int32
+pub fn SortcomparetimEdge::max(Self) -> Double
+pub fn SortcomparetimEdge::mean(Self) -> Double
+pub fn SortcomparetimEdge::min(Self) -> Double
+pub fn SortcomparetimEdge::scale(Self, Double) -> Self
+pub fn SortcomparetimEdge::set(Self, Int32, Double) -> Self
+pub fn SortcomparetimEdge::sum(Self) -> Double
+pub fn SortcomparetimEdge::to_string(Self) -> String
+
+pub(all) struct SortcomparetimFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparetimFrame::add(Self, Self) -> Self
+pub fn SortcomparetimFrame::copy(Self) -> Self
+pub fn SortcomparetimFrame::fill(Self, Double) -> Self
+pub fn SortcomparetimFrame::get(Self, Int32) -> Double
+pub fn SortcomparetimFrame::len(Self) -> Int32
+pub fn SortcomparetimFrame::max(Self) -> Double
+pub fn SortcomparetimFrame::mean(Self) -> Double
+pub fn SortcomparetimFrame::min(Self) -> Double
+pub fn SortcomparetimFrame::scale(Self, Double) -> Self
+pub fn SortcomparetimFrame::set(Self, Int32, Double) -> Self
+pub fn SortcomparetimFrame::sum(Self) -> Double
+pub fn SortcomparetimFrame::to_string(Self) -> String
+
+pub(all) struct SortcomparetimGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparetimGraphN::add(Self, Self) -> Self
+pub fn SortcomparetimGraphN::copy(Self) -> Self
+pub fn SortcomparetimGraphN::fill(Self, Double) -> Self
+pub fn SortcomparetimGraphN::get(Self, Int32) -> Double
+pub fn SortcomparetimGraphN::len(Self) -> Int32
+pub fn SortcomparetimGraphN::max(Self) -> Double
+pub fn SortcomparetimGraphN::mean(Self) -> Double
+pub fn SortcomparetimGraphN::min(Self) -> Double
+pub fn SortcomparetimGraphN::scale(Self, Double) -> Self
+pub fn SortcomparetimGraphN::set(Self, Int32, Double) -> Self
+pub fn SortcomparetimGraphN::sum(Self) -> Double
+pub fn SortcomparetimGraphN::to_string(Self) -> String
+
+pub(all) struct SortcomparetimLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparetimLayer::add(Self, Self) -> Self
+pub fn SortcomparetimLayer::copy(Self) -> Self
+pub fn SortcomparetimLayer::fill(Self, Double) -> Self
+pub fn SortcomparetimLayer::get(Self, Int32) -> Double
+pub fn SortcomparetimLayer::len(Self) -> Int32
+pub fn SortcomparetimLayer::max(Self) -> Double
+pub fn SortcomparetimLayer::mean(Self) -> Double
+pub fn SortcomparetimLayer::min(Self) -> Double
+pub fn SortcomparetimLayer::scale(Self, Double) -> Self
+pub fn SortcomparetimLayer::set(Self, Int32, Double) -> Self
+pub fn SortcomparetimLayer::sum(Self) -> Double
+pub fn SortcomparetimLayer::to_string(Self) -> String
+
+pub(all) struct SortcomparetimMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortcomparetimMatrix::add(Self, Self) -> Self
+pub fn SortcomparetimMatrix::det(Self) -> Double
+pub fn SortcomparetimMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortcomparetimMatrix::multiply(Self, Self) -> Self
+pub fn SortcomparetimMatrix::norm(Self) -> Double
+pub fn SortcomparetimMatrix::scale(Self, Double) -> Self
+pub fn SortcomparetimMatrix::to_string(Self) -> String
+pub fn SortcomparetimMatrix::trace(Self) -> Double
+pub fn SortcomparetimMatrix::transpose(Self) -> Self
+
+pub(all) struct SortcomparetimModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparetimModel::add(Self, Self) -> Self
+pub fn SortcomparetimModel::copy(Self) -> Self
+pub fn SortcomparetimModel::fill(Self, Double) -> Self
+pub fn SortcomparetimModel::get(Self, Int32) -> Double
+pub fn SortcomparetimModel::len(Self) -> Int32
+pub fn SortcomparetimModel::max(Self) -> Double
+pub fn SortcomparetimModel::mean(Self) -> Double
+pub fn SortcomparetimModel::min(Self) -> Double
+pub fn SortcomparetimModel::scale(Self, Double) -> Self
+pub fn SortcomparetimModel::set(Self, Int32, Double) -> Self
+pub fn SortcomparetimModel::sum(Self) -> Double
+pub fn SortcomparetimModel::to_string(Self) -> String
+
+pub(all) struct SortcomparetimNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparetimNode::add(Self, Self) -> Self
+pub fn SortcomparetimNode::copy(Self) -> Self
+pub fn SortcomparetimNode::fill(Self, Double) -> Self
+pub fn SortcomparetimNode::get(Self, Int32) -> Double
+pub fn SortcomparetimNode::len(Self) -> Int32
+pub fn SortcomparetimNode::max(Self) -> Double
+pub fn SortcomparetimNode::mean(Self) -> Double
+pub fn SortcomparetimNode::min(Self) -> Double
+pub fn SortcomparetimNode::scale(Self, Double) -> Self
+pub fn SortcomparetimNode::set(Self, Int32, Double) -> Self
+pub fn SortcomparetimNode::sum(Self) -> Double
+pub fn SortcomparetimNode::to_string(Self) -> String
+
+pub(all) struct SortcomparetimPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparetimPath::add(Self, Self) -> Self
+pub fn SortcomparetimPath::copy(Self) -> Self
+pub fn SortcomparetimPath::fill(Self, Double) -> Self
+pub fn SortcomparetimPath::get(Self, Int32) -> Double
+pub fn SortcomparetimPath::len(Self) -> Int32
+pub fn SortcomparetimPath::max(Self) -> Double
+pub fn SortcomparetimPath::mean(Self) -> Double
+pub fn SortcomparetimPath::min(Self) -> Double
+pub fn SortcomparetimPath::scale(Self, Double) -> Self
+pub fn SortcomparetimPath::set(Self, Int32, Double) -> Self
+pub fn SortcomparetimPath::sum(Self) -> Double
+pub fn SortcomparetimPath::to_string(Self) -> String
+
+pub(all) struct SortcomparetimPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortcomparetimPoint::add(Self, Self) -> Self
+pub fn SortcomparetimPoint::cross(Self, Self) -> Self
+pub fn SortcomparetimPoint::dist(Self, Self) -> Double
+pub fn SortcomparetimPoint::dot(Self, Self) -> Double
+pub fn SortcomparetimPoint::label(Self) -> Int32
+pub fn SortcomparetimPoint::lerp(Self, Self, Double) -> Self
+pub fn SortcomparetimPoint::mid(Self, Self) -> Self
+pub fn SortcomparetimPoint::negate(Self) -> Self
+pub fn SortcomparetimPoint::norm(Self) -> Double
+pub fn SortcomparetimPoint::normalize(Self) -> Self
+pub fn SortcomparetimPoint::scale(Self, Double) -> Self
+pub fn SortcomparetimPoint::sub(Self, Self) -> Self
+pub fn SortcomparetimPoint::to_string(Self) -> String
+pub fn SortcomparetimPoint::x(Self) -> Double
+pub fn SortcomparetimPoint::y(Self) -> Double
+pub fn SortcomparetimPoint::z(Self) -> Double
+
+pub(all) struct SortcomparetimRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparetimRange::add(Self, Self) -> Self
+pub fn SortcomparetimRange::copy(Self) -> Self
+pub fn SortcomparetimRange::fill(Self, Double) -> Self
+pub fn SortcomparetimRange::get(Self, Int32) -> Double
+pub fn SortcomparetimRange::len(Self) -> Int32
+pub fn SortcomparetimRange::max(Self) -> Double
+pub fn SortcomparetimRange::mean(Self) -> Double
+pub fn SortcomparetimRange::min(Self) -> Double
+pub fn SortcomparetimRange::scale(Self, Double) -> Self
+pub fn SortcomparetimRange::set(Self, Int32, Double) -> Self
+pub fn SortcomparetimRange::sum(Self) -> Double
+pub fn SortcomparetimRange::to_string(Self) -> String
+
+pub(all) struct SortcomparetimSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortcomparetimSeries::add(Self, Self) -> Self
+pub fn SortcomparetimSeries::cumsum(Self) -> Self
+pub fn SortcomparetimSeries::len(Self) -> Int32
+pub fn SortcomparetimSeries::max(Self) -> Double
+pub fn SortcomparetimSeries::mean(Self) -> Double
+pub fn SortcomparetimSeries::median(Self) -> Double
+pub fn SortcomparetimSeries::min(Self) -> Double
+pub fn SortcomparetimSeries::normalize(Self) -> Self
+pub fn SortcomparetimSeries::range(Self) -> Double
+pub fn SortcomparetimSeries::scale(Self, Double) -> Self
+pub fn SortcomparetimSeries::std(Self) -> Double
+pub fn SortcomparetimSeries::sub(Self, Self) -> Self
+pub fn SortcomparetimSeries::sum(Self) -> Double
+pub fn SortcomparetimSeries::to_string(Self) -> String
+pub fn SortcomparetimSeries::variance(Self) -> Double
+
+pub(all) struct SortcomparetimSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparetimSlice::add(Self, Self) -> Self
+pub fn SortcomparetimSlice::copy(Self) -> Self
+pub fn SortcomparetimSlice::fill(Self, Double) -> Self
+pub fn SortcomparetimSlice::get(Self, Int32) -> Double
+pub fn SortcomparetimSlice::len(Self) -> Int32
+pub fn SortcomparetimSlice::max(Self) -> Double
+pub fn SortcomparetimSlice::mean(Self) -> Double
+pub fn SortcomparetimSlice::min(Self) -> Double
+pub fn SortcomparetimSlice::scale(Self, Double) -> Self
+pub fn SortcomparetimSlice::set(Self, Int32, Double) -> Self
+pub fn SortcomparetimSlice::sum(Self) -> Double
+pub fn SortcomparetimSlice::to_string(Self) -> String
+
+pub(all) struct SortcomparetimTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparetimTable::add(Self, Self) -> Self
+pub fn SortcomparetimTable::copy(Self) -> Self
+pub fn SortcomparetimTable::fill(Self, Double) -> Self
+pub fn SortcomparetimTable::get(Self, Int32) -> Double
+pub fn SortcomparetimTable::len(Self) -> Int32
+pub fn SortcomparetimTable::max(Self) -> Double
+pub fn SortcomparetimTable::mean(Self) -> Double
+pub fn SortcomparetimTable::min(Self) -> Double
+pub fn SortcomparetimTable::scale(Self, Double) -> Self
+pub fn SortcomparetimTable::set(Self, Int32, Double) -> Self
+pub fn SortcomparetimTable::sum(Self) -> Double
+pub fn SortcomparetimTable::to_string(Self) -> String
+
+pub(all) struct SortcomparetimVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortcomparetimVector::add(Self, Self) -> Self
+pub fn SortcomparetimVector::dist(Self, Self) -> Double
+pub fn SortcomparetimVector::dot(Self, Self) -> Double
+pub fn SortcomparetimVector::norm(Self) -> Double
+pub fn SortcomparetimVector::normalize(Self) -> Self
+pub fn SortcomparetimVector::scale(Self, Double) -> Self
+pub fn SortcomparetimVector::sub(Self, Self) -> Self
+pub fn SortcomparetimVector::to_string(Self) -> String
+
+pub(all) struct SortcomparetimView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcomparetimView::add(Self, Self) -> Self
+pub fn SortcomparetimView::copy(Self) -> Self
+pub fn SortcomparetimView::fill(Self, Double) -> Self
+pub fn SortcomparetimView::get(Self, Int32) -> Double
+pub fn SortcomparetimView::len(Self) -> Int32
+pub fn SortcomparetimView::max(Self) -> Double
+pub fn SortcomparetimView::mean(Self) -> Double
+pub fn SortcomparetimView::min(Self) -> Double
+pub fn SortcomparetimView::scale(Self, Double) -> Self
+pub fn SortcomparetimView::set(Self, Int32, Double) -> Self
+pub fn SortcomparetimView::sum(Self) -> Double
+pub fn SortcomparetimView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

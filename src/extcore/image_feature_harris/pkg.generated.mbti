@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_feature_harris"
+
+// Values
+pub fn image_feature_harris_buffer_make(Int32) -> ImagefeatureharrisBuffer
+
+pub fn image_feature_harris_cluster_make(Int32) -> ImagefeatureharrisCluster
+
+pub fn image_feature_harris_cursor_make(Int32) -> ImagefeatureharrisCursor
+
+pub fn image_feature_harris_edge_make(Int32) -> ImagefeatureharrisEdge
+
+pub fn image_feature_harris_frame_make(Int32) -> ImagefeatureharrisFrame
+
+pub fn image_feature_harris_graphn_make(Int32) -> ImagefeatureharrisGraphN
+
+pub fn image_feature_harris_layer_make(Int32) -> ImagefeatureharrisLayer
+
+pub fn image_feature_harris_make_matrix(Int32, Int32, Double) -> ImagefeatureharrisMatrix
+
+pub fn image_feature_harris_make_point(Double, Double) -> ImagefeatureharrisPoint
+
+pub fn image_feature_harris_make_point3(Double, Double, Double) -> ImagefeatureharrisPoint
+
+pub fn image_feature_harris_make_series(Array[Double], String) -> ImagefeatureharrisSeries
+
+pub fn image_feature_harris_make_vector(Array[Double]) -> ImagefeatureharrisVector
+
+pub fn image_feature_harris_matrix_identity(Int32) -> ImagefeatureharrisMatrix
+
+pub fn image_feature_harris_model_make(Int32) -> ImagefeatureharrisModel
+
+pub fn image_feature_harris_node_make(Int32) -> ImagefeatureharrisNode
+
+pub fn image_feature_harris_path_make(Int32) -> ImagefeatureharrisPath
+
+pub fn image_feature_harris_range_make(Int32) -> ImagefeatureharrisRange
+
+pub fn image_feature_harris_slice_make(Int32) -> ImagefeatureharrisSlice
+
+pub fn image_feature_harris_table_make(Int32) -> ImagefeatureharrisTable
+
+pub fn image_feature_harris_vector_zero(Int32) -> ImagefeatureharrisVector
+
+pub fn image_feature_harris_view_make(Int32) -> ImagefeatureharrisView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagefeatureharrisBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureharrisBuffer::add(Self, Self) -> Self
+pub fn ImagefeatureharrisBuffer::copy(Self) -> Self
+pub fn ImagefeatureharrisBuffer::fill(Self, Double) -> Self
+pub fn ImagefeatureharrisBuffer::get(Self, Int32) -> Double
+pub fn ImagefeatureharrisBuffer::len(Self) -> Int32
+pub fn ImagefeatureharrisBuffer::max(Self) -> Double
+pub fn ImagefeatureharrisBuffer::mean(Self) -> Double
+pub fn ImagefeatureharrisBuffer::min(Self) -> Double
+pub fn ImagefeatureharrisBuffer::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureharrisBuffer::sum(Self) -> Double
+pub fn ImagefeatureharrisBuffer::to_string(Self) -> String
+
+pub(all) struct ImagefeatureharrisCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureharrisCluster::add(Self, Self) -> Self
+pub fn ImagefeatureharrisCluster::copy(Self) -> Self
+pub fn ImagefeatureharrisCluster::fill(Self, Double) -> Self
+pub fn ImagefeatureharrisCluster::get(Self, Int32) -> Double
+pub fn ImagefeatureharrisCluster::len(Self) -> Int32
+pub fn ImagefeatureharrisCluster::max(Self) -> Double
+pub fn ImagefeatureharrisCluster::mean(Self) -> Double
+pub fn ImagefeatureharrisCluster::min(Self) -> Double
+pub fn ImagefeatureharrisCluster::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisCluster::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureharrisCluster::sum(Self) -> Double
+pub fn ImagefeatureharrisCluster::to_string(Self) -> String
+
+pub(all) struct ImagefeatureharrisCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureharrisCursor::add(Self, Self) -> Self
+pub fn ImagefeatureharrisCursor::copy(Self) -> Self
+pub fn ImagefeatureharrisCursor::fill(Self, Double) -> Self
+pub fn ImagefeatureharrisCursor::get(Self, Int32) -> Double
+pub fn ImagefeatureharrisCursor::len(Self) -> Int32
+pub fn ImagefeatureharrisCursor::max(Self) -> Double
+pub fn ImagefeatureharrisCursor::mean(Self) -> Double
+pub fn ImagefeatureharrisCursor::min(Self) -> Double
+pub fn ImagefeatureharrisCursor::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisCursor::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureharrisCursor::sum(Self) -> Double
+pub fn ImagefeatureharrisCursor::to_string(Self) -> String
+
+pub(all) struct ImagefeatureharrisEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureharrisEdge::add(Self, Self) -> Self
+pub fn ImagefeatureharrisEdge::copy(Self) -> Self
+pub fn ImagefeatureharrisEdge::fill(Self, Double) -> Self
+pub fn ImagefeatureharrisEdge::get(Self, Int32) -> Double
+pub fn ImagefeatureharrisEdge::len(Self) -> Int32
+pub fn ImagefeatureharrisEdge::max(Self) -> Double
+pub fn ImagefeatureharrisEdge::mean(Self) -> Double
+pub fn ImagefeatureharrisEdge::min(Self) -> Double
+pub fn ImagefeatureharrisEdge::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisEdge::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureharrisEdge::sum(Self) -> Double
+pub fn ImagefeatureharrisEdge::to_string(Self) -> String
+
+pub(all) struct ImagefeatureharrisFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureharrisFrame::add(Self, Self) -> Self
+pub fn ImagefeatureharrisFrame::copy(Self) -> Self
+pub fn ImagefeatureharrisFrame::fill(Self, Double) -> Self
+pub fn ImagefeatureharrisFrame::get(Self, Int32) -> Double
+pub fn ImagefeatureharrisFrame::len(Self) -> Int32
+pub fn ImagefeatureharrisFrame::max(Self) -> Double
+pub fn ImagefeatureharrisFrame::mean(Self) -> Double
+pub fn ImagefeatureharrisFrame::min(Self) -> Double
+pub fn ImagefeatureharrisFrame::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisFrame::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureharrisFrame::sum(Self) -> Double
+pub fn ImagefeatureharrisFrame::to_string(Self) -> String
+
+pub(all) struct ImagefeatureharrisGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureharrisGraphN::add(Self, Self) -> Self
+pub fn ImagefeatureharrisGraphN::copy(Self) -> Self
+pub fn ImagefeatureharrisGraphN::fill(Self, Double) -> Self
+pub fn ImagefeatureharrisGraphN::get(Self, Int32) -> Double
+pub fn ImagefeatureharrisGraphN::len(Self) -> Int32
+pub fn ImagefeatureharrisGraphN::max(Self) -> Double
+pub fn ImagefeatureharrisGraphN::mean(Self) -> Double
+pub fn ImagefeatureharrisGraphN::min(Self) -> Double
+pub fn ImagefeatureharrisGraphN::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureharrisGraphN::sum(Self) -> Double
+pub fn ImagefeatureharrisGraphN::to_string(Self) -> String
+
+pub(all) struct ImagefeatureharrisLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureharrisLayer::add(Self, Self) -> Self
+pub fn ImagefeatureharrisLayer::copy(Self) -> Self
+pub fn ImagefeatureharrisLayer::fill(Self, Double) -> Self
+pub fn ImagefeatureharrisLayer::get(Self, Int32) -> Double
+pub fn ImagefeatureharrisLayer::len(Self) -> Int32
+pub fn ImagefeatureharrisLayer::max(Self) -> Double
+pub fn ImagefeatureharrisLayer::mean(Self) -> Double
+pub fn ImagefeatureharrisLayer::min(Self) -> Double
+pub fn ImagefeatureharrisLayer::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisLayer::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureharrisLayer::sum(Self) -> Double
+pub fn ImagefeatureharrisLayer::to_string(Self) -> String
+
+pub(all) struct ImagefeatureharrisMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagefeatureharrisMatrix::add(Self, Self) -> Self
+pub fn ImagefeatureharrisMatrix::det(Self) -> Double
+pub fn ImagefeatureharrisMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagefeatureharrisMatrix::multiply(Self, Self) -> Self
+pub fn ImagefeatureharrisMatrix::norm(Self) -> Double
+pub fn ImagefeatureharrisMatrix::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisMatrix::to_string(Self) -> String
+pub fn ImagefeatureharrisMatrix::trace(Self) -> Double
+pub fn ImagefeatureharrisMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagefeatureharrisModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureharrisModel::add(Self, Self) -> Self
+pub fn ImagefeatureharrisModel::copy(Self) -> Self
+pub fn ImagefeatureharrisModel::fill(Self, Double) -> Self
+pub fn ImagefeatureharrisModel::get(Self, Int32) -> Double
+pub fn ImagefeatureharrisModel::len(Self) -> Int32
+pub fn ImagefeatureharrisModel::max(Self) -> Double
+pub fn ImagefeatureharrisModel::mean(Self) -> Double
+pub fn ImagefeatureharrisModel::min(Self) -> Double
+pub fn ImagefeatureharrisModel::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisModel::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureharrisModel::sum(Self) -> Double
+pub fn ImagefeatureharrisModel::to_string(Self) -> String
+
+pub(all) struct ImagefeatureharrisNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureharrisNode::add(Self, Self) -> Self
+pub fn ImagefeatureharrisNode::copy(Self) -> Self
+pub fn ImagefeatureharrisNode::fill(Self, Double) -> Self
+pub fn ImagefeatureharrisNode::get(Self, Int32) -> Double
+pub fn ImagefeatureharrisNode::len(Self) -> Int32
+pub fn ImagefeatureharrisNode::max(Self) -> Double
+pub fn ImagefeatureharrisNode::mean(Self) -> Double
+pub fn ImagefeatureharrisNode::min(Self) -> Double
+pub fn ImagefeatureharrisNode::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisNode::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureharrisNode::sum(Self) -> Double
+pub fn ImagefeatureharrisNode::to_string(Self) -> String
+
+pub(all) struct ImagefeatureharrisPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureharrisPath::add(Self, Self) -> Self
+pub fn ImagefeatureharrisPath::copy(Self) -> Self
+pub fn ImagefeatureharrisPath::fill(Self, Double) -> Self
+pub fn ImagefeatureharrisPath::get(Self, Int32) -> Double
+pub fn ImagefeatureharrisPath::len(Self) -> Int32
+pub fn ImagefeatureharrisPath::max(Self) -> Double
+pub fn ImagefeatureharrisPath::mean(Self) -> Double
+pub fn ImagefeatureharrisPath::min(Self) -> Double
+pub fn ImagefeatureharrisPath::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisPath::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureharrisPath::sum(Self) -> Double
+pub fn ImagefeatureharrisPath::to_string(Self) -> String
+
+pub(all) struct ImagefeatureharrisPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagefeatureharrisPoint::add(Self, Self) -> Self
+pub fn ImagefeatureharrisPoint::cross(Self, Self) -> Self
+pub fn ImagefeatureharrisPoint::dist(Self, Self) -> Double
+pub fn ImagefeatureharrisPoint::dot(Self, Self) -> Double
+pub fn ImagefeatureharrisPoint::label(Self) -> Int32
+pub fn ImagefeatureharrisPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagefeatureharrisPoint::mid(Self, Self) -> Self
+pub fn ImagefeatureharrisPoint::negate(Self) -> Self
+pub fn ImagefeatureharrisPoint::norm(Self) -> Double
+pub fn ImagefeatureharrisPoint::normalize(Self) -> Self
+pub fn ImagefeatureharrisPoint::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisPoint::sub(Self, Self) -> Self
+pub fn ImagefeatureharrisPoint::to_string(Self) -> String
+pub fn ImagefeatureharrisPoint::x(Self) -> Double
+pub fn ImagefeatureharrisPoint::y(Self) -> Double
+pub fn ImagefeatureharrisPoint::z(Self) -> Double
+
+pub(all) struct ImagefeatureharrisRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureharrisRange::add(Self, Self) -> Self
+pub fn ImagefeatureharrisRange::copy(Self) -> Self
+pub fn ImagefeatureharrisRange::fill(Self, Double) -> Self
+pub fn ImagefeatureharrisRange::get(Self, Int32) -> Double
+pub fn ImagefeatureharrisRange::len(Self) -> Int32
+pub fn ImagefeatureharrisRange::max(Self) -> Double
+pub fn ImagefeatureharrisRange::mean(Self) -> Double
+pub fn ImagefeatureharrisRange::min(Self) -> Double
+pub fn ImagefeatureharrisRange::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisRange::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureharrisRange::sum(Self) -> Double
+pub fn ImagefeatureharrisRange::to_string(Self) -> String
+
+pub(all) struct ImagefeatureharrisSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagefeatureharrisSeries::add(Self, Self) -> Self
+pub fn ImagefeatureharrisSeries::cumsum(Self) -> Self
+pub fn ImagefeatureharrisSeries::len(Self) -> Int32
+pub fn ImagefeatureharrisSeries::max(Self) -> Double
+pub fn ImagefeatureharrisSeries::mean(Self) -> Double
+pub fn ImagefeatureharrisSeries::median(Self) -> Double
+pub fn ImagefeatureharrisSeries::min(Self) -> Double
+pub fn ImagefeatureharrisSeries::normalize(Self) -> Self
+pub fn ImagefeatureharrisSeries::range(Self) -> Double
+pub fn ImagefeatureharrisSeries::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisSeries::std(Self) -> Double
+pub fn ImagefeatureharrisSeries::sub(Self, Self) -> Self
+pub fn ImagefeatureharrisSeries::sum(Self) -> Double
+pub fn ImagefeatureharrisSeries::to_string(Self) -> String
+pub fn ImagefeatureharrisSeries::variance(Self) -> Double
+
+pub(all) struct ImagefeatureharrisSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureharrisSlice::add(Self, Self) -> Self
+pub fn ImagefeatureharrisSlice::copy(Self) -> Self
+pub fn ImagefeatureharrisSlice::fill(Self, Double) -> Self
+pub fn ImagefeatureharrisSlice::get(Self, Int32) -> Double
+pub fn ImagefeatureharrisSlice::len(Self) -> Int32
+pub fn ImagefeatureharrisSlice::max(Self) -> Double
+pub fn ImagefeatureharrisSlice::mean(Self) -> Double
+pub fn ImagefeatureharrisSlice::min(Self) -> Double
+pub fn ImagefeatureharrisSlice::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisSlice::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureharrisSlice::sum(Self) -> Double
+pub fn ImagefeatureharrisSlice::to_string(Self) -> String
+
+pub(all) struct ImagefeatureharrisTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureharrisTable::add(Self, Self) -> Self
+pub fn ImagefeatureharrisTable::copy(Self) -> Self
+pub fn ImagefeatureharrisTable::fill(Self, Double) -> Self
+pub fn ImagefeatureharrisTable::get(Self, Int32) -> Double
+pub fn ImagefeatureharrisTable::len(Self) -> Int32
+pub fn ImagefeatureharrisTable::max(Self) -> Double
+pub fn ImagefeatureharrisTable::mean(Self) -> Double
+pub fn ImagefeatureharrisTable::min(Self) -> Double
+pub fn ImagefeatureharrisTable::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisTable::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureharrisTable::sum(Self) -> Double
+pub fn ImagefeatureharrisTable::to_string(Self) -> String
+
+pub(all) struct ImagefeatureharrisVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagefeatureharrisVector::add(Self, Self) -> Self
+pub fn ImagefeatureharrisVector::dist(Self, Self) -> Double
+pub fn ImagefeatureharrisVector::dot(Self, Self) -> Double
+pub fn ImagefeatureharrisVector::norm(Self) -> Double
+pub fn ImagefeatureharrisVector::normalize(Self) -> Self
+pub fn ImagefeatureharrisVector::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisVector::sub(Self, Self) -> Self
+pub fn ImagefeatureharrisVector::to_string(Self) -> String
+
+pub(all) struct ImagefeatureharrisView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeatureharrisView::add(Self, Self) -> Self
+pub fn ImagefeatureharrisView::copy(Self) -> Self
+pub fn ImagefeatureharrisView::fill(Self, Double) -> Self
+pub fn ImagefeatureharrisView::get(Self, Int32) -> Double
+pub fn ImagefeatureharrisView::len(Self) -> Int32
+pub fn ImagefeatureharrisView::max(Self) -> Double
+pub fn ImagefeatureharrisView::mean(Self) -> Double
+pub fn ImagefeatureharrisView::min(Self) -> Double
+pub fn ImagefeatureharrisView::scale(Self, Double) -> Self
+pub fn ImagefeatureharrisView::set(Self, Int32, Double) -> Self
+pub fn ImagefeatureharrisView::sum(Self) -> Double
+pub fn ImagefeatureharrisView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

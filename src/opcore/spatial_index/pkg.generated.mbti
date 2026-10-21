@@ -1,0 +1,233 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/spatial_index"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn bbox_area(BBox) -> Double
+
+pub fn bbox_center(BBox) -> SIPoint
+
+pub fn bbox_contains(BBox, SIPoint) -> Bool
+
+pub fn bbox_distance(BBox, BBox) -> Double
+
+pub fn bbox_expand(BBox, Double) -> BBox
+
+pub fn bbox_intersects(BBox, BBox) -> Bool
+
+pub fn bbox_union(BBox, BBox) -> BBox
+
+pub fn concave_hull(Array[SIPoint], Double) -> Array[SIPoint]
+
+pub fn convex_hull(Array[SIPoint]) -> Array[SIPoint]
+
+pub fn delaunay_insert(Delaunay, SIPoint) -> Delaunay
+
+pub fn delaunay_triangulate(Delaunay) -> Delaunay
+
+pub fn geohash_decode(GeoHash, String) -> (Double, Double)
+
+pub fn geohash_encode(GeoHash, Double, Double) -> String
+
+pub fn geohash_neighbor(GeoHash, String) -> Array[String]
+
+pub fn grid_cell(GridIndex, SIPoint) -> (Int32, Int32)
+
+pub fn grid_insert(GridIndex, SIEntry) -> GridIndex
+
+pub fn grid_query(GridIndex, SIPoint) -> Array[SIEntry]
+
+pub fn hilbert_decode(HilbertCurve, Int32) -> (Int32, Int32)
+
+pub fn hilbert_encode(HilbertCurve, Int32, Int32) -> Int32
+
+pub fn kdtree_insert(KDTree, SIEntry) -> KDTree
+
+pub fn kdtree_knn(KDTree, SIPoint, Int32) -> Array[NNResult]
+
+pub fn kdtree_nearest(KDTree, SIPoint) -> NNResult?
+
+pub fn kdtree_search(KDTree, BBox) -> Array[SIEntry]
+
+pub fn knn_search(Array[SIEntry], SIPoint, Int32) -> Array[NNResult]
+
+pub fn make_bbox(Double, Double, Double, Double) -> BBox
+
+pub fn make_delaunay(Array[SIPoint]) -> Delaunay
+
+pub fn make_geohash(Int32) -> GeoHash
+
+pub fn make_grid_index(SIPoint, Double, Int32, Int32) -> GridIndex
+
+pub fn make_hilbert_curve(Int32) -> HilbertCurve
+
+pub fn make_kdtree() -> KDTree
+
+pub fn make_point(Double, Double) -> SIPoint
+
+pub fn make_quadtree(BBox, Int32) -> QuadTree
+
+pub fn make_rtree(BBox) -> RTree
+
+pub fn make_voronoi(Array[SIPoint]) -> Voronoi
+
+pub fn make_z_order(Int32) -> ZOrder
+
+pub fn nearest_neighbor(Array[SIEntry], SIPoint) -> NNResult?
+
+pub fn point_distance(SIPoint, SIPoint) -> Double
+
+pub fn point_distance_sq(SIPoint, SIPoint) -> Double
+
+pub fn point_in_bbox(SIPoint, BBox) -> Bool
+
+pub fn quadtree_delete(QuadTree, Int32) -> QuadTree
+
+pub fn quadtree_insert(QuadTree, SIEntry) -> QuadTree
+
+pub fn quadtree_range_query(QuadTree, SIPoint, Double) -> Array[SIEntry]
+
+pub fn quadtree_search(QuadTree, BBox) -> Array[SIEntry]
+
+pub fn range_search(Array[SIEntry], SIPoint, Double) -> Array[SIEntry]
+
+pub fn rtree_delete(RTree, Int32) -> RTree
+
+pub fn rtree_insert(RTree, SIEntry) -> RTree
+
+pub fn rtree_range_query(RTree, SIPoint, Double) -> Array[SIEntry]
+
+pub fn rtree_search(RTree, BBox) -> Array[SIEntry]
+
+pub fn simplify_geometry(Array[SIPoint], Double) -> Array[SIPoint]
+
+pub fn spatial_filter(Array[SIEntry], BBox) -> Array[SIEntry]
+
+pub fn spatial_index_id() -> String
+
+pub fn spatial_join(Array[SIEntry], Array[SIEntry], Double) -> Array[(SIEntry, SIEntry)]
+
+pub fn spatial_sort(Array[SIEntry]) -> Array[SIEntry]
+
+pub fn voronoi_cell(Voronoi, SIPoint) -> Int32
+
+pub fn voronoi_neighbors(Voronoi, Int32) -> Array[Int32]
+
+pub fn z_order_decode(ZOrder, Int32) -> (Int32, Int32)
+
+pub fn z_order_encode(ZOrder, Int32, Int32) -> Int32
+
+// Errors
+
+// Types and methods
+pub struct BBox {
+  min_x : Double
+  min_y : Double
+  max_x : Double
+  max_y : Double
+} derive(Eq, @debug.Debug)
+pub fn BBox::equal(Self, Self) -> Bool
+pub fn BBox::not_equal(Self, Self) -> Bool
+pub fn BBox::to_repr(Self) -> @debug.Repr
+
+pub struct Delaunay {
+  points : Array[SIPoint]
+  triangles : Array[(Int32, Int32, Int32)]
+} derive(Eq, @debug.Debug)
+pub fn Delaunay::equal(Self, Self) -> Bool
+pub fn Delaunay::not_equal(Self, Self) -> Bool
+pub fn Delaunay::to_repr(Self) -> @debug.Repr
+
+pub struct GeoHash {
+  precision : Int32
+} derive(Eq, @debug.Debug)
+pub fn GeoHash::equal(Self, Self) -> Bool
+pub fn GeoHash::not_equal(Self, Self) -> Bool
+pub fn GeoHash::to_repr(Self) -> @debug.Repr
+
+pub struct GridIndex {
+  cell_size : Double
+  origin : SIPoint
+  cells : Array[Array[Array[SIEntry]]]
+  rows : Int32
+  cols : Int32
+} derive(Eq, @debug.Debug)
+pub fn GridIndex::equal(Self, Self) -> Bool
+pub fn GridIndex::not_equal(Self, Self) -> Bool
+pub fn GridIndex::to_repr(Self) -> @debug.Repr
+
+pub struct HilbertCurve {
+  order : Int32
+} derive(Eq, @debug.Debug)
+pub fn HilbertCurve::equal(Self, Self) -> Bool
+pub fn HilbertCurve::not_equal(Self, Self) -> Bool
+pub fn HilbertCurve::to_repr(Self) -> @debug.Repr
+
+pub struct KDTree {
+  entries : Array[SIEntry]
+} derive(Eq, @debug.Debug)
+pub fn KDTree::equal(Self, Self) -> Bool
+pub fn KDTree::not_equal(Self, Self) -> Bool
+pub fn KDTree::to_repr(Self) -> @debug.Repr
+
+pub struct NNResult {
+  entry : SIEntry
+  distance : Double
+} derive(Eq, @debug.Debug)
+pub fn NNResult::equal(Self, Self) -> Bool
+pub fn NNResult::not_equal(Self, Self) -> Bool
+pub fn NNResult::to_repr(Self) -> @debug.Repr
+
+pub struct QuadTree {
+  entries : Array[SIEntry]
+  bbox : BBox
+  capacity : Int32
+} derive(Eq, @debug.Debug)
+pub fn QuadTree::equal(Self, Self) -> Bool
+pub fn QuadTree::not_equal(Self, Self) -> Bool
+pub fn QuadTree::to_repr(Self) -> @debug.Repr
+
+pub struct RTree {
+  entries : Array[SIEntry]
+  bbox : BBox
+} derive(Eq, @debug.Debug)
+pub fn RTree::equal(Self, Self) -> Bool
+pub fn RTree::not_equal(Self, Self) -> Bool
+pub fn RTree::to_repr(Self) -> @debug.Repr
+
+pub struct SIEntry {
+  id : Int32
+  point : SIPoint
+} derive(Eq, @debug.Debug)
+pub fn SIEntry::equal(Self, Self) -> Bool
+pub fn SIEntry::not_equal(Self, Self) -> Bool
+pub fn SIEntry::to_repr(Self) -> @debug.Repr
+
+pub struct SIPoint {
+  x : Double
+  y : Double
+} derive(Eq, @debug.Debug)
+pub fn SIPoint::equal(Self, Self) -> Bool
+pub fn SIPoint::not_equal(Self, Self) -> Bool
+pub fn SIPoint::to_repr(Self) -> @debug.Repr
+
+pub struct Voronoi {
+  sites : Array[SIPoint]
+} derive(Eq, @debug.Debug)
+pub fn Voronoi::equal(Self, Self) -> Bool
+pub fn Voronoi::not_equal(Self, Self) -> Bool
+pub fn Voronoi::to_repr(Self) -> @debug.Repr
+
+pub struct ZOrder {
+  bits : Int32
+} derive(Eq, @debug.Debug)
+pub fn ZOrder::equal(Self, Self) -> Bool
+pub fn ZOrder::not_equal(Self, Self) -> Bool
+pub fn ZOrder::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

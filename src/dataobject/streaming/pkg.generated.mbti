@@ -1,0 +1,233 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/streaming"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn backpressure_check(Backpressure) -> Bool
+
+pub fn backpressure_handle(Backpressure, Double) -> Backpressure
+
+pub fn buffer_peek(StreamBuffer) -> Double
+
+pub fn buffer_pop(StreamBuffer) -> (StreamBuffer, Double)
+
+pub fn buffer_push(StreamBuffer, Double) -> StreamBuffer
+
+pub fn checkpoint_load(Checkpoint) -> Array[Double]
+
+pub fn checkpoint_save(Checkpoint, Array[Double]) -> Checkpoint
+
+pub fn exactly_once_process(ExactlyOnce, Array[Double]) -> (ExactlyOnce, Array[Double])
+
+pub fn file_stream_read(FileSource, Int32) -> Array[String]
+
+pub fn file_stream_write(FileSource, Array[String]) -> Int32
+
+pub fn idempotent_check(ExactlyOnce, Array[String], String) -> Bool
+
+pub fn kafka_consume(KafkaSource, Int32) -> Array[String]
+
+pub fn kafka_produce(KafkaSource, Array[String]) -> Int32
+
+pub fn make_backpressure(Double, Double) -> Backpressure
+
+pub fn make_checkpoint(String, Int32) -> Checkpoint
+
+pub fn make_exactly_once(String) -> ExactlyOnce
+
+pub fn make_file_source(String, String) -> FileSource
+
+pub fn make_kafka_source(String, String, String) -> KafkaSource
+
+pub fn make_rate_limiter(Double, Int32) -> RateLimiter
+
+pub fn make_stream_buffer(Int32) -> StreamBuffer
+
+pub fn make_stream_config(String, Int32, Int32) -> StreamConfig
+
+pub fn make_stream_processor(StreamConfig, String, String) -> StreamProcessor
+
+pub fn make_stream_sink(String, String, Int32) -> StreamSink
+
+pub fn make_stream_source(String, String, Double) -> StreamSource
+
+pub fn make_watermark(Int32, Int32) -> Watermark
+
+pub fn process_stream(StreamProcessor, Array[Double]) -> Array[Double]
+
+pub fn rate_check(RateLimiter) -> Bool
+
+pub fn rate_limit(RateLimiter, Double) -> RateLimiter
+
+pub fn stream_aggregate(Array[Double], Int32) -> Array[Double]
+
+pub fn stream_batch(Array[Double], Int32) -> Array[Array[Double]]
+
+pub fn stream_compress(Array[Double]) -> Array[Double]
+
+pub fn stream_connect(StreamSource, StreamSink) -> String
+
+pub fn stream_deserialize(String) -> Array[Double]
+
+pub fn stream_filter(Array[Double], (Double) -> Bool) -> Array[Double]
+
+pub fn stream_flatten(Array[Array[Double]]) -> Array[Double]
+
+pub fn stream_health(StreamMetrics) -> String
+
+pub fn stream_join(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn stream_map(Array[Double], (Double) -> Double) -> Array[Double]
+
+pub fn stream_merge(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn stream_metrics(Int32, Int32, Double) -> StreamMetrics
+
+pub fn stream_monitor(Array[Double], Int32) -> Array[Double]
+
+pub fn stream_reduce(Array[Double], Double, (Double, Double) -> Double) -> Double
+
+pub fn stream_serialize(Array[Double]) -> String
+
+pub fn stream_split(Array[Double], (Double) -> Bool) -> (Array[Double], Array[Double])
+
+pub fn stream_unbatch(Array[Array[Double]]) -> Array[Double]
+
+pub fn stream_window(Array[Double], Int32, Int32) -> Array[Array[Double]]
+
+pub fn streaming_id() -> String
+
+pub fn watermark_delay(Watermark) -> Int32
+
+pub fn watermark_track(Watermark, Int32) -> Watermark
+
+// Errors
+
+// Types and methods
+pub struct Backpressure {
+  high_threshold : Double
+  low_threshold : Double
+  current_load : Double
+} derive(Eq, @debug.Debug)
+pub fn Backpressure::equal(Self, Self) -> Bool
+pub fn Backpressure::not_equal(Self, Self) -> Bool
+pub fn Backpressure::to_repr(Self) -> @debug.Repr
+
+pub struct Checkpoint {
+  id : String
+  timestamp : Int32
+  state : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn Checkpoint::equal(Self, Self) -> Bool
+pub fn Checkpoint::not_equal(Self, Self) -> Bool
+pub fn Checkpoint::to_repr(Self) -> @debug.Repr
+
+pub struct ExactlyOnce {
+  transactional_id : String
+  epoch : Int32
+  committed : Bool
+} derive(Eq, @debug.Debug)
+pub fn ExactlyOnce::equal(Self, Self) -> Bool
+pub fn ExactlyOnce::not_equal(Self, Self) -> Bool
+pub fn ExactlyOnce::to_repr(Self) -> @debug.Repr
+
+pub struct FileSource {
+  path : String
+  format : String
+  batch_size : Int32
+} derive(Eq, @debug.Debug)
+pub fn FileSource::equal(Self, Self) -> Bool
+pub fn FileSource::not_equal(Self, Self) -> Bool
+pub fn FileSource::to_repr(Self) -> @debug.Repr
+
+pub struct KafkaSource {
+  topic : String
+  brokers : String
+  group_id : String
+  partition : Int32
+} derive(Eq, @debug.Debug)
+pub fn KafkaSource::equal(Self, Self) -> Bool
+pub fn KafkaSource::not_equal(Self, Self) -> Bool
+pub fn KafkaSource::to_repr(Self) -> @debug.Repr
+
+pub struct RateLimiter {
+  rate_per_sec : Double
+  burst : Int32
+  tokens : Double
+} derive(Eq, @debug.Debug)
+pub fn RateLimiter::equal(Self, Self) -> Bool
+pub fn RateLimiter::not_equal(Self, Self) -> Bool
+pub fn RateLimiter::to_repr(Self) -> @debug.Repr
+
+pub struct StreamBuffer {
+  capacity : Int32
+  items : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn StreamBuffer::equal(Self, Self) -> Bool
+pub fn StreamBuffer::not_equal(Self, Self) -> Bool
+pub fn StreamBuffer::to_repr(Self) -> @debug.Repr
+
+pub struct StreamConfig {
+  name : String
+  parallelism : Int32
+  buffer_size : Int32
+  timeout_ms : Int32
+  watermark_interval : Int32
+  checkpoint_interval : Int32
+} derive(Eq, @debug.Debug)
+pub fn StreamConfig::equal(Self, Self) -> Bool
+pub fn StreamConfig::not_equal(Self, Self) -> Bool
+pub fn StreamConfig::to_repr(Self) -> @debug.Repr
+
+pub struct StreamMetrics {
+  processed : Int32
+  errors : Int32
+  latency_ms : Double
+  throughput : Double
+} derive(Eq, @debug.Debug)
+pub fn StreamMetrics::equal(Self, Self) -> Bool
+pub fn StreamMetrics::not_equal(Self, Self) -> Bool
+pub fn StreamMetrics::to_repr(Self) -> @debug.Repr
+
+pub struct StreamProcessor {
+  config : StreamConfig
+  source_id : String
+  sink_id : String
+  active : Bool
+} derive(Eq, @debug.Debug)
+pub fn StreamProcessor::equal(Self, Self) -> Bool
+pub fn StreamProcessor::not_equal(Self, Self) -> Bool
+pub fn StreamProcessor::to_repr(Self) -> @debug.Repr
+
+pub struct StreamSink {
+  id : String
+  sink_type : String
+  capacity : Int32
+} derive(Eq, @debug.Debug)
+pub fn StreamSink::equal(Self, Self) -> Bool
+pub fn StreamSink::not_equal(Self, Self) -> Bool
+pub fn StreamSink::to_repr(Self) -> @debug.Repr
+
+pub struct StreamSource {
+  id : String
+  source_type : String
+  rate_per_sec : Double
+} derive(Eq, @debug.Debug)
+pub fn StreamSource::equal(Self, Self) -> Bool
+pub fn StreamSource::not_equal(Self, Self) -> Bool
+pub fn StreamSource::to_repr(Self) -> @debug.Repr
+
+pub struct Watermark {
+  timestamp : Int32
+  max_out_of_orderness : Int32
+} derive(Eq, @debug.Debug)
+pub fn Watermark::equal(Self, Self) -> Bool
+pub fn Watermark::not_equal(Self, Self) -> Bool
+pub fn Watermark::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

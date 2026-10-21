@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_exchange_comb"
+
+// Values
+pub fn sort_exchange_comb_buffer_make(Int32) -> SortexchangecombBuffer
+
+pub fn sort_exchange_comb_cluster_make(Int32) -> SortexchangecombCluster
+
+pub fn sort_exchange_comb_cursor_make(Int32) -> SortexchangecombCursor
+
+pub fn sort_exchange_comb_edge_make(Int32) -> SortexchangecombEdge
+
+pub fn sort_exchange_comb_frame_make(Int32) -> SortexchangecombFrame
+
+pub fn sort_exchange_comb_graphn_make(Int32) -> SortexchangecombGraphN
+
+pub fn sort_exchange_comb_layer_make(Int32) -> SortexchangecombLayer
+
+pub fn sort_exchange_comb_make_matrix(Int32, Int32, Double) -> SortexchangecombMatrix
+
+pub fn sort_exchange_comb_make_point(Double, Double) -> SortexchangecombPoint
+
+pub fn sort_exchange_comb_make_point3(Double, Double, Double) -> SortexchangecombPoint
+
+pub fn sort_exchange_comb_make_series(Array[Double], String) -> SortexchangecombSeries
+
+pub fn sort_exchange_comb_make_vector(Array[Double]) -> SortexchangecombVector
+
+pub fn sort_exchange_comb_matrix_identity(Int32) -> SortexchangecombMatrix
+
+pub fn sort_exchange_comb_model_make(Int32) -> SortexchangecombModel
+
+pub fn sort_exchange_comb_node_make(Int32) -> SortexchangecombNode
+
+pub fn sort_exchange_comb_path_make(Int32) -> SortexchangecombPath
+
+pub fn sort_exchange_comb_range_make(Int32) -> SortexchangecombRange
+
+pub fn sort_exchange_comb_slice_make(Int32) -> SortexchangecombSlice
+
+pub fn sort_exchange_comb_table_make(Int32) -> SortexchangecombTable
+
+pub fn sort_exchange_comb_vector_zero(Int32) -> SortexchangecombVector
+
+pub fn sort_exchange_comb_view_make(Int32) -> SortexchangecombView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortexchangecombBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecombBuffer::add(Self, Self) -> Self
+pub fn SortexchangecombBuffer::copy(Self) -> Self
+pub fn SortexchangecombBuffer::fill(Self, Double) -> Self
+pub fn SortexchangecombBuffer::get(Self, Int32) -> Double
+pub fn SortexchangecombBuffer::len(Self) -> Int32
+pub fn SortexchangecombBuffer::max(Self) -> Double
+pub fn SortexchangecombBuffer::mean(Self) -> Double
+pub fn SortexchangecombBuffer::min(Self) -> Double
+pub fn SortexchangecombBuffer::scale(Self, Double) -> Self
+pub fn SortexchangecombBuffer::set(Self, Int32, Double) -> Self
+pub fn SortexchangecombBuffer::sum(Self) -> Double
+pub fn SortexchangecombBuffer::to_string(Self) -> String
+
+pub(all) struct SortexchangecombCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecombCluster::add(Self, Self) -> Self
+pub fn SortexchangecombCluster::copy(Self) -> Self
+pub fn SortexchangecombCluster::fill(Self, Double) -> Self
+pub fn SortexchangecombCluster::get(Self, Int32) -> Double
+pub fn SortexchangecombCluster::len(Self) -> Int32
+pub fn SortexchangecombCluster::max(Self) -> Double
+pub fn SortexchangecombCluster::mean(Self) -> Double
+pub fn SortexchangecombCluster::min(Self) -> Double
+pub fn SortexchangecombCluster::scale(Self, Double) -> Self
+pub fn SortexchangecombCluster::set(Self, Int32, Double) -> Self
+pub fn SortexchangecombCluster::sum(Self) -> Double
+pub fn SortexchangecombCluster::to_string(Self) -> String
+
+pub(all) struct SortexchangecombCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecombCursor::add(Self, Self) -> Self
+pub fn SortexchangecombCursor::copy(Self) -> Self
+pub fn SortexchangecombCursor::fill(Self, Double) -> Self
+pub fn SortexchangecombCursor::get(Self, Int32) -> Double
+pub fn SortexchangecombCursor::len(Self) -> Int32
+pub fn SortexchangecombCursor::max(Self) -> Double
+pub fn SortexchangecombCursor::mean(Self) -> Double
+pub fn SortexchangecombCursor::min(Self) -> Double
+pub fn SortexchangecombCursor::scale(Self, Double) -> Self
+pub fn SortexchangecombCursor::set(Self, Int32, Double) -> Self
+pub fn SortexchangecombCursor::sum(Self) -> Double
+pub fn SortexchangecombCursor::to_string(Self) -> String
+
+pub(all) struct SortexchangecombEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecombEdge::add(Self, Self) -> Self
+pub fn SortexchangecombEdge::copy(Self) -> Self
+pub fn SortexchangecombEdge::fill(Self, Double) -> Self
+pub fn SortexchangecombEdge::get(Self, Int32) -> Double
+pub fn SortexchangecombEdge::len(Self) -> Int32
+pub fn SortexchangecombEdge::max(Self) -> Double
+pub fn SortexchangecombEdge::mean(Self) -> Double
+pub fn SortexchangecombEdge::min(Self) -> Double
+pub fn SortexchangecombEdge::scale(Self, Double) -> Self
+pub fn SortexchangecombEdge::set(Self, Int32, Double) -> Self
+pub fn SortexchangecombEdge::sum(Self) -> Double
+pub fn SortexchangecombEdge::to_string(Self) -> String
+
+pub(all) struct SortexchangecombFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecombFrame::add(Self, Self) -> Self
+pub fn SortexchangecombFrame::copy(Self) -> Self
+pub fn SortexchangecombFrame::fill(Self, Double) -> Self
+pub fn SortexchangecombFrame::get(Self, Int32) -> Double
+pub fn SortexchangecombFrame::len(Self) -> Int32
+pub fn SortexchangecombFrame::max(Self) -> Double
+pub fn SortexchangecombFrame::mean(Self) -> Double
+pub fn SortexchangecombFrame::min(Self) -> Double
+pub fn SortexchangecombFrame::scale(Self, Double) -> Self
+pub fn SortexchangecombFrame::set(Self, Int32, Double) -> Self
+pub fn SortexchangecombFrame::sum(Self) -> Double
+pub fn SortexchangecombFrame::to_string(Self) -> String
+
+pub(all) struct SortexchangecombGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecombGraphN::add(Self, Self) -> Self
+pub fn SortexchangecombGraphN::copy(Self) -> Self
+pub fn SortexchangecombGraphN::fill(Self, Double) -> Self
+pub fn SortexchangecombGraphN::get(Self, Int32) -> Double
+pub fn SortexchangecombGraphN::len(Self) -> Int32
+pub fn SortexchangecombGraphN::max(Self) -> Double
+pub fn SortexchangecombGraphN::mean(Self) -> Double
+pub fn SortexchangecombGraphN::min(Self) -> Double
+pub fn SortexchangecombGraphN::scale(Self, Double) -> Self
+pub fn SortexchangecombGraphN::set(Self, Int32, Double) -> Self
+pub fn SortexchangecombGraphN::sum(Self) -> Double
+pub fn SortexchangecombGraphN::to_string(Self) -> String
+
+pub(all) struct SortexchangecombLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecombLayer::add(Self, Self) -> Self
+pub fn SortexchangecombLayer::copy(Self) -> Self
+pub fn SortexchangecombLayer::fill(Self, Double) -> Self
+pub fn SortexchangecombLayer::get(Self, Int32) -> Double
+pub fn SortexchangecombLayer::len(Self) -> Int32
+pub fn SortexchangecombLayer::max(Self) -> Double
+pub fn SortexchangecombLayer::mean(Self) -> Double
+pub fn SortexchangecombLayer::min(Self) -> Double
+pub fn SortexchangecombLayer::scale(Self, Double) -> Self
+pub fn SortexchangecombLayer::set(Self, Int32, Double) -> Self
+pub fn SortexchangecombLayer::sum(Self) -> Double
+pub fn SortexchangecombLayer::to_string(Self) -> String
+
+pub(all) struct SortexchangecombMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortexchangecombMatrix::add(Self, Self) -> Self
+pub fn SortexchangecombMatrix::det(Self) -> Double
+pub fn SortexchangecombMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortexchangecombMatrix::multiply(Self, Self) -> Self
+pub fn SortexchangecombMatrix::norm(Self) -> Double
+pub fn SortexchangecombMatrix::scale(Self, Double) -> Self
+pub fn SortexchangecombMatrix::to_string(Self) -> String
+pub fn SortexchangecombMatrix::trace(Self) -> Double
+pub fn SortexchangecombMatrix::transpose(Self) -> Self
+
+pub(all) struct SortexchangecombModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecombModel::add(Self, Self) -> Self
+pub fn SortexchangecombModel::copy(Self) -> Self
+pub fn SortexchangecombModel::fill(Self, Double) -> Self
+pub fn SortexchangecombModel::get(Self, Int32) -> Double
+pub fn SortexchangecombModel::len(Self) -> Int32
+pub fn SortexchangecombModel::max(Self) -> Double
+pub fn SortexchangecombModel::mean(Self) -> Double
+pub fn SortexchangecombModel::min(Self) -> Double
+pub fn SortexchangecombModel::scale(Self, Double) -> Self
+pub fn SortexchangecombModel::set(Self, Int32, Double) -> Self
+pub fn SortexchangecombModel::sum(Self) -> Double
+pub fn SortexchangecombModel::to_string(Self) -> String
+
+pub(all) struct SortexchangecombNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecombNode::add(Self, Self) -> Self
+pub fn SortexchangecombNode::copy(Self) -> Self
+pub fn SortexchangecombNode::fill(Self, Double) -> Self
+pub fn SortexchangecombNode::get(Self, Int32) -> Double
+pub fn SortexchangecombNode::len(Self) -> Int32
+pub fn SortexchangecombNode::max(Self) -> Double
+pub fn SortexchangecombNode::mean(Self) -> Double
+pub fn SortexchangecombNode::min(Self) -> Double
+pub fn SortexchangecombNode::scale(Self, Double) -> Self
+pub fn SortexchangecombNode::set(Self, Int32, Double) -> Self
+pub fn SortexchangecombNode::sum(Self) -> Double
+pub fn SortexchangecombNode::to_string(Self) -> String
+
+pub(all) struct SortexchangecombPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecombPath::add(Self, Self) -> Self
+pub fn SortexchangecombPath::copy(Self) -> Self
+pub fn SortexchangecombPath::fill(Self, Double) -> Self
+pub fn SortexchangecombPath::get(Self, Int32) -> Double
+pub fn SortexchangecombPath::len(Self) -> Int32
+pub fn SortexchangecombPath::max(Self) -> Double
+pub fn SortexchangecombPath::mean(Self) -> Double
+pub fn SortexchangecombPath::min(Self) -> Double
+pub fn SortexchangecombPath::scale(Self, Double) -> Self
+pub fn SortexchangecombPath::set(Self, Int32, Double) -> Self
+pub fn SortexchangecombPath::sum(Self) -> Double
+pub fn SortexchangecombPath::to_string(Self) -> String
+
+pub(all) struct SortexchangecombPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortexchangecombPoint::add(Self, Self) -> Self
+pub fn SortexchangecombPoint::cross(Self, Self) -> Self
+pub fn SortexchangecombPoint::dist(Self, Self) -> Double
+pub fn SortexchangecombPoint::dot(Self, Self) -> Double
+pub fn SortexchangecombPoint::label(Self) -> Int32
+pub fn SortexchangecombPoint::lerp(Self, Self, Double) -> Self
+pub fn SortexchangecombPoint::mid(Self, Self) -> Self
+pub fn SortexchangecombPoint::negate(Self) -> Self
+pub fn SortexchangecombPoint::norm(Self) -> Double
+pub fn SortexchangecombPoint::normalize(Self) -> Self
+pub fn SortexchangecombPoint::scale(Self, Double) -> Self
+pub fn SortexchangecombPoint::sub(Self, Self) -> Self
+pub fn SortexchangecombPoint::to_string(Self) -> String
+pub fn SortexchangecombPoint::x(Self) -> Double
+pub fn SortexchangecombPoint::y(Self) -> Double
+pub fn SortexchangecombPoint::z(Self) -> Double
+
+pub(all) struct SortexchangecombRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecombRange::add(Self, Self) -> Self
+pub fn SortexchangecombRange::copy(Self) -> Self
+pub fn SortexchangecombRange::fill(Self, Double) -> Self
+pub fn SortexchangecombRange::get(Self, Int32) -> Double
+pub fn SortexchangecombRange::len(Self) -> Int32
+pub fn SortexchangecombRange::max(Self) -> Double
+pub fn SortexchangecombRange::mean(Self) -> Double
+pub fn SortexchangecombRange::min(Self) -> Double
+pub fn SortexchangecombRange::scale(Self, Double) -> Self
+pub fn SortexchangecombRange::set(Self, Int32, Double) -> Self
+pub fn SortexchangecombRange::sum(Self) -> Double
+pub fn SortexchangecombRange::to_string(Self) -> String
+
+pub(all) struct SortexchangecombSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortexchangecombSeries::add(Self, Self) -> Self
+pub fn SortexchangecombSeries::cumsum(Self) -> Self
+pub fn SortexchangecombSeries::len(Self) -> Int32
+pub fn SortexchangecombSeries::max(Self) -> Double
+pub fn SortexchangecombSeries::mean(Self) -> Double
+pub fn SortexchangecombSeries::median(Self) -> Double
+pub fn SortexchangecombSeries::min(Self) -> Double
+pub fn SortexchangecombSeries::normalize(Self) -> Self
+pub fn SortexchangecombSeries::range(Self) -> Double
+pub fn SortexchangecombSeries::scale(Self, Double) -> Self
+pub fn SortexchangecombSeries::std(Self) -> Double
+pub fn SortexchangecombSeries::sub(Self, Self) -> Self
+pub fn SortexchangecombSeries::sum(Self) -> Double
+pub fn SortexchangecombSeries::to_string(Self) -> String
+pub fn SortexchangecombSeries::variance(Self) -> Double
+
+pub(all) struct SortexchangecombSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecombSlice::add(Self, Self) -> Self
+pub fn SortexchangecombSlice::copy(Self) -> Self
+pub fn SortexchangecombSlice::fill(Self, Double) -> Self
+pub fn SortexchangecombSlice::get(Self, Int32) -> Double
+pub fn SortexchangecombSlice::len(Self) -> Int32
+pub fn SortexchangecombSlice::max(Self) -> Double
+pub fn SortexchangecombSlice::mean(Self) -> Double
+pub fn SortexchangecombSlice::min(Self) -> Double
+pub fn SortexchangecombSlice::scale(Self, Double) -> Self
+pub fn SortexchangecombSlice::set(Self, Int32, Double) -> Self
+pub fn SortexchangecombSlice::sum(Self) -> Double
+pub fn SortexchangecombSlice::to_string(Self) -> String
+
+pub(all) struct SortexchangecombTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecombTable::add(Self, Self) -> Self
+pub fn SortexchangecombTable::copy(Self) -> Self
+pub fn SortexchangecombTable::fill(Self, Double) -> Self
+pub fn SortexchangecombTable::get(Self, Int32) -> Double
+pub fn SortexchangecombTable::len(Self) -> Int32
+pub fn SortexchangecombTable::max(Self) -> Double
+pub fn SortexchangecombTable::mean(Self) -> Double
+pub fn SortexchangecombTable::min(Self) -> Double
+pub fn SortexchangecombTable::scale(Self, Double) -> Self
+pub fn SortexchangecombTable::set(Self, Int32, Double) -> Self
+pub fn SortexchangecombTable::sum(Self) -> Double
+pub fn SortexchangecombTable::to_string(Self) -> String
+
+pub(all) struct SortexchangecombVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortexchangecombVector::add(Self, Self) -> Self
+pub fn SortexchangecombVector::dist(Self, Self) -> Double
+pub fn SortexchangecombVector::dot(Self, Self) -> Double
+pub fn SortexchangecombVector::norm(Self) -> Double
+pub fn SortexchangecombVector::normalize(Self) -> Self
+pub fn SortexchangecombVector::scale(Self, Double) -> Self
+pub fn SortexchangecombVector::sub(Self, Self) -> Self
+pub fn SortexchangecombVector::to_string(Self) -> String
+
+pub(all) struct SortexchangecombView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangecombView::add(Self, Self) -> Self
+pub fn SortexchangecombView::copy(Self) -> Self
+pub fn SortexchangecombView::fill(Self, Double) -> Self
+pub fn SortexchangecombView::get(Self, Int32) -> Double
+pub fn SortexchangecombView::len(Self) -> Int32
+pub fn SortexchangecombView::max(Self) -> Double
+pub fn SortexchangecombView::mean(Self) -> Double
+pub fn SortexchangecombView::min(Self) -> Double
+pub fn SortexchangecombView::scale(Self, Double) -> Self
+pub fn SortexchangecombView::set(Self, Int32, Double) -> Self
+pub fn SortexchangecombView::sum(Self) -> Double
+pub fn SortexchangecombView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

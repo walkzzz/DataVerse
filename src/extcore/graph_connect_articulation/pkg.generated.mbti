@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_connect_articulation"
+
+// Values
+pub fn graph_connect_articulation_buffer_make(Int32) -> GraphconnectarticulationBuffer
+
+pub fn graph_connect_articulation_cluster_make(Int32) -> GraphconnectarticulationCluster
+
+pub fn graph_connect_articulation_cursor_make(Int32) -> GraphconnectarticulationCursor
+
+pub fn graph_connect_articulation_edge_make(Int32) -> GraphconnectarticulationEdge
+
+pub fn graph_connect_articulation_frame_make(Int32) -> GraphconnectarticulationFrame
+
+pub fn graph_connect_articulation_graphn_make(Int32) -> GraphconnectarticulationGraphN
+
+pub fn graph_connect_articulation_layer_make(Int32) -> GraphconnectarticulationLayer
+
+pub fn graph_connect_articulation_make_matrix(Int32, Int32, Double) -> GraphconnectarticulationMatrix
+
+pub fn graph_connect_articulation_make_point(Double, Double) -> GraphconnectarticulationPoint
+
+pub fn graph_connect_articulation_make_point3(Double, Double, Double) -> GraphconnectarticulationPoint
+
+pub fn graph_connect_articulation_make_series(Array[Double], String) -> GraphconnectarticulationSeries
+
+pub fn graph_connect_articulation_make_vector(Array[Double]) -> GraphconnectarticulationVector
+
+pub fn graph_connect_articulation_matrix_identity(Int32) -> GraphconnectarticulationMatrix
+
+pub fn graph_connect_articulation_model_make(Int32) -> GraphconnectarticulationModel
+
+pub fn graph_connect_articulation_node_make(Int32) -> GraphconnectarticulationNode
+
+pub fn graph_connect_articulation_path_make(Int32) -> GraphconnectarticulationPath
+
+pub fn graph_connect_articulation_range_make(Int32) -> GraphconnectarticulationRange
+
+pub fn graph_connect_articulation_slice_make(Int32) -> GraphconnectarticulationSlice
+
+pub fn graph_connect_articulation_table_make(Int32) -> GraphconnectarticulationTable
+
+pub fn graph_connect_articulation_vector_zero(Int32) -> GraphconnectarticulationVector
+
+pub fn graph_connect_articulation_view_make(Int32) -> GraphconnectarticulationView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphconnectarticulationBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectarticulationBuffer::add(Self, Self) -> Self
+pub fn GraphconnectarticulationBuffer::copy(Self) -> Self
+pub fn GraphconnectarticulationBuffer::fill(Self, Double) -> Self
+pub fn GraphconnectarticulationBuffer::get(Self, Int32) -> Double
+pub fn GraphconnectarticulationBuffer::len(Self) -> Int32
+pub fn GraphconnectarticulationBuffer::max(Self) -> Double
+pub fn GraphconnectarticulationBuffer::mean(Self) -> Double
+pub fn GraphconnectarticulationBuffer::min(Self) -> Double
+pub fn GraphconnectarticulationBuffer::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphconnectarticulationBuffer::sum(Self) -> Double
+pub fn GraphconnectarticulationBuffer::to_string(Self) -> String
+
+pub(all) struct GraphconnectarticulationCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectarticulationCluster::add(Self, Self) -> Self
+pub fn GraphconnectarticulationCluster::copy(Self) -> Self
+pub fn GraphconnectarticulationCluster::fill(Self, Double) -> Self
+pub fn GraphconnectarticulationCluster::get(Self, Int32) -> Double
+pub fn GraphconnectarticulationCluster::len(Self) -> Int32
+pub fn GraphconnectarticulationCluster::max(Self) -> Double
+pub fn GraphconnectarticulationCluster::mean(Self) -> Double
+pub fn GraphconnectarticulationCluster::min(Self) -> Double
+pub fn GraphconnectarticulationCluster::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationCluster::set(Self, Int32, Double) -> Self
+pub fn GraphconnectarticulationCluster::sum(Self) -> Double
+pub fn GraphconnectarticulationCluster::to_string(Self) -> String
+
+pub(all) struct GraphconnectarticulationCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectarticulationCursor::add(Self, Self) -> Self
+pub fn GraphconnectarticulationCursor::copy(Self) -> Self
+pub fn GraphconnectarticulationCursor::fill(Self, Double) -> Self
+pub fn GraphconnectarticulationCursor::get(Self, Int32) -> Double
+pub fn GraphconnectarticulationCursor::len(Self) -> Int32
+pub fn GraphconnectarticulationCursor::max(Self) -> Double
+pub fn GraphconnectarticulationCursor::mean(Self) -> Double
+pub fn GraphconnectarticulationCursor::min(Self) -> Double
+pub fn GraphconnectarticulationCursor::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationCursor::set(Self, Int32, Double) -> Self
+pub fn GraphconnectarticulationCursor::sum(Self) -> Double
+pub fn GraphconnectarticulationCursor::to_string(Self) -> String
+
+pub(all) struct GraphconnectarticulationEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectarticulationEdge::add(Self, Self) -> Self
+pub fn GraphconnectarticulationEdge::copy(Self) -> Self
+pub fn GraphconnectarticulationEdge::fill(Self, Double) -> Self
+pub fn GraphconnectarticulationEdge::get(Self, Int32) -> Double
+pub fn GraphconnectarticulationEdge::len(Self) -> Int32
+pub fn GraphconnectarticulationEdge::max(Self) -> Double
+pub fn GraphconnectarticulationEdge::mean(Self) -> Double
+pub fn GraphconnectarticulationEdge::min(Self) -> Double
+pub fn GraphconnectarticulationEdge::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationEdge::set(Self, Int32, Double) -> Self
+pub fn GraphconnectarticulationEdge::sum(Self) -> Double
+pub fn GraphconnectarticulationEdge::to_string(Self) -> String
+
+pub(all) struct GraphconnectarticulationFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectarticulationFrame::add(Self, Self) -> Self
+pub fn GraphconnectarticulationFrame::copy(Self) -> Self
+pub fn GraphconnectarticulationFrame::fill(Self, Double) -> Self
+pub fn GraphconnectarticulationFrame::get(Self, Int32) -> Double
+pub fn GraphconnectarticulationFrame::len(Self) -> Int32
+pub fn GraphconnectarticulationFrame::max(Self) -> Double
+pub fn GraphconnectarticulationFrame::mean(Self) -> Double
+pub fn GraphconnectarticulationFrame::min(Self) -> Double
+pub fn GraphconnectarticulationFrame::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationFrame::set(Self, Int32, Double) -> Self
+pub fn GraphconnectarticulationFrame::sum(Self) -> Double
+pub fn GraphconnectarticulationFrame::to_string(Self) -> String
+
+pub(all) struct GraphconnectarticulationGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectarticulationGraphN::add(Self, Self) -> Self
+pub fn GraphconnectarticulationGraphN::copy(Self) -> Self
+pub fn GraphconnectarticulationGraphN::fill(Self, Double) -> Self
+pub fn GraphconnectarticulationGraphN::get(Self, Int32) -> Double
+pub fn GraphconnectarticulationGraphN::len(Self) -> Int32
+pub fn GraphconnectarticulationGraphN::max(Self) -> Double
+pub fn GraphconnectarticulationGraphN::mean(Self) -> Double
+pub fn GraphconnectarticulationGraphN::min(Self) -> Double
+pub fn GraphconnectarticulationGraphN::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphconnectarticulationGraphN::sum(Self) -> Double
+pub fn GraphconnectarticulationGraphN::to_string(Self) -> String
+
+pub(all) struct GraphconnectarticulationLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectarticulationLayer::add(Self, Self) -> Self
+pub fn GraphconnectarticulationLayer::copy(Self) -> Self
+pub fn GraphconnectarticulationLayer::fill(Self, Double) -> Self
+pub fn GraphconnectarticulationLayer::get(Self, Int32) -> Double
+pub fn GraphconnectarticulationLayer::len(Self) -> Int32
+pub fn GraphconnectarticulationLayer::max(Self) -> Double
+pub fn GraphconnectarticulationLayer::mean(Self) -> Double
+pub fn GraphconnectarticulationLayer::min(Self) -> Double
+pub fn GraphconnectarticulationLayer::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationLayer::set(Self, Int32, Double) -> Self
+pub fn GraphconnectarticulationLayer::sum(Self) -> Double
+pub fn GraphconnectarticulationLayer::to_string(Self) -> String
+
+pub(all) struct GraphconnectarticulationMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphconnectarticulationMatrix::add(Self, Self) -> Self
+pub fn GraphconnectarticulationMatrix::det(Self) -> Double
+pub fn GraphconnectarticulationMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphconnectarticulationMatrix::multiply(Self, Self) -> Self
+pub fn GraphconnectarticulationMatrix::norm(Self) -> Double
+pub fn GraphconnectarticulationMatrix::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationMatrix::to_string(Self) -> String
+pub fn GraphconnectarticulationMatrix::trace(Self) -> Double
+pub fn GraphconnectarticulationMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphconnectarticulationModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectarticulationModel::add(Self, Self) -> Self
+pub fn GraphconnectarticulationModel::copy(Self) -> Self
+pub fn GraphconnectarticulationModel::fill(Self, Double) -> Self
+pub fn GraphconnectarticulationModel::get(Self, Int32) -> Double
+pub fn GraphconnectarticulationModel::len(Self) -> Int32
+pub fn GraphconnectarticulationModel::max(Self) -> Double
+pub fn GraphconnectarticulationModel::mean(Self) -> Double
+pub fn GraphconnectarticulationModel::min(Self) -> Double
+pub fn GraphconnectarticulationModel::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationModel::set(Self, Int32, Double) -> Self
+pub fn GraphconnectarticulationModel::sum(Self) -> Double
+pub fn GraphconnectarticulationModel::to_string(Self) -> String
+
+pub(all) struct GraphconnectarticulationNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectarticulationNode::add(Self, Self) -> Self
+pub fn GraphconnectarticulationNode::copy(Self) -> Self
+pub fn GraphconnectarticulationNode::fill(Self, Double) -> Self
+pub fn GraphconnectarticulationNode::get(Self, Int32) -> Double
+pub fn GraphconnectarticulationNode::len(Self) -> Int32
+pub fn GraphconnectarticulationNode::max(Self) -> Double
+pub fn GraphconnectarticulationNode::mean(Self) -> Double
+pub fn GraphconnectarticulationNode::min(Self) -> Double
+pub fn GraphconnectarticulationNode::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationNode::set(Self, Int32, Double) -> Self
+pub fn GraphconnectarticulationNode::sum(Self) -> Double
+pub fn GraphconnectarticulationNode::to_string(Self) -> String
+
+pub(all) struct GraphconnectarticulationPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectarticulationPath::add(Self, Self) -> Self
+pub fn GraphconnectarticulationPath::copy(Self) -> Self
+pub fn GraphconnectarticulationPath::fill(Self, Double) -> Self
+pub fn GraphconnectarticulationPath::get(Self, Int32) -> Double
+pub fn GraphconnectarticulationPath::len(Self) -> Int32
+pub fn GraphconnectarticulationPath::max(Self) -> Double
+pub fn GraphconnectarticulationPath::mean(Self) -> Double
+pub fn GraphconnectarticulationPath::min(Self) -> Double
+pub fn GraphconnectarticulationPath::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationPath::set(Self, Int32, Double) -> Self
+pub fn GraphconnectarticulationPath::sum(Self) -> Double
+pub fn GraphconnectarticulationPath::to_string(Self) -> String
+
+pub(all) struct GraphconnectarticulationPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphconnectarticulationPoint::add(Self, Self) -> Self
+pub fn GraphconnectarticulationPoint::cross(Self, Self) -> Self
+pub fn GraphconnectarticulationPoint::dist(Self, Self) -> Double
+pub fn GraphconnectarticulationPoint::dot(Self, Self) -> Double
+pub fn GraphconnectarticulationPoint::label(Self) -> Int32
+pub fn GraphconnectarticulationPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphconnectarticulationPoint::mid(Self, Self) -> Self
+pub fn GraphconnectarticulationPoint::negate(Self) -> Self
+pub fn GraphconnectarticulationPoint::norm(Self) -> Double
+pub fn GraphconnectarticulationPoint::normalize(Self) -> Self
+pub fn GraphconnectarticulationPoint::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationPoint::sub(Self, Self) -> Self
+pub fn GraphconnectarticulationPoint::to_string(Self) -> String
+pub fn GraphconnectarticulationPoint::x(Self) -> Double
+pub fn GraphconnectarticulationPoint::y(Self) -> Double
+pub fn GraphconnectarticulationPoint::z(Self) -> Double
+
+pub(all) struct GraphconnectarticulationRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectarticulationRange::add(Self, Self) -> Self
+pub fn GraphconnectarticulationRange::copy(Self) -> Self
+pub fn GraphconnectarticulationRange::fill(Self, Double) -> Self
+pub fn GraphconnectarticulationRange::get(Self, Int32) -> Double
+pub fn GraphconnectarticulationRange::len(Self) -> Int32
+pub fn GraphconnectarticulationRange::max(Self) -> Double
+pub fn GraphconnectarticulationRange::mean(Self) -> Double
+pub fn GraphconnectarticulationRange::min(Self) -> Double
+pub fn GraphconnectarticulationRange::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationRange::set(Self, Int32, Double) -> Self
+pub fn GraphconnectarticulationRange::sum(Self) -> Double
+pub fn GraphconnectarticulationRange::to_string(Self) -> String
+
+pub(all) struct GraphconnectarticulationSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphconnectarticulationSeries::add(Self, Self) -> Self
+pub fn GraphconnectarticulationSeries::cumsum(Self) -> Self
+pub fn GraphconnectarticulationSeries::len(Self) -> Int32
+pub fn GraphconnectarticulationSeries::max(Self) -> Double
+pub fn GraphconnectarticulationSeries::mean(Self) -> Double
+pub fn GraphconnectarticulationSeries::median(Self) -> Double
+pub fn GraphconnectarticulationSeries::min(Self) -> Double
+pub fn GraphconnectarticulationSeries::normalize(Self) -> Self
+pub fn GraphconnectarticulationSeries::range(Self) -> Double
+pub fn GraphconnectarticulationSeries::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationSeries::std(Self) -> Double
+pub fn GraphconnectarticulationSeries::sub(Self, Self) -> Self
+pub fn GraphconnectarticulationSeries::sum(Self) -> Double
+pub fn GraphconnectarticulationSeries::to_string(Self) -> String
+pub fn GraphconnectarticulationSeries::variance(Self) -> Double
+
+pub(all) struct GraphconnectarticulationSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectarticulationSlice::add(Self, Self) -> Self
+pub fn GraphconnectarticulationSlice::copy(Self) -> Self
+pub fn GraphconnectarticulationSlice::fill(Self, Double) -> Self
+pub fn GraphconnectarticulationSlice::get(Self, Int32) -> Double
+pub fn GraphconnectarticulationSlice::len(Self) -> Int32
+pub fn GraphconnectarticulationSlice::max(Self) -> Double
+pub fn GraphconnectarticulationSlice::mean(Self) -> Double
+pub fn GraphconnectarticulationSlice::min(Self) -> Double
+pub fn GraphconnectarticulationSlice::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationSlice::set(Self, Int32, Double) -> Self
+pub fn GraphconnectarticulationSlice::sum(Self) -> Double
+pub fn GraphconnectarticulationSlice::to_string(Self) -> String
+
+pub(all) struct GraphconnectarticulationTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectarticulationTable::add(Self, Self) -> Self
+pub fn GraphconnectarticulationTable::copy(Self) -> Self
+pub fn GraphconnectarticulationTable::fill(Self, Double) -> Self
+pub fn GraphconnectarticulationTable::get(Self, Int32) -> Double
+pub fn GraphconnectarticulationTable::len(Self) -> Int32
+pub fn GraphconnectarticulationTable::max(Self) -> Double
+pub fn GraphconnectarticulationTable::mean(Self) -> Double
+pub fn GraphconnectarticulationTable::min(Self) -> Double
+pub fn GraphconnectarticulationTable::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationTable::set(Self, Int32, Double) -> Self
+pub fn GraphconnectarticulationTable::sum(Self) -> Double
+pub fn GraphconnectarticulationTable::to_string(Self) -> String
+
+pub(all) struct GraphconnectarticulationVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphconnectarticulationVector::add(Self, Self) -> Self
+pub fn GraphconnectarticulationVector::dist(Self, Self) -> Double
+pub fn GraphconnectarticulationVector::dot(Self, Self) -> Double
+pub fn GraphconnectarticulationVector::norm(Self) -> Double
+pub fn GraphconnectarticulationVector::normalize(Self) -> Self
+pub fn GraphconnectarticulationVector::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationVector::sub(Self, Self) -> Self
+pub fn GraphconnectarticulationVector::to_string(Self) -> String
+
+pub(all) struct GraphconnectarticulationView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectarticulationView::add(Self, Self) -> Self
+pub fn GraphconnectarticulationView::copy(Self) -> Self
+pub fn GraphconnectarticulationView::fill(Self, Double) -> Self
+pub fn GraphconnectarticulationView::get(Self, Int32) -> Double
+pub fn GraphconnectarticulationView::len(Self) -> Int32
+pub fn GraphconnectarticulationView::max(Self) -> Double
+pub fn GraphconnectarticulationView::mean(Self) -> Double
+pub fn GraphconnectarticulationView::min(Self) -> Double
+pub fn GraphconnectarticulationView::scale(Self, Double) -> Self
+pub fn GraphconnectarticulationView::set(Self, Int32, Double) -> Self
+pub fn GraphconnectarticulationView::sum(Self) -> Double
+pub fn GraphconnectarticulationView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

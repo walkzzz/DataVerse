@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_proj_gnomonic"
+
+// Values
+pub fn geo_proj_gnomonic_buffer_make(Int32) -> GeoprojgnomonicBuffer
+
+pub fn geo_proj_gnomonic_cluster_make(Int32) -> GeoprojgnomonicCluster
+
+pub fn geo_proj_gnomonic_cursor_make(Int32) -> GeoprojgnomonicCursor
+
+pub fn geo_proj_gnomonic_edge_make(Int32) -> GeoprojgnomonicEdge
+
+pub fn geo_proj_gnomonic_frame_make(Int32) -> GeoprojgnomonicFrame
+
+pub fn geo_proj_gnomonic_graphn_make(Int32) -> GeoprojgnomonicGraphN
+
+pub fn geo_proj_gnomonic_layer_make(Int32) -> GeoprojgnomonicLayer
+
+pub fn geo_proj_gnomonic_make_matrix(Int32, Int32, Double) -> GeoprojgnomonicMatrix
+
+pub fn geo_proj_gnomonic_make_point(Double, Double) -> GeoprojgnomonicPoint
+
+pub fn geo_proj_gnomonic_make_point3(Double, Double, Double) -> GeoprojgnomonicPoint
+
+pub fn geo_proj_gnomonic_make_series(Array[Double], String) -> GeoprojgnomonicSeries
+
+pub fn geo_proj_gnomonic_make_vector(Array[Double]) -> GeoprojgnomonicVector
+
+pub fn geo_proj_gnomonic_matrix_identity(Int32) -> GeoprojgnomonicMatrix
+
+pub fn geo_proj_gnomonic_model_make(Int32) -> GeoprojgnomonicModel
+
+pub fn geo_proj_gnomonic_node_make(Int32) -> GeoprojgnomonicNode
+
+pub fn geo_proj_gnomonic_path_make(Int32) -> GeoprojgnomonicPath
+
+pub fn geo_proj_gnomonic_range_make(Int32) -> GeoprojgnomonicRange
+
+pub fn geo_proj_gnomonic_slice_make(Int32) -> GeoprojgnomonicSlice
+
+pub fn geo_proj_gnomonic_table_make(Int32) -> GeoprojgnomonicTable
+
+pub fn geo_proj_gnomonic_vector_zero(Int32) -> GeoprojgnomonicVector
+
+pub fn geo_proj_gnomonic_view_make(Int32) -> GeoprojgnomonicView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeoprojgnomonicBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojgnomonicBuffer::add(Self, Self) -> Self
+pub fn GeoprojgnomonicBuffer::copy(Self) -> Self
+pub fn GeoprojgnomonicBuffer::fill(Self, Double) -> Self
+pub fn GeoprojgnomonicBuffer::get(Self, Int32) -> Double
+pub fn GeoprojgnomonicBuffer::len(Self) -> Int32
+pub fn GeoprojgnomonicBuffer::max(Self) -> Double
+pub fn GeoprojgnomonicBuffer::mean(Self) -> Double
+pub fn GeoprojgnomonicBuffer::min(Self) -> Double
+pub fn GeoprojgnomonicBuffer::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicBuffer::set(Self, Int32, Double) -> Self
+pub fn GeoprojgnomonicBuffer::sum(Self) -> Double
+pub fn GeoprojgnomonicBuffer::to_string(Self) -> String
+
+pub(all) struct GeoprojgnomonicCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojgnomonicCluster::add(Self, Self) -> Self
+pub fn GeoprojgnomonicCluster::copy(Self) -> Self
+pub fn GeoprojgnomonicCluster::fill(Self, Double) -> Self
+pub fn GeoprojgnomonicCluster::get(Self, Int32) -> Double
+pub fn GeoprojgnomonicCluster::len(Self) -> Int32
+pub fn GeoprojgnomonicCluster::max(Self) -> Double
+pub fn GeoprojgnomonicCluster::mean(Self) -> Double
+pub fn GeoprojgnomonicCluster::min(Self) -> Double
+pub fn GeoprojgnomonicCluster::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicCluster::set(Self, Int32, Double) -> Self
+pub fn GeoprojgnomonicCluster::sum(Self) -> Double
+pub fn GeoprojgnomonicCluster::to_string(Self) -> String
+
+pub(all) struct GeoprojgnomonicCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojgnomonicCursor::add(Self, Self) -> Self
+pub fn GeoprojgnomonicCursor::copy(Self) -> Self
+pub fn GeoprojgnomonicCursor::fill(Self, Double) -> Self
+pub fn GeoprojgnomonicCursor::get(Self, Int32) -> Double
+pub fn GeoprojgnomonicCursor::len(Self) -> Int32
+pub fn GeoprojgnomonicCursor::max(Self) -> Double
+pub fn GeoprojgnomonicCursor::mean(Self) -> Double
+pub fn GeoprojgnomonicCursor::min(Self) -> Double
+pub fn GeoprojgnomonicCursor::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicCursor::set(Self, Int32, Double) -> Self
+pub fn GeoprojgnomonicCursor::sum(Self) -> Double
+pub fn GeoprojgnomonicCursor::to_string(Self) -> String
+
+pub(all) struct GeoprojgnomonicEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojgnomonicEdge::add(Self, Self) -> Self
+pub fn GeoprojgnomonicEdge::copy(Self) -> Self
+pub fn GeoprojgnomonicEdge::fill(Self, Double) -> Self
+pub fn GeoprojgnomonicEdge::get(Self, Int32) -> Double
+pub fn GeoprojgnomonicEdge::len(Self) -> Int32
+pub fn GeoprojgnomonicEdge::max(Self) -> Double
+pub fn GeoprojgnomonicEdge::mean(Self) -> Double
+pub fn GeoprojgnomonicEdge::min(Self) -> Double
+pub fn GeoprojgnomonicEdge::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicEdge::set(Self, Int32, Double) -> Self
+pub fn GeoprojgnomonicEdge::sum(Self) -> Double
+pub fn GeoprojgnomonicEdge::to_string(Self) -> String
+
+pub(all) struct GeoprojgnomonicFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojgnomonicFrame::add(Self, Self) -> Self
+pub fn GeoprojgnomonicFrame::copy(Self) -> Self
+pub fn GeoprojgnomonicFrame::fill(Self, Double) -> Self
+pub fn GeoprojgnomonicFrame::get(Self, Int32) -> Double
+pub fn GeoprojgnomonicFrame::len(Self) -> Int32
+pub fn GeoprojgnomonicFrame::max(Self) -> Double
+pub fn GeoprojgnomonicFrame::mean(Self) -> Double
+pub fn GeoprojgnomonicFrame::min(Self) -> Double
+pub fn GeoprojgnomonicFrame::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicFrame::set(Self, Int32, Double) -> Self
+pub fn GeoprojgnomonicFrame::sum(Self) -> Double
+pub fn GeoprojgnomonicFrame::to_string(Self) -> String
+
+pub(all) struct GeoprojgnomonicGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojgnomonicGraphN::add(Self, Self) -> Self
+pub fn GeoprojgnomonicGraphN::copy(Self) -> Self
+pub fn GeoprojgnomonicGraphN::fill(Self, Double) -> Self
+pub fn GeoprojgnomonicGraphN::get(Self, Int32) -> Double
+pub fn GeoprojgnomonicGraphN::len(Self) -> Int32
+pub fn GeoprojgnomonicGraphN::max(Self) -> Double
+pub fn GeoprojgnomonicGraphN::mean(Self) -> Double
+pub fn GeoprojgnomonicGraphN::min(Self) -> Double
+pub fn GeoprojgnomonicGraphN::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicGraphN::set(Self, Int32, Double) -> Self
+pub fn GeoprojgnomonicGraphN::sum(Self) -> Double
+pub fn GeoprojgnomonicGraphN::to_string(Self) -> String
+
+pub(all) struct GeoprojgnomonicLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojgnomonicLayer::add(Self, Self) -> Self
+pub fn GeoprojgnomonicLayer::copy(Self) -> Self
+pub fn GeoprojgnomonicLayer::fill(Self, Double) -> Self
+pub fn GeoprojgnomonicLayer::get(Self, Int32) -> Double
+pub fn GeoprojgnomonicLayer::len(Self) -> Int32
+pub fn GeoprojgnomonicLayer::max(Self) -> Double
+pub fn GeoprojgnomonicLayer::mean(Self) -> Double
+pub fn GeoprojgnomonicLayer::min(Self) -> Double
+pub fn GeoprojgnomonicLayer::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicLayer::set(Self, Int32, Double) -> Self
+pub fn GeoprojgnomonicLayer::sum(Self) -> Double
+pub fn GeoprojgnomonicLayer::to_string(Self) -> String
+
+pub(all) struct GeoprojgnomonicMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeoprojgnomonicMatrix::add(Self, Self) -> Self
+pub fn GeoprojgnomonicMatrix::det(Self) -> Double
+pub fn GeoprojgnomonicMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeoprojgnomonicMatrix::multiply(Self, Self) -> Self
+pub fn GeoprojgnomonicMatrix::norm(Self) -> Double
+pub fn GeoprojgnomonicMatrix::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicMatrix::to_string(Self) -> String
+pub fn GeoprojgnomonicMatrix::trace(Self) -> Double
+pub fn GeoprojgnomonicMatrix::transpose(Self) -> Self
+
+pub(all) struct GeoprojgnomonicModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojgnomonicModel::add(Self, Self) -> Self
+pub fn GeoprojgnomonicModel::copy(Self) -> Self
+pub fn GeoprojgnomonicModel::fill(Self, Double) -> Self
+pub fn GeoprojgnomonicModel::get(Self, Int32) -> Double
+pub fn GeoprojgnomonicModel::len(Self) -> Int32
+pub fn GeoprojgnomonicModel::max(Self) -> Double
+pub fn GeoprojgnomonicModel::mean(Self) -> Double
+pub fn GeoprojgnomonicModel::min(Self) -> Double
+pub fn GeoprojgnomonicModel::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicModel::set(Self, Int32, Double) -> Self
+pub fn GeoprojgnomonicModel::sum(Self) -> Double
+pub fn GeoprojgnomonicModel::to_string(Self) -> String
+
+pub(all) struct GeoprojgnomonicNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojgnomonicNode::add(Self, Self) -> Self
+pub fn GeoprojgnomonicNode::copy(Self) -> Self
+pub fn GeoprojgnomonicNode::fill(Self, Double) -> Self
+pub fn GeoprojgnomonicNode::get(Self, Int32) -> Double
+pub fn GeoprojgnomonicNode::len(Self) -> Int32
+pub fn GeoprojgnomonicNode::max(Self) -> Double
+pub fn GeoprojgnomonicNode::mean(Self) -> Double
+pub fn GeoprojgnomonicNode::min(Self) -> Double
+pub fn GeoprojgnomonicNode::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicNode::set(Self, Int32, Double) -> Self
+pub fn GeoprojgnomonicNode::sum(Self) -> Double
+pub fn GeoprojgnomonicNode::to_string(Self) -> String
+
+pub(all) struct GeoprojgnomonicPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojgnomonicPath::add(Self, Self) -> Self
+pub fn GeoprojgnomonicPath::copy(Self) -> Self
+pub fn GeoprojgnomonicPath::fill(Self, Double) -> Self
+pub fn GeoprojgnomonicPath::get(Self, Int32) -> Double
+pub fn GeoprojgnomonicPath::len(Self) -> Int32
+pub fn GeoprojgnomonicPath::max(Self) -> Double
+pub fn GeoprojgnomonicPath::mean(Self) -> Double
+pub fn GeoprojgnomonicPath::min(Self) -> Double
+pub fn GeoprojgnomonicPath::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicPath::set(Self, Int32, Double) -> Self
+pub fn GeoprojgnomonicPath::sum(Self) -> Double
+pub fn GeoprojgnomonicPath::to_string(Self) -> String
+
+pub(all) struct GeoprojgnomonicPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeoprojgnomonicPoint::add(Self, Self) -> Self
+pub fn GeoprojgnomonicPoint::cross(Self, Self) -> Self
+pub fn GeoprojgnomonicPoint::dist(Self, Self) -> Double
+pub fn GeoprojgnomonicPoint::dot(Self, Self) -> Double
+pub fn GeoprojgnomonicPoint::label(Self) -> Int32
+pub fn GeoprojgnomonicPoint::lerp(Self, Self, Double) -> Self
+pub fn GeoprojgnomonicPoint::mid(Self, Self) -> Self
+pub fn GeoprojgnomonicPoint::negate(Self) -> Self
+pub fn GeoprojgnomonicPoint::norm(Self) -> Double
+pub fn GeoprojgnomonicPoint::normalize(Self) -> Self
+pub fn GeoprojgnomonicPoint::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicPoint::sub(Self, Self) -> Self
+pub fn GeoprojgnomonicPoint::to_string(Self) -> String
+pub fn GeoprojgnomonicPoint::x(Self) -> Double
+pub fn GeoprojgnomonicPoint::y(Self) -> Double
+pub fn GeoprojgnomonicPoint::z(Self) -> Double
+
+pub(all) struct GeoprojgnomonicRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojgnomonicRange::add(Self, Self) -> Self
+pub fn GeoprojgnomonicRange::copy(Self) -> Self
+pub fn GeoprojgnomonicRange::fill(Self, Double) -> Self
+pub fn GeoprojgnomonicRange::get(Self, Int32) -> Double
+pub fn GeoprojgnomonicRange::len(Self) -> Int32
+pub fn GeoprojgnomonicRange::max(Self) -> Double
+pub fn GeoprojgnomonicRange::mean(Self) -> Double
+pub fn GeoprojgnomonicRange::min(Self) -> Double
+pub fn GeoprojgnomonicRange::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicRange::set(Self, Int32, Double) -> Self
+pub fn GeoprojgnomonicRange::sum(Self) -> Double
+pub fn GeoprojgnomonicRange::to_string(Self) -> String
+
+pub(all) struct GeoprojgnomonicSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeoprojgnomonicSeries::add(Self, Self) -> Self
+pub fn GeoprojgnomonicSeries::cumsum(Self) -> Self
+pub fn GeoprojgnomonicSeries::len(Self) -> Int32
+pub fn GeoprojgnomonicSeries::max(Self) -> Double
+pub fn GeoprojgnomonicSeries::mean(Self) -> Double
+pub fn GeoprojgnomonicSeries::median(Self) -> Double
+pub fn GeoprojgnomonicSeries::min(Self) -> Double
+pub fn GeoprojgnomonicSeries::normalize(Self) -> Self
+pub fn GeoprojgnomonicSeries::range(Self) -> Double
+pub fn GeoprojgnomonicSeries::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicSeries::std(Self) -> Double
+pub fn GeoprojgnomonicSeries::sub(Self, Self) -> Self
+pub fn GeoprojgnomonicSeries::sum(Self) -> Double
+pub fn GeoprojgnomonicSeries::to_string(Self) -> String
+pub fn GeoprojgnomonicSeries::variance(Self) -> Double
+
+pub(all) struct GeoprojgnomonicSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojgnomonicSlice::add(Self, Self) -> Self
+pub fn GeoprojgnomonicSlice::copy(Self) -> Self
+pub fn GeoprojgnomonicSlice::fill(Self, Double) -> Self
+pub fn GeoprojgnomonicSlice::get(Self, Int32) -> Double
+pub fn GeoprojgnomonicSlice::len(Self) -> Int32
+pub fn GeoprojgnomonicSlice::max(Self) -> Double
+pub fn GeoprojgnomonicSlice::mean(Self) -> Double
+pub fn GeoprojgnomonicSlice::min(Self) -> Double
+pub fn GeoprojgnomonicSlice::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicSlice::set(Self, Int32, Double) -> Self
+pub fn GeoprojgnomonicSlice::sum(Self) -> Double
+pub fn GeoprojgnomonicSlice::to_string(Self) -> String
+
+pub(all) struct GeoprojgnomonicTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojgnomonicTable::add(Self, Self) -> Self
+pub fn GeoprojgnomonicTable::copy(Self) -> Self
+pub fn GeoprojgnomonicTable::fill(Self, Double) -> Self
+pub fn GeoprojgnomonicTable::get(Self, Int32) -> Double
+pub fn GeoprojgnomonicTable::len(Self) -> Int32
+pub fn GeoprojgnomonicTable::max(Self) -> Double
+pub fn GeoprojgnomonicTable::mean(Self) -> Double
+pub fn GeoprojgnomonicTable::min(Self) -> Double
+pub fn GeoprojgnomonicTable::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicTable::set(Self, Int32, Double) -> Self
+pub fn GeoprojgnomonicTable::sum(Self) -> Double
+pub fn GeoprojgnomonicTable::to_string(Self) -> String
+
+pub(all) struct GeoprojgnomonicVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeoprojgnomonicVector::add(Self, Self) -> Self
+pub fn GeoprojgnomonicVector::dist(Self, Self) -> Double
+pub fn GeoprojgnomonicVector::dot(Self, Self) -> Double
+pub fn GeoprojgnomonicVector::norm(Self) -> Double
+pub fn GeoprojgnomonicVector::normalize(Self) -> Self
+pub fn GeoprojgnomonicVector::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicVector::sub(Self, Self) -> Self
+pub fn GeoprojgnomonicVector::to_string(Self) -> String
+
+pub(all) struct GeoprojgnomonicView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojgnomonicView::add(Self, Self) -> Self
+pub fn GeoprojgnomonicView::copy(Self) -> Self
+pub fn GeoprojgnomonicView::fill(Self, Double) -> Self
+pub fn GeoprojgnomonicView::get(Self, Int32) -> Double
+pub fn GeoprojgnomonicView::len(Self) -> Int32
+pub fn GeoprojgnomonicView::max(Self) -> Double
+pub fn GeoprojgnomonicView::mean(Self) -> Double
+pub fn GeoprojgnomonicView::min(Self) -> Double
+pub fn GeoprojgnomonicView::scale(Self, Double) -> Self
+pub fn GeoprojgnomonicView::set(Self, Int32, Double) -> Self
+pub fn GeoprojgnomonicView::sum(Self) -> Double
+pub fn GeoprojgnomonicView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

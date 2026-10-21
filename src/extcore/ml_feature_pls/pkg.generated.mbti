@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_feature_pls"
+
+// Values
+pub fn ml_feature_pls_buffer_make(Int32) -> MlfeatureplsBuffer
+
+pub fn ml_feature_pls_cluster_make(Int32) -> MlfeatureplsCluster
+
+pub fn ml_feature_pls_cursor_make(Int32) -> MlfeatureplsCursor
+
+pub fn ml_feature_pls_edge_make(Int32) -> MlfeatureplsEdge
+
+pub fn ml_feature_pls_frame_make(Int32) -> MlfeatureplsFrame
+
+pub fn ml_feature_pls_graphn_make(Int32) -> MlfeatureplsGraphN
+
+pub fn ml_feature_pls_layer_make(Int32) -> MlfeatureplsLayer
+
+pub fn ml_feature_pls_make_matrix(Int32, Int32, Double) -> MlfeatureplsMatrix
+
+pub fn ml_feature_pls_make_point(Double, Double) -> MlfeatureplsPoint
+
+pub fn ml_feature_pls_make_point3(Double, Double, Double) -> MlfeatureplsPoint
+
+pub fn ml_feature_pls_make_series(Array[Double], String) -> MlfeatureplsSeries
+
+pub fn ml_feature_pls_make_vector(Array[Double]) -> MlfeatureplsVector
+
+pub fn ml_feature_pls_matrix_identity(Int32) -> MlfeatureplsMatrix
+
+pub fn ml_feature_pls_model_make(Int32) -> MlfeatureplsModel
+
+pub fn ml_feature_pls_node_make(Int32) -> MlfeatureplsNode
+
+pub fn ml_feature_pls_path_make(Int32) -> MlfeatureplsPath
+
+pub fn ml_feature_pls_range_make(Int32) -> MlfeatureplsRange
+
+pub fn ml_feature_pls_slice_make(Int32) -> MlfeatureplsSlice
+
+pub fn ml_feature_pls_table_make(Int32) -> MlfeatureplsTable
+
+pub fn ml_feature_pls_vector_zero(Int32) -> MlfeatureplsVector
+
+pub fn ml_feature_pls_view_make(Int32) -> MlfeatureplsView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlfeatureplsBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureplsBuffer::add(Self, Self) -> Self
+pub fn MlfeatureplsBuffer::copy(Self) -> Self
+pub fn MlfeatureplsBuffer::fill(Self, Double) -> Self
+pub fn MlfeatureplsBuffer::get(Self, Int32) -> Double
+pub fn MlfeatureplsBuffer::len(Self) -> Int32
+pub fn MlfeatureplsBuffer::max(Self) -> Double
+pub fn MlfeatureplsBuffer::mean(Self) -> Double
+pub fn MlfeatureplsBuffer::min(Self) -> Double
+pub fn MlfeatureplsBuffer::scale(Self, Double) -> Self
+pub fn MlfeatureplsBuffer::set(Self, Int32, Double) -> Self
+pub fn MlfeatureplsBuffer::sum(Self) -> Double
+pub fn MlfeatureplsBuffer::to_string(Self) -> String
+
+pub(all) struct MlfeatureplsCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureplsCluster::add(Self, Self) -> Self
+pub fn MlfeatureplsCluster::copy(Self) -> Self
+pub fn MlfeatureplsCluster::fill(Self, Double) -> Self
+pub fn MlfeatureplsCluster::get(Self, Int32) -> Double
+pub fn MlfeatureplsCluster::len(Self) -> Int32
+pub fn MlfeatureplsCluster::max(Self) -> Double
+pub fn MlfeatureplsCluster::mean(Self) -> Double
+pub fn MlfeatureplsCluster::min(Self) -> Double
+pub fn MlfeatureplsCluster::scale(Self, Double) -> Self
+pub fn MlfeatureplsCluster::set(Self, Int32, Double) -> Self
+pub fn MlfeatureplsCluster::sum(Self) -> Double
+pub fn MlfeatureplsCluster::to_string(Self) -> String
+
+pub(all) struct MlfeatureplsCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureplsCursor::add(Self, Self) -> Self
+pub fn MlfeatureplsCursor::copy(Self) -> Self
+pub fn MlfeatureplsCursor::fill(Self, Double) -> Self
+pub fn MlfeatureplsCursor::get(Self, Int32) -> Double
+pub fn MlfeatureplsCursor::len(Self) -> Int32
+pub fn MlfeatureplsCursor::max(Self) -> Double
+pub fn MlfeatureplsCursor::mean(Self) -> Double
+pub fn MlfeatureplsCursor::min(Self) -> Double
+pub fn MlfeatureplsCursor::scale(Self, Double) -> Self
+pub fn MlfeatureplsCursor::set(Self, Int32, Double) -> Self
+pub fn MlfeatureplsCursor::sum(Self) -> Double
+pub fn MlfeatureplsCursor::to_string(Self) -> String
+
+pub(all) struct MlfeatureplsEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureplsEdge::add(Self, Self) -> Self
+pub fn MlfeatureplsEdge::copy(Self) -> Self
+pub fn MlfeatureplsEdge::fill(Self, Double) -> Self
+pub fn MlfeatureplsEdge::get(Self, Int32) -> Double
+pub fn MlfeatureplsEdge::len(Self) -> Int32
+pub fn MlfeatureplsEdge::max(Self) -> Double
+pub fn MlfeatureplsEdge::mean(Self) -> Double
+pub fn MlfeatureplsEdge::min(Self) -> Double
+pub fn MlfeatureplsEdge::scale(Self, Double) -> Self
+pub fn MlfeatureplsEdge::set(Self, Int32, Double) -> Self
+pub fn MlfeatureplsEdge::sum(Self) -> Double
+pub fn MlfeatureplsEdge::to_string(Self) -> String
+
+pub(all) struct MlfeatureplsFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureplsFrame::add(Self, Self) -> Self
+pub fn MlfeatureplsFrame::copy(Self) -> Self
+pub fn MlfeatureplsFrame::fill(Self, Double) -> Self
+pub fn MlfeatureplsFrame::get(Self, Int32) -> Double
+pub fn MlfeatureplsFrame::len(Self) -> Int32
+pub fn MlfeatureplsFrame::max(Self) -> Double
+pub fn MlfeatureplsFrame::mean(Self) -> Double
+pub fn MlfeatureplsFrame::min(Self) -> Double
+pub fn MlfeatureplsFrame::scale(Self, Double) -> Self
+pub fn MlfeatureplsFrame::set(Self, Int32, Double) -> Self
+pub fn MlfeatureplsFrame::sum(Self) -> Double
+pub fn MlfeatureplsFrame::to_string(Self) -> String
+
+pub(all) struct MlfeatureplsGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureplsGraphN::add(Self, Self) -> Self
+pub fn MlfeatureplsGraphN::copy(Self) -> Self
+pub fn MlfeatureplsGraphN::fill(Self, Double) -> Self
+pub fn MlfeatureplsGraphN::get(Self, Int32) -> Double
+pub fn MlfeatureplsGraphN::len(Self) -> Int32
+pub fn MlfeatureplsGraphN::max(Self) -> Double
+pub fn MlfeatureplsGraphN::mean(Self) -> Double
+pub fn MlfeatureplsGraphN::min(Self) -> Double
+pub fn MlfeatureplsGraphN::scale(Self, Double) -> Self
+pub fn MlfeatureplsGraphN::set(Self, Int32, Double) -> Self
+pub fn MlfeatureplsGraphN::sum(Self) -> Double
+pub fn MlfeatureplsGraphN::to_string(Self) -> String
+
+pub(all) struct MlfeatureplsLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureplsLayer::add(Self, Self) -> Self
+pub fn MlfeatureplsLayer::copy(Self) -> Self
+pub fn MlfeatureplsLayer::fill(Self, Double) -> Self
+pub fn MlfeatureplsLayer::get(Self, Int32) -> Double
+pub fn MlfeatureplsLayer::len(Self) -> Int32
+pub fn MlfeatureplsLayer::max(Self) -> Double
+pub fn MlfeatureplsLayer::mean(Self) -> Double
+pub fn MlfeatureplsLayer::min(Self) -> Double
+pub fn MlfeatureplsLayer::scale(Self, Double) -> Self
+pub fn MlfeatureplsLayer::set(Self, Int32, Double) -> Self
+pub fn MlfeatureplsLayer::sum(Self) -> Double
+pub fn MlfeatureplsLayer::to_string(Self) -> String
+
+pub(all) struct MlfeatureplsMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlfeatureplsMatrix::add(Self, Self) -> Self
+pub fn MlfeatureplsMatrix::det(Self) -> Double
+pub fn MlfeatureplsMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlfeatureplsMatrix::multiply(Self, Self) -> Self
+pub fn MlfeatureplsMatrix::norm(Self) -> Double
+pub fn MlfeatureplsMatrix::scale(Self, Double) -> Self
+pub fn MlfeatureplsMatrix::to_string(Self) -> String
+pub fn MlfeatureplsMatrix::trace(Self) -> Double
+pub fn MlfeatureplsMatrix::transpose(Self) -> Self
+
+pub(all) struct MlfeatureplsModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureplsModel::add(Self, Self) -> Self
+pub fn MlfeatureplsModel::copy(Self) -> Self
+pub fn MlfeatureplsModel::fill(Self, Double) -> Self
+pub fn MlfeatureplsModel::get(Self, Int32) -> Double
+pub fn MlfeatureplsModel::len(Self) -> Int32
+pub fn MlfeatureplsModel::max(Self) -> Double
+pub fn MlfeatureplsModel::mean(Self) -> Double
+pub fn MlfeatureplsModel::min(Self) -> Double
+pub fn MlfeatureplsModel::scale(Self, Double) -> Self
+pub fn MlfeatureplsModel::set(Self, Int32, Double) -> Self
+pub fn MlfeatureplsModel::sum(Self) -> Double
+pub fn MlfeatureplsModel::to_string(Self) -> String
+
+pub(all) struct MlfeatureplsNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureplsNode::add(Self, Self) -> Self
+pub fn MlfeatureplsNode::copy(Self) -> Self
+pub fn MlfeatureplsNode::fill(Self, Double) -> Self
+pub fn MlfeatureplsNode::get(Self, Int32) -> Double
+pub fn MlfeatureplsNode::len(Self) -> Int32
+pub fn MlfeatureplsNode::max(Self) -> Double
+pub fn MlfeatureplsNode::mean(Self) -> Double
+pub fn MlfeatureplsNode::min(Self) -> Double
+pub fn MlfeatureplsNode::scale(Self, Double) -> Self
+pub fn MlfeatureplsNode::set(Self, Int32, Double) -> Self
+pub fn MlfeatureplsNode::sum(Self) -> Double
+pub fn MlfeatureplsNode::to_string(Self) -> String
+
+pub(all) struct MlfeatureplsPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureplsPath::add(Self, Self) -> Self
+pub fn MlfeatureplsPath::copy(Self) -> Self
+pub fn MlfeatureplsPath::fill(Self, Double) -> Self
+pub fn MlfeatureplsPath::get(Self, Int32) -> Double
+pub fn MlfeatureplsPath::len(Self) -> Int32
+pub fn MlfeatureplsPath::max(Self) -> Double
+pub fn MlfeatureplsPath::mean(Self) -> Double
+pub fn MlfeatureplsPath::min(Self) -> Double
+pub fn MlfeatureplsPath::scale(Self, Double) -> Self
+pub fn MlfeatureplsPath::set(Self, Int32, Double) -> Self
+pub fn MlfeatureplsPath::sum(Self) -> Double
+pub fn MlfeatureplsPath::to_string(Self) -> String
+
+pub(all) struct MlfeatureplsPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlfeatureplsPoint::add(Self, Self) -> Self
+pub fn MlfeatureplsPoint::cross(Self, Self) -> Self
+pub fn MlfeatureplsPoint::dist(Self, Self) -> Double
+pub fn MlfeatureplsPoint::dot(Self, Self) -> Double
+pub fn MlfeatureplsPoint::label(Self) -> Int32
+pub fn MlfeatureplsPoint::lerp(Self, Self, Double) -> Self
+pub fn MlfeatureplsPoint::mid(Self, Self) -> Self
+pub fn MlfeatureplsPoint::negate(Self) -> Self
+pub fn MlfeatureplsPoint::norm(Self) -> Double
+pub fn MlfeatureplsPoint::normalize(Self) -> Self
+pub fn MlfeatureplsPoint::scale(Self, Double) -> Self
+pub fn MlfeatureplsPoint::sub(Self, Self) -> Self
+pub fn MlfeatureplsPoint::to_string(Self) -> String
+pub fn MlfeatureplsPoint::x(Self) -> Double
+pub fn MlfeatureplsPoint::y(Self) -> Double
+pub fn MlfeatureplsPoint::z(Self) -> Double
+
+pub(all) struct MlfeatureplsRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureplsRange::add(Self, Self) -> Self
+pub fn MlfeatureplsRange::copy(Self) -> Self
+pub fn MlfeatureplsRange::fill(Self, Double) -> Self
+pub fn MlfeatureplsRange::get(Self, Int32) -> Double
+pub fn MlfeatureplsRange::len(Self) -> Int32
+pub fn MlfeatureplsRange::max(Self) -> Double
+pub fn MlfeatureplsRange::mean(Self) -> Double
+pub fn MlfeatureplsRange::min(Self) -> Double
+pub fn MlfeatureplsRange::scale(Self, Double) -> Self
+pub fn MlfeatureplsRange::set(Self, Int32, Double) -> Self
+pub fn MlfeatureplsRange::sum(Self) -> Double
+pub fn MlfeatureplsRange::to_string(Self) -> String
+
+pub(all) struct MlfeatureplsSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlfeatureplsSeries::add(Self, Self) -> Self
+pub fn MlfeatureplsSeries::cumsum(Self) -> Self
+pub fn MlfeatureplsSeries::len(Self) -> Int32
+pub fn MlfeatureplsSeries::max(Self) -> Double
+pub fn MlfeatureplsSeries::mean(Self) -> Double
+pub fn MlfeatureplsSeries::median(Self) -> Double
+pub fn MlfeatureplsSeries::min(Self) -> Double
+pub fn MlfeatureplsSeries::normalize(Self) -> Self
+pub fn MlfeatureplsSeries::range(Self) -> Double
+pub fn MlfeatureplsSeries::scale(Self, Double) -> Self
+pub fn MlfeatureplsSeries::std(Self) -> Double
+pub fn MlfeatureplsSeries::sub(Self, Self) -> Self
+pub fn MlfeatureplsSeries::sum(Self) -> Double
+pub fn MlfeatureplsSeries::to_string(Self) -> String
+pub fn MlfeatureplsSeries::variance(Self) -> Double
+
+pub(all) struct MlfeatureplsSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureplsSlice::add(Self, Self) -> Self
+pub fn MlfeatureplsSlice::copy(Self) -> Self
+pub fn MlfeatureplsSlice::fill(Self, Double) -> Self
+pub fn MlfeatureplsSlice::get(Self, Int32) -> Double
+pub fn MlfeatureplsSlice::len(Self) -> Int32
+pub fn MlfeatureplsSlice::max(Self) -> Double
+pub fn MlfeatureplsSlice::mean(Self) -> Double
+pub fn MlfeatureplsSlice::min(Self) -> Double
+pub fn MlfeatureplsSlice::scale(Self, Double) -> Self
+pub fn MlfeatureplsSlice::set(Self, Int32, Double) -> Self
+pub fn MlfeatureplsSlice::sum(Self) -> Double
+pub fn MlfeatureplsSlice::to_string(Self) -> String
+
+pub(all) struct MlfeatureplsTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureplsTable::add(Self, Self) -> Self
+pub fn MlfeatureplsTable::copy(Self) -> Self
+pub fn MlfeatureplsTable::fill(Self, Double) -> Self
+pub fn MlfeatureplsTable::get(Self, Int32) -> Double
+pub fn MlfeatureplsTable::len(Self) -> Int32
+pub fn MlfeatureplsTable::max(Self) -> Double
+pub fn MlfeatureplsTable::mean(Self) -> Double
+pub fn MlfeatureplsTable::min(Self) -> Double
+pub fn MlfeatureplsTable::scale(Self, Double) -> Self
+pub fn MlfeatureplsTable::set(Self, Int32, Double) -> Self
+pub fn MlfeatureplsTable::sum(Self) -> Double
+pub fn MlfeatureplsTable::to_string(Self) -> String
+
+pub(all) struct MlfeatureplsVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlfeatureplsVector::add(Self, Self) -> Self
+pub fn MlfeatureplsVector::dist(Self, Self) -> Double
+pub fn MlfeatureplsVector::dot(Self, Self) -> Double
+pub fn MlfeatureplsVector::norm(Self) -> Double
+pub fn MlfeatureplsVector::normalize(Self) -> Self
+pub fn MlfeatureplsVector::scale(Self, Double) -> Self
+pub fn MlfeatureplsVector::sub(Self, Self) -> Self
+pub fn MlfeatureplsVector::to_string(Self) -> String
+
+pub(all) struct MlfeatureplsView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureplsView::add(Self, Self) -> Self
+pub fn MlfeatureplsView::copy(Self) -> Self
+pub fn MlfeatureplsView::fill(Self, Double) -> Self
+pub fn MlfeatureplsView::get(Self, Int32) -> Double
+pub fn MlfeatureplsView::len(Self) -> Int32
+pub fn MlfeatureplsView::max(Self) -> Double
+pub fn MlfeatureplsView::mean(Self) -> Double
+pub fn MlfeatureplsView::min(Self) -> Double
+pub fn MlfeatureplsView::scale(Self, Double) -> Self
+pub fn MlfeatureplsView::set(Self, Int32, Double) -> Self
+pub fn MlfeatureplsView::sum(Self) -> Double
+pub fn MlfeatureplsView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

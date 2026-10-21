@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/chem_mol_repr_smiles"
+
+// Values
+pub fn chem_mol_repr_smiles_buffer_make(Int32) -> ChemmolreprsmilesBuffer
+
+pub fn chem_mol_repr_smiles_cluster_make(Int32) -> ChemmolreprsmilesCluster
+
+pub fn chem_mol_repr_smiles_cursor_make(Int32) -> ChemmolreprsmilesCursor
+
+pub fn chem_mol_repr_smiles_edge_make(Int32) -> ChemmolreprsmilesEdge
+
+pub fn chem_mol_repr_smiles_frame_make(Int32) -> ChemmolreprsmilesFrame
+
+pub fn chem_mol_repr_smiles_graphn_make(Int32) -> ChemmolreprsmilesGraphN
+
+pub fn chem_mol_repr_smiles_layer_make(Int32) -> ChemmolreprsmilesLayer
+
+pub fn chem_mol_repr_smiles_make_matrix(Int32, Int32, Double) -> ChemmolreprsmilesMatrix
+
+pub fn chem_mol_repr_smiles_make_point(Double, Double) -> ChemmolreprsmilesPoint
+
+pub fn chem_mol_repr_smiles_make_point3(Double, Double, Double) -> ChemmolreprsmilesPoint
+
+pub fn chem_mol_repr_smiles_make_series(Array[Double], String) -> ChemmolreprsmilesSeries
+
+pub fn chem_mol_repr_smiles_make_vector(Array[Double]) -> ChemmolreprsmilesVector
+
+pub fn chem_mol_repr_smiles_matrix_identity(Int32) -> ChemmolreprsmilesMatrix
+
+pub fn chem_mol_repr_smiles_model_make(Int32) -> ChemmolreprsmilesModel
+
+pub fn chem_mol_repr_smiles_node_make(Int32) -> ChemmolreprsmilesNode
+
+pub fn chem_mol_repr_smiles_path_make(Int32) -> ChemmolreprsmilesPath
+
+pub fn chem_mol_repr_smiles_range_make(Int32) -> ChemmolreprsmilesRange
+
+pub fn chem_mol_repr_smiles_slice_make(Int32) -> ChemmolreprsmilesSlice
+
+pub fn chem_mol_repr_smiles_table_make(Int32) -> ChemmolreprsmilesTable
+
+pub fn chem_mol_repr_smiles_vector_zero(Int32) -> ChemmolreprsmilesVector
+
+pub fn chem_mol_repr_smiles_view_make(Int32) -> ChemmolreprsmilesView
+
+// Errors
+
+// Types and methods
+pub(all) struct ChemmolreprsmilesBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprsmilesBuffer::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesBuffer::copy(Self) -> Self
+pub fn ChemmolreprsmilesBuffer::fill(Self, Double) -> Self
+pub fn ChemmolreprsmilesBuffer::get(Self, Int32) -> Double
+pub fn ChemmolreprsmilesBuffer::len(Self) -> Int32
+pub fn ChemmolreprsmilesBuffer::max(Self) -> Double
+pub fn ChemmolreprsmilesBuffer::mean(Self) -> Double
+pub fn ChemmolreprsmilesBuffer::min(Self) -> Double
+pub fn ChemmolreprsmilesBuffer::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesBuffer::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprsmilesBuffer::sum(Self) -> Double
+pub fn ChemmolreprsmilesBuffer::to_string(Self) -> String
+
+pub(all) struct ChemmolreprsmilesCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprsmilesCluster::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesCluster::copy(Self) -> Self
+pub fn ChemmolreprsmilesCluster::fill(Self, Double) -> Self
+pub fn ChemmolreprsmilesCluster::get(Self, Int32) -> Double
+pub fn ChemmolreprsmilesCluster::len(Self) -> Int32
+pub fn ChemmolreprsmilesCluster::max(Self) -> Double
+pub fn ChemmolreprsmilesCluster::mean(Self) -> Double
+pub fn ChemmolreprsmilesCluster::min(Self) -> Double
+pub fn ChemmolreprsmilesCluster::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesCluster::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprsmilesCluster::sum(Self) -> Double
+pub fn ChemmolreprsmilesCluster::to_string(Self) -> String
+
+pub(all) struct ChemmolreprsmilesCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprsmilesCursor::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesCursor::copy(Self) -> Self
+pub fn ChemmolreprsmilesCursor::fill(Self, Double) -> Self
+pub fn ChemmolreprsmilesCursor::get(Self, Int32) -> Double
+pub fn ChemmolreprsmilesCursor::len(Self) -> Int32
+pub fn ChemmolreprsmilesCursor::max(Self) -> Double
+pub fn ChemmolreprsmilesCursor::mean(Self) -> Double
+pub fn ChemmolreprsmilesCursor::min(Self) -> Double
+pub fn ChemmolreprsmilesCursor::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesCursor::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprsmilesCursor::sum(Self) -> Double
+pub fn ChemmolreprsmilesCursor::to_string(Self) -> String
+
+pub(all) struct ChemmolreprsmilesEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprsmilesEdge::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesEdge::copy(Self) -> Self
+pub fn ChemmolreprsmilesEdge::fill(Self, Double) -> Self
+pub fn ChemmolreprsmilesEdge::get(Self, Int32) -> Double
+pub fn ChemmolreprsmilesEdge::len(Self) -> Int32
+pub fn ChemmolreprsmilesEdge::max(Self) -> Double
+pub fn ChemmolreprsmilesEdge::mean(Self) -> Double
+pub fn ChemmolreprsmilesEdge::min(Self) -> Double
+pub fn ChemmolreprsmilesEdge::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesEdge::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprsmilesEdge::sum(Self) -> Double
+pub fn ChemmolreprsmilesEdge::to_string(Self) -> String
+
+pub(all) struct ChemmolreprsmilesFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprsmilesFrame::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesFrame::copy(Self) -> Self
+pub fn ChemmolreprsmilesFrame::fill(Self, Double) -> Self
+pub fn ChemmolreprsmilesFrame::get(Self, Int32) -> Double
+pub fn ChemmolreprsmilesFrame::len(Self) -> Int32
+pub fn ChemmolreprsmilesFrame::max(Self) -> Double
+pub fn ChemmolreprsmilesFrame::mean(Self) -> Double
+pub fn ChemmolreprsmilesFrame::min(Self) -> Double
+pub fn ChemmolreprsmilesFrame::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesFrame::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprsmilesFrame::sum(Self) -> Double
+pub fn ChemmolreprsmilesFrame::to_string(Self) -> String
+
+pub(all) struct ChemmolreprsmilesGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprsmilesGraphN::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesGraphN::copy(Self) -> Self
+pub fn ChemmolreprsmilesGraphN::fill(Self, Double) -> Self
+pub fn ChemmolreprsmilesGraphN::get(Self, Int32) -> Double
+pub fn ChemmolreprsmilesGraphN::len(Self) -> Int32
+pub fn ChemmolreprsmilesGraphN::max(Self) -> Double
+pub fn ChemmolreprsmilesGraphN::mean(Self) -> Double
+pub fn ChemmolreprsmilesGraphN::min(Self) -> Double
+pub fn ChemmolreprsmilesGraphN::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesGraphN::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprsmilesGraphN::sum(Self) -> Double
+pub fn ChemmolreprsmilesGraphN::to_string(Self) -> String
+
+pub(all) struct ChemmolreprsmilesLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprsmilesLayer::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesLayer::copy(Self) -> Self
+pub fn ChemmolreprsmilesLayer::fill(Self, Double) -> Self
+pub fn ChemmolreprsmilesLayer::get(Self, Int32) -> Double
+pub fn ChemmolreprsmilesLayer::len(Self) -> Int32
+pub fn ChemmolreprsmilesLayer::max(Self) -> Double
+pub fn ChemmolreprsmilesLayer::mean(Self) -> Double
+pub fn ChemmolreprsmilesLayer::min(Self) -> Double
+pub fn ChemmolreprsmilesLayer::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesLayer::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprsmilesLayer::sum(Self) -> Double
+pub fn ChemmolreprsmilesLayer::to_string(Self) -> String
+
+pub(all) struct ChemmolreprsmilesMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ChemmolreprsmilesMatrix::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesMatrix::det(Self) -> Double
+pub fn ChemmolreprsmilesMatrix::get(Self, Int32, Int32) -> Double
+pub fn ChemmolreprsmilesMatrix::multiply(Self, Self) -> Self
+pub fn ChemmolreprsmilesMatrix::norm(Self) -> Double
+pub fn ChemmolreprsmilesMatrix::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesMatrix::to_string(Self) -> String
+pub fn ChemmolreprsmilesMatrix::trace(Self) -> Double
+pub fn ChemmolreprsmilesMatrix::transpose(Self) -> Self
+
+pub(all) struct ChemmolreprsmilesModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprsmilesModel::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesModel::copy(Self) -> Self
+pub fn ChemmolreprsmilesModel::fill(Self, Double) -> Self
+pub fn ChemmolreprsmilesModel::get(Self, Int32) -> Double
+pub fn ChemmolreprsmilesModel::len(Self) -> Int32
+pub fn ChemmolreprsmilesModel::max(Self) -> Double
+pub fn ChemmolreprsmilesModel::mean(Self) -> Double
+pub fn ChemmolreprsmilesModel::min(Self) -> Double
+pub fn ChemmolreprsmilesModel::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesModel::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprsmilesModel::sum(Self) -> Double
+pub fn ChemmolreprsmilesModel::to_string(Self) -> String
+
+pub(all) struct ChemmolreprsmilesNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprsmilesNode::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesNode::copy(Self) -> Self
+pub fn ChemmolreprsmilesNode::fill(Self, Double) -> Self
+pub fn ChemmolreprsmilesNode::get(Self, Int32) -> Double
+pub fn ChemmolreprsmilesNode::len(Self) -> Int32
+pub fn ChemmolreprsmilesNode::max(Self) -> Double
+pub fn ChemmolreprsmilesNode::mean(Self) -> Double
+pub fn ChemmolreprsmilesNode::min(Self) -> Double
+pub fn ChemmolreprsmilesNode::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesNode::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprsmilesNode::sum(Self) -> Double
+pub fn ChemmolreprsmilesNode::to_string(Self) -> String
+
+pub(all) struct ChemmolreprsmilesPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprsmilesPath::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesPath::copy(Self) -> Self
+pub fn ChemmolreprsmilesPath::fill(Self, Double) -> Self
+pub fn ChemmolreprsmilesPath::get(Self, Int32) -> Double
+pub fn ChemmolreprsmilesPath::len(Self) -> Int32
+pub fn ChemmolreprsmilesPath::max(Self) -> Double
+pub fn ChemmolreprsmilesPath::mean(Self) -> Double
+pub fn ChemmolreprsmilesPath::min(Self) -> Double
+pub fn ChemmolreprsmilesPath::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesPath::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprsmilesPath::sum(Self) -> Double
+pub fn ChemmolreprsmilesPath::to_string(Self) -> String
+
+pub(all) struct ChemmolreprsmilesPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ChemmolreprsmilesPoint::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesPoint::cross(Self, Self) -> Self
+pub fn ChemmolreprsmilesPoint::dist(Self, Self) -> Double
+pub fn ChemmolreprsmilesPoint::dot(Self, Self) -> Double
+pub fn ChemmolreprsmilesPoint::label(Self) -> Int32
+pub fn ChemmolreprsmilesPoint::lerp(Self, Self, Double) -> Self
+pub fn ChemmolreprsmilesPoint::mid(Self, Self) -> Self
+pub fn ChemmolreprsmilesPoint::negate(Self) -> Self
+pub fn ChemmolreprsmilesPoint::norm(Self) -> Double
+pub fn ChemmolreprsmilesPoint::normalize(Self) -> Self
+pub fn ChemmolreprsmilesPoint::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesPoint::sub(Self, Self) -> Self
+pub fn ChemmolreprsmilesPoint::to_string(Self) -> String
+pub fn ChemmolreprsmilesPoint::x(Self) -> Double
+pub fn ChemmolreprsmilesPoint::y(Self) -> Double
+pub fn ChemmolreprsmilesPoint::z(Self) -> Double
+
+pub(all) struct ChemmolreprsmilesRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprsmilesRange::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesRange::copy(Self) -> Self
+pub fn ChemmolreprsmilesRange::fill(Self, Double) -> Self
+pub fn ChemmolreprsmilesRange::get(Self, Int32) -> Double
+pub fn ChemmolreprsmilesRange::len(Self) -> Int32
+pub fn ChemmolreprsmilesRange::max(Self) -> Double
+pub fn ChemmolreprsmilesRange::mean(Self) -> Double
+pub fn ChemmolreprsmilesRange::min(Self) -> Double
+pub fn ChemmolreprsmilesRange::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesRange::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprsmilesRange::sum(Self) -> Double
+pub fn ChemmolreprsmilesRange::to_string(Self) -> String
+
+pub(all) struct ChemmolreprsmilesSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ChemmolreprsmilesSeries::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesSeries::cumsum(Self) -> Self
+pub fn ChemmolreprsmilesSeries::len(Self) -> Int32
+pub fn ChemmolreprsmilesSeries::max(Self) -> Double
+pub fn ChemmolreprsmilesSeries::mean(Self) -> Double
+pub fn ChemmolreprsmilesSeries::median(Self) -> Double
+pub fn ChemmolreprsmilesSeries::min(Self) -> Double
+pub fn ChemmolreprsmilesSeries::normalize(Self) -> Self
+pub fn ChemmolreprsmilesSeries::range(Self) -> Double
+pub fn ChemmolreprsmilesSeries::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesSeries::std(Self) -> Double
+pub fn ChemmolreprsmilesSeries::sub(Self, Self) -> Self
+pub fn ChemmolreprsmilesSeries::sum(Self) -> Double
+pub fn ChemmolreprsmilesSeries::to_string(Self) -> String
+pub fn ChemmolreprsmilesSeries::variance(Self) -> Double
+
+pub(all) struct ChemmolreprsmilesSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprsmilesSlice::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesSlice::copy(Self) -> Self
+pub fn ChemmolreprsmilesSlice::fill(Self, Double) -> Self
+pub fn ChemmolreprsmilesSlice::get(Self, Int32) -> Double
+pub fn ChemmolreprsmilesSlice::len(Self) -> Int32
+pub fn ChemmolreprsmilesSlice::max(Self) -> Double
+pub fn ChemmolreprsmilesSlice::mean(Self) -> Double
+pub fn ChemmolreprsmilesSlice::min(Self) -> Double
+pub fn ChemmolreprsmilesSlice::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesSlice::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprsmilesSlice::sum(Self) -> Double
+pub fn ChemmolreprsmilesSlice::to_string(Self) -> String
+
+pub(all) struct ChemmolreprsmilesTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprsmilesTable::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesTable::copy(Self) -> Self
+pub fn ChemmolreprsmilesTable::fill(Self, Double) -> Self
+pub fn ChemmolreprsmilesTable::get(Self, Int32) -> Double
+pub fn ChemmolreprsmilesTable::len(Self) -> Int32
+pub fn ChemmolreprsmilesTable::max(Self) -> Double
+pub fn ChemmolreprsmilesTable::mean(Self) -> Double
+pub fn ChemmolreprsmilesTable::min(Self) -> Double
+pub fn ChemmolreprsmilesTable::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesTable::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprsmilesTable::sum(Self) -> Double
+pub fn ChemmolreprsmilesTable::to_string(Self) -> String
+
+pub(all) struct ChemmolreprsmilesVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ChemmolreprsmilesVector::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesVector::dist(Self, Self) -> Double
+pub fn ChemmolreprsmilesVector::dot(Self, Self) -> Double
+pub fn ChemmolreprsmilesVector::norm(Self) -> Double
+pub fn ChemmolreprsmilesVector::normalize(Self) -> Self
+pub fn ChemmolreprsmilesVector::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesVector::sub(Self, Self) -> Self
+pub fn ChemmolreprsmilesVector::to_string(Self) -> String
+
+pub(all) struct ChemmolreprsmilesView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprsmilesView::add(Self, Self) -> Self
+pub fn ChemmolreprsmilesView::copy(Self) -> Self
+pub fn ChemmolreprsmilesView::fill(Self, Double) -> Self
+pub fn ChemmolreprsmilesView::get(Self, Int32) -> Double
+pub fn ChemmolreprsmilesView::len(Self) -> Int32
+pub fn ChemmolreprsmilesView::max(Self) -> Double
+pub fn ChemmolreprsmilesView::mean(Self) -> Double
+pub fn ChemmolreprsmilesView::min(Self) -> Double
+pub fn ChemmolreprsmilesView::scale(Self, Double) -> Self
+pub fn ChemmolreprsmilesView::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprsmilesView::sum(Self) -> Double
+pub fn ChemmolreprsmilesView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

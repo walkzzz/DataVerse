@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_parse_cfg"
+
+// Values
+pub fn nlp_parse_cfg_buffer_make(Int32) -> NlpparsecfgBuffer
+
+pub fn nlp_parse_cfg_cluster_make(Int32) -> NlpparsecfgCluster
+
+pub fn nlp_parse_cfg_cursor_make(Int32) -> NlpparsecfgCursor
+
+pub fn nlp_parse_cfg_edge_make(Int32) -> NlpparsecfgEdge
+
+pub fn nlp_parse_cfg_frame_make(Int32) -> NlpparsecfgFrame
+
+pub fn nlp_parse_cfg_graphn_make(Int32) -> NlpparsecfgGraphN
+
+pub fn nlp_parse_cfg_layer_make(Int32) -> NlpparsecfgLayer
+
+pub fn nlp_parse_cfg_make_matrix(Int32, Int32, Double) -> NlpparsecfgMatrix
+
+pub fn nlp_parse_cfg_make_point(Double, Double) -> NlpparsecfgPoint
+
+pub fn nlp_parse_cfg_make_point3(Double, Double, Double) -> NlpparsecfgPoint
+
+pub fn nlp_parse_cfg_make_series(Array[Double], String) -> NlpparsecfgSeries
+
+pub fn nlp_parse_cfg_make_vector(Array[Double]) -> NlpparsecfgVector
+
+pub fn nlp_parse_cfg_matrix_identity(Int32) -> NlpparsecfgMatrix
+
+pub fn nlp_parse_cfg_model_make(Int32) -> NlpparsecfgModel
+
+pub fn nlp_parse_cfg_node_make(Int32) -> NlpparsecfgNode
+
+pub fn nlp_parse_cfg_path_make(Int32) -> NlpparsecfgPath
+
+pub fn nlp_parse_cfg_range_make(Int32) -> NlpparsecfgRange
+
+pub fn nlp_parse_cfg_slice_make(Int32) -> NlpparsecfgSlice
+
+pub fn nlp_parse_cfg_table_make(Int32) -> NlpparsecfgTable
+
+pub fn nlp_parse_cfg_vector_zero(Int32) -> NlpparsecfgVector
+
+pub fn nlp_parse_cfg_view_make(Int32) -> NlpparsecfgView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlpparsecfgBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsecfgBuffer::add(Self, Self) -> Self
+pub fn NlpparsecfgBuffer::copy(Self) -> Self
+pub fn NlpparsecfgBuffer::fill(Self, Double) -> Self
+pub fn NlpparsecfgBuffer::get(Self, Int32) -> Double
+pub fn NlpparsecfgBuffer::len(Self) -> Int32
+pub fn NlpparsecfgBuffer::max(Self) -> Double
+pub fn NlpparsecfgBuffer::mean(Self) -> Double
+pub fn NlpparsecfgBuffer::min(Self) -> Double
+pub fn NlpparsecfgBuffer::scale(Self, Double) -> Self
+pub fn NlpparsecfgBuffer::set(Self, Int32, Double) -> Self
+pub fn NlpparsecfgBuffer::sum(Self) -> Double
+pub fn NlpparsecfgBuffer::to_string(Self) -> String
+
+pub(all) struct NlpparsecfgCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsecfgCluster::add(Self, Self) -> Self
+pub fn NlpparsecfgCluster::copy(Self) -> Self
+pub fn NlpparsecfgCluster::fill(Self, Double) -> Self
+pub fn NlpparsecfgCluster::get(Self, Int32) -> Double
+pub fn NlpparsecfgCluster::len(Self) -> Int32
+pub fn NlpparsecfgCluster::max(Self) -> Double
+pub fn NlpparsecfgCluster::mean(Self) -> Double
+pub fn NlpparsecfgCluster::min(Self) -> Double
+pub fn NlpparsecfgCluster::scale(Self, Double) -> Self
+pub fn NlpparsecfgCluster::set(Self, Int32, Double) -> Self
+pub fn NlpparsecfgCluster::sum(Self) -> Double
+pub fn NlpparsecfgCluster::to_string(Self) -> String
+
+pub(all) struct NlpparsecfgCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsecfgCursor::add(Self, Self) -> Self
+pub fn NlpparsecfgCursor::copy(Self) -> Self
+pub fn NlpparsecfgCursor::fill(Self, Double) -> Self
+pub fn NlpparsecfgCursor::get(Self, Int32) -> Double
+pub fn NlpparsecfgCursor::len(Self) -> Int32
+pub fn NlpparsecfgCursor::max(Self) -> Double
+pub fn NlpparsecfgCursor::mean(Self) -> Double
+pub fn NlpparsecfgCursor::min(Self) -> Double
+pub fn NlpparsecfgCursor::scale(Self, Double) -> Self
+pub fn NlpparsecfgCursor::set(Self, Int32, Double) -> Self
+pub fn NlpparsecfgCursor::sum(Self) -> Double
+pub fn NlpparsecfgCursor::to_string(Self) -> String
+
+pub(all) struct NlpparsecfgEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsecfgEdge::add(Self, Self) -> Self
+pub fn NlpparsecfgEdge::copy(Self) -> Self
+pub fn NlpparsecfgEdge::fill(Self, Double) -> Self
+pub fn NlpparsecfgEdge::get(Self, Int32) -> Double
+pub fn NlpparsecfgEdge::len(Self) -> Int32
+pub fn NlpparsecfgEdge::max(Self) -> Double
+pub fn NlpparsecfgEdge::mean(Self) -> Double
+pub fn NlpparsecfgEdge::min(Self) -> Double
+pub fn NlpparsecfgEdge::scale(Self, Double) -> Self
+pub fn NlpparsecfgEdge::set(Self, Int32, Double) -> Self
+pub fn NlpparsecfgEdge::sum(Self) -> Double
+pub fn NlpparsecfgEdge::to_string(Self) -> String
+
+pub(all) struct NlpparsecfgFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsecfgFrame::add(Self, Self) -> Self
+pub fn NlpparsecfgFrame::copy(Self) -> Self
+pub fn NlpparsecfgFrame::fill(Self, Double) -> Self
+pub fn NlpparsecfgFrame::get(Self, Int32) -> Double
+pub fn NlpparsecfgFrame::len(Self) -> Int32
+pub fn NlpparsecfgFrame::max(Self) -> Double
+pub fn NlpparsecfgFrame::mean(Self) -> Double
+pub fn NlpparsecfgFrame::min(Self) -> Double
+pub fn NlpparsecfgFrame::scale(Self, Double) -> Self
+pub fn NlpparsecfgFrame::set(Self, Int32, Double) -> Self
+pub fn NlpparsecfgFrame::sum(Self) -> Double
+pub fn NlpparsecfgFrame::to_string(Self) -> String
+
+pub(all) struct NlpparsecfgGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsecfgGraphN::add(Self, Self) -> Self
+pub fn NlpparsecfgGraphN::copy(Self) -> Self
+pub fn NlpparsecfgGraphN::fill(Self, Double) -> Self
+pub fn NlpparsecfgGraphN::get(Self, Int32) -> Double
+pub fn NlpparsecfgGraphN::len(Self) -> Int32
+pub fn NlpparsecfgGraphN::max(Self) -> Double
+pub fn NlpparsecfgGraphN::mean(Self) -> Double
+pub fn NlpparsecfgGraphN::min(Self) -> Double
+pub fn NlpparsecfgGraphN::scale(Self, Double) -> Self
+pub fn NlpparsecfgGraphN::set(Self, Int32, Double) -> Self
+pub fn NlpparsecfgGraphN::sum(Self) -> Double
+pub fn NlpparsecfgGraphN::to_string(Self) -> String
+
+pub(all) struct NlpparsecfgLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsecfgLayer::add(Self, Self) -> Self
+pub fn NlpparsecfgLayer::copy(Self) -> Self
+pub fn NlpparsecfgLayer::fill(Self, Double) -> Self
+pub fn NlpparsecfgLayer::get(Self, Int32) -> Double
+pub fn NlpparsecfgLayer::len(Self) -> Int32
+pub fn NlpparsecfgLayer::max(Self) -> Double
+pub fn NlpparsecfgLayer::mean(Self) -> Double
+pub fn NlpparsecfgLayer::min(Self) -> Double
+pub fn NlpparsecfgLayer::scale(Self, Double) -> Self
+pub fn NlpparsecfgLayer::set(Self, Int32, Double) -> Self
+pub fn NlpparsecfgLayer::sum(Self) -> Double
+pub fn NlpparsecfgLayer::to_string(Self) -> String
+
+pub(all) struct NlpparsecfgMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlpparsecfgMatrix::add(Self, Self) -> Self
+pub fn NlpparsecfgMatrix::det(Self) -> Double
+pub fn NlpparsecfgMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlpparsecfgMatrix::multiply(Self, Self) -> Self
+pub fn NlpparsecfgMatrix::norm(Self) -> Double
+pub fn NlpparsecfgMatrix::scale(Self, Double) -> Self
+pub fn NlpparsecfgMatrix::to_string(Self) -> String
+pub fn NlpparsecfgMatrix::trace(Self) -> Double
+pub fn NlpparsecfgMatrix::transpose(Self) -> Self
+
+pub(all) struct NlpparsecfgModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsecfgModel::add(Self, Self) -> Self
+pub fn NlpparsecfgModel::copy(Self) -> Self
+pub fn NlpparsecfgModel::fill(Self, Double) -> Self
+pub fn NlpparsecfgModel::get(Self, Int32) -> Double
+pub fn NlpparsecfgModel::len(Self) -> Int32
+pub fn NlpparsecfgModel::max(Self) -> Double
+pub fn NlpparsecfgModel::mean(Self) -> Double
+pub fn NlpparsecfgModel::min(Self) -> Double
+pub fn NlpparsecfgModel::scale(Self, Double) -> Self
+pub fn NlpparsecfgModel::set(Self, Int32, Double) -> Self
+pub fn NlpparsecfgModel::sum(Self) -> Double
+pub fn NlpparsecfgModel::to_string(Self) -> String
+
+pub(all) struct NlpparsecfgNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsecfgNode::add(Self, Self) -> Self
+pub fn NlpparsecfgNode::copy(Self) -> Self
+pub fn NlpparsecfgNode::fill(Self, Double) -> Self
+pub fn NlpparsecfgNode::get(Self, Int32) -> Double
+pub fn NlpparsecfgNode::len(Self) -> Int32
+pub fn NlpparsecfgNode::max(Self) -> Double
+pub fn NlpparsecfgNode::mean(Self) -> Double
+pub fn NlpparsecfgNode::min(Self) -> Double
+pub fn NlpparsecfgNode::scale(Self, Double) -> Self
+pub fn NlpparsecfgNode::set(Self, Int32, Double) -> Self
+pub fn NlpparsecfgNode::sum(Self) -> Double
+pub fn NlpparsecfgNode::to_string(Self) -> String
+
+pub(all) struct NlpparsecfgPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsecfgPath::add(Self, Self) -> Self
+pub fn NlpparsecfgPath::copy(Self) -> Self
+pub fn NlpparsecfgPath::fill(Self, Double) -> Self
+pub fn NlpparsecfgPath::get(Self, Int32) -> Double
+pub fn NlpparsecfgPath::len(Self) -> Int32
+pub fn NlpparsecfgPath::max(Self) -> Double
+pub fn NlpparsecfgPath::mean(Self) -> Double
+pub fn NlpparsecfgPath::min(Self) -> Double
+pub fn NlpparsecfgPath::scale(Self, Double) -> Self
+pub fn NlpparsecfgPath::set(Self, Int32, Double) -> Self
+pub fn NlpparsecfgPath::sum(Self) -> Double
+pub fn NlpparsecfgPath::to_string(Self) -> String
+
+pub(all) struct NlpparsecfgPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlpparsecfgPoint::add(Self, Self) -> Self
+pub fn NlpparsecfgPoint::cross(Self, Self) -> Self
+pub fn NlpparsecfgPoint::dist(Self, Self) -> Double
+pub fn NlpparsecfgPoint::dot(Self, Self) -> Double
+pub fn NlpparsecfgPoint::label(Self) -> Int32
+pub fn NlpparsecfgPoint::lerp(Self, Self, Double) -> Self
+pub fn NlpparsecfgPoint::mid(Self, Self) -> Self
+pub fn NlpparsecfgPoint::negate(Self) -> Self
+pub fn NlpparsecfgPoint::norm(Self) -> Double
+pub fn NlpparsecfgPoint::normalize(Self) -> Self
+pub fn NlpparsecfgPoint::scale(Self, Double) -> Self
+pub fn NlpparsecfgPoint::sub(Self, Self) -> Self
+pub fn NlpparsecfgPoint::to_string(Self) -> String
+pub fn NlpparsecfgPoint::x(Self) -> Double
+pub fn NlpparsecfgPoint::y(Self) -> Double
+pub fn NlpparsecfgPoint::z(Self) -> Double
+
+pub(all) struct NlpparsecfgRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsecfgRange::add(Self, Self) -> Self
+pub fn NlpparsecfgRange::copy(Self) -> Self
+pub fn NlpparsecfgRange::fill(Self, Double) -> Self
+pub fn NlpparsecfgRange::get(Self, Int32) -> Double
+pub fn NlpparsecfgRange::len(Self) -> Int32
+pub fn NlpparsecfgRange::max(Self) -> Double
+pub fn NlpparsecfgRange::mean(Self) -> Double
+pub fn NlpparsecfgRange::min(Self) -> Double
+pub fn NlpparsecfgRange::scale(Self, Double) -> Self
+pub fn NlpparsecfgRange::set(Self, Int32, Double) -> Self
+pub fn NlpparsecfgRange::sum(Self) -> Double
+pub fn NlpparsecfgRange::to_string(Self) -> String
+
+pub(all) struct NlpparsecfgSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlpparsecfgSeries::add(Self, Self) -> Self
+pub fn NlpparsecfgSeries::cumsum(Self) -> Self
+pub fn NlpparsecfgSeries::len(Self) -> Int32
+pub fn NlpparsecfgSeries::max(Self) -> Double
+pub fn NlpparsecfgSeries::mean(Self) -> Double
+pub fn NlpparsecfgSeries::median(Self) -> Double
+pub fn NlpparsecfgSeries::min(Self) -> Double
+pub fn NlpparsecfgSeries::normalize(Self) -> Self
+pub fn NlpparsecfgSeries::range(Self) -> Double
+pub fn NlpparsecfgSeries::scale(Self, Double) -> Self
+pub fn NlpparsecfgSeries::std(Self) -> Double
+pub fn NlpparsecfgSeries::sub(Self, Self) -> Self
+pub fn NlpparsecfgSeries::sum(Self) -> Double
+pub fn NlpparsecfgSeries::to_string(Self) -> String
+pub fn NlpparsecfgSeries::variance(Self) -> Double
+
+pub(all) struct NlpparsecfgSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsecfgSlice::add(Self, Self) -> Self
+pub fn NlpparsecfgSlice::copy(Self) -> Self
+pub fn NlpparsecfgSlice::fill(Self, Double) -> Self
+pub fn NlpparsecfgSlice::get(Self, Int32) -> Double
+pub fn NlpparsecfgSlice::len(Self) -> Int32
+pub fn NlpparsecfgSlice::max(Self) -> Double
+pub fn NlpparsecfgSlice::mean(Self) -> Double
+pub fn NlpparsecfgSlice::min(Self) -> Double
+pub fn NlpparsecfgSlice::scale(Self, Double) -> Self
+pub fn NlpparsecfgSlice::set(Self, Int32, Double) -> Self
+pub fn NlpparsecfgSlice::sum(Self) -> Double
+pub fn NlpparsecfgSlice::to_string(Self) -> String
+
+pub(all) struct NlpparsecfgTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsecfgTable::add(Self, Self) -> Self
+pub fn NlpparsecfgTable::copy(Self) -> Self
+pub fn NlpparsecfgTable::fill(Self, Double) -> Self
+pub fn NlpparsecfgTable::get(Self, Int32) -> Double
+pub fn NlpparsecfgTable::len(Self) -> Int32
+pub fn NlpparsecfgTable::max(Self) -> Double
+pub fn NlpparsecfgTable::mean(Self) -> Double
+pub fn NlpparsecfgTable::min(Self) -> Double
+pub fn NlpparsecfgTable::scale(Self, Double) -> Self
+pub fn NlpparsecfgTable::set(Self, Int32, Double) -> Self
+pub fn NlpparsecfgTable::sum(Self) -> Double
+pub fn NlpparsecfgTable::to_string(Self) -> String
+
+pub(all) struct NlpparsecfgVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlpparsecfgVector::add(Self, Self) -> Self
+pub fn NlpparsecfgVector::dist(Self, Self) -> Double
+pub fn NlpparsecfgVector::dot(Self, Self) -> Double
+pub fn NlpparsecfgVector::norm(Self) -> Double
+pub fn NlpparsecfgVector::normalize(Self) -> Self
+pub fn NlpparsecfgVector::scale(Self, Double) -> Self
+pub fn NlpparsecfgVector::sub(Self, Self) -> Self
+pub fn NlpparsecfgVector::to_string(Self) -> String
+
+pub(all) struct NlpparsecfgView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsecfgView::add(Self, Self) -> Self
+pub fn NlpparsecfgView::copy(Self) -> Self
+pub fn NlpparsecfgView::fill(Self, Double) -> Self
+pub fn NlpparsecfgView::get(Self, Int32) -> Double
+pub fn NlpparsecfgView::len(Self) -> Int32
+pub fn NlpparsecfgView::max(Self) -> Double
+pub fn NlpparsecfgView::mean(Self) -> Double
+pub fn NlpparsecfgView::min(Self) -> Double
+pub fn NlpparsecfgView::scale(Self, Double) -> Self
+pub fn NlpparsecfgView::set(Self, Int32, Double) -> Self
+pub fn NlpparsecfgView::sum(Self) -> Double
+pub fn NlpparsecfgView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

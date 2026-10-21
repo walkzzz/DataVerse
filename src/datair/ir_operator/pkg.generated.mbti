@@ -1,0 +1,73 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datair/ir_operator"
+
+import {
+  "dataverse/datair/ir_core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn determinism_name(Determinism) -> String
+
+pub fn modality_name(IRModality) -> String
+
+// Errors
+
+// Types and methods
+pub struct CostModel {
+  time_complexity : String
+  space_complexity : String
+  estimated_cost : Double
+} derive(Eq, @debug.Debug)
+pub fn CostModel::equal(Self, Self) -> Bool
+pub fn CostModel::estimated_cost(Self) -> Double
+pub fn CostModel::new(String, String, Double) -> Self
+pub fn CostModel::not_equal(Self, Self) -> Bool
+pub fn CostModel::simple() -> Self
+pub fn CostModel::space_complexity(Self) -> String
+pub fn CostModel::time_complexity(Self) -> String
+pub fn CostModel::to_repr(Self) -> @debug.Repr
+
+pub(all) enum Determinism {
+  Deterministic
+  ApproximateWithSeed(Int32)
+  NonDeterministic
+} derive(Eq, @debug.Debug)
+pub fn Determinism::equal(Self, Self) -> Bool
+pub fn Determinism::not_equal(Self, Self) -> Bool
+pub fn Determinism::to_repr(Self) -> @debug.Repr
+
+pub(all) enum IRModality {
+  Text
+  Image
+  Audio
+  Video
+  Table
+  Code
+  Multi
+} derive(Eq, @debug.Debug)
+pub fn IRModality::equal(Self, Self) -> Bool
+pub fn IRModality::not_equal(Self, Self) -> Bool
+pub fn IRModality::to_repr(Self) -> @debug.Repr
+
+pub struct OperatorIR {
+  node_id : @ir_core.IRNodeId
+  name : String
+  params : Array[(String, String)]
+  modality : IRModality
+  determinism : Determinism
+  cost_model : CostModel
+  metadata : @ir_core.IRMetadata
+} derive(Eq, @debug.Debug)
+pub fn OperatorIR::equal(Self, Self) -> Bool
+pub fn OperatorIR::name(Self) -> String
+pub fn OperatorIR::new(@ir_core.IRNodeId, String, Array[(String, String)], IRModality, Determinism, CostModel, @ir_core.IRMetadata) -> Self
+pub fn OperatorIR::node_id(Self) -> @ir_core.IRNodeId
+pub fn OperatorIR::not_equal(Self, Self) -> Bool
+pub fn OperatorIR::param_count(Self) -> Int32
+pub fn OperatorIR::simple(@ir_core.IRNodeId, String, IRModality, Determinism) -> Self
+pub fn OperatorIR::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

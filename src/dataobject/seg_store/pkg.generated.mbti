@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/seg_store"
+
+// Values
+pub fn seg_store_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn seg_store_corr(Array[Double], Array[Double]) -> Double
+
+pub fn seg_store_cov(Array[Double], Array[Double]) -> Double
+
+pub fn seg_store_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn seg_store_mae(Array[Double], Array[Double]) -> Double
+
+pub fn seg_store_make_labeled_point(Double, Double, Int32) -> Seg_storePoint
+
+pub fn seg_store_make_matrix(Int32, Int32, Double) -> Seg_storeMatrix
+
+pub fn seg_store_make_point(Double, Double) -> Seg_storePoint
+
+pub fn seg_store_make_series(Array[Double], String) -> Seg_storeSeries
+
+pub fn seg_store_make_vector(Array[Double]) -> Seg_storeVector
+
+pub fn seg_store_matrix_add(Seg_storeMatrix, Seg_storeMatrix) -> Seg_storeMatrix
+
+pub fn seg_store_matrix_get(Seg_storeMatrix, Int32, Int32) -> Double
+
+pub fn seg_store_matrix_identity(Int32) -> Seg_storeMatrix
+
+pub fn seg_store_matrix_multiply(Seg_storeMatrix, Seg_storeMatrix) -> Seg_storeMatrix
+
+pub fn seg_store_matrix_norm(Seg_storeMatrix) -> Double
+
+pub fn seg_store_matrix_scale(Seg_storeMatrix, Double) -> Seg_storeMatrix
+
+pub fn seg_store_matrix_to_string(Seg_storeMatrix) -> String
+
+pub fn seg_store_matrix_trace(Seg_storeMatrix) -> Double
+
+pub fn seg_store_matrix_transpose(Seg_storeMatrix) -> Seg_storeMatrix
+
+pub fn seg_store_mse(Array[Double], Array[Double]) -> Double
+
+pub fn seg_store_point_add(Seg_storePoint, Seg_storePoint) -> Seg_storePoint
+
+pub fn seg_store_point_dist(Seg_storePoint, Seg_storePoint) -> Double
+
+pub fn seg_store_point_dot(Seg_storePoint, Seg_storePoint) -> Double
+
+pub fn seg_store_point_label(Seg_storePoint) -> Int32
+
+pub fn seg_store_point_norm(Seg_storePoint) -> Double
+
+pub fn seg_store_point_scale(Seg_storePoint, Double) -> Seg_storePoint
+
+pub fn seg_store_point_sub(Seg_storePoint, Seg_storePoint) -> Seg_storePoint
+
+pub fn seg_store_point_to_string(Seg_storePoint) -> String
+
+pub fn seg_store_point_x(Seg_storePoint) -> Double
+
+pub fn seg_store_point_y(Seg_storePoint) -> Double
+
+pub fn seg_store_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn seg_store_r2(Array[Double], Array[Double]) -> Double
+
+pub fn seg_store_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn seg_store_series_add(Seg_storeSeries, Seg_storeSeries) -> Seg_storeSeries
+
+pub fn seg_store_series_len(Seg_storeSeries) -> Int32
+
+pub fn seg_store_series_max(Seg_storeSeries) -> Double
+
+pub fn seg_store_series_mean(Seg_storeSeries) -> Double
+
+pub fn seg_store_series_min(Seg_storeSeries) -> Double
+
+pub fn seg_store_series_scale(Seg_storeSeries, Double) -> Seg_storeSeries
+
+pub fn seg_store_series_std(Seg_storeSeries) -> Double
+
+pub fn seg_store_series_sum(Seg_storeSeries) -> Double
+
+pub fn seg_store_series_to_string(Seg_storeSeries) -> String
+
+pub fn seg_store_series_var(Seg_storeSeries) -> Double
+
+pub fn seg_store_std(Array[Double]) -> Double
+
+pub fn seg_store_var(Array[Double]) -> Double
+
+pub fn seg_store_vector_add(Seg_storeVector, Seg_storeVector) -> Seg_storeVector
+
+pub fn seg_store_vector_dist(Seg_storeVector, Seg_storeVector) -> Double
+
+pub fn seg_store_vector_dot(Seg_storeVector, Seg_storeVector) -> Double
+
+pub fn seg_store_vector_norm(Seg_storeVector) -> Double
+
+pub fn seg_store_vector_normalize(Seg_storeVector) -> Seg_storeVector
+
+pub fn seg_store_vector_scale(Seg_storeVector, Double) -> Seg_storeVector
+
+pub fn seg_store_vector_sub(Seg_storeVector, Seg_storeVector) -> Seg_storeVector
+
+pub fn seg_store_vector_to_string(Seg_storeVector) -> String
+
+pub fn seg_store_vector_zero(Int32) -> Seg_storeVector
+
+// Errors
+
+// Types and methods
+pub struct Seg_storeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Seg_storePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Seg_storeSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Seg_storeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

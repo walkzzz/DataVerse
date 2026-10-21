@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/finance_pricing_black_scholes"
+
+// Values
+pub fn finance_pricing_black_scholes_buffer_make(Int32) -> FinancepricingblackscholesBuffer
+
+pub fn finance_pricing_black_scholes_cluster_make(Int32) -> FinancepricingblackscholesCluster
+
+pub fn finance_pricing_black_scholes_cursor_make(Int32) -> FinancepricingblackscholesCursor
+
+pub fn finance_pricing_black_scholes_edge_make(Int32) -> FinancepricingblackscholesEdge
+
+pub fn finance_pricing_black_scholes_frame_make(Int32) -> FinancepricingblackscholesFrame
+
+pub fn finance_pricing_black_scholes_graphn_make(Int32) -> FinancepricingblackscholesGraphN
+
+pub fn finance_pricing_black_scholes_layer_make(Int32) -> FinancepricingblackscholesLayer
+
+pub fn finance_pricing_black_scholes_make_matrix(Int32, Int32, Double) -> FinancepricingblackscholesMatrix
+
+pub fn finance_pricing_black_scholes_make_point(Double, Double) -> FinancepricingblackscholesPoint
+
+pub fn finance_pricing_black_scholes_make_point3(Double, Double, Double) -> FinancepricingblackscholesPoint
+
+pub fn finance_pricing_black_scholes_make_series(Array[Double], String) -> FinancepricingblackscholesSeries
+
+pub fn finance_pricing_black_scholes_make_vector(Array[Double]) -> FinancepricingblackscholesVector
+
+pub fn finance_pricing_black_scholes_matrix_identity(Int32) -> FinancepricingblackscholesMatrix
+
+pub fn finance_pricing_black_scholes_model_make(Int32) -> FinancepricingblackscholesModel
+
+pub fn finance_pricing_black_scholes_node_make(Int32) -> FinancepricingblackscholesNode
+
+pub fn finance_pricing_black_scholes_path_make(Int32) -> FinancepricingblackscholesPath
+
+pub fn finance_pricing_black_scholes_range_make(Int32) -> FinancepricingblackscholesRange
+
+pub fn finance_pricing_black_scholes_slice_make(Int32) -> FinancepricingblackscholesSlice
+
+pub fn finance_pricing_black_scholes_table_make(Int32) -> FinancepricingblackscholesTable
+
+pub fn finance_pricing_black_scholes_vector_zero(Int32) -> FinancepricingblackscholesVector
+
+pub fn finance_pricing_black_scholes_view_make(Int32) -> FinancepricingblackscholesView
+
+// Errors
+
+// Types and methods
+pub(all) struct FinancepricingblackscholesBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingblackscholesBuffer::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesBuffer::copy(Self) -> Self
+pub fn FinancepricingblackscholesBuffer::fill(Self, Double) -> Self
+pub fn FinancepricingblackscholesBuffer::get(Self, Int32) -> Double
+pub fn FinancepricingblackscholesBuffer::len(Self) -> Int32
+pub fn FinancepricingblackscholesBuffer::max(Self) -> Double
+pub fn FinancepricingblackscholesBuffer::mean(Self) -> Double
+pub fn FinancepricingblackscholesBuffer::min(Self) -> Double
+pub fn FinancepricingblackscholesBuffer::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesBuffer::set(Self, Int32, Double) -> Self
+pub fn FinancepricingblackscholesBuffer::sum(Self) -> Double
+pub fn FinancepricingblackscholesBuffer::to_string(Self) -> String
+
+pub(all) struct FinancepricingblackscholesCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingblackscholesCluster::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesCluster::copy(Self) -> Self
+pub fn FinancepricingblackscholesCluster::fill(Self, Double) -> Self
+pub fn FinancepricingblackscholesCluster::get(Self, Int32) -> Double
+pub fn FinancepricingblackscholesCluster::len(Self) -> Int32
+pub fn FinancepricingblackscholesCluster::max(Self) -> Double
+pub fn FinancepricingblackscholesCluster::mean(Self) -> Double
+pub fn FinancepricingblackscholesCluster::min(Self) -> Double
+pub fn FinancepricingblackscholesCluster::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesCluster::set(Self, Int32, Double) -> Self
+pub fn FinancepricingblackscholesCluster::sum(Self) -> Double
+pub fn FinancepricingblackscholesCluster::to_string(Self) -> String
+
+pub(all) struct FinancepricingblackscholesCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingblackscholesCursor::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesCursor::copy(Self) -> Self
+pub fn FinancepricingblackscholesCursor::fill(Self, Double) -> Self
+pub fn FinancepricingblackscholesCursor::get(Self, Int32) -> Double
+pub fn FinancepricingblackscholesCursor::len(Self) -> Int32
+pub fn FinancepricingblackscholesCursor::max(Self) -> Double
+pub fn FinancepricingblackscholesCursor::mean(Self) -> Double
+pub fn FinancepricingblackscholesCursor::min(Self) -> Double
+pub fn FinancepricingblackscholesCursor::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesCursor::set(Self, Int32, Double) -> Self
+pub fn FinancepricingblackscholesCursor::sum(Self) -> Double
+pub fn FinancepricingblackscholesCursor::to_string(Self) -> String
+
+pub(all) struct FinancepricingblackscholesEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingblackscholesEdge::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesEdge::copy(Self) -> Self
+pub fn FinancepricingblackscholesEdge::fill(Self, Double) -> Self
+pub fn FinancepricingblackscholesEdge::get(Self, Int32) -> Double
+pub fn FinancepricingblackscholesEdge::len(Self) -> Int32
+pub fn FinancepricingblackscholesEdge::max(Self) -> Double
+pub fn FinancepricingblackscholesEdge::mean(Self) -> Double
+pub fn FinancepricingblackscholesEdge::min(Self) -> Double
+pub fn FinancepricingblackscholesEdge::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesEdge::set(Self, Int32, Double) -> Self
+pub fn FinancepricingblackscholesEdge::sum(Self) -> Double
+pub fn FinancepricingblackscholesEdge::to_string(Self) -> String
+
+pub(all) struct FinancepricingblackscholesFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingblackscholesFrame::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesFrame::copy(Self) -> Self
+pub fn FinancepricingblackscholesFrame::fill(Self, Double) -> Self
+pub fn FinancepricingblackscholesFrame::get(Self, Int32) -> Double
+pub fn FinancepricingblackscholesFrame::len(Self) -> Int32
+pub fn FinancepricingblackscholesFrame::max(Self) -> Double
+pub fn FinancepricingblackscholesFrame::mean(Self) -> Double
+pub fn FinancepricingblackscholesFrame::min(Self) -> Double
+pub fn FinancepricingblackscholesFrame::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesFrame::set(Self, Int32, Double) -> Self
+pub fn FinancepricingblackscholesFrame::sum(Self) -> Double
+pub fn FinancepricingblackscholesFrame::to_string(Self) -> String
+
+pub(all) struct FinancepricingblackscholesGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingblackscholesGraphN::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesGraphN::copy(Self) -> Self
+pub fn FinancepricingblackscholesGraphN::fill(Self, Double) -> Self
+pub fn FinancepricingblackscholesGraphN::get(Self, Int32) -> Double
+pub fn FinancepricingblackscholesGraphN::len(Self) -> Int32
+pub fn FinancepricingblackscholesGraphN::max(Self) -> Double
+pub fn FinancepricingblackscholesGraphN::mean(Self) -> Double
+pub fn FinancepricingblackscholesGraphN::min(Self) -> Double
+pub fn FinancepricingblackscholesGraphN::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesGraphN::set(Self, Int32, Double) -> Self
+pub fn FinancepricingblackscholesGraphN::sum(Self) -> Double
+pub fn FinancepricingblackscholesGraphN::to_string(Self) -> String
+
+pub(all) struct FinancepricingblackscholesLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingblackscholesLayer::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesLayer::copy(Self) -> Self
+pub fn FinancepricingblackscholesLayer::fill(Self, Double) -> Self
+pub fn FinancepricingblackscholesLayer::get(Self, Int32) -> Double
+pub fn FinancepricingblackscholesLayer::len(Self) -> Int32
+pub fn FinancepricingblackscholesLayer::max(Self) -> Double
+pub fn FinancepricingblackscholesLayer::mean(Self) -> Double
+pub fn FinancepricingblackscholesLayer::min(Self) -> Double
+pub fn FinancepricingblackscholesLayer::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesLayer::set(Self, Int32, Double) -> Self
+pub fn FinancepricingblackscholesLayer::sum(Self) -> Double
+pub fn FinancepricingblackscholesLayer::to_string(Self) -> String
+
+pub(all) struct FinancepricingblackscholesMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn FinancepricingblackscholesMatrix::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesMatrix::det(Self) -> Double
+pub fn FinancepricingblackscholesMatrix::get(Self, Int32, Int32) -> Double
+pub fn FinancepricingblackscholesMatrix::multiply(Self, Self) -> Self
+pub fn FinancepricingblackscholesMatrix::norm(Self) -> Double
+pub fn FinancepricingblackscholesMatrix::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesMatrix::to_string(Self) -> String
+pub fn FinancepricingblackscholesMatrix::trace(Self) -> Double
+pub fn FinancepricingblackscholesMatrix::transpose(Self) -> Self
+
+pub(all) struct FinancepricingblackscholesModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingblackscholesModel::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesModel::copy(Self) -> Self
+pub fn FinancepricingblackscholesModel::fill(Self, Double) -> Self
+pub fn FinancepricingblackscholesModel::get(Self, Int32) -> Double
+pub fn FinancepricingblackscholesModel::len(Self) -> Int32
+pub fn FinancepricingblackscholesModel::max(Self) -> Double
+pub fn FinancepricingblackscholesModel::mean(Self) -> Double
+pub fn FinancepricingblackscholesModel::min(Self) -> Double
+pub fn FinancepricingblackscholesModel::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesModel::set(Self, Int32, Double) -> Self
+pub fn FinancepricingblackscholesModel::sum(Self) -> Double
+pub fn FinancepricingblackscholesModel::to_string(Self) -> String
+
+pub(all) struct FinancepricingblackscholesNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingblackscholesNode::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesNode::copy(Self) -> Self
+pub fn FinancepricingblackscholesNode::fill(Self, Double) -> Self
+pub fn FinancepricingblackscholesNode::get(Self, Int32) -> Double
+pub fn FinancepricingblackscholesNode::len(Self) -> Int32
+pub fn FinancepricingblackscholesNode::max(Self) -> Double
+pub fn FinancepricingblackscholesNode::mean(Self) -> Double
+pub fn FinancepricingblackscholesNode::min(Self) -> Double
+pub fn FinancepricingblackscholesNode::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesNode::set(Self, Int32, Double) -> Self
+pub fn FinancepricingblackscholesNode::sum(Self) -> Double
+pub fn FinancepricingblackscholesNode::to_string(Self) -> String
+
+pub(all) struct FinancepricingblackscholesPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingblackscholesPath::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesPath::copy(Self) -> Self
+pub fn FinancepricingblackscholesPath::fill(Self, Double) -> Self
+pub fn FinancepricingblackscholesPath::get(Self, Int32) -> Double
+pub fn FinancepricingblackscholesPath::len(Self) -> Int32
+pub fn FinancepricingblackscholesPath::max(Self) -> Double
+pub fn FinancepricingblackscholesPath::mean(Self) -> Double
+pub fn FinancepricingblackscholesPath::min(Self) -> Double
+pub fn FinancepricingblackscholesPath::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesPath::set(Self, Int32, Double) -> Self
+pub fn FinancepricingblackscholesPath::sum(Self) -> Double
+pub fn FinancepricingblackscholesPath::to_string(Self) -> String
+
+pub(all) struct FinancepricingblackscholesPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn FinancepricingblackscholesPoint::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesPoint::cross(Self, Self) -> Self
+pub fn FinancepricingblackscholesPoint::dist(Self, Self) -> Double
+pub fn FinancepricingblackscholesPoint::dot(Self, Self) -> Double
+pub fn FinancepricingblackscholesPoint::label(Self) -> Int32
+pub fn FinancepricingblackscholesPoint::lerp(Self, Self, Double) -> Self
+pub fn FinancepricingblackscholesPoint::mid(Self, Self) -> Self
+pub fn FinancepricingblackscholesPoint::negate(Self) -> Self
+pub fn FinancepricingblackscholesPoint::norm(Self) -> Double
+pub fn FinancepricingblackscholesPoint::normalize(Self) -> Self
+pub fn FinancepricingblackscholesPoint::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesPoint::sub(Self, Self) -> Self
+pub fn FinancepricingblackscholesPoint::to_string(Self) -> String
+pub fn FinancepricingblackscholesPoint::x(Self) -> Double
+pub fn FinancepricingblackscholesPoint::y(Self) -> Double
+pub fn FinancepricingblackscholesPoint::z(Self) -> Double
+
+pub(all) struct FinancepricingblackscholesRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingblackscholesRange::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesRange::copy(Self) -> Self
+pub fn FinancepricingblackscholesRange::fill(Self, Double) -> Self
+pub fn FinancepricingblackscholesRange::get(Self, Int32) -> Double
+pub fn FinancepricingblackscholesRange::len(Self) -> Int32
+pub fn FinancepricingblackscholesRange::max(Self) -> Double
+pub fn FinancepricingblackscholesRange::mean(Self) -> Double
+pub fn FinancepricingblackscholesRange::min(Self) -> Double
+pub fn FinancepricingblackscholesRange::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesRange::set(Self, Int32, Double) -> Self
+pub fn FinancepricingblackscholesRange::sum(Self) -> Double
+pub fn FinancepricingblackscholesRange::to_string(Self) -> String
+
+pub(all) struct FinancepricingblackscholesSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn FinancepricingblackscholesSeries::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesSeries::cumsum(Self) -> Self
+pub fn FinancepricingblackscholesSeries::len(Self) -> Int32
+pub fn FinancepricingblackscholesSeries::max(Self) -> Double
+pub fn FinancepricingblackscholesSeries::mean(Self) -> Double
+pub fn FinancepricingblackscholesSeries::median(Self) -> Double
+pub fn FinancepricingblackscholesSeries::min(Self) -> Double
+pub fn FinancepricingblackscholesSeries::normalize(Self) -> Self
+pub fn FinancepricingblackscholesSeries::range(Self) -> Double
+pub fn FinancepricingblackscholesSeries::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesSeries::std(Self) -> Double
+pub fn FinancepricingblackscholesSeries::sub(Self, Self) -> Self
+pub fn FinancepricingblackscholesSeries::sum(Self) -> Double
+pub fn FinancepricingblackscholesSeries::to_string(Self) -> String
+pub fn FinancepricingblackscholesSeries::variance(Self) -> Double
+
+pub(all) struct FinancepricingblackscholesSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingblackscholesSlice::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesSlice::copy(Self) -> Self
+pub fn FinancepricingblackscholesSlice::fill(Self, Double) -> Self
+pub fn FinancepricingblackscholesSlice::get(Self, Int32) -> Double
+pub fn FinancepricingblackscholesSlice::len(Self) -> Int32
+pub fn FinancepricingblackscholesSlice::max(Self) -> Double
+pub fn FinancepricingblackscholesSlice::mean(Self) -> Double
+pub fn FinancepricingblackscholesSlice::min(Self) -> Double
+pub fn FinancepricingblackscholesSlice::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesSlice::set(Self, Int32, Double) -> Self
+pub fn FinancepricingblackscholesSlice::sum(Self) -> Double
+pub fn FinancepricingblackscholesSlice::to_string(Self) -> String
+
+pub(all) struct FinancepricingblackscholesTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingblackscholesTable::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesTable::copy(Self) -> Self
+pub fn FinancepricingblackscholesTable::fill(Self, Double) -> Self
+pub fn FinancepricingblackscholesTable::get(Self, Int32) -> Double
+pub fn FinancepricingblackscholesTable::len(Self) -> Int32
+pub fn FinancepricingblackscholesTable::max(Self) -> Double
+pub fn FinancepricingblackscholesTable::mean(Self) -> Double
+pub fn FinancepricingblackscholesTable::min(Self) -> Double
+pub fn FinancepricingblackscholesTable::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesTable::set(Self, Int32, Double) -> Self
+pub fn FinancepricingblackscholesTable::sum(Self) -> Double
+pub fn FinancepricingblackscholesTable::to_string(Self) -> String
+
+pub(all) struct FinancepricingblackscholesVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn FinancepricingblackscholesVector::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesVector::dist(Self, Self) -> Double
+pub fn FinancepricingblackscholesVector::dot(Self, Self) -> Double
+pub fn FinancepricingblackscholesVector::norm(Self) -> Double
+pub fn FinancepricingblackscholesVector::normalize(Self) -> Self
+pub fn FinancepricingblackscholesVector::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesVector::sub(Self, Self) -> Self
+pub fn FinancepricingblackscholesVector::to_string(Self) -> String
+
+pub(all) struct FinancepricingblackscholesView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingblackscholesView::add(Self, Self) -> Self
+pub fn FinancepricingblackscholesView::copy(Self) -> Self
+pub fn FinancepricingblackscholesView::fill(Self, Double) -> Self
+pub fn FinancepricingblackscholesView::get(Self, Int32) -> Double
+pub fn FinancepricingblackscholesView::len(Self) -> Int32
+pub fn FinancepricingblackscholesView::max(Self) -> Double
+pub fn FinancepricingblackscholesView::mean(Self) -> Double
+pub fn FinancepricingblackscholesView::min(Self) -> Double
+pub fn FinancepricingblackscholesView::scale(Self, Double) -> Self
+pub fn FinancepricingblackscholesView::set(Self, Int32, Double) -> Self
+pub fn FinancepricingblackscholesView::sum(Self) -> Double
+pub fn FinancepricingblackscholesView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

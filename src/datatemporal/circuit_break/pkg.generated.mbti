@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/circuit_break"
+
+// Values
+pub fn circuit_break_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn circuit_break_corr(Array[Double], Array[Double]) -> Double
+
+pub fn circuit_break_cov(Array[Double], Array[Double]) -> Double
+
+pub fn circuit_break_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn circuit_break_mae(Array[Double], Array[Double]) -> Double
+
+pub fn circuit_break_make_labeled_point(Double, Double, Int32) -> Circuit_breakPoint
+
+pub fn circuit_break_make_matrix(Int32, Int32, Double) -> Circuit_breakMatrix
+
+pub fn circuit_break_make_point(Double, Double) -> Circuit_breakPoint
+
+pub fn circuit_break_make_series(Array[Double], String) -> Circuit_breakSeries
+
+pub fn circuit_break_make_vector(Array[Double]) -> Circuit_breakVector
+
+pub fn circuit_break_matrix_add(Circuit_breakMatrix, Circuit_breakMatrix) -> Circuit_breakMatrix
+
+pub fn circuit_break_matrix_get(Circuit_breakMatrix, Int32, Int32) -> Double
+
+pub fn circuit_break_matrix_identity(Int32) -> Circuit_breakMatrix
+
+pub fn circuit_break_matrix_multiply(Circuit_breakMatrix, Circuit_breakMatrix) -> Circuit_breakMatrix
+
+pub fn circuit_break_matrix_norm(Circuit_breakMatrix) -> Double
+
+pub fn circuit_break_matrix_scale(Circuit_breakMatrix, Double) -> Circuit_breakMatrix
+
+pub fn circuit_break_matrix_to_string(Circuit_breakMatrix) -> String
+
+pub fn circuit_break_matrix_trace(Circuit_breakMatrix) -> Double
+
+pub fn circuit_break_matrix_transpose(Circuit_breakMatrix) -> Circuit_breakMatrix
+
+pub fn circuit_break_mse(Array[Double], Array[Double]) -> Double
+
+pub fn circuit_break_point_add(Circuit_breakPoint, Circuit_breakPoint) -> Circuit_breakPoint
+
+pub fn circuit_break_point_dist(Circuit_breakPoint, Circuit_breakPoint) -> Double
+
+pub fn circuit_break_point_dot(Circuit_breakPoint, Circuit_breakPoint) -> Double
+
+pub fn circuit_break_point_label(Circuit_breakPoint) -> Int32
+
+pub fn circuit_break_point_norm(Circuit_breakPoint) -> Double
+
+pub fn circuit_break_point_scale(Circuit_breakPoint, Double) -> Circuit_breakPoint
+
+pub fn circuit_break_point_sub(Circuit_breakPoint, Circuit_breakPoint) -> Circuit_breakPoint
+
+pub fn circuit_break_point_to_string(Circuit_breakPoint) -> String
+
+pub fn circuit_break_point_x(Circuit_breakPoint) -> Double
+
+pub fn circuit_break_point_y(Circuit_breakPoint) -> Double
+
+pub fn circuit_break_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn circuit_break_r2(Array[Double], Array[Double]) -> Double
+
+pub fn circuit_break_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn circuit_break_series_add(Circuit_breakSeries, Circuit_breakSeries) -> Circuit_breakSeries
+
+pub fn circuit_break_series_len(Circuit_breakSeries) -> Int32
+
+pub fn circuit_break_series_max(Circuit_breakSeries) -> Double
+
+pub fn circuit_break_series_mean(Circuit_breakSeries) -> Double
+
+pub fn circuit_break_series_min(Circuit_breakSeries) -> Double
+
+pub fn circuit_break_series_scale(Circuit_breakSeries, Double) -> Circuit_breakSeries
+
+pub fn circuit_break_series_std(Circuit_breakSeries) -> Double
+
+pub fn circuit_break_series_sum(Circuit_breakSeries) -> Double
+
+pub fn circuit_break_series_to_string(Circuit_breakSeries) -> String
+
+pub fn circuit_break_series_var(Circuit_breakSeries) -> Double
+
+pub fn circuit_break_std(Array[Double]) -> Double
+
+pub fn circuit_break_var(Array[Double]) -> Double
+
+pub fn circuit_break_vector_add(Circuit_breakVector, Circuit_breakVector) -> Circuit_breakVector
+
+pub fn circuit_break_vector_dist(Circuit_breakVector, Circuit_breakVector) -> Double
+
+pub fn circuit_break_vector_dot(Circuit_breakVector, Circuit_breakVector) -> Double
+
+pub fn circuit_break_vector_norm(Circuit_breakVector) -> Double
+
+pub fn circuit_break_vector_normalize(Circuit_breakVector) -> Circuit_breakVector
+
+pub fn circuit_break_vector_scale(Circuit_breakVector, Double) -> Circuit_breakVector
+
+pub fn circuit_break_vector_sub(Circuit_breakVector, Circuit_breakVector) -> Circuit_breakVector
+
+pub fn circuit_break_vector_to_string(Circuit_breakVector) -> String
+
+pub fn circuit_break_vector_zero(Int32) -> Circuit_breakVector
+
+// Errors
+
+// Types and methods
+pub struct Circuit_breakMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Circuit_breakPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Circuit_breakSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Circuit_breakVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

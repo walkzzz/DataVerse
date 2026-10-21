@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/optim_sat"
+
+// Values
+pub fn optim_sat_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn optim_sat_corr(Array[Double], Array[Double]) -> Double
+
+pub fn optim_sat_cov(Array[Double], Array[Double]) -> Double
+
+pub fn optim_sat_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn optim_sat_mae(Array[Double], Array[Double]) -> Double
+
+pub fn optim_sat_make_labeled_point(Double, Double, Int32) -> Optim_satPoint
+
+pub fn optim_sat_make_matrix(Int32, Int32, Double) -> Optim_satMatrix
+
+pub fn optim_sat_make_point(Double, Double) -> Optim_satPoint
+
+pub fn optim_sat_make_series(Array[Double], String) -> Optim_satSeries
+
+pub fn optim_sat_make_vector(Array[Double]) -> Optim_satVector
+
+pub fn optim_sat_matrix_add(Optim_satMatrix, Optim_satMatrix) -> Optim_satMatrix
+
+pub fn optim_sat_matrix_get(Optim_satMatrix, Int32, Int32) -> Double
+
+pub fn optim_sat_matrix_identity(Int32) -> Optim_satMatrix
+
+pub fn optim_sat_matrix_multiply(Optim_satMatrix, Optim_satMatrix) -> Optim_satMatrix
+
+pub fn optim_sat_matrix_norm(Optim_satMatrix) -> Double
+
+pub fn optim_sat_matrix_scale(Optim_satMatrix, Double) -> Optim_satMatrix
+
+pub fn optim_sat_matrix_to_string(Optim_satMatrix) -> String
+
+pub fn optim_sat_matrix_trace(Optim_satMatrix) -> Double
+
+pub fn optim_sat_matrix_transpose(Optim_satMatrix) -> Optim_satMatrix
+
+pub fn optim_sat_mse(Array[Double], Array[Double]) -> Double
+
+pub fn optim_sat_point_add(Optim_satPoint, Optim_satPoint) -> Optim_satPoint
+
+pub fn optim_sat_point_dist(Optim_satPoint, Optim_satPoint) -> Double
+
+pub fn optim_sat_point_dot(Optim_satPoint, Optim_satPoint) -> Double
+
+pub fn optim_sat_point_label(Optim_satPoint) -> Int32
+
+pub fn optim_sat_point_norm(Optim_satPoint) -> Double
+
+pub fn optim_sat_point_scale(Optim_satPoint, Double) -> Optim_satPoint
+
+pub fn optim_sat_point_sub(Optim_satPoint, Optim_satPoint) -> Optim_satPoint
+
+pub fn optim_sat_point_to_string(Optim_satPoint) -> String
+
+pub fn optim_sat_point_x(Optim_satPoint) -> Double
+
+pub fn optim_sat_point_y(Optim_satPoint) -> Double
+
+pub fn optim_sat_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn optim_sat_r2(Array[Double], Array[Double]) -> Double
+
+pub fn optim_sat_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn optim_sat_series_add(Optim_satSeries, Optim_satSeries) -> Optim_satSeries
+
+pub fn optim_sat_series_len(Optim_satSeries) -> Int32
+
+pub fn optim_sat_series_max(Optim_satSeries) -> Double
+
+pub fn optim_sat_series_mean(Optim_satSeries) -> Double
+
+pub fn optim_sat_series_min(Optim_satSeries) -> Double
+
+pub fn optim_sat_series_scale(Optim_satSeries, Double) -> Optim_satSeries
+
+pub fn optim_sat_series_std(Optim_satSeries) -> Double
+
+pub fn optim_sat_series_sum(Optim_satSeries) -> Double
+
+pub fn optim_sat_series_to_string(Optim_satSeries) -> String
+
+pub fn optim_sat_series_var(Optim_satSeries) -> Double
+
+pub fn optim_sat_std(Array[Double]) -> Double
+
+pub fn optim_sat_var(Array[Double]) -> Double
+
+pub fn optim_sat_vector_add(Optim_satVector, Optim_satVector) -> Optim_satVector
+
+pub fn optim_sat_vector_dist(Optim_satVector, Optim_satVector) -> Double
+
+pub fn optim_sat_vector_dot(Optim_satVector, Optim_satVector) -> Double
+
+pub fn optim_sat_vector_norm(Optim_satVector) -> Double
+
+pub fn optim_sat_vector_normalize(Optim_satVector) -> Optim_satVector
+
+pub fn optim_sat_vector_scale(Optim_satVector, Double) -> Optim_satVector
+
+pub fn optim_sat_vector_sub(Optim_satVector, Optim_satVector) -> Optim_satVector
+
+pub fn optim_sat_vector_to_string(Optim_satVector) -> String
+
+pub fn optim_sat_vector_zero(Int32) -> Optim_satVector
+
+// Errors
+
+// Types and methods
+pub struct Optim_satMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Optim_satPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Optim_satSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Optim_satVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

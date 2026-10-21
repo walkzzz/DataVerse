@@ -1,0 +1,34 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/kernel/streaming"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn consistency_guarantee() -> String
+
+pub fn default_window() -> WindowConfig
+
+pub fn mode_tag() -> String
+
+pub fn sliding_window(Int32, Int32) -> WindowConfig
+
+pub fn streaming_id() -> String
+
+pub fn valid_window(WindowConfig) -> Bool
+
+// Errors
+
+// Types and methods
+pub struct WindowConfig {
+  window_size : Int32
+  slide : Int32
+} derive(Eq, @debug.Debug)
+pub fn WindowConfig::equal(Self, Self) -> Bool
+pub fn WindowConfig::not_equal(Self, Self) -> Bool
+pub fn WindowConfig::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

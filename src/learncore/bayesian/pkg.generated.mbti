@@ -1,0 +1,176 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/bayesian"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn acceptance_probability(Double, Double) -> Double
+
+pub fn add_edge(BayesNet, String, String) -> BayesNet
+
+pub fn add_node(BayesNet, BayesNode) -> BayesNet
+
+pub fn aic_score(Double, Int32) -> Double
+
+pub fn bayes_factor(Array[Double], Array[Double], Array[Double]) -> Double
+
+pub fn bayes_infer(Array[Double], Array[Double]) -> Double
+
+pub fn bayes_update(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn bayesian_id() -> String
+
+pub fn bernoulli_likelihood(Array[Int32], Double) -> Double
+
+pub fn beta_posterior(Double, Double, Double, Int32, Int32) -> Double
+
+pub fn beta_prior(Double, Double, Double) -> Double
+
+pub fn beta_update(BetaDist, Int32, Int32) -> BetaDist
+
+pub fn bic_score(Double, Int32, Int32) -> Double
+
+pub fn binomial_likelihood(Int32, Int32, Double) -> Double
+
+pub fn conjugate_posterior(ConjugatePosterior) -> Array[Double]
+
+pub fn conjugate_update(String, Array[Double], Array[Double]) -> ConjugatePosterior
+
+pub fn dirichlet_posterior(Array[Double], Array[Double], Array[Double]) -> Double
+
+pub fn dirichlet_prior(Array[Double], Array[Double]) -> Double
+
+pub fn evidence(Array[Double], Array[Double]) -> Double
+
+pub fn exp_(Double) -> Double
+
+pub fn exponential_likelihood(Array[Double], Double) -> Double
+
+pub fn forward_sampling(BayesNet, Int32) -> Array[Array[Double]]
+
+pub fn gamma_posterior(Double, Double, Double, Double, Int32) -> Double
+
+pub fn gamma_prior(Double, Double, Double) -> Double
+
+pub fn gamma_update(GammaDist, Double, Int32) -> GammaDist
+
+pub fn gibbs_step(Array[Double], Int32, (Array[Double], Int32) -> Double) -> Array[Double]
+
+pub fn likelihood(Array[Double], Double) -> Double
+
+pub fn ln_(Double) -> Double
+
+pub fn make_bayes_net() -> BayesNet
+
+pub fn marginal_likelihood(Array[Double], Array[Double]) -> Double
+
+pub fn metropolis_step(Double, (Double) -> Double, Double) -> McmcSample
+
+pub fn mh_sample(Double, (Double) -> Double, Double, Int32, Int32) -> Array[Double]
+
+pub fn model_evidence(Array[Double], Array[Double]) -> Double
+
+pub fn normal_posterior(Double, Double, Double, Double, Double, Int32) -> Double
+
+pub fn normal_prior(Double, Double, Double) -> Double
+
+pub fn normal_update(NormalDist, Double, Double, Int32) -> NormalDist
+
+pub fn poisson_likelihood(Array[Int32], Double) -> Double
+
+pub fn posterior(Double, Array[Double], Array[Double]) -> Double
+
+pub fn posterior_odds(Array[Double], Array[Double], Array[Double], Double) -> Double
+
+pub fn predict_beta(BetaDist) -> Double
+
+pub fn predict_normal(NormalDist) -> Double
+
+pub fn predict_poisson(Double) -> Double
+
+pub fn prior(Double, Array[Double]) -> Double
+
+pub fn query_conditional(BayesNet, String, Array[String]) -> Double
+
+pub fn query_joint(BayesNet, Array[String]) -> Double
+
+pub fn query_marginal(BayesNet, String) -> Double
+
+pub fn rejection_sampling(BayesNet, Int32, (Array[Double]) -> Bool) -> Array[Array[Double]]
+
+pub fn sqrt_(Double) -> Double
+
+// Errors
+
+// Types and methods
+pub(all) struct BayesNet {
+  nodes : Array[BayesNode]
+  edges : Array[(String, String)]
+} derive(Eq, @debug.Debug)
+pub fn BayesNet::equal(Self, Self) -> Bool
+pub fn BayesNet::not_equal(Self, Self) -> Bool
+pub fn BayesNet::to_repr(Self) -> @debug.Repr
+
+pub(all) struct BayesNode {
+  name : String
+  parents : Array[String]
+  cpt : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn BayesNode::equal(Self, Self) -> Bool
+pub fn BayesNode::not_equal(Self, Self) -> Bool
+pub fn BayesNode::to_repr(Self) -> @debug.Repr
+
+pub(all) struct BetaDist {
+  alpha : Double
+  beta : Double
+} derive(Eq, @debug.Debug)
+pub fn BetaDist::equal(Self, Self) -> Bool
+pub fn BetaDist::not_equal(Self, Self) -> Bool
+pub fn BetaDist::to_repr(Self) -> @debug.Repr
+
+pub(all) struct ConjugatePosterior {
+  prior_type : String
+  params : Array[Double]
+  posterior_params : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn ConjugatePosterior::equal(Self, Self) -> Bool
+pub fn ConjugatePosterior::not_equal(Self, Self) -> Bool
+pub fn ConjugatePosterior::to_repr(Self) -> @debug.Repr
+
+pub(all) struct DirichletDist {
+  alphas : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn DirichletDist::equal(Self, Self) -> Bool
+pub fn DirichletDist::not_equal(Self, Self) -> Bool
+pub fn DirichletDist::to_repr(Self) -> @debug.Repr
+
+pub(all) struct GammaDist {
+  shape : Double
+  rate : Double
+} derive(Eq, @debug.Debug)
+pub fn GammaDist::equal(Self, Self) -> Bool
+pub fn GammaDist::not_equal(Self, Self) -> Bool
+pub fn GammaDist::to_repr(Self) -> @debug.Repr
+
+pub(all) struct McmcSample {
+  state : Double
+  log_prob : Double
+  accepted : Bool
+} derive(Eq, @debug.Debug)
+pub fn McmcSample::equal(Self, Self) -> Bool
+pub fn McmcSample::not_equal(Self, Self) -> Bool
+pub fn McmcSample::to_repr(Self) -> @debug.Repr
+
+pub(all) struct NormalDist {
+  mean : Double
+  variance : Double
+} derive(Eq, @debug.Debug)
+pub fn NormalDist::equal(Self, Self) -> Bool
+pub fn NormalDist::not_equal(Self, Self) -> Bool
+pub fn NormalDist::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

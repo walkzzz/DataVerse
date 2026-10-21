@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/slam_graph"
+
+// Values
+pub fn slam_graph_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn slam_graph_corr(Array[Double], Array[Double]) -> Double
+
+pub fn slam_graph_cov(Array[Double], Array[Double]) -> Double
+
+pub fn slam_graph_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn slam_graph_mae(Array[Double], Array[Double]) -> Double
+
+pub fn slam_graph_make_labeled_point(Double, Double, Int32) -> Slam_graphPoint
+
+pub fn slam_graph_make_matrix(Int32, Int32, Double) -> Slam_graphMatrix
+
+pub fn slam_graph_make_point(Double, Double) -> Slam_graphPoint
+
+pub fn slam_graph_make_series(Array[Double], String) -> Slam_graphSeries
+
+pub fn slam_graph_make_vector(Array[Double]) -> Slam_graphVector
+
+pub fn slam_graph_matrix_add(Slam_graphMatrix, Slam_graphMatrix) -> Slam_graphMatrix
+
+pub fn slam_graph_matrix_get(Slam_graphMatrix, Int32, Int32) -> Double
+
+pub fn slam_graph_matrix_identity(Int32) -> Slam_graphMatrix
+
+pub fn slam_graph_matrix_multiply(Slam_graphMatrix, Slam_graphMatrix) -> Slam_graphMatrix
+
+pub fn slam_graph_matrix_norm(Slam_graphMatrix) -> Double
+
+pub fn slam_graph_matrix_scale(Slam_graphMatrix, Double) -> Slam_graphMatrix
+
+pub fn slam_graph_matrix_to_string(Slam_graphMatrix) -> String
+
+pub fn slam_graph_matrix_trace(Slam_graphMatrix) -> Double
+
+pub fn slam_graph_matrix_transpose(Slam_graphMatrix) -> Slam_graphMatrix
+
+pub fn slam_graph_mse(Array[Double], Array[Double]) -> Double
+
+pub fn slam_graph_point_add(Slam_graphPoint, Slam_graphPoint) -> Slam_graphPoint
+
+pub fn slam_graph_point_dist(Slam_graphPoint, Slam_graphPoint) -> Double
+
+pub fn slam_graph_point_dot(Slam_graphPoint, Slam_graphPoint) -> Double
+
+pub fn slam_graph_point_label(Slam_graphPoint) -> Int32
+
+pub fn slam_graph_point_norm(Slam_graphPoint) -> Double
+
+pub fn slam_graph_point_scale(Slam_graphPoint, Double) -> Slam_graphPoint
+
+pub fn slam_graph_point_sub(Slam_graphPoint, Slam_graphPoint) -> Slam_graphPoint
+
+pub fn slam_graph_point_to_string(Slam_graphPoint) -> String
+
+pub fn slam_graph_point_x(Slam_graphPoint) -> Double
+
+pub fn slam_graph_point_y(Slam_graphPoint) -> Double
+
+pub fn slam_graph_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn slam_graph_r2(Array[Double], Array[Double]) -> Double
+
+pub fn slam_graph_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn slam_graph_series_add(Slam_graphSeries, Slam_graphSeries) -> Slam_graphSeries
+
+pub fn slam_graph_series_len(Slam_graphSeries) -> Int32
+
+pub fn slam_graph_series_max(Slam_graphSeries) -> Double
+
+pub fn slam_graph_series_mean(Slam_graphSeries) -> Double
+
+pub fn slam_graph_series_min(Slam_graphSeries) -> Double
+
+pub fn slam_graph_series_scale(Slam_graphSeries, Double) -> Slam_graphSeries
+
+pub fn slam_graph_series_std(Slam_graphSeries) -> Double
+
+pub fn slam_graph_series_sum(Slam_graphSeries) -> Double
+
+pub fn slam_graph_series_to_string(Slam_graphSeries) -> String
+
+pub fn slam_graph_series_var(Slam_graphSeries) -> Double
+
+pub fn slam_graph_std(Array[Double]) -> Double
+
+pub fn slam_graph_var(Array[Double]) -> Double
+
+pub fn slam_graph_vector_add(Slam_graphVector, Slam_graphVector) -> Slam_graphVector
+
+pub fn slam_graph_vector_dist(Slam_graphVector, Slam_graphVector) -> Double
+
+pub fn slam_graph_vector_dot(Slam_graphVector, Slam_graphVector) -> Double
+
+pub fn slam_graph_vector_norm(Slam_graphVector) -> Double
+
+pub fn slam_graph_vector_normalize(Slam_graphVector) -> Slam_graphVector
+
+pub fn slam_graph_vector_scale(Slam_graphVector, Double) -> Slam_graphVector
+
+pub fn slam_graph_vector_sub(Slam_graphVector, Slam_graphVector) -> Slam_graphVector
+
+pub fn slam_graph_vector_to_string(Slam_graphVector) -> String
+
+pub fn slam_graph_vector_zero(Int32) -> Slam_graphVector
+
+// Errors
+
+// Types and methods
+pub struct Slam_graphMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Slam_graphPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Slam_graphSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Slam_graphVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/crypto_hash_whirlpool"
+
+// Values
+pub fn crypto_hash_whirlpool_buffer_make(Int32) -> CryptohashwhirlpoolBuffer
+
+pub fn crypto_hash_whirlpool_cluster_make(Int32) -> CryptohashwhirlpoolCluster
+
+pub fn crypto_hash_whirlpool_cursor_make(Int32) -> CryptohashwhirlpoolCursor
+
+pub fn crypto_hash_whirlpool_edge_make(Int32) -> CryptohashwhirlpoolEdge
+
+pub fn crypto_hash_whirlpool_frame_make(Int32) -> CryptohashwhirlpoolFrame
+
+pub fn crypto_hash_whirlpool_graphn_make(Int32) -> CryptohashwhirlpoolGraphN
+
+pub fn crypto_hash_whirlpool_layer_make(Int32) -> CryptohashwhirlpoolLayer
+
+pub fn crypto_hash_whirlpool_make_matrix(Int32, Int32, Double) -> CryptohashwhirlpoolMatrix
+
+pub fn crypto_hash_whirlpool_make_point(Double, Double) -> CryptohashwhirlpoolPoint
+
+pub fn crypto_hash_whirlpool_make_point3(Double, Double, Double) -> CryptohashwhirlpoolPoint
+
+pub fn crypto_hash_whirlpool_make_series(Array[Double], String) -> CryptohashwhirlpoolSeries
+
+pub fn crypto_hash_whirlpool_make_vector(Array[Double]) -> CryptohashwhirlpoolVector
+
+pub fn crypto_hash_whirlpool_matrix_identity(Int32) -> CryptohashwhirlpoolMatrix
+
+pub fn crypto_hash_whirlpool_model_make(Int32) -> CryptohashwhirlpoolModel
+
+pub fn crypto_hash_whirlpool_node_make(Int32) -> CryptohashwhirlpoolNode
+
+pub fn crypto_hash_whirlpool_path_make(Int32) -> CryptohashwhirlpoolPath
+
+pub fn crypto_hash_whirlpool_range_make(Int32) -> CryptohashwhirlpoolRange
+
+pub fn crypto_hash_whirlpool_slice_make(Int32) -> CryptohashwhirlpoolSlice
+
+pub fn crypto_hash_whirlpool_table_make(Int32) -> CryptohashwhirlpoolTable
+
+pub fn crypto_hash_whirlpool_vector_zero(Int32) -> CryptohashwhirlpoolVector
+
+pub fn crypto_hash_whirlpool_view_make(Int32) -> CryptohashwhirlpoolView
+
+// Errors
+
+// Types and methods
+pub(all) struct CryptohashwhirlpoolBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptohashwhirlpoolBuffer::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolBuffer::copy(Self) -> Self
+pub fn CryptohashwhirlpoolBuffer::fill(Self, Double) -> Self
+pub fn CryptohashwhirlpoolBuffer::get(Self, Int32) -> Double
+pub fn CryptohashwhirlpoolBuffer::len(Self) -> Int32
+pub fn CryptohashwhirlpoolBuffer::max(Self) -> Double
+pub fn CryptohashwhirlpoolBuffer::mean(Self) -> Double
+pub fn CryptohashwhirlpoolBuffer::min(Self) -> Double
+pub fn CryptohashwhirlpoolBuffer::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolBuffer::set(Self, Int32, Double) -> Self
+pub fn CryptohashwhirlpoolBuffer::sum(Self) -> Double
+pub fn CryptohashwhirlpoolBuffer::to_string(Self) -> String
+
+pub(all) struct CryptohashwhirlpoolCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptohashwhirlpoolCluster::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolCluster::copy(Self) -> Self
+pub fn CryptohashwhirlpoolCluster::fill(Self, Double) -> Self
+pub fn CryptohashwhirlpoolCluster::get(Self, Int32) -> Double
+pub fn CryptohashwhirlpoolCluster::len(Self) -> Int32
+pub fn CryptohashwhirlpoolCluster::max(Self) -> Double
+pub fn CryptohashwhirlpoolCluster::mean(Self) -> Double
+pub fn CryptohashwhirlpoolCluster::min(Self) -> Double
+pub fn CryptohashwhirlpoolCluster::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolCluster::set(Self, Int32, Double) -> Self
+pub fn CryptohashwhirlpoolCluster::sum(Self) -> Double
+pub fn CryptohashwhirlpoolCluster::to_string(Self) -> String
+
+pub(all) struct CryptohashwhirlpoolCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptohashwhirlpoolCursor::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolCursor::copy(Self) -> Self
+pub fn CryptohashwhirlpoolCursor::fill(Self, Double) -> Self
+pub fn CryptohashwhirlpoolCursor::get(Self, Int32) -> Double
+pub fn CryptohashwhirlpoolCursor::len(Self) -> Int32
+pub fn CryptohashwhirlpoolCursor::max(Self) -> Double
+pub fn CryptohashwhirlpoolCursor::mean(Self) -> Double
+pub fn CryptohashwhirlpoolCursor::min(Self) -> Double
+pub fn CryptohashwhirlpoolCursor::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolCursor::set(Self, Int32, Double) -> Self
+pub fn CryptohashwhirlpoolCursor::sum(Self) -> Double
+pub fn CryptohashwhirlpoolCursor::to_string(Self) -> String
+
+pub(all) struct CryptohashwhirlpoolEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptohashwhirlpoolEdge::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolEdge::copy(Self) -> Self
+pub fn CryptohashwhirlpoolEdge::fill(Self, Double) -> Self
+pub fn CryptohashwhirlpoolEdge::get(Self, Int32) -> Double
+pub fn CryptohashwhirlpoolEdge::len(Self) -> Int32
+pub fn CryptohashwhirlpoolEdge::max(Self) -> Double
+pub fn CryptohashwhirlpoolEdge::mean(Self) -> Double
+pub fn CryptohashwhirlpoolEdge::min(Self) -> Double
+pub fn CryptohashwhirlpoolEdge::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolEdge::set(Self, Int32, Double) -> Self
+pub fn CryptohashwhirlpoolEdge::sum(Self) -> Double
+pub fn CryptohashwhirlpoolEdge::to_string(Self) -> String
+
+pub(all) struct CryptohashwhirlpoolFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptohashwhirlpoolFrame::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolFrame::copy(Self) -> Self
+pub fn CryptohashwhirlpoolFrame::fill(Self, Double) -> Self
+pub fn CryptohashwhirlpoolFrame::get(Self, Int32) -> Double
+pub fn CryptohashwhirlpoolFrame::len(Self) -> Int32
+pub fn CryptohashwhirlpoolFrame::max(Self) -> Double
+pub fn CryptohashwhirlpoolFrame::mean(Self) -> Double
+pub fn CryptohashwhirlpoolFrame::min(Self) -> Double
+pub fn CryptohashwhirlpoolFrame::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolFrame::set(Self, Int32, Double) -> Self
+pub fn CryptohashwhirlpoolFrame::sum(Self) -> Double
+pub fn CryptohashwhirlpoolFrame::to_string(Self) -> String
+
+pub(all) struct CryptohashwhirlpoolGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptohashwhirlpoolGraphN::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolGraphN::copy(Self) -> Self
+pub fn CryptohashwhirlpoolGraphN::fill(Self, Double) -> Self
+pub fn CryptohashwhirlpoolGraphN::get(Self, Int32) -> Double
+pub fn CryptohashwhirlpoolGraphN::len(Self) -> Int32
+pub fn CryptohashwhirlpoolGraphN::max(Self) -> Double
+pub fn CryptohashwhirlpoolGraphN::mean(Self) -> Double
+pub fn CryptohashwhirlpoolGraphN::min(Self) -> Double
+pub fn CryptohashwhirlpoolGraphN::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolGraphN::set(Self, Int32, Double) -> Self
+pub fn CryptohashwhirlpoolGraphN::sum(Self) -> Double
+pub fn CryptohashwhirlpoolGraphN::to_string(Self) -> String
+
+pub(all) struct CryptohashwhirlpoolLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptohashwhirlpoolLayer::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolLayer::copy(Self) -> Self
+pub fn CryptohashwhirlpoolLayer::fill(Self, Double) -> Self
+pub fn CryptohashwhirlpoolLayer::get(Self, Int32) -> Double
+pub fn CryptohashwhirlpoolLayer::len(Self) -> Int32
+pub fn CryptohashwhirlpoolLayer::max(Self) -> Double
+pub fn CryptohashwhirlpoolLayer::mean(Self) -> Double
+pub fn CryptohashwhirlpoolLayer::min(Self) -> Double
+pub fn CryptohashwhirlpoolLayer::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolLayer::set(Self, Int32, Double) -> Self
+pub fn CryptohashwhirlpoolLayer::sum(Self) -> Double
+pub fn CryptohashwhirlpoolLayer::to_string(Self) -> String
+
+pub(all) struct CryptohashwhirlpoolMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn CryptohashwhirlpoolMatrix::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolMatrix::det(Self) -> Double
+pub fn CryptohashwhirlpoolMatrix::get(Self, Int32, Int32) -> Double
+pub fn CryptohashwhirlpoolMatrix::multiply(Self, Self) -> Self
+pub fn CryptohashwhirlpoolMatrix::norm(Self) -> Double
+pub fn CryptohashwhirlpoolMatrix::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolMatrix::to_string(Self) -> String
+pub fn CryptohashwhirlpoolMatrix::trace(Self) -> Double
+pub fn CryptohashwhirlpoolMatrix::transpose(Self) -> Self
+
+pub(all) struct CryptohashwhirlpoolModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptohashwhirlpoolModel::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolModel::copy(Self) -> Self
+pub fn CryptohashwhirlpoolModel::fill(Self, Double) -> Self
+pub fn CryptohashwhirlpoolModel::get(Self, Int32) -> Double
+pub fn CryptohashwhirlpoolModel::len(Self) -> Int32
+pub fn CryptohashwhirlpoolModel::max(Self) -> Double
+pub fn CryptohashwhirlpoolModel::mean(Self) -> Double
+pub fn CryptohashwhirlpoolModel::min(Self) -> Double
+pub fn CryptohashwhirlpoolModel::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolModel::set(Self, Int32, Double) -> Self
+pub fn CryptohashwhirlpoolModel::sum(Self) -> Double
+pub fn CryptohashwhirlpoolModel::to_string(Self) -> String
+
+pub(all) struct CryptohashwhirlpoolNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptohashwhirlpoolNode::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolNode::copy(Self) -> Self
+pub fn CryptohashwhirlpoolNode::fill(Self, Double) -> Self
+pub fn CryptohashwhirlpoolNode::get(Self, Int32) -> Double
+pub fn CryptohashwhirlpoolNode::len(Self) -> Int32
+pub fn CryptohashwhirlpoolNode::max(Self) -> Double
+pub fn CryptohashwhirlpoolNode::mean(Self) -> Double
+pub fn CryptohashwhirlpoolNode::min(Self) -> Double
+pub fn CryptohashwhirlpoolNode::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolNode::set(Self, Int32, Double) -> Self
+pub fn CryptohashwhirlpoolNode::sum(Self) -> Double
+pub fn CryptohashwhirlpoolNode::to_string(Self) -> String
+
+pub(all) struct CryptohashwhirlpoolPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptohashwhirlpoolPath::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolPath::copy(Self) -> Self
+pub fn CryptohashwhirlpoolPath::fill(Self, Double) -> Self
+pub fn CryptohashwhirlpoolPath::get(Self, Int32) -> Double
+pub fn CryptohashwhirlpoolPath::len(Self) -> Int32
+pub fn CryptohashwhirlpoolPath::max(Self) -> Double
+pub fn CryptohashwhirlpoolPath::mean(Self) -> Double
+pub fn CryptohashwhirlpoolPath::min(Self) -> Double
+pub fn CryptohashwhirlpoolPath::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolPath::set(Self, Int32, Double) -> Self
+pub fn CryptohashwhirlpoolPath::sum(Self) -> Double
+pub fn CryptohashwhirlpoolPath::to_string(Self) -> String
+
+pub(all) struct CryptohashwhirlpoolPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn CryptohashwhirlpoolPoint::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolPoint::cross(Self, Self) -> Self
+pub fn CryptohashwhirlpoolPoint::dist(Self, Self) -> Double
+pub fn CryptohashwhirlpoolPoint::dot(Self, Self) -> Double
+pub fn CryptohashwhirlpoolPoint::label(Self) -> Int32
+pub fn CryptohashwhirlpoolPoint::lerp(Self, Self, Double) -> Self
+pub fn CryptohashwhirlpoolPoint::mid(Self, Self) -> Self
+pub fn CryptohashwhirlpoolPoint::negate(Self) -> Self
+pub fn CryptohashwhirlpoolPoint::norm(Self) -> Double
+pub fn CryptohashwhirlpoolPoint::normalize(Self) -> Self
+pub fn CryptohashwhirlpoolPoint::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolPoint::sub(Self, Self) -> Self
+pub fn CryptohashwhirlpoolPoint::to_string(Self) -> String
+pub fn CryptohashwhirlpoolPoint::x(Self) -> Double
+pub fn CryptohashwhirlpoolPoint::y(Self) -> Double
+pub fn CryptohashwhirlpoolPoint::z(Self) -> Double
+
+pub(all) struct CryptohashwhirlpoolRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptohashwhirlpoolRange::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolRange::copy(Self) -> Self
+pub fn CryptohashwhirlpoolRange::fill(Self, Double) -> Self
+pub fn CryptohashwhirlpoolRange::get(Self, Int32) -> Double
+pub fn CryptohashwhirlpoolRange::len(Self) -> Int32
+pub fn CryptohashwhirlpoolRange::max(Self) -> Double
+pub fn CryptohashwhirlpoolRange::mean(Self) -> Double
+pub fn CryptohashwhirlpoolRange::min(Self) -> Double
+pub fn CryptohashwhirlpoolRange::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolRange::set(Self, Int32, Double) -> Self
+pub fn CryptohashwhirlpoolRange::sum(Self) -> Double
+pub fn CryptohashwhirlpoolRange::to_string(Self) -> String
+
+pub(all) struct CryptohashwhirlpoolSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn CryptohashwhirlpoolSeries::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolSeries::cumsum(Self) -> Self
+pub fn CryptohashwhirlpoolSeries::len(Self) -> Int32
+pub fn CryptohashwhirlpoolSeries::max(Self) -> Double
+pub fn CryptohashwhirlpoolSeries::mean(Self) -> Double
+pub fn CryptohashwhirlpoolSeries::median(Self) -> Double
+pub fn CryptohashwhirlpoolSeries::min(Self) -> Double
+pub fn CryptohashwhirlpoolSeries::normalize(Self) -> Self
+pub fn CryptohashwhirlpoolSeries::range(Self) -> Double
+pub fn CryptohashwhirlpoolSeries::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolSeries::std(Self) -> Double
+pub fn CryptohashwhirlpoolSeries::sub(Self, Self) -> Self
+pub fn CryptohashwhirlpoolSeries::sum(Self) -> Double
+pub fn CryptohashwhirlpoolSeries::to_string(Self) -> String
+pub fn CryptohashwhirlpoolSeries::variance(Self) -> Double
+
+pub(all) struct CryptohashwhirlpoolSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptohashwhirlpoolSlice::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolSlice::copy(Self) -> Self
+pub fn CryptohashwhirlpoolSlice::fill(Self, Double) -> Self
+pub fn CryptohashwhirlpoolSlice::get(Self, Int32) -> Double
+pub fn CryptohashwhirlpoolSlice::len(Self) -> Int32
+pub fn CryptohashwhirlpoolSlice::max(Self) -> Double
+pub fn CryptohashwhirlpoolSlice::mean(Self) -> Double
+pub fn CryptohashwhirlpoolSlice::min(Self) -> Double
+pub fn CryptohashwhirlpoolSlice::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolSlice::set(Self, Int32, Double) -> Self
+pub fn CryptohashwhirlpoolSlice::sum(Self) -> Double
+pub fn CryptohashwhirlpoolSlice::to_string(Self) -> String
+
+pub(all) struct CryptohashwhirlpoolTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptohashwhirlpoolTable::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolTable::copy(Self) -> Self
+pub fn CryptohashwhirlpoolTable::fill(Self, Double) -> Self
+pub fn CryptohashwhirlpoolTable::get(Self, Int32) -> Double
+pub fn CryptohashwhirlpoolTable::len(Self) -> Int32
+pub fn CryptohashwhirlpoolTable::max(Self) -> Double
+pub fn CryptohashwhirlpoolTable::mean(Self) -> Double
+pub fn CryptohashwhirlpoolTable::min(Self) -> Double
+pub fn CryptohashwhirlpoolTable::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolTable::set(Self, Int32, Double) -> Self
+pub fn CryptohashwhirlpoolTable::sum(Self) -> Double
+pub fn CryptohashwhirlpoolTable::to_string(Self) -> String
+
+pub(all) struct CryptohashwhirlpoolVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn CryptohashwhirlpoolVector::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolVector::dist(Self, Self) -> Double
+pub fn CryptohashwhirlpoolVector::dot(Self, Self) -> Double
+pub fn CryptohashwhirlpoolVector::norm(Self) -> Double
+pub fn CryptohashwhirlpoolVector::normalize(Self) -> Self
+pub fn CryptohashwhirlpoolVector::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolVector::sub(Self, Self) -> Self
+pub fn CryptohashwhirlpoolVector::to_string(Self) -> String
+
+pub(all) struct CryptohashwhirlpoolView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptohashwhirlpoolView::add(Self, Self) -> Self
+pub fn CryptohashwhirlpoolView::copy(Self) -> Self
+pub fn CryptohashwhirlpoolView::fill(Self, Double) -> Self
+pub fn CryptohashwhirlpoolView::get(Self, Int32) -> Double
+pub fn CryptohashwhirlpoolView::len(Self) -> Int32
+pub fn CryptohashwhirlpoolView::max(Self) -> Double
+pub fn CryptohashwhirlpoolView::mean(Self) -> Double
+pub fn CryptohashwhirlpoolView::min(Self) -> Double
+pub fn CryptohashwhirlpoolView::scale(Self, Double) -> Self
+pub fn CryptohashwhirlpoolView::set(Self, Int32, Double) -> Self
+pub fn CryptohashwhirlpoolView::sum(Self) -> Double
+pub fn CryptohashwhirlpoolView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

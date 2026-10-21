@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_route_ospf"
+
+// Values
+pub fn net_route_ospf_buffer_make(Int32) -> NetrouteospfBuffer
+
+pub fn net_route_ospf_cluster_make(Int32) -> NetrouteospfCluster
+
+pub fn net_route_ospf_cursor_make(Int32) -> NetrouteospfCursor
+
+pub fn net_route_ospf_edge_make(Int32) -> NetrouteospfEdge
+
+pub fn net_route_ospf_frame_make(Int32) -> NetrouteospfFrame
+
+pub fn net_route_ospf_graphn_make(Int32) -> NetrouteospfGraphN
+
+pub fn net_route_ospf_layer_make(Int32) -> NetrouteospfLayer
+
+pub fn net_route_ospf_make_matrix(Int32, Int32, Double) -> NetrouteospfMatrix
+
+pub fn net_route_ospf_make_point(Double, Double) -> NetrouteospfPoint
+
+pub fn net_route_ospf_make_point3(Double, Double, Double) -> NetrouteospfPoint
+
+pub fn net_route_ospf_make_series(Array[Double], String) -> NetrouteospfSeries
+
+pub fn net_route_ospf_make_vector(Array[Double]) -> NetrouteospfVector
+
+pub fn net_route_ospf_matrix_identity(Int32) -> NetrouteospfMatrix
+
+pub fn net_route_ospf_model_make(Int32) -> NetrouteospfModel
+
+pub fn net_route_ospf_node_make(Int32) -> NetrouteospfNode
+
+pub fn net_route_ospf_path_make(Int32) -> NetrouteospfPath
+
+pub fn net_route_ospf_range_make(Int32) -> NetrouteospfRange
+
+pub fn net_route_ospf_slice_make(Int32) -> NetrouteospfSlice
+
+pub fn net_route_ospf_table_make(Int32) -> NetrouteospfTable
+
+pub fn net_route_ospf_vector_zero(Int32) -> NetrouteospfVector
+
+pub fn net_route_ospf_view_make(Int32) -> NetrouteospfView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetrouteospfBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteospfBuffer::add(Self, Self) -> Self
+pub fn NetrouteospfBuffer::copy(Self) -> Self
+pub fn NetrouteospfBuffer::fill(Self, Double) -> Self
+pub fn NetrouteospfBuffer::get(Self, Int32) -> Double
+pub fn NetrouteospfBuffer::len(Self) -> Int32
+pub fn NetrouteospfBuffer::max(Self) -> Double
+pub fn NetrouteospfBuffer::mean(Self) -> Double
+pub fn NetrouteospfBuffer::min(Self) -> Double
+pub fn NetrouteospfBuffer::scale(Self, Double) -> Self
+pub fn NetrouteospfBuffer::set(Self, Int32, Double) -> Self
+pub fn NetrouteospfBuffer::sum(Self) -> Double
+pub fn NetrouteospfBuffer::to_string(Self) -> String
+
+pub(all) struct NetrouteospfCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteospfCluster::add(Self, Self) -> Self
+pub fn NetrouteospfCluster::copy(Self) -> Self
+pub fn NetrouteospfCluster::fill(Self, Double) -> Self
+pub fn NetrouteospfCluster::get(Self, Int32) -> Double
+pub fn NetrouteospfCluster::len(Self) -> Int32
+pub fn NetrouteospfCluster::max(Self) -> Double
+pub fn NetrouteospfCluster::mean(Self) -> Double
+pub fn NetrouteospfCluster::min(Self) -> Double
+pub fn NetrouteospfCluster::scale(Self, Double) -> Self
+pub fn NetrouteospfCluster::set(Self, Int32, Double) -> Self
+pub fn NetrouteospfCluster::sum(Self) -> Double
+pub fn NetrouteospfCluster::to_string(Self) -> String
+
+pub(all) struct NetrouteospfCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteospfCursor::add(Self, Self) -> Self
+pub fn NetrouteospfCursor::copy(Self) -> Self
+pub fn NetrouteospfCursor::fill(Self, Double) -> Self
+pub fn NetrouteospfCursor::get(Self, Int32) -> Double
+pub fn NetrouteospfCursor::len(Self) -> Int32
+pub fn NetrouteospfCursor::max(Self) -> Double
+pub fn NetrouteospfCursor::mean(Self) -> Double
+pub fn NetrouteospfCursor::min(Self) -> Double
+pub fn NetrouteospfCursor::scale(Self, Double) -> Self
+pub fn NetrouteospfCursor::set(Self, Int32, Double) -> Self
+pub fn NetrouteospfCursor::sum(Self) -> Double
+pub fn NetrouteospfCursor::to_string(Self) -> String
+
+pub(all) struct NetrouteospfEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteospfEdge::add(Self, Self) -> Self
+pub fn NetrouteospfEdge::copy(Self) -> Self
+pub fn NetrouteospfEdge::fill(Self, Double) -> Self
+pub fn NetrouteospfEdge::get(Self, Int32) -> Double
+pub fn NetrouteospfEdge::len(Self) -> Int32
+pub fn NetrouteospfEdge::max(Self) -> Double
+pub fn NetrouteospfEdge::mean(Self) -> Double
+pub fn NetrouteospfEdge::min(Self) -> Double
+pub fn NetrouteospfEdge::scale(Self, Double) -> Self
+pub fn NetrouteospfEdge::set(Self, Int32, Double) -> Self
+pub fn NetrouteospfEdge::sum(Self) -> Double
+pub fn NetrouteospfEdge::to_string(Self) -> String
+
+pub(all) struct NetrouteospfFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteospfFrame::add(Self, Self) -> Self
+pub fn NetrouteospfFrame::copy(Self) -> Self
+pub fn NetrouteospfFrame::fill(Self, Double) -> Self
+pub fn NetrouteospfFrame::get(Self, Int32) -> Double
+pub fn NetrouteospfFrame::len(Self) -> Int32
+pub fn NetrouteospfFrame::max(Self) -> Double
+pub fn NetrouteospfFrame::mean(Self) -> Double
+pub fn NetrouteospfFrame::min(Self) -> Double
+pub fn NetrouteospfFrame::scale(Self, Double) -> Self
+pub fn NetrouteospfFrame::set(Self, Int32, Double) -> Self
+pub fn NetrouteospfFrame::sum(Self) -> Double
+pub fn NetrouteospfFrame::to_string(Self) -> String
+
+pub(all) struct NetrouteospfGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteospfGraphN::add(Self, Self) -> Self
+pub fn NetrouteospfGraphN::copy(Self) -> Self
+pub fn NetrouteospfGraphN::fill(Self, Double) -> Self
+pub fn NetrouteospfGraphN::get(Self, Int32) -> Double
+pub fn NetrouteospfGraphN::len(Self) -> Int32
+pub fn NetrouteospfGraphN::max(Self) -> Double
+pub fn NetrouteospfGraphN::mean(Self) -> Double
+pub fn NetrouteospfGraphN::min(Self) -> Double
+pub fn NetrouteospfGraphN::scale(Self, Double) -> Self
+pub fn NetrouteospfGraphN::set(Self, Int32, Double) -> Self
+pub fn NetrouteospfGraphN::sum(Self) -> Double
+pub fn NetrouteospfGraphN::to_string(Self) -> String
+
+pub(all) struct NetrouteospfLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteospfLayer::add(Self, Self) -> Self
+pub fn NetrouteospfLayer::copy(Self) -> Self
+pub fn NetrouteospfLayer::fill(Self, Double) -> Self
+pub fn NetrouteospfLayer::get(Self, Int32) -> Double
+pub fn NetrouteospfLayer::len(Self) -> Int32
+pub fn NetrouteospfLayer::max(Self) -> Double
+pub fn NetrouteospfLayer::mean(Self) -> Double
+pub fn NetrouteospfLayer::min(Self) -> Double
+pub fn NetrouteospfLayer::scale(Self, Double) -> Self
+pub fn NetrouteospfLayer::set(Self, Int32, Double) -> Self
+pub fn NetrouteospfLayer::sum(Self) -> Double
+pub fn NetrouteospfLayer::to_string(Self) -> String
+
+pub(all) struct NetrouteospfMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetrouteospfMatrix::add(Self, Self) -> Self
+pub fn NetrouteospfMatrix::det(Self) -> Double
+pub fn NetrouteospfMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetrouteospfMatrix::multiply(Self, Self) -> Self
+pub fn NetrouteospfMatrix::norm(Self) -> Double
+pub fn NetrouteospfMatrix::scale(Self, Double) -> Self
+pub fn NetrouteospfMatrix::to_string(Self) -> String
+pub fn NetrouteospfMatrix::trace(Self) -> Double
+pub fn NetrouteospfMatrix::transpose(Self) -> Self
+
+pub(all) struct NetrouteospfModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteospfModel::add(Self, Self) -> Self
+pub fn NetrouteospfModel::copy(Self) -> Self
+pub fn NetrouteospfModel::fill(Self, Double) -> Self
+pub fn NetrouteospfModel::get(Self, Int32) -> Double
+pub fn NetrouteospfModel::len(Self) -> Int32
+pub fn NetrouteospfModel::max(Self) -> Double
+pub fn NetrouteospfModel::mean(Self) -> Double
+pub fn NetrouteospfModel::min(Self) -> Double
+pub fn NetrouteospfModel::scale(Self, Double) -> Self
+pub fn NetrouteospfModel::set(Self, Int32, Double) -> Self
+pub fn NetrouteospfModel::sum(Self) -> Double
+pub fn NetrouteospfModel::to_string(Self) -> String
+
+pub(all) struct NetrouteospfNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteospfNode::add(Self, Self) -> Self
+pub fn NetrouteospfNode::copy(Self) -> Self
+pub fn NetrouteospfNode::fill(Self, Double) -> Self
+pub fn NetrouteospfNode::get(Self, Int32) -> Double
+pub fn NetrouteospfNode::len(Self) -> Int32
+pub fn NetrouteospfNode::max(Self) -> Double
+pub fn NetrouteospfNode::mean(Self) -> Double
+pub fn NetrouteospfNode::min(Self) -> Double
+pub fn NetrouteospfNode::scale(Self, Double) -> Self
+pub fn NetrouteospfNode::set(Self, Int32, Double) -> Self
+pub fn NetrouteospfNode::sum(Self) -> Double
+pub fn NetrouteospfNode::to_string(Self) -> String
+
+pub(all) struct NetrouteospfPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteospfPath::add(Self, Self) -> Self
+pub fn NetrouteospfPath::copy(Self) -> Self
+pub fn NetrouteospfPath::fill(Self, Double) -> Self
+pub fn NetrouteospfPath::get(Self, Int32) -> Double
+pub fn NetrouteospfPath::len(Self) -> Int32
+pub fn NetrouteospfPath::max(Self) -> Double
+pub fn NetrouteospfPath::mean(Self) -> Double
+pub fn NetrouteospfPath::min(Self) -> Double
+pub fn NetrouteospfPath::scale(Self, Double) -> Self
+pub fn NetrouteospfPath::set(Self, Int32, Double) -> Self
+pub fn NetrouteospfPath::sum(Self) -> Double
+pub fn NetrouteospfPath::to_string(Self) -> String
+
+pub(all) struct NetrouteospfPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetrouteospfPoint::add(Self, Self) -> Self
+pub fn NetrouteospfPoint::cross(Self, Self) -> Self
+pub fn NetrouteospfPoint::dist(Self, Self) -> Double
+pub fn NetrouteospfPoint::dot(Self, Self) -> Double
+pub fn NetrouteospfPoint::label(Self) -> Int32
+pub fn NetrouteospfPoint::lerp(Self, Self, Double) -> Self
+pub fn NetrouteospfPoint::mid(Self, Self) -> Self
+pub fn NetrouteospfPoint::negate(Self) -> Self
+pub fn NetrouteospfPoint::norm(Self) -> Double
+pub fn NetrouteospfPoint::normalize(Self) -> Self
+pub fn NetrouteospfPoint::scale(Self, Double) -> Self
+pub fn NetrouteospfPoint::sub(Self, Self) -> Self
+pub fn NetrouteospfPoint::to_string(Self) -> String
+pub fn NetrouteospfPoint::x(Self) -> Double
+pub fn NetrouteospfPoint::y(Self) -> Double
+pub fn NetrouteospfPoint::z(Self) -> Double
+
+pub(all) struct NetrouteospfRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteospfRange::add(Self, Self) -> Self
+pub fn NetrouteospfRange::copy(Self) -> Self
+pub fn NetrouteospfRange::fill(Self, Double) -> Self
+pub fn NetrouteospfRange::get(Self, Int32) -> Double
+pub fn NetrouteospfRange::len(Self) -> Int32
+pub fn NetrouteospfRange::max(Self) -> Double
+pub fn NetrouteospfRange::mean(Self) -> Double
+pub fn NetrouteospfRange::min(Self) -> Double
+pub fn NetrouteospfRange::scale(Self, Double) -> Self
+pub fn NetrouteospfRange::set(Self, Int32, Double) -> Self
+pub fn NetrouteospfRange::sum(Self) -> Double
+pub fn NetrouteospfRange::to_string(Self) -> String
+
+pub(all) struct NetrouteospfSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetrouteospfSeries::add(Self, Self) -> Self
+pub fn NetrouteospfSeries::cumsum(Self) -> Self
+pub fn NetrouteospfSeries::len(Self) -> Int32
+pub fn NetrouteospfSeries::max(Self) -> Double
+pub fn NetrouteospfSeries::mean(Self) -> Double
+pub fn NetrouteospfSeries::median(Self) -> Double
+pub fn NetrouteospfSeries::min(Self) -> Double
+pub fn NetrouteospfSeries::normalize(Self) -> Self
+pub fn NetrouteospfSeries::range(Self) -> Double
+pub fn NetrouteospfSeries::scale(Self, Double) -> Self
+pub fn NetrouteospfSeries::std(Self) -> Double
+pub fn NetrouteospfSeries::sub(Self, Self) -> Self
+pub fn NetrouteospfSeries::sum(Self) -> Double
+pub fn NetrouteospfSeries::to_string(Self) -> String
+pub fn NetrouteospfSeries::variance(Self) -> Double
+
+pub(all) struct NetrouteospfSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteospfSlice::add(Self, Self) -> Self
+pub fn NetrouteospfSlice::copy(Self) -> Self
+pub fn NetrouteospfSlice::fill(Self, Double) -> Self
+pub fn NetrouteospfSlice::get(Self, Int32) -> Double
+pub fn NetrouteospfSlice::len(Self) -> Int32
+pub fn NetrouteospfSlice::max(Self) -> Double
+pub fn NetrouteospfSlice::mean(Self) -> Double
+pub fn NetrouteospfSlice::min(Self) -> Double
+pub fn NetrouteospfSlice::scale(Self, Double) -> Self
+pub fn NetrouteospfSlice::set(Self, Int32, Double) -> Self
+pub fn NetrouteospfSlice::sum(Self) -> Double
+pub fn NetrouteospfSlice::to_string(Self) -> String
+
+pub(all) struct NetrouteospfTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteospfTable::add(Self, Self) -> Self
+pub fn NetrouteospfTable::copy(Self) -> Self
+pub fn NetrouteospfTable::fill(Self, Double) -> Self
+pub fn NetrouteospfTable::get(Self, Int32) -> Double
+pub fn NetrouteospfTable::len(Self) -> Int32
+pub fn NetrouteospfTable::max(Self) -> Double
+pub fn NetrouteospfTable::mean(Self) -> Double
+pub fn NetrouteospfTable::min(Self) -> Double
+pub fn NetrouteospfTable::scale(Self, Double) -> Self
+pub fn NetrouteospfTable::set(Self, Int32, Double) -> Self
+pub fn NetrouteospfTable::sum(Self) -> Double
+pub fn NetrouteospfTable::to_string(Self) -> String
+
+pub(all) struct NetrouteospfVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetrouteospfVector::add(Self, Self) -> Self
+pub fn NetrouteospfVector::dist(Self, Self) -> Double
+pub fn NetrouteospfVector::dot(Self, Self) -> Double
+pub fn NetrouteospfVector::norm(Self) -> Double
+pub fn NetrouteospfVector::normalize(Self) -> Self
+pub fn NetrouteospfVector::scale(Self, Double) -> Self
+pub fn NetrouteospfVector::sub(Self, Self) -> Self
+pub fn NetrouteospfVector::to_string(Self) -> String
+
+pub(all) struct NetrouteospfView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteospfView::add(Self, Self) -> Self
+pub fn NetrouteospfView::copy(Self) -> Self
+pub fn NetrouteospfView::fill(Self, Double) -> Self
+pub fn NetrouteospfView::get(Self, Int32) -> Double
+pub fn NetrouteospfView::len(Self) -> Int32
+pub fn NetrouteospfView::max(Self) -> Double
+pub fn NetrouteospfView::mean(Self) -> Double
+pub fn NetrouteospfView::min(Self) -> Double
+pub fn NetrouteospfView::scale(Self, Double) -> Self
+pub fn NetrouteospfView::set(Self, Int32, Double) -> Self
+pub fn NetrouteospfView::sum(Self) -> Double
+pub fn NetrouteospfView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

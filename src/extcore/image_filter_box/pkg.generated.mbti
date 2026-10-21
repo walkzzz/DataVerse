@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_filter_box"
+
+// Values
+pub fn image_filter_box_buffer_make(Int32) -> ImagefilterboxBuffer
+
+pub fn image_filter_box_cluster_make(Int32) -> ImagefilterboxCluster
+
+pub fn image_filter_box_cursor_make(Int32) -> ImagefilterboxCursor
+
+pub fn image_filter_box_edge_make(Int32) -> ImagefilterboxEdge
+
+pub fn image_filter_box_frame_make(Int32) -> ImagefilterboxFrame
+
+pub fn image_filter_box_graphn_make(Int32) -> ImagefilterboxGraphN
+
+pub fn image_filter_box_layer_make(Int32) -> ImagefilterboxLayer
+
+pub fn image_filter_box_make_matrix(Int32, Int32, Double) -> ImagefilterboxMatrix
+
+pub fn image_filter_box_make_point(Double, Double) -> ImagefilterboxPoint
+
+pub fn image_filter_box_make_point3(Double, Double, Double) -> ImagefilterboxPoint
+
+pub fn image_filter_box_make_series(Array[Double], String) -> ImagefilterboxSeries
+
+pub fn image_filter_box_make_vector(Array[Double]) -> ImagefilterboxVector
+
+pub fn image_filter_box_matrix_identity(Int32) -> ImagefilterboxMatrix
+
+pub fn image_filter_box_model_make(Int32) -> ImagefilterboxModel
+
+pub fn image_filter_box_node_make(Int32) -> ImagefilterboxNode
+
+pub fn image_filter_box_path_make(Int32) -> ImagefilterboxPath
+
+pub fn image_filter_box_range_make(Int32) -> ImagefilterboxRange
+
+pub fn image_filter_box_slice_make(Int32) -> ImagefilterboxSlice
+
+pub fn image_filter_box_table_make(Int32) -> ImagefilterboxTable
+
+pub fn image_filter_box_vector_zero(Int32) -> ImagefilterboxVector
+
+pub fn image_filter_box_view_make(Int32) -> ImagefilterboxView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagefilterboxBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterboxBuffer::add(Self, Self) -> Self
+pub fn ImagefilterboxBuffer::copy(Self) -> Self
+pub fn ImagefilterboxBuffer::fill(Self, Double) -> Self
+pub fn ImagefilterboxBuffer::get(Self, Int32) -> Double
+pub fn ImagefilterboxBuffer::len(Self) -> Int32
+pub fn ImagefilterboxBuffer::max(Self) -> Double
+pub fn ImagefilterboxBuffer::mean(Self) -> Double
+pub fn ImagefilterboxBuffer::min(Self) -> Double
+pub fn ImagefilterboxBuffer::scale(Self, Double) -> Self
+pub fn ImagefilterboxBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagefilterboxBuffer::sum(Self) -> Double
+pub fn ImagefilterboxBuffer::to_string(Self) -> String
+
+pub(all) struct ImagefilterboxCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterboxCluster::add(Self, Self) -> Self
+pub fn ImagefilterboxCluster::copy(Self) -> Self
+pub fn ImagefilterboxCluster::fill(Self, Double) -> Self
+pub fn ImagefilterboxCluster::get(Self, Int32) -> Double
+pub fn ImagefilterboxCluster::len(Self) -> Int32
+pub fn ImagefilterboxCluster::max(Self) -> Double
+pub fn ImagefilterboxCluster::mean(Self) -> Double
+pub fn ImagefilterboxCluster::min(Self) -> Double
+pub fn ImagefilterboxCluster::scale(Self, Double) -> Self
+pub fn ImagefilterboxCluster::set(Self, Int32, Double) -> Self
+pub fn ImagefilterboxCluster::sum(Self) -> Double
+pub fn ImagefilterboxCluster::to_string(Self) -> String
+
+pub(all) struct ImagefilterboxCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterboxCursor::add(Self, Self) -> Self
+pub fn ImagefilterboxCursor::copy(Self) -> Self
+pub fn ImagefilterboxCursor::fill(Self, Double) -> Self
+pub fn ImagefilterboxCursor::get(Self, Int32) -> Double
+pub fn ImagefilterboxCursor::len(Self) -> Int32
+pub fn ImagefilterboxCursor::max(Self) -> Double
+pub fn ImagefilterboxCursor::mean(Self) -> Double
+pub fn ImagefilterboxCursor::min(Self) -> Double
+pub fn ImagefilterboxCursor::scale(Self, Double) -> Self
+pub fn ImagefilterboxCursor::set(Self, Int32, Double) -> Self
+pub fn ImagefilterboxCursor::sum(Self) -> Double
+pub fn ImagefilterboxCursor::to_string(Self) -> String
+
+pub(all) struct ImagefilterboxEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterboxEdge::add(Self, Self) -> Self
+pub fn ImagefilterboxEdge::copy(Self) -> Self
+pub fn ImagefilterboxEdge::fill(Self, Double) -> Self
+pub fn ImagefilterboxEdge::get(Self, Int32) -> Double
+pub fn ImagefilterboxEdge::len(Self) -> Int32
+pub fn ImagefilterboxEdge::max(Self) -> Double
+pub fn ImagefilterboxEdge::mean(Self) -> Double
+pub fn ImagefilterboxEdge::min(Self) -> Double
+pub fn ImagefilterboxEdge::scale(Self, Double) -> Self
+pub fn ImagefilterboxEdge::set(Self, Int32, Double) -> Self
+pub fn ImagefilterboxEdge::sum(Self) -> Double
+pub fn ImagefilterboxEdge::to_string(Self) -> String
+
+pub(all) struct ImagefilterboxFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterboxFrame::add(Self, Self) -> Self
+pub fn ImagefilterboxFrame::copy(Self) -> Self
+pub fn ImagefilterboxFrame::fill(Self, Double) -> Self
+pub fn ImagefilterboxFrame::get(Self, Int32) -> Double
+pub fn ImagefilterboxFrame::len(Self) -> Int32
+pub fn ImagefilterboxFrame::max(Self) -> Double
+pub fn ImagefilterboxFrame::mean(Self) -> Double
+pub fn ImagefilterboxFrame::min(Self) -> Double
+pub fn ImagefilterboxFrame::scale(Self, Double) -> Self
+pub fn ImagefilterboxFrame::set(Self, Int32, Double) -> Self
+pub fn ImagefilterboxFrame::sum(Self) -> Double
+pub fn ImagefilterboxFrame::to_string(Self) -> String
+
+pub(all) struct ImagefilterboxGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterboxGraphN::add(Self, Self) -> Self
+pub fn ImagefilterboxGraphN::copy(Self) -> Self
+pub fn ImagefilterboxGraphN::fill(Self, Double) -> Self
+pub fn ImagefilterboxGraphN::get(Self, Int32) -> Double
+pub fn ImagefilterboxGraphN::len(Self) -> Int32
+pub fn ImagefilterboxGraphN::max(Self) -> Double
+pub fn ImagefilterboxGraphN::mean(Self) -> Double
+pub fn ImagefilterboxGraphN::min(Self) -> Double
+pub fn ImagefilterboxGraphN::scale(Self, Double) -> Self
+pub fn ImagefilterboxGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagefilterboxGraphN::sum(Self) -> Double
+pub fn ImagefilterboxGraphN::to_string(Self) -> String
+
+pub(all) struct ImagefilterboxLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterboxLayer::add(Self, Self) -> Self
+pub fn ImagefilterboxLayer::copy(Self) -> Self
+pub fn ImagefilterboxLayer::fill(Self, Double) -> Self
+pub fn ImagefilterboxLayer::get(Self, Int32) -> Double
+pub fn ImagefilterboxLayer::len(Self) -> Int32
+pub fn ImagefilterboxLayer::max(Self) -> Double
+pub fn ImagefilterboxLayer::mean(Self) -> Double
+pub fn ImagefilterboxLayer::min(Self) -> Double
+pub fn ImagefilterboxLayer::scale(Self, Double) -> Self
+pub fn ImagefilterboxLayer::set(Self, Int32, Double) -> Self
+pub fn ImagefilterboxLayer::sum(Self) -> Double
+pub fn ImagefilterboxLayer::to_string(Self) -> String
+
+pub(all) struct ImagefilterboxMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagefilterboxMatrix::add(Self, Self) -> Self
+pub fn ImagefilterboxMatrix::det(Self) -> Double
+pub fn ImagefilterboxMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagefilterboxMatrix::multiply(Self, Self) -> Self
+pub fn ImagefilterboxMatrix::norm(Self) -> Double
+pub fn ImagefilterboxMatrix::scale(Self, Double) -> Self
+pub fn ImagefilterboxMatrix::to_string(Self) -> String
+pub fn ImagefilterboxMatrix::trace(Self) -> Double
+pub fn ImagefilterboxMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagefilterboxModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterboxModel::add(Self, Self) -> Self
+pub fn ImagefilterboxModel::copy(Self) -> Self
+pub fn ImagefilterboxModel::fill(Self, Double) -> Self
+pub fn ImagefilterboxModel::get(Self, Int32) -> Double
+pub fn ImagefilterboxModel::len(Self) -> Int32
+pub fn ImagefilterboxModel::max(Self) -> Double
+pub fn ImagefilterboxModel::mean(Self) -> Double
+pub fn ImagefilterboxModel::min(Self) -> Double
+pub fn ImagefilterboxModel::scale(Self, Double) -> Self
+pub fn ImagefilterboxModel::set(Self, Int32, Double) -> Self
+pub fn ImagefilterboxModel::sum(Self) -> Double
+pub fn ImagefilterboxModel::to_string(Self) -> String
+
+pub(all) struct ImagefilterboxNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterboxNode::add(Self, Self) -> Self
+pub fn ImagefilterboxNode::copy(Self) -> Self
+pub fn ImagefilterboxNode::fill(Self, Double) -> Self
+pub fn ImagefilterboxNode::get(Self, Int32) -> Double
+pub fn ImagefilterboxNode::len(Self) -> Int32
+pub fn ImagefilterboxNode::max(Self) -> Double
+pub fn ImagefilterboxNode::mean(Self) -> Double
+pub fn ImagefilterboxNode::min(Self) -> Double
+pub fn ImagefilterboxNode::scale(Self, Double) -> Self
+pub fn ImagefilterboxNode::set(Self, Int32, Double) -> Self
+pub fn ImagefilterboxNode::sum(Self) -> Double
+pub fn ImagefilterboxNode::to_string(Self) -> String
+
+pub(all) struct ImagefilterboxPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterboxPath::add(Self, Self) -> Self
+pub fn ImagefilterboxPath::copy(Self) -> Self
+pub fn ImagefilterboxPath::fill(Self, Double) -> Self
+pub fn ImagefilterboxPath::get(Self, Int32) -> Double
+pub fn ImagefilterboxPath::len(Self) -> Int32
+pub fn ImagefilterboxPath::max(Self) -> Double
+pub fn ImagefilterboxPath::mean(Self) -> Double
+pub fn ImagefilterboxPath::min(Self) -> Double
+pub fn ImagefilterboxPath::scale(Self, Double) -> Self
+pub fn ImagefilterboxPath::set(Self, Int32, Double) -> Self
+pub fn ImagefilterboxPath::sum(Self) -> Double
+pub fn ImagefilterboxPath::to_string(Self) -> String
+
+pub(all) struct ImagefilterboxPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagefilterboxPoint::add(Self, Self) -> Self
+pub fn ImagefilterboxPoint::cross(Self, Self) -> Self
+pub fn ImagefilterboxPoint::dist(Self, Self) -> Double
+pub fn ImagefilterboxPoint::dot(Self, Self) -> Double
+pub fn ImagefilterboxPoint::label(Self) -> Int32
+pub fn ImagefilterboxPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagefilterboxPoint::mid(Self, Self) -> Self
+pub fn ImagefilterboxPoint::negate(Self) -> Self
+pub fn ImagefilterboxPoint::norm(Self) -> Double
+pub fn ImagefilterboxPoint::normalize(Self) -> Self
+pub fn ImagefilterboxPoint::scale(Self, Double) -> Self
+pub fn ImagefilterboxPoint::sub(Self, Self) -> Self
+pub fn ImagefilterboxPoint::to_string(Self) -> String
+pub fn ImagefilterboxPoint::x(Self) -> Double
+pub fn ImagefilterboxPoint::y(Self) -> Double
+pub fn ImagefilterboxPoint::z(Self) -> Double
+
+pub(all) struct ImagefilterboxRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterboxRange::add(Self, Self) -> Self
+pub fn ImagefilterboxRange::copy(Self) -> Self
+pub fn ImagefilterboxRange::fill(Self, Double) -> Self
+pub fn ImagefilterboxRange::get(Self, Int32) -> Double
+pub fn ImagefilterboxRange::len(Self) -> Int32
+pub fn ImagefilterboxRange::max(Self) -> Double
+pub fn ImagefilterboxRange::mean(Self) -> Double
+pub fn ImagefilterboxRange::min(Self) -> Double
+pub fn ImagefilterboxRange::scale(Self, Double) -> Self
+pub fn ImagefilterboxRange::set(Self, Int32, Double) -> Self
+pub fn ImagefilterboxRange::sum(Self) -> Double
+pub fn ImagefilterboxRange::to_string(Self) -> String
+
+pub(all) struct ImagefilterboxSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagefilterboxSeries::add(Self, Self) -> Self
+pub fn ImagefilterboxSeries::cumsum(Self) -> Self
+pub fn ImagefilterboxSeries::len(Self) -> Int32
+pub fn ImagefilterboxSeries::max(Self) -> Double
+pub fn ImagefilterboxSeries::mean(Self) -> Double
+pub fn ImagefilterboxSeries::median(Self) -> Double
+pub fn ImagefilterboxSeries::min(Self) -> Double
+pub fn ImagefilterboxSeries::normalize(Self) -> Self
+pub fn ImagefilterboxSeries::range(Self) -> Double
+pub fn ImagefilterboxSeries::scale(Self, Double) -> Self
+pub fn ImagefilterboxSeries::std(Self) -> Double
+pub fn ImagefilterboxSeries::sub(Self, Self) -> Self
+pub fn ImagefilterboxSeries::sum(Self) -> Double
+pub fn ImagefilterboxSeries::to_string(Self) -> String
+pub fn ImagefilterboxSeries::variance(Self) -> Double
+
+pub(all) struct ImagefilterboxSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterboxSlice::add(Self, Self) -> Self
+pub fn ImagefilterboxSlice::copy(Self) -> Self
+pub fn ImagefilterboxSlice::fill(Self, Double) -> Self
+pub fn ImagefilterboxSlice::get(Self, Int32) -> Double
+pub fn ImagefilterboxSlice::len(Self) -> Int32
+pub fn ImagefilterboxSlice::max(Self) -> Double
+pub fn ImagefilterboxSlice::mean(Self) -> Double
+pub fn ImagefilterboxSlice::min(Self) -> Double
+pub fn ImagefilterboxSlice::scale(Self, Double) -> Self
+pub fn ImagefilterboxSlice::set(Self, Int32, Double) -> Self
+pub fn ImagefilterboxSlice::sum(Self) -> Double
+pub fn ImagefilterboxSlice::to_string(Self) -> String
+
+pub(all) struct ImagefilterboxTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterboxTable::add(Self, Self) -> Self
+pub fn ImagefilterboxTable::copy(Self) -> Self
+pub fn ImagefilterboxTable::fill(Self, Double) -> Self
+pub fn ImagefilterboxTable::get(Self, Int32) -> Double
+pub fn ImagefilterboxTable::len(Self) -> Int32
+pub fn ImagefilterboxTable::max(Self) -> Double
+pub fn ImagefilterboxTable::mean(Self) -> Double
+pub fn ImagefilterboxTable::min(Self) -> Double
+pub fn ImagefilterboxTable::scale(Self, Double) -> Self
+pub fn ImagefilterboxTable::set(Self, Int32, Double) -> Self
+pub fn ImagefilterboxTable::sum(Self) -> Double
+pub fn ImagefilterboxTable::to_string(Self) -> String
+
+pub(all) struct ImagefilterboxVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagefilterboxVector::add(Self, Self) -> Self
+pub fn ImagefilterboxVector::dist(Self, Self) -> Double
+pub fn ImagefilterboxVector::dot(Self, Self) -> Double
+pub fn ImagefilterboxVector::norm(Self) -> Double
+pub fn ImagefilterboxVector::normalize(Self) -> Self
+pub fn ImagefilterboxVector::scale(Self, Double) -> Self
+pub fn ImagefilterboxVector::sub(Self, Self) -> Self
+pub fn ImagefilterboxVector::to_string(Self) -> String
+
+pub(all) struct ImagefilterboxView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterboxView::add(Self, Self) -> Self
+pub fn ImagefilterboxView::copy(Self) -> Self
+pub fn ImagefilterboxView::fill(Self, Double) -> Self
+pub fn ImagefilterboxView::get(Self, Int32) -> Double
+pub fn ImagefilterboxView::len(Self) -> Int32
+pub fn ImagefilterboxView::max(Self) -> Double
+pub fn ImagefilterboxView::mean(Self) -> Double
+pub fn ImagefilterboxView::min(Self) -> Double
+pub fn ImagefilterboxView::scale(Self, Double) -> Self
+pub fn ImagefilterboxView::set(Self, Int32, Double) -> Self
+pub fn ImagefilterboxView::sum(Self) -> Double
+pub fn ImagefilterboxView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

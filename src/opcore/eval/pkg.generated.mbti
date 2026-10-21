@@ -1,0 +1,34 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/eval"
+
+import {
+  "dataverse/dataobject",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn eval_frequency(Array[Int32]) -> Array[(Int32, Int32)]
+
+pub fn eval_id() -> String
+
+pub fn eval_tabulate_intersection(Array[Int32], Array[Int32]) -> Array[(Int32, Int32, Int32)]
+
+pub fn global_statistics(Array[@dataobject.DataObject]) -> GlobalStats
+
+// Errors
+
+// Types and methods
+pub struct GlobalStats {
+  total_count : Int32
+  nonempty_count : Int32
+  avg_length : Double
+  max_length : Int32
+  min_length : Int32
+} derive(Eq, @debug.Debug)
+pub fn GlobalStats::equal(Self, Self) -> Bool
+pub fn GlobalStats::not_equal(Self, Self) -> Bool
+pub fn GlobalStats::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

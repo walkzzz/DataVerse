@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/opt_grad_adam"
+
+// Values
+pub fn opt_grad_adam_buffer_make(Int32) -> OptgradadamBuffer
+
+pub fn opt_grad_adam_cluster_make(Int32) -> OptgradadamCluster
+
+pub fn opt_grad_adam_cursor_make(Int32) -> OptgradadamCursor
+
+pub fn opt_grad_adam_edge_make(Int32) -> OptgradadamEdge
+
+pub fn opt_grad_adam_frame_make(Int32) -> OptgradadamFrame
+
+pub fn opt_grad_adam_graphn_make(Int32) -> OptgradadamGraphN
+
+pub fn opt_grad_adam_layer_make(Int32) -> OptgradadamLayer
+
+pub fn opt_grad_adam_make_matrix(Int32, Int32, Double) -> OptgradadamMatrix
+
+pub fn opt_grad_adam_make_point(Double, Double) -> OptgradadamPoint
+
+pub fn opt_grad_adam_make_point3(Double, Double, Double) -> OptgradadamPoint
+
+pub fn opt_grad_adam_make_series(Array[Double], String) -> OptgradadamSeries
+
+pub fn opt_grad_adam_make_vector(Array[Double]) -> OptgradadamVector
+
+pub fn opt_grad_adam_matrix_identity(Int32) -> OptgradadamMatrix
+
+pub fn opt_grad_adam_model_make(Int32) -> OptgradadamModel
+
+pub fn opt_grad_adam_node_make(Int32) -> OptgradadamNode
+
+pub fn opt_grad_adam_path_make(Int32) -> OptgradadamPath
+
+pub fn opt_grad_adam_range_make(Int32) -> OptgradadamRange
+
+pub fn opt_grad_adam_slice_make(Int32) -> OptgradadamSlice
+
+pub fn opt_grad_adam_table_make(Int32) -> OptgradadamTable
+
+pub fn opt_grad_adam_vector_zero(Int32) -> OptgradadamVector
+
+pub fn opt_grad_adam_view_make(Int32) -> OptgradadamView
+
+// Errors
+
+// Types and methods
+pub(all) struct OptgradadamBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamBuffer::add(Self, Self) -> Self
+pub fn OptgradadamBuffer::copy(Self) -> Self
+pub fn OptgradadamBuffer::fill(Self, Double) -> Self
+pub fn OptgradadamBuffer::get(Self, Int32) -> Double
+pub fn OptgradadamBuffer::len(Self) -> Int32
+pub fn OptgradadamBuffer::max(Self) -> Double
+pub fn OptgradadamBuffer::mean(Self) -> Double
+pub fn OptgradadamBuffer::min(Self) -> Double
+pub fn OptgradadamBuffer::scale(Self, Double) -> Self
+pub fn OptgradadamBuffer::set(Self, Int32, Double) -> Self
+pub fn OptgradadamBuffer::sum(Self) -> Double
+pub fn OptgradadamBuffer::to_string(Self) -> String
+
+pub(all) struct OptgradadamCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamCluster::add(Self, Self) -> Self
+pub fn OptgradadamCluster::copy(Self) -> Self
+pub fn OptgradadamCluster::fill(Self, Double) -> Self
+pub fn OptgradadamCluster::get(Self, Int32) -> Double
+pub fn OptgradadamCluster::len(Self) -> Int32
+pub fn OptgradadamCluster::max(Self) -> Double
+pub fn OptgradadamCluster::mean(Self) -> Double
+pub fn OptgradadamCluster::min(Self) -> Double
+pub fn OptgradadamCluster::scale(Self, Double) -> Self
+pub fn OptgradadamCluster::set(Self, Int32, Double) -> Self
+pub fn OptgradadamCluster::sum(Self) -> Double
+pub fn OptgradadamCluster::to_string(Self) -> String
+
+pub(all) struct OptgradadamCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamCursor::add(Self, Self) -> Self
+pub fn OptgradadamCursor::copy(Self) -> Self
+pub fn OptgradadamCursor::fill(Self, Double) -> Self
+pub fn OptgradadamCursor::get(Self, Int32) -> Double
+pub fn OptgradadamCursor::len(Self) -> Int32
+pub fn OptgradadamCursor::max(Self) -> Double
+pub fn OptgradadamCursor::mean(Self) -> Double
+pub fn OptgradadamCursor::min(Self) -> Double
+pub fn OptgradadamCursor::scale(Self, Double) -> Self
+pub fn OptgradadamCursor::set(Self, Int32, Double) -> Self
+pub fn OptgradadamCursor::sum(Self) -> Double
+pub fn OptgradadamCursor::to_string(Self) -> String
+
+pub(all) struct OptgradadamEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamEdge::add(Self, Self) -> Self
+pub fn OptgradadamEdge::copy(Self) -> Self
+pub fn OptgradadamEdge::fill(Self, Double) -> Self
+pub fn OptgradadamEdge::get(Self, Int32) -> Double
+pub fn OptgradadamEdge::len(Self) -> Int32
+pub fn OptgradadamEdge::max(Self) -> Double
+pub fn OptgradadamEdge::mean(Self) -> Double
+pub fn OptgradadamEdge::min(Self) -> Double
+pub fn OptgradadamEdge::scale(Self, Double) -> Self
+pub fn OptgradadamEdge::set(Self, Int32, Double) -> Self
+pub fn OptgradadamEdge::sum(Self) -> Double
+pub fn OptgradadamEdge::to_string(Self) -> String
+
+pub(all) struct OptgradadamFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamFrame::add(Self, Self) -> Self
+pub fn OptgradadamFrame::copy(Self) -> Self
+pub fn OptgradadamFrame::fill(Self, Double) -> Self
+pub fn OptgradadamFrame::get(Self, Int32) -> Double
+pub fn OptgradadamFrame::len(Self) -> Int32
+pub fn OptgradadamFrame::max(Self) -> Double
+pub fn OptgradadamFrame::mean(Self) -> Double
+pub fn OptgradadamFrame::min(Self) -> Double
+pub fn OptgradadamFrame::scale(Self, Double) -> Self
+pub fn OptgradadamFrame::set(Self, Int32, Double) -> Self
+pub fn OptgradadamFrame::sum(Self) -> Double
+pub fn OptgradadamFrame::to_string(Self) -> String
+
+pub(all) struct OptgradadamGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamGraphN::add(Self, Self) -> Self
+pub fn OptgradadamGraphN::copy(Self) -> Self
+pub fn OptgradadamGraphN::fill(Self, Double) -> Self
+pub fn OptgradadamGraphN::get(Self, Int32) -> Double
+pub fn OptgradadamGraphN::len(Self) -> Int32
+pub fn OptgradadamGraphN::max(Self) -> Double
+pub fn OptgradadamGraphN::mean(Self) -> Double
+pub fn OptgradadamGraphN::min(Self) -> Double
+pub fn OptgradadamGraphN::scale(Self, Double) -> Self
+pub fn OptgradadamGraphN::set(Self, Int32, Double) -> Self
+pub fn OptgradadamGraphN::sum(Self) -> Double
+pub fn OptgradadamGraphN::to_string(Self) -> String
+
+pub(all) struct OptgradadamLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamLayer::add(Self, Self) -> Self
+pub fn OptgradadamLayer::copy(Self) -> Self
+pub fn OptgradadamLayer::fill(Self, Double) -> Self
+pub fn OptgradadamLayer::get(Self, Int32) -> Double
+pub fn OptgradadamLayer::len(Self) -> Int32
+pub fn OptgradadamLayer::max(Self) -> Double
+pub fn OptgradadamLayer::mean(Self) -> Double
+pub fn OptgradadamLayer::min(Self) -> Double
+pub fn OptgradadamLayer::scale(Self, Double) -> Self
+pub fn OptgradadamLayer::set(Self, Int32, Double) -> Self
+pub fn OptgradadamLayer::sum(Self) -> Double
+pub fn OptgradadamLayer::to_string(Self) -> String
+
+pub(all) struct OptgradadamMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn OptgradadamMatrix::add(Self, Self) -> Self
+pub fn OptgradadamMatrix::det(Self) -> Double
+pub fn OptgradadamMatrix::get(Self, Int32, Int32) -> Double
+pub fn OptgradadamMatrix::multiply(Self, Self) -> Self
+pub fn OptgradadamMatrix::norm(Self) -> Double
+pub fn OptgradadamMatrix::scale(Self, Double) -> Self
+pub fn OptgradadamMatrix::to_string(Self) -> String
+pub fn OptgradadamMatrix::trace(Self) -> Double
+pub fn OptgradadamMatrix::transpose(Self) -> Self
+
+pub(all) struct OptgradadamModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamModel::add(Self, Self) -> Self
+pub fn OptgradadamModel::copy(Self) -> Self
+pub fn OptgradadamModel::fill(Self, Double) -> Self
+pub fn OptgradadamModel::get(Self, Int32) -> Double
+pub fn OptgradadamModel::len(Self) -> Int32
+pub fn OptgradadamModel::max(Self) -> Double
+pub fn OptgradadamModel::mean(Self) -> Double
+pub fn OptgradadamModel::min(Self) -> Double
+pub fn OptgradadamModel::scale(Self, Double) -> Self
+pub fn OptgradadamModel::set(Self, Int32, Double) -> Self
+pub fn OptgradadamModel::sum(Self) -> Double
+pub fn OptgradadamModel::to_string(Self) -> String
+
+pub(all) struct OptgradadamNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamNode::add(Self, Self) -> Self
+pub fn OptgradadamNode::copy(Self) -> Self
+pub fn OptgradadamNode::fill(Self, Double) -> Self
+pub fn OptgradadamNode::get(Self, Int32) -> Double
+pub fn OptgradadamNode::len(Self) -> Int32
+pub fn OptgradadamNode::max(Self) -> Double
+pub fn OptgradadamNode::mean(Self) -> Double
+pub fn OptgradadamNode::min(Self) -> Double
+pub fn OptgradadamNode::scale(Self, Double) -> Self
+pub fn OptgradadamNode::set(Self, Int32, Double) -> Self
+pub fn OptgradadamNode::sum(Self) -> Double
+pub fn OptgradadamNode::to_string(Self) -> String
+
+pub(all) struct OptgradadamPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamPath::add(Self, Self) -> Self
+pub fn OptgradadamPath::copy(Self) -> Self
+pub fn OptgradadamPath::fill(Self, Double) -> Self
+pub fn OptgradadamPath::get(Self, Int32) -> Double
+pub fn OptgradadamPath::len(Self) -> Int32
+pub fn OptgradadamPath::max(Self) -> Double
+pub fn OptgradadamPath::mean(Self) -> Double
+pub fn OptgradadamPath::min(Self) -> Double
+pub fn OptgradadamPath::scale(Self, Double) -> Self
+pub fn OptgradadamPath::set(Self, Int32, Double) -> Self
+pub fn OptgradadamPath::sum(Self) -> Double
+pub fn OptgradadamPath::to_string(Self) -> String
+
+pub(all) struct OptgradadamPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn OptgradadamPoint::add(Self, Self) -> Self
+pub fn OptgradadamPoint::cross(Self, Self) -> Self
+pub fn OptgradadamPoint::dist(Self, Self) -> Double
+pub fn OptgradadamPoint::dot(Self, Self) -> Double
+pub fn OptgradadamPoint::label(Self) -> Int32
+pub fn OptgradadamPoint::lerp(Self, Self, Double) -> Self
+pub fn OptgradadamPoint::mid(Self, Self) -> Self
+pub fn OptgradadamPoint::negate(Self) -> Self
+pub fn OptgradadamPoint::norm(Self) -> Double
+pub fn OptgradadamPoint::normalize(Self) -> Self
+pub fn OptgradadamPoint::scale(Self, Double) -> Self
+pub fn OptgradadamPoint::sub(Self, Self) -> Self
+pub fn OptgradadamPoint::to_string(Self) -> String
+pub fn OptgradadamPoint::x(Self) -> Double
+pub fn OptgradadamPoint::y(Self) -> Double
+pub fn OptgradadamPoint::z(Self) -> Double
+
+pub(all) struct OptgradadamRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamRange::add(Self, Self) -> Self
+pub fn OptgradadamRange::copy(Self) -> Self
+pub fn OptgradadamRange::fill(Self, Double) -> Self
+pub fn OptgradadamRange::get(Self, Int32) -> Double
+pub fn OptgradadamRange::len(Self) -> Int32
+pub fn OptgradadamRange::max(Self) -> Double
+pub fn OptgradadamRange::mean(Self) -> Double
+pub fn OptgradadamRange::min(Self) -> Double
+pub fn OptgradadamRange::scale(Self, Double) -> Self
+pub fn OptgradadamRange::set(Self, Int32, Double) -> Self
+pub fn OptgradadamRange::sum(Self) -> Double
+pub fn OptgradadamRange::to_string(Self) -> String
+
+pub(all) struct OptgradadamSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn OptgradadamSeries::add(Self, Self) -> Self
+pub fn OptgradadamSeries::cumsum(Self) -> Self
+pub fn OptgradadamSeries::len(Self) -> Int32
+pub fn OptgradadamSeries::max(Self) -> Double
+pub fn OptgradadamSeries::mean(Self) -> Double
+pub fn OptgradadamSeries::median(Self) -> Double
+pub fn OptgradadamSeries::min(Self) -> Double
+pub fn OptgradadamSeries::normalize(Self) -> Self
+pub fn OptgradadamSeries::range(Self) -> Double
+pub fn OptgradadamSeries::scale(Self, Double) -> Self
+pub fn OptgradadamSeries::std(Self) -> Double
+pub fn OptgradadamSeries::sub(Self, Self) -> Self
+pub fn OptgradadamSeries::sum(Self) -> Double
+pub fn OptgradadamSeries::to_string(Self) -> String
+pub fn OptgradadamSeries::variance(Self) -> Double
+
+pub(all) struct OptgradadamSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamSlice::add(Self, Self) -> Self
+pub fn OptgradadamSlice::copy(Self) -> Self
+pub fn OptgradadamSlice::fill(Self, Double) -> Self
+pub fn OptgradadamSlice::get(Self, Int32) -> Double
+pub fn OptgradadamSlice::len(Self) -> Int32
+pub fn OptgradadamSlice::max(Self) -> Double
+pub fn OptgradadamSlice::mean(Self) -> Double
+pub fn OptgradadamSlice::min(Self) -> Double
+pub fn OptgradadamSlice::scale(Self, Double) -> Self
+pub fn OptgradadamSlice::set(Self, Int32, Double) -> Self
+pub fn OptgradadamSlice::sum(Self) -> Double
+pub fn OptgradadamSlice::to_string(Self) -> String
+
+pub(all) struct OptgradadamTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamTable::add(Self, Self) -> Self
+pub fn OptgradadamTable::copy(Self) -> Self
+pub fn OptgradadamTable::fill(Self, Double) -> Self
+pub fn OptgradadamTable::get(Self, Int32) -> Double
+pub fn OptgradadamTable::len(Self) -> Int32
+pub fn OptgradadamTable::max(Self) -> Double
+pub fn OptgradadamTable::mean(Self) -> Double
+pub fn OptgradadamTable::min(Self) -> Double
+pub fn OptgradadamTable::scale(Self, Double) -> Self
+pub fn OptgradadamTable::set(Self, Int32, Double) -> Self
+pub fn OptgradadamTable::sum(Self) -> Double
+pub fn OptgradadamTable::to_string(Self) -> String
+
+pub(all) struct OptgradadamVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn OptgradadamVector::add(Self, Self) -> Self
+pub fn OptgradadamVector::dist(Self, Self) -> Double
+pub fn OptgradadamVector::dot(Self, Self) -> Double
+pub fn OptgradadamVector::norm(Self) -> Double
+pub fn OptgradadamVector::normalize(Self) -> Self
+pub fn OptgradadamVector::scale(Self, Double) -> Self
+pub fn OptgradadamVector::sub(Self, Self) -> Self
+pub fn OptgradadamVector::to_string(Self) -> String
+
+pub(all) struct OptgradadamView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamView::add(Self, Self) -> Self
+pub fn OptgradadamView::copy(Self) -> Self
+pub fn OptgradadamView::fill(Self, Double) -> Self
+pub fn OptgradadamView::get(Self, Int32) -> Double
+pub fn OptgradadamView::len(Self) -> Int32
+pub fn OptgradadamView::max(Self) -> Double
+pub fn OptgradadamView::mean(Self) -> Double
+pub fn OptgradadamView::min(Self) -> Double
+pub fn OptgradadamView::scale(Self, Double) -> Self
+pub fn OptgradadamView::set(Self, Int32, Double) -> Self
+pub fn OptgradadamView::sum(Self) -> Double
+pub fn OptgradadamView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

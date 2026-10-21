@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_pos_tn"
+
+// Values
+pub fn nlp_pos_tn_buffer_make(Int32) -> NlppostnBuffer
+
+pub fn nlp_pos_tn_cluster_make(Int32) -> NlppostnCluster
+
+pub fn nlp_pos_tn_cursor_make(Int32) -> NlppostnCursor
+
+pub fn nlp_pos_tn_edge_make(Int32) -> NlppostnEdge
+
+pub fn nlp_pos_tn_frame_make(Int32) -> NlppostnFrame
+
+pub fn nlp_pos_tn_graphn_make(Int32) -> NlppostnGraphN
+
+pub fn nlp_pos_tn_layer_make(Int32) -> NlppostnLayer
+
+pub fn nlp_pos_tn_make_matrix(Int32, Int32, Double) -> NlppostnMatrix
+
+pub fn nlp_pos_tn_make_point(Double, Double) -> NlppostnPoint
+
+pub fn nlp_pos_tn_make_point3(Double, Double, Double) -> NlppostnPoint
+
+pub fn nlp_pos_tn_make_series(Array[Double], String) -> NlppostnSeries
+
+pub fn nlp_pos_tn_make_vector(Array[Double]) -> NlppostnVector
+
+pub fn nlp_pos_tn_matrix_identity(Int32) -> NlppostnMatrix
+
+pub fn nlp_pos_tn_model_make(Int32) -> NlppostnModel
+
+pub fn nlp_pos_tn_node_make(Int32) -> NlppostnNode
+
+pub fn nlp_pos_tn_path_make(Int32) -> NlppostnPath
+
+pub fn nlp_pos_tn_range_make(Int32) -> NlppostnRange
+
+pub fn nlp_pos_tn_slice_make(Int32) -> NlppostnSlice
+
+pub fn nlp_pos_tn_table_make(Int32) -> NlppostnTable
+
+pub fn nlp_pos_tn_vector_zero(Int32) -> NlppostnVector
+
+pub fn nlp_pos_tn_view_make(Int32) -> NlppostnView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlppostnBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppostnBuffer::add(Self, Self) -> Self
+pub fn NlppostnBuffer::copy(Self) -> Self
+pub fn NlppostnBuffer::fill(Self, Double) -> Self
+pub fn NlppostnBuffer::get(Self, Int32) -> Double
+pub fn NlppostnBuffer::len(Self) -> Int32
+pub fn NlppostnBuffer::max(Self) -> Double
+pub fn NlppostnBuffer::mean(Self) -> Double
+pub fn NlppostnBuffer::min(Self) -> Double
+pub fn NlppostnBuffer::scale(Self, Double) -> Self
+pub fn NlppostnBuffer::set(Self, Int32, Double) -> Self
+pub fn NlppostnBuffer::sum(Self) -> Double
+pub fn NlppostnBuffer::to_string(Self) -> String
+
+pub(all) struct NlppostnCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppostnCluster::add(Self, Self) -> Self
+pub fn NlppostnCluster::copy(Self) -> Self
+pub fn NlppostnCluster::fill(Self, Double) -> Self
+pub fn NlppostnCluster::get(Self, Int32) -> Double
+pub fn NlppostnCluster::len(Self) -> Int32
+pub fn NlppostnCluster::max(Self) -> Double
+pub fn NlppostnCluster::mean(Self) -> Double
+pub fn NlppostnCluster::min(Self) -> Double
+pub fn NlppostnCluster::scale(Self, Double) -> Self
+pub fn NlppostnCluster::set(Self, Int32, Double) -> Self
+pub fn NlppostnCluster::sum(Self) -> Double
+pub fn NlppostnCluster::to_string(Self) -> String
+
+pub(all) struct NlppostnCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppostnCursor::add(Self, Self) -> Self
+pub fn NlppostnCursor::copy(Self) -> Self
+pub fn NlppostnCursor::fill(Self, Double) -> Self
+pub fn NlppostnCursor::get(Self, Int32) -> Double
+pub fn NlppostnCursor::len(Self) -> Int32
+pub fn NlppostnCursor::max(Self) -> Double
+pub fn NlppostnCursor::mean(Self) -> Double
+pub fn NlppostnCursor::min(Self) -> Double
+pub fn NlppostnCursor::scale(Self, Double) -> Self
+pub fn NlppostnCursor::set(Self, Int32, Double) -> Self
+pub fn NlppostnCursor::sum(Self) -> Double
+pub fn NlppostnCursor::to_string(Self) -> String
+
+pub(all) struct NlppostnEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppostnEdge::add(Self, Self) -> Self
+pub fn NlppostnEdge::copy(Self) -> Self
+pub fn NlppostnEdge::fill(Self, Double) -> Self
+pub fn NlppostnEdge::get(Self, Int32) -> Double
+pub fn NlppostnEdge::len(Self) -> Int32
+pub fn NlppostnEdge::max(Self) -> Double
+pub fn NlppostnEdge::mean(Self) -> Double
+pub fn NlppostnEdge::min(Self) -> Double
+pub fn NlppostnEdge::scale(Self, Double) -> Self
+pub fn NlppostnEdge::set(Self, Int32, Double) -> Self
+pub fn NlppostnEdge::sum(Self) -> Double
+pub fn NlppostnEdge::to_string(Self) -> String
+
+pub(all) struct NlppostnFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppostnFrame::add(Self, Self) -> Self
+pub fn NlppostnFrame::copy(Self) -> Self
+pub fn NlppostnFrame::fill(Self, Double) -> Self
+pub fn NlppostnFrame::get(Self, Int32) -> Double
+pub fn NlppostnFrame::len(Self) -> Int32
+pub fn NlppostnFrame::max(Self) -> Double
+pub fn NlppostnFrame::mean(Self) -> Double
+pub fn NlppostnFrame::min(Self) -> Double
+pub fn NlppostnFrame::scale(Self, Double) -> Self
+pub fn NlppostnFrame::set(Self, Int32, Double) -> Self
+pub fn NlppostnFrame::sum(Self) -> Double
+pub fn NlppostnFrame::to_string(Self) -> String
+
+pub(all) struct NlppostnGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppostnGraphN::add(Self, Self) -> Self
+pub fn NlppostnGraphN::copy(Self) -> Self
+pub fn NlppostnGraphN::fill(Self, Double) -> Self
+pub fn NlppostnGraphN::get(Self, Int32) -> Double
+pub fn NlppostnGraphN::len(Self) -> Int32
+pub fn NlppostnGraphN::max(Self) -> Double
+pub fn NlppostnGraphN::mean(Self) -> Double
+pub fn NlppostnGraphN::min(Self) -> Double
+pub fn NlppostnGraphN::scale(Self, Double) -> Self
+pub fn NlppostnGraphN::set(Self, Int32, Double) -> Self
+pub fn NlppostnGraphN::sum(Self) -> Double
+pub fn NlppostnGraphN::to_string(Self) -> String
+
+pub(all) struct NlppostnLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppostnLayer::add(Self, Self) -> Self
+pub fn NlppostnLayer::copy(Self) -> Self
+pub fn NlppostnLayer::fill(Self, Double) -> Self
+pub fn NlppostnLayer::get(Self, Int32) -> Double
+pub fn NlppostnLayer::len(Self) -> Int32
+pub fn NlppostnLayer::max(Self) -> Double
+pub fn NlppostnLayer::mean(Self) -> Double
+pub fn NlppostnLayer::min(Self) -> Double
+pub fn NlppostnLayer::scale(Self, Double) -> Self
+pub fn NlppostnLayer::set(Self, Int32, Double) -> Self
+pub fn NlppostnLayer::sum(Self) -> Double
+pub fn NlppostnLayer::to_string(Self) -> String
+
+pub(all) struct NlppostnMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlppostnMatrix::add(Self, Self) -> Self
+pub fn NlppostnMatrix::det(Self) -> Double
+pub fn NlppostnMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlppostnMatrix::multiply(Self, Self) -> Self
+pub fn NlppostnMatrix::norm(Self) -> Double
+pub fn NlppostnMatrix::scale(Self, Double) -> Self
+pub fn NlppostnMatrix::to_string(Self) -> String
+pub fn NlppostnMatrix::trace(Self) -> Double
+pub fn NlppostnMatrix::transpose(Self) -> Self
+
+pub(all) struct NlppostnModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppostnModel::add(Self, Self) -> Self
+pub fn NlppostnModel::copy(Self) -> Self
+pub fn NlppostnModel::fill(Self, Double) -> Self
+pub fn NlppostnModel::get(Self, Int32) -> Double
+pub fn NlppostnModel::len(Self) -> Int32
+pub fn NlppostnModel::max(Self) -> Double
+pub fn NlppostnModel::mean(Self) -> Double
+pub fn NlppostnModel::min(Self) -> Double
+pub fn NlppostnModel::scale(Self, Double) -> Self
+pub fn NlppostnModel::set(Self, Int32, Double) -> Self
+pub fn NlppostnModel::sum(Self) -> Double
+pub fn NlppostnModel::to_string(Self) -> String
+
+pub(all) struct NlppostnNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppostnNode::add(Self, Self) -> Self
+pub fn NlppostnNode::copy(Self) -> Self
+pub fn NlppostnNode::fill(Self, Double) -> Self
+pub fn NlppostnNode::get(Self, Int32) -> Double
+pub fn NlppostnNode::len(Self) -> Int32
+pub fn NlppostnNode::max(Self) -> Double
+pub fn NlppostnNode::mean(Self) -> Double
+pub fn NlppostnNode::min(Self) -> Double
+pub fn NlppostnNode::scale(Self, Double) -> Self
+pub fn NlppostnNode::set(Self, Int32, Double) -> Self
+pub fn NlppostnNode::sum(Self) -> Double
+pub fn NlppostnNode::to_string(Self) -> String
+
+pub(all) struct NlppostnPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppostnPath::add(Self, Self) -> Self
+pub fn NlppostnPath::copy(Self) -> Self
+pub fn NlppostnPath::fill(Self, Double) -> Self
+pub fn NlppostnPath::get(Self, Int32) -> Double
+pub fn NlppostnPath::len(Self) -> Int32
+pub fn NlppostnPath::max(Self) -> Double
+pub fn NlppostnPath::mean(Self) -> Double
+pub fn NlppostnPath::min(Self) -> Double
+pub fn NlppostnPath::scale(Self, Double) -> Self
+pub fn NlppostnPath::set(Self, Int32, Double) -> Self
+pub fn NlppostnPath::sum(Self) -> Double
+pub fn NlppostnPath::to_string(Self) -> String
+
+pub(all) struct NlppostnPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlppostnPoint::add(Self, Self) -> Self
+pub fn NlppostnPoint::cross(Self, Self) -> Self
+pub fn NlppostnPoint::dist(Self, Self) -> Double
+pub fn NlppostnPoint::dot(Self, Self) -> Double
+pub fn NlppostnPoint::label(Self) -> Int32
+pub fn NlppostnPoint::lerp(Self, Self, Double) -> Self
+pub fn NlppostnPoint::mid(Self, Self) -> Self
+pub fn NlppostnPoint::negate(Self) -> Self
+pub fn NlppostnPoint::norm(Self) -> Double
+pub fn NlppostnPoint::normalize(Self) -> Self
+pub fn NlppostnPoint::scale(Self, Double) -> Self
+pub fn NlppostnPoint::sub(Self, Self) -> Self
+pub fn NlppostnPoint::to_string(Self) -> String
+pub fn NlppostnPoint::x(Self) -> Double
+pub fn NlppostnPoint::y(Self) -> Double
+pub fn NlppostnPoint::z(Self) -> Double
+
+pub(all) struct NlppostnRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppostnRange::add(Self, Self) -> Self
+pub fn NlppostnRange::copy(Self) -> Self
+pub fn NlppostnRange::fill(Self, Double) -> Self
+pub fn NlppostnRange::get(Self, Int32) -> Double
+pub fn NlppostnRange::len(Self) -> Int32
+pub fn NlppostnRange::max(Self) -> Double
+pub fn NlppostnRange::mean(Self) -> Double
+pub fn NlppostnRange::min(Self) -> Double
+pub fn NlppostnRange::scale(Self, Double) -> Self
+pub fn NlppostnRange::set(Self, Int32, Double) -> Self
+pub fn NlppostnRange::sum(Self) -> Double
+pub fn NlppostnRange::to_string(Self) -> String
+
+pub(all) struct NlppostnSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlppostnSeries::add(Self, Self) -> Self
+pub fn NlppostnSeries::cumsum(Self) -> Self
+pub fn NlppostnSeries::len(Self) -> Int32
+pub fn NlppostnSeries::max(Self) -> Double
+pub fn NlppostnSeries::mean(Self) -> Double
+pub fn NlppostnSeries::median(Self) -> Double
+pub fn NlppostnSeries::min(Self) -> Double
+pub fn NlppostnSeries::normalize(Self) -> Self
+pub fn NlppostnSeries::range(Self) -> Double
+pub fn NlppostnSeries::scale(Self, Double) -> Self
+pub fn NlppostnSeries::std(Self) -> Double
+pub fn NlppostnSeries::sub(Self, Self) -> Self
+pub fn NlppostnSeries::sum(Self) -> Double
+pub fn NlppostnSeries::to_string(Self) -> String
+pub fn NlppostnSeries::variance(Self) -> Double
+
+pub(all) struct NlppostnSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppostnSlice::add(Self, Self) -> Self
+pub fn NlppostnSlice::copy(Self) -> Self
+pub fn NlppostnSlice::fill(Self, Double) -> Self
+pub fn NlppostnSlice::get(Self, Int32) -> Double
+pub fn NlppostnSlice::len(Self) -> Int32
+pub fn NlppostnSlice::max(Self) -> Double
+pub fn NlppostnSlice::mean(Self) -> Double
+pub fn NlppostnSlice::min(Self) -> Double
+pub fn NlppostnSlice::scale(Self, Double) -> Self
+pub fn NlppostnSlice::set(Self, Int32, Double) -> Self
+pub fn NlppostnSlice::sum(Self) -> Double
+pub fn NlppostnSlice::to_string(Self) -> String
+
+pub(all) struct NlppostnTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppostnTable::add(Self, Self) -> Self
+pub fn NlppostnTable::copy(Self) -> Self
+pub fn NlppostnTable::fill(Self, Double) -> Self
+pub fn NlppostnTable::get(Self, Int32) -> Double
+pub fn NlppostnTable::len(Self) -> Int32
+pub fn NlppostnTable::max(Self) -> Double
+pub fn NlppostnTable::mean(Self) -> Double
+pub fn NlppostnTable::min(Self) -> Double
+pub fn NlppostnTable::scale(Self, Double) -> Self
+pub fn NlppostnTable::set(Self, Int32, Double) -> Self
+pub fn NlppostnTable::sum(Self) -> Double
+pub fn NlppostnTable::to_string(Self) -> String
+
+pub(all) struct NlppostnVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlppostnVector::add(Self, Self) -> Self
+pub fn NlppostnVector::dist(Self, Self) -> Double
+pub fn NlppostnVector::dot(Self, Self) -> Double
+pub fn NlppostnVector::norm(Self) -> Double
+pub fn NlppostnVector::normalize(Self) -> Self
+pub fn NlppostnVector::scale(Self, Double) -> Self
+pub fn NlppostnVector::sub(Self, Self) -> Self
+pub fn NlppostnVector::to_string(Self) -> String
+
+pub(all) struct NlppostnView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlppostnView::add(Self, Self) -> Self
+pub fn NlppostnView::copy(Self) -> Self
+pub fn NlppostnView::fill(Self, Double) -> Self
+pub fn NlppostnView::get(Self, Int32) -> Double
+pub fn NlppostnView::len(Self) -> Int32
+pub fn NlppostnView::max(Self) -> Double
+pub fn NlppostnView::mean(Self) -> Double
+pub fn NlppostnView::min(Self) -> Double
+pub fn NlppostnView::scale(Self, Double) -> Self
+pub fn NlppostnView::set(Self, Int32, Double) -> Self
+pub fn NlppostnView::sum(Self) -> Double
+pub fn NlppostnView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

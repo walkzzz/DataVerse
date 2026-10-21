@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_fluid_lattice"
+
+// Values
+pub fn physics_fluid_lattice_buffer_make(Int32) -> PhysicsfluidlatticeBuffer
+
+pub fn physics_fluid_lattice_cluster_make(Int32) -> PhysicsfluidlatticeCluster
+
+pub fn physics_fluid_lattice_cursor_make(Int32) -> PhysicsfluidlatticeCursor
+
+pub fn physics_fluid_lattice_edge_make(Int32) -> PhysicsfluidlatticeEdge
+
+pub fn physics_fluid_lattice_frame_make(Int32) -> PhysicsfluidlatticeFrame
+
+pub fn physics_fluid_lattice_graphn_make(Int32) -> PhysicsfluidlatticeGraphN
+
+pub fn physics_fluid_lattice_layer_make(Int32) -> PhysicsfluidlatticeLayer
+
+pub fn physics_fluid_lattice_make_matrix(Int32, Int32, Double) -> PhysicsfluidlatticeMatrix
+
+pub fn physics_fluid_lattice_make_point(Double, Double) -> PhysicsfluidlatticePoint
+
+pub fn physics_fluid_lattice_make_point3(Double, Double, Double) -> PhysicsfluidlatticePoint
+
+pub fn physics_fluid_lattice_make_series(Array[Double], String) -> PhysicsfluidlatticeSeries
+
+pub fn physics_fluid_lattice_make_vector(Array[Double]) -> PhysicsfluidlatticeVector
+
+pub fn physics_fluid_lattice_matrix_identity(Int32) -> PhysicsfluidlatticeMatrix
+
+pub fn physics_fluid_lattice_model_make(Int32) -> PhysicsfluidlatticeModel
+
+pub fn physics_fluid_lattice_node_make(Int32) -> PhysicsfluidlatticeNode
+
+pub fn physics_fluid_lattice_path_make(Int32) -> PhysicsfluidlatticePath
+
+pub fn physics_fluid_lattice_range_make(Int32) -> PhysicsfluidlatticeRange
+
+pub fn physics_fluid_lattice_slice_make(Int32) -> PhysicsfluidlatticeSlice
+
+pub fn physics_fluid_lattice_table_make(Int32) -> PhysicsfluidlatticeTable
+
+pub fn physics_fluid_lattice_vector_zero(Int32) -> PhysicsfluidlatticeVector
+
+pub fn physics_fluid_lattice_view_make(Int32) -> PhysicsfluidlatticeView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsfluidlatticeBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidlatticeBuffer::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeBuffer::copy(Self) -> Self
+pub fn PhysicsfluidlatticeBuffer::fill(Self, Double) -> Self
+pub fn PhysicsfluidlatticeBuffer::get(Self, Int32) -> Double
+pub fn PhysicsfluidlatticeBuffer::len(Self) -> Int32
+pub fn PhysicsfluidlatticeBuffer::max(Self) -> Double
+pub fn PhysicsfluidlatticeBuffer::mean(Self) -> Double
+pub fn PhysicsfluidlatticeBuffer::min(Self) -> Double
+pub fn PhysicsfluidlatticeBuffer::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidlatticeBuffer::sum(Self) -> Double
+pub fn PhysicsfluidlatticeBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidlatticeCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidlatticeCluster::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeCluster::copy(Self) -> Self
+pub fn PhysicsfluidlatticeCluster::fill(Self, Double) -> Self
+pub fn PhysicsfluidlatticeCluster::get(Self, Int32) -> Double
+pub fn PhysicsfluidlatticeCluster::len(Self) -> Int32
+pub fn PhysicsfluidlatticeCluster::max(Self) -> Double
+pub fn PhysicsfluidlatticeCluster::mean(Self) -> Double
+pub fn PhysicsfluidlatticeCluster::min(Self) -> Double
+pub fn PhysicsfluidlatticeCluster::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidlatticeCluster::sum(Self) -> Double
+pub fn PhysicsfluidlatticeCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidlatticeCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidlatticeCursor::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeCursor::copy(Self) -> Self
+pub fn PhysicsfluidlatticeCursor::fill(Self, Double) -> Self
+pub fn PhysicsfluidlatticeCursor::get(Self, Int32) -> Double
+pub fn PhysicsfluidlatticeCursor::len(Self) -> Int32
+pub fn PhysicsfluidlatticeCursor::max(Self) -> Double
+pub fn PhysicsfluidlatticeCursor::mean(Self) -> Double
+pub fn PhysicsfluidlatticeCursor::min(Self) -> Double
+pub fn PhysicsfluidlatticeCursor::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidlatticeCursor::sum(Self) -> Double
+pub fn PhysicsfluidlatticeCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidlatticeEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidlatticeEdge::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeEdge::copy(Self) -> Self
+pub fn PhysicsfluidlatticeEdge::fill(Self, Double) -> Self
+pub fn PhysicsfluidlatticeEdge::get(Self, Int32) -> Double
+pub fn PhysicsfluidlatticeEdge::len(Self) -> Int32
+pub fn PhysicsfluidlatticeEdge::max(Self) -> Double
+pub fn PhysicsfluidlatticeEdge::mean(Self) -> Double
+pub fn PhysicsfluidlatticeEdge::min(Self) -> Double
+pub fn PhysicsfluidlatticeEdge::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidlatticeEdge::sum(Self) -> Double
+pub fn PhysicsfluidlatticeEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidlatticeFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidlatticeFrame::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeFrame::copy(Self) -> Self
+pub fn PhysicsfluidlatticeFrame::fill(Self, Double) -> Self
+pub fn PhysicsfluidlatticeFrame::get(Self, Int32) -> Double
+pub fn PhysicsfluidlatticeFrame::len(Self) -> Int32
+pub fn PhysicsfluidlatticeFrame::max(Self) -> Double
+pub fn PhysicsfluidlatticeFrame::mean(Self) -> Double
+pub fn PhysicsfluidlatticeFrame::min(Self) -> Double
+pub fn PhysicsfluidlatticeFrame::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidlatticeFrame::sum(Self) -> Double
+pub fn PhysicsfluidlatticeFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidlatticeGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidlatticeGraphN::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeGraphN::copy(Self) -> Self
+pub fn PhysicsfluidlatticeGraphN::fill(Self, Double) -> Self
+pub fn PhysicsfluidlatticeGraphN::get(Self, Int32) -> Double
+pub fn PhysicsfluidlatticeGraphN::len(Self) -> Int32
+pub fn PhysicsfluidlatticeGraphN::max(Self) -> Double
+pub fn PhysicsfluidlatticeGraphN::mean(Self) -> Double
+pub fn PhysicsfluidlatticeGraphN::min(Self) -> Double
+pub fn PhysicsfluidlatticeGraphN::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidlatticeGraphN::sum(Self) -> Double
+pub fn PhysicsfluidlatticeGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidlatticeLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidlatticeLayer::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeLayer::copy(Self) -> Self
+pub fn PhysicsfluidlatticeLayer::fill(Self, Double) -> Self
+pub fn PhysicsfluidlatticeLayer::get(Self, Int32) -> Double
+pub fn PhysicsfluidlatticeLayer::len(Self) -> Int32
+pub fn PhysicsfluidlatticeLayer::max(Self) -> Double
+pub fn PhysicsfluidlatticeLayer::mean(Self) -> Double
+pub fn PhysicsfluidlatticeLayer::min(Self) -> Double
+pub fn PhysicsfluidlatticeLayer::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidlatticeLayer::sum(Self) -> Double
+pub fn PhysicsfluidlatticeLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidlatticeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsfluidlatticeMatrix::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeMatrix::det(Self) -> Double
+pub fn PhysicsfluidlatticeMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsfluidlatticeMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsfluidlatticeMatrix::norm(Self) -> Double
+pub fn PhysicsfluidlatticeMatrix::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeMatrix::to_string(Self) -> String
+pub fn PhysicsfluidlatticeMatrix::trace(Self) -> Double
+pub fn PhysicsfluidlatticeMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsfluidlatticeModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidlatticeModel::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeModel::copy(Self) -> Self
+pub fn PhysicsfluidlatticeModel::fill(Self, Double) -> Self
+pub fn PhysicsfluidlatticeModel::get(Self, Int32) -> Double
+pub fn PhysicsfluidlatticeModel::len(Self) -> Int32
+pub fn PhysicsfluidlatticeModel::max(Self) -> Double
+pub fn PhysicsfluidlatticeModel::mean(Self) -> Double
+pub fn PhysicsfluidlatticeModel::min(Self) -> Double
+pub fn PhysicsfluidlatticeModel::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidlatticeModel::sum(Self) -> Double
+pub fn PhysicsfluidlatticeModel::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidlatticeNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidlatticeNode::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeNode::copy(Self) -> Self
+pub fn PhysicsfluidlatticeNode::fill(Self, Double) -> Self
+pub fn PhysicsfluidlatticeNode::get(Self, Int32) -> Double
+pub fn PhysicsfluidlatticeNode::len(Self) -> Int32
+pub fn PhysicsfluidlatticeNode::max(Self) -> Double
+pub fn PhysicsfluidlatticeNode::mean(Self) -> Double
+pub fn PhysicsfluidlatticeNode::min(Self) -> Double
+pub fn PhysicsfluidlatticeNode::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidlatticeNode::sum(Self) -> Double
+pub fn PhysicsfluidlatticeNode::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidlatticePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidlatticePath::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticePath::copy(Self) -> Self
+pub fn PhysicsfluidlatticePath::fill(Self, Double) -> Self
+pub fn PhysicsfluidlatticePath::get(Self, Int32) -> Double
+pub fn PhysicsfluidlatticePath::len(Self) -> Int32
+pub fn PhysicsfluidlatticePath::max(Self) -> Double
+pub fn PhysicsfluidlatticePath::mean(Self) -> Double
+pub fn PhysicsfluidlatticePath::min(Self) -> Double
+pub fn PhysicsfluidlatticePath::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticePath::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidlatticePath::sum(Self) -> Double
+pub fn PhysicsfluidlatticePath::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidlatticePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsfluidlatticePoint::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticePoint::cross(Self, Self) -> Self
+pub fn PhysicsfluidlatticePoint::dist(Self, Self) -> Double
+pub fn PhysicsfluidlatticePoint::dot(Self, Self) -> Double
+pub fn PhysicsfluidlatticePoint::label(Self) -> Int32
+pub fn PhysicsfluidlatticePoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsfluidlatticePoint::mid(Self, Self) -> Self
+pub fn PhysicsfluidlatticePoint::negate(Self) -> Self
+pub fn PhysicsfluidlatticePoint::norm(Self) -> Double
+pub fn PhysicsfluidlatticePoint::normalize(Self) -> Self
+pub fn PhysicsfluidlatticePoint::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticePoint::sub(Self, Self) -> Self
+pub fn PhysicsfluidlatticePoint::to_string(Self) -> String
+pub fn PhysicsfluidlatticePoint::x(Self) -> Double
+pub fn PhysicsfluidlatticePoint::y(Self) -> Double
+pub fn PhysicsfluidlatticePoint::z(Self) -> Double
+
+pub(all) struct PhysicsfluidlatticeRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidlatticeRange::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeRange::copy(Self) -> Self
+pub fn PhysicsfluidlatticeRange::fill(Self, Double) -> Self
+pub fn PhysicsfluidlatticeRange::get(Self, Int32) -> Double
+pub fn PhysicsfluidlatticeRange::len(Self) -> Int32
+pub fn PhysicsfluidlatticeRange::max(Self) -> Double
+pub fn PhysicsfluidlatticeRange::mean(Self) -> Double
+pub fn PhysicsfluidlatticeRange::min(Self) -> Double
+pub fn PhysicsfluidlatticeRange::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidlatticeRange::sum(Self) -> Double
+pub fn PhysicsfluidlatticeRange::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidlatticeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsfluidlatticeSeries::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeSeries::cumsum(Self) -> Self
+pub fn PhysicsfluidlatticeSeries::len(Self) -> Int32
+pub fn PhysicsfluidlatticeSeries::max(Self) -> Double
+pub fn PhysicsfluidlatticeSeries::mean(Self) -> Double
+pub fn PhysicsfluidlatticeSeries::median(Self) -> Double
+pub fn PhysicsfluidlatticeSeries::min(Self) -> Double
+pub fn PhysicsfluidlatticeSeries::normalize(Self) -> Self
+pub fn PhysicsfluidlatticeSeries::range(Self) -> Double
+pub fn PhysicsfluidlatticeSeries::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeSeries::std(Self) -> Double
+pub fn PhysicsfluidlatticeSeries::sub(Self, Self) -> Self
+pub fn PhysicsfluidlatticeSeries::sum(Self) -> Double
+pub fn PhysicsfluidlatticeSeries::to_string(Self) -> String
+pub fn PhysicsfluidlatticeSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsfluidlatticeSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidlatticeSlice::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeSlice::copy(Self) -> Self
+pub fn PhysicsfluidlatticeSlice::fill(Self, Double) -> Self
+pub fn PhysicsfluidlatticeSlice::get(Self, Int32) -> Double
+pub fn PhysicsfluidlatticeSlice::len(Self) -> Int32
+pub fn PhysicsfluidlatticeSlice::max(Self) -> Double
+pub fn PhysicsfluidlatticeSlice::mean(Self) -> Double
+pub fn PhysicsfluidlatticeSlice::min(Self) -> Double
+pub fn PhysicsfluidlatticeSlice::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidlatticeSlice::sum(Self) -> Double
+pub fn PhysicsfluidlatticeSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidlatticeTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidlatticeTable::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeTable::copy(Self) -> Self
+pub fn PhysicsfluidlatticeTable::fill(Self, Double) -> Self
+pub fn PhysicsfluidlatticeTable::get(Self, Int32) -> Double
+pub fn PhysicsfluidlatticeTable::len(Self) -> Int32
+pub fn PhysicsfluidlatticeTable::max(Self) -> Double
+pub fn PhysicsfluidlatticeTable::mean(Self) -> Double
+pub fn PhysicsfluidlatticeTable::min(Self) -> Double
+pub fn PhysicsfluidlatticeTable::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidlatticeTable::sum(Self) -> Double
+pub fn PhysicsfluidlatticeTable::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidlatticeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsfluidlatticeVector::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeVector::dist(Self, Self) -> Double
+pub fn PhysicsfluidlatticeVector::dot(Self, Self) -> Double
+pub fn PhysicsfluidlatticeVector::norm(Self) -> Double
+pub fn PhysicsfluidlatticeVector::normalize(Self) -> Self
+pub fn PhysicsfluidlatticeVector::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeVector::sub(Self, Self) -> Self
+pub fn PhysicsfluidlatticeVector::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidlatticeView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidlatticeView::add(Self, Self) -> Self
+pub fn PhysicsfluidlatticeView::copy(Self) -> Self
+pub fn PhysicsfluidlatticeView::fill(Self, Double) -> Self
+pub fn PhysicsfluidlatticeView::get(Self, Int32) -> Double
+pub fn PhysicsfluidlatticeView::len(Self) -> Int32
+pub fn PhysicsfluidlatticeView::max(Self) -> Double
+pub fn PhysicsfluidlatticeView::mean(Self) -> Double
+pub fn PhysicsfluidlatticeView::min(Self) -> Double
+pub fn PhysicsfluidlatticeView::scale(Self, Double) -> Self
+pub fn PhysicsfluidlatticeView::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidlatticeView::sum(Self) -> Double
+pub fn PhysicsfluidlatticeView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

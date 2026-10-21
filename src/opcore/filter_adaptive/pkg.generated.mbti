@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/filter_adaptive"
+
+// Values
+pub fn filter_adaptive_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn filter_adaptive_corr(Array[Double], Array[Double]) -> Double
+
+pub fn filter_adaptive_cov(Array[Double], Array[Double]) -> Double
+
+pub fn filter_adaptive_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn filter_adaptive_mae(Array[Double], Array[Double]) -> Double
+
+pub fn filter_adaptive_make_labeled_point(Double, Double, Int32) -> Filter_adaptivePoint
+
+pub fn filter_adaptive_make_matrix(Int32, Int32, Double) -> Filter_adaptiveMatrix
+
+pub fn filter_adaptive_make_point(Double, Double) -> Filter_adaptivePoint
+
+pub fn filter_adaptive_make_series(Array[Double], String) -> Filter_adaptiveSeries
+
+pub fn filter_adaptive_make_vector(Array[Double]) -> Filter_adaptiveVector
+
+pub fn filter_adaptive_matrix_add(Filter_adaptiveMatrix, Filter_adaptiveMatrix) -> Filter_adaptiveMatrix
+
+pub fn filter_adaptive_matrix_get(Filter_adaptiveMatrix, Int32, Int32) -> Double
+
+pub fn filter_adaptive_matrix_identity(Int32) -> Filter_adaptiveMatrix
+
+pub fn filter_adaptive_matrix_multiply(Filter_adaptiveMatrix, Filter_adaptiveMatrix) -> Filter_adaptiveMatrix
+
+pub fn filter_adaptive_matrix_norm(Filter_adaptiveMatrix) -> Double
+
+pub fn filter_adaptive_matrix_scale(Filter_adaptiveMatrix, Double) -> Filter_adaptiveMatrix
+
+pub fn filter_adaptive_matrix_to_string(Filter_adaptiveMatrix) -> String
+
+pub fn filter_adaptive_matrix_trace(Filter_adaptiveMatrix) -> Double
+
+pub fn filter_adaptive_matrix_transpose(Filter_adaptiveMatrix) -> Filter_adaptiveMatrix
+
+pub fn filter_adaptive_mse(Array[Double], Array[Double]) -> Double
+
+pub fn filter_adaptive_point_add(Filter_adaptivePoint, Filter_adaptivePoint) -> Filter_adaptivePoint
+
+pub fn filter_adaptive_point_dist(Filter_adaptivePoint, Filter_adaptivePoint) -> Double
+
+pub fn filter_adaptive_point_dot(Filter_adaptivePoint, Filter_adaptivePoint) -> Double
+
+pub fn filter_adaptive_point_label(Filter_adaptivePoint) -> Int32
+
+pub fn filter_adaptive_point_norm(Filter_adaptivePoint) -> Double
+
+pub fn filter_adaptive_point_scale(Filter_adaptivePoint, Double) -> Filter_adaptivePoint
+
+pub fn filter_adaptive_point_sub(Filter_adaptivePoint, Filter_adaptivePoint) -> Filter_adaptivePoint
+
+pub fn filter_adaptive_point_to_string(Filter_adaptivePoint) -> String
+
+pub fn filter_adaptive_point_x(Filter_adaptivePoint) -> Double
+
+pub fn filter_adaptive_point_y(Filter_adaptivePoint) -> Double
+
+pub fn filter_adaptive_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn filter_adaptive_r2(Array[Double], Array[Double]) -> Double
+
+pub fn filter_adaptive_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn filter_adaptive_series_add(Filter_adaptiveSeries, Filter_adaptiveSeries) -> Filter_adaptiveSeries
+
+pub fn filter_adaptive_series_len(Filter_adaptiveSeries) -> Int32
+
+pub fn filter_adaptive_series_max(Filter_adaptiveSeries) -> Double
+
+pub fn filter_adaptive_series_mean(Filter_adaptiveSeries) -> Double
+
+pub fn filter_adaptive_series_min(Filter_adaptiveSeries) -> Double
+
+pub fn filter_adaptive_series_scale(Filter_adaptiveSeries, Double) -> Filter_adaptiveSeries
+
+pub fn filter_adaptive_series_std(Filter_adaptiveSeries) -> Double
+
+pub fn filter_adaptive_series_sum(Filter_adaptiveSeries) -> Double
+
+pub fn filter_adaptive_series_to_string(Filter_adaptiveSeries) -> String
+
+pub fn filter_adaptive_series_var(Filter_adaptiveSeries) -> Double
+
+pub fn filter_adaptive_std(Array[Double]) -> Double
+
+pub fn filter_adaptive_var(Array[Double]) -> Double
+
+pub fn filter_adaptive_vector_add(Filter_adaptiveVector, Filter_adaptiveVector) -> Filter_adaptiveVector
+
+pub fn filter_adaptive_vector_dist(Filter_adaptiveVector, Filter_adaptiveVector) -> Double
+
+pub fn filter_adaptive_vector_dot(Filter_adaptiveVector, Filter_adaptiveVector) -> Double
+
+pub fn filter_adaptive_vector_norm(Filter_adaptiveVector) -> Double
+
+pub fn filter_adaptive_vector_normalize(Filter_adaptiveVector) -> Filter_adaptiveVector
+
+pub fn filter_adaptive_vector_scale(Filter_adaptiveVector, Double) -> Filter_adaptiveVector
+
+pub fn filter_adaptive_vector_sub(Filter_adaptiveVector, Filter_adaptiveVector) -> Filter_adaptiveVector
+
+pub fn filter_adaptive_vector_to_string(Filter_adaptiveVector) -> String
+
+pub fn filter_adaptive_vector_zero(Int32) -> Filter_adaptiveVector
+
+// Errors
+
+// Types and methods
+pub struct Filter_adaptiveMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Filter_adaptivePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Filter_adaptiveSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Filter_adaptiveVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

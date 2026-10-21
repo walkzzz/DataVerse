@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_opt_nonconvex"
+
+// Values
+pub fn math_opt_nonconvex_buffer_make(Int32) -> MathoptnonconvexBuffer
+
+pub fn math_opt_nonconvex_cluster_make(Int32) -> MathoptnonconvexCluster
+
+pub fn math_opt_nonconvex_cursor_make(Int32) -> MathoptnonconvexCursor
+
+pub fn math_opt_nonconvex_edge_make(Int32) -> MathoptnonconvexEdge
+
+pub fn math_opt_nonconvex_frame_make(Int32) -> MathoptnonconvexFrame
+
+pub fn math_opt_nonconvex_graphn_make(Int32) -> MathoptnonconvexGraphN
+
+pub fn math_opt_nonconvex_layer_make(Int32) -> MathoptnonconvexLayer
+
+pub fn math_opt_nonconvex_make_matrix(Int32, Int32, Double) -> MathoptnonconvexMatrix
+
+pub fn math_opt_nonconvex_make_point(Double, Double) -> MathoptnonconvexPoint
+
+pub fn math_opt_nonconvex_make_point3(Double, Double, Double) -> MathoptnonconvexPoint
+
+pub fn math_opt_nonconvex_make_series(Array[Double], String) -> MathoptnonconvexSeries
+
+pub fn math_opt_nonconvex_make_vector(Array[Double]) -> MathoptnonconvexVector
+
+pub fn math_opt_nonconvex_matrix_identity(Int32) -> MathoptnonconvexMatrix
+
+pub fn math_opt_nonconvex_model_make(Int32) -> MathoptnonconvexModel
+
+pub fn math_opt_nonconvex_node_make(Int32) -> MathoptnonconvexNode
+
+pub fn math_opt_nonconvex_path_make(Int32) -> MathoptnonconvexPath
+
+pub fn math_opt_nonconvex_range_make(Int32) -> MathoptnonconvexRange
+
+pub fn math_opt_nonconvex_slice_make(Int32) -> MathoptnonconvexSlice
+
+pub fn math_opt_nonconvex_table_make(Int32) -> MathoptnonconvexTable
+
+pub fn math_opt_nonconvex_vector_zero(Int32) -> MathoptnonconvexVector
+
+pub fn math_opt_nonconvex_view_make(Int32) -> MathoptnonconvexView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathoptnonconvexBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathoptnonconvexBuffer::add(Self, Self) -> Self
+pub fn MathoptnonconvexBuffer::copy(Self) -> Self
+pub fn MathoptnonconvexBuffer::fill(Self, Double) -> Self
+pub fn MathoptnonconvexBuffer::get(Self, Int32) -> Double
+pub fn MathoptnonconvexBuffer::len(Self) -> Int32
+pub fn MathoptnonconvexBuffer::max(Self) -> Double
+pub fn MathoptnonconvexBuffer::mean(Self) -> Double
+pub fn MathoptnonconvexBuffer::min(Self) -> Double
+pub fn MathoptnonconvexBuffer::scale(Self, Double) -> Self
+pub fn MathoptnonconvexBuffer::set(Self, Int32, Double) -> Self
+pub fn MathoptnonconvexBuffer::sum(Self) -> Double
+pub fn MathoptnonconvexBuffer::to_string(Self) -> String
+
+pub(all) struct MathoptnonconvexCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathoptnonconvexCluster::add(Self, Self) -> Self
+pub fn MathoptnonconvexCluster::copy(Self) -> Self
+pub fn MathoptnonconvexCluster::fill(Self, Double) -> Self
+pub fn MathoptnonconvexCluster::get(Self, Int32) -> Double
+pub fn MathoptnonconvexCluster::len(Self) -> Int32
+pub fn MathoptnonconvexCluster::max(Self) -> Double
+pub fn MathoptnonconvexCluster::mean(Self) -> Double
+pub fn MathoptnonconvexCluster::min(Self) -> Double
+pub fn MathoptnonconvexCluster::scale(Self, Double) -> Self
+pub fn MathoptnonconvexCluster::set(Self, Int32, Double) -> Self
+pub fn MathoptnonconvexCluster::sum(Self) -> Double
+pub fn MathoptnonconvexCluster::to_string(Self) -> String
+
+pub(all) struct MathoptnonconvexCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathoptnonconvexCursor::add(Self, Self) -> Self
+pub fn MathoptnonconvexCursor::copy(Self) -> Self
+pub fn MathoptnonconvexCursor::fill(Self, Double) -> Self
+pub fn MathoptnonconvexCursor::get(Self, Int32) -> Double
+pub fn MathoptnonconvexCursor::len(Self) -> Int32
+pub fn MathoptnonconvexCursor::max(Self) -> Double
+pub fn MathoptnonconvexCursor::mean(Self) -> Double
+pub fn MathoptnonconvexCursor::min(Self) -> Double
+pub fn MathoptnonconvexCursor::scale(Self, Double) -> Self
+pub fn MathoptnonconvexCursor::set(Self, Int32, Double) -> Self
+pub fn MathoptnonconvexCursor::sum(Self) -> Double
+pub fn MathoptnonconvexCursor::to_string(Self) -> String
+
+pub(all) struct MathoptnonconvexEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathoptnonconvexEdge::add(Self, Self) -> Self
+pub fn MathoptnonconvexEdge::copy(Self) -> Self
+pub fn MathoptnonconvexEdge::fill(Self, Double) -> Self
+pub fn MathoptnonconvexEdge::get(Self, Int32) -> Double
+pub fn MathoptnonconvexEdge::len(Self) -> Int32
+pub fn MathoptnonconvexEdge::max(Self) -> Double
+pub fn MathoptnonconvexEdge::mean(Self) -> Double
+pub fn MathoptnonconvexEdge::min(Self) -> Double
+pub fn MathoptnonconvexEdge::scale(Self, Double) -> Self
+pub fn MathoptnonconvexEdge::set(Self, Int32, Double) -> Self
+pub fn MathoptnonconvexEdge::sum(Self) -> Double
+pub fn MathoptnonconvexEdge::to_string(Self) -> String
+
+pub(all) struct MathoptnonconvexFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathoptnonconvexFrame::add(Self, Self) -> Self
+pub fn MathoptnonconvexFrame::copy(Self) -> Self
+pub fn MathoptnonconvexFrame::fill(Self, Double) -> Self
+pub fn MathoptnonconvexFrame::get(Self, Int32) -> Double
+pub fn MathoptnonconvexFrame::len(Self) -> Int32
+pub fn MathoptnonconvexFrame::max(Self) -> Double
+pub fn MathoptnonconvexFrame::mean(Self) -> Double
+pub fn MathoptnonconvexFrame::min(Self) -> Double
+pub fn MathoptnonconvexFrame::scale(Self, Double) -> Self
+pub fn MathoptnonconvexFrame::set(Self, Int32, Double) -> Self
+pub fn MathoptnonconvexFrame::sum(Self) -> Double
+pub fn MathoptnonconvexFrame::to_string(Self) -> String
+
+pub(all) struct MathoptnonconvexGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathoptnonconvexGraphN::add(Self, Self) -> Self
+pub fn MathoptnonconvexGraphN::copy(Self) -> Self
+pub fn MathoptnonconvexGraphN::fill(Self, Double) -> Self
+pub fn MathoptnonconvexGraphN::get(Self, Int32) -> Double
+pub fn MathoptnonconvexGraphN::len(Self) -> Int32
+pub fn MathoptnonconvexGraphN::max(Self) -> Double
+pub fn MathoptnonconvexGraphN::mean(Self) -> Double
+pub fn MathoptnonconvexGraphN::min(Self) -> Double
+pub fn MathoptnonconvexGraphN::scale(Self, Double) -> Self
+pub fn MathoptnonconvexGraphN::set(Self, Int32, Double) -> Self
+pub fn MathoptnonconvexGraphN::sum(Self) -> Double
+pub fn MathoptnonconvexGraphN::to_string(Self) -> String
+
+pub(all) struct MathoptnonconvexLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathoptnonconvexLayer::add(Self, Self) -> Self
+pub fn MathoptnonconvexLayer::copy(Self) -> Self
+pub fn MathoptnonconvexLayer::fill(Self, Double) -> Self
+pub fn MathoptnonconvexLayer::get(Self, Int32) -> Double
+pub fn MathoptnonconvexLayer::len(Self) -> Int32
+pub fn MathoptnonconvexLayer::max(Self) -> Double
+pub fn MathoptnonconvexLayer::mean(Self) -> Double
+pub fn MathoptnonconvexLayer::min(Self) -> Double
+pub fn MathoptnonconvexLayer::scale(Self, Double) -> Self
+pub fn MathoptnonconvexLayer::set(Self, Int32, Double) -> Self
+pub fn MathoptnonconvexLayer::sum(Self) -> Double
+pub fn MathoptnonconvexLayer::to_string(Self) -> String
+
+pub(all) struct MathoptnonconvexMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathoptnonconvexMatrix::add(Self, Self) -> Self
+pub fn MathoptnonconvexMatrix::det(Self) -> Double
+pub fn MathoptnonconvexMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathoptnonconvexMatrix::multiply(Self, Self) -> Self
+pub fn MathoptnonconvexMatrix::norm(Self) -> Double
+pub fn MathoptnonconvexMatrix::scale(Self, Double) -> Self
+pub fn MathoptnonconvexMatrix::to_string(Self) -> String
+pub fn MathoptnonconvexMatrix::trace(Self) -> Double
+pub fn MathoptnonconvexMatrix::transpose(Self) -> Self
+
+pub(all) struct MathoptnonconvexModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathoptnonconvexModel::add(Self, Self) -> Self
+pub fn MathoptnonconvexModel::copy(Self) -> Self
+pub fn MathoptnonconvexModel::fill(Self, Double) -> Self
+pub fn MathoptnonconvexModel::get(Self, Int32) -> Double
+pub fn MathoptnonconvexModel::len(Self) -> Int32
+pub fn MathoptnonconvexModel::max(Self) -> Double
+pub fn MathoptnonconvexModel::mean(Self) -> Double
+pub fn MathoptnonconvexModel::min(Self) -> Double
+pub fn MathoptnonconvexModel::scale(Self, Double) -> Self
+pub fn MathoptnonconvexModel::set(Self, Int32, Double) -> Self
+pub fn MathoptnonconvexModel::sum(Self) -> Double
+pub fn MathoptnonconvexModel::to_string(Self) -> String
+
+pub(all) struct MathoptnonconvexNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathoptnonconvexNode::add(Self, Self) -> Self
+pub fn MathoptnonconvexNode::copy(Self) -> Self
+pub fn MathoptnonconvexNode::fill(Self, Double) -> Self
+pub fn MathoptnonconvexNode::get(Self, Int32) -> Double
+pub fn MathoptnonconvexNode::len(Self) -> Int32
+pub fn MathoptnonconvexNode::max(Self) -> Double
+pub fn MathoptnonconvexNode::mean(Self) -> Double
+pub fn MathoptnonconvexNode::min(Self) -> Double
+pub fn MathoptnonconvexNode::scale(Self, Double) -> Self
+pub fn MathoptnonconvexNode::set(Self, Int32, Double) -> Self
+pub fn MathoptnonconvexNode::sum(Self) -> Double
+pub fn MathoptnonconvexNode::to_string(Self) -> String
+
+pub(all) struct MathoptnonconvexPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathoptnonconvexPath::add(Self, Self) -> Self
+pub fn MathoptnonconvexPath::copy(Self) -> Self
+pub fn MathoptnonconvexPath::fill(Self, Double) -> Self
+pub fn MathoptnonconvexPath::get(Self, Int32) -> Double
+pub fn MathoptnonconvexPath::len(Self) -> Int32
+pub fn MathoptnonconvexPath::max(Self) -> Double
+pub fn MathoptnonconvexPath::mean(Self) -> Double
+pub fn MathoptnonconvexPath::min(Self) -> Double
+pub fn MathoptnonconvexPath::scale(Self, Double) -> Self
+pub fn MathoptnonconvexPath::set(Self, Int32, Double) -> Self
+pub fn MathoptnonconvexPath::sum(Self) -> Double
+pub fn MathoptnonconvexPath::to_string(Self) -> String
+
+pub(all) struct MathoptnonconvexPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathoptnonconvexPoint::add(Self, Self) -> Self
+pub fn MathoptnonconvexPoint::cross(Self, Self) -> Self
+pub fn MathoptnonconvexPoint::dist(Self, Self) -> Double
+pub fn MathoptnonconvexPoint::dot(Self, Self) -> Double
+pub fn MathoptnonconvexPoint::label(Self) -> Int32
+pub fn MathoptnonconvexPoint::lerp(Self, Self, Double) -> Self
+pub fn MathoptnonconvexPoint::mid(Self, Self) -> Self
+pub fn MathoptnonconvexPoint::negate(Self) -> Self
+pub fn MathoptnonconvexPoint::norm(Self) -> Double
+pub fn MathoptnonconvexPoint::normalize(Self) -> Self
+pub fn MathoptnonconvexPoint::scale(Self, Double) -> Self
+pub fn MathoptnonconvexPoint::sub(Self, Self) -> Self
+pub fn MathoptnonconvexPoint::to_string(Self) -> String
+pub fn MathoptnonconvexPoint::x(Self) -> Double
+pub fn MathoptnonconvexPoint::y(Self) -> Double
+pub fn MathoptnonconvexPoint::z(Self) -> Double
+
+pub(all) struct MathoptnonconvexRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathoptnonconvexRange::add(Self, Self) -> Self
+pub fn MathoptnonconvexRange::copy(Self) -> Self
+pub fn MathoptnonconvexRange::fill(Self, Double) -> Self
+pub fn MathoptnonconvexRange::get(Self, Int32) -> Double
+pub fn MathoptnonconvexRange::len(Self) -> Int32
+pub fn MathoptnonconvexRange::max(Self) -> Double
+pub fn MathoptnonconvexRange::mean(Self) -> Double
+pub fn MathoptnonconvexRange::min(Self) -> Double
+pub fn MathoptnonconvexRange::scale(Self, Double) -> Self
+pub fn MathoptnonconvexRange::set(Self, Int32, Double) -> Self
+pub fn MathoptnonconvexRange::sum(Self) -> Double
+pub fn MathoptnonconvexRange::to_string(Self) -> String
+
+pub(all) struct MathoptnonconvexSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathoptnonconvexSeries::add(Self, Self) -> Self
+pub fn MathoptnonconvexSeries::cumsum(Self) -> Self
+pub fn MathoptnonconvexSeries::len(Self) -> Int32
+pub fn MathoptnonconvexSeries::max(Self) -> Double
+pub fn MathoptnonconvexSeries::mean(Self) -> Double
+pub fn MathoptnonconvexSeries::median(Self) -> Double
+pub fn MathoptnonconvexSeries::min(Self) -> Double
+pub fn MathoptnonconvexSeries::normalize(Self) -> Self
+pub fn MathoptnonconvexSeries::range(Self) -> Double
+pub fn MathoptnonconvexSeries::scale(Self, Double) -> Self
+pub fn MathoptnonconvexSeries::std(Self) -> Double
+pub fn MathoptnonconvexSeries::sub(Self, Self) -> Self
+pub fn MathoptnonconvexSeries::sum(Self) -> Double
+pub fn MathoptnonconvexSeries::to_string(Self) -> String
+pub fn MathoptnonconvexSeries::variance(Self) -> Double
+
+pub(all) struct MathoptnonconvexSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathoptnonconvexSlice::add(Self, Self) -> Self
+pub fn MathoptnonconvexSlice::copy(Self) -> Self
+pub fn MathoptnonconvexSlice::fill(Self, Double) -> Self
+pub fn MathoptnonconvexSlice::get(Self, Int32) -> Double
+pub fn MathoptnonconvexSlice::len(Self) -> Int32
+pub fn MathoptnonconvexSlice::max(Self) -> Double
+pub fn MathoptnonconvexSlice::mean(Self) -> Double
+pub fn MathoptnonconvexSlice::min(Self) -> Double
+pub fn MathoptnonconvexSlice::scale(Self, Double) -> Self
+pub fn MathoptnonconvexSlice::set(Self, Int32, Double) -> Self
+pub fn MathoptnonconvexSlice::sum(Self) -> Double
+pub fn MathoptnonconvexSlice::to_string(Self) -> String
+
+pub(all) struct MathoptnonconvexTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathoptnonconvexTable::add(Self, Self) -> Self
+pub fn MathoptnonconvexTable::copy(Self) -> Self
+pub fn MathoptnonconvexTable::fill(Self, Double) -> Self
+pub fn MathoptnonconvexTable::get(Self, Int32) -> Double
+pub fn MathoptnonconvexTable::len(Self) -> Int32
+pub fn MathoptnonconvexTable::max(Self) -> Double
+pub fn MathoptnonconvexTable::mean(Self) -> Double
+pub fn MathoptnonconvexTable::min(Self) -> Double
+pub fn MathoptnonconvexTable::scale(Self, Double) -> Self
+pub fn MathoptnonconvexTable::set(Self, Int32, Double) -> Self
+pub fn MathoptnonconvexTable::sum(Self) -> Double
+pub fn MathoptnonconvexTable::to_string(Self) -> String
+
+pub(all) struct MathoptnonconvexVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathoptnonconvexVector::add(Self, Self) -> Self
+pub fn MathoptnonconvexVector::dist(Self, Self) -> Double
+pub fn MathoptnonconvexVector::dot(Self, Self) -> Double
+pub fn MathoptnonconvexVector::norm(Self) -> Double
+pub fn MathoptnonconvexVector::normalize(Self) -> Self
+pub fn MathoptnonconvexVector::scale(Self, Double) -> Self
+pub fn MathoptnonconvexVector::sub(Self, Self) -> Self
+pub fn MathoptnonconvexVector::to_string(Self) -> String
+
+pub(all) struct MathoptnonconvexView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathoptnonconvexView::add(Self, Self) -> Self
+pub fn MathoptnonconvexView::copy(Self) -> Self
+pub fn MathoptnonconvexView::fill(Self, Double) -> Self
+pub fn MathoptnonconvexView::get(Self, Int32) -> Double
+pub fn MathoptnonconvexView::len(Self) -> Int32
+pub fn MathoptnonconvexView::max(Self) -> Double
+pub fn MathoptnonconvexView::mean(Self) -> Double
+pub fn MathoptnonconvexView::min(Self) -> Double
+pub fn MathoptnonconvexView::scale(Self, Double) -> Self
+pub fn MathoptnonconvexView::set(Self, Int32, Double) -> Self
+pub fn MathoptnonconvexView::sum(Self) -> Double
+pub fn MathoptnonconvexView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_pos_bilstm"
+
+// Values
+pub fn nlp_pos_bilstm_buffer_make(Int32) -> NlpposbilstmBuffer
+
+pub fn nlp_pos_bilstm_cluster_make(Int32) -> NlpposbilstmCluster
+
+pub fn nlp_pos_bilstm_cursor_make(Int32) -> NlpposbilstmCursor
+
+pub fn nlp_pos_bilstm_edge_make(Int32) -> NlpposbilstmEdge
+
+pub fn nlp_pos_bilstm_frame_make(Int32) -> NlpposbilstmFrame
+
+pub fn nlp_pos_bilstm_graphn_make(Int32) -> NlpposbilstmGraphN
+
+pub fn nlp_pos_bilstm_layer_make(Int32) -> NlpposbilstmLayer
+
+pub fn nlp_pos_bilstm_make_matrix(Int32, Int32, Double) -> NlpposbilstmMatrix
+
+pub fn nlp_pos_bilstm_make_point(Double, Double) -> NlpposbilstmPoint
+
+pub fn nlp_pos_bilstm_make_point3(Double, Double, Double) -> NlpposbilstmPoint
+
+pub fn nlp_pos_bilstm_make_series(Array[Double], String) -> NlpposbilstmSeries
+
+pub fn nlp_pos_bilstm_make_vector(Array[Double]) -> NlpposbilstmVector
+
+pub fn nlp_pos_bilstm_matrix_identity(Int32) -> NlpposbilstmMatrix
+
+pub fn nlp_pos_bilstm_model_make(Int32) -> NlpposbilstmModel
+
+pub fn nlp_pos_bilstm_node_make(Int32) -> NlpposbilstmNode
+
+pub fn nlp_pos_bilstm_path_make(Int32) -> NlpposbilstmPath
+
+pub fn nlp_pos_bilstm_range_make(Int32) -> NlpposbilstmRange
+
+pub fn nlp_pos_bilstm_slice_make(Int32) -> NlpposbilstmSlice
+
+pub fn nlp_pos_bilstm_table_make(Int32) -> NlpposbilstmTable
+
+pub fn nlp_pos_bilstm_vector_zero(Int32) -> NlpposbilstmVector
+
+pub fn nlp_pos_bilstm_view_make(Int32) -> NlpposbilstmView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlpposbilstmBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbilstmBuffer::add(Self, Self) -> Self
+pub fn NlpposbilstmBuffer::copy(Self) -> Self
+pub fn NlpposbilstmBuffer::fill(Self, Double) -> Self
+pub fn NlpposbilstmBuffer::get(Self, Int32) -> Double
+pub fn NlpposbilstmBuffer::len(Self) -> Int32
+pub fn NlpposbilstmBuffer::max(Self) -> Double
+pub fn NlpposbilstmBuffer::mean(Self) -> Double
+pub fn NlpposbilstmBuffer::min(Self) -> Double
+pub fn NlpposbilstmBuffer::scale(Self, Double) -> Self
+pub fn NlpposbilstmBuffer::set(Self, Int32, Double) -> Self
+pub fn NlpposbilstmBuffer::sum(Self) -> Double
+pub fn NlpposbilstmBuffer::to_string(Self) -> String
+
+pub(all) struct NlpposbilstmCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbilstmCluster::add(Self, Self) -> Self
+pub fn NlpposbilstmCluster::copy(Self) -> Self
+pub fn NlpposbilstmCluster::fill(Self, Double) -> Self
+pub fn NlpposbilstmCluster::get(Self, Int32) -> Double
+pub fn NlpposbilstmCluster::len(Self) -> Int32
+pub fn NlpposbilstmCluster::max(Self) -> Double
+pub fn NlpposbilstmCluster::mean(Self) -> Double
+pub fn NlpposbilstmCluster::min(Self) -> Double
+pub fn NlpposbilstmCluster::scale(Self, Double) -> Self
+pub fn NlpposbilstmCluster::set(Self, Int32, Double) -> Self
+pub fn NlpposbilstmCluster::sum(Self) -> Double
+pub fn NlpposbilstmCluster::to_string(Self) -> String
+
+pub(all) struct NlpposbilstmCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbilstmCursor::add(Self, Self) -> Self
+pub fn NlpposbilstmCursor::copy(Self) -> Self
+pub fn NlpposbilstmCursor::fill(Self, Double) -> Self
+pub fn NlpposbilstmCursor::get(Self, Int32) -> Double
+pub fn NlpposbilstmCursor::len(Self) -> Int32
+pub fn NlpposbilstmCursor::max(Self) -> Double
+pub fn NlpposbilstmCursor::mean(Self) -> Double
+pub fn NlpposbilstmCursor::min(Self) -> Double
+pub fn NlpposbilstmCursor::scale(Self, Double) -> Self
+pub fn NlpposbilstmCursor::set(Self, Int32, Double) -> Self
+pub fn NlpposbilstmCursor::sum(Self) -> Double
+pub fn NlpposbilstmCursor::to_string(Self) -> String
+
+pub(all) struct NlpposbilstmEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbilstmEdge::add(Self, Self) -> Self
+pub fn NlpposbilstmEdge::copy(Self) -> Self
+pub fn NlpposbilstmEdge::fill(Self, Double) -> Self
+pub fn NlpposbilstmEdge::get(Self, Int32) -> Double
+pub fn NlpposbilstmEdge::len(Self) -> Int32
+pub fn NlpposbilstmEdge::max(Self) -> Double
+pub fn NlpposbilstmEdge::mean(Self) -> Double
+pub fn NlpposbilstmEdge::min(Self) -> Double
+pub fn NlpposbilstmEdge::scale(Self, Double) -> Self
+pub fn NlpposbilstmEdge::set(Self, Int32, Double) -> Self
+pub fn NlpposbilstmEdge::sum(Self) -> Double
+pub fn NlpposbilstmEdge::to_string(Self) -> String
+
+pub(all) struct NlpposbilstmFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbilstmFrame::add(Self, Self) -> Self
+pub fn NlpposbilstmFrame::copy(Self) -> Self
+pub fn NlpposbilstmFrame::fill(Self, Double) -> Self
+pub fn NlpposbilstmFrame::get(Self, Int32) -> Double
+pub fn NlpposbilstmFrame::len(Self) -> Int32
+pub fn NlpposbilstmFrame::max(Self) -> Double
+pub fn NlpposbilstmFrame::mean(Self) -> Double
+pub fn NlpposbilstmFrame::min(Self) -> Double
+pub fn NlpposbilstmFrame::scale(Self, Double) -> Self
+pub fn NlpposbilstmFrame::set(Self, Int32, Double) -> Self
+pub fn NlpposbilstmFrame::sum(Self) -> Double
+pub fn NlpposbilstmFrame::to_string(Self) -> String
+
+pub(all) struct NlpposbilstmGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbilstmGraphN::add(Self, Self) -> Self
+pub fn NlpposbilstmGraphN::copy(Self) -> Self
+pub fn NlpposbilstmGraphN::fill(Self, Double) -> Self
+pub fn NlpposbilstmGraphN::get(Self, Int32) -> Double
+pub fn NlpposbilstmGraphN::len(Self) -> Int32
+pub fn NlpposbilstmGraphN::max(Self) -> Double
+pub fn NlpposbilstmGraphN::mean(Self) -> Double
+pub fn NlpposbilstmGraphN::min(Self) -> Double
+pub fn NlpposbilstmGraphN::scale(Self, Double) -> Self
+pub fn NlpposbilstmGraphN::set(Self, Int32, Double) -> Self
+pub fn NlpposbilstmGraphN::sum(Self) -> Double
+pub fn NlpposbilstmGraphN::to_string(Self) -> String
+
+pub(all) struct NlpposbilstmLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbilstmLayer::add(Self, Self) -> Self
+pub fn NlpposbilstmLayer::copy(Self) -> Self
+pub fn NlpposbilstmLayer::fill(Self, Double) -> Self
+pub fn NlpposbilstmLayer::get(Self, Int32) -> Double
+pub fn NlpposbilstmLayer::len(Self) -> Int32
+pub fn NlpposbilstmLayer::max(Self) -> Double
+pub fn NlpposbilstmLayer::mean(Self) -> Double
+pub fn NlpposbilstmLayer::min(Self) -> Double
+pub fn NlpposbilstmLayer::scale(Self, Double) -> Self
+pub fn NlpposbilstmLayer::set(Self, Int32, Double) -> Self
+pub fn NlpposbilstmLayer::sum(Self) -> Double
+pub fn NlpposbilstmLayer::to_string(Self) -> String
+
+pub(all) struct NlpposbilstmMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlpposbilstmMatrix::add(Self, Self) -> Self
+pub fn NlpposbilstmMatrix::det(Self) -> Double
+pub fn NlpposbilstmMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlpposbilstmMatrix::multiply(Self, Self) -> Self
+pub fn NlpposbilstmMatrix::norm(Self) -> Double
+pub fn NlpposbilstmMatrix::scale(Self, Double) -> Self
+pub fn NlpposbilstmMatrix::to_string(Self) -> String
+pub fn NlpposbilstmMatrix::trace(Self) -> Double
+pub fn NlpposbilstmMatrix::transpose(Self) -> Self
+
+pub(all) struct NlpposbilstmModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbilstmModel::add(Self, Self) -> Self
+pub fn NlpposbilstmModel::copy(Self) -> Self
+pub fn NlpposbilstmModel::fill(Self, Double) -> Self
+pub fn NlpposbilstmModel::get(Self, Int32) -> Double
+pub fn NlpposbilstmModel::len(Self) -> Int32
+pub fn NlpposbilstmModel::max(Self) -> Double
+pub fn NlpposbilstmModel::mean(Self) -> Double
+pub fn NlpposbilstmModel::min(Self) -> Double
+pub fn NlpposbilstmModel::scale(Self, Double) -> Self
+pub fn NlpposbilstmModel::set(Self, Int32, Double) -> Self
+pub fn NlpposbilstmModel::sum(Self) -> Double
+pub fn NlpposbilstmModel::to_string(Self) -> String
+
+pub(all) struct NlpposbilstmNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbilstmNode::add(Self, Self) -> Self
+pub fn NlpposbilstmNode::copy(Self) -> Self
+pub fn NlpposbilstmNode::fill(Self, Double) -> Self
+pub fn NlpposbilstmNode::get(Self, Int32) -> Double
+pub fn NlpposbilstmNode::len(Self) -> Int32
+pub fn NlpposbilstmNode::max(Self) -> Double
+pub fn NlpposbilstmNode::mean(Self) -> Double
+pub fn NlpposbilstmNode::min(Self) -> Double
+pub fn NlpposbilstmNode::scale(Self, Double) -> Self
+pub fn NlpposbilstmNode::set(Self, Int32, Double) -> Self
+pub fn NlpposbilstmNode::sum(Self) -> Double
+pub fn NlpposbilstmNode::to_string(Self) -> String
+
+pub(all) struct NlpposbilstmPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbilstmPath::add(Self, Self) -> Self
+pub fn NlpposbilstmPath::copy(Self) -> Self
+pub fn NlpposbilstmPath::fill(Self, Double) -> Self
+pub fn NlpposbilstmPath::get(Self, Int32) -> Double
+pub fn NlpposbilstmPath::len(Self) -> Int32
+pub fn NlpposbilstmPath::max(Self) -> Double
+pub fn NlpposbilstmPath::mean(Self) -> Double
+pub fn NlpposbilstmPath::min(Self) -> Double
+pub fn NlpposbilstmPath::scale(Self, Double) -> Self
+pub fn NlpposbilstmPath::set(Self, Int32, Double) -> Self
+pub fn NlpposbilstmPath::sum(Self) -> Double
+pub fn NlpposbilstmPath::to_string(Self) -> String
+
+pub(all) struct NlpposbilstmPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlpposbilstmPoint::add(Self, Self) -> Self
+pub fn NlpposbilstmPoint::cross(Self, Self) -> Self
+pub fn NlpposbilstmPoint::dist(Self, Self) -> Double
+pub fn NlpposbilstmPoint::dot(Self, Self) -> Double
+pub fn NlpposbilstmPoint::label(Self) -> Int32
+pub fn NlpposbilstmPoint::lerp(Self, Self, Double) -> Self
+pub fn NlpposbilstmPoint::mid(Self, Self) -> Self
+pub fn NlpposbilstmPoint::negate(Self) -> Self
+pub fn NlpposbilstmPoint::norm(Self) -> Double
+pub fn NlpposbilstmPoint::normalize(Self) -> Self
+pub fn NlpposbilstmPoint::scale(Self, Double) -> Self
+pub fn NlpposbilstmPoint::sub(Self, Self) -> Self
+pub fn NlpposbilstmPoint::to_string(Self) -> String
+pub fn NlpposbilstmPoint::x(Self) -> Double
+pub fn NlpposbilstmPoint::y(Self) -> Double
+pub fn NlpposbilstmPoint::z(Self) -> Double
+
+pub(all) struct NlpposbilstmRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbilstmRange::add(Self, Self) -> Self
+pub fn NlpposbilstmRange::copy(Self) -> Self
+pub fn NlpposbilstmRange::fill(Self, Double) -> Self
+pub fn NlpposbilstmRange::get(Self, Int32) -> Double
+pub fn NlpposbilstmRange::len(Self) -> Int32
+pub fn NlpposbilstmRange::max(Self) -> Double
+pub fn NlpposbilstmRange::mean(Self) -> Double
+pub fn NlpposbilstmRange::min(Self) -> Double
+pub fn NlpposbilstmRange::scale(Self, Double) -> Self
+pub fn NlpposbilstmRange::set(Self, Int32, Double) -> Self
+pub fn NlpposbilstmRange::sum(Self) -> Double
+pub fn NlpposbilstmRange::to_string(Self) -> String
+
+pub(all) struct NlpposbilstmSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlpposbilstmSeries::add(Self, Self) -> Self
+pub fn NlpposbilstmSeries::cumsum(Self) -> Self
+pub fn NlpposbilstmSeries::len(Self) -> Int32
+pub fn NlpposbilstmSeries::max(Self) -> Double
+pub fn NlpposbilstmSeries::mean(Self) -> Double
+pub fn NlpposbilstmSeries::median(Self) -> Double
+pub fn NlpposbilstmSeries::min(Self) -> Double
+pub fn NlpposbilstmSeries::normalize(Self) -> Self
+pub fn NlpposbilstmSeries::range(Self) -> Double
+pub fn NlpposbilstmSeries::scale(Self, Double) -> Self
+pub fn NlpposbilstmSeries::std(Self) -> Double
+pub fn NlpposbilstmSeries::sub(Self, Self) -> Self
+pub fn NlpposbilstmSeries::sum(Self) -> Double
+pub fn NlpposbilstmSeries::to_string(Self) -> String
+pub fn NlpposbilstmSeries::variance(Self) -> Double
+
+pub(all) struct NlpposbilstmSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbilstmSlice::add(Self, Self) -> Self
+pub fn NlpposbilstmSlice::copy(Self) -> Self
+pub fn NlpposbilstmSlice::fill(Self, Double) -> Self
+pub fn NlpposbilstmSlice::get(Self, Int32) -> Double
+pub fn NlpposbilstmSlice::len(Self) -> Int32
+pub fn NlpposbilstmSlice::max(Self) -> Double
+pub fn NlpposbilstmSlice::mean(Self) -> Double
+pub fn NlpposbilstmSlice::min(Self) -> Double
+pub fn NlpposbilstmSlice::scale(Self, Double) -> Self
+pub fn NlpposbilstmSlice::set(Self, Int32, Double) -> Self
+pub fn NlpposbilstmSlice::sum(Self) -> Double
+pub fn NlpposbilstmSlice::to_string(Self) -> String
+
+pub(all) struct NlpposbilstmTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbilstmTable::add(Self, Self) -> Self
+pub fn NlpposbilstmTable::copy(Self) -> Self
+pub fn NlpposbilstmTable::fill(Self, Double) -> Self
+pub fn NlpposbilstmTable::get(Self, Int32) -> Double
+pub fn NlpposbilstmTable::len(Self) -> Int32
+pub fn NlpposbilstmTable::max(Self) -> Double
+pub fn NlpposbilstmTable::mean(Self) -> Double
+pub fn NlpposbilstmTable::min(Self) -> Double
+pub fn NlpposbilstmTable::scale(Self, Double) -> Self
+pub fn NlpposbilstmTable::set(Self, Int32, Double) -> Self
+pub fn NlpposbilstmTable::sum(Self) -> Double
+pub fn NlpposbilstmTable::to_string(Self) -> String
+
+pub(all) struct NlpposbilstmVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlpposbilstmVector::add(Self, Self) -> Self
+pub fn NlpposbilstmVector::dist(Self, Self) -> Double
+pub fn NlpposbilstmVector::dot(Self, Self) -> Double
+pub fn NlpposbilstmVector::norm(Self) -> Double
+pub fn NlpposbilstmVector::normalize(Self) -> Self
+pub fn NlpposbilstmVector::scale(Self, Double) -> Self
+pub fn NlpposbilstmVector::sub(Self, Self) -> Self
+pub fn NlpposbilstmVector::to_string(Self) -> String
+
+pub(all) struct NlpposbilstmView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbilstmView::add(Self, Self) -> Self
+pub fn NlpposbilstmView::copy(Self) -> Self
+pub fn NlpposbilstmView::fill(Self, Double) -> Self
+pub fn NlpposbilstmView::get(Self, Int32) -> Double
+pub fn NlpposbilstmView::len(Self) -> Int32
+pub fn NlpposbilstmView::max(Self) -> Double
+pub fn NlpposbilstmView::mean(Self) -> Double
+pub fn NlpposbilstmView::min(Self) -> Double
+pub fn NlpposbilstmView::scale(Self, Double) -> Self
+pub fn NlpposbilstmView::set(Self, Int32, Double) -> Self
+pub fn NlpposbilstmView::sum(Self) -> Double
+pub fn NlpposbilstmView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

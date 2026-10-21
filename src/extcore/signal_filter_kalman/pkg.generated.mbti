@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_filter_kalman"
+
+// Values
+pub fn signal_filter_kalman_buffer_make(Int32) -> SignalfilterkalmanBuffer
+
+pub fn signal_filter_kalman_cluster_make(Int32) -> SignalfilterkalmanCluster
+
+pub fn signal_filter_kalman_cursor_make(Int32) -> SignalfilterkalmanCursor
+
+pub fn signal_filter_kalman_edge_make(Int32) -> SignalfilterkalmanEdge
+
+pub fn signal_filter_kalman_frame_make(Int32) -> SignalfilterkalmanFrame
+
+pub fn signal_filter_kalman_graphn_make(Int32) -> SignalfilterkalmanGraphN
+
+pub fn signal_filter_kalman_layer_make(Int32) -> SignalfilterkalmanLayer
+
+pub fn signal_filter_kalman_make_matrix(Int32, Int32, Double) -> SignalfilterkalmanMatrix
+
+pub fn signal_filter_kalman_make_point(Double, Double) -> SignalfilterkalmanPoint
+
+pub fn signal_filter_kalman_make_point3(Double, Double, Double) -> SignalfilterkalmanPoint
+
+pub fn signal_filter_kalman_make_series(Array[Double], String) -> SignalfilterkalmanSeries
+
+pub fn signal_filter_kalman_make_vector(Array[Double]) -> SignalfilterkalmanVector
+
+pub fn signal_filter_kalman_matrix_identity(Int32) -> SignalfilterkalmanMatrix
+
+pub fn signal_filter_kalman_model_make(Int32) -> SignalfilterkalmanModel
+
+pub fn signal_filter_kalman_node_make(Int32) -> SignalfilterkalmanNode
+
+pub fn signal_filter_kalman_path_make(Int32) -> SignalfilterkalmanPath
+
+pub fn signal_filter_kalman_range_make(Int32) -> SignalfilterkalmanRange
+
+pub fn signal_filter_kalman_slice_make(Int32) -> SignalfilterkalmanSlice
+
+pub fn signal_filter_kalman_table_make(Int32) -> SignalfilterkalmanTable
+
+pub fn signal_filter_kalman_vector_zero(Int32) -> SignalfilterkalmanVector
+
+pub fn signal_filter_kalman_view_make(Int32) -> SignalfilterkalmanView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalfilterkalmanBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterkalmanBuffer::add(Self, Self) -> Self
+pub fn SignalfilterkalmanBuffer::copy(Self) -> Self
+pub fn SignalfilterkalmanBuffer::fill(Self, Double) -> Self
+pub fn SignalfilterkalmanBuffer::get(Self, Int32) -> Double
+pub fn SignalfilterkalmanBuffer::len(Self) -> Int32
+pub fn SignalfilterkalmanBuffer::max(Self) -> Double
+pub fn SignalfilterkalmanBuffer::mean(Self) -> Double
+pub fn SignalfilterkalmanBuffer::min(Self) -> Double
+pub fn SignalfilterkalmanBuffer::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalfilterkalmanBuffer::sum(Self) -> Double
+pub fn SignalfilterkalmanBuffer::to_string(Self) -> String
+
+pub(all) struct SignalfilterkalmanCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterkalmanCluster::add(Self, Self) -> Self
+pub fn SignalfilterkalmanCluster::copy(Self) -> Self
+pub fn SignalfilterkalmanCluster::fill(Self, Double) -> Self
+pub fn SignalfilterkalmanCluster::get(Self, Int32) -> Double
+pub fn SignalfilterkalmanCluster::len(Self) -> Int32
+pub fn SignalfilterkalmanCluster::max(Self) -> Double
+pub fn SignalfilterkalmanCluster::mean(Self) -> Double
+pub fn SignalfilterkalmanCluster::min(Self) -> Double
+pub fn SignalfilterkalmanCluster::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanCluster::set(Self, Int32, Double) -> Self
+pub fn SignalfilterkalmanCluster::sum(Self) -> Double
+pub fn SignalfilterkalmanCluster::to_string(Self) -> String
+
+pub(all) struct SignalfilterkalmanCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterkalmanCursor::add(Self, Self) -> Self
+pub fn SignalfilterkalmanCursor::copy(Self) -> Self
+pub fn SignalfilterkalmanCursor::fill(Self, Double) -> Self
+pub fn SignalfilterkalmanCursor::get(Self, Int32) -> Double
+pub fn SignalfilterkalmanCursor::len(Self) -> Int32
+pub fn SignalfilterkalmanCursor::max(Self) -> Double
+pub fn SignalfilterkalmanCursor::mean(Self) -> Double
+pub fn SignalfilterkalmanCursor::min(Self) -> Double
+pub fn SignalfilterkalmanCursor::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanCursor::set(Self, Int32, Double) -> Self
+pub fn SignalfilterkalmanCursor::sum(Self) -> Double
+pub fn SignalfilterkalmanCursor::to_string(Self) -> String
+
+pub(all) struct SignalfilterkalmanEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterkalmanEdge::add(Self, Self) -> Self
+pub fn SignalfilterkalmanEdge::copy(Self) -> Self
+pub fn SignalfilterkalmanEdge::fill(Self, Double) -> Self
+pub fn SignalfilterkalmanEdge::get(Self, Int32) -> Double
+pub fn SignalfilterkalmanEdge::len(Self) -> Int32
+pub fn SignalfilterkalmanEdge::max(Self) -> Double
+pub fn SignalfilterkalmanEdge::mean(Self) -> Double
+pub fn SignalfilterkalmanEdge::min(Self) -> Double
+pub fn SignalfilterkalmanEdge::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanEdge::set(Self, Int32, Double) -> Self
+pub fn SignalfilterkalmanEdge::sum(Self) -> Double
+pub fn SignalfilterkalmanEdge::to_string(Self) -> String
+
+pub(all) struct SignalfilterkalmanFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterkalmanFrame::add(Self, Self) -> Self
+pub fn SignalfilterkalmanFrame::copy(Self) -> Self
+pub fn SignalfilterkalmanFrame::fill(Self, Double) -> Self
+pub fn SignalfilterkalmanFrame::get(Self, Int32) -> Double
+pub fn SignalfilterkalmanFrame::len(Self) -> Int32
+pub fn SignalfilterkalmanFrame::max(Self) -> Double
+pub fn SignalfilterkalmanFrame::mean(Self) -> Double
+pub fn SignalfilterkalmanFrame::min(Self) -> Double
+pub fn SignalfilterkalmanFrame::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanFrame::set(Self, Int32, Double) -> Self
+pub fn SignalfilterkalmanFrame::sum(Self) -> Double
+pub fn SignalfilterkalmanFrame::to_string(Self) -> String
+
+pub(all) struct SignalfilterkalmanGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterkalmanGraphN::add(Self, Self) -> Self
+pub fn SignalfilterkalmanGraphN::copy(Self) -> Self
+pub fn SignalfilterkalmanGraphN::fill(Self, Double) -> Self
+pub fn SignalfilterkalmanGraphN::get(Self, Int32) -> Double
+pub fn SignalfilterkalmanGraphN::len(Self) -> Int32
+pub fn SignalfilterkalmanGraphN::max(Self) -> Double
+pub fn SignalfilterkalmanGraphN::mean(Self) -> Double
+pub fn SignalfilterkalmanGraphN::min(Self) -> Double
+pub fn SignalfilterkalmanGraphN::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalfilterkalmanGraphN::sum(Self) -> Double
+pub fn SignalfilterkalmanGraphN::to_string(Self) -> String
+
+pub(all) struct SignalfilterkalmanLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterkalmanLayer::add(Self, Self) -> Self
+pub fn SignalfilterkalmanLayer::copy(Self) -> Self
+pub fn SignalfilterkalmanLayer::fill(Self, Double) -> Self
+pub fn SignalfilterkalmanLayer::get(Self, Int32) -> Double
+pub fn SignalfilterkalmanLayer::len(Self) -> Int32
+pub fn SignalfilterkalmanLayer::max(Self) -> Double
+pub fn SignalfilterkalmanLayer::mean(Self) -> Double
+pub fn SignalfilterkalmanLayer::min(Self) -> Double
+pub fn SignalfilterkalmanLayer::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanLayer::set(Self, Int32, Double) -> Self
+pub fn SignalfilterkalmanLayer::sum(Self) -> Double
+pub fn SignalfilterkalmanLayer::to_string(Self) -> String
+
+pub(all) struct SignalfilterkalmanMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalfilterkalmanMatrix::add(Self, Self) -> Self
+pub fn SignalfilterkalmanMatrix::det(Self) -> Double
+pub fn SignalfilterkalmanMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalfilterkalmanMatrix::multiply(Self, Self) -> Self
+pub fn SignalfilterkalmanMatrix::norm(Self) -> Double
+pub fn SignalfilterkalmanMatrix::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanMatrix::to_string(Self) -> String
+pub fn SignalfilterkalmanMatrix::trace(Self) -> Double
+pub fn SignalfilterkalmanMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalfilterkalmanModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterkalmanModel::add(Self, Self) -> Self
+pub fn SignalfilterkalmanModel::copy(Self) -> Self
+pub fn SignalfilterkalmanModel::fill(Self, Double) -> Self
+pub fn SignalfilterkalmanModel::get(Self, Int32) -> Double
+pub fn SignalfilterkalmanModel::len(Self) -> Int32
+pub fn SignalfilterkalmanModel::max(Self) -> Double
+pub fn SignalfilterkalmanModel::mean(Self) -> Double
+pub fn SignalfilterkalmanModel::min(Self) -> Double
+pub fn SignalfilterkalmanModel::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanModel::set(Self, Int32, Double) -> Self
+pub fn SignalfilterkalmanModel::sum(Self) -> Double
+pub fn SignalfilterkalmanModel::to_string(Self) -> String
+
+pub(all) struct SignalfilterkalmanNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterkalmanNode::add(Self, Self) -> Self
+pub fn SignalfilterkalmanNode::copy(Self) -> Self
+pub fn SignalfilterkalmanNode::fill(Self, Double) -> Self
+pub fn SignalfilterkalmanNode::get(Self, Int32) -> Double
+pub fn SignalfilterkalmanNode::len(Self) -> Int32
+pub fn SignalfilterkalmanNode::max(Self) -> Double
+pub fn SignalfilterkalmanNode::mean(Self) -> Double
+pub fn SignalfilterkalmanNode::min(Self) -> Double
+pub fn SignalfilterkalmanNode::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanNode::set(Self, Int32, Double) -> Self
+pub fn SignalfilterkalmanNode::sum(Self) -> Double
+pub fn SignalfilterkalmanNode::to_string(Self) -> String
+
+pub(all) struct SignalfilterkalmanPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterkalmanPath::add(Self, Self) -> Self
+pub fn SignalfilterkalmanPath::copy(Self) -> Self
+pub fn SignalfilterkalmanPath::fill(Self, Double) -> Self
+pub fn SignalfilterkalmanPath::get(Self, Int32) -> Double
+pub fn SignalfilterkalmanPath::len(Self) -> Int32
+pub fn SignalfilterkalmanPath::max(Self) -> Double
+pub fn SignalfilterkalmanPath::mean(Self) -> Double
+pub fn SignalfilterkalmanPath::min(Self) -> Double
+pub fn SignalfilterkalmanPath::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanPath::set(Self, Int32, Double) -> Self
+pub fn SignalfilterkalmanPath::sum(Self) -> Double
+pub fn SignalfilterkalmanPath::to_string(Self) -> String
+
+pub(all) struct SignalfilterkalmanPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalfilterkalmanPoint::add(Self, Self) -> Self
+pub fn SignalfilterkalmanPoint::cross(Self, Self) -> Self
+pub fn SignalfilterkalmanPoint::dist(Self, Self) -> Double
+pub fn SignalfilterkalmanPoint::dot(Self, Self) -> Double
+pub fn SignalfilterkalmanPoint::label(Self) -> Int32
+pub fn SignalfilterkalmanPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalfilterkalmanPoint::mid(Self, Self) -> Self
+pub fn SignalfilterkalmanPoint::negate(Self) -> Self
+pub fn SignalfilterkalmanPoint::norm(Self) -> Double
+pub fn SignalfilterkalmanPoint::normalize(Self) -> Self
+pub fn SignalfilterkalmanPoint::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanPoint::sub(Self, Self) -> Self
+pub fn SignalfilterkalmanPoint::to_string(Self) -> String
+pub fn SignalfilterkalmanPoint::x(Self) -> Double
+pub fn SignalfilterkalmanPoint::y(Self) -> Double
+pub fn SignalfilterkalmanPoint::z(Self) -> Double
+
+pub(all) struct SignalfilterkalmanRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterkalmanRange::add(Self, Self) -> Self
+pub fn SignalfilterkalmanRange::copy(Self) -> Self
+pub fn SignalfilterkalmanRange::fill(Self, Double) -> Self
+pub fn SignalfilterkalmanRange::get(Self, Int32) -> Double
+pub fn SignalfilterkalmanRange::len(Self) -> Int32
+pub fn SignalfilterkalmanRange::max(Self) -> Double
+pub fn SignalfilterkalmanRange::mean(Self) -> Double
+pub fn SignalfilterkalmanRange::min(Self) -> Double
+pub fn SignalfilterkalmanRange::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanRange::set(Self, Int32, Double) -> Self
+pub fn SignalfilterkalmanRange::sum(Self) -> Double
+pub fn SignalfilterkalmanRange::to_string(Self) -> String
+
+pub(all) struct SignalfilterkalmanSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalfilterkalmanSeries::add(Self, Self) -> Self
+pub fn SignalfilterkalmanSeries::cumsum(Self) -> Self
+pub fn SignalfilterkalmanSeries::len(Self) -> Int32
+pub fn SignalfilterkalmanSeries::max(Self) -> Double
+pub fn SignalfilterkalmanSeries::mean(Self) -> Double
+pub fn SignalfilterkalmanSeries::median(Self) -> Double
+pub fn SignalfilterkalmanSeries::min(Self) -> Double
+pub fn SignalfilterkalmanSeries::normalize(Self) -> Self
+pub fn SignalfilterkalmanSeries::range(Self) -> Double
+pub fn SignalfilterkalmanSeries::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanSeries::std(Self) -> Double
+pub fn SignalfilterkalmanSeries::sub(Self, Self) -> Self
+pub fn SignalfilterkalmanSeries::sum(Self) -> Double
+pub fn SignalfilterkalmanSeries::to_string(Self) -> String
+pub fn SignalfilterkalmanSeries::variance(Self) -> Double
+
+pub(all) struct SignalfilterkalmanSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterkalmanSlice::add(Self, Self) -> Self
+pub fn SignalfilterkalmanSlice::copy(Self) -> Self
+pub fn SignalfilterkalmanSlice::fill(Self, Double) -> Self
+pub fn SignalfilterkalmanSlice::get(Self, Int32) -> Double
+pub fn SignalfilterkalmanSlice::len(Self) -> Int32
+pub fn SignalfilterkalmanSlice::max(Self) -> Double
+pub fn SignalfilterkalmanSlice::mean(Self) -> Double
+pub fn SignalfilterkalmanSlice::min(Self) -> Double
+pub fn SignalfilterkalmanSlice::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanSlice::set(Self, Int32, Double) -> Self
+pub fn SignalfilterkalmanSlice::sum(Self) -> Double
+pub fn SignalfilterkalmanSlice::to_string(Self) -> String
+
+pub(all) struct SignalfilterkalmanTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterkalmanTable::add(Self, Self) -> Self
+pub fn SignalfilterkalmanTable::copy(Self) -> Self
+pub fn SignalfilterkalmanTable::fill(Self, Double) -> Self
+pub fn SignalfilterkalmanTable::get(Self, Int32) -> Double
+pub fn SignalfilterkalmanTable::len(Self) -> Int32
+pub fn SignalfilterkalmanTable::max(Self) -> Double
+pub fn SignalfilterkalmanTable::mean(Self) -> Double
+pub fn SignalfilterkalmanTable::min(Self) -> Double
+pub fn SignalfilterkalmanTable::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanTable::set(Self, Int32, Double) -> Self
+pub fn SignalfilterkalmanTable::sum(Self) -> Double
+pub fn SignalfilterkalmanTable::to_string(Self) -> String
+
+pub(all) struct SignalfilterkalmanVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalfilterkalmanVector::add(Self, Self) -> Self
+pub fn SignalfilterkalmanVector::dist(Self, Self) -> Double
+pub fn SignalfilterkalmanVector::dot(Self, Self) -> Double
+pub fn SignalfilterkalmanVector::norm(Self) -> Double
+pub fn SignalfilterkalmanVector::normalize(Self) -> Self
+pub fn SignalfilterkalmanVector::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanVector::sub(Self, Self) -> Self
+pub fn SignalfilterkalmanVector::to_string(Self) -> String
+
+pub(all) struct SignalfilterkalmanView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterkalmanView::add(Self, Self) -> Self
+pub fn SignalfilterkalmanView::copy(Self) -> Self
+pub fn SignalfilterkalmanView::fill(Self, Double) -> Self
+pub fn SignalfilterkalmanView::get(Self, Int32) -> Double
+pub fn SignalfilterkalmanView::len(Self) -> Int32
+pub fn SignalfilterkalmanView::max(Self) -> Double
+pub fn SignalfilterkalmanView::mean(Self) -> Double
+pub fn SignalfilterkalmanView::min(Self) -> Double
+pub fn SignalfilterkalmanView::scale(Self, Double) -> Self
+pub fn SignalfilterkalmanView::set(Self, Int32, Double) -> Self
+pub fn SignalfilterkalmanView::sum(Self) -> Double
+pub fn SignalfilterkalmanView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

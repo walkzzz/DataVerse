@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_flow_rate"
+
+// Values
+pub fn net_flow_rate_buffer_make(Int32) -> NetflowrateBuffer
+
+pub fn net_flow_rate_cluster_make(Int32) -> NetflowrateCluster
+
+pub fn net_flow_rate_cursor_make(Int32) -> NetflowrateCursor
+
+pub fn net_flow_rate_edge_make(Int32) -> NetflowrateEdge
+
+pub fn net_flow_rate_frame_make(Int32) -> NetflowrateFrame
+
+pub fn net_flow_rate_graphn_make(Int32) -> NetflowrateGraphN
+
+pub fn net_flow_rate_layer_make(Int32) -> NetflowrateLayer
+
+pub fn net_flow_rate_make_matrix(Int32, Int32, Double) -> NetflowrateMatrix
+
+pub fn net_flow_rate_make_point(Double, Double) -> NetflowratePoint
+
+pub fn net_flow_rate_make_point3(Double, Double, Double) -> NetflowratePoint
+
+pub fn net_flow_rate_make_series(Array[Double], String) -> NetflowrateSeries
+
+pub fn net_flow_rate_make_vector(Array[Double]) -> NetflowrateVector
+
+pub fn net_flow_rate_matrix_identity(Int32) -> NetflowrateMatrix
+
+pub fn net_flow_rate_model_make(Int32) -> NetflowrateModel
+
+pub fn net_flow_rate_node_make(Int32) -> NetflowrateNode
+
+pub fn net_flow_rate_path_make(Int32) -> NetflowratePath
+
+pub fn net_flow_rate_range_make(Int32) -> NetflowrateRange
+
+pub fn net_flow_rate_slice_make(Int32) -> NetflowrateSlice
+
+pub fn net_flow_rate_table_make(Int32) -> NetflowrateTable
+
+pub fn net_flow_rate_vector_zero(Int32) -> NetflowrateVector
+
+pub fn net_flow_rate_view_make(Int32) -> NetflowrateView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetflowrateBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowrateBuffer::add(Self, Self) -> Self
+pub fn NetflowrateBuffer::copy(Self) -> Self
+pub fn NetflowrateBuffer::fill(Self, Double) -> Self
+pub fn NetflowrateBuffer::get(Self, Int32) -> Double
+pub fn NetflowrateBuffer::len(Self) -> Int32
+pub fn NetflowrateBuffer::max(Self) -> Double
+pub fn NetflowrateBuffer::mean(Self) -> Double
+pub fn NetflowrateBuffer::min(Self) -> Double
+pub fn NetflowrateBuffer::scale(Self, Double) -> Self
+pub fn NetflowrateBuffer::set(Self, Int32, Double) -> Self
+pub fn NetflowrateBuffer::sum(Self) -> Double
+pub fn NetflowrateBuffer::to_string(Self) -> String
+
+pub(all) struct NetflowrateCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowrateCluster::add(Self, Self) -> Self
+pub fn NetflowrateCluster::copy(Self) -> Self
+pub fn NetflowrateCluster::fill(Self, Double) -> Self
+pub fn NetflowrateCluster::get(Self, Int32) -> Double
+pub fn NetflowrateCluster::len(Self) -> Int32
+pub fn NetflowrateCluster::max(Self) -> Double
+pub fn NetflowrateCluster::mean(Self) -> Double
+pub fn NetflowrateCluster::min(Self) -> Double
+pub fn NetflowrateCluster::scale(Self, Double) -> Self
+pub fn NetflowrateCluster::set(Self, Int32, Double) -> Self
+pub fn NetflowrateCluster::sum(Self) -> Double
+pub fn NetflowrateCluster::to_string(Self) -> String
+
+pub(all) struct NetflowrateCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowrateCursor::add(Self, Self) -> Self
+pub fn NetflowrateCursor::copy(Self) -> Self
+pub fn NetflowrateCursor::fill(Self, Double) -> Self
+pub fn NetflowrateCursor::get(Self, Int32) -> Double
+pub fn NetflowrateCursor::len(Self) -> Int32
+pub fn NetflowrateCursor::max(Self) -> Double
+pub fn NetflowrateCursor::mean(Self) -> Double
+pub fn NetflowrateCursor::min(Self) -> Double
+pub fn NetflowrateCursor::scale(Self, Double) -> Self
+pub fn NetflowrateCursor::set(Self, Int32, Double) -> Self
+pub fn NetflowrateCursor::sum(Self) -> Double
+pub fn NetflowrateCursor::to_string(Self) -> String
+
+pub(all) struct NetflowrateEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowrateEdge::add(Self, Self) -> Self
+pub fn NetflowrateEdge::copy(Self) -> Self
+pub fn NetflowrateEdge::fill(Self, Double) -> Self
+pub fn NetflowrateEdge::get(Self, Int32) -> Double
+pub fn NetflowrateEdge::len(Self) -> Int32
+pub fn NetflowrateEdge::max(Self) -> Double
+pub fn NetflowrateEdge::mean(Self) -> Double
+pub fn NetflowrateEdge::min(Self) -> Double
+pub fn NetflowrateEdge::scale(Self, Double) -> Self
+pub fn NetflowrateEdge::set(Self, Int32, Double) -> Self
+pub fn NetflowrateEdge::sum(Self) -> Double
+pub fn NetflowrateEdge::to_string(Self) -> String
+
+pub(all) struct NetflowrateFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowrateFrame::add(Self, Self) -> Self
+pub fn NetflowrateFrame::copy(Self) -> Self
+pub fn NetflowrateFrame::fill(Self, Double) -> Self
+pub fn NetflowrateFrame::get(Self, Int32) -> Double
+pub fn NetflowrateFrame::len(Self) -> Int32
+pub fn NetflowrateFrame::max(Self) -> Double
+pub fn NetflowrateFrame::mean(Self) -> Double
+pub fn NetflowrateFrame::min(Self) -> Double
+pub fn NetflowrateFrame::scale(Self, Double) -> Self
+pub fn NetflowrateFrame::set(Self, Int32, Double) -> Self
+pub fn NetflowrateFrame::sum(Self) -> Double
+pub fn NetflowrateFrame::to_string(Self) -> String
+
+pub(all) struct NetflowrateGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowrateGraphN::add(Self, Self) -> Self
+pub fn NetflowrateGraphN::copy(Self) -> Self
+pub fn NetflowrateGraphN::fill(Self, Double) -> Self
+pub fn NetflowrateGraphN::get(Self, Int32) -> Double
+pub fn NetflowrateGraphN::len(Self) -> Int32
+pub fn NetflowrateGraphN::max(Self) -> Double
+pub fn NetflowrateGraphN::mean(Self) -> Double
+pub fn NetflowrateGraphN::min(Self) -> Double
+pub fn NetflowrateGraphN::scale(Self, Double) -> Self
+pub fn NetflowrateGraphN::set(Self, Int32, Double) -> Self
+pub fn NetflowrateGraphN::sum(Self) -> Double
+pub fn NetflowrateGraphN::to_string(Self) -> String
+
+pub(all) struct NetflowrateLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowrateLayer::add(Self, Self) -> Self
+pub fn NetflowrateLayer::copy(Self) -> Self
+pub fn NetflowrateLayer::fill(Self, Double) -> Self
+pub fn NetflowrateLayer::get(Self, Int32) -> Double
+pub fn NetflowrateLayer::len(Self) -> Int32
+pub fn NetflowrateLayer::max(Self) -> Double
+pub fn NetflowrateLayer::mean(Self) -> Double
+pub fn NetflowrateLayer::min(Self) -> Double
+pub fn NetflowrateLayer::scale(Self, Double) -> Self
+pub fn NetflowrateLayer::set(Self, Int32, Double) -> Self
+pub fn NetflowrateLayer::sum(Self) -> Double
+pub fn NetflowrateLayer::to_string(Self) -> String
+
+pub(all) struct NetflowrateMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetflowrateMatrix::add(Self, Self) -> Self
+pub fn NetflowrateMatrix::det(Self) -> Double
+pub fn NetflowrateMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetflowrateMatrix::multiply(Self, Self) -> Self
+pub fn NetflowrateMatrix::norm(Self) -> Double
+pub fn NetflowrateMatrix::scale(Self, Double) -> Self
+pub fn NetflowrateMatrix::to_string(Self) -> String
+pub fn NetflowrateMatrix::trace(Self) -> Double
+pub fn NetflowrateMatrix::transpose(Self) -> Self
+
+pub(all) struct NetflowrateModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowrateModel::add(Self, Self) -> Self
+pub fn NetflowrateModel::copy(Self) -> Self
+pub fn NetflowrateModel::fill(Self, Double) -> Self
+pub fn NetflowrateModel::get(Self, Int32) -> Double
+pub fn NetflowrateModel::len(Self) -> Int32
+pub fn NetflowrateModel::max(Self) -> Double
+pub fn NetflowrateModel::mean(Self) -> Double
+pub fn NetflowrateModel::min(Self) -> Double
+pub fn NetflowrateModel::scale(Self, Double) -> Self
+pub fn NetflowrateModel::set(Self, Int32, Double) -> Self
+pub fn NetflowrateModel::sum(Self) -> Double
+pub fn NetflowrateModel::to_string(Self) -> String
+
+pub(all) struct NetflowrateNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowrateNode::add(Self, Self) -> Self
+pub fn NetflowrateNode::copy(Self) -> Self
+pub fn NetflowrateNode::fill(Self, Double) -> Self
+pub fn NetflowrateNode::get(Self, Int32) -> Double
+pub fn NetflowrateNode::len(Self) -> Int32
+pub fn NetflowrateNode::max(Self) -> Double
+pub fn NetflowrateNode::mean(Self) -> Double
+pub fn NetflowrateNode::min(Self) -> Double
+pub fn NetflowrateNode::scale(Self, Double) -> Self
+pub fn NetflowrateNode::set(Self, Int32, Double) -> Self
+pub fn NetflowrateNode::sum(Self) -> Double
+pub fn NetflowrateNode::to_string(Self) -> String
+
+pub(all) struct NetflowratePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowratePath::add(Self, Self) -> Self
+pub fn NetflowratePath::copy(Self) -> Self
+pub fn NetflowratePath::fill(Self, Double) -> Self
+pub fn NetflowratePath::get(Self, Int32) -> Double
+pub fn NetflowratePath::len(Self) -> Int32
+pub fn NetflowratePath::max(Self) -> Double
+pub fn NetflowratePath::mean(Self) -> Double
+pub fn NetflowratePath::min(Self) -> Double
+pub fn NetflowratePath::scale(Self, Double) -> Self
+pub fn NetflowratePath::set(Self, Int32, Double) -> Self
+pub fn NetflowratePath::sum(Self) -> Double
+pub fn NetflowratePath::to_string(Self) -> String
+
+pub(all) struct NetflowratePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetflowratePoint::add(Self, Self) -> Self
+pub fn NetflowratePoint::cross(Self, Self) -> Self
+pub fn NetflowratePoint::dist(Self, Self) -> Double
+pub fn NetflowratePoint::dot(Self, Self) -> Double
+pub fn NetflowratePoint::label(Self) -> Int32
+pub fn NetflowratePoint::lerp(Self, Self, Double) -> Self
+pub fn NetflowratePoint::mid(Self, Self) -> Self
+pub fn NetflowratePoint::negate(Self) -> Self
+pub fn NetflowratePoint::norm(Self) -> Double
+pub fn NetflowratePoint::normalize(Self) -> Self
+pub fn NetflowratePoint::scale(Self, Double) -> Self
+pub fn NetflowratePoint::sub(Self, Self) -> Self
+pub fn NetflowratePoint::to_string(Self) -> String
+pub fn NetflowratePoint::x(Self) -> Double
+pub fn NetflowratePoint::y(Self) -> Double
+pub fn NetflowratePoint::z(Self) -> Double
+
+pub(all) struct NetflowrateRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowrateRange::add(Self, Self) -> Self
+pub fn NetflowrateRange::copy(Self) -> Self
+pub fn NetflowrateRange::fill(Self, Double) -> Self
+pub fn NetflowrateRange::get(Self, Int32) -> Double
+pub fn NetflowrateRange::len(Self) -> Int32
+pub fn NetflowrateRange::max(Self) -> Double
+pub fn NetflowrateRange::mean(Self) -> Double
+pub fn NetflowrateRange::min(Self) -> Double
+pub fn NetflowrateRange::scale(Self, Double) -> Self
+pub fn NetflowrateRange::set(Self, Int32, Double) -> Self
+pub fn NetflowrateRange::sum(Self) -> Double
+pub fn NetflowrateRange::to_string(Self) -> String
+
+pub(all) struct NetflowrateSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetflowrateSeries::add(Self, Self) -> Self
+pub fn NetflowrateSeries::cumsum(Self) -> Self
+pub fn NetflowrateSeries::len(Self) -> Int32
+pub fn NetflowrateSeries::max(Self) -> Double
+pub fn NetflowrateSeries::mean(Self) -> Double
+pub fn NetflowrateSeries::median(Self) -> Double
+pub fn NetflowrateSeries::min(Self) -> Double
+pub fn NetflowrateSeries::normalize(Self) -> Self
+pub fn NetflowrateSeries::range(Self) -> Double
+pub fn NetflowrateSeries::scale(Self, Double) -> Self
+pub fn NetflowrateSeries::std(Self) -> Double
+pub fn NetflowrateSeries::sub(Self, Self) -> Self
+pub fn NetflowrateSeries::sum(Self) -> Double
+pub fn NetflowrateSeries::to_string(Self) -> String
+pub fn NetflowrateSeries::variance(Self) -> Double
+
+pub(all) struct NetflowrateSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowrateSlice::add(Self, Self) -> Self
+pub fn NetflowrateSlice::copy(Self) -> Self
+pub fn NetflowrateSlice::fill(Self, Double) -> Self
+pub fn NetflowrateSlice::get(Self, Int32) -> Double
+pub fn NetflowrateSlice::len(Self) -> Int32
+pub fn NetflowrateSlice::max(Self) -> Double
+pub fn NetflowrateSlice::mean(Self) -> Double
+pub fn NetflowrateSlice::min(Self) -> Double
+pub fn NetflowrateSlice::scale(Self, Double) -> Self
+pub fn NetflowrateSlice::set(Self, Int32, Double) -> Self
+pub fn NetflowrateSlice::sum(Self) -> Double
+pub fn NetflowrateSlice::to_string(Self) -> String
+
+pub(all) struct NetflowrateTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowrateTable::add(Self, Self) -> Self
+pub fn NetflowrateTable::copy(Self) -> Self
+pub fn NetflowrateTable::fill(Self, Double) -> Self
+pub fn NetflowrateTable::get(Self, Int32) -> Double
+pub fn NetflowrateTable::len(Self) -> Int32
+pub fn NetflowrateTable::max(Self) -> Double
+pub fn NetflowrateTable::mean(Self) -> Double
+pub fn NetflowrateTable::min(Self) -> Double
+pub fn NetflowrateTable::scale(Self, Double) -> Self
+pub fn NetflowrateTable::set(Self, Int32, Double) -> Self
+pub fn NetflowrateTable::sum(Self) -> Double
+pub fn NetflowrateTable::to_string(Self) -> String
+
+pub(all) struct NetflowrateVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetflowrateVector::add(Self, Self) -> Self
+pub fn NetflowrateVector::dist(Self, Self) -> Double
+pub fn NetflowrateVector::dot(Self, Self) -> Double
+pub fn NetflowrateVector::norm(Self) -> Double
+pub fn NetflowrateVector::normalize(Self) -> Self
+pub fn NetflowrateVector::scale(Self, Double) -> Self
+pub fn NetflowrateVector::sub(Self, Self) -> Self
+pub fn NetflowrateVector::to_string(Self) -> String
+
+pub(all) struct NetflowrateView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowrateView::add(Self, Self) -> Self
+pub fn NetflowrateView::copy(Self) -> Self
+pub fn NetflowrateView::fill(Self, Double) -> Self
+pub fn NetflowrateView::get(Self, Int32) -> Double
+pub fn NetflowrateView::len(Self) -> Int32
+pub fn NetflowrateView::max(Self) -> Double
+pub fn NetflowrateView::mean(Self) -> Double
+pub fn NetflowrateView::min(Self) -> Double
+pub fn NetflowrateView::scale(Self, Double) -> Self
+pub fn NetflowrateView::set(Self, Int32, Double) -> Self
+pub fn NetflowrateView::sum(Self) -> Double
+pub fn NetflowrateView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_tree_btree"
+
+// Values
+pub fn ds_tree_btree_buffer_make(Int32) -> DstreebtreeBuffer
+
+pub fn ds_tree_btree_cluster_make(Int32) -> DstreebtreeCluster
+
+pub fn ds_tree_btree_cursor_make(Int32) -> DstreebtreeCursor
+
+pub fn ds_tree_btree_edge_make(Int32) -> DstreebtreeEdge
+
+pub fn ds_tree_btree_frame_make(Int32) -> DstreebtreeFrame
+
+pub fn ds_tree_btree_graphn_make(Int32) -> DstreebtreeGraphN
+
+pub fn ds_tree_btree_layer_make(Int32) -> DstreebtreeLayer
+
+pub fn ds_tree_btree_make_matrix(Int32, Int32, Double) -> DstreebtreeMatrix
+
+pub fn ds_tree_btree_make_point(Double, Double) -> DstreebtreePoint
+
+pub fn ds_tree_btree_make_point3(Double, Double, Double) -> DstreebtreePoint
+
+pub fn ds_tree_btree_make_series(Array[Double], String) -> DstreebtreeSeries
+
+pub fn ds_tree_btree_make_vector(Array[Double]) -> DstreebtreeVector
+
+pub fn ds_tree_btree_matrix_identity(Int32) -> DstreebtreeMatrix
+
+pub fn ds_tree_btree_model_make(Int32) -> DstreebtreeModel
+
+pub fn ds_tree_btree_node_make(Int32) -> DstreebtreeNode
+
+pub fn ds_tree_btree_path_make(Int32) -> DstreebtreePath
+
+pub fn ds_tree_btree_range_make(Int32) -> DstreebtreeRange
+
+pub fn ds_tree_btree_slice_make(Int32) -> DstreebtreeSlice
+
+pub fn ds_tree_btree_table_make(Int32) -> DstreebtreeTable
+
+pub fn ds_tree_btree_vector_zero(Int32) -> DstreebtreeVector
+
+pub fn ds_tree_btree_view_make(Int32) -> DstreebtreeView
+
+// Errors
+
+// Types and methods
+pub(all) struct DstreebtreeBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebtreeBuffer::add(Self, Self) -> Self
+pub fn DstreebtreeBuffer::copy(Self) -> Self
+pub fn DstreebtreeBuffer::fill(Self, Double) -> Self
+pub fn DstreebtreeBuffer::get(Self, Int32) -> Double
+pub fn DstreebtreeBuffer::len(Self) -> Int32
+pub fn DstreebtreeBuffer::max(Self) -> Double
+pub fn DstreebtreeBuffer::mean(Self) -> Double
+pub fn DstreebtreeBuffer::min(Self) -> Double
+pub fn DstreebtreeBuffer::scale(Self, Double) -> Self
+pub fn DstreebtreeBuffer::set(Self, Int32, Double) -> Self
+pub fn DstreebtreeBuffer::sum(Self) -> Double
+pub fn DstreebtreeBuffer::to_string(Self) -> String
+
+pub(all) struct DstreebtreeCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebtreeCluster::add(Self, Self) -> Self
+pub fn DstreebtreeCluster::copy(Self) -> Self
+pub fn DstreebtreeCluster::fill(Self, Double) -> Self
+pub fn DstreebtreeCluster::get(Self, Int32) -> Double
+pub fn DstreebtreeCluster::len(Self) -> Int32
+pub fn DstreebtreeCluster::max(Self) -> Double
+pub fn DstreebtreeCluster::mean(Self) -> Double
+pub fn DstreebtreeCluster::min(Self) -> Double
+pub fn DstreebtreeCluster::scale(Self, Double) -> Self
+pub fn DstreebtreeCluster::set(Self, Int32, Double) -> Self
+pub fn DstreebtreeCluster::sum(Self) -> Double
+pub fn DstreebtreeCluster::to_string(Self) -> String
+
+pub(all) struct DstreebtreeCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebtreeCursor::add(Self, Self) -> Self
+pub fn DstreebtreeCursor::copy(Self) -> Self
+pub fn DstreebtreeCursor::fill(Self, Double) -> Self
+pub fn DstreebtreeCursor::get(Self, Int32) -> Double
+pub fn DstreebtreeCursor::len(Self) -> Int32
+pub fn DstreebtreeCursor::max(Self) -> Double
+pub fn DstreebtreeCursor::mean(Self) -> Double
+pub fn DstreebtreeCursor::min(Self) -> Double
+pub fn DstreebtreeCursor::scale(Self, Double) -> Self
+pub fn DstreebtreeCursor::set(Self, Int32, Double) -> Self
+pub fn DstreebtreeCursor::sum(Self) -> Double
+pub fn DstreebtreeCursor::to_string(Self) -> String
+
+pub(all) struct DstreebtreeEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebtreeEdge::add(Self, Self) -> Self
+pub fn DstreebtreeEdge::copy(Self) -> Self
+pub fn DstreebtreeEdge::fill(Self, Double) -> Self
+pub fn DstreebtreeEdge::get(Self, Int32) -> Double
+pub fn DstreebtreeEdge::len(Self) -> Int32
+pub fn DstreebtreeEdge::max(Self) -> Double
+pub fn DstreebtreeEdge::mean(Self) -> Double
+pub fn DstreebtreeEdge::min(Self) -> Double
+pub fn DstreebtreeEdge::scale(Self, Double) -> Self
+pub fn DstreebtreeEdge::set(Self, Int32, Double) -> Self
+pub fn DstreebtreeEdge::sum(Self) -> Double
+pub fn DstreebtreeEdge::to_string(Self) -> String
+
+pub(all) struct DstreebtreeFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebtreeFrame::add(Self, Self) -> Self
+pub fn DstreebtreeFrame::copy(Self) -> Self
+pub fn DstreebtreeFrame::fill(Self, Double) -> Self
+pub fn DstreebtreeFrame::get(Self, Int32) -> Double
+pub fn DstreebtreeFrame::len(Self) -> Int32
+pub fn DstreebtreeFrame::max(Self) -> Double
+pub fn DstreebtreeFrame::mean(Self) -> Double
+pub fn DstreebtreeFrame::min(Self) -> Double
+pub fn DstreebtreeFrame::scale(Self, Double) -> Self
+pub fn DstreebtreeFrame::set(Self, Int32, Double) -> Self
+pub fn DstreebtreeFrame::sum(Self) -> Double
+pub fn DstreebtreeFrame::to_string(Self) -> String
+
+pub(all) struct DstreebtreeGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebtreeGraphN::add(Self, Self) -> Self
+pub fn DstreebtreeGraphN::copy(Self) -> Self
+pub fn DstreebtreeGraphN::fill(Self, Double) -> Self
+pub fn DstreebtreeGraphN::get(Self, Int32) -> Double
+pub fn DstreebtreeGraphN::len(Self) -> Int32
+pub fn DstreebtreeGraphN::max(Self) -> Double
+pub fn DstreebtreeGraphN::mean(Self) -> Double
+pub fn DstreebtreeGraphN::min(Self) -> Double
+pub fn DstreebtreeGraphN::scale(Self, Double) -> Self
+pub fn DstreebtreeGraphN::set(Self, Int32, Double) -> Self
+pub fn DstreebtreeGraphN::sum(Self) -> Double
+pub fn DstreebtreeGraphN::to_string(Self) -> String
+
+pub(all) struct DstreebtreeLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebtreeLayer::add(Self, Self) -> Self
+pub fn DstreebtreeLayer::copy(Self) -> Self
+pub fn DstreebtreeLayer::fill(Self, Double) -> Self
+pub fn DstreebtreeLayer::get(Self, Int32) -> Double
+pub fn DstreebtreeLayer::len(Self) -> Int32
+pub fn DstreebtreeLayer::max(Self) -> Double
+pub fn DstreebtreeLayer::mean(Self) -> Double
+pub fn DstreebtreeLayer::min(Self) -> Double
+pub fn DstreebtreeLayer::scale(Self, Double) -> Self
+pub fn DstreebtreeLayer::set(Self, Int32, Double) -> Self
+pub fn DstreebtreeLayer::sum(Self) -> Double
+pub fn DstreebtreeLayer::to_string(Self) -> String
+
+pub(all) struct DstreebtreeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DstreebtreeMatrix::add(Self, Self) -> Self
+pub fn DstreebtreeMatrix::det(Self) -> Double
+pub fn DstreebtreeMatrix::get(Self, Int32, Int32) -> Double
+pub fn DstreebtreeMatrix::multiply(Self, Self) -> Self
+pub fn DstreebtreeMatrix::norm(Self) -> Double
+pub fn DstreebtreeMatrix::scale(Self, Double) -> Self
+pub fn DstreebtreeMatrix::to_string(Self) -> String
+pub fn DstreebtreeMatrix::trace(Self) -> Double
+pub fn DstreebtreeMatrix::transpose(Self) -> Self
+
+pub(all) struct DstreebtreeModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebtreeModel::add(Self, Self) -> Self
+pub fn DstreebtreeModel::copy(Self) -> Self
+pub fn DstreebtreeModel::fill(Self, Double) -> Self
+pub fn DstreebtreeModel::get(Self, Int32) -> Double
+pub fn DstreebtreeModel::len(Self) -> Int32
+pub fn DstreebtreeModel::max(Self) -> Double
+pub fn DstreebtreeModel::mean(Self) -> Double
+pub fn DstreebtreeModel::min(Self) -> Double
+pub fn DstreebtreeModel::scale(Self, Double) -> Self
+pub fn DstreebtreeModel::set(Self, Int32, Double) -> Self
+pub fn DstreebtreeModel::sum(Self) -> Double
+pub fn DstreebtreeModel::to_string(Self) -> String
+
+pub(all) struct DstreebtreeNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebtreeNode::add(Self, Self) -> Self
+pub fn DstreebtreeNode::copy(Self) -> Self
+pub fn DstreebtreeNode::fill(Self, Double) -> Self
+pub fn DstreebtreeNode::get(Self, Int32) -> Double
+pub fn DstreebtreeNode::len(Self) -> Int32
+pub fn DstreebtreeNode::max(Self) -> Double
+pub fn DstreebtreeNode::mean(Self) -> Double
+pub fn DstreebtreeNode::min(Self) -> Double
+pub fn DstreebtreeNode::scale(Self, Double) -> Self
+pub fn DstreebtreeNode::set(Self, Int32, Double) -> Self
+pub fn DstreebtreeNode::sum(Self) -> Double
+pub fn DstreebtreeNode::to_string(Self) -> String
+
+pub(all) struct DstreebtreePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebtreePath::add(Self, Self) -> Self
+pub fn DstreebtreePath::copy(Self) -> Self
+pub fn DstreebtreePath::fill(Self, Double) -> Self
+pub fn DstreebtreePath::get(Self, Int32) -> Double
+pub fn DstreebtreePath::len(Self) -> Int32
+pub fn DstreebtreePath::max(Self) -> Double
+pub fn DstreebtreePath::mean(Self) -> Double
+pub fn DstreebtreePath::min(Self) -> Double
+pub fn DstreebtreePath::scale(Self, Double) -> Self
+pub fn DstreebtreePath::set(Self, Int32, Double) -> Self
+pub fn DstreebtreePath::sum(Self) -> Double
+pub fn DstreebtreePath::to_string(Self) -> String
+
+pub(all) struct DstreebtreePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DstreebtreePoint::add(Self, Self) -> Self
+pub fn DstreebtreePoint::cross(Self, Self) -> Self
+pub fn DstreebtreePoint::dist(Self, Self) -> Double
+pub fn DstreebtreePoint::dot(Self, Self) -> Double
+pub fn DstreebtreePoint::label(Self) -> Int32
+pub fn DstreebtreePoint::lerp(Self, Self, Double) -> Self
+pub fn DstreebtreePoint::mid(Self, Self) -> Self
+pub fn DstreebtreePoint::negate(Self) -> Self
+pub fn DstreebtreePoint::norm(Self) -> Double
+pub fn DstreebtreePoint::normalize(Self) -> Self
+pub fn DstreebtreePoint::scale(Self, Double) -> Self
+pub fn DstreebtreePoint::sub(Self, Self) -> Self
+pub fn DstreebtreePoint::to_string(Self) -> String
+pub fn DstreebtreePoint::x(Self) -> Double
+pub fn DstreebtreePoint::y(Self) -> Double
+pub fn DstreebtreePoint::z(Self) -> Double
+
+pub(all) struct DstreebtreeRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebtreeRange::add(Self, Self) -> Self
+pub fn DstreebtreeRange::copy(Self) -> Self
+pub fn DstreebtreeRange::fill(Self, Double) -> Self
+pub fn DstreebtreeRange::get(Self, Int32) -> Double
+pub fn DstreebtreeRange::len(Self) -> Int32
+pub fn DstreebtreeRange::max(Self) -> Double
+pub fn DstreebtreeRange::mean(Self) -> Double
+pub fn DstreebtreeRange::min(Self) -> Double
+pub fn DstreebtreeRange::scale(Self, Double) -> Self
+pub fn DstreebtreeRange::set(Self, Int32, Double) -> Self
+pub fn DstreebtreeRange::sum(Self) -> Double
+pub fn DstreebtreeRange::to_string(Self) -> String
+
+pub(all) struct DstreebtreeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DstreebtreeSeries::add(Self, Self) -> Self
+pub fn DstreebtreeSeries::cumsum(Self) -> Self
+pub fn DstreebtreeSeries::len(Self) -> Int32
+pub fn DstreebtreeSeries::max(Self) -> Double
+pub fn DstreebtreeSeries::mean(Self) -> Double
+pub fn DstreebtreeSeries::median(Self) -> Double
+pub fn DstreebtreeSeries::min(Self) -> Double
+pub fn DstreebtreeSeries::normalize(Self) -> Self
+pub fn DstreebtreeSeries::range(Self) -> Double
+pub fn DstreebtreeSeries::scale(Self, Double) -> Self
+pub fn DstreebtreeSeries::std(Self) -> Double
+pub fn DstreebtreeSeries::sub(Self, Self) -> Self
+pub fn DstreebtreeSeries::sum(Self) -> Double
+pub fn DstreebtreeSeries::to_string(Self) -> String
+pub fn DstreebtreeSeries::variance(Self) -> Double
+
+pub(all) struct DstreebtreeSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebtreeSlice::add(Self, Self) -> Self
+pub fn DstreebtreeSlice::copy(Self) -> Self
+pub fn DstreebtreeSlice::fill(Self, Double) -> Self
+pub fn DstreebtreeSlice::get(Self, Int32) -> Double
+pub fn DstreebtreeSlice::len(Self) -> Int32
+pub fn DstreebtreeSlice::max(Self) -> Double
+pub fn DstreebtreeSlice::mean(Self) -> Double
+pub fn DstreebtreeSlice::min(Self) -> Double
+pub fn DstreebtreeSlice::scale(Self, Double) -> Self
+pub fn DstreebtreeSlice::set(Self, Int32, Double) -> Self
+pub fn DstreebtreeSlice::sum(Self) -> Double
+pub fn DstreebtreeSlice::to_string(Self) -> String
+
+pub(all) struct DstreebtreeTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebtreeTable::add(Self, Self) -> Self
+pub fn DstreebtreeTable::copy(Self) -> Self
+pub fn DstreebtreeTable::fill(Self, Double) -> Self
+pub fn DstreebtreeTable::get(Self, Int32) -> Double
+pub fn DstreebtreeTable::len(Self) -> Int32
+pub fn DstreebtreeTable::max(Self) -> Double
+pub fn DstreebtreeTable::mean(Self) -> Double
+pub fn DstreebtreeTable::min(Self) -> Double
+pub fn DstreebtreeTable::scale(Self, Double) -> Self
+pub fn DstreebtreeTable::set(Self, Int32, Double) -> Self
+pub fn DstreebtreeTable::sum(Self) -> Double
+pub fn DstreebtreeTable::to_string(Self) -> String
+
+pub(all) struct DstreebtreeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DstreebtreeVector::add(Self, Self) -> Self
+pub fn DstreebtreeVector::dist(Self, Self) -> Double
+pub fn DstreebtreeVector::dot(Self, Self) -> Double
+pub fn DstreebtreeVector::norm(Self) -> Double
+pub fn DstreebtreeVector::normalize(Self) -> Self
+pub fn DstreebtreeVector::scale(Self, Double) -> Self
+pub fn DstreebtreeVector::sub(Self, Self) -> Self
+pub fn DstreebtreeVector::to_string(Self) -> String
+
+pub(all) struct DstreebtreeView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebtreeView::add(Self, Self) -> Self
+pub fn DstreebtreeView::copy(Self) -> Self
+pub fn DstreebtreeView::fill(Self, Double) -> Self
+pub fn DstreebtreeView::get(Self, Int32) -> Double
+pub fn DstreebtreeView::len(Self) -> Int32
+pub fn DstreebtreeView::max(Self) -> Double
+pub fn DstreebtreeView::mean(Self) -> Double
+pub fn DstreebtreeView::min(Self) -> Double
+pub fn DstreebtreeView::scale(Self, Double) -> Self
+pub fn DstreebtreeView::set(Self, Int32, Double) -> Self
+pub fn DstreebtreeView::sum(Self) -> Double
+pub fn DstreebtreeView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

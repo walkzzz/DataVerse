@@ -1,0 +1,42 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datair/ir_pipeline"
+
+import {
+  "dataverse/datair/ir_core",
+  "dataverse/datair/ir_operator",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn ir_pipeline_id() -> String
+
+// Errors
+
+// Types and methods
+pub struct DAGEdge {
+  from : @ir_core.IRNodeId
+  to : @ir_core.IRNodeId
+} derive(Eq, @debug.Debug)
+pub fn DAGEdge::equal(Self, Self) -> Bool
+pub fn DAGEdge::new(@ir_core.IRNodeId, @ir_core.IRNodeId) -> Self
+pub fn DAGEdge::not_equal(Self, Self) -> Bool
+pub fn DAGEdge::to_repr(Self) -> @debug.Repr
+
+pub struct PipelineIR {
+  nodes : Array[@ir_operator.OperatorIR]
+  edges : Array[DAGEdge]
+} derive(Eq, @debug.Debug)
+pub fn PipelineIR::add_edge(Self, DAGEdge) -> Self
+pub fn PipelineIR::add_node(Self, @ir_operator.OperatorIR) -> Self
+pub fn PipelineIR::edge_count(Self) -> Int32
+pub fn PipelineIR::empty() -> Self
+pub fn PipelineIR::equal(Self, Self) -> Bool
+pub fn PipelineIR::new(Array[@ir_operator.OperatorIR], Array[DAGEdge]) -> Self
+pub fn PipelineIR::node_count(Self) -> Int32
+pub fn PipelineIR::not_equal(Self, Self) -> Bool
+pub fn PipelineIR::to_repr(Self) -> @debug.Repr
+pub fn PipelineIR::topo_order(Self) -> Array[@ir_core.IRNodeId]
+
+// Type aliases
+
+// Traits

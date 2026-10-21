@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/bio_phylo_reconcile"
+
+// Values
+pub fn bio_phylo_reconcile_buffer_make(Int32) -> BiophyloreconcileBuffer
+
+pub fn bio_phylo_reconcile_cluster_make(Int32) -> BiophyloreconcileCluster
+
+pub fn bio_phylo_reconcile_cursor_make(Int32) -> BiophyloreconcileCursor
+
+pub fn bio_phylo_reconcile_edge_make(Int32) -> BiophyloreconcileEdge
+
+pub fn bio_phylo_reconcile_frame_make(Int32) -> BiophyloreconcileFrame
+
+pub fn bio_phylo_reconcile_graphn_make(Int32) -> BiophyloreconcileGraphN
+
+pub fn bio_phylo_reconcile_layer_make(Int32) -> BiophyloreconcileLayer
+
+pub fn bio_phylo_reconcile_make_matrix(Int32, Int32, Double) -> BiophyloreconcileMatrix
+
+pub fn bio_phylo_reconcile_make_point(Double, Double) -> BiophyloreconcilePoint
+
+pub fn bio_phylo_reconcile_make_point3(Double, Double, Double) -> BiophyloreconcilePoint
+
+pub fn bio_phylo_reconcile_make_series(Array[Double], String) -> BiophyloreconcileSeries
+
+pub fn bio_phylo_reconcile_make_vector(Array[Double]) -> BiophyloreconcileVector
+
+pub fn bio_phylo_reconcile_matrix_identity(Int32) -> BiophyloreconcileMatrix
+
+pub fn bio_phylo_reconcile_model_make(Int32) -> BiophyloreconcileModel
+
+pub fn bio_phylo_reconcile_node_make(Int32) -> BiophyloreconcileNode
+
+pub fn bio_phylo_reconcile_path_make(Int32) -> BiophyloreconcilePath
+
+pub fn bio_phylo_reconcile_range_make(Int32) -> BiophyloreconcileRange
+
+pub fn bio_phylo_reconcile_slice_make(Int32) -> BiophyloreconcileSlice
+
+pub fn bio_phylo_reconcile_table_make(Int32) -> BiophyloreconcileTable
+
+pub fn bio_phylo_reconcile_vector_zero(Int32) -> BiophyloreconcileVector
+
+pub fn bio_phylo_reconcile_view_make(Int32) -> BiophyloreconcileView
+
+// Errors
+
+// Types and methods
+pub(all) struct BiophyloreconcileBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloreconcileBuffer::add(Self, Self) -> Self
+pub fn BiophyloreconcileBuffer::copy(Self) -> Self
+pub fn BiophyloreconcileBuffer::fill(Self, Double) -> Self
+pub fn BiophyloreconcileBuffer::get(Self, Int32) -> Double
+pub fn BiophyloreconcileBuffer::len(Self) -> Int32
+pub fn BiophyloreconcileBuffer::max(Self) -> Double
+pub fn BiophyloreconcileBuffer::mean(Self) -> Double
+pub fn BiophyloreconcileBuffer::min(Self) -> Double
+pub fn BiophyloreconcileBuffer::scale(Self, Double) -> Self
+pub fn BiophyloreconcileBuffer::set(Self, Int32, Double) -> Self
+pub fn BiophyloreconcileBuffer::sum(Self) -> Double
+pub fn BiophyloreconcileBuffer::to_string(Self) -> String
+
+pub(all) struct BiophyloreconcileCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloreconcileCluster::add(Self, Self) -> Self
+pub fn BiophyloreconcileCluster::copy(Self) -> Self
+pub fn BiophyloreconcileCluster::fill(Self, Double) -> Self
+pub fn BiophyloreconcileCluster::get(Self, Int32) -> Double
+pub fn BiophyloreconcileCluster::len(Self) -> Int32
+pub fn BiophyloreconcileCluster::max(Self) -> Double
+pub fn BiophyloreconcileCluster::mean(Self) -> Double
+pub fn BiophyloreconcileCluster::min(Self) -> Double
+pub fn BiophyloreconcileCluster::scale(Self, Double) -> Self
+pub fn BiophyloreconcileCluster::set(Self, Int32, Double) -> Self
+pub fn BiophyloreconcileCluster::sum(Self) -> Double
+pub fn BiophyloreconcileCluster::to_string(Self) -> String
+
+pub(all) struct BiophyloreconcileCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloreconcileCursor::add(Self, Self) -> Self
+pub fn BiophyloreconcileCursor::copy(Self) -> Self
+pub fn BiophyloreconcileCursor::fill(Self, Double) -> Self
+pub fn BiophyloreconcileCursor::get(Self, Int32) -> Double
+pub fn BiophyloreconcileCursor::len(Self) -> Int32
+pub fn BiophyloreconcileCursor::max(Self) -> Double
+pub fn BiophyloreconcileCursor::mean(Self) -> Double
+pub fn BiophyloreconcileCursor::min(Self) -> Double
+pub fn BiophyloreconcileCursor::scale(Self, Double) -> Self
+pub fn BiophyloreconcileCursor::set(Self, Int32, Double) -> Self
+pub fn BiophyloreconcileCursor::sum(Self) -> Double
+pub fn BiophyloreconcileCursor::to_string(Self) -> String
+
+pub(all) struct BiophyloreconcileEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloreconcileEdge::add(Self, Self) -> Self
+pub fn BiophyloreconcileEdge::copy(Self) -> Self
+pub fn BiophyloreconcileEdge::fill(Self, Double) -> Self
+pub fn BiophyloreconcileEdge::get(Self, Int32) -> Double
+pub fn BiophyloreconcileEdge::len(Self) -> Int32
+pub fn BiophyloreconcileEdge::max(Self) -> Double
+pub fn BiophyloreconcileEdge::mean(Self) -> Double
+pub fn BiophyloreconcileEdge::min(Self) -> Double
+pub fn BiophyloreconcileEdge::scale(Self, Double) -> Self
+pub fn BiophyloreconcileEdge::set(Self, Int32, Double) -> Self
+pub fn BiophyloreconcileEdge::sum(Self) -> Double
+pub fn BiophyloreconcileEdge::to_string(Self) -> String
+
+pub(all) struct BiophyloreconcileFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloreconcileFrame::add(Self, Self) -> Self
+pub fn BiophyloreconcileFrame::copy(Self) -> Self
+pub fn BiophyloreconcileFrame::fill(Self, Double) -> Self
+pub fn BiophyloreconcileFrame::get(Self, Int32) -> Double
+pub fn BiophyloreconcileFrame::len(Self) -> Int32
+pub fn BiophyloreconcileFrame::max(Self) -> Double
+pub fn BiophyloreconcileFrame::mean(Self) -> Double
+pub fn BiophyloreconcileFrame::min(Self) -> Double
+pub fn BiophyloreconcileFrame::scale(Self, Double) -> Self
+pub fn BiophyloreconcileFrame::set(Self, Int32, Double) -> Self
+pub fn BiophyloreconcileFrame::sum(Self) -> Double
+pub fn BiophyloreconcileFrame::to_string(Self) -> String
+
+pub(all) struct BiophyloreconcileGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloreconcileGraphN::add(Self, Self) -> Self
+pub fn BiophyloreconcileGraphN::copy(Self) -> Self
+pub fn BiophyloreconcileGraphN::fill(Self, Double) -> Self
+pub fn BiophyloreconcileGraphN::get(Self, Int32) -> Double
+pub fn BiophyloreconcileGraphN::len(Self) -> Int32
+pub fn BiophyloreconcileGraphN::max(Self) -> Double
+pub fn BiophyloreconcileGraphN::mean(Self) -> Double
+pub fn BiophyloreconcileGraphN::min(Self) -> Double
+pub fn BiophyloreconcileGraphN::scale(Self, Double) -> Self
+pub fn BiophyloreconcileGraphN::set(Self, Int32, Double) -> Self
+pub fn BiophyloreconcileGraphN::sum(Self) -> Double
+pub fn BiophyloreconcileGraphN::to_string(Self) -> String
+
+pub(all) struct BiophyloreconcileLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloreconcileLayer::add(Self, Self) -> Self
+pub fn BiophyloreconcileLayer::copy(Self) -> Self
+pub fn BiophyloreconcileLayer::fill(Self, Double) -> Self
+pub fn BiophyloreconcileLayer::get(Self, Int32) -> Double
+pub fn BiophyloreconcileLayer::len(Self) -> Int32
+pub fn BiophyloreconcileLayer::max(Self) -> Double
+pub fn BiophyloreconcileLayer::mean(Self) -> Double
+pub fn BiophyloreconcileLayer::min(Self) -> Double
+pub fn BiophyloreconcileLayer::scale(Self, Double) -> Self
+pub fn BiophyloreconcileLayer::set(Self, Int32, Double) -> Self
+pub fn BiophyloreconcileLayer::sum(Self) -> Double
+pub fn BiophyloreconcileLayer::to_string(Self) -> String
+
+pub(all) struct BiophyloreconcileMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn BiophyloreconcileMatrix::add(Self, Self) -> Self
+pub fn BiophyloreconcileMatrix::det(Self) -> Double
+pub fn BiophyloreconcileMatrix::get(Self, Int32, Int32) -> Double
+pub fn BiophyloreconcileMatrix::multiply(Self, Self) -> Self
+pub fn BiophyloreconcileMatrix::norm(Self) -> Double
+pub fn BiophyloreconcileMatrix::scale(Self, Double) -> Self
+pub fn BiophyloreconcileMatrix::to_string(Self) -> String
+pub fn BiophyloreconcileMatrix::trace(Self) -> Double
+pub fn BiophyloreconcileMatrix::transpose(Self) -> Self
+
+pub(all) struct BiophyloreconcileModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloreconcileModel::add(Self, Self) -> Self
+pub fn BiophyloreconcileModel::copy(Self) -> Self
+pub fn BiophyloreconcileModel::fill(Self, Double) -> Self
+pub fn BiophyloreconcileModel::get(Self, Int32) -> Double
+pub fn BiophyloreconcileModel::len(Self) -> Int32
+pub fn BiophyloreconcileModel::max(Self) -> Double
+pub fn BiophyloreconcileModel::mean(Self) -> Double
+pub fn BiophyloreconcileModel::min(Self) -> Double
+pub fn BiophyloreconcileModel::scale(Self, Double) -> Self
+pub fn BiophyloreconcileModel::set(Self, Int32, Double) -> Self
+pub fn BiophyloreconcileModel::sum(Self) -> Double
+pub fn BiophyloreconcileModel::to_string(Self) -> String
+
+pub(all) struct BiophyloreconcileNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloreconcileNode::add(Self, Self) -> Self
+pub fn BiophyloreconcileNode::copy(Self) -> Self
+pub fn BiophyloreconcileNode::fill(Self, Double) -> Self
+pub fn BiophyloreconcileNode::get(Self, Int32) -> Double
+pub fn BiophyloreconcileNode::len(Self) -> Int32
+pub fn BiophyloreconcileNode::max(Self) -> Double
+pub fn BiophyloreconcileNode::mean(Self) -> Double
+pub fn BiophyloreconcileNode::min(Self) -> Double
+pub fn BiophyloreconcileNode::scale(Self, Double) -> Self
+pub fn BiophyloreconcileNode::set(Self, Int32, Double) -> Self
+pub fn BiophyloreconcileNode::sum(Self) -> Double
+pub fn BiophyloreconcileNode::to_string(Self) -> String
+
+pub(all) struct BiophyloreconcilePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloreconcilePath::add(Self, Self) -> Self
+pub fn BiophyloreconcilePath::copy(Self) -> Self
+pub fn BiophyloreconcilePath::fill(Self, Double) -> Self
+pub fn BiophyloreconcilePath::get(Self, Int32) -> Double
+pub fn BiophyloreconcilePath::len(Self) -> Int32
+pub fn BiophyloreconcilePath::max(Self) -> Double
+pub fn BiophyloreconcilePath::mean(Self) -> Double
+pub fn BiophyloreconcilePath::min(Self) -> Double
+pub fn BiophyloreconcilePath::scale(Self, Double) -> Self
+pub fn BiophyloreconcilePath::set(Self, Int32, Double) -> Self
+pub fn BiophyloreconcilePath::sum(Self) -> Double
+pub fn BiophyloreconcilePath::to_string(Self) -> String
+
+pub(all) struct BiophyloreconcilePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn BiophyloreconcilePoint::add(Self, Self) -> Self
+pub fn BiophyloreconcilePoint::cross(Self, Self) -> Self
+pub fn BiophyloreconcilePoint::dist(Self, Self) -> Double
+pub fn BiophyloreconcilePoint::dot(Self, Self) -> Double
+pub fn BiophyloreconcilePoint::label(Self) -> Int32
+pub fn BiophyloreconcilePoint::lerp(Self, Self, Double) -> Self
+pub fn BiophyloreconcilePoint::mid(Self, Self) -> Self
+pub fn BiophyloreconcilePoint::negate(Self) -> Self
+pub fn BiophyloreconcilePoint::norm(Self) -> Double
+pub fn BiophyloreconcilePoint::normalize(Self) -> Self
+pub fn BiophyloreconcilePoint::scale(Self, Double) -> Self
+pub fn BiophyloreconcilePoint::sub(Self, Self) -> Self
+pub fn BiophyloreconcilePoint::to_string(Self) -> String
+pub fn BiophyloreconcilePoint::x(Self) -> Double
+pub fn BiophyloreconcilePoint::y(Self) -> Double
+pub fn BiophyloreconcilePoint::z(Self) -> Double
+
+pub(all) struct BiophyloreconcileRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloreconcileRange::add(Self, Self) -> Self
+pub fn BiophyloreconcileRange::copy(Self) -> Self
+pub fn BiophyloreconcileRange::fill(Self, Double) -> Self
+pub fn BiophyloreconcileRange::get(Self, Int32) -> Double
+pub fn BiophyloreconcileRange::len(Self) -> Int32
+pub fn BiophyloreconcileRange::max(Self) -> Double
+pub fn BiophyloreconcileRange::mean(Self) -> Double
+pub fn BiophyloreconcileRange::min(Self) -> Double
+pub fn BiophyloreconcileRange::scale(Self, Double) -> Self
+pub fn BiophyloreconcileRange::set(Self, Int32, Double) -> Self
+pub fn BiophyloreconcileRange::sum(Self) -> Double
+pub fn BiophyloreconcileRange::to_string(Self) -> String
+
+pub(all) struct BiophyloreconcileSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn BiophyloreconcileSeries::add(Self, Self) -> Self
+pub fn BiophyloreconcileSeries::cumsum(Self) -> Self
+pub fn BiophyloreconcileSeries::len(Self) -> Int32
+pub fn BiophyloreconcileSeries::max(Self) -> Double
+pub fn BiophyloreconcileSeries::mean(Self) -> Double
+pub fn BiophyloreconcileSeries::median(Self) -> Double
+pub fn BiophyloreconcileSeries::min(Self) -> Double
+pub fn BiophyloreconcileSeries::normalize(Self) -> Self
+pub fn BiophyloreconcileSeries::range(Self) -> Double
+pub fn BiophyloreconcileSeries::scale(Self, Double) -> Self
+pub fn BiophyloreconcileSeries::std(Self) -> Double
+pub fn BiophyloreconcileSeries::sub(Self, Self) -> Self
+pub fn BiophyloreconcileSeries::sum(Self) -> Double
+pub fn BiophyloreconcileSeries::to_string(Self) -> String
+pub fn BiophyloreconcileSeries::variance(Self) -> Double
+
+pub(all) struct BiophyloreconcileSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloreconcileSlice::add(Self, Self) -> Self
+pub fn BiophyloreconcileSlice::copy(Self) -> Self
+pub fn BiophyloreconcileSlice::fill(Self, Double) -> Self
+pub fn BiophyloreconcileSlice::get(Self, Int32) -> Double
+pub fn BiophyloreconcileSlice::len(Self) -> Int32
+pub fn BiophyloreconcileSlice::max(Self) -> Double
+pub fn BiophyloreconcileSlice::mean(Self) -> Double
+pub fn BiophyloreconcileSlice::min(Self) -> Double
+pub fn BiophyloreconcileSlice::scale(Self, Double) -> Self
+pub fn BiophyloreconcileSlice::set(Self, Int32, Double) -> Self
+pub fn BiophyloreconcileSlice::sum(Self) -> Double
+pub fn BiophyloreconcileSlice::to_string(Self) -> String
+
+pub(all) struct BiophyloreconcileTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloreconcileTable::add(Self, Self) -> Self
+pub fn BiophyloreconcileTable::copy(Self) -> Self
+pub fn BiophyloreconcileTable::fill(Self, Double) -> Self
+pub fn BiophyloreconcileTable::get(Self, Int32) -> Double
+pub fn BiophyloreconcileTable::len(Self) -> Int32
+pub fn BiophyloreconcileTable::max(Self) -> Double
+pub fn BiophyloreconcileTable::mean(Self) -> Double
+pub fn BiophyloreconcileTable::min(Self) -> Double
+pub fn BiophyloreconcileTable::scale(Self, Double) -> Self
+pub fn BiophyloreconcileTable::set(Self, Int32, Double) -> Self
+pub fn BiophyloreconcileTable::sum(Self) -> Double
+pub fn BiophyloreconcileTable::to_string(Self) -> String
+
+pub(all) struct BiophyloreconcileVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn BiophyloreconcileVector::add(Self, Self) -> Self
+pub fn BiophyloreconcileVector::dist(Self, Self) -> Double
+pub fn BiophyloreconcileVector::dot(Self, Self) -> Double
+pub fn BiophyloreconcileVector::norm(Self) -> Double
+pub fn BiophyloreconcileVector::normalize(Self) -> Self
+pub fn BiophyloreconcileVector::scale(Self, Double) -> Self
+pub fn BiophyloreconcileVector::sub(Self, Self) -> Self
+pub fn BiophyloreconcileVector::to_string(Self) -> String
+
+pub(all) struct BiophyloreconcileView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloreconcileView::add(Self, Self) -> Self
+pub fn BiophyloreconcileView::copy(Self) -> Self
+pub fn BiophyloreconcileView::fill(Self, Double) -> Self
+pub fn BiophyloreconcileView::get(Self, Int32) -> Double
+pub fn BiophyloreconcileView::len(Self) -> Int32
+pub fn BiophyloreconcileView::max(Self) -> Double
+pub fn BiophyloreconcileView::mean(Self) -> Double
+pub fn BiophyloreconcileView::min(Self) -> Double
+pub fn BiophyloreconcileView::scale(Self, Double) -> Self
+pub fn BiophyloreconcileView::set(Self, Int32, Double) -> Self
+pub fn BiophyloreconcileView::sum(Self) -> Double
+pub fn BiophyloreconcileView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

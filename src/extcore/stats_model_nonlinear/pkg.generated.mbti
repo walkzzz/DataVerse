@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/stats_model_nonlinear"
+
+// Values
+pub fn stats_model_nonlinear_buffer_make(Int32) -> StatsmodelnonlinearBuffer
+
+pub fn stats_model_nonlinear_cluster_make(Int32) -> StatsmodelnonlinearCluster
+
+pub fn stats_model_nonlinear_cursor_make(Int32) -> StatsmodelnonlinearCursor
+
+pub fn stats_model_nonlinear_edge_make(Int32) -> StatsmodelnonlinearEdge
+
+pub fn stats_model_nonlinear_frame_make(Int32) -> StatsmodelnonlinearFrame
+
+pub fn stats_model_nonlinear_graphn_make(Int32) -> StatsmodelnonlinearGraphN
+
+pub fn stats_model_nonlinear_layer_make(Int32) -> StatsmodelnonlinearLayer
+
+pub fn stats_model_nonlinear_make_matrix(Int32, Int32, Double) -> StatsmodelnonlinearMatrix
+
+pub fn stats_model_nonlinear_make_point(Double, Double) -> StatsmodelnonlinearPoint
+
+pub fn stats_model_nonlinear_make_point3(Double, Double, Double) -> StatsmodelnonlinearPoint
+
+pub fn stats_model_nonlinear_make_series(Array[Double], String) -> StatsmodelnonlinearSeries
+
+pub fn stats_model_nonlinear_make_vector(Array[Double]) -> StatsmodelnonlinearVector
+
+pub fn stats_model_nonlinear_matrix_identity(Int32) -> StatsmodelnonlinearMatrix
+
+pub fn stats_model_nonlinear_model_make(Int32) -> StatsmodelnonlinearModel
+
+pub fn stats_model_nonlinear_node_make(Int32) -> StatsmodelnonlinearNode
+
+pub fn stats_model_nonlinear_path_make(Int32) -> StatsmodelnonlinearPath
+
+pub fn stats_model_nonlinear_range_make(Int32) -> StatsmodelnonlinearRange
+
+pub fn stats_model_nonlinear_slice_make(Int32) -> StatsmodelnonlinearSlice
+
+pub fn stats_model_nonlinear_table_make(Int32) -> StatsmodelnonlinearTable
+
+pub fn stats_model_nonlinear_vector_zero(Int32) -> StatsmodelnonlinearVector
+
+pub fn stats_model_nonlinear_view_make(Int32) -> StatsmodelnonlinearView
+
+// Errors
+
+// Types and methods
+pub(all) struct StatsmodelnonlinearBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsmodelnonlinearBuffer::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearBuffer::copy(Self) -> Self
+pub fn StatsmodelnonlinearBuffer::fill(Self, Double) -> Self
+pub fn StatsmodelnonlinearBuffer::get(Self, Int32) -> Double
+pub fn StatsmodelnonlinearBuffer::len(Self) -> Int32
+pub fn StatsmodelnonlinearBuffer::max(Self) -> Double
+pub fn StatsmodelnonlinearBuffer::mean(Self) -> Double
+pub fn StatsmodelnonlinearBuffer::min(Self) -> Double
+pub fn StatsmodelnonlinearBuffer::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearBuffer::set(Self, Int32, Double) -> Self
+pub fn StatsmodelnonlinearBuffer::sum(Self) -> Double
+pub fn StatsmodelnonlinearBuffer::to_string(Self) -> String
+
+pub(all) struct StatsmodelnonlinearCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsmodelnonlinearCluster::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearCluster::copy(Self) -> Self
+pub fn StatsmodelnonlinearCluster::fill(Self, Double) -> Self
+pub fn StatsmodelnonlinearCluster::get(Self, Int32) -> Double
+pub fn StatsmodelnonlinearCluster::len(Self) -> Int32
+pub fn StatsmodelnonlinearCluster::max(Self) -> Double
+pub fn StatsmodelnonlinearCluster::mean(Self) -> Double
+pub fn StatsmodelnonlinearCluster::min(Self) -> Double
+pub fn StatsmodelnonlinearCluster::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearCluster::set(Self, Int32, Double) -> Self
+pub fn StatsmodelnonlinearCluster::sum(Self) -> Double
+pub fn StatsmodelnonlinearCluster::to_string(Self) -> String
+
+pub(all) struct StatsmodelnonlinearCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsmodelnonlinearCursor::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearCursor::copy(Self) -> Self
+pub fn StatsmodelnonlinearCursor::fill(Self, Double) -> Self
+pub fn StatsmodelnonlinearCursor::get(Self, Int32) -> Double
+pub fn StatsmodelnonlinearCursor::len(Self) -> Int32
+pub fn StatsmodelnonlinearCursor::max(Self) -> Double
+pub fn StatsmodelnonlinearCursor::mean(Self) -> Double
+pub fn StatsmodelnonlinearCursor::min(Self) -> Double
+pub fn StatsmodelnonlinearCursor::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearCursor::set(Self, Int32, Double) -> Self
+pub fn StatsmodelnonlinearCursor::sum(Self) -> Double
+pub fn StatsmodelnonlinearCursor::to_string(Self) -> String
+
+pub(all) struct StatsmodelnonlinearEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsmodelnonlinearEdge::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearEdge::copy(Self) -> Self
+pub fn StatsmodelnonlinearEdge::fill(Self, Double) -> Self
+pub fn StatsmodelnonlinearEdge::get(Self, Int32) -> Double
+pub fn StatsmodelnonlinearEdge::len(Self) -> Int32
+pub fn StatsmodelnonlinearEdge::max(Self) -> Double
+pub fn StatsmodelnonlinearEdge::mean(Self) -> Double
+pub fn StatsmodelnonlinearEdge::min(Self) -> Double
+pub fn StatsmodelnonlinearEdge::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearEdge::set(Self, Int32, Double) -> Self
+pub fn StatsmodelnonlinearEdge::sum(Self) -> Double
+pub fn StatsmodelnonlinearEdge::to_string(Self) -> String
+
+pub(all) struct StatsmodelnonlinearFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsmodelnonlinearFrame::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearFrame::copy(Self) -> Self
+pub fn StatsmodelnonlinearFrame::fill(Self, Double) -> Self
+pub fn StatsmodelnonlinearFrame::get(Self, Int32) -> Double
+pub fn StatsmodelnonlinearFrame::len(Self) -> Int32
+pub fn StatsmodelnonlinearFrame::max(Self) -> Double
+pub fn StatsmodelnonlinearFrame::mean(Self) -> Double
+pub fn StatsmodelnonlinearFrame::min(Self) -> Double
+pub fn StatsmodelnonlinearFrame::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearFrame::set(Self, Int32, Double) -> Self
+pub fn StatsmodelnonlinearFrame::sum(Self) -> Double
+pub fn StatsmodelnonlinearFrame::to_string(Self) -> String
+
+pub(all) struct StatsmodelnonlinearGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsmodelnonlinearGraphN::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearGraphN::copy(Self) -> Self
+pub fn StatsmodelnonlinearGraphN::fill(Self, Double) -> Self
+pub fn StatsmodelnonlinearGraphN::get(Self, Int32) -> Double
+pub fn StatsmodelnonlinearGraphN::len(Self) -> Int32
+pub fn StatsmodelnonlinearGraphN::max(Self) -> Double
+pub fn StatsmodelnonlinearGraphN::mean(Self) -> Double
+pub fn StatsmodelnonlinearGraphN::min(Self) -> Double
+pub fn StatsmodelnonlinearGraphN::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearGraphN::set(Self, Int32, Double) -> Self
+pub fn StatsmodelnonlinearGraphN::sum(Self) -> Double
+pub fn StatsmodelnonlinearGraphN::to_string(Self) -> String
+
+pub(all) struct StatsmodelnonlinearLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsmodelnonlinearLayer::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearLayer::copy(Self) -> Self
+pub fn StatsmodelnonlinearLayer::fill(Self, Double) -> Self
+pub fn StatsmodelnonlinearLayer::get(Self, Int32) -> Double
+pub fn StatsmodelnonlinearLayer::len(Self) -> Int32
+pub fn StatsmodelnonlinearLayer::max(Self) -> Double
+pub fn StatsmodelnonlinearLayer::mean(Self) -> Double
+pub fn StatsmodelnonlinearLayer::min(Self) -> Double
+pub fn StatsmodelnonlinearLayer::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearLayer::set(Self, Int32, Double) -> Self
+pub fn StatsmodelnonlinearLayer::sum(Self) -> Double
+pub fn StatsmodelnonlinearLayer::to_string(Self) -> String
+
+pub(all) struct StatsmodelnonlinearMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn StatsmodelnonlinearMatrix::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearMatrix::det(Self) -> Double
+pub fn StatsmodelnonlinearMatrix::get(Self, Int32, Int32) -> Double
+pub fn StatsmodelnonlinearMatrix::multiply(Self, Self) -> Self
+pub fn StatsmodelnonlinearMatrix::norm(Self) -> Double
+pub fn StatsmodelnonlinearMatrix::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearMatrix::to_string(Self) -> String
+pub fn StatsmodelnonlinearMatrix::trace(Self) -> Double
+pub fn StatsmodelnonlinearMatrix::transpose(Self) -> Self
+
+pub(all) struct StatsmodelnonlinearModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsmodelnonlinearModel::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearModel::copy(Self) -> Self
+pub fn StatsmodelnonlinearModel::fill(Self, Double) -> Self
+pub fn StatsmodelnonlinearModel::get(Self, Int32) -> Double
+pub fn StatsmodelnonlinearModel::len(Self) -> Int32
+pub fn StatsmodelnonlinearModel::max(Self) -> Double
+pub fn StatsmodelnonlinearModel::mean(Self) -> Double
+pub fn StatsmodelnonlinearModel::min(Self) -> Double
+pub fn StatsmodelnonlinearModel::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearModel::set(Self, Int32, Double) -> Self
+pub fn StatsmodelnonlinearModel::sum(Self) -> Double
+pub fn StatsmodelnonlinearModel::to_string(Self) -> String
+
+pub(all) struct StatsmodelnonlinearNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsmodelnonlinearNode::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearNode::copy(Self) -> Self
+pub fn StatsmodelnonlinearNode::fill(Self, Double) -> Self
+pub fn StatsmodelnonlinearNode::get(Self, Int32) -> Double
+pub fn StatsmodelnonlinearNode::len(Self) -> Int32
+pub fn StatsmodelnonlinearNode::max(Self) -> Double
+pub fn StatsmodelnonlinearNode::mean(Self) -> Double
+pub fn StatsmodelnonlinearNode::min(Self) -> Double
+pub fn StatsmodelnonlinearNode::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearNode::set(Self, Int32, Double) -> Self
+pub fn StatsmodelnonlinearNode::sum(Self) -> Double
+pub fn StatsmodelnonlinearNode::to_string(Self) -> String
+
+pub(all) struct StatsmodelnonlinearPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsmodelnonlinearPath::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearPath::copy(Self) -> Self
+pub fn StatsmodelnonlinearPath::fill(Self, Double) -> Self
+pub fn StatsmodelnonlinearPath::get(Self, Int32) -> Double
+pub fn StatsmodelnonlinearPath::len(Self) -> Int32
+pub fn StatsmodelnonlinearPath::max(Self) -> Double
+pub fn StatsmodelnonlinearPath::mean(Self) -> Double
+pub fn StatsmodelnonlinearPath::min(Self) -> Double
+pub fn StatsmodelnonlinearPath::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearPath::set(Self, Int32, Double) -> Self
+pub fn StatsmodelnonlinearPath::sum(Self) -> Double
+pub fn StatsmodelnonlinearPath::to_string(Self) -> String
+
+pub(all) struct StatsmodelnonlinearPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn StatsmodelnonlinearPoint::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearPoint::cross(Self, Self) -> Self
+pub fn StatsmodelnonlinearPoint::dist(Self, Self) -> Double
+pub fn StatsmodelnonlinearPoint::dot(Self, Self) -> Double
+pub fn StatsmodelnonlinearPoint::label(Self) -> Int32
+pub fn StatsmodelnonlinearPoint::lerp(Self, Self, Double) -> Self
+pub fn StatsmodelnonlinearPoint::mid(Self, Self) -> Self
+pub fn StatsmodelnonlinearPoint::negate(Self) -> Self
+pub fn StatsmodelnonlinearPoint::norm(Self) -> Double
+pub fn StatsmodelnonlinearPoint::normalize(Self) -> Self
+pub fn StatsmodelnonlinearPoint::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearPoint::sub(Self, Self) -> Self
+pub fn StatsmodelnonlinearPoint::to_string(Self) -> String
+pub fn StatsmodelnonlinearPoint::x(Self) -> Double
+pub fn StatsmodelnonlinearPoint::y(Self) -> Double
+pub fn StatsmodelnonlinearPoint::z(Self) -> Double
+
+pub(all) struct StatsmodelnonlinearRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsmodelnonlinearRange::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearRange::copy(Self) -> Self
+pub fn StatsmodelnonlinearRange::fill(Self, Double) -> Self
+pub fn StatsmodelnonlinearRange::get(Self, Int32) -> Double
+pub fn StatsmodelnonlinearRange::len(Self) -> Int32
+pub fn StatsmodelnonlinearRange::max(Self) -> Double
+pub fn StatsmodelnonlinearRange::mean(Self) -> Double
+pub fn StatsmodelnonlinearRange::min(Self) -> Double
+pub fn StatsmodelnonlinearRange::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearRange::set(Self, Int32, Double) -> Self
+pub fn StatsmodelnonlinearRange::sum(Self) -> Double
+pub fn StatsmodelnonlinearRange::to_string(Self) -> String
+
+pub(all) struct StatsmodelnonlinearSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn StatsmodelnonlinearSeries::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearSeries::cumsum(Self) -> Self
+pub fn StatsmodelnonlinearSeries::len(Self) -> Int32
+pub fn StatsmodelnonlinearSeries::max(Self) -> Double
+pub fn StatsmodelnonlinearSeries::mean(Self) -> Double
+pub fn StatsmodelnonlinearSeries::median(Self) -> Double
+pub fn StatsmodelnonlinearSeries::min(Self) -> Double
+pub fn StatsmodelnonlinearSeries::normalize(Self) -> Self
+pub fn StatsmodelnonlinearSeries::range(Self) -> Double
+pub fn StatsmodelnonlinearSeries::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearSeries::std(Self) -> Double
+pub fn StatsmodelnonlinearSeries::sub(Self, Self) -> Self
+pub fn StatsmodelnonlinearSeries::sum(Self) -> Double
+pub fn StatsmodelnonlinearSeries::to_string(Self) -> String
+pub fn StatsmodelnonlinearSeries::variance(Self) -> Double
+
+pub(all) struct StatsmodelnonlinearSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsmodelnonlinearSlice::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearSlice::copy(Self) -> Self
+pub fn StatsmodelnonlinearSlice::fill(Self, Double) -> Self
+pub fn StatsmodelnonlinearSlice::get(Self, Int32) -> Double
+pub fn StatsmodelnonlinearSlice::len(Self) -> Int32
+pub fn StatsmodelnonlinearSlice::max(Self) -> Double
+pub fn StatsmodelnonlinearSlice::mean(Self) -> Double
+pub fn StatsmodelnonlinearSlice::min(Self) -> Double
+pub fn StatsmodelnonlinearSlice::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearSlice::set(Self, Int32, Double) -> Self
+pub fn StatsmodelnonlinearSlice::sum(Self) -> Double
+pub fn StatsmodelnonlinearSlice::to_string(Self) -> String
+
+pub(all) struct StatsmodelnonlinearTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsmodelnonlinearTable::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearTable::copy(Self) -> Self
+pub fn StatsmodelnonlinearTable::fill(Self, Double) -> Self
+pub fn StatsmodelnonlinearTable::get(Self, Int32) -> Double
+pub fn StatsmodelnonlinearTable::len(Self) -> Int32
+pub fn StatsmodelnonlinearTable::max(Self) -> Double
+pub fn StatsmodelnonlinearTable::mean(Self) -> Double
+pub fn StatsmodelnonlinearTable::min(Self) -> Double
+pub fn StatsmodelnonlinearTable::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearTable::set(Self, Int32, Double) -> Self
+pub fn StatsmodelnonlinearTable::sum(Self) -> Double
+pub fn StatsmodelnonlinearTable::to_string(Self) -> String
+
+pub(all) struct StatsmodelnonlinearVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn StatsmodelnonlinearVector::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearVector::dist(Self, Self) -> Double
+pub fn StatsmodelnonlinearVector::dot(Self, Self) -> Double
+pub fn StatsmodelnonlinearVector::norm(Self) -> Double
+pub fn StatsmodelnonlinearVector::normalize(Self) -> Self
+pub fn StatsmodelnonlinearVector::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearVector::sub(Self, Self) -> Self
+pub fn StatsmodelnonlinearVector::to_string(Self) -> String
+
+pub(all) struct StatsmodelnonlinearView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsmodelnonlinearView::add(Self, Self) -> Self
+pub fn StatsmodelnonlinearView::copy(Self) -> Self
+pub fn StatsmodelnonlinearView::fill(Self, Double) -> Self
+pub fn StatsmodelnonlinearView::get(Self, Int32) -> Double
+pub fn StatsmodelnonlinearView::len(Self) -> Int32
+pub fn StatsmodelnonlinearView::max(Self) -> Double
+pub fn StatsmodelnonlinearView::mean(Self) -> Double
+pub fn StatsmodelnonlinearView::min(Self) -> Double
+pub fn StatsmodelnonlinearView::scale(Self, Double) -> Self
+pub fn StatsmodelnonlinearView::set(Self, Int32, Double) -> Self
+pub fn StatsmodelnonlinearView::sum(Self) -> Double
+pub fn StatsmodelnonlinearView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

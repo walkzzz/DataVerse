@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_tokenize_syllable"
+
+// Values
+pub fn nlp_tokenize_syllable_buffer_make(Int32) -> NlptokenizesyllableBuffer
+
+pub fn nlp_tokenize_syllable_cluster_make(Int32) -> NlptokenizesyllableCluster
+
+pub fn nlp_tokenize_syllable_cursor_make(Int32) -> NlptokenizesyllableCursor
+
+pub fn nlp_tokenize_syllable_edge_make(Int32) -> NlptokenizesyllableEdge
+
+pub fn nlp_tokenize_syllable_frame_make(Int32) -> NlptokenizesyllableFrame
+
+pub fn nlp_tokenize_syllable_graphn_make(Int32) -> NlptokenizesyllableGraphN
+
+pub fn nlp_tokenize_syllable_layer_make(Int32) -> NlptokenizesyllableLayer
+
+pub fn nlp_tokenize_syllable_make_matrix(Int32, Int32, Double) -> NlptokenizesyllableMatrix
+
+pub fn nlp_tokenize_syllable_make_point(Double, Double) -> NlptokenizesyllablePoint
+
+pub fn nlp_tokenize_syllable_make_point3(Double, Double, Double) -> NlptokenizesyllablePoint
+
+pub fn nlp_tokenize_syllable_make_series(Array[Double], String) -> NlptokenizesyllableSeries
+
+pub fn nlp_tokenize_syllable_make_vector(Array[Double]) -> NlptokenizesyllableVector
+
+pub fn nlp_tokenize_syllable_matrix_identity(Int32) -> NlptokenizesyllableMatrix
+
+pub fn nlp_tokenize_syllable_model_make(Int32) -> NlptokenizesyllableModel
+
+pub fn nlp_tokenize_syllable_node_make(Int32) -> NlptokenizesyllableNode
+
+pub fn nlp_tokenize_syllable_path_make(Int32) -> NlptokenizesyllablePath
+
+pub fn nlp_tokenize_syllable_range_make(Int32) -> NlptokenizesyllableRange
+
+pub fn nlp_tokenize_syllable_slice_make(Int32) -> NlptokenizesyllableSlice
+
+pub fn nlp_tokenize_syllable_table_make(Int32) -> NlptokenizesyllableTable
+
+pub fn nlp_tokenize_syllable_vector_zero(Int32) -> NlptokenizesyllableVector
+
+pub fn nlp_tokenize_syllable_view_make(Int32) -> NlptokenizesyllableView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlptokenizesyllableBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizesyllableBuffer::add(Self, Self) -> Self
+pub fn NlptokenizesyllableBuffer::copy(Self) -> Self
+pub fn NlptokenizesyllableBuffer::fill(Self, Double) -> Self
+pub fn NlptokenizesyllableBuffer::get(Self, Int32) -> Double
+pub fn NlptokenizesyllableBuffer::len(Self) -> Int32
+pub fn NlptokenizesyllableBuffer::max(Self) -> Double
+pub fn NlptokenizesyllableBuffer::mean(Self) -> Double
+pub fn NlptokenizesyllableBuffer::min(Self) -> Double
+pub fn NlptokenizesyllableBuffer::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableBuffer::set(Self, Int32, Double) -> Self
+pub fn NlptokenizesyllableBuffer::sum(Self) -> Double
+pub fn NlptokenizesyllableBuffer::to_string(Self) -> String
+
+pub(all) struct NlptokenizesyllableCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizesyllableCluster::add(Self, Self) -> Self
+pub fn NlptokenizesyllableCluster::copy(Self) -> Self
+pub fn NlptokenizesyllableCluster::fill(Self, Double) -> Self
+pub fn NlptokenizesyllableCluster::get(Self, Int32) -> Double
+pub fn NlptokenizesyllableCluster::len(Self) -> Int32
+pub fn NlptokenizesyllableCluster::max(Self) -> Double
+pub fn NlptokenizesyllableCluster::mean(Self) -> Double
+pub fn NlptokenizesyllableCluster::min(Self) -> Double
+pub fn NlptokenizesyllableCluster::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableCluster::set(Self, Int32, Double) -> Self
+pub fn NlptokenizesyllableCluster::sum(Self) -> Double
+pub fn NlptokenizesyllableCluster::to_string(Self) -> String
+
+pub(all) struct NlptokenizesyllableCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizesyllableCursor::add(Self, Self) -> Self
+pub fn NlptokenizesyllableCursor::copy(Self) -> Self
+pub fn NlptokenizesyllableCursor::fill(Self, Double) -> Self
+pub fn NlptokenizesyllableCursor::get(Self, Int32) -> Double
+pub fn NlptokenizesyllableCursor::len(Self) -> Int32
+pub fn NlptokenizesyllableCursor::max(Self) -> Double
+pub fn NlptokenizesyllableCursor::mean(Self) -> Double
+pub fn NlptokenizesyllableCursor::min(Self) -> Double
+pub fn NlptokenizesyllableCursor::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableCursor::set(Self, Int32, Double) -> Self
+pub fn NlptokenizesyllableCursor::sum(Self) -> Double
+pub fn NlptokenizesyllableCursor::to_string(Self) -> String
+
+pub(all) struct NlptokenizesyllableEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizesyllableEdge::add(Self, Self) -> Self
+pub fn NlptokenizesyllableEdge::copy(Self) -> Self
+pub fn NlptokenizesyllableEdge::fill(Self, Double) -> Self
+pub fn NlptokenizesyllableEdge::get(Self, Int32) -> Double
+pub fn NlptokenizesyllableEdge::len(Self) -> Int32
+pub fn NlptokenizesyllableEdge::max(Self) -> Double
+pub fn NlptokenizesyllableEdge::mean(Self) -> Double
+pub fn NlptokenizesyllableEdge::min(Self) -> Double
+pub fn NlptokenizesyllableEdge::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableEdge::set(Self, Int32, Double) -> Self
+pub fn NlptokenizesyllableEdge::sum(Self) -> Double
+pub fn NlptokenizesyllableEdge::to_string(Self) -> String
+
+pub(all) struct NlptokenizesyllableFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizesyllableFrame::add(Self, Self) -> Self
+pub fn NlptokenizesyllableFrame::copy(Self) -> Self
+pub fn NlptokenizesyllableFrame::fill(Self, Double) -> Self
+pub fn NlptokenizesyllableFrame::get(Self, Int32) -> Double
+pub fn NlptokenizesyllableFrame::len(Self) -> Int32
+pub fn NlptokenizesyllableFrame::max(Self) -> Double
+pub fn NlptokenizesyllableFrame::mean(Self) -> Double
+pub fn NlptokenizesyllableFrame::min(Self) -> Double
+pub fn NlptokenizesyllableFrame::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableFrame::set(Self, Int32, Double) -> Self
+pub fn NlptokenizesyllableFrame::sum(Self) -> Double
+pub fn NlptokenizesyllableFrame::to_string(Self) -> String
+
+pub(all) struct NlptokenizesyllableGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizesyllableGraphN::add(Self, Self) -> Self
+pub fn NlptokenizesyllableGraphN::copy(Self) -> Self
+pub fn NlptokenizesyllableGraphN::fill(Self, Double) -> Self
+pub fn NlptokenizesyllableGraphN::get(Self, Int32) -> Double
+pub fn NlptokenizesyllableGraphN::len(Self) -> Int32
+pub fn NlptokenizesyllableGraphN::max(Self) -> Double
+pub fn NlptokenizesyllableGraphN::mean(Self) -> Double
+pub fn NlptokenizesyllableGraphN::min(Self) -> Double
+pub fn NlptokenizesyllableGraphN::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableGraphN::set(Self, Int32, Double) -> Self
+pub fn NlptokenizesyllableGraphN::sum(Self) -> Double
+pub fn NlptokenizesyllableGraphN::to_string(Self) -> String
+
+pub(all) struct NlptokenizesyllableLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizesyllableLayer::add(Self, Self) -> Self
+pub fn NlptokenizesyllableLayer::copy(Self) -> Self
+pub fn NlptokenizesyllableLayer::fill(Self, Double) -> Self
+pub fn NlptokenizesyllableLayer::get(Self, Int32) -> Double
+pub fn NlptokenizesyllableLayer::len(Self) -> Int32
+pub fn NlptokenizesyllableLayer::max(Self) -> Double
+pub fn NlptokenizesyllableLayer::mean(Self) -> Double
+pub fn NlptokenizesyllableLayer::min(Self) -> Double
+pub fn NlptokenizesyllableLayer::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableLayer::set(Self, Int32, Double) -> Self
+pub fn NlptokenizesyllableLayer::sum(Self) -> Double
+pub fn NlptokenizesyllableLayer::to_string(Self) -> String
+
+pub(all) struct NlptokenizesyllableMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlptokenizesyllableMatrix::add(Self, Self) -> Self
+pub fn NlptokenizesyllableMatrix::det(Self) -> Double
+pub fn NlptokenizesyllableMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlptokenizesyllableMatrix::multiply(Self, Self) -> Self
+pub fn NlptokenizesyllableMatrix::norm(Self) -> Double
+pub fn NlptokenizesyllableMatrix::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableMatrix::to_string(Self) -> String
+pub fn NlptokenizesyllableMatrix::trace(Self) -> Double
+pub fn NlptokenizesyllableMatrix::transpose(Self) -> Self
+
+pub(all) struct NlptokenizesyllableModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizesyllableModel::add(Self, Self) -> Self
+pub fn NlptokenizesyllableModel::copy(Self) -> Self
+pub fn NlptokenizesyllableModel::fill(Self, Double) -> Self
+pub fn NlptokenizesyllableModel::get(Self, Int32) -> Double
+pub fn NlptokenizesyllableModel::len(Self) -> Int32
+pub fn NlptokenizesyllableModel::max(Self) -> Double
+pub fn NlptokenizesyllableModel::mean(Self) -> Double
+pub fn NlptokenizesyllableModel::min(Self) -> Double
+pub fn NlptokenizesyllableModel::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableModel::set(Self, Int32, Double) -> Self
+pub fn NlptokenizesyllableModel::sum(Self) -> Double
+pub fn NlptokenizesyllableModel::to_string(Self) -> String
+
+pub(all) struct NlptokenizesyllableNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizesyllableNode::add(Self, Self) -> Self
+pub fn NlptokenizesyllableNode::copy(Self) -> Self
+pub fn NlptokenizesyllableNode::fill(Self, Double) -> Self
+pub fn NlptokenizesyllableNode::get(Self, Int32) -> Double
+pub fn NlptokenizesyllableNode::len(Self) -> Int32
+pub fn NlptokenizesyllableNode::max(Self) -> Double
+pub fn NlptokenizesyllableNode::mean(Self) -> Double
+pub fn NlptokenizesyllableNode::min(Self) -> Double
+pub fn NlptokenizesyllableNode::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableNode::set(Self, Int32, Double) -> Self
+pub fn NlptokenizesyllableNode::sum(Self) -> Double
+pub fn NlptokenizesyllableNode::to_string(Self) -> String
+
+pub(all) struct NlptokenizesyllablePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizesyllablePath::add(Self, Self) -> Self
+pub fn NlptokenizesyllablePath::copy(Self) -> Self
+pub fn NlptokenizesyllablePath::fill(Self, Double) -> Self
+pub fn NlptokenizesyllablePath::get(Self, Int32) -> Double
+pub fn NlptokenizesyllablePath::len(Self) -> Int32
+pub fn NlptokenizesyllablePath::max(Self) -> Double
+pub fn NlptokenizesyllablePath::mean(Self) -> Double
+pub fn NlptokenizesyllablePath::min(Self) -> Double
+pub fn NlptokenizesyllablePath::scale(Self, Double) -> Self
+pub fn NlptokenizesyllablePath::set(Self, Int32, Double) -> Self
+pub fn NlptokenizesyllablePath::sum(Self) -> Double
+pub fn NlptokenizesyllablePath::to_string(Self) -> String
+
+pub(all) struct NlptokenizesyllablePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlptokenizesyllablePoint::add(Self, Self) -> Self
+pub fn NlptokenizesyllablePoint::cross(Self, Self) -> Self
+pub fn NlptokenizesyllablePoint::dist(Self, Self) -> Double
+pub fn NlptokenizesyllablePoint::dot(Self, Self) -> Double
+pub fn NlptokenizesyllablePoint::label(Self) -> Int32
+pub fn NlptokenizesyllablePoint::lerp(Self, Self, Double) -> Self
+pub fn NlptokenizesyllablePoint::mid(Self, Self) -> Self
+pub fn NlptokenizesyllablePoint::negate(Self) -> Self
+pub fn NlptokenizesyllablePoint::norm(Self) -> Double
+pub fn NlptokenizesyllablePoint::normalize(Self) -> Self
+pub fn NlptokenizesyllablePoint::scale(Self, Double) -> Self
+pub fn NlptokenizesyllablePoint::sub(Self, Self) -> Self
+pub fn NlptokenizesyllablePoint::to_string(Self) -> String
+pub fn NlptokenizesyllablePoint::x(Self) -> Double
+pub fn NlptokenizesyllablePoint::y(Self) -> Double
+pub fn NlptokenizesyllablePoint::z(Self) -> Double
+
+pub(all) struct NlptokenizesyllableRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizesyllableRange::add(Self, Self) -> Self
+pub fn NlptokenizesyllableRange::copy(Self) -> Self
+pub fn NlptokenizesyllableRange::fill(Self, Double) -> Self
+pub fn NlptokenizesyllableRange::get(Self, Int32) -> Double
+pub fn NlptokenizesyllableRange::len(Self) -> Int32
+pub fn NlptokenizesyllableRange::max(Self) -> Double
+pub fn NlptokenizesyllableRange::mean(Self) -> Double
+pub fn NlptokenizesyllableRange::min(Self) -> Double
+pub fn NlptokenizesyllableRange::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableRange::set(Self, Int32, Double) -> Self
+pub fn NlptokenizesyllableRange::sum(Self) -> Double
+pub fn NlptokenizesyllableRange::to_string(Self) -> String
+
+pub(all) struct NlptokenizesyllableSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlptokenizesyllableSeries::add(Self, Self) -> Self
+pub fn NlptokenizesyllableSeries::cumsum(Self) -> Self
+pub fn NlptokenizesyllableSeries::len(Self) -> Int32
+pub fn NlptokenizesyllableSeries::max(Self) -> Double
+pub fn NlptokenizesyllableSeries::mean(Self) -> Double
+pub fn NlptokenizesyllableSeries::median(Self) -> Double
+pub fn NlptokenizesyllableSeries::min(Self) -> Double
+pub fn NlptokenizesyllableSeries::normalize(Self) -> Self
+pub fn NlptokenizesyllableSeries::range(Self) -> Double
+pub fn NlptokenizesyllableSeries::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableSeries::std(Self) -> Double
+pub fn NlptokenizesyllableSeries::sub(Self, Self) -> Self
+pub fn NlptokenizesyllableSeries::sum(Self) -> Double
+pub fn NlptokenizesyllableSeries::to_string(Self) -> String
+pub fn NlptokenizesyllableSeries::variance(Self) -> Double
+
+pub(all) struct NlptokenizesyllableSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizesyllableSlice::add(Self, Self) -> Self
+pub fn NlptokenizesyllableSlice::copy(Self) -> Self
+pub fn NlptokenizesyllableSlice::fill(Self, Double) -> Self
+pub fn NlptokenizesyllableSlice::get(Self, Int32) -> Double
+pub fn NlptokenizesyllableSlice::len(Self) -> Int32
+pub fn NlptokenizesyllableSlice::max(Self) -> Double
+pub fn NlptokenizesyllableSlice::mean(Self) -> Double
+pub fn NlptokenizesyllableSlice::min(Self) -> Double
+pub fn NlptokenizesyllableSlice::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableSlice::set(Self, Int32, Double) -> Self
+pub fn NlptokenizesyllableSlice::sum(Self) -> Double
+pub fn NlptokenizesyllableSlice::to_string(Self) -> String
+
+pub(all) struct NlptokenizesyllableTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizesyllableTable::add(Self, Self) -> Self
+pub fn NlptokenizesyllableTable::copy(Self) -> Self
+pub fn NlptokenizesyllableTable::fill(Self, Double) -> Self
+pub fn NlptokenizesyllableTable::get(Self, Int32) -> Double
+pub fn NlptokenizesyllableTable::len(Self) -> Int32
+pub fn NlptokenizesyllableTable::max(Self) -> Double
+pub fn NlptokenizesyllableTable::mean(Self) -> Double
+pub fn NlptokenizesyllableTable::min(Self) -> Double
+pub fn NlptokenizesyllableTable::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableTable::set(Self, Int32, Double) -> Self
+pub fn NlptokenizesyllableTable::sum(Self) -> Double
+pub fn NlptokenizesyllableTable::to_string(Self) -> String
+
+pub(all) struct NlptokenizesyllableVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlptokenizesyllableVector::add(Self, Self) -> Self
+pub fn NlptokenizesyllableVector::dist(Self, Self) -> Double
+pub fn NlptokenizesyllableVector::dot(Self, Self) -> Double
+pub fn NlptokenizesyllableVector::norm(Self) -> Double
+pub fn NlptokenizesyllableVector::normalize(Self) -> Self
+pub fn NlptokenizesyllableVector::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableVector::sub(Self, Self) -> Self
+pub fn NlptokenizesyllableVector::to_string(Self) -> String
+
+pub(all) struct NlptokenizesyllableView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizesyllableView::add(Self, Self) -> Self
+pub fn NlptokenizesyllableView::copy(Self) -> Self
+pub fn NlptokenizesyllableView::fill(Self, Double) -> Self
+pub fn NlptokenizesyllableView::get(Self, Int32) -> Double
+pub fn NlptokenizesyllableView::len(Self) -> Int32
+pub fn NlptokenizesyllableView::max(Self) -> Double
+pub fn NlptokenizesyllableView::mean(Self) -> Double
+pub fn NlptokenizesyllableView::min(Self) -> Double
+pub fn NlptokenizesyllableView::scale(Self, Double) -> Self
+pub fn NlptokenizesyllableView::set(Self, Int32, Double) -> Self
+pub fn NlptokenizesyllableView::sum(Self) -> Double
+pub fn NlptokenizesyllableView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

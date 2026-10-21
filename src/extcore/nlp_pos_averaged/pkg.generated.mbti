@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_pos_averaged"
+
+// Values
+pub fn nlp_pos_averaged_buffer_make(Int32) -> NlpposaveragedBuffer
+
+pub fn nlp_pos_averaged_cluster_make(Int32) -> NlpposaveragedCluster
+
+pub fn nlp_pos_averaged_cursor_make(Int32) -> NlpposaveragedCursor
+
+pub fn nlp_pos_averaged_edge_make(Int32) -> NlpposaveragedEdge
+
+pub fn nlp_pos_averaged_frame_make(Int32) -> NlpposaveragedFrame
+
+pub fn nlp_pos_averaged_graphn_make(Int32) -> NlpposaveragedGraphN
+
+pub fn nlp_pos_averaged_layer_make(Int32) -> NlpposaveragedLayer
+
+pub fn nlp_pos_averaged_make_matrix(Int32, Int32, Double) -> NlpposaveragedMatrix
+
+pub fn nlp_pos_averaged_make_point(Double, Double) -> NlpposaveragedPoint
+
+pub fn nlp_pos_averaged_make_point3(Double, Double, Double) -> NlpposaveragedPoint
+
+pub fn nlp_pos_averaged_make_series(Array[Double], String) -> NlpposaveragedSeries
+
+pub fn nlp_pos_averaged_make_vector(Array[Double]) -> NlpposaveragedVector
+
+pub fn nlp_pos_averaged_matrix_identity(Int32) -> NlpposaveragedMatrix
+
+pub fn nlp_pos_averaged_model_make(Int32) -> NlpposaveragedModel
+
+pub fn nlp_pos_averaged_node_make(Int32) -> NlpposaveragedNode
+
+pub fn nlp_pos_averaged_path_make(Int32) -> NlpposaveragedPath
+
+pub fn nlp_pos_averaged_range_make(Int32) -> NlpposaveragedRange
+
+pub fn nlp_pos_averaged_slice_make(Int32) -> NlpposaveragedSlice
+
+pub fn nlp_pos_averaged_table_make(Int32) -> NlpposaveragedTable
+
+pub fn nlp_pos_averaged_vector_zero(Int32) -> NlpposaveragedVector
+
+pub fn nlp_pos_averaged_view_make(Int32) -> NlpposaveragedView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlpposaveragedBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposaveragedBuffer::add(Self, Self) -> Self
+pub fn NlpposaveragedBuffer::copy(Self) -> Self
+pub fn NlpposaveragedBuffer::fill(Self, Double) -> Self
+pub fn NlpposaveragedBuffer::get(Self, Int32) -> Double
+pub fn NlpposaveragedBuffer::len(Self) -> Int32
+pub fn NlpposaveragedBuffer::max(Self) -> Double
+pub fn NlpposaveragedBuffer::mean(Self) -> Double
+pub fn NlpposaveragedBuffer::min(Self) -> Double
+pub fn NlpposaveragedBuffer::scale(Self, Double) -> Self
+pub fn NlpposaveragedBuffer::set(Self, Int32, Double) -> Self
+pub fn NlpposaveragedBuffer::sum(Self) -> Double
+pub fn NlpposaveragedBuffer::to_string(Self) -> String
+
+pub(all) struct NlpposaveragedCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposaveragedCluster::add(Self, Self) -> Self
+pub fn NlpposaveragedCluster::copy(Self) -> Self
+pub fn NlpposaveragedCluster::fill(Self, Double) -> Self
+pub fn NlpposaveragedCluster::get(Self, Int32) -> Double
+pub fn NlpposaveragedCluster::len(Self) -> Int32
+pub fn NlpposaveragedCluster::max(Self) -> Double
+pub fn NlpposaveragedCluster::mean(Self) -> Double
+pub fn NlpposaveragedCluster::min(Self) -> Double
+pub fn NlpposaveragedCluster::scale(Self, Double) -> Self
+pub fn NlpposaveragedCluster::set(Self, Int32, Double) -> Self
+pub fn NlpposaveragedCluster::sum(Self) -> Double
+pub fn NlpposaveragedCluster::to_string(Self) -> String
+
+pub(all) struct NlpposaveragedCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposaveragedCursor::add(Self, Self) -> Self
+pub fn NlpposaveragedCursor::copy(Self) -> Self
+pub fn NlpposaveragedCursor::fill(Self, Double) -> Self
+pub fn NlpposaveragedCursor::get(Self, Int32) -> Double
+pub fn NlpposaveragedCursor::len(Self) -> Int32
+pub fn NlpposaveragedCursor::max(Self) -> Double
+pub fn NlpposaveragedCursor::mean(Self) -> Double
+pub fn NlpposaveragedCursor::min(Self) -> Double
+pub fn NlpposaveragedCursor::scale(Self, Double) -> Self
+pub fn NlpposaveragedCursor::set(Self, Int32, Double) -> Self
+pub fn NlpposaveragedCursor::sum(Self) -> Double
+pub fn NlpposaveragedCursor::to_string(Self) -> String
+
+pub(all) struct NlpposaveragedEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposaveragedEdge::add(Self, Self) -> Self
+pub fn NlpposaveragedEdge::copy(Self) -> Self
+pub fn NlpposaveragedEdge::fill(Self, Double) -> Self
+pub fn NlpposaveragedEdge::get(Self, Int32) -> Double
+pub fn NlpposaveragedEdge::len(Self) -> Int32
+pub fn NlpposaveragedEdge::max(Self) -> Double
+pub fn NlpposaveragedEdge::mean(Self) -> Double
+pub fn NlpposaveragedEdge::min(Self) -> Double
+pub fn NlpposaveragedEdge::scale(Self, Double) -> Self
+pub fn NlpposaveragedEdge::set(Self, Int32, Double) -> Self
+pub fn NlpposaveragedEdge::sum(Self) -> Double
+pub fn NlpposaveragedEdge::to_string(Self) -> String
+
+pub(all) struct NlpposaveragedFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposaveragedFrame::add(Self, Self) -> Self
+pub fn NlpposaveragedFrame::copy(Self) -> Self
+pub fn NlpposaveragedFrame::fill(Self, Double) -> Self
+pub fn NlpposaveragedFrame::get(Self, Int32) -> Double
+pub fn NlpposaveragedFrame::len(Self) -> Int32
+pub fn NlpposaveragedFrame::max(Self) -> Double
+pub fn NlpposaveragedFrame::mean(Self) -> Double
+pub fn NlpposaveragedFrame::min(Self) -> Double
+pub fn NlpposaveragedFrame::scale(Self, Double) -> Self
+pub fn NlpposaveragedFrame::set(Self, Int32, Double) -> Self
+pub fn NlpposaveragedFrame::sum(Self) -> Double
+pub fn NlpposaveragedFrame::to_string(Self) -> String
+
+pub(all) struct NlpposaveragedGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposaveragedGraphN::add(Self, Self) -> Self
+pub fn NlpposaveragedGraphN::copy(Self) -> Self
+pub fn NlpposaveragedGraphN::fill(Self, Double) -> Self
+pub fn NlpposaveragedGraphN::get(Self, Int32) -> Double
+pub fn NlpposaveragedGraphN::len(Self) -> Int32
+pub fn NlpposaveragedGraphN::max(Self) -> Double
+pub fn NlpposaveragedGraphN::mean(Self) -> Double
+pub fn NlpposaveragedGraphN::min(Self) -> Double
+pub fn NlpposaveragedGraphN::scale(Self, Double) -> Self
+pub fn NlpposaveragedGraphN::set(Self, Int32, Double) -> Self
+pub fn NlpposaveragedGraphN::sum(Self) -> Double
+pub fn NlpposaveragedGraphN::to_string(Self) -> String
+
+pub(all) struct NlpposaveragedLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposaveragedLayer::add(Self, Self) -> Self
+pub fn NlpposaveragedLayer::copy(Self) -> Self
+pub fn NlpposaveragedLayer::fill(Self, Double) -> Self
+pub fn NlpposaveragedLayer::get(Self, Int32) -> Double
+pub fn NlpposaveragedLayer::len(Self) -> Int32
+pub fn NlpposaveragedLayer::max(Self) -> Double
+pub fn NlpposaveragedLayer::mean(Self) -> Double
+pub fn NlpposaveragedLayer::min(Self) -> Double
+pub fn NlpposaveragedLayer::scale(Self, Double) -> Self
+pub fn NlpposaveragedLayer::set(Self, Int32, Double) -> Self
+pub fn NlpposaveragedLayer::sum(Self) -> Double
+pub fn NlpposaveragedLayer::to_string(Self) -> String
+
+pub(all) struct NlpposaveragedMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlpposaveragedMatrix::add(Self, Self) -> Self
+pub fn NlpposaveragedMatrix::det(Self) -> Double
+pub fn NlpposaveragedMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlpposaveragedMatrix::multiply(Self, Self) -> Self
+pub fn NlpposaveragedMatrix::norm(Self) -> Double
+pub fn NlpposaveragedMatrix::scale(Self, Double) -> Self
+pub fn NlpposaveragedMatrix::to_string(Self) -> String
+pub fn NlpposaveragedMatrix::trace(Self) -> Double
+pub fn NlpposaveragedMatrix::transpose(Self) -> Self
+
+pub(all) struct NlpposaveragedModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposaveragedModel::add(Self, Self) -> Self
+pub fn NlpposaveragedModel::copy(Self) -> Self
+pub fn NlpposaveragedModel::fill(Self, Double) -> Self
+pub fn NlpposaveragedModel::get(Self, Int32) -> Double
+pub fn NlpposaveragedModel::len(Self) -> Int32
+pub fn NlpposaveragedModel::max(Self) -> Double
+pub fn NlpposaveragedModel::mean(Self) -> Double
+pub fn NlpposaveragedModel::min(Self) -> Double
+pub fn NlpposaveragedModel::scale(Self, Double) -> Self
+pub fn NlpposaveragedModel::set(Self, Int32, Double) -> Self
+pub fn NlpposaveragedModel::sum(Self) -> Double
+pub fn NlpposaveragedModel::to_string(Self) -> String
+
+pub(all) struct NlpposaveragedNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposaveragedNode::add(Self, Self) -> Self
+pub fn NlpposaveragedNode::copy(Self) -> Self
+pub fn NlpposaveragedNode::fill(Self, Double) -> Self
+pub fn NlpposaveragedNode::get(Self, Int32) -> Double
+pub fn NlpposaveragedNode::len(Self) -> Int32
+pub fn NlpposaveragedNode::max(Self) -> Double
+pub fn NlpposaveragedNode::mean(Self) -> Double
+pub fn NlpposaveragedNode::min(Self) -> Double
+pub fn NlpposaveragedNode::scale(Self, Double) -> Self
+pub fn NlpposaveragedNode::set(Self, Int32, Double) -> Self
+pub fn NlpposaveragedNode::sum(Self) -> Double
+pub fn NlpposaveragedNode::to_string(Self) -> String
+
+pub(all) struct NlpposaveragedPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposaveragedPath::add(Self, Self) -> Self
+pub fn NlpposaveragedPath::copy(Self) -> Self
+pub fn NlpposaveragedPath::fill(Self, Double) -> Self
+pub fn NlpposaveragedPath::get(Self, Int32) -> Double
+pub fn NlpposaveragedPath::len(Self) -> Int32
+pub fn NlpposaveragedPath::max(Self) -> Double
+pub fn NlpposaveragedPath::mean(Self) -> Double
+pub fn NlpposaveragedPath::min(Self) -> Double
+pub fn NlpposaveragedPath::scale(Self, Double) -> Self
+pub fn NlpposaveragedPath::set(Self, Int32, Double) -> Self
+pub fn NlpposaveragedPath::sum(Self) -> Double
+pub fn NlpposaveragedPath::to_string(Self) -> String
+
+pub(all) struct NlpposaveragedPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlpposaveragedPoint::add(Self, Self) -> Self
+pub fn NlpposaveragedPoint::cross(Self, Self) -> Self
+pub fn NlpposaveragedPoint::dist(Self, Self) -> Double
+pub fn NlpposaveragedPoint::dot(Self, Self) -> Double
+pub fn NlpposaveragedPoint::label(Self) -> Int32
+pub fn NlpposaveragedPoint::lerp(Self, Self, Double) -> Self
+pub fn NlpposaveragedPoint::mid(Self, Self) -> Self
+pub fn NlpposaveragedPoint::negate(Self) -> Self
+pub fn NlpposaveragedPoint::norm(Self) -> Double
+pub fn NlpposaveragedPoint::normalize(Self) -> Self
+pub fn NlpposaveragedPoint::scale(Self, Double) -> Self
+pub fn NlpposaveragedPoint::sub(Self, Self) -> Self
+pub fn NlpposaveragedPoint::to_string(Self) -> String
+pub fn NlpposaveragedPoint::x(Self) -> Double
+pub fn NlpposaveragedPoint::y(Self) -> Double
+pub fn NlpposaveragedPoint::z(Self) -> Double
+
+pub(all) struct NlpposaveragedRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposaveragedRange::add(Self, Self) -> Self
+pub fn NlpposaveragedRange::copy(Self) -> Self
+pub fn NlpposaveragedRange::fill(Self, Double) -> Self
+pub fn NlpposaveragedRange::get(Self, Int32) -> Double
+pub fn NlpposaveragedRange::len(Self) -> Int32
+pub fn NlpposaveragedRange::max(Self) -> Double
+pub fn NlpposaveragedRange::mean(Self) -> Double
+pub fn NlpposaveragedRange::min(Self) -> Double
+pub fn NlpposaveragedRange::scale(Self, Double) -> Self
+pub fn NlpposaveragedRange::set(Self, Int32, Double) -> Self
+pub fn NlpposaveragedRange::sum(Self) -> Double
+pub fn NlpposaveragedRange::to_string(Self) -> String
+
+pub(all) struct NlpposaveragedSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlpposaveragedSeries::add(Self, Self) -> Self
+pub fn NlpposaveragedSeries::cumsum(Self) -> Self
+pub fn NlpposaveragedSeries::len(Self) -> Int32
+pub fn NlpposaveragedSeries::max(Self) -> Double
+pub fn NlpposaveragedSeries::mean(Self) -> Double
+pub fn NlpposaveragedSeries::median(Self) -> Double
+pub fn NlpposaveragedSeries::min(Self) -> Double
+pub fn NlpposaveragedSeries::normalize(Self) -> Self
+pub fn NlpposaveragedSeries::range(Self) -> Double
+pub fn NlpposaveragedSeries::scale(Self, Double) -> Self
+pub fn NlpposaveragedSeries::std(Self) -> Double
+pub fn NlpposaveragedSeries::sub(Self, Self) -> Self
+pub fn NlpposaveragedSeries::sum(Self) -> Double
+pub fn NlpposaveragedSeries::to_string(Self) -> String
+pub fn NlpposaveragedSeries::variance(Self) -> Double
+
+pub(all) struct NlpposaveragedSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposaveragedSlice::add(Self, Self) -> Self
+pub fn NlpposaveragedSlice::copy(Self) -> Self
+pub fn NlpposaveragedSlice::fill(Self, Double) -> Self
+pub fn NlpposaveragedSlice::get(Self, Int32) -> Double
+pub fn NlpposaveragedSlice::len(Self) -> Int32
+pub fn NlpposaveragedSlice::max(Self) -> Double
+pub fn NlpposaveragedSlice::mean(Self) -> Double
+pub fn NlpposaveragedSlice::min(Self) -> Double
+pub fn NlpposaveragedSlice::scale(Self, Double) -> Self
+pub fn NlpposaveragedSlice::set(Self, Int32, Double) -> Self
+pub fn NlpposaveragedSlice::sum(Self) -> Double
+pub fn NlpposaveragedSlice::to_string(Self) -> String
+
+pub(all) struct NlpposaveragedTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposaveragedTable::add(Self, Self) -> Self
+pub fn NlpposaveragedTable::copy(Self) -> Self
+pub fn NlpposaveragedTable::fill(Self, Double) -> Self
+pub fn NlpposaveragedTable::get(Self, Int32) -> Double
+pub fn NlpposaveragedTable::len(Self) -> Int32
+pub fn NlpposaveragedTable::max(Self) -> Double
+pub fn NlpposaveragedTable::mean(Self) -> Double
+pub fn NlpposaveragedTable::min(Self) -> Double
+pub fn NlpposaveragedTable::scale(Self, Double) -> Self
+pub fn NlpposaveragedTable::set(Self, Int32, Double) -> Self
+pub fn NlpposaveragedTable::sum(Self) -> Double
+pub fn NlpposaveragedTable::to_string(Self) -> String
+
+pub(all) struct NlpposaveragedVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlpposaveragedVector::add(Self, Self) -> Self
+pub fn NlpposaveragedVector::dist(Self, Self) -> Double
+pub fn NlpposaveragedVector::dot(Self, Self) -> Double
+pub fn NlpposaveragedVector::norm(Self) -> Double
+pub fn NlpposaveragedVector::normalize(Self) -> Self
+pub fn NlpposaveragedVector::scale(Self, Double) -> Self
+pub fn NlpposaveragedVector::sub(Self, Self) -> Self
+pub fn NlpposaveragedVector::to_string(Self) -> String
+
+pub(all) struct NlpposaveragedView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposaveragedView::add(Self, Self) -> Self
+pub fn NlpposaveragedView::copy(Self) -> Self
+pub fn NlpposaveragedView::fill(Self, Double) -> Self
+pub fn NlpposaveragedView::get(Self, Int32) -> Double
+pub fn NlpposaveragedView::len(Self) -> Int32
+pub fn NlpposaveragedView::max(Self) -> Double
+pub fn NlpposaveragedView::mean(Self) -> Double
+pub fn NlpposaveragedView::min(Self) -> Double
+pub fn NlpposaveragedView::scale(Self, Double) -> Self
+pub fn NlpposaveragedView::set(Self, Int32, Double) -> Self
+pub fn NlpposaveragedView::sum(Self) -> Double
+pub fn NlpposaveragedView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

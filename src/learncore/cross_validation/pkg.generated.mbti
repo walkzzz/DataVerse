@@ -1,0 +1,40 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/cross_validation"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn cross_validation_id() -> String
+
+pub fn cv_stats(Array[Double]) -> CVStats
+
+pub fn kfold_splits(Int32, Int32) -> Array[CVSplit]
+
+pub fn loo_count(Int32) -> Int32
+
+// Errors
+
+// Types and methods
+pub struct CVSplit {
+  train_indices : Array[Int32]
+  test_indices : Array[Int32]
+  fold_id : Int32
+} derive(Eq, @debug.Debug)
+pub fn CVSplit::equal(Self, Self) -> Bool
+pub fn CVSplit::not_equal(Self, Self) -> Bool
+pub fn CVSplit::to_repr(Self) -> @debug.Repr
+
+pub struct CVStats {
+  mean_score : Double
+  std_score : Double
+  fold_scores : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn CVStats::equal(Self, Self) -> Bool
+pub fn CVStats::not_equal(Self, Self) -> Bool
+pub fn CVStats::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

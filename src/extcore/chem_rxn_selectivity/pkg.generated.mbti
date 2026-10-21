@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/chem_rxn_selectivity"
+
+// Values
+pub fn chem_rxn_selectivity_buffer_make(Int32) -> ChemrxnselectivityBuffer
+
+pub fn chem_rxn_selectivity_cluster_make(Int32) -> ChemrxnselectivityCluster
+
+pub fn chem_rxn_selectivity_cursor_make(Int32) -> ChemrxnselectivityCursor
+
+pub fn chem_rxn_selectivity_edge_make(Int32) -> ChemrxnselectivityEdge
+
+pub fn chem_rxn_selectivity_frame_make(Int32) -> ChemrxnselectivityFrame
+
+pub fn chem_rxn_selectivity_graphn_make(Int32) -> ChemrxnselectivityGraphN
+
+pub fn chem_rxn_selectivity_layer_make(Int32) -> ChemrxnselectivityLayer
+
+pub fn chem_rxn_selectivity_make_matrix(Int32, Int32, Double) -> ChemrxnselectivityMatrix
+
+pub fn chem_rxn_selectivity_make_point(Double, Double) -> ChemrxnselectivityPoint
+
+pub fn chem_rxn_selectivity_make_point3(Double, Double, Double) -> ChemrxnselectivityPoint
+
+pub fn chem_rxn_selectivity_make_series(Array[Double], String) -> ChemrxnselectivitySeries
+
+pub fn chem_rxn_selectivity_make_vector(Array[Double]) -> ChemrxnselectivityVector
+
+pub fn chem_rxn_selectivity_matrix_identity(Int32) -> ChemrxnselectivityMatrix
+
+pub fn chem_rxn_selectivity_model_make(Int32) -> ChemrxnselectivityModel
+
+pub fn chem_rxn_selectivity_node_make(Int32) -> ChemrxnselectivityNode
+
+pub fn chem_rxn_selectivity_path_make(Int32) -> ChemrxnselectivityPath
+
+pub fn chem_rxn_selectivity_range_make(Int32) -> ChemrxnselectivityRange
+
+pub fn chem_rxn_selectivity_slice_make(Int32) -> ChemrxnselectivitySlice
+
+pub fn chem_rxn_selectivity_table_make(Int32) -> ChemrxnselectivityTable
+
+pub fn chem_rxn_selectivity_vector_zero(Int32) -> ChemrxnselectivityVector
+
+pub fn chem_rxn_selectivity_view_make(Int32) -> ChemrxnselectivityView
+
+// Errors
+
+// Types and methods
+pub(all) struct ChemrxnselectivityBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnselectivityBuffer::add(Self, Self) -> Self
+pub fn ChemrxnselectivityBuffer::copy(Self) -> Self
+pub fn ChemrxnselectivityBuffer::fill(Self, Double) -> Self
+pub fn ChemrxnselectivityBuffer::get(Self, Int32) -> Double
+pub fn ChemrxnselectivityBuffer::len(Self) -> Int32
+pub fn ChemrxnselectivityBuffer::max(Self) -> Double
+pub fn ChemrxnselectivityBuffer::mean(Self) -> Double
+pub fn ChemrxnselectivityBuffer::min(Self) -> Double
+pub fn ChemrxnselectivityBuffer::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityBuffer::set(Self, Int32, Double) -> Self
+pub fn ChemrxnselectivityBuffer::sum(Self) -> Double
+pub fn ChemrxnselectivityBuffer::to_string(Self) -> String
+
+pub(all) struct ChemrxnselectivityCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnselectivityCluster::add(Self, Self) -> Self
+pub fn ChemrxnselectivityCluster::copy(Self) -> Self
+pub fn ChemrxnselectivityCluster::fill(Self, Double) -> Self
+pub fn ChemrxnselectivityCluster::get(Self, Int32) -> Double
+pub fn ChemrxnselectivityCluster::len(Self) -> Int32
+pub fn ChemrxnselectivityCluster::max(Self) -> Double
+pub fn ChemrxnselectivityCluster::mean(Self) -> Double
+pub fn ChemrxnselectivityCluster::min(Self) -> Double
+pub fn ChemrxnselectivityCluster::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityCluster::set(Self, Int32, Double) -> Self
+pub fn ChemrxnselectivityCluster::sum(Self) -> Double
+pub fn ChemrxnselectivityCluster::to_string(Self) -> String
+
+pub(all) struct ChemrxnselectivityCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnselectivityCursor::add(Self, Self) -> Self
+pub fn ChemrxnselectivityCursor::copy(Self) -> Self
+pub fn ChemrxnselectivityCursor::fill(Self, Double) -> Self
+pub fn ChemrxnselectivityCursor::get(Self, Int32) -> Double
+pub fn ChemrxnselectivityCursor::len(Self) -> Int32
+pub fn ChemrxnselectivityCursor::max(Self) -> Double
+pub fn ChemrxnselectivityCursor::mean(Self) -> Double
+pub fn ChemrxnselectivityCursor::min(Self) -> Double
+pub fn ChemrxnselectivityCursor::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityCursor::set(Self, Int32, Double) -> Self
+pub fn ChemrxnselectivityCursor::sum(Self) -> Double
+pub fn ChemrxnselectivityCursor::to_string(Self) -> String
+
+pub(all) struct ChemrxnselectivityEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnselectivityEdge::add(Self, Self) -> Self
+pub fn ChemrxnselectivityEdge::copy(Self) -> Self
+pub fn ChemrxnselectivityEdge::fill(Self, Double) -> Self
+pub fn ChemrxnselectivityEdge::get(Self, Int32) -> Double
+pub fn ChemrxnselectivityEdge::len(Self) -> Int32
+pub fn ChemrxnselectivityEdge::max(Self) -> Double
+pub fn ChemrxnselectivityEdge::mean(Self) -> Double
+pub fn ChemrxnselectivityEdge::min(Self) -> Double
+pub fn ChemrxnselectivityEdge::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityEdge::set(Self, Int32, Double) -> Self
+pub fn ChemrxnselectivityEdge::sum(Self) -> Double
+pub fn ChemrxnselectivityEdge::to_string(Self) -> String
+
+pub(all) struct ChemrxnselectivityFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnselectivityFrame::add(Self, Self) -> Self
+pub fn ChemrxnselectivityFrame::copy(Self) -> Self
+pub fn ChemrxnselectivityFrame::fill(Self, Double) -> Self
+pub fn ChemrxnselectivityFrame::get(Self, Int32) -> Double
+pub fn ChemrxnselectivityFrame::len(Self) -> Int32
+pub fn ChemrxnselectivityFrame::max(Self) -> Double
+pub fn ChemrxnselectivityFrame::mean(Self) -> Double
+pub fn ChemrxnselectivityFrame::min(Self) -> Double
+pub fn ChemrxnselectivityFrame::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityFrame::set(Self, Int32, Double) -> Self
+pub fn ChemrxnselectivityFrame::sum(Self) -> Double
+pub fn ChemrxnselectivityFrame::to_string(Self) -> String
+
+pub(all) struct ChemrxnselectivityGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnselectivityGraphN::add(Self, Self) -> Self
+pub fn ChemrxnselectivityGraphN::copy(Self) -> Self
+pub fn ChemrxnselectivityGraphN::fill(Self, Double) -> Self
+pub fn ChemrxnselectivityGraphN::get(Self, Int32) -> Double
+pub fn ChemrxnselectivityGraphN::len(Self) -> Int32
+pub fn ChemrxnselectivityGraphN::max(Self) -> Double
+pub fn ChemrxnselectivityGraphN::mean(Self) -> Double
+pub fn ChemrxnselectivityGraphN::min(Self) -> Double
+pub fn ChemrxnselectivityGraphN::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityGraphN::set(Self, Int32, Double) -> Self
+pub fn ChemrxnselectivityGraphN::sum(Self) -> Double
+pub fn ChemrxnselectivityGraphN::to_string(Self) -> String
+
+pub(all) struct ChemrxnselectivityLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnselectivityLayer::add(Self, Self) -> Self
+pub fn ChemrxnselectivityLayer::copy(Self) -> Self
+pub fn ChemrxnselectivityLayer::fill(Self, Double) -> Self
+pub fn ChemrxnselectivityLayer::get(Self, Int32) -> Double
+pub fn ChemrxnselectivityLayer::len(Self) -> Int32
+pub fn ChemrxnselectivityLayer::max(Self) -> Double
+pub fn ChemrxnselectivityLayer::mean(Self) -> Double
+pub fn ChemrxnselectivityLayer::min(Self) -> Double
+pub fn ChemrxnselectivityLayer::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityLayer::set(Self, Int32, Double) -> Self
+pub fn ChemrxnselectivityLayer::sum(Self) -> Double
+pub fn ChemrxnselectivityLayer::to_string(Self) -> String
+
+pub(all) struct ChemrxnselectivityMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ChemrxnselectivityMatrix::add(Self, Self) -> Self
+pub fn ChemrxnselectivityMatrix::det(Self) -> Double
+pub fn ChemrxnselectivityMatrix::get(Self, Int32, Int32) -> Double
+pub fn ChemrxnselectivityMatrix::multiply(Self, Self) -> Self
+pub fn ChemrxnselectivityMatrix::norm(Self) -> Double
+pub fn ChemrxnselectivityMatrix::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityMatrix::to_string(Self) -> String
+pub fn ChemrxnselectivityMatrix::trace(Self) -> Double
+pub fn ChemrxnselectivityMatrix::transpose(Self) -> Self
+
+pub(all) struct ChemrxnselectivityModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnselectivityModel::add(Self, Self) -> Self
+pub fn ChemrxnselectivityModel::copy(Self) -> Self
+pub fn ChemrxnselectivityModel::fill(Self, Double) -> Self
+pub fn ChemrxnselectivityModel::get(Self, Int32) -> Double
+pub fn ChemrxnselectivityModel::len(Self) -> Int32
+pub fn ChemrxnselectivityModel::max(Self) -> Double
+pub fn ChemrxnselectivityModel::mean(Self) -> Double
+pub fn ChemrxnselectivityModel::min(Self) -> Double
+pub fn ChemrxnselectivityModel::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityModel::set(Self, Int32, Double) -> Self
+pub fn ChemrxnselectivityModel::sum(Self) -> Double
+pub fn ChemrxnselectivityModel::to_string(Self) -> String
+
+pub(all) struct ChemrxnselectivityNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnselectivityNode::add(Self, Self) -> Self
+pub fn ChemrxnselectivityNode::copy(Self) -> Self
+pub fn ChemrxnselectivityNode::fill(Self, Double) -> Self
+pub fn ChemrxnselectivityNode::get(Self, Int32) -> Double
+pub fn ChemrxnselectivityNode::len(Self) -> Int32
+pub fn ChemrxnselectivityNode::max(Self) -> Double
+pub fn ChemrxnselectivityNode::mean(Self) -> Double
+pub fn ChemrxnselectivityNode::min(Self) -> Double
+pub fn ChemrxnselectivityNode::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityNode::set(Self, Int32, Double) -> Self
+pub fn ChemrxnselectivityNode::sum(Self) -> Double
+pub fn ChemrxnselectivityNode::to_string(Self) -> String
+
+pub(all) struct ChemrxnselectivityPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnselectivityPath::add(Self, Self) -> Self
+pub fn ChemrxnselectivityPath::copy(Self) -> Self
+pub fn ChemrxnselectivityPath::fill(Self, Double) -> Self
+pub fn ChemrxnselectivityPath::get(Self, Int32) -> Double
+pub fn ChemrxnselectivityPath::len(Self) -> Int32
+pub fn ChemrxnselectivityPath::max(Self) -> Double
+pub fn ChemrxnselectivityPath::mean(Self) -> Double
+pub fn ChemrxnselectivityPath::min(Self) -> Double
+pub fn ChemrxnselectivityPath::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityPath::set(Self, Int32, Double) -> Self
+pub fn ChemrxnselectivityPath::sum(Self) -> Double
+pub fn ChemrxnselectivityPath::to_string(Self) -> String
+
+pub(all) struct ChemrxnselectivityPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ChemrxnselectivityPoint::add(Self, Self) -> Self
+pub fn ChemrxnselectivityPoint::cross(Self, Self) -> Self
+pub fn ChemrxnselectivityPoint::dist(Self, Self) -> Double
+pub fn ChemrxnselectivityPoint::dot(Self, Self) -> Double
+pub fn ChemrxnselectivityPoint::label(Self) -> Int32
+pub fn ChemrxnselectivityPoint::lerp(Self, Self, Double) -> Self
+pub fn ChemrxnselectivityPoint::mid(Self, Self) -> Self
+pub fn ChemrxnselectivityPoint::negate(Self) -> Self
+pub fn ChemrxnselectivityPoint::norm(Self) -> Double
+pub fn ChemrxnselectivityPoint::normalize(Self) -> Self
+pub fn ChemrxnselectivityPoint::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityPoint::sub(Self, Self) -> Self
+pub fn ChemrxnselectivityPoint::to_string(Self) -> String
+pub fn ChemrxnselectivityPoint::x(Self) -> Double
+pub fn ChemrxnselectivityPoint::y(Self) -> Double
+pub fn ChemrxnselectivityPoint::z(Self) -> Double
+
+pub(all) struct ChemrxnselectivityRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnselectivityRange::add(Self, Self) -> Self
+pub fn ChemrxnselectivityRange::copy(Self) -> Self
+pub fn ChemrxnselectivityRange::fill(Self, Double) -> Self
+pub fn ChemrxnselectivityRange::get(Self, Int32) -> Double
+pub fn ChemrxnselectivityRange::len(Self) -> Int32
+pub fn ChemrxnselectivityRange::max(Self) -> Double
+pub fn ChemrxnselectivityRange::mean(Self) -> Double
+pub fn ChemrxnselectivityRange::min(Self) -> Double
+pub fn ChemrxnselectivityRange::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityRange::set(Self, Int32, Double) -> Self
+pub fn ChemrxnselectivityRange::sum(Self) -> Double
+pub fn ChemrxnselectivityRange::to_string(Self) -> String
+
+pub(all) struct ChemrxnselectivitySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ChemrxnselectivitySeries::add(Self, Self) -> Self
+pub fn ChemrxnselectivitySeries::cumsum(Self) -> Self
+pub fn ChemrxnselectivitySeries::len(Self) -> Int32
+pub fn ChemrxnselectivitySeries::max(Self) -> Double
+pub fn ChemrxnselectivitySeries::mean(Self) -> Double
+pub fn ChemrxnselectivitySeries::median(Self) -> Double
+pub fn ChemrxnselectivitySeries::min(Self) -> Double
+pub fn ChemrxnselectivitySeries::normalize(Self) -> Self
+pub fn ChemrxnselectivitySeries::range(Self) -> Double
+pub fn ChemrxnselectivitySeries::scale(Self, Double) -> Self
+pub fn ChemrxnselectivitySeries::std(Self) -> Double
+pub fn ChemrxnselectivitySeries::sub(Self, Self) -> Self
+pub fn ChemrxnselectivitySeries::sum(Self) -> Double
+pub fn ChemrxnselectivitySeries::to_string(Self) -> String
+pub fn ChemrxnselectivitySeries::variance(Self) -> Double
+
+pub(all) struct ChemrxnselectivitySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnselectivitySlice::add(Self, Self) -> Self
+pub fn ChemrxnselectivitySlice::copy(Self) -> Self
+pub fn ChemrxnselectivitySlice::fill(Self, Double) -> Self
+pub fn ChemrxnselectivitySlice::get(Self, Int32) -> Double
+pub fn ChemrxnselectivitySlice::len(Self) -> Int32
+pub fn ChemrxnselectivitySlice::max(Self) -> Double
+pub fn ChemrxnselectivitySlice::mean(Self) -> Double
+pub fn ChemrxnselectivitySlice::min(Self) -> Double
+pub fn ChemrxnselectivitySlice::scale(Self, Double) -> Self
+pub fn ChemrxnselectivitySlice::set(Self, Int32, Double) -> Self
+pub fn ChemrxnselectivitySlice::sum(Self) -> Double
+pub fn ChemrxnselectivitySlice::to_string(Self) -> String
+
+pub(all) struct ChemrxnselectivityTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnselectivityTable::add(Self, Self) -> Self
+pub fn ChemrxnselectivityTable::copy(Self) -> Self
+pub fn ChemrxnselectivityTable::fill(Self, Double) -> Self
+pub fn ChemrxnselectivityTable::get(Self, Int32) -> Double
+pub fn ChemrxnselectivityTable::len(Self) -> Int32
+pub fn ChemrxnselectivityTable::max(Self) -> Double
+pub fn ChemrxnselectivityTable::mean(Self) -> Double
+pub fn ChemrxnselectivityTable::min(Self) -> Double
+pub fn ChemrxnselectivityTable::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityTable::set(Self, Int32, Double) -> Self
+pub fn ChemrxnselectivityTable::sum(Self) -> Double
+pub fn ChemrxnselectivityTable::to_string(Self) -> String
+
+pub(all) struct ChemrxnselectivityVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ChemrxnselectivityVector::add(Self, Self) -> Self
+pub fn ChemrxnselectivityVector::dist(Self, Self) -> Double
+pub fn ChemrxnselectivityVector::dot(Self, Self) -> Double
+pub fn ChemrxnselectivityVector::norm(Self) -> Double
+pub fn ChemrxnselectivityVector::normalize(Self) -> Self
+pub fn ChemrxnselectivityVector::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityVector::sub(Self, Self) -> Self
+pub fn ChemrxnselectivityVector::to_string(Self) -> String
+
+pub(all) struct ChemrxnselectivityView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnselectivityView::add(Self, Self) -> Self
+pub fn ChemrxnselectivityView::copy(Self) -> Self
+pub fn ChemrxnselectivityView::fill(Self, Double) -> Self
+pub fn ChemrxnselectivityView::get(Self, Int32) -> Double
+pub fn ChemrxnselectivityView::len(Self) -> Int32
+pub fn ChemrxnselectivityView::max(Self) -> Double
+pub fn ChemrxnselectivityView::mean(Self) -> Double
+pub fn ChemrxnselectivityView::min(Self) -> Double
+pub fn ChemrxnselectivityView::scale(Self, Double) -> Self
+pub fn ChemrxnselectivityView::set(Self, Int32, Double) -> Self
+pub fn ChemrxnselectivityView::sum(Self) -> Double
+pub fn ChemrxnselectivityView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

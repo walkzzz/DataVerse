@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_graph_dynamic"
+
+// Values
+pub fn ds_graph_dynamic_buffer_make(Int32) -> DsgraphdynamicBuffer
+
+pub fn ds_graph_dynamic_cluster_make(Int32) -> DsgraphdynamicCluster
+
+pub fn ds_graph_dynamic_cursor_make(Int32) -> DsgraphdynamicCursor
+
+pub fn ds_graph_dynamic_edge_make(Int32) -> DsgraphdynamicEdge
+
+pub fn ds_graph_dynamic_frame_make(Int32) -> DsgraphdynamicFrame
+
+pub fn ds_graph_dynamic_graphn_make(Int32) -> DsgraphdynamicGraphN
+
+pub fn ds_graph_dynamic_layer_make(Int32) -> DsgraphdynamicLayer
+
+pub fn ds_graph_dynamic_make_matrix(Int32, Int32, Double) -> DsgraphdynamicMatrix
+
+pub fn ds_graph_dynamic_make_point(Double, Double) -> DsgraphdynamicPoint
+
+pub fn ds_graph_dynamic_make_point3(Double, Double, Double) -> DsgraphdynamicPoint
+
+pub fn ds_graph_dynamic_make_series(Array[Double], String) -> DsgraphdynamicSeries
+
+pub fn ds_graph_dynamic_make_vector(Array[Double]) -> DsgraphdynamicVector
+
+pub fn ds_graph_dynamic_matrix_identity(Int32) -> DsgraphdynamicMatrix
+
+pub fn ds_graph_dynamic_model_make(Int32) -> DsgraphdynamicModel
+
+pub fn ds_graph_dynamic_node_make(Int32) -> DsgraphdynamicNode
+
+pub fn ds_graph_dynamic_path_make(Int32) -> DsgraphdynamicPath
+
+pub fn ds_graph_dynamic_range_make(Int32) -> DsgraphdynamicRange
+
+pub fn ds_graph_dynamic_slice_make(Int32) -> DsgraphdynamicSlice
+
+pub fn ds_graph_dynamic_table_make(Int32) -> DsgraphdynamicTable
+
+pub fn ds_graph_dynamic_vector_zero(Int32) -> DsgraphdynamicVector
+
+pub fn ds_graph_dynamic_view_make(Int32) -> DsgraphdynamicView
+
+// Errors
+
+// Types and methods
+pub(all) struct DsgraphdynamicBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdynamicBuffer::add(Self, Self) -> Self
+pub fn DsgraphdynamicBuffer::copy(Self) -> Self
+pub fn DsgraphdynamicBuffer::fill(Self, Double) -> Self
+pub fn DsgraphdynamicBuffer::get(Self, Int32) -> Double
+pub fn DsgraphdynamicBuffer::len(Self) -> Int32
+pub fn DsgraphdynamicBuffer::max(Self) -> Double
+pub fn DsgraphdynamicBuffer::mean(Self) -> Double
+pub fn DsgraphdynamicBuffer::min(Self) -> Double
+pub fn DsgraphdynamicBuffer::scale(Self, Double) -> Self
+pub fn DsgraphdynamicBuffer::set(Self, Int32, Double) -> Self
+pub fn DsgraphdynamicBuffer::sum(Self) -> Double
+pub fn DsgraphdynamicBuffer::to_string(Self) -> String
+
+pub(all) struct DsgraphdynamicCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdynamicCluster::add(Self, Self) -> Self
+pub fn DsgraphdynamicCluster::copy(Self) -> Self
+pub fn DsgraphdynamicCluster::fill(Self, Double) -> Self
+pub fn DsgraphdynamicCluster::get(Self, Int32) -> Double
+pub fn DsgraphdynamicCluster::len(Self) -> Int32
+pub fn DsgraphdynamicCluster::max(Self) -> Double
+pub fn DsgraphdynamicCluster::mean(Self) -> Double
+pub fn DsgraphdynamicCluster::min(Self) -> Double
+pub fn DsgraphdynamicCluster::scale(Self, Double) -> Self
+pub fn DsgraphdynamicCluster::set(Self, Int32, Double) -> Self
+pub fn DsgraphdynamicCluster::sum(Self) -> Double
+pub fn DsgraphdynamicCluster::to_string(Self) -> String
+
+pub(all) struct DsgraphdynamicCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdynamicCursor::add(Self, Self) -> Self
+pub fn DsgraphdynamicCursor::copy(Self) -> Self
+pub fn DsgraphdynamicCursor::fill(Self, Double) -> Self
+pub fn DsgraphdynamicCursor::get(Self, Int32) -> Double
+pub fn DsgraphdynamicCursor::len(Self) -> Int32
+pub fn DsgraphdynamicCursor::max(Self) -> Double
+pub fn DsgraphdynamicCursor::mean(Self) -> Double
+pub fn DsgraphdynamicCursor::min(Self) -> Double
+pub fn DsgraphdynamicCursor::scale(Self, Double) -> Self
+pub fn DsgraphdynamicCursor::set(Self, Int32, Double) -> Self
+pub fn DsgraphdynamicCursor::sum(Self) -> Double
+pub fn DsgraphdynamicCursor::to_string(Self) -> String
+
+pub(all) struct DsgraphdynamicEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdynamicEdge::add(Self, Self) -> Self
+pub fn DsgraphdynamicEdge::copy(Self) -> Self
+pub fn DsgraphdynamicEdge::fill(Self, Double) -> Self
+pub fn DsgraphdynamicEdge::get(Self, Int32) -> Double
+pub fn DsgraphdynamicEdge::len(Self) -> Int32
+pub fn DsgraphdynamicEdge::max(Self) -> Double
+pub fn DsgraphdynamicEdge::mean(Self) -> Double
+pub fn DsgraphdynamicEdge::min(Self) -> Double
+pub fn DsgraphdynamicEdge::scale(Self, Double) -> Self
+pub fn DsgraphdynamicEdge::set(Self, Int32, Double) -> Self
+pub fn DsgraphdynamicEdge::sum(Self) -> Double
+pub fn DsgraphdynamicEdge::to_string(Self) -> String
+
+pub(all) struct DsgraphdynamicFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdynamicFrame::add(Self, Self) -> Self
+pub fn DsgraphdynamicFrame::copy(Self) -> Self
+pub fn DsgraphdynamicFrame::fill(Self, Double) -> Self
+pub fn DsgraphdynamicFrame::get(Self, Int32) -> Double
+pub fn DsgraphdynamicFrame::len(Self) -> Int32
+pub fn DsgraphdynamicFrame::max(Self) -> Double
+pub fn DsgraphdynamicFrame::mean(Self) -> Double
+pub fn DsgraphdynamicFrame::min(Self) -> Double
+pub fn DsgraphdynamicFrame::scale(Self, Double) -> Self
+pub fn DsgraphdynamicFrame::set(Self, Int32, Double) -> Self
+pub fn DsgraphdynamicFrame::sum(Self) -> Double
+pub fn DsgraphdynamicFrame::to_string(Self) -> String
+
+pub(all) struct DsgraphdynamicGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdynamicGraphN::add(Self, Self) -> Self
+pub fn DsgraphdynamicGraphN::copy(Self) -> Self
+pub fn DsgraphdynamicGraphN::fill(Self, Double) -> Self
+pub fn DsgraphdynamicGraphN::get(Self, Int32) -> Double
+pub fn DsgraphdynamicGraphN::len(Self) -> Int32
+pub fn DsgraphdynamicGraphN::max(Self) -> Double
+pub fn DsgraphdynamicGraphN::mean(Self) -> Double
+pub fn DsgraphdynamicGraphN::min(Self) -> Double
+pub fn DsgraphdynamicGraphN::scale(Self, Double) -> Self
+pub fn DsgraphdynamicGraphN::set(Self, Int32, Double) -> Self
+pub fn DsgraphdynamicGraphN::sum(Self) -> Double
+pub fn DsgraphdynamicGraphN::to_string(Self) -> String
+
+pub(all) struct DsgraphdynamicLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdynamicLayer::add(Self, Self) -> Self
+pub fn DsgraphdynamicLayer::copy(Self) -> Self
+pub fn DsgraphdynamicLayer::fill(Self, Double) -> Self
+pub fn DsgraphdynamicLayer::get(Self, Int32) -> Double
+pub fn DsgraphdynamicLayer::len(Self) -> Int32
+pub fn DsgraphdynamicLayer::max(Self) -> Double
+pub fn DsgraphdynamicLayer::mean(Self) -> Double
+pub fn DsgraphdynamicLayer::min(Self) -> Double
+pub fn DsgraphdynamicLayer::scale(Self, Double) -> Self
+pub fn DsgraphdynamicLayer::set(Self, Int32, Double) -> Self
+pub fn DsgraphdynamicLayer::sum(Self) -> Double
+pub fn DsgraphdynamicLayer::to_string(Self) -> String
+
+pub(all) struct DsgraphdynamicMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DsgraphdynamicMatrix::add(Self, Self) -> Self
+pub fn DsgraphdynamicMatrix::det(Self) -> Double
+pub fn DsgraphdynamicMatrix::get(Self, Int32, Int32) -> Double
+pub fn DsgraphdynamicMatrix::multiply(Self, Self) -> Self
+pub fn DsgraphdynamicMatrix::norm(Self) -> Double
+pub fn DsgraphdynamicMatrix::scale(Self, Double) -> Self
+pub fn DsgraphdynamicMatrix::to_string(Self) -> String
+pub fn DsgraphdynamicMatrix::trace(Self) -> Double
+pub fn DsgraphdynamicMatrix::transpose(Self) -> Self
+
+pub(all) struct DsgraphdynamicModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdynamicModel::add(Self, Self) -> Self
+pub fn DsgraphdynamicModel::copy(Self) -> Self
+pub fn DsgraphdynamicModel::fill(Self, Double) -> Self
+pub fn DsgraphdynamicModel::get(Self, Int32) -> Double
+pub fn DsgraphdynamicModel::len(Self) -> Int32
+pub fn DsgraphdynamicModel::max(Self) -> Double
+pub fn DsgraphdynamicModel::mean(Self) -> Double
+pub fn DsgraphdynamicModel::min(Self) -> Double
+pub fn DsgraphdynamicModel::scale(Self, Double) -> Self
+pub fn DsgraphdynamicModel::set(Self, Int32, Double) -> Self
+pub fn DsgraphdynamicModel::sum(Self) -> Double
+pub fn DsgraphdynamicModel::to_string(Self) -> String
+
+pub(all) struct DsgraphdynamicNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdynamicNode::add(Self, Self) -> Self
+pub fn DsgraphdynamicNode::copy(Self) -> Self
+pub fn DsgraphdynamicNode::fill(Self, Double) -> Self
+pub fn DsgraphdynamicNode::get(Self, Int32) -> Double
+pub fn DsgraphdynamicNode::len(Self) -> Int32
+pub fn DsgraphdynamicNode::max(Self) -> Double
+pub fn DsgraphdynamicNode::mean(Self) -> Double
+pub fn DsgraphdynamicNode::min(Self) -> Double
+pub fn DsgraphdynamicNode::scale(Self, Double) -> Self
+pub fn DsgraphdynamicNode::set(Self, Int32, Double) -> Self
+pub fn DsgraphdynamicNode::sum(Self) -> Double
+pub fn DsgraphdynamicNode::to_string(Self) -> String
+
+pub(all) struct DsgraphdynamicPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdynamicPath::add(Self, Self) -> Self
+pub fn DsgraphdynamicPath::copy(Self) -> Self
+pub fn DsgraphdynamicPath::fill(Self, Double) -> Self
+pub fn DsgraphdynamicPath::get(Self, Int32) -> Double
+pub fn DsgraphdynamicPath::len(Self) -> Int32
+pub fn DsgraphdynamicPath::max(Self) -> Double
+pub fn DsgraphdynamicPath::mean(Self) -> Double
+pub fn DsgraphdynamicPath::min(Self) -> Double
+pub fn DsgraphdynamicPath::scale(Self, Double) -> Self
+pub fn DsgraphdynamicPath::set(Self, Int32, Double) -> Self
+pub fn DsgraphdynamicPath::sum(Self) -> Double
+pub fn DsgraphdynamicPath::to_string(Self) -> String
+
+pub(all) struct DsgraphdynamicPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DsgraphdynamicPoint::add(Self, Self) -> Self
+pub fn DsgraphdynamicPoint::cross(Self, Self) -> Self
+pub fn DsgraphdynamicPoint::dist(Self, Self) -> Double
+pub fn DsgraphdynamicPoint::dot(Self, Self) -> Double
+pub fn DsgraphdynamicPoint::label(Self) -> Int32
+pub fn DsgraphdynamicPoint::lerp(Self, Self, Double) -> Self
+pub fn DsgraphdynamicPoint::mid(Self, Self) -> Self
+pub fn DsgraphdynamicPoint::negate(Self) -> Self
+pub fn DsgraphdynamicPoint::norm(Self) -> Double
+pub fn DsgraphdynamicPoint::normalize(Self) -> Self
+pub fn DsgraphdynamicPoint::scale(Self, Double) -> Self
+pub fn DsgraphdynamicPoint::sub(Self, Self) -> Self
+pub fn DsgraphdynamicPoint::to_string(Self) -> String
+pub fn DsgraphdynamicPoint::x(Self) -> Double
+pub fn DsgraphdynamicPoint::y(Self) -> Double
+pub fn DsgraphdynamicPoint::z(Self) -> Double
+
+pub(all) struct DsgraphdynamicRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdynamicRange::add(Self, Self) -> Self
+pub fn DsgraphdynamicRange::copy(Self) -> Self
+pub fn DsgraphdynamicRange::fill(Self, Double) -> Self
+pub fn DsgraphdynamicRange::get(Self, Int32) -> Double
+pub fn DsgraphdynamicRange::len(Self) -> Int32
+pub fn DsgraphdynamicRange::max(Self) -> Double
+pub fn DsgraphdynamicRange::mean(Self) -> Double
+pub fn DsgraphdynamicRange::min(Self) -> Double
+pub fn DsgraphdynamicRange::scale(Self, Double) -> Self
+pub fn DsgraphdynamicRange::set(Self, Int32, Double) -> Self
+pub fn DsgraphdynamicRange::sum(Self) -> Double
+pub fn DsgraphdynamicRange::to_string(Self) -> String
+
+pub(all) struct DsgraphdynamicSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DsgraphdynamicSeries::add(Self, Self) -> Self
+pub fn DsgraphdynamicSeries::cumsum(Self) -> Self
+pub fn DsgraphdynamicSeries::len(Self) -> Int32
+pub fn DsgraphdynamicSeries::max(Self) -> Double
+pub fn DsgraphdynamicSeries::mean(Self) -> Double
+pub fn DsgraphdynamicSeries::median(Self) -> Double
+pub fn DsgraphdynamicSeries::min(Self) -> Double
+pub fn DsgraphdynamicSeries::normalize(Self) -> Self
+pub fn DsgraphdynamicSeries::range(Self) -> Double
+pub fn DsgraphdynamicSeries::scale(Self, Double) -> Self
+pub fn DsgraphdynamicSeries::std(Self) -> Double
+pub fn DsgraphdynamicSeries::sub(Self, Self) -> Self
+pub fn DsgraphdynamicSeries::sum(Self) -> Double
+pub fn DsgraphdynamicSeries::to_string(Self) -> String
+pub fn DsgraphdynamicSeries::variance(Self) -> Double
+
+pub(all) struct DsgraphdynamicSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdynamicSlice::add(Self, Self) -> Self
+pub fn DsgraphdynamicSlice::copy(Self) -> Self
+pub fn DsgraphdynamicSlice::fill(Self, Double) -> Self
+pub fn DsgraphdynamicSlice::get(Self, Int32) -> Double
+pub fn DsgraphdynamicSlice::len(Self) -> Int32
+pub fn DsgraphdynamicSlice::max(Self) -> Double
+pub fn DsgraphdynamicSlice::mean(Self) -> Double
+pub fn DsgraphdynamicSlice::min(Self) -> Double
+pub fn DsgraphdynamicSlice::scale(Self, Double) -> Self
+pub fn DsgraphdynamicSlice::set(Self, Int32, Double) -> Self
+pub fn DsgraphdynamicSlice::sum(Self) -> Double
+pub fn DsgraphdynamicSlice::to_string(Self) -> String
+
+pub(all) struct DsgraphdynamicTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdynamicTable::add(Self, Self) -> Self
+pub fn DsgraphdynamicTable::copy(Self) -> Self
+pub fn DsgraphdynamicTable::fill(Self, Double) -> Self
+pub fn DsgraphdynamicTable::get(Self, Int32) -> Double
+pub fn DsgraphdynamicTable::len(Self) -> Int32
+pub fn DsgraphdynamicTable::max(Self) -> Double
+pub fn DsgraphdynamicTable::mean(Self) -> Double
+pub fn DsgraphdynamicTable::min(Self) -> Double
+pub fn DsgraphdynamicTable::scale(Self, Double) -> Self
+pub fn DsgraphdynamicTable::set(Self, Int32, Double) -> Self
+pub fn DsgraphdynamicTable::sum(Self) -> Double
+pub fn DsgraphdynamicTable::to_string(Self) -> String
+
+pub(all) struct DsgraphdynamicVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DsgraphdynamicVector::add(Self, Self) -> Self
+pub fn DsgraphdynamicVector::dist(Self, Self) -> Double
+pub fn DsgraphdynamicVector::dot(Self, Self) -> Double
+pub fn DsgraphdynamicVector::norm(Self) -> Double
+pub fn DsgraphdynamicVector::normalize(Self) -> Self
+pub fn DsgraphdynamicVector::scale(Self, Double) -> Self
+pub fn DsgraphdynamicVector::sub(Self, Self) -> Self
+pub fn DsgraphdynamicVector::to_string(Self) -> String
+
+pub(all) struct DsgraphdynamicView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdynamicView::add(Self, Self) -> Self
+pub fn DsgraphdynamicView::copy(Self) -> Self
+pub fn DsgraphdynamicView::fill(Self, Double) -> Self
+pub fn DsgraphdynamicView::get(Self, Int32) -> Double
+pub fn DsgraphdynamicView::len(Self) -> Int32
+pub fn DsgraphdynamicView::max(Self) -> Double
+pub fn DsgraphdynamicView::mean(Self) -> Double
+pub fn DsgraphdynamicView::min(Self) -> Double
+pub fn DsgraphdynamicView::scale(Self, Double) -> Self
+pub fn DsgraphdynamicView::set(Self, Int32, Double) -> Self
+pub fn DsgraphdynamicView::sum(Self) -> Double
+pub fn DsgraphdynamicView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

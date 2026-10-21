@@ -1,0 +1,49 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/version"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn ancestors(VersionTower, String) -> Array[Version]
+
+pub fn append(VersionTower, Version) -> VersionTower
+
+pub fn empty_tower() -> VersionTower
+
+pub fn get_by_id(VersionTower, String) -> Version?
+
+pub fn height(VersionTower) -> Int32
+
+pub fn latest(VersionTower) -> Version?
+
+pub fn make_version(String, String?, Int32, String) -> Version
+
+pub fn root_version(String, Int32, String) -> Version
+
+pub fn version_id() -> String
+
+// Errors
+
+// Types and methods
+pub struct Version {
+  version_id : String
+  parent : String?
+  timestamp : Int32
+  snapshot_ref : String
+} derive(Eq, @debug.Debug)
+pub fn Version::equal(Self, Self) -> Bool
+pub fn Version::not_equal(Self, Self) -> Bool
+pub fn Version::to_repr(Self) -> @debug.Repr
+
+pub struct VersionTower {
+  versions : Array[Version]
+} derive(Eq, @debug.Debug)
+pub fn VersionTower::equal(Self, Self) -> Bool
+pub fn VersionTower::not_equal(Self, Self) -> Bool
+pub fn VersionTower::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

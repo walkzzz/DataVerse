@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_decomp_vmd"
+
+// Values
+pub fn timeseries_decomp_vmd_buffer_make(Int32) -> TimeseriesdecompvmdBuffer
+
+pub fn timeseries_decomp_vmd_cluster_make(Int32) -> TimeseriesdecompvmdCluster
+
+pub fn timeseries_decomp_vmd_cursor_make(Int32) -> TimeseriesdecompvmdCursor
+
+pub fn timeseries_decomp_vmd_edge_make(Int32) -> TimeseriesdecompvmdEdge
+
+pub fn timeseries_decomp_vmd_frame_make(Int32) -> TimeseriesdecompvmdFrame
+
+pub fn timeseries_decomp_vmd_graphn_make(Int32) -> TimeseriesdecompvmdGraphN
+
+pub fn timeseries_decomp_vmd_layer_make(Int32) -> TimeseriesdecompvmdLayer
+
+pub fn timeseries_decomp_vmd_make_matrix(Int32, Int32, Double) -> TimeseriesdecompvmdMatrix
+
+pub fn timeseries_decomp_vmd_make_point(Double, Double) -> TimeseriesdecompvmdPoint
+
+pub fn timeseries_decomp_vmd_make_point3(Double, Double, Double) -> TimeseriesdecompvmdPoint
+
+pub fn timeseries_decomp_vmd_make_series(Array[Double], String) -> TimeseriesdecompvmdSeries
+
+pub fn timeseries_decomp_vmd_make_vector(Array[Double]) -> TimeseriesdecompvmdVector
+
+pub fn timeseries_decomp_vmd_matrix_identity(Int32) -> TimeseriesdecompvmdMatrix
+
+pub fn timeseries_decomp_vmd_model_make(Int32) -> TimeseriesdecompvmdModel
+
+pub fn timeseries_decomp_vmd_node_make(Int32) -> TimeseriesdecompvmdNode
+
+pub fn timeseries_decomp_vmd_path_make(Int32) -> TimeseriesdecompvmdPath
+
+pub fn timeseries_decomp_vmd_range_make(Int32) -> TimeseriesdecompvmdRange
+
+pub fn timeseries_decomp_vmd_slice_make(Int32) -> TimeseriesdecompvmdSlice
+
+pub fn timeseries_decomp_vmd_table_make(Int32) -> TimeseriesdecompvmdTable
+
+pub fn timeseries_decomp_vmd_vector_zero(Int32) -> TimeseriesdecompvmdVector
+
+pub fn timeseries_decomp_vmd_view_make(Int32) -> TimeseriesdecompvmdView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriesdecompvmdBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompvmdBuffer::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdBuffer::copy(Self) -> Self
+pub fn TimeseriesdecompvmdBuffer::fill(Self, Double) -> Self
+pub fn TimeseriesdecompvmdBuffer::get(Self, Int32) -> Double
+pub fn TimeseriesdecompvmdBuffer::len(Self) -> Int32
+pub fn TimeseriesdecompvmdBuffer::max(Self) -> Double
+pub fn TimeseriesdecompvmdBuffer::mean(Self) -> Double
+pub fn TimeseriesdecompvmdBuffer::min(Self) -> Double
+pub fn TimeseriesdecompvmdBuffer::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompvmdBuffer::sum(Self) -> Double
+pub fn TimeseriesdecompvmdBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompvmdCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompvmdCluster::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdCluster::copy(Self) -> Self
+pub fn TimeseriesdecompvmdCluster::fill(Self, Double) -> Self
+pub fn TimeseriesdecompvmdCluster::get(Self, Int32) -> Double
+pub fn TimeseriesdecompvmdCluster::len(Self) -> Int32
+pub fn TimeseriesdecompvmdCluster::max(Self) -> Double
+pub fn TimeseriesdecompvmdCluster::mean(Self) -> Double
+pub fn TimeseriesdecompvmdCluster::min(Self) -> Double
+pub fn TimeseriesdecompvmdCluster::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompvmdCluster::sum(Self) -> Double
+pub fn TimeseriesdecompvmdCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompvmdCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompvmdCursor::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdCursor::copy(Self) -> Self
+pub fn TimeseriesdecompvmdCursor::fill(Self, Double) -> Self
+pub fn TimeseriesdecompvmdCursor::get(Self, Int32) -> Double
+pub fn TimeseriesdecompvmdCursor::len(Self) -> Int32
+pub fn TimeseriesdecompvmdCursor::max(Self) -> Double
+pub fn TimeseriesdecompvmdCursor::mean(Self) -> Double
+pub fn TimeseriesdecompvmdCursor::min(Self) -> Double
+pub fn TimeseriesdecompvmdCursor::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompvmdCursor::sum(Self) -> Double
+pub fn TimeseriesdecompvmdCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompvmdEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompvmdEdge::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdEdge::copy(Self) -> Self
+pub fn TimeseriesdecompvmdEdge::fill(Self, Double) -> Self
+pub fn TimeseriesdecompvmdEdge::get(Self, Int32) -> Double
+pub fn TimeseriesdecompvmdEdge::len(Self) -> Int32
+pub fn TimeseriesdecompvmdEdge::max(Self) -> Double
+pub fn TimeseriesdecompvmdEdge::mean(Self) -> Double
+pub fn TimeseriesdecompvmdEdge::min(Self) -> Double
+pub fn TimeseriesdecompvmdEdge::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompvmdEdge::sum(Self) -> Double
+pub fn TimeseriesdecompvmdEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompvmdFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompvmdFrame::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdFrame::copy(Self) -> Self
+pub fn TimeseriesdecompvmdFrame::fill(Self, Double) -> Self
+pub fn TimeseriesdecompvmdFrame::get(Self, Int32) -> Double
+pub fn TimeseriesdecompvmdFrame::len(Self) -> Int32
+pub fn TimeseriesdecompvmdFrame::max(Self) -> Double
+pub fn TimeseriesdecompvmdFrame::mean(Self) -> Double
+pub fn TimeseriesdecompvmdFrame::min(Self) -> Double
+pub fn TimeseriesdecompvmdFrame::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompvmdFrame::sum(Self) -> Double
+pub fn TimeseriesdecompvmdFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompvmdGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompvmdGraphN::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdGraphN::copy(Self) -> Self
+pub fn TimeseriesdecompvmdGraphN::fill(Self, Double) -> Self
+pub fn TimeseriesdecompvmdGraphN::get(Self, Int32) -> Double
+pub fn TimeseriesdecompvmdGraphN::len(Self) -> Int32
+pub fn TimeseriesdecompvmdGraphN::max(Self) -> Double
+pub fn TimeseriesdecompvmdGraphN::mean(Self) -> Double
+pub fn TimeseriesdecompvmdGraphN::min(Self) -> Double
+pub fn TimeseriesdecompvmdGraphN::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompvmdGraphN::sum(Self) -> Double
+pub fn TimeseriesdecompvmdGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompvmdLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompvmdLayer::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdLayer::copy(Self) -> Self
+pub fn TimeseriesdecompvmdLayer::fill(Self, Double) -> Self
+pub fn TimeseriesdecompvmdLayer::get(Self, Int32) -> Double
+pub fn TimeseriesdecompvmdLayer::len(Self) -> Int32
+pub fn TimeseriesdecompvmdLayer::max(Self) -> Double
+pub fn TimeseriesdecompvmdLayer::mean(Self) -> Double
+pub fn TimeseriesdecompvmdLayer::min(Self) -> Double
+pub fn TimeseriesdecompvmdLayer::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompvmdLayer::sum(Self) -> Double
+pub fn TimeseriesdecompvmdLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompvmdMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriesdecompvmdMatrix::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdMatrix::det(Self) -> Double
+pub fn TimeseriesdecompvmdMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriesdecompvmdMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriesdecompvmdMatrix::norm(Self) -> Double
+pub fn TimeseriesdecompvmdMatrix::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdMatrix::to_string(Self) -> String
+pub fn TimeseriesdecompvmdMatrix::trace(Self) -> Double
+pub fn TimeseriesdecompvmdMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriesdecompvmdModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompvmdModel::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdModel::copy(Self) -> Self
+pub fn TimeseriesdecompvmdModel::fill(Self, Double) -> Self
+pub fn TimeseriesdecompvmdModel::get(Self, Int32) -> Double
+pub fn TimeseriesdecompvmdModel::len(Self) -> Int32
+pub fn TimeseriesdecompvmdModel::max(Self) -> Double
+pub fn TimeseriesdecompvmdModel::mean(Self) -> Double
+pub fn TimeseriesdecompvmdModel::min(Self) -> Double
+pub fn TimeseriesdecompvmdModel::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompvmdModel::sum(Self) -> Double
+pub fn TimeseriesdecompvmdModel::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompvmdNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompvmdNode::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdNode::copy(Self) -> Self
+pub fn TimeseriesdecompvmdNode::fill(Self, Double) -> Self
+pub fn TimeseriesdecompvmdNode::get(Self, Int32) -> Double
+pub fn TimeseriesdecompvmdNode::len(Self) -> Int32
+pub fn TimeseriesdecompvmdNode::max(Self) -> Double
+pub fn TimeseriesdecompvmdNode::mean(Self) -> Double
+pub fn TimeseriesdecompvmdNode::min(Self) -> Double
+pub fn TimeseriesdecompvmdNode::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompvmdNode::sum(Self) -> Double
+pub fn TimeseriesdecompvmdNode::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompvmdPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompvmdPath::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdPath::copy(Self) -> Self
+pub fn TimeseriesdecompvmdPath::fill(Self, Double) -> Self
+pub fn TimeseriesdecompvmdPath::get(Self, Int32) -> Double
+pub fn TimeseriesdecompvmdPath::len(Self) -> Int32
+pub fn TimeseriesdecompvmdPath::max(Self) -> Double
+pub fn TimeseriesdecompvmdPath::mean(Self) -> Double
+pub fn TimeseriesdecompvmdPath::min(Self) -> Double
+pub fn TimeseriesdecompvmdPath::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdPath::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompvmdPath::sum(Self) -> Double
+pub fn TimeseriesdecompvmdPath::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompvmdPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriesdecompvmdPoint::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdPoint::cross(Self, Self) -> Self
+pub fn TimeseriesdecompvmdPoint::dist(Self, Self) -> Double
+pub fn TimeseriesdecompvmdPoint::dot(Self, Self) -> Double
+pub fn TimeseriesdecompvmdPoint::label(Self) -> Int32
+pub fn TimeseriesdecompvmdPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriesdecompvmdPoint::mid(Self, Self) -> Self
+pub fn TimeseriesdecompvmdPoint::negate(Self) -> Self
+pub fn TimeseriesdecompvmdPoint::norm(Self) -> Double
+pub fn TimeseriesdecompvmdPoint::normalize(Self) -> Self
+pub fn TimeseriesdecompvmdPoint::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdPoint::sub(Self, Self) -> Self
+pub fn TimeseriesdecompvmdPoint::to_string(Self) -> String
+pub fn TimeseriesdecompvmdPoint::x(Self) -> Double
+pub fn TimeseriesdecompvmdPoint::y(Self) -> Double
+pub fn TimeseriesdecompvmdPoint::z(Self) -> Double
+
+pub(all) struct TimeseriesdecompvmdRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompvmdRange::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdRange::copy(Self) -> Self
+pub fn TimeseriesdecompvmdRange::fill(Self, Double) -> Self
+pub fn TimeseriesdecompvmdRange::get(Self, Int32) -> Double
+pub fn TimeseriesdecompvmdRange::len(Self) -> Int32
+pub fn TimeseriesdecompvmdRange::max(Self) -> Double
+pub fn TimeseriesdecompvmdRange::mean(Self) -> Double
+pub fn TimeseriesdecompvmdRange::min(Self) -> Double
+pub fn TimeseriesdecompvmdRange::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompvmdRange::sum(Self) -> Double
+pub fn TimeseriesdecompvmdRange::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompvmdSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriesdecompvmdSeries::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdSeries::cumsum(Self) -> Self
+pub fn TimeseriesdecompvmdSeries::len(Self) -> Int32
+pub fn TimeseriesdecompvmdSeries::max(Self) -> Double
+pub fn TimeseriesdecompvmdSeries::mean(Self) -> Double
+pub fn TimeseriesdecompvmdSeries::median(Self) -> Double
+pub fn TimeseriesdecompvmdSeries::min(Self) -> Double
+pub fn TimeseriesdecompvmdSeries::normalize(Self) -> Self
+pub fn TimeseriesdecompvmdSeries::range(Self) -> Double
+pub fn TimeseriesdecompvmdSeries::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdSeries::std(Self) -> Double
+pub fn TimeseriesdecompvmdSeries::sub(Self, Self) -> Self
+pub fn TimeseriesdecompvmdSeries::sum(Self) -> Double
+pub fn TimeseriesdecompvmdSeries::to_string(Self) -> String
+pub fn TimeseriesdecompvmdSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriesdecompvmdSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompvmdSlice::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdSlice::copy(Self) -> Self
+pub fn TimeseriesdecompvmdSlice::fill(Self, Double) -> Self
+pub fn TimeseriesdecompvmdSlice::get(Self, Int32) -> Double
+pub fn TimeseriesdecompvmdSlice::len(Self) -> Int32
+pub fn TimeseriesdecompvmdSlice::max(Self) -> Double
+pub fn TimeseriesdecompvmdSlice::mean(Self) -> Double
+pub fn TimeseriesdecompvmdSlice::min(Self) -> Double
+pub fn TimeseriesdecompvmdSlice::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompvmdSlice::sum(Self) -> Double
+pub fn TimeseriesdecompvmdSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompvmdTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompvmdTable::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdTable::copy(Self) -> Self
+pub fn TimeseriesdecompvmdTable::fill(Self, Double) -> Self
+pub fn TimeseriesdecompvmdTable::get(Self, Int32) -> Double
+pub fn TimeseriesdecompvmdTable::len(Self) -> Int32
+pub fn TimeseriesdecompvmdTable::max(Self) -> Double
+pub fn TimeseriesdecompvmdTable::mean(Self) -> Double
+pub fn TimeseriesdecompvmdTable::min(Self) -> Double
+pub fn TimeseriesdecompvmdTable::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompvmdTable::sum(Self) -> Double
+pub fn TimeseriesdecompvmdTable::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompvmdVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriesdecompvmdVector::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdVector::dist(Self, Self) -> Double
+pub fn TimeseriesdecompvmdVector::dot(Self, Self) -> Double
+pub fn TimeseriesdecompvmdVector::norm(Self) -> Double
+pub fn TimeseriesdecompvmdVector::normalize(Self) -> Self
+pub fn TimeseriesdecompvmdVector::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdVector::sub(Self, Self) -> Self
+pub fn TimeseriesdecompvmdVector::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompvmdView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompvmdView::add(Self, Self) -> Self
+pub fn TimeseriesdecompvmdView::copy(Self) -> Self
+pub fn TimeseriesdecompvmdView::fill(Self, Double) -> Self
+pub fn TimeseriesdecompvmdView::get(Self, Int32) -> Double
+pub fn TimeseriesdecompvmdView::len(Self) -> Int32
+pub fn TimeseriesdecompvmdView::max(Self) -> Double
+pub fn TimeseriesdecompvmdView::mean(Self) -> Double
+pub fn TimeseriesdecompvmdView::min(Self) -> Double
+pub fn TimeseriesdecompvmdView::scale(Self, Double) -> Self
+pub fn TimeseriesdecompvmdView::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompvmdView::sum(Self) -> Double
+pub fn TimeseriesdecompvmdView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

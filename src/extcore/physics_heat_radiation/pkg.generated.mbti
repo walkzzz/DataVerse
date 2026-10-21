@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_heat_radiation"
+
+// Values
+pub fn physics_heat_radiation_buffer_make(Int32) -> PhysicsheatradiationBuffer
+
+pub fn physics_heat_radiation_cluster_make(Int32) -> PhysicsheatradiationCluster
+
+pub fn physics_heat_radiation_cursor_make(Int32) -> PhysicsheatradiationCursor
+
+pub fn physics_heat_radiation_edge_make(Int32) -> PhysicsheatradiationEdge
+
+pub fn physics_heat_radiation_frame_make(Int32) -> PhysicsheatradiationFrame
+
+pub fn physics_heat_radiation_graphn_make(Int32) -> PhysicsheatradiationGraphN
+
+pub fn physics_heat_radiation_layer_make(Int32) -> PhysicsheatradiationLayer
+
+pub fn physics_heat_radiation_make_matrix(Int32, Int32, Double) -> PhysicsheatradiationMatrix
+
+pub fn physics_heat_radiation_make_point(Double, Double) -> PhysicsheatradiationPoint
+
+pub fn physics_heat_radiation_make_point3(Double, Double, Double) -> PhysicsheatradiationPoint
+
+pub fn physics_heat_radiation_make_series(Array[Double], String) -> PhysicsheatradiationSeries
+
+pub fn physics_heat_radiation_make_vector(Array[Double]) -> PhysicsheatradiationVector
+
+pub fn physics_heat_radiation_matrix_identity(Int32) -> PhysicsheatradiationMatrix
+
+pub fn physics_heat_radiation_model_make(Int32) -> PhysicsheatradiationModel
+
+pub fn physics_heat_radiation_node_make(Int32) -> PhysicsheatradiationNode
+
+pub fn physics_heat_radiation_path_make(Int32) -> PhysicsheatradiationPath
+
+pub fn physics_heat_radiation_range_make(Int32) -> PhysicsheatradiationRange
+
+pub fn physics_heat_radiation_slice_make(Int32) -> PhysicsheatradiationSlice
+
+pub fn physics_heat_radiation_table_make(Int32) -> PhysicsheatradiationTable
+
+pub fn physics_heat_radiation_vector_zero(Int32) -> PhysicsheatradiationVector
+
+pub fn physics_heat_radiation_view_make(Int32) -> PhysicsheatradiationView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsheatradiationBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatradiationBuffer::add(Self, Self) -> Self
+pub fn PhysicsheatradiationBuffer::copy(Self) -> Self
+pub fn PhysicsheatradiationBuffer::fill(Self, Double) -> Self
+pub fn PhysicsheatradiationBuffer::get(Self, Int32) -> Double
+pub fn PhysicsheatradiationBuffer::len(Self) -> Int32
+pub fn PhysicsheatradiationBuffer::max(Self) -> Double
+pub fn PhysicsheatradiationBuffer::mean(Self) -> Double
+pub fn PhysicsheatradiationBuffer::min(Self) -> Double
+pub fn PhysicsheatradiationBuffer::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatradiationBuffer::sum(Self) -> Double
+pub fn PhysicsheatradiationBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsheatradiationCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatradiationCluster::add(Self, Self) -> Self
+pub fn PhysicsheatradiationCluster::copy(Self) -> Self
+pub fn PhysicsheatradiationCluster::fill(Self, Double) -> Self
+pub fn PhysicsheatradiationCluster::get(Self, Int32) -> Double
+pub fn PhysicsheatradiationCluster::len(Self) -> Int32
+pub fn PhysicsheatradiationCluster::max(Self) -> Double
+pub fn PhysicsheatradiationCluster::mean(Self) -> Double
+pub fn PhysicsheatradiationCluster::min(Self) -> Double
+pub fn PhysicsheatradiationCluster::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatradiationCluster::sum(Self) -> Double
+pub fn PhysicsheatradiationCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsheatradiationCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatradiationCursor::add(Self, Self) -> Self
+pub fn PhysicsheatradiationCursor::copy(Self) -> Self
+pub fn PhysicsheatradiationCursor::fill(Self, Double) -> Self
+pub fn PhysicsheatradiationCursor::get(Self, Int32) -> Double
+pub fn PhysicsheatradiationCursor::len(Self) -> Int32
+pub fn PhysicsheatradiationCursor::max(Self) -> Double
+pub fn PhysicsheatradiationCursor::mean(Self) -> Double
+pub fn PhysicsheatradiationCursor::min(Self) -> Double
+pub fn PhysicsheatradiationCursor::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatradiationCursor::sum(Self) -> Double
+pub fn PhysicsheatradiationCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsheatradiationEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatradiationEdge::add(Self, Self) -> Self
+pub fn PhysicsheatradiationEdge::copy(Self) -> Self
+pub fn PhysicsheatradiationEdge::fill(Self, Double) -> Self
+pub fn PhysicsheatradiationEdge::get(Self, Int32) -> Double
+pub fn PhysicsheatradiationEdge::len(Self) -> Int32
+pub fn PhysicsheatradiationEdge::max(Self) -> Double
+pub fn PhysicsheatradiationEdge::mean(Self) -> Double
+pub fn PhysicsheatradiationEdge::min(Self) -> Double
+pub fn PhysicsheatradiationEdge::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatradiationEdge::sum(Self) -> Double
+pub fn PhysicsheatradiationEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsheatradiationFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatradiationFrame::add(Self, Self) -> Self
+pub fn PhysicsheatradiationFrame::copy(Self) -> Self
+pub fn PhysicsheatradiationFrame::fill(Self, Double) -> Self
+pub fn PhysicsheatradiationFrame::get(Self, Int32) -> Double
+pub fn PhysicsheatradiationFrame::len(Self) -> Int32
+pub fn PhysicsheatradiationFrame::max(Self) -> Double
+pub fn PhysicsheatradiationFrame::mean(Self) -> Double
+pub fn PhysicsheatradiationFrame::min(Self) -> Double
+pub fn PhysicsheatradiationFrame::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatradiationFrame::sum(Self) -> Double
+pub fn PhysicsheatradiationFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsheatradiationGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatradiationGraphN::add(Self, Self) -> Self
+pub fn PhysicsheatradiationGraphN::copy(Self) -> Self
+pub fn PhysicsheatradiationGraphN::fill(Self, Double) -> Self
+pub fn PhysicsheatradiationGraphN::get(Self, Int32) -> Double
+pub fn PhysicsheatradiationGraphN::len(Self) -> Int32
+pub fn PhysicsheatradiationGraphN::max(Self) -> Double
+pub fn PhysicsheatradiationGraphN::mean(Self) -> Double
+pub fn PhysicsheatradiationGraphN::min(Self) -> Double
+pub fn PhysicsheatradiationGraphN::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatradiationGraphN::sum(Self) -> Double
+pub fn PhysicsheatradiationGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsheatradiationLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatradiationLayer::add(Self, Self) -> Self
+pub fn PhysicsheatradiationLayer::copy(Self) -> Self
+pub fn PhysicsheatradiationLayer::fill(Self, Double) -> Self
+pub fn PhysicsheatradiationLayer::get(Self, Int32) -> Double
+pub fn PhysicsheatradiationLayer::len(Self) -> Int32
+pub fn PhysicsheatradiationLayer::max(Self) -> Double
+pub fn PhysicsheatradiationLayer::mean(Self) -> Double
+pub fn PhysicsheatradiationLayer::min(Self) -> Double
+pub fn PhysicsheatradiationLayer::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatradiationLayer::sum(Self) -> Double
+pub fn PhysicsheatradiationLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsheatradiationMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsheatradiationMatrix::add(Self, Self) -> Self
+pub fn PhysicsheatradiationMatrix::det(Self) -> Double
+pub fn PhysicsheatradiationMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsheatradiationMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsheatradiationMatrix::norm(Self) -> Double
+pub fn PhysicsheatradiationMatrix::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationMatrix::to_string(Self) -> String
+pub fn PhysicsheatradiationMatrix::trace(Self) -> Double
+pub fn PhysicsheatradiationMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsheatradiationModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatradiationModel::add(Self, Self) -> Self
+pub fn PhysicsheatradiationModel::copy(Self) -> Self
+pub fn PhysicsheatradiationModel::fill(Self, Double) -> Self
+pub fn PhysicsheatradiationModel::get(Self, Int32) -> Double
+pub fn PhysicsheatradiationModel::len(Self) -> Int32
+pub fn PhysicsheatradiationModel::max(Self) -> Double
+pub fn PhysicsheatradiationModel::mean(Self) -> Double
+pub fn PhysicsheatradiationModel::min(Self) -> Double
+pub fn PhysicsheatradiationModel::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatradiationModel::sum(Self) -> Double
+pub fn PhysicsheatradiationModel::to_string(Self) -> String
+
+pub(all) struct PhysicsheatradiationNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatradiationNode::add(Self, Self) -> Self
+pub fn PhysicsheatradiationNode::copy(Self) -> Self
+pub fn PhysicsheatradiationNode::fill(Self, Double) -> Self
+pub fn PhysicsheatradiationNode::get(Self, Int32) -> Double
+pub fn PhysicsheatradiationNode::len(Self) -> Int32
+pub fn PhysicsheatradiationNode::max(Self) -> Double
+pub fn PhysicsheatradiationNode::mean(Self) -> Double
+pub fn PhysicsheatradiationNode::min(Self) -> Double
+pub fn PhysicsheatradiationNode::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatradiationNode::sum(Self) -> Double
+pub fn PhysicsheatradiationNode::to_string(Self) -> String
+
+pub(all) struct PhysicsheatradiationPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatradiationPath::add(Self, Self) -> Self
+pub fn PhysicsheatradiationPath::copy(Self) -> Self
+pub fn PhysicsheatradiationPath::fill(Self, Double) -> Self
+pub fn PhysicsheatradiationPath::get(Self, Int32) -> Double
+pub fn PhysicsheatradiationPath::len(Self) -> Int32
+pub fn PhysicsheatradiationPath::max(Self) -> Double
+pub fn PhysicsheatradiationPath::mean(Self) -> Double
+pub fn PhysicsheatradiationPath::min(Self) -> Double
+pub fn PhysicsheatradiationPath::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatradiationPath::sum(Self) -> Double
+pub fn PhysicsheatradiationPath::to_string(Self) -> String
+
+pub(all) struct PhysicsheatradiationPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsheatradiationPoint::add(Self, Self) -> Self
+pub fn PhysicsheatradiationPoint::cross(Self, Self) -> Self
+pub fn PhysicsheatradiationPoint::dist(Self, Self) -> Double
+pub fn PhysicsheatradiationPoint::dot(Self, Self) -> Double
+pub fn PhysicsheatradiationPoint::label(Self) -> Int32
+pub fn PhysicsheatradiationPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsheatradiationPoint::mid(Self, Self) -> Self
+pub fn PhysicsheatradiationPoint::negate(Self) -> Self
+pub fn PhysicsheatradiationPoint::norm(Self) -> Double
+pub fn PhysicsheatradiationPoint::normalize(Self) -> Self
+pub fn PhysicsheatradiationPoint::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationPoint::sub(Self, Self) -> Self
+pub fn PhysicsheatradiationPoint::to_string(Self) -> String
+pub fn PhysicsheatradiationPoint::x(Self) -> Double
+pub fn PhysicsheatradiationPoint::y(Self) -> Double
+pub fn PhysicsheatradiationPoint::z(Self) -> Double
+
+pub(all) struct PhysicsheatradiationRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatradiationRange::add(Self, Self) -> Self
+pub fn PhysicsheatradiationRange::copy(Self) -> Self
+pub fn PhysicsheatradiationRange::fill(Self, Double) -> Self
+pub fn PhysicsheatradiationRange::get(Self, Int32) -> Double
+pub fn PhysicsheatradiationRange::len(Self) -> Int32
+pub fn PhysicsheatradiationRange::max(Self) -> Double
+pub fn PhysicsheatradiationRange::mean(Self) -> Double
+pub fn PhysicsheatradiationRange::min(Self) -> Double
+pub fn PhysicsheatradiationRange::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatradiationRange::sum(Self) -> Double
+pub fn PhysicsheatradiationRange::to_string(Self) -> String
+
+pub(all) struct PhysicsheatradiationSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsheatradiationSeries::add(Self, Self) -> Self
+pub fn PhysicsheatradiationSeries::cumsum(Self) -> Self
+pub fn PhysicsheatradiationSeries::len(Self) -> Int32
+pub fn PhysicsheatradiationSeries::max(Self) -> Double
+pub fn PhysicsheatradiationSeries::mean(Self) -> Double
+pub fn PhysicsheatradiationSeries::median(Self) -> Double
+pub fn PhysicsheatradiationSeries::min(Self) -> Double
+pub fn PhysicsheatradiationSeries::normalize(Self) -> Self
+pub fn PhysicsheatradiationSeries::range(Self) -> Double
+pub fn PhysicsheatradiationSeries::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationSeries::std(Self) -> Double
+pub fn PhysicsheatradiationSeries::sub(Self, Self) -> Self
+pub fn PhysicsheatradiationSeries::sum(Self) -> Double
+pub fn PhysicsheatradiationSeries::to_string(Self) -> String
+pub fn PhysicsheatradiationSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsheatradiationSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatradiationSlice::add(Self, Self) -> Self
+pub fn PhysicsheatradiationSlice::copy(Self) -> Self
+pub fn PhysicsheatradiationSlice::fill(Self, Double) -> Self
+pub fn PhysicsheatradiationSlice::get(Self, Int32) -> Double
+pub fn PhysicsheatradiationSlice::len(Self) -> Int32
+pub fn PhysicsheatradiationSlice::max(Self) -> Double
+pub fn PhysicsheatradiationSlice::mean(Self) -> Double
+pub fn PhysicsheatradiationSlice::min(Self) -> Double
+pub fn PhysicsheatradiationSlice::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatradiationSlice::sum(Self) -> Double
+pub fn PhysicsheatradiationSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsheatradiationTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatradiationTable::add(Self, Self) -> Self
+pub fn PhysicsheatradiationTable::copy(Self) -> Self
+pub fn PhysicsheatradiationTable::fill(Self, Double) -> Self
+pub fn PhysicsheatradiationTable::get(Self, Int32) -> Double
+pub fn PhysicsheatradiationTable::len(Self) -> Int32
+pub fn PhysicsheatradiationTable::max(Self) -> Double
+pub fn PhysicsheatradiationTable::mean(Self) -> Double
+pub fn PhysicsheatradiationTable::min(Self) -> Double
+pub fn PhysicsheatradiationTable::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatradiationTable::sum(Self) -> Double
+pub fn PhysicsheatradiationTable::to_string(Self) -> String
+
+pub(all) struct PhysicsheatradiationVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsheatradiationVector::add(Self, Self) -> Self
+pub fn PhysicsheatradiationVector::dist(Self, Self) -> Double
+pub fn PhysicsheatradiationVector::dot(Self, Self) -> Double
+pub fn PhysicsheatradiationVector::norm(Self) -> Double
+pub fn PhysicsheatradiationVector::normalize(Self) -> Self
+pub fn PhysicsheatradiationVector::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationVector::sub(Self, Self) -> Self
+pub fn PhysicsheatradiationVector::to_string(Self) -> String
+
+pub(all) struct PhysicsheatradiationView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatradiationView::add(Self, Self) -> Self
+pub fn PhysicsheatradiationView::copy(Self) -> Self
+pub fn PhysicsheatradiationView::fill(Self, Double) -> Self
+pub fn PhysicsheatradiationView::get(Self, Int32) -> Double
+pub fn PhysicsheatradiationView::len(Self) -> Int32
+pub fn PhysicsheatradiationView::max(Self) -> Double
+pub fn PhysicsheatradiationView::mean(Self) -> Double
+pub fn PhysicsheatradiationView::min(Self) -> Double
+pub fn PhysicsheatradiationView::scale(Self, Double) -> Self
+pub fn PhysicsheatradiationView::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatradiationView::sum(Self) -> Double
+pub fn PhysicsheatradiationView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

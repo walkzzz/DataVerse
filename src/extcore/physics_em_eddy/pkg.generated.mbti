@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_em_eddy"
+
+// Values
+pub fn physics_em_eddy_buffer_make(Int32) -> PhysicsemeddyBuffer
+
+pub fn physics_em_eddy_cluster_make(Int32) -> PhysicsemeddyCluster
+
+pub fn physics_em_eddy_cursor_make(Int32) -> PhysicsemeddyCursor
+
+pub fn physics_em_eddy_edge_make(Int32) -> PhysicsemeddyEdge
+
+pub fn physics_em_eddy_frame_make(Int32) -> PhysicsemeddyFrame
+
+pub fn physics_em_eddy_graphn_make(Int32) -> PhysicsemeddyGraphN
+
+pub fn physics_em_eddy_layer_make(Int32) -> PhysicsemeddyLayer
+
+pub fn physics_em_eddy_make_matrix(Int32, Int32, Double) -> PhysicsemeddyMatrix
+
+pub fn physics_em_eddy_make_point(Double, Double) -> PhysicsemeddyPoint
+
+pub fn physics_em_eddy_make_point3(Double, Double, Double) -> PhysicsemeddyPoint
+
+pub fn physics_em_eddy_make_series(Array[Double], String) -> PhysicsemeddySeries
+
+pub fn physics_em_eddy_make_vector(Array[Double]) -> PhysicsemeddyVector
+
+pub fn physics_em_eddy_matrix_identity(Int32) -> PhysicsemeddyMatrix
+
+pub fn physics_em_eddy_model_make(Int32) -> PhysicsemeddyModel
+
+pub fn physics_em_eddy_node_make(Int32) -> PhysicsemeddyNode
+
+pub fn physics_em_eddy_path_make(Int32) -> PhysicsemeddyPath
+
+pub fn physics_em_eddy_range_make(Int32) -> PhysicsemeddyRange
+
+pub fn physics_em_eddy_slice_make(Int32) -> PhysicsemeddySlice
+
+pub fn physics_em_eddy_table_make(Int32) -> PhysicsemeddyTable
+
+pub fn physics_em_eddy_vector_zero(Int32) -> PhysicsemeddyVector
+
+pub fn physics_em_eddy_view_make(Int32) -> PhysicsemeddyView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsemeddyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemeddyBuffer::add(Self, Self) -> Self
+pub fn PhysicsemeddyBuffer::copy(Self) -> Self
+pub fn PhysicsemeddyBuffer::fill(Self, Double) -> Self
+pub fn PhysicsemeddyBuffer::get(Self, Int32) -> Double
+pub fn PhysicsemeddyBuffer::len(Self) -> Int32
+pub fn PhysicsemeddyBuffer::max(Self) -> Double
+pub fn PhysicsemeddyBuffer::mean(Self) -> Double
+pub fn PhysicsemeddyBuffer::min(Self) -> Double
+pub fn PhysicsemeddyBuffer::scale(Self, Double) -> Self
+pub fn PhysicsemeddyBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsemeddyBuffer::sum(Self) -> Double
+pub fn PhysicsemeddyBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsemeddyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemeddyCluster::add(Self, Self) -> Self
+pub fn PhysicsemeddyCluster::copy(Self) -> Self
+pub fn PhysicsemeddyCluster::fill(Self, Double) -> Self
+pub fn PhysicsemeddyCluster::get(Self, Int32) -> Double
+pub fn PhysicsemeddyCluster::len(Self) -> Int32
+pub fn PhysicsemeddyCluster::max(Self) -> Double
+pub fn PhysicsemeddyCluster::mean(Self) -> Double
+pub fn PhysicsemeddyCluster::min(Self) -> Double
+pub fn PhysicsemeddyCluster::scale(Self, Double) -> Self
+pub fn PhysicsemeddyCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsemeddyCluster::sum(Self) -> Double
+pub fn PhysicsemeddyCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsemeddyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemeddyCursor::add(Self, Self) -> Self
+pub fn PhysicsemeddyCursor::copy(Self) -> Self
+pub fn PhysicsemeddyCursor::fill(Self, Double) -> Self
+pub fn PhysicsemeddyCursor::get(Self, Int32) -> Double
+pub fn PhysicsemeddyCursor::len(Self) -> Int32
+pub fn PhysicsemeddyCursor::max(Self) -> Double
+pub fn PhysicsemeddyCursor::mean(Self) -> Double
+pub fn PhysicsemeddyCursor::min(Self) -> Double
+pub fn PhysicsemeddyCursor::scale(Self, Double) -> Self
+pub fn PhysicsemeddyCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsemeddyCursor::sum(Self) -> Double
+pub fn PhysicsemeddyCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsemeddyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemeddyEdge::add(Self, Self) -> Self
+pub fn PhysicsemeddyEdge::copy(Self) -> Self
+pub fn PhysicsemeddyEdge::fill(Self, Double) -> Self
+pub fn PhysicsemeddyEdge::get(Self, Int32) -> Double
+pub fn PhysicsemeddyEdge::len(Self) -> Int32
+pub fn PhysicsemeddyEdge::max(Self) -> Double
+pub fn PhysicsemeddyEdge::mean(Self) -> Double
+pub fn PhysicsemeddyEdge::min(Self) -> Double
+pub fn PhysicsemeddyEdge::scale(Self, Double) -> Self
+pub fn PhysicsemeddyEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsemeddyEdge::sum(Self) -> Double
+pub fn PhysicsemeddyEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsemeddyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemeddyFrame::add(Self, Self) -> Self
+pub fn PhysicsemeddyFrame::copy(Self) -> Self
+pub fn PhysicsemeddyFrame::fill(Self, Double) -> Self
+pub fn PhysicsemeddyFrame::get(Self, Int32) -> Double
+pub fn PhysicsemeddyFrame::len(Self) -> Int32
+pub fn PhysicsemeddyFrame::max(Self) -> Double
+pub fn PhysicsemeddyFrame::mean(Self) -> Double
+pub fn PhysicsemeddyFrame::min(Self) -> Double
+pub fn PhysicsemeddyFrame::scale(Self, Double) -> Self
+pub fn PhysicsemeddyFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsemeddyFrame::sum(Self) -> Double
+pub fn PhysicsemeddyFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsemeddyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemeddyGraphN::add(Self, Self) -> Self
+pub fn PhysicsemeddyGraphN::copy(Self) -> Self
+pub fn PhysicsemeddyGraphN::fill(Self, Double) -> Self
+pub fn PhysicsemeddyGraphN::get(Self, Int32) -> Double
+pub fn PhysicsemeddyGraphN::len(Self) -> Int32
+pub fn PhysicsemeddyGraphN::max(Self) -> Double
+pub fn PhysicsemeddyGraphN::mean(Self) -> Double
+pub fn PhysicsemeddyGraphN::min(Self) -> Double
+pub fn PhysicsemeddyGraphN::scale(Self, Double) -> Self
+pub fn PhysicsemeddyGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsemeddyGraphN::sum(Self) -> Double
+pub fn PhysicsemeddyGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsemeddyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemeddyLayer::add(Self, Self) -> Self
+pub fn PhysicsemeddyLayer::copy(Self) -> Self
+pub fn PhysicsemeddyLayer::fill(Self, Double) -> Self
+pub fn PhysicsemeddyLayer::get(Self, Int32) -> Double
+pub fn PhysicsemeddyLayer::len(Self) -> Int32
+pub fn PhysicsemeddyLayer::max(Self) -> Double
+pub fn PhysicsemeddyLayer::mean(Self) -> Double
+pub fn PhysicsemeddyLayer::min(Self) -> Double
+pub fn PhysicsemeddyLayer::scale(Self, Double) -> Self
+pub fn PhysicsemeddyLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsemeddyLayer::sum(Self) -> Double
+pub fn PhysicsemeddyLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsemeddyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsemeddyMatrix::add(Self, Self) -> Self
+pub fn PhysicsemeddyMatrix::det(Self) -> Double
+pub fn PhysicsemeddyMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsemeddyMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsemeddyMatrix::norm(Self) -> Double
+pub fn PhysicsemeddyMatrix::scale(Self, Double) -> Self
+pub fn PhysicsemeddyMatrix::to_string(Self) -> String
+pub fn PhysicsemeddyMatrix::trace(Self) -> Double
+pub fn PhysicsemeddyMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsemeddyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemeddyModel::add(Self, Self) -> Self
+pub fn PhysicsemeddyModel::copy(Self) -> Self
+pub fn PhysicsemeddyModel::fill(Self, Double) -> Self
+pub fn PhysicsemeddyModel::get(Self, Int32) -> Double
+pub fn PhysicsemeddyModel::len(Self) -> Int32
+pub fn PhysicsemeddyModel::max(Self) -> Double
+pub fn PhysicsemeddyModel::mean(Self) -> Double
+pub fn PhysicsemeddyModel::min(Self) -> Double
+pub fn PhysicsemeddyModel::scale(Self, Double) -> Self
+pub fn PhysicsemeddyModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsemeddyModel::sum(Self) -> Double
+pub fn PhysicsemeddyModel::to_string(Self) -> String
+
+pub(all) struct PhysicsemeddyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemeddyNode::add(Self, Self) -> Self
+pub fn PhysicsemeddyNode::copy(Self) -> Self
+pub fn PhysicsemeddyNode::fill(Self, Double) -> Self
+pub fn PhysicsemeddyNode::get(Self, Int32) -> Double
+pub fn PhysicsemeddyNode::len(Self) -> Int32
+pub fn PhysicsemeddyNode::max(Self) -> Double
+pub fn PhysicsemeddyNode::mean(Self) -> Double
+pub fn PhysicsemeddyNode::min(Self) -> Double
+pub fn PhysicsemeddyNode::scale(Self, Double) -> Self
+pub fn PhysicsemeddyNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsemeddyNode::sum(Self) -> Double
+pub fn PhysicsemeddyNode::to_string(Self) -> String
+
+pub(all) struct PhysicsemeddyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemeddyPath::add(Self, Self) -> Self
+pub fn PhysicsemeddyPath::copy(Self) -> Self
+pub fn PhysicsemeddyPath::fill(Self, Double) -> Self
+pub fn PhysicsemeddyPath::get(Self, Int32) -> Double
+pub fn PhysicsemeddyPath::len(Self) -> Int32
+pub fn PhysicsemeddyPath::max(Self) -> Double
+pub fn PhysicsemeddyPath::mean(Self) -> Double
+pub fn PhysicsemeddyPath::min(Self) -> Double
+pub fn PhysicsemeddyPath::scale(Self, Double) -> Self
+pub fn PhysicsemeddyPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsemeddyPath::sum(Self) -> Double
+pub fn PhysicsemeddyPath::to_string(Self) -> String
+
+pub(all) struct PhysicsemeddyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsemeddyPoint::add(Self, Self) -> Self
+pub fn PhysicsemeddyPoint::cross(Self, Self) -> Self
+pub fn PhysicsemeddyPoint::dist(Self, Self) -> Double
+pub fn PhysicsemeddyPoint::dot(Self, Self) -> Double
+pub fn PhysicsemeddyPoint::label(Self) -> Int32
+pub fn PhysicsemeddyPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsemeddyPoint::mid(Self, Self) -> Self
+pub fn PhysicsemeddyPoint::negate(Self) -> Self
+pub fn PhysicsemeddyPoint::norm(Self) -> Double
+pub fn PhysicsemeddyPoint::normalize(Self) -> Self
+pub fn PhysicsemeddyPoint::scale(Self, Double) -> Self
+pub fn PhysicsemeddyPoint::sub(Self, Self) -> Self
+pub fn PhysicsemeddyPoint::to_string(Self) -> String
+pub fn PhysicsemeddyPoint::x(Self) -> Double
+pub fn PhysicsemeddyPoint::y(Self) -> Double
+pub fn PhysicsemeddyPoint::z(Self) -> Double
+
+pub(all) struct PhysicsemeddyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemeddyRange::add(Self, Self) -> Self
+pub fn PhysicsemeddyRange::copy(Self) -> Self
+pub fn PhysicsemeddyRange::fill(Self, Double) -> Self
+pub fn PhysicsemeddyRange::get(Self, Int32) -> Double
+pub fn PhysicsemeddyRange::len(Self) -> Int32
+pub fn PhysicsemeddyRange::max(Self) -> Double
+pub fn PhysicsemeddyRange::mean(Self) -> Double
+pub fn PhysicsemeddyRange::min(Self) -> Double
+pub fn PhysicsemeddyRange::scale(Self, Double) -> Self
+pub fn PhysicsemeddyRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsemeddyRange::sum(Self) -> Double
+pub fn PhysicsemeddyRange::to_string(Self) -> String
+
+pub(all) struct PhysicsemeddySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsemeddySeries::add(Self, Self) -> Self
+pub fn PhysicsemeddySeries::cumsum(Self) -> Self
+pub fn PhysicsemeddySeries::len(Self) -> Int32
+pub fn PhysicsemeddySeries::max(Self) -> Double
+pub fn PhysicsemeddySeries::mean(Self) -> Double
+pub fn PhysicsemeddySeries::median(Self) -> Double
+pub fn PhysicsemeddySeries::min(Self) -> Double
+pub fn PhysicsemeddySeries::normalize(Self) -> Self
+pub fn PhysicsemeddySeries::range(Self) -> Double
+pub fn PhysicsemeddySeries::scale(Self, Double) -> Self
+pub fn PhysicsemeddySeries::std(Self) -> Double
+pub fn PhysicsemeddySeries::sub(Self, Self) -> Self
+pub fn PhysicsemeddySeries::sum(Self) -> Double
+pub fn PhysicsemeddySeries::to_string(Self) -> String
+pub fn PhysicsemeddySeries::variance(Self) -> Double
+
+pub(all) struct PhysicsemeddySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemeddySlice::add(Self, Self) -> Self
+pub fn PhysicsemeddySlice::copy(Self) -> Self
+pub fn PhysicsemeddySlice::fill(Self, Double) -> Self
+pub fn PhysicsemeddySlice::get(Self, Int32) -> Double
+pub fn PhysicsemeddySlice::len(Self) -> Int32
+pub fn PhysicsemeddySlice::max(Self) -> Double
+pub fn PhysicsemeddySlice::mean(Self) -> Double
+pub fn PhysicsemeddySlice::min(Self) -> Double
+pub fn PhysicsemeddySlice::scale(Self, Double) -> Self
+pub fn PhysicsemeddySlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsemeddySlice::sum(Self) -> Double
+pub fn PhysicsemeddySlice::to_string(Self) -> String
+
+pub(all) struct PhysicsemeddyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemeddyTable::add(Self, Self) -> Self
+pub fn PhysicsemeddyTable::copy(Self) -> Self
+pub fn PhysicsemeddyTable::fill(Self, Double) -> Self
+pub fn PhysicsemeddyTable::get(Self, Int32) -> Double
+pub fn PhysicsemeddyTable::len(Self) -> Int32
+pub fn PhysicsemeddyTable::max(Self) -> Double
+pub fn PhysicsemeddyTable::mean(Self) -> Double
+pub fn PhysicsemeddyTable::min(Self) -> Double
+pub fn PhysicsemeddyTable::scale(Self, Double) -> Self
+pub fn PhysicsemeddyTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsemeddyTable::sum(Self) -> Double
+pub fn PhysicsemeddyTable::to_string(Self) -> String
+
+pub(all) struct PhysicsemeddyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsemeddyVector::add(Self, Self) -> Self
+pub fn PhysicsemeddyVector::dist(Self, Self) -> Double
+pub fn PhysicsemeddyVector::dot(Self, Self) -> Double
+pub fn PhysicsemeddyVector::norm(Self) -> Double
+pub fn PhysicsemeddyVector::normalize(Self) -> Self
+pub fn PhysicsemeddyVector::scale(Self, Double) -> Self
+pub fn PhysicsemeddyVector::sub(Self, Self) -> Self
+pub fn PhysicsemeddyVector::to_string(Self) -> String
+
+pub(all) struct PhysicsemeddyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemeddyView::add(Self, Self) -> Self
+pub fn PhysicsemeddyView::copy(Self) -> Self
+pub fn PhysicsemeddyView::fill(Self, Double) -> Self
+pub fn PhysicsemeddyView::get(Self, Int32) -> Double
+pub fn PhysicsemeddyView::len(Self) -> Int32
+pub fn PhysicsemeddyView::max(Self) -> Double
+pub fn PhysicsemeddyView::mean(Self) -> Double
+pub fn PhysicsemeddyView::min(Self) -> Double
+pub fn PhysicsemeddyView::scale(Self, Double) -> Self
+pub fn PhysicsemeddyView::set(Self, Int32, Double) -> Self
+pub fn PhysicsemeddyView::sum(Self) -> Double
+pub fn PhysicsemeddyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

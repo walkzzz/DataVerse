@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/tone_map"
+
+// Values
+pub fn tone_map_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn tone_map_corr(Array[Double], Array[Double]) -> Double
+
+pub fn tone_map_cov(Array[Double], Array[Double]) -> Double
+
+pub fn tone_map_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn tone_map_mae(Array[Double], Array[Double]) -> Double
+
+pub fn tone_map_make_labeled_point(Double, Double, Int32) -> Tone_mapPoint
+
+pub fn tone_map_make_matrix(Int32, Int32, Double) -> Tone_mapMatrix
+
+pub fn tone_map_make_point(Double, Double) -> Tone_mapPoint
+
+pub fn tone_map_make_series(Array[Double], String) -> Tone_mapSeries
+
+pub fn tone_map_make_vector(Array[Double]) -> Tone_mapVector
+
+pub fn tone_map_matrix_add(Tone_mapMatrix, Tone_mapMatrix) -> Tone_mapMatrix
+
+pub fn tone_map_matrix_get(Tone_mapMatrix, Int32, Int32) -> Double
+
+pub fn tone_map_matrix_identity(Int32) -> Tone_mapMatrix
+
+pub fn tone_map_matrix_multiply(Tone_mapMatrix, Tone_mapMatrix) -> Tone_mapMatrix
+
+pub fn tone_map_matrix_norm(Tone_mapMatrix) -> Double
+
+pub fn tone_map_matrix_scale(Tone_mapMatrix, Double) -> Tone_mapMatrix
+
+pub fn tone_map_matrix_to_string(Tone_mapMatrix) -> String
+
+pub fn tone_map_matrix_trace(Tone_mapMatrix) -> Double
+
+pub fn tone_map_matrix_transpose(Tone_mapMatrix) -> Tone_mapMatrix
+
+pub fn tone_map_mse(Array[Double], Array[Double]) -> Double
+
+pub fn tone_map_point_add(Tone_mapPoint, Tone_mapPoint) -> Tone_mapPoint
+
+pub fn tone_map_point_dist(Tone_mapPoint, Tone_mapPoint) -> Double
+
+pub fn tone_map_point_dot(Tone_mapPoint, Tone_mapPoint) -> Double
+
+pub fn tone_map_point_label(Tone_mapPoint) -> Int32
+
+pub fn tone_map_point_norm(Tone_mapPoint) -> Double
+
+pub fn tone_map_point_scale(Tone_mapPoint, Double) -> Tone_mapPoint
+
+pub fn tone_map_point_sub(Tone_mapPoint, Tone_mapPoint) -> Tone_mapPoint
+
+pub fn tone_map_point_to_string(Tone_mapPoint) -> String
+
+pub fn tone_map_point_x(Tone_mapPoint) -> Double
+
+pub fn tone_map_point_y(Tone_mapPoint) -> Double
+
+pub fn tone_map_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn tone_map_r2(Array[Double], Array[Double]) -> Double
+
+pub fn tone_map_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn tone_map_series_add(Tone_mapSeries, Tone_mapSeries) -> Tone_mapSeries
+
+pub fn tone_map_series_len(Tone_mapSeries) -> Int32
+
+pub fn tone_map_series_max(Tone_mapSeries) -> Double
+
+pub fn tone_map_series_mean(Tone_mapSeries) -> Double
+
+pub fn tone_map_series_min(Tone_mapSeries) -> Double
+
+pub fn tone_map_series_scale(Tone_mapSeries, Double) -> Tone_mapSeries
+
+pub fn tone_map_series_std(Tone_mapSeries) -> Double
+
+pub fn tone_map_series_sum(Tone_mapSeries) -> Double
+
+pub fn tone_map_series_to_string(Tone_mapSeries) -> String
+
+pub fn tone_map_series_var(Tone_mapSeries) -> Double
+
+pub fn tone_map_std(Array[Double]) -> Double
+
+pub fn tone_map_var(Array[Double]) -> Double
+
+pub fn tone_map_vector_add(Tone_mapVector, Tone_mapVector) -> Tone_mapVector
+
+pub fn tone_map_vector_dist(Tone_mapVector, Tone_mapVector) -> Double
+
+pub fn tone_map_vector_dot(Tone_mapVector, Tone_mapVector) -> Double
+
+pub fn tone_map_vector_norm(Tone_mapVector) -> Double
+
+pub fn tone_map_vector_normalize(Tone_mapVector) -> Tone_mapVector
+
+pub fn tone_map_vector_scale(Tone_mapVector, Double) -> Tone_mapVector
+
+pub fn tone_map_vector_sub(Tone_mapVector, Tone_mapVector) -> Tone_mapVector
+
+pub fn tone_map_vector_to_string(Tone_mapVector) -> String
+
+pub fn tone_map_vector_zero(Int32) -> Tone_mapVector
+
+// Errors
+
+// Types and methods
+pub struct Tone_mapMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Tone_mapPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Tone_mapSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Tone_mapVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

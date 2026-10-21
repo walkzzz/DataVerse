@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/genetic_prog"
+
+// Values
+pub fn genetic_prog_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn genetic_prog_corr(Array[Double], Array[Double]) -> Double
+
+pub fn genetic_prog_cov(Array[Double], Array[Double]) -> Double
+
+pub fn genetic_prog_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn genetic_prog_mae(Array[Double], Array[Double]) -> Double
+
+pub fn genetic_prog_make_labeled_point(Double, Double, Int32) -> Genetic_progPoint
+
+pub fn genetic_prog_make_matrix(Int32, Int32, Double) -> Genetic_progMatrix
+
+pub fn genetic_prog_make_point(Double, Double) -> Genetic_progPoint
+
+pub fn genetic_prog_make_series(Array[Double], String) -> Genetic_progSeries
+
+pub fn genetic_prog_make_vector(Array[Double]) -> Genetic_progVector
+
+pub fn genetic_prog_matrix_add(Genetic_progMatrix, Genetic_progMatrix) -> Genetic_progMatrix
+
+pub fn genetic_prog_matrix_get(Genetic_progMatrix, Int32, Int32) -> Double
+
+pub fn genetic_prog_matrix_identity(Int32) -> Genetic_progMatrix
+
+pub fn genetic_prog_matrix_multiply(Genetic_progMatrix, Genetic_progMatrix) -> Genetic_progMatrix
+
+pub fn genetic_prog_matrix_norm(Genetic_progMatrix) -> Double
+
+pub fn genetic_prog_matrix_scale(Genetic_progMatrix, Double) -> Genetic_progMatrix
+
+pub fn genetic_prog_matrix_to_string(Genetic_progMatrix) -> String
+
+pub fn genetic_prog_matrix_trace(Genetic_progMatrix) -> Double
+
+pub fn genetic_prog_matrix_transpose(Genetic_progMatrix) -> Genetic_progMatrix
+
+pub fn genetic_prog_mse(Array[Double], Array[Double]) -> Double
+
+pub fn genetic_prog_point_add(Genetic_progPoint, Genetic_progPoint) -> Genetic_progPoint
+
+pub fn genetic_prog_point_dist(Genetic_progPoint, Genetic_progPoint) -> Double
+
+pub fn genetic_prog_point_dot(Genetic_progPoint, Genetic_progPoint) -> Double
+
+pub fn genetic_prog_point_label(Genetic_progPoint) -> Int32
+
+pub fn genetic_prog_point_norm(Genetic_progPoint) -> Double
+
+pub fn genetic_prog_point_scale(Genetic_progPoint, Double) -> Genetic_progPoint
+
+pub fn genetic_prog_point_sub(Genetic_progPoint, Genetic_progPoint) -> Genetic_progPoint
+
+pub fn genetic_prog_point_to_string(Genetic_progPoint) -> String
+
+pub fn genetic_prog_point_x(Genetic_progPoint) -> Double
+
+pub fn genetic_prog_point_y(Genetic_progPoint) -> Double
+
+pub fn genetic_prog_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn genetic_prog_r2(Array[Double], Array[Double]) -> Double
+
+pub fn genetic_prog_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn genetic_prog_series_add(Genetic_progSeries, Genetic_progSeries) -> Genetic_progSeries
+
+pub fn genetic_prog_series_len(Genetic_progSeries) -> Int32
+
+pub fn genetic_prog_series_max(Genetic_progSeries) -> Double
+
+pub fn genetic_prog_series_mean(Genetic_progSeries) -> Double
+
+pub fn genetic_prog_series_min(Genetic_progSeries) -> Double
+
+pub fn genetic_prog_series_scale(Genetic_progSeries, Double) -> Genetic_progSeries
+
+pub fn genetic_prog_series_std(Genetic_progSeries) -> Double
+
+pub fn genetic_prog_series_sum(Genetic_progSeries) -> Double
+
+pub fn genetic_prog_series_to_string(Genetic_progSeries) -> String
+
+pub fn genetic_prog_series_var(Genetic_progSeries) -> Double
+
+pub fn genetic_prog_std(Array[Double]) -> Double
+
+pub fn genetic_prog_var(Array[Double]) -> Double
+
+pub fn genetic_prog_vector_add(Genetic_progVector, Genetic_progVector) -> Genetic_progVector
+
+pub fn genetic_prog_vector_dist(Genetic_progVector, Genetic_progVector) -> Double
+
+pub fn genetic_prog_vector_dot(Genetic_progVector, Genetic_progVector) -> Double
+
+pub fn genetic_prog_vector_norm(Genetic_progVector) -> Double
+
+pub fn genetic_prog_vector_normalize(Genetic_progVector) -> Genetic_progVector
+
+pub fn genetic_prog_vector_scale(Genetic_progVector, Double) -> Genetic_progVector
+
+pub fn genetic_prog_vector_sub(Genetic_progVector, Genetic_progVector) -> Genetic_progVector
+
+pub fn genetic_prog_vector_to_string(Genetic_progVector) -> String
+
+pub fn genetic_prog_vector_zero(Int32) -> Genetic_progVector
+
+// Errors
+
+// Types and methods
+pub struct Genetic_progMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Genetic_progPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Genetic_progSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Genetic_progVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

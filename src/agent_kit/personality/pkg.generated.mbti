@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/personality"
+
+// Values
+pub fn personality_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn personality_corr(Array[Double], Array[Double]) -> Double
+
+pub fn personality_cov(Array[Double], Array[Double]) -> Double
+
+pub fn personality_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn personality_mae(Array[Double], Array[Double]) -> Double
+
+pub fn personality_make_labeled_point(Double, Double, Int32) -> PersonalityPoint
+
+pub fn personality_make_matrix(Int32, Int32, Double) -> PersonalityMatrix
+
+pub fn personality_make_point(Double, Double) -> PersonalityPoint
+
+pub fn personality_make_series(Array[Double], String) -> PersonalitySeries
+
+pub fn personality_make_vector(Array[Double]) -> PersonalityVector
+
+pub fn personality_matrix_add(PersonalityMatrix, PersonalityMatrix) -> PersonalityMatrix
+
+pub fn personality_matrix_get(PersonalityMatrix, Int32, Int32) -> Double
+
+pub fn personality_matrix_identity(Int32) -> PersonalityMatrix
+
+pub fn personality_matrix_multiply(PersonalityMatrix, PersonalityMatrix) -> PersonalityMatrix
+
+pub fn personality_matrix_norm(PersonalityMatrix) -> Double
+
+pub fn personality_matrix_scale(PersonalityMatrix, Double) -> PersonalityMatrix
+
+pub fn personality_matrix_to_string(PersonalityMatrix) -> String
+
+pub fn personality_matrix_trace(PersonalityMatrix) -> Double
+
+pub fn personality_matrix_transpose(PersonalityMatrix) -> PersonalityMatrix
+
+pub fn personality_mse(Array[Double], Array[Double]) -> Double
+
+pub fn personality_point_add(PersonalityPoint, PersonalityPoint) -> PersonalityPoint
+
+pub fn personality_point_dist(PersonalityPoint, PersonalityPoint) -> Double
+
+pub fn personality_point_dot(PersonalityPoint, PersonalityPoint) -> Double
+
+pub fn personality_point_label(PersonalityPoint) -> Int32
+
+pub fn personality_point_norm(PersonalityPoint) -> Double
+
+pub fn personality_point_scale(PersonalityPoint, Double) -> PersonalityPoint
+
+pub fn personality_point_sub(PersonalityPoint, PersonalityPoint) -> PersonalityPoint
+
+pub fn personality_point_to_string(PersonalityPoint) -> String
+
+pub fn personality_point_x(PersonalityPoint) -> Double
+
+pub fn personality_point_y(PersonalityPoint) -> Double
+
+pub fn personality_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn personality_r2(Array[Double], Array[Double]) -> Double
+
+pub fn personality_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn personality_series_add(PersonalitySeries, PersonalitySeries) -> PersonalitySeries
+
+pub fn personality_series_len(PersonalitySeries) -> Int32
+
+pub fn personality_series_max(PersonalitySeries) -> Double
+
+pub fn personality_series_mean(PersonalitySeries) -> Double
+
+pub fn personality_series_min(PersonalitySeries) -> Double
+
+pub fn personality_series_scale(PersonalitySeries, Double) -> PersonalitySeries
+
+pub fn personality_series_std(PersonalitySeries) -> Double
+
+pub fn personality_series_sum(PersonalitySeries) -> Double
+
+pub fn personality_series_to_string(PersonalitySeries) -> String
+
+pub fn personality_series_var(PersonalitySeries) -> Double
+
+pub fn personality_std(Array[Double]) -> Double
+
+pub fn personality_var(Array[Double]) -> Double
+
+pub fn personality_vector_add(PersonalityVector, PersonalityVector) -> PersonalityVector
+
+pub fn personality_vector_dist(PersonalityVector, PersonalityVector) -> Double
+
+pub fn personality_vector_dot(PersonalityVector, PersonalityVector) -> Double
+
+pub fn personality_vector_norm(PersonalityVector) -> Double
+
+pub fn personality_vector_normalize(PersonalityVector) -> PersonalityVector
+
+pub fn personality_vector_scale(PersonalityVector, Double) -> PersonalityVector
+
+pub fn personality_vector_sub(PersonalityVector, PersonalityVector) -> PersonalityVector
+
+pub fn personality_vector_to_string(PersonalityVector) -> String
+
+pub fn personality_vector_zero(Int32) -> PersonalityVector
+
+// Errors
+
+// Types and methods
+pub struct PersonalityMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct PersonalityPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct PersonalitySeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct PersonalityVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

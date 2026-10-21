@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/markov_chain"
+
+// Values
+pub fn markov_chain_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn markov_chain_corr(Array[Double], Array[Double]) -> Double
+
+pub fn markov_chain_cov(Array[Double], Array[Double]) -> Double
+
+pub fn markov_chain_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn markov_chain_mae(Array[Double], Array[Double]) -> Double
+
+pub fn markov_chain_make_labeled_point(Double, Double, Int32) -> Markov_chainPoint
+
+pub fn markov_chain_make_matrix(Int32, Int32, Double) -> Markov_chainMatrix
+
+pub fn markov_chain_make_point(Double, Double) -> Markov_chainPoint
+
+pub fn markov_chain_make_series(Array[Double], String) -> Markov_chainSeries
+
+pub fn markov_chain_make_vector(Array[Double]) -> Markov_chainVector
+
+pub fn markov_chain_matrix_add(Markov_chainMatrix, Markov_chainMatrix) -> Markov_chainMatrix
+
+pub fn markov_chain_matrix_get(Markov_chainMatrix, Int32, Int32) -> Double
+
+pub fn markov_chain_matrix_identity(Int32) -> Markov_chainMatrix
+
+pub fn markov_chain_matrix_multiply(Markov_chainMatrix, Markov_chainMatrix) -> Markov_chainMatrix
+
+pub fn markov_chain_matrix_norm(Markov_chainMatrix) -> Double
+
+pub fn markov_chain_matrix_scale(Markov_chainMatrix, Double) -> Markov_chainMatrix
+
+pub fn markov_chain_matrix_to_string(Markov_chainMatrix) -> String
+
+pub fn markov_chain_matrix_trace(Markov_chainMatrix) -> Double
+
+pub fn markov_chain_matrix_transpose(Markov_chainMatrix) -> Markov_chainMatrix
+
+pub fn markov_chain_mse(Array[Double], Array[Double]) -> Double
+
+pub fn markov_chain_point_add(Markov_chainPoint, Markov_chainPoint) -> Markov_chainPoint
+
+pub fn markov_chain_point_dist(Markov_chainPoint, Markov_chainPoint) -> Double
+
+pub fn markov_chain_point_dot(Markov_chainPoint, Markov_chainPoint) -> Double
+
+pub fn markov_chain_point_label(Markov_chainPoint) -> Int32
+
+pub fn markov_chain_point_norm(Markov_chainPoint) -> Double
+
+pub fn markov_chain_point_scale(Markov_chainPoint, Double) -> Markov_chainPoint
+
+pub fn markov_chain_point_sub(Markov_chainPoint, Markov_chainPoint) -> Markov_chainPoint
+
+pub fn markov_chain_point_to_string(Markov_chainPoint) -> String
+
+pub fn markov_chain_point_x(Markov_chainPoint) -> Double
+
+pub fn markov_chain_point_y(Markov_chainPoint) -> Double
+
+pub fn markov_chain_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn markov_chain_r2(Array[Double], Array[Double]) -> Double
+
+pub fn markov_chain_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn markov_chain_series_add(Markov_chainSeries, Markov_chainSeries) -> Markov_chainSeries
+
+pub fn markov_chain_series_len(Markov_chainSeries) -> Int32
+
+pub fn markov_chain_series_max(Markov_chainSeries) -> Double
+
+pub fn markov_chain_series_mean(Markov_chainSeries) -> Double
+
+pub fn markov_chain_series_min(Markov_chainSeries) -> Double
+
+pub fn markov_chain_series_scale(Markov_chainSeries, Double) -> Markov_chainSeries
+
+pub fn markov_chain_series_std(Markov_chainSeries) -> Double
+
+pub fn markov_chain_series_sum(Markov_chainSeries) -> Double
+
+pub fn markov_chain_series_to_string(Markov_chainSeries) -> String
+
+pub fn markov_chain_series_var(Markov_chainSeries) -> Double
+
+pub fn markov_chain_std(Array[Double]) -> Double
+
+pub fn markov_chain_var(Array[Double]) -> Double
+
+pub fn markov_chain_vector_add(Markov_chainVector, Markov_chainVector) -> Markov_chainVector
+
+pub fn markov_chain_vector_dist(Markov_chainVector, Markov_chainVector) -> Double
+
+pub fn markov_chain_vector_dot(Markov_chainVector, Markov_chainVector) -> Double
+
+pub fn markov_chain_vector_norm(Markov_chainVector) -> Double
+
+pub fn markov_chain_vector_normalize(Markov_chainVector) -> Markov_chainVector
+
+pub fn markov_chain_vector_scale(Markov_chainVector, Double) -> Markov_chainVector
+
+pub fn markov_chain_vector_sub(Markov_chainVector, Markov_chainVector) -> Markov_chainVector
+
+pub fn markov_chain_vector_to_string(Markov_chainVector) -> String
+
+pub fn markov_chain_vector_zero(Int32) -> Markov_chainVector
+
+// Errors
+
+// Types and methods
+pub struct Markov_chainMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Markov_chainPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Markov_chainSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Markov_chainVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

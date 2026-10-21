@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_quadratic_prog"
+
+// Values
+pub fn math_quadratic_prog_buffer_make(Int32) -> MathquadraticprogBuffer
+
+pub fn math_quadratic_prog_cluster_make(Int32) -> MathquadraticprogCluster
+
+pub fn math_quadratic_prog_cursor_make(Int32) -> MathquadraticprogCursor
+
+pub fn math_quadratic_prog_edge_make(Int32) -> MathquadraticprogEdge
+
+pub fn math_quadratic_prog_frame_make(Int32) -> MathquadraticprogFrame
+
+pub fn math_quadratic_prog_graphn_make(Int32) -> MathquadraticprogGraphN
+
+pub fn math_quadratic_prog_layer_make(Int32) -> MathquadraticprogLayer
+
+pub fn math_quadratic_prog_make_matrix(Int32, Int32, Double) -> MathquadraticprogMatrix
+
+pub fn math_quadratic_prog_make_point(Double, Double) -> MathquadraticprogPoint
+
+pub fn math_quadratic_prog_make_point3(Double, Double, Double) -> MathquadraticprogPoint
+
+pub fn math_quadratic_prog_make_series(Array[Double], String) -> MathquadraticprogSeries
+
+pub fn math_quadratic_prog_make_vector(Array[Double]) -> MathquadraticprogVector
+
+pub fn math_quadratic_prog_matrix_identity(Int32) -> MathquadraticprogMatrix
+
+pub fn math_quadratic_prog_model_make(Int32) -> MathquadraticprogModel
+
+pub fn math_quadratic_prog_node_make(Int32) -> MathquadraticprogNode
+
+pub fn math_quadratic_prog_path_make(Int32) -> MathquadraticprogPath
+
+pub fn math_quadratic_prog_range_make(Int32) -> MathquadraticprogRange
+
+pub fn math_quadratic_prog_slice_make(Int32) -> MathquadraticprogSlice
+
+pub fn math_quadratic_prog_table_make(Int32) -> MathquadraticprogTable
+
+pub fn math_quadratic_prog_vector_zero(Int32) -> MathquadraticprogVector
+
+pub fn math_quadratic_prog_view_make(Int32) -> MathquadraticprogView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathquadraticprogBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquadraticprogBuffer::add(Self, Self) -> Self
+pub fn MathquadraticprogBuffer::copy(Self) -> Self
+pub fn MathquadraticprogBuffer::fill(Self, Double) -> Self
+pub fn MathquadraticprogBuffer::get(Self, Int32) -> Double
+pub fn MathquadraticprogBuffer::len(Self) -> Int32
+pub fn MathquadraticprogBuffer::max(Self) -> Double
+pub fn MathquadraticprogBuffer::mean(Self) -> Double
+pub fn MathquadraticprogBuffer::min(Self) -> Double
+pub fn MathquadraticprogBuffer::scale(Self, Double) -> Self
+pub fn MathquadraticprogBuffer::set(Self, Int32, Double) -> Self
+pub fn MathquadraticprogBuffer::sum(Self) -> Double
+pub fn MathquadraticprogBuffer::to_string(Self) -> String
+
+pub(all) struct MathquadraticprogCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquadraticprogCluster::add(Self, Self) -> Self
+pub fn MathquadraticprogCluster::copy(Self) -> Self
+pub fn MathquadraticprogCluster::fill(Self, Double) -> Self
+pub fn MathquadraticprogCluster::get(Self, Int32) -> Double
+pub fn MathquadraticprogCluster::len(Self) -> Int32
+pub fn MathquadraticprogCluster::max(Self) -> Double
+pub fn MathquadraticprogCluster::mean(Self) -> Double
+pub fn MathquadraticprogCluster::min(Self) -> Double
+pub fn MathquadraticprogCluster::scale(Self, Double) -> Self
+pub fn MathquadraticprogCluster::set(Self, Int32, Double) -> Self
+pub fn MathquadraticprogCluster::sum(Self) -> Double
+pub fn MathquadraticprogCluster::to_string(Self) -> String
+
+pub(all) struct MathquadraticprogCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquadraticprogCursor::add(Self, Self) -> Self
+pub fn MathquadraticprogCursor::copy(Self) -> Self
+pub fn MathquadraticprogCursor::fill(Self, Double) -> Self
+pub fn MathquadraticprogCursor::get(Self, Int32) -> Double
+pub fn MathquadraticprogCursor::len(Self) -> Int32
+pub fn MathquadraticprogCursor::max(Self) -> Double
+pub fn MathquadraticprogCursor::mean(Self) -> Double
+pub fn MathquadraticprogCursor::min(Self) -> Double
+pub fn MathquadraticprogCursor::scale(Self, Double) -> Self
+pub fn MathquadraticprogCursor::set(Self, Int32, Double) -> Self
+pub fn MathquadraticprogCursor::sum(Self) -> Double
+pub fn MathquadraticprogCursor::to_string(Self) -> String
+
+pub(all) struct MathquadraticprogEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquadraticprogEdge::add(Self, Self) -> Self
+pub fn MathquadraticprogEdge::copy(Self) -> Self
+pub fn MathquadraticprogEdge::fill(Self, Double) -> Self
+pub fn MathquadraticprogEdge::get(Self, Int32) -> Double
+pub fn MathquadraticprogEdge::len(Self) -> Int32
+pub fn MathquadraticprogEdge::max(Self) -> Double
+pub fn MathquadraticprogEdge::mean(Self) -> Double
+pub fn MathquadraticprogEdge::min(Self) -> Double
+pub fn MathquadraticprogEdge::scale(Self, Double) -> Self
+pub fn MathquadraticprogEdge::set(Self, Int32, Double) -> Self
+pub fn MathquadraticprogEdge::sum(Self) -> Double
+pub fn MathquadraticprogEdge::to_string(Self) -> String
+
+pub(all) struct MathquadraticprogFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquadraticprogFrame::add(Self, Self) -> Self
+pub fn MathquadraticprogFrame::copy(Self) -> Self
+pub fn MathquadraticprogFrame::fill(Self, Double) -> Self
+pub fn MathquadraticprogFrame::get(Self, Int32) -> Double
+pub fn MathquadraticprogFrame::len(Self) -> Int32
+pub fn MathquadraticprogFrame::max(Self) -> Double
+pub fn MathquadraticprogFrame::mean(Self) -> Double
+pub fn MathquadraticprogFrame::min(Self) -> Double
+pub fn MathquadraticprogFrame::scale(Self, Double) -> Self
+pub fn MathquadraticprogFrame::set(Self, Int32, Double) -> Self
+pub fn MathquadraticprogFrame::sum(Self) -> Double
+pub fn MathquadraticprogFrame::to_string(Self) -> String
+
+pub(all) struct MathquadraticprogGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquadraticprogGraphN::add(Self, Self) -> Self
+pub fn MathquadraticprogGraphN::copy(Self) -> Self
+pub fn MathquadraticprogGraphN::fill(Self, Double) -> Self
+pub fn MathquadraticprogGraphN::get(Self, Int32) -> Double
+pub fn MathquadraticprogGraphN::len(Self) -> Int32
+pub fn MathquadraticprogGraphN::max(Self) -> Double
+pub fn MathquadraticprogGraphN::mean(Self) -> Double
+pub fn MathquadraticprogGraphN::min(Self) -> Double
+pub fn MathquadraticprogGraphN::scale(Self, Double) -> Self
+pub fn MathquadraticprogGraphN::set(Self, Int32, Double) -> Self
+pub fn MathquadraticprogGraphN::sum(Self) -> Double
+pub fn MathquadraticprogGraphN::to_string(Self) -> String
+
+pub(all) struct MathquadraticprogLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquadraticprogLayer::add(Self, Self) -> Self
+pub fn MathquadraticprogLayer::copy(Self) -> Self
+pub fn MathquadraticprogLayer::fill(Self, Double) -> Self
+pub fn MathquadraticprogLayer::get(Self, Int32) -> Double
+pub fn MathquadraticprogLayer::len(Self) -> Int32
+pub fn MathquadraticprogLayer::max(Self) -> Double
+pub fn MathquadraticprogLayer::mean(Self) -> Double
+pub fn MathquadraticprogLayer::min(Self) -> Double
+pub fn MathquadraticprogLayer::scale(Self, Double) -> Self
+pub fn MathquadraticprogLayer::set(Self, Int32, Double) -> Self
+pub fn MathquadraticprogLayer::sum(Self) -> Double
+pub fn MathquadraticprogLayer::to_string(Self) -> String
+
+pub(all) struct MathquadraticprogMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathquadraticprogMatrix::add(Self, Self) -> Self
+pub fn MathquadraticprogMatrix::det(Self) -> Double
+pub fn MathquadraticprogMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathquadraticprogMatrix::multiply(Self, Self) -> Self
+pub fn MathquadraticprogMatrix::norm(Self) -> Double
+pub fn MathquadraticprogMatrix::scale(Self, Double) -> Self
+pub fn MathquadraticprogMatrix::to_string(Self) -> String
+pub fn MathquadraticprogMatrix::trace(Self) -> Double
+pub fn MathquadraticprogMatrix::transpose(Self) -> Self
+
+pub(all) struct MathquadraticprogModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquadraticprogModel::add(Self, Self) -> Self
+pub fn MathquadraticprogModel::copy(Self) -> Self
+pub fn MathquadraticprogModel::fill(Self, Double) -> Self
+pub fn MathquadraticprogModel::get(Self, Int32) -> Double
+pub fn MathquadraticprogModel::len(Self) -> Int32
+pub fn MathquadraticprogModel::max(Self) -> Double
+pub fn MathquadraticprogModel::mean(Self) -> Double
+pub fn MathquadraticprogModel::min(Self) -> Double
+pub fn MathquadraticprogModel::scale(Self, Double) -> Self
+pub fn MathquadraticprogModel::set(Self, Int32, Double) -> Self
+pub fn MathquadraticprogModel::sum(Self) -> Double
+pub fn MathquadraticprogModel::to_string(Self) -> String
+
+pub(all) struct MathquadraticprogNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquadraticprogNode::add(Self, Self) -> Self
+pub fn MathquadraticprogNode::copy(Self) -> Self
+pub fn MathquadraticprogNode::fill(Self, Double) -> Self
+pub fn MathquadraticprogNode::get(Self, Int32) -> Double
+pub fn MathquadraticprogNode::len(Self) -> Int32
+pub fn MathquadraticprogNode::max(Self) -> Double
+pub fn MathquadraticprogNode::mean(Self) -> Double
+pub fn MathquadraticprogNode::min(Self) -> Double
+pub fn MathquadraticprogNode::scale(Self, Double) -> Self
+pub fn MathquadraticprogNode::set(Self, Int32, Double) -> Self
+pub fn MathquadraticprogNode::sum(Self) -> Double
+pub fn MathquadraticprogNode::to_string(Self) -> String
+
+pub(all) struct MathquadraticprogPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquadraticprogPath::add(Self, Self) -> Self
+pub fn MathquadraticprogPath::copy(Self) -> Self
+pub fn MathquadraticprogPath::fill(Self, Double) -> Self
+pub fn MathquadraticprogPath::get(Self, Int32) -> Double
+pub fn MathquadraticprogPath::len(Self) -> Int32
+pub fn MathquadraticprogPath::max(Self) -> Double
+pub fn MathquadraticprogPath::mean(Self) -> Double
+pub fn MathquadraticprogPath::min(Self) -> Double
+pub fn MathquadraticprogPath::scale(Self, Double) -> Self
+pub fn MathquadraticprogPath::set(Self, Int32, Double) -> Self
+pub fn MathquadraticprogPath::sum(Self) -> Double
+pub fn MathquadraticprogPath::to_string(Self) -> String
+
+pub(all) struct MathquadraticprogPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathquadraticprogPoint::add(Self, Self) -> Self
+pub fn MathquadraticprogPoint::cross(Self, Self) -> Self
+pub fn MathquadraticprogPoint::dist(Self, Self) -> Double
+pub fn MathquadraticprogPoint::dot(Self, Self) -> Double
+pub fn MathquadraticprogPoint::label(Self) -> Int32
+pub fn MathquadraticprogPoint::lerp(Self, Self, Double) -> Self
+pub fn MathquadraticprogPoint::mid(Self, Self) -> Self
+pub fn MathquadraticprogPoint::negate(Self) -> Self
+pub fn MathquadraticprogPoint::norm(Self) -> Double
+pub fn MathquadraticprogPoint::normalize(Self) -> Self
+pub fn MathquadraticprogPoint::scale(Self, Double) -> Self
+pub fn MathquadraticprogPoint::sub(Self, Self) -> Self
+pub fn MathquadraticprogPoint::to_string(Self) -> String
+pub fn MathquadraticprogPoint::x(Self) -> Double
+pub fn MathquadraticprogPoint::y(Self) -> Double
+pub fn MathquadraticprogPoint::z(Self) -> Double
+
+pub(all) struct MathquadraticprogRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquadraticprogRange::add(Self, Self) -> Self
+pub fn MathquadraticprogRange::copy(Self) -> Self
+pub fn MathquadraticprogRange::fill(Self, Double) -> Self
+pub fn MathquadraticprogRange::get(Self, Int32) -> Double
+pub fn MathquadraticprogRange::len(Self) -> Int32
+pub fn MathquadraticprogRange::max(Self) -> Double
+pub fn MathquadraticprogRange::mean(Self) -> Double
+pub fn MathquadraticprogRange::min(Self) -> Double
+pub fn MathquadraticprogRange::scale(Self, Double) -> Self
+pub fn MathquadraticprogRange::set(Self, Int32, Double) -> Self
+pub fn MathquadraticprogRange::sum(Self) -> Double
+pub fn MathquadraticprogRange::to_string(Self) -> String
+
+pub(all) struct MathquadraticprogSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathquadraticprogSeries::add(Self, Self) -> Self
+pub fn MathquadraticprogSeries::cumsum(Self) -> Self
+pub fn MathquadraticprogSeries::len(Self) -> Int32
+pub fn MathquadraticprogSeries::max(Self) -> Double
+pub fn MathquadraticprogSeries::mean(Self) -> Double
+pub fn MathquadraticprogSeries::median(Self) -> Double
+pub fn MathquadraticprogSeries::min(Self) -> Double
+pub fn MathquadraticprogSeries::normalize(Self) -> Self
+pub fn MathquadraticprogSeries::range(Self) -> Double
+pub fn MathquadraticprogSeries::scale(Self, Double) -> Self
+pub fn MathquadraticprogSeries::std(Self) -> Double
+pub fn MathquadraticprogSeries::sub(Self, Self) -> Self
+pub fn MathquadraticprogSeries::sum(Self) -> Double
+pub fn MathquadraticprogSeries::to_string(Self) -> String
+pub fn MathquadraticprogSeries::variance(Self) -> Double
+
+pub(all) struct MathquadraticprogSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquadraticprogSlice::add(Self, Self) -> Self
+pub fn MathquadraticprogSlice::copy(Self) -> Self
+pub fn MathquadraticprogSlice::fill(Self, Double) -> Self
+pub fn MathquadraticprogSlice::get(Self, Int32) -> Double
+pub fn MathquadraticprogSlice::len(Self) -> Int32
+pub fn MathquadraticprogSlice::max(Self) -> Double
+pub fn MathquadraticprogSlice::mean(Self) -> Double
+pub fn MathquadraticprogSlice::min(Self) -> Double
+pub fn MathquadraticprogSlice::scale(Self, Double) -> Self
+pub fn MathquadraticprogSlice::set(Self, Int32, Double) -> Self
+pub fn MathquadraticprogSlice::sum(Self) -> Double
+pub fn MathquadraticprogSlice::to_string(Self) -> String
+
+pub(all) struct MathquadraticprogTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquadraticprogTable::add(Self, Self) -> Self
+pub fn MathquadraticprogTable::copy(Self) -> Self
+pub fn MathquadraticprogTable::fill(Self, Double) -> Self
+pub fn MathquadraticprogTable::get(Self, Int32) -> Double
+pub fn MathquadraticprogTable::len(Self) -> Int32
+pub fn MathquadraticprogTable::max(Self) -> Double
+pub fn MathquadraticprogTable::mean(Self) -> Double
+pub fn MathquadraticprogTable::min(Self) -> Double
+pub fn MathquadraticprogTable::scale(Self, Double) -> Self
+pub fn MathquadraticprogTable::set(Self, Int32, Double) -> Self
+pub fn MathquadraticprogTable::sum(Self) -> Double
+pub fn MathquadraticprogTable::to_string(Self) -> String
+
+pub(all) struct MathquadraticprogVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathquadraticprogVector::add(Self, Self) -> Self
+pub fn MathquadraticprogVector::dist(Self, Self) -> Double
+pub fn MathquadraticprogVector::dot(Self, Self) -> Double
+pub fn MathquadraticprogVector::norm(Self) -> Double
+pub fn MathquadraticprogVector::normalize(Self) -> Self
+pub fn MathquadraticprogVector::scale(Self, Double) -> Self
+pub fn MathquadraticprogVector::sub(Self, Self) -> Self
+pub fn MathquadraticprogVector::to_string(Self) -> String
+
+pub(all) struct MathquadraticprogView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathquadraticprogView::add(Self, Self) -> Self
+pub fn MathquadraticprogView::copy(Self) -> Self
+pub fn MathquadraticprogView::fill(Self, Double) -> Self
+pub fn MathquadraticprogView::get(Self, Int32) -> Double
+pub fn MathquadraticprogView::len(Self) -> Int32
+pub fn MathquadraticprogView::max(Self) -> Double
+pub fn MathquadraticprogView::mean(Self) -> Double
+pub fn MathquadraticprogView::min(Self) -> Double
+pub fn MathquadraticprogView::scale(Self, Double) -> Self
+pub fn MathquadraticprogView::set(Self, Int32, Double) -> Self
+pub fn MathquadraticprogView::sum(Self) -> Double
+pub fn MathquadraticprogView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

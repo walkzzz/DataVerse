@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/window_time"
+
+// Values
+pub fn window_time_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn window_time_corr(Array[Double], Array[Double]) -> Double
+
+pub fn window_time_cov(Array[Double], Array[Double]) -> Double
+
+pub fn window_time_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn window_time_mae(Array[Double], Array[Double]) -> Double
+
+pub fn window_time_make_labeled_point(Double, Double, Int32) -> Window_timePoint
+
+pub fn window_time_make_matrix(Int32, Int32, Double) -> Window_timeMatrix
+
+pub fn window_time_make_point(Double, Double) -> Window_timePoint
+
+pub fn window_time_make_series(Array[Double], String) -> Window_timeSeries
+
+pub fn window_time_make_vector(Array[Double]) -> Window_timeVector
+
+pub fn window_time_matrix_add(Window_timeMatrix, Window_timeMatrix) -> Window_timeMatrix
+
+pub fn window_time_matrix_get(Window_timeMatrix, Int32, Int32) -> Double
+
+pub fn window_time_matrix_identity(Int32) -> Window_timeMatrix
+
+pub fn window_time_matrix_multiply(Window_timeMatrix, Window_timeMatrix) -> Window_timeMatrix
+
+pub fn window_time_matrix_norm(Window_timeMatrix) -> Double
+
+pub fn window_time_matrix_scale(Window_timeMatrix, Double) -> Window_timeMatrix
+
+pub fn window_time_matrix_to_string(Window_timeMatrix) -> String
+
+pub fn window_time_matrix_trace(Window_timeMatrix) -> Double
+
+pub fn window_time_matrix_transpose(Window_timeMatrix) -> Window_timeMatrix
+
+pub fn window_time_mse(Array[Double], Array[Double]) -> Double
+
+pub fn window_time_point_add(Window_timePoint, Window_timePoint) -> Window_timePoint
+
+pub fn window_time_point_dist(Window_timePoint, Window_timePoint) -> Double
+
+pub fn window_time_point_dot(Window_timePoint, Window_timePoint) -> Double
+
+pub fn window_time_point_label(Window_timePoint) -> Int32
+
+pub fn window_time_point_norm(Window_timePoint) -> Double
+
+pub fn window_time_point_scale(Window_timePoint, Double) -> Window_timePoint
+
+pub fn window_time_point_sub(Window_timePoint, Window_timePoint) -> Window_timePoint
+
+pub fn window_time_point_to_string(Window_timePoint) -> String
+
+pub fn window_time_point_x(Window_timePoint) -> Double
+
+pub fn window_time_point_y(Window_timePoint) -> Double
+
+pub fn window_time_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn window_time_r2(Array[Double], Array[Double]) -> Double
+
+pub fn window_time_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn window_time_series_add(Window_timeSeries, Window_timeSeries) -> Window_timeSeries
+
+pub fn window_time_series_len(Window_timeSeries) -> Int32
+
+pub fn window_time_series_max(Window_timeSeries) -> Double
+
+pub fn window_time_series_mean(Window_timeSeries) -> Double
+
+pub fn window_time_series_min(Window_timeSeries) -> Double
+
+pub fn window_time_series_scale(Window_timeSeries, Double) -> Window_timeSeries
+
+pub fn window_time_series_std(Window_timeSeries) -> Double
+
+pub fn window_time_series_sum(Window_timeSeries) -> Double
+
+pub fn window_time_series_to_string(Window_timeSeries) -> String
+
+pub fn window_time_series_var(Window_timeSeries) -> Double
+
+pub fn window_time_std(Array[Double]) -> Double
+
+pub fn window_time_var(Array[Double]) -> Double
+
+pub fn window_time_vector_add(Window_timeVector, Window_timeVector) -> Window_timeVector
+
+pub fn window_time_vector_dist(Window_timeVector, Window_timeVector) -> Double
+
+pub fn window_time_vector_dot(Window_timeVector, Window_timeVector) -> Double
+
+pub fn window_time_vector_norm(Window_timeVector) -> Double
+
+pub fn window_time_vector_normalize(Window_timeVector) -> Window_timeVector
+
+pub fn window_time_vector_scale(Window_timeVector, Double) -> Window_timeVector
+
+pub fn window_time_vector_sub(Window_timeVector, Window_timeVector) -> Window_timeVector
+
+pub fn window_time_vector_to_string(Window_timeVector) -> String
+
+pub fn window_time_vector_zero(Int32) -> Window_timeVector
+
+// Errors
+
+// Types and methods
+pub struct Window_timeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Window_timePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Window_timeSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Window_timeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

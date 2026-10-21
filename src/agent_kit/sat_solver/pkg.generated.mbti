@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/sat_solver"
+
+// Values
+pub fn sat_solver_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn sat_solver_corr(Array[Double], Array[Double]) -> Double
+
+pub fn sat_solver_cov(Array[Double], Array[Double]) -> Double
+
+pub fn sat_solver_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn sat_solver_mae(Array[Double], Array[Double]) -> Double
+
+pub fn sat_solver_make_labeled_point(Double, Double, Int32) -> Sat_solverPoint
+
+pub fn sat_solver_make_matrix(Int32, Int32, Double) -> Sat_solverMatrix
+
+pub fn sat_solver_make_point(Double, Double) -> Sat_solverPoint
+
+pub fn sat_solver_make_series(Array[Double], String) -> Sat_solverSeries
+
+pub fn sat_solver_make_vector(Array[Double]) -> Sat_solverVector
+
+pub fn sat_solver_matrix_add(Sat_solverMatrix, Sat_solverMatrix) -> Sat_solverMatrix
+
+pub fn sat_solver_matrix_get(Sat_solverMatrix, Int32, Int32) -> Double
+
+pub fn sat_solver_matrix_identity(Int32) -> Sat_solverMatrix
+
+pub fn sat_solver_matrix_multiply(Sat_solverMatrix, Sat_solverMatrix) -> Sat_solverMatrix
+
+pub fn sat_solver_matrix_norm(Sat_solverMatrix) -> Double
+
+pub fn sat_solver_matrix_scale(Sat_solverMatrix, Double) -> Sat_solverMatrix
+
+pub fn sat_solver_matrix_to_string(Sat_solverMatrix) -> String
+
+pub fn sat_solver_matrix_trace(Sat_solverMatrix) -> Double
+
+pub fn sat_solver_matrix_transpose(Sat_solverMatrix) -> Sat_solverMatrix
+
+pub fn sat_solver_mse(Array[Double], Array[Double]) -> Double
+
+pub fn sat_solver_point_add(Sat_solverPoint, Sat_solverPoint) -> Sat_solverPoint
+
+pub fn sat_solver_point_dist(Sat_solverPoint, Sat_solverPoint) -> Double
+
+pub fn sat_solver_point_dot(Sat_solverPoint, Sat_solverPoint) -> Double
+
+pub fn sat_solver_point_label(Sat_solverPoint) -> Int32
+
+pub fn sat_solver_point_norm(Sat_solverPoint) -> Double
+
+pub fn sat_solver_point_scale(Sat_solverPoint, Double) -> Sat_solverPoint
+
+pub fn sat_solver_point_sub(Sat_solverPoint, Sat_solverPoint) -> Sat_solverPoint
+
+pub fn sat_solver_point_to_string(Sat_solverPoint) -> String
+
+pub fn sat_solver_point_x(Sat_solverPoint) -> Double
+
+pub fn sat_solver_point_y(Sat_solverPoint) -> Double
+
+pub fn sat_solver_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn sat_solver_r2(Array[Double], Array[Double]) -> Double
+
+pub fn sat_solver_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn sat_solver_series_add(Sat_solverSeries, Sat_solverSeries) -> Sat_solverSeries
+
+pub fn sat_solver_series_len(Sat_solverSeries) -> Int32
+
+pub fn sat_solver_series_max(Sat_solverSeries) -> Double
+
+pub fn sat_solver_series_mean(Sat_solverSeries) -> Double
+
+pub fn sat_solver_series_min(Sat_solverSeries) -> Double
+
+pub fn sat_solver_series_scale(Sat_solverSeries, Double) -> Sat_solverSeries
+
+pub fn sat_solver_series_std(Sat_solverSeries) -> Double
+
+pub fn sat_solver_series_sum(Sat_solverSeries) -> Double
+
+pub fn sat_solver_series_to_string(Sat_solverSeries) -> String
+
+pub fn sat_solver_series_var(Sat_solverSeries) -> Double
+
+pub fn sat_solver_std(Array[Double]) -> Double
+
+pub fn sat_solver_var(Array[Double]) -> Double
+
+pub fn sat_solver_vector_add(Sat_solverVector, Sat_solverVector) -> Sat_solverVector
+
+pub fn sat_solver_vector_dist(Sat_solverVector, Sat_solverVector) -> Double
+
+pub fn sat_solver_vector_dot(Sat_solverVector, Sat_solverVector) -> Double
+
+pub fn sat_solver_vector_norm(Sat_solverVector) -> Double
+
+pub fn sat_solver_vector_normalize(Sat_solverVector) -> Sat_solverVector
+
+pub fn sat_solver_vector_scale(Sat_solverVector, Double) -> Sat_solverVector
+
+pub fn sat_solver_vector_sub(Sat_solverVector, Sat_solverVector) -> Sat_solverVector
+
+pub fn sat_solver_vector_to_string(Sat_solverVector) -> String
+
+pub fn sat_solver_vector_zero(Int32) -> Sat_solverVector
+
+// Errors
+
+// Types and methods
+pub struct Sat_solverMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Sat_solverPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Sat_solverSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Sat_solverVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

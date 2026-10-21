@@ -1,0 +1,224 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/self_supervised"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn byol_loss(Array[Double], Array[Double]) -> Double
+
+pub fn byol_momentum(Array[Double], Array[Double], Double) -> Array[Double]
+
+pub fn byol_predictor(Array[Double], BYOLMeta) -> Array[Double]
+
+pub fn byol_stop_grad(Array[Double]) -> Array[Double]
+
+pub fn contrastive_negative(Array[Double], Array[Array[Double]], ContrastiveMeta) -> Double
+
+pub fn contrastive_positive(Array[Double], Array[Double], ContrastiveMeta) -> Double
+
+pub fn dino_loss(Array[Double], Array[Double]) -> Double
+
+pub fn dino_student(Array[Double], DINOMeta) -> Array[Double]
+
+pub fn dino_teacher(Array[Double], DINOMeta) -> Array[Double]
+
+pub fn mae_decoder(Array[Array[Double]], Array[Bool], MAEMeta) -> Array[Array[Double]]
+
+pub fn mae_encoder(Array[Array[Double]], Array[Bool], MAEMeta) -> Array[Array[Double]]
+
+pub fn mae_loss(Array[Array[Double]], Array[Array[Double]], Array[Bool]) -> Double
+
+pub fn mae_mask(Int32, Double, Int32) -> Array[Bool]
+
+pub fn make_byol(Int32, Int32, Double, Int32) -> BYOLMeta
+
+pub fn make_contrastive(Double, Int32, Int32, Int32) -> ContrastiveMeta
+
+pub fn make_dino(Int32, Int32, Int32, Double, Double) -> DINOMeta
+
+pub fn make_mae(Int32, Double, Int32, Int32, Int32) -> MAEMeta
+
+pub fn make_masked_lm(Int32, Double, Int32, Int32) -> MaskedLMMeta
+
+pub fn make_moco(Int32, Double, Double, Int32) -> MoCoMeta
+
+pub fn make_pretext(Int32, Int32, Int32) -> PretextMeta
+
+pub fn make_projection_head(Int32, Int32, Int32, Bool) -> ProjectionHeadMeta
+
+pub fn make_representation(Int32, Int32, Int32, Int32) -> RepresentationMeta
+
+pub fn make_simclr(Double, Int32, Int32, Int32) -> SimCLRMeta
+
+pub fn make_stop_gradient(Bool, Double) -> StopGradientMeta
+
+pub fn make_swav(Int32, Int32, Double, Double, Int32) -> SwAVMeta
+
+pub fn mask_tokens(Array[Int32], MaskedLMMeta, Int32) -> Array[Int32]
+
+pub fn masked_lm_loss(Array[Array[Double]], Array[Int32], MaskedLMMeta) -> Double
+
+pub fn moco_encoder(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn moco_momentum_encoder(Array[Double], Array[Double], Double) -> Array[Double]
+
+pub fn moco_queue(Array[Array[Double]], Array[Array[Double]], Int32) -> Array[Array[Double]]
+
+pub fn pretext_colorize(Array[Double], Int32) -> Array[Int32]
+
+pub fn pretext_jigsaw(Array[Array[Double]], Array[Int32]) -> Array[Array[Double]]
+
+pub fn pretext_rotate(Array[Double], Int32) -> Array[Double]
+
+pub fn projection_forward(Array[Double], Array[Double], ProjectionHeadMeta) -> Array[Double]
+
+pub fn projection_loss(Array[Double], Array[Double]) -> Double
+
+pub fn representation_eval(Array[Double], Array[Int32]) -> Double
+
+pub fn representation_learn(Array[Double], Array[Array[Double]], RepresentationMeta) -> Array[Double]
+
+pub fn self_supervised_id() -> String
+
+pub fn simclr_augment(Array[Double], Int32) -> Array[Double]
+
+pub fn simclr_contrastive_loss(Array[Double], Array[Double], SimCLRMeta) -> Double
+
+pub fn simclr_nt_xent(Array[Double], Array[Double], Array[Array[Double]], SimCLRMeta) -> Double
+
+pub fn stop_grad(Array[Double], StopGradientMeta) -> Array[Double]
+
+pub fn swav_assignments(Array[Double], Array[Array[Double]], SwAVMeta) -> Array[Double]
+
+pub fn swav_loss(Array[Double], Array[Double], Array[Array[Double]]) -> Double
+
+pub fn swav_multi_crop(Array[Double], Int32, Int32) -> Array[Array[Double]]
+
+// Errors
+
+// Types and methods
+pub struct BYOLMeta {
+  projection_dim : Int32
+  predictor_dim : Int32
+  momentum : Double
+  feature_dim : Int32
+} derive(Eq, @debug.Debug)
+pub fn BYOLMeta::equal(Self, Self) -> Bool
+pub fn BYOLMeta::not_equal(Self, Self) -> Bool
+pub fn BYOLMeta::to_repr(Self) -> @debug.Repr
+
+pub struct ContrastiveMeta {
+  temperature : Double
+  n_positives : Int32
+  n_negatives : Int32
+  feature_dim : Int32
+} derive(Eq, @debug.Debug)
+pub fn ContrastiveMeta::equal(Self, Self) -> Bool
+pub fn ContrastiveMeta::not_equal(Self, Self) -> Bool
+pub fn ContrastiveMeta::to_repr(Self) -> @debug.Repr
+
+pub struct DINOMeta {
+  student_dim : Int32
+  teacher_dim : Int32
+  n_patches : Int32
+  momentum : Double
+  temperature : Double
+} derive(Eq, @debug.Debug)
+pub fn DINOMeta::equal(Self, Self) -> Bool
+pub fn DINOMeta::not_equal(Self, Self) -> Bool
+pub fn DINOMeta::to_repr(Self) -> @debug.Repr
+
+pub struct MAEMeta {
+  patch_size : Int32
+  mask_ratio : Double
+  encoder_dim : Int32
+  decoder_dim : Int32
+  img_size : Int32
+} derive(Eq, @debug.Debug)
+pub fn MAEMeta::equal(Self, Self) -> Bool
+pub fn MAEMeta::not_equal(Self, Self) -> Bool
+pub fn MAEMeta::to_repr(Self) -> @debug.Repr
+
+pub struct MaskedLMMeta {
+  vocab_size : Int32
+  mask_prob : Double
+  n_masked : Int32
+  hidden_dim : Int32
+} derive(Eq, @debug.Debug)
+pub fn MaskedLMMeta::equal(Self, Self) -> Bool
+pub fn MaskedLMMeta::not_equal(Self, Self) -> Bool
+pub fn MaskedLMMeta::to_repr(Self) -> @debug.Repr
+
+pub struct MoCoMeta {
+  queue_size : Int32
+  momentum : Double
+  temperature : Double
+  feature_dim : Int32
+} derive(Eq, @debug.Debug)
+pub fn MoCoMeta::equal(Self, Self) -> Bool
+pub fn MoCoMeta::not_equal(Self, Self) -> Bool
+pub fn MoCoMeta::to_repr(Self) -> @debug.Repr
+
+pub struct PretextMeta {
+  task_type : Int32
+  n_classes : Int32
+  feature_dim : Int32
+} derive(Eq, @debug.Debug)
+pub fn PretextMeta::equal(Self, Self) -> Bool
+pub fn PretextMeta::not_equal(Self, Self) -> Bool
+pub fn PretextMeta::to_repr(Self) -> @debug.Repr
+
+pub struct ProjectionHeadMeta {
+  input_dim : Int32
+  hidden_dim : Int32
+  output_dim : Int32
+  use_bn : Bool
+} derive(Eq, @debug.Debug)
+pub fn ProjectionHeadMeta::equal(Self, Self) -> Bool
+pub fn ProjectionHeadMeta::not_equal(Self, Self) -> Bool
+pub fn ProjectionHeadMeta::to_repr(Self) -> @debug.Repr
+
+pub struct RepresentationMeta {
+  input_dim : Int32
+  hidden_dim : Int32
+  output_dim : Int32
+  n_layers : Int32
+} derive(Eq, @debug.Debug)
+pub fn RepresentationMeta::equal(Self, Self) -> Bool
+pub fn RepresentationMeta::not_equal(Self, Self) -> Bool
+pub fn RepresentationMeta::to_repr(Self) -> @debug.Repr
+
+pub struct SimCLRMeta {
+  temperature : Double
+  projection_dim : Int32
+  feature_dim : Int32
+  batch_size : Int32
+} derive(Eq, @debug.Debug)
+pub fn SimCLRMeta::equal(Self, Self) -> Bool
+pub fn SimCLRMeta::not_equal(Self, Self) -> Bool
+pub fn SimCLRMeta::to_repr(Self) -> @debug.Repr
+
+pub struct StopGradientMeta {
+  enabled : Bool
+  scale : Double
+} derive(Eq, @debug.Debug)
+pub fn StopGradientMeta::equal(Self, Self) -> Bool
+pub fn StopGradientMeta::not_equal(Self, Self) -> Bool
+pub fn StopGradientMeta::to_repr(Self) -> @debug.Repr
+
+pub struct SwAVMeta {
+  n_prototypes : Int32
+  n_queues : Int32
+  temperature : Double
+  epsilon : Double
+  feature_dim : Int32
+} derive(Eq, @debug.Debug)
+pub fn SwAVMeta::equal(Self, Self) -> Bool
+pub fn SwAVMeta::not_equal(Self, Self) -> Bool
+pub fn SwAVMeta::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

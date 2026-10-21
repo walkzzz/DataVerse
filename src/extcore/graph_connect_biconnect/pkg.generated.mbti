@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_connect_biconnect"
+
+// Values
+pub fn graph_connect_biconnect_buffer_make(Int32) -> GraphconnectbiconnectBuffer
+
+pub fn graph_connect_biconnect_cluster_make(Int32) -> GraphconnectbiconnectCluster
+
+pub fn graph_connect_biconnect_cursor_make(Int32) -> GraphconnectbiconnectCursor
+
+pub fn graph_connect_biconnect_edge_make(Int32) -> GraphconnectbiconnectEdge
+
+pub fn graph_connect_biconnect_frame_make(Int32) -> GraphconnectbiconnectFrame
+
+pub fn graph_connect_biconnect_graphn_make(Int32) -> GraphconnectbiconnectGraphN
+
+pub fn graph_connect_biconnect_layer_make(Int32) -> GraphconnectbiconnectLayer
+
+pub fn graph_connect_biconnect_make_matrix(Int32, Int32, Double) -> GraphconnectbiconnectMatrix
+
+pub fn graph_connect_biconnect_make_point(Double, Double) -> GraphconnectbiconnectPoint
+
+pub fn graph_connect_biconnect_make_point3(Double, Double, Double) -> GraphconnectbiconnectPoint
+
+pub fn graph_connect_biconnect_make_series(Array[Double], String) -> GraphconnectbiconnectSeries
+
+pub fn graph_connect_biconnect_make_vector(Array[Double]) -> GraphconnectbiconnectVector
+
+pub fn graph_connect_biconnect_matrix_identity(Int32) -> GraphconnectbiconnectMatrix
+
+pub fn graph_connect_biconnect_model_make(Int32) -> GraphconnectbiconnectModel
+
+pub fn graph_connect_biconnect_node_make(Int32) -> GraphconnectbiconnectNode
+
+pub fn graph_connect_biconnect_path_make(Int32) -> GraphconnectbiconnectPath
+
+pub fn graph_connect_biconnect_range_make(Int32) -> GraphconnectbiconnectRange
+
+pub fn graph_connect_biconnect_slice_make(Int32) -> GraphconnectbiconnectSlice
+
+pub fn graph_connect_biconnect_table_make(Int32) -> GraphconnectbiconnectTable
+
+pub fn graph_connect_biconnect_vector_zero(Int32) -> GraphconnectbiconnectVector
+
+pub fn graph_connect_biconnect_view_make(Int32) -> GraphconnectbiconnectView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphconnectbiconnectBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectbiconnectBuffer::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectBuffer::copy(Self) -> Self
+pub fn GraphconnectbiconnectBuffer::fill(Self, Double) -> Self
+pub fn GraphconnectbiconnectBuffer::get(Self, Int32) -> Double
+pub fn GraphconnectbiconnectBuffer::len(Self) -> Int32
+pub fn GraphconnectbiconnectBuffer::max(Self) -> Double
+pub fn GraphconnectbiconnectBuffer::mean(Self) -> Double
+pub fn GraphconnectbiconnectBuffer::min(Self) -> Double
+pub fn GraphconnectbiconnectBuffer::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphconnectbiconnectBuffer::sum(Self) -> Double
+pub fn GraphconnectbiconnectBuffer::to_string(Self) -> String
+
+pub(all) struct GraphconnectbiconnectCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectbiconnectCluster::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectCluster::copy(Self) -> Self
+pub fn GraphconnectbiconnectCluster::fill(Self, Double) -> Self
+pub fn GraphconnectbiconnectCluster::get(Self, Int32) -> Double
+pub fn GraphconnectbiconnectCluster::len(Self) -> Int32
+pub fn GraphconnectbiconnectCluster::max(Self) -> Double
+pub fn GraphconnectbiconnectCluster::mean(Self) -> Double
+pub fn GraphconnectbiconnectCluster::min(Self) -> Double
+pub fn GraphconnectbiconnectCluster::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectCluster::set(Self, Int32, Double) -> Self
+pub fn GraphconnectbiconnectCluster::sum(Self) -> Double
+pub fn GraphconnectbiconnectCluster::to_string(Self) -> String
+
+pub(all) struct GraphconnectbiconnectCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectbiconnectCursor::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectCursor::copy(Self) -> Self
+pub fn GraphconnectbiconnectCursor::fill(Self, Double) -> Self
+pub fn GraphconnectbiconnectCursor::get(Self, Int32) -> Double
+pub fn GraphconnectbiconnectCursor::len(Self) -> Int32
+pub fn GraphconnectbiconnectCursor::max(Self) -> Double
+pub fn GraphconnectbiconnectCursor::mean(Self) -> Double
+pub fn GraphconnectbiconnectCursor::min(Self) -> Double
+pub fn GraphconnectbiconnectCursor::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectCursor::set(Self, Int32, Double) -> Self
+pub fn GraphconnectbiconnectCursor::sum(Self) -> Double
+pub fn GraphconnectbiconnectCursor::to_string(Self) -> String
+
+pub(all) struct GraphconnectbiconnectEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectbiconnectEdge::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectEdge::copy(Self) -> Self
+pub fn GraphconnectbiconnectEdge::fill(Self, Double) -> Self
+pub fn GraphconnectbiconnectEdge::get(Self, Int32) -> Double
+pub fn GraphconnectbiconnectEdge::len(Self) -> Int32
+pub fn GraphconnectbiconnectEdge::max(Self) -> Double
+pub fn GraphconnectbiconnectEdge::mean(Self) -> Double
+pub fn GraphconnectbiconnectEdge::min(Self) -> Double
+pub fn GraphconnectbiconnectEdge::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectEdge::set(Self, Int32, Double) -> Self
+pub fn GraphconnectbiconnectEdge::sum(Self) -> Double
+pub fn GraphconnectbiconnectEdge::to_string(Self) -> String
+
+pub(all) struct GraphconnectbiconnectFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectbiconnectFrame::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectFrame::copy(Self) -> Self
+pub fn GraphconnectbiconnectFrame::fill(Self, Double) -> Self
+pub fn GraphconnectbiconnectFrame::get(Self, Int32) -> Double
+pub fn GraphconnectbiconnectFrame::len(Self) -> Int32
+pub fn GraphconnectbiconnectFrame::max(Self) -> Double
+pub fn GraphconnectbiconnectFrame::mean(Self) -> Double
+pub fn GraphconnectbiconnectFrame::min(Self) -> Double
+pub fn GraphconnectbiconnectFrame::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectFrame::set(Self, Int32, Double) -> Self
+pub fn GraphconnectbiconnectFrame::sum(Self) -> Double
+pub fn GraphconnectbiconnectFrame::to_string(Self) -> String
+
+pub(all) struct GraphconnectbiconnectGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectbiconnectGraphN::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectGraphN::copy(Self) -> Self
+pub fn GraphconnectbiconnectGraphN::fill(Self, Double) -> Self
+pub fn GraphconnectbiconnectGraphN::get(Self, Int32) -> Double
+pub fn GraphconnectbiconnectGraphN::len(Self) -> Int32
+pub fn GraphconnectbiconnectGraphN::max(Self) -> Double
+pub fn GraphconnectbiconnectGraphN::mean(Self) -> Double
+pub fn GraphconnectbiconnectGraphN::min(Self) -> Double
+pub fn GraphconnectbiconnectGraphN::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphconnectbiconnectGraphN::sum(Self) -> Double
+pub fn GraphconnectbiconnectGraphN::to_string(Self) -> String
+
+pub(all) struct GraphconnectbiconnectLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectbiconnectLayer::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectLayer::copy(Self) -> Self
+pub fn GraphconnectbiconnectLayer::fill(Self, Double) -> Self
+pub fn GraphconnectbiconnectLayer::get(Self, Int32) -> Double
+pub fn GraphconnectbiconnectLayer::len(Self) -> Int32
+pub fn GraphconnectbiconnectLayer::max(Self) -> Double
+pub fn GraphconnectbiconnectLayer::mean(Self) -> Double
+pub fn GraphconnectbiconnectLayer::min(Self) -> Double
+pub fn GraphconnectbiconnectLayer::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectLayer::set(Self, Int32, Double) -> Self
+pub fn GraphconnectbiconnectLayer::sum(Self) -> Double
+pub fn GraphconnectbiconnectLayer::to_string(Self) -> String
+
+pub(all) struct GraphconnectbiconnectMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphconnectbiconnectMatrix::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectMatrix::det(Self) -> Double
+pub fn GraphconnectbiconnectMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphconnectbiconnectMatrix::multiply(Self, Self) -> Self
+pub fn GraphconnectbiconnectMatrix::norm(Self) -> Double
+pub fn GraphconnectbiconnectMatrix::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectMatrix::to_string(Self) -> String
+pub fn GraphconnectbiconnectMatrix::trace(Self) -> Double
+pub fn GraphconnectbiconnectMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphconnectbiconnectModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectbiconnectModel::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectModel::copy(Self) -> Self
+pub fn GraphconnectbiconnectModel::fill(Self, Double) -> Self
+pub fn GraphconnectbiconnectModel::get(Self, Int32) -> Double
+pub fn GraphconnectbiconnectModel::len(Self) -> Int32
+pub fn GraphconnectbiconnectModel::max(Self) -> Double
+pub fn GraphconnectbiconnectModel::mean(Self) -> Double
+pub fn GraphconnectbiconnectModel::min(Self) -> Double
+pub fn GraphconnectbiconnectModel::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectModel::set(Self, Int32, Double) -> Self
+pub fn GraphconnectbiconnectModel::sum(Self) -> Double
+pub fn GraphconnectbiconnectModel::to_string(Self) -> String
+
+pub(all) struct GraphconnectbiconnectNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectbiconnectNode::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectNode::copy(Self) -> Self
+pub fn GraphconnectbiconnectNode::fill(Self, Double) -> Self
+pub fn GraphconnectbiconnectNode::get(Self, Int32) -> Double
+pub fn GraphconnectbiconnectNode::len(Self) -> Int32
+pub fn GraphconnectbiconnectNode::max(Self) -> Double
+pub fn GraphconnectbiconnectNode::mean(Self) -> Double
+pub fn GraphconnectbiconnectNode::min(Self) -> Double
+pub fn GraphconnectbiconnectNode::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectNode::set(Self, Int32, Double) -> Self
+pub fn GraphconnectbiconnectNode::sum(Self) -> Double
+pub fn GraphconnectbiconnectNode::to_string(Self) -> String
+
+pub(all) struct GraphconnectbiconnectPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectbiconnectPath::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectPath::copy(Self) -> Self
+pub fn GraphconnectbiconnectPath::fill(Self, Double) -> Self
+pub fn GraphconnectbiconnectPath::get(Self, Int32) -> Double
+pub fn GraphconnectbiconnectPath::len(Self) -> Int32
+pub fn GraphconnectbiconnectPath::max(Self) -> Double
+pub fn GraphconnectbiconnectPath::mean(Self) -> Double
+pub fn GraphconnectbiconnectPath::min(Self) -> Double
+pub fn GraphconnectbiconnectPath::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectPath::set(Self, Int32, Double) -> Self
+pub fn GraphconnectbiconnectPath::sum(Self) -> Double
+pub fn GraphconnectbiconnectPath::to_string(Self) -> String
+
+pub(all) struct GraphconnectbiconnectPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphconnectbiconnectPoint::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectPoint::cross(Self, Self) -> Self
+pub fn GraphconnectbiconnectPoint::dist(Self, Self) -> Double
+pub fn GraphconnectbiconnectPoint::dot(Self, Self) -> Double
+pub fn GraphconnectbiconnectPoint::label(Self) -> Int32
+pub fn GraphconnectbiconnectPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphconnectbiconnectPoint::mid(Self, Self) -> Self
+pub fn GraphconnectbiconnectPoint::negate(Self) -> Self
+pub fn GraphconnectbiconnectPoint::norm(Self) -> Double
+pub fn GraphconnectbiconnectPoint::normalize(Self) -> Self
+pub fn GraphconnectbiconnectPoint::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectPoint::sub(Self, Self) -> Self
+pub fn GraphconnectbiconnectPoint::to_string(Self) -> String
+pub fn GraphconnectbiconnectPoint::x(Self) -> Double
+pub fn GraphconnectbiconnectPoint::y(Self) -> Double
+pub fn GraphconnectbiconnectPoint::z(Self) -> Double
+
+pub(all) struct GraphconnectbiconnectRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectbiconnectRange::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectRange::copy(Self) -> Self
+pub fn GraphconnectbiconnectRange::fill(Self, Double) -> Self
+pub fn GraphconnectbiconnectRange::get(Self, Int32) -> Double
+pub fn GraphconnectbiconnectRange::len(Self) -> Int32
+pub fn GraphconnectbiconnectRange::max(Self) -> Double
+pub fn GraphconnectbiconnectRange::mean(Self) -> Double
+pub fn GraphconnectbiconnectRange::min(Self) -> Double
+pub fn GraphconnectbiconnectRange::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectRange::set(Self, Int32, Double) -> Self
+pub fn GraphconnectbiconnectRange::sum(Self) -> Double
+pub fn GraphconnectbiconnectRange::to_string(Self) -> String
+
+pub(all) struct GraphconnectbiconnectSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphconnectbiconnectSeries::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectSeries::cumsum(Self) -> Self
+pub fn GraphconnectbiconnectSeries::len(Self) -> Int32
+pub fn GraphconnectbiconnectSeries::max(Self) -> Double
+pub fn GraphconnectbiconnectSeries::mean(Self) -> Double
+pub fn GraphconnectbiconnectSeries::median(Self) -> Double
+pub fn GraphconnectbiconnectSeries::min(Self) -> Double
+pub fn GraphconnectbiconnectSeries::normalize(Self) -> Self
+pub fn GraphconnectbiconnectSeries::range(Self) -> Double
+pub fn GraphconnectbiconnectSeries::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectSeries::std(Self) -> Double
+pub fn GraphconnectbiconnectSeries::sub(Self, Self) -> Self
+pub fn GraphconnectbiconnectSeries::sum(Self) -> Double
+pub fn GraphconnectbiconnectSeries::to_string(Self) -> String
+pub fn GraphconnectbiconnectSeries::variance(Self) -> Double
+
+pub(all) struct GraphconnectbiconnectSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectbiconnectSlice::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectSlice::copy(Self) -> Self
+pub fn GraphconnectbiconnectSlice::fill(Self, Double) -> Self
+pub fn GraphconnectbiconnectSlice::get(Self, Int32) -> Double
+pub fn GraphconnectbiconnectSlice::len(Self) -> Int32
+pub fn GraphconnectbiconnectSlice::max(Self) -> Double
+pub fn GraphconnectbiconnectSlice::mean(Self) -> Double
+pub fn GraphconnectbiconnectSlice::min(Self) -> Double
+pub fn GraphconnectbiconnectSlice::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectSlice::set(Self, Int32, Double) -> Self
+pub fn GraphconnectbiconnectSlice::sum(Self) -> Double
+pub fn GraphconnectbiconnectSlice::to_string(Self) -> String
+
+pub(all) struct GraphconnectbiconnectTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectbiconnectTable::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectTable::copy(Self) -> Self
+pub fn GraphconnectbiconnectTable::fill(Self, Double) -> Self
+pub fn GraphconnectbiconnectTable::get(Self, Int32) -> Double
+pub fn GraphconnectbiconnectTable::len(Self) -> Int32
+pub fn GraphconnectbiconnectTable::max(Self) -> Double
+pub fn GraphconnectbiconnectTable::mean(Self) -> Double
+pub fn GraphconnectbiconnectTable::min(Self) -> Double
+pub fn GraphconnectbiconnectTable::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectTable::set(Self, Int32, Double) -> Self
+pub fn GraphconnectbiconnectTable::sum(Self) -> Double
+pub fn GraphconnectbiconnectTable::to_string(Self) -> String
+
+pub(all) struct GraphconnectbiconnectVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphconnectbiconnectVector::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectVector::dist(Self, Self) -> Double
+pub fn GraphconnectbiconnectVector::dot(Self, Self) -> Double
+pub fn GraphconnectbiconnectVector::norm(Self) -> Double
+pub fn GraphconnectbiconnectVector::normalize(Self) -> Self
+pub fn GraphconnectbiconnectVector::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectVector::sub(Self, Self) -> Self
+pub fn GraphconnectbiconnectVector::to_string(Self) -> String
+
+pub(all) struct GraphconnectbiconnectView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectbiconnectView::add(Self, Self) -> Self
+pub fn GraphconnectbiconnectView::copy(Self) -> Self
+pub fn GraphconnectbiconnectView::fill(Self, Double) -> Self
+pub fn GraphconnectbiconnectView::get(Self, Int32) -> Double
+pub fn GraphconnectbiconnectView::len(Self) -> Int32
+pub fn GraphconnectbiconnectView::max(Self) -> Double
+pub fn GraphconnectbiconnectView::mean(Self) -> Double
+pub fn GraphconnectbiconnectView::min(Self) -> Double
+pub fn GraphconnectbiconnectView::scale(Self, Double) -> Self
+pub fn GraphconnectbiconnectView::set(Self, Int32, Double) -> Self
+pub fn GraphconnectbiconnectView::sum(Self) -> Double
+pub fn GraphconnectbiconnectView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

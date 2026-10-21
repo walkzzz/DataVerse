@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_feature_lda"
+
+// Values
+pub fn ml_feature_lda_buffer_make(Int32) -> MlfeatureldaBuffer
+
+pub fn ml_feature_lda_cluster_make(Int32) -> MlfeatureldaCluster
+
+pub fn ml_feature_lda_cursor_make(Int32) -> MlfeatureldaCursor
+
+pub fn ml_feature_lda_edge_make(Int32) -> MlfeatureldaEdge
+
+pub fn ml_feature_lda_frame_make(Int32) -> MlfeatureldaFrame
+
+pub fn ml_feature_lda_graphn_make(Int32) -> MlfeatureldaGraphN
+
+pub fn ml_feature_lda_layer_make(Int32) -> MlfeatureldaLayer
+
+pub fn ml_feature_lda_make_matrix(Int32, Int32, Double) -> MlfeatureldaMatrix
+
+pub fn ml_feature_lda_make_point(Double, Double) -> MlfeatureldaPoint
+
+pub fn ml_feature_lda_make_point3(Double, Double, Double) -> MlfeatureldaPoint
+
+pub fn ml_feature_lda_make_series(Array[Double], String) -> MlfeatureldaSeries
+
+pub fn ml_feature_lda_make_vector(Array[Double]) -> MlfeatureldaVector
+
+pub fn ml_feature_lda_matrix_identity(Int32) -> MlfeatureldaMatrix
+
+pub fn ml_feature_lda_model_make(Int32) -> MlfeatureldaModel
+
+pub fn ml_feature_lda_node_make(Int32) -> MlfeatureldaNode
+
+pub fn ml_feature_lda_path_make(Int32) -> MlfeatureldaPath
+
+pub fn ml_feature_lda_range_make(Int32) -> MlfeatureldaRange
+
+pub fn ml_feature_lda_slice_make(Int32) -> MlfeatureldaSlice
+
+pub fn ml_feature_lda_table_make(Int32) -> MlfeatureldaTable
+
+pub fn ml_feature_lda_vector_zero(Int32) -> MlfeatureldaVector
+
+pub fn ml_feature_lda_view_make(Int32) -> MlfeatureldaView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlfeatureldaBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureldaBuffer::add(Self, Self) -> Self
+pub fn MlfeatureldaBuffer::copy(Self) -> Self
+pub fn MlfeatureldaBuffer::fill(Self, Double) -> Self
+pub fn MlfeatureldaBuffer::get(Self, Int32) -> Double
+pub fn MlfeatureldaBuffer::len(Self) -> Int32
+pub fn MlfeatureldaBuffer::max(Self) -> Double
+pub fn MlfeatureldaBuffer::mean(Self) -> Double
+pub fn MlfeatureldaBuffer::min(Self) -> Double
+pub fn MlfeatureldaBuffer::scale(Self, Double) -> Self
+pub fn MlfeatureldaBuffer::set(Self, Int32, Double) -> Self
+pub fn MlfeatureldaBuffer::sum(Self) -> Double
+pub fn MlfeatureldaBuffer::to_string(Self) -> String
+
+pub(all) struct MlfeatureldaCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureldaCluster::add(Self, Self) -> Self
+pub fn MlfeatureldaCluster::copy(Self) -> Self
+pub fn MlfeatureldaCluster::fill(Self, Double) -> Self
+pub fn MlfeatureldaCluster::get(Self, Int32) -> Double
+pub fn MlfeatureldaCluster::len(Self) -> Int32
+pub fn MlfeatureldaCluster::max(Self) -> Double
+pub fn MlfeatureldaCluster::mean(Self) -> Double
+pub fn MlfeatureldaCluster::min(Self) -> Double
+pub fn MlfeatureldaCluster::scale(Self, Double) -> Self
+pub fn MlfeatureldaCluster::set(Self, Int32, Double) -> Self
+pub fn MlfeatureldaCluster::sum(Self) -> Double
+pub fn MlfeatureldaCluster::to_string(Self) -> String
+
+pub(all) struct MlfeatureldaCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureldaCursor::add(Self, Self) -> Self
+pub fn MlfeatureldaCursor::copy(Self) -> Self
+pub fn MlfeatureldaCursor::fill(Self, Double) -> Self
+pub fn MlfeatureldaCursor::get(Self, Int32) -> Double
+pub fn MlfeatureldaCursor::len(Self) -> Int32
+pub fn MlfeatureldaCursor::max(Self) -> Double
+pub fn MlfeatureldaCursor::mean(Self) -> Double
+pub fn MlfeatureldaCursor::min(Self) -> Double
+pub fn MlfeatureldaCursor::scale(Self, Double) -> Self
+pub fn MlfeatureldaCursor::set(Self, Int32, Double) -> Self
+pub fn MlfeatureldaCursor::sum(Self) -> Double
+pub fn MlfeatureldaCursor::to_string(Self) -> String
+
+pub(all) struct MlfeatureldaEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureldaEdge::add(Self, Self) -> Self
+pub fn MlfeatureldaEdge::copy(Self) -> Self
+pub fn MlfeatureldaEdge::fill(Self, Double) -> Self
+pub fn MlfeatureldaEdge::get(Self, Int32) -> Double
+pub fn MlfeatureldaEdge::len(Self) -> Int32
+pub fn MlfeatureldaEdge::max(Self) -> Double
+pub fn MlfeatureldaEdge::mean(Self) -> Double
+pub fn MlfeatureldaEdge::min(Self) -> Double
+pub fn MlfeatureldaEdge::scale(Self, Double) -> Self
+pub fn MlfeatureldaEdge::set(Self, Int32, Double) -> Self
+pub fn MlfeatureldaEdge::sum(Self) -> Double
+pub fn MlfeatureldaEdge::to_string(Self) -> String
+
+pub(all) struct MlfeatureldaFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureldaFrame::add(Self, Self) -> Self
+pub fn MlfeatureldaFrame::copy(Self) -> Self
+pub fn MlfeatureldaFrame::fill(Self, Double) -> Self
+pub fn MlfeatureldaFrame::get(Self, Int32) -> Double
+pub fn MlfeatureldaFrame::len(Self) -> Int32
+pub fn MlfeatureldaFrame::max(Self) -> Double
+pub fn MlfeatureldaFrame::mean(Self) -> Double
+pub fn MlfeatureldaFrame::min(Self) -> Double
+pub fn MlfeatureldaFrame::scale(Self, Double) -> Self
+pub fn MlfeatureldaFrame::set(Self, Int32, Double) -> Self
+pub fn MlfeatureldaFrame::sum(Self) -> Double
+pub fn MlfeatureldaFrame::to_string(Self) -> String
+
+pub(all) struct MlfeatureldaGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureldaGraphN::add(Self, Self) -> Self
+pub fn MlfeatureldaGraphN::copy(Self) -> Self
+pub fn MlfeatureldaGraphN::fill(Self, Double) -> Self
+pub fn MlfeatureldaGraphN::get(Self, Int32) -> Double
+pub fn MlfeatureldaGraphN::len(Self) -> Int32
+pub fn MlfeatureldaGraphN::max(Self) -> Double
+pub fn MlfeatureldaGraphN::mean(Self) -> Double
+pub fn MlfeatureldaGraphN::min(Self) -> Double
+pub fn MlfeatureldaGraphN::scale(Self, Double) -> Self
+pub fn MlfeatureldaGraphN::set(Self, Int32, Double) -> Self
+pub fn MlfeatureldaGraphN::sum(Self) -> Double
+pub fn MlfeatureldaGraphN::to_string(Self) -> String
+
+pub(all) struct MlfeatureldaLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureldaLayer::add(Self, Self) -> Self
+pub fn MlfeatureldaLayer::copy(Self) -> Self
+pub fn MlfeatureldaLayer::fill(Self, Double) -> Self
+pub fn MlfeatureldaLayer::get(Self, Int32) -> Double
+pub fn MlfeatureldaLayer::len(Self) -> Int32
+pub fn MlfeatureldaLayer::max(Self) -> Double
+pub fn MlfeatureldaLayer::mean(Self) -> Double
+pub fn MlfeatureldaLayer::min(Self) -> Double
+pub fn MlfeatureldaLayer::scale(Self, Double) -> Self
+pub fn MlfeatureldaLayer::set(Self, Int32, Double) -> Self
+pub fn MlfeatureldaLayer::sum(Self) -> Double
+pub fn MlfeatureldaLayer::to_string(Self) -> String
+
+pub(all) struct MlfeatureldaMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlfeatureldaMatrix::add(Self, Self) -> Self
+pub fn MlfeatureldaMatrix::det(Self) -> Double
+pub fn MlfeatureldaMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlfeatureldaMatrix::multiply(Self, Self) -> Self
+pub fn MlfeatureldaMatrix::norm(Self) -> Double
+pub fn MlfeatureldaMatrix::scale(Self, Double) -> Self
+pub fn MlfeatureldaMatrix::to_string(Self) -> String
+pub fn MlfeatureldaMatrix::trace(Self) -> Double
+pub fn MlfeatureldaMatrix::transpose(Self) -> Self
+
+pub(all) struct MlfeatureldaModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureldaModel::add(Self, Self) -> Self
+pub fn MlfeatureldaModel::copy(Self) -> Self
+pub fn MlfeatureldaModel::fill(Self, Double) -> Self
+pub fn MlfeatureldaModel::get(Self, Int32) -> Double
+pub fn MlfeatureldaModel::len(Self) -> Int32
+pub fn MlfeatureldaModel::max(Self) -> Double
+pub fn MlfeatureldaModel::mean(Self) -> Double
+pub fn MlfeatureldaModel::min(Self) -> Double
+pub fn MlfeatureldaModel::scale(Self, Double) -> Self
+pub fn MlfeatureldaModel::set(Self, Int32, Double) -> Self
+pub fn MlfeatureldaModel::sum(Self) -> Double
+pub fn MlfeatureldaModel::to_string(Self) -> String
+
+pub(all) struct MlfeatureldaNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureldaNode::add(Self, Self) -> Self
+pub fn MlfeatureldaNode::copy(Self) -> Self
+pub fn MlfeatureldaNode::fill(Self, Double) -> Self
+pub fn MlfeatureldaNode::get(Self, Int32) -> Double
+pub fn MlfeatureldaNode::len(Self) -> Int32
+pub fn MlfeatureldaNode::max(Self) -> Double
+pub fn MlfeatureldaNode::mean(Self) -> Double
+pub fn MlfeatureldaNode::min(Self) -> Double
+pub fn MlfeatureldaNode::scale(Self, Double) -> Self
+pub fn MlfeatureldaNode::set(Self, Int32, Double) -> Self
+pub fn MlfeatureldaNode::sum(Self) -> Double
+pub fn MlfeatureldaNode::to_string(Self) -> String
+
+pub(all) struct MlfeatureldaPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureldaPath::add(Self, Self) -> Self
+pub fn MlfeatureldaPath::copy(Self) -> Self
+pub fn MlfeatureldaPath::fill(Self, Double) -> Self
+pub fn MlfeatureldaPath::get(Self, Int32) -> Double
+pub fn MlfeatureldaPath::len(Self) -> Int32
+pub fn MlfeatureldaPath::max(Self) -> Double
+pub fn MlfeatureldaPath::mean(Self) -> Double
+pub fn MlfeatureldaPath::min(Self) -> Double
+pub fn MlfeatureldaPath::scale(Self, Double) -> Self
+pub fn MlfeatureldaPath::set(Self, Int32, Double) -> Self
+pub fn MlfeatureldaPath::sum(Self) -> Double
+pub fn MlfeatureldaPath::to_string(Self) -> String
+
+pub(all) struct MlfeatureldaPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlfeatureldaPoint::add(Self, Self) -> Self
+pub fn MlfeatureldaPoint::cross(Self, Self) -> Self
+pub fn MlfeatureldaPoint::dist(Self, Self) -> Double
+pub fn MlfeatureldaPoint::dot(Self, Self) -> Double
+pub fn MlfeatureldaPoint::label(Self) -> Int32
+pub fn MlfeatureldaPoint::lerp(Self, Self, Double) -> Self
+pub fn MlfeatureldaPoint::mid(Self, Self) -> Self
+pub fn MlfeatureldaPoint::negate(Self) -> Self
+pub fn MlfeatureldaPoint::norm(Self) -> Double
+pub fn MlfeatureldaPoint::normalize(Self) -> Self
+pub fn MlfeatureldaPoint::scale(Self, Double) -> Self
+pub fn MlfeatureldaPoint::sub(Self, Self) -> Self
+pub fn MlfeatureldaPoint::to_string(Self) -> String
+pub fn MlfeatureldaPoint::x(Self) -> Double
+pub fn MlfeatureldaPoint::y(Self) -> Double
+pub fn MlfeatureldaPoint::z(Self) -> Double
+
+pub(all) struct MlfeatureldaRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureldaRange::add(Self, Self) -> Self
+pub fn MlfeatureldaRange::copy(Self) -> Self
+pub fn MlfeatureldaRange::fill(Self, Double) -> Self
+pub fn MlfeatureldaRange::get(Self, Int32) -> Double
+pub fn MlfeatureldaRange::len(Self) -> Int32
+pub fn MlfeatureldaRange::max(Self) -> Double
+pub fn MlfeatureldaRange::mean(Self) -> Double
+pub fn MlfeatureldaRange::min(Self) -> Double
+pub fn MlfeatureldaRange::scale(Self, Double) -> Self
+pub fn MlfeatureldaRange::set(Self, Int32, Double) -> Self
+pub fn MlfeatureldaRange::sum(Self) -> Double
+pub fn MlfeatureldaRange::to_string(Self) -> String
+
+pub(all) struct MlfeatureldaSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlfeatureldaSeries::add(Self, Self) -> Self
+pub fn MlfeatureldaSeries::cumsum(Self) -> Self
+pub fn MlfeatureldaSeries::len(Self) -> Int32
+pub fn MlfeatureldaSeries::max(Self) -> Double
+pub fn MlfeatureldaSeries::mean(Self) -> Double
+pub fn MlfeatureldaSeries::median(Self) -> Double
+pub fn MlfeatureldaSeries::min(Self) -> Double
+pub fn MlfeatureldaSeries::normalize(Self) -> Self
+pub fn MlfeatureldaSeries::range(Self) -> Double
+pub fn MlfeatureldaSeries::scale(Self, Double) -> Self
+pub fn MlfeatureldaSeries::std(Self) -> Double
+pub fn MlfeatureldaSeries::sub(Self, Self) -> Self
+pub fn MlfeatureldaSeries::sum(Self) -> Double
+pub fn MlfeatureldaSeries::to_string(Self) -> String
+pub fn MlfeatureldaSeries::variance(Self) -> Double
+
+pub(all) struct MlfeatureldaSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureldaSlice::add(Self, Self) -> Self
+pub fn MlfeatureldaSlice::copy(Self) -> Self
+pub fn MlfeatureldaSlice::fill(Self, Double) -> Self
+pub fn MlfeatureldaSlice::get(Self, Int32) -> Double
+pub fn MlfeatureldaSlice::len(Self) -> Int32
+pub fn MlfeatureldaSlice::max(Self) -> Double
+pub fn MlfeatureldaSlice::mean(Self) -> Double
+pub fn MlfeatureldaSlice::min(Self) -> Double
+pub fn MlfeatureldaSlice::scale(Self, Double) -> Self
+pub fn MlfeatureldaSlice::set(Self, Int32, Double) -> Self
+pub fn MlfeatureldaSlice::sum(Self) -> Double
+pub fn MlfeatureldaSlice::to_string(Self) -> String
+
+pub(all) struct MlfeatureldaTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureldaTable::add(Self, Self) -> Self
+pub fn MlfeatureldaTable::copy(Self) -> Self
+pub fn MlfeatureldaTable::fill(Self, Double) -> Self
+pub fn MlfeatureldaTable::get(Self, Int32) -> Double
+pub fn MlfeatureldaTable::len(Self) -> Int32
+pub fn MlfeatureldaTable::max(Self) -> Double
+pub fn MlfeatureldaTable::mean(Self) -> Double
+pub fn MlfeatureldaTable::min(Self) -> Double
+pub fn MlfeatureldaTable::scale(Self, Double) -> Self
+pub fn MlfeatureldaTable::set(Self, Int32, Double) -> Self
+pub fn MlfeatureldaTable::sum(Self) -> Double
+pub fn MlfeatureldaTable::to_string(Self) -> String
+
+pub(all) struct MlfeatureldaVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlfeatureldaVector::add(Self, Self) -> Self
+pub fn MlfeatureldaVector::dist(Self, Self) -> Double
+pub fn MlfeatureldaVector::dot(Self, Self) -> Double
+pub fn MlfeatureldaVector::norm(Self) -> Double
+pub fn MlfeatureldaVector::normalize(Self) -> Self
+pub fn MlfeatureldaVector::scale(Self, Double) -> Self
+pub fn MlfeatureldaVector::sub(Self, Self) -> Self
+pub fn MlfeatureldaVector::to_string(Self) -> String
+
+pub(all) struct MlfeatureldaView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureldaView::add(Self, Self) -> Self
+pub fn MlfeatureldaView::copy(Self) -> Self
+pub fn MlfeatureldaView::fill(Self, Double) -> Self
+pub fn MlfeatureldaView::get(Self, Int32) -> Double
+pub fn MlfeatureldaView::len(Self) -> Int32
+pub fn MlfeatureldaView::max(Self) -> Double
+pub fn MlfeatureldaView::mean(Self) -> Double
+pub fn MlfeatureldaView::min(Self) -> Double
+pub fn MlfeatureldaView::scale(Self, Double) -> Self
+pub fn MlfeatureldaView::set(Self, Int32, Double) -> Self
+pub fn MlfeatureldaView::sum(Self) -> Double
+pub fn MlfeatureldaView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

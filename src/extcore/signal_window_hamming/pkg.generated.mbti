@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_window_hamming"
+
+// Values
+pub fn signal_window_hamming_buffer_make(Int32) -> SignalwindowhammingBuffer
+
+pub fn signal_window_hamming_cluster_make(Int32) -> SignalwindowhammingCluster
+
+pub fn signal_window_hamming_cursor_make(Int32) -> SignalwindowhammingCursor
+
+pub fn signal_window_hamming_edge_make(Int32) -> SignalwindowhammingEdge
+
+pub fn signal_window_hamming_frame_make(Int32) -> SignalwindowhammingFrame
+
+pub fn signal_window_hamming_graphn_make(Int32) -> SignalwindowhammingGraphN
+
+pub fn signal_window_hamming_layer_make(Int32) -> SignalwindowhammingLayer
+
+pub fn signal_window_hamming_make_matrix(Int32, Int32, Double) -> SignalwindowhammingMatrix
+
+pub fn signal_window_hamming_make_point(Double, Double) -> SignalwindowhammingPoint
+
+pub fn signal_window_hamming_make_point3(Double, Double, Double) -> SignalwindowhammingPoint
+
+pub fn signal_window_hamming_make_series(Array[Double], String) -> SignalwindowhammingSeries
+
+pub fn signal_window_hamming_make_vector(Array[Double]) -> SignalwindowhammingVector
+
+pub fn signal_window_hamming_matrix_identity(Int32) -> SignalwindowhammingMatrix
+
+pub fn signal_window_hamming_model_make(Int32) -> SignalwindowhammingModel
+
+pub fn signal_window_hamming_node_make(Int32) -> SignalwindowhammingNode
+
+pub fn signal_window_hamming_path_make(Int32) -> SignalwindowhammingPath
+
+pub fn signal_window_hamming_range_make(Int32) -> SignalwindowhammingRange
+
+pub fn signal_window_hamming_slice_make(Int32) -> SignalwindowhammingSlice
+
+pub fn signal_window_hamming_table_make(Int32) -> SignalwindowhammingTable
+
+pub fn signal_window_hamming_vector_zero(Int32) -> SignalwindowhammingVector
+
+pub fn signal_window_hamming_view_make(Int32) -> SignalwindowhammingView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalwindowhammingBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhammingBuffer::add(Self, Self) -> Self
+pub fn SignalwindowhammingBuffer::copy(Self) -> Self
+pub fn SignalwindowhammingBuffer::fill(Self, Double) -> Self
+pub fn SignalwindowhammingBuffer::get(Self, Int32) -> Double
+pub fn SignalwindowhammingBuffer::len(Self) -> Int32
+pub fn SignalwindowhammingBuffer::max(Self) -> Double
+pub fn SignalwindowhammingBuffer::mean(Self) -> Double
+pub fn SignalwindowhammingBuffer::min(Self) -> Double
+pub fn SignalwindowhammingBuffer::scale(Self, Double) -> Self
+pub fn SignalwindowhammingBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhammingBuffer::sum(Self) -> Double
+pub fn SignalwindowhammingBuffer::to_string(Self) -> String
+
+pub(all) struct SignalwindowhammingCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhammingCluster::add(Self, Self) -> Self
+pub fn SignalwindowhammingCluster::copy(Self) -> Self
+pub fn SignalwindowhammingCluster::fill(Self, Double) -> Self
+pub fn SignalwindowhammingCluster::get(Self, Int32) -> Double
+pub fn SignalwindowhammingCluster::len(Self) -> Int32
+pub fn SignalwindowhammingCluster::max(Self) -> Double
+pub fn SignalwindowhammingCluster::mean(Self) -> Double
+pub fn SignalwindowhammingCluster::min(Self) -> Double
+pub fn SignalwindowhammingCluster::scale(Self, Double) -> Self
+pub fn SignalwindowhammingCluster::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhammingCluster::sum(Self) -> Double
+pub fn SignalwindowhammingCluster::to_string(Self) -> String
+
+pub(all) struct SignalwindowhammingCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhammingCursor::add(Self, Self) -> Self
+pub fn SignalwindowhammingCursor::copy(Self) -> Self
+pub fn SignalwindowhammingCursor::fill(Self, Double) -> Self
+pub fn SignalwindowhammingCursor::get(Self, Int32) -> Double
+pub fn SignalwindowhammingCursor::len(Self) -> Int32
+pub fn SignalwindowhammingCursor::max(Self) -> Double
+pub fn SignalwindowhammingCursor::mean(Self) -> Double
+pub fn SignalwindowhammingCursor::min(Self) -> Double
+pub fn SignalwindowhammingCursor::scale(Self, Double) -> Self
+pub fn SignalwindowhammingCursor::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhammingCursor::sum(Self) -> Double
+pub fn SignalwindowhammingCursor::to_string(Self) -> String
+
+pub(all) struct SignalwindowhammingEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhammingEdge::add(Self, Self) -> Self
+pub fn SignalwindowhammingEdge::copy(Self) -> Self
+pub fn SignalwindowhammingEdge::fill(Self, Double) -> Self
+pub fn SignalwindowhammingEdge::get(Self, Int32) -> Double
+pub fn SignalwindowhammingEdge::len(Self) -> Int32
+pub fn SignalwindowhammingEdge::max(Self) -> Double
+pub fn SignalwindowhammingEdge::mean(Self) -> Double
+pub fn SignalwindowhammingEdge::min(Self) -> Double
+pub fn SignalwindowhammingEdge::scale(Self, Double) -> Self
+pub fn SignalwindowhammingEdge::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhammingEdge::sum(Self) -> Double
+pub fn SignalwindowhammingEdge::to_string(Self) -> String
+
+pub(all) struct SignalwindowhammingFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhammingFrame::add(Self, Self) -> Self
+pub fn SignalwindowhammingFrame::copy(Self) -> Self
+pub fn SignalwindowhammingFrame::fill(Self, Double) -> Self
+pub fn SignalwindowhammingFrame::get(Self, Int32) -> Double
+pub fn SignalwindowhammingFrame::len(Self) -> Int32
+pub fn SignalwindowhammingFrame::max(Self) -> Double
+pub fn SignalwindowhammingFrame::mean(Self) -> Double
+pub fn SignalwindowhammingFrame::min(Self) -> Double
+pub fn SignalwindowhammingFrame::scale(Self, Double) -> Self
+pub fn SignalwindowhammingFrame::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhammingFrame::sum(Self) -> Double
+pub fn SignalwindowhammingFrame::to_string(Self) -> String
+
+pub(all) struct SignalwindowhammingGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhammingGraphN::add(Self, Self) -> Self
+pub fn SignalwindowhammingGraphN::copy(Self) -> Self
+pub fn SignalwindowhammingGraphN::fill(Self, Double) -> Self
+pub fn SignalwindowhammingGraphN::get(Self, Int32) -> Double
+pub fn SignalwindowhammingGraphN::len(Self) -> Int32
+pub fn SignalwindowhammingGraphN::max(Self) -> Double
+pub fn SignalwindowhammingGraphN::mean(Self) -> Double
+pub fn SignalwindowhammingGraphN::min(Self) -> Double
+pub fn SignalwindowhammingGraphN::scale(Self, Double) -> Self
+pub fn SignalwindowhammingGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhammingGraphN::sum(Self) -> Double
+pub fn SignalwindowhammingGraphN::to_string(Self) -> String
+
+pub(all) struct SignalwindowhammingLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhammingLayer::add(Self, Self) -> Self
+pub fn SignalwindowhammingLayer::copy(Self) -> Self
+pub fn SignalwindowhammingLayer::fill(Self, Double) -> Self
+pub fn SignalwindowhammingLayer::get(Self, Int32) -> Double
+pub fn SignalwindowhammingLayer::len(Self) -> Int32
+pub fn SignalwindowhammingLayer::max(Self) -> Double
+pub fn SignalwindowhammingLayer::mean(Self) -> Double
+pub fn SignalwindowhammingLayer::min(Self) -> Double
+pub fn SignalwindowhammingLayer::scale(Self, Double) -> Self
+pub fn SignalwindowhammingLayer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhammingLayer::sum(Self) -> Double
+pub fn SignalwindowhammingLayer::to_string(Self) -> String
+
+pub(all) struct SignalwindowhammingMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalwindowhammingMatrix::add(Self, Self) -> Self
+pub fn SignalwindowhammingMatrix::det(Self) -> Double
+pub fn SignalwindowhammingMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalwindowhammingMatrix::multiply(Self, Self) -> Self
+pub fn SignalwindowhammingMatrix::norm(Self) -> Double
+pub fn SignalwindowhammingMatrix::scale(Self, Double) -> Self
+pub fn SignalwindowhammingMatrix::to_string(Self) -> String
+pub fn SignalwindowhammingMatrix::trace(Self) -> Double
+pub fn SignalwindowhammingMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalwindowhammingModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhammingModel::add(Self, Self) -> Self
+pub fn SignalwindowhammingModel::copy(Self) -> Self
+pub fn SignalwindowhammingModel::fill(Self, Double) -> Self
+pub fn SignalwindowhammingModel::get(Self, Int32) -> Double
+pub fn SignalwindowhammingModel::len(Self) -> Int32
+pub fn SignalwindowhammingModel::max(Self) -> Double
+pub fn SignalwindowhammingModel::mean(Self) -> Double
+pub fn SignalwindowhammingModel::min(Self) -> Double
+pub fn SignalwindowhammingModel::scale(Self, Double) -> Self
+pub fn SignalwindowhammingModel::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhammingModel::sum(Self) -> Double
+pub fn SignalwindowhammingModel::to_string(Self) -> String
+
+pub(all) struct SignalwindowhammingNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhammingNode::add(Self, Self) -> Self
+pub fn SignalwindowhammingNode::copy(Self) -> Self
+pub fn SignalwindowhammingNode::fill(Self, Double) -> Self
+pub fn SignalwindowhammingNode::get(Self, Int32) -> Double
+pub fn SignalwindowhammingNode::len(Self) -> Int32
+pub fn SignalwindowhammingNode::max(Self) -> Double
+pub fn SignalwindowhammingNode::mean(Self) -> Double
+pub fn SignalwindowhammingNode::min(Self) -> Double
+pub fn SignalwindowhammingNode::scale(Self, Double) -> Self
+pub fn SignalwindowhammingNode::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhammingNode::sum(Self) -> Double
+pub fn SignalwindowhammingNode::to_string(Self) -> String
+
+pub(all) struct SignalwindowhammingPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhammingPath::add(Self, Self) -> Self
+pub fn SignalwindowhammingPath::copy(Self) -> Self
+pub fn SignalwindowhammingPath::fill(Self, Double) -> Self
+pub fn SignalwindowhammingPath::get(Self, Int32) -> Double
+pub fn SignalwindowhammingPath::len(Self) -> Int32
+pub fn SignalwindowhammingPath::max(Self) -> Double
+pub fn SignalwindowhammingPath::mean(Self) -> Double
+pub fn SignalwindowhammingPath::min(Self) -> Double
+pub fn SignalwindowhammingPath::scale(Self, Double) -> Self
+pub fn SignalwindowhammingPath::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhammingPath::sum(Self) -> Double
+pub fn SignalwindowhammingPath::to_string(Self) -> String
+
+pub(all) struct SignalwindowhammingPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalwindowhammingPoint::add(Self, Self) -> Self
+pub fn SignalwindowhammingPoint::cross(Self, Self) -> Self
+pub fn SignalwindowhammingPoint::dist(Self, Self) -> Double
+pub fn SignalwindowhammingPoint::dot(Self, Self) -> Double
+pub fn SignalwindowhammingPoint::label(Self) -> Int32
+pub fn SignalwindowhammingPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalwindowhammingPoint::mid(Self, Self) -> Self
+pub fn SignalwindowhammingPoint::negate(Self) -> Self
+pub fn SignalwindowhammingPoint::norm(Self) -> Double
+pub fn SignalwindowhammingPoint::normalize(Self) -> Self
+pub fn SignalwindowhammingPoint::scale(Self, Double) -> Self
+pub fn SignalwindowhammingPoint::sub(Self, Self) -> Self
+pub fn SignalwindowhammingPoint::to_string(Self) -> String
+pub fn SignalwindowhammingPoint::x(Self) -> Double
+pub fn SignalwindowhammingPoint::y(Self) -> Double
+pub fn SignalwindowhammingPoint::z(Self) -> Double
+
+pub(all) struct SignalwindowhammingRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhammingRange::add(Self, Self) -> Self
+pub fn SignalwindowhammingRange::copy(Self) -> Self
+pub fn SignalwindowhammingRange::fill(Self, Double) -> Self
+pub fn SignalwindowhammingRange::get(Self, Int32) -> Double
+pub fn SignalwindowhammingRange::len(Self) -> Int32
+pub fn SignalwindowhammingRange::max(Self) -> Double
+pub fn SignalwindowhammingRange::mean(Self) -> Double
+pub fn SignalwindowhammingRange::min(Self) -> Double
+pub fn SignalwindowhammingRange::scale(Self, Double) -> Self
+pub fn SignalwindowhammingRange::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhammingRange::sum(Self) -> Double
+pub fn SignalwindowhammingRange::to_string(Self) -> String
+
+pub(all) struct SignalwindowhammingSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalwindowhammingSeries::add(Self, Self) -> Self
+pub fn SignalwindowhammingSeries::cumsum(Self) -> Self
+pub fn SignalwindowhammingSeries::len(Self) -> Int32
+pub fn SignalwindowhammingSeries::max(Self) -> Double
+pub fn SignalwindowhammingSeries::mean(Self) -> Double
+pub fn SignalwindowhammingSeries::median(Self) -> Double
+pub fn SignalwindowhammingSeries::min(Self) -> Double
+pub fn SignalwindowhammingSeries::normalize(Self) -> Self
+pub fn SignalwindowhammingSeries::range(Self) -> Double
+pub fn SignalwindowhammingSeries::scale(Self, Double) -> Self
+pub fn SignalwindowhammingSeries::std(Self) -> Double
+pub fn SignalwindowhammingSeries::sub(Self, Self) -> Self
+pub fn SignalwindowhammingSeries::sum(Self) -> Double
+pub fn SignalwindowhammingSeries::to_string(Self) -> String
+pub fn SignalwindowhammingSeries::variance(Self) -> Double
+
+pub(all) struct SignalwindowhammingSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhammingSlice::add(Self, Self) -> Self
+pub fn SignalwindowhammingSlice::copy(Self) -> Self
+pub fn SignalwindowhammingSlice::fill(Self, Double) -> Self
+pub fn SignalwindowhammingSlice::get(Self, Int32) -> Double
+pub fn SignalwindowhammingSlice::len(Self) -> Int32
+pub fn SignalwindowhammingSlice::max(Self) -> Double
+pub fn SignalwindowhammingSlice::mean(Self) -> Double
+pub fn SignalwindowhammingSlice::min(Self) -> Double
+pub fn SignalwindowhammingSlice::scale(Self, Double) -> Self
+pub fn SignalwindowhammingSlice::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhammingSlice::sum(Self) -> Double
+pub fn SignalwindowhammingSlice::to_string(Self) -> String
+
+pub(all) struct SignalwindowhammingTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhammingTable::add(Self, Self) -> Self
+pub fn SignalwindowhammingTable::copy(Self) -> Self
+pub fn SignalwindowhammingTable::fill(Self, Double) -> Self
+pub fn SignalwindowhammingTable::get(Self, Int32) -> Double
+pub fn SignalwindowhammingTable::len(Self) -> Int32
+pub fn SignalwindowhammingTable::max(Self) -> Double
+pub fn SignalwindowhammingTable::mean(Self) -> Double
+pub fn SignalwindowhammingTable::min(Self) -> Double
+pub fn SignalwindowhammingTable::scale(Self, Double) -> Self
+pub fn SignalwindowhammingTable::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhammingTable::sum(Self) -> Double
+pub fn SignalwindowhammingTable::to_string(Self) -> String
+
+pub(all) struct SignalwindowhammingVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalwindowhammingVector::add(Self, Self) -> Self
+pub fn SignalwindowhammingVector::dist(Self, Self) -> Double
+pub fn SignalwindowhammingVector::dot(Self, Self) -> Double
+pub fn SignalwindowhammingVector::norm(Self) -> Double
+pub fn SignalwindowhammingVector::normalize(Self) -> Self
+pub fn SignalwindowhammingVector::scale(Self, Double) -> Self
+pub fn SignalwindowhammingVector::sub(Self, Self) -> Self
+pub fn SignalwindowhammingVector::to_string(Self) -> String
+
+pub(all) struct SignalwindowhammingView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowhammingView::add(Self, Self) -> Self
+pub fn SignalwindowhammingView::copy(Self) -> Self
+pub fn SignalwindowhammingView::fill(Self, Double) -> Self
+pub fn SignalwindowhammingView::get(Self, Int32) -> Double
+pub fn SignalwindowhammingView::len(Self) -> Int32
+pub fn SignalwindowhammingView::max(Self) -> Double
+pub fn SignalwindowhammingView::mean(Self) -> Double
+pub fn SignalwindowhammingView::min(Self) -> Double
+pub fn SignalwindowhammingView::scale(Self, Double) -> Self
+pub fn SignalwindowhammingView::set(Self, Int32, Double) -> Self
+pub fn SignalwindowhammingView::sum(Self) -> Double
+pub fn SignalwindowhammingView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

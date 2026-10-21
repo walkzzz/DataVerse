@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_color_welsh"
+
+// Values
+pub fn graph_color_welsh_buffer_make(Int32) -> GraphcolorwelshBuffer
+
+pub fn graph_color_welsh_cluster_make(Int32) -> GraphcolorwelshCluster
+
+pub fn graph_color_welsh_cursor_make(Int32) -> GraphcolorwelshCursor
+
+pub fn graph_color_welsh_edge_make(Int32) -> GraphcolorwelshEdge
+
+pub fn graph_color_welsh_frame_make(Int32) -> GraphcolorwelshFrame
+
+pub fn graph_color_welsh_graphn_make(Int32) -> GraphcolorwelshGraphN
+
+pub fn graph_color_welsh_layer_make(Int32) -> GraphcolorwelshLayer
+
+pub fn graph_color_welsh_make_matrix(Int32, Int32, Double) -> GraphcolorwelshMatrix
+
+pub fn graph_color_welsh_make_point(Double, Double) -> GraphcolorwelshPoint
+
+pub fn graph_color_welsh_make_point3(Double, Double, Double) -> GraphcolorwelshPoint
+
+pub fn graph_color_welsh_make_series(Array[Double], String) -> GraphcolorwelshSeries
+
+pub fn graph_color_welsh_make_vector(Array[Double]) -> GraphcolorwelshVector
+
+pub fn graph_color_welsh_matrix_identity(Int32) -> GraphcolorwelshMatrix
+
+pub fn graph_color_welsh_model_make(Int32) -> GraphcolorwelshModel
+
+pub fn graph_color_welsh_node_make(Int32) -> GraphcolorwelshNode
+
+pub fn graph_color_welsh_path_make(Int32) -> GraphcolorwelshPath
+
+pub fn graph_color_welsh_range_make(Int32) -> GraphcolorwelshRange
+
+pub fn graph_color_welsh_slice_make(Int32) -> GraphcolorwelshSlice
+
+pub fn graph_color_welsh_table_make(Int32) -> GraphcolorwelshTable
+
+pub fn graph_color_welsh_vector_zero(Int32) -> GraphcolorwelshVector
+
+pub fn graph_color_welsh_view_make(Int32) -> GraphcolorwelshView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphcolorwelshBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorwelshBuffer::add(Self, Self) -> Self
+pub fn GraphcolorwelshBuffer::copy(Self) -> Self
+pub fn GraphcolorwelshBuffer::fill(Self, Double) -> Self
+pub fn GraphcolorwelshBuffer::get(Self, Int32) -> Double
+pub fn GraphcolorwelshBuffer::len(Self) -> Int32
+pub fn GraphcolorwelshBuffer::max(Self) -> Double
+pub fn GraphcolorwelshBuffer::mean(Self) -> Double
+pub fn GraphcolorwelshBuffer::min(Self) -> Double
+pub fn GraphcolorwelshBuffer::scale(Self, Double) -> Self
+pub fn GraphcolorwelshBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphcolorwelshBuffer::sum(Self) -> Double
+pub fn GraphcolorwelshBuffer::to_string(Self) -> String
+
+pub(all) struct GraphcolorwelshCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorwelshCluster::add(Self, Self) -> Self
+pub fn GraphcolorwelshCluster::copy(Self) -> Self
+pub fn GraphcolorwelshCluster::fill(Self, Double) -> Self
+pub fn GraphcolorwelshCluster::get(Self, Int32) -> Double
+pub fn GraphcolorwelshCluster::len(Self) -> Int32
+pub fn GraphcolorwelshCluster::max(Self) -> Double
+pub fn GraphcolorwelshCluster::mean(Self) -> Double
+pub fn GraphcolorwelshCluster::min(Self) -> Double
+pub fn GraphcolorwelshCluster::scale(Self, Double) -> Self
+pub fn GraphcolorwelshCluster::set(Self, Int32, Double) -> Self
+pub fn GraphcolorwelshCluster::sum(Self) -> Double
+pub fn GraphcolorwelshCluster::to_string(Self) -> String
+
+pub(all) struct GraphcolorwelshCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorwelshCursor::add(Self, Self) -> Self
+pub fn GraphcolorwelshCursor::copy(Self) -> Self
+pub fn GraphcolorwelshCursor::fill(Self, Double) -> Self
+pub fn GraphcolorwelshCursor::get(Self, Int32) -> Double
+pub fn GraphcolorwelshCursor::len(Self) -> Int32
+pub fn GraphcolorwelshCursor::max(Self) -> Double
+pub fn GraphcolorwelshCursor::mean(Self) -> Double
+pub fn GraphcolorwelshCursor::min(Self) -> Double
+pub fn GraphcolorwelshCursor::scale(Self, Double) -> Self
+pub fn GraphcolorwelshCursor::set(Self, Int32, Double) -> Self
+pub fn GraphcolorwelshCursor::sum(Self) -> Double
+pub fn GraphcolorwelshCursor::to_string(Self) -> String
+
+pub(all) struct GraphcolorwelshEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorwelshEdge::add(Self, Self) -> Self
+pub fn GraphcolorwelshEdge::copy(Self) -> Self
+pub fn GraphcolorwelshEdge::fill(Self, Double) -> Self
+pub fn GraphcolorwelshEdge::get(Self, Int32) -> Double
+pub fn GraphcolorwelshEdge::len(Self) -> Int32
+pub fn GraphcolorwelshEdge::max(Self) -> Double
+pub fn GraphcolorwelshEdge::mean(Self) -> Double
+pub fn GraphcolorwelshEdge::min(Self) -> Double
+pub fn GraphcolorwelshEdge::scale(Self, Double) -> Self
+pub fn GraphcolorwelshEdge::set(Self, Int32, Double) -> Self
+pub fn GraphcolorwelshEdge::sum(Self) -> Double
+pub fn GraphcolorwelshEdge::to_string(Self) -> String
+
+pub(all) struct GraphcolorwelshFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorwelshFrame::add(Self, Self) -> Self
+pub fn GraphcolorwelshFrame::copy(Self) -> Self
+pub fn GraphcolorwelshFrame::fill(Self, Double) -> Self
+pub fn GraphcolorwelshFrame::get(Self, Int32) -> Double
+pub fn GraphcolorwelshFrame::len(Self) -> Int32
+pub fn GraphcolorwelshFrame::max(Self) -> Double
+pub fn GraphcolorwelshFrame::mean(Self) -> Double
+pub fn GraphcolorwelshFrame::min(Self) -> Double
+pub fn GraphcolorwelshFrame::scale(Self, Double) -> Self
+pub fn GraphcolorwelshFrame::set(Self, Int32, Double) -> Self
+pub fn GraphcolorwelshFrame::sum(Self) -> Double
+pub fn GraphcolorwelshFrame::to_string(Self) -> String
+
+pub(all) struct GraphcolorwelshGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorwelshGraphN::add(Self, Self) -> Self
+pub fn GraphcolorwelshGraphN::copy(Self) -> Self
+pub fn GraphcolorwelshGraphN::fill(Self, Double) -> Self
+pub fn GraphcolorwelshGraphN::get(Self, Int32) -> Double
+pub fn GraphcolorwelshGraphN::len(Self) -> Int32
+pub fn GraphcolorwelshGraphN::max(Self) -> Double
+pub fn GraphcolorwelshGraphN::mean(Self) -> Double
+pub fn GraphcolorwelshGraphN::min(Self) -> Double
+pub fn GraphcolorwelshGraphN::scale(Self, Double) -> Self
+pub fn GraphcolorwelshGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphcolorwelshGraphN::sum(Self) -> Double
+pub fn GraphcolorwelshGraphN::to_string(Self) -> String
+
+pub(all) struct GraphcolorwelshLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorwelshLayer::add(Self, Self) -> Self
+pub fn GraphcolorwelshLayer::copy(Self) -> Self
+pub fn GraphcolorwelshLayer::fill(Self, Double) -> Self
+pub fn GraphcolorwelshLayer::get(Self, Int32) -> Double
+pub fn GraphcolorwelshLayer::len(Self) -> Int32
+pub fn GraphcolorwelshLayer::max(Self) -> Double
+pub fn GraphcolorwelshLayer::mean(Self) -> Double
+pub fn GraphcolorwelshLayer::min(Self) -> Double
+pub fn GraphcolorwelshLayer::scale(Self, Double) -> Self
+pub fn GraphcolorwelshLayer::set(Self, Int32, Double) -> Self
+pub fn GraphcolorwelshLayer::sum(Self) -> Double
+pub fn GraphcolorwelshLayer::to_string(Self) -> String
+
+pub(all) struct GraphcolorwelshMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphcolorwelshMatrix::add(Self, Self) -> Self
+pub fn GraphcolorwelshMatrix::det(Self) -> Double
+pub fn GraphcolorwelshMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphcolorwelshMatrix::multiply(Self, Self) -> Self
+pub fn GraphcolorwelshMatrix::norm(Self) -> Double
+pub fn GraphcolorwelshMatrix::scale(Self, Double) -> Self
+pub fn GraphcolorwelshMatrix::to_string(Self) -> String
+pub fn GraphcolorwelshMatrix::trace(Self) -> Double
+pub fn GraphcolorwelshMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphcolorwelshModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorwelshModel::add(Self, Self) -> Self
+pub fn GraphcolorwelshModel::copy(Self) -> Self
+pub fn GraphcolorwelshModel::fill(Self, Double) -> Self
+pub fn GraphcolorwelshModel::get(Self, Int32) -> Double
+pub fn GraphcolorwelshModel::len(Self) -> Int32
+pub fn GraphcolorwelshModel::max(Self) -> Double
+pub fn GraphcolorwelshModel::mean(Self) -> Double
+pub fn GraphcolorwelshModel::min(Self) -> Double
+pub fn GraphcolorwelshModel::scale(Self, Double) -> Self
+pub fn GraphcolorwelshModel::set(Self, Int32, Double) -> Self
+pub fn GraphcolorwelshModel::sum(Self) -> Double
+pub fn GraphcolorwelshModel::to_string(Self) -> String
+
+pub(all) struct GraphcolorwelshNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorwelshNode::add(Self, Self) -> Self
+pub fn GraphcolorwelshNode::copy(Self) -> Self
+pub fn GraphcolorwelshNode::fill(Self, Double) -> Self
+pub fn GraphcolorwelshNode::get(Self, Int32) -> Double
+pub fn GraphcolorwelshNode::len(Self) -> Int32
+pub fn GraphcolorwelshNode::max(Self) -> Double
+pub fn GraphcolorwelshNode::mean(Self) -> Double
+pub fn GraphcolorwelshNode::min(Self) -> Double
+pub fn GraphcolorwelshNode::scale(Self, Double) -> Self
+pub fn GraphcolorwelshNode::set(Self, Int32, Double) -> Self
+pub fn GraphcolorwelshNode::sum(Self) -> Double
+pub fn GraphcolorwelshNode::to_string(Self) -> String
+
+pub(all) struct GraphcolorwelshPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorwelshPath::add(Self, Self) -> Self
+pub fn GraphcolorwelshPath::copy(Self) -> Self
+pub fn GraphcolorwelshPath::fill(Self, Double) -> Self
+pub fn GraphcolorwelshPath::get(Self, Int32) -> Double
+pub fn GraphcolorwelshPath::len(Self) -> Int32
+pub fn GraphcolorwelshPath::max(Self) -> Double
+pub fn GraphcolorwelshPath::mean(Self) -> Double
+pub fn GraphcolorwelshPath::min(Self) -> Double
+pub fn GraphcolorwelshPath::scale(Self, Double) -> Self
+pub fn GraphcolorwelshPath::set(Self, Int32, Double) -> Self
+pub fn GraphcolorwelshPath::sum(Self) -> Double
+pub fn GraphcolorwelshPath::to_string(Self) -> String
+
+pub(all) struct GraphcolorwelshPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphcolorwelshPoint::add(Self, Self) -> Self
+pub fn GraphcolorwelshPoint::cross(Self, Self) -> Self
+pub fn GraphcolorwelshPoint::dist(Self, Self) -> Double
+pub fn GraphcolorwelshPoint::dot(Self, Self) -> Double
+pub fn GraphcolorwelshPoint::label(Self) -> Int32
+pub fn GraphcolorwelshPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphcolorwelshPoint::mid(Self, Self) -> Self
+pub fn GraphcolorwelshPoint::negate(Self) -> Self
+pub fn GraphcolorwelshPoint::norm(Self) -> Double
+pub fn GraphcolorwelshPoint::normalize(Self) -> Self
+pub fn GraphcolorwelshPoint::scale(Self, Double) -> Self
+pub fn GraphcolorwelshPoint::sub(Self, Self) -> Self
+pub fn GraphcolorwelshPoint::to_string(Self) -> String
+pub fn GraphcolorwelshPoint::x(Self) -> Double
+pub fn GraphcolorwelshPoint::y(Self) -> Double
+pub fn GraphcolorwelshPoint::z(Self) -> Double
+
+pub(all) struct GraphcolorwelshRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorwelshRange::add(Self, Self) -> Self
+pub fn GraphcolorwelshRange::copy(Self) -> Self
+pub fn GraphcolorwelshRange::fill(Self, Double) -> Self
+pub fn GraphcolorwelshRange::get(Self, Int32) -> Double
+pub fn GraphcolorwelshRange::len(Self) -> Int32
+pub fn GraphcolorwelshRange::max(Self) -> Double
+pub fn GraphcolorwelshRange::mean(Self) -> Double
+pub fn GraphcolorwelshRange::min(Self) -> Double
+pub fn GraphcolorwelshRange::scale(Self, Double) -> Self
+pub fn GraphcolorwelshRange::set(Self, Int32, Double) -> Self
+pub fn GraphcolorwelshRange::sum(Self) -> Double
+pub fn GraphcolorwelshRange::to_string(Self) -> String
+
+pub(all) struct GraphcolorwelshSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphcolorwelshSeries::add(Self, Self) -> Self
+pub fn GraphcolorwelshSeries::cumsum(Self) -> Self
+pub fn GraphcolorwelshSeries::len(Self) -> Int32
+pub fn GraphcolorwelshSeries::max(Self) -> Double
+pub fn GraphcolorwelshSeries::mean(Self) -> Double
+pub fn GraphcolorwelshSeries::median(Self) -> Double
+pub fn GraphcolorwelshSeries::min(Self) -> Double
+pub fn GraphcolorwelshSeries::normalize(Self) -> Self
+pub fn GraphcolorwelshSeries::range(Self) -> Double
+pub fn GraphcolorwelshSeries::scale(Self, Double) -> Self
+pub fn GraphcolorwelshSeries::std(Self) -> Double
+pub fn GraphcolorwelshSeries::sub(Self, Self) -> Self
+pub fn GraphcolorwelshSeries::sum(Self) -> Double
+pub fn GraphcolorwelshSeries::to_string(Self) -> String
+pub fn GraphcolorwelshSeries::variance(Self) -> Double
+
+pub(all) struct GraphcolorwelshSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorwelshSlice::add(Self, Self) -> Self
+pub fn GraphcolorwelshSlice::copy(Self) -> Self
+pub fn GraphcolorwelshSlice::fill(Self, Double) -> Self
+pub fn GraphcolorwelshSlice::get(Self, Int32) -> Double
+pub fn GraphcolorwelshSlice::len(Self) -> Int32
+pub fn GraphcolorwelshSlice::max(Self) -> Double
+pub fn GraphcolorwelshSlice::mean(Self) -> Double
+pub fn GraphcolorwelshSlice::min(Self) -> Double
+pub fn GraphcolorwelshSlice::scale(Self, Double) -> Self
+pub fn GraphcolorwelshSlice::set(Self, Int32, Double) -> Self
+pub fn GraphcolorwelshSlice::sum(Self) -> Double
+pub fn GraphcolorwelshSlice::to_string(Self) -> String
+
+pub(all) struct GraphcolorwelshTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorwelshTable::add(Self, Self) -> Self
+pub fn GraphcolorwelshTable::copy(Self) -> Self
+pub fn GraphcolorwelshTable::fill(Self, Double) -> Self
+pub fn GraphcolorwelshTable::get(Self, Int32) -> Double
+pub fn GraphcolorwelshTable::len(Self) -> Int32
+pub fn GraphcolorwelshTable::max(Self) -> Double
+pub fn GraphcolorwelshTable::mean(Self) -> Double
+pub fn GraphcolorwelshTable::min(Self) -> Double
+pub fn GraphcolorwelshTable::scale(Self, Double) -> Self
+pub fn GraphcolorwelshTable::set(Self, Int32, Double) -> Self
+pub fn GraphcolorwelshTable::sum(Self) -> Double
+pub fn GraphcolorwelshTable::to_string(Self) -> String
+
+pub(all) struct GraphcolorwelshVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphcolorwelshVector::add(Self, Self) -> Self
+pub fn GraphcolorwelshVector::dist(Self, Self) -> Double
+pub fn GraphcolorwelshVector::dot(Self, Self) -> Double
+pub fn GraphcolorwelshVector::norm(Self) -> Double
+pub fn GraphcolorwelshVector::normalize(Self) -> Self
+pub fn GraphcolorwelshVector::scale(Self, Double) -> Self
+pub fn GraphcolorwelshVector::sub(Self, Self) -> Self
+pub fn GraphcolorwelshVector::to_string(Self) -> String
+
+pub(all) struct GraphcolorwelshView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphcolorwelshView::add(Self, Self) -> Self
+pub fn GraphcolorwelshView::copy(Self) -> Self
+pub fn GraphcolorwelshView::fill(Self, Double) -> Self
+pub fn GraphcolorwelshView::get(Self, Int32) -> Double
+pub fn GraphcolorwelshView::len(Self) -> Int32
+pub fn GraphcolorwelshView::max(Self) -> Double
+pub fn GraphcolorwelshView::mean(Self) -> Double
+pub fn GraphcolorwelshView::min(Self) -> Double
+pub fn GraphcolorwelshView::scale(Self, Double) -> Self
+pub fn GraphcolorwelshView::set(Self, Int32, Double) -> Self
+pub fn GraphcolorwelshView::sum(Self) -> Double
+pub fn GraphcolorwelshView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

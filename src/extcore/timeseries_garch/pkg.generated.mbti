@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_garch"
+
+// Values
+pub fn timeseries_garch_buffer_make(Int32) -> TimeseriesgarchBuffer
+
+pub fn timeseries_garch_cluster_make(Int32) -> TimeseriesgarchCluster
+
+pub fn timeseries_garch_cursor_make(Int32) -> TimeseriesgarchCursor
+
+pub fn timeseries_garch_edge_make(Int32) -> TimeseriesgarchEdge
+
+pub fn timeseries_garch_frame_make(Int32) -> TimeseriesgarchFrame
+
+pub fn timeseries_garch_graphn_make(Int32) -> TimeseriesgarchGraphN
+
+pub fn timeseries_garch_layer_make(Int32) -> TimeseriesgarchLayer
+
+pub fn timeseries_garch_make_matrix(Int32, Int32, Double) -> TimeseriesgarchMatrix
+
+pub fn timeseries_garch_make_point(Double, Double) -> TimeseriesgarchPoint
+
+pub fn timeseries_garch_make_point3(Double, Double, Double) -> TimeseriesgarchPoint
+
+pub fn timeseries_garch_make_series(Array[Double], String) -> TimeseriesgarchSeries
+
+pub fn timeseries_garch_make_vector(Array[Double]) -> TimeseriesgarchVector
+
+pub fn timeseries_garch_matrix_identity(Int32) -> TimeseriesgarchMatrix
+
+pub fn timeseries_garch_model_make(Int32) -> TimeseriesgarchModel
+
+pub fn timeseries_garch_node_make(Int32) -> TimeseriesgarchNode
+
+pub fn timeseries_garch_path_make(Int32) -> TimeseriesgarchPath
+
+pub fn timeseries_garch_range_make(Int32) -> TimeseriesgarchRange
+
+pub fn timeseries_garch_slice_make(Int32) -> TimeseriesgarchSlice
+
+pub fn timeseries_garch_table_make(Int32) -> TimeseriesgarchTable
+
+pub fn timeseries_garch_vector_zero(Int32) -> TimeseriesgarchVector
+
+pub fn timeseries_garch_view_make(Int32) -> TimeseriesgarchView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriesgarchBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesgarchBuffer::add(Self, Self) -> Self
+pub fn TimeseriesgarchBuffer::copy(Self) -> Self
+pub fn TimeseriesgarchBuffer::fill(Self, Double) -> Self
+pub fn TimeseriesgarchBuffer::get(Self, Int32) -> Double
+pub fn TimeseriesgarchBuffer::len(Self) -> Int32
+pub fn TimeseriesgarchBuffer::max(Self) -> Double
+pub fn TimeseriesgarchBuffer::mean(Self) -> Double
+pub fn TimeseriesgarchBuffer::min(Self) -> Double
+pub fn TimeseriesgarchBuffer::scale(Self, Double) -> Self
+pub fn TimeseriesgarchBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesgarchBuffer::sum(Self) -> Double
+pub fn TimeseriesgarchBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriesgarchCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesgarchCluster::add(Self, Self) -> Self
+pub fn TimeseriesgarchCluster::copy(Self) -> Self
+pub fn TimeseriesgarchCluster::fill(Self, Double) -> Self
+pub fn TimeseriesgarchCluster::get(Self, Int32) -> Double
+pub fn TimeseriesgarchCluster::len(Self) -> Int32
+pub fn TimeseriesgarchCluster::max(Self) -> Double
+pub fn TimeseriesgarchCluster::mean(Self) -> Double
+pub fn TimeseriesgarchCluster::min(Self) -> Double
+pub fn TimeseriesgarchCluster::scale(Self, Double) -> Self
+pub fn TimeseriesgarchCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriesgarchCluster::sum(Self) -> Double
+pub fn TimeseriesgarchCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriesgarchCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesgarchCursor::add(Self, Self) -> Self
+pub fn TimeseriesgarchCursor::copy(Self) -> Self
+pub fn TimeseriesgarchCursor::fill(Self, Double) -> Self
+pub fn TimeseriesgarchCursor::get(Self, Int32) -> Double
+pub fn TimeseriesgarchCursor::len(Self) -> Int32
+pub fn TimeseriesgarchCursor::max(Self) -> Double
+pub fn TimeseriesgarchCursor::mean(Self) -> Double
+pub fn TimeseriesgarchCursor::min(Self) -> Double
+pub fn TimeseriesgarchCursor::scale(Self, Double) -> Self
+pub fn TimeseriesgarchCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriesgarchCursor::sum(Self) -> Double
+pub fn TimeseriesgarchCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriesgarchEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesgarchEdge::add(Self, Self) -> Self
+pub fn TimeseriesgarchEdge::copy(Self) -> Self
+pub fn TimeseriesgarchEdge::fill(Self, Double) -> Self
+pub fn TimeseriesgarchEdge::get(Self, Int32) -> Double
+pub fn TimeseriesgarchEdge::len(Self) -> Int32
+pub fn TimeseriesgarchEdge::max(Self) -> Double
+pub fn TimeseriesgarchEdge::mean(Self) -> Double
+pub fn TimeseriesgarchEdge::min(Self) -> Double
+pub fn TimeseriesgarchEdge::scale(Self, Double) -> Self
+pub fn TimeseriesgarchEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriesgarchEdge::sum(Self) -> Double
+pub fn TimeseriesgarchEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriesgarchFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesgarchFrame::add(Self, Self) -> Self
+pub fn TimeseriesgarchFrame::copy(Self) -> Self
+pub fn TimeseriesgarchFrame::fill(Self, Double) -> Self
+pub fn TimeseriesgarchFrame::get(Self, Int32) -> Double
+pub fn TimeseriesgarchFrame::len(Self) -> Int32
+pub fn TimeseriesgarchFrame::max(Self) -> Double
+pub fn TimeseriesgarchFrame::mean(Self) -> Double
+pub fn TimeseriesgarchFrame::min(Self) -> Double
+pub fn TimeseriesgarchFrame::scale(Self, Double) -> Self
+pub fn TimeseriesgarchFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriesgarchFrame::sum(Self) -> Double
+pub fn TimeseriesgarchFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriesgarchGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesgarchGraphN::add(Self, Self) -> Self
+pub fn TimeseriesgarchGraphN::copy(Self) -> Self
+pub fn TimeseriesgarchGraphN::fill(Self, Double) -> Self
+pub fn TimeseriesgarchGraphN::get(Self, Int32) -> Double
+pub fn TimeseriesgarchGraphN::len(Self) -> Int32
+pub fn TimeseriesgarchGraphN::max(Self) -> Double
+pub fn TimeseriesgarchGraphN::mean(Self) -> Double
+pub fn TimeseriesgarchGraphN::min(Self) -> Double
+pub fn TimeseriesgarchGraphN::scale(Self, Double) -> Self
+pub fn TimeseriesgarchGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriesgarchGraphN::sum(Self) -> Double
+pub fn TimeseriesgarchGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriesgarchLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesgarchLayer::add(Self, Self) -> Self
+pub fn TimeseriesgarchLayer::copy(Self) -> Self
+pub fn TimeseriesgarchLayer::fill(Self, Double) -> Self
+pub fn TimeseriesgarchLayer::get(Self, Int32) -> Double
+pub fn TimeseriesgarchLayer::len(Self) -> Int32
+pub fn TimeseriesgarchLayer::max(Self) -> Double
+pub fn TimeseriesgarchLayer::mean(Self) -> Double
+pub fn TimeseriesgarchLayer::min(Self) -> Double
+pub fn TimeseriesgarchLayer::scale(Self, Double) -> Self
+pub fn TimeseriesgarchLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesgarchLayer::sum(Self) -> Double
+pub fn TimeseriesgarchLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriesgarchMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriesgarchMatrix::add(Self, Self) -> Self
+pub fn TimeseriesgarchMatrix::det(Self) -> Double
+pub fn TimeseriesgarchMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriesgarchMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriesgarchMatrix::norm(Self) -> Double
+pub fn TimeseriesgarchMatrix::scale(Self, Double) -> Self
+pub fn TimeseriesgarchMatrix::to_string(Self) -> String
+pub fn TimeseriesgarchMatrix::trace(Self) -> Double
+pub fn TimeseriesgarchMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriesgarchModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesgarchModel::add(Self, Self) -> Self
+pub fn TimeseriesgarchModel::copy(Self) -> Self
+pub fn TimeseriesgarchModel::fill(Self, Double) -> Self
+pub fn TimeseriesgarchModel::get(Self, Int32) -> Double
+pub fn TimeseriesgarchModel::len(Self) -> Int32
+pub fn TimeseriesgarchModel::max(Self) -> Double
+pub fn TimeseriesgarchModel::mean(Self) -> Double
+pub fn TimeseriesgarchModel::min(Self) -> Double
+pub fn TimeseriesgarchModel::scale(Self, Double) -> Self
+pub fn TimeseriesgarchModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriesgarchModel::sum(Self) -> Double
+pub fn TimeseriesgarchModel::to_string(Self) -> String
+
+pub(all) struct TimeseriesgarchNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesgarchNode::add(Self, Self) -> Self
+pub fn TimeseriesgarchNode::copy(Self) -> Self
+pub fn TimeseriesgarchNode::fill(Self, Double) -> Self
+pub fn TimeseriesgarchNode::get(Self, Int32) -> Double
+pub fn TimeseriesgarchNode::len(Self) -> Int32
+pub fn TimeseriesgarchNode::max(Self) -> Double
+pub fn TimeseriesgarchNode::mean(Self) -> Double
+pub fn TimeseriesgarchNode::min(Self) -> Double
+pub fn TimeseriesgarchNode::scale(Self, Double) -> Self
+pub fn TimeseriesgarchNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriesgarchNode::sum(Self) -> Double
+pub fn TimeseriesgarchNode::to_string(Self) -> String
+
+pub(all) struct TimeseriesgarchPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesgarchPath::add(Self, Self) -> Self
+pub fn TimeseriesgarchPath::copy(Self) -> Self
+pub fn TimeseriesgarchPath::fill(Self, Double) -> Self
+pub fn TimeseriesgarchPath::get(Self, Int32) -> Double
+pub fn TimeseriesgarchPath::len(Self) -> Int32
+pub fn TimeseriesgarchPath::max(Self) -> Double
+pub fn TimeseriesgarchPath::mean(Self) -> Double
+pub fn TimeseriesgarchPath::min(Self) -> Double
+pub fn TimeseriesgarchPath::scale(Self, Double) -> Self
+pub fn TimeseriesgarchPath::set(Self, Int32, Double) -> Self
+pub fn TimeseriesgarchPath::sum(Self) -> Double
+pub fn TimeseriesgarchPath::to_string(Self) -> String
+
+pub(all) struct TimeseriesgarchPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriesgarchPoint::add(Self, Self) -> Self
+pub fn TimeseriesgarchPoint::cross(Self, Self) -> Self
+pub fn TimeseriesgarchPoint::dist(Self, Self) -> Double
+pub fn TimeseriesgarchPoint::dot(Self, Self) -> Double
+pub fn TimeseriesgarchPoint::label(Self) -> Int32
+pub fn TimeseriesgarchPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriesgarchPoint::mid(Self, Self) -> Self
+pub fn TimeseriesgarchPoint::negate(Self) -> Self
+pub fn TimeseriesgarchPoint::norm(Self) -> Double
+pub fn TimeseriesgarchPoint::normalize(Self) -> Self
+pub fn TimeseriesgarchPoint::scale(Self, Double) -> Self
+pub fn TimeseriesgarchPoint::sub(Self, Self) -> Self
+pub fn TimeseriesgarchPoint::to_string(Self) -> String
+pub fn TimeseriesgarchPoint::x(Self) -> Double
+pub fn TimeseriesgarchPoint::y(Self) -> Double
+pub fn TimeseriesgarchPoint::z(Self) -> Double
+
+pub(all) struct TimeseriesgarchRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesgarchRange::add(Self, Self) -> Self
+pub fn TimeseriesgarchRange::copy(Self) -> Self
+pub fn TimeseriesgarchRange::fill(Self, Double) -> Self
+pub fn TimeseriesgarchRange::get(Self, Int32) -> Double
+pub fn TimeseriesgarchRange::len(Self) -> Int32
+pub fn TimeseriesgarchRange::max(Self) -> Double
+pub fn TimeseriesgarchRange::mean(Self) -> Double
+pub fn TimeseriesgarchRange::min(Self) -> Double
+pub fn TimeseriesgarchRange::scale(Self, Double) -> Self
+pub fn TimeseriesgarchRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriesgarchRange::sum(Self) -> Double
+pub fn TimeseriesgarchRange::to_string(Self) -> String
+
+pub(all) struct TimeseriesgarchSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriesgarchSeries::add(Self, Self) -> Self
+pub fn TimeseriesgarchSeries::cumsum(Self) -> Self
+pub fn TimeseriesgarchSeries::len(Self) -> Int32
+pub fn TimeseriesgarchSeries::max(Self) -> Double
+pub fn TimeseriesgarchSeries::mean(Self) -> Double
+pub fn TimeseriesgarchSeries::median(Self) -> Double
+pub fn TimeseriesgarchSeries::min(Self) -> Double
+pub fn TimeseriesgarchSeries::normalize(Self) -> Self
+pub fn TimeseriesgarchSeries::range(Self) -> Double
+pub fn TimeseriesgarchSeries::scale(Self, Double) -> Self
+pub fn TimeseriesgarchSeries::std(Self) -> Double
+pub fn TimeseriesgarchSeries::sub(Self, Self) -> Self
+pub fn TimeseriesgarchSeries::sum(Self) -> Double
+pub fn TimeseriesgarchSeries::to_string(Self) -> String
+pub fn TimeseriesgarchSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriesgarchSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesgarchSlice::add(Self, Self) -> Self
+pub fn TimeseriesgarchSlice::copy(Self) -> Self
+pub fn TimeseriesgarchSlice::fill(Self, Double) -> Self
+pub fn TimeseriesgarchSlice::get(Self, Int32) -> Double
+pub fn TimeseriesgarchSlice::len(Self) -> Int32
+pub fn TimeseriesgarchSlice::max(Self) -> Double
+pub fn TimeseriesgarchSlice::mean(Self) -> Double
+pub fn TimeseriesgarchSlice::min(Self) -> Double
+pub fn TimeseriesgarchSlice::scale(Self, Double) -> Self
+pub fn TimeseriesgarchSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriesgarchSlice::sum(Self) -> Double
+pub fn TimeseriesgarchSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriesgarchTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesgarchTable::add(Self, Self) -> Self
+pub fn TimeseriesgarchTable::copy(Self) -> Self
+pub fn TimeseriesgarchTable::fill(Self, Double) -> Self
+pub fn TimeseriesgarchTable::get(Self, Int32) -> Double
+pub fn TimeseriesgarchTable::len(Self) -> Int32
+pub fn TimeseriesgarchTable::max(Self) -> Double
+pub fn TimeseriesgarchTable::mean(Self) -> Double
+pub fn TimeseriesgarchTable::min(Self) -> Double
+pub fn TimeseriesgarchTable::scale(Self, Double) -> Self
+pub fn TimeseriesgarchTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriesgarchTable::sum(Self) -> Double
+pub fn TimeseriesgarchTable::to_string(Self) -> String
+
+pub(all) struct TimeseriesgarchVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriesgarchVector::add(Self, Self) -> Self
+pub fn TimeseriesgarchVector::dist(Self, Self) -> Double
+pub fn TimeseriesgarchVector::dot(Self, Self) -> Double
+pub fn TimeseriesgarchVector::norm(Self) -> Double
+pub fn TimeseriesgarchVector::normalize(Self) -> Self
+pub fn TimeseriesgarchVector::scale(Self, Double) -> Self
+pub fn TimeseriesgarchVector::sub(Self, Self) -> Self
+pub fn TimeseriesgarchVector::to_string(Self) -> String
+
+pub(all) struct TimeseriesgarchView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesgarchView::add(Self, Self) -> Self
+pub fn TimeseriesgarchView::copy(Self) -> Self
+pub fn TimeseriesgarchView::fill(Self, Double) -> Self
+pub fn TimeseriesgarchView::get(Self, Int32) -> Double
+pub fn TimeseriesgarchView::len(Self) -> Int32
+pub fn TimeseriesgarchView::max(Self) -> Double
+pub fn TimeseriesgarchView::mean(Self) -> Double
+pub fn TimeseriesgarchView::min(Self) -> Double
+pub fn TimeseriesgarchView::scale(Self, Double) -> Self
+pub fn TimeseriesgarchView::set(Self, Int32, Double) -> Self
+pub fn TimeseriesgarchView::sum(Self) -> Double
+pub fn TimeseriesgarchView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_query_sort"
+
+// Values
+pub fn db_query_sort_buffer_make(Int32) -> DbquerysortBuffer
+
+pub fn db_query_sort_cluster_make(Int32) -> DbquerysortCluster
+
+pub fn db_query_sort_cursor_make(Int32) -> DbquerysortCursor
+
+pub fn db_query_sort_edge_make(Int32) -> DbquerysortEdge
+
+pub fn db_query_sort_frame_make(Int32) -> DbquerysortFrame
+
+pub fn db_query_sort_graphn_make(Int32) -> DbquerysortGraphN
+
+pub fn db_query_sort_layer_make(Int32) -> DbquerysortLayer
+
+pub fn db_query_sort_make_matrix(Int32, Int32, Double) -> DbquerysortMatrix
+
+pub fn db_query_sort_make_point(Double, Double) -> DbquerysortPoint
+
+pub fn db_query_sort_make_point3(Double, Double, Double) -> DbquerysortPoint
+
+pub fn db_query_sort_make_series(Array[Double], String) -> DbquerysortSeries
+
+pub fn db_query_sort_make_vector(Array[Double]) -> DbquerysortVector
+
+pub fn db_query_sort_matrix_identity(Int32) -> DbquerysortMatrix
+
+pub fn db_query_sort_model_make(Int32) -> DbquerysortModel
+
+pub fn db_query_sort_node_make(Int32) -> DbquerysortNode
+
+pub fn db_query_sort_path_make(Int32) -> DbquerysortPath
+
+pub fn db_query_sort_range_make(Int32) -> DbquerysortRange
+
+pub fn db_query_sort_slice_make(Int32) -> DbquerysortSlice
+
+pub fn db_query_sort_table_make(Int32) -> DbquerysortTable
+
+pub fn db_query_sort_vector_zero(Int32) -> DbquerysortVector
+
+pub fn db_query_sort_view_make(Int32) -> DbquerysortView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbquerysortBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbquerysortBuffer::add(Self, Self) -> Self
+pub fn DbquerysortBuffer::copy(Self) -> Self
+pub fn DbquerysortBuffer::fill(Self, Double) -> Self
+pub fn DbquerysortBuffer::get(Self, Int32) -> Double
+pub fn DbquerysortBuffer::len(Self) -> Int32
+pub fn DbquerysortBuffer::max(Self) -> Double
+pub fn DbquerysortBuffer::mean(Self) -> Double
+pub fn DbquerysortBuffer::min(Self) -> Double
+pub fn DbquerysortBuffer::scale(Self, Double) -> Self
+pub fn DbquerysortBuffer::set(Self, Int32, Double) -> Self
+pub fn DbquerysortBuffer::sum(Self) -> Double
+pub fn DbquerysortBuffer::to_string(Self) -> String
+
+pub(all) struct DbquerysortCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbquerysortCluster::add(Self, Self) -> Self
+pub fn DbquerysortCluster::copy(Self) -> Self
+pub fn DbquerysortCluster::fill(Self, Double) -> Self
+pub fn DbquerysortCluster::get(Self, Int32) -> Double
+pub fn DbquerysortCluster::len(Self) -> Int32
+pub fn DbquerysortCluster::max(Self) -> Double
+pub fn DbquerysortCluster::mean(Self) -> Double
+pub fn DbquerysortCluster::min(Self) -> Double
+pub fn DbquerysortCluster::scale(Self, Double) -> Self
+pub fn DbquerysortCluster::set(Self, Int32, Double) -> Self
+pub fn DbquerysortCluster::sum(Self) -> Double
+pub fn DbquerysortCluster::to_string(Self) -> String
+
+pub(all) struct DbquerysortCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbquerysortCursor::add(Self, Self) -> Self
+pub fn DbquerysortCursor::copy(Self) -> Self
+pub fn DbquerysortCursor::fill(Self, Double) -> Self
+pub fn DbquerysortCursor::get(Self, Int32) -> Double
+pub fn DbquerysortCursor::len(Self) -> Int32
+pub fn DbquerysortCursor::max(Self) -> Double
+pub fn DbquerysortCursor::mean(Self) -> Double
+pub fn DbquerysortCursor::min(Self) -> Double
+pub fn DbquerysortCursor::scale(Self, Double) -> Self
+pub fn DbquerysortCursor::set(Self, Int32, Double) -> Self
+pub fn DbquerysortCursor::sum(Self) -> Double
+pub fn DbquerysortCursor::to_string(Self) -> String
+
+pub(all) struct DbquerysortEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbquerysortEdge::add(Self, Self) -> Self
+pub fn DbquerysortEdge::copy(Self) -> Self
+pub fn DbquerysortEdge::fill(Self, Double) -> Self
+pub fn DbquerysortEdge::get(Self, Int32) -> Double
+pub fn DbquerysortEdge::len(Self) -> Int32
+pub fn DbquerysortEdge::max(Self) -> Double
+pub fn DbquerysortEdge::mean(Self) -> Double
+pub fn DbquerysortEdge::min(Self) -> Double
+pub fn DbquerysortEdge::scale(Self, Double) -> Self
+pub fn DbquerysortEdge::set(Self, Int32, Double) -> Self
+pub fn DbquerysortEdge::sum(Self) -> Double
+pub fn DbquerysortEdge::to_string(Self) -> String
+
+pub(all) struct DbquerysortFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbquerysortFrame::add(Self, Self) -> Self
+pub fn DbquerysortFrame::copy(Self) -> Self
+pub fn DbquerysortFrame::fill(Self, Double) -> Self
+pub fn DbquerysortFrame::get(Self, Int32) -> Double
+pub fn DbquerysortFrame::len(Self) -> Int32
+pub fn DbquerysortFrame::max(Self) -> Double
+pub fn DbquerysortFrame::mean(Self) -> Double
+pub fn DbquerysortFrame::min(Self) -> Double
+pub fn DbquerysortFrame::scale(Self, Double) -> Self
+pub fn DbquerysortFrame::set(Self, Int32, Double) -> Self
+pub fn DbquerysortFrame::sum(Self) -> Double
+pub fn DbquerysortFrame::to_string(Self) -> String
+
+pub(all) struct DbquerysortGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbquerysortGraphN::add(Self, Self) -> Self
+pub fn DbquerysortGraphN::copy(Self) -> Self
+pub fn DbquerysortGraphN::fill(Self, Double) -> Self
+pub fn DbquerysortGraphN::get(Self, Int32) -> Double
+pub fn DbquerysortGraphN::len(Self) -> Int32
+pub fn DbquerysortGraphN::max(Self) -> Double
+pub fn DbquerysortGraphN::mean(Self) -> Double
+pub fn DbquerysortGraphN::min(Self) -> Double
+pub fn DbquerysortGraphN::scale(Self, Double) -> Self
+pub fn DbquerysortGraphN::set(Self, Int32, Double) -> Self
+pub fn DbquerysortGraphN::sum(Self) -> Double
+pub fn DbquerysortGraphN::to_string(Self) -> String
+
+pub(all) struct DbquerysortLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbquerysortLayer::add(Self, Self) -> Self
+pub fn DbquerysortLayer::copy(Self) -> Self
+pub fn DbquerysortLayer::fill(Self, Double) -> Self
+pub fn DbquerysortLayer::get(Self, Int32) -> Double
+pub fn DbquerysortLayer::len(Self) -> Int32
+pub fn DbquerysortLayer::max(Self) -> Double
+pub fn DbquerysortLayer::mean(Self) -> Double
+pub fn DbquerysortLayer::min(Self) -> Double
+pub fn DbquerysortLayer::scale(Self, Double) -> Self
+pub fn DbquerysortLayer::set(Self, Int32, Double) -> Self
+pub fn DbquerysortLayer::sum(Self) -> Double
+pub fn DbquerysortLayer::to_string(Self) -> String
+
+pub(all) struct DbquerysortMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbquerysortMatrix::add(Self, Self) -> Self
+pub fn DbquerysortMatrix::det(Self) -> Double
+pub fn DbquerysortMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbquerysortMatrix::multiply(Self, Self) -> Self
+pub fn DbquerysortMatrix::norm(Self) -> Double
+pub fn DbquerysortMatrix::scale(Self, Double) -> Self
+pub fn DbquerysortMatrix::to_string(Self) -> String
+pub fn DbquerysortMatrix::trace(Self) -> Double
+pub fn DbquerysortMatrix::transpose(Self) -> Self
+
+pub(all) struct DbquerysortModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbquerysortModel::add(Self, Self) -> Self
+pub fn DbquerysortModel::copy(Self) -> Self
+pub fn DbquerysortModel::fill(Self, Double) -> Self
+pub fn DbquerysortModel::get(Self, Int32) -> Double
+pub fn DbquerysortModel::len(Self) -> Int32
+pub fn DbquerysortModel::max(Self) -> Double
+pub fn DbquerysortModel::mean(Self) -> Double
+pub fn DbquerysortModel::min(Self) -> Double
+pub fn DbquerysortModel::scale(Self, Double) -> Self
+pub fn DbquerysortModel::set(Self, Int32, Double) -> Self
+pub fn DbquerysortModel::sum(Self) -> Double
+pub fn DbquerysortModel::to_string(Self) -> String
+
+pub(all) struct DbquerysortNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbquerysortNode::add(Self, Self) -> Self
+pub fn DbquerysortNode::copy(Self) -> Self
+pub fn DbquerysortNode::fill(Self, Double) -> Self
+pub fn DbquerysortNode::get(Self, Int32) -> Double
+pub fn DbquerysortNode::len(Self) -> Int32
+pub fn DbquerysortNode::max(Self) -> Double
+pub fn DbquerysortNode::mean(Self) -> Double
+pub fn DbquerysortNode::min(Self) -> Double
+pub fn DbquerysortNode::scale(Self, Double) -> Self
+pub fn DbquerysortNode::set(Self, Int32, Double) -> Self
+pub fn DbquerysortNode::sum(Self) -> Double
+pub fn DbquerysortNode::to_string(Self) -> String
+
+pub(all) struct DbquerysortPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbquerysortPath::add(Self, Self) -> Self
+pub fn DbquerysortPath::copy(Self) -> Self
+pub fn DbquerysortPath::fill(Self, Double) -> Self
+pub fn DbquerysortPath::get(Self, Int32) -> Double
+pub fn DbquerysortPath::len(Self) -> Int32
+pub fn DbquerysortPath::max(Self) -> Double
+pub fn DbquerysortPath::mean(Self) -> Double
+pub fn DbquerysortPath::min(Self) -> Double
+pub fn DbquerysortPath::scale(Self, Double) -> Self
+pub fn DbquerysortPath::set(Self, Int32, Double) -> Self
+pub fn DbquerysortPath::sum(Self) -> Double
+pub fn DbquerysortPath::to_string(Self) -> String
+
+pub(all) struct DbquerysortPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbquerysortPoint::add(Self, Self) -> Self
+pub fn DbquerysortPoint::cross(Self, Self) -> Self
+pub fn DbquerysortPoint::dist(Self, Self) -> Double
+pub fn DbquerysortPoint::dot(Self, Self) -> Double
+pub fn DbquerysortPoint::label(Self) -> Int32
+pub fn DbquerysortPoint::lerp(Self, Self, Double) -> Self
+pub fn DbquerysortPoint::mid(Self, Self) -> Self
+pub fn DbquerysortPoint::negate(Self) -> Self
+pub fn DbquerysortPoint::norm(Self) -> Double
+pub fn DbquerysortPoint::normalize(Self) -> Self
+pub fn DbquerysortPoint::scale(Self, Double) -> Self
+pub fn DbquerysortPoint::sub(Self, Self) -> Self
+pub fn DbquerysortPoint::to_string(Self) -> String
+pub fn DbquerysortPoint::x(Self) -> Double
+pub fn DbquerysortPoint::y(Self) -> Double
+pub fn DbquerysortPoint::z(Self) -> Double
+
+pub(all) struct DbquerysortRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbquerysortRange::add(Self, Self) -> Self
+pub fn DbquerysortRange::copy(Self) -> Self
+pub fn DbquerysortRange::fill(Self, Double) -> Self
+pub fn DbquerysortRange::get(Self, Int32) -> Double
+pub fn DbquerysortRange::len(Self) -> Int32
+pub fn DbquerysortRange::max(Self) -> Double
+pub fn DbquerysortRange::mean(Self) -> Double
+pub fn DbquerysortRange::min(Self) -> Double
+pub fn DbquerysortRange::scale(Self, Double) -> Self
+pub fn DbquerysortRange::set(Self, Int32, Double) -> Self
+pub fn DbquerysortRange::sum(Self) -> Double
+pub fn DbquerysortRange::to_string(Self) -> String
+
+pub(all) struct DbquerysortSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbquerysortSeries::add(Self, Self) -> Self
+pub fn DbquerysortSeries::cumsum(Self) -> Self
+pub fn DbquerysortSeries::len(Self) -> Int32
+pub fn DbquerysortSeries::max(Self) -> Double
+pub fn DbquerysortSeries::mean(Self) -> Double
+pub fn DbquerysortSeries::median(Self) -> Double
+pub fn DbquerysortSeries::min(Self) -> Double
+pub fn DbquerysortSeries::normalize(Self) -> Self
+pub fn DbquerysortSeries::range(Self) -> Double
+pub fn DbquerysortSeries::scale(Self, Double) -> Self
+pub fn DbquerysortSeries::std(Self) -> Double
+pub fn DbquerysortSeries::sub(Self, Self) -> Self
+pub fn DbquerysortSeries::sum(Self) -> Double
+pub fn DbquerysortSeries::to_string(Self) -> String
+pub fn DbquerysortSeries::variance(Self) -> Double
+
+pub(all) struct DbquerysortSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbquerysortSlice::add(Self, Self) -> Self
+pub fn DbquerysortSlice::copy(Self) -> Self
+pub fn DbquerysortSlice::fill(Self, Double) -> Self
+pub fn DbquerysortSlice::get(Self, Int32) -> Double
+pub fn DbquerysortSlice::len(Self) -> Int32
+pub fn DbquerysortSlice::max(Self) -> Double
+pub fn DbquerysortSlice::mean(Self) -> Double
+pub fn DbquerysortSlice::min(Self) -> Double
+pub fn DbquerysortSlice::scale(Self, Double) -> Self
+pub fn DbquerysortSlice::set(Self, Int32, Double) -> Self
+pub fn DbquerysortSlice::sum(Self) -> Double
+pub fn DbquerysortSlice::to_string(Self) -> String
+
+pub(all) struct DbquerysortTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbquerysortTable::add(Self, Self) -> Self
+pub fn DbquerysortTable::copy(Self) -> Self
+pub fn DbquerysortTable::fill(Self, Double) -> Self
+pub fn DbquerysortTable::get(Self, Int32) -> Double
+pub fn DbquerysortTable::len(Self) -> Int32
+pub fn DbquerysortTable::max(Self) -> Double
+pub fn DbquerysortTable::mean(Self) -> Double
+pub fn DbquerysortTable::min(Self) -> Double
+pub fn DbquerysortTable::scale(Self, Double) -> Self
+pub fn DbquerysortTable::set(Self, Int32, Double) -> Self
+pub fn DbquerysortTable::sum(Self) -> Double
+pub fn DbquerysortTable::to_string(Self) -> String
+
+pub(all) struct DbquerysortVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbquerysortVector::add(Self, Self) -> Self
+pub fn DbquerysortVector::dist(Self, Self) -> Double
+pub fn DbquerysortVector::dot(Self, Self) -> Double
+pub fn DbquerysortVector::norm(Self) -> Double
+pub fn DbquerysortVector::normalize(Self) -> Self
+pub fn DbquerysortVector::scale(Self, Double) -> Self
+pub fn DbquerysortVector::sub(Self, Self) -> Self
+pub fn DbquerysortVector::to_string(Self) -> String
+
+pub(all) struct DbquerysortView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbquerysortView::add(Self, Self) -> Self
+pub fn DbquerysortView::copy(Self) -> Self
+pub fn DbquerysortView::fill(Self, Double) -> Self
+pub fn DbquerysortView::get(Self, Int32) -> Double
+pub fn DbquerysortView::len(Self) -> Int32
+pub fn DbquerysortView::max(Self) -> Double
+pub fn DbquerysortView::mean(Self) -> Double
+pub fn DbquerysortView::min(Self) -> Double
+pub fn DbquerysortView::scale(Self, Double) -> Self
+pub fn DbquerysortView::set(Self, Int32, Double) -> Self
+pub fn DbquerysortView::sum(Self) -> Double
+pub fn DbquerysortView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

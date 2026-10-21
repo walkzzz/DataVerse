@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/opt_grad_nesterov"
+
+// Values
+pub fn opt_grad_nesterov_buffer_make(Int32) -> OptgradnesterovBuffer
+
+pub fn opt_grad_nesterov_cluster_make(Int32) -> OptgradnesterovCluster
+
+pub fn opt_grad_nesterov_cursor_make(Int32) -> OptgradnesterovCursor
+
+pub fn opt_grad_nesterov_edge_make(Int32) -> OptgradnesterovEdge
+
+pub fn opt_grad_nesterov_frame_make(Int32) -> OptgradnesterovFrame
+
+pub fn opt_grad_nesterov_graphn_make(Int32) -> OptgradnesterovGraphN
+
+pub fn opt_grad_nesterov_layer_make(Int32) -> OptgradnesterovLayer
+
+pub fn opt_grad_nesterov_make_matrix(Int32, Int32, Double) -> OptgradnesterovMatrix
+
+pub fn opt_grad_nesterov_make_point(Double, Double) -> OptgradnesterovPoint
+
+pub fn opt_grad_nesterov_make_point3(Double, Double, Double) -> OptgradnesterovPoint
+
+pub fn opt_grad_nesterov_make_series(Array[Double], String) -> OptgradnesterovSeries
+
+pub fn opt_grad_nesterov_make_vector(Array[Double]) -> OptgradnesterovVector
+
+pub fn opt_grad_nesterov_matrix_identity(Int32) -> OptgradnesterovMatrix
+
+pub fn opt_grad_nesterov_model_make(Int32) -> OptgradnesterovModel
+
+pub fn opt_grad_nesterov_node_make(Int32) -> OptgradnesterovNode
+
+pub fn opt_grad_nesterov_path_make(Int32) -> OptgradnesterovPath
+
+pub fn opt_grad_nesterov_range_make(Int32) -> OptgradnesterovRange
+
+pub fn opt_grad_nesterov_slice_make(Int32) -> OptgradnesterovSlice
+
+pub fn opt_grad_nesterov_table_make(Int32) -> OptgradnesterovTable
+
+pub fn opt_grad_nesterov_vector_zero(Int32) -> OptgradnesterovVector
+
+pub fn opt_grad_nesterov_view_make(Int32) -> OptgradnesterovView
+
+// Errors
+
+// Types and methods
+pub(all) struct OptgradnesterovBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradnesterovBuffer::add(Self, Self) -> Self
+pub fn OptgradnesterovBuffer::copy(Self) -> Self
+pub fn OptgradnesterovBuffer::fill(Self, Double) -> Self
+pub fn OptgradnesterovBuffer::get(Self, Int32) -> Double
+pub fn OptgradnesterovBuffer::len(Self) -> Int32
+pub fn OptgradnesterovBuffer::max(Self) -> Double
+pub fn OptgradnesterovBuffer::mean(Self) -> Double
+pub fn OptgradnesterovBuffer::min(Self) -> Double
+pub fn OptgradnesterovBuffer::scale(Self, Double) -> Self
+pub fn OptgradnesterovBuffer::set(Self, Int32, Double) -> Self
+pub fn OptgradnesterovBuffer::sum(Self) -> Double
+pub fn OptgradnesterovBuffer::to_string(Self) -> String
+
+pub(all) struct OptgradnesterovCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradnesterovCluster::add(Self, Self) -> Self
+pub fn OptgradnesterovCluster::copy(Self) -> Self
+pub fn OptgradnesterovCluster::fill(Self, Double) -> Self
+pub fn OptgradnesterovCluster::get(Self, Int32) -> Double
+pub fn OptgradnesterovCluster::len(Self) -> Int32
+pub fn OptgradnesterovCluster::max(Self) -> Double
+pub fn OptgradnesterovCluster::mean(Self) -> Double
+pub fn OptgradnesterovCluster::min(Self) -> Double
+pub fn OptgradnesterovCluster::scale(Self, Double) -> Self
+pub fn OptgradnesterovCluster::set(Self, Int32, Double) -> Self
+pub fn OptgradnesterovCluster::sum(Self) -> Double
+pub fn OptgradnesterovCluster::to_string(Self) -> String
+
+pub(all) struct OptgradnesterovCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradnesterovCursor::add(Self, Self) -> Self
+pub fn OptgradnesterovCursor::copy(Self) -> Self
+pub fn OptgradnesterovCursor::fill(Self, Double) -> Self
+pub fn OptgradnesterovCursor::get(Self, Int32) -> Double
+pub fn OptgradnesterovCursor::len(Self) -> Int32
+pub fn OptgradnesterovCursor::max(Self) -> Double
+pub fn OptgradnesterovCursor::mean(Self) -> Double
+pub fn OptgradnesterovCursor::min(Self) -> Double
+pub fn OptgradnesterovCursor::scale(Self, Double) -> Self
+pub fn OptgradnesterovCursor::set(Self, Int32, Double) -> Self
+pub fn OptgradnesterovCursor::sum(Self) -> Double
+pub fn OptgradnesterovCursor::to_string(Self) -> String
+
+pub(all) struct OptgradnesterovEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradnesterovEdge::add(Self, Self) -> Self
+pub fn OptgradnesterovEdge::copy(Self) -> Self
+pub fn OptgradnesterovEdge::fill(Self, Double) -> Self
+pub fn OptgradnesterovEdge::get(Self, Int32) -> Double
+pub fn OptgradnesterovEdge::len(Self) -> Int32
+pub fn OptgradnesterovEdge::max(Self) -> Double
+pub fn OptgradnesterovEdge::mean(Self) -> Double
+pub fn OptgradnesterovEdge::min(Self) -> Double
+pub fn OptgradnesterovEdge::scale(Self, Double) -> Self
+pub fn OptgradnesterovEdge::set(Self, Int32, Double) -> Self
+pub fn OptgradnesterovEdge::sum(Self) -> Double
+pub fn OptgradnesterovEdge::to_string(Self) -> String
+
+pub(all) struct OptgradnesterovFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradnesterovFrame::add(Self, Self) -> Self
+pub fn OptgradnesterovFrame::copy(Self) -> Self
+pub fn OptgradnesterovFrame::fill(Self, Double) -> Self
+pub fn OptgradnesterovFrame::get(Self, Int32) -> Double
+pub fn OptgradnesterovFrame::len(Self) -> Int32
+pub fn OptgradnesterovFrame::max(Self) -> Double
+pub fn OptgradnesterovFrame::mean(Self) -> Double
+pub fn OptgradnesterovFrame::min(Self) -> Double
+pub fn OptgradnesterovFrame::scale(Self, Double) -> Self
+pub fn OptgradnesterovFrame::set(Self, Int32, Double) -> Self
+pub fn OptgradnesterovFrame::sum(Self) -> Double
+pub fn OptgradnesterovFrame::to_string(Self) -> String
+
+pub(all) struct OptgradnesterovGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradnesterovGraphN::add(Self, Self) -> Self
+pub fn OptgradnesterovGraphN::copy(Self) -> Self
+pub fn OptgradnesterovGraphN::fill(Self, Double) -> Self
+pub fn OptgradnesterovGraphN::get(Self, Int32) -> Double
+pub fn OptgradnesterovGraphN::len(Self) -> Int32
+pub fn OptgradnesterovGraphN::max(Self) -> Double
+pub fn OptgradnesterovGraphN::mean(Self) -> Double
+pub fn OptgradnesterovGraphN::min(Self) -> Double
+pub fn OptgradnesterovGraphN::scale(Self, Double) -> Self
+pub fn OptgradnesterovGraphN::set(Self, Int32, Double) -> Self
+pub fn OptgradnesterovGraphN::sum(Self) -> Double
+pub fn OptgradnesterovGraphN::to_string(Self) -> String
+
+pub(all) struct OptgradnesterovLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradnesterovLayer::add(Self, Self) -> Self
+pub fn OptgradnesterovLayer::copy(Self) -> Self
+pub fn OptgradnesterovLayer::fill(Self, Double) -> Self
+pub fn OptgradnesterovLayer::get(Self, Int32) -> Double
+pub fn OptgradnesterovLayer::len(Self) -> Int32
+pub fn OptgradnesterovLayer::max(Self) -> Double
+pub fn OptgradnesterovLayer::mean(Self) -> Double
+pub fn OptgradnesterovLayer::min(Self) -> Double
+pub fn OptgradnesterovLayer::scale(Self, Double) -> Self
+pub fn OptgradnesterovLayer::set(Self, Int32, Double) -> Self
+pub fn OptgradnesterovLayer::sum(Self) -> Double
+pub fn OptgradnesterovLayer::to_string(Self) -> String
+
+pub(all) struct OptgradnesterovMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn OptgradnesterovMatrix::add(Self, Self) -> Self
+pub fn OptgradnesterovMatrix::det(Self) -> Double
+pub fn OptgradnesterovMatrix::get(Self, Int32, Int32) -> Double
+pub fn OptgradnesterovMatrix::multiply(Self, Self) -> Self
+pub fn OptgradnesterovMatrix::norm(Self) -> Double
+pub fn OptgradnesterovMatrix::scale(Self, Double) -> Self
+pub fn OptgradnesterovMatrix::to_string(Self) -> String
+pub fn OptgradnesterovMatrix::trace(Self) -> Double
+pub fn OptgradnesterovMatrix::transpose(Self) -> Self
+
+pub(all) struct OptgradnesterovModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradnesterovModel::add(Self, Self) -> Self
+pub fn OptgradnesterovModel::copy(Self) -> Self
+pub fn OptgradnesterovModel::fill(Self, Double) -> Self
+pub fn OptgradnesterovModel::get(Self, Int32) -> Double
+pub fn OptgradnesterovModel::len(Self) -> Int32
+pub fn OptgradnesterovModel::max(Self) -> Double
+pub fn OptgradnesterovModel::mean(Self) -> Double
+pub fn OptgradnesterovModel::min(Self) -> Double
+pub fn OptgradnesterovModel::scale(Self, Double) -> Self
+pub fn OptgradnesterovModel::set(Self, Int32, Double) -> Self
+pub fn OptgradnesterovModel::sum(Self) -> Double
+pub fn OptgradnesterovModel::to_string(Self) -> String
+
+pub(all) struct OptgradnesterovNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradnesterovNode::add(Self, Self) -> Self
+pub fn OptgradnesterovNode::copy(Self) -> Self
+pub fn OptgradnesterovNode::fill(Self, Double) -> Self
+pub fn OptgradnesterovNode::get(Self, Int32) -> Double
+pub fn OptgradnesterovNode::len(Self) -> Int32
+pub fn OptgradnesterovNode::max(Self) -> Double
+pub fn OptgradnesterovNode::mean(Self) -> Double
+pub fn OptgradnesterovNode::min(Self) -> Double
+pub fn OptgradnesterovNode::scale(Self, Double) -> Self
+pub fn OptgradnesterovNode::set(Self, Int32, Double) -> Self
+pub fn OptgradnesterovNode::sum(Self) -> Double
+pub fn OptgradnesterovNode::to_string(Self) -> String
+
+pub(all) struct OptgradnesterovPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradnesterovPath::add(Self, Self) -> Self
+pub fn OptgradnesterovPath::copy(Self) -> Self
+pub fn OptgradnesterovPath::fill(Self, Double) -> Self
+pub fn OptgradnesterovPath::get(Self, Int32) -> Double
+pub fn OptgradnesterovPath::len(Self) -> Int32
+pub fn OptgradnesterovPath::max(Self) -> Double
+pub fn OptgradnesterovPath::mean(Self) -> Double
+pub fn OptgradnesterovPath::min(Self) -> Double
+pub fn OptgradnesterovPath::scale(Self, Double) -> Self
+pub fn OptgradnesterovPath::set(Self, Int32, Double) -> Self
+pub fn OptgradnesterovPath::sum(Self) -> Double
+pub fn OptgradnesterovPath::to_string(Self) -> String
+
+pub(all) struct OptgradnesterovPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn OptgradnesterovPoint::add(Self, Self) -> Self
+pub fn OptgradnesterovPoint::cross(Self, Self) -> Self
+pub fn OptgradnesterovPoint::dist(Self, Self) -> Double
+pub fn OptgradnesterovPoint::dot(Self, Self) -> Double
+pub fn OptgradnesterovPoint::label(Self) -> Int32
+pub fn OptgradnesterovPoint::lerp(Self, Self, Double) -> Self
+pub fn OptgradnesterovPoint::mid(Self, Self) -> Self
+pub fn OptgradnesterovPoint::negate(Self) -> Self
+pub fn OptgradnesterovPoint::norm(Self) -> Double
+pub fn OptgradnesterovPoint::normalize(Self) -> Self
+pub fn OptgradnesterovPoint::scale(Self, Double) -> Self
+pub fn OptgradnesterovPoint::sub(Self, Self) -> Self
+pub fn OptgradnesterovPoint::to_string(Self) -> String
+pub fn OptgradnesterovPoint::x(Self) -> Double
+pub fn OptgradnesterovPoint::y(Self) -> Double
+pub fn OptgradnesterovPoint::z(Self) -> Double
+
+pub(all) struct OptgradnesterovRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradnesterovRange::add(Self, Self) -> Self
+pub fn OptgradnesterovRange::copy(Self) -> Self
+pub fn OptgradnesterovRange::fill(Self, Double) -> Self
+pub fn OptgradnesterovRange::get(Self, Int32) -> Double
+pub fn OptgradnesterovRange::len(Self) -> Int32
+pub fn OptgradnesterovRange::max(Self) -> Double
+pub fn OptgradnesterovRange::mean(Self) -> Double
+pub fn OptgradnesterovRange::min(Self) -> Double
+pub fn OptgradnesterovRange::scale(Self, Double) -> Self
+pub fn OptgradnesterovRange::set(Self, Int32, Double) -> Self
+pub fn OptgradnesterovRange::sum(Self) -> Double
+pub fn OptgradnesterovRange::to_string(Self) -> String
+
+pub(all) struct OptgradnesterovSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn OptgradnesterovSeries::add(Self, Self) -> Self
+pub fn OptgradnesterovSeries::cumsum(Self) -> Self
+pub fn OptgradnesterovSeries::len(Self) -> Int32
+pub fn OptgradnesterovSeries::max(Self) -> Double
+pub fn OptgradnesterovSeries::mean(Self) -> Double
+pub fn OptgradnesterovSeries::median(Self) -> Double
+pub fn OptgradnesterovSeries::min(Self) -> Double
+pub fn OptgradnesterovSeries::normalize(Self) -> Self
+pub fn OptgradnesterovSeries::range(Self) -> Double
+pub fn OptgradnesterovSeries::scale(Self, Double) -> Self
+pub fn OptgradnesterovSeries::std(Self) -> Double
+pub fn OptgradnesterovSeries::sub(Self, Self) -> Self
+pub fn OptgradnesterovSeries::sum(Self) -> Double
+pub fn OptgradnesterovSeries::to_string(Self) -> String
+pub fn OptgradnesterovSeries::variance(Self) -> Double
+
+pub(all) struct OptgradnesterovSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradnesterovSlice::add(Self, Self) -> Self
+pub fn OptgradnesterovSlice::copy(Self) -> Self
+pub fn OptgradnesterovSlice::fill(Self, Double) -> Self
+pub fn OptgradnesterovSlice::get(Self, Int32) -> Double
+pub fn OptgradnesterovSlice::len(Self) -> Int32
+pub fn OptgradnesterovSlice::max(Self) -> Double
+pub fn OptgradnesterovSlice::mean(Self) -> Double
+pub fn OptgradnesterovSlice::min(Self) -> Double
+pub fn OptgradnesterovSlice::scale(Self, Double) -> Self
+pub fn OptgradnesterovSlice::set(Self, Int32, Double) -> Self
+pub fn OptgradnesterovSlice::sum(Self) -> Double
+pub fn OptgradnesterovSlice::to_string(Self) -> String
+
+pub(all) struct OptgradnesterovTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradnesterovTable::add(Self, Self) -> Self
+pub fn OptgradnesterovTable::copy(Self) -> Self
+pub fn OptgradnesterovTable::fill(Self, Double) -> Self
+pub fn OptgradnesterovTable::get(Self, Int32) -> Double
+pub fn OptgradnesterovTable::len(Self) -> Int32
+pub fn OptgradnesterovTable::max(Self) -> Double
+pub fn OptgradnesterovTable::mean(Self) -> Double
+pub fn OptgradnesterovTable::min(Self) -> Double
+pub fn OptgradnesterovTable::scale(Self, Double) -> Self
+pub fn OptgradnesterovTable::set(Self, Int32, Double) -> Self
+pub fn OptgradnesterovTable::sum(Self) -> Double
+pub fn OptgradnesterovTable::to_string(Self) -> String
+
+pub(all) struct OptgradnesterovVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn OptgradnesterovVector::add(Self, Self) -> Self
+pub fn OptgradnesterovVector::dist(Self, Self) -> Double
+pub fn OptgradnesterovVector::dot(Self, Self) -> Double
+pub fn OptgradnesterovVector::norm(Self) -> Double
+pub fn OptgradnesterovVector::normalize(Self) -> Self
+pub fn OptgradnesterovVector::scale(Self, Double) -> Self
+pub fn OptgradnesterovVector::sub(Self, Self) -> Self
+pub fn OptgradnesterovVector::to_string(Self) -> String
+
+pub(all) struct OptgradnesterovView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradnesterovView::add(Self, Self) -> Self
+pub fn OptgradnesterovView::copy(Self) -> Self
+pub fn OptgradnesterovView::fill(Self, Double) -> Self
+pub fn OptgradnesterovView::get(Self, Int32) -> Double
+pub fn OptgradnesterovView::len(Self) -> Int32
+pub fn OptgradnesterovView::max(Self) -> Double
+pub fn OptgradnesterovView::mean(Self) -> Double
+pub fn OptgradnesterovView::min(Self) -> Double
+pub fn OptgradnesterovView::scale(Self, Double) -> Self
+pub fn OptgradnesterovView::set(Self, Int32, Double) -> Self
+pub fn OptgradnesterovView::sum(Self) -> Double
+pub fn OptgradnesterovView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

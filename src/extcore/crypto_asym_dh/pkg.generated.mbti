@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/crypto_asym_dh"
+
+// Values
+pub fn crypto_asym_dh_buffer_make(Int32) -> CryptoasymdhBuffer
+
+pub fn crypto_asym_dh_cluster_make(Int32) -> CryptoasymdhCluster
+
+pub fn crypto_asym_dh_cursor_make(Int32) -> CryptoasymdhCursor
+
+pub fn crypto_asym_dh_edge_make(Int32) -> CryptoasymdhEdge
+
+pub fn crypto_asym_dh_frame_make(Int32) -> CryptoasymdhFrame
+
+pub fn crypto_asym_dh_graphn_make(Int32) -> CryptoasymdhGraphN
+
+pub fn crypto_asym_dh_layer_make(Int32) -> CryptoasymdhLayer
+
+pub fn crypto_asym_dh_make_matrix(Int32, Int32, Double) -> CryptoasymdhMatrix
+
+pub fn crypto_asym_dh_make_point(Double, Double) -> CryptoasymdhPoint
+
+pub fn crypto_asym_dh_make_point3(Double, Double, Double) -> CryptoasymdhPoint
+
+pub fn crypto_asym_dh_make_series(Array[Double], String) -> CryptoasymdhSeries
+
+pub fn crypto_asym_dh_make_vector(Array[Double]) -> CryptoasymdhVector
+
+pub fn crypto_asym_dh_matrix_identity(Int32) -> CryptoasymdhMatrix
+
+pub fn crypto_asym_dh_model_make(Int32) -> CryptoasymdhModel
+
+pub fn crypto_asym_dh_node_make(Int32) -> CryptoasymdhNode
+
+pub fn crypto_asym_dh_path_make(Int32) -> CryptoasymdhPath
+
+pub fn crypto_asym_dh_range_make(Int32) -> CryptoasymdhRange
+
+pub fn crypto_asym_dh_slice_make(Int32) -> CryptoasymdhSlice
+
+pub fn crypto_asym_dh_table_make(Int32) -> CryptoasymdhTable
+
+pub fn crypto_asym_dh_vector_zero(Int32) -> CryptoasymdhVector
+
+pub fn crypto_asym_dh_view_make(Int32) -> CryptoasymdhView
+
+// Errors
+
+// Types and methods
+pub(all) struct CryptoasymdhBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymdhBuffer::add(Self, Self) -> Self
+pub fn CryptoasymdhBuffer::copy(Self) -> Self
+pub fn CryptoasymdhBuffer::fill(Self, Double) -> Self
+pub fn CryptoasymdhBuffer::get(Self, Int32) -> Double
+pub fn CryptoasymdhBuffer::len(Self) -> Int32
+pub fn CryptoasymdhBuffer::max(Self) -> Double
+pub fn CryptoasymdhBuffer::mean(Self) -> Double
+pub fn CryptoasymdhBuffer::min(Self) -> Double
+pub fn CryptoasymdhBuffer::scale(Self, Double) -> Self
+pub fn CryptoasymdhBuffer::set(Self, Int32, Double) -> Self
+pub fn CryptoasymdhBuffer::sum(Self) -> Double
+pub fn CryptoasymdhBuffer::to_string(Self) -> String
+
+pub(all) struct CryptoasymdhCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymdhCluster::add(Self, Self) -> Self
+pub fn CryptoasymdhCluster::copy(Self) -> Self
+pub fn CryptoasymdhCluster::fill(Self, Double) -> Self
+pub fn CryptoasymdhCluster::get(Self, Int32) -> Double
+pub fn CryptoasymdhCluster::len(Self) -> Int32
+pub fn CryptoasymdhCluster::max(Self) -> Double
+pub fn CryptoasymdhCluster::mean(Self) -> Double
+pub fn CryptoasymdhCluster::min(Self) -> Double
+pub fn CryptoasymdhCluster::scale(Self, Double) -> Self
+pub fn CryptoasymdhCluster::set(Self, Int32, Double) -> Self
+pub fn CryptoasymdhCluster::sum(Self) -> Double
+pub fn CryptoasymdhCluster::to_string(Self) -> String
+
+pub(all) struct CryptoasymdhCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymdhCursor::add(Self, Self) -> Self
+pub fn CryptoasymdhCursor::copy(Self) -> Self
+pub fn CryptoasymdhCursor::fill(Self, Double) -> Self
+pub fn CryptoasymdhCursor::get(Self, Int32) -> Double
+pub fn CryptoasymdhCursor::len(Self) -> Int32
+pub fn CryptoasymdhCursor::max(Self) -> Double
+pub fn CryptoasymdhCursor::mean(Self) -> Double
+pub fn CryptoasymdhCursor::min(Self) -> Double
+pub fn CryptoasymdhCursor::scale(Self, Double) -> Self
+pub fn CryptoasymdhCursor::set(Self, Int32, Double) -> Self
+pub fn CryptoasymdhCursor::sum(Self) -> Double
+pub fn CryptoasymdhCursor::to_string(Self) -> String
+
+pub(all) struct CryptoasymdhEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymdhEdge::add(Self, Self) -> Self
+pub fn CryptoasymdhEdge::copy(Self) -> Self
+pub fn CryptoasymdhEdge::fill(Self, Double) -> Self
+pub fn CryptoasymdhEdge::get(Self, Int32) -> Double
+pub fn CryptoasymdhEdge::len(Self) -> Int32
+pub fn CryptoasymdhEdge::max(Self) -> Double
+pub fn CryptoasymdhEdge::mean(Self) -> Double
+pub fn CryptoasymdhEdge::min(Self) -> Double
+pub fn CryptoasymdhEdge::scale(Self, Double) -> Self
+pub fn CryptoasymdhEdge::set(Self, Int32, Double) -> Self
+pub fn CryptoasymdhEdge::sum(Self) -> Double
+pub fn CryptoasymdhEdge::to_string(Self) -> String
+
+pub(all) struct CryptoasymdhFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymdhFrame::add(Self, Self) -> Self
+pub fn CryptoasymdhFrame::copy(Self) -> Self
+pub fn CryptoasymdhFrame::fill(Self, Double) -> Self
+pub fn CryptoasymdhFrame::get(Self, Int32) -> Double
+pub fn CryptoasymdhFrame::len(Self) -> Int32
+pub fn CryptoasymdhFrame::max(Self) -> Double
+pub fn CryptoasymdhFrame::mean(Self) -> Double
+pub fn CryptoasymdhFrame::min(Self) -> Double
+pub fn CryptoasymdhFrame::scale(Self, Double) -> Self
+pub fn CryptoasymdhFrame::set(Self, Int32, Double) -> Self
+pub fn CryptoasymdhFrame::sum(Self) -> Double
+pub fn CryptoasymdhFrame::to_string(Self) -> String
+
+pub(all) struct CryptoasymdhGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymdhGraphN::add(Self, Self) -> Self
+pub fn CryptoasymdhGraphN::copy(Self) -> Self
+pub fn CryptoasymdhGraphN::fill(Self, Double) -> Self
+pub fn CryptoasymdhGraphN::get(Self, Int32) -> Double
+pub fn CryptoasymdhGraphN::len(Self) -> Int32
+pub fn CryptoasymdhGraphN::max(Self) -> Double
+pub fn CryptoasymdhGraphN::mean(Self) -> Double
+pub fn CryptoasymdhGraphN::min(Self) -> Double
+pub fn CryptoasymdhGraphN::scale(Self, Double) -> Self
+pub fn CryptoasymdhGraphN::set(Self, Int32, Double) -> Self
+pub fn CryptoasymdhGraphN::sum(Self) -> Double
+pub fn CryptoasymdhGraphN::to_string(Self) -> String
+
+pub(all) struct CryptoasymdhLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymdhLayer::add(Self, Self) -> Self
+pub fn CryptoasymdhLayer::copy(Self) -> Self
+pub fn CryptoasymdhLayer::fill(Self, Double) -> Self
+pub fn CryptoasymdhLayer::get(Self, Int32) -> Double
+pub fn CryptoasymdhLayer::len(Self) -> Int32
+pub fn CryptoasymdhLayer::max(Self) -> Double
+pub fn CryptoasymdhLayer::mean(Self) -> Double
+pub fn CryptoasymdhLayer::min(Self) -> Double
+pub fn CryptoasymdhLayer::scale(Self, Double) -> Self
+pub fn CryptoasymdhLayer::set(Self, Int32, Double) -> Self
+pub fn CryptoasymdhLayer::sum(Self) -> Double
+pub fn CryptoasymdhLayer::to_string(Self) -> String
+
+pub(all) struct CryptoasymdhMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn CryptoasymdhMatrix::add(Self, Self) -> Self
+pub fn CryptoasymdhMatrix::det(Self) -> Double
+pub fn CryptoasymdhMatrix::get(Self, Int32, Int32) -> Double
+pub fn CryptoasymdhMatrix::multiply(Self, Self) -> Self
+pub fn CryptoasymdhMatrix::norm(Self) -> Double
+pub fn CryptoasymdhMatrix::scale(Self, Double) -> Self
+pub fn CryptoasymdhMatrix::to_string(Self) -> String
+pub fn CryptoasymdhMatrix::trace(Self) -> Double
+pub fn CryptoasymdhMatrix::transpose(Self) -> Self
+
+pub(all) struct CryptoasymdhModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymdhModel::add(Self, Self) -> Self
+pub fn CryptoasymdhModel::copy(Self) -> Self
+pub fn CryptoasymdhModel::fill(Self, Double) -> Self
+pub fn CryptoasymdhModel::get(Self, Int32) -> Double
+pub fn CryptoasymdhModel::len(Self) -> Int32
+pub fn CryptoasymdhModel::max(Self) -> Double
+pub fn CryptoasymdhModel::mean(Self) -> Double
+pub fn CryptoasymdhModel::min(Self) -> Double
+pub fn CryptoasymdhModel::scale(Self, Double) -> Self
+pub fn CryptoasymdhModel::set(Self, Int32, Double) -> Self
+pub fn CryptoasymdhModel::sum(Self) -> Double
+pub fn CryptoasymdhModel::to_string(Self) -> String
+
+pub(all) struct CryptoasymdhNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymdhNode::add(Self, Self) -> Self
+pub fn CryptoasymdhNode::copy(Self) -> Self
+pub fn CryptoasymdhNode::fill(Self, Double) -> Self
+pub fn CryptoasymdhNode::get(Self, Int32) -> Double
+pub fn CryptoasymdhNode::len(Self) -> Int32
+pub fn CryptoasymdhNode::max(Self) -> Double
+pub fn CryptoasymdhNode::mean(Self) -> Double
+pub fn CryptoasymdhNode::min(Self) -> Double
+pub fn CryptoasymdhNode::scale(Self, Double) -> Self
+pub fn CryptoasymdhNode::set(Self, Int32, Double) -> Self
+pub fn CryptoasymdhNode::sum(Self) -> Double
+pub fn CryptoasymdhNode::to_string(Self) -> String
+
+pub(all) struct CryptoasymdhPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymdhPath::add(Self, Self) -> Self
+pub fn CryptoasymdhPath::copy(Self) -> Self
+pub fn CryptoasymdhPath::fill(Self, Double) -> Self
+pub fn CryptoasymdhPath::get(Self, Int32) -> Double
+pub fn CryptoasymdhPath::len(Self) -> Int32
+pub fn CryptoasymdhPath::max(Self) -> Double
+pub fn CryptoasymdhPath::mean(Self) -> Double
+pub fn CryptoasymdhPath::min(Self) -> Double
+pub fn CryptoasymdhPath::scale(Self, Double) -> Self
+pub fn CryptoasymdhPath::set(Self, Int32, Double) -> Self
+pub fn CryptoasymdhPath::sum(Self) -> Double
+pub fn CryptoasymdhPath::to_string(Self) -> String
+
+pub(all) struct CryptoasymdhPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn CryptoasymdhPoint::add(Self, Self) -> Self
+pub fn CryptoasymdhPoint::cross(Self, Self) -> Self
+pub fn CryptoasymdhPoint::dist(Self, Self) -> Double
+pub fn CryptoasymdhPoint::dot(Self, Self) -> Double
+pub fn CryptoasymdhPoint::label(Self) -> Int32
+pub fn CryptoasymdhPoint::lerp(Self, Self, Double) -> Self
+pub fn CryptoasymdhPoint::mid(Self, Self) -> Self
+pub fn CryptoasymdhPoint::negate(Self) -> Self
+pub fn CryptoasymdhPoint::norm(Self) -> Double
+pub fn CryptoasymdhPoint::normalize(Self) -> Self
+pub fn CryptoasymdhPoint::scale(Self, Double) -> Self
+pub fn CryptoasymdhPoint::sub(Self, Self) -> Self
+pub fn CryptoasymdhPoint::to_string(Self) -> String
+pub fn CryptoasymdhPoint::x(Self) -> Double
+pub fn CryptoasymdhPoint::y(Self) -> Double
+pub fn CryptoasymdhPoint::z(Self) -> Double
+
+pub(all) struct CryptoasymdhRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymdhRange::add(Self, Self) -> Self
+pub fn CryptoasymdhRange::copy(Self) -> Self
+pub fn CryptoasymdhRange::fill(Self, Double) -> Self
+pub fn CryptoasymdhRange::get(Self, Int32) -> Double
+pub fn CryptoasymdhRange::len(Self) -> Int32
+pub fn CryptoasymdhRange::max(Self) -> Double
+pub fn CryptoasymdhRange::mean(Self) -> Double
+pub fn CryptoasymdhRange::min(Self) -> Double
+pub fn CryptoasymdhRange::scale(Self, Double) -> Self
+pub fn CryptoasymdhRange::set(Self, Int32, Double) -> Self
+pub fn CryptoasymdhRange::sum(Self) -> Double
+pub fn CryptoasymdhRange::to_string(Self) -> String
+
+pub(all) struct CryptoasymdhSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn CryptoasymdhSeries::add(Self, Self) -> Self
+pub fn CryptoasymdhSeries::cumsum(Self) -> Self
+pub fn CryptoasymdhSeries::len(Self) -> Int32
+pub fn CryptoasymdhSeries::max(Self) -> Double
+pub fn CryptoasymdhSeries::mean(Self) -> Double
+pub fn CryptoasymdhSeries::median(Self) -> Double
+pub fn CryptoasymdhSeries::min(Self) -> Double
+pub fn CryptoasymdhSeries::normalize(Self) -> Self
+pub fn CryptoasymdhSeries::range(Self) -> Double
+pub fn CryptoasymdhSeries::scale(Self, Double) -> Self
+pub fn CryptoasymdhSeries::std(Self) -> Double
+pub fn CryptoasymdhSeries::sub(Self, Self) -> Self
+pub fn CryptoasymdhSeries::sum(Self) -> Double
+pub fn CryptoasymdhSeries::to_string(Self) -> String
+pub fn CryptoasymdhSeries::variance(Self) -> Double
+
+pub(all) struct CryptoasymdhSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymdhSlice::add(Self, Self) -> Self
+pub fn CryptoasymdhSlice::copy(Self) -> Self
+pub fn CryptoasymdhSlice::fill(Self, Double) -> Self
+pub fn CryptoasymdhSlice::get(Self, Int32) -> Double
+pub fn CryptoasymdhSlice::len(Self) -> Int32
+pub fn CryptoasymdhSlice::max(Self) -> Double
+pub fn CryptoasymdhSlice::mean(Self) -> Double
+pub fn CryptoasymdhSlice::min(Self) -> Double
+pub fn CryptoasymdhSlice::scale(Self, Double) -> Self
+pub fn CryptoasymdhSlice::set(Self, Int32, Double) -> Self
+pub fn CryptoasymdhSlice::sum(Self) -> Double
+pub fn CryptoasymdhSlice::to_string(Self) -> String
+
+pub(all) struct CryptoasymdhTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymdhTable::add(Self, Self) -> Self
+pub fn CryptoasymdhTable::copy(Self) -> Self
+pub fn CryptoasymdhTable::fill(Self, Double) -> Self
+pub fn CryptoasymdhTable::get(Self, Int32) -> Double
+pub fn CryptoasymdhTable::len(Self) -> Int32
+pub fn CryptoasymdhTable::max(Self) -> Double
+pub fn CryptoasymdhTable::mean(Self) -> Double
+pub fn CryptoasymdhTable::min(Self) -> Double
+pub fn CryptoasymdhTable::scale(Self, Double) -> Self
+pub fn CryptoasymdhTable::set(Self, Int32, Double) -> Self
+pub fn CryptoasymdhTable::sum(Self) -> Double
+pub fn CryptoasymdhTable::to_string(Self) -> String
+
+pub(all) struct CryptoasymdhVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn CryptoasymdhVector::add(Self, Self) -> Self
+pub fn CryptoasymdhVector::dist(Self, Self) -> Double
+pub fn CryptoasymdhVector::dot(Self, Self) -> Double
+pub fn CryptoasymdhVector::norm(Self) -> Double
+pub fn CryptoasymdhVector::normalize(Self) -> Self
+pub fn CryptoasymdhVector::scale(Self, Double) -> Self
+pub fn CryptoasymdhVector::sub(Self, Self) -> Self
+pub fn CryptoasymdhVector::to_string(Self) -> String
+
+pub(all) struct CryptoasymdhView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptoasymdhView::add(Self, Self) -> Self
+pub fn CryptoasymdhView::copy(Self) -> Self
+pub fn CryptoasymdhView::fill(Self, Double) -> Self
+pub fn CryptoasymdhView::get(Self, Int32) -> Double
+pub fn CryptoasymdhView::len(Self) -> Int32
+pub fn CryptoasymdhView::max(Self) -> Double
+pub fn CryptoasymdhView::mean(Self) -> Double
+pub fn CryptoasymdhView::min(Self) -> Double
+pub fn CryptoasymdhView::scale(Self, Double) -> Self
+pub fn CryptoasymdhView::set(Self, Int32, Double) -> Self
+pub fn CryptoasymdhView::sum(Self) -> Double
+pub fn CryptoasymdhView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

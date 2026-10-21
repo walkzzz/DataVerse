@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/stats_dist_cauchy"
+
+// Values
+pub fn stats_dist_cauchy_buffer_make(Int32) -> StatsdistcauchyBuffer
+
+pub fn stats_dist_cauchy_cluster_make(Int32) -> StatsdistcauchyCluster
+
+pub fn stats_dist_cauchy_cursor_make(Int32) -> StatsdistcauchyCursor
+
+pub fn stats_dist_cauchy_edge_make(Int32) -> StatsdistcauchyEdge
+
+pub fn stats_dist_cauchy_frame_make(Int32) -> StatsdistcauchyFrame
+
+pub fn stats_dist_cauchy_graphn_make(Int32) -> StatsdistcauchyGraphN
+
+pub fn stats_dist_cauchy_layer_make(Int32) -> StatsdistcauchyLayer
+
+pub fn stats_dist_cauchy_make_matrix(Int32, Int32, Double) -> StatsdistcauchyMatrix
+
+pub fn stats_dist_cauchy_make_point(Double, Double) -> StatsdistcauchyPoint
+
+pub fn stats_dist_cauchy_make_point3(Double, Double, Double) -> StatsdistcauchyPoint
+
+pub fn stats_dist_cauchy_make_series(Array[Double], String) -> StatsdistcauchySeries
+
+pub fn stats_dist_cauchy_make_vector(Array[Double]) -> StatsdistcauchyVector
+
+pub fn stats_dist_cauchy_matrix_identity(Int32) -> StatsdistcauchyMatrix
+
+pub fn stats_dist_cauchy_model_make(Int32) -> StatsdistcauchyModel
+
+pub fn stats_dist_cauchy_node_make(Int32) -> StatsdistcauchyNode
+
+pub fn stats_dist_cauchy_path_make(Int32) -> StatsdistcauchyPath
+
+pub fn stats_dist_cauchy_range_make(Int32) -> StatsdistcauchyRange
+
+pub fn stats_dist_cauchy_slice_make(Int32) -> StatsdistcauchySlice
+
+pub fn stats_dist_cauchy_table_make(Int32) -> StatsdistcauchyTable
+
+pub fn stats_dist_cauchy_vector_zero(Int32) -> StatsdistcauchyVector
+
+pub fn stats_dist_cauchy_view_make(Int32) -> StatsdistcauchyView
+
+// Errors
+
+// Types and methods
+pub(all) struct StatsdistcauchyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistcauchyBuffer::add(Self, Self) -> Self
+pub fn StatsdistcauchyBuffer::copy(Self) -> Self
+pub fn StatsdistcauchyBuffer::fill(Self, Double) -> Self
+pub fn StatsdistcauchyBuffer::get(Self, Int32) -> Double
+pub fn StatsdistcauchyBuffer::len(Self) -> Int32
+pub fn StatsdistcauchyBuffer::max(Self) -> Double
+pub fn StatsdistcauchyBuffer::mean(Self) -> Double
+pub fn StatsdistcauchyBuffer::min(Self) -> Double
+pub fn StatsdistcauchyBuffer::scale(Self, Double) -> Self
+pub fn StatsdistcauchyBuffer::set(Self, Int32, Double) -> Self
+pub fn StatsdistcauchyBuffer::sum(Self) -> Double
+pub fn StatsdistcauchyBuffer::to_string(Self) -> String
+
+pub(all) struct StatsdistcauchyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistcauchyCluster::add(Self, Self) -> Self
+pub fn StatsdistcauchyCluster::copy(Self) -> Self
+pub fn StatsdistcauchyCluster::fill(Self, Double) -> Self
+pub fn StatsdistcauchyCluster::get(Self, Int32) -> Double
+pub fn StatsdistcauchyCluster::len(Self) -> Int32
+pub fn StatsdistcauchyCluster::max(Self) -> Double
+pub fn StatsdistcauchyCluster::mean(Self) -> Double
+pub fn StatsdistcauchyCluster::min(Self) -> Double
+pub fn StatsdistcauchyCluster::scale(Self, Double) -> Self
+pub fn StatsdistcauchyCluster::set(Self, Int32, Double) -> Self
+pub fn StatsdistcauchyCluster::sum(Self) -> Double
+pub fn StatsdistcauchyCluster::to_string(Self) -> String
+
+pub(all) struct StatsdistcauchyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistcauchyCursor::add(Self, Self) -> Self
+pub fn StatsdistcauchyCursor::copy(Self) -> Self
+pub fn StatsdistcauchyCursor::fill(Self, Double) -> Self
+pub fn StatsdistcauchyCursor::get(Self, Int32) -> Double
+pub fn StatsdistcauchyCursor::len(Self) -> Int32
+pub fn StatsdistcauchyCursor::max(Self) -> Double
+pub fn StatsdistcauchyCursor::mean(Self) -> Double
+pub fn StatsdistcauchyCursor::min(Self) -> Double
+pub fn StatsdistcauchyCursor::scale(Self, Double) -> Self
+pub fn StatsdistcauchyCursor::set(Self, Int32, Double) -> Self
+pub fn StatsdistcauchyCursor::sum(Self) -> Double
+pub fn StatsdistcauchyCursor::to_string(Self) -> String
+
+pub(all) struct StatsdistcauchyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistcauchyEdge::add(Self, Self) -> Self
+pub fn StatsdistcauchyEdge::copy(Self) -> Self
+pub fn StatsdistcauchyEdge::fill(Self, Double) -> Self
+pub fn StatsdistcauchyEdge::get(Self, Int32) -> Double
+pub fn StatsdistcauchyEdge::len(Self) -> Int32
+pub fn StatsdistcauchyEdge::max(Self) -> Double
+pub fn StatsdistcauchyEdge::mean(Self) -> Double
+pub fn StatsdistcauchyEdge::min(Self) -> Double
+pub fn StatsdistcauchyEdge::scale(Self, Double) -> Self
+pub fn StatsdistcauchyEdge::set(Self, Int32, Double) -> Self
+pub fn StatsdistcauchyEdge::sum(Self) -> Double
+pub fn StatsdistcauchyEdge::to_string(Self) -> String
+
+pub(all) struct StatsdistcauchyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistcauchyFrame::add(Self, Self) -> Self
+pub fn StatsdistcauchyFrame::copy(Self) -> Self
+pub fn StatsdistcauchyFrame::fill(Self, Double) -> Self
+pub fn StatsdistcauchyFrame::get(Self, Int32) -> Double
+pub fn StatsdistcauchyFrame::len(Self) -> Int32
+pub fn StatsdistcauchyFrame::max(Self) -> Double
+pub fn StatsdistcauchyFrame::mean(Self) -> Double
+pub fn StatsdistcauchyFrame::min(Self) -> Double
+pub fn StatsdistcauchyFrame::scale(Self, Double) -> Self
+pub fn StatsdistcauchyFrame::set(Self, Int32, Double) -> Self
+pub fn StatsdistcauchyFrame::sum(Self) -> Double
+pub fn StatsdistcauchyFrame::to_string(Self) -> String
+
+pub(all) struct StatsdistcauchyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistcauchyGraphN::add(Self, Self) -> Self
+pub fn StatsdistcauchyGraphN::copy(Self) -> Self
+pub fn StatsdistcauchyGraphN::fill(Self, Double) -> Self
+pub fn StatsdistcauchyGraphN::get(Self, Int32) -> Double
+pub fn StatsdistcauchyGraphN::len(Self) -> Int32
+pub fn StatsdistcauchyGraphN::max(Self) -> Double
+pub fn StatsdistcauchyGraphN::mean(Self) -> Double
+pub fn StatsdistcauchyGraphN::min(Self) -> Double
+pub fn StatsdistcauchyGraphN::scale(Self, Double) -> Self
+pub fn StatsdistcauchyGraphN::set(Self, Int32, Double) -> Self
+pub fn StatsdistcauchyGraphN::sum(Self) -> Double
+pub fn StatsdistcauchyGraphN::to_string(Self) -> String
+
+pub(all) struct StatsdistcauchyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistcauchyLayer::add(Self, Self) -> Self
+pub fn StatsdistcauchyLayer::copy(Self) -> Self
+pub fn StatsdistcauchyLayer::fill(Self, Double) -> Self
+pub fn StatsdistcauchyLayer::get(Self, Int32) -> Double
+pub fn StatsdistcauchyLayer::len(Self) -> Int32
+pub fn StatsdistcauchyLayer::max(Self) -> Double
+pub fn StatsdistcauchyLayer::mean(Self) -> Double
+pub fn StatsdistcauchyLayer::min(Self) -> Double
+pub fn StatsdistcauchyLayer::scale(Self, Double) -> Self
+pub fn StatsdistcauchyLayer::set(Self, Int32, Double) -> Self
+pub fn StatsdistcauchyLayer::sum(Self) -> Double
+pub fn StatsdistcauchyLayer::to_string(Self) -> String
+
+pub(all) struct StatsdistcauchyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn StatsdistcauchyMatrix::add(Self, Self) -> Self
+pub fn StatsdistcauchyMatrix::det(Self) -> Double
+pub fn StatsdistcauchyMatrix::get(Self, Int32, Int32) -> Double
+pub fn StatsdistcauchyMatrix::multiply(Self, Self) -> Self
+pub fn StatsdistcauchyMatrix::norm(Self) -> Double
+pub fn StatsdistcauchyMatrix::scale(Self, Double) -> Self
+pub fn StatsdistcauchyMatrix::to_string(Self) -> String
+pub fn StatsdistcauchyMatrix::trace(Self) -> Double
+pub fn StatsdistcauchyMatrix::transpose(Self) -> Self
+
+pub(all) struct StatsdistcauchyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistcauchyModel::add(Self, Self) -> Self
+pub fn StatsdistcauchyModel::copy(Self) -> Self
+pub fn StatsdistcauchyModel::fill(Self, Double) -> Self
+pub fn StatsdistcauchyModel::get(Self, Int32) -> Double
+pub fn StatsdistcauchyModel::len(Self) -> Int32
+pub fn StatsdistcauchyModel::max(Self) -> Double
+pub fn StatsdistcauchyModel::mean(Self) -> Double
+pub fn StatsdistcauchyModel::min(Self) -> Double
+pub fn StatsdistcauchyModel::scale(Self, Double) -> Self
+pub fn StatsdistcauchyModel::set(Self, Int32, Double) -> Self
+pub fn StatsdistcauchyModel::sum(Self) -> Double
+pub fn StatsdistcauchyModel::to_string(Self) -> String
+
+pub(all) struct StatsdistcauchyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistcauchyNode::add(Self, Self) -> Self
+pub fn StatsdistcauchyNode::copy(Self) -> Self
+pub fn StatsdistcauchyNode::fill(Self, Double) -> Self
+pub fn StatsdistcauchyNode::get(Self, Int32) -> Double
+pub fn StatsdistcauchyNode::len(Self) -> Int32
+pub fn StatsdistcauchyNode::max(Self) -> Double
+pub fn StatsdistcauchyNode::mean(Self) -> Double
+pub fn StatsdistcauchyNode::min(Self) -> Double
+pub fn StatsdistcauchyNode::scale(Self, Double) -> Self
+pub fn StatsdistcauchyNode::set(Self, Int32, Double) -> Self
+pub fn StatsdistcauchyNode::sum(Self) -> Double
+pub fn StatsdistcauchyNode::to_string(Self) -> String
+
+pub(all) struct StatsdistcauchyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistcauchyPath::add(Self, Self) -> Self
+pub fn StatsdistcauchyPath::copy(Self) -> Self
+pub fn StatsdistcauchyPath::fill(Self, Double) -> Self
+pub fn StatsdistcauchyPath::get(Self, Int32) -> Double
+pub fn StatsdistcauchyPath::len(Self) -> Int32
+pub fn StatsdistcauchyPath::max(Self) -> Double
+pub fn StatsdistcauchyPath::mean(Self) -> Double
+pub fn StatsdistcauchyPath::min(Self) -> Double
+pub fn StatsdistcauchyPath::scale(Self, Double) -> Self
+pub fn StatsdistcauchyPath::set(Self, Int32, Double) -> Self
+pub fn StatsdistcauchyPath::sum(Self) -> Double
+pub fn StatsdistcauchyPath::to_string(Self) -> String
+
+pub(all) struct StatsdistcauchyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn StatsdistcauchyPoint::add(Self, Self) -> Self
+pub fn StatsdistcauchyPoint::cross(Self, Self) -> Self
+pub fn StatsdistcauchyPoint::dist(Self, Self) -> Double
+pub fn StatsdistcauchyPoint::dot(Self, Self) -> Double
+pub fn StatsdistcauchyPoint::label(Self) -> Int32
+pub fn StatsdistcauchyPoint::lerp(Self, Self, Double) -> Self
+pub fn StatsdistcauchyPoint::mid(Self, Self) -> Self
+pub fn StatsdistcauchyPoint::negate(Self) -> Self
+pub fn StatsdistcauchyPoint::norm(Self) -> Double
+pub fn StatsdistcauchyPoint::normalize(Self) -> Self
+pub fn StatsdistcauchyPoint::scale(Self, Double) -> Self
+pub fn StatsdistcauchyPoint::sub(Self, Self) -> Self
+pub fn StatsdistcauchyPoint::to_string(Self) -> String
+pub fn StatsdistcauchyPoint::x(Self) -> Double
+pub fn StatsdistcauchyPoint::y(Self) -> Double
+pub fn StatsdistcauchyPoint::z(Self) -> Double
+
+pub(all) struct StatsdistcauchyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistcauchyRange::add(Self, Self) -> Self
+pub fn StatsdistcauchyRange::copy(Self) -> Self
+pub fn StatsdistcauchyRange::fill(Self, Double) -> Self
+pub fn StatsdistcauchyRange::get(Self, Int32) -> Double
+pub fn StatsdistcauchyRange::len(Self) -> Int32
+pub fn StatsdistcauchyRange::max(Self) -> Double
+pub fn StatsdistcauchyRange::mean(Self) -> Double
+pub fn StatsdistcauchyRange::min(Self) -> Double
+pub fn StatsdistcauchyRange::scale(Self, Double) -> Self
+pub fn StatsdistcauchyRange::set(Self, Int32, Double) -> Self
+pub fn StatsdistcauchyRange::sum(Self) -> Double
+pub fn StatsdistcauchyRange::to_string(Self) -> String
+
+pub(all) struct StatsdistcauchySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn StatsdistcauchySeries::add(Self, Self) -> Self
+pub fn StatsdistcauchySeries::cumsum(Self) -> Self
+pub fn StatsdistcauchySeries::len(Self) -> Int32
+pub fn StatsdistcauchySeries::max(Self) -> Double
+pub fn StatsdistcauchySeries::mean(Self) -> Double
+pub fn StatsdistcauchySeries::median(Self) -> Double
+pub fn StatsdistcauchySeries::min(Self) -> Double
+pub fn StatsdistcauchySeries::normalize(Self) -> Self
+pub fn StatsdistcauchySeries::range(Self) -> Double
+pub fn StatsdistcauchySeries::scale(Self, Double) -> Self
+pub fn StatsdistcauchySeries::std(Self) -> Double
+pub fn StatsdistcauchySeries::sub(Self, Self) -> Self
+pub fn StatsdistcauchySeries::sum(Self) -> Double
+pub fn StatsdistcauchySeries::to_string(Self) -> String
+pub fn StatsdistcauchySeries::variance(Self) -> Double
+
+pub(all) struct StatsdistcauchySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistcauchySlice::add(Self, Self) -> Self
+pub fn StatsdistcauchySlice::copy(Self) -> Self
+pub fn StatsdistcauchySlice::fill(Self, Double) -> Self
+pub fn StatsdistcauchySlice::get(Self, Int32) -> Double
+pub fn StatsdistcauchySlice::len(Self) -> Int32
+pub fn StatsdistcauchySlice::max(Self) -> Double
+pub fn StatsdistcauchySlice::mean(Self) -> Double
+pub fn StatsdistcauchySlice::min(Self) -> Double
+pub fn StatsdistcauchySlice::scale(Self, Double) -> Self
+pub fn StatsdistcauchySlice::set(Self, Int32, Double) -> Self
+pub fn StatsdistcauchySlice::sum(Self) -> Double
+pub fn StatsdistcauchySlice::to_string(Self) -> String
+
+pub(all) struct StatsdistcauchyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistcauchyTable::add(Self, Self) -> Self
+pub fn StatsdistcauchyTable::copy(Self) -> Self
+pub fn StatsdistcauchyTable::fill(Self, Double) -> Self
+pub fn StatsdistcauchyTable::get(Self, Int32) -> Double
+pub fn StatsdistcauchyTable::len(Self) -> Int32
+pub fn StatsdistcauchyTable::max(Self) -> Double
+pub fn StatsdistcauchyTable::mean(Self) -> Double
+pub fn StatsdistcauchyTable::min(Self) -> Double
+pub fn StatsdistcauchyTable::scale(Self, Double) -> Self
+pub fn StatsdistcauchyTable::set(Self, Int32, Double) -> Self
+pub fn StatsdistcauchyTable::sum(Self) -> Double
+pub fn StatsdistcauchyTable::to_string(Self) -> String
+
+pub(all) struct StatsdistcauchyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn StatsdistcauchyVector::add(Self, Self) -> Self
+pub fn StatsdistcauchyVector::dist(Self, Self) -> Double
+pub fn StatsdistcauchyVector::dot(Self, Self) -> Double
+pub fn StatsdistcauchyVector::norm(Self) -> Double
+pub fn StatsdistcauchyVector::normalize(Self) -> Self
+pub fn StatsdistcauchyVector::scale(Self, Double) -> Self
+pub fn StatsdistcauchyVector::sub(Self, Self) -> Self
+pub fn StatsdistcauchyVector::to_string(Self) -> String
+
+pub(all) struct StatsdistcauchyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistcauchyView::add(Self, Self) -> Self
+pub fn StatsdistcauchyView::copy(Self) -> Self
+pub fn StatsdistcauchyView::fill(Self, Double) -> Self
+pub fn StatsdistcauchyView::get(Self, Int32) -> Double
+pub fn StatsdistcauchyView::len(Self) -> Int32
+pub fn StatsdistcauchyView::max(Self) -> Double
+pub fn StatsdistcauchyView::mean(Self) -> Double
+pub fn StatsdistcauchyView::min(Self) -> Double
+pub fn StatsdistcauchyView::scale(Self, Double) -> Self
+pub fn StatsdistcauchyView::set(Self, Int32, Double) -> Self
+pub fn StatsdistcauchyView::sum(Self) -> Double
+pub fn StatsdistcauchyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

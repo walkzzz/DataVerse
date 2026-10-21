@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_proj_conic"
+
+// Values
+pub fn geo_proj_conic_buffer_make(Int32) -> GeoprojconicBuffer
+
+pub fn geo_proj_conic_cluster_make(Int32) -> GeoprojconicCluster
+
+pub fn geo_proj_conic_cursor_make(Int32) -> GeoprojconicCursor
+
+pub fn geo_proj_conic_edge_make(Int32) -> GeoprojconicEdge
+
+pub fn geo_proj_conic_frame_make(Int32) -> GeoprojconicFrame
+
+pub fn geo_proj_conic_graphn_make(Int32) -> GeoprojconicGraphN
+
+pub fn geo_proj_conic_layer_make(Int32) -> GeoprojconicLayer
+
+pub fn geo_proj_conic_make_matrix(Int32, Int32, Double) -> GeoprojconicMatrix
+
+pub fn geo_proj_conic_make_point(Double, Double) -> GeoprojconicPoint
+
+pub fn geo_proj_conic_make_point3(Double, Double, Double) -> GeoprojconicPoint
+
+pub fn geo_proj_conic_make_series(Array[Double], String) -> GeoprojconicSeries
+
+pub fn geo_proj_conic_make_vector(Array[Double]) -> GeoprojconicVector
+
+pub fn geo_proj_conic_matrix_identity(Int32) -> GeoprojconicMatrix
+
+pub fn geo_proj_conic_model_make(Int32) -> GeoprojconicModel
+
+pub fn geo_proj_conic_node_make(Int32) -> GeoprojconicNode
+
+pub fn geo_proj_conic_path_make(Int32) -> GeoprojconicPath
+
+pub fn geo_proj_conic_range_make(Int32) -> GeoprojconicRange
+
+pub fn geo_proj_conic_slice_make(Int32) -> GeoprojconicSlice
+
+pub fn geo_proj_conic_table_make(Int32) -> GeoprojconicTable
+
+pub fn geo_proj_conic_vector_zero(Int32) -> GeoprojconicVector
+
+pub fn geo_proj_conic_view_make(Int32) -> GeoprojconicView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeoprojconicBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojconicBuffer::add(Self, Self) -> Self
+pub fn GeoprojconicBuffer::copy(Self) -> Self
+pub fn GeoprojconicBuffer::fill(Self, Double) -> Self
+pub fn GeoprojconicBuffer::get(Self, Int32) -> Double
+pub fn GeoprojconicBuffer::len(Self) -> Int32
+pub fn GeoprojconicBuffer::max(Self) -> Double
+pub fn GeoprojconicBuffer::mean(Self) -> Double
+pub fn GeoprojconicBuffer::min(Self) -> Double
+pub fn GeoprojconicBuffer::scale(Self, Double) -> Self
+pub fn GeoprojconicBuffer::set(Self, Int32, Double) -> Self
+pub fn GeoprojconicBuffer::sum(Self) -> Double
+pub fn GeoprojconicBuffer::to_string(Self) -> String
+
+pub(all) struct GeoprojconicCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojconicCluster::add(Self, Self) -> Self
+pub fn GeoprojconicCluster::copy(Self) -> Self
+pub fn GeoprojconicCluster::fill(Self, Double) -> Self
+pub fn GeoprojconicCluster::get(Self, Int32) -> Double
+pub fn GeoprojconicCluster::len(Self) -> Int32
+pub fn GeoprojconicCluster::max(Self) -> Double
+pub fn GeoprojconicCluster::mean(Self) -> Double
+pub fn GeoprojconicCluster::min(Self) -> Double
+pub fn GeoprojconicCluster::scale(Self, Double) -> Self
+pub fn GeoprojconicCluster::set(Self, Int32, Double) -> Self
+pub fn GeoprojconicCluster::sum(Self) -> Double
+pub fn GeoprojconicCluster::to_string(Self) -> String
+
+pub(all) struct GeoprojconicCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojconicCursor::add(Self, Self) -> Self
+pub fn GeoprojconicCursor::copy(Self) -> Self
+pub fn GeoprojconicCursor::fill(Self, Double) -> Self
+pub fn GeoprojconicCursor::get(Self, Int32) -> Double
+pub fn GeoprojconicCursor::len(Self) -> Int32
+pub fn GeoprojconicCursor::max(Self) -> Double
+pub fn GeoprojconicCursor::mean(Self) -> Double
+pub fn GeoprojconicCursor::min(Self) -> Double
+pub fn GeoprojconicCursor::scale(Self, Double) -> Self
+pub fn GeoprojconicCursor::set(Self, Int32, Double) -> Self
+pub fn GeoprojconicCursor::sum(Self) -> Double
+pub fn GeoprojconicCursor::to_string(Self) -> String
+
+pub(all) struct GeoprojconicEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojconicEdge::add(Self, Self) -> Self
+pub fn GeoprojconicEdge::copy(Self) -> Self
+pub fn GeoprojconicEdge::fill(Self, Double) -> Self
+pub fn GeoprojconicEdge::get(Self, Int32) -> Double
+pub fn GeoprojconicEdge::len(Self) -> Int32
+pub fn GeoprojconicEdge::max(Self) -> Double
+pub fn GeoprojconicEdge::mean(Self) -> Double
+pub fn GeoprojconicEdge::min(Self) -> Double
+pub fn GeoprojconicEdge::scale(Self, Double) -> Self
+pub fn GeoprojconicEdge::set(Self, Int32, Double) -> Self
+pub fn GeoprojconicEdge::sum(Self) -> Double
+pub fn GeoprojconicEdge::to_string(Self) -> String
+
+pub(all) struct GeoprojconicFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojconicFrame::add(Self, Self) -> Self
+pub fn GeoprojconicFrame::copy(Self) -> Self
+pub fn GeoprojconicFrame::fill(Self, Double) -> Self
+pub fn GeoprojconicFrame::get(Self, Int32) -> Double
+pub fn GeoprojconicFrame::len(Self) -> Int32
+pub fn GeoprojconicFrame::max(Self) -> Double
+pub fn GeoprojconicFrame::mean(Self) -> Double
+pub fn GeoprojconicFrame::min(Self) -> Double
+pub fn GeoprojconicFrame::scale(Self, Double) -> Self
+pub fn GeoprojconicFrame::set(Self, Int32, Double) -> Self
+pub fn GeoprojconicFrame::sum(Self) -> Double
+pub fn GeoprojconicFrame::to_string(Self) -> String
+
+pub(all) struct GeoprojconicGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojconicGraphN::add(Self, Self) -> Self
+pub fn GeoprojconicGraphN::copy(Self) -> Self
+pub fn GeoprojconicGraphN::fill(Self, Double) -> Self
+pub fn GeoprojconicGraphN::get(Self, Int32) -> Double
+pub fn GeoprojconicGraphN::len(Self) -> Int32
+pub fn GeoprojconicGraphN::max(Self) -> Double
+pub fn GeoprojconicGraphN::mean(Self) -> Double
+pub fn GeoprojconicGraphN::min(Self) -> Double
+pub fn GeoprojconicGraphN::scale(Self, Double) -> Self
+pub fn GeoprojconicGraphN::set(Self, Int32, Double) -> Self
+pub fn GeoprojconicGraphN::sum(Self) -> Double
+pub fn GeoprojconicGraphN::to_string(Self) -> String
+
+pub(all) struct GeoprojconicLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojconicLayer::add(Self, Self) -> Self
+pub fn GeoprojconicLayer::copy(Self) -> Self
+pub fn GeoprojconicLayer::fill(Self, Double) -> Self
+pub fn GeoprojconicLayer::get(Self, Int32) -> Double
+pub fn GeoprojconicLayer::len(Self) -> Int32
+pub fn GeoprojconicLayer::max(Self) -> Double
+pub fn GeoprojconicLayer::mean(Self) -> Double
+pub fn GeoprojconicLayer::min(Self) -> Double
+pub fn GeoprojconicLayer::scale(Self, Double) -> Self
+pub fn GeoprojconicLayer::set(Self, Int32, Double) -> Self
+pub fn GeoprojconicLayer::sum(Self) -> Double
+pub fn GeoprojconicLayer::to_string(Self) -> String
+
+pub(all) struct GeoprojconicMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeoprojconicMatrix::add(Self, Self) -> Self
+pub fn GeoprojconicMatrix::det(Self) -> Double
+pub fn GeoprojconicMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeoprojconicMatrix::multiply(Self, Self) -> Self
+pub fn GeoprojconicMatrix::norm(Self) -> Double
+pub fn GeoprojconicMatrix::scale(Self, Double) -> Self
+pub fn GeoprojconicMatrix::to_string(Self) -> String
+pub fn GeoprojconicMatrix::trace(Self) -> Double
+pub fn GeoprojconicMatrix::transpose(Self) -> Self
+
+pub(all) struct GeoprojconicModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojconicModel::add(Self, Self) -> Self
+pub fn GeoprojconicModel::copy(Self) -> Self
+pub fn GeoprojconicModel::fill(Self, Double) -> Self
+pub fn GeoprojconicModel::get(Self, Int32) -> Double
+pub fn GeoprojconicModel::len(Self) -> Int32
+pub fn GeoprojconicModel::max(Self) -> Double
+pub fn GeoprojconicModel::mean(Self) -> Double
+pub fn GeoprojconicModel::min(Self) -> Double
+pub fn GeoprojconicModel::scale(Self, Double) -> Self
+pub fn GeoprojconicModel::set(Self, Int32, Double) -> Self
+pub fn GeoprojconicModel::sum(Self) -> Double
+pub fn GeoprojconicModel::to_string(Self) -> String
+
+pub(all) struct GeoprojconicNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojconicNode::add(Self, Self) -> Self
+pub fn GeoprojconicNode::copy(Self) -> Self
+pub fn GeoprojconicNode::fill(Self, Double) -> Self
+pub fn GeoprojconicNode::get(Self, Int32) -> Double
+pub fn GeoprojconicNode::len(Self) -> Int32
+pub fn GeoprojconicNode::max(Self) -> Double
+pub fn GeoprojconicNode::mean(Self) -> Double
+pub fn GeoprojconicNode::min(Self) -> Double
+pub fn GeoprojconicNode::scale(Self, Double) -> Self
+pub fn GeoprojconicNode::set(Self, Int32, Double) -> Self
+pub fn GeoprojconicNode::sum(Self) -> Double
+pub fn GeoprojconicNode::to_string(Self) -> String
+
+pub(all) struct GeoprojconicPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojconicPath::add(Self, Self) -> Self
+pub fn GeoprojconicPath::copy(Self) -> Self
+pub fn GeoprojconicPath::fill(Self, Double) -> Self
+pub fn GeoprojconicPath::get(Self, Int32) -> Double
+pub fn GeoprojconicPath::len(Self) -> Int32
+pub fn GeoprojconicPath::max(Self) -> Double
+pub fn GeoprojconicPath::mean(Self) -> Double
+pub fn GeoprojconicPath::min(Self) -> Double
+pub fn GeoprojconicPath::scale(Self, Double) -> Self
+pub fn GeoprojconicPath::set(Self, Int32, Double) -> Self
+pub fn GeoprojconicPath::sum(Self) -> Double
+pub fn GeoprojconicPath::to_string(Self) -> String
+
+pub(all) struct GeoprojconicPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeoprojconicPoint::add(Self, Self) -> Self
+pub fn GeoprojconicPoint::cross(Self, Self) -> Self
+pub fn GeoprojconicPoint::dist(Self, Self) -> Double
+pub fn GeoprojconicPoint::dot(Self, Self) -> Double
+pub fn GeoprojconicPoint::label(Self) -> Int32
+pub fn GeoprojconicPoint::lerp(Self, Self, Double) -> Self
+pub fn GeoprojconicPoint::mid(Self, Self) -> Self
+pub fn GeoprojconicPoint::negate(Self) -> Self
+pub fn GeoprojconicPoint::norm(Self) -> Double
+pub fn GeoprojconicPoint::normalize(Self) -> Self
+pub fn GeoprojconicPoint::scale(Self, Double) -> Self
+pub fn GeoprojconicPoint::sub(Self, Self) -> Self
+pub fn GeoprojconicPoint::to_string(Self) -> String
+pub fn GeoprojconicPoint::x(Self) -> Double
+pub fn GeoprojconicPoint::y(Self) -> Double
+pub fn GeoprojconicPoint::z(Self) -> Double
+
+pub(all) struct GeoprojconicRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojconicRange::add(Self, Self) -> Self
+pub fn GeoprojconicRange::copy(Self) -> Self
+pub fn GeoprojconicRange::fill(Self, Double) -> Self
+pub fn GeoprojconicRange::get(Self, Int32) -> Double
+pub fn GeoprojconicRange::len(Self) -> Int32
+pub fn GeoprojconicRange::max(Self) -> Double
+pub fn GeoprojconicRange::mean(Self) -> Double
+pub fn GeoprojconicRange::min(Self) -> Double
+pub fn GeoprojconicRange::scale(Self, Double) -> Self
+pub fn GeoprojconicRange::set(Self, Int32, Double) -> Self
+pub fn GeoprojconicRange::sum(Self) -> Double
+pub fn GeoprojconicRange::to_string(Self) -> String
+
+pub(all) struct GeoprojconicSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeoprojconicSeries::add(Self, Self) -> Self
+pub fn GeoprojconicSeries::cumsum(Self) -> Self
+pub fn GeoprojconicSeries::len(Self) -> Int32
+pub fn GeoprojconicSeries::max(Self) -> Double
+pub fn GeoprojconicSeries::mean(Self) -> Double
+pub fn GeoprojconicSeries::median(Self) -> Double
+pub fn GeoprojconicSeries::min(Self) -> Double
+pub fn GeoprojconicSeries::normalize(Self) -> Self
+pub fn GeoprojconicSeries::range(Self) -> Double
+pub fn GeoprojconicSeries::scale(Self, Double) -> Self
+pub fn GeoprojconicSeries::std(Self) -> Double
+pub fn GeoprojconicSeries::sub(Self, Self) -> Self
+pub fn GeoprojconicSeries::sum(Self) -> Double
+pub fn GeoprojconicSeries::to_string(Self) -> String
+pub fn GeoprojconicSeries::variance(Self) -> Double
+
+pub(all) struct GeoprojconicSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojconicSlice::add(Self, Self) -> Self
+pub fn GeoprojconicSlice::copy(Self) -> Self
+pub fn GeoprojconicSlice::fill(Self, Double) -> Self
+pub fn GeoprojconicSlice::get(Self, Int32) -> Double
+pub fn GeoprojconicSlice::len(Self) -> Int32
+pub fn GeoprojconicSlice::max(Self) -> Double
+pub fn GeoprojconicSlice::mean(Self) -> Double
+pub fn GeoprojconicSlice::min(Self) -> Double
+pub fn GeoprojconicSlice::scale(Self, Double) -> Self
+pub fn GeoprojconicSlice::set(Self, Int32, Double) -> Self
+pub fn GeoprojconicSlice::sum(Self) -> Double
+pub fn GeoprojconicSlice::to_string(Self) -> String
+
+pub(all) struct GeoprojconicTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojconicTable::add(Self, Self) -> Self
+pub fn GeoprojconicTable::copy(Self) -> Self
+pub fn GeoprojconicTable::fill(Self, Double) -> Self
+pub fn GeoprojconicTable::get(Self, Int32) -> Double
+pub fn GeoprojconicTable::len(Self) -> Int32
+pub fn GeoprojconicTable::max(Self) -> Double
+pub fn GeoprojconicTable::mean(Self) -> Double
+pub fn GeoprojconicTable::min(Self) -> Double
+pub fn GeoprojconicTable::scale(Self, Double) -> Self
+pub fn GeoprojconicTable::set(Self, Int32, Double) -> Self
+pub fn GeoprojconicTable::sum(Self) -> Double
+pub fn GeoprojconicTable::to_string(Self) -> String
+
+pub(all) struct GeoprojconicVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeoprojconicVector::add(Self, Self) -> Self
+pub fn GeoprojconicVector::dist(Self, Self) -> Double
+pub fn GeoprojconicVector::dot(Self, Self) -> Double
+pub fn GeoprojconicVector::norm(Self) -> Double
+pub fn GeoprojconicVector::normalize(Self) -> Self
+pub fn GeoprojconicVector::scale(Self, Double) -> Self
+pub fn GeoprojconicVector::sub(Self, Self) -> Self
+pub fn GeoprojconicVector::to_string(Self) -> String
+
+pub(all) struct GeoprojconicView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojconicView::add(Self, Self) -> Self
+pub fn GeoprojconicView::copy(Self) -> Self
+pub fn GeoprojconicView::fill(Self, Double) -> Self
+pub fn GeoprojconicView::get(Self, Int32) -> Double
+pub fn GeoprojconicView::len(Self) -> Int32
+pub fn GeoprojconicView::max(Self) -> Double
+pub fn GeoprojconicView::mean(Self) -> Double
+pub fn GeoprojconicView::min(Self) -> Double
+pub fn GeoprojconicView::scale(Self, Double) -> Self
+pub fn GeoprojconicView::set(Self, Int32, Double) -> Self
+pub fn GeoprojconicView::sum(Self) -> Double
+pub fn GeoprojconicView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

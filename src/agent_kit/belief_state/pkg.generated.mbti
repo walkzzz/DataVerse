@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/belief_state"
+
+// Values
+pub fn belief_state_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn belief_state_corr(Array[Double], Array[Double]) -> Double
+
+pub fn belief_state_cov(Array[Double], Array[Double]) -> Double
+
+pub fn belief_state_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn belief_state_mae(Array[Double], Array[Double]) -> Double
+
+pub fn belief_state_make_labeled_point(Double, Double, Int32) -> Belief_statePoint
+
+pub fn belief_state_make_matrix(Int32, Int32, Double) -> Belief_stateMatrix
+
+pub fn belief_state_make_point(Double, Double) -> Belief_statePoint
+
+pub fn belief_state_make_series(Array[Double], String) -> Belief_stateSeries
+
+pub fn belief_state_make_vector(Array[Double]) -> Belief_stateVector
+
+pub fn belief_state_matrix_add(Belief_stateMatrix, Belief_stateMatrix) -> Belief_stateMatrix
+
+pub fn belief_state_matrix_get(Belief_stateMatrix, Int32, Int32) -> Double
+
+pub fn belief_state_matrix_identity(Int32) -> Belief_stateMatrix
+
+pub fn belief_state_matrix_multiply(Belief_stateMatrix, Belief_stateMatrix) -> Belief_stateMatrix
+
+pub fn belief_state_matrix_norm(Belief_stateMatrix) -> Double
+
+pub fn belief_state_matrix_scale(Belief_stateMatrix, Double) -> Belief_stateMatrix
+
+pub fn belief_state_matrix_to_string(Belief_stateMatrix) -> String
+
+pub fn belief_state_matrix_trace(Belief_stateMatrix) -> Double
+
+pub fn belief_state_matrix_transpose(Belief_stateMatrix) -> Belief_stateMatrix
+
+pub fn belief_state_mse(Array[Double], Array[Double]) -> Double
+
+pub fn belief_state_point_add(Belief_statePoint, Belief_statePoint) -> Belief_statePoint
+
+pub fn belief_state_point_dist(Belief_statePoint, Belief_statePoint) -> Double
+
+pub fn belief_state_point_dot(Belief_statePoint, Belief_statePoint) -> Double
+
+pub fn belief_state_point_label(Belief_statePoint) -> Int32
+
+pub fn belief_state_point_norm(Belief_statePoint) -> Double
+
+pub fn belief_state_point_scale(Belief_statePoint, Double) -> Belief_statePoint
+
+pub fn belief_state_point_sub(Belief_statePoint, Belief_statePoint) -> Belief_statePoint
+
+pub fn belief_state_point_to_string(Belief_statePoint) -> String
+
+pub fn belief_state_point_x(Belief_statePoint) -> Double
+
+pub fn belief_state_point_y(Belief_statePoint) -> Double
+
+pub fn belief_state_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn belief_state_r2(Array[Double], Array[Double]) -> Double
+
+pub fn belief_state_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn belief_state_series_add(Belief_stateSeries, Belief_stateSeries) -> Belief_stateSeries
+
+pub fn belief_state_series_len(Belief_stateSeries) -> Int32
+
+pub fn belief_state_series_max(Belief_stateSeries) -> Double
+
+pub fn belief_state_series_mean(Belief_stateSeries) -> Double
+
+pub fn belief_state_series_min(Belief_stateSeries) -> Double
+
+pub fn belief_state_series_scale(Belief_stateSeries, Double) -> Belief_stateSeries
+
+pub fn belief_state_series_std(Belief_stateSeries) -> Double
+
+pub fn belief_state_series_sum(Belief_stateSeries) -> Double
+
+pub fn belief_state_series_to_string(Belief_stateSeries) -> String
+
+pub fn belief_state_series_var(Belief_stateSeries) -> Double
+
+pub fn belief_state_std(Array[Double]) -> Double
+
+pub fn belief_state_var(Array[Double]) -> Double
+
+pub fn belief_state_vector_add(Belief_stateVector, Belief_stateVector) -> Belief_stateVector
+
+pub fn belief_state_vector_dist(Belief_stateVector, Belief_stateVector) -> Double
+
+pub fn belief_state_vector_dot(Belief_stateVector, Belief_stateVector) -> Double
+
+pub fn belief_state_vector_norm(Belief_stateVector) -> Double
+
+pub fn belief_state_vector_normalize(Belief_stateVector) -> Belief_stateVector
+
+pub fn belief_state_vector_scale(Belief_stateVector, Double) -> Belief_stateVector
+
+pub fn belief_state_vector_sub(Belief_stateVector, Belief_stateVector) -> Belief_stateVector
+
+pub fn belief_state_vector_to_string(Belief_stateVector) -> String
+
+pub fn belief_state_vector_zero(Int32) -> Belief_stateVector
+
+// Errors
+
+// Types and methods
+pub struct Belief_stateMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Belief_statePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Belief_stateSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Belief_stateVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/wavelet_cwt"
+
+// Values
+pub fn wavelet_cwt_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn wavelet_cwt_corr(Array[Double], Array[Double]) -> Double
+
+pub fn wavelet_cwt_cov(Array[Double], Array[Double]) -> Double
+
+pub fn wavelet_cwt_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn wavelet_cwt_mae(Array[Double], Array[Double]) -> Double
+
+pub fn wavelet_cwt_make_labeled_point(Double, Double, Int32) -> Wavelet_cwtPoint
+
+pub fn wavelet_cwt_make_matrix(Int32, Int32, Double) -> Wavelet_cwtMatrix
+
+pub fn wavelet_cwt_make_point(Double, Double) -> Wavelet_cwtPoint
+
+pub fn wavelet_cwt_make_series(Array[Double], String) -> Wavelet_cwtSeries
+
+pub fn wavelet_cwt_make_vector(Array[Double]) -> Wavelet_cwtVector
+
+pub fn wavelet_cwt_matrix_add(Wavelet_cwtMatrix, Wavelet_cwtMatrix) -> Wavelet_cwtMatrix
+
+pub fn wavelet_cwt_matrix_get(Wavelet_cwtMatrix, Int32, Int32) -> Double
+
+pub fn wavelet_cwt_matrix_identity(Int32) -> Wavelet_cwtMatrix
+
+pub fn wavelet_cwt_matrix_multiply(Wavelet_cwtMatrix, Wavelet_cwtMatrix) -> Wavelet_cwtMatrix
+
+pub fn wavelet_cwt_matrix_norm(Wavelet_cwtMatrix) -> Double
+
+pub fn wavelet_cwt_matrix_scale(Wavelet_cwtMatrix, Double) -> Wavelet_cwtMatrix
+
+pub fn wavelet_cwt_matrix_to_string(Wavelet_cwtMatrix) -> String
+
+pub fn wavelet_cwt_matrix_trace(Wavelet_cwtMatrix) -> Double
+
+pub fn wavelet_cwt_matrix_transpose(Wavelet_cwtMatrix) -> Wavelet_cwtMatrix
+
+pub fn wavelet_cwt_mse(Array[Double], Array[Double]) -> Double
+
+pub fn wavelet_cwt_point_add(Wavelet_cwtPoint, Wavelet_cwtPoint) -> Wavelet_cwtPoint
+
+pub fn wavelet_cwt_point_dist(Wavelet_cwtPoint, Wavelet_cwtPoint) -> Double
+
+pub fn wavelet_cwt_point_dot(Wavelet_cwtPoint, Wavelet_cwtPoint) -> Double
+
+pub fn wavelet_cwt_point_label(Wavelet_cwtPoint) -> Int32
+
+pub fn wavelet_cwt_point_norm(Wavelet_cwtPoint) -> Double
+
+pub fn wavelet_cwt_point_scale(Wavelet_cwtPoint, Double) -> Wavelet_cwtPoint
+
+pub fn wavelet_cwt_point_sub(Wavelet_cwtPoint, Wavelet_cwtPoint) -> Wavelet_cwtPoint
+
+pub fn wavelet_cwt_point_to_string(Wavelet_cwtPoint) -> String
+
+pub fn wavelet_cwt_point_x(Wavelet_cwtPoint) -> Double
+
+pub fn wavelet_cwt_point_y(Wavelet_cwtPoint) -> Double
+
+pub fn wavelet_cwt_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn wavelet_cwt_r2(Array[Double], Array[Double]) -> Double
+
+pub fn wavelet_cwt_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn wavelet_cwt_series_add(Wavelet_cwtSeries, Wavelet_cwtSeries) -> Wavelet_cwtSeries
+
+pub fn wavelet_cwt_series_len(Wavelet_cwtSeries) -> Int32
+
+pub fn wavelet_cwt_series_max(Wavelet_cwtSeries) -> Double
+
+pub fn wavelet_cwt_series_mean(Wavelet_cwtSeries) -> Double
+
+pub fn wavelet_cwt_series_min(Wavelet_cwtSeries) -> Double
+
+pub fn wavelet_cwt_series_scale(Wavelet_cwtSeries, Double) -> Wavelet_cwtSeries
+
+pub fn wavelet_cwt_series_std(Wavelet_cwtSeries) -> Double
+
+pub fn wavelet_cwt_series_sum(Wavelet_cwtSeries) -> Double
+
+pub fn wavelet_cwt_series_to_string(Wavelet_cwtSeries) -> String
+
+pub fn wavelet_cwt_series_var(Wavelet_cwtSeries) -> Double
+
+pub fn wavelet_cwt_std(Array[Double]) -> Double
+
+pub fn wavelet_cwt_var(Array[Double]) -> Double
+
+pub fn wavelet_cwt_vector_add(Wavelet_cwtVector, Wavelet_cwtVector) -> Wavelet_cwtVector
+
+pub fn wavelet_cwt_vector_dist(Wavelet_cwtVector, Wavelet_cwtVector) -> Double
+
+pub fn wavelet_cwt_vector_dot(Wavelet_cwtVector, Wavelet_cwtVector) -> Double
+
+pub fn wavelet_cwt_vector_norm(Wavelet_cwtVector) -> Double
+
+pub fn wavelet_cwt_vector_normalize(Wavelet_cwtVector) -> Wavelet_cwtVector
+
+pub fn wavelet_cwt_vector_scale(Wavelet_cwtVector, Double) -> Wavelet_cwtVector
+
+pub fn wavelet_cwt_vector_sub(Wavelet_cwtVector, Wavelet_cwtVector) -> Wavelet_cwtVector
+
+pub fn wavelet_cwt_vector_to_string(Wavelet_cwtVector) -> String
+
+pub fn wavelet_cwt_vector_zero(Int32) -> Wavelet_cwtVector
+
+// Errors
+
+// Types and methods
+pub struct Wavelet_cwtMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Wavelet_cwtPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Wavelet_cwtSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Wavelet_cwtVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

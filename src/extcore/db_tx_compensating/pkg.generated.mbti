@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_tx_compensating"
+
+// Values
+pub fn db_tx_compensating_buffer_make(Int32) -> DbtxcompensatingBuffer
+
+pub fn db_tx_compensating_cluster_make(Int32) -> DbtxcompensatingCluster
+
+pub fn db_tx_compensating_cursor_make(Int32) -> DbtxcompensatingCursor
+
+pub fn db_tx_compensating_edge_make(Int32) -> DbtxcompensatingEdge
+
+pub fn db_tx_compensating_frame_make(Int32) -> DbtxcompensatingFrame
+
+pub fn db_tx_compensating_graphn_make(Int32) -> DbtxcompensatingGraphN
+
+pub fn db_tx_compensating_layer_make(Int32) -> DbtxcompensatingLayer
+
+pub fn db_tx_compensating_make_matrix(Int32, Int32, Double) -> DbtxcompensatingMatrix
+
+pub fn db_tx_compensating_make_point(Double, Double) -> DbtxcompensatingPoint
+
+pub fn db_tx_compensating_make_point3(Double, Double, Double) -> DbtxcompensatingPoint
+
+pub fn db_tx_compensating_make_series(Array[Double], String) -> DbtxcompensatingSeries
+
+pub fn db_tx_compensating_make_vector(Array[Double]) -> DbtxcompensatingVector
+
+pub fn db_tx_compensating_matrix_identity(Int32) -> DbtxcompensatingMatrix
+
+pub fn db_tx_compensating_model_make(Int32) -> DbtxcompensatingModel
+
+pub fn db_tx_compensating_node_make(Int32) -> DbtxcompensatingNode
+
+pub fn db_tx_compensating_path_make(Int32) -> DbtxcompensatingPath
+
+pub fn db_tx_compensating_range_make(Int32) -> DbtxcompensatingRange
+
+pub fn db_tx_compensating_slice_make(Int32) -> DbtxcompensatingSlice
+
+pub fn db_tx_compensating_table_make(Int32) -> DbtxcompensatingTable
+
+pub fn db_tx_compensating_vector_zero(Int32) -> DbtxcompensatingVector
+
+pub fn db_tx_compensating_view_make(Int32) -> DbtxcompensatingView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbtxcompensatingBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxcompensatingBuffer::add(Self, Self) -> Self
+pub fn DbtxcompensatingBuffer::copy(Self) -> Self
+pub fn DbtxcompensatingBuffer::fill(Self, Double) -> Self
+pub fn DbtxcompensatingBuffer::get(Self, Int32) -> Double
+pub fn DbtxcompensatingBuffer::len(Self) -> Int32
+pub fn DbtxcompensatingBuffer::max(Self) -> Double
+pub fn DbtxcompensatingBuffer::mean(Self) -> Double
+pub fn DbtxcompensatingBuffer::min(Self) -> Double
+pub fn DbtxcompensatingBuffer::scale(Self, Double) -> Self
+pub fn DbtxcompensatingBuffer::set(Self, Int32, Double) -> Self
+pub fn DbtxcompensatingBuffer::sum(Self) -> Double
+pub fn DbtxcompensatingBuffer::to_string(Self) -> String
+
+pub(all) struct DbtxcompensatingCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxcompensatingCluster::add(Self, Self) -> Self
+pub fn DbtxcompensatingCluster::copy(Self) -> Self
+pub fn DbtxcompensatingCluster::fill(Self, Double) -> Self
+pub fn DbtxcompensatingCluster::get(Self, Int32) -> Double
+pub fn DbtxcompensatingCluster::len(Self) -> Int32
+pub fn DbtxcompensatingCluster::max(Self) -> Double
+pub fn DbtxcompensatingCluster::mean(Self) -> Double
+pub fn DbtxcompensatingCluster::min(Self) -> Double
+pub fn DbtxcompensatingCluster::scale(Self, Double) -> Self
+pub fn DbtxcompensatingCluster::set(Self, Int32, Double) -> Self
+pub fn DbtxcompensatingCluster::sum(Self) -> Double
+pub fn DbtxcompensatingCluster::to_string(Self) -> String
+
+pub(all) struct DbtxcompensatingCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxcompensatingCursor::add(Self, Self) -> Self
+pub fn DbtxcompensatingCursor::copy(Self) -> Self
+pub fn DbtxcompensatingCursor::fill(Self, Double) -> Self
+pub fn DbtxcompensatingCursor::get(Self, Int32) -> Double
+pub fn DbtxcompensatingCursor::len(Self) -> Int32
+pub fn DbtxcompensatingCursor::max(Self) -> Double
+pub fn DbtxcompensatingCursor::mean(Self) -> Double
+pub fn DbtxcompensatingCursor::min(Self) -> Double
+pub fn DbtxcompensatingCursor::scale(Self, Double) -> Self
+pub fn DbtxcompensatingCursor::set(Self, Int32, Double) -> Self
+pub fn DbtxcompensatingCursor::sum(Self) -> Double
+pub fn DbtxcompensatingCursor::to_string(Self) -> String
+
+pub(all) struct DbtxcompensatingEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxcompensatingEdge::add(Self, Self) -> Self
+pub fn DbtxcompensatingEdge::copy(Self) -> Self
+pub fn DbtxcompensatingEdge::fill(Self, Double) -> Self
+pub fn DbtxcompensatingEdge::get(Self, Int32) -> Double
+pub fn DbtxcompensatingEdge::len(Self) -> Int32
+pub fn DbtxcompensatingEdge::max(Self) -> Double
+pub fn DbtxcompensatingEdge::mean(Self) -> Double
+pub fn DbtxcompensatingEdge::min(Self) -> Double
+pub fn DbtxcompensatingEdge::scale(Self, Double) -> Self
+pub fn DbtxcompensatingEdge::set(Self, Int32, Double) -> Self
+pub fn DbtxcompensatingEdge::sum(Self) -> Double
+pub fn DbtxcompensatingEdge::to_string(Self) -> String
+
+pub(all) struct DbtxcompensatingFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxcompensatingFrame::add(Self, Self) -> Self
+pub fn DbtxcompensatingFrame::copy(Self) -> Self
+pub fn DbtxcompensatingFrame::fill(Self, Double) -> Self
+pub fn DbtxcompensatingFrame::get(Self, Int32) -> Double
+pub fn DbtxcompensatingFrame::len(Self) -> Int32
+pub fn DbtxcompensatingFrame::max(Self) -> Double
+pub fn DbtxcompensatingFrame::mean(Self) -> Double
+pub fn DbtxcompensatingFrame::min(Self) -> Double
+pub fn DbtxcompensatingFrame::scale(Self, Double) -> Self
+pub fn DbtxcompensatingFrame::set(Self, Int32, Double) -> Self
+pub fn DbtxcompensatingFrame::sum(Self) -> Double
+pub fn DbtxcompensatingFrame::to_string(Self) -> String
+
+pub(all) struct DbtxcompensatingGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxcompensatingGraphN::add(Self, Self) -> Self
+pub fn DbtxcompensatingGraphN::copy(Self) -> Self
+pub fn DbtxcompensatingGraphN::fill(Self, Double) -> Self
+pub fn DbtxcompensatingGraphN::get(Self, Int32) -> Double
+pub fn DbtxcompensatingGraphN::len(Self) -> Int32
+pub fn DbtxcompensatingGraphN::max(Self) -> Double
+pub fn DbtxcompensatingGraphN::mean(Self) -> Double
+pub fn DbtxcompensatingGraphN::min(Self) -> Double
+pub fn DbtxcompensatingGraphN::scale(Self, Double) -> Self
+pub fn DbtxcompensatingGraphN::set(Self, Int32, Double) -> Self
+pub fn DbtxcompensatingGraphN::sum(Self) -> Double
+pub fn DbtxcompensatingGraphN::to_string(Self) -> String
+
+pub(all) struct DbtxcompensatingLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxcompensatingLayer::add(Self, Self) -> Self
+pub fn DbtxcompensatingLayer::copy(Self) -> Self
+pub fn DbtxcompensatingLayer::fill(Self, Double) -> Self
+pub fn DbtxcompensatingLayer::get(Self, Int32) -> Double
+pub fn DbtxcompensatingLayer::len(Self) -> Int32
+pub fn DbtxcompensatingLayer::max(Self) -> Double
+pub fn DbtxcompensatingLayer::mean(Self) -> Double
+pub fn DbtxcompensatingLayer::min(Self) -> Double
+pub fn DbtxcompensatingLayer::scale(Self, Double) -> Self
+pub fn DbtxcompensatingLayer::set(Self, Int32, Double) -> Self
+pub fn DbtxcompensatingLayer::sum(Self) -> Double
+pub fn DbtxcompensatingLayer::to_string(Self) -> String
+
+pub(all) struct DbtxcompensatingMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbtxcompensatingMatrix::add(Self, Self) -> Self
+pub fn DbtxcompensatingMatrix::det(Self) -> Double
+pub fn DbtxcompensatingMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbtxcompensatingMatrix::multiply(Self, Self) -> Self
+pub fn DbtxcompensatingMatrix::norm(Self) -> Double
+pub fn DbtxcompensatingMatrix::scale(Self, Double) -> Self
+pub fn DbtxcompensatingMatrix::to_string(Self) -> String
+pub fn DbtxcompensatingMatrix::trace(Self) -> Double
+pub fn DbtxcompensatingMatrix::transpose(Self) -> Self
+
+pub(all) struct DbtxcompensatingModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxcompensatingModel::add(Self, Self) -> Self
+pub fn DbtxcompensatingModel::copy(Self) -> Self
+pub fn DbtxcompensatingModel::fill(Self, Double) -> Self
+pub fn DbtxcompensatingModel::get(Self, Int32) -> Double
+pub fn DbtxcompensatingModel::len(Self) -> Int32
+pub fn DbtxcompensatingModel::max(Self) -> Double
+pub fn DbtxcompensatingModel::mean(Self) -> Double
+pub fn DbtxcompensatingModel::min(Self) -> Double
+pub fn DbtxcompensatingModel::scale(Self, Double) -> Self
+pub fn DbtxcompensatingModel::set(Self, Int32, Double) -> Self
+pub fn DbtxcompensatingModel::sum(Self) -> Double
+pub fn DbtxcompensatingModel::to_string(Self) -> String
+
+pub(all) struct DbtxcompensatingNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxcompensatingNode::add(Self, Self) -> Self
+pub fn DbtxcompensatingNode::copy(Self) -> Self
+pub fn DbtxcompensatingNode::fill(Self, Double) -> Self
+pub fn DbtxcompensatingNode::get(Self, Int32) -> Double
+pub fn DbtxcompensatingNode::len(Self) -> Int32
+pub fn DbtxcompensatingNode::max(Self) -> Double
+pub fn DbtxcompensatingNode::mean(Self) -> Double
+pub fn DbtxcompensatingNode::min(Self) -> Double
+pub fn DbtxcompensatingNode::scale(Self, Double) -> Self
+pub fn DbtxcompensatingNode::set(Self, Int32, Double) -> Self
+pub fn DbtxcompensatingNode::sum(Self) -> Double
+pub fn DbtxcompensatingNode::to_string(Self) -> String
+
+pub(all) struct DbtxcompensatingPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxcompensatingPath::add(Self, Self) -> Self
+pub fn DbtxcompensatingPath::copy(Self) -> Self
+pub fn DbtxcompensatingPath::fill(Self, Double) -> Self
+pub fn DbtxcompensatingPath::get(Self, Int32) -> Double
+pub fn DbtxcompensatingPath::len(Self) -> Int32
+pub fn DbtxcompensatingPath::max(Self) -> Double
+pub fn DbtxcompensatingPath::mean(Self) -> Double
+pub fn DbtxcompensatingPath::min(Self) -> Double
+pub fn DbtxcompensatingPath::scale(Self, Double) -> Self
+pub fn DbtxcompensatingPath::set(Self, Int32, Double) -> Self
+pub fn DbtxcompensatingPath::sum(Self) -> Double
+pub fn DbtxcompensatingPath::to_string(Self) -> String
+
+pub(all) struct DbtxcompensatingPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbtxcompensatingPoint::add(Self, Self) -> Self
+pub fn DbtxcompensatingPoint::cross(Self, Self) -> Self
+pub fn DbtxcompensatingPoint::dist(Self, Self) -> Double
+pub fn DbtxcompensatingPoint::dot(Self, Self) -> Double
+pub fn DbtxcompensatingPoint::label(Self) -> Int32
+pub fn DbtxcompensatingPoint::lerp(Self, Self, Double) -> Self
+pub fn DbtxcompensatingPoint::mid(Self, Self) -> Self
+pub fn DbtxcompensatingPoint::negate(Self) -> Self
+pub fn DbtxcompensatingPoint::norm(Self) -> Double
+pub fn DbtxcompensatingPoint::normalize(Self) -> Self
+pub fn DbtxcompensatingPoint::scale(Self, Double) -> Self
+pub fn DbtxcompensatingPoint::sub(Self, Self) -> Self
+pub fn DbtxcompensatingPoint::to_string(Self) -> String
+pub fn DbtxcompensatingPoint::x(Self) -> Double
+pub fn DbtxcompensatingPoint::y(Self) -> Double
+pub fn DbtxcompensatingPoint::z(Self) -> Double
+
+pub(all) struct DbtxcompensatingRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxcompensatingRange::add(Self, Self) -> Self
+pub fn DbtxcompensatingRange::copy(Self) -> Self
+pub fn DbtxcompensatingRange::fill(Self, Double) -> Self
+pub fn DbtxcompensatingRange::get(Self, Int32) -> Double
+pub fn DbtxcompensatingRange::len(Self) -> Int32
+pub fn DbtxcompensatingRange::max(Self) -> Double
+pub fn DbtxcompensatingRange::mean(Self) -> Double
+pub fn DbtxcompensatingRange::min(Self) -> Double
+pub fn DbtxcompensatingRange::scale(Self, Double) -> Self
+pub fn DbtxcompensatingRange::set(Self, Int32, Double) -> Self
+pub fn DbtxcompensatingRange::sum(Self) -> Double
+pub fn DbtxcompensatingRange::to_string(Self) -> String
+
+pub(all) struct DbtxcompensatingSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbtxcompensatingSeries::add(Self, Self) -> Self
+pub fn DbtxcompensatingSeries::cumsum(Self) -> Self
+pub fn DbtxcompensatingSeries::len(Self) -> Int32
+pub fn DbtxcompensatingSeries::max(Self) -> Double
+pub fn DbtxcompensatingSeries::mean(Self) -> Double
+pub fn DbtxcompensatingSeries::median(Self) -> Double
+pub fn DbtxcompensatingSeries::min(Self) -> Double
+pub fn DbtxcompensatingSeries::normalize(Self) -> Self
+pub fn DbtxcompensatingSeries::range(Self) -> Double
+pub fn DbtxcompensatingSeries::scale(Self, Double) -> Self
+pub fn DbtxcompensatingSeries::std(Self) -> Double
+pub fn DbtxcompensatingSeries::sub(Self, Self) -> Self
+pub fn DbtxcompensatingSeries::sum(Self) -> Double
+pub fn DbtxcompensatingSeries::to_string(Self) -> String
+pub fn DbtxcompensatingSeries::variance(Self) -> Double
+
+pub(all) struct DbtxcompensatingSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxcompensatingSlice::add(Self, Self) -> Self
+pub fn DbtxcompensatingSlice::copy(Self) -> Self
+pub fn DbtxcompensatingSlice::fill(Self, Double) -> Self
+pub fn DbtxcompensatingSlice::get(Self, Int32) -> Double
+pub fn DbtxcompensatingSlice::len(Self) -> Int32
+pub fn DbtxcompensatingSlice::max(Self) -> Double
+pub fn DbtxcompensatingSlice::mean(Self) -> Double
+pub fn DbtxcompensatingSlice::min(Self) -> Double
+pub fn DbtxcompensatingSlice::scale(Self, Double) -> Self
+pub fn DbtxcompensatingSlice::set(Self, Int32, Double) -> Self
+pub fn DbtxcompensatingSlice::sum(Self) -> Double
+pub fn DbtxcompensatingSlice::to_string(Self) -> String
+
+pub(all) struct DbtxcompensatingTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxcompensatingTable::add(Self, Self) -> Self
+pub fn DbtxcompensatingTable::copy(Self) -> Self
+pub fn DbtxcompensatingTable::fill(Self, Double) -> Self
+pub fn DbtxcompensatingTable::get(Self, Int32) -> Double
+pub fn DbtxcompensatingTable::len(Self) -> Int32
+pub fn DbtxcompensatingTable::max(Self) -> Double
+pub fn DbtxcompensatingTable::mean(Self) -> Double
+pub fn DbtxcompensatingTable::min(Self) -> Double
+pub fn DbtxcompensatingTable::scale(Self, Double) -> Self
+pub fn DbtxcompensatingTable::set(Self, Int32, Double) -> Self
+pub fn DbtxcompensatingTable::sum(Self) -> Double
+pub fn DbtxcompensatingTable::to_string(Self) -> String
+
+pub(all) struct DbtxcompensatingVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbtxcompensatingVector::add(Self, Self) -> Self
+pub fn DbtxcompensatingVector::dist(Self, Self) -> Double
+pub fn DbtxcompensatingVector::dot(Self, Self) -> Double
+pub fn DbtxcompensatingVector::norm(Self) -> Double
+pub fn DbtxcompensatingVector::normalize(Self) -> Self
+pub fn DbtxcompensatingVector::scale(Self, Double) -> Self
+pub fn DbtxcompensatingVector::sub(Self, Self) -> Self
+pub fn DbtxcompensatingVector::to_string(Self) -> String
+
+pub(all) struct DbtxcompensatingView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxcompensatingView::add(Self, Self) -> Self
+pub fn DbtxcompensatingView::copy(Self) -> Self
+pub fn DbtxcompensatingView::fill(Self, Double) -> Self
+pub fn DbtxcompensatingView::get(Self, Int32) -> Double
+pub fn DbtxcompensatingView::len(Self) -> Int32
+pub fn DbtxcompensatingView::max(Self) -> Double
+pub fn DbtxcompensatingView::mean(Self) -> Double
+pub fn DbtxcompensatingView::min(Self) -> Double
+pub fn DbtxcompensatingView::scale(Self, Double) -> Self
+pub fn DbtxcompensatingView::set(Self, Int32, Double) -> Self
+pub fn DbtxcompensatingView::sum(Self) -> Double
+pub fn DbtxcompensatingView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

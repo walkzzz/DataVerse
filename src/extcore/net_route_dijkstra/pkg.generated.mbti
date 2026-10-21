@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_route_dijkstra"
+
+// Values
+pub fn net_route_dijkstra_buffer_make(Int32) -> NetroutedijkstraBuffer
+
+pub fn net_route_dijkstra_cluster_make(Int32) -> NetroutedijkstraCluster
+
+pub fn net_route_dijkstra_cursor_make(Int32) -> NetroutedijkstraCursor
+
+pub fn net_route_dijkstra_edge_make(Int32) -> NetroutedijkstraEdge
+
+pub fn net_route_dijkstra_frame_make(Int32) -> NetroutedijkstraFrame
+
+pub fn net_route_dijkstra_graphn_make(Int32) -> NetroutedijkstraGraphN
+
+pub fn net_route_dijkstra_layer_make(Int32) -> NetroutedijkstraLayer
+
+pub fn net_route_dijkstra_make_matrix(Int32, Int32, Double) -> NetroutedijkstraMatrix
+
+pub fn net_route_dijkstra_make_point(Double, Double) -> NetroutedijkstraPoint
+
+pub fn net_route_dijkstra_make_point3(Double, Double, Double) -> NetroutedijkstraPoint
+
+pub fn net_route_dijkstra_make_series(Array[Double], String) -> NetroutedijkstraSeries
+
+pub fn net_route_dijkstra_make_vector(Array[Double]) -> NetroutedijkstraVector
+
+pub fn net_route_dijkstra_matrix_identity(Int32) -> NetroutedijkstraMatrix
+
+pub fn net_route_dijkstra_model_make(Int32) -> NetroutedijkstraModel
+
+pub fn net_route_dijkstra_node_make(Int32) -> NetroutedijkstraNode
+
+pub fn net_route_dijkstra_path_make(Int32) -> NetroutedijkstraPath
+
+pub fn net_route_dijkstra_range_make(Int32) -> NetroutedijkstraRange
+
+pub fn net_route_dijkstra_slice_make(Int32) -> NetroutedijkstraSlice
+
+pub fn net_route_dijkstra_table_make(Int32) -> NetroutedijkstraTable
+
+pub fn net_route_dijkstra_vector_zero(Int32) -> NetroutedijkstraVector
+
+pub fn net_route_dijkstra_view_make(Int32) -> NetroutedijkstraView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetroutedijkstraBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutedijkstraBuffer::add(Self, Self) -> Self
+pub fn NetroutedijkstraBuffer::copy(Self) -> Self
+pub fn NetroutedijkstraBuffer::fill(Self, Double) -> Self
+pub fn NetroutedijkstraBuffer::get(Self, Int32) -> Double
+pub fn NetroutedijkstraBuffer::len(Self) -> Int32
+pub fn NetroutedijkstraBuffer::max(Self) -> Double
+pub fn NetroutedijkstraBuffer::mean(Self) -> Double
+pub fn NetroutedijkstraBuffer::min(Self) -> Double
+pub fn NetroutedijkstraBuffer::scale(Self, Double) -> Self
+pub fn NetroutedijkstraBuffer::set(Self, Int32, Double) -> Self
+pub fn NetroutedijkstraBuffer::sum(Self) -> Double
+pub fn NetroutedijkstraBuffer::to_string(Self) -> String
+
+pub(all) struct NetroutedijkstraCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutedijkstraCluster::add(Self, Self) -> Self
+pub fn NetroutedijkstraCluster::copy(Self) -> Self
+pub fn NetroutedijkstraCluster::fill(Self, Double) -> Self
+pub fn NetroutedijkstraCluster::get(Self, Int32) -> Double
+pub fn NetroutedijkstraCluster::len(Self) -> Int32
+pub fn NetroutedijkstraCluster::max(Self) -> Double
+pub fn NetroutedijkstraCluster::mean(Self) -> Double
+pub fn NetroutedijkstraCluster::min(Self) -> Double
+pub fn NetroutedijkstraCluster::scale(Self, Double) -> Self
+pub fn NetroutedijkstraCluster::set(Self, Int32, Double) -> Self
+pub fn NetroutedijkstraCluster::sum(Self) -> Double
+pub fn NetroutedijkstraCluster::to_string(Self) -> String
+
+pub(all) struct NetroutedijkstraCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutedijkstraCursor::add(Self, Self) -> Self
+pub fn NetroutedijkstraCursor::copy(Self) -> Self
+pub fn NetroutedijkstraCursor::fill(Self, Double) -> Self
+pub fn NetroutedijkstraCursor::get(Self, Int32) -> Double
+pub fn NetroutedijkstraCursor::len(Self) -> Int32
+pub fn NetroutedijkstraCursor::max(Self) -> Double
+pub fn NetroutedijkstraCursor::mean(Self) -> Double
+pub fn NetroutedijkstraCursor::min(Self) -> Double
+pub fn NetroutedijkstraCursor::scale(Self, Double) -> Self
+pub fn NetroutedijkstraCursor::set(Self, Int32, Double) -> Self
+pub fn NetroutedijkstraCursor::sum(Self) -> Double
+pub fn NetroutedijkstraCursor::to_string(Self) -> String
+
+pub(all) struct NetroutedijkstraEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutedijkstraEdge::add(Self, Self) -> Self
+pub fn NetroutedijkstraEdge::copy(Self) -> Self
+pub fn NetroutedijkstraEdge::fill(Self, Double) -> Self
+pub fn NetroutedijkstraEdge::get(Self, Int32) -> Double
+pub fn NetroutedijkstraEdge::len(Self) -> Int32
+pub fn NetroutedijkstraEdge::max(Self) -> Double
+pub fn NetroutedijkstraEdge::mean(Self) -> Double
+pub fn NetroutedijkstraEdge::min(Self) -> Double
+pub fn NetroutedijkstraEdge::scale(Self, Double) -> Self
+pub fn NetroutedijkstraEdge::set(Self, Int32, Double) -> Self
+pub fn NetroutedijkstraEdge::sum(Self) -> Double
+pub fn NetroutedijkstraEdge::to_string(Self) -> String
+
+pub(all) struct NetroutedijkstraFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutedijkstraFrame::add(Self, Self) -> Self
+pub fn NetroutedijkstraFrame::copy(Self) -> Self
+pub fn NetroutedijkstraFrame::fill(Self, Double) -> Self
+pub fn NetroutedijkstraFrame::get(Self, Int32) -> Double
+pub fn NetroutedijkstraFrame::len(Self) -> Int32
+pub fn NetroutedijkstraFrame::max(Self) -> Double
+pub fn NetroutedijkstraFrame::mean(Self) -> Double
+pub fn NetroutedijkstraFrame::min(Self) -> Double
+pub fn NetroutedijkstraFrame::scale(Self, Double) -> Self
+pub fn NetroutedijkstraFrame::set(Self, Int32, Double) -> Self
+pub fn NetroutedijkstraFrame::sum(Self) -> Double
+pub fn NetroutedijkstraFrame::to_string(Self) -> String
+
+pub(all) struct NetroutedijkstraGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutedijkstraGraphN::add(Self, Self) -> Self
+pub fn NetroutedijkstraGraphN::copy(Self) -> Self
+pub fn NetroutedijkstraGraphN::fill(Self, Double) -> Self
+pub fn NetroutedijkstraGraphN::get(Self, Int32) -> Double
+pub fn NetroutedijkstraGraphN::len(Self) -> Int32
+pub fn NetroutedijkstraGraphN::max(Self) -> Double
+pub fn NetroutedijkstraGraphN::mean(Self) -> Double
+pub fn NetroutedijkstraGraphN::min(Self) -> Double
+pub fn NetroutedijkstraGraphN::scale(Self, Double) -> Self
+pub fn NetroutedijkstraGraphN::set(Self, Int32, Double) -> Self
+pub fn NetroutedijkstraGraphN::sum(Self) -> Double
+pub fn NetroutedijkstraGraphN::to_string(Self) -> String
+
+pub(all) struct NetroutedijkstraLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutedijkstraLayer::add(Self, Self) -> Self
+pub fn NetroutedijkstraLayer::copy(Self) -> Self
+pub fn NetroutedijkstraLayer::fill(Self, Double) -> Self
+pub fn NetroutedijkstraLayer::get(Self, Int32) -> Double
+pub fn NetroutedijkstraLayer::len(Self) -> Int32
+pub fn NetroutedijkstraLayer::max(Self) -> Double
+pub fn NetroutedijkstraLayer::mean(Self) -> Double
+pub fn NetroutedijkstraLayer::min(Self) -> Double
+pub fn NetroutedijkstraLayer::scale(Self, Double) -> Self
+pub fn NetroutedijkstraLayer::set(Self, Int32, Double) -> Self
+pub fn NetroutedijkstraLayer::sum(Self) -> Double
+pub fn NetroutedijkstraLayer::to_string(Self) -> String
+
+pub(all) struct NetroutedijkstraMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetroutedijkstraMatrix::add(Self, Self) -> Self
+pub fn NetroutedijkstraMatrix::det(Self) -> Double
+pub fn NetroutedijkstraMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetroutedijkstraMatrix::multiply(Self, Self) -> Self
+pub fn NetroutedijkstraMatrix::norm(Self) -> Double
+pub fn NetroutedijkstraMatrix::scale(Self, Double) -> Self
+pub fn NetroutedijkstraMatrix::to_string(Self) -> String
+pub fn NetroutedijkstraMatrix::trace(Self) -> Double
+pub fn NetroutedijkstraMatrix::transpose(Self) -> Self
+
+pub(all) struct NetroutedijkstraModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutedijkstraModel::add(Self, Self) -> Self
+pub fn NetroutedijkstraModel::copy(Self) -> Self
+pub fn NetroutedijkstraModel::fill(Self, Double) -> Self
+pub fn NetroutedijkstraModel::get(Self, Int32) -> Double
+pub fn NetroutedijkstraModel::len(Self) -> Int32
+pub fn NetroutedijkstraModel::max(Self) -> Double
+pub fn NetroutedijkstraModel::mean(Self) -> Double
+pub fn NetroutedijkstraModel::min(Self) -> Double
+pub fn NetroutedijkstraModel::scale(Self, Double) -> Self
+pub fn NetroutedijkstraModel::set(Self, Int32, Double) -> Self
+pub fn NetroutedijkstraModel::sum(Self) -> Double
+pub fn NetroutedijkstraModel::to_string(Self) -> String
+
+pub(all) struct NetroutedijkstraNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutedijkstraNode::add(Self, Self) -> Self
+pub fn NetroutedijkstraNode::copy(Self) -> Self
+pub fn NetroutedijkstraNode::fill(Self, Double) -> Self
+pub fn NetroutedijkstraNode::get(Self, Int32) -> Double
+pub fn NetroutedijkstraNode::len(Self) -> Int32
+pub fn NetroutedijkstraNode::max(Self) -> Double
+pub fn NetroutedijkstraNode::mean(Self) -> Double
+pub fn NetroutedijkstraNode::min(Self) -> Double
+pub fn NetroutedijkstraNode::scale(Self, Double) -> Self
+pub fn NetroutedijkstraNode::set(Self, Int32, Double) -> Self
+pub fn NetroutedijkstraNode::sum(Self) -> Double
+pub fn NetroutedijkstraNode::to_string(Self) -> String
+
+pub(all) struct NetroutedijkstraPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutedijkstraPath::add(Self, Self) -> Self
+pub fn NetroutedijkstraPath::copy(Self) -> Self
+pub fn NetroutedijkstraPath::fill(Self, Double) -> Self
+pub fn NetroutedijkstraPath::get(Self, Int32) -> Double
+pub fn NetroutedijkstraPath::len(Self) -> Int32
+pub fn NetroutedijkstraPath::max(Self) -> Double
+pub fn NetroutedijkstraPath::mean(Self) -> Double
+pub fn NetroutedijkstraPath::min(Self) -> Double
+pub fn NetroutedijkstraPath::scale(Self, Double) -> Self
+pub fn NetroutedijkstraPath::set(Self, Int32, Double) -> Self
+pub fn NetroutedijkstraPath::sum(Self) -> Double
+pub fn NetroutedijkstraPath::to_string(Self) -> String
+
+pub(all) struct NetroutedijkstraPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetroutedijkstraPoint::add(Self, Self) -> Self
+pub fn NetroutedijkstraPoint::cross(Self, Self) -> Self
+pub fn NetroutedijkstraPoint::dist(Self, Self) -> Double
+pub fn NetroutedijkstraPoint::dot(Self, Self) -> Double
+pub fn NetroutedijkstraPoint::label(Self) -> Int32
+pub fn NetroutedijkstraPoint::lerp(Self, Self, Double) -> Self
+pub fn NetroutedijkstraPoint::mid(Self, Self) -> Self
+pub fn NetroutedijkstraPoint::negate(Self) -> Self
+pub fn NetroutedijkstraPoint::norm(Self) -> Double
+pub fn NetroutedijkstraPoint::normalize(Self) -> Self
+pub fn NetroutedijkstraPoint::scale(Self, Double) -> Self
+pub fn NetroutedijkstraPoint::sub(Self, Self) -> Self
+pub fn NetroutedijkstraPoint::to_string(Self) -> String
+pub fn NetroutedijkstraPoint::x(Self) -> Double
+pub fn NetroutedijkstraPoint::y(Self) -> Double
+pub fn NetroutedijkstraPoint::z(Self) -> Double
+
+pub(all) struct NetroutedijkstraRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutedijkstraRange::add(Self, Self) -> Self
+pub fn NetroutedijkstraRange::copy(Self) -> Self
+pub fn NetroutedijkstraRange::fill(Self, Double) -> Self
+pub fn NetroutedijkstraRange::get(Self, Int32) -> Double
+pub fn NetroutedijkstraRange::len(Self) -> Int32
+pub fn NetroutedijkstraRange::max(Self) -> Double
+pub fn NetroutedijkstraRange::mean(Self) -> Double
+pub fn NetroutedijkstraRange::min(Self) -> Double
+pub fn NetroutedijkstraRange::scale(Self, Double) -> Self
+pub fn NetroutedijkstraRange::set(Self, Int32, Double) -> Self
+pub fn NetroutedijkstraRange::sum(Self) -> Double
+pub fn NetroutedijkstraRange::to_string(Self) -> String
+
+pub(all) struct NetroutedijkstraSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetroutedijkstraSeries::add(Self, Self) -> Self
+pub fn NetroutedijkstraSeries::cumsum(Self) -> Self
+pub fn NetroutedijkstraSeries::len(Self) -> Int32
+pub fn NetroutedijkstraSeries::max(Self) -> Double
+pub fn NetroutedijkstraSeries::mean(Self) -> Double
+pub fn NetroutedijkstraSeries::median(Self) -> Double
+pub fn NetroutedijkstraSeries::min(Self) -> Double
+pub fn NetroutedijkstraSeries::normalize(Self) -> Self
+pub fn NetroutedijkstraSeries::range(Self) -> Double
+pub fn NetroutedijkstraSeries::scale(Self, Double) -> Self
+pub fn NetroutedijkstraSeries::std(Self) -> Double
+pub fn NetroutedijkstraSeries::sub(Self, Self) -> Self
+pub fn NetroutedijkstraSeries::sum(Self) -> Double
+pub fn NetroutedijkstraSeries::to_string(Self) -> String
+pub fn NetroutedijkstraSeries::variance(Self) -> Double
+
+pub(all) struct NetroutedijkstraSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutedijkstraSlice::add(Self, Self) -> Self
+pub fn NetroutedijkstraSlice::copy(Self) -> Self
+pub fn NetroutedijkstraSlice::fill(Self, Double) -> Self
+pub fn NetroutedijkstraSlice::get(Self, Int32) -> Double
+pub fn NetroutedijkstraSlice::len(Self) -> Int32
+pub fn NetroutedijkstraSlice::max(Self) -> Double
+pub fn NetroutedijkstraSlice::mean(Self) -> Double
+pub fn NetroutedijkstraSlice::min(Self) -> Double
+pub fn NetroutedijkstraSlice::scale(Self, Double) -> Self
+pub fn NetroutedijkstraSlice::set(Self, Int32, Double) -> Self
+pub fn NetroutedijkstraSlice::sum(Self) -> Double
+pub fn NetroutedijkstraSlice::to_string(Self) -> String
+
+pub(all) struct NetroutedijkstraTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutedijkstraTable::add(Self, Self) -> Self
+pub fn NetroutedijkstraTable::copy(Self) -> Self
+pub fn NetroutedijkstraTable::fill(Self, Double) -> Self
+pub fn NetroutedijkstraTable::get(Self, Int32) -> Double
+pub fn NetroutedijkstraTable::len(Self) -> Int32
+pub fn NetroutedijkstraTable::max(Self) -> Double
+pub fn NetroutedijkstraTable::mean(Self) -> Double
+pub fn NetroutedijkstraTable::min(Self) -> Double
+pub fn NetroutedijkstraTable::scale(Self, Double) -> Self
+pub fn NetroutedijkstraTable::set(Self, Int32, Double) -> Self
+pub fn NetroutedijkstraTable::sum(Self) -> Double
+pub fn NetroutedijkstraTable::to_string(Self) -> String
+
+pub(all) struct NetroutedijkstraVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetroutedijkstraVector::add(Self, Self) -> Self
+pub fn NetroutedijkstraVector::dist(Self, Self) -> Double
+pub fn NetroutedijkstraVector::dot(Self, Self) -> Double
+pub fn NetroutedijkstraVector::norm(Self) -> Double
+pub fn NetroutedijkstraVector::normalize(Self) -> Self
+pub fn NetroutedijkstraVector::scale(Self, Double) -> Self
+pub fn NetroutedijkstraVector::sub(Self, Self) -> Self
+pub fn NetroutedijkstraVector::to_string(Self) -> String
+
+pub(all) struct NetroutedijkstraView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutedijkstraView::add(Self, Self) -> Self
+pub fn NetroutedijkstraView::copy(Self) -> Self
+pub fn NetroutedijkstraView::fill(Self, Double) -> Self
+pub fn NetroutedijkstraView::get(Self, Int32) -> Double
+pub fn NetroutedijkstraView::len(Self) -> Int32
+pub fn NetroutedijkstraView::max(Self) -> Double
+pub fn NetroutedijkstraView::mean(Self) -> Double
+pub fn NetroutedijkstraView::min(Self) -> Double
+pub fn NetroutedijkstraView::scale(Self, Double) -> Self
+pub fn NetroutedijkstraView::set(Self, Int32, Double) -> Self
+pub fn NetroutedijkstraView::sum(Self) -> Double
+pub fn NetroutedijkstraView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_tbats"
+
+// Values
+pub fn timeseries_tbats_buffer_make(Int32) -> TimeseriestbatsBuffer
+
+pub fn timeseries_tbats_cluster_make(Int32) -> TimeseriestbatsCluster
+
+pub fn timeseries_tbats_cursor_make(Int32) -> TimeseriestbatsCursor
+
+pub fn timeseries_tbats_edge_make(Int32) -> TimeseriestbatsEdge
+
+pub fn timeseries_tbats_frame_make(Int32) -> TimeseriestbatsFrame
+
+pub fn timeseries_tbats_graphn_make(Int32) -> TimeseriestbatsGraphN
+
+pub fn timeseries_tbats_layer_make(Int32) -> TimeseriestbatsLayer
+
+pub fn timeseries_tbats_make_matrix(Int32, Int32, Double) -> TimeseriestbatsMatrix
+
+pub fn timeseries_tbats_make_point(Double, Double) -> TimeseriestbatsPoint
+
+pub fn timeseries_tbats_make_point3(Double, Double, Double) -> TimeseriestbatsPoint
+
+pub fn timeseries_tbats_make_series(Array[Double], String) -> TimeseriestbatsSeries
+
+pub fn timeseries_tbats_make_vector(Array[Double]) -> TimeseriestbatsVector
+
+pub fn timeseries_tbats_matrix_identity(Int32) -> TimeseriestbatsMatrix
+
+pub fn timeseries_tbats_model_make(Int32) -> TimeseriestbatsModel
+
+pub fn timeseries_tbats_node_make(Int32) -> TimeseriestbatsNode
+
+pub fn timeseries_tbats_path_make(Int32) -> TimeseriestbatsPath
+
+pub fn timeseries_tbats_range_make(Int32) -> TimeseriestbatsRange
+
+pub fn timeseries_tbats_slice_make(Int32) -> TimeseriestbatsSlice
+
+pub fn timeseries_tbats_table_make(Int32) -> TimeseriestbatsTable
+
+pub fn timeseries_tbats_vector_zero(Int32) -> TimeseriestbatsVector
+
+pub fn timeseries_tbats_view_make(Int32) -> TimeseriestbatsView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriestbatsBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriestbatsBuffer::add(Self, Self) -> Self
+pub fn TimeseriestbatsBuffer::copy(Self) -> Self
+pub fn TimeseriestbatsBuffer::fill(Self, Double) -> Self
+pub fn TimeseriestbatsBuffer::get(Self, Int32) -> Double
+pub fn TimeseriestbatsBuffer::len(Self) -> Int32
+pub fn TimeseriestbatsBuffer::max(Self) -> Double
+pub fn TimeseriestbatsBuffer::mean(Self) -> Double
+pub fn TimeseriestbatsBuffer::min(Self) -> Double
+pub fn TimeseriestbatsBuffer::scale(Self, Double) -> Self
+pub fn TimeseriestbatsBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriestbatsBuffer::sum(Self) -> Double
+pub fn TimeseriestbatsBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriestbatsCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriestbatsCluster::add(Self, Self) -> Self
+pub fn TimeseriestbatsCluster::copy(Self) -> Self
+pub fn TimeseriestbatsCluster::fill(Self, Double) -> Self
+pub fn TimeseriestbatsCluster::get(Self, Int32) -> Double
+pub fn TimeseriestbatsCluster::len(Self) -> Int32
+pub fn TimeseriestbatsCluster::max(Self) -> Double
+pub fn TimeseriestbatsCluster::mean(Self) -> Double
+pub fn TimeseriestbatsCluster::min(Self) -> Double
+pub fn TimeseriestbatsCluster::scale(Self, Double) -> Self
+pub fn TimeseriestbatsCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriestbatsCluster::sum(Self) -> Double
+pub fn TimeseriestbatsCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriestbatsCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriestbatsCursor::add(Self, Self) -> Self
+pub fn TimeseriestbatsCursor::copy(Self) -> Self
+pub fn TimeseriestbatsCursor::fill(Self, Double) -> Self
+pub fn TimeseriestbatsCursor::get(Self, Int32) -> Double
+pub fn TimeseriestbatsCursor::len(Self) -> Int32
+pub fn TimeseriestbatsCursor::max(Self) -> Double
+pub fn TimeseriestbatsCursor::mean(Self) -> Double
+pub fn TimeseriestbatsCursor::min(Self) -> Double
+pub fn TimeseriestbatsCursor::scale(Self, Double) -> Self
+pub fn TimeseriestbatsCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriestbatsCursor::sum(Self) -> Double
+pub fn TimeseriestbatsCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriestbatsEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriestbatsEdge::add(Self, Self) -> Self
+pub fn TimeseriestbatsEdge::copy(Self) -> Self
+pub fn TimeseriestbatsEdge::fill(Self, Double) -> Self
+pub fn TimeseriestbatsEdge::get(Self, Int32) -> Double
+pub fn TimeseriestbatsEdge::len(Self) -> Int32
+pub fn TimeseriestbatsEdge::max(Self) -> Double
+pub fn TimeseriestbatsEdge::mean(Self) -> Double
+pub fn TimeseriestbatsEdge::min(Self) -> Double
+pub fn TimeseriestbatsEdge::scale(Self, Double) -> Self
+pub fn TimeseriestbatsEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriestbatsEdge::sum(Self) -> Double
+pub fn TimeseriestbatsEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriestbatsFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriestbatsFrame::add(Self, Self) -> Self
+pub fn TimeseriestbatsFrame::copy(Self) -> Self
+pub fn TimeseriestbatsFrame::fill(Self, Double) -> Self
+pub fn TimeseriestbatsFrame::get(Self, Int32) -> Double
+pub fn TimeseriestbatsFrame::len(Self) -> Int32
+pub fn TimeseriestbatsFrame::max(Self) -> Double
+pub fn TimeseriestbatsFrame::mean(Self) -> Double
+pub fn TimeseriestbatsFrame::min(Self) -> Double
+pub fn TimeseriestbatsFrame::scale(Self, Double) -> Self
+pub fn TimeseriestbatsFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriestbatsFrame::sum(Self) -> Double
+pub fn TimeseriestbatsFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriestbatsGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriestbatsGraphN::add(Self, Self) -> Self
+pub fn TimeseriestbatsGraphN::copy(Self) -> Self
+pub fn TimeseriestbatsGraphN::fill(Self, Double) -> Self
+pub fn TimeseriestbatsGraphN::get(Self, Int32) -> Double
+pub fn TimeseriestbatsGraphN::len(Self) -> Int32
+pub fn TimeseriestbatsGraphN::max(Self) -> Double
+pub fn TimeseriestbatsGraphN::mean(Self) -> Double
+pub fn TimeseriestbatsGraphN::min(Self) -> Double
+pub fn TimeseriestbatsGraphN::scale(Self, Double) -> Self
+pub fn TimeseriestbatsGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriestbatsGraphN::sum(Self) -> Double
+pub fn TimeseriestbatsGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriestbatsLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriestbatsLayer::add(Self, Self) -> Self
+pub fn TimeseriestbatsLayer::copy(Self) -> Self
+pub fn TimeseriestbatsLayer::fill(Self, Double) -> Self
+pub fn TimeseriestbatsLayer::get(Self, Int32) -> Double
+pub fn TimeseriestbatsLayer::len(Self) -> Int32
+pub fn TimeseriestbatsLayer::max(Self) -> Double
+pub fn TimeseriestbatsLayer::mean(Self) -> Double
+pub fn TimeseriestbatsLayer::min(Self) -> Double
+pub fn TimeseriestbatsLayer::scale(Self, Double) -> Self
+pub fn TimeseriestbatsLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriestbatsLayer::sum(Self) -> Double
+pub fn TimeseriestbatsLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriestbatsMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriestbatsMatrix::add(Self, Self) -> Self
+pub fn TimeseriestbatsMatrix::det(Self) -> Double
+pub fn TimeseriestbatsMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriestbatsMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriestbatsMatrix::norm(Self) -> Double
+pub fn TimeseriestbatsMatrix::scale(Self, Double) -> Self
+pub fn TimeseriestbatsMatrix::to_string(Self) -> String
+pub fn TimeseriestbatsMatrix::trace(Self) -> Double
+pub fn TimeseriestbatsMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriestbatsModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriestbatsModel::add(Self, Self) -> Self
+pub fn TimeseriestbatsModel::copy(Self) -> Self
+pub fn TimeseriestbatsModel::fill(Self, Double) -> Self
+pub fn TimeseriestbatsModel::get(Self, Int32) -> Double
+pub fn TimeseriestbatsModel::len(Self) -> Int32
+pub fn TimeseriestbatsModel::max(Self) -> Double
+pub fn TimeseriestbatsModel::mean(Self) -> Double
+pub fn TimeseriestbatsModel::min(Self) -> Double
+pub fn TimeseriestbatsModel::scale(Self, Double) -> Self
+pub fn TimeseriestbatsModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriestbatsModel::sum(Self) -> Double
+pub fn TimeseriestbatsModel::to_string(Self) -> String
+
+pub(all) struct TimeseriestbatsNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriestbatsNode::add(Self, Self) -> Self
+pub fn TimeseriestbatsNode::copy(Self) -> Self
+pub fn TimeseriestbatsNode::fill(Self, Double) -> Self
+pub fn TimeseriestbatsNode::get(Self, Int32) -> Double
+pub fn TimeseriestbatsNode::len(Self) -> Int32
+pub fn TimeseriestbatsNode::max(Self) -> Double
+pub fn TimeseriestbatsNode::mean(Self) -> Double
+pub fn TimeseriestbatsNode::min(Self) -> Double
+pub fn TimeseriestbatsNode::scale(Self, Double) -> Self
+pub fn TimeseriestbatsNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriestbatsNode::sum(Self) -> Double
+pub fn TimeseriestbatsNode::to_string(Self) -> String
+
+pub(all) struct TimeseriestbatsPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriestbatsPath::add(Self, Self) -> Self
+pub fn TimeseriestbatsPath::copy(Self) -> Self
+pub fn TimeseriestbatsPath::fill(Self, Double) -> Self
+pub fn TimeseriestbatsPath::get(Self, Int32) -> Double
+pub fn TimeseriestbatsPath::len(Self) -> Int32
+pub fn TimeseriestbatsPath::max(Self) -> Double
+pub fn TimeseriestbatsPath::mean(Self) -> Double
+pub fn TimeseriestbatsPath::min(Self) -> Double
+pub fn TimeseriestbatsPath::scale(Self, Double) -> Self
+pub fn TimeseriestbatsPath::set(Self, Int32, Double) -> Self
+pub fn TimeseriestbatsPath::sum(Self) -> Double
+pub fn TimeseriestbatsPath::to_string(Self) -> String
+
+pub(all) struct TimeseriestbatsPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriestbatsPoint::add(Self, Self) -> Self
+pub fn TimeseriestbatsPoint::cross(Self, Self) -> Self
+pub fn TimeseriestbatsPoint::dist(Self, Self) -> Double
+pub fn TimeseriestbatsPoint::dot(Self, Self) -> Double
+pub fn TimeseriestbatsPoint::label(Self) -> Int32
+pub fn TimeseriestbatsPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriestbatsPoint::mid(Self, Self) -> Self
+pub fn TimeseriestbatsPoint::negate(Self) -> Self
+pub fn TimeseriestbatsPoint::norm(Self) -> Double
+pub fn TimeseriestbatsPoint::normalize(Self) -> Self
+pub fn TimeseriestbatsPoint::scale(Self, Double) -> Self
+pub fn TimeseriestbatsPoint::sub(Self, Self) -> Self
+pub fn TimeseriestbatsPoint::to_string(Self) -> String
+pub fn TimeseriestbatsPoint::x(Self) -> Double
+pub fn TimeseriestbatsPoint::y(Self) -> Double
+pub fn TimeseriestbatsPoint::z(Self) -> Double
+
+pub(all) struct TimeseriestbatsRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriestbatsRange::add(Self, Self) -> Self
+pub fn TimeseriestbatsRange::copy(Self) -> Self
+pub fn TimeseriestbatsRange::fill(Self, Double) -> Self
+pub fn TimeseriestbatsRange::get(Self, Int32) -> Double
+pub fn TimeseriestbatsRange::len(Self) -> Int32
+pub fn TimeseriestbatsRange::max(Self) -> Double
+pub fn TimeseriestbatsRange::mean(Self) -> Double
+pub fn TimeseriestbatsRange::min(Self) -> Double
+pub fn TimeseriestbatsRange::scale(Self, Double) -> Self
+pub fn TimeseriestbatsRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriestbatsRange::sum(Self) -> Double
+pub fn TimeseriestbatsRange::to_string(Self) -> String
+
+pub(all) struct TimeseriestbatsSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriestbatsSeries::add(Self, Self) -> Self
+pub fn TimeseriestbatsSeries::cumsum(Self) -> Self
+pub fn TimeseriestbatsSeries::len(Self) -> Int32
+pub fn TimeseriestbatsSeries::max(Self) -> Double
+pub fn TimeseriestbatsSeries::mean(Self) -> Double
+pub fn TimeseriestbatsSeries::median(Self) -> Double
+pub fn TimeseriestbatsSeries::min(Self) -> Double
+pub fn TimeseriestbatsSeries::normalize(Self) -> Self
+pub fn TimeseriestbatsSeries::range(Self) -> Double
+pub fn TimeseriestbatsSeries::scale(Self, Double) -> Self
+pub fn TimeseriestbatsSeries::std(Self) -> Double
+pub fn TimeseriestbatsSeries::sub(Self, Self) -> Self
+pub fn TimeseriestbatsSeries::sum(Self) -> Double
+pub fn TimeseriestbatsSeries::to_string(Self) -> String
+pub fn TimeseriestbatsSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriestbatsSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriestbatsSlice::add(Self, Self) -> Self
+pub fn TimeseriestbatsSlice::copy(Self) -> Self
+pub fn TimeseriestbatsSlice::fill(Self, Double) -> Self
+pub fn TimeseriestbatsSlice::get(Self, Int32) -> Double
+pub fn TimeseriestbatsSlice::len(Self) -> Int32
+pub fn TimeseriestbatsSlice::max(Self) -> Double
+pub fn TimeseriestbatsSlice::mean(Self) -> Double
+pub fn TimeseriestbatsSlice::min(Self) -> Double
+pub fn TimeseriestbatsSlice::scale(Self, Double) -> Self
+pub fn TimeseriestbatsSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriestbatsSlice::sum(Self) -> Double
+pub fn TimeseriestbatsSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriestbatsTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriestbatsTable::add(Self, Self) -> Self
+pub fn TimeseriestbatsTable::copy(Self) -> Self
+pub fn TimeseriestbatsTable::fill(Self, Double) -> Self
+pub fn TimeseriestbatsTable::get(Self, Int32) -> Double
+pub fn TimeseriestbatsTable::len(Self) -> Int32
+pub fn TimeseriestbatsTable::max(Self) -> Double
+pub fn TimeseriestbatsTable::mean(Self) -> Double
+pub fn TimeseriestbatsTable::min(Self) -> Double
+pub fn TimeseriestbatsTable::scale(Self, Double) -> Self
+pub fn TimeseriestbatsTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriestbatsTable::sum(Self) -> Double
+pub fn TimeseriestbatsTable::to_string(Self) -> String
+
+pub(all) struct TimeseriestbatsVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriestbatsVector::add(Self, Self) -> Self
+pub fn TimeseriestbatsVector::dist(Self, Self) -> Double
+pub fn TimeseriestbatsVector::dot(Self, Self) -> Double
+pub fn TimeseriestbatsVector::norm(Self) -> Double
+pub fn TimeseriestbatsVector::normalize(Self) -> Self
+pub fn TimeseriestbatsVector::scale(Self, Double) -> Self
+pub fn TimeseriestbatsVector::sub(Self, Self) -> Self
+pub fn TimeseriestbatsVector::to_string(Self) -> String
+
+pub(all) struct TimeseriestbatsView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriestbatsView::add(Self, Self) -> Self
+pub fn TimeseriestbatsView::copy(Self) -> Self
+pub fn TimeseriestbatsView::fill(Self, Double) -> Self
+pub fn TimeseriestbatsView::get(Self, Int32) -> Double
+pub fn TimeseriestbatsView::len(Self) -> Int32
+pub fn TimeseriestbatsView::max(Self) -> Double
+pub fn TimeseriestbatsView::mean(Self) -> Double
+pub fn TimeseriestbatsView::min(Self) -> Double
+pub fn TimeseriestbatsView::scale(Self, Double) -> Self
+pub fn TimeseriestbatsView::set(Self, Int32, Double) -> Self
+pub fn TimeseriestbatsView::sum(Self) -> Double
+pub fn TimeseriestbatsView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

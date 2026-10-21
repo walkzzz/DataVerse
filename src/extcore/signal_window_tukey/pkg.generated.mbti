@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_window_tukey"
+
+// Values
+pub fn signal_window_tukey_buffer_make(Int32) -> SignalwindowtukeyBuffer
+
+pub fn signal_window_tukey_cluster_make(Int32) -> SignalwindowtukeyCluster
+
+pub fn signal_window_tukey_cursor_make(Int32) -> SignalwindowtukeyCursor
+
+pub fn signal_window_tukey_edge_make(Int32) -> SignalwindowtukeyEdge
+
+pub fn signal_window_tukey_frame_make(Int32) -> SignalwindowtukeyFrame
+
+pub fn signal_window_tukey_graphn_make(Int32) -> SignalwindowtukeyGraphN
+
+pub fn signal_window_tukey_layer_make(Int32) -> SignalwindowtukeyLayer
+
+pub fn signal_window_tukey_make_matrix(Int32, Int32, Double) -> SignalwindowtukeyMatrix
+
+pub fn signal_window_tukey_make_point(Double, Double) -> SignalwindowtukeyPoint
+
+pub fn signal_window_tukey_make_point3(Double, Double, Double) -> SignalwindowtukeyPoint
+
+pub fn signal_window_tukey_make_series(Array[Double], String) -> SignalwindowtukeySeries
+
+pub fn signal_window_tukey_make_vector(Array[Double]) -> SignalwindowtukeyVector
+
+pub fn signal_window_tukey_matrix_identity(Int32) -> SignalwindowtukeyMatrix
+
+pub fn signal_window_tukey_model_make(Int32) -> SignalwindowtukeyModel
+
+pub fn signal_window_tukey_node_make(Int32) -> SignalwindowtukeyNode
+
+pub fn signal_window_tukey_path_make(Int32) -> SignalwindowtukeyPath
+
+pub fn signal_window_tukey_range_make(Int32) -> SignalwindowtukeyRange
+
+pub fn signal_window_tukey_slice_make(Int32) -> SignalwindowtukeySlice
+
+pub fn signal_window_tukey_table_make(Int32) -> SignalwindowtukeyTable
+
+pub fn signal_window_tukey_vector_zero(Int32) -> SignalwindowtukeyVector
+
+pub fn signal_window_tukey_view_make(Int32) -> SignalwindowtukeyView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalwindowtukeyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowtukeyBuffer::add(Self, Self) -> Self
+pub fn SignalwindowtukeyBuffer::copy(Self) -> Self
+pub fn SignalwindowtukeyBuffer::fill(Self, Double) -> Self
+pub fn SignalwindowtukeyBuffer::get(Self, Int32) -> Double
+pub fn SignalwindowtukeyBuffer::len(Self) -> Int32
+pub fn SignalwindowtukeyBuffer::max(Self) -> Double
+pub fn SignalwindowtukeyBuffer::mean(Self) -> Double
+pub fn SignalwindowtukeyBuffer::min(Self) -> Double
+pub fn SignalwindowtukeyBuffer::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowtukeyBuffer::sum(Self) -> Double
+pub fn SignalwindowtukeyBuffer::to_string(Self) -> String
+
+pub(all) struct SignalwindowtukeyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowtukeyCluster::add(Self, Self) -> Self
+pub fn SignalwindowtukeyCluster::copy(Self) -> Self
+pub fn SignalwindowtukeyCluster::fill(Self, Double) -> Self
+pub fn SignalwindowtukeyCluster::get(Self, Int32) -> Double
+pub fn SignalwindowtukeyCluster::len(Self) -> Int32
+pub fn SignalwindowtukeyCluster::max(Self) -> Double
+pub fn SignalwindowtukeyCluster::mean(Self) -> Double
+pub fn SignalwindowtukeyCluster::min(Self) -> Double
+pub fn SignalwindowtukeyCluster::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyCluster::set(Self, Int32, Double) -> Self
+pub fn SignalwindowtukeyCluster::sum(Self) -> Double
+pub fn SignalwindowtukeyCluster::to_string(Self) -> String
+
+pub(all) struct SignalwindowtukeyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowtukeyCursor::add(Self, Self) -> Self
+pub fn SignalwindowtukeyCursor::copy(Self) -> Self
+pub fn SignalwindowtukeyCursor::fill(Self, Double) -> Self
+pub fn SignalwindowtukeyCursor::get(Self, Int32) -> Double
+pub fn SignalwindowtukeyCursor::len(Self) -> Int32
+pub fn SignalwindowtukeyCursor::max(Self) -> Double
+pub fn SignalwindowtukeyCursor::mean(Self) -> Double
+pub fn SignalwindowtukeyCursor::min(Self) -> Double
+pub fn SignalwindowtukeyCursor::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyCursor::set(Self, Int32, Double) -> Self
+pub fn SignalwindowtukeyCursor::sum(Self) -> Double
+pub fn SignalwindowtukeyCursor::to_string(Self) -> String
+
+pub(all) struct SignalwindowtukeyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowtukeyEdge::add(Self, Self) -> Self
+pub fn SignalwindowtukeyEdge::copy(Self) -> Self
+pub fn SignalwindowtukeyEdge::fill(Self, Double) -> Self
+pub fn SignalwindowtukeyEdge::get(Self, Int32) -> Double
+pub fn SignalwindowtukeyEdge::len(Self) -> Int32
+pub fn SignalwindowtukeyEdge::max(Self) -> Double
+pub fn SignalwindowtukeyEdge::mean(Self) -> Double
+pub fn SignalwindowtukeyEdge::min(Self) -> Double
+pub fn SignalwindowtukeyEdge::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyEdge::set(Self, Int32, Double) -> Self
+pub fn SignalwindowtukeyEdge::sum(Self) -> Double
+pub fn SignalwindowtukeyEdge::to_string(Self) -> String
+
+pub(all) struct SignalwindowtukeyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowtukeyFrame::add(Self, Self) -> Self
+pub fn SignalwindowtukeyFrame::copy(Self) -> Self
+pub fn SignalwindowtukeyFrame::fill(Self, Double) -> Self
+pub fn SignalwindowtukeyFrame::get(Self, Int32) -> Double
+pub fn SignalwindowtukeyFrame::len(Self) -> Int32
+pub fn SignalwindowtukeyFrame::max(Self) -> Double
+pub fn SignalwindowtukeyFrame::mean(Self) -> Double
+pub fn SignalwindowtukeyFrame::min(Self) -> Double
+pub fn SignalwindowtukeyFrame::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyFrame::set(Self, Int32, Double) -> Self
+pub fn SignalwindowtukeyFrame::sum(Self) -> Double
+pub fn SignalwindowtukeyFrame::to_string(Self) -> String
+
+pub(all) struct SignalwindowtukeyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowtukeyGraphN::add(Self, Self) -> Self
+pub fn SignalwindowtukeyGraphN::copy(Self) -> Self
+pub fn SignalwindowtukeyGraphN::fill(Self, Double) -> Self
+pub fn SignalwindowtukeyGraphN::get(Self, Int32) -> Double
+pub fn SignalwindowtukeyGraphN::len(Self) -> Int32
+pub fn SignalwindowtukeyGraphN::max(Self) -> Double
+pub fn SignalwindowtukeyGraphN::mean(Self) -> Double
+pub fn SignalwindowtukeyGraphN::min(Self) -> Double
+pub fn SignalwindowtukeyGraphN::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalwindowtukeyGraphN::sum(Self) -> Double
+pub fn SignalwindowtukeyGraphN::to_string(Self) -> String
+
+pub(all) struct SignalwindowtukeyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowtukeyLayer::add(Self, Self) -> Self
+pub fn SignalwindowtukeyLayer::copy(Self) -> Self
+pub fn SignalwindowtukeyLayer::fill(Self, Double) -> Self
+pub fn SignalwindowtukeyLayer::get(Self, Int32) -> Double
+pub fn SignalwindowtukeyLayer::len(Self) -> Int32
+pub fn SignalwindowtukeyLayer::max(Self) -> Double
+pub fn SignalwindowtukeyLayer::mean(Self) -> Double
+pub fn SignalwindowtukeyLayer::min(Self) -> Double
+pub fn SignalwindowtukeyLayer::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyLayer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowtukeyLayer::sum(Self) -> Double
+pub fn SignalwindowtukeyLayer::to_string(Self) -> String
+
+pub(all) struct SignalwindowtukeyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalwindowtukeyMatrix::add(Self, Self) -> Self
+pub fn SignalwindowtukeyMatrix::det(Self) -> Double
+pub fn SignalwindowtukeyMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalwindowtukeyMatrix::multiply(Self, Self) -> Self
+pub fn SignalwindowtukeyMatrix::norm(Self) -> Double
+pub fn SignalwindowtukeyMatrix::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyMatrix::to_string(Self) -> String
+pub fn SignalwindowtukeyMatrix::trace(Self) -> Double
+pub fn SignalwindowtukeyMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalwindowtukeyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowtukeyModel::add(Self, Self) -> Self
+pub fn SignalwindowtukeyModel::copy(Self) -> Self
+pub fn SignalwindowtukeyModel::fill(Self, Double) -> Self
+pub fn SignalwindowtukeyModel::get(Self, Int32) -> Double
+pub fn SignalwindowtukeyModel::len(Self) -> Int32
+pub fn SignalwindowtukeyModel::max(Self) -> Double
+pub fn SignalwindowtukeyModel::mean(Self) -> Double
+pub fn SignalwindowtukeyModel::min(Self) -> Double
+pub fn SignalwindowtukeyModel::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyModel::set(Self, Int32, Double) -> Self
+pub fn SignalwindowtukeyModel::sum(Self) -> Double
+pub fn SignalwindowtukeyModel::to_string(Self) -> String
+
+pub(all) struct SignalwindowtukeyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowtukeyNode::add(Self, Self) -> Self
+pub fn SignalwindowtukeyNode::copy(Self) -> Self
+pub fn SignalwindowtukeyNode::fill(Self, Double) -> Self
+pub fn SignalwindowtukeyNode::get(Self, Int32) -> Double
+pub fn SignalwindowtukeyNode::len(Self) -> Int32
+pub fn SignalwindowtukeyNode::max(Self) -> Double
+pub fn SignalwindowtukeyNode::mean(Self) -> Double
+pub fn SignalwindowtukeyNode::min(Self) -> Double
+pub fn SignalwindowtukeyNode::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyNode::set(Self, Int32, Double) -> Self
+pub fn SignalwindowtukeyNode::sum(Self) -> Double
+pub fn SignalwindowtukeyNode::to_string(Self) -> String
+
+pub(all) struct SignalwindowtukeyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowtukeyPath::add(Self, Self) -> Self
+pub fn SignalwindowtukeyPath::copy(Self) -> Self
+pub fn SignalwindowtukeyPath::fill(Self, Double) -> Self
+pub fn SignalwindowtukeyPath::get(Self, Int32) -> Double
+pub fn SignalwindowtukeyPath::len(Self) -> Int32
+pub fn SignalwindowtukeyPath::max(Self) -> Double
+pub fn SignalwindowtukeyPath::mean(Self) -> Double
+pub fn SignalwindowtukeyPath::min(Self) -> Double
+pub fn SignalwindowtukeyPath::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyPath::set(Self, Int32, Double) -> Self
+pub fn SignalwindowtukeyPath::sum(Self) -> Double
+pub fn SignalwindowtukeyPath::to_string(Self) -> String
+
+pub(all) struct SignalwindowtukeyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalwindowtukeyPoint::add(Self, Self) -> Self
+pub fn SignalwindowtukeyPoint::cross(Self, Self) -> Self
+pub fn SignalwindowtukeyPoint::dist(Self, Self) -> Double
+pub fn SignalwindowtukeyPoint::dot(Self, Self) -> Double
+pub fn SignalwindowtukeyPoint::label(Self) -> Int32
+pub fn SignalwindowtukeyPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalwindowtukeyPoint::mid(Self, Self) -> Self
+pub fn SignalwindowtukeyPoint::negate(Self) -> Self
+pub fn SignalwindowtukeyPoint::norm(Self) -> Double
+pub fn SignalwindowtukeyPoint::normalize(Self) -> Self
+pub fn SignalwindowtukeyPoint::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyPoint::sub(Self, Self) -> Self
+pub fn SignalwindowtukeyPoint::to_string(Self) -> String
+pub fn SignalwindowtukeyPoint::x(Self) -> Double
+pub fn SignalwindowtukeyPoint::y(Self) -> Double
+pub fn SignalwindowtukeyPoint::z(Self) -> Double
+
+pub(all) struct SignalwindowtukeyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowtukeyRange::add(Self, Self) -> Self
+pub fn SignalwindowtukeyRange::copy(Self) -> Self
+pub fn SignalwindowtukeyRange::fill(Self, Double) -> Self
+pub fn SignalwindowtukeyRange::get(Self, Int32) -> Double
+pub fn SignalwindowtukeyRange::len(Self) -> Int32
+pub fn SignalwindowtukeyRange::max(Self) -> Double
+pub fn SignalwindowtukeyRange::mean(Self) -> Double
+pub fn SignalwindowtukeyRange::min(Self) -> Double
+pub fn SignalwindowtukeyRange::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyRange::set(Self, Int32, Double) -> Self
+pub fn SignalwindowtukeyRange::sum(Self) -> Double
+pub fn SignalwindowtukeyRange::to_string(Self) -> String
+
+pub(all) struct SignalwindowtukeySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalwindowtukeySeries::add(Self, Self) -> Self
+pub fn SignalwindowtukeySeries::cumsum(Self) -> Self
+pub fn SignalwindowtukeySeries::len(Self) -> Int32
+pub fn SignalwindowtukeySeries::max(Self) -> Double
+pub fn SignalwindowtukeySeries::mean(Self) -> Double
+pub fn SignalwindowtukeySeries::median(Self) -> Double
+pub fn SignalwindowtukeySeries::min(Self) -> Double
+pub fn SignalwindowtukeySeries::normalize(Self) -> Self
+pub fn SignalwindowtukeySeries::range(Self) -> Double
+pub fn SignalwindowtukeySeries::scale(Self, Double) -> Self
+pub fn SignalwindowtukeySeries::std(Self) -> Double
+pub fn SignalwindowtukeySeries::sub(Self, Self) -> Self
+pub fn SignalwindowtukeySeries::sum(Self) -> Double
+pub fn SignalwindowtukeySeries::to_string(Self) -> String
+pub fn SignalwindowtukeySeries::variance(Self) -> Double
+
+pub(all) struct SignalwindowtukeySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowtukeySlice::add(Self, Self) -> Self
+pub fn SignalwindowtukeySlice::copy(Self) -> Self
+pub fn SignalwindowtukeySlice::fill(Self, Double) -> Self
+pub fn SignalwindowtukeySlice::get(Self, Int32) -> Double
+pub fn SignalwindowtukeySlice::len(Self) -> Int32
+pub fn SignalwindowtukeySlice::max(Self) -> Double
+pub fn SignalwindowtukeySlice::mean(Self) -> Double
+pub fn SignalwindowtukeySlice::min(Self) -> Double
+pub fn SignalwindowtukeySlice::scale(Self, Double) -> Self
+pub fn SignalwindowtukeySlice::set(Self, Int32, Double) -> Self
+pub fn SignalwindowtukeySlice::sum(Self) -> Double
+pub fn SignalwindowtukeySlice::to_string(Self) -> String
+
+pub(all) struct SignalwindowtukeyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowtukeyTable::add(Self, Self) -> Self
+pub fn SignalwindowtukeyTable::copy(Self) -> Self
+pub fn SignalwindowtukeyTable::fill(Self, Double) -> Self
+pub fn SignalwindowtukeyTable::get(Self, Int32) -> Double
+pub fn SignalwindowtukeyTable::len(Self) -> Int32
+pub fn SignalwindowtukeyTable::max(Self) -> Double
+pub fn SignalwindowtukeyTable::mean(Self) -> Double
+pub fn SignalwindowtukeyTable::min(Self) -> Double
+pub fn SignalwindowtukeyTable::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyTable::set(Self, Int32, Double) -> Self
+pub fn SignalwindowtukeyTable::sum(Self) -> Double
+pub fn SignalwindowtukeyTable::to_string(Self) -> String
+
+pub(all) struct SignalwindowtukeyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalwindowtukeyVector::add(Self, Self) -> Self
+pub fn SignalwindowtukeyVector::dist(Self, Self) -> Double
+pub fn SignalwindowtukeyVector::dot(Self, Self) -> Double
+pub fn SignalwindowtukeyVector::norm(Self) -> Double
+pub fn SignalwindowtukeyVector::normalize(Self) -> Self
+pub fn SignalwindowtukeyVector::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyVector::sub(Self, Self) -> Self
+pub fn SignalwindowtukeyVector::to_string(Self) -> String
+
+pub(all) struct SignalwindowtukeyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowtukeyView::add(Self, Self) -> Self
+pub fn SignalwindowtukeyView::copy(Self) -> Self
+pub fn SignalwindowtukeyView::fill(Self, Double) -> Self
+pub fn SignalwindowtukeyView::get(Self, Int32) -> Double
+pub fn SignalwindowtukeyView::len(Self) -> Int32
+pub fn SignalwindowtukeyView::max(Self) -> Double
+pub fn SignalwindowtukeyView::mean(Self) -> Double
+pub fn SignalwindowtukeyView::min(Self) -> Double
+pub fn SignalwindowtukeyView::scale(Self, Double) -> Self
+pub fn SignalwindowtukeyView::set(Self, Int32, Double) -> Self
+pub fn SignalwindowtukeyView::sum(Self) -> Double
+pub fn SignalwindowtukeyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

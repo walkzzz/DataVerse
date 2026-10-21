@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_metric_roc"
+
+// Values
+pub fn ml_metric_roc_buffer_make(Int32) -> MlmetricrocBuffer
+
+pub fn ml_metric_roc_cluster_make(Int32) -> MlmetricrocCluster
+
+pub fn ml_metric_roc_cursor_make(Int32) -> MlmetricrocCursor
+
+pub fn ml_metric_roc_edge_make(Int32) -> MlmetricrocEdge
+
+pub fn ml_metric_roc_frame_make(Int32) -> MlmetricrocFrame
+
+pub fn ml_metric_roc_graphn_make(Int32) -> MlmetricrocGraphN
+
+pub fn ml_metric_roc_layer_make(Int32) -> MlmetricrocLayer
+
+pub fn ml_metric_roc_make_matrix(Int32, Int32, Double) -> MlmetricrocMatrix
+
+pub fn ml_metric_roc_make_point(Double, Double) -> MlmetricrocPoint
+
+pub fn ml_metric_roc_make_point3(Double, Double, Double) -> MlmetricrocPoint
+
+pub fn ml_metric_roc_make_series(Array[Double], String) -> MlmetricrocSeries
+
+pub fn ml_metric_roc_make_vector(Array[Double]) -> MlmetricrocVector
+
+pub fn ml_metric_roc_matrix_identity(Int32) -> MlmetricrocMatrix
+
+pub fn ml_metric_roc_model_make(Int32) -> MlmetricrocModel
+
+pub fn ml_metric_roc_node_make(Int32) -> MlmetricrocNode
+
+pub fn ml_metric_roc_path_make(Int32) -> MlmetricrocPath
+
+pub fn ml_metric_roc_range_make(Int32) -> MlmetricrocRange
+
+pub fn ml_metric_roc_slice_make(Int32) -> MlmetricrocSlice
+
+pub fn ml_metric_roc_table_make(Int32) -> MlmetricrocTable
+
+pub fn ml_metric_roc_vector_zero(Int32) -> MlmetricrocVector
+
+pub fn ml_metric_roc_view_make(Int32) -> MlmetricrocView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlmetricrocBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrocBuffer::add(Self, Self) -> Self
+pub fn MlmetricrocBuffer::copy(Self) -> Self
+pub fn MlmetricrocBuffer::fill(Self, Double) -> Self
+pub fn MlmetricrocBuffer::get(Self, Int32) -> Double
+pub fn MlmetricrocBuffer::len(Self) -> Int32
+pub fn MlmetricrocBuffer::max(Self) -> Double
+pub fn MlmetricrocBuffer::mean(Self) -> Double
+pub fn MlmetricrocBuffer::min(Self) -> Double
+pub fn MlmetricrocBuffer::scale(Self, Double) -> Self
+pub fn MlmetricrocBuffer::set(Self, Int32, Double) -> Self
+pub fn MlmetricrocBuffer::sum(Self) -> Double
+pub fn MlmetricrocBuffer::to_string(Self) -> String
+
+pub(all) struct MlmetricrocCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrocCluster::add(Self, Self) -> Self
+pub fn MlmetricrocCluster::copy(Self) -> Self
+pub fn MlmetricrocCluster::fill(Self, Double) -> Self
+pub fn MlmetricrocCluster::get(Self, Int32) -> Double
+pub fn MlmetricrocCluster::len(Self) -> Int32
+pub fn MlmetricrocCluster::max(Self) -> Double
+pub fn MlmetricrocCluster::mean(Self) -> Double
+pub fn MlmetricrocCluster::min(Self) -> Double
+pub fn MlmetricrocCluster::scale(Self, Double) -> Self
+pub fn MlmetricrocCluster::set(Self, Int32, Double) -> Self
+pub fn MlmetricrocCluster::sum(Self) -> Double
+pub fn MlmetricrocCluster::to_string(Self) -> String
+
+pub(all) struct MlmetricrocCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrocCursor::add(Self, Self) -> Self
+pub fn MlmetricrocCursor::copy(Self) -> Self
+pub fn MlmetricrocCursor::fill(Self, Double) -> Self
+pub fn MlmetricrocCursor::get(Self, Int32) -> Double
+pub fn MlmetricrocCursor::len(Self) -> Int32
+pub fn MlmetricrocCursor::max(Self) -> Double
+pub fn MlmetricrocCursor::mean(Self) -> Double
+pub fn MlmetricrocCursor::min(Self) -> Double
+pub fn MlmetricrocCursor::scale(Self, Double) -> Self
+pub fn MlmetricrocCursor::set(Self, Int32, Double) -> Self
+pub fn MlmetricrocCursor::sum(Self) -> Double
+pub fn MlmetricrocCursor::to_string(Self) -> String
+
+pub(all) struct MlmetricrocEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrocEdge::add(Self, Self) -> Self
+pub fn MlmetricrocEdge::copy(Self) -> Self
+pub fn MlmetricrocEdge::fill(Self, Double) -> Self
+pub fn MlmetricrocEdge::get(Self, Int32) -> Double
+pub fn MlmetricrocEdge::len(Self) -> Int32
+pub fn MlmetricrocEdge::max(Self) -> Double
+pub fn MlmetricrocEdge::mean(Self) -> Double
+pub fn MlmetricrocEdge::min(Self) -> Double
+pub fn MlmetricrocEdge::scale(Self, Double) -> Self
+pub fn MlmetricrocEdge::set(Self, Int32, Double) -> Self
+pub fn MlmetricrocEdge::sum(Self) -> Double
+pub fn MlmetricrocEdge::to_string(Self) -> String
+
+pub(all) struct MlmetricrocFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrocFrame::add(Self, Self) -> Self
+pub fn MlmetricrocFrame::copy(Self) -> Self
+pub fn MlmetricrocFrame::fill(Self, Double) -> Self
+pub fn MlmetricrocFrame::get(Self, Int32) -> Double
+pub fn MlmetricrocFrame::len(Self) -> Int32
+pub fn MlmetricrocFrame::max(Self) -> Double
+pub fn MlmetricrocFrame::mean(Self) -> Double
+pub fn MlmetricrocFrame::min(Self) -> Double
+pub fn MlmetricrocFrame::scale(Self, Double) -> Self
+pub fn MlmetricrocFrame::set(Self, Int32, Double) -> Self
+pub fn MlmetricrocFrame::sum(Self) -> Double
+pub fn MlmetricrocFrame::to_string(Self) -> String
+
+pub(all) struct MlmetricrocGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrocGraphN::add(Self, Self) -> Self
+pub fn MlmetricrocGraphN::copy(Self) -> Self
+pub fn MlmetricrocGraphN::fill(Self, Double) -> Self
+pub fn MlmetricrocGraphN::get(Self, Int32) -> Double
+pub fn MlmetricrocGraphN::len(Self) -> Int32
+pub fn MlmetricrocGraphN::max(Self) -> Double
+pub fn MlmetricrocGraphN::mean(Self) -> Double
+pub fn MlmetricrocGraphN::min(Self) -> Double
+pub fn MlmetricrocGraphN::scale(Self, Double) -> Self
+pub fn MlmetricrocGraphN::set(Self, Int32, Double) -> Self
+pub fn MlmetricrocGraphN::sum(Self) -> Double
+pub fn MlmetricrocGraphN::to_string(Self) -> String
+
+pub(all) struct MlmetricrocLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrocLayer::add(Self, Self) -> Self
+pub fn MlmetricrocLayer::copy(Self) -> Self
+pub fn MlmetricrocLayer::fill(Self, Double) -> Self
+pub fn MlmetricrocLayer::get(Self, Int32) -> Double
+pub fn MlmetricrocLayer::len(Self) -> Int32
+pub fn MlmetricrocLayer::max(Self) -> Double
+pub fn MlmetricrocLayer::mean(Self) -> Double
+pub fn MlmetricrocLayer::min(Self) -> Double
+pub fn MlmetricrocLayer::scale(Self, Double) -> Self
+pub fn MlmetricrocLayer::set(Self, Int32, Double) -> Self
+pub fn MlmetricrocLayer::sum(Self) -> Double
+pub fn MlmetricrocLayer::to_string(Self) -> String
+
+pub(all) struct MlmetricrocMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlmetricrocMatrix::add(Self, Self) -> Self
+pub fn MlmetricrocMatrix::det(Self) -> Double
+pub fn MlmetricrocMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlmetricrocMatrix::multiply(Self, Self) -> Self
+pub fn MlmetricrocMatrix::norm(Self) -> Double
+pub fn MlmetricrocMatrix::scale(Self, Double) -> Self
+pub fn MlmetricrocMatrix::to_string(Self) -> String
+pub fn MlmetricrocMatrix::trace(Self) -> Double
+pub fn MlmetricrocMatrix::transpose(Self) -> Self
+
+pub(all) struct MlmetricrocModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrocModel::add(Self, Self) -> Self
+pub fn MlmetricrocModel::copy(Self) -> Self
+pub fn MlmetricrocModel::fill(Self, Double) -> Self
+pub fn MlmetricrocModel::get(Self, Int32) -> Double
+pub fn MlmetricrocModel::len(Self) -> Int32
+pub fn MlmetricrocModel::max(Self) -> Double
+pub fn MlmetricrocModel::mean(Self) -> Double
+pub fn MlmetricrocModel::min(Self) -> Double
+pub fn MlmetricrocModel::scale(Self, Double) -> Self
+pub fn MlmetricrocModel::set(Self, Int32, Double) -> Self
+pub fn MlmetricrocModel::sum(Self) -> Double
+pub fn MlmetricrocModel::to_string(Self) -> String
+
+pub(all) struct MlmetricrocNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrocNode::add(Self, Self) -> Self
+pub fn MlmetricrocNode::copy(Self) -> Self
+pub fn MlmetricrocNode::fill(Self, Double) -> Self
+pub fn MlmetricrocNode::get(Self, Int32) -> Double
+pub fn MlmetricrocNode::len(Self) -> Int32
+pub fn MlmetricrocNode::max(Self) -> Double
+pub fn MlmetricrocNode::mean(Self) -> Double
+pub fn MlmetricrocNode::min(Self) -> Double
+pub fn MlmetricrocNode::scale(Self, Double) -> Self
+pub fn MlmetricrocNode::set(Self, Int32, Double) -> Self
+pub fn MlmetricrocNode::sum(Self) -> Double
+pub fn MlmetricrocNode::to_string(Self) -> String
+
+pub(all) struct MlmetricrocPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrocPath::add(Self, Self) -> Self
+pub fn MlmetricrocPath::copy(Self) -> Self
+pub fn MlmetricrocPath::fill(Self, Double) -> Self
+pub fn MlmetricrocPath::get(Self, Int32) -> Double
+pub fn MlmetricrocPath::len(Self) -> Int32
+pub fn MlmetricrocPath::max(Self) -> Double
+pub fn MlmetricrocPath::mean(Self) -> Double
+pub fn MlmetricrocPath::min(Self) -> Double
+pub fn MlmetricrocPath::scale(Self, Double) -> Self
+pub fn MlmetricrocPath::set(Self, Int32, Double) -> Self
+pub fn MlmetricrocPath::sum(Self) -> Double
+pub fn MlmetricrocPath::to_string(Self) -> String
+
+pub(all) struct MlmetricrocPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlmetricrocPoint::add(Self, Self) -> Self
+pub fn MlmetricrocPoint::cross(Self, Self) -> Self
+pub fn MlmetricrocPoint::dist(Self, Self) -> Double
+pub fn MlmetricrocPoint::dot(Self, Self) -> Double
+pub fn MlmetricrocPoint::label(Self) -> Int32
+pub fn MlmetricrocPoint::lerp(Self, Self, Double) -> Self
+pub fn MlmetricrocPoint::mid(Self, Self) -> Self
+pub fn MlmetricrocPoint::negate(Self) -> Self
+pub fn MlmetricrocPoint::norm(Self) -> Double
+pub fn MlmetricrocPoint::normalize(Self) -> Self
+pub fn MlmetricrocPoint::scale(Self, Double) -> Self
+pub fn MlmetricrocPoint::sub(Self, Self) -> Self
+pub fn MlmetricrocPoint::to_string(Self) -> String
+pub fn MlmetricrocPoint::x(Self) -> Double
+pub fn MlmetricrocPoint::y(Self) -> Double
+pub fn MlmetricrocPoint::z(Self) -> Double
+
+pub(all) struct MlmetricrocRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrocRange::add(Self, Self) -> Self
+pub fn MlmetricrocRange::copy(Self) -> Self
+pub fn MlmetricrocRange::fill(Self, Double) -> Self
+pub fn MlmetricrocRange::get(Self, Int32) -> Double
+pub fn MlmetricrocRange::len(Self) -> Int32
+pub fn MlmetricrocRange::max(Self) -> Double
+pub fn MlmetricrocRange::mean(Self) -> Double
+pub fn MlmetricrocRange::min(Self) -> Double
+pub fn MlmetricrocRange::scale(Self, Double) -> Self
+pub fn MlmetricrocRange::set(Self, Int32, Double) -> Self
+pub fn MlmetricrocRange::sum(Self) -> Double
+pub fn MlmetricrocRange::to_string(Self) -> String
+
+pub(all) struct MlmetricrocSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlmetricrocSeries::add(Self, Self) -> Self
+pub fn MlmetricrocSeries::cumsum(Self) -> Self
+pub fn MlmetricrocSeries::len(Self) -> Int32
+pub fn MlmetricrocSeries::max(Self) -> Double
+pub fn MlmetricrocSeries::mean(Self) -> Double
+pub fn MlmetricrocSeries::median(Self) -> Double
+pub fn MlmetricrocSeries::min(Self) -> Double
+pub fn MlmetricrocSeries::normalize(Self) -> Self
+pub fn MlmetricrocSeries::range(Self) -> Double
+pub fn MlmetricrocSeries::scale(Self, Double) -> Self
+pub fn MlmetricrocSeries::std(Self) -> Double
+pub fn MlmetricrocSeries::sub(Self, Self) -> Self
+pub fn MlmetricrocSeries::sum(Self) -> Double
+pub fn MlmetricrocSeries::to_string(Self) -> String
+pub fn MlmetricrocSeries::variance(Self) -> Double
+
+pub(all) struct MlmetricrocSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrocSlice::add(Self, Self) -> Self
+pub fn MlmetricrocSlice::copy(Self) -> Self
+pub fn MlmetricrocSlice::fill(Self, Double) -> Self
+pub fn MlmetricrocSlice::get(Self, Int32) -> Double
+pub fn MlmetricrocSlice::len(Self) -> Int32
+pub fn MlmetricrocSlice::max(Self) -> Double
+pub fn MlmetricrocSlice::mean(Self) -> Double
+pub fn MlmetricrocSlice::min(Self) -> Double
+pub fn MlmetricrocSlice::scale(Self, Double) -> Self
+pub fn MlmetricrocSlice::set(Self, Int32, Double) -> Self
+pub fn MlmetricrocSlice::sum(Self) -> Double
+pub fn MlmetricrocSlice::to_string(Self) -> String
+
+pub(all) struct MlmetricrocTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrocTable::add(Self, Self) -> Self
+pub fn MlmetricrocTable::copy(Self) -> Self
+pub fn MlmetricrocTable::fill(Self, Double) -> Self
+pub fn MlmetricrocTable::get(Self, Int32) -> Double
+pub fn MlmetricrocTable::len(Self) -> Int32
+pub fn MlmetricrocTable::max(Self) -> Double
+pub fn MlmetricrocTable::mean(Self) -> Double
+pub fn MlmetricrocTable::min(Self) -> Double
+pub fn MlmetricrocTable::scale(Self, Double) -> Self
+pub fn MlmetricrocTable::set(Self, Int32, Double) -> Self
+pub fn MlmetricrocTable::sum(Self) -> Double
+pub fn MlmetricrocTable::to_string(Self) -> String
+
+pub(all) struct MlmetricrocVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlmetricrocVector::add(Self, Self) -> Self
+pub fn MlmetricrocVector::dist(Self, Self) -> Double
+pub fn MlmetricrocVector::dot(Self, Self) -> Double
+pub fn MlmetricrocVector::norm(Self) -> Double
+pub fn MlmetricrocVector::normalize(Self) -> Self
+pub fn MlmetricrocVector::scale(Self, Double) -> Self
+pub fn MlmetricrocVector::sub(Self, Self) -> Self
+pub fn MlmetricrocVector::to_string(Self) -> String
+
+pub(all) struct MlmetricrocView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrocView::add(Self, Self) -> Self
+pub fn MlmetricrocView::copy(Self) -> Self
+pub fn MlmetricrocView::fill(Self, Double) -> Self
+pub fn MlmetricrocView::get(Self, Int32) -> Double
+pub fn MlmetricrocView::len(Self) -> Int32
+pub fn MlmetricrocView::max(Self) -> Double
+pub fn MlmetricrocView::mean(Self) -> Double
+pub fn MlmetricrocView::min(Self) -> Double
+pub fn MlmetricrocView::scale(Self, Double) -> Self
+pub fn MlmetricrocView::set(Self, Int32, Double) -> Self
+pub fn MlmetricrocView::sum(Self) -> Double
+pub fn MlmetricrocView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

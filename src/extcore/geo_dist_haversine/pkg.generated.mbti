@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_dist_haversine"
+
+// Values
+pub fn geo_dist_haversine_buffer_make(Int32) -> GeodisthaversineBuffer
+
+pub fn geo_dist_haversine_cluster_make(Int32) -> GeodisthaversineCluster
+
+pub fn geo_dist_haversine_cursor_make(Int32) -> GeodisthaversineCursor
+
+pub fn geo_dist_haversine_edge_make(Int32) -> GeodisthaversineEdge
+
+pub fn geo_dist_haversine_frame_make(Int32) -> GeodisthaversineFrame
+
+pub fn geo_dist_haversine_graphn_make(Int32) -> GeodisthaversineGraphN
+
+pub fn geo_dist_haversine_layer_make(Int32) -> GeodisthaversineLayer
+
+pub fn geo_dist_haversine_make_matrix(Int32, Int32, Double) -> GeodisthaversineMatrix
+
+pub fn geo_dist_haversine_make_point(Double, Double) -> GeodisthaversinePoint
+
+pub fn geo_dist_haversine_make_point3(Double, Double, Double) -> GeodisthaversinePoint
+
+pub fn geo_dist_haversine_make_series(Array[Double], String) -> GeodisthaversineSeries
+
+pub fn geo_dist_haversine_make_vector(Array[Double]) -> GeodisthaversineVector
+
+pub fn geo_dist_haversine_matrix_identity(Int32) -> GeodisthaversineMatrix
+
+pub fn geo_dist_haversine_model_make(Int32) -> GeodisthaversineModel
+
+pub fn geo_dist_haversine_node_make(Int32) -> GeodisthaversineNode
+
+pub fn geo_dist_haversine_path_make(Int32) -> GeodisthaversinePath
+
+pub fn geo_dist_haversine_range_make(Int32) -> GeodisthaversineRange
+
+pub fn geo_dist_haversine_slice_make(Int32) -> GeodisthaversineSlice
+
+pub fn geo_dist_haversine_table_make(Int32) -> GeodisthaversineTable
+
+pub fn geo_dist_haversine_vector_zero(Int32) -> GeodisthaversineVector
+
+pub fn geo_dist_haversine_view_make(Int32) -> GeodisthaversineView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeodisthaversineBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisthaversineBuffer::add(Self, Self) -> Self
+pub fn GeodisthaversineBuffer::copy(Self) -> Self
+pub fn GeodisthaversineBuffer::fill(Self, Double) -> Self
+pub fn GeodisthaversineBuffer::get(Self, Int32) -> Double
+pub fn GeodisthaversineBuffer::len(Self) -> Int32
+pub fn GeodisthaversineBuffer::max(Self) -> Double
+pub fn GeodisthaversineBuffer::mean(Self) -> Double
+pub fn GeodisthaversineBuffer::min(Self) -> Double
+pub fn GeodisthaversineBuffer::scale(Self, Double) -> Self
+pub fn GeodisthaversineBuffer::set(Self, Int32, Double) -> Self
+pub fn GeodisthaversineBuffer::sum(Self) -> Double
+pub fn GeodisthaversineBuffer::to_string(Self) -> String
+
+pub(all) struct GeodisthaversineCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisthaversineCluster::add(Self, Self) -> Self
+pub fn GeodisthaversineCluster::copy(Self) -> Self
+pub fn GeodisthaversineCluster::fill(Self, Double) -> Self
+pub fn GeodisthaversineCluster::get(Self, Int32) -> Double
+pub fn GeodisthaversineCluster::len(Self) -> Int32
+pub fn GeodisthaversineCluster::max(Self) -> Double
+pub fn GeodisthaversineCluster::mean(Self) -> Double
+pub fn GeodisthaversineCluster::min(Self) -> Double
+pub fn GeodisthaversineCluster::scale(Self, Double) -> Self
+pub fn GeodisthaversineCluster::set(Self, Int32, Double) -> Self
+pub fn GeodisthaversineCluster::sum(Self) -> Double
+pub fn GeodisthaversineCluster::to_string(Self) -> String
+
+pub(all) struct GeodisthaversineCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisthaversineCursor::add(Self, Self) -> Self
+pub fn GeodisthaversineCursor::copy(Self) -> Self
+pub fn GeodisthaversineCursor::fill(Self, Double) -> Self
+pub fn GeodisthaversineCursor::get(Self, Int32) -> Double
+pub fn GeodisthaversineCursor::len(Self) -> Int32
+pub fn GeodisthaversineCursor::max(Self) -> Double
+pub fn GeodisthaversineCursor::mean(Self) -> Double
+pub fn GeodisthaversineCursor::min(Self) -> Double
+pub fn GeodisthaversineCursor::scale(Self, Double) -> Self
+pub fn GeodisthaversineCursor::set(Self, Int32, Double) -> Self
+pub fn GeodisthaversineCursor::sum(Self) -> Double
+pub fn GeodisthaversineCursor::to_string(Self) -> String
+
+pub(all) struct GeodisthaversineEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisthaversineEdge::add(Self, Self) -> Self
+pub fn GeodisthaversineEdge::copy(Self) -> Self
+pub fn GeodisthaversineEdge::fill(Self, Double) -> Self
+pub fn GeodisthaversineEdge::get(Self, Int32) -> Double
+pub fn GeodisthaversineEdge::len(Self) -> Int32
+pub fn GeodisthaversineEdge::max(Self) -> Double
+pub fn GeodisthaversineEdge::mean(Self) -> Double
+pub fn GeodisthaversineEdge::min(Self) -> Double
+pub fn GeodisthaversineEdge::scale(Self, Double) -> Self
+pub fn GeodisthaversineEdge::set(Self, Int32, Double) -> Self
+pub fn GeodisthaversineEdge::sum(Self) -> Double
+pub fn GeodisthaversineEdge::to_string(Self) -> String
+
+pub(all) struct GeodisthaversineFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisthaversineFrame::add(Self, Self) -> Self
+pub fn GeodisthaversineFrame::copy(Self) -> Self
+pub fn GeodisthaversineFrame::fill(Self, Double) -> Self
+pub fn GeodisthaversineFrame::get(Self, Int32) -> Double
+pub fn GeodisthaversineFrame::len(Self) -> Int32
+pub fn GeodisthaversineFrame::max(Self) -> Double
+pub fn GeodisthaversineFrame::mean(Self) -> Double
+pub fn GeodisthaversineFrame::min(Self) -> Double
+pub fn GeodisthaversineFrame::scale(Self, Double) -> Self
+pub fn GeodisthaversineFrame::set(Self, Int32, Double) -> Self
+pub fn GeodisthaversineFrame::sum(Self) -> Double
+pub fn GeodisthaversineFrame::to_string(Self) -> String
+
+pub(all) struct GeodisthaversineGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisthaversineGraphN::add(Self, Self) -> Self
+pub fn GeodisthaversineGraphN::copy(Self) -> Self
+pub fn GeodisthaversineGraphN::fill(Self, Double) -> Self
+pub fn GeodisthaversineGraphN::get(Self, Int32) -> Double
+pub fn GeodisthaversineGraphN::len(Self) -> Int32
+pub fn GeodisthaversineGraphN::max(Self) -> Double
+pub fn GeodisthaversineGraphN::mean(Self) -> Double
+pub fn GeodisthaversineGraphN::min(Self) -> Double
+pub fn GeodisthaversineGraphN::scale(Self, Double) -> Self
+pub fn GeodisthaversineGraphN::set(Self, Int32, Double) -> Self
+pub fn GeodisthaversineGraphN::sum(Self) -> Double
+pub fn GeodisthaversineGraphN::to_string(Self) -> String
+
+pub(all) struct GeodisthaversineLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisthaversineLayer::add(Self, Self) -> Self
+pub fn GeodisthaversineLayer::copy(Self) -> Self
+pub fn GeodisthaversineLayer::fill(Self, Double) -> Self
+pub fn GeodisthaversineLayer::get(Self, Int32) -> Double
+pub fn GeodisthaversineLayer::len(Self) -> Int32
+pub fn GeodisthaversineLayer::max(Self) -> Double
+pub fn GeodisthaversineLayer::mean(Self) -> Double
+pub fn GeodisthaversineLayer::min(Self) -> Double
+pub fn GeodisthaversineLayer::scale(Self, Double) -> Self
+pub fn GeodisthaversineLayer::set(Self, Int32, Double) -> Self
+pub fn GeodisthaversineLayer::sum(Self) -> Double
+pub fn GeodisthaversineLayer::to_string(Self) -> String
+
+pub(all) struct GeodisthaversineMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeodisthaversineMatrix::add(Self, Self) -> Self
+pub fn GeodisthaversineMatrix::det(Self) -> Double
+pub fn GeodisthaversineMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeodisthaversineMatrix::multiply(Self, Self) -> Self
+pub fn GeodisthaversineMatrix::norm(Self) -> Double
+pub fn GeodisthaversineMatrix::scale(Self, Double) -> Self
+pub fn GeodisthaversineMatrix::to_string(Self) -> String
+pub fn GeodisthaversineMatrix::trace(Self) -> Double
+pub fn GeodisthaversineMatrix::transpose(Self) -> Self
+
+pub(all) struct GeodisthaversineModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisthaversineModel::add(Self, Self) -> Self
+pub fn GeodisthaversineModel::copy(Self) -> Self
+pub fn GeodisthaversineModel::fill(Self, Double) -> Self
+pub fn GeodisthaversineModel::get(Self, Int32) -> Double
+pub fn GeodisthaversineModel::len(Self) -> Int32
+pub fn GeodisthaversineModel::max(Self) -> Double
+pub fn GeodisthaversineModel::mean(Self) -> Double
+pub fn GeodisthaversineModel::min(Self) -> Double
+pub fn GeodisthaversineModel::scale(Self, Double) -> Self
+pub fn GeodisthaversineModel::set(Self, Int32, Double) -> Self
+pub fn GeodisthaversineModel::sum(Self) -> Double
+pub fn GeodisthaversineModel::to_string(Self) -> String
+
+pub(all) struct GeodisthaversineNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisthaversineNode::add(Self, Self) -> Self
+pub fn GeodisthaversineNode::copy(Self) -> Self
+pub fn GeodisthaversineNode::fill(Self, Double) -> Self
+pub fn GeodisthaversineNode::get(Self, Int32) -> Double
+pub fn GeodisthaversineNode::len(Self) -> Int32
+pub fn GeodisthaversineNode::max(Self) -> Double
+pub fn GeodisthaversineNode::mean(Self) -> Double
+pub fn GeodisthaversineNode::min(Self) -> Double
+pub fn GeodisthaversineNode::scale(Self, Double) -> Self
+pub fn GeodisthaversineNode::set(Self, Int32, Double) -> Self
+pub fn GeodisthaversineNode::sum(Self) -> Double
+pub fn GeodisthaversineNode::to_string(Self) -> String
+
+pub(all) struct GeodisthaversinePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisthaversinePath::add(Self, Self) -> Self
+pub fn GeodisthaversinePath::copy(Self) -> Self
+pub fn GeodisthaversinePath::fill(Self, Double) -> Self
+pub fn GeodisthaversinePath::get(Self, Int32) -> Double
+pub fn GeodisthaversinePath::len(Self) -> Int32
+pub fn GeodisthaversinePath::max(Self) -> Double
+pub fn GeodisthaversinePath::mean(Self) -> Double
+pub fn GeodisthaversinePath::min(Self) -> Double
+pub fn GeodisthaversinePath::scale(Self, Double) -> Self
+pub fn GeodisthaversinePath::set(Self, Int32, Double) -> Self
+pub fn GeodisthaversinePath::sum(Self) -> Double
+pub fn GeodisthaversinePath::to_string(Self) -> String
+
+pub(all) struct GeodisthaversinePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeodisthaversinePoint::add(Self, Self) -> Self
+pub fn GeodisthaversinePoint::cross(Self, Self) -> Self
+pub fn GeodisthaversinePoint::dist(Self, Self) -> Double
+pub fn GeodisthaversinePoint::dot(Self, Self) -> Double
+pub fn GeodisthaversinePoint::label(Self) -> Int32
+pub fn GeodisthaversinePoint::lerp(Self, Self, Double) -> Self
+pub fn GeodisthaversinePoint::mid(Self, Self) -> Self
+pub fn GeodisthaversinePoint::negate(Self) -> Self
+pub fn GeodisthaversinePoint::norm(Self) -> Double
+pub fn GeodisthaversinePoint::normalize(Self) -> Self
+pub fn GeodisthaversinePoint::scale(Self, Double) -> Self
+pub fn GeodisthaversinePoint::sub(Self, Self) -> Self
+pub fn GeodisthaversinePoint::to_string(Self) -> String
+pub fn GeodisthaversinePoint::x(Self) -> Double
+pub fn GeodisthaversinePoint::y(Self) -> Double
+pub fn GeodisthaversinePoint::z(Self) -> Double
+
+pub(all) struct GeodisthaversineRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisthaversineRange::add(Self, Self) -> Self
+pub fn GeodisthaversineRange::copy(Self) -> Self
+pub fn GeodisthaversineRange::fill(Self, Double) -> Self
+pub fn GeodisthaversineRange::get(Self, Int32) -> Double
+pub fn GeodisthaversineRange::len(Self) -> Int32
+pub fn GeodisthaversineRange::max(Self) -> Double
+pub fn GeodisthaversineRange::mean(Self) -> Double
+pub fn GeodisthaversineRange::min(Self) -> Double
+pub fn GeodisthaversineRange::scale(Self, Double) -> Self
+pub fn GeodisthaversineRange::set(Self, Int32, Double) -> Self
+pub fn GeodisthaversineRange::sum(Self) -> Double
+pub fn GeodisthaversineRange::to_string(Self) -> String
+
+pub(all) struct GeodisthaversineSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeodisthaversineSeries::add(Self, Self) -> Self
+pub fn GeodisthaversineSeries::cumsum(Self) -> Self
+pub fn GeodisthaversineSeries::len(Self) -> Int32
+pub fn GeodisthaversineSeries::max(Self) -> Double
+pub fn GeodisthaversineSeries::mean(Self) -> Double
+pub fn GeodisthaversineSeries::median(Self) -> Double
+pub fn GeodisthaversineSeries::min(Self) -> Double
+pub fn GeodisthaversineSeries::normalize(Self) -> Self
+pub fn GeodisthaversineSeries::range(Self) -> Double
+pub fn GeodisthaversineSeries::scale(Self, Double) -> Self
+pub fn GeodisthaversineSeries::std(Self) -> Double
+pub fn GeodisthaversineSeries::sub(Self, Self) -> Self
+pub fn GeodisthaversineSeries::sum(Self) -> Double
+pub fn GeodisthaversineSeries::to_string(Self) -> String
+pub fn GeodisthaversineSeries::variance(Self) -> Double
+
+pub(all) struct GeodisthaversineSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisthaversineSlice::add(Self, Self) -> Self
+pub fn GeodisthaversineSlice::copy(Self) -> Self
+pub fn GeodisthaversineSlice::fill(Self, Double) -> Self
+pub fn GeodisthaversineSlice::get(Self, Int32) -> Double
+pub fn GeodisthaversineSlice::len(Self) -> Int32
+pub fn GeodisthaversineSlice::max(Self) -> Double
+pub fn GeodisthaversineSlice::mean(Self) -> Double
+pub fn GeodisthaversineSlice::min(Self) -> Double
+pub fn GeodisthaversineSlice::scale(Self, Double) -> Self
+pub fn GeodisthaversineSlice::set(Self, Int32, Double) -> Self
+pub fn GeodisthaversineSlice::sum(Self) -> Double
+pub fn GeodisthaversineSlice::to_string(Self) -> String
+
+pub(all) struct GeodisthaversineTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisthaversineTable::add(Self, Self) -> Self
+pub fn GeodisthaversineTable::copy(Self) -> Self
+pub fn GeodisthaversineTable::fill(Self, Double) -> Self
+pub fn GeodisthaversineTable::get(Self, Int32) -> Double
+pub fn GeodisthaversineTable::len(Self) -> Int32
+pub fn GeodisthaversineTable::max(Self) -> Double
+pub fn GeodisthaversineTable::mean(Self) -> Double
+pub fn GeodisthaversineTable::min(Self) -> Double
+pub fn GeodisthaversineTable::scale(Self, Double) -> Self
+pub fn GeodisthaversineTable::set(Self, Int32, Double) -> Self
+pub fn GeodisthaversineTable::sum(Self) -> Double
+pub fn GeodisthaversineTable::to_string(Self) -> String
+
+pub(all) struct GeodisthaversineVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeodisthaversineVector::add(Self, Self) -> Self
+pub fn GeodisthaversineVector::dist(Self, Self) -> Double
+pub fn GeodisthaversineVector::dot(Self, Self) -> Double
+pub fn GeodisthaversineVector::norm(Self) -> Double
+pub fn GeodisthaversineVector::normalize(Self) -> Self
+pub fn GeodisthaversineVector::scale(Self, Double) -> Self
+pub fn GeodisthaversineVector::sub(Self, Self) -> Self
+pub fn GeodisthaversineVector::to_string(Self) -> String
+
+pub(all) struct GeodisthaversineView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisthaversineView::add(Self, Self) -> Self
+pub fn GeodisthaversineView::copy(Self) -> Self
+pub fn GeodisthaversineView::fill(Self, Double) -> Self
+pub fn GeodisthaversineView::get(Self, Int32) -> Double
+pub fn GeodisthaversineView::len(Self) -> Int32
+pub fn GeodisthaversineView::max(Self) -> Double
+pub fn GeodisthaversineView::mean(Self) -> Double
+pub fn GeodisthaversineView::min(Self) -> Double
+pub fn GeodisthaversineView::scale(Self, Double) -> Self
+pub fn GeodisthaversineView::set(Self, Int32, Double) -> Self
+pub fn GeodisthaversineView::sum(Self) -> Double
+pub fn GeodisthaversineView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

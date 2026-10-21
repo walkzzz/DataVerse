@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/chem_mol_repr_canonical"
+
+// Values
+pub fn chem_mol_repr_canonical_buffer_make(Int32) -> ChemmolreprcanonicalBuffer
+
+pub fn chem_mol_repr_canonical_cluster_make(Int32) -> ChemmolreprcanonicalCluster
+
+pub fn chem_mol_repr_canonical_cursor_make(Int32) -> ChemmolreprcanonicalCursor
+
+pub fn chem_mol_repr_canonical_edge_make(Int32) -> ChemmolreprcanonicalEdge
+
+pub fn chem_mol_repr_canonical_frame_make(Int32) -> ChemmolreprcanonicalFrame
+
+pub fn chem_mol_repr_canonical_graphn_make(Int32) -> ChemmolreprcanonicalGraphN
+
+pub fn chem_mol_repr_canonical_layer_make(Int32) -> ChemmolreprcanonicalLayer
+
+pub fn chem_mol_repr_canonical_make_matrix(Int32, Int32, Double) -> ChemmolreprcanonicalMatrix
+
+pub fn chem_mol_repr_canonical_make_point(Double, Double) -> ChemmolreprcanonicalPoint
+
+pub fn chem_mol_repr_canonical_make_point3(Double, Double, Double) -> ChemmolreprcanonicalPoint
+
+pub fn chem_mol_repr_canonical_make_series(Array[Double], String) -> ChemmolreprcanonicalSeries
+
+pub fn chem_mol_repr_canonical_make_vector(Array[Double]) -> ChemmolreprcanonicalVector
+
+pub fn chem_mol_repr_canonical_matrix_identity(Int32) -> ChemmolreprcanonicalMatrix
+
+pub fn chem_mol_repr_canonical_model_make(Int32) -> ChemmolreprcanonicalModel
+
+pub fn chem_mol_repr_canonical_node_make(Int32) -> ChemmolreprcanonicalNode
+
+pub fn chem_mol_repr_canonical_path_make(Int32) -> ChemmolreprcanonicalPath
+
+pub fn chem_mol_repr_canonical_range_make(Int32) -> ChemmolreprcanonicalRange
+
+pub fn chem_mol_repr_canonical_slice_make(Int32) -> ChemmolreprcanonicalSlice
+
+pub fn chem_mol_repr_canonical_table_make(Int32) -> ChemmolreprcanonicalTable
+
+pub fn chem_mol_repr_canonical_vector_zero(Int32) -> ChemmolreprcanonicalVector
+
+pub fn chem_mol_repr_canonical_view_make(Int32) -> ChemmolreprcanonicalView
+
+// Errors
+
+// Types and methods
+pub(all) struct ChemmolreprcanonicalBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcanonicalBuffer::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalBuffer::copy(Self) -> Self
+pub fn ChemmolreprcanonicalBuffer::fill(Self, Double) -> Self
+pub fn ChemmolreprcanonicalBuffer::get(Self, Int32) -> Double
+pub fn ChemmolreprcanonicalBuffer::len(Self) -> Int32
+pub fn ChemmolreprcanonicalBuffer::max(Self) -> Double
+pub fn ChemmolreprcanonicalBuffer::mean(Self) -> Double
+pub fn ChemmolreprcanonicalBuffer::min(Self) -> Double
+pub fn ChemmolreprcanonicalBuffer::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalBuffer::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcanonicalBuffer::sum(Self) -> Double
+pub fn ChemmolreprcanonicalBuffer::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcanonicalCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcanonicalCluster::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalCluster::copy(Self) -> Self
+pub fn ChemmolreprcanonicalCluster::fill(Self, Double) -> Self
+pub fn ChemmolreprcanonicalCluster::get(Self, Int32) -> Double
+pub fn ChemmolreprcanonicalCluster::len(Self) -> Int32
+pub fn ChemmolreprcanonicalCluster::max(Self) -> Double
+pub fn ChemmolreprcanonicalCluster::mean(Self) -> Double
+pub fn ChemmolreprcanonicalCluster::min(Self) -> Double
+pub fn ChemmolreprcanonicalCluster::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalCluster::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcanonicalCluster::sum(Self) -> Double
+pub fn ChemmolreprcanonicalCluster::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcanonicalCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcanonicalCursor::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalCursor::copy(Self) -> Self
+pub fn ChemmolreprcanonicalCursor::fill(Self, Double) -> Self
+pub fn ChemmolreprcanonicalCursor::get(Self, Int32) -> Double
+pub fn ChemmolreprcanonicalCursor::len(Self) -> Int32
+pub fn ChemmolreprcanonicalCursor::max(Self) -> Double
+pub fn ChemmolreprcanonicalCursor::mean(Self) -> Double
+pub fn ChemmolreprcanonicalCursor::min(Self) -> Double
+pub fn ChemmolreprcanonicalCursor::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalCursor::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcanonicalCursor::sum(Self) -> Double
+pub fn ChemmolreprcanonicalCursor::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcanonicalEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcanonicalEdge::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalEdge::copy(Self) -> Self
+pub fn ChemmolreprcanonicalEdge::fill(Self, Double) -> Self
+pub fn ChemmolreprcanonicalEdge::get(Self, Int32) -> Double
+pub fn ChemmolreprcanonicalEdge::len(Self) -> Int32
+pub fn ChemmolreprcanonicalEdge::max(Self) -> Double
+pub fn ChemmolreprcanonicalEdge::mean(Self) -> Double
+pub fn ChemmolreprcanonicalEdge::min(Self) -> Double
+pub fn ChemmolreprcanonicalEdge::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalEdge::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcanonicalEdge::sum(Self) -> Double
+pub fn ChemmolreprcanonicalEdge::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcanonicalFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcanonicalFrame::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalFrame::copy(Self) -> Self
+pub fn ChemmolreprcanonicalFrame::fill(Self, Double) -> Self
+pub fn ChemmolreprcanonicalFrame::get(Self, Int32) -> Double
+pub fn ChemmolreprcanonicalFrame::len(Self) -> Int32
+pub fn ChemmolreprcanonicalFrame::max(Self) -> Double
+pub fn ChemmolreprcanonicalFrame::mean(Self) -> Double
+pub fn ChemmolreprcanonicalFrame::min(Self) -> Double
+pub fn ChemmolreprcanonicalFrame::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalFrame::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcanonicalFrame::sum(Self) -> Double
+pub fn ChemmolreprcanonicalFrame::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcanonicalGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcanonicalGraphN::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalGraphN::copy(Self) -> Self
+pub fn ChemmolreprcanonicalGraphN::fill(Self, Double) -> Self
+pub fn ChemmolreprcanonicalGraphN::get(Self, Int32) -> Double
+pub fn ChemmolreprcanonicalGraphN::len(Self) -> Int32
+pub fn ChemmolreprcanonicalGraphN::max(Self) -> Double
+pub fn ChemmolreprcanonicalGraphN::mean(Self) -> Double
+pub fn ChemmolreprcanonicalGraphN::min(Self) -> Double
+pub fn ChemmolreprcanonicalGraphN::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalGraphN::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcanonicalGraphN::sum(Self) -> Double
+pub fn ChemmolreprcanonicalGraphN::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcanonicalLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcanonicalLayer::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalLayer::copy(Self) -> Self
+pub fn ChemmolreprcanonicalLayer::fill(Self, Double) -> Self
+pub fn ChemmolreprcanonicalLayer::get(Self, Int32) -> Double
+pub fn ChemmolreprcanonicalLayer::len(Self) -> Int32
+pub fn ChemmolreprcanonicalLayer::max(Self) -> Double
+pub fn ChemmolreprcanonicalLayer::mean(Self) -> Double
+pub fn ChemmolreprcanonicalLayer::min(Self) -> Double
+pub fn ChemmolreprcanonicalLayer::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalLayer::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcanonicalLayer::sum(Self) -> Double
+pub fn ChemmolreprcanonicalLayer::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcanonicalMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ChemmolreprcanonicalMatrix::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalMatrix::det(Self) -> Double
+pub fn ChemmolreprcanonicalMatrix::get(Self, Int32, Int32) -> Double
+pub fn ChemmolreprcanonicalMatrix::multiply(Self, Self) -> Self
+pub fn ChemmolreprcanonicalMatrix::norm(Self) -> Double
+pub fn ChemmolreprcanonicalMatrix::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalMatrix::to_string(Self) -> String
+pub fn ChemmolreprcanonicalMatrix::trace(Self) -> Double
+pub fn ChemmolreprcanonicalMatrix::transpose(Self) -> Self
+
+pub(all) struct ChemmolreprcanonicalModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcanonicalModel::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalModel::copy(Self) -> Self
+pub fn ChemmolreprcanonicalModel::fill(Self, Double) -> Self
+pub fn ChemmolreprcanonicalModel::get(Self, Int32) -> Double
+pub fn ChemmolreprcanonicalModel::len(Self) -> Int32
+pub fn ChemmolreprcanonicalModel::max(Self) -> Double
+pub fn ChemmolreprcanonicalModel::mean(Self) -> Double
+pub fn ChemmolreprcanonicalModel::min(Self) -> Double
+pub fn ChemmolreprcanonicalModel::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalModel::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcanonicalModel::sum(Self) -> Double
+pub fn ChemmolreprcanonicalModel::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcanonicalNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcanonicalNode::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalNode::copy(Self) -> Self
+pub fn ChemmolreprcanonicalNode::fill(Self, Double) -> Self
+pub fn ChemmolreprcanonicalNode::get(Self, Int32) -> Double
+pub fn ChemmolreprcanonicalNode::len(Self) -> Int32
+pub fn ChemmolreprcanonicalNode::max(Self) -> Double
+pub fn ChemmolreprcanonicalNode::mean(Self) -> Double
+pub fn ChemmolreprcanonicalNode::min(Self) -> Double
+pub fn ChemmolreprcanonicalNode::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalNode::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcanonicalNode::sum(Self) -> Double
+pub fn ChemmolreprcanonicalNode::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcanonicalPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcanonicalPath::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalPath::copy(Self) -> Self
+pub fn ChemmolreprcanonicalPath::fill(Self, Double) -> Self
+pub fn ChemmolreprcanonicalPath::get(Self, Int32) -> Double
+pub fn ChemmolreprcanonicalPath::len(Self) -> Int32
+pub fn ChemmolreprcanonicalPath::max(Self) -> Double
+pub fn ChemmolreprcanonicalPath::mean(Self) -> Double
+pub fn ChemmolreprcanonicalPath::min(Self) -> Double
+pub fn ChemmolreprcanonicalPath::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalPath::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcanonicalPath::sum(Self) -> Double
+pub fn ChemmolreprcanonicalPath::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcanonicalPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ChemmolreprcanonicalPoint::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalPoint::cross(Self, Self) -> Self
+pub fn ChemmolreprcanonicalPoint::dist(Self, Self) -> Double
+pub fn ChemmolreprcanonicalPoint::dot(Self, Self) -> Double
+pub fn ChemmolreprcanonicalPoint::label(Self) -> Int32
+pub fn ChemmolreprcanonicalPoint::lerp(Self, Self, Double) -> Self
+pub fn ChemmolreprcanonicalPoint::mid(Self, Self) -> Self
+pub fn ChemmolreprcanonicalPoint::negate(Self) -> Self
+pub fn ChemmolreprcanonicalPoint::norm(Self) -> Double
+pub fn ChemmolreprcanonicalPoint::normalize(Self) -> Self
+pub fn ChemmolreprcanonicalPoint::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalPoint::sub(Self, Self) -> Self
+pub fn ChemmolreprcanonicalPoint::to_string(Self) -> String
+pub fn ChemmolreprcanonicalPoint::x(Self) -> Double
+pub fn ChemmolreprcanonicalPoint::y(Self) -> Double
+pub fn ChemmolreprcanonicalPoint::z(Self) -> Double
+
+pub(all) struct ChemmolreprcanonicalRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcanonicalRange::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalRange::copy(Self) -> Self
+pub fn ChemmolreprcanonicalRange::fill(Self, Double) -> Self
+pub fn ChemmolreprcanonicalRange::get(Self, Int32) -> Double
+pub fn ChemmolreprcanonicalRange::len(Self) -> Int32
+pub fn ChemmolreprcanonicalRange::max(Self) -> Double
+pub fn ChemmolreprcanonicalRange::mean(Self) -> Double
+pub fn ChemmolreprcanonicalRange::min(Self) -> Double
+pub fn ChemmolreprcanonicalRange::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalRange::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcanonicalRange::sum(Self) -> Double
+pub fn ChemmolreprcanonicalRange::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcanonicalSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ChemmolreprcanonicalSeries::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalSeries::cumsum(Self) -> Self
+pub fn ChemmolreprcanonicalSeries::len(Self) -> Int32
+pub fn ChemmolreprcanonicalSeries::max(Self) -> Double
+pub fn ChemmolreprcanonicalSeries::mean(Self) -> Double
+pub fn ChemmolreprcanonicalSeries::median(Self) -> Double
+pub fn ChemmolreprcanonicalSeries::min(Self) -> Double
+pub fn ChemmolreprcanonicalSeries::normalize(Self) -> Self
+pub fn ChemmolreprcanonicalSeries::range(Self) -> Double
+pub fn ChemmolreprcanonicalSeries::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalSeries::std(Self) -> Double
+pub fn ChemmolreprcanonicalSeries::sub(Self, Self) -> Self
+pub fn ChemmolreprcanonicalSeries::sum(Self) -> Double
+pub fn ChemmolreprcanonicalSeries::to_string(Self) -> String
+pub fn ChemmolreprcanonicalSeries::variance(Self) -> Double
+
+pub(all) struct ChemmolreprcanonicalSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcanonicalSlice::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalSlice::copy(Self) -> Self
+pub fn ChemmolreprcanonicalSlice::fill(Self, Double) -> Self
+pub fn ChemmolreprcanonicalSlice::get(Self, Int32) -> Double
+pub fn ChemmolreprcanonicalSlice::len(Self) -> Int32
+pub fn ChemmolreprcanonicalSlice::max(Self) -> Double
+pub fn ChemmolreprcanonicalSlice::mean(Self) -> Double
+pub fn ChemmolreprcanonicalSlice::min(Self) -> Double
+pub fn ChemmolreprcanonicalSlice::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalSlice::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcanonicalSlice::sum(Self) -> Double
+pub fn ChemmolreprcanonicalSlice::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcanonicalTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcanonicalTable::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalTable::copy(Self) -> Self
+pub fn ChemmolreprcanonicalTable::fill(Self, Double) -> Self
+pub fn ChemmolreprcanonicalTable::get(Self, Int32) -> Double
+pub fn ChemmolreprcanonicalTable::len(Self) -> Int32
+pub fn ChemmolreprcanonicalTable::max(Self) -> Double
+pub fn ChemmolreprcanonicalTable::mean(Self) -> Double
+pub fn ChemmolreprcanonicalTable::min(Self) -> Double
+pub fn ChemmolreprcanonicalTable::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalTable::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcanonicalTable::sum(Self) -> Double
+pub fn ChemmolreprcanonicalTable::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcanonicalVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ChemmolreprcanonicalVector::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalVector::dist(Self, Self) -> Double
+pub fn ChemmolreprcanonicalVector::dot(Self, Self) -> Double
+pub fn ChemmolreprcanonicalVector::norm(Self) -> Double
+pub fn ChemmolreprcanonicalVector::normalize(Self) -> Self
+pub fn ChemmolreprcanonicalVector::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalVector::sub(Self, Self) -> Self
+pub fn ChemmolreprcanonicalVector::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcanonicalView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcanonicalView::add(Self, Self) -> Self
+pub fn ChemmolreprcanonicalView::copy(Self) -> Self
+pub fn ChemmolreprcanonicalView::fill(Self, Double) -> Self
+pub fn ChemmolreprcanonicalView::get(Self, Int32) -> Double
+pub fn ChemmolreprcanonicalView::len(Self) -> Int32
+pub fn ChemmolreprcanonicalView::max(Self) -> Double
+pub fn ChemmolreprcanonicalView::mean(Self) -> Double
+pub fn ChemmolreprcanonicalView::min(Self) -> Double
+pub fn ChemmolreprcanonicalView::scale(Self, Double) -> Self
+pub fn ChemmolreprcanonicalView::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcanonicalView::sum(Self) -> Double
+pub fn ChemmolreprcanonicalView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_approx_pade"
+
+// Values
+pub fn math_approx_pade_buffer_make(Int32) -> MathapproxpadeBuffer
+
+pub fn math_approx_pade_cluster_make(Int32) -> MathapproxpadeCluster
+
+pub fn math_approx_pade_cursor_make(Int32) -> MathapproxpadeCursor
+
+pub fn math_approx_pade_edge_make(Int32) -> MathapproxpadeEdge
+
+pub fn math_approx_pade_frame_make(Int32) -> MathapproxpadeFrame
+
+pub fn math_approx_pade_graphn_make(Int32) -> MathapproxpadeGraphN
+
+pub fn math_approx_pade_layer_make(Int32) -> MathapproxpadeLayer
+
+pub fn math_approx_pade_make_matrix(Int32, Int32, Double) -> MathapproxpadeMatrix
+
+pub fn math_approx_pade_make_point(Double, Double) -> MathapproxpadePoint
+
+pub fn math_approx_pade_make_point3(Double, Double, Double) -> MathapproxpadePoint
+
+pub fn math_approx_pade_make_series(Array[Double], String) -> MathapproxpadeSeries
+
+pub fn math_approx_pade_make_vector(Array[Double]) -> MathapproxpadeVector
+
+pub fn math_approx_pade_matrix_identity(Int32) -> MathapproxpadeMatrix
+
+pub fn math_approx_pade_model_make(Int32) -> MathapproxpadeModel
+
+pub fn math_approx_pade_node_make(Int32) -> MathapproxpadeNode
+
+pub fn math_approx_pade_path_make(Int32) -> MathapproxpadePath
+
+pub fn math_approx_pade_range_make(Int32) -> MathapproxpadeRange
+
+pub fn math_approx_pade_slice_make(Int32) -> MathapproxpadeSlice
+
+pub fn math_approx_pade_table_make(Int32) -> MathapproxpadeTable
+
+pub fn math_approx_pade_vector_zero(Int32) -> MathapproxpadeVector
+
+pub fn math_approx_pade_view_make(Int32) -> MathapproxpadeView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathapproxpadeBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpadeBuffer::add(Self, Self) -> Self
+pub fn MathapproxpadeBuffer::copy(Self) -> Self
+pub fn MathapproxpadeBuffer::fill(Self, Double) -> Self
+pub fn MathapproxpadeBuffer::get(Self, Int32) -> Double
+pub fn MathapproxpadeBuffer::len(Self) -> Int32
+pub fn MathapproxpadeBuffer::max(Self) -> Double
+pub fn MathapproxpadeBuffer::mean(Self) -> Double
+pub fn MathapproxpadeBuffer::min(Self) -> Double
+pub fn MathapproxpadeBuffer::scale(Self, Double) -> Self
+pub fn MathapproxpadeBuffer::set(Self, Int32, Double) -> Self
+pub fn MathapproxpadeBuffer::sum(Self) -> Double
+pub fn MathapproxpadeBuffer::to_string(Self) -> String
+
+pub(all) struct MathapproxpadeCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpadeCluster::add(Self, Self) -> Self
+pub fn MathapproxpadeCluster::copy(Self) -> Self
+pub fn MathapproxpadeCluster::fill(Self, Double) -> Self
+pub fn MathapproxpadeCluster::get(Self, Int32) -> Double
+pub fn MathapproxpadeCluster::len(Self) -> Int32
+pub fn MathapproxpadeCluster::max(Self) -> Double
+pub fn MathapproxpadeCluster::mean(Self) -> Double
+pub fn MathapproxpadeCluster::min(Self) -> Double
+pub fn MathapproxpadeCluster::scale(Self, Double) -> Self
+pub fn MathapproxpadeCluster::set(Self, Int32, Double) -> Self
+pub fn MathapproxpadeCluster::sum(Self) -> Double
+pub fn MathapproxpadeCluster::to_string(Self) -> String
+
+pub(all) struct MathapproxpadeCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpadeCursor::add(Self, Self) -> Self
+pub fn MathapproxpadeCursor::copy(Self) -> Self
+pub fn MathapproxpadeCursor::fill(Self, Double) -> Self
+pub fn MathapproxpadeCursor::get(Self, Int32) -> Double
+pub fn MathapproxpadeCursor::len(Self) -> Int32
+pub fn MathapproxpadeCursor::max(Self) -> Double
+pub fn MathapproxpadeCursor::mean(Self) -> Double
+pub fn MathapproxpadeCursor::min(Self) -> Double
+pub fn MathapproxpadeCursor::scale(Self, Double) -> Self
+pub fn MathapproxpadeCursor::set(Self, Int32, Double) -> Self
+pub fn MathapproxpadeCursor::sum(Self) -> Double
+pub fn MathapproxpadeCursor::to_string(Self) -> String
+
+pub(all) struct MathapproxpadeEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpadeEdge::add(Self, Self) -> Self
+pub fn MathapproxpadeEdge::copy(Self) -> Self
+pub fn MathapproxpadeEdge::fill(Self, Double) -> Self
+pub fn MathapproxpadeEdge::get(Self, Int32) -> Double
+pub fn MathapproxpadeEdge::len(Self) -> Int32
+pub fn MathapproxpadeEdge::max(Self) -> Double
+pub fn MathapproxpadeEdge::mean(Self) -> Double
+pub fn MathapproxpadeEdge::min(Self) -> Double
+pub fn MathapproxpadeEdge::scale(Self, Double) -> Self
+pub fn MathapproxpadeEdge::set(Self, Int32, Double) -> Self
+pub fn MathapproxpadeEdge::sum(Self) -> Double
+pub fn MathapproxpadeEdge::to_string(Self) -> String
+
+pub(all) struct MathapproxpadeFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpadeFrame::add(Self, Self) -> Self
+pub fn MathapproxpadeFrame::copy(Self) -> Self
+pub fn MathapproxpadeFrame::fill(Self, Double) -> Self
+pub fn MathapproxpadeFrame::get(Self, Int32) -> Double
+pub fn MathapproxpadeFrame::len(Self) -> Int32
+pub fn MathapproxpadeFrame::max(Self) -> Double
+pub fn MathapproxpadeFrame::mean(Self) -> Double
+pub fn MathapproxpadeFrame::min(Self) -> Double
+pub fn MathapproxpadeFrame::scale(Self, Double) -> Self
+pub fn MathapproxpadeFrame::set(Self, Int32, Double) -> Self
+pub fn MathapproxpadeFrame::sum(Self) -> Double
+pub fn MathapproxpadeFrame::to_string(Self) -> String
+
+pub(all) struct MathapproxpadeGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpadeGraphN::add(Self, Self) -> Self
+pub fn MathapproxpadeGraphN::copy(Self) -> Self
+pub fn MathapproxpadeGraphN::fill(Self, Double) -> Self
+pub fn MathapproxpadeGraphN::get(Self, Int32) -> Double
+pub fn MathapproxpadeGraphN::len(Self) -> Int32
+pub fn MathapproxpadeGraphN::max(Self) -> Double
+pub fn MathapproxpadeGraphN::mean(Self) -> Double
+pub fn MathapproxpadeGraphN::min(Self) -> Double
+pub fn MathapproxpadeGraphN::scale(Self, Double) -> Self
+pub fn MathapproxpadeGraphN::set(Self, Int32, Double) -> Self
+pub fn MathapproxpadeGraphN::sum(Self) -> Double
+pub fn MathapproxpadeGraphN::to_string(Self) -> String
+
+pub(all) struct MathapproxpadeLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpadeLayer::add(Self, Self) -> Self
+pub fn MathapproxpadeLayer::copy(Self) -> Self
+pub fn MathapproxpadeLayer::fill(Self, Double) -> Self
+pub fn MathapproxpadeLayer::get(Self, Int32) -> Double
+pub fn MathapproxpadeLayer::len(Self) -> Int32
+pub fn MathapproxpadeLayer::max(Self) -> Double
+pub fn MathapproxpadeLayer::mean(Self) -> Double
+pub fn MathapproxpadeLayer::min(Self) -> Double
+pub fn MathapproxpadeLayer::scale(Self, Double) -> Self
+pub fn MathapproxpadeLayer::set(Self, Int32, Double) -> Self
+pub fn MathapproxpadeLayer::sum(Self) -> Double
+pub fn MathapproxpadeLayer::to_string(Self) -> String
+
+pub(all) struct MathapproxpadeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathapproxpadeMatrix::add(Self, Self) -> Self
+pub fn MathapproxpadeMatrix::det(Self) -> Double
+pub fn MathapproxpadeMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathapproxpadeMatrix::multiply(Self, Self) -> Self
+pub fn MathapproxpadeMatrix::norm(Self) -> Double
+pub fn MathapproxpadeMatrix::scale(Self, Double) -> Self
+pub fn MathapproxpadeMatrix::to_string(Self) -> String
+pub fn MathapproxpadeMatrix::trace(Self) -> Double
+pub fn MathapproxpadeMatrix::transpose(Self) -> Self
+
+pub(all) struct MathapproxpadeModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpadeModel::add(Self, Self) -> Self
+pub fn MathapproxpadeModel::copy(Self) -> Self
+pub fn MathapproxpadeModel::fill(Self, Double) -> Self
+pub fn MathapproxpadeModel::get(Self, Int32) -> Double
+pub fn MathapproxpadeModel::len(Self) -> Int32
+pub fn MathapproxpadeModel::max(Self) -> Double
+pub fn MathapproxpadeModel::mean(Self) -> Double
+pub fn MathapproxpadeModel::min(Self) -> Double
+pub fn MathapproxpadeModel::scale(Self, Double) -> Self
+pub fn MathapproxpadeModel::set(Self, Int32, Double) -> Self
+pub fn MathapproxpadeModel::sum(Self) -> Double
+pub fn MathapproxpadeModel::to_string(Self) -> String
+
+pub(all) struct MathapproxpadeNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpadeNode::add(Self, Self) -> Self
+pub fn MathapproxpadeNode::copy(Self) -> Self
+pub fn MathapproxpadeNode::fill(Self, Double) -> Self
+pub fn MathapproxpadeNode::get(Self, Int32) -> Double
+pub fn MathapproxpadeNode::len(Self) -> Int32
+pub fn MathapproxpadeNode::max(Self) -> Double
+pub fn MathapproxpadeNode::mean(Self) -> Double
+pub fn MathapproxpadeNode::min(Self) -> Double
+pub fn MathapproxpadeNode::scale(Self, Double) -> Self
+pub fn MathapproxpadeNode::set(Self, Int32, Double) -> Self
+pub fn MathapproxpadeNode::sum(Self) -> Double
+pub fn MathapproxpadeNode::to_string(Self) -> String
+
+pub(all) struct MathapproxpadePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpadePath::add(Self, Self) -> Self
+pub fn MathapproxpadePath::copy(Self) -> Self
+pub fn MathapproxpadePath::fill(Self, Double) -> Self
+pub fn MathapproxpadePath::get(Self, Int32) -> Double
+pub fn MathapproxpadePath::len(Self) -> Int32
+pub fn MathapproxpadePath::max(Self) -> Double
+pub fn MathapproxpadePath::mean(Self) -> Double
+pub fn MathapproxpadePath::min(Self) -> Double
+pub fn MathapproxpadePath::scale(Self, Double) -> Self
+pub fn MathapproxpadePath::set(Self, Int32, Double) -> Self
+pub fn MathapproxpadePath::sum(Self) -> Double
+pub fn MathapproxpadePath::to_string(Self) -> String
+
+pub(all) struct MathapproxpadePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathapproxpadePoint::add(Self, Self) -> Self
+pub fn MathapproxpadePoint::cross(Self, Self) -> Self
+pub fn MathapproxpadePoint::dist(Self, Self) -> Double
+pub fn MathapproxpadePoint::dot(Self, Self) -> Double
+pub fn MathapproxpadePoint::label(Self) -> Int32
+pub fn MathapproxpadePoint::lerp(Self, Self, Double) -> Self
+pub fn MathapproxpadePoint::mid(Self, Self) -> Self
+pub fn MathapproxpadePoint::negate(Self) -> Self
+pub fn MathapproxpadePoint::norm(Self) -> Double
+pub fn MathapproxpadePoint::normalize(Self) -> Self
+pub fn MathapproxpadePoint::scale(Self, Double) -> Self
+pub fn MathapproxpadePoint::sub(Self, Self) -> Self
+pub fn MathapproxpadePoint::to_string(Self) -> String
+pub fn MathapproxpadePoint::x(Self) -> Double
+pub fn MathapproxpadePoint::y(Self) -> Double
+pub fn MathapproxpadePoint::z(Self) -> Double
+
+pub(all) struct MathapproxpadeRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpadeRange::add(Self, Self) -> Self
+pub fn MathapproxpadeRange::copy(Self) -> Self
+pub fn MathapproxpadeRange::fill(Self, Double) -> Self
+pub fn MathapproxpadeRange::get(Self, Int32) -> Double
+pub fn MathapproxpadeRange::len(Self) -> Int32
+pub fn MathapproxpadeRange::max(Self) -> Double
+pub fn MathapproxpadeRange::mean(Self) -> Double
+pub fn MathapproxpadeRange::min(Self) -> Double
+pub fn MathapproxpadeRange::scale(Self, Double) -> Self
+pub fn MathapproxpadeRange::set(Self, Int32, Double) -> Self
+pub fn MathapproxpadeRange::sum(Self) -> Double
+pub fn MathapproxpadeRange::to_string(Self) -> String
+
+pub(all) struct MathapproxpadeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathapproxpadeSeries::add(Self, Self) -> Self
+pub fn MathapproxpadeSeries::cumsum(Self) -> Self
+pub fn MathapproxpadeSeries::len(Self) -> Int32
+pub fn MathapproxpadeSeries::max(Self) -> Double
+pub fn MathapproxpadeSeries::mean(Self) -> Double
+pub fn MathapproxpadeSeries::median(Self) -> Double
+pub fn MathapproxpadeSeries::min(Self) -> Double
+pub fn MathapproxpadeSeries::normalize(Self) -> Self
+pub fn MathapproxpadeSeries::range(Self) -> Double
+pub fn MathapproxpadeSeries::scale(Self, Double) -> Self
+pub fn MathapproxpadeSeries::std(Self) -> Double
+pub fn MathapproxpadeSeries::sub(Self, Self) -> Self
+pub fn MathapproxpadeSeries::sum(Self) -> Double
+pub fn MathapproxpadeSeries::to_string(Self) -> String
+pub fn MathapproxpadeSeries::variance(Self) -> Double
+
+pub(all) struct MathapproxpadeSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpadeSlice::add(Self, Self) -> Self
+pub fn MathapproxpadeSlice::copy(Self) -> Self
+pub fn MathapproxpadeSlice::fill(Self, Double) -> Self
+pub fn MathapproxpadeSlice::get(Self, Int32) -> Double
+pub fn MathapproxpadeSlice::len(Self) -> Int32
+pub fn MathapproxpadeSlice::max(Self) -> Double
+pub fn MathapproxpadeSlice::mean(Self) -> Double
+pub fn MathapproxpadeSlice::min(Self) -> Double
+pub fn MathapproxpadeSlice::scale(Self, Double) -> Self
+pub fn MathapproxpadeSlice::set(Self, Int32, Double) -> Self
+pub fn MathapproxpadeSlice::sum(Self) -> Double
+pub fn MathapproxpadeSlice::to_string(Self) -> String
+
+pub(all) struct MathapproxpadeTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpadeTable::add(Self, Self) -> Self
+pub fn MathapproxpadeTable::copy(Self) -> Self
+pub fn MathapproxpadeTable::fill(Self, Double) -> Self
+pub fn MathapproxpadeTable::get(Self, Int32) -> Double
+pub fn MathapproxpadeTable::len(Self) -> Int32
+pub fn MathapproxpadeTable::max(Self) -> Double
+pub fn MathapproxpadeTable::mean(Self) -> Double
+pub fn MathapproxpadeTable::min(Self) -> Double
+pub fn MathapproxpadeTable::scale(Self, Double) -> Self
+pub fn MathapproxpadeTable::set(Self, Int32, Double) -> Self
+pub fn MathapproxpadeTable::sum(Self) -> Double
+pub fn MathapproxpadeTable::to_string(Self) -> String
+
+pub(all) struct MathapproxpadeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathapproxpadeVector::add(Self, Self) -> Self
+pub fn MathapproxpadeVector::dist(Self, Self) -> Double
+pub fn MathapproxpadeVector::dot(Self, Self) -> Double
+pub fn MathapproxpadeVector::norm(Self) -> Double
+pub fn MathapproxpadeVector::normalize(Self) -> Self
+pub fn MathapproxpadeVector::scale(Self, Double) -> Self
+pub fn MathapproxpadeVector::sub(Self, Self) -> Self
+pub fn MathapproxpadeVector::to_string(Self) -> String
+
+pub(all) struct MathapproxpadeView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpadeView::add(Self, Self) -> Self
+pub fn MathapproxpadeView::copy(Self) -> Self
+pub fn MathapproxpadeView::fill(Self, Double) -> Self
+pub fn MathapproxpadeView::get(Self, Int32) -> Double
+pub fn MathapproxpadeView::len(Self) -> Int32
+pub fn MathapproxpadeView::max(Self) -> Double
+pub fn MathapproxpadeView::mean(Self) -> Double
+pub fn MathapproxpadeView::min(Self) -> Double
+pub fn MathapproxpadeView::scale(Self, Double) -> Self
+pub fn MathapproxpadeView::set(Self, Int32, Double) -> Self
+pub fn MathapproxpadeView::sum(Self) -> Double
+pub fn MathapproxpadeView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

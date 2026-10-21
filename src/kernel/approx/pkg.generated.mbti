@@ -1,0 +1,23 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/kernel/approx"
+
+// Values
+pub fn approx_id() -> String
+
+pub fn consistency_guarantee() -> String
+
+pub fn default_error_bound() -> Double
+
+pub fn default_seed() -> Int32
+
+pub fn mode_tag() -> String
+
+pub fn valid_seed(Int32) -> Bool
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

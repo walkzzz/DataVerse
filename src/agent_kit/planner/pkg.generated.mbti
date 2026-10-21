@@ -1,0 +1,45 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/planner"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn empty_execution_plan() -> ExecutionPlan
+
+pub fn make_execution_plan(String, String, Array[PlanStep]) -> ExecutionPlan
+
+pub fn make_plan_step(Int32, String, Array[(String, String)], String) -> PlanStep
+
+pub fn parse_nl_to_plan(String) -> ExecutionPlan
+
+pub fn plan_step_count(ExecutionPlan) -> Int32
+
+pub fn planner_id() -> String
+
+// Errors
+
+// Types and methods
+pub struct ExecutionPlan {
+  name : String
+  description : String
+  steps : Array[PlanStep]
+} derive(Eq, @debug.Debug)
+pub fn ExecutionPlan::equal(Self, Self) -> Bool
+pub fn ExecutionPlan::not_equal(Self, Self) -> Bool
+pub fn ExecutionPlan::to_repr(Self) -> @debug.Repr
+
+pub struct PlanStep {
+  step_id : Int32
+  operator_path : String
+  params : Array[(String, String)]
+  description : String
+} derive(Eq, @debug.Debug)
+pub fn PlanStep::equal(Self, Self) -> Bool
+pub fn PlanStep::not_equal(Self, Self) -> Bool
+pub fn PlanStep::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_sec_ssl"
+
+// Values
+pub fn net_sec_ssl_buffer_make(Int32) -> NetsecsslBuffer
+
+pub fn net_sec_ssl_cluster_make(Int32) -> NetsecsslCluster
+
+pub fn net_sec_ssl_cursor_make(Int32) -> NetsecsslCursor
+
+pub fn net_sec_ssl_edge_make(Int32) -> NetsecsslEdge
+
+pub fn net_sec_ssl_frame_make(Int32) -> NetsecsslFrame
+
+pub fn net_sec_ssl_graphn_make(Int32) -> NetsecsslGraphN
+
+pub fn net_sec_ssl_layer_make(Int32) -> NetsecsslLayer
+
+pub fn net_sec_ssl_make_matrix(Int32, Int32, Double) -> NetsecsslMatrix
+
+pub fn net_sec_ssl_make_point(Double, Double) -> NetsecsslPoint
+
+pub fn net_sec_ssl_make_point3(Double, Double, Double) -> NetsecsslPoint
+
+pub fn net_sec_ssl_make_series(Array[Double], String) -> NetsecsslSeries
+
+pub fn net_sec_ssl_make_vector(Array[Double]) -> NetsecsslVector
+
+pub fn net_sec_ssl_matrix_identity(Int32) -> NetsecsslMatrix
+
+pub fn net_sec_ssl_model_make(Int32) -> NetsecsslModel
+
+pub fn net_sec_ssl_node_make(Int32) -> NetsecsslNode
+
+pub fn net_sec_ssl_path_make(Int32) -> NetsecsslPath
+
+pub fn net_sec_ssl_range_make(Int32) -> NetsecsslRange
+
+pub fn net_sec_ssl_slice_make(Int32) -> NetsecsslSlice
+
+pub fn net_sec_ssl_table_make(Int32) -> NetsecsslTable
+
+pub fn net_sec_ssl_vector_zero(Int32) -> NetsecsslVector
+
+pub fn net_sec_ssl_view_make(Int32) -> NetsecsslView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetsecsslBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecsslBuffer::add(Self, Self) -> Self
+pub fn NetsecsslBuffer::copy(Self) -> Self
+pub fn NetsecsslBuffer::fill(Self, Double) -> Self
+pub fn NetsecsslBuffer::get(Self, Int32) -> Double
+pub fn NetsecsslBuffer::len(Self) -> Int32
+pub fn NetsecsslBuffer::max(Self) -> Double
+pub fn NetsecsslBuffer::mean(Self) -> Double
+pub fn NetsecsslBuffer::min(Self) -> Double
+pub fn NetsecsslBuffer::scale(Self, Double) -> Self
+pub fn NetsecsslBuffer::set(Self, Int32, Double) -> Self
+pub fn NetsecsslBuffer::sum(Self) -> Double
+pub fn NetsecsslBuffer::to_string(Self) -> String
+
+pub(all) struct NetsecsslCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecsslCluster::add(Self, Self) -> Self
+pub fn NetsecsslCluster::copy(Self) -> Self
+pub fn NetsecsslCluster::fill(Self, Double) -> Self
+pub fn NetsecsslCluster::get(Self, Int32) -> Double
+pub fn NetsecsslCluster::len(Self) -> Int32
+pub fn NetsecsslCluster::max(Self) -> Double
+pub fn NetsecsslCluster::mean(Self) -> Double
+pub fn NetsecsslCluster::min(Self) -> Double
+pub fn NetsecsslCluster::scale(Self, Double) -> Self
+pub fn NetsecsslCluster::set(Self, Int32, Double) -> Self
+pub fn NetsecsslCluster::sum(Self) -> Double
+pub fn NetsecsslCluster::to_string(Self) -> String
+
+pub(all) struct NetsecsslCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecsslCursor::add(Self, Self) -> Self
+pub fn NetsecsslCursor::copy(Self) -> Self
+pub fn NetsecsslCursor::fill(Self, Double) -> Self
+pub fn NetsecsslCursor::get(Self, Int32) -> Double
+pub fn NetsecsslCursor::len(Self) -> Int32
+pub fn NetsecsslCursor::max(Self) -> Double
+pub fn NetsecsslCursor::mean(Self) -> Double
+pub fn NetsecsslCursor::min(Self) -> Double
+pub fn NetsecsslCursor::scale(Self, Double) -> Self
+pub fn NetsecsslCursor::set(Self, Int32, Double) -> Self
+pub fn NetsecsslCursor::sum(Self) -> Double
+pub fn NetsecsslCursor::to_string(Self) -> String
+
+pub(all) struct NetsecsslEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecsslEdge::add(Self, Self) -> Self
+pub fn NetsecsslEdge::copy(Self) -> Self
+pub fn NetsecsslEdge::fill(Self, Double) -> Self
+pub fn NetsecsslEdge::get(Self, Int32) -> Double
+pub fn NetsecsslEdge::len(Self) -> Int32
+pub fn NetsecsslEdge::max(Self) -> Double
+pub fn NetsecsslEdge::mean(Self) -> Double
+pub fn NetsecsslEdge::min(Self) -> Double
+pub fn NetsecsslEdge::scale(Self, Double) -> Self
+pub fn NetsecsslEdge::set(Self, Int32, Double) -> Self
+pub fn NetsecsslEdge::sum(Self) -> Double
+pub fn NetsecsslEdge::to_string(Self) -> String
+
+pub(all) struct NetsecsslFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecsslFrame::add(Self, Self) -> Self
+pub fn NetsecsslFrame::copy(Self) -> Self
+pub fn NetsecsslFrame::fill(Self, Double) -> Self
+pub fn NetsecsslFrame::get(Self, Int32) -> Double
+pub fn NetsecsslFrame::len(Self) -> Int32
+pub fn NetsecsslFrame::max(Self) -> Double
+pub fn NetsecsslFrame::mean(Self) -> Double
+pub fn NetsecsslFrame::min(Self) -> Double
+pub fn NetsecsslFrame::scale(Self, Double) -> Self
+pub fn NetsecsslFrame::set(Self, Int32, Double) -> Self
+pub fn NetsecsslFrame::sum(Self) -> Double
+pub fn NetsecsslFrame::to_string(Self) -> String
+
+pub(all) struct NetsecsslGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecsslGraphN::add(Self, Self) -> Self
+pub fn NetsecsslGraphN::copy(Self) -> Self
+pub fn NetsecsslGraphN::fill(Self, Double) -> Self
+pub fn NetsecsslGraphN::get(Self, Int32) -> Double
+pub fn NetsecsslGraphN::len(Self) -> Int32
+pub fn NetsecsslGraphN::max(Self) -> Double
+pub fn NetsecsslGraphN::mean(Self) -> Double
+pub fn NetsecsslGraphN::min(Self) -> Double
+pub fn NetsecsslGraphN::scale(Self, Double) -> Self
+pub fn NetsecsslGraphN::set(Self, Int32, Double) -> Self
+pub fn NetsecsslGraphN::sum(Self) -> Double
+pub fn NetsecsslGraphN::to_string(Self) -> String
+
+pub(all) struct NetsecsslLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecsslLayer::add(Self, Self) -> Self
+pub fn NetsecsslLayer::copy(Self) -> Self
+pub fn NetsecsslLayer::fill(Self, Double) -> Self
+pub fn NetsecsslLayer::get(Self, Int32) -> Double
+pub fn NetsecsslLayer::len(Self) -> Int32
+pub fn NetsecsslLayer::max(Self) -> Double
+pub fn NetsecsslLayer::mean(Self) -> Double
+pub fn NetsecsslLayer::min(Self) -> Double
+pub fn NetsecsslLayer::scale(Self, Double) -> Self
+pub fn NetsecsslLayer::set(Self, Int32, Double) -> Self
+pub fn NetsecsslLayer::sum(Self) -> Double
+pub fn NetsecsslLayer::to_string(Self) -> String
+
+pub(all) struct NetsecsslMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetsecsslMatrix::add(Self, Self) -> Self
+pub fn NetsecsslMatrix::det(Self) -> Double
+pub fn NetsecsslMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetsecsslMatrix::multiply(Self, Self) -> Self
+pub fn NetsecsslMatrix::norm(Self) -> Double
+pub fn NetsecsslMatrix::scale(Self, Double) -> Self
+pub fn NetsecsslMatrix::to_string(Self) -> String
+pub fn NetsecsslMatrix::trace(Self) -> Double
+pub fn NetsecsslMatrix::transpose(Self) -> Self
+
+pub(all) struct NetsecsslModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecsslModel::add(Self, Self) -> Self
+pub fn NetsecsslModel::copy(Self) -> Self
+pub fn NetsecsslModel::fill(Self, Double) -> Self
+pub fn NetsecsslModel::get(Self, Int32) -> Double
+pub fn NetsecsslModel::len(Self) -> Int32
+pub fn NetsecsslModel::max(Self) -> Double
+pub fn NetsecsslModel::mean(Self) -> Double
+pub fn NetsecsslModel::min(Self) -> Double
+pub fn NetsecsslModel::scale(Self, Double) -> Self
+pub fn NetsecsslModel::set(Self, Int32, Double) -> Self
+pub fn NetsecsslModel::sum(Self) -> Double
+pub fn NetsecsslModel::to_string(Self) -> String
+
+pub(all) struct NetsecsslNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecsslNode::add(Self, Self) -> Self
+pub fn NetsecsslNode::copy(Self) -> Self
+pub fn NetsecsslNode::fill(Self, Double) -> Self
+pub fn NetsecsslNode::get(Self, Int32) -> Double
+pub fn NetsecsslNode::len(Self) -> Int32
+pub fn NetsecsslNode::max(Self) -> Double
+pub fn NetsecsslNode::mean(Self) -> Double
+pub fn NetsecsslNode::min(Self) -> Double
+pub fn NetsecsslNode::scale(Self, Double) -> Self
+pub fn NetsecsslNode::set(Self, Int32, Double) -> Self
+pub fn NetsecsslNode::sum(Self) -> Double
+pub fn NetsecsslNode::to_string(Self) -> String
+
+pub(all) struct NetsecsslPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecsslPath::add(Self, Self) -> Self
+pub fn NetsecsslPath::copy(Self) -> Self
+pub fn NetsecsslPath::fill(Self, Double) -> Self
+pub fn NetsecsslPath::get(Self, Int32) -> Double
+pub fn NetsecsslPath::len(Self) -> Int32
+pub fn NetsecsslPath::max(Self) -> Double
+pub fn NetsecsslPath::mean(Self) -> Double
+pub fn NetsecsslPath::min(Self) -> Double
+pub fn NetsecsslPath::scale(Self, Double) -> Self
+pub fn NetsecsslPath::set(Self, Int32, Double) -> Self
+pub fn NetsecsslPath::sum(Self) -> Double
+pub fn NetsecsslPath::to_string(Self) -> String
+
+pub(all) struct NetsecsslPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetsecsslPoint::add(Self, Self) -> Self
+pub fn NetsecsslPoint::cross(Self, Self) -> Self
+pub fn NetsecsslPoint::dist(Self, Self) -> Double
+pub fn NetsecsslPoint::dot(Self, Self) -> Double
+pub fn NetsecsslPoint::label(Self) -> Int32
+pub fn NetsecsslPoint::lerp(Self, Self, Double) -> Self
+pub fn NetsecsslPoint::mid(Self, Self) -> Self
+pub fn NetsecsslPoint::negate(Self) -> Self
+pub fn NetsecsslPoint::norm(Self) -> Double
+pub fn NetsecsslPoint::normalize(Self) -> Self
+pub fn NetsecsslPoint::scale(Self, Double) -> Self
+pub fn NetsecsslPoint::sub(Self, Self) -> Self
+pub fn NetsecsslPoint::to_string(Self) -> String
+pub fn NetsecsslPoint::x(Self) -> Double
+pub fn NetsecsslPoint::y(Self) -> Double
+pub fn NetsecsslPoint::z(Self) -> Double
+
+pub(all) struct NetsecsslRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecsslRange::add(Self, Self) -> Self
+pub fn NetsecsslRange::copy(Self) -> Self
+pub fn NetsecsslRange::fill(Self, Double) -> Self
+pub fn NetsecsslRange::get(Self, Int32) -> Double
+pub fn NetsecsslRange::len(Self) -> Int32
+pub fn NetsecsslRange::max(Self) -> Double
+pub fn NetsecsslRange::mean(Self) -> Double
+pub fn NetsecsslRange::min(Self) -> Double
+pub fn NetsecsslRange::scale(Self, Double) -> Self
+pub fn NetsecsslRange::set(Self, Int32, Double) -> Self
+pub fn NetsecsslRange::sum(Self) -> Double
+pub fn NetsecsslRange::to_string(Self) -> String
+
+pub(all) struct NetsecsslSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetsecsslSeries::add(Self, Self) -> Self
+pub fn NetsecsslSeries::cumsum(Self) -> Self
+pub fn NetsecsslSeries::len(Self) -> Int32
+pub fn NetsecsslSeries::max(Self) -> Double
+pub fn NetsecsslSeries::mean(Self) -> Double
+pub fn NetsecsslSeries::median(Self) -> Double
+pub fn NetsecsslSeries::min(Self) -> Double
+pub fn NetsecsslSeries::normalize(Self) -> Self
+pub fn NetsecsslSeries::range(Self) -> Double
+pub fn NetsecsslSeries::scale(Self, Double) -> Self
+pub fn NetsecsslSeries::std(Self) -> Double
+pub fn NetsecsslSeries::sub(Self, Self) -> Self
+pub fn NetsecsslSeries::sum(Self) -> Double
+pub fn NetsecsslSeries::to_string(Self) -> String
+pub fn NetsecsslSeries::variance(Self) -> Double
+
+pub(all) struct NetsecsslSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecsslSlice::add(Self, Self) -> Self
+pub fn NetsecsslSlice::copy(Self) -> Self
+pub fn NetsecsslSlice::fill(Self, Double) -> Self
+pub fn NetsecsslSlice::get(Self, Int32) -> Double
+pub fn NetsecsslSlice::len(Self) -> Int32
+pub fn NetsecsslSlice::max(Self) -> Double
+pub fn NetsecsslSlice::mean(Self) -> Double
+pub fn NetsecsslSlice::min(Self) -> Double
+pub fn NetsecsslSlice::scale(Self, Double) -> Self
+pub fn NetsecsslSlice::set(Self, Int32, Double) -> Self
+pub fn NetsecsslSlice::sum(Self) -> Double
+pub fn NetsecsslSlice::to_string(Self) -> String
+
+pub(all) struct NetsecsslTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecsslTable::add(Self, Self) -> Self
+pub fn NetsecsslTable::copy(Self) -> Self
+pub fn NetsecsslTable::fill(Self, Double) -> Self
+pub fn NetsecsslTable::get(Self, Int32) -> Double
+pub fn NetsecsslTable::len(Self) -> Int32
+pub fn NetsecsslTable::max(Self) -> Double
+pub fn NetsecsslTable::mean(Self) -> Double
+pub fn NetsecsslTable::min(Self) -> Double
+pub fn NetsecsslTable::scale(Self, Double) -> Self
+pub fn NetsecsslTable::set(Self, Int32, Double) -> Self
+pub fn NetsecsslTable::sum(Self) -> Double
+pub fn NetsecsslTable::to_string(Self) -> String
+
+pub(all) struct NetsecsslVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetsecsslVector::add(Self, Self) -> Self
+pub fn NetsecsslVector::dist(Self, Self) -> Double
+pub fn NetsecsslVector::dot(Self, Self) -> Double
+pub fn NetsecsslVector::norm(Self) -> Double
+pub fn NetsecsslVector::normalize(Self) -> Self
+pub fn NetsecsslVector::scale(Self, Double) -> Self
+pub fn NetsecsslVector::sub(Self, Self) -> Self
+pub fn NetsecsslVector::to_string(Self) -> String
+
+pub(all) struct NetsecsslView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecsslView::add(Self, Self) -> Self
+pub fn NetsecsslView::copy(Self) -> Self
+pub fn NetsecsslView::fill(Self, Double) -> Self
+pub fn NetsecsslView::get(Self, Int32) -> Double
+pub fn NetsecsslView::len(Self) -> Int32
+pub fn NetsecsslView::max(Self) -> Double
+pub fn NetsecsslView::mean(Self) -> Double
+pub fn NetsecsslView::min(Self) -> Double
+pub fn NetsecsslView::scale(Self, Double) -> Self
+pub fn NetsecsslView::set(Self, Int32, Double) -> Self
+pub fn NetsecsslView::sum(Self) -> Double
+pub fn NetsecsslView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

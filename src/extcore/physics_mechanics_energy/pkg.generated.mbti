@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_mechanics_energy"
+
+// Values
+pub fn physics_mechanics_energy_buffer_make(Int32) -> PhysicsmechanicsenergyBuffer
+
+pub fn physics_mechanics_energy_cluster_make(Int32) -> PhysicsmechanicsenergyCluster
+
+pub fn physics_mechanics_energy_cursor_make(Int32) -> PhysicsmechanicsenergyCursor
+
+pub fn physics_mechanics_energy_edge_make(Int32) -> PhysicsmechanicsenergyEdge
+
+pub fn physics_mechanics_energy_frame_make(Int32) -> PhysicsmechanicsenergyFrame
+
+pub fn physics_mechanics_energy_graphn_make(Int32) -> PhysicsmechanicsenergyGraphN
+
+pub fn physics_mechanics_energy_layer_make(Int32) -> PhysicsmechanicsenergyLayer
+
+pub fn physics_mechanics_energy_make_matrix(Int32, Int32, Double) -> PhysicsmechanicsenergyMatrix
+
+pub fn physics_mechanics_energy_make_point(Double, Double) -> PhysicsmechanicsenergyPoint
+
+pub fn physics_mechanics_energy_make_point3(Double, Double, Double) -> PhysicsmechanicsenergyPoint
+
+pub fn physics_mechanics_energy_make_series(Array[Double], String) -> PhysicsmechanicsenergySeries
+
+pub fn physics_mechanics_energy_make_vector(Array[Double]) -> PhysicsmechanicsenergyVector
+
+pub fn physics_mechanics_energy_matrix_identity(Int32) -> PhysicsmechanicsenergyMatrix
+
+pub fn physics_mechanics_energy_model_make(Int32) -> PhysicsmechanicsenergyModel
+
+pub fn physics_mechanics_energy_node_make(Int32) -> PhysicsmechanicsenergyNode
+
+pub fn physics_mechanics_energy_path_make(Int32) -> PhysicsmechanicsenergyPath
+
+pub fn physics_mechanics_energy_range_make(Int32) -> PhysicsmechanicsenergyRange
+
+pub fn physics_mechanics_energy_slice_make(Int32) -> PhysicsmechanicsenergySlice
+
+pub fn physics_mechanics_energy_table_make(Int32) -> PhysicsmechanicsenergyTable
+
+pub fn physics_mechanics_energy_vector_zero(Int32) -> PhysicsmechanicsenergyVector
+
+pub fn physics_mechanics_energy_view_make(Int32) -> PhysicsmechanicsenergyView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsmechanicsenergyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsenergyBuffer::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyBuffer::copy(Self) -> Self
+pub fn PhysicsmechanicsenergyBuffer::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyBuffer::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsenergyBuffer::len(Self) -> Int32
+pub fn PhysicsmechanicsenergyBuffer::max(Self) -> Double
+pub fn PhysicsmechanicsenergyBuffer::mean(Self) -> Double
+pub fn PhysicsmechanicsenergyBuffer::min(Self) -> Double
+pub fn PhysicsmechanicsenergyBuffer::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsenergyBuffer::sum(Self) -> Double
+pub fn PhysicsmechanicsenergyBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsenergyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsenergyCluster::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyCluster::copy(Self) -> Self
+pub fn PhysicsmechanicsenergyCluster::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyCluster::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsenergyCluster::len(Self) -> Int32
+pub fn PhysicsmechanicsenergyCluster::max(Self) -> Double
+pub fn PhysicsmechanicsenergyCluster::mean(Self) -> Double
+pub fn PhysicsmechanicsenergyCluster::min(Self) -> Double
+pub fn PhysicsmechanicsenergyCluster::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsenergyCluster::sum(Self) -> Double
+pub fn PhysicsmechanicsenergyCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsenergyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsenergyCursor::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyCursor::copy(Self) -> Self
+pub fn PhysicsmechanicsenergyCursor::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyCursor::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsenergyCursor::len(Self) -> Int32
+pub fn PhysicsmechanicsenergyCursor::max(Self) -> Double
+pub fn PhysicsmechanicsenergyCursor::mean(Self) -> Double
+pub fn PhysicsmechanicsenergyCursor::min(Self) -> Double
+pub fn PhysicsmechanicsenergyCursor::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsenergyCursor::sum(Self) -> Double
+pub fn PhysicsmechanicsenergyCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsenergyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsenergyEdge::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyEdge::copy(Self) -> Self
+pub fn PhysicsmechanicsenergyEdge::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyEdge::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsenergyEdge::len(Self) -> Int32
+pub fn PhysicsmechanicsenergyEdge::max(Self) -> Double
+pub fn PhysicsmechanicsenergyEdge::mean(Self) -> Double
+pub fn PhysicsmechanicsenergyEdge::min(Self) -> Double
+pub fn PhysicsmechanicsenergyEdge::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsenergyEdge::sum(Self) -> Double
+pub fn PhysicsmechanicsenergyEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsenergyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsenergyFrame::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyFrame::copy(Self) -> Self
+pub fn PhysicsmechanicsenergyFrame::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyFrame::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsenergyFrame::len(Self) -> Int32
+pub fn PhysicsmechanicsenergyFrame::max(Self) -> Double
+pub fn PhysicsmechanicsenergyFrame::mean(Self) -> Double
+pub fn PhysicsmechanicsenergyFrame::min(Self) -> Double
+pub fn PhysicsmechanicsenergyFrame::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsenergyFrame::sum(Self) -> Double
+pub fn PhysicsmechanicsenergyFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsenergyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsenergyGraphN::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyGraphN::copy(Self) -> Self
+pub fn PhysicsmechanicsenergyGraphN::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyGraphN::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsenergyGraphN::len(Self) -> Int32
+pub fn PhysicsmechanicsenergyGraphN::max(Self) -> Double
+pub fn PhysicsmechanicsenergyGraphN::mean(Self) -> Double
+pub fn PhysicsmechanicsenergyGraphN::min(Self) -> Double
+pub fn PhysicsmechanicsenergyGraphN::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsenergyGraphN::sum(Self) -> Double
+pub fn PhysicsmechanicsenergyGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsenergyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsenergyLayer::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyLayer::copy(Self) -> Self
+pub fn PhysicsmechanicsenergyLayer::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyLayer::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsenergyLayer::len(Self) -> Int32
+pub fn PhysicsmechanicsenergyLayer::max(Self) -> Double
+pub fn PhysicsmechanicsenergyLayer::mean(Self) -> Double
+pub fn PhysicsmechanicsenergyLayer::min(Self) -> Double
+pub fn PhysicsmechanicsenergyLayer::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsenergyLayer::sum(Self) -> Double
+pub fn PhysicsmechanicsenergyLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsenergyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsmechanicsenergyMatrix::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyMatrix::det(Self) -> Double
+pub fn PhysicsmechanicsenergyMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsmechanicsenergyMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyMatrix::norm(Self) -> Double
+pub fn PhysicsmechanicsenergyMatrix::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyMatrix::to_string(Self) -> String
+pub fn PhysicsmechanicsenergyMatrix::trace(Self) -> Double
+pub fn PhysicsmechanicsenergyMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsmechanicsenergyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsenergyModel::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyModel::copy(Self) -> Self
+pub fn PhysicsmechanicsenergyModel::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyModel::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsenergyModel::len(Self) -> Int32
+pub fn PhysicsmechanicsenergyModel::max(Self) -> Double
+pub fn PhysicsmechanicsenergyModel::mean(Self) -> Double
+pub fn PhysicsmechanicsenergyModel::min(Self) -> Double
+pub fn PhysicsmechanicsenergyModel::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsenergyModel::sum(Self) -> Double
+pub fn PhysicsmechanicsenergyModel::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsenergyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsenergyNode::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyNode::copy(Self) -> Self
+pub fn PhysicsmechanicsenergyNode::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyNode::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsenergyNode::len(Self) -> Int32
+pub fn PhysicsmechanicsenergyNode::max(Self) -> Double
+pub fn PhysicsmechanicsenergyNode::mean(Self) -> Double
+pub fn PhysicsmechanicsenergyNode::min(Self) -> Double
+pub fn PhysicsmechanicsenergyNode::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsenergyNode::sum(Self) -> Double
+pub fn PhysicsmechanicsenergyNode::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsenergyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsenergyPath::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyPath::copy(Self) -> Self
+pub fn PhysicsmechanicsenergyPath::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyPath::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsenergyPath::len(Self) -> Int32
+pub fn PhysicsmechanicsenergyPath::max(Self) -> Double
+pub fn PhysicsmechanicsenergyPath::mean(Self) -> Double
+pub fn PhysicsmechanicsenergyPath::min(Self) -> Double
+pub fn PhysicsmechanicsenergyPath::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsenergyPath::sum(Self) -> Double
+pub fn PhysicsmechanicsenergyPath::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsenergyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsmechanicsenergyPoint::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyPoint::cross(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyPoint::dist(Self, Self) -> Double
+pub fn PhysicsmechanicsenergyPoint::dot(Self, Self) -> Double
+pub fn PhysicsmechanicsenergyPoint::label(Self) -> Int32
+pub fn PhysicsmechanicsenergyPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsmechanicsenergyPoint::mid(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyPoint::negate(Self) -> Self
+pub fn PhysicsmechanicsenergyPoint::norm(Self) -> Double
+pub fn PhysicsmechanicsenergyPoint::normalize(Self) -> Self
+pub fn PhysicsmechanicsenergyPoint::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyPoint::sub(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyPoint::to_string(Self) -> String
+pub fn PhysicsmechanicsenergyPoint::x(Self) -> Double
+pub fn PhysicsmechanicsenergyPoint::y(Self) -> Double
+pub fn PhysicsmechanicsenergyPoint::z(Self) -> Double
+
+pub(all) struct PhysicsmechanicsenergyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsenergyRange::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyRange::copy(Self) -> Self
+pub fn PhysicsmechanicsenergyRange::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyRange::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsenergyRange::len(Self) -> Int32
+pub fn PhysicsmechanicsenergyRange::max(Self) -> Double
+pub fn PhysicsmechanicsenergyRange::mean(Self) -> Double
+pub fn PhysicsmechanicsenergyRange::min(Self) -> Double
+pub fn PhysicsmechanicsenergyRange::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsenergyRange::sum(Self) -> Double
+pub fn PhysicsmechanicsenergyRange::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsenergySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsmechanicsenergySeries::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergySeries::cumsum(Self) -> Self
+pub fn PhysicsmechanicsenergySeries::len(Self) -> Int32
+pub fn PhysicsmechanicsenergySeries::max(Self) -> Double
+pub fn PhysicsmechanicsenergySeries::mean(Self) -> Double
+pub fn PhysicsmechanicsenergySeries::median(Self) -> Double
+pub fn PhysicsmechanicsenergySeries::min(Self) -> Double
+pub fn PhysicsmechanicsenergySeries::normalize(Self) -> Self
+pub fn PhysicsmechanicsenergySeries::range(Self) -> Double
+pub fn PhysicsmechanicsenergySeries::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergySeries::std(Self) -> Double
+pub fn PhysicsmechanicsenergySeries::sub(Self, Self) -> Self
+pub fn PhysicsmechanicsenergySeries::sum(Self) -> Double
+pub fn PhysicsmechanicsenergySeries::to_string(Self) -> String
+pub fn PhysicsmechanicsenergySeries::variance(Self) -> Double
+
+pub(all) struct PhysicsmechanicsenergySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsenergySlice::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergySlice::copy(Self) -> Self
+pub fn PhysicsmechanicsenergySlice::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsenergySlice::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsenergySlice::len(Self) -> Int32
+pub fn PhysicsmechanicsenergySlice::max(Self) -> Double
+pub fn PhysicsmechanicsenergySlice::mean(Self) -> Double
+pub fn PhysicsmechanicsenergySlice::min(Self) -> Double
+pub fn PhysicsmechanicsenergySlice::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergySlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsenergySlice::sum(Self) -> Double
+pub fn PhysicsmechanicsenergySlice::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsenergyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsenergyTable::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyTable::copy(Self) -> Self
+pub fn PhysicsmechanicsenergyTable::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyTable::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsenergyTable::len(Self) -> Int32
+pub fn PhysicsmechanicsenergyTable::max(Self) -> Double
+pub fn PhysicsmechanicsenergyTable::mean(Self) -> Double
+pub fn PhysicsmechanicsenergyTable::min(Self) -> Double
+pub fn PhysicsmechanicsenergyTable::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsenergyTable::sum(Self) -> Double
+pub fn PhysicsmechanicsenergyTable::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsenergyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsmechanicsenergyVector::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyVector::dist(Self, Self) -> Double
+pub fn PhysicsmechanicsenergyVector::dot(Self, Self) -> Double
+pub fn PhysicsmechanicsenergyVector::norm(Self) -> Double
+pub fn PhysicsmechanicsenergyVector::normalize(Self) -> Self
+pub fn PhysicsmechanicsenergyVector::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyVector::sub(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyVector::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicsenergyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicsenergyView::add(Self, Self) -> Self
+pub fn PhysicsmechanicsenergyView::copy(Self) -> Self
+pub fn PhysicsmechanicsenergyView::fill(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyView::get(Self, Int32) -> Double
+pub fn PhysicsmechanicsenergyView::len(Self) -> Int32
+pub fn PhysicsmechanicsenergyView::max(Self) -> Double
+pub fn PhysicsmechanicsenergyView::mean(Self) -> Double
+pub fn PhysicsmechanicsenergyView::min(Self) -> Double
+pub fn PhysicsmechanicsenergyView::scale(Self, Double) -> Self
+pub fn PhysicsmechanicsenergyView::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicsenergyView::sum(Self) -> Double
+pub fn PhysicsmechanicsenergyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

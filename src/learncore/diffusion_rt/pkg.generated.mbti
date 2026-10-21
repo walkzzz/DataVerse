@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/diffusion_rt"
+
+// Values
+pub fn diffusion_rt_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn diffusion_rt_corr(Array[Double], Array[Double]) -> Double
+
+pub fn diffusion_rt_cov(Array[Double], Array[Double]) -> Double
+
+pub fn diffusion_rt_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn diffusion_rt_mae(Array[Double], Array[Double]) -> Double
+
+pub fn diffusion_rt_make_labeled_point(Double, Double, Int32) -> Diffusion_rtPoint
+
+pub fn diffusion_rt_make_matrix(Int32, Int32, Double) -> Diffusion_rtMatrix
+
+pub fn diffusion_rt_make_point(Double, Double) -> Diffusion_rtPoint
+
+pub fn diffusion_rt_make_series(Array[Double], String) -> Diffusion_rtSeries
+
+pub fn diffusion_rt_make_vector(Array[Double]) -> Diffusion_rtVector
+
+pub fn diffusion_rt_matrix_add(Diffusion_rtMatrix, Diffusion_rtMatrix) -> Diffusion_rtMatrix
+
+pub fn diffusion_rt_matrix_get(Diffusion_rtMatrix, Int32, Int32) -> Double
+
+pub fn diffusion_rt_matrix_identity(Int32) -> Diffusion_rtMatrix
+
+pub fn diffusion_rt_matrix_multiply(Diffusion_rtMatrix, Diffusion_rtMatrix) -> Diffusion_rtMatrix
+
+pub fn diffusion_rt_matrix_norm(Diffusion_rtMatrix) -> Double
+
+pub fn diffusion_rt_matrix_scale(Diffusion_rtMatrix, Double) -> Diffusion_rtMatrix
+
+pub fn diffusion_rt_matrix_to_string(Diffusion_rtMatrix) -> String
+
+pub fn diffusion_rt_matrix_trace(Diffusion_rtMatrix) -> Double
+
+pub fn diffusion_rt_matrix_transpose(Diffusion_rtMatrix) -> Diffusion_rtMatrix
+
+pub fn diffusion_rt_mse(Array[Double], Array[Double]) -> Double
+
+pub fn diffusion_rt_point_add(Diffusion_rtPoint, Diffusion_rtPoint) -> Diffusion_rtPoint
+
+pub fn diffusion_rt_point_dist(Diffusion_rtPoint, Diffusion_rtPoint) -> Double
+
+pub fn diffusion_rt_point_dot(Diffusion_rtPoint, Diffusion_rtPoint) -> Double
+
+pub fn diffusion_rt_point_label(Diffusion_rtPoint) -> Int32
+
+pub fn diffusion_rt_point_norm(Diffusion_rtPoint) -> Double
+
+pub fn diffusion_rt_point_scale(Diffusion_rtPoint, Double) -> Diffusion_rtPoint
+
+pub fn diffusion_rt_point_sub(Diffusion_rtPoint, Diffusion_rtPoint) -> Diffusion_rtPoint
+
+pub fn diffusion_rt_point_to_string(Diffusion_rtPoint) -> String
+
+pub fn diffusion_rt_point_x(Diffusion_rtPoint) -> Double
+
+pub fn diffusion_rt_point_y(Diffusion_rtPoint) -> Double
+
+pub fn diffusion_rt_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn diffusion_rt_r2(Array[Double], Array[Double]) -> Double
+
+pub fn diffusion_rt_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn diffusion_rt_series_add(Diffusion_rtSeries, Diffusion_rtSeries) -> Diffusion_rtSeries
+
+pub fn diffusion_rt_series_len(Diffusion_rtSeries) -> Int32
+
+pub fn diffusion_rt_series_max(Diffusion_rtSeries) -> Double
+
+pub fn diffusion_rt_series_mean(Diffusion_rtSeries) -> Double
+
+pub fn diffusion_rt_series_min(Diffusion_rtSeries) -> Double
+
+pub fn diffusion_rt_series_scale(Diffusion_rtSeries, Double) -> Diffusion_rtSeries
+
+pub fn diffusion_rt_series_std(Diffusion_rtSeries) -> Double
+
+pub fn diffusion_rt_series_sum(Diffusion_rtSeries) -> Double
+
+pub fn diffusion_rt_series_to_string(Diffusion_rtSeries) -> String
+
+pub fn diffusion_rt_series_var(Diffusion_rtSeries) -> Double
+
+pub fn diffusion_rt_std(Array[Double]) -> Double
+
+pub fn diffusion_rt_var(Array[Double]) -> Double
+
+pub fn diffusion_rt_vector_add(Diffusion_rtVector, Diffusion_rtVector) -> Diffusion_rtVector
+
+pub fn diffusion_rt_vector_dist(Diffusion_rtVector, Diffusion_rtVector) -> Double
+
+pub fn diffusion_rt_vector_dot(Diffusion_rtVector, Diffusion_rtVector) -> Double
+
+pub fn diffusion_rt_vector_norm(Diffusion_rtVector) -> Double
+
+pub fn diffusion_rt_vector_normalize(Diffusion_rtVector) -> Diffusion_rtVector
+
+pub fn diffusion_rt_vector_scale(Diffusion_rtVector, Double) -> Diffusion_rtVector
+
+pub fn diffusion_rt_vector_sub(Diffusion_rtVector, Diffusion_rtVector) -> Diffusion_rtVector
+
+pub fn diffusion_rt_vector_to_string(Diffusion_rtVector) -> String
+
+pub fn diffusion_rt_vector_zero(Int32) -> Diffusion_rtVector
+
+// Errors
+
+// Types and methods
+pub struct Diffusion_rtMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Diffusion_rtPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Diffusion_rtSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Diffusion_rtVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

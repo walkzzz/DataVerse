@@ -1,0 +1,34 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/drift"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn drift_direction(DriftReport) -> String
+
+pub fn drift_id() -> String
+
+pub fn is_significant(DriftReport, Double) -> Bool
+
+pub fn make_drift_report(String, Double, Double) -> DriftReport
+
+pub fn merge_reports(Array[DriftReport]) -> DriftReport
+
+// Errors
+
+// Types and methods
+pub struct DriftReport {
+  metric : String
+  baseline : Double
+  current : Double
+  drift_score : Double
+} derive(Eq, @debug.Debug)
+pub fn DriftReport::equal(Self, Self) -> Bool
+pub fn DriftReport::not_equal(Self, Self) -> Bool
+pub fn DriftReport::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

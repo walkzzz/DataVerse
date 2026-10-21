@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/physics_sim"
+
+// Values
+pub fn physics_sim_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn physics_sim_corr(Array[Double], Array[Double]) -> Double
+
+pub fn physics_sim_cov(Array[Double], Array[Double]) -> Double
+
+pub fn physics_sim_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn physics_sim_mae(Array[Double], Array[Double]) -> Double
+
+pub fn physics_sim_make_labeled_point(Double, Double, Int32) -> Physics_simPoint
+
+pub fn physics_sim_make_matrix(Int32, Int32, Double) -> Physics_simMatrix
+
+pub fn physics_sim_make_point(Double, Double) -> Physics_simPoint
+
+pub fn physics_sim_make_series(Array[Double], String) -> Physics_simSeries
+
+pub fn physics_sim_make_vector(Array[Double]) -> Physics_simVector
+
+pub fn physics_sim_matrix_add(Physics_simMatrix, Physics_simMatrix) -> Physics_simMatrix
+
+pub fn physics_sim_matrix_get(Physics_simMatrix, Int32, Int32) -> Double
+
+pub fn physics_sim_matrix_identity(Int32) -> Physics_simMatrix
+
+pub fn physics_sim_matrix_multiply(Physics_simMatrix, Physics_simMatrix) -> Physics_simMatrix
+
+pub fn physics_sim_matrix_norm(Physics_simMatrix) -> Double
+
+pub fn physics_sim_matrix_scale(Physics_simMatrix, Double) -> Physics_simMatrix
+
+pub fn physics_sim_matrix_to_string(Physics_simMatrix) -> String
+
+pub fn physics_sim_matrix_trace(Physics_simMatrix) -> Double
+
+pub fn physics_sim_matrix_transpose(Physics_simMatrix) -> Physics_simMatrix
+
+pub fn physics_sim_mse(Array[Double], Array[Double]) -> Double
+
+pub fn physics_sim_point_add(Physics_simPoint, Physics_simPoint) -> Physics_simPoint
+
+pub fn physics_sim_point_dist(Physics_simPoint, Physics_simPoint) -> Double
+
+pub fn physics_sim_point_dot(Physics_simPoint, Physics_simPoint) -> Double
+
+pub fn physics_sim_point_label(Physics_simPoint) -> Int32
+
+pub fn physics_sim_point_norm(Physics_simPoint) -> Double
+
+pub fn physics_sim_point_scale(Physics_simPoint, Double) -> Physics_simPoint
+
+pub fn physics_sim_point_sub(Physics_simPoint, Physics_simPoint) -> Physics_simPoint
+
+pub fn physics_sim_point_to_string(Physics_simPoint) -> String
+
+pub fn physics_sim_point_x(Physics_simPoint) -> Double
+
+pub fn physics_sim_point_y(Physics_simPoint) -> Double
+
+pub fn physics_sim_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn physics_sim_r2(Array[Double], Array[Double]) -> Double
+
+pub fn physics_sim_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn physics_sim_series_add(Physics_simSeries, Physics_simSeries) -> Physics_simSeries
+
+pub fn physics_sim_series_len(Physics_simSeries) -> Int32
+
+pub fn physics_sim_series_max(Physics_simSeries) -> Double
+
+pub fn physics_sim_series_mean(Physics_simSeries) -> Double
+
+pub fn physics_sim_series_min(Physics_simSeries) -> Double
+
+pub fn physics_sim_series_scale(Physics_simSeries, Double) -> Physics_simSeries
+
+pub fn physics_sim_series_std(Physics_simSeries) -> Double
+
+pub fn physics_sim_series_sum(Physics_simSeries) -> Double
+
+pub fn physics_sim_series_to_string(Physics_simSeries) -> String
+
+pub fn physics_sim_series_var(Physics_simSeries) -> Double
+
+pub fn physics_sim_std(Array[Double]) -> Double
+
+pub fn physics_sim_var(Array[Double]) -> Double
+
+pub fn physics_sim_vector_add(Physics_simVector, Physics_simVector) -> Physics_simVector
+
+pub fn physics_sim_vector_dist(Physics_simVector, Physics_simVector) -> Double
+
+pub fn physics_sim_vector_dot(Physics_simVector, Physics_simVector) -> Double
+
+pub fn physics_sim_vector_norm(Physics_simVector) -> Double
+
+pub fn physics_sim_vector_normalize(Physics_simVector) -> Physics_simVector
+
+pub fn physics_sim_vector_scale(Physics_simVector, Double) -> Physics_simVector
+
+pub fn physics_sim_vector_sub(Physics_simVector, Physics_simVector) -> Physics_simVector
+
+pub fn physics_sim_vector_to_string(Physics_simVector) -> String
+
+pub fn physics_sim_vector_zero(Int32) -> Physics_simVector
+
+// Errors
+
+// Types and methods
+pub struct Physics_simMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Physics_simPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Physics_simSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Physics_simVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

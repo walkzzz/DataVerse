@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/boosting_rt"
+
+// Values
+pub fn boosting_rt_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn boosting_rt_corr(Array[Double], Array[Double]) -> Double
+
+pub fn boosting_rt_cov(Array[Double], Array[Double]) -> Double
+
+pub fn boosting_rt_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn boosting_rt_mae(Array[Double], Array[Double]) -> Double
+
+pub fn boosting_rt_make_labeled_point(Double, Double, Int32) -> Boosting_rtPoint
+
+pub fn boosting_rt_make_matrix(Int32, Int32, Double) -> Boosting_rtMatrix
+
+pub fn boosting_rt_make_point(Double, Double) -> Boosting_rtPoint
+
+pub fn boosting_rt_make_series(Array[Double], String) -> Boosting_rtSeries
+
+pub fn boosting_rt_make_vector(Array[Double]) -> Boosting_rtVector
+
+pub fn boosting_rt_matrix_add(Boosting_rtMatrix, Boosting_rtMatrix) -> Boosting_rtMatrix
+
+pub fn boosting_rt_matrix_get(Boosting_rtMatrix, Int32, Int32) -> Double
+
+pub fn boosting_rt_matrix_identity(Int32) -> Boosting_rtMatrix
+
+pub fn boosting_rt_matrix_multiply(Boosting_rtMatrix, Boosting_rtMatrix) -> Boosting_rtMatrix
+
+pub fn boosting_rt_matrix_norm(Boosting_rtMatrix) -> Double
+
+pub fn boosting_rt_matrix_scale(Boosting_rtMatrix, Double) -> Boosting_rtMatrix
+
+pub fn boosting_rt_matrix_to_string(Boosting_rtMatrix) -> String
+
+pub fn boosting_rt_matrix_trace(Boosting_rtMatrix) -> Double
+
+pub fn boosting_rt_matrix_transpose(Boosting_rtMatrix) -> Boosting_rtMatrix
+
+pub fn boosting_rt_mse(Array[Double], Array[Double]) -> Double
+
+pub fn boosting_rt_point_add(Boosting_rtPoint, Boosting_rtPoint) -> Boosting_rtPoint
+
+pub fn boosting_rt_point_dist(Boosting_rtPoint, Boosting_rtPoint) -> Double
+
+pub fn boosting_rt_point_dot(Boosting_rtPoint, Boosting_rtPoint) -> Double
+
+pub fn boosting_rt_point_label(Boosting_rtPoint) -> Int32
+
+pub fn boosting_rt_point_norm(Boosting_rtPoint) -> Double
+
+pub fn boosting_rt_point_scale(Boosting_rtPoint, Double) -> Boosting_rtPoint
+
+pub fn boosting_rt_point_sub(Boosting_rtPoint, Boosting_rtPoint) -> Boosting_rtPoint
+
+pub fn boosting_rt_point_to_string(Boosting_rtPoint) -> String
+
+pub fn boosting_rt_point_x(Boosting_rtPoint) -> Double
+
+pub fn boosting_rt_point_y(Boosting_rtPoint) -> Double
+
+pub fn boosting_rt_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn boosting_rt_r2(Array[Double], Array[Double]) -> Double
+
+pub fn boosting_rt_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn boosting_rt_series_add(Boosting_rtSeries, Boosting_rtSeries) -> Boosting_rtSeries
+
+pub fn boosting_rt_series_len(Boosting_rtSeries) -> Int32
+
+pub fn boosting_rt_series_max(Boosting_rtSeries) -> Double
+
+pub fn boosting_rt_series_mean(Boosting_rtSeries) -> Double
+
+pub fn boosting_rt_series_min(Boosting_rtSeries) -> Double
+
+pub fn boosting_rt_series_scale(Boosting_rtSeries, Double) -> Boosting_rtSeries
+
+pub fn boosting_rt_series_std(Boosting_rtSeries) -> Double
+
+pub fn boosting_rt_series_sum(Boosting_rtSeries) -> Double
+
+pub fn boosting_rt_series_to_string(Boosting_rtSeries) -> String
+
+pub fn boosting_rt_series_var(Boosting_rtSeries) -> Double
+
+pub fn boosting_rt_std(Array[Double]) -> Double
+
+pub fn boosting_rt_var(Array[Double]) -> Double
+
+pub fn boosting_rt_vector_add(Boosting_rtVector, Boosting_rtVector) -> Boosting_rtVector
+
+pub fn boosting_rt_vector_dist(Boosting_rtVector, Boosting_rtVector) -> Double
+
+pub fn boosting_rt_vector_dot(Boosting_rtVector, Boosting_rtVector) -> Double
+
+pub fn boosting_rt_vector_norm(Boosting_rtVector) -> Double
+
+pub fn boosting_rt_vector_normalize(Boosting_rtVector) -> Boosting_rtVector
+
+pub fn boosting_rt_vector_scale(Boosting_rtVector, Double) -> Boosting_rtVector
+
+pub fn boosting_rt_vector_sub(Boosting_rtVector, Boosting_rtVector) -> Boosting_rtVector
+
+pub fn boosting_rt_vector_to_string(Boosting_rtVector) -> String
+
+pub fn boosting_rt_vector_zero(Int32) -> Boosting_rtVector
+
+// Errors
+
+// Types and methods
+pub struct Boosting_rtMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Boosting_rtPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Boosting_rtSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Boosting_rtVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

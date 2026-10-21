@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/xgboost"
+
+// Values
+pub fn xgboost_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn xgboost_corr(Array[Double], Array[Double]) -> Double
+
+pub fn xgboost_cov(Array[Double], Array[Double]) -> Double
+
+pub fn xgboost_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn xgboost_mae(Array[Double], Array[Double]) -> Double
+
+pub fn xgboost_make_labeled_point(Double, Double, Int32) -> XgboostPoint
+
+pub fn xgboost_make_matrix(Int32, Int32, Double) -> XgboostMatrix
+
+pub fn xgboost_make_point(Double, Double) -> XgboostPoint
+
+pub fn xgboost_make_series(Array[Double], String) -> XgboostSeries
+
+pub fn xgboost_make_vector(Array[Double]) -> XgboostVector
+
+pub fn xgboost_matrix_add(XgboostMatrix, XgboostMatrix) -> XgboostMatrix
+
+pub fn xgboost_matrix_get(XgboostMatrix, Int32, Int32) -> Double
+
+pub fn xgboost_matrix_identity(Int32) -> XgboostMatrix
+
+pub fn xgboost_matrix_multiply(XgboostMatrix, XgboostMatrix) -> XgboostMatrix
+
+pub fn xgboost_matrix_norm(XgboostMatrix) -> Double
+
+pub fn xgboost_matrix_scale(XgboostMatrix, Double) -> XgboostMatrix
+
+pub fn xgboost_matrix_to_string(XgboostMatrix) -> String
+
+pub fn xgboost_matrix_trace(XgboostMatrix) -> Double
+
+pub fn xgboost_matrix_transpose(XgboostMatrix) -> XgboostMatrix
+
+pub fn xgboost_mse(Array[Double], Array[Double]) -> Double
+
+pub fn xgboost_point_add(XgboostPoint, XgboostPoint) -> XgboostPoint
+
+pub fn xgboost_point_dist(XgboostPoint, XgboostPoint) -> Double
+
+pub fn xgboost_point_dot(XgboostPoint, XgboostPoint) -> Double
+
+pub fn xgboost_point_label(XgboostPoint) -> Int32
+
+pub fn xgboost_point_norm(XgboostPoint) -> Double
+
+pub fn xgboost_point_scale(XgboostPoint, Double) -> XgboostPoint
+
+pub fn xgboost_point_sub(XgboostPoint, XgboostPoint) -> XgboostPoint
+
+pub fn xgboost_point_to_string(XgboostPoint) -> String
+
+pub fn xgboost_point_x(XgboostPoint) -> Double
+
+pub fn xgboost_point_y(XgboostPoint) -> Double
+
+pub fn xgboost_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn xgboost_r2(Array[Double], Array[Double]) -> Double
+
+pub fn xgboost_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn xgboost_series_add(XgboostSeries, XgboostSeries) -> XgboostSeries
+
+pub fn xgboost_series_len(XgboostSeries) -> Int32
+
+pub fn xgboost_series_max(XgboostSeries) -> Double
+
+pub fn xgboost_series_mean(XgboostSeries) -> Double
+
+pub fn xgboost_series_min(XgboostSeries) -> Double
+
+pub fn xgboost_series_scale(XgboostSeries, Double) -> XgboostSeries
+
+pub fn xgboost_series_std(XgboostSeries) -> Double
+
+pub fn xgboost_series_sum(XgboostSeries) -> Double
+
+pub fn xgboost_series_to_string(XgboostSeries) -> String
+
+pub fn xgboost_series_var(XgboostSeries) -> Double
+
+pub fn xgboost_std(Array[Double]) -> Double
+
+pub fn xgboost_var(Array[Double]) -> Double
+
+pub fn xgboost_vector_add(XgboostVector, XgboostVector) -> XgboostVector
+
+pub fn xgboost_vector_dist(XgboostVector, XgboostVector) -> Double
+
+pub fn xgboost_vector_dot(XgboostVector, XgboostVector) -> Double
+
+pub fn xgboost_vector_norm(XgboostVector) -> Double
+
+pub fn xgboost_vector_normalize(XgboostVector) -> XgboostVector
+
+pub fn xgboost_vector_scale(XgboostVector, Double) -> XgboostVector
+
+pub fn xgboost_vector_sub(XgboostVector, XgboostVector) -> XgboostVector
+
+pub fn xgboost_vector_to_string(XgboostVector) -> String
+
+pub fn xgboost_vector_zero(Int32) -> XgboostVector
+
+// Errors
+
+// Types and methods
+pub struct XgboostMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct XgboostPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct XgboostSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct XgboostVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

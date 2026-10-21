@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/compress_lz4"
+
+// Values
+pub fn compress_lz4_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn compress_lz4_corr(Array[Double], Array[Double]) -> Double
+
+pub fn compress_lz4_cov(Array[Double], Array[Double]) -> Double
+
+pub fn compress_lz4_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn compress_lz4_mae(Array[Double], Array[Double]) -> Double
+
+pub fn compress_lz4_make_labeled_point(Double, Double, Int32) -> Compress_lz4Point
+
+pub fn compress_lz4_make_matrix(Int32, Int32, Double) -> Compress_lz4Matrix
+
+pub fn compress_lz4_make_point(Double, Double) -> Compress_lz4Point
+
+pub fn compress_lz4_make_series(Array[Double], String) -> Compress_lz4Series
+
+pub fn compress_lz4_make_vector(Array[Double]) -> Compress_lz4Vector
+
+pub fn compress_lz4_matrix_add(Compress_lz4Matrix, Compress_lz4Matrix) -> Compress_lz4Matrix
+
+pub fn compress_lz4_matrix_get(Compress_lz4Matrix, Int32, Int32) -> Double
+
+pub fn compress_lz4_matrix_identity(Int32) -> Compress_lz4Matrix
+
+pub fn compress_lz4_matrix_multiply(Compress_lz4Matrix, Compress_lz4Matrix) -> Compress_lz4Matrix
+
+pub fn compress_lz4_matrix_norm(Compress_lz4Matrix) -> Double
+
+pub fn compress_lz4_matrix_scale(Compress_lz4Matrix, Double) -> Compress_lz4Matrix
+
+pub fn compress_lz4_matrix_to_string(Compress_lz4Matrix) -> String
+
+pub fn compress_lz4_matrix_trace(Compress_lz4Matrix) -> Double
+
+pub fn compress_lz4_matrix_transpose(Compress_lz4Matrix) -> Compress_lz4Matrix
+
+pub fn compress_lz4_mse(Array[Double], Array[Double]) -> Double
+
+pub fn compress_lz4_point_add(Compress_lz4Point, Compress_lz4Point) -> Compress_lz4Point
+
+pub fn compress_lz4_point_dist(Compress_lz4Point, Compress_lz4Point) -> Double
+
+pub fn compress_lz4_point_dot(Compress_lz4Point, Compress_lz4Point) -> Double
+
+pub fn compress_lz4_point_label(Compress_lz4Point) -> Int32
+
+pub fn compress_lz4_point_norm(Compress_lz4Point) -> Double
+
+pub fn compress_lz4_point_scale(Compress_lz4Point, Double) -> Compress_lz4Point
+
+pub fn compress_lz4_point_sub(Compress_lz4Point, Compress_lz4Point) -> Compress_lz4Point
+
+pub fn compress_lz4_point_to_string(Compress_lz4Point) -> String
+
+pub fn compress_lz4_point_x(Compress_lz4Point) -> Double
+
+pub fn compress_lz4_point_y(Compress_lz4Point) -> Double
+
+pub fn compress_lz4_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn compress_lz4_r2(Array[Double], Array[Double]) -> Double
+
+pub fn compress_lz4_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn compress_lz4_series_add(Compress_lz4Series, Compress_lz4Series) -> Compress_lz4Series
+
+pub fn compress_lz4_series_len(Compress_lz4Series) -> Int32
+
+pub fn compress_lz4_series_max(Compress_lz4Series) -> Double
+
+pub fn compress_lz4_series_mean(Compress_lz4Series) -> Double
+
+pub fn compress_lz4_series_min(Compress_lz4Series) -> Double
+
+pub fn compress_lz4_series_scale(Compress_lz4Series, Double) -> Compress_lz4Series
+
+pub fn compress_lz4_series_std(Compress_lz4Series) -> Double
+
+pub fn compress_lz4_series_sum(Compress_lz4Series) -> Double
+
+pub fn compress_lz4_series_to_string(Compress_lz4Series) -> String
+
+pub fn compress_lz4_series_var(Compress_lz4Series) -> Double
+
+pub fn compress_lz4_std(Array[Double]) -> Double
+
+pub fn compress_lz4_var(Array[Double]) -> Double
+
+pub fn compress_lz4_vector_add(Compress_lz4Vector, Compress_lz4Vector) -> Compress_lz4Vector
+
+pub fn compress_lz4_vector_dist(Compress_lz4Vector, Compress_lz4Vector) -> Double
+
+pub fn compress_lz4_vector_dot(Compress_lz4Vector, Compress_lz4Vector) -> Double
+
+pub fn compress_lz4_vector_norm(Compress_lz4Vector) -> Double
+
+pub fn compress_lz4_vector_normalize(Compress_lz4Vector) -> Compress_lz4Vector
+
+pub fn compress_lz4_vector_scale(Compress_lz4Vector, Double) -> Compress_lz4Vector
+
+pub fn compress_lz4_vector_sub(Compress_lz4Vector, Compress_lz4Vector) -> Compress_lz4Vector
+
+pub fn compress_lz4_vector_to_string(Compress_lz4Vector) -> String
+
+pub fn compress_lz4_vector_zero(Int32) -> Compress_lz4Vector
+
+// Errors
+
+// Types and methods
+pub struct Compress_lz4Matrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Compress_lz4Point {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Compress_lz4Series {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Compress_lz4Vector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

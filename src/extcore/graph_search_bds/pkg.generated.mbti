@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_search_bds"
+
+// Values
+pub fn graph_search_bds_buffer_make(Int32) -> GraphsearchbdsBuffer
+
+pub fn graph_search_bds_cluster_make(Int32) -> GraphsearchbdsCluster
+
+pub fn graph_search_bds_cursor_make(Int32) -> GraphsearchbdsCursor
+
+pub fn graph_search_bds_edge_make(Int32) -> GraphsearchbdsEdge
+
+pub fn graph_search_bds_frame_make(Int32) -> GraphsearchbdsFrame
+
+pub fn graph_search_bds_graphn_make(Int32) -> GraphsearchbdsGraphN
+
+pub fn graph_search_bds_layer_make(Int32) -> GraphsearchbdsLayer
+
+pub fn graph_search_bds_make_matrix(Int32, Int32, Double) -> GraphsearchbdsMatrix
+
+pub fn graph_search_bds_make_point(Double, Double) -> GraphsearchbdsPoint
+
+pub fn graph_search_bds_make_point3(Double, Double, Double) -> GraphsearchbdsPoint
+
+pub fn graph_search_bds_make_series(Array[Double], String) -> GraphsearchbdsSeries
+
+pub fn graph_search_bds_make_vector(Array[Double]) -> GraphsearchbdsVector
+
+pub fn graph_search_bds_matrix_identity(Int32) -> GraphsearchbdsMatrix
+
+pub fn graph_search_bds_model_make(Int32) -> GraphsearchbdsModel
+
+pub fn graph_search_bds_node_make(Int32) -> GraphsearchbdsNode
+
+pub fn graph_search_bds_path_make(Int32) -> GraphsearchbdsPath
+
+pub fn graph_search_bds_range_make(Int32) -> GraphsearchbdsRange
+
+pub fn graph_search_bds_slice_make(Int32) -> GraphsearchbdsSlice
+
+pub fn graph_search_bds_table_make(Int32) -> GraphsearchbdsTable
+
+pub fn graph_search_bds_vector_zero(Int32) -> GraphsearchbdsVector
+
+pub fn graph_search_bds_view_make(Int32) -> GraphsearchbdsView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphsearchbdsBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbdsBuffer::add(Self, Self) -> Self
+pub fn GraphsearchbdsBuffer::copy(Self) -> Self
+pub fn GraphsearchbdsBuffer::fill(Self, Double) -> Self
+pub fn GraphsearchbdsBuffer::get(Self, Int32) -> Double
+pub fn GraphsearchbdsBuffer::len(Self) -> Int32
+pub fn GraphsearchbdsBuffer::max(Self) -> Double
+pub fn GraphsearchbdsBuffer::mean(Self) -> Double
+pub fn GraphsearchbdsBuffer::min(Self) -> Double
+pub fn GraphsearchbdsBuffer::scale(Self, Double) -> Self
+pub fn GraphsearchbdsBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbdsBuffer::sum(Self) -> Double
+pub fn GraphsearchbdsBuffer::to_string(Self) -> String
+
+pub(all) struct GraphsearchbdsCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbdsCluster::add(Self, Self) -> Self
+pub fn GraphsearchbdsCluster::copy(Self) -> Self
+pub fn GraphsearchbdsCluster::fill(Self, Double) -> Self
+pub fn GraphsearchbdsCluster::get(Self, Int32) -> Double
+pub fn GraphsearchbdsCluster::len(Self) -> Int32
+pub fn GraphsearchbdsCluster::max(Self) -> Double
+pub fn GraphsearchbdsCluster::mean(Self) -> Double
+pub fn GraphsearchbdsCluster::min(Self) -> Double
+pub fn GraphsearchbdsCluster::scale(Self, Double) -> Self
+pub fn GraphsearchbdsCluster::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbdsCluster::sum(Self) -> Double
+pub fn GraphsearchbdsCluster::to_string(Self) -> String
+
+pub(all) struct GraphsearchbdsCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbdsCursor::add(Self, Self) -> Self
+pub fn GraphsearchbdsCursor::copy(Self) -> Self
+pub fn GraphsearchbdsCursor::fill(Self, Double) -> Self
+pub fn GraphsearchbdsCursor::get(Self, Int32) -> Double
+pub fn GraphsearchbdsCursor::len(Self) -> Int32
+pub fn GraphsearchbdsCursor::max(Self) -> Double
+pub fn GraphsearchbdsCursor::mean(Self) -> Double
+pub fn GraphsearchbdsCursor::min(Self) -> Double
+pub fn GraphsearchbdsCursor::scale(Self, Double) -> Self
+pub fn GraphsearchbdsCursor::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbdsCursor::sum(Self) -> Double
+pub fn GraphsearchbdsCursor::to_string(Self) -> String
+
+pub(all) struct GraphsearchbdsEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbdsEdge::add(Self, Self) -> Self
+pub fn GraphsearchbdsEdge::copy(Self) -> Self
+pub fn GraphsearchbdsEdge::fill(Self, Double) -> Self
+pub fn GraphsearchbdsEdge::get(Self, Int32) -> Double
+pub fn GraphsearchbdsEdge::len(Self) -> Int32
+pub fn GraphsearchbdsEdge::max(Self) -> Double
+pub fn GraphsearchbdsEdge::mean(Self) -> Double
+pub fn GraphsearchbdsEdge::min(Self) -> Double
+pub fn GraphsearchbdsEdge::scale(Self, Double) -> Self
+pub fn GraphsearchbdsEdge::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbdsEdge::sum(Self) -> Double
+pub fn GraphsearchbdsEdge::to_string(Self) -> String
+
+pub(all) struct GraphsearchbdsFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbdsFrame::add(Self, Self) -> Self
+pub fn GraphsearchbdsFrame::copy(Self) -> Self
+pub fn GraphsearchbdsFrame::fill(Self, Double) -> Self
+pub fn GraphsearchbdsFrame::get(Self, Int32) -> Double
+pub fn GraphsearchbdsFrame::len(Self) -> Int32
+pub fn GraphsearchbdsFrame::max(Self) -> Double
+pub fn GraphsearchbdsFrame::mean(Self) -> Double
+pub fn GraphsearchbdsFrame::min(Self) -> Double
+pub fn GraphsearchbdsFrame::scale(Self, Double) -> Self
+pub fn GraphsearchbdsFrame::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbdsFrame::sum(Self) -> Double
+pub fn GraphsearchbdsFrame::to_string(Self) -> String
+
+pub(all) struct GraphsearchbdsGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbdsGraphN::add(Self, Self) -> Self
+pub fn GraphsearchbdsGraphN::copy(Self) -> Self
+pub fn GraphsearchbdsGraphN::fill(Self, Double) -> Self
+pub fn GraphsearchbdsGraphN::get(Self, Int32) -> Double
+pub fn GraphsearchbdsGraphN::len(Self) -> Int32
+pub fn GraphsearchbdsGraphN::max(Self) -> Double
+pub fn GraphsearchbdsGraphN::mean(Self) -> Double
+pub fn GraphsearchbdsGraphN::min(Self) -> Double
+pub fn GraphsearchbdsGraphN::scale(Self, Double) -> Self
+pub fn GraphsearchbdsGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbdsGraphN::sum(Self) -> Double
+pub fn GraphsearchbdsGraphN::to_string(Self) -> String
+
+pub(all) struct GraphsearchbdsLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbdsLayer::add(Self, Self) -> Self
+pub fn GraphsearchbdsLayer::copy(Self) -> Self
+pub fn GraphsearchbdsLayer::fill(Self, Double) -> Self
+pub fn GraphsearchbdsLayer::get(Self, Int32) -> Double
+pub fn GraphsearchbdsLayer::len(Self) -> Int32
+pub fn GraphsearchbdsLayer::max(Self) -> Double
+pub fn GraphsearchbdsLayer::mean(Self) -> Double
+pub fn GraphsearchbdsLayer::min(Self) -> Double
+pub fn GraphsearchbdsLayer::scale(Self, Double) -> Self
+pub fn GraphsearchbdsLayer::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbdsLayer::sum(Self) -> Double
+pub fn GraphsearchbdsLayer::to_string(Self) -> String
+
+pub(all) struct GraphsearchbdsMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphsearchbdsMatrix::add(Self, Self) -> Self
+pub fn GraphsearchbdsMatrix::det(Self) -> Double
+pub fn GraphsearchbdsMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphsearchbdsMatrix::multiply(Self, Self) -> Self
+pub fn GraphsearchbdsMatrix::norm(Self) -> Double
+pub fn GraphsearchbdsMatrix::scale(Self, Double) -> Self
+pub fn GraphsearchbdsMatrix::to_string(Self) -> String
+pub fn GraphsearchbdsMatrix::trace(Self) -> Double
+pub fn GraphsearchbdsMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphsearchbdsModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbdsModel::add(Self, Self) -> Self
+pub fn GraphsearchbdsModel::copy(Self) -> Self
+pub fn GraphsearchbdsModel::fill(Self, Double) -> Self
+pub fn GraphsearchbdsModel::get(Self, Int32) -> Double
+pub fn GraphsearchbdsModel::len(Self) -> Int32
+pub fn GraphsearchbdsModel::max(Self) -> Double
+pub fn GraphsearchbdsModel::mean(Self) -> Double
+pub fn GraphsearchbdsModel::min(Self) -> Double
+pub fn GraphsearchbdsModel::scale(Self, Double) -> Self
+pub fn GraphsearchbdsModel::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbdsModel::sum(Self) -> Double
+pub fn GraphsearchbdsModel::to_string(Self) -> String
+
+pub(all) struct GraphsearchbdsNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbdsNode::add(Self, Self) -> Self
+pub fn GraphsearchbdsNode::copy(Self) -> Self
+pub fn GraphsearchbdsNode::fill(Self, Double) -> Self
+pub fn GraphsearchbdsNode::get(Self, Int32) -> Double
+pub fn GraphsearchbdsNode::len(Self) -> Int32
+pub fn GraphsearchbdsNode::max(Self) -> Double
+pub fn GraphsearchbdsNode::mean(Self) -> Double
+pub fn GraphsearchbdsNode::min(Self) -> Double
+pub fn GraphsearchbdsNode::scale(Self, Double) -> Self
+pub fn GraphsearchbdsNode::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbdsNode::sum(Self) -> Double
+pub fn GraphsearchbdsNode::to_string(Self) -> String
+
+pub(all) struct GraphsearchbdsPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbdsPath::add(Self, Self) -> Self
+pub fn GraphsearchbdsPath::copy(Self) -> Self
+pub fn GraphsearchbdsPath::fill(Self, Double) -> Self
+pub fn GraphsearchbdsPath::get(Self, Int32) -> Double
+pub fn GraphsearchbdsPath::len(Self) -> Int32
+pub fn GraphsearchbdsPath::max(Self) -> Double
+pub fn GraphsearchbdsPath::mean(Self) -> Double
+pub fn GraphsearchbdsPath::min(Self) -> Double
+pub fn GraphsearchbdsPath::scale(Self, Double) -> Self
+pub fn GraphsearchbdsPath::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbdsPath::sum(Self) -> Double
+pub fn GraphsearchbdsPath::to_string(Self) -> String
+
+pub(all) struct GraphsearchbdsPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphsearchbdsPoint::add(Self, Self) -> Self
+pub fn GraphsearchbdsPoint::cross(Self, Self) -> Self
+pub fn GraphsearchbdsPoint::dist(Self, Self) -> Double
+pub fn GraphsearchbdsPoint::dot(Self, Self) -> Double
+pub fn GraphsearchbdsPoint::label(Self) -> Int32
+pub fn GraphsearchbdsPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphsearchbdsPoint::mid(Self, Self) -> Self
+pub fn GraphsearchbdsPoint::negate(Self) -> Self
+pub fn GraphsearchbdsPoint::norm(Self) -> Double
+pub fn GraphsearchbdsPoint::normalize(Self) -> Self
+pub fn GraphsearchbdsPoint::scale(Self, Double) -> Self
+pub fn GraphsearchbdsPoint::sub(Self, Self) -> Self
+pub fn GraphsearchbdsPoint::to_string(Self) -> String
+pub fn GraphsearchbdsPoint::x(Self) -> Double
+pub fn GraphsearchbdsPoint::y(Self) -> Double
+pub fn GraphsearchbdsPoint::z(Self) -> Double
+
+pub(all) struct GraphsearchbdsRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbdsRange::add(Self, Self) -> Self
+pub fn GraphsearchbdsRange::copy(Self) -> Self
+pub fn GraphsearchbdsRange::fill(Self, Double) -> Self
+pub fn GraphsearchbdsRange::get(Self, Int32) -> Double
+pub fn GraphsearchbdsRange::len(Self) -> Int32
+pub fn GraphsearchbdsRange::max(Self) -> Double
+pub fn GraphsearchbdsRange::mean(Self) -> Double
+pub fn GraphsearchbdsRange::min(Self) -> Double
+pub fn GraphsearchbdsRange::scale(Self, Double) -> Self
+pub fn GraphsearchbdsRange::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbdsRange::sum(Self) -> Double
+pub fn GraphsearchbdsRange::to_string(Self) -> String
+
+pub(all) struct GraphsearchbdsSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphsearchbdsSeries::add(Self, Self) -> Self
+pub fn GraphsearchbdsSeries::cumsum(Self) -> Self
+pub fn GraphsearchbdsSeries::len(Self) -> Int32
+pub fn GraphsearchbdsSeries::max(Self) -> Double
+pub fn GraphsearchbdsSeries::mean(Self) -> Double
+pub fn GraphsearchbdsSeries::median(Self) -> Double
+pub fn GraphsearchbdsSeries::min(Self) -> Double
+pub fn GraphsearchbdsSeries::normalize(Self) -> Self
+pub fn GraphsearchbdsSeries::range(Self) -> Double
+pub fn GraphsearchbdsSeries::scale(Self, Double) -> Self
+pub fn GraphsearchbdsSeries::std(Self) -> Double
+pub fn GraphsearchbdsSeries::sub(Self, Self) -> Self
+pub fn GraphsearchbdsSeries::sum(Self) -> Double
+pub fn GraphsearchbdsSeries::to_string(Self) -> String
+pub fn GraphsearchbdsSeries::variance(Self) -> Double
+
+pub(all) struct GraphsearchbdsSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbdsSlice::add(Self, Self) -> Self
+pub fn GraphsearchbdsSlice::copy(Self) -> Self
+pub fn GraphsearchbdsSlice::fill(Self, Double) -> Self
+pub fn GraphsearchbdsSlice::get(Self, Int32) -> Double
+pub fn GraphsearchbdsSlice::len(Self) -> Int32
+pub fn GraphsearchbdsSlice::max(Self) -> Double
+pub fn GraphsearchbdsSlice::mean(Self) -> Double
+pub fn GraphsearchbdsSlice::min(Self) -> Double
+pub fn GraphsearchbdsSlice::scale(Self, Double) -> Self
+pub fn GraphsearchbdsSlice::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbdsSlice::sum(Self) -> Double
+pub fn GraphsearchbdsSlice::to_string(Self) -> String
+
+pub(all) struct GraphsearchbdsTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbdsTable::add(Self, Self) -> Self
+pub fn GraphsearchbdsTable::copy(Self) -> Self
+pub fn GraphsearchbdsTable::fill(Self, Double) -> Self
+pub fn GraphsearchbdsTable::get(Self, Int32) -> Double
+pub fn GraphsearchbdsTable::len(Self) -> Int32
+pub fn GraphsearchbdsTable::max(Self) -> Double
+pub fn GraphsearchbdsTable::mean(Self) -> Double
+pub fn GraphsearchbdsTable::min(Self) -> Double
+pub fn GraphsearchbdsTable::scale(Self, Double) -> Self
+pub fn GraphsearchbdsTable::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbdsTable::sum(Self) -> Double
+pub fn GraphsearchbdsTable::to_string(Self) -> String
+
+pub(all) struct GraphsearchbdsVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphsearchbdsVector::add(Self, Self) -> Self
+pub fn GraphsearchbdsVector::dist(Self, Self) -> Double
+pub fn GraphsearchbdsVector::dot(Self, Self) -> Double
+pub fn GraphsearchbdsVector::norm(Self) -> Double
+pub fn GraphsearchbdsVector::normalize(Self) -> Self
+pub fn GraphsearchbdsVector::scale(Self, Double) -> Self
+pub fn GraphsearchbdsVector::sub(Self, Self) -> Self
+pub fn GraphsearchbdsVector::to_string(Self) -> String
+
+pub(all) struct GraphsearchbdsView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbdsView::add(Self, Self) -> Self
+pub fn GraphsearchbdsView::copy(Self) -> Self
+pub fn GraphsearchbdsView::fill(Self, Double) -> Self
+pub fn GraphsearchbdsView::get(Self, Int32) -> Double
+pub fn GraphsearchbdsView::len(Self) -> Int32
+pub fn GraphsearchbdsView::max(Self) -> Double
+pub fn GraphsearchbdsView::mean(Self) -> Double
+pub fn GraphsearchbdsView::min(Self) -> Double
+pub fn GraphsearchbdsView::scale(Self, Double) -> Self
+pub fn GraphsearchbdsView::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbdsView::sum(Self) -> Double
+pub fn GraphsearchbdsView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

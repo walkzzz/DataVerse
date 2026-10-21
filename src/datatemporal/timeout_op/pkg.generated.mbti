@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/timeout_op"
+
+// Values
+pub fn timeout_op_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn timeout_op_corr(Array[Double], Array[Double]) -> Double
+
+pub fn timeout_op_cov(Array[Double], Array[Double]) -> Double
+
+pub fn timeout_op_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn timeout_op_mae(Array[Double], Array[Double]) -> Double
+
+pub fn timeout_op_make_labeled_point(Double, Double, Int32) -> Timeout_opPoint
+
+pub fn timeout_op_make_matrix(Int32, Int32, Double) -> Timeout_opMatrix
+
+pub fn timeout_op_make_point(Double, Double) -> Timeout_opPoint
+
+pub fn timeout_op_make_series(Array[Double], String) -> Timeout_opSeries
+
+pub fn timeout_op_make_vector(Array[Double]) -> Timeout_opVector
+
+pub fn timeout_op_matrix_add(Timeout_opMatrix, Timeout_opMatrix) -> Timeout_opMatrix
+
+pub fn timeout_op_matrix_get(Timeout_opMatrix, Int32, Int32) -> Double
+
+pub fn timeout_op_matrix_identity(Int32) -> Timeout_opMatrix
+
+pub fn timeout_op_matrix_multiply(Timeout_opMatrix, Timeout_opMatrix) -> Timeout_opMatrix
+
+pub fn timeout_op_matrix_norm(Timeout_opMatrix) -> Double
+
+pub fn timeout_op_matrix_scale(Timeout_opMatrix, Double) -> Timeout_opMatrix
+
+pub fn timeout_op_matrix_to_string(Timeout_opMatrix) -> String
+
+pub fn timeout_op_matrix_trace(Timeout_opMatrix) -> Double
+
+pub fn timeout_op_matrix_transpose(Timeout_opMatrix) -> Timeout_opMatrix
+
+pub fn timeout_op_mse(Array[Double], Array[Double]) -> Double
+
+pub fn timeout_op_point_add(Timeout_opPoint, Timeout_opPoint) -> Timeout_opPoint
+
+pub fn timeout_op_point_dist(Timeout_opPoint, Timeout_opPoint) -> Double
+
+pub fn timeout_op_point_dot(Timeout_opPoint, Timeout_opPoint) -> Double
+
+pub fn timeout_op_point_label(Timeout_opPoint) -> Int32
+
+pub fn timeout_op_point_norm(Timeout_opPoint) -> Double
+
+pub fn timeout_op_point_scale(Timeout_opPoint, Double) -> Timeout_opPoint
+
+pub fn timeout_op_point_sub(Timeout_opPoint, Timeout_opPoint) -> Timeout_opPoint
+
+pub fn timeout_op_point_to_string(Timeout_opPoint) -> String
+
+pub fn timeout_op_point_x(Timeout_opPoint) -> Double
+
+pub fn timeout_op_point_y(Timeout_opPoint) -> Double
+
+pub fn timeout_op_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn timeout_op_r2(Array[Double], Array[Double]) -> Double
+
+pub fn timeout_op_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn timeout_op_series_add(Timeout_opSeries, Timeout_opSeries) -> Timeout_opSeries
+
+pub fn timeout_op_series_len(Timeout_opSeries) -> Int32
+
+pub fn timeout_op_series_max(Timeout_opSeries) -> Double
+
+pub fn timeout_op_series_mean(Timeout_opSeries) -> Double
+
+pub fn timeout_op_series_min(Timeout_opSeries) -> Double
+
+pub fn timeout_op_series_scale(Timeout_opSeries, Double) -> Timeout_opSeries
+
+pub fn timeout_op_series_std(Timeout_opSeries) -> Double
+
+pub fn timeout_op_series_sum(Timeout_opSeries) -> Double
+
+pub fn timeout_op_series_to_string(Timeout_opSeries) -> String
+
+pub fn timeout_op_series_var(Timeout_opSeries) -> Double
+
+pub fn timeout_op_std(Array[Double]) -> Double
+
+pub fn timeout_op_var(Array[Double]) -> Double
+
+pub fn timeout_op_vector_add(Timeout_opVector, Timeout_opVector) -> Timeout_opVector
+
+pub fn timeout_op_vector_dist(Timeout_opVector, Timeout_opVector) -> Double
+
+pub fn timeout_op_vector_dot(Timeout_opVector, Timeout_opVector) -> Double
+
+pub fn timeout_op_vector_norm(Timeout_opVector) -> Double
+
+pub fn timeout_op_vector_normalize(Timeout_opVector) -> Timeout_opVector
+
+pub fn timeout_op_vector_scale(Timeout_opVector, Double) -> Timeout_opVector
+
+pub fn timeout_op_vector_sub(Timeout_opVector, Timeout_opVector) -> Timeout_opVector
+
+pub fn timeout_op_vector_to_string(Timeout_opVector) -> String
+
+pub fn timeout_op_vector_zero(Int32) -> Timeout_opVector
+
+// Errors
+
+// Types and methods
+pub struct Timeout_opMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Timeout_opPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Timeout_opSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Timeout_opVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

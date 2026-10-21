@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_simplex"
+
+// Values
+pub fn math_simplex_buffer_make(Int32) -> MathsimplexBuffer
+
+pub fn math_simplex_cluster_make(Int32) -> MathsimplexCluster
+
+pub fn math_simplex_cursor_make(Int32) -> MathsimplexCursor
+
+pub fn math_simplex_edge_make(Int32) -> MathsimplexEdge
+
+pub fn math_simplex_frame_make(Int32) -> MathsimplexFrame
+
+pub fn math_simplex_graphn_make(Int32) -> MathsimplexGraphN
+
+pub fn math_simplex_layer_make(Int32) -> MathsimplexLayer
+
+pub fn math_simplex_make_matrix(Int32, Int32, Double) -> MathsimplexMatrix
+
+pub fn math_simplex_make_point(Double, Double) -> MathsimplexPoint
+
+pub fn math_simplex_make_point3(Double, Double, Double) -> MathsimplexPoint
+
+pub fn math_simplex_make_series(Array[Double], String) -> MathsimplexSeries
+
+pub fn math_simplex_make_vector(Array[Double]) -> MathsimplexVector
+
+pub fn math_simplex_matrix_identity(Int32) -> MathsimplexMatrix
+
+pub fn math_simplex_model_make(Int32) -> MathsimplexModel
+
+pub fn math_simplex_node_make(Int32) -> MathsimplexNode
+
+pub fn math_simplex_path_make(Int32) -> MathsimplexPath
+
+pub fn math_simplex_range_make(Int32) -> MathsimplexRange
+
+pub fn math_simplex_slice_make(Int32) -> MathsimplexSlice
+
+pub fn math_simplex_table_make(Int32) -> MathsimplexTable
+
+pub fn math_simplex_vector_zero(Int32) -> MathsimplexVector
+
+pub fn math_simplex_view_make(Int32) -> MathsimplexView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathsimplexBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsimplexBuffer::add(Self, Self) -> Self
+pub fn MathsimplexBuffer::copy(Self) -> Self
+pub fn MathsimplexBuffer::fill(Self, Double) -> Self
+pub fn MathsimplexBuffer::get(Self, Int32) -> Double
+pub fn MathsimplexBuffer::len(Self) -> Int32
+pub fn MathsimplexBuffer::max(Self) -> Double
+pub fn MathsimplexBuffer::mean(Self) -> Double
+pub fn MathsimplexBuffer::min(Self) -> Double
+pub fn MathsimplexBuffer::scale(Self, Double) -> Self
+pub fn MathsimplexBuffer::set(Self, Int32, Double) -> Self
+pub fn MathsimplexBuffer::sum(Self) -> Double
+pub fn MathsimplexBuffer::to_string(Self) -> String
+
+pub(all) struct MathsimplexCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsimplexCluster::add(Self, Self) -> Self
+pub fn MathsimplexCluster::copy(Self) -> Self
+pub fn MathsimplexCluster::fill(Self, Double) -> Self
+pub fn MathsimplexCluster::get(Self, Int32) -> Double
+pub fn MathsimplexCluster::len(Self) -> Int32
+pub fn MathsimplexCluster::max(Self) -> Double
+pub fn MathsimplexCluster::mean(Self) -> Double
+pub fn MathsimplexCluster::min(Self) -> Double
+pub fn MathsimplexCluster::scale(Self, Double) -> Self
+pub fn MathsimplexCluster::set(Self, Int32, Double) -> Self
+pub fn MathsimplexCluster::sum(Self) -> Double
+pub fn MathsimplexCluster::to_string(Self) -> String
+
+pub(all) struct MathsimplexCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsimplexCursor::add(Self, Self) -> Self
+pub fn MathsimplexCursor::copy(Self) -> Self
+pub fn MathsimplexCursor::fill(Self, Double) -> Self
+pub fn MathsimplexCursor::get(Self, Int32) -> Double
+pub fn MathsimplexCursor::len(Self) -> Int32
+pub fn MathsimplexCursor::max(Self) -> Double
+pub fn MathsimplexCursor::mean(Self) -> Double
+pub fn MathsimplexCursor::min(Self) -> Double
+pub fn MathsimplexCursor::scale(Self, Double) -> Self
+pub fn MathsimplexCursor::set(Self, Int32, Double) -> Self
+pub fn MathsimplexCursor::sum(Self) -> Double
+pub fn MathsimplexCursor::to_string(Self) -> String
+
+pub(all) struct MathsimplexEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsimplexEdge::add(Self, Self) -> Self
+pub fn MathsimplexEdge::copy(Self) -> Self
+pub fn MathsimplexEdge::fill(Self, Double) -> Self
+pub fn MathsimplexEdge::get(Self, Int32) -> Double
+pub fn MathsimplexEdge::len(Self) -> Int32
+pub fn MathsimplexEdge::max(Self) -> Double
+pub fn MathsimplexEdge::mean(Self) -> Double
+pub fn MathsimplexEdge::min(Self) -> Double
+pub fn MathsimplexEdge::scale(Self, Double) -> Self
+pub fn MathsimplexEdge::set(Self, Int32, Double) -> Self
+pub fn MathsimplexEdge::sum(Self) -> Double
+pub fn MathsimplexEdge::to_string(Self) -> String
+
+pub(all) struct MathsimplexFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsimplexFrame::add(Self, Self) -> Self
+pub fn MathsimplexFrame::copy(Self) -> Self
+pub fn MathsimplexFrame::fill(Self, Double) -> Self
+pub fn MathsimplexFrame::get(Self, Int32) -> Double
+pub fn MathsimplexFrame::len(Self) -> Int32
+pub fn MathsimplexFrame::max(Self) -> Double
+pub fn MathsimplexFrame::mean(Self) -> Double
+pub fn MathsimplexFrame::min(Self) -> Double
+pub fn MathsimplexFrame::scale(Self, Double) -> Self
+pub fn MathsimplexFrame::set(Self, Int32, Double) -> Self
+pub fn MathsimplexFrame::sum(Self) -> Double
+pub fn MathsimplexFrame::to_string(Self) -> String
+
+pub(all) struct MathsimplexGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsimplexGraphN::add(Self, Self) -> Self
+pub fn MathsimplexGraphN::copy(Self) -> Self
+pub fn MathsimplexGraphN::fill(Self, Double) -> Self
+pub fn MathsimplexGraphN::get(Self, Int32) -> Double
+pub fn MathsimplexGraphN::len(Self) -> Int32
+pub fn MathsimplexGraphN::max(Self) -> Double
+pub fn MathsimplexGraphN::mean(Self) -> Double
+pub fn MathsimplexGraphN::min(Self) -> Double
+pub fn MathsimplexGraphN::scale(Self, Double) -> Self
+pub fn MathsimplexGraphN::set(Self, Int32, Double) -> Self
+pub fn MathsimplexGraphN::sum(Self) -> Double
+pub fn MathsimplexGraphN::to_string(Self) -> String
+
+pub(all) struct MathsimplexLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsimplexLayer::add(Self, Self) -> Self
+pub fn MathsimplexLayer::copy(Self) -> Self
+pub fn MathsimplexLayer::fill(Self, Double) -> Self
+pub fn MathsimplexLayer::get(Self, Int32) -> Double
+pub fn MathsimplexLayer::len(Self) -> Int32
+pub fn MathsimplexLayer::max(Self) -> Double
+pub fn MathsimplexLayer::mean(Self) -> Double
+pub fn MathsimplexLayer::min(Self) -> Double
+pub fn MathsimplexLayer::scale(Self, Double) -> Self
+pub fn MathsimplexLayer::set(Self, Int32, Double) -> Self
+pub fn MathsimplexLayer::sum(Self) -> Double
+pub fn MathsimplexLayer::to_string(Self) -> String
+
+pub(all) struct MathsimplexMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathsimplexMatrix::add(Self, Self) -> Self
+pub fn MathsimplexMatrix::det(Self) -> Double
+pub fn MathsimplexMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathsimplexMatrix::multiply(Self, Self) -> Self
+pub fn MathsimplexMatrix::norm(Self) -> Double
+pub fn MathsimplexMatrix::scale(Self, Double) -> Self
+pub fn MathsimplexMatrix::to_string(Self) -> String
+pub fn MathsimplexMatrix::trace(Self) -> Double
+pub fn MathsimplexMatrix::transpose(Self) -> Self
+
+pub(all) struct MathsimplexModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsimplexModel::add(Self, Self) -> Self
+pub fn MathsimplexModel::copy(Self) -> Self
+pub fn MathsimplexModel::fill(Self, Double) -> Self
+pub fn MathsimplexModel::get(Self, Int32) -> Double
+pub fn MathsimplexModel::len(Self) -> Int32
+pub fn MathsimplexModel::max(Self) -> Double
+pub fn MathsimplexModel::mean(Self) -> Double
+pub fn MathsimplexModel::min(Self) -> Double
+pub fn MathsimplexModel::scale(Self, Double) -> Self
+pub fn MathsimplexModel::set(Self, Int32, Double) -> Self
+pub fn MathsimplexModel::sum(Self) -> Double
+pub fn MathsimplexModel::to_string(Self) -> String
+
+pub(all) struct MathsimplexNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsimplexNode::add(Self, Self) -> Self
+pub fn MathsimplexNode::copy(Self) -> Self
+pub fn MathsimplexNode::fill(Self, Double) -> Self
+pub fn MathsimplexNode::get(Self, Int32) -> Double
+pub fn MathsimplexNode::len(Self) -> Int32
+pub fn MathsimplexNode::max(Self) -> Double
+pub fn MathsimplexNode::mean(Self) -> Double
+pub fn MathsimplexNode::min(Self) -> Double
+pub fn MathsimplexNode::scale(Self, Double) -> Self
+pub fn MathsimplexNode::set(Self, Int32, Double) -> Self
+pub fn MathsimplexNode::sum(Self) -> Double
+pub fn MathsimplexNode::to_string(Self) -> String
+
+pub(all) struct MathsimplexPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsimplexPath::add(Self, Self) -> Self
+pub fn MathsimplexPath::copy(Self) -> Self
+pub fn MathsimplexPath::fill(Self, Double) -> Self
+pub fn MathsimplexPath::get(Self, Int32) -> Double
+pub fn MathsimplexPath::len(Self) -> Int32
+pub fn MathsimplexPath::max(Self) -> Double
+pub fn MathsimplexPath::mean(Self) -> Double
+pub fn MathsimplexPath::min(Self) -> Double
+pub fn MathsimplexPath::scale(Self, Double) -> Self
+pub fn MathsimplexPath::set(Self, Int32, Double) -> Self
+pub fn MathsimplexPath::sum(Self) -> Double
+pub fn MathsimplexPath::to_string(Self) -> String
+
+pub(all) struct MathsimplexPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathsimplexPoint::add(Self, Self) -> Self
+pub fn MathsimplexPoint::cross(Self, Self) -> Self
+pub fn MathsimplexPoint::dist(Self, Self) -> Double
+pub fn MathsimplexPoint::dot(Self, Self) -> Double
+pub fn MathsimplexPoint::label(Self) -> Int32
+pub fn MathsimplexPoint::lerp(Self, Self, Double) -> Self
+pub fn MathsimplexPoint::mid(Self, Self) -> Self
+pub fn MathsimplexPoint::negate(Self) -> Self
+pub fn MathsimplexPoint::norm(Self) -> Double
+pub fn MathsimplexPoint::normalize(Self) -> Self
+pub fn MathsimplexPoint::scale(Self, Double) -> Self
+pub fn MathsimplexPoint::sub(Self, Self) -> Self
+pub fn MathsimplexPoint::to_string(Self) -> String
+pub fn MathsimplexPoint::x(Self) -> Double
+pub fn MathsimplexPoint::y(Self) -> Double
+pub fn MathsimplexPoint::z(Self) -> Double
+
+pub(all) struct MathsimplexRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsimplexRange::add(Self, Self) -> Self
+pub fn MathsimplexRange::copy(Self) -> Self
+pub fn MathsimplexRange::fill(Self, Double) -> Self
+pub fn MathsimplexRange::get(Self, Int32) -> Double
+pub fn MathsimplexRange::len(Self) -> Int32
+pub fn MathsimplexRange::max(Self) -> Double
+pub fn MathsimplexRange::mean(Self) -> Double
+pub fn MathsimplexRange::min(Self) -> Double
+pub fn MathsimplexRange::scale(Self, Double) -> Self
+pub fn MathsimplexRange::set(Self, Int32, Double) -> Self
+pub fn MathsimplexRange::sum(Self) -> Double
+pub fn MathsimplexRange::to_string(Self) -> String
+
+pub(all) struct MathsimplexSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathsimplexSeries::add(Self, Self) -> Self
+pub fn MathsimplexSeries::cumsum(Self) -> Self
+pub fn MathsimplexSeries::len(Self) -> Int32
+pub fn MathsimplexSeries::max(Self) -> Double
+pub fn MathsimplexSeries::mean(Self) -> Double
+pub fn MathsimplexSeries::median(Self) -> Double
+pub fn MathsimplexSeries::min(Self) -> Double
+pub fn MathsimplexSeries::normalize(Self) -> Self
+pub fn MathsimplexSeries::range(Self) -> Double
+pub fn MathsimplexSeries::scale(Self, Double) -> Self
+pub fn MathsimplexSeries::std(Self) -> Double
+pub fn MathsimplexSeries::sub(Self, Self) -> Self
+pub fn MathsimplexSeries::sum(Self) -> Double
+pub fn MathsimplexSeries::to_string(Self) -> String
+pub fn MathsimplexSeries::variance(Self) -> Double
+
+pub(all) struct MathsimplexSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsimplexSlice::add(Self, Self) -> Self
+pub fn MathsimplexSlice::copy(Self) -> Self
+pub fn MathsimplexSlice::fill(Self, Double) -> Self
+pub fn MathsimplexSlice::get(Self, Int32) -> Double
+pub fn MathsimplexSlice::len(Self) -> Int32
+pub fn MathsimplexSlice::max(Self) -> Double
+pub fn MathsimplexSlice::mean(Self) -> Double
+pub fn MathsimplexSlice::min(Self) -> Double
+pub fn MathsimplexSlice::scale(Self, Double) -> Self
+pub fn MathsimplexSlice::set(Self, Int32, Double) -> Self
+pub fn MathsimplexSlice::sum(Self) -> Double
+pub fn MathsimplexSlice::to_string(Self) -> String
+
+pub(all) struct MathsimplexTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsimplexTable::add(Self, Self) -> Self
+pub fn MathsimplexTable::copy(Self) -> Self
+pub fn MathsimplexTable::fill(Self, Double) -> Self
+pub fn MathsimplexTable::get(Self, Int32) -> Double
+pub fn MathsimplexTable::len(Self) -> Int32
+pub fn MathsimplexTable::max(Self) -> Double
+pub fn MathsimplexTable::mean(Self) -> Double
+pub fn MathsimplexTable::min(Self) -> Double
+pub fn MathsimplexTable::scale(Self, Double) -> Self
+pub fn MathsimplexTable::set(Self, Int32, Double) -> Self
+pub fn MathsimplexTable::sum(Self) -> Double
+pub fn MathsimplexTable::to_string(Self) -> String
+
+pub(all) struct MathsimplexVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathsimplexVector::add(Self, Self) -> Self
+pub fn MathsimplexVector::dist(Self, Self) -> Double
+pub fn MathsimplexVector::dot(Self, Self) -> Double
+pub fn MathsimplexVector::norm(Self) -> Double
+pub fn MathsimplexVector::normalize(Self) -> Self
+pub fn MathsimplexVector::scale(Self, Double) -> Self
+pub fn MathsimplexVector::sub(Self, Self) -> Self
+pub fn MathsimplexVector::to_string(Self) -> String
+
+pub(all) struct MathsimplexView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsimplexView::add(Self, Self) -> Self
+pub fn MathsimplexView::copy(Self) -> Self
+pub fn MathsimplexView::fill(Self, Double) -> Self
+pub fn MathsimplexView::get(Self, Int32) -> Double
+pub fn MathsimplexView::len(Self) -> Int32
+pub fn MathsimplexView::max(Self) -> Double
+pub fn MathsimplexView::mean(Self) -> Double
+pub fn MathsimplexView::min(Self) -> Double
+pub fn MathsimplexView::scale(Self, Double) -> Self
+pub fn MathsimplexView::set(Self, Int32, Double) -> Self
+pub fn MathsimplexView::sum(Self) -> Double
+pub fn MathsimplexView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

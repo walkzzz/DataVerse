@@ -1,0 +1,149 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/image_segmentation"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn image_segmentation_id() -> String
+
+pub fn make_seg_config(Int32, Double, Int32, Int32, Double) -> SegConfig
+
+pub fn make_seg_image(Int32, Int32, Array[Double]) -> SegImage
+
+pub fn seg_active_contour(SegImage, Array[(Double, Double)], Double, Double, Double) -> SegImage
+
+pub fn seg_adaptive(SegImage, Int32, Double) -> SegImage
+
+pub fn seg_boundary_extract(SegImage) -> SegImage
+
+pub fn seg_clone(SegImage) -> SegImage
+
+pub fn seg_contour_smooth(Array[(Double, Double)]) -> Array[(Double, Double)]
+
+pub fn seg_crf(SegImage, Int32, Int32) -> SegImage
+
+pub fn seg_dilate_mask(SegImage, Int32) -> SegImage
+
+pub fn seg_empty_image(Int32, Int32) -> SegImage
+
+pub fn seg_erode_mask(SegImage, Int32) -> SegImage
+
+pub fn seg_evaluate_boundary(SegImage, SegImage, Double) -> Double
+
+pub fn seg_evaluate_dice(SegImage, SegImage) -> Double
+
+pub fn seg_evaluate_iou(SegImage, SegImage) -> Double
+
+pub fn seg_evaluate_mean_iou(SegImage, SegImage, Int32) -> Double
+
+pub fn seg_evaluate_pixel_acc(SegImage, SegImage) -> Double
+
+pub fn seg_fcn_simple(SegImage) -> SegImage
+
+pub fn seg_fill_holes(SegImage) -> SegImage
+
+pub fn seg_from_threshold(SegImage, Double, Double) -> SegImage
+
+pub fn seg_fuzzy_cmeans(SegImage, Int32, Double, Int32) -> SegImage
+
+pub fn seg_graph_cut(SegImage, Array[(Int32, Int32)], Array[(Int32, Int32)]) -> SegImage
+
+pub fn seg_instance(SegImage) -> SegImage
+
+pub fn seg_invert(SegImage) -> SegImage
+
+pub fn seg_kmeans(SegImage, Int32, Int32) -> SegImage
+
+pub fn seg_label_regions(SegImage) -> SegImage
+
+pub fn seg_level_set(SegImage, SegImage, Int32) -> SegImage
+
+pub fn seg_mask_rcnn_simple(SegImage) -> SegImage
+
+pub fn seg_mean_shift(SegImage, Double) -> SegImage
+
+pub fn seg_merge_regions(SegImage, Double) -> SegImage
+
+pub fn seg_mrf(SegImage, Int32, Int32) -> SegImage
+
+pub fn seg_normalized_cut(SegImage, Int32) -> SegImage
+
+pub fn seg_otsu(SegImage) -> SegImage
+
+pub fn seg_panoptic(SegImage) -> SegImage
+
+pub fn seg_post_process(SegImage) -> SegImage
+
+pub fn seg_predict(SegImage, SegConfig) -> SegImage
+
+pub fn seg_random_walker(SegImage, Array[(Int32, Int32, Int32)]) -> SegImage
+
+pub fn seg_region_growing(SegImage, Array[(Int32, Int32)], Double) -> SegImage
+
+pub fn seg_region_merge(SegImage, Double) -> SegImage
+
+pub fn seg_remove_small(SegImage, Int32) -> SegImage
+
+pub fn seg_semantic(SegImage) -> SegImage
+
+pub fn seg_slic_superpixels(SegImage, Int32, Double) -> SegImage
+
+pub fn seg_snake(SegImage, Array[(Double, Double)], Double, Double, Double, Int32) -> SegImage
+
+pub fn seg_split_regions(SegImage, Double) -> SegImage
+
+pub fn seg_threshold(SegImage, Double) -> SegImage
+
+pub fn seg_to_string(SegImage) -> String
+
+pub fn seg_unet_simple(SegImage) -> SegImage
+
+pub fn seg_visualize(SegImage, Array[(Double, Double, Double)]) -> SegImage
+
+pub fn seg_watershed(SegImage) -> SegImage
+
+// Errors
+
+// Types and methods
+pub struct SegConfig {
+  method_ : Int32
+  threshold : Double
+  num_clusters : Int32
+  max_iter : Int32
+  tolerance : Double
+} derive(Eq, @debug.Debug)
+pub fn SegConfig::equal(Self, Self) -> Bool
+pub fn SegConfig::not_equal(Self, Self) -> Bool
+pub fn SegConfig::to_repr(Self) -> @debug.Repr
+
+pub struct SegImage {
+  width : Int32
+  height : Int32
+  data : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn SegImage::equal(Self, Self) -> Bool
+pub fn SegImage::not_equal(Self, Self) -> Bool
+pub fn SegImage::to_repr(Self) -> @debug.Repr
+
+pub(all) enum SegMethod {
+  Threshold
+  Otsu
+  Adaptive
+  Watershed
+  RegionGrowing
+  KMeans
+  FuzzyCMeans
+  SLIC
+  GraphCut
+  MeanShift
+  LevelSet
+  UNet
+  FCN
+  MaskRCNN
+}
+
+// Type aliases
+
+// Traits

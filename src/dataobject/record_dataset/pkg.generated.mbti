@@ -1,0 +1,47 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/record_dataset"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn empty_dataset(String) -> Dataset
+
+pub fn empty_record(String) -> Record
+
+pub fn make_dataset(Array[Record], String) -> Dataset
+
+pub fn make_dataset_with_ratio(Array[Record], String, Double) -> Dataset
+
+pub fn make_record(String, Array[(String, String)]) -> Record
+
+pub fn record_dataset_id() -> String
+
+pub fn record_field_count(Record) -> Int32
+
+pub fn size(Dataset) -> Int32
+
+// Errors
+
+// Types and methods
+pub struct Dataset {
+  records : Array[Record]
+  version : String
+  mix_ratio : Double
+} derive(Eq, @debug.Debug)
+pub fn Dataset::equal(Self, Self) -> Bool
+pub fn Dataset::not_equal(Self, Self) -> Bool
+pub fn Dataset::to_repr(Self) -> @debug.Repr
+
+pub struct Record {
+  id : String
+  fields : Array[(String, String)]
+} derive(Eq, @debug.Debug)
+pub fn Record::equal(Self, Self) -> Bool
+pub fn Record::not_equal(Self, Self) -> Bool
+pub fn Record::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

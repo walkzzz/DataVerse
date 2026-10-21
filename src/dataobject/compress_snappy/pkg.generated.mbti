@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/compress_snappy"
+
+// Values
+pub fn compress_snappy_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn compress_snappy_corr(Array[Double], Array[Double]) -> Double
+
+pub fn compress_snappy_cov(Array[Double], Array[Double]) -> Double
+
+pub fn compress_snappy_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn compress_snappy_mae(Array[Double], Array[Double]) -> Double
+
+pub fn compress_snappy_make_labeled_point(Double, Double, Int32) -> Compress_snappyPoint
+
+pub fn compress_snappy_make_matrix(Int32, Int32, Double) -> Compress_snappyMatrix
+
+pub fn compress_snappy_make_point(Double, Double) -> Compress_snappyPoint
+
+pub fn compress_snappy_make_series(Array[Double], String) -> Compress_snappySeries
+
+pub fn compress_snappy_make_vector(Array[Double]) -> Compress_snappyVector
+
+pub fn compress_snappy_matrix_add(Compress_snappyMatrix, Compress_snappyMatrix) -> Compress_snappyMatrix
+
+pub fn compress_snappy_matrix_get(Compress_snappyMatrix, Int32, Int32) -> Double
+
+pub fn compress_snappy_matrix_identity(Int32) -> Compress_snappyMatrix
+
+pub fn compress_snappy_matrix_multiply(Compress_snappyMatrix, Compress_snappyMatrix) -> Compress_snappyMatrix
+
+pub fn compress_snappy_matrix_norm(Compress_snappyMatrix) -> Double
+
+pub fn compress_snappy_matrix_scale(Compress_snappyMatrix, Double) -> Compress_snappyMatrix
+
+pub fn compress_snappy_matrix_to_string(Compress_snappyMatrix) -> String
+
+pub fn compress_snappy_matrix_trace(Compress_snappyMatrix) -> Double
+
+pub fn compress_snappy_matrix_transpose(Compress_snappyMatrix) -> Compress_snappyMatrix
+
+pub fn compress_snappy_mse(Array[Double], Array[Double]) -> Double
+
+pub fn compress_snappy_point_add(Compress_snappyPoint, Compress_snappyPoint) -> Compress_snappyPoint
+
+pub fn compress_snappy_point_dist(Compress_snappyPoint, Compress_snappyPoint) -> Double
+
+pub fn compress_snappy_point_dot(Compress_snappyPoint, Compress_snappyPoint) -> Double
+
+pub fn compress_snappy_point_label(Compress_snappyPoint) -> Int32
+
+pub fn compress_snappy_point_norm(Compress_snappyPoint) -> Double
+
+pub fn compress_snappy_point_scale(Compress_snappyPoint, Double) -> Compress_snappyPoint
+
+pub fn compress_snappy_point_sub(Compress_snappyPoint, Compress_snappyPoint) -> Compress_snappyPoint
+
+pub fn compress_snappy_point_to_string(Compress_snappyPoint) -> String
+
+pub fn compress_snappy_point_x(Compress_snappyPoint) -> Double
+
+pub fn compress_snappy_point_y(Compress_snappyPoint) -> Double
+
+pub fn compress_snappy_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn compress_snappy_r2(Array[Double], Array[Double]) -> Double
+
+pub fn compress_snappy_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn compress_snappy_series_add(Compress_snappySeries, Compress_snappySeries) -> Compress_snappySeries
+
+pub fn compress_snappy_series_len(Compress_snappySeries) -> Int32
+
+pub fn compress_snappy_series_max(Compress_snappySeries) -> Double
+
+pub fn compress_snappy_series_mean(Compress_snappySeries) -> Double
+
+pub fn compress_snappy_series_min(Compress_snappySeries) -> Double
+
+pub fn compress_snappy_series_scale(Compress_snappySeries, Double) -> Compress_snappySeries
+
+pub fn compress_snappy_series_std(Compress_snappySeries) -> Double
+
+pub fn compress_snappy_series_sum(Compress_snappySeries) -> Double
+
+pub fn compress_snappy_series_to_string(Compress_snappySeries) -> String
+
+pub fn compress_snappy_series_var(Compress_snappySeries) -> Double
+
+pub fn compress_snappy_std(Array[Double]) -> Double
+
+pub fn compress_snappy_var(Array[Double]) -> Double
+
+pub fn compress_snappy_vector_add(Compress_snappyVector, Compress_snappyVector) -> Compress_snappyVector
+
+pub fn compress_snappy_vector_dist(Compress_snappyVector, Compress_snappyVector) -> Double
+
+pub fn compress_snappy_vector_dot(Compress_snappyVector, Compress_snappyVector) -> Double
+
+pub fn compress_snappy_vector_norm(Compress_snappyVector) -> Double
+
+pub fn compress_snappy_vector_normalize(Compress_snappyVector) -> Compress_snappyVector
+
+pub fn compress_snappy_vector_scale(Compress_snappyVector, Double) -> Compress_snappyVector
+
+pub fn compress_snappy_vector_sub(Compress_snappyVector, Compress_snappyVector) -> Compress_snappyVector
+
+pub fn compress_snappy_vector_to_string(Compress_snappyVector) -> String
+
+pub fn compress_snappy_vector_zero(Int32) -> Compress_snappyVector
+
+// Errors
+
+// Types and methods
+pub struct Compress_snappyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Compress_snappyPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Compress_snappySeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Compress_snappyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

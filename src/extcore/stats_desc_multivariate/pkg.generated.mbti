@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/stats_desc_multivariate"
+
+// Values
+pub fn stats_desc_multivariate_buffer_make(Int32) -> StatsdescmultivariateBuffer
+
+pub fn stats_desc_multivariate_cluster_make(Int32) -> StatsdescmultivariateCluster
+
+pub fn stats_desc_multivariate_cursor_make(Int32) -> StatsdescmultivariateCursor
+
+pub fn stats_desc_multivariate_edge_make(Int32) -> StatsdescmultivariateEdge
+
+pub fn stats_desc_multivariate_frame_make(Int32) -> StatsdescmultivariateFrame
+
+pub fn stats_desc_multivariate_graphn_make(Int32) -> StatsdescmultivariateGraphN
+
+pub fn stats_desc_multivariate_layer_make(Int32) -> StatsdescmultivariateLayer
+
+pub fn stats_desc_multivariate_make_matrix(Int32, Int32, Double) -> StatsdescmultivariateMatrix
+
+pub fn stats_desc_multivariate_make_point(Double, Double) -> StatsdescmultivariatePoint
+
+pub fn stats_desc_multivariate_make_point3(Double, Double, Double) -> StatsdescmultivariatePoint
+
+pub fn stats_desc_multivariate_make_series(Array[Double], String) -> StatsdescmultivariateSeries
+
+pub fn stats_desc_multivariate_make_vector(Array[Double]) -> StatsdescmultivariateVector
+
+pub fn stats_desc_multivariate_matrix_identity(Int32) -> StatsdescmultivariateMatrix
+
+pub fn stats_desc_multivariate_model_make(Int32) -> StatsdescmultivariateModel
+
+pub fn stats_desc_multivariate_node_make(Int32) -> StatsdescmultivariateNode
+
+pub fn stats_desc_multivariate_path_make(Int32) -> StatsdescmultivariatePath
+
+pub fn stats_desc_multivariate_range_make(Int32) -> StatsdescmultivariateRange
+
+pub fn stats_desc_multivariate_slice_make(Int32) -> StatsdescmultivariateSlice
+
+pub fn stats_desc_multivariate_table_make(Int32) -> StatsdescmultivariateTable
+
+pub fn stats_desc_multivariate_vector_zero(Int32) -> StatsdescmultivariateVector
+
+pub fn stats_desc_multivariate_view_make(Int32) -> StatsdescmultivariateView
+
+// Errors
+
+// Types and methods
+pub(all) struct StatsdescmultivariateBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescmultivariateBuffer::add(Self, Self) -> Self
+pub fn StatsdescmultivariateBuffer::copy(Self) -> Self
+pub fn StatsdescmultivariateBuffer::fill(Self, Double) -> Self
+pub fn StatsdescmultivariateBuffer::get(Self, Int32) -> Double
+pub fn StatsdescmultivariateBuffer::len(Self) -> Int32
+pub fn StatsdescmultivariateBuffer::max(Self) -> Double
+pub fn StatsdescmultivariateBuffer::mean(Self) -> Double
+pub fn StatsdescmultivariateBuffer::min(Self) -> Double
+pub fn StatsdescmultivariateBuffer::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateBuffer::set(Self, Int32, Double) -> Self
+pub fn StatsdescmultivariateBuffer::sum(Self) -> Double
+pub fn StatsdescmultivariateBuffer::to_string(Self) -> String
+
+pub(all) struct StatsdescmultivariateCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescmultivariateCluster::add(Self, Self) -> Self
+pub fn StatsdescmultivariateCluster::copy(Self) -> Self
+pub fn StatsdescmultivariateCluster::fill(Self, Double) -> Self
+pub fn StatsdescmultivariateCluster::get(Self, Int32) -> Double
+pub fn StatsdescmultivariateCluster::len(Self) -> Int32
+pub fn StatsdescmultivariateCluster::max(Self) -> Double
+pub fn StatsdescmultivariateCluster::mean(Self) -> Double
+pub fn StatsdescmultivariateCluster::min(Self) -> Double
+pub fn StatsdescmultivariateCluster::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateCluster::set(Self, Int32, Double) -> Self
+pub fn StatsdescmultivariateCluster::sum(Self) -> Double
+pub fn StatsdescmultivariateCluster::to_string(Self) -> String
+
+pub(all) struct StatsdescmultivariateCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescmultivariateCursor::add(Self, Self) -> Self
+pub fn StatsdescmultivariateCursor::copy(Self) -> Self
+pub fn StatsdescmultivariateCursor::fill(Self, Double) -> Self
+pub fn StatsdescmultivariateCursor::get(Self, Int32) -> Double
+pub fn StatsdescmultivariateCursor::len(Self) -> Int32
+pub fn StatsdescmultivariateCursor::max(Self) -> Double
+pub fn StatsdescmultivariateCursor::mean(Self) -> Double
+pub fn StatsdescmultivariateCursor::min(Self) -> Double
+pub fn StatsdescmultivariateCursor::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateCursor::set(Self, Int32, Double) -> Self
+pub fn StatsdescmultivariateCursor::sum(Self) -> Double
+pub fn StatsdescmultivariateCursor::to_string(Self) -> String
+
+pub(all) struct StatsdescmultivariateEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescmultivariateEdge::add(Self, Self) -> Self
+pub fn StatsdescmultivariateEdge::copy(Self) -> Self
+pub fn StatsdescmultivariateEdge::fill(Self, Double) -> Self
+pub fn StatsdescmultivariateEdge::get(Self, Int32) -> Double
+pub fn StatsdescmultivariateEdge::len(Self) -> Int32
+pub fn StatsdescmultivariateEdge::max(Self) -> Double
+pub fn StatsdescmultivariateEdge::mean(Self) -> Double
+pub fn StatsdescmultivariateEdge::min(Self) -> Double
+pub fn StatsdescmultivariateEdge::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateEdge::set(Self, Int32, Double) -> Self
+pub fn StatsdescmultivariateEdge::sum(Self) -> Double
+pub fn StatsdescmultivariateEdge::to_string(Self) -> String
+
+pub(all) struct StatsdescmultivariateFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescmultivariateFrame::add(Self, Self) -> Self
+pub fn StatsdescmultivariateFrame::copy(Self) -> Self
+pub fn StatsdescmultivariateFrame::fill(Self, Double) -> Self
+pub fn StatsdescmultivariateFrame::get(Self, Int32) -> Double
+pub fn StatsdescmultivariateFrame::len(Self) -> Int32
+pub fn StatsdescmultivariateFrame::max(Self) -> Double
+pub fn StatsdescmultivariateFrame::mean(Self) -> Double
+pub fn StatsdescmultivariateFrame::min(Self) -> Double
+pub fn StatsdescmultivariateFrame::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateFrame::set(Self, Int32, Double) -> Self
+pub fn StatsdescmultivariateFrame::sum(Self) -> Double
+pub fn StatsdescmultivariateFrame::to_string(Self) -> String
+
+pub(all) struct StatsdescmultivariateGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescmultivariateGraphN::add(Self, Self) -> Self
+pub fn StatsdescmultivariateGraphN::copy(Self) -> Self
+pub fn StatsdescmultivariateGraphN::fill(Self, Double) -> Self
+pub fn StatsdescmultivariateGraphN::get(Self, Int32) -> Double
+pub fn StatsdescmultivariateGraphN::len(Self) -> Int32
+pub fn StatsdescmultivariateGraphN::max(Self) -> Double
+pub fn StatsdescmultivariateGraphN::mean(Self) -> Double
+pub fn StatsdescmultivariateGraphN::min(Self) -> Double
+pub fn StatsdescmultivariateGraphN::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateGraphN::set(Self, Int32, Double) -> Self
+pub fn StatsdescmultivariateGraphN::sum(Self) -> Double
+pub fn StatsdescmultivariateGraphN::to_string(Self) -> String
+
+pub(all) struct StatsdescmultivariateLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescmultivariateLayer::add(Self, Self) -> Self
+pub fn StatsdescmultivariateLayer::copy(Self) -> Self
+pub fn StatsdescmultivariateLayer::fill(Self, Double) -> Self
+pub fn StatsdescmultivariateLayer::get(Self, Int32) -> Double
+pub fn StatsdescmultivariateLayer::len(Self) -> Int32
+pub fn StatsdescmultivariateLayer::max(Self) -> Double
+pub fn StatsdescmultivariateLayer::mean(Self) -> Double
+pub fn StatsdescmultivariateLayer::min(Self) -> Double
+pub fn StatsdescmultivariateLayer::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateLayer::set(Self, Int32, Double) -> Self
+pub fn StatsdescmultivariateLayer::sum(Self) -> Double
+pub fn StatsdescmultivariateLayer::to_string(Self) -> String
+
+pub(all) struct StatsdescmultivariateMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn StatsdescmultivariateMatrix::add(Self, Self) -> Self
+pub fn StatsdescmultivariateMatrix::det(Self) -> Double
+pub fn StatsdescmultivariateMatrix::get(Self, Int32, Int32) -> Double
+pub fn StatsdescmultivariateMatrix::multiply(Self, Self) -> Self
+pub fn StatsdescmultivariateMatrix::norm(Self) -> Double
+pub fn StatsdescmultivariateMatrix::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateMatrix::to_string(Self) -> String
+pub fn StatsdescmultivariateMatrix::trace(Self) -> Double
+pub fn StatsdescmultivariateMatrix::transpose(Self) -> Self
+
+pub(all) struct StatsdescmultivariateModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescmultivariateModel::add(Self, Self) -> Self
+pub fn StatsdescmultivariateModel::copy(Self) -> Self
+pub fn StatsdescmultivariateModel::fill(Self, Double) -> Self
+pub fn StatsdescmultivariateModel::get(Self, Int32) -> Double
+pub fn StatsdescmultivariateModel::len(Self) -> Int32
+pub fn StatsdescmultivariateModel::max(Self) -> Double
+pub fn StatsdescmultivariateModel::mean(Self) -> Double
+pub fn StatsdescmultivariateModel::min(Self) -> Double
+pub fn StatsdescmultivariateModel::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateModel::set(Self, Int32, Double) -> Self
+pub fn StatsdescmultivariateModel::sum(Self) -> Double
+pub fn StatsdescmultivariateModel::to_string(Self) -> String
+
+pub(all) struct StatsdescmultivariateNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescmultivariateNode::add(Self, Self) -> Self
+pub fn StatsdescmultivariateNode::copy(Self) -> Self
+pub fn StatsdescmultivariateNode::fill(Self, Double) -> Self
+pub fn StatsdescmultivariateNode::get(Self, Int32) -> Double
+pub fn StatsdescmultivariateNode::len(Self) -> Int32
+pub fn StatsdescmultivariateNode::max(Self) -> Double
+pub fn StatsdescmultivariateNode::mean(Self) -> Double
+pub fn StatsdescmultivariateNode::min(Self) -> Double
+pub fn StatsdescmultivariateNode::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateNode::set(Self, Int32, Double) -> Self
+pub fn StatsdescmultivariateNode::sum(Self) -> Double
+pub fn StatsdescmultivariateNode::to_string(Self) -> String
+
+pub(all) struct StatsdescmultivariatePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescmultivariatePath::add(Self, Self) -> Self
+pub fn StatsdescmultivariatePath::copy(Self) -> Self
+pub fn StatsdescmultivariatePath::fill(Self, Double) -> Self
+pub fn StatsdescmultivariatePath::get(Self, Int32) -> Double
+pub fn StatsdescmultivariatePath::len(Self) -> Int32
+pub fn StatsdescmultivariatePath::max(Self) -> Double
+pub fn StatsdescmultivariatePath::mean(Self) -> Double
+pub fn StatsdescmultivariatePath::min(Self) -> Double
+pub fn StatsdescmultivariatePath::scale(Self, Double) -> Self
+pub fn StatsdescmultivariatePath::set(Self, Int32, Double) -> Self
+pub fn StatsdescmultivariatePath::sum(Self) -> Double
+pub fn StatsdescmultivariatePath::to_string(Self) -> String
+
+pub(all) struct StatsdescmultivariatePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn StatsdescmultivariatePoint::add(Self, Self) -> Self
+pub fn StatsdescmultivariatePoint::cross(Self, Self) -> Self
+pub fn StatsdescmultivariatePoint::dist(Self, Self) -> Double
+pub fn StatsdescmultivariatePoint::dot(Self, Self) -> Double
+pub fn StatsdescmultivariatePoint::label(Self) -> Int32
+pub fn StatsdescmultivariatePoint::lerp(Self, Self, Double) -> Self
+pub fn StatsdescmultivariatePoint::mid(Self, Self) -> Self
+pub fn StatsdescmultivariatePoint::negate(Self) -> Self
+pub fn StatsdescmultivariatePoint::norm(Self) -> Double
+pub fn StatsdescmultivariatePoint::normalize(Self) -> Self
+pub fn StatsdescmultivariatePoint::scale(Self, Double) -> Self
+pub fn StatsdescmultivariatePoint::sub(Self, Self) -> Self
+pub fn StatsdescmultivariatePoint::to_string(Self) -> String
+pub fn StatsdescmultivariatePoint::x(Self) -> Double
+pub fn StatsdescmultivariatePoint::y(Self) -> Double
+pub fn StatsdescmultivariatePoint::z(Self) -> Double
+
+pub(all) struct StatsdescmultivariateRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescmultivariateRange::add(Self, Self) -> Self
+pub fn StatsdescmultivariateRange::copy(Self) -> Self
+pub fn StatsdescmultivariateRange::fill(Self, Double) -> Self
+pub fn StatsdescmultivariateRange::get(Self, Int32) -> Double
+pub fn StatsdescmultivariateRange::len(Self) -> Int32
+pub fn StatsdescmultivariateRange::max(Self) -> Double
+pub fn StatsdescmultivariateRange::mean(Self) -> Double
+pub fn StatsdescmultivariateRange::min(Self) -> Double
+pub fn StatsdescmultivariateRange::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateRange::set(Self, Int32, Double) -> Self
+pub fn StatsdescmultivariateRange::sum(Self) -> Double
+pub fn StatsdescmultivariateRange::to_string(Self) -> String
+
+pub(all) struct StatsdescmultivariateSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn StatsdescmultivariateSeries::add(Self, Self) -> Self
+pub fn StatsdescmultivariateSeries::cumsum(Self) -> Self
+pub fn StatsdescmultivariateSeries::len(Self) -> Int32
+pub fn StatsdescmultivariateSeries::max(Self) -> Double
+pub fn StatsdescmultivariateSeries::mean(Self) -> Double
+pub fn StatsdescmultivariateSeries::median(Self) -> Double
+pub fn StatsdescmultivariateSeries::min(Self) -> Double
+pub fn StatsdescmultivariateSeries::normalize(Self) -> Self
+pub fn StatsdescmultivariateSeries::range(Self) -> Double
+pub fn StatsdescmultivariateSeries::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateSeries::std(Self) -> Double
+pub fn StatsdescmultivariateSeries::sub(Self, Self) -> Self
+pub fn StatsdescmultivariateSeries::sum(Self) -> Double
+pub fn StatsdescmultivariateSeries::to_string(Self) -> String
+pub fn StatsdescmultivariateSeries::variance(Self) -> Double
+
+pub(all) struct StatsdescmultivariateSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescmultivariateSlice::add(Self, Self) -> Self
+pub fn StatsdescmultivariateSlice::copy(Self) -> Self
+pub fn StatsdescmultivariateSlice::fill(Self, Double) -> Self
+pub fn StatsdescmultivariateSlice::get(Self, Int32) -> Double
+pub fn StatsdescmultivariateSlice::len(Self) -> Int32
+pub fn StatsdescmultivariateSlice::max(Self) -> Double
+pub fn StatsdescmultivariateSlice::mean(Self) -> Double
+pub fn StatsdescmultivariateSlice::min(Self) -> Double
+pub fn StatsdescmultivariateSlice::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateSlice::set(Self, Int32, Double) -> Self
+pub fn StatsdescmultivariateSlice::sum(Self) -> Double
+pub fn StatsdescmultivariateSlice::to_string(Self) -> String
+
+pub(all) struct StatsdescmultivariateTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescmultivariateTable::add(Self, Self) -> Self
+pub fn StatsdescmultivariateTable::copy(Self) -> Self
+pub fn StatsdescmultivariateTable::fill(Self, Double) -> Self
+pub fn StatsdescmultivariateTable::get(Self, Int32) -> Double
+pub fn StatsdescmultivariateTable::len(Self) -> Int32
+pub fn StatsdescmultivariateTable::max(Self) -> Double
+pub fn StatsdescmultivariateTable::mean(Self) -> Double
+pub fn StatsdescmultivariateTable::min(Self) -> Double
+pub fn StatsdescmultivariateTable::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateTable::set(Self, Int32, Double) -> Self
+pub fn StatsdescmultivariateTable::sum(Self) -> Double
+pub fn StatsdescmultivariateTable::to_string(Self) -> String
+
+pub(all) struct StatsdescmultivariateVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn StatsdescmultivariateVector::add(Self, Self) -> Self
+pub fn StatsdescmultivariateVector::dist(Self, Self) -> Double
+pub fn StatsdescmultivariateVector::dot(Self, Self) -> Double
+pub fn StatsdescmultivariateVector::norm(Self) -> Double
+pub fn StatsdescmultivariateVector::normalize(Self) -> Self
+pub fn StatsdescmultivariateVector::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateVector::sub(Self, Self) -> Self
+pub fn StatsdescmultivariateVector::to_string(Self) -> String
+
+pub(all) struct StatsdescmultivariateView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescmultivariateView::add(Self, Self) -> Self
+pub fn StatsdescmultivariateView::copy(Self) -> Self
+pub fn StatsdescmultivariateView::fill(Self, Double) -> Self
+pub fn StatsdescmultivariateView::get(Self, Int32) -> Double
+pub fn StatsdescmultivariateView::len(Self) -> Int32
+pub fn StatsdescmultivariateView::max(Self) -> Double
+pub fn StatsdescmultivariateView::mean(Self) -> Double
+pub fn StatsdescmultivariateView::min(Self) -> Double
+pub fn StatsdescmultivariateView::scale(Self, Double) -> Self
+pub fn StatsdescmultivariateView::set(Self, Int32, Double) -> Self
+pub fn StatsdescmultivariateView::sum(Self) -> Double
+pub fn StatsdescmultivariateView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

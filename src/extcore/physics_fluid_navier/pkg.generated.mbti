@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_fluid_navier"
+
+// Values
+pub fn physics_fluid_navier_buffer_make(Int32) -> PhysicsfluidnavierBuffer
+
+pub fn physics_fluid_navier_cluster_make(Int32) -> PhysicsfluidnavierCluster
+
+pub fn physics_fluid_navier_cursor_make(Int32) -> PhysicsfluidnavierCursor
+
+pub fn physics_fluid_navier_edge_make(Int32) -> PhysicsfluidnavierEdge
+
+pub fn physics_fluid_navier_frame_make(Int32) -> PhysicsfluidnavierFrame
+
+pub fn physics_fluid_navier_graphn_make(Int32) -> PhysicsfluidnavierGraphN
+
+pub fn physics_fluid_navier_layer_make(Int32) -> PhysicsfluidnavierLayer
+
+pub fn physics_fluid_navier_make_matrix(Int32, Int32, Double) -> PhysicsfluidnavierMatrix
+
+pub fn physics_fluid_navier_make_point(Double, Double) -> PhysicsfluidnavierPoint
+
+pub fn physics_fluid_navier_make_point3(Double, Double, Double) -> PhysicsfluidnavierPoint
+
+pub fn physics_fluid_navier_make_series(Array[Double], String) -> PhysicsfluidnavierSeries
+
+pub fn physics_fluid_navier_make_vector(Array[Double]) -> PhysicsfluidnavierVector
+
+pub fn physics_fluid_navier_matrix_identity(Int32) -> PhysicsfluidnavierMatrix
+
+pub fn physics_fluid_navier_model_make(Int32) -> PhysicsfluidnavierModel
+
+pub fn physics_fluid_navier_node_make(Int32) -> PhysicsfluidnavierNode
+
+pub fn physics_fluid_navier_path_make(Int32) -> PhysicsfluidnavierPath
+
+pub fn physics_fluid_navier_range_make(Int32) -> PhysicsfluidnavierRange
+
+pub fn physics_fluid_navier_slice_make(Int32) -> PhysicsfluidnavierSlice
+
+pub fn physics_fluid_navier_table_make(Int32) -> PhysicsfluidnavierTable
+
+pub fn physics_fluid_navier_vector_zero(Int32) -> PhysicsfluidnavierVector
+
+pub fn physics_fluid_navier_view_make(Int32) -> PhysicsfluidnavierView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsfluidnavierBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidnavierBuffer::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierBuffer::copy(Self) -> Self
+pub fn PhysicsfluidnavierBuffer::fill(Self, Double) -> Self
+pub fn PhysicsfluidnavierBuffer::get(Self, Int32) -> Double
+pub fn PhysicsfluidnavierBuffer::len(Self) -> Int32
+pub fn PhysicsfluidnavierBuffer::max(Self) -> Double
+pub fn PhysicsfluidnavierBuffer::mean(Self) -> Double
+pub fn PhysicsfluidnavierBuffer::min(Self) -> Double
+pub fn PhysicsfluidnavierBuffer::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidnavierBuffer::sum(Self) -> Double
+pub fn PhysicsfluidnavierBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidnavierCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidnavierCluster::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierCluster::copy(Self) -> Self
+pub fn PhysicsfluidnavierCluster::fill(Self, Double) -> Self
+pub fn PhysicsfluidnavierCluster::get(Self, Int32) -> Double
+pub fn PhysicsfluidnavierCluster::len(Self) -> Int32
+pub fn PhysicsfluidnavierCluster::max(Self) -> Double
+pub fn PhysicsfluidnavierCluster::mean(Self) -> Double
+pub fn PhysicsfluidnavierCluster::min(Self) -> Double
+pub fn PhysicsfluidnavierCluster::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidnavierCluster::sum(Self) -> Double
+pub fn PhysicsfluidnavierCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidnavierCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidnavierCursor::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierCursor::copy(Self) -> Self
+pub fn PhysicsfluidnavierCursor::fill(Self, Double) -> Self
+pub fn PhysicsfluidnavierCursor::get(Self, Int32) -> Double
+pub fn PhysicsfluidnavierCursor::len(Self) -> Int32
+pub fn PhysicsfluidnavierCursor::max(Self) -> Double
+pub fn PhysicsfluidnavierCursor::mean(Self) -> Double
+pub fn PhysicsfluidnavierCursor::min(Self) -> Double
+pub fn PhysicsfluidnavierCursor::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidnavierCursor::sum(Self) -> Double
+pub fn PhysicsfluidnavierCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidnavierEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidnavierEdge::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierEdge::copy(Self) -> Self
+pub fn PhysicsfluidnavierEdge::fill(Self, Double) -> Self
+pub fn PhysicsfluidnavierEdge::get(Self, Int32) -> Double
+pub fn PhysicsfluidnavierEdge::len(Self) -> Int32
+pub fn PhysicsfluidnavierEdge::max(Self) -> Double
+pub fn PhysicsfluidnavierEdge::mean(Self) -> Double
+pub fn PhysicsfluidnavierEdge::min(Self) -> Double
+pub fn PhysicsfluidnavierEdge::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidnavierEdge::sum(Self) -> Double
+pub fn PhysicsfluidnavierEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidnavierFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidnavierFrame::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierFrame::copy(Self) -> Self
+pub fn PhysicsfluidnavierFrame::fill(Self, Double) -> Self
+pub fn PhysicsfluidnavierFrame::get(Self, Int32) -> Double
+pub fn PhysicsfluidnavierFrame::len(Self) -> Int32
+pub fn PhysicsfluidnavierFrame::max(Self) -> Double
+pub fn PhysicsfluidnavierFrame::mean(Self) -> Double
+pub fn PhysicsfluidnavierFrame::min(Self) -> Double
+pub fn PhysicsfluidnavierFrame::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidnavierFrame::sum(Self) -> Double
+pub fn PhysicsfluidnavierFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidnavierGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidnavierGraphN::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierGraphN::copy(Self) -> Self
+pub fn PhysicsfluidnavierGraphN::fill(Self, Double) -> Self
+pub fn PhysicsfluidnavierGraphN::get(Self, Int32) -> Double
+pub fn PhysicsfluidnavierGraphN::len(Self) -> Int32
+pub fn PhysicsfluidnavierGraphN::max(Self) -> Double
+pub fn PhysicsfluidnavierGraphN::mean(Self) -> Double
+pub fn PhysicsfluidnavierGraphN::min(Self) -> Double
+pub fn PhysicsfluidnavierGraphN::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidnavierGraphN::sum(Self) -> Double
+pub fn PhysicsfluidnavierGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidnavierLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidnavierLayer::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierLayer::copy(Self) -> Self
+pub fn PhysicsfluidnavierLayer::fill(Self, Double) -> Self
+pub fn PhysicsfluidnavierLayer::get(Self, Int32) -> Double
+pub fn PhysicsfluidnavierLayer::len(Self) -> Int32
+pub fn PhysicsfluidnavierLayer::max(Self) -> Double
+pub fn PhysicsfluidnavierLayer::mean(Self) -> Double
+pub fn PhysicsfluidnavierLayer::min(Self) -> Double
+pub fn PhysicsfluidnavierLayer::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidnavierLayer::sum(Self) -> Double
+pub fn PhysicsfluidnavierLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidnavierMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsfluidnavierMatrix::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierMatrix::det(Self) -> Double
+pub fn PhysicsfluidnavierMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsfluidnavierMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsfluidnavierMatrix::norm(Self) -> Double
+pub fn PhysicsfluidnavierMatrix::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierMatrix::to_string(Self) -> String
+pub fn PhysicsfluidnavierMatrix::trace(Self) -> Double
+pub fn PhysicsfluidnavierMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsfluidnavierModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidnavierModel::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierModel::copy(Self) -> Self
+pub fn PhysicsfluidnavierModel::fill(Self, Double) -> Self
+pub fn PhysicsfluidnavierModel::get(Self, Int32) -> Double
+pub fn PhysicsfluidnavierModel::len(Self) -> Int32
+pub fn PhysicsfluidnavierModel::max(Self) -> Double
+pub fn PhysicsfluidnavierModel::mean(Self) -> Double
+pub fn PhysicsfluidnavierModel::min(Self) -> Double
+pub fn PhysicsfluidnavierModel::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidnavierModel::sum(Self) -> Double
+pub fn PhysicsfluidnavierModel::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidnavierNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidnavierNode::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierNode::copy(Self) -> Self
+pub fn PhysicsfluidnavierNode::fill(Self, Double) -> Self
+pub fn PhysicsfluidnavierNode::get(Self, Int32) -> Double
+pub fn PhysicsfluidnavierNode::len(Self) -> Int32
+pub fn PhysicsfluidnavierNode::max(Self) -> Double
+pub fn PhysicsfluidnavierNode::mean(Self) -> Double
+pub fn PhysicsfluidnavierNode::min(Self) -> Double
+pub fn PhysicsfluidnavierNode::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidnavierNode::sum(Self) -> Double
+pub fn PhysicsfluidnavierNode::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidnavierPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidnavierPath::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierPath::copy(Self) -> Self
+pub fn PhysicsfluidnavierPath::fill(Self, Double) -> Self
+pub fn PhysicsfluidnavierPath::get(Self, Int32) -> Double
+pub fn PhysicsfluidnavierPath::len(Self) -> Int32
+pub fn PhysicsfluidnavierPath::max(Self) -> Double
+pub fn PhysicsfluidnavierPath::mean(Self) -> Double
+pub fn PhysicsfluidnavierPath::min(Self) -> Double
+pub fn PhysicsfluidnavierPath::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidnavierPath::sum(Self) -> Double
+pub fn PhysicsfluidnavierPath::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidnavierPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsfluidnavierPoint::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierPoint::cross(Self, Self) -> Self
+pub fn PhysicsfluidnavierPoint::dist(Self, Self) -> Double
+pub fn PhysicsfluidnavierPoint::dot(Self, Self) -> Double
+pub fn PhysicsfluidnavierPoint::label(Self) -> Int32
+pub fn PhysicsfluidnavierPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsfluidnavierPoint::mid(Self, Self) -> Self
+pub fn PhysicsfluidnavierPoint::negate(Self) -> Self
+pub fn PhysicsfluidnavierPoint::norm(Self) -> Double
+pub fn PhysicsfluidnavierPoint::normalize(Self) -> Self
+pub fn PhysicsfluidnavierPoint::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierPoint::sub(Self, Self) -> Self
+pub fn PhysicsfluidnavierPoint::to_string(Self) -> String
+pub fn PhysicsfluidnavierPoint::x(Self) -> Double
+pub fn PhysicsfluidnavierPoint::y(Self) -> Double
+pub fn PhysicsfluidnavierPoint::z(Self) -> Double
+
+pub(all) struct PhysicsfluidnavierRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidnavierRange::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierRange::copy(Self) -> Self
+pub fn PhysicsfluidnavierRange::fill(Self, Double) -> Self
+pub fn PhysicsfluidnavierRange::get(Self, Int32) -> Double
+pub fn PhysicsfluidnavierRange::len(Self) -> Int32
+pub fn PhysicsfluidnavierRange::max(Self) -> Double
+pub fn PhysicsfluidnavierRange::mean(Self) -> Double
+pub fn PhysicsfluidnavierRange::min(Self) -> Double
+pub fn PhysicsfluidnavierRange::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidnavierRange::sum(Self) -> Double
+pub fn PhysicsfluidnavierRange::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidnavierSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsfluidnavierSeries::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierSeries::cumsum(Self) -> Self
+pub fn PhysicsfluidnavierSeries::len(Self) -> Int32
+pub fn PhysicsfluidnavierSeries::max(Self) -> Double
+pub fn PhysicsfluidnavierSeries::mean(Self) -> Double
+pub fn PhysicsfluidnavierSeries::median(Self) -> Double
+pub fn PhysicsfluidnavierSeries::min(Self) -> Double
+pub fn PhysicsfluidnavierSeries::normalize(Self) -> Self
+pub fn PhysicsfluidnavierSeries::range(Self) -> Double
+pub fn PhysicsfluidnavierSeries::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierSeries::std(Self) -> Double
+pub fn PhysicsfluidnavierSeries::sub(Self, Self) -> Self
+pub fn PhysicsfluidnavierSeries::sum(Self) -> Double
+pub fn PhysicsfluidnavierSeries::to_string(Self) -> String
+pub fn PhysicsfluidnavierSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsfluidnavierSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidnavierSlice::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierSlice::copy(Self) -> Self
+pub fn PhysicsfluidnavierSlice::fill(Self, Double) -> Self
+pub fn PhysicsfluidnavierSlice::get(Self, Int32) -> Double
+pub fn PhysicsfluidnavierSlice::len(Self) -> Int32
+pub fn PhysicsfluidnavierSlice::max(Self) -> Double
+pub fn PhysicsfluidnavierSlice::mean(Self) -> Double
+pub fn PhysicsfluidnavierSlice::min(Self) -> Double
+pub fn PhysicsfluidnavierSlice::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidnavierSlice::sum(Self) -> Double
+pub fn PhysicsfluidnavierSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidnavierTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidnavierTable::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierTable::copy(Self) -> Self
+pub fn PhysicsfluidnavierTable::fill(Self, Double) -> Self
+pub fn PhysicsfluidnavierTable::get(Self, Int32) -> Double
+pub fn PhysicsfluidnavierTable::len(Self) -> Int32
+pub fn PhysicsfluidnavierTable::max(Self) -> Double
+pub fn PhysicsfluidnavierTable::mean(Self) -> Double
+pub fn PhysicsfluidnavierTable::min(Self) -> Double
+pub fn PhysicsfluidnavierTable::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidnavierTable::sum(Self) -> Double
+pub fn PhysicsfluidnavierTable::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidnavierVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsfluidnavierVector::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierVector::dist(Self, Self) -> Double
+pub fn PhysicsfluidnavierVector::dot(Self, Self) -> Double
+pub fn PhysicsfluidnavierVector::norm(Self) -> Double
+pub fn PhysicsfluidnavierVector::normalize(Self) -> Self
+pub fn PhysicsfluidnavierVector::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierVector::sub(Self, Self) -> Self
+pub fn PhysicsfluidnavierVector::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidnavierView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidnavierView::add(Self, Self) -> Self
+pub fn PhysicsfluidnavierView::copy(Self) -> Self
+pub fn PhysicsfluidnavierView::fill(Self, Double) -> Self
+pub fn PhysicsfluidnavierView::get(Self, Int32) -> Double
+pub fn PhysicsfluidnavierView::len(Self) -> Int32
+pub fn PhysicsfluidnavierView::max(Self) -> Double
+pub fn PhysicsfluidnavierView::mean(Self) -> Double
+pub fn PhysicsfluidnavierView::min(Self) -> Double
+pub fn PhysicsfluidnavierView::scale(Self, Double) -> Self
+pub fn PhysicsfluidnavierView::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidnavierView::sum(Self) -> Double
+pub fn PhysicsfluidnavierView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

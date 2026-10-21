@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_search_bidirectional"
+
+// Values
+pub fn graph_search_bidirectional_buffer_make(Int32) -> GraphsearchbidirectionalBuffer
+
+pub fn graph_search_bidirectional_cluster_make(Int32) -> GraphsearchbidirectionalCluster
+
+pub fn graph_search_bidirectional_cursor_make(Int32) -> GraphsearchbidirectionalCursor
+
+pub fn graph_search_bidirectional_edge_make(Int32) -> GraphsearchbidirectionalEdge
+
+pub fn graph_search_bidirectional_frame_make(Int32) -> GraphsearchbidirectionalFrame
+
+pub fn graph_search_bidirectional_graphn_make(Int32) -> GraphsearchbidirectionalGraphN
+
+pub fn graph_search_bidirectional_layer_make(Int32) -> GraphsearchbidirectionalLayer
+
+pub fn graph_search_bidirectional_make_matrix(Int32, Int32, Double) -> GraphsearchbidirectionalMatrix
+
+pub fn graph_search_bidirectional_make_point(Double, Double) -> GraphsearchbidirectionalPoint
+
+pub fn graph_search_bidirectional_make_point3(Double, Double, Double) -> GraphsearchbidirectionalPoint
+
+pub fn graph_search_bidirectional_make_series(Array[Double], String) -> GraphsearchbidirectionalSeries
+
+pub fn graph_search_bidirectional_make_vector(Array[Double]) -> GraphsearchbidirectionalVector
+
+pub fn graph_search_bidirectional_matrix_identity(Int32) -> GraphsearchbidirectionalMatrix
+
+pub fn graph_search_bidirectional_model_make(Int32) -> GraphsearchbidirectionalModel
+
+pub fn graph_search_bidirectional_node_make(Int32) -> GraphsearchbidirectionalNode
+
+pub fn graph_search_bidirectional_path_make(Int32) -> GraphsearchbidirectionalPath
+
+pub fn graph_search_bidirectional_range_make(Int32) -> GraphsearchbidirectionalRange
+
+pub fn graph_search_bidirectional_slice_make(Int32) -> GraphsearchbidirectionalSlice
+
+pub fn graph_search_bidirectional_table_make(Int32) -> GraphsearchbidirectionalTable
+
+pub fn graph_search_bidirectional_vector_zero(Int32) -> GraphsearchbidirectionalVector
+
+pub fn graph_search_bidirectional_view_make(Int32) -> GraphsearchbidirectionalView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphsearchbidirectionalBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbidirectionalBuffer::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalBuffer::copy(Self) -> Self
+pub fn GraphsearchbidirectionalBuffer::fill(Self, Double) -> Self
+pub fn GraphsearchbidirectionalBuffer::get(Self, Int32) -> Double
+pub fn GraphsearchbidirectionalBuffer::len(Self) -> Int32
+pub fn GraphsearchbidirectionalBuffer::max(Self) -> Double
+pub fn GraphsearchbidirectionalBuffer::mean(Self) -> Double
+pub fn GraphsearchbidirectionalBuffer::min(Self) -> Double
+pub fn GraphsearchbidirectionalBuffer::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbidirectionalBuffer::sum(Self) -> Double
+pub fn GraphsearchbidirectionalBuffer::to_string(Self) -> String
+
+pub(all) struct GraphsearchbidirectionalCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbidirectionalCluster::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalCluster::copy(Self) -> Self
+pub fn GraphsearchbidirectionalCluster::fill(Self, Double) -> Self
+pub fn GraphsearchbidirectionalCluster::get(Self, Int32) -> Double
+pub fn GraphsearchbidirectionalCluster::len(Self) -> Int32
+pub fn GraphsearchbidirectionalCluster::max(Self) -> Double
+pub fn GraphsearchbidirectionalCluster::mean(Self) -> Double
+pub fn GraphsearchbidirectionalCluster::min(Self) -> Double
+pub fn GraphsearchbidirectionalCluster::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalCluster::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbidirectionalCluster::sum(Self) -> Double
+pub fn GraphsearchbidirectionalCluster::to_string(Self) -> String
+
+pub(all) struct GraphsearchbidirectionalCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbidirectionalCursor::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalCursor::copy(Self) -> Self
+pub fn GraphsearchbidirectionalCursor::fill(Self, Double) -> Self
+pub fn GraphsearchbidirectionalCursor::get(Self, Int32) -> Double
+pub fn GraphsearchbidirectionalCursor::len(Self) -> Int32
+pub fn GraphsearchbidirectionalCursor::max(Self) -> Double
+pub fn GraphsearchbidirectionalCursor::mean(Self) -> Double
+pub fn GraphsearchbidirectionalCursor::min(Self) -> Double
+pub fn GraphsearchbidirectionalCursor::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalCursor::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbidirectionalCursor::sum(Self) -> Double
+pub fn GraphsearchbidirectionalCursor::to_string(Self) -> String
+
+pub(all) struct GraphsearchbidirectionalEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbidirectionalEdge::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalEdge::copy(Self) -> Self
+pub fn GraphsearchbidirectionalEdge::fill(Self, Double) -> Self
+pub fn GraphsearchbidirectionalEdge::get(Self, Int32) -> Double
+pub fn GraphsearchbidirectionalEdge::len(Self) -> Int32
+pub fn GraphsearchbidirectionalEdge::max(Self) -> Double
+pub fn GraphsearchbidirectionalEdge::mean(Self) -> Double
+pub fn GraphsearchbidirectionalEdge::min(Self) -> Double
+pub fn GraphsearchbidirectionalEdge::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalEdge::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbidirectionalEdge::sum(Self) -> Double
+pub fn GraphsearchbidirectionalEdge::to_string(Self) -> String
+
+pub(all) struct GraphsearchbidirectionalFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbidirectionalFrame::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalFrame::copy(Self) -> Self
+pub fn GraphsearchbidirectionalFrame::fill(Self, Double) -> Self
+pub fn GraphsearchbidirectionalFrame::get(Self, Int32) -> Double
+pub fn GraphsearchbidirectionalFrame::len(Self) -> Int32
+pub fn GraphsearchbidirectionalFrame::max(Self) -> Double
+pub fn GraphsearchbidirectionalFrame::mean(Self) -> Double
+pub fn GraphsearchbidirectionalFrame::min(Self) -> Double
+pub fn GraphsearchbidirectionalFrame::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalFrame::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbidirectionalFrame::sum(Self) -> Double
+pub fn GraphsearchbidirectionalFrame::to_string(Self) -> String
+
+pub(all) struct GraphsearchbidirectionalGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbidirectionalGraphN::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalGraphN::copy(Self) -> Self
+pub fn GraphsearchbidirectionalGraphN::fill(Self, Double) -> Self
+pub fn GraphsearchbidirectionalGraphN::get(Self, Int32) -> Double
+pub fn GraphsearchbidirectionalGraphN::len(Self) -> Int32
+pub fn GraphsearchbidirectionalGraphN::max(Self) -> Double
+pub fn GraphsearchbidirectionalGraphN::mean(Self) -> Double
+pub fn GraphsearchbidirectionalGraphN::min(Self) -> Double
+pub fn GraphsearchbidirectionalGraphN::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbidirectionalGraphN::sum(Self) -> Double
+pub fn GraphsearchbidirectionalGraphN::to_string(Self) -> String
+
+pub(all) struct GraphsearchbidirectionalLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbidirectionalLayer::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalLayer::copy(Self) -> Self
+pub fn GraphsearchbidirectionalLayer::fill(Self, Double) -> Self
+pub fn GraphsearchbidirectionalLayer::get(Self, Int32) -> Double
+pub fn GraphsearchbidirectionalLayer::len(Self) -> Int32
+pub fn GraphsearchbidirectionalLayer::max(Self) -> Double
+pub fn GraphsearchbidirectionalLayer::mean(Self) -> Double
+pub fn GraphsearchbidirectionalLayer::min(Self) -> Double
+pub fn GraphsearchbidirectionalLayer::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalLayer::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbidirectionalLayer::sum(Self) -> Double
+pub fn GraphsearchbidirectionalLayer::to_string(Self) -> String
+
+pub(all) struct GraphsearchbidirectionalMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphsearchbidirectionalMatrix::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalMatrix::det(Self) -> Double
+pub fn GraphsearchbidirectionalMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphsearchbidirectionalMatrix::multiply(Self, Self) -> Self
+pub fn GraphsearchbidirectionalMatrix::norm(Self) -> Double
+pub fn GraphsearchbidirectionalMatrix::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalMatrix::to_string(Self) -> String
+pub fn GraphsearchbidirectionalMatrix::trace(Self) -> Double
+pub fn GraphsearchbidirectionalMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphsearchbidirectionalModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbidirectionalModel::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalModel::copy(Self) -> Self
+pub fn GraphsearchbidirectionalModel::fill(Self, Double) -> Self
+pub fn GraphsearchbidirectionalModel::get(Self, Int32) -> Double
+pub fn GraphsearchbidirectionalModel::len(Self) -> Int32
+pub fn GraphsearchbidirectionalModel::max(Self) -> Double
+pub fn GraphsearchbidirectionalModel::mean(Self) -> Double
+pub fn GraphsearchbidirectionalModel::min(Self) -> Double
+pub fn GraphsearchbidirectionalModel::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalModel::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbidirectionalModel::sum(Self) -> Double
+pub fn GraphsearchbidirectionalModel::to_string(Self) -> String
+
+pub(all) struct GraphsearchbidirectionalNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbidirectionalNode::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalNode::copy(Self) -> Self
+pub fn GraphsearchbidirectionalNode::fill(Self, Double) -> Self
+pub fn GraphsearchbidirectionalNode::get(Self, Int32) -> Double
+pub fn GraphsearchbidirectionalNode::len(Self) -> Int32
+pub fn GraphsearchbidirectionalNode::max(Self) -> Double
+pub fn GraphsearchbidirectionalNode::mean(Self) -> Double
+pub fn GraphsearchbidirectionalNode::min(Self) -> Double
+pub fn GraphsearchbidirectionalNode::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalNode::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbidirectionalNode::sum(Self) -> Double
+pub fn GraphsearchbidirectionalNode::to_string(Self) -> String
+
+pub(all) struct GraphsearchbidirectionalPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbidirectionalPath::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalPath::copy(Self) -> Self
+pub fn GraphsearchbidirectionalPath::fill(Self, Double) -> Self
+pub fn GraphsearchbidirectionalPath::get(Self, Int32) -> Double
+pub fn GraphsearchbidirectionalPath::len(Self) -> Int32
+pub fn GraphsearchbidirectionalPath::max(Self) -> Double
+pub fn GraphsearchbidirectionalPath::mean(Self) -> Double
+pub fn GraphsearchbidirectionalPath::min(Self) -> Double
+pub fn GraphsearchbidirectionalPath::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalPath::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbidirectionalPath::sum(Self) -> Double
+pub fn GraphsearchbidirectionalPath::to_string(Self) -> String
+
+pub(all) struct GraphsearchbidirectionalPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphsearchbidirectionalPoint::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalPoint::cross(Self, Self) -> Self
+pub fn GraphsearchbidirectionalPoint::dist(Self, Self) -> Double
+pub fn GraphsearchbidirectionalPoint::dot(Self, Self) -> Double
+pub fn GraphsearchbidirectionalPoint::label(Self) -> Int32
+pub fn GraphsearchbidirectionalPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphsearchbidirectionalPoint::mid(Self, Self) -> Self
+pub fn GraphsearchbidirectionalPoint::negate(Self) -> Self
+pub fn GraphsearchbidirectionalPoint::norm(Self) -> Double
+pub fn GraphsearchbidirectionalPoint::normalize(Self) -> Self
+pub fn GraphsearchbidirectionalPoint::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalPoint::sub(Self, Self) -> Self
+pub fn GraphsearchbidirectionalPoint::to_string(Self) -> String
+pub fn GraphsearchbidirectionalPoint::x(Self) -> Double
+pub fn GraphsearchbidirectionalPoint::y(Self) -> Double
+pub fn GraphsearchbidirectionalPoint::z(Self) -> Double
+
+pub(all) struct GraphsearchbidirectionalRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbidirectionalRange::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalRange::copy(Self) -> Self
+pub fn GraphsearchbidirectionalRange::fill(Self, Double) -> Self
+pub fn GraphsearchbidirectionalRange::get(Self, Int32) -> Double
+pub fn GraphsearchbidirectionalRange::len(Self) -> Int32
+pub fn GraphsearchbidirectionalRange::max(Self) -> Double
+pub fn GraphsearchbidirectionalRange::mean(Self) -> Double
+pub fn GraphsearchbidirectionalRange::min(Self) -> Double
+pub fn GraphsearchbidirectionalRange::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalRange::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbidirectionalRange::sum(Self) -> Double
+pub fn GraphsearchbidirectionalRange::to_string(Self) -> String
+
+pub(all) struct GraphsearchbidirectionalSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphsearchbidirectionalSeries::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalSeries::cumsum(Self) -> Self
+pub fn GraphsearchbidirectionalSeries::len(Self) -> Int32
+pub fn GraphsearchbidirectionalSeries::max(Self) -> Double
+pub fn GraphsearchbidirectionalSeries::mean(Self) -> Double
+pub fn GraphsearchbidirectionalSeries::median(Self) -> Double
+pub fn GraphsearchbidirectionalSeries::min(Self) -> Double
+pub fn GraphsearchbidirectionalSeries::normalize(Self) -> Self
+pub fn GraphsearchbidirectionalSeries::range(Self) -> Double
+pub fn GraphsearchbidirectionalSeries::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalSeries::std(Self) -> Double
+pub fn GraphsearchbidirectionalSeries::sub(Self, Self) -> Self
+pub fn GraphsearchbidirectionalSeries::sum(Self) -> Double
+pub fn GraphsearchbidirectionalSeries::to_string(Self) -> String
+pub fn GraphsearchbidirectionalSeries::variance(Self) -> Double
+
+pub(all) struct GraphsearchbidirectionalSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbidirectionalSlice::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalSlice::copy(Self) -> Self
+pub fn GraphsearchbidirectionalSlice::fill(Self, Double) -> Self
+pub fn GraphsearchbidirectionalSlice::get(Self, Int32) -> Double
+pub fn GraphsearchbidirectionalSlice::len(Self) -> Int32
+pub fn GraphsearchbidirectionalSlice::max(Self) -> Double
+pub fn GraphsearchbidirectionalSlice::mean(Self) -> Double
+pub fn GraphsearchbidirectionalSlice::min(Self) -> Double
+pub fn GraphsearchbidirectionalSlice::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalSlice::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbidirectionalSlice::sum(Self) -> Double
+pub fn GraphsearchbidirectionalSlice::to_string(Self) -> String
+
+pub(all) struct GraphsearchbidirectionalTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbidirectionalTable::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalTable::copy(Self) -> Self
+pub fn GraphsearchbidirectionalTable::fill(Self, Double) -> Self
+pub fn GraphsearchbidirectionalTable::get(Self, Int32) -> Double
+pub fn GraphsearchbidirectionalTable::len(Self) -> Int32
+pub fn GraphsearchbidirectionalTable::max(Self) -> Double
+pub fn GraphsearchbidirectionalTable::mean(Self) -> Double
+pub fn GraphsearchbidirectionalTable::min(Self) -> Double
+pub fn GraphsearchbidirectionalTable::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalTable::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbidirectionalTable::sum(Self) -> Double
+pub fn GraphsearchbidirectionalTable::to_string(Self) -> String
+
+pub(all) struct GraphsearchbidirectionalVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphsearchbidirectionalVector::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalVector::dist(Self, Self) -> Double
+pub fn GraphsearchbidirectionalVector::dot(Self, Self) -> Double
+pub fn GraphsearchbidirectionalVector::norm(Self) -> Double
+pub fn GraphsearchbidirectionalVector::normalize(Self) -> Self
+pub fn GraphsearchbidirectionalVector::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalVector::sub(Self, Self) -> Self
+pub fn GraphsearchbidirectionalVector::to_string(Self) -> String
+
+pub(all) struct GraphsearchbidirectionalView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchbidirectionalView::add(Self, Self) -> Self
+pub fn GraphsearchbidirectionalView::copy(Self) -> Self
+pub fn GraphsearchbidirectionalView::fill(Self, Double) -> Self
+pub fn GraphsearchbidirectionalView::get(Self, Int32) -> Double
+pub fn GraphsearchbidirectionalView::len(Self) -> Int32
+pub fn GraphsearchbidirectionalView::max(Self) -> Double
+pub fn GraphsearchbidirectionalView::mean(Self) -> Double
+pub fn GraphsearchbidirectionalView::min(Self) -> Double
+pub fn GraphsearchbidirectionalView::scale(Self, Double) -> Self
+pub fn GraphsearchbidirectionalView::set(Self, Int32, Double) -> Self
+pub fn GraphsearchbidirectionalView::sum(Self) -> Double
+pub fn GraphsearchbidirectionalView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

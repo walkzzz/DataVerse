@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_matrix_decomp"
+
+// Values
+pub fn math_matrix_decomp_buffer_make(Int32) -> MathmatrixdecompBuffer
+
+pub fn math_matrix_decomp_cluster_make(Int32) -> MathmatrixdecompCluster
+
+pub fn math_matrix_decomp_cursor_make(Int32) -> MathmatrixdecompCursor
+
+pub fn math_matrix_decomp_edge_make(Int32) -> MathmatrixdecompEdge
+
+pub fn math_matrix_decomp_frame_make(Int32) -> MathmatrixdecompFrame
+
+pub fn math_matrix_decomp_graphn_make(Int32) -> MathmatrixdecompGraphN
+
+pub fn math_matrix_decomp_layer_make(Int32) -> MathmatrixdecompLayer
+
+pub fn math_matrix_decomp_make_matrix(Int32, Int32, Double) -> MathmatrixdecompMatrix
+
+pub fn math_matrix_decomp_make_point(Double, Double) -> MathmatrixdecompPoint
+
+pub fn math_matrix_decomp_make_point3(Double, Double, Double) -> MathmatrixdecompPoint
+
+pub fn math_matrix_decomp_make_series(Array[Double], String) -> MathmatrixdecompSeries
+
+pub fn math_matrix_decomp_make_vector(Array[Double]) -> MathmatrixdecompVector
+
+pub fn math_matrix_decomp_matrix_identity(Int32) -> MathmatrixdecompMatrix
+
+pub fn math_matrix_decomp_model_make(Int32) -> MathmatrixdecompModel
+
+pub fn math_matrix_decomp_node_make(Int32) -> MathmatrixdecompNode
+
+pub fn math_matrix_decomp_path_make(Int32) -> MathmatrixdecompPath
+
+pub fn math_matrix_decomp_range_make(Int32) -> MathmatrixdecompRange
+
+pub fn math_matrix_decomp_slice_make(Int32) -> MathmatrixdecompSlice
+
+pub fn math_matrix_decomp_table_make(Int32) -> MathmatrixdecompTable
+
+pub fn math_matrix_decomp_vector_zero(Int32) -> MathmatrixdecompVector
+
+pub fn math_matrix_decomp_view_make(Int32) -> MathmatrixdecompView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathmatrixdecompBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathmatrixdecompBuffer::add(Self, Self) -> Self
+pub fn MathmatrixdecompBuffer::copy(Self) -> Self
+pub fn MathmatrixdecompBuffer::fill(Self, Double) -> Self
+pub fn MathmatrixdecompBuffer::get(Self, Int32) -> Double
+pub fn MathmatrixdecompBuffer::len(Self) -> Int32
+pub fn MathmatrixdecompBuffer::max(Self) -> Double
+pub fn MathmatrixdecompBuffer::mean(Self) -> Double
+pub fn MathmatrixdecompBuffer::min(Self) -> Double
+pub fn MathmatrixdecompBuffer::scale(Self, Double) -> Self
+pub fn MathmatrixdecompBuffer::set(Self, Int32, Double) -> Self
+pub fn MathmatrixdecompBuffer::sum(Self) -> Double
+pub fn MathmatrixdecompBuffer::to_string(Self) -> String
+
+pub(all) struct MathmatrixdecompCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathmatrixdecompCluster::add(Self, Self) -> Self
+pub fn MathmatrixdecompCluster::copy(Self) -> Self
+pub fn MathmatrixdecompCluster::fill(Self, Double) -> Self
+pub fn MathmatrixdecompCluster::get(Self, Int32) -> Double
+pub fn MathmatrixdecompCluster::len(Self) -> Int32
+pub fn MathmatrixdecompCluster::max(Self) -> Double
+pub fn MathmatrixdecompCluster::mean(Self) -> Double
+pub fn MathmatrixdecompCluster::min(Self) -> Double
+pub fn MathmatrixdecompCluster::scale(Self, Double) -> Self
+pub fn MathmatrixdecompCluster::set(Self, Int32, Double) -> Self
+pub fn MathmatrixdecompCluster::sum(Self) -> Double
+pub fn MathmatrixdecompCluster::to_string(Self) -> String
+
+pub(all) struct MathmatrixdecompCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathmatrixdecompCursor::add(Self, Self) -> Self
+pub fn MathmatrixdecompCursor::copy(Self) -> Self
+pub fn MathmatrixdecompCursor::fill(Self, Double) -> Self
+pub fn MathmatrixdecompCursor::get(Self, Int32) -> Double
+pub fn MathmatrixdecompCursor::len(Self) -> Int32
+pub fn MathmatrixdecompCursor::max(Self) -> Double
+pub fn MathmatrixdecompCursor::mean(Self) -> Double
+pub fn MathmatrixdecompCursor::min(Self) -> Double
+pub fn MathmatrixdecompCursor::scale(Self, Double) -> Self
+pub fn MathmatrixdecompCursor::set(Self, Int32, Double) -> Self
+pub fn MathmatrixdecompCursor::sum(Self) -> Double
+pub fn MathmatrixdecompCursor::to_string(Self) -> String
+
+pub(all) struct MathmatrixdecompEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathmatrixdecompEdge::add(Self, Self) -> Self
+pub fn MathmatrixdecompEdge::copy(Self) -> Self
+pub fn MathmatrixdecompEdge::fill(Self, Double) -> Self
+pub fn MathmatrixdecompEdge::get(Self, Int32) -> Double
+pub fn MathmatrixdecompEdge::len(Self) -> Int32
+pub fn MathmatrixdecompEdge::max(Self) -> Double
+pub fn MathmatrixdecompEdge::mean(Self) -> Double
+pub fn MathmatrixdecompEdge::min(Self) -> Double
+pub fn MathmatrixdecompEdge::scale(Self, Double) -> Self
+pub fn MathmatrixdecompEdge::set(Self, Int32, Double) -> Self
+pub fn MathmatrixdecompEdge::sum(Self) -> Double
+pub fn MathmatrixdecompEdge::to_string(Self) -> String
+
+pub(all) struct MathmatrixdecompFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathmatrixdecompFrame::add(Self, Self) -> Self
+pub fn MathmatrixdecompFrame::copy(Self) -> Self
+pub fn MathmatrixdecompFrame::fill(Self, Double) -> Self
+pub fn MathmatrixdecompFrame::get(Self, Int32) -> Double
+pub fn MathmatrixdecompFrame::len(Self) -> Int32
+pub fn MathmatrixdecompFrame::max(Self) -> Double
+pub fn MathmatrixdecompFrame::mean(Self) -> Double
+pub fn MathmatrixdecompFrame::min(Self) -> Double
+pub fn MathmatrixdecompFrame::scale(Self, Double) -> Self
+pub fn MathmatrixdecompFrame::set(Self, Int32, Double) -> Self
+pub fn MathmatrixdecompFrame::sum(Self) -> Double
+pub fn MathmatrixdecompFrame::to_string(Self) -> String
+
+pub(all) struct MathmatrixdecompGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathmatrixdecompGraphN::add(Self, Self) -> Self
+pub fn MathmatrixdecompGraphN::copy(Self) -> Self
+pub fn MathmatrixdecompGraphN::fill(Self, Double) -> Self
+pub fn MathmatrixdecompGraphN::get(Self, Int32) -> Double
+pub fn MathmatrixdecompGraphN::len(Self) -> Int32
+pub fn MathmatrixdecompGraphN::max(Self) -> Double
+pub fn MathmatrixdecompGraphN::mean(Self) -> Double
+pub fn MathmatrixdecompGraphN::min(Self) -> Double
+pub fn MathmatrixdecompGraphN::scale(Self, Double) -> Self
+pub fn MathmatrixdecompGraphN::set(Self, Int32, Double) -> Self
+pub fn MathmatrixdecompGraphN::sum(Self) -> Double
+pub fn MathmatrixdecompGraphN::to_string(Self) -> String
+
+pub(all) struct MathmatrixdecompLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathmatrixdecompLayer::add(Self, Self) -> Self
+pub fn MathmatrixdecompLayer::copy(Self) -> Self
+pub fn MathmatrixdecompLayer::fill(Self, Double) -> Self
+pub fn MathmatrixdecompLayer::get(Self, Int32) -> Double
+pub fn MathmatrixdecompLayer::len(Self) -> Int32
+pub fn MathmatrixdecompLayer::max(Self) -> Double
+pub fn MathmatrixdecompLayer::mean(Self) -> Double
+pub fn MathmatrixdecompLayer::min(Self) -> Double
+pub fn MathmatrixdecompLayer::scale(Self, Double) -> Self
+pub fn MathmatrixdecompLayer::set(Self, Int32, Double) -> Self
+pub fn MathmatrixdecompLayer::sum(Self) -> Double
+pub fn MathmatrixdecompLayer::to_string(Self) -> String
+
+pub(all) struct MathmatrixdecompMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathmatrixdecompMatrix::add(Self, Self) -> Self
+pub fn MathmatrixdecompMatrix::det(Self) -> Double
+pub fn MathmatrixdecompMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathmatrixdecompMatrix::multiply(Self, Self) -> Self
+pub fn MathmatrixdecompMatrix::norm(Self) -> Double
+pub fn MathmatrixdecompMatrix::scale(Self, Double) -> Self
+pub fn MathmatrixdecompMatrix::to_string(Self) -> String
+pub fn MathmatrixdecompMatrix::trace(Self) -> Double
+pub fn MathmatrixdecompMatrix::transpose(Self) -> Self
+
+pub(all) struct MathmatrixdecompModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathmatrixdecompModel::add(Self, Self) -> Self
+pub fn MathmatrixdecompModel::copy(Self) -> Self
+pub fn MathmatrixdecompModel::fill(Self, Double) -> Self
+pub fn MathmatrixdecompModel::get(Self, Int32) -> Double
+pub fn MathmatrixdecompModel::len(Self) -> Int32
+pub fn MathmatrixdecompModel::max(Self) -> Double
+pub fn MathmatrixdecompModel::mean(Self) -> Double
+pub fn MathmatrixdecompModel::min(Self) -> Double
+pub fn MathmatrixdecompModel::scale(Self, Double) -> Self
+pub fn MathmatrixdecompModel::set(Self, Int32, Double) -> Self
+pub fn MathmatrixdecompModel::sum(Self) -> Double
+pub fn MathmatrixdecompModel::to_string(Self) -> String
+
+pub(all) struct MathmatrixdecompNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathmatrixdecompNode::add(Self, Self) -> Self
+pub fn MathmatrixdecompNode::copy(Self) -> Self
+pub fn MathmatrixdecompNode::fill(Self, Double) -> Self
+pub fn MathmatrixdecompNode::get(Self, Int32) -> Double
+pub fn MathmatrixdecompNode::len(Self) -> Int32
+pub fn MathmatrixdecompNode::max(Self) -> Double
+pub fn MathmatrixdecompNode::mean(Self) -> Double
+pub fn MathmatrixdecompNode::min(Self) -> Double
+pub fn MathmatrixdecompNode::scale(Self, Double) -> Self
+pub fn MathmatrixdecompNode::set(Self, Int32, Double) -> Self
+pub fn MathmatrixdecompNode::sum(Self) -> Double
+pub fn MathmatrixdecompNode::to_string(Self) -> String
+
+pub(all) struct MathmatrixdecompPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathmatrixdecompPath::add(Self, Self) -> Self
+pub fn MathmatrixdecompPath::copy(Self) -> Self
+pub fn MathmatrixdecompPath::fill(Self, Double) -> Self
+pub fn MathmatrixdecompPath::get(Self, Int32) -> Double
+pub fn MathmatrixdecompPath::len(Self) -> Int32
+pub fn MathmatrixdecompPath::max(Self) -> Double
+pub fn MathmatrixdecompPath::mean(Self) -> Double
+pub fn MathmatrixdecompPath::min(Self) -> Double
+pub fn MathmatrixdecompPath::scale(Self, Double) -> Self
+pub fn MathmatrixdecompPath::set(Self, Int32, Double) -> Self
+pub fn MathmatrixdecompPath::sum(Self) -> Double
+pub fn MathmatrixdecompPath::to_string(Self) -> String
+
+pub(all) struct MathmatrixdecompPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathmatrixdecompPoint::add(Self, Self) -> Self
+pub fn MathmatrixdecompPoint::cross(Self, Self) -> Self
+pub fn MathmatrixdecompPoint::dist(Self, Self) -> Double
+pub fn MathmatrixdecompPoint::dot(Self, Self) -> Double
+pub fn MathmatrixdecompPoint::label(Self) -> Int32
+pub fn MathmatrixdecompPoint::lerp(Self, Self, Double) -> Self
+pub fn MathmatrixdecompPoint::mid(Self, Self) -> Self
+pub fn MathmatrixdecompPoint::negate(Self) -> Self
+pub fn MathmatrixdecompPoint::norm(Self) -> Double
+pub fn MathmatrixdecompPoint::normalize(Self) -> Self
+pub fn MathmatrixdecompPoint::scale(Self, Double) -> Self
+pub fn MathmatrixdecompPoint::sub(Self, Self) -> Self
+pub fn MathmatrixdecompPoint::to_string(Self) -> String
+pub fn MathmatrixdecompPoint::x(Self) -> Double
+pub fn MathmatrixdecompPoint::y(Self) -> Double
+pub fn MathmatrixdecompPoint::z(Self) -> Double
+
+pub(all) struct MathmatrixdecompRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathmatrixdecompRange::add(Self, Self) -> Self
+pub fn MathmatrixdecompRange::copy(Self) -> Self
+pub fn MathmatrixdecompRange::fill(Self, Double) -> Self
+pub fn MathmatrixdecompRange::get(Self, Int32) -> Double
+pub fn MathmatrixdecompRange::len(Self) -> Int32
+pub fn MathmatrixdecompRange::max(Self) -> Double
+pub fn MathmatrixdecompRange::mean(Self) -> Double
+pub fn MathmatrixdecompRange::min(Self) -> Double
+pub fn MathmatrixdecompRange::scale(Self, Double) -> Self
+pub fn MathmatrixdecompRange::set(Self, Int32, Double) -> Self
+pub fn MathmatrixdecompRange::sum(Self) -> Double
+pub fn MathmatrixdecompRange::to_string(Self) -> String
+
+pub(all) struct MathmatrixdecompSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathmatrixdecompSeries::add(Self, Self) -> Self
+pub fn MathmatrixdecompSeries::cumsum(Self) -> Self
+pub fn MathmatrixdecompSeries::len(Self) -> Int32
+pub fn MathmatrixdecompSeries::max(Self) -> Double
+pub fn MathmatrixdecompSeries::mean(Self) -> Double
+pub fn MathmatrixdecompSeries::median(Self) -> Double
+pub fn MathmatrixdecompSeries::min(Self) -> Double
+pub fn MathmatrixdecompSeries::normalize(Self) -> Self
+pub fn MathmatrixdecompSeries::range(Self) -> Double
+pub fn MathmatrixdecompSeries::scale(Self, Double) -> Self
+pub fn MathmatrixdecompSeries::std(Self) -> Double
+pub fn MathmatrixdecompSeries::sub(Self, Self) -> Self
+pub fn MathmatrixdecompSeries::sum(Self) -> Double
+pub fn MathmatrixdecompSeries::to_string(Self) -> String
+pub fn MathmatrixdecompSeries::variance(Self) -> Double
+
+pub(all) struct MathmatrixdecompSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathmatrixdecompSlice::add(Self, Self) -> Self
+pub fn MathmatrixdecompSlice::copy(Self) -> Self
+pub fn MathmatrixdecompSlice::fill(Self, Double) -> Self
+pub fn MathmatrixdecompSlice::get(Self, Int32) -> Double
+pub fn MathmatrixdecompSlice::len(Self) -> Int32
+pub fn MathmatrixdecompSlice::max(Self) -> Double
+pub fn MathmatrixdecompSlice::mean(Self) -> Double
+pub fn MathmatrixdecompSlice::min(Self) -> Double
+pub fn MathmatrixdecompSlice::scale(Self, Double) -> Self
+pub fn MathmatrixdecompSlice::set(Self, Int32, Double) -> Self
+pub fn MathmatrixdecompSlice::sum(Self) -> Double
+pub fn MathmatrixdecompSlice::to_string(Self) -> String
+
+pub(all) struct MathmatrixdecompTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathmatrixdecompTable::add(Self, Self) -> Self
+pub fn MathmatrixdecompTable::copy(Self) -> Self
+pub fn MathmatrixdecompTable::fill(Self, Double) -> Self
+pub fn MathmatrixdecompTable::get(Self, Int32) -> Double
+pub fn MathmatrixdecompTable::len(Self) -> Int32
+pub fn MathmatrixdecompTable::max(Self) -> Double
+pub fn MathmatrixdecompTable::mean(Self) -> Double
+pub fn MathmatrixdecompTable::min(Self) -> Double
+pub fn MathmatrixdecompTable::scale(Self, Double) -> Self
+pub fn MathmatrixdecompTable::set(Self, Int32, Double) -> Self
+pub fn MathmatrixdecompTable::sum(Self) -> Double
+pub fn MathmatrixdecompTable::to_string(Self) -> String
+
+pub(all) struct MathmatrixdecompVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathmatrixdecompVector::add(Self, Self) -> Self
+pub fn MathmatrixdecompVector::dist(Self, Self) -> Double
+pub fn MathmatrixdecompVector::dot(Self, Self) -> Double
+pub fn MathmatrixdecompVector::norm(Self) -> Double
+pub fn MathmatrixdecompVector::normalize(Self) -> Self
+pub fn MathmatrixdecompVector::scale(Self, Double) -> Self
+pub fn MathmatrixdecompVector::sub(Self, Self) -> Self
+pub fn MathmatrixdecompVector::to_string(Self) -> String
+
+pub(all) struct MathmatrixdecompView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathmatrixdecompView::add(Self, Self) -> Self
+pub fn MathmatrixdecompView::copy(Self) -> Self
+pub fn MathmatrixdecompView::fill(Self, Double) -> Self
+pub fn MathmatrixdecompView::get(Self, Int32) -> Double
+pub fn MathmatrixdecompView::len(Self) -> Int32
+pub fn MathmatrixdecompView::max(Self) -> Double
+pub fn MathmatrixdecompView::mean(Self) -> Double
+pub fn MathmatrixdecompView::min(Self) -> Double
+pub fn MathmatrixdecompView::scale(Self, Double) -> Self
+pub fn MathmatrixdecompView::set(Self, Int32, Double) -> Self
+pub fn MathmatrixdecompView::sum(Self) -> Double
+pub fn MathmatrixdecompView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

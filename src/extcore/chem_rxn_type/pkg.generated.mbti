@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/chem_rxn_type"
+
+// Values
+pub fn chem_rxn_type_buffer_make(Int32) -> ChemrxntypeBuffer
+
+pub fn chem_rxn_type_cluster_make(Int32) -> ChemrxntypeCluster
+
+pub fn chem_rxn_type_cursor_make(Int32) -> ChemrxntypeCursor
+
+pub fn chem_rxn_type_edge_make(Int32) -> ChemrxntypeEdge
+
+pub fn chem_rxn_type_frame_make(Int32) -> ChemrxntypeFrame
+
+pub fn chem_rxn_type_graphn_make(Int32) -> ChemrxntypeGraphN
+
+pub fn chem_rxn_type_layer_make(Int32) -> ChemrxntypeLayer
+
+pub fn chem_rxn_type_make_matrix(Int32, Int32, Double) -> ChemrxntypeMatrix
+
+pub fn chem_rxn_type_make_point(Double, Double) -> ChemrxntypePoint
+
+pub fn chem_rxn_type_make_point3(Double, Double, Double) -> ChemrxntypePoint
+
+pub fn chem_rxn_type_make_series(Array[Double], String) -> ChemrxntypeSeries
+
+pub fn chem_rxn_type_make_vector(Array[Double]) -> ChemrxntypeVector
+
+pub fn chem_rxn_type_matrix_identity(Int32) -> ChemrxntypeMatrix
+
+pub fn chem_rxn_type_model_make(Int32) -> ChemrxntypeModel
+
+pub fn chem_rxn_type_node_make(Int32) -> ChemrxntypeNode
+
+pub fn chem_rxn_type_path_make(Int32) -> ChemrxntypePath
+
+pub fn chem_rxn_type_range_make(Int32) -> ChemrxntypeRange
+
+pub fn chem_rxn_type_slice_make(Int32) -> ChemrxntypeSlice
+
+pub fn chem_rxn_type_table_make(Int32) -> ChemrxntypeTable
+
+pub fn chem_rxn_type_vector_zero(Int32) -> ChemrxntypeVector
+
+pub fn chem_rxn_type_view_make(Int32) -> ChemrxntypeView
+
+// Errors
+
+// Types and methods
+pub(all) struct ChemrxntypeBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxntypeBuffer::add(Self, Self) -> Self
+pub fn ChemrxntypeBuffer::copy(Self) -> Self
+pub fn ChemrxntypeBuffer::fill(Self, Double) -> Self
+pub fn ChemrxntypeBuffer::get(Self, Int32) -> Double
+pub fn ChemrxntypeBuffer::len(Self) -> Int32
+pub fn ChemrxntypeBuffer::max(Self) -> Double
+pub fn ChemrxntypeBuffer::mean(Self) -> Double
+pub fn ChemrxntypeBuffer::min(Self) -> Double
+pub fn ChemrxntypeBuffer::scale(Self, Double) -> Self
+pub fn ChemrxntypeBuffer::set(Self, Int32, Double) -> Self
+pub fn ChemrxntypeBuffer::sum(Self) -> Double
+pub fn ChemrxntypeBuffer::to_string(Self) -> String
+
+pub(all) struct ChemrxntypeCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxntypeCluster::add(Self, Self) -> Self
+pub fn ChemrxntypeCluster::copy(Self) -> Self
+pub fn ChemrxntypeCluster::fill(Self, Double) -> Self
+pub fn ChemrxntypeCluster::get(Self, Int32) -> Double
+pub fn ChemrxntypeCluster::len(Self) -> Int32
+pub fn ChemrxntypeCluster::max(Self) -> Double
+pub fn ChemrxntypeCluster::mean(Self) -> Double
+pub fn ChemrxntypeCluster::min(Self) -> Double
+pub fn ChemrxntypeCluster::scale(Self, Double) -> Self
+pub fn ChemrxntypeCluster::set(Self, Int32, Double) -> Self
+pub fn ChemrxntypeCluster::sum(Self) -> Double
+pub fn ChemrxntypeCluster::to_string(Self) -> String
+
+pub(all) struct ChemrxntypeCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxntypeCursor::add(Self, Self) -> Self
+pub fn ChemrxntypeCursor::copy(Self) -> Self
+pub fn ChemrxntypeCursor::fill(Self, Double) -> Self
+pub fn ChemrxntypeCursor::get(Self, Int32) -> Double
+pub fn ChemrxntypeCursor::len(Self) -> Int32
+pub fn ChemrxntypeCursor::max(Self) -> Double
+pub fn ChemrxntypeCursor::mean(Self) -> Double
+pub fn ChemrxntypeCursor::min(Self) -> Double
+pub fn ChemrxntypeCursor::scale(Self, Double) -> Self
+pub fn ChemrxntypeCursor::set(Self, Int32, Double) -> Self
+pub fn ChemrxntypeCursor::sum(Self) -> Double
+pub fn ChemrxntypeCursor::to_string(Self) -> String
+
+pub(all) struct ChemrxntypeEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxntypeEdge::add(Self, Self) -> Self
+pub fn ChemrxntypeEdge::copy(Self) -> Self
+pub fn ChemrxntypeEdge::fill(Self, Double) -> Self
+pub fn ChemrxntypeEdge::get(Self, Int32) -> Double
+pub fn ChemrxntypeEdge::len(Self) -> Int32
+pub fn ChemrxntypeEdge::max(Self) -> Double
+pub fn ChemrxntypeEdge::mean(Self) -> Double
+pub fn ChemrxntypeEdge::min(Self) -> Double
+pub fn ChemrxntypeEdge::scale(Self, Double) -> Self
+pub fn ChemrxntypeEdge::set(Self, Int32, Double) -> Self
+pub fn ChemrxntypeEdge::sum(Self) -> Double
+pub fn ChemrxntypeEdge::to_string(Self) -> String
+
+pub(all) struct ChemrxntypeFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxntypeFrame::add(Self, Self) -> Self
+pub fn ChemrxntypeFrame::copy(Self) -> Self
+pub fn ChemrxntypeFrame::fill(Self, Double) -> Self
+pub fn ChemrxntypeFrame::get(Self, Int32) -> Double
+pub fn ChemrxntypeFrame::len(Self) -> Int32
+pub fn ChemrxntypeFrame::max(Self) -> Double
+pub fn ChemrxntypeFrame::mean(Self) -> Double
+pub fn ChemrxntypeFrame::min(Self) -> Double
+pub fn ChemrxntypeFrame::scale(Self, Double) -> Self
+pub fn ChemrxntypeFrame::set(Self, Int32, Double) -> Self
+pub fn ChemrxntypeFrame::sum(Self) -> Double
+pub fn ChemrxntypeFrame::to_string(Self) -> String
+
+pub(all) struct ChemrxntypeGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxntypeGraphN::add(Self, Self) -> Self
+pub fn ChemrxntypeGraphN::copy(Self) -> Self
+pub fn ChemrxntypeGraphN::fill(Self, Double) -> Self
+pub fn ChemrxntypeGraphN::get(Self, Int32) -> Double
+pub fn ChemrxntypeGraphN::len(Self) -> Int32
+pub fn ChemrxntypeGraphN::max(Self) -> Double
+pub fn ChemrxntypeGraphN::mean(Self) -> Double
+pub fn ChemrxntypeGraphN::min(Self) -> Double
+pub fn ChemrxntypeGraphN::scale(Self, Double) -> Self
+pub fn ChemrxntypeGraphN::set(Self, Int32, Double) -> Self
+pub fn ChemrxntypeGraphN::sum(Self) -> Double
+pub fn ChemrxntypeGraphN::to_string(Self) -> String
+
+pub(all) struct ChemrxntypeLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxntypeLayer::add(Self, Self) -> Self
+pub fn ChemrxntypeLayer::copy(Self) -> Self
+pub fn ChemrxntypeLayer::fill(Self, Double) -> Self
+pub fn ChemrxntypeLayer::get(Self, Int32) -> Double
+pub fn ChemrxntypeLayer::len(Self) -> Int32
+pub fn ChemrxntypeLayer::max(Self) -> Double
+pub fn ChemrxntypeLayer::mean(Self) -> Double
+pub fn ChemrxntypeLayer::min(Self) -> Double
+pub fn ChemrxntypeLayer::scale(Self, Double) -> Self
+pub fn ChemrxntypeLayer::set(Self, Int32, Double) -> Self
+pub fn ChemrxntypeLayer::sum(Self) -> Double
+pub fn ChemrxntypeLayer::to_string(Self) -> String
+
+pub(all) struct ChemrxntypeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ChemrxntypeMatrix::add(Self, Self) -> Self
+pub fn ChemrxntypeMatrix::det(Self) -> Double
+pub fn ChemrxntypeMatrix::get(Self, Int32, Int32) -> Double
+pub fn ChemrxntypeMatrix::multiply(Self, Self) -> Self
+pub fn ChemrxntypeMatrix::norm(Self) -> Double
+pub fn ChemrxntypeMatrix::scale(Self, Double) -> Self
+pub fn ChemrxntypeMatrix::to_string(Self) -> String
+pub fn ChemrxntypeMatrix::trace(Self) -> Double
+pub fn ChemrxntypeMatrix::transpose(Self) -> Self
+
+pub(all) struct ChemrxntypeModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxntypeModel::add(Self, Self) -> Self
+pub fn ChemrxntypeModel::copy(Self) -> Self
+pub fn ChemrxntypeModel::fill(Self, Double) -> Self
+pub fn ChemrxntypeModel::get(Self, Int32) -> Double
+pub fn ChemrxntypeModel::len(Self) -> Int32
+pub fn ChemrxntypeModel::max(Self) -> Double
+pub fn ChemrxntypeModel::mean(Self) -> Double
+pub fn ChemrxntypeModel::min(Self) -> Double
+pub fn ChemrxntypeModel::scale(Self, Double) -> Self
+pub fn ChemrxntypeModel::set(Self, Int32, Double) -> Self
+pub fn ChemrxntypeModel::sum(Self) -> Double
+pub fn ChemrxntypeModel::to_string(Self) -> String
+
+pub(all) struct ChemrxntypeNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxntypeNode::add(Self, Self) -> Self
+pub fn ChemrxntypeNode::copy(Self) -> Self
+pub fn ChemrxntypeNode::fill(Self, Double) -> Self
+pub fn ChemrxntypeNode::get(Self, Int32) -> Double
+pub fn ChemrxntypeNode::len(Self) -> Int32
+pub fn ChemrxntypeNode::max(Self) -> Double
+pub fn ChemrxntypeNode::mean(Self) -> Double
+pub fn ChemrxntypeNode::min(Self) -> Double
+pub fn ChemrxntypeNode::scale(Self, Double) -> Self
+pub fn ChemrxntypeNode::set(Self, Int32, Double) -> Self
+pub fn ChemrxntypeNode::sum(Self) -> Double
+pub fn ChemrxntypeNode::to_string(Self) -> String
+
+pub(all) struct ChemrxntypePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxntypePath::add(Self, Self) -> Self
+pub fn ChemrxntypePath::copy(Self) -> Self
+pub fn ChemrxntypePath::fill(Self, Double) -> Self
+pub fn ChemrxntypePath::get(Self, Int32) -> Double
+pub fn ChemrxntypePath::len(Self) -> Int32
+pub fn ChemrxntypePath::max(Self) -> Double
+pub fn ChemrxntypePath::mean(Self) -> Double
+pub fn ChemrxntypePath::min(Self) -> Double
+pub fn ChemrxntypePath::scale(Self, Double) -> Self
+pub fn ChemrxntypePath::set(Self, Int32, Double) -> Self
+pub fn ChemrxntypePath::sum(Self) -> Double
+pub fn ChemrxntypePath::to_string(Self) -> String
+
+pub(all) struct ChemrxntypePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ChemrxntypePoint::add(Self, Self) -> Self
+pub fn ChemrxntypePoint::cross(Self, Self) -> Self
+pub fn ChemrxntypePoint::dist(Self, Self) -> Double
+pub fn ChemrxntypePoint::dot(Self, Self) -> Double
+pub fn ChemrxntypePoint::label(Self) -> Int32
+pub fn ChemrxntypePoint::lerp(Self, Self, Double) -> Self
+pub fn ChemrxntypePoint::mid(Self, Self) -> Self
+pub fn ChemrxntypePoint::negate(Self) -> Self
+pub fn ChemrxntypePoint::norm(Self) -> Double
+pub fn ChemrxntypePoint::normalize(Self) -> Self
+pub fn ChemrxntypePoint::scale(Self, Double) -> Self
+pub fn ChemrxntypePoint::sub(Self, Self) -> Self
+pub fn ChemrxntypePoint::to_string(Self) -> String
+pub fn ChemrxntypePoint::x(Self) -> Double
+pub fn ChemrxntypePoint::y(Self) -> Double
+pub fn ChemrxntypePoint::z(Self) -> Double
+
+pub(all) struct ChemrxntypeRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxntypeRange::add(Self, Self) -> Self
+pub fn ChemrxntypeRange::copy(Self) -> Self
+pub fn ChemrxntypeRange::fill(Self, Double) -> Self
+pub fn ChemrxntypeRange::get(Self, Int32) -> Double
+pub fn ChemrxntypeRange::len(Self) -> Int32
+pub fn ChemrxntypeRange::max(Self) -> Double
+pub fn ChemrxntypeRange::mean(Self) -> Double
+pub fn ChemrxntypeRange::min(Self) -> Double
+pub fn ChemrxntypeRange::scale(Self, Double) -> Self
+pub fn ChemrxntypeRange::set(Self, Int32, Double) -> Self
+pub fn ChemrxntypeRange::sum(Self) -> Double
+pub fn ChemrxntypeRange::to_string(Self) -> String
+
+pub(all) struct ChemrxntypeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ChemrxntypeSeries::add(Self, Self) -> Self
+pub fn ChemrxntypeSeries::cumsum(Self) -> Self
+pub fn ChemrxntypeSeries::len(Self) -> Int32
+pub fn ChemrxntypeSeries::max(Self) -> Double
+pub fn ChemrxntypeSeries::mean(Self) -> Double
+pub fn ChemrxntypeSeries::median(Self) -> Double
+pub fn ChemrxntypeSeries::min(Self) -> Double
+pub fn ChemrxntypeSeries::normalize(Self) -> Self
+pub fn ChemrxntypeSeries::range(Self) -> Double
+pub fn ChemrxntypeSeries::scale(Self, Double) -> Self
+pub fn ChemrxntypeSeries::std(Self) -> Double
+pub fn ChemrxntypeSeries::sub(Self, Self) -> Self
+pub fn ChemrxntypeSeries::sum(Self) -> Double
+pub fn ChemrxntypeSeries::to_string(Self) -> String
+pub fn ChemrxntypeSeries::variance(Self) -> Double
+
+pub(all) struct ChemrxntypeSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxntypeSlice::add(Self, Self) -> Self
+pub fn ChemrxntypeSlice::copy(Self) -> Self
+pub fn ChemrxntypeSlice::fill(Self, Double) -> Self
+pub fn ChemrxntypeSlice::get(Self, Int32) -> Double
+pub fn ChemrxntypeSlice::len(Self) -> Int32
+pub fn ChemrxntypeSlice::max(Self) -> Double
+pub fn ChemrxntypeSlice::mean(Self) -> Double
+pub fn ChemrxntypeSlice::min(Self) -> Double
+pub fn ChemrxntypeSlice::scale(Self, Double) -> Self
+pub fn ChemrxntypeSlice::set(Self, Int32, Double) -> Self
+pub fn ChemrxntypeSlice::sum(Self) -> Double
+pub fn ChemrxntypeSlice::to_string(Self) -> String
+
+pub(all) struct ChemrxntypeTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxntypeTable::add(Self, Self) -> Self
+pub fn ChemrxntypeTable::copy(Self) -> Self
+pub fn ChemrxntypeTable::fill(Self, Double) -> Self
+pub fn ChemrxntypeTable::get(Self, Int32) -> Double
+pub fn ChemrxntypeTable::len(Self) -> Int32
+pub fn ChemrxntypeTable::max(Self) -> Double
+pub fn ChemrxntypeTable::mean(Self) -> Double
+pub fn ChemrxntypeTable::min(Self) -> Double
+pub fn ChemrxntypeTable::scale(Self, Double) -> Self
+pub fn ChemrxntypeTable::set(Self, Int32, Double) -> Self
+pub fn ChemrxntypeTable::sum(Self) -> Double
+pub fn ChemrxntypeTable::to_string(Self) -> String
+
+pub(all) struct ChemrxntypeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ChemrxntypeVector::add(Self, Self) -> Self
+pub fn ChemrxntypeVector::dist(Self, Self) -> Double
+pub fn ChemrxntypeVector::dot(Self, Self) -> Double
+pub fn ChemrxntypeVector::norm(Self) -> Double
+pub fn ChemrxntypeVector::normalize(Self) -> Self
+pub fn ChemrxntypeVector::scale(Self, Double) -> Self
+pub fn ChemrxntypeVector::sub(Self, Self) -> Self
+pub fn ChemrxntypeVector::to_string(Self) -> String
+
+pub(all) struct ChemrxntypeView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxntypeView::add(Self, Self) -> Self
+pub fn ChemrxntypeView::copy(Self) -> Self
+pub fn ChemrxntypeView::fill(Self, Double) -> Self
+pub fn ChemrxntypeView::get(Self, Int32) -> Double
+pub fn ChemrxntypeView::len(Self) -> Int32
+pub fn ChemrxntypeView::max(Self) -> Double
+pub fn ChemrxntypeView::mean(Self) -> Double
+pub fn ChemrxntypeView::min(Self) -> Double
+pub fn ChemrxntypeView::scale(Self, Double) -> Self
+pub fn ChemrxntypeView::set(Self, Int32, Double) -> Self
+pub fn ChemrxntypeView::sum(Self) -> Double
+pub fn ChemrxntypeView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

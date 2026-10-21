@@ -1,0 +1,210 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/curriculum"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn anti_curriculum_loss(Double, Double, Int32, Int32) -> Double
+
+pub fn anti_sample(Array[Int32], Array[Double], Int32, AntiCurriculumConfig) -> Array[Int32]
+
+pub fn anti_schedule(AntiCurriculumConfig, Int32) -> Double
+
+pub fn baby_step_next(BabyStepConfig, Double) -> Double
+
+pub fn baby_step_schedule(BabyStepConfig, Int32) -> Double
+
+pub fn balance_easy_hard(Array[Int32], Array[Int32], BalancedConfig) -> Array[Int32]
+
+pub fn balance_ratio(Int32, Int32) -> Double
+
+pub fn boost_sample(Array[Int32], Array[Double], Double) -> Array[Int32]
+
+pub fn boost_weight(BoostConfig, Int32) -> Double
+
+pub fn curriculum_ablation(Double, Double) -> Double
+
+pub fn curriculum_add(Curriculum, Int32, Double) -> Curriculum
+
+pub fn curriculum_evaluate(Array[Double], Array[Double]) -> Double
+
+pub fn curriculum_id() -> String
+
+pub fn curriculum_progress(Curriculum) -> Double
+
+pub fn curriculum_sort(Curriculum) -> Curriculum
+
+pub fn difficulty_rank(Double, DifficultyConfig) -> Int32
+
+pub fn difficulty_score(Double, DifficultyConfig) -> Double
+
+pub fn macro_phase(MacroCurriculumConfig, Int32) -> Int32
+
+pub fn macro_schedule(MacroCurriculumConfig, Int32) -> Double
+
+pub fn make_anti_curriculum(Bool, String, Int32) -> AntiCurriculumConfig
+
+pub fn make_baby_step(Double, Double, Double) -> BabyStepConfig
+
+pub fn make_balanced_curriculum(Double, Double, Int32) -> BalancedConfig
+
+pub fn make_boost_rate(Double, Double, Double) -> BoostConfig
+
+pub fn make_curriculum(Array[Int32], Array[Double], Int32) -> Curriculum
+
+pub fn make_difficulty(String, Double, Int32) -> DifficultyConfig
+
+pub fn make_macro_curriculum(Int32, Int32, Double) -> MacroCurriculumConfig
+
+pub fn make_online_curriculum(Int32, Double, Double, Double) -> OnlineCurriculumConfig
+
+pub fn make_sampler_curriculum(Int32, Double, Double) -> SamplerConfig
+
+pub fn make_self_paced(Double, Double, Double) -> SelfPacedConfig
+
+pub fn make_teacher(String, Double, Double) -> TeacherConfig
+
+pub fn make_transfer_curriculum(Int32, Int32, Double) -> TransferCurriculumConfig
+
+pub fn online_difficulty(Array[Double], OnlineCurriculumConfig) -> Double
+
+pub fn online_update(OnlineCurriculumConfig, Double, Double) -> Double
+
+pub fn sample_easy(Array[Int32], Array[Double], Int32) -> Array[Int32]
+
+pub fn sample_hard(Array[Int32], Array[Double], Int32) -> Array[Int32]
+
+pub fn sample_mixed(Array[Int32], Array[Double], SamplerConfig) -> Array[Int32]
+
+pub fn spl_loss(Double, Double, Double) -> Double
+
+pub fn spl_threshold(SelfPacedConfig, Int32) -> Double
+
+pub fn spl_weight(Double, Double) -> Double
+
+pub fn teacher_knowledge(Array[Double], Double) -> Array[Double]
+
+pub fn teacher_signal(Array[Double], TeacherConfig) -> Double
+
+pub fn transfer_adapt(TransferCurriculumConfig, Int32) -> Double
+
+pub fn transfer_schedule(TransferCurriculumConfig, Int32) -> Double
+
+// Errors
+
+// Types and methods
+pub(all) struct AntiCurriculumConfig {
+  start_hard : Bool
+  schedule : String
+  num_steps : Int32
+} derive(Eq, @debug.Debug)
+pub fn AntiCurriculumConfig::equal(Self, Self) -> Bool
+pub fn AntiCurriculumConfig::not_equal(Self, Self) -> Bool
+pub fn AntiCurriculumConfig::to_repr(Self) -> @debug.Repr
+
+pub(all) struct BabyStepConfig {
+  init_difficulty : Double
+  step_increment : Double
+  max_difficulty : Double
+} derive(Eq, @debug.Debug)
+pub fn BabyStepConfig::equal(Self, Self) -> Bool
+pub fn BabyStepConfig::not_equal(Self, Self) -> Bool
+pub fn BabyStepConfig::to_repr(Self) -> @debug.Repr
+
+pub(all) struct BalancedConfig {
+  target_ratio : Double
+  tolerance : Double
+  buffer_size : Int32
+} derive(Eq, @debug.Debug)
+pub fn BalancedConfig::equal(Self, Self) -> Bool
+pub fn BalancedConfig::not_equal(Self, Self) -> Bool
+pub fn BalancedConfig::to_repr(Self) -> @debug.Repr
+
+pub(all) struct BoostConfig {
+  init_rate : Double
+  decay : Double
+  max_rate : Double
+} derive(Eq, @debug.Debug)
+pub fn BoostConfig::equal(Self, Self) -> Bool
+pub fn BoostConfig::not_equal(Self, Self) -> Bool
+pub fn BoostConfig::to_repr(Self) -> @debug.Repr
+
+pub(all) struct Curriculum {
+  samples : Array[Int32]
+  difficulties : Array[Double]
+  current_step : Int32
+  max_step : Int32
+} derive(Eq, @debug.Debug)
+pub fn Curriculum::equal(Self, Self) -> Bool
+pub fn Curriculum::not_equal(Self, Self) -> Bool
+pub fn Curriculum::to_repr(Self) -> @debug.Repr
+
+pub(all) struct DifficultyConfig {
+  method_name : String
+  threshold : Double
+  num_bins : Int32
+} derive(Eq, @debug.Debug)
+pub fn DifficultyConfig::equal(Self, Self) -> Bool
+pub fn DifficultyConfig::not_equal(Self, Self) -> Bool
+pub fn DifficultyConfig::to_repr(Self) -> @debug.Repr
+
+pub(all) struct MacroCurriculumConfig {
+  num_phases : Int32
+  phase_length : Int32
+  difficulty_increment : Double
+} derive(Eq, @debug.Debug)
+pub fn MacroCurriculumConfig::equal(Self, Self) -> Bool
+pub fn MacroCurriculumConfig::not_equal(Self, Self) -> Bool
+pub fn MacroCurriculumConfig::to_repr(Self) -> @debug.Repr
+
+pub(all) struct OnlineCurriculumConfig {
+  window_size : Int32
+  adapt_rate : Double
+  min_difficulty : Double
+  max_difficulty : Double
+} derive(Eq, @debug.Debug)
+pub fn OnlineCurriculumConfig::equal(Self, Self) -> Bool
+pub fn OnlineCurriculumConfig::not_equal(Self, Self) -> Bool
+pub fn OnlineCurriculumConfig::to_repr(Self) -> @debug.Repr
+
+pub(all) struct SamplerConfig {
+  batch_size : Int32
+  easy_ratio : Double
+  hard_ratio : Double
+} derive(Eq, @debug.Debug)
+pub fn SamplerConfig::equal(Self, Self) -> Bool
+pub fn SamplerConfig::not_equal(Self, Self) -> Bool
+pub fn SamplerConfig::to_repr(Self) -> @debug.Repr
+
+pub(all) struct SelfPacedConfig {
+  threshold : Double
+  lambda : Double
+  gamma : Double
+} derive(Eq, @debug.Debug)
+pub fn SelfPacedConfig::equal(Self, Self) -> Bool
+pub fn SelfPacedConfig::not_equal(Self, Self) -> Bool
+pub fn SelfPacedConfig::to_repr(Self) -> @debug.Repr
+
+pub(all) struct TeacherConfig {
+  teacher_type : String
+  confidence_threshold : Double
+  temperature : Double
+} derive(Eq, @debug.Debug)
+pub fn TeacherConfig::equal(Self, Self) -> Bool
+pub fn TeacherConfig::not_equal(Self, Self) -> Bool
+pub fn TeacherConfig::to_repr(Self) -> @debug.Repr
+
+pub(all) struct TransferCurriculumConfig {
+  source_steps : Int32
+  target_steps : Int32
+  adapt_rate : Double
+} derive(Eq, @debug.Debug)
+pub fn TransferCurriculumConfig::equal(Self, Self) -> Bool
+pub fn TransferCurriculumConfig::not_equal(Self, Self) -> Bool
+pub fn TransferCurriculumConfig::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

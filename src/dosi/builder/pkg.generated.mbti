@@ -1,0 +1,24 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dosi/builder"
+
+import {
+  "dataverse/datair/ir_operator",
+  "dataverse/dosi",
+}
+
+// Values
+pub fn build_from_operator_ir(@ir_operator.OperatorIR) -> @dosi.DOSIEntry
+
+pub fn build_opcore_index() -> @dosi.DOSIIndex
+
+pub fn builder_id() -> String
+
+pub fn merge(@dosi.DOSIIndex, @dosi.DOSIIndex) -> @dosi.DOSIIndex
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

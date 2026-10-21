@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/memetic"
+
+// Values
+pub fn memetic_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn memetic_corr(Array[Double], Array[Double]) -> Double
+
+pub fn memetic_cov(Array[Double], Array[Double]) -> Double
+
+pub fn memetic_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn memetic_mae(Array[Double], Array[Double]) -> Double
+
+pub fn memetic_make_labeled_point(Double, Double, Int32) -> MemeticPoint
+
+pub fn memetic_make_matrix(Int32, Int32, Double) -> MemeticMatrix
+
+pub fn memetic_make_point(Double, Double) -> MemeticPoint
+
+pub fn memetic_make_series(Array[Double], String) -> MemeticSeries
+
+pub fn memetic_make_vector(Array[Double]) -> MemeticVector
+
+pub fn memetic_matrix_add(MemeticMatrix, MemeticMatrix) -> MemeticMatrix
+
+pub fn memetic_matrix_get(MemeticMatrix, Int32, Int32) -> Double
+
+pub fn memetic_matrix_identity(Int32) -> MemeticMatrix
+
+pub fn memetic_matrix_multiply(MemeticMatrix, MemeticMatrix) -> MemeticMatrix
+
+pub fn memetic_matrix_norm(MemeticMatrix) -> Double
+
+pub fn memetic_matrix_scale(MemeticMatrix, Double) -> MemeticMatrix
+
+pub fn memetic_matrix_to_string(MemeticMatrix) -> String
+
+pub fn memetic_matrix_trace(MemeticMatrix) -> Double
+
+pub fn memetic_matrix_transpose(MemeticMatrix) -> MemeticMatrix
+
+pub fn memetic_mse(Array[Double], Array[Double]) -> Double
+
+pub fn memetic_point_add(MemeticPoint, MemeticPoint) -> MemeticPoint
+
+pub fn memetic_point_dist(MemeticPoint, MemeticPoint) -> Double
+
+pub fn memetic_point_dot(MemeticPoint, MemeticPoint) -> Double
+
+pub fn memetic_point_label(MemeticPoint) -> Int32
+
+pub fn memetic_point_norm(MemeticPoint) -> Double
+
+pub fn memetic_point_scale(MemeticPoint, Double) -> MemeticPoint
+
+pub fn memetic_point_sub(MemeticPoint, MemeticPoint) -> MemeticPoint
+
+pub fn memetic_point_to_string(MemeticPoint) -> String
+
+pub fn memetic_point_x(MemeticPoint) -> Double
+
+pub fn memetic_point_y(MemeticPoint) -> Double
+
+pub fn memetic_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn memetic_r2(Array[Double], Array[Double]) -> Double
+
+pub fn memetic_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn memetic_series_add(MemeticSeries, MemeticSeries) -> MemeticSeries
+
+pub fn memetic_series_len(MemeticSeries) -> Int32
+
+pub fn memetic_series_max(MemeticSeries) -> Double
+
+pub fn memetic_series_mean(MemeticSeries) -> Double
+
+pub fn memetic_series_min(MemeticSeries) -> Double
+
+pub fn memetic_series_scale(MemeticSeries, Double) -> MemeticSeries
+
+pub fn memetic_series_std(MemeticSeries) -> Double
+
+pub fn memetic_series_sum(MemeticSeries) -> Double
+
+pub fn memetic_series_to_string(MemeticSeries) -> String
+
+pub fn memetic_series_var(MemeticSeries) -> Double
+
+pub fn memetic_std(Array[Double]) -> Double
+
+pub fn memetic_var(Array[Double]) -> Double
+
+pub fn memetic_vector_add(MemeticVector, MemeticVector) -> MemeticVector
+
+pub fn memetic_vector_dist(MemeticVector, MemeticVector) -> Double
+
+pub fn memetic_vector_dot(MemeticVector, MemeticVector) -> Double
+
+pub fn memetic_vector_norm(MemeticVector) -> Double
+
+pub fn memetic_vector_normalize(MemeticVector) -> MemeticVector
+
+pub fn memetic_vector_scale(MemeticVector, Double) -> MemeticVector
+
+pub fn memetic_vector_sub(MemeticVector, MemeticVector) -> MemeticVector
+
+pub fn memetic_vector_to_string(MemeticVector) -> String
+
+pub fn memetic_vector_zero(Int32) -> MemeticVector
+
+// Errors
+
+// Types and methods
+pub struct MemeticMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct MemeticPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct MemeticSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct MemeticVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

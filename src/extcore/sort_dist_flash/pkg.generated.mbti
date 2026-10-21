@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_dist_flash"
+
+// Values
+pub fn sort_dist_flash_buffer_make(Int32) -> SortdistflashBuffer
+
+pub fn sort_dist_flash_cluster_make(Int32) -> SortdistflashCluster
+
+pub fn sort_dist_flash_cursor_make(Int32) -> SortdistflashCursor
+
+pub fn sort_dist_flash_edge_make(Int32) -> SortdistflashEdge
+
+pub fn sort_dist_flash_frame_make(Int32) -> SortdistflashFrame
+
+pub fn sort_dist_flash_graphn_make(Int32) -> SortdistflashGraphN
+
+pub fn sort_dist_flash_layer_make(Int32) -> SortdistflashLayer
+
+pub fn sort_dist_flash_make_matrix(Int32, Int32, Double) -> SortdistflashMatrix
+
+pub fn sort_dist_flash_make_point(Double, Double) -> SortdistflashPoint
+
+pub fn sort_dist_flash_make_point3(Double, Double, Double) -> SortdistflashPoint
+
+pub fn sort_dist_flash_make_series(Array[Double], String) -> SortdistflashSeries
+
+pub fn sort_dist_flash_make_vector(Array[Double]) -> SortdistflashVector
+
+pub fn sort_dist_flash_matrix_identity(Int32) -> SortdistflashMatrix
+
+pub fn sort_dist_flash_model_make(Int32) -> SortdistflashModel
+
+pub fn sort_dist_flash_node_make(Int32) -> SortdistflashNode
+
+pub fn sort_dist_flash_path_make(Int32) -> SortdistflashPath
+
+pub fn sort_dist_flash_range_make(Int32) -> SortdistflashRange
+
+pub fn sort_dist_flash_slice_make(Int32) -> SortdistflashSlice
+
+pub fn sort_dist_flash_table_make(Int32) -> SortdistflashTable
+
+pub fn sort_dist_flash_vector_zero(Int32) -> SortdistflashVector
+
+pub fn sort_dist_flash_view_make(Int32) -> SortdistflashView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortdistflashBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistflashBuffer::add(Self, Self) -> Self
+pub fn SortdistflashBuffer::copy(Self) -> Self
+pub fn SortdistflashBuffer::fill(Self, Double) -> Self
+pub fn SortdistflashBuffer::get(Self, Int32) -> Double
+pub fn SortdistflashBuffer::len(Self) -> Int32
+pub fn SortdistflashBuffer::max(Self) -> Double
+pub fn SortdistflashBuffer::mean(Self) -> Double
+pub fn SortdistflashBuffer::min(Self) -> Double
+pub fn SortdistflashBuffer::scale(Self, Double) -> Self
+pub fn SortdistflashBuffer::set(Self, Int32, Double) -> Self
+pub fn SortdistflashBuffer::sum(Self) -> Double
+pub fn SortdistflashBuffer::to_string(Self) -> String
+
+pub(all) struct SortdistflashCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistflashCluster::add(Self, Self) -> Self
+pub fn SortdistflashCluster::copy(Self) -> Self
+pub fn SortdistflashCluster::fill(Self, Double) -> Self
+pub fn SortdistflashCluster::get(Self, Int32) -> Double
+pub fn SortdistflashCluster::len(Self) -> Int32
+pub fn SortdistflashCluster::max(Self) -> Double
+pub fn SortdistflashCluster::mean(Self) -> Double
+pub fn SortdistflashCluster::min(Self) -> Double
+pub fn SortdistflashCluster::scale(Self, Double) -> Self
+pub fn SortdistflashCluster::set(Self, Int32, Double) -> Self
+pub fn SortdistflashCluster::sum(Self) -> Double
+pub fn SortdistflashCluster::to_string(Self) -> String
+
+pub(all) struct SortdistflashCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistflashCursor::add(Self, Self) -> Self
+pub fn SortdistflashCursor::copy(Self) -> Self
+pub fn SortdistflashCursor::fill(Self, Double) -> Self
+pub fn SortdistflashCursor::get(Self, Int32) -> Double
+pub fn SortdistflashCursor::len(Self) -> Int32
+pub fn SortdistflashCursor::max(Self) -> Double
+pub fn SortdistflashCursor::mean(Self) -> Double
+pub fn SortdistflashCursor::min(Self) -> Double
+pub fn SortdistflashCursor::scale(Self, Double) -> Self
+pub fn SortdistflashCursor::set(Self, Int32, Double) -> Self
+pub fn SortdistflashCursor::sum(Self) -> Double
+pub fn SortdistflashCursor::to_string(Self) -> String
+
+pub(all) struct SortdistflashEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistflashEdge::add(Self, Self) -> Self
+pub fn SortdistflashEdge::copy(Self) -> Self
+pub fn SortdistflashEdge::fill(Self, Double) -> Self
+pub fn SortdistflashEdge::get(Self, Int32) -> Double
+pub fn SortdistflashEdge::len(Self) -> Int32
+pub fn SortdistflashEdge::max(Self) -> Double
+pub fn SortdistflashEdge::mean(Self) -> Double
+pub fn SortdistflashEdge::min(Self) -> Double
+pub fn SortdistflashEdge::scale(Self, Double) -> Self
+pub fn SortdistflashEdge::set(Self, Int32, Double) -> Self
+pub fn SortdistflashEdge::sum(Self) -> Double
+pub fn SortdistflashEdge::to_string(Self) -> String
+
+pub(all) struct SortdistflashFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistflashFrame::add(Self, Self) -> Self
+pub fn SortdistflashFrame::copy(Self) -> Self
+pub fn SortdistflashFrame::fill(Self, Double) -> Self
+pub fn SortdistflashFrame::get(Self, Int32) -> Double
+pub fn SortdistflashFrame::len(Self) -> Int32
+pub fn SortdistflashFrame::max(Self) -> Double
+pub fn SortdistflashFrame::mean(Self) -> Double
+pub fn SortdistflashFrame::min(Self) -> Double
+pub fn SortdistflashFrame::scale(Self, Double) -> Self
+pub fn SortdistflashFrame::set(Self, Int32, Double) -> Self
+pub fn SortdistflashFrame::sum(Self) -> Double
+pub fn SortdistflashFrame::to_string(Self) -> String
+
+pub(all) struct SortdistflashGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistflashGraphN::add(Self, Self) -> Self
+pub fn SortdistflashGraphN::copy(Self) -> Self
+pub fn SortdistflashGraphN::fill(Self, Double) -> Self
+pub fn SortdistflashGraphN::get(Self, Int32) -> Double
+pub fn SortdistflashGraphN::len(Self) -> Int32
+pub fn SortdistflashGraphN::max(Self) -> Double
+pub fn SortdistflashGraphN::mean(Self) -> Double
+pub fn SortdistflashGraphN::min(Self) -> Double
+pub fn SortdistflashGraphN::scale(Self, Double) -> Self
+pub fn SortdistflashGraphN::set(Self, Int32, Double) -> Self
+pub fn SortdistflashGraphN::sum(Self) -> Double
+pub fn SortdistflashGraphN::to_string(Self) -> String
+
+pub(all) struct SortdistflashLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistflashLayer::add(Self, Self) -> Self
+pub fn SortdistflashLayer::copy(Self) -> Self
+pub fn SortdistflashLayer::fill(Self, Double) -> Self
+pub fn SortdistflashLayer::get(Self, Int32) -> Double
+pub fn SortdistflashLayer::len(Self) -> Int32
+pub fn SortdistflashLayer::max(Self) -> Double
+pub fn SortdistflashLayer::mean(Self) -> Double
+pub fn SortdistflashLayer::min(Self) -> Double
+pub fn SortdistflashLayer::scale(Self, Double) -> Self
+pub fn SortdistflashLayer::set(Self, Int32, Double) -> Self
+pub fn SortdistflashLayer::sum(Self) -> Double
+pub fn SortdistflashLayer::to_string(Self) -> String
+
+pub(all) struct SortdistflashMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortdistflashMatrix::add(Self, Self) -> Self
+pub fn SortdistflashMatrix::det(Self) -> Double
+pub fn SortdistflashMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortdistflashMatrix::multiply(Self, Self) -> Self
+pub fn SortdistflashMatrix::norm(Self) -> Double
+pub fn SortdistflashMatrix::scale(Self, Double) -> Self
+pub fn SortdistflashMatrix::to_string(Self) -> String
+pub fn SortdistflashMatrix::trace(Self) -> Double
+pub fn SortdistflashMatrix::transpose(Self) -> Self
+
+pub(all) struct SortdistflashModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistflashModel::add(Self, Self) -> Self
+pub fn SortdistflashModel::copy(Self) -> Self
+pub fn SortdistflashModel::fill(Self, Double) -> Self
+pub fn SortdistflashModel::get(Self, Int32) -> Double
+pub fn SortdistflashModel::len(Self) -> Int32
+pub fn SortdistflashModel::max(Self) -> Double
+pub fn SortdistflashModel::mean(Self) -> Double
+pub fn SortdistflashModel::min(Self) -> Double
+pub fn SortdistflashModel::scale(Self, Double) -> Self
+pub fn SortdistflashModel::set(Self, Int32, Double) -> Self
+pub fn SortdistflashModel::sum(Self) -> Double
+pub fn SortdistflashModel::to_string(Self) -> String
+
+pub(all) struct SortdistflashNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistflashNode::add(Self, Self) -> Self
+pub fn SortdistflashNode::copy(Self) -> Self
+pub fn SortdistflashNode::fill(Self, Double) -> Self
+pub fn SortdistflashNode::get(Self, Int32) -> Double
+pub fn SortdistflashNode::len(Self) -> Int32
+pub fn SortdistflashNode::max(Self) -> Double
+pub fn SortdistflashNode::mean(Self) -> Double
+pub fn SortdistflashNode::min(Self) -> Double
+pub fn SortdistflashNode::scale(Self, Double) -> Self
+pub fn SortdistflashNode::set(Self, Int32, Double) -> Self
+pub fn SortdistflashNode::sum(Self) -> Double
+pub fn SortdistflashNode::to_string(Self) -> String
+
+pub(all) struct SortdistflashPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistflashPath::add(Self, Self) -> Self
+pub fn SortdistflashPath::copy(Self) -> Self
+pub fn SortdistflashPath::fill(Self, Double) -> Self
+pub fn SortdistflashPath::get(Self, Int32) -> Double
+pub fn SortdistflashPath::len(Self) -> Int32
+pub fn SortdistflashPath::max(Self) -> Double
+pub fn SortdistflashPath::mean(Self) -> Double
+pub fn SortdistflashPath::min(Self) -> Double
+pub fn SortdistflashPath::scale(Self, Double) -> Self
+pub fn SortdistflashPath::set(Self, Int32, Double) -> Self
+pub fn SortdistflashPath::sum(Self) -> Double
+pub fn SortdistflashPath::to_string(Self) -> String
+
+pub(all) struct SortdistflashPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortdistflashPoint::add(Self, Self) -> Self
+pub fn SortdistflashPoint::cross(Self, Self) -> Self
+pub fn SortdistflashPoint::dist(Self, Self) -> Double
+pub fn SortdistflashPoint::dot(Self, Self) -> Double
+pub fn SortdistflashPoint::label(Self) -> Int32
+pub fn SortdistflashPoint::lerp(Self, Self, Double) -> Self
+pub fn SortdistflashPoint::mid(Self, Self) -> Self
+pub fn SortdistflashPoint::negate(Self) -> Self
+pub fn SortdistflashPoint::norm(Self) -> Double
+pub fn SortdistflashPoint::normalize(Self) -> Self
+pub fn SortdistflashPoint::scale(Self, Double) -> Self
+pub fn SortdistflashPoint::sub(Self, Self) -> Self
+pub fn SortdistflashPoint::to_string(Self) -> String
+pub fn SortdistflashPoint::x(Self) -> Double
+pub fn SortdistflashPoint::y(Self) -> Double
+pub fn SortdistflashPoint::z(Self) -> Double
+
+pub(all) struct SortdistflashRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistflashRange::add(Self, Self) -> Self
+pub fn SortdistflashRange::copy(Self) -> Self
+pub fn SortdistflashRange::fill(Self, Double) -> Self
+pub fn SortdistflashRange::get(Self, Int32) -> Double
+pub fn SortdistflashRange::len(Self) -> Int32
+pub fn SortdistflashRange::max(Self) -> Double
+pub fn SortdistflashRange::mean(Self) -> Double
+pub fn SortdistflashRange::min(Self) -> Double
+pub fn SortdistflashRange::scale(Self, Double) -> Self
+pub fn SortdistflashRange::set(Self, Int32, Double) -> Self
+pub fn SortdistflashRange::sum(Self) -> Double
+pub fn SortdistflashRange::to_string(Self) -> String
+
+pub(all) struct SortdistflashSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortdistflashSeries::add(Self, Self) -> Self
+pub fn SortdistflashSeries::cumsum(Self) -> Self
+pub fn SortdistflashSeries::len(Self) -> Int32
+pub fn SortdistflashSeries::max(Self) -> Double
+pub fn SortdistflashSeries::mean(Self) -> Double
+pub fn SortdistflashSeries::median(Self) -> Double
+pub fn SortdistflashSeries::min(Self) -> Double
+pub fn SortdistflashSeries::normalize(Self) -> Self
+pub fn SortdistflashSeries::range(Self) -> Double
+pub fn SortdistflashSeries::scale(Self, Double) -> Self
+pub fn SortdistflashSeries::std(Self) -> Double
+pub fn SortdistflashSeries::sub(Self, Self) -> Self
+pub fn SortdistflashSeries::sum(Self) -> Double
+pub fn SortdistflashSeries::to_string(Self) -> String
+pub fn SortdistflashSeries::variance(Self) -> Double
+
+pub(all) struct SortdistflashSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistflashSlice::add(Self, Self) -> Self
+pub fn SortdistflashSlice::copy(Self) -> Self
+pub fn SortdistflashSlice::fill(Self, Double) -> Self
+pub fn SortdistflashSlice::get(Self, Int32) -> Double
+pub fn SortdistflashSlice::len(Self) -> Int32
+pub fn SortdistflashSlice::max(Self) -> Double
+pub fn SortdistflashSlice::mean(Self) -> Double
+pub fn SortdistflashSlice::min(Self) -> Double
+pub fn SortdistflashSlice::scale(Self, Double) -> Self
+pub fn SortdistflashSlice::set(Self, Int32, Double) -> Self
+pub fn SortdistflashSlice::sum(Self) -> Double
+pub fn SortdistflashSlice::to_string(Self) -> String
+
+pub(all) struct SortdistflashTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistflashTable::add(Self, Self) -> Self
+pub fn SortdistflashTable::copy(Self) -> Self
+pub fn SortdistflashTable::fill(Self, Double) -> Self
+pub fn SortdistflashTable::get(Self, Int32) -> Double
+pub fn SortdistflashTable::len(Self) -> Int32
+pub fn SortdistflashTable::max(Self) -> Double
+pub fn SortdistflashTable::mean(Self) -> Double
+pub fn SortdistflashTable::min(Self) -> Double
+pub fn SortdistflashTable::scale(Self, Double) -> Self
+pub fn SortdistflashTable::set(Self, Int32, Double) -> Self
+pub fn SortdistflashTable::sum(Self) -> Double
+pub fn SortdistflashTable::to_string(Self) -> String
+
+pub(all) struct SortdistflashVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortdistflashVector::add(Self, Self) -> Self
+pub fn SortdistflashVector::dist(Self, Self) -> Double
+pub fn SortdistflashVector::dot(Self, Self) -> Double
+pub fn SortdistflashVector::norm(Self) -> Double
+pub fn SortdistflashVector::normalize(Self) -> Self
+pub fn SortdistflashVector::scale(Self, Double) -> Self
+pub fn SortdistflashVector::sub(Self, Self) -> Self
+pub fn SortdistflashVector::to_string(Self) -> String
+
+pub(all) struct SortdistflashView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistflashView::add(Self, Self) -> Self
+pub fn SortdistflashView::copy(Self) -> Self
+pub fn SortdistflashView::fill(Self, Double) -> Self
+pub fn SortdistflashView::get(Self, Int32) -> Double
+pub fn SortdistflashView::len(Self) -> Int32
+pub fn SortdistflashView::max(Self) -> Double
+pub fn SortdistflashView::mean(Self) -> Double
+pub fn SortdistflashView::min(Self) -> Double
+pub fn SortdistflashView::scale(Self, Double) -> Self
+pub fn SortdistflashView::set(Self, Int32, Double) -> Self
+pub fn SortdistflashView::sum(Self) -> Double
+pub fn SortdistflashView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

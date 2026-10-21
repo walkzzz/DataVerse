@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_finite_diff"
+
+// Values
+pub fn math_finite_diff_buffer_make(Int32) -> MathfinitediffBuffer
+
+pub fn math_finite_diff_cluster_make(Int32) -> MathfinitediffCluster
+
+pub fn math_finite_diff_cursor_make(Int32) -> MathfinitediffCursor
+
+pub fn math_finite_diff_edge_make(Int32) -> MathfinitediffEdge
+
+pub fn math_finite_diff_frame_make(Int32) -> MathfinitediffFrame
+
+pub fn math_finite_diff_graphn_make(Int32) -> MathfinitediffGraphN
+
+pub fn math_finite_diff_layer_make(Int32) -> MathfinitediffLayer
+
+pub fn math_finite_diff_make_matrix(Int32, Int32, Double) -> MathfinitediffMatrix
+
+pub fn math_finite_diff_make_point(Double, Double) -> MathfinitediffPoint
+
+pub fn math_finite_diff_make_point3(Double, Double, Double) -> MathfinitediffPoint
+
+pub fn math_finite_diff_make_series(Array[Double], String) -> MathfinitediffSeries
+
+pub fn math_finite_diff_make_vector(Array[Double]) -> MathfinitediffVector
+
+pub fn math_finite_diff_matrix_identity(Int32) -> MathfinitediffMatrix
+
+pub fn math_finite_diff_model_make(Int32) -> MathfinitediffModel
+
+pub fn math_finite_diff_node_make(Int32) -> MathfinitediffNode
+
+pub fn math_finite_diff_path_make(Int32) -> MathfinitediffPath
+
+pub fn math_finite_diff_range_make(Int32) -> MathfinitediffRange
+
+pub fn math_finite_diff_slice_make(Int32) -> MathfinitediffSlice
+
+pub fn math_finite_diff_table_make(Int32) -> MathfinitediffTable
+
+pub fn math_finite_diff_vector_zero(Int32) -> MathfinitediffVector
+
+pub fn math_finite_diff_view_make(Int32) -> MathfinitediffView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathfinitediffBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfinitediffBuffer::add(Self, Self) -> Self
+pub fn MathfinitediffBuffer::copy(Self) -> Self
+pub fn MathfinitediffBuffer::fill(Self, Double) -> Self
+pub fn MathfinitediffBuffer::get(Self, Int32) -> Double
+pub fn MathfinitediffBuffer::len(Self) -> Int32
+pub fn MathfinitediffBuffer::max(Self) -> Double
+pub fn MathfinitediffBuffer::mean(Self) -> Double
+pub fn MathfinitediffBuffer::min(Self) -> Double
+pub fn MathfinitediffBuffer::scale(Self, Double) -> Self
+pub fn MathfinitediffBuffer::set(Self, Int32, Double) -> Self
+pub fn MathfinitediffBuffer::sum(Self) -> Double
+pub fn MathfinitediffBuffer::to_string(Self) -> String
+
+pub(all) struct MathfinitediffCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfinitediffCluster::add(Self, Self) -> Self
+pub fn MathfinitediffCluster::copy(Self) -> Self
+pub fn MathfinitediffCluster::fill(Self, Double) -> Self
+pub fn MathfinitediffCluster::get(Self, Int32) -> Double
+pub fn MathfinitediffCluster::len(Self) -> Int32
+pub fn MathfinitediffCluster::max(Self) -> Double
+pub fn MathfinitediffCluster::mean(Self) -> Double
+pub fn MathfinitediffCluster::min(Self) -> Double
+pub fn MathfinitediffCluster::scale(Self, Double) -> Self
+pub fn MathfinitediffCluster::set(Self, Int32, Double) -> Self
+pub fn MathfinitediffCluster::sum(Self) -> Double
+pub fn MathfinitediffCluster::to_string(Self) -> String
+
+pub(all) struct MathfinitediffCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfinitediffCursor::add(Self, Self) -> Self
+pub fn MathfinitediffCursor::copy(Self) -> Self
+pub fn MathfinitediffCursor::fill(Self, Double) -> Self
+pub fn MathfinitediffCursor::get(Self, Int32) -> Double
+pub fn MathfinitediffCursor::len(Self) -> Int32
+pub fn MathfinitediffCursor::max(Self) -> Double
+pub fn MathfinitediffCursor::mean(Self) -> Double
+pub fn MathfinitediffCursor::min(Self) -> Double
+pub fn MathfinitediffCursor::scale(Self, Double) -> Self
+pub fn MathfinitediffCursor::set(Self, Int32, Double) -> Self
+pub fn MathfinitediffCursor::sum(Self) -> Double
+pub fn MathfinitediffCursor::to_string(Self) -> String
+
+pub(all) struct MathfinitediffEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfinitediffEdge::add(Self, Self) -> Self
+pub fn MathfinitediffEdge::copy(Self) -> Self
+pub fn MathfinitediffEdge::fill(Self, Double) -> Self
+pub fn MathfinitediffEdge::get(Self, Int32) -> Double
+pub fn MathfinitediffEdge::len(Self) -> Int32
+pub fn MathfinitediffEdge::max(Self) -> Double
+pub fn MathfinitediffEdge::mean(Self) -> Double
+pub fn MathfinitediffEdge::min(Self) -> Double
+pub fn MathfinitediffEdge::scale(Self, Double) -> Self
+pub fn MathfinitediffEdge::set(Self, Int32, Double) -> Self
+pub fn MathfinitediffEdge::sum(Self) -> Double
+pub fn MathfinitediffEdge::to_string(Self) -> String
+
+pub(all) struct MathfinitediffFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfinitediffFrame::add(Self, Self) -> Self
+pub fn MathfinitediffFrame::copy(Self) -> Self
+pub fn MathfinitediffFrame::fill(Self, Double) -> Self
+pub fn MathfinitediffFrame::get(Self, Int32) -> Double
+pub fn MathfinitediffFrame::len(Self) -> Int32
+pub fn MathfinitediffFrame::max(Self) -> Double
+pub fn MathfinitediffFrame::mean(Self) -> Double
+pub fn MathfinitediffFrame::min(Self) -> Double
+pub fn MathfinitediffFrame::scale(Self, Double) -> Self
+pub fn MathfinitediffFrame::set(Self, Int32, Double) -> Self
+pub fn MathfinitediffFrame::sum(Self) -> Double
+pub fn MathfinitediffFrame::to_string(Self) -> String
+
+pub(all) struct MathfinitediffGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfinitediffGraphN::add(Self, Self) -> Self
+pub fn MathfinitediffGraphN::copy(Self) -> Self
+pub fn MathfinitediffGraphN::fill(Self, Double) -> Self
+pub fn MathfinitediffGraphN::get(Self, Int32) -> Double
+pub fn MathfinitediffGraphN::len(Self) -> Int32
+pub fn MathfinitediffGraphN::max(Self) -> Double
+pub fn MathfinitediffGraphN::mean(Self) -> Double
+pub fn MathfinitediffGraphN::min(Self) -> Double
+pub fn MathfinitediffGraphN::scale(Self, Double) -> Self
+pub fn MathfinitediffGraphN::set(Self, Int32, Double) -> Self
+pub fn MathfinitediffGraphN::sum(Self) -> Double
+pub fn MathfinitediffGraphN::to_string(Self) -> String
+
+pub(all) struct MathfinitediffLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfinitediffLayer::add(Self, Self) -> Self
+pub fn MathfinitediffLayer::copy(Self) -> Self
+pub fn MathfinitediffLayer::fill(Self, Double) -> Self
+pub fn MathfinitediffLayer::get(Self, Int32) -> Double
+pub fn MathfinitediffLayer::len(Self) -> Int32
+pub fn MathfinitediffLayer::max(Self) -> Double
+pub fn MathfinitediffLayer::mean(Self) -> Double
+pub fn MathfinitediffLayer::min(Self) -> Double
+pub fn MathfinitediffLayer::scale(Self, Double) -> Self
+pub fn MathfinitediffLayer::set(Self, Int32, Double) -> Self
+pub fn MathfinitediffLayer::sum(Self) -> Double
+pub fn MathfinitediffLayer::to_string(Self) -> String
+
+pub(all) struct MathfinitediffMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathfinitediffMatrix::add(Self, Self) -> Self
+pub fn MathfinitediffMatrix::det(Self) -> Double
+pub fn MathfinitediffMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathfinitediffMatrix::multiply(Self, Self) -> Self
+pub fn MathfinitediffMatrix::norm(Self) -> Double
+pub fn MathfinitediffMatrix::scale(Self, Double) -> Self
+pub fn MathfinitediffMatrix::to_string(Self) -> String
+pub fn MathfinitediffMatrix::trace(Self) -> Double
+pub fn MathfinitediffMatrix::transpose(Self) -> Self
+
+pub(all) struct MathfinitediffModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfinitediffModel::add(Self, Self) -> Self
+pub fn MathfinitediffModel::copy(Self) -> Self
+pub fn MathfinitediffModel::fill(Self, Double) -> Self
+pub fn MathfinitediffModel::get(Self, Int32) -> Double
+pub fn MathfinitediffModel::len(Self) -> Int32
+pub fn MathfinitediffModel::max(Self) -> Double
+pub fn MathfinitediffModel::mean(Self) -> Double
+pub fn MathfinitediffModel::min(Self) -> Double
+pub fn MathfinitediffModel::scale(Self, Double) -> Self
+pub fn MathfinitediffModel::set(Self, Int32, Double) -> Self
+pub fn MathfinitediffModel::sum(Self) -> Double
+pub fn MathfinitediffModel::to_string(Self) -> String
+
+pub(all) struct MathfinitediffNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfinitediffNode::add(Self, Self) -> Self
+pub fn MathfinitediffNode::copy(Self) -> Self
+pub fn MathfinitediffNode::fill(Self, Double) -> Self
+pub fn MathfinitediffNode::get(Self, Int32) -> Double
+pub fn MathfinitediffNode::len(Self) -> Int32
+pub fn MathfinitediffNode::max(Self) -> Double
+pub fn MathfinitediffNode::mean(Self) -> Double
+pub fn MathfinitediffNode::min(Self) -> Double
+pub fn MathfinitediffNode::scale(Self, Double) -> Self
+pub fn MathfinitediffNode::set(Self, Int32, Double) -> Self
+pub fn MathfinitediffNode::sum(Self) -> Double
+pub fn MathfinitediffNode::to_string(Self) -> String
+
+pub(all) struct MathfinitediffPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfinitediffPath::add(Self, Self) -> Self
+pub fn MathfinitediffPath::copy(Self) -> Self
+pub fn MathfinitediffPath::fill(Self, Double) -> Self
+pub fn MathfinitediffPath::get(Self, Int32) -> Double
+pub fn MathfinitediffPath::len(Self) -> Int32
+pub fn MathfinitediffPath::max(Self) -> Double
+pub fn MathfinitediffPath::mean(Self) -> Double
+pub fn MathfinitediffPath::min(Self) -> Double
+pub fn MathfinitediffPath::scale(Self, Double) -> Self
+pub fn MathfinitediffPath::set(Self, Int32, Double) -> Self
+pub fn MathfinitediffPath::sum(Self) -> Double
+pub fn MathfinitediffPath::to_string(Self) -> String
+
+pub(all) struct MathfinitediffPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathfinitediffPoint::add(Self, Self) -> Self
+pub fn MathfinitediffPoint::cross(Self, Self) -> Self
+pub fn MathfinitediffPoint::dist(Self, Self) -> Double
+pub fn MathfinitediffPoint::dot(Self, Self) -> Double
+pub fn MathfinitediffPoint::label(Self) -> Int32
+pub fn MathfinitediffPoint::lerp(Self, Self, Double) -> Self
+pub fn MathfinitediffPoint::mid(Self, Self) -> Self
+pub fn MathfinitediffPoint::negate(Self) -> Self
+pub fn MathfinitediffPoint::norm(Self) -> Double
+pub fn MathfinitediffPoint::normalize(Self) -> Self
+pub fn MathfinitediffPoint::scale(Self, Double) -> Self
+pub fn MathfinitediffPoint::sub(Self, Self) -> Self
+pub fn MathfinitediffPoint::to_string(Self) -> String
+pub fn MathfinitediffPoint::x(Self) -> Double
+pub fn MathfinitediffPoint::y(Self) -> Double
+pub fn MathfinitediffPoint::z(Self) -> Double
+
+pub(all) struct MathfinitediffRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfinitediffRange::add(Self, Self) -> Self
+pub fn MathfinitediffRange::copy(Self) -> Self
+pub fn MathfinitediffRange::fill(Self, Double) -> Self
+pub fn MathfinitediffRange::get(Self, Int32) -> Double
+pub fn MathfinitediffRange::len(Self) -> Int32
+pub fn MathfinitediffRange::max(Self) -> Double
+pub fn MathfinitediffRange::mean(Self) -> Double
+pub fn MathfinitediffRange::min(Self) -> Double
+pub fn MathfinitediffRange::scale(Self, Double) -> Self
+pub fn MathfinitediffRange::set(Self, Int32, Double) -> Self
+pub fn MathfinitediffRange::sum(Self) -> Double
+pub fn MathfinitediffRange::to_string(Self) -> String
+
+pub(all) struct MathfinitediffSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathfinitediffSeries::add(Self, Self) -> Self
+pub fn MathfinitediffSeries::cumsum(Self) -> Self
+pub fn MathfinitediffSeries::len(Self) -> Int32
+pub fn MathfinitediffSeries::max(Self) -> Double
+pub fn MathfinitediffSeries::mean(Self) -> Double
+pub fn MathfinitediffSeries::median(Self) -> Double
+pub fn MathfinitediffSeries::min(Self) -> Double
+pub fn MathfinitediffSeries::normalize(Self) -> Self
+pub fn MathfinitediffSeries::range(Self) -> Double
+pub fn MathfinitediffSeries::scale(Self, Double) -> Self
+pub fn MathfinitediffSeries::std(Self) -> Double
+pub fn MathfinitediffSeries::sub(Self, Self) -> Self
+pub fn MathfinitediffSeries::sum(Self) -> Double
+pub fn MathfinitediffSeries::to_string(Self) -> String
+pub fn MathfinitediffSeries::variance(Self) -> Double
+
+pub(all) struct MathfinitediffSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfinitediffSlice::add(Self, Self) -> Self
+pub fn MathfinitediffSlice::copy(Self) -> Self
+pub fn MathfinitediffSlice::fill(Self, Double) -> Self
+pub fn MathfinitediffSlice::get(Self, Int32) -> Double
+pub fn MathfinitediffSlice::len(Self) -> Int32
+pub fn MathfinitediffSlice::max(Self) -> Double
+pub fn MathfinitediffSlice::mean(Self) -> Double
+pub fn MathfinitediffSlice::min(Self) -> Double
+pub fn MathfinitediffSlice::scale(Self, Double) -> Self
+pub fn MathfinitediffSlice::set(Self, Int32, Double) -> Self
+pub fn MathfinitediffSlice::sum(Self) -> Double
+pub fn MathfinitediffSlice::to_string(Self) -> String
+
+pub(all) struct MathfinitediffTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfinitediffTable::add(Self, Self) -> Self
+pub fn MathfinitediffTable::copy(Self) -> Self
+pub fn MathfinitediffTable::fill(Self, Double) -> Self
+pub fn MathfinitediffTable::get(Self, Int32) -> Double
+pub fn MathfinitediffTable::len(Self) -> Int32
+pub fn MathfinitediffTable::max(Self) -> Double
+pub fn MathfinitediffTable::mean(Self) -> Double
+pub fn MathfinitediffTable::min(Self) -> Double
+pub fn MathfinitediffTable::scale(Self, Double) -> Self
+pub fn MathfinitediffTable::set(Self, Int32, Double) -> Self
+pub fn MathfinitediffTable::sum(Self) -> Double
+pub fn MathfinitediffTable::to_string(Self) -> String
+
+pub(all) struct MathfinitediffVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathfinitediffVector::add(Self, Self) -> Self
+pub fn MathfinitediffVector::dist(Self, Self) -> Double
+pub fn MathfinitediffVector::dot(Self, Self) -> Double
+pub fn MathfinitediffVector::norm(Self) -> Double
+pub fn MathfinitediffVector::normalize(Self) -> Self
+pub fn MathfinitediffVector::scale(Self, Double) -> Self
+pub fn MathfinitediffVector::sub(Self, Self) -> Self
+pub fn MathfinitediffVector::to_string(Self) -> String
+
+pub(all) struct MathfinitediffView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathfinitediffView::add(Self, Self) -> Self
+pub fn MathfinitediffView::copy(Self) -> Self
+pub fn MathfinitediffView::fill(Self, Double) -> Self
+pub fn MathfinitediffView::get(Self, Int32) -> Double
+pub fn MathfinitediffView::len(Self) -> Int32
+pub fn MathfinitediffView::max(Self) -> Double
+pub fn MathfinitediffView::mean(Self) -> Double
+pub fn MathfinitediffView::min(Self) -> Double
+pub fn MathfinitediffView::scale(Self, Double) -> Self
+pub fn MathfinitediffView::set(Self, Int32, Double) -> Self
+pub fn MathfinitediffView::sum(Self) -> Double
+pub fn MathfinitediffView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

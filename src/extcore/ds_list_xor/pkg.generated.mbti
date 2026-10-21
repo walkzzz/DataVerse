@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_list_xor"
+
+// Values
+pub fn ds_list_xor_buffer_make(Int32) -> DslistxorBuffer
+
+pub fn ds_list_xor_cluster_make(Int32) -> DslistxorCluster
+
+pub fn ds_list_xor_cursor_make(Int32) -> DslistxorCursor
+
+pub fn ds_list_xor_edge_make(Int32) -> DslistxorEdge
+
+pub fn ds_list_xor_frame_make(Int32) -> DslistxorFrame
+
+pub fn ds_list_xor_graphn_make(Int32) -> DslistxorGraphN
+
+pub fn ds_list_xor_layer_make(Int32) -> DslistxorLayer
+
+pub fn ds_list_xor_make_matrix(Int32, Int32, Double) -> DslistxorMatrix
+
+pub fn ds_list_xor_make_point(Double, Double) -> DslistxorPoint
+
+pub fn ds_list_xor_make_point3(Double, Double, Double) -> DslistxorPoint
+
+pub fn ds_list_xor_make_series(Array[Double], String) -> DslistxorSeries
+
+pub fn ds_list_xor_make_vector(Array[Double]) -> DslistxorVector
+
+pub fn ds_list_xor_matrix_identity(Int32) -> DslistxorMatrix
+
+pub fn ds_list_xor_model_make(Int32) -> DslistxorModel
+
+pub fn ds_list_xor_node_make(Int32) -> DslistxorNode
+
+pub fn ds_list_xor_path_make(Int32) -> DslistxorPath
+
+pub fn ds_list_xor_range_make(Int32) -> DslistxorRange
+
+pub fn ds_list_xor_slice_make(Int32) -> DslistxorSlice
+
+pub fn ds_list_xor_table_make(Int32) -> DslistxorTable
+
+pub fn ds_list_xor_vector_zero(Int32) -> DslistxorVector
+
+pub fn ds_list_xor_view_make(Int32) -> DslistxorView
+
+// Errors
+
+// Types and methods
+pub(all) struct DslistxorBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistxorBuffer::add(Self, Self) -> Self
+pub fn DslistxorBuffer::copy(Self) -> Self
+pub fn DslistxorBuffer::fill(Self, Double) -> Self
+pub fn DslistxorBuffer::get(Self, Int32) -> Double
+pub fn DslistxorBuffer::len(Self) -> Int32
+pub fn DslistxorBuffer::max(Self) -> Double
+pub fn DslistxorBuffer::mean(Self) -> Double
+pub fn DslistxorBuffer::min(Self) -> Double
+pub fn DslistxorBuffer::scale(Self, Double) -> Self
+pub fn DslistxorBuffer::set(Self, Int32, Double) -> Self
+pub fn DslistxorBuffer::sum(Self) -> Double
+pub fn DslistxorBuffer::to_string(Self) -> String
+
+pub(all) struct DslistxorCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistxorCluster::add(Self, Self) -> Self
+pub fn DslistxorCluster::copy(Self) -> Self
+pub fn DslistxorCluster::fill(Self, Double) -> Self
+pub fn DslistxorCluster::get(Self, Int32) -> Double
+pub fn DslistxorCluster::len(Self) -> Int32
+pub fn DslistxorCluster::max(Self) -> Double
+pub fn DslistxorCluster::mean(Self) -> Double
+pub fn DslistxorCluster::min(Self) -> Double
+pub fn DslistxorCluster::scale(Self, Double) -> Self
+pub fn DslistxorCluster::set(Self, Int32, Double) -> Self
+pub fn DslistxorCluster::sum(Self) -> Double
+pub fn DslistxorCluster::to_string(Self) -> String
+
+pub(all) struct DslistxorCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistxorCursor::add(Self, Self) -> Self
+pub fn DslistxorCursor::copy(Self) -> Self
+pub fn DslistxorCursor::fill(Self, Double) -> Self
+pub fn DslistxorCursor::get(Self, Int32) -> Double
+pub fn DslistxorCursor::len(Self) -> Int32
+pub fn DslistxorCursor::max(Self) -> Double
+pub fn DslistxorCursor::mean(Self) -> Double
+pub fn DslistxorCursor::min(Self) -> Double
+pub fn DslistxorCursor::scale(Self, Double) -> Self
+pub fn DslistxorCursor::set(Self, Int32, Double) -> Self
+pub fn DslistxorCursor::sum(Self) -> Double
+pub fn DslistxorCursor::to_string(Self) -> String
+
+pub(all) struct DslistxorEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistxorEdge::add(Self, Self) -> Self
+pub fn DslistxorEdge::copy(Self) -> Self
+pub fn DslistxorEdge::fill(Self, Double) -> Self
+pub fn DslistxorEdge::get(Self, Int32) -> Double
+pub fn DslistxorEdge::len(Self) -> Int32
+pub fn DslistxorEdge::max(Self) -> Double
+pub fn DslistxorEdge::mean(Self) -> Double
+pub fn DslistxorEdge::min(Self) -> Double
+pub fn DslistxorEdge::scale(Self, Double) -> Self
+pub fn DslistxorEdge::set(Self, Int32, Double) -> Self
+pub fn DslistxorEdge::sum(Self) -> Double
+pub fn DslistxorEdge::to_string(Self) -> String
+
+pub(all) struct DslistxorFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistxorFrame::add(Self, Self) -> Self
+pub fn DslistxorFrame::copy(Self) -> Self
+pub fn DslistxorFrame::fill(Self, Double) -> Self
+pub fn DslistxorFrame::get(Self, Int32) -> Double
+pub fn DslistxorFrame::len(Self) -> Int32
+pub fn DslistxorFrame::max(Self) -> Double
+pub fn DslistxorFrame::mean(Self) -> Double
+pub fn DslistxorFrame::min(Self) -> Double
+pub fn DslistxorFrame::scale(Self, Double) -> Self
+pub fn DslistxorFrame::set(Self, Int32, Double) -> Self
+pub fn DslistxorFrame::sum(Self) -> Double
+pub fn DslistxorFrame::to_string(Self) -> String
+
+pub(all) struct DslistxorGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistxorGraphN::add(Self, Self) -> Self
+pub fn DslistxorGraphN::copy(Self) -> Self
+pub fn DslistxorGraphN::fill(Self, Double) -> Self
+pub fn DslistxorGraphN::get(Self, Int32) -> Double
+pub fn DslistxorGraphN::len(Self) -> Int32
+pub fn DslistxorGraphN::max(Self) -> Double
+pub fn DslistxorGraphN::mean(Self) -> Double
+pub fn DslistxorGraphN::min(Self) -> Double
+pub fn DslistxorGraphN::scale(Self, Double) -> Self
+pub fn DslistxorGraphN::set(Self, Int32, Double) -> Self
+pub fn DslistxorGraphN::sum(Self) -> Double
+pub fn DslistxorGraphN::to_string(Self) -> String
+
+pub(all) struct DslistxorLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistxorLayer::add(Self, Self) -> Self
+pub fn DslistxorLayer::copy(Self) -> Self
+pub fn DslistxorLayer::fill(Self, Double) -> Self
+pub fn DslistxorLayer::get(Self, Int32) -> Double
+pub fn DslistxorLayer::len(Self) -> Int32
+pub fn DslistxorLayer::max(Self) -> Double
+pub fn DslistxorLayer::mean(Self) -> Double
+pub fn DslistxorLayer::min(Self) -> Double
+pub fn DslistxorLayer::scale(Self, Double) -> Self
+pub fn DslistxorLayer::set(Self, Int32, Double) -> Self
+pub fn DslistxorLayer::sum(Self) -> Double
+pub fn DslistxorLayer::to_string(Self) -> String
+
+pub(all) struct DslistxorMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DslistxorMatrix::add(Self, Self) -> Self
+pub fn DslistxorMatrix::det(Self) -> Double
+pub fn DslistxorMatrix::get(Self, Int32, Int32) -> Double
+pub fn DslistxorMatrix::multiply(Self, Self) -> Self
+pub fn DslistxorMatrix::norm(Self) -> Double
+pub fn DslistxorMatrix::scale(Self, Double) -> Self
+pub fn DslistxorMatrix::to_string(Self) -> String
+pub fn DslistxorMatrix::trace(Self) -> Double
+pub fn DslistxorMatrix::transpose(Self) -> Self
+
+pub(all) struct DslistxorModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistxorModel::add(Self, Self) -> Self
+pub fn DslistxorModel::copy(Self) -> Self
+pub fn DslistxorModel::fill(Self, Double) -> Self
+pub fn DslistxorModel::get(Self, Int32) -> Double
+pub fn DslistxorModel::len(Self) -> Int32
+pub fn DslistxorModel::max(Self) -> Double
+pub fn DslistxorModel::mean(Self) -> Double
+pub fn DslistxorModel::min(Self) -> Double
+pub fn DslistxorModel::scale(Self, Double) -> Self
+pub fn DslistxorModel::set(Self, Int32, Double) -> Self
+pub fn DslistxorModel::sum(Self) -> Double
+pub fn DslistxorModel::to_string(Self) -> String
+
+pub(all) struct DslistxorNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistxorNode::add(Self, Self) -> Self
+pub fn DslistxorNode::copy(Self) -> Self
+pub fn DslistxorNode::fill(Self, Double) -> Self
+pub fn DslistxorNode::get(Self, Int32) -> Double
+pub fn DslistxorNode::len(Self) -> Int32
+pub fn DslistxorNode::max(Self) -> Double
+pub fn DslistxorNode::mean(Self) -> Double
+pub fn DslistxorNode::min(Self) -> Double
+pub fn DslistxorNode::scale(Self, Double) -> Self
+pub fn DslistxorNode::set(Self, Int32, Double) -> Self
+pub fn DslistxorNode::sum(Self) -> Double
+pub fn DslistxorNode::to_string(Self) -> String
+
+pub(all) struct DslistxorPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistxorPath::add(Self, Self) -> Self
+pub fn DslistxorPath::copy(Self) -> Self
+pub fn DslistxorPath::fill(Self, Double) -> Self
+pub fn DslistxorPath::get(Self, Int32) -> Double
+pub fn DslistxorPath::len(Self) -> Int32
+pub fn DslistxorPath::max(Self) -> Double
+pub fn DslistxorPath::mean(Self) -> Double
+pub fn DslistxorPath::min(Self) -> Double
+pub fn DslistxorPath::scale(Self, Double) -> Self
+pub fn DslistxorPath::set(Self, Int32, Double) -> Self
+pub fn DslistxorPath::sum(Self) -> Double
+pub fn DslistxorPath::to_string(Self) -> String
+
+pub(all) struct DslistxorPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DslistxorPoint::add(Self, Self) -> Self
+pub fn DslistxorPoint::cross(Self, Self) -> Self
+pub fn DslistxorPoint::dist(Self, Self) -> Double
+pub fn DslistxorPoint::dot(Self, Self) -> Double
+pub fn DslistxorPoint::label(Self) -> Int32
+pub fn DslistxorPoint::lerp(Self, Self, Double) -> Self
+pub fn DslistxorPoint::mid(Self, Self) -> Self
+pub fn DslistxorPoint::negate(Self) -> Self
+pub fn DslistxorPoint::norm(Self) -> Double
+pub fn DslistxorPoint::normalize(Self) -> Self
+pub fn DslistxorPoint::scale(Self, Double) -> Self
+pub fn DslistxorPoint::sub(Self, Self) -> Self
+pub fn DslistxorPoint::to_string(Self) -> String
+pub fn DslistxorPoint::x(Self) -> Double
+pub fn DslistxorPoint::y(Self) -> Double
+pub fn DslistxorPoint::z(Self) -> Double
+
+pub(all) struct DslistxorRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistxorRange::add(Self, Self) -> Self
+pub fn DslistxorRange::copy(Self) -> Self
+pub fn DslistxorRange::fill(Self, Double) -> Self
+pub fn DslistxorRange::get(Self, Int32) -> Double
+pub fn DslistxorRange::len(Self) -> Int32
+pub fn DslistxorRange::max(Self) -> Double
+pub fn DslistxorRange::mean(Self) -> Double
+pub fn DslistxorRange::min(Self) -> Double
+pub fn DslistxorRange::scale(Self, Double) -> Self
+pub fn DslistxorRange::set(Self, Int32, Double) -> Self
+pub fn DslistxorRange::sum(Self) -> Double
+pub fn DslistxorRange::to_string(Self) -> String
+
+pub(all) struct DslistxorSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DslistxorSeries::add(Self, Self) -> Self
+pub fn DslistxorSeries::cumsum(Self) -> Self
+pub fn DslistxorSeries::len(Self) -> Int32
+pub fn DslistxorSeries::max(Self) -> Double
+pub fn DslistxorSeries::mean(Self) -> Double
+pub fn DslistxorSeries::median(Self) -> Double
+pub fn DslistxorSeries::min(Self) -> Double
+pub fn DslistxorSeries::normalize(Self) -> Self
+pub fn DslistxorSeries::range(Self) -> Double
+pub fn DslistxorSeries::scale(Self, Double) -> Self
+pub fn DslistxorSeries::std(Self) -> Double
+pub fn DslistxorSeries::sub(Self, Self) -> Self
+pub fn DslistxorSeries::sum(Self) -> Double
+pub fn DslistxorSeries::to_string(Self) -> String
+pub fn DslistxorSeries::variance(Self) -> Double
+
+pub(all) struct DslistxorSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistxorSlice::add(Self, Self) -> Self
+pub fn DslistxorSlice::copy(Self) -> Self
+pub fn DslistxorSlice::fill(Self, Double) -> Self
+pub fn DslistxorSlice::get(Self, Int32) -> Double
+pub fn DslistxorSlice::len(Self) -> Int32
+pub fn DslistxorSlice::max(Self) -> Double
+pub fn DslistxorSlice::mean(Self) -> Double
+pub fn DslistxorSlice::min(Self) -> Double
+pub fn DslistxorSlice::scale(Self, Double) -> Self
+pub fn DslistxorSlice::set(Self, Int32, Double) -> Self
+pub fn DslistxorSlice::sum(Self) -> Double
+pub fn DslistxorSlice::to_string(Self) -> String
+
+pub(all) struct DslistxorTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistxorTable::add(Self, Self) -> Self
+pub fn DslistxorTable::copy(Self) -> Self
+pub fn DslistxorTable::fill(Self, Double) -> Self
+pub fn DslistxorTable::get(Self, Int32) -> Double
+pub fn DslistxorTable::len(Self) -> Int32
+pub fn DslistxorTable::max(Self) -> Double
+pub fn DslistxorTable::mean(Self) -> Double
+pub fn DslistxorTable::min(Self) -> Double
+pub fn DslistxorTable::scale(Self, Double) -> Self
+pub fn DslistxorTable::set(Self, Int32, Double) -> Self
+pub fn DslistxorTable::sum(Self) -> Double
+pub fn DslistxorTable::to_string(Self) -> String
+
+pub(all) struct DslistxorVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DslistxorVector::add(Self, Self) -> Self
+pub fn DslistxorVector::dist(Self, Self) -> Double
+pub fn DslistxorVector::dot(Self, Self) -> Double
+pub fn DslistxorVector::norm(Self) -> Double
+pub fn DslistxorVector::normalize(Self) -> Self
+pub fn DslistxorVector::scale(Self, Double) -> Self
+pub fn DslistxorVector::sub(Self, Self) -> Self
+pub fn DslistxorVector::to_string(Self) -> String
+
+pub(all) struct DslistxorView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistxorView::add(Self, Self) -> Self
+pub fn DslistxorView::copy(Self) -> Self
+pub fn DslistxorView::fill(Self, Double) -> Self
+pub fn DslistxorView::get(Self, Int32) -> Double
+pub fn DslistxorView::len(Self) -> Int32
+pub fn DslistxorView::max(Self) -> Double
+pub fn DslistxorView::mean(Self) -> Double
+pub fn DslistxorView::min(Self) -> Double
+pub fn DslistxorView::scale(Self, Double) -> Self
+pub fn DslistxorView::set(Self, Int32, Double) -> Self
+pub fn DslistxorView::sum(Self) -> Double
+pub fn DslistxorView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_approx_interp"
+
+// Values
+pub fn math_approx_interp_buffer_make(Int32) -> MathapproxinterpBuffer
+
+pub fn math_approx_interp_cluster_make(Int32) -> MathapproxinterpCluster
+
+pub fn math_approx_interp_cursor_make(Int32) -> MathapproxinterpCursor
+
+pub fn math_approx_interp_edge_make(Int32) -> MathapproxinterpEdge
+
+pub fn math_approx_interp_frame_make(Int32) -> MathapproxinterpFrame
+
+pub fn math_approx_interp_graphn_make(Int32) -> MathapproxinterpGraphN
+
+pub fn math_approx_interp_layer_make(Int32) -> MathapproxinterpLayer
+
+pub fn math_approx_interp_make_matrix(Int32, Int32, Double) -> MathapproxinterpMatrix
+
+pub fn math_approx_interp_make_point(Double, Double) -> MathapproxinterpPoint
+
+pub fn math_approx_interp_make_point3(Double, Double, Double) -> MathapproxinterpPoint
+
+pub fn math_approx_interp_make_series(Array[Double], String) -> MathapproxinterpSeries
+
+pub fn math_approx_interp_make_vector(Array[Double]) -> MathapproxinterpVector
+
+pub fn math_approx_interp_matrix_identity(Int32) -> MathapproxinterpMatrix
+
+pub fn math_approx_interp_model_make(Int32) -> MathapproxinterpModel
+
+pub fn math_approx_interp_node_make(Int32) -> MathapproxinterpNode
+
+pub fn math_approx_interp_path_make(Int32) -> MathapproxinterpPath
+
+pub fn math_approx_interp_range_make(Int32) -> MathapproxinterpRange
+
+pub fn math_approx_interp_slice_make(Int32) -> MathapproxinterpSlice
+
+pub fn math_approx_interp_table_make(Int32) -> MathapproxinterpTable
+
+pub fn math_approx_interp_vector_zero(Int32) -> MathapproxinterpVector
+
+pub fn math_approx_interp_view_make(Int32) -> MathapproxinterpView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathapproxinterpBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxinterpBuffer::add(Self, Self) -> Self
+pub fn MathapproxinterpBuffer::copy(Self) -> Self
+pub fn MathapproxinterpBuffer::fill(Self, Double) -> Self
+pub fn MathapproxinterpBuffer::get(Self, Int32) -> Double
+pub fn MathapproxinterpBuffer::len(Self) -> Int32
+pub fn MathapproxinterpBuffer::max(Self) -> Double
+pub fn MathapproxinterpBuffer::mean(Self) -> Double
+pub fn MathapproxinterpBuffer::min(Self) -> Double
+pub fn MathapproxinterpBuffer::scale(Self, Double) -> Self
+pub fn MathapproxinterpBuffer::set(Self, Int32, Double) -> Self
+pub fn MathapproxinterpBuffer::sum(Self) -> Double
+pub fn MathapproxinterpBuffer::to_string(Self) -> String
+
+pub(all) struct MathapproxinterpCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxinterpCluster::add(Self, Self) -> Self
+pub fn MathapproxinterpCluster::copy(Self) -> Self
+pub fn MathapproxinterpCluster::fill(Self, Double) -> Self
+pub fn MathapproxinterpCluster::get(Self, Int32) -> Double
+pub fn MathapproxinterpCluster::len(Self) -> Int32
+pub fn MathapproxinterpCluster::max(Self) -> Double
+pub fn MathapproxinterpCluster::mean(Self) -> Double
+pub fn MathapproxinterpCluster::min(Self) -> Double
+pub fn MathapproxinterpCluster::scale(Self, Double) -> Self
+pub fn MathapproxinterpCluster::set(Self, Int32, Double) -> Self
+pub fn MathapproxinterpCluster::sum(Self) -> Double
+pub fn MathapproxinterpCluster::to_string(Self) -> String
+
+pub(all) struct MathapproxinterpCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxinterpCursor::add(Self, Self) -> Self
+pub fn MathapproxinterpCursor::copy(Self) -> Self
+pub fn MathapproxinterpCursor::fill(Self, Double) -> Self
+pub fn MathapproxinterpCursor::get(Self, Int32) -> Double
+pub fn MathapproxinterpCursor::len(Self) -> Int32
+pub fn MathapproxinterpCursor::max(Self) -> Double
+pub fn MathapproxinterpCursor::mean(Self) -> Double
+pub fn MathapproxinterpCursor::min(Self) -> Double
+pub fn MathapproxinterpCursor::scale(Self, Double) -> Self
+pub fn MathapproxinterpCursor::set(Self, Int32, Double) -> Self
+pub fn MathapproxinterpCursor::sum(Self) -> Double
+pub fn MathapproxinterpCursor::to_string(Self) -> String
+
+pub(all) struct MathapproxinterpEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxinterpEdge::add(Self, Self) -> Self
+pub fn MathapproxinterpEdge::copy(Self) -> Self
+pub fn MathapproxinterpEdge::fill(Self, Double) -> Self
+pub fn MathapproxinterpEdge::get(Self, Int32) -> Double
+pub fn MathapproxinterpEdge::len(Self) -> Int32
+pub fn MathapproxinterpEdge::max(Self) -> Double
+pub fn MathapproxinterpEdge::mean(Self) -> Double
+pub fn MathapproxinterpEdge::min(Self) -> Double
+pub fn MathapproxinterpEdge::scale(Self, Double) -> Self
+pub fn MathapproxinterpEdge::set(Self, Int32, Double) -> Self
+pub fn MathapproxinterpEdge::sum(Self) -> Double
+pub fn MathapproxinterpEdge::to_string(Self) -> String
+
+pub(all) struct MathapproxinterpFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxinterpFrame::add(Self, Self) -> Self
+pub fn MathapproxinterpFrame::copy(Self) -> Self
+pub fn MathapproxinterpFrame::fill(Self, Double) -> Self
+pub fn MathapproxinterpFrame::get(Self, Int32) -> Double
+pub fn MathapproxinterpFrame::len(Self) -> Int32
+pub fn MathapproxinterpFrame::max(Self) -> Double
+pub fn MathapproxinterpFrame::mean(Self) -> Double
+pub fn MathapproxinterpFrame::min(Self) -> Double
+pub fn MathapproxinterpFrame::scale(Self, Double) -> Self
+pub fn MathapproxinterpFrame::set(Self, Int32, Double) -> Self
+pub fn MathapproxinterpFrame::sum(Self) -> Double
+pub fn MathapproxinterpFrame::to_string(Self) -> String
+
+pub(all) struct MathapproxinterpGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxinterpGraphN::add(Self, Self) -> Self
+pub fn MathapproxinterpGraphN::copy(Self) -> Self
+pub fn MathapproxinterpGraphN::fill(Self, Double) -> Self
+pub fn MathapproxinterpGraphN::get(Self, Int32) -> Double
+pub fn MathapproxinterpGraphN::len(Self) -> Int32
+pub fn MathapproxinterpGraphN::max(Self) -> Double
+pub fn MathapproxinterpGraphN::mean(Self) -> Double
+pub fn MathapproxinterpGraphN::min(Self) -> Double
+pub fn MathapproxinterpGraphN::scale(Self, Double) -> Self
+pub fn MathapproxinterpGraphN::set(Self, Int32, Double) -> Self
+pub fn MathapproxinterpGraphN::sum(Self) -> Double
+pub fn MathapproxinterpGraphN::to_string(Self) -> String
+
+pub(all) struct MathapproxinterpLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxinterpLayer::add(Self, Self) -> Self
+pub fn MathapproxinterpLayer::copy(Self) -> Self
+pub fn MathapproxinterpLayer::fill(Self, Double) -> Self
+pub fn MathapproxinterpLayer::get(Self, Int32) -> Double
+pub fn MathapproxinterpLayer::len(Self) -> Int32
+pub fn MathapproxinterpLayer::max(Self) -> Double
+pub fn MathapproxinterpLayer::mean(Self) -> Double
+pub fn MathapproxinterpLayer::min(Self) -> Double
+pub fn MathapproxinterpLayer::scale(Self, Double) -> Self
+pub fn MathapproxinterpLayer::set(Self, Int32, Double) -> Self
+pub fn MathapproxinterpLayer::sum(Self) -> Double
+pub fn MathapproxinterpLayer::to_string(Self) -> String
+
+pub(all) struct MathapproxinterpMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathapproxinterpMatrix::add(Self, Self) -> Self
+pub fn MathapproxinterpMatrix::det(Self) -> Double
+pub fn MathapproxinterpMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathapproxinterpMatrix::multiply(Self, Self) -> Self
+pub fn MathapproxinterpMatrix::norm(Self) -> Double
+pub fn MathapproxinterpMatrix::scale(Self, Double) -> Self
+pub fn MathapproxinterpMatrix::to_string(Self) -> String
+pub fn MathapproxinterpMatrix::trace(Self) -> Double
+pub fn MathapproxinterpMatrix::transpose(Self) -> Self
+
+pub(all) struct MathapproxinterpModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxinterpModel::add(Self, Self) -> Self
+pub fn MathapproxinterpModel::copy(Self) -> Self
+pub fn MathapproxinterpModel::fill(Self, Double) -> Self
+pub fn MathapproxinterpModel::get(Self, Int32) -> Double
+pub fn MathapproxinterpModel::len(Self) -> Int32
+pub fn MathapproxinterpModel::max(Self) -> Double
+pub fn MathapproxinterpModel::mean(Self) -> Double
+pub fn MathapproxinterpModel::min(Self) -> Double
+pub fn MathapproxinterpModel::scale(Self, Double) -> Self
+pub fn MathapproxinterpModel::set(Self, Int32, Double) -> Self
+pub fn MathapproxinterpModel::sum(Self) -> Double
+pub fn MathapproxinterpModel::to_string(Self) -> String
+
+pub(all) struct MathapproxinterpNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxinterpNode::add(Self, Self) -> Self
+pub fn MathapproxinterpNode::copy(Self) -> Self
+pub fn MathapproxinterpNode::fill(Self, Double) -> Self
+pub fn MathapproxinterpNode::get(Self, Int32) -> Double
+pub fn MathapproxinterpNode::len(Self) -> Int32
+pub fn MathapproxinterpNode::max(Self) -> Double
+pub fn MathapproxinterpNode::mean(Self) -> Double
+pub fn MathapproxinterpNode::min(Self) -> Double
+pub fn MathapproxinterpNode::scale(Self, Double) -> Self
+pub fn MathapproxinterpNode::set(Self, Int32, Double) -> Self
+pub fn MathapproxinterpNode::sum(Self) -> Double
+pub fn MathapproxinterpNode::to_string(Self) -> String
+
+pub(all) struct MathapproxinterpPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxinterpPath::add(Self, Self) -> Self
+pub fn MathapproxinterpPath::copy(Self) -> Self
+pub fn MathapproxinterpPath::fill(Self, Double) -> Self
+pub fn MathapproxinterpPath::get(Self, Int32) -> Double
+pub fn MathapproxinterpPath::len(Self) -> Int32
+pub fn MathapproxinterpPath::max(Self) -> Double
+pub fn MathapproxinterpPath::mean(Self) -> Double
+pub fn MathapproxinterpPath::min(Self) -> Double
+pub fn MathapproxinterpPath::scale(Self, Double) -> Self
+pub fn MathapproxinterpPath::set(Self, Int32, Double) -> Self
+pub fn MathapproxinterpPath::sum(Self) -> Double
+pub fn MathapproxinterpPath::to_string(Self) -> String
+
+pub(all) struct MathapproxinterpPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathapproxinterpPoint::add(Self, Self) -> Self
+pub fn MathapproxinterpPoint::cross(Self, Self) -> Self
+pub fn MathapproxinterpPoint::dist(Self, Self) -> Double
+pub fn MathapproxinterpPoint::dot(Self, Self) -> Double
+pub fn MathapproxinterpPoint::label(Self) -> Int32
+pub fn MathapproxinterpPoint::lerp(Self, Self, Double) -> Self
+pub fn MathapproxinterpPoint::mid(Self, Self) -> Self
+pub fn MathapproxinterpPoint::negate(Self) -> Self
+pub fn MathapproxinterpPoint::norm(Self) -> Double
+pub fn MathapproxinterpPoint::normalize(Self) -> Self
+pub fn MathapproxinterpPoint::scale(Self, Double) -> Self
+pub fn MathapproxinterpPoint::sub(Self, Self) -> Self
+pub fn MathapproxinterpPoint::to_string(Self) -> String
+pub fn MathapproxinterpPoint::x(Self) -> Double
+pub fn MathapproxinterpPoint::y(Self) -> Double
+pub fn MathapproxinterpPoint::z(Self) -> Double
+
+pub(all) struct MathapproxinterpRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxinterpRange::add(Self, Self) -> Self
+pub fn MathapproxinterpRange::copy(Self) -> Self
+pub fn MathapproxinterpRange::fill(Self, Double) -> Self
+pub fn MathapproxinterpRange::get(Self, Int32) -> Double
+pub fn MathapproxinterpRange::len(Self) -> Int32
+pub fn MathapproxinterpRange::max(Self) -> Double
+pub fn MathapproxinterpRange::mean(Self) -> Double
+pub fn MathapproxinterpRange::min(Self) -> Double
+pub fn MathapproxinterpRange::scale(Self, Double) -> Self
+pub fn MathapproxinterpRange::set(Self, Int32, Double) -> Self
+pub fn MathapproxinterpRange::sum(Self) -> Double
+pub fn MathapproxinterpRange::to_string(Self) -> String
+
+pub(all) struct MathapproxinterpSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathapproxinterpSeries::add(Self, Self) -> Self
+pub fn MathapproxinterpSeries::cumsum(Self) -> Self
+pub fn MathapproxinterpSeries::len(Self) -> Int32
+pub fn MathapproxinterpSeries::max(Self) -> Double
+pub fn MathapproxinterpSeries::mean(Self) -> Double
+pub fn MathapproxinterpSeries::median(Self) -> Double
+pub fn MathapproxinterpSeries::min(Self) -> Double
+pub fn MathapproxinterpSeries::normalize(Self) -> Self
+pub fn MathapproxinterpSeries::range(Self) -> Double
+pub fn MathapproxinterpSeries::scale(Self, Double) -> Self
+pub fn MathapproxinterpSeries::std(Self) -> Double
+pub fn MathapproxinterpSeries::sub(Self, Self) -> Self
+pub fn MathapproxinterpSeries::sum(Self) -> Double
+pub fn MathapproxinterpSeries::to_string(Self) -> String
+pub fn MathapproxinterpSeries::variance(Self) -> Double
+
+pub(all) struct MathapproxinterpSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxinterpSlice::add(Self, Self) -> Self
+pub fn MathapproxinterpSlice::copy(Self) -> Self
+pub fn MathapproxinterpSlice::fill(Self, Double) -> Self
+pub fn MathapproxinterpSlice::get(Self, Int32) -> Double
+pub fn MathapproxinterpSlice::len(Self) -> Int32
+pub fn MathapproxinterpSlice::max(Self) -> Double
+pub fn MathapproxinterpSlice::mean(Self) -> Double
+pub fn MathapproxinterpSlice::min(Self) -> Double
+pub fn MathapproxinterpSlice::scale(Self, Double) -> Self
+pub fn MathapproxinterpSlice::set(Self, Int32, Double) -> Self
+pub fn MathapproxinterpSlice::sum(Self) -> Double
+pub fn MathapproxinterpSlice::to_string(Self) -> String
+
+pub(all) struct MathapproxinterpTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxinterpTable::add(Self, Self) -> Self
+pub fn MathapproxinterpTable::copy(Self) -> Self
+pub fn MathapproxinterpTable::fill(Self, Double) -> Self
+pub fn MathapproxinterpTable::get(Self, Int32) -> Double
+pub fn MathapproxinterpTable::len(Self) -> Int32
+pub fn MathapproxinterpTable::max(Self) -> Double
+pub fn MathapproxinterpTable::mean(Self) -> Double
+pub fn MathapproxinterpTable::min(Self) -> Double
+pub fn MathapproxinterpTable::scale(Self, Double) -> Self
+pub fn MathapproxinterpTable::set(Self, Int32, Double) -> Self
+pub fn MathapproxinterpTable::sum(Self) -> Double
+pub fn MathapproxinterpTable::to_string(Self) -> String
+
+pub(all) struct MathapproxinterpVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathapproxinterpVector::add(Self, Self) -> Self
+pub fn MathapproxinterpVector::dist(Self, Self) -> Double
+pub fn MathapproxinterpVector::dot(Self, Self) -> Double
+pub fn MathapproxinterpVector::norm(Self) -> Double
+pub fn MathapproxinterpVector::normalize(Self) -> Self
+pub fn MathapproxinterpVector::scale(Self, Double) -> Self
+pub fn MathapproxinterpVector::sub(Self, Self) -> Self
+pub fn MathapproxinterpVector::to_string(Self) -> String
+
+pub(all) struct MathapproxinterpView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxinterpView::add(Self, Self) -> Self
+pub fn MathapproxinterpView::copy(Self) -> Self
+pub fn MathapproxinterpView::fill(Self, Double) -> Self
+pub fn MathapproxinterpView::get(Self, Int32) -> Double
+pub fn MathapproxinterpView::len(Self) -> Int32
+pub fn MathapproxinterpView::max(Self) -> Double
+pub fn MathapproxinterpView::mean(Self) -> Double
+pub fn MathapproxinterpView::min(Self) -> Double
+pub fn MathapproxinterpView::scale(Self, Double) -> Self
+pub fn MathapproxinterpView::set(Self, Int32, Double) -> Self
+pub fn MathapproxinterpView::sum(Self) -> Double
+pub fn MathapproxinterpView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

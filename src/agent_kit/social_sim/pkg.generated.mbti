@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/social_sim"
+
+// Values
+pub fn social_sim_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn social_sim_corr(Array[Double], Array[Double]) -> Double
+
+pub fn social_sim_cov(Array[Double], Array[Double]) -> Double
+
+pub fn social_sim_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn social_sim_mae(Array[Double], Array[Double]) -> Double
+
+pub fn social_sim_make_labeled_point(Double, Double, Int32) -> Social_simPoint
+
+pub fn social_sim_make_matrix(Int32, Int32, Double) -> Social_simMatrix
+
+pub fn social_sim_make_point(Double, Double) -> Social_simPoint
+
+pub fn social_sim_make_series(Array[Double], String) -> Social_simSeries
+
+pub fn social_sim_make_vector(Array[Double]) -> Social_simVector
+
+pub fn social_sim_matrix_add(Social_simMatrix, Social_simMatrix) -> Social_simMatrix
+
+pub fn social_sim_matrix_get(Social_simMatrix, Int32, Int32) -> Double
+
+pub fn social_sim_matrix_identity(Int32) -> Social_simMatrix
+
+pub fn social_sim_matrix_multiply(Social_simMatrix, Social_simMatrix) -> Social_simMatrix
+
+pub fn social_sim_matrix_norm(Social_simMatrix) -> Double
+
+pub fn social_sim_matrix_scale(Social_simMatrix, Double) -> Social_simMatrix
+
+pub fn social_sim_matrix_to_string(Social_simMatrix) -> String
+
+pub fn social_sim_matrix_trace(Social_simMatrix) -> Double
+
+pub fn social_sim_matrix_transpose(Social_simMatrix) -> Social_simMatrix
+
+pub fn social_sim_mse(Array[Double], Array[Double]) -> Double
+
+pub fn social_sim_point_add(Social_simPoint, Social_simPoint) -> Social_simPoint
+
+pub fn social_sim_point_dist(Social_simPoint, Social_simPoint) -> Double
+
+pub fn social_sim_point_dot(Social_simPoint, Social_simPoint) -> Double
+
+pub fn social_sim_point_label(Social_simPoint) -> Int32
+
+pub fn social_sim_point_norm(Social_simPoint) -> Double
+
+pub fn social_sim_point_scale(Social_simPoint, Double) -> Social_simPoint
+
+pub fn social_sim_point_sub(Social_simPoint, Social_simPoint) -> Social_simPoint
+
+pub fn social_sim_point_to_string(Social_simPoint) -> String
+
+pub fn social_sim_point_x(Social_simPoint) -> Double
+
+pub fn social_sim_point_y(Social_simPoint) -> Double
+
+pub fn social_sim_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn social_sim_r2(Array[Double], Array[Double]) -> Double
+
+pub fn social_sim_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn social_sim_series_add(Social_simSeries, Social_simSeries) -> Social_simSeries
+
+pub fn social_sim_series_len(Social_simSeries) -> Int32
+
+pub fn social_sim_series_max(Social_simSeries) -> Double
+
+pub fn social_sim_series_mean(Social_simSeries) -> Double
+
+pub fn social_sim_series_min(Social_simSeries) -> Double
+
+pub fn social_sim_series_scale(Social_simSeries, Double) -> Social_simSeries
+
+pub fn social_sim_series_std(Social_simSeries) -> Double
+
+pub fn social_sim_series_sum(Social_simSeries) -> Double
+
+pub fn social_sim_series_to_string(Social_simSeries) -> String
+
+pub fn social_sim_series_var(Social_simSeries) -> Double
+
+pub fn social_sim_std(Array[Double]) -> Double
+
+pub fn social_sim_var(Array[Double]) -> Double
+
+pub fn social_sim_vector_add(Social_simVector, Social_simVector) -> Social_simVector
+
+pub fn social_sim_vector_dist(Social_simVector, Social_simVector) -> Double
+
+pub fn social_sim_vector_dot(Social_simVector, Social_simVector) -> Double
+
+pub fn social_sim_vector_norm(Social_simVector) -> Double
+
+pub fn social_sim_vector_normalize(Social_simVector) -> Social_simVector
+
+pub fn social_sim_vector_scale(Social_simVector, Double) -> Social_simVector
+
+pub fn social_sim_vector_sub(Social_simVector, Social_simVector) -> Social_simVector
+
+pub fn social_sim_vector_to_string(Social_simVector) -> String
+
+pub fn social_sim_vector_zero(Int32) -> Social_simVector
+
+// Errors
+
+// Types and methods
+pub struct Social_simMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Social_simPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Social_simSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Social_simVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

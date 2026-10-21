@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_graph_directed"
+
+// Values
+pub fn ds_graph_directed_buffer_make(Int32) -> DsgraphdirectedBuffer
+
+pub fn ds_graph_directed_cluster_make(Int32) -> DsgraphdirectedCluster
+
+pub fn ds_graph_directed_cursor_make(Int32) -> DsgraphdirectedCursor
+
+pub fn ds_graph_directed_edge_make(Int32) -> DsgraphdirectedEdge
+
+pub fn ds_graph_directed_frame_make(Int32) -> DsgraphdirectedFrame
+
+pub fn ds_graph_directed_graphn_make(Int32) -> DsgraphdirectedGraphN
+
+pub fn ds_graph_directed_layer_make(Int32) -> DsgraphdirectedLayer
+
+pub fn ds_graph_directed_make_matrix(Int32, Int32, Double) -> DsgraphdirectedMatrix
+
+pub fn ds_graph_directed_make_point(Double, Double) -> DsgraphdirectedPoint
+
+pub fn ds_graph_directed_make_point3(Double, Double, Double) -> DsgraphdirectedPoint
+
+pub fn ds_graph_directed_make_series(Array[Double], String) -> DsgraphdirectedSeries
+
+pub fn ds_graph_directed_make_vector(Array[Double]) -> DsgraphdirectedVector
+
+pub fn ds_graph_directed_matrix_identity(Int32) -> DsgraphdirectedMatrix
+
+pub fn ds_graph_directed_model_make(Int32) -> DsgraphdirectedModel
+
+pub fn ds_graph_directed_node_make(Int32) -> DsgraphdirectedNode
+
+pub fn ds_graph_directed_path_make(Int32) -> DsgraphdirectedPath
+
+pub fn ds_graph_directed_range_make(Int32) -> DsgraphdirectedRange
+
+pub fn ds_graph_directed_slice_make(Int32) -> DsgraphdirectedSlice
+
+pub fn ds_graph_directed_table_make(Int32) -> DsgraphdirectedTable
+
+pub fn ds_graph_directed_vector_zero(Int32) -> DsgraphdirectedVector
+
+pub fn ds_graph_directed_view_make(Int32) -> DsgraphdirectedView
+
+// Errors
+
+// Types and methods
+pub(all) struct DsgraphdirectedBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdirectedBuffer::add(Self, Self) -> Self
+pub fn DsgraphdirectedBuffer::copy(Self) -> Self
+pub fn DsgraphdirectedBuffer::fill(Self, Double) -> Self
+pub fn DsgraphdirectedBuffer::get(Self, Int32) -> Double
+pub fn DsgraphdirectedBuffer::len(Self) -> Int32
+pub fn DsgraphdirectedBuffer::max(Self) -> Double
+pub fn DsgraphdirectedBuffer::mean(Self) -> Double
+pub fn DsgraphdirectedBuffer::min(Self) -> Double
+pub fn DsgraphdirectedBuffer::scale(Self, Double) -> Self
+pub fn DsgraphdirectedBuffer::set(Self, Int32, Double) -> Self
+pub fn DsgraphdirectedBuffer::sum(Self) -> Double
+pub fn DsgraphdirectedBuffer::to_string(Self) -> String
+
+pub(all) struct DsgraphdirectedCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdirectedCluster::add(Self, Self) -> Self
+pub fn DsgraphdirectedCluster::copy(Self) -> Self
+pub fn DsgraphdirectedCluster::fill(Self, Double) -> Self
+pub fn DsgraphdirectedCluster::get(Self, Int32) -> Double
+pub fn DsgraphdirectedCluster::len(Self) -> Int32
+pub fn DsgraphdirectedCluster::max(Self) -> Double
+pub fn DsgraphdirectedCluster::mean(Self) -> Double
+pub fn DsgraphdirectedCluster::min(Self) -> Double
+pub fn DsgraphdirectedCluster::scale(Self, Double) -> Self
+pub fn DsgraphdirectedCluster::set(Self, Int32, Double) -> Self
+pub fn DsgraphdirectedCluster::sum(Self) -> Double
+pub fn DsgraphdirectedCluster::to_string(Self) -> String
+
+pub(all) struct DsgraphdirectedCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdirectedCursor::add(Self, Self) -> Self
+pub fn DsgraphdirectedCursor::copy(Self) -> Self
+pub fn DsgraphdirectedCursor::fill(Self, Double) -> Self
+pub fn DsgraphdirectedCursor::get(Self, Int32) -> Double
+pub fn DsgraphdirectedCursor::len(Self) -> Int32
+pub fn DsgraphdirectedCursor::max(Self) -> Double
+pub fn DsgraphdirectedCursor::mean(Self) -> Double
+pub fn DsgraphdirectedCursor::min(Self) -> Double
+pub fn DsgraphdirectedCursor::scale(Self, Double) -> Self
+pub fn DsgraphdirectedCursor::set(Self, Int32, Double) -> Self
+pub fn DsgraphdirectedCursor::sum(Self) -> Double
+pub fn DsgraphdirectedCursor::to_string(Self) -> String
+
+pub(all) struct DsgraphdirectedEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdirectedEdge::add(Self, Self) -> Self
+pub fn DsgraphdirectedEdge::copy(Self) -> Self
+pub fn DsgraphdirectedEdge::fill(Self, Double) -> Self
+pub fn DsgraphdirectedEdge::get(Self, Int32) -> Double
+pub fn DsgraphdirectedEdge::len(Self) -> Int32
+pub fn DsgraphdirectedEdge::max(Self) -> Double
+pub fn DsgraphdirectedEdge::mean(Self) -> Double
+pub fn DsgraphdirectedEdge::min(Self) -> Double
+pub fn DsgraphdirectedEdge::scale(Self, Double) -> Self
+pub fn DsgraphdirectedEdge::set(Self, Int32, Double) -> Self
+pub fn DsgraphdirectedEdge::sum(Self) -> Double
+pub fn DsgraphdirectedEdge::to_string(Self) -> String
+
+pub(all) struct DsgraphdirectedFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdirectedFrame::add(Self, Self) -> Self
+pub fn DsgraphdirectedFrame::copy(Self) -> Self
+pub fn DsgraphdirectedFrame::fill(Self, Double) -> Self
+pub fn DsgraphdirectedFrame::get(Self, Int32) -> Double
+pub fn DsgraphdirectedFrame::len(Self) -> Int32
+pub fn DsgraphdirectedFrame::max(Self) -> Double
+pub fn DsgraphdirectedFrame::mean(Self) -> Double
+pub fn DsgraphdirectedFrame::min(Self) -> Double
+pub fn DsgraphdirectedFrame::scale(Self, Double) -> Self
+pub fn DsgraphdirectedFrame::set(Self, Int32, Double) -> Self
+pub fn DsgraphdirectedFrame::sum(Self) -> Double
+pub fn DsgraphdirectedFrame::to_string(Self) -> String
+
+pub(all) struct DsgraphdirectedGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdirectedGraphN::add(Self, Self) -> Self
+pub fn DsgraphdirectedGraphN::copy(Self) -> Self
+pub fn DsgraphdirectedGraphN::fill(Self, Double) -> Self
+pub fn DsgraphdirectedGraphN::get(Self, Int32) -> Double
+pub fn DsgraphdirectedGraphN::len(Self) -> Int32
+pub fn DsgraphdirectedGraphN::max(Self) -> Double
+pub fn DsgraphdirectedGraphN::mean(Self) -> Double
+pub fn DsgraphdirectedGraphN::min(Self) -> Double
+pub fn DsgraphdirectedGraphN::scale(Self, Double) -> Self
+pub fn DsgraphdirectedGraphN::set(Self, Int32, Double) -> Self
+pub fn DsgraphdirectedGraphN::sum(Self) -> Double
+pub fn DsgraphdirectedGraphN::to_string(Self) -> String
+
+pub(all) struct DsgraphdirectedLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdirectedLayer::add(Self, Self) -> Self
+pub fn DsgraphdirectedLayer::copy(Self) -> Self
+pub fn DsgraphdirectedLayer::fill(Self, Double) -> Self
+pub fn DsgraphdirectedLayer::get(Self, Int32) -> Double
+pub fn DsgraphdirectedLayer::len(Self) -> Int32
+pub fn DsgraphdirectedLayer::max(Self) -> Double
+pub fn DsgraphdirectedLayer::mean(Self) -> Double
+pub fn DsgraphdirectedLayer::min(Self) -> Double
+pub fn DsgraphdirectedLayer::scale(Self, Double) -> Self
+pub fn DsgraphdirectedLayer::set(Self, Int32, Double) -> Self
+pub fn DsgraphdirectedLayer::sum(Self) -> Double
+pub fn DsgraphdirectedLayer::to_string(Self) -> String
+
+pub(all) struct DsgraphdirectedMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DsgraphdirectedMatrix::add(Self, Self) -> Self
+pub fn DsgraphdirectedMatrix::det(Self) -> Double
+pub fn DsgraphdirectedMatrix::get(Self, Int32, Int32) -> Double
+pub fn DsgraphdirectedMatrix::multiply(Self, Self) -> Self
+pub fn DsgraphdirectedMatrix::norm(Self) -> Double
+pub fn DsgraphdirectedMatrix::scale(Self, Double) -> Self
+pub fn DsgraphdirectedMatrix::to_string(Self) -> String
+pub fn DsgraphdirectedMatrix::trace(Self) -> Double
+pub fn DsgraphdirectedMatrix::transpose(Self) -> Self
+
+pub(all) struct DsgraphdirectedModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdirectedModel::add(Self, Self) -> Self
+pub fn DsgraphdirectedModel::copy(Self) -> Self
+pub fn DsgraphdirectedModel::fill(Self, Double) -> Self
+pub fn DsgraphdirectedModel::get(Self, Int32) -> Double
+pub fn DsgraphdirectedModel::len(Self) -> Int32
+pub fn DsgraphdirectedModel::max(Self) -> Double
+pub fn DsgraphdirectedModel::mean(Self) -> Double
+pub fn DsgraphdirectedModel::min(Self) -> Double
+pub fn DsgraphdirectedModel::scale(Self, Double) -> Self
+pub fn DsgraphdirectedModel::set(Self, Int32, Double) -> Self
+pub fn DsgraphdirectedModel::sum(Self) -> Double
+pub fn DsgraphdirectedModel::to_string(Self) -> String
+
+pub(all) struct DsgraphdirectedNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdirectedNode::add(Self, Self) -> Self
+pub fn DsgraphdirectedNode::copy(Self) -> Self
+pub fn DsgraphdirectedNode::fill(Self, Double) -> Self
+pub fn DsgraphdirectedNode::get(Self, Int32) -> Double
+pub fn DsgraphdirectedNode::len(Self) -> Int32
+pub fn DsgraphdirectedNode::max(Self) -> Double
+pub fn DsgraphdirectedNode::mean(Self) -> Double
+pub fn DsgraphdirectedNode::min(Self) -> Double
+pub fn DsgraphdirectedNode::scale(Self, Double) -> Self
+pub fn DsgraphdirectedNode::set(Self, Int32, Double) -> Self
+pub fn DsgraphdirectedNode::sum(Self) -> Double
+pub fn DsgraphdirectedNode::to_string(Self) -> String
+
+pub(all) struct DsgraphdirectedPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdirectedPath::add(Self, Self) -> Self
+pub fn DsgraphdirectedPath::copy(Self) -> Self
+pub fn DsgraphdirectedPath::fill(Self, Double) -> Self
+pub fn DsgraphdirectedPath::get(Self, Int32) -> Double
+pub fn DsgraphdirectedPath::len(Self) -> Int32
+pub fn DsgraphdirectedPath::max(Self) -> Double
+pub fn DsgraphdirectedPath::mean(Self) -> Double
+pub fn DsgraphdirectedPath::min(Self) -> Double
+pub fn DsgraphdirectedPath::scale(Self, Double) -> Self
+pub fn DsgraphdirectedPath::set(Self, Int32, Double) -> Self
+pub fn DsgraphdirectedPath::sum(Self) -> Double
+pub fn DsgraphdirectedPath::to_string(Self) -> String
+
+pub(all) struct DsgraphdirectedPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DsgraphdirectedPoint::add(Self, Self) -> Self
+pub fn DsgraphdirectedPoint::cross(Self, Self) -> Self
+pub fn DsgraphdirectedPoint::dist(Self, Self) -> Double
+pub fn DsgraphdirectedPoint::dot(Self, Self) -> Double
+pub fn DsgraphdirectedPoint::label(Self) -> Int32
+pub fn DsgraphdirectedPoint::lerp(Self, Self, Double) -> Self
+pub fn DsgraphdirectedPoint::mid(Self, Self) -> Self
+pub fn DsgraphdirectedPoint::negate(Self) -> Self
+pub fn DsgraphdirectedPoint::norm(Self) -> Double
+pub fn DsgraphdirectedPoint::normalize(Self) -> Self
+pub fn DsgraphdirectedPoint::scale(Self, Double) -> Self
+pub fn DsgraphdirectedPoint::sub(Self, Self) -> Self
+pub fn DsgraphdirectedPoint::to_string(Self) -> String
+pub fn DsgraphdirectedPoint::x(Self) -> Double
+pub fn DsgraphdirectedPoint::y(Self) -> Double
+pub fn DsgraphdirectedPoint::z(Self) -> Double
+
+pub(all) struct DsgraphdirectedRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdirectedRange::add(Self, Self) -> Self
+pub fn DsgraphdirectedRange::copy(Self) -> Self
+pub fn DsgraphdirectedRange::fill(Self, Double) -> Self
+pub fn DsgraphdirectedRange::get(Self, Int32) -> Double
+pub fn DsgraphdirectedRange::len(Self) -> Int32
+pub fn DsgraphdirectedRange::max(Self) -> Double
+pub fn DsgraphdirectedRange::mean(Self) -> Double
+pub fn DsgraphdirectedRange::min(Self) -> Double
+pub fn DsgraphdirectedRange::scale(Self, Double) -> Self
+pub fn DsgraphdirectedRange::set(Self, Int32, Double) -> Self
+pub fn DsgraphdirectedRange::sum(Self) -> Double
+pub fn DsgraphdirectedRange::to_string(Self) -> String
+
+pub(all) struct DsgraphdirectedSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DsgraphdirectedSeries::add(Self, Self) -> Self
+pub fn DsgraphdirectedSeries::cumsum(Self) -> Self
+pub fn DsgraphdirectedSeries::len(Self) -> Int32
+pub fn DsgraphdirectedSeries::max(Self) -> Double
+pub fn DsgraphdirectedSeries::mean(Self) -> Double
+pub fn DsgraphdirectedSeries::median(Self) -> Double
+pub fn DsgraphdirectedSeries::min(Self) -> Double
+pub fn DsgraphdirectedSeries::normalize(Self) -> Self
+pub fn DsgraphdirectedSeries::range(Self) -> Double
+pub fn DsgraphdirectedSeries::scale(Self, Double) -> Self
+pub fn DsgraphdirectedSeries::std(Self) -> Double
+pub fn DsgraphdirectedSeries::sub(Self, Self) -> Self
+pub fn DsgraphdirectedSeries::sum(Self) -> Double
+pub fn DsgraphdirectedSeries::to_string(Self) -> String
+pub fn DsgraphdirectedSeries::variance(Self) -> Double
+
+pub(all) struct DsgraphdirectedSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdirectedSlice::add(Self, Self) -> Self
+pub fn DsgraphdirectedSlice::copy(Self) -> Self
+pub fn DsgraphdirectedSlice::fill(Self, Double) -> Self
+pub fn DsgraphdirectedSlice::get(Self, Int32) -> Double
+pub fn DsgraphdirectedSlice::len(Self) -> Int32
+pub fn DsgraphdirectedSlice::max(Self) -> Double
+pub fn DsgraphdirectedSlice::mean(Self) -> Double
+pub fn DsgraphdirectedSlice::min(Self) -> Double
+pub fn DsgraphdirectedSlice::scale(Self, Double) -> Self
+pub fn DsgraphdirectedSlice::set(Self, Int32, Double) -> Self
+pub fn DsgraphdirectedSlice::sum(Self) -> Double
+pub fn DsgraphdirectedSlice::to_string(Self) -> String
+
+pub(all) struct DsgraphdirectedTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdirectedTable::add(Self, Self) -> Self
+pub fn DsgraphdirectedTable::copy(Self) -> Self
+pub fn DsgraphdirectedTable::fill(Self, Double) -> Self
+pub fn DsgraphdirectedTable::get(Self, Int32) -> Double
+pub fn DsgraphdirectedTable::len(Self) -> Int32
+pub fn DsgraphdirectedTable::max(Self) -> Double
+pub fn DsgraphdirectedTable::mean(Self) -> Double
+pub fn DsgraphdirectedTable::min(Self) -> Double
+pub fn DsgraphdirectedTable::scale(Self, Double) -> Self
+pub fn DsgraphdirectedTable::set(Self, Int32, Double) -> Self
+pub fn DsgraphdirectedTable::sum(Self) -> Double
+pub fn DsgraphdirectedTable::to_string(Self) -> String
+
+pub(all) struct DsgraphdirectedVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DsgraphdirectedVector::add(Self, Self) -> Self
+pub fn DsgraphdirectedVector::dist(Self, Self) -> Double
+pub fn DsgraphdirectedVector::dot(Self, Self) -> Double
+pub fn DsgraphdirectedVector::norm(Self) -> Double
+pub fn DsgraphdirectedVector::normalize(Self) -> Self
+pub fn DsgraphdirectedVector::scale(Self, Double) -> Self
+pub fn DsgraphdirectedVector::sub(Self, Self) -> Self
+pub fn DsgraphdirectedVector::to_string(Self) -> String
+
+pub(all) struct DsgraphdirectedView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsgraphdirectedView::add(Self, Self) -> Self
+pub fn DsgraphdirectedView::copy(Self) -> Self
+pub fn DsgraphdirectedView::fill(Self, Double) -> Self
+pub fn DsgraphdirectedView::get(Self, Int32) -> Double
+pub fn DsgraphdirectedView::len(Self) -> Int32
+pub fn DsgraphdirectedView::max(Self) -> Double
+pub fn DsgraphdirectedView::mean(Self) -> Double
+pub fn DsgraphdirectedView::min(Self) -> Double
+pub fn DsgraphdirectedView::scale(Self, Double) -> Self
+pub fn DsgraphdirectedView::set(Self, Int32, Double) -> Self
+pub fn DsgraphdirectedView::sum(Self) -> Double
+pub fn DsgraphdirectedView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

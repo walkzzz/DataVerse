@@ -1,0 +1,81 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/overlay"
+
+import {
+  "dataverse/dataobject",
+  "dataverse/opcore/proximity",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn batch_intersections(Array[Polygon]) -> Array[(Int32, Int32)]
+
+pub fn bbox_contains(Polygon, Polygon) -> Bool
+
+pub fn bbox_overlap(Polygon, Polygon) -> Bool
+
+pub fn empty_polygon() -> Polygon
+
+pub fn make_polygon(Array[@proximity.Point]) -> Polygon
+
+pub fn overlay_erase(Polygon, Polygon) -> OverlayResult
+
+pub fn overlay_identity(Polygon, Polygon) -> OverlayResult
+
+pub fn overlay_intersect(Polygon, Polygon) -> OverlayResult
+
+pub fn overlay_result_summary(OverlayResult) -> String
+
+pub fn overlay_spatial_join(Array[Polygon], Array[Polygon]) -> Array[(Int32, Int32)]
+
+pub fn overlay_sym_diff(Polygon, Polygon) -> OverlayResult
+
+pub fn overlay_union(Polygon, Polygon) -> OverlayResult
+
+pub fn overlay_update(Polygon, Polygon) -> OverlayResult
+
+pub fn polygon_area(Polygon) -> Double
+
+pub fn polygon_bbox(Polygon) -> (@proximity.Point, @proximity.Point)
+
+pub fn polygon_from_dataobject(@dataobject.DataObject) -> Polygon
+
+pub fn polygon_perimeter(Polygon) -> Double
+
+pub fn vertex_count(Polygon) -> Int32
+
+// Errors
+
+// Types and methods
+pub(all) enum OverlayKind {
+  Intersect
+  Union
+  Erase
+  Identity
+  SymDiff
+} derive(Eq, @debug.Debug)
+pub fn OverlayKind::equal(Self, Self) -> Bool
+pub fn OverlayKind::not_equal(Self, Self) -> Bool
+pub fn OverlayKind::to_repr(Self) -> @debug.Repr
+
+pub struct OverlayResult {
+  kind : OverlayKind
+  area : Double
+  has_overlap : Bool
+  source_count : Int32
+  result_count : Int32
+} derive(Eq, @debug.Debug)
+pub fn OverlayResult::equal(Self, Self) -> Bool
+pub fn OverlayResult::not_equal(Self, Self) -> Bool
+pub fn OverlayResult::to_repr(Self) -> @debug.Repr
+
+pub struct Polygon {
+  vertices : Array[@proximity.Point]
+} derive(Eq, @debug.Debug)
+pub fn Polygon::equal(Self, Self) -> Bool
+pub fn Polygon::not_equal(Self, Self) -> Bool
+pub fn Polygon::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_pos_maxent"
+
+// Values
+pub fn nlp_pos_maxent_buffer_make(Int32) -> NlpposmaxentBuffer
+
+pub fn nlp_pos_maxent_cluster_make(Int32) -> NlpposmaxentCluster
+
+pub fn nlp_pos_maxent_cursor_make(Int32) -> NlpposmaxentCursor
+
+pub fn nlp_pos_maxent_edge_make(Int32) -> NlpposmaxentEdge
+
+pub fn nlp_pos_maxent_frame_make(Int32) -> NlpposmaxentFrame
+
+pub fn nlp_pos_maxent_graphn_make(Int32) -> NlpposmaxentGraphN
+
+pub fn nlp_pos_maxent_layer_make(Int32) -> NlpposmaxentLayer
+
+pub fn nlp_pos_maxent_make_matrix(Int32, Int32, Double) -> NlpposmaxentMatrix
+
+pub fn nlp_pos_maxent_make_point(Double, Double) -> NlpposmaxentPoint
+
+pub fn nlp_pos_maxent_make_point3(Double, Double, Double) -> NlpposmaxentPoint
+
+pub fn nlp_pos_maxent_make_series(Array[Double], String) -> NlpposmaxentSeries
+
+pub fn nlp_pos_maxent_make_vector(Array[Double]) -> NlpposmaxentVector
+
+pub fn nlp_pos_maxent_matrix_identity(Int32) -> NlpposmaxentMatrix
+
+pub fn nlp_pos_maxent_model_make(Int32) -> NlpposmaxentModel
+
+pub fn nlp_pos_maxent_node_make(Int32) -> NlpposmaxentNode
+
+pub fn nlp_pos_maxent_path_make(Int32) -> NlpposmaxentPath
+
+pub fn nlp_pos_maxent_range_make(Int32) -> NlpposmaxentRange
+
+pub fn nlp_pos_maxent_slice_make(Int32) -> NlpposmaxentSlice
+
+pub fn nlp_pos_maxent_table_make(Int32) -> NlpposmaxentTable
+
+pub fn nlp_pos_maxent_vector_zero(Int32) -> NlpposmaxentVector
+
+pub fn nlp_pos_maxent_view_make(Int32) -> NlpposmaxentView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlpposmaxentBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposmaxentBuffer::add(Self, Self) -> Self
+pub fn NlpposmaxentBuffer::copy(Self) -> Self
+pub fn NlpposmaxentBuffer::fill(Self, Double) -> Self
+pub fn NlpposmaxentBuffer::get(Self, Int32) -> Double
+pub fn NlpposmaxentBuffer::len(Self) -> Int32
+pub fn NlpposmaxentBuffer::max(Self) -> Double
+pub fn NlpposmaxentBuffer::mean(Self) -> Double
+pub fn NlpposmaxentBuffer::min(Self) -> Double
+pub fn NlpposmaxentBuffer::scale(Self, Double) -> Self
+pub fn NlpposmaxentBuffer::set(Self, Int32, Double) -> Self
+pub fn NlpposmaxentBuffer::sum(Self) -> Double
+pub fn NlpposmaxentBuffer::to_string(Self) -> String
+
+pub(all) struct NlpposmaxentCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposmaxentCluster::add(Self, Self) -> Self
+pub fn NlpposmaxentCluster::copy(Self) -> Self
+pub fn NlpposmaxentCluster::fill(Self, Double) -> Self
+pub fn NlpposmaxentCluster::get(Self, Int32) -> Double
+pub fn NlpposmaxentCluster::len(Self) -> Int32
+pub fn NlpposmaxentCluster::max(Self) -> Double
+pub fn NlpposmaxentCluster::mean(Self) -> Double
+pub fn NlpposmaxentCluster::min(Self) -> Double
+pub fn NlpposmaxentCluster::scale(Self, Double) -> Self
+pub fn NlpposmaxentCluster::set(Self, Int32, Double) -> Self
+pub fn NlpposmaxentCluster::sum(Self) -> Double
+pub fn NlpposmaxentCluster::to_string(Self) -> String
+
+pub(all) struct NlpposmaxentCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposmaxentCursor::add(Self, Self) -> Self
+pub fn NlpposmaxentCursor::copy(Self) -> Self
+pub fn NlpposmaxentCursor::fill(Self, Double) -> Self
+pub fn NlpposmaxentCursor::get(Self, Int32) -> Double
+pub fn NlpposmaxentCursor::len(Self) -> Int32
+pub fn NlpposmaxentCursor::max(Self) -> Double
+pub fn NlpposmaxentCursor::mean(Self) -> Double
+pub fn NlpposmaxentCursor::min(Self) -> Double
+pub fn NlpposmaxentCursor::scale(Self, Double) -> Self
+pub fn NlpposmaxentCursor::set(Self, Int32, Double) -> Self
+pub fn NlpposmaxentCursor::sum(Self) -> Double
+pub fn NlpposmaxentCursor::to_string(Self) -> String
+
+pub(all) struct NlpposmaxentEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposmaxentEdge::add(Self, Self) -> Self
+pub fn NlpposmaxentEdge::copy(Self) -> Self
+pub fn NlpposmaxentEdge::fill(Self, Double) -> Self
+pub fn NlpposmaxentEdge::get(Self, Int32) -> Double
+pub fn NlpposmaxentEdge::len(Self) -> Int32
+pub fn NlpposmaxentEdge::max(Self) -> Double
+pub fn NlpposmaxentEdge::mean(Self) -> Double
+pub fn NlpposmaxentEdge::min(Self) -> Double
+pub fn NlpposmaxentEdge::scale(Self, Double) -> Self
+pub fn NlpposmaxentEdge::set(Self, Int32, Double) -> Self
+pub fn NlpposmaxentEdge::sum(Self) -> Double
+pub fn NlpposmaxentEdge::to_string(Self) -> String
+
+pub(all) struct NlpposmaxentFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposmaxentFrame::add(Self, Self) -> Self
+pub fn NlpposmaxentFrame::copy(Self) -> Self
+pub fn NlpposmaxentFrame::fill(Self, Double) -> Self
+pub fn NlpposmaxentFrame::get(Self, Int32) -> Double
+pub fn NlpposmaxentFrame::len(Self) -> Int32
+pub fn NlpposmaxentFrame::max(Self) -> Double
+pub fn NlpposmaxentFrame::mean(Self) -> Double
+pub fn NlpposmaxentFrame::min(Self) -> Double
+pub fn NlpposmaxentFrame::scale(Self, Double) -> Self
+pub fn NlpposmaxentFrame::set(Self, Int32, Double) -> Self
+pub fn NlpposmaxentFrame::sum(Self) -> Double
+pub fn NlpposmaxentFrame::to_string(Self) -> String
+
+pub(all) struct NlpposmaxentGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposmaxentGraphN::add(Self, Self) -> Self
+pub fn NlpposmaxentGraphN::copy(Self) -> Self
+pub fn NlpposmaxentGraphN::fill(Self, Double) -> Self
+pub fn NlpposmaxentGraphN::get(Self, Int32) -> Double
+pub fn NlpposmaxentGraphN::len(Self) -> Int32
+pub fn NlpposmaxentGraphN::max(Self) -> Double
+pub fn NlpposmaxentGraphN::mean(Self) -> Double
+pub fn NlpposmaxentGraphN::min(Self) -> Double
+pub fn NlpposmaxentGraphN::scale(Self, Double) -> Self
+pub fn NlpposmaxentGraphN::set(Self, Int32, Double) -> Self
+pub fn NlpposmaxentGraphN::sum(Self) -> Double
+pub fn NlpposmaxentGraphN::to_string(Self) -> String
+
+pub(all) struct NlpposmaxentLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposmaxentLayer::add(Self, Self) -> Self
+pub fn NlpposmaxentLayer::copy(Self) -> Self
+pub fn NlpposmaxentLayer::fill(Self, Double) -> Self
+pub fn NlpposmaxentLayer::get(Self, Int32) -> Double
+pub fn NlpposmaxentLayer::len(Self) -> Int32
+pub fn NlpposmaxentLayer::max(Self) -> Double
+pub fn NlpposmaxentLayer::mean(Self) -> Double
+pub fn NlpposmaxentLayer::min(Self) -> Double
+pub fn NlpposmaxentLayer::scale(Self, Double) -> Self
+pub fn NlpposmaxentLayer::set(Self, Int32, Double) -> Self
+pub fn NlpposmaxentLayer::sum(Self) -> Double
+pub fn NlpposmaxentLayer::to_string(Self) -> String
+
+pub(all) struct NlpposmaxentMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlpposmaxentMatrix::add(Self, Self) -> Self
+pub fn NlpposmaxentMatrix::det(Self) -> Double
+pub fn NlpposmaxentMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlpposmaxentMatrix::multiply(Self, Self) -> Self
+pub fn NlpposmaxentMatrix::norm(Self) -> Double
+pub fn NlpposmaxentMatrix::scale(Self, Double) -> Self
+pub fn NlpposmaxentMatrix::to_string(Self) -> String
+pub fn NlpposmaxentMatrix::trace(Self) -> Double
+pub fn NlpposmaxentMatrix::transpose(Self) -> Self
+
+pub(all) struct NlpposmaxentModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposmaxentModel::add(Self, Self) -> Self
+pub fn NlpposmaxentModel::copy(Self) -> Self
+pub fn NlpposmaxentModel::fill(Self, Double) -> Self
+pub fn NlpposmaxentModel::get(Self, Int32) -> Double
+pub fn NlpposmaxentModel::len(Self) -> Int32
+pub fn NlpposmaxentModel::max(Self) -> Double
+pub fn NlpposmaxentModel::mean(Self) -> Double
+pub fn NlpposmaxentModel::min(Self) -> Double
+pub fn NlpposmaxentModel::scale(Self, Double) -> Self
+pub fn NlpposmaxentModel::set(Self, Int32, Double) -> Self
+pub fn NlpposmaxentModel::sum(Self) -> Double
+pub fn NlpposmaxentModel::to_string(Self) -> String
+
+pub(all) struct NlpposmaxentNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposmaxentNode::add(Self, Self) -> Self
+pub fn NlpposmaxentNode::copy(Self) -> Self
+pub fn NlpposmaxentNode::fill(Self, Double) -> Self
+pub fn NlpposmaxentNode::get(Self, Int32) -> Double
+pub fn NlpposmaxentNode::len(Self) -> Int32
+pub fn NlpposmaxentNode::max(Self) -> Double
+pub fn NlpposmaxentNode::mean(Self) -> Double
+pub fn NlpposmaxentNode::min(Self) -> Double
+pub fn NlpposmaxentNode::scale(Self, Double) -> Self
+pub fn NlpposmaxentNode::set(Self, Int32, Double) -> Self
+pub fn NlpposmaxentNode::sum(Self) -> Double
+pub fn NlpposmaxentNode::to_string(Self) -> String
+
+pub(all) struct NlpposmaxentPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposmaxentPath::add(Self, Self) -> Self
+pub fn NlpposmaxentPath::copy(Self) -> Self
+pub fn NlpposmaxentPath::fill(Self, Double) -> Self
+pub fn NlpposmaxentPath::get(Self, Int32) -> Double
+pub fn NlpposmaxentPath::len(Self) -> Int32
+pub fn NlpposmaxentPath::max(Self) -> Double
+pub fn NlpposmaxentPath::mean(Self) -> Double
+pub fn NlpposmaxentPath::min(Self) -> Double
+pub fn NlpposmaxentPath::scale(Self, Double) -> Self
+pub fn NlpposmaxentPath::set(Self, Int32, Double) -> Self
+pub fn NlpposmaxentPath::sum(Self) -> Double
+pub fn NlpposmaxentPath::to_string(Self) -> String
+
+pub(all) struct NlpposmaxentPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlpposmaxentPoint::add(Self, Self) -> Self
+pub fn NlpposmaxentPoint::cross(Self, Self) -> Self
+pub fn NlpposmaxentPoint::dist(Self, Self) -> Double
+pub fn NlpposmaxentPoint::dot(Self, Self) -> Double
+pub fn NlpposmaxentPoint::label(Self) -> Int32
+pub fn NlpposmaxentPoint::lerp(Self, Self, Double) -> Self
+pub fn NlpposmaxentPoint::mid(Self, Self) -> Self
+pub fn NlpposmaxentPoint::negate(Self) -> Self
+pub fn NlpposmaxentPoint::norm(Self) -> Double
+pub fn NlpposmaxentPoint::normalize(Self) -> Self
+pub fn NlpposmaxentPoint::scale(Self, Double) -> Self
+pub fn NlpposmaxentPoint::sub(Self, Self) -> Self
+pub fn NlpposmaxentPoint::to_string(Self) -> String
+pub fn NlpposmaxentPoint::x(Self) -> Double
+pub fn NlpposmaxentPoint::y(Self) -> Double
+pub fn NlpposmaxentPoint::z(Self) -> Double
+
+pub(all) struct NlpposmaxentRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposmaxentRange::add(Self, Self) -> Self
+pub fn NlpposmaxentRange::copy(Self) -> Self
+pub fn NlpposmaxentRange::fill(Self, Double) -> Self
+pub fn NlpposmaxentRange::get(Self, Int32) -> Double
+pub fn NlpposmaxentRange::len(Self) -> Int32
+pub fn NlpposmaxentRange::max(Self) -> Double
+pub fn NlpposmaxentRange::mean(Self) -> Double
+pub fn NlpposmaxentRange::min(Self) -> Double
+pub fn NlpposmaxentRange::scale(Self, Double) -> Self
+pub fn NlpposmaxentRange::set(Self, Int32, Double) -> Self
+pub fn NlpposmaxentRange::sum(Self) -> Double
+pub fn NlpposmaxentRange::to_string(Self) -> String
+
+pub(all) struct NlpposmaxentSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlpposmaxentSeries::add(Self, Self) -> Self
+pub fn NlpposmaxentSeries::cumsum(Self) -> Self
+pub fn NlpposmaxentSeries::len(Self) -> Int32
+pub fn NlpposmaxentSeries::max(Self) -> Double
+pub fn NlpposmaxentSeries::mean(Self) -> Double
+pub fn NlpposmaxentSeries::median(Self) -> Double
+pub fn NlpposmaxentSeries::min(Self) -> Double
+pub fn NlpposmaxentSeries::normalize(Self) -> Self
+pub fn NlpposmaxentSeries::range(Self) -> Double
+pub fn NlpposmaxentSeries::scale(Self, Double) -> Self
+pub fn NlpposmaxentSeries::std(Self) -> Double
+pub fn NlpposmaxentSeries::sub(Self, Self) -> Self
+pub fn NlpposmaxentSeries::sum(Self) -> Double
+pub fn NlpposmaxentSeries::to_string(Self) -> String
+pub fn NlpposmaxentSeries::variance(Self) -> Double
+
+pub(all) struct NlpposmaxentSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposmaxentSlice::add(Self, Self) -> Self
+pub fn NlpposmaxentSlice::copy(Self) -> Self
+pub fn NlpposmaxentSlice::fill(Self, Double) -> Self
+pub fn NlpposmaxentSlice::get(Self, Int32) -> Double
+pub fn NlpposmaxentSlice::len(Self) -> Int32
+pub fn NlpposmaxentSlice::max(Self) -> Double
+pub fn NlpposmaxentSlice::mean(Self) -> Double
+pub fn NlpposmaxentSlice::min(Self) -> Double
+pub fn NlpposmaxentSlice::scale(Self, Double) -> Self
+pub fn NlpposmaxentSlice::set(Self, Int32, Double) -> Self
+pub fn NlpposmaxentSlice::sum(Self) -> Double
+pub fn NlpposmaxentSlice::to_string(Self) -> String
+
+pub(all) struct NlpposmaxentTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposmaxentTable::add(Self, Self) -> Self
+pub fn NlpposmaxentTable::copy(Self) -> Self
+pub fn NlpposmaxentTable::fill(Self, Double) -> Self
+pub fn NlpposmaxentTable::get(Self, Int32) -> Double
+pub fn NlpposmaxentTable::len(Self) -> Int32
+pub fn NlpposmaxentTable::max(Self) -> Double
+pub fn NlpposmaxentTable::mean(Self) -> Double
+pub fn NlpposmaxentTable::min(Self) -> Double
+pub fn NlpposmaxentTable::scale(Self, Double) -> Self
+pub fn NlpposmaxentTable::set(Self, Int32, Double) -> Self
+pub fn NlpposmaxentTable::sum(Self) -> Double
+pub fn NlpposmaxentTable::to_string(Self) -> String
+
+pub(all) struct NlpposmaxentVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlpposmaxentVector::add(Self, Self) -> Self
+pub fn NlpposmaxentVector::dist(Self, Self) -> Double
+pub fn NlpposmaxentVector::dot(Self, Self) -> Double
+pub fn NlpposmaxentVector::norm(Self) -> Double
+pub fn NlpposmaxentVector::normalize(Self) -> Self
+pub fn NlpposmaxentVector::scale(Self, Double) -> Self
+pub fn NlpposmaxentVector::sub(Self, Self) -> Self
+pub fn NlpposmaxentVector::to_string(Self) -> String
+
+pub(all) struct NlpposmaxentView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposmaxentView::add(Self, Self) -> Self
+pub fn NlpposmaxentView::copy(Self) -> Self
+pub fn NlpposmaxentView::fill(Self, Double) -> Self
+pub fn NlpposmaxentView::get(Self, Int32) -> Double
+pub fn NlpposmaxentView::len(Self) -> Int32
+pub fn NlpposmaxentView::max(Self) -> Double
+pub fn NlpposmaxentView::mean(Self) -> Double
+pub fn NlpposmaxentView::min(Self) -> Double
+pub fn NlpposmaxentView::scale(Self, Double) -> Self
+pub fn NlpposmaxentView::set(Self, Int32, Double) -> Self
+pub fn NlpposmaxentView::sum(Self) -> Double
+pub fn NlpposmaxentView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

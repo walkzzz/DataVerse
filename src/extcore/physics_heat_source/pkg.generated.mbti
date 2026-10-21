@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_heat_source"
+
+// Values
+pub fn physics_heat_source_buffer_make(Int32) -> PhysicsheatsourceBuffer
+
+pub fn physics_heat_source_cluster_make(Int32) -> PhysicsheatsourceCluster
+
+pub fn physics_heat_source_cursor_make(Int32) -> PhysicsheatsourceCursor
+
+pub fn physics_heat_source_edge_make(Int32) -> PhysicsheatsourceEdge
+
+pub fn physics_heat_source_frame_make(Int32) -> PhysicsheatsourceFrame
+
+pub fn physics_heat_source_graphn_make(Int32) -> PhysicsheatsourceGraphN
+
+pub fn physics_heat_source_layer_make(Int32) -> PhysicsheatsourceLayer
+
+pub fn physics_heat_source_make_matrix(Int32, Int32, Double) -> PhysicsheatsourceMatrix
+
+pub fn physics_heat_source_make_point(Double, Double) -> PhysicsheatsourcePoint
+
+pub fn physics_heat_source_make_point3(Double, Double, Double) -> PhysicsheatsourcePoint
+
+pub fn physics_heat_source_make_series(Array[Double], String) -> PhysicsheatsourceSeries
+
+pub fn physics_heat_source_make_vector(Array[Double]) -> PhysicsheatsourceVector
+
+pub fn physics_heat_source_matrix_identity(Int32) -> PhysicsheatsourceMatrix
+
+pub fn physics_heat_source_model_make(Int32) -> PhysicsheatsourceModel
+
+pub fn physics_heat_source_node_make(Int32) -> PhysicsheatsourceNode
+
+pub fn physics_heat_source_path_make(Int32) -> PhysicsheatsourcePath
+
+pub fn physics_heat_source_range_make(Int32) -> PhysicsheatsourceRange
+
+pub fn physics_heat_source_slice_make(Int32) -> PhysicsheatsourceSlice
+
+pub fn physics_heat_source_table_make(Int32) -> PhysicsheatsourceTable
+
+pub fn physics_heat_source_vector_zero(Int32) -> PhysicsheatsourceVector
+
+pub fn physics_heat_source_view_make(Int32) -> PhysicsheatsourceView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsheatsourceBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsourceBuffer::add(Self, Self) -> Self
+pub fn PhysicsheatsourceBuffer::copy(Self) -> Self
+pub fn PhysicsheatsourceBuffer::fill(Self, Double) -> Self
+pub fn PhysicsheatsourceBuffer::get(Self, Int32) -> Double
+pub fn PhysicsheatsourceBuffer::len(Self) -> Int32
+pub fn PhysicsheatsourceBuffer::max(Self) -> Double
+pub fn PhysicsheatsourceBuffer::mean(Self) -> Double
+pub fn PhysicsheatsourceBuffer::min(Self) -> Double
+pub fn PhysicsheatsourceBuffer::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsourceBuffer::sum(Self) -> Double
+pub fn PhysicsheatsourceBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsourceCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsourceCluster::add(Self, Self) -> Self
+pub fn PhysicsheatsourceCluster::copy(Self) -> Self
+pub fn PhysicsheatsourceCluster::fill(Self, Double) -> Self
+pub fn PhysicsheatsourceCluster::get(Self, Int32) -> Double
+pub fn PhysicsheatsourceCluster::len(Self) -> Int32
+pub fn PhysicsheatsourceCluster::max(Self) -> Double
+pub fn PhysicsheatsourceCluster::mean(Self) -> Double
+pub fn PhysicsheatsourceCluster::min(Self) -> Double
+pub fn PhysicsheatsourceCluster::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsourceCluster::sum(Self) -> Double
+pub fn PhysicsheatsourceCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsourceCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsourceCursor::add(Self, Self) -> Self
+pub fn PhysicsheatsourceCursor::copy(Self) -> Self
+pub fn PhysicsheatsourceCursor::fill(Self, Double) -> Self
+pub fn PhysicsheatsourceCursor::get(Self, Int32) -> Double
+pub fn PhysicsheatsourceCursor::len(Self) -> Int32
+pub fn PhysicsheatsourceCursor::max(Self) -> Double
+pub fn PhysicsheatsourceCursor::mean(Self) -> Double
+pub fn PhysicsheatsourceCursor::min(Self) -> Double
+pub fn PhysicsheatsourceCursor::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsourceCursor::sum(Self) -> Double
+pub fn PhysicsheatsourceCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsourceEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsourceEdge::add(Self, Self) -> Self
+pub fn PhysicsheatsourceEdge::copy(Self) -> Self
+pub fn PhysicsheatsourceEdge::fill(Self, Double) -> Self
+pub fn PhysicsheatsourceEdge::get(Self, Int32) -> Double
+pub fn PhysicsheatsourceEdge::len(Self) -> Int32
+pub fn PhysicsheatsourceEdge::max(Self) -> Double
+pub fn PhysicsheatsourceEdge::mean(Self) -> Double
+pub fn PhysicsheatsourceEdge::min(Self) -> Double
+pub fn PhysicsheatsourceEdge::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsourceEdge::sum(Self) -> Double
+pub fn PhysicsheatsourceEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsourceFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsourceFrame::add(Self, Self) -> Self
+pub fn PhysicsheatsourceFrame::copy(Self) -> Self
+pub fn PhysicsheatsourceFrame::fill(Self, Double) -> Self
+pub fn PhysicsheatsourceFrame::get(Self, Int32) -> Double
+pub fn PhysicsheatsourceFrame::len(Self) -> Int32
+pub fn PhysicsheatsourceFrame::max(Self) -> Double
+pub fn PhysicsheatsourceFrame::mean(Self) -> Double
+pub fn PhysicsheatsourceFrame::min(Self) -> Double
+pub fn PhysicsheatsourceFrame::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsourceFrame::sum(Self) -> Double
+pub fn PhysicsheatsourceFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsourceGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsourceGraphN::add(Self, Self) -> Self
+pub fn PhysicsheatsourceGraphN::copy(Self) -> Self
+pub fn PhysicsheatsourceGraphN::fill(Self, Double) -> Self
+pub fn PhysicsheatsourceGraphN::get(Self, Int32) -> Double
+pub fn PhysicsheatsourceGraphN::len(Self) -> Int32
+pub fn PhysicsheatsourceGraphN::max(Self) -> Double
+pub fn PhysicsheatsourceGraphN::mean(Self) -> Double
+pub fn PhysicsheatsourceGraphN::min(Self) -> Double
+pub fn PhysicsheatsourceGraphN::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsourceGraphN::sum(Self) -> Double
+pub fn PhysicsheatsourceGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsourceLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsourceLayer::add(Self, Self) -> Self
+pub fn PhysicsheatsourceLayer::copy(Self) -> Self
+pub fn PhysicsheatsourceLayer::fill(Self, Double) -> Self
+pub fn PhysicsheatsourceLayer::get(Self, Int32) -> Double
+pub fn PhysicsheatsourceLayer::len(Self) -> Int32
+pub fn PhysicsheatsourceLayer::max(Self) -> Double
+pub fn PhysicsheatsourceLayer::mean(Self) -> Double
+pub fn PhysicsheatsourceLayer::min(Self) -> Double
+pub fn PhysicsheatsourceLayer::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsourceLayer::sum(Self) -> Double
+pub fn PhysicsheatsourceLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsourceMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsheatsourceMatrix::add(Self, Self) -> Self
+pub fn PhysicsheatsourceMatrix::det(Self) -> Double
+pub fn PhysicsheatsourceMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsheatsourceMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsheatsourceMatrix::norm(Self) -> Double
+pub fn PhysicsheatsourceMatrix::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceMatrix::to_string(Self) -> String
+pub fn PhysicsheatsourceMatrix::trace(Self) -> Double
+pub fn PhysicsheatsourceMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsheatsourceModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsourceModel::add(Self, Self) -> Self
+pub fn PhysicsheatsourceModel::copy(Self) -> Self
+pub fn PhysicsheatsourceModel::fill(Self, Double) -> Self
+pub fn PhysicsheatsourceModel::get(Self, Int32) -> Double
+pub fn PhysicsheatsourceModel::len(Self) -> Int32
+pub fn PhysicsheatsourceModel::max(Self) -> Double
+pub fn PhysicsheatsourceModel::mean(Self) -> Double
+pub fn PhysicsheatsourceModel::min(Self) -> Double
+pub fn PhysicsheatsourceModel::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsourceModel::sum(Self) -> Double
+pub fn PhysicsheatsourceModel::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsourceNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsourceNode::add(Self, Self) -> Self
+pub fn PhysicsheatsourceNode::copy(Self) -> Self
+pub fn PhysicsheatsourceNode::fill(Self, Double) -> Self
+pub fn PhysicsheatsourceNode::get(Self, Int32) -> Double
+pub fn PhysicsheatsourceNode::len(Self) -> Int32
+pub fn PhysicsheatsourceNode::max(Self) -> Double
+pub fn PhysicsheatsourceNode::mean(Self) -> Double
+pub fn PhysicsheatsourceNode::min(Self) -> Double
+pub fn PhysicsheatsourceNode::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsourceNode::sum(Self) -> Double
+pub fn PhysicsheatsourceNode::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsourcePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsourcePath::add(Self, Self) -> Self
+pub fn PhysicsheatsourcePath::copy(Self) -> Self
+pub fn PhysicsheatsourcePath::fill(Self, Double) -> Self
+pub fn PhysicsheatsourcePath::get(Self, Int32) -> Double
+pub fn PhysicsheatsourcePath::len(Self) -> Int32
+pub fn PhysicsheatsourcePath::max(Self) -> Double
+pub fn PhysicsheatsourcePath::mean(Self) -> Double
+pub fn PhysicsheatsourcePath::min(Self) -> Double
+pub fn PhysicsheatsourcePath::scale(Self, Double) -> Self
+pub fn PhysicsheatsourcePath::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsourcePath::sum(Self) -> Double
+pub fn PhysicsheatsourcePath::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsourcePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsheatsourcePoint::add(Self, Self) -> Self
+pub fn PhysicsheatsourcePoint::cross(Self, Self) -> Self
+pub fn PhysicsheatsourcePoint::dist(Self, Self) -> Double
+pub fn PhysicsheatsourcePoint::dot(Self, Self) -> Double
+pub fn PhysicsheatsourcePoint::label(Self) -> Int32
+pub fn PhysicsheatsourcePoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsheatsourcePoint::mid(Self, Self) -> Self
+pub fn PhysicsheatsourcePoint::negate(Self) -> Self
+pub fn PhysicsheatsourcePoint::norm(Self) -> Double
+pub fn PhysicsheatsourcePoint::normalize(Self) -> Self
+pub fn PhysicsheatsourcePoint::scale(Self, Double) -> Self
+pub fn PhysicsheatsourcePoint::sub(Self, Self) -> Self
+pub fn PhysicsheatsourcePoint::to_string(Self) -> String
+pub fn PhysicsheatsourcePoint::x(Self) -> Double
+pub fn PhysicsheatsourcePoint::y(Self) -> Double
+pub fn PhysicsheatsourcePoint::z(Self) -> Double
+
+pub(all) struct PhysicsheatsourceRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsourceRange::add(Self, Self) -> Self
+pub fn PhysicsheatsourceRange::copy(Self) -> Self
+pub fn PhysicsheatsourceRange::fill(Self, Double) -> Self
+pub fn PhysicsheatsourceRange::get(Self, Int32) -> Double
+pub fn PhysicsheatsourceRange::len(Self) -> Int32
+pub fn PhysicsheatsourceRange::max(Self) -> Double
+pub fn PhysicsheatsourceRange::mean(Self) -> Double
+pub fn PhysicsheatsourceRange::min(Self) -> Double
+pub fn PhysicsheatsourceRange::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsourceRange::sum(Self) -> Double
+pub fn PhysicsheatsourceRange::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsourceSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsheatsourceSeries::add(Self, Self) -> Self
+pub fn PhysicsheatsourceSeries::cumsum(Self) -> Self
+pub fn PhysicsheatsourceSeries::len(Self) -> Int32
+pub fn PhysicsheatsourceSeries::max(Self) -> Double
+pub fn PhysicsheatsourceSeries::mean(Self) -> Double
+pub fn PhysicsheatsourceSeries::median(Self) -> Double
+pub fn PhysicsheatsourceSeries::min(Self) -> Double
+pub fn PhysicsheatsourceSeries::normalize(Self) -> Self
+pub fn PhysicsheatsourceSeries::range(Self) -> Double
+pub fn PhysicsheatsourceSeries::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceSeries::std(Self) -> Double
+pub fn PhysicsheatsourceSeries::sub(Self, Self) -> Self
+pub fn PhysicsheatsourceSeries::sum(Self) -> Double
+pub fn PhysicsheatsourceSeries::to_string(Self) -> String
+pub fn PhysicsheatsourceSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsheatsourceSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsourceSlice::add(Self, Self) -> Self
+pub fn PhysicsheatsourceSlice::copy(Self) -> Self
+pub fn PhysicsheatsourceSlice::fill(Self, Double) -> Self
+pub fn PhysicsheatsourceSlice::get(Self, Int32) -> Double
+pub fn PhysicsheatsourceSlice::len(Self) -> Int32
+pub fn PhysicsheatsourceSlice::max(Self) -> Double
+pub fn PhysicsheatsourceSlice::mean(Self) -> Double
+pub fn PhysicsheatsourceSlice::min(Self) -> Double
+pub fn PhysicsheatsourceSlice::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsourceSlice::sum(Self) -> Double
+pub fn PhysicsheatsourceSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsourceTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsourceTable::add(Self, Self) -> Self
+pub fn PhysicsheatsourceTable::copy(Self) -> Self
+pub fn PhysicsheatsourceTable::fill(Self, Double) -> Self
+pub fn PhysicsheatsourceTable::get(Self, Int32) -> Double
+pub fn PhysicsheatsourceTable::len(Self) -> Int32
+pub fn PhysicsheatsourceTable::max(Self) -> Double
+pub fn PhysicsheatsourceTable::mean(Self) -> Double
+pub fn PhysicsheatsourceTable::min(Self) -> Double
+pub fn PhysicsheatsourceTable::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsourceTable::sum(Self) -> Double
+pub fn PhysicsheatsourceTable::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsourceVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsheatsourceVector::add(Self, Self) -> Self
+pub fn PhysicsheatsourceVector::dist(Self, Self) -> Double
+pub fn PhysicsheatsourceVector::dot(Self, Self) -> Double
+pub fn PhysicsheatsourceVector::norm(Self) -> Double
+pub fn PhysicsheatsourceVector::normalize(Self) -> Self
+pub fn PhysicsheatsourceVector::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceVector::sub(Self, Self) -> Self
+pub fn PhysicsheatsourceVector::to_string(Self) -> String
+
+pub(all) struct PhysicsheatsourceView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatsourceView::add(Self, Self) -> Self
+pub fn PhysicsheatsourceView::copy(Self) -> Self
+pub fn PhysicsheatsourceView::fill(Self, Double) -> Self
+pub fn PhysicsheatsourceView::get(Self, Int32) -> Double
+pub fn PhysicsheatsourceView::len(Self) -> Int32
+pub fn PhysicsheatsourceView::max(Self) -> Double
+pub fn PhysicsheatsourceView::mean(Self) -> Double
+pub fn PhysicsheatsourceView::min(Self) -> Double
+pub fn PhysicsheatsourceView::scale(Self, Double) -> Self
+pub fn PhysicsheatsourceView::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatsourceView::sum(Self) -> Double
+pub fn PhysicsheatsourceView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

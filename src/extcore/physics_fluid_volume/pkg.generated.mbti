@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_fluid_volume"
+
+// Values
+pub fn physics_fluid_volume_buffer_make(Int32) -> PhysicsfluidvolumeBuffer
+
+pub fn physics_fluid_volume_cluster_make(Int32) -> PhysicsfluidvolumeCluster
+
+pub fn physics_fluid_volume_cursor_make(Int32) -> PhysicsfluidvolumeCursor
+
+pub fn physics_fluid_volume_edge_make(Int32) -> PhysicsfluidvolumeEdge
+
+pub fn physics_fluid_volume_frame_make(Int32) -> PhysicsfluidvolumeFrame
+
+pub fn physics_fluid_volume_graphn_make(Int32) -> PhysicsfluidvolumeGraphN
+
+pub fn physics_fluid_volume_layer_make(Int32) -> PhysicsfluidvolumeLayer
+
+pub fn physics_fluid_volume_make_matrix(Int32, Int32, Double) -> PhysicsfluidvolumeMatrix
+
+pub fn physics_fluid_volume_make_point(Double, Double) -> PhysicsfluidvolumePoint
+
+pub fn physics_fluid_volume_make_point3(Double, Double, Double) -> PhysicsfluidvolumePoint
+
+pub fn physics_fluid_volume_make_series(Array[Double], String) -> PhysicsfluidvolumeSeries
+
+pub fn physics_fluid_volume_make_vector(Array[Double]) -> PhysicsfluidvolumeVector
+
+pub fn physics_fluid_volume_matrix_identity(Int32) -> PhysicsfluidvolumeMatrix
+
+pub fn physics_fluid_volume_model_make(Int32) -> PhysicsfluidvolumeModel
+
+pub fn physics_fluid_volume_node_make(Int32) -> PhysicsfluidvolumeNode
+
+pub fn physics_fluid_volume_path_make(Int32) -> PhysicsfluidvolumePath
+
+pub fn physics_fluid_volume_range_make(Int32) -> PhysicsfluidvolumeRange
+
+pub fn physics_fluid_volume_slice_make(Int32) -> PhysicsfluidvolumeSlice
+
+pub fn physics_fluid_volume_table_make(Int32) -> PhysicsfluidvolumeTable
+
+pub fn physics_fluid_volume_vector_zero(Int32) -> PhysicsfluidvolumeVector
+
+pub fn physics_fluid_volume_view_make(Int32) -> PhysicsfluidvolumeView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsfluidvolumeBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvolumeBuffer::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeBuffer::copy(Self) -> Self
+pub fn PhysicsfluidvolumeBuffer::fill(Self, Double) -> Self
+pub fn PhysicsfluidvolumeBuffer::get(Self, Int32) -> Double
+pub fn PhysicsfluidvolumeBuffer::len(Self) -> Int32
+pub fn PhysicsfluidvolumeBuffer::max(Self) -> Double
+pub fn PhysicsfluidvolumeBuffer::mean(Self) -> Double
+pub fn PhysicsfluidvolumeBuffer::min(Self) -> Double
+pub fn PhysicsfluidvolumeBuffer::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvolumeBuffer::sum(Self) -> Double
+pub fn PhysicsfluidvolumeBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvolumeCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvolumeCluster::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeCluster::copy(Self) -> Self
+pub fn PhysicsfluidvolumeCluster::fill(Self, Double) -> Self
+pub fn PhysicsfluidvolumeCluster::get(Self, Int32) -> Double
+pub fn PhysicsfluidvolumeCluster::len(Self) -> Int32
+pub fn PhysicsfluidvolumeCluster::max(Self) -> Double
+pub fn PhysicsfluidvolumeCluster::mean(Self) -> Double
+pub fn PhysicsfluidvolumeCluster::min(Self) -> Double
+pub fn PhysicsfluidvolumeCluster::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvolumeCluster::sum(Self) -> Double
+pub fn PhysicsfluidvolumeCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvolumeCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvolumeCursor::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeCursor::copy(Self) -> Self
+pub fn PhysicsfluidvolumeCursor::fill(Self, Double) -> Self
+pub fn PhysicsfluidvolumeCursor::get(Self, Int32) -> Double
+pub fn PhysicsfluidvolumeCursor::len(Self) -> Int32
+pub fn PhysicsfluidvolumeCursor::max(Self) -> Double
+pub fn PhysicsfluidvolumeCursor::mean(Self) -> Double
+pub fn PhysicsfluidvolumeCursor::min(Self) -> Double
+pub fn PhysicsfluidvolumeCursor::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvolumeCursor::sum(Self) -> Double
+pub fn PhysicsfluidvolumeCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvolumeEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvolumeEdge::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeEdge::copy(Self) -> Self
+pub fn PhysicsfluidvolumeEdge::fill(Self, Double) -> Self
+pub fn PhysicsfluidvolumeEdge::get(Self, Int32) -> Double
+pub fn PhysicsfluidvolumeEdge::len(Self) -> Int32
+pub fn PhysicsfluidvolumeEdge::max(Self) -> Double
+pub fn PhysicsfluidvolumeEdge::mean(Self) -> Double
+pub fn PhysicsfluidvolumeEdge::min(Self) -> Double
+pub fn PhysicsfluidvolumeEdge::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvolumeEdge::sum(Self) -> Double
+pub fn PhysicsfluidvolumeEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvolumeFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvolumeFrame::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeFrame::copy(Self) -> Self
+pub fn PhysicsfluidvolumeFrame::fill(Self, Double) -> Self
+pub fn PhysicsfluidvolumeFrame::get(Self, Int32) -> Double
+pub fn PhysicsfluidvolumeFrame::len(Self) -> Int32
+pub fn PhysicsfluidvolumeFrame::max(Self) -> Double
+pub fn PhysicsfluidvolumeFrame::mean(Self) -> Double
+pub fn PhysicsfluidvolumeFrame::min(Self) -> Double
+pub fn PhysicsfluidvolumeFrame::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvolumeFrame::sum(Self) -> Double
+pub fn PhysicsfluidvolumeFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvolumeGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvolumeGraphN::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeGraphN::copy(Self) -> Self
+pub fn PhysicsfluidvolumeGraphN::fill(Self, Double) -> Self
+pub fn PhysicsfluidvolumeGraphN::get(Self, Int32) -> Double
+pub fn PhysicsfluidvolumeGraphN::len(Self) -> Int32
+pub fn PhysicsfluidvolumeGraphN::max(Self) -> Double
+pub fn PhysicsfluidvolumeGraphN::mean(Self) -> Double
+pub fn PhysicsfluidvolumeGraphN::min(Self) -> Double
+pub fn PhysicsfluidvolumeGraphN::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvolumeGraphN::sum(Self) -> Double
+pub fn PhysicsfluidvolumeGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvolumeLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvolumeLayer::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeLayer::copy(Self) -> Self
+pub fn PhysicsfluidvolumeLayer::fill(Self, Double) -> Self
+pub fn PhysicsfluidvolumeLayer::get(Self, Int32) -> Double
+pub fn PhysicsfluidvolumeLayer::len(Self) -> Int32
+pub fn PhysicsfluidvolumeLayer::max(Self) -> Double
+pub fn PhysicsfluidvolumeLayer::mean(Self) -> Double
+pub fn PhysicsfluidvolumeLayer::min(Self) -> Double
+pub fn PhysicsfluidvolumeLayer::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvolumeLayer::sum(Self) -> Double
+pub fn PhysicsfluidvolumeLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvolumeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsfluidvolumeMatrix::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeMatrix::det(Self) -> Double
+pub fn PhysicsfluidvolumeMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsfluidvolumeMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsfluidvolumeMatrix::norm(Self) -> Double
+pub fn PhysicsfluidvolumeMatrix::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeMatrix::to_string(Self) -> String
+pub fn PhysicsfluidvolumeMatrix::trace(Self) -> Double
+pub fn PhysicsfluidvolumeMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsfluidvolumeModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvolumeModel::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeModel::copy(Self) -> Self
+pub fn PhysicsfluidvolumeModel::fill(Self, Double) -> Self
+pub fn PhysicsfluidvolumeModel::get(Self, Int32) -> Double
+pub fn PhysicsfluidvolumeModel::len(Self) -> Int32
+pub fn PhysicsfluidvolumeModel::max(Self) -> Double
+pub fn PhysicsfluidvolumeModel::mean(Self) -> Double
+pub fn PhysicsfluidvolumeModel::min(Self) -> Double
+pub fn PhysicsfluidvolumeModel::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvolumeModel::sum(Self) -> Double
+pub fn PhysicsfluidvolumeModel::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvolumeNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvolumeNode::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeNode::copy(Self) -> Self
+pub fn PhysicsfluidvolumeNode::fill(Self, Double) -> Self
+pub fn PhysicsfluidvolumeNode::get(Self, Int32) -> Double
+pub fn PhysicsfluidvolumeNode::len(Self) -> Int32
+pub fn PhysicsfluidvolumeNode::max(Self) -> Double
+pub fn PhysicsfluidvolumeNode::mean(Self) -> Double
+pub fn PhysicsfluidvolumeNode::min(Self) -> Double
+pub fn PhysicsfluidvolumeNode::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvolumeNode::sum(Self) -> Double
+pub fn PhysicsfluidvolumeNode::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvolumePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvolumePath::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumePath::copy(Self) -> Self
+pub fn PhysicsfluidvolumePath::fill(Self, Double) -> Self
+pub fn PhysicsfluidvolumePath::get(Self, Int32) -> Double
+pub fn PhysicsfluidvolumePath::len(Self) -> Int32
+pub fn PhysicsfluidvolumePath::max(Self) -> Double
+pub fn PhysicsfluidvolumePath::mean(Self) -> Double
+pub fn PhysicsfluidvolumePath::min(Self) -> Double
+pub fn PhysicsfluidvolumePath::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumePath::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvolumePath::sum(Self) -> Double
+pub fn PhysicsfluidvolumePath::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvolumePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsfluidvolumePoint::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumePoint::cross(Self, Self) -> Self
+pub fn PhysicsfluidvolumePoint::dist(Self, Self) -> Double
+pub fn PhysicsfluidvolumePoint::dot(Self, Self) -> Double
+pub fn PhysicsfluidvolumePoint::label(Self) -> Int32
+pub fn PhysicsfluidvolumePoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsfluidvolumePoint::mid(Self, Self) -> Self
+pub fn PhysicsfluidvolumePoint::negate(Self) -> Self
+pub fn PhysicsfluidvolumePoint::norm(Self) -> Double
+pub fn PhysicsfluidvolumePoint::normalize(Self) -> Self
+pub fn PhysicsfluidvolumePoint::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumePoint::sub(Self, Self) -> Self
+pub fn PhysicsfluidvolumePoint::to_string(Self) -> String
+pub fn PhysicsfluidvolumePoint::x(Self) -> Double
+pub fn PhysicsfluidvolumePoint::y(Self) -> Double
+pub fn PhysicsfluidvolumePoint::z(Self) -> Double
+
+pub(all) struct PhysicsfluidvolumeRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvolumeRange::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeRange::copy(Self) -> Self
+pub fn PhysicsfluidvolumeRange::fill(Self, Double) -> Self
+pub fn PhysicsfluidvolumeRange::get(Self, Int32) -> Double
+pub fn PhysicsfluidvolumeRange::len(Self) -> Int32
+pub fn PhysicsfluidvolumeRange::max(Self) -> Double
+pub fn PhysicsfluidvolumeRange::mean(Self) -> Double
+pub fn PhysicsfluidvolumeRange::min(Self) -> Double
+pub fn PhysicsfluidvolumeRange::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvolumeRange::sum(Self) -> Double
+pub fn PhysicsfluidvolumeRange::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvolumeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsfluidvolumeSeries::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeSeries::cumsum(Self) -> Self
+pub fn PhysicsfluidvolumeSeries::len(Self) -> Int32
+pub fn PhysicsfluidvolumeSeries::max(Self) -> Double
+pub fn PhysicsfluidvolumeSeries::mean(Self) -> Double
+pub fn PhysicsfluidvolumeSeries::median(Self) -> Double
+pub fn PhysicsfluidvolumeSeries::min(Self) -> Double
+pub fn PhysicsfluidvolumeSeries::normalize(Self) -> Self
+pub fn PhysicsfluidvolumeSeries::range(Self) -> Double
+pub fn PhysicsfluidvolumeSeries::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeSeries::std(Self) -> Double
+pub fn PhysicsfluidvolumeSeries::sub(Self, Self) -> Self
+pub fn PhysicsfluidvolumeSeries::sum(Self) -> Double
+pub fn PhysicsfluidvolumeSeries::to_string(Self) -> String
+pub fn PhysicsfluidvolumeSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsfluidvolumeSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvolumeSlice::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeSlice::copy(Self) -> Self
+pub fn PhysicsfluidvolumeSlice::fill(Self, Double) -> Self
+pub fn PhysicsfluidvolumeSlice::get(Self, Int32) -> Double
+pub fn PhysicsfluidvolumeSlice::len(Self) -> Int32
+pub fn PhysicsfluidvolumeSlice::max(Self) -> Double
+pub fn PhysicsfluidvolumeSlice::mean(Self) -> Double
+pub fn PhysicsfluidvolumeSlice::min(Self) -> Double
+pub fn PhysicsfluidvolumeSlice::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvolumeSlice::sum(Self) -> Double
+pub fn PhysicsfluidvolumeSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvolumeTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvolumeTable::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeTable::copy(Self) -> Self
+pub fn PhysicsfluidvolumeTable::fill(Self, Double) -> Self
+pub fn PhysicsfluidvolumeTable::get(Self, Int32) -> Double
+pub fn PhysicsfluidvolumeTable::len(Self) -> Int32
+pub fn PhysicsfluidvolumeTable::max(Self) -> Double
+pub fn PhysicsfluidvolumeTable::mean(Self) -> Double
+pub fn PhysicsfluidvolumeTable::min(Self) -> Double
+pub fn PhysicsfluidvolumeTable::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvolumeTable::sum(Self) -> Double
+pub fn PhysicsfluidvolumeTable::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvolumeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsfluidvolumeVector::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeVector::dist(Self, Self) -> Double
+pub fn PhysicsfluidvolumeVector::dot(Self, Self) -> Double
+pub fn PhysicsfluidvolumeVector::norm(Self) -> Double
+pub fn PhysicsfluidvolumeVector::normalize(Self) -> Self
+pub fn PhysicsfluidvolumeVector::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeVector::sub(Self, Self) -> Self
+pub fn PhysicsfluidvolumeVector::to_string(Self) -> String
+
+pub(all) struct PhysicsfluidvolumeView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsfluidvolumeView::add(Self, Self) -> Self
+pub fn PhysicsfluidvolumeView::copy(Self) -> Self
+pub fn PhysicsfluidvolumeView::fill(Self, Double) -> Self
+pub fn PhysicsfluidvolumeView::get(Self, Int32) -> Double
+pub fn PhysicsfluidvolumeView::len(Self) -> Int32
+pub fn PhysicsfluidvolumeView::max(Self) -> Double
+pub fn PhysicsfluidvolumeView::mean(Self) -> Double
+pub fn PhysicsfluidvolumeView::min(Self) -> Double
+pub fn PhysicsfluidvolumeView::scale(Self, Double) -> Self
+pub fn PhysicsfluidvolumeView::set(Self, Int32, Double) -> Self
+pub fn PhysicsfluidvolumeView::sum(Self) -> Double
+pub fn PhysicsfluidvolumeView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

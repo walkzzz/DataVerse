@@ -1,0 +1,32 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/kernel/cache"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn cache_id() -> String
+
+pub fn consistency_guarantee() -> String
+
+pub fn is_hit(CacheKey, CacheKey) -> Bool
+
+pub fn make_key(String) -> CacheKey
+
+pub fn mode_tag() -> String
+
+// Errors
+
+// Types and methods
+pub struct CacheKey {
+  key : String
+  fingerprint : String
+} derive(Eq, @debug.Debug)
+pub fn CacheKey::equal(Self, Self) -> Bool
+pub fn CacheKey::not_equal(Self, Self) -> Bool
+pub fn CacheKey::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

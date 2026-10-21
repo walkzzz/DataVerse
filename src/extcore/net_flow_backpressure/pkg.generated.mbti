@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_flow_backpressure"
+
+// Values
+pub fn net_flow_backpressure_buffer_make(Int32) -> NetflowbackpressureBuffer
+
+pub fn net_flow_backpressure_cluster_make(Int32) -> NetflowbackpressureCluster
+
+pub fn net_flow_backpressure_cursor_make(Int32) -> NetflowbackpressureCursor
+
+pub fn net_flow_backpressure_edge_make(Int32) -> NetflowbackpressureEdge
+
+pub fn net_flow_backpressure_frame_make(Int32) -> NetflowbackpressureFrame
+
+pub fn net_flow_backpressure_graphn_make(Int32) -> NetflowbackpressureGraphN
+
+pub fn net_flow_backpressure_layer_make(Int32) -> NetflowbackpressureLayer
+
+pub fn net_flow_backpressure_make_matrix(Int32, Int32, Double) -> NetflowbackpressureMatrix
+
+pub fn net_flow_backpressure_make_point(Double, Double) -> NetflowbackpressurePoint
+
+pub fn net_flow_backpressure_make_point3(Double, Double, Double) -> NetflowbackpressurePoint
+
+pub fn net_flow_backpressure_make_series(Array[Double], String) -> NetflowbackpressureSeries
+
+pub fn net_flow_backpressure_make_vector(Array[Double]) -> NetflowbackpressureVector
+
+pub fn net_flow_backpressure_matrix_identity(Int32) -> NetflowbackpressureMatrix
+
+pub fn net_flow_backpressure_model_make(Int32) -> NetflowbackpressureModel
+
+pub fn net_flow_backpressure_node_make(Int32) -> NetflowbackpressureNode
+
+pub fn net_flow_backpressure_path_make(Int32) -> NetflowbackpressurePath
+
+pub fn net_flow_backpressure_range_make(Int32) -> NetflowbackpressureRange
+
+pub fn net_flow_backpressure_slice_make(Int32) -> NetflowbackpressureSlice
+
+pub fn net_flow_backpressure_table_make(Int32) -> NetflowbackpressureTable
+
+pub fn net_flow_backpressure_vector_zero(Int32) -> NetflowbackpressureVector
+
+pub fn net_flow_backpressure_view_make(Int32) -> NetflowbackpressureView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetflowbackpressureBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowbackpressureBuffer::add(Self, Self) -> Self
+pub fn NetflowbackpressureBuffer::copy(Self) -> Self
+pub fn NetflowbackpressureBuffer::fill(Self, Double) -> Self
+pub fn NetflowbackpressureBuffer::get(Self, Int32) -> Double
+pub fn NetflowbackpressureBuffer::len(Self) -> Int32
+pub fn NetflowbackpressureBuffer::max(Self) -> Double
+pub fn NetflowbackpressureBuffer::mean(Self) -> Double
+pub fn NetflowbackpressureBuffer::min(Self) -> Double
+pub fn NetflowbackpressureBuffer::scale(Self, Double) -> Self
+pub fn NetflowbackpressureBuffer::set(Self, Int32, Double) -> Self
+pub fn NetflowbackpressureBuffer::sum(Self) -> Double
+pub fn NetflowbackpressureBuffer::to_string(Self) -> String
+
+pub(all) struct NetflowbackpressureCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowbackpressureCluster::add(Self, Self) -> Self
+pub fn NetflowbackpressureCluster::copy(Self) -> Self
+pub fn NetflowbackpressureCluster::fill(Self, Double) -> Self
+pub fn NetflowbackpressureCluster::get(Self, Int32) -> Double
+pub fn NetflowbackpressureCluster::len(Self) -> Int32
+pub fn NetflowbackpressureCluster::max(Self) -> Double
+pub fn NetflowbackpressureCluster::mean(Self) -> Double
+pub fn NetflowbackpressureCluster::min(Self) -> Double
+pub fn NetflowbackpressureCluster::scale(Self, Double) -> Self
+pub fn NetflowbackpressureCluster::set(Self, Int32, Double) -> Self
+pub fn NetflowbackpressureCluster::sum(Self) -> Double
+pub fn NetflowbackpressureCluster::to_string(Self) -> String
+
+pub(all) struct NetflowbackpressureCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowbackpressureCursor::add(Self, Self) -> Self
+pub fn NetflowbackpressureCursor::copy(Self) -> Self
+pub fn NetflowbackpressureCursor::fill(Self, Double) -> Self
+pub fn NetflowbackpressureCursor::get(Self, Int32) -> Double
+pub fn NetflowbackpressureCursor::len(Self) -> Int32
+pub fn NetflowbackpressureCursor::max(Self) -> Double
+pub fn NetflowbackpressureCursor::mean(Self) -> Double
+pub fn NetflowbackpressureCursor::min(Self) -> Double
+pub fn NetflowbackpressureCursor::scale(Self, Double) -> Self
+pub fn NetflowbackpressureCursor::set(Self, Int32, Double) -> Self
+pub fn NetflowbackpressureCursor::sum(Self) -> Double
+pub fn NetflowbackpressureCursor::to_string(Self) -> String
+
+pub(all) struct NetflowbackpressureEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowbackpressureEdge::add(Self, Self) -> Self
+pub fn NetflowbackpressureEdge::copy(Self) -> Self
+pub fn NetflowbackpressureEdge::fill(Self, Double) -> Self
+pub fn NetflowbackpressureEdge::get(Self, Int32) -> Double
+pub fn NetflowbackpressureEdge::len(Self) -> Int32
+pub fn NetflowbackpressureEdge::max(Self) -> Double
+pub fn NetflowbackpressureEdge::mean(Self) -> Double
+pub fn NetflowbackpressureEdge::min(Self) -> Double
+pub fn NetflowbackpressureEdge::scale(Self, Double) -> Self
+pub fn NetflowbackpressureEdge::set(Self, Int32, Double) -> Self
+pub fn NetflowbackpressureEdge::sum(Self) -> Double
+pub fn NetflowbackpressureEdge::to_string(Self) -> String
+
+pub(all) struct NetflowbackpressureFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowbackpressureFrame::add(Self, Self) -> Self
+pub fn NetflowbackpressureFrame::copy(Self) -> Self
+pub fn NetflowbackpressureFrame::fill(Self, Double) -> Self
+pub fn NetflowbackpressureFrame::get(Self, Int32) -> Double
+pub fn NetflowbackpressureFrame::len(Self) -> Int32
+pub fn NetflowbackpressureFrame::max(Self) -> Double
+pub fn NetflowbackpressureFrame::mean(Self) -> Double
+pub fn NetflowbackpressureFrame::min(Self) -> Double
+pub fn NetflowbackpressureFrame::scale(Self, Double) -> Self
+pub fn NetflowbackpressureFrame::set(Self, Int32, Double) -> Self
+pub fn NetflowbackpressureFrame::sum(Self) -> Double
+pub fn NetflowbackpressureFrame::to_string(Self) -> String
+
+pub(all) struct NetflowbackpressureGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowbackpressureGraphN::add(Self, Self) -> Self
+pub fn NetflowbackpressureGraphN::copy(Self) -> Self
+pub fn NetflowbackpressureGraphN::fill(Self, Double) -> Self
+pub fn NetflowbackpressureGraphN::get(Self, Int32) -> Double
+pub fn NetflowbackpressureGraphN::len(Self) -> Int32
+pub fn NetflowbackpressureGraphN::max(Self) -> Double
+pub fn NetflowbackpressureGraphN::mean(Self) -> Double
+pub fn NetflowbackpressureGraphN::min(Self) -> Double
+pub fn NetflowbackpressureGraphN::scale(Self, Double) -> Self
+pub fn NetflowbackpressureGraphN::set(Self, Int32, Double) -> Self
+pub fn NetflowbackpressureGraphN::sum(Self) -> Double
+pub fn NetflowbackpressureGraphN::to_string(Self) -> String
+
+pub(all) struct NetflowbackpressureLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowbackpressureLayer::add(Self, Self) -> Self
+pub fn NetflowbackpressureLayer::copy(Self) -> Self
+pub fn NetflowbackpressureLayer::fill(Self, Double) -> Self
+pub fn NetflowbackpressureLayer::get(Self, Int32) -> Double
+pub fn NetflowbackpressureLayer::len(Self) -> Int32
+pub fn NetflowbackpressureLayer::max(Self) -> Double
+pub fn NetflowbackpressureLayer::mean(Self) -> Double
+pub fn NetflowbackpressureLayer::min(Self) -> Double
+pub fn NetflowbackpressureLayer::scale(Self, Double) -> Self
+pub fn NetflowbackpressureLayer::set(Self, Int32, Double) -> Self
+pub fn NetflowbackpressureLayer::sum(Self) -> Double
+pub fn NetflowbackpressureLayer::to_string(Self) -> String
+
+pub(all) struct NetflowbackpressureMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetflowbackpressureMatrix::add(Self, Self) -> Self
+pub fn NetflowbackpressureMatrix::det(Self) -> Double
+pub fn NetflowbackpressureMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetflowbackpressureMatrix::multiply(Self, Self) -> Self
+pub fn NetflowbackpressureMatrix::norm(Self) -> Double
+pub fn NetflowbackpressureMatrix::scale(Self, Double) -> Self
+pub fn NetflowbackpressureMatrix::to_string(Self) -> String
+pub fn NetflowbackpressureMatrix::trace(Self) -> Double
+pub fn NetflowbackpressureMatrix::transpose(Self) -> Self
+
+pub(all) struct NetflowbackpressureModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowbackpressureModel::add(Self, Self) -> Self
+pub fn NetflowbackpressureModel::copy(Self) -> Self
+pub fn NetflowbackpressureModel::fill(Self, Double) -> Self
+pub fn NetflowbackpressureModel::get(Self, Int32) -> Double
+pub fn NetflowbackpressureModel::len(Self) -> Int32
+pub fn NetflowbackpressureModel::max(Self) -> Double
+pub fn NetflowbackpressureModel::mean(Self) -> Double
+pub fn NetflowbackpressureModel::min(Self) -> Double
+pub fn NetflowbackpressureModel::scale(Self, Double) -> Self
+pub fn NetflowbackpressureModel::set(Self, Int32, Double) -> Self
+pub fn NetflowbackpressureModel::sum(Self) -> Double
+pub fn NetflowbackpressureModel::to_string(Self) -> String
+
+pub(all) struct NetflowbackpressureNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowbackpressureNode::add(Self, Self) -> Self
+pub fn NetflowbackpressureNode::copy(Self) -> Self
+pub fn NetflowbackpressureNode::fill(Self, Double) -> Self
+pub fn NetflowbackpressureNode::get(Self, Int32) -> Double
+pub fn NetflowbackpressureNode::len(Self) -> Int32
+pub fn NetflowbackpressureNode::max(Self) -> Double
+pub fn NetflowbackpressureNode::mean(Self) -> Double
+pub fn NetflowbackpressureNode::min(Self) -> Double
+pub fn NetflowbackpressureNode::scale(Self, Double) -> Self
+pub fn NetflowbackpressureNode::set(Self, Int32, Double) -> Self
+pub fn NetflowbackpressureNode::sum(Self) -> Double
+pub fn NetflowbackpressureNode::to_string(Self) -> String
+
+pub(all) struct NetflowbackpressurePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowbackpressurePath::add(Self, Self) -> Self
+pub fn NetflowbackpressurePath::copy(Self) -> Self
+pub fn NetflowbackpressurePath::fill(Self, Double) -> Self
+pub fn NetflowbackpressurePath::get(Self, Int32) -> Double
+pub fn NetflowbackpressurePath::len(Self) -> Int32
+pub fn NetflowbackpressurePath::max(Self) -> Double
+pub fn NetflowbackpressurePath::mean(Self) -> Double
+pub fn NetflowbackpressurePath::min(Self) -> Double
+pub fn NetflowbackpressurePath::scale(Self, Double) -> Self
+pub fn NetflowbackpressurePath::set(Self, Int32, Double) -> Self
+pub fn NetflowbackpressurePath::sum(Self) -> Double
+pub fn NetflowbackpressurePath::to_string(Self) -> String
+
+pub(all) struct NetflowbackpressurePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetflowbackpressurePoint::add(Self, Self) -> Self
+pub fn NetflowbackpressurePoint::cross(Self, Self) -> Self
+pub fn NetflowbackpressurePoint::dist(Self, Self) -> Double
+pub fn NetflowbackpressurePoint::dot(Self, Self) -> Double
+pub fn NetflowbackpressurePoint::label(Self) -> Int32
+pub fn NetflowbackpressurePoint::lerp(Self, Self, Double) -> Self
+pub fn NetflowbackpressurePoint::mid(Self, Self) -> Self
+pub fn NetflowbackpressurePoint::negate(Self) -> Self
+pub fn NetflowbackpressurePoint::norm(Self) -> Double
+pub fn NetflowbackpressurePoint::normalize(Self) -> Self
+pub fn NetflowbackpressurePoint::scale(Self, Double) -> Self
+pub fn NetflowbackpressurePoint::sub(Self, Self) -> Self
+pub fn NetflowbackpressurePoint::to_string(Self) -> String
+pub fn NetflowbackpressurePoint::x(Self) -> Double
+pub fn NetflowbackpressurePoint::y(Self) -> Double
+pub fn NetflowbackpressurePoint::z(Self) -> Double
+
+pub(all) struct NetflowbackpressureRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowbackpressureRange::add(Self, Self) -> Self
+pub fn NetflowbackpressureRange::copy(Self) -> Self
+pub fn NetflowbackpressureRange::fill(Self, Double) -> Self
+pub fn NetflowbackpressureRange::get(Self, Int32) -> Double
+pub fn NetflowbackpressureRange::len(Self) -> Int32
+pub fn NetflowbackpressureRange::max(Self) -> Double
+pub fn NetflowbackpressureRange::mean(Self) -> Double
+pub fn NetflowbackpressureRange::min(Self) -> Double
+pub fn NetflowbackpressureRange::scale(Self, Double) -> Self
+pub fn NetflowbackpressureRange::set(Self, Int32, Double) -> Self
+pub fn NetflowbackpressureRange::sum(Self) -> Double
+pub fn NetflowbackpressureRange::to_string(Self) -> String
+
+pub(all) struct NetflowbackpressureSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetflowbackpressureSeries::add(Self, Self) -> Self
+pub fn NetflowbackpressureSeries::cumsum(Self) -> Self
+pub fn NetflowbackpressureSeries::len(Self) -> Int32
+pub fn NetflowbackpressureSeries::max(Self) -> Double
+pub fn NetflowbackpressureSeries::mean(Self) -> Double
+pub fn NetflowbackpressureSeries::median(Self) -> Double
+pub fn NetflowbackpressureSeries::min(Self) -> Double
+pub fn NetflowbackpressureSeries::normalize(Self) -> Self
+pub fn NetflowbackpressureSeries::range(Self) -> Double
+pub fn NetflowbackpressureSeries::scale(Self, Double) -> Self
+pub fn NetflowbackpressureSeries::std(Self) -> Double
+pub fn NetflowbackpressureSeries::sub(Self, Self) -> Self
+pub fn NetflowbackpressureSeries::sum(Self) -> Double
+pub fn NetflowbackpressureSeries::to_string(Self) -> String
+pub fn NetflowbackpressureSeries::variance(Self) -> Double
+
+pub(all) struct NetflowbackpressureSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowbackpressureSlice::add(Self, Self) -> Self
+pub fn NetflowbackpressureSlice::copy(Self) -> Self
+pub fn NetflowbackpressureSlice::fill(Self, Double) -> Self
+pub fn NetflowbackpressureSlice::get(Self, Int32) -> Double
+pub fn NetflowbackpressureSlice::len(Self) -> Int32
+pub fn NetflowbackpressureSlice::max(Self) -> Double
+pub fn NetflowbackpressureSlice::mean(Self) -> Double
+pub fn NetflowbackpressureSlice::min(Self) -> Double
+pub fn NetflowbackpressureSlice::scale(Self, Double) -> Self
+pub fn NetflowbackpressureSlice::set(Self, Int32, Double) -> Self
+pub fn NetflowbackpressureSlice::sum(Self) -> Double
+pub fn NetflowbackpressureSlice::to_string(Self) -> String
+
+pub(all) struct NetflowbackpressureTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowbackpressureTable::add(Self, Self) -> Self
+pub fn NetflowbackpressureTable::copy(Self) -> Self
+pub fn NetflowbackpressureTable::fill(Self, Double) -> Self
+pub fn NetflowbackpressureTable::get(Self, Int32) -> Double
+pub fn NetflowbackpressureTable::len(Self) -> Int32
+pub fn NetflowbackpressureTable::max(Self) -> Double
+pub fn NetflowbackpressureTable::mean(Self) -> Double
+pub fn NetflowbackpressureTable::min(Self) -> Double
+pub fn NetflowbackpressureTable::scale(Self, Double) -> Self
+pub fn NetflowbackpressureTable::set(Self, Int32, Double) -> Self
+pub fn NetflowbackpressureTable::sum(Self) -> Double
+pub fn NetflowbackpressureTable::to_string(Self) -> String
+
+pub(all) struct NetflowbackpressureVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetflowbackpressureVector::add(Self, Self) -> Self
+pub fn NetflowbackpressureVector::dist(Self, Self) -> Double
+pub fn NetflowbackpressureVector::dot(Self, Self) -> Double
+pub fn NetflowbackpressureVector::norm(Self) -> Double
+pub fn NetflowbackpressureVector::normalize(Self) -> Self
+pub fn NetflowbackpressureVector::scale(Self, Double) -> Self
+pub fn NetflowbackpressureVector::sub(Self, Self) -> Self
+pub fn NetflowbackpressureVector::to_string(Self) -> String
+
+pub(all) struct NetflowbackpressureView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowbackpressureView::add(Self, Self) -> Self
+pub fn NetflowbackpressureView::copy(Self) -> Self
+pub fn NetflowbackpressureView::fill(Self, Double) -> Self
+pub fn NetflowbackpressureView::get(Self, Int32) -> Double
+pub fn NetflowbackpressureView::len(Self) -> Int32
+pub fn NetflowbackpressureView::max(Self) -> Double
+pub fn NetflowbackpressureView::mean(Self) -> Double
+pub fn NetflowbackpressureView::min(Self) -> Double
+pub fn NetflowbackpressureView::scale(Self, Double) -> Self
+pub fn NetflowbackpressureView::set(Self, Int32, Double) -> Self
+pub fn NetflowbackpressureView::sum(Self) -> Double
+pub fn NetflowbackpressureView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

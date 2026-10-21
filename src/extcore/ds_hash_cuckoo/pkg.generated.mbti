@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_hash_cuckoo"
+
+// Values
+pub fn ds_hash_cuckoo_buffer_make(Int32) -> DshashcuckooBuffer
+
+pub fn ds_hash_cuckoo_cluster_make(Int32) -> DshashcuckooCluster
+
+pub fn ds_hash_cuckoo_cursor_make(Int32) -> DshashcuckooCursor
+
+pub fn ds_hash_cuckoo_edge_make(Int32) -> DshashcuckooEdge
+
+pub fn ds_hash_cuckoo_frame_make(Int32) -> DshashcuckooFrame
+
+pub fn ds_hash_cuckoo_graphn_make(Int32) -> DshashcuckooGraphN
+
+pub fn ds_hash_cuckoo_layer_make(Int32) -> DshashcuckooLayer
+
+pub fn ds_hash_cuckoo_make_matrix(Int32, Int32, Double) -> DshashcuckooMatrix
+
+pub fn ds_hash_cuckoo_make_point(Double, Double) -> DshashcuckooPoint
+
+pub fn ds_hash_cuckoo_make_point3(Double, Double, Double) -> DshashcuckooPoint
+
+pub fn ds_hash_cuckoo_make_series(Array[Double], String) -> DshashcuckooSeries
+
+pub fn ds_hash_cuckoo_make_vector(Array[Double]) -> DshashcuckooVector
+
+pub fn ds_hash_cuckoo_matrix_identity(Int32) -> DshashcuckooMatrix
+
+pub fn ds_hash_cuckoo_model_make(Int32) -> DshashcuckooModel
+
+pub fn ds_hash_cuckoo_node_make(Int32) -> DshashcuckooNode
+
+pub fn ds_hash_cuckoo_path_make(Int32) -> DshashcuckooPath
+
+pub fn ds_hash_cuckoo_range_make(Int32) -> DshashcuckooRange
+
+pub fn ds_hash_cuckoo_slice_make(Int32) -> DshashcuckooSlice
+
+pub fn ds_hash_cuckoo_table_make(Int32) -> DshashcuckooTable
+
+pub fn ds_hash_cuckoo_vector_zero(Int32) -> DshashcuckooVector
+
+pub fn ds_hash_cuckoo_view_make(Int32) -> DshashcuckooView
+
+// Errors
+
+// Types and methods
+pub(all) struct DshashcuckooBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashcuckooBuffer::add(Self, Self) -> Self
+pub fn DshashcuckooBuffer::copy(Self) -> Self
+pub fn DshashcuckooBuffer::fill(Self, Double) -> Self
+pub fn DshashcuckooBuffer::get(Self, Int32) -> Double
+pub fn DshashcuckooBuffer::len(Self) -> Int32
+pub fn DshashcuckooBuffer::max(Self) -> Double
+pub fn DshashcuckooBuffer::mean(Self) -> Double
+pub fn DshashcuckooBuffer::min(Self) -> Double
+pub fn DshashcuckooBuffer::scale(Self, Double) -> Self
+pub fn DshashcuckooBuffer::set(Self, Int32, Double) -> Self
+pub fn DshashcuckooBuffer::sum(Self) -> Double
+pub fn DshashcuckooBuffer::to_string(Self) -> String
+
+pub(all) struct DshashcuckooCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashcuckooCluster::add(Self, Self) -> Self
+pub fn DshashcuckooCluster::copy(Self) -> Self
+pub fn DshashcuckooCluster::fill(Self, Double) -> Self
+pub fn DshashcuckooCluster::get(Self, Int32) -> Double
+pub fn DshashcuckooCluster::len(Self) -> Int32
+pub fn DshashcuckooCluster::max(Self) -> Double
+pub fn DshashcuckooCluster::mean(Self) -> Double
+pub fn DshashcuckooCluster::min(Self) -> Double
+pub fn DshashcuckooCluster::scale(Self, Double) -> Self
+pub fn DshashcuckooCluster::set(Self, Int32, Double) -> Self
+pub fn DshashcuckooCluster::sum(Self) -> Double
+pub fn DshashcuckooCluster::to_string(Self) -> String
+
+pub(all) struct DshashcuckooCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashcuckooCursor::add(Self, Self) -> Self
+pub fn DshashcuckooCursor::copy(Self) -> Self
+pub fn DshashcuckooCursor::fill(Self, Double) -> Self
+pub fn DshashcuckooCursor::get(Self, Int32) -> Double
+pub fn DshashcuckooCursor::len(Self) -> Int32
+pub fn DshashcuckooCursor::max(Self) -> Double
+pub fn DshashcuckooCursor::mean(Self) -> Double
+pub fn DshashcuckooCursor::min(Self) -> Double
+pub fn DshashcuckooCursor::scale(Self, Double) -> Self
+pub fn DshashcuckooCursor::set(Self, Int32, Double) -> Self
+pub fn DshashcuckooCursor::sum(Self) -> Double
+pub fn DshashcuckooCursor::to_string(Self) -> String
+
+pub(all) struct DshashcuckooEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashcuckooEdge::add(Self, Self) -> Self
+pub fn DshashcuckooEdge::copy(Self) -> Self
+pub fn DshashcuckooEdge::fill(Self, Double) -> Self
+pub fn DshashcuckooEdge::get(Self, Int32) -> Double
+pub fn DshashcuckooEdge::len(Self) -> Int32
+pub fn DshashcuckooEdge::max(Self) -> Double
+pub fn DshashcuckooEdge::mean(Self) -> Double
+pub fn DshashcuckooEdge::min(Self) -> Double
+pub fn DshashcuckooEdge::scale(Self, Double) -> Self
+pub fn DshashcuckooEdge::set(Self, Int32, Double) -> Self
+pub fn DshashcuckooEdge::sum(Self) -> Double
+pub fn DshashcuckooEdge::to_string(Self) -> String
+
+pub(all) struct DshashcuckooFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashcuckooFrame::add(Self, Self) -> Self
+pub fn DshashcuckooFrame::copy(Self) -> Self
+pub fn DshashcuckooFrame::fill(Self, Double) -> Self
+pub fn DshashcuckooFrame::get(Self, Int32) -> Double
+pub fn DshashcuckooFrame::len(Self) -> Int32
+pub fn DshashcuckooFrame::max(Self) -> Double
+pub fn DshashcuckooFrame::mean(Self) -> Double
+pub fn DshashcuckooFrame::min(Self) -> Double
+pub fn DshashcuckooFrame::scale(Self, Double) -> Self
+pub fn DshashcuckooFrame::set(Self, Int32, Double) -> Self
+pub fn DshashcuckooFrame::sum(Self) -> Double
+pub fn DshashcuckooFrame::to_string(Self) -> String
+
+pub(all) struct DshashcuckooGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashcuckooGraphN::add(Self, Self) -> Self
+pub fn DshashcuckooGraphN::copy(Self) -> Self
+pub fn DshashcuckooGraphN::fill(Self, Double) -> Self
+pub fn DshashcuckooGraphN::get(Self, Int32) -> Double
+pub fn DshashcuckooGraphN::len(Self) -> Int32
+pub fn DshashcuckooGraphN::max(Self) -> Double
+pub fn DshashcuckooGraphN::mean(Self) -> Double
+pub fn DshashcuckooGraphN::min(Self) -> Double
+pub fn DshashcuckooGraphN::scale(Self, Double) -> Self
+pub fn DshashcuckooGraphN::set(Self, Int32, Double) -> Self
+pub fn DshashcuckooGraphN::sum(Self) -> Double
+pub fn DshashcuckooGraphN::to_string(Self) -> String
+
+pub(all) struct DshashcuckooLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashcuckooLayer::add(Self, Self) -> Self
+pub fn DshashcuckooLayer::copy(Self) -> Self
+pub fn DshashcuckooLayer::fill(Self, Double) -> Self
+pub fn DshashcuckooLayer::get(Self, Int32) -> Double
+pub fn DshashcuckooLayer::len(Self) -> Int32
+pub fn DshashcuckooLayer::max(Self) -> Double
+pub fn DshashcuckooLayer::mean(Self) -> Double
+pub fn DshashcuckooLayer::min(Self) -> Double
+pub fn DshashcuckooLayer::scale(Self, Double) -> Self
+pub fn DshashcuckooLayer::set(Self, Int32, Double) -> Self
+pub fn DshashcuckooLayer::sum(Self) -> Double
+pub fn DshashcuckooLayer::to_string(Self) -> String
+
+pub(all) struct DshashcuckooMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DshashcuckooMatrix::add(Self, Self) -> Self
+pub fn DshashcuckooMatrix::det(Self) -> Double
+pub fn DshashcuckooMatrix::get(Self, Int32, Int32) -> Double
+pub fn DshashcuckooMatrix::multiply(Self, Self) -> Self
+pub fn DshashcuckooMatrix::norm(Self) -> Double
+pub fn DshashcuckooMatrix::scale(Self, Double) -> Self
+pub fn DshashcuckooMatrix::to_string(Self) -> String
+pub fn DshashcuckooMatrix::trace(Self) -> Double
+pub fn DshashcuckooMatrix::transpose(Self) -> Self
+
+pub(all) struct DshashcuckooModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashcuckooModel::add(Self, Self) -> Self
+pub fn DshashcuckooModel::copy(Self) -> Self
+pub fn DshashcuckooModel::fill(Self, Double) -> Self
+pub fn DshashcuckooModel::get(Self, Int32) -> Double
+pub fn DshashcuckooModel::len(Self) -> Int32
+pub fn DshashcuckooModel::max(Self) -> Double
+pub fn DshashcuckooModel::mean(Self) -> Double
+pub fn DshashcuckooModel::min(Self) -> Double
+pub fn DshashcuckooModel::scale(Self, Double) -> Self
+pub fn DshashcuckooModel::set(Self, Int32, Double) -> Self
+pub fn DshashcuckooModel::sum(Self) -> Double
+pub fn DshashcuckooModel::to_string(Self) -> String
+
+pub(all) struct DshashcuckooNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashcuckooNode::add(Self, Self) -> Self
+pub fn DshashcuckooNode::copy(Self) -> Self
+pub fn DshashcuckooNode::fill(Self, Double) -> Self
+pub fn DshashcuckooNode::get(Self, Int32) -> Double
+pub fn DshashcuckooNode::len(Self) -> Int32
+pub fn DshashcuckooNode::max(Self) -> Double
+pub fn DshashcuckooNode::mean(Self) -> Double
+pub fn DshashcuckooNode::min(Self) -> Double
+pub fn DshashcuckooNode::scale(Self, Double) -> Self
+pub fn DshashcuckooNode::set(Self, Int32, Double) -> Self
+pub fn DshashcuckooNode::sum(Self) -> Double
+pub fn DshashcuckooNode::to_string(Self) -> String
+
+pub(all) struct DshashcuckooPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashcuckooPath::add(Self, Self) -> Self
+pub fn DshashcuckooPath::copy(Self) -> Self
+pub fn DshashcuckooPath::fill(Self, Double) -> Self
+pub fn DshashcuckooPath::get(Self, Int32) -> Double
+pub fn DshashcuckooPath::len(Self) -> Int32
+pub fn DshashcuckooPath::max(Self) -> Double
+pub fn DshashcuckooPath::mean(Self) -> Double
+pub fn DshashcuckooPath::min(Self) -> Double
+pub fn DshashcuckooPath::scale(Self, Double) -> Self
+pub fn DshashcuckooPath::set(Self, Int32, Double) -> Self
+pub fn DshashcuckooPath::sum(Self) -> Double
+pub fn DshashcuckooPath::to_string(Self) -> String
+
+pub(all) struct DshashcuckooPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DshashcuckooPoint::add(Self, Self) -> Self
+pub fn DshashcuckooPoint::cross(Self, Self) -> Self
+pub fn DshashcuckooPoint::dist(Self, Self) -> Double
+pub fn DshashcuckooPoint::dot(Self, Self) -> Double
+pub fn DshashcuckooPoint::label(Self) -> Int32
+pub fn DshashcuckooPoint::lerp(Self, Self, Double) -> Self
+pub fn DshashcuckooPoint::mid(Self, Self) -> Self
+pub fn DshashcuckooPoint::negate(Self) -> Self
+pub fn DshashcuckooPoint::norm(Self) -> Double
+pub fn DshashcuckooPoint::normalize(Self) -> Self
+pub fn DshashcuckooPoint::scale(Self, Double) -> Self
+pub fn DshashcuckooPoint::sub(Self, Self) -> Self
+pub fn DshashcuckooPoint::to_string(Self) -> String
+pub fn DshashcuckooPoint::x(Self) -> Double
+pub fn DshashcuckooPoint::y(Self) -> Double
+pub fn DshashcuckooPoint::z(Self) -> Double
+
+pub(all) struct DshashcuckooRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashcuckooRange::add(Self, Self) -> Self
+pub fn DshashcuckooRange::copy(Self) -> Self
+pub fn DshashcuckooRange::fill(Self, Double) -> Self
+pub fn DshashcuckooRange::get(Self, Int32) -> Double
+pub fn DshashcuckooRange::len(Self) -> Int32
+pub fn DshashcuckooRange::max(Self) -> Double
+pub fn DshashcuckooRange::mean(Self) -> Double
+pub fn DshashcuckooRange::min(Self) -> Double
+pub fn DshashcuckooRange::scale(Self, Double) -> Self
+pub fn DshashcuckooRange::set(Self, Int32, Double) -> Self
+pub fn DshashcuckooRange::sum(Self) -> Double
+pub fn DshashcuckooRange::to_string(Self) -> String
+
+pub(all) struct DshashcuckooSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DshashcuckooSeries::add(Self, Self) -> Self
+pub fn DshashcuckooSeries::cumsum(Self) -> Self
+pub fn DshashcuckooSeries::len(Self) -> Int32
+pub fn DshashcuckooSeries::max(Self) -> Double
+pub fn DshashcuckooSeries::mean(Self) -> Double
+pub fn DshashcuckooSeries::median(Self) -> Double
+pub fn DshashcuckooSeries::min(Self) -> Double
+pub fn DshashcuckooSeries::normalize(Self) -> Self
+pub fn DshashcuckooSeries::range(Self) -> Double
+pub fn DshashcuckooSeries::scale(Self, Double) -> Self
+pub fn DshashcuckooSeries::std(Self) -> Double
+pub fn DshashcuckooSeries::sub(Self, Self) -> Self
+pub fn DshashcuckooSeries::sum(Self) -> Double
+pub fn DshashcuckooSeries::to_string(Self) -> String
+pub fn DshashcuckooSeries::variance(Self) -> Double
+
+pub(all) struct DshashcuckooSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashcuckooSlice::add(Self, Self) -> Self
+pub fn DshashcuckooSlice::copy(Self) -> Self
+pub fn DshashcuckooSlice::fill(Self, Double) -> Self
+pub fn DshashcuckooSlice::get(Self, Int32) -> Double
+pub fn DshashcuckooSlice::len(Self) -> Int32
+pub fn DshashcuckooSlice::max(Self) -> Double
+pub fn DshashcuckooSlice::mean(Self) -> Double
+pub fn DshashcuckooSlice::min(Self) -> Double
+pub fn DshashcuckooSlice::scale(Self, Double) -> Self
+pub fn DshashcuckooSlice::set(Self, Int32, Double) -> Self
+pub fn DshashcuckooSlice::sum(Self) -> Double
+pub fn DshashcuckooSlice::to_string(Self) -> String
+
+pub(all) struct DshashcuckooTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashcuckooTable::add(Self, Self) -> Self
+pub fn DshashcuckooTable::copy(Self) -> Self
+pub fn DshashcuckooTable::fill(Self, Double) -> Self
+pub fn DshashcuckooTable::get(Self, Int32) -> Double
+pub fn DshashcuckooTable::len(Self) -> Int32
+pub fn DshashcuckooTable::max(Self) -> Double
+pub fn DshashcuckooTable::mean(Self) -> Double
+pub fn DshashcuckooTable::min(Self) -> Double
+pub fn DshashcuckooTable::scale(Self, Double) -> Self
+pub fn DshashcuckooTable::set(Self, Int32, Double) -> Self
+pub fn DshashcuckooTable::sum(Self) -> Double
+pub fn DshashcuckooTable::to_string(Self) -> String
+
+pub(all) struct DshashcuckooVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DshashcuckooVector::add(Self, Self) -> Self
+pub fn DshashcuckooVector::dist(Self, Self) -> Double
+pub fn DshashcuckooVector::dot(Self, Self) -> Double
+pub fn DshashcuckooVector::norm(Self) -> Double
+pub fn DshashcuckooVector::normalize(Self) -> Self
+pub fn DshashcuckooVector::scale(Self, Double) -> Self
+pub fn DshashcuckooVector::sub(Self, Self) -> Self
+pub fn DshashcuckooVector::to_string(Self) -> String
+
+pub(all) struct DshashcuckooView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DshashcuckooView::add(Self, Self) -> Self
+pub fn DshashcuckooView::copy(Self) -> Self
+pub fn DshashcuckooView::fill(Self, Double) -> Self
+pub fn DshashcuckooView::get(Self, Int32) -> Double
+pub fn DshashcuckooView::len(Self) -> Int32
+pub fn DshashcuckooView::max(Self) -> Double
+pub fn DshashcuckooView::mean(Self) -> Double
+pub fn DshashcuckooView::min(Self) -> Double
+pub fn DshashcuckooView::scale(Self, Double) -> Self
+pub fn DshashcuckooView::set(Self, Int32, Double) -> Self
+pub fn DshashcuckooView::sum(Self) -> Double
+pub fn DshashcuckooView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

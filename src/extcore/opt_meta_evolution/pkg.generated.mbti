@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/opt_meta_evolution"
+
+// Values
+pub fn opt_meta_evolution_buffer_make(Int32) -> OptmetaevolutionBuffer
+
+pub fn opt_meta_evolution_cluster_make(Int32) -> OptmetaevolutionCluster
+
+pub fn opt_meta_evolution_cursor_make(Int32) -> OptmetaevolutionCursor
+
+pub fn opt_meta_evolution_edge_make(Int32) -> OptmetaevolutionEdge
+
+pub fn opt_meta_evolution_frame_make(Int32) -> OptmetaevolutionFrame
+
+pub fn opt_meta_evolution_graphn_make(Int32) -> OptmetaevolutionGraphN
+
+pub fn opt_meta_evolution_layer_make(Int32) -> OptmetaevolutionLayer
+
+pub fn opt_meta_evolution_make_matrix(Int32, Int32, Double) -> OptmetaevolutionMatrix
+
+pub fn opt_meta_evolution_make_point(Double, Double) -> OptmetaevolutionPoint
+
+pub fn opt_meta_evolution_make_point3(Double, Double, Double) -> OptmetaevolutionPoint
+
+pub fn opt_meta_evolution_make_series(Array[Double], String) -> OptmetaevolutionSeries
+
+pub fn opt_meta_evolution_make_vector(Array[Double]) -> OptmetaevolutionVector
+
+pub fn opt_meta_evolution_matrix_identity(Int32) -> OptmetaevolutionMatrix
+
+pub fn opt_meta_evolution_model_make(Int32) -> OptmetaevolutionModel
+
+pub fn opt_meta_evolution_node_make(Int32) -> OptmetaevolutionNode
+
+pub fn opt_meta_evolution_path_make(Int32) -> OptmetaevolutionPath
+
+pub fn opt_meta_evolution_range_make(Int32) -> OptmetaevolutionRange
+
+pub fn opt_meta_evolution_slice_make(Int32) -> OptmetaevolutionSlice
+
+pub fn opt_meta_evolution_table_make(Int32) -> OptmetaevolutionTable
+
+pub fn opt_meta_evolution_vector_zero(Int32) -> OptmetaevolutionVector
+
+pub fn opt_meta_evolution_view_make(Int32) -> OptmetaevolutionView
+
+// Errors
+
+// Types and methods
+pub(all) struct OptmetaevolutionBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaevolutionBuffer::add(Self, Self) -> Self
+pub fn OptmetaevolutionBuffer::copy(Self) -> Self
+pub fn OptmetaevolutionBuffer::fill(Self, Double) -> Self
+pub fn OptmetaevolutionBuffer::get(Self, Int32) -> Double
+pub fn OptmetaevolutionBuffer::len(Self) -> Int32
+pub fn OptmetaevolutionBuffer::max(Self) -> Double
+pub fn OptmetaevolutionBuffer::mean(Self) -> Double
+pub fn OptmetaevolutionBuffer::min(Self) -> Double
+pub fn OptmetaevolutionBuffer::scale(Self, Double) -> Self
+pub fn OptmetaevolutionBuffer::set(Self, Int32, Double) -> Self
+pub fn OptmetaevolutionBuffer::sum(Self) -> Double
+pub fn OptmetaevolutionBuffer::to_string(Self) -> String
+
+pub(all) struct OptmetaevolutionCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaevolutionCluster::add(Self, Self) -> Self
+pub fn OptmetaevolutionCluster::copy(Self) -> Self
+pub fn OptmetaevolutionCluster::fill(Self, Double) -> Self
+pub fn OptmetaevolutionCluster::get(Self, Int32) -> Double
+pub fn OptmetaevolutionCluster::len(Self) -> Int32
+pub fn OptmetaevolutionCluster::max(Self) -> Double
+pub fn OptmetaevolutionCluster::mean(Self) -> Double
+pub fn OptmetaevolutionCluster::min(Self) -> Double
+pub fn OptmetaevolutionCluster::scale(Self, Double) -> Self
+pub fn OptmetaevolutionCluster::set(Self, Int32, Double) -> Self
+pub fn OptmetaevolutionCluster::sum(Self) -> Double
+pub fn OptmetaevolutionCluster::to_string(Self) -> String
+
+pub(all) struct OptmetaevolutionCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaevolutionCursor::add(Self, Self) -> Self
+pub fn OptmetaevolutionCursor::copy(Self) -> Self
+pub fn OptmetaevolutionCursor::fill(Self, Double) -> Self
+pub fn OptmetaevolutionCursor::get(Self, Int32) -> Double
+pub fn OptmetaevolutionCursor::len(Self) -> Int32
+pub fn OptmetaevolutionCursor::max(Self) -> Double
+pub fn OptmetaevolutionCursor::mean(Self) -> Double
+pub fn OptmetaevolutionCursor::min(Self) -> Double
+pub fn OptmetaevolutionCursor::scale(Self, Double) -> Self
+pub fn OptmetaevolutionCursor::set(Self, Int32, Double) -> Self
+pub fn OptmetaevolutionCursor::sum(Self) -> Double
+pub fn OptmetaevolutionCursor::to_string(Self) -> String
+
+pub(all) struct OptmetaevolutionEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaevolutionEdge::add(Self, Self) -> Self
+pub fn OptmetaevolutionEdge::copy(Self) -> Self
+pub fn OptmetaevolutionEdge::fill(Self, Double) -> Self
+pub fn OptmetaevolutionEdge::get(Self, Int32) -> Double
+pub fn OptmetaevolutionEdge::len(Self) -> Int32
+pub fn OptmetaevolutionEdge::max(Self) -> Double
+pub fn OptmetaevolutionEdge::mean(Self) -> Double
+pub fn OptmetaevolutionEdge::min(Self) -> Double
+pub fn OptmetaevolutionEdge::scale(Self, Double) -> Self
+pub fn OptmetaevolutionEdge::set(Self, Int32, Double) -> Self
+pub fn OptmetaevolutionEdge::sum(Self) -> Double
+pub fn OptmetaevolutionEdge::to_string(Self) -> String
+
+pub(all) struct OptmetaevolutionFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaevolutionFrame::add(Self, Self) -> Self
+pub fn OptmetaevolutionFrame::copy(Self) -> Self
+pub fn OptmetaevolutionFrame::fill(Self, Double) -> Self
+pub fn OptmetaevolutionFrame::get(Self, Int32) -> Double
+pub fn OptmetaevolutionFrame::len(Self) -> Int32
+pub fn OptmetaevolutionFrame::max(Self) -> Double
+pub fn OptmetaevolutionFrame::mean(Self) -> Double
+pub fn OptmetaevolutionFrame::min(Self) -> Double
+pub fn OptmetaevolutionFrame::scale(Self, Double) -> Self
+pub fn OptmetaevolutionFrame::set(Self, Int32, Double) -> Self
+pub fn OptmetaevolutionFrame::sum(Self) -> Double
+pub fn OptmetaevolutionFrame::to_string(Self) -> String
+
+pub(all) struct OptmetaevolutionGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaevolutionGraphN::add(Self, Self) -> Self
+pub fn OptmetaevolutionGraphN::copy(Self) -> Self
+pub fn OptmetaevolutionGraphN::fill(Self, Double) -> Self
+pub fn OptmetaevolutionGraphN::get(Self, Int32) -> Double
+pub fn OptmetaevolutionGraphN::len(Self) -> Int32
+pub fn OptmetaevolutionGraphN::max(Self) -> Double
+pub fn OptmetaevolutionGraphN::mean(Self) -> Double
+pub fn OptmetaevolutionGraphN::min(Self) -> Double
+pub fn OptmetaevolutionGraphN::scale(Self, Double) -> Self
+pub fn OptmetaevolutionGraphN::set(Self, Int32, Double) -> Self
+pub fn OptmetaevolutionGraphN::sum(Self) -> Double
+pub fn OptmetaevolutionGraphN::to_string(Self) -> String
+
+pub(all) struct OptmetaevolutionLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaevolutionLayer::add(Self, Self) -> Self
+pub fn OptmetaevolutionLayer::copy(Self) -> Self
+pub fn OptmetaevolutionLayer::fill(Self, Double) -> Self
+pub fn OptmetaevolutionLayer::get(Self, Int32) -> Double
+pub fn OptmetaevolutionLayer::len(Self) -> Int32
+pub fn OptmetaevolutionLayer::max(Self) -> Double
+pub fn OptmetaevolutionLayer::mean(Self) -> Double
+pub fn OptmetaevolutionLayer::min(Self) -> Double
+pub fn OptmetaevolutionLayer::scale(Self, Double) -> Self
+pub fn OptmetaevolutionLayer::set(Self, Int32, Double) -> Self
+pub fn OptmetaevolutionLayer::sum(Self) -> Double
+pub fn OptmetaevolutionLayer::to_string(Self) -> String
+
+pub(all) struct OptmetaevolutionMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn OptmetaevolutionMatrix::add(Self, Self) -> Self
+pub fn OptmetaevolutionMatrix::det(Self) -> Double
+pub fn OptmetaevolutionMatrix::get(Self, Int32, Int32) -> Double
+pub fn OptmetaevolutionMatrix::multiply(Self, Self) -> Self
+pub fn OptmetaevolutionMatrix::norm(Self) -> Double
+pub fn OptmetaevolutionMatrix::scale(Self, Double) -> Self
+pub fn OptmetaevolutionMatrix::to_string(Self) -> String
+pub fn OptmetaevolutionMatrix::trace(Self) -> Double
+pub fn OptmetaevolutionMatrix::transpose(Self) -> Self
+
+pub(all) struct OptmetaevolutionModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaevolutionModel::add(Self, Self) -> Self
+pub fn OptmetaevolutionModel::copy(Self) -> Self
+pub fn OptmetaevolutionModel::fill(Self, Double) -> Self
+pub fn OptmetaevolutionModel::get(Self, Int32) -> Double
+pub fn OptmetaevolutionModel::len(Self) -> Int32
+pub fn OptmetaevolutionModel::max(Self) -> Double
+pub fn OptmetaevolutionModel::mean(Self) -> Double
+pub fn OptmetaevolutionModel::min(Self) -> Double
+pub fn OptmetaevolutionModel::scale(Self, Double) -> Self
+pub fn OptmetaevolutionModel::set(Self, Int32, Double) -> Self
+pub fn OptmetaevolutionModel::sum(Self) -> Double
+pub fn OptmetaevolutionModel::to_string(Self) -> String
+
+pub(all) struct OptmetaevolutionNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaevolutionNode::add(Self, Self) -> Self
+pub fn OptmetaevolutionNode::copy(Self) -> Self
+pub fn OptmetaevolutionNode::fill(Self, Double) -> Self
+pub fn OptmetaevolutionNode::get(Self, Int32) -> Double
+pub fn OptmetaevolutionNode::len(Self) -> Int32
+pub fn OptmetaevolutionNode::max(Self) -> Double
+pub fn OptmetaevolutionNode::mean(Self) -> Double
+pub fn OptmetaevolutionNode::min(Self) -> Double
+pub fn OptmetaevolutionNode::scale(Self, Double) -> Self
+pub fn OptmetaevolutionNode::set(Self, Int32, Double) -> Self
+pub fn OptmetaevolutionNode::sum(Self) -> Double
+pub fn OptmetaevolutionNode::to_string(Self) -> String
+
+pub(all) struct OptmetaevolutionPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaevolutionPath::add(Self, Self) -> Self
+pub fn OptmetaevolutionPath::copy(Self) -> Self
+pub fn OptmetaevolutionPath::fill(Self, Double) -> Self
+pub fn OptmetaevolutionPath::get(Self, Int32) -> Double
+pub fn OptmetaevolutionPath::len(Self) -> Int32
+pub fn OptmetaevolutionPath::max(Self) -> Double
+pub fn OptmetaevolutionPath::mean(Self) -> Double
+pub fn OptmetaevolutionPath::min(Self) -> Double
+pub fn OptmetaevolutionPath::scale(Self, Double) -> Self
+pub fn OptmetaevolutionPath::set(Self, Int32, Double) -> Self
+pub fn OptmetaevolutionPath::sum(Self) -> Double
+pub fn OptmetaevolutionPath::to_string(Self) -> String
+
+pub(all) struct OptmetaevolutionPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn OptmetaevolutionPoint::add(Self, Self) -> Self
+pub fn OptmetaevolutionPoint::cross(Self, Self) -> Self
+pub fn OptmetaevolutionPoint::dist(Self, Self) -> Double
+pub fn OptmetaevolutionPoint::dot(Self, Self) -> Double
+pub fn OptmetaevolutionPoint::label(Self) -> Int32
+pub fn OptmetaevolutionPoint::lerp(Self, Self, Double) -> Self
+pub fn OptmetaevolutionPoint::mid(Self, Self) -> Self
+pub fn OptmetaevolutionPoint::negate(Self) -> Self
+pub fn OptmetaevolutionPoint::norm(Self) -> Double
+pub fn OptmetaevolutionPoint::normalize(Self) -> Self
+pub fn OptmetaevolutionPoint::scale(Self, Double) -> Self
+pub fn OptmetaevolutionPoint::sub(Self, Self) -> Self
+pub fn OptmetaevolutionPoint::to_string(Self) -> String
+pub fn OptmetaevolutionPoint::x(Self) -> Double
+pub fn OptmetaevolutionPoint::y(Self) -> Double
+pub fn OptmetaevolutionPoint::z(Self) -> Double
+
+pub(all) struct OptmetaevolutionRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaevolutionRange::add(Self, Self) -> Self
+pub fn OptmetaevolutionRange::copy(Self) -> Self
+pub fn OptmetaevolutionRange::fill(Self, Double) -> Self
+pub fn OptmetaevolutionRange::get(Self, Int32) -> Double
+pub fn OptmetaevolutionRange::len(Self) -> Int32
+pub fn OptmetaevolutionRange::max(Self) -> Double
+pub fn OptmetaevolutionRange::mean(Self) -> Double
+pub fn OptmetaevolutionRange::min(Self) -> Double
+pub fn OptmetaevolutionRange::scale(Self, Double) -> Self
+pub fn OptmetaevolutionRange::set(Self, Int32, Double) -> Self
+pub fn OptmetaevolutionRange::sum(Self) -> Double
+pub fn OptmetaevolutionRange::to_string(Self) -> String
+
+pub(all) struct OptmetaevolutionSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn OptmetaevolutionSeries::add(Self, Self) -> Self
+pub fn OptmetaevolutionSeries::cumsum(Self) -> Self
+pub fn OptmetaevolutionSeries::len(Self) -> Int32
+pub fn OptmetaevolutionSeries::max(Self) -> Double
+pub fn OptmetaevolutionSeries::mean(Self) -> Double
+pub fn OptmetaevolutionSeries::median(Self) -> Double
+pub fn OptmetaevolutionSeries::min(Self) -> Double
+pub fn OptmetaevolutionSeries::normalize(Self) -> Self
+pub fn OptmetaevolutionSeries::range(Self) -> Double
+pub fn OptmetaevolutionSeries::scale(Self, Double) -> Self
+pub fn OptmetaevolutionSeries::std(Self) -> Double
+pub fn OptmetaevolutionSeries::sub(Self, Self) -> Self
+pub fn OptmetaevolutionSeries::sum(Self) -> Double
+pub fn OptmetaevolutionSeries::to_string(Self) -> String
+pub fn OptmetaevolutionSeries::variance(Self) -> Double
+
+pub(all) struct OptmetaevolutionSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaevolutionSlice::add(Self, Self) -> Self
+pub fn OptmetaevolutionSlice::copy(Self) -> Self
+pub fn OptmetaevolutionSlice::fill(Self, Double) -> Self
+pub fn OptmetaevolutionSlice::get(Self, Int32) -> Double
+pub fn OptmetaevolutionSlice::len(Self) -> Int32
+pub fn OptmetaevolutionSlice::max(Self) -> Double
+pub fn OptmetaevolutionSlice::mean(Self) -> Double
+pub fn OptmetaevolutionSlice::min(Self) -> Double
+pub fn OptmetaevolutionSlice::scale(Self, Double) -> Self
+pub fn OptmetaevolutionSlice::set(Self, Int32, Double) -> Self
+pub fn OptmetaevolutionSlice::sum(Self) -> Double
+pub fn OptmetaevolutionSlice::to_string(Self) -> String
+
+pub(all) struct OptmetaevolutionTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaevolutionTable::add(Self, Self) -> Self
+pub fn OptmetaevolutionTable::copy(Self) -> Self
+pub fn OptmetaevolutionTable::fill(Self, Double) -> Self
+pub fn OptmetaevolutionTable::get(Self, Int32) -> Double
+pub fn OptmetaevolutionTable::len(Self) -> Int32
+pub fn OptmetaevolutionTable::max(Self) -> Double
+pub fn OptmetaevolutionTable::mean(Self) -> Double
+pub fn OptmetaevolutionTable::min(Self) -> Double
+pub fn OptmetaevolutionTable::scale(Self, Double) -> Self
+pub fn OptmetaevolutionTable::set(Self, Int32, Double) -> Self
+pub fn OptmetaevolutionTable::sum(Self) -> Double
+pub fn OptmetaevolutionTable::to_string(Self) -> String
+
+pub(all) struct OptmetaevolutionVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn OptmetaevolutionVector::add(Self, Self) -> Self
+pub fn OptmetaevolutionVector::dist(Self, Self) -> Double
+pub fn OptmetaevolutionVector::dot(Self, Self) -> Double
+pub fn OptmetaevolutionVector::norm(Self) -> Double
+pub fn OptmetaevolutionVector::normalize(Self) -> Self
+pub fn OptmetaevolutionVector::scale(Self, Double) -> Self
+pub fn OptmetaevolutionVector::sub(Self, Self) -> Self
+pub fn OptmetaevolutionVector::to_string(Self) -> String
+
+pub(all) struct OptmetaevolutionView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetaevolutionView::add(Self, Self) -> Self
+pub fn OptmetaevolutionView::copy(Self) -> Self
+pub fn OptmetaevolutionView::fill(Self, Double) -> Self
+pub fn OptmetaevolutionView::get(Self, Int32) -> Double
+pub fn OptmetaevolutionView::len(Self) -> Int32
+pub fn OptmetaevolutionView::max(Self) -> Double
+pub fn OptmetaevolutionView::mean(Self) -> Double
+pub fn OptmetaevolutionView::min(Self) -> Double
+pub fn OptmetaevolutionView::scale(Self, Double) -> Self
+pub fn OptmetaevolutionView::set(Self, Int32, Double) -> Self
+pub fn OptmetaevolutionView::sum(Self) -> Double
+pub fn OptmetaevolutionView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/bio_seq_assembly_greedy"
+
+// Values
+pub fn bio_seq_assembly_greedy_buffer_make(Int32) -> BioseqassemblygreedyBuffer
+
+pub fn bio_seq_assembly_greedy_cluster_make(Int32) -> BioseqassemblygreedyCluster
+
+pub fn bio_seq_assembly_greedy_cursor_make(Int32) -> BioseqassemblygreedyCursor
+
+pub fn bio_seq_assembly_greedy_edge_make(Int32) -> BioseqassemblygreedyEdge
+
+pub fn bio_seq_assembly_greedy_frame_make(Int32) -> BioseqassemblygreedyFrame
+
+pub fn bio_seq_assembly_greedy_graphn_make(Int32) -> BioseqassemblygreedyGraphN
+
+pub fn bio_seq_assembly_greedy_layer_make(Int32) -> BioseqassemblygreedyLayer
+
+pub fn bio_seq_assembly_greedy_make_matrix(Int32, Int32, Double) -> BioseqassemblygreedyMatrix
+
+pub fn bio_seq_assembly_greedy_make_point(Double, Double) -> BioseqassemblygreedyPoint
+
+pub fn bio_seq_assembly_greedy_make_point3(Double, Double, Double) -> BioseqassemblygreedyPoint
+
+pub fn bio_seq_assembly_greedy_make_series(Array[Double], String) -> BioseqassemblygreedySeries
+
+pub fn bio_seq_assembly_greedy_make_vector(Array[Double]) -> BioseqassemblygreedyVector
+
+pub fn bio_seq_assembly_greedy_matrix_identity(Int32) -> BioseqassemblygreedyMatrix
+
+pub fn bio_seq_assembly_greedy_model_make(Int32) -> BioseqassemblygreedyModel
+
+pub fn bio_seq_assembly_greedy_node_make(Int32) -> BioseqassemblygreedyNode
+
+pub fn bio_seq_assembly_greedy_path_make(Int32) -> BioseqassemblygreedyPath
+
+pub fn bio_seq_assembly_greedy_range_make(Int32) -> BioseqassemblygreedyRange
+
+pub fn bio_seq_assembly_greedy_slice_make(Int32) -> BioseqassemblygreedySlice
+
+pub fn bio_seq_assembly_greedy_table_make(Int32) -> BioseqassemblygreedyTable
+
+pub fn bio_seq_assembly_greedy_vector_zero(Int32) -> BioseqassemblygreedyVector
+
+pub fn bio_seq_assembly_greedy_view_make(Int32) -> BioseqassemblygreedyView
+
+// Errors
+
+// Types and methods
+pub(all) struct BioseqassemblygreedyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblygreedyBuffer::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyBuffer::copy(Self) -> Self
+pub fn BioseqassemblygreedyBuffer::fill(Self, Double) -> Self
+pub fn BioseqassemblygreedyBuffer::get(Self, Int32) -> Double
+pub fn BioseqassemblygreedyBuffer::len(Self) -> Int32
+pub fn BioseqassemblygreedyBuffer::max(Self) -> Double
+pub fn BioseqassemblygreedyBuffer::mean(Self) -> Double
+pub fn BioseqassemblygreedyBuffer::min(Self) -> Double
+pub fn BioseqassemblygreedyBuffer::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyBuffer::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblygreedyBuffer::sum(Self) -> Double
+pub fn BioseqassemblygreedyBuffer::to_string(Self) -> String
+
+pub(all) struct BioseqassemblygreedyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblygreedyCluster::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyCluster::copy(Self) -> Self
+pub fn BioseqassemblygreedyCluster::fill(Self, Double) -> Self
+pub fn BioseqassemblygreedyCluster::get(Self, Int32) -> Double
+pub fn BioseqassemblygreedyCluster::len(Self) -> Int32
+pub fn BioseqassemblygreedyCluster::max(Self) -> Double
+pub fn BioseqassemblygreedyCluster::mean(Self) -> Double
+pub fn BioseqassemblygreedyCluster::min(Self) -> Double
+pub fn BioseqassemblygreedyCluster::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyCluster::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblygreedyCluster::sum(Self) -> Double
+pub fn BioseqassemblygreedyCluster::to_string(Self) -> String
+
+pub(all) struct BioseqassemblygreedyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblygreedyCursor::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyCursor::copy(Self) -> Self
+pub fn BioseqassemblygreedyCursor::fill(Self, Double) -> Self
+pub fn BioseqassemblygreedyCursor::get(Self, Int32) -> Double
+pub fn BioseqassemblygreedyCursor::len(Self) -> Int32
+pub fn BioseqassemblygreedyCursor::max(Self) -> Double
+pub fn BioseqassemblygreedyCursor::mean(Self) -> Double
+pub fn BioseqassemblygreedyCursor::min(Self) -> Double
+pub fn BioseqassemblygreedyCursor::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyCursor::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblygreedyCursor::sum(Self) -> Double
+pub fn BioseqassemblygreedyCursor::to_string(Self) -> String
+
+pub(all) struct BioseqassemblygreedyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblygreedyEdge::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyEdge::copy(Self) -> Self
+pub fn BioseqassemblygreedyEdge::fill(Self, Double) -> Self
+pub fn BioseqassemblygreedyEdge::get(Self, Int32) -> Double
+pub fn BioseqassemblygreedyEdge::len(Self) -> Int32
+pub fn BioseqassemblygreedyEdge::max(Self) -> Double
+pub fn BioseqassemblygreedyEdge::mean(Self) -> Double
+pub fn BioseqassemblygreedyEdge::min(Self) -> Double
+pub fn BioseqassemblygreedyEdge::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyEdge::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblygreedyEdge::sum(Self) -> Double
+pub fn BioseqassemblygreedyEdge::to_string(Self) -> String
+
+pub(all) struct BioseqassemblygreedyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblygreedyFrame::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyFrame::copy(Self) -> Self
+pub fn BioseqassemblygreedyFrame::fill(Self, Double) -> Self
+pub fn BioseqassemblygreedyFrame::get(Self, Int32) -> Double
+pub fn BioseqassemblygreedyFrame::len(Self) -> Int32
+pub fn BioseqassemblygreedyFrame::max(Self) -> Double
+pub fn BioseqassemblygreedyFrame::mean(Self) -> Double
+pub fn BioseqassemblygreedyFrame::min(Self) -> Double
+pub fn BioseqassemblygreedyFrame::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyFrame::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblygreedyFrame::sum(Self) -> Double
+pub fn BioseqassemblygreedyFrame::to_string(Self) -> String
+
+pub(all) struct BioseqassemblygreedyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblygreedyGraphN::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyGraphN::copy(Self) -> Self
+pub fn BioseqassemblygreedyGraphN::fill(Self, Double) -> Self
+pub fn BioseqassemblygreedyGraphN::get(Self, Int32) -> Double
+pub fn BioseqassemblygreedyGraphN::len(Self) -> Int32
+pub fn BioseqassemblygreedyGraphN::max(Self) -> Double
+pub fn BioseqassemblygreedyGraphN::mean(Self) -> Double
+pub fn BioseqassemblygreedyGraphN::min(Self) -> Double
+pub fn BioseqassemblygreedyGraphN::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyGraphN::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblygreedyGraphN::sum(Self) -> Double
+pub fn BioseqassemblygreedyGraphN::to_string(Self) -> String
+
+pub(all) struct BioseqassemblygreedyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblygreedyLayer::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyLayer::copy(Self) -> Self
+pub fn BioseqassemblygreedyLayer::fill(Self, Double) -> Self
+pub fn BioseqassemblygreedyLayer::get(Self, Int32) -> Double
+pub fn BioseqassemblygreedyLayer::len(Self) -> Int32
+pub fn BioseqassemblygreedyLayer::max(Self) -> Double
+pub fn BioseqassemblygreedyLayer::mean(Self) -> Double
+pub fn BioseqassemblygreedyLayer::min(Self) -> Double
+pub fn BioseqassemblygreedyLayer::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyLayer::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblygreedyLayer::sum(Self) -> Double
+pub fn BioseqassemblygreedyLayer::to_string(Self) -> String
+
+pub(all) struct BioseqassemblygreedyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn BioseqassemblygreedyMatrix::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyMatrix::det(Self) -> Double
+pub fn BioseqassemblygreedyMatrix::get(Self, Int32, Int32) -> Double
+pub fn BioseqassemblygreedyMatrix::multiply(Self, Self) -> Self
+pub fn BioseqassemblygreedyMatrix::norm(Self) -> Double
+pub fn BioseqassemblygreedyMatrix::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyMatrix::to_string(Self) -> String
+pub fn BioseqassemblygreedyMatrix::trace(Self) -> Double
+pub fn BioseqassemblygreedyMatrix::transpose(Self) -> Self
+
+pub(all) struct BioseqassemblygreedyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblygreedyModel::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyModel::copy(Self) -> Self
+pub fn BioseqassemblygreedyModel::fill(Self, Double) -> Self
+pub fn BioseqassemblygreedyModel::get(Self, Int32) -> Double
+pub fn BioseqassemblygreedyModel::len(Self) -> Int32
+pub fn BioseqassemblygreedyModel::max(Self) -> Double
+pub fn BioseqassemblygreedyModel::mean(Self) -> Double
+pub fn BioseqassemblygreedyModel::min(Self) -> Double
+pub fn BioseqassemblygreedyModel::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyModel::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblygreedyModel::sum(Self) -> Double
+pub fn BioseqassemblygreedyModel::to_string(Self) -> String
+
+pub(all) struct BioseqassemblygreedyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblygreedyNode::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyNode::copy(Self) -> Self
+pub fn BioseqassemblygreedyNode::fill(Self, Double) -> Self
+pub fn BioseqassemblygreedyNode::get(Self, Int32) -> Double
+pub fn BioseqassemblygreedyNode::len(Self) -> Int32
+pub fn BioseqassemblygreedyNode::max(Self) -> Double
+pub fn BioseqassemblygreedyNode::mean(Self) -> Double
+pub fn BioseqassemblygreedyNode::min(Self) -> Double
+pub fn BioseqassemblygreedyNode::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyNode::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblygreedyNode::sum(Self) -> Double
+pub fn BioseqassemblygreedyNode::to_string(Self) -> String
+
+pub(all) struct BioseqassemblygreedyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblygreedyPath::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyPath::copy(Self) -> Self
+pub fn BioseqassemblygreedyPath::fill(Self, Double) -> Self
+pub fn BioseqassemblygreedyPath::get(Self, Int32) -> Double
+pub fn BioseqassemblygreedyPath::len(Self) -> Int32
+pub fn BioseqassemblygreedyPath::max(Self) -> Double
+pub fn BioseqassemblygreedyPath::mean(Self) -> Double
+pub fn BioseqassemblygreedyPath::min(Self) -> Double
+pub fn BioseqassemblygreedyPath::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyPath::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblygreedyPath::sum(Self) -> Double
+pub fn BioseqassemblygreedyPath::to_string(Self) -> String
+
+pub(all) struct BioseqassemblygreedyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn BioseqassemblygreedyPoint::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyPoint::cross(Self, Self) -> Self
+pub fn BioseqassemblygreedyPoint::dist(Self, Self) -> Double
+pub fn BioseqassemblygreedyPoint::dot(Self, Self) -> Double
+pub fn BioseqassemblygreedyPoint::label(Self) -> Int32
+pub fn BioseqassemblygreedyPoint::lerp(Self, Self, Double) -> Self
+pub fn BioseqassemblygreedyPoint::mid(Self, Self) -> Self
+pub fn BioseqassemblygreedyPoint::negate(Self) -> Self
+pub fn BioseqassemblygreedyPoint::norm(Self) -> Double
+pub fn BioseqassemblygreedyPoint::normalize(Self) -> Self
+pub fn BioseqassemblygreedyPoint::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyPoint::sub(Self, Self) -> Self
+pub fn BioseqassemblygreedyPoint::to_string(Self) -> String
+pub fn BioseqassemblygreedyPoint::x(Self) -> Double
+pub fn BioseqassemblygreedyPoint::y(Self) -> Double
+pub fn BioseqassemblygreedyPoint::z(Self) -> Double
+
+pub(all) struct BioseqassemblygreedyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblygreedyRange::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyRange::copy(Self) -> Self
+pub fn BioseqassemblygreedyRange::fill(Self, Double) -> Self
+pub fn BioseqassemblygreedyRange::get(Self, Int32) -> Double
+pub fn BioseqassemblygreedyRange::len(Self) -> Int32
+pub fn BioseqassemblygreedyRange::max(Self) -> Double
+pub fn BioseqassemblygreedyRange::mean(Self) -> Double
+pub fn BioseqassemblygreedyRange::min(Self) -> Double
+pub fn BioseqassemblygreedyRange::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyRange::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblygreedyRange::sum(Self) -> Double
+pub fn BioseqassemblygreedyRange::to_string(Self) -> String
+
+pub(all) struct BioseqassemblygreedySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn BioseqassemblygreedySeries::add(Self, Self) -> Self
+pub fn BioseqassemblygreedySeries::cumsum(Self) -> Self
+pub fn BioseqassemblygreedySeries::len(Self) -> Int32
+pub fn BioseqassemblygreedySeries::max(Self) -> Double
+pub fn BioseqassemblygreedySeries::mean(Self) -> Double
+pub fn BioseqassemblygreedySeries::median(Self) -> Double
+pub fn BioseqassemblygreedySeries::min(Self) -> Double
+pub fn BioseqassemblygreedySeries::normalize(Self) -> Self
+pub fn BioseqassemblygreedySeries::range(Self) -> Double
+pub fn BioseqassemblygreedySeries::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedySeries::std(Self) -> Double
+pub fn BioseqassemblygreedySeries::sub(Self, Self) -> Self
+pub fn BioseqassemblygreedySeries::sum(Self) -> Double
+pub fn BioseqassemblygreedySeries::to_string(Self) -> String
+pub fn BioseqassemblygreedySeries::variance(Self) -> Double
+
+pub(all) struct BioseqassemblygreedySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblygreedySlice::add(Self, Self) -> Self
+pub fn BioseqassemblygreedySlice::copy(Self) -> Self
+pub fn BioseqassemblygreedySlice::fill(Self, Double) -> Self
+pub fn BioseqassemblygreedySlice::get(Self, Int32) -> Double
+pub fn BioseqassemblygreedySlice::len(Self) -> Int32
+pub fn BioseqassemblygreedySlice::max(Self) -> Double
+pub fn BioseqassemblygreedySlice::mean(Self) -> Double
+pub fn BioseqassemblygreedySlice::min(Self) -> Double
+pub fn BioseqassemblygreedySlice::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedySlice::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblygreedySlice::sum(Self) -> Double
+pub fn BioseqassemblygreedySlice::to_string(Self) -> String
+
+pub(all) struct BioseqassemblygreedyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblygreedyTable::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyTable::copy(Self) -> Self
+pub fn BioseqassemblygreedyTable::fill(Self, Double) -> Self
+pub fn BioseqassemblygreedyTable::get(Self, Int32) -> Double
+pub fn BioseqassemblygreedyTable::len(Self) -> Int32
+pub fn BioseqassemblygreedyTable::max(Self) -> Double
+pub fn BioseqassemblygreedyTable::mean(Self) -> Double
+pub fn BioseqassemblygreedyTable::min(Self) -> Double
+pub fn BioseqassemblygreedyTable::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyTable::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblygreedyTable::sum(Self) -> Double
+pub fn BioseqassemblygreedyTable::to_string(Self) -> String
+
+pub(all) struct BioseqassemblygreedyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn BioseqassemblygreedyVector::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyVector::dist(Self, Self) -> Double
+pub fn BioseqassemblygreedyVector::dot(Self, Self) -> Double
+pub fn BioseqassemblygreedyVector::norm(Self) -> Double
+pub fn BioseqassemblygreedyVector::normalize(Self) -> Self
+pub fn BioseqassemblygreedyVector::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyVector::sub(Self, Self) -> Self
+pub fn BioseqassemblygreedyVector::to_string(Self) -> String
+
+pub(all) struct BioseqassemblygreedyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblygreedyView::add(Self, Self) -> Self
+pub fn BioseqassemblygreedyView::copy(Self) -> Self
+pub fn BioseqassemblygreedyView::fill(Self, Double) -> Self
+pub fn BioseqassemblygreedyView::get(Self, Int32) -> Double
+pub fn BioseqassemblygreedyView::len(Self) -> Int32
+pub fn BioseqassemblygreedyView::max(Self) -> Double
+pub fn BioseqassemblygreedyView::mean(Self) -> Double
+pub fn BioseqassemblygreedyView::min(Self) -> Double
+pub fn BioseqassemblygreedyView::scale(Self, Double) -> Self
+pub fn BioseqassemblygreedyView::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblygreedyView::sum(Self) -> Double
+pub fn BioseqassemblygreedyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

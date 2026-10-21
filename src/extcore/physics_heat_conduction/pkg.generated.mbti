@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_heat_conduction"
+
+// Values
+pub fn physics_heat_conduction_buffer_make(Int32) -> PhysicsheatconductionBuffer
+
+pub fn physics_heat_conduction_cluster_make(Int32) -> PhysicsheatconductionCluster
+
+pub fn physics_heat_conduction_cursor_make(Int32) -> PhysicsheatconductionCursor
+
+pub fn physics_heat_conduction_edge_make(Int32) -> PhysicsheatconductionEdge
+
+pub fn physics_heat_conduction_frame_make(Int32) -> PhysicsheatconductionFrame
+
+pub fn physics_heat_conduction_graphn_make(Int32) -> PhysicsheatconductionGraphN
+
+pub fn physics_heat_conduction_layer_make(Int32) -> PhysicsheatconductionLayer
+
+pub fn physics_heat_conduction_make_matrix(Int32, Int32, Double) -> PhysicsheatconductionMatrix
+
+pub fn physics_heat_conduction_make_point(Double, Double) -> PhysicsheatconductionPoint
+
+pub fn physics_heat_conduction_make_point3(Double, Double, Double) -> PhysicsheatconductionPoint
+
+pub fn physics_heat_conduction_make_series(Array[Double], String) -> PhysicsheatconductionSeries
+
+pub fn physics_heat_conduction_make_vector(Array[Double]) -> PhysicsheatconductionVector
+
+pub fn physics_heat_conduction_matrix_identity(Int32) -> PhysicsheatconductionMatrix
+
+pub fn physics_heat_conduction_model_make(Int32) -> PhysicsheatconductionModel
+
+pub fn physics_heat_conduction_node_make(Int32) -> PhysicsheatconductionNode
+
+pub fn physics_heat_conduction_path_make(Int32) -> PhysicsheatconductionPath
+
+pub fn physics_heat_conduction_range_make(Int32) -> PhysicsheatconductionRange
+
+pub fn physics_heat_conduction_slice_make(Int32) -> PhysicsheatconductionSlice
+
+pub fn physics_heat_conduction_table_make(Int32) -> PhysicsheatconductionTable
+
+pub fn physics_heat_conduction_vector_zero(Int32) -> PhysicsheatconductionVector
+
+pub fn physics_heat_conduction_view_make(Int32) -> PhysicsheatconductionView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsheatconductionBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatconductionBuffer::add(Self, Self) -> Self
+pub fn PhysicsheatconductionBuffer::copy(Self) -> Self
+pub fn PhysicsheatconductionBuffer::fill(Self, Double) -> Self
+pub fn PhysicsheatconductionBuffer::get(Self, Int32) -> Double
+pub fn PhysicsheatconductionBuffer::len(Self) -> Int32
+pub fn PhysicsheatconductionBuffer::max(Self) -> Double
+pub fn PhysicsheatconductionBuffer::mean(Self) -> Double
+pub fn PhysicsheatconductionBuffer::min(Self) -> Double
+pub fn PhysicsheatconductionBuffer::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatconductionBuffer::sum(Self) -> Double
+pub fn PhysicsheatconductionBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsheatconductionCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatconductionCluster::add(Self, Self) -> Self
+pub fn PhysicsheatconductionCluster::copy(Self) -> Self
+pub fn PhysicsheatconductionCluster::fill(Self, Double) -> Self
+pub fn PhysicsheatconductionCluster::get(Self, Int32) -> Double
+pub fn PhysicsheatconductionCluster::len(Self) -> Int32
+pub fn PhysicsheatconductionCluster::max(Self) -> Double
+pub fn PhysicsheatconductionCluster::mean(Self) -> Double
+pub fn PhysicsheatconductionCluster::min(Self) -> Double
+pub fn PhysicsheatconductionCluster::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatconductionCluster::sum(Self) -> Double
+pub fn PhysicsheatconductionCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsheatconductionCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatconductionCursor::add(Self, Self) -> Self
+pub fn PhysicsheatconductionCursor::copy(Self) -> Self
+pub fn PhysicsheatconductionCursor::fill(Self, Double) -> Self
+pub fn PhysicsheatconductionCursor::get(Self, Int32) -> Double
+pub fn PhysicsheatconductionCursor::len(Self) -> Int32
+pub fn PhysicsheatconductionCursor::max(Self) -> Double
+pub fn PhysicsheatconductionCursor::mean(Self) -> Double
+pub fn PhysicsheatconductionCursor::min(Self) -> Double
+pub fn PhysicsheatconductionCursor::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatconductionCursor::sum(Self) -> Double
+pub fn PhysicsheatconductionCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsheatconductionEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatconductionEdge::add(Self, Self) -> Self
+pub fn PhysicsheatconductionEdge::copy(Self) -> Self
+pub fn PhysicsheatconductionEdge::fill(Self, Double) -> Self
+pub fn PhysicsheatconductionEdge::get(Self, Int32) -> Double
+pub fn PhysicsheatconductionEdge::len(Self) -> Int32
+pub fn PhysicsheatconductionEdge::max(Self) -> Double
+pub fn PhysicsheatconductionEdge::mean(Self) -> Double
+pub fn PhysicsheatconductionEdge::min(Self) -> Double
+pub fn PhysicsheatconductionEdge::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatconductionEdge::sum(Self) -> Double
+pub fn PhysicsheatconductionEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsheatconductionFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatconductionFrame::add(Self, Self) -> Self
+pub fn PhysicsheatconductionFrame::copy(Self) -> Self
+pub fn PhysicsheatconductionFrame::fill(Self, Double) -> Self
+pub fn PhysicsheatconductionFrame::get(Self, Int32) -> Double
+pub fn PhysicsheatconductionFrame::len(Self) -> Int32
+pub fn PhysicsheatconductionFrame::max(Self) -> Double
+pub fn PhysicsheatconductionFrame::mean(Self) -> Double
+pub fn PhysicsheatconductionFrame::min(Self) -> Double
+pub fn PhysicsheatconductionFrame::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatconductionFrame::sum(Self) -> Double
+pub fn PhysicsheatconductionFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsheatconductionGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatconductionGraphN::add(Self, Self) -> Self
+pub fn PhysicsheatconductionGraphN::copy(Self) -> Self
+pub fn PhysicsheatconductionGraphN::fill(Self, Double) -> Self
+pub fn PhysicsheatconductionGraphN::get(Self, Int32) -> Double
+pub fn PhysicsheatconductionGraphN::len(Self) -> Int32
+pub fn PhysicsheatconductionGraphN::max(Self) -> Double
+pub fn PhysicsheatconductionGraphN::mean(Self) -> Double
+pub fn PhysicsheatconductionGraphN::min(Self) -> Double
+pub fn PhysicsheatconductionGraphN::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatconductionGraphN::sum(Self) -> Double
+pub fn PhysicsheatconductionGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsheatconductionLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatconductionLayer::add(Self, Self) -> Self
+pub fn PhysicsheatconductionLayer::copy(Self) -> Self
+pub fn PhysicsheatconductionLayer::fill(Self, Double) -> Self
+pub fn PhysicsheatconductionLayer::get(Self, Int32) -> Double
+pub fn PhysicsheatconductionLayer::len(Self) -> Int32
+pub fn PhysicsheatconductionLayer::max(Self) -> Double
+pub fn PhysicsheatconductionLayer::mean(Self) -> Double
+pub fn PhysicsheatconductionLayer::min(Self) -> Double
+pub fn PhysicsheatconductionLayer::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatconductionLayer::sum(Self) -> Double
+pub fn PhysicsheatconductionLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsheatconductionMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsheatconductionMatrix::add(Self, Self) -> Self
+pub fn PhysicsheatconductionMatrix::det(Self) -> Double
+pub fn PhysicsheatconductionMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsheatconductionMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsheatconductionMatrix::norm(Self) -> Double
+pub fn PhysicsheatconductionMatrix::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionMatrix::to_string(Self) -> String
+pub fn PhysicsheatconductionMatrix::trace(Self) -> Double
+pub fn PhysicsheatconductionMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsheatconductionModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatconductionModel::add(Self, Self) -> Self
+pub fn PhysicsheatconductionModel::copy(Self) -> Self
+pub fn PhysicsheatconductionModel::fill(Self, Double) -> Self
+pub fn PhysicsheatconductionModel::get(Self, Int32) -> Double
+pub fn PhysicsheatconductionModel::len(Self) -> Int32
+pub fn PhysicsheatconductionModel::max(Self) -> Double
+pub fn PhysicsheatconductionModel::mean(Self) -> Double
+pub fn PhysicsheatconductionModel::min(Self) -> Double
+pub fn PhysicsheatconductionModel::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatconductionModel::sum(Self) -> Double
+pub fn PhysicsheatconductionModel::to_string(Self) -> String
+
+pub(all) struct PhysicsheatconductionNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatconductionNode::add(Self, Self) -> Self
+pub fn PhysicsheatconductionNode::copy(Self) -> Self
+pub fn PhysicsheatconductionNode::fill(Self, Double) -> Self
+pub fn PhysicsheatconductionNode::get(Self, Int32) -> Double
+pub fn PhysicsheatconductionNode::len(Self) -> Int32
+pub fn PhysicsheatconductionNode::max(Self) -> Double
+pub fn PhysicsheatconductionNode::mean(Self) -> Double
+pub fn PhysicsheatconductionNode::min(Self) -> Double
+pub fn PhysicsheatconductionNode::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatconductionNode::sum(Self) -> Double
+pub fn PhysicsheatconductionNode::to_string(Self) -> String
+
+pub(all) struct PhysicsheatconductionPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatconductionPath::add(Self, Self) -> Self
+pub fn PhysicsheatconductionPath::copy(Self) -> Self
+pub fn PhysicsheatconductionPath::fill(Self, Double) -> Self
+pub fn PhysicsheatconductionPath::get(Self, Int32) -> Double
+pub fn PhysicsheatconductionPath::len(Self) -> Int32
+pub fn PhysicsheatconductionPath::max(Self) -> Double
+pub fn PhysicsheatconductionPath::mean(Self) -> Double
+pub fn PhysicsheatconductionPath::min(Self) -> Double
+pub fn PhysicsheatconductionPath::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatconductionPath::sum(Self) -> Double
+pub fn PhysicsheatconductionPath::to_string(Self) -> String
+
+pub(all) struct PhysicsheatconductionPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsheatconductionPoint::add(Self, Self) -> Self
+pub fn PhysicsheatconductionPoint::cross(Self, Self) -> Self
+pub fn PhysicsheatconductionPoint::dist(Self, Self) -> Double
+pub fn PhysicsheatconductionPoint::dot(Self, Self) -> Double
+pub fn PhysicsheatconductionPoint::label(Self) -> Int32
+pub fn PhysicsheatconductionPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsheatconductionPoint::mid(Self, Self) -> Self
+pub fn PhysicsheatconductionPoint::negate(Self) -> Self
+pub fn PhysicsheatconductionPoint::norm(Self) -> Double
+pub fn PhysicsheatconductionPoint::normalize(Self) -> Self
+pub fn PhysicsheatconductionPoint::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionPoint::sub(Self, Self) -> Self
+pub fn PhysicsheatconductionPoint::to_string(Self) -> String
+pub fn PhysicsheatconductionPoint::x(Self) -> Double
+pub fn PhysicsheatconductionPoint::y(Self) -> Double
+pub fn PhysicsheatconductionPoint::z(Self) -> Double
+
+pub(all) struct PhysicsheatconductionRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatconductionRange::add(Self, Self) -> Self
+pub fn PhysicsheatconductionRange::copy(Self) -> Self
+pub fn PhysicsheatconductionRange::fill(Self, Double) -> Self
+pub fn PhysicsheatconductionRange::get(Self, Int32) -> Double
+pub fn PhysicsheatconductionRange::len(Self) -> Int32
+pub fn PhysicsheatconductionRange::max(Self) -> Double
+pub fn PhysicsheatconductionRange::mean(Self) -> Double
+pub fn PhysicsheatconductionRange::min(Self) -> Double
+pub fn PhysicsheatconductionRange::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatconductionRange::sum(Self) -> Double
+pub fn PhysicsheatconductionRange::to_string(Self) -> String
+
+pub(all) struct PhysicsheatconductionSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsheatconductionSeries::add(Self, Self) -> Self
+pub fn PhysicsheatconductionSeries::cumsum(Self) -> Self
+pub fn PhysicsheatconductionSeries::len(Self) -> Int32
+pub fn PhysicsheatconductionSeries::max(Self) -> Double
+pub fn PhysicsheatconductionSeries::mean(Self) -> Double
+pub fn PhysicsheatconductionSeries::median(Self) -> Double
+pub fn PhysicsheatconductionSeries::min(Self) -> Double
+pub fn PhysicsheatconductionSeries::normalize(Self) -> Self
+pub fn PhysicsheatconductionSeries::range(Self) -> Double
+pub fn PhysicsheatconductionSeries::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionSeries::std(Self) -> Double
+pub fn PhysicsheatconductionSeries::sub(Self, Self) -> Self
+pub fn PhysicsheatconductionSeries::sum(Self) -> Double
+pub fn PhysicsheatconductionSeries::to_string(Self) -> String
+pub fn PhysicsheatconductionSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsheatconductionSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatconductionSlice::add(Self, Self) -> Self
+pub fn PhysicsheatconductionSlice::copy(Self) -> Self
+pub fn PhysicsheatconductionSlice::fill(Self, Double) -> Self
+pub fn PhysicsheatconductionSlice::get(Self, Int32) -> Double
+pub fn PhysicsheatconductionSlice::len(Self) -> Int32
+pub fn PhysicsheatconductionSlice::max(Self) -> Double
+pub fn PhysicsheatconductionSlice::mean(Self) -> Double
+pub fn PhysicsheatconductionSlice::min(Self) -> Double
+pub fn PhysicsheatconductionSlice::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatconductionSlice::sum(Self) -> Double
+pub fn PhysicsheatconductionSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsheatconductionTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatconductionTable::add(Self, Self) -> Self
+pub fn PhysicsheatconductionTable::copy(Self) -> Self
+pub fn PhysicsheatconductionTable::fill(Self, Double) -> Self
+pub fn PhysicsheatconductionTable::get(Self, Int32) -> Double
+pub fn PhysicsheatconductionTable::len(Self) -> Int32
+pub fn PhysicsheatconductionTable::max(Self) -> Double
+pub fn PhysicsheatconductionTable::mean(Self) -> Double
+pub fn PhysicsheatconductionTable::min(Self) -> Double
+pub fn PhysicsheatconductionTable::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatconductionTable::sum(Self) -> Double
+pub fn PhysicsheatconductionTable::to_string(Self) -> String
+
+pub(all) struct PhysicsheatconductionVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsheatconductionVector::add(Self, Self) -> Self
+pub fn PhysicsheatconductionVector::dist(Self, Self) -> Double
+pub fn PhysicsheatconductionVector::dot(Self, Self) -> Double
+pub fn PhysicsheatconductionVector::norm(Self) -> Double
+pub fn PhysicsheatconductionVector::normalize(Self) -> Self
+pub fn PhysicsheatconductionVector::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionVector::sub(Self, Self) -> Self
+pub fn PhysicsheatconductionVector::to_string(Self) -> String
+
+pub(all) struct PhysicsheatconductionView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatconductionView::add(Self, Self) -> Self
+pub fn PhysicsheatconductionView::copy(Self) -> Self
+pub fn PhysicsheatconductionView::fill(Self, Double) -> Self
+pub fn PhysicsheatconductionView::get(Self, Int32) -> Double
+pub fn PhysicsheatconductionView::len(Self) -> Int32
+pub fn PhysicsheatconductionView::max(Self) -> Double
+pub fn PhysicsheatconductionView::mean(Self) -> Double
+pub fn PhysicsheatconductionView::min(Self) -> Double
+pub fn PhysicsheatconductionView::scale(Self, Double) -> Self
+pub fn PhysicsheatconductionView::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatconductionView::sum(Self) -> Double
+pub fn PhysicsheatconductionView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

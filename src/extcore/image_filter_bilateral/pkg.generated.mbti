@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_filter_bilateral"
+
+// Values
+pub fn image_filter_bilateral_buffer_make(Int32) -> ImagefilterbilateralBuffer
+
+pub fn image_filter_bilateral_cluster_make(Int32) -> ImagefilterbilateralCluster
+
+pub fn image_filter_bilateral_cursor_make(Int32) -> ImagefilterbilateralCursor
+
+pub fn image_filter_bilateral_edge_make(Int32) -> ImagefilterbilateralEdge
+
+pub fn image_filter_bilateral_frame_make(Int32) -> ImagefilterbilateralFrame
+
+pub fn image_filter_bilateral_graphn_make(Int32) -> ImagefilterbilateralGraphN
+
+pub fn image_filter_bilateral_layer_make(Int32) -> ImagefilterbilateralLayer
+
+pub fn image_filter_bilateral_make_matrix(Int32, Int32, Double) -> ImagefilterbilateralMatrix
+
+pub fn image_filter_bilateral_make_point(Double, Double) -> ImagefilterbilateralPoint
+
+pub fn image_filter_bilateral_make_point3(Double, Double, Double) -> ImagefilterbilateralPoint
+
+pub fn image_filter_bilateral_make_series(Array[Double], String) -> ImagefilterbilateralSeries
+
+pub fn image_filter_bilateral_make_vector(Array[Double]) -> ImagefilterbilateralVector
+
+pub fn image_filter_bilateral_matrix_identity(Int32) -> ImagefilterbilateralMatrix
+
+pub fn image_filter_bilateral_model_make(Int32) -> ImagefilterbilateralModel
+
+pub fn image_filter_bilateral_node_make(Int32) -> ImagefilterbilateralNode
+
+pub fn image_filter_bilateral_path_make(Int32) -> ImagefilterbilateralPath
+
+pub fn image_filter_bilateral_range_make(Int32) -> ImagefilterbilateralRange
+
+pub fn image_filter_bilateral_slice_make(Int32) -> ImagefilterbilateralSlice
+
+pub fn image_filter_bilateral_table_make(Int32) -> ImagefilterbilateralTable
+
+pub fn image_filter_bilateral_vector_zero(Int32) -> ImagefilterbilateralVector
+
+pub fn image_filter_bilateral_view_make(Int32) -> ImagefilterbilateralView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagefilterbilateralBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterbilateralBuffer::add(Self, Self) -> Self
+pub fn ImagefilterbilateralBuffer::copy(Self) -> Self
+pub fn ImagefilterbilateralBuffer::fill(Self, Double) -> Self
+pub fn ImagefilterbilateralBuffer::get(Self, Int32) -> Double
+pub fn ImagefilterbilateralBuffer::len(Self) -> Int32
+pub fn ImagefilterbilateralBuffer::max(Self) -> Double
+pub fn ImagefilterbilateralBuffer::mean(Self) -> Double
+pub fn ImagefilterbilateralBuffer::min(Self) -> Double
+pub fn ImagefilterbilateralBuffer::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagefilterbilateralBuffer::sum(Self) -> Double
+pub fn ImagefilterbilateralBuffer::to_string(Self) -> String
+
+pub(all) struct ImagefilterbilateralCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterbilateralCluster::add(Self, Self) -> Self
+pub fn ImagefilterbilateralCluster::copy(Self) -> Self
+pub fn ImagefilterbilateralCluster::fill(Self, Double) -> Self
+pub fn ImagefilterbilateralCluster::get(Self, Int32) -> Double
+pub fn ImagefilterbilateralCluster::len(Self) -> Int32
+pub fn ImagefilterbilateralCluster::max(Self) -> Double
+pub fn ImagefilterbilateralCluster::mean(Self) -> Double
+pub fn ImagefilterbilateralCluster::min(Self) -> Double
+pub fn ImagefilterbilateralCluster::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralCluster::set(Self, Int32, Double) -> Self
+pub fn ImagefilterbilateralCluster::sum(Self) -> Double
+pub fn ImagefilterbilateralCluster::to_string(Self) -> String
+
+pub(all) struct ImagefilterbilateralCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterbilateralCursor::add(Self, Self) -> Self
+pub fn ImagefilterbilateralCursor::copy(Self) -> Self
+pub fn ImagefilterbilateralCursor::fill(Self, Double) -> Self
+pub fn ImagefilterbilateralCursor::get(Self, Int32) -> Double
+pub fn ImagefilterbilateralCursor::len(Self) -> Int32
+pub fn ImagefilterbilateralCursor::max(Self) -> Double
+pub fn ImagefilterbilateralCursor::mean(Self) -> Double
+pub fn ImagefilterbilateralCursor::min(Self) -> Double
+pub fn ImagefilterbilateralCursor::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralCursor::set(Self, Int32, Double) -> Self
+pub fn ImagefilterbilateralCursor::sum(Self) -> Double
+pub fn ImagefilterbilateralCursor::to_string(Self) -> String
+
+pub(all) struct ImagefilterbilateralEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterbilateralEdge::add(Self, Self) -> Self
+pub fn ImagefilterbilateralEdge::copy(Self) -> Self
+pub fn ImagefilterbilateralEdge::fill(Self, Double) -> Self
+pub fn ImagefilterbilateralEdge::get(Self, Int32) -> Double
+pub fn ImagefilterbilateralEdge::len(Self) -> Int32
+pub fn ImagefilterbilateralEdge::max(Self) -> Double
+pub fn ImagefilterbilateralEdge::mean(Self) -> Double
+pub fn ImagefilterbilateralEdge::min(Self) -> Double
+pub fn ImagefilterbilateralEdge::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralEdge::set(Self, Int32, Double) -> Self
+pub fn ImagefilterbilateralEdge::sum(Self) -> Double
+pub fn ImagefilterbilateralEdge::to_string(Self) -> String
+
+pub(all) struct ImagefilterbilateralFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterbilateralFrame::add(Self, Self) -> Self
+pub fn ImagefilterbilateralFrame::copy(Self) -> Self
+pub fn ImagefilterbilateralFrame::fill(Self, Double) -> Self
+pub fn ImagefilterbilateralFrame::get(Self, Int32) -> Double
+pub fn ImagefilterbilateralFrame::len(Self) -> Int32
+pub fn ImagefilterbilateralFrame::max(Self) -> Double
+pub fn ImagefilterbilateralFrame::mean(Self) -> Double
+pub fn ImagefilterbilateralFrame::min(Self) -> Double
+pub fn ImagefilterbilateralFrame::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralFrame::set(Self, Int32, Double) -> Self
+pub fn ImagefilterbilateralFrame::sum(Self) -> Double
+pub fn ImagefilterbilateralFrame::to_string(Self) -> String
+
+pub(all) struct ImagefilterbilateralGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterbilateralGraphN::add(Self, Self) -> Self
+pub fn ImagefilterbilateralGraphN::copy(Self) -> Self
+pub fn ImagefilterbilateralGraphN::fill(Self, Double) -> Self
+pub fn ImagefilterbilateralGraphN::get(Self, Int32) -> Double
+pub fn ImagefilterbilateralGraphN::len(Self) -> Int32
+pub fn ImagefilterbilateralGraphN::max(Self) -> Double
+pub fn ImagefilterbilateralGraphN::mean(Self) -> Double
+pub fn ImagefilterbilateralGraphN::min(Self) -> Double
+pub fn ImagefilterbilateralGraphN::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagefilterbilateralGraphN::sum(Self) -> Double
+pub fn ImagefilterbilateralGraphN::to_string(Self) -> String
+
+pub(all) struct ImagefilterbilateralLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterbilateralLayer::add(Self, Self) -> Self
+pub fn ImagefilterbilateralLayer::copy(Self) -> Self
+pub fn ImagefilterbilateralLayer::fill(Self, Double) -> Self
+pub fn ImagefilterbilateralLayer::get(Self, Int32) -> Double
+pub fn ImagefilterbilateralLayer::len(Self) -> Int32
+pub fn ImagefilterbilateralLayer::max(Self) -> Double
+pub fn ImagefilterbilateralLayer::mean(Self) -> Double
+pub fn ImagefilterbilateralLayer::min(Self) -> Double
+pub fn ImagefilterbilateralLayer::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralLayer::set(Self, Int32, Double) -> Self
+pub fn ImagefilterbilateralLayer::sum(Self) -> Double
+pub fn ImagefilterbilateralLayer::to_string(Self) -> String
+
+pub(all) struct ImagefilterbilateralMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagefilterbilateralMatrix::add(Self, Self) -> Self
+pub fn ImagefilterbilateralMatrix::det(Self) -> Double
+pub fn ImagefilterbilateralMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagefilterbilateralMatrix::multiply(Self, Self) -> Self
+pub fn ImagefilterbilateralMatrix::norm(Self) -> Double
+pub fn ImagefilterbilateralMatrix::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralMatrix::to_string(Self) -> String
+pub fn ImagefilterbilateralMatrix::trace(Self) -> Double
+pub fn ImagefilterbilateralMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagefilterbilateralModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterbilateralModel::add(Self, Self) -> Self
+pub fn ImagefilterbilateralModel::copy(Self) -> Self
+pub fn ImagefilterbilateralModel::fill(Self, Double) -> Self
+pub fn ImagefilterbilateralModel::get(Self, Int32) -> Double
+pub fn ImagefilterbilateralModel::len(Self) -> Int32
+pub fn ImagefilterbilateralModel::max(Self) -> Double
+pub fn ImagefilterbilateralModel::mean(Self) -> Double
+pub fn ImagefilterbilateralModel::min(Self) -> Double
+pub fn ImagefilterbilateralModel::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralModel::set(Self, Int32, Double) -> Self
+pub fn ImagefilterbilateralModel::sum(Self) -> Double
+pub fn ImagefilterbilateralModel::to_string(Self) -> String
+
+pub(all) struct ImagefilterbilateralNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterbilateralNode::add(Self, Self) -> Self
+pub fn ImagefilterbilateralNode::copy(Self) -> Self
+pub fn ImagefilterbilateralNode::fill(Self, Double) -> Self
+pub fn ImagefilterbilateralNode::get(Self, Int32) -> Double
+pub fn ImagefilterbilateralNode::len(Self) -> Int32
+pub fn ImagefilterbilateralNode::max(Self) -> Double
+pub fn ImagefilterbilateralNode::mean(Self) -> Double
+pub fn ImagefilterbilateralNode::min(Self) -> Double
+pub fn ImagefilterbilateralNode::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralNode::set(Self, Int32, Double) -> Self
+pub fn ImagefilterbilateralNode::sum(Self) -> Double
+pub fn ImagefilterbilateralNode::to_string(Self) -> String
+
+pub(all) struct ImagefilterbilateralPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterbilateralPath::add(Self, Self) -> Self
+pub fn ImagefilterbilateralPath::copy(Self) -> Self
+pub fn ImagefilterbilateralPath::fill(Self, Double) -> Self
+pub fn ImagefilterbilateralPath::get(Self, Int32) -> Double
+pub fn ImagefilterbilateralPath::len(Self) -> Int32
+pub fn ImagefilterbilateralPath::max(Self) -> Double
+pub fn ImagefilterbilateralPath::mean(Self) -> Double
+pub fn ImagefilterbilateralPath::min(Self) -> Double
+pub fn ImagefilterbilateralPath::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralPath::set(Self, Int32, Double) -> Self
+pub fn ImagefilterbilateralPath::sum(Self) -> Double
+pub fn ImagefilterbilateralPath::to_string(Self) -> String
+
+pub(all) struct ImagefilterbilateralPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagefilterbilateralPoint::add(Self, Self) -> Self
+pub fn ImagefilterbilateralPoint::cross(Self, Self) -> Self
+pub fn ImagefilterbilateralPoint::dist(Self, Self) -> Double
+pub fn ImagefilterbilateralPoint::dot(Self, Self) -> Double
+pub fn ImagefilterbilateralPoint::label(Self) -> Int32
+pub fn ImagefilterbilateralPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagefilterbilateralPoint::mid(Self, Self) -> Self
+pub fn ImagefilterbilateralPoint::negate(Self) -> Self
+pub fn ImagefilterbilateralPoint::norm(Self) -> Double
+pub fn ImagefilterbilateralPoint::normalize(Self) -> Self
+pub fn ImagefilterbilateralPoint::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralPoint::sub(Self, Self) -> Self
+pub fn ImagefilterbilateralPoint::to_string(Self) -> String
+pub fn ImagefilterbilateralPoint::x(Self) -> Double
+pub fn ImagefilterbilateralPoint::y(Self) -> Double
+pub fn ImagefilterbilateralPoint::z(Self) -> Double
+
+pub(all) struct ImagefilterbilateralRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterbilateralRange::add(Self, Self) -> Self
+pub fn ImagefilterbilateralRange::copy(Self) -> Self
+pub fn ImagefilterbilateralRange::fill(Self, Double) -> Self
+pub fn ImagefilterbilateralRange::get(Self, Int32) -> Double
+pub fn ImagefilterbilateralRange::len(Self) -> Int32
+pub fn ImagefilterbilateralRange::max(Self) -> Double
+pub fn ImagefilterbilateralRange::mean(Self) -> Double
+pub fn ImagefilterbilateralRange::min(Self) -> Double
+pub fn ImagefilterbilateralRange::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralRange::set(Self, Int32, Double) -> Self
+pub fn ImagefilterbilateralRange::sum(Self) -> Double
+pub fn ImagefilterbilateralRange::to_string(Self) -> String
+
+pub(all) struct ImagefilterbilateralSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagefilterbilateralSeries::add(Self, Self) -> Self
+pub fn ImagefilterbilateralSeries::cumsum(Self) -> Self
+pub fn ImagefilterbilateralSeries::len(Self) -> Int32
+pub fn ImagefilterbilateralSeries::max(Self) -> Double
+pub fn ImagefilterbilateralSeries::mean(Self) -> Double
+pub fn ImagefilterbilateralSeries::median(Self) -> Double
+pub fn ImagefilterbilateralSeries::min(Self) -> Double
+pub fn ImagefilterbilateralSeries::normalize(Self) -> Self
+pub fn ImagefilterbilateralSeries::range(Self) -> Double
+pub fn ImagefilterbilateralSeries::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralSeries::std(Self) -> Double
+pub fn ImagefilterbilateralSeries::sub(Self, Self) -> Self
+pub fn ImagefilterbilateralSeries::sum(Self) -> Double
+pub fn ImagefilterbilateralSeries::to_string(Self) -> String
+pub fn ImagefilterbilateralSeries::variance(Self) -> Double
+
+pub(all) struct ImagefilterbilateralSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterbilateralSlice::add(Self, Self) -> Self
+pub fn ImagefilterbilateralSlice::copy(Self) -> Self
+pub fn ImagefilterbilateralSlice::fill(Self, Double) -> Self
+pub fn ImagefilterbilateralSlice::get(Self, Int32) -> Double
+pub fn ImagefilterbilateralSlice::len(Self) -> Int32
+pub fn ImagefilterbilateralSlice::max(Self) -> Double
+pub fn ImagefilterbilateralSlice::mean(Self) -> Double
+pub fn ImagefilterbilateralSlice::min(Self) -> Double
+pub fn ImagefilterbilateralSlice::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralSlice::set(Self, Int32, Double) -> Self
+pub fn ImagefilterbilateralSlice::sum(Self) -> Double
+pub fn ImagefilterbilateralSlice::to_string(Self) -> String
+
+pub(all) struct ImagefilterbilateralTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterbilateralTable::add(Self, Self) -> Self
+pub fn ImagefilterbilateralTable::copy(Self) -> Self
+pub fn ImagefilterbilateralTable::fill(Self, Double) -> Self
+pub fn ImagefilterbilateralTable::get(Self, Int32) -> Double
+pub fn ImagefilterbilateralTable::len(Self) -> Int32
+pub fn ImagefilterbilateralTable::max(Self) -> Double
+pub fn ImagefilterbilateralTable::mean(Self) -> Double
+pub fn ImagefilterbilateralTable::min(Self) -> Double
+pub fn ImagefilterbilateralTable::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralTable::set(Self, Int32, Double) -> Self
+pub fn ImagefilterbilateralTable::sum(Self) -> Double
+pub fn ImagefilterbilateralTable::to_string(Self) -> String
+
+pub(all) struct ImagefilterbilateralVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagefilterbilateralVector::add(Self, Self) -> Self
+pub fn ImagefilterbilateralVector::dist(Self, Self) -> Double
+pub fn ImagefilterbilateralVector::dot(Self, Self) -> Double
+pub fn ImagefilterbilateralVector::norm(Self) -> Double
+pub fn ImagefilterbilateralVector::normalize(Self) -> Self
+pub fn ImagefilterbilateralVector::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralVector::sub(Self, Self) -> Self
+pub fn ImagefilterbilateralVector::to_string(Self) -> String
+
+pub(all) struct ImagefilterbilateralView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefilterbilateralView::add(Self, Self) -> Self
+pub fn ImagefilterbilateralView::copy(Self) -> Self
+pub fn ImagefilterbilateralView::fill(Self, Double) -> Self
+pub fn ImagefilterbilateralView::get(Self, Int32) -> Double
+pub fn ImagefilterbilateralView::len(Self) -> Int32
+pub fn ImagefilterbilateralView::max(Self) -> Double
+pub fn ImagefilterbilateralView::mean(Self) -> Double
+pub fn ImagefilterbilateralView::min(Self) -> Double
+pub fn ImagefilterbilateralView::scale(Self, Double) -> Self
+pub fn ImagefilterbilateralView::set(Self, Int32, Double) -> Self
+pub fn ImagefilterbilateralView::sum(Self) -> Double
+pub fn ImagefilterbilateralView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

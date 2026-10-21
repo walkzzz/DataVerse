@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/norm_agent"
+
+// Values
+pub fn norm_agent_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn norm_agent_corr(Array[Double], Array[Double]) -> Double
+
+pub fn norm_agent_cov(Array[Double], Array[Double]) -> Double
+
+pub fn norm_agent_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn norm_agent_mae(Array[Double], Array[Double]) -> Double
+
+pub fn norm_agent_make_labeled_point(Double, Double, Int32) -> Norm_agentPoint
+
+pub fn norm_agent_make_matrix(Int32, Int32, Double) -> Norm_agentMatrix
+
+pub fn norm_agent_make_point(Double, Double) -> Norm_agentPoint
+
+pub fn norm_agent_make_series(Array[Double], String) -> Norm_agentSeries
+
+pub fn norm_agent_make_vector(Array[Double]) -> Norm_agentVector
+
+pub fn norm_agent_matrix_add(Norm_agentMatrix, Norm_agentMatrix) -> Norm_agentMatrix
+
+pub fn norm_agent_matrix_get(Norm_agentMatrix, Int32, Int32) -> Double
+
+pub fn norm_agent_matrix_identity(Int32) -> Norm_agentMatrix
+
+pub fn norm_agent_matrix_multiply(Norm_agentMatrix, Norm_agentMatrix) -> Norm_agentMatrix
+
+pub fn norm_agent_matrix_norm(Norm_agentMatrix) -> Double
+
+pub fn norm_agent_matrix_scale(Norm_agentMatrix, Double) -> Norm_agentMatrix
+
+pub fn norm_agent_matrix_to_string(Norm_agentMatrix) -> String
+
+pub fn norm_agent_matrix_trace(Norm_agentMatrix) -> Double
+
+pub fn norm_agent_matrix_transpose(Norm_agentMatrix) -> Norm_agentMatrix
+
+pub fn norm_agent_mse(Array[Double], Array[Double]) -> Double
+
+pub fn norm_agent_point_add(Norm_agentPoint, Norm_agentPoint) -> Norm_agentPoint
+
+pub fn norm_agent_point_dist(Norm_agentPoint, Norm_agentPoint) -> Double
+
+pub fn norm_agent_point_dot(Norm_agentPoint, Norm_agentPoint) -> Double
+
+pub fn norm_agent_point_label(Norm_agentPoint) -> Int32
+
+pub fn norm_agent_point_norm(Norm_agentPoint) -> Double
+
+pub fn norm_agent_point_scale(Norm_agentPoint, Double) -> Norm_agentPoint
+
+pub fn norm_agent_point_sub(Norm_agentPoint, Norm_agentPoint) -> Norm_agentPoint
+
+pub fn norm_agent_point_to_string(Norm_agentPoint) -> String
+
+pub fn norm_agent_point_x(Norm_agentPoint) -> Double
+
+pub fn norm_agent_point_y(Norm_agentPoint) -> Double
+
+pub fn norm_agent_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn norm_agent_r2(Array[Double], Array[Double]) -> Double
+
+pub fn norm_agent_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn norm_agent_series_add(Norm_agentSeries, Norm_agentSeries) -> Norm_agentSeries
+
+pub fn norm_agent_series_len(Norm_agentSeries) -> Int32
+
+pub fn norm_agent_series_max(Norm_agentSeries) -> Double
+
+pub fn norm_agent_series_mean(Norm_agentSeries) -> Double
+
+pub fn norm_agent_series_min(Norm_agentSeries) -> Double
+
+pub fn norm_agent_series_scale(Norm_agentSeries, Double) -> Norm_agentSeries
+
+pub fn norm_agent_series_std(Norm_agentSeries) -> Double
+
+pub fn norm_agent_series_sum(Norm_agentSeries) -> Double
+
+pub fn norm_agent_series_to_string(Norm_agentSeries) -> String
+
+pub fn norm_agent_series_var(Norm_agentSeries) -> Double
+
+pub fn norm_agent_std(Array[Double]) -> Double
+
+pub fn norm_agent_var(Array[Double]) -> Double
+
+pub fn norm_agent_vector_add(Norm_agentVector, Norm_agentVector) -> Norm_agentVector
+
+pub fn norm_agent_vector_dist(Norm_agentVector, Norm_agentVector) -> Double
+
+pub fn norm_agent_vector_dot(Norm_agentVector, Norm_agentVector) -> Double
+
+pub fn norm_agent_vector_norm(Norm_agentVector) -> Double
+
+pub fn norm_agent_vector_normalize(Norm_agentVector) -> Norm_agentVector
+
+pub fn norm_agent_vector_scale(Norm_agentVector, Double) -> Norm_agentVector
+
+pub fn norm_agent_vector_sub(Norm_agentVector, Norm_agentVector) -> Norm_agentVector
+
+pub fn norm_agent_vector_to_string(Norm_agentVector) -> String
+
+pub fn norm_agent_vector_zero(Int32) -> Norm_agentVector
+
+// Errors
+
+// Types and methods
+pub struct Norm_agentMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Norm_agentPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Norm_agentSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Norm_agentVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/data_quality"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn accuracy(Array[Double], Array[Double], Double) -> Double
+
+pub fn accuracy_score(Array[Bool], Array[Bool]) -> Double
+
+pub fn check_format(Array[String]) -> Array[Int32]
+
+pub fn check_missing(Array[String?]) -> Array[Int32]
+
+pub fn check_outlier(Array[Double], Double) -> Array[Int32]
+
+pub fn check_schema(Array[Array[String]], Int32) -> Array[Int32]
+
+pub fn column_profile(String, Array[Double]) -> ColumnProfile
+
+pub fn completeness(Array[String?]) -> Double
+
+pub fn consistency(Array[String], Array[String]) -> Double
+
+pub fn correlation_quality(Array[Double], Array[Double]) -> Double
+
+pub fn data_profiling(Array[String]) -> String
+
+pub fn data_quality_id() -> String
+
+pub fn distinct_count(Array[String]) -> Int32
+
+pub fn distribution_quality(Array[String]) -> Double
+
+pub fn domain_integrity(Array[String], Array[String]) -> Double
+
+pub fn duplicate_count(Array[String]) -> Int32
+
+pub fn entity_integrity(Array[String?]) -> Double
+
+pub fn f1_score(Array[Bool], Array[Bool]) -> Double
+
+pub fn make_quality_result(QualityDimension, Double, String) -> QualityResult
+
+pub fn make_quality_rule(String, QualityDimension, Double) -> QualityRule
+
+pub fn missing_pattern(Array[String?]) -> String
+
+pub fn null_count(Array[String?]) -> Int32
+
+pub fn null_rate(Array[String?]) -> Double
+
+pub fn outlier_detection_quality(Array[Double], Double) -> Double
+
+pub fn pattern_check(Array[String], String) -> Array[Int32]
+
+pub fn precision_score(Array[Bool], Array[Bool]) -> Double
+
+pub fn quality_dimension(Double) -> QualityLevel
+
+pub fn quality_report(Array[QualityResult]) -> String
+
+pub fn quality_score(Array[QualityResult]) -> Double
+
+pub fn recall_score(Array[Bool], Array[Bool]) -> Double
+
+pub fn referential_integrity(Array[String], Array[String]) -> Double
+
+pub fn table_profile(Array[Array[String]]) -> String
+
+pub fn timeliness(Array[Double], Double, Double) -> Double
+
+pub fn type_check(Array[String]) -> Array[Int32]
+
+pub fn uniqueness(Array[String]) -> Double
+
+pub fn validity(Array[String], Array[String]) -> Double
+
+pub fn value_range_check(Array[Double], Double, Double) -> Array[Int32]
+
+// Errors
+
+// Types and methods
+pub struct ColumnProfile {
+  name : String
+  count : Int32
+  nulls : Int32
+  distinct : Int32
+  mean : Double
+} derive(Eq, @debug.Debug)
+pub fn ColumnProfile::equal(Self, Self) -> Bool
+pub fn ColumnProfile::not_equal(Self, Self) -> Bool
+pub fn ColumnProfile::to_repr(Self) -> @debug.Repr
+
+pub(all) enum QualityDimension {
+  Completeness
+  Uniqueness
+  Validity
+  Consistency
+  Accuracy
+  Timeliness
+} derive(Eq, @debug.Debug)
+pub fn QualityDimension::equal(Self, Self) -> Bool
+pub fn QualityDimension::not_equal(Self, Self) -> Bool
+pub fn QualityDimension::to_repr(Self) -> @debug.Repr
+
+pub(all) enum QualityLevel {
+  Excellent
+  Good
+  Fair
+  Poor
+} derive(Eq, @debug.Debug)
+pub fn QualityLevel::equal(Self, Self) -> Bool
+pub fn QualityLevel::not_equal(Self, Self) -> Bool
+pub fn QualityLevel::to_repr(Self) -> @debug.Repr
+
+pub struct QualityResult {
+  dimension : QualityDimension
+  score : Double
+  level : QualityLevel
+  details : String
+} derive(Eq, @debug.Debug)
+pub fn QualityResult::equal(Self, Self) -> Bool
+pub fn QualityResult::not_equal(Self, Self) -> Bool
+pub fn QualityResult::to_repr(Self) -> @debug.Repr
+
+pub struct QualityRule {
+  name : String
+  dimension : QualityDimension
+  weight : Double
+} derive(Eq, @debug.Debug)
+pub fn QualityRule::equal(Self, Self) -> Bool
+pub fn QualityRule::not_equal(Self, Self) -> Bool
+pub fn QualityRule::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,30 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/regression"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn linear_regression(Array[(Double, Double)]) -> LinearModel
+
+pub fn predict_linear(LinearModel, Double) -> Double
+
+pub fn regression_glm(Array[(Double, Double)], String) -> LinearModel
+
+pub fn regression_id() -> String
+
+// Errors
+
+// Types and methods
+pub struct LinearModel {
+  slope : Double
+  intercept : Double
+} derive(Eq, @debug.Debug)
+pub fn LinearModel::equal(Self, Self) -> Bool
+pub fn LinearModel::not_equal(Self, Self) -> Bool
+pub fn LinearModel::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_forecast_drift"
+
+// Values
+pub fn timeseries_forecast_drift_buffer_make(Int32) -> TimeseriesforecastdriftBuffer
+
+pub fn timeseries_forecast_drift_cluster_make(Int32) -> TimeseriesforecastdriftCluster
+
+pub fn timeseries_forecast_drift_cursor_make(Int32) -> TimeseriesforecastdriftCursor
+
+pub fn timeseries_forecast_drift_edge_make(Int32) -> TimeseriesforecastdriftEdge
+
+pub fn timeseries_forecast_drift_frame_make(Int32) -> TimeseriesforecastdriftFrame
+
+pub fn timeseries_forecast_drift_graphn_make(Int32) -> TimeseriesforecastdriftGraphN
+
+pub fn timeseries_forecast_drift_layer_make(Int32) -> TimeseriesforecastdriftLayer
+
+pub fn timeseries_forecast_drift_make_matrix(Int32, Int32, Double) -> TimeseriesforecastdriftMatrix
+
+pub fn timeseries_forecast_drift_make_point(Double, Double) -> TimeseriesforecastdriftPoint
+
+pub fn timeseries_forecast_drift_make_point3(Double, Double, Double) -> TimeseriesforecastdriftPoint
+
+pub fn timeseries_forecast_drift_make_series(Array[Double], String) -> TimeseriesforecastdriftSeries
+
+pub fn timeseries_forecast_drift_make_vector(Array[Double]) -> TimeseriesforecastdriftVector
+
+pub fn timeseries_forecast_drift_matrix_identity(Int32) -> TimeseriesforecastdriftMatrix
+
+pub fn timeseries_forecast_drift_model_make(Int32) -> TimeseriesforecastdriftModel
+
+pub fn timeseries_forecast_drift_node_make(Int32) -> TimeseriesforecastdriftNode
+
+pub fn timeseries_forecast_drift_path_make(Int32) -> TimeseriesforecastdriftPath
+
+pub fn timeseries_forecast_drift_range_make(Int32) -> TimeseriesforecastdriftRange
+
+pub fn timeseries_forecast_drift_slice_make(Int32) -> TimeseriesforecastdriftSlice
+
+pub fn timeseries_forecast_drift_table_make(Int32) -> TimeseriesforecastdriftTable
+
+pub fn timeseries_forecast_drift_vector_zero(Int32) -> TimeseriesforecastdriftVector
+
+pub fn timeseries_forecast_drift_view_make(Int32) -> TimeseriesforecastdriftView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriesforecastdriftBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastdriftBuffer::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftBuffer::copy(Self) -> Self
+pub fn TimeseriesforecastdriftBuffer::fill(Self, Double) -> Self
+pub fn TimeseriesforecastdriftBuffer::get(Self, Int32) -> Double
+pub fn TimeseriesforecastdriftBuffer::len(Self) -> Int32
+pub fn TimeseriesforecastdriftBuffer::max(Self) -> Double
+pub fn TimeseriesforecastdriftBuffer::mean(Self) -> Double
+pub fn TimeseriesforecastdriftBuffer::min(Self) -> Double
+pub fn TimeseriesforecastdriftBuffer::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastdriftBuffer::sum(Self) -> Double
+pub fn TimeseriesforecastdriftBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastdriftCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastdriftCluster::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftCluster::copy(Self) -> Self
+pub fn TimeseriesforecastdriftCluster::fill(Self, Double) -> Self
+pub fn TimeseriesforecastdriftCluster::get(Self, Int32) -> Double
+pub fn TimeseriesforecastdriftCluster::len(Self) -> Int32
+pub fn TimeseriesforecastdriftCluster::max(Self) -> Double
+pub fn TimeseriesforecastdriftCluster::mean(Self) -> Double
+pub fn TimeseriesforecastdriftCluster::min(Self) -> Double
+pub fn TimeseriesforecastdriftCluster::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastdriftCluster::sum(Self) -> Double
+pub fn TimeseriesforecastdriftCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastdriftCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastdriftCursor::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftCursor::copy(Self) -> Self
+pub fn TimeseriesforecastdriftCursor::fill(Self, Double) -> Self
+pub fn TimeseriesforecastdriftCursor::get(Self, Int32) -> Double
+pub fn TimeseriesforecastdriftCursor::len(Self) -> Int32
+pub fn TimeseriesforecastdriftCursor::max(Self) -> Double
+pub fn TimeseriesforecastdriftCursor::mean(Self) -> Double
+pub fn TimeseriesforecastdriftCursor::min(Self) -> Double
+pub fn TimeseriesforecastdriftCursor::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastdriftCursor::sum(Self) -> Double
+pub fn TimeseriesforecastdriftCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastdriftEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastdriftEdge::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftEdge::copy(Self) -> Self
+pub fn TimeseriesforecastdriftEdge::fill(Self, Double) -> Self
+pub fn TimeseriesforecastdriftEdge::get(Self, Int32) -> Double
+pub fn TimeseriesforecastdriftEdge::len(Self) -> Int32
+pub fn TimeseriesforecastdriftEdge::max(Self) -> Double
+pub fn TimeseriesforecastdriftEdge::mean(Self) -> Double
+pub fn TimeseriesforecastdriftEdge::min(Self) -> Double
+pub fn TimeseriesforecastdriftEdge::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastdriftEdge::sum(Self) -> Double
+pub fn TimeseriesforecastdriftEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastdriftFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastdriftFrame::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftFrame::copy(Self) -> Self
+pub fn TimeseriesforecastdriftFrame::fill(Self, Double) -> Self
+pub fn TimeseriesforecastdriftFrame::get(Self, Int32) -> Double
+pub fn TimeseriesforecastdriftFrame::len(Self) -> Int32
+pub fn TimeseriesforecastdriftFrame::max(Self) -> Double
+pub fn TimeseriesforecastdriftFrame::mean(Self) -> Double
+pub fn TimeseriesforecastdriftFrame::min(Self) -> Double
+pub fn TimeseriesforecastdriftFrame::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastdriftFrame::sum(Self) -> Double
+pub fn TimeseriesforecastdriftFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastdriftGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastdriftGraphN::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftGraphN::copy(Self) -> Self
+pub fn TimeseriesforecastdriftGraphN::fill(Self, Double) -> Self
+pub fn TimeseriesforecastdriftGraphN::get(Self, Int32) -> Double
+pub fn TimeseriesforecastdriftGraphN::len(Self) -> Int32
+pub fn TimeseriesforecastdriftGraphN::max(Self) -> Double
+pub fn TimeseriesforecastdriftGraphN::mean(Self) -> Double
+pub fn TimeseriesforecastdriftGraphN::min(Self) -> Double
+pub fn TimeseriesforecastdriftGraphN::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastdriftGraphN::sum(Self) -> Double
+pub fn TimeseriesforecastdriftGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastdriftLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastdriftLayer::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftLayer::copy(Self) -> Self
+pub fn TimeseriesforecastdriftLayer::fill(Self, Double) -> Self
+pub fn TimeseriesforecastdriftLayer::get(Self, Int32) -> Double
+pub fn TimeseriesforecastdriftLayer::len(Self) -> Int32
+pub fn TimeseriesforecastdriftLayer::max(Self) -> Double
+pub fn TimeseriesforecastdriftLayer::mean(Self) -> Double
+pub fn TimeseriesforecastdriftLayer::min(Self) -> Double
+pub fn TimeseriesforecastdriftLayer::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastdriftLayer::sum(Self) -> Double
+pub fn TimeseriesforecastdriftLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastdriftMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriesforecastdriftMatrix::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftMatrix::det(Self) -> Double
+pub fn TimeseriesforecastdriftMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriesforecastdriftMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriesforecastdriftMatrix::norm(Self) -> Double
+pub fn TimeseriesforecastdriftMatrix::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftMatrix::to_string(Self) -> String
+pub fn TimeseriesforecastdriftMatrix::trace(Self) -> Double
+pub fn TimeseriesforecastdriftMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriesforecastdriftModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastdriftModel::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftModel::copy(Self) -> Self
+pub fn TimeseriesforecastdriftModel::fill(Self, Double) -> Self
+pub fn TimeseriesforecastdriftModel::get(Self, Int32) -> Double
+pub fn TimeseriesforecastdriftModel::len(Self) -> Int32
+pub fn TimeseriesforecastdriftModel::max(Self) -> Double
+pub fn TimeseriesforecastdriftModel::mean(Self) -> Double
+pub fn TimeseriesforecastdriftModel::min(Self) -> Double
+pub fn TimeseriesforecastdriftModel::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastdriftModel::sum(Self) -> Double
+pub fn TimeseriesforecastdriftModel::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastdriftNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastdriftNode::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftNode::copy(Self) -> Self
+pub fn TimeseriesforecastdriftNode::fill(Self, Double) -> Self
+pub fn TimeseriesforecastdriftNode::get(Self, Int32) -> Double
+pub fn TimeseriesforecastdriftNode::len(Self) -> Int32
+pub fn TimeseriesforecastdriftNode::max(Self) -> Double
+pub fn TimeseriesforecastdriftNode::mean(Self) -> Double
+pub fn TimeseriesforecastdriftNode::min(Self) -> Double
+pub fn TimeseriesforecastdriftNode::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastdriftNode::sum(Self) -> Double
+pub fn TimeseriesforecastdriftNode::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastdriftPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastdriftPath::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftPath::copy(Self) -> Self
+pub fn TimeseriesforecastdriftPath::fill(Self, Double) -> Self
+pub fn TimeseriesforecastdriftPath::get(Self, Int32) -> Double
+pub fn TimeseriesforecastdriftPath::len(Self) -> Int32
+pub fn TimeseriesforecastdriftPath::max(Self) -> Double
+pub fn TimeseriesforecastdriftPath::mean(Self) -> Double
+pub fn TimeseriesforecastdriftPath::min(Self) -> Double
+pub fn TimeseriesforecastdriftPath::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftPath::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastdriftPath::sum(Self) -> Double
+pub fn TimeseriesforecastdriftPath::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastdriftPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriesforecastdriftPoint::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftPoint::cross(Self, Self) -> Self
+pub fn TimeseriesforecastdriftPoint::dist(Self, Self) -> Double
+pub fn TimeseriesforecastdriftPoint::dot(Self, Self) -> Double
+pub fn TimeseriesforecastdriftPoint::label(Self) -> Int32
+pub fn TimeseriesforecastdriftPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriesforecastdriftPoint::mid(Self, Self) -> Self
+pub fn TimeseriesforecastdriftPoint::negate(Self) -> Self
+pub fn TimeseriesforecastdriftPoint::norm(Self) -> Double
+pub fn TimeseriesforecastdriftPoint::normalize(Self) -> Self
+pub fn TimeseriesforecastdriftPoint::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftPoint::sub(Self, Self) -> Self
+pub fn TimeseriesforecastdriftPoint::to_string(Self) -> String
+pub fn TimeseriesforecastdriftPoint::x(Self) -> Double
+pub fn TimeseriesforecastdriftPoint::y(Self) -> Double
+pub fn TimeseriesforecastdriftPoint::z(Self) -> Double
+
+pub(all) struct TimeseriesforecastdriftRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastdriftRange::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftRange::copy(Self) -> Self
+pub fn TimeseriesforecastdriftRange::fill(Self, Double) -> Self
+pub fn TimeseriesforecastdriftRange::get(Self, Int32) -> Double
+pub fn TimeseriesforecastdriftRange::len(Self) -> Int32
+pub fn TimeseriesforecastdriftRange::max(Self) -> Double
+pub fn TimeseriesforecastdriftRange::mean(Self) -> Double
+pub fn TimeseriesforecastdriftRange::min(Self) -> Double
+pub fn TimeseriesforecastdriftRange::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastdriftRange::sum(Self) -> Double
+pub fn TimeseriesforecastdriftRange::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastdriftSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriesforecastdriftSeries::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftSeries::cumsum(Self) -> Self
+pub fn TimeseriesforecastdriftSeries::len(Self) -> Int32
+pub fn TimeseriesforecastdriftSeries::max(Self) -> Double
+pub fn TimeseriesforecastdriftSeries::mean(Self) -> Double
+pub fn TimeseriesforecastdriftSeries::median(Self) -> Double
+pub fn TimeseriesforecastdriftSeries::min(Self) -> Double
+pub fn TimeseriesforecastdriftSeries::normalize(Self) -> Self
+pub fn TimeseriesforecastdriftSeries::range(Self) -> Double
+pub fn TimeseriesforecastdriftSeries::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftSeries::std(Self) -> Double
+pub fn TimeseriesforecastdriftSeries::sub(Self, Self) -> Self
+pub fn TimeseriesforecastdriftSeries::sum(Self) -> Double
+pub fn TimeseriesforecastdriftSeries::to_string(Self) -> String
+pub fn TimeseriesforecastdriftSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriesforecastdriftSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastdriftSlice::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftSlice::copy(Self) -> Self
+pub fn TimeseriesforecastdriftSlice::fill(Self, Double) -> Self
+pub fn TimeseriesforecastdriftSlice::get(Self, Int32) -> Double
+pub fn TimeseriesforecastdriftSlice::len(Self) -> Int32
+pub fn TimeseriesforecastdriftSlice::max(Self) -> Double
+pub fn TimeseriesforecastdriftSlice::mean(Self) -> Double
+pub fn TimeseriesforecastdriftSlice::min(Self) -> Double
+pub fn TimeseriesforecastdriftSlice::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastdriftSlice::sum(Self) -> Double
+pub fn TimeseriesforecastdriftSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastdriftTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastdriftTable::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftTable::copy(Self) -> Self
+pub fn TimeseriesforecastdriftTable::fill(Self, Double) -> Self
+pub fn TimeseriesforecastdriftTable::get(Self, Int32) -> Double
+pub fn TimeseriesforecastdriftTable::len(Self) -> Int32
+pub fn TimeseriesforecastdriftTable::max(Self) -> Double
+pub fn TimeseriesforecastdriftTable::mean(Self) -> Double
+pub fn TimeseriesforecastdriftTable::min(Self) -> Double
+pub fn TimeseriesforecastdriftTable::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastdriftTable::sum(Self) -> Double
+pub fn TimeseriesforecastdriftTable::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastdriftVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriesforecastdriftVector::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftVector::dist(Self, Self) -> Double
+pub fn TimeseriesforecastdriftVector::dot(Self, Self) -> Double
+pub fn TimeseriesforecastdriftVector::norm(Self) -> Double
+pub fn TimeseriesforecastdriftVector::normalize(Self) -> Self
+pub fn TimeseriesforecastdriftVector::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftVector::sub(Self, Self) -> Self
+pub fn TimeseriesforecastdriftVector::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastdriftView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastdriftView::add(Self, Self) -> Self
+pub fn TimeseriesforecastdriftView::copy(Self) -> Self
+pub fn TimeseriesforecastdriftView::fill(Self, Double) -> Self
+pub fn TimeseriesforecastdriftView::get(Self, Int32) -> Double
+pub fn TimeseriesforecastdriftView::len(Self) -> Int32
+pub fn TimeseriesforecastdriftView::max(Self) -> Double
+pub fn TimeseriesforecastdriftView::mean(Self) -> Double
+pub fn TimeseriesforecastdriftView::min(Self) -> Double
+pub fn TimeseriesforecastdriftView::scale(Self, Double) -> Self
+pub fn TimeseriesforecastdriftView::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastdriftView::sum(Self) -> Double
+pub fn TimeseriesforecastdriftView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

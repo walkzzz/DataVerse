@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/encode_arrow"
+
+// Values
+pub fn encode_arrow_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn encode_arrow_corr(Array[Double], Array[Double]) -> Double
+
+pub fn encode_arrow_cov(Array[Double], Array[Double]) -> Double
+
+pub fn encode_arrow_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_arrow_mae(Array[Double], Array[Double]) -> Double
+
+pub fn encode_arrow_make_labeled_point(Double, Double, Int32) -> Encode_arrowPoint
+
+pub fn encode_arrow_make_matrix(Int32, Int32, Double) -> Encode_arrowMatrix
+
+pub fn encode_arrow_make_point(Double, Double) -> Encode_arrowPoint
+
+pub fn encode_arrow_make_series(Array[Double], String) -> Encode_arrowSeries
+
+pub fn encode_arrow_make_vector(Array[Double]) -> Encode_arrowVector
+
+pub fn encode_arrow_matrix_add(Encode_arrowMatrix, Encode_arrowMatrix) -> Encode_arrowMatrix
+
+pub fn encode_arrow_matrix_get(Encode_arrowMatrix, Int32, Int32) -> Double
+
+pub fn encode_arrow_matrix_identity(Int32) -> Encode_arrowMatrix
+
+pub fn encode_arrow_matrix_multiply(Encode_arrowMatrix, Encode_arrowMatrix) -> Encode_arrowMatrix
+
+pub fn encode_arrow_matrix_norm(Encode_arrowMatrix) -> Double
+
+pub fn encode_arrow_matrix_scale(Encode_arrowMatrix, Double) -> Encode_arrowMatrix
+
+pub fn encode_arrow_matrix_to_string(Encode_arrowMatrix) -> String
+
+pub fn encode_arrow_matrix_trace(Encode_arrowMatrix) -> Double
+
+pub fn encode_arrow_matrix_transpose(Encode_arrowMatrix) -> Encode_arrowMatrix
+
+pub fn encode_arrow_mse(Array[Double], Array[Double]) -> Double
+
+pub fn encode_arrow_point_add(Encode_arrowPoint, Encode_arrowPoint) -> Encode_arrowPoint
+
+pub fn encode_arrow_point_dist(Encode_arrowPoint, Encode_arrowPoint) -> Double
+
+pub fn encode_arrow_point_dot(Encode_arrowPoint, Encode_arrowPoint) -> Double
+
+pub fn encode_arrow_point_label(Encode_arrowPoint) -> Int32
+
+pub fn encode_arrow_point_norm(Encode_arrowPoint) -> Double
+
+pub fn encode_arrow_point_scale(Encode_arrowPoint, Double) -> Encode_arrowPoint
+
+pub fn encode_arrow_point_sub(Encode_arrowPoint, Encode_arrowPoint) -> Encode_arrowPoint
+
+pub fn encode_arrow_point_to_string(Encode_arrowPoint) -> String
+
+pub fn encode_arrow_point_x(Encode_arrowPoint) -> Double
+
+pub fn encode_arrow_point_y(Encode_arrowPoint) -> Double
+
+pub fn encode_arrow_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_arrow_r2(Array[Double], Array[Double]) -> Double
+
+pub fn encode_arrow_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_arrow_series_add(Encode_arrowSeries, Encode_arrowSeries) -> Encode_arrowSeries
+
+pub fn encode_arrow_series_len(Encode_arrowSeries) -> Int32
+
+pub fn encode_arrow_series_max(Encode_arrowSeries) -> Double
+
+pub fn encode_arrow_series_mean(Encode_arrowSeries) -> Double
+
+pub fn encode_arrow_series_min(Encode_arrowSeries) -> Double
+
+pub fn encode_arrow_series_scale(Encode_arrowSeries, Double) -> Encode_arrowSeries
+
+pub fn encode_arrow_series_std(Encode_arrowSeries) -> Double
+
+pub fn encode_arrow_series_sum(Encode_arrowSeries) -> Double
+
+pub fn encode_arrow_series_to_string(Encode_arrowSeries) -> String
+
+pub fn encode_arrow_series_var(Encode_arrowSeries) -> Double
+
+pub fn encode_arrow_std(Array[Double]) -> Double
+
+pub fn encode_arrow_var(Array[Double]) -> Double
+
+pub fn encode_arrow_vector_add(Encode_arrowVector, Encode_arrowVector) -> Encode_arrowVector
+
+pub fn encode_arrow_vector_dist(Encode_arrowVector, Encode_arrowVector) -> Double
+
+pub fn encode_arrow_vector_dot(Encode_arrowVector, Encode_arrowVector) -> Double
+
+pub fn encode_arrow_vector_norm(Encode_arrowVector) -> Double
+
+pub fn encode_arrow_vector_normalize(Encode_arrowVector) -> Encode_arrowVector
+
+pub fn encode_arrow_vector_scale(Encode_arrowVector, Double) -> Encode_arrowVector
+
+pub fn encode_arrow_vector_sub(Encode_arrowVector, Encode_arrowVector) -> Encode_arrowVector
+
+pub fn encode_arrow_vector_to_string(Encode_arrowVector) -> String
+
+pub fn encode_arrow_vector_zero(Int32) -> Encode_arrowVector
+
+// Errors
+
+// Types and methods
+pub struct Encode_arrowMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Encode_arrowPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Encode_arrowSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Encode_arrowVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

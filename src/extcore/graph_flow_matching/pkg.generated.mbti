@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_flow_matching"
+
+// Values
+pub fn graph_flow_matching_buffer_make(Int32) -> GraphflowmatchingBuffer
+
+pub fn graph_flow_matching_cluster_make(Int32) -> GraphflowmatchingCluster
+
+pub fn graph_flow_matching_cursor_make(Int32) -> GraphflowmatchingCursor
+
+pub fn graph_flow_matching_edge_make(Int32) -> GraphflowmatchingEdge
+
+pub fn graph_flow_matching_frame_make(Int32) -> GraphflowmatchingFrame
+
+pub fn graph_flow_matching_graphn_make(Int32) -> GraphflowmatchingGraphN
+
+pub fn graph_flow_matching_layer_make(Int32) -> GraphflowmatchingLayer
+
+pub fn graph_flow_matching_make_matrix(Int32, Int32, Double) -> GraphflowmatchingMatrix
+
+pub fn graph_flow_matching_make_point(Double, Double) -> GraphflowmatchingPoint
+
+pub fn graph_flow_matching_make_point3(Double, Double, Double) -> GraphflowmatchingPoint
+
+pub fn graph_flow_matching_make_series(Array[Double], String) -> GraphflowmatchingSeries
+
+pub fn graph_flow_matching_make_vector(Array[Double]) -> GraphflowmatchingVector
+
+pub fn graph_flow_matching_matrix_identity(Int32) -> GraphflowmatchingMatrix
+
+pub fn graph_flow_matching_model_make(Int32) -> GraphflowmatchingModel
+
+pub fn graph_flow_matching_node_make(Int32) -> GraphflowmatchingNode
+
+pub fn graph_flow_matching_path_make(Int32) -> GraphflowmatchingPath
+
+pub fn graph_flow_matching_range_make(Int32) -> GraphflowmatchingRange
+
+pub fn graph_flow_matching_slice_make(Int32) -> GraphflowmatchingSlice
+
+pub fn graph_flow_matching_table_make(Int32) -> GraphflowmatchingTable
+
+pub fn graph_flow_matching_vector_zero(Int32) -> GraphflowmatchingVector
+
+pub fn graph_flow_matching_view_make(Int32) -> GraphflowmatchingView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphflowmatchingBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmatchingBuffer::add(Self, Self) -> Self
+pub fn GraphflowmatchingBuffer::copy(Self) -> Self
+pub fn GraphflowmatchingBuffer::fill(Self, Double) -> Self
+pub fn GraphflowmatchingBuffer::get(Self, Int32) -> Double
+pub fn GraphflowmatchingBuffer::len(Self) -> Int32
+pub fn GraphflowmatchingBuffer::max(Self) -> Double
+pub fn GraphflowmatchingBuffer::mean(Self) -> Double
+pub fn GraphflowmatchingBuffer::min(Self) -> Double
+pub fn GraphflowmatchingBuffer::scale(Self, Double) -> Self
+pub fn GraphflowmatchingBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphflowmatchingBuffer::sum(Self) -> Double
+pub fn GraphflowmatchingBuffer::to_string(Self) -> String
+
+pub(all) struct GraphflowmatchingCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmatchingCluster::add(Self, Self) -> Self
+pub fn GraphflowmatchingCluster::copy(Self) -> Self
+pub fn GraphflowmatchingCluster::fill(Self, Double) -> Self
+pub fn GraphflowmatchingCluster::get(Self, Int32) -> Double
+pub fn GraphflowmatchingCluster::len(Self) -> Int32
+pub fn GraphflowmatchingCluster::max(Self) -> Double
+pub fn GraphflowmatchingCluster::mean(Self) -> Double
+pub fn GraphflowmatchingCluster::min(Self) -> Double
+pub fn GraphflowmatchingCluster::scale(Self, Double) -> Self
+pub fn GraphflowmatchingCluster::set(Self, Int32, Double) -> Self
+pub fn GraphflowmatchingCluster::sum(Self) -> Double
+pub fn GraphflowmatchingCluster::to_string(Self) -> String
+
+pub(all) struct GraphflowmatchingCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmatchingCursor::add(Self, Self) -> Self
+pub fn GraphflowmatchingCursor::copy(Self) -> Self
+pub fn GraphflowmatchingCursor::fill(Self, Double) -> Self
+pub fn GraphflowmatchingCursor::get(Self, Int32) -> Double
+pub fn GraphflowmatchingCursor::len(Self) -> Int32
+pub fn GraphflowmatchingCursor::max(Self) -> Double
+pub fn GraphflowmatchingCursor::mean(Self) -> Double
+pub fn GraphflowmatchingCursor::min(Self) -> Double
+pub fn GraphflowmatchingCursor::scale(Self, Double) -> Self
+pub fn GraphflowmatchingCursor::set(Self, Int32, Double) -> Self
+pub fn GraphflowmatchingCursor::sum(Self) -> Double
+pub fn GraphflowmatchingCursor::to_string(Self) -> String
+
+pub(all) struct GraphflowmatchingEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmatchingEdge::add(Self, Self) -> Self
+pub fn GraphflowmatchingEdge::copy(Self) -> Self
+pub fn GraphflowmatchingEdge::fill(Self, Double) -> Self
+pub fn GraphflowmatchingEdge::get(Self, Int32) -> Double
+pub fn GraphflowmatchingEdge::len(Self) -> Int32
+pub fn GraphflowmatchingEdge::max(Self) -> Double
+pub fn GraphflowmatchingEdge::mean(Self) -> Double
+pub fn GraphflowmatchingEdge::min(Self) -> Double
+pub fn GraphflowmatchingEdge::scale(Self, Double) -> Self
+pub fn GraphflowmatchingEdge::set(Self, Int32, Double) -> Self
+pub fn GraphflowmatchingEdge::sum(Self) -> Double
+pub fn GraphflowmatchingEdge::to_string(Self) -> String
+
+pub(all) struct GraphflowmatchingFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmatchingFrame::add(Self, Self) -> Self
+pub fn GraphflowmatchingFrame::copy(Self) -> Self
+pub fn GraphflowmatchingFrame::fill(Self, Double) -> Self
+pub fn GraphflowmatchingFrame::get(Self, Int32) -> Double
+pub fn GraphflowmatchingFrame::len(Self) -> Int32
+pub fn GraphflowmatchingFrame::max(Self) -> Double
+pub fn GraphflowmatchingFrame::mean(Self) -> Double
+pub fn GraphflowmatchingFrame::min(Self) -> Double
+pub fn GraphflowmatchingFrame::scale(Self, Double) -> Self
+pub fn GraphflowmatchingFrame::set(Self, Int32, Double) -> Self
+pub fn GraphflowmatchingFrame::sum(Self) -> Double
+pub fn GraphflowmatchingFrame::to_string(Self) -> String
+
+pub(all) struct GraphflowmatchingGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmatchingGraphN::add(Self, Self) -> Self
+pub fn GraphflowmatchingGraphN::copy(Self) -> Self
+pub fn GraphflowmatchingGraphN::fill(Self, Double) -> Self
+pub fn GraphflowmatchingGraphN::get(Self, Int32) -> Double
+pub fn GraphflowmatchingGraphN::len(Self) -> Int32
+pub fn GraphflowmatchingGraphN::max(Self) -> Double
+pub fn GraphflowmatchingGraphN::mean(Self) -> Double
+pub fn GraphflowmatchingGraphN::min(Self) -> Double
+pub fn GraphflowmatchingGraphN::scale(Self, Double) -> Self
+pub fn GraphflowmatchingGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphflowmatchingGraphN::sum(Self) -> Double
+pub fn GraphflowmatchingGraphN::to_string(Self) -> String
+
+pub(all) struct GraphflowmatchingLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmatchingLayer::add(Self, Self) -> Self
+pub fn GraphflowmatchingLayer::copy(Self) -> Self
+pub fn GraphflowmatchingLayer::fill(Self, Double) -> Self
+pub fn GraphflowmatchingLayer::get(Self, Int32) -> Double
+pub fn GraphflowmatchingLayer::len(Self) -> Int32
+pub fn GraphflowmatchingLayer::max(Self) -> Double
+pub fn GraphflowmatchingLayer::mean(Self) -> Double
+pub fn GraphflowmatchingLayer::min(Self) -> Double
+pub fn GraphflowmatchingLayer::scale(Self, Double) -> Self
+pub fn GraphflowmatchingLayer::set(Self, Int32, Double) -> Self
+pub fn GraphflowmatchingLayer::sum(Self) -> Double
+pub fn GraphflowmatchingLayer::to_string(Self) -> String
+
+pub(all) struct GraphflowmatchingMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphflowmatchingMatrix::add(Self, Self) -> Self
+pub fn GraphflowmatchingMatrix::det(Self) -> Double
+pub fn GraphflowmatchingMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphflowmatchingMatrix::multiply(Self, Self) -> Self
+pub fn GraphflowmatchingMatrix::norm(Self) -> Double
+pub fn GraphflowmatchingMatrix::scale(Self, Double) -> Self
+pub fn GraphflowmatchingMatrix::to_string(Self) -> String
+pub fn GraphflowmatchingMatrix::trace(Self) -> Double
+pub fn GraphflowmatchingMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphflowmatchingModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmatchingModel::add(Self, Self) -> Self
+pub fn GraphflowmatchingModel::copy(Self) -> Self
+pub fn GraphflowmatchingModel::fill(Self, Double) -> Self
+pub fn GraphflowmatchingModel::get(Self, Int32) -> Double
+pub fn GraphflowmatchingModel::len(Self) -> Int32
+pub fn GraphflowmatchingModel::max(Self) -> Double
+pub fn GraphflowmatchingModel::mean(Self) -> Double
+pub fn GraphflowmatchingModel::min(Self) -> Double
+pub fn GraphflowmatchingModel::scale(Self, Double) -> Self
+pub fn GraphflowmatchingModel::set(Self, Int32, Double) -> Self
+pub fn GraphflowmatchingModel::sum(Self) -> Double
+pub fn GraphflowmatchingModel::to_string(Self) -> String
+
+pub(all) struct GraphflowmatchingNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmatchingNode::add(Self, Self) -> Self
+pub fn GraphflowmatchingNode::copy(Self) -> Self
+pub fn GraphflowmatchingNode::fill(Self, Double) -> Self
+pub fn GraphflowmatchingNode::get(Self, Int32) -> Double
+pub fn GraphflowmatchingNode::len(Self) -> Int32
+pub fn GraphflowmatchingNode::max(Self) -> Double
+pub fn GraphflowmatchingNode::mean(Self) -> Double
+pub fn GraphflowmatchingNode::min(Self) -> Double
+pub fn GraphflowmatchingNode::scale(Self, Double) -> Self
+pub fn GraphflowmatchingNode::set(Self, Int32, Double) -> Self
+pub fn GraphflowmatchingNode::sum(Self) -> Double
+pub fn GraphflowmatchingNode::to_string(Self) -> String
+
+pub(all) struct GraphflowmatchingPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmatchingPath::add(Self, Self) -> Self
+pub fn GraphflowmatchingPath::copy(Self) -> Self
+pub fn GraphflowmatchingPath::fill(Self, Double) -> Self
+pub fn GraphflowmatchingPath::get(Self, Int32) -> Double
+pub fn GraphflowmatchingPath::len(Self) -> Int32
+pub fn GraphflowmatchingPath::max(Self) -> Double
+pub fn GraphflowmatchingPath::mean(Self) -> Double
+pub fn GraphflowmatchingPath::min(Self) -> Double
+pub fn GraphflowmatchingPath::scale(Self, Double) -> Self
+pub fn GraphflowmatchingPath::set(Self, Int32, Double) -> Self
+pub fn GraphflowmatchingPath::sum(Self) -> Double
+pub fn GraphflowmatchingPath::to_string(Self) -> String
+
+pub(all) struct GraphflowmatchingPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphflowmatchingPoint::add(Self, Self) -> Self
+pub fn GraphflowmatchingPoint::cross(Self, Self) -> Self
+pub fn GraphflowmatchingPoint::dist(Self, Self) -> Double
+pub fn GraphflowmatchingPoint::dot(Self, Self) -> Double
+pub fn GraphflowmatchingPoint::label(Self) -> Int32
+pub fn GraphflowmatchingPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphflowmatchingPoint::mid(Self, Self) -> Self
+pub fn GraphflowmatchingPoint::negate(Self) -> Self
+pub fn GraphflowmatchingPoint::norm(Self) -> Double
+pub fn GraphflowmatchingPoint::normalize(Self) -> Self
+pub fn GraphflowmatchingPoint::scale(Self, Double) -> Self
+pub fn GraphflowmatchingPoint::sub(Self, Self) -> Self
+pub fn GraphflowmatchingPoint::to_string(Self) -> String
+pub fn GraphflowmatchingPoint::x(Self) -> Double
+pub fn GraphflowmatchingPoint::y(Self) -> Double
+pub fn GraphflowmatchingPoint::z(Self) -> Double
+
+pub(all) struct GraphflowmatchingRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmatchingRange::add(Self, Self) -> Self
+pub fn GraphflowmatchingRange::copy(Self) -> Self
+pub fn GraphflowmatchingRange::fill(Self, Double) -> Self
+pub fn GraphflowmatchingRange::get(Self, Int32) -> Double
+pub fn GraphflowmatchingRange::len(Self) -> Int32
+pub fn GraphflowmatchingRange::max(Self) -> Double
+pub fn GraphflowmatchingRange::mean(Self) -> Double
+pub fn GraphflowmatchingRange::min(Self) -> Double
+pub fn GraphflowmatchingRange::scale(Self, Double) -> Self
+pub fn GraphflowmatchingRange::set(Self, Int32, Double) -> Self
+pub fn GraphflowmatchingRange::sum(Self) -> Double
+pub fn GraphflowmatchingRange::to_string(Self) -> String
+
+pub(all) struct GraphflowmatchingSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphflowmatchingSeries::add(Self, Self) -> Self
+pub fn GraphflowmatchingSeries::cumsum(Self) -> Self
+pub fn GraphflowmatchingSeries::len(Self) -> Int32
+pub fn GraphflowmatchingSeries::max(Self) -> Double
+pub fn GraphflowmatchingSeries::mean(Self) -> Double
+pub fn GraphflowmatchingSeries::median(Self) -> Double
+pub fn GraphflowmatchingSeries::min(Self) -> Double
+pub fn GraphflowmatchingSeries::normalize(Self) -> Self
+pub fn GraphflowmatchingSeries::range(Self) -> Double
+pub fn GraphflowmatchingSeries::scale(Self, Double) -> Self
+pub fn GraphflowmatchingSeries::std(Self) -> Double
+pub fn GraphflowmatchingSeries::sub(Self, Self) -> Self
+pub fn GraphflowmatchingSeries::sum(Self) -> Double
+pub fn GraphflowmatchingSeries::to_string(Self) -> String
+pub fn GraphflowmatchingSeries::variance(Self) -> Double
+
+pub(all) struct GraphflowmatchingSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmatchingSlice::add(Self, Self) -> Self
+pub fn GraphflowmatchingSlice::copy(Self) -> Self
+pub fn GraphflowmatchingSlice::fill(Self, Double) -> Self
+pub fn GraphflowmatchingSlice::get(Self, Int32) -> Double
+pub fn GraphflowmatchingSlice::len(Self) -> Int32
+pub fn GraphflowmatchingSlice::max(Self) -> Double
+pub fn GraphflowmatchingSlice::mean(Self) -> Double
+pub fn GraphflowmatchingSlice::min(Self) -> Double
+pub fn GraphflowmatchingSlice::scale(Self, Double) -> Self
+pub fn GraphflowmatchingSlice::set(Self, Int32, Double) -> Self
+pub fn GraphflowmatchingSlice::sum(Self) -> Double
+pub fn GraphflowmatchingSlice::to_string(Self) -> String
+
+pub(all) struct GraphflowmatchingTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmatchingTable::add(Self, Self) -> Self
+pub fn GraphflowmatchingTable::copy(Self) -> Self
+pub fn GraphflowmatchingTable::fill(Self, Double) -> Self
+pub fn GraphflowmatchingTable::get(Self, Int32) -> Double
+pub fn GraphflowmatchingTable::len(Self) -> Int32
+pub fn GraphflowmatchingTable::max(Self) -> Double
+pub fn GraphflowmatchingTable::mean(Self) -> Double
+pub fn GraphflowmatchingTable::min(Self) -> Double
+pub fn GraphflowmatchingTable::scale(Self, Double) -> Self
+pub fn GraphflowmatchingTable::set(Self, Int32, Double) -> Self
+pub fn GraphflowmatchingTable::sum(Self) -> Double
+pub fn GraphflowmatchingTable::to_string(Self) -> String
+
+pub(all) struct GraphflowmatchingVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphflowmatchingVector::add(Self, Self) -> Self
+pub fn GraphflowmatchingVector::dist(Self, Self) -> Double
+pub fn GraphflowmatchingVector::dot(Self, Self) -> Double
+pub fn GraphflowmatchingVector::norm(Self) -> Double
+pub fn GraphflowmatchingVector::normalize(Self) -> Self
+pub fn GraphflowmatchingVector::scale(Self, Double) -> Self
+pub fn GraphflowmatchingVector::sub(Self, Self) -> Self
+pub fn GraphflowmatchingVector::to_string(Self) -> String
+
+pub(all) struct GraphflowmatchingView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmatchingView::add(Self, Self) -> Self
+pub fn GraphflowmatchingView::copy(Self) -> Self
+pub fn GraphflowmatchingView::fill(Self, Double) -> Self
+pub fn GraphflowmatchingView::get(Self, Int32) -> Double
+pub fn GraphflowmatchingView::len(Self) -> Int32
+pub fn GraphflowmatchingView::max(Self) -> Double
+pub fn GraphflowmatchingView::mean(Self) -> Double
+pub fn GraphflowmatchingView::min(Self) -> Double
+pub fn GraphflowmatchingView::scale(Self, Double) -> Self
+pub fn GraphflowmatchingView::set(Self, Int32, Double) -> Self
+pub fn GraphflowmatchingView::sum(Self) -> Double
+pub fn GraphflowmatchingView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

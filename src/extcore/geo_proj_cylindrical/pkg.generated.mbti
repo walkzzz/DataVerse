@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_proj_cylindrical"
+
+// Values
+pub fn geo_proj_cylindrical_buffer_make(Int32) -> GeoprojcylindricalBuffer
+
+pub fn geo_proj_cylindrical_cluster_make(Int32) -> GeoprojcylindricalCluster
+
+pub fn geo_proj_cylindrical_cursor_make(Int32) -> GeoprojcylindricalCursor
+
+pub fn geo_proj_cylindrical_edge_make(Int32) -> GeoprojcylindricalEdge
+
+pub fn geo_proj_cylindrical_frame_make(Int32) -> GeoprojcylindricalFrame
+
+pub fn geo_proj_cylindrical_graphn_make(Int32) -> GeoprojcylindricalGraphN
+
+pub fn geo_proj_cylindrical_layer_make(Int32) -> GeoprojcylindricalLayer
+
+pub fn geo_proj_cylindrical_make_matrix(Int32, Int32, Double) -> GeoprojcylindricalMatrix
+
+pub fn geo_proj_cylindrical_make_point(Double, Double) -> GeoprojcylindricalPoint
+
+pub fn geo_proj_cylindrical_make_point3(Double, Double, Double) -> GeoprojcylindricalPoint
+
+pub fn geo_proj_cylindrical_make_series(Array[Double], String) -> GeoprojcylindricalSeries
+
+pub fn geo_proj_cylindrical_make_vector(Array[Double]) -> GeoprojcylindricalVector
+
+pub fn geo_proj_cylindrical_matrix_identity(Int32) -> GeoprojcylindricalMatrix
+
+pub fn geo_proj_cylindrical_model_make(Int32) -> GeoprojcylindricalModel
+
+pub fn geo_proj_cylindrical_node_make(Int32) -> GeoprojcylindricalNode
+
+pub fn geo_proj_cylindrical_path_make(Int32) -> GeoprojcylindricalPath
+
+pub fn geo_proj_cylindrical_range_make(Int32) -> GeoprojcylindricalRange
+
+pub fn geo_proj_cylindrical_slice_make(Int32) -> GeoprojcylindricalSlice
+
+pub fn geo_proj_cylindrical_table_make(Int32) -> GeoprojcylindricalTable
+
+pub fn geo_proj_cylindrical_vector_zero(Int32) -> GeoprojcylindricalVector
+
+pub fn geo_proj_cylindrical_view_make(Int32) -> GeoprojcylindricalView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeoprojcylindricalBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojcylindricalBuffer::add(Self, Self) -> Self
+pub fn GeoprojcylindricalBuffer::copy(Self) -> Self
+pub fn GeoprojcylindricalBuffer::fill(Self, Double) -> Self
+pub fn GeoprojcylindricalBuffer::get(Self, Int32) -> Double
+pub fn GeoprojcylindricalBuffer::len(Self) -> Int32
+pub fn GeoprojcylindricalBuffer::max(Self) -> Double
+pub fn GeoprojcylindricalBuffer::mean(Self) -> Double
+pub fn GeoprojcylindricalBuffer::min(Self) -> Double
+pub fn GeoprojcylindricalBuffer::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalBuffer::set(Self, Int32, Double) -> Self
+pub fn GeoprojcylindricalBuffer::sum(Self) -> Double
+pub fn GeoprojcylindricalBuffer::to_string(Self) -> String
+
+pub(all) struct GeoprojcylindricalCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojcylindricalCluster::add(Self, Self) -> Self
+pub fn GeoprojcylindricalCluster::copy(Self) -> Self
+pub fn GeoprojcylindricalCluster::fill(Self, Double) -> Self
+pub fn GeoprojcylindricalCluster::get(Self, Int32) -> Double
+pub fn GeoprojcylindricalCluster::len(Self) -> Int32
+pub fn GeoprojcylindricalCluster::max(Self) -> Double
+pub fn GeoprojcylindricalCluster::mean(Self) -> Double
+pub fn GeoprojcylindricalCluster::min(Self) -> Double
+pub fn GeoprojcylindricalCluster::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalCluster::set(Self, Int32, Double) -> Self
+pub fn GeoprojcylindricalCluster::sum(Self) -> Double
+pub fn GeoprojcylindricalCluster::to_string(Self) -> String
+
+pub(all) struct GeoprojcylindricalCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojcylindricalCursor::add(Self, Self) -> Self
+pub fn GeoprojcylindricalCursor::copy(Self) -> Self
+pub fn GeoprojcylindricalCursor::fill(Self, Double) -> Self
+pub fn GeoprojcylindricalCursor::get(Self, Int32) -> Double
+pub fn GeoprojcylindricalCursor::len(Self) -> Int32
+pub fn GeoprojcylindricalCursor::max(Self) -> Double
+pub fn GeoprojcylindricalCursor::mean(Self) -> Double
+pub fn GeoprojcylindricalCursor::min(Self) -> Double
+pub fn GeoprojcylindricalCursor::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalCursor::set(Self, Int32, Double) -> Self
+pub fn GeoprojcylindricalCursor::sum(Self) -> Double
+pub fn GeoprojcylindricalCursor::to_string(Self) -> String
+
+pub(all) struct GeoprojcylindricalEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojcylindricalEdge::add(Self, Self) -> Self
+pub fn GeoprojcylindricalEdge::copy(Self) -> Self
+pub fn GeoprojcylindricalEdge::fill(Self, Double) -> Self
+pub fn GeoprojcylindricalEdge::get(Self, Int32) -> Double
+pub fn GeoprojcylindricalEdge::len(Self) -> Int32
+pub fn GeoprojcylindricalEdge::max(Self) -> Double
+pub fn GeoprojcylindricalEdge::mean(Self) -> Double
+pub fn GeoprojcylindricalEdge::min(Self) -> Double
+pub fn GeoprojcylindricalEdge::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalEdge::set(Self, Int32, Double) -> Self
+pub fn GeoprojcylindricalEdge::sum(Self) -> Double
+pub fn GeoprojcylindricalEdge::to_string(Self) -> String
+
+pub(all) struct GeoprojcylindricalFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojcylindricalFrame::add(Self, Self) -> Self
+pub fn GeoprojcylindricalFrame::copy(Self) -> Self
+pub fn GeoprojcylindricalFrame::fill(Self, Double) -> Self
+pub fn GeoprojcylindricalFrame::get(Self, Int32) -> Double
+pub fn GeoprojcylindricalFrame::len(Self) -> Int32
+pub fn GeoprojcylindricalFrame::max(Self) -> Double
+pub fn GeoprojcylindricalFrame::mean(Self) -> Double
+pub fn GeoprojcylindricalFrame::min(Self) -> Double
+pub fn GeoprojcylindricalFrame::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalFrame::set(Self, Int32, Double) -> Self
+pub fn GeoprojcylindricalFrame::sum(Self) -> Double
+pub fn GeoprojcylindricalFrame::to_string(Self) -> String
+
+pub(all) struct GeoprojcylindricalGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojcylindricalGraphN::add(Self, Self) -> Self
+pub fn GeoprojcylindricalGraphN::copy(Self) -> Self
+pub fn GeoprojcylindricalGraphN::fill(Self, Double) -> Self
+pub fn GeoprojcylindricalGraphN::get(Self, Int32) -> Double
+pub fn GeoprojcylindricalGraphN::len(Self) -> Int32
+pub fn GeoprojcylindricalGraphN::max(Self) -> Double
+pub fn GeoprojcylindricalGraphN::mean(Self) -> Double
+pub fn GeoprojcylindricalGraphN::min(Self) -> Double
+pub fn GeoprojcylindricalGraphN::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalGraphN::set(Self, Int32, Double) -> Self
+pub fn GeoprojcylindricalGraphN::sum(Self) -> Double
+pub fn GeoprojcylindricalGraphN::to_string(Self) -> String
+
+pub(all) struct GeoprojcylindricalLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojcylindricalLayer::add(Self, Self) -> Self
+pub fn GeoprojcylindricalLayer::copy(Self) -> Self
+pub fn GeoprojcylindricalLayer::fill(Self, Double) -> Self
+pub fn GeoprojcylindricalLayer::get(Self, Int32) -> Double
+pub fn GeoprojcylindricalLayer::len(Self) -> Int32
+pub fn GeoprojcylindricalLayer::max(Self) -> Double
+pub fn GeoprojcylindricalLayer::mean(Self) -> Double
+pub fn GeoprojcylindricalLayer::min(Self) -> Double
+pub fn GeoprojcylindricalLayer::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalLayer::set(Self, Int32, Double) -> Self
+pub fn GeoprojcylindricalLayer::sum(Self) -> Double
+pub fn GeoprojcylindricalLayer::to_string(Self) -> String
+
+pub(all) struct GeoprojcylindricalMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeoprojcylindricalMatrix::add(Self, Self) -> Self
+pub fn GeoprojcylindricalMatrix::det(Self) -> Double
+pub fn GeoprojcylindricalMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeoprojcylindricalMatrix::multiply(Self, Self) -> Self
+pub fn GeoprojcylindricalMatrix::norm(Self) -> Double
+pub fn GeoprojcylindricalMatrix::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalMatrix::to_string(Self) -> String
+pub fn GeoprojcylindricalMatrix::trace(Self) -> Double
+pub fn GeoprojcylindricalMatrix::transpose(Self) -> Self
+
+pub(all) struct GeoprojcylindricalModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojcylindricalModel::add(Self, Self) -> Self
+pub fn GeoprojcylindricalModel::copy(Self) -> Self
+pub fn GeoprojcylindricalModel::fill(Self, Double) -> Self
+pub fn GeoprojcylindricalModel::get(Self, Int32) -> Double
+pub fn GeoprojcylindricalModel::len(Self) -> Int32
+pub fn GeoprojcylindricalModel::max(Self) -> Double
+pub fn GeoprojcylindricalModel::mean(Self) -> Double
+pub fn GeoprojcylindricalModel::min(Self) -> Double
+pub fn GeoprojcylindricalModel::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalModel::set(Self, Int32, Double) -> Self
+pub fn GeoprojcylindricalModel::sum(Self) -> Double
+pub fn GeoprojcylindricalModel::to_string(Self) -> String
+
+pub(all) struct GeoprojcylindricalNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojcylindricalNode::add(Self, Self) -> Self
+pub fn GeoprojcylindricalNode::copy(Self) -> Self
+pub fn GeoprojcylindricalNode::fill(Self, Double) -> Self
+pub fn GeoprojcylindricalNode::get(Self, Int32) -> Double
+pub fn GeoprojcylindricalNode::len(Self) -> Int32
+pub fn GeoprojcylindricalNode::max(Self) -> Double
+pub fn GeoprojcylindricalNode::mean(Self) -> Double
+pub fn GeoprojcylindricalNode::min(Self) -> Double
+pub fn GeoprojcylindricalNode::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalNode::set(Self, Int32, Double) -> Self
+pub fn GeoprojcylindricalNode::sum(Self) -> Double
+pub fn GeoprojcylindricalNode::to_string(Self) -> String
+
+pub(all) struct GeoprojcylindricalPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojcylindricalPath::add(Self, Self) -> Self
+pub fn GeoprojcylindricalPath::copy(Self) -> Self
+pub fn GeoprojcylindricalPath::fill(Self, Double) -> Self
+pub fn GeoprojcylindricalPath::get(Self, Int32) -> Double
+pub fn GeoprojcylindricalPath::len(Self) -> Int32
+pub fn GeoprojcylindricalPath::max(Self) -> Double
+pub fn GeoprojcylindricalPath::mean(Self) -> Double
+pub fn GeoprojcylindricalPath::min(Self) -> Double
+pub fn GeoprojcylindricalPath::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalPath::set(Self, Int32, Double) -> Self
+pub fn GeoprojcylindricalPath::sum(Self) -> Double
+pub fn GeoprojcylindricalPath::to_string(Self) -> String
+
+pub(all) struct GeoprojcylindricalPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeoprojcylindricalPoint::add(Self, Self) -> Self
+pub fn GeoprojcylindricalPoint::cross(Self, Self) -> Self
+pub fn GeoprojcylindricalPoint::dist(Self, Self) -> Double
+pub fn GeoprojcylindricalPoint::dot(Self, Self) -> Double
+pub fn GeoprojcylindricalPoint::label(Self) -> Int32
+pub fn GeoprojcylindricalPoint::lerp(Self, Self, Double) -> Self
+pub fn GeoprojcylindricalPoint::mid(Self, Self) -> Self
+pub fn GeoprojcylindricalPoint::negate(Self) -> Self
+pub fn GeoprojcylindricalPoint::norm(Self) -> Double
+pub fn GeoprojcylindricalPoint::normalize(Self) -> Self
+pub fn GeoprojcylindricalPoint::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalPoint::sub(Self, Self) -> Self
+pub fn GeoprojcylindricalPoint::to_string(Self) -> String
+pub fn GeoprojcylindricalPoint::x(Self) -> Double
+pub fn GeoprojcylindricalPoint::y(Self) -> Double
+pub fn GeoprojcylindricalPoint::z(Self) -> Double
+
+pub(all) struct GeoprojcylindricalRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojcylindricalRange::add(Self, Self) -> Self
+pub fn GeoprojcylindricalRange::copy(Self) -> Self
+pub fn GeoprojcylindricalRange::fill(Self, Double) -> Self
+pub fn GeoprojcylindricalRange::get(Self, Int32) -> Double
+pub fn GeoprojcylindricalRange::len(Self) -> Int32
+pub fn GeoprojcylindricalRange::max(Self) -> Double
+pub fn GeoprojcylindricalRange::mean(Self) -> Double
+pub fn GeoprojcylindricalRange::min(Self) -> Double
+pub fn GeoprojcylindricalRange::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalRange::set(Self, Int32, Double) -> Self
+pub fn GeoprojcylindricalRange::sum(Self) -> Double
+pub fn GeoprojcylindricalRange::to_string(Self) -> String
+
+pub(all) struct GeoprojcylindricalSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeoprojcylindricalSeries::add(Self, Self) -> Self
+pub fn GeoprojcylindricalSeries::cumsum(Self) -> Self
+pub fn GeoprojcylindricalSeries::len(Self) -> Int32
+pub fn GeoprojcylindricalSeries::max(Self) -> Double
+pub fn GeoprojcylindricalSeries::mean(Self) -> Double
+pub fn GeoprojcylindricalSeries::median(Self) -> Double
+pub fn GeoprojcylindricalSeries::min(Self) -> Double
+pub fn GeoprojcylindricalSeries::normalize(Self) -> Self
+pub fn GeoprojcylindricalSeries::range(Self) -> Double
+pub fn GeoprojcylindricalSeries::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalSeries::std(Self) -> Double
+pub fn GeoprojcylindricalSeries::sub(Self, Self) -> Self
+pub fn GeoprojcylindricalSeries::sum(Self) -> Double
+pub fn GeoprojcylindricalSeries::to_string(Self) -> String
+pub fn GeoprojcylindricalSeries::variance(Self) -> Double
+
+pub(all) struct GeoprojcylindricalSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojcylindricalSlice::add(Self, Self) -> Self
+pub fn GeoprojcylindricalSlice::copy(Self) -> Self
+pub fn GeoprojcylindricalSlice::fill(Self, Double) -> Self
+pub fn GeoprojcylindricalSlice::get(Self, Int32) -> Double
+pub fn GeoprojcylindricalSlice::len(Self) -> Int32
+pub fn GeoprojcylindricalSlice::max(Self) -> Double
+pub fn GeoprojcylindricalSlice::mean(Self) -> Double
+pub fn GeoprojcylindricalSlice::min(Self) -> Double
+pub fn GeoprojcylindricalSlice::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalSlice::set(Self, Int32, Double) -> Self
+pub fn GeoprojcylindricalSlice::sum(Self) -> Double
+pub fn GeoprojcylindricalSlice::to_string(Self) -> String
+
+pub(all) struct GeoprojcylindricalTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojcylindricalTable::add(Self, Self) -> Self
+pub fn GeoprojcylindricalTable::copy(Self) -> Self
+pub fn GeoprojcylindricalTable::fill(Self, Double) -> Self
+pub fn GeoprojcylindricalTable::get(Self, Int32) -> Double
+pub fn GeoprojcylindricalTable::len(Self) -> Int32
+pub fn GeoprojcylindricalTable::max(Self) -> Double
+pub fn GeoprojcylindricalTable::mean(Self) -> Double
+pub fn GeoprojcylindricalTable::min(Self) -> Double
+pub fn GeoprojcylindricalTable::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalTable::set(Self, Int32, Double) -> Self
+pub fn GeoprojcylindricalTable::sum(Self) -> Double
+pub fn GeoprojcylindricalTable::to_string(Self) -> String
+
+pub(all) struct GeoprojcylindricalVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeoprojcylindricalVector::add(Self, Self) -> Self
+pub fn GeoprojcylindricalVector::dist(Self, Self) -> Double
+pub fn GeoprojcylindricalVector::dot(Self, Self) -> Double
+pub fn GeoprojcylindricalVector::norm(Self) -> Double
+pub fn GeoprojcylindricalVector::normalize(Self) -> Self
+pub fn GeoprojcylindricalVector::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalVector::sub(Self, Self) -> Self
+pub fn GeoprojcylindricalVector::to_string(Self) -> String
+
+pub(all) struct GeoprojcylindricalView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeoprojcylindricalView::add(Self, Self) -> Self
+pub fn GeoprojcylindricalView::copy(Self) -> Self
+pub fn GeoprojcylindricalView::fill(Self, Double) -> Self
+pub fn GeoprojcylindricalView::get(Self, Int32) -> Double
+pub fn GeoprojcylindricalView::len(Self) -> Int32
+pub fn GeoprojcylindricalView::max(Self) -> Double
+pub fn GeoprojcylindricalView::mean(Self) -> Double
+pub fn GeoprojcylindricalView::min(Self) -> Double
+pub fn GeoprojcylindricalView::scale(Self, Double) -> Self
+pub fn GeoprojcylindricalView::set(Self, Int32, Double) -> Self
+pub fn GeoprojcylindricalView::sum(Self) -> Double
+pub fn GeoprojcylindricalView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

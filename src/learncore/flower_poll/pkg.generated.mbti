@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/flower_poll"
+
+// Values
+pub fn flower_poll_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn flower_poll_corr(Array[Double], Array[Double]) -> Double
+
+pub fn flower_poll_cov(Array[Double], Array[Double]) -> Double
+
+pub fn flower_poll_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn flower_poll_mae(Array[Double], Array[Double]) -> Double
+
+pub fn flower_poll_make_labeled_point(Double, Double, Int32) -> Flower_pollPoint
+
+pub fn flower_poll_make_matrix(Int32, Int32, Double) -> Flower_pollMatrix
+
+pub fn flower_poll_make_point(Double, Double) -> Flower_pollPoint
+
+pub fn flower_poll_make_series(Array[Double], String) -> Flower_pollSeries
+
+pub fn flower_poll_make_vector(Array[Double]) -> Flower_pollVector
+
+pub fn flower_poll_matrix_add(Flower_pollMatrix, Flower_pollMatrix) -> Flower_pollMatrix
+
+pub fn flower_poll_matrix_get(Flower_pollMatrix, Int32, Int32) -> Double
+
+pub fn flower_poll_matrix_identity(Int32) -> Flower_pollMatrix
+
+pub fn flower_poll_matrix_multiply(Flower_pollMatrix, Flower_pollMatrix) -> Flower_pollMatrix
+
+pub fn flower_poll_matrix_norm(Flower_pollMatrix) -> Double
+
+pub fn flower_poll_matrix_scale(Flower_pollMatrix, Double) -> Flower_pollMatrix
+
+pub fn flower_poll_matrix_to_string(Flower_pollMatrix) -> String
+
+pub fn flower_poll_matrix_trace(Flower_pollMatrix) -> Double
+
+pub fn flower_poll_matrix_transpose(Flower_pollMatrix) -> Flower_pollMatrix
+
+pub fn flower_poll_mse(Array[Double], Array[Double]) -> Double
+
+pub fn flower_poll_point_add(Flower_pollPoint, Flower_pollPoint) -> Flower_pollPoint
+
+pub fn flower_poll_point_dist(Flower_pollPoint, Flower_pollPoint) -> Double
+
+pub fn flower_poll_point_dot(Flower_pollPoint, Flower_pollPoint) -> Double
+
+pub fn flower_poll_point_label(Flower_pollPoint) -> Int32
+
+pub fn flower_poll_point_norm(Flower_pollPoint) -> Double
+
+pub fn flower_poll_point_scale(Flower_pollPoint, Double) -> Flower_pollPoint
+
+pub fn flower_poll_point_sub(Flower_pollPoint, Flower_pollPoint) -> Flower_pollPoint
+
+pub fn flower_poll_point_to_string(Flower_pollPoint) -> String
+
+pub fn flower_poll_point_x(Flower_pollPoint) -> Double
+
+pub fn flower_poll_point_y(Flower_pollPoint) -> Double
+
+pub fn flower_poll_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn flower_poll_r2(Array[Double], Array[Double]) -> Double
+
+pub fn flower_poll_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn flower_poll_series_add(Flower_pollSeries, Flower_pollSeries) -> Flower_pollSeries
+
+pub fn flower_poll_series_len(Flower_pollSeries) -> Int32
+
+pub fn flower_poll_series_max(Flower_pollSeries) -> Double
+
+pub fn flower_poll_series_mean(Flower_pollSeries) -> Double
+
+pub fn flower_poll_series_min(Flower_pollSeries) -> Double
+
+pub fn flower_poll_series_scale(Flower_pollSeries, Double) -> Flower_pollSeries
+
+pub fn flower_poll_series_std(Flower_pollSeries) -> Double
+
+pub fn flower_poll_series_sum(Flower_pollSeries) -> Double
+
+pub fn flower_poll_series_to_string(Flower_pollSeries) -> String
+
+pub fn flower_poll_series_var(Flower_pollSeries) -> Double
+
+pub fn flower_poll_std(Array[Double]) -> Double
+
+pub fn flower_poll_var(Array[Double]) -> Double
+
+pub fn flower_poll_vector_add(Flower_pollVector, Flower_pollVector) -> Flower_pollVector
+
+pub fn flower_poll_vector_dist(Flower_pollVector, Flower_pollVector) -> Double
+
+pub fn flower_poll_vector_dot(Flower_pollVector, Flower_pollVector) -> Double
+
+pub fn flower_poll_vector_norm(Flower_pollVector) -> Double
+
+pub fn flower_poll_vector_normalize(Flower_pollVector) -> Flower_pollVector
+
+pub fn flower_poll_vector_scale(Flower_pollVector, Double) -> Flower_pollVector
+
+pub fn flower_poll_vector_sub(Flower_pollVector, Flower_pollVector) -> Flower_pollVector
+
+pub fn flower_poll_vector_to_string(Flower_pollVector) -> String
+
+pub fn flower_poll_vector_zero(Int32) -> Flower_pollVector
+
+// Errors
+
+// Types and methods
+pub struct Flower_pollMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Flower_pollPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Flower_pollSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Flower_pollVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

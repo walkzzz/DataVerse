@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/part_store"
+
+// Values
+pub fn part_store_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn part_store_corr(Array[Double], Array[Double]) -> Double
+
+pub fn part_store_cov(Array[Double], Array[Double]) -> Double
+
+pub fn part_store_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn part_store_mae(Array[Double], Array[Double]) -> Double
+
+pub fn part_store_make_labeled_point(Double, Double, Int32) -> Part_storePoint
+
+pub fn part_store_make_matrix(Int32, Int32, Double) -> Part_storeMatrix
+
+pub fn part_store_make_point(Double, Double) -> Part_storePoint
+
+pub fn part_store_make_series(Array[Double], String) -> Part_storeSeries
+
+pub fn part_store_make_vector(Array[Double]) -> Part_storeVector
+
+pub fn part_store_matrix_add(Part_storeMatrix, Part_storeMatrix) -> Part_storeMatrix
+
+pub fn part_store_matrix_get(Part_storeMatrix, Int32, Int32) -> Double
+
+pub fn part_store_matrix_identity(Int32) -> Part_storeMatrix
+
+pub fn part_store_matrix_multiply(Part_storeMatrix, Part_storeMatrix) -> Part_storeMatrix
+
+pub fn part_store_matrix_norm(Part_storeMatrix) -> Double
+
+pub fn part_store_matrix_scale(Part_storeMatrix, Double) -> Part_storeMatrix
+
+pub fn part_store_matrix_to_string(Part_storeMatrix) -> String
+
+pub fn part_store_matrix_trace(Part_storeMatrix) -> Double
+
+pub fn part_store_matrix_transpose(Part_storeMatrix) -> Part_storeMatrix
+
+pub fn part_store_mse(Array[Double], Array[Double]) -> Double
+
+pub fn part_store_point_add(Part_storePoint, Part_storePoint) -> Part_storePoint
+
+pub fn part_store_point_dist(Part_storePoint, Part_storePoint) -> Double
+
+pub fn part_store_point_dot(Part_storePoint, Part_storePoint) -> Double
+
+pub fn part_store_point_label(Part_storePoint) -> Int32
+
+pub fn part_store_point_norm(Part_storePoint) -> Double
+
+pub fn part_store_point_scale(Part_storePoint, Double) -> Part_storePoint
+
+pub fn part_store_point_sub(Part_storePoint, Part_storePoint) -> Part_storePoint
+
+pub fn part_store_point_to_string(Part_storePoint) -> String
+
+pub fn part_store_point_x(Part_storePoint) -> Double
+
+pub fn part_store_point_y(Part_storePoint) -> Double
+
+pub fn part_store_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn part_store_r2(Array[Double], Array[Double]) -> Double
+
+pub fn part_store_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn part_store_series_add(Part_storeSeries, Part_storeSeries) -> Part_storeSeries
+
+pub fn part_store_series_len(Part_storeSeries) -> Int32
+
+pub fn part_store_series_max(Part_storeSeries) -> Double
+
+pub fn part_store_series_mean(Part_storeSeries) -> Double
+
+pub fn part_store_series_min(Part_storeSeries) -> Double
+
+pub fn part_store_series_scale(Part_storeSeries, Double) -> Part_storeSeries
+
+pub fn part_store_series_std(Part_storeSeries) -> Double
+
+pub fn part_store_series_sum(Part_storeSeries) -> Double
+
+pub fn part_store_series_to_string(Part_storeSeries) -> String
+
+pub fn part_store_series_var(Part_storeSeries) -> Double
+
+pub fn part_store_std(Array[Double]) -> Double
+
+pub fn part_store_var(Array[Double]) -> Double
+
+pub fn part_store_vector_add(Part_storeVector, Part_storeVector) -> Part_storeVector
+
+pub fn part_store_vector_dist(Part_storeVector, Part_storeVector) -> Double
+
+pub fn part_store_vector_dot(Part_storeVector, Part_storeVector) -> Double
+
+pub fn part_store_vector_norm(Part_storeVector) -> Double
+
+pub fn part_store_vector_normalize(Part_storeVector) -> Part_storeVector
+
+pub fn part_store_vector_scale(Part_storeVector, Double) -> Part_storeVector
+
+pub fn part_store_vector_sub(Part_storeVector, Part_storeVector) -> Part_storeVector
+
+pub fn part_store_vector_to_string(Part_storeVector) -> String
+
+pub fn part_store_vector_zero(Int32) -> Part_storeVector
+
+// Errors
+
+// Types and methods
+pub struct Part_storeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Part_storePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Part_storeSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Part_storeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

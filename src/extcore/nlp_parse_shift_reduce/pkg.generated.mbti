@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_parse_shift_reduce"
+
+// Values
+pub fn nlp_parse_shift_reduce_buffer_make(Int32) -> NlpparseshiftreduceBuffer
+
+pub fn nlp_parse_shift_reduce_cluster_make(Int32) -> NlpparseshiftreduceCluster
+
+pub fn nlp_parse_shift_reduce_cursor_make(Int32) -> NlpparseshiftreduceCursor
+
+pub fn nlp_parse_shift_reduce_edge_make(Int32) -> NlpparseshiftreduceEdge
+
+pub fn nlp_parse_shift_reduce_frame_make(Int32) -> NlpparseshiftreduceFrame
+
+pub fn nlp_parse_shift_reduce_graphn_make(Int32) -> NlpparseshiftreduceGraphN
+
+pub fn nlp_parse_shift_reduce_layer_make(Int32) -> NlpparseshiftreduceLayer
+
+pub fn nlp_parse_shift_reduce_make_matrix(Int32, Int32, Double) -> NlpparseshiftreduceMatrix
+
+pub fn nlp_parse_shift_reduce_make_point(Double, Double) -> NlpparseshiftreducePoint
+
+pub fn nlp_parse_shift_reduce_make_point3(Double, Double, Double) -> NlpparseshiftreducePoint
+
+pub fn nlp_parse_shift_reduce_make_series(Array[Double], String) -> NlpparseshiftreduceSeries
+
+pub fn nlp_parse_shift_reduce_make_vector(Array[Double]) -> NlpparseshiftreduceVector
+
+pub fn nlp_parse_shift_reduce_matrix_identity(Int32) -> NlpparseshiftreduceMatrix
+
+pub fn nlp_parse_shift_reduce_model_make(Int32) -> NlpparseshiftreduceModel
+
+pub fn nlp_parse_shift_reduce_node_make(Int32) -> NlpparseshiftreduceNode
+
+pub fn nlp_parse_shift_reduce_path_make(Int32) -> NlpparseshiftreducePath
+
+pub fn nlp_parse_shift_reduce_range_make(Int32) -> NlpparseshiftreduceRange
+
+pub fn nlp_parse_shift_reduce_slice_make(Int32) -> NlpparseshiftreduceSlice
+
+pub fn nlp_parse_shift_reduce_table_make(Int32) -> NlpparseshiftreduceTable
+
+pub fn nlp_parse_shift_reduce_vector_zero(Int32) -> NlpparseshiftreduceVector
+
+pub fn nlp_parse_shift_reduce_view_make(Int32) -> NlpparseshiftreduceView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlpparseshiftreduceBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseshiftreduceBuffer::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceBuffer::copy(Self) -> Self
+pub fn NlpparseshiftreduceBuffer::fill(Self, Double) -> Self
+pub fn NlpparseshiftreduceBuffer::get(Self, Int32) -> Double
+pub fn NlpparseshiftreduceBuffer::len(Self) -> Int32
+pub fn NlpparseshiftreduceBuffer::max(Self) -> Double
+pub fn NlpparseshiftreduceBuffer::mean(Self) -> Double
+pub fn NlpparseshiftreduceBuffer::min(Self) -> Double
+pub fn NlpparseshiftreduceBuffer::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceBuffer::set(Self, Int32, Double) -> Self
+pub fn NlpparseshiftreduceBuffer::sum(Self) -> Double
+pub fn NlpparseshiftreduceBuffer::to_string(Self) -> String
+
+pub(all) struct NlpparseshiftreduceCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseshiftreduceCluster::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceCluster::copy(Self) -> Self
+pub fn NlpparseshiftreduceCluster::fill(Self, Double) -> Self
+pub fn NlpparseshiftreduceCluster::get(Self, Int32) -> Double
+pub fn NlpparseshiftreduceCluster::len(Self) -> Int32
+pub fn NlpparseshiftreduceCluster::max(Self) -> Double
+pub fn NlpparseshiftreduceCluster::mean(Self) -> Double
+pub fn NlpparseshiftreduceCluster::min(Self) -> Double
+pub fn NlpparseshiftreduceCluster::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceCluster::set(Self, Int32, Double) -> Self
+pub fn NlpparseshiftreduceCluster::sum(Self) -> Double
+pub fn NlpparseshiftreduceCluster::to_string(Self) -> String
+
+pub(all) struct NlpparseshiftreduceCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseshiftreduceCursor::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceCursor::copy(Self) -> Self
+pub fn NlpparseshiftreduceCursor::fill(Self, Double) -> Self
+pub fn NlpparseshiftreduceCursor::get(Self, Int32) -> Double
+pub fn NlpparseshiftreduceCursor::len(Self) -> Int32
+pub fn NlpparseshiftreduceCursor::max(Self) -> Double
+pub fn NlpparseshiftreduceCursor::mean(Self) -> Double
+pub fn NlpparseshiftreduceCursor::min(Self) -> Double
+pub fn NlpparseshiftreduceCursor::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceCursor::set(Self, Int32, Double) -> Self
+pub fn NlpparseshiftreduceCursor::sum(Self) -> Double
+pub fn NlpparseshiftreduceCursor::to_string(Self) -> String
+
+pub(all) struct NlpparseshiftreduceEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseshiftreduceEdge::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceEdge::copy(Self) -> Self
+pub fn NlpparseshiftreduceEdge::fill(Self, Double) -> Self
+pub fn NlpparseshiftreduceEdge::get(Self, Int32) -> Double
+pub fn NlpparseshiftreduceEdge::len(Self) -> Int32
+pub fn NlpparseshiftreduceEdge::max(Self) -> Double
+pub fn NlpparseshiftreduceEdge::mean(Self) -> Double
+pub fn NlpparseshiftreduceEdge::min(Self) -> Double
+pub fn NlpparseshiftreduceEdge::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceEdge::set(Self, Int32, Double) -> Self
+pub fn NlpparseshiftreduceEdge::sum(Self) -> Double
+pub fn NlpparseshiftreduceEdge::to_string(Self) -> String
+
+pub(all) struct NlpparseshiftreduceFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseshiftreduceFrame::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceFrame::copy(Self) -> Self
+pub fn NlpparseshiftreduceFrame::fill(Self, Double) -> Self
+pub fn NlpparseshiftreduceFrame::get(Self, Int32) -> Double
+pub fn NlpparseshiftreduceFrame::len(Self) -> Int32
+pub fn NlpparseshiftreduceFrame::max(Self) -> Double
+pub fn NlpparseshiftreduceFrame::mean(Self) -> Double
+pub fn NlpparseshiftreduceFrame::min(Self) -> Double
+pub fn NlpparseshiftreduceFrame::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceFrame::set(Self, Int32, Double) -> Self
+pub fn NlpparseshiftreduceFrame::sum(Self) -> Double
+pub fn NlpparseshiftreduceFrame::to_string(Self) -> String
+
+pub(all) struct NlpparseshiftreduceGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseshiftreduceGraphN::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceGraphN::copy(Self) -> Self
+pub fn NlpparseshiftreduceGraphN::fill(Self, Double) -> Self
+pub fn NlpparseshiftreduceGraphN::get(Self, Int32) -> Double
+pub fn NlpparseshiftreduceGraphN::len(Self) -> Int32
+pub fn NlpparseshiftreduceGraphN::max(Self) -> Double
+pub fn NlpparseshiftreduceGraphN::mean(Self) -> Double
+pub fn NlpparseshiftreduceGraphN::min(Self) -> Double
+pub fn NlpparseshiftreduceGraphN::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceGraphN::set(Self, Int32, Double) -> Self
+pub fn NlpparseshiftreduceGraphN::sum(Self) -> Double
+pub fn NlpparseshiftreduceGraphN::to_string(Self) -> String
+
+pub(all) struct NlpparseshiftreduceLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseshiftreduceLayer::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceLayer::copy(Self) -> Self
+pub fn NlpparseshiftreduceLayer::fill(Self, Double) -> Self
+pub fn NlpparseshiftreduceLayer::get(Self, Int32) -> Double
+pub fn NlpparseshiftreduceLayer::len(Self) -> Int32
+pub fn NlpparseshiftreduceLayer::max(Self) -> Double
+pub fn NlpparseshiftreduceLayer::mean(Self) -> Double
+pub fn NlpparseshiftreduceLayer::min(Self) -> Double
+pub fn NlpparseshiftreduceLayer::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceLayer::set(Self, Int32, Double) -> Self
+pub fn NlpparseshiftreduceLayer::sum(Self) -> Double
+pub fn NlpparseshiftreduceLayer::to_string(Self) -> String
+
+pub(all) struct NlpparseshiftreduceMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlpparseshiftreduceMatrix::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceMatrix::det(Self) -> Double
+pub fn NlpparseshiftreduceMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlpparseshiftreduceMatrix::multiply(Self, Self) -> Self
+pub fn NlpparseshiftreduceMatrix::norm(Self) -> Double
+pub fn NlpparseshiftreduceMatrix::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceMatrix::to_string(Self) -> String
+pub fn NlpparseshiftreduceMatrix::trace(Self) -> Double
+pub fn NlpparseshiftreduceMatrix::transpose(Self) -> Self
+
+pub(all) struct NlpparseshiftreduceModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseshiftreduceModel::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceModel::copy(Self) -> Self
+pub fn NlpparseshiftreduceModel::fill(Self, Double) -> Self
+pub fn NlpparseshiftreduceModel::get(Self, Int32) -> Double
+pub fn NlpparseshiftreduceModel::len(Self) -> Int32
+pub fn NlpparseshiftreduceModel::max(Self) -> Double
+pub fn NlpparseshiftreduceModel::mean(Self) -> Double
+pub fn NlpparseshiftreduceModel::min(Self) -> Double
+pub fn NlpparseshiftreduceModel::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceModel::set(Self, Int32, Double) -> Self
+pub fn NlpparseshiftreduceModel::sum(Self) -> Double
+pub fn NlpparseshiftreduceModel::to_string(Self) -> String
+
+pub(all) struct NlpparseshiftreduceNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseshiftreduceNode::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceNode::copy(Self) -> Self
+pub fn NlpparseshiftreduceNode::fill(Self, Double) -> Self
+pub fn NlpparseshiftreduceNode::get(Self, Int32) -> Double
+pub fn NlpparseshiftreduceNode::len(Self) -> Int32
+pub fn NlpparseshiftreduceNode::max(Self) -> Double
+pub fn NlpparseshiftreduceNode::mean(Self) -> Double
+pub fn NlpparseshiftreduceNode::min(Self) -> Double
+pub fn NlpparseshiftreduceNode::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceNode::set(Self, Int32, Double) -> Self
+pub fn NlpparseshiftreduceNode::sum(Self) -> Double
+pub fn NlpparseshiftreduceNode::to_string(Self) -> String
+
+pub(all) struct NlpparseshiftreducePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseshiftreducePath::add(Self, Self) -> Self
+pub fn NlpparseshiftreducePath::copy(Self) -> Self
+pub fn NlpparseshiftreducePath::fill(Self, Double) -> Self
+pub fn NlpparseshiftreducePath::get(Self, Int32) -> Double
+pub fn NlpparseshiftreducePath::len(Self) -> Int32
+pub fn NlpparseshiftreducePath::max(Self) -> Double
+pub fn NlpparseshiftreducePath::mean(Self) -> Double
+pub fn NlpparseshiftreducePath::min(Self) -> Double
+pub fn NlpparseshiftreducePath::scale(Self, Double) -> Self
+pub fn NlpparseshiftreducePath::set(Self, Int32, Double) -> Self
+pub fn NlpparseshiftreducePath::sum(Self) -> Double
+pub fn NlpparseshiftreducePath::to_string(Self) -> String
+
+pub(all) struct NlpparseshiftreducePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlpparseshiftreducePoint::add(Self, Self) -> Self
+pub fn NlpparseshiftreducePoint::cross(Self, Self) -> Self
+pub fn NlpparseshiftreducePoint::dist(Self, Self) -> Double
+pub fn NlpparseshiftreducePoint::dot(Self, Self) -> Double
+pub fn NlpparseshiftreducePoint::label(Self) -> Int32
+pub fn NlpparseshiftreducePoint::lerp(Self, Self, Double) -> Self
+pub fn NlpparseshiftreducePoint::mid(Self, Self) -> Self
+pub fn NlpparseshiftreducePoint::negate(Self) -> Self
+pub fn NlpparseshiftreducePoint::norm(Self) -> Double
+pub fn NlpparseshiftreducePoint::normalize(Self) -> Self
+pub fn NlpparseshiftreducePoint::scale(Self, Double) -> Self
+pub fn NlpparseshiftreducePoint::sub(Self, Self) -> Self
+pub fn NlpparseshiftreducePoint::to_string(Self) -> String
+pub fn NlpparseshiftreducePoint::x(Self) -> Double
+pub fn NlpparseshiftreducePoint::y(Self) -> Double
+pub fn NlpparseshiftreducePoint::z(Self) -> Double
+
+pub(all) struct NlpparseshiftreduceRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseshiftreduceRange::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceRange::copy(Self) -> Self
+pub fn NlpparseshiftreduceRange::fill(Self, Double) -> Self
+pub fn NlpparseshiftreduceRange::get(Self, Int32) -> Double
+pub fn NlpparseshiftreduceRange::len(Self) -> Int32
+pub fn NlpparseshiftreduceRange::max(Self) -> Double
+pub fn NlpparseshiftreduceRange::mean(Self) -> Double
+pub fn NlpparseshiftreduceRange::min(Self) -> Double
+pub fn NlpparseshiftreduceRange::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceRange::set(Self, Int32, Double) -> Self
+pub fn NlpparseshiftreduceRange::sum(Self) -> Double
+pub fn NlpparseshiftreduceRange::to_string(Self) -> String
+
+pub(all) struct NlpparseshiftreduceSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlpparseshiftreduceSeries::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceSeries::cumsum(Self) -> Self
+pub fn NlpparseshiftreduceSeries::len(Self) -> Int32
+pub fn NlpparseshiftreduceSeries::max(Self) -> Double
+pub fn NlpparseshiftreduceSeries::mean(Self) -> Double
+pub fn NlpparseshiftreduceSeries::median(Self) -> Double
+pub fn NlpparseshiftreduceSeries::min(Self) -> Double
+pub fn NlpparseshiftreduceSeries::normalize(Self) -> Self
+pub fn NlpparseshiftreduceSeries::range(Self) -> Double
+pub fn NlpparseshiftreduceSeries::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceSeries::std(Self) -> Double
+pub fn NlpparseshiftreduceSeries::sub(Self, Self) -> Self
+pub fn NlpparseshiftreduceSeries::sum(Self) -> Double
+pub fn NlpparseshiftreduceSeries::to_string(Self) -> String
+pub fn NlpparseshiftreduceSeries::variance(Self) -> Double
+
+pub(all) struct NlpparseshiftreduceSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseshiftreduceSlice::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceSlice::copy(Self) -> Self
+pub fn NlpparseshiftreduceSlice::fill(Self, Double) -> Self
+pub fn NlpparseshiftreduceSlice::get(Self, Int32) -> Double
+pub fn NlpparseshiftreduceSlice::len(Self) -> Int32
+pub fn NlpparseshiftreduceSlice::max(Self) -> Double
+pub fn NlpparseshiftreduceSlice::mean(Self) -> Double
+pub fn NlpparseshiftreduceSlice::min(Self) -> Double
+pub fn NlpparseshiftreduceSlice::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceSlice::set(Self, Int32, Double) -> Self
+pub fn NlpparseshiftreduceSlice::sum(Self) -> Double
+pub fn NlpparseshiftreduceSlice::to_string(Self) -> String
+
+pub(all) struct NlpparseshiftreduceTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseshiftreduceTable::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceTable::copy(Self) -> Self
+pub fn NlpparseshiftreduceTable::fill(Self, Double) -> Self
+pub fn NlpparseshiftreduceTable::get(Self, Int32) -> Double
+pub fn NlpparseshiftreduceTable::len(Self) -> Int32
+pub fn NlpparseshiftreduceTable::max(Self) -> Double
+pub fn NlpparseshiftreduceTable::mean(Self) -> Double
+pub fn NlpparseshiftreduceTable::min(Self) -> Double
+pub fn NlpparseshiftreduceTable::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceTable::set(Self, Int32, Double) -> Self
+pub fn NlpparseshiftreduceTable::sum(Self) -> Double
+pub fn NlpparseshiftreduceTable::to_string(Self) -> String
+
+pub(all) struct NlpparseshiftreduceVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlpparseshiftreduceVector::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceVector::dist(Self, Self) -> Double
+pub fn NlpparseshiftreduceVector::dot(Self, Self) -> Double
+pub fn NlpparseshiftreduceVector::norm(Self) -> Double
+pub fn NlpparseshiftreduceVector::normalize(Self) -> Self
+pub fn NlpparseshiftreduceVector::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceVector::sub(Self, Self) -> Self
+pub fn NlpparseshiftreduceVector::to_string(Self) -> String
+
+pub(all) struct NlpparseshiftreduceView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseshiftreduceView::add(Self, Self) -> Self
+pub fn NlpparseshiftreduceView::copy(Self) -> Self
+pub fn NlpparseshiftreduceView::fill(Self, Double) -> Self
+pub fn NlpparseshiftreduceView::get(Self, Int32) -> Double
+pub fn NlpparseshiftreduceView::len(Self) -> Int32
+pub fn NlpparseshiftreduceView::max(Self) -> Double
+pub fn NlpparseshiftreduceView::mean(Self) -> Double
+pub fn NlpparseshiftreduceView::min(Self) -> Double
+pub fn NlpparseshiftreduceView::scale(Self, Double) -> Self
+pub fn NlpparseshiftreduceView::set(Self, Int32, Double) -> Self
+pub fn NlpparseshiftreduceView::sum(Self) -> Double
+pub fn NlpparseshiftreduceView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

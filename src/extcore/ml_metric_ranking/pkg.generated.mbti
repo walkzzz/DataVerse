@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_metric_ranking"
+
+// Values
+pub fn ml_metric_ranking_buffer_make(Int32) -> MlmetricrankingBuffer
+
+pub fn ml_metric_ranking_cluster_make(Int32) -> MlmetricrankingCluster
+
+pub fn ml_metric_ranking_cursor_make(Int32) -> MlmetricrankingCursor
+
+pub fn ml_metric_ranking_edge_make(Int32) -> MlmetricrankingEdge
+
+pub fn ml_metric_ranking_frame_make(Int32) -> MlmetricrankingFrame
+
+pub fn ml_metric_ranking_graphn_make(Int32) -> MlmetricrankingGraphN
+
+pub fn ml_metric_ranking_layer_make(Int32) -> MlmetricrankingLayer
+
+pub fn ml_metric_ranking_make_matrix(Int32, Int32, Double) -> MlmetricrankingMatrix
+
+pub fn ml_metric_ranking_make_point(Double, Double) -> MlmetricrankingPoint
+
+pub fn ml_metric_ranking_make_point3(Double, Double, Double) -> MlmetricrankingPoint
+
+pub fn ml_metric_ranking_make_series(Array[Double], String) -> MlmetricrankingSeries
+
+pub fn ml_metric_ranking_make_vector(Array[Double]) -> MlmetricrankingVector
+
+pub fn ml_metric_ranking_matrix_identity(Int32) -> MlmetricrankingMatrix
+
+pub fn ml_metric_ranking_model_make(Int32) -> MlmetricrankingModel
+
+pub fn ml_metric_ranking_node_make(Int32) -> MlmetricrankingNode
+
+pub fn ml_metric_ranking_path_make(Int32) -> MlmetricrankingPath
+
+pub fn ml_metric_ranking_range_make(Int32) -> MlmetricrankingRange
+
+pub fn ml_metric_ranking_slice_make(Int32) -> MlmetricrankingSlice
+
+pub fn ml_metric_ranking_table_make(Int32) -> MlmetricrankingTable
+
+pub fn ml_metric_ranking_vector_zero(Int32) -> MlmetricrankingVector
+
+pub fn ml_metric_ranking_view_make(Int32) -> MlmetricrankingView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlmetricrankingBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrankingBuffer::add(Self, Self) -> Self
+pub fn MlmetricrankingBuffer::copy(Self) -> Self
+pub fn MlmetricrankingBuffer::fill(Self, Double) -> Self
+pub fn MlmetricrankingBuffer::get(Self, Int32) -> Double
+pub fn MlmetricrankingBuffer::len(Self) -> Int32
+pub fn MlmetricrankingBuffer::max(Self) -> Double
+pub fn MlmetricrankingBuffer::mean(Self) -> Double
+pub fn MlmetricrankingBuffer::min(Self) -> Double
+pub fn MlmetricrankingBuffer::scale(Self, Double) -> Self
+pub fn MlmetricrankingBuffer::set(Self, Int32, Double) -> Self
+pub fn MlmetricrankingBuffer::sum(Self) -> Double
+pub fn MlmetricrankingBuffer::to_string(Self) -> String
+
+pub(all) struct MlmetricrankingCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrankingCluster::add(Self, Self) -> Self
+pub fn MlmetricrankingCluster::copy(Self) -> Self
+pub fn MlmetricrankingCluster::fill(Self, Double) -> Self
+pub fn MlmetricrankingCluster::get(Self, Int32) -> Double
+pub fn MlmetricrankingCluster::len(Self) -> Int32
+pub fn MlmetricrankingCluster::max(Self) -> Double
+pub fn MlmetricrankingCluster::mean(Self) -> Double
+pub fn MlmetricrankingCluster::min(Self) -> Double
+pub fn MlmetricrankingCluster::scale(Self, Double) -> Self
+pub fn MlmetricrankingCluster::set(Self, Int32, Double) -> Self
+pub fn MlmetricrankingCluster::sum(Self) -> Double
+pub fn MlmetricrankingCluster::to_string(Self) -> String
+
+pub(all) struct MlmetricrankingCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrankingCursor::add(Self, Self) -> Self
+pub fn MlmetricrankingCursor::copy(Self) -> Self
+pub fn MlmetricrankingCursor::fill(Self, Double) -> Self
+pub fn MlmetricrankingCursor::get(Self, Int32) -> Double
+pub fn MlmetricrankingCursor::len(Self) -> Int32
+pub fn MlmetricrankingCursor::max(Self) -> Double
+pub fn MlmetricrankingCursor::mean(Self) -> Double
+pub fn MlmetricrankingCursor::min(Self) -> Double
+pub fn MlmetricrankingCursor::scale(Self, Double) -> Self
+pub fn MlmetricrankingCursor::set(Self, Int32, Double) -> Self
+pub fn MlmetricrankingCursor::sum(Self) -> Double
+pub fn MlmetricrankingCursor::to_string(Self) -> String
+
+pub(all) struct MlmetricrankingEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrankingEdge::add(Self, Self) -> Self
+pub fn MlmetricrankingEdge::copy(Self) -> Self
+pub fn MlmetricrankingEdge::fill(Self, Double) -> Self
+pub fn MlmetricrankingEdge::get(Self, Int32) -> Double
+pub fn MlmetricrankingEdge::len(Self) -> Int32
+pub fn MlmetricrankingEdge::max(Self) -> Double
+pub fn MlmetricrankingEdge::mean(Self) -> Double
+pub fn MlmetricrankingEdge::min(Self) -> Double
+pub fn MlmetricrankingEdge::scale(Self, Double) -> Self
+pub fn MlmetricrankingEdge::set(Self, Int32, Double) -> Self
+pub fn MlmetricrankingEdge::sum(Self) -> Double
+pub fn MlmetricrankingEdge::to_string(Self) -> String
+
+pub(all) struct MlmetricrankingFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrankingFrame::add(Self, Self) -> Self
+pub fn MlmetricrankingFrame::copy(Self) -> Self
+pub fn MlmetricrankingFrame::fill(Self, Double) -> Self
+pub fn MlmetricrankingFrame::get(Self, Int32) -> Double
+pub fn MlmetricrankingFrame::len(Self) -> Int32
+pub fn MlmetricrankingFrame::max(Self) -> Double
+pub fn MlmetricrankingFrame::mean(Self) -> Double
+pub fn MlmetricrankingFrame::min(Self) -> Double
+pub fn MlmetricrankingFrame::scale(Self, Double) -> Self
+pub fn MlmetricrankingFrame::set(Self, Int32, Double) -> Self
+pub fn MlmetricrankingFrame::sum(Self) -> Double
+pub fn MlmetricrankingFrame::to_string(Self) -> String
+
+pub(all) struct MlmetricrankingGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrankingGraphN::add(Self, Self) -> Self
+pub fn MlmetricrankingGraphN::copy(Self) -> Self
+pub fn MlmetricrankingGraphN::fill(Self, Double) -> Self
+pub fn MlmetricrankingGraphN::get(Self, Int32) -> Double
+pub fn MlmetricrankingGraphN::len(Self) -> Int32
+pub fn MlmetricrankingGraphN::max(Self) -> Double
+pub fn MlmetricrankingGraphN::mean(Self) -> Double
+pub fn MlmetricrankingGraphN::min(Self) -> Double
+pub fn MlmetricrankingGraphN::scale(Self, Double) -> Self
+pub fn MlmetricrankingGraphN::set(Self, Int32, Double) -> Self
+pub fn MlmetricrankingGraphN::sum(Self) -> Double
+pub fn MlmetricrankingGraphN::to_string(Self) -> String
+
+pub(all) struct MlmetricrankingLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrankingLayer::add(Self, Self) -> Self
+pub fn MlmetricrankingLayer::copy(Self) -> Self
+pub fn MlmetricrankingLayer::fill(Self, Double) -> Self
+pub fn MlmetricrankingLayer::get(Self, Int32) -> Double
+pub fn MlmetricrankingLayer::len(Self) -> Int32
+pub fn MlmetricrankingLayer::max(Self) -> Double
+pub fn MlmetricrankingLayer::mean(Self) -> Double
+pub fn MlmetricrankingLayer::min(Self) -> Double
+pub fn MlmetricrankingLayer::scale(Self, Double) -> Self
+pub fn MlmetricrankingLayer::set(Self, Int32, Double) -> Self
+pub fn MlmetricrankingLayer::sum(Self) -> Double
+pub fn MlmetricrankingLayer::to_string(Self) -> String
+
+pub(all) struct MlmetricrankingMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlmetricrankingMatrix::add(Self, Self) -> Self
+pub fn MlmetricrankingMatrix::det(Self) -> Double
+pub fn MlmetricrankingMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlmetricrankingMatrix::multiply(Self, Self) -> Self
+pub fn MlmetricrankingMatrix::norm(Self) -> Double
+pub fn MlmetricrankingMatrix::scale(Self, Double) -> Self
+pub fn MlmetricrankingMatrix::to_string(Self) -> String
+pub fn MlmetricrankingMatrix::trace(Self) -> Double
+pub fn MlmetricrankingMatrix::transpose(Self) -> Self
+
+pub(all) struct MlmetricrankingModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrankingModel::add(Self, Self) -> Self
+pub fn MlmetricrankingModel::copy(Self) -> Self
+pub fn MlmetricrankingModel::fill(Self, Double) -> Self
+pub fn MlmetricrankingModel::get(Self, Int32) -> Double
+pub fn MlmetricrankingModel::len(Self) -> Int32
+pub fn MlmetricrankingModel::max(Self) -> Double
+pub fn MlmetricrankingModel::mean(Self) -> Double
+pub fn MlmetricrankingModel::min(Self) -> Double
+pub fn MlmetricrankingModel::scale(Self, Double) -> Self
+pub fn MlmetricrankingModel::set(Self, Int32, Double) -> Self
+pub fn MlmetricrankingModel::sum(Self) -> Double
+pub fn MlmetricrankingModel::to_string(Self) -> String
+
+pub(all) struct MlmetricrankingNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrankingNode::add(Self, Self) -> Self
+pub fn MlmetricrankingNode::copy(Self) -> Self
+pub fn MlmetricrankingNode::fill(Self, Double) -> Self
+pub fn MlmetricrankingNode::get(Self, Int32) -> Double
+pub fn MlmetricrankingNode::len(Self) -> Int32
+pub fn MlmetricrankingNode::max(Self) -> Double
+pub fn MlmetricrankingNode::mean(Self) -> Double
+pub fn MlmetricrankingNode::min(Self) -> Double
+pub fn MlmetricrankingNode::scale(Self, Double) -> Self
+pub fn MlmetricrankingNode::set(Self, Int32, Double) -> Self
+pub fn MlmetricrankingNode::sum(Self) -> Double
+pub fn MlmetricrankingNode::to_string(Self) -> String
+
+pub(all) struct MlmetricrankingPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrankingPath::add(Self, Self) -> Self
+pub fn MlmetricrankingPath::copy(Self) -> Self
+pub fn MlmetricrankingPath::fill(Self, Double) -> Self
+pub fn MlmetricrankingPath::get(Self, Int32) -> Double
+pub fn MlmetricrankingPath::len(Self) -> Int32
+pub fn MlmetricrankingPath::max(Self) -> Double
+pub fn MlmetricrankingPath::mean(Self) -> Double
+pub fn MlmetricrankingPath::min(Self) -> Double
+pub fn MlmetricrankingPath::scale(Self, Double) -> Self
+pub fn MlmetricrankingPath::set(Self, Int32, Double) -> Self
+pub fn MlmetricrankingPath::sum(Self) -> Double
+pub fn MlmetricrankingPath::to_string(Self) -> String
+
+pub(all) struct MlmetricrankingPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlmetricrankingPoint::add(Self, Self) -> Self
+pub fn MlmetricrankingPoint::cross(Self, Self) -> Self
+pub fn MlmetricrankingPoint::dist(Self, Self) -> Double
+pub fn MlmetricrankingPoint::dot(Self, Self) -> Double
+pub fn MlmetricrankingPoint::label(Self) -> Int32
+pub fn MlmetricrankingPoint::lerp(Self, Self, Double) -> Self
+pub fn MlmetricrankingPoint::mid(Self, Self) -> Self
+pub fn MlmetricrankingPoint::negate(Self) -> Self
+pub fn MlmetricrankingPoint::norm(Self) -> Double
+pub fn MlmetricrankingPoint::normalize(Self) -> Self
+pub fn MlmetricrankingPoint::scale(Self, Double) -> Self
+pub fn MlmetricrankingPoint::sub(Self, Self) -> Self
+pub fn MlmetricrankingPoint::to_string(Self) -> String
+pub fn MlmetricrankingPoint::x(Self) -> Double
+pub fn MlmetricrankingPoint::y(Self) -> Double
+pub fn MlmetricrankingPoint::z(Self) -> Double
+
+pub(all) struct MlmetricrankingRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrankingRange::add(Self, Self) -> Self
+pub fn MlmetricrankingRange::copy(Self) -> Self
+pub fn MlmetricrankingRange::fill(Self, Double) -> Self
+pub fn MlmetricrankingRange::get(Self, Int32) -> Double
+pub fn MlmetricrankingRange::len(Self) -> Int32
+pub fn MlmetricrankingRange::max(Self) -> Double
+pub fn MlmetricrankingRange::mean(Self) -> Double
+pub fn MlmetricrankingRange::min(Self) -> Double
+pub fn MlmetricrankingRange::scale(Self, Double) -> Self
+pub fn MlmetricrankingRange::set(Self, Int32, Double) -> Self
+pub fn MlmetricrankingRange::sum(Self) -> Double
+pub fn MlmetricrankingRange::to_string(Self) -> String
+
+pub(all) struct MlmetricrankingSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlmetricrankingSeries::add(Self, Self) -> Self
+pub fn MlmetricrankingSeries::cumsum(Self) -> Self
+pub fn MlmetricrankingSeries::len(Self) -> Int32
+pub fn MlmetricrankingSeries::max(Self) -> Double
+pub fn MlmetricrankingSeries::mean(Self) -> Double
+pub fn MlmetricrankingSeries::median(Self) -> Double
+pub fn MlmetricrankingSeries::min(Self) -> Double
+pub fn MlmetricrankingSeries::normalize(Self) -> Self
+pub fn MlmetricrankingSeries::range(Self) -> Double
+pub fn MlmetricrankingSeries::scale(Self, Double) -> Self
+pub fn MlmetricrankingSeries::std(Self) -> Double
+pub fn MlmetricrankingSeries::sub(Self, Self) -> Self
+pub fn MlmetricrankingSeries::sum(Self) -> Double
+pub fn MlmetricrankingSeries::to_string(Self) -> String
+pub fn MlmetricrankingSeries::variance(Self) -> Double
+
+pub(all) struct MlmetricrankingSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrankingSlice::add(Self, Self) -> Self
+pub fn MlmetricrankingSlice::copy(Self) -> Self
+pub fn MlmetricrankingSlice::fill(Self, Double) -> Self
+pub fn MlmetricrankingSlice::get(Self, Int32) -> Double
+pub fn MlmetricrankingSlice::len(Self) -> Int32
+pub fn MlmetricrankingSlice::max(Self) -> Double
+pub fn MlmetricrankingSlice::mean(Self) -> Double
+pub fn MlmetricrankingSlice::min(Self) -> Double
+pub fn MlmetricrankingSlice::scale(Self, Double) -> Self
+pub fn MlmetricrankingSlice::set(Self, Int32, Double) -> Self
+pub fn MlmetricrankingSlice::sum(Self) -> Double
+pub fn MlmetricrankingSlice::to_string(Self) -> String
+
+pub(all) struct MlmetricrankingTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrankingTable::add(Self, Self) -> Self
+pub fn MlmetricrankingTable::copy(Self) -> Self
+pub fn MlmetricrankingTable::fill(Self, Double) -> Self
+pub fn MlmetricrankingTable::get(Self, Int32) -> Double
+pub fn MlmetricrankingTable::len(Self) -> Int32
+pub fn MlmetricrankingTable::max(Self) -> Double
+pub fn MlmetricrankingTable::mean(Self) -> Double
+pub fn MlmetricrankingTable::min(Self) -> Double
+pub fn MlmetricrankingTable::scale(Self, Double) -> Self
+pub fn MlmetricrankingTable::set(Self, Int32, Double) -> Self
+pub fn MlmetricrankingTable::sum(Self) -> Double
+pub fn MlmetricrankingTable::to_string(Self) -> String
+
+pub(all) struct MlmetricrankingVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlmetricrankingVector::add(Self, Self) -> Self
+pub fn MlmetricrankingVector::dist(Self, Self) -> Double
+pub fn MlmetricrankingVector::dot(Self, Self) -> Double
+pub fn MlmetricrankingVector::norm(Self) -> Double
+pub fn MlmetricrankingVector::normalize(Self) -> Self
+pub fn MlmetricrankingVector::scale(Self, Double) -> Self
+pub fn MlmetricrankingVector::sub(Self, Self) -> Self
+pub fn MlmetricrankingVector::to_string(Self) -> String
+
+pub(all) struct MlmetricrankingView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlmetricrankingView::add(Self, Self) -> Self
+pub fn MlmetricrankingView::copy(Self) -> Self
+pub fn MlmetricrankingView::fill(Self, Double) -> Self
+pub fn MlmetricrankingView::get(Self, Int32) -> Double
+pub fn MlmetricrankingView::len(Self) -> Int32
+pub fn MlmetricrankingView::max(Self) -> Double
+pub fn MlmetricrankingView::mean(Self) -> Double
+pub fn MlmetricrankingView::min(Self) -> Double
+pub fn MlmetricrankingView::scale(Self, Double) -> Self
+pub fn MlmetricrankingView::set(Self, Int32, Double) -> Self
+pub fn MlmetricrankingView::sum(Self) -> Double
+pub fn MlmetricrankingView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

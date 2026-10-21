@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/opt_convex_l_bfgs"
+
+// Values
+pub fn opt_convex_l_bfgs_buffer_make(Int32) -> OptconvexlbfgsBuffer
+
+pub fn opt_convex_l_bfgs_cluster_make(Int32) -> OptconvexlbfgsCluster
+
+pub fn opt_convex_l_bfgs_cursor_make(Int32) -> OptconvexlbfgsCursor
+
+pub fn opt_convex_l_bfgs_edge_make(Int32) -> OptconvexlbfgsEdge
+
+pub fn opt_convex_l_bfgs_frame_make(Int32) -> OptconvexlbfgsFrame
+
+pub fn opt_convex_l_bfgs_graphn_make(Int32) -> OptconvexlbfgsGraphN
+
+pub fn opt_convex_l_bfgs_layer_make(Int32) -> OptconvexlbfgsLayer
+
+pub fn opt_convex_l_bfgs_make_matrix(Int32, Int32, Double) -> OptconvexlbfgsMatrix
+
+pub fn opt_convex_l_bfgs_make_point(Double, Double) -> OptconvexlbfgsPoint
+
+pub fn opt_convex_l_bfgs_make_point3(Double, Double, Double) -> OptconvexlbfgsPoint
+
+pub fn opt_convex_l_bfgs_make_series(Array[Double], String) -> OptconvexlbfgsSeries
+
+pub fn opt_convex_l_bfgs_make_vector(Array[Double]) -> OptconvexlbfgsVector
+
+pub fn opt_convex_l_bfgs_matrix_identity(Int32) -> OptconvexlbfgsMatrix
+
+pub fn opt_convex_l_bfgs_model_make(Int32) -> OptconvexlbfgsModel
+
+pub fn opt_convex_l_bfgs_node_make(Int32) -> OptconvexlbfgsNode
+
+pub fn opt_convex_l_bfgs_path_make(Int32) -> OptconvexlbfgsPath
+
+pub fn opt_convex_l_bfgs_range_make(Int32) -> OptconvexlbfgsRange
+
+pub fn opt_convex_l_bfgs_slice_make(Int32) -> OptconvexlbfgsSlice
+
+pub fn opt_convex_l_bfgs_table_make(Int32) -> OptconvexlbfgsTable
+
+pub fn opt_convex_l_bfgs_vector_zero(Int32) -> OptconvexlbfgsVector
+
+pub fn opt_convex_l_bfgs_view_make(Int32) -> OptconvexlbfgsView
+
+// Errors
+
+// Types and methods
+pub(all) struct OptconvexlbfgsBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexlbfgsBuffer::add(Self, Self) -> Self
+pub fn OptconvexlbfgsBuffer::copy(Self) -> Self
+pub fn OptconvexlbfgsBuffer::fill(Self, Double) -> Self
+pub fn OptconvexlbfgsBuffer::get(Self, Int32) -> Double
+pub fn OptconvexlbfgsBuffer::len(Self) -> Int32
+pub fn OptconvexlbfgsBuffer::max(Self) -> Double
+pub fn OptconvexlbfgsBuffer::mean(Self) -> Double
+pub fn OptconvexlbfgsBuffer::min(Self) -> Double
+pub fn OptconvexlbfgsBuffer::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsBuffer::set(Self, Int32, Double) -> Self
+pub fn OptconvexlbfgsBuffer::sum(Self) -> Double
+pub fn OptconvexlbfgsBuffer::to_string(Self) -> String
+
+pub(all) struct OptconvexlbfgsCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexlbfgsCluster::add(Self, Self) -> Self
+pub fn OptconvexlbfgsCluster::copy(Self) -> Self
+pub fn OptconvexlbfgsCluster::fill(Self, Double) -> Self
+pub fn OptconvexlbfgsCluster::get(Self, Int32) -> Double
+pub fn OptconvexlbfgsCluster::len(Self) -> Int32
+pub fn OptconvexlbfgsCluster::max(Self) -> Double
+pub fn OptconvexlbfgsCluster::mean(Self) -> Double
+pub fn OptconvexlbfgsCluster::min(Self) -> Double
+pub fn OptconvexlbfgsCluster::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsCluster::set(Self, Int32, Double) -> Self
+pub fn OptconvexlbfgsCluster::sum(Self) -> Double
+pub fn OptconvexlbfgsCluster::to_string(Self) -> String
+
+pub(all) struct OptconvexlbfgsCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexlbfgsCursor::add(Self, Self) -> Self
+pub fn OptconvexlbfgsCursor::copy(Self) -> Self
+pub fn OptconvexlbfgsCursor::fill(Self, Double) -> Self
+pub fn OptconvexlbfgsCursor::get(Self, Int32) -> Double
+pub fn OptconvexlbfgsCursor::len(Self) -> Int32
+pub fn OptconvexlbfgsCursor::max(Self) -> Double
+pub fn OptconvexlbfgsCursor::mean(Self) -> Double
+pub fn OptconvexlbfgsCursor::min(Self) -> Double
+pub fn OptconvexlbfgsCursor::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsCursor::set(Self, Int32, Double) -> Self
+pub fn OptconvexlbfgsCursor::sum(Self) -> Double
+pub fn OptconvexlbfgsCursor::to_string(Self) -> String
+
+pub(all) struct OptconvexlbfgsEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexlbfgsEdge::add(Self, Self) -> Self
+pub fn OptconvexlbfgsEdge::copy(Self) -> Self
+pub fn OptconvexlbfgsEdge::fill(Self, Double) -> Self
+pub fn OptconvexlbfgsEdge::get(Self, Int32) -> Double
+pub fn OptconvexlbfgsEdge::len(Self) -> Int32
+pub fn OptconvexlbfgsEdge::max(Self) -> Double
+pub fn OptconvexlbfgsEdge::mean(Self) -> Double
+pub fn OptconvexlbfgsEdge::min(Self) -> Double
+pub fn OptconvexlbfgsEdge::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsEdge::set(Self, Int32, Double) -> Self
+pub fn OptconvexlbfgsEdge::sum(Self) -> Double
+pub fn OptconvexlbfgsEdge::to_string(Self) -> String
+
+pub(all) struct OptconvexlbfgsFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexlbfgsFrame::add(Self, Self) -> Self
+pub fn OptconvexlbfgsFrame::copy(Self) -> Self
+pub fn OptconvexlbfgsFrame::fill(Self, Double) -> Self
+pub fn OptconvexlbfgsFrame::get(Self, Int32) -> Double
+pub fn OptconvexlbfgsFrame::len(Self) -> Int32
+pub fn OptconvexlbfgsFrame::max(Self) -> Double
+pub fn OptconvexlbfgsFrame::mean(Self) -> Double
+pub fn OptconvexlbfgsFrame::min(Self) -> Double
+pub fn OptconvexlbfgsFrame::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsFrame::set(Self, Int32, Double) -> Self
+pub fn OptconvexlbfgsFrame::sum(Self) -> Double
+pub fn OptconvexlbfgsFrame::to_string(Self) -> String
+
+pub(all) struct OptconvexlbfgsGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexlbfgsGraphN::add(Self, Self) -> Self
+pub fn OptconvexlbfgsGraphN::copy(Self) -> Self
+pub fn OptconvexlbfgsGraphN::fill(Self, Double) -> Self
+pub fn OptconvexlbfgsGraphN::get(Self, Int32) -> Double
+pub fn OptconvexlbfgsGraphN::len(Self) -> Int32
+pub fn OptconvexlbfgsGraphN::max(Self) -> Double
+pub fn OptconvexlbfgsGraphN::mean(Self) -> Double
+pub fn OptconvexlbfgsGraphN::min(Self) -> Double
+pub fn OptconvexlbfgsGraphN::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsGraphN::set(Self, Int32, Double) -> Self
+pub fn OptconvexlbfgsGraphN::sum(Self) -> Double
+pub fn OptconvexlbfgsGraphN::to_string(Self) -> String
+
+pub(all) struct OptconvexlbfgsLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexlbfgsLayer::add(Self, Self) -> Self
+pub fn OptconvexlbfgsLayer::copy(Self) -> Self
+pub fn OptconvexlbfgsLayer::fill(Self, Double) -> Self
+pub fn OptconvexlbfgsLayer::get(Self, Int32) -> Double
+pub fn OptconvexlbfgsLayer::len(Self) -> Int32
+pub fn OptconvexlbfgsLayer::max(Self) -> Double
+pub fn OptconvexlbfgsLayer::mean(Self) -> Double
+pub fn OptconvexlbfgsLayer::min(Self) -> Double
+pub fn OptconvexlbfgsLayer::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsLayer::set(Self, Int32, Double) -> Self
+pub fn OptconvexlbfgsLayer::sum(Self) -> Double
+pub fn OptconvexlbfgsLayer::to_string(Self) -> String
+
+pub(all) struct OptconvexlbfgsMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn OptconvexlbfgsMatrix::add(Self, Self) -> Self
+pub fn OptconvexlbfgsMatrix::det(Self) -> Double
+pub fn OptconvexlbfgsMatrix::get(Self, Int32, Int32) -> Double
+pub fn OptconvexlbfgsMatrix::multiply(Self, Self) -> Self
+pub fn OptconvexlbfgsMatrix::norm(Self) -> Double
+pub fn OptconvexlbfgsMatrix::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsMatrix::to_string(Self) -> String
+pub fn OptconvexlbfgsMatrix::trace(Self) -> Double
+pub fn OptconvexlbfgsMatrix::transpose(Self) -> Self
+
+pub(all) struct OptconvexlbfgsModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexlbfgsModel::add(Self, Self) -> Self
+pub fn OptconvexlbfgsModel::copy(Self) -> Self
+pub fn OptconvexlbfgsModel::fill(Self, Double) -> Self
+pub fn OptconvexlbfgsModel::get(Self, Int32) -> Double
+pub fn OptconvexlbfgsModel::len(Self) -> Int32
+pub fn OptconvexlbfgsModel::max(Self) -> Double
+pub fn OptconvexlbfgsModel::mean(Self) -> Double
+pub fn OptconvexlbfgsModel::min(Self) -> Double
+pub fn OptconvexlbfgsModel::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsModel::set(Self, Int32, Double) -> Self
+pub fn OptconvexlbfgsModel::sum(Self) -> Double
+pub fn OptconvexlbfgsModel::to_string(Self) -> String
+
+pub(all) struct OptconvexlbfgsNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexlbfgsNode::add(Self, Self) -> Self
+pub fn OptconvexlbfgsNode::copy(Self) -> Self
+pub fn OptconvexlbfgsNode::fill(Self, Double) -> Self
+pub fn OptconvexlbfgsNode::get(Self, Int32) -> Double
+pub fn OptconvexlbfgsNode::len(Self) -> Int32
+pub fn OptconvexlbfgsNode::max(Self) -> Double
+pub fn OptconvexlbfgsNode::mean(Self) -> Double
+pub fn OptconvexlbfgsNode::min(Self) -> Double
+pub fn OptconvexlbfgsNode::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsNode::set(Self, Int32, Double) -> Self
+pub fn OptconvexlbfgsNode::sum(Self) -> Double
+pub fn OptconvexlbfgsNode::to_string(Self) -> String
+
+pub(all) struct OptconvexlbfgsPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexlbfgsPath::add(Self, Self) -> Self
+pub fn OptconvexlbfgsPath::copy(Self) -> Self
+pub fn OptconvexlbfgsPath::fill(Self, Double) -> Self
+pub fn OptconvexlbfgsPath::get(Self, Int32) -> Double
+pub fn OptconvexlbfgsPath::len(Self) -> Int32
+pub fn OptconvexlbfgsPath::max(Self) -> Double
+pub fn OptconvexlbfgsPath::mean(Self) -> Double
+pub fn OptconvexlbfgsPath::min(Self) -> Double
+pub fn OptconvexlbfgsPath::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsPath::set(Self, Int32, Double) -> Self
+pub fn OptconvexlbfgsPath::sum(Self) -> Double
+pub fn OptconvexlbfgsPath::to_string(Self) -> String
+
+pub(all) struct OptconvexlbfgsPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn OptconvexlbfgsPoint::add(Self, Self) -> Self
+pub fn OptconvexlbfgsPoint::cross(Self, Self) -> Self
+pub fn OptconvexlbfgsPoint::dist(Self, Self) -> Double
+pub fn OptconvexlbfgsPoint::dot(Self, Self) -> Double
+pub fn OptconvexlbfgsPoint::label(Self) -> Int32
+pub fn OptconvexlbfgsPoint::lerp(Self, Self, Double) -> Self
+pub fn OptconvexlbfgsPoint::mid(Self, Self) -> Self
+pub fn OptconvexlbfgsPoint::negate(Self) -> Self
+pub fn OptconvexlbfgsPoint::norm(Self) -> Double
+pub fn OptconvexlbfgsPoint::normalize(Self) -> Self
+pub fn OptconvexlbfgsPoint::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsPoint::sub(Self, Self) -> Self
+pub fn OptconvexlbfgsPoint::to_string(Self) -> String
+pub fn OptconvexlbfgsPoint::x(Self) -> Double
+pub fn OptconvexlbfgsPoint::y(Self) -> Double
+pub fn OptconvexlbfgsPoint::z(Self) -> Double
+
+pub(all) struct OptconvexlbfgsRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexlbfgsRange::add(Self, Self) -> Self
+pub fn OptconvexlbfgsRange::copy(Self) -> Self
+pub fn OptconvexlbfgsRange::fill(Self, Double) -> Self
+pub fn OptconvexlbfgsRange::get(Self, Int32) -> Double
+pub fn OptconvexlbfgsRange::len(Self) -> Int32
+pub fn OptconvexlbfgsRange::max(Self) -> Double
+pub fn OptconvexlbfgsRange::mean(Self) -> Double
+pub fn OptconvexlbfgsRange::min(Self) -> Double
+pub fn OptconvexlbfgsRange::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsRange::set(Self, Int32, Double) -> Self
+pub fn OptconvexlbfgsRange::sum(Self) -> Double
+pub fn OptconvexlbfgsRange::to_string(Self) -> String
+
+pub(all) struct OptconvexlbfgsSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn OptconvexlbfgsSeries::add(Self, Self) -> Self
+pub fn OptconvexlbfgsSeries::cumsum(Self) -> Self
+pub fn OptconvexlbfgsSeries::len(Self) -> Int32
+pub fn OptconvexlbfgsSeries::max(Self) -> Double
+pub fn OptconvexlbfgsSeries::mean(Self) -> Double
+pub fn OptconvexlbfgsSeries::median(Self) -> Double
+pub fn OptconvexlbfgsSeries::min(Self) -> Double
+pub fn OptconvexlbfgsSeries::normalize(Self) -> Self
+pub fn OptconvexlbfgsSeries::range(Self) -> Double
+pub fn OptconvexlbfgsSeries::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsSeries::std(Self) -> Double
+pub fn OptconvexlbfgsSeries::sub(Self, Self) -> Self
+pub fn OptconvexlbfgsSeries::sum(Self) -> Double
+pub fn OptconvexlbfgsSeries::to_string(Self) -> String
+pub fn OptconvexlbfgsSeries::variance(Self) -> Double
+
+pub(all) struct OptconvexlbfgsSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexlbfgsSlice::add(Self, Self) -> Self
+pub fn OptconvexlbfgsSlice::copy(Self) -> Self
+pub fn OptconvexlbfgsSlice::fill(Self, Double) -> Self
+pub fn OptconvexlbfgsSlice::get(Self, Int32) -> Double
+pub fn OptconvexlbfgsSlice::len(Self) -> Int32
+pub fn OptconvexlbfgsSlice::max(Self) -> Double
+pub fn OptconvexlbfgsSlice::mean(Self) -> Double
+pub fn OptconvexlbfgsSlice::min(Self) -> Double
+pub fn OptconvexlbfgsSlice::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsSlice::set(Self, Int32, Double) -> Self
+pub fn OptconvexlbfgsSlice::sum(Self) -> Double
+pub fn OptconvexlbfgsSlice::to_string(Self) -> String
+
+pub(all) struct OptconvexlbfgsTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexlbfgsTable::add(Self, Self) -> Self
+pub fn OptconvexlbfgsTable::copy(Self) -> Self
+pub fn OptconvexlbfgsTable::fill(Self, Double) -> Self
+pub fn OptconvexlbfgsTable::get(Self, Int32) -> Double
+pub fn OptconvexlbfgsTable::len(Self) -> Int32
+pub fn OptconvexlbfgsTable::max(Self) -> Double
+pub fn OptconvexlbfgsTable::mean(Self) -> Double
+pub fn OptconvexlbfgsTable::min(Self) -> Double
+pub fn OptconvexlbfgsTable::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsTable::set(Self, Int32, Double) -> Self
+pub fn OptconvexlbfgsTable::sum(Self) -> Double
+pub fn OptconvexlbfgsTable::to_string(Self) -> String
+
+pub(all) struct OptconvexlbfgsVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn OptconvexlbfgsVector::add(Self, Self) -> Self
+pub fn OptconvexlbfgsVector::dist(Self, Self) -> Double
+pub fn OptconvexlbfgsVector::dot(Self, Self) -> Double
+pub fn OptconvexlbfgsVector::norm(Self) -> Double
+pub fn OptconvexlbfgsVector::normalize(Self) -> Self
+pub fn OptconvexlbfgsVector::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsVector::sub(Self, Self) -> Self
+pub fn OptconvexlbfgsVector::to_string(Self) -> String
+
+pub(all) struct OptconvexlbfgsView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexlbfgsView::add(Self, Self) -> Self
+pub fn OptconvexlbfgsView::copy(Self) -> Self
+pub fn OptconvexlbfgsView::fill(Self, Double) -> Self
+pub fn OptconvexlbfgsView::get(Self, Int32) -> Double
+pub fn OptconvexlbfgsView::len(Self) -> Int32
+pub fn OptconvexlbfgsView::max(Self) -> Double
+pub fn OptconvexlbfgsView::mean(Self) -> Double
+pub fn OptconvexlbfgsView::min(Self) -> Double
+pub fn OptconvexlbfgsView::scale(Self, Double) -> Self
+pub fn OptconvexlbfgsView::set(Self, Int32, Double) -> Self
+pub fn OptconvexlbfgsView::sum(Self) -> Double
+pub fn OptconvexlbfgsView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

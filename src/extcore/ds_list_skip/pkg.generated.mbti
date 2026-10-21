@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_list_skip"
+
+// Values
+pub fn ds_list_skip_buffer_make(Int32) -> DslistskipBuffer
+
+pub fn ds_list_skip_cluster_make(Int32) -> DslistskipCluster
+
+pub fn ds_list_skip_cursor_make(Int32) -> DslistskipCursor
+
+pub fn ds_list_skip_edge_make(Int32) -> DslistskipEdge
+
+pub fn ds_list_skip_frame_make(Int32) -> DslistskipFrame
+
+pub fn ds_list_skip_graphn_make(Int32) -> DslistskipGraphN
+
+pub fn ds_list_skip_layer_make(Int32) -> DslistskipLayer
+
+pub fn ds_list_skip_make_matrix(Int32, Int32, Double) -> DslistskipMatrix
+
+pub fn ds_list_skip_make_point(Double, Double) -> DslistskipPoint
+
+pub fn ds_list_skip_make_point3(Double, Double, Double) -> DslistskipPoint
+
+pub fn ds_list_skip_make_series(Array[Double], String) -> DslistskipSeries
+
+pub fn ds_list_skip_make_vector(Array[Double]) -> DslistskipVector
+
+pub fn ds_list_skip_matrix_identity(Int32) -> DslistskipMatrix
+
+pub fn ds_list_skip_model_make(Int32) -> DslistskipModel
+
+pub fn ds_list_skip_node_make(Int32) -> DslistskipNode
+
+pub fn ds_list_skip_path_make(Int32) -> DslistskipPath
+
+pub fn ds_list_skip_range_make(Int32) -> DslistskipRange
+
+pub fn ds_list_skip_slice_make(Int32) -> DslistskipSlice
+
+pub fn ds_list_skip_table_make(Int32) -> DslistskipTable
+
+pub fn ds_list_skip_vector_zero(Int32) -> DslistskipVector
+
+pub fn ds_list_skip_view_make(Int32) -> DslistskipView
+
+// Errors
+
+// Types and methods
+pub(all) struct DslistskipBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistskipBuffer::add(Self, Self) -> Self
+pub fn DslistskipBuffer::copy(Self) -> Self
+pub fn DslistskipBuffer::fill(Self, Double) -> Self
+pub fn DslistskipBuffer::get(Self, Int32) -> Double
+pub fn DslistskipBuffer::len(Self) -> Int32
+pub fn DslistskipBuffer::max(Self) -> Double
+pub fn DslistskipBuffer::mean(Self) -> Double
+pub fn DslistskipBuffer::min(Self) -> Double
+pub fn DslistskipBuffer::scale(Self, Double) -> Self
+pub fn DslistskipBuffer::set(Self, Int32, Double) -> Self
+pub fn DslistskipBuffer::sum(Self) -> Double
+pub fn DslistskipBuffer::to_string(Self) -> String
+
+pub(all) struct DslistskipCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistskipCluster::add(Self, Self) -> Self
+pub fn DslistskipCluster::copy(Self) -> Self
+pub fn DslistskipCluster::fill(Self, Double) -> Self
+pub fn DslistskipCluster::get(Self, Int32) -> Double
+pub fn DslistskipCluster::len(Self) -> Int32
+pub fn DslistskipCluster::max(Self) -> Double
+pub fn DslistskipCluster::mean(Self) -> Double
+pub fn DslistskipCluster::min(Self) -> Double
+pub fn DslistskipCluster::scale(Self, Double) -> Self
+pub fn DslistskipCluster::set(Self, Int32, Double) -> Self
+pub fn DslistskipCluster::sum(Self) -> Double
+pub fn DslistskipCluster::to_string(Self) -> String
+
+pub(all) struct DslistskipCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistskipCursor::add(Self, Self) -> Self
+pub fn DslistskipCursor::copy(Self) -> Self
+pub fn DslistskipCursor::fill(Self, Double) -> Self
+pub fn DslistskipCursor::get(Self, Int32) -> Double
+pub fn DslistskipCursor::len(Self) -> Int32
+pub fn DslistskipCursor::max(Self) -> Double
+pub fn DslistskipCursor::mean(Self) -> Double
+pub fn DslistskipCursor::min(Self) -> Double
+pub fn DslistskipCursor::scale(Self, Double) -> Self
+pub fn DslistskipCursor::set(Self, Int32, Double) -> Self
+pub fn DslistskipCursor::sum(Self) -> Double
+pub fn DslistskipCursor::to_string(Self) -> String
+
+pub(all) struct DslistskipEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistskipEdge::add(Self, Self) -> Self
+pub fn DslistskipEdge::copy(Self) -> Self
+pub fn DslistskipEdge::fill(Self, Double) -> Self
+pub fn DslistskipEdge::get(Self, Int32) -> Double
+pub fn DslistskipEdge::len(Self) -> Int32
+pub fn DslistskipEdge::max(Self) -> Double
+pub fn DslistskipEdge::mean(Self) -> Double
+pub fn DslistskipEdge::min(Self) -> Double
+pub fn DslistskipEdge::scale(Self, Double) -> Self
+pub fn DslistskipEdge::set(Self, Int32, Double) -> Self
+pub fn DslistskipEdge::sum(Self) -> Double
+pub fn DslistskipEdge::to_string(Self) -> String
+
+pub(all) struct DslistskipFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistskipFrame::add(Self, Self) -> Self
+pub fn DslistskipFrame::copy(Self) -> Self
+pub fn DslistskipFrame::fill(Self, Double) -> Self
+pub fn DslistskipFrame::get(Self, Int32) -> Double
+pub fn DslistskipFrame::len(Self) -> Int32
+pub fn DslistskipFrame::max(Self) -> Double
+pub fn DslistskipFrame::mean(Self) -> Double
+pub fn DslistskipFrame::min(Self) -> Double
+pub fn DslistskipFrame::scale(Self, Double) -> Self
+pub fn DslistskipFrame::set(Self, Int32, Double) -> Self
+pub fn DslistskipFrame::sum(Self) -> Double
+pub fn DslistskipFrame::to_string(Self) -> String
+
+pub(all) struct DslistskipGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistskipGraphN::add(Self, Self) -> Self
+pub fn DslistskipGraphN::copy(Self) -> Self
+pub fn DslistskipGraphN::fill(Self, Double) -> Self
+pub fn DslistskipGraphN::get(Self, Int32) -> Double
+pub fn DslistskipGraphN::len(Self) -> Int32
+pub fn DslistskipGraphN::max(Self) -> Double
+pub fn DslistskipGraphN::mean(Self) -> Double
+pub fn DslistskipGraphN::min(Self) -> Double
+pub fn DslistskipGraphN::scale(Self, Double) -> Self
+pub fn DslistskipGraphN::set(Self, Int32, Double) -> Self
+pub fn DslistskipGraphN::sum(Self) -> Double
+pub fn DslistskipGraphN::to_string(Self) -> String
+
+pub(all) struct DslistskipLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistskipLayer::add(Self, Self) -> Self
+pub fn DslistskipLayer::copy(Self) -> Self
+pub fn DslistskipLayer::fill(Self, Double) -> Self
+pub fn DslistskipLayer::get(Self, Int32) -> Double
+pub fn DslistskipLayer::len(Self) -> Int32
+pub fn DslistskipLayer::max(Self) -> Double
+pub fn DslistskipLayer::mean(Self) -> Double
+pub fn DslistskipLayer::min(Self) -> Double
+pub fn DslistskipLayer::scale(Self, Double) -> Self
+pub fn DslistskipLayer::set(Self, Int32, Double) -> Self
+pub fn DslistskipLayer::sum(Self) -> Double
+pub fn DslistskipLayer::to_string(Self) -> String
+
+pub(all) struct DslistskipMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DslistskipMatrix::add(Self, Self) -> Self
+pub fn DslistskipMatrix::det(Self) -> Double
+pub fn DslistskipMatrix::get(Self, Int32, Int32) -> Double
+pub fn DslistskipMatrix::multiply(Self, Self) -> Self
+pub fn DslistskipMatrix::norm(Self) -> Double
+pub fn DslistskipMatrix::scale(Self, Double) -> Self
+pub fn DslistskipMatrix::to_string(Self) -> String
+pub fn DslistskipMatrix::trace(Self) -> Double
+pub fn DslistskipMatrix::transpose(Self) -> Self
+
+pub(all) struct DslistskipModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistskipModel::add(Self, Self) -> Self
+pub fn DslistskipModel::copy(Self) -> Self
+pub fn DslistskipModel::fill(Self, Double) -> Self
+pub fn DslistskipModel::get(Self, Int32) -> Double
+pub fn DslistskipModel::len(Self) -> Int32
+pub fn DslistskipModel::max(Self) -> Double
+pub fn DslistskipModel::mean(Self) -> Double
+pub fn DslistskipModel::min(Self) -> Double
+pub fn DslistskipModel::scale(Self, Double) -> Self
+pub fn DslistskipModel::set(Self, Int32, Double) -> Self
+pub fn DslistskipModel::sum(Self) -> Double
+pub fn DslistskipModel::to_string(Self) -> String
+
+pub(all) struct DslistskipNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistskipNode::add(Self, Self) -> Self
+pub fn DslistskipNode::copy(Self) -> Self
+pub fn DslistskipNode::fill(Self, Double) -> Self
+pub fn DslistskipNode::get(Self, Int32) -> Double
+pub fn DslistskipNode::len(Self) -> Int32
+pub fn DslistskipNode::max(Self) -> Double
+pub fn DslistskipNode::mean(Self) -> Double
+pub fn DslistskipNode::min(Self) -> Double
+pub fn DslistskipNode::scale(Self, Double) -> Self
+pub fn DslistskipNode::set(Self, Int32, Double) -> Self
+pub fn DslistskipNode::sum(Self) -> Double
+pub fn DslistskipNode::to_string(Self) -> String
+
+pub(all) struct DslistskipPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistskipPath::add(Self, Self) -> Self
+pub fn DslistskipPath::copy(Self) -> Self
+pub fn DslistskipPath::fill(Self, Double) -> Self
+pub fn DslistskipPath::get(Self, Int32) -> Double
+pub fn DslistskipPath::len(Self) -> Int32
+pub fn DslistskipPath::max(Self) -> Double
+pub fn DslistskipPath::mean(Self) -> Double
+pub fn DslistskipPath::min(Self) -> Double
+pub fn DslistskipPath::scale(Self, Double) -> Self
+pub fn DslistskipPath::set(Self, Int32, Double) -> Self
+pub fn DslistskipPath::sum(Self) -> Double
+pub fn DslistskipPath::to_string(Self) -> String
+
+pub(all) struct DslistskipPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DslistskipPoint::add(Self, Self) -> Self
+pub fn DslistskipPoint::cross(Self, Self) -> Self
+pub fn DslistskipPoint::dist(Self, Self) -> Double
+pub fn DslistskipPoint::dot(Self, Self) -> Double
+pub fn DslistskipPoint::label(Self) -> Int32
+pub fn DslistskipPoint::lerp(Self, Self, Double) -> Self
+pub fn DslistskipPoint::mid(Self, Self) -> Self
+pub fn DslistskipPoint::negate(Self) -> Self
+pub fn DslistskipPoint::norm(Self) -> Double
+pub fn DslistskipPoint::normalize(Self) -> Self
+pub fn DslistskipPoint::scale(Self, Double) -> Self
+pub fn DslistskipPoint::sub(Self, Self) -> Self
+pub fn DslistskipPoint::to_string(Self) -> String
+pub fn DslistskipPoint::x(Self) -> Double
+pub fn DslistskipPoint::y(Self) -> Double
+pub fn DslistskipPoint::z(Self) -> Double
+
+pub(all) struct DslistskipRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistskipRange::add(Self, Self) -> Self
+pub fn DslistskipRange::copy(Self) -> Self
+pub fn DslistskipRange::fill(Self, Double) -> Self
+pub fn DslistskipRange::get(Self, Int32) -> Double
+pub fn DslistskipRange::len(Self) -> Int32
+pub fn DslistskipRange::max(Self) -> Double
+pub fn DslistskipRange::mean(Self) -> Double
+pub fn DslistskipRange::min(Self) -> Double
+pub fn DslistskipRange::scale(Self, Double) -> Self
+pub fn DslistskipRange::set(Self, Int32, Double) -> Self
+pub fn DslistskipRange::sum(Self) -> Double
+pub fn DslistskipRange::to_string(Self) -> String
+
+pub(all) struct DslistskipSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DslistskipSeries::add(Self, Self) -> Self
+pub fn DslistskipSeries::cumsum(Self) -> Self
+pub fn DslistskipSeries::len(Self) -> Int32
+pub fn DslistskipSeries::max(Self) -> Double
+pub fn DslistskipSeries::mean(Self) -> Double
+pub fn DslistskipSeries::median(Self) -> Double
+pub fn DslistskipSeries::min(Self) -> Double
+pub fn DslistskipSeries::normalize(Self) -> Self
+pub fn DslistskipSeries::range(Self) -> Double
+pub fn DslistskipSeries::scale(Self, Double) -> Self
+pub fn DslistskipSeries::std(Self) -> Double
+pub fn DslistskipSeries::sub(Self, Self) -> Self
+pub fn DslistskipSeries::sum(Self) -> Double
+pub fn DslistskipSeries::to_string(Self) -> String
+pub fn DslistskipSeries::variance(Self) -> Double
+
+pub(all) struct DslistskipSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistskipSlice::add(Self, Self) -> Self
+pub fn DslistskipSlice::copy(Self) -> Self
+pub fn DslistskipSlice::fill(Self, Double) -> Self
+pub fn DslistskipSlice::get(Self, Int32) -> Double
+pub fn DslistskipSlice::len(Self) -> Int32
+pub fn DslistskipSlice::max(Self) -> Double
+pub fn DslistskipSlice::mean(Self) -> Double
+pub fn DslistskipSlice::min(Self) -> Double
+pub fn DslistskipSlice::scale(Self, Double) -> Self
+pub fn DslistskipSlice::set(Self, Int32, Double) -> Self
+pub fn DslistskipSlice::sum(Self) -> Double
+pub fn DslistskipSlice::to_string(Self) -> String
+
+pub(all) struct DslistskipTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistskipTable::add(Self, Self) -> Self
+pub fn DslistskipTable::copy(Self) -> Self
+pub fn DslistskipTable::fill(Self, Double) -> Self
+pub fn DslistskipTable::get(Self, Int32) -> Double
+pub fn DslistskipTable::len(Self) -> Int32
+pub fn DslistskipTable::max(Self) -> Double
+pub fn DslistskipTable::mean(Self) -> Double
+pub fn DslistskipTable::min(Self) -> Double
+pub fn DslistskipTable::scale(Self, Double) -> Self
+pub fn DslistskipTable::set(Self, Int32, Double) -> Self
+pub fn DslistskipTable::sum(Self) -> Double
+pub fn DslistskipTable::to_string(Self) -> String
+
+pub(all) struct DslistskipVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DslistskipVector::add(Self, Self) -> Self
+pub fn DslistskipVector::dist(Self, Self) -> Double
+pub fn DslistskipVector::dot(Self, Self) -> Double
+pub fn DslistskipVector::norm(Self) -> Double
+pub fn DslistskipVector::normalize(Self) -> Self
+pub fn DslistskipVector::scale(Self, Double) -> Self
+pub fn DslistskipVector::sub(Self, Self) -> Self
+pub fn DslistskipVector::to_string(Self) -> String
+
+pub(all) struct DslistskipView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistskipView::add(Self, Self) -> Self
+pub fn DslistskipView::copy(Self) -> Self
+pub fn DslistskipView::fill(Self, Double) -> Self
+pub fn DslistskipView::get(Self, Int32) -> Double
+pub fn DslistskipView::len(Self) -> Int32
+pub fn DslistskipView::max(Self) -> Double
+pub fn DslistskipView::mean(Self) -> Double
+pub fn DslistskipView::min(Self) -> Double
+pub fn DslistskipView::scale(Self, Double) -> Self
+pub fn DslistskipView::set(Self, Int32, Double) -> Self
+pub fn DslistskipView::sum(Self) -> Double
+pub fn DslistskipView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

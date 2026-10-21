@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_arch"
+
+// Values
+pub fn timeseries_arch_buffer_make(Int32) -> TimeseriesarchBuffer
+
+pub fn timeseries_arch_cluster_make(Int32) -> TimeseriesarchCluster
+
+pub fn timeseries_arch_cursor_make(Int32) -> TimeseriesarchCursor
+
+pub fn timeseries_arch_edge_make(Int32) -> TimeseriesarchEdge
+
+pub fn timeseries_arch_frame_make(Int32) -> TimeseriesarchFrame
+
+pub fn timeseries_arch_graphn_make(Int32) -> TimeseriesarchGraphN
+
+pub fn timeseries_arch_layer_make(Int32) -> TimeseriesarchLayer
+
+pub fn timeseries_arch_make_matrix(Int32, Int32, Double) -> TimeseriesarchMatrix
+
+pub fn timeseries_arch_make_point(Double, Double) -> TimeseriesarchPoint
+
+pub fn timeseries_arch_make_point3(Double, Double, Double) -> TimeseriesarchPoint
+
+pub fn timeseries_arch_make_series(Array[Double], String) -> TimeseriesarchSeries
+
+pub fn timeseries_arch_make_vector(Array[Double]) -> TimeseriesarchVector
+
+pub fn timeseries_arch_matrix_identity(Int32) -> TimeseriesarchMatrix
+
+pub fn timeseries_arch_model_make(Int32) -> TimeseriesarchModel
+
+pub fn timeseries_arch_node_make(Int32) -> TimeseriesarchNode
+
+pub fn timeseries_arch_path_make(Int32) -> TimeseriesarchPath
+
+pub fn timeseries_arch_range_make(Int32) -> TimeseriesarchRange
+
+pub fn timeseries_arch_slice_make(Int32) -> TimeseriesarchSlice
+
+pub fn timeseries_arch_table_make(Int32) -> TimeseriesarchTable
+
+pub fn timeseries_arch_vector_zero(Int32) -> TimeseriesarchVector
+
+pub fn timeseries_arch_view_make(Int32) -> TimeseriesarchView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriesarchBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesarchBuffer::add(Self, Self) -> Self
+pub fn TimeseriesarchBuffer::copy(Self) -> Self
+pub fn TimeseriesarchBuffer::fill(Self, Double) -> Self
+pub fn TimeseriesarchBuffer::get(Self, Int32) -> Double
+pub fn TimeseriesarchBuffer::len(Self) -> Int32
+pub fn TimeseriesarchBuffer::max(Self) -> Double
+pub fn TimeseriesarchBuffer::mean(Self) -> Double
+pub fn TimeseriesarchBuffer::min(Self) -> Double
+pub fn TimeseriesarchBuffer::scale(Self, Double) -> Self
+pub fn TimeseriesarchBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesarchBuffer::sum(Self) -> Double
+pub fn TimeseriesarchBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriesarchCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesarchCluster::add(Self, Self) -> Self
+pub fn TimeseriesarchCluster::copy(Self) -> Self
+pub fn TimeseriesarchCluster::fill(Self, Double) -> Self
+pub fn TimeseriesarchCluster::get(Self, Int32) -> Double
+pub fn TimeseriesarchCluster::len(Self) -> Int32
+pub fn TimeseriesarchCluster::max(Self) -> Double
+pub fn TimeseriesarchCluster::mean(Self) -> Double
+pub fn TimeseriesarchCluster::min(Self) -> Double
+pub fn TimeseriesarchCluster::scale(Self, Double) -> Self
+pub fn TimeseriesarchCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriesarchCluster::sum(Self) -> Double
+pub fn TimeseriesarchCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriesarchCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesarchCursor::add(Self, Self) -> Self
+pub fn TimeseriesarchCursor::copy(Self) -> Self
+pub fn TimeseriesarchCursor::fill(Self, Double) -> Self
+pub fn TimeseriesarchCursor::get(Self, Int32) -> Double
+pub fn TimeseriesarchCursor::len(Self) -> Int32
+pub fn TimeseriesarchCursor::max(Self) -> Double
+pub fn TimeseriesarchCursor::mean(Self) -> Double
+pub fn TimeseriesarchCursor::min(Self) -> Double
+pub fn TimeseriesarchCursor::scale(Self, Double) -> Self
+pub fn TimeseriesarchCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriesarchCursor::sum(Self) -> Double
+pub fn TimeseriesarchCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriesarchEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesarchEdge::add(Self, Self) -> Self
+pub fn TimeseriesarchEdge::copy(Self) -> Self
+pub fn TimeseriesarchEdge::fill(Self, Double) -> Self
+pub fn TimeseriesarchEdge::get(Self, Int32) -> Double
+pub fn TimeseriesarchEdge::len(Self) -> Int32
+pub fn TimeseriesarchEdge::max(Self) -> Double
+pub fn TimeseriesarchEdge::mean(Self) -> Double
+pub fn TimeseriesarchEdge::min(Self) -> Double
+pub fn TimeseriesarchEdge::scale(Self, Double) -> Self
+pub fn TimeseriesarchEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriesarchEdge::sum(Self) -> Double
+pub fn TimeseriesarchEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriesarchFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesarchFrame::add(Self, Self) -> Self
+pub fn TimeseriesarchFrame::copy(Self) -> Self
+pub fn TimeseriesarchFrame::fill(Self, Double) -> Self
+pub fn TimeseriesarchFrame::get(Self, Int32) -> Double
+pub fn TimeseriesarchFrame::len(Self) -> Int32
+pub fn TimeseriesarchFrame::max(Self) -> Double
+pub fn TimeseriesarchFrame::mean(Self) -> Double
+pub fn TimeseriesarchFrame::min(Self) -> Double
+pub fn TimeseriesarchFrame::scale(Self, Double) -> Self
+pub fn TimeseriesarchFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriesarchFrame::sum(Self) -> Double
+pub fn TimeseriesarchFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriesarchGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesarchGraphN::add(Self, Self) -> Self
+pub fn TimeseriesarchGraphN::copy(Self) -> Self
+pub fn TimeseriesarchGraphN::fill(Self, Double) -> Self
+pub fn TimeseriesarchGraphN::get(Self, Int32) -> Double
+pub fn TimeseriesarchGraphN::len(Self) -> Int32
+pub fn TimeseriesarchGraphN::max(Self) -> Double
+pub fn TimeseriesarchGraphN::mean(Self) -> Double
+pub fn TimeseriesarchGraphN::min(Self) -> Double
+pub fn TimeseriesarchGraphN::scale(Self, Double) -> Self
+pub fn TimeseriesarchGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriesarchGraphN::sum(Self) -> Double
+pub fn TimeseriesarchGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriesarchLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesarchLayer::add(Self, Self) -> Self
+pub fn TimeseriesarchLayer::copy(Self) -> Self
+pub fn TimeseriesarchLayer::fill(Self, Double) -> Self
+pub fn TimeseriesarchLayer::get(Self, Int32) -> Double
+pub fn TimeseriesarchLayer::len(Self) -> Int32
+pub fn TimeseriesarchLayer::max(Self) -> Double
+pub fn TimeseriesarchLayer::mean(Self) -> Double
+pub fn TimeseriesarchLayer::min(Self) -> Double
+pub fn TimeseriesarchLayer::scale(Self, Double) -> Self
+pub fn TimeseriesarchLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesarchLayer::sum(Self) -> Double
+pub fn TimeseriesarchLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriesarchMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriesarchMatrix::add(Self, Self) -> Self
+pub fn TimeseriesarchMatrix::det(Self) -> Double
+pub fn TimeseriesarchMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriesarchMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriesarchMatrix::norm(Self) -> Double
+pub fn TimeseriesarchMatrix::scale(Self, Double) -> Self
+pub fn TimeseriesarchMatrix::to_string(Self) -> String
+pub fn TimeseriesarchMatrix::trace(Self) -> Double
+pub fn TimeseriesarchMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriesarchModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesarchModel::add(Self, Self) -> Self
+pub fn TimeseriesarchModel::copy(Self) -> Self
+pub fn TimeseriesarchModel::fill(Self, Double) -> Self
+pub fn TimeseriesarchModel::get(Self, Int32) -> Double
+pub fn TimeseriesarchModel::len(Self) -> Int32
+pub fn TimeseriesarchModel::max(Self) -> Double
+pub fn TimeseriesarchModel::mean(Self) -> Double
+pub fn TimeseriesarchModel::min(Self) -> Double
+pub fn TimeseriesarchModel::scale(Self, Double) -> Self
+pub fn TimeseriesarchModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriesarchModel::sum(Self) -> Double
+pub fn TimeseriesarchModel::to_string(Self) -> String
+
+pub(all) struct TimeseriesarchNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesarchNode::add(Self, Self) -> Self
+pub fn TimeseriesarchNode::copy(Self) -> Self
+pub fn TimeseriesarchNode::fill(Self, Double) -> Self
+pub fn TimeseriesarchNode::get(Self, Int32) -> Double
+pub fn TimeseriesarchNode::len(Self) -> Int32
+pub fn TimeseriesarchNode::max(Self) -> Double
+pub fn TimeseriesarchNode::mean(Self) -> Double
+pub fn TimeseriesarchNode::min(Self) -> Double
+pub fn TimeseriesarchNode::scale(Self, Double) -> Self
+pub fn TimeseriesarchNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriesarchNode::sum(Self) -> Double
+pub fn TimeseriesarchNode::to_string(Self) -> String
+
+pub(all) struct TimeseriesarchPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesarchPath::add(Self, Self) -> Self
+pub fn TimeseriesarchPath::copy(Self) -> Self
+pub fn TimeseriesarchPath::fill(Self, Double) -> Self
+pub fn TimeseriesarchPath::get(Self, Int32) -> Double
+pub fn TimeseriesarchPath::len(Self) -> Int32
+pub fn TimeseriesarchPath::max(Self) -> Double
+pub fn TimeseriesarchPath::mean(Self) -> Double
+pub fn TimeseriesarchPath::min(Self) -> Double
+pub fn TimeseriesarchPath::scale(Self, Double) -> Self
+pub fn TimeseriesarchPath::set(Self, Int32, Double) -> Self
+pub fn TimeseriesarchPath::sum(Self) -> Double
+pub fn TimeseriesarchPath::to_string(Self) -> String
+
+pub(all) struct TimeseriesarchPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriesarchPoint::add(Self, Self) -> Self
+pub fn TimeseriesarchPoint::cross(Self, Self) -> Self
+pub fn TimeseriesarchPoint::dist(Self, Self) -> Double
+pub fn TimeseriesarchPoint::dot(Self, Self) -> Double
+pub fn TimeseriesarchPoint::label(Self) -> Int32
+pub fn TimeseriesarchPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriesarchPoint::mid(Self, Self) -> Self
+pub fn TimeseriesarchPoint::negate(Self) -> Self
+pub fn TimeseriesarchPoint::norm(Self) -> Double
+pub fn TimeseriesarchPoint::normalize(Self) -> Self
+pub fn TimeseriesarchPoint::scale(Self, Double) -> Self
+pub fn TimeseriesarchPoint::sub(Self, Self) -> Self
+pub fn TimeseriesarchPoint::to_string(Self) -> String
+pub fn TimeseriesarchPoint::x(Self) -> Double
+pub fn TimeseriesarchPoint::y(Self) -> Double
+pub fn TimeseriesarchPoint::z(Self) -> Double
+
+pub(all) struct TimeseriesarchRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesarchRange::add(Self, Self) -> Self
+pub fn TimeseriesarchRange::copy(Self) -> Self
+pub fn TimeseriesarchRange::fill(Self, Double) -> Self
+pub fn TimeseriesarchRange::get(Self, Int32) -> Double
+pub fn TimeseriesarchRange::len(Self) -> Int32
+pub fn TimeseriesarchRange::max(Self) -> Double
+pub fn TimeseriesarchRange::mean(Self) -> Double
+pub fn TimeseriesarchRange::min(Self) -> Double
+pub fn TimeseriesarchRange::scale(Self, Double) -> Self
+pub fn TimeseriesarchRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriesarchRange::sum(Self) -> Double
+pub fn TimeseriesarchRange::to_string(Self) -> String
+
+pub(all) struct TimeseriesarchSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriesarchSeries::add(Self, Self) -> Self
+pub fn TimeseriesarchSeries::cumsum(Self) -> Self
+pub fn TimeseriesarchSeries::len(Self) -> Int32
+pub fn TimeseriesarchSeries::max(Self) -> Double
+pub fn TimeseriesarchSeries::mean(Self) -> Double
+pub fn TimeseriesarchSeries::median(Self) -> Double
+pub fn TimeseriesarchSeries::min(Self) -> Double
+pub fn TimeseriesarchSeries::normalize(Self) -> Self
+pub fn TimeseriesarchSeries::range(Self) -> Double
+pub fn TimeseriesarchSeries::scale(Self, Double) -> Self
+pub fn TimeseriesarchSeries::std(Self) -> Double
+pub fn TimeseriesarchSeries::sub(Self, Self) -> Self
+pub fn TimeseriesarchSeries::sum(Self) -> Double
+pub fn TimeseriesarchSeries::to_string(Self) -> String
+pub fn TimeseriesarchSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriesarchSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesarchSlice::add(Self, Self) -> Self
+pub fn TimeseriesarchSlice::copy(Self) -> Self
+pub fn TimeseriesarchSlice::fill(Self, Double) -> Self
+pub fn TimeseriesarchSlice::get(Self, Int32) -> Double
+pub fn TimeseriesarchSlice::len(Self) -> Int32
+pub fn TimeseriesarchSlice::max(Self) -> Double
+pub fn TimeseriesarchSlice::mean(Self) -> Double
+pub fn TimeseriesarchSlice::min(Self) -> Double
+pub fn TimeseriesarchSlice::scale(Self, Double) -> Self
+pub fn TimeseriesarchSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriesarchSlice::sum(Self) -> Double
+pub fn TimeseriesarchSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriesarchTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesarchTable::add(Self, Self) -> Self
+pub fn TimeseriesarchTable::copy(Self) -> Self
+pub fn TimeseriesarchTable::fill(Self, Double) -> Self
+pub fn TimeseriesarchTable::get(Self, Int32) -> Double
+pub fn TimeseriesarchTable::len(Self) -> Int32
+pub fn TimeseriesarchTable::max(Self) -> Double
+pub fn TimeseriesarchTable::mean(Self) -> Double
+pub fn TimeseriesarchTable::min(Self) -> Double
+pub fn TimeseriesarchTable::scale(Self, Double) -> Self
+pub fn TimeseriesarchTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriesarchTable::sum(Self) -> Double
+pub fn TimeseriesarchTable::to_string(Self) -> String
+
+pub(all) struct TimeseriesarchVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriesarchVector::add(Self, Self) -> Self
+pub fn TimeseriesarchVector::dist(Self, Self) -> Double
+pub fn TimeseriesarchVector::dot(Self, Self) -> Double
+pub fn TimeseriesarchVector::norm(Self) -> Double
+pub fn TimeseriesarchVector::normalize(Self) -> Self
+pub fn TimeseriesarchVector::scale(Self, Double) -> Self
+pub fn TimeseriesarchVector::sub(Self, Self) -> Self
+pub fn TimeseriesarchVector::to_string(Self) -> String
+
+pub(all) struct TimeseriesarchView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesarchView::add(Self, Self) -> Self
+pub fn TimeseriesarchView::copy(Self) -> Self
+pub fn TimeseriesarchView::fill(Self, Double) -> Self
+pub fn TimeseriesarchView::get(Self, Int32) -> Double
+pub fn TimeseriesarchView::len(Self) -> Int32
+pub fn TimeseriesarchView::max(Self) -> Double
+pub fn TimeseriesarchView::mean(Self) -> Double
+pub fn TimeseriesarchView::min(Self) -> Double
+pub fn TimeseriesarchView::scale(Self, Double) -> Self
+pub fn TimeseriesarchView::set(Self, Int32, Double) -> Self
+pub fn TimeseriesarchView::sum(Self) -> Double
+pub fn TimeseriesarchView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

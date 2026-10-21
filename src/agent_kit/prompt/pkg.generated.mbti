@@ -1,0 +1,54 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/prompt"
+
+// Values
+pub fn append_step(PromptChain, PromptTemplate) -> PromptChain
+
+pub fn build_few_shot_prompt(String, Array[FewShotExample], String) -> String
+
+pub fn build_system_prompt(String, String) -> String
+
+pub fn build_user_prompt(String, String) -> String
+
+pub fn count_variables(String) -> Int32
+
+pub fn extract_variables(String) -> Array[String]
+
+pub fn make_chain(Array[PromptTemplate], String) -> PromptChain
+
+pub fn make_few_shot(String, String) -> FewShotExample
+
+pub fn make_template(String, String, Array[String]) -> PromptTemplate
+
+pub fn prompt_id() -> String
+
+pub fn render_chain(PromptChain, Array[(String, String)]) -> String
+
+pub fn render_template(PromptTemplate, Array[(String, String)]) -> String
+
+pub fn replace_all_variables(String, Array[(String, String)]) -> String
+
+pub fn replace_variable(String, String, String) -> String
+
+// Errors
+
+// Types and methods
+pub struct FewShotExample {
+  input : String
+  output : String
+}
+
+pub struct PromptChain {
+  steps : Array[PromptTemplate]
+  separator : String
+}
+
+pub struct PromptTemplate {
+  name : String
+  template : String
+  variables : Array[String]
+}
+
+// Type aliases
+
+// Traits

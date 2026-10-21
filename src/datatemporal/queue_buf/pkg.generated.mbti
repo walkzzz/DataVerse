@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/queue_buf"
+
+// Values
+pub fn queue_buf_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn queue_buf_corr(Array[Double], Array[Double]) -> Double
+
+pub fn queue_buf_cov(Array[Double], Array[Double]) -> Double
+
+pub fn queue_buf_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn queue_buf_mae(Array[Double], Array[Double]) -> Double
+
+pub fn queue_buf_make_labeled_point(Double, Double, Int32) -> Queue_bufPoint
+
+pub fn queue_buf_make_matrix(Int32, Int32, Double) -> Queue_bufMatrix
+
+pub fn queue_buf_make_point(Double, Double) -> Queue_bufPoint
+
+pub fn queue_buf_make_series(Array[Double], String) -> Queue_bufSeries
+
+pub fn queue_buf_make_vector(Array[Double]) -> Queue_bufVector
+
+pub fn queue_buf_matrix_add(Queue_bufMatrix, Queue_bufMatrix) -> Queue_bufMatrix
+
+pub fn queue_buf_matrix_get(Queue_bufMatrix, Int32, Int32) -> Double
+
+pub fn queue_buf_matrix_identity(Int32) -> Queue_bufMatrix
+
+pub fn queue_buf_matrix_multiply(Queue_bufMatrix, Queue_bufMatrix) -> Queue_bufMatrix
+
+pub fn queue_buf_matrix_norm(Queue_bufMatrix) -> Double
+
+pub fn queue_buf_matrix_scale(Queue_bufMatrix, Double) -> Queue_bufMatrix
+
+pub fn queue_buf_matrix_to_string(Queue_bufMatrix) -> String
+
+pub fn queue_buf_matrix_trace(Queue_bufMatrix) -> Double
+
+pub fn queue_buf_matrix_transpose(Queue_bufMatrix) -> Queue_bufMatrix
+
+pub fn queue_buf_mse(Array[Double], Array[Double]) -> Double
+
+pub fn queue_buf_point_add(Queue_bufPoint, Queue_bufPoint) -> Queue_bufPoint
+
+pub fn queue_buf_point_dist(Queue_bufPoint, Queue_bufPoint) -> Double
+
+pub fn queue_buf_point_dot(Queue_bufPoint, Queue_bufPoint) -> Double
+
+pub fn queue_buf_point_label(Queue_bufPoint) -> Int32
+
+pub fn queue_buf_point_norm(Queue_bufPoint) -> Double
+
+pub fn queue_buf_point_scale(Queue_bufPoint, Double) -> Queue_bufPoint
+
+pub fn queue_buf_point_sub(Queue_bufPoint, Queue_bufPoint) -> Queue_bufPoint
+
+pub fn queue_buf_point_to_string(Queue_bufPoint) -> String
+
+pub fn queue_buf_point_x(Queue_bufPoint) -> Double
+
+pub fn queue_buf_point_y(Queue_bufPoint) -> Double
+
+pub fn queue_buf_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn queue_buf_r2(Array[Double], Array[Double]) -> Double
+
+pub fn queue_buf_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn queue_buf_series_add(Queue_bufSeries, Queue_bufSeries) -> Queue_bufSeries
+
+pub fn queue_buf_series_len(Queue_bufSeries) -> Int32
+
+pub fn queue_buf_series_max(Queue_bufSeries) -> Double
+
+pub fn queue_buf_series_mean(Queue_bufSeries) -> Double
+
+pub fn queue_buf_series_min(Queue_bufSeries) -> Double
+
+pub fn queue_buf_series_scale(Queue_bufSeries, Double) -> Queue_bufSeries
+
+pub fn queue_buf_series_std(Queue_bufSeries) -> Double
+
+pub fn queue_buf_series_sum(Queue_bufSeries) -> Double
+
+pub fn queue_buf_series_to_string(Queue_bufSeries) -> String
+
+pub fn queue_buf_series_var(Queue_bufSeries) -> Double
+
+pub fn queue_buf_std(Array[Double]) -> Double
+
+pub fn queue_buf_var(Array[Double]) -> Double
+
+pub fn queue_buf_vector_add(Queue_bufVector, Queue_bufVector) -> Queue_bufVector
+
+pub fn queue_buf_vector_dist(Queue_bufVector, Queue_bufVector) -> Double
+
+pub fn queue_buf_vector_dot(Queue_bufVector, Queue_bufVector) -> Double
+
+pub fn queue_buf_vector_norm(Queue_bufVector) -> Double
+
+pub fn queue_buf_vector_normalize(Queue_bufVector) -> Queue_bufVector
+
+pub fn queue_buf_vector_scale(Queue_bufVector, Double) -> Queue_bufVector
+
+pub fn queue_buf_vector_sub(Queue_bufVector, Queue_bufVector) -> Queue_bufVector
+
+pub fn queue_buf_vector_to_string(Queue_bufVector) -> String
+
+pub fn queue_buf_vector_zero(Int32) -> Queue_bufVector
+
+// Errors
+
+// Types and methods
+pub struct Queue_bufMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Queue_bufPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Queue_bufSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Queue_bufVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

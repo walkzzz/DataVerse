@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_rl_sac"
+
+// Values
+pub fn ml_rl_sac_buffer_make(Int32) -> MlrlsacBuffer
+
+pub fn ml_rl_sac_cluster_make(Int32) -> MlrlsacCluster
+
+pub fn ml_rl_sac_cursor_make(Int32) -> MlrlsacCursor
+
+pub fn ml_rl_sac_edge_make(Int32) -> MlrlsacEdge
+
+pub fn ml_rl_sac_frame_make(Int32) -> MlrlsacFrame
+
+pub fn ml_rl_sac_graphn_make(Int32) -> MlrlsacGraphN
+
+pub fn ml_rl_sac_layer_make(Int32) -> MlrlsacLayer
+
+pub fn ml_rl_sac_make_matrix(Int32, Int32, Double) -> MlrlsacMatrix
+
+pub fn ml_rl_sac_make_point(Double, Double) -> MlrlsacPoint
+
+pub fn ml_rl_sac_make_point3(Double, Double, Double) -> MlrlsacPoint
+
+pub fn ml_rl_sac_make_series(Array[Double], String) -> MlrlsacSeries
+
+pub fn ml_rl_sac_make_vector(Array[Double]) -> MlrlsacVector
+
+pub fn ml_rl_sac_matrix_identity(Int32) -> MlrlsacMatrix
+
+pub fn ml_rl_sac_model_make(Int32) -> MlrlsacModel
+
+pub fn ml_rl_sac_node_make(Int32) -> MlrlsacNode
+
+pub fn ml_rl_sac_path_make(Int32) -> MlrlsacPath
+
+pub fn ml_rl_sac_range_make(Int32) -> MlrlsacRange
+
+pub fn ml_rl_sac_slice_make(Int32) -> MlrlsacSlice
+
+pub fn ml_rl_sac_table_make(Int32) -> MlrlsacTable
+
+pub fn ml_rl_sac_vector_zero(Int32) -> MlrlsacVector
+
+pub fn ml_rl_sac_view_make(Int32) -> MlrlsacView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlrlsacBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsacBuffer::add(Self, Self) -> Self
+pub fn MlrlsacBuffer::copy(Self) -> Self
+pub fn MlrlsacBuffer::fill(Self, Double) -> Self
+pub fn MlrlsacBuffer::get(Self, Int32) -> Double
+pub fn MlrlsacBuffer::len(Self) -> Int32
+pub fn MlrlsacBuffer::max(Self) -> Double
+pub fn MlrlsacBuffer::mean(Self) -> Double
+pub fn MlrlsacBuffer::min(Self) -> Double
+pub fn MlrlsacBuffer::scale(Self, Double) -> Self
+pub fn MlrlsacBuffer::set(Self, Int32, Double) -> Self
+pub fn MlrlsacBuffer::sum(Self) -> Double
+pub fn MlrlsacBuffer::to_string(Self) -> String
+
+pub(all) struct MlrlsacCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsacCluster::add(Self, Self) -> Self
+pub fn MlrlsacCluster::copy(Self) -> Self
+pub fn MlrlsacCluster::fill(Self, Double) -> Self
+pub fn MlrlsacCluster::get(Self, Int32) -> Double
+pub fn MlrlsacCluster::len(Self) -> Int32
+pub fn MlrlsacCluster::max(Self) -> Double
+pub fn MlrlsacCluster::mean(Self) -> Double
+pub fn MlrlsacCluster::min(Self) -> Double
+pub fn MlrlsacCluster::scale(Self, Double) -> Self
+pub fn MlrlsacCluster::set(Self, Int32, Double) -> Self
+pub fn MlrlsacCluster::sum(Self) -> Double
+pub fn MlrlsacCluster::to_string(Self) -> String
+
+pub(all) struct MlrlsacCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsacCursor::add(Self, Self) -> Self
+pub fn MlrlsacCursor::copy(Self) -> Self
+pub fn MlrlsacCursor::fill(Self, Double) -> Self
+pub fn MlrlsacCursor::get(Self, Int32) -> Double
+pub fn MlrlsacCursor::len(Self) -> Int32
+pub fn MlrlsacCursor::max(Self) -> Double
+pub fn MlrlsacCursor::mean(Self) -> Double
+pub fn MlrlsacCursor::min(Self) -> Double
+pub fn MlrlsacCursor::scale(Self, Double) -> Self
+pub fn MlrlsacCursor::set(Self, Int32, Double) -> Self
+pub fn MlrlsacCursor::sum(Self) -> Double
+pub fn MlrlsacCursor::to_string(Self) -> String
+
+pub(all) struct MlrlsacEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsacEdge::add(Self, Self) -> Self
+pub fn MlrlsacEdge::copy(Self) -> Self
+pub fn MlrlsacEdge::fill(Self, Double) -> Self
+pub fn MlrlsacEdge::get(Self, Int32) -> Double
+pub fn MlrlsacEdge::len(Self) -> Int32
+pub fn MlrlsacEdge::max(Self) -> Double
+pub fn MlrlsacEdge::mean(Self) -> Double
+pub fn MlrlsacEdge::min(Self) -> Double
+pub fn MlrlsacEdge::scale(Self, Double) -> Self
+pub fn MlrlsacEdge::set(Self, Int32, Double) -> Self
+pub fn MlrlsacEdge::sum(Self) -> Double
+pub fn MlrlsacEdge::to_string(Self) -> String
+
+pub(all) struct MlrlsacFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsacFrame::add(Self, Self) -> Self
+pub fn MlrlsacFrame::copy(Self) -> Self
+pub fn MlrlsacFrame::fill(Self, Double) -> Self
+pub fn MlrlsacFrame::get(Self, Int32) -> Double
+pub fn MlrlsacFrame::len(Self) -> Int32
+pub fn MlrlsacFrame::max(Self) -> Double
+pub fn MlrlsacFrame::mean(Self) -> Double
+pub fn MlrlsacFrame::min(Self) -> Double
+pub fn MlrlsacFrame::scale(Self, Double) -> Self
+pub fn MlrlsacFrame::set(Self, Int32, Double) -> Self
+pub fn MlrlsacFrame::sum(Self) -> Double
+pub fn MlrlsacFrame::to_string(Self) -> String
+
+pub(all) struct MlrlsacGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsacGraphN::add(Self, Self) -> Self
+pub fn MlrlsacGraphN::copy(Self) -> Self
+pub fn MlrlsacGraphN::fill(Self, Double) -> Self
+pub fn MlrlsacGraphN::get(Self, Int32) -> Double
+pub fn MlrlsacGraphN::len(Self) -> Int32
+pub fn MlrlsacGraphN::max(Self) -> Double
+pub fn MlrlsacGraphN::mean(Self) -> Double
+pub fn MlrlsacGraphN::min(Self) -> Double
+pub fn MlrlsacGraphN::scale(Self, Double) -> Self
+pub fn MlrlsacGraphN::set(Self, Int32, Double) -> Self
+pub fn MlrlsacGraphN::sum(Self) -> Double
+pub fn MlrlsacGraphN::to_string(Self) -> String
+
+pub(all) struct MlrlsacLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsacLayer::add(Self, Self) -> Self
+pub fn MlrlsacLayer::copy(Self) -> Self
+pub fn MlrlsacLayer::fill(Self, Double) -> Self
+pub fn MlrlsacLayer::get(Self, Int32) -> Double
+pub fn MlrlsacLayer::len(Self) -> Int32
+pub fn MlrlsacLayer::max(Self) -> Double
+pub fn MlrlsacLayer::mean(Self) -> Double
+pub fn MlrlsacLayer::min(Self) -> Double
+pub fn MlrlsacLayer::scale(Self, Double) -> Self
+pub fn MlrlsacLayer::set(Self, Int32, Double) -> Self
+pub fn MlrlsacLayer::sum(Self) -> Double
+pub fn MlrlsacLayer::to_string(Self) -> String
+
+pub(all) struct MlrlsacMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlrlsacMatrix::add(Self, Self) -> Self
+pub fn MlrlsacMatrix::det(Self) -> Double
+pub fn MlrlsacMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlrlsacMatrix::multiply(Self, Self) -> Self
+pub fn MlrlsacMatrix::norm(Self) -> Double
+pub fn MlrlsacMatrix::scale(Self, Double) -> Self
+pub fn MlrlsacMatrix::to_string(Self) -> String
+pub fn MlrlsacMatrix::trace(Self) -> Double
+pub fn MlrlsacMatrix::transpose(Self) -> Self
+
+pub(all) struct MlrlsacModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsacModel::add(Self, Self) -> Self
+pub fn MlrlsacModel::copy(Self) -> Self
+pub fn MlrlsacModel::fill(Self, Double) -> Self
+pub fn MlrlsacModel::get(Self, Int32) -> Double
+pub fn MlrlsacModel::len(Self) -> Int32
+pub fn MlrlsacModel::max(Self) -> Double
+pub fn MlrlsacModel::mean(Self) -> Double
+pub fn MlrlsacModel::min(Self) -> Double
+pub fn MlrlsacModel::scale(Self, Double) -> Self
+pub fn MlrlsacModel::set(Self, Int32, Double) -> Self
+pub fn MlrlsacModel::sum(Self) -> Double
+pub fn MlrlsacModel::to_string(Self) -> String
+
+pub(all) struct MlrlsacNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsacNode::add(Self, Self) -> Self
+pub fn MlrlsacNode::copy(Self) -> Self
+pub fn MlrlsacNode::fill(Self, Double) -> Self
+pub fn MlrlsacNode::get(Self, Int32) -> Double
+pub fn MlrlsacNode::len(Self) -> Int32
+pub fn MlrlsacNode::max(Self) -> Double
+pub fn MlrlsacNode::mean(Self) -> Double
+pub fn MlrlsacNode::min(Self) -> Double
+pub fn MlrlsacNode::scale(Self, Double) -> Self
+pub fn MlrlsacNode::set(Self, Int32, Double) -> Self
+pub fn MlrlsacNode::sum(Self) -> Double
+pub fn MlrlsacNode::to_string(Self) -> String
+
+pub(all) struct MlrlsacPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsacPath::add(Self, Self) -> Self
+pub fn MlrlsacPath::copy(Self) -> Self
+pub fn MlrlsacPath::fill(Self, Double) -> Self
+pub fn MlrlsacPath::get(Self, Int32) -> Double
+pub fn MlrlsacPath::len(Self) -> Int32
+pub fn MlrlsacPath::max(Self) -> Double
+pub fn MlrlsacPath::mean(Self) -> Double
+pub fn MlrlsacPath::min(Self) -> Double
+pub fn MlrlsacPath::scale(Self, Double) -> Self
+pub fn MlrlsacPath::set(Self, Int32, Double) -> Self
+pub fn MlrlsacPath::sum(Self) -> Double
+pub fn MlrlsacPath::to_string(Self) -> String
+
+pub(all) struct MlrlsacPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlrlsacPoint::add(Self, Self) -> Self
+pub fn MlrlsacPoint::cross(Self, Self) -> Self
+pub fn MlrlsacPoint::dist(Self, Self) -> Double
+pub fn MlrlsacPoint::dot(Self, Self) -> Double
+pub fn MlrlsacPoint::label(Self) -> Int32
+pub fn MlrlsacPoint::lerp(Self, Self, Double) -> Self
+pub fn MlrlsacPoint::mid(Self, Self) -> Self
+pub fn MlrlsacPoint::negate(Self) -> Self
+pub fn MlrlsacPoint::norm(Self) -> Double
+pub fn MlrlsacPoint::normalize(Self) -> Self
+pub fn MlrlsacPoint::scale(Self, Double) -> Self
+pub fn MlrlsacPoint::sub(Self, Self) -> Self
+pub fn MlrlsacPoint::to_string(Self) -> String
+pub fn MlrlsacPoint::x(Self) -> Double
+pub fn MlrlsacPoint::y(Self) -> Double
+pub fn MlrlsacPoint::z(Self) -> Double
+
+pub(all) struct MlrlsacRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsacRange::add(Self, Self) -> Self
+pub fn MlrlsacRange::copy(Self) -> Self
+pub fn MlrlsacRange::fill(Self, Double) -> Self
+pub fn MlrlsacRange::get(Self, Int32) -> Double
+pub fn MlrlsacRange::len(Self) -> Int32
+pub fn MlrlsacRange::max(Self) -> Double
+pub fn MlrlsacRange::mean(Self) -> Double
+pub fn MlrlsacRange::min(Self) -> Double
+pub fn MlrlsacRange::scale(Self, Double) -> Self
+pub fn MlrlsacRange::set(Self, Int32, Double) -> Self
+pub fn MlrlsacRange::sum(Self) -> Double
+pub fn MlrlsacRange::to_string(Self) -> String
+
+pub(all) struct MlrlsacSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlrlsacSeries::add(Self, Self) -> Self
+pub fn MlrlsacSeries::cumsum(Self) -> Self
+pub fn MlrlsacSeries::len(Self) -> Int32
+pub fn MlrlsacSeries::max(Self) -> Double
+pub fn MlrlsacSeries::mean(Self) -> Double
+pub fn MlrlsacSeries::median(Self) -> Double
+pub fn MlrlsacSeries::min(Self) -> Double
+pub fn MlrlsacSeries::normalize(Self) -> Self
+pub fn MlrlsacSeries::range(Self) -> Double
+pub fn MlrlsacSeries::scale(Self, Double) -> Self
+pub fn MlrlsacSeries::std(Self) -> Double
+pub fn MlrlsacSeries::sub(Self, Self) -> Self
+pub fn MlrlsacSeries::sum(Self) -> Double
+pub fn MlrlsacSeries::to_string(Self) -> String
+pub fn MlrlsacSeries::variance(Self) -> Double
+
+pub(all) struct MlrlsacSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsacSlice::add(Self, Self) -> Self
+pub fn MlrlsacSlice::copy(Self) -> Self
+pub fn MlrlsacSlice::fill(Self, Double) -> Self
+pub fn MlrlsacSlice::get(Self, Int32) -> Double
+pub fn MlrlsacSlice::len(Self) -> Int32
+pub fn MlrlsacSlice::max(Self) -> Double
+pub fn MlrlsacSlice::mean(Self) -> Double
+pub fn MlrlsacSlice::min(Self) -> Double
+pub fn MlrlsacSlice::scale(Self, Double) -> Self
+pub fn MlrlsacSlice::set(Self, Int32, Double) -> Self
+pub fn MlrlsacSlice::sum(Self) -> Double
+pub fn MlrlsacSlice::to_string(Self) -> String
+
+pub(all) struct MlrlsacTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsacTable::add(Self, Self) -> Self
+pub fn MlrlsacTable::copy(Self) -> Self
+pub fn MlrlsacTable::fill(Self, Double) -> Self
+pub fn MlrlsacTable::get(Self, Int32) -> Double
+pub fn MlrlsacTable::len(Self) -> Int32
+pub fn MlrlsacTable::max(Self) -> Double
+pub fn MlrlsacTable::mean(Self) -> Double
+pub fn MlrlsacTable::min(Self) -> Double
+pub fn MlrlsacTable::scale(Self, Double) -> Self
+pub fn MlrlsacTable::set(Self, Int32, Double) -> Self
+pub fn MlrlsacTable::sum(Self) -> Double
+pub fn MlrlsacTable::to_string(Self) -> String
+
+pub(all) struct MlrlsacVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlrlsacVector::add(Self, Self) -> Self
+pub fn MlrlsacVector::dist(Self, Self) -> Double
+pub fn MlrlsacVector::dot(Self, Self) -> Double
+pub fn MlrlsacVector::norm(Self) -> Double
+pub fn MlrlsacVector::normalize(Self) -> Self
+pub fn MlrlsacVector::scale(Self, Double) -> Self
+pub fn MlrlsacVector::sub(Self, Self) -> Self
+pub fn MlrlsacVector::to_string(Self) -> String
+
+pub(all) struct MlrlsacView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlsacView::add(Self, Self) -> Self
+pub fn MlrlsacView::copy(Self) -> Self
+pub fn MlrlsacView::fill(Self, Double) -> Self
+pub fn MlrlsacView::get(Self, Int32) -> Double
+pub fn MlrlsacView::len(Self) -> Int32
+pub fn MlrlsacView::max(Self) -> Double
+pub fn MlrlsacView::mean(Self) -> Double
+pub fn MlrlsacView::min(Self) -> Double
+pub fn MlrlsacView::scale(Self, Double) -> Self
+pub fn MlrlsacView::set(Self, Int32, Double) -> Self
+pub fn MlrlsacView::sum(Self) -> Double
+pub fn MlrlsacView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

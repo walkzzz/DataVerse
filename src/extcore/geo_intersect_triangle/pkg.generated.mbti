@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_intersect_triangle"
+
+// Values
+pub fn geo_intersect_triangle_buffer_make(Int32) -> GeointersecttriangleBuffer
+
+pub fn geo_intersect_triangle_cluster_make(Int32) -> GeointersecttriangleCluster
+
+pub fn geo_intersect_triangle_cursor_make(Int32) -> GeointersecttriangleCursor
+
+pub fn geo_intersect_triangle_edge_make(Int32) -> GeointersecttriangleEdge
+
+pub fn geo_intersect_triangle_frame_make(Int32) -> GeointersecttriangleFrame
+
+pub fn geo_intersect_triangle_graphn_make(Int32) -> GeointersecttriangleGraphN
+
+pub fn geo_intersect_triangle_layer_make(Int32) -> GeointersecttriangleLayer
+
+pub fn geo_intersect_triangle_make_matrix(Int32, Int32, Double) -> GeointersecttriangleMatrix
+
+pub fn geo_intersect_triangle_make_point(Double, Double) -> GeointersecttrianglePoint
+
+pub fn geo_intersect_triangle_make_point3(Double, Double, Double) -> GeointersecttrianglePoint
+
+pub fn geo_intersect_triangle_make_series(Array[Double], String) -> GeointersecttriangleSeries
+
+pub fn geo_intersect_triangle_make_vector(Array[Double]) -> GeointersecttriangleVector
+
+pub fn geo_intersect_triangle_matrix_identity(Int32) -> GeointersecttriangleMatrix
+
+pub fn geo_intersect_triangle_model_make(Int32) -> GeointersecttriangleModel
+
+pub fn geo_intersect_triangle_node_make(Int32) -> GeointersecttriangleNode
+
+pub fn geo_intersect_triangle_path_make(Int32) -> GeointersecttrianglePath
+
+pub fn geo_intersect_triangle_range_make(Int32) -> GeointersecttriangleRange
+
+pub fn geo_intersect_triangle_slice_make(Int32) -> GeointersecttriangleSlice
+
+pub fn geo_intersect_triangle_table_make(Int32) -> GeointersecttriangleTable
+
+pub fn geo_intersect_triangle_vector_zero(Int32) -> GeointersecttriangleVector
+
+pub fn geo_intersect_triangle_view_make(Int32) -> GeointersecttriangleView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeointersecttriangleBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersecttriangleBuffer::add(Self, Self) -> Self
+pub fn GeointersecttriangleBuffer::copy(Self) -> Self
+pub fn GeointersecttriangleBuffer::fill(Self, Double) -> Self
+pub fn GeointersecttriangleBuffer::get(Self, Int32) -> Double
+pub fn GeointersecttriangleBuffer::len(Self) -> Int32
+pub fn GeointersecttriangleBuffer::max(Self) -> Double
+pub fn GeointersecttriangleBuffer::mean(Self) -> Double
+pub fn GeointersecttriangleBuffer::min(Self) -> Double
+pub fn GeointersecttriangleBuffer::scale(Self, Double) -> Self
+pub fn GeointersecttriangleBuffer::set(Self, Int32, Double) -> Self
+pub fn GeointersecttriangleBuffer::sum(Self) -> Double
+pub fn GeointersecttriangleBuffer::to_string(Self) -> String
+
+pub(all) struct GeointersecttriangleCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersecttriangleCluster::add(Self, Self) -> Self
+pub fn GeointersecttriangleCluster::copy(Self) -> Self
+pub fn GeointersecttriangleCluster::fill(Self, Double) -> Self
+pub fn GeointersecttriangleCluster::get(Self, Int32) -> Double
+pub fn GeointersecttriangleCluster::len(Self) -> Int32
+pub fn GeointersecttriangleCluster::max(Self) -> Double
+pub fn GeointersecttriangleCluster::mean(Self) -> Double
+pub fn GeointersecttriangleCluster::min(Self) -> Double
+pub fn GeointersecttriangleCluster::scale(Self, Double) -> Self
+pub fn GeointersecttriangleCluster::set(Self, Int32, Double) -> Self
+pub fn GeointersecttriangleCluster::sum(Self) -> Double
+pub fn GeointersecttriangleCluster::to_string(Self) -> String
+
+pub(all) struct GeointersecttriangleCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersecttriangleCursor::add(Self, Self) -> Self
+pub fn GeointersecttriangleCursor::copy(Self) -> Self
+pub fn GeointersecttriangleCursor::fill(Self, Double) -> Self
+pub fn GeointersecttriangleCursor::get(Self, Int32) -> Double
+pub fn GeointersecttriangleCursor::len(Self) -> Int32
+pub fn GeointersecttriangleCursor::max(Self) -> Double
+pub fn GeointersecttriangleCursor::mean(Self) -> Double
+pub fn GeointersecttriangleCursor::min(Self) -> Double
+pub fn GeointersecttriangleCursor::scale(Self, Double) -> Self
+pub fn GeointersecttriangleCursor::set(Self, Int32, Double) -> Self
+pub fn GeointersecttriangleCursor::sum(Self) -> Double
+pub fn GeointersecttriangleCursor::to_string(Self) -> String
+
+pub(all) struct GeointersecttriangleEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersecttriangleEdge::add(Self, Self) -> Self
+pub fn GeointersecttriangleEdge::copy(Self) -> Self
+pub fn GeointersecttriangleEdge::fill(Self, Double) -> Self
+pub fn GeointersecttriangleEdge::get(Self, Int32) -> Double
+pub fn GeointersecttriangleEdge::len(Self) -> Int32
+pub fn GeointersecttriangleEdge::max(Self) -> Double
+pub fn GeointersecttriangleEdge::mean(Self) -> Double
+pub fn GeointersecttriangleEdge::min(Self) -> Double
+pub fn GeointersecttriangleEdge::scale(Self, Double) -> Self
+pub fn GeointersecttriangleEdge::set(Self, Int32, Double) -> Self
+pub fn GeointersecttriangleEdge::sum(Self) -> Double
+pub fn GeointersecttriangleEdge::to_string(Self) -> String
+
+pub(all) struct GeointersecttriangleFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersecttriangleFrame::add(Self, Self) -> Self
+pub fn GeointersecttriangleFrame::copy(Self) -> Self
+pub fn GeointersecttriangleFrame::fill(Self, Double) -> Self
+pub fn GeointersecttriangleFrame::get(Self, Int32) -> Double
+pub fn GeointersecttriangleFrame::len(Self) -> Int32
+pub fn GeointersecttriangleFrame::max(Self) -> Double
+pub fn GeointersecttriangleFrame::mean(Self) -> Double
+pub fn GeointersecttriangleFrame::min(Self) -> Double
+pub fn GeointersecttriangleFrame::scale(Self, Double) -> Self
+pub fn GeointersecttriangleFrame::set(Self, Int32, Double) -> Self
+pub fn GeointersecttriangleFrame::sum(Self) -> Double
+pub fn GeointersecttriangleFrame::to_string(Self) -> String
+
+pub(all) struct GeointersecttriangleGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersecttriangleGraphN::add(Self, Self) -> Self
+pub fn GeointersecttriangleGraphN::copy(Self) -> Self
+pub fn GeointersecttriangleGraphN::fill(Self, Double) -> Self
+pub fn GeointersecttriangleGraphN::get(Self, Int32) -> Double
+pub fn GeointersecttriangleGraphN::len(Self) -> Int32
+pub fn GeointersecttriangleGraphN::max(Self) -> Double
+pub fn GeointersecttriangleGraphN::mean(Self) -> Double
+pub fn GeointersecttriangleGraphN::min(Self) -> Double
+pub fn GeointersecttriangleGraphN::scale(Self, Double) -> Self
+pub fn GeointersecttriangleGraphN::set(Self, Int32, Double) -> Self
+pub fn GeointersecttriangleGraphN::sum(Self) -> Double
+pub fn GeointersecttriangleGraphN::to_string(Self) -> String
+
+pub(all) struct GeointersecttriangleLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersecttriangleLayer::add(Self, Self) -> Self
+pub fn GeointersecttriangleLayer::copy(Self) -> Self
+pub fn GeointersecttriangleLayer::fill(Self, Double) -> Self
+pub fn GeointersecttriangleLayer::get(Self, Int32) -> Double
+pub fn GeointersecttriangleLayer::len(Self) -> Int32
+pub fn GeointersecttriangleLayer::max(Self) -> Double
+pub fn GeointersecttriangleLayer::mean(Self) -> Double
+pub fn GeointersecttriangleLayer::min(Self) -> Double
+pub fn GeointersecttriangleLayer::scale(Self, Double) -> Self
+pub fn GeointersecttriangleLayer::set(Self, Int32, Double) -> Self
+pub fn GeointersecttriangleLayer::sum(Self) -> Double
+pub fn GeointersecttriangleLayer::to_string(Self) -> String
+
+pub(all) struct GeointersecttriangleMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeointersecttriangleMatrix::add(Self, Self) -> Self
+pub fn GeointersecttriangleMatrix::det(Self) -> Double
+pub fn GeointersecttriangleMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeointersecttriangleMatrix::multiply(Self, Self) -> Self
+pub fn GeointersecttriangleMatrix::norm(Self) -> Double
+pub fn GeointersecttriangleMatrix::scale(Self, Double) -> Self
+pub fn GeointersecttriangleMatrix::to_string(Self) -> String
+pub fn GeointersecttriangleMatrix::trace(Self) -> Double
+pub fn GeointersecttriangleMatrix::transpose(Self) -> Self
+
+pub(all) struct GeointersecttriangleModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersecttriangleModel::add(Self, Self) -> Self
+pub fn GeointersecttriangleModel::copy(Self) -> Self
+pub fn GeointersecttriangleModel::fill(Self, Double) -> Self
+pub fn GeointersecttriangleModel::get(Self, Int32) -> Double
+pub fn GeointersecttriangleModel::len(Self) -> Int32
+pub fn GeointersecttriangleModel::max(Self) -> Double
+pub fn GeointersecttriangleModel::mean(Self) -> Double
+pub fn GeointersecttriangleModel::min(Self) -> Double
+pub fn GeointersecttriangleModel::scale(Self, Double) -> Self
+pub fn GeointersecttriangleModel::set(Self, Int32, Double) -> Self
+pub fn GeointersecttriangleModel::sum(Self) -> Double
+pub fn GeointersecttriangleModel::to_string(Self) -> String
+
+pub(all) struct GeointersecttriangleNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersecttriangleNode::add(Self, Self) -> Self
+pub fn GeointersecttriangleNode::copy(Self) -> Self
+pub fn GeointersecttriangleNode::fill(Self, Double) -> Self
+pub fn GeointersecttriangleNode::get(Self, Int32) -> Double
+pub fn GeointersecttriangleNode::len(Self) -> Int32
+pub fn GeointersecttriangleNode::max(Self) -> Double
+pub fn GeointersecttriangleNode::mean(Self) -> Double
+pub fn GeointersecttriangleNode::min(Self) -> Double
+pub fn GeointersecttriangleNode::scale(Self, Double) -> Self
+pub fn GeointersecttriangleNode::set(Self, Int32, Double) -> Self
+pub fn GeointersecttriangleNode::sum(Self) -> Double
+pub fn GeointersecttriangleNode::to_string(Self) -> String
+
+pub(all) struct GeointersecttrianglePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersecttrianglePath::add(Self, Self) -> Self
+pub fn GeointersecttrianglePath::copy(Self) -> Self
+pub fn GeointersecttrianglePath::fill(Self, Double) -> Self
+pub fn GeointersecttrianglePath::get(Self, Int32) -> Double
+pub fn GeointersecttrianglePath::len(Self) -> Int32
+pub fn GeointersecttrianglePath::max(Self) -> Double
+pub fn GeointersecttrianglePath::mean(Self) -> Double
+pub fn GeointersecttrianglePath::min(Self) -> Double
+pub fn GeointersecttrianglePath::scale(Self, Double) -> Self
+pub fn GeointersecttrianglePath::set(Self, Int32, Double) -> Self
+pub fn GeointersecttrianglePath::sum(Self) -> Double
+pub fn GeointersecttrianglePath::to_string(Self) -> String
+
+pub(all) struct GeointersecttrianglePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeointersecttrianglePoint::add(Self, Self) -> Self
+pub fn GeointersecttrianglePoint::cross(Self, Self) -> Self
+pub fn GeointersecttrianglePoint::dist(Self, Self) -> Double
+pub fn GeointersecttrianglePoint::dot(Self, Self) -> Double
+pub fn GeointersecttrianglePoint::label(Self) -> Int32
+pub fn GeointersecttrianglePoint::lerp(Self, Self, Double) -> Self
+pub fn GeointersecttrianglePoint::mid(Self, Self) -> Self
+pub fn GeointersecttrianglePoint::negate(Self) -> Self
+pub fn GeointersecttrianglePoint::norm(Self) -> Double
+pub fn GeointersecttrianglePoint::normalize(Self) -> Self
+pub fn GeointersecttrianglePoint::scale(Self, Double) -> Self
+pub fn GeointersecttrianglePoint::sub(Self, Self) -> Self
+pub fn GeointersecttrianglePoint::to_string(Self) -> String
+pub fn GeointersecttrianglePoint::x(Self) -> Double
+pub fn GeointersecttrianglePoint::y(Self) -> Double
+pub fn GeointersecttrianglePoint::z(Self) -> Double
+
+pub(all) struct GeointersecttriangleRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersecttriangleRange::add(Self, Self) -> Self
+pub fn GeointersecttriangleRange::copy(Self) -> Self
+pub fn GeointersecttriangleRange::fill(Self, Double) -> Self
+pub fn GeointersecttriangleRange::get(Self, Int32) -> Double
+pub fn GeointersecttriangleRange::len(Self) -> Int32
+pub fn GeointersecttriangleRange::max(Self) -> Double
+pub fn GeointersecttriangleRange::mean(Self) -> Double
+pub fn GeointersecttriangleRange::min(Self) -> Double
+pub fn GeointersecttriangleRange::scale(Self, Double) -> Self
+pub fn GeointersecttriangleRange::set(Self, Int32, Double) -> Self
+pub fn GeointersecttriangleRange::sum(Self) -> Double
+pub fn GeointersecttriangleRange::to_string(Self) -> String
+
+pub(all) struct GeointersecttriangleSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeointersecttriangleSeries::add(Self, Self) -> Self
+pub fn GeointersecttriangleSeries::cumsum(Self) -> Self
+pub fn GeointersecttriangleSeries::len(Self) -> Int32
+pub fn GeointersecttriangleSeries::max(Self) -> Double
+pub fn GeointersecttriangleSeries::mean(Self) -> Double
+pub fn GeointersecttriangleSeries::median(Self) -> Double
+pub fn GeointersecttriangleSeries::min(Self) -> Double
+pub fn GeointersecttriangleSeries::normalize(Self) -> Self
+pub fn GeointersecttriangleSeries::range(Self) -> Double
+pub fn GeointersecttriangleSeries::scale(Self, Double) -> Self
+pub fn GeointersecttriangleSeries::std(Self) -> Double
+pub fn GeointersecttriangleSeries::sub(Self, Self) -> Self
+pub fn GeointersecttriangleSeries::sum(Self) -> Double
+pub fn GeointersecttriangleSeries::to_string(Self) -> String
+pub fn GeointersecttriangleSeries::variance(Self) -> Double
+
+pub(all) struct GeointersecttriangleSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersecttriangleSlice::add(Self, Self) -> Self
+pub fn GeointersecttriangleSlice::copy(Self) -> Self
+pub fn GeointersecttriangleSlice::fill(Self, Double) -> Self
+pub fn GeointersecttriangleSlice::get(Self, Int32) -> Double
+pub fn GeointersecttriangleSlice::len(Self) -> Int32
+pub fn GeointersecttriangleSlice::max(Self) -> Double
+pub fn GeointersecttriangleSlice::mean(Self) -> Double
+pub fn GeointersecttriangleSlice::min(Self) -> Double
+pub fn GeointersecttriangleSlice::scale(Self, Double) -> Self
+pub fn GeointersecttriangleSlice::set(Self, Int32, Double) -> Self
+pub fn GeointersecttriangleSlice::sum(Self) -> Double
+pub fn GeointersecttriangleSlice::to_string(Self) -> String
+
+pub(all) struct GeointersecttriangleTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersecttriangleTable::add(Self, Self) -> Self
+pub fn GeointersecttriangleTable::copy(Self) -> Self
+pub fn GeointersecttriangleTable::fill(Self, Double) -> Self
+pub fn GeointersecttriangleTable::get(Self, Int32) -> Double
+pub fn GeointersecttriangleTable::len(Self) -> Int32
+pub fn GeointersecttriangleTable::max(Self) -> Double
+pub fn GeointersecttriangleTable::mean(Self) -> Double
+pub fn GeointersecttriangleTable::min(Self) -> Double
+pub fn GeointersecttriangleTable::scale(Self, Double) -> Self
+pub fn GeointersecttriangleTable::set(Self, Int32, Double) -> Self
+pub fn GeointersecttriangleTable::sum(Self) -> Double
+pub fn GeointersecttriangleTable::to_string(Self) -> String
+
+pub(all) struct GeointersecttriangleVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeointersecttriangleVector::add(Self, Self) -> Self
+pub fn GeointersecttriangleVector::dist(Self, Self) -> Double
+pub fn GeointersecttriangleVector::dot(Self, Self) -> Double
+pub fn GeointersecttriangleVector::norm(Self) -> Double
+pub fn GeointersecttriangleVector::normalize(Self) -> Self
+pub fn GeointersecttriangleVector::scale(Self, Double) -> Self
+pub fn GeointersecttriangleVector::sub(Self, Self) -> Self
+pub fn GeointersecttriangleVector::to_string(Self) -> String
+
+pub(all) struct GeointersecttriangleView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersecttriangleView::add(Self, Self) -> Self
+pub fn GeointersecttriangleView::copy(Self) -> Self
+pub fn GeointersecttriangleView::fill(Self, Double) -> Self
+pub fn GeointersecttriangleView::get(Self, Int32) -> Double
+pub fn GeointersecttriangleView::len(Self) -> Int32
+pub fn GeointersecttriangleView::max(Self) -> Double
+pub fn GeointersecttriangleView::mean(Self) -> Double
+pub fn GeointersecttriangleView::min(Self) -> Double
+pub fn GeointersecttriangleView::scale(Self, Double) -> Self
+pub fn GeointersecttriangleView::set(Self, Int32, Double) -> Self
+pub fn GeointersecttriangleView::sum(Self) -> Double
+pub fn GeointersecttriangleView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_list_block"
+
+// Values
+pub fn ds_list_block_buffer_make(Int32) -> DslistblockBuffer
+
+pub fn ds_list_block_cluster_make(Int32) -> DslistblockCluster
+
+pub fn ds_list_block_cursor_make(Int32) -> DslistblockCursor
+
+pub fn ds_list_block_edge_make(Int32) -> DslistblockEdge
+
+pub fn ds_list_block_frame_make(Int32) -> DslistblockFrame
+
+pub fn ds_list_block_graphn_make(Int32) -> DslistblockGraphN
+
+pub fn ds_list_block_layer_make(Int32) -> DslistblockLayer
+
+pub fn ds_list_block_make_matrix(Int32, Int32, Double) -> DslistblockMatrix
+
+pub fn ds_list_block_make_point(Double, Double) -> DslistblockPoint
+
+pub fn ds_list_block_make_point3(Double, Double, Double) -> DslistblockPoint
+
+pub fn ds_list_block_make_series(Array[Double], String) -> DslistblockSeries
+
+pub fn ds_list_block_make_vector(Array[Double]) -> DslistblockVector
+
+pub fn ds_list_block_matrix_identity(Int32) -> DslistblockMatrix
+
+pub fn ds_list_block_model_make(Int32) -> DslistblockModel
+
+pub fn ds_list_block_node_make(Int32) -> DslistblockNode
+
+pub fn ds_list_block_path_make(Int32) -> DslistblockPath
+
+pub fn ds_list_block_range_make(Int32) -> DslistblockRange
+
+pub fn ds_list_block_slice_make(Int32) -> DslistblockSlice
+
+pub fn ds_list_block_table_make(Int32) -> DslistblockTable
+
+pub fn ds_list_block_vector_zero(Int32) -> DslistblockVector
+
+pub fn ds_list_block_view_make(Int32) -> DslistblockView
+
+// Errors
+
+// Types and methods
+pub(all) struct DslistblockBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistblockBuffer::add(Self, Self) -> Self
+pub fn DslistblockBuffer::copy(Self) -> Self
+pub fn DslistblockBuffer::fill(Self, Double) -> Self
+pub fn DslistblockBuffer::get(Self, Int32) -> Double
+pub fn DslistblockBuffer::len(Self) -> Int32
+pub fn DslistblockBuffer::max(Self) -> Double
+pub fn DslistblockBuffer::mean(Self) -> Double
+pub fn DslistblockBuffer::min(Self) -> Double
+pub fn DslistblockBuffer::scale(Self, Double) -> Self
+pub fn DslistblockBuffer::set(Self, Int32, Double) -> Self
+pub fn DslistblockBuffer::sum(Self) -> Double
+pub fn DslistblockBuffer::to_string(Self) -> String
+
+pub(all) struct DslistblockCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistblockCluster::add(Self, Self) -> Self
+pub fn DslistblockCluster::copy(Self) -> Self
+pub fn DslistblockCluster::fill(Self, Double) -> Self
+pub fn DslistblockCluster::get(Self, Int32) -> Double
+pub fn DslistblockCluster::len(Self) -> Int32
+pub fn DslistblockCluster::max(Self) -> Double
+pub fn DslistblockCluster::mean(Self) -> Double
+pub fn DslistblockCluster::min(Self) -> Double
+pub fn DslistblockCluster::scale(Self, Double) -> Self
+pub fn DslistblockCluster::set(Self, Int32, Double) -> Self
+pub fn DslistblockCluster::sum(Self) -> Double
+pub fn DslistblockCluster::to_string(Self) -> String
+
+pub(all) struct DslistblockCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistblockCursor::add(Self, Self) -> Self
+pub fn DslistblockCursor::copy(Self) -> Self
+pub fn DslistblockCursor::fill(Self, Double) -> Self
+pub fn DslistblockCursor::get(Self, Int32) -> Double
+pub fn DslistblockCursor::len(Self) -> Int32
+pub fn DslistblockCursor::max(Self) -> Double
+pub fn DslistblockCursor::mean(Self) -> Double
+pub fn DslistblockCursor::min(Self) -> Double
+pub fn DslistblockCursor::scale(Self, Double) -> Self
+pub fn DslistblockCursor::set(Self, Int32, Double) -> Self
+pub fn DslistblockCursor::sum(Self) -> Double
+pub fn DslistblockCursor::to_string(Self) -> String
+
+pub(all) struct DslistblockEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistblockEdge::add(Self, Self) -> Self
+pub fn DslistblockEdge::copy(Self) -> Self
+pub fn DslistblockEdge::fill(Self, Double) -> Self
+pub fn DslistblockEdge::get(Self, Int32) -> Double
+pub fn DslistblockEdge::len(Self) -> Int32
+pub fn DslistblockEdge::max(Self) -> Double
+pub fn DslistblockEdge::mean(Self) -> Double
+pub fn DslistblockEdge::min(Self) -> Double
+pub fn DslistblockEdge::scale(Self, Double) -> Self
+pub fn DslistblockEdge::set(Self, Int32, Double) -> Self
+pub fn DslistblockEdge::sum(Self) -> Double
+pub fn DslistblockEdge::to_string(Self) -> String
+
+pub(all) struct DslistblockFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistblockFrame::add(Self, Self) -> Self
+pub fn DslistblockFrame::copy(Self) -> Self
+pub fn DslistblockFrame::fill(Self, Double) -> Self
+pub fn DslistblockFrame::get(Self, Int32) -> Double
+pub fn DslistblockFrame::len(Self) -> Int32
+pub fn DslistblockFrame::max(Self) -> Double
+pub fn DslistblockFrame::mean(Self) -> Double
+pub fn DslistblockFrame::min(Self) -> Double
+pub fn DslistblockFrame::scale(Self, Double) -> Self
+pub fn DslistblockFrame::set(Self, Int32, Double) -> Self
+pub fn DslistblockFrame::sum(Self) -> Double
+pub fn DslistblockFrame::to_string(Self) -> String
+
+pub(all) struct DslistblockGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistblockGraphN::add(Self, Self) -> Self
+pub fn DslistblockGraphN::copy(Self) -> Self
+pub fn DslistblockGraphN::fill(Self, Double) -> Self
+pub fn DslistblockGraphN::get(Self, Int32) -> Double
+pub fn DslistblockGraphN::len(Self) -> Int32
+pub fn DslistblockGraphN::max(Self) -> Double
+pub fn DslistblockGraphN::mean(Self) -> Double
+pub fn DslistblockGraphN::min(Self) -> Double
+pub fn DslistblockGraphN::scale(Self, Double) -> Self
+pub fn DslistblockGraphN::set(Self, Int32, Double) -> Self
+pub fn DslistblockGraphN::sum(Self) -> Double
+pub fn DslistblockGraphN::to_string(Self) -> String
+
+pub(all) struct DslistblockLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistblockLayer::add(Self, Self) -> Self
+pub fn DslistblockLayer::copy(Self) -> Self
+pub fn DslistblockLayer::fill(Self, Double) -> Self
+pub fn DslistblockLayer::get(Self, Int32) -> Double
+pub fn DslistblockLayer::len(Self) -> Int32
+pub fn DslistblockLayer::max(Self) -> Double
+pub fn DslistblockLayer::mean(Self) -> Double
+pub fn DslistblockLayer::min(Self) -> Double
+pub fn DslistblockLayer::scale(Self, Double) -> Self
+pub fn DslistblockLayer::set(Self, Int32, Double) -> Self
+pub fn DslistblockLayer::sum(Self) -> Double
+pub fn DslistblockLayer::to_string(Self) -> String
+
+pub(all) struct DslistblockMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DslistblockMatrix::add(Self, Self) -> Self
+pub fn DslistblockMatrix::det(Self) -> Double
+pub fn DslistblockMatrix::get(Self, Int32, Int32) -> Double
+pub fn DslistblockMatrix::multiply(Self, Self) -> Self
+pub fn DslistblockMatrix::norm(Self) -> Double
+pub fn DslistblockMatrix::scale(Self, Double) -> Self
+pub fn DslistblockMatrix::to_string(Self) -> String
+pub fn DslistblockMatrix::trace(Self) -> Double
+pub fn DslistblockMatrix::transpose(Self) -> Self
+
+pub(all) struct DslistblockModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistblockModel::add(Self, Self) -> Self
+pub fn DslistblockModel::copy(Self) -> Self
+pub fn DslistblockModel::fill(Self, Double) -> Self
+pub fn DslistblockModel::get(Self, Int32) -> Double
+pub fn DslistblockModel::len(Self) -> Int32
+pub fn DslistblockModel::max(Self) -> Double
+pub fn DslistblockModel::mean(Self) -> Double
+pub fn DslistblockModel::min(Self) -> Double
+pub fn DslistblockModel::scale(Self, Double) -> Self
+pub fn DslistblockModel::set(Self, Int32, Double) -> Self
+pub fn DslistblockModel::sum(Self) -> Double
+pub fn DslistblockModel::to_string(Self) -> String
+
+pub(all) struct DslistblockNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistblockNode::add(Self, Self) -> Self
+pub fn DslistblockNode::copy(Self) -> Self
+pub fn DslistblockNode::fill(Self, Double) -> Self
+pub fn DslistblockNode::get(Self, Int32) -> Double
+pub fn DslistblockNode::len(Self) -> Int32
+pub fn DslistblockNode::max(Self) -> Double
+pub fn DslistblockNode::mean(Self) -> Double
+pub fn DslistblockNode::min(Self) -> Double
+pub fn DslistblockNode::scale(Self, Double) -> Self
+pub fn DslistblockNode::set(Self, Int32, Double) -> Self
+pub fn DslistblockNode::sum(Self) -> Double
+pub fn DslistblockNode::to_string(Self) -> String
+
+pub(all) struct DslistblockPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistblockPath::add(Self, Self) -> Self
+pub fn DslistblockPath::copy(Self) -> Self
+pub fn DslistblockPath::fill(Self, Double) -> Self
+pub fn DslistblockPath::get(Self, Int32) -> Double
+pub fn DslistblockPath::len(Self) -> Int32
+pub fn DslistblockPath::max(Self) -> Double
+pub fn DslistblockPath::mean(Self) -> Double
+pub fn DslistblockPath::min(Self) -> Double
+pub fn DslistblockPath::scale(Self, Double) -> Self
+pub fn DslistblockPath::set(Self, Int32, Double) -> Self
+pub fn DslistblockPath::sum(Self) -> Double
+pub fn DslistblockPath::to_string(Self) -> String
+
+pub(all) struct DslistblockPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DslistblockPoint::add(Self, Self) -> Self
+pub fn DslistblockPoint::cross(Self, Self) -> Self
+pub fn DslistblockPoint::dist(Self, Self) -> Double
+pub fn DslistblockPoint::dot(Self, Self) -> Double
+pub fn DslistblockPoint::label(Self) -> Int32
+pub fn DslistblockPoint::lerp(Self, Self, Double) -> Self
+pub fn DslistblockPoint::mid(Self, Self) -> Self
+pub fn DslistblockPoint::negate(Self) -> Self
+pub fn DslistblockPoint::norm(Self) -> Double
+pub fn DslistblockPoint::normalize(Self) -> Self
+pub fn DslistblockPoint::scale(Self, Double) -> Self
+pub fn DslistblockPoint::sub(Self, Self) -> Self
+pub fn DslistblockPoint::to_string(Self) -> String
+pub fn DslistblockPoint::x(Self) -> Double
+pub fn DslistblockPoint::y(Self) -> Double
+pub fn DslistblockPoint::z(Self) -> Double
+
+pub(all) struct DslistblockRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistblockRange::add(Self, Self) -> Self
+pub fn DslistblockRange::copy(Self) -> Self
+pub fn DslistblockRange::fill(Self, Double) -> Self
+pub fn DslistblockRange::get(Self, Int32) -> Double
+pub fn DslistblockRange::len(Self) -> Int32
+pub fn DslistblockRange::max(Self) -> Double
+pub fn DslistblockRange::mean(Self) -> Double
+pub fn DslistblockRange::min(Self) -> Double
+pub fn DslistblockRange::scale(Self, Double) -> Self
+pub fn DslistblockRange::set(Self, Int32, Double) -> Self
+pub fn DslistblockRange::sum(Self) -> Double
+pub fn DslistblockRange::to_string(Self) -> String
+
+pub(all) struct DslistblockSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DslistblockSeries::add(Self, Self) -> Self
+pub fn DslistblockSeries::cumsum(Self) -> Self
+pub fn DslistblockSeries::len(Self) -> Int32
+pub fn DslistblockSeries::max(Self) -> Double
+pub fn DslistblockSeries::mean(Self) -> Double
+pub fn DslistblockSeries::median(Self) -> Double
+pub fn DslistblockSeries::min(Self) -> Double
+pub fn DslistblockSeries::normalize(Self) -> Self
+pub fn DslistblockSeries::range(Self) -> Double
+pub fn DslistblockSeries::scale(Self, Double) -> Self
+pub fn DslistblockSeries::std(Self) -> Double
+pub fn DslistblockSeries::sub(Self, Self) -> Self
+pub fn DslistblockSeries::sum(Self) -> Double
+pub fn DslistblockSeries::to_string(Self) -> String
+pub fn DslistblockSeries::variance(Self) -> Double
+
+pub(all) struct DslistblockSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistblockSlice::add(Self, Self) -> Self
+pub fn DslistblockSlice::copy(Self) -> Self
+pub fn DslistblockSlice::fill(Self, Double) -> Self
+pub fn DslistblockSlice::get(Self, Int32) -> Double
+pub fn DslistblockSlice::len(Self) -> Int32
+pub fn DslistblockSlice::max(Self) -> Double
+pub fn DslistblockSlice::mean(Self) -> Double
+pub fn DslistblockSlice::min(Self) -> Double
+pub fn DslistblockSlice::scale(Self, Double) -> Self
+pub fn DslistblockSlice::set(Self, Int32, Double) -> Self
+pub fn DslistblockSlice::sum(Self) -> Double
+pub fn DslistblockSlice::to_string(Self) -> String
+
+pub(all) struct DslistblockTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistblockTable::add(Self, Self) -> Self
+pub fn DslistblockTable::copy(Self) -> Self
+pub fn DslistblockTable::fill(Self, Double) -> Self
+pub fn DslistblockTable::get(Self, Int32) -> Double
+pub fn DslistblockTable::len(Self) -> Int32
+pub fn DslistblockTable::max(Self) -> Double
+pub fn DslistblockTable::mean(Self) -> Double
+pub fn DslistblockTable::min(Self) -> Double
+pub fn DslistblockTable::scale(Self, Double) -> Self
+pub fn DslistblockTable::set(Self, Int32, Double) -> Self
+pub fn DslistblockTable::sum(Self) -> Double
+pub fn DslistblockTable::to_string(Self) -> String
+
+pub(all) struct DslistblockVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DslistblockVector::add(Self, Self) -> Self
+pub fn DslistblockVector::dist(Self, Self) -> Double
+pub fn DslistblockVector::dot(Self, Self) -> Double
+pub fn DslistblockVector::norm(Self) -> Double
+pub fn DslistblockVector::normalize(Self) -> Self
+pub fn DslistblockVector::scale(Self, Double) -> Self
+pub fn DslistblockVector::sub(Self, Self) -> Self
+pub fn DslistblockVector::to_string(Self) -> String
+
+pub(all) struct DslistblockView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistblockView::add(Self, Self) -> Self
+pub fn DslistblockView::copy(Self) -> Self
+pub fn DslistblockView::fill(Self, Double) -> Self
+pub fn DslistblockView::get(Self, Int32) -> Double
+pub fn DslistblockView::len(Self) -> Int32
+pub fn DslistblockView::max(Self) -> Double
+pub fn DslistblockView::mean(Self) -> Double
+pub fn DslistblockView::min(Self) -> Double
+pub fn DslistblockView::scale(Self, Double) -> Self
+pub fn DslistblockView::set(Self, Int32, Double) -> Self
+pub fn DslistblockView::sum(Self) -> Double
+pub fn DslistblockView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

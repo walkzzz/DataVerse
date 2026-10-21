@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_search_iddfs"
+
+// Values
+pub fn graph_search_iddfs_buffer_make(Int32) -> GraphsearchiddfsBuffer
+
+pub fn graph_search_iddfs_cluster_make(Int32) -> GraphsearchiddfsCluster
+
+pub fn graph_search_iddfs_cursor_make(Int32) -> GraphsearchiddfsCursor
+
+pub fn graph_search_iddfs_edge_make(Int32) -> GraphsearchiddfsEdge
+
+pub fn graph_search_iddfs_frame_make(Int32) -> GraphsearchiddfsFrame
+
+pub fn graph_search_iddfs_graphn_make(Int32) -> GraphsearchiddfsGraphN
+
+pub fn graph_search_iddfs_layer_make(Int32) -> GraphsearchiddfsLayer
+
+pub fn graph_search_iddfs_make_matrix(Int32, Int32, Double) -> GraphsearchiddfsMatrix
+
+pub fn graph_search_iddfs_make_point(Double, Double) -> GraphsearchiddfsPoint
+
+pub fn graph_search_iddfs_make_point3(Double, Double, Double) -> GraphsearchiddfsPoint
+
+pub fn graph_search_iddfs_make_series(Array[Double], String) -> GraphsearchiddfsSeries
+
+pub fn graph_search_iddfs_make_vector(Array[Double]) -> GraphsearchiddfsVector
+
+pub fn graph_search_iddfs_matrix_identity(Int32) -> GraphsearchiddfsMatrix
+
+pub fn graph_search_iddfs_model_make(Int32) -> GraphsearchiddfsModel
+
+pub fn graph_search_iddfs_node_make(Int32) -> GraphsearchiddfsNode
+
+pub fn graph_search_iddfs_path_make(Int32) -> GraphsearchiddfsPath
+
+pub fn graph_search_iddfs_range_make(Int32) -> GraphsearchiddfsRange
+
+pub fn graph_search_iddfs_slice_make(Int32) -> GraphsearchiddfsSlice
+
+pub fn graph_search_iddfs_table_make(Int32) -> GraphsearchiddfsTable
+
+pub fn graph_search_iddfs_vector_zero(Int32) -> GraphsearchiddfsVector
+
+pub fn graph_search_iddfs_view_make(Int32) -> GraphsearchiddfsView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphsearchiddfsBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchiddfsBuffer::add(Self, Self) -> Self
+pub fn GraphsearchiddfsBuffer::copy(Self) -> Self
+pub fn GraphsearchiddfsBuffer::fill(Self, Double) -> Self
+pub fn GraphsearchiddfsBuffer::get(Self, Int32) -> Double
+pub fn GraphsearchiddfsBuffer::len(Self) -> Int32
+pub fn GraphsearchiddfsBuffer::max(Self) -> Double
+pub fn GraphsearchiddfsBuffer::mean(Self) -> Double
+pub fn GraphsearchiddfsBuffer::min(Self) -> Double
+pub fn GraphsearchiddfsBuffer::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphsearchiddfsBuffer::sum(Self) -> Double
+pub fn GraphsearchiddfsBuffer::to_string(Self) -> String
+
+pub(all) struct GraphsearchiddfsCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchiddfsCluster::add(Self, Self) -> Self
+pub fn GraphsearchiddfsCluster::copy(Self) -> Self
+pub fn GraphsearchiddfsCluster::fill(Self, Double) -> Self
+pub fn GraphsearchiddfsCluster::get(Self, Int32) -> Double
+pub fn GraphsearchiddfsCluster::len(Self) -> Int32
+pub fn GraphsearchiddfsCluster::max(Self) -> Double
+pub fn GraphsearchiddfsCluster::mean(Self) -> Double
+pub fn GraphsearchiddfsCluster::min(Self) -> Double
+pub fn GraphsearchiddfsCluster::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsCluster::set(Self, Int32, Double) -> Self
+pub fn GraphsearchiddfsCluster::sum(Self) -> Double
+pub fn GraphsearchiddfsCluster::to_string(Self) -> String
+
+pub(all) struct GraphsearchiddfsCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchiddfsCursor::add(Self, Self) -> Self
+pub fn GraphsearchiddfsCursor::copy(Self) -> Self
+pub fn GraphsearchiddfsCursor::fill(Self, Double) -> Self
+pub fn GraphsearchiddfsCursor::get(Self, Int32) -> Double
+pub fn GraphsearchiddfsCursor::len(Self) -> Int32
+pub fn GraphsearchiddfsCursor::max(Self) -> Double
+pub fn GraphsearchiddfsCursor::mean(Self) -> Double
+pub fn GraphsearchiddfsCursor::min(Self) -> Double
+pub fn GraphsearchiddfsCursor::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsCursor::set(Self, Int32, Double) -> Self
+pub fn GraphsearchiddfsCursor::sum(Self) -> Double
+pub fn GraphsearchiddfsCursor::to_string(Self) -> String
+
+pub(all) struct GraphsearchiddfsEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchiddfsEdge::add(Self, Self) -> Self
+pub fn GraphsearchiddfsEdge::copy(Self) -> Self
+pub fn GraphsearchiddfsEdge::fill(Self, Double) -> Self
+pub fn GraphsearchiddfsEdge::get(Self, Int32) -> Double
+pub fn GraphsearchiddfsEdge::len(Self) -> Int32
+pub fn GraphsearchiddfsEdge::max(Self) -> Double
+pub fn GraphsearchiddfsEdge::mean(Self) -> Double
+pub fn GraphsearchiddfsEdge::min(Self) -> Double
+pub fn GraphsearchiddfsEdge::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsEdge::set(Self, Int32, Double) -> Self
+pub fn GraphsearchiddfsEdge::sum(Self) -> Double
+pub fn GraphsearchiddfsEdge::to_string(Self) -> String
+
+pub(all) struct GraphsearchiddfsFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchiddfsFrame::add(Self, Self) -> Self
+pub fn GraphsearchiddfsFrame::copy(Self) -> Self
+pub fn GraphsearchiddfsFrame::fill(Self, Double) -> Self
+pub fn GraphsearchiddfsFrame::get(Self, Int32) -> Double
+pub fn GraphsearchiddfsFrame::len(Self) -> Int32
+pub fn GraphsearchiddfsFrame::max(Self) -> Double
+pub fn GraphsearchiddfsFrame::mean(Self) -> Double
+pub fn GraphsearchiddfsFrame::min(Self) -> Double
+pub fn GraphsearchiddfsFrame::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsFrame::set(Self, Int32, Double) -> Self
+pub fn GraphsearchiddfsFrame::sum(Self) -> Double
+pub fn GraphsearchiddfsFrame::to_string(Self) -> String
+
+pub(all) struct GraphsearchiddfsGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchiddfsGraphN::add(Self, Self) -> Self
+pub fn GraphsearchiddfsGraphN::copy(Self) -> Self
+pub fn GraphsearchiddfsGraphN::fill(Self, Double) -> Self
+pub fn GraphsearchiddfsGraphN::get(Self, Int32) -> Double
+pub fn GraphsearchiddfsGraphN::len(Self) -> Int32
+pub fn GraphsearchiddfsGraphN::max(Self) -> Double
+pub fn GraphsearchiddfsGraphN::mean(Self) -> Double
+pub fn GraphsearchiddfsGraphN::min(Self) -> Double
+pub fn GraphsearchiddfsGraphN::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphsearchiddfsGraphN::sum(Self) -> Double
+pub fn GraphsearchiddfsGraphN::to_string(Self) -> String
+
+pub(all) struct GraphsearchiddfsLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchiddfsLayer::add(Self, Self) -> Self
+pub fn GraphsearchiddfsLayer::copy(Self) -> Self
+pub fn GraphsearchiddfsLayer::fill(Self, Double) -> Self
+pub fn GraphsearchiddfsLayer::get(Self, Int32) -> Double
+pub fn GraphsearchiddfsLayer::len(Self) -> Int32
+pub fn GraphsearchiddfsLayer::max(Self) -> Double
+pub fn GraphsearchiddfsLayer::mean(Self) -> Double
+pub fn GraphsearchiddfsLayer::min(Self) -> Double
+pub fn GraphsearchiddfsLayer::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsLayer::set(Self, Int32, Double) -> Self
+pub fn GraphsearchiddfsLayer::sum(Self) -> Double
+pub fn GraphsearchiddfsLayer::to_string(Self) -> String
+
+pub(all) struct GraphsearchiddfsMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphsearchiddfsMatrix::add(Self, Self) -> Self
+pub fn GraphsearchiddfsMatrix::det(Self) -> Double
+pub fn GraphsearchiddfsMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphsearchiddfsMatrix::multiply(Self, Self) -> Self
+pub fn GraphsearchiddfsMatrix::norm(Self) -> Double
+pub fn GraphsearchiddfsMatrix::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsMatrix::to_string(Self) -> String
+pub fn GraphsearchiddfsMatrix::trace(Self) -> Double
+pub fn GraphsearchiddfsMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphsearchiddfsModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchiddfsModel::add(Self, Self) -> Self
+pub fn GraphsearchiddfsModel::copy(Self) -> Self
+pub fn GraphsearchiddfsModel::fill(Self, Double) -> Self
+pub fn GraphsearchiddfsModel::get(Self, Int32) -> Double
+pub fn GraphsearchiddfsModel::len(Self) -> Int32
+pub fn GraphsearchiddfsModel::max(Self) -> Double
+pub fn GraphsearchiddfsModel::mean(Self) -> Double
+pub fn GraphsearchiddfsModel::min(Self) -> Double
+pub fn GraphsearchiddfsModel::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsModel::set(Self, Int32, Double) -> Self
+pub fn GraphsearchiddfsModel::sum(Self) -> Double
+pub fn GraphsearchiddfsModel::to_string(Self) -> String
+
+pub(all) struct GraphsearchiddfsNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchiddfsNode::add(Self, Self) -> Self
+pub fn GraphsearchiddfsNode::copy(Self) -> Self
+pub fn GraphsearchiddfsNode::fill(Self, Double) -> Self
+pub fn GraphsearchiddfsNode::get(Self, Int32) -> Double
+pub fn GraphsearchiddfsNode::len(Self) -> Int32
+pub fn GraphsearchiddfsNode::max(Self) -> Double
+pub fn GraphsearchiddfsNode::mean(Self) -> Double
+pub fn GraphsearchiddfsNode::min(Self) -> Double
+pub fn GraphsearchiddfsNode::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsNode::set(Self, Int32, Double) -> Self
+pub fn GraphsearchiddfsNode::sum(Self) -> Double
+pub fn GraphsearchiddfsNode::to_string(Self) -> String
+
+pub(all) struct GraphsearchiddfsPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchiddfsPath::add(Self, Self) -> Self
+pub fn GraphsearchiddfsPath::copy(Self) -> Self
+pub fn GraphsearchiddfsPath::fill(Self, Double) -> Self
+pub fn GraphsearchiddfsPath::get(Self, Int32) -> Double
+pub fn GraphsearchiddfsPath::len(Self) -> Int32
+pub fn GraphsearchiddfsPath::max(Self) -> Double
+pub fn GraphsearchiddfsPath::mean(Self) -> Double
+pub fn GraphsearchiddfsPath::min(Self) -> Double
+pub fn GraphsearchiddfsPath::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsPath::set(Self, Int32, Double) -> Self
+pub fn GraphsearchiddfsPath::sum(Self) -> Double
+pub fn GraphsearchiddfsPath::to_string(Self) -> String
+
+pub(all) struct GraphsearchiddfsPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphsearchiddfsPoint::add(Self, Self) -> Self
+pub fn GraphsearchiddfsPoint::cross(Self, Self) -> Self
+pub fn GraphsearchiddfsPoint::dist(Self, Self) -> Double
+pub fn GraphsearchiddfsPoint::dot(Self, Self) -> Double
+pub fn GraphsearchiddfsPoint::label(Self) -> Int32
+pub fn GraphsearchiddfsPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphsearchiddfsPoint::mid(Self, Self) -> Self
+pub fn GraphsearchiddfsPoint::negate(Self) -> Self
+pub fn GraphsearchiddfsPoint::norm(Self) -> Double
+pub fn GraphsearchiddfsPoint::normalize(Self) -> Self
+pub fn GraphsearchiddfsPoint::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsPoint::sub(Self, Self) -> Self
+pub fn GraphsearchiddfsPoint::to_string(Self) -> String
+pub fn GraphsearchiddfsPoint::x(Self) -> Double
+pub fn GraphsearchiddfsPoint::y(Self) -> Double
+pub fn GraphsearchiddfsPoint::z(Self) -> Double
+
+pub(all) struct GraphsearchiddfsRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchiddfsRange::add(Self, Self) -> Self
+pub fn GraphsearchiddfsRange::copy(Self) -> Self
+pub fn GraphsearchiddfsRange::fill(Self, Double) -> Self
+pub fn GraphsearchiddfsRange::get(Self, Int32) -> Double
+pub fn GraphsearchiddfsRange::len(Self) -> Int32
+pub fn GraphsearchiddfsRange::max(Self) -> Double
+pub fn GraphsearchiddfsRange::mean(Self) -> Double
+pub fn GraphsearchiddfsRange::min(Self) -> Double
+pub fn GraphsearchiddfsRange::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsRange::set(Self, Int32, Double) -> Self
+pub fn GraphsearchiddfsRange::sum(Self) -> Double
+pub fn GraphsearchiddfsRange::to_string(Self) -> String
+
+pub(all) struct GraphsearchiddfsSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphsearchiddfsSeries::add(Self, Self) -> Self
+pub fn GraphsearchiddfsSeries::cumsum(Self) -> Self
+pub fn GraphsearchiddfsSeries::len(Self) -> Int32
+pub fn GraphsearchiddfsSeries::max(Self) -> Double
+pub fn GraphsearchiddfsSeries::mean(Self) -> Double
+pub fn GraphsearchiddfsSeries::median(Self) -> Double
+pub fn GraphsearchiddfsSeries::min(Self) -> Double
+pub fn GraphsearchiddfsSeries::normalize(Self) -> Self
+pub fn GraphsearchiddfsSeries::range(Self) -> Double
+pub fn GraphsearchiddfsSeries::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsSeries::std(Self) -> Double
+pub fn GraphsearchiddfsSeries::sub(Self, Self) -> Self
+pub fn GraphsearchiddfsSeries::sum(Self) -> Double
+pub fn GraphsearchiddfsSeries::to_string(Self) -> String
+pub fn GraphsearchiddfsSeries::variance(Self) -> Double
+
+pub(all) struct GraphsearchiddfsSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchiddfsSlice::add(Self, Self) -> Self
+pub fn GraphsearchiddfsSlice::copy(Self) -> Self
+pub fn GraphsearchiddfsSlice::fill(Self, Double) -> Self
+pub fn GraphsearchiddfsSlice::get(Self, Int32) -> Double
+pub fn GraphsearchiddfsSlice::len(Self) -> Int32
+pub fn GraphsearchiddfsSlice::max(Self) -> Double
+pub fn GraphsearchiddfsSlice::mean(Self) -> Double
+pub fn GraphsearchiddfsSlice::min(Self) -> Double
+pub fn GraphsearchiddfsSlice::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsSlice::set(Self, Int32, Double) -> Self
+pub fn GraphsearchiddfsSlice::sum(Self) -> Double
+pub fn GraphsearchiddfsSlice::to_string(Self) -> String
+
+pub(all) struct GraphsearchiddfsTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchiddfsTable::add(Self, Self) -> Self
+pub fn GraphsearchiddfsTable::copy(Self) -> Self
+pub fn GraphsearchiddfsTable::fill(Self, Double) -> Self
+pub fn GraphsearchiddfsTable::get(Self, Int32) -> Double
+pub fn GraphsearchiddfsTable::len(Self) -> Int32
+pub fn GraphsearchiddfsTable::max(Self) -> Double
+pub fn GraphsearchiddfsTable::mean(Self) -> Double
+pub fn GraphsearchiddfsTable::min(Self) -> Double
+pub fn GraphsearchiddfsTable::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsTable::set(Self, Int32, Double) -> Self
+pub fn GraphsearchiddfsTable::sum(Self) -> Double
+pub fn GraphsearchiddfsTable::to_string(Self) -> String
+
+pub(all) struct GraphsearchiddfsVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphsearchiddfsVector::add(Self, Self) -> Self
+pub fn GraphsearchiddfsVector::dist(Self, Self) -> Double
+pub fn GraphsearchiddfsVector::dot(Self, Self) -> Double
+pub fn GraphsearchiddfsVector::norm(Self) -> Double
+pub fn GraphsearchiddfsVector::normalize(Self) -> Self
+pub fn GraphsearchiddfsVector::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsVector::sub(Self, Self) -> Self
+pub fn GraphsearchiddfsVector::to_string(Self) -> String
+
+pub(all) struct GraphsearchiddfsView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchiddfsView::add(Self, Self) -> Self
+pub fn GraphsearchiddfsView::copy(Self) -> Self
+pub fn GraphsearchiddfsView::fill(Self, Double) -> Self
+pub fn GraphsearchiddfsView::get(Self, Int32) -> Double
+pub fn GraphsearchiddfsView::len(Self) -> Int32
+pub fn GraphsearchiddfsView::max(Self) -> Double
+pub fn GraphsearchiddfsView::mean(Self) -> Double
+pub fn GraphsearchiddfsView::min(Self) -> Double
+pub fn GraphsearchiddfsView::scale(Self, Double) -> Self
+pub fn GraphsearchiddfsView::set(Self, Int32, Double) -> Self
+pub fn GraphsearchiddfsView::sum(Self) -> Double
+pub fn GraphsearchiddfsView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

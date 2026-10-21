@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_tree_mst_kruskal"
+
+// Values
+pub fn graph_tree_mst_kruskal_buffer_make(Int32) -> GraphtreemstkruskalBuffer
+
+pub fn graph_tree_mst_kruskal_cluster_make(Int32) -> GraphtreemstkruskalCluster
+
+pub fn graph_tree_mst_kruskal_cursor_make(Int32) -> GraphtreemstkruskalCursor
+
+pub fn graph_tree_mst_kruskal_edge_make(Int32) -> GraphtreemstkruskalEdge
+
+pub fn graph_tree_mst_kruskal_frame_make(Int32) -> GraphtreemstkruskalFrame
+
+pub fn graph_tree_mst_kruskal_graphn_make(Int32) -> GraphtreemstkruskalGraphN
+
+pub fn graph_tree_mst_kruskal_layer_make(Int32) -> GraphtreemstkruskalLayer
+
+pub fn graph_tree_mst_kruskal_make_matrix(Int32, Int32, Double) -> GraphtreemstkruskalMatrix
+
+pub fn graph_tree_mst_kruskal_make_point(Double, Double) -> GraphtreemstkruskalPoint
+
+pub fn graph_tree_mst_kruskal_make_point3(Double, Double, Double) -> GraphtreemstkruskalPoint
+
+pub fn graph_tree_mst_kruskal_make_series(Array[Double], String) -> GraphtreemstkruskalSeries
+
+pub fn graph_tree_mst_kruskal_make_vector(Array[Double]) -> GraphtreemstkruskalVector
+
+pub fn graph_tree_mst_kruskal_matrix_identity(Int32) -> GraphtreemstkruskalMatrix
+
+pub fn graph_tree_mst_kruskal_model_make(Int32) -> GraphtreemstkruskalModel
+
+pub fn graph_tree_mst_kruskal_node_make(Int32) -> GraphtreemstkruskalNode
+
+pub fn graph_tree_mst_kruskal_path_make(Int32) -> GraphtreemstkruskalPath
+
+pub fn graph_tree_mst_kruskal_range_make(Int32) -> GraphtreemstkruskalRange
+
+pub fn graph_tree_mst_kruskal_slice_make(Int32) -> GraphtreemstkruskalSlice
+
+pub fn graph_tree_mst_kruskal_table_make(Int32) -> GraphtreemstkruskalTable
+
+pub fn graph_tree_mst_kruskal_vector_zero(Int32) -> GraphtreemstkruskalVector
+
+pub fn graph_tree_mst_kruskal_view_make(Int32) -> GraphtreemstkruskalView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphtreemstkruskalBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstkruskalBuffer::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalBuffer::copy(Self) -> Self
+pub fn GraphtreemstkruskalBuffer::fill(Self, Double) -> Self
+pub fn GraphtreemstkruskalBuffer::get(Self, Int32) -> Double
+pub fn GraphtreemstkruskalBuffer::len(Self) -> Int32
+pub fn GraphtreemstkruskalBuffer::max(Self) -> Double
+pub fn GraphtreemstkruskalBuffer::mean(Self) -> Double
+pub fn GraphtreemstkruskalBuffer::min(Self) -> Double
+pub fn GraphtreemstkruskalBuffer::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstkruskalBuffer::sum(Self) -> Double
+pub fn GraphtreemstkruskalBuffer::to_string(Self) -> String
+
+pub(all) struct GraphtreemstkruskalCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstkruskalCluster::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalCluster::copy(Self) -> Self
+pub fn GraphtreemstkruskalCluster::fill(Self, Double) -> Self
+pub fn GraphtreemstkruskalCluster::get(Self, Int32) -> Double
+pub fn GraphtreemstkruskalCluster::len(Self) -> Int32
+pub fn GraphtreemstkruskalCluster::max(Self) -> Double
+pub fn GraphtreemstkruskalCluster::mean(Self) -> Double
+pub fn GraphtreemstkruskalCluster::min(Self) -> Double
+pub fn GraphtreemstkruskalCluster::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalCluster::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstkruskalCluster::sum(Self) -> Double
+pub fn GraphtreemstkruskalCluster::to_string(Self) -> String
+
+pub(all) struct GraphtreemstkruskalCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstkruskalCursor::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalCursor::copy(Self) -> Self
+pub fn GraphtreemstkruskalCursor::fill(Self, Double) -> Self
+pub fn GraphtreemstkruskalCursor::get(Self, Int32) -> Double
+pub fn GraphtreemstkruskalCursor::len(Self) -> Int32
+pub fn GraphtreemstkruskalCursor::max(Self) -> Double
+pub fn GraphtreemstkruskalCursor::mean(Self) -> Double
+pub fn GraphtreemstkruskalCursor::min(Self) -> Double
+pub fn GraphtreemstkruskalCursor::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalCursor::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstkruskalCursor::sum(Self) -> Double
+pub fn GraphtreemstkruskalCursor::to_string(Self) -> String
+
+pub(all) struct GraphtreemstkruskalEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstkruskalEdge::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalEdge::copy(Self) -> Self
+pub fn GraphtreemstkruskalEdge::fill(Self, Double) -> Self
+pub fn GraphtreemstkruskalEdge::get(Self, Int32) -> Double
+pub fn GraphtreemstkruskalEdge::len(Self) -> Int32
+pub fn GraphtreemstkruskalEdge::max(Self) -> Double
+pub fn GraphtreemstkruskalEdge::mean(Self) -> Double
+pub fn GraphtreemstkruskalEdge::min(Self) -> Double
+pub fn GraphtreemstkruskalEdge::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalEdge::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstkruskalEdge::sum(Self) -> Double
+pub fn GraphtreemstkruskalEdge::to_string(Self) -> String
+
+pub(all) struct GraphtreemstkruskalFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstkruskalFrame::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalFrame::copy(Self) -> Self
+pub fn GraphtreemstkruskalFrame::fill(Self, Double) -> Self
+pub fn GraphtreemstkruskalFrame::get(Self, Int32) -> Double
+pub fn GraphtreemstkruskalFrame::len(Self) -> Int32
+pub fn GraphtreemstkruskalFrame::max(Self) -> Double
+pub fn GraphtreemstkruskalFrame::mean(Self) -> Double
+pub fn GraphtreemstkruskalFrame::min(Self) -> Double
+pub fn GraphtreemstkruskalFrame::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalFrame::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstkruskalFrame::sum(Self) -> Double
+pub fn GraphtreemstkruskalFrame::to_string(Self) -> String
+
+pub(all) struct GraphtreemstkruskalGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstkruskalGraphN::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalGraphN::copy(Self) -> Self
+pub fn GraphtreemstkruskalGraphN::fill(Self, Double) -> Self
+pub fn GraphtreemstkruskalGraphN::get(Self, Int32) -> Double
+pub fn GraphtreemstkruskalGraphN::len(Self) -> Int32
+pub fn GraphtreemstkruskalGraphN::max(Self) -> Double
+pub fn GraphtreemstkruskalGraphN::mean(Self) -> Double
+pub fn GraphtreemstkruskalGraphN::min(Self) -> Double
+pub fn GraphtreemstkruskalGraphN::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstkruskalGraphN::sum(Self) -> Double
+pub fn GraphtreemstkruskalGraphN::to_string(Self) -> String
+
+pub(all) struct GraphtreemstkruskalLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstkruskalLayer::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalLayer::copy(Self) -> Self
+pub fn GraphtreemstkruskalLayer::fill(Self, Double) -> Self
+pub fn GraphtreemstkruskalLayer::get(Self, Int32) -> Double
+pub fn GraphtreemstkruskalLayer::len(Self) -> Int32
+pub fn GraphtreemstkruskalLayer::max(Self) -> Double
+pub fn GraphtreemstkruskalLayer::mean(Self) -> Double
+pub fn GraphtreemstkruskalLayer::min(Self) -> Double
+pub fn GraphtreemstkruskalLayer::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalLayer::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstkruskalLayer::sum(Self) -> Double
+pub fn GraphtreemstkruskalLayer::to_string(Self) -> String
+
+pub(all) struct GraphtreemstkruskalMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphtreemstkruskalMatrix::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalMatrix::det(Self) -> Double
+pub fn GraphtreemstkruskalMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphtreemstkruskalMatrix::multiply(Self, Self) -> Self
+pub fn GraphtreemstkruskalMatrix::norm(Self) -> Double
+pub fn GraphtreemstkruskalMatrix::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalMatrix::to_string(Self) -> String
+pub fn GraphtreemstkruskalMatrix::trace(Self) -> Double
+pub fn GraphtreemstkruskalMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphtreemstkruskalModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstkruskalModel::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalModel::copy(Self) -> Self
+pub fn GraphtreemstkruskalModel::fill(Self, Double) -> Self
+pub fn GraphtreemstkruskalModel::get(Self, Int32) -> Double
+pub fn GraphtreemstkruskalModel::len(Self) -> Int32
+pub fn GraphtreemstkruskalModel::max(Self) -> Double
+pub fn GraphtreemstkruskalModel::mean(Self) -> Double
+pub fn GraphtreemstkruskalModel::min(Self) -> Double
+pub fn GraphtreemstkruskalModel::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalModel::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstkruskalModel::sum(Self) -> Double
+pub fn GraphtreemstkruskalModel::to_string(Self) -> String
+
+pub(all) struct GraphtreemstkruskalNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstkruskalNode::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalNode::copy(Self) -> Self
+pub fn GraphtreemstkruskalNode::fill(Self, Double) -> Self
+pub fn GraphtreemstkruskalNode::get(Self, Int32) -> Double
+pub fn GraphtreemstkruskalNode::len(Self) -> Int32
+pub fn GraphtreemstkruskalNode::max(Self) -> Double
+pub fn GraphtreemstkruskalNode::mean(Self) -> Double
+pub fn GraphtreemstkruskalNode::min(Self) -> Double
+pub fn GraphtreemstkruskalNode::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalNode::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstkruskalNode::sum(Self) -> Double
+pub fn GraphtreemstkruskalNode::to_string(Self) -> String
+
+pub(all) struct GraphtreemstkruskalPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstkruskalPath::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalPath::copy(Self) -> Self
+pub fn GraphtreemstkruskalPath::fill(Self, Double) -> Self
+pub fn GraphtreemstkruskalPath::get(Self, Int32) -> Double
+pub fn GraphtreemstkruskalPath::len(Self) -> Int32
+pub fn GraphtreemstkruskalPath::max(Self) -> Double
+pub fn GraphtreemstkruskalPath::mean(Self) -> Double
+pub fn GraphtreemstkruskalPath::min(Self) -> Double
+pub fn GraphtreemstkruskalPath::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalPath::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstkruskalPath::sum(Self) -> Double
+pub fn GraphtreemstkruskalPath::to_string(Self) -> String
+
+pub(all) struct GraphtreemstkruskalPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphtreemstkruskalPoint::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalPoint::cross(Self, Self) -> Self
+pub fn GraphtreemstkruskalPoint::dist(Self, Self) -> Double
+pub fn GraphtreemstkruskalPoint::dot(Self, Self) -> Double
+pub fn GraphtreemstkruskalPoint::label(Self) -> Int32
+pub fn GraphtreemstkruskalPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphtreemstkruskalPoint::mid(Self, Self) -> Self
+pub fn GraphtreemstkruskalPoint::negate(Self) -> Self
+pub fn GraphtreemstkruskalPoint::norm(Self) -> Double
+pub fn GraphtreemstkruskalPoint::normalize(Self) -> Self
+pub fn GraphtreemstkruskalPoint::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalPoint::sub(Self, Self) -> Self
+pub fn GraphtreemstkruskalPoint::to_string(Self) -> String
+pub fn GraphtreemstkruskalPoint::x(Self) -> Double
+pub fn GraphtreemstkruskalPoint::y(Self) -> Double
+pub fn GraphtreemstkruskalPoint::z(Self) -> Double
+
+pub(all) struct GraphtreemstkruskalRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstkruskalRange::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalRange::copy(Self) -> Self
+pub fn GraphtreemstkruskalRange::fill(Self, Double) -> Self
+pub fn GraphtreemstkruskalRange::get(Self, Int32) -> Double
+pub fn GraphtreemstkruskalRange::len(Self) -> Int32
+pub fn GraphtreemstkruskalRange::max(Self) -> Double
+pub fn GraphtreemstkruskalRange::mean(Self) -> Double
+pub fn GraphtreemstkruskalRange::min(Self) -> Double
+pub fn GraphtreemstkruskalRange::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalRange::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstkruskalRange::sum(Self) -> Double
+pub fn GraphtreemstkruskalRange::to_string(Self) -> String
+
+pub(all) struct GraphtreemstkruskalSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphtreemstkruskalSeries::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalSeries::cumsum(Self) -> Self
+pub fn GraphtreemstkruskalSeries::len(Self) -> Int32
+pub fn GraphtreemstkruskalSeries::max(Self) -> Double
+pub fn GraphtreemstkruskalSeries::mean(Self) -> Double
+pub fn GraphtreemstkruskalSeries::median(Self) -> Double
+pub fn GraphtreemstkruskalSeries::min(Self) -> Double
+pub fn GraphtreemstkruskalSeries::normalize(Self) -> Self
+pub fn GraphtreemstkruskalSeries::range(Self) -> Double
+pub fn GraphtreemstkruskalSeries::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalSeries::std(Self) -> Double
+pub fn GraphtreemstkruskalSeries::sub(Self, Self) -> Self
+pub fn GraphtreemstkruskalSeries::sum(Self) -> Double
+pub fn GraphtreemstkruskalSeries::to_string(Self) -> String
+pub fn GraphtreemstkruskalSeries::variance(Self) -> Double
+
+pub(all) struct GraphtreemstkruskalSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstkruskalSlice::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalSlice::copy(Self) -> Self
+pub fn GraphtreemstkruskalSlice::fill(Self, Double) -> Self
+pub fn GraphtreemstkruskalSlice::get(Self, Int32) -> Double
+pub fn GraphtreemstkruskalSlice::len(Self) -> Int32
+pub fn GraphtreemstkruskalSlice::max(Self) -> Double
+pub fn GraphtreemstkruskalSlice::mean(Self) -> Double
+pub fn GraphtreemstkruskalSlice::min(Self) -> Double
+pub fn GraphtreemstkruskalSlice::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalSlice::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstkruskalSlice::sum(Self) -> Double
+pub fn GraphtreemstkruskalSlice::to_string(Self) -> String
+
+pub(all) struct GraphtreemstkruskalTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstkruskalTable::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalTable::copy(Self) -> Self
+pub fn GraphtreemstkruskalTable::fill(Self, Double) -> Self
+pub fn GraphtreemstkruskalTable::get(Self, Int32) -> Double
+pub fn GraphtreemstkruskalTable::len(Self) -> Int32
+pub fn GraphtreemstkruskalTable::max(Self) -> Double
+pub fn GraphtreemstkruskalTable::mean(Self) -> Double
+pub fn GraphtreemstkruskalTable::min(Self) -> Double
+pub fn GraphtreemstkruskalTable::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalTable::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstkruskalTable::sum(Self) -> Double
+pub fn GraphtreemstkruskalTable::to_string(Self) -> String
+
+pub(all) struct GraphtreemstkruskalVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphtreemstkruskalVector::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalVector::dist(Self, Self) -> Double
+pub fn GraphtreemstkruskalVector::dot(Self, Self) -> Double
+pub fn GraphtreemstkruskalVector::norm(Self) -> Double
+pub fn GraphtreemstkruskalVector::normalize(Self) -> Self
+pub fn GraphtreemstkruskalVector::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalVector::sub(Self, Self) -> Self
+pub fn GraphtreemstkruskalVector::to_string(Self) -> String
+
+pub(all) struct GraphtreemstkruskalView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreemstkruskalView::add(Self, Self) -> Self
+pub fn GraphtreemstkruskalView::copy(Self) -> Self
+pub fn GraphtreemstkruskalView::fill(Self, Double) -> Self
+pub fn GraphtreemstkruskalView::get(Self, Int32) -> Double
+pub fn GraphtreemstkruskalView::len(Self) -> Int32
+pub fn GraphtreemstkruskalView::max(Self) -> Double
+pub fn GraphtreemstkruskalView::mean(Self) -> Double
+pub fn GraphtreemstkruskalView::min(Self) -> Double
+pub fn GraphtreemstkruskalView::scale(Self, Double) -> Self
+pub fn GraphtreemstkruskalView::set(Self, Int32, Double) -> Self
+pub fn GraphtreemstkruskalView::sum(Self) -> Double
+pub fn GraphtreemstkruskalView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

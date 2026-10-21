@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/chem_mol_repr_aromatic"
+
+// Values
+pub fn chem_mol_repr_aromatic_buffer_make(Int32) -> ChemmolrepraromaticBuffer
+
+pub fn chem_mol_repr_aromatic_cluster_make(Int32) -> ChemmolrepraromaticCluster
+
+pub fn chem_mol_repr_aromatic_cursor_make(Int32) -> ChemmolrepraromaticCursor
+
+pub fn chem_mol_repr_aromatic_edge_make(Int32) -> ChemmolrepraromaticEdge
+
+pub fn chem_mol_repr_aromatic_frame_make(Int32) -> ChemmolrepraromaticFrame
+
+pub fn chem_mol_repr_aromatic_graphn_make(Int32) -> ChemmolrepraromaticGraphN
+
+pub fn chem_mol_repr_aromatic_layer_make(Int32) -> ChemmolrepraromaticLayer
+
+pub fn chem_mol_repr_aromatic_make_matrix(Int32, Int32, Double) -> ChemmolrepraromaticMatrix
+
+pub fn chem_mol_repr_aromatic_make_point(Double, Double) -> ChemmolrepraromaticPoint
+
+pub fn chem_mol_repr_aromatic_make_point3(Double, Double, Double) -> ChemmolrepraromaticPoint
+
+pub fn chem_mol_repr_aromatic_make_series(Array[Double], String) -> ChemmolrepraromaticSeries
+
+pub fn chem_mol_repr_aromatic_make_vector(Array[Double]) -> ChemmolrepraromaticVector
+
+pub fn chem_mol_repr_aromatic_matrix_identity(Int32) -> ChemmolrepraromaticMatrix
+
+pub fn chem_mol_repr_aromatic_model_make(Int32) -> ChemmolrepraromaticModel
+
+pub fn chem_mol_repr_aromatic_node_make(Int32) -> ChemmolrepraromaticNode
+
+pub fn chem_mol_repr_aromatic_path_make(Int32) -> ChemmolrepraromaticPath
+
+pub fn chem_mol_repr_aromatic_range_make(Int32) -> ChemmolrepraromaticRange
+
+pub fn chem_mol_repr_aromatic_slice_make(Int32) -> ChemmolrepraromaticSlice
+
+pub fn chem_mol_repr_aromatic_table_make(Int32) -> ChemmolrepraromaticTable
+
+pub fn chem_mol_repr_aromatic_vector_zero(Int32) -> ChemmolrepraromaticVector
+
+pub fn chem_mol_repr_aromatic_view_make(Int32) -> ChemmolrepraromaticView
+
+// Errors
+
+// Types and methods
+pub(all) struct ChemmolrepraromaticBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolrepraromaticBuffer::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticBuffer::copy(Self) -> Self
+pub fn ChemmolrepraromaticBuffer::fill(Self, Double) -> Self
+pub fn ChemmolrepraromaticBuffer::get(Self, Int32) -> Double
+pub fn ChemmolrepraromaticBuffer::len(Self) -> Int32
+pub fn ChemmolrepraromaticBuffer::max(Self) -> Double
+pub fn ChemmolrepraromaticBuffer::mean(Self) -> Double
+pub fn ChemmolrepraromaticBuffer::min(Self) -> Double
+pub fn ChemmolrepraromaticBuffer::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticBuffer::set(Self, Int32, Double) -> Self
+pub fn ChemmolrepraromaticBuffer::sum(Self) -> Double
+pub fn ChemmolrepraromaticBuffer::to_string(Self) -> String
+
+pub(all) struct ChemmolrepraromaticCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolrepraromaticCluster::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticCluster::copy(Self) -> Self
+pub fn ChemmolrepraromaticCluster::fill(Self, Double) -> Self
+pub fn ChemmolrepraromaticCluster::get(Self, Int32) -> Double
+pub fn ChemmolrepraromaticCluster::len(Self) -> Int32
+pub fn ChemmolrepraromaticCluster::max(Self) -> Double
+pub fn ChemmolrepraromaticCluster::mean(Self) -> Double
+pub fn ChemmolrepraromaticCluster::min(Self) -> Double
+pub fn ChemmolrepraromaticCluster::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticCluster::set(Self, Int32, Double) -> Self
+pub fn ChemmolrepraromaticCluster::sum(Self) -> Double
+pub fn ChemmolrepraromaticCluster::to_string(Self) -> String
+
+pub(all) struct ChemmolrepraromaticCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolrepraromaticCursor::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticCursor::copy(Self) -> Self
+pub fn ChemmolrepraromaticCursor::fill(Self, Double) -> Self
+pub fn ChemmolrepraromaticCursor::get(Self, Int32) -> Double
+pub fn ChemmolrepraromaticCursor::len(Self) -> Int32
+pub fn ChemmolrepraromaticCursor::max(Self) -> Double
+pub fn ChemmolrepraromaticCursor::mean(Self) -> Double
+pub fn ChemmolrepraromaticCursor::min(Self) -> Double
+pub fn ChemmolrepraromaticCursor::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticCursor::set(Self, Int32, Double) -> Self
+pub fn ChemmolrepraromaticCursor::sum(Self) -> Double
+pub fn ChemmolrepraromaticCursor::to_string(Self) -> String
+
+pub(all) struct ChemmolrepraromaticEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolrepraromaticEdge::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticEdge::copy(Self) -> Self
+pub fn ChemmolrepraromaticEdge::fill(Self, Double) -> Self
+pub fn ChemmolrepraromaticEdge::get(Self, Int32) -> Double
+pub fn ChemmolrepraromaticEdge::len(Self) -> Int32
+pub fn ChemmolrepraromaticEdge::max(Self) -> Double
+pub fn ChemmolrepraromaticEdge::mean(Self) -> Double
+pub fn ChemmolrepraromaticEdge::min(Self) -> Double
+pub fn ChemmolrepraromaticEdge::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticEdge::set(Self, Int32, Double) -> Self
+pub fn ChemmolrepraromaticEdge::sum(Self) -> Double
+pub fn ChemmolrepraromaticEdge::to_string(Self) -> String
+
+pub(all) struct ChemmolrepraromaticFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolrepraromaticFrame::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticFrame::copy(Self) -> Self
+pub fn ChemmolrepraromaticFrame::fill(Self, Double) -> Self
+pub fn ChemmolrepraromaticFrame::get(Self, Int32) -> Double
+pub fn ChemmolrepraromaticFrame::len(Self) -> Int32
+pub fn ChemmolrepraromaticFrame::max(Self) -> Double
+pub fn ChemmolrepraromaticFrame::mean(Self) -> Double
+pub fn ChemmolrepraromaticFrame::min(Self) -> Double
+pub fn ChemmolrepraromaticFrame::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticFrame::set(Self, Int32, Double) -> Self
+pub fn ChemmolrepraromaticFrame::sum(Self) -> Double
+pub fn ChemmolrepraromaticFrame::to_string(Self) -> String
+
+pub(all) struct ChemmolrepraromaticGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolrepraromaticGraphN::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticGraphN::copy(Self) -> Self
+pub fn ChemmolrepraromaticGraphN::fill(Self, Double) -> Self
+pub fn ChemmolrepraromaticGraphN::get(Self, Int32) -> Double
+pub fn ChemmolrepraromaticGraphN::len(Self) -> Int32
+pub fn ChemmolrepraromaticGraphN::max(Self) -> Double
+pub fn ChemmolrepraromaticGraphN::mean(Self) -> Double
+pub fn ChemmolrepraromaticGraphN::min(Self) -> Double
+pub fn ChemmolrepraromaticGraphN::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticGraphN::set(Self, Int32, Double) -> Self
+pub fn ChemmolrepraromaticGraphN::sum(Self) -> Double
+pub fn ChemmolrepraromaticGraphN::to_string(Self) -> String
+
+pub(all) struct ChemmolrepraromaticLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolrepraromaticLayer::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticLayer::copy(Self) -> Self
+pub fn ChemmolrepraromaticLayer::fill(Self, Double) -> Self
+pub fn ChemmolrepraromaticLayer::get(Self, Int32) -> Double
+pub fn ChemmolrepraromaticLayer::len(Self) -> Int32
+pub fn ChemmolrepraromaticLayer::max(Self) -> Double
+pub fn ChemmolrepraromaticLayer::mean(Self) -> Double
+pub fn ChemmolrepraromaticLayer::min(Self) -> Double
+pub fn ChemmolrepraromaticLayer::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticLayer::set(Self, Int32, Double) -> Self
+pub fn ChemmolrepraromaticLayer::sum(Self) -> Double
+pub fn ChemmolrepraromaticLayer::to_string(Self) -> String
+
+pub(all) struct ChemmolrepraromaticMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ChemmolrepraromaticMatrix::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticMatrix::det(Self) -> Double
+pub fn ChemmolrepraromaticMatrix::get(Self, Int32, Int32) -> Double
+pub fn ChemmolrepraromaticMatrix::multiply(Self, Self) -> Self
+pub fn ChemmolrepraromaticMatrix::norm(Self) -> Double
+pub fn ChemmolrepraromaticMatrix::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticMatrix::to_string(Self) -> String
+pub fn ChemmolrepraromaticMatrix::trace(Self) -> Double
+pub fn ChemmolrepraromaticMatrix::transpose(Self) -> Self
+
+pub(all) struct ChemmolrepraromaticModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolrepraromaticModel::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticModel::copy(Self) -> Self
+pub fn ChemmolrepraromaticModel::fill(Self, Double) -> Self
+pub fn ChemmolrepraromaticModel::get(Self, Int32) -> Double
+pub fn ChemmolrepraromaticModel::len(Self) -> Int32
+pub fn ChemmolrepraromaticModel::max(Self) -> Double
+pub fn ChemmolrepraromaticModel::mean(Self) -> Double
+pub fn ChemmolrepraromaticModel::min(Self) -> Double
+pub fn ChemmolrepraromaticModel::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticModel::set(Self, Int32, Double) -> Self
+pub fn ChemmolrepraromaticModel::sum(Self) -> Double
+pub fn ChemmolrepraromaticModel::to_string(Self) -> String
+
+pub(all) struct ChemmolrepraromaticNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolrepraromaticNode::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticNode::copy(Self) -> Self
+pub fn ChemmolrepraromaticNode::fill(Self, Double) -> Self
+pub fn ChemmolrepraromaticNode::get(Self, Int32) -> Double
+pub fn ChemmolrepraromaticNode::len(Self) -> Int32
+pub fn ChemmolrepraromaticNode::max(Self) -> Double
+pub fn ChemmolrepraromaticNode::mean(Self) -> Double
+pub fn ChemmolrepraromaticNode::min(Self) -> Double
+pub fn ChemmolrepraromaticNode::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticNode::set(Self, Int32, Double) -> Self
+pub fn ChemmolrepraromaticNode::sum(Self) -> Double
+pub fn ChemmolrepraromaticNode::to_string(Self) -> String
+
+pub(all) struct ChemmolrepraromaticPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolrepraromaticPath::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticPath::copy(Self) -> Self
+pub fn ChemmolrepraromaticPath::fill(Self, Double) -> Self
+pub fn ChemmolrepraromaticPath::get(Self, Int32) -> Double
+pub fn ChemmolrepraromaticPath::len(Self) -> Int32
+pub fn ChemmolrepraromaticPath::max(Self) -> Double
+pub fn ChemmolrepraromaticPath::mean(Self) -> Double
+pub fn ChemmolrepraromaticPath::min(Self) -> Double
+pub fn ChemmolrepraromaticPath::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticPath::set(Self, Int32, Double) -> Self
+pub fn ChemmolrepraromaticPath::sum(Self) -> Double
+pub fn ChemmolrepraromaticPath::to_string(Self) -> String
+
+pub(all) struct ChemmolrepraromaticPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ChemmolrepraromaticPoint::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticPoint::cross(Self, Self) -> Self
+pub fn ChemmolrepraromaticPoint::dist(Self, Self) -> Double
+pub fn ChemmolrepraromaticPoint::dot(Self, Self) -> Double
+pub fn ChemmolrepraromaticPoint::label(Self) -> Int32
+pub fn ChemmolrepraromaticPoint::lerp(Self, Self, Double) -> Self
+pub fn ChemmolrepraromaticPoint::mid(Self, Self) -> Self
+pub fn ChemmolrepraromaticPoint::negate(Self) -> Self
+pub fn ChemmolrepraromaticPoint::norm(Self) -> Double
+pub fn ChemmolrepraromaticPoint::normalize(Self) -> Self
+pub fn ChemmolrepraromaticPoint::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticPoint::sub(Self, Self) -> Self
+pub fn ChemmolrepraromaticPoint::to_string(Self) -> String
+pub fn ChemmolrepraromaticPoint::x(Self) -> Double
+pub fn ChemmolrepraromaticPoint::y(Self) -> Double
+pub fn ChemmolrepraromaticPoint::z(Self) -> Double
+
+pub(all) struct ChemmolrepraromaticRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolrepraromaticRange::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticRange::copy(Self) -> Self
+pub fn ChemmolrepraromaticRange::fill(Self, Double) -> Self
+pub fn ChemmolrepraromaticRange::get(Self, Int32) -> Double
+pub fn ChemmolrepraromaticRange::len(Self) -> Int32
+pub fn ChemmolrepraromaticRange::max(Self) -> Double
+pub fn ChemmolrepraromaticRange::mean(Self) -> Double
+pub fn ChemmolrepraromaticRange::min(Self) -> Double
+pub fn ChemmolrepraromaticRange::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticRange::set(Self, Int32, Double) -> Self
+pub fn ChemmolrepraromaticRange::sum(Self) -> Double
+pub fn ChemmolrepraromaticRange::to_string(Self) -> String
+
+pub(all) struct ChemmolrepraromaticSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ChemmolrepraromaticSeries::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticSeries::cumsum(Self) -> Self
+pub fn ChemmolrepraromaticSeries::len(Self) -> Int32
+pub fn ChemmolrepraromaticSeries::max(Self) -> Double
+pub fn ChemmolrepraromaticSeries::mean(Self) -> Double
+pub fn ChemmolrepraromaticSeries::median(Self) -> Double
+pub fn ChemmolrepraromaticSeries::min(Self) -> Double
+pub fn ChemmolrepraromaticSeries::normalize(Self) -> Self
+pub fn ChemmolrepraromaticSeries::range(Self) -> Double
+pub fn ChemmolrepraromaticSeries::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticSeries::std(Self) -> Double
+pub fn ChemmolrepraromaticSeries::sub(Self, Self) -> Self
+pub fn ChemmolrepraromaticSeries::sum(Self) -> Double
+pub fn ChemmolrepraromaticSeries::to_string(Self) -> String
+pub fn ChemmolrepraromaticSeries::variance(Self) -> Double
+
+pub(all) struct ChemmolrepraromaticSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolrepraromaticSlice::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticSlice::copy(Self) -> Self
+pub fn ChemmolrepraromaticSlice::fill(Self, Double) -> Self
+pub fn ChemmolrepraromaticSlice::get(Self, Int32) -> Double
+pub fn ChemmolrepraromaticSlice::len(Self) -> Int32
+pub fn ChemmolrepraromaticSlice::max(Self) -> Double
+pub fn ChemmolrepraromaticSlice::mean(Self) -> Double
+pub fn ChemmolrepraromaticSlice::min(Self) -> Double
+pub fn ChemmolrepraromaticSlice::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticSlice::set(Self, Int32, Double) -> Self
+pub fn ChemmolrepraromaticSlice::sum(Self) -> Double
+pub fn ChemmolrepraromaticSlice::to_string(Self) -> String
+
+pub(all) struct ChemmolrepraromaticTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolrepraromaticTable::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticTable::copy(Self) -> Self
+pub fn ChemmolrepraromaticTable::fill(Self, Double) -> Self
+pub fn ChemmolrepraromaticTable::get(Self, Int32) -> Double
+pub fn ChemmolrepraromaticTable::len(Self) -> Int32
+pub fn ChemmolrepraromaticTable::max(Self) -> Double
+pub fn ChemmolrepraromaticTable::mean(Self) -> Double
+pub fn ChemmolrepraromaticTable::min(Self) -> Double
+pub fn ChemmolrepraromaticTable::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticTable::set(Self, Int32, Double) -> Self
+pub fn ChemmolrepraromaticTable::sum(Self) -> Double
+pub fn ChemmolrepraromaticTable::to_string(Self) -> String
+
+pub(all) struct ChemmolrepraromaticVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ChemmolrepraromaticVector::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticVector::dist(Self, Self) -> Double
+pub fn ChemmolrepraromaticVector::dot(Self, Self) -> Double
+pub fn ChemmolrepraromaticVector::norm(Self) -> Double
+pub fn ChemmolrepraromaticVector::normalize(Self) -> Self
+pub fn ChemmolrepraromaticVector::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticVector::sub(Self, Self) -> Self
+pub fn ChemmolrepraromaticVector::to_string(Self) -> String
+
+pub(all) struct ChemmolrepraromaticView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolrepraromaticView::add(Self, Self) -> Self
+pub fn ChemmolrepraromaticView::copy(Self) -> Self
+pub fn ChemmolrepraromaticView::fill(Self, Double) -> Self
+pub fn ChemmolrepraromaticView::get(Self, Int32) -> Double
+pub fn ChemmolrepraromaticView::len(Self) -> Int32
+pub fn ChemmolrepraromaticView::max(Self) -> Double
+pub fn ChemmolrepraromaticView::mean(Self) -> Double
+pub fn ChemmolrepraromaticView::min(Self) -> Double
+pub fn ChemmolrepraromaticView::scale(Self, Double) -> Self
+pub fn ChemmolrepraromaticView::set(Self, Int32, Double) -> Self
+pub fn ChemmolrepraromaticView::sum(Self) -> Double
+pub fn ChemmolrepraromaticView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

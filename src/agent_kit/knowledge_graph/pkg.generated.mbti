@@ -1,0 +1,240 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/knowledge_graph"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn kg_add_attribute(KnowledgeGraph, String, String, String) -> KnowledgeGraph
+
+pub fn kg_add_entity(KnowledgeGraph, Entity) -> KnowledgeGraph
+
+pub fn kg_add_relation(KnowledgeGraph, Relation) -> KnowledgeGraph
+
+pub fn kg_complEx(Array[Double], Array[Double], Array[Double], Array[Double], Array[Double], Array[Double]) -> Double
+
+pub fn kg_completion(KnowledgeGraph, Embedding) -> Array[Triple]
+
+pub fn kg_consistent(KnowledgeGraph) -> Bool
+
+pub fn kg_distMult(Array[Double], Array[Double], Array[Double]) -> Double
+
+pub fn kg_embedding(String, Int32) -> Embedding
+
+pub fn kg_entail(KnowledgeGraph, Triple) -> Bool
+
+pub fn kg_entity_link(KnowledgeGraph, String) -> String?
+
+pub fn kg_federate_query(KGFederation, SPARQLQuery) -> Array[Array[String]]
+
+pub fn kg_federate_results(Array[Array[Array[String]]]) -> Array[Array[String]]
+
+pub fn kg_federation(String) -> KGFederation
+
+pub fn kg_infer(KnowledgeGraph, Array[(String, String)]) -> KnowledgeGraph
+
+pub fn kg_instance_check(KnowledgeGraph, String, String) -> Bool
+
+pub fn kg_merge(KnowledgeGraph, KnowledgeGraph) -> KnowledgeGraph
+
+pub fn kg_missing_links(KnowledgeGraph, Double) -> Array[Triple]
+
+pub fn kg_neighbors(KnowledgeGraph, String) -> Array[String]
+
+pub fn kg_paths(KnowledgeGraph, String, String, Int32) -> Array[Array[String]]
+
+pub fn kg_predict_entity(Embedding, String, String) -> String?
+
+pub fn kg_predict_relation(Embedding, String, String) -> String?
+
+pub fn kg_query_attribute(KnowledgeGraph, String, String) -> String?
+
+pub fn kg_query_entity(KnowledgeGraph, String) -> Entity?
+
+pub fn kg_query_relation(KnowledgeGraph, String) -> Relation?
+
+pub fn kg_rank_score(Embedding, Triple) -> Int32
+
+pub fn kg_reflexive_closure(KnowledgeGraph, String) -> KnowledgeGraph
+
+pub fn kg_relation_extract(String) -> Array[Triple]
+
+pub fn kg_rotateE(Array[Double], Array[Double], Array[Double]) -> Double
+
+pub fn kg_schema(String) -> Schema
+
+pub fn kg_score_triple(Embedding, String, String, String) -> Double
+
+pub fn kg_shacl(String) -> SHACL
+
+pub fn kg_shortest_path(KnowledgeGraph, String, String) -> Array[String]
+
+pub fn kg_subclass_check(Ontology, String, String) -> Bool
+
+pub fn kg_subgraph(KnowledgeGraph, Array[String]) -> KnowledgeGraph
+
+pub fn kg_supergraph(KnowledgeGraph, KnowledgeGraph) -> KnowledgeGraph
+
+pub fn kg_symmetric_closure(KnowledgeGraph, String) -> KnowledgeGraph
+
+pub fn kg_train_embedding(KnowledgeGraph, Int32, Int32) -> Embedding
+
+pub fn kg_transE(Array[Double], Array[Double], Array[Double]) -> Double
+
+pub fn kg_transH(Array[Double], Array[Double], Array[Double], Array[Double]) -> Double
+
+pub fn kg_transitive_closure(KnowledgeGraph, String) -> KnowledgeGraph
+
+pub fn kg_triple_validate(KnowledgeGraph, Triple) -> Bool
+
+pub fn kg_type_check(KnowledgeGraph, String, String) -> Bool
+
+pub fn kg_validate_schema(KnowledgeGraph, Schema) -> Bool
+
+pub fn knowledge_graph_id() -> String
+
+pub fn make_kg(String) -> KnowledgeGraph
+
+pub fn make_ontology(String) -> Ontology
+
+pub fn make_rdf_triple(String, String, String) -> RDFTriple
+
+pub fn make_reasoner(String) -> Reasoner
+
+pub fn make_sparql_query(String, Array[Triple], Array[String]) -> SPARQLQuery
+
+pub fn ontology_classes(Ontology) -> Array[String]
+
+pub fn ontology_hierarchy(Ontology) -> Array[(String, String)]
+
+pub fn rdf_object(RDFTriple) -> String
+
+pub fn rdf_predicate(RDFTriple) -> String
+
+pub fn rdf_subject(RDFTriple) -> String
+
+pub fn reason_backward(Reasoner, Triple) -> Bool
+
+pub fn reason_forward(Reasoner, Triple) -> Array[Triple]
+
+pub fn sparql_execute(KnowledgeGraph, SPARQLQuery) -> Array[Array[String]]
+
+pub fn sparql_results(Array[Array[String]]) -> String
+
+// Errors
+
+// Types and methods
+pub struct Embedding {
+  emb_id : String
+  entity_embeddings : Array[(String, Array[Double])]
+  relation_embeddings : Array[(String, Array[Double])]
+  dim : Int32
+} derive(Eq, @debug.Debug)
+pub fn Embedding::equal(Self, Self) -> Bool
+pub fn Embedding::not_equal(Self, Self) -> Bool
+pub fn Embedding::to_repr(Self) -> @debug.Repr
+
+pub struct Entity {
+  entity_id : String
+  entity_type : String
+  attributes : Array[(String, String)]
+} derive(Eq, @debug.Debug)
+pub fn Entity::equal(Self, Self) -> Bool
+pub fn Entity::not_equal(Self, Self) -> Bool
+pub fn Entity::to_repr(Self) -> @debug.Repr
+
+pub struct KGFederation {
+  fed_id : String
+  graphs : Array[KnowledgeGraph]
+} derive(Eq, @debug.Debug)
+pub fn KGFederation::equal(Self, Self) -> Bool
+pub fn KGFederation::not_equal(Self, Self) -> Bool
+pub fn KGFederation::to_repr(Self) -> @debug.Repr
+
+pub struct KnowledgeGraph {
+  kg_id : String
+  entities : Array[Entity]
+  relations : Array[Relation]
+  triples : Array[Triple]
+} derive(Eq, @debug.Debug)
+pub fn KnowledgeGraph::equal(Self, Self) -> Bool
+pub fn KnowledgeGraph::not_equal(Self, Self) -> Bool
+pub fn KnowledgeGraph::to_repr(Self) -> @debug.Repr
+
+pub struct Ontology {
+  ontology_id : String
+  classes : Array[String]
+  hierarchy : Array[(String, String)]
+} derive(Eq, @debug.Debug)
+pub fn Ontology::equal(Self, Self) -> Bool
+pub fn Ontology::not_equal(Self, Self) -> Bool
+pub fn Ontology::to_repr(Self) -> @debug.Repr
+
+pub struct RDFTriple {
+  subject : String
+  predicate : String
+  object : String
+} derive(Eq, @debug.Debug)
+pub fn RDFTriple::equal(Self, Self) -> Bool
+pub fn RDFTriple::not_equal(Self, Self) -> Bool
+pub fn RDFTriple::to_repr(Self) -> @debug.Repr
+
+pub struct Reasoner {
+  reasoner_id : String
+  rules : Array[(String, String)]
+  facts : Array[Triple]
+} derive(Eq, @debug.Debug)
+pub fn Reasoner::equal(Self, Self) -> Bool
+pub fn Reasoner::not_equal(Self, Self) -> Bool
+pub fn Reasoner::to_repr(Self) -> @debug.Repr
+
+pub struct Relation {
+  relation_id : String
+  source_type : String
+  target_type : String
+  symmetric : Bool
+} derive(Eq, @debug.Debug)
+pub fn Relation::equal(Self, Self) -> Bool
+pub fn Relation::not_equal(Self, Self) -> Bool
+pub fn Relation::to_repr(Self) -> @debug.Repr
+
+pub struct SHACL {
+  shacl_id : String
+  shapes : Array[(String, String)]
+  min_count : Array[(String, Int32)]
+} derive(Eq, @debug.Debug)
+pub fn SHACL::equal(Self, Self) -> Bool
+pub fn SHACL::not_equal(Self, Self) -> Bool
+pub fn SHACL::to_repr(Self) -> @debug.Repr
+
+pub struct SPARQLQuery {
+  query_id : String
+  patterns : Array[Triple]
+  select_vars : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn SPARQLQuery::equal(Self, Self) -> Bool
+pub fn SPARQLQuery::not_equal(Self, Self) -> Bool
+pub fn SPARQLQuery::to_repr(Self) -> @debug.Repr
+
+pub struct Schema {
+  schema_id : String
+  type_constraints : Array[(String, String)]
+  relation_constraints : Array[(String, String, String)]
+} derive(Eq, @debug.Debug)
+pub fn Schema::equal(Self, Self) -> Bool
+pub fn Schema::not_equal(Self, Self) -> Bool
+pub fn Schema::to_repr(Self) -> @debug.Repr
+
+pub struct Triple {
+  subject : String
+  predicate : String
+  object : String
+} derive(Eq, @debug.Debug)
+pub fn Triple::equal(Self, Self) -> Bool
+pub fn Triple::not_equal(Self, Self) -> Bool
+pub fn Triple::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

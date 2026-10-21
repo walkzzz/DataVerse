@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/bio_phylo_consensus"
+
+// Values
+pub fn bio_phylo_consensus_buffer_make(Int32) -> BiophyloconsensusBuffer
+
+pub fn bio_phylo_consensus_cluster_make(Int32) -> BiophyloconsensusCluster
+
+pub fn bio_phylo_consensus_cursor_make(Int32) -> BiophyloconsensusCursor
+
+pub fn bio_phylo_consensus_edge_make(Int32) -> BiophyloconsensusEdge
+
+pub fn bio_phylo_consensus_frame_make(Int32) -> BiophyloconsensusFrame
+
+pub fn bio_phylo_consensus_graphn_make(Int32) -> BiophyloconsensusGraphN
+
+pub fn bio_phylo_consensus_layer_make(Int32) -> BiophyloconsensusLayer
+
+pub fn bio_phylo_consensus_make_matrix(Int32, Int32, Double) -> BiophyloconsensusMatrix
+
+pub fn bio_phylo_consensus_make_point(Double, Double) -> BiophyloconsensusPoint
+
+pub fn bio_phylo_consensus_make_point3(Double, Double, Double) -> BiophyloconsensusPoint
+
+pub fn bio_phylo_consensus_make_series(Array[Double], String) -> BiophyloconsensusSeries
+
+pub fn bio_phylo_consensus_make_vector(Array[Double]) -> BiophyloconsensusVector
+
+pub fn bio_phylo_consensus_matrix_identity(Int32) -> BiophyloconsensusMatrix
+
+pub fn bio_phylo_consensus_model_make(Int32) -> BiophyloconsensusModel
+
+pub fn bio_phylo_consensus_node_make(Int32) -> BiophyloconsensusNode
+
+pub fn bio_phylo_consensus_path_make(Int32) -> BiophyloconsensusPath
+
+pub fn bio_phylo_consensus_range_make(Int32) -> BiophyloconsensusRange
+
+pub fn bio_phylo_consensus_slice_make(Int32) -> BiophyloconsensusSlice
+
+pub fn bio_phylo_consensus_table_make(Int32) -> BiophyloconsensusTable
+
+pub fn bio_phylo_consensus_vector_zero(Int32) -> BiophyloconsensusVector
+
+pub fn bio_phylo_consensus_view_make(Int32) -> BiophyloconsensusView
+
+// Errors
+
+// Types and methods
+pub(all) struct BiophyloconsensusBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloconsensusBuffer::add(Self, Self) -> Self
+pub fn BiophyloconsensusBuffer::copy(Self) -> Self
+pub fn BiophyloconsensusBuffer::fill(Self, Double) -> Self
+pub fn BiophyloconsensusBuffer::get(Self, Int32) -> Double
+pub fn BiophyloconsensusBuffer::len(Self) -> Int32
+pub fn BiophyloconsensusBuffer::max(Self) -> Double
+pub fn BiophyloconsensusBuffer::mean(Self) -> Double
+pub fn BiophyloconsensusBuffer::min(Self) -> Double
+pub fn BiophyloconsensusBuffer::scale(Self, Double) -> Self
+pub fn BiophyloconsensusBuffer::set(Self, Int32, Double) -> Self
+pub fn BiophyloconsensusBuffer::sum(Self) -> Double
+pub fn BiophyloconsensusBuffer::to_string(Self) -> String
+
+pub(all) struct BiophyloconsensusCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloconsensusCluster::add(Self, Self) -> Self
+pub fn BiophyloconsensusCluster::copy(Self) -> Self
+pub fn BiophyloconsensusCluster::fill(Self, Double) -> Self
+pub fn BiophyloconsensusCluster::get(Self, Int32) -> Double
+pub fn BiophyloconsensusCluster::len(Self) -> Int32
+pub fn BiophyloconsensusCluster::max(Self) -> Double
+pub fn BiophyloconsensusCluster::mean(Self) -> Double
+pub fn BiophyloconsensusCluster::min(Self) -> Double
+pub fn BiophyloconsensusCluster::scale(Self, Double) -> Self
+pub fn BiophyloconsensusCluster::set(Self, Int32, Double) -> Self
+pub fn BiophyloconsensusCluster::sum(Self) -> Double
+pub fn BiophyloconsensusCluster::to_string(Self) -> String
+
+pub(all) struct BiophyloconsensusCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloconsensusCursor::add(Self, Self) -> Self
+pub fn BiophyloconsensusCursor::copy(Self) -> Self
+pub fn BiophyloconsensusCursor::fill(Self, Double) -> Self
+pub fn BiophyloconsensusCursor::get(Self, Int32) -> Double
+pub fn BiophyloconsensusCursor::len(Self) -> Int32
+pub fn BiophyloconsensusCursor::max(Self) -> Double
+pub fn BiophyloconsensusCursor::mean(Self) -> Double
+pub fn BiophyloconsensusCursor::min(Self) -> Double
+pub fn BiophyloconsensusCursor::scale(Self, Double) -> Self
+pub fn BiophyloconsensusCursor::set(Self, Int32, Double) -> Self
+pub fn BiophyloconsensusCursor::sum(Self) -> Double
+pub fn BiophyloconsensusCursor::to_string(Self) -> String
+
+pub(all) struct BiophyloconsensusEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloconsensusEdge::add(Self, Self) -> Self
+pub fn BiophyloconsensusEdge::copy(Self) -> Self
+pub fn BiophyloconsensusEdge::fill(Self, Double) -> Self
+pub fn BiophyloconsensusEdge::get(Self, Int32) -> Double
+pub fn BiophyloconsensusEdge::len(Self) -> Int32
+pub fn BiophyloconsensusEdge::max(Self) -> Double
+pub fn BiophyloconsensusEdge::mean(Self) -> Double
+pub fn BiophyloconsensusEdge::min(Self) -> Double
+pub fn BiophyloconsensusEdge::scale(Self, Double) -> Self
+pub fn BiophyloconsensusEdge::set(Self, Int32, Double) -> Self
+pub fn BiophyloconsensusEdge::sum(Self) -> Double
+pub fn BiophyloconsensusEdge::to_string(Self) -> String
+
+pub(all) struct BiophyloconsensusFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloconsensusFrame::add(Self, Self) -> Self
+pub fn BiophyloconsensusFrame::copy(Self) -> Self
+pub fn BiophyloconsensusFrame::fill(Self, Double) -> Self
+pub fn BiophyloconsensusFrame::get(Self, Int32) -> Double
+pub fn BiophyloconsensusFrame::len(Self) -> Int32
+pub fn BiophyloconsensusFrame::max(Self) -> Double
+pub fn BiophyloconsensusFrame::mean(Self) -> Double
+pub fn BiophyloconsensusFrame::min(Self) -> Double
+pub fn BiophyloconsensusFrame::scale(Self, Double) -> Self
+pub fn BiophyloconsensusFrame::set(Self, Int32, Double) -> Self
+pub fn BiophyloconsensusFrame::sum(Self) -> Double
+pub fn BiophyloconsensusFrame::to_string(Self) -> String
+
+pub(all) struct BiophyloconsensusGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloconsensusGraphN::add(Self, Self) -> Self
+pub fn BiophyloconsensusGraphN::copy(Self) -> Self
+pub fn BiophyloconsensusGraphN::fill(Self, Double) -> Self
+pub fn BiophyloconsensusGraphN::get(Self, Int32) -> Double
+pub fn BiophyloconsensusGraphN::len(Self) -> Int32
+pub fn BiophyloconsensusGraphN::max(Self) -> Double
+pub fn BiophyloconsensusGraphN::mean(Self) -> Double
+pub fn BiophyloconsensusGraphN::min(Self) -> Double
+pub fn BiophyloconsensusGraphN::scale(Self, Double) -> Self
+pub fn BiophyloconsensusGraphN::set(Self, Int32, Double) -> Self
+pub fn BiophyloconsensusGraphN::sum(Self) -> Double
+pub fn BiophyloconsensusGraphN::to_string(Self) -> String
+
+pub(all) struct BiophyloconsensusLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloconsensusLayer::add(Self, Self) -> Self
+pub fn BiophyloconsensusLayer::copy(Self) -> Self
+pub fn BiophyloconsensusLayer::fill(Self, Double) -> Self
+pub fn BiophyloconsensusLayer::get(Self, Int32) -> Double
+pub fn BiophyloconsensusLayer::len(Self) -> Int32
+pub fn BiophyloconsensusLayer::max(Self) -> Double
+pub fn BiophyloconsensusLayer::mean(Self) -> Double
+pub fn BiophyloconsensusLayer::min(Self) -> Double
+pub fn BiophyloconsensusLayer::scale(Self, Double) -> Self
+pub fn BiophyloconsensusLayer::set(Self, Int32, Double) -> Self
+pub fn BiophyloconsensusLayer::sum(Self) -> Double
+pub fn BiophyloconsensusLayer::to_string(Self) -> String
+
+pub(all) struct BiophyloconsensusMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn BiophyloconsensusMatrix::add(Self, Self) -> Self
+pub fn BiophyloconsensusMatrix::det(Self) -> Double
+pub fn BiophyloconsensusMatrix::get(Self, Int32, Int32) -> Double
+pub fn BiophyloconsensusMatrix::multiply(Self, Self) -> Self
+pub fn BiophyloconsensusMatrix::norm(Self) -> Double
+pub fn BiophyloconsensusMatrix::scale(Self, Double) -> Self
+pub fn BiophyloconsensusMatrix::to_string(Self) -> String
+pub fn BiophyloconsensusMatrix::trace(Self) -> Double
+pub fn BiophyloconsensusMatrix::transpose(Self) -> Self
+
+pub(all) struct BiophyloconsensusModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloconsensusModel::add(Self, Self) -> Self
+pub fn BiophyloconsensusModel::copy(Self) -> Self
+pub fn BiophyloconsensusModel::fill(Self, Double) -> Self
+pub fn BiophyloconsensusModel::get(Self, Int32) -> Double
+pub fn BiophyloconsensusModel::len(Self) -> Int32
+pub fn BiophyloconsensusModel::max(Self) -> Double
+pub fn BiophyloconsensusModel::mean(Self) -> Double
+pub fn BiophyloconsensusModel::min(Self) -> Double
+pub fn BiophyloconsensusModel::scale(Self, Double) -> Self
+pub fn BiophyloconsensusModel::set(Self, Int32, Double) -> Self
+pub fn BiophyloconsensusModel::sum(Self) -> Double
+pub fn BiophyloconsensusModel::to_string(Self) -> String
+
+pub(all) struct BiophyloconsensusNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloconsensusNode::add(Self, Self) -> Self
+pub fn BiophyloconsensusNode::copy(Self) -> Self
+pub fn BiophyloconsensusNode::fill(Self, Double) -> Self
+pub fn BiophyloconsensusNode::get(Self, Int32) -> Double
+pub fn BiophyloconsensusNode::len(Self) -> Int32
+pub fn BiophyloconsensusNode::max(Self) -> Double
+pub fn BiophyloconsensusNode::mean(Self) -> Double
+pub fn BiophyloconsensusNode::min(Self) -> Double
+pub fn BiophyloconsensusNode::scale(Self, Double) -> Self
+pub fn BiophyloconsensusNode::set(Self, Int32, Double) -> Self
+pub fn BiophyloconsensusNode::sum(Self) -> Double
+pub fn BiophyloconsensusNode::to_string(Self) -> String
+
+pub(all) struct BiophyloconsensusPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloconsensusPath::add(Self, Self) -> Self
+pub fn BiophyloconsensusPath::copy(Self) -> Self
+pub fn BiophyloconsensusPath::fill(Self, Double) -> Self
+pub fn BiophyloconsensusPath::get(Self, Int32) -> Double
+pub fn BiophyloconsensusPath::len(Self) -> Int32
+pub fn BiophyloconsensusPath::max(Self) -> Double
+pub fn BiophyloconsensusPath::mean(Self) -> Double
+pub fn BiophyloconsensusPath::min(Self) -> Double
+pub fn BiophyloconsensusPath::scale(Self, Double) -> Self
+pub fn BiophyloconsensusPath::set(Self, Int32, Double) -> Self
+pub fn BiophyloconsensusPath::sum(Self) -> Double
+pub fn BiophyloconsensusPath::to_string(Self) -> String
+
+pub(all) struct BiophyloconsensusPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn BiophyloconsensusPoint::add(Self, Self) -> Self
+pub fn BiophyloconsensusPoint::cross(Self, Self) -> Self
+pub fn BiophyloconsensusPoint::dist(Self, Self) -> Double
+pub fn BiophyloconsensusPoint::dot(Self, Self) -> Double
+pub fn BiophyloconsensusPoint::label(Self) -> Int32
+pub fn BiophyloconsensusPoint::lerp(Self, Self, Double) -> Self
+pub fn BiophyloconsensusPoint::mid(Self, Self) -> Self
+pub fn BiophyloconsensusPoint::negate(Self) -> Self
+pub fn BiophyloconsensusPoint::norm(Self) -> Double
+pub fn BiophyloconsensusPoint::normalize(Self) -> Self
+pub fn BiophyloconsensusPoint::scale(Self, Double) -> Self
+pub fn BiophyloconsensusPoint::sub(Self, Self) -> Self
+pub fn BiophyloconsensusPoint::to_string(Self) -> String
+pub fn BiophyloconsensusPoint::x(Self) -> Double
+pub fn BiophyloconsensusPoint::y(Self) -> Double
+pub fn BiophyloconsensusPoint::z(Self) -> Double
+
+pub(all) struct BiophyloconsensusRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloconsensusRange::add(Self, Self) -> Self
+pub fn BiophyloconsensusRange::copy(Self) -> Self
+pub fn BiophyloconsensusRange::fill(Self, Double) -> Self
+pub fn BiophyloconsensusRange::get(Self, Int32) -> Double
+pub fn BiophyloconsensusRange::len(Self) -> Int32
+pub fn BiophyloconsensusRange::max(Self) -> Double
+pub fn BiophyloconsensusRange::mean(Self) -> Double
+pub fn BiophyloconsensusRange::min(Self) -> Double
+pub fn BiophyloconsensusRange::scale(Self, Double) -> Self
+pub fn BiophyloconsensusRange::set(Self, Int32, Double) -> Self
+pub fn BiophyloconsensusRange::sum(Self) -> Double
+pub fn BiophyloconsensusRange::to_string(Self) -> String
+
+pub(all) struct BiophyloconsensusSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn BiophyloconsensusSeries::add(Self, Self) -> Self
+pub fn BiophyloconsensusSeries::cumsum(Self) -> Self
+pub fn BiophyloconsensusSeries::len(Self) -> Int32
+pub fn BiophyloconsensusSeries::max(Self) -> Double
+pub fn BiophyloconsensusSeries::mean(Self) -> Double
+pub fn BiophyloconsensusSeries::median(Self) -> Double
+pub fn BiophyloconsensusSeries::min(Self) -> Double
+pub fn BiophyloconsensusSeries::normalize(Self) -> Self
+pub fn BiophyloconsensusSeries::range(Self) -> Double
+pub fn BiophyloconsensusSeries::scale(Self, Double) -> Self
+pub fn BiophyloconsensusSeries::std(Self) -> Double
+pub fn BiophyloconsensusSeries::sub(Self, Self) -> Self
+pub fn BiophyloconsensusSeries::sum(Self) -> Double
+pub fn BiophyloconsensusSeries::to_string(Self) -> String
+pub fn BiophyloconsensusSeries::variance(Self) -> Double
+
+pub(all) struct BiophyloconsensusSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloconsensusSlice::add(Self, Self) -> Self
+pub fn BiophyloconsensusSlice::copy(Self) -> Self
+pub fn BiophyloconsensusSlice::fill(Self, Double) -> Self
+pub fn BiophyloconsensusSlice::get(Self, Int32) -> Double
+pub fn BiophyloconsensusSlice::len(Self) -> Int32
+pub fn BiophyloconsensusSlice::max(Self) -> Double
+pub fn BiophyloconsensusSlice::mean(Self) -> Double
+pub fn BiophyloconsensusSlice::min(Self) -> Double
+pub fn BiophyloconsensusSlice::scale(Self, Double) -> Self
+pub fn BiophyloconsensusSlice::set(Self, Int32, Double) -> Self
+pub fn BiophyloconsensusSlice::sum(Self) -> Double
+pub fn BiophyloconsensusSlice::to_string(Self) -> String
+
+pub(all) struct BiophyloconsensusTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloconsensusTable::add(Self, Self) -> Self
+pub fn BiophyloconsensusTable::copy(Self) -> Self
+pub fn BiophyloconsensusTable::fill(Self, Double) -> Self
+pub fn BiophyloconsensusTable::get(Self, Int32) -> Double
+pub fn BiophyloconsensusTable::len(Self) -> Int32
+pub fn BiophyloconsensusTable::max(Self) -> Double
+pub fn BiophyloconsensusTable::mean(Self) -> Double
+pub fn BiophyloconsensusTable::min(Self) -> Double
+pub fn BiophyloconsensusTable::scale(Self, Double) -> Self
+pub fn BiophyloconsensusTable::set(Self, Int32, Double) -> Self
+pub fn BiophyloconsensusTable::sum(Self) -> Double
+pub fn BiophyloconsensusTable::to_string(Self) -> String
+
+pub(all) struct BiophyloconsensusVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn BiophyloconsensusVector::add(Self, Self) -> Self
+pub fn BiophyloconsensusVector::dist(Self, Self) -> Double
+pub fn BiophyloconsensusVector::dot(Self, Self) -> Double
+pub fn BiophyloconsensusVector::norm(Self) -> Double
+pub fn BiophyloconsensusVector::normalize(Self) -> Self
+pub fn BiophyloconsensusVector::scale(Self, Double) -> Self
+pub fn BiophyloconsensusVector::sub(Self, Self) -> Self
+pub fn BiophyloconsensusVector::to_string(Self) -> String
+
+pub(all) struct BiophyloconsensusView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloconsensusView::add(Self, Self) -> Self
+pub fn BiophyloconsensusView::copy(Self) -> Self
+pub fn BiophyloconsensusView::fill(Self, Double) -> Self
+pub fn BiophyloconsensusView::get(Self, Int32) -> Double
+pub fn BiophyloconsensusView::len(Self) -> Int32
+pub fn BiophyloconsensusView::max(Self) -> Double
+pub fn BiophyloconsensusView::mean(Self) -> Double
+pub fn BiophyloconsensusView::min(Self) -> Double
+pub fn BiophyloconsensusView::scale(Self, Double) -> Self
+pub fn BiophyloconsensusView::set(Self, Int32, Double) -> Self
+pub fn BiophyloconsensusView::sum(Self) -> Double
+pub fn BiophyloconsensusView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

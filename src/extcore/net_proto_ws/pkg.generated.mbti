@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_proto_ws"
+
+// Values
+pub fn net_proto_ws_buffer_make(Int32) -> NetprotowsBuffer
+
+pub fn net_proto_ws_cluster_make(Int32) -> NetprotowsCluster
+
+pub fn net_proto_ws_cursor_make(Int32) -> NetprotowsCursor
+
+pub fn net_proto_ws_edge_make(Int32) -> NetprotowsEdge
+
+pub fn net_proto_ws_frame_make(Int32) -> NetprotowsFrame
+
+pub fn net_proto_ws_graphn_make(Int32) -> NetprotowsGraphN
+
+pub fn net_proto_ws_layer_make(Int32) -> NetprotowsLayer
+
+pub fn net_proto_ws_make_matrix(Int32, Int32, Double) -> NetprotowsMatrix
+
+pub fn net_proto_ws_make_point(Double, Double) -> NetprotowsPoint
+
+pub fn net_proto_ws_make_point3(Double, Double, Double) -> NetprotowsPoint
+
+pub fn net_proto_ws_make_series(Array[Double], String) -> NetprotowsSeries
+
+pub fn net_proto_ws_make_vector(Array[Double]) -> NetprotowsVector
+
+pub fn net_proto_ws_matrix_identity(Int32) -> NetprotowsMatrix
+
+pub fn net_proto_ws_model_make(Int32) -> NetprotowsModel
+
+pub fn net_proto_ws_node_make(Int32) -> NetprotowsNode
+
+pub fn net_proto_ws_path_make(Int32) -> NetprotowsPath
+
+pub fn net_proto_ws_range_make(Int32) -> NetprotowsRange
+
+pub fn net_proto_ws_slice_make(Int32) -> NetprotowsSlice
+
+pub fn net_proto_ws_table_make(Int32) -> NetprotowsTable
+
+pub fn net_proto_ws_vector_zero(Int32) -> NetprotowsVector
+
+pub fn net_proto_ws_view_make(Int32) -> NetprotowsView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetprotowsBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotowsBuffer::add(Self, Self) -> Self
+pub fn NetprotowsBuffer::copy(Self) -> Self
+pub fn NetprotowsBuffer::fill(Self, Double) -> Self
+pub fn NetprotowsBuffer::get(Self, Int32) -> Double
+pub fn NetprotowsBuffer::len(Self) -> Int32
+pub fn NetprotowsBuffer::max(Self) -> Double
+pub fn NetprotowsBuffer::mean(Self) -> Double
+pub fn NetprotowsBuffer::min(Self) -> Double
+pub fn NetprotowsBuffer::scale(Self, Double) -> Self
+pub fn NetprotowsBuffer::set(Self, Int32, Double) -> Self
+pub fn NetprotowsBuffer::sum(Self) -> Double
+pub fn NetprotowsBuffer::to_string(Self) -> String
+
+pub(all) struct NetprotowsCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotowsCluster::add(Self, Self) -> Self
+pub fn NetprotowsCluster::copy(Self) -> Self
+pub fn NetprotowsCluster::fill(Self, Double) -> Self
+pub fn NetprotowsCluster::get(Self, Int32) -> Double
+pub fn NetprotowsCluster::len(Self) -> Int32
+pub fn NetprotowsCluster::max(Self) -> Double
+pub fn NetprotowsCluster::mean(Self) -> Double
+pub fn NetprotowsCluster::min(Self) -> Double
+pub fn NetprotowsCluster::scale(Self, Double) -> Self
+pub fn NetprotowsCluster::set(Self, Int32, Double) -> Self
+pub fn NetprotowsCluster::sum(Self) -> Double
+pub fn NetprotowsCluster::to_string(Self) -> String
+
+pub(all) struct NetprotowsCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotowsCursor::add(Self, Self) -> Self
+pub fn NetprotowsCursor::copy(Self) -> Self
+pub fn NetprotowsCursor::fill(Self, Double) -> Self
+pub fn NetprotowsCursor::get(Self, Int32) -> Double
+pub fn NetprotowsCursor::len(Self) -> Int32
+pub fn NetprotowsCursor::max(Self) -> Double
+pub fn NetprotowsCursor::mean(Self) -> Double
+pub fn NetprotowsCursor::min(Self) -> Double
+pub fn NetprotowsCursor::scale(Self, Double) -> Self
+pub fn NetprotowsCursor::set(Self, Int32, Double) -> Self
+pub fn NetprotowsCursor::sum(Self) -> Double
+pub fn NetprotowsCursor::to_string(Self) -> String
+
+pub(all) struct NetprotowsEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotowsEdge::add(Self, Self) -> Self
+pub fn NetprotowsEdge::copy(Self) -> Self
+pub fn NetprotowsEdge::fill(Self, Double) -> Self
+pub fn NetprotowsEdge::get(Self, Int32) -> Double
+pub fn NetprotowsEdge::len(Self) -> Int32
+pub fn NetprotowsEdge::max(Self) -> Double
+pub fn NetprotowsEdge::mean(Self) -> Double
+pub fn NetprotowsEdge::min(Self) -> Double
+pub fn NetprotowsEdge::scale(Self, Double) -> Self
+pub fn NetprotowsEdge::set(Self, Int32, Double) -> Self
+pub fn NetprotowsEdge::sum(Self) -> Double
+pub fn NetprotowsEdge::to_string(Self) -> String
+
+pub(all) struct NetprotowsFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotowsFrame::add(Self, Self) -> Self
+pub fn NetprotowsFrame::copy(Self) -> Self
+pub fn NetprotowsFrame::fill(Self, Double) -> Self
+pub fn NetprotowsFrame::get(Self, Int32) -> Double
+pub fn NetprotowsFrame::len(Self) -> Int32
+pub fn NetprotowsFrame::max(Self) -> Double
+pub fn NetprotowsFrame::mean(Self) -> Double
+pub fn NetprotowsFrame::min(Self) -> Double
+pub fn NetprotowsFrame::scale(Self, Double) -> Self
+pub fn NetprotowsFrame::set(Self, Int32, Double) -> Self
+pub fn NetprotowsFrame::sum(Self) -> Double
+pub fn NetprotowsFrame::to_string(Self) -> String
+
+pub(all) struct NetprotowsGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotowsGraphN::add(Self, Self) -> Self
+pub fn NetprotowsGraphN::copy(Self) -> Self
+pub fn NetprotowsGraphN::fill(Self, Double) -> Self
+pub fn NetprotowsGraphN::get(Self, Int32) -> Double
+pub fn NetprotowsGraphN::len(Self) -> Int32
+pub fn NetprotowsGraphN::max(Self) -> Double
+pub fn NetprotowsGraphN::mean(Self) -> Double
+pub fn NetprotowsGraphN::min(Self) -> Double
+pub fn NetprotowsGraphN::scale(Self, Double) -> Self
+pub fn NetprotowsGraphN::set(Self, Int32, Double) -> Self
+pub fn NetprotowsGraphN::sum(Self) -> Double
+pub fn NetprotowsGraphN::to_string(Self) -> String
+
+pub(all) struct NetprotowsLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotowsLayer::add(Self, Self) -> Self
+pub fn NetprotowsLayer::copy(Self) -> Self
+pub fn NetprotowsLayer::fill(Self, Double) -> Self
+pub fn NetprotowsLayer::get(Self, Int32) -> Double
+pub fn NetprotowsLayer::len(Self) -> Int32
+pub fn NetprotowsLayer::max(Self) -> Double
+pub fn NetprotowsLayer::mean(Self) -> Double
+pub fn NetprotowsLayer::min(Self) -> Double
+pub fn NetprotowsLayer::scale(Self, Double) -> Self
+pub fn NetprotowsLayer::set(Self, Int32, Double) -> Self
+pub fn NetprotowsLayer::sum(Self) -> Double
+pub fn NetprotowsLayer::to_string(Self) -> String
+
+pub(all) struct NetprotowsMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetprotowsMatrix::add(Self, Self) -> Self
+pub fn NetprotowsMatrix::det(Self) -> Double
+pub fn NetprotowsMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetprotowsMatrix::multiply(Self, Self) -> Self
+pub fn NetprotowsMatrix::norm(Self) -> Double
+pub fn NetprotowsMatrix::scale(Self, Double) -> Self
+pub fn NetprotowsMatrix::to_string(Self) -> String
+pub fn NetprotowsMatrix::trace(Self) -> Double
+pub fn NetprotowsMatrix::transpose(Self) -> Self
+
+pub(all) struct NetprotowsModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotowsModel::add(Self, Self) -> Self
+pub fn NetprotowsModel::copy(Self) -> Self
+pub fn NetprotowsModel::fill(Self, Double) -> Self
+pub fn NetprotowsModel::get(Self, Int32) -> Double
+pub fn NetprotowsModel::len(Self) -> Int32
+pub fn NetprotowsModel::max(Self) -> Double
+pub fn NetprotowsModel::mean(Self) -> Double
+pub fn NetprotowsModel::min(Self) -> Double
+pub fn NetprotowsModel::scale(Self, Double) -> Self
+pub fn NetprotowsModel::set(Self, Int32, Double) -> Self
+pub fn NetprotowsModel::sum(Self) -> Double
+pub fn NetprotowsModel::to_string(Self) -> String
+
+pub(all) struct NetprotowsNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotowsNode::add(Self, Self) -> Self
+pub fn NetprotowsNode::copy(Self) -> Self
+pub fn NetprotowsNode::fill(Self, Double) -> Self
+pub fn NetprotowsNode::get(Self, Int32) -> Double
+pub fn NetprotowsNode::len(Self) -> Int32
+pub fn NetprotowsNode::max(Self) -> Double
+pub fn NetprotowsNode::mean(Self) -> Double
+pub fn NetprotowsNode::min(Self) -> Double
+pub fn NetprotowsNode::scale(Self, Double) -> Self
+pub fn NetprotowsNode::set(Self, Int32, Double) -> Self
+pub fn NetprotowsNode::sum(Self) -> Double
+pub fn NetprotowsNode::to_string(Self) -> String
+
+pub(all) struct NetprotowsPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotowsPath::add(Self, Self) -> Self
+pub fn NetprotowsPath::copy(Self) -> Self
+pub fn NetprotowsPath::fill(Self, Double) -> Self
+pub fn NetprotowsPath::get(Self, Int32) -> Double
+pub fn NetprotowsPath::len(Self) -> Int32
+pub fn NetprotowsPath::max(Self) -> Double
+pub fn NetprotowsPath::mean(Self) -> Double
+pub fn NetprotowsPath::min(Self) -> Double
+pub fn NetprotowsPath::scale(Self, Double) -> Self
+pub fn NetprotowsPath::set(Self, Int32, Double) -> Self
+pub fn NetprotowsPath::sum(Self) -> Double
+pub fn NetprotowsPath::to_string(Self) -> String
+
+pub(all) struct NetprotowsPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetprotowsPoint::add(Self, Self) -> Self
+pub fn NetprotowsPoint::cross(Self, Self) -> Self
+pub fn NetprotowsPoint::dist(Self, Self) -> Double
+pub fn NetprotowsPoint::dot(Self, Self) -> Double
+pub fn NetprotowsPoint::label(Self) -> Int32
+pub fn NetprotowsPoint::lerp(Self, Self, Double) -> Self
+pub fn NetprotowsPoint::mid(Self, Self) -> Self
+pub fn NetprotowsPoint::negate(Self) -> Self
+pub fn NetprotowsPoint::norm(Self) -> Double
+pub fn NetprotowsPoint::normalize(Self) -> Self
+pub fn NetprotowsPoint::scale(Self, Double) -> Self
+pub fn NetprotowsPoint::sub(Self, Self) -> Self
+pub fn NetprotowsPoint::to_string(Self) -> String
+pub fn NetprotowsPoint::x(Self) -> Double
+pub fn NetprotowsPoint::y(Self) -> Double
+pub fn NetprotowsPoint::z(Self) -> Double
+
+pub(all) struct NetprotowsRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotowsRange::add(Self, Self) -> Self
+pub fn NetprotowsRange::copy(Self) -> Self
+pub fn NetprotowsRange::fill(Self, Double) -> Self
+pub fn NetprotowsRange::get(Self, Int32) -> Double
+pub fn NetprotowsRange::len(Self) -> Int32
+pub fn NetprotowsRange::max(Self) -> Double
+pub fn NetprotowsRange::mean(Self) -> Double
+pub fn NetprotowsRange::min(Self) -> Double
+pub fn NetprotowsRange::scale(Self, Double) -> Self
+pub fn NetprotowsRange::set(Self, Int32, Double) -> Self
+pub fn NetprotowsRange::sum(Self) -> Double
+pub fn NetprotowsRange::to_string(Self) -> String
+
+pub(all) struct NetprotowsSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetprotowsSeries::add(Self, Self) -> Self
+pub fn NetprotowsSeries::cumsum(Self) -> Self
+pub fn NetprotowsSeries::len(Self) -> Int32
+pub fn NetprotowsSeries::max(Self) -> Double
+pub fn NetprotowsSeries::mean(Self) -> Double
+pub fn NetprotowsSeries::median(Self) -> Double
+pub fn NetprotowsSeries::min(Self) -> Double
+pub fn NetprotowsSeries::normalize(Self) -> Self
+pub fn NetprotowsSeries::range(Self) -> Double
+pub fn NetprotowsSeries::scale(Self, Double) -> Self
+pub fn NetprotowsSeries::std(Self) -> Double
+pub fn NetprotowsSeries::sub(Self, Self) -> Self
+pub fn NetprotowsSeries::sum(Self) -> Double
+pub fn NetprotowsSeries::to_string(Self) -> String
+pub fn NetprotowsSeries::variance(Self) -> Double
+
+pub(all) struct NetprotowsSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotowsSlice::add(Self, Self) -> Self
+pub fn NetprotowsSlice::copy(Self) -> Self
+pub fn NetprotowsSlice::fill(Self, Double) -> Self
+pub fn NetprotowsSlice::get(Self, Int32) -> Double
+pub fn NetprotowsSlice::len(Self) -> Int32
+pub fn NetprotowsSlice::max(Self) -> Double
+pub fn NetprotowsSlice::mean(Self) -> Double
+pub fn NetprotowsSlice::min(Self) -> Double
+pub fn NetprotowsSlice::scale(Self, Double) -> Self
+pub fn NetprotowsSlice::set(Self, Int32, Double) -> Self
+pub fn NetprotowsSlice::sum(Self) -> Double
+pub fn NetprotowsSlice::to_string(Self) -> String
+
+pub(all) struct NetprotowsTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotowsTable::add(Self, Self) -> Self
+pub fn NetprotowsTable::copy(Self) -> Self
+pub fn NetprotowsTable::fill(Self, Double) -> Self
+pub fn NetprotowsTable::get(Self, Int32) -> Double
+pub fn NetprotowsTable::len(Self) -> Int32
+pub fn NetprotowsTable::max(Self) -> Double
+pub fn NetprotowsTable::mean(Self) -> Double
+pub fn NetprotowsTable::min(Self) -> Double
+pub fn NetprotowsTable::scale(Self, Double) -> Self
+pub fn NetprotowsTable::set(Self, Int32, Double) -> Self
+pub fn NetprotowsTable::sum(Self) -> Double
+pub fn NetprotowsTable::to_string(Self) -> String
+
+pub(all) struct NetprotowsVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetprotowsVector::add(Self, Self) -> Self
+pub fn NetprotowsVector::dist(Self, Self) -> Double
+pub fn NetprotowsVector::dot(Self, Self) -> Double
+pub fn NetprotowsVector::norm(Self) -> Double
+pub fn NetprotowsVector::normalize(Self) -> Self
+pub fn NetprotowsVector::scale(Self, Double) -> Self
+pub fn NetprotowsVector::sub(Self, Self) -> Self
+pub fn NetprotowsVector::to_string(Self) -> String
+
+pub(all) struct NetprotowsView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotowsView::add(Self, Self) -> Self
+pub fn NetprotowsView::copy(Self) -> Self
+pub fn NetprotowsView::fill(Self, Double) -> Self
+pub fn NetprotowsView::get(Self, Int32) -> Double
+pub fn NetprotowsView::len(Self) -> Int32
+pub fn NetprotowsView::max(Self) -> Double
+pub fn NetprotowsView::mean(Self) -> Double
+pub fn NetprotowsView::min(Self) -> Double
+pub fn NetprotowsView::scale(Self, Double) -> Self
+pub fn NetprotowsView::set(Self, Int32, Double) -> Self
+pub fn NetprotowsView::sum(Self) -> Double
+pub fn NetprotowsView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

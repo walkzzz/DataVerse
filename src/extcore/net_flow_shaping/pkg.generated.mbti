@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_flow_shaping"
+
+// Values
+pub fn net_flow_shaping_buffer_make(Int32) -> NetflowshapingBuffer
+
+pub fn net_flow_shaping_cluster_make(Int32) -> NetflowshapingCluster
+
+pub fn net_flow_shaping_cursor_make(Int32) -> NetflowshapingCursor
+
+pub fn net_flow_shaping_edge_make(Int32) -> NetflowshapingEdge
+
+pub fn net_flow_shaping_frame_make(Int32) -> NetflowshapingFrame
+
+pub fn net_flow_shaping_graphn_make(Int32) -> NetflowshapingGraphN
+
+pub fn net_flow_shaping_layer_make(Int32) -> NetflowshapingLayer
+
+pub fn net_flow_shaping_make_matrix(Int32, Int32, Double) -> NetflowshapingMatrix
+
+pub fn net_flow_shaping_make_point(Double, Double) -> NetflowshapingPoint
+
+pub fn net_flow_shaping_make_point3(Double, Double, Double) -> NetflowshapingPoint
+
+pub fn net_flow_shaping_make_series(Array[Double], String) -> NetflowshapingSeries
+
+pub fn net_flow_shaping_make_vector(Array[Double]) -> NetflowshapingVector
+
+pub fn net_flow_shaping_matrix_identity(Int32) -> NetflowshapingMatrix
+
+pub fn net_flow_shaping_model_make(Int32) -> NetflowshapingModel
+
+pub fn net_flow_shaping_node_make(Int32) -> NetflowshapingNode
+
+pub fn net_flow_shaping_path_make(Int32) -> NetflowshapingPath
+
+pub fn net_flow_shaping_range_make(Int32) -> NetflowshapingRange
+
+pub fn net_flow_shaping_slice_make(Int32) -> NetflowshapingSlice
+
+pub fn net_flow_shaping_table_make(Int32) -> NetflowshapingTable
+
+pub fn net_flow_shaping_vector_zero(Int32) -> NetflowshapingVector
+
+pub fn net_flow_shaping_view_make(Int32) -> NetflowshapingView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetflowshapingBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowshapingBuffer::add(Self, Self) -> Self
+pub fn NetflowshapingBuffer::copy(Self) -> Self
+pub fn NetflowshapingBuffer::fill(Self, Double) -> Self
+pub fn NetflowshapingBuffer::get(Self, Int32) -> Double
+pub fn NetflowshapingBuffer::len(Self) -> Int32
+pub fn NetflowshapingBuffer::max(Self) -> Double
+pub fn NetflowshapingBuffer::mean(Self) -> Double
+pub fn NetflowshapingBuffer::min(Self) -> Double
+pub fn NetflowshapingBuffer::scale(Self, Double) -> Self
+pub fn NetflowshapingBuffer::set(Self, Int32, Double) -> Self
+pub fn NetflowshapingBuffer::sum(Self) -> Double
+pub fn NetflowshapingBuffer::to_string(Self) -> String
+
+pub(all) struct NetflowshapingCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowshapingCluster::add(Self, Self) -> Self
+pub fn NetflowshapingCluster::copy(Self) -> Self
+pub fn NetflowshapingCluster::fill(Self, Double) -> Self
+pub fn NetflowshapingCluster::get(Self, Int32) -> Double
+pub fn NetflowshapingCluster::len(Self) -> Int32
+pub fn NetflowshapingCluster::max(Self) -> Double
+pub fn NetflowshapingCluster::mean(Self) -> Double
+pub fn NetflowshapingCluster::min(Self) -> Double
+pub fn NetflowshapingCluster::scale(Self, Double) -> Self
+pub fn NetflowshapingCluster::set(Self, Int32, Double) -> Self
+pub fn NetflowshapingCluster::sum(Self) -> Double
+pub fn NetflowshapingCluster::to_string(Self) -> String
+
+pub(all) struct NetflowshapingCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowshapingCursor::add(Self, Self) -> Self
+pub fn NetflowshapingCursor::copy(Self) -> Self
+pub fn NetflowshapingCursor::fill(Self, Double) -> Self
+pub fn NetflowshapingCursor::get(Self, Int32) -> Double
+pub fn NetflowshapingCursor::len(Self) -> Int32
+pub fn NetflowshapingCursor::max(Self) -> Double
+pub fn NetflowshapingCursor::mean(Self) -> Double
+pub fn NetflowshapingCursor::min(Self) -> Double
+pub fn NetflowshapingCursor::scale(Self, Double) -> Self
+pub fn NetflowshapingCursor::set(Self, Int32, Double) -> Self
+pub fn NetflowshapingCursor::sum(Self) -> Double
+pub fn NetflowshapingCursor::to_string(Self) -> String
+
+pub(all) struct NetflowshapingEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowshapingEdge::add(Self, Self) -> Self
+pub fn NetflowshapingEdge::copy(Self) -> Self
+pub fn NetflowshapingEdge::fill(Self, Double) -> Self
+pub fn NetflowshapingEdge::get(Self, Int32) -> Double
+pub fn NetflowshapingEdge::len(Self) -> Int32
+pub fn NetflowshapingEdge::max(Self) -> Double
+pub fn NetflowshapingEdge::mean(Self) -> Double
+pub fn NetflowshapingEdge::min(Self) -> Double
+pub fn NetflowshapingEdge::scale(Self, Double) -> Self
+pub fn NetflowshapingEdge::set(Self, Int32, Double) -> Self
+pub fn NetflowshapingEdge::sum(Self) -> Double
+pub fn NetflowshapingEdge::to_string(Self) -> String
+
+pub(all) struct NetflowshapingFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowshapingFrame::add(Self, Self) -> Self
+pub fn NetflowshapingFrame::copy(Self) -> Self
+pub fn NetflowshapingFrame::fill(Self, Double) -> Self
+pub fn NetflowshapingFrame::get(Self, Int32) -> Double
+pub fn NetflowshapingFrame::len(Self) -> Int32
+pub fn NetflowshapingFrame::max(Self) -> Double
+pub fn NetflowshapingFrame::mean(Self) -> Double
+pub fn NetflowshapingFrame::min(Self) -> Double
+pub fn NetflowshapingFrame::scale(Self, Double) -> Self
+pub fn NetflowshapingFrame::set(Self, Int32, Double) -> Self
+pub fn NetflowshapingFrame::sum(Self) -> Double
+pub fn NetflowshapingFrame::to_string(Self) -> String
+
+pub(all) struct NetflowshapingGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowshapingGraphN::add(Self, Self) -> Self
+pub fn NetflowshapingGraphN::copy(Self) -> Self
+pub fn NetflowshapingGraphN::fill(Self, Double) -> Self
+pub fn NetflowshapingGraphN::get(Self, Int32) -> Double
+pub fn NetflowshapingGraphN::len(Self) -> Int32
+pub fn NetflowshapingGraphN::max(Self) -> Double
+pub fn NetflowshapingGraphN::mean(Self) -> Double
+pub fn NetflowshapingGraphN::min(Self) -> Double
+pub fn NetflowshapingGraphN::scale(Self, Double) -> Self
+pub fn NetflowshapingGraphN::set(Self, Int32, Double) -> Self
+pub fn NetflowshapingGraphN::sum(Self) -> Double
+pub fn NetflowshapingGraphN::to_string(Self) -> String
+
+pub(all) struct NetflowshapingLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowshapingLayer::add(Self, Self) -> Self
+pub fn NetflowshapingLayer::copy(Self) -> Self
+pub fn NetflowshapingLayer::fill(Self, Double) -> Self
+pub fn NetflowshapingLayer::get(Self, Int32) -> Double
+pub fn NetflowshapingLayer::len(Self) -> Int32
+pub fn NetflowshapingLayer::max(Self) -> Double
+pub fn NetflowshapingLayer::mean(Self) -> Double
+pub fn NetflowshapingLayer::min(Self) -> Double
+pub fn NetflowshapingLayer::scale(Self, Double) -> Self
+pub fn NetflowshapingLayer::set(Self, Int32, Double) -> Self
+pub fn NetflowshapingLayer::sum(Self) -> Double
+pub fn NetflowshapingLayer::to_string(Self) -> String
+
+pub(all) struct NetflowshapingMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetflowshapingMatrix::add(Self, Self) -> Self
+pub fn NetflowshapingMatrix::det(Self) -> Double
+pub fn NetflowshapingMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetflowshapingMatrix::multiply(Self, Self) -> Self
+pub fn NetflowshapingMatrix::norm(Self) -> Double
+pub fn NetflowshapingMatrix::scale(Self, Double) -> Self
+pub fn NetflowshapingMatrix::to_string(Self) -> String
+pub fn NetflowshapingMatrix::trace(Self) -> Double
+pub fn NetflowshapingMatrix::transpose(Self) -> Self
+
+pub(all) struct NetflowshapingModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowshapingModel::add(Self, Self) -> Self
+pub fn NetflowshapingModel::copy(Self) -> Self
+pub fn NetflowshapingModel::fill(Self, Double) -> Self
+pub fn NetflowshapingModel::get(Self, Int32) -> Double
+pub fn NetflowshapingModel::len(Self) -> Int32
+pub fn NetflowshapingModel::max(Self) -> Double
+pub fn NetflowshapingModel::mean(Self) -> Double
+pub fn NetflowshapingModel::min(Self) -> Double
+pub fn NetflowshapingModel::scale(Self, Double) -> Self
+pub fn NetflowshapingModel::set(Self, Int32, Double) -> Self
+pub fn NetflowshapingModel::sum(Self) -> Double
+pub fn NetflowshapingModel::to_string(Self) -> String
+
+pub(all) struct NetflowshapingNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowshapingNode::add(Self, Self) -> Self
+pub fn NetflowshapingNode::copy(Self) -> Self
+pub fn NetflowshapingNode::fill(Self, Double) -> Self
+pub fn NetflowshapingNode::get(Self, Int32) -> Double
+pub fn NetflowshapingNode::len(Self) -> Int32
+pub fn NetflowshapingNode::max(Self) -> Double
+pub fn NetflowshapingNode::mean(Self) -> Double
+pub fn NetflowshapingNode::min(Self) -> Double
+pub fn NetflowshapingNode::scale(Self, Double) -> Self
+pub fn NetflowshapingNode::set(Self, Int32, Double) -> Self
+pub fn NetflowshapingNode::sum(Self) -> Double
+pub fn NetflowshapingNode::to_string(Self) -> String
+
+pub(all) struct NetflowshapingPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowshapingPath::add(Self, Self) -> Self
+pub fn NetflowshapingPath::copy(Self) -> Self
+pub fn NetflowshapingPath::fill(Self, Double) -> Self
+pub fn NetflowshapingPath::get(Self, Int32) -> Double
+pub fn NetflowshapingPath::len(Self) -> Int32
+pub fn NetflowshapingPath::max(Self) -> Double
+pub fn NetflowshapingPath::mean(Self) -> Double
+pub fn NetflowshapingPath::min(Self) -> Double
+pub fn NetflowshapingPath::scale(Self, Double) -> Self
+pub fn NetflowshapingPath::set(Self, Int32, Double) -> Self
+pub fn NetflowshapingPath::sum(Self) -> Double
+pub fn NetflowshapingPath::to_string(Self) -> String
+
+pub(all) struct NetflowshapingPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetflowshapingPoint::add(Self, Self) -> Self
+pub fn NetflowshapingPoint::cross(Self, Self) -> Self
+pub fn NetflowshapingPoint::dist(Self, Self) -> Double
+pub fn NetflowshapingPoint::dot(Self, Self) -> Double
+pub fn NetflowshapingPoint::label(Self) -> Int32
+pub fn NetflowshapingPoint::lerp(Self, Self, Double) -> Self
+pub fn NetflowshapingPoint::mid(Self, Self) -> Self
+pub fn NetflowshapingPoint::negate(Self) -> Self
+pub fn NetflowshapingPoint::norm(Self) -> Double
+pub fn NetflowshapingPoint::normalize(Self) -> Self
+pub fn NetflowshapingPoint::scale(Self, Double) -> Self
+pub fn NetflowshapingPoint::sub(Self, Self) -> Self
+pub fn NetflowshapingPoint::to_string(Self) -> String
+pub fn NetflowshapingPoint::x(Self) -> Double
+pub fn NetflowshapingPoint::y(Self) -> Double
+pub fn NetflowshapingPoint::z(Self) -> Double
+
+pub(all) struct NetflowshapingRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowshapingRange::add(Self, Self) -> Self
+pub fn NetflowshapingRange::copy(Self) -> Self
+pub fn NetflowshapingRange::fill(Self, Double) -> Self
+pub fn NetflowshapingRange::get(Self, Int32) -> Double
+pub fn NetflowshapingRange::len(Self) -> Int32
+pub fn NetflowshapingRange::max(Self) -> Double
+pub fn NetflowshapingRange::mean(Self) -> Double
+pub fn NetflowshapingRange::min(Self) -> Double
+pub fn NetflowshapingRange::scale(Self, Double) -> Self
+pub fn NetflowshapingRange::set(Self, Int32, Double) -> Self
+pub fn NetflowshapingRange::sum(Self) -> Double
+pub fn NetflowshapingRange::to_string(Self) -> String
+
+pub(all) struct NetflowshapingSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetflowshapingSeries::add(Self, Self) -> Self
+pub fn NetflowshapingSeries::cumsum(Self) -> Self
+pub fn NetflowshapingSeries::len(Self) -> Int32
+pub fn NetflowshapingSeries::max(Self) -> Double
+pub fn NetflowshapingSeries::mean(Self) -> Double
+pub fn NetflowshapingSeries::median(Self) -> Double
+pub fn NetflowshapingSeries::min(Self) -> Double
+pub fn NetflowshapingSeries::normalize(Self) -> Self
+pub fn NetflowshapingSeries::range(Self) -> Double
+pub fn NetflowshapingSeries::scale(Self, Double) -> Self
+pub fn NetflowshapingSeries::std(Self) -> Double
+pub fn NetflowshapingSeries::sub(Self, Self) -> Self
+pub fn NetflowshapingSeries::sum(Self) -> Double
+pub fn NetflowshapingSeries::to_string(Self) -> String
+pub fn NetflowshapingSeries::variance(Self) -> Double
+
+pub(all) struct NetflowshapingSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowshapingSlice::add(Self, Self) -> Self
+pub fn NetflowshapingSlice::copy(Self) -> Self
+pub fn NetflowshapingSlice::fill(Self, Double) -> Self
+pub fn NetflowshapingSlice::get(Self, Int32) -> Double
+pub fn NetflowshapingSlice::len(Self) -> Int32
+pub fn NetflowshapingSlice::max(Self) -> Double
+pub fn NetflowshapingSlice::mean(Self) -> Double
+pub fn NetflowshapingSlice::min(Self) -> Double
+pub fn NetflowshapingSlice::scale(Self, Double) -> Self
+pub fn NetflowshapingSlice::set(Self, Int32, Double) -> Self
+pub fn NetflowshapingSlice::sum(Self) -> Double
+pub fn NetflowshapingSlice::to_string(Self) -> String
+
+pub(all) struct NetflowshapingTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowshapingTable::add(Self, Self) -> Self
+pub fn NetflowshapingTable::copy(Self) -> Self
+pub fn NetflowshapingTable::fill(Self, Double) -> Self
+pub fn NetflowshapingTable::get(Self, Int32) -> Double
+pub fn NetflowshapingTable::len(Self) -> Int32
+pub fn NetflowshapingTable::max(Self) -> Double
+pub fn NetflowshapingTable::mean(Self) -> Double
+pub fn NetflowshapingTable::min(Self) -> Double
+pub fn NetflowshapingTable::scale(Self, Double) -> Self
+pub fn NetflowshapingTable::set(Self, Int32, Double) -> Self
+pub fn NetflowshapingTable::sum(Self) -> Double
+pub fn NetflowshapingTable::to_string(Self) -> String
+
+pub(all) struct NetflowshapingVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetflowshapingVector::add(Self, Self) -> Self
+pub fn NetflowshapingVector::dist(Self, Self) -> Double
+pub fn NetflowshapingVector::dot(Self, Self) -> Double
+pub fn NetflowshapingVector::norm(Self) -> Double
+pub fn NetflowshapingVector::normalize(Self) -> Self
+pub fn NetflowshapingVector::scale(Self, Double) -> Self
+pub fn NetflowshapingVector::sub(Self, Self) -> Self
+pub fn NetflowshapingVector::to_string(Self) -> String
+
+pub(all) struct NetflowshapingView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowshapingView::add(Self, Self) -> Self
+pub fn NetflowshapingView::copy(Self) -> Self
+pub fn NetflowshapingView::fill(Self, Double) -> Self
+pub fn NetflowshapingView::get(Self, Int32) -> Double
+pub fn NetflowshapingView::len(Self) -> Int32
+pub fn NetflowshapingView::max(Self) -> Double
+pub fn NetflowshapingView::mean(Self) -> Double
+pub fn NetflowshapingView::min(Self) -> Double
+pub fn NetflowshapingView::scale(Self, Double) -> Self
+pub fn NetflowshapingView::set(Self, Int32, Double) -> Self
+pub fn NetflowshapingView::sum(Self) -> Double
+pub fn NetflowshapingView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

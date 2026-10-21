@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/art_model"
+
+// Values
+pub fn art_model_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn art_model_corr(Array[Double], Array[Double]) -> Double
+
+pub fn art_model_cov(Array[Double], Array[Double]) -> Double
+
+pub fn art_model_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn art_model_mae(Array[Double], Array[Double]) -> Double
+
+pub fn art_model_make_labeled_point(Double, Double, Int32) -> Art_modelPoint
+
+pub fn art_model_make_matrix(Int32, Int32, Double) -> Art_modelMatrix
+
+pub fn art_model_make_point(Double, Double) -> Art_modelPoint
+
+pub fn art_model_make_series(Array[Double], String) -> Art_modelSeries
+
+pub fn art_model_make_vector(Array[Double]) -> Art_modelVector
+
+pub fn art_model_matrix_add(Art_modelMatrix, Art_modelMatrix) -> Art_modelMatrix
+
+pub fn art_model_matrix_get(Art_modelMatrix, Int32, Int32) -> Double
+
+pub fn art_model_matrix_identity(Int32) -> Art_modelMatrix
+
+pub fn art_model_matrix_multiply(Art_modelMatrix, Art_modelMatrix) -> Art_modelMatrix
+
+pub fn art_model_matrix_norm(Art_modelMatrix) -> Double
+
+pub fn art_model_matrix_scale(Art_modelMatrix, Double) -> Art_modelMatrix
+
+pub fn art_model_matrix_to_string(Art_modelMatrix) -> String
+
+pub fn art_model_matrix_trace(Art_modelMatrix) -> Double
+
+pub fn art_model_matrix_transpose(Art_modelMatrix) -> Art_modelMatrix
+
+pub fn art_model_mse(Array[Double], Array[Double]) -> Double
+
+pub fn art_model_point_add(Art_modelPoint, Art_modelPoint) -> Art_modelPoint
+
+pub fn art_model_point_dist(Art_modelPoint, Art_modelPoint) -> Double
+
+pub fn art_model_point_dot(Art_modelPoint, Art_modelPoint) -> Double
+
+pub fn art_model_point_label(Art_modelPoint) -> Int32
+
+pub fn art_model_point_norm(Art_modelPoint) -> Double
+
+pub fn art_model_point_scale(Art_modelPoint, Double) -> Art_modelPoint
+
+pub fn art_model_point_sub(Art_modelPoint, Art_modelPoint) -> Art_modelPoint
+
+pub fn art_model_point_to_string(Art_modelPoint) -> String
+
+pub fn art_model_point_x(Art_modelPoint) -> Double
+
+pub fn art_model_point_y(Art_modelPoint) -> Double
+
+pub fn art_model_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn art_model_r2(Array[Double], Array[Double]) -> Double
+
+pub fn art_model_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn art_model_series_add(Art_modelSeries, Art_modelSeries) -> Art_modelSeries
+
+pub fn art_model_series_len(Art_modelSeries) -> Int32
+
+pub fn art_model_series_max(Art_modelSeries) -> Double
+
+pub fn art_model_series_mean(Art_modelSeries) -> Double
+
+pub fn art_model_series_min(Art_modelSeries) -> Double
+
+pub fn art_model_series_scale(Art_modelSeries, Double) -> Art_modelSeries
+
+pub fn art_model_series_std(Art_modelSeries) -> Double
+
+pub fn art_model_series_sum(Art_modelSeries) -> Double
+
+pub fn art_model_series_to_string(Art_modelSeries) -> String
+
+pub fn art_model_series_var(Art_modelSeries) -> Double
+
+pub fn art_model_std(Array[Double]) -> Double
+
+pub fn art_model_var(Array[Double]) -> Double
+
+pub fn art_model_vector_add(Art_modelVector, Art_modelVector) -> Art_modelVector
+
+pub fn art_model_vector_dist(Art_modelVector, Art_modelVector) -> Double
+
+pub fn art_model_vector_dot(Art_modelVector, Art_modelVector) -> Double
+
+pub fn art_model_vector_norm(Art_modelVector) -> Double
+
+pub fn art_model_vector_normalize(Art_modelVector) -> Art_modelVector
+
+pub fn art_model_vector_scale(Art_modelVector, Double) -> Art_modelVector
+
+pub fn art_model_vector_sub(Art_modelVector, Art_modelVector) -> Art_modelVector
+
+pub fn art_model_vector_to_string(Art_modelVector) -> String
+
+pub fn art_model_vector_zero(Int32) -> Art_modelVector
+
+// Errors
+
+// Types and methods
+pub struct Art_modelMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Art_modelPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Art_modelSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Art_modelVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

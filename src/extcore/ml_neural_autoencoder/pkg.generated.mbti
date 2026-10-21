@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_neural_autoencoder"
+
+// Values
+pub fn ml_neural_autoencoder_buffer_make(Int32) -> MlneuralautoencoderBuffer
+
+pub fn ml_neural_autoencoder_cluster_make(Int32) -> MlneuralautoencoderCluster
+
+pub fn ml_neural_autoencoder_cursor_make(Int32) -> MlneuralautoencoderCursor
+
+pub fn ml_neural_autoencoder_edge_make(Int32) -> MlneuralautoencoderEdge
+
+pub fn ml_neural_autoencoder_frame_make(Int32) -> MlneuralautoencoderFrame
+
+pub fn ml_neural_autoencoder_graphn_make(Int32) -> MlneuralautoencoderGraphN
+
+pub fn ml_neural_autoencoder_layer_make(Int32) -> MlneuralautoencoderLayer
+
+pub fn ml_neural_autoencoder_make_matrix(Int32, Int32, Double) -> MlneuralautoencoderMatrix
+
+pub fn ml_neural_autoencoder_make_point(Double, Double) -> MlneuralautoencoderPoint
+
+pub fn ml_neural_autoencoder_make_point3(Double, Double, Double) -> MlneuralautoencoderPoint
+
+pub fn ml_neural_autoencoder_make_series(Array[Double], String) -> MlneuralautoencoderSeries
+
+pub fn ml_neural_autoencoder_make_vector(Array[Double]) -> MlneuralautoencoderVector
+
+pub fn ml_neural_autoencoder_matrix_identity(Int32) -> MlneuralautoencoderMatrix
+
+pub fn ml_neural_autoencoder_model_make(Int32) -> MlneuralautoencoderModel
+
+pub fn ml_neural_autoencoder_node_make(Int32) -> MlneuralautoencoderNode
+
+pub fn ml_neural_autoencoder_path_make(Int32) -> MlneuralautoencoderPath
+
+pub fn ml_neural_autoencoder_range_make(Int32) -> MlneuralautoencoderRange
+
+pub fn ml_neural_autoencoder_slice_make(Int32) -> MlneuralautoencoderSlice
+
+pub fn ml_neural_autoencoder_table_make(Int32) -> MlneuralautoencoderTable
+
+pub fn ml_neural_autoencoder_vector_zero(Int32) -> MlneuralautoencoderVector
+
+pub fn ml_neural_autoencoder_view_make(Int32) -> MlneuralautoencoderView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlneuralautoencoderBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralautoencoderBuffer::add(Self, Self) -> Self
+pub fn MlneuralautoencoderBuffer::copy(Self) -> Self
+pub fn MlneuralautoencoderBuffer::fill(Self, Double) -> Self
+pub fn MlneuralautoencoderBuffer::get(Self, Int32) -> Double
+pub fn MlneuralautoencoderBuffer::len(Self) -> Int32
+pub fn MlneuralautoencoderBuffer::max(Self) -> Double
+pub fn MlneuralautoencoderBuffer::mean(Self) -> Double
+pub fn MlneuralautoencoderBuffer::min(Self) -> Double
+pub fn MlneuralautoencoderBuffer::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderBuffer::set(Self, Int32, Double) -> Self
+pub fn MlneuralautoencoderBuffer::sum(Self) -> Double
+pub fn MlneuralautoencoderBuffer::to_string(Self) -> String
+
+pub(all) struct MlneuralautoencoderCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralautoencoderCluster::add(Self, Self) -> Self
+pub fn MlneuralautoencoderCluster::copy(Self) -> Self
+pub fn MlneuralautoencoderCluster::fill(Self, Double) -> Self
+pub fn MlneuralautoencoderCluster::get(Self, Int32) -> Double
+pub fn MlneuralautoencoderCluster::len(Self) -> Int32
+pub fn MlneuralautoencoderCluster::max(Self) -> Double
+pub fn MlneuralautoencoderCluster::mean(Self) -> Double
+pub fn MlneuralautoencoderCluster::min(Self) -> Double
+pub fn MlneuralautoencoderCluster::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderCluster::set(Self, Int32, Double) -> Self
+pub fn MlneuralautoencoderCluster::sum(Self) -> Double
+pub fn MlneuralautoencoderCluster::to_string(Self) -> String
+
+pub(all) struct MlneuralautoencoderCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralautoencoderCursor::add(Self, Self) -> Self
+pub fn MlneuralautoencoderCursor::copy(Self) -> Self
+pub fn MlneuralautoencoderCursor::fill(Self, Double) -> Self
+pub fn MlneuralautoencoderCursor::get(Self, Int32) -> Double
+pub fn MlneuralautoencoderCursor::len(Self) -> Int32
+pub fn MlneuralautoencoderCursor::max(Self) -> Double
+pub fn MlneuralautoencoderCursor::mean(Self) -> Double
+pub fn MlneuralautoencoderCursor::min(Self) -> Double
+pub fn MlneuralautoencoderCursor::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderCursor::set(Self, Int32, Double) -> Self
+pub fn MlneuralautoencoderCursor::sum(Self) -> Double
+pub fn MlneuralautoencoderCursor::to_string(Self) -> String
+
+pub(all) struct MlneuralautoencoderEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralautoencoderEdge::add(Self, Self) -> Self
+pub fn MlneuralautoencoderEdge::copy(Self) -> Self
+pub fn MlneuralautoencoderEdge::fill(Self, Double) -> Self
+pub fn MlneuralautoencoderEdge::get(Self, Int32) -> Double
+pub fn MlneuralautoencoderEdge::len(Self) -> Int32
+pub fn MlneuralautoencoderEdge::max(Self) -> Double
+pub fn MlneuralautoencoderEdge::mean(Self) -> Double
+pub fn MlneuralautoencoderEdge::min(Self) -> Double
+pub fn MlneuralautoencoderEdge::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderEdge::set(Self, Int32, Double) -> Self
+pub fn MlneuralautoencoderEdge::sum(Self) -> Double
+pub fn MlneuralautoencoderEdge::to_string(Self) -> String
+
+pub(all) struct MlneuralautoencoderFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralautoencoderFrame::add(Self, Self) -> Self
+pub fn MlneuralautoencoderFrame::copy(Self) -> Self
+pub fn MlneuralautoencoderFrame::fill(Self, Double) -> Self
+pub fn MlneuralautoencoderFrame::get(Self, Int32) -> Double
+pub fn MlneuralautoencoderFrame::len(Self) -> Int32
+pub fn MlneuralautoencoderFrame::max(Self) -> Double
+pub fn MlneuralautoencoderFrame::mean(Self) -> Double
+pub fn MlneuralautoencoderFrame::min(Self) -> Double
+pub fn MlneuralautoencoderFrame::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderFrame::set(Self, Int32, Double) -> Self
+pub fn MlneuralautoencoderFrame::sum(Self) -> Double
+pub fn MlneuralautoencoderFrame::to_string(Self) -> String
+
+pub(all) struct MlneuralautoencoderGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralautoencoderGraphN::add(Self, Self) -> Self
+pub fn MlneuralautoencoderGraphN::copy(Self) -> Self
+pub fn MlneuralautoencoderGraphN::fill(Self, Double) -> Self
+pub fn MlneuralautoencoderGraphN::get(Self, Int32) -> Double
+pub fn MlneuralautoencoderGraphN::len(Self) -> Int32
+pub fn MlneuralautoencoderGraphN::max(Self) -> Double
+pub fn MlneuralautoencoderGraphN::mean(Self) -> Double
+pub fn MlneuralautoencoderGraphN::min(Self) -> Double
+pub fn MlneuralautoencoderGraphN::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderGraphN::set(Self, Int32, Double) -> Self
+pub fn MlneuralautoencoderGraphN::sum(Self) -> Double
+pub fn MlneuralautoencoderGraphN::to_string(Self) -> String
+
+pub(all) struct MlneuralautoencoderLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralautoencoderLayer::add(Self, Self) -> Self
+pub fn MlneuralautoencoderLayer::copy(Self) -> Self
+pub fn MlneuralautoencoderLayer::fill(Self, Double) -> Self
+pub fn MlneuralautoencoderLayer::get(Self, Int32) -> Double
+pub fn MlneuralautoencoderLayer::len(Self) -> Int32
+pub fn MlneuralautoencoderLayer::max(Self) -> Double
+pub fn MlneuralautoencoderLayer::mean(Self) -> Double
+pub fn MlneuralautoencoderLayer::min(Self) -> Double
+pub fn MlneuralautoencoderLayer::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderLayer::set(Self, Int32, Double) -> Self
+pub fn MlneuralautoencoderLayer::sum(Self) -> Double
+pub fn MlneuralautoencoderLayer::to_string(Self) -> String
+
+pub(all) struct MlneuralautoencoderMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlneuralautoencoderMatrix::add(Self, Self) -> Self
+pub fn MlneuralautoencoderMatrix::det(Self) -> Double
+pub fn MlneuralautoencoderMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlneuralautoencoderMatrix::multiply(Self, Self) -> Self
+pub fn MlneuralautoencoderMatrix::norm(Self) -> Double
+pub fn MlneuralautoencoderMatrix::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderMatrix::to_string(Self) -> String
+pub fn MlneuralautoencoderMatrix::trace(Self) -> Double
+pub fn MlneuralautoencoderMatrix::transpose(Self) -> Self
+
+pub(all) struct MlneuralautoencoderModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralautoencoderModel::add(Self, Self) -> Self
+pub fn MlneuralautoencoderModel::copy(Self) -> Self
+pub fn MlneuralautoencoderModel::fill(Self, Double) -> Self
+pub fn MlneuralautoencoderModel::get(Self, Int32) -> Double
+pub fn MlneuralautoencoderModel::len(Self) -> Int32
+pub fn MlneuralautoencoderModel::max(Self) -> Double
+pub fn MlneuralautoencoderModel::mean(Self) -> Double
+pub fn MlneuralautoencoderModel::min(Self) -> Double
+pub fn MlneuralautoencoderModel::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderModel::set(Self, Int32, Double) -> Self
+pub fn MlneuralautoencoderModel::sum(Self) -> Double
+pub fn MlneuralautoencoderModel::to_string(Self) -> String
+
+pub(all) struct MlneuralautoencoderNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralautoencoderNode::add(Self, Self) -> Self
+pub fn MlneuralautoencoderNode::copy(Self) -> Self
+pub fn MlneuralautoencoderNode::fill(Self, Double) -> Self
+pub fn MlneuralautoencoderNode::get(Self, Int32) -> Double
+pub fn MlneuralautoencoderNode::len(Self) -> Int32
+pub fn MlneuralautoencoderNode::max(Self) -> Double
+pub fn MlneuralautoencoderNode::mean(Self) -> Double
+pub fn MlneuralautoencoderNode::min(Self) -> Double
+pub fn MlneuralautoencoderNode::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderNode::set(Self, Int32, Double) -> Self
+pub fn MlneuralautoencoderNode::sum(Self) -> Double
+pub fn MlneuralautoencoderNode::to_string(Self) -> String
+
+pub(all) struct MlneuralautoencoderPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralautoencoderPath::add(Self, Self) -> Self
+pub fn MlneuralautoencoderPath::copy(Self) -> Self
+pub fn MlneuralautoencoderPath::fill(Self, Double) -> Self
+pub fn MlneuralautoencoderPath::get(Self, Int32) -> Double
+pub fn MlneuralautoencoderPath::len(Self) -> Int32
+pub fn MlneuralautoencoderPath::max(Self) -> Double
+pub fn MlneuralautoencoderPath::mean(Self) -> Double
+pub fn MlneuralautoencoderPath::min(Self) -> Double
+pub fn MlneuralautoencoderPath::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderPath::set(Self, Int32, Double) -> Self
+pub fn MlneuralautoencoderPath::sum(Self) -> Double
+pub fn MlneuralautoencoderPath::to_string(Self) -> String
+
+pub(all) struct MlneuralautoencoderPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlneuralautoencoderPoint::add(Self, Self) -> Self
+pub fn MlneuralautoencoderPoint::cross(Self, Self) -> Self
+pub fn MlneuralautoencoderPoint::dist(Self, Self) -> Double
+pub fn MlneuralautoencoderPoint::dot(Self, Self) -> Double
+pub fn MlneuralautoencoderPoint::label(Self) -> Int32
+pub fn MlneuralautoencoderPoint::lerp(Self, Self, Double) -> Self
+pub fn MlneuralautoencoderPoint::mid(Self, Self) -> Self
+pub fn MlneuralautoencoderPoint::negate(Self) -> Self
+pub fn MlneuralautoencoderPoint::norm(Self) -> Double
+pub fn MlneuralautoencoderPoint::normalize(Self) -> Self
+pub fn MlneuralautoencoderPoint::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderPoint::sub(Self, Self) -> Self
+pub fn MlneuralautoencoderPoint::to_string(Self) -> String
+pub fn MlneuralautoencoderPoint::x(Self) -> Double
+pub fn MlneuralautoencoderPoint::y(Self) -> Double
+pub fn MlneuralautoencoderPoint::z(Self) -> Double
+
+pub(all) struct MlneuralautoencoderRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralautoencoderRange::add(Self, Self) -> Self
+pub fn MlneuralautoencoderRange::copy(Self) -> Self
+pub fn MlneuralautoencoderRange::fill(Self, Double) -> Self
+pub fn MlneuralautoencoderRange::get(Self, Int32) -> Double
+pub fn MlneuralautoencoderRange::len(Self) -> Int32
+pub fn MlneuralautoencoderRange::max(Self) -> Double
+pub fn MlneuralautoencoderRange::mean(Self) -> Double
+pub fn MlneuralautoencoderRange::min(Self) -> Double
+pub fn MlneuralautoencoderRange::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderRange::set(Self, Int32, Double) -> Self
+pub fn MlneuralautoencoderRange::sum(Self) -> Double
+pub fn MlneuralautoencoderRange::to_string(Self) -> String
+
+pub(all) struct MlneuralautoencoderSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlneuralautoencoderSeries::add(Self, Self) -> Self
+pub fn MlneuralautoencoderSeries::cumsum(Self) -> Self
+pub fn MlneuralautoencoderSeries::len(Self) -> Int32
+pub fn MlneuralautoencoderSeries::max(Self) -> Double
+pub fn MlneuralautoencoderSeries::mean(Self) -> Double
+pub fn MlneuralautoencoderSeries::median(Self) -> Double
+pub fn MlneuralautoencoderSeries::min(Self) -> Double
+pub fn MlneuralautoencoderSeries::normalize(Self) -> Self
+pub fn MlneuralautoencoderSeries::range(Self) -> Double
+pub fn MlneuralautoencoderSeries::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderSeries::std(Self) -> Double
+pub fn MlneuralautoencoderSeries::sub(Self, Self) -> Self
+pub fn MlneuralautoencoderSeries::sum(Self) -> Double
+pub fn MlneuralautoencoderSeries::to_string(Self) -> String
+pub fn MlneuralautoencoderSeries::variance(Self) -> Double
+
+pub(all) struct MlneuralautoencoderSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralautoencoderSlice::add(Self, Self) -> Self
+pub fn MlneuralautoencoderSlice::copy(Self) -> Self
+pub fn MlneuralautoencoderSlice::fill(Self, Double) -> Self
+pub fn MlneuralautoencoderSlice::get(Self, Int32) -> Double
+pub fn MlneuralautoencoderSlice::len(Self) -> Int32
+pub fn MlneuralautoencoderSlice::max(Self) -> Double
+pub fn MlneuralautoencoderSlice::mean(Self) -> Double
+pub fn MlneuralautoencoderSlice::min(Self) -> Double
+pub fn MlneuralautoencoderSlice::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderSlice::set(Self, Int32, Double) -> Self
+pub fn MlneuralautoencoderSlice::sum(Self) -> Double
+pub fn MlneuralautoencoderSlice::to_string(Self) -> String
+
+pub(all) struct MlneuralautoencoderTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralautoencoderTable::add(Self, Self) -> Self
+pub fn MlneuralautoencoderTable::copy(Self) -> Self
+pub fn MlneuralautoencoderTable::fill(Self, Double) -> Self
+pub fn MlneuralautoencoderTable::get(Self, Int32) -> Double
+pub fn MlneuralautoencoderTable::len(Self) -> Int32
+pub fn MlneuralautoencoderTable::max(Self) -> Double
+pub fn MlneuralautoencoderTable::mean(Self) -> Double
+pub fn MlneuralautoencoderTable::min(Self) -> Double
+pub fn MlneuralautoencoderTable::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderTable::set(Self, Int32, Double) -> Self
+pub fn MlneuralautoencoderTable::sum(Self) -> Double
+pub fn MlneuralautoencoderTable::to_string(Self) -> String
+
+pub(all) struct MlneuralautoencoderVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlneuralautoencoderVector::add(Self, Self) -> Self
+pub fn MlneuralautoencoderVector::dist(Self, Self) -> Double
+pub fn MlneuralautoencoderVector::dot(Self, Self) -> Double
+pub fn MlneuralautoencoderVector::norm(Self) -> Double
+pub fn MlneuralautoencoderVector::normalize(Self) -> Self
+pub fn MlneuralautoencoderVector::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderVector::sub(Self, Self) -> Self
+pub fn MlneuralautoencoderVector::to_string(Self) -> String
+
+pub(all) struct MlneuralautoencoderView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralautoencoderView::add(Self, Self) -> Self
+pub fn MlneuralautoencoderView::copy(Self) -> Self
+pub fn MlneuralautoencoderView::fill(Self, Double) -> Self
+pub fn MlneuralautoencoderView::get(Self, Int32) -> Double
+pub fn MlneuralautoencoderView::len(Self) -> Int32
+pub fn MlneuralautoencoderView::max(Self) -> Double
+pub fn MlneuralautoencoderView::mean(Self) -> Double
+pub fn MlneuralautoencoderView::min(Self) -> Double
+pub fn MlneuralautoencoderView::scale(Self, Double) -> Self
+pub fn MlneuralautoencoderView::set(Self, Int32, Double) -> Self
+pub fn MlneuralautoencoderView::sum(Self) -> Double
+pub fn MlneuralautoencoderView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_tree_fenwick"
+
+// Values
+pub fn ds_tree_fenwick_buffer_make(Int32) -> DstreefenwickBuffer
+
+pub fn ds_tree_fenwick_cluster_make(Int32) -> DstreefenwickCluster
+
+pub fn ds_tree_fenwick_cursor_make(Int32) -> DstreefenwickCursor
+
+pub fn ds_tree_fenwick_edge_make(Int32) -> DstreefenwickEdge
+
+pub fn ds_tree_fenwick_frame_make(Int32) -> DstreefenwickFrame
+
+pub fn ds_tree_fenwick_graphn_make(Int32) -> DstreefenwickGraphN
+
+pub fn ds_tree_fenwick_layer_make(Int32) -> DstreefenwickLayer
+
+pub fn ds_tree_fenwick_make_matrix(Int32, Int32, Double) -> DstreefenwickMatrix
+
+pub fn ds_tree_fenwick_make_point(Double, Double) -> DstreefenwickPoint
+
+pub fn ds_tree_fenwick_make_point3(Double, Double, Double) -> DstreefenwickPoint
+
+pub fn ds_tree_fenwick_make_series(Array[Double], String) -> DstreefenwickSeries
+
+pub fn ds_tree_fenwick_make_vector(Array[Double]) -> DstreefenwickVector
+
+pub fn ds_tree_fenwick_matrix_identity(Int32) -> DstreefenwickMatrix
+
+pub fn ds_tree_fenwick_model_make(Int32) -> DstreefenwickModel
+
+pub fn ds_tree_fenwick_node_make(Int32) -> DstreefenwickNode
+
+pub fn ds_tree_fenwick_path_make(Int32) -> DstreefenwickPath
+
+pub fn ds_tree_fenwick_range_make(Int32) -> DstreefenwickRange
+
+pub fn ds_tree_fenwick_slice_make(Int32) -> DstreefenwickSlice
+
+pub fn ds_tree_fenwick_table_make(Int32) -> DstreefenwickTable
+
+pub fn ds_tree_fenwick_vector_zero(Int32) -> DstreefenwickVector
+
+pub fn ds_tree_fenwick_view_make(Int32) -> DstreefenwickView
+
+// Errors
+
+// Types and methods
+pub(all) struct DstreefenwickBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreefenwickBuffer::add(Self, Self) -> Self
+pub fn DstreefenwickBuffer::copy(Self) -> Self
+pub fn DstreefenwickBuffer::fill(Self, Double) -> Self
+pub fn DstreefenwickBuffer::get(Self, Int32) -> Double
+pub fn DstreefenwickBuffer::len(Self) -> Int32
+pub fn DstreefenwickBuffer::max(Self) -> Double
+pub fn DstreefenwickBuffer::mean(Self) -> Double
+pub fn DstreefenwickBuffer::min(Self) -> Double
+pub fn DstreefenwickBuffer::scale(Self, Double) -> Self
+pub fn DstreefenwickBuffer::set(Self, Int32, Double) -> Self
+pub fn DstreefenwickBuffer::sum(Self) -> Double
+pub fn DstreefenwickBuffer::to_string(Self) -> String
+
+pub(all) struct DstreefenwickCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreefenwickCluster::add(Self, Self) -> Self
+pub fn DstreefenwickCluster::copy(Self) -> Self
+pub fn DstreefenwickCluster::fill(Self, Double) -> Self
+pub fn DstreefenwickCluster::get(Self, Int32) -> Double
+pub fn DstreefenwickCluster::len(Self) -> Int32
+pub fn DstreefenwickCluster::max(Self) -> Double
+pub fn DstreefenwickCluster::mean(Self) -> Double
+pub fn DstreefenwickCluster::min(Self) -> Double
+pub fn DstreefenwickCluster::scale(Self, Double) -> Self
+pub fn DstreefenwickCluster::set(Self, Int32, Double) -> Self
+pub fn DstreefenwickCluster::sum(Self) -> Double
+pub fn DstreefenwickCluster::to_string(Self) -> String
+
+pub(all) struct DstreefenwickCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreefenwickCursor::add(Self, Self) -> Self
+pub fn DstreefenwickCursor::copy(Self) -> Self
+pub fn DstreefenwickCursor::fill(Self, Double) -> Self
+pub fn DstreefenwickCursor::get(Self, Int32) -> Double
+pub fn DstreefenwickCursor::len(Self) -> Int32
+pub fn DstreefenwickCursor::max(Self) -> Double
+pub fn DstreefenwickCursor::mean(Self) -> Double
+pub fn DstreefenwickCursor::min(Self) -> Double
+pub fn DstreefenwickCursor::scale(Self, Double) -> Self
+pub fn DstreefenwickCursor::set(Self, Int32, Double) -> Self
+pub fn DstreefenwickCursor::sum(Self) -> Double
+pub fn DstreefenwickCursor::to_string(Self) -> String
+
+pub(all) struct DstreefenwickEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreefenwickEdge::add(Self, Self) -> Self
+pub fn DstreefenwickEdge::copy(Self) -> Self
+pub fn DstreefenwickEdge::fill(Self, Double) -> Self
+pub fn DstreefenwickEdge::get(Self, Int32) -> Double
+pub fn DstreefenwickEdge::len(Self) -> Int32
+pub fn DstreefenwickEdge::max(Self) -> Double
+pub fn DstreefenwickEdge::mean(Self) -> Double
+pub fn DstreefenwickEdge::min(Self) -> Double
+pub fn DstreefenwickEdge::scale(Self, Double) -> Self
+pub fn DstreefenwickEdge::set(Self, Int32, Double) -> Self
+pub fn DstreefenwickEdge::sum(Self) -> Double
+pub fn DstreefenwickEdge::to_string(Self) -> String
+
+pub(all) struct DstreefenwickFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreefenwickFrame::add(Self, Self) -> Self
+pub fn DstreefenwickFrame::copy(Self) -> Self
+pub fn DstreefenwickFrame::fill(Self, Double) -> Self
+pub fn DstreefenwickFrame::get(Self, Int32) -> Double
+pub fn DstreefenwickFrame::len(Self) -> Int32
+pub fn DstreefenwickFrame::max(Self) -> Double
+pub fn DstreefenwickFrame::mean(Self) -> Double
+pub fn DstreefenwickFrame::min(Self) -> Double
+pub fn DstreefenwickFrame::scale(Self, Double) -> Self
+pub fn DstreefenwickFrame::set(Self, Int32, Double) -> Self
+pub fn DstreefenwickFrame::sum(Self) -> Double
+pub fn DstreefenwickFrame::to_string(Self) -> String
+
+pub(all) struct DstreefenwickGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreefenwickGraphN::add(Self, Self) -> Self
+pub fn DstreefenwickGraphN::copy(Self) -> Self
+pub fn DstreefenwickGraphN::fill(Self, Double) -> Self
+pub fn DstreefenwickGraphN::get(Self, Int32) -> Double
+pub fn DstreefenwickGraphN::len(Self) -> Int32
+pub fn DstreefenwickGraphN::max(Self) -> Double
+pub fn DstreefenwickGraphN::mean(Self) -> Double
+pub fn DstreefenwickGraphN::min(Self) -> Double
+pub fn DstreefenwickGraphN::scale(Self, Double) -> Self
+pub fn DstreefenwickGraphN::set(Self, Int32, Double) -> Self
+pub fn DstreefenwickGraphN::sum(Self) -> Double
+pub fn DstreefenwickGraphN::to_string(Self) -> String
+
+pub(all) struct DstreefenwickLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreefenwickLayer::add(Self, Self) -> Self
+pub fn DstreefenwickLayer::copy(Self) -> Self
+pub fn DstreefenwickLayer::fill(Self, Double) -> Self
+pub fn DstreefenwickLayer::get(Self, Int32) -> Double
+pub fn DstreefenwickLayer::len(Self) -> Int32
+pub fn DstreefenwickLayer::max(Self) -> Double
+pub fn DstreefenwickLayer::mean(Self) -> Double
+pub fn DstreefenwickLayer::min(Self) -> Double
+pub fn DstreefenwickLayer::scale(Self, Double) -> Self
+pub fn DstreefenwickLayer::set(Self, Int32, Double) -> Self
+pub fn DstreefenwickLayer::sum(Self) -> Double
+pub fn DstreefenwickLayer::to_string(Self) -> String
+
+pub(all) struct DstreefenwickMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DstreefenwickMatrix::add(Self, Self) -> Self
+pub fn DstreefenwickMatrix::det(Self) -> Double
+pub fn DstreefenwickMatrix::get(Self, Int32, Int32) -> Double
+pub fn DstreefenwickMatrix::multiply(Self, Self) -> Self
+pub fn DstreefenwickMatrix::norm(Self) -> Double
+pub fn DstreefenwickMatrix::scale(Self, Double) -> Self
+pub fn DstreefenwickMatrix::to_string(Self) -> String
+pub fn DstreefenwickMatrix::trace(Self) -> Double
+pub fn DstreefenwickMatrix::transpose(Self) -> Self
+
+pub(all) struct DstreefenwickModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreefenwickModel::add(Self, Self) -> Self
+pub fn DstreefenwickModel::copy(Self) -> Self
+pub fn DstreefenwickModel::fill(Self, Double) -> Self
+pub fn DstreefenwickModel::get(Self, Int32) -> Double
+pub fn DstreefenwickModel::len(Self) -> Int32
+pub fn DstreefenwickModel::max(Self) -> Double
+pub fn DstreefenwickModel::mean(Self) -> Double
+pub fn DstreefenwickModel::min(Self) -> Double
+pub fn DstreefenwickModel::scale(Self, Double) -> Self
+pub fn DstreefenwickModel::set(Self, Int32, Double) -> Self
+pub fn DstreefenwickModel::sum(Self) -> Double
+pub fn DstreefenwickModel::to_string(Self) -> String
+
+pub(all) struct DstreefenwickNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreefenwickNode::add(Self, Self) -> Self
+pub fn DstreefenwickNode::copy(Self) -> Self
+pub fn DstreefenwickNode::fill(Self, Double) -> Self
+pub fn DstreefenwickNode::get(Self, Int32) -> Double
+pub fn DstreefenwickNode::len(Self) -> Int32
+pub fn DstreefenwickNode::max(Self) -> Double
+pub fn DstreefenwickNode::mean(Self) -> Double
+pub fn DstreefenwickNode::min(Self) -> Double
+pub fn DstreefenwickNode::scale(Self, Double) -> Self
+pub fn DstreefenwickNode::set(Self, Int32, Double) -> Self
+pub fn DstreefenwickNode::sum(Self) -> Double
+pub fn DstreefenwickNode::to_string(Self) -> String
+
+pub(all) struct DstreefenwickPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreefenwickPath::add(Self, Self) -> Self
+pub fn DstreefenwickPath::copy(Self) -> Self
+pub fn DstreefenwickPath::fill(Self, Double) -> Self
+pub fn DstreefenwickPath::get(Self, Int32) -> Double
+pub fn DstreefenwickPath::len(Self) -> Int32
+pub fn DstreefenwickPath::max(Self) -> Double
+pub fn DstreefenwickPath::mean(Self) -> Double
+pub fn DstreefenwickPath::min(Self) -> Double
+pub fn DstreefenwickPath::scale(Self, Double) -> Self
+pub fn DstreefenwickPath::set(Self, Int32, Double) -> Self
+pub fn DstreefenwickPath::sum(Self) -> Double
+pub fn DstreefenwickPath::to_string(Self) -> String
+
+pub(all) struct DstreefenwickPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DstreefenwickPoint::add(Self, Self) -> Self
+pub fn DstreefenwickPoint::cross(Self, Self) -> Self
+pub fn DstreefenwickPoint::dist(Self, Self) -> Double
+pub fn DstreefenwickPoint::dot(Self, Self) -> Double
+pub fn DstreefenwickPoint::label(Self) -> Int32
+pub fn DstreefenwickPoint::lerp(Self, Self, Double) -> Self
+pub fn DstreefenwickPoint::mid(Self, Self) -> Self
+pub fn DstreefenwickPoint::negate(Self) -> Self
+pub fn DstreefenwickPoint::norm(Self) -> Double
+pub fn DstreefenwickPoint::normalize(Self) -> Self
+pub fn DstreefenwickPoint::scale(Self, Double) -> Self
+pub fn DstreefenwickPoint::sub(Self, Self) -> Self
+pub fn DstreefenwickPoint::to_string(Self) -> String
+pub fn DstreefenwickPoint::x(Self) -> Double
+pub fn DstreefenwickPoint::y(Self) -> Double
+pub fn DstreefenwickPoint::z(Self) -> Double
+
+pub(all) struct DstreefenwickRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreefenwickRange::add(Self, Self) -> Self
+pub fn DstreefenwickRange::copy(Self) -> Self
+pub fn DstreefenwickRange::fill(Self, Double) -> Self
+pub fn DstreefenwickRange::get(Self, Int32) -> Double
+pub fn DstreefenwickRange::len(Self) -> Int32
+pub fn DstreefenwickRange::max(Self) -> Double
+pub fn DstreefenwickRange::mean(Self) -> Double
+pub fn DstreefenwickRange::min(Self) -> Double
+pub fn DstreefenwickRange::scale(Self, Double) -> Self
+pub fn DstreefenwickRange::set(Self, Int32, Double) -> Self
+pub fn DstreefenwickRange::sum(Self) -> Double
+pub fn DstreefenwickRange::to_string(Self) -> String
+
+pub(all) struct DstreefenwickSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DstreefenwickSeries::add(Self, Self) -> Self
+pub fn DstreefenwickSeries::cumsum(Self) -> Self
+pub fn DstreefenwickSeries::len(Self) -> Int32
+pub fn DstreefenwickSeries::max(Self) -> Double
+pub fn DstreefenwickSeries::mean(Self) -> Double
+pub fn DstreefenwickSeries::median(Self) -> Double
+pub fn DstreefenwickSeries::min(Self) -> Double
+pub fn DstreefenwickSeries::normalize(Self) -> Self
+pub fn DstreefenwickSeries::range(Self) -> Double
+pub fn DstreefenwickSeries::scale(Self, Double) -> Self
+pub fn DstreefenwickSeries::std(Self) -> Double
+pub fn DstreefenwickSeries::sub(Self, Self) -> Self
+pub fn DstreefenwickSeries::sum(Self) -> Double
+pub fn DstreefenwickSeries::to_string(Self) -> String
+pub fn DstreefenwickSeries::variance(Self) -> Double
+
+pub(all) struct DstreefenwickSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreefenwickSlice::add(Self, Self) -> Self
+pub fn DstreefenwickSlice::copy(Self) -> Self
+pub fn DstreefenwickSlice::fill(Self, Double) -> Self
+pub fn DstreefenwickSlice::get(Self, Int32) -> Double
+pub fn DstreefenwickSlice::len(Self) -> Int32
+pub fn DstreefenwickSlice::max(Self) -> Double
+pub fn DstreefenwickSlice::mean(Self) -> Double
+pub fn DstreefenwickSlice::min(Self) -> Double
+pub fn DstreefenwickSlice::scale(Self, Double) -> Self
+pub fn DstreefenwickSlice::set(Self, Int32, Double) -> Self
+pub fn DstreefenwickSlice::sum(Self) -> Double
+pub fn DstreefenwickSlice::to_string(Self) -> String
+
+pub(all) struct DstreefenwickTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreefenwickTable::add(Self, Self) -> Self
+pub fn DstreefenwickTable::copy(Self) -> Self
+pub fn DstreefenwickTable::fill(Self, Double) -> Self
+pub fn DstreefenwickTable::get(Self, Int32) -> Double
+pub fn DstreefenwickTable::len(Self) -> Int32
+pub fn DstreefenwickTable::max(Self) -> Double
+pub fn DstreefenwickTable::mean(Self) -> Double
+pub fn DstreefenwickTable::min(Self) -> Double
+pub fn DstreefenwickTable::scale(Self, Double) -> Self
+pub fn DstreefenwickTable::set(Self, Int32, Double) -> Self
+pub fn DstreefenwickTable::sum(Self) -> Double
+pub fn DstreefenwickTable::to_string(Self) -> String
+
+pub(all) struct DstreefenwickVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DstreefenwickVector::add(Self, Self) -> Self
+pub fn DstreefenwickVector::dist(Self, Self) -> Double
+pub fn DstreefenwickVector::dot(Self, Self) -> Double
+pub fn DstreefenwickVector::norm(Self) -> Double
+pub fn DstreefenwickVector::normalize(Self) -> Self
+pub fn DstreefenwickVector::scale(Self, Double) -> Self
+pub fn DstreefenwickVector::sub(Self, Self) -> Self
+pub fn DstreefenwickVector::to_string(Self) -> String
+
+pub(all) struct DstreefenwickView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreefenwickView::add(Self, Self) -> Self
+pub fn DstreefenwickView::copy(Self) -> Self
+pub fn DstreefenwickView::fill(Self, Double) -> Self
+pub fn DstreefenwickView::get(Self, Int32) -> Double
+pub fn DstreefenwickView::len(Self) -> Int32
+pub fn DstreefenwickView::max(Self) -> Double
+pub fn DstreefenwickView::mean(Self) -> Double
+pub fn DstreefenwickView::min(Self) -> Double
+pub fn DstreefenwickView::scale(Self, Double) -> Self
+pub fn DstreefenwickView::set(Self, Int32, Double) -> Self
+pub fn DstreefenwickView::sum(Self) -> Double
+pub fn DstreefenwickView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

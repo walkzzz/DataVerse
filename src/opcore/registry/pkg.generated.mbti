@@ -1,0 +1,34 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/registry"
+
+import {
+  "dataverse/opcore",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn empty() -> Registry
+
+pub fn lookup(Registry, String) -> @opcore.Operator?
+
+pub fn register(Registry, @opcore.Operator) -> Registry
+
+pub fn registry_id() -> String
+
+pub fn size(Registry) -> Int32
+
+pub fn valid_operator(@opcore.Operator) -> Bool
+
+// Errors
+
+// Types and methods
+pub struct Registry {
+  operators : Array[@opcore.Operator]
+} derive(Eq, @debug.Debug)
+pub fn Registry::equal(Self, Self) -> Bool
+pub fn Registry::not_equal(Self, Self) -> Bool
+pub fn Registry::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/opt_convex_newton"
+
+// Values
+pub fn opt_convex_newton_buffer_make(Int32) -> OptconvexnewtonBuffer
+
+pub fn opt_convex_newton_cluster_make(Int32) -> OptconvexnewtonCluster
+
+pub fn opt_convex_newton_cursor_make(Int32) -> OptconvexnewtonCursor
+
+pub fn opt_convex_newton_edge_make(Int32) -> OptconvexnewtonEdge
+
+pub fn opt_convex_newton_frame_make(Int32) -> OptconvexnewtonFrame
+
+pub fn opt_convex_newton_graphn_make(Int32) -> OptconvexnewtonGraphN
+
+pub fn opt_convex_newton_layer_make(Int32) -> OptconvexnewtonLayer
+
+pub fn opt_convex_newton_make_matrix(Int32, Int32, Double) -> OptconvexnewtonMatrix
+
+pub fn opt_convex_newton_make_point(Double, Double) -> OptconvexnewtonPoint
+
+pub fn opt_convex_newton_make_point3(Double, Double, Double) -> OptconvexnewtonPoint
+
+pub fn opt_convex_newton_make_series(Array[Double], String) -> OptconvexnewtonSeries
+
+pub fn opt_convex_newton_make_vector(Array[Double]) -> OptconvexnewtonVector
+
+pub fn opt_convex_newton_matrix_identity(Int32) -> OptconvexnewtonMatrix
+
+pub fn opt_convex_newton_model_make(Int32) -> OptconvexnewtonModel
+
+pub fn opt_convex_newton_node_make(Int32) -> OptconvexnewtonNode
+
+pub fn opt_convex_newton_path_make(Int32) -> OptconvexnewtonPath
+
+pub fn opt_convex_newton_range_make(Int32) -> OptconvexnewtonRange
+
+pub fn opt_convex_newton_slice_make(Int32) -> OptconvexnewtonSlice
+
+pub fn opt_convex_newton_table_make(Int32) -> OptconvexnewtonTable
+
+pub fn opt_convex_newton_vector_zero(Int32) -> OptconvexnewtonVector
+
+pub fn opt_convex_newton_view_make(Int32) -> OptconvexnewtonView
+
+// Errors
+
+// Types and methods
+pub(all) struct OptconvexnewtonBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexnewtonBuffer::add(Self, Self) -> Self
+pub fn OptconvexnewtonBuffer::copy(Self) -> Self
+pub fn OptconvexnewtonBuffer::fill(Self, Double) -> Self
+pub fn OptconvexnewtonBuffer::get(Self, Int32) -> Double
+pub fn OptconvexnewtonBuffer::len(Self) -> Int32
+pub fn OptconvexnewtonBuffer::max(Self) -> Double
+pub fn OptconvexnewtonBuffer::mean(Self) -> Double
+pub fn OptconvexnewtonBuffer::min(Self) -> Double
+pub fn OptconvexnewtonBuffer::scale(Self, Double) -> Self
+pub fn OptconvexnewtonBuffer::set(Self, Int32, Double) -> Self
+pub fn OptconvexnewtonBuffer::sum(Self) -> Double
+pub fn OptconvexnewtonBuffer::to_string(Self) -> String
+
+pub(all) struct OptconvexnewtonCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexnewtonCluster::add(Self, Self) -> Self
+pub fn OptconvexnewtonCluster::copy(Self) -> Self
+pub fn OptconvexnewtonCluster::fill(Self, Double) -> Self
+pub fn OptconvexnewtonCluster::get(Self, Int32) -> Double
+pub fn OptconvexnewtonCluster::len(Self) -> Int32
+pub fn OptconvexnewtonCluster::max(Self) -> Double
+pub fn OptconvexnewtonCluster::mean(Self) -> Double
+pub fn OptconvexnewtonCluster::min(Self) -> Double
+pub fn OptconvexnewtonCluster::scale(Self, Double) -> Self
+pub fn OptconvexnewtonCluster::set(Self, Int32, Double) -> Self
+pub fn OptconvexnewtonCluster::sum(Self) -> Double
+pub fn OptconvexnewtonCluster::to_string(Self) -> String
+
+pub(all) struct OptconvexnewtonCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexnewtonCursor::add(Self, Self) -> Self
+pub fn OptconvexnewtonCursor::copy(Self) -> Self
+pub fn OptconvexnewtonCursor::fill(Self, Double) -> Self
+pub fn OptconvexnewtonCursor::get(Self, Int32) -> Double
+pub fn OptconvexnewtonCursor::len(Self) -> Int32
+pub fn OptconvexnewtonCursor::max(Self) -> Double
+pub fn OptconvexnewtonCursor::mean(Self) -> Double
+pub fn OptconvexnewtonCursor::min(Self) -> Double
+pub fn OptconvexnewtonCursor::scale(Self, Double) -> Self
+pub fn OptconvexnewtonCursor::set(Self, Int32, Double) -> Self
+pub fn OptconvexnewtonCursor::sum(Self) -> Double
+pub fn OptconvexnewtonCursor::to_string(Self) -> String
+
+pub(all) struct OptconvexnewtonEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexnewtonEdge::add(Self, Self) -> Self
+pub fn OptconvexnewtonEdge::copy(Self) -> Self
+pub fn OptconvexnewtonEdge::fill(Self, Double) -> Self
+pub fn OptconvexnewtonEdge::get(Self, Int32) -> Double
+pub fn OptconvexnewtonEdge::len(Self) -> Int32
+pub fn OptconvexnewtonEdge::max(Self) -> Double
+pub fn OptconvexnewtonEdge::mean(Self) -> Double
+pub fn OptconvexnewtonEdge::min(Self) -> Double
+pub fn OptconvexnewtonEdge::scale(Self, Double) -> Self
+pub fn OptconvexnewtonEdge::set(Self, Int32, Double) -> Self
+pub fn OptconvexnewtonEdge::sum(Self) -> Double
+pub fn OptconvexnewtonEdge::to_string(Self) -> String
+
+pub(all) struct OptconvexnewtonFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexnewtonFrame::add(Self, Self) -> Self
+pub fn OptconvexnewtonFrame::copy(Self) -> Self
+pub fn OptconvexnewtonFrame::fill(Self, Double) -> Self
+pub fn OptconvexnewtonFrame::get(Self, Int32) -> Double
+pub fn OptconvexnewtonFrame::len(Self) -> Int32
+pub fn OptconvexnewtonFrame::max(Self) -> Double
+pub fn OptconvexnewtonFrame::mean(Self) -> Double
+pub fn OptconvexnewtonFrame::min(Self) -> Double
+pub fn OptconvexnewtonFrame::scale(Self, Double) -> Self
+pub fn OptconvexnewtonFrame::set(Self, Int32, Double) -> Self
+pub fn OptconvexnewtonFrame::sum(Self) -> Double
+pub fn OptconvexnewtonFrame::to_string(Self) -> String
+
+pub(all) struct OptconvexnewtonGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexnewtonGraphN::add(Self, Self) -> Self
+pub fn OptconvexnewtonGraphN::copy(Self) -> Self
+pub fn OptconvexnewtonGraphN::fill(Self, Double) -> Self
+pub fn OptconvexnewtonGraphN::get(Self, Int32) -> Double
+pub fn OptconvexnewtonGraphN::len(Self) -> Int32
+pub fn OptconvexnewtonGraphN::max(Self) -> Double
+pub fn OptconvexnewtonGraphN::mean(Self) -> Double
+pub fn OptconvexnewtonGraphN::min(Self) -> Double
+pub fn OptconvexnewtonGraphN::scale(Self, Double) -> Self
+pub fn OptconvexnewtonGraphN::set(Self, Int32, Double) -> Self
+pub fn OptconvexnewtonGraphN::sum(Self) -> Double
+pub fn OptconvexnewtonGraphN::to_string(Self) -> String
+
+pub(all) struct OptconvexnewtonLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexnewtonLayer::add(Self, Self) -> Self
+pub fn OptconvexnewtonLayer::copy(Self) -> Self
+pub fn OptconvexnewtonLayer::fill(Self, Double) -> Self
+pub fn OptconvexnewtonLayer::get(Self, Int32) -> Double
+pub fn OptconvexnewtonLayer::len(Self) -> Int32
+pub fn OptconvexnewtonLayer::max(Self) -> Double
+pub fn OptconvexnewtonLayer::mean(Self) -> Double
+pub fn OptconvexnewtonLayer::min(Self) -> Double
+pub fn OptconvexnewtonLayer::scale(Self, Double) -> Self
+pub fn OptconvexnewtonLayer::set(Self, Int32, Double) -> Self
+pub fn OptconvexnewtonLayer::sum(Self) -> Double
+pub fn OptconvexnewtonLayer::to_string(Self) -> String
+
+pub(all) struct OptconvexnewtonMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn OptconvexnewtonMatrix::add(Self, Self) -> Self
+pub fn OptconvexnewtonMatrix::det(Self) -> Double
+pub fn OptconvexnewtonMatrix::get(Self, Int32, Int32) -> Double
+pub fn OptconvexnewtonMatrix::multiply(Self, Self) -> Self
+pub fn OptconvexnewtonMatrix::norm(Self) -> Double
+pub fn OptconvexnewtonMatrix::scale(Self, Double) -> Self
+pub fn OptconvexnewtonMatrix::to_string(Self) -> String
+pub fn OptconvexnewtonMatrix::trace(Self) -> Double
+pub fn OptconvexnewtonMatrix::transpose(Self) -> Self
+
+pub(all) struct OptconvexnewtonModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexnewtonModel::add(Self, Self) -> Self
+pub fn OptconvexnewtonModel::copy(Self) -> Self
+pub fn OptconvexnewtonModel::fill(Self, Double) -> Self
+pub fn OptconvexnewtonModel::get(Self, Int32) -> Double
+pub fn OptconvexnewtonModel::len(Self) -> Int32
+pub fn OptconvexnewtonModel::max(Self) -> Double
+pub fn OptconvexnewtonModel::mean(Self) -> Double
+pub fn OptconvexnewtonModel::min(Self) -> Double
+pub fn OptconvexnewtonModel::scale(Self, Double) -> Self
+pub fn OptconvexnewtonModel::set(Self, Int32, Double) -> Self
+pub fn OptconvexnewtonModel::sum(Self) -> Double
+pub fn OptconvexnewtonModel::to_string(Self) -> String
+
+pub(all) struct OptconvexnewtonNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexnewtonNode::add(Self, Self) -> Self
+pub fn OptconvexnewtonNode::copy(Self) -> Self
+pub fn OptconvexnewtonNode::fill(Self, Double) -> Self
+pub fn OptconvexnewtonNode::get(Self, Int32) -> Double
+pub fn OptconvexnewtonNode::len(Self) -> Int32
+pub fn OptconvexnewtonNode::max(Self) -> Double
+pub fn OptconvexnewtonNode::mean(Self) -> Double
+pub fn OptconvexnewtonNode::min(Self) -> Double
+pub fn OptconvexnewtonNode::scale(Self, Double) -> Self
+pub fn OptconvexnewtonNode::set(Self, Int32, Double) -> Self
+pub fn OptconvexnewtonNode::sum(Self) -> Double
+pub fn OptconvexnewtonNode::to_string(Self) -> String
+
+pub(all) struct OptconvexnewtonPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexnewtonPath::add(Self, Self) -> Self
+pub fn OptconvexnewtonPath::copy(Self) -> Self
+pub fn OptconvexnewtonPath::fill(Self, Double) -> Self
+pub fn OptconvexnewtonPath::get(Self, Int32) -> Double
+pub fn OptconvexnewtonPath::len(Self) -> Int32
+pub fn OptconvexnewtonPath::max(Self) -> Double
+pub fn OptconvexnewtonPath::mean(Self) -> Double
+pub fn OptconvexnewtonPath::min(Self) -> Double
+pub fn OptconvexnewtonPath::scale(Self, Double) -> Self
+pub fn OptconvexnewtonPath::set(Self, Int32, Double) -> Self
+pub fn OptconvexnewtonPath::sum(Self) -> Double
+pub fn OptconvexnewtonPath::to_string(Self) -> String
+
+pub(all) struct OptconvexnewtonPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn OptconvexnewtonPoint::add(Self, Self) -> Self
+pub fn OptconvexnewtonPoint::cross(Self, Self) -> Self
+pub fn OptconvexnewtonPoint::dist(Self, Self) -> Double
+pub fn OptconvexnewtonPoint::dot(Self, Self) -> Double
+pub fn OptconvexnewtonPoint::label(Self) -> Int32
+pub fn OptconvexnewtonPoint::lerp(Self, Self, Double) -> Self
+pub fn OptconvexnewtonPoint::mid(Self, Self) -> Self
+pub fn OptconvexnewtonPoint::negate(Self) -> Self
+pub fn OptconvexnewtonPoint::norm(Self) -> Double
+pub fn OptconvexnewtonPoint::normalize(Self) -> Self
+pub fn OptconvexnewtonPoint::scale(Self, Double) -> Self
+pub fn OptconvexnewtonPoint::sub(Self, Self) -> Self
+pub fn OptconvexnewtonPoint::to_string(Self) -> String
+pub fn OptconvexnewtonPoint::x(Self) -> Double
+pub fn OptconvexnewtonPoint::y(Self) -> Double
+pub fn OptconvexnewtonPoint::z(Self) -> Double
+
+pub(all) struct OptconvexnewtonRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexnewtonRange::add(Self, Self) -> Self
+pub fn OptconvexnewtonRange::copy(Self) -> Self
+pub fn OptconvexnewtonRange::fill(Self, Double) -> Self
+pub fn OptconvexnewtonRange::get(Self, Int32) -> Double
+pub fn OptconvexnewtonRange::len(Self) -> Int32
+pub fn OptconvexnewtonRange::max(Self) -> Double
+pub fn OptconvexnewtonRange::mean(Self) -> Double
+pub fn OptconvexnewtonRange::min(Self) -> Double
+pub fn OptconvexnewtonRange::scale(Self, Double) -> Self
+pub fn OptconvexnewtonRange::set(Self, Int32, Double) -> Self
+pub fn OptconvexnewtonRange::sum(Self) -> Double
+pub fn OptconvexnewtonRange::to_string(Self) -> String
+
+pub(all) struct OptconvexnewtonSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn OptconvexnewtonSeries::add(Self, Self) -> Self
+pub fn OptconvexnewtonSeries::cumsum(Self) -> Self
+pub fn OptconvexnewtonSeries::len(Self) -> Int32
+pub fn OptconvexnewtonSeries::max(Self) -> Double
+pub fn OptconvexnewtonSeries::mean(Self) -> Double
+pub fn OptconvexnewtonSeries::median(Self) -> Double
+pub fn OptconvexnewtonSeries::min(Self) -> Double
+pub fn OptconvexnewtonSeries::normalize(Self) -> Self
+pub fn OptconvexnewtonSeries::range(Self) -> Double
+pub fn OptconvexnewtonSeries::scale(Self, Double) -> Self
+pub fn OptconvexnewtonSeries::std(Self) -> Double
+pub fn OptconvexnewtonSeries::sub(Self, Self) -> Self
+pub fn OptconvexnewtonSeries::sum(Self) -> Double
+pub fn OptconvexnewtonSeries::to_string(Self) -> String
+pub fn OptconvexnewtonSeries::variance(Self) -> Double
+
+pub(all) struct OptconvexnewtonSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexnewtonSlice::add(Self, Self) -> Self
+pub fn OptconvexnewtonSlice::copy(Self) -> Self
+pub fn OptconvexnewtonSlice::fill(Self, Double) -> Self
+pub fn OptconvexnewtonSlice::get(Self, Int32) -> Double
+pub fn OptconvexnewtonSlice::len(Self) -> Int32
+pub fn OptconvexnewtonSlice::max(Self) -> Double
+pub fn OptconvexnewtonSlice::mean(Self) -> Double
+pub fn OptconvexnewtonSlice::min(Self) -> Double
+pub fn OptconvexnewtonSlice::scale(Self, Double) -> Self
+pub fn OptconvexnewtonSlice::set(Self, Int32, Double) -> Self
+pub fn OptconvexnewtonSlice::sum(Self) -> Double
+pub fn OptconvexnewtonSlice::to_string(Self) -> String
+
+pub(all) struct OptconvexnewtonTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexnewtonTable::add(Self, Self) -> Self
+pub fn OptconvexnewtonTable::copy(Self) -> Self
+pub fn OptconvexnewtonTable::fill(Self, Double) -> Self
+pub fn OptconvexnewtonTable::get(Self, Int32) -> Double
+pub fn OptconvexnewtonTable::len(Self) -> Int32
+pub fn OptconvexnewtonTable::max(Self) -> Double
+pub fn OptconvexnewtonTable::mean(Self) -> Double
+pub fn OptconvexnewtonTable::min(Self) -> Double
+pub fn OptconvexnewtonTable::scale(Self, Double) -> Self
+pub fn OptconvexnewtonTable::set(Self, Int32, Double) -> Self
+pub fn OptconvexnewtonTable::sum(Self) -> Double
+pub fn OptconvexnewtonTable::to_string(Self) -> String
+
+pub(all) struct OptconvexnewtonVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn OptconvexnewtonVector::add(Self, Self) -> Self
+pub fn OptconvexnewtonVector::dist(Self, Self) -> Double
+pub fn OptconvexnewtonVector::dot(Self, Self) -> Double
+pub fn OptconvexnewtonVector::norm(Self) -> Double
+pub fn OptconvexnewtonVector::normalize(Self) -> Self
+pub fn OptconvexnewtonVector::scale(Self, Double) -> Self
+pub fn OptconvexnewtonVector::sub(Self, Self) -> Self
+pub fn OptconvexnewtonVector::to_string(Self) -> String
+
+pub(all) struct OptconvexnewtonView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptconvexnewtonView::add(Self, Self) -> Self
+pub fn OptconvexnewtonView::copy(Self) -> Self
+pub fn OptconvexnewtonView::fill(Self, Double) -> Self
+pub fn OptconvexnewtonView::get(Self, Int32) -> Double
+pub fn OptconvexnewtonView::len(Self) -> Int32
+pub fn OptconvexnewtonView::max(Self) -> Double
+pub fn OptconvexnewtonView::mean(Self) -> Double
+pub fn OptconvexnewtonView::min(Self) -> Double
+pub fn OptconvexnewtonView::scale(Self, Double) -> Self
+pub fn OptconvexnewtonView::set(Self, Int32, Double) -> Self
+pub fn OptconvexnewtonView::sum(Self) -> Double
+pub fn OptconvexnewtonView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/encode_csv"
+
+// Values
+pub fn encode_csv_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn encode_csv_corr(Array[Double], Array[Double]) -> Double
+
+pub fn encode_csv_cov(Array[Double], Array[Double]) -> Double
+
+pub fn encode_csv_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_csv_mae(Array[Double], Array[Double]) -> Double
+
+pub fn encode_csv_make_labeled_point(Double, Double, Int32) -> Encode_csvPoint
+
+pub fn encode_csv_make_matrix(Int32, Int32, Double) -> Encode_csvMatrix
+
+pub fn encode_csv_make_point(Double, Double) -> Encode_csvPoint
+
+pub fn encode_csv_make_series(Array[Double], String) -> Encode_csvSeries
+
+pub fn encode_csv_make_vector(Array[Double]) -> Encode_csvVector
+
+pub fn encode_csv_matrix_add(Encode_csvMatrix, Encode_csvMatrix) -> Encode_csvMatrix
+
+pub fn encode_csv_matrix_get(Encode_csvMatrix, Int32, Int32) -> Double
+
+pub fn encode_csv_matrix_identity(Int32) -> Encode_csvMatrix
+
+pub fn encode_csv_matrix_multiply(Encode_csvMatrix, Encode_csvMatrix) -> Encode_csvMatrix
+
+pub fn encode_csv_matrix_norm(Encode_csvMatrix) -> Double
+
+pub fn encode_csv_matrix_scale(Encode_csvMatrix, Double) -> Encode_csvMatrix
+
+pub fn encode_csv_matrix_to_string(Encode_csvMatrix) -> String
+
+pub fn encode_csv_matrix_trace(Encode_csvMatrix) -> Double
+
+pub fn encode_csv_matrix_transpose(Encode_csvMatrix) -> Encode_csvMatrix
+
+pub fn encode_csv_mse(Array[Double], Array[Double]) -> Double
+
+pub fn encode_csv_point_add(Encode_csvPoint, Encode_csvPoint) -> Encode_csvPoint
+
+pub fn encode_csv_point_dist(Encode_csvPoint, Encode_csvPoint) -> Double
+
+pub fn encode_csv_point_dot(Encode_csvPoint, Encode_csvPoint) -> Double
+
+pub fn encode_csv_point_label(Encode_csvPoint) -> Int32
+
+pub fn encode_csv_point_norm(Encode_csvPoint) -> Double
+
+pub fn encode_csv_point_scale(Encode_csvPoint, Double) -> Encode_csvPoint
+
+pub fn encode_csv_point_sub(Encode_csvPoint, Encode_csvPoint) -> Encode_csvPoint
+
+pub fn encode_csv_point_to_string(Encode_csvPoint) -> String
+
+pub fn encode_csv_point_x(Encode_csvPoint) -> Double
+
+pub fn encode_csv_point_y(Encode_csvPoint) -> Double
+
+pub fn encode_csv_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_csv_r2(Array[Double], Array[Double]) -> Double
+
+pub fn encode_csv_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_csv_series_add(Encode_csvSeries, Encode_csvSeries) -> Encode_csvSeries
+
+pub fn encode_csv_series_len(Encode_csvSeries) -> Int32
+
+pub fn encode_csv_series_max(Encode_csvSeries) -> Double
+
+pub fn encode_csv_series_mean(Encode_csvSeries) -> Double
+
+pub fn encode_csv_series_min(Encode_csvSeries) -> Double
+
+pub fn encode_csv_series_scale(Encode_csvSeries, Double) -> Encode_csvSeries
+
+pub fn encode_csv_series_std(Encode_csvSeries) -> Double
+
+pub fn encode_csv_series_sum(Encode_csvSeries) -> Double
+
+pub fn encode_csv_series_to_string(Encode_csvSeries) -> String
+
+pub fn encode_csv_series_var(Encode_csvSeries) -> Double
+
+pub fn encode_csv_std(Array[Double]) -> Double
+
+pub fn encode_csv_var(Array[Double]) -> Double
+
+pub fn encode_csv_vector_add(Encode_csvVector, Encode_csvVector) -> Encode_csvVector
+
+pub fn encode_csv_vector_dist(Encode_csvVector, Encode_csvVector) -> Double
+
+pub fn encode_csv_vector_dot(Encode_csvVector, Encode_csvVector) -> Double
+
+pub fn encode_csv_vector_norm(Encode_csvVector) -> Double
+
+pub fn encode_csv_vector_normalize(Encode_csvVector) -> Encode_csvVector
+
+pub fn encode_csv_vector_scale(Encode_csvVector, Double) -> Encode_csvVector
+
+pub fn encode_csv_vector_sub(Encode_csvVector, Encode_csvVector) -> Encode_csvVector
+
+pub fn encode_csv_vector_to_string(Encode_csvVector) -> String
+
+pub fn encode_csv_vector_zero(Int32) -> Encode_csvVector
+
+// Errors
+
+// Types and methods
+pub struct Encode_csvMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Encode_csvPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Encode_csvSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Encode_csvVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

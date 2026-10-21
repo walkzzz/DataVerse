@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/chem_mol_props_mw"
+
+// Values
+pub fn chem_mol_props_mw_buffer_make(Int32) -> ChemmolpropsmwBuffer
+
+pub fn chem_mol_props_mw_cluster_make(Int32) -> ChemmolpropsmwCluster
+
+pub fn chem_mol_props_mw_cursor_make(Int32) -> ChemmolpropsmwCursor
+
+pub fn chem_mol_props_mw_edge_make(Int32) -> ChemmolpropsmwEdge
+
+pub fn chem_mol_props_mw_frame_make(Int32) -> ChemmolpropsmwFrame
+
+pub fn chem_mol_props_mw_graphn_make(Int32) -> ChemmolpropsmwGraphN
+
+pub fn chem_mol_props_mw_layer_make(Int32) -> ChemmolpropsmwLayer
+
+pub fn chem_mol_props_mw_make_matrix(Int32, Int32, Double) -> ChemmolpropsmwMatrix
+
+pub fn chem_mol_props_mw_make_point(Double, Double) -> ChemmolpropsmwPoint
+
+pub fn chem_mol_props_mw_make_point3(Double, Double, Double) -> ChemmolpropsmwPoint
+
+pub fn chem_mol_props_mw_make_series(Array[Double], String) -> ChemmolpropsmwSeries
+
+pub fn chem_mol_props_mw_make_vector(Array[Double]) -> ChemmolpropsmwVector
+
+pub fn chem_mol_props_mw_matrix_identity(Int32) -> ChemmolpropsmwMatrix
+
+pub fn chem_mol_props_mw_model_make(Int32) -> ChemmolpropsmwModel
+
+pub fn chem_mol_props_mw_node_make(Int32) -> ChemmolpropsmwNode
+
+pub fn chem_mol_props_mw_path_make(Int32) -> ChemmolpropsmwPath
+
+pub fn chem_mol_props_mw_range_make(Int32) -> ChemmolpropsmwRange
+
+pub fn chem_mol_props_mw_slice_make(Int32) -> ChemmolpropsmwSlice
+
+pub fn chem_mol_props_mw_table_make(Int32) -> ChemmolpropsmwTable
+
+pub fn chem_mol_props_mw_vector_zero(Int32) -> ChemmolpropsmwVector
+
+pub fn chem_mol_props_mw_view_make(Int32) -> ChemmolpropsmwView
+
+// Errors
+
+// Types and methods
+pub(all) struct ChemmolpropsmwBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolpropsmwBuffer::add(Self, Self) -> Self
+pub fn ChemmolpropsmwBuffer::copy(Self) -> Self
+pub fn ChemmolpropsmwBuffer::fill(Self, Double) -> Self
+pub fn ChemmolpropsmwBuffer::get(Self, Int32) -> Double
+pub fn ChemmolpropsmwBuffer::len(Self) -> Int32
+pub fn ChemmolpropsmwBuffer::max(Self) -> Double
+pub fn ChemmolpropsmwBuffer::mean(Self) -> Double
+pub fn ChemmolpropsmwBuffer::min(Self) -> Double
+pub fn ChemmolpropsmwBuffer::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwBuffer::set(Self, Int32, Double) -> Self
+pub fn ChemmolpropsmwBuffer::sum(Self) -> Double
+pub fn ChemmolpropsmwBuffer::to_string(Self) -> String
+
+pub(all) struct ChemmolpropsmwCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolpropsmwCluster::add(Self, Self) -> Self
+pub fn ChemmolpropsmwCluster::copy(Self) -> Self
+pub fn ChemmolpropsmwCluster::fill(Self, Double) -> Self
+pub fn ChemmolpropsmwCluster::get(Self, Int32) -> Double
+pub fn ChemmolpropsmwCluster::len(Self) -> Int32
+pub fn ChemmolpropsmwCluster::max(Self) -> Double
+pub fn ChemmolpropsmwCluster::mean(Self) -> Double
+pub fn ChemmolpropsmwCluster::min(Self) -> Double
+pub fn ChemmolpropsmwCluster::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwCluster::set(Self, Int32, Double) -> Self
+pub fn ChemmolpropsmwCluster::sum(Self) -> Double
+pub fn ChemmolpropsmwCluster::to_string(Self) -> String
+
+pub(all) struct ChemmolpropsmwCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolpropsmwCursor::add(Self, Self) -> Self
+pub fn ChemmolpropsmwCursor::copy(Self) -> Self
+pub fn ChemmolpropsmwCursor::fill(Self, Double) -> Self
+pub fn ChemmolpropsmwCursor::get(Self, Int32) -> Double
+pub fn ChemmolpropsmwCursor::len(Self) -> Int32
+pub fn ChemmolpropsmwCursor::max(Self) -> Double
+pub fn ChemmolpropsmwCursor::mean(Self) -> Double
+pub fn ChemmolpropsmwCursor::min(Self) -> Double
+pub fn ChemmolpropsmwCursor::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwCursor::set(Self, Int32, Double) -> Self
+pub fn ChemmolpropsmwCursor::sum(Self) -> Double
+pub fn ChemmolpropsmwCursor::to_string(Self) -> String
+
+pub(all) struct ChemmolpropsmwEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolpropsmwEdge::add(Self, Self) -> Self
+pub fn ChemmolpropsmwEdge::copy(Self) -> Self
+pub fn ChemmolpropsmwEdge::fill(Self, Double) -> Self
+pub fn ChemmolpropsmwEdge::get(Self, Int32) -> Double
+pub fn ChemmolpropsmwEdge::len(Self) -> Int32
+pub fn ChemmolpropsmwEdge::max(Self) -> Double
+pub fn ChemmolpropsmwEdge::mean(Self) -> Double
+pub fn ChemmolpropsmwEdge::min(Self) -> Double
+pub fn ChemmolpropsmwEdge::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwEdge::set(Self, Int32, Double) -> Self
+pub fn ChemmolpropsmwEdge::sum(Self) -> Double
+pub fn ChemmolpropsmwEdge::to_string(Self) -> String
+
+pub(all) struct ChemmolpropsmwFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolpropsmwFrame::add(Self, Self) -> Self
+pub fn ChemmolpropsmwFrame::copy(Self) -> Self
+pub fn ChemmolpropsmwFrame::fill(Self, Double) -> Self
+pub fn ChemmolpropsmwFrame::get(Self, Int32) -> Double
+pub fn ChemmolpropsmwFrame::len(Self) -> Int32
+pub fn ChemmolpropsmwFrame::max(Self) -> Double
+pub fn ChemmolpropsmwFrame::mean(Self) -> Double
+pub fn ChemmolpropsmwFrame::min(Self) -> Double
+pub fn ChemmolpropsmwFrame::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwFrame::set(Self, Int32, Double) -> Self
+pub fn ChemmolpropsmwFrame::sum(Self) -> Double
+pub fn ChemmolpropsmwFrame::to_string(Self) -> String
+
+pub(all) struct ChemmolpropsmwGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolpropsmwGraphN::add(Self, Self) -> Self
+pub fn ChemmolpropsmwGraphN::copy(Self) -> Self
+pub fn ChemmolpropsmwGraphN::fill(Self, Double) -> Self
+pub fn ChemmolpropsmwGraphN::get(Self, Int32) -> Double
+pub fn ChemmolpropsmwGraphN::len(Self) -> Int32
+pub fn ChemmolpropsmwGraphN::max(Self) -> Double
+pub fn ChemmolpropsmwGraphN::mean(Self) -> Double
+pub fn ChemmolpropsmwGraphN::min(Self) -> Double
+pub fn ChemmolpropsmwGraphN::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwGraphN::set(Self, Int32, Double) -> Self
+pub fn ChemmolpropsmwGraphN::sum(Self) -> Double
+pub fn ChemmolpropsmwGraphN::to_string(Self) -> String
+
+pub(all) struct ChemmolpropsmwLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolpropsmwLayer::add(Self, Self) -> Self
+pub fn ChemmolpropsmwLayer::copy(Self) -> Self
+pub fn ChemmolpropsmwLayer::fill(Self, Double) -> Self
+pub fn ChemmolpropsmwLayer::get(Self, Int32) -> Double
+pub fn ChemmolpropsmwLayer::len(Self) -> Int32
+pub fn ChemmolpropsmwLayer::max(Self) -> Double
+pub fn ChemmolpropsmwLayer::mean(Self) -> Double
+pub fn ChemmolpropsmwLayer::min(Self) -> Double
+pub fn ChemmolpropsmwLayer::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwLayer::set(Self, Int32, Double) -> Self
+pub fn ChemmolpropsmwLayer::sum(Self) -> Double
+pub fn ChemmolpropsmwLayer::to_string(Self) -> String
+
+pub(all) struct ChemmolpropsmwMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ChemmolpropsmwMatrix::add(Self, Self) -> Self
+pub fn ChemmolpropsmwMatrix::det(Self) -> Double
+pub fn ChemmolpropsmwMatrix::get(Self, Int32, Int32) -> Double
+pub fn ChemmolpropsmwMatrix::multiply(Self, Self) -> Self
+pub fn ChemmolpropsmwMatrix::norm(Self) -> Double
+pub fn ChemmolpropsmwMatrix::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwMatrix::to_string(Self) -> String
+pub fn ChemmolpropsmwMatrix::trace(Self) -> Double
+pub fn ChemmolpropsmwMatrix::transpose(Self) -> Self
+
+pub(all) struct ChemmolpropsmwModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolpropsmwModel::add(Self, Self) -> Self
+pub fn ChemmolpropsmwModel::copy(Self) -> Self
+pub fn ChemmolpropsmwModel::fill(Self, Double) -> Self
+pub fn ChemmolpropsmwModel::get(Self, Int32) -> Double
+pub fn ChemmolpropsmwModel::len(Self) -> Int32
+pub fn ChemmolpropsmwModel::max(Self) -> Double
+pub fn ChemmolpropsmwModel::mean(Self) -> Double
+pub fn ChemmolpropsmwModel::min(Self) -> Double
+pub fn ChemmolpropsmwModel::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwModel::set(Self, Int32, Double) -> Self
+pub fn ChemmolpropsmwModel::sum(Self) -> Double
+pub fn ChemmolpropsmwModel::to_string(Self) -> String
+
+pub(all) struct ChemmolpropsmwNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolpropsmwNode::add(Self, Self) -> Self
+pub fn ChemmolpropsmwNode::copy(Self) -> Self
+pub fn ChemmolpropsmwNode::fill(Self, Double) -> Self
+pub fn ChemmolpropsmwNode::get(Self, Int32) -> Double
+pub fn ChemmolpropsmwNode::len(Self) -> Int32
+pub fn ChemmolpropsmwNode::max(Self) -> Double
+pub fn ChemmolpropsmwNode::mean(Self) -> Double
+pub fn ChemmolpropsmwNode::min(Self) -> Double
+pub fn ChemmolpropsmwNode::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwNode::set(Self, Int32, Double) -> Self
+pub fn ChemmolpropsmwNode::sum(Self) -> Double
+pub fn ChemmolpropsmwNode::to_string(Self) -> String
+
+pub(all) struct ChemmolpropsmwPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolpropsmwPath::add(Self, Self) -> Self
+pub fn ChemmolpropsmwPath::copy(Self) -> Self
+pub fn ChemmolpropsmwPath::fill(Self, Double) -> Self
+pub fn ChemmolpropsmwPath::get(Self, Int32) -> Double
+pub fn ChemmolpropsmwPath::len(Self) -> Int32
+pub fn ChemmolpropsmwPath::max(Self) -> Double
+pub fn ChemmolpropsmwPath::mean(Self) -> Double
+pub fn ChemmolpropsmwPath::min(Self) -> Double
+pub fn ChemmolpropsmwPath::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwPath::set(Self, Int32, Double) -> Self
+pub fn ChemmolpropsmwPath::sum(Self) -> Double
+pub fn ChemmolpropsmwPath::to_string(Self) -> String
+
+pub(all) struct ChemmolpropsmwPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ChemmolpropsmwPoint::add(Self, Self) -> Self
+pub fn ChemmolpropsmwPoint::cross(Self, Self) -> Self
+pub fn ChemmolpropsmwPoint::dist(Self, Self) -> Double
+pub fn ChemmolpropsmwPoint::dot(Self, Self) -> Double
+pub fn ChemmolpropsmwPoint::label(Self) -> Int32
+pub fn ChemmolpropsmwPoint::lerp(Self, Self, Double) -> Self
+pub fn ChemmolpropsmwPoint::mid(Self, Self) -> Self
+pub fn ChemmolpropsmwPoint::negate(Self) -> Self
+pub fn ChemmolpropsmwPoint::norm(Self) -> Double
+pub fn ChemmolpropsmwPoint::normalize(Self) -> Self
+pub fn ChemmolpropsmwPoint::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwPoint::sub(Self, Self) -> Self
+pub fn ChemmolpropsmwPoint::to_string(Self) -> String
+pub fn ChemmolpropsmwPoint::x(Self) -> Double
+pub fn ChemmolpropsmwPoint::y(Self) -> Double
+pub fn ChemmolpropsmwPoint::z(Self) -> Double
+
+pub(all) struct ChemmolpropsmwRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolpropsmwRange::add(Self, Self) -> Self
+pub fn ChemmolpropsmwRange::copy(Self) -> Self
+pub fn ChemmolpropsmwRange::fill(Self, Double) -> Self
+pub fn ChemmolpropsmwRange::get(Self, Int32) -> Double
+pub fn ChemmolpropsmwRange::len(Self) -> Int32
+pub fn ChemmolpropsmwRange::max(Self) -> Double
+pub fn ChemmolpropsmwRange::mean(Self) -> Double
+pub fn ChemmolpropsmwRange::min(Self) -> Double
+pub fn ChemmolpropsmwRange::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwRange::set(Self, Int32, Double) -> Self
+pub fn ChemmolpropsmwRange::sum(Self) -> Double
+pub fn ChemmolpropsmwRange::to_string(Self) -> String
+
+pub(all) struct ChemmolpropsmwSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ChemmolpropsmwSeries::add(Self, Self) -> Self
+pub fn ChemmolpropsmwSeries::cumsum(Self) -> Self
+pub fn ChemmolpropsmwSeries::len(Self) -> Int32
+pub fn ChemmolpropsmwSeries::max(Self) -> Double
+pub fn ChemmolpropsmwSeries::mean(Self) -> Double
+pub fn ChemmolpropsmwSeries::median(Self) -> Double
+pub fn ChemmolpropsmwSeries::min(Self) -> Double
+pub fn ChemmolpropsmwSeries::normalize(Self) -> Self
+pub fn ChemmolpropsmwSeries::range(Self) -> Double
+pub fn ChemmolpropsmwSeries::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwSeries::std(Self) -> Double
+pub fn ChemmolpropsmwSeries::sub(Self, Self) -> Self
+pub fn ChemmolpropsmwSeries::sum(Self) -> Double
+pub fn ChemmolpropsmwSeries::to_string(Self) -> String
+pub fn ChemmolpropsmwSeries::variance(Self) -> Double
+
+pub(all) struct ChemmolpropsmwSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolpropsmwSlice::add(Self, Self) -> Self
+pub fn ChemmolpropsmwSlice::copy(Self) -> Self
+pub fn ChemmolpropsmwSlice::fill(Self, Double) -> Self
+pub fn ChemmolpropsmwSlice::get(Self, Int32) -> Double
+pub fn ChemmolpropsmwSlice::len(Self) -> Int32
+pub fn ChemmolpropsmwSlice::max(Self) -> Double
+pub fn ChemmolpropsmwSlice::mean(Self) -> Double
+pub fn ChemmolpropsmwSlice::min(Self) -> Double
+pub fn ChemmolpropsmwSlice::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwSlice::set(Self, Int32, Double) -> Self
+pub fn ChemmolpropsmwSlice::sum(Self) -> Double
+pub fn ChemmolpropsmwSlice::to_string(Self) -> String
+
+pub(all) struct ChemmolpropsmwTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolpropsmwTable::add(Self, Self) -> Self
+pub fn ChemmolpropsmwTable::copy(Self) -> Self
+pub fn ChemmolpropsmwTable::fill(Self, Double) -> Self
+pub fn ChemmolpropsmwTable::get(Self, Int32) -> Double
+pub fn ChemmolpropsmwTable::len(Self) -> Int32
+pub fn ChemmolpropsmwTable::max(Self) -> Double
+pub fn ChemmolpropsmwTable::mean(Self) -> Double
+pub fn ChemmolpropsmwTable::min(Self) -> Double
+pub fn ChemmolpropsmwTable::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwTable::set(Self, Int32, Double) -> Self
+pub fn ChemmolpropsmwTable::sum(Self) -> Double
+pub fn ChemmolpropsmwTable::to_string(Self) -> String
+
+pub(all) struct ChemmolpropsmwVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ChemmolpropsmwVector::add(Self, Self) -> Self
+pub fn ChemmolpropsmwVector::dist(Self, Self) -> Double
+pub fn ChemmolpropsmwVector::dot(Self, Self) -> Double
+pub fn ChemmolpropsmwVector::norm(Self) -> Double
+pub fn ChemmolpropsmwVector::normalize(Self) -> Self
+pub fn ChemmolpropsmwVector::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwVector::sub(Self, Self) -> Self
+pub fn ChemmolpropsmwVector::to_string(Self) -> String
+
+pub(all) struct ChemmolpropsmwView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolpropsmwView::add(Self, Self) -> Self
+pub fn ChemmolpropsmwView::copy(Self) -> Self
+pub fn ChemmolpropsmwView::fill(Self, Double) -> Self
+pub fn ChemmolpropsmwView::get(Self, Int32) -> Double
+pub fn ChemmolpropsmwView::len(Self) -> Int32
+pub fn ChemmolpropsmwView::max(Self) -> Double
+pub fn ChemmolpropsmwView::mean(Self) -> Double
+pub fn ChemmolpropsmwView::min(Self) -> Double
+pub fn ChemmolpropsmwView::scale(Self, Double) -> Self
+pub fn ChemmolpropsmwView::set(Self, Int32, Double) -> Self
+pub fn ChemmolpropsmwView::sum(Self) -> Double
+pub fn ChemmolpropsmwView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

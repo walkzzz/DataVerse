@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_dist_counting"
+
+// Values
+pub fn sort_dist_counting_buffer_make(Int32) -> SortdistcountingBuffer
+
+pub fn sort_dist_counting_cluster_make(Int32) -> SortdistcountingCluster
+
+pub fn sort_dist_counting_cursor_make(Int32) -> SortdistcountingCursor
+
+pub fn sort_dist_counting_edge_make(Int32) -> SortdistcountingEdge
+
+pub fn sort_dist_counting_frame_make(Int32) -> SortdistcountingFrame
+
+pub fn sort_dist_counting_graphn_make(Int32) -> SortdistcountingGraphN
+
+pub fn sort_dist_counting_layer_make(Int32) -> SortdistcountingLayer
+
+pub fn sort_dist_counting_make_matrix(Int32, Int32, Double) -> SortdistcountingMatrix
+
+pub fn sort_dist_counting_make_point(Double, Double) -> SortdistcountingPoint
+
+pub fn sort_dist_counting_make_point3(Double, Double, Double) -> SortdistcountingPoint
+
+pub fn sort_dist_counting_make_series(Array[Double], String) -> SortdistcountingSeries
+
+pub fn sort_dist_counting_make_vector(Array[Double]) -> SortdistcountingVector
+
+pub fn sort_dist_counting_matrix_identity(Int32) -> SortdistcountingMatrix
+
+pub fn sort_dist_counting_model_make(Int32) -> SortdistcountingModel
+
+pub fn sort_dist_counting_node_make(Int32) -> SortdistcountingNode
+
+pub fn sort_dist_counting_path_make(Int32) -> SortdistcountingPath
+
+pub fn sort_dist_counting_range_make(Int32) -> SortdistcountingRange
+
+pub fn sort_dist_counting_slice_make(Int32) -> SortdistcountingSlice
+
+pub fn sort_dist_counting_table_make(Int32) -> SortdistcountingTable
+
+pub fn sort_dist_counting_vector_zero(Int32) -> SortdistcountingVector
+
+pub fn sort_dist_counting_view_make(Int32) -> SortdistcountingView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortdistcountingBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistcountingBuffer::add(Self, Self) -> Self
+pub fn SortdistcountingBuffer::copy(Self) -> Self
+pub fn SortdistcountingBuffer::fill(Self, Double) -> Self
+pub fn SortdistcountingBuffer::get(Self, Int32) -> Double
+pub fn SortdistcountingBuffer::len(Self) -> Int32
+pub fn SortdistcountingBuffer::max(Self) -> Double
+pub fn SortdistcountingBuffer::mean(Self) -> Double
+pub fn SortdistcountingBuffer::min(Self) -> Double
+pub fn SortdistcountingBuffer::scale(Self, Double) -> Self
+pub fn SortdistcountingBuffer::set(Self, Int32, Double) -> Self
+pub fn SortdistcountingBuffer::sum(Self) -> Double
+pub fn SortdistcountingBuffer::to_string(Self) -> String
+
+pub(all) struct SortdistcountingCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistcountingCluster::add(Self, Self) -> Self
+pub fn SortdistcountingCluster::copy(Self) -> Self
+pub fn SortdistcountingCluster::fill(Self, Double) -> Self
+pub fn SortdistcountingCluster::get(Self, Int32) -> Double
+pub fn SortdistcountingCluster::len(Self) -> Int32
+pub fn SortdistcountingCluster::max(Self) -> Double
+pub fn SortdistcountingCluster::mean(Self) -> Double
+pub fn SortdistcountingCluster::min(Self) -> Double
+pub fn SortdistcountingCluster::scale(Self, Double) -> Self
+pub fn SortdistcountingCluster::set(Self, Int32, Double) -> Self
+pub fn SortdistcountingCluster::sum(Self) -> Double
+pub fn SortdistcountingCluster::to_string(Self) -> String
+
+pub(all) struct SortdistcountingCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistcountingCursor::add(Self, Self) -> Self
+pub fn SortdistcountingCursor::copy(Self) -> Self
+pub fn SortdistcountingCursor::fill(Self, Double) -> Self
+pub fn SortdistcountingCursor::get(Self, Int32) -> Double
+pub fn SortdistcountingCursor::len(Self) -> Int32
+pub fn SortdistcountingCursor::max(Self) -> Double
+pub fn SortdistcountingCursor::mean(Self) -> Double
+pub fn SortdistcountingCursor::min(Self) -> Double
+pub fn SortdistcountingCursor::scale(Self, Double) -> Self
+pub fn SortdistcountingCursor::set(Self, Int32, Double) -> Self
+pub fn SortdistcountingCursor::sum(Self) -> Double
+pub fn SortdistcountingCursor::to_string(Self) -> String
+
+pub(all) struct SortdistcountingEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistcountingEdge::add(Self, Self) -> Self
+pub fn SortdistcountingEdge::copy(Self) -> Self
+pub fn SortdistcountingEdge::fill(Self, Double) -> Self
+pub fn SortdistcountingEdge::get(Self, Int32) -> Double
+pub fn SortdistcountingEdge::len(Self) -> Int32
+pub fn SortdistcountingEdge::max(Self) -> Double
+pub fn SortdistcountingEdge::mean(Self) -> Double
+pub fn SortdistcountingEdge::min(Self) -> Double
+pub fn SortdistcountingEdge::scale(Self, Double) -> Self
+pub fn SortdistcountingEdge::set(Self, Int32, Double) -> Self
+pub fn SortdistcountingEdge::sum(Self) -> Double
+pub fn SortdistcountingEdge::to_string(Self) -> String
+
+pub(all) struct SortdistcountingFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistcountingFrame::add(Self, Self) -> Self
+pub fn SortdistcountingFrame::copy(Self) -> Self
+pub fn SortdistcountingFrame::fill(Self, Double) -> Self
+pub fn SortdistcountingFrame::get(Self, Int32) -> Double
+pub fn SortdistcountingFrame::len(Self) -> Int32
+pub fn SortdistcountingFrame::max(Self) -> Double
+pub fn SortdistcountingFrame::mean(Self) -> Double
+pub fn SortdistcountingFrame::min(Self) -> Double
+pub fn SortdistcountingFrame::scale(Self, Double) -> Self
+pub fn SortdistcountingFrame::set(Self, Int32, Double) -> Self
+pub fn SortdistcountingFrame::sum(Self) -> Double
+pub fn SortdistcountingFrame::to_string(Self) -> String
+
+pub(all) struct SortdistcountingGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistcountingGraphN::add(Self, Self) -> Self
+pub fn SortdistcountingGraphN::copy(Self) -> Self
+pub fn SortdistcountingGraphN::fill(Self, Double) -> Self
+pub fn SortdistcountingGraphN::get(Self, Int32) -> Double
+pub fn SortdistcountingGraphN::len(Self) -> Int32
+pub fn SortdistcountingGraphN::max(Self) -> Double
+pub fn SortdistcountingGraphN::mean(Self) -> Double
+pub fn SortdistcountingGraphN::min(Self) -> Double
+pub fn SortdistcountingGraphN::scale(Self, Double) -> Self
+pub fn SortdistcountingGraphN::set(Self, Int32, Double) -> Self
+pub fn SortdistcountingGraphN::sum(Self) -> Double
+pub fn SortdistcountingGraphN::to_string(Self) -> String
+
+pub(all) struct SortdistcountingLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistcountingLayer::add(Self, Self) -> Self
+pub fn SortdistcountingLayer::copy(Self) -> Self
+pub fn SortdistcountingLayer::fill(Self, Double) -> Self
+pub fn SortdistcountingLayer::get(Self, Int32) -> Double
+pub fn SortdistcountingLayer::len(Self) -> Int32
+pub fn SortdistcountingLayer::max(Self) -> Double
+pub fn SortdistcountingLayer::mean(Self) -> Double
+pub fn SortdistcountingLayer::min(Self) -> Double
+pub fn SortdistcountingLayer::scale(Self, Double) -> Self
+pub fn SortdistcountingLayer::set(Self, Int32, Double) -> Self
+pub fn SortdistcountingLayer::sum(Self) -> Double
+pub fn SortdistcountingLayer::to_string(Self) -> String
+
+pub(all) struct SortdistcountingMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortdistcountingMatrix::add(Self, Self) -> Self
+pub fn SortdistcountingMatrix::det(Self) -> Double
+pub fn SortdistcountingMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortdistcountingMatrix::multiply(Self, Self) -> Self
+pub fn SortdistcountingMatrix::norm(Self) -> Double
+pub fn SortdistcountingMatrix::scale(Self, Double) -> Self
+pub fn SortdistcountingMatrix::to_string(Self) -> String
+pub fn SortdistcountingMatrix::trace(Self) -> Double
+pub fn SortdistcountingMatrix::transpose(Self) -> Self
+
+pub(all) struct SortdistcountingModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistcountingModel::add(Self, Self) -> Self
+pub fn SortdistcountingModel::copy(Self) -> Self
+pub fn SortdistcountingModel::fill(Self, Double) -> Self
+pub fn SortdistcountingModel::get(Self, Int32) -> Double
+pub fn SortdistcountingModel::len(Self) -> Int32
+pub fn SortdistcountingModel::max(Self) -> Double
+pub fn SortdistcountingModel::mean(Self) -> Double
+pub fn SortdistcountingModel::min(Self) -> Double
+pub fn SortdistcountingModel::scale(Self, Double) -> Self
+pub fn SortdistcountingModel::set(Self, Int32, Double) -> Self
+pub fn SortdistcountingModel::sum(Self) -> Double
+pub fn SortdistcountingModel::to_string(Self) -> String
+
+pub(all) struct SortdistcountingNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistcountingNode::add(Self, Self) -> Self
+pub fn SortdistcountingNode::copy(Self) -> Self
+pub fn SortdistcountingNode::fill(Self, Double) -> Self
+pub fn SortdistcountingNode::get(Self, Int32) -> Double
+pub fn SortdistcountingNode::len(Self) -> Int32
+pub fn SortdistcountingNode::max(Self) -> Double
+pub fn SortdistcountingNode::mean(Self) -> Double
+pub fn SortdistcountingNode::min(Self) -> Double
+pub fn SortdistcountingNode::scale(Self, Double) -> Self
+pub fn SortdistcountingNode::set(Self, Int32, Double) -> Self
+pub fn SortdistcountingNode::sum(Self) -> Double
+pub fn SortdistcountingNode::to_string(Self) -> String
+
+pub(all) struct SortdistcountingPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistcountingPath::add(Self, Self) -> Self
+pub fn SortdistcountingPath::copy(Self) -> Self
+pub fn SortdistcountingPath::fill(Self, Double) -> Self
+pub fn SortdistcountingPath::get(Self, Int32) -> Double
+pub fn SortdistcountingPath::len(Self) -> Int32
+pub fn SortdistcountingPath::max(Self) -> Double
+pub fn SortdistcountingPath::mean(Self) -> Double
+pub fn SortdistcountingPath::min(Self) -> Double
+pub fn SortdistcountingPath::scale(Self, Double) -> Self
+pub fn SortdistcountingPath::set(Self, Int32, Double) -> Self
+pub fn SortdistcountingPath::sum(Self) -> Double
+pub fn SortdistcountingPath::to_string(Self) -> String
+
+pub(all) struct SortdistcountingPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortdistcountingPoint::add(Self, Self) -> Self
+pub fn SortdistcountingPoint::cross(Self, Self) -> Self
+pub fn SortdistcountingPoint::dist(Self, Self) -> Double
+pub fn SortdistcountingPoint::dot(Self, Self) -> Double
+pub fn SortdistcountingPoint::label(Self) -> Int32
+pub fn SortdistcountingPoint::lerp(Self, Self, Double) -> Self
+pub fn SortdistcountingPoint::mid(Self, Self) -> Self
+pub fn SortdistcountingPoint::negate(Self) -> Self
+pub fn SortdistcountingPoint::norm(Self) -> Double
+pub fn SortdistcountingPoint::normalize(Self) -> Self
+pub fn SortdistcountingPoint::scale(Self, Double) -> Self
+pub fn SortdistcountingPoint::sub(Self, Self) -> Self
+pub fn SortdistcountingPoint::to_string(Self) -> String
+pub fn SortdistcountingPoint::x(Self) -> Double
+pub fn SortdistcountingPoint::y(Self) -> Double
+pub fn SortdistcountingPoint::z(Self) -> Double
+
+pub(all) struct SortdistcountingRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistcountingRange::add(Self, Self) -> Self
+pub fn SortdistcountingRange::copy(Self) -> Self
+pub fn SortdistcountingRange::fill(Self, Double) -> Self
+pub fn SortdistcountingRange::get(Self, Int32) -> Double
+pub fn SortdistcountingRange::len(Self) -> Int32
+pub fn SortdistcountingRange::max(Self) -> Double
+pub fn SortdistcountingRange::mean(Self) -> Double
+pub fn SortdistcountingRange::min(Self) -> Double
+pub fn SortdistcountingRange::scale(Self, Double) -> Self
+pub fn SortdistcountingRange::set(Self, Int32, Double) -> Self
+pub fn SortdistcountingRange::sum(Self) -> Double
+pub fn SortdistcountingRange::to_string(Self) -> String
+
+pub(all) struct SortdistcountingSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortdistcountingSeries::add(Self, Self) -> Self
+pub fn SortdistcountingSeries::cumsum(Self) -> Self
+pub fn SortdistcountingSeries::len(Self) -> Int32
+pub fn SortdistcountingSeries::max(Self) -> Double
+pub fn SortdistcountingSeries::mean(Self) -> Double
+pub fn SortdistcountingSeries::median(Self) -> Double
+pub fn SortdistcountingSeries::min(Self) -> Double
+pub fn SortdistcountingSeries::normalize(Self) -> Self
+pub fn SortdistcountingSeries::range(Self) -> Double
+pub fn SortdistcountingSeries::scale(Self, Double) -> Self
+pub fn SortdistcountingSeries::std(Self) -> Double
+pub fn SortdistcountingSeries::sub(Self, Self) -> Self
+pub fn SortdistcountingSeries::sum(Self) -> Double
+pub fn SortdistcountingSeries::to_string(Self) -> String
+pub fn SortdistcountingSeries::variance(Self) -> Double
+
+pub(all) struct SortdistcountingSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistcountingSlice::add(Self, Self) -> Self
+pub fn SortdistcountingSlice::copy(Self) -> Self
+pub fn SortdistcountingSlice::fill(Self, Double) -> Self
+pub fn SortdistcountingSlice::get(Self, Int32) -> Double
+pub fn SortdistcountingSlice::len(Self) -> Int32
+pub fn SortdistcountingSlice::max(Self) -> Double
+pub fn SortdistcountingSlice::mean(Self) -> Double
+pub fn SortdistcountingSlice::min(Self) -> Double
+pub fn SortdistcountingSlice::scale(Self, Double) -> Self
+pub fn SortdistcountingSlice::set(Self, Int32, Double) -> Self
+pub fn SortdistcountingSlice::sum(Self) -> Double
+pub fn SortdistcountingSlice::to_string(Self) -> String
+
+pub(all) struct SortdistcountingTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistcountingTable::add(Self, Self) -> Self
+pub fn SortdistcountingTable::copy(Self) -> Self
+pub fn SortdistcountingTable::fill(Self, Double) -> Self
+pub fn SortdistcountingTable::get(Self, Int32) -> Double
+pub fn SortdistcountingTable::len(Self) -> Int32
+pub fn SortdistcountingTable::max(Self) -> Double
+pub fn SortdistcountingTable::mean(Self) -> Double
+pub fn SortdistcountingTable::min(Self) -> Double
+pub fn SortdistcountingTable::scale(Self, Double) -> Self
+pub fn SortdistcountingTable::set(Self, Int32, Double) -> Self
+pub fn SortdistcountingTable::sum(Self) -> Double
+pub fn SortdistcountingTable::to_string(Self) -> String
+
+pub(all) struct SortdistcountingVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortdistcountingVector::add(Self, Self) -> Self
+pub fn SortdistcountingVector::dist(Self, Self) -> Double
+pub fn SortdistcountingVector::dot(Self, Self) -> Double
+pub fn SortdistcountingVector::norm(Self) -> Double
+pub fn SortdistcountingVector::normalize(Self) -> Self
+pub fn SortdistcountingVector::scale(Self, Double) -> Self
+pub fn SortdistcountingVector::sub(Self, Self) -> Self
+pub fn SortdistcountingVector::to_string(Self) -> String
+
+pub(all) struct SortdistcountingView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistcountingView::add(Self, Self) -> Self
+pub fn SortdistcountingView::copy(Self) -> Self
+pub fn SortdistcountingView::fill(Self, Double) -> Self
+pub fn SortdistcountingView::get(Self, Int32) -> Double
+pub fn SortdistcountingView::len(Self) -> Int32
+pub fn SortdistcountingView::max(Self) -> Double
+pub fn SortdistcountingView::mean(Self) -> Double
+pub fn SortdistcountingView::min(Self) -> Double
+pub fn SortdistcountingView::scale(Self, Double) -> Self
+pub fn SortdistcountingView::set(Self, Int32, Double) -> Self
+pub fn SortdistcountingView::sum(Self) -> Double
+pub fn SortdistcountingView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

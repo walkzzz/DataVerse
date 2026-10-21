@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/info_theory"
+
+// Values
+pub fn info_theory_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn info_theory_corr(Array[Double], Array[Double]) -> Double
+
+pub fn info_theory_cov(Array[Double], Array[Double]) -> Double
+
+pub fn info_theory_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn info_theory_mae(Array[Double], Array[Double]) -> Double
+
+pub fn info_theory_make_labeled_point(Double, Double, Int32) -> Info_theoryPoint
+
+pub fn info_theory_make_matrix(Int32, Int32, Double) -> Info_theoryMatrix
+
+pub fn info_theory_make_point(Double, Double) -> Info_theoryPoint
+
+pub fn info_theory_make_series(Array[Double], String) -> Info_theorySeries
+
+pub fn info_theory_make_vector(Array[Double]) -> Info_theoryVector
+
+pub fn info_theory_matrix_add(Info_theoryMatrix, Info_theoryMatrix) -> Info_theoryMatrix
+
+pub fn info_theory_matrix_get(Info_theoryMatrix, Int32, Int32) -> Double
+
+pub fn info_theory_matrix_identity(Int32) -> Info_theoryMatrix
+
+pub fn info_theory_matrix_multiply(Info_theoryMatrix, Info_theoryMatrix) -> Info_theoryMatrix
+
+pub fn info_theory_matrix_norm(Info_theoryMatrix) -> Double
+
+pub fn info_theory_matrix_scale(Info_theoryMatrix, Double) -> Info_theoryMatrix
+
+pub fn info_theory_matrix_to_string(Info_theoryMatrix) -> String
+
+pub fn info_theory_matrix_trace(Info_theoryMatrix) -> Double
+
+pub fn info_theory_matrix_transpose(Info_theoryMatrix) -> Info_theoryMatrix
+
+pub fn info_theory_mse(Array[Double], Array[Double]) -> Double
+
+pub fn info_theory_point_add(Info_theoryPoint, Info_theoryPoint) -> Info_theoryPoint
+
+pub fn info_theory_point_dist(Info_theoryPoint, Info_theoryPoint) -> Double
+
+pub fn info_theory_point_dot(Info_theoryPoint, Info_theoryPoint) -> Double
+
+pub fn info_theory_point_label(Info_theoryPoint) -> Int32
+
+pub fn info_theory_point_norm(Info_theoryPoint) -> Double
+
+pub fn info_theory_point_scale(Info_theoryPoint, Double) -> Info_theoryPoint
+
+pub fn info_theory_point_sub(Info_theoryPoint, Info_theoryPoint) -> Info_theoryPoint
+
+pub fn info_theory_point_to_string(Info_theoryPoint) -> String
+
+pub fn info_theory_point_x(Info_theoryPoint) -> Double
+
+pub fn info_theory_point_y(Info_theoryPoint) -> Double
+
+pub fn info_theory_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn info_theory_r2(Array[Double], Array[Double]) -> Double
+
+pub fn info_theory_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn info_theory_series_add(Info_theorySeries, Info_theorySeries) -> Info_theorySeries
+
+pub fn info_theory_series_len(Info_theorySeries) -> Int32
+
+pub fn info_theory_series_max(Info_theorySeries) -> Double
+
+pub fn info_theory_series_mean(Info_theorySeries) -> Double
+
+pub fn info_theory_series_min(Info_theorySeries) -> Double
+
+pub fn info_theory_series_scale(Info_theorySeries, Double) -> Info_theorySeries
+
+pub fn info_theory_series_std(Info_theorySeries) -> Double
+
+pub fn info_theory_series_sum(Info_theorySeries) -> Double
+
+pub fn info_theory_series_to_string(Info_theorySeries) -> String
+
+pub fn info_theory_series_var(Info_theorySeries) -> Double
+
+pub fn info_theory_std(Array[Double]) -> Double
+
+pub fn info_theory_var(Array[Double]) -> Double
+
+pub fn info_theory_vector_add(Info_theoryVector, Info_theoryVector) -> Info_theoryVector
+
+pub fn info_theory_vector_dist(Info_theoryVector, Info_theoryVector) -> Double
+
+pub fn info_theory_vector_dot(Info_theoryVector, Info_theoryVector) -> Double
+
+pub fn info_theory_vector_norm(Info_theoryVector) -> Double
+
+pub fn info_theory_vector_normalize(Info_theoryVector) -> Info_theoryVector
+
+pub fn info_theory_vector_scale(Info_theoryVector, Double) -> Info_theoryVector
+
+pub fn info_theory_vector_sub(Info_theoryVector, Info_theoryVector) -> Info_theoryVector
+
+pub fn info_theory_vector_to_string(Info_theoryVector) -> String
+
+pub fn info_theory_vector_zero(Int32) -> Info_theoryVector
+
+// Errors
+
+// Types and methods
+pub struct Info_theoryMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Info_theoryPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Info_theorySeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Info_theoryVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

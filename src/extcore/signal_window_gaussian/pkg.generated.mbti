@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_window_gaussian"
+
+// Values
+pub fn signal_window_gaussian_buffer_make(Int32) -> SignalwindowgaussianBuffer
+
+pub fn signal_window_gaussian_cluster_make(Int32) -> SignalwindowgaussianCluster
+
+pub fn signal_window_gaussian_cursor_make(Int32) -> SignalwindowgaussianCursor
+
+pub fn signal_window_gaussian_edge_make(Int32) -> SignalwindowgaussianEdge
+
+pub fn signal_window_gaussian_frame_make(Int32) -> SignalwindowgaussianFrame
+
+pub fn signal_window_gaussian_graphn_make(Int32) -> SignalwindowgaussianGraphN
+
+pub fn signal_window_gaussian_layer_make(Int32) -> SignalwindowgaussianLayer
+
+pub fn signal_window_gaussian_make_matrix(Int32, Int32, Double) -> SignalwindowgaussianMatrix
+
+pub fn signal_window_gaussian_make_point(Double, Double) -> SignalwindowgaussianPoint
+
+pub fn signal_window_gaussian_make_point3(Double, Double, Double) -> SignalwindowgaussianPoint
+
+pub fn signal_window_gaussian_make_series(Array[Double], String) -> SignalwindowgaussianSeries
+
+pub fn signal_window_gaussian_make_vector(Array[Double]) -> SignalwindowgaussianVector
+
+pub fn signal_window_gaussian_matrix_identity(Int32) -> SignalwindowgaussianMatrix
+
+pub fn signal_window_gaussian_model_make(Int32) -> SignalwindowgaussianModel
+
+pub fn signal_window_gaussian_node_make(Int32) -> SignalwindowgaussianNode
+
+pub fn signal_window_gaussian_path_make(Int32) -> SignalwindowgaussianPath
+
+pub fn signal_window_gaussian_range_make(Int32) -> SignalwindowgaussianRange
+
+pub fn signal_window_gaussian_slice_make(Int32) -> SignalwindowgaussianSlice
+
+pub fn signal_window_gaussian_table_make(Int32) -> SignalwindowgaussianTable
+
+pub fn signal_window_gaussian_vector_zero(Int32) -> SignalwindowgaussianVector
+
+pub fn signal_window_gaussian_view_make(Int32) -> SignalwindowgaussianView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalwindowgaussianBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowgaussianBuffer::add(Self, Self) -> Self
+pub fn SignalwindowgaussianBuffer::copy(Self) -> Self
+pub fn SignalwindowgaussianBuffer::fill(Self, Double) -> Self
+pub fn SignalwindowgaussianBuffer::get(Self, Int32) -> Double
+pub fn SignalwindowgaussianBuffer::len(Self) -> Int32
+pub fn SignalwindowgaussianBuffer::max(Self) -> Double
+pub fn SignalwindowgaussianBuffer::mean(Self) -> Double
+pub fn SignalwindowgaussianBuffer::min(Self) -> Double
+pub fn SignalwindowgaussianBuffer::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowgaussianBuffer::sum(Self) -> Double
+pub fn SignalwindowgaussianBuffer::to_string(Self) -> String
+
+pub(all) struct SignalwindowgaussianCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowgaussianCluster::add(Self, Self) -> Self
+pub fn SignalwindowgaussianCluster::copy(Self) -> Self
+pub fn SignalwindowgaussianCluster::fill(Self, Double) -> Self
+pub fn SignalwindowgaussianCluster::get(Self, Int32) -> Double
+pub fn SignalwindowgaussianCluster::len(Self) -> Int32
+pub fn SignalwindowgaussianCluster::max(Self) -> Double
+pub fn SignalwindowgaussianCluster::mean(Self) -> Double
+pub fn SignalwindowgaussianCluster::min(Self) -> Double
+pub fn SignalwindowgaussianCluster::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianCluster::set(Self, Int32, Double) -> Self
+pub fn SignalwindowgaussianCluster::sum(Self) -> Double
+pub fn SignalwindowgaussianCluster::to_string(Self) -> String
+
+pub(all) struct SignalwindowgaussianCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowgaussianCursor::add(Self, Self) -> Self
+pub fn SignalwindowgaussianCursor::copy(Self) -> Self
+pub fn SignalwindowgaussianCursor::fill(Self, Double) -> Self
+pub fn SignalwindowgaussianCursor::get(Self, Int32) -> Double
+pub fn SignalwindowgaussianCursor::len(Self) -> Int32
+pub fn SignalwindowgaussianCursor::max(Self) -> Double
+pub fn SignalwindowgaussianCursor::mean(Self) -> Double
+pub fn SignalwindowgaussianCursor::min(Self) -> Double
+pub fn SignalwindowgaussianCursor::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianCursor::set(Self, Int32, Double) -> Self
+pub fn SignalwindowgaussianCursor::sum(Self) -> Double
+pub fn SignalwindowgaussianCursor::to_string(Self) -> String
+
+pub(all) struct SignalwindowgaussianEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowgaussianEdge::add(Self, Self) -> Self
+pub fn SignalwindowgaussianEdge::copy(Self) -> Self
+pub fn SignalwindowgaussianEdge::fill(Self, Double) -> Self
+pub fn SignalwindowgaussianEdge::get(Self, Int32) -> Double
+pub fn SignalwindowgaussianEdge::len(Self) -> Int32
+pub fn SignalwindowgaussianEdge::max(Self) -> Double
+pub fn SignalwindowgaussianEdge::mean(Self) -> Double
+pub fn SignalwindowgaussianEdge::min(Self) -> Double
+pub fn SignalwindowgaussianEdge::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianEdge::set(Self, Int32, Double) -> Self
+pub fn SignalwindowgaussianEdge::sum(Self) -> Double
+pub fn SignalwindowgaussianEdge::to_string(Self) -> String
+
+pub(all) struct SignalwindowgaussianFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowgaussianFrame::add(Self, Self) -> Self
+pub fn SignalwindowgaussianFrame::copy(Self) -> Self
+pub fn SignalwindowgaussianFrame::fill(Self, Double) -> Self
+pub fn SignalwindowgaussianFrame::get(Self, Int32) -> Double
+pub fn SignalwindowgaussianFrame::len(Self) -> Int32
+pub fn SignalwindowgaussianFrame::max(Self) -> Double
+pub fn SignalwindowgaussianFrame::mean(Self) -> Double
+pub fn SignalwindowgaussianFrame::min(Self) -> Double
+pub fn SignalwindowgaussianFrame::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianFrame::set(Self, Int32, Double) -> Self
+pub fn SignalwindowgaussianFrame::sum(Self) -> Double
+pub fn SignalwindowgaussianFrame::to_string(Self) -> String
+
+pub(all) struct SignalwindowgaussianGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowgaussianGraphN::add(Self, Self) -> Self
+pub fn SignalwindowgaussianGraphN::copy(Self) -> Self
+pub fn SignalwindowgaussianGraphN::fill(Self, Double) -> Self
+pub fn SignalwindowgaussianGraphN::get(Self, Int32) -> Double
+pub fn SignalwindowgaussianGraphN::len(Self) -> Int32
+pub fn SignalwindowgaussianGraphN::max(Self) -> Double
+pub fn SignalwindowgaussianGraphN::mean(Self) -> Double
+pub fn SignalwindowgaussianGraphN::min(Self) -> Double
+pub fn SignalwindowgaussianGraphN::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalwindowgaussianGraphN::sum(Self) -> Double
+pub fn SignalwindowgaussianGraphN::to_string(Self) -> String
+
+pub(all) struct SignalwindowgaussianLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowgaussianLayer::add(Self, Self) -> Self
+pub fn SignalwindowgaussianLayer::copy(Self) -> Self
+pub fn SignalwindowgaussianLayer::fill(Self, Double) -> Self
+pub fn SignalwindowgaussianLayer::get(Self, Int32) -> Double
+pub fn SignalwindowgaussianLayer::len(Self) -> Int32
+pub fn SignalwindowgaussianLayer::max(Self) -> Double
+pub fn SignalwindowgaussianLayer::mean(Self) -> Double
+pub fn SignalwindowgaussianLayer::min(Self) -> Double
+pub fn SignalwindowgaussianLayer::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianLayer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowgaussianLayer::sum(Self) -> Double
+pub fn SignalwindowgaussianLayer::to_string(Self) -> String
+
+pub(all) struct SignalwindowgaussianMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalwindowgaussianMatrix::add(Self, Self) -> Self
+pub fn SignalwindowgaussianMatrix::det(Self) -> Double
+pub fn SignalwindowgaussianMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalwindowgaussianMatrix::multiply(Self, Self) -> Self
+pub fn SignalwindowgaussianMatrix::norm(Self) -> Double
+pub fn SignalwindowgaussianMatrix::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianMatrix::to_string(Self) -> String
+pub fn SignalwindowgaussianMatrix::trace(Self) -> Double
+pub fn SignalwindowgaussianMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalwindowgaussianModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowgaussianModel::add(Self, Self) -> Self
+pub fn SignalwindowgaussianModel::copy(Self) -> Self
+pub fn SignalwindowgaussianModel::fill(Self, Double) -> Self
+pub fn SignalwindowgaussianModel::get(Self, Int32) -> Double
+pub fn SignalwindowgaussianModel::len(Self) -> Int32
+pub fn SignalwindowgaussianModel::max(Self) -> Double
+pub fn SignalwindowgaussianModel::mean(Self) -> Double
+pub fn SignalwindowgaussianModel::min(Self) -> Double
+pub fn SignalwindowgaussianModel::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianModel::set(Self, Int32, Double) -> Self
+pub fn SignalwindowgaussianModel::sum(Self) -> Double
+pub fn SignalwindowgaussianModel::to_string(Self) -> String
+
+pub(all) struct SignalwindowgaussianNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowgaussianNode::add(Self, Self) -> Self
+pub fn SignalwindowgaussianNode::copy(Self) -> Self
+pub fn SignalwindowgaussianNode::fill(Self, Double) -> Self
+pub fn SignalwindowgaussianNode::get(Self, Int32) -> Double
+pub fn SignalwindowgaussianNode::len(Self) -> Int32
+pub fn SignalwindowgaussianNode::max(Self) -> Double
+pub fn SignalwindowgaussianNode::mean(Self) -> Double
+pub fn SignalwindowgaussianNode::min(Self) -> Double
+pub fn SignalwindowgaussianNode::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianNode::set(Self, Int32, Double) -> Self
+pub fn SignalwindowgaussianNode::sum(Self) -> Double
+pub fn SignalwindowgaussianNode::to_string(Self) -> String
+
+pub(all) struct SignalwindowgaussianPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowgaussianPath::add(Self, Self) -> Self
+pub fn SignalwindowgaussianPath::copy(Self) -> Self
+pub fn SignalwindowgaussianPath::fill(Self, Double) -> Self
+pub fn SignalwindowgaussianPath::get(Self, Int32) -> Double
+pub fn SignalwindowgaussianPath::len(Self) -> Int32
+pub fn SignalwindowgaussianPath::max(Self) -> Double
+pub fn SignalwindowgaussianPath::mean(Self) -> Double
+pub fn SignalwindowgaussianPath::min(Self) -> Double
+pub fn SignalwindowgaussianPath::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianPath::set(Self, Int32, Double) -> Self
+pub fn SignalwindowgaussianPath::sum(Self) -> Double
+pub fn SignalwindowgaussianPath::to_string(Self) -> String
+
+pub(all) struct SignalwindowgaussianPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalwindowgaussianPoint::add(Self, Self) -> Self
+pub fn SignalwindowgaussianPoint::cross(Self, Self) -> Self
+pub fn SignalwindowgaussianPoint::dist(Self, Self) -> Double
+pub fn SignalwindowgaussianPoint::dot(Self, Self) -> Double
+pub fn SignalwindowgaussianPoint::label(Self) -> Int32
+pub fn SignalwindowgaussianPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalwindowgaussianPoint::mid(Self, Self) -> Self
+pub fn SignalwindowgaussianPoint::negate(Self) -> Self
+pub fn SignalwindowgaussianPoint::norm(Self) -> Double
+pub fn SignalwindowgaussianPoint::normalize(Self) -> Self
+pub fn SignalwindowgaussianPoint::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianPoint::sub(Self, Self) -> Self
+pub fn SignalwindowgaussianPoint::to_string(Self) -> String
+pub fn SignalwindowgaussianPoint::x(Self) -> Double
+pub fn SignalwindowgaussianPoint::y(Self) -> Double
+pub fn SignalwindowgaussianPoint::z(Self) -> Double
+
+pub(all) struct SignalwindowgaussianRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowgaussianRange::add(Self, Self) -> Self
+pub fn SignalwindowgaussianRange::copy(Self) -> Self
+pub fn SignalwindowgaussianRange::fill(Self, Double) -> Self
+pub fn SignalwindowgaussianRange::get(Self, Int32) -> Double
+pub fn SignalwindowgaussianRange::len(Self) -> Int32
+pub fn SignalwindowgaussianRange::max(Self) -> Double
+pub fn SignalwindowgaussianRange::mean(Self) -> Double
+pub fn SignalwindowgaussianRange::min(Self) -> Double
+pub fn SignalwindowgaussianRange::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianRange::set(Self, Int32, Double) -> Self
+pub fn SignalwindowgaussianRange::sum(Self) -> Double
+pub fn SignalwindowgaussianRange::to_string(Self) -> String
+
+pub(all) struct SignalwindowgaussianSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalwindowgaussianSeries::add(Self, Self) -> Self
+pub fn SignalwindowgaussianSeries::cumsum(Self) -> Self
+pub fn SignalwindowgaussianSeries::len(Self) -> Int32
+pub fn SignalwindowgaussianSeries::max(Self) -> Double
+pub fn SignalwindowgaussianSeries::mean(Self) -> Double
+pub fn SignalwindowgaussianSeries::median(Self) -> Double
+pub fn SignalwindowgaussianSeries::min(Self) -> Double
+pub fn SignalwindowgaussianSeries::normalize(Self) -> Self
+pub fn SignalwindowgaussianSeries::range(Self) -> Double
+pub fn SignalwindowgaussianSeries::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianSeries::std(Self) -> Double
+pub fn SignalwindowgaussianSeries::sub(Self, Self) -> Self
+pub fn SignalwindowgaussianSeries::sum(Self) -> Double
+pub fn SignalwindowgaussianSeries::to_string(Self) -> String
+pub fn SignalwindowgaussianSeries::variance(Self) -> Double
+
+pub(all) struct SignalwindowgaussianSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowgaussianSlice::add(Self, Self) -> Self
+pub fn SignalwindowgaussianSlice::copy(Self) -> Self
+pub fn SignalwindowgaussianSlice::fill(Self, Double) -> Self
+pub fn SignalwindowgaussianSlice::get(Self, Int32) -> Double
+pub fn SignalwindowgaussianSlice::len(Self) -> Int32
+pub fn SignalwindowgaussianSlice::max(Self) -> Double
+pub fn SignalwindowgaussianSlice::mean(Self) -> Double
+pub fn SignalwindowgaussianSlice::min(Self) -> Double
+pub fn SignalwindowgaussianSlice::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianSlice::set(Self, Int32, Double) -> Self
+pub fn SignalwindowgaussianSlice::sum(Self) -> Double
+pub fn SignalwindowgaussianSlice::to_string(Self) -> String
+
+pub(all) struct SignalwindowgaussianTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowgaussianTable::add(Self, Self) -> Self
+pub fn SignalwindowgaussianTable::copy(Self) -> Self
+pub fn SignalwindowgaussianTable::fill(Self, Double) -> Self
+pub fn SignalwindowgaussianTable::get(Self, Int32) -> Double
+pub fn SignalwindowgaussianTable::len(Self) -> Int32
+pub fn SignalwindowgaussianTable::max(Self) -> Double
+pub fn SignalwindowgaussianTable::mean(Self) -> Double
+pub fn SignalwindowgaussianTable::min(Self) -> Double
+pub fn SignalwindowgaussianTable::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianTable::set(Self, Int32, Double) -> Self
+pub fn SignalwindowgaussianTable::sum(Self) -> Double
+pub fn SignalwindowgaussianTable::to_string(Self) -> String
+
+pub(all) struct SignalwindowgaussianVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalwindowgaussianVector::add(Self, Self) -> Self
+pub fn SignalwindowgaussianVector::dist(Self, Self) -> Double
+pub fn SignalwindowgaussianVector::dot(Self, Self) -> Double
+pub fn SignalwindowgaussianVector::norm(Self) -> Double
+pub fn SignalwindowgaussianVector::normalize(Self) -> Self
+pub fn SignalwindowgaussianVector::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianVector::sub(Self, Self) -> Self
+pub fn SignalwindowgaussianVector::to_string(Self) -> String
+
+pub(all) struct SignalwindowgaussianView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowgaussianView::add(Self, Self) -> Self
+pub fn SignalwindowgaussianView::copy(Self) -> Self
+pub fn SignalwindowgaussianView::fill(Self, Double) -> Self
+pub fn SignalwindowgaussianView::get(Self, Int32) -> Double
+pub fn SignalwindowgaussianView::len(Self) -> Int32
+pub fn SignalwindowgaussianView::max(Self) -> Double
+pub fn SignalwindowgaussianView::mean(Self) -> Double
+pub fn SignalwindowgaussianView::min(Self) -> Double
+pub fn SignalwindowgaussianView::scale(Self, Double) -> Self
+pub fn SignalwindowgaussianView::set(Self, Int32, Double) -> Self
+pub fn SignalwindowgaussianView::sum(Self) -> Double
+pub fn SignalwindowgaussianView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

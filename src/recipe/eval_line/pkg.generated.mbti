@@ -1,0 +1,36 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/recipe/eval_line"
+
+import {
+  "dataverse/dataobject",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn empty_eval_report() -> EvalReport
+
+pub fn eval_line(Array[@dataobject.DataObject]) -> EvalReport
+
+pub fn eval_line_id() -> String
+
+// Errors
+
+// Types and methods
+pub struct EvalReport {
+  total_count : Int32
+  avg_quality : Double
+  min_quality : Double
+  max_quality : Double
+  text_count : Int32
+  image_count : Int32
+  audio_count : Int32
+  video_count : Int32
+  other_count : Int32
+} derive(Eq, @debug.Debug)
+pub fn EvalReport::equal(Self, Self) -> Bool
+pub fn EvalReport::not_equal(Self, Self) -> Bool
+pub fn EvalReport::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

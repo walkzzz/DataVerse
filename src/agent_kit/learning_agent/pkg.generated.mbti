@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/learning_agent"
+
+// Values
+pub fn learning_agent_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn learning_agent_corr(Array[Double], Array[Double]) -> Double
+
+pub fn learning_agent_cov(Array[Double], Array[Double]) -> Double
+
+pub fn learning_agent_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn learning_agent_mae(Array[Double], Array[Double]) -> Double
+
+pub fn learning_agent_make_labeled_point(Double, Double, Int32) -> Learning_agentPoint
+
+pub fn learning_agent_make_matrix(Int32, Int32, Double) -> Learning_agentMatrix
+
+pub fn learning_agent_make_point(Double, Double) -> Learning_agentPoint
+
+pub fn learning_agent_make_series(Array[Double], String) -> Learning_agentSeries
+
+pub fn learning_agent_make_vector(Array[Double]) -> Learning_agentVector
+
+pub fn learning_agent_matrix_add(Learning_agentMatrix, Learning_agentMatrix) -> Learning_agentMatrix
+
+pub fn learning_agent_matrix_get(Learning_agentMatrix, Int32, Int32) -> Double
+
+pub fn learning_agent_matrix_identity(Int32) -> Learning_agentMatrix
+
+pub fn learning_agent_matrix_multiply(Learning_agentMatrix, Learning_agentMatrix) -> Learning_agentMatrix
+
+pub fn learning_agent_matrix_norm(Learning_agentMatrix) -> Double
+
+pub fn learning_agent_matrix_scale(Learning_agentMatrix, Double) -> Learning_agentMatrix
+
+pub fn learning_agent_matrix_to_string(Learning_agentMatrix) -> String
+
+pub fn learning_agent_matrix_trace(Learning_agentMatrix) -> Double
+
+pub fn learning_agent_matrix_transpose(Learning_agentMatrix) -> Learning_agentMatrix
+
+pub fn learning_agent_mse(Array[Double], Array[Double]) -> Double
+
+pub fn learning_agent_point_add(Learning_agentPoint, Learning_agentPoint) -> Learning_agentPoint
+
+pub fn learning_agent_point_dist(Learning_agentPoint, Learning_agentPoint) -> Double
+
+pub fn learning_agent_point_dot(Learning_agentPoint, Learning_agentPoint) -> Double
+
+pub fn learning_agent_point_label(Learning_agentPoint) -> Int32
+
+pub fn learning_agent_point_norm(Learning_agentPoint) -> Double
+
+pub fn learning_agent_point_scale(Learning_agentPoint, Double) -> Learning_agentPoint
+
+pub fn learning_agent_point_sub(Learning_agentPoint, Learning_agentPoint) -> Learning_agentPoint
+
+pub fn learning_agent_point_to_string(Learning_agentPoint) -> String
+
+pub fn learning_agent_point_x(Learning_agentPoint) -> Double
+
+pub fn learning_agent_point_y(Learning_agentPoint) -> Double
+
+pub fn learning_agent_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn learning_agent_r2(Array[Double], Array[Double]) -> Double
+
+pub fn learning_agent_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn learning_agent_series_add(Learning_agentSeries, Learning_agentSeries) -> Learning_agentSeries
+
+pub fn learning_agent_series_len(Learning_agentSeries) -> Int32
+
+pub fn learning_agent_series_max(Learning_agentSeries) -> Double
+
+pub fn learning_agent_series_mean(Learning_agentSeries) -> Double
+
+pub fn learning_agent_series_min(Learning_agentSeries) -> Double
+
+pub fn learning_agent_series_scale(Learning_agentSeries, Double) -> Learning_agentSeries
+
+pub fn learning_agent_series_std(Learning_agentSeries) -> Double
+
+pub fn learning_agent_series_sum(Learning_agentSeries) -> Double
+
+pub fn learning_agent_series_to_string(Learning_agentSeries) -> String
+
+pub fn learning_agent_series_var(Learning_agentSeries) -> Double
+
+pub fn learning_agent_std(Array[Double]) -> Double
+
+pub fn learning_agent_var(Array[Double]) -> Double
+
+pub fn learning_agent_vector_add(Learning_agentVector, Learning_agentVector) -> Learning_agentVector
+
+pub fn learning_agent_vector_dist(Learning_agentVector, Learning_agentVector) -> Double
+
+pub fn learning_agent_vector_dot(Learning_agentVector, Learning_agentVector) -> Double
+
+pub fn learning_agent_vector_norm(Learning_agentVector) -> Double
+
+pub fn learning_agent_vector_normalize(Learning_agentVector) -> Learning_agentVector
+
+pub fn learning_agent_vector_scale(Learning_agentVector, Double) -> Learning_agentVector
+
+pub fn learning_agent_vector_sub(Learning_agentVector, Learning_agentVector) -> Learning_agentVector
+
+pub fn learning_agent_vector_to_string(Learning_agentVector) -> String
+
+pub fn learning_agent_vector_zero(Int32) -> Learning_agentVector
+
+// Errors
+
+// Types and methods
+pub struct Learning_agentMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Learning_agentPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Learning_agentSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Learning_agentVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

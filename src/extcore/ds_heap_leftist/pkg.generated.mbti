@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_heap_leftist"
+
+// Values
+pub fn ds_heap_leftist_buffer_make(Int32) -> DsheapleftistBuffer
+
+pub fn ds_heap_leftist_cluster_make(Int32) -> DsheapleftistCluster
+
+pub fn ds_heap_leftist_cursor_make(Int32) -> DsheapleftistCursor
+
+pub fn ds_heap_leftist_edge_make(Int32) -> DsheapleftistEdge
+
+pub fn ds_heap_leftist_frame_make(Int32) -> DsheapleftistFrame
+
+pub fn ds_heap_leftist_graphn_make(Int32) -> DsheapleftistGraphN
+
+pub fn ds_heap_leftist_layer_make(Int32) -> DsheapleftistLayer
+
+pub fn ds_heap_leftist_make_matrix(Int32, Int32, Double) -> DsheapleftistMatrix
+
+pub fn ds_heap_leftist_make_point(Double, Double) -> DsheapleftistPoint
+
+pub fn ds_heap_leftist_make_point3(Double, Double, Double) -> DsheapleftistPoint
+
+pub fn ds_heap_leftist_make_series(Array[Double], String) -> DsheapleftistSeries
+
+pub fn ds_heap_leftist_make_vector(Array[Double]) -> DsheapleftistVector
+
+pub fn ds_heap_leftist_matrix_identity(Int32) -> DsheapleftistMatrix
+
+pub fn ds_heap_leftist_model_make(Int32) -> DsheapleftistModel
+
+pub fn ds_heap_leftist_node_make(Int32) -> DsheapleftistNode
+
+pub fn ds_heap_leftist_path_make(Int32) -> DsheapleftistPath
+
+pub fn ds_heap_leftist_range_make(Int32) -> DsheapleftistRange
+
+pub fn ds_heap_leftist_slice_make(Int32) -> DsheapleftistSlice
+
+pub fn ds_heap_leftist_table_make(Int32) -> DsheapleftistTable
+
+pub fn ds_heap_leftist_vector_zero(Int32) -> DsheapleftistVector
+
+pub fn ds_heap_leftist_view_make(Int32) -> DsheapleftistView
+
+// Errors
+
+// Types and methods
+pub(all) struct DsheapleftistBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapleftistBuffer::add(Self, Self) -> Self
+pub fn DsheapleftistBuffer::copy(Self) -> Self
+pub fn DsheapleftistBuffer::fill(Self, Double) -> Self
+pub fn DsheapleftistBuffer::get(Self, Int32) -> Double
+pub fn DsheapleftistBuffer::len(Self) -> Int32
+pub fn DsheapleftistBuffer::max(Self) -> Double
+pub fn DsheapleftistBuffer::mean(Self) -> Double
+pub fn DsheapleftistBuffer::min(Self) -> Double
+pub fn DsheapleftistBuffer::scale(Self, Double) -> Self
+pub fn DsheapleftistBuffer::set(Self, Int32, Double) -> Self
+pub fn DsheapleftistBuffer::sum(Self) -> Double
+pub fn DsheapleftistBuffer::to_string(Self) -> String
+
+pub(all) struct DsheapleftistCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapleftistCluster::add(Self, Self) -> Self
+pub fn DsheapleftistCluster::copy(Self) -> Self
+pub fn DsheapleftistCluster::fill(Self, Double) -> Self
+pub fn DsheapleftistCluster::get(Self, Int32) -> Double
+pub fn DsheapleftistCluster::len(Self) -> Int32
+pub fn DsheapleftistCluster::max(Self) -> Double
+pub fn DsheapleftistCluster::mean(Self) -> Double
+pub fn DsheapleftistCluster::min(Self) -> Double
+pub fn DsheapleftistCluster::scale(Self, Double) -> Self
+pub fn DsheapleftistCluster::set(Self, Int32, Double) -> Self
+pub fn DsheapleftistCluster::sum(Self) -> Double
+pub fn DsheapleftistCluster::to_string(Self) -> String
+
+pub(all) struct DsheapleftistCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapleftistCursor::add(Self, Self) -> Self
+pub fn DsheapleftistCursor::copy(Self) -> Self
+pub fn DsheapleftistCursor::fill(Self, Double) -> Self
+pub fn DsheapleftistCursor::get(Self, Int32) -> Double
+pub fn DsheapleftistCursor::len(Self) -> Int32
+pub fn DsheapleftistCursor::max(Self) -> Double
+pub fn DsheapleftistCursor::mean(Self) -> Double
+pub fn DsheapleftistCursor::min(Self) -> Double
+pub fn DsheapleftistCursor::scale(Self, Double) -> Self
+pub fn DsheapleftistCursor::set(Self, Int32, Double) -> Self
+pub fn DsheapleftistCursor::sum(Self) -> Double
+pub fn DsheapleftistCursor::to_string(Self) -> String
+
+pub(all) struct DsheapleftistEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapleftistEdge::add(Self, Self) -> Self
+pub fn DsheapleftistEdge::copy(Self) -> Self
+pub fn DsheapleftistEdge::fill(Self, Double) -> Self
+pub fn DsheapleftistEdge::get(Self, Int32) -> Double
+pub fn DsheapleftistEdge::len(Self) -> Int32
+pub fn DsheapleftistEdge::max(Self) -> Double
+pub fn DsheapleftistEdge::mean(Self) -> Double
+pub fn DsheapleftistEdge::min(Self) -> Double
+pub fn DsheapleftistEdge::scale(Self, Double) -> Self
+pub fn DsheapleftistEdge::set(Self, Int32, Double) -> Self
+pub fn DsheapleftistEdge::sum(Self) -> Double
+pub fn DsheapleftistEdge::to_string(Self) -> String
+
+pub(all) struct DsheapleftistFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapleftistFrame::add(Self, Self) -> Self
+pub fn DsheapleftistFrame::copy(Self) -> Self
+pub fn DsheapleftistFrame::fill(Self, Double) -> Self
+pub fn DsheapleftistFrame::get(Self, Int32) -> Double
+pub fn DsheapleftistFrame::len(Self) -> Int32
+pub fn DsheapleftistFrame::max(Self) -> Double
+pub fn DsheapleftistFrame::mean(Self) -> Double
+pub fn DsheapleftistFrame::min(Self) -> Double
+pub fn DsheapleftistFrame::scale(Self, Double) -> Self
+pub fn DsheapleftistFrame::set(Self, Int32, Double) -> Self
+pub fn DsheapleftistFrame::sum(Self) -> Double
+pub fn DsheapleftistFrame::to_string(Self) -> String
+
+pub(all) struct DsheapleftistGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapleftistGraphN::add(Self, Self) -> Self
+pub fn DsheapleftistGraphN::copy(Self) -> Self
+pub fn DsheapleftistGraphN::fill(Self, Double) -> Self
+pub fn DsheapleftistGraphN::get(Self, Int32) -> Double
+pub fn DsheapleftistGraphN::len(Self) -> Int32
+pub fn DsheapleftistGraphN::max(Self) -> Double
+pub fn DsheapleftistGraphN::mean(Self) -> Double
+pub fn DsheapleftistGraphN::min(Self) -> Double
+pub fn DsheapleftistGraphN::scale(Self, Double) -> Self
+pub fn DsheapleftistGraphN::set(Self, Int32, Double) -> Self
+pub fn DsheapleftistGraphN::sum(Self) -> Double
+pub fn DsheapleftistGraphN::to_string(Self) -> String
+
+pub(all) struct DsheapleftistLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapleftistLayer::add(Self, Self) -> Self
+pub fn DsheapleftistLayer::copy(Self) -> Self
+pub fn DsheapleftistLayer::fill(Self, Double) -> Self
+pub fn DsheapleftistLayer::get(Self, Int32) -> Double
+pub fn DsheapleftistLayer::len(Self) -> Int32
+pub fn DsheapleftistLayer::max(Self) -> Double
+pub fn DsheapleftistLayer::mean(Self) -> Double
+pub fn DsheapleftistLayer::min(Self) -> Double
+pub fn DsheapleftistLayer::scale(Self, Double) -> Self
+pub fn DsheapleftistLayer::set(Self, Int32, Double) -> Self
+pub fn DsheapleftistLayer::sum(Self) -> Double
+pub fn DsheapleftistLayer::to_string(Self) -> String
+
+pub(all) struct DsheapleftistMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DsheapleftistMatrix::add(Self, Self) -> Self
+pub fn DsheapleftistMatrix::det(Self) -> Double
+pub fn DsheapleftistMatrix::get(Self, Int32, Int32) -> Double
+pub fn DsheapleftistMatrix::multiply(Self, Self) -> Self
+pub fn DsheapleftistMatrix::norm(Self) -> Double
+pub fn DsheapleftistMatrix::scale(Self, Double) -> Self
+pub fn DsheapleftistMatrix::to_string(Self) -> String
+pub fn DsheapleftistMatrix::trace(Self) -> Double
+pub fn DsheapleftistMatrix::transpose(Self) -> Self
+
+pub(all) struct DsheapleftistModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapleftistModel::add(Self, Self) -> Self
+pub fn DsheapleftistModel::copy(Self) -> Self
+pub fn DsheapleftistModel::fill(Self, Double) -> Self
+pub fn DsheapleftistModel::get(Self, Int32) -> Double
+pub fn DsheapleftistModel::len(Self) -> Int32
+pub fn DsheapleftistModel::max(Self) -> Double
+pub fn DsheapleftistModel::mean(Self) -> Double
+pub fn DsheapleftistModel::min(Self) -> Double
+pub fn DsheapleftistModel::scale(Self, Double) -> Self
+pub fn DsheapleftistModel::set(Self, Int32, Double) -> Self
+pub fn DsheapleftistModel::sum(Self) -> Double
+pub fn DsheapleftistModel::to_string(Self) -> String
+
+pub(all) struct DsheapleftistNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapleftistNode::add(Self, Self) -> Self
+pub fn DsheapleftistNode::copy(Self) -> Self
+pub fn DsheapleftistNode::fill(Self, Double) -> Self
+pub fn DsheapleftistNode::get(Self, Int32) -> Double
+pub fn DsheapleftistNode::len(Self) -> Int32
+pub fn DsheapleftistNode::max(Self) -> Double
+pub fn DsheapleftistNode::mean(Self) -> Double
+pub fn DsheapleftistNode::min(Self) -> Double
+pub fn DsheapleftistNode::scale(Self, Double) -> Self
+pub fn DsheapleftistNode::set(Self, Int32, Double) -> Self
+pub fn DsheapleftistNode::sum(Self) -> Double
+pub fn DsheapleftistNode::to_string(Self) -> String
+
+pub(all) struct DsheapleftistPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapleftistPath::add(Self, Self) -> Self
+pub fn DsheapleftistPath::copy(Self) -> Self
+pub fn DsheapleftistPath::fill(Self, Double) -> Self
+pub fn DsheapleftistPath::get(Self, Int32) -> Double
+pub fn DsheapleftistPath::len(Self) -> Int32
+pub fn DsheapleftistPath::max(Self) -> Double
+pub fn DsheapleftistPath::mean(Self) -> Double
+pub fn DsheapleftistPath::min(Self) -> Double
+pub fn DsheapleftistPath::scale(Self, Double) -> Self
+pub fn DsheapleftistPath::set(Self, Int32, Double) -> Self
+pub fn DsheapleftistPath::sum(Self) -> Double
+pub fn DsheapleftistPath::to_string(Self) -> String
+
+pub(all) struct DsheapleftistPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DsheapleftistPoint::add(Self, Self) -> Self
+pub fn DsheapleftistPoint::cross(Self, Self) -> Self
+pub fn DsheapleftistPoint::dist(Self, Self) -> Double
+pub fn DsheapleftistPoint::dot(Self, Self) -> Double
+pub fn DsheapleftistPoint::label(Self) -> Int32
+pub fn DsheapleftistPoint::lerp(Self, Self, Double) -> Self
+pub fn DsheapleftistPoint::mid(Self, Self) -> Self
+pub fn DsheapleftistPoint::negate(Self) -> Self
+pub fn DsheapleftistPoint::norm(Self) -> Double
+pub fn DsheapleftistPoint::normalize(Self) -> Self
+pub fn DsheapleftistPoint::scale(Self, Double) -> Self
+pub fn DsheapleftistPoint::sub(Self, Self) -> Self
+pub fn DsheapleftistPoint::to_string(Self) -> String
+pub fn DsheapleftistPoint::x(Self) -> Double
+pub fn DsheapleftistPoint::y(Self) -> Double
+pub fn DsheapleftistPoint::z(Self) -> Double
+
+pub(all) struct DsheapleftistRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapleftistRange::add(Self, Self) -> Self
+pub fn DsheapleftistRange::copy(Self) -> Self
+pub fn DsheapleftistRange::fill(Self, Double) -> Self
+pub fn DsheapleftistRange::get(Self, Int32) -> Double
+pub fn DsheapleftistRange::len(Self) -> Int32
+pub fn DsheapleftistRange::max(Self) -> Double
+pub fn DsheapleftistRange::mean(Self) -> Double
+pub fn DsheapleftistRange::min(Self) -> Double
+pub fn DsheapleftistRange::scale(Self, Double) -> Self
+pub fn DsheapleftistRange::set(Self, Int32, Double) -> Self
+pub fn DsheapleftistRange::sum(Self) -> Double
+pub fn DsheapleftistRange::to_string(Self) -> String
+
+pub(all) struct DsheapleftistSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DsheapleftistSeries::add(Self, Self) -> Self
+pub fn DsheapleftistSeries::cumsum(Self) -> Self
+pub fn DsheapleftistSeries::len(Self) -> Int32
+pub fn DsheapleftistSeries::max(Self) -> Double
+pub fn DsheapleftistSeries::mean(Self) -> Double
+pub fn DsheapleftistSeries::median(Self) -> Double
+pub fn DsheapleftistSeries::min(Self) -> Double
+pub fn DsheapleftistSeries::normalize(Self) -> Self
+pub fn DsheapleftistSeries::range(Self) -> Double
+pub fn DsheapleftistSeries::scale(Self, Double) -> Self
+pub fn DsheapleftistSeries::std(Self) -> Double
+pub fn DsheapleftistSeries::sub(Self, Self) -> Self
+pub fn DsheapleftistSeries::sum(Self) -> Double
+pub fn DsheapleftistSeries::to_string(Self) -> String
+pub fn DsheapleftistSeries::variance(Self) -> Double
+
+pub(all) struct DsheapleftistSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapleftistSlice::add(Self, Self) -> Self
+pub fn DsheapleftistSlice::copy(Self) -> Self
+pub fn DsheapleftistSlice::fill(Self, Double) -> Self
+pub fn DsheapleftistSlice::get(Self, Int32) -> Double
+pub fn DsheapleftistSlice::len(Self) -> Int32
+pub fn DsheapleftistSlice::max(Self) -> Double
+pub fn DsheapleftistSlice::mean(Self) -> Double
+pub fn DsheapleftistSlice::min(Self) -> Double
+pub fn DsheapleftistSlice::scale(Self, Double) -> Self
+pub fn DsheapleftistSlice::set(Self, Int32, Double) -> Self
+pub fn DsheapleftistSlice::sum(Self) -> Double
+pub fn DsheapleftistSlice::to_string(Self) -> String
+
+pub(all) struct DsheapleftistTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapleftistTable::add(Self, Self) -> Self
+pub fn DsheapleftistTable::copy(Self) -> Self
+pub fn DsheapleftistTable::fill(Self, Double) -> Self
+pub fn DsheapleftistTable::get(Self, Int32) -> Double
+pub fn DsheapleftistTable::len(Self) -> Int32
+pub fn DsheapleftistTable::max(Self) -> Double
+pub fn DsheapleftistTable::mean(Self) -> Double
+pub fn DsheapleftistTable::min(Self) -> Double
+pub fn DsheapleftistTable::scale(Self, Double) -> Self
+pub fn DsheapleftistTable::set(Self, Int32, Double) -> Self
+pub fn DsheapleftistTable::sum(Self) -> Double
+pub fn DsheapleftistTable::to_string(Self) -> String
+
+pub(all) struct DsheapleftistVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DsheapleftistVector::add(Self, Self) -> Self
+pub fn DsheapleftistVector::dist(Self, Self) -> Double
+pub fn DsheapleftistVector::dot(Self, Self) -> Double
+pub fn DsheapleftistVector::norm(Self) -> Double
+pub fn DsheapleftistVector::normalize(Self) -> Self
+pub fn DsheapleftistVector::scale(Self, Double) -> Self
+pub fn DsheapleftistVector::sub(Self, Self) -> Self
+pub fn DsheapleftistVector::to_string(Self) -> String
+
+pub(all) struct DsheapleftistView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapleftistView::add(Self, Self) -> Self
+pub fn DsheapleftistView::copy(Self) -> Self
+pub fn DsheapleftistView::fill(Self, Double) -> Self
+pub fn DsheapleftistView::get(Self, Int32) -> Double
+pub fn DsheapleftistView::len(Self) -> Int32
+pub fn DsheapleftistView::max(Self) -> Double
+pub fn DsheapleftistView::mean(Self) -> Double
+pub fn DsheapleftistView::min(Self) -> Double
+pub fn DsheapleftistView::scale(Self, Double) -> Self
+pub fn DsheapleftistView::set(Self, Int32, Double) -> Self
+pub fn DsheapleftistView::sum(Self) -> Double
+pub fn DsheapleftistView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

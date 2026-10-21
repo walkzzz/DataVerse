@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_parse_arc_standard"
+
+// Values
+pub fn nlp_parse_arc_standard_buffer_make(Int32) -> NlpparsearcstandardBuffer
+
+pub fn nlp_parse_arc_standard_cluster_make(Int32) -> NlpparsearcstandardCluster
+
+pub fn nlp_parse_arc_standard_cursor_make(Int32) -> NlpparsearcstandardCursor
+
+pub fn nlp_parse_arc_standard_edge_make(Int32) -> NlpparsearcstandardEdge
+
+pub fn nlp_parse_arc_standard_frame_make(Int32) -> NlpparsearcstandardFrame
+
+pub fn nlp_parse_arc_standard_graphn_make(Int32) -> NlpparsearcstandardGraphN
+
+pub fn nlp_parse_arc_standard_layer_make(Int32) -> NlpparsearcstandardLayer
+
+pub fn nlp_parse_arc_standard_make_matrix(Int32, Int32, Double) -> NlpparsearcstandardMatrix
+
+pub fn nlp_parse_arc_standard_make_point(Double, Double) -> NlpparsearcstandardPoint
+
+pub fn nlp_parse_arc_standard_make_point3(Double, Double, Double) -> NlpparsearcstandardPoint
+
+pub fn nlp_parse_arc_standard_make_series(Array[Double], String) -> NlpparsearcstandardSeries
+
+pub fn nlp_parse_arc_standard_make_vector(Array[Double]) -> NlpparsearcstandardVector
+
+pub fn nlp_parse_arc_standard_matrix_identity(Int32) -> NlpparsearcstandardMatrix
+
+pub fn nlp_parse_arc_standard_model_make(Int32) -> NlpparsearcstandardModel
+
+pub fn nlp_parse_arc_standard_node_make(Int32) -> NlpparsearcstandardNode
+
+pub fn nlp_parse_arc_standard_path_make(Int32) -> NlpparsearcstandardPath
+
+pub fn nlp_parse_arc_standard_range_make(Int32) -> NlpparsearcstandardRange
+
+pub fn nlp_parse_arc_standard_slice_make(Int32) -> NlpparsearcstandardSlice
+
+pub fn nlp_parse_arc_standard_table_make(Int32) -> NlpparsearcstandardTable
+
+pub fn nlp_parse_arc_standard_vector_zero(Int32) -> NlpparsearcstandardVector
+
+pub fn nlp_parse_arc_standard_view_make(Int32) -> NlpparsearcstandardView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlpparsearcstandardBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsearcstandardBuffer::add(Self, Self) -> Self
+pub fn NlpparsearcstandardBuffer::copy(Self) -> Self
+pub fn NlpparsearcstandardBuffer::fill(Self, Double) -> Self
+pub fn NlpparsearcstandardBuffer::get(Self, Int32) -> Double
+pub fn NlpparsearcstandardBuffer::len(Self) -> Int32
+pub fn NlpparsearcstandardBuffer::max(Self) -> Double
+pub fn NlpparsearcstandardBuffer::mean(Self) -> Double
+pub fn NlpparsearcstandardBuffer::min(Self) -> Double
+pub fn NlpparsearcstandardBuffer::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardBuffer::set(Self, Int32, Double) -> Self
+pub fn NlpparsearcstandardBuffer::sum(Self) -> Double
+pub fn NlpparsearcstandardBuffer::to_string(Self) -> String
+
+pub(all) struct NlpparsearcstandardCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsearcstandardCluster::add(Self, Self) -> Self
+pub fn NlpparsearcstandardCluster::copy(Self) -> Self
+pub fn NlpparsearcstandardCluster::fill(Self, Double) -> Self
+pub fn NlpparsearcstandardCluster::get(Self, Int32) -> Double
+pub fn NlpparsearcstandardCluster::len(Self) -> Int32
+pub fn NlpparsearcstandardCluster::max(Self) -> Double
+pub fn NlpparsearcstandardCluster::mean(Self) -> Double
+pub fn NlpparsearcstandardCluster::min(Self) -> Double
+pub fn NlpparsearcstandardCluster::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardCluster::set(Self, Int32, Double) -> Self
+pub fn NlpparsearcstandardCluster::sum(Self) -> Double
+pub fn NlpparsearcstandardCluster::to_string(Self) -> String
+
+pub(all) struct NlpparsearcstandardCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsearcstandardCursor::add(Self, Self) -> Self
+pub fn NlpparsearcstandardCursor::copy(Self) -> Self
+pub fn NlpparsearcstandardCursor::fill(Self, Double) -> Self
+pub fn NlpparsearcstandardCursor::get(Self, Int32) -> Double
+pub fn NlpparsearcstandardCursor::len(Self) -> Int32
+pub fn NlpparsearcstandardCursor::max(Self) -> Double
+pub fn NlpparsearcstandardCursor::mean(Self) -> Double
+pub fn NlpparsearcstandardCursor::min(Self) -> Double
+pub fn NlpparsearcstandardCursor::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardCursor::set(Self, Int32, Double) -> Self
+pub fn NlpparsearcstandardCursor::sum(Self) -> Double
+pub fn NlpparsearcstandardCursor::to_string(Self) -> String
+
+pub(all) struct NlpparsearcstandardEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsearcstandardEdge::add(Self, Self) -> Self
+pub fn NlpparsearcstandardEdge::copy(Self) -> Self
+pub fn NlpparsearcstandardEdge::fill(Self, Double) -> Self
+pub fn NlpparsearcstandardEdge::get(Self, Int32) -> Double
+pub fn NlpparsearcstandardEdge::len(Self) -> Int32
+pub fn NlpparsearcstandardEdge::max(Self) -> Double
+pub fn NlpparsearcstandardEdge::mean(Self) -> Double
+pub fn NlpparsearcstandardEdge::min(Self) -> Double
+pub fn NlpparsearcstandardEdge::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardEdge::set(Self, Int32, Double) -> Self
+pub fn NlpparsearcstandardEdge::sum(Self) -> Double
+pub fn NlpparsearcstandardEdge::to_string(Self) -> String
+
+pub(all) struct NlpparsearcstandardFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsearcstandardFrame::add(Self, Self) -> Self
+pub fn NlpparsearcstandardFrame::copy(Self) -> Self
+pub fn NlpparsearcstandardFrame::fill(Self, Double) -> Self
+pub fn NlpparsearcstandardFrame::get(Self, Int32) -> Double
+pub fn NlpparsearcstandardFrame::len(Self) -> Int32
+pub fn NlpparsearcstandardFrame::max(Self) -> Double
+pub fn NlpparsearcstandardFrame::mean(Self) -> Double
+pub fn NlpparsearcstandardFrame::min(Self) -> Double
+pub fn NlpparsearcstandardFrame::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardFrame::set(Self, Int32, Double) -> Self
+pub fn NlpparsearcstandardFrame::sum(Self) -> Double
+pub fn NlpparsearcstandardFrame::to_string(Self) -> String
+
+pub(all) struct NlpparsearcstandardGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsearcstandardGraphN::add(Self, Self) -> Self
+pub fn NlpparsearcstandardGraphN::copy(Self) -> Self
+pub fn NlpparsearcstandardGraphN::fill(Self, Double) -> Self
+pub fn NlpparsearcstandardGraphN::get(Self, Int32) -> Double
+pub fn NlpparsearcstandardGraphN::len(Self) -> Int32
+pub fn NlpparsearcstandardGraphN::max(Self) -> Double
+pub fn NlpparsearcstandardGraphN::mean(Self) -> Double
+pub fn NlpparsearcstandardGraphN::min(Self) -> Double
+pub fn NlpparsearcstandardGraphN::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardGraphN::set(Self, Int32, Double) -> Self
+pub fn NlpparsearcstandardGraphN::sum(Self) -> Double
+pub fn NlpparsearcstandardGraphN::to_string(Self) -> String
+
+pub(all) struct NlpparsearcstandardLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsearcstandardLayer::add(Self, Self) -> Self
+pub fn NlpparsearcstandardLayer::copy(Self) -> Self
+pub fn NlpparsearcstandardLayer::fill(Self, Double) -> Self
+pub fn NlpparsearcstandardLayer::get(Self, Int32) -> Double
+pub fn NlpparsearcstandardLayer::len(Self) -> Int32
+pub fn NlpparsearcstandardLayer::max(Self) -> Double
+pub fn NlpparsearcstandardLayer::mean(Self) -> Double
+pub fn NlpparsearcstandardLayer::min(Self) -> Double
+pub fn NlpparsearcstandardLayer::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardLayer::set(Self, Int32, Double) -> Self
+pub fn NlpparsearcstandardLayer::sum(Self) -> Double
+pub fn NlpparsearcstandardLayer::to_string(Self) -> String
+
+pub(all) struct NlpparsearcstandardMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlpparsearcstandardMatrix::add(Self, Self) -> Self
+pub fn NlpparsearcstandardMatrix::det(Self) -> Double
+pub fn NlpparsearcstandardMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlpparsearcstandardMatrix::multiply(Self, Self) -> Self
+pub fn NlpparsearcstandardMatrix::norm(Self) -> Double
+pub fn NlpparsearcstandardMatrix::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardMatrix::to_string(Self) -> String
+pub fn NlpparsearcstandardMatrix::trace(Self) -> Double
+pub fn NlpparsearcstandardMatrix::transpose(Self) -> Self
+
+pub(all) struct NlpparsearcstandardModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsearcstandardModel::add(Self, Self) -> Self
+pub fn NlpparsearcstandardModel::copy(Self) -> Self
+pub fn NlpparsearcstandardModel::fill(Self, Double) -> Self
+pub fn NlpparsearcstandardModel::get(Self, Int32) -> Double
+pub fn NlpparsearcstandardModel::len(Self) -> Int32
+pub fn NlpparsearcstandardModel::max(Self) -> Double
+pub fn NlpparsearcstandardModel::mean(Self) -> Double
+pub fn NlpparsearcstandardModel::min(Self) -> Double
+pub fn NlpparsearcstandardModel::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardModel::set(Self, Int32, Double) -> Self
+pub fn NlpparsearcstandardModel::sum(Self) -> Double
+pub fn NlpparsearcstandardModel::to_string(Self) -> String
+
+pub(all) struct NlpparsearcstandardNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsearcstandardNode::add(Self, Self) -> Self
+pub fn NlpparsearcstandardNode::copy(Self) -> Self
+pub fn NlpparsearcstandardNode::fill(Self, Double) -> Self
+pub fn NlpparsearcstandardNode::get(Self, Int32) -> Double
+pub fn NlpparsearcstandardNode::len(Self) -> Int32
+pub fn NlpparsearcstandardNode::max(Self) -> Double
+pub fn NlpparsearcstandardNode::mean(Self) -> Double
+pub fn NlpparsearcstandardNode::min(Self) -> Double
+pub fn NlpparsearcstandardNode::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardNode::set(Self, Int32, Double) -> Self
+pub fn NlpparsearcstandardNode::sum(Self) -> Double
+pub fn NlpparsearcstandardNode::to_string(Self) -> String
+
+pub(all) struct NlpparsearcstandardPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsearcstandardPath::add(Self, Self) -> Self
+pub fn NlpparsearcstandardPath::copy(Self) -> Self
+pub fn NlpparsearcstandardPath::fill(Self, Double) -> Self
+pub fn NlpparsearcstandardPath::get(Self, Int32) -> Double
+pub fn NlpparsearcstandardPath::len(Self) -> Int32
+pub fn NlpparsearcstandardPath::max(Self) -> Double
+pub fn NlpparsearcstandardPath::mean(Self) -> Double
+pub fn NlpparsearcstandardPath::min(Self) -> Double
+pub fn NlpparsearcstandardPath::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardPath::set(Self, Int32, Double) -> Self
+pub fn NlpparsearcstandardPath::sum(Self) -> Double
+pub fn NlpparsearcstandardPath::to_string(Self) -> String
+
+pub(all) struct NlpparsearcstandardPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlpparsearcstandardPoint::add(Self, Self) -> Self
+pub fn NlpparsearcstandardPoint::cross(Self, Self) -> Self
+pub fn NlpparsearcstandardPoint::dist(Self, Self) -> Double
+pub fn NlpparsearcstandardPoint::dot(Self, Self) -> Double
+pub fn NlpparsearcstandardPoint::label(Self) -> Int32
+pub fn NlpparsearcstandardPoint::lerp(Self, Self, Double) -> Self
+pub fn NlpparsearcstandardPoint::mid(Self, Self) -> Self
+pub fn NlpparsearcstandardPoint::negate(Self) -> Self
+pub fn NlpparsearcstandardPoint::norm(Self) -> Double
+pub fn NlpparsearcstandardPoint::normalize(Self) -> Self
+pub fn NlpparsearcstandardPoint::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardPoint::sub(Self, Self) -> Self
+pub fn NlpparsearcstandardPoint::to_string(Self) -> String
+pub fn NlpparsearcstandardPoint::x(Self) -> Double
+pub fn NlpparsearcstandardPoint::y(Self) -> Double
+pub fn NlpparsearcstandardPoint::z(Self) -> Double
+
+pub(all) struct NlpparsearcstandardRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsearcstandardRange::add(Self, Self) -> Self
+pub fn NlpparsearcstandardRange::copy(Self) -> Self
+pub fn NlpparsearcstandardRange::fill(Self, Double) -> Self
+pub fn NlpparsearcstandardRange::get(Self, Int32) -> Double
+pub fn NlpparsearcstandardRange::len(Self) -> Int32
+pub fn NlpparsearcstandardRange::max(Self) -> Double
+pub fn NlpparsearcstandardRange::mean(Self) -> Double
+pub fn NlpparsearcstandardRange::min(Self) -> Double
+pub fn NlpparsearcstandardRange::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardRange::set(Self, Int32, Double) -> Self
+pub fn NlpparsearcstandardRange::sum(Self) -> Double
+pub fn NlpparsearcstandardRange::to_string(Self) -> String
+
+pub(all) struct NlpparsearcstandardSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlpparsearcstandardSeries::add(Self, Self) -> Self
+pub fn NlpparsearcstandardSeries::cumsum(Self) -> Self
+pub fn NlpparsearcstandardSeries::len(Self) -> Int32
+pub fn NlpparsearcstandardSeries::max(Self) -> Double
+pub fn NlpparsearcstandardSeries::mean(Self) -> Double
+pub fn NlpparsearcstandardSeries::median(Self) -> Double
+pub fn NlpparsearcstandardSeries::min(Self) -> Double
+pub fn NlpparsearcstandardSeries::normalize(Self) -> Self
+pub fn NlpparsearcstandardSeries::range(Self) -> Double
+pub fn NlpparsearcstandardSeries::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardSeries::std(Self) -> Double
+pub fn NlpparsearcstandardSeries::sub(Self, Self) -> Self
+pub fn NlpparsearcstandardSeries::sum(Self) -> Double
+pub fn NlpparsearcstandardSeries::to_string(Self) -> String
+pub fn NlpparsearcstandardSeries::variance(Self) -> Double
+
+pub(all) struct NlpparsearcstandardSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsearcstandardSlice::add(Self, Self) -> Self
+pub fn NlpparsearcstandardSlice::copy(Self) -> Self
+pub fn NlpparsearcstandardSlice::fill(Self, Double) -> Self
+pub fn NlpparsearcstandardSlice::get(Self, Int32) -> Double
+pub fn NlpparsearcstandardSlice::len(Self) -> Int32
+pub fn NlpparsearcstandardSlice::max(Self) -> Double
+pub fn NlpparsearcstandardSlice::mean(Self) -> Double
+pub fn NlpparsearcstandardSlice::min(Self) -> Double
+pub fn NlpparsearcstandardSlice::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardSlice::set(Self, Int32, Double) -> Self
+pub fn NlpparsearcstandardSlice::sum(Self) -> Double
+pub fn NlpparsearcstandardSlice::to_string(Self) -> String
+
+pub(all) struct NlpparsearcstandardTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsearcstandardTable::add(Self, Self) -> Self
+pub fn NlpparsearcstandardTable::copy(Self) -> Self
+pub fn NlpparsearcstandardTable::fill(Self, Double) -> Self
+pub fn NlpparsearcstandardTable::get(Self, Int32) -> Double
+pub fn NlpparsearcstandardTable::len(Self) -> Int32
+pub fn NlpparsearcstandardTable::max(Self) -> Double
+pub fn NlpparsearcstandardTable::mean(Self) -> Double
+pub fn NlpparsearcstandardTable::min(Self) -> Double
+pub fn NlpparsearcstandardTable::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardTable::set(Self, Int32, Double) -> Self
+pub fn NlpparsearcstandardTable::sum(Self) -> Double
+pub fn NlpparsearcstandardTable::to_string(Self) -> String
+
+pub(all) struct NlpparsearcstandardVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlpparsearcstandardVector::add(Self, Self) -> Self
+pub fn NlpparsearcstandardVector::dist(Self, Self) -> Double
+pub fn NlpparsearcstandardVector::dot(Self, Self) -> Double
+pub fn NlpparsearcstandardVector::norm(Self) -> Double
+pub fn NlpparsearcstandardVector::normalize(Self) -> Self
+pub fn NlpparsearcstandardVector::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardVector::sub(Self, Self) -> Self
+pub fn NlpparsearcstandardVector::to_string(Self) -> String
+
+pub(all) struct NlpparsearcstandardView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsearcstandardView::add(Self, Self) -> Self
+pub fn NlpparsearcstandardView::copy(Self) -> Self
+pub fn NlpparsearcstandardView::fill(Self, Double) -> Self
+pub fn NlpparsearcstandardView::get(Self, Int32) -> Double
+pub fn NlpparsearcstandardView::len(Self) -> Int32
+pub fn NlpparsearcstandardView::max(Self) -> Double
+pub fn NlpparsearcstandardView::mean(Self) -> Double
+pub fn NlpparsearcstandardView::min(Self) -> Double
+pub fn NlpparsearcstandardView::scale(Self, Double) -> Self
+pub fn NlpparsearcstandardView::set(Self, Int32, Double) -> Self
+pub fn NlpparsearcstandardView::sum(Self) -> Double
+pub fn NlpparsearcstandardView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/bio_phylo_neighbor"
+
+// Values
+pub fn bio_phylo_neighbor_buffer_make(Int32) -> BiophyloneighborBuffer
+
+pub fn bio_phylo_neighbor_cluster_make(Int32) -> BiophyloneighborCluster
+
+pub fn bio_phylo_neighbor_cursor_make(Int32) -> BiophyloneighborCursor
+
+pub fn bio_phylo_neighbor_edge_make(Int32) -> BiophyloneighborEdge
+
+pub fn bio_phylo_neighbor_frame_make(Int32) -> BiophyloneighborFrame
+
+pub fn bio_phylo_neighbor_graphn_make(Int32) -> BiophyloneighborGraphN
+
+pub fn bio_phylo_neighbor_layer_make(Int32) -> BiophyloneighborLayer
+
+pub fn bio_phylo_neighbor_make_matrix(Int32, Int32, Double) -> BiophyloneighborMatrix
+
+pub fn bio_phylo_neighbor_make_point(Double, Double) -> BiophyloneighborPoint
+
+pub fn bio_phylo_neighbor_make_point3(Double, Double, Double) -> BiophyloneighborPoint
+
+pub fn bio_phylo_neighbor_make_series(Array[Double], String) -> BiophyloneighborSeries
+
+pub fn bio_phylo_neighbor_make_vector(Array[Double]) -> BiophyloneighborVector
+
+pub fn bio_phylo_neighbor_matrix_identity(Int32) -> BiophyloneighborMatrix
+
+pub fn bio_phylo_neighbor_model_make(Int32) -> BiophyloneighborModel
+
+pub fn bio_phylo_neighbor_node_make(Int32) -> BiophyloneighborNode
+
+pub fn bio_phylo_neighbor_path_make(Int32) -> BiophyloneighborPath
+
+pub fn bio_phylo_neighbor_range_make(Int32) -> BiophyloneighborRange
+
+pub fn bio_phylo_neighbor_slice_make(Int32) -> BiophyloneighborSlice
+
+pub fn bio_phylo_neighbor_table_make(Int32) -> BiophyloneighborTable
+
+pub fn bio_phylo_neighbor_vector_zero(Int32) -> BiophyloneighborVector
+
+pub fn bio_phylo_neighbor_view_make(Int32) -> BiophyloneighborView
+
+// Errors
+
+// Types and methods
+pub(all) struct BiophyloneighborBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloneighborBuffer::add(Self, Self) -> Self
+pub fn BiophyloneighborBuffer::copy(Self) -> Self
+pub fn BiophyloneighborBuffer::fill(Self, Double) -> Self
+pub fn BiophyloneighborBuffer::get(Self, Int32) -> Double
+pub fn BiophyloneighborBuffer::len(Self) -> Int32
+pub fn BiophyloneighborBuffer::max(Self) -> Double
+pub fn BiophyloneighborBuffer::mean(Self) -> Double
+pub fn BiophyloneighborBuffer::min(Self) -> Double
+pub fn BiophyloneighborBuffer::scale(Self, Double) -> Self
+pub fn BiophyloneighborBuffer::set(Self, Int32, Double) -> Self
+pub fn BiophyloneighborBuffer::sum(Self) -> Double
+pub fn BiophyloneighborBuffer::to_string(Self) -> String
+
+pub(all) struct BiophyloneighborCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloneighborCluster::add(Self, Self) -> Self
+pub fn BiophyloneighborCluster::copy(Self) -> Self
+pub fn BiophyloneighborCluster::fill(Self, Double) -> Self
+pub fn BiophyloneighborCluster::get(Self, Int32) -> Double
+pub fn BiophyloneighborCluster::len(Self) -> Int32
+pub fn BiophyloneighborCluster::max(Self) -> Double
+pub fn BiophyloneighborCluster::mean(Self) -> Double
+pub fn BiophyloneighborCluster::min(Self) -> Double
+pub fn BiophyloneighborCluster::scale(Self, Double) -> Self
+pub fn BiophyloneighborCluster::set(Self, Int32, Double) -> Self
+pub fn BiophyloneighborCluster::sum(Self) -> Double
+pub fn BiophyloneighborCluster::to_string(Self) -> String
+
+pub(all) struct BiophyloneighborCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloneighborCursor::add(Self, Self) -> Self
+pub fn BiophyloneighborCursor::copy(Self) -> Self
+pub fn BiophyloneighborCursor::fill(Self, Double) -> Self
+pub fn BiophyloneighborCursor::get(Self, Int32) -> Double
+pub fn BiophyloneighborCursor::len(Self) -> Int32
+pub fn BiophyloneighborCursor::max(Self) -> Double
+pub fn BiophyloneighborCursor::mean(Self) -> Double
+pub fn BiophyloneighborCursor::min(Self) -> Double
+pub fn BiophyloneighborCursor::scale(Self, Double) -> Self
+pub fn BiophyloneighborCursor::set(Self, Int32, Double) -> Self
+pub fn BiophyloneighborCursor::sum(Self) -> Double
+pub fn BiophyloneighborCursor::to_string(Self) -> String
+
+pub(all) struct BiophyloneighborEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloneighborEdge::add(Self, Self) -> Self
+pub fn BiophyloneighborEdge::copy(Self) -> Self
+pub fn BiophyloneighborEdge::fill(Self, Double) -> Self
+pub fn BiophyloneighborEdge::get(Self, Int32) -> Double
+pub fn BiophyloneighborEdge::len(Self) -> Int32
+pub fn BiophyloneighborEdge::max(Self) -> Double
+pub fn BiophyloneighborEdge::mean(Self) -> Double
+pub fn BiophyloneighborEdge::min(Self) -> Double
+pub fn BiophyloneighborEdge::scale(Self, Double) -> Self
+pub fn BiophyloneighborEdge::set(Self, Int32, Double) -> Self
+pub fn BiophyloneighborEdge::sum(Self) -> Double
+pub fn BiophyloneighborEdge::to_string(Self) -> String
+
+pub(all) struct BiophyloneighborFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloneighborFrame::add(Self, Self) -> Self
+pub fn BiophyloneighborFrame::copy(Self) -> Self
+pub fn BiophyloneighborFrame::fill(Self, Double) -> Self
+pub fn BiophyloneighborFrame::get(Self, Int32) -> Double
+pub fn BiophyloneighborFrame::len(Self) -> Int32
+pub fn BiophyloneighborFrame::max(Self) -> Double
+pub fn BiophyloneighborFrame::mean(Self) -> Double
+pub fn BiophyloneighborFrame::min(Self) -> Double
+pub fn BiophyloneighborFrame::scale(Self, Double) -> Self
+pub fn BiophyloneighborFrame::set(Self, Int32, Double) -> Self
+pub fn BiophyloneighborFrame::sum(Self) -> Double
+pub fn BiophyloneighborFrame::to_string(Self) -> String
+
+pub(all) struct BiophyloneighborGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloneighborGraphN::add(Self, Self) -> Self
+pub fn BiophyloneighborGraphN::copy(Self) -> Self
+pub fn BiophyloneighborGraphN::fill(Self, Double) -> Self
+pub fn BiophyloneighborGraphN::get(Self, Int32) -> Double
+pub fn BiophyloneighborGraphN::len(Self) -> Int32
+pub fn BiophyloneighborGraphN::max(Self) -> Double
+pub fn BiophyloneighborGraphN::mean(Self) -> Double
+pub fn BiophyloneighborGraphN::min(Self) -> Double
+pub fn BiophyloneighborGraphN::scale(Self, Double) -> Self
+pub fn BiophyloneighborGraphN::set(Self, Int32, Double) -> Self
+pub fn BiophyloneighborGraphN::sum(Self) -> Double
+pub fn BiophyloneighborGraphN::to_string(Self) -> String
+
+pub(all) struct BiophyloneighborLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloneighborLayer::add(Self, Self) -> Self
+pub fn BiophyloneighborLayer::copy(Self) -> Self
+pub fn BiophyloneighborLayer::fill(Self, Double) -> Self
+pub fn BiophyloneighborLayer::get(Self, Int32) -> Double
+pub fn BiophyloneighborLayer::len(Self) -> Int32
+pub fn BiophyloneighborLayer::max(Self) -> Double
+pub fn BiophyloneighborLayer::mean(Self) -> Double
+pub fn BiophyloneighborLayer::min(Self) -> Double
+pub fn BiophyloneighborLayer::scale(Self, Double) -> Self
+pub fn BiophyloneighborLayer::set(Self, Int32, Double) -> Self
+pub fn BiophyloneighborLayer::sum(Self) -> Double
+pub fn BiophyloneighborLayer::to_string(Self) -> String
+
+pub(all) struct BiophyloneighborMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn BiophyloneighborMatrix::add(Self, Self) -> Self
+pub fn BiophyloneighborMatrix::det(Self) -> Double
+pub fn BiophyloneighborMatrix::get(Self, Int32, Int32) -> Double
+pub fn BiophyloneighborMatrix::multiply(Self, Self) -> Self
+pub fn BiophyloneighborMatrix::norm(Self) -> Double
+pub fn BiophyloneighborMatrix::scale(Self, Double) -> Self
+pub fn BiophyloneighborMatrix::to_string(Self) -> String
+pub fn BiophyloneighborMatrix::trace(Self) -> Double
+pub fn BiophyloneighborMatrix::transpose(Self) -> Self
+
+pub(all) struct BiophyloneighborModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloneighborModel::add(Self, Self) -> Self
+pub fn BiophyloneighborModel::copy(Self) -> Self
+pub fn BiophyloneighborModel::fill(Self, Double) -> Self
+pub fn BiophyloneighborModel::get(Self, Int32) -> Double
+pub fn BiophyloneighborModel::len(Self) -> Int32
+pub fn BiophyloneighborModel::max(Self) -> Double
+pub fn BiophyloneighborModel::mean(Self) -> Double
+pub fn BiophyloneighborModel::min(Self) -> Double
+pub fn BiophyloneighborModel::scale(Self, Double) -> Self
+pub fn BiophyloneighborModel::set(Self, Int32, Double) -> Self
+pub fn BiophyloneighborModel::sum(Self) -> Double
+pub fn BiophyloneighborModel::to_string(Self) -> String
+
+pub(all) struct BiophyloneighborNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloneighborNode::add(Self, Self) -> Self
+pub fn BiophyloneighborNode::copy(Self) -> Self
+pub fn BiophyloneighborNode::fill(Self, Double) -> Self
+pub fn BiophyloneighborNode::get(Self, Int32) -> Double
+pub fn BiophyloneighborNode::len(Self) -> Int32
+pub fn BiophyloneighborNode::max(Self) -> Double
+pub fn BiophyloneighborNode::mean(Self) -> Double
+pub fn BiophyloneighborNode::min(Self) -> Double
+pub fn BiophyloneighborNode::scale(Self, Double) -> Self
+pub fn BiophyloneighborNode::set(Self, Int32, Double) -> Self
+pub fn BiophyloneighborNode::sum(Self) -> Double
+pub fn BiophyloneighborNode::to_string(Self) -> String
+
+pub(all) struct BiophyloneighborPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloneighborPath::add(Self, Self) -> Self
+pub fn BiophyloneighborPath::copy(Self) -> Self
+pub fn BiophyloneighborPath::fill(Self, Double) -> Self
+pub fn BiophyloneighborPath::get(Self, Int32) -> Double
+pub fn BiophyloneighborPath::len(Self) -> Int32
+pub fn BiophyloneighborPath::max(Self) -> Double
+pub fn BiophyloneighborPath::mean(Self) -> Double
+pub fn BiophyloneighborPath::min(Self) -> Double
+pub fn BiophyloneighborPath::scale(Self, Double) -> Self
+pub fn BiophyloneighborPath::set(Self, Int32, Double) -> Self
+pub fn BiophyloneighborPath::sum(Self) -> Double
+pub fn BiophyloneighborPath::to_string(Self) -> String
+
+pub(all) struct BiophyloneighborPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn BiophyloneighborPoint::add(Self, Self) -> Self
+pub fn BiophyloneighborPoint::cross(Self, Self) -> Self
+pub fn BiophyloneighborPoint::dist(Self, Self) -> Double
+pub fn BiophyloneighborPoint::dot(Self, Self) -> Double
+pub fn BiophyloneighborPoint::label(Self) -> Int32
+pub fn BiophyloneighborPoint::lerp(Self, Self, Double) -> Self
+pub fn BiophyloneighborPoint::mid(Self, Self) -> Self
+pub fn BiophyloneighborPoint::negate(Self) -> Self
+pub fn BiophyloneighborPoint::norm(Self) -> Double
+pub fn BiophyloneighborPoint::normalize(Self) -> Self
+pub fn BiophyloneighborPoint::scale(Self, Double) -> Self
+pub fn BiophyloneighborPoint::sub(Self, Self) -> Self
+pub fn BiophyloneighborPoint::to_string(Self) -> String
+pub fn BiophyloneighborPoint::x(Self) -> Double
+pub fn BiophyloneighborPoint::y(Self) -> Double
+pub fn BiophyloneighborPoint::z(Self) -> Double
+
+pub(all) struct BiophyloneighborRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloneighborRange::add(Self, Self) -> Self
+pub fn BiophyloneighborRange::copy(Self) -> Self
+pub fn BiophyloneighborRange::fill(Self, Double) -> Self
+pub fn BiophyloneighborRange::get(Self, Int32) -> Double
+pub fn BiophyloneighborRange::len(Self) -> Int32
+pub fn BiophyloneighborRange::max(Self) -> Double
+pub fn BiophyloneighborRange::mean(Self) -> Double
+pub fn BiophyloneighborRange::min(Self) -> Double
+pub fn BiophyloneighborRange::scale(Self, Double) -> Self
+pub fn BiophyloneighborRange::set(Self, Int32, Double) -> Self
+pub fn BiophyloneighborRange::sum(Self) -> Double
+pub fn BiophyloneighborRange::to_string(Self) -> String
+
+pub(all) struct BiophyloneighborSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn BiophyloneighborSeries::add(Self, Self) -> Self
+pub fn BiophyloneighborSeries::cumsum(Self) -> Self
+pub fn BiophyloneighborSeries::len(Self) -> Int32
+pub fn BiophyloneighborSeries::max(Self) -> Double
+pub fn BiophyloneighborSeries::mean(Self) -> Double
+pub fn BiophyloneighborSeries::median(Self) -> Double
+pub fn BiophyloneighborSeries::min(Self) -> Double
+pub fn BiophyloneighborSeries::normalize(Self) -> Self
+pub fn BiophyloneighborSeries::range(Self) -> Double
+pub fn BiophyloneighborSeries::scale(Self, Double) -> Self
+pub fn BiophyloneighborSeries::std(Self) -> Double
+pub fn BiophyloneighborSeries::sub(Self, Self) -> Self
+pub fn BiophyloneighborSeries::sum(Self) -> Double
+pub fn BiophyloneighborSeries::to_string(Self) -> String
+pub fn BiophyloneighborSeries::variance(Self) -> Double
+
+pub(all) struct BiophyloneighborSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloneighborSlice::add(Self, Self) -> Self
+pub fn BiophyloneighborSlice::copy(Self) -> Self
+pub fn BiophyloneighborSlice::fill(Self, Double) -> Self
+pub fn BiophyloneighborSlice::get(Self, Int32) -> Double
+pub fn BiophyloneighborSlice::len(Self) -> Int32
+pub fn BiophyloneighborSlice::max(Self) -> Double
+pub fn BiophyloneighborSlice::mean(Self) -> Double
+pub fn BiophyloneighborSlice::min(Self) -> Double
+pub fn BiophyloneighborSlice::scale(Self, Double) -> Self
+pub fn BiophyloneighborSlice::set(Self, Int32, Double) -> Self
+pub fn BiophyloneighborSlice::sum(Self) -> Double
+pub fn BiophyloneighborSlice::to_string(Self) -> String
+
+pub(all) struct BiophyloneighborTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloneighborTable::add(Self, Self) -> Self
+pub fn BiophyloneighborTable::copy(Self) -> Self
+pub fn BiophyloneighborTable::fill(Self, Double) -> Self
+pub fn BiophyloneighborTable::get(Self, Int32) -> Double
+pub fn BiophyloneighborTable::len(Self) -> Int32
+pub fn BiophyloneighborTable::max(Self) -> Double
+pub fn BiophyloneighborTable::mean(Self) -> Double
+pub fn BiophyloneighborTable::min(Self) -> Double
+pub fn BiophyloneighborTable::scale(Self, Double) -> Self
+pub fn BiophyloneighborTable::set(Self, Int32, Double) -> Self
+pub fn BiophyloneighborTable::sum(Self) -> Double
+pub fn BiophyloneighborTable::to_string(Self) -> String
+
+pub(all) struct BiophyloneighborVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn BiophyloneighborVector::add(Self, Self) -> Self
+pub fn BiophyloneighborVector::dist(Self, Self) -> Double
+pub fn BiophyloneighborVector::dot(Self, Self) -> Double
+pub fn BiophyloneighborVector::norm(Self) -> Double
+pub fn BiophyloneighborVector::normalize(Self) -> Self
+pub fn BiophyloneighborVector::scale(Self, Double) -> Self
+pub fn BiophyloneighborVector::sub(Self, Self) -> Self
+pub fn BiophyloneighborVector::to_string(Self) -> String
+
+pub(all) struct BiophyloneighborView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloneighborView::add(Self, Self) -> Self
+pub fn BiophyloneighborView::copy(Self) -> Self
+pub fn BiophyloneighborView::fill(Self, Double) -> Self
+pub fn BiophyloneighborView::get(Self, Int32) -> Double
+pub fn BiophyloneighborView::len(Self) -> Int32
+pub fn BiophyloneighborView::max(Self) -> Double
+pub fn BiophyloneighborView::mean(Self) -> Double
+pub fn BiophyloneighborView::min(Self) -> Double
+pub fn BiophyloneighborView::scale(Self, Double) -> Self
+pub fn BiophyloneighborView::set(Self, Int32, Double) -> Self
+pub fn BiophyloneighborView::sum(Self) -> Double
+pub fn BiophyloneighborView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

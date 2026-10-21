@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/lightgbm"
+
+// Values
+pub fn lightgbm_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn lightgbm_corr(Array[Double], Array[Double]) -> Double
+
+pub fn lightgbm_cov(Array[Double], Array[Double]) -> Double
+
+pub fn lightgbm_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn lightgbm_mae(Array[Double], Array[Double]) -> Double
+
+pub fn lightgbm_make_labeled_point(Double, Double, Int32) -> LightgbmPoint
+
+pub fn lightgbm_make_matrix(Int32, Int32, Double) -> LightgbmMatrix
+
+pub fn lightgbm_make_point(Double, Double) -> LightgbmPoint
+
+pub fn lightgbm_make_series(Array[Double], String) -> LightgbmSeries
+
+pub fn lightgbm_make_vector(Array[Double]) -> LightgbmVector
+
+pub fn lightgbm_matrix_add(LightgbmMatrix, LightgbmMatrix) -> LightgbmMatrix
+
+pub fn lightgbm_matrix_get(LightgbmMatrix, Int32, Int32) -> Double
+
+pub fn lightgbm_matrix_identity(Int32) -> LightgbmMatrix
+
+pub fn lightgbm_matrix_multiply(LightgbmMatrix, LightgbmMatrix) -> LightgbmMatrix
+
+pub fn lightgbm_matrix_norm(LightgbmMatrix) -> Double
+
+pub fn lightgbm_matrix_scale(LightgbmMatrix, Double) -> LightgbmMatrix
+
+pub fn lightgbm_matrix_to_string(LightgbmMatrix) -> String
+
+pub fn lightgbm_matrix_trace(LightgbmMatrix) -> Double
+
+pub fn lightgbm_matrix_transpose(LightgbmMatrix) -> LightgbmMatrix
+
+pub fn lightgbm_mse(Array[Double], Array[Double]) -> Double
+
+pub fn lightgbm_point_add(LightgbmPoint, LightgbmPoint) -> LightgbmPoint
+
+pub fn lightgbm_point_dist(LightgbmPoint, LightgbmPoint) -> Double
+
+pub fn lightgbm_point_dot(LightgbmPoint, LightgbmPoint) -> Double
+
+pub fn lightgbm_point_label(LightgbmPoint) -> Int32
+
+pub fn lightgbm_point_norm(LightgbmPoint) -> Double
+
+pub fn lightgbm_point_scale(LightgbmPoint, Double) -> LightgbmPoint
+
+pub fn lightgbm_point_sub(LightgbmPoint, LightgbmPoint) -> LightgbmPoint
+
+pub fn lightgbm_point_to_string(LightgbmPoint) -> String
+
+pub fn lightgbm_point_x(LightgbmPoint) -> Double
+
+pub fn lightgbm_point_y(LightgbmPoint) -> Double
+
+pub fn lightgbm_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn lightgbm_r2(Array[Double], Array[Double]) -> Double
+
+pub fn lightgbm_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn lightgbm_series_add(LightgbmSeries, LightgbmSeries) -> LightgbmSeries
+
+pub fn lightgbm_series_len(LightgbmSeries) -> Int32
+
+pub fn lightgbm_series_max(LightgbmSeries) -> Double
+
+pub fn lightgbm_series_mean(LightgbmSeries) -> Double
+
+pub fn lightgbm_series_min(LightgbmSeries) -> Double
+
+pub fn lightgbm_series_scale(LightgbmSeries, Double) -> LightgbmSeries
+
+pub fn lightgbm_series_std(LightgbmSeries) -> Double
+
+pub fn lightgbm_series_sum(LightgbmSeries) -> Double
+
+pub fn lightgbm_series_to_string(LightgbmSeries) -> String
+
+pub fn lightgbm_series_var(LightgbmSeries) -> Double
+
+pub fn lightgbm_std(Array[Double]) -> Double
+
+pub fn lightgbm_var(Array[Double]) -> Double
+
+pub fn lightgbm_vector_add(LightgbmVector, LightgbmVector) -> LightgbmVector
+
+pub fn lightgbm_vector_dist(LightgbmVector, LightgbmVector) -> Double
+
+pub fn lightgbm_vector_dot(LightgbmVector, LightgbmVector) -> Double
+
+pub fn lightgbm_vector_norm(LightgbmVector) -> Double
+
+pub fn lightgbm_vector_normalize(LightgbmVector) -> LightgbmVector
+
+pub fn lightgbm_vector_scale(LightgbmVector, Double) -> LightgbmVector
+
+pub fn lightgbm_vector_sub(LightgbmVector, LightgbmVector) -> LightgbmVector
+
+pub fn lightgbm_vector_to_string(LightgbmVector) -> String
+
+pub fn lightgbm_vector_zero(Int32) -> LightgbmVector
+
+// Errors
+
+// Types and methods
+pub struct LightgbmMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct LightgbmPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct LightgbmSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct LightgbmVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/stats_dist_pareto"
+
+// Values
+pub fn stats_dist_pareto_buffer_make(Int32) -> StatsdistparetoBuffer
+
+pub fn stats_dist_pareto_cluster_make(Int32) -> StatsdistparetoCluster
+
+pub fn stats_dist_pareto_cursor_make(Int32) -> StatsdistparetoCursor
+
+pub fn stats_dist_pareto_edge_make(Int32) -> StatsdistparetoEdge
+
+pub fn stats_dist_pareto_frame_make(Int32) -> StatsdistparetoFrame
+
+pub fn stats_dist_pareto_graphn_make(Int32) -> StatsdistparetoGraphN
+
+pub fn stats_dist_pareto_layer_make(Int32) -> StatsdistparetoLayer
+
+pub fn stats_dist_pareto_make_matrix(Int32, Int32, Double) -> StatsdistparetoMatrix
+
+pub fn stats_dist_pareto_make_point(Double, Double) -> StatsdistparetoPoint
+
+pub fn stats_dist_pareto_make_point3(Double, Double, Double) -> StatsdistparetoPoint
+
+pub fn stats_dist_pareto_make_series(Array[Double], String) -> StatsdistparetoSeries
+
+pub fn stats_dist_pareto_make_vector(Array[Double]) -> StatsdistparetoVector
+
+pub fn stats_dist_pareto_matrix_identity(Int32) -> StatsdistparetoMatrix
+
+pub fn stats_dist_pareto_model_make(Int32) -> StatsdistparetoModel
+
+pub fn stats_dist_pareto_node_make(Int32) -> StatsdistparetoNode
+
+pub fn stats_dist_pareto_path_make(Int32) -> StatsdistparetoPath
+
+pub fn stats_dist_pareto_range_make(Int32) -> StatsdistparetoRange
+
+pub fn stats_dist_pareto_slice_make(Int32) -> StatsdistparetoSlice
+
+pub fn stats_dist_pareto_table_make(Int32) -> StatsdistparetoTable
+
+pub fn stats_dist_pareto_vector_zero(Int32) -> StatsdistparetoVector
+
+pub fn stats_dist_pareto_view_make(Int32) -> StatsdistparetoView
+
+// Errors
+
+// Types and methods
+pub(all) struct StatsdistparetoBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistparetoBuffer::add(Self, Self) -> Self
+pub fn StatsdistparetoBuffer::copy(Self) -> Self
+pub fn StatsdistparetoBuffer::fill(Self, Double) -> Self
+pub fn StatsdistparetoBuffer::get(Self, Int32) -> Double
+pub fn StatsdistparetoBuffer::len(Self) -> Int32
+pub fn StatsdistparetoBuffer::max(Self) -> Double
+pub fn StatsdistparetoBuffer::mean(Self) -> Double
+pub fn StatsdistparetoBuffer::min(Self) -> Double
+pub fn StatsdistparetoBuffer::scale(Self, Double) -> Self
+pub fn StatsdistparetoBuffer::set(Self, Int32, Double) -> Self
+pub fn StatsdistparetoBuffer::sum(Self) -> Double
+pub fn StatsdistparetoBuffer::to_string(Self) -> String
+
+pub(all) struct StatsdistparetoCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistparetoCluster::add(Self, Self) -> Self
+pub fn StatsdistparetoCluster::copy(Self) -> Self
+pub fn StatsdistparetoCluster::fill(Self, Double) -> Self
+pub fn StatsdistparetoCluster::get(Self, Int32) -> Double
+pub fn StatsdistparetoCluster::len(Self) -> Int32
+pub fn StatsdistparetoCluster::max(Self) -> Double
+pub fn StatsdistparetoCluster::mean(Self) -> Double
+pub fn StatsdistparetoCluster::min(Self) -> Double
+pub fn StatsdistparetoCluster::scale(Self, Double) -> Self
+pub fn StatsdistparetoCluster::set(Self, Int32, Double) -> Self
+pub fn StatsdistparetoCluster::sum(Self) -> Double
+pub fn StatsdistparetoCluster::to_string(Self) -> String
+
+pub(all) struct StatsdistparetoCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistparetoCursor::add(Self, Self) -> Self
+pub fn StatsdistparetoCursor::copy(Self) -> Self
+pub fn StatsdistparetoCursor::fill(Self, Double) -> Self
+pub fn StatsdistparetoCursor::get(Self, Int32) -> Double
+pub fn StatsdistparetoCursor::len(Self) -> Int32
+pub fn StatsdistparetoCursor::max(Self) -> Double
+pub fn StatsdistparetoCursor::mean(Self) -> Double
+pub fn StatsdistparetoCursor::min(Self) -> Double
+pub fn StatsdistparetoCursor::scale(Self, Double) -> Self
+pub fn StatsdistparetoCursor::set(Self, Int32, Double) -> Self
+pub fn StatsdistparetoCursor::sum(Self) -> Double
+pub fn StatsdistparetoCursor::to_string(Self) -> String
+
+pub(all) struct StatsdistparetoEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistparetoEdge::add(Self, Self) -> Self
+pub fn StatsdistparetoEdge::copy(Self) -> Self
+pub fn StatsdistparetoEdge::fill(Self, Double) -> Self
+pub fn StatsdistparetoEdge::get(Self, Int32) -> Double
+pub fn StatsdistparetoEdge::len(Self) -> Int32
+pub fn StatsdistparetoEdge::max(Self) -> Double
+pub fn StatsdistparetoEdge::mean(Self) -> Double
+pub fn StatsdistparetoEdge::min(Self) -> Double
+pub fn StatsdistparetoEdge::scale(Self, Double) -> Self
+pub fn StatsdistparetoEdge::set(Self, Int32, Double) -> Self
+pub fn StatsdistparetoEdge::sum(Self) -> Double
+pub fn StatsdistparetoEdge::to_string(Self) -> String
+
+pub(all) struct StatsdistparetoFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistparetoFrame::add(Self, Self) -> Self
+pub fn StatsdistparetoFrame::copy(Self) -> Self
+pub fn StatsdistparetoFrame::fill(Self, Double) -> Self
+pub fn StatsdistparetoFrame::get(Self, Int32) -> Double
+pub fn StatsdistparetoFrame::len(Self) -> Int32
+pub fn StatsdistparetoFrame::max(Self) -> Double
+pub fn StatsdistparetoFrame::mean(Self) -> Double
+pub fn StatsdistparetoFrame::min(Self) -> Double
+pub fn StatsdistparetoFrame::scale(Self, Double) -> Self
+pub fn StatsdistparetoFrame::set(Self, Int32, Double) -> Self
+pub fn StatsdistparetoFrame::sum(Self) -> Double
+pub fn StatsdistparetoFrame::to_string(Self) -> String
+
+pub(all) struct StatsdistparetoGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistparetoGraphN::add(Self, Self) -> Self
+pub fn StatsdistparetoGraphN::copy(Self) -> Self
+pub fn StatsdistparetoGraphN::fill(Self, Double) -> Self
+pub fn StatsdistparetoGraphN::get(Self, Int32) -> Double
+pub fn StatsdistparetoGraphN::len(Self) -> Int32
+pub fn StatsdistparetoGraphN::max(Self) -> Double
+pub fn StatsdistparetoGraphN::mean(Self) -> Double
+pub fn StatsdistparetoGraphN::min(Self) -> Double
+pub fn StatsdistparetoGraphN::scale(Self, Double) -> Self
+pub fn StatsdistparetoGraphN::set(Self, Int32, Double) -> Self
+pub fn StatsdistparetoGraphN::sum(Self) -> Double
+pub fn StatsdistparetoGraphN::to_string(Self) -> String
+
+pub(all) struct StatsdistparetoLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistparetoLayer::add(Self, Self) -> Self
+pub fn StatsdistparetoLayer::copy(Self) -> Self
+pub fn StatsdistparetoLayer::fill(Self, Double) -> Self
+pub fn StatsdistparetoLayer::get(Self, Int32) -> Double
+pub fn StatsdistparetoLayer::len(Self) -> Int32
+pub fn StatsdistparetoLayer::max(Self) -> Double
+pub fn StatsdistparetoLayer::mean(Self) -> Double
+pub fn StatsdistparetoLayer::min(Self) -> Double
+pub fn StatsdistparetoLayer::scale(Self, Double) -> Self
+pub fn StatsdistparetoLayer::set(Self, Int32, Double) -> Self
+pub fn StatsdistparetoLayer::sum(Self) -> Double
+pub fn StatsdistparetoLayer::to_string(Self) -> String
+
+pub(all) struct StatsdistparetoMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn StatsdistparetoMatrix::add(Self, Self) -> Self
+pub fn StatsdistparetoMatrix::det(Self) -> Double
+pub fn StatsdistparetoMatrix::get(Self, Int32, Int32) -> Double
+pub fn StatsdistparetoMatrix::multiply(Self, Self) -> Self
+pub fn StatsdistparetoMatrix::norm(Self) -> Double
+pub fn StatsdistparetoMatrix::scale(Self, Double) -> Self
+pub fn StatsdistparetoMatrix::to_string(Self) -> String
+pub fn StatsdistparetoMatrix::trace(Self) -> Double
+pub fn StatsdistparetoMatrix::transpose(Self) -> Self
+
+pub(all) struct StatsdistparetoModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistparetoModel::add(Self, Self) -> Self
+pub fn StatsdistparetoModel::copy(Self) -> Self
+pub fn StatsdistparetoModel::fill(Self, Double) -> Self
+pub fn StatsdistparetoModel::get(Self, Int32) -> Double
+pub fn StatsdistparetoModel::len(Self) -> Int32
+pub fn StatsdistparetoModel::max(Self) -> Double
+pub fn StatsdistparetoModel::mean(Self) -> Double
+pub fn StatsdistparetoModel::min(Self) -> Double
+pub fn StatsdistparetoModel::scale(Self, Double) -> Self
+pub fn StatsdistparetoModel::set(Self, Int32, Double) -> Self
+pub fn StatsdistparetoModel::sum(Self) -> Double
+pub fn StatsdistparetoModel::to_string(Self) -> String
+
+pub(all) struct StatsdistparetoNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistparetoNode::add(Self, Self) -> Self
+pub fn StatsdistparetoNode::copy(Self) -> Self
+pub fn StatsdistparetoNode::fill(Self, Double) -> Self
+pub fn StatsdistparetoNode::get(Self, Int32) -> Double
+pub fn StatsdistparetoNode::len(Self) -> Int32
+pub fn StatsdistparetoNode::max(Self) -> Double
+pub fn StatsdistparetoNode::mean(Self) -> Double
+pub fn StatsdistparetoNode::min(Self) -> Double
+pub fn StatsdistparetoNode::scale(Self, Double) -> Self
+pub fn StatsdistparetoNode::set(Self, Int32, Double) -> Self
+pub fn StatsdistparetoNode::sum(Self) -> Double
+pub fn StatsdistparetoNode::to_string(Self) -> String
+
+pub(all) struct StatsdistparetoPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistparetoPath::add(Self, Self) -> Self
+pub fn StatsdistparetoPath::copy(Self) -> Self
+pub fn StatsdistparetoPath::fill(Self, Double) -> Self
+pub fn StatsdistparetoPath::get(Self, Int32) -> Double
+pub fn StatsdistparetoPath::len(Self) -> Int32
+pub fn StatsdistparetoPath::max(Self) -> Double
+pub fn StatsdistparetoPath::mean(Self) -> Double
+pub fn StatsdistparetoPath::min(Self) -> Double
+pub fn StatsdistparetoPath::scale(Self, Double) -> Self
+pub fn StatsdistparetoPath::set(Self, Int32, Double) -> Self
+pub fn StatsdistparetoPath::sum(Self) -> Double
+pub fn StatsdistparetoPath::to_string(Self) -> String
+
+pub(all) struct StatsdistparetoPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn StatsdistparetoPoint::add(Self, Self) -> Self
+pub fn StatsdistparetoPoint::cross(Self, Self) -> Self
+pub fn StatsdistparetoPoint::dist(Self, Self) -> Double
+pub fn StatsdistparetoPoint::dot(Self, Self) -> Double
+pub fn StatsdistparetoPoint::label(Self) -> Int32
+pub fn StatsdistparetoPoint::lerp(Self, Self, Double) -> Self
+pub fn StatsdistparetoPoint::mid(Self, Self) -> Self
+pub fn StatsdistparetoPoint::negate(Self) -> Self
+pub fn StatsdistparetoPoint::norm(Self) -> Double
+pub fn StatsdistparetoPoint::normalize(Self) -> Self
+pub fn StatsdistparetoPoint::scale(Self, Double) -> Self
+pub fn StatsdistparetoPoint::sub(Self, Self) -> Self
+pub fn StatsdistparetoPoint::to_string(Self) -> String
+pub fn StatsdistparetoPoint::x(Self) -> Double
+pub fn StatsdistparetoPoint::y(Self) -> Double
+pub fn StatsdistparetoPoint::z(Self) -> Double
+
+pub(all) struct StatsdistparetoRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistparetoRange::add(Self, Self) -> Self
+pub fn StatsdistparetoRange::copy(Self) -> Self
+pub fn StatsdistparetoRange::fill(Self, Double) -> Self
+pub fn StatsdistparetoRange::get(Self, Int32) -> Double
+pub fn StatsdistparetoRange::len(Self) -> Int32
+pub fn StatsdistparetoRange::max(Self) -> Double
+pub fn StatsdistparetoRange::mean(Self) -> Double
+pub fn StatsdistparetoRange::min(Self) -> Double
+pub fn StatsdistparetoRange::scale(Self, Double) -> Self
+pub fn StatsdistparetoRange::set(Self, Int32, Double) -> Self
+pub fn StatsdistparetoRange::sum(Self) -> Double
+pub fn StatsdistparetoRange::to_string(Self) -> String
+
+pub(all) struct StatsdistparetoSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn StatsdistparetoSeries::add(Self, Self) -> Self
+pub fn StatsdistparetoSeries::cumsum(Self) -> Self
+pub fn StatsdistparetoSeries::len(Self) -> Int32
+pub fn StatsdistparetoSeries::max(Self) -> Double
+pub fn StatsdistparetoSeries::mean(Self) -> Double
+pub fn StatsdistparetoSeries::median(Self) -> Double
+pub fn StatsdistparetoSeries::min(Self) -> Double
+pub fn StatsdistparetoSeries::normalize(Self) -> Self
+pub fn StatsdistparetoSeries::range(Self) -> Double
+pub fn StatsdistparetoSeries::scale(Self, Double) -> Self
+pub fn StatsdistparetoSeries::std(Self) -> Double
+pub fn StatsdistparetoSeries::sub(Self, Self) -> Self
+pub fn StatsdistparetoSeries::sum(Self) -> Double
+pub fn StatsdistparetoSeries::to_string(Self) -> String
+pub fn StatsdistparetoSeries::variance(Self) -> Double
+
+pub(all) struct StatsdistparetoSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistparetoSlice::add(Self, Self) -> Self
+pub fn StatsdistparetoSlice::copy(Self) -> Self
+pub fn StatsdistparetoSlice::fill(Self, Double) -> Self
+pub fn StatsdistparetoSlice::get(Self, Int32) -> Double
+pub fn StatsdistparetoSlice::len(Self) -> Int32
+pub fn StatsdistparetoSlice::max(Self) -> Double
+pub fn StatsdistparetoSlice::mean(Self) -> Double
+pub fn StatsdistparetoSlice::min(Self) -> Double
+pub fn StatsdistparetoSlice::scale(Self, Double) -> Self
+pub fn StatsdistparetoSlice::set(Self, Int32, Double) -> Self
+pub fn StatsdistparetoSlice::sum(Self) -> Double
+pub fn StatsdistparetoSlice::to_string(Self) -> String
+
+pub(all) struct StatsdistparetoTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistparetoTable::add(Self, Self) -> Self
+pub fn StatsdistparetoTable::copy(Self) -> Self
+pub fn StatsdistparetoTable::fill(Self, Double) -> Self
+pub fn StatsdistparetoTable::get(Self, Int32) -> Double
+pub fn StatsdistparetoTable::len(Self) -> Int32
+pub fn StatsdistparetoTable::max(Self) -> Double
+pub fn StatsdistparetoTable::mean(Self) -> Double
+pub fn StatsdistparetoTable::min(Self) -> Double
+pub fn StatsdistparetoTable::scale(Self, Double) -> Self
+pub fn StatsdistparetoTable::set(Self, Int32, Double) -> Self
+pub fn StatsdistparetoTable::sum(Self) -> Double
+pub fn StatsdistparetoTable::to_string(Self) -> String
+
+pub(all) struct StatsdistparetoVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn StatsdistparetoVector::add(Self, Self) -> Self
+pub fn StatsdistparetoVector::dist(Self, Self) -> Double
+pub fn StatsdistparetoVector::dot(Self, Self) -> Double
+pub fn StatsdistparetoVector::norm(Self) -> Double
+pub fn StatsdistparetoVector::normalize(Self) -> Self
+pub fn StatsdistparetoVector::scale(Self, Double) -> Self
+pub fn StatsdistparetoVector::sub(Self, Self) -> Self
+pub fn StatsdistparetoVector::to_string(Self) -> String
+
+pub(all) struct StatsdistparetoView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistparetoView::add(Self, Self) -> Self
+pub fn StatsdistparetoView::copy(Self) -> Self
+pub fn StatsdistparetoView::fill(Self, Double) -> Self
+pub fn StatsdistparetoView::get(Self, Int32) -> Double
+pub fn StatsdistparetoView::len(Self) -> Int32
+pub fn StatsdistparetoView::max(Self) -> Double
+pub fn StatsdistparetoView::mean(Self) -> Double
+pub fn StatsdistparetoView::min(Self) -> Double
+pub fn StatsdistparetoView::scale(Self, Double) -> Self
+pub fn StatsdistparetoView::set(Self, Int32, Double) -> Self
+pub fn StatsdistparetoView::sum(Self) -> Double
+pub fn StatsdistparetoView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,82 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/hydrology"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn empty_raster() -> RasterGrid
+
+pub fn hydrology_basin(FlowDirResult, Int32, Int32) -> HydrologyResult
+
+pub fn hydrology_fill(RasterGrid) -> RasterGrid
+
+pub fn hydrology_find_sinks(RasterGrid) -> Array[(Int32, Int32)]
+
+pub fn hydrology_flow_accumulation(FlowDirResult) -> FlowAccumResult
+
+pub fn hydrology_flow_direction(RasterGrid) -> FlowDirResult
+
+pub fn hydrology_flow_length(FlowDirResult, Int32, Int32) -> Int32
+
+pub fn hydrology_snap_pour(FlowAccumResult, Int32, Int32, Int32) -> (Int32, Int32)
+
+pub fn hydrology_stats(RasterGrid) -> (Double, Double, Double)
+
+pub fn hydrology_stream_cells(FlowAccumResult, Int32) -> Array[(Int32, Int32)]
+
+pub fn hydrology_stream_order(FlowAccumResult, Int32) -> Array[(Int32, Int32, Int32)]
+
+pub fn hydrology_watershed(FlowDirResult, Int32, Int32) -> Array[(Int32, Int32)]
+
+pub fn make_raster(Array[Array[Double]]) -> RasterGrid
+
+pub fn raster_cols(RasterGrid) -> Int32
+
+pub fn raster_get(RasterGrid, Int32, Int32) -> Double
+
+pub fn raster_rows(RasterGrid) -> Int32
+
+// Errors
+
+// Types and methods
+pub(all) struct FlowAccumResult {
+  accumulation : Array[Array[Int32]]
+  rows : Int32
+  cols : Int32
+} derive(Eq, @debug.Debug)
+pub fn FlowAccumResult::equal(Self, Self) -> Bool
+pub fn FlowAccumResult::not_equal(Self, Self) -> Bool
+pub fn FlowAccumResult::to_repr(Self) -> @debug.Repr
+
+pub(all) struct FlowDirResult {
+  directions : Array[Array[Int32]]
+  rows : Int32
+  cols : Int32
+} derive(Eq, @debug.Debug)
+pub fn FlowDirResult::equal(Self, Self) -> Bool
+pub fn FlowDirResult::not_equal(Self, Self) -> Bool
+pub fn FlowDirResult::to_repr(Self) -> @debug.Repr
+
+pub struct HydrologyResult {
+  kind : String
+  cells : Array[(Int32, Int32)]
+  count : Int32
+} derive(Eq, @debug.Debug)
+pub fn HydrologyResult::equal(Self, Self) -> Bool
+pub fn HydrologyResult::not_equal(Self, Self) -> Bool
+pub fn HydrologyResult::to_repr(Self) -> @debug.Repr
+
+pub struct RasterGrid {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+} derive(Eq, @debug.Debug)
+pub fn RasterGrid::equal(Self, Self) -> Bool
+pub fn RasterGrid::not_equal(Self, Self) -> Bool
+pub fn RasterGrid::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

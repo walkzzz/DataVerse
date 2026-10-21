@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_cluster_hierarchical"
+
+// Values
+pub fn ml_cluster_hierarchical_buffer_make(Int32) -> MlclusterhierarchicalBuffer
+
+pub fn ml_cluster_hierarchical_cluster_make(Int32) -> MlclusterhierarchicalCluster
+
+pub fn ml_cluster_hierarchical_cursor_make(Int32) -> MlclusterhierarchicalCursor
+
+pub fn ml_cluster_hierarchical_edge_make(Int32) -> MlclusterhierarchicalEdge
+
+pub fn ml_cluster_hierarchical_frame_make(Int32) -> MlclusterhierarchicalFrame
+
+pub fn ml_cluster_hierarchical_graphn_make(Int32) -> MlclusterhierarchicalGraphN
+
+pub fn ml_cluster_hierarchical_layer_make(Int32) -> MlclusterhierarchicalLayer
+
+pub fn ml_cluster_hierarchical_make_matrix(Int32, Int32, Double) -> MlclusterhierarchicalMatrix
+
+pub fn ml_cluster_hierarchical_make_point(Double, Double) -> MlclusterhierarchicalPoint
+
+pub fn ml_cluster_hierarchical_make_point3(Double, Double, Double) -> MlclusterhierarchicalPoint
+
+pub fn ml_cluster_hierarchical_make_series(Array[Double], String) -> MlclusterhierarchicalSeries
+
+pub fn ml_cluster_hierarchical_make_vector(Array[Double]) -> MlclusterhierarchicalVector
+
+pub fn ml_cluster_hierarchical_matrix_identity(Int32) -> MlclusterhierarchicalMatrix
+
+pub fn ml_cluster_hierarchical_model_make(Int32) -> MlclusterhierarchicalModel
+
+pub fn ml_cluster_hierarchical_node_make(Int32) -> MlclusterhierarchicalNode
+
+pub fn ml_cluster_hierarchical_path_make(Int32) -> MlclusterhierarchicalPath
+
+pub fn ml_cluster_hierarchical_range_make(Int32) -> MlclusterhierarchicalRange
+
+pub fn ml_cluster_hierarchical_slice_make(Int32) -> MlclusterhierarchicalSlice
+
+pub fn ml_cluster_hierarchical_table_make(Int32) -> MlclusterhierarchicalTable
+
+pub fn ml_cluster_hierarchical_vector_zero(Int32) -> MlclusterhierarchicalVector
+
+pub fn ml_cluster_hierarchical_view_make(Int32) -> MlclusterhierarchicalView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlclusterhierarchicalBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterhierarchicalBuffer::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalBuffer::copy(Self) -> Self
+pub fn MlclusterhierarchicalBuffer::fill(Self, Double) -> Self
+pub fn MlclusterhierarchicalBuffer::get(Self, Int32) -> Double
+pub fn MlclusterhierarchicalBuffer::len(Self) -> Int32
+pub fn MlclusterhierarchicalBuffer::max(Self) -> Double
+pub fn MlclusterhierarchicalBuffer::mean(Self) -> Double
+pub fn MlclusterhierarchicalBuffer::min(Self) -> Double
+pub fn MlclusterhierarchicalBuffer::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalBuffer::set(Self, Int32, Double) -> Self
+pub fn MlclusterhierarchicalBuffer::sum(Self) -> Double
+pub fn MlclusterhierarchicalBuffer::to_string(Self) -> String
+
+pub(all) struct MlclusterhierarchicalCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterhierarchicalCluster::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalCluster::copy(Self) -> Self
+pub fn MlclusterhierarchicalCluster::fill(Self, Double) -> Self
+pub fn MlclusterhierarchicalCluster::get(Self, Int32) -> Double
+pub fn MlclusterhierarchicalCluster::len(Self) -> Int32
+pub fn MlclusterhierarchicalCluster::max(Self) -> Double
+pub fn MlclusterhierarchicalCluster::mean(Self) -> Double
+pub fn MlclusterhierarchicalCluster::min(Self) -> Double
+pub fn MlclusterhierarchicalCluster::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalCluster::set(Self, Int32, Double) -> Self
+pub fn MlclusterhierarchicalCluster::sum(Self) -> Double
+pub fn MlclusterhierarchicalCluster::to_string(Self) -> String
+
+pub(all) struct MlclusterhierarchicalCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterhierarchicalCursor::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalCursor::copy(Self) -> Self
+pub fn MlclusterhierarchicalCursor::fill(Self, Double) -> Self
+pub fn MlclusterhierarchicalCursor::get(Self, Int32) -> Double
+pub fn MlclusterhierarchicalCursor::len(Self) -> Int32
+pub fn MlclusterhierarchicalCursor::max(Self) -> Double
+pub fn MlclusterhierarchicalCursor::mean(Self) -> Double
+pub fn MlclusterhierarchicalCursor::min(Self) -> Double
+pub fn MlclusterhierarchicalCursor::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalCursor::set(Self, Int32, Double) -> Self
+pub fn MlclusterhierarchicalCursor::sum(Self) -> Double
+pub fn MlclusterhierarchicalCursor::to_string(Self) -> String
+
+pub(all) struct MlclusterhierarchicalEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterhierarchicalEdge::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalEdge::copy(Self) -> Self
+pub fn MlclusterhierarchicalEdge::fill(Self, Double) -> Self
+pub fn MlclusterhierarchicalEdge::get(Self, Int32) -> Double
+pub fn MlclusterhierarchicalEdge::len(Self) -> Int32
+pub fn MlclusterhierarchicalEdge::max(Self) -> Double
+pub fn MlclusterhierarchicalEdge::mean(Self) -> Double
+pub fn MlclusterhierarchicalEdge::min(Self) -> Double
+pub fn MlclusterhierarchicalEdge::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalEdge::set(Self, Int32, Double) -> Self
+pub fn MlclusterhierarchicalEdge::sum(Self) -> Double
+pub fn MlclusterhierarchicalEdge::to_string(Self) -> String
+
+pub(all) struct MlclusterhierarchicalFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterhierarchicalFrame::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalFrame::copy(Self) -> Self
+pub fn MlclusterhierarchicalFrame::fill(Self, Double) -> Self
+pub fn MlclusterhierarchicalFrame::get(Self, Int32) -> Double
+pub fn MlclusterhierarchicalFrame::len(Self) -> Int32
+pub fn MlclusterhierarchicalFrame::max(Self) -> Double
+pub fn MlclusterhierarchicalFrame::mean(Self) -> Double
+pub fn MlclusterhierarchicalFrame::min(Self) -> Double
+pub fn MlclusterhierarchicalFrame::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalFrame::set(Self, Int32, Double) -> Self
+pub fn MlclusterhierarchicalFrame::sum(Self) -> Double
+pub fn MlclusterhierarchicalFrame::to_string(Self) -> String
+
+pub(all) struct MlclusterhierarchicalGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterhierarchicalGraphN::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalGraphN::copy(Self) -> Self
+pub fn MlclusterhierarchicalGraphN::fill(Self, Double) -> Self
+pub fn MlclusterhierarchicalGraphN::get(Self, Int32) -> Double
+pub fn MlclusterhierarchicalGraphN::len(Self) -> Int32
+pub fn MlclusterhierarchicalGraphN::max(Self) -> Double
+pub fn MlclusterhierarchicalGraphN::mean(Self) -> Double
+pub fn MlclusterhierarchicalGraphN::min(Self) -> Double
+pub fn MlclusterhierarchicalGraphN::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalGraphN::set(Self, Int32, Double) -> Self
+pub fn MlclusterhierarchicalGraphN::sum(Self) -> Double
+pub fn MlclusterhierarchicalGraphN::to_string(Self) -> String
+
+pub(all) struct MlclusterhierarchicalLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterhierarchicalLayer::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalLayer::copy(Self) -> Self
+pub fn MlclusterhierarchicalLayer::fill(Self, Double) -> Self
+pub fn MlclusterhierarchicalLayer::get(Self, Int32) -> Double
+pub fn MlclusterhierarchicalLayer::len(Self) -> Int32
+pub fn MlclusterhierarchicalLayer::max(Self) -> Double
+pub fn MlclusterhierarchicalLayer::mean(Self) -> Double
+pub fn MlclusterhierarchicalLayer::min(Self) -> Double
+pub fn MlclusterhierarchicalLayer::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalLayer::set(Self, Int32, Double) -> Self
+pub fn MlclusterhierarchicalLayer::sum(Self) -> Double
+pub fn MlclusterhierarchicalLayer::to_string(Self) -> String
+
+pub(all) struct MlclusterhierarchicalMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlclusterhierarchicalMatrix::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalMatrix::det(Self) -> Double
+pub fn MlclusterhierarchicalMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlclusterhierarchicalMatrix::multiply(Self, Self) -> Self
+pub fn MlclusterhierarchicalMatrix::norm(Self) -> Double
+pub fn MlclusterhierarchicalMatrix::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalMatrix::to_string(Self) -> String
+pub fn MlclusterhierarchicalMatrix::trace(Self) -> Double
+pub fn MlclusterhierarchicalMatrix::transpose(Self) -> Self
+
+pub(all) struct MlclusterhierarchicalModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterhierarchicalModel::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalModel::copy(Self) -> Self
+pub fn MlclusterhierarchicalModel::fill(Self, Double) -> Self
+pub fn MlclusterhierarchicalModel::get(Self, Int32) -> Double
+pub fn MlclusterhierarchicalModel::len(Self) -> Int32
+pub fn MlclusterhierarchicalModel::max(Self) -> Double
+pub fn MlclusterhierarchicalModel::mean(Self) -> Double
+pub fn MlclusterhierarchicalModel::min(Self) -> Double
+pub fn MlclusterhierarchicalModel::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalModel::set(Self, Int32, Double) -> Self
+pub fn MlclusterhierarchicalModel::sum(Self) -> Double
+pub fn MlclusterhierarchicalModel::to_string(Self) -> String
+
+pub(all) struct MlclusterhierarchicalNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterhierarchicalNode::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalNode::copy(Self) -> Self
+pub fn MlclusterhierarchicalNode::fill(Self, Double) -> Self
+pub fn MlclusterhierarchicalNode::get(Self, Int32) -> Double
+pub fn MlclusterhierarchicalNode::len(Self) -> Int32
+pub fn MlclusterhierarchicalNode::max(Self) -> Double
+pub fn MlclusterhierarchicalNode::mean(Self) -> Double
+pub fn MlclusterhierarchicalNode::min(Self) -> Double
+pub fn MlclusterhierarchicalNode::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalNode::set(Self, Int32, Double) -> Self
+pub fn MlclusterhierarchicalNode::sum(Self) -> Double
+pub fn MlclusterhierarchicalNode::to_string(Self) -> String
+
+pub(all) struct MlclusterhierarchicalPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterhierarchicalPath::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalPath::copy(Self) -> Self
+pub fn MlclusterhierarchicalPath::fill(Self, Double) -> Self
+pub fn MlclusterhierarchicalPath::get(Self, Int32) -> Double
+pub fn MlclusterhierarchicalPath::len(Self) -> Int32
+pub fn MlclusterhierarchicalPath::max(Self) -> Double
+pub fn MlclusterhierarchicalPath::mean(Self) -> Double
+pub fn MlclusterhierarchicalPath::min(Self) -> Double
+pub fn MlclusterhierarchicalPath::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalPath::set(Self, Int32, Double) -> Self
+pub fn MlclusterhierarchicalPath::sum(Self) -> Double
+pub fn MlclusterhierarchicalPath::to_string(Self) -> String
+
+pub(all) struct MlclusterhierarchicalPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlclusterhierarchicalPoint::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalPoint::cross(Self, Self) -> Self
+pub fn MlclusterhierarchicalPoint::dist(Self, Self) -> Double
+pub fn MlclusterhierarchicalPoint::dot(Self, Self) -> Double
+pub fn MlclusterhierarchicalPoint::label(Self) -> Int32
+pub fn MlclusterhierarchicalPoint::lerp(Self, Self, Double) -> Self
+pub fn MlclusterhierarchicalPoint::mid(Self, Self) -> Self
+pub fn MlclusterhierarchicalPoint::negate(Self) -> Self
+pub fn MlclusterhierarchicalPoint::norm(Self) -> Double
+pub fn MlclusterhierarchicalPoint::normalize(Self) -> Self
+pub fn MlclusterhierarchicalPoint::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalPoint::sub(Self, Self) -> Self
+pub fn MlclusterhierarchicalPoint::to_string(Self) -> String
+pub fn MlclusterhierarchicalPoint::x(Self) -> Double
+pub fn MlclusterhierarchicalPoint::y(Self) -> Double
+pub fn MlclusterhierarchicalPoint::z(Self) -> Double
+
+pub(all) struct MlclusterhierarchicalRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterhierarchicalRange::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalRange::copy(Self) -> Self
+pub fn MlclusterhierarchicalRange::fill(Self, Double) -> Self
+pub fn MlclusterhierarchicalRange::get(Self, Int32) -> Double
+pub fn MlclusterhierarchicalRange::len(Self) -> Int32
+pub fn MlclusterhierarchicalRange::max(Self) -> Double
+pub fn MlclusterhierarchicalRange::mean(Self) -> Double
+pub fn MlclusterhierarchicalRange::min(Self) -> Double
+pub fn MlclusterhierarchicalRange::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalRange::set(Self, Int32, Double) -> Self
+pub fn MlclusterhierarchicalRange::sum(Self) -> Double
+pub fn MlclusterhierarchicalRange::to_string(Self) -> String
+
+pub(all) struct MlclusterhierarchicalSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlclusterhierarchicalSeries::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalSeries::cumsum(Self) -> Self
+pub fn MlclusterhierarchicalSeries::len(Self) -> Int32
+pub fn MlclusterhierarchicalSeries::max(Self) -> Double
+pub fn MlclusterhierarchicalSeries::mean(Self) -> Double
+pub fn MlclusterhierarchicalSeries::median(Self) -> Double
+pub fn MlclusterhierarchicalSeries::min(Self) -> Double
+pub fn MlclusterhierarchicalSeries::normalize(Self) -> Self
+pub fn MlclusterhierarchicalSeries::range(Self) -> Double
+pub fn MlclusterhierarchicalSeries::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalSeries::std(Self) -> Double
+pub fn MlclusterhierarchicalSeries::sub(Self, Self) -> Self
+pub fn MlclusterhierarchicalSeries::sum(Self) -> Double
+pub fn MlclusterhierarchicalSeries::to_string(Self) -> String
+pub fn MlclusterhierarchicalSeries::variance(Self) -> Double
+
+pub(all) struct MlclusterhierarchicalSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterhierarchicalSlice::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalSlice::copy(Self) -> Self
+pub fn MlclusterhierarchicalSlice::fill(Self, Double) -> Self
+pub fn MlclusterhierarchicalSlice::get(Self, Int32) -> Double
+pub fn MlclusterhierarchicalSlice::len(Self) -> Int32
+pub fn MlclusterhierarchicalSlice::max(Self) -> Double
+pub fn MlclusterhierarchicalSlice::mean(Self) -> Double
+pub fn MlclusterhierarchicalSlice::min(Self) -> Double
+pub fn MlclusterhierarchicalSlice::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalSlice::set(Self, Int32, Double) -> Self
+pub fn MlclusterhierarchicalSlice::sum(Self) -> Double
+pub fn MlclusterhierarchicalSlice::to_string(Self) -> String
+
+pub(all) struct MlclusterhierarchicalTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterhierarchicalTable::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalTable::copy(Self) -> Self
+pub fn MlclusterhierarchicalTable::fill(Self, Double) -> Self
+pub fn MlclusterhierarchicalTable::get(Self, Int32) -> Double
+pub fn MlclusterhierarchicalTable::len(Self) -> Int32
+pub fn MlclusterhierarchicalTable::max(Self) -> Double
+pub fn MlclusterhierarchicalTable::mean(Self) -> Double
+pub fn MlclusterhierarchicalTable::min(Self) -> Double
+pub fn MlclusterhierarchicalTable::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalTable::set(Self, Int32, Double) -> Self
+pub fn MlclusterhierarchicalTable::sum(Self) -> Double
+pub fn MlclusterhierarchicalTable::to_string(Self) -> String
+
+pub(all) struct MlclusterhierarchicalVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlclusterhierarchicalVector::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalVector::dist(Self, Self) -> Double
+pub fn MlclusterhierarchicalVector::dot(Self, Self) -> Double
+pub fn MlclusterhierarchicalVector::norm(Self) -> Double
+pub fn MlclusterhierarchicalVector::normalize(Self) -> Self
+pub fn MlclusterhierarchicalVector::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalVector::sub(Self, Self) -> Self
+pub fn MlclusterhierarchicalVector::to_string(Self) -> String
+
+pub(all) struct MlclusterhierarchicalView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterhierarchicalView::add(Self, Self) -> Self
+pub fn MlclusterhierarchicalView::copy(Self) -> Self
+pub fn MlclusterhierarchicalView::fill(Self, Double) -> Self
+pub fn MlclusterhierarchicalView::get(Self, Int32) -> Double
+pub fn MlclusterhierarchicalView::len(Self) -> Int32
+pub fn MlclusterhierarchicalView::max(Self) -> Double
+pub fn MlclusterhierarchicalView::mean(Self) -> Double
+pub fn MlclusterhierarchicalView::min(Self) -> Double
+pub fn MlclusterhierarchicalView::scale(Self, Double) -> Self
+pub fn MlclusterhierarchicalView::set(Self, Int32, Double) -> Self
+pub fn MlclusterhierarchicalView::sum(Self) -> Double
+pub fn MlclusterhierarchicalView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

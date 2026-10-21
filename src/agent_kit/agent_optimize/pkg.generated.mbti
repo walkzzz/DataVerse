@@ -1,0 +1,179 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/agent_optimize"
+
+// Values
+pub fn ab_test_run(ABTest) -> (Double, Double)
+
+pub fn ab_test_significance(ABTest) -> Double
+
+pub fn agent_optimize_id() -> String
+
+pub fn batch_size_search(BatchOptimizer, Array[Double]) -> Int32
+
+pub fn batch_strategy(BatchOptimizer, Int32) -> Array[Int32]
+
+pub fn bayesian_opt_step(BayesianOpt, Double, Double) -> BayesianOpt
+
+pub fn bayesian_opt_suggest(BayesianOpt, Double, Double) -> Double
+
+pub fn cache_key_gen(String, String) -> String
+
+pub fn cache_strategy(CacheOptimizer, String) -> String
+
+pub fn chain_reorder(ChainOptimizer, Array[Int32]) -> Array[String]
+
+pub fn chain_simplify(ChainOptimizer) -> Array[String]
+
+pub fn cost_reduce(CostOptimizer, Double) -> Double
+
+pub fn cost_tradeoff(CostOptimizer, Double, Double) -> Double
+
+pub fn few_shot_order(Array[(String, String)]) -> Array[(String, String)]
+
+pub fn few_shot_select(FewShotOptimizer, String) -> Array[(String, String)]
+
+pub fn hyperparam_search(HyperparamOptimizer, Array[(Double, Double)]) -> Array[(String, Double)]
+
+pub fn hyperparam_tune(Array[(String, Double)], Double) -> Array[(String, Double)]
+
+pub fn latency_reduce(LatencyOptimizer, Double) -> Double
+
+pub fn make_ab_test(String, Array[Double], Array[Double]) -> ABTest
+
+pub fn make_batch_optimizer(Int32, Double) -> BatchOptimizer
+
+pub fn make_bayesian_opt(Array[(String, Double)]) -> BayesianOpt
+
+pub fn make_cache_optimizer(String, Int32) -> CacheOptimizer
+
+pub fn make_chain_optimizer(Array[String]) -> ChainOptimizer
+
+pub fn make_cost_optimizer(Double, Array[(String, Double)]) -> CostOptimizer
+
+pub fn make_few_shot_optimizer(Array[(String, String)], Int32) -> FewShotOptimizer
+
+pub fn make_hyperparam_optimizer(Array[(String, Double)], Double) -> HyperparamOptimizer
+
+pub fn make_latency_optimizer(Double, Int32) -> LatencyOptimizer
+
+pub fn make_model_selector(Array[(String, Double)], String) -> ModelSelector
+
+pub fn make_opt_config(String, String, Int32, Int32, Int32) -> OptConfig
+
+pub fn make_prompt_optimizer(String) -> PromptOptimizer
+
+pub fn make_temperature_optimizer(Double, Double, Double) -> TemperatureOptimizer
+
+pub fn make_token_optimizer(Int32) -> TokenOptimizer
+
+pub fn model_route(ModelSelector, String) -> String
+
+pub fn model_select(ModelSelector, Double) -> String
+
+pub fn optimize_cost_balance(Double, Double, Double) -> Double
+
+pub fn optimize_hyperparams(Array[(String, Double)], Array[Double]) -> Array[(String, Double)]
+
+pub fn optimize_prompt(String, String) -> String
+
+pub fn optimize_quality(Array[(String, Double)], Array[Double]) -> Double
+
+pub fn optimize_speed(Array[Double], Double) -> Double
+
+pub fn parallel_strategy(LatencyOptimizer, Int32) -> Array[Int32]
+
+pub fn prompt_evolve(String, String) -> String
+
+pub fn prompt_search(PromptOptimizer, Array[String]) -> Array[String]
+
+pub fn temperature_schedule(TemperatureOptimizer, Int32, Int32) -> Double
+
+pub fn temperature_search(TemperatureOptimizer, Int32) -> Array[Double]
+
+pub fn token_allocate(TokenOptimizer, String, Int32) -> TokenOptimizer
+
+pub fn token_budget(TokenOptimizer) -> Int32
+
+// Errors
+
+// Types and methods
+pub struct ABTest {
+  name : String
+  variant_a : Array[Double]
+  variant_b : Array[Double]
+}
+
+pub struct BatchOptimizer {
+  max_batch_size : Int32
+  latency_target : Double
+}
+
+pub struct BayesianOpt {
+  params : Array[(String, Double)]
+  observations : Array[(Double, Double)]
+  best_param : Double
+  best_value : Double
+}
+
+pub struct CacheOptimizer {
+  strategy : String
+  max_size : Int32
+}
+
+pub struct ChainOptimizer {
+  steps : Array[String]
+}
+
+pub struct CostOptimizer {
+  budget : Double
+  priorities : Array[(String, Double)]
+}
+
+pub struct FewShotOptimizer {
+  examples : Array[(String, String)]
+  max_shots : Int32
+}
+
+pub struct HyperparamOptimizer {
+  params : Array[(String, Double)]
+  learning_rate : Double
+}
+
+pub struct LatencyOptimizer {
+  target_latency : Double
+  parallelism : Int32
+}
+
+pub struct ModelSelector {
+  models : Array[(String, Double)]
+  default_model : String
+}
+
+pub struct OptConfig {
+  name : String
+  target : String
+  budget : Int32
+  iterations : Int32
+  seed : Int32
+}
+
+pub struct PromptOptimizer {
+  base_prompt : String
+  variants : Array[String]
+  best_score : Double
+}
+
+pub struct TemperatureOptimizer {
+  base_temp : Double
+  min_temp : Double
+  max_temp : Double
+}
+
+pub struct TokenOptimizer {
+  total_budget : Int32
+  allocated : Array[(String, Int32)]
+}
+
+// Type aliases
+
+// Traits

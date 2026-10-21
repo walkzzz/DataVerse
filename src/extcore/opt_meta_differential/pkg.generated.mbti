@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/opt_meta_differential"
+
+// Values
+pub fn opt_meta_differential_buffer_make(Int32) -> OptmetadifferentialBuffer
+
+pub fn opt_meta_differential_cluster_make(Int32) -> OptmetadifferentialCluster
+
+pub fn opt_meta_differential_cursor_make(Int32) -> OptmetadifferentialCursor
+
+pub fn opt_meta_differential_edge_make(Int32) -> OptmetadifferentialEdge
+
+pub fn opt_meta_differential_frame_make(Int32) -> OptmetadifferentialFrame
+
+pub fn opt_meta_differential_graphn_make(Int32) -> OptmetadifferentialGraphN
+
+pub fn opt_meta_differential_layer_make(Int32) -> OptmetadifferentialLayer
+
+pub fn opt_meta_differential_make_matrix(Int32, Int32, Double) -> OptmetadifferentialMatrix
+
+pub fn opt_meta_differential_make_point(Double, Double) -> OptmetadifferentialPoint
+
+pub fn opt_meta_differential_make_point3(Double, Double, Double) -> OptmetadifferentialPoint
+
+pub fn opt_meta_differential_make_series(Array[Double], String) -> OptmetadifferentialSeries
+
+pub fn opt_meta_differential_make_vector(Array[Double]) -> OptmetadifferentialVector
+
+pub fn opt_meta_differential_matrix_identity(Int32) -> OptmetadifferentialMatrix
+
+pub fn opt_meta_differential_model_make(Int32) -> OptmetadifferentialModel
+
+pub fn opt_meta_differential_node_make(Int32) -> OptmetadifferentialNode
+
+pub fn opt_meta_differential_path_make(Int32) -> OptmetadifferentialPath
+
+pub fn opt_meta_differential_range_make(Int32) -> OptmetadifferentialRange
+
+pub fn opt_meta_differential_slice_make(Int32) -> OptmetadifferentialSlice
+
+pub fn opt_meta_differential_table_make(Int32) -> OptmetadifferentialTable
+
+pub fn opt_meta_differential_vector_zero(Int32) -> OptmetadifferentialVector
+
+pub fn opt_meta_differential_view_make(Int32) -> OptmetadifferentialView
+
+// Errors
+
+// Types and methods
+pub(all) struct OptmetadifferentialBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetadifferentialBuffer::add(Self, Self) -> Self
+pub fn OptmetadifferentialBuffer::copy(Self) -> Self
+pub fn OptmetadifferentialBuffer::fill(Self, Double) -> Self
+pub fn OptmetadifferentialBuffer::get(Self, Int32) -> Double
+pub fn OptmetadifferentialBuffer::len(Self) -> Int32
+pub fn OptmetadifferentialBuffer::max(Self) -> Double
+pub fn OptmetadifferentialBuffer::mean(Self) -> Double
+pub fn OptmetadifferentialBuffer::min(Self) -> Double
+pub fn OptmetadifferentialBuffer::scale(Self, Double) -> Self
+pub fn OptmetadifferentialBuffer::set(Self, Int32, Double) -> Self
+pub fn OptmetadifferentialBuffer::sum(Self) -> Double
+pub fn OptmetadifferentialBuffer::to_string(Self) -> String
+
+pub(all) struct OptmetadifferentialCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetadifferentialCluster::add(Self, Self) -> Self
+pub fn OptmetadifferentialCluster::copy(Self) -> Self
+pub fn OptmetadifferentialCluster::fill(Self, Double) -> Self
+pub fn OptmetadifferentialCluster::get(Self, Int32) -> Double
+pub fn OptmetadifferentialCluster::len(Self) -> Int32
+pub fn OptmetadifferentialCluster::max(Self) -> Double
+pub fn OptmetadifferentialCluster::mean(Self) -> Double
+pub fn OptmetadifferentialCluster::min(Self) -> Double
+pub fn OptmetadifferentialCluster::scale(Self, Double) -> Self
+pub fn OptmetadifferentialCluster::set(Self, Int32, Double) -> Self
+pub fn OptmetadifferentialCluster::sum(Self) -> Double
+pub fn OptmetadifferentialCluster::to_string(Self) -> String
+
+pub(all) struct OptmetadifferentialCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetadifferentialCursor::add(Self, Self) -> Self
+pub fn OptmetadifferentialCursor::copy(Self) -> Self
+pub fn OptmetadifferentialCursor::fill(Self, Double) -> Self
+pub fn OptmetadifferentialCursor::get(Self, Int32) -> Double
+pub fn OptmetadifferentialCursor::len(Self) -> Int32
+pub fn OptmetadifferentialCursor::max(Self) -> Double
+pub fn OptmetadifferentialCursor::mean(Self) -> Double
+pub fn OptmetadifferentialCursor::min(Self) -> Double
+pub fn OptmetadifferentialCursor::scale(Self, Double) -> Self
+pub fn OptmetadifferentialCursor::set(Self, Int32, Double) -> Self
+pub fn OptmetadifferentialCursor::sum(Self) -> Double
+pub fn OptmetadifferentialCursor::to_string(Self) -> String
+
+pub(all) struct OptmetadifferentialEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetadifferentialEdge::add(Self, Self) -> Self
+pub fn OptmetadifferentialEdge::copy(Self) -> Self
+pub fn OptmetadifferentialEdge::fill(Self, Double) -> Self
+pub fn OptmetadifferentialEdge::get(Self, Int32) -> Double
+pub fn OptmetadifferentialEdge::len(Self) -> Int32
+pub fn OptmetadifferentialEdge::max(Self) -> Double
+pub fn OptmetadifferentialEdge::mean(Self) -> Double
+pub fn OptmetadifferentialEdge::min(Self) -> Double
+pub fn OptmetadifferentialEdge::scale(Self, Double) -> Self
+pub fn OptmetadifferentialEdge::set(Self, Int32, Double) -> Self
+pub fn OptmetadifferentialEdge::sum(Self) -> Double
+pub fn OptmetadifferentialEdge::to_string(Self) -> String
+
+pub(all) struct OptmetadifferentialFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetadifferentialFrame::add(Self, Self) -> Self
+pub fn OptmetadifferentialFrame::copy(Self) -> Self
+pub fn OptmetadifferentialFrame::fill(Self, Double) -> Self
+pub fn OptmetadifferentialFrame::get(Self, Int32) -> Double
+pub fn OptmetadifferentialFrame::len(Self) -> Int32
+pub fn OptmetadifferentialFrame::max(Self) -> Double
+pub fn OptmetadifferentialFrame::mean(Self) -> Double
+pub fn OptmetadifferentialFrame::min(Self) -> Double
+pub fn OptmetadifferentialFrame::scale(Self, Double) -> Self
+pub fn OptmetadifferentialFrame::set(Self, Int32, Double) -> Self
+pub fn OptmetadifferentialFrame::sum(Self) -> Double
+pub fn OptmetadifferentialFrame::to_string(Self) -> String
+
+pub(all) struct OptmetadifferentialGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetadifferentialGraphN::add(Self, Self) -> Self
+pub fn OptmetadifferentialGraphN::copy(Self) -> Self
+pub fn OptmetadifferentialGraphN::fill(Self, Double) -> Self
+pub fn OptmetadifferentialGraphN::get(Self, Int32) -> Double
+pub fn OptmetadifferentialGraphN::len(Self) -> Int32
+pub fn OptmetadifferentialGraphN::max(Self) -> Double
+pub fn OptmetadifferentialGraphN::mean(Self) -> Double
+pub fn OptmetadifferentialGraphN::min(Self) -> Double
+pub fn OptmetadifferentialGraphN::scale(Self, Double) -> Self
+pub fn OptmetadifferentialGraphN::set(Self, Int32, Double) -> Self
+pub fn OptmetadifferentialGraphN::sum(Self) -> Double
+pub fn OptmetadifferentialGraphN::to_string(Self) -> String
+
+pub(all) struct OptmetadifferentialLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetadifferentialLayer::add(Self, Self) -> Self
+pub fn OptmetadifferentialLayer::copy(Self) -> Self
+pub fn OptmetadifferentialLayer::fill(Self, Double) -> Self
+pub fn OptmetadifferentialLayer::get(Self, Int32) -> Double
+pub fn OptmetadifferentialLayer::len(Self) -> Int32
+pub fn OptmetadifferentialLayer::max(Self) -> Double
+pub fn OptmetadifferentialLayer::mean(Self) -> Double
+pub fn OptmetadifferentialLayer::min(Self) -> Double
+pub fn OptmetadifferentialLayer::scale(Self, Double) -> Self
+pub fn OptmetadifferentialLayer::set(Self, Int32, Double) -> Self
+pub fn OptmetadifferentialLayer::sum(Self) -> Double
+pub fn OptmetadifferentialLayer::to_string(Self) -> String
+
+pub(all) struct OptmetadifferentialMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn OptmetadifferentialMatrix::add(Self, Self) -> Self
+pub fn OptmetadifferentialMatrix::det(Self) -> Double
+pub fn OptmetadifferentialMatrix::get(Self, Int32, Int32) -> Double
+pub fn OptmetadifferentialMatrix::multiply(Self, Self) -> Self
+pub fn OptmetadifferentialMatrix::norm(Self) -> Double
+pub fn OptmetadifferentialMatrix::scale(Self, Double) -> Self
+pub fn OptmetadifferentialMatrix::to_string(Self) -> String
+pub fn OptmetadifferentialMatrix::trace(Self) -> Double
+pub fn OptmetadifferentialMatrix::transpose(Self) -> Self
+
+pub(all) struct OptmetadifferentialModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetadifferentialModel::add(Self, Self) -> Self
+pub fn OptmetadifferentialModel::copy(Self) -> Self
+pub fn OptmetadifferentialModel::fill(Self, Double) -> Self
+pub fn OptmetadifferentialModel::get(Self, Int32) -> Double
+pub fn OptmetadifferentialModel::len(Self) -> Int32
+pub fn OptmetadifferentialModel::max(Self) -> Double
+pub fn OptmetadifferentialModel::mean(Self) -> Double
+pub fn OptmetadifferentialModel::min(Self) -> Double
+pub fn OptmetadifferentialModel::scale(Self, Double) -> Self
+pub fn OptmetadifferentialModel::set(Self, Int32, Double) -> Self
+pub fn OptmetadifferentialModel::sum(Self) -> Double
+pub fn OptmetadifferentialModel::to_string(Self) -> String
+
+pub(all) struct OptmetadifferentialNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetadifferentialNode::add(Self, Self) -> Self
+pub fn OptmetadifferentialNode::copy(Self) -> Self
+pub fn OptmetadifferentialNode::fill(Self, Double) -> Self
+pub fn OptmetadifferentialNode::get(Self, Int32) -> Double
+pub fn OptmetadifferentialNode::len(Self) -> Int32
+pub fn OptmetadifferentialNode::max(Self) -> Double
+pub fn OptmetadifferentialNode::mean(Self) -> Double
+pub fn OptmetadifferentialNode::min(Self) -> Double
+pub fn OptmetadifferentialNode::scale(Self, Double) -> Self
+pub fn OptmetadifferentialNode::set(Self, Int32, Double) -> Self
+pub fn OptmetadifferentialNode::sum(Self) -> Double
+pub fn OptmetadifferentialNode::to_string(Self) -> String
+
+pub(all) struct OptmetadifferentialPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetadifferentialPath::add(Self, Self) -> Self
+pub fn OptmetadifferentialPath::copy(Self) -> Self
+pub fn OptmetadifferentialPath::fill(Self, Double) -> Self
+pub fn OptmetadifferentialPath::get(Self, Int32) -> Double
+pub fn OptmetadifferentialPath::len(Self) -> Int32
+pub fn OptmetadifferentialPath::max(Self) -> Double
+pub fn OptmetadifferentialPath::mean(Self) -> Double
+pub fn OptmetadifferentialPath::min(Self) -> Double
+pub fn OptmetadifferentialPath::scale(Self, Double) -> Self
+pub fn OptmetadifferentialPath::set(Self, Int32, Double) -> Self
+pub fn OptmetadifferentialPath::sum(Self) -> Double
+pub fn OptmetadifferentialPath::to_string(Self) -> String
+
+pub(all) struct OptmetadifferentialPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn OptmetadifferentialPoint::add(Self, Self) -> Self
+pub fn OptmetadifferentialPoint::cross(Self, Self) -> Self
+pub fn OptmetadifferentialPoint::dist(Self, Self) -> Double
+pub fn OptmetadifferentialPoint::dot(Self, Self) -> Double
+pub fn OptmetadifferentialPoint::label(Self) -> Int32
+pub fn OptmetadifferentialPoint::lerp(Self, Self, Double) -> Self
+pub fn OptmetadifferentialPoint::mid(Self, Self) -> Self
+pub fn OptmetadifferentialPoint::negate(Self) -> Self
+pub fn OptmetadifferentialPoint::norm(Self) -> Double
+pub fn OptmetadifferentialPoint::normalize(Self) -> Self
+pub fn OptmetadifferentialPoint::scale(Self, Double) -> Self
+pub fn OptmetadifferentialPoint::sub(Self, Self) -> Self
+pub fn OptmetadifferentialPoint::to_string(Self) -> String
+pub fn OptmetadifferentialPoint::x(Self) -> Double
+pub fn OptmetadifferentialPoint::y(Self) -> Double
+pub fn OptmetadifferentialPoint::z(Self) -> Double
+
+pub(all) struct OptmetadifferentialRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetadifferentialRange::add(Self, Self) -> Self
+pub fn OptmetadifferentialRange::copy(Self) -> Self
+pub fn OptmetadifferentialRange::fill(Self, Double) -> Self
+pub fn OptmetadifferentialRange::get(Self, Int32) -> Double
+pub fn OptmetadifferentialRange::len(Self) -> Int32
+pub fn OptmetadifferentialRange::max(Self) -> Double
+pub fn OptmetadifferentialRange::mean(Self) -> Double
+pub fn OptmetadifferentialRange::min(Self) -> Double
+pub fn OptmetadifferentialRange::scale(Self, Double) -> Self
+pub fn OptmetadifferentialRange::set(Self, Int32, Double) -> Self
+pub fn OptmetadifferentialRange::sum(Self) -> Double
+pub fn OptmetadifferentialRange::to_string(Self) -> String
+
+pub(all) struct OptmetadifferentialSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn OptmetadifferentialSeries::add(Self, Self) -> Self
+pub fn OptmetadifferentialSeries::cumsum(Self) -> Self
+pub fn OptmetadifferentialSeries::len(Self) -> Int32
+pub fn OptmetadifferentialSeries::max(Self) -> Double
+pub fn OptmetadifferentialSeries::mean(Self) -> Double
+pub fn OptmetadifferentialSeries::median(Self) -> Double
+pub fn OptmetadifferentialSeries::min(Self) -> Double
+pub fn OptmetadifferentialSeries::normalize(Self) -> Self
+pub fn OptmetadifferentialSeries::range(Self) -> Double
+pub fn OptmetadifferentialSeries::scale(Self, Double) -> Self
+pub fn OptmetadifferentialSeries::std(Self) -> Double
+pub fn OptmetadifferentialSeries::sub(Self, Self) -> Self
+pub fn OptmetadifferentialSeries::sum(Self) -> Double
+pub fn OptmetadifferentialSeries::to_string(Self) -> String
+pub fn OptmetadifferentialSeries::variance(Self) -> Double
+
+pub(all) struct OptmetadifferentialSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetadifferentialSlice::add(Self, Self) -> Self
+pub fn OptmetadifferentialSlice::copy(Self) -> Self
+pub fn OptmetadifferentialSlice::fill(Self, Double) -> Self
+pub fn OptmetadifferentialSlice::get(Self, Int32) -> Double
+pub fn OptmetadifferentialSlice::len(Self) -> Int32
+pub fn OptmetadifferentialSlice::max(Self) -> Double
+pub fn OptmetadifferentialSlice::mean(Self) -> Double
+pub fn OptmetadifferentialSlice::min(Self) -> Double
+pub fn OptmetadifferentialSlice::scale(Self, Double) -> Self
+pub fn OptmetadifferentialSlice::set(Self, Int32, Double) -> Self
+pub fn OptmetadifferentialSlice::sum(Self) -> Double
+pub fn OptmetadifferentialSlice::to_string(Self) -> String
+
+pub(all) struct OptmetadifferentialTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetadifferentialTable::add(Self, Self) -> Self
+pub fn OptmetadifferentialTable::copy(Self) -> Self
+pub fn OptmetadifferentialTable::fill(Self, Double) -> Self
+pub fn OptmetadifferentialTable::get(Self, Int32) -> Double
+pub fn OptmetadifferentialTable::len(Self) -> Int32
+pub fn OptmetadifferentialTable::max(Self) -> Double
+pub fn OptmetadifferentialTable::mean(Self) -> Double
+pub fn OptmetadifferentialTable::min(Self) -> Double
+pub fn OptmetadifferentialTable::scale(Self, Double) -> Self
+pub fn OptmetadifferentialTable::set(Self, Int32, Double) -> Self
+pub fn OptmetadifferentialTable::sum(Self) -> Double
+pub fn OptmetadifferentialTable::to_string(Self) -> String
+
+pub(all) struct OptmetadifferentialVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn OptmetadifferentialVector::add(Self, Self) -> Self
+pub fn OptmetadifferentialVector::dist(Self, Self) -> Double
+pub fn OptmetadifferentialVector::dot(Self, Self) -> Double
+pub fn OptmetadifferentialVector::norm(Self) -> Double
+pub fn OptmetadifferentialVector::normalize(Self) -> Self
+pub fn OptmetadifferentialVector::scale(Self, Double) -> Self
+pub fn OptmetadifferentialVector::sub(Self, Self) -> Self
+pub fn OptmetadifferentialVector::to_string(Self) -> String
+
+pub(all) struct OptmetadifferentialView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetadifferentialView::add(Self, Self) -> Self
+pub fn OptmetadifferentialView::copy(Self) -> Self
+pub fn OptmetadifferentialView::fill(Self, Double) -> Self
+pub fn OptmetadifferentialView::get(Self, Int32) -> Double
+pub fn OptmetadifferentialView::len(Self) -> Int32
+pub fn OptmetadifferentialView::max(Self) -> Double
+pub fn OptmetadifferentialView::mean(Self) -> Double
+pub fn OptmetadifferentialView::min(Self) -> Double
+pub fn OptmetadifferentialView::scale(Self, Double) -> Self
+pub fn OptmetadifferentialView::set(Self, Int32, Double) -> Self
+pub fn OptmetadifferentialView::sum(Self) -> Double
+pub fn OptmetadifferentialView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_dist_euclidean"
+
+// Values
+pub fn geo_dist_euclidean_buffer_make(Int32) -> GeodisteuclideanBuffer
+
+pub fn geo_dist_euclidean_cluster_make(Int32) -> GeodisteuclideanCluster
+
+pub fn geo_dist_euclidean_cursor_make(Int32) -> GeodisteuclideanCursor
+
+pub fn geo_dist_euclidean_edge_make(Int32) -> GeodisteuclideanEdge
+
+pub fn geo_dist_euclidean_frame_make(Int32) -> GeodisteuclideanFrame
+
+pub fn geo_dist_euclidean_graphn_make(Int32) -> GeodisteuclideanGraphN
+
+pub fn geo_dist_euclidean_layer_make(Int32) -> GeodisteuclideanLayer
+
+pub fn geo_dist_euclidean_make_matrix(Int32, Int32, Double) -> GeodisteuclideanMatrix
+
+pub fn geo_dist_euclidean_make_point(Double, Double) -> GeodisteuclideanPoint
+
+pub fn geo_dist_euclidean_make_point3(Double, Double, Double) -> GeodisteuclideanPoint
+
+pub fn geo_dist_euclidean_make_series(Array[Double], String) -> GeodisteuclideanSeries
+
+pub fn geo_dist_euclidean_make_vector(Array[Double]) -> GeodisteuclideanVector
+
+pub fn geo_dist_euclidean_matrix_identity(Int32) -> GeodisteuclideanMatrix
+
+pub fn geo_dist_euclidean_model_make(Int32) -> GeodisteuclideanModel
+
+pub fn geo_dist_euclidean_node_make(Int32) -> GeodisteuclideanNode
+
+pub fn geo_dist_euclidean_path_make(Int32) -> GeodisteuclideanPath
+
+pub fn geo_dist_euclidean_range_make(Int32) -> GeodisteuclideanRange
+
+pub fn geo_dist_euclidean_slice_make(Int32) -> GeodisteuclideanSlice
+
+pub fn geo_dist_euclidean_table_make(Int32) -> GeodisteuclideanTable
+
+pub fn geo_dist_euclidean_vector_zero(Int32) -> GeodisteuclideanVector
+
+pub fn geo_dist_euclidean_view_make(Int32) -> GeodisteuclideanView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeodisteuclideanBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisteuclideanBuffer::add(Self, Self) -> Self
+pub fn GeodisteuclideanBuffer::copy(Self) -> Self
+pub fn GeodisteuclideanBuffer::fill(Self, Double) -> Self
+pub fn GeodisteuclideanBuffer::get(Self, Int32) -> Double
+pub fn GeodisteuclideanBuffer::len(Self) -> Int32
+pub fn GeodisteuclideanBuffer::max(Self) -> Double
+pub fn GeodisteuclideanBuffer::mean(Self) -> Double
+pub fn GeodisteuclideanBuffer::min(Self) -> Double
+pub fn GeodisteuclideanBuffer::scale(Self, Double) -> Self
+pub fn GeodisteuclideanBuffer::set(Self, Int32, Double) -> Self
+pub fn GeodisteuclideanBuffer::sum(Self) -> Double
+pub fn GeodisteuclideanBuffer::to_string(Self) -> String
+
+pub(all) struct GeodisteuclideanCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisteuclideanCluster::add(Self, Self) -> Self
+pub fn GeodisteuclideanCluster::copy(Self) -> Self
+pub fn GeodisteuclideanCluster::fill(Self, Double) -> Self
+pub fn GeodisteuclideanCluster::get(Self, Int32) -> Double
+pub fn GeodisteuclideanCluster::len(Self) -> Int32
+pub fn GeodisteuclideanCluster::max(Self) -> Double
+pub fn GeodisteuclideanCluster::mean(Self) -> Double
+pub fn GeodisteuclideanCluster::min(Self) -> Double
+pub fn GeodisteuclideanCluster::scale(Self, Double) -> Self
+pub fn GeodisteuclideanCluster::set(Self, Int32, Double) -> Self
+pub fn GeodisteuclideanCluster::sum(Self) -> Double
+pub fn GeodisteuclideanCluster::to_string(Self) -> String
+
+pub(all) struct GeodisteuclideanCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisteuclideanCursor::add(Self, Self) -> Self
+pub fn GeodisteuclideanCursor::copy(Self) -> Self
+pub fn GeodisteuclideanCursor::fill(Self, Double) -> Self
+pub fn GeodisteuclideanCursor::get(Self, Int32) -> Double
+pub fn GeodisteuclideanCursor::len(Self) -> Int32
+pub fn GeodisteuclideanCursor::max(Self) -> Double
+pub fn GeodisteuclideanCursor::mean(Self) -> Double
+pub fn GeodisteuclideanCursor::min(Self) -> Double
+pub fn GeodisteuclideanCursor::scale(Self, Double) -> Self
+pub fn GeodisteuclideanCursor::set(Self, Int32, Double) -> Self
+pub fn GeodisteuclideanCursor::sum(Self) -> Double
+pub fn GeodisteuclideanCursor::to_string(Self) -> String
+
+pub(all) struct GeodisteuclideanEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisteuclideanEdge::add(Self, Self) -> Self
+pub fn GeodisteuclideanEdge::copy(Self) -> Self
+pub fn GeodisteuclideanEdge::fill(Self, Double) -> Self
+pub fn GeodisteuclideanEdge::get(Self, Int32) -> Double
+pub fn GeodisteuclideanEdge::len(Self) -> Int32
+pub fn GeodisteuclideanEdge::max(Self) -> Double
+pub fn GeodisteuclideanEdge::mean(Self) -> Double
+pub fn GeodisteuclideanEdge::min(Self) -> Double
+pub fn GeodisteuclideanEdge::scale(Self, Double) -> Self
+pub fn GeodisteuclideanEdge::set(Self, Int32, Double) -> Self
+pub fn GeodisteuclideanEdge::sum(Self) -> Double
+pub fn GeodisteuclideanEdge::to_string(Self) -> String
+
+pub(all) struct GeodisteuclideanFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisteuclideanFrame::add(Self, Self) -> Self
+pub fn GeodisteuclideanFrame::copy(Self) -> Self
+pub fn GeodisteuclideanFrame::fill(Self, Double) -> Self
+pub fn GeodisteuclideanFrame::get(Self, Int32) -> Double
+pub fn GeodisteuclideanFrame::len(Self) -> Int32
+pub fn GeodisteuclideanFrame::max(Self) -> Double
+pub fn GeodisteuclideanFrame::mean(Self) -> Double
+pub fn GeodisteuclideanFrame::min(Self) -> Double
+pub fn GeodisteuclideanFrame::scale(Self, Double) -> Self
+pub fn GeodisteuclideanFrame::set(Self, Int32, Double) -> Self
+pub fn GeodisteuclideanFrame::sum(Self) -> Double
+pub fn GeodisteuclideanFrame::to_string(Self) -> String
+
+pub(all) struct GeodisteuclideanGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisteuclideanGraphN::add(Self, Self) -> Self
+pub fn GeodisteuclideanGraphN::copy(Self) -> Self
+pub fn GeodisteuclideanGraphN::fill(Self, Double) -> Self
+pub fn GeodisteuclideanGraphN::get(Self, Int32) -> Double
+pub fn GeodisteuclideanGraphN::len(Self) -> Int32
+pub fn GeodisteuclideanGraphN::max(Self) -> Double
+pub fn GeodisteuclideanGraphN::mean(Self) -> Double
+pub fn GeodisteuclideanGraphN::min(Self) -> Double
+pub fn GeodisteuclideanGraphN::scale(Self, Double) -> Self
+pub fn GeodisteuclideanGraphN::set(Self, Int32, Double) -> Self
+pub fn GeodisteuclideanGraphN::sum(Self) -> Double
+pub fn GeodisteuclideanGraphN::to_string(Self) -> String
+
+pub(all) struct GeodisteuclideanLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisteuclideanLayer::add(Self, Self) -> Self
+pub fn GeodisteuclideanLayer::copy(Self) -> Self
+pub fn GeodisteuclideanLayer::fill(Self, Double) -> Self
+pub fn GeodisteuclideanLayer::get(Self, Int32) -> Double
+pub fn GeodisteuclideanLayer::len(Self) -> Int32
+pub fn GeodisteuclideanLayer::max(Self) -> Double
+pub fn GeodisteuclideanLayer::mean(Self) -> Double
+pub fn GeodisteuclideanLayer::min(Self) -> Double
+pub fn GeodisteuclideanLayer::scale(Self, Double) -> Self
+pub fn GeodisteuclideanLayer::set(Self, Int32, Double) -> Self
+pub fn GeodisteuclideanLayer::sum(Self) -> Double
+pub fn GeodisteuclideanLayer::to_string(Self) -> String
+
+pub(all) struct GeodisteuclideanMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeodisteuclideanMatrix::add(Self, Self) -> Self
+pub fn GeodisteuclideanMatrix::det(Self) -> Double
+pub fn GeodisteuclideanMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeodisteuclideanMatrix::multiply(Self, Self) -> Self
+pub fn GeodisteuclideanMatrix::norm(Self) -> Double
+pub fn GeodisteuclideanMatrix::scale(Self, Double) -> Self
+pub fn GeodisteuclideanMatrix::to_string(Self) -> String
+pub fn GeodisteuclideanMatrix::trace(Self) -> Double
+pub fn GeodisteuclideanMatrix::transpose(Self) -> Self
+
+pub(all) struct GeodisteuclideanModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisteuclideanModel::add(Self, Self) -> Self
+pub fn GeodisteuclideanModel::copy(Self) -> Self
+pub fn GeodisteuclideanModel::fill(Self, Double) -> Self
+pub fn GeodisteuclideanModel::get(Self, Int32) -> Double
+pub fn GeodisteuclideanModel::len(Self) -> Int32
+pub fn GeodisteuclideanModel::max(Self) -> Double
+pub fn GeodisteuclideanModel::mean(Self) -> Double
+pub fn GeodisteuclideanModel::min(Self) -> Double
+pub fn GeodisteuclideanModel::scale(Self, Double) -> Self
+pub fn GeodisteuclideanModel::set(Self, Int32, Double) -> Self
+pub fn GeodisteuclideanModel::sum(Self) -> Double
+pub fn GeodisteuclideanModel::to_string(Self) -> String
+
+pub(all) struct GeodisteuclideanNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisteuclideanNode::add(Self, Self) -> Self
+pub fn GeodisteuclideanNode::copy(Self) -> Self
+pub fn GeodisteuclideanNode::fill(Self, Double) -> Self
+pub fn GeodisteuclideanNode::get(Self, Int32) -> Double
+pub fn GeodisteuclideanNode::len(Self) -> Int32
+pub fn GeodisteuclideanNode::max(Self) -> Double
+pub fn GeodisteuclideanNode::mean(Self) -> Double
+pub fn GeodisteuclideanNode::min(Self) -> Double
+pub fn GeodisteuclideanNode::scale(Self, Double) -> Self
+pub fn GeodisteuclideanNode::set(Self, Int32, Double) -> Self
+pub fn GeodisteuclideanNode::sum(Self) -> Double
+pub fn GeodisteuclideanNode::to_string(Self) -> String
+
+pub(all) struct GeodisteuclideanPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisteuclideanPath::add(Self, Self) -> Self
+pub fn GeodisteuclideanPath::copy(Self) -> Self
+pub fn GeodisteuclideanPath::fill(Self, Double) -> Self
+pub fn GeodisteuclideanPath::get(Self, Int32) -> Double
+pub fn GeodisteuclideanPath::len(Self) -> Int32
+pub fn GeodisteuclideanPath::max(Self) -> Double
+pub fn GeodisteuclideanPath::mean(Self) -> Double
+pub fn GeodisteuclideanPath::min(Self) -> Double
+pub fn GeodisteuclideanPath::scale(Self, Double) -> Self
+pub fn GeodisteuclideanPath::set(Self, Int32, Double) -> Self
+pub fn GeodisteuclideanPath::sum(Self) -> Double
+pub fn GeodisteuclideanPath::to_string(Self) -> String
+
+pub(all) struct GeodisteuclideanPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeodisteuclideanPoint::add(Self, Self) -> Self
+pub fn GeodisteuclideanPoint::cross(Self, Self) -> Self
+pub fn GeodisteuclideanPoint::dist(Self, Self) -> Double
+pub fn GeodisteuclideanPoint::dot(Self, Self) -> Double
+pub fn GeodisteuclideanPoint::label(Self) -> Int32
+pub fn GeodisteuclideanPoint::lerp(Self, Self, Double) -> Self
+pub fn GeodisteuclideanPoint::mid(Self, Self) -> Self
+pub fn GeodisteuclideanPoint::negate(Self) -> Self
+pub fn GeodisteuclideanPoint::norm(Self) -> Double
+pub fn GeodisteuclideanPoint::normalize(Self) -> Self
+pub fn GeodisteuclideanPoint::scale(Self, Double) -> Self
+pub fn GeodisteuclideanPoint::sub(Self, Self) -> Self
+pub fn GeodisteuclideanPoint::to_string(Self) -> String
+pub fn GeodisteuclideanPoint::x(Self) -> Double
+pub fn GeodisteuclideanPoint::y(Self) -> Double
+pub fn GeodisteuclideanPoint::z(Self) -> Double
+
+pub(all) struct GeodisteuclideanRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisteuclideanRange::add(Self, Self) -> Self
+pub fn GeodisteuclideanRange::copy(Self) -> Self
+pub fn GeodisteuclideanRange::fill(Self, Double) -> Self
+pub fn GeodisteuclideanRange::get(Self, Int32) -> Double
+pub fn GeodisteuclideanRange::len(Self) -> Int32
+pub fn GeodisteuclideanRange::max(Self) -> Double
+pub fn GeodisteuclideanRange::mean(Self) -> Double
+pub fn GeodisteuclideanRange::min(Self) -> Double
+pub fn GeodisteuclideanRange::scale(Self, Double) -> Self
+pub fn GeodisteuclideanRange::set(Self, Int32, Double) -> Self
+pub fn GeodisteuclideanRange::sum(Self) -> Double
+pub fn GeodisteuclideanRange::to_string(Self) -> String
+
+pub(all) struct GeodisteuclideanSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeodisteuclideanSeries::add(Self, Self) -> Self
+pub fn GeodisteuclideanSeries::cumsum(Self) -> Self
+pub fn GeodisteuclideanSeries::len(Self) -> Int32
+pub fn GeodisteuclideanSeries::max(Self) -> Double
+pub fn GeodisteuclideanSeries::mean(Self) -> Double
+pub fn GeodisteuclideanSeries::median(Self) -> Double
+pub fn GeodisteuclideanSeries::min(Self) -> Double
+pub fn GeodisteuclideanSeries::normalize(Self) -> Self
+pub fn GeodisteuclideanSeries::range(Self) -> Double
+pub fn GeodisteuclideanSeries::scale(Self, Double) -> Self
+pub fn GeodisteuclideanSeries::std(Self) -> Double
+pub fn GeodisteuclideanSeries::sub(Self, Self) -> Self
+pub fn GeodisteuclideanSeries::sum(Self) -> Double
+pub fn GeodisteuclideanSeries::to_string(Self) -> String
+pub fn GeodisteuclideanSeries::variance(Self) -> Double
+
+pub(all) struct GeodisteuclideanSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisteuclideanSlice::add(Self, Self) -> Self
+pub fn GeodisteuclideanSlice::copy(Self) -> Self
+pub fn GeodisteuclideanSlice::fill(Self, Double) -> Self
+pub fn GeodisteuclideanSlice::get(Self, Int32) -> Double
+pub fn GeodisteuclideanSlice::len(Self) -> Int32
+pub fn GeodisteuclideanSlice::max(Self) -> Double
+pub fn GeodisteuclideanSlice::mean(Self) -> Double
+pub fn GeodisteuclideanSlice::min(Self) -> Double
+pub fn GeodisteuclideanSlice::scale(Self, Double) -> Self
+pub fn GeodisteuclideanSlice::set(Self, Int32, Double) -> Self
+pub fn GeodisteuclideanSlice::sum(Self) -> Double
+pub fn GeodisteuclideanSlice::to_string(Self) -> String
+
+pub(all) struct GeodisteuclideanTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisteuclideanTable::add(Self, Self) -> Self
+pub fn GeodisteuclideanTable::copy(Self) -> Self
+pub fn GeodisteuclideanTable::fill(Self, Double) -> Self
+pub fn GeodisteuclideanTable::get(Self, Int32) -> Double
+pub fn GeodisteuclideanTable::len(Self) -> Int32
+pub fn GeodisteuclideanTable::max(Self) -> Double
+pub fn GeodisteuclideanTable::mean(Self) -> Double
+pub fn GeodisteuclideanTable::min(Self) -> Double
+pub fn GeodisteuclideanTable::scale(Self, Double) -> Self
+pub fn GeodisteuclideanTable::set(Self, Int32, Double) -> Self
+pub fn GeodisteuclideanTable::sum(Self) -> Double
+pub fn GeodisteuclideanTable::to_string(Self) -> String
+
+pub(all) struct GeodisteuclideanVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeodisteuclideanVector::add(Self, Self) -> Self
+pub fn GeodisteuclideanVector::dist(Self, Self) -> Double
+pub fn GeodisteuclideanVector::dot(Self, Self) -> Double
+pub fn GeodisteuclideanVector::norm(Self) -> Double
+pub fn GeodisteuclideanVector::normalize(Self) -> Self
+pub fn GeodisteuclideanVector::scale(Self, Double) -> Self
+pub fn GeodisteuclideanVector::sub(Self, Self) -> Self
+pub fn GeodisteuclideanVector::to_string(Self) -> String
+
+pub(all) struct GeodisteuclideanView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodisteuclideanView::add(Self, Self) -> Self
+pub fn GeodisteuclideanView::copy(Self) -> Self
+pub fn GeodisteuclideanView::fill(Self, Double) -> Self
+pub fn GeodisteuclideanView::get(Self, Int32) -> Double
+pub fn GeodisteuclideanView::len(Self) -> Int32
+pub fn GeodisteuclideanView::max(Self) -> Double
+pub fn GeodisteuclideanView::mean(Self) -> Double
+pub fn GeodisteuclideanView::min(Self) -> Double
+pub fn GeodisteuclideanView::scale(Self, Double) -> Self
+pub fn GeodisteuclideanView::set(Self, Int32, Double) -> Self
+pub fn GeodisteuclideanView::sum(Self) -> Double
+pub fn GeodisteuclideanView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

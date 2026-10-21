@@ -1,0 +1,7 @@
+members = [
+  ".",
+  "./apps/cli",
+  "./apps/bench",
+  "./apps/proof",
+  "./apps/extcore",
+]

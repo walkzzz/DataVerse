@@ -1,0 +1,44 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datair/ir_entity"
+
+import {
+  "dataverse/datair/ir_core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn entity_type_name(EntityType) -> String
+
+// Errors
+
+// Types and methods
+pub struct EntityIR {
+  node_id : @ir_core.IRNodeId
+  entity_type : EntityType
+  schema_ref : String
+  size_hint : Int32
+  metadata : @ir_core.IRMetadata
+} derive(Eq, @debug.Debug)
+pub fn EntityIR::entity_type(Self) -> EntityType
+pub fn EntityIR::equal(Self, Self) -> Bool
+pub fn EntityIR::new(@ir_core.IRNodeId, EntityType, String, Int32, @ir_core.IRMetadata) -> Self
+pub fn EntityIR::node_id(Self) -> @ir_core.IRNodeId
+pub fn EntityIR::not_equal(Self, Self) -> Bool
+pub fn EntityIR::schema_ref(Self) -> String
+pub fn EntityIR::simple(@ir_core.IRNodeId, EntityType, String) -> Self
+pub fn EntityIR::size_hint(Self) -> Int32
+pub fn EntityIR::to_repr(Self) -> @debug.Repr
+
+pub(all) enum EntityType {
+  DataObject
+  Chunk
+  Embedding
+  Dataset
+} derive(Eq, @debug.Debug)
+pub fn EntityType::equal(Self, Self) -> Bool
+pub fn EntityType::not_equal(Self, Self) -> Bool
+pub fn EntityType::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_ensemble_catboost"
+
+// Values
+pub fn ml_ensemble_catboost_buffer_make(Int32) -> MlensemblecatboostBuffer
+
+pub fn ml_ensemble_catboost_cluster_make(Int32) -> MlensemblecatboostCluster
+
+pub fn ml_ensemble_catboost_cursor_make(Int32) -> MlensemblecatboostCursor
+
+pub fn ml_ensemble_catboost_edge_make(Int32) -> MlensemblecatboostEdge
+
+pub fn ml_ensemble_catboost_frame_make(Int32) -> MlensemblecatboostFrame
+
+pub fn ml_ensemble_catboost_graphn_make(Int32) -> MlensemblecatboostGraphN
+
+pub fn ml_ensemble_catboost_layer_make(Int32) -> MlensemblecatboostLayer
+
+pub fn ml_ensemble_catboost_make_matrix(Int32, Int32, Double) -> MlensemblecatboostMatrix
+
+pub fn ml_ensemble_catboost_make_point(Double, Double) -> MlensemblecatboostPoint
+
+pub fn ml_ensemble_catboost_make_point3(Double, Double, Double) -> MlensemblecatboostPoint
+
+pub fn ml_ensemble_catboost_make_series(Array[Double], String) -> MlensemblecatboostSeries
+
+pub fn ml_ensemble_catboost_make_vector(Array[Double]) -> MlensemblecatboostVector
+
+pub fn ml_ensemble_catboost_matrix_identity(Int32) -> MlensemblecatboostMatrix
+
+pub fn ml_ensemble_catboost_model_make(Int32) -> MlensemblecatboostModel
+
+pub fn ml_ensemble_catboost_node_make(Int32) -> MlensemblecatboostNode
+
+pub fn ml_ensemble_catboost_path_make(Int32) -> MlensemblecatboostPath
+
+pub fn ml_ensemble_catboost_range_make(Int32) -> MlensemblecatboostRange
+
+pub fn ml_ensemble_catboost_slice_make(Int32) -> MlensemblecatboostSlice
+
+pub fn ml_ensemble_catboost_table_make(Int32) -> MlensemblecatboostTable
+
+pub fn ml_ensemble_catboost_vector_zero(Int32) -> MlensemblecatboostVector
+
+pub fn ml_ensemble_catboost_view_make(Int32) -> MlensemblecatboostView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlensemblecatboostBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblecatboostBuffer::add(Self, Self) -> Self
+pub fn MlensemblecatboostBuffer::copy(Self) -> Self
+pub fn MlensemblecatboostBuffer::fill(Self, Double) -> Self
+pub fn MlensemblecatboostBuffer::get(Self, Int32) -> Double
+pub fn MlensemblecatboostBuffer::len(Self) -> Int32
+pub fn MlensemblecatboostBuffer::max(Self) -> Double
+pub fn MlensemblecatboostBuffer::mean(Self) -> Double
+pub fn MlensemblecatboostBuffer::min(Self) -> Double
+pub fn MlensemblecatboostBuffer::scale(Self, Double) -> Self
+pub fn MlensemblecatboostBuffer::set(Self, Int32, Double) -> Self
+pub fn MlensemblecatboostBuffer::sum(Self) -> Double
+pub fn MlensemblecatboostBuffer::to_string(Self) -> String
+
+pub(all) struct MlensemblecatboostCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblecatboostCluster::add(Self, Self) -> Self
+pub fn MlensemblecatboostCluster::copy(Self) -> Self
+pub fn MlensemblecatboostCluster::fill(Self, Double) -> Self
+pub fn MlensemblecatboostCluster::get(Self, Int32) -> Double
+pub fn MlensemblecatboostCluster::len(Self) -> Int32
+pub fn MlensemblecatboostCluster::max(Self) -> Double
+pub fn MlensemblecatboostCluster::mean(Self) -> Double
+pub fn MlensemblecatboostCluster::min(Self) -> Double
+pub fn MlensemblecatboostCluster::scale(Self, Double) -> Self
+pub fn MlensemblecatboostCluster::set(Self, Int32, Double) -> Self
+pub fn MlensemblecatboostCluster::sum(Self) -> Double
+pub fn MlensemblecatboostCluster::to_string(Self) -> String
+
+pub(all) struct MlensemblecatboostCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblecatboostCursor::add(Self, Self) -> Self
+pub fn MlensemblecatboostCursor::copy(Self) -> Self
+pub fn MlensemblecatboostCursor::fill(Self, Double) -> Self
+pub fn MlensemblecatboostCursor::get(Self, Int32) -> Double
+pub fn MlensemblecatboostCursor::len(Self) -> Int32
+pub fn MlensemblecatboostCursor::max(Self) -> Double
+pub fn MlensemblecatboostCursor::mean(Self) -> Double
+pub fn MlensemblecatboostCursor::min(Self) -> Double
+pub fn MlensemblecatboostCursor::scale(Self, Double) -> Self
+pub fn MlensemblecatboostCursor::set(Self, Int32, Double) -> Self
+pub fn MlensemblecatboostCursor::sum(Self) -> Double
+pub fn MlensemblecatboostCursor::to_string(Self) -> String
+
+pub(all) struct MlensemblecatboostEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblecatboostEdge::add(Self, Self) -> Self
+pub fn MlensemblecatboostEdge::copy(Self) -> Self
+pub fn MlensemblecatboostEdge::fill(Self, Double) -> Self
+pub fn MlensemblecatboostEdge::get(Self, Int32) -> Double
+pub fn MlensemblecatboostEdge::len(Self) -> Int32
+pub fn MlensemblecatboostEdge::max(Self) -> Double
+pub fn MlensemblecatboostEdge::mean(Self) -> Double
+pub fn MlensemblecatboostEdge::min(Self) -> Double
+pub fn MlensemblecatboostEdge::scale(Self, Double) -> Self
+pub fn MlensemblecatboostEdge::set(Self, Int32, Double) -> Self
+pub fn MlensemblecatboostEdge::sum(Self) -> Double
+pub fn MlensemblecatboostEdge::to_string(Self) -> String
+
+pub(all) struct MlensemblecatboostFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblecatboostFrame::add(Self, Self) -> Self
+pub fn MlensemblecatboostFrame::copy(Self) -> Self
+pub fn MlensemblecatboostFrame::fill(Self, Double) -> Self
+pub fn MlensemblecatboostFrame::get(Self, Int32) -> Double
+pub fn MlensemblecatboostFrame::len(Self) -> Int32
+pub fn MlensemblecatboostFrame::max(Self) -> Double
+pub fn MlensemblecatboostFrame::mean(Self) -> Double
+pub fn MlensemblecatboostFrame::min(Self) -> Double
+pub fn MlensemblecatboostFrame::scale(Self, Double) -> Self
+pub fn MlensemblecatboostFrame::set(Self, Int32, Double) -> Self
+pub fn MlensemblecatboostFrame::sum(Self) -> Double
+pub fn MlensemblecatboostFrame::to_string(Self) -> String
+
+pub(all) struct MlensemblecatboostGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblecatboostGraphN::add(Self, Self) -> Self
+pub fn MlensemblecatboostGraphN::copy(Self) -> Self
+pub fn MlensemblecatboostGraphN::fill(Self, Double) -> Self
+pub fn MlensemblecatboostGraphN::get(Self, Int32) -> Double
+pub fn MlensemblecatboostGraphN::len(Self) -> Int32
+pub fn MlensemblecatboostGraphN::max(Self) -> Double
+pub fn MlensemblecatboostGraphN::mean(Self) -> Double
+pub fn MlensemblecatboostGraphN::min(Self) -> Double
+pub fn MlensemblecatboostGraphN::scale(Self, Double) -> Self
+pub fn MlensemblecatboostGraphN::set(Self, Int32, Double) -> Self
+pub fn MlensemblecatboostGraphN::sum(Self) -> Double
+pub fn MlensemblecatboostGraphN::to_string(Self) -> String
+
+pub(all) struct MlensemblecatboostLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblecatboostLayer::add(Self, Self) -> Self
+pub fn MlensemblecatboostLayer::copy(Self) -> Self
+pub fn MlensemblecatboostLayer::fill(Self, Double) -> Self
+pub fn MlensemblecatboostLayer::get(Self, Int32) -> Double
+pub fn MlensemblecatboostLayer::len(Self) -> Int32
+pub fn MlensemblecatboostLayer::max(Self) -> Double
+pub fn MlensemblecatboostLayer::mean(Self) -> Double
+pub fn MlensemblecatboostLayer::min(Self) -> Double
+pub fn MlensemblecatboostLayer::scale(Self, Double) -> Self
+pub fn MlensemblecatboostLayer::set(Self, Int32, Double) -> Self
+pub fn MlensemblecatboostLayer::sum(Self) -> Double
+pub fn MlensemblecatboostLayer::to_string(Self) -> String
+
+pub(all) struct MlensemblecatboostMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlensemblecatboostMatrix::add(Self, Self) -> Self
+pub fn MlensemblecatboostMatrix::det(Self) -> Double
+pub fn MlensemblecatboostMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlensemblecatboostMatrix::multiply(Self, Self) -> Self
+pub fn MlensemblecatboostMatrix::norm(Self) -> Double
+pub fn MlensemblecatboostMatrix::scale(Self, Double) -> Self
+pub fn MlensemblecatboostMatrix::to_string(Self) -> String
+pub fn MlensemblecatboostMatrix::trace(Self) -> Double
+pub fn MlensemblecatboostMatrix::transpose(Self) -> Self
+
+pub(all) struct MlensemblecatboostModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblecatboostModel::add(Self, Self) -> Self
+pub fn MlensemblecatboostModel::copy(Self) -> Self
+pub fn MlensemblecatboostModel::fill(Self, Double) -> Self
+pub fn MlensemblecatboostModel::get(Self, Int32) -> Double
+pub fn MlensemblecatboostModel::len(Self) -> Int32
+pub fn MlensemblecatboostModel::max(Self) -> Double
+pub fn MlensemblecatboostModel::mean(Self) -> Double
+pub fn MlensemblecatboostModel::min(Self) -> Double
+pub fn MlensemblecatboostModel::scale(Self, Double) -> Self
+pub fn MlensemblecatboostModel::set(Self, Int32, Double) -> Self
+pub fn MlensemblecatboostModel::sum(Self) -> Double
+pub fn MlensemblecatboostModel::to_string(Self) -> String
+
+pub(all) struct MlensemblecatboostNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblecatboostNode::add(Self, Self) -> Self
+pub fn MlensemblecatboostNode::copy(Self) -> Self
+pub fn MlensemblecatboostNode::fill(Self, Double) -> Self
+pub fn MlensemblecatboostNode::get(Self, Int32) -> Double
+pub fn MlensemblecatboostNode::len(Self) -> Int32
+pub fn MlensemblecatboostNode::max(Self) -> Double
+pub fn MlensemblecatboostNode::mean(Self) -> Double
+pub fn MlensemblecatboostNode::min(Self) -> Double
+pub fn MlensemblecatboostNode::scale(Self, Double) -> Self
+pub fn MlensemblecatboostNode::set(Self, Int32, Double) -> Self
+pub fn MlensemblecatboostNode::sum(Self) -> Double
+pub fn MlensemblecatboostNode::to_string(Self) -> String
+
+pub(all) struct MlensemblecatboostPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblecatboostPath::add(Self, Self) -> Self
+pub fn MlensemblecatboostPath::copy(Self) -> Self
+pub fn MlensemblecatboostPath::fill(Self, Double) -> Self
+pub fn MlensemblecatboostPath::get(Self, Int32) -> Double
+pub fn MlensemblecatboostPath::len(Self) -> Int32
+pub fn MlensemblecatboostPath::max(Self) -> Double
+pub fn MlensemblecatboostPath::mean(Self) -> Double
+pub fn MlensemblecatboostPath::min(Self) -> Double
+pub fn MlensemblecatboostPath::scale(Self, Double) -> Self
+pub fn MlensemblecatboostPath::set(Self, Int32, Double) -> Self
+pub fn MlensemblecatboostPath::sum(Self) -> Double
+pub fn MlensemblecatboostPath::to_string(Self) -> String
+
+pub(all) struct MlensemblecatboostPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlensemblecatboostPoint::add(Self, Self) -> Self
+pub fn MlensemblecatboostPoint::cross(Self, Self) -> Self
+pub fn MlensemblecatboostPoint::dist(Self, Self) -> Double
+pub fn MlensemblecatboostPoint::dot(Self, Self) -> Double
+pub fn MlensemblecatboostPoint::label(Self) -> Int32
+pub fn MlensemblecatboostPoint::lerp(Self, Self, Double) -> Self
+pub fn MlensemblecatboostPoint::mid(Self, Self) -> Self
+pub fn MlensemblecatboostPoint::negate(Self) -> Self
+pub fn MlensemblecatboostPoint::norm(Self) -> Double
+pub fn MlensemblecatboostPoint::normalize(Self) -> Self
+pub fn MlensemblecatboostPoint::scale(Self, Double) -> Self
+pub fn MlensemblecatboostPoint::sub(Self, Self) -> Self
+pub fn MlensemblecatboostPoint::to_string(Self) -> String
+pub fn MlensemblecatboostPoint::x(Self) -> Double
+pub fn MlensemblecatboostPoint::y(Self) -> Double
+pub fn MlensemblecatboostPoint::z(Self) -> Double
+
+pub(all) struct MlensemblecatboostRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblecatboostRange::add(Self, Self) -> Self
+pub fn MlensemblecatboostRange::copy(Self) -> Self
+pub fn MlensemblecatboostRange::fill(Self, Double) -> Self
+pub fn MlensemblecatboostRange::get(Self, Int32) -> Double
+pub fn MlensemblecatboostRange::len(Self) -> Int32
+pub fn MlensemblecatboostRange::max(Self) -> Double
+pub fn MlensemblecatboostRange::mean(Self) -> Double
+pub fn MlensemblecatboostRange::min(Self) -> Double
+pub fn MlensemblecatboostRange::scale(Self, Double) -> Self
+pub fn MlensemblecatboostRange::set(Self, Int32, Double) -> Self
+pub fn MlensemblecatboostRange::sum(Self) -> Double
+pub fn MlensemblecatboostRange::to_string(Self) -> String
+
+pub(all) struct MlensemblecatboostSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlensemblecatboostSeries::add(Self, Self) -> Self
+pub fn MlensemblecatboostSeries::cumsum(Self) -> Self
+pub fn MlensemblecatboostSeries::len(Self) -> Int32
+pub fn MlensemblecatboostSeries::max(Self) -> Double
+pub fn MlensemblecatboostSeries::mean(Self) -> Double
+pub fn MlensemblecatboostSeries::median(Self) -> Double
+pub fn MlensemblecatboostSeries::min(Self) -> Double
+pub fn MlensemblecatboostSeries::normalize(Self) -> Self
+pub fn MlensemblecatboostSeries::range(Self) -> Double
+pub fn MlensemblecatboostSeries::scale(Self, Double) -> Self
+pub fn MlensemblecatboostSeries::std(Self) -> Double
+pub fn MlensemblecatboostSeries::sub(Self, Self) -> Self
+pub fn MlensemblecatboostSeries::sum(Self) -> Double
+pub fn MlensemblecatboostSeries::to_string(Self) -> String
+pub fn MlensemblecatboostSeries::variance(Self) -> Double
+
+pub(all) struct MlensemblecatboostSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblecatboostSlice::add(Self, Self) -> Self
+pub fn MlensemblecatboostSlice::copy(Self) -> Self
+pub fn MlensemblecatboostSlice::fill(Self, Double) -> Self
+pub fn MlensemblecatboostSlice::get(Self, Int32) -> Double
+pub fn MlensemblecatboostSlice::len(Self) -> Int32
+pub fn MlensemblecatboostSlice::max(Self) -> Double
+pub fn MlensemblecatboostSlice::mean(Self) -> Double
+pub fn MlensemblecatboostSlice::min(Self) -> Double
+pub fn MlensemblecatboostSlice::scale(Self, Double) -> Self
+pub fn MlensemblecatboostSlice::set(Self, Int32, Double) -> Self
+pub fn MlensemblecatboostSlice::sum(Self) -> Double
+pub fn MlensemblecatboostSlice::to_string(Self) -> String
+
+pub(all) struct MlensemblecatboostTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblecatboostTable::add(Self, Self) -> Self
+pub fn MlensemblecatboostTable::copy(Self) -> Self
+pub fn MlensemblecatboostTable::fill(Self, Double) -> Self
+pub fn MlensemblecatboostTable::get(Self, Int32) -> Double
+pub fn MlensemblecatboostTable::len(Self) -> Int32
+pub fn MlensemblecatboostTable::max(Self) -> Double
+pub fn MlensemblecatboostTable::mean(Self) -> Double
+pub fn MlensemblecatboostTable::min(Self) -> Double
+pub fn MlensemblecatboostTable::scale(Self, Double) -> Self
+pub fn MlensemblecatboostTable::set(Self, Int32, Double) -> Self
+pub fn MlensemblecatboostTable::sum(Self) -> Double
+pub fn MlensemblecatboostTable::to_string(Self) -> String
+
+pub(all) struct MlensemblecatboostVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlensemblecatboostVector::add(Self, Self) -> Self
+pub fn MlensemblecatboostVector::dist(Self, Self) -> Double
+pub fn MlensemblecatboostVector::dot(Self, Self) -> Double
+pub fn MlensemblecatboostVector::norm(Self) -> Double
+pub fn MlensemblecatboostVector::normalize(Self) -> Self
+pub fn MlensemblecatboostVector::scale(Self, Double) -> Self
+pub fn MlensemblecatboostVector::sub(Self, Self) -> Self
+pub fn MlensemblecatboostVector::to_string(Self) -> String
+
+pub(all) struct MlensemblecatboostView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblecatboostView::add(Self, Self) -> Self
+pub fn MlensemblecatboostView::copy(Self) -> Self
+pub fn MlensemblecatboostView::fill(Self, Double) -> Self
+pub fn MlensemblecatboostView::get(Self, Int32) -> Double
+pub fn MlensemblecatboostView::len(Self) -> Int32
+pub fn MlensemblecatboostView::max(Self) -> Double
+pub fn MlensemblecatboostView::mean(Self) -> Double
+pub fn MlensemblecatboostView::min(Self) -> Double
+pub fn MlensemblecatboostView::scale(Self, Double) -> Self
+pub fn MlensemblecatboostView::set(Self, Int32, Double) -> Self
+pub fn MlensemblecatboostView::sum(Self) -> Double
+pub fn MlensemblecatboostView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

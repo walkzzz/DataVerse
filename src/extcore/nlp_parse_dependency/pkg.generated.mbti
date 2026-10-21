@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_parse_dependency"
+
+// Values
+pub fn nlp_parse_dependency_buffer_make(Int32) -> NlpparsedependencyBuffer
+
+pub fn nlp_parse_dependency_cluster_make(Int32) -> NlpparsedependencyCluster
+
+pub fn nlp_parse_dependency_cursor_make(Int32) -> NlpparsedependencyCursor
+
+pub fn nlp_parse_dependency_edge_make(Int32) -> NlpparsedependencyEdge
+
+pub fn nlp_parse_dependency_frame_make(Int32) -> NlpparsedependencyFrame
+
+pub fn nlp_parse_dependency_graphn_make(Int32) -> NlpparsedependencyGraphN
+
+pub fn nlp_parse_dependency_layer_make(Int32) -> NlpparsedependencyLayer
+
+pub fn nlp_parse_dependency_make_matrix(Int32, Int32, Double) -> NlpparsedependencyMatrix
+
+pub fn nlp_parse_dependency_make_point(Double, Double) -> NlpparsedependencyPoint
+
+pub fn nlp_parse_dependency_make_point3(Double, Double, Double) -> NlpparsedependencyPoint
+
+pub fn nlp_parse_dependency_make_series(Array[Double], String) -> NlpparsedependencySeries
+
+pub fn nlp_parse_dependency_make_vector(Array[Double]) -> NlpparsedependencyVector
+
+pub fn nlp_parse_dependency_matrix_identity(Int32) -> NlpparsedependencyMatrix
+
+pub fn nlp_parse_dependency_model_make(Int32) -> NlpparsedependencyModel
+
+pub fn nlp_parse_dependency_node_make(Int32) -> NlpparsedependencyNode
+
+pub fn nlp_parse_dependency_path_make(Int32) -> NlpparsedependencyPath
+
+pub fn nlp_parse_dependency_range_make(Int32) -> NlpparsedependencyRange
+
+pub fn nlp_parse_dependency_slice_make(Int32) -> NlpparsedependencySlice
+
+pub fn nlp_parse_dependency_table_make(Int32) -> NlpparsedependencyTable
+
+pub fn nlp_parse_dependency_vector_zero(Int32) -> NlpparsedependencyVector
+
+pub fn nlp_parse_dependency_view_make(Int32) -> NlpparsedependencyView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlpparsedependencyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsedependencyBuffer::add(Self, Self) -> Self
+pub fn NlpparsedependencyBuffer::copy(Self) -> Self
+pub fn NlpparsedependencyBuffer::fill(Self, Double) -> Self
+pub fn NlpparsedependencyBuffer::get(Self, Int32) -> Double
+pub fn NlpparsedependencyBuffer::len(Self) -> Int32
+pub fn NlpparsedependencyBuffer::max(Self) -> Double
+pub fn NlpparsedependencyBuffer::mean(Self) -> Double
+pub fn NlpparsedependencyBuffer::min(Self) -> Double
+pub fn NlpparsedependencyBuffer::scale(Self, Double) -> Self
+pub fn NlpparsedependencyBuffer::set(Self, Int32, Double) -> Self
+pub fn NlpparsedependencyBuffer::sum(Self) -> Double
+pub fn NlpparsedependencyBuffer::to_string(Self) -> String
+
+pub(all) struct NlpparsedependencyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsedependencyCluster::add(Self, Self) -> Self
+pub fn NlpparsedependencyCluster::copy(Self) -> Self
+pub fn NlpparsedependencyCluster::fill(Self, Double) -> Self
+pub fn NlpparsedependencyCluster::get(Self, Int32) -> Double
+pub fn NlpparsedependencyCluster::len(Self) -> Int32
+pub fn NlpparsedependencyCluster::max(Self) -> Double
+pub fn NlpparsedependencyCluster::mean(Self) -> Double
+pub fn NlpparsedependencyCluster::min(Self) -> Double
+pub fn NlpparsedependencyCluster::scale(Self, Double) -> Self
+pub fn NlpparsedependencyCluster::set(Self, Int32, Double) -> Self
+pub fn NlpparsedependencyCluster::sum(Self) -> Double
+pub fn NlpparsedependencyCluster::to_string(Self) -> String
+
+pub(all) struct NlpparsedependencyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsedependencyCursor::add(Self, Self) -> Self
+pub fn NlpparsedependencyCursor::copy(Self) -> Self
+pub fn NlpparsedependencyCursor::fill(Self, Double) -> Self
+pub fn NlpparsedependencyCursor::get(Self, Int32) -> Double
+pub fn NlpparsedependencyCursor::len(Self) -> Int32
+pub fn NlpparsedependencyCursor::max(Self) -> Double
+pub fn NlpparsedependencyCursor::mean(Self) -> Double
+pub fn NlpparsedependencyCursor::min(Self) -> Double
+pub fn NlpparsedependencyCursor::scale(Self, Double) -> Self
+pub fn NlpparsedependencyCursor::set(Self, Int32, Double) -> Self
+pub fn NlpparsedependencyCursor::sum(Self) -> Double
+pub fn NlpparsedependencyCursor::to_string(Self) -> String
+
+pub(all) struct NlpparsedependencyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsedependencyEdge::add(Self, Self) -> Self
+pub fn NlpparsedependencyEdge::copy(Self) -> Self
+pub fn NlpparsedependencyEdge::fill(Self, Double) -> Self
+pub fn NlpparsedependencyEdge::get(Self, Int32) -> Double
+pub fn NlpparsedependencyEdge::len(Self) -> Int32
+pub fn NlpparsedependencyEdge::max(Self) -> Double
+pub fn NlpparsedependencyEdge::mean(Self) -> Double
+pub fn NlpparsedependencyEdge::min(Self) -> Double
+pub fn NlpparsedependencyEdge::scale(Self, Double) -> Self
+pub fn NlpparsedependencyEdge::set(Self, Int32, Double) -> Self
+pub fn NlpparsedependencyEdge::sum(Self) -> Double
+pub fn NlpparsedependencyEdge::to_string(Self) -> String
+
+pub(all) struct NlpparsedependencyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsedependencyFrame::add(Self, Self) -> Self
+pub fn NlpparsedependencyFrame::copy(Self) -> Self
+pub fn NlpparsedependencyFrame::fill(Self, Double) -> Self
+pub fn NlpparsedependencyFrame::get(Self, Int32) -> Double
+pub fn NlpparsedependencyFrame::len(Self) -> Int32
+pub fn NlpparsedependencyFrame::max(Self) -> Double
+pub fn NlpparsedependencyFrame::mean(Self) -> Double
+pub fn NlpparsedependencyFrame::min(Self) -> Double
+pub fn NlpparsedependencyFrame::scale(Self, Double) -> Self
+pub fn NlpparsedependencyFrame::set(Self, Int32, Double) -> Self
+pub fn NlpparsedependencyFrame::sum(Self) -> Double
+pub fn NlpparsedependencyFrame::to_string(Self) -> String
+
+pub(all) struct NlpparsedependencyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsedependencyGraphN::add(Self, Self) -> Self
+pub fn NlpparsedependencyGraphN::copy(Self) -> Self
+pub fn NlpparsedependencyGraphN::fill(Self, Double) -> Self
+pub fn NlpparsedependencyGraphN::get(Self, Int32) -> Double
+pub fn NlpparsedependencyGraphN::len(Self) -> Int32
+pub fn NlpparsedependencyGraphN::max(Self) -> Double
+pub fn NlpparsedependencyGraphN::mean(Self) -> Double
+pub fn NlpparsedependencyGraphN::min(Self) -> Double
+pub fn NlpparsedependencyGraphN::scale(Self, Double) -> Self
+pub fn NlpparsedependencyGraphN::set(Self, Int32, Double) -> Self
+pub fn NlpparsedependencyGraphN::sum(Self) -> Double
+pub fn NlpparsedependencyGraphN::to_string(Self) -> String
+
+pub(all) struct NlpparsedependencyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsedependencyLayer::add(Self, Self) -> Self
+pub fn NlpparsedependencyLayer::copy(Self) -> Self
+pub fn NlpparsedependencyLayer::fill(Self, Double) -> Self
+pub fn NlpparsedependencyLayer::get(Self, Int32) -> Double
+pub fn NlpparsedependencyLayer::len(Self) -> Int32
+pub fn NlpparsedependencyLayer::max(Self) -> Double
+pub fn NlpparsedependencyLayer::mean(Self) -> Double
+pub fn NlpparsedependencyLayer::min(Self) -> Double
+pub fn NlpparsedependencyLayer::scale(Self, Double) -> Self
+pub fn NlpparsedependencyLayer::set(Self, Int32, Double) -> Self
+pub fn NlpparsedependencyLayer::sum(Self) -> Double
+pub fn NlpparsedependencyLayer::to_string(Self) -> String
+
+pub(all) struct NlpparsedependencyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlpparsedependencyMatrix::add(Self, Self) -> Self
+pub fn NlpparsedependencyMatrix::det(Self) -> Double
+pub fn NlpparsedependencyMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlpparsedependencyMatrix::multiply(Self, Self) -> Self
+pub fn NlpparsedependencyMatrix::norm(Self) -> Double
+pub fn NlpparsedependencyMatrix::scale(Self, Double) -> Self
+pub fn NlpparsedependencyMatrix::to_string(Self) -> String
+pub fn NlpparsedependencyMatrix::trace(Self) -> Double
+pub fn NlpparsedependencyMatrix::transpose(Self) -> Self
+
+pub(all) struct NlpparsedependencyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsedependencyModel::add(Self, Self) -> Self
+pub fn NlpparsedependencyModel::copy(Self) -> Self
+pub fn NlpparsedependencyModel::fill(Self, Double) -> Self
+pub fn NlpparsedependencyModel::get(Self, Int32) -> Double
+pub fn NlpparsedependencyModel::len(Self) -> Int32
+pub fn NlpparsedependencyModel::max(Self) -> Double
+pub fn NlpparsedependencyModel::mean(Self) -> Double
+pub fn NlpparsedependencyModel::min(Self) -> Double
+pub fn NlpparsedependencyModel::scale(Self, Double) -> Self
+pub fn NlpparsedependencyModel::set(Self, Int32, Double) -> Self
+pub fn NlpparsedependencyModel::sum(Self) -> Double
+pub fn NlpparsedependencyModel::to_string(Self) -> String
+
+pub(all) struct NlpparsedependencyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsedependencyNode::add(Self, Self) -> Self
+pub fn NlpparsedependencyNode::copy(Self) -> Self
+pub fn NlpparsedependencyNode::fill(Self, Double) -> Self
+pub fn NlpparsedependencyNode::get(Self, Int32) -> Double
+pub fn NlpparsedependencyNode::len(Self) -> Int32
+pub fn NlpparsedependencyNode::max(Self) -> Double
+pub fn NlpparsedependencyNode::mean(Self) -> Double
+pub fn NlpparsedependencyNode::min(Self) -> Double
+pub fn NlpparsedependencyNode::scale(Self, Double) -> Self
+pub fn NlpparsedependencyNode::set(Self, Int32, Double) -> Self
+pub fn NlpparsedependencyNode::sum(Self) -> Double
+pub fn NlpparsedependencyNode::to_string(Self) -> String
+
+pub(all) struct NlpparsedependencyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsedependencyPath::add(Self, Self) -> Self
+pub fn NlpparsedependencyPath::copy(Self) -> Self
+pub fn NlpparsedependencyPath::fill(Self, Double) -> Self
+pub fn NlpparsedependencyPath::get(Self, Int32) -> Double
+pub fn NlpparsedependencyPath::len(Self) -> Int32
+pub fn NlpparsedependencyPath::max(Self) -> Double
+pub fn NlpparsedependencyPath::mean(Self) -> Double
+pub fn NlpparsedependencyPath::min(Self) -> Double
+pub fn NlpparsedependencyPath::scale(Self, Double) -> Self
+pub fn NlpparsedependencyPath::set(Self, Int32, Double) -> Self
+pub fn NlpparsedependencyPath::sum(Self) -> Double
+pub fn NlpparsedependencyPath::to_string(Self) -> String
+
+pub(all) struct NlpparsedependencyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlpparsedependencyPoint::add(Self, Self) -> Self
+pub fn NlpparsedependencyPoint::cross(Self, Self) -> Self
+pub fn NlpparsedependencyPoint::dist(Self, Self) -> Double
+pub fn NlpparsedependencyPoint::dot(Self, Self) -> Double
+pub fn NlpparsedependencyPoint::label(Self) -> Int32
+pub fn NlpparsedependencyPoint::lerp(Self, Self, Double) -> Self
+pub fn NlpparsedependencyPoint::mid(Self, Self) -> Self
+pub fn NlpparsedependencyPoint::negate(Self) -> Self
+pub fn NlpparsedependencyPoint::norm(Self) -> Double
+pub fn NlpparsedependencyPoint::normalize(Self) -> Self
+pub fn NlpparsedependencyPoint::scale(Self, Double) -> Self
+pub fn NlpparsedependencyPoint::sub(Self, Self) -> Self
+pub fn NlpparsedependencyPoint::to_string(Self) -> String
+pub fn NlpparsedependencyPoint::x(Self) -> Double
+pub fn NlpparsedependencyPoint::y(Self) -> Double
+pub fn NlpparsedependencyPoint::z(Self) -> Double
+
+pub(all) struct NlpparsedependencyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsedependencyRange::add(Self, Self) -> Self
+pub fn NlpparsedependencyRange::copy(Self) -> Self
+pub fn NlpparsedependencyRange::fill(Self, Double) -> Self
+pub fn NlpparsedependencyRange::get(Self, Int32) -> Double
+pub fn NlpparsedependencyRange::len(Self) -> Int32
+pub fn NlpparsedependencyRange::max(Self) -> Double
+pub fn NlpparsedependencyRange::mean(Self) -> Double
+pub fn NlpparsedependencyRange::min(Self) -> Double
+pub fn NlpparsedependencyRange::scale(Self, Double) -> Self
+pub fn NlpparsedependencyRange::set(Self, Int32, Double) -> Self
+pub fn NlpparsedependencyRange::sum(Self) -> Double
+pub fn NlpparsedependencyRange::to_string(Self) -> String
+
+pub(all) struct NlpparsedependencySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlpparsedependencySeries::add(Self, Self) -> Self
+pub fn NlpparsedependencySeries::cumsum(Self) -> Self
+pub fn NlpparsedependencySeries::len(Self) -> Int32
+pub fn NlpparsedependencySeries::max(Self) -> Double
+pub fn NlpparsedependencySeries::mean(Self) -> Double
+pub fn NlpparsedependencySeries::median(Self) -> Double
+pub fn NlpparsedependencySeries::min(Self) -> Double
+pub fn NlpparsedependencySeries::normalize(Self) -> Self
+pub fn NlpparsedependencySeries::range(Self) -> Double
+pub fn NlpparsedependencySeries::scale(Self, Double) -> Self
+pub fn NlpparsedependencySeries::std(Self) -> Double
+pub fn NlpparsedependencySeries::sub(Self, Self) -> Self
+pub fn NlpparsedependencySeries::sum(Self) -> Double
+pub fn NlpparsedependencySeries::to_string(Self) -> String
+pub fn NlpparsedependencySeries::variance(Self) -> Double
+
+pub(all) struct NlpparsedependencySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsedependencySlice::add(Self, Self) -> Self
+pub fn NlpparsedependencySlice::copy(Self) -> Self
+pub fn NlpparsedependencySlice::fill(Self, Double) -> Self
+pub fn NlpparsedependencySlice::get(Self, Int32) -> Double
+pub fn NlpparsedependencySlice::len(Self) -> Int32
+pub fn NlpparsedependencySlice::max(Self) -> Double
+pub fn NlpparsedependencySlice::mean(Self) -> Double
+pub fn NlpparsedependencySlice::min(Self) -> Double
+pub fn NlpparsedependencySlice::scale(Self, Double) -> Self
+pub fn NlpparsedependencySlice::set(Self, Int32, Double) -> Self
+pub fn NlpparsedependencySlice::sum(Self) -> Double
+pub fn NlpparsedependencySlice::to_string(Self) -> String
+
+pub(all) struct NlpparsedependencyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsedependencyTable::add(Self, Self) -> Self
+pub fn NlpparsedependencyTable::copy(Self) -> Self
+pub fn NlpparsedependencyTable::fill(Self, Double) -> Self
+pub fn NlpparsedependencyTable::get(Self, Int32) -> Double
+pub fn NlpparsedependencyTable::len(Self) -> Int32
+pub fn NlpparsedependencyTable::max(Self) -> Double
+pub fn NlpparsedependencyTable::mean(Self) -> Double
+pub fn NlpparsedependencyTable::min(Self) -> Double
+pub fn NlpparsedependencyTable::scale(Self, Double) -> Self
+pub fn NlpparsedependencyTable::set(Self, Int32, Double) -> Self
+pub fn NlpparsedependencyTable::sum(Self) -> Double
+pub fn NlpparsedependencyTable::to_string(Self) -> String
+
+pub(all) struct NlpparsedependencyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlpparsedependencyVector::add(Self, Self) -> Self
+pub fn NlpparsedependencyVector::dist(Self, Self) -> Double
+pub fn NlpparsedependencyVector::dot(Self, Self) -> Double
+pub fn NlpparsedependencyVector::norm(Self) -> Double
+pub fn NlpparsedependencyVector::normalize(Self) -> Self
+pub fn NlpparsedependencyVector::scale(Self, Double) -> Self
+pub fn NlpparsedependencyVector::sub(Self, Self) -> Self
+pub fn NlpparsedependencyVector::to_string(Self) -> String
+
+pub(all) struct NlpparsedependencyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsedependencyView::add(Self, Self) -> Self
+pub fn NlpparsedependencyView::copy(Self) -> Self
+pub fn NlpparsedependencyView::fill(Self, Double) -> Self
+pub fn NlpparsedependencyView::get(Self, Int32) -> Double
+pub fn NlpparsedependencyView::len(Self) -> Int32
+pub fn NlpparsedependencyView::max(Self) -> Double
+pub fn NlpparsedependencyView::mean(Self) -> Double
+pub fn NlpparsedependencyView::min(Self) -> Double
+pub fn NlpparsedependencyView::scale(Self, Double) -> Self
+pub fn NlpparsedependencyView::set(Self, Int32, Double) -> Self
+pub fn NlpparsedependencyView::sum(Self) -> Double
+pub fn NlpparsedependencyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

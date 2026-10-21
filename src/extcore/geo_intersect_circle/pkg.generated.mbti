@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_intersect_circle"
+
+// Values
+pub fn geo_intersect_circle_buffer_make(Int32) -> GeointersectcircleBuffer
+
+pub fn geo_intersect_circle_cluster_make(Int32) -> GeointersectcircleCluster
+
+pub fn geo_intersect_circle_cursor_make(Int32) -> GeointersectcircleCursor
+
+pub fn geo_intersect_circle_edge_make(Int32) -> GeointersectcircleEdge
+
+pub fn geo_intersect_circle_frame_make(Int32) -> GeointersectcircleFrame
+
+pub fn geo_intersect_circle_graphn_make(Int32) -> GeointersectcircleGraphN
+
+pub fn geo_intersect_circle_layer_make(Int32) -> GeointersectcircleLayer
+
+pub fn geo_intersect_circle_make_matrix(Int32, Int32, Double) -> GeointersectcircleMatrix
+
+pub fn geo_intersect_circle_make_point(Double, Double) -> GeointersectcirclePoint
+
+pub fn geo_intersect_circle_make_point3(Double, Double, Double) -> GeointersectcirclePoint
+
+pub fn geo_intersect_circle_make_series(Array[Double], String) -> GeointersectcircleSeries
+
+pub fn geo_intersect_circle_make_vector(Array[Double]) -> GeointersectcircleVector
+
+pub fn geo_intersect_circle_matrix_identity(Int32) -> GeointersectcircleMatrix
+
+pub fn geo_intersect_circle_model_make(Int32) -> GeointersectcircleModel
+
+pub fn geo_intersect_circle_node_make(Int32) -> GeointersectcircleNode
+
+pub fn geo_intersect_circle_path_make(Int32) -> GeointersectcirclePath
+
+pub fn geo_intersect_circle_range_make(Int32) -> GeointersectcircleRange
+
+pub fn geo_intersect_circle_slice_make(Int32) -> GeointersectcircleSlice
+
+pub fn geo_intersect_circle_table_make(Int32) -> GeointersectcircleTable
+
+pub fn geo_intersect_circle_vector_zero(Int32) -> GeointersectcircleVector
+
+pub fn geo_intersect_circle_view_make(Int32) -> GeointersectcircleView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeointersectcircleBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectcircleBuffer::add(Self, Self) -> Self
+pub fn GeointersectcircleBuffer::copy(Self) -> Self
+pub fn GeointersectcircleBuffer::fill(Self, Double) -> Self
+pub fn GeointersectcircleBuffer::get(Self, Int32) -> Double
+pub fn GeointersectcircleBuffer::len(Self) -> Int32
+pub fn GeointersectcircleBuffer::max(Self) -> Double
+pub fn GeointersectcircleBuffer::mean(Self) -> Double
+pub fn GeointersectcircleBuffer::min(Self) -> Double
+pub fn GeointersectcircleBuffer::scale(Self, Double) -> Self
+pub fn GeointersectcircleBuffer::set(Self, Int32, Double) -> Self
+pub fn GeointersectcircleBuffer::sum(Self) -> Double
+pub fn GeointersectcircleBuffer::to_string(Self) -> String
+
+pub(all) struct GeointersectcircleCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectcircleCluster::add(Self, Self) -> Self
+pub fn GeointersectcircleCluster::copy(Self) -> Self
+pub fn GeointersectcircleCluster::fill(Self, Double) -> Self
+pub fn GeointersectcircleCluster::get(Self, Int32) -> Double
+pub fn GeointersectcircleCluster::len(Self) -> Int32
+pub fn GeointersectcircleCluster::max(Self) -> Double
+pub fn GeointersectcircleCluster::mean(Self) -> Double
+pub fn GeointersectcircleCluster::min(Self) -> Double
+pub fn GeointersectcircleCluster::scale(Self, Double) -> Self
+pub fn GeointersectcircleCluster::set(Self, Int32, Double) -> Self
+pub fn GeointersectcircleCluster::sum(Self) -> Double
+pub fn GeointersectcircleCluster::to_string(Self) -> String
+
+pub(all) struct GeointersectcircleCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectcircleCursor::add(Self, Self) -> Self
+pub fn GeointersectcircleCursor::copy(Self) -> Self
+pub fn GeointersectcircleCursor::fill(Self, Double) -> Self
+pub fn GeointersectcircleCursor::get(Self, Int32) -> Double
+pub fn GeointersectcircleCursor::len(Self) -> Int32
+pub fn GeointersectcircleCursor::max(Self) -> Double
+pub fn GeointersectcircleCursor::mean(Self) -> Double
+pub fn GeointersectcircleCursor::min(Self) -> Double
+pub fn GeointersectcircleCursor::scale(Self, Double) -> Self
+pub fn GeointersectcircleCursor::set(Self, Int32, Double) -> Self
+pub fn GeointersectcircleCursor::sum(Self) -> Double
+pub fn GeointersectcircleCursor::to_string(Self) -> String
+
+pub(all) struct GeointersectcircleEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectcircleEdge::add(Self, Self) -> Self
+pub fn GeointersectcircleEdge::copy(Self) -> Self
+pub fn GeointersectcircleEdge::fill(Self, Double) -> Self
+pub fn GeointersectcircleEdge::get(Self, Int32) -> Double
+pub fn GeointersectcircleEdge::len(Self) -> Int32
+pub fn GeointersectcircleEdge::max(Self) -> Double
+pub fn GeointersectcircleEdge::mean(Self) -> Double
+pub fn GeointersectcircleEdge::min(Self) -> Double
+pub fn GeointersectcircleEdge::scale(Self, Double) -> Self
+pub fn GeointersectcircleEdge::set(Self, Int32, Double) -> Self
+pub fn GeointersectcircleEdge::sum(Self) -> Double
+pub fn GeointersectcircleEdge::to_string(Self) -> String
+
+pub(all) struct GeointersectcircleFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectcircleFrame::add(Self, Self) -> Self
+pub fn GeointersectcircleFrame::copy(Self) -> Self
+pub fn GeointersectcircleFrame::fill(Self, Double) -> Self
+pub fn GeointersectcircleFrame::get(Self, Int32) -> Double
+pub fn GeointersectcircleFrame::len(Self) -> Int32
+pub fn GeointersectcircleFrame::max(Self) -> Double
+pub fn GeointersectcircleFrame::mean(Self) -> Double
+pub fn GeointersectcircleFrame::min(Self) -> Double
+pub fn GeointersectcircleFrame::scale(Self, Double) -> Self
+pub fn GeointersectcircleFrame::set(Self, Int32, Double) -> Self
+pub fn GeointersectcircleFrame::sum(Self) -> Double
+pub fn GeointersectcircleFrame::to_string(Self) -> String
+
+pub(all) struct GeointersectcircleGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectcircleGraphN::add(Self, Self) -> Self
+pub fn GeointersectcircleGraphN::copy(Self) -> Self
+pub fn GeointersectcircleGraphN::fill(Self, Double) -> Self
+pub fn GeointersectcircleGraphN::get(Self, Int32) -> Double
+pub fn GeointersectcircleGraphN::len(Self) -> Int32
+pub fn GeointersectcircleGraphN::max(Self) -> Double
+pub fn GeointersectcircleGraphN::mean(Self) -> Double
+pub fn GeointersectcircleGraphN::min(Self) -> Double
+pub fn GeointersectcircleGraphN::scale(Self, Double) -> Self
+pub fn GeointersectcircleGraphN::set(Self, Int32, Double) -> Self
+pub fn GeointersectcircleGraphN::sum(Self) -> Double
+pub fn GeointersectcircleGraphN::to_string(Self) -> String
+
+pub(all) struct GeointersectcircleLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectcircleLayer::add(Self, Self) -> Self
+pub fn GeointersectcircleLayer::copy(Self) -> Self
+pub fn GeointersectcircleLayer::fill(Self, Double) -> Self
+pub fn GeointersectcircleLayer::get(Self, Int32) -> Double
+pub fn GeointersectcircleLayer::len(Self) -> Int32
+pub fn GeointersectcircleLayer::max(Self) -> Double
+pub fn GeointersectcircleLayer::mean(Self) -> Double
+pub fn GeointersectcircleLayer::min(Self) -> Double
+pub fn GeointersectcircleLayer::scale(Self, Double) -> Self
+pub fn GeointersectcircleLayer::set(Self, Int32, Double) -> Self
+pub fn GeointersectcircleLayer::sum(Self) -> Double
+pub fn GeointersectcircleLayer::to_string(Self) -> String
+
+pub(all) struct GeointersectcircleMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeointersectcircleMatrix::add(Self, Self) -> Self
+pub fn GeointersectcircleMatrix::det(Self) -> Double
+pub fn GeointersectcircleMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeointersectcircleMatrix::multiply(Self, Self) -> Self
+pub fn GeointersectcircleMatrix::norm(Self) -> Double
+pub fn GeointersectcircleMatrix::scale(Self, Double) -> Self
+pub fn GeointersectcircleMatrix::to_string(Self) -> String
+pub fn GeointersectcircleMatrix::trace(Self) -> Double
+pub fn GeointersectcircleMatrix::transpose(Self) -> Self
+
+pub(all) struct GeointersectcircleModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectcircleModel::add(Self, Self) -> Self
+pub fn GeointersectcircleModel::copy(Self) -> Self
+pub fn GeointersectcircleModel::fill(Self, Double) -> Self
+pub fn GeointersectcircleModel::get(Self, Int32) -> Double
+pub fn GeointersectcircleModel::len(Self) -> Int32
+pub fn GeointersectcircleModel::max(Self) -> Double
+pub fn GeointersectcircleModel::mean(Self) -> Double
+pub fn GeointersectcircleModel::min(Self) -> Double
+pub fn GeointersectcircleModel::scale(Self, Double) -> Self
+pub fn GeointersectcircleModel::set(Self, Int32, Double) -> Self
+pub fn GeointersectcircleModel::sum(Self) -> Double
+pub fn GeointersectcircleModel::to_string(Self) -> String
+
+pub(all) struct GeointersectcircleNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectcircleNode::add(Self, Self) -> Self
+pub fn GeointersectcircleNode::copy(Self) -> Self
+pub fn GeointersectcircleNode::fill(Self, Double) -> Self
+pub fn GeointersectcircleNode::get(Self, Int32) -> Double
+pub fn GeointersectcircleNode::len(Self) -> Int32
+pub fn GeointersectcircleNode::max(Self) -> Double
+pub fn GeointersectcircleNode::mean(Self) -> Double
+pub fn GeointersectcircleNode::min(Self) -> Double
+pub fn GeointersectcircleNode::scale(Self, Double) -> Self
+pub fn GeointersectcircleNode::set(Self, Int32, Double) -> Self
+pub fn GeointersectcircleNode::sum(Self) -> Double
+pub fn GeointersectcircleNode::to_string(Self) -> String
+
+pub(all) struct GeointersectcirclePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectcirclePath::add(Self, Self) -> Self
+pub fn GeointersectcirclePath::copy(Self) -> Self
+pub fn GeointersectcirclePath::fill(Self, Double) -> Self
+pub fn GeointersectcirclePath::get(Self, Int32) -> Double
+pub fn GeointersectcirclePath::len(Self) -> Int32
+pub fn GeointersectcirclePath::max(Self) -> Double
+pub fn GeointersectcirclePath::mean(Self) -> Double
+pub fn GeointersectcirclePath::min(Self) -> Double
+pub fn GeointersectcirclePath::scale(Self, Double) -> Self
+pub fn GeointersectcirclePath::set(Self, Int32, Double) -> Self
+pub fn GeointersectcirclePath::sum(Self) -> Double
+pub fn GeointersectcirclePath::to_string(Self) -> String
+
+pub(all) struct GeointersectcirclePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeointersectcirclePoint::add(Self, Self) -> Self
+pub fn GeointersectcirclePoint::cross(Self, Self) -> Self
+pub fn GeointersectcirclePoint::dist(Self, Self) -> Double
+pub fn GeointersectcirclePoint::dot(Self, Self) -> Double
+pub fn GeointersectcirclePoint::label(Self) -> Int32
+pub fn GeointersectcirclePoint::lerp(Self, Self, Double) -> Self
+pub fn GeointersectcirclePoint::mid(Self, Self) -> Self
+pub fn GeointersectcirclePoint::negate(Self) -> Self
+pub fn GeointersectcirclePoint::norm(Self) -> Double
+pub fn GeointersectcirclePoint::normalize(Self) -> Self
+pub fn GeointersectcirclePoint::scale(Self, Double) -> Self
+pub fn GeointersectcirclePoint::sub(Self, Self) -> Self
+pub fn GeointersectcirclePoint::to_string(Self) -> String
+pub fn GeointersectcirclePoint::x(Self) -> Double
+pub fn GeointersectcirclePoint::y(Self) -> Double
+pub fn GeointersectcirclePoint::z(Self) -> Double
+
+pub(all) struct GeointersectcircleRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectcircleRange::add(Self, Self) -> Self
+pub fn GeointersectcircleRange::copy(Self) -> Self
+pub fn GeointersectcircleRange::fill(Self, Double) -> Self
+pub fn GeointersectcircleRange::get(Self, Int32) -> Double
+pub fn GeointersectcircleRange::len(Self) -> Int32
+pub fn GeointersectcircleRange::max(Self) -> Double
+pub fn GeointersectcircleRange::mean(Self) -> Double
+pub fn GeointersectcircleRange::min(Self) -> Double
+pub fn GeointersectcircleRange::scale(Self, Double) -> Self
+pub fn GeointersectcircleRange::set(Self, Int32, Double) -> Self
+pub fn GeointersectcircleRange::sum(Self) -> Double
+pub fn GeointersectcircleRange::to_string(Self) -> String
+
+pub(all) struct GeointersectcircleSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeointersectcircleSeries::add(Self, Self) -> Self
+pub fn GeointersectcircleSeries::cumsum(Self) -> Self
+pub fn GeointersectcircleSeries::len(Self) -> Int32
+pub fn GeointersectcircleSeries::max(Self) -> Double
+pub fn GeointersectcircleSeries::mean(Self) -> Double
+pub fn GeointersectcircleSeries::median(Self) -> Double
+pub fn GeointersectcircleSeries::min(Self) -> Double
+pub fn GeointersectcircleSeries::normalize(Self) -> Self
+pub fn GeointersectcircleSeries::range(Self) -> Double
+pub fn GeointersectcircleSeries::scale(Self, Double) -> Self
+pub fn GeointersectcircleSeries::std(Self) -> Double
+pub fn GeointersectcircleSeries::sub(Self, Self) -> Self
+pub fn GeointersectcircleSeries::sum(Self) -> Double
+pub fn GeointersectcircleSeries::to_string(Self) -> String
+pub fn GeointersectcircleSeries::variance(Self) -> Double
+
+pub(all) struct GeointersectcircleSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectcircleSlice::add(Self, Self) -> Self
+pub fn GeointersectcircleSlice::copy(Self) -> Self
+pub fn GeointersectcircleSlice::fill(Self, Double) -> Self
+pub fn GeointersectcircleSlice::get(Self, Int32) -> Double
+pub fn GeointersectcircleSlice::len(Self) -> Int32
+pub fn GeointersectcircleSlice::max(Self) -> Double
+pub fn GeointersectcircleSlice::mean(Self) -> Double
+pub fn GeointersectcircleSlice::min(Self) -> Double
+pub fn GeointersectcircleSlice::scale(Self, Double) -> Self
+pub fn GeointersectcircleSlice::set(Self, Int32, Double) -> Self
+pub fn GeointersectcircleSlice::sum(Self) -> Double
+pub fn GeointersectcircleSlice::to_string(Self) -> String
+
+pub(all) struct GeointersectcircleTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectcircleTable::add(Self, Self) -> Self
+pub fn GeointersectcircleTable::copy(Self) -> Self
+pub fn GeointersectcircleTable::fill(Self, Double) -> Self
+pub fn GeointersectcircleTable::get(Self, Int32) -> Double
+pub fn GeointersectcircleTable::len(Self) -> Int32
+pub fn GeointersectcircleTable::max(Self) -> Double
+pub fn GeointersectcircleTable::mean(Self) -> Double
+pub fn GeointersectcircleTable::min(Self) -> Double
+pub fn GeointersectcircleTable::scale(Self, Double) -> Self
+pub fn GeointersectcircleTable::set(Self, Int32, Double) -> Self
+pub fn GeointersectcircleTable::sum(Self) -> Double
+pub fn GeointersectcircleTable::to_string(Self) -> String
+
+pub(all) struct GeointersectcircleVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeointersectcircleVector::add(Self, Self) -> Self
+pub fn GeointersectcircleVector::dist(Self, Self) -> Double
+pub fn GeointersectcircleVector::dot(Self, Self) -> Double
+pub fn GeointersectcircleVector::norm(Self) -> Double
+pub fn GeointersectcircleVector::normalize(Self) -> Self
+pub fn GeointersectcircleVector::scale(Self, Double) -> Self
+pub fn GeointersectcircleVector::sub(Self, Self) -> Self
+pub fn GeointersectcircleVector::to_string(Self) -> String
+
+pub(all) struct GeointersectcircleView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeointersectcircleView::add(Self, Self) -> Self
+pub fn GeointersectcircleView::copy(Self) -> Self
+pub fn GeointersectcircleView::fill(Self, Double) -> Self
+pub fn GeointersectcircleView::get(Self, Int32) -> Double
+pub fn GeointersectcircleView::len(Self) -> Int32
+pub fn GeointersectcircleView::max(Self) -> Double
+pub fn GeointersectcircleView::mean(Self) -> Double
+pub fn GeointersectcircleView::min(Self) -> Double
+pub fn GeointersectcircleView::scale(Self, Double) -> Self
+pub fn GeointersectcircleView::set(Self, Int32, Double) -> Self
+pub fn GeointersectcircleView::sum(Self) -> Double
+pub fn GeointersectcircleView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

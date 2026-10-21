@@ -1,0 +1,87 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/timeseries"
+
+// Values
+pub fn ar_predict(Array[Double], Array[Double], Double, Int32) -> Array[Double]
+
+pub fn arima_predict(Array[Double], ArimaParams, Array[Double], Array[Double], Int32) -> Array[Double]
+
+pub fn autocorrelation(Array[Double], Int32) -> Array[Double]
+
+pub fn backtest(Array[Double], (Array[Double], Int32) -> Array[Double], Int32) -> Double
+
+pub fn difference(Array[Double]) -> Array[Double]
+
+pub fn difference_k(Array[Double], Int32) -> Array[Double]
+
+pub fn exponential_smoothing(Array[Double], Double) -> Array[Double]
+
+pub fn garch_predict(Array[Double], GarchParams, Int32) -> Array[Double]
+
+pub fn holt_winters_forecast(Array[Double], HoltWintersParams, Int32) -> Array[Double]
+
+pub fn is_stationary(Array[Double]) -> Bool
+
+pub fn is_white_noise(Array[Double]) -> Bool
+
+pub fn kalman_filter(Array[Double], Double, Double, Double, Double) -> Array[Double]
+
+pub fn kalman_filter_step(Double, Double, Double, Double, Double) -> (Double, Double)
+
+pub fn lag_operator(Array[Double], Int32) -> Array[Double]
+
+pub fn ma_predict(Array[Double], Array[Double], Int32) -> Array[Double]
+
+pub fn make_arima_params(Int32, Int32, Int32) -> ArimaParams
+
+pub fn make_garch_params(Int32, Int32, Array[Double], Array[Double], Double) -> GarchParams
+
+pub fn make_holt_winters_params(Double, Double, Double, Int32) -> HoltWintersParams
+
+pub fn moving_average(Array[Double], Int32) -> Array[Double]
+
+pub fn partial_autocorrelation(Array[Double], Int32) -> Array[Double]
+
+pub fn prophet_forecast(Array[Double], Int32) -> Array[Double]
+
+pub fn seasonal_adjust(Array[Double], Int32) -> Array[Double]
+
+pub fn seasonal_decompose(Array[Double], Int32) -> SeasonalDecomposeResult
+
+pub fn seasonal_difference(Array[Double], Int32) -> Array[Double]
+
+pub fn timeseries_id() -> String
+
+// Errors
+
+// Types and methods
+pub struct ArimaParams {
+  p : Int32
+  d : Int32
+  q : Int32
+}
+
+pub struct GarchParams {
+  p : Int32
+  q : Int32
+  alpha : Array[Double]
+  beta : Array[Double]
+  omega : Double
+}
+
+pub struct HoltWintersParams {
+  alpha : Double
+  beta : Double
+  gamma : Double
+  period : Int32
+}
+
+pub struct SeasonalDecomposeResult {
+  trend : Array[Double]
+  seasonal : Array[Double]
+  residual : Array[Double]
+}
+
+// Type aliases
+
+// Traits

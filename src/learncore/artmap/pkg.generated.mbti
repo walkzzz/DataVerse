@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/artmap"
+
+// Values
+pub fn artmap_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn artmap_corr(Array[Double], Array[Double]) -> Double
+
+pub fn artmap_cov(Array[Double], Array[Double]) -> Double
+
+pub fn artmap_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn artmap_mae(Array[Double], Array[Double]) -> Double
+
+pub fn artmap_make_labeled_point(Double, Double, Int32) -> ArtmapPoint
+
+pub fn artmap_make_matrix(Int32, Int32, Double) -> ArtmapMatrix
+
+pub fn artmap_make_point(Double, Double) -> ArtmapPoint
+
+pub fn artmap_make_series(Array[Double], String) -> ArtmapSeries
+
+pub fn artmap_make_vector(Array[Double]) -> ArtmapVector
+
+pub fn artmap_matrix_add(ArtmapMatrix, ArtmapMatrix) -> ArtmapMatrix
+
+pub fn artmap_matrix_get(ArtmapMatrix, Int32, Int32) -> Double
+
+pub fn artmap_matrix_identity(Int32) -> ArtmapMatrix
+
+pub fn artmap_matrix_multiply(ArtmapMatrix, ArtmapMatrix) -> ArtmapMatrix
+
+pub fn artmap_matrix_norm(ArtmapMatrix) -> Double
+
+pub fn artmap_matrix_scale(ArtmapMatrix, Double) -> ArtmapMatrix
+
+pub fn artmap_matrix_to_string(ArtmapMatrix) -> String
+
+pub fn artmap_matrix_trace(ArtmapMatrix) -> Double
+
+pub fn artmap_matrix_transpose(ArtmapMatrix) -> ArtmapMatrix
+
+pub fn artmap_mse(Array[Double], Array[Double]) -> Double
+
+pub fn artmap_point_add(ArtmapPoint, ArtmapPoint) -> ArtmapPoint
+
+pub fn artmap_point_dist(ArtmapPoint, ArtmapPoint) -> Double
+
+pub fn artmap_point_dot(ArtmapPoint, ArtmapPoint) -> Double
+
+pub fn artmap_point_label(ArtmapPoint) -> Int32
+
+pub fn artmap_point_norm(ArtmapPoint) -> Double
+
+pub fn artmap_point_scale(ArtmapPoint, Double) -> ArtmapPoint
+
+pub fn artmap_point_sub(ArtmapPoint, ArtmapPoint) -> ArtmapPoint
+
+pub fn artmap_point_to_string(ArtmapPoint) -> String
+
+pub fn artmap_point_x(ArtmapPoint) -> Double
+
+pub fn artmap_point_y(ArtmapPoint) -> Double
+
+pub fn artmap_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn artmap_r2(Array[Double], Array[Double]) -> Double
+
+pub fn artmap_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn artmap_series_add(ArtmapSeries, ArtmapSeries) -> ArtmapSeries
+
+pub fn artmap_series_len(ArtmapSeries) -> Int32
+
+pub fn artmap_series_max(ArtmapSeries) -> Double
+
+pub fn artmap_series_mean(ArtmapSeries) -> Double
+
+pub fn artmap_series_min(ArtmapSeries) -> Double
+
+pub fn artmap_series_scale(ArtmapSeries, Double) -> ArtmapSeries
+
+pub fn artmap_series_std(ArtmapSeries) -> Double
+
+pub fn artmap_series_sum(ArtmapSeries) -> Double
+
+pub fn artmap_series_to_string(ArtmapSeries) -> String
+
+pub fn artmap_series_var(ArtmapSeries) -> Double
+
+pub fn artmap_std(Array[Double]) -> Double
+
+pub fn artmap_var(Array[Double]) -> Double
+
+pub fn artmap_vector_add(ArtmapVector, ArtmapVector) -> ArtmapVector
+
+pub fn artmap_vector_dist(ArtmapVector, ArtmapVector) -> Double
+
+pub fn artmap_vector_dot(ArtmapVector, ArtmapVector) -> Double
+
+pub fn artmap_vector_norm(ArtmapVector) -> Double
+
+pub fn artmap_vector_normalize(ArtmapVector) -> ArtmapVector
+
+pub fn artmap_vector_scale(ArtmapVector, Double) -> ArtmapVector
+
+pub fn artmap_vector_sub(ArtmapVector, ArtmapVector) -> ArtmapVector
+
+pub fn artmap_vector_to_string(ArtmapVector) -> String
+
+pub fn artmap_vector_zero(Int32) -> ArtmapVector
+
+// Errors
+
+// Types and methods
+pub struct ArtmapMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct ArtmapPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct ArtmapSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct ArtmapVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

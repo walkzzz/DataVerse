@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_window_planck"
+
+// Values
+pub fn signal_window_planck_buffer_make(Int32) -> SignalwindowplanckBuffer
+
+pub fn signal_window_planck_cluster_make(Int32) -> SignalwindowplanckCluster
+
+pub fn signal_window_planck_cursor_make(Int32) -> SignalwindowplanckCursor
+
+pub fn signal_window_planck_edge_make(Int32) -> SignalwindowplanckEdge
+
+pub fn signal_window_planck_frame_make(Int32) -> SignalwindowplanckFrame
+
+pub fn signal_window_planck_graphn_make(Int32) -> SignalwindowplanckGraphN
+
+pub fn signal_window_planck_layer_make(Int32) -> SignalwindowplanckLayer
+
+pub fn signal_window_planck_make_matrix(Int32, Int32, Double) -> SignalwindowplanckMatrix
+
+pub fn signal_window_planck_make_point(Double, Double) -> SignalwindowplanckPoint
+
+pub fn signal_window_planck_make_point3(Double, Double, Double) -> SignalwindowplanckPoint
+
+pub fn signal_window_planck_make_series(Array[Double], String) -> SignalwindowplanckSeries
+
+pub fn signal_window_planck_make_vector(Array[Double]) -> SignalwindowplanckVector
+
+pub fn signal_window_planck_matrix_identity(Int32) -> SignalwindowplanckMatrix
+
+pub fn signal_window_planck_model_make(Int32) -> SignalwindowplanckModel
+
+pub fn signal_window_planck_node_make(Int32) -> SignalwindowplanckNode
+
+pub fn signal_window_planck_path_make(Int32) -> SignalwindowplanckPath
+
+pub fn signal_window_planck_range_make(Int32) -> SignalwindowplanckRange
+
+pub fn signal_window_planck_slice_make(Int32) -> SignalwindowplanckSlice
+
+pub fn signal_window_planck_table_make(Int32) -> SignalwindowplanckTable
+
+pub fn signal_window_planck_vector_zero(Int32) -> SignalwindowplanckVector
+
+pub fn signal_window_planck_view_make(Int32) -> SignalwindowplanckView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalwindowplanckBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowplanckBuffer::add(Self, Self) -> Self
+pub fn SignalwindowplanckBuffer::copy(Self) -> Self
+pub fn SignalwindowplanckBuffer::fill(Self, Double) -> Self
+pub fn SignalwindowplanckBuffer::get(Self, Int32) -> Double
+pub fn SignalwindowplanckBuffer::len(Self) -> Int32
+pub fn SignalwindowplanckBuffer::max(Self) -> Double
+pub fn SignalwindowplanckBuffer::mean(Self) -> Double
+pub fn SignalwindowplanckBuffer::min(Self) -> Double
+pub fn SignalwindowplanckBuffer::scale(Self, Double) -> Self
+pub fn SignalwindowplanckBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowplanckBuffer::sum(Self) -> Double
+pub fn SignalwindowplanckBuffer::to_string(Self) -> String
+
+pub(all) struct SignalwindowplanckCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowplanckCluster::add(Self, Self) -> Self
+pub fn SignalwindowplanckCluster::copy(Self) -> Self
+pub fn SignalwindowplanckCluster::fill(Self, Double) -> Self
+pub fn SignalwindowplanckCluster::get(Self, Int32) -> Double
+pub fn SignalwindowplanckCluster::len(Self) -> Int32
+pub fn SignalwindowplanckCluster::max(Self) -> Double
+pub fn SignalwindowplanckCluster::mean(Self) -> Double
+pub fn SignalwindowplanckCluster::min(Self) -> Double
+pub fn SignalwindowplanckCluster::scale(Self, Double) -> Self
+pub fn SignalwindowplanckCluster::set(Self, Int32, Double) -> Self
+pub fn SignalwindowplanckCluster::sum(Self) -> Double
+pub fn SignalwindowplanckCluster::to_string(Self) -> String
+
+pub(all) struct SignalwindowplanckCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowplanckCursor::add(Self, Self) -> Self
+pub fn SignalwindowplanckCursor::copy(Self) -> Self
+pub fn SignalwindowplanckCursor::fill(Self, Double) -> Self
+pub fn SignalwindowplanckCursor::get(Self, Int32) -> Double
+pub fn SignalwindowplanckCursor::len(Self) -> Int32
+pub fn SignalwindowplanckCursor::max(Self) -> Double
+pub fn SignalwindowplanckCursor::mean(Self) -> Double
+pub fn SignalwindowplanckCursor::min(Self) -> Double
+pub fn SignalwindowplanckCursor::scale(Self, Double) -> Self
+pub fn SignalwindowplanckCursor::set(Self, Int32, Double) -> Self
+pub fn SignalwindowplanckCursor::sum(Self) -> Double
+pub fn SignalwindowplanckCursor::to_string(Self) -> String
+
+pub(all) struct SignalwindowplanckEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowplanckEdge::add(Self, Self) -> Self
+pub fn SignalwindowplanckEdge::copy(Self) -> Self
+pub fn SignalwindowplanckEdge::fill(Self, Double) -> Self
+pub fn SignalwindowplanckEdge::get(Self, Int32) -> Double
+pub fn SignalwindowplanckEdge::len(Self) -> Int32
+pub fn SignalwindowplanckEdge::max(Self) -> Double
+pub fn SignalwindowplanckEdge::mean(Self) -> Double
+pub fn SignalwindowplanckEdge::min(Self) -> Double
+pub fn SignalwindowplanckEdge::scale(Self, Double) -> Self
+pub fn SignalwindowplanckEdge::set(Self, Int32, Double) -> Self
+pub fn SignalwindowplanckEdge::sum(Self) -> Double
+pub fn SignalwindowplanckEdge::to_string(Self) -> String
+
+pub(all) struct SignalwindowplanckFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowplanckFrame::add(Self, Self) -> Self
+pub fn SignalwindowplanckFrame::copy(Self) -> Self
+pub fn SignalwindowplanckFrame::fill(Self, Double) -> Self
+pub fn SignalwindowplanckFrame::get(Self, Int32) -> Double
+pub fn SignalwindowplanckFrame::len(Self) -> Int32
+pub fn SignalwindowplanckFrame::max(Self) -> Double
+pub fn SignalwindowplanckFrame::mean(Self) -> Double
+pub fn SignalwindowplanckFrame::min(Self) -> Double
+pub fn SignalwindowplanckFrame::scale(Self, Double) -> Self
+pub fn SignalwindowplanckFrame::set(Self, Int32, Double) -> Self
+pub fn SignalwindowplanckFrame::sum(Self) -> Double
+pub fn SignalwindowplanckFrame::to_string(Self) -> String
+
+pub(all) struct SignalwindowplanckGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowplanckGraphN::add(Self, Self) -> Self
+pub fn SignalwindowplanckGraphN::copy(Self) -> Self
+pub fn SignalwindowplanckGraphN::fill(Self, Double) -> Self
+pub fn SignalwindowplanckGraphN::get(Self, Int32) -> Double
+pub fn SignalwindowplanckGraphN::len(Self) -> Int32
+pub fn SignalwindowplanckGraphN::max(Self) -> Double
+pub fn SignalwindowplanckGraphN::mean(Self) -> Double
+pub fn SignalwindowplanckGraphN::min(Self) -> Double
+pub fn SignalwindowplanckGraphN::scale(Self, Double) -> Self
+pub fn SignalwindowplanckGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalwindowplanckGraphN::sum(Self) -> Double
+pub fn SignalwindowplanckGraphN::to_string(Self) -> String
+
+pub(all) struct SignalwindowplanckLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowplanckLayer::add(Self, Self) -> Self
+pub fn SignalwindowplanckLayer::copy(Self) -> Self
+pub fn SignalwindowplanckLayer::fill(Self, Double) -> Self
+pub fn SignalwindowplanckLayer::get(Self, Int32) -> Double
+pub fn SignalwindowplanckLayer::len(Self) -> Int32
+pub fn SignalwindowplanckLayer::max(Self) -> Double
+pub fn SignalwindowplanckLayer::mean(Self) -> Double
+pub fn SignalwindowplanckLayer::min(Self) -> Double
+pub fn SignalwindowplanckLayer::scale(Self, Double) -> Self
+pub fn SignalwindowplanckLayer::set(Self, Int32, Double) -> Self
+pub fn SignalwindowplanckLayer::sum(Self) -> Double
+pub fn SignalwindowplanckLayer::to_string(Self) -> String
+
+pub(all) struct SignalwindowplanckMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalwindowplanckMatrix::add(Self, Self) -> Self
+pub fn SignalwindowplanckMatrix::det(Self) -> Double
+pub fn SignalwindowplanckMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalwindowplanckMatrix::multiply(Self, Self) -> Self
+pub fn SignalwindowplanckMatrix::norm(Self) -> Double
+pub fn SignalwindowplanckMatrix::scale(Self, Double) -> Self
+pub fn SignalwindowplanckMatrix::to_string(Self) -> String
+pub fn SignalwindowplanckMatrix::trace(Self) -> Double
+pub fn SignalwindowplanckMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalwindowplanckModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowplanckModel::add(Self, Self) -> Self
+pub fn SignalwindowplanckModel::copy(Self) -> Self
+pub fn SignalwindowplanckModel::fill(Self, Double) -> Self
+pub fn SignalwindowplanckModel::get(Self, Int32) -> Double
+pub fn SignalwindowplanckModel::len(Self) -> Int32
+pub fn SignalwindowplanckModel::max(Self) -> Double
+pub fn SignalwindowplanckModel::mean(Self) -> Double
+pub fn SignalwindowplanckModel::min(Self) -> Double
+pub fn SignalwindowplanckModel::scale(Self, Double) -> Self
+pub fn SignalwindowplanckModel::set(Self, Int32, Double) -> Self
+pub fn SignalwindowplanckModel::sum(Self) -> Double
+pub fn SignalwindowplanckModel::to_string(Self) -> String
+
+pub(all) struct SignalwindowplanckNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowplanckNode::add(Self, Self) -> Self
+pub fn SignalwindowplanckNode::copy(Self) -> Self
+pub fn SignalwindowplanckNode::fill(Self, Double) -> Self
+pub fn SignalwindowplanckNode::get(Self, Int32) -> Double
+pub fn SignalwindowplanckNode::len(Self) -> Int32
+pub fn SignalwindowplanckNode::max(Self) -> Double
+pub fn SignalwindowplanckNode::mean(Self) -> Double
+pub fn SignalwindowplanckNode::min(Self) -> Double
+pub fn SignalwindowplanckNode::scale(Self, Double) -> Self
+pub fn SignalwindowplanckNode::set(Self, Int32, Double) -> Self
+pub fn SignalwindowplanckNode::sum(Self) -> Double
+pub fn SignalwindowplanckNode::to_string(Self) -> String
+
+pub(all) struct SignalwindowplanckPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowplanckPath::add(Self, Self) -> Self
+pub fn SignalwindowplanckPath::copy(Self) -> Self
+pub fn SignalwindowplanckPath::fill(Self, Double) -> Self
+pub fn SignalwindowplanckPath::get(Self, Int32) -> Double
+pub fn SignalwindowplanckPath::len(Self) -> Int32
+pub fn SignalwindowplanckPath::max(Self) -> Double
+pub fn SignalwindowplanckPath::mean(Self) -> Double
+pub fn SignalwindowplanckPath::min(Self) -> Double
+pub fn SignalwindowplanckPath::scale(Self, Double) -> Self
+pub fn SignalwindowplanckPath::set(Self, Int32, Double) -> Self
+pub fn SignalwindowplanckPath::sum(Self) -> Double
+pub fn SignalwindowplanckPath::to_string(Self) -> String
+
+pub(all) struct SignalwindowplanckPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalwindowplanckPoint::add(Self, Self) -> Self
+pub fn SignalwindowplanckPoint::cross(Self, Self) -> Self
+pub fn SignalwindowplanckPoint::dist(Self, Self) -> Double
+pub fn SignalwindowplanckPoint::dot(Self, Self) -> Double
+pub fn SignalwindowplanckPoint::label(Self) -> Int32
+pub fn SignalwindowplanckPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalwindowplanckPoint::mid(Self, Self) -> Self
+pub fn SignalwindowplanckPoint::negate(Self) -> Self
+pub fn SignalwindowplanckPoint::norm(Self) -> Double
+pub fn SignalwindowplanckPoint::normalize(Self) -> Self
+pub fn SignalwindowplanckPoint::scale(Self, Double) -> Self
+pub fn SignalwindowplanckPoint::sub(Self, Self) -> Self
+pub fn SignalwindowplanckPoint::to_string(Self) -> String
+pub fn SignalwindowplanckPoint::x(Self) -> Double
+pub fn SignalwindowplanckPoint::y(Self) -> Double
+pub fn SignalwindowplanckPoint::z(Self) -> Double
+
+pub(all) struct SignalwindowplanckRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowplanckRange::add(Self, Self) -> Self
+pub fn SignalwindowplanckRange::copy(Self) -> Self
+pub fn SignalwindowplanckRange::fill(Self, Double) -> Self
+pub fn SignalwindowplanckRange::get(Self, Int32) -> Double
+pub fn SignalwindowplanckRange::len(Self) -> Int32
+pub fn SignalwindowplanckRange::max(Self) -> Double
+pub fn SignalwindowplanckRange::mean(Self) -> Double
+pub fn SignalwindowplanckRange::min(Self) -> Double
+pub fn SignalwindowplanckRange::scale(Self, Double) -> Self
+pub fn SignalwindowplanckRange::set(Self, Int32, Double) -> Self
+pub fn SignalwindowplanckRange::sum(Self) -> Double
+pub fn SignalwindowplanckRange::to_string(Self) -> String
+
+pub(all) struct SignalwindowplanckSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalwindowplanckSeries::add(Self, Self) -> Self
+pub fn SignalwindowplanckSeries::cumsum(Self) -> Self
+pub fn SignalwindowplanckSeries::len(Self) -> Int32
+pub fn SignalwindowplanckSeries::max(Self) -> Double
+pub fn SignalwindowplanckSeries::mean(Self) -> Double
+pub fn SignalwindowplanckSeries::median(Self) -> Double
+pub fn SignalwindowplanckSeries::min(Self) -> Double
+pub fn SignalwindowplanckSeries::normalize(Self) -> Self
+pub fn SignalwindowplanckSeries::range(Self) -> Double
+pub fn SignalwindowplanckSeries::scale(Self, Double) -> Self
+pub fn SignalwindowplanckSeries::std(Self) -> Double
+pub fn SignalwindowplanckSeries::sub(Self, Self) -> Self
+pub fn SignalwindowplanckSeries::sum(Self) -> Double
+pub fn SignalwindowplanckSeries::to_string(Self) -> String
+pub fn SignalwindowplanckSeries::variance(Self) -> Double
+
+pub(all) struct SignalwindowplanckSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowplanckSlice::add(Self, Self) -> Self
+pub fn SignalwindowplanckSlice::copy(Self) -> Self
+pub fn SignalwindowplanckSlice::fill(Self, Double) -> Self
+pub fn SignalwindowplanckSlice::get(Self, Int32) -> Double
+pub fn SignalwindowplanckSlice::len(Self) -> Int32
+pub fn SignalwindowplanckSlice::max(Self) -> Double
+pub fn SignalwindowplanckSlice::mean(Self) -> Double
+pub fn SignalwindowplanckSlice::min(Self) -> Double
+pub fn SignalwindowplanckSlice::scale(Self, Double) -> Self
+pub fn SignalwindowplanckSlice::set(Self, Int32, Double) -> Self
+pub fn SignalwindowplanckSlice::sum(Self) -> Double
+pub fn SignalwindowplanckSlice::to_string(Self) -> String
+
+pub(all) struct SignalwindowplanckTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowplanckTable::add(Self, Self) -> Self
+pub fn SignalwindowplanckTable::copy(Self) -> Self
+pub fn SignalwindowplanckTable::fill(Self, Double) -> Self
+pub fn SignalwindowplanckTable::get(Self, Int32) -> Double
+pub fn SignalwindowplanckTable::len(Self) -> Int32
+pub fn SignalwindowplanckTable::max(Self) -> Double
+pub fn SignalwindowplanckTable::mean(Self) -> Double
+pub fn SignalwindowplanckTable::min(Self) -> Double
+pub fn SignalwindowplanckTable::scale(Self, Double) -> Self
+pub fn SignalwindowplanckTable::set(Self, Int32, Double) -> Self
+pub fn SignalwindowplanckTable::sum(Self) -> Double
+pub fn SignalwindowplanckTable::to_string(Self) -> String
+
+pub(all) struct SignalwindowplanckVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalwindowplanckVector::add(Self, Self) -> Self
+pub fn SignalwindowplanckVector::dist(Self, Self) -> Double
+pub fn SignalwindowplanckVector::dot(Self, Self) -> Double
+pub fn SignalwindowplanckVector::norm(Self) -> Double
+pub fn SignalwindowplanckVector::normalize(Self) -> Self
+pub fn SignalwindowplanckVector::scale(Self, Double) -> Self
+pub fn SignalwindowplanckVector::sub(Self, Self) -> Self
+pub fn SignalwindowplanckVector::to_string(Self) -> String
+
+pub(all) struct SignalwindowplanckView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalwindowplanckView::add(Self, Self) -> Self
+pub fn SignalwindowplanckView::copy(Self) -> Self
+pub fn SignalwindowplanckView::fill(Self, Double) -> Self
+pub fn SignalwindowplanckView::get(Self, Int32) -> Double
+pub fn SignalwindowplanckView::len(Self) -> Int32
+pub fn SignalwindowplanckView::max(Self) -> Double
+pub fn SignalwindowplanckView::mean(Self) -> Double
+pub fn SignalwindowplanckView::min(Self) -> Double
+pub fn SignalwindowplanckView::scale(Self, Double) -> Self
+pub fn SignalwindowplanckView::set(Self, Int32, Double) -> Self
+pub fn SignalwindowplanckView::sum(Self) -> Double
+pub fn SignalwindowplanckView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

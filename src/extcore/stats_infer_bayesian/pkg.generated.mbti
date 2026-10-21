@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/stats_infer_bayesian"
+
+// Values
+pub fn stats_infer_bayesian_buffer_make(Int32) -> StatsinferbayesianBuffer
+
+pub fn stats_infer_bayesian_cluster_make(Int32) -> StatsinferbayesianCluster
+
+pub fn stats_infer_bayesian_cursor_make(Int32) -> StatsinferbayesianCursor
+
+pub fn stats_infer_bayesian_edge_make(Int32) -> StatsinferbayesianEdge
+
+pub fn stats_infer_bayesian_frame_make(Int32) -> StatsinferbayesianFrame
+
+pub fn stats_infer_bayesian_graphn_make(Int32) -> StatsinferbayesianGraphN
+
+pub fn stats_infer_bayesian_layer_make(Int32) -> StatsinferbayesianLayer
+
+pub fn stats_infer_bayesian_make_matrix(Int32, Int32, Double) -> StatsinferbayesianMatrix
+
+pub fn stats_infer_bayesian_make_point(Double, Double) -> StatsinferbayesianPoint
+
+pub fn stats_infer_bayesian_make_point3(Double, Double, Double) -> StatsinferbayesianPoint
+
+pub fn stats_infer_bayesian_make_series(Array[Double], String) -> StatsinferbayesianSeries
+
+pub fn stats_infer_bayesian_make_vector(Array[Double]) -> StatsinferbayesianVector
+
+pub fn stats_infer_bayesian_matrix_identity(Int32) -> StatsinferbayesianMatrix
+
+pub fn stats_infer_bayesian_model_make(Int32) -> StatsinferbayesianModel
+
+pub fn stats_infer_bayesian_node_make(Int32) -> StatsinferbayesianNode
+
+pub fn stats_infer_bayesian_path_make(Int32) -> StatsinferbayesianPath
+
+pub fn stats_infer_bayesian_range_make(Int32) -> StatsinferbayesianRange
+
+pub fn stats_infer_bayesian_slice_make(Int32) -> StatsinferbayesianSlice
+
+pub fn stats_infer_bayesian_table_make(Int32) -> StatsinferbayesianTable
+
+pub fn stats_infer_bayesian_vector_zero(Int32) -> StatsinferbayesianVector
+
+pub fn stats_infer_bayesian_view_make(Int32) -> StatsinferbayesianView
+
+// Errors
+
+// Types and methods
+pub(all) struct StatsinferbayesianBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferbayesianBuffer::add(Self, Self) -> Self
+pub fn StatsinferbayesianBuffer::copy(Self) -> Self
+pub fn StatsinferbayesianBuffer::fill(Self, Double) -> Self
+pub fn StatsinferbayesianBuffer::get(Self, Int32) -> Double
+pub fn StatsinferbayesianBuffer::len(Self) -> Int32
+pub fn StatsinferbayesianBuffer::max(Self) -> Double
+pub fn StatsinferbayesianBuffer::mean(Self) -> Double
+pub fn StatsinferbayesianBuffer::min(Self) -> Double
+pub fn StatsinferbayesianBuffer::scale(Self, Double) -> Self
+pub fn StatsinferbayesianBuffer::set(Self, Int32, Double) -> Self
+pub fn StatsinferbayesianBuffer::sum(Self) -> Double
+pub fn StatsinferbayesianBuffer::to_string(Self) -> String
+
+pub(all) struct StatsinferbayesianCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferbayesianCluster::add(Self, Self) -> Self
+pub fn StatsinferbayesianCluster::copy(Self) -> Self
+pub fn StatsinferbayesianCluster::fill(Self, Double) -> Self
+pub fn StatsinferbayesianCluster::get(Self, Int32) -> Double
+pub fn StatsinferbayesianCluster::len(Self) -> Int32
+pub fn StatsinferbayesianCluster::max(Self) -> Double
+pub fn StatsinferbayesianCluster::mean(Self) -> Double
+pub fn StatsinferbayesianCluster::min(Self) -> Double
+pub fn StatsinferbayesianCluster::scale(Self, Double) -> Self
+pub fn StatsinferbayesianCluster::set(Self, Int32, Double) -> Self
+pub fn StatsinferbayesianCluster::sum(Self) -> Double
+pub fn StatsinferbayesianCluster::to_string(Self) -> String
+
+pub(all) struct StatsinferbayesianCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferbayesianCursor::add(Self, Self) -> Self
+pub fn StatsinferbayesianCursor::copy(Self) -> Self
+pub fn StatsinferbayesianCursor::fill(Self, Double) -> Self
+pub fn StatsinferbayesianCursor::get(Self, Int32) -> Double
+pub fn StatsinferbayesianCursor::len(Self) -> Int32
+pub fn StatsinferbayesianCursor::max(Self) -> Double
+pub fn StatsinferbayesianCursor::mean(Self) -> Double
+pub fn StatsinferbayesianCursor::min(Self) -> Double
+pub fn StatsinferbayesianCursor::scale(Self, Double) -> Self
+pub fn StatsinferbayesianCursor::set(Self, Int32, Double) -> Self
+pub fn StatsinferbayesianCursor::sum(Self) -> Double
+pub fn StatsinferbayesianCursor::to_string(Self) -> String
+
+pub(all) struct StatsinferbayesianEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferbayesianEdge::add(Self, Self) -> Self
+pub fn StatsinferbayesianEdge::copy(Self) -> Self
+pub fn StatsinferbayesianEdge::fill(Self, Double) -> Self
+pub fn StatsinferbayesianEdge::get(Self, Int32) -> Double
+pub fn StatsinferbayesianEdge::len(Self) -> Int32
+pub fn StatsinferbayesianEdge::max(Self) -> Double
+pub fn StatsinferbayesianEdge::mean(Self) -> Double
+pub fn StatsinferbayesianEdge::min(Self) -> Double
+pub fn StatsinferbayesianEdge::scale(Self, Double) -> Self
+pub fn StatsinferbayesianEdge::set(Self, Int32, Double) -> Self
+pub fn StatsinferbayesianEdge::sum(Self) -> Double
+pub fn StatsinferbayesianEdge::to_string(Self) -> String
+
+pub(all) struct StatsinferbayesianFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferbayesianFrame::add(Self, Self) -> Self
+pub fn StatsinferbayesianFrame::copy(Self) -> Self
+pub fn StatsinferbayesianFrame::fill(Self, Double) -> Self
+pub fn StatsinferbayesianFrame::get(Self, Int32) -> Double
+pub fn StatsinferbayesianFrame::len(Self) -> Int32
+pub fn StatsinferbayesianFrame::max(Self) -> Double
+pub fn StatsinferbayesianFrame::mean(Self) -> Double
+pub fn StatsinferbayesianFrame::min(Self) -> Double
+pub fn StatsinferbayesianFrame::scale(Self, Double) -> Self
+pub fn StatsinferbayesianFrame::set(Self, Int32, Double) -> Self
+pub fn StatsinferbayesianFrame::sum(Self) -> Double
+pub fn StatsinferbayesianFrame::to_string(Self) -> String
+
+pub(all) struct StatsinferbayesianGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferbayesianGraphN::add(Self, Self) -> Self
+pub fn StatsinferbayesianGraphN::copy(Self) -> Self
+pub fn StatsinferbayesianGraphN::fill(Self, Double) -> Self
+pub fn StatsinferbayesianGraphN::get(Self, Int32) -> Double
+pub fn StatsinferbayesianGraphN::len(Self) -> Int32
+pub fn StatsinferbayesianGraphN::max(Self) -> Double
+pub fn StatsinferbayesianGraphN::mean(Self) -> Double
+pub fn StatsinferbayesianGraphN::min(Self) -> Double
+pub fn StatsinferbayesianGraphN::scale(Self, Double) -> Self
+pub fn StatsinferbayesianGraphN::set(Self, Int32, Double) -> Self
+pub fn StatsinferbayesianGraphN::sum(Self) -> Double
+pub fn StatsinferbayesianGraphN::to_string(Self) -> String
+
+pub(all) struct StatsinferbayesianLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferbayesianLayer::add(Self, Self) -> Self
+pub fn StatsinferbayesianLayer::copy(Self) -> Self
+pub fn StatsinferbayesianLayer::fill(Self, Double) -> Self
+pub fn StatsinferbayesianLayer::get(Self, Int32) -> Double
+pub fn StatsinferbayesianLayer::len(Self) -> Int32
+pub fn StatsinferbayesianLayer::max(Self) -> Double
+pub fn StatsinferbayesianLayer::mean(Self) -> Double
+pub fn StatsinferbayesianLayer::min(Self) -> Double
+pub fn StatsinferbayesianLayer::scale(Self, Double) -> Self
+pub fn StatsinferbayesianLayer::set(Self, Int32, Double) -> Self
+pub fn StatsinferbayesianLayer::sum(Self) -> Double
+pub fn StatsinferbayesianLayer::to_string(Self) -> String
+
+pub(all) struct StatsinferbayesianMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn StatsinferbayesianMatrix::add(Self, Self) -> Self
+pub fn StatsinferbayesianMatrix::det(Self) -> Double
+pub fn StatsinferbayesianMatrix::get(Self, Int32, Int32) -> Double
+pub fn StatsinferbayesianMatrix::multiply(Self, Self) -> Self
+pub fn StatsinferbayesianMatrix::norm(Self) -> Double
+pub fn StatsinferbayesianMatrix::scale(Self, Double) -> Self
+pub fn StatsinferbayesianMatrix::to_string(Self) -> String
+pub fn StatsinferbayesianMatrix::trace(Self) -> Double
+pub fn StatsinferbayesianMatrix::transpose(Self) -> Self
+
+pub(all) struct StatsinferbayesianModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferbayesianModel::add(Self, Self) -> Self
+pub fn StatsinferbayesianModel::copy(Self) -> Self
+pub fn StatsinferbayesianModel::fill(Self, Double) -> Self
+pub fn StatsinferbayesianModel::get(Self, Int32) -> Double
+pub fn StatsinferbayesianModel::len(Self) -> Int32
+pub fn StatsinferbayesianModel::max(Self) -> Double
+pub fn StatsinferbayesianModel::mean(Self) -> Double
+pub fn StatsinferbayesianModel::min(Self) -> Double
+pub fn StatsinferbayesianModel::scale(Self, Double) -> Self
+pub fn StatsinferbayesianModel::set(Self, Int32, Double) -> Self
+pub fn StatsinferbayesianModel::sum(Self) -> Double
+pub fn StatsinferbayesianModel::to_string(Self) -> String
+
+pub(all) struct StatsinferbayesianNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferbayesianNode::add(Self, Self) -> Self
+pub fn StatsinferbayesianNode::copy(Self) -> Self
+pub fn StatsinferbayesianNode::fill(Self, Double) -> Self
+pub fn StatsinferbayesianNode::get(Self, Int32) -> Double
+pub fn StatsinferbayesianNode::len(Self) -> Int32
+pub fn StatsinferbayesianNode::max(Self) -> Double
+pub fn StatsinferbayesianNode::mean(Self) -> Double
+pub fn StatsinferbayesianNode::min(Self) -> Double
+pub fn StatsinferbayesianNode::scale(Self, Double) -> Self
+pub fn StatsinferbayesianNode::set(Self, Int32, Double) -> Self
+pub fn StatsinferbayesianNode::sum(Self) -> Double
+pub fn StatsinferbayesianNode::to_string(Self) -> String
+
+pub(all) struct StatsinferbayesianPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferbayesianPath::add(Self, Self) -> Self
+pub fn StatsinferbayesianPath::copy(Self) -> Self
+pub fn StatsinferbayesianPath::fill(Self, Double) -> Self
+pub fn StatsinferbayesianPath::get(Self, Int32) -> Double
+pub fn StatsinferbayesianPath::len(Self) -> Int32
+pub fn StatsinferbayesianPath::max(Self) -> Double
+pub fn StatsinferbayesianPath::mean(Self) -> Double
+pub fn StatsinferbayesianPath::min(Self) -> Double
+pub fn StatsinferbayesianPath::scale(Self, Double) -> Self
+pub fn StatsinferbayesianPath::set(Self, Int32, Double) -> Self
+pub fn StatsinferbayesianPath::sum(Self) -> Double
+pub fn StatsinferbayesianPath::to_string(Self) -> String
+
+pub(all) struct StatsinferbayesianPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn StatsinferbayesianPoint::add(Self, Self) -> Self
+pub fn StatsinferbayesianPoint::cross(Self, Self) -> Self
+pub fn StatsinferbayesianPoint::dist(Self, Self) -> Double
+pub fn StatsinferbayesianPoint::dot(Self, Self) -> Double
+pub fn StatsinferbayesianPoint::label(Self) -> Int32
+pub fn StatsinferbayesianPoint::lerp(Self, Self, Double) -> Self
+pub fn StatsinferbayesianPoint::mid(Self, Self) -> Self
+pub fn StatsinferbayesianPoint::negate(Self) -> Self
+pub fn StatsinferbayesianPoint::norm(Self) -> Double
+pub fn StatsinferbayesianPoint::normalize(Self) -> Self
+pub fn StatsinferbayesianPoint::scale(Self, Double) -> Self
+pub fn StatsinferbayesianPoint::sub(Self, Self) -> Self
+pub fn StatsinferbayesianPoint::to_string(Self) -> String
+pub fn StatsinferbayesianPoint::x(Self) -> Double
+pub fn StatsinferbayesianPoint::y(Self) -> Double
+pub fn StatsinferbayesianPoint::z(Self) -> Double
+
+pub(all) struct StatsinferbayesianRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferbayesianRange::add(Self, Self) -> Self
+pub fn StatsinferbayesianRange::copy(Self) -> Self
+pub fn StatsinferbayesianRange::fill(Self, Double) -> Self
+pub fn StatsinferbayesianRange::get(Self, Int32) -> Double
+pub fn StatsinferbayesianRange::len(Self) -> Int32
+pub fn StatsinferbayesianRange::max(Self) -> Double
+pub fn StatsinferbayesianRange::mean(Self) -> Double
+pub fn StatsinferbayesianRange::min(Self) -> Double
+pub fn StatsinferbayesianRange::scale(Self, Double) -> Self
+pub fn StatsinferbayesianRange::set(Self, Int32, Double) -> Self
+pub fn StatsinferbayesianRange::sum(Self) -> Double
+pub fn StatsinferbayesianRange::to_string(Self) -> String
+
+pub(all) struct StatsinferbayesianSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn StatsinferbayesianSeries::add(Self, Self) -> Self
+pub fn StatsinferbayesianSeries::cumsum(Self) -> Self
+pub fn StatsinferbayesianSeries::len(Self) -> Int32
+pub fn StatsinferbayesianSeries::max(Self) -> Double
+pub fn StatsinferbayesianSeries::mean(Self) -> Double
+pub fn StatsinferbayesianSeries::median(Self) -> Double
+pub fn StatsinferbayesianSeries::min(Self) -> Double
+pub fn StatsinferbayesianSeries::normalize(Self) -> Self
+pub fn StatsinferbayesianSeries::range(Self) -> Double
+pub fn StatsinferbayesianSeries::scale(Self, Double) -> Self
+pub fn StatsinferbayesianSeries::std(Self) -> Double
+pub fn StatsinferbayesianSeries::sub(Self, Self) -> Self
+pub fn StatsinferbayesianSeries::sum(Self) -> Double
+pub fn StatsinferbayesianSeries::to_string(Self) -> String
+pub fn StatsinferbayesianSeries::variance(Self) -> Double
+
+pub(all) struct StatsinferbayesianSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferbayesianSlice::add(Self, Self) -> Self
+pub fn StatsinferbayesianSlice::copy(Self) -> Self
+pub fn StatsinferbayesianSlice::fill(Self, Double) -> Self
+pub fn StatsinferbayesianSlice::get(Self, Int32) -> Double
+pub fn StatsinferbayesianSlice::len(Self) -> Int32
+pub fn StatsinferbayesianSlice::max(Self) -> Double
+pub fn StatsinferbayesianSlice::mean(Self) -> Double
+pub fn StatsinferbayesianSlice::min(Self) -> Double
+pub fn StatsinferbayesianSlice::scale(Self, Double) -> Self
+pub fn StatsinferbayesianSlice::set(Self, Int32, Double) -> Self
+pub fn StatsinferbayesianSlice::sum(Self) -> Double
+pub fn StatsinferbayesianSlice::to_string(Self) -> String
+
+pub(all) struct StatsinferbayesianTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferbayesianTable::add(Self, Self) -> Self
+pub fn StatsinferbayesianTable::copy(Self) -> Self
+pub fn StatsinferbayesianTable::fill(Self, Double) -> Self
+pub fn StatsinferbayesianTable::get(Self, Int32) -> Double
+pub fn StatsinferbayesianTable::len(Self) -> Int32
+pub fn StatsinferbayesianTable::max(Self) -> Double
+pub fn StatsinferbayesianTable::mean(Self) -> Double
+pub fn StatsinferbayesianTable::min(Self) -> Double
+pub fn StatsinferbayesianTable::scale(Self, Double) -> Self
+pub fn StatsinferbayesianTable::set(Self, Int32, Double) -> Self
+pub fn StatsinferbayesianTable::sum(Self) -> Double
+pub fn StatsinferbayesianTable::to_string(Self) -> String
+
+pub(all) struct StatsinferbayesianVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn StatsinferbayesianVector::add(Self, Self) -> Self
+pub fn StatsinferbayesianVector::dist(Self, Self) -> Double
+pub fn StatsinferbayesianVector::dot(Self, Self) -> Double
+pub fn StatsinferbayesianVector::norm(Self) -> Double
+pub fn StatsinferbayesianVector::normalize(Self) -> Self
+pub fn StatsinferbayesianVector::scale(Self, Double) -> Self
+pub fn StatsinferbayesianVector::sub(Self, Self) -> Self
+pub fn StatsinferbayesianVector::to_string(Self) -> String
+
+pub(all) struct StatsinferbayesianView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferbayesianView::add(Self, Self) -> Self
+pub fn StatsinferbayesianView::copy(Self) -> Self
+pub fn StatsinferbayesianView::fill(Self, Double) -> Self
+pub fn StatsinferbayesianView::get(Self, Int32) -> Double
+pub fn StatsinferbayesianView::len(Self) -> Int32
+pub fn StatsinferbayesianView::max(Self) -> Double
+pub fn StatsinferbayesianView::mean(Self) -> Double
+pub fn StatsinferbayesianView::min(Self) -> Double
+pub fn StatsinferbayesianView::scale(Self, Double) -> Self
+pub fn StatsinferbayesianView::set(Self, Int32, Double) -> Self
+pub fn StatsinferbayesianView::sum(Self) -> Double
+pub fn StatsinferbayesianView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

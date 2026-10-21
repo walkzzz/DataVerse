@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/index_invert"
+
+// Values
+pub fn index_invert_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn index_invert_corr(Array[Double], Array[Double]) -> Double
+
+pub fn index_invert_cov(Array[Double], Array[Double]) -> Double
+
+pub fn index_invert_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_invert_mae(Array[Double], Array[Double]) -> Double
+
+pub fn index_invert_make_labeled_point(Double, Double, Int32) -> Index_invertPoint
+
+pub fn index_invert_make_matrix(Int32, Int32, Double) -> Index_invertMatrix
+
+pub fn index_invert_make_point(Double, Double) -> Index_invertPoint
+
+pub fn index_invert_make_series(Array[Double], String) -> Index_invertSeries
+
+pub fn index_invert_make_vector(Array[Double]) -> Index_invertVector
+
+pub fn index_invert_matrix_add(Index_invertMatrix, Index_invertMatrix) -> Index_invertMatrix
+
+pub fn index_invert_matrix_get(Index_invertMatrix, Int32, Int32) -> Double
+
+pub fn index_invert_matrix_identity(Int32) -> Index_invertMatrix
+
+pub fn index_invert_matrix_multiply(Index_invertMatrix, Index_invertMatrix) -> Index_invertMatrix
+
+pub fn index_invert_matrix_norm(Index_invertMatrix) -> Double
+
+pub fn index_invert_matrix_scale(Index_invertMatrix, Double) -> Index_invertMatrix
+
+pub fn index_invert_matrix_to_string(Index_invertMatrix) -> String
+
+pub fn index_invert_matrix_trace(Index_invertMatrix) -> Double
+
+pub fn index_invert_matrix_transpose(Index_invertMatrix) -> Index_invertMatrix
+
+pub fn index_invert_mse(Array[Double], Array[Double]) -> Double
+
+pub fn index_invert_point_add(Index_invertPoint, Index_invertPoint) -> Index_invertPoint
+
+pub fn index_invert_point_dist(Index_invertPoint, Index_invertPoint) -> Double
+
+pub fn index_invert_point_dot(Index_invertPoint, Index_invertPoint) -> Double
+
+pub fn index_invert_point_label(Index_invertPoint) -> Int32
+
+pub fn index_invert_point_norm(Index_invertPoint) -> Double
+
+pub fn index_invert_point_scale(Index_invertPoint, Double) -> Index_invertPoint
+
+pub fn index_invert_point_sub(Index_invertPoint, Index_invertPoint) -> Index_invertPoint
+
+pub fn index_invert_point_to_string(Index_invertPoint) -> String
+
+pub fn index_invert_point_x(Index_invertPoint) -> Double
+
+pub fn index_invert_point_y(Index_invertPoint) -> Double
+
+pub fn index_invert_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_invert_r2(Array[Double], Array[Double]) -> Double
+
+pub fn index_invert_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_invert_series_add(Index_invertSeries, Index_invertSeries) -> Index_invertSeries
+
+pub fn index_invert_series_len(Index_invertSeries) -> Int32
+
+pub fn index_invert_series_max(Index_invertSeries) -> Double
+
+pub fn index_invert_series_mean(Index_invertSeries) -> Double
+
+pub fn index_invert_series_min(Index_invertSeries) -> Double
+
+pub fn index_invert_series_scale(Index_invertSeries, Double) -> Index_invertSeries
+
+pub fn index_invert_series_std(Index_invertSeries) -> Double
+
+pub fn index_invert_series_sum(Index_invertSeries) -> Double
+
+pub fn index_invert_series_to_string(Index_invertSeries) -> String
+
+pub fn index_invert_series_var(Index_invertSeries) -> Double
+
+pub fn index_invert_std(Array[Double]) -> Double
+
+pub fn index_invert_var(Array[Double]) -> Double
+
+pub fn index_invert_vector_add(Index_invertVector, Index_invertVector) -> Index_invertVector
+
+pub fn index_invert_vector_dist(Index_invertVector, Index_invertVector) -> Double
+
+pub fn index_invert_vector_dot(Index_invertVector, Index_invertVector) -> Double
+
+pub fn index_invert_vector_norm(Index_invertVector) -> Double
+
+pub fn index_invert_vector_normalize(Index_invertVector) -> Index_invertVector
+
+pub fn index_invert_vector_scale(Index_invertVector, Double) -> Index_invertVector
+
+pub fn index_invert_vector_sub(Index_invertVector, Index_invertVector) -> Index_invertVector
+
+pub fn index_invert_vector_to_string(Index_invertVector) -> String
+
+pub fn index_invert_vector_zero(Int32) -> Index_invertVector
+
+// Errors
+
+// Types and methods
+pub struct Index_invertMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Index_invertPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Index_invertSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Index_invertVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

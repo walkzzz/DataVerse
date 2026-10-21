@@ -1,0 +1,124 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/ml_stats"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn auc_score(Array[Int32], Array[Double]) -> Double
+
+pub fn bin_feature(Array[Double], Array[Double]) -> Array[Int32]
+
+pub fn bootstrap_sample(Array[Double], Int32) -> Array[Double]
+
+pub fn calinski_harabasz_score(Array[Array[Double]], Array[Int32]) -> Double
+
+pub fn confusion_matrix(Array[Int32], Array[Int32], Int32) -> ConfusionMatrix
+
+pub fn cross_validate_score(Array[Double]) -> CVResult
+
+pub fn davies_bouldin_score(Array[Array[Double]], Array[Int32]) -> Double
+
+pub fn discretize(Array[Double], Int32) -> Array[Int32]
+
+pub fn encode_label(Array[String]) -> Array[Int32]
+
+pub fn encode_one_hot(Array[Int32], Int32) -> Array[Array[Double]]
+
+pub fn encode_ordinal(Array[String], Array[String]) -> Array[Int32]
+
+pub fn exp_(Double) -> Double
+
+pub fn f1_score_ml(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn feature_importance(Array[Double]) -> Array[Double]
+
+pub fn feature_selection(Array[Double], Double) -> Array[Int32]
+
+pub fn hinge_loss(Array[Int32], Array[Double]) -> Double
+
+pub fn k_fold_split(Int32, Int32) -> Array[(Array[Int32], Array[Int32])]
+
+pub fn kl_divergence(Array[Double], Array[Double]) -> Double
+
+pub fn leave_one_out(Int32) -> Array[(Array[Int32], Array[Int32])]
+
+pub fn ln_(Double) -> Double
+
+pub fn log_loss(Array[Int32], Array[Double]) -> Double
+
+pub fn mean_absolute_error(Array[Double], Array[Double]) -> Double
+
+pub fn mean_squared_error(Array[Double], Array[Double]) -> Double
+
+pub fn min_max_scale(Array[Double], Double, Double) -> Array[Double]
+
+pub fn ml_stats_id() -> String
+
+pub fn normalize_feature(Array[Double]) -> Array[Double]
+
+pub fn oversample(Array[Array[Double]], Array[Int32], Int32) -> Array[Array[Double]]
+
+pub fn polynomial_features(Array[Double], Int32) -> Array[Array[Double]]
+
+pub fn precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn r2_score(Array[Double], Array[Double]) -> Double
+
+pub fn recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn remove_correlated(Array[Array[Double]], Double) -> Array[Int32]
+
+pub fn roc_curve(Array[Int32], Array[Double]) -> ROCCurve
+
+pub fn shuffle_dataset(Int32) -> Array[Int32]
+
+pub fn silhouette_score(Array[Array[Double]], Array[Int32]) -> Double
+
+pub fn smote(Array[Array[Double]], Array[Int32], Int32, Int32) -> Array[Array[Double]]
+
+pub fn sqrt_(Double) -> Double
+
+pub fn standardize_feature(Array[Double]) -> Array[Double]
+
+pub fn stratified_split(Array[Int32], Int32) -> Array[(Array[Int32], Array[Int32])]
+
+pub fn train_test_split(Int32, Double) -> (Array[Int32], Array[Int32])
+
+pub fn undersample(Array[Array[Double]], Array[Int32], Int32) -> Array[Array[Double]]
+
+// Errors
+
+// Types and methods
+pub struct CVResult {
+  mean_score : Double
+  std_score : Double
+  scores : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn CVResult::equal(Self, Self) -> Bool
+pub fn CVResult::not_equal(Self, Self) -> Bool
+pub fn CVResult::to_repr(Self) -> @debug.Repr
+
+pub struct ConfusionMatrix {
+  matrix : Array[Array[Int32]]
+  num_classes : Int32
+} derive(Eq, @debug.Debug)
+pub fn ConfusionMatrix::equal(Self, Self) -> Bool
+pub fn ConfusionMatrix::not_equal(Self, Self) -> Bool
+pub fn ConfusionMatrix::to_repr(Self) -> @debug.Repr
+
+pub struct ROCCurve {
+  fpr : Array[Double]
+  tpr : Array[Double]
+  thresholds : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn ROCCurve::equal(Self, Self) -> Bool
+pub fn ROCCurve::not_equal(Self, Self) -> Bool
+pub fn ROCCurve::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

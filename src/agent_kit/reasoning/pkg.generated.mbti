@@ -1,0 +1,179 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/reasoning"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn abductive_reasoning(Array[Fact], Array[Rule]) -> Rule?
+
+pub fn add_belief(KnowledgeBase, Fact) -> KnowledgeBase
+
+pub fn add_causal_edge(CausalModel, String, String) -> CausalModel
+
+pub fn argument_validity(Argument) -> Bool
+
+pub fn backdoor_adjustment(CausalModel, String, String, Array[String]) -> Double
+
+pub fn backward_chaining(KnowledgeBase, Query, Int32) -> InferenceResult
+
+pub fn causal_effect(CausalModel, String, String, Double, Double) -> Double
+
+pub fn compose_substitution(Substitution, Substitution) -> Substitution
+
+pub fn consistency_check(KnowledgeBase) -> Bool
+
+pub fn counterfactual(CausalModel, Fact, Fact) -> Fact
+
+pub fn deductive_reasoning(Array[Fact], Array[Rule]) -> Array[Fact]
+
+pub fn do_intervention(CausalModel, String, Double) -> CausalModel
+
+pub fn evaluate_argument(Argument) -> Double
+
+pub fn forward_chaining(KnowledgeBase, Int32) -> Array[Fact]
+
+pub fn frontdoor_adjustment(CausalModel, String, String, String) -> Double
+
+pub fn hypothetical_syllogism(Rule, Rule) -> Rule?
+
+pub fn inductive_reasoning(Array[Fact]) -> Rule
+
+pub fn instrumental_variable(CausalModel, String, String, String) -> Double
+
+pub fn make_argument(String, Array[Fact], Fact) -> Argument
+
+pub fn make_causal_model(String, Array[String]) -> CausalModel
+
+pub fn make_fact(String, String, Bool, Double) -> Fact
+
+pub fn make_inference_result(Query, Bool, Array[Rule], Double, String) -> InferenceResult
+
+pub fn make_knowledge_base(String, Array[Fact], Array[Rule]) -> KnowledgeBase
+
+pub fn make_proof(String, Array[ProofStep], String) -> Proof
+
+pub fn make_query(String, String) -> Query
+
+pub fn make_rule(String, String, String, Double) -> Rule
+
+pub fn modus_ponens(Rule, Fact) -> Fact?
+
+pub fn modus_tollens(Rule, Fact) -> Fact?
+
+pub fn proof_step(Int32, String, String) -> ProofStep
+
+pub fn query_belief(KnowledgeBase, String) -> Fact?
+
+pub fn reasoning_id() -> String
+
+pub fn resolution(Array[String], Array[String]) -> Array[String]
+
+pub fn retract_belief(KnowledgeBase, String) -> KnowledgeBase
+
+pub fn revise_belief(KnowledgeBase, Fact) -> KnowledgeBase
+
+pub fn substitution(String, Substitution) -> String
+
+pub fn unification(String, String) -> Substitution?
+
+pub fn verify_proof(Proof) -> Bool
+
+// Errors
+
+// Types and methods
+pub struct Argument {
+  arg_id : String
+  premises : Array[Fact]
+  conclusion : Fact
+} derive(Eq, @debug.Debug)
+pub fn Argument::equal(Self, Self) -> Bool
+pub fn Argument::not_equal(Self, Self) -> Bool
+pub fn Argument::to_repr(Self) -> @debug.Repr
+
+pub struct CausalModel {
+  model_id : String
+  variables : Array[String]
+  edges : Array[(String, String)]
+} derive(Eq, @debug.Debug)
+pub fn CausalModel::equal(Self, Self) -> Bool
+pub fn CausalModel::not_equal(Self, Self) -> Bool
+pub fn CausalModel::to_repr(Self) -> @debug.Repr
+
+pub struct Fact {
+  fact_id : String
+  proposition : String
+  truth_value : Bool
+  confidence : Double
+} derive(Eq, @debug.Debug)
+pub fn Fact::equal(Self, Self) -> Bool
+pub fn Fact::not_equal(Self, Self) -> Bool
+pub fn Fact::to_repr(Self) -> @debug.Repr
+
+pub struct InferenceResult {
+  query : Query
+  answer : Bool
+  support : Array[Rule]
+  confidence : Double
+  explanation : String
+} derive(Eq, @debug.Debug)
+pub fn InferenceResult::equal(Self, Self) -> Bool
+pub fn InferenceResult::not_equal(Self, Self) -> Bool
+pub fn InferenceResult::to_repr(Self) -> @debug.Repr
+
+pub struct KnowledgeBase {
+  kb_id : String
+  beliefs : Array[Fact]
+  rules : Array[Rule]
+} derive(Eq, @debug.Debug)
+pub fn KnowledgeBase::equal(Self, Self) -> Bool
+pub fn KnowledgeBase::not_equal(Self, Self) -> Bool
+pub fn KnowledgeBase::to_repr(Self) -> @debug.Repr
+
+pub struct Proof {
+  proof_id : String
+  steps : Array[ProofStep]
+  goal : String
+} derive(Eq, @debug.Debug)
+pub fn Proof::equal(Self, Self) -> Bool
+pub fn Proof::not_equal(Self, Self) -> Bool
+pub fn Proof::to_repr(Self) -> @debug.Repr
+
+pub struct ProofStep {
+  step_id : Int32
+  statement : String
+  justification : String
+} derive(Eq, @debug.Debug)
+pub fn ProofStep::equal(Self, Self) -> Bool
+pub fn ProofStep::not_equal(Self, Self) -> Bool
+pub fn ProofStep::to_repr(Self) -> @debug.Repr
+
+pub struct Query {
+  query_id : String
+  proposition : String
+} derive(Eq, @debug.Debug)
+pub fn Query::equal(Self, Self) -> Bool
+pub fn Query::not_equal(Self, Self) -> Bool
+pub fn Query::to_repr(Self) -> @debug.Repr
+
+pub struct Rule {
+  rule_id : String
+  premise : String
+  conclusion : String
+  confidence : Double
+} derive(Eq, @debug.Debug)
+pub fn Rule::equal(Self, Self) -> Bool
+pub fn Rule::not_equal(Self, Self) -> Bool
+pub fn Rule::to_repr(Self) -> @debug.Repr
+
+pub struct Substitution {
+  bindings : Array[(String, String)]
+} derive(Eq, @debug.Debug)
+pub fn Substitution::equal(Self, Self) -> Bool
+pub fn Substitution::not_equal(Self, Self) -> Bool
+pub fn Substitution::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

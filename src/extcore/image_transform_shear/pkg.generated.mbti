@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_transform_shear"
+
+// Values
+pub fn image_transform_shear_buffer_make(Int32) -> ImagetransformshearBuffer
+
+pub fn image_transform_shear_cluster_make(Int32) -> ImagetransformshearCluster
+
+pub fn image_transform_shear_cursor_make(Int32) -> ImagetransformshearCursor
+
+pub fn image_transform_shear_edge_make(Int32) -> ImagetransformshearEdge
+
+pub fn image_transform_shear_frame_make(Int32) -> ImagetransformshearFrame
+
+pub fn image_transform_shear_graphn_make(Int32) -> ImagetransformshearGraphN
+
+pub fn image_transform_shear_layer_make(Int32) -> ImagetransformshearLayer
+
+pub fn image_transform_shear_make_matrix(Int32, Int32, Double) -> ImagetransformshearMatrix
+
+pub fn image_transform_shear_make_point(Double, Double) -> ImagetransformshearPoint
+
+pub fn image_transform_shear_make_point3(Double, Double, Double) -> ImagetransformshearPoint
+
+pub fn image_transform_shear_make_series(Array[Double], String) -> ImagetransformshearSeries
+
+pub fn image_transform_shear_make_vector(Array[Double]) -> ImagetransformshearVector
+
+pub fn image_transform_shear_matrix_identity(Int32) -> ImagetransformshearMatrix
+
+pub fn image_transform_shear_model_make(Int32) -> ImagetransformshearModel
+
+pub fn image_transform_shear_node_make(Int32) -> ImagetransformshearNode
+
+pub fn image_transform_shear_path_make(Int32) -> ImagetransformshearPath
+
+pub fn image_transform_shear_range_make(Int32) -> ImagetransformshearRange
+
+pub fn image_transform_shear_slice_make(Int32) -> ImagetransformshearSlice
+
+pub fn image_transform_shear_table_make(Int32) -> ImagetransformshearTable
+
+pub fn image_transform_shear_vector_zero(Int32) -> ImagetransformshearVector
+
+pub fn image_transform_shear_view_make(Int32) -> ImagetransformshearView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagetransformshearBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformshearBuffer::add(Self, Self) -> Self
+pub fn ImagetransformshearBuffer::copy(Self) -> Self
+pub fn ImagetransformshearBuffer::fill(Self, Double) -> Self
+pub fn ImagetransformshearBuffer::get(Self, Int32) -> Double
+pub fn ImagetransformshearBuffer::len(Self) -> Int32
+pub fn ImagetransformshearBuffer::max(Self) -> Double
+pub fn ImagetransformshearBuffer::mean(Self) -> Double
+pub fn ImagetransformshearBuffer::min(Self) -> Double
+pub fn ImagetransformshearBuffer::scale(Self, Double) -> Self
+pub fn ImagetransformshearBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagetransformshearBuffer::sum(Self) -> Double
+pub fn ImagetransformshearBuffer::to_string(Self) -> String
+
+pub(all) struct ImagetransformshearCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformshearCluster::add(Self, Self) -> Self
+pub fn ImagetransformshearCluster::copy(Self) -> Self
+pub fn ImagetransformshearCluster::fill(Self, Double) -> Self
+pub fn ImagetransformshearCluster::get(Self, Int32) -> Double
+pub fn ImagetransformshearCluster::len(Self) -> Int32
+pub fn ImagetransformshearCluster::max(Self) -> Double
+pub fn ImagetransformshearCluster::mean(Self) -> Double
+pub fn ImagetransformshearCluster::min(Self) -> Double
+pub fn ImagetransformshearCluster::scale(Self, Double) -> Self
+pub fn ImagetransformshearCluster::set(Self, Int32, Double) -> Self
+pub fn ImagetransformshearCluster::sum(Self) -> Double
+pub fn ImagetransformshearCluster::to_string(Self) -> String
+
+pub(all) struct ImagetransformshearCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformshearCursor::add(Self, Self) -> Self
+pub fn ImagetransformshearCursor::copy(Self) -> Self
+pub fn ImagetransformshearCursor::fill(Self, Double) -> Self
+pub fn ImagetransformshearCursor::get(Self, Int32) -> Double
+pub fn ImagetransformshearCursor::len(Self) -> Int32
+pub fn ImagetransformshearCursor::max(Self) -> Double
+pub fn ImagetransformshearCursor::mean(Self) -> Double
+pub fn ImagetransformshearCursor::min(Self) -> Double
+pub fn ImagetransformshearCursor::scale(Self, Double) -> Self
+pub fn ImagetransformshearCursor::set(Self, Int32, Double) -> Self
+pub fn ImagetransformshearCursor::sum(Self) -> Double
+pub fn ImagetransformshearCursor::to_string(Self) -> String
+
+pub(all) struct ImagetransformshearEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformshearEdge::add(Self, Self) -> Self
+pub fn ImagetransformshearEdge::copy(Self) -> Self
+pub fn ImagetransformshearEdge::fill(Self, Double) -> Self
+pub fn ImagetransformshearEdge::get(Self, Int32) -> Double
+pub fn ImagetransformshearEdge::len(Self) -> Int32
+pub fn ImagetransformshearEdge::max(Self) -> Double
+pub fn ImagetransformshearEdge::mean(Self) -> Double
+pub fn ImagetransformshearEdge::min(Self) -> Double
+pub fn ImagetransformshearEdge::scale(Self, Double) -> Self
+pub fn ImagetransformshearEdge::set(Self, Int32, Double) -> Self
+pub fn ImagetransformshearEdge::sum(Self) -> Double
+pub fn ImagetransformshearEdge::to_string(Self) -> String
+
+pub(all) struct ImagetransformshearFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformshearFrame::add(Self, Self) -> Self
+pub fn ImagetransformshearFrame::copy(Self) -> Self
+pub fn ImagetransformshearFrame::fill(Self, Double) -> Self
+pub fn ImagetransformshearFrame::get(Self, Int32) -> Double
+pub fn ImagetransformshearFrame::len(Self) -> Int32
+pub fn ImagetransformshearFrame::max(Self) -> Double
+pub fn ImagetransformshearFrame::mean(Self) -> Double
+pub fn ImagetransformshearFrame::min(Self) -> Double
+pub fn ImagetransformshearFrame::scale(Self, Double) -> Self
+pub fn ImagetransformshearFrame::set(Self, Int32, Double) -> Self
+pub fn ImagetransformshearFrame::sum(Self) -> Double
+pub fn ImagetransformshearFrame::to_string(Self) -> String
+
+pub(all) struct ImagetransformshearGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformshearGraphN::add(Self, Self) -> Self
+pub fn ImagetransformshearGraphN::copy(Self) -> Self
+pub fn ImagetransformshearGraphN::fill(Self, Double) -> Self
+pub fn ImagetransformshearGraphN::get(Self, Int32) -> Double
+pub fn ImagetransformshearGraphN::len(Self) -> Int32
+pub fn ImagetransformshearGraphN::max(Self) -> Double
+pub fn ImagetransformshearGraphN::mean(Self) -> Double
+pub fn ImagetransformshearGraphN::min(Self) -> Double
+pub fn ImagetransformshearGraphN::scale(Self, Double) -> Self
+pub fn ImagetransformshearGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagetransformshearGraphN::sum(Self) -> Double
+pub fn ImagetransformshearGraphN::to_string(Self) -> String
+
+pub(all) struct ImagetransformshearLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformshearLayer::add(Self, Self) -> Self
+pub fn ImagetransformshearLayer::copy(Self) -> Self
+pub fn ImagetransformshearLayer::fill(Self, Double) -> Self
+pub fn ImagetransformshearLayer::get(Self, Int32) -> Double
+pub fn ImagetransformshearLayer::len(Self) -> Int32
+pub fn ImagetransformshearLayer::max(Self) -> Double
+pub fn ImagetransformshearLayer::mean(Self) -> Double
+pub fn ImagetransformshearLayer::min(Self) -> Double
+pub fn ImagetransformshearLayer::scale(Self, Double) -> Self
+pub fn ImagetransformshearLayer::set(Self, Int32, Double) -> Self
+pub fn ImagetransformshearLayer::sum(Self) -> Double
+pub fn ImagetransformshearLayer::to_string(Self) -> String
+
+pub(all) struct ImagetransformshearMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagetransformshearMatrix::add(Self, Self) -> Self
+pub fn ImagetransformshearMatrix::det(Self) -> Double
+pub fn ImagetransformshearMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagetransformshearMatrix::multiply(Self, Self) -> Self
+pub fn ImagetransformshearMatrix::norm(Self) -> Double
+pub fn ImagetransformshearMatrix::scale(Self, Double) -> Self
+pub fn ImagetransformshearMatrix::to_string(Self) -> String
+pub fn ImagetransformshearMatrix::trace(Self) -> Double
+pub fn ImagetransformshearMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagetransformshearModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformshearModel::add(Self, Self) -> Self
+pub fn ImagetransformshearModel::copy(Self) -> Self
+pub fn ImagetransformshearModel::fill(Self, Double) -> Self
+pub fn ImagetransformshearModel::get(Self, Int32) -> Double
+pub fn ImagetransformshearModel::len(Self) -> Int32
+pub fn ImagetransformshearModel::max(Self) -> Double
+pub fn ImagetransformshearModel::mean(Self) -> Double
+pub fn ImagetransformshearModel::min(Self) -> Double
+pub fn ImagetransformshearModel::scale(Self, Double) -> Self
+pub fn ImagetransformshearModel::set(Self, Int32, Double) -> Self
+pub fn ImagetransformshearModel::sum(Self) -> Double
+pub fn ImagetransformshearModel::to_string(Self) -> String
+
+pub(all) struct ImagetransformshearNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformshearNode::add(Self, Self) -> Self
+pub fn ImagetransformshearNode::copy(Self) -> Self
+pub fn ImagetransformshearNode::fill(Self, Double) -> Self
+pub fn ImagetransformshearNode::get(Self, Int32) -> Double
+pub fn ImagetransformshearNode::len(Self) -> Int32
+pub fn ImagetransformshearNode::max(Self) -> Double
+pub fn ImagetransformshearNode::mean(Self) -> Double
+pub fn ImagetransformshearNode::min(Self) -> Double
+pub fn ImagetransformshearNode::scale(Self, Double) -> Self
+pub fn ImagetransformshearNode::set(Self, Int32, Double) -> Self
+pub fn ImagetransformshearNode::sum(Self) -> Double
+pub fn ImagetransformshearNode::to_string(Self) -> String
+
+pub(all) struct ImagetransformshearPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformshearPath::add(Self, Self) -> Self
+pub fn ImagetransformshearPath::copy(Self) -> Self
+pub fn ImagetransformshearPath::fill(Self, Double) -> Self
+pub fn ImagetransformshearPath::get(Self, Int32) -> Double
+pub fn ImagetransformshearPath::len(Self) -> Int32
+pub fn ImagetransformshearPath::max(Self) -> Double
+pub fn ImagetransformshearPath::mean(Self) -> Double
+pub fn ImagetransformshearPath::min(Self) -> Double
+pub fn ImagetransformshearPath::scale(Self, Double) -> Self
+pub fn ImagetransformshearPath::set(Self, Int32, Double) -> Self
+pub fn ImagetransformshearPath::sum(Self) -> Double
+pub fn ImagetransformshearPath::to_string(Self) -> String
+
+pub(all) struct ImagetransformshearPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagetransformshearPoint::add(Self, Self) -> Self
+pub fn ImagetransformshearPoint::cross(Self, Self) -> Self
+pub fn ImagetransformshearPoint::dist(Self, Self) -> Double
+pub fn ImagetransformshearPoint::dot(Self, Self) -> Double
+pub fn ImagetransformshearPoint::label(Self) -> Int32
+pub fn ImagetransformshearPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagetransformshearPoint::mid(Self, Self) -> Self
+pub fn ImagetransformshearPoint::negate(Self) -> Self
+pub fn ImagetransformshearPoint::norm(Self) -> Double
+pub fn ImagetransformshearPoint::normalize(Self) -> Self
+pub fn ImagetransformshearPoint::scale(Self, Double) -> Self
+pub fn ImagetransformshearPoint::sub(Self, Self) -> Self
+pub fn ImagetransformshearPoint::to_string(Self) -> String
+pub fn ImagetransformshearPoint::x(Self) -> Double
+pub fn ImagetransformshearPoint::y(Self) -> Double
+pub fn ImagetransformshearPoint::z(Self) -> Double
+
+pub(all) struct ImagetransformshearRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformshearRange::add(Self, Self) -> Self
+pub fn ImagetransformshearRange::copy(Self) -> Self
+pub fn ImagetransformshearRange::fill(Self, Double) -> Self
+pub fn ImagetransformshearRange::get(Self, Int32) -> Double
+pub fn ImagetransformshearRange::len(Self) -> Int32
+pub fn ImagetransformshearRange::max(Self) -> Double
+pub fn ImagetransformshearRange::mean(Self) -> Double
+pub fn ImagetransformshearRange::min(Self) -> Double
+pub fn ImagetransformshearRange::scale(Self, Double) -> Self
+pub fn ImagetransformshearRange::set(Self, Int32, Double) -> Self
+pub fn ImagetransformshearRange::sum(Self) -> Double
+pub fn ImagetransformshearRange::to_string(Self) -> String
+
+pub(all) struct ImagetransformshearSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagetransformshearSeries::add(Self, Self) -> Self
+pub fn ImagetransformshearSeries::cumsum(Self) -> Self
+pub fn ImagetransformshearSeries::len(Self) -> Int32
+pub fn ImagetransformshearSeries::max(Self) -> Double
+pub fn ImagetransformshearSeries::mean(Self) -> Double
+pub fn ImagetransformshearSeries::median(Self) -> Double
+pub fn ImagetransformshearSeries::min(Self) -> Double
+pub fn ImagetransformshearSeries::normalize(Self) -> Self
+pub fn ImagetransformshearSeries::range(Self) -> Double
+pub fn ImagetransformshearSeries::scale(Self, Double) -> Self
+pub fn ImagetransformshearSeries::std(Self) -> Double
+pub fn ImagetransformshearSeries::sub(Self, Self) -> Self
+pub fn ImagetransformshearSeries::sum(Self) -> Double
+pub fn ImagetransformshearSeries::to_string(Self) -> String
+pub fn ImagetransformshearSeries::variance(Self) -> Double
+
+pub(all) struct ImagetransformshearSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformshearSlice::add(Self, Self) -> Self
+pub fn ImagetransformshearSlice::copy(Self) -> Self
+pub fn ImagetransformshearSlice::fill(Self, Double) -> Self
+pub fn ImagetransformshearSlice::get(Self, Int32) -> Double
+pub fn ImagetransformshearSlice::len(Self) -> Int32
+pub fn ImagetransformshearSlice::max(Self) -> Double
+pub fn ImagetransformshearSlice::mean(Self) -> Double
+pub fn ImagetransformshearSlice::min(Self) -> Double
+pub fn ImagetransformshearSlice::scale(Self, Double) -> Self
+pub fn ImagetransformshearSlice::set(Self, Int32, Double) -> Self
+pub fn ImagetransformshearSlice::sum(Self) -> Double
+pub fn ImagetransformshearSlice::to_string(Self) -> String
+
+pub(all) struct ImagetransformshearTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformshearTable::add(Self, Self) -> Self
+pub fn ImagetransformshearTable::copy(Self) -> Self
+pub fn ImagetransformshearTable::fill(Self, Double) -> Self
+pub fn ImagetransformshearTable::get(Self, Int32) -> Double
+pub fn ImagetransformshearTable::len(Self) -> Int32
+pub fn ImagetransformshearTable::max(Self) -> Double
+pub fn ImagetransformshearTable::mean(Self) -> Double
+pub fn ImagetransformshearTable::min(Self) -> Double
+pub fn ImagetransformshearTable::scale(Self, Double) -> Self
+pub fn ImagetransformshearTable::set(Self, Int32, Double) -> Self
+pub fn ImagetransformshearTable::sum(Self) -> Double
+pub fn ImagetransformshearTable::to_string(Self) -> String
+
+pub(all) struct ImagetransformshearVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagetransformshearVector::add(Self, Self) -> Self
+pub fn ImagetransformshearVector::dist(Self, Self) -> Double
+pub fn ImagetransformshearVector::dot(Self, Self) -> Double
+pub fn ImagetransformshearVector::norm(Self) -> Double
+pub fn ImagetransformshearVector::normalize(Self) -> Self
+pub fn ImagetransformshearVector::scale(Self, Double) -> Self
+pub fn ImagetransformshearVector::sub(Self, Self) -> Self
+pub fn ImagetransformshearVector::to_string(Self) -> String
+
+pub(all) struct ImagetransformshearView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformshearView::add(Self, Self) -> Self
+pub fn ImagetransformshearView::copy(Self) -> Self
+pub fn ImagetransformshearView::fill(Self, Double) -> Self
+pub fn ImagetransformshearView::get(Self, Int32) -> Double
+pub fn ImagetransformshearView::len(Self) -> Int32
+pub fn ImagetransformshearView::max(Self) -> Double
+pub fn ImagetransformshearView::mean(Self) -> Double
+pub fn ImagetransformshearView::min(Self) -> Double
+pub fn ImagetransformshearView::scale(Self, Double) -> Self
+pub fn ImagetransformshearView::set(Self, Int32, Double) -> Self
+pub fn ImagetransformshearView::sum(Self) -> Double
+pub fn ImagetransformshearView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

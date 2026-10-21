@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/finance_risk_spectral"
+
+// Values
+pub fn finance_risk_spectral_buffer_make(Int32) -> FinanceriskspectralBuffer
+
+pub fn finance_risk_spectral_cluster_make(Int32) -> FinanceriskspectralCluster
+
+pub fn finance_risk_spectral_cursor_make(Int32) -> FinanceriskspectralCursor
+
+pub fn finance_risk_spectral_edge_make(Int32) -> FinanceriskspectralEdge
+
+pub fn finance_risk_spectral_frame_make(Int32) -> FinanceriskspectralFrame
+
+pub fn finance_risk_spectral_graphn_make(Int32) -> FinanceriskspectralGraphN
+
+pub fn finance_risk_spectral_layer_make(Int32) -> FinanceriskspectralLayer
+
+pub fn finance_risk_spectral_make_matrix(Int32, Int32, Double) -> FinanceriskspectralMatrix
+
+pub fn finance_risk_spectral_make_point(Double, Double) -> FinanceriskspectralPoint
+
+pub fn finance_risk_spectral_make_point3(Double, Double, Double) -> FinanceriskspectralPoint
+
+pub fn finance_risk_spectral_make_series(Array[Double], String) -> FinanceriskspectralSeries
+
+pub fn finance_risk_spectral_make_vector(Array[Double]) -> FinanceriskspectralVector
+
+pub fn finance_risk_spectral_matrix_identity(Int32) -> FinanceriskspectralMatrix
+
+pub fn finance_risk_spectral_model_make(Int32) -> FinanceriskspectralModel
+
+pub fn finance_risk_spectral_node_make(Int32) -> FinanceriskspectralNode
+
+pub fn finance_risk_spectral_path_make(Int32) -> FinanceriskspectralPath
+
+pub fn finance_risk_spectral_range_make(Int32) -> FinanceriskspectralRange
+
+pub fn finance_risk_spectral_slice_make(Int32) -> FinanceriskspectralSlice
+
+pub fn finance_risk_spectral_table_make(Int32) -> FinanceriskspectralTable
+
+pub fn finance_risk_spectral_vector_zero(Int32) -> FinanceriskspectralVector
+
+pub fn finance_risk_spectral_view_make(Int32) -> FinanceriskspectralView
+
+// Errors
+
+// Types and methods
+pub(all) struct FinanceriskspectralBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskspectralBuffer::add(Self, Self) -> Self
+pub fn FinanceriskspectralBuffer::copy(Self) -> Self
+pub fn FinanceriskspectralBuffer::fill(Self, Double) -> Self
+pub fn FinanceriskspectralBuffer::get(Self, Int32) -> Double
+pub fn FinanceriskspectralBuffer::len(Self) -> Int32
+pub fn FinanceriskspectralBuffer::max(Self) -> Double
+pub fn FinanceriskspectralBuffer::mean(Self) -> Double
+pub fn FinanceriskspectralBuffer::min(Self) -> Double
+pub fn FinanceriskspectralBuffer::scale(Self, Double) -> Self
+pub fn FinanceriskspectralBuffer::set(Self, Int32, Double) -> Self
+pub fn FinanceriskspectralBuffer::sum(Self) -> Double
+pub fn FinanceriskspectralBuffer::to_string(Self) -> String
+
+pub(all) struct FinanceriskspectralCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskspectralCluster::add(Self, Self) -> Self
+pub fn FinanceriskspectralCluster::copy(Self) -> Self
+pub fn FinanceriskspectralCluster::fill(Self, Double) -> Self
+pub fn FinanceriskspectralCluster::get(Self, Int32) -> Double
+pub fn FinanceriskspectralCluster::len(Self) -> Int32
+pub fn FinanceriskspectralCluster::max(Self) -> Double
+pub fn FinanceriskspectralCluster::mean(Self) -> Double
+pub fn FinanceriskspectralCluster::min(Self) -> Double
+pub fn FinanceriskspectralCluster::scale(Self, Double) -> Self
+pub fn FinanceriskspectralCluster::set(Self, Int32, Double) -> Self
+pub fn FinanceriskspectralCluster::sum(Self) -> Double
+pub fn FinanceriskspectralCluster::to_string(Self) -> String
+
+pub(all) struct FinanceriskspectralCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskspectralCursor::add(Self, Self) -> Self
+pub fn FinanceriskspectralCursor::copy(Self) -> Self
+pub fn FinanceriskspectralCursor::fill(Self, Double) -> Self
+pub fn FinanceriskspectralCursor::get(Self, Int32) -> Double
+pub fn FinanceriskspectralCursor::len(Self) -> Int32
+pub fn FinanceriskspectralCursor::max(Self) -> Double
+pub fn FinanceriskspectralCursor::mean(Self) -> Double
+pub fn FinanceriskspectralCursor::min(Self) -> Double
+pub fn FinanceriskspectralCursor::scale(Self, Double) -> Self
+pub fn FinanceriskspectralCursor::set(Self, Int32, Double) -> Self
+pub fn FinanceriskspectralCursor::sum(Self) -> Double
+pub fn FinanceriskspectralCursor::to_string(Self) -> String
+
+pub(all) struct FinanceriskspectralEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskspectralEdge::add(Self, Self) -> Self
+pub fn FinanceriskspectralEdge::copy(Self) -> Self
+pub fn FinanceriskspectralEdge::fill(Self, Double) -> Self
+pub fn FinanceriskspectralEdge::get(Self, Int32) -> Double
+pub fn FinanceriskspectralEdge::len(Self) -> Int32
+pub fn FinanceriskspectralEdge::max(Self) -> Double
+pub fn FinanceriskspectralEdge::mean(Self) -> Double
+pub fn FinanceriskspectralEdge::min(Self) -> Double
+pub fn FinanceriskspectralEdge::scale(Self, Double) -> Self
+pub fn FinanceriskspectralEdge::set(Self, Int32, Double) -> Self
+pub fn FinanceriskspectralEdge::sum(Self) -> Double
+pub fn FinanceriskspectralEdge::to_string(Self) -> String
+
+pub(all) struct FinanceriskspectralFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskspectralFrame::add(Self, Self) -> Self
+pub fn FinanceriskspectralFrame::copy(Self) -> Self
+pub fn FinanceriskspectralFrame::fill(Self, Double) -> Self
+pub fn FinanceriskspectralFrame::get(Self, Int32) -> Double
+pub fn FinanceriskspectralFrame::len(Self) -> Int32
+pub fn FinanceriskspectralFrame::max(Self) -> Double
+pub fn FinanceriskspectralFrame::mean(Self) -> Double
+pub fn FinanceriskspectralFrame::min(Self) -> Double
+pub fn FinanceriskspectralFrame::scale(Self, Double) -> Self
+pub fn FinanceriskspectralFrame::set(Self, Int32, Double) -> Self
+pub fn FinanceriskspectralFrame::sum(Self) -> Double
+pub fn FinanceriskspectralFrame::to_string(Self) -> String
+
+pub(all) struct FinanceriskspectralGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskspectralGraphN::add(Self, Self) -> Self
+pub fn FinanceriskspectralGraphN::copy(Self) -> Self
+pub fn FinanceriskspectralGraphN::fill(Self, Double) -> Self
+pub fn FinanceriskspectralGraphN::get(Self, Int32) -> Double
+pub fn FinanceriskspectralGraphN::len(Self) -> Int32
+pub fn FinanceriskspectralGraphN::max(Self) -> Double
+pub fn FinanceriskspectralGraphN::mean(Self) -> Double
+pub fn FinanceriskspectralGraphN::min(Self) -> Double
+pub fn FinanceriskspectralGraphN::scale(Self, Double) -> Self
+pub fn FinanceriskspectralGraphN::set(Self, Int32, Double) -> Self
+pub fn FinanceriskspectralGraphN::sum(Self) -> Double
+pub fn FinanceriskspectralGraphN::to_string(Self) -> String
+
+pub(all) struct FinanceriskspectralLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskspectralLayer::add(Self, Self) -> Self
+pub fn FinanceriskspectralLayer::copy(Self) -> Self
+pub fn FinanceriskspectralLayer::fill(Self, Double) -> Self
+pub fn FinanceriskspectralLayer::get(Self, Int32) -> Double
+pub fn FinanceriskspectralLayer::len(Self) -> Int32
+pub fn FinanceriskspectralLayer::max(Self) -> Double
+pub fn FinanceriskspectralLayer::mean(Self) -> Double
+pub fn FinanceriskspectralLayer::min(Self) -> Double
+pub fn FinanceriskspectralLayer::scale(Self, Double) -> Self
+pub fn FinanceriskspectralLayer::set(Self, Int32, Double) -> Self
+pub fn FinanceriskspectralLayer::sum(Self) -> Double
+pub fn FinanceriskspectralLayer::to_string(Self) -> String
+
+pub(all) struct FinanceriskspectralMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn FinanceriskspectralMatrix::add(Self, Self) -> Self
+pub fn FinanceriskspectralMatrix::det(Self) -> Double
+pub fn FinanceriskspectralMatrix::get(Self, Int32, Int32) -> Double
+pub fn FinanceriskspectralMatrix::multiply(Self, Self) -> Self
+pub fn FinanceriskspectralMatrix::norm(Self) -> Double
+pub fn FinanceriskspectralMatrix::scale(Self, Double) -> Self
+pub fn FinanceriskspectralMatrix::to_string(Self) -> String
+pub fn FinanceriskspectralMatrix::trace(Self) -> Double
+pub fn FinanceriskspectralMatrix::transpose(Self) -> Self
+
+pub(all) struct FinanceriskspectralModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskspectralModel::add(Self, Self) -> Self
+pub fn FinanceriskspectralModel::copy(Self) -> Self
+pub fn FinanceriskspectralModel::fill(Self, Double) -> Self
+pub fn FinanceriskspectralModel::get(Self, Int32) -> Double
+pub fn FinanceriskspectralModel::len(Self) -> Int32
+pub fn FinanceriskspectralModel::max(Self) -> Double
+pub fn FinanceriskspectralModel::mean(Self) -> Double
+pub fn FinanceriskspectralModel::min(Self) -> Double
+pub fn FinanceriskspectralModel::scale(Self, Double) -> Self
+pub fn FinanceriskspectralModel::set(Self, Int32, Double) -> Self
+pub fn FinanceriskspectralModel::sum(Self) -> Double
+pub fn FinanceriskspectralModel::to_string(Self) -> String
+
+pub(all) struct FinanceriskspectralNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskspectralNode::add(Self, Self) -> Self
+pub fn FinanceriskspectralNode::copy(Self) -> Self
+pub fn FinanceriskspectralNode::fill(Self, Double) -> Self
+pub fn FinanceriskspectralNode::get(Self, Int32) -> Double
+pub fn FinanceriskspectralNode::len(Self) -> Int32
+pub fn FinanceriskspectralNode::max(Self) -> Double
+pub fn FinanceriskspectralNode::mean(Self) -> Double
+pub fn FinanceriskspectralNode::min(Self) -> Double
+pub fn FinanceriskspectralNode::scale(Self, Double) -> Self
+pub fn FinanceriskspectralNode::set(Self, Int32, Double) -> Self
+pub fn FinanceriskspectralNode::sum(Self) -> Double
+pub fn FinanceriskspectralNode::to_string(Self) -> String
+
+pub(all) struct FinanceriskspectralPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskspectralPath::add(Self, Self) -> Self
+pub fn FinanceriskspectralPath::copy(Self) -> Self
+pub fn FinanceriskspectralPath::fill(Self, Double) -> Self
+pub fn FinanceriskspectralPath::get(Self, Int32) -> Double
+pub fn FinanceriskspectralPath::len(Self) -> Int32
+pub fn FinanceriskspectralPath::max(Self) -> Double
+pub fn FinanceriskspectralPath::mean(Self) -> Double
+pub fn FinanceriskspectralPath::min(Self) -> Double
+pub fn FinanceriskspectralPath::scale(Self, Double) -> Self
+pub fn FinanceriskspectralPath::set(Self, Int32, Double) -> Self
+pub fn FinanceriskspectralPath::sum(Self) -> Double
+pub fn FinanceriskspectralPath::to_string(Self) -> String
+
+pub(all) struct FinanceriskspectralPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn FinanceriskspectralPoint::add(Self, Self) -> Self
+pub fn FinanceriskspectralPoint::cross(Self, Self) -> Self
+pub fn FinanceriskspectralPoint::dist(Self, Self) -> Double
+pub fn FinanceriskspectralPoint::dot(Self, Self) -> Double
+pub fn FinanceriskspectralPoint::label(Self) -> Int32
+pub fn FinanceriskspectralPoint::lerp(Self, Self, Double) -> Self
+pub fn FinanceriskspectralPoint::mid(Self, Self) -> Self
+pub fn FinanceriskspectralPoint::negate(Self) -> Self
+pub fn FinanceriskspectralPoint::norm(Self) -> Double
+pub fn FinanceriskspectralPoint::normalize(Self) -> Self
+pub fn FinanceriskspectralPoint::scale(Self, Double) -> Self
+pub fn FinanceriskspectralPoint::sub(Self, Self) -> Self
+pub fn FinanceriskspectralPoint::to_string(Self) -> String
+pub fn FinanceriskspectralPoint::x(Self) -> Double
+pub fn FinanceriskspectralPoint::y(Self) -> Double
+pub fn FinanceriskspectralPoint::z(Self) -> Double
+
+pub(all) struct FinanceriskspectralRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskspectralRange::add(Self, Self) -> Self
+pub fn FinanceriskspectralRange::copy(Self) -> Self
+pub fn FinanceriskspectralRange::fill(Self, Double) -> Self
+pub fn FinanceriskspectralRange::get(Self, Int32) -> Double
+pub fn FinanceriskspectralRange::len(Self) -> Int32
+pub fn FinanceriskspectralRange::max(Self) -> Double
+pub fn FinanceriskspectralRange::mean(Self) -> Double
+pub fn FinanceriskspectralRange::min(Self) -> Double
+pub fn FinanceriskspectralRange::scale(Self, Double) -> Self
+pub fn FinanceriskspectralRange::set(Self, Int32, Double) -> Self
+pub fn FinanceriskspectralRange::sum(Self) -> Double
+pub fn FinanceriskspectralRange::to_string(Self) -> String
+
+pub(all) struct FinanceriskspectralSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn FinanceriskspectralSeries::add(Self, Self) -> Self
+pub fn FinanceriskspectralSeries::cumsum(Self) -> Self
+pub fn FinanceriskspectralSeries::len(Self) -> Int32
+pub fn FinanceriskspectralSeries::max(Self) -> Double
+pub fn FinanceriskspectralSeries::mean(Self) -> Double
+pub fn FinanceriskspectralSeries::median(Self) -> Double
+pub fn FinanceriskspectralSeries::min(Self) -> Double
+pub fn FinanceriskspectralSeries::normalize(Self) -> Self
+pub fn FinanceriskspectralSeries::range(Self) -> Double
+pub fn FinanceriskspectralSeries::scale(Self, Double) -> Self
+pub fn FinanceriskspectralSeries::std(Self) -> Double
+pub fn FinanceriskspectralSeries::sub(Self, Self) -> Self
+pub fn FinanceriskspectralSeries::sum(Self) -> Double
+pub fn FinanceriskspectralSeries::to_string(Self) -> String
+pub fn FinanceriskspectralSeries::variance(Self) -> Double
+
+pub(all) struct FinanceriskspectralSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskspectralSlice::add(Self, Self) -> Self
+pub fn FinanceriskspectralSlice::copy(Self) -> Self
+pub fn FinanceriskspectralSlice::fill(Self, Double) -> Self
+pub fn FinanceriskspectralSlice::get(Self, Int32) -> Double
+pub fn FinanceriskspectralSlice::len(Self) -> Int32
+pub fn FinanceriskspectralSlice::max(Self) -> Double
+pub fn FinanceriskspectralSlice::mean(Self) -> Double
+pub fn FinanceriskspectralSlice::min(Self) -> Double
+pub fn FinanceriskspectralSlice::scale(Self, Double) -> Self
+pub fn FinanceriskspectralSlice::set(Self, Int32, Double) -> Self
+pub fn FinanceriskspectralSlice::sum(Self) -> Double
+pub fn FinanceriskspectralSlice::to_string(Self) -> String
+
+pub(all) struct FinanceriskspectralTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskspectralTable::add(Self, Self) -> Self
+pub fn FinanceriskspectralTable::copy(Self) -> Self
+pub fn FinanceriskspectralTable::fill(Self, Double) -> Self
+pub fn FinanceriskspectralTable::get(Self, Int32) -> Double
+pub fn FinanceriskspectralTable::len(Self) -> Int32
+pub fn FinanceriskspectralTable::max(Self) -> Double
+pub fn FinanceriskspectralTable::mean(Self) -> Double
+pub fn FinanceriskspectralTable::min(Self) -> Double
+pub fn FinanceriskspectralTable::scale(Self, Double) -> Self
+pub fn FinanceriskspectralTable::set(Self, Int32, Double) -> Self
+pub fn FinanceriskspectralTable::sum(Self) -> Double
+pub fn FinanceriskspectralTable::to_string(Self) -> String
+
+pub(all) struct FinanceriskspectralVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn FinanceriskspectralVector::add(Self, Self) -> Self
+pub fn FinanceriskspectralVector::dist(Self, Self) -> Double
+pub fn FinanceriskspectralVector::dot(Self, Self) -> Double
+pub fn FinanceriskspectralVector::norm(Self) -> Double
+pub fn FinanceriskspectralVector::normalize(Self) -> Self
+pub fn FinanceriskspectralVector::scale(Self, Double) -> Self
+pub fn FinanceriskspectralVector::sub(Self, Self) -> Self
+pub fn FinanceriskspectralVector::to_string(Self) -> String
+
+pub(all) struct FinanceriskspectralView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceriskspectralView::add(Self, Self) -> Self
+pub fn FinanceriskspectralView::copy(Self) -> Self
+pub fn FinanceriskspectralView::fill(Self, Double) -> Self
+pub fn FinanceriskspectralView::get(Self, Int32) -> Double
+pub fn FinanceriskspectralView::len(Self) -> Int32
+pub fn FinanceriskspectralView::max(Self) -> Double
+pub fn FinanceriskspectralView::mean(Self) -> Double
+pub fn FinanceriskspectralView::min(Self) -> Double
+pub fn FinanceriskspectralView::scale(Self, Double) -> Self
+pub fn FinanceriskspectralView::set(Self, Int32, Double) -> Self
+pub fn FinanceriskspectralView::sum(Self) -> Double
+pub fn FinanceriskspectralView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

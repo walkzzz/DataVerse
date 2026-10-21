@@ -1,0 +1,19 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/recipe/packing_line"
+
+import {
+  "dataverse/dataobject",
+}
+
+// Values
+pub fn packing_line(Array[@dataobject.DataObject], Int32) -> Array[@dataobject.DataObject]
+
+pub fn packing_line_id() -> String
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

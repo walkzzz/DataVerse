@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/iso_forest"
+
+// Values
+pub fn iso_forest_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn iso_forest_corr(Array[Double], Array[Double]) -> Double
+
+pub fn iso_forest_cov(Array[Double], Array[Double]) -> Double
+
+pub fn iso_forest_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn iso_forest_mae(Array[Double], Array[Double]) -> Double
+
+pub fn iso_forest_make_labeled_point(Double, Double, Int32) -> Iso_forestPoint
+
+pub fn iso_forest_make_matrix(Int32, Int32, Double) -> Iso_forestMatrix
+
+pub fn iso_forest_make_point(Double, Double) -> Iso_forestPoint
+
+pub fn iso_forest_make_series(Array[Double], String) -> Iso_forestSeries
+
+pub fn iso_forest_make_vector(Array[Double]) -> Iso_forestVector
+
+pub fn iso_forest_matrix_add(Iso_forestMatrix, Iso_forestMatrix) -> Iso_forestMatrix
+
+pub fn iso_forest_matrix_get(Iso_forestMatrix, Int32, Int32) -> Double
+
+pub fn iso_forest_matrix_identity(Int32) -> Iso_forestMatrix
+
+pub fn iso_forest_matrix_multiply(Iso_forestMatrix, Iso_forestMatrix) -> Iso_forestMatrix
+
+pub fn iso_forest_matrix_norm(Iso_forestMatrix) -> Double
+
+pub fn iso_forest_matrix_scale(Iso_forestMatrix, Double) -> Iso_forestMatrix
+
+pub fn iso_forest_matrix_to_string(Iso_forestMatrix) -> String
+
+pub fn iso_forest_matrix_trace(Iso_forestMatrix) -> Double
+
+pub fn iso_forest_matrix_transpose(Iso_forestMatrix) -> Iso_forestMatrix
+
+pub fn iso_forest_mse(Array[Double], Array[Double]) -> Double
+
+pub fn iso_forest_point_add(Iso_forestPoint, Iso_forestPoint) -> Iso_forestPoint
+
+pub fn iso_forest_point_dist(Iso_forestPoint, Iso_forestPoint) -> Double
+
+pub fn iso_forest_point_dot(Iso_forestPoint, Iso_forestPoint) -> Double
+
+pub fn iso_forest_point_label(Iso_forestPoint) -> Int32
+
+pub fn iso_forest_point_norm(Iso_forestPoint) -> Double
+
+pub fn iso_forest_point_scale(Iso_forestPoint, Double) -> Iso_forestPoint
+
+pub fn iso_forest_point_sub(Iso_forestPoint, Iso_forestPoint) -> Iso_forestPoint
+
+pub fn iso_forest_point_to_string(Iso_forestPoint) -> String
+
+pub fn iso_forest_point_x(Iso_forestPoint) -> Double
+
+pub fn iso_forest_point_y(Iso_forestPoint) -> Double
+
+pub fn iso_forest_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn iso_forest_r2(Array[Double], Array[Double]) -> Double
+
+pub fn iso_forest_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn iso_forest_series_add(Iso_forestSeries, Iso_forestSeries) -> Iso_forestSeries
+
+pub fn iso_forest_series_len(Iso_forestSeries) -> Int32
+
+pub fn iso_forest_series_max(Iso_forestSeries) -> Double
+
+pub fn iso_forest_series_mean(Iso_forestSeries) -> Double
+
+pub fn iso_forest_series_min(Iso_forestSeries) -> Double
+
+pub fn iso_forest_series_scale(Iso_forestSeries, Double) -> Iso_forestSeries
+
+pub fn iso_forest_series_std(Iso_forestSeries) -> Double
+
+pub fn iso_forest_series_sum(Iso_forestSeries) -> Double
+
+pub fn iso_forest_series_to_string(Iso_forestSeries) -> String
+
+pub fn iso_forest_series_var(Iso_forestSeries) -> Double
+
+pub fn iso_forest_std(Array[Double]) -> Double
+
+pub fn iso_forest_var(Array[Double]) -> Double
+
+pub fn iso_forest_vector_add(Iso_forestVector, Iso_forestVector) -> Iso_forestVector
+
+pub fn iso_forest_vector_dist(Iso_forestVector, Iso_forestVector) -> Double
+
+pub fn iso_forest_vector_dot(Iso_forestVector, Iso_forestVector) -> Double
+
+pub fn iso_forest_vector_norm(Iso_forestVector) -> Double
+
+pub fn iso_forest_vector_normalize(Iso_forestVector) -> Iso_forestVector
+
+pub fn iso_forest_vector_scale(Iso_forestVector, Double) -> Iso_forestVector
+
+pub fn iso_forest_vector_sub(Iso_forestVector, Iso_forestVector) -> Iso_forestVector
+
+pub fn iso_forest_vector_to_string(Iso_forestVector) -> String
+
+pub fn iso_forest_vector_zero(Int32) -> Iso_forestVector
+
+// Errors
+
+// Types and methods
+pub struct Iso_forestMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Iso_forestPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Iso_forestSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Iso_forestVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

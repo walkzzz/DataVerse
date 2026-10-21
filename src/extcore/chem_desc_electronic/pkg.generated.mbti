@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/chem_desc_electronic"
+
+// Values
+pub fn chem_desc_electronic_buffer_make(Int32) -> ChemdescelectronicBuffer
+
+pub fn chem_desc_electronic_cluster_make(Int32) -> ChemdescelectronicCluster
+
+pub fn chem_desc_electronic_cursor_make(Int32) -> ChemdescelectronicCursor
+
+pub fn chem_desc_electronic_edge_make(Int32) -> ChemdescelectronicEdge
+
+pub fn chem_desc_electronic_frame_make(Int32) -> ChemdescelectronicFrame
+
+pub fn chem_desc_electronic_graphn_make(Int32) -> ChemdescelectronicGraphN
+
+pub fn chem_desc_electronic_layer_make(Int32) -> ChemdescelectronicLayer
+
+pub fn chem_desc_electronic_make_matrix(Int32, Int32, Double) -> ChemdescelectronicMatrix
+
+pub fn chem_desc_electronic_make_point(Double, Double) -> ChemdescelectronicPoint
+
+pub fn chem_desc_electronic_make_point3(Double, Double, Double) -> ChemdescelectronicPoint
+
+pub fn chem_desc_electronic_make_series(Array[Double], String) -> ChemdescelectronicSeries
+
+pub fn chem_desc_electronic_make_vector(Array[Double]) -> ChemdescelectronicVector
+
+pub fn chem_desc_electronic_matrix_identity(Int32) -> ChemdescelectronicMatrix
+
+pub fn chem_desc_electronic_model_make(Int32) -> ChemdescelectronicModel
+
+pub fn chem_desc_electronic_node_make(Int32) -> ChemdescelectronicNode
+
+pub fn chem_desc_electronic_path_make(Int32) -> ChemdescelectronicPath
+
+pub fn chem_desc_electronic_range_make(Int32) -> ChemdescelectronicRange
+
+pub fn chem_desc_electronic_slice_make(Int32) -> ChemdescelectronicSlice
+
+pub fn chem_desc_electronic_table_make(Int32) -> ChemdescelectronicTable
+
+pub fn chem_desc_electronic_vector_zero(Int32) -> ChemdescelectronicVector
+
+pub fn chem_desc_electronic_view_make(Int32) -> ChemdescelectronicView
+
+// Errors
+
+// Types and methods
+pub(all) struct ChemdescelectronicBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescelectronicBuffer::add(Self, Self) -> Self
+pub fn ChemdescelectronicBuffer::copy(Self) -> Self
+pub fn ChemdescelectronicBuffer::fill(Self, Double) -> Self
+pub fn ChemdescelectronicBuffer::get(Self, Int32) -> Double
+pub fn ChemdescelectronicBuffer::len(Self) -> Int32
+pub fn ChemdescelectronicBuffer::max(Self) -> Double
+pub fn ChemdescelectronicBuffer::mean(Self) -> Double
+pub fn ChemdescelectronicBuffer::min(Self) -> Double
+pub fn ChemdescelectronicBuffer::scale(Self, Double) -> Self
+pub fn ChemdescelectronicBuffer::set(Self, Int32, Double) -> Self
+pub fn ChemdescelectronicBuffer::sum(Self) -> Double
+pub fn ChemdescelectronicBuffer::to_string(Self) -> String
+
+pub(all) struct ChemdescelectronicCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescelectronicCluster::add(Self, Self) -> Self
+pub fn ChemdescelectronicCluster::copy(Self) -> Self
+pub fn ChemdescelectronicCluster::fill(Self, Double) -> Self
+pub fn ChemdescelectronicCluster::get(Self, Int32) -> Double
+pub fn ChemdescelectronicCluster::len(Self) -> Int32
+pub fn ChemdescelectronicCluster::max(Self) -> Double
+pub fn ChemdescelectronicCluster::mean(Self) -> Double
+pub fn ChemdescelectronicCluster::min(Self) -> Double
+pub fn ChemdescelectronicCluster::scale(Self, Double) -> Self
+pub fn ChemdescelectronicCluster::set(Self, Int32, Double) -> Self
+pub fn ChemdescelectronicCluster::sum(Self) -> Double
+pub fn ChemdescelectronicCluster::to_string(Self) -> String
+
+pub(all) struct ChemdescelectronicCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescelectronicCursor::add(Self, Self) -> Self
+pub fn ChemdescelectronicCursor::copy(Self) -> Self
+pub fn ChemdescelectronicCursor::fill(Self, Double) -> Self
+pub fn ChemdescelectronicCursor::get(Self, Int32) -> Double
+pub fn ChemdescelectronicCursor::len(Self) -> Int32
+pub fn ChemdescelectronicCursor::max(Self) -> Double
+pub fn ChemdescelectronicCursor::mean(Self) -> Double
+pub fn ChemdescelectronicCursor::min(Self) -> Double
+pub fn ChemdescelectronicCursor::scale(Self, Double) -> Self
+pub fn ChemdescelectronicCursor::set(Self, Int32, Double) -> Self
+pub fn ChemdescelectronicCursor::sum(Self) -> Double
+pub fn ChemdescelectronicCursor::to_string(Self) -> String
+
+pub(all) struct ChemdescelectronicEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescelectronicEdge::add(Self, Self) -> Self
+pub fn ChemdescelectronicEdge::copy(Self) -> Self
+pub fn ChemdescelectronicEdge::fill(Self, Double) -> Self
+pub fn ChemdescelectronicEdge::get(Self, Int32) -> Double
+pub fn ChemdescelectronicEdge::len(Self) -> Int32
+pub fn ChemdescelectronicEdge::max(Self) -> Double
+pub fn ChemdescelectronicEdge::mean(Self) -> Double
+pub fn ChemdescelectronicEdge::min(Self) -> Double
+pub fn ChemdescelectronicEdge::scale(Self, Double) -> Self
+pub fn ChemdescelectronicEdge::set(Self, Int32, Double) -> Self
+pub fn ChemdescelectronicEdge::sum(Self) -> Double
+pub fn ChemdescelectronicEdge::to_string(Self) -> String
+
+pub(all) struct ChemdescelectronicFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescelectronicFrame::add(Self, Self) -> Self
+pub fn ChemdescelectronicFrame::copy(Self) -> Self
+pub fn ChemdescelectronicFrame::fill(Self, Double) -> Self
+pub fn ChemdescelectronicFrame::get(Self, Int32) -> Double
+pub fn ChemdescelectronicFrame::len(Self) -> Int32
+pub fn ChemdescelectronicFrame::max(Self) -> Double
+pub fn ChemdescelectronicFrame::mean(Self) -> Double
+pub fn ChemdescelectronicFrame::min(Self) -> Double
+pub fn ChemdescelectronicFrame::scale(Self, Double) -> Self
+pub fn ChemdescelectronicFrame::set(Self, Int32, Double) -> Self
+pub fn ChemdescelectronicFrame::sum(Self) -> Double
+pub fn ChemdescelectronicFrame::to_string(Self) -> String
+
+pub(all) struct ChemdescelectronicGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescelectronicGraphN::add(Self, Self) -> Self
+pub fn ChemdescelectronicGraphN::copy(Self) -> Self
+pub fn ChemdescelectronicGraphN::fill(Self, Double) -> Self
+pub fn ChemdescelectronicGraphN::get(Self, Int32) -> Double
+pub fn ChemdescelectronicGraphN::len(Self) -> Int32
+pub fn ChemdescelectronicGraphN::max(Self) -> Double
+pub fn ChemdescelectronicGraphN::mean(Self) -> Double
+pub fn ChemdescelectronicGraphN::min(Self) -> Double
+pub fn ChemdescelectronicGraphN::scale(Self, Double) -> Self
+pub fn ChemdescelectronicGraphN::set(Self, Int32, Double) -> Self
+pub fn ChemdescelectronicGraphN::sum(Self) -> Double
+pub fn ChemdescelectronicGraphN::to_string(Self) -> String
+
+pub(all) struct ChemdescelectronicLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescelectronicLayer::add(Self, Self) -> Self
+pub fn ChemdescelectronicLayer::copy(Self) -> Self
+pub fn ChemdescelectronicLayer::fill(Self, Double) -> Self
+pub fn ChemdescelectronicLayer::get(Self, Int32) -> Double
+pub fn ChemdescelectronicLayer::len(Self) -> Int32
+pub fn ChemdescelectronicLayer::max(Self) -> Double
+pub fn ChemdescelectronicLayer::mean(Self) -> Double
+pub fn ChemdescelectronicLayer::min(Self) -> Double
+pub fn ChemdescelectronicLayer::scale(Self, Double) -> Self
+pub fn ChemdescelectronicLayer::set(Self, Int32, Double) -> Self
+pub fn ChemdescelectronicLayer::sum(Self) -> Double
+pub fn ChemdescelectronicLayer::to_string(Self) -> String
+
+pub(all) struct ChemdescelectronicMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ChemdescelectronicMatrix::add(Self, Self) -> Self
+pub fn ChemdescelectronicMatrix::det(Self) -> Double
+pub fn ChemdescelectronicMatrix::get(Self, Int32, Int32) -> Double
+pub fn ChemdescelectronicMatrix::multiply(Self, Self) -> Self
+pub fn ChemdescelectronicMatrix::norm(Self) -> Double
+pub fn ChemdescelectronicMatrix::scale(Self, Double) -> Self
+pub fn ChemdescelectronicMatrix::to_string(Self) -> String
+pub fn ChemdescelectronicMatrix::trace(Self) -> Double
+pub fn ChemdescelectronicMatrix::transpose(Self) -> Self
+
+pub(all) struct ChemdescelectronicModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescelectronicModel::add(Self, Self) -> Self
+pub fn ChemdescelectronicModel::copy(Self) -> Self
+pub fn ChemdescelectronicModel::fill(Self, Double) -> Self
+pub fn ChemdescelectronicModel::get(Self, Int32) -> Double
+pub fn ChemdescelectronicModel::len(Self) -> Int32
+pub fn ChemdescelectronicModel::max(Self) -> Double
+pub fn ChemdescelectronicModel::mean(Self) -> Double
+pub fn ChemdescelectronicModel::min(Self) -> Double
+pub fn ChemdescelectronicModel::scale(Self, Double) -> Self
+pub fn ChemdescelectronicModel::set(Self, Int32, Double) -> Self
+pub fn ChemdescelectronicModel::sum(Self) -> Double
+pub fn ChemdescelectronicModel::to_string(Self) -> String
+
+pub(all) struct ChemdescelectronicNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescelectronicNode::add(Self, Self) -> Self
+pub fn ChemdescelectronicNode::copy(Self) -> Self
+pub fn ChemdescelectronicNode::fill(Self, Double) -> Self
+pub fn ChemdescelectronicNode::get(Self, Int32) -> Double
+pub fn ChemdescelectronicNode::len(Self) -> Int32
+pub fn ChemdescelectronicNode::max(Self) -> Double
+pub fn ChemdescelectronicNode::mean(Self) -> Double
+pub fn ChemdescelectronicNode::min(Self) -> Double
+pub fn ChemdescelectronicNode::scale(Self, Double) -> Self
+pub fn ChemdescelectronicNode::set(Self, Int32, Double) -> Self
+pub fn ChemdescelectronicNode::sum(Self) -> Double
+pub fn ChemdescelectronicNode::to_string(Self) -> String
+
+pub(all) struct ChemdescelectronicPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescelectronicPath::add(Self, Self) -> Self
+pub fn ChemdescelectronicPath::copy(Self) -> Self
+pub fn ChemdescelectronicPath::fill(Self, Double) -> Self
+pub fn ChemdescelectronicPath::get(Self, Int32) -> Double
+pub fn ChemdescelectronicPath::len(Self) -> Int32
+pub fn ChemdescelectronicPath::max(Self) -> Double
+pub fn ChemdescelectronicPath::mean(Self) -> Double
+pub fn ChemdescelectronicPath::min(Self) -> Double
+pub fn ChemdescelectronicPath::scale(Self, Double) -> Self
+pub fn ChemdescelectronicPath::set(Self, Int32, Double) -> Self
+pub fn ChemdescelectronicPath::sum(Self) -> Double
+pub fn ChemdescelectronicPath::to_string(Self) -> String
+
+pub(all) struct ChemdescelectronicPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ChemdescelectronicPoint::add(Self, Self) -> Self
+pub fn ChemdescelectronicPoint::cross(Self, Self) -> Self
+pub fn ChemdescelectronicPoint::dist(Self, Self) -> Double
+pub fn ChemdescelectronicPoint::dot(Self, Self) -> Double
+pub fn ChemdescelectronicPoint::label(Self) -> Int32
+pub fn ChemdescelectronicPoint::lerp(Self, Self, Double) -> Self
+pub fn ChemdescelectronicPoint::mid(Self, Self) -> Self
+pub fn ChemdescelectronicPoint::negate(Self) -> Self
+pub fn ChemdescelectronicPoint::norm(Self) -> Double
+pub fn ChemdescelectronicPoint::normalize(Self) -> Self
+pub fn ChemdescelectronicPoint::scale(Self, Double) -> Self
+pub fn ChemdescelectronicPoint::sub(Self, Self) -> Self
+pub fn ChemdescelectronicPoint::to_string(Self) -> String
+pub fn ChemdescelectronicPoint::x(Self) -> Double
+pub fn ChemdescelectronicPoint::y(Self) -> Double
+pub fn ChemdescelectronicPoint::z(Self) -> Double
+
+pub(all) struct ChemdescelectronicRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescelectronicRange::add(Self, Self) -> Self
+pub fn ChemdescelectronicRange::copy(Self) -> Self
+pub fn ChemdescelectronicRange::fill(Self, Double) -> Self
+pub fn ChemdescelectronicRange::get(Self, Int32) -> Double
+pub fn ChemdescelectronicRange::len(Self) -> Int32
+pub fn ChemdescelectronicRange::max(Self) -> Double
+pub fn ChemdescelectronicRange::mean(Self) -> Double
+pub fn ChemdescelectronicRange::min(Self) -> Double
+pub fn ChemdescelectronicRange::scale(Self, Double) -> Self
+pub fn ChemdescelectronicRange::set(Self, Int32, Double) -> Self
+pub fn ChemdescelectronicRange::sum(Self) -> Double
+pub fn ChemdescelectronicRange::to_string(Self) -> String
+
+pub(all) struct ChemdescelectronicSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ChemdescelectronicSeries::add(Self, Self) -> Self
+pub fn ChemdescelectronicSeries::cumsum(Self) -> Self
+pub fn ChemdescelectronicSeries::len(Self) -> Int32
+pub fn ChemdescelectronicSeries::max(Self) -> Double
+pub fn ChemdescelectronicSeries::mean(Self) -> Double
+pub fn ChemdescelectronicSeries::median(Self) -> Double
+pub fn ChemdescelectronicSeries::min(Self) -> Double
+pub fn ChemdescelectronicSeries::normalize(Self) -> Self
+pub fn ChemdescelectronicSeries::range(Self) -> Double
+pub fn ChemdescelectronicSeries::scale(Self, Double) -> Self
+pub fn ChemdescelectronicSeries::std(Self) -> Double
+pub fn ChemdescelectronicSeries::sub(Self, Self) -> Self
+pub fn ChemdescelectronicSeries::sum(Self) -> Double
+pub fn ChemdescelectronicSeries::to_string(Self) -> String
+pub fn ChemdescelectronicSeries::variance(Self) -> Double
+
+pub(all) struct ChemdescelectronicSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescelectronicSlice::add(Self, Self) -> Self
+pub fn ChemdescelectronicSlice::copy(Self) -> Self
+pub fn ChemdescelectronicSlice::fill(Self, Double) -> Self
+pub fn ChemdescelectronicSlice::get(Self, Int32) -> Double
+pub fn ChemdescelectronicSlice::len(Self) -> Int32
+pub fn ChemdescelectronicSlice::max(Self) -> Double
+pub fn ChemdescelectronicSlice::mean(Self) -> Double
+pub fn ChemdescelectronicSlice::min(Self) -> Double
+pub fn ChemdescelectronicSlice::scale(Self, Double) -> Self
+pub fn ChemdescelectronicSlice::set(Self, Int32, Double) -> Self
+pub fn ChemdescelectronicSlice::sum(Self) -> Double
+pub fn ChemdescelectronicSlice::to_string(Self) -> String
+
+pub(all) struct ChemdescelectronicTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescelectronicTable::add(Self, Self) -> Self
+pub fn ChemdescelectronicTable::copy(Self) -> Self
+pub fn ChemdescelectronicTable::fill(Self, Double) -> Self
+pub fn ChemdescelectronicTable::get(Self, Int32) -> Double
+pub fn ChemdescelectronicTable::len(Self) -> Int32
+pub fn ChemdescelectronicTable::max(Self) -> Double
+pub fn ChemdescelectronicTable::mean(Self) -> Double
+pub fn ChemdescelectronicTable::min(Self) -> Double
+pub fn ChemdescelectronicTable::scale(Self, Double) -> Self
+pub fn ChemdescelectronicTable::set(Self, Int32, Double) -> Self
+pub fn ChemdescelectronicTable::sum(Self) -> Double
+pub fn ChemdescelectronicTable::to_string(Self) -> String
+
+pub(all) struct ChemdescelectronicVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ChemdescelectronicVector::add(Self, Self) -> Self
+pub fn ChemdescelectronicVector::dist(Self, Self) -> Double
+pub fn ChemdescelectronicVector::dot(Self, Self) -> Double
+pub fn ChemdescelectronicVector::norm(Self) -> Double
+pub fn ChemdescelectronicVector::normalize(Self) -> Self
+pub fn ChemdescelectronicVector::scale(Self, Double) -> Self
+pub fn ChemdescelectronicVector::sub(Self, Self) -> Self
+pub fn ChemdescelectronicVector::to_string(Self) -> String
+
+pub(all) struct ChemdescelectronicView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescelectronicView::add(Self, Self) -> Self
+pub fn ChemdescelectronicView::copy(Self) -> Self
+pub fn ChemdescelectronicView::fill(Self, Double) -> Self
+pub fn ChemdescelectronicView::get(Self, Int32) -> Double
+pub fn ChemdescelectronicView::len(Self) -> Int32
+pub fn ChemdescelectronicView::max(Self) -> Double
+pub fn ChemdescelectronicView::mean(Self) -> Double
+pub fn ChemdescelectronicView::min(Self) -> Double
+pub fn ChemdescelectronicView::scale(Self, Double) -> Self
+pub fn ChemdescelectronicView::set(Self, Int32, Double) -> Self
+pub fn ChemdescelectronicView::sum(Self) -> Double
+pub fn ChemdescelectronicView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

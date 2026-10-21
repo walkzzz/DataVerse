@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_route_policy"
+
+// Values
+pub fn net_route_policy_buffer_make(Int32) -> NetroutepolicyBuffer
+
+pub fn net_route_policy_cluster_make(Int32) -> NetroutepolicyCluster
+
+pub fn net_route_policy_cursor_make(Int32) -> NetroutepolicyCursor
+
+pub fn net_route_policy_edge_make(Int32) -> NetroutepolicyEdge
+
+pub fn net_route_policy_frame_make(Int32) -> NetroutepolicyFrame
+
+pub fn net_route_policy_graphn_make(Int32) -> NetroutepolicyGraphN
+
+pub fn net_route_policy_layer_make(Int32) -> NetroutepolicyLayer
+
+pub fn net_route_policy_make_matrix(Int32, Int32, Double) -> NetroutepolicyMatrix
+
+pub fn net_route_policy_make_point(Double, Double) -> NetroutepolicyPoint
+
+pub fn net_route_policy_make_point3(Double, Double, Double) -> NetroutepolicyPoint
+
+pub fn net_route_policy_make_series(Array[Double], String) -> NetroutepolicySeries
+
+pub fn net_route_policy_make_vector(Array[Double]) -> NetroutepolicyVector
+
+pub fn net_route_policy_matrix_identity(Int32) -> NetroutepolicyMatrix
+
+pub fn net_route_policy_model_make(Int32) -> NetroutepolicyModel
+
+pub fn net_route_policy_node_make(Int32) -> NetroutepolicyNode
+
+pub fn net_route_policy_path_make(Int32) -> NetroutepolicyPath
+
+pub fn net_route_policy_range_make(Int32) -> NetroutepolicyRange
+
+pub fn net_route_policy_slice_make(Int32) -> NetroutepolicySlice
+
+pub fn net_route_policy_table_make(Int32) -> NetroutepolicyTable
+
+pub fn net_route_policy_vector_zero(Int32) -> NetroutepolicyVector
+
+pub fn net_route_policy_view_make(Int32) -> NetroutepolicyView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetroutepolicyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutepolicyBuffer::add(Self, Self) -> Self
+pub fn NetroutepolicyBuffer::copy(Self) -> Self
+pub fn NetroutepolicyBuffer::fill(Self, Double) -> Self
+pub fn NetroutepolicyBuffer::get(Self, Int32) -> Double
+pub fn NetroutepolicyBuffer::len(Self) -> Int32
+pub fn NetroutepolicyBuffer::max(Self) -> Double
+pub fn NetroutepolicyBuffer::mean(Self) -> Double
+pub fn NetroutepolicyBuffer::min(Self) -> Double
+pub fn NetroutepolicyBuffer::scale(Self, Double) -> Self
+pub fn NetroutepolicyBuffer::set(Self, Int32, Double) -> Self
+pub fn NetroutepolicyBuffer::sum(Self) -> Double
+pub fn NetroutepolicyBuffer::to_string(Self) -> String
+
+pub(all) struct NetroutepolicyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutepolicyCluster::add(Self, Self) -> Self
+pub fn NetroutepolicyCluster::copy(Self) -> Self
+pub fn NetroutepolicyCluster::fill(Self, Double) -> Self
+pub fn NetroutepolicyCluster::get(Self, Int32) -> Double
+pub fn NetroutepolicyCluster::len(Self) -> Int32
+pub fn NetroutepolicyCluster::max(Self) -> Double
+pub fn NetroutepolicyCluster::mean(Self) -> Double
+pub fn NetroutepolicyCluster::min(Self) -> Double
+pub fn NetroutepolicyCluster::scale(Self, Double) -> Self
+pub fn NetroutepolicyCluster::set(Self, Int32, Double) -> Self
+pub fn NetroutepolicyCluster::sum(Self) -> Double
+pub fn NetroutepolicyCluster::to_string(Self) -> String
+
+pub(all) struct NetroutepolicyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutepolicyCursor::add(Self, Self) -> Self
+pub fn NetroutepolicyCursor::copy(Self) -> Self
+pub fn NetroutepolicyCursor::fill(Self, Double) -> Self
+pub fn NetroutepolicyCursor::get(Self, Int32) -> Double
+pub fn NetroutepolicyCursor::len(Self) -> Int32
+pub fn NetroutepolicyCursor::max(Self) -> Double
+pub fn NetroutepolicyCursor::mean(Self) -> Double
+pub fn NetroutepolicyCursor::min(Self) -> Double
+pub fn NetroutepolicyCursor::scale(Self, Double) -> Self
+pub fn NetroutepolicyCursor::set(Self, Int32, Double) -> Self
+pub fn NetroutepolicyCursor::sum(Self) -> Double
+pub fn NetroutepolicyCursor::to_string(Self) -> String
+
+pub(all) struct NetroutepolicyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutepolicyEdge::add(Self, Self) -> Self
+pub fn NetroutepolicyEdge::copy(Self) -> Self
+pub fn NetroutepolicyEdge::fill(Self, Double) -> Self
+pub fn NetroutepolicyEdge::get(Self, Int32) -> Double
+pub fn NetroutepolicyEdge::len(Self) -> Int32
+pub fn NetroutepolicyEdge::max(Self) -> Double
+pub fn NetroutepolicyEdge::mean(Self) -> Double
+pub fn NetroutepolicyEdge::min(Self) -> Double
+pub fn NetroutepolicyEdge::scale(Self, Double) -> Self
+pub fn NetroutepolicyEdge::set(Self, Int32, Double) -> Self
+pub fn NetroutepolicyEdge::sum(Self) -> Double
+pub fn NetroutepolicyEdge::to_string(Self) -> String
+
+pub(all) struct NetroutepolicyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutepolicyFrame::add(Self, Self) -> Self
+pub fn NetroutepolicyFrame::copy(Self) -> Self
+pub fn NetroutepolicyFrame::fill(Self, Double) -> Self
+pub fn NetroutepolicyFrame::get(Self, Int32) -> Double
+pub fn NetroutepolicyFrame::len(Self) -> Int32
+pub fn NetroutepolicyFrame::max(Self) -> Double
+pub fn NetroutepolicyFrame::mean(Self) -> Double
+pub fn NetroutepolicyFrame::min(Self) -> Double
+pub fn NetroutepolicyFrame::scale(Self, Double) -> Self
+pub fn NetroutepolicyFrame::set(Self, Int32, Double) -> Self
+pub fn NetroutepolicyFrame::sum(Self) -> Double
+pub fn NetroutepolicyFrame::to_string(Self) -> String
+
+pub(all) struct NetroutepolicyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutepolicyGraphN::add(Self, Self) -> Self
+pub fn NetroutepolicyGraphN::copy(Self) -> Self
+pub fn NetroutepolicyGraphN::fill(Self, Double) -> Self
+pub fn NetroutepolicyGraphN::get(Self, Int32) -> Double
+pub fn NetroutepolicyGraphN::len(Self) -> Int32
+pub fn NetroutepolicyGraphN::max(Self) -> Double
+pub fn NetroutepolicyGraphN::mean(Self) -> Double
+pub fn NetroutepolicyGraphN::min(Self) -> Double
+pub fn NetroutepolicyGraphN::scale(Self, Double) -> Self
+pub fn NetroutepolicyGraphN::set(Self, Int32, Double) -> Self
+pub fn NetroutepolicyGraphN::sum(Self) -> Double
+pub fn NetroutepolicyGraphN::to_string(Self) -> String
+
+pub(all) struct NetroutepolicyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutepolicyLayer::add(Self, Self) -> Self
+pub fn NetroutepolicyLayer::copy(Self) -> Self
+pub fn NetroutepolicyLayer::fill(Self, Double) -> Self
+pub fn NetroutepolicyLayer::get(Self, Int32) -> Double
+pub fn NetroutepolicyLayer::len(Self) -> Int32
+pub fn NetroutepolicyLayer::max(Self) -> Double
+pub fn NetroutepolicyLayer::mean(Self) -> Double
+pub fn NetroutepolicyLayer::min(Self) -> Double
+pub fn NetroutepolicyLayer::scale(Self, Double) -> Self
+pub fn NetroutepolicyLayer::set(Self, Int32, Double) -> Self
+pub fn NetroutepolicyLayer::sum(Self) -> Double
+pub fn NetroutepolicyLayer::to_string(Self) -> String
+
+pub(all) struct NetroutepolicyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetroutepolicyMatrix::add(Self, Self) -> Self
+pub fn NetroutepolicyMatrix::det(Self) -> Double
+pub fn NetroutepolicyMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetroutepolicyMatrix::multiply(Self, Self) -> Self
+pub fn NetroutepolicyMatrix::norm(Self) -> Double
+pub fn NetroutepolicyMatrix::scale(Self, Double) -> Self
+pub fn NetroutepolicyMatrix::to_string(Self) -> String
+pub fn NetroutepolicyMatrix::trace(Self) -> Double
+pub fn NetroutepolicyMatrix::transpose(Self) -> Self
+
+pub(all) struct NetroutepolicyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutepolicyModel::add(Self, Self) -> Self
+pub fn NetroutepolicyModel::copy(Self) -> Self
+pub fn NetroutepolicyModel::fill(Self, Double) -> Self
+pub fn NetroutepolicyModel::get(Self, Int32) -> Double
+pub fn NetroutepolicyModel::len(Self) -> Int32
+pub fn NetroutepolicyModel::max(Self) -> Double
+pub fn NetroutepolicyModel::mean(Self) -> Double
+pub fn NetroutepolicyModel::min(Self) -> Double
+pub fn NetroutepolicyModel::scale(Self, Double) -> Self
+pub fn NetroutepolicyModel::set(Self, Int32, Double) -> Self
+pub fn NetroutepolicyModel::sum(Self) -> Double
+pub fn NetroutepolicyModel::to_string(Self) -> String
+
+pub(all) struct NetroutepolicyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutepolicyNode::add(Self, Self) -> Self
+pub fn NetroutepolicyNode::copy(Self) -> Self
+pub fn NetroutepolicyNode::fill(Self, Double) -> Self
+pub fn NetroutepolicyNode::get(Self, Int32) -> Double
+pub fn NetroutepolicyNode::len(Self) -> Int32
+pub fn NetroutepolicyNode::max(Self) -> Double
+pub fn NetroutepolicyNode::mean(Self) -> Double
+pub fn NetroutepolicyNode::min(Self) -> Double
+pub fn NetroutepolicyNode::scale(Self, Double) -> Self
+pub fn NetroutepolicyNode::set(Self, Int32, Double) -> Self
+pub fn NetroutepolicyNode::sum(Self) -> Double
+pub fn NetroutepolicyNode::to_string(Self) -> String
+
+pub(all) struct NetroutepolicyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutepolicyPath::add(Self, Self) -> Self
+pub fn NetroutepolicyPath::copy(Self) -> Self
+pub fn NetroutepolicyPath::fill(Self, Double) -> Self
+pub fn NetroutepolicyPath::get(Self, Int32) -> Double
+pub fn NetroutepolicyPath::len(Self) -> Int32
+pub fn NetroutepolicyPath::max(Self) -> Double
+pub fn NetroutepolicyPath::mean(Self) -> Double
+pub fn NetroutepolicyPath::min(Self) -> Double
+pub fn NetroutepolicyPath::scale(Self, Double) -> Self
+pub fn NetroutepolicyPath::set(Self, Int32, Double) -> Self
+pub fn NetroutepolicyPath::sum(Self) -> Double
+pub fn NetroutepolicyPath::to_string(Self) -> String
+
+pub(all) struct NetroutepolicyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetroutepolicyPoint::add(Self, Self) -> Self
+pub fn NetroutepolicyPoint::cross(Self, Self) -> Self
+pub fn NetroutepolicyPoint::dist(Self, Self) -> Double
+pub fn NetroutepolicyPoint::dot(Self, Self) -> Double
+pub fn NetroutepolicyPoint::label(Self) -> Int32
+pub fn NetroutepolicyPoint::lerp(Self, Self, Double) -> Self
+pub fn NetroutepolicyPoint::mid(Self, Self) -> Self
+pub fn NetroutepolicyPoint::negate(Self) -> Self
+pub fn NetroutepolicyPoint::norm(Self) -> Double
+pub fn NetroutepolicyPoint::normalize(Self) -> Self
+pub fn NetroutepolicyPoint::scale(Self, Double) -> Self
+pub fn NetroutepolicyPoint::sub(Self, Self) -> Self
+pub fn NetroutepolicyPoint::to_string(Self) -> String
+pub fn NetroutepolicyPoint::x(Self) -> Double
+pub fn NetroutepolicyPoint::y(Self) -> Double
+pub fn NetroutepolicyPoint::z(Self) -> Double
+
+pub(all) struct NetroutepolicyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutepolicyRange::add(Self, Self) -> Self
+pub fn NetroutepolicyRange::copy(Self) -> Self
+pub fn NetroutepolicyRange::fill(Self, Double) -> Self
+pub fn NetroutepolicyRange::get(Self, Int32) -> Double
+pub fn NetroutepolicyRange::len(Self) -> Int32
+pub fn NetroutepolicyRange::max(Self) -> Double
+pub fn NetroutepolicyRange::mean(Self) -> Double
+pub fn NetroutepolicyRange::min(Self) -> Double
+pub fn NetroutepolicyRange::scale(Self, Double) -> Self
+pub fn NetroutepolicyRange::set(Self, Int32, Double) -> Self
+pub fn NetroutepolicyRange::sum(Self) -> Double
+pub fn NetroutepolicyRange::to_string(Self) -> String
+
+pub(all) struct NetroutepolicySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetroutepolicySeries::add(Self, Self) -> Self
+pub fn NetroutepolicySeries::cumsum(Self) -> Self
+pub fn NetroutepolicySeries::len(Self) -> Int32
+pub fn NetroutepolicySeries::max(Self) -> Double
+pub fn NetroutepolicySeries::mean(Self) -> Double
+pub fn NetroutepolicySeries::median(Self) -> Double
+pub fn NetroutepolicySeries::min(Self) -> Double
+pub fn NetroutepolicySeries::normalize(Self) -> Self
+pub fn NetroutepolicySeries::range(Self) -> Double
+pub fn NetroutepolicySeries::scale(Self, Double) -> Self
+pub fn NetroutepolicySeries::std(Self) -> Double
+pub fn NetroutepolicySeries::sub(Self, Self) -> Self
+pub fn NetroutepolicySeries::sum(Self) -> Double
+pub fn NetroutepolicySeries::to_string(Self) -> String
+pub fn NetroutepolicySeries::variance(Self) -> Double
+
+pub(all) struct NetroutepolicySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutepolicySlice::add(Self, Self) -> Self
+pub fn NetroutepolicySlice::copy(Self) -> Self
+pub fn NetroutepolicySlice::fill(Self, Double) -> Self
+pub fn NetroutepolicySlice::get(Self, Int32) -> Double
+pub fn NetroutepolicySlice::len(Self) -> Int32
+pub fn NetroutepolicySlice::max(Self) -> Double
+pub fn NetroutepolicySlice::mean(Self) -> Double
+pub fn NetroutepolicySlice::min(Self) -> Double
+pub fn NetroutepolicySlice::scale(Self, Double) -> Self
+pub fn NetroutepolicySlice::set(Self, Int32, Double) -> Self
+pub fn NetroutepolicySlice::sum(Self) -> Double
+pub fn NetroutepolicySlice::to_string(Self) -> String
+
+pub(all) struct NetroutepolicyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutepolicyTable::add(Self, Self) -> Self
+pub fn NetroutepolicyTable::copy(Self) -> Self
+pub fn NetroutepolicyTable::fill(Self, Double) -> Self
+pub fn NetroutepolicyTable::get(Self, Int32) -> Double
+pub fn NetroutepolicyTable::len(Self) -> Int32
+pub fn NetroutepolicyTable::max(Self) -> Double
+pub fn NetroutepolicyTable::mean(Self) -> Double
+pub fn NetroutepolicyTable::min(Self) -> Double
+pub fn NetroutepolicyTable::scale(Self, Double) -> Self
+pub fn NetroutepolicyTable::set(Self, Int32, Double) -> Self
+pub fn NetroutepolicyTable::sum(Self) -> Double
+pub fn NetroutepolicyTable::to_string(Self) -> String
+
+pub(all) struct NetroutepolicyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetroutepolicyVector::add(Self, Self) -> Self
+pub fn NetroutepolicyVector::dist(Self, Self) -> Double
+pub fn NetroutepolicyVector::dot(Self, Self) -> Double
+pub fn NetroutepolicyVector::norm(Self) -> Double
+pub fn NetroutepolicyVector::normalize(Self) -> Self
+pub fn NetroutepolicyVector::scale(Self, Double) -> Self
+pub fn NetroutepolicyVector::sub(Self, Self) -> Self
+pub fn NetroutepolicyVector::to_string(Self) -> String
+
+pub(all) struct NetroutepolicyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutepolicyView::add(Self, Self) -> Self
+pub fn NetroutepolicyView::copy(Self) -> Self
+pub fn NetroutepolicyView::fill(Self, Double) -> Self
+pub fn NetroutepolicyView::get(Self, Int32) -> Double
+pub fn NetroutepolicyView::len(Self) -> Int32
+pub fn NetroutepolicyView::max(Self) -> Double
+pub fn NetroutepolicyView::mean(Self) -> Double
+pub fn NetroutepolicyView::min(Self) -> Double
+pub fn NetroutepolicyView::scale(Self, Double) -> Self
+pub fn NetroutepolicyView::set(Self, Int32, Double) -> Self
+pub fn NetroutepolicyView::sum(Self) -> Double
+pub fn NetroutepolicyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

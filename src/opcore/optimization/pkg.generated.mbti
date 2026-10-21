@@ -1,0 +1,133 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/optimization"
+
+// Values
+pub fn acceptance_prob_sa(Double, Double) -> Double
+
+pub fn active_set_method(Array[Array[Double]], Array[Double], Array[Double], Array[Double], Int32) -> Array[Double]
+
+pub fn adagrad((Array[Double]) -> Double, (Array[Double]) -> Array[Double], Array[Double], Double, Int32, Double) -> OptimizationResult
+
+pub fn adam((Array[Double]) -> Double, (Array[Double]) -> Array[Double], Array[Double], Double, Double, Double, Int32, Double) -> OptimizationResult
+
+pub fn barrier_method((Array[Double]) -> Double, Array[(Array[Double]) -> Double], Array[Double], Double, Int32) -> OptimizationResult
+
+pub fn bfgs((Array[Double]) -> Double, (Array[Double]) -> Array[Double], Array[Double], Int32, Double) -> OptimizationResult
+
+pub fn binary_search_opt((Double) -> Double, Double, Double, Double) -> Double
+
+pub fn cooling_schedule(Double, Int32, CoolingScheduleType) -> Double
+
+pub fn crossover(Individual, Individual, Double) -> (Individual, Individual)
+
+pub fn evaluate_fitness(Array[Individual], (Array[Double]) -> Double) -> Array[Individual]
+
+pub fn genetic_algorithm((Array[Double]) -> Double, Int32, Double, Double, Int32, Int32) -> OptimizationResult
+
+pub fn golden_section_search((Double) -> Double, Double, Double, Double) -> Double
+
+pub fn gradient_descent((Array[Double]) -> Double, (Array[Double]) -> Array[Double], Array[Double], Double, Int32, Double) -> OptimizationResult
+
+pub fn initialize_population(Int32, Int32, Double, Double) -> Array[Individual]
+
+pub fn interior_point(Array[Double], Array[Array[Double]], Array[Double], Int32, Double) -> Array[Double]
+
+pub fn lagrangian((Array[Double]) -> Double, (Array[Double]) -> Array[Double], Array[(Array[Double]) -> Double], Array[(Array[Double]) -> Array[Double]], Array[Double], Int32) -> OptimizationResult
+
+pub fn lbfgs((Array[Double]) -> Double, (Array[Double]) -> Array[Double], Array[Double], Int32, Int32, Double) -> OptimizationResult
+
+pub fn line_search((Array[Double]) -> Double, Array[Double], Array[Double], Double, Int32) -> Double
+
+pub fn lp_solve(Array[Double], Array[Array[Double]], Array[Double]) -> Array[Double]
+
+pub fn make_optimization_config(Double, Int32, Double) -> OptimizationConfig
+
+pub fn mini_batch_sgd((Array[Double]) -> Double, (Array[Double]) -> Array[Double], Array[Double], Double, Int32, Int32, Double) -> OptimizationResult
+
+pub fn momentum_gd((Array[Double]) -> Double, (Array[Double]) -> Array[Double], Array[Double], Double, Double, Int32, Double) -> OptimizationResult
+
+pub fn mutate(Individual, Double, Double, Double) -> Individual
+
+pub fn nesterov_gd((Array[Double]) -> Double, (Array[Double]) -> Array[Double], Array[Double], Double, Double, Int32, Double) -> OptimizationResult
+
+pub fn newton_method((Array[Double]) -> Double, (Array[Double]) -> Array[Double], (Array[Double]) -> Array[Array[Double]], Array[Double], Int32, Double) -> OptimizationResult
+
+pub fn numerical_gradient((Array[Double]) -> Double, Array[Double], Double) -> Array[Double]
+
+pub fn numerical_hessian((Array[Double]) -> Double, Array[Double], Double) -> Array[Array[Double]]
+
+pub fn optimization_id() -> String
+
+pub fn particle_swarm((Array[Double]) -> Double, Array[Double], Int32, Int32) -> OptimizationResult
+
+pub fn penalty_method((Array[Double]) -> Double, Array[(Array[Double]) -> Double], Array[Double], Double, Int32) -> OptimizationResult
+
+pub fn pso((Array[Double]) -> Double, Array[Double], Int32, Int32) -> OptimizationResult
+
+pub fn qp_solve(Array[Array[Double]], Array[Double], Int32, Double) -> Array[Double]
+
+pub fn quasi_newton((Array[Double]) -> Double, (Array[Double]) -> Array[Double], Array[Double], Int32, Double) -> OptimizationResult
+
+pub fn rmsprop((Array[Double]) -> Double, (Array[Double]) -> Array[Double], Array[Double], Double, Double, Int32, Double) -> OptimizationResult
+
+pub fn select_parents(Array[Individual], Int32) -> Array[Individual]
+
+pub fn simplex_method(Array[Double], Array[Array[Double]], Array[Double], Int32) -> Array[Double]
+
+pub fn simulated_annealing((Array[Double]) -> Double, Array[Double], Double, Int32, Double, Double) -> OptimizationResult
+
+pub fn stochastic_gradient_descent((Array[Double]) -> Double, (Array[Double]) -> Array[Double], Array[Double], Double, Int32, Double) -> OptimizationResult
+
+pub fn update_position(Particle, Array[Double]) -> Array[Double]
+
+pub fn update_velocity(Particle, Array[Double], Double, Double, Double) -> Array[Double]
+
+// Errors
+
+// Types and methods
+pub(all) enum CoolingScheduleType {
+  Linear
+  Exponential
+  Logarithmic
+  Geometric
+}
+
+pub(all) struct Individual {
+  genes : Array[Double]
+  fitness : Double
+}
+
+pub(all) struct OptimizationConfig {
+  learning_rate : Double
+  max_iter : Int32
+  tolerance : Double
+  momentum : Double
+  beta1 : Double
+  beta2 : Double
+  epsilon : Double
+}
+
+pub(all) struct OptimizationResult {
+  x : Array[Double]
+  fx : Double
+  iterations : Int32
+  converged : Bool
+}
+
+pub(all) enum OptimizationStatus {
+  Converged
+  MaxIterReached
+  Diverged
+  Failed
+}
+
+pub(all) struct Particle {
+  position : Array[Double]
+  velocity : Array[Double]
+  best_position : Array[Double]
+  best_value : Double
+}
+
+// Type aliases
+
+// Traits

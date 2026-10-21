@@ -1,0 +1,93 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/plugin"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check_all_dependencies(PluginRegistry, String) -> Bool
+
+pub fn check_dependency(PluginRegistry, PluginDependency) -> Bool
+
+pub fn disable_plugin(PluginRegistry, String) -> PluginRegistry
+
+pub fn empty_plugin_registry() -> PluginRegistry
+
+pub fn enable_plugin(PluginRegistry, String) -> PluginRegistry
+
+pub fn get_plugin_status(PluginRegistry, String) -> PluginStatus
+
+pub fn list_plugins(PluginRegistry) -> Array[String]
+
+pub fn make_plugin_dependency(String, String) -> PluginDependency
+
+pub fn make_plugin_entry(PluginMeta, PluginStatus, Array[PluginDependency]) -> PluginEntry
+
+pub fn make_plugin_meta(String, String, String, String, String) -> PluginMeta
+
+pub fn plugin_count(PluginRegistry) -> Int32
+
+pub fn plugin_id() -> String
+
+pub fn plugin_registry_uri(PluginRegistry) -> String
+
+pub fn plugin_status_name(PluginStatus) -> String
+
+pub fn plugins_by_status(PluginRegistry, PluginStatus) -> Array[String]
+
+pub fn register_plugin(PluginRegistry, PluginEntry) -> PluginRegistry
+
+pub fn unregister_plugin(PluginRegistry, String) -> PluginRegistry
+
+// Errors
+
+// Types and methods
+pub struct PluginDependency {
+  name : String
+  min_version : String
+} derive(Eq, @debug.Debug)
+pub fn PluginDependency::equal(Self, Self) -> Bool
+pub fn PluginDependency::not_equal(Self, Self) -> Bool
+pub fn PluginDependency::to_repr(Self) -> @debug.Repr
+
+pub struct PluginEntry {
+  meta : PluginMeta
+  status : PluginStatus
+  dependencies : Array[PluginDependency]
+} derive(Eq, @debug.Debug)
+pub fn PluginEntry::equal(Self, Self) -> Bool
+pub fn PluginEntry::not_equal(Self, Self) -> Bool
+pub fn PluginEntry::to_repr(Self) -> @debug.Repr
+
+pub struct PluginMeta {
+  name : String
+  version : String
+  author : String
+  entry_point : String
+  description : String
+} derive(Eq, @debug.Debug)
+pub fn PluginMeta::equal(Self, Self) -> Bool
+pub fn PluginMeta::not_equal(Self, Self) -> Bool
+pub fn PluginMeta::to_repr(Self) -> @debug.Repr
+
+pub struct PluginRegistry {
+  plugins : Array[PluginEntry]
+} derive(Eq, @debug.Debug)
+pub fn PluginRegistry::equal(Self, Self) -> Bool
+pub fn PluginRegistry::not_equal(Self, Self) -> Bool
+pub fn PluginRegistry::to_repr(Self) -> @debug.Repr
+
+pub(all) enum PluginStatus {
+  Loaded
+  Active
+  Disabled
+  Error
+} derive(Eq, @debug.Debug)
+pub fn PluginStatus::equal(Self, Self) -> Bool
+pub fn PluginStatus::not_equal(Self, Self) -> Bool
+pub fn PluginStatus::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

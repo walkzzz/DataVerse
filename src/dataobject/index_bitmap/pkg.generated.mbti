@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/index_bitmap"
+
+// Values
+pub fn index_bitmap_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn index_bitmap_corr(Array[Double], Array[Double]) -> Double
+
+pub fn index_bitmap_cov(Array[Double], Array[Double]) -> Double
+
+pub fn index_bitmap_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_bitmap_mae(Array[Double], Array[Double]) -> Double
+
+pub fn index_bitmap_make_labeled_point(Double, Double, Int32) -> Index_bitmapPoint
+
+pub fn index_bitmap_make_matrix(Int32, Int32, Double) -> Index_bitmapMatrix
+
+pub fn index_bitmap_make_point(Double, Double) -> Index_bitmapPoint
+
+pub fn index_bitmap_make_series(Array[Double], String) -> Index_bitmapSeries
+
+pub fn index_bitmap_make_vector(Array[Double]) -> Index_bitmapVector
+
+pub fn index_bitmap_matrix_add(Index_bitmapMatrix, Index_bitmapMatrix) -> Index_bitmapMatrix
+
+pub fn index_bitmap_matrix_get(Index_bitmapMatrix, Int32, Int32) -> Double
+
+pub fn index_bitmap_matrix_identity(Int32) -> Index_bitmapMatrix
+
+pub fn index_bitmap_matrix_multiply(Index_bitmapMatrix, Index_bitmapMatrix) -> Index_bitmapMatrix
+
+pub fn index_bitmap_matrix_norm(Index_bitmapMatrix) -> Double
+
+pub fn index_bitmap_matrix_scale(Index_bitmapMatrix, Double) -> Index_bitmapMatrix
+
+pub fn index_bitmap_matrix_to_string(Index_bitmapMatrix) -> String
+
+pub fn index_bitmap_matrix_trace(Index_bitmapMatrix) -> Double
+
+pub fn index_bitmap_matrix_transpose(Index_bitmapMatrix) -> Index_bitmapMatrix
+
+pub fn index_bitmap_mse(Array[Double], Array[Double]) -> Double
+
+pub fn index_bitmap_point_add(Index_bitmapPoint, Index_bitmapPoint) -> Index_bitmapPoint
+
+pub fn index_bitmap_point_dist(Index_bitmapPoint, Index_bitmapPoint) -> Double
+
+pub fn index_bitmap_point_dot(Index_bitmapPoint, Index_bitmapPoint) -> Double
+
+pub fn index_bitmap_point_label(Index_bitmapPoint) -> Int32
+
+pub fn index_bitmap_point_norm(Index_bitmapPoint) -> Double
+
+pub fn index_bitmap_point_scale(Index_bitmapPoint, Double) -> Index_bitmapPoint
+
+pub fn index_bitmap_point_sub(Index_bitmapPoint, Index_bitmapPoint) -> Index_bitmapPoint
+
+pub fn index_bitmap_point_to_string(Index_bitmapPoint) -> String
+
+pub fn index_bitmap_point_x(Index_bitmapPoint) -> Double
+
+pub fn index_bitmap_point_y(Index_bitmapPoint) -> Double
+
+pub fn index_bitmap_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_bitmap_r2(Array[Double], Array[Double]) -> Double
+
+pub fn index_bitmap_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_bitmap_series_add(Index_bitmapSeries, Index_bitmapSeries) -> Index_bitmapSeries
+
+pub fn index_bitmap_series_len(Index_bitmapSeries) -> Int32
+
+pub fn index_bitmap_series_max(Index_bitmapSeries) -> Double
+
+pub fn index_bitmap_series_mean(Index_bitmapSeries) -> Double
+
+pub fn index_bitmap_series_min(Index_bitmapSeries) -> Double
+
+pub fn index_bitmap_series_scale(Index_bitmapSeries, Double) -> Index_bitmapSeries
+
+pub fn index_bitmap_series_std(Index_bitmapSeries) -> Double
+
+pub fn index_bitmap_series_sum(Index_bitmapSeries) -> Double
+
+pub fn index_bitmap_series_to_string(Index_bitmapSeries) -> String
+
+pub fn index_bitmap_series_var(Index_bitmapSeries) -> Double
+
+pub fn index_bitmap_std(Array[Double]) -> Double
+
+pub fn index_bitmap_var(Array[Double]) -> Double
+
+pub fn index_bitmap_vector_add(Index_bitmapVector, Index_bitmapVector) -> Index_bitmapVector
+
+pub fn index_bitmap_vector_dist(Index_bitmapVector, Index_bitmapVector) -> Double
+
+pub fn index_bitmap_vector_dot(Index_bitmapVector, Index_bitmapVector) -> Double
+
+pub fn index_bitmap_vector_norm(Index_bitmapVector) -> Double
+
+pub fn index_bitmap_vector_normalize(Index_bitmapVector) -> Index_bitmapVector
+
+pub fn index_bitmap_vector_scale(Index_bitmapVector, Double) -> Index_bitmapVector
+
+pub fn index_bitmap_vector_sub(Index_bitmapVector, Index_bitmapVector) -> Index_bitmapVector
+
+pub fn index_bitmap_vector_to_string(Index_bitmapVector) -> String
+
+pub fn index_bitmap_vector_zero(Int32) -> Index_bitmapVector
+
+// Errors
+
+// Types and methods
+pub struct Index_bitmapMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Index_bitmapPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Index_bitmapSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Index_bitmapVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

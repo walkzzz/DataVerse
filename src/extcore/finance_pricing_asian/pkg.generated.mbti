@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/finance_pricing_asian"
+
+// Values
+pub fn finance_pricing_asian_buffer_make(Int32) -> FinancepricingasianBuffer
+
+pub fn finance_pricing_asian_cluster_make(Int32) -> FinancepricingasianCluster
+
+pub fn finance_pricing_asian_cursor_make(Int32) -> FinancepricingasianCursor
+
+pub fn finance_pricing_asian_edge_make(Int32) -> FinancepricingasianEdge
+
+pub fn finance_pricing_asian_frame_make(Int32) -> FinancepricingasianFrame
+
+pub fn finance_pricing_asian_graphn_make(Int32) -> FinancepricingasianGraphN
+
+pub fn finance_pricing_asian_layer_make(Int32) -> FinancepricingasianLayer
+
+pub fn finance_pricing_asian_make_matrix(Int32, Int32, Double) -> FinancepricingasianMatrix
+
+pub fn finance_pricing_asian_make_point(Double, Double) -> FinancepricingasianPoint
+
+pub fn finance_pricing_asian_make_point3(Double, Double, Double) -> FinancepricingasianPoint
+
+pub fn finance_pricing_asian_make_series(Array[Double], String) -> FinancepricingasianSeries
+
+pub fn finance_pricing_asian_make_vector(Array[Double]) -> FinancepricingasianVector
+
+pub fn finance_pricing_asian_matrix_identity(Int32) -> FinancepricingasianMatrix
+
+pub fn finance_pricing_asian_model_make(Int32) -> FinancepricingasianModel
+
+pub fn finance_pricing_asian_node_make(Int32) -> FinancepricingasianNode
+
+pub fn finance_pricing_asian_path_make(Int32) -> FinancepricingasianPath
+
+pub fn finance_pricing_asian_range_make(Int32) -> FinancepricingasianRange
+
+pub fn finance_pricing_asian_slice_make(Int32) -> FinancepricingasianSlice
+
+pub fn finance_pricing_asian_table_make(Int32) -> FinancepricingasianTable
+
+pub fn finance_pricing_asian_vector_zero(Int32) -> FinancepricingasianVector
+
+pub fn finance_pricing_asian_view_make(Int32) -> FinancepricingasianView
+
+// Errors
+
+// Types and methods
+pub(all) struct FinancepricingasianBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingasianBuffer::add(Self, Self) -> Self
+pub fn FinancepricingasianBuffer::copy(Self) -> Self
+pub fn FinancepricingasianBuffer::fill(Self, Double) -> Self
+pub fn FinancepricingasianBuffer::get(Self, Int32) -> Double
+pub fn FinancepricingasianBuffer::len(Self) -> Int32
+pub fn FinancepricingasianBuffer::max(Self) -> Double
+pub fn FinancepricingasianBuffer::mean(Self) -> Double
+pub fn FinancepricingasianBuffer::min(Self) -> Double
+pub fn FinancepricingasianBuffer::scale(Self, Double) -> Self
+pub fn FinancepricingasianBuffer::set(Self, Int32, Double) -> Self
+pub fn FinancepricingasianBuffer::sum(Self) -> Double
+pub fn FinancepricingasianBuffer::to_string(Self) -> String
+
+pub(all) struct FinancepricingasianCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingasianCluster::add(Self, Self) -> Self
+pub fn FinancepricingasianCluster::copy(Self) -> Self
+pub fn FinancepricingasianCluster::fill(Self, Double) -> Self
+pub fn FinancepricingasianCluster::get(Self, Int32) -> Double
+pub fn FinancepricingasianCluster::len(Self) -> Int32
+pub fn FinancepricingasianCluster::max(Self) -> Double
+pub fn FinancepricingasianCluster::mean(Self) -> Double
+pub fn FinancepricingasianCluster::min(Self) -> Double
+pub fn FinancepricingasianCluster::scale(Self, Double) -> Self
+pub fn FinancepricingasianCluster::set(Self, Int32, Double) -> Self
+pub fn FinancepricingasianCluster::sum(Self) -> Double
+pub fn FinancepricingasianCluster::to_string(Self) -> String
+
+pub(all) struct FinancepricingasianCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingasianCursor::add(Self, Self) -> Self
+pub fn FinancepricingasianCursor::copy(Self) -> Self
+pub fn FinancepricingasianCursor::fill(Self, Double) -> Self
+pub fn FinancepricingasianCursor::get(Self, Int32) -> Double
+pub fn FinancepricingasianCursor::len(Self) -> Int32
+pub fn FinancepricingasianCursor::max(Self) -> Double
+pub fn FinancepricingasianCursor::mean(Self) -> Double
+pub fn FinancepricingasianCursor::min(Self) -> Double
+pub fn FinancepricingasianCursor::scale(Self, Double) -> Self
+pub fn FinancepricingasianCursor::set(Self, Int32, Double) -> Self
+pub fn FinancepricingasianCursor::sum(Self) -> Double
+pub fn FinancepricingasianCursor::to_string(Self) -> String
+
+pub(all) struct FinancepricingasianEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingasianEdge::add(Self, Self) -> Self
+pub fn FinancepricingasianEdge::copy(Self) -> Self
+pub fn FinancepricingasianEdge::fill(Self, Double) -> Self
+pub fn FinancepricingasianEdge::get(Self, Int32) -> Double
+pub fn FinancepricingasianEdge::len(Self) -> Int32
+pub fn FinancepricingasianEdge::max(Self) -> Double
+pub fn FinancepricingasianEdge::mean(Self) -> Double
+pub fn FinancepricingasianEdge::min(Self) -> Double
+pub fn FinancepricingasianEdge::scale(Self, Double) -> Self
+pub fn FinancepricingasianEdge::set(Self, Int32, Double) -> Self
+pub fn FinancepricingasianEdge::sum(Self) -> Double
+pub fn FinancepricingasianEdge::to_string(Self) -> String
+
+pub(all) struct FinancepricingasianFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingasianFrame::add(Self, Self) -> Self
+pub fn FinancepricingasianFrame::copy(Self) -> Self
+pub fn FinancepricingasianFrame::fill(Self, Double) -> Self
+pub fn FinancepricingasianFrame::get(Self, Int32) -> Double
+pub fn FinancepricingasianFrame::len(Self) -> Int32
+pub fn FinancepricingasianFrame::max(Self) -> Double
+pub fn FinancepricingasianFrame::mean(Self) -> Double
+pub fn FinancepricingasianFrame::min(Self) -> Double
+pub fn FinancepricingasianFrame::scale(Self, Double) -> Self
+pub fn FinancepricingasianFrame::set(Self, Int32, Double) -> Self
+pub fn FinancepricingasianFrame::sum(Self) -> Double
+pub fn FinancepricingasianFrame::to_string(Self) -> String
+
+pub(all) struct FinancepricingasianGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingasianGraphN::add(Self, Self) -> Self
+pub fn FinancepricingasianGraphN::copy(Self) -> Self
+pub fn FinancepricingasianGraphN::fill(Self, Double) -> Self
+pub fn FinancepricingasianGraphN::get(Self, Int32) -> Double
+pub fn FinancepricingasianGraphN::len(Self) -> Int32
+pub fn FinancepricingasianGraphN::max(Self) -> Double
+pub fn FinancepricingasianGraphN::mean(Self) -> Double
+pub fn FinancepricingasianGraphN::min(Self) -> Double
+pub fn FinancepricingasianGraphN::scale(Self, Double) -> Self
+pub fn FinancepricingasianGraphN::set(Self, Int32, Double) -> Self
+pub fn FinancepricingasianGraphN::sum(Self) -> Double
+pub fn FinancepricingasianGraphN::to_string(Self) -> String
+
+pub(all) struct FinancepricingasianLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingasianLayer::add(Self, Self) -> Self
+pub fn FinancepricingasianLayer::copy(Self) -> Self
+pub fn FinancepricingasianLayer::fill(Self, Double) -> Self
+pub fn FinancepricingasianLayer::get(Self, Int32) -> Double
+pub fn FinancepricingasianLayer::len(Self) -> Int32
+pub fn FinancepricingasianLayer::max(Self) -> Double
+pub fn FinancepricingasianLayer::mean(Self) -> Double
+pub fn FinancepricingasianLayer::min(Self) -> Double
+pub fn FinancepricingasianLayer::scale(Self, Double) -> Self
+pub fn FinancepricingasianLayer::set(Self, Int32, Double) -> Self
+pub fn FinancepricingasianLayer::sum(Self) -> Double
+pub fn FinancepricingasianLayer::to_string(Self) -> String
+
+pub(all) struct FinancepricingasianMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn FinancepricingasianMatrix::add(Self, Self) -> Self
+pub fn FinancepricingasianMatrix::det(Self) -> Double
+pub fn FinancepricingasianMatrix::get(Self, Int32, Int32) -> Double
+pub fn FinancepricingasianMatrix::multiply(Self, Self) -> Self
+pub fn FinancepricingasianMatrix::norm(Self) -> Double
+pub fn FinancepricingasianMatrix::scale(Self, Double) -> Self
+pub fn FinancepricingasianMatrix::to_string(Self) -> String
+pub fn FinancepricingasianMatrix::trace(Self) -> Double
+pub fn FinancepricingasianMatrix::transpose(Self) -> Self
+
+pub(all) struct FinancepricingasianModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingasianModel::add(Self, Self) -> Self
+pub fn FinancepricingasianModel::copy(Self) -> Self
+pub fn FinancepricingasianModel::fill(Self, Double) -> Self
+pub fn FinancepricingasianModel::get(Self, Int32) -> Double
+pub fn FinancepricingasianModel::len(Self) -> Int32
+pub fn FinancepricingasianModel::max(Self) -> Double
+pub fn FinancepricingasianModel::mean(Self) -> Double
+pub fn FinancepricingasianModel::min(Self) -> Double
+pub fn FinancepricingasianModel::scale(Self, Double) -> Self
+pub fn FinancepricingasianModel::set(Self, Int32, Double) -> Self
+pub fn FinancepricingasianModel::sum(Self) -> Double
+pub fn FinancepricingasianModel::to_string(Self) -> String
+
+pub(all) struct FinancepricingasianNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingasianNode::add(Self, Self) -> Self
+pub fn FinancepricingasianNode::copy(Self) -> Self
+pub fn FinancepricingasianNode::fill(Self, Double) -> Self
+pub fn FinancepricingasianNode::get(Self, Int32) -> Double
+pub fn FinancepricingasianNode::len(Self) -> Int32
+pub fn FinancepricingasianNode::max(Self) -> Double
+pub fn FinancepricingasianNode::mean(Self) -> Double
+pub fn FinancepricingasianNode::min(Self) -> Double
+pub fn FinancepricingasianNode::scale(Self, Double) -> Self
+pub fn FinancepricingasianNode::set(Self, Int32, Double) -> Self
+pub fn FinancepricingasianNode::sum(Self) -> Double
+pub fn FinancepricingasianNode::to_string(Self) -> String
+
+pub(all) struct FinancepricingasianPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingasianPath::add(Self, Self) -> Self
+pub fn FinancepricingasianPath::copy(Self) -> Self
+pub fn FinancepricingasianPath::fill(Self, Double) -> Self
+pub fn FinancepricingasianPath::get(Self, Int32) -> Double
+pub fn FinancepricingasianPath::len(Self) -> Int32
+pub fn FinancepricingasianPath::max(Self) -> Double
+pub fn FinancepricingasianPath::mean(Self) -> Double
+pub fn FinancepricingasianPath::min(Self) -> Double
+pub fn FinancepricingasianPath::scale(Self, Double) -> Self
+pub fn FinancepricingasianPath::set(Self, Int32, Double) -> Self
+pub fn FinancepricingasianPath::sum(Self) -> Double
+pub fn FinancepricingasianPath::to_string(Self) -> String
+
+pub(all) struct FinancepricingasianPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn FinancepricingasianPoint::add(Self, Self) -> Self
+pub fn FinancepricingasianPoint::cross(Self, Self) -> Self
+pub fn FinancepricingasianPoint::dist(Self, Self) -> Double
+pub fn FinancepricingasianPoint::dot(Self, Self) -> Double
+pub fn FinancepricingasianPoint::label(Self) -> Int32
+pub fn FinancepricingasianPoint::lerp(Self, Self, Double) -> Self
+pub fn FinancepricingasianPoint::mid(Self, Self) -> Self
+pub fn FinancepricingasianPoint::negate(Self) -> Self
+pub fn FinancepricingasianPoint::norm(Self) -> Double
+pub fn FinancepricingasianPoint::normalize(Self) -> Self
+pub fn FinancepricingasianPoint::scale(Self, Double) -> Self
+pub fn FinancepricingasianPoint::sub(Self, Self) -> Self
+pub fn FinancepricingasianPoint::to_string(Self) -> String
+pub fn FinancepricingasianPoint::x(Self) -> Double
+pub fn FinancepricingasianPoint::y(Self) -> Double
+pub fn FinancepricingasianPoint::z(Self) -> Double
+
+pub(all) struct FinancepricingasianRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingasianRange::add(Self, Self) -> Self
+pub fn FinancepricingasianRange::copy(Self) -> Self
+pub fn FinancepricingasianRange::fill(Self, Double) -> Self
+pub fn FinancepricingasianRange::get(Self, Int32) -> Double
+pub fn FinancepricingasianRange::len(Self) -> Int32
+pub fn FinancepricingasianRange::max(Self) -> Double
+pub fn FinancepricingasianRange::mean(Self) -> Double
+pub fn FinancepricingasianRange::min(Self) -> Double
+pub fn FinancepricingasianRange::scale(Self, Double) -> Self
+pub fn FinancepricingasianRange::set(Self, Int32, Double) -> Self
+pub fn FinancepricingasianRange::sum(Self) -> Double
+pub fn FinancepricingasianRange::to_string(Self) -> String
+
+pub(all) struct FinancepricingasianSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn FinancepricingasianSeries::add(Self, Self) -> Self
+pub fn FinancepricingasianSeries::cumsum(Self) -> Self
+pub fn FinancepricingasianSeries::len(Self) -> Int32
+pub fn FinancepricingasianSeries::max(Self) -> Double
+pub fn FinancepricingasianSeries::mean(Self) -> Double
+pub fn FinancepricingasianSeries::median(Self) -> Double
+pub fn FinancepricingasianSeries::min(Self) -> Double
+pub fn FinancepricingasianSeries::normalize(Self) -> Self
+pub fn FinancepricingasianSeries::range(Self) -> Double
+pub fn FinancepricingasianSeries::scale(Self, Double) -> Self
+pub fn FinancepricingasianSeries::std(Self) -> Double
+pub fn FinancepricingasianSeries::sub(Self, Self) -> Self
+pub fn FinancepricingasianSeries::sum(Self) -> Double
+pub fn FinancepricingasianSeries::to_string(Self) -> String
+pub fn FinancepricingasianSeries::variance(Self) -> Double
+
+pub(all) struct FinancepricingasianSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingasianSlice::add(Self, Self) -> Self
+pub fn FinancepricingasianSlice::copy(Self) -> Self
+pub fn FinancepricingasianSlice::fill(Self, Double) -> Self
+pub fn FinancepricingasianSlice::get(Self, Int32) -> Double
+pub fn FinancepricingasianSlice::len(Self) -> Int32
+pub fn FinancepricingasianSlice::max(Self) -> Double
+pub fn FinancepricingasianSlice::mean(Self) -> Double
+pub fn FinancepricingasianSlice::min(Self) -> Double
+pub fn FinancepricingasianSlice::scale(Self, Double) -> Self
+pub fn FinancepricingasianSlice::set(Self, Int32, Double) -> Self
+pub fn FinancepricingasianSlice::sum(Self) -> Double
+pub fn FinancepricingasianSlice::to_string(Self) -> String
+
+pub(all) struct FinancepricingasianTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingasianTable::add(Self, Self) -> Self
+pub fn FinancepricingasianTable::copy(Self) -> Self
+pub fn FinancepricingasianTable::fill(Self, Double) -> Self
+pub fn FinancepricingasianTable::get(Self, Int32) -> Double
+pub fn FinancepricingasianTable::len(Self) -> Int32
+pub fn FinancepricingasianTable::max(Self) -> Double
+pub fn FinancepricingasianTable::mean(Self) -> Double
+pub fn FinancepricingasianTable::min(Self) -> Double
+pub fn FinancepricingasianTable::scale(Self, Double) -> Self
+pub fn FinancepricingasianTable::set(Self, Int32, Double) -> Self
+pub fn FinancepricingasianTable::sum(Self) -> Double
+pub fn FinancepricingasianTable::to_string(Self) -> String
+
+pub(all) struct FinancepricingasianVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn FinancepricingasianVector::add(Self, Self) -> Self
+pub fn FinancepricingasianVector::dist(Self, Self) -> Double
+pub fn FinancepricingasianVector::dot(Self, Self) -> Double
+pub fn FinancepricingasianVector::norm(Self) -> Double
+pub fn FinancepricingasianVector::normalize(Self) -> Self
+pub fn FinancepricingasianVector::scale(Self, Double) -> Self
+pub fn FinancepricingasianVector::sub(Self, Self) -> Self
+pub fn FinancepricingasianVector::to_string(Self) -> String
+
+pub(all) struct FinancepricingasianView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingasianView::add(Self, Self) -> Self
+pub fn FinancepricingasianView::copy(Self) -> Self
+pub fn FinancepricingasianView::fill(Self, Double) -> Self
+pub fn FinancepricingasianView::get(Self, Int32) -> Double
+pub fn FinancepricingasianView::len(Self) -> Int32
+pub fn FinancepricingasianView::max(Self) -> Double
+pub fn FinancepricingasianView::mean(Self) -> Double
+pub fn FinancepricingasianView::min(Self) -> Double
+pub fn FinancepricingasianView::scale(Self, Double) -> Self
+pub fn FinancepricingasianView::set(Self, Int32, Double) -> Self
+pub fn FinancepricingasianView::sum(Self) -> Double
+pub fn FinancepricingasianView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

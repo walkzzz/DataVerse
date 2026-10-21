@@ -1,0 +1,142 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/dialogue"
+
+// Values
+pub fn add_context_memory(DialogueContext, String, String) -> DialogueContext
+
+pub fn classify_intent(IntentClassifier, String) -> Intent
+
+pub fn classify_intents_multi(IntentClassifier, String) -> Array[Intent]
+
+pub fn dialogue_efficiency(DialogueManager) -> Double
+
+pub fn dialogue_is_complete(DialogueManager) -> Bool
+
+pub fn dialogue_state_to_string(DialogueState) -> String
+
+pub fn dialogue_success_rate(DialogueManager) -> Double
+
+pub fn fill_slots(SlotFiller, String, Array[Slot]) -> Array[Slot]
+
+pub fn generate_response(ResponseGenerator, String, DialogueState) -> String
+
+pub fn get_current_state(DialogueManager) -> DialogueState
+
+pub fn get_preference(DialogueContext, String) -> String
+
+pub fn intent_to_string(Intent) -> String
+
+pub fn intent_with_slots(Intent, Array[Slot]) -> Intent
+
+pub fn make_dialogue_context(String, String) -> DialogueContext
+
+pub fn make_dialogue_manager(DialoguePolicy, IntentClassifier, SlotFiller, ResponseGenerator, Array[Slot]) -> DialogueManager
+
+pub fn make_dialogue_state() -> DialogueState
+
+pub fn make_intent(String, Double) -> Intent
+
+pub fn make_intent_classifier(Array[(String, Array[String])], Double) -> IntentClassifier
+
+pub fn make_policy(Array[(String, String)], String) -> DialoguePolicy
+
+pub fn make_response_generator(Array[ResponseTemplate]) -> ResponseGenerator
+
+pub fn make_response_template(String, String, Array[String]) -> ResponseTemplate
+
+pub fn make_slot(String, String, Double) -> Slot
+
+pub fn make_slot_filler(Array[(String, Array[String])]) -> SlotFiller
+
+pub fn missing_slots(Array[Slot]) -> Array[String]
+
+pub fn process_input(DialogueManager, String) -> (DialogueManager, String)
+
+pub fn query_context_memory(DialogueContext, String) -> String
+
+pub fn required_slot(String) -> Slot
+
+pub fn reset_dialogue(DialogueManager) -> DialogueManager
+
+pub fn select_action(DialoguePolicy, DialogueState) -> String
+
+pub fn set_preference(DialogueContext, String, String) -> DialogueContext
+
+pub fn slot_filling_rate(DialogueState) -> Double
+
+pub fn slot_is_filled(Slot) -> Bool
+
+pub fn slot_to_string(Slot) -> String
+
+pub fn update_dialogue_state(DialogueState, Intent, String) -> DialogueState
+
+// Errors
+
+// Types and methods
+pub struct DialogueContext {
+  user_id : String
+  session_id : String
+  preferences : Array[(String, String)]
+  memory : Array[(String, String)]
+  max_memory : Int32
+}
+
+pub struct DialogueManager {
+  state : DialogueState
+  policy : DialoguePolicy
+  classifier : IntentClassifier
+  filler : SlotFiller
+  generator : ResponseGenerator
+  required_slots : Array[Slot]
+}
+
+pub struct DialoguePolicy {
+  rules : Array[(String, String)]
+  default_action : String
+}
+
+pub struct DialogueState {
+  turn : Int32
+  current_intent : String
+  slots : Array[Slot]
+  history : Array[String]
+  context : Array[(String, String)]
+  completed : Bool
+}
+
+pub struct Intent {
+  name : String
+  confidence : Double
+  slots : Array[Slot]
+}
+
+pub struct IntentClassifier {
+  intents : Array[(String, Array[String])]
+  threshold : Double
+}
+
+pub struct ResponseGenerator {
+  templates : Array[ResponseTemplate]
+  var_index : Int32
+}
+
+pub struct ResponseTemplate {
+  action : String
+  template : String
+  variations : Array[String]
+}
+
+pub struct Slot {
+  name : String
+  value : String
+  confidence : Double
+  required : Bool
+}
+
+pub struct SlotFiller {
+  slot_patterns : Array[(String, Array[String])]
+}
+
+// Type aliases
+
+// Traits

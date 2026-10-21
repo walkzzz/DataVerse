@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/chem_rxn_mechanism"
+
+// Values
+pub fn chem_rxn_mechanism_buffer_make(Int32) -> ChemrxnmechanismBuffer
+
+pub fn chem_rxn_mechanism_cluster_make(Int32) -> ChemrxnmechanismCluster
+
+pub fn chem_rxn_mechanism_cursor_make(Int32) -> ChemrxnmechanismCursor
+
+pub fn chem_rxn_mechanism_edge_make(Int32) -> ChemrxnmechanismEdge
+
+pub fn chem_rxn_mechanism_frame_make(Int32) -> ChemrxnmechanismFrame
+
+pub fn chem_rxn_mechanism_graphn_make(Int32) -> ChemrxnmechanismGraphN
+
+pub fn chem_rxn_mechanism_layer_make(Int32) -> ChemrxnmechanismLayer
+
+pub fn chem_rxn_mechanism_make_matrix(Int32, Int32, Double) -> ChemrxnmechanismMatrix
+
+pub fn chem_rxn_mechanism_make_point(Double, Double) -> ChemrxnmechanismPoint
+
+pub fn chem_rxn_mechanism_make_point3(Double, Double, Double) -> ChemrxnmechanismPoint
+
+pub fn chem_rxn_mechanism_make_series(Array[Double], String) -> ChemrxnmechanismSeries
+
+pub fn chem_rxn_mechanism_make_vector(Array[Double]) -> ChemrxnmechanismVector
+
+pub fn chem_rxn_mechanism_matrix_identity(Int32) -> ChemrxnmechanismMatrix
+
+pub fn chem_rxn_mechanism_model_make(Int32) -> ChemrxnmechanismModel
+
+pub fn chem_rxn_mechanism_node_make(Int32) -> ChemrxnmechanismNode
+
+pub fn chem_rxn_mechanism_path_make(Int32) -> ChemrxnmechanismPath
+
+pub fn chem_rxn_mechanism_range_make(Int32) -> ChemrxnmechanismRange
+
+pub fn chem_rxn_mechanism_slice_make(Int32) -> ChemrxnmechanismSlice
+
+pub fn chem_rxn_mechanism_table_make(Int32) -> ChemrxnmechanismTable
+
+pub fn chem_rxn_mechanism_vector_zero(Int32) -> ChemrxnmechanismVector
+
+pub fn chem_rxn_mechanism_view_make(Int32) -> ChemrxnmechanismView
+
+// Errors
+
+// Types and methods
+pub(all) struct ChemrxnmechanismBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnmechanismBuffer::add(Self, Self) -> Self
+pub fn ChemrxnmechanismBuffer::copy(Self) -> Self
+pub fn ChemrxnmechanismBuffer::fill(Self, Double) -> Self
+pub fn ChemrxnmechanismBuffer::get(Self, Int32) -> Double
+pub fn ChemrxnmechanismBuffer::len(Self) -> Int32
+pub fn ChemrxnmechanismBuffer::max(Self) -> Double
+pub fn ChemrxnmechanismBuffer::mean(Self) -> Double
+pub fn ChemrxnmechanismBuffer::min(Self) -> Double
+pub fn ChemrxnmechanismBuffer::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismBuffer::set(Self, Int32, Double) -> Self
+pub fn ChemrxnmechanismBuffer::sum(Self) -> Double
+pub fn ChemrxnmechanismBuffer::to_string(Self) -> String
+
+pub(all) struct ChemrxnmechanismCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnmechanismCluster::add(Self, Self) -> Self
+pub fn ChemrxnmechanismCluster::copy(Self) -> Self
+pub fn ChemrxnmechanismCluster::fill(Self, Double) -> Self
+pub fn ChemrxnmechanismCluster::get(Self, Int32) -> Double
+pub fn ChemrxnmechanismCluster::len(Self) -> Int32
+pub fn ChemrxnmechanismCluster::max(Self) -> Double
+pub fn ChemrxnmechanismCluster::mean(Self) -> Double
+pub fn ChemrxnmechanismCluster::min(Self) -> Double
+pub fn ChemrxnmechanismCluster::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismCluster::set(Self, Int32, Double) -> Self
+pub fn ChemrxnmechanismCluster::sum(Self) -> Double
+pub fn ChemrxnmechanismCluster::to_string(Self) -> String
+
+pub(all) struct ChemrxnmechanismCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnmechanismCursor::add(Self, Self) -> Self
+pub fn ChemrxnmechanismCursor::copy(Self) -> Self
+pub fn ChemrxnmechanismCursor::fill(Self, Double) -> Self
+pub fn ChemrxnmechanismCursor::get(Self, Int32) -> Double
+pub fn ChemrxnmechanismCursor::len(Self) -> Int32
+pub fn ChemrxnmechanismCursor::max(Self) -> Double
+pub fn ChemrxnmechanismCursor::mean(Self) -> Double
+pub fn ChemrxnmechanismCursor::min(Self) -> Double
+pub fn ChemrxnmechanismCursor::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismCursor::set(Self, Int32, Double) -> Self
+pub fn ChemrxnmechanismCursor::sum(Self) -> Double
+pub fn ChemrxnmechanismCursor::to_string(Self) -> String
+
+pub(all) struct ChemrxnmechanismEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnmechanismEdge::add(Self, Self) -> Self
+pub fn ChemrxnmechanismEdge::copy(Self) -> Self
+pub fn ChemrxnmechanismEdge::fill(Self, Double) -> Self
+pub fn ChemrxnmechanismEdge::get(Self, Int32) -> Double
+pub fn ChemrxnmechanismEdge::len(Self) -> Int32
+pub fn ChemrxnmechanismEdge::max(Self) -> Double
+pub fn ChemrxnmechanismEdge::mean(Self) -> Double
+pub fn ChemrxnmechanismEdge::min(Self) -> Double
+pub fn ChemrxnmechanismEdge::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismEdge::set(Self, Int32, Double) -> Self
+pub fn ChemrxnmechanismEdge::sum(Self) -> Double
+pub fn ChemrxnmechanismEdge::to_string(Self) -> String
+
+pub(all) struct ChemrxnmechanismFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnmechanismFrame::add(Self, Self) -> Self
+pub fn ChemrxnmechanismFrame::copy(Self) -> Self
+pub fn ChemrxnmechanismFrame::fill(Self, Double) -> Self
+pub fn ChemrxnmechanismFrame::get(Self, Int32) -> Double
+pub fn ChemrxnmechanismFrame::len(Self) -> Int32
+pub fn ChemrxnmechanismFrame::max(Self) -> Double
+pub fn ChemrxnmechanismFrame::mean(Self) -> Double
+pub fn ChemrxnmechanismFrame::min(Self) -> Double
+pub fn ChemrxnmechanismFrame::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismFrame::set(Self, Int32, Double) -> Self
+pub fn ChemrxnmechanismFrame::sum(Self) -> Double
+pub fn ChemrxnmechanismFrame::to_string(Self) -> String
+
+pub(all) struct ChemrxnmechanismGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnmechanismGraphN::add(Self, Self) -> Self
+pub fn ChemrxnmechanismGraphN::copy(Self) -> Self
+pub fn ChemrxnmechanismGraphN::fill(Self, Double) -> Self
+pub fn ChemrxnmechanismGraphN::get(Self, Int32) -> Double
+pub fn ChemrxnmechanismGraphN::len(Self) -> Int32
+pub fn ChemrxnmechanismGraphN::max(Self) -> Double
+pub fn ChemrxnmechanismGraphN::mean(Self) -> Double
+pub fn ChemrxnmechanismGraphN::min(Self) -> Double
+pub fn ChemrxnmechanismGraphN::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismGraphN::set(Self, Int32, Double) -> Self
+pub fn ChemrxnmechanismGraphN::sum(Self) -> Double
+pub fn ChemrxnmechanismGraphN::to_string(Self) -> String
+
+pub(all) struct ChemrxnmechanismLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnmechanismLayer::add(Self, Self) -> Self
+pub fn ChemrxnmechanismLayer::copy(Self) -> Self
+pub fn ChemrxnmechanismLayer::fill(Self, Double) -> Self
+pub fn ChemrxnmechanismLayer::get(Self, Int32) -> Double
+pub fn ChemrxnmechanismLayer::len(Self) -> Int32
+pub fn ChemrxnmechanismLayer::max(Self) -> Double
+pub fn ChemrxnmechanismLayer::mean(Self) -> Double
+pub fn ChemrxnmechanismLayer::min(Self) -> Double
+pub fn ChemrxnmechanismLayer::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismLayer::set(Self, Int32, Double) -> Self
+pub fn ChemrxnmechanismLayer::sum(Self) -> Double
+pub fn ChemrxnmechanismLayer::to_string(Self) -> String
+
+pub(all) struct ChemrxnmechanismMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ChemrxnmechanismMatrix::add(Self, Self) -> Self
+pub fn ChemrxnmechanismMatrix::det(Self) -> Double
+pub fn ChemrxnmechanismMatrix::get(Self, Int32, Int32) -> Double
+pub fn ChemrxnmechanismMatrix::multiply(Self, Self) -> Self
+pub fn ChemrxnmechanismMatrix::norm(Self) -> Double
+pub fn ChemrxnmechanismMatrix::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismMatrix::to_string(Self) -> String
+pub fn ChemrxnmechanismMatrix::trace(Self) -> Double
+pub fn ChemrxnmechanismMatrix::transpose(Self) -> Self
+
+pub(all) struct ChemrxnmechanismModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnmechanismModel::add(Self, Self) -> Self
+pub fn ChemrxnmechanismModel::copy(Self) -> Self
+pub fn ChemrxnmechanismModel::fill(Self, Double) -> Self
+pub fn ChemrxnmechanismModel::get(Self, Int32) -> Double
+pub fn ChemrxnmechanismModel::len(Self) -> Int32
+pub fn ChemrxnmechanismModel::max(Self) -> Double
+pub fn ChemrxnmechanismModel::mean(Self) -> Double
+pub fn ChemrxnmechanismModel::min(Self) -> Double
+pub fn ChemrxnmechanismModel::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismModel::set(Self, Int32, Double) -> Self
+pub fn ChemrxnmechanismModel::sum(Self) -> Double
+pub fn ChemrxnmechanismModel::to_string(Self) -> String
+
+pub(all) struct ChemrxnmechanismNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnmechanismNode::add(Self, Self) -> Self
+pub fn ChemrxnmechanismNode::copy(Self) -> Self
+pub fn ChemrxnmechanismNode::fill(Self, Double) -> Self
+pub fn ChemrxnmechanismNode::get(Self, Int32) -> Double
+pub fn ChemrxnmechanismNode::len(Self) -> Int32
+pub fn ChemrxnmechanismNode::max(Self) -> Double
+pub fn ChemrxnmechanismNode::mean(Self) -> Double
+pub fn ChemrxnmechanismNode::min(Self) -> Double
+pub fn ChemrxnmechanismNode::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismNode::set(Self, Int32, Double) -> Self
+pub fn ChemrxnmechanismNode::sum(Self) -> Double
+pub fn ChemrxnmechanismNode::to_string(Self) -> String
+
+pub(all) struct ChemrxnmechanismPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnmechanismPath::add(Self, Self) -> Self
+pub fn ChemrxnmechanismPath::copy(Self) -> Self
+pub fn ChemrxnmechanismPath::fill(Self, Double) -> Self
+pub fn ChemrxnmechanismPath::get(Self, Int32) -> Double
+pub fn ChemrxnmechanismPath::len(Self) -> Int32
+pub fn ChemrxnmechanismPath::max(Self) -> Double
+pub fn ChemrxnmechanismPath::mean(Self) -> Double
+pub fn ChemrxnmechanismPath::min(Self) -> Double
+pub fn ChemrxnmechanismPath::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismPath::set(Self, Int32, Double) -> Self
+pub fn ChemrxnmechanismPath::sum(Self) -> Double
+pub fn ChemrxnmechanismPath::to_string(Self) -> String
+
+pub(all) struct ChemrxnmechanismPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ChemrxnmechanismPoint::add(Self, Self) -> Self
+pub fn ChemrxnmechanismPoint::cross(Self, Self) -> Self
+pub fn ChemrxnmechanismPoint::dist(Self, Self) -> Double
+pub fn ChemrxnmechanismPoint::dot(Self, Self) -> Double
+pub fn ChemrxnmechanismPoint::label(Self) -> Int32
+pub fn ChemrxnmechanismPoint::lerp(Self, Self, Double) -> Self
+pub fn ChemrxnmechanismPoint::mid(Self, Self) -> Self
+pub fn ChemrxnmechanismPoint::negate(Self) -> Self
+pub fn ChemrxnmechanismPoint::norm(Self) -> Double
+pub fn ChemrxnmechanismPoint::normalize(Self) -> Self
+pub fn ChemrxnmechanismPoint::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismPoint::sub(Self, Self) -> Self
+pub fn ChemrxnmechanismPoint::to_string(Self) -> String
+pub fn ChemrxnmechanismPoint::x(Self) -> Double
+pub fn ChemrxnmechanismPoint::y(Self) -> Double
+pub fn ChemrxnmechanismPoint::z(Self) -> Double
+
+pub(all) struct ChemrxnmechanismRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnmechanismRange::add(Self, Self) -> Self
+pub fn ChemrxnmechanismRange::copy(Self) -> Self
+pub fn ChemrxnmechanismRange::fill(Self, Double) -> Self
+pub fn ChemrxnmechanismRange::get(Self, Int32) -> Double
+pub fn ChemrxnmechanismRange::len(Self) -> Int32
+pub fn ChemrxnmechanismRange::max(Self) -> Double
+pub fn ChemrxnmechanismRange::mean(Self) -> Double
+pub fn ChemrxnmechanismRange::min(Self) -> Double
+pub fn ChemrxnmechanismRange::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismRange::set(Self, Int32, Double) -> Self
+pub fn ChemrxnmechanismRange::sum(Self) -> Double
+pub fn ChemrxnmechanismRange::to_string(Self) -> String
+
+pub(all) struct ChemrxnmechanismSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ChemrxnmechanismSeries::add(Self, Self) -> Self
+pub fn ChemrxnmechanismSeries::cumsum(Self) -> Self
+pub fn ChemrxnmechanismSeries::len(Self) -> Int32
+pub fn ChemrxnmechanismSeries::max(Self) -> Double
+pub fn ChemrxnmechanismSeries::mean(Self) -> Double
+pub fn ChemrxnmechanismSeries::median(Self) -> Double
+pub fn ChemrxnmechanismSeries::min(Self) -> Double
+pub fn ChemrxnmechanismSeries::normalize(Self) -> Self
+pub fn ChemrxnmechanismSeries::range(Self) -> Double
+pub fn ChemrxnmechanismSeries::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismSeries::std(Self) -> Double
+pub fn ChemrxnmechanismSeries::sub(Self, Self) -> Self
+pub fn ChemrxnmechanismSeries::sum(Self) -> Double
+pub fn ChemrxnmechanismSeries::to_string(Self) -> String
+pub fn ChemrxnmechanismSeries::variance(Self) -> Double
+
+pub(all) struct ChemrxnmechanismSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnmechanismSlice::add(Self, Self) -> Self
+pub fn ChemrxnmechanismSlice::copy(Self) -> Self
+pub fn ChemrxnmechanismSlice::fill(Self, Double) -> Self
+pub fn ChemrxnmechanismSlice::get(Self, Int32) -> Double
+pub fn ChemrxnmechanismSlice::len(Self) -> Int32
+pub fn ChemrxnmechanismSlice::max(Self) -> Double
+pub fn ChemrxnmechanismSlice::mean(Self) -> Double
+pub fn ChemrxnmechanismSlice::min(Self) -> Double
+pub fn ChemrxnmechanismSlice::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismSlice::set(Self, Int32, Double) -> Self
+pub fn ChemrxnmechanismSlice::sum(Self) -> Double
+pub fn ChemrxnmechanismSlice::to_string(Self) -> String
+
+pub(all) struct ChemrxnmechanismTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnmechanismTable::add(Self, Self) -> Self
+pub fn ChemrxnmechanismTable::copy(Self) -> Self
+pub fn ChemrxnmechanismTable::fill(Self, Double) -> Self
+pub fn ChemrxnmechanismTable::get(Self, Int32) -> Double
+pub fn ChemrxnmechanismTable::len(Self) -> Int32
+pub fn ChemrxnmechanismTable::max(Self) -> Double
+pub fn ChemrxnmechanismTable::mean(Self) -> Double
+pub fn ChemrxnmechanismTable::min(Self) -> Double
+pub fn ChemrxnmechanismTable::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismTable::set(Self, Int32, Double) -> Self
+pub fn ChemrxnmechanismTable::sum(Self) -> Double
+pub fn ChemrxnmechanismTable::to_string(Self) -> String
+
+pub(all) struct ChemrxnmechanismVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ChemrxnmechanismVector::add(Self, Self) -> Self
+pub fn ChemrxnmechanismVector::dist(Self, Self) -> Double
+pub fn ChemrxnmechanismVector::dot(Self, Self) -> Double
+pub fn ChemrxnmechanismVector::norm(Self) -> Double
+pub fn ChemrxnmechanismVector::normalize(Self) -> Self
+pub fn ChemrxnmechanismVector::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismVector::sub(Self, Self) -> Self
+pub fn ChemrxnmechanismVector::to_string(Self) -> String
+
+pub(all) struct ChemrxnmechanismView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnmechanismView::add(Self, Self) -> Self
+pub fn ChemrxnmechanismView::copy(Self) -> Self
+pub fn ChemrxnmechanismView::fill(Self, Double) -> Self
+pub fn ChemrxnmechanismView::get(Self, Int32) -> Double
+pub fn ChemrxnmechanismView::len(Self) -> Int32
+pub fn ChemrxnmechanismView::max(Self) -> Double
+pub fn ChemrxnmechanismView::mean(Self) -> Double
+pub fn ChemrxnmechanismView::min(Self) -> Double
+pub fn ChemrxnmechanismView::scale(Self, Double) -> Self
+pub fn ChemrxnmechanismView::set(Self, Int32, Double) -> Self
+pub fn ChemrxnmechanismView::sum(Self) -> Double
+pub fn ChemrxnmechanismView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_special_beta"
+
+// Values
+pub fn math_special_beta_buffer_make(Int32) -> MathspecialbetaBuffer
+
+pub fn math_special_beta_cluster_make(Int32) -> MathspecialbetaCluster
+
+pub fn math_special_beta_cursor_make(Int32) -> MathspecialbetaCursor
+
+pub fn math_special_beta_edge_make(Int32) -> MathspecialbetaEdge
+
+pub fn math_special_beta_frame_make(Int32) -> MathspecialbetaFrame
+
+pub fn math_special_beta_graphn_make(Int32) -> MathspecialbetaGraphN
+
+pub fn math_special_beta_layer_make(Int32) -> MathspecialbetaLayer
+
+pub fn math_special_beta_make_matrix(Int32, Int32, Double) -> MathspecialbetaMatrix
+
+pub fn math_special_beta_make_point(Double, Double) -> MathspecialbetaPoint
+
+pub fn math_special_beta_make_point3(Double, Double, Double) -> MathspecialbetaPoint
+
+pub fn math_special_beta_make_series(Array[Double], String) -> MathspecialbetaSeries
+
+pub fn math_special_beta_make_vector(Array[Double]) -> MathspecialbetaVector
+
+pub fn math_special_beta_matrix_identity(Int32) -> MathspecialbetaMatrix
+
+pub fn math_special_beta_model_make(Int32) -> MathspecialbetaModel
+
+pub fn math_special_beta_node_make(Int32) -> MathspecialbetaNode
+
+pub fn math_special_beta_path_make(Int32) -> MathspecialbetaPath
+
+pub fn math_special_beta_range_make(Int32) -> MathspecialbetaRange
+
+pub fn math_special_beta_slice_make(Int32) -> MathspecialbetaSlice
+
+pub fn math_special_beta_table_make(Int32) -> MathspecialbetaTable
+
+pub fn math_special_beta_vector_zero(Int32) -> MathspecialbetaVector
+
+pub fn math_special_beta_view_make(Int32) -> MathspecialbetaView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathspecialbetaBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialbetaBuffer::add(Self, Self) -> Self
+pub fn MathspecialbetaBuffer::copy(Self) -> Self
+pub fn MathspecialbetaBuffer::fill(Self, Double) -> Self
+pub fn MathspecialbetaBuffer::get(Self, Int32) -> Double
+pub fn MathspecialbetaBuffer::len(Self) -> Int32
+pub fn MathspecialbetaBuffer::max(Self) -> Double
+pub fn MathspecialbetaBuffer::mean(Self) -> Double
+pub fn MathspecialbetaBuffer::min(Self) -> Double
+pub fn MathspecialbetaBuffer::scale(Self, Double) -> Self
+pub fn MathspecialbetaBuffer::set(Self, Int32, Double) -> Self
+pub fn MathspecialbetaBuffer::sum(Self) -> Double
+pub fn MathspecialbetaBuffer::to_string(Self) -> String
+
+pub(all) struct MathspecialbetaCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialbetaCluster::add(Self, Self) -> Self
+pub fn MathspecialbetaCluster::copy(Self) -> Self
+pub fn MathspecialbetaCluster::fill(Self, Double) -> Self
+pub fn MathspecialbetaCluster::get(Self, Int32) -> Double
+pub fn MathspecialbetaCluster::len(Self) -> Int32
+pub fn MathspecialbetaCluster::max(Self) -> Double
+pub fn MathspecialbetaCluster::mean(Self) -> Double
+pub fn MathspecialbetaCluster::min(Self) -> Double
+pub fn MathspecialbetaCluster::scale(Self, Double) -> Self
+pub fn MathspecialbetaCluster::set(Self, Int32, Double) -> Self
+pub fn MathspecialbetaCluster::sum(Self) -> Double
+pub fn MathspecialbetaCluster::to_string(Self) -> String
+
+pub(all) struct MathspecialbetaCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialbetaCursor::add(Self, Self) -> Self
+pub fn MathspecialbetaCursor::copy(Self) -> Self
+pub fn MathspecialbetaCursor::fill(Self, Double) -> Self
+pub fn MathspecialbetaCursor::get(Self, Int32) -> Double
+pub fn MathspecialbetaCursor::len(Self) -> Int32
+pub fn MathspecialbetaCursor::max(Self) -> Double
+pub fn MathspecialbetaCursor::mean(Self) -> Double
+pub fn MathspecialbetaCursor::min(Self) -> Double
+pub fn MathspecialbetaCursor::scale(Self, Double) -> Self
+pub fn MathspecialbetaCursor::set(Self, Int32, Double) -> Self
+pub fn MathspecialbetaCursor::sum(Self) -> Double
+pub fn MathspecialbetaCursor::to_string(Self) -> String
+
+pub(all) struct MathspecialbetaEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialbetaEdge::add(Self, Self) -> Self
+pub fn MathspecialbetaEdge::copy(Self) -> Self
+pub fn MathspecialbetaEdge::fill(Self, Double) -> Self
+pub fn MathspecialbetaEdge::get(Self, Int32) -> Double
+pub fn MathspecialbetaEdge::len(Self) -> Int32
+pub fn MathspecialbetaEdge::max(Self) -> Double
+pub fn MathspecialbetaEdge::mean(Self) -> Double
+pub fn MathspecialbetaEdge::min(Self) -> Double
+pub fn MathspecialbetaEdge::scale(Self, Double) -> Self
+pub fn MathspecialbetaEdge::set(Self, Int32, Double) -> Self
+pub fn MathspecialbetaEdge::sum(Self) -> Double
+pub fn MathspecialbetaEdge::to_string(Self) -> String
+
+pub(all) struct MathspecialbetaFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialbetaFrame::add(Self, Self) -> Self
+pub fn MathspecialbetaFrame::copy(Self) -> Self
+pub fn MathspecialbetaFrame::fill(Self, Double) -> Self
+pub fn MathspecialbetaFrame::get(Self, Int32) -> Double
+pub fn MathspecialbetaFrame::len(Self) -> Int32
+pub fn MathspecialbetaFrame::max(Self) -> Double
+pub fn MathspecialbetaFrame::mean(Self) -> Double
+pub fn MathspecialbetaFrame::min(Self) -> Double
+pub fn MathspecialbetaFrame::scale(Self, Double) -> Self
+pub fn MathspecialbetaFrame::set(Self, Int32, Double) -> Self
+pub fn MathspecialbetaFrame::sum(Self) -> Double
+pub fn MathspecialbetaFrame::to_string(Self) -> String
+
+pub(all) struct MathspecialbetaGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialbetaGraphN::add(Self, Self) -> Self
+pub fn MathspecialbetaGraphN::copy(Self) -> Self
+pub fn MathspecialbetaGraphN::fill(Self, Double) -> Self
+pub fn MathspecialbetaGraphN::get(Self, Int32) -> Double
+pub fn MathspecialbetaGraphN::len(Self) -> Int32
+pub fn MathspecialbetaGraphN::max(Self) -> Double
+pub fn MathspecialbetaGraphN::mean(Self) -> Double
+pub fn MathspecialbetaGraphN::min(Self) -> Double
+pub fn MathspecialbetaGraphN::scale(Self, Double) -> Self
+pub fn MathspecialbetaGraphN::set(Self, Int32, Double) -> Self
+pub fn MathspecialbetaGraphN::sum(Self) -> Double
+pub fn MathspecialbetaGraphN::to_string(Self) -> String
+
+pub(all) struct MathspecialbetaLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialbetaLayer::add(Self, Self) -> Self
+pub fn MathspecialbetaLayer::copy(Self) -> Self
+pub fn MathspecialbetaLayer::fill(Self, Double) -> Self
+pub fn MathspecialbetaLayer::get(Self, Int32) -> Double
+pub fn MathspecialbetaLayer::len(Self) -> Int32
+pub fn MathspecialbetaLayer::max(Self) -> Double
+pub fn MathspecialbetaLayer::mean(Self) -> Double
+pub fn MathspecialbetaLayer::min(Self) -> Double
+pub fn MathspecialbetaLayer::scale(Self, Double) -> Self
+pub fn MathspecialbetaLayer::set(Self, Int32, Double) -> Self
+pub fn MathspecialbetaLayer::sum(Self) -> Double
+pub fn MathspecialbetaLayer::to_string(Self) -> String
+
+pub(all) struct MathspecialbetaMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathspecialbetaMatrix::add(Self, Self) -> Self
+pub fn MathspecialbetaMatrix::det(Self) -> Double
+pub fn MathspecialbetaMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathspecialbetaMatrix::multiply(Self, Self) -> Self
+pub fn MathspecialbetaMatrix::norm(Self) -> Double
+pub fn MathspecialbetaMatrix::scale(Self, Double) -> Self
+pub fn MathspecialbetaMatrix::to_string(Self) -> String
+pub fn MathspecialbetaMatrix::trace(Self) -> Double
+pub fn MathspecialbetaMatrix::transpose(Self) -> Self
+
+pub(all) struct MathspecialbetaModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialbetaModel::add(Self, Self) -> Self
+pub fn MathspecialbetaModel::copy(Self) -> Self
+pub fn MathspecialbetaModel::fill(Self, Double) -> Self
+pub fn MathspecialbetaModel::get(Self, Int32) -> Double
+pub fn MathspecialbetaModel::len(Self) -> Int32
+pub fn MathspecialbetaModel::max(Self) -> Double
+pub fn MathspecialbetaModel::mean(Self) -> Double
+pub fn MathspecialbetaModel::min(Self) -> Double
+pub fn MathspecialbetaModel::scale(Self, Double) -> Self
+pub fn MathspecialbetaModel::set(Self, Int32, Double) -> Self
+pub fn MathspecialbetaModel::sum(Self) -> Double
+pub fn MathspecialbetaModel::to_string(Self) -> String
+
+pub(all) struct MathspecialbetaNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialbetaNode::add(Self, Self) -> Self
+pub fn MathspecialbetaNode::copy(Self) -> Self
+pub fn MathspecialbetaNode::fill(Self, Double) -> Self
+pub fn MathspecialbetaNode::get(Self, Int32) -> Double
+pub fn MathspecialbetaNode::len(Self) -> Int32
+pub fn MathspecialbetaNode::max(Self) -> Double
+pub fn MathspecialbetaNode::mean(Self) -> Double
+pub fn MathspecialbetaNode::min(Self) -> Double
+pub fn MathspecialbetaNode::scale(Self, Double) -> Self
+pub fn MathspecialbetaNode::set(Self, Int32, Double) -> Self
+pub fn MathspecialbetaNode::sum(Self) -> Double
+pub fn MathspecialbetaNode::to_string(Self) -> String
+
+pub(all) struct MathspecialbetaPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialbetaPath::add(Self, Self) -> Self
+pub fn MathspecialbetaPath::copy(Self) -> Self
+pub fn MathspecialbetaPath::fill(Self, Double) -> Self
+pub fn MathspecialbetaPath::get(Self, Int32) -> Double
+pub fn MathspecialbetaPath::len(Self) -> Int32
+pub fn MathspecialbetaPath::max(Self) -> Double
+pub fn MathspecialbetaPath::mean(Self) -> Double
+pub fn MathspecialbetaPath::min(Self) -> Double
+pub fn MathspecialbetaPath::scale(Self, Double) -> Self
+pub fn MathspecialbetaPath::set(Self, Int32, Double) -> Self
+pub fn MathspecialbetaPath::sum(Self) -> Double
+pub fn MathspecialbetaPath::to_string(Self) -> String
+
+pub(all) struct MathspecialbetaPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathspecialbetaPoint::add(Self, Self) -> Self
+pub fn MathspecialbetaPoint::cross(Self, Self) -> Self
+pub fn MathspecialbetaPoint::dist(Self, Self) -> Double
+pub fn MathspecialbetaPoint::dot(Self, Self) -> Double
+pub fn MathspecialbetaPoint::label(Self) -> Int32
+pub fn MathspecialbetaPoint::lerp(Self, Self, Double) -> Self
+pub fn MathspecialbetaPoint::mid(Self, Self) -> Self
+pub fn MathspecialbetaPoint::negate(Self) -> Self
+pub fn MathspecialbetaPoint::norm(Self) -> Double
+pub fn MathspecialbetaPoint::normalize(Self) -> Self
+pub fn MathspecialbetaPoint::scale(Self, Double) -> Self
+pub fn MathspecialbetaPoint::sub(Self, Self) -> Self
+pub fn MathspecialbetaPoint::to_string(Self) -> String
+pub fn MathspecialbetaPoint::x(Self) -> Double
+pub fn MathspecialbetaPoint::y(Self) -> Double
+pub fn MathspecialbetaPoint::z(Self) -> Double
+
+pub(all) struct MathspecialbetaRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialbetaRange::add(Self, Self) -> Self
+pub fn MathspecialbetaRange::copy(Self) -> Self
+pub fn MathspecialbetaRange::fill(Self, Double) -> Self
+pub fn MathspecialbetaRange::get(Self, Int32) -> Double
+pub fn MathspecialbetaRange::len(Self) -> Int32
+pub fn MathspecialbetaRange::max(Self) -> Double
+pub fn MathspecialbetaRange::mean(Self) -> Double
+pub fn MathspecialbetaRange::min(Self) -> Double
+pub fn MathspecialbetaRange::scale(Self, Double) -> Self
+pub fn MathspecialbetaRange::set(Self, Int32, Double) -> Self
+pub fn MathspecialbetaRange::sum(Self) -> Double
+pub fn MathspecialbetaRange::to_string(Self) -> String
+
+pub(all) struct MathspecialbetaSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathspecialbetaSeries::add(Self, Self) -> Self
+pub fn MathspecialbetaSeries::cumsum(Self) -> Self
+pub fn MathspecialbetaSeries::len(Self) -> Int32
+pub fn MathspecialbetaSeries::max(Self) -> Double
+pub fn MathspecialbetaSeries::mean(Self) -> Double
+pub fn MathspecialbetaSeries::median(Self) -> Double
+pub fn MathspecialbetaSeries::min(Self) -> Double
+pub fn MathspecialbetaSeries::normalize(Self) -> Self
+pub fn MathspecialbetaSeries::range(Self) -> Double
+pub fn MathspecialbetaSeries::scale(Self, Double) -> Self
+pub fn MathspecialbetaSeries::std(Self) -> Double
+pub fn MathspecialbetaSeries::sub(Self, Self) -> Self
+pub fn MathspecialbetaSeries::sum(Self) -> Double
+pub fn MathspecialbetaSeries::to_string(Self) -> String
+pub fn MathspecialbetaSeries::variance(Self) -> Double
+
+pub(all) struct MathspecialbetaSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialbetaSlice::add(Self, Self) -> Self
+pub fn MathspecialbetaSlice::copy(Self) -> Self
+pub fn MathspecialbetaSlice::fill(Self, Double) -> Self
+pub fn MathspecialbetaSlice::get(Self, Int32) -> Double
+pub fn MathspecialbetaSlice::len(Self) -> Int32
+pub fn MathspecialbetaSlice::max(Self) -> Double
+pub fn MathspecialbetaSlice::mean(Self) -> Double
+pub fn MathspecialbetaSlice::min(Self) -> Double
+pub fn MathspecialbetaSlice::scale(Self, Double) -> Self
+pub fn MathspecialbetaSlice::set(Self, Int32, Double) -> Self
+pub fn MathspecialbetaSlice::sum(Self) -> Double
+pub fn MathspecialbetaSlice::to_string(Self) -> String
+
+pub(all) struct MathspecialbetaTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialbetaTable::add(Self, Self) -> Self
+pub fn MathspecialbetaTable::copy(Self) -> Self
+pub fn MathspecialbetaTable::fill(Self, Double) -> Self
+pub fn MathspecialbetaTable::get(Self, Int32) -> Double
+pub fn MathspecialbetaTable::len(Self) -> Int32
+pub fn MathspecialbetaTable::max(Self) -> Double
+pub fn MathspecialbetaTable::mean(Self) -> Double
+pub fn MathspecialbetaTable::min(Self) -> Double
+pub fn MathspecialbetaTable::scale(Self, Double) -> Self
+pub fn MathspecialbetaTable::set(Self, Int32, Double) -> Self
+pub fn MathspecialbetaTable::sum(Self) -> Double
+pub fn MathspecialbetaTable::to_string(Self) -> String
+
+pub(all) struct MathspecialbetaVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathspecialbetaVector::add(Self, Self) -> Self
+pub fn MathspecialbetaVector::dist(Self, Self) -> Double
+pub fn MathspecialbetaVector::dot(Self, Self) -> Double
+pub fn MathspecialbetaVector::norm(Self) -> Double
+pub fn MathspecialbetaVector::normalize(Self) -> Self
+pub fn MathspecialbetaVector::scale(Self, Double) -> Self
+pub fn MathspecialbetaVector::sub(Self, Self) -> Self
+pub fn MathspecialbetaVector::to_string(Self) -> String
+
+pub(all) struct MathspecialbetaView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspecialbetaView::add(Self, Self) -> Self
+pub fn MathspecialbetaView::copy(Self) -> Self
+pub fn MathspecialbetaView::fill(Self, Double) -> Self
+pub fn MathspecialbetaView::get(Self, Int32) -> Double
+pub fn MathspecialbetaView::len(Self) -> Int32
+pub fn MathspecialbetaView::max(Self) -> Double
+pub fn MathspecialbetaView::mean(Self) -> Double
+pub fn MathspecialbetaView::min(Self) -> Double
+pub fn MathspecialbetaView::scale(Self, Double) -> Self
+pub fn MathspecialbetaView::set(Self, Int32, Double) -> Self
+pub fn MathspecialbetaView::sum(Self) -> Double
+pub fn MathspecialbetaView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

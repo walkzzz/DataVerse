@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_cluster_dbscan"
+
+// Values
+pub fn ml_cluster_dbscan_buffer_make(Int32) -> MlclusterdbscanBuffer
+
+pub fn ml_cluster_dbscan_cluster_make(Int32) -> MlclusterdbscanCluster
+
+pub fn ml_cluster_dbscan_cursor_make(Int32) -> MlclusterdbscanCursor
+
+pub fn ml_cluster_dbscan_edge_make(Int32) -> MlclusterdbscanEdge
+
+pub fn ml_cluster_dbscan_frame_make(Int32) -> MlclusterdbscanFrame
+
+pub fn ml_cluster_dbscan_graphn_make(Int32) -> MlclusterdbscanGraphN
+
+pub fn ml_cluster_dbscan_layer_make(Int32) -> MlclusterdbscanLayer
+
+pub fn ml_cluster_dbscan_make_matrix(Int32, Int32, Double) -> MlclusterdbscanMatrix
+
+pub fn ml_cluster_dbscan_make_point(Double, Double) -> MlclusterdbscanPoint
+
+pub fn ml_cluster_dbscan_make_point3(Double, Double, Double) -> MlclusterdbscanPoint
+
+pub fn ml_cluster_dbscan_make_series(Array[Double], String) -> MlclusterdbscanSeries
+
+pub fn ml_cluster_dbscan_make_vector(Array[Double]) -> MlclusterdbscanVector
+
+pub fn ml_cluster_dbscan_matrix_identity(Int32) -> MlclusterdbscanMatrix
+
+pub fn ml_cluster_dbscan_model_make(Int32) -> MlclusterdbscanModel
+
+pub fn ml_cluster_dbscan_node_make(Int32) -> MlclusterdbscanNode
+
+pub fn ml_cluster_dbscan_path_make(Int32) -> MlclusterdbscanPath
+
+pub fn ml_cluster_dbscan_range_make(Int32) -> MlclusterdbscanRange
+
+pub fn ml_cluster_dbscan_slice_make(Int32) -> MlclusterdbscanSlice
+
+pub fn ml_cluster_dbscan_table_make(Int32) -> MlclusterdbscanTable
+
+pub fn ml_cluster_dbscan_vector_zero(Int32) -> MlclusterdbscanVector
+
+pub fn ml_cluster_dbscan_view_make(Int32) -> MlclusterdbscanView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlclusterdbscanBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterdbscanBuffer::add(Self, Self) -> Self
+pub fn MlclusterdbscanBuffer::copy(Self) -> Self
+pub fn MlclusterdbscanBuffer::fill(Self, Double) -> Self
+pub fn MlclusterdbscanBuffer::get(Self, Int32) -> Double
+pub fn MlclusterdbscanBuffer::len(Self) -> Int32
+pub fn MlclusterdbscanBuffer::max(Self) -> Double
+pub fn MlclusterdbscanBuffer::mean(Self) -> Double
+pub fn MlclusterdbscanBuffer::min(Self) -> Double
+pub fn MlclusterdbscanBuffer::scale(Self, Double) -> Self
+pub fn MlclusterdbscanBuffer::set(Self, Int32, Double) -> Self
+pub fn MlclusterdbscanBuffer::sum(Self) -> Double
+pub fn MlclusterdbscanBuffer::to_string(Self) -> String
+
+pub(all) struct MlclusterdbscanCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterdbscanCluster::add(Self, Self) -> Self
+pub fn MlclusterdbscanCluster::copy(Self) -> Self
+pub fn MlclusterdbscanCluster::fill(Self, Double) -> Self
+pub fn MlclusterdbscanCluster::get(Self, Int32) -> Double
+pub fn MlclusterdbscanCluster::len(Self) -> Int32
+pub fn MlclusterdbscanCluster::max(Self) -> Double
+pub fn MlclusterdbscanCluster::mean(Self) -> Double
+pub fn MlclusterdbscanCluster::min(Self) -> Double
+pub fn MlclusterdbscanCluster::scale(Self, Double) -> Self
+pub fn MlclusterdbscanCluster::set(Self, Int32, Double) -> Self
+pub fn MlclusterdbscanCluster::sum(Self) -> Double
+pub fn MlclusterdbscanCluster::to_string(Self) -> String
+
+pub(all) struct MlclusterdbscanCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterdbscanCursor::add(Self, Self) -> Self
+pub fn MlclusterdbscanCursor::copy(Self) -> Self
+pub fn MlclusterdbscanCursor::fill(Self, Double) -> Self
+pub fn MlclusterdbscanCursor::get(Self, Int32) -> Double
+pub fn MlclusterdbscanCursor::len(Self) -> Int32
+pub fn MlclusterdbscanCursor::max(Self) -> Double
+pub fn MlclusterdbscanCursor::mean(Self) -> Double
+pub fn MlclusterdbscanCursor::min(Self) -> Double
+pub fn MlclusterdbscanCursor::scale(Self, Double) -> Self
+pub fn MlclusterdbscanCursor::set(Self, Int32, Double) -> Self
+pub fn MlclusterdbscanCursor::sum(Self) -> Double
+pub fn MlclusterdbscanCursor::to_string(Self) -> String
+
+pub(all) struct MlclusterdbscanEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterdbscanEdge::add(Self, Self) -> Self
+pub fn MlclusterdbscanEdge::copy(Self) -> Self
+pub fn MlclusterdbscanEdge::fill(Self, Double) -> Self
+pub fn MlclusterdbscanEdge::get(Self, Int32) -> Double
+pub fn MlclusterdbscanEdge::len(Self) -> Int32
+pub fn MlclusterdbscanEdge::max(Self) -> Double
+pub fn MlclusterdbscanEdge::mean(Self) -> Double
+pub fn MlclusterdbscanEdge::min(Self) -> Double
+pub fn MlclusterdbscanEdge::scale(Self, Double) -> Self
+pub fn MlclusterdbscanEdge::set(Self, Int32, Double) -> Self
+pub fn MlclusterdbscanEdge::sum(Self) -> Double
+pub fn MlclusterdbscanEdge::to_string(Self) -> String
+
+pub(all) struct MlclusterdbscanFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterdbscanFrame::add(Self, Self) -> Self
+pub fn MlclusterdbscanFrame::copy(Self) -> Self
+pub fn MlclusterdbscanFrame::fill(Self, Double) -> Self
+pub fn MlclusterdbscanFrame::get(Self, Int32) -> Double
+pub fn MlclusterdbscanFrame::len(Self) -> Int32
+pub fn MlclusterdbscanFrame::max(Self) -> Double
+pub fn MlclusterdbscanFrame::mean(Self) -> Double
+pub fn MlclusterdbscanFrame::min(Self) -> Double
+pub fn MlclusterdbscanFrame::scale(Self, Double) -> Self
+pub fn MlclusterdbscanFrame::set(Self, Int32, Double) -> Self
+pub fn MlclusterdbscanFrame::sum(Self) -> Double
+pub fn MlclusterdbscanFrame::to_string(Self) -> String
+
+pub(all) struct MlclusterdbscanGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterdbscanGraphN::add(Self, Self) -> Self
+pub fn MlclusterdbscanGraphN::copy(Self) -> Self
+pub fn MlclusterdbscanGraphN::fill(Self, Double) -> Self
+pub fn MlclusterdbscanGraphN::get(Self, Int32) -> Double
+pub fn MlclusterdbscanGraphN::len(Self) -> Int32
+pub fn MlclusterdbscanGraphN::max(Self) -> Double
+pub fn MlclusterdbscanGraphN::mean(Self) -> Double
+pub fn MlclusterdbscanGraphN::min(Self) -> Double
+pub fn MlclusterdbscanGraphN::scale(Self, Double) -> Self
+pub fn MlclusterdbscanGraphN::set(Self, Int32, Double) -> Self
+pub fn MlclusterdbscanGraphN::sum(Self) -> Double
+pub fn MlclusterdbscanGraphN::to_string(Self) -> String
+
+pub(all) struct MlclusterdbscanLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterdbscanLayer::add(Self, Self) -> Self
+pub fn MlclusterdbscanLayer::copy(Self) -> Self
+pub fn MlclusterdbscanLayer::fill(Self, Double) -> Self
+pub fn MlclusterdbscanLayer::get(Self, Int32) -> Double
+pub fn MlclusterdbscanLayer::len(Self) -> Int32
+pub fn MlclusterdbscanLayer::max(Self) -> Double
+pub fn MlclusterdbscanLayer::mean(Self) -> Double
+pub fn MlclusterdbscanLayer::min(Self) -> Double
+pub fn MlclusterdbscanLayer::scale(Self, Double) -> Self
+pub fn MlclusterdbscanLayer::set(Self, Int32, Double) -> Self
+pub fn MlclusterdbscanLayer::sum(Self) -> Double
+pub fn MlclusterdbscanLayer::to_string(Self) -> String
+
+pub(all) struct MlclusterdbscanMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlclusterdbscanMatrix::add(Self, Self) -> Self
+pub fn MlclusterdbscanMatrix::det(Self) -> Double
+pub fn MlclusterdbscanMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlclusterdbscanMatrix::multiply(Self, Self) -> Self
+pub fn MlclusterdbscanMatrix::norm(Self) -> Double
+pub fn MlclusterdbscanMatrix::scale(Self, Double) -> Self
+pub fn MlclusterdbscanMatrix::to_string(Self) -> String
+pub fn MlclusterdbscanMatrix::trace(Self) -> Double
+pub fn MlclusterdbscanMatrix::transpose(Self) -> Self
+
+pub(all) struct MlclusterdbscanModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterdbscanModel::add(Self, Self) -> Self
+pub fn MlclusterdbscanModel::copy(Self) -> Self
+pub fn MlclusterdbscanModel::fill(Self, Double) -> Self
+pub fn MlclusterdbscanModel::get(Self, Int32) -> Double
+pub fn MlclusterdbscanModel::len(Self) -> Int32
+pub fn MlclusterdbscanModel::max(Self) -> Double
+pub fn MlclusterdbscanModel::mean(Self) -> Double
+pub fn MlclusterdbscanModel::min(Self) -> Double
+pub fn MlclusterdbscanModel::scale(Self, Double) -> Self
+pub fn MlclusterdbscanModel::set(Self, Int32, Double) -> Self
+pub fn MlclusterdbscanModel::sum(Self) -> Double
+pub fn MlclusterdbscanModel::to_string(Self) -> String
+
+pub(all) struct MlclusterdbscanNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterdbscanNode::add(Self, Self) -> Self
+pub fn MlclusterdbscanNode::copy(Self) -> Self
+pub fn MlclusterdbscanNode::fill(Self, Double) -> Self
+pub fn MlclusterdbscanNode::get(Self, Int32) -> Double
+pub fn MlclusterdbscanNode::len(Self) -> Int32
+pub fn MlclusterdbscanNode::max(Self) -> Double
+pub fn MlclusterdbscanNode::mean(Self) -> Double
+pub fn MlclusterdbscanNode::min(Self) -> Double
+pub fn MlclusterdbscanNode::scale(Self, Double) -> Self
+pub fn MlclusterdbscanNode::set(Self, Int32, Double) -> Self
+pub fn MlclusterdbscanNode::sum(Self) -> Double
+pub fn MlclusterdbscanNode::to_string(Self) -> String
+
+pub(all) struct MlclusterdbscanPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterdbscanPath::add(Self, Self) -> Self
+pub fn MlclusterdbscanPath::copy(Self) -> Self
+pub fn MlclusterdbscanPath::fill(Self, Double) -> Self
+pub fn MlclusterdbscanPath::get(Self, Int32) -> Double
+pub fn MlclusterdbscanPath::len(Self) -> Int32
+pub fn MlclusterdbscanPath::max(Self) -> Double
+pub fn MlclusterdbscanPath::mean(Self) -> Double
+pub fn MlclusterdbscanPath::min(Self) -> Double
+pub fn MlclusterdbscanPath::scale(Self, Double) -> Self
+pub fn MlclusterdbscanPath::set(Self, Int32, Double) -> Self
+pub fn MlclusterdbscanPath::sum(Self) -> Double
+pub fn MlclusterdbscanPath::to_string(Self) -> String
+
+pub(all) struct MlclusterdbscanPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlclusterdbscanPoint::add(Self, Self) -> Self
+pub fn MlclusterdbscanPoint::cross(Self, Self) -> Self
+pub fn MlclusterdbscanPoint::dist(Self, Self) -> Double
+pub fn MlclusterdbscanPoint::dot(Self, Self) -> Double
+pub fn MlclusterdbscanPoint::label(Self) -> Int32
+pub fn MlclusterdbscanPoint::lerp(Self, Self, Double) -> Self
+pub fn MlclusterdbscanPoint::mid(Self, Self) -> Self
+pub fn MlclusterdbscanPoint::negate(Self) -> Self
+pub fn MlclusterdbscanPoint::norm(Self) -> Double
+pub fn MlclusterdbscanPoint::normalize(Self) -> Self
+pub fn MlclusterdbscanPoint::scale(Self, Double) -> Self
+pub fn MlclusterdbscanPoint::sub(Self, Self) -> Self
+pub fn MlclusterdbscanPoint::to_string(Self) -> String
+pub fn MlclusterdbscanPoint::x(Self) -> Double
+pub fn MlclusterdbscanPoint::y(Self) -> Double
+pub fn MlclusterdbscanPoint::z(Self) -> Double
+
+pub(all) struct MlclusterdbscanRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterdbscanRange::add(Self, Self) -> Self
+pub fn MlclusterdbscanRange::copy(Self) -> Self
+pub fn MlclusterdbscanRange::fill(Self, Double) -> Self
+pub fn MlclusterdbscanRange::get(Self, Int32) -> Double
+pub fn MlclusterdbscanRange::len(Self) -> Int32
+pub fn MlclusterdbscanRange::max(Self) -> Double
+pub fn MlclusterdbscanRange::mean(Self) -> Double
+pub fn MlclusterdbscanRange::min(Self) -> Double
+pub fn MlclusterdbscanRange::scale(Self, Double) -> Self
+pub fn MlclusterdbscanRange::set(Self, Int32, Double) -> Self
+pub fn MlclusterdbscanRange::sum(Self) -> Double
+pub fn MlclusterdbscanRange::to_string(Self) -> String
+
+pub(all) struct MlclusterdbscanSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlclusterdbscanSeries::add(Self, Self) -> Self
+pub fn MlclusterdbscanSeries::cumsum(Self) -> Self
+pub fn MlclusterdbscanSeries::len(Self) -> Int32
+pub fn MlclusterdbscanSeries::max(Self) -> Double
+pub fn MlclusterdbscanSeries::mean(Self) -> Double
+pub fn MlclusterdbscanSeries::median(Self) -> Double
+pub fn MlclusterdbscanSeries::min(Self) -> Double
+pub fn MlclusterdbscanSeries::normalize(Self) -> Self
+pub fn MlclusterdbscanSeries::range(Self) -> Double
+pub fn MlclusterdbscanSeries::scale(Self, Double) -> Self
+pub fn MlclusterdbscanSeries::std(Self) -> Double
+pub fn MlclusterdbscanSeries::sub(Self, Self) -> Self
+pub fn MlclusterdbscanSeries::sum(Self) -> Double
+pub fn MlclusterdbscanSeries::to_string(Self) -> String
+pub fn MlclusterdbscanSeries::variance(Self) -> Double
+
+pub(all) struct MlclusterdbscanSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterdbscanSlice::add(Self, Self) -> Self
+pub fn MlclusterdbscanSlice::copy(Self) -> Self
+pub fn MlclusterdbscanSlice::fill(Self, Double) -> Self
+pub fn MlclusterdbscanSlice::get(Self, Int32) -> Double
+pub fn MlclusterdbscanSlice::len(Self) -> Int32
+pub fn MlclusterdbscanSlice::max(Self) -> Double
+pub fn MlclusterdbscanSlice::mean(Self) -> Double
+pub fn MlclusterdbscanSlice::min(Self) -> Double
+pub fn MlclusterdbscanSlice::scale(Self, Double) -> Self
+pub fn MlclusterdbscanSlice::set(Self, Int32, Double) -> Self
+pub fn MlclusterdbscanSlice::sum(Self) -> Double
+pub fn MlclusterdbscanSlice::to_string(Self) -> String
+
+pub(all) struct MlclusterdbscanTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterdbscanTable::add(Self, Self) -> Self
+pub fn MlclusterdbscanTable::copy(Self) -> Self
+pub fn MlclusterdbscanTable::fill(Self, Double) -> Self
+pub fn MlclusterdbscanTable::get(Self, Int32) -> Double
+pub fn MlclusterdbscanTable::len(Self) -> Int32
+pub fn MlclusterdbscanTable::max(Self) -> Double
+pub fn MlclusterdbscanTable::mean(Self) -> Double
+pub fn MlclusterdbscanTable::min(Self) -> Double
+pub fn MlclusterdbscanTable::scale(Self, Double) -> Self
+pub fn MlclusterdbscanTable::set(Self, Int32, Double) -> Self
+pub fn MlclusterdbscanTable::sum(Self) -> Double
+pub fn MlclusterdbscanTable::to_string(Self) -> String
+
+pub(all) struct MlclusterdbscanVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlclusterdbscanVector::add(Self, Self) -> Self
+pub fn MlclusterdbscanVector::dist(Self, Self) -> Double
+pub fn MlclusterdbscanVector::dot(Self, Self) -> Double
+pub fn MlclusterdbscanVector::norm(Self) -> Double
+pub fn MlclusterdbscanVector::normalize(Self) -> Self
+pub fn MlclusterdbscanVector::scale(Self, Double) -> Self
+pub fn MlclusterdbscanVector::sub(Self, Self) -> Self
+pub fn MlclusterdbscanVector::to_string(Self) -> String
+
+pub(all) struct MlclusterdbscanView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterdbscanView::add(Self, Self) -> Self
+pub fn MlclusterdbscanView::copy(Self) -> Self
+pub fn MlclusterdbscanView::fill(Self, Double) -> Self
+pub fn MlclusterdbscanView::get(Self, Int32) -> Double
+pub fn MlclusterdbscanView::len(Self) -> Int32
+pub fn MlclusterdbscanView::max(Self) -> Double
+pub fn MlclusterdbscanView::mean(Self) -> Double
+pub fn MlclusterdbscanView::min(Self) -> Double
+pub fn MlclusterdbscanView::scale(Self, Double) -> Self
+pub fn MlclusterdbscanView::set(Self, Int32, Double) -> Self
+pub fn MlclusterdbscanView::sum(Self) -> Double
+pub fn MlclusterdbscanView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

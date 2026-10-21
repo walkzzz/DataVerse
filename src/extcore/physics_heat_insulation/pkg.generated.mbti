@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_heat_insulation"
+
+// Values
+pub fn physics_heat_insulation_buffer_make(Int32) -> PhysicsheatinsulationBuffer
+
+pub fn physics_heat_insulation_cluster_make(Int32) -> PhysicsheatinsulationCluster
+
+pub fn physics_heat_insulation_cursor_make(Int32) -> PhysicsheatinsulationCursor
+
+pub fn physics_heat_insulation_edge_make(Int32) -> PhysicsheatinsulationEdge
+
+pub fn physics_heat_insulation_frame_make(Int32) -> PhysicsheatinsulationFrame
+
+pub fn physics_heat_insulation_graphn_make(Int32) -> PhysicsheatinsulationGraphN
+
+pub fn physics_heat_insulation_layer_make(Int32) -> PhysicsheatinsulationLayer
+
+pub fn physics_heat_insulation_make_matrix(Int32, Int32, Double) -> PhysicsheatinsulationMatrix
+
+pub fn physics_heat_insulation_make_point(Double, Double) -> PhysicsheatinsulationPoint
+
+pub fn physics_heat_insulation_make_point3(Double, Double, Double) -> PhysicsheatinsulationPoint
+
+pub fn physics_heat_insulation_make_series(Array[Double], String) -> PhysicsheatinsulationSeries
+
+pub fn physics_heat_insulation_make_vector(Array[Double]) -> PhysicsheatinsulationVector
+
+pub fn physics_heat_insulation_matrix_identity(Int32) -> PhysicsheatinsulationMatrix
+
+pub fn physics_heat_insulation_model_make(Int32) -> PhysicsheatinsulationModel
+
+pub fn physics_heat_insulation_node_make(Int32) -> PhysicsheatinsulationNode
+
+pub fn physics_heat_insulation_path_make(Int32) -> PhysicsheatinsulationPath
+
+pub fn physics_heat_insulation_range_make(Int32) -> PhysicsheatinsulationRange
+
+pub fn physics_heat_insulation_slice_make(Int32) -> PhysicsheatinsulationSlice
+
+pub fn physics_heat_insulation_table_make(Int32) -> PhysicsheatinsulationTable
+
+pub fn physics_heat_insulation_vector_zero(Int32) -> PhysicsheatinsulationVector
+
+pub fn physics_heat_insulation_view_make(Int32) -> PhysicsheatinsulationView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsheatinsulationBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatinsulationBuffer::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationBuffer::copy(Self) -> Self
+pub fn PhysicsheatinsulationBuffer::fill(Self, Double) -> Self
+pub fn PhysicsheatinsulationBuffer::get(Self, Int32) -> Double
+pub fn PhysicsheatinsulationBuffer::len(Self) -> Int32
+pub fn PhysicsheatinsulationBuffer::max(Self) -> Double
+pub fn PhysicsheatinsulationBuffer::mean(Self) -> Double
+pub fn PhysicsheatinsulationBuffer::min(Self) -> Double
+pub fn PhysicsheatinsulationBuffer::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatinsulationBuffer::sum(Self) -> Double
+pub fn PhysicsheatinsulationBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsheatinsulationCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatinsulationCluster::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationCluster::copy(Self) -> Self
+pub fn PhysicsheatinsulationCluster::fill(Self, Double) -> Self
+pub fn PhysicsheatinsulationCluster::get(Self, Int32) -> Double
+pub fn PhysicsheatinsulationCluster::len(Self) -> Int32
+pub fn PhysicsheatinsulationCluster::max(Self) -> Double
+pub fn PhysicsheatinsulationCluster::mean(Self) -> Double
+pub fn PhysicsheatinsulationCluster::min(Self) -> Double
+pub fn PhysicsheatinsulationCluster::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatinsulationCluster::sum(Self) -> Double
+pub fn PhysicsheatinsulationCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsheatinsulationCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatinsulationCursor::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationCursor::copy(Self) -> Self
+pub fn PhysicsheatinsulationCursor::fill(Self, Double) -> Self
+pub fn PhysicsheatinsulationCursor::get(Self, Int32) -> Double
+pub fn PhysicsheatinsulationCursor::len(Self) -> Int32
+pub fn PhysicsheatinsulationCursor::max(Self) -> Double
+pub fn PhysicsheatinsulationCursor::mean(Self) -> Double
+pub fn PhysicsheatinsulationCursor::min(Self) -> Double
+pub fn PhysicsheatinsulationCursor::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatinsulationCursor::sum(Self) -> Double
+pub fn PhysicsheatinsulationCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsheatinsulationEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatinsulationEdge::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationEdge::copy(Self) -> Self
+pub fn PhysicsheatinsulationEdge::fill(Self, Double) -> Self
+pub fn PhysicsheatinsulationEdge::get(Self, Int32) -> Double
+pub fn PhysicsheatinsulationEdge::len(Self) -> Int32
+pub fn PhysicsheatinsulationEdge::max(Self) -> Double
+pub fn PhysicsheatinsulationEdge::mean(Self) -> Double
+pub fn PhysicsheatinsulationEdge::min(Self) -> Double
+pub fn PhysicsheatinsulationEdge::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatinsulationEdge::sum(Self) -> Double
+pub fn PhysicsheatinsulationEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsheatinsulationFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatinsulationFrame::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationFrame::copy(Self) -> Self
+pub fn PhysicsheatinsulationFrame::fill(Self, Double) -> Self
+pub fn PhysicsheatinsulationFrame::get(Self, Int32) -> Double
+pub fn PhysicsheatinsulationFrame::len(Self) -> Int32
+pub fn PhysicsheatinsulationFrame::max(Self) -> Double
+pub fn PhysicsheatinsulationFrame::mean(Self) -> Double
+pub fn PhysicsheatinsulationFrame::min(Self) -> Double
+pub fn PhysicsheatinsulationFrame::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatinsulationFrame::sum(Self) -> Double
+pub fn PhysicsheatinsulationFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsheatinsulationGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatinsulationGraphN::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationGraphN::copy(Self) -> Self
+pub fn PhysicsheatinsulationGraphN::fill(Self, Double) -> Self
+pub fn PhysicsheatinsulationGraphN::get(Self, Int32) -> Double
+pub fn PhysicsheatinsulationGraphN::len(Self) -> Int32
+pub fn PhysicsheatinsulationGraphN::max(Self) -> Double
+pub fn PhysicsheatinsulationGraphN::mean(Self) -> Double
+pub fn PhysicsheatinsulationGraphN::min(Self) -> Double
+pub fn PhysicsheatinsulationGraphN::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatinsulationGraphN::sum(Self) -> Double
+pub fn PhysicsheatinsulationGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsheatinsulationLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatinsulationLayer::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationLayer::copy(Self) -> Self
+pub fn PhysicsheatinsulationLayer::fill(Self, Double) -> Self
+pub fn PhysicsheatinsulationLayer::get(Self, Int32) -> Double
+pub fn PhysicsheatinsulationLayer::len(Self) -> Int32
+pub fn PhysicsheatinsulationLayer::max(Self) -> Double
+pub fn PhysicsheatinsulationLayer::mean(Self) -> Double
+pub fn PhysicsheatinsulationLayer::min(Self) -> Double
+pub fn PhysicsheatinsulationLayer::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatinsulationLayer::sum(Self) -> Double
+pub fn PhysicsheatinsulationLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsheatinsulationMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsheatinsulationMatrix::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationMatrix::det(Self) -> Double
+pub fn PhysicsheatinsulationMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsheatinsulationMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsheatinsulationMatrix::norm(Self) -> Double
+pub fn PhysicsheatinsulationMatrix::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationMatrix::to_string(Self) -> String
+pub fn PhysicsheatinsulationMatrix::trace(Self) -> Double
+pub fn PhysicsheatinsulationMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsheatinsulationModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatinsulationModel::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationModel::copy(Self) -> Self
+pub fn PhysicsheatinsulationModel::fill(Self, Double) -> Self
+pub fn PhysicsheatinsulationModel::get(Self, Int32) -> Double
+pub fn PhysicsheatinsulationModel::len(Self) -> Int32
+pub fn PhysicsheatinsulationModel::max(Self) -> Double
+pub fn PhysicsheatinsulationModel::mean(Self) -> Double
+pub fn PhysicsheatinsulationModel::min(Self) -> Double
+pub fn PhysicsheatinsulationModel::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatinsulationModel::sum(Self) -> Double
+pub fn PhysicsheatinsulationModel::to_string(Self) -> String
+
+pub(all) struct PhysicsheatinsulationNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatinsulationNode::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationNode::copy(Self) -> Self
+pub fn PhysicsheatinsulationNode::fill(Self, Double) -> Self
+pub fn PhysicsheatinsulationNode::get(Self, Int32) -> Double
+pub fn PhysicsheatinsulationNode::len(Self) -> Int32
+pub fn PhysicsheatinsulationNode::max(Self) -> Double
+pub fn PhysicsheatinsulationNode::mean(Self) -> Double
+pub fn PhysicsheatinsulationNode::min(Self) -> Double
+pub fn PhysicsheatinsulationNode::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatinsulationNode::sum(Self) -> Double
+pub fn PhysicsheatinsulationNode::to_string(Self) -> String
+
+pub(all) struct PhysicsheatinsulationPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatinsulationPath::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationPath::copy(Self) -> Self
+pub fn PhysicsheatinsulationPath::fill(Self, Double) -> Self
+pub fn PhysicsheatinsulationPath::get(Self, Int32) -> Double
+pub fn PhysicsheatinsulationPath::len(Self) -> Int32
+pub fn PhysicsheatinsulationPath::max(Self) -> Double
+pub fn PhysicsheatinsulationPath::mean(Self) -> Double
+pub fn PhysicsheatinsulationPath::min(Self) -> Double
+pub fn PhysicsheatinsulationPath::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatinsulationPath::sum(Self) -> Double
+pub fn PhysicsheatinsulationPath::to_string(Self) -> String
+
+pub(all) struct PhysicsheatinsulationPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsheatinsulationPoint::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationPoint::cross(Self, Self) -> Self
+pub fn PhysicsheatinsulationPoint::dist(Self, Self) -> Double
+pub fn PhysicsheatinsulationPoint::dot(Self, Self) -> Double
+pub fn PhysicsheatinsulationPoint::label(Self) -> Int32
+pub fn PhysicsheatinsulationPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsheatinsulationPoint::mid(Self, Self) -> Self
+pub fn PhysicsheatinsulationPoint::negate(Self) -> Self
+pub fn PhysicsheatinsulationPoint::norm(Self) -> Double
+pub fn PhysicsheatinsulationPoint::normalize(Self) -> Self
+pub fn PhysicsheatinsulationPoint::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationPoint::sub(Self, Self) -> Self
+pub fn PhysicsheatinsulationPoint::to_string(Self) -> String
+pub fn PhysicsheatinsulationPoint::x(Self) -> Double
+pub fn PhysicsheatinsulationPoint::y(Self) -> Double
+pub fn PhysicsheatinsulationPoint::z(Self) -> Double
+
+pub(all) struct PhysicsheatinsulationRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatinsulationRange::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationRange::copy(Self) -> Self
+pub fn PhysicsheatinsulationRange::fill(Self, Double) -> Self
+pub fn PhysicsheatinsulationRange::get(Self, Int32) -> Double
+pub fn PhysicsheatinsulationRange::len(Self) -> Int32
+pub fn PhysicsheatinsulationRange::max(Self) -> Double
+pub fn PhysicsheatinsulationRange::mean(Self) -> Double
+pub fn PhysicsheatinsulationRange::min(Self) -> Double
+pub fn PhysicsheatinsulationRange::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatinsulationRange::sum(Self) -> Double
+pub fn PhysicsheatinsulationRange::to_string(Self) -> String
+
+pub(all) struct PhysicsheatinsulationSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsheatinsulationSeries::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationSeries::cumsum(Self) -> Self
+pub fn PhysicsheatinsulationSeries::len(Self) -> Int32
+pub fn PhysicsheatinsulationSeries::max(Self) -> Double
+pub fn PhysicsheatinsulationSeries::mean(Self) -> Double
+pub fn PhysicsheatinsulationSeries::median(Self) -> Double
+pub fn PhysicsheatinsulationSeries::min(Self) -> Double
+pub fn PhysicsheatinsulationSeries::normalize(Self) -> Self
+pub fn PhysicsheatinsulationSeries::range(Self) -> Double
+pub fn PhysicsheatinsulationSeries::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationSeries::std(Self) -> Double
+pub fn PhysicsheatinsulationSeries::sub(Self, Self) -> Self
+pub fn PhysicsheatinsulationSeries::sum(Self) -> Double
+pub fn PhysicsheatinsulationSeries::to_string(Self) -> String
+pub fn PhysicsheatinsulationSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsheatinsulationSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatinsulationSlice::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationSlice::copy(Self) -> Self
+pub fn PhysicsheatinsulationSlice::fill(Self, Double) -> Self
+pub fn PhysicsheatinsulationSlice::get(Self, Int32) -> Double
+pub fn PhysicsheatinsulationSlice::len(Self) -> Int32
+pub fn PhysicsheatinsulationSlice::max(Self) -> Double
+pub fn PhysicsheatinsulationSlice::mean(Self) -> Double
+pub fn PhysicsheatinsulationSlice::min(Self) -> Double
+pub fn PhysicsheatinsulationSlice::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatinsulationSlice::sum(Self) -> Double
+pub fn PhysicsheatinsulationSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsheatinsulationTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatinsulationTable::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationTable::copy(Self) -> Self
+pub fn PhysicsheatinsulationTable::fill(Self, Double) -> Self
+pub fn PhysicsheatinsulationTable::get(Self, Int32) -> Double
+pub fn PhysicsheatinsulationTable::len(Self) -> Int32
+pub fn PhysicsheatinsulationTable::max(Self) -> Double
+pub fn PhysicsheatinsulationTable::mean(Self) -> Double
+pub fn PhysicsheatinsulationTable::min(Self) -> Double
+pub fn PhysicsheatinsulationTable::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatinsulationTable::sum(Self) -> Double
+pub fn PhysicsheatinsulationTable::to_string(Self) -> String
+
+pub(all) struct PhysicsheatinsulationVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsheatinsulationVector::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationVector::dist(Self, Self) -> Double
+pub fn PhysicsheatinsulationVector::dot(Self, Self) -> Double
+pub fn PhysicsheatinsulationVector::norm(Self) -> Double
+pub fn PhysicsheatinsulationVector::normalize(Self) -> Self
+pub fn PhysicsheatinsulationVector::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationVector::sub(Self, Self) -> Self
+pub fn PhysicsheatinsulationVector::to_string(Self) -> String
+
+pub(all) struct PhysicsheatinsulationView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatinsulationView::add(Self, Self) -> Self
+pub fn PhysicsheatinsulationView::copy(Self) -> Self
+pub fn PhysicsheatinsulationView::fill(Self, Double) -> Self
+pub fn PhysicsheatinsulationView::get(Self, Int32) -> Double
+pub fn PhysicsheatinsulationView::len(Self) -> Int32
+pub fn PhysicsheatinsulationView::max(Self) -> Double
+pub fn PhysicsheatinsulationView::mean(Self) -> Double
+pub fn PhysicsheatinsulationView::min(Self) -> Double
+pub fn PhysicsheatinsulationView::scale(Self, Double) -> Self
+pub fn PhysicsheatinsulationView::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatinsulationView::sum(Self) -> Double
+pub fn PhysicsheatinsulationView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

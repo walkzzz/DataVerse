@@ -1,0 +1,316 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/nlp_advanced"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn bert_decode(Array[Int32], Vocab) -> String
+
+pub fn bert_encode(String, Vocab) -> Array[Int32]
+
+pub fn bert_tokenize(String) -> Array[String]
+
+pub fn classify_batch(TextClassifier, Array[String]) -> Array[String]
+
+pub fn classify_text(TextClassifier, String) -> String
+
+pub fn coref_clusters(Coref, Array[String]) -> Array[Array[Int32]]
+
+pub fn coref_resolve(Coref, Array[String]) -> Array[Array[Int32]]
+
+pub fn dependency_tree(DependencyParser, Array[String]) -> String
+
+pub fn dialog_act(DialogManager, String) -> String
+
+pub fn dialog_state(DialogManager) -> String
+
+pub fn embed_batch(EmbeddingModel, Array[String]) -> Array[Array[Double]]
+
+pub fn embed_text(EmbeddingModel, String) -> Array[Double]
+
+pub fn embed_tokens(EmbeddingModel, Array[String]) -> Array[Array[Double]]
+
+pub fn entity_kb(EntityLinker, String) -> Int32
+
+pub fn event_arguments(EventExtractor, NLPSpan, Array[String]) -> Array[String]
+
+pub fn extract_events(EventExtractor, Array[String]) -> Array[NLPSpan]
+
+pub fn extract_relations(RelationExtractor, Array[NLPSpan]) -> Array[(String, String, String)]
+
+pub fn intent_slots(IntentRecognizer, String) -> Array[NLPSpan]
+
+pub fn link_entities(EntityLinker, Array[String]) -> Array[(String, Int32)]
+
+pub fn lm_perplexity(LanguageModel, Array[Int32]) -> Double
+
+pub fn lm_predict(LanguageModel, Array[Int32]) -> Int32
+
+pub fn lm_score(LanguageModel, Array[Int32]) -> Double
+
+pub fn make_constituency_parser(Array[String]) -> ConstituencyParser
+
+pub fn make_coref(Int32) -> Coref
+
+pub fn make_dependency_parser(Array[String]) -> DependencyParser
+
+pub fn make_dialog_manager() -> DialogManager
+
+pub fn make_embedding_model(Int32) -> EmbeddingModel
+
+pub fn make_entity_linker(Int32) -> EntityLinker
+
+pub fn make_event_extractor(Array[String]) -> EventExtractor
+
+pub fn make_intent_recognizer(Array[String]) -> IntentRecognizer
+
+pub fn make_language_model(Int32, Int32) -> LanguageModel
+
+pub fn make_ner(Array[String]) -> NER
+
+pub fn make_pos_tagger(Array[String]) -> POSTagger
+
+pub fn make_qa(String) -> QA
+
+pub fn make_relation_extractor(Array[String]) -> RelationExtractor
+
+pub fn make_sentiment(Array[String], Array[String]) -> Sentiment
+
+pub fn make_summarizer(Int32) -> Summarizer
+
+pub fn make_text_classifier(Array[String]) -> TextClassifier
+
+pub fn make_tokenizer(TokenizeMethod, Int32) -> Tokenizer
+
+pub fn make_translator(String, String) -> Translator
+
+pub fn make_vocab(Array[String]) -> Vocab
+
+pub fn ner_entities(NER, Array[String]) -> Array[String]
+
+pub fn ner_extract(NER, Array[String]) -> Array[NLPSpan]
+
+pub fn nlp_advanced_id() -> String
+
+pub fn parse_constituency(ConstituencyParser, Array[String]) -> String
+
+pub fn parse_dependency(DependencyParser, Array[String]) -> Array[(Int32, Int32, String)]
+
+pub fn parse_tree(ConstituencyParser, Array[String]) -> String
+
+pub fn pos_tag(POSTagger, String) -> String
+
+pub fn pos_tags(POSTagger, Array[String]) -> Array[(String, String)]
+
+pub fn qa_answer(QA, String) -> String
+
+pub fn qa_context(QA) -> String
+
+pub fn recognize_intent(IntentRecognizer, String) -> String
+
+pub fn relation_triples(RelationExtractor, Array[NLPSpan]) -> Array[(String, String, String)]
+
+pub fn sentiment_analyze(Sentiment, String) -> SentimentResult
+
+pub fn sentiment_score(Sentiment, String) -> Double
+
+pub fn summarize_abstractive(Summarizer, String) -> String
+
+pub fn summarize_extractive(Summarizer, String) -> String
+
+pub fn tokenize_bpe(Tokenizer, String) -> Array[String]
+
+pub fn tokenize_sentencepiece(Tokenizer, String) -> Array[String]
+
+pub fn tokenize_wordpiece(Tokenizer, String) -> Array[String]
+
+pub fn translate(Translator, String) -> String
+
+pub fn translate_batch(Translator, Array[String]) -> Array[String]
+
+pub fn vocab_decode(Vocab, Int32) -> String
+
+pub fn vocab_encode(Vocab, String) -> Int32
+
+pub fn vocab_size(Vocab) -> Int32
+
+// Errors
+
+// Types and methods
+pub struct ConstituencyParser {
+  grammar : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn ConstituencyParser::equal(Self, Self) -> Bool
+pub fn ConstituencyParser::not_equal(Self, Self) -> Bool
+pub fn ConstituencyParser::to_repr(Self) -> @debug.Repr
+
+pub struct Coref {
+  max_distance : Int32
+} derive(Eq, @debug.Debug)
+pub fn Coref::equal(Self, Self) -> Bool
+pub fn Coref::not_equal(Self, Self) -> Bool
+pub fn Coref::to_repr(Self) -> @debug.Repr
+
+pub struct DependencyParser {
+  labels : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn DependencyParser::equal(Self, Self) -> Bool
+pub fn DependencyParser::not_equal(Self, Self) -> Bool
+pub fn DependencyParser::to_repr(Self) -> @debug.Repr
+
+pub struct DialogManager {
+  state : String
+  history : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn DialogManager::equal(Self, Self) -> Bool
+pub fn DialogManager::not_equal(Self, Self) -> Bool
+pub fn DialogManager::to_repr(Self) -> @debug.Repr
+
+pub struct EmbeddingModel {
+  dim : Int32
+  weights : Array[Array[Double]]
+} derive(Eq, @debug.Debug)
+pub fn EmbeddingModel::equal(Self, Self) -> Bool
+pub fn EmbeddingModel::not_equal(Self, Self) -> Bool
+pub fn EmbeddingModel::to_repr(Self) -> @debug.Repr
+
+pub struct EntityLinker {
+  kb_size : Int32
+} derive(Eq, @debug.Debug)
+pub fn EntityLinker::equal(Self, Self) -> Bool
+pub fn EntityLinker::not_equal(Self, Self) -> Bool
+pub fn EntityLinker::to_repr(Self) -> @debug.Repr
+
+pub struct EventExtractor {
+  event_types : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn EventExtractor::equal(Self, Self) -> Bool
+pub fn EventExtractor::not_equal(Self, Self) -> Bool
+pub fn EventExtractor::to_repr(Self) -> @debug.Repr
+
+pub struct IntentRecognizer {
+  intents : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn IntentRecognizer::equal(Self, Self) -> Bool
+pub fn IntentRecognizer::not_equal(Self, Self) -> Bool
+pub fn IntentRecognizer::to_repr(Self) -> @debug.Repr
+
+pub struct LanguageModel {
+  vocab_size : Int32
+  context_len : Int32
+} derive(Eq, @debug.Debug)
+pub fn LanguageModel::equal(Self, Self) -> Bool
+pub fn LanguageModel::not_equal(Self, Self) -> Bool
+pub fn LanguageModel::to_repr(Self) -> @debug.Repr
+
+pub struct NER {
+  entity_types : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn NER::equal(Self, Self) -> Bool
+pub fn NER::not_equal(Self, Self) -> Bool
+pub fn NER::to_repr(Self) -> @debug.Repr
+
+pub struct NLPSpan {
+  start : Int32
+  end : Int32
+  label : String
+  text : String
+} derive(Eq, @debug.Debug)
+pub fn NLPSpan::equal(Self, Self) -> Bool
+pub fn NLPSpan::not_equal(Self, Self) -> Bool
+pub fn NLPSpan::to_repr(Self) -> @debug.Repr
+
+pub struct POSTagger {
+  tags : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn POSTagger::equal(Self, Self) -> Bool
+pub fn POSTagger::not_equal(Self, Self) -> Bool
+pub fn POSTagger::to_repr(Self) -> @debug.Repr
+
+pub struct QA {
+  context : String
+} derive(Eq, @debug.Debug)
+pub fn QA::equal(Self, Self) -> Bool
+pub fn QA::not_equal(Self, Self) -> Bool
+pub fn QA::to_repr(Self) -> @debug.Repr
+
+pub struct RelationExtractor {
+  relation_types : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn RelationExtractor::equal(Self, Self) -> Bool
+pub fn RelationExtractor::not_equal(Self, Self) -> Bool
+pub fn RelationExtractor::to_repr(Self) -> @debug.Repr
+
+pub struct Sentiment {
+  positive_words : Array[String]
+  negative_words : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn Sentiment::equal(Self, Self) -> Bool
+pub fn Sentiment::not_equal(Self, Self) -> Bool
+pub fn Sentiment::to_repr(Self) -> @debug.Repr
+
+pub struct SentimentResult {
+  label : String
+  score : Double
+  positive : Double
+  negative : Double
+  neutral : Double
+} derive(Eq, @debug.Debug)
+pub fn SentimentResult::equal(Self, Self) -> Bool
+pub fn SentimentResult::not_equal(Self, Self) -> Bool
+pub fn SentimentResult::to_repr(Self) -> @debug.Repr
+
+pub struct Summarizer {
+  max_sentences : Int32
+} derive(Eq, @debug.Debug)
+pub fn Summarizer::equal(Self, Self) -> Bool
+pub fn Summarizer::not_equal(Self, Self) -> Bool
+pub fn Summarizer::to_repr(Self) -> @debug.Repr
+
+pub struct TextClassifier {
+  labels : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn TextClassifier::equal(Self, Self) -> Bool
+pub fn TextClassifier::not_equal(Self, Self) -> Bool
+pub fn TextClassifier::to_repr(Self) -> @debug.Repr
+
+pub(all) enum TokenizeMethod {
+  BpeMethod
+  WordpieceMethod
+  SentencepieceMethod
+  WhitespaceMethod
+} derive(Eq, @debug.Debug)
+pub fn TokenizeMethod::equal(Self, Self) -> Bool
+pub fn TokenizeMethod::not_equal(Self, Self) -> Bool
+pub fn TokenizeMethod::to_repr(Self) -> @debug.Repr
+
+pub struct Tokenizer {
+  method_ : TokenizeMethod
+  vocab_size : Int32
+  unk_token : String
+} derive(Eq, @debug.Debug)
+pub fn Tokenizer::equal(Self, Self) -> Bool
+pub fn Tokenizer::not_equal(Self, Self) -> Bool
+pub fn Tokenizer::to_repr(Self) -> @debug.Repr
+
+pub struct Translator {
+  source_lang : String
+  target_lang : String
+} derive(Eq, @debug.Debug)
+pub fn Translator::equal(Self, Self) -> Bool
+pub fn Translator::not_equal(Self, Self) -> Bool
+pub fn Translator::to_repr(Self) -> @debug.Repr
+
+pub struct Vocab {
+  tokens : Array[String]
+  token_to_id : Array[(String, Int32)]
+} derive(Eq, @debug.Debug)
+pub fn Vocab::equal(Self, Self) -> Bool
+pub fn Vocab::not_equal(Self, Self) -> Bool
+pub fn Vocab::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

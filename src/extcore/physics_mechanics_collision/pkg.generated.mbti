@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_mechanics_collision"
+
+// Values
+pub fn physics_mechanics_collision_buffer_make(Int32) -> PhysicsmechanicscollisionBuffer
+
+pub fn physics_mechanics_collision_cluster_make(Int32) -> PhysicsmechanicscollisionCluster
+
+pub fn physics_mechanics_collision_cursor_make(Int32) -> PhysicsmechanicscollisionCursor
+
+pub fn physics_mechanics_collision_edge_make(Int32) -> PhysicsmechanicscollisionEdge
+
+pub fn physics_mechanics_collision_frame_make(Int32) -> PhysicsmechanicscollisionFrame
+
+pub fn physics_mechanics_collision_graphn_make(Int32) -> PhysicsmechanicscollisionGraphN
+
+pub fn physics_mechanics_collision_layer_make(Int32) -> PhysicsmechanicscollisionLayer
+
+pub fn physics_mechanics_collision_make_matrix(Int32, Int32, Double) -> PhysicsmechanicscollisionMatrix
+
+pub fn physics_mechanics_collision_make_point(Double, Double) -> PhysicsmechanicscollisionPoint
+
+pub fn physics_mechanics_collision_make_point3(Double, Double, Double) -> PhysicsmechanicscollisionPoint
+
+pub fn physics_mechanics_collision_make_series(Array[Double], String) -> PhysicsmechanicscollisionSeries
+
+pub fn physics_mechanics_collision_make_vector(Array[Double]) -> PhysicsmechanicscollisionVector
+
+pub fn physics_mechanics_collision_matrix_identity(Int32) -> PhysicsmechanicscollisionMatrix
+
+pub fn physics_mechanics_collision_model_make(Int32) -> PhysicsmechanicscollisionModel
+
+pub fn physics_mechanics_collision_node_make(Int32) -> PhysicsmechanicscollisionNode
+
+pub fn physics_mechanics_collision_path_make(Int32) -> PhysicsmechanicscollisionPath
+
+pub fn physics_mechanics_collision_range_make(Int32) -> PhysicsmechanicscollisionRange
+
+pub fn physics_mechanics_collision_slice_make(Int32) -> PhysicsmechanicscollisionSlice
+
+pub fn physics_mechanics_collision_table_make(Int32) -> PhysicsmechanicscollisionTable
+
+pub fn physics_mechanics_collision_vector_zero(Int32) -> PhysicsmechanicscollisionVector
+
+pub fn physics_mechanics_collision_view_make(Int32) -> PhysicsmechanicscollisionView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsmechanicscollisionBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicscollisionBuffer::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionBuffer::copy(Self) -> Self
+pub fn PhysicsmechanicscollisionBuffer::fill(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionBuffer::get(Self, Int32) -> Double
+pub fn PhysicsmechanicscollisionBuffer::len(Self) -> Int32
+pub fn PhysicsmechanicscollisionBuffer::max(Self) -> Double
+pub fn PhysicsmechanicscollisionBuffer::mean(Self) -> Double
+pub fn PhysicsmechanicscollisionBuffer::min(Self) -> Double
+pub fn PhysicsmechanicscollisionBuffer::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicscollisionBuffer::sum(Self) -> Double
+pub fn PhysicsmechanicscollisionBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicscollisionCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicscollisionCluster::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionCluster::copy(Self) -> Self
+pub fn PhysicsmechanicscollisionCluster::fill(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionCluster::get(Self, Int32) -> Double
+pub fn PhysicsmechanicscollisionCluster::len(Self) -> Int32
+pub fn PhysicsmechanicscollisionCluster::max(Self) -> Double
+pub fn PhysicsmechanicscollisionCluster::mean(Self) -> Double
+pub fn PhysicsmechanicscollisionCluster::min(Self) -> Double
+pub fn PhysicsmechanicscollisionCluster::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicscollisionCluster::sum(Self) -> Double
+pub fn PhysicsmechanicscollisionCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicscollisionCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicscollisionCursor::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionCursor::copy(Self) -> Self
+pub fn PhysicsmechanicscollisionCursor::fill(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionCursor::get(Self, Int32) -> Double
+pub fn PhysicsmechanicscollisionCursor::len(Self) -> Int32
+pub fn PhysicsmechanicscollisionCursor::max(Self) -> Double
+pub fn PhysicsmechanicscollisionCursor::mean(Self) -> Double
+pub fn PhysicsmechanicscollisionCursor::min(Self) -> Double
+pub fn PhysicsmechanicscollisionCursor::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicscollisionCursor::sum(Self) -> Double
+pub fn PhysicsmechanicscollisionCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicscollisionEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicscollisionEdge::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionEdge::copy(Self) -> Self
+pub fn PhysicsmechanicscollisionEdge::fill(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionEdge::get(Self, Int32) -> Double
+pub fn PhysicsmechanicscollisionEdge::len(Self) -> Int32
+pub fn PhysicsmechanicscollisionEdge::max(Self) -> Double
+pub fn PhysicsmechanicscollisionEdge::mean(Self) -> Double
+pub fn PhysicsmechanicscollisionEdge::min(Self) -> Double
+pub fn PhysicsmechanicscollisionEdge::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicscollisionEdge::sum(Self) -> Double
+pub fn PhysicsmechanicscollisionEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicscollisionFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicscollisionFrame::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionFrame::copy(Self) -> Self
+pub fn PhysicsmechanicscollisionFrame::fill(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionFrame::get(Self, Int32) -> Double
+pub fn PhysicsmechanicscollisionFrame::len(Self) -> Int32
+pub fn PhysicsmechanicscollisionFrame::max(Self) -> Double
+pub fn PhysicsmechanicscollisionFrame::mean(Self) -> Double
+pub fn PhysicsmechanicscollisionFrame::min(Self) -> Double
+pub fn PhysicsmechanicscollisionFrame::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicscollisionFrame::sum(Self) -> Double
+pub fn PhysicsmechanicscollisionFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicscollisionGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicscollisionGraphN::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionGraphN::copy(Self) -> Self
+pub fn PhysicsmechanicscollisionGraphN::fill(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionGraphN::get(Self, Int32) -> Double
+pub fn PhysicsmechanicscollisionGraphN::len(Self) -> Int32
+pub fn PhysicsmechanicscollisionGraphN::max(Self) -> Double
+pub fn PhysicsmechanicscollisionGraphN::mean(Self) -> Double
+pub fn PhysicsmechanicscollisionGraphN::min(Self) -> Double
+pub fn PhysicsmechanicscollisionGraphN::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicscollisionGraphN::sum(Self) -> Double
+pub fn PhysicsmechanicscollisionGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicscollisionLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicscollisionLayer::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionLayer::copy(Self) -> Self
+pub fn PhysicsmechanicscollisionLayer::fill(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionLayer::get(Self, Int32) -> Double
+pub fn PhysicsmechanicscollisionLayer::len(Self) -> Int32
+pub fn PhysicsmechanicscollisionLayer::max(Self) -> Double
+pub fn PhysicsmechanicscollisionLayer::mean(Self) -> Double
+pub fn PhysicsmechanicscollisionLayer::min(Self) -> Double
+pub fn PhysicsmechanicscollisionLayer::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicscollisionLayer::sum(Self) -> Double
+pub fn PhysicsmechanicscollisionLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicscollisionMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsmechanicscollisionMatrix::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionMatrix::det(Self) -> Double
+pub fn PhysicsmechanicscollisionMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsmechanicscollisionMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionMatrix::norm(Self) -> Double
+pub fn PhysicsmechanicscollisionMatrix::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionMatrix::to_string(Self) -> String
+pub fn PhysicsmechanicscollisionMatrix::trace(Self) -> Double
+pub fn PhysicsmechanicscollisionMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsmechanicscollisionModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicscollisionModel::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionModel::copy(Self) -> Self
+pub fn PhysicsmechanicscollisionModel::fill(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionModel::get(Self, Int32) -> Double
+pub fn PhysicsmechanicscollisionModel::len(Self) -> Int32
+pub fn PhysicsmechanicscollisionModel::max(Self) -> Double
+pub fn PhysicsmechanicscollisionModel::mean(Self) -> Double
+pub fn PhysicsmechanicscollisionModel::min(Self) -> Double
+pub fn PhysicsmechanicscollisionModel::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicscollisionModel::sum(Self) -> Double
+pub fn PhysicsmechanicscollisionModel::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicscollisionNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicscollisionNode::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionNode::copy(Self) -> Self
+pub fn PhysicsmechanicscollisionNode::fill(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionNode::get(Self, Int32) -> Double
+pub fn PhysicsmechanicscollisionNode::len(Self) -> Int32
+pub fn PhysicsmechanicscollisionNode::max(Self) -> Double
+pub fn PhysicsmechanicscollisionNode::mean(Self) -> Double
+pub fn PhysicsmechanicscollisionNode::min(Self) -> Double
+pub fn PhysicsmechanicscollisionNode::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicscollisionNode::sum(Self) -> Double
+pub fn PhysicsmechanicscollisionNode::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicscollisionPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicscollisionPath::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionPath::copy(Self) -> Self
+pub fn PhysicsmechanicscollisionPath::fill(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionPath::get(Self, Int32) -> Double
+pub fn PhysicsmechanicscollisionPath::len(Self) -> Int32
+pub fn PhysicsmechanicscollisionPath::max(Self) -> Double
+pub fn PhysicsmechanicscollisionPath::mean(Self) -> Double
+pub fn PhysicsmechanicscollisionPath::min(Self) -> Double
+pub fn PhysicsmechanicscollisionPath::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicscollisionPath::sum(Self) -> Double
+pub fn PhysicsmechanicscollisionPath::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicscollisionPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsmechanicscollisionPoint::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionPoint::cross(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionPoint::dist(Self, Self) -> Double
+pub fn PhysicsmechanicscollisionPoint::dot(Self, Self) -> Double
+pub fn PhysicsmechanicscollisionPoint::label(Self) -> Int32
+pub fn PhysicsmechanicscollisionPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsmechanicscollisionPoint::mid(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionPoint::negate(Self) -> Self
+pub fn PhysicsmechanicscollisionPoint::norm(Self) -> Double
+pub fn PhysicsmechanicscollisionPoint::normalize(Self) -> Self
+pub fn PhysicsmechanicscollisionPoint::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionPoint::sub(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionPoint::to_string(Self) -> String
+pub fn PhysicsmechanicscollisionPoint::x(Self) -> Double
+pub fn PhysicsmechanicscollisionPoint::y(Self) -> Double
+pub fn PhysicsmechanicscollisionPoint::z(Self) -> Double
+
+pub(all) struct PhysicsmechanicscollisionRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicscollisionRange::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionRange::copy(Self) -> Self
+pub fn PhysicsmechanicscollisionRange::fill(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionRange::get(Self, Int32) -> Double
+pub fn PhysicsmechanicscollisionRange::len(Self) -> Int32
+pub fn PhysicsmechanicscollisionRange::max(Self) -> Double
+pub fn PhysicsmechanicscollisionRange::mean(Self) -> Double
+pub fn PhysicsmechanicscollisionRange::min(Self) -> Double
+pub fn PhysicsmechanicscollisionRange::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicscollisionRange::sum(Self) -> Double
+pub fn PhysicsmechanicscollisionRange::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicscollisionSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsmechanicscollisionSeries::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionSeries::cumsum(Self) -> Self
+pub fn PhysicsmechanicscollisionSeries::len(Self) -> Int32
+pub fn PhysicsmechanicscollisionSeries::max(Self) -> Double
+pub fn PhysicsmechanicscollisionSeries::mean(Self) -> Double
+pub fn PhysicsmechanicscollisionSeries::median(Self) -> Double
+pub fn PhysicsmechanicscollisionSeries::min(Self) -> Double
+pub fn PhysicsmechanicscollisionSeries::normalize(Self) -> Self
+pub fn PhysicsmechanicscollisionSeries::range(Self) -> Double
+pub fn PhysicsmechanicscollisionSeries::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionSeries::std(Self) -> Double
+pub fn PhysicsmechanicscollisionSeries::sub(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionSeries::sum(Self) -> Double
+pub fn PhysicsmechanicscollisionSeries::to_string(Self) -> String
+pub fn PhysicsmechanicscollisionSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsmechanicscollisionSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicscollisionSlice::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionSlice::copy(Self) -> Self
+pub fn PhysicsmechanicscollisionSlice::fill(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionSlice::get(Self, Int32) -> Double
+pub fn PhysicsmechanicscollisionSlice::len(Self) -> Int32
+pub fn PhysicsmechanicscollisionSlice::max(Self) -> Double
+pub fn PhysicsmechanicscollisionSlice::mean(Self) -> Double
+pub fn PhysicsmechanicscollisionSlice::min(Self) -> Double
+pub fn PhysicsmechanicscollisionSlice::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicscollisionSlice::sum(Self) -> Double
+pub fn PhysicsmechanicscollisionSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicscollisionTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicscollisionTable::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionTable::copy(Self) -> Self
+pub fn PhysicsmechanicscollisionTable::fill(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionTable::get(Self, Int32) -> Double
+pub fn PhysicsmechanicscollisionTable::len(Self) -> Int32
+pub fn PhysicsmechanicscollisionTable::max(Self) -> Double
+pub fn PhysicsmechanicscollisionTable::mean(Self) -> Double
+pub fn PhysicsmechanicscollisionTable::min(Self) -> Double
+pub fn PhysicsmechanicscollisionTable::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicscollisionTable::sum(Self) -> Double
+pub fn PhysicsmechanicscollisionTable::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicscollisionVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsmechanicscollisionVector::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionVector::dist(Self, Self) -> Double
+pub fn PhysicsmechanicscollisionVector::dot(Self, Self) -> Double
+pub fn PhysicsmechanicscollisionVector::norm(Self) -> Double
+pub fn PhysicsmechanicscollisionVector::normalize(Self) -> Self
+pub fn PhysicsmechanicscollisionVector::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionVector::sub(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionVector::to_string(Self) -> String
+
+pub(all) struct PhysicsmechanicscollisionView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsmechanicscollisionView::add(Self, Self) -> Self
+pub fn PhysicsmechanicscollisionView::copy(Self) -> Self
+pub fn PhysicsmechanicscollisionView::fill(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionView::get(Self, Int32) -> Double
+pub fn PhysicsmechanicscollisionView::len(Self) -> Int32
+pub fn PhysicsmechanicscollisionView::max(Self) -> Double
+pub fn PhysicsmechanicscollisionView::mean(Self) -> Double
+pub fn PhysicsmechanicscollisionView::min(Self) -> Double
+pub fn PhysicsmechanicscollisionView::scale(Self, Double) -> Self
+pub fn PhysicsmechanicscollisionView::set(Self, Int32, Double) -> Self
+pub fn PhysicsmechanicscollisionView::sum(Self) -> Double
+pub fn PhysicsmechanicscollisionView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

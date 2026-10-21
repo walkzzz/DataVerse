@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_forecast_bagging"
+
+// Values
+pub fn timeseries_forecast_bagging_buffer_make(Int32) -> TimeseriesforecastbaggingBuffer
+
+pub fn timeseries_forecast_bagging_cluster_make(Int32) -> TimeseriesforecastbaggingCluster
+
+pub fn timeseries_forecast_bagging_cursor_make(Int32) -> TimeseriesforecastbaggingCursor
+
+pub fn timeseries_forecast_bagging_edge_make(Int32) -> TimeseriesforecastbaggingEdge
+
+pub fn timeseries_forecast_bagging_frame_make(Int32) -> TimeseriesforecastbaggingFrame
+
+pub fn timeseries_forecast_bagging_graphn_make(Int32) -> TimeseriesforecastbaggingGraphN
+
+pub fn timeseries_forecast_bagging_layer_make(Int32) -> TimeseriesforecastbaggingLayer
+
+pub fn timeseries_forecast_bagging_make_matrix(Int32, Int32, Double) -> TimeseriesforecastbaggingMatrix
+
+pub fn timeseries_forecast_bagging_make_point(Double, Double) -> TimeseriesforecastbaggingPoint
+
+pub fn timeseries_forecast_bagging_make_point3(Double, Double, Double) -> TimeseriesforecastbaggingPoint
+
+pub fn timeseries_forecast_bagging_make_series(Array[Double], String) -> TimeseriesforecastbaggingSeries
+
+pub fn timeseries_forecast_bagging_make_vector(Array[Double]) -> TimeseriesforecastbaggingVector
+
+pub fn timeseries_forecast_bagging_matrix_identity(Int32) -> TimeseriesforecastbaggingMatrix
+
+pub fn timeseries_forecast_bagging_model_make(Int32) -> TimeseriesforecastbaggingModel
+
+pub fn timeseries_forecast_bagging_node_make(Int32) -> TimeseriesforecastbaggingNode
+
+pub fn timeseries_forecast_bagging_path_make(Int32) -> TimeseriesforecastbaggingPath
+
+pub fn timeseries_forecast_bagging_range_make(Int32) -> TimeseriesforecastbaggingRange
+
+pub fn timeseries_forecast_bagging_slice_make(Int32) -> TimeseriesforecastbaggingSlice
+
+pub fn timeseries_forecast_bagging_table_make(Int32) -> TimeseriesforecastbaggingTable
+
+pub fn timeseries_forecast_bagging_vector_zero(Int32) -> TimeseriesforecastbaggingVector
+
+pub fn timeseries_forecast_bagging_view_make(Int32) -> TimeseriesforecastbaggingView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriesforecastbaggingBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastbaggingBuffer::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingBuffer::copy(Self) -> Self
+pub fn TimeseriesforecastbaggingBuffer::fill(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingBuffer::get(Self, Int32) -> Double
+pub fn TimeseriesforecastbaggingBuffer::len(Self) -> Int32
+pub fn TimeseriesforecastbaggingBuffer::max(Self) -> Double
+pub fn TimeseriesforecastbaggingBuffer::mean(Self) -> Double
+pub fn TimeseriesforecastbaggingBuffer::min(Self) -> Double
+pub fn TimeseriesforecastbaggingBuffer::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastbaggingBuffer::sum(Self) -> Double
+pub fn TimeseriesforecastbaggingBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastbaggingCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastbaggingCluster::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingCluster::copy(Self) -> Self
+pub fn TimeseriesforecastbaggingCluster::fill(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingCluster::get(Self, Int32) -> Double
+pub fn TimeseriesforecastbaggingCluster::len(Self) -> Int32
+pub fn TimeseriesforecastbaggingCluster::max(Self) -> Double
+pub fn TimeseriesforecastbaggingCluster::mean(Self) -> Double
+pub fn TimeseriesforecastbaggingCluster::min(Self) -> Double
+pub fn TimeseriesforecastbaggingCluster::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastbaggingCluster::sum(Self) -> Double
+pub fn TimeseriesforecastbaggingCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastbaggingCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastbaggingCursor::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingCursor::copy(Self) -> Self
+pub fn TimeseriesforecastbaggingCursor::fill(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingCursor::get(Self, Int32) -> Double
+pub fn TimeseriesforecastbaggingCursor::len(Self) -> Int32
+pub fn TimeseriesforecastbaggingCursor::max(Self) -> Double
+pub fn TimeseriesforecastbaggingCursor::mean(Self) -> Double
+pub fn TimeseriesforecastbaggingCursor::min(Self) -> Double
+pub fn TimeseriesforecastbaggingCursor::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastbaggingCursor::sum(Self) -> Double
+pub fn TimeseriesforecastbaggingCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastbaggingEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastbaggingEdge::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingEdge::copy(Self) -> Self
+pub fn TimeseriesforecastbaggingEdge::fill(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingEdge::get(Self, Int32) -> Double
+pub fn TimeseriesforecastbaggingEdge::len(Self) -> Int32
+pub fn TimeseriesforecastbaggingEdge::max(Self) -> Double
+pub fn TimeseriesforecastbaggingEdge::mean(Self) -> Double
+pub fn TimeseriesforecastbaggingEdge::min(Self) -> Double
+pub fn TimeseriesforecastbaggingEdge::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastbaggingEdge::sum(Self) -> Double
+pub fn TimeseriesforecastbaggingEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastbaggingFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastbaggingFrame::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingFrame::copy(Self) -> Self
+pub fn TimeseriesforecastbaggingFrame::fill(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingFrame::get(Self, Int32) -> Double
+pub fn TimeseriesforecastbaggingFrame::len(Self) -> Int32
+pub fn TimeseriesforecastbaggingFrame::max(Self) -> Double
+pub fn TimeseriesforecastbaggingFrame::mean(Self) -> Double
+pub fn TimeseriesforecastbaggingFrame::min(Self) -> Double
+pub fn TimeseriesforecastbaggingFrame::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastbaggingFrame::sum(Self) -> Double
+pub fn TimeseriesforecastbaggingFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastbaggingGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastbaggingGraphN::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingGraphN::copy(Self) -> Self
+pub fn TimeseriesforecastbaggingGraphN::fill(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingGraphN::get(Self, Int32) -> Double
+pub fn TimeseriesforecastbaggingGraphN::len(Self) -> Int32
+pub fn TimeseriesforecastbaggingGraphN::max(Self) -> Double
+pub fn TimeseriesforecastbaggingGraphN::mean(Self) -> Double
+pub fn TimeseriesforecastbaggingGraphN::min(Self) -> Double
+pub fn TimeseriesforecastbaggingGraphN::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastbaggingGraphN::sum(Self) -> Double
+pub fn TimeseriesforecastbaggingGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastbaggingLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastbaggingLayer::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingLayer::copy(Self) -> Self
+pub fn TimeseriesforecastbaggingLayer::fill(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingLayer::get(Self, Int32) -> Double
+pub fn TimeseriesforecastbaggingLayer::len(Self) -> Int32
+pub fn TimeseriesforecastbaggingLayer::max(Self) -> Double
+pub fn TimeseriesforecastbaggingLayer::mean(Self) -> Double
+pub fn TimeseriesforecastbaggingLayer::min(Self) -> Double
+pub fn TimeseriesforecastbaggingLayer::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastbaggingLayer::sum(Self) -> Double
+pub fn TimeseriesforecastbaggingLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastbaggingMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriesforecastbaggingMatrix::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingMatrix::det(Self) -> Double
+pub fn TimeseriesforecastbaggingMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriesforecastbaggingMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingMatrix::norm(Self) -> Double
+pub fn TimeseriesforecastbaggingMatrix::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingMatrix::to_string(Self) -> String
+pub fn TimeseriesforecastbaggingMatrix::trace(Self) -> Double
+pub fn TimeseriesforecastbaggingMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriesforecastbaggingModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastbaggingModel::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingModel::copy(Self) -> Self
+pub fn TimeseriesforecastbaggingModel::fill(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingModel::get(Self, Int32) -> Double
+pub fn TimeseriesforecastbaggingModel::len(Self) -> Int32
+pub fn TimeseriesforecastbaggingModel::max(Self) -> Double
+pub fn TimeseriesforecastbaggingModel::mean(Self) -> Double
+pub fn TimeseriesforecastbaggingModel::min(Self) -> Double
+pub fn TimeseriesforecastbaggingModel::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastbaggingModel::sum(Self) -> Double
+pub fn TimeseriesforecastbaggingModel::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastbaggingNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastbaggingNode::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingNode::copy(Self) -> Self
+pub fn TimeseriesforecastbaggingNode::fill(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingNode::get(Self, Int32) -> Double
+pub fn TimeseriesforecastbaggingNode::len(Self) -> Int32
+pub fn TimeseriesforecastbaggingNode::max(Self) -> Double
+pub fn TimeseriesforecastbaggingNode::mean(Self) -> Double
+pub fn TimeseriesforecastbaggingNode::min(Self) -> Double
+pub fn TimeseriesforecastbaggingNode::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastbaggingNode::sum(Self) -> Double
+pub fn TimeseriesforecastbaggingNode::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastbaggingPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastbaggingPath::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingPath::copy(Self) -> Self
+pub fn TimeseriesforecastbaggingPath::fill(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingPath::get(Self, Int32) -> Double
+pub fn TimeseriesforecastbaggingPath::len(Self) -> Int32
+pub fn TimeseriesforecastbaggingPath::max(Self) -> Double
+pub fn TimeseriesforecastbaggingPath::mean(Self) -> Double
+pub fn TimeseriesforecastbaggingPath::min(Self) -> Double
+pub fn TimeseriesforecastbaggingPath::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingPath::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastbaggingPath::sum(Self) -> Double
+pub fn TimeseriesforecastbaggingPath::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastbaggingPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriesforecastbaggingPoint::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingPoint::cross(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingPoint::dist(Self, Self) -> Double
+pub fn TimeseriesforecastbaggingPoint::dot(Self, Self) -> Double
+pub fn TimeseriesforecastbaggingPoint::label(Self) -> Int32
+pub fn TimeseriesforecastbaggingPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriesforecastbaggingPoint::mid(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingPoint::negate(Self) -> Self
+pub fn TimeseriesforecastbaggingPoint::norm(Self) -> Double
+pub fn TimeseriesforecastbaggingPoint::normalize(Self) -> Self
+pub fn TimeseriesforecastbaggingPoint::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingPoint::sub(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingPoint::to_string(Self) -> String
+pub fn TimeseriesforecastbaggingPoint::x(Self) -> Double
+pub fn TimeseriesforecastbaggingPoint::y(Self) -> Double
+pub fn TimeseriesforecastbaggingPoint::z(Self) -> Double
+
+pub(all) struct TimeseriesforecastbaggingRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastbaggingRange::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingRange::copy(Self) -> Self
+pub fn TimeseriesforecastbaggingRange::fill(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingRange::get(Self, Int32) -> Double
+pub fn TimeseriesforecastbaggingRange::len(Self) -> Int32
+pub fn TimeseriesforecastbaggingRange::max(Self) -> Double
+pub fn TimeseriesforecastbaggingRange::mean(Self) -> Double
+pub fn TimeseriesforecastbaggingRange::min(Self) -> Double
+pub fn TimeseriesforecastbaggingRange::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastbaggingRange::sum(Self) -> Double
+pub fn TimeseriesforecastbaggingRange::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastbaggingSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriesforecastbaggingSeries::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingSeries::cumsum(Self) -> Self
+pub fn TimeseriesforecastbaggingSeries::len(Self) -> Int32
+pub fn TimeseriesforecastbaggingSeries::max(Self) -> Double
+pub fn TimeseriesforecastbaggingSeries::mean(Self) -> Double
+pub fn TimeseriesforecastbaggingSeries::median(Self) -> Double
+pub fn TimeseriesforecastbaggingSeries::min(Self) -> Double
+pub fn TimeseriesforecastbaggingSeries::normalize(Self) -> Self
+pub fn TimeseriesforecastbaggingSeries::range(Self) -> Double
+pub fn TimeseriesforecastbaggingSeries::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingSeries::std(Self) -> Double
+pub fn TimeseriesforecastbaggingSeries::sub(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingSeries::sum(Self) -> Double
+pub fn TimeseriesforecastbaggingSeries::to_string(Self) -> String
+pub fn TimeseriesforecastbaggingSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriesforecastbaggingSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastbaggingSlice::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingSlice::copy(Self) -> Self
+pub fn TimeseriesforecastbaggingSlice::fill(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingSlice::get(Self, Int32) -> Double
+pub fn TimeseriesforecastbaggingSlice::len(Self) -> Int32
+pub fn TimeseriesforecastbaggingSlice::max(Self) -> Double
+pub fn TimeseriesforecastbaggingSlice::mean(Self) -> Double
+pub fn TimeseriesforecastbaggingSlice::min(Self) -> Double
+pub fn TimeseriesforecastbaggingSlice::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastbaggingSlice::sum(Self) -> Double
+pub fn TimeseriesforecastbaggingSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastbaggingTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastbaggingTable::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingTable::copy(Self) -> Self
+pub fn TimeseriesforecastbaggingTable::fill(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingTable::get(Self, Int32) -> Double
+pub fn TimeseriesforecastbaggingTable::len(Self) -> Int32
+pub fn TimeseriesforecastbaggingTable::max(Self) -> Double
+pub fn TimeseriesforecastbaggingTable::mean(Self) -> Double
+pub fn TimeseriesforecastbaggingTable::min(Self) -> Double
+pub fn TimeseriesforecastbaggingTable::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastbaggingTable::sum(Self) -> Double
+pub fn TimeseriesforecastbaggingTable::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastbaggingVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriesforecastbaggingVector::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingVector::dist(Self, Self) -> Double
+pub fn TimeseriesforecastbaggingVector::dot(Self, Self) -> Double
+pub fn TimeseriesforecastbaggingVector::norm(Self) -> Double
+pub fn TimeseriesforecastbaggingVector::normalize(Self) -> Self
+pub fn TimeseriesforecastbaggingVector::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingVector::sub(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingVector::to_string(Self) -> String
+
+pub(all) struct TimeseriesforecastbaggingView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesforecastbaggingView::add(Self, Self) -> Self
+pub fn TimeseriesforecastbaggingView::copy(Self) -> Self
+pub fn TimeseriesforecastbaggingView::fill(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingView::get(Self, Int32) -> Double
+pub fn TimeseriesforecastbaggingView::len(Self) -> Int32
+pub fn TimeseriesforecastbaggingView::max(Self) -> Double
+pub fn TimeseriesforecastbaggingView::mean(Self) -> Double
+pub fn TimeseriesforecastbaggingView::min(Self) -> Double
+pub fn TimeseriesforecastbaggingView::scale(Self, Double) -> Self
+pub fn TimeseriesforecastbaggingView::set(Self, Int32, Double) -> Self
+pub fn TimeseriesforecastbaggingView::sum(Self) -> Double
+pub fn TimeseriesforecastbaggingView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

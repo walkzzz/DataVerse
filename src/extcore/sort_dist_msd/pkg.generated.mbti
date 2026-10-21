@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_dist_msd"
+
+// Values
+pub fn sort_dist_msd_buffer_make(Int32) -> SortdistmsdBuffer
+
+pub fn sort_dist_msd_cluster_make(Int32) -> SortdistmsdCluster
+
+pub fn sort_dist_msd_cursor_make(Int32) -> SortdistmsdCursor
+
+pub fn sort_dist_msd_edge_make(Int32) -> SortdistmsdEdge
+
+pub fn sort_dist_msd_frame_make(Int32) -> SortdistmsdFrame
+
+pub fn sort_dist_msd_graphn_make(Int32) -> SortdistmsdGraphN
+
+pub fn sort_dist_msd_layer_make(Int32) -> SortdistmsdLayer
+
+pub fn sort_dist_msd_make_matrix(Int32, Int32, Double) -> SortdistmsdMatrix
+
+pub fn sort_dist_msd_make_point(Double, Double) -> SortdistmsdPoint
+
+pub fn sort_dist_msd_make_point3(Double, Double, Double) -> SortdistmsdPoint
+
+pub fn sort_dist_msd_make_series(Array[Double], String) -> SortdistmsdSeries
+
+pub fn sort_dist_msd_make_vector(Array[Double]) -> SortdistmsdVector
+
+pub fn sort_dist_msd_matrix_identity(Int32) -> SortdistmsdMatrix
+
+pub fn sort_dist_msd_model_make(Int32) -> SortdistmsdModel
+
+pub fn sort_dist_msd_node_make(Int32) -> SortdistmsdNode
+
+pub fn sort_dist_msd_path_make(Int32) -> SortdistmsdPath
+
+pub fn sort_dist_msd_range_make(Int32) -> SortdistmsdRange
+
+pub fn sort_dist_msd_slice_make(Int32) -> SortdistmsdSlice
+
+pub fn sort_dist_msd_table_make(Int32) -> SortdistmsdTable
+
+pub fn sort_dist_msd_vector_zero(Int32) -> SortdistmsdVector
+
+pub fn sort_dist_msd_view_make(Int32) -> SortdistmsdView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortdistmsdBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistmsdBuffer::add(Self, Self) -> Self
+pub fn SortdistmsdBuffer::copy(Self) -> Self
+pub fn SortdistmsdBuffer::fill(Self, Double) -> Self
+pub fn SortdistmsdBuffer::get(Self, Int32) -> Double
+pub fn SortdistmsdBuffer::len(Self) -> Int32
+pub fn SortdistmsdBuffer::max(Self) -> Double
+pub fn SortdistmsdBuffer::mean(Self) -> Double
+pub fn SortdistmsdBuffer::min(Self) -> Double
+pub fn SortdistmsdBuffer::scale(Self, Double) -> Self
+pub fn SortdistmsdBuffer::set(Self, Int32, Double) -> Self
+pub fn SortdistmsdBuffer::sum(Self) -> Double
+pub fn SortdistmsdBuffer::to_string(Self) -> String
+
+pub(all) struct SortdistmsdCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistmsdCluster::add(Self, Self) -> Self
+pub fn SortdistmsdCluster::copy(Self) -> Self
+pub fn SortdistmsdCluster::fill(Self, Double) -> Self
+pub fn SortdistmsdCluster::get(Self, Int32) -> Double
+pub fn SortdistmsdCluster::len(Self) -> Int32
+pub fn SortdistmsdCluster::max(Self) -> Double
+pub fn SortdistmsdCluster::mean(Self) -> Double
+pub fn SortdistmsdCluster::min(Self) -> Double
+pub fn SortdistmsdCluster::scale(Self, Double) -> Self
+pub fn SortdistmsdCluster::set(Self, Int32, Double) -> Self
+pub fn SortdistmsdCluster::sum(Self) -> Double
+pub fn SortdistmsdCluster::to_string(Self) -> String
+
+pub(all) struct SortdistmsdCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistmsdCursor::add(Self, Self) -> Self
+pub fn SortdistmsdCursor::copy(Self) -> Self
+pub fn SortdistmsdCursor::fill(Self, Double) -> Self
+pub fn SortdistmsdCursor::get(Self, Int32) -> Double
+pub fn SortdistmsdCursor::len(Self) -> Int32
+pub fn SortdistmsdCursor::max(Self) -> Double
+pub fn SortdistmsdCursor::mean(Self) -> Double
+pub fn SortdistmsdCursor::min(Self) -> Double
+pub fn SortdistmsdCursor::scale(Self, Double) -> Self
+pub fn SortdistmsdCursor::set(Self, Int32, Double) -> Self
+pub fn SortdistmsdCursor::sum(Self) -> Double
+pub fn SortdistmsdCursor::to_string(Self) -> String
+
+pub(all) struct SortdistmsdEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistmsdEdge::add(Self, Self) -> Self
+pub fn SortdistmsdEdge::copy(Self) -> Self
+pub fn SortdistmsdEdge::fill(Self, Double) -> Self
+pub fn SortdistmsdEdge::get(Self, Int32) -> Double
+pub fn SortdistmsdEdge::len(Self) -> Int32
+pub fn SortdistmsdEdge::max(Self) -> Double
+pub fn SortdistmsdEdge::mean(Self) -> Double
+pub fn SortdistmsdEdge::min(Self) -> Double
+pub fn SortdistmsdEdge::scale(Self, Double) -> Self
+pub fn SortdistmsdEdge::set(Self, Int32, Double) -> Self
+pub fn SortdistmsdEdge::sum(Self) -> Double
+pub fn SortdistmsdEdge::to_string(Self) -> String
+
+pub(all) struct SortdistmsdFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistmsdFrame::add(Self, Self) -> Self
+pub fn SortdistmsdFrame::copy(Self) -> Self
+pub fn SortdistmsdFrame::fill(Self, Double) -> Self
+pub fn SortdistmsdFrame::get(Self, Int32) -> Double
+pub fn SortdistmsdFrame::len(Self) -> Int32
+pub fn SortdistmsdFrame::max(Self) -> Double
+pub fn SortdistmsdFrame::mean(Self) -> Double
+pub fn SortdistmsdFrame::min(Self) -> Double
+pub fn SortdistmsdFrame::scale(Self, Double) -> Self
+pub fn SortdistmsdFrame::set(Self, Int32, Double) -> Self
+pub fn SortdistmsdFrame::sum(Self) -> Double
+pub fn SortdistmsdFrame::to_string(Self) -> String
+
+pub(all) struct SortdistmsdGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistmsdGraphN::add(Self, Self) -> Self
+pub fn SortdistmsdGraphN::copy(Self) -> Self
+pub fn SortdistmsdGraphN::fill(Self, Double) -> Self
+pub fn SortdistmsdGraphN::get(Self, Int32) -> Double
+pub fn SortdistmsdGraphN::len(Self) -> Int32
+pub fn SortdistmsdGraphN::max(Self) -> Double
+pub fn SortdistmsdGraphN::mean(Self) -> Double
+pub fn SortdistmsdGraphN::min(Self) -> Double
+pub fn SortdistmsdGraphN::scale(Self, Double) -> Self
+pub fn SortdistmsdGraphN::set(Self, Int32, Double) -> Self
+pub fn SortdistmsdGraphN::sum(Self) -> Double
+pub fn SortdistmsdGraphN::to_string(Self) -> String
+
+pub(all) struct SortdistmsdLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistmsdLayer::add(Self, Self) -> Self
+pub fn SortdistmsdLayer::copy(Self) -> Self
+pub fn SortdistmsdLayer::fill(Self, Double) -> Self
+pub fn SortdistmsdLayer::get(Self, Int32) -> Double
+pub fn SortdistmsdLayer::len(Self) -> Int32
+pub fn SortdistmsdLayer::max(Self) -> Double
+pub fn SortdistmsdLayer::mean(Self) -> Double
+pub fn SortdistmsdLayer::min(Self) -> Double
+pub fn SortdistmsdLayer::scale(Self, Double) -> Self
+pub fn SortdistmsdLayer::set(Self, Int32, Double) -> Self
+pub fn SortdistmsdLayer::sum(Self) -> Double
+pub fn SortdistmsdLayer::to_string(Self) -> String
+
+pub(all) struct SortdistmsdMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortdistmsdMatrix::add(Self, Self) -> Self
+pub fn SortdistmsdMatrix::det(Self) -> Double
+pub fn SortdistmsdMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortdistmsdMatrix::multiply(Self, Self) -> Self
+pub fn SortdistmsdMatrix::norm(Self) -> Double
+pub fn SortdistmsdMatrix::scale(Self, Double) -> Self
+pub fn SortdistmsdMatrix::to_string(Self) -> String
+pub fn SortdistmsdMatrix::trace(Self) -> Double
+pub fn SortdistmsdMatrix::transpose(Self) -> Self
+
+pub(all) struct SortdistmsdModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistmsdModel::add(Self, Self) -> Self
+pub fn SortdistmsdModel::copy(Self) -> Self
+pub fn SortdistmsdModel::fill(Self, Double) -> Self
+pub fn SortdistmsdModel::get(Self, Int32) -> Double
+pub fn SortdistmsdModel::len(Self) -> Int32
+pub fn SortdistmsdModel::max(Self) -> Double
+pub fn SortdistmsdModel::mean(Self) -> Double
+pub fn SortdistmsdModel::min(Self) -> Double
+pub fn SortdistmsdModel::scale(Self, Double) -> Self
+pub fn SortdistmsdModel::set(Self, Int32, Double) -> Self
+pub fn SortdistmsdModel::sum(Self) -> Double
+pub fn SortdistmsdModel::to_string(Self) -> String
+
+pub(all) struct SortdistmsdNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistmsdNode::add(Self, Self) -> Self
+pub fn SortdistmsdNode::copy(Self) -> Self
+pub fn SortdistmsdNode::fill(Self, Double) -> Self
+pub fn SortdistmsdNode::get(Self, Int32) -> Double
+pub fn SortdistmsdNode::len(Self) -> Int32
+pub fn SortdistmsdNode::max(Self) -> Double
+pub fn SortdistmsdNode::mean(Self) -> Double
+pub fn SortdistmsdNode::min(Self) -> Double
+pub fn SortdistmsdNode::scale(Self, Double) -> Self
+pub fn SortdistmsdNode::set(Self, Int32, Double) -> Self
+pub fn SortdistmsdNode::sum(Self) -> Double
+pub fn SortdistmsdNode::to_string(Self) -> String
+
+pub(all) struct SortdistmsdPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistmsdPath::add(Self, Self) -> Self
+pub fn SortdistmsdPath::copy(Self) -> Self
+pub fn SortdistmsdPath::fill(Self, Double) -> Self
+pub fn SortdistmsdPath::get(Self, Int32) -> Double
+pub fn SortdistmsdPath::len(Self) -> Int32
+pub fn SortdistmsdPath::max(Self) -> Double
+pub fn SortdistmsdPath::mean(Self) -> Double
+pub fn SortdistmsdPath::min(Self) -> Double
+pub fn SortdistmsdPath::scale(Self, Double) -> Self
+pub fn SortdistmsdPath::set(Self, Int32, Double) -> Self
+pub fn SortdistmsdPath::sum(Self) -> Double
+pub fn SortdistmsdPath::to_string(Self) -> String
+
+pub(all) struct SortdistmsdPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortdistmsdPoint::add(Self, Self) -> Self
+pub fn SortdistmsdPoint::cross(Self, Self) -> Self
+pub fn SortdistmsdPoint::dist(Self, Self) -> Double
+pub fn SortdistmsdPoint::dot(Self, Self) -> Double
+pub fn SortdistmsdPoint::label(Self) -> Int32
+pub fn SortdistmsdPoint::lerp(Self, Self, Double) -> Self
+pub fn SortdistmsdPoint::mid(Self, Self) -> Self
+pub fn SortdistmsdPoint::negate(Self) -> Self
+pub fn SortdistmsdPoint::norm(Self) -> Double
+pub fn SortdistmsdPoint::normalize(Self) -> Self
+pub fn SortdistmsdPoint::scale(Self, Double) -> Self
+pub fn SortdistmsdPoint::sub(Self, Self) -> Self
+pub fn SortdistmsdPoint::to_string(Self) -> String
+pub fn SortdistmsdPoint::x(Self) -> Double
+pub fn SortdistmsdPoint::y(Self) -> Double
+pub fn SortdistmsdPoint::z(Self) -> Double
+
+pub(all) struct SortdistmsdRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistmsdRange::add(Self, Self) -> Self
+pub fn SortdistmsdRange::copy(Self) -> Self
+pub fn SortdistmsdRange::fill(Self, Double) -> Self
+pub fn SortdistmsdRange::get(Self, Int32) -> Double
+pub fn SortdistmsdRange::len(Self) -> Int32
+pub fn SortdistmsdRange::max(Self) -> Double
+pub fn SortdistmsdRange::mean(Self) -> Double
+pub fn SortdistmsdRange::min(Self) -> Double
+pub fn SortdistmsdRange::scale(Self, Double) -> Self
+pub fn SortdistmsdRange::set(Self, Int32, Double) -> Self
+pub fn SortdistmsdRange::sum(Self) -> Double
+pub fn SortdistmsdRange::to_string(Self) -> String
+
+pub(all) struct SortdistmsdSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortdistmsdSeries::add(Self, Self) -> Self
+pub fn SortdistmsdSeries::cumsum(Self) -> Self
+pub fn SortdistmsdSeries::len(Self) -> Int32
+pub fn SortdistmsdSeries::max(Self) -> Double
+pub fn SortdistmsdSeries::mean(Self) -> Double
+pub fn SortdistmsdSeries::median(Self) -> Double
+pub fn SortdistmsdSeries::min(Self) -> Double
+pub fn SortdistmsdSeries::normalize(Self) -> Self
+pub fn SortdistmsdSeries::range(Self) -> Double
+pub fn SortdistmsdSeries::scale(Self, Double) -> Self
+pub fn SortdistmsdSeries::std(Self) -> Double
+pub fn SortdistmsdSeries::sub(Self, Self) -> Self
+pub fn SortdistmsdSeries::sum(Self) -> Double
+pub fn SortdistmsdSeries::to_string(Self) -> String
+pub fn SortdistmsdSeries::variance(Self) -> Double
+
+pub(all) struct SortdistmsdSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistmsdSlice::add(Self, Self) -> Self
+pub fn SortdistmsdSlice::copy(Self) -> Self
+pub fn SortdistmsdSlice::fill(Self, Double) -> Self
+pub fn SortdistmsdSlice::get(Self, Int32) -> Double
+pub fn SortdistmsdSlice::len(Self) -> Int32
+pub fn SortdistmsdSlice::max(Self) -> Double
+pub fn SortdistmsdSlice::mean(Self) -> Double
+pub fn SortdistmsdSlice::min(Self) -> Double
+pub fn SortdistmsdSlice::scale(Self, Double) -> Self
+pub fn SortdistmsdSlice::set(Self, Int32, Double) -> Self
+pub fn SortdistmsdSlice::sum(Self) -> Double
+pub fn SortdistmsdSlice::to_string(Self) -> String
+
+pub(all) struct SortdistmsdTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistmsdTable::add(Self, Self) -> Self
+pub fn SortdistmsdTable::copy(Self) -> Self
+pub fn SortdistmsdTable::fill(Self, Double) -> Self
+pub fn SortdistmsdTable::get(Self, Int32) -> Double
+pub fn SortdistmsdTable::len(Self) -> Int32
+pub fn SortdistmsdTable::max(Self) -> Double
+pub fn SortdistmsdTable::mean(Self) -> Double
+pub fn SortdistmsdTable::min(Self) -> Double
+pub fn SortdistmsdTable::scale(Self, Double) -> Self
+pub fn SortdistmsdTable::set(Self, Int32, Double) -> Self
+pub fn SortdistmsdTable::sum(Self) -> Double
+pub fn SortdistmsdTable::to_string(Self) -> String
+
+pub(all) struct SortdistmsdVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortdistmsdVector::add(Self, Self) -> Self
+pub fn SortdistmsdVector::dist(Self, Self) -> Double
+pub fn SortdistmsdVector::dot(Self, Self) -> Double
+pub fn SortdistmsdVector::norm(Self) -> Double
+pub fn SortdistmsdVector::normalize(Self) -> Self
+pub fn SortdistmsdVector::scale(Self, Double) -> Self
+pub fn SortdistmsdVector::sub(Self, Self) -> Self
+pub fn SortdistmsdVector::to_string(Self) -> String
+
+pub(all) struct SortdistmsdView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortdistmsdView::add(Self, Self) -> Self
+pub fn SortdistmsdView::copy(Self) -> Self
+pub fn SortdistmsdView::fill(Self, Double) -> Self
+pub fn SortdistmsdView::get(Self, Int32) -> Double
+pub fn SortdistmsdView::len(Self) -> Int32
+pub fn SortdistmsdView::max(Self) -> Double
+pub fn SortdistmsdView::mean(Self) -> Double
+pub fn SortdistmsdView::min(Self) -> Double
+pub fn SortdistmsdView::scale(Self, Double) -> Self
+pub fn SortdistmsdView::set(Self, Int32, Double) -> Self
+pub fn SortdistmsdView::sum(Self) -> Double
+pub fn SortdistmsdView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

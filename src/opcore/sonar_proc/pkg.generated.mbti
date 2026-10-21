@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/sonar_proc"
+
+// Values
+pub fn sonar_proc_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn sonar_proc_corr(Array[Double], Array[Double]) -> Double
+
+pub fn sonar_proc_cov(Array[Double], Array[Double]) -> Double
+
+pub fn sonar_proc_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn sonar_proc_mae(Array[Double], Array[Double]) -> Double
+
+pub fn sonar_proc_make_labeled_point(Double, Double, Int32) -> Sonar_procPoint
+
+pub fn sonar_proc_make_matrix(Int32, Int32, Double) -> Sonar_procMatrix
+
+pub fn sonar_proc_make_point(Double, Double) -> Sonar_procPoint
+
+pub fn sonar_proc_make_series(Array[Double], String) -> Sonar_procSeries
+
+pub fn sonar_proc_make_vector(Array[Double]) -> Sonar_procVector
+
+pub fn sonar_proc_matrix_add(Sonar_procMatrix, Sonar_procMatrix) -> Sonar_procMatrix
+
+pub fn sonar_proc_matrix_get(Sonar_procMatrix, Int32, Int32) -> Double
+
+pub fn sonar_proc_matrix_identity(Int32) -> Sonar_procMatrix
+
+pub fn sonar_proc_matrix_multiply(Sonar_procMatrix, Sonar_procMatrix) -> Sonar_procMatrix
+
+pub fn sonar_proc_matrix_norm(Sonar_procMatrix) -> Double
+
+pub fn sonar_proc_matrix_scale(Sonar_procMatrix, Double) -> Sonar_procMatrix
+
+pub fn sonar_proc_matrix_to_string(Sonar_procMatrix) -> String
+
+pub fn sonar_proc_matrix_trace(Sonar_procMatrix) -> Double
+
+pub fn sonar_proc_matrix_transpose(Sonar_procMatrix) -> Sonar_procMatrix
+
+pub fn sonar_proc_mse(Array[Double], Array[Double]) -> Double
+
+pub fn sonar_proc_point_add(Sonar_procPoint, Sonar_procPoint) -> Sonar_procPoint
+
+pub fn sonar_proc_point_dist(Sonar_procPoint, Sonar_procPoint) -> Double
+
+pub fn sonar_proc_point_dot(Sonar_procPoint, Sonar_procPoint) -> Double
+
+pub fn sonar_proc_point_label(Sonar_procPoint) -> Int32
+
+pub fn sonar_proc_point_norm(Sonar_procPoint) -> Double
+
+pub fn sonar_proc_point_scale(Sonar_procPoint, Double) -> Sonar_procPoint
+
+pub fn sonar_proc_point_sub(Sonar_procPoint, Sonar_procPoint) -> Sonar_procPoint
+
+pub fn sonar_proc_point_to_string(Sonar_procPoint) -> String
+
+pub fn sonar_proc_point_x(Sonar_procPoint) -> Double
+
+pub fn sonar_proc_point_y(Sonar_procPoint) -> Double
+
+pub fn sonar_proc_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn sonar_proc_r2(Array[Double], Array[Double]) -> Double
+
+pub fn sonar_proc_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn sonar_proc_series_add(Sonar_procSeries, Sonar_procSeries) -> Sonar_procSeries
+
+pub fn sonar_proc_series_len(Sonar_procSeries) -> Int32
+
+pub fn sonar_proc_series_max(Sonar_procSeries) -> Double
+
+pub fn sonar_proc_series_mean(Sonar_procSeries) -> Double
+
+pub fn sonar_proc_series_min(Sonar_procSeries) -> Double
+
+pub fn sonar_proc_series_scale(Sonar_procSeries, Double) -> Sonar_procSeries
+
+pub fn sonar_proc_series_std(Sonar_procSeries) -> Double
+
+pub fn sonar_proc_series_sum(Sonar_procSeries) -> Double
+
+pub fn sonar_proc_series_to_string(Sonar_procSeries) -> String
+
+pub fn sonar_proc_series_var(Sonar_procSeries) -> Double
+
+pub fn sonar_proc_std(Array[Double]) -> Double
+
+pub fn sonar_proc_var(Array[Double]) -> Double
+
+pub fn sonar_proc_vector_add(Sonar_procVector, Sonar_procVector) -> Sonar_procVector
+
+pub fn sonar_proc_vector_dist(Sonar_procVector, Sonar_procVector) -> Double
+
+pub fn sonar_proc_vector_dot(Sonar_procVector, Sonar_procVector) -> Double
+
+pub fn sonar_proc_vector_norm(Sonar_procVector) -> Double
+
+pub fn sonar_proc_vector_normalize(Sonar_procVector) -> Sonar_procVector
+
+pub fn sonar_proc_vector_scale(Sonar_procVector, Double) -> Sonar_procVector
+
+pub fn sonar_proc_vector_sub(Sonar_procVector, Sonar_procVector) -> Sonar_procVector
+
+pub fn sonar_proc_vector_to_string(Sonar_procVector) -> String
+
+pub fn sonar_proc_vector_zero(Int32) -> Sonar_procVector
+
+// Errors
+
+// Types and methods
+pub struct Sonar_procMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Sonar_procPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Sonar_procSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Sonar_procVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

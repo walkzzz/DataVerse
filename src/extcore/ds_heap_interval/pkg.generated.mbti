@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_heap_interval"
+
+// Values
+pub fn ds_heap_interval_buffer_make(Int32) -> DsheapintervalBuffer
+
+pub fn ds_heap_interval_cluster_make(Int32) -> DsheapintervalCluster
+
+pub fn ds_heap_interval_cursor_make(Int32) -> DsheapintervalCursor
+
+pub fn ds_heap_interval_edge_make(Int32) -> DsheapintervalEdge
+
+pub fn ds_heap_interval_frame_make(Int32) -> DsheapintervalFrame
+
+pub fn ds_heap_interval_graphn_make(Int32) -> DsheapintervalGraphN
+
+pub fn ds_heap_interval_layer_make(Int32) -> DsheapintervalLayer
+
+pub fn ds_heap_interval_make_matrix(Int32, Int32, Double) -> DsheapintervalMatrix
+
+pub fn ds_heap_interval_make_point(Double, Double) -> DsheapintervalPoint
+
+pub fn ds_heap_interval_make_point3(Double, Double, Double) -> DsheapintervalPoint
+
+pub fn ds_heap_interval_make_series(Array[Double], String) -> DsheapintervalSeries
+
+pub fn ds_heap_interval_make_vector(Array[Double]) -> DsheapintervalVector
+
+pub fn ds_heap_interval_matrix_identity(Int32) -> DsheapintervalMatrix
+
+pub fn ds_heap_interval_model_make(Int32) -> DsheapintervalModel
+
+pub fn ds_heap_interval_node_make(Int32) -> DsheapintervalNode
+
+pub fn ds_heap_interval_path_make(Int32) -> DsheapintervalPath
+
+pub fn ds_heap_interval_range_make(Int32) -> DsheapintervalRange
+
+pub fn ds_heap_interval_slice_make(Int32) -> DsheapintervalSlice
+
+pub fn ds_heap_interval_table_make(Int32) -> DsheapintervalTable
+
+pub fn ds_heap_interval_vector_zero(Int32) -> DsheapintervalVector
+
+pub fn ds_heap_interval_view_make(Int32) -> DsheapintervalView
+
+// Errors
+
+// Types and methods
+pub(all) struct DsheapintervalBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapintervalBuffer::add(Self, Self) -> Self
+pub fn DsheapintervalBuffer::copy(Self) -> Self
+pub fn DsheapintervalBuffer::fill(Self, Double) -> Self
+pub fn DsheapintervalBuffer::get(Self, Int32) -> Double
+pub fn DsheapintervalBuffer::len(Self) -> Int32
+pub fn DsheapintervalBuffer::max(Self) -> Double
+pub fn DsheapintervalBuffer::mean(Self) -> Double
+pub fn DsheapintervalBuffer::min(Self) -> Double
+pub fn DsheapintervalBuffer::scale(Self, Double) -> Self
+pub fn DsheapintervalBuffer::set(Self, Int32, Double) -> Self
+pub fn DsheapintervalBuffer::sum(Self) -> Double
+pub fn DsheapintervalBuffer::to_string(Self) -> String
+
+pub(all) struct DsheapintervalCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapintervalCluster::add(Self, Self) -> Self
+pub fn DsheapintervalCluster::copy(Self) -> Self
+pub fn DsheapintervalCluster::fill(Self, Double) -> Self
+pub fn DsheapintervalCluster::get(Self, Int32) -> Double
+pub fn DsheapintervalCluster::len(Self) -> Int32
+pub fn DsheapintervalCluster::max(Self) -> Double
+pub fn DsheapintervalCluster::mean(Self) -> Double
+pub fn DsheapintervalCluster::min(Self) -> Double
+pub fn DsheapintervalCluster::scale(Self, Double) -> Self
+pub fn DsheapintervalCluster::set(Self, Int32, Double) -> Self
+pub fn DsheapintervalCluster::sum(Self) -> Double
+pub fn DsheapintervalCluster::to_string(Self) -> String
+
+pub(all) struct DsheapintervalCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapintervalCursor::add(Self, Self) -> Self
+pub fn DsheapintervalCursor::copy(Self) -> Self
+pub fn DsheapintervalCursor::fill(Self, Double) -> Self
+pub fn DsheapintervalCursor::get(Self, Int32) -> Double
+pub fn DsheapintervalCursor::len(Self) -> Int32
+pub fn DsheapintervalCursor::max(Self) -> Double
+pub fn DsheapintervalCursor::mean(Self) -> Double
+pub fn DsheapintervalCursor::min(Self) -> Double
+pub fn DsheapintervalCursor::scale(Self, Double) -> Self
+pub fn DsheapintervalCursor::set(Self, Int32, Double) -> Self
+pub fn DsheapintervalCursor::sum(Self) -> Double
+pub fn DsheapintervalCursor::to_string(Self) -> String
+
+pub(all) struct DsheapintervalEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapintervalEdge::add(Self, Self) -> Self
+pub fn DsheapintervalEdge::copy(Self) -> Self
+pub fn DsheapintervalEdge::fill(Self, Double) -> Self
+pub fn DsheapintervalEdge::get(Self, Int32) -> Double
+pub fn DsheapintervalEdge::len(Self) -> Int32
+pub fn DsheapintervalEdge::max(Self) -> Double
+pub fn DsheapintervalEdge::mean(Self) -> Double
+pub fn DsheapintervalEdge::min(Self) -> Double
+pub fn DsheapintervalEdge::scale(Self, Double) -> Self
+pub fn DsheapintervalEdge::set(Self, Int32, Double) -> Self
+pub fn DsheapintervalEdge::sum(Self) -> Double
+pub fn DsheapintervalEdge::to_string(Self) -> String
+
+pub(all) struct DsheapintervalFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapintervalFrame::add(Self, Self) -> Self
+pub fn DsheapintervalFrame::copy(Self) -> Self
+pub fn DsheapintervalFrame::fill(Self, Double) -> Self
+pub fn DsheapintervalFrame::get(Self, Int32) -> Double
+pub fn DsheapintervalFrame::len(Self) -> Int32
+pub fn DsheapintervalFrame::max(Self) -> Double
+pub fn DsheapintervalFrame::mean(Self) -> Double
+pub fn DsheapintervalFrame::min(Self) -> Double
+pub fn DsheapintervalFrame::scale(Self, Double) -> Self
+pub fn DsheapintervalFrame::set(Self, Int32, Double) -> Self
+pub fn DsheapintervalFrame::sum(Self) -> Double
+pub fn DsheapintervalFrame::to_string(Self) -> String
+
+pub(all) struct DsheapintervalGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapintervalGraphN::add(Self, Self) -> Self
+pub fn DsheapintervalGraphN::copy(Self) -> Self
+pub fn DsheapintervalGraphN::fill(Self, Double) -> Self
+pub fn DsheapintervalGraphN::get(Self, Int32) -> Double
+pub fn DsheapintervalGraphN::len(Self) -> Int32
+pub fn DsheapintervalGraphN::max(Self) -> Double
+pub fn DsheapintervalGraphN::mean(Self) -> Double
+pub fn DsheapintervalGraphN::min(Self) -> Double
+pub fn DsheapintervalGraphN::scale(Self, Double) -> Self
+pub fn DsheapintervalGraphN::set(Self, Int32, Double) -> Self
+pub fn DsheapintervalGraphN::sum(Self) -> Double
+pub fn DsheapintervalGraphN::to_string(Self) -> String
+
+pub(all) struct DsheapintervalLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapintervalLayer::add(Self, Self) -> Self
+pub fn DsheapintervalLayer::copy(Self) -> Self
+pub fn DsheapintervalLayer::fill(Self, Double) -> Self
+pub fn DsheapintervalLayer::get(Self, Int32) -> Double
+pub fn DsheapintervalLayer::len(Self) -> Int32
+pub fn DsheapintervalLayer::max(Self) -> Double
+pub fn DsheapintervalLayer::mean(Self) -> Double
+pub fn DsheapintervalLayer::min(Self) -> Double
+pub fn DsheapintervalLayer::scale(Self, Double) -> Self
+pub fn DsheapintervalLayer::set(Self, Int32, Double) -> Self
+pub fn DsheapintervalLayer::sum(Self) -> Double
+pub fn DsheapintervalLayer::to_string(Self) -> String
+
+pub(all) struct DsheapintervalMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DsheapintervalMatrix::add(Self, Self) -> Self
+pub fn DsheapintervalMatrix::det(Self) -> Double
+pub fn DsheapintervalMatrix::get(Self, Int32, Int32) -> Double
+pub fn DsheapintervalMatrix::multiply(Self, Self) -> Self
+pub fn DsheapintervalMatrix::norm(Self) -> Double
+pub fn DsheapintervalMatrix::scale(Self, Double) -> Self
+pub fn DsheapintervalMatrix::to_string(Self) -> String
+pub fn DsheapintervalMatrix::trace(Self) -> Double
+pub fn DsheapintervalMatrix::transpose(Self) -> Self
+
+pub(all) struct DsheapintervalModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapintervalModel::add(Self, Self) -> Self
+pub fn DsheapintervalModel::copy(Self) -> Self
+pub fn DsheapintervalModel::fill(Self, Double) -> Self
+pub fn DsheapintervalModel::get(Self, Int32) -> Double
+pub fn DsheapintervalModel::len(Self) -> Int32
+pub fn DsheapintervalModel::max(Self) -> Double
+pub fn DsheapintervalModel::mean(Self) -> Double
+pub fn DsheapintervalModel::min(Self) -> Double
+pub fn DsheapintervalModel::scale(Self, Double) -> Self
+pub fn DsheapintervalModel::set(Self, Int32, Double) -> Self
+pub fn DsheapintervalModel::sum(Self) -> Double
+pub fn DsheapintervalModel::to_string(Self) -> String
+
+pub(all) struct DsheapintervalNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapintervalNode::add(Self, Self) -> Self
+pub fn DsheapintervalNode::copy(Self) -> Self
+pub fn DsheapintervalNode::fill(Self, Double) -> Self
+pub fn DsheapintervalNode::get(Self, Int32) -> Double
+pub fn DsheapintervalNode::len(Self) -> Int32
+pub fn DsheapintervalNode::max(Self) -> Double
+pub fn DsheapintervalNode::mean(Self) -> Double
+pub fn DsheapintervalNode::min(Self) -> Double
+pub fn DsheapintervalNode::scale(Self, Double) -> Self
+pub fn DsheapintervalNode::set(Self, Int32, Double) -> Self
+pub fn DsheapintervalNode::sum(Self) -> Double
+pub fn DsheapintervalNode::to_string(Self) -> String
+
+pub(all) struct DsheapintervalPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapintervalPath::add(Self, Self) -> Self
+pub fn DsheapintervalPath::copy(Self) -> Self
+pub fn DsheapintervalPath::fill(Self, Double) -> Self
+pub fn DsheapintervalPath::get(Self, Int32) -> Double
+pub fn DsheapintervalPath::len(Self) -> Int32
+pub fn DsheapintervalPath::max(Self) -> Double
+pub fn DsheapintervalPath::mean(Self) -> Double
+pub fn DsheapintervalPath::min(Self) -> Double
+pub fn DsheapintervalPath::scale(Self, Double) -> Self
+pub fn DsheapintervalPath::set(Self, Int32, Double) -> Self
+pub fn DsheapintervalPath::sum(Self) -> Double
+pub fn DsheapintervalPath::to_string(Self) -> String
+
+pub(all) struct DsheapintervalPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DsheapintervalPoint::add(Self, Self) -> Self
+pub fn DsheapintervalPoint::cross(Self, Self) -> Self
+pub fn DsheapintervalPoint::dist(Self, Self) -> Double
+pub fn DsheapintervalPoint::dot(Self, Self) -> Double
+pub fn DsheapintervalPoint::label(Self) -> Int32
+pub fn DsheapintervalPoint::lerp(Self, Self, Double) -> Self
+pub fn DsheapintervalPoint::mid(Self, Self) -> Self
+pub fn DsheapintervalPoint::negate(Self) -> Self
+pub fn DsheapintervalPoint::norm(Self) -> Double
+pub fn DsheapintervalPoint::normalize(Self) -> Self
+pub fn DsheapintervalPoint::scale(Self, Double) -> Self
+pub fn DsheapintervalPoint::sub(Self, Self) -> Self
+pub fn DsheapintervalPoint::to_string(Self) -> String
+pub fn DsheapintervalPoint::x(Self) -> Double
+pub fn DsheapintervalPoint::y(Self) -> Double
+pub fn DsheapintervalPoint::z(Self) -> Double
+
+pub(all) struct DsheapintervalRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapintervalRange::add(Self, Self) -> Self
+pub fn DsheapintervalRange::copy(Self) -> Self
+pub fn DsheapintervalRange::fill(Self, Double) -> Self
+pub fn DsheapintervalRange::get(Self, Int32) -> Double
+pub fn DsheapintervalRange::len(Self) -> Int32
+pub fn DsheapintervalRange::max(Self) -> Double
+pub fn DsheapintervalRange::mean(Self) -> Double
+pub fn DsheapintervalRange::min(Self) -> Double
+pub fn DsheapintervalRange::scale(Self, Double) -> Self
+pub fn DsheapintervalRange::set(Self, Int32, Double) -> Self
+pub fn DsheapintervalRange::sum(Self) -> Double
+pub fn DsheapintervalRange::to_string(Self) -> String
+
+pub(all) struct DsheapintervalSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DsheapintervalSeries::add(Self, Self) -> Self
+pub fn DsheapintervalSeries::cumsum(Self) -> Self
+pub fn DsheapintervalSeries::len(Self) -> Int32
+pub fn DsheapintervalSeries::max(Self) -> Double
+pub fn DsheapintervalSeries::mean(Self) -> Double
+pub fn DsheapintervalSeries::median(Self) -> Double
+pub fn DsheapintervalSeries::min(Self) -> Double
+pub fn DsheapintervalSeries::normalize(Self) -> Self
+pub fn DsheapintervalSeries::range(Self) -> Double
+pub fn DsheapintervalSeries::scale(Self, Double) -> Self
+pub fn DsheapintervalSeries::std(Self) -> Double
+pub fn DsheapintervalSeries::sub(Self, Self) -> Self
+pub fn DsheapintervalSeries::sum(Self) -> Double
+pub fn DsheapintervalSeries::to_string(Self) -> String
+pub fn DsheapintervalSeries::variance(Self) -> Double
+
+pub(all) struct DsheapintervalSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapintervalSlice::add(Self, Self) -> Self
+pub fn DsheapintervalSlice::copy(Self) -> Self
+pub fn DsheapintervalSlice::fill(Self, Double) -> Self
+pub fn DsheapintervalSlice::get(Self, Int32) -> Double
+pub fn DsheapintervalSlice::len(Self) -> Int32
+pub fn DsheapintervalSlice::max(Self) -> Double
+pub fn DsheapintervalSlice::mean(Self) -> Double
+pub fn DsheapintervalSlice::min(Self) -> Double
+pub fn DsheapintervalSlice::scale(Self, Double) -> Self
+pub fn DsheapintervalSlice::set(Self, Int32, Double) -> Self
+pub fn DsheapintervalSlice::sum(Self) -> Double
+pub fn DsheapintervalSlice::to_string(Self) -> String
+
+pub(all) struct DsheapintervalTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapintervalTable::add(Self, Self) -> Self
+pub fn DsheapintervalTable::copy(Self) -> Self
+pub fn DsheapintervalTable::fill(Self, Double) -> Self
+pub fn DsheapintervalTable::get(Self, Int32) -> Double
+pub fn DsheapintervalTable::len(Self) -> Int32
+pub fn DsheapintervalTable::max(Self) -> Double
+pub fn DsheapintervalTable::mean(Self) -> Double
+pub fn DsheapintervalTable::min(Self) -> Double
+pub fn DsheapintervalTable::scale(Self, Double) -> Self
+pub fn DsheapintervalTable::set(Self, Int32, Double) -> Self
+pub fn DsheapintervalTable::sum(Self) -> Double
+pub fn DsheapintervalTable::to_string(Self) -> String
+
+pub(all) struct DsheapintervalVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DsheapintervalVector::add(Self, Self) -> Self
+pub fn DsheapintervalVector::dist(Self, Self) -> Double
+pub fn DsheapintervalVector::dot(Self, Self) -> Double
+pub fn DsheapintervalVector::norm(Self) -> Double
+pub fn DsheapintervalVector::normalize(Self) -> Self
+pub fn DsheapintervalVector::scale(Self, Double) -> Self
+pub fn DsheapintervalVector::sub(Self, Self) -> Self
+pub fn DsheapintervalVector::to_string(Self) -> String
+
+pub(all) struct DsheapintervalView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapintervalView::add(Self, Self) -> Self
+pub fn DsheapintervalView::copy(Self) -> Self
+pub fn DsheapintervalView::fill(Self, Double) -> Self
+pub fn DsheapintervalView::get(Self, Int32) -> Double
+pub fn DsheapintervalView::len(Self) -> Int32
+pub fn DsheapintervalView::max(Self) -> Double
+pub fn DsheapintervalView::mean(Self) -> Double
+pub fn DsheapintervalView::min(Self) -> Double
+pub fn DsheapintervalView::scale(Self, Double) -> Self
+pub fn DsheapintervalView::set(Self, Int32, Double) -> Self
+pub fn DsheapintervalView::sum(Self) -> Double
+pub fn DsheapintervalView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

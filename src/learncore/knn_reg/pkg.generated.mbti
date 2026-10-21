@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/knn_reg"
+
+// Values
+pub fn knn_reg_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn knn_reg_corr(Array[Double], Array[Double]) -> Double
+
+pub fn knn_reg_cov(Array[Double], Array[Double]) -> Double
+
+pub fn knn_reg_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn knn_reg_mae(Array[Double], Array[Double]) -> Double
+
+pub fn knn_reg_make_labeled_point(Double, Double, Int32) -> Knn_regPoint
+
+pub fn knn_reg_make_matrix(Int32, Int32, Double) -> Knn_regMatrix
+
+pub fn knn_reg_make_point(Double, Double) -> Knn_regPoint
+
+pub fn knn_reg_make_series(Array[Double], String) -> Knn_regSeries
+
+pub fn knn_reg_make_vector(Array[Double]) -> Knn_regVector
+
+pub fn knn_reg_matrix_add(Knn_regMatrix, Knn_regMatrix) -> Knn_regMatrix
+
+pub fn knn_reg_matrix_get(Knn_regMatrix, Int32, Int32) -> Double
+
+pub fn knn_reg_matrix_identity(Int32) -> Knn_regMatrix
+
+pub fn knn_reg_matrix_multiply(Knn_regMatrix, Knn_regMatrix) -> Knn_regMatrix
+
+pub fn knn_reg_matrix_norm(Knn_regMatrix) -> Double
+
+pub fn knn_reg_matrix_scale(Knn_regMatrix, Double) -> Knn_regMatrix
+
+pub fn knn_reg_matrix_to_string(Knn_regMatrix) -> String
+
+pub fn knn_reg_matrix_trace(Knn_regMatrix) -> Double
+
+pub fn knn_reg_matrix_transpose(Knn_regMatrix) -> Knn_regMatrix
+
+pub fn knn_reg_mse(Array[Double], Array[Double]) -> Double
+
+pub fn knn_reg_point_add(Knn_regPoint, Knn_regPoint) -> Knn_regPoint
+
+pub fn knn_reg_point_dist(Knn_regPoint, Knn_regPoint) -> Double
+
+pub fn knn_reg_point_dot(Knn_regPoint, Knn_regPoint) -> Double
+
+pub fn knn_reg_point_label(Knn_regPoint) -> Int32
+
+pub fn knn_reg_point_norm(Knn_regPoint) -> Double
+
+pub fn knn_reg_point_scale(Knn_regPoint, Double) -> Knn_regPoint
+
+pub fn knn_reg_point_sub(Knn_regPoint, Knn_regPoint) -> Knn_regPoint
+
+pub fn knn_reg_point_to_string(Knn_regPoint) -> String
+
+pub fn knn_reg_point_x(Knn_regPoint) -> Double
+
+pub fn knn_reg_point_y(Knn_regPoint) -> Double
+
+pub fn knn_reg_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn knn_reg_r2(Array[Double], Array[Double]) -> Double
+
+pub fn knn_reg_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn knn_reg_series_add(Knn_regSeries, Knn_regSeries) -> Knn_regSeries
+
+pub fn knn_reg_series_len(Knn_regSeries) -> Int32
+
+pub fn knn_reg_series_max(Knn_regSeries) -> Double
+
+pub fn knn_reg_series_mean(Knn_regSeries) -> Double
+
+pub fn knn_reg_series_min(Knn_regSeries) -> Double
+
+pub fn knn_reg_series_scale(Knn_regSeries, Double) -> Knn_regSeries
+
+pub fn knn_reg_series_std(Knn_regSeries) -> Double
+
+pub fn knn_reg_series_sum(Knn_regSeries) -> Double
+
+pub fn knn_reg_series_to_string(Knn_regSeries) -> String
+
+pub fn knn_reg_series_var(Knn_regSeries) -> Double
+
+pub fn knn_reg_std(Array[Double]) -> Double
+
+pub fn knn_reg_var(Array[Double]) -> Double
+
+pub fn knn_reg_vector_add(Knn_regVector, Knn_regVector) -> Knn_regVector
+
+pub fn knn_reg_vector_dist(Knn_regVector, Knn_regVector) -> Double
+
+pub fn knn_reg_vector_dot(Knn_regVector, Knn_regVector) -> Double
+
+pub fn knn_reg_vector_norm(Knn_regVector) -> Double
+
+pub fn knn_reg_vector_normalize(Knn_regVector) -> Knn_regVector
+
+pub fn knn_reg_vector_scale(Knn_regVector, Double) -> Knn_regVector
+
+pub fn knn_reg_vector_sub(Knn_regVector, Knn_regVector) -> Knn_regVector
+
+pub fn knn_reg_vector_to_string(Knn_regVector) -> String
+
+pub fn knn_reg_vector_zero(Int32) -> Knn_regVector
+
+// Errors
+
+// Types and methods
+pub struct Knn_regMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Knn_regPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Knn_regSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Knn_regVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

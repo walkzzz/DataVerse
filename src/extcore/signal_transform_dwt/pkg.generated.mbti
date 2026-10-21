@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_transform_dwt"
+
+// Values
+pub fn signal_transform_dwt_buffer_make(Int32) -> SignaltransformdwtBuffer
+
+pub fn signal_transform_dwt_cluster_make(Int32) -> SignaltransformdwtCluster
+
+pub fn signal_transform_dwt_cursor_make(Int32) -> SignaltransformdwtCursor
+
+pub fn signal_transform_dwt_edge_make(Int32) -> SignaltransformdwtEdge
+
+pub fn signal_transform_dwt_frame_make(Int32) -> SignaltransformdwtFrame
+
+pub fn signal_transform_dwt_graphn_make(Int32) -> SignaltransformdwtGraphN
+
+pub fn signal_transform_dwt_layer_make(Int32) -> SignaltransformdwtLayer
+
+pub fn signal_transform_dwt_make_matrix(Int32, Int32, Double) -> SignaltransformdwtMatrix
+
+pub fn signal_transform_dwt_make_point(Double, Double) -> SignaltransformdwtPoint
+
+pub fn signal_transform_dwt_make_point3(Double, Double, Double) -> SignaltransformdwtPoint
+
+pub fn signal_transform_dwt_make_series(Array[Double], String) -> SignaltransformdwtSeries
+
+pub fn signal_transform_dwt_make_vector(Array[Double]) -> SignaltransformdwtVector
+
+pub fn signal_transform_dwt_matrix_identity(Int32) -> SignaltransformdwtMatrix
+
+pub fn signal_transform_dwt_model_make(Int32) -> SignaltransformdwtModel
+
+pub fn signal_transform_dwt_node_make(Int32) -> SignaltransformdwtNode
+
+pub fn signal_transform_dwt_path_make(Int32) -> SignaltransformdwtPath
+
+pub fn signal_transform_dwt_range_make(Int32) -> SignaltransformdwtRange
+
+pub fn signal_transform_dwt_slice_make(Int32) -> SignaltransformdwtSlice
+
+pub fn signal_transform_dwt_table_make(Int32) -> SignaltransformdwtTable
+
+pub fn signal_transform_dwt_vector_zero(Int32) -> SignaltransformdwtVector
+
+pub fn signal_transform_dwt_view_make(Int32) -> SignaltransformdwtView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignaltransformdwtBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformdwtBuffer::add(Self, Self) -> Self
+pub fn SignaltransformdwtBuffer::copy(Self) -> Self
+pub fn SignaltransformdwtBuffer::fill(Self, Double) -> Self
+pub fn SignaltransformdwtBuffer::get(Self, Int32) -> Double
+pub fn SignaltransformdwtBuffer::len(Self) -> Int32
+pub fn SignaltransformdwtBuffer::max(Self) -> Double
+pub fn SignaltransformdwtBuffer::mean(Self) -> Double
+pub fn SignaltransformdwtBuffer::min(Self) -> Double
+pub fn SignaltransformdwtBuffer::scale(Self, Double) -> Self
+pub fn SignaltransformdwtBuffer::set(Self, Int32, Double) -> Self
+pub fn SignaltransformdwtBuffer::sum(Self) -> Double
+pub fn SignaltransformdwtBuffer::to_string(Self) -> String
+
+pub(all) struct SignaltransformdwtCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformdwtCluster::add(Self, Self) -> Self
+pub fn SignaltransformdwtCluster::copy(Self) -> Self
+pub fn SignaltransformdwtCluster::fill(Self, Double) -> Self
+pub fn SignaltransformdwtCluster::get(Self, Int32) -> Double
+pub fn SignaltransformdwtCluster::len(Self) -> Int32
+pub fn SignaltransformdwtCluster::max(Self) -> Double
+pub fn SignaltransformdwtCluster::mean(Self) -> Double
+pub fn SignaltransformdwtCluster::min(Self) -> Double
+pub fn SignaltransformdwtCluster::scale(Self, Double) -> Self
+pub fn SignaltransformdwtCluster::set(Self, Int32, Double) -> Self
+pub fn SignaltransformdwtCluster::sum(Self) -> Double
+pub fn SignaltransformdwtCluster::to_string(Self) -> String
+
+pub(all) struct SignaltransformdwtCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformdwtCursor::add(Self, Self) -> Self
+pub fn SignaltransformdwtCursor::copy(Self) -> Self
+pub fn SignaltransformdwtCursor::fill(Self, Double) -> Self
+pub fn SignaltransformdwtCursor::get(Self, Int32) -> Double
+pub fn SignaltransformdwtCursor::len(Self) -> Int32
+pub fn SignaltransformdwtCursor::max(Self) -> Double
+pub fn SignaltransformdwtCursor::mean(Self) -> Double
+pub fn SignaltransformdwtCursor::min(Self) -> Double
+pub fn SignaltransformdwtCursor::scale(Self, Double) -> Self
+pub fn SignaltransformdwtCursor::set(Self, Int32, Double) -> Self
+pub fn SignaltransformdwtCursor::sum(Self) -> Double
+pub fn SignaltransformdwtCursor::to_string(Self) -> String
+
+pub(all) struct SignaltransformdwtEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformdwtEdge::add(Self, Self) -> Self
+pub fn SignaltransformdwtEdge::copy(Self) -> Self
+pub fn SignaltransformdwtEdge::fill(Self, Double) -> Self
+pub fn SignaltransformdwtEdge::get(Self, Int32) -> Double
+pub fn SignaltransformdwtEdge::len(Self) -> Int32
+pub fn SignaltransformdwtEdge::max(Self) -> Double
+pub fn SignaltransformdwtEdge::mean(Self) -> Double
+pub fn SignaltransformdwtEdge::min(Self) -> Double
+pub fn SignaltransformdwtEdge::scale(Self, Double) -> Self
+pub fn SignaltransformdwtEdge::set(Self, Int32, Double) -> Self
+pub fn SignaltransformdwtEdge::sum(Self) -> Double
+pub fn SignaltransformdwtEdge::to_string(Self) -> String
+
+pub(all) struct SignaltransformdwtFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformdwtFrame::add(Self, Self) -> Self
+pub fn SignaltransformdwtFrame::copy(Self) -> Self
+pub fn SignaltransformdwtFrame::fill(Self, Double) -> Self
+pub fn SignaltransformdwtFrame::get(Self, Int32) -> Double
+pub fn SignaltransformdwtFrame::len(Self) -> Int32
+pub fn SignaltransformdwtFrame::max(Self) -> Double
+pub fn SignaltransformdwtFrame::mean(Self) -> Double
+pub fn SignaltransformdwtFrame::min(Self) -> Double
+pub fn SignaltransformdwtFrame::scale(Self, Double) -> Self
+pub fn SignaltransformdwtFrame::set(Self, Int32, Double) -> Self
+pub fn SignaltransformdwtFrame::sum(Self) -> Double
+pub fn SignaltransformdwtFrame::to_string(Self) -> String
+
+pub(all) struct SignaltransformdwtGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformdwtGraphN::add(Self, Self) -> Self
+pub fn SignaltransformdwtGraphN::copy(Self) -> Self
+pub fn SignaltransformdwtGraphN::fill(Self, Double) -> Self
+pub fn SignaltransformdwtGraphN::get(Self, Int32) -> Double
+pub fn SignaltransformdwtGraphN::len(Self) -> Int32
+pub fn SignaltransformdwtGraphN::max(Self) -> Double
+pub fn SignaltransformdwtGraphN::mean(Self) -> Double
+pub fn SignaltransformdwtGraphN::min(Self) -> Double
+pub fn SignaltransformdwtGraphN::scale(Self, Double) -> Self
+pub fn SignaltransformdwtGraphN::set(Self, Int32, Double) -> Self
+pub fn SignaltransformdwtGraphN::sum(Self) -> Double
+pub fn SignaltransformdwtGraphN::to_string(Self) -> String
+
+pub(all) struct SignaltransformdwtLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformdwtLayer::add(Self, Self) -> Self
+pub fn SignaltransformdwtLayer::copy(Self) -> Self
+pub fn SignaltransformdwtLayer::fill(Self, Double) -> Self
+pub fn SignaltransformdwtLayer::get(Self, Int32) -> Double
+pub fn SignaltransformdwtLayer::len(Self) -> Int32
+pub fn SignaltransformdwtLayer::max(Self) -> Double
+pub fn SignaltransformdwtLayer::mean(Self) -> Double
+pub fn SignaltransformdwtLayer::min(Self) -> Double
+pub fn SignaltransformdwtLayer::scale(Self, Double) -> Self
+pub fn SignaltransformdwtLayer::set(Self, Int32, Double) -> Self
+pub fn SignaltransformdwtLayer::sum(Self) -> Double
+pub fn SignaltransformdwtLayer::to_string(Self) -> String
+
+pub(all) struct SignaltransformdwtMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignaltransformdwtMatrix::add(Self, Self) -> Self
+pub fn SignaltransformdwtMatrix::det(Self) -> Double
+pub fn SignaltransformdwtMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignaltransformdwtMatrix::multiply(Self, Self) -> Self
+pub fn SignaltransformdwtMatrix::norm(Self) -> Double
+pub fn SignaltransformdwtMatrix::scale(Self, Double) -> Self
+pub fn SignaltransformdwtMatrix::to_string(Self) -> String
+pub fn SignaltransformdwtMatrix::trace(Self) -> Double
+pub fn SignaltransformdwtMatrix::transpose(Self) -> Self
+
+pub(all) struct SignaltransformdwtModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformdwtModel::add(Self, Self) -> Self
+pub fn SignaltransformdwtModel::copy(Self) -> Self
+pub fn SignaltransformdwtModel::fill(Self, Double) -> Self
+pub fn SignaltransformdwtModel::get(Self, Int32) -> Double
+pub fn SignaltransformdwtModel::len(Self) -> Int32
+pub fn SignaltransformdwtModel::max(Self) -> Double
+pub fn SignaltransformdwtModel::mean(Self) -> Double
+pub fn SignaltransformdwtModel::min(Self) -> Double
+pub fn SignaltransformdwtModel::scale(Self, Double) -> Self
+pub fn SignaltransformdwtModel::set(Self, Int32, Double) -> Self
+pub fn SignaltransformdwtModel::sum(Self) -> Double
+pub fn SignaltransformdwtModel::to_string(Self) -> String
+
+pub(all) struct SignaltransformdwtNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformdwtNode::add(Self, Self) -> Self
+pub fn SignaltransformdwtNode::copy(Self) -> Self
+pub fn SignaltransformdwtNode::fill(Self, Double) -> Self
+pub fn SignaltransformdwtNode::get(Self, Int32) -> Double
+pub fn SignaltransformdwtNode::len(Self) -> Int32
+pub fn SignaltransformdwtNode::max(Self) -> Double
+pub fn SignaltransformdwtNode::mean(Self) -> Double
+pub fn SignaltransformdwtNode::min(Self) -> Double
+pub fn SignaltransformdwtNode::scale(Self, Double) -> Self
+pub fn SignaltransformdwtNode::set(Self, Int32, Double) -> Self
+pub fn SignaltransformdwtNode::sum(Self) -> Double
+pub fn SignaltransformdwtNode::to_string(Self) -> String
+
+pub(all) struct SignaltransformdwtPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformdwtPath::add(Self, Self) -> Self
+pub fn SignaltransformdwtPath::copy(Self) -> Self
+pub fn SignaltransformdwtPath::fill(Self, Double) -> Self
+pub fn SignaltransformdwtPath::get(Self, Int32) -> Double
+pub fn SignaltransformdwtPath::len(Self) -> Int32
+pub fn SignaltransformdwtPath::max(Self) -> Double
+pub fn SignaltransformdwtPath::mean(Self) -> Double
+pub fn SignaltransformdwtPath::min(Self) -> Double
+pub fn SignaltransformdwtPath::scale(Self, Double) -> Self
+pub fn SignaltransformdwtPath::set(Self, Int32, Double) -> Self
+pub fn SignaltransformdwtPath::sum(Self) -> Double
+pub fn SignaltransformdwtPath::to_string(Self) -> String
+
+pub(all) struct SignaltransformdwtPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignaltransformdwtPoint::add(Self, Self) -> Self
+pub fn SignaltransformdwtPoint::cross(Self, Self) -> Self
+pub fn SignaltransformdwtPoint::dist(Self, Self) -> Double
+pub fn SignaltransformdwtPoint::dot(Self, Self) -> Double
+pub fn SignaltransformdwtPoint::label(Self) -> Int32
+pub fn SignaltransformdwtPoint::lerp(Self, Self, Double) -> Self
+pub fn SignaltransformdwtPoint::mid(Self, Self) -> Self
+pub fn SignaltransformdwtPoint::negate(Self) -> Self
+pub fn SignaltransformdwtPoint::norm(Self) -> Double
+pub fn SignaltransformdwtPoint::normalize(Self) -> Self
+pub fn SignaltransformdwtPoint::scale(Self, Double) -> Self
+pub fn SignaltransformdwtPoint::sub(Self, Self) -> Self
+pub fn SignaltransformdwtPoint::to_string(Self) -> String
+pub fn SignaltransformdwtPoint::x(Self) -> Double
+pub fn SignaltransformdwtPoint::y(Self) -> Double
+pub fn SignaltransformdwtPoint::z(Self) -> Double
+
+pub(all) struct SignaltransformdwtRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformdwtRange::add(Self, Self) -> Self
+pub fn SignaltransformdwtRange::copy(Self) -> Self
+pub fn SignaltransformdwtRange::fill(Self, Double) -> Self
+pub fn SignaltransformdwtRange::get(Self, Int32) -> Double
+pub fn SignaltransformdwtRange::len(Self) -> Int32
+pub fn SignaltransformdwtRange::max(Self) -> Double
+pub fn SignaltransformdwtRange::mean(Self) -> Double
+pub fn SignaltransformdwtRange::min(Self) -> Double
+pub fn SignaltransformdwtRange::scale(Self, Double) -> Self
+pub fn SignaltransformdwtRange::set(Self, Int32, Double) -> Self
+pub fn SignaltransformdwtRange::sum(Self) -> Double
+pub fn SignaltransformdwtRange::to_string(Self) -> String
+
+pub(all) struct SignaltransformdwtSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignaltransformdwtSeries::add(Self, Self) -> Self
+pub fn SignaltransformdwtSeries::cumsum(Self) -> Self
+pub fn SignaltransformdwtSeries::len(Self) -> Int32
+pub fn SignaltransformdwtSeries::max(Self) -> Double
+pub fn SignaltransformdwtSeries::mean(Self) -> Double
+pub fn SignaltransformdwtSeries::median(Self) -> Double
+pub fn SignaltransformdwtSeries::min(Self) -> Double
+pub fn SignaltransformdwtSeries::normalize(Self) -> Self
+pub fn SignaltransformdwtSeries::range(Self) -> Double
+pub fn SignaltransformdwtSeries::scale(Self, Double) -> Self
+pub fn SignaltransformdwtSeries::std(Self) -> Double
+pub fn SignaltransformdwtSeries::sub(Self, Self) -> Self
+pub fn SignaltransformdwtSeries::sum(Self) -> Double
+pub fn SignaltransformdwtSeries::to_string(Self) -> String
+pub fn SignaltransformdwtSeries::variance(Self) -> Double
+
+pub(all) struct SignaltransformdwtSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformdwtSlice::add(Self, Self) -> Self
+pub fn SignaltransformdwtSlice::copy(Self) -> Self
+pub fn SignaltransformdwtSlice::fill(Self, Double) -> Self
+pub fn SignaltransformdwtSlice::get(Self, Int32) -> Double
+pub fn SignaltransformdwtSlice::len(Self) -> Int32
+pub fn SignaltransformdwtSlice::max(Self) -> Double
+pub fn SignaltransformdwtSlice::mean(Self) -> Double
+pub fn SignaltransformdwtSlice::min(Self) -> Double
+pub fn SignaltransformdwtSlice::scale(Self, Double) -> Self
+pub fn SignaltransformdwtSlice::set(Self, Int32, Double) -> Self
+pub fn SignaltransformdwtSlice::sum(Self) -> Double
+pub fn SignaltransformdwtSlice::to_string(Self) -> String
+
+pub(all) struct SignaltransformdwtTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformdwtTable::add(Self, Self) -> Self
+pub fn SignaltransformdwtTable::copy(Self) -> Self
+pub fn SignaltransformdwtTable::fill(Self, Double) -> Self
+pub fn SignaltransformdwtTable::get(Self, Int32) -> Double
+pub fn SignaltransformdwtTable::len(Self) -> Int32
+pub fn SignaltransformdwtTable::max(Self) -> Double
+pub fn SignaltransformdwtTable::mean(Self) -> Double
+pub fn SignaltransformdwtTable::min(Self) -> Double
+pub fn SignaltransformdwtTable::scale(Self, Double) -> Self
+pub fn SignaltransformdwtTable::set(Self, Int32, Double) -> Self
+pub fn SignaltransformdwtTable::sum(Self) -> Double
+pub fn SignaltransformdwtTable::to_string(Self) -> String
+
+pub(all) struct SignaltransformdwtVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignaltransformdwtVector::add(Self, Self) -> Self
+pub fn SignaltransformdwtVector::dist(Self, Self) -> Double
+pub fn SignaltransformdwtVector::dot(Self, Self) -> Double
+pub fn SignaltransformdwtVector::norm(Self) -> Double
+pub fn SignaltransformdwtVector::normalize(Self) -> Self
+pub fn SignaltransformdwtVector::scale(Self, Double) -> Self
+pub fn SignaltransformdwtVector::sub(Self, Self) -> Self
+pub fn SignaltransformdwtVector::to_string(Self) -> String
+
+pub(all) struct SignaltransformdwtView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformdwtView::add(Self, Self) -> Self
+pub fn SignaltransformdwtView::copy(Self) -> Self
+pub fn SignaltransformdwtView::fill(Self, Double) -> Self
+pub fn SignaltransformdwtView::get(Self, Int32) -> Double
+pub fn SignaltransformdwtView::len(Self) -> Int32
+pub fn SignaltransformdwtView::max(Self) -> Double
+pub fn SignaltransformdwtView::mean(Self) -> Double
+pub fn SignaltransformdwtView::min(Self) -> Double
+pub fn SignaltransformdwtView::scale(Self, Double) -> Self
+pub fn SignaltransformdwtView::set(Self, Int32, Double) -> Self
+pub fn SignaltransformdwtView::sum(Self) -> Double
+pub fn SignaltransformdwtView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

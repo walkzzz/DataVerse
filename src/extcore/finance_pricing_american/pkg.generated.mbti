@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/finance_pricing_american"
+
+// Values
+pub fn finance_pricing_american_buffer_make(Int32) -> FinancepricingamericanBuffer
+
+pub fn finance_pricing_american_cluster_make(Int32) -> FinancepricingamericanCluster
+
+pub fn finance_pricing_american_cursor_make(Int32) -> FinancepricingamericanCursor
+
+pub fn finance_pricing_american_edge_make(Int32) -> FinancepricingamericanEdge
+
+pub fn finance_pricing_american_frame_make(Int32) -> FinancepricingamericanFrame
+
+pub fn finance_pricing_american_graphn_make(Int32) -> FinancepricingamericanGraphN
+
+pub fn finance_pricing_american_layer_make(Int32) -> FinancepricingamericanLayer
+
+pub fn finance_pricing_american_make_matrix(Int32, Int32, Double) -> FinancepricingamericanMatrix
+
+pub fn finance_pricing_american_make_point(Double, Double) -> FinancepricingamericanPoint
+
+pub fn finance_pricing_american_make_point3(Double, Double, Double) -> FinancepricingamericanPoint
+
+pub fn finance_pricing_american_make_series(Array[Double], String) -> FinancepricingamericanSeries
+
+pub fn finance_pricing_american_make_vector(Array[Double]) -> FinancepricingamericanVector
+
+pub fn finance_pricing_american_matrix_identity(Int32) -> FinancepricingamericanMatrix
+
+pub fn finance_pricing_american_model_make(Int32) -> FinancepricingamericanModel
+
+pub fn finance_pricing_american_node_make(Int32) -> FinancepricingamericanNode
+
+pub fn finance_pricing_american_path_make(Int32) -> FinancepricingamericanPath
+
+pub fn finance_pricing_american_range_make(Int32) -> FinancepricingamericanRange
+
+pub fn finance_pricing_american_slice_make(Int32) -> FinancepricingamericanSlice
+
+pub fn finance_pricing_american_table_make(Int32) -> FinancepricingamericanTable
+
+pub fn finance_pricing_american_vector_zero(Int32) -> FinancepricingamericanVector
+
+pub fn finance_pricing_american_view_make(Int32) -> FinancepricingamericanView
+
+// Errors
+
+// Types and methods
+pub(all) struct FinancepricingamericanBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingamericanBuffer::add(Self, Self) -> Self
+pub fn FinancepricingamericanBuffer::copy(Self) -> Self
+pub fn FinancepricingamericanBuffer::fill(Self, Double) -> Self
+pub fn FinancepricingamericanBuffer::get(Self, Int32) -> Double
+pub fn FinancepricingamericanBuffer::len(Self) -> Int32
+pub fn FinancepricingamericanBuffer::max(Self) -> Double
+pub fn FinancepricingamericanBuffer::mean(Self) -> Double
+pub fn FinancepricingamericanBuffer::min(Self) -> Double
+pub fn FinancepricingamericanBuffer::scale(Self, Double) -> Self
+pub fn FinancepricingamericanBuffer::set(Self, Int32, Double) -> Self
+pub fn FinancepricingamericanBuffer::sum(Self) -> Double
+pub fn FinancepricingamericanBuffer::to_string(Self) -> String
+
+pub(all) struct FinancepricingamericanCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingamericanCluster::add(Self, Self) -> Self
+pub fn FinancepricingamericanCluster::copy(Self) -> Self
+pub fn FinancepricingamericanCluster::fill(Self, Double) -> Self
+pub fn FinancepricingamericanCluster::get(Self, Int32) -> Double
+pub fn FinancepricingamericanCluster::len(Self) -> Int32
+pub fn FinancepricingamericanCluster::max(Self) -> Double
+pub fn FinancepricingamericanCluster::mean(Self) -> Double
+pub fn FinancepricingamericanCluster::min(Self) -> Double
+pub fn FinancepricingamericanCluster::scale(Self, Double) -> Self
+pub fn FinancepricingamericanCluster::set(Self, Int32, Double) -> Self
+pub fn FinancepricingamericanCluster::sum(Self) -> Double
+pub fn FinancepricingamericanCluster::to_string(Self) -> String
+
+pub(all) struct FinancepricingamericanCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingamericanCursor::add(Self, Self) -> Self
+pub fn FinancepricingamericanCursor::copy(Self) -> Self
+pub fn FinancepricingamericanCursor::fill(Self, Double) -> Self
+pub fn FinancepricingamericanCursor::get(Self, Int32) -> Double
+pub fn FinancepricingamericanCursor::len(Self) -> Int32
+pub fn FinancepricingamericanCursor::max(Self) -> Double
+pub fn FinancepricingamericanCursor::mean(Self) -> Double
+pub fn FinancepricingamericanCursor::min(Self) -> Double
+pub fn FinancepricingamericanCursor::scale(Self, Double) -> Self
+pub fn FinancepricingamericanCursor::set(Self, Int32, Double) -> Self
+pub fn FinancepricingamericanCursor::sum(Self) -> Double
+pub fn FinancepricingamericanCursor::to_string(Self) -> String
+
+pub(all) struct FinancepricingamericanEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingamericanEdge::add(Self, Self) -> Self
+pub fn FinancepricingamericanEdge::copy(Self) -> Self
+pub fn FinancepricingamericanEdge::fill(Self, Double) -> Self
+pub fn FinancepricingamericanEdge::get(Self, Int32) -> Double
+pub fn FinancepricingamericanEdge::len(Self) -> Int32
+pub fn FinancepricingamericanEdge::max(Self) -> Double
+pub fn FinancepricingamericanEdge::mean(Self) -> Double
+pub fn FinancepricingamericanEdge::min(Self) -> Double
+pub fn FinancepricingamericanEdge::scale(Self, Double) -> Self
+pub fn FinancepricingamericanEdge::set(Self, Int32, Double) -> Self
+pub fn FinancepricingamericanEdge::sum(Self) -> Double
+pub fn FinancepricingamericanEdge::to_string(Self) -> String
+
+pub(all) struct FinancepricingamericanFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingamericanFrame::add(Self, Self) -> Self
+pub fn FinancepricingamericanFrame::copy(Self) -> Self
+pub fn FinancepricingamericanFrame::fill(Self, Double) -> Self
+pub fn FinancepricingamericanFrame::get(Self, Int32) -> Double
+pub fn FinancepricingamericanFrame::len(Self) -> Int32
+pub fn FinancepricingamericanFrame::max(Self) -> Double
+pub fn FinancepricingamericanFrame::mean(Self) -> Double
+pub fn FinancepricingamericanFrame::min(Self) -> Double
+pub fn FinancepricingamericanFrame::scale(Self, Double) -> Self
+pub fn FinancepricingamericanFrame::set(Self, Int32, Double) -> Self
+pub fn FinancepricingamericanFrame::sum(Self) -> Double
+pub fn FinancepricingamericanFrame::to_string(Self) -> String
+
+pub(all) struct FinancepricingamericanGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingamericanGraphN::add(Self, Self) -> Self
+pub fn FinancepricingamericanGraphN::copy(Self) -> Self
+pub fn FinancepricingamericanGraphN::fill(Self, Double) -> Self
+pub fn FinancepricingamericanGraphN::get(Self, Int32) -> Double
+pub fn FinancepricingamericanGraphN::len(Self) -> Int32
+pub fn FinancepricingamericanGraphN::max(Self) -> Double
+pub fn FinancepricingamericanGraphN::mean(Self) -> Double
+pub fn FinancepricingamericanGraphN::min(Self) -> Double
+pub fn FinancepricingamericanGraphN::scale(Self, Double) -> Self
+pub fn FinancepricingamericanGraphN::set(Self, Int32, Double) -> Self
+pub fn FinancepricingamericanGraphN::sum(Self) -> Double
+pub fn FinancepricingamericanGraphN::to_string(Self) -> String
+
+pub(all) struct FinancepricingamericanLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingamericanLayer::add(Self, Self) -> Self
+pub fn FinancepricingamericanLayer::copy(Self) -> Self
+pub fn FinancepricingamericanLayer::fill(Self, Double) -> Self
+pub fn FinancepricingamericanLayer::get(Self, Int32) -> Double
+pub fn FinancepricingamericanLayer::len(Self) -> Int32
+pub fn FinancepricingamericanLayer::max(Self) -> Double
+pub fn FinancepricingamericanLayer::mean(Self) -> Double
+pub fn FinancepricingamericanLayer::min(Self) -> Double
+pub fn FinancepricingamericanLayer::scale(Self, Double) -> Self
+pub fn FinancepricingamericanLayer::set(Self, Int32, Double) -> Self
+pub fn FinancepricingamericanLayer::sum(Self) -> Double
+pub fn FinancepricingamericanLayer::to_string(Self) -> String
+
+pub(all) struct FinancepricingamericanMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn FinancepricingamericanMatrix::add(Self, Self) -> Self
+pub fn FinancepricingamericanMatrix::det(Self) -> Double
+pub fn FinancepricingamericanMatrix::get(Self, Int32, Int32) -> Double
+pub fn FinancepricingamericanMatrix::multiply(Self, Self) -> Self
+pub fn FinancepricingamericanMatrix::norm(Self) -> Double
+pub fn FinancepricingamericanMatrix::scale(Self, Double) -> Self
+pub fn FinancepricingamericanMatrix::to_string(Self) -> String
+pub fn FinancepricingamericanMatrix::trace(Self) -> Double
+pub fn FinancepricingamericanMatrix::transpose(Self) -> Self
+
+pub(all) struct FinancepricingamericanModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingamericanModel::add(Self, Self) -> Self
+pub fn FinancepricingamericanModel::copy(Self) -> Self
+pub fn FinancepricingamericanModel::fill(Self, Double) -> Self
+pub fn FinancepricingamericanModel::get(Self, Int32) -> Double
+pub fn FinancepricingamericanModel::len(Self) -> Int32
+pub fn FinancepricingamericanModel::max(Self) -> Double
+pub fn FinancepricingamericanModel::mean(Self) -> Double
+pub fn FinancepricingamericanModel::min(Self) -> Double
+pub fn FinancepricingamericanModel::scale(Self, Double) -> Self
+pub fn FinancepricingamericanModel::set(Self, Int32, Double) -> Self
+pub fn FinancepricingamericanModel::sum(Self) -> Double
+pub fn FinancepricingamericanModel::to_string(Self) -> String
+
+pub(all) struct FinancepricingamericanNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingamericanNode::add(Self, Self) -> Self
+pub fn FinancepricingamericanNode::copy(Self) -> Self
+pub fn FinancepricingamericanNode::fill(Self, Double) -> Self
+pub fn FinancepricingamericanNode::get(Self, Int32) -> Double
+pub fn FinancepricingamericanNode::len(Self) -> Int32
+pub fn FinancepricingamericanNode::max(Self) -> Double
+pub fn FinancepricingamericanNode::mean(Self) -> Double
+pub fn FinancepricingamericanNode::min(Self) -> Double
+pub fn FinancepricingamericanNode::scale(Self, Double) -> Self
+pub fn FinancepricingamericanNode::set(Self, Int32, Double) -> Self
+pub fn FinancepricingamericanNode::sum(Self) -> Double
+pub fn FinancepricingamericanNode::to_string(Self) -> String
+
+pub(all) struct FinancepricingamericanPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingamericanPath::add(Self, Self) -> Self
+pub fn FinancepricingamericanPath::copy(Self) -> Self
+pub fn FinancepricingamericanPath::fill(Self, Double) -> Self
+pub fn FinancepricingamericanPath::get(Self, Int32) -> Double
+pub fn FinancepricingamericanPath::len(Self) -> Int32
+pub fn FinancepricingamericanPath::max(Self) -> Double
+pub fn FinancepricingamericanPath::mean(Self) -> Double
+pub fn FinancepricingamericanPath::min(Self) -> Double
+pub fn FinancepricingamericanPath::scale(Self, Double) -> Self
+pub fn FinancepricingamericanPath::set(Self, Int32, Double) -> Self
+pub fn FinancepricingamericanPath::sum(Self) -> Double
+pub fn FinancepricingamericanPath::to_string(Self) -> String
+
+pub(all) struct FinancepricingamericanPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn FinancepricingamericanPoint::add(Self, Self) -> Self
+pub fn FinancepricingamericanPoint::cross(Self, Self) -> Self
+pub fn FinancepricingamericanPoint::dist(Self, Self) -> Double
+pub fn FinancepricingamericanPoint::dot(Self, Self) -> Double
+pub fn FinancepricingamericanPoint::label(Self) -> Int32
+pub fn FinancepricingamericanPoint::lerp(Self, Self, Double) -> Self
+pub fn FinancepricingamericanPoint::mid(Self, Self) -> Self
+pub fn FinancepricingamericanPoint::negate(Self) -> Self
+pub fn FinancepricingamericanPoint::norm(Self) -> Double
+pub fn FinancepricingamericanPoint::normalize(Self) -> Self
+pub fn FinancepricingamericanPoint::scale(Self, Double) -> Self
+pub fn FinancepricingamericanPoint::sub(Self, Self) -> Self
+pub fn FinancepricingamericanPoint::to_string(Self) -> String
+pub fn FinancepricingamericanPoint::x(Self) -> Double
+pub fn FinancepricingamericanPoint::y(Self) -> Double
+pub fn FinancepricingamericanPoint::z(Self) -> Double
+
+pub(all) struct FinancepricingamericanRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingamericanRange::add(Self, Self) -> Self
+pub fn FinancepricingamericanRange::copy(Self) -> Self
+pub fn FinancepricingamericanRange::fill(Self, Double) -> Self
+pub fn FinancepricingamericanRange::get(Self, Int32) -> Double
+pub fn FinancepricingamericanRange::len(Self) -> Int32
+pub fn FinancepricingamericanRange::max(Self) -> Double
+pub fn FinancepricingamericanRange::mean(Self) -> Double
+pub fn FinancepricingamericanRange::min(Self) -> Double
+pub fn FinancepricingamericanRange::scale(Self, Double) -> Self
+pub fn FinancepricingamericanRange::set(Self, Int32, Double) -> Self
+pub fn FinancepricingamericanRange::sum(Self) -> Double
+pub fn FinancepricingamericanRange::to_string(Self) -> String
+
+pub(all) struct FinancepricingamericanSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn FinancepricingamericanSeries::add(Self, Self) -> Self
+pub fn FinancepricingamericanSeries::cumsum(Self) -> Self
+pub fn FinancepricingamericanSeries::len(Self) -> Int32
+pub fn FinancepricingamericanSeries::max(Self) -> Double
+pub fn FinancepricingamericanSeries::mean(Self) -> Double
+pub fn FinancepricingamericanSeries::median(Self) -> Double
+pub fn FinancepricingamericanSeries::min(Self) -> Double
+pub fn FinancepricingamericanSeries::normalize(Self) -> Self
+pub fn FinancepricingamericanSeries::range(Self) -> Double
+pub fn FinancepricingamericanSeries::scale(Self, Double) -> Self
+pub fn FinancepricingamericanSeries::std(Self) -> Double
+pub fn FinancepricingamericanSeries::sub(Self, Self) -> Self
+pub fn FinancepricingamericanSeries::sum(Self) -> Double
+pub fn FinancepricingamericanSeries::to_string(Self) -> String
+pub fn FinancepricingamericanSeries::variance(Self) -> Double
+
+pub(all) struct FinancepricingamericanSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingamericanSlice::add(Self, Self) -> Self
+pub fn FinancepricingamericanSlice::copy(Self) -> Self
+pub fn FinancepricingamericanSlice::fill(Self, Double) -> Self
+pub fn FinancepricingamericanSlice::get(Self, Int32) -> Double
+pub fn FinancepricingamericanSlice::len(Self) -> Int32
+pub fn FinancepricingamericanSlice::max(Self) -> Double
+pub fn FinancepricingamericanSlice::mean(Self) -> Double
+pub fn FinancepricingamericanSlice::min(Self) -> Double
+pub fn FinancepricingamericanSlice::scale(Self, Double) -> Self
+pub fn FinancepricingamericanSlice::set(Self, Int32, Double) -> Self
+pub fn FinancepricingamericanSlice::sum(Self) -> Double
+pub fn FinancepricingamericanSlice::to_string(Self) -> String
+
+pub(all) struct FinancepricingamericanTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingamericanTable::add(Self, Self) -> Self
+pub fn FinancepricingamericanTable::copy(Self) -> Self
+pub fn FinancepricingamericanTable::fill(Self, Double) -> Self
+pub fn FinancepricingamericanTable::get(Self, Int32) -> Double
+pub fn FinancepricingamericanTable::len(Self) -> Int32
+pub fn FinancepricingamericanTable::max(Self) -> Double
+pub fn FinancepricingamericanTable::mean(Self) -> Double
+pub fn FinancepricingamericanTable::min(Self) -> Double
+pub fn FinancepricingamericanTable::scale(Self, Double) -> Self
+pub fn FinancepricingamericanTable::set(Self, Int32, Double) -> Self
+pub fn FinancepricingamericanTable::sum(Self) -> Double
+pub fn FinancepricingamericanTable::to_string(Self) -> String
+
+pub(all) struct FinancepricingamericanVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn FinancepricingamericanVector::add(Self, Self) -> Self
+pub fn FinancepricingamericanVector::dist(Self, Self) -> Double
+pub fn FinancepricingamericanVector::dot(Self, Self) -> Double
+pub fn FinancepricingamericanVector::norm(Self) -> Double
+pub fn FinancepricingamericanVector::normalize(Self) -> Self
+pub fn FinancepricingamericanVector::scale(Self, Double) -> Self
+pub fn FinancepricingamericanVector::sub(Self, Self) -> Self
+pub fn FinancepricingamericanVector::to_string(Self) -> String
+
+pub(all) struct FinancepricingamericanView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingamericanView::add(Self, Self) -> Self
+pub fn FinancepricingamericanView::copy(Self) -> Self
+pub fn FinancepricingamericanView::fill(Self, Double) -> Self
+pub fn FinancepricingamericanView::get(Self, Int32) -> Double
+pub fn FinancepricingamericanView::len(Self) -> Int32
+pub fn FinancepricingamericanView::max(Self) -> Double
+pub fn FinancepricingamericanView::mean(Self) -> Double
+pub fn FinancepricingamericanView::min(Self) -> Double
+pub fn FinancepricingamericanView::scale(Self, Double) -> Self
+pub fn FinancepricingamericanView::set(Self, Int32, Double) -> Self
+pub fn FinancepricingamericanView::sum(Self) -> Double
+pub fn FinancepricingamericanView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

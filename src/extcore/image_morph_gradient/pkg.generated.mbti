@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_morph_gradient"
+
+// Values
+pub fn image_morph_gradient_buffer_make(Int32) -> ImagemorphgradientBuffer
+
+pub fn image_morph_gradient_cluster_make(Int32) -> ImagemorphgradientCluster
+
+pub fn image_morph_gradient_cursor_make(Int32) -> ImagemorphgradientCursor
+
+pub fn image_morph_gradient_edge_make(Int32) -> ImagemorphgradientEdge
+
+pub fn image_morph_gradient_frame_make(Int32) -> ImagemorphgradientFrame
+
+pub fn image_morph_gradient_graphn_make(Int32) -> ImagemorphgradientGraphN
+
+pub fn image_morph_gradient_layer_make(Int32) -> ImagemorphgradientLayer
+
+pub fn image_morph_gradient_make_matrix(Int32, Int32, Double) -> ImagemorphgradientMatrix
+
+pub fn image_morph_gradient_make_point(Double, Double) -> ImagemorphgradientPoint
+
+pub fn image_morph_gradient_make_point3(Double, Double, Double) -> ImagemorphgradientPoint
+
+pub fn image_morph_gradient_make_series(Array[Double], String) -> ImagemorphgradientSeries
+
+pub fn image_morph_gradient_make_vector(Array[Double]) -> ImagemorphgradientVector
+
+pub fn image_morph_gradient_matrix_identity(Int32) -> ImagemorphgradientMatrix
+
+pub fn image_morph_gradient_model_make(Int32) -> ImagemorphgradientModel
+
+pub fn image_morph_gradient_node_make(Int32) -> ImagemorphgradientNode
+
+pub fn image_morph_gradient_path_make(Int32) -> ImagemorphgradientPath
+
+pub fn image_morph_gradient_range_make(Int32) -> ImagemorphgradientRange
+
+pub fn image_morph_gradient_slice_make(Int32) -> ImagemorphgradientSlice
+
+pub fn image_morph_gradient_table_make(Int32) -> ImagemorphgradientTable
+
+pub fn image_morph_gradient_vector_zero(Int32) -> ImagemorphgradientVector
+
+pub fn image_morph_gradient_view_make(Int32) -> ImagemorphgradientView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagemorphgradientBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphgradientBuffer::add(Self, Self) -> Self
+pub fn ImagemorphgradientBuffer::copy(Self) -> Self
+pub fn ImagemorphgradientBuffer::fill(Self, Double) -> Self
+pub fn ImagemorphgradientBuffer::get(Self, Int32) -> Double
+pub fn ImagemorphgradientBuffer::len(Self) -> Int32
+pub fn ImagemorphgradientBuffer::max(Self) -> Double
+pub fn ImagemorphgradientBuffer::mean(Self) -> Double
+pub fn ImagemorphgradientBuffer::min(Self) -> Double
+pub fn ImagemorphgradientBuffer::scale(Self, Double) -> Self
+pub fn ImagemorphgradientBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagemorphgradientBuffer::sum(Self) -> Double
+pub fn ImagemorphgradientBuffer::to_string(Self) -> String
+
+pub(all) struct ImagemorphgradientCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphgradientCluster::add(Self, Self) -> Self
+pub fn ImagemorphgradientCluster::copy(Self) -> Self
+pub fn ImagemorphgradientCluster::fill(Self, Double) -> Self
+pub fn ImagemorphgradientCluster::get(Self, Int32) -> Double
+pub fn ImagemorphgradientCluster::len(Self) -> Int32
+pub fn ImagemorphgradientCluster::max(Self) -> Double
+pub fn ImagemorphgradientCluster::mean(Self) -> Double
+pub fn ImagemorphgradientCluster::min(Self) -> Double
+pub fn ImagemorphgradientCluster::scale(Self, Double) -> Self
+pub fn ImagemorphgradientCluster::set(Self, Int32, Double) -> Self
+pub fn ImagemorphgradientCluster::sum(Self) -> Double
+pub fn ImagemorphgradientCluster::to_string(Self) -> String
+
+pub(all) struct ImagemorphgradientCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphgradientCursor::add(Self, Self) -> Self
+pub fn ImagemorphgradientCursor::copy(Self) -> Self
+pub fn ImagemorphgradientCursor::fill(Self, Double) -> Self
+pub fn ImagemorphgradientCursor::get(Self, Int32) -> Double
+pub fn ImagemorphgradientCursor::len(Self) -> Int32
+pub fn ImagemorphgradientCursor::max(Self) -> Double
+pub fn ImagemorphgradientCursor::mean(Self) -> Double
+pub fn ImagemorphgradientCursor::min(Self) -> Double
+pub fn ImagemorphgradientCursor::scale(Self, Double) -> Self
+pub fn ImagemorphgradientCursor::set(Self, Int32, Double) -> Self
+pub fn ImagemorphgradientCursor::sum(Self) -> Double
+pub fn ImagemorphgradientCursor::to_string(Self) -> String
+
+pub(all) struct ImagemorphgradientEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphgradientEdge::add(Self, Self) -> Self
+pub fn ImagemorphgradientEdge::copy(Self) -> Self
+pub fn ImagemorphgradientEdge::fill(Self, Double) -> Self
+pub fn ImagemorphgradientEdge::get(Self, Int32) -> Double
+pub fn ImagemorphgradientEdge::len(Self) -> Int32
+pub fn ImagemorphgradientEdge::max(Self) -> Double
+pub fn ImagemorphgradientEdge::mean(Self) -> Double
+pub fn ImagemorphgradientEdge::min(Self) -> Double
+pub fn ImagemorphgradientEdge::scale(Self, Double) -> Self
+pub fn ImagemorphgradientEdge::set(Self, Int32, Double) -> Self
+pub fn ImagemorphgradientEdge::sum(Self) -> Double
+pub fn ImagemorphgradientEdge::to_string(Self) -> String
+
+pub(all) struct ImagemorphgradientFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphgradientFrame::add(Self, Self) -> Self
+pub fn ImagemorphgradientFrame::copy(Self) -> Self
+pub fn ImagemorphgradientFrame::fill(Self, Double) -> Self
+pub fn ImagemorphgradientFrame::get(Self, Int32) -> Double
+pub fn ImagemorphgradientFrame::len(Self) -> Int32
+pub fn ImagemorphgradientFrame::max(Self) -> Double
+pub fn ImagemorphgradientFrame::mean(Self) -> Double
+pub fn ImagemorphgradientFrame::min(Self) -> Double
+pub fn ImagemorphgradientFrame::scale(Self, Double) -> Self
+pub fn ImagemorphgradientFrame::set(Self, Int32, Double) -> Self
+pub fn ImagemorphgradientFrame::sum(Self) -> Double
+pub fn ImagemorphgradientFrame::to_string(Self) -> String
+
+pub(all) struct ImagemorphgradientGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphgradientGraphN::add(Self, Self) -> Self
+pub fn ImagemorphgradientGraphN::copy(Self) -> Self
+pub fn ImagemorphgradientGraphN::fill(Self, Double) -> Self
+pub fn ImagemorphgradientGraphN::get(Self, Int32) -> Double
+pub fn ImagemorphgradientGraphN::len(Self) -> Int32
+pub fn ImagemorphgradientGraphN::max(Self) -> Double
+pub fn ImagemorphgradientGraphN::mean(Self) -> Double
+pub fn ImagemorphgradientGraphN::min(Self) -> Double
+pub fn ImagemorphgradientGraphN::scale(Self, Double) -> Self
+pub fn ImagemorphgradientGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagemorphgradientGraphN::sum(Self) -> Double
+pub fn ImagemorphgradientGraphN::to_string(Self) -> String
+
+pub(all) struct ImagemorphgradientLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphgradientLayer::add(Self, Self) -> Self
+pub fn ImagemorphgradientLayer::copy(Self) -> Self
+pub fn ImagemorphgradientLayer::fill(Self, Double) -> Self
+pub fn ImagemorphgradientLayer::get(Self, Int32) -> Double
+pub fn ImagemorphgradientLayer::len(Self) -> Int32
+pub fn ImagemorphgradientLayer::max(Self) -> Double
+pub fn ImagemorphgradientLayer::mean(Self) -> Double
+pub fn ImagemorphgradientLayer::min(Self) -> Double
+pub fn ImagemorphgradientLayer::scale(Self, Double) -> Self
+pub fn ImagemorphgradientLayer::set(Self, Int32, Double) -> Self
+pub fn ImagemorphgradientLayer::sum(Self) -> Double
+pub fn ImagemorphgradientLayer::to_string(Self) -> String
+
+pub(all) struct ImagemorphgradientMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagemorphgradientMatrix::add(Self, Self) -> Self
+pub fn ImagemorphgradientMatrix::det(Self) -> Double
+pub fn ImagemorphgradientMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagemorphgradientMatrix::multiply(Self, Self) -> Self
+pub fn ImagemorphgradientMatrix::norm(Self) -> Double
+pub fn ImagemorphgradientMatrix::scale(Self, Double) -> Self
+pub fn ImagemorphgradientMatrix::to_string(Self) -> String
+pub fn ImagemorphgradientMatrix::trace(Self) -> Double
+pub fn ImagemorphgradientMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagemorphgradientModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphgradientModel::add(Self, Self) -> Self
+pub fn ImagemorphgradientModel::copy(Self) -> Self
+pub fn ImagemorphgradientModel::fill(Self, Double) -> Self
+pub fn ImagemorphgradientModel::get(Self, Int32) -> Double
+pub fn ImagemorphgradientModel::len(Self) -> Int32
+pub fn ImagemorphgradientModel::max(Self) -> Double
+pub fn ImagemorphgradientModel::mean(Self) -> Double
+pub fn ImagemorphgradientModel::min(Self) -> Double
+pub fn ImagemorphgradientModel::scale(Self, Double) -> Self
+pub fn ImagemorphgradientModel::set(Self, Int32, Double) -> Self
+pub fn ImagemorphgradientModel::sum(Self) -> Double
+pub fn ImagemorphgradientModel::to_string(Self) -> String
+
+pub(all) struct ImagemorphgradientNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphgradientNode::add(Self, Self) -> Self
+pub fn ImagemorphgradientNode::copy(Self) -> Self
+pub fn ImagemorphgradientNode::fill(Self, Double) -> Self
+pub fn ImagemorphgradientNode::get(Self, Int32) -> Double
+pub fn ImagemorphgradientNode::len(Self) -> Int32
+pub fn ImagemorphgradientNode::max(Self) -> Double
+pub fn ImagemorphgradientNode::mean(Self) -> Double
+pub fn ImagemorphgradientNode::min(Self) -> Double
+pub fn ImagemorphgradientNode::scale(Self, Double) -> Self
+pub fn ImagemorphgradientNode::set(Self, Int32, Double) -> Self
+pub fn ImagemorphgradientNode::sum(Self) -> Double
+pub fn ImagemorphgradientNode::to_string(Self) -> String
+
+pub(all) struct ImagemorphgradientPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphgradientPath::add(Self, Self) -> Self
+pub fn ImagemorphgradientPath::copy(Self) -> Self
+pub fn ImagemorphgradientPath::fill(Self, Double) -> Self
+pub fn ImagemorphgradientPath::get(Self, Int32) -> Double
+pub fn ImagemorphgradientPath::len(Self) -> Int32
+pub fn ImagemorphgradientPath::max(Self) -> Double
+pub fn ImagemorphgradientPath::mean(Self) -> Double
+pub fn ImagemorphgradientPath::min(Self) -> Double
+pub fn ImagemorphgradientPath::scale(Self, Double) -> Self
+pub fn ImagemorphgradientPath::set(Self, Int32, Double) -> Self
+pub fn ImagemorphgradientPath::sum(Self) -> Double
+pub fn ImagemorphgradientPath::to_string(Self) -> String
+
+pub(all) struct ImagemorphgradientPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagemorphgradientPoint::add(Self, Self) -> Self
+pub fn ImagemorphgradientPoint::cross(Self, Self) -> Self
+pub fn ImagemorphgradientPoint::dist(Self, Self) -> Double
+pub fn ImagemorphgradientPoint::dot(Self, Self) -> Double
+pub fn ImagemorphgradientPoint::label(Self) -> Int32
+pub fn ImagemorphgradientPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagemorphgradientPoint::mid(Self, Self) -> Self
+pub fn ImagemorphgradientPoint::negate(Self) -> Self
+pub fn ImagemorphgradientPoint::norm(Self) -> Double
+pub fn ImagemorphgradientPoint::normalize(Self) -> Self
+pub fn ImagemorphgradientPoint::scale(Self, Double) -> Self
+pub fn ImagemorphgradientPoint::sub(Self, Self) -> Self
+pub fn ImagemorphgradientPoint::to_string(Self) -> String
+pub fn ImagemorphgradientPoint::x(Self) -> Double
+pub fn ImagemorphgradientPoint::y(Self) -> Double
+pub fn ImagemorphgradientPoint::z(Self) -> Double
+
+pub(all) struct ImagemorphgradientRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphgradientRange::add(Self, Self) -> Self
+pub fn ImagemorphgradientRange::copy(Self) -> Self
+pub fn ImagemorphgradientRange::fill(Self, Double) -> Self
+pub fn ImagemorphgradientRange::get(Self, Int32) -> Double
+pub fn ImagemorphgradientRange::len(Self) -> Int32
+pub fn ImagemorphgradientRange::max(Self) -> Double
+pub fn ImagemorphgradientRange::mean(Self) -> Double
+pub fn ImagemorphgradientRange::min(Self) -> Double
+pub fn ImagemorphgradientRange::scale(Self, Double) -> Self
+pub fn ImagemorphgradientRange::set(Self, Int32, Double) -> Self
+pub fn ImagemorphgradientRange::sum(Self) -> Double
+pub fn ImagemorphgradientRange::to_string(Self) -> String
+
+pub(all) struct ImagemorphgradientSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagemorphgradientSeries::add(Self, Self) -> Self
+pub fn ImagemorphgradientSeries::cumsum(Self) -> Self
+pub fn ImagemorphgradientSeries::len(Self) -> Int32
+pub fn ImagemorphgradientSeries::max(Self) -> Double
+pub fn ImagemorphgradientSeries::mean(Self) -> Double
+pub fn ImagemorphgradientSeries::median(Self) -> Double
+pub fn ImagemorphgradientSeries::min(Self) -> Double
+pub fn ImagemorphgradientSeries::normalize(Self) -> Self
+pub fn ImagemorphgradientSeries::range(Self) -> Double
+pub fn ImagemorphgradientSeries::scale(Self, Double) -> Self
+pub fn ImagemorphgradientSeries::std(Self) -> Double
+pub fn ImagemorphgradientSeries::sub(Self, Self) -> Self
+pub fn ImagemorphgradientSeries::sum(Self) -> Double
+pub fn ImagemorphgradientSeries::to_string(Self) -> String
+pub fn ImagemorphgradientSeries::variance(Self) -> Double
+
+pub(all) struct ImagemorphgradientSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphgradientSlice::add(Self, Self) -> Self
+pub fn ImagemorphgradientSlice::copy(Self) -> Self
+pub fn ImagemorphgradientSlice::fill(Self, Double) -> Self
+pub fn ImagemorphgradientSlice::get(Self, Int32) -> Double
+pub fn ImagemorphgradientSlice::len(Self) -> Int32
+pub fn ImagemorphgradientSlice::max(Self) -> Double
+pub fn ImagemorphgradientSlice::mean(Self) -> Double
+pub fn ImagemorphgradientSlice::min(Self) -> Double
+pub fn ImagemorphgradientSlice::scale(Self, Double) -> Self
+pub fn ImagemorphgradientSlice::set(Self, Int32, Double) -> Self
+pub fn ImagemorphgradientSlice::sum(Self) -> Double
+pub fn ImagemorphgradientSlice::to_string(Self) -> String
+
+pub(all) struct ImagemorphgradientTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphgradientTable::add(Self, Self) -> Self
+pub fn ImagemorphgradientTable::copy(Self) -> Self
+pub fn ImagemorphgradientTable::fill(Self, Double) -> Self
+pub fn ImagemorphgradientTable::get(Self, Int32) -> Double
+pub fn ImagemorphgradientTable::len(Self) -> Int32
+pub fn ImagemorphgradientTable::max(Self) -> Double
+pub fn ImagemorphgradientTable::mean(Self) -> Double
+pub fn ImagemorphgradientTable::min(Self) -> Double
+pub fn ImagemorphgradientTable::scale(Self, Double) -> Self
+pub fn ImagemorphgradientTable::set(Self, Int32, Double) -> Self
+pub fn ImagemorphgradientTable::sum(Self) -> Double
+pub fn ImagemorphgradientTable::to_string(Self) -> String
+
+pub(all) struct ImagemorphgradientVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagemorphgradientVector::add(Self, Self) -> Self
+pub fn ImagemorphgradientVector::dist(Self, Self) -> Double
+pub fn ImagemorphgradientVector::dot(Self, Self) -> Double
+pub fn ImagemorphgradientVector::norm(Self) -> Double
+pub fn ImagemorphgradientVector::normalize(Self) -> Self
+pub fn ImagemorphgradientVector::scale(Self, Double) -> Self
+pub fn ImagemorphgradientVector::sub(Self, Self) -> Self
+pub fn ImagemorphgradientVector::to_string(Self) -> String
+
+pub(all) struct ImagemorphgradientView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphgradientView::add(Self, Self) -> Self
+pub fn ImagemorphgradientView::copy(Self) -> Self
+pub fn ImagemorphgradientView::fill(Self, Double) -> Self
+pub fn ImagemorphgradientView::get(Self, Int32) -> Double
+pub fn ImagemorphgradientView::len(Self) -> Int32
+pub fn ImagemorphgradientView::max(Self) -> Double
+pub fn ImagemorphgradientView::mean(Self) -> Double
+pub fn ImagemorphgradientView::min(Self) -> Double
+pub fn ImagemorphgradientView::scale(Self, Double) -> Self
+pub fn ImagemorphgradientView::set(Self, Int32, Double) -> Self
+pub fn ImagemorphgradientView::sum(Self) -> Double
+pub fn ImagemorphgradientView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

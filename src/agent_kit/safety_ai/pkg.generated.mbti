@@ -1,0 +1,254 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/safety_ai"
+
+// Values
+pub fn adversarial_score(AdversarialDetector, Array[Double], (Array[Double]) -> Double) -> Double
+
+pub fn alignment_check(Alignment, String, Array[Double]) -> Array[String]
+
+pub fn alignment_score(Alignment, Array[Double]) -> Double
+
+pub fn bias_score(BiasDetector, Array[Double], Array[Int32]) -> Double
+
+pub fn check_output_safety(OutputFilter, String) -> (Bool, Severity)
+
+pub fn check_quota(RateLimiterAI) -> Bool
+
+pub fn content_policy(ContentFilter) -> String
+
+pub fn demographic_parity(Fairness, Array[Double], Array[Int32]) -> Double
+
+pub fn detect_adversarial(AdversarialDetector, Array[Double], (Array[Double]) -> Double) -> (Bool, Double)
+
+pub fn detect_bias(BiasDetector, Array[Double], Array[Int32]) -> (Bool, Double)
+
+pub fn detect_injection(PromptInjectionDetector, String) -> (Bool, String)
+
+pub fn detect_pii(PIIDetector, String) -> Array[(PIIType, Int32, Int32)]
+
+pub fn detect_poisoning(DataPoisoning, Array[Array[Double]], Array[Double]) -> Array[Int32]
+
+pub fn detect_stealing(ModelStealing, Array[Array[Double]]) -> (Bool, String)
+
+pub fn detect_toxicity(ToxicityDetector, String) -> (Bool, Double)
+
+pub fn dp_budget(PrivacyPreserve, Int32) -> Double
+
+pub fn dp_mechanism(PrivacyPreserve, Double) -> Double
+
+pub fn equal_opportunity(Fairness, Array[Double], Array[Double], Array[Int32]) -> Double
+
+pub fn equalized_odds(Fairness, Array[Double], Array[Double], Array[Int32]) -> Double
+
+pub fn eval_robustness(SafetyEval, Array[Double], (Array[Double]) -> Double, Double) -> Double
+
+pub fn eval_safety(SafetyEval, Array[Double]) -> Double
+
+pub fn evaluate_defense(AttackSimulator, Array[Double], (Array[Double]) -> Double, (Array[Double]) -> Double) -> Double
+
+pub fn fairness_check(BiasDetector, Array[Double], Array[Int32]) -> Bool
+
+pub fn filter_content(ContentFilter, String) -> (Bool, String)
+
+pub fn filter_output(OutputFilter, String) -> String
+
+pub fn guardrail_check(Guardrail, String, Double) -> Array[String]
+
+pub fn guardrail_enforce(Guardrail, String, Double) -> (Bool, String)
+
+pub fn make_adversarial_detector(Double, Double, Int32) -> AdversarialDetector
+
+pub fn make_alignment(Array[String], Double) -> Alignment
+
+pub fn make_attack_simulator(Array[String], Double, Int32) -> AttackSimulator
+
+pub fn make_bias_detector(Array[String], Double) -> BiasDetector
+
+pub fn make_content_filter(Array[String], Array[String]) -> ContentFilter
+
+pub fn make_data_poisoning(Double, Int32) -> DataPoisoning
+
+pub fn make_fairness(Double, Int32) -> Fairness
+
+pub fn make_guardrail(Array[(String, Double)], String) -> Guardrail
+
+pub fn make_input_validator(Int32, String, Array[String]) -> InputValidator
+
+pub fn make_model_stealing(Int32, Double) -> ModelStealing
+
+pub fn make_output_filter(Array[String], String, Int32) -> OutputFilter
+
+pub fn make_pii_detector(Array[(PIIType, String)], String) -> PIIDetector
+
+pub fn make_privacy_preserve(Double, Double, Double, Int32) -> PrivacyPreserve
+
+pub fn make_prompt_injection(Array[String], Array[String]) -> PromptInjectionDetector
+
+pub fn make_rate_limiter_ai(Int32, Int32, Int32) -> RateLimiterAI
+
+pub fn make_safety_config(Bool, Bool, Bool, Bool, Bool, Int32, Int32) -> SafetyConfig
+
+pub fn make_safety_eval(Array[String], Array[Double]) -> SafetyEval
+
+pub fn make_safety_monitor(Double, Int32) -> SafetyMonitor
+
+pub fn make_toxicity_detector(Array[String], Double) -> ToxicityDetector
+
+pub fn mask_pii(PIIDetector, String) -> String
+
+pub fn monitor_alert(SafetyMonitor) -> (Bool, Double)
+
+pub fn monitor_check(SafetyMonitor, Double) -> SafetyMonitor
+
+pub fn poisoning_robustness(DataPoisoning, Array[Array[Double]], Array[Double], (Array[Double]) -> Double) -> Double
+
+pub fn protect_model(ModelStealing, Array[Array[Double]]) -> (ModelStealing, Bool)
+
+pub fn rate_limit_ai(RateLimiterAI) -> (Bool, RateLimiterAI)
+
+pub fn redact_pii(PIIDetector, String) -> String
+
+pub fn safety_ai_id() -> String
+
+pub fn sanitize_prompt(PromptInjectionDetector, String) -> String
+
+pub fn simulate_attack(AttackSimulator, Array[Double]) -> Array[Double]
+
+pub fn toxicity_score(ToxicityDetector, String) -> Double
+
+pub fn validate_input(InputValidator, String) -> (Bool, String)
+
+// Errors
+
+// Types and methods
+pub struct AdversarialDetector {
+  sensitivity_threshold : Double
+  perturbation_size : Double
+  seed : Int32
+}
+
+pub struct Alignment {
+  principles : Array[String]
+  threshold : Double
+}
+
+pub struct AttackSimulator {
+  attack_types : Array[String]
+  intensity : Double
+  seed : Int32
+}
+
+pub struct BiasDetector {
+  protected_attributes : Array[String]
+  threshold : Double
+}
+
+pub struct ContentFilter {
+  policies : Array[String]
+  blocked_topics : Array[String]
+}
+
+pub struct DataPoisoning {
+  contamination_ratio : Double
+  seed : Int32
+}
+
+pub struct Fairness {
+  threshold : Double
+  protected_idx : Int32
+}
+
+pub struct Guardrail {
+  rules : Array[(String, Double)]
+  enforce_action : String
+}
+
+pub struct InputValidator {
+  max_length : Int32
+  allowed_chars : String
+  blocked_patterns : Array[String]
+}
+
+pub struct ModelStealing {
+  query_threshold : Int32
+  diversity_threshold : Double
+  query_history : Array[Array[Double]]
+}
+
+pub struct OutputFilter {
+  blocked_words : Array[String]
+  replacement : String
+  max_length : Int32
+}
+
+pub struct PIIDetector {
+  patterns : Array[(PIIType, String)]
+  mask_char : String
+}
+
+pub(all) enum PIIType {
+  Email
+  Phone
+  SSN
+  CreditCard
+  IPAddress
+  Address
+  Name
+}
+
+pub struct PrivacyPreserve {
+  epsilon : Double
+  delta : Double
+  sensitivity : Double
+  seed : Int32
+}
+
+pub struct PromptInjectionDetector {
+  injection_patterns : Array[String]
+  system_markers : Array[String]
+}
+
+pub struct RateLimiterAI {
+  max_requests : Int32
+  window_seconds : Int32
+  current_count : Int32
+  quota : Int32
+}
+
+pub struct SafetyConfig {
+  enable_pii : Bool
+  enable_toxicity : Bool
+  enable_bias : Bool
+  enable_adversarial : Bool
+  enable_injection : Bool
+  max_input_length : Int32
+  max_output_length : Int32
+}
+
+pub struct SafetyEval {
+  metrics : Array[String]
+  weights : Array[Double]
+}
+
+pub struct SafetyMonitor {
+  alert_threshold : Double
+  history : Array[Double]
+  max_history : Int32
+}
+
+pub(all) enum Severity {
+  Info
+  Low
+  Medium
+  High
+  Critical
+}
+
+pub struct ToxicityDetector {
+  toxic_words : Array[String]
+  threshold : Double
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,241 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/agent_memory_ext"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn agent_memory_ext_id() -> String
+
+pub fn associate_link(MemoryAssociation, String, String, Double) -> MemoryAssociation
+
+pub fn associate_retrieve(MemoryAssociation, String) -> Array[String]
+
+pub fn associate_spread(MemoryAssociation, String, Int32) -> Array[String]
+
+pub fn cache_invalidate(MemoryCache, String) -> MemoryCache
+
+pub fn cache_lookup(MemoryCache, String) -> MemoryItem
+
+pub fn cache_store(MemoryCache, MemoryItem) -> MemoryCache
+
+pub fn compress_mem(MemoryCompression, String, String) -> MemoryCompression
+
+pub fn compress_summary(MemoryCompression) -> Double
+
+pub fn consolidate_long(MemoryConsolidation, Array[MemoryItem]) -> MemoryConsolidation
+
+pub fn consolidate_short(MemoryConsolidation, Double) -> MemoryConsolidation
+
+pub fn decompress_mem(MemoryCompression, String) -> String
+
+pub fn episode_replay_mem(EpisodicExt) -> Array[MemoryItem]
+
+pub fn episode_retrieve(EpisodicExt, Int32) -> MemoryItem
+
+pub fn episode_store(EpisodicExt, MemoryItem) -> EpisodicExt
+
+pub fn ext_add(MemoryExt, MemoryItem) -> MemoryExt
+
+pub fn ext_retrieve(MemoryExt, String) -> MemoryItem
+
+pub fn ext_search(MemoryExt, String) -> Array[MemoryItem]
+
+pub fn forget_decay(MemoryForgetting, MemoryItem, Double) -> MemoryItem
+
+pub fn forget_repetition(MemoryForgetting, MemoryItem, Int32) -> MemoryItem
+
+pub fn forget_spaced(MemoryForgetting, MemoryItem, Double) -> MemoryItem
+
+pub fn graph_query_mem(GraphMemory, String) -> Array[String]
+
+pub fn graph_store(GraphMemory, MemoryItem) -> GraphMemory
+
+pub fn graph_traverse_mem(GraphMemory, String, Int32) -> Array[String]
+
+pub fn index_build_mem(MemoryIndex, Array[MemoryItem]) -> MemoryIndex
+
+pub fn index_query_mem(MemoryIndex, String) -> Int32
+
+pub fn index_update_mem(MemoryIndex, String, Int32) -> MemoryIndex
+
+pub fn make_episodic_ext() -> EpisodicExt
+
+pub fn make_graph_memory() -> GraphMemory
+
+pub fn make_memory_association() -> MemoryAssociation
+
+pub fn make_memory_cache(Int32) -> MemoryCache
+
+pub fn make_memory_compression() -> MemoryCompression
+
+pub fn make_memory_consolidation() -> MemoryConsolidation
+
+pub fn make_memory_ext(Int32) -> MemoryExt
+
+pub fn make_memory_forgetting(Double, Double) -> MemoryForgetting
+
+pub fn make_memory_index() -> MemoryIndex
+
+pub fn make_memory_item(String, String, Array[Double], MemoryKind, PriorityLevel, Double, Double) -> MemoryItem
+
+pub fn make_procedural_memory() -> ProceduralMemory
+
+pub fn make_reflective_memory() -> ReflectiveMemory
+
+pub fn make_semantic_memory() -> SemanticMemory
+
+pub fn make_vector_memory(Int32) -> VectorMemory
+
+pub fn make_working_memory(Int32) -> WorkingMemory
+
+pub fn memory_capacity(MemoryExt) -> Int32
+
+pub fn memory_evict(MemoryExt, Int32) -> MemoryExt
+
+pub fn memory_priority(MemoryExt, String, PriorityLevel) -> MemoryExt
+
+pub fn memory_usage(MemoryExt) -> Int32
+
+pub fn procedure_execute(ProceduralMemory, String) -> ProceduralMemory
+
+pub fn procedure_retrieve(ProceduralMemory, String) -> MemoryItem
+
+pub fn procedure_store(ProceduralMemory, MemoryItem) -> ProceduralMemory
+
+pub fn reflect_analyze(ReflectiveMemory) -> (Int32, Double)
+
+pub fn reflect_retrieve(ReflectiveMemory, String) -> Array[MemoryItem]
+
+pub fn reflect_store(ReflectiveMemory, MemoryItem) -> ReflectiveMemory
+
+pub fn semantic_encode(SemanticMemory, String, Array[Double]) -> SemanticMemory
+
+pub fn semantic_match(SemanticMemory, Array[Double]) -> String
+
+pub fn semantic_search(SemanticMemory, Array[Double], Int32) -> Array[String]
+
+pub fn vector_index(VectorMemory, Array[Double]) -> Array[Int32]
+
+pub fn vector_search_mem(VectorMemory, Array[Double], Int32) -> Array[MemoryItem]
+
+pub fn vector_store(VectorMemory, MemoryItem) -> VectorMemory
+
+pub fn working_clear(WorkingMemory) -> WorkingMemory
+
+pub fn working_pop(WorkingMemory) -> (WorkingMemory, MemoryItem)
+
+pub fn working_push(WorkingMemory, MemoryItem) -> WorkingMemory
+
+// Errors
+
+// Types and methods
+pub struct EpisodicExt {
+  episodes : Array[MemoryItem]
+  current_episode : Int32
+}
+
+pub struct GraphMemory {
+  nodes : Array[MemoryItem]
+  edges : Array[(String, String, Double)]
+}
+
+pub struct MemoryAssociation {
+  links : Array[(String, String, Double)]
+}
+
+pub struct MemoryCache {
+  entries : Array[MemoryItem]
+  max_size : Int32
+}
+
+pub struct MemoryCompression {
+  compressed : Array[(String, String)]
+  ratio : Double
+}
+
+pub struct MemoryConsolidation {
+  short_term : Array[MemoryItem]
+  long_term : Array[MemoryItem]
+}
+
+pub struct MemoryExt {
+  items : Array[MemoryItem]
+  capacity : Int32
+  cache : Array[MemoryItem]
+  index : Array[(String, Int32)]
+}
+
+pub struct MemoryForgetting {
+  decay_rate : Double
+  repetition_boost : Double
+}
+
+pub struct MemoryIndex {
+  entries : Array[(String, Int32)]
+  built : Bool
+}
+
+pub struct MemoryItem {
+  id : String
+  content : String
+  embedding : Array[Double]
+  kind : MemoryKind
+  priority : PriorityLevel
+  timestamp : Double
+  importance : Double
+  access_count : Int32
+  decay_factor : Double
+}
+
+pub(all) enum MemoryKind {
+  VectorKind
+  GraphKind
+  EpisodicKind
+  SemanticKind
+  ProceduralKind
+  WorkingKind
+  ReflectiveKind
+} derive(Eq, @debug.Debug)
+pub fn MemoryKind::equal(Self, Self) -> Bool
+pub fn MemoryKind::not_equal(Self, Self) -> Bool
+pub fn MemoryKind::to_repr(Self) -> @debug.Repr
+
+pub(all) enum PriorityLevel {
+  PriorityLow
+  PriorityMedium
+  PriorityHigh
+} derive(Eq, @debug.Debug)
+pub fn PriorityLevel::equal(Self, Self) -> Bool
+pub fn PriorityLevel::not_equal(Self, Self) -> Bool
+pub fn PriorityLevel::to_repr(Self) -> @debug.Repr
+
+pub struct ProceduralMemory {
+  procedures : Array[MemoryItem]
+  execution_count : Int32
+}
+
+pub struct ReflectiveMemory {
+  reflections : Array[MemoryItem]
+  analysis_count : Int32
+}
+
+pub struct SemanticMemory {
+  items : Array[MemoryItem]
+  encoded : Array[(String, Array[Double])]
+}
+
+pub struct VectorMemory {
+  items : Array[MemoryItem]
+  dimension : Int32
+}
+
+pub struct WorkingMemory {
+  stack : Array[MemoryItem]
+  max_size : Int32
+}
+
+// Type aliases
+
+// Traits

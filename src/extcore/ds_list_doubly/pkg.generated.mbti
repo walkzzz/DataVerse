@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_list_doubly"
+
+// Values
+pub fn ds_list_doubly_buffer_make(Int32) -> DslistdoublyBuffer
+
+pub fn ds_list_doubly_cluster_make(Int32) -> DslistdoublyCluster
+
+pub fn ds_list_doubly_cursor_make(Int32) -> DslistdoublyCursor
+
+pub fn ds_list_doubly_edge_make(Int32) -> DslistdoublyEdge
+
+pub fn ds_list_doubly_frame_make(Int32) -> DslistdoublyFrame
+
+pub fn ds_list_doubly_graphn_make(Int32) -> DslistdoublyGraphN
+
+pub fn ds_list_doubly_layer_make(Int32) -> DslistdoublyLayer
+
+pub fn ds_list_doubly_make_matrix(Int32, Int32, Double) -> DslistdoublyMatrix
+
+pub fn ds_list_doubly_make_point(Double, Double) -> DslistdoublyPoint
+
+pub fn ds_list_doubly_make_point3(Double, Double, Double) -> DslistdoublyPoint
+
+pub fn ds_list_doubly_make_series(Array[Double], String) -> DslistdoublySeries
+
+pub fn ds_list_doubly_make_vector(Array[Double]) -> DslistdoublyVector
+
+pub fn ds_list_doubly_matrix_identity(Int32) -> DslistdoublyMatrix
+
+pub fn ds_list_doubly_model_make(Int32) -> DslistdoublyModel
+
+pub fn ds_list_doubly_node_make(Int32) -> DslistdoublyNode
+
+pub fn ds_list_doubly_path_make(Int32) -> DslistdoublyPath
+
+pub fn ds_list_doubly_range_make(Int32) -> DslistdoublyRange
+
+pub fn ds_list_doubly_slice_make(Int32) -> DslistdoublySlice
+
+pub fn ds_list_doubly_table_make(Int32) -> DslistdoublyTable
+
+pub fn ds_list_doubly_vector_zero(Int32) -> DslistdoublyVector
+
+pub fn ds_list_doubly_view_make(Int32) -> DslistdoublyView
+
+// Errors
+
+// Types and methods
+pub(all) struct DslistdoublyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistdoublyBuffer::add(Self, Self) -> Self
+pub fn DslistdoublyBuffer::copy(Self) -> Self
+pub fn DslistdoublyBuffer::fill(Self, Double) -> Self
+pub fn DslistdoublyBuffer::get(Self, Int32) -> Double
+pub fn DslistdoublyBuffer::len(Self) -> Int32
+pub fn DslistdoublyBuffer::max(Self) -> Double
+pub fn DslistdoublyBuffer::mean(Self) -> Double
+pub fn DslistdoublyBuffer::min(Self) -> Double
+pub fn DslistdoublyBuffer::scale(Self, Double) -> Self
+pub fn DslistdoublyBuffer::set(Self, Int32, Double) -> Self
+pub fn DslistdoublyBuffer::sum(Self) -> Double
+pub fn DslistdoublyBuffer::to_string(Self) -> String
+
+pub(all) struct DslistdoublyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistdoublyCluster::add(Self, Self) -> Self
+pub fn DslistdoublyCluster::copy(Self) -> Self
+pub fn DslistdoublyCluster::fill(Self, Double) -> Self
+pub fn DslistdoublyCluster::get(Self, Int32) -> Double
+pub fn DslistdoublyCluster::len(Self) -> Int32
+pub fn DslistdoublyCluster::max(Self) -> Double
+pub fn DslistdoublyCluster::mean(Self) -> Double
+pub fn DslistdoublyCluster::min(Self) -> Double
+pub fn DslistdoublyCluster::scale(Self, Double) -> Self
+pub fn DslistdoublyCluster::set(Self, Int32, Double) -> Self
+pub fn DslistdoublyCluster::sum(Self) -> Double
+pub fn DslistdoublyCluster::to_string(Self) -> String
+
+pub(all) struct DslistdoublyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistdoublyCursor::add(Self, Self) -> Self
+pub fn DslistdoublyCursor::copy(Self) -> Self
+pub fn DslistdoublyCursor::fill(Self, Double) -> Self
+pub fn DslistdoublyCursor::get(Self, Int32) -> Double
+pub fn DslistdoublyCursor::len(Self) -> Int32
+pub fn DslistdoublyCursor::max(Self) -> Double
+pub fn DslistdoublyCursor::mean(Self) -> Double
+pub fn DslistdoublyCursor::min(Self) -> Double
+pub fn DslistdoublyCursor::scale(Self, Double) -> Self
+pub fn DslistdoublyCursor::set(Self, Int32, Double) -> Self
+pub fn DslistdoublyCursor::sum(Self) -> Double
+pub fn DslistdoublyCursor::to_string(Self) -> String
+
+pub(all) struct DslistdoublyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistdoublyEdge::add(Self, Self) -> Self
+pub fn DslistdoublyEdge::copy(Self) -> Self
+pub fn DslistdoublyEdge::fill(Self, Double) -> Self
+pub fn DslistdoublyEdge::get(Self, Int32) -> Double
+pub fn DslistdoublyEdge::len(Self) -> Int32
+pub fn DslistdoublyEdge::max(Self) -> Double
+pub fn DslistdoublyEdge::mean(Self) -> Double
+pub fn DslistdoublyEdge::min(Self) -> Double
+pub fn DslistdoublyEdge::scale(Self, Double) -> Self
+pub fn DslistdoublyEdge::set(Self, Int32, Double) -> Self
+pub fn DslistdoublyEdge::sum(Self) -> Double
+pub fn DslistdoublyEdge::to_string(Self) -> String
+
+pub(all) struct DslistdoublyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistdoublyFrame::add(Self, Self) -> Self
+pub fn DslistdoublyFrame::copy(Self) -> Self
+pub fn DslistdoublyFrame::fill(Self, Double) -> Self
+pub fn DslistdoublyFrame::get(Self, Int32) -> Double
+pub fn DslistdoublyFrame::len(Self) -> Int32
+pub fn DslistdoublyFrame::max(Self) -> Double
+pub fn DslistdoublyFrame::mean(Self) -> Double
+pub fn DslistdoublyFrame::min(Self) -> Double
+pub fn DslistdoublyFrame::scale(Self, Double) -> Self
+pub fn DslistdoublyFrame::set(Self, Int32, Double) -> Self
+pub fn DslistdoublyFrame::sum(Self) -> Double
+pub fn DslistdoublyFrame::to_string(Self) -> String
+
+pub(all) struct DslistdoublyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistdoublyGraphN::add(Self, Self) -> Self
+pub fn DslistdoublyGraphN::copy(Self) -> Self
+pub fn DslistdoublyGraphN::fill(Self, Double) -> Self
+pub fn DslistdoublyGraphN::get(Self, Int32) -> Double
+pub fn DslistdoublyGraphN::len(Self) -> Int32
+pub fn DslistdoublyGraphN::max(Self) -> Double
+pub fn DslistdoublyGraphN::mean(Self) -> Double
+pub fn DslistdoublyGraphN::min(Self) -> Double
+pub fn DslistdoublyGraphN::scale(Self, Double) -> Self
+pub fn DslistdoublyGraphN::set(Self, Int32, Double) -> Self
+pub fn DslistdoublyGraphN::sum(Self) -> Double
+pub fn DslistdoublyGraphN::to_string(Self) -> String
+
+pub(all) struct DslistdoublyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistdoublyLayer::add(Self, Self) -> Self
+pub fn DslistdoublyLayer::copy(Self) -> Self
+pub fn DslistdoublyLayer::fill(Self, Double) -> Self
+pub fn DslistdoublyLayer::get(Self, Int32) -> Double
+pub fn DslistdoublyLayer::len(Self) -> Int32
+pub fn DslistdoublyLayer::max(Self) -> Double
+pub fn DslistdoublyLayer::mean(Self) -> Double
+pub fn DslistdoublyLayer::min(Self) -> Double
+pub fn DslistdoublyLayer::scale(Self, Double) -> Self
+pub fn DslistdoublyLayer::set(Self, Int32, Double) -> Self
+pub fn DslistdoublyLayer::sum(Self) -> Double
+pub fn DslistdoublyLayer::to_string(Self) -> String
+
+pub(all) struct DslistdoublyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DslistdoublyMatrix::add(Self, Self) -> Self
+pub fn DslistdoublyMatrix::det(Self) -> Double
+pub fn DslistdoublyMatrix::get(Self, Int32, Int32) -> Double
+pub fn DslistdoublyMatrix::multiply(Self, Self) -> Self
+pub fn DslistdoublyMatrix::norm(Self) -> Double
+pub fn DslistdoublyMatrix::scale(Self, Double) -> Self
+pub fn DslistdoublyMatrix::to_string(Self) -> String
+pub fn DslistdoublyMatrix::trace(Self) -> Double
+pub fn DslistdoublyMatrix::transpose(Self) -> Self
+
+pub(all) struct DslistdoublyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistdoublyModel::add(Self, Self) -> Self
+pub fn DslistdoublyModel::copy(Self) -> Self
+pub fn DslistdoublyModel::fill(Self, Double) -> Self
+pub fn DslistdoublyModel::get(Self, Int32) -> Double
+pub fn DslistdoublyModel::len(Self) -> Int32
+pub fn DslistdoublyModel::max(Self) -> Double
+pub fn DslistdoublyModel::mean(Self) -> Double
+pub fn DslistdoublyModel::min(Self) -> Double
+pub fn DslistdoublyModel::scale(Self, Double) -> Self
+pub fn DslistdoublyModel::set(Self, Int32, Double) -> Self
+pub fn DslistdoublyModel::sum(Self) -> Double
+pub fn DslistdoublyModel::to_string(Self) -> String
+
+pub(all) struct DslistdoublyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistdoublyNode::add(Self, Self) -> Self
+pub fn DslistdoublyNode::copy(Self) -> Self
+pub fn DslistdoublyNode::fill(Self, Double) -> Self
+pub fn DslistdoublyNode::get(Self, Int32) -> Double
+pub fn DslistdoublyNode::len(Self) -> Int32
+pub fn DslistdoublyNode::max(Self) -> Double
+pub fn DslistdoublyNode::mean(Self) -> Double
+pub fn DslistdoublyNode::min(Self) -> Double
+pub fn DslistdoublyNode::scale(Self, Double) -> Self
+pub fn DslistdoublyNode::set(Self, Int32, Double) -> Self
+pub fn DslistdoublyNode::sum(Self) -> Double
+pub fn DslistdoublyNode::to_string(Self) -> String
+
+pub(all) struct DslistdoublyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistdoublyPath::add(Self, Self) -> Self
+pub fn DslistdoublyPath::copy(Self) -> Self
+pub fn DslistdoublyPath::fill(Self, Double) -> Self
+pub fn DslistdoublyPath::get(Self, Int32) -> Double
+pub fn DslistdoublyPath::len(Self) -> Int32
+pub fn DslistdoublyPath::max(Self) -> Double
+pub fn DslistdoublyPath::mean(Self) -> Double
+pub fn DslistdoublyPath::min(Self) -> Double
+pub fn DslistdoublyPath::scale(Self, Double) -> Self
+pub fn DslistdoublyPath::set(Self, Int32, Double) -> Self
+pub fn DslistdoublyPath::sum(Self) -> Double
+pub fn DslistdoublyPath::to_string(Self) -> String
+
+pub(all) struct DslistdoublyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DslistdoublyPoint::add(Self, Self) -> Self
+pub fn DslistdoublyPoint::cross(Self, Self) -> Self
+pub fn DslistdoublyPoint::dist(Self, Self) -> Double
+pub fn DslistdoublyPoint::dot(Self, Self) -> Double
+pub fn DslistdoublyPoint::label(Self) -> Int32
+pub fn DslistdoublyPoint::lerp(Self, Self, Double) -> Self
+pub fn DslistdoublyPoint::mid(Self, Self) -> Self
+pub fn DslistdoublyPoint::negate(Self) -> Self
+pub fn DslistdoublyPoint::norm(Self) -> Double
+pub fn DslistdoublyPoint::normalize(Self) -> Self
+pub fn DslistdoublyPoint::scale(Self, Double) -> Self
+pub fn DslistdoublyPoint::sub(Self, Self) -> Self
+pub fn DslistdoublyPoint::to_string(Self) -> String
+pub fn DslistdoublyPoint::x(Self) -> Double
+pub fn DslistdoublyPoint::y(Self) -> Double
+pub fn DslistdoublyPoint::z(Self) -> Double
+
+pub(all) struct DslistdoublyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistdoublyRange::add(Self, Self) -> Self
+pub fn DslistdoublyRange::copy(Self) -> Self
+pub fn DslistdoublyRange::fill(Self, Double) -> Self
+pub fn DslistdoublyRange::get(Self, Int32) -> Double
+pub fn DslistdoublyRange::len(Self) -> Int32
+pub fn DslistdoublyRange::max(Self) -> Double
+pub fn DslistdoublyRange::mean(Self) -> Double
+pub fn DslistdoublyRange::min(Self) -> Double
+pub fn DslistdoublyRange::scale(Self, Double) -> Self
+pub fn DslistdoublyRange::set(Self, Int32, Double) -> Self
+pub fn DslistdoublyRange::sum(Self) -> Double
+pub fn DslistdoublyRange::to_string(Self) -> String
+
+pub(all) struct DslistdoublySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DslistdoublySeries::add(Self, Self) -> Self
+pub fn DslistdoublySeries::cumsum(Self) -> Self
+pub fn DslistdoublySeries::len(Self) -> Int32
+pub fn DslistdoublySeries::max(Self) -> Double
+pub fn DslistdoublySeries::mean(Self) -> Double
+pub fn DslistdoublySeries::median(Self) -> Double
+pub fn DslistdoublySeries::min(Self) -> Double
+pub fn DslistdoublySeries::normalize(Self) -> Self
+pub fn DslistdoublySeries::range(Self) -> Double
+pub fn DslistdoublySeries::scale(Self, Double) -> Self
+pub fn DslistdoublySeries::std(Self) -> Double
+pub fn DslistdoublySeries::sub(Self, Self) -> Self
+pub fn DslistdoublySeries::sum(Self) -> Double
+pub fn DslistdoublySeries::to_string(Self) -> String
+pub fn DslistdoublySeries::variance(Self) -> Double
+
+pub(all) struct DslistdoublySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistdoublySlice::add(Self, Self) -> Self
+pub fn DslistdoublySlice::copy(Self) -> Self
+pub fn DslistdoublySlice::fill(Self, Double) -> Self
+pub fn DslistdoublySlice::get(Self, Int32) -> Double
+pub fn DslistdoublySlice::len(Self) -> Int32
+pub fn DslistdoublySlice::max(Self) -> Double
+pub fn DslistdoublySlice::mean(Self) -> Double
+pub fn DslistdoublySlice::min(Self) -> Double
+pub fn DslistdoublySlice::scale(Self, Double) -> Self
+pub fn DslistdoublySlice::set(Self, Int32, Double) -> Self
+pub fn DslistdoublySlice::sum(Self) -> Double
+pub fn DslistdoublySlice::to_string(Self) -> String
+
+pub(all) struct DslistdoublyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistdoublyTable::add(Self, Self) -> Self
+pub fn DslistdoublyTable::copy(Self) -> Self
+pub fn DslistdoublyTable::fill(Self, Double) -> Self
+pub fn DslistdoublyTable::get(Self, Int32) -> Double
+pub fn DslistdoublyTable::len(Self) -> Int32
+pub fn DslistdoublyTable::max(Self) -> Double
+pub fn DslistdoublyTable::mean(Self) -> Double
+pub fn DslistdoublyTable::min(Self) -> Double
+pub fn DslistdoublyTable::scale(Self, Double) -> Self
+pub fn DslistdoublyTable::set(Self, Int32, Double) -> Self
+pub fn DslistdoublyTable::sum(Self) -> Double
+pub fn DslistdoublyTable::to_string(Self) -> String
+
+pub(all) struct DslistdoublyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DslistdoublyVector::add(Self, Self) -> Self
+pub fn DslistdoublyVector::dist(Self, Self) -> Double
+pub fn DslistdoublyVector::dot(Self, Self) -> Double
+pub fn DslistdoublyVector::norm(Self) -> Double
+pub fn DslistdoublyVector::normalize(Self) -> Self
+pub fn DslistdoublyVector::scale(Self, Double) -> Self
+pub fn DslistdoublyVector::sub(Self, Self) -> Self
+pub fn DslistdoublyVector::to_string(Self) -> String
+
+pub(all) struct DslistdoublyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DslistdoublyView::add(Self, Self) -> Self
+pub fn DslistdoublyView::copy(Self) -> Self
+pub fn DslistdoublyView::fill(Self, Double) -> Self
+pub fn DslistdoublyView::get(Self, Int32) -> Double
+pub fn DslistdoublyView::len(Self) -> Int32
+pub fn DslistdoublyView::max(Self) -> Double
+pub fn DslistdoublyView::mean(Self) -> Double
+pub fn DslistdoublyView::min(Self) -> Double
+pub fn DslistdoublyView::scale(Self, Double) -> Self
+pub fn DslistdoublyView::set(Self, Int32, Double) -> Self
+pub fn DslistdoublyView::sum(Self) -> Double
+pub fn DslistdoublyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

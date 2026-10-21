@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/bio_struct_tertiary"
+
+// Values
+pub fn bio_struct_tertiary_buffer_make(Int32) -> BiostructtertiaryBuffer
+
+pub fn bio_struct_tertiary_cluster_make(Int32) -> BiostructtertiaryCluster
+
+pub fn bio_struct_tertiary_cursor_make(Int32) -> BiostructtertiaryCursor
+
+pub fn bio_struct_tertiary_edge_make(Int32) -> BiostructtertiaryEdge
+
+pub fn bio_struct_tertiary_frame_make(Int32) -> BiostructtertiaryFrame
+
+pub fn bio_struct_tertiary_graphn_make(Int32) -> BiostructtertiaryGraphN
+
+pub fn bio_struct_tertiary_layer_make(Int32) -> BiostructtertiaryLayer
+
+pub fn bio_struct_tertiary_make_matrix(Int32, Int32, Double) -> BiostructtertiaryMatrix
+
+pub fn bio_struct_tertiary_make_point(Double, Double) -> BiostructtertiaryPoint
+
+pub fn bio_struct_tertiary_make_point3(Double, Double, Double) -> BiostructtertiaryPoint
+
+pub fn bio_struct_tertiary_make_series(Array[Double], String) -> BiostructtertiarySeries
+
+pub fn bio_struct_tertiary_make_vector(Array[Double]) -> BiostructtertiaryVector
+
+pub fn bio_struct_tertiary_matrix_identity(Int32) -> BiostructtertiaryMatrix
+
+pub fn bio_struct_tertiary_model_make(Int32) -> BiostructtertiaryModel
+
+pub fn bio_struct_tertiary_node_make(Int32) -> BiostructtertiaryNode
+
+pub fn bio_struct_tertiary_path_make(Int32) -> BiostructtertiaryPath
+
+pub fn bio_struct_tertiary_range_make(Int32) -> BiostructtertiaryRange
+
+pub fn bio_struct_tertiary_slice_make(Int32) -> BiostructtertiarySlice
+
+pub fn bio_struct_tertiary_table_make(Int32) -> BiostructtertiaryTable
+
+pub fn bio_struct_tertiary_vector_zero(Int32) -> BiostructtertiaryVector
+
+pub fn bio_struct_tertiary_view_make(Int32) -> BiostructtertiaryView
+
+// Errors
+
+// Types and methods
+pub(all) struct BiostructtertiaryBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructtertiaryBuffer::add(Self, Self) -> Self
+pub fn BiostructtertiaryBuffer::copy(Self) -> Self
+pub fn BiostructtertiaryBuffer::fill(Self, Double) -> Self
+pub fn BiostructtertiaryBuffer::get(Self, Int32) -> Double
+pub fn BiostructtertiaryBuffer::len(Self) -> Int32
+pub fn BiostructtertiaryBuffer::max(Self) -> Double
+pub fn BiostructtertiaryBuffer::mean(Self) -> Double
+pub fn BiostructtertiaryBuffer::min(Self) -> Double
+pub fn BiostructtertiaryBuffer::scale(Self, Double) -> Self
+pub fn BiostructtertiaryBuffer::set(Self, Int32, Double) -> Self
+pub fn BiostructtertiaryBuffer::sum(Self) -> Double
+pub fn BiostructtertiaryBuffer::to_string(Self) -> String
+
+pub(all) struct BiostructtertiaryCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructtertiaryCluster::add(Self, Self) -> Self
+pub fn BiostructtertiaryCluster::copy(Self) -> Self
+pub fn BiostructtertiaryCluster::fill(Self, Double) -> Self
+pub fn BiostructtertiaryCluster::get(Self, Int32) -> Double
+pub fn BiostructtertiaryCluster::len(Self) -> Int32
+pub fn BiostructtertiaryCluster::max(Self) -> Double
+pub fn BiostructtertiaryCluster::mean(Self) -> Double
+pub fn BiostructtertiaryCluster::min(Self) -> Double
+pub fn BiostructtertiaryCluster::scale(Self, Double) -> Self
+pub fn BiostructtertiaryCluster::set(Self, Int32, Double) -> Self
+pub fn BiostructtertiaryCluster::sum(Self) -> Double
+pub fn BiostructtertiaryCluster::to_string(Self) -> String
+
+pub(all) struct BiostructtertiaryCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructtertiaryCursor::add(Self, Self) -> Self
+pub fn BiostructtertiaryCursor::copy(Self) -> Self
+pub fn BiostructtertiaryCursor::fill(Self, Double) -> Self
+pub fn BiostructtertiaryCursor::get(Self, Int32) -> Double
+pub fn BiostructtertiaryCursor::len(Self) -> Int32
+pub fn BiostructtertiaryCursor::max(Self) -> Double
+pub fn BiostructtertiaryCursor::mean(Self) -> Double
+pub fn BiostructtertiaryCursor::min(Self) -> Double
+pub fn BiostructtertiaryCursor::scale(Self, Double) -> Self
+pub fn BiostructtertiaryCursor::set(Self, Int32, Double) -> Self
+pub fn BiostructtertiaryCursor::sum(Self) -> Double
+pub fn BiostructtertiaryCursor::to_string(Self) -> String
+
+pub(all) struct BiostructtertiaryEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructtertiaryEdge::add(Self, Self) -> Self
+pub fn BiostructtertiaryEdge::copy(Self) -> Self
+pub fn BiostructtertiaryEdge::fill(Self, Double) -> Self
+pub fn BiostructtertiaryEdge::get(Self, Int32) -> Double
+pub fn BiostructtertiaryEdge::len(Self) -> Int32
+pub fn BiostructtertiaryEdge::max(Self) -> Double
+pub fn BiostructtertiaryEdge::mean(Self) -> Double
+pub fn BiostructtertiaryEdge::min(Self) -> Double
+pub fn BiostructtertiaryEdge::scale(Self, Double) -> Self
+pub fn BiostructtertiaryEdge::set(Self, Int32, Double) -> Self
+pub fn BiostructtertiaryEdge::sum(Self) -> Double
+pub fn BiostructtertiaryEdge::to_string(Self) -> String
+
+pub(all) struct BiostructtertiaryFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructtertiaryFrame::add(Self, Self) -> Self
+pub fn BiostructtertiaryFrame::copy(Self) -> Self
+pub fn BiostructtertiaryFrame::fill(Self, Double) -> Self
+pub fn BiostructtertiaryFrame::get(Self, Int32) -> Double
+pub fn BiostructtertiaryFrame::len(Self) -> Int32
+pub fn BiostructtertiaryFrame::max(Self) -> Double
+pub fn BiostructtertiaryFrame::mean(Self) -> Double
+pub fn BiostructtertiaryFrame::min(Self) -> Double
+pub fn BiostructtertiaryFrame::scale(Self, Double) -> Self
+pub fn BiostructtertiaryFrame::set(Self, Int32, Double) -> Self
+pub fn BiostructtertiaryFrame::sum(Self) -> Double
+pub fn BiostructtertiaryFrame::to_string(Self) -> String
+
+pub(all) struct BiostructtertiaryGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructtertiaryGraphN::add(Self, Self) -> Self
+pub fn BiostructtertiaryGraphN::copy(Self) -> Self
+pub fn BiostructtertiaryGraphN::fill(Self, Double) -> Self
+pub fn BiostructtertiaryGraphN::get(Self, Int32) -> Double
+pub fn BiostructtertiaryGraphN::len(Self) -> Int32
+pub fn BiostructtertiaryGraphN::max(Self) -> Double
+pub fn BiostructtertiaryGraphN::mean(Self) -> Double
+pub fn BiostructtertiaryGraphN::min(Self) -> Double
+pub fn BiostructtertiaryGraphN::scale(Self, Double) -> Self
+pub fn BiostructtertiaryGraphN::set(Self, Int32, Double) -> Self
+pub fn BiostructtertiaryGraphN::sum(Self) -> Double
+pub fn BiostructtertiaryGraphN::to_string(Self) -> String
+
+pub(all) struct BiostructtertiaryLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructtertiaryLayer::add(Self, Self) -> Self
+pub fn BiostructtertiaryLayer::copy(Self) -> Self
+pub fn BiostructtertiaryLayer::fill(Self, Double) -> Self
+pub fn BiostructtertiaryLayer::get(Self, Int32) -> Double
+pub fn BiostructtertiaryLayer::len(Self) -> Int32
+pub fn BiostructtertiaryLayer::max(Self) -> Double
+pub fn BiostructtertiaryLayer::mean(Self) -> Double
+pub fn BiostructtertiaryLayer::min(Self) -> Double
+pub fn BiostructtertiaryLayer::scale(Self, Double) -> Self
+pub fn BiostructtertiaryLayer::set(Self, Int32, Double) -> Self
+pub fn BiostructtertiaryLayer::sum(Self) -> Double
+pub fn BiostructtertiaryLayer::to_string(Self) -> String
+
+pub(all) struct BiostructtertiaryMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn BiostructtertiaryMatrix::add(Self, Self) -> Self
+pub fn BiostructtertiaryMatrix::det(Self) -> Double
+pub fn BiostructtertiaryMatrix::get(Self, Int32, Int32) -> Double
+pub fn BiostructtertiaryMatrix::multiply(Self, Self) -> Self
+pub fn BiostructtertiaryMatrix::norm(Self) -> Double
+pub fn BiostructtertiaryMatrix::scale(Self, Double) -> Self
+pub fn BiostructtertiaryMatrix::to_string(Self) -> String
+pub fn BiostructtertiaryMatrix::trace(Self) -> Double
+pub fn BiostructtertiaryMatrix::transpose(Self) -> Self
+
+pub(all) struct BiostructtertiaryModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructtertiaryModel::add(Self, Self) -> Self
+pub fn BiostructtertiaryModel::copy(Self) -> Self
+pub fn BiostructtertiaryModel::fill(Self, Double) -> Self
+pub fn BiostructtertiaryModel::get(Self, Int32) -> Double
+pub fn BiostructtertiaryModel::len(Self) -> Int32
+pub fn BiostructtertiaryModel::max(Self) -> Double
+pub fn BiostructtertiaryModel::mean(Self) -> Double
+pub fn BiostructtertiaryModel::min(Self) -> Double
+pub fn BiostructtertiaryModel::scale(Self, Double) -> Self
+pub fn BiostructtertiaryModel::set(Self, Int32, Double) -> Self
+pub fn BiostructtertiaryModel::sum(Self) -> Double
+pub fn BiostructtertiaryModel::to_string(Self) -> String
+
+pub(all) struct BiostructtertiaryNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructtertiaryNode::add(Self, Self) -> Self
+pub fn BiostructtertiaryNode::copy(Self) -> Self
+pub fn BiostructtertiaryNode::fill(Self, Double) -> Self
+pub fn BiostructtertiaryNode::get(Self, Int32) -> Double
+pub fn BiostructtertiaryNode::len(Self) -> Int32
+pub fn BiostructtertiaryNode::max(Self) -> Double
+pub fn BiostructtertiaryNode::mean(Self) -> Double
+pub fn BiostructtertiaryNode::min(Self) -> Double
+pub fn BiostructtertiaryNode::scale(Self, Double) -> Self
+pub fn BiostructtertiaryNode::set(Self, Int32, Double) -> Self
+pub fn BiostructtertiaryNode::sum(Self) -> Double
+pub fn BiostructtertiaryNode::to_string(Self) -> String
+
+pub(all) struct BiostructtertiaryPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructtertiaryPath::add(Self, Self) -> Self
+pub fn BiostructtertiaryPath::copy(Self) -> Self
+pub fn BiostructtertiaryPath::fill(Self, Double) -> Self
+pub fn BiostructtertiaryPath::get(Self, Int32) -> Double
+pub fn BiostructtertiaryPath::len(Self) -> Int32
+pub fn BiostructtertiaryPath::max(Self) -> Double
+pub fn BiostructtertiaryPath::mean(Self) -> Double
+pub fn BiostructtertiaryPath::min(Self) -> Double
+pub fn BiostructtertiaryPath::scale(Self, Double) -> Self
+pub fn BiostructtertiaryPath::set(Self, Int32, Double) -> Self
+pub fn BiostructtertiaryPath::sum(Self) -> Double
+pub fn BiostructtertiaryPath::to_string(Self) -> String
+
+pub(all) struct BiostructtertiaryPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn BiostructtertiaryPoint::add(Self, Self) -> Self
+pub fn BiostructtertiaryPoint::cross(Self, Self) -> Self
+pub fn BiostructtertiaryPoint::dist(Self, Self) -> Double
+pub fn BiostructtertiaryPoint::dot(Self, Self) -> Double
+pub fn BiostructtertiaryPoint::label(Self) -> Int32
+pub fn BiostructtertiaryPoint::lerp(Self, Self, Double) -> Self
+pub fn BiostructtertiaryPoint::mid(Self, Self) -> Self
+pub fn BiostructtertiaryPoint::negate(Self) -> Self
+pub fn BiostructtertiaryPoint::norm(Self) -> Double
+pub fn BiostructtertiaryPoint::normalize(Self) -> Self
+pub fn BiostructtertiaryPoint::scale(Self, Double) -> Self
+pub fn BiostructtertiaryPoint::sub(Self, Self) -> Self
+pub fn BiostructtertiaryPoint::to_string(Self) -> String
+pub fn BiostructtertiaryPoint::x(Self) -> Double
+pub fn BiostructtertiaryPoint::y(Self) -> Double
+pub fn BiostructtertiaryPoint::z(Self) -> Double
+
+pub(all) struct BiostructtertiaryRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructtertiaryRange::add(Self, Self) -> Self
+pub fn BiostructtertiaryRange::copy(Self) -> Self
+pub fn BiostructtertiaryRange::fill(Self, Double) -> Self
+pub fn BiostructtertiaryRange::get(Self, Int32) -> Double
+pub fn BiostructtertiaryRange::len(Self) -> Int32
+pub fn BiostructtertiaryRange::max(Self) -> Double
+pub fn BiostructtertiaryRange::mean(Self) -> Double
+pub fn BiostructtertiaryRange::min(Self) -> Double
+pub fn BiostructtertiaryRange::scale(Self, Double) -> Self
+pub fn BiostructtertiaryRange::set(Self, Int32, Double) -> Self
+pub fn BiostructtertiaryRange::sum(Self) -> Double
+pub fn BiostructtertiaryRange::to_string(Self) -> String
+
+pub(all) struct BiostructtertiarySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn BiostructtertiarySeries::add(Self, Self) -> Self
+pub fn BiostructtertiarySeries::cumsum(Self) -> Self
+pub fn BiostructtertiarySeries::len(Self) -> Int32
+pub fn BiostructtertiarySeries::max(Self) -> Double
+pub fn BiostructtertiarySeries::mean(Self) -> Double
+pub fn BiostructtertiarySeries::median(Self) -> Double
+pub fn BiostructtertiarySeries::min(Self) -> Double
+pub fn BiostructtertiarySeries::normalize(Self) -> Self
+pub fn BiostructtertiarySeries::range(Self) -> Double
+pub fn BiostructtertiarySeries::scale(Self, Double) -> Self
+pub fn BiostructtertiarySeries::std(Self) -> Double
+pub fn BiostructtertiarySeries::sub(Self, Self) -> Self
+pub fn BiostructtertiarySeries::sum(Self) -> Double
+pub fn BiostructtertiarySeries::to_string(Self) -> String
+pub fn BiostructtertiarySeries::variance(Self) -> Double
+
+pub(all) struct BiostructtertiarySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructtertiarySlice::add(Self, Self) -> Self
+pub fn BiostructtertiarySlice::copy(Self) -> Self
+pub fn BiostructtertiarySlice::fill(Self, Double) -> Self
+pub fn BiostructtertiarySlice::get(Self, Int32) -> Double
+pub fn BiostructtertiarySlice::len(Self) -> Int32
+pub fn BiostructtertiarySlice::max(Self) -> Double
+pub fn BiostructtertiarySlice::mean(Self) -> Double
+pub fn BiostructtertiarySlice::min(Self) -> Double
+pub fn BiostructtertiarySlice::scale(Self, Double) -> Self
+pub fn BiostructtertiarySlice::set(Self, Int32, Double) -> Self
+pub fn BiostructtertiarySlice::sum(Self) -> Double
+pub fn BiostructtertiarySlice::to_string(Self) -> String
+
+pub(all) struct BiostructtertiaryTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructtertiaryTable::add(Self, Self) -> Self
+pub fn BiostructtertiaryTable::copy(Self) -> Self
+pub fn BiostructtertiaryTable::fill(Self, Double) -> Self
+pub fn BiostructtertiaryTable::get(Self, Int32) -> Double
+pub fn BiostructtertiaryTable::len(Self) -> Int32
+pub fn BiostructtertiaryTable::max(Self) -> Double
+pub fn BiostructtertiaryTable::mean(Self) -> Double
+pub fn BiostructtertiaryTable::min(Self) -> Double
+pub fn BiostructtertiaryTable::scale(Self, Double) -> Self
+pub fn BiostructtertiaryTable::set(Self, Int32, Double) -> Self
+pub fn BiostructtertiaryTable::sum(Self) -> Double
+pub fn BiostructtertiaryTable::to_string(Self) -> String
+
+pub(all) struct BiostructtertiaryVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn BiostructtertiaryVector::add(Self, Self) -> Self
+pub fn BiostructtertiaryVector::dist(Self, Self) -> Double
+pub fn BiostructtertiaryVector::dot(Self, Self) -> Double
+pub fn BiostructtertiaryVector::norm(Self) -> Double
+pub fn BiostructtertiaryVector::normalize(Self) -> Self
+pub fn BiostructtertiaryVector::scale(Self, Double) -> Self
+pub fn BiostructtertiaryVector::sub(Self, Self) -> Self
+pub fn BiostructtertiaryVector::to_string(Self) -> String
+
+pub(all) struct BiostructtertiaryView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructtertiaryView::add(Self, Self) -> Self
+pub fn BiostructtertiaryView::copy(Self) -> Self
+pub fn BiostructtertiaryView::fill(Self, Double) -> Self
+pub fn BiostructtertiaryView::get(Self, Int32) -> Double
+pub fn BiostructtertiaryView::len(Self) -> Int32
+pub fn BiostructtertiaryView::max(Self) -> Double
+pub fn BiostructtertiaryView::mean(Self) -> Double
+pub fn BiostructtertiaryView::min(Self) -> Double
+pub fn BiostructtertiaryView::scale(Self, Double) -> Self
+pub fn BiostructtertiaryView::set(Self, Int32, Double) -> Self
+pub fn BiostructtertiaryView::sum(Self) -> Double
+pub fn BiostructtertiaryView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

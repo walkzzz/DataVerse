@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_heap_skew"
+
+// Values
+pub fn ds_heap_skew_buffer_make(Int32) -> DsheapskewBuffer
+
+pub fn ds_heap_skew_cluster_make(Int32) -> DsheapskewCluster
+
+pub fn ds_heap_skew_cursor_make(Int32) -> DsheapskewCursor
+
+pub fn ds_heap_skew_edge_make(Int32) -> DsheapskewEdge
+
+pub fn ds_heap_skew_frame_make(Int32) -> DsheapskewFrame
+
+pub fn ds_heap_skew_graphn_make(Int32) -> DsheapskewGraphN
+
+pub fn ds_heap_skew_layer_make(Int32) -> DsheapskewLayer
+
+pub fn ds_heap_skew_make_matrix(Int32, Int32, Double) -> DsheapskewMatrix
+
+pub fn ds_heap_skew_make_point(Double, Double) -> DsheapskewPoint
+
+pub fn ds_heap_skew_make_point3(Double, Double, Double) -> DsheapskewPoint
+
+pub fn ds_heap_skew_make_series(Array[Double], String) -> DsheapskewSeries
+
+pub fn ds_heap_skew_make_vector(Array[Double]) -> DsheapskewVector
+
+pub fn ds_heap_skew_matrix_identity(Int32) -> DsheapskewMatrix
+
+pub fn ds_heap_skew_model_make(Int32) -> DsheapskewModel
+
+pub fn ds_heap_skew_node_make(Int32) -> DsheapskewNode
+
+pub fn ds_heap_skew_path_make(Int32) -> DsheapskewPath
+
+pub fn ds_heap_skew_range_make(Int32) -> DsheapskewRange
+
+pub fn ds_heap_skew_slice_make(Int32) -> DsheapskewSlice
+
+pub fn ds_heap_skew_table_make(Int32) -> DsheapskewTable
+
+pub fn ds_heap_skew_vector_zero(Int32) -> DsheapskewVector
+
+pub fn ds_heap_skew_view_make(Int32) -> DsheapskewView
+
+// Errors
+
+// Types and methods
+pub(all) struct DsheapskewBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapskewBuffer::add(Self, Self) -> Self
+pub fn DsheapskewBuffer::copy(Self) -> Self
+pub fn DsheapskewBuffer::fill(Self, Double) -> Self
+pub fn DsheapskewBuffer::get(Self, Int32) -> Double
+pub fn DsheapskewBuffer::len(Self) -> Int32
+pub fn DsheapskewBuffer::max(Self) -> Double
+pub fn DsheapskewBuffer::mean(Self) -> Double
+pub fn DsheapskewBuffer::min(Self) -> Double
+pub fn DsheapskewBuffer::scale(Self, Double) -> Self
+pub fn DsheapskewBuffer::set(Self, Int32, Double) -> Self
+pub fn DsheapskewBuffer::sum(Self) -> Double
+pub fn DsheapskewBuffer::to_string(Self) -> String
+
+pub(all) struct DsheapskewCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapskewCluster::add(Self, Self) -> Self
+pub fn DsheapskewCluster::copy(Self) -> Self
+pub fn DsheapskewCluster::fill(Self, Double) -> Self
+pub fn DsheapskewCluster::get(Self, Int32) -> Double
+pub fn DsheapskewCluster::len(Self) -> Int32
+pub fn DsheapskewCluster::max(Self) -> Double
+pub fn DsheapskewCluster::mean(Self) -> Double
+pub fn DsheapskewCluster::min(Self) -> Double
+pub fn DsheapskewCluster::scale(Self, Double) -> Self
+pub fn DsheapskewCluster::set(Self, Int32, Double) -> Self
+pub fn DsheapskewCluster::sum(Self) -> Double
+pub fn DsheapskewCluster::to_string(Self) -> String
+
+pub(all) struct DsheapskewCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapskewCursor::add(Self, Self) -> Self
+pub fn DsheapskewCursor::copy(Self) -> Self
+pub fn DsheapskewCursor::fill(Self, Double) -> Self
+pub fn DsheapskewCursor::get(Self, Int32) -> Double
+pub fn DsheapskewCursor::len(Self) -> Int32
+pub fn DsheapskewCursor::max(Self) -> Double
+pub fn DsheapskewCursor::mean(Self) -> Double
+pub fn DsheapskewCursor::min(Self) -> Double
+pub fn DsheapskewCursor::scale(Self, Double) -> Self
+pub fn DsheapskewCursor::set(Self, Int32, Double) -> Self
+pub fn DsheapskewCursor::sum(Self) -> Double
+pub fn DsheapskewCursor::to_string(Self) -> String
+
+pub(all) struct DsheapskewEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapskewEdge::add(Self, Self) -> Self
+pub fn DsheapskewEdge::copy(Self) -> Self
+pub fn DsheapskewEdge::fill(Self, Double) -> Self
+pub fn DsheapskewEdge::get(Self, Int32) -> Double
+pub fn DsheapskewEdge::len(Self) -> Int32
+pub fn DsheapskewEdge::max(Self) -> Double
+pub fn DsheapskewEdge::mean(Self) -> Double
+pub fn DsheapskewEdge::min(Self) -> Double
+pub fn DsheapskewEdge::scale(Self, Double) -> Self
+pub fn DsheapskewEdge::set(Self, Int32, Double) -> Self
+pub fn DsheapskewEdge::sum(Self) -> Double
+pub fn DsheapskewEdge::to_string(Self) -> String
+
+pub(all) struct DsheapskewFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapskewFrame::add(Self, Self) -> Self
+pub fn DsheapskewFrame::copy(Self) -> Self
+pub fn DsheapskewFrame::fill(Self, Double) -> Self
+pub fn DsheapskewFrame::get(Self, Int32) -> Double
+pub fn DsheapskewFrame::len(Self) -> Int32
+pub fn DsheapskewFrame::max(Self) -> Double
+pub fn DsheapskewFrame::mean(Self) -> Double
+pub fn DsheapskewFrame::min(Self) -> Double
+pub fn DsheapskewFrame::scale(Self, Double) -> Self
+pub fn DsheapskewFrame::set(Self, Int32, Double) -> Self
+pub fn DsheapskewFrame::sum(Self) -> Double
+pub fn DsheapskewFrame::to_string(Self) -> String
+
+pub(all) struct DsheapskewGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapskewGraphN::add(Self, Self) -> Self
+pub fn DsheapskewGraphN::copy(Self) -> Self
+pub fn DsheapskewGraphN::fill(Self, Double) -> Self
+pub fn DsheapskewGraphN::get(Self, Int32) -> Double
+pub fn DsheapskewGraphN::len(Self) -> Int32
+pub fn DsheapskewGraphN::max(Self) -> Double
+pub fn DsheapskewGraphN::mean(Self) -> Double
+pub fn DsheapskewGraphN::min(Self) -> Double
+pub fn DsheapskewGraphN::scale(Self, Double) -> Self
+pub fn DsheapskewGraphN::set(Self, Int32, Double) -> Self
+pub fn DsheapskewGraphN::sum(Self) -> Double
+pub fn DsheapskewGraphN::to_string(Self) -> String
+
+pub(all) struct DsheapskewLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapskewLayer::add(Self, Self) -> Self
+pub fn DsheapskewLayer::copy(Self) -> Self
+pub fn DsheapskewLayer::fill(Self, Double) -> Self
+pub fn DsheapskewLayer::get(Self, Int32) -> Double
+pub fn DsheapskewLayer::len(Self) -> Int32
+pub fn DsheapskewLayer::max(Self) -> Double
+pub fn DsheapskewLayer::mean(Self) -> Double
+pub fn DsheapskewLayer::min(Self) -> Double
+pub fn DsheapskewLayer::scale(Self, Double) -> Self
+pub fn DsheapskewLayer::set(Self, Int32, Double) -> Self
+pub fn DsheapskewLayer::sum(Self) -> Double
+pub fn DsheapskewLayer::to_string(Self) -> String
+
+pub(all) struct DsheapskewMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DsheapskewMatrix::add(Self, Self) -> Self
+pub fn DsheapskewMatrix::det(Self) -> Double
+pub fn DsheapskewMatrix::get(Self, Int32, Int32) -> Double
+pub fn DsheapskewMatrix::multiply(Self, Self) -> Self
+pub fn DsheapskewMatrix::norm(Self) -> Double
+pub fn DsheapskewMatrix::scale(Self, Double) -> Self
+pub fn DsheapskewMatrix::to_string(Self) -> String
+pub fn DsheapskewMatrix::trace(Self) -> Double
+pub fn DsheapskewMatrix::transpose(Self) -> Self
+
+pub(all) struct DsheapskewModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapskewModel::add(Self, Self) -> Self
+pub fn DsheapskewModel::copy(Self) -> Self
+pub fn DsheapskewModel::fill(Self, Double) -> Self
+pub fn DsheapskewModel::get(Self, Int32) -> Double
+pub fn DsheapskewModel::len(Self) -> Int32
+pub fn DsheapskewModel::max(Self) -> Double
+pub fn DsheapskewModel::mean(Self) -> Double
+pub fn DsheapskewModel::min(Self) -> Double
+pub fn DsheapskewModel::scale(Self, Double) -> Self
+pub fn DsheapskewModel::set(Self, Int32, Double) -> Self
+pub fn DsheapskewModel::sum(Self) -> Double
+pub fn DsheapskewModel::to_string(Self) -> String
+
+pub(all) struct DsheapskewNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapskewNode::add(Self, Self) -> Self
+pub fn DsheapskewNode::copy(Self) -> Self
+pub fn DsheapskewNode::fill(Self, Double) -> Self
+pub fn DsheapskewNode::get(Self, Int32) -> Double
+pub fn DsheapskewNode::len(Self) -> Int32
+pub fn DsheapskewNode::max(Self) -> Double
+pub fn DsheapskewNode::mean(Self) -> Double
+pub fn DsheapskewNode::min(Self) -> Double
+pub fn DsheapskewNode::scale(Self, Double) -> Self
+pub fn DsheapskewNode::set(Self, Int32, Double) -> Self
+pub fn DsheapskewNode::sum(Self) -> Double
+pub fn DsheapskewNode::to_string(Self) -> String
+
+pub(all) struct DsheapskewPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapskewPath::add(Self, Self) -> Self
+pub fn DsheapskewPath::copy(Self) -> Self
+pub fn DsheapskewPath::fill(Self, Double) -> Self
+pub fn DsheapskewPath::get(Self, Int32) -> Double
+pub fn DsheapskewPath::len(Self) -> Int32
+pub fn DsheapskewPath::max(Self) -> Double
+pub fn DsheapskewPath::mean(Self) -> Double
+pub fn DsheapskewPath::min(Self) -> Double
+pub fn DsheapskewPath::scale(Self, Double) -> Self
+pub fn DsheapskewPath::set(Self, Int32, Double) -> Self
+pub fn DsheapskewPath::sum(Self) -> Double
+pub fn DsheapskewPath::to_string(Self) -> String
+
+pub(all) struct DsheapskewPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DsheapskewPoint::add(Self, Self) -> Self
+pub fn DsheapskewPoint::cross(Self, Self) -> Self
+pub fn DsheapskewPoint::dist(Self, Self) -> Double
+pub fn DsheapskewPoint::dot(Self, Self) -> Double
+pub fn DsheapskewPoint::label(Self) -> Int32
+pub fn DsheapskewPoint::lerp(Self, Self, Double) -> Self
+pub fn DsheapskewPoint::mid(Self, Self) -> Self
+pub fn DsheapskewPoint::negate(Self) -> Self
+pub fn DsheapskewPoint::norm(Self) -> Double
+pub fn DsheapskewPoint::normalize(Self) -> Self
+pub fn DsheapskewPoint::scale(Self, Double) -> Self
+pub fn DsheapskewPoint::sub(Self, Self) -> Self
+pub fn DsheapskewPoint::to_string(Self) -> String
+pub fn DsheapskewPoint::x(Self) -> Double
+pub fn DsheapskewPoint::y(Self) -> Double
+pub fn DsheapskewPoint::z(Self) -> Double
+
+pub(all) struct DsheapskewRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapskewRange::add(Self, Self) -> Self
+pub fn DsheapskewRange::copy(Self) -> Self
+pub fn DsheapskewRange::fill(Self, Double) -> Self
+pub fn DsheapskewRange::get(Self, Int32) -> Double
+pub fn DsheapskewRange::len(Self) -> Int32
+pub fn DsheapskewRange::max(Self) -> Double
+pub fn DsheapskewRange::mean(Self) -> Double
+pub fn DsheapskewRange::min(Self) -> Double
+pub fn DsheapskewRange::scale(Self, Double) -> Self
+pub fn DsheapskewRange::set(Self, Int32, Double) -> Self
+pub fn DsheapskewRange::sum(Self) -> Double
+pub fn DsheapskewRange::to_string(Self) -> String
+
+pub(all) struct DsheapskewSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DsheapskewSeries::add(Self, Self) -> Self
+pub fn DsheapskewSeries::cumsum(Self) -> Self
+pub fn DsheapskewSeries::len(Self) -> Int32
+pub fn DsheapskewSeries::max(Self) -> Double
+pub fn DsheapskewSeries::mean(Self) -> Double
+pub fn DsheapskewSeries::median(Self) -> Double
+pub fn DsheapskewSeries::min(Self) -> Double
+pub fn DsheapskewSeries::normalize(Self) -> Self
+pub fn DsheapskewSeries::range(Self) -> Double
+pub fn DsheapskewSeries::scale(Self, Double) -> Self
+pub fn DsheapskewSeries::std(Self) -> Double
+pub fn DsheapskewSeries::sub(Self, Self) -> Self
+pub fn DsheapskewSeries::sum(Self) -> Double
+pub fn DsheapskewSeries::to_string(Self) -> String
+pub fn DsheapskewSeries::variance(Self) -> Double
+
+pub(all) struct DsheapskewSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapskewSlice::add(Self, Self) -> Self
+pub fn DsheapskewSlice::copy(Self) -> Self
+pub fn DsheapskewSlice::fill(Self, Double) -> Self
+pub fn DsheapskewSlice::get(Self, Int32) -> Double
+pub fn DsheapskewSlice::len(Self) -> Int32
+pub fn DsheapskewSlice::max(Self) -> Double
+pub fn DsheapskewSlice::mean(Self) -> Double
+pub fn DsheapskewSlice::min(Self) -> Double
+pub fn DsheapskewSlice::scale(Self, Double) -> Self
+pub fn DsheapskewSlice::set(Self, Int32, Double) -> Self
+pub fn DsheapskewSlice::sum(Self) -> Double
+pub fn DsheapskewSlice::to_string(Self) -> String
+
+pub(all) struct DsheapskewTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapskewTable::add(Self, Self) -> Self
+pub fn DsheapskewTable::copy(Self) -> Self
+pub fn DsheapskewTable::fill(Self, Double) -> Self
+pub fn DsheapskewTable::get(Self, Int32) -> Double
+pub fn DsheapskewTable::len(Self) -> Int32
+pub fn DsheapskewTable::max(Self) -> Double
+pub fn DsheapskewTable::mean(Self) -> Double
+pub fn DsheapskewTable::min(Self) -> Double
+pub fn DsheapskewTable::scale(Self, Double) -> Self
+pub fn DsheapskewTable::set(Self, Int32, Double) -> Self
+pub fn DsheapskewTable::sum(Self) -> Double
+pub fn DsheapskewTable::to_string(Self) -> String
+
+pub(all) struct DsheapskewVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DsheapskewVector::add(Self, Self) -> Self
+pub fn DsheapskewVector::dist(Self, Self) -> Double
+pub fn DsheapskewVector::dot(Self, Self) -> Double
+pub fn DsheapskewVector::norm(Self) -> Double
+pub fn DsheapskewVector::normalize(Self) -> Self
+pub fn DsheapskewVector::scale(Self, Double) -> Self
+pub fn DsheapskewVector::sub(Self, Self) -> Self
+pub fn DsheapskewVector::to_string(Self) -> String
+
+pub(all) struct DsheapskewView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapskewView::add(Self, Self) -> Self
+pub fn DsheapskewView::copy(Self) -> Self
+pub fn DsheapskewView::fill(Self, Double) -> Self
+pub fn DsheapskewView::get(Self, Int32) -> Double
+pub fn DsheapskewView::len(Self) -> Int32
+pub fn DsheapskewView::max(Self) -> Double
+pub fn DsheapskewView::mean(Self) -> Double
+pub fn DsheapskewView::min(Self) -> Double
+pub fn DsheapskewView::scale(Self, Double) -> Self
+pub fn DsheapskewView::set(Self, Int32, Double) -> Self
+pub fn DsheapskewView::sum(Self) -> Double
+pub fn DsheapskewView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

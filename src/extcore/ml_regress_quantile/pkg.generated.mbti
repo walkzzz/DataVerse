@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_regress_quantile"
+
+// Values
+pub fn ml_regress_quantile_buffer_make(Int32) -> MlregressquantileBuffer
+
+pub fn ml_regress_quantile_cluster_make(Int32) -> MlregressquantileCluster
+
+pub fn ml_regress_quantile_cursor_make(Int32) -> MlregressquantileCursor
+
+pub fn ml_regress_quantile_edge_make(Int32) -> MlregressquantileEdge
+
+pub fn ml_regress_quantile_frame_make(Int32) -> MlregressquantileFrame
+
+pub fn ml_regress_quantile_graphn_make(Int32) -> MlregressquantileGraphN
+
+pub fn ml_regress_quantile_layer_make(Int32) -> MlregressquantileLayer
+
+pub fn ml_regress_quantile_make_matrix(Int32, Int32, Double) -> MlregressquantileMatrix
+
+pub fn ml_regress_quantile_make_point(Double, Double) -> MlregressquantilePoint
+
+pub fn ml_regress_quantile_make_point3(Double, Double, Double) -> MlregressquantilePoint
+
+pub fn ml_regress_quantile_make_series(Array[Double], String) -> MlregressquantileSeries
+
+pub fn ml_regress_quantile_make_vector(Array[Double]) -> MlregressquantileVector
+
+pub fn ml_regress_quantile_matrix_identity(Int32) -> MlregressquantileMatrix
+
+pub fn ml_regress_quantile_model_make(Int32) -> MlregressquantileModel
+
+pub fn ml_regress_quantile_node_make(Int32) -> MlregressquantileNode
+
+pub fn ml_regress_quantile_path_make(Int32) -> MlregressquantilePath
+
+pub fn ml_regress_quantile_range_make(Int32) -> MlregressquantileRange
+
+pub fn ml_regress_quantile_slice_make(Int32) -> MlregressquantileSlice
+
+pub fn ml_regress_quantile_table_make(Int32) -> MlregressquantileTable
+
+pub fn ml_regress_quantile_vector_zero(Int32) -> MlregressquantileVector
+
+pub fn ml_regress_quantile_view_make(Int32) -> MlregressquantileView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlregressquantileBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregressquantileBuffer::add(Self, Self) -> Self
+pub fn MlregressquantileBuffer::copy(Self) -> Self
+pub fn MlregressquantileBuffer::fill(Self, Double) -> Self
+pub fn MlregressquantileBuffer::get(Self, Int32) -> Double
+pub fn MlregressquantileBuffer::len(Self) -> Int32
+pub fn MlregressquantileBuffer::max(Self) -> Double
+pub fn MlregressquantileBuffer::mean(Self) -> Double
+pub fn MlregressquantileBuffer::min(Self) -> Double
+pub fn MlregressquantileBuffer::scale(Self, Double) -> Self
+pub fn MlregressquantileBuffer::set(Self, Int32, Double) -> Self
+pub fn MlregressquantileBuffer::sum(Self) -> Double
+pub fn MlregressquantileBuffer::to_string(Self) -> String
+
+pub(all) struct MlregressquantileCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregressquantileCluster::add(Self, Self) -> Self
+pub fn MlregressquantileCluster::copy(Self) -> Self
+pub fn MlregressquantileCluster::fill(Self, Double) -> Self
+pub fn MlregressquantileCluster::get(Self, Int32) -> Double
+pub fn MlregressquantileCluster::len(Self) -> Int32
+pub fn MlregressquantileCluster::max(Self) -> Double
+pub fn MlregressquantileCluster::mean(Self) -> Double
+pub fn MlregressquantileCluster::min(Self) -> Double
+pub fn MlregressquantileCluster::scale(Self, Double) -> Self
+pub fn MlregressquantileCluster::set(Self, Int32, Double) -> Self
+pub fn MlregressquantileCluster::sum(Self) -> Double
+pub fn MlregressquantileCluster::to_string(Self) -> String
+
+pub(all) struct MlregressquantileCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregressquantileCursor::add(Self, Self) -> Self
+pub fn MlregressquantileCursor::copy(Self) -> Self
+pub fn MlregressquantileCursor::fill(Self, Double) -> Self
+pub fn MlregressquantileCursor::get(Self, Int32) -> Double
+pub fn MlregressquantileCursor::len(Self) -> Int32
+pub fn MlregressquantileCursor::max(Self) -> Double
+pub fn MlregressquantileCursor::mean(Self) -> Double
+pub fn MlregressquantileCursor::min(Self) -> Double
+pub fn MlregressquantileCursor::scale(Self, Double) -> Self
+pub fn MlregressquantileCursor::set(Self, Int32, Double) -> Self
+pub fn MlregressquantileCursor::sum(Self) -> Double
+pub fn MlregressquantileCursor::to_string(Self) -> String
+
+pub(all) struct MlregressquantileEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregressquantileEdge::add(Self, Self) -> Self
+pub fn MlregressquantileEdge::copy(Self) -> Self
+pub fn MlregressquantileEdge::fill(Self, Double) -> Self
+pub fn MlregressquantileEdge::get(Self, Int32) -> Double
+pub fn MlregressquantileEdge::len(Self) -> Int32
+pub fn MlregressquantileEdge::max(Self) -> Double
+pub fn MlregressquantileEdge::mean(Self) -> Double
+pub fn MlregressquantileEdge::min(Self) -> Double
+pub fn MlregressquantileEdge::scale(Self, Double) -> Self
+pub fn MlregressquantileEdge::set(Self, Int32, Double) -> Self
+pub fn MlregressquantileEdge::sum(Self) -> Double
+pub fn MlregressquantileEdge::to_string(Self) -> String
+
+pub(all) struct MlregressquantileFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregressquantileFrame::add(Self, Self) -> Self
+pub fn MlregressquantileFrame::copy(Self) -> Self
+pub fn MlregressquantileFrame::fill(Self, Double) -> Self
+pub fn MlregressquantileFrame::get(Self, Int32) -> Double
+pub fn MlregressquantileFrame::len(Self) -> Int32
+pub fn MlregressquantileFrame::max(Self) -> Double
+pub fn MlregressquantileFrame::mean(Self) -> Double
+pub fn MlregressquantileFrame::min(Self) -> Double
+pub fn MlregressquantileFrame::scale(Self, Double) -> Self
+pub fn MlregressquantileFrame::set(Self, Int32, Double) -> Self
+pub fn MlregressquantileFrame::sum(Self) -> Double
+pub fn MlregressquantileFrame::to_string(Self) -> String
+
+pub(all) struct MlregressquantileGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregressquantileGraphN::add(Self, Self) -> Self
+pub fn MlregressquantileGraphN::copy(Self) -> Self
+pub fn MlregressquantileGraphN::fill(Self, Double) -> Self
+pub fn MlregressquantileGraphN::get(Self, Int32) -> Double
+pub fn MlregressquantileGraphN::len(Self) -> Int32
+pub fn MlregressquantileGraphN::max(Self) -> Double
+pub fn MlregressquantileGraphN::mean(Self) -> Double
+pub fn MlregressquantileGraphN::min(Self) -> Double
+pub fn MlregressquantileGraphN::scale(Self, Double) -> Self
+pub fn MlregressquantileGraphN::set(Self, Int32, Double) -> Self
+pub fn MlregressquantileGraphN::sum(Self) -> Double
+pub fn MlregressquantileGraphN::to_string(Self) -> String
+
+pub(all) struct MlregressquantileLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregressquantileLayer::add(Self, Self) -> Self
+pub fn MlregressquantileLayer::copy(Self) -> Self
+pub fn MlregressquantileLayer::fill(Self, Double) -> Self
+pub fn MlregressquantileLayer::get(Self, Int32) -> Double
+pub fn MlregressquantileLayer::len(Self) -> Int32
+pub fn MlregressquantileLayer::max(Self) -> Double
+pub fn MlregressquantileLayer::mean(Self) -> Double
+pub fn MlregressquantileLayer::min(Self) -> Double
+pub fn MlregressquantileLayer::scale(Self, Double) -> Self
+pub fn MlregressquantileLayer::set(Self, Int32, Double) -> Self
+pub fn MlregressquantileLayer::sum(Self) -> Double
+pub fn MlregressquantileLayer::to_string(Self) -> String
+
+pub(all) struct MlregressquantileMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlregressquantileMatrix::add(Self, Self) -> Self
+pub fn MlregressquantileMatrix::det(Self) -> Double
+pub fn MlregressquantileMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlregressquantileMatrix::multiply(Self, Self) -> Self
+pub fn MlregressquantileMatrix::norm(Self) -> Double
+pub fn MlregressquantileMatrix::scale(Self, Double) -> Self
+pub fn MlregressquantileMatrix::to_string(Self) -> String
+pub fn MlregressquantileMatrix::trace(Self) -> Double
+pub fn MlregressquantileMatrix::transpose(Self) -> Self
+
+pub(all) struct MlregressquantileModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregressquantileModel::add(Self, Self) -> Self
+pub fn MlregressquantileModel::copy(Self) -> Self
+pub fn MlregressquantileModel::fill(Self, Double) -> Self
+pub fn MlregressquantileModel::get(Self, Int32) -> Double
+pub fn MlregressquantileModel::len(Self) -> Int32
+pub fn MlregressquantileModel::max(Self) -> Double
+pub fn MlregressquantileModel::mean(Self) -> Double
+pub fn MlregressquantileModel::min(Self) -> Double
+pub fn MlregressquantileModel::scale(Self, Double) -> Self
+pub fn MlregressquantileModel::set(Self, Int32, Double) -> Self
+pub fn MlregressquantileModel::sum(Self) -> Double
+pub fn MlregressquantileModel::to_string(Self) -> String
+
+pub(all) struct MlregressquantileNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregressquantileNode::add(Self, Self) -> Self
+pub fn MlregressquantileNode::copy(Self) -> Self
+pub fn MlregressquantileNode::fill(Self, Double) -> Self
+pub fn MlregressquantileNode::get(Self, Int32) -> Double
+pub fn MlregressquantileNode::len(Self) -> Int32
+pub fn MlregressquantileNode::max(Self) -> Double
+pub fn MlregressquantileNode::mean(Self) -> Double
+pub fn MlregressquantileNode::min(Self) -> Double
+pub fn MlregressquantileNode::scale(Self, Double) -> Self
+pub fn MlregressquantileNode::set(Self, Int32, Double) -> Self
+pub fn MlregressquantileNode::sum(Self) -> Double
+pub fn MlregressquantileNode::to_string(Self) -> String
+
+pub(all) struct MlregressquantilePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregressquantilePath::add(Self, Self) -> Self
+pub fn MlregressquantilePath::copy(Self) -> Self
+pub fn MlregressquantilePath::fill(Self, Double) -> Self
+pub fn MlregressquantilePath::get(Self, Int32) -> Double
+pub fn MlregressquantilePath::len(Self) -> Int32
+pub fn MlregressquantilePath::max(Self) -> Double
+pub fn MlregressquantilePath::mean(Self) -> Double
+pub fn MlregressquantilePath::min(Self) -> Double
+pub fn MlregressquantilePath::scale(Self, Double) -> Self
+pub fn MlregressquantilePath::set(Self, Int32, Double) -> Self
+pub fn MlregressquantilePath::sum(Self) -> Double
+pub fn MlregressquantilePath::to_string(Self) -> String
+
+pub(all) struct MlregressquantilePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlregressquantilePoint::add(Self, Self) -> Self
+pub fn MlregressquantilePoint::cross(Self, Self) -> Self
+pub fn MlregressquantilePoint::dist(Self, Self) -> Double
+pub fn MlregressquantilePoint::dot(Self, Self) -> Double
+pub fn MlregressquantilePoint::label(Self) -> Int32
+pub fn MlregressquantilePoint::lerp(Self, Self, Double) -> Self
+pub fn MlregressquantilePoint::mid(Self, Self) -> Self
+pub fn MlregressquantilePoint::negate(Self) -> Self
+pub fn MlregressquantilePoint::norm(Self) -> Double
+pub fn MlregressquantilePoint::normalize(Self) -> Self
+pub fn MlregressquantilePoint::scale(Self, Double) -> Self
+pub fn MlregressquantilePoint::sub(Self, Self) -> Self
+pub fn MlregressquantilePoint::to_string(Self) -> String
+pub fn MlregressquantilePoint::x(Self) -> Double
+pub fn MlregressquantilePoint::y(Self) -> Double
+pub fn MlregressquantilePoint::z(Self) -> Double
+
+pub(all) struct MlregressquantileRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregressquantileRange::add(Self, Self) -> Self
+pub fn MlregressquantileRange::copy(Self) -> Self
+pub fn MlregressquantileRange::fill(Self, Double) -> Self
+pub fn MlregressquantileRange::get(Self, Int32) -> Double
+pub fn MlregressquantileRange::len(Self) -> Int32
+pub fn MlregressquantileRange::max(Self) -> Double
+pub fn MlregressquantileRange::mean(Self) -> Double
+pub fn MlregressquantileRange::min(Self) -> Double
+pub fn MlregressquantileRange::scale(Self, Double) -> Self
+pub fn MlregressquantileRange::set(Self, Int32, Double) -> Self
+pub fn MlregressquantileRange::sum(Self) -> Double
+pub fn MlregressquantileRange::to_string(Self) -> String
+
+pub(all) struct MlregressquantileSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlregressquantileSeries::add(Self, Self) -> Self
+pub fn MlregressquantileSeries::cumsum(Self) -> Self
+pub fn MlregressquantileSeries::len(Self) -> Int32
+pub fn MlregressquantileSeries::max(Self) -> Double
+pub fn MlregressquantileSeries::mean(Self) -> Double
+pub fn MlregressquantileSeries::median(Self) -> Double
+pub fn MlregressquantileSeries::min(Self) -> Double
+pub fn MlregressquantileSeries::normalize(Self) -> Self
+pub fn MlregressquantileSeries::range(Self) -> Double
+pub fn MlregressquantileSeries::scale(Self, Double) -> Self
+pub fn MlregressquantileSeries::std(Self) -> Double
+pub fn MlregressquantileSeries::sub(Self, Self) -> Self
+pub fn MlregressquantileSeries::sum(Self) -> Double
+pub fn MlregressquantileSeries::to_string(Self) -> String
+pub fn MlregressquantileSeries::variance(Self) -> Double
+
+pub(all) struct MlregressquantileSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregressquantileSlice::add(Self, Self) -> Self
+pub fn MlregressquantileSlice::copy(Self) -> Self
+pub fn MlregressquantileSlice::fill(Self, Double) -> Self
+pub fn MlregressquantileSlice::get(Self, Int32) -> Double
+pub fn MlregressquantileSlice::len(Self) -> Int32
+pub fn MlregressquantileSlice::max(Self) -> Double
+pub fn MlregressquantileSlice::mean(Self) -> Double
+pub fn MlregressquantileSlice::min(Self) -> Double
+pub fn MlregressquantileSlice::scale(Self, Double) -> Self
+pub fn MlregressquantileSlice::set(Self, Int32, Double) -> Self
+pub fn MlregressquantileSlice::sum(Self) -> Double
+pub fn MlregressquantileSlice::to_string(Self) -> String
+
+pub(all) struct MlregressquantileTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregressquantileTable::add(Self, Self) -> Self
+pub fn MlregressquantileTable::copy(Self) -> Self
+pub fn MlregressquantileTable::fill(Self, Double) -> Self
+pub fn MlregressquantileTable::get(Self, Int32) -> Double
+pub fn MlregressquantileTable::len(Self) -> Int32
+pub fn MlregressquantileTable::max(Self) -> Double
+pub fn MlregressquantileTable::mean(Self) -> Double
+pub fn MlregressquantileTable::min(Self) -> Double
+pub fn MlregressquantileTable::scale(Self, Double) -> Self
+pub fn MlregressquantileTable::set(Self, Int32, Double) -> Self
+pub fn MlregressquantileTable::sum(Self) -> Double
+pub fn MlregressquantileTable::to_string(Self) -> String
+
+pub(all) struct MlregressquantileVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlregressquantileVector::add(Self, Self) -> Self
+pub fn MlregressquantileVector::dist(Self, Self) -> Double
+pub fn MlregressquantileVector::dot(Self, Self) -> Double
+pub fn MlregressquantileVector::norm(Self) -> Double
+pub fn MlregressquantileVector::normalize(Self) -> Self
+pub fn MlregressquantileVector::scale(Self, Double) -> Self
+pub fn MlregressquantileVector::sub(Self, Self) -> Self
+pub fn MlregressquantileVector::to_string(Self) -> String
+
+pub(all) struct MlregressquantileView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregressquantileView::add(Self, Self) -> Self
+pub fn MlregressquantileView::copy(Self) -> Self
+pub fn MlregressquantileView::fill(Self, Double) -> Self
+pub fn MlregressquantileView::get(Self, Int32) -> Double
+pub fn MlregressquantileView::len(Self) -> Int32
+pub fn MlregressquantileView::max(Self) -> Double
+pub fn MlregressquantileView::mean(Self) -> Double
+pub fn MlregressquantileView::min(Self) -> Double
+pub fn MlregressquantileView::scale(Self, Double) -> Self
+pub fn MlregressquantileView::set(Self, Int32, Double) -> Self
+pub fn MlregressquantileView::sum(Self) -> Double
+pub fn MlregressquantileView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

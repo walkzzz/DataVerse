@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/intention_plan"
+
+// Values
+pub fn intention_plan_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn intention_plan_corr(Array[Double], Array[Double]) -> Double
+
+pub fn intention_plan_cov(Array[Double], Array[Double]) -> Double
+
+pub fn intention_plan_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn intention_plan_mae(Array[Double], Array[Double]) -> Double
+
+pub fn intention_plan_make_labeled_point(Double, Double, Int32) -> Intention_planPoint
+
+pub fn intention_plan_make_matrix(Int32, Int32, Double) -> Intention_planMatrix
+
+pub fn intention_plan_make_point(Double, Double) -> Intention_planPoint
+
+pub fn intention_plan_make_series(Array[Double], String) -> Intention_planSeries
+
+pub fn intention_plan_make_vector(Array[Double]) -> Intention_planVector
+
+pub fn intention_plan_matrix_add(Intention_planMatrix, Intention_planMatrix) -> Intention_planMatrix
+
+pub fn intention_plan_matrix_get(Intention_planMatrix, Int32, Int32) -> Double
+
+pub fn intention_plan_matrix_identity(Int32) -> Intention_planMatrix
+
+pub fn intention_plan_matrix_multiply(Intention_planMatrix, Intention_planMatrix) -> Intention_planMatrix
+
+pub fn intention_plan_matrix_norm(Intention_planMatrix) -> Double
+
+pub fn intention_plan_matrix_scale(Intention_planMatrix, Double) -> Intention_planMatrix
+
+pub fn intention_plan_matrix_to_string(Intention_planMatrix) -> String
+
+pub fn intention_plan_matrix_trace(Intention_planMatrix) -> Double
+
+pub fn intention_plan_matrix_transpose(Intention_planMatrix) -> Intention_planMatrix
+
+pub fn intention_plan_mse(Array[Double], Array[Double]) -> Double
+
+pub fn intention_plan_point_add(Intention_planPoint, Intention_planPoint) -> Intention_planPoint
+
+pub fn intention_plan_point_dist(Intention_planPoint, Intention_planPoint) -> Double
+
+pub fn intention_plan_point_dot(Intention_planPoint, Intention_planPoint) -> Double
+
+pub fn intention_plan_point_label(Intention_planPoint) -> Int32
+
+pub fn intention_plan_point_norm(Intention_planPoint) -> Double
+
+pub fn intention_plan_point_scale(Intention_planPoint, Double) -> Intention_planPoint
+
+pub fn intention_plan_point_sub(Intention_planPoint, Intention_planPoint) -> Intention_planPoint
+
+pub fn intention_plan_point_to_string(Intention_planPoint) -> String
+
+pub fn intention_plan_point_x(Intention_planPoint) -> Double
+
+pub fn intention_plan_point_y(Intention_planPoint) -> Double
+
+pub fn intention_plan_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn intention_plan_r2(Array[Double], Array[Double]) -> Double
+
+pub fn intention_plan_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn intention_plan_series_add(Intention_planSeries, Intention_planSeries) -> Intention_planSeries
+
+pub fn intention_plan_series_len(Intention_planSeries) -> Int32
+
+pub fn intention_plan_series_max(Intention_planSeries) -> Double
+
+pub fn intention_plan_series_mean(Intention_planSeries) -> Double
+
+pub fn intention_plan_series_min(Intention_planSeries) -> Double
+
+pub fn intention_plan_series_scale(Intention_planSeries, Double) -> Intention_planSeries
+
+pub fn intention_plan_series_std(Intention_planSeries) -> Double
+
+pub fn intention_plan_series_sum(Intention_planSeries) -> Double
+
+pub fn intention_plan_series_to_string(Intention_planSeries) -> String
+
+pub fn intention_plan_series_var(Intention_planSeries) -> Double
+
+pub fn intention_plan_std(Array[Double]) -> Double
+
+pub fn intention_plan_var(Array[Double]) -> Double
+
+pub fn intention_plan_vector_add(Intention_planVector, Intention_planVector) -> Intention_planVector
+
+pub fn intention_plan_vector_dist(Intention_planVector, Intention_planVector) -> Double
+
+pub fn intention_plan_vector_dot(Intention_planVector, Intention_planVector) -> Double
+
+pub fn intention_plan_vector_norm(Intention_planVector) -> Double
+
+pub fn intention_plan_vector_normalize(Intention_planVector) -> Intention_planVector
+
+pub fn intention_plan_vector_scale(Intention_planVector, Double) -> Intention_planVector
+
+pub fn intention_plan_vector_sub(Intention_planVector, Intention_planVector) -> Intention_planVector
+
+pub fn intention_plan_vector_to_string(Intention_planVector) -> String
+
+pub fn intention_plan_vector_zero(Int32) -> Intention_planVector
+
+// Errors
+
+// Types and methods
+pub struct Intention_planMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Intention_planPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Intention_planSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Intention_planVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

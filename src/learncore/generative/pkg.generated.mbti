@@ -1,0 +1,223 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/generative"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn autoregressive_loss(AutoregressiveModel, Array[Int32], Array[Int32]) -> Double
+
+pub fn autoregressive_sample(AutoregressiveModel, Array[Int32], Int32) -> Array[Int32]
+
+pub fn conditional_generate(GANModel, Array[Double], Array[Double]) -> Array[Double]
+
+pub fn controlled_generate(GANModel, Array[Double], Array[Double]) -> Array[Double]
+
+pub fn diffusion_forward(DiffusionModel, Array[Double], Int32, Int32) -> Array[Double]
+
+pub fn diffusion_reverse(DiffusionModel, Array[Double], Int32, Int32) -> Array[Double]
+
+pub fn diffusion_step(DiffusionModel, Array[Double], Int32, Int32) -> Array[Double]
+
+pub fn discriminator_forward(DiscriminatorNet, Array[Double]) -> Double
+
+pub fn discriminator_loss(Double, Double) -> Double
+
+pub fn fid_score_simple(Array[Array[Double]], Array[Array[Double]]) -> Double
+
+pub fn flow_forward(FlowModel, Array[Double]) -> Array[Double]
+
+pub fn flow_inverse(FlowModel, Array[Double]) -> Array[Double]
+
+pub fn flow_log_prob(FlowModel, Array[Double]) -> Double
+
+pub fn gan_discriminate(GANModel, Array[Double]) -> Double
+
+pub fn gan_generate(GANModel, Array[Double]) -> Array[Double]
+
+pub fn gan_train_step(GANModel, Array[Double], Int32) -> (GANModel, Double)
+
+pub fn generate_id() -> String
+
+pub fn generate_image_simple(Int32, Int32, Int32) -> Array[Array[Double]]
+
+pub fn generate_sequence(AutoregressiveModel, Array[Int32], Int32) -> Array[Int32]
+
+pub fn generate_text(TextGANModel, Array[Int32], Int32) -> Array[Int32]
+
+pub fn generator_forward(GeneratorNet, Array[Double]) -> Array[Double]
+
+pub fn generator_loss(Double) -> Double
+
+pub fn hmm_generate(HMMGenModel, Int32, Int32) -> (Array[Int32], Array[Int32])
+
+pub fn hmm_viterbi_gen(HMMGenModel, Array[Int32]) -> Array[Int32]
+
+pub fn inception_score_simple(Array[Array[Double]], Int32) -> Double
+
+pub fn interpolate_latent(Array[Double], Array[Double], Double) -> Array[Double]
+
+pub fn latent_space_interpolation(Array[Double], Array[Double], Int32) -> Array[Array[Double]]
+
+pub fn make_autoregressive(Int32, Int32, Int32, Int32) -> AutoregressiveModel
+
+pub fn make_diffusion(Int32, Double, Double, Int32, Int32) -> DiffusionModel
+
+pub fn make_discriminator_net(Int32, Int32, Int32) -> DiscriminatorNet
+
+pub fn make_flow_model(Int32, Int32, Int32) -> FlowModel
+
+pub fn make_gan_model(Int32, Int32, Int32, Double, Int32) -> GANModel
+
+pub fn make_generator_net(Int32, Int32, Int32, Int32) -> GeneratorNet
+
+pub fn make_hmm_gen(Int32, Int32, Array[Array[Double]], Array[Array[Double]], Array[Double], Int32) -> HMMGenModel
+
+pub fn make_markov_model(Int32, Array[Array[Double]], Array[Double], Int32) -> MarkovModel
+
+pub fn make_text_gan(Int32, Int32, Int32, Int32) -> TextGANModel
+
+pub fn make_vae_model(Int32, Int32, Int32, Double, Int32) -> VAEModel
+
+pub fn markov_prob(MarkovModel, Int32, Int32) -> Double
+
+pub fn markov_sample(MarkovModel, Int32, Int32) -> Array[Int32]
+
+pub fn mode_collapse_check(Array[Array[Double]], Double) -> Bool
+
+pub fn noise_bernoulli(Int32, Double, Int32) -> Array[Double]
+
+pub fn noise_normal(Int32, Double, Double, Int32) -> Array[Double]
+
+pub fn noise_uniform(Int32, Double, Double, Int32) -> Array[Double]
+
+pub fn sample_categorical(Array[Double], Int32) -> Int32
+
+pub fn sample_dirichlet(Array[Double], Int32) -> Array[Double]
+
+pub fn sample_multinomial(Array[Double], Int32, Int32) -> Array[Int32]
+
+pub fn text_gan_discriminate(TextGANModel, Array[Int32]) -> Double
+
+pub fn text_gan_generate(TextGANModel, Array[Double]) -> Array[Int32]
+
+pub fn vae_decode(VAEModel, Array[Double]) -> Array[Double]
+
+pub fn vae_encode(VAEModel, Array[Double]) -> (Array[Double], Array[Double])
+
+pub fn vae_loss(Array[Double], Array[Double], Array[Double], Array[Double]) -> Double
+
+pub fn vae_sample(VAEModel, Array[Double], Array[Double], Int32) -> Array[Double]
+
+// Errors
+
+// Types and methods
+pub struct AutoregressiveModel {
+  vocab_size : Int32
+  seq_len : Int32
+  hidden_dim : Int32
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn AutoregressiveModel::equal(Self, Self) -> Bool
+pub fn AutoregressiveModel::not_equal(Self, Self) -> Bool
+pub fn AutoregressiveModel::to_repr(Self) -> @debug.Repr
+
+pub struct DiffusionModel {
+  num_steps : Int32
+  beta_start : Double
+  beta_end : Double
+  input_dim : Int32
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn DiffusionModel::equal(Self, Self) -> Bool
+pub fn DiffusionModel::not_equal(Self, Self) -> Bool
+pub fn DiffusionModel::to_repr(Self) -> @debug.Repr
+
+pub struct DiscriminatorNet {
+  input_dim : Int32
+  hidden_dim : Int32
+  weights : Array[Array[Double]]
+  bias : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn DiscriminatorNet::equal(Self, Self) -> Bool
+pub fn DiscriminatorNet::not_equal(Self, Self) -> Bool
+pub fn DiscriminatorNet::to_repr(Self) -> @debug.Repr
+
+pub struct FlowModel {
+  input_dim : Int32
+  num_layers : Int32
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn FlowModel::equal(Self, Self) -> Bool
+pub fn FlowModel::not_equal(Self, Self) -> Bool
+pub fn FlowModel::to_repr(Self) -> @debug.Repr
+
+pub struct GANModel {
+  gen_dim : Int32
+  disc_dim : Int32
+  noise_dim : Int32
+  lr : Double
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn GANModel::equal(Self, Self) -> Bool
+pub fn GANModel::not_equal(Self, Self) -> Bool
+pub fn GANModel::to_repr(Self) -> @debug.Repr
+
+pub struct GeneratorNet {
+  input_dim : Int32
+  output_dim : Int32
+  hidden_dim : Int32
+  weights : Array[Array[Double]]
+  bias : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn GeneratorNet::equal(Self, Self) -> Bool
+pub fn GeneratorNet::not_equal(Self, Self) -> Bool
+pub fn GeneratorNet::to_repr(Self) -> @debug.Repr
+
+pub struct HMMGenModel {
+  num_states : Int32
+  num_obs : Int32
+  transition : Array[Array[Double]]
+  emission : Array[Array[Double]]
+  initial : Array[Double]
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn HMMGenModel::equal(Self, Self) -> Bool
+pub fn HMMGenModel::not_equal(Self, Self) -> Bool
+pub fn HMMGenModel::to_repr(Self) -> @debug.Repr
+
+pub struct MarkovModel {
+  num_states : Int32
+  transition : Array[Array[Double]]
+  initial : Array[Double]
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn MarkovModel::equal(Self, Self) -> Bool
+pub fn MarkovModel::not_equal(Self, Self) -> Bool
+pub fn MarkovModel::to_repr(Self) -> @debug.Repr
+
+pub struct TextGANModel {
+  vocab_size : Int32
+  seq_len : Int32
+  embed_dim : Int32
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn TextGANModel::equal(Self, Self) -> Bool
+pub fn TextGANModel::not_equal(Self, Self) -> Bool
+pub fn TextGANModel::to_repr(Self) -> @debug.Repr
+
+pub struct VAEModel {
+  input_dim : Int32
+  hidden_dim : Int32
+  latent_dim : Int32
+  lr : Double
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn VAEModel::equal(Self, Self) -> Bool
+pub fn VAEModel::not_equal(Self, Self) -> Bool
+pub fn VAEModel::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_buffer_multi"
+
+// Values
+pub fn geo_buffer_multi_buffer_make(Int32) -> GeobuffermultiBuffer
+
+pub fn geo_buffer_multi_cluster_make(Int32) -> GeobuffermultiCluster
+
+pub fn geo_buffer_multi_cursor_make(Int32) -> GeobuffermultiCursor
+
+pub fn geo_buffer_multi_edge_make(Int32) -> GeobuffermultiEdge
+
+pub fn geo_buffer_multi_frame_make(Int32) -> GeobuffermultiFrame
+
+pub fn geo_buffer_multi_graphn_make(Int32) -> GeobuffermultiGraphN
+
+pub fn geo_buffer_multi_layer_make(Int32) -> GeobuffermultiLayer
+
+pub fn geo_buffer_multi_make_matrix(Int32, Int32, Double) -> GeobuffermultiMatrix
+
+pub fn geo_buffer_multi_make_point(Double, Double) -> GeobuffermultiPoint
+
+pub fn geo_buffer_multi_make_point3(Double, Double, Double) -> GeobuffermultiPoint
+
+pub fn geo_buffer_multi_make_series(Array[Double], String) -> GeobuffermultiSeries
+
+pub fn geo_buffer_multi_make_vector(Array[Double]) -> GeobuffermultiVector
+
+pub fn geo_buffer_multi_matrix_identity(Int32) -> GeobuffermultiMatrix
+
+pub fn geo_buffer_multi_model_make(Int32) -> GeobuffermultiModel
+
+pub fn geo_buffer_multi_node_make(Int32) -> GeobuffermultiNode
+
+pub fn geo_buffer_multi_path_make(Int32) -> GeobuffermultiPath
+
+pub fn geo_buffer_multi_range_make(Int32) -> GeobuffermultiRange
+
+pub fn geo_buffer_multi_slice_make(Int32) -> GeobuffermultiSlice
+
+pub fn geo_buffer_multi_table_make(Int32) -> GeobuffermultiTable
+
+pub fn geo_buffer_multi_vector_zero(Int32) -> GeobuffermultiVector
+
+pub fn geo_buffer_multi_view_make(Int32) -> GeobuffermultiView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeobuffermultiBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffermultiBuffer::add(Self, Self) -> Self
+pub fn GeobuffermultiBuffer::copy(Self) -> Self
+pub fn GeobuffermultiBuffer::fill(Self, Double) -> Self
+pub fn GeobuffermultiBuffer::get(Self, Int32) -> Double
+pub fn GeobuffermultiBuffer::len(Self) -> Int32
+pub fn GeobuffermultiBuffer::max(Self) -> Double
+pub fn GeobuffermultiBuffer::mean(Self) -> Double
+pub fn GeobuffermultiBuffer::min(Self) -> Double
+pub fn GeobuffermultiBuffer::scale(Self, Double) -> Self
+pub fn GeobuffermultiBuffer::set(Self, Int32, Double) -> Self
+pub fn GeobuffermultiBuffer::sum(Self) -> Double
+pub fn GeobuffermultiBuffer::to_string(Self) -> String
+
+pub(all) struct GeobuffermultiCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffermultiCluster::add(Self, Self) -> Self
+pub fn GeobuffermultiCluster::copy(Self) -> Self
+pub fn GeobuffermultiCluster::fill(Self, Double) -> Self
+pub fn GeobuffermultiCluster::get(Self, Int32) -> Double
+pub fn GeobuffermultiCluster::len(Self) -> Int32
+pub fn GeobuffermultiCluster::max(Self) -> Double
+pub fn GeobuffermultiCluster::mean(Self) -> Double
+pub fn GeobuffermultiCluster::min(Self) -> Double
+pub fn GeobuffermultiCluster::scale(Self, Double) -> Self
+pub fn GeobuffermultiCluster::set(Self, Int32, Double) -> Self
+pub fn GeobuffermultiCluster::sum(Self) -> Double
+pub fn GeobuffermultiCluster::to_string(Self) -> String
+
+pub(all) struct GeobuffermultiCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffermultiCursor::add(Self, Self) -> Self
+pub fn GeobuffermultiCursor::copy(Self) -> Self
+pub fn GeobuffermultiCursor::fill(Self, Double) -> Self
+pub fn GeobuffermultiCursor::get(Self, Int32) -> Double
+pub fn GeobuffermultiCursor::len(Self) -> Int32
+pub fn GeobuffermultiCursor::max(Self) -> Double
+pub fn GeobuffermultiCursor::mean(Self) -> Double
+pub fn GeobuffermultiCursor::min(Self) -> Double
+pub fn GeobuffermultiCursor::scale(Self, Double) -> Self
+pub fn GeobuffermultiCursor::set(Self, Int32, Double) -> Self
+pub fn GeobuffermultiCursor::sum(Self) -> Double
+pub fn GeobuffermultiCursor::to_string(Self) -> String
+
+pub(all) struct GeobuffermultiEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffermultiEdge::add(Self, Self) -> Self
+pub fn GeobuffermultiEdge::copy(Self) -> Self
+pub fn GeobuffermultiEdge::fill(Self, Double) -> Self
+pub fn GeobuffermultiEdge::get(Self, Int32) -> Double
+pub fn GeobuffermultiEdge::len(Self) -> Int32
+pub fn GeobuffermultiEdge::max(Self) -> Double
+pub fn GeobuffermultiEdge::mean(Self) -> Double
+pub fn GeobuffermultiEdge::min(Self) -> Double
+pub fn GeobuffermultiEdge::scale(Self, Double) -> Self
+pub fn GeobuffermultiEdge::set(Self, Int32, Double) -> Self
+pub fn GeobuffermultiEdge::sum(Self) -> Double
+pub fn GeobuffermultiEdge::to_string(Self) -> String
+
+pub(all) struct GeobuffermultiFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffermultiFrame::add(Self, Self) -> Self
+pub fn GeobuffermultiFrame::copy(Self) -> Self
+pub fn GeobuffermultiFrame::fill(Self, Double) -> Self
+pub fn GeobuffermultiFrame::get(Self, Int32) -> Double
+pub fn GeobuffermultiFrame::len(Self) -> Int32
+pub fn GeobuffermultiFrame::max(Self) -> Double
+pub fn GeobuffermultiFrame::mean(Self) -> Double
+pub fn GeobuffermultiFrame::min(Self) -> Double
+pub fn GeobuffermultiFrame::scale(Self, Double) -> Self
+pub fn GeobuffermultiFrame::set(Self, Int32, Double) -> Self
+pub fn GeobuffermultiFrame::sum(Self) -> Double
+pub fn GeobuffermultiFrame::to_string(Self) -> String
+
+pub(all) struct GeobuffermultiGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffermultiGraphN::add(Self, Self) -> Self
+pub fn GeobuffermultiGraphN::copy(Self) -> Self
+pub fn GeobuffermultiGraphN::fill(Self, Double) -> Self
+pub fn GeobuffermultiGraphN::get(Self, Int32) -> Double
+pub fn GeobuffermultiGraphN::len(Self) -> Int32
+pub fn GeobuffermultiGraphN::max(Self) -> Double
+pub fn GeobuffermultiGraphN::mean(Self) -> Double
+pub fn GeobuffermultiGraphN::min(Self) -> Double
+pub fn GeobuffermultiGraphN::scale(Self, Double) -> Self
+pub fn GeobuffermultiGraphN::set(Self, Int32, Double) -> Self
+pub fn GeobuffermultiGraphN::sum(Self) -> Double
+pub fn GeobuffermultiGraphN::to_string(Self) -> String
+
+pub(all) struct GeobuffermultiLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffermultiLayer::add(Self, Self) -> Self
+pub fn GeobuffermultiLayer::copy(Self) -> Self
+pub fn GeobuffermultiLayer::fill(Self, Double) -> Self
+pub fn GeobuffermultiLayer::get(Self, Int32) -> Double
+pub fn GeobuffermultiLayer::len(Self) -> Int32
+pub fn GeobuffermultiLayer::max(Self) -> Double
+pub fn GeobuffermultiLayer::mean(Self) -> Double
+pub fn GeobuffermultiLayer::min(Self) -> Double
+pub fn GeobuffermultiLayer::scale(Self, Double) -> Self
+pub fn GeobuffermultiLayer::set(Self, Int32, Double) -> Self
+pub fn GeobuffermultiLayer::sum(Self) -> Double
+pub fn GeobuffermultiLayer::to_string(Self) -> String
+
+pub(all) struct GeobuffermultiMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeobuffermultiMatrix::add(Self, Self) -> Self
+pub fn GeobuffermultiMatrix::det(Self) -> Double
+pub fn GeobuffermultiMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeobuffermultiMatrix::multiply(Self, Self) -> Self
+pub fn GeobuffermultiMatrix::norm(Self) -> Double
+pub fn GeobuffermultiMatrix::scale(Self, Double) -> Self
+pub fn GeobuffermultiMatrix::to_string(Self) -> String
+pub fn GeobuffermultiMatrix::trace(Self) -> Double
+pub fn GeobuffermultiMatrix::transpose(Self) -> Self
+
+pub(all) struct GeobuffermultiModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffermultiModel::add(Self, Self) -> Self
+pub fn GeobuffermultiModel::copy(Self) -> Self
+pub fn GeobuffermultiModel::fill(Self, Double) -> Self
+pub fn GeobuffermultiModel::get(Self, Int32) -> Double
+pub fn GeobuffermultiModel::len(Self) -> Int32
+pub fn GeobuffermultiModel::max(Self) -> Double
+pub fn GeobuffermultiModel::mean(Self) -> Double
+pub fn GeobuffermultiModel::min(Self) -> Double
+pub fn GeobuffermultiModel::scale(Self, Double) -> Self
+pub fn GeobuffermultiModel::set(Self, Int32, Double) -> Self
+pub fn GeobuffermultiModel::sum(Self) -> Double
+pub fn GeobuffermultiModel::to_string(Self) -> String
+
+pub(all) struct GeobuffermultiNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffermultiNode::add(Self, Self) -> Self
+pub fn GeobuffermultiNode::copy(Self) -> Self
+pub fn GeobuffermultiNode::fill(Self, Double) -> Self
+pub fn GeobuffermultiNode::get(Self, Int32) -> Double
+pub fn GeobuffermultiNode::len(Self) -> Int32
+pub fn GeobuffermultiNode::max(Self) -> Double
+pub fn GeobuffermultiNode::mean(Self) -> Double
+pub fn GeobuffermultiNode::min(Self) -> Double
+pub fn GeobuffermultiNode::scale(Self, Double) -> Self
+pub fn GeobuffermultiNode::set(Self, Int32, Double) -> Self
+pub fn GeobuffermultiNode::sum(Self) -> Double
+pub fn GeobuffermultiNode::to_string(Self) -> String
+
+pub(all) struct GeobuffermultiPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffermultiPath::add(Self, Self) -> Self
+pub fn GeobuffermultiPath::copy(Self) -> Self
+pub fn GeobuffermultiPath::fill(Self, Double) -> Self
+pub fn GeobuffermultiPath::get(Self, Int32) -> Double
+pub fn GeobuffermultiPath::len(Self) -> Int32
+pub fn GeobuffermultiPath::max(Self) -> Double
+pub fn GeobuffermultiPath::mean(Self) -> Double
+pub fn GeobuffermultiPath::min(Self) -> Double
+pub fn GeobuffermultiPath::scale(Self, Double) -> Self
+pub fn GeobuffermultiPath::set(Self, Int32, Double) -> Self
+pub fn GeobuffermultiPath::sum(Self) -> Double
+pub fn GeobuffermultiPath::to_string(Self) -> String
+
+pub(all) struct GeobuffermultiPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeobuffermultiPoint::add(Self, Self) -> Self
+pub fn GeobuffermultiPoint::cross(Self, Self) -> Self
+pub fn GeobuffermultiPoint::dist(Self, Self) -> Double
+pub fn GeobuffermultiPoint::dot(Self, Self) -> Double
+pub fn GeobuffermultiPoint::label(Self) -> Int32
+pub fn GeobuffermultiPoint::lerp(Self, Self, Double) -> Self
+pub fn GeobuffermultiPoint::mid(Self, Self) -> Self
+pub fn GeobuffermultiPoint::negate(Self) -> Self
+pub fn GeobuffermultiPoint::norm(Self) -> Double
+pub fn GeobuffermultiPoint::normalize(Self) -> Self
+pub fn GeobuffermultiPoint::scale(Self, Double) -> Self
+pub fn GeobuffermultiPoint::sub(Self, Self) -> Self
+pub fn GeobuffermultiPoint::to_string(Self) -> String
+pub fn GeobuffermultiPoint::x(Self) -> Double
+pub fn GeobuffermultiPoint::y(Self) -> Double
+pub fn GeobuffermultiPoint::z(Self) -> Double
+
+pub(all) struct GeobuffermultiRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffermultiRange::add(Self, Self) -> Self
+pub fn GeobuffermultiRange::copy(Self) -> Self
+pub fn GeobuffermultiRange::fill(Self, Double) -> Self
+pub fn GeobuffermultiRange::get(Self, Int32) -> Double
+pub fn GeobuffermultiRange::len(Self) -> Int32
+pub fn GeobuffermultiRange::max(Self) -> Double
+pub fn GeobuffermultiRange::mean(Self) -> Double
+pub fn GeobuffermultiRange::min(Self) -> Double
+pub fn GeobuffermultiRange::scale(Self, Double) -> Self
+pub fn GeobuffermultiRange::set(Self, Int32, Double) -> Self
+pub fn GeobuffermultiRange::sum(Self) -> Double
+pub fn GeobuffermultiRange::to_string(Self) -> String
+
+pub(all) struct GeobuffermultiSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeobuffermultiSeries::add(Self, Self) -> Self
+pub fn GeobuffermultiSeries::cumsum(Self) -> Self
+pub fn GeobuffermultiSeries::len(Self) -> Int32
+pub fn GeobuffermultiSeries::max(Self) -> Double
+pub fn GeobuffermultiSeries::mean(Self) -> Double
+pub fn GeobuffermultiSeries::median(Self) -> Double
+pub fn GeobuffermultiSeries::min(Self) -> Double
+pub fn GeobuffermultiSeries::normalize(Self) -> Self
+pub fn GeobuffermultiSeries::range(Self) -> Double
+pub fn GeobuffermultiSeries::scale(Self, Double) -> Self
+pub fn GeobuffermultiSeries::std(Self) -> Double
+pub fn GeobuffermultiSeries::sub(Self, Self) -> Self
+pub fn GeobuffermultiSeries::sum(Self) -> Double
+pub fn GeobuffermultiSeries::to_string(Self) -> String
+pub fn GeobuffermultiSeries::variance(Self) -> Double
+
+pub(all) struct GeobuffermultiSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffermultiSlice::add(Self, Self) -> Self
+pub fn GeobuffermultiSlice::copy(Self) -> Self
+pub fn GeobuffermultiSlice::fill(Self, Double) -> Self
+pub fn GeobuffermultiSlice::get(Self, Int32) -> Double
+pub fn GeobuffermultiSlice::len(Self) -> Int32
+pub fn GeobuffermultiSlice::max(Self) -> Double
+pub fn GeobuffermultiSlice::mean(Self) -> Double
+pub fn GeobuffermultiSlice::min(Self) -> Double
+pub fn GeobuffermultiSlice::scale(Self, Double) -> Self
+pub fn GeobuffermultiSlice::set(Self, Int32, Double) -> Self
+pub fn GeobuffermultiSlice::sum(Self) -> Double
+pub fn GeobuffermultiSlice::to_string(Self) -> String
+
+pub(all) struct GeobuffermultiTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffermultiTable::add(Self, Self) -> Self
+pub fn GeobuffermultiTable::copy(Self) -> Self
+pub fn GeobuffermultiTable::fill(Self, Double) -> Self
+pub fn GeobuffermultiTable::get(Self, Int32) -> Double
+pub fn GeobuffermultiTable::len(Self) -> Int32
+pub fn GeobuffermultiTable::max(Self) -> Double
+pub fn GeobuffermultiTable::mean(Self) -> Double
+pub fn GeobuffermultiTable::min(Self) -> Double
+pub fn GeobuffermultiTable::scale(Self, Double) -> Self
+pub fn GeobuffermultiTable::set(Self, Int32, Double) -> Self
+pub fn GeobuffermultiTable::sum(Self) -> Double
+pub fn GeobuffermultiTable::to_string(Self) -> String
+
+pub(all) struct GeobuffermultiVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeobuffermultiVector::add(Self, Self) -> Self
+pub fn GeobuffermultiVector::dist(Self, Self) -> Double
+pub fn GeobuffermultiVector::dot(Self, Self) -> Double
+pub fn GeobuffermultiVector::norm(Self) -> Double
+pub fn GeobuffermultiVector::normalize(Self) -> Self
+pub fn GeobuffermultiVector::scale(Self, Double) -> Self
+pub fn GeobuffermultiVector::sub(Self, Self) -> Self
+pub fn GeobuffermultiVector::to_string(Self) -> String
+
+pub(all) struct GeobuffermultiView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffermultiView::add(Self, Self) -> Self
+pub fn GeobuffermultiView::copy(Self) -> Self
+pub fn GeobuffermultiView::fill(Self, Double) -> Self
+pub fn GeobuffermultiView::get(Self, Int32) -> Double
+pub fn GeobuffermultiView::len(Self) -> Int32
+pub fn GeobuffermultiView::max(Self) -> Double
+pub fn GeobuffermultiView::mean(Self) -> Double
+pub fn GeobuffermultiView::min(Self) -> Double
+pub fn GeobuffermultiView::scale(Self, Double) -> Self
+pub fn GeobuffermultiView::set(Self, Int32, Double) -> Self
+pub fn GeobuffermultiView::sum(Self) -> Double
+pub fn GeobuffermultiView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

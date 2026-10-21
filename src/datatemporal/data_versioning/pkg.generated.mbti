@@ -1,0 +1,221 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/data_versioning"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn branch_create(Array[Branch], String, String) -> Array[Branch]
+
+pub fn branch_merge(Branch, Branch) -> Branch
+
+pub fn branch_rebase(Branch, Branch) -> Branch
+
+pub fn commit_hash(Commit) -> String
+
+pub fn commit_message(Commit) -> String
+
+pub fn commit_timestamp(Commit) -> Double
+
+pub fn data_versioning_id() -> String
+
+pub fn delta_apply(Array[(String, String)], Delta) -> Array[(String, String)]
+
+pub fn delta_compose(Delta, Delta) -> Delta
+
+pub fn delta_revert(Delta) -> Delta
+
+pub fn dvc_add(DVC, String, String) -> DVC
+
+pub fn dvc_pull(DVC) -> String
+
+pub fn dvc_push(DVC) -> String
+
+pub fn make_branch(String, String) -> Branch
+
+pub fn make_commit(String, Double, String, Array[String]) -> Commit
+
+pub fn make_delta(Int32, Int32, Array[(String, String, String)]) -> Delta
+
+pub fn make_dvc(String) -> DVC
+
+pub fn make_merge_strategy(String) -> MergeStrategy
+
+pub fn make_rollback(String, String, Double) -> Rollback
+
+pub fn make_snapshot_v(Int32) -> Snapshot
+
+pub fn make_tag(String, String, String) -> Tag
+
+pub fn make_time_travel(VersionStore) -> TimeTravel
+
+pub fn make_version_store() -> VersionStore
+
+pub fn make_versioning_policy(Int32, Int32, Bool, Bool) -> VersioningPolicy
+
+pub fn merge_three_way(Array[(String, String)], Array[(String, String)], Array[(String, String)]) -> Array[(String, String)]
+
+pub fn merge_union(Array[(String, String)], Array[(String, String)]) -> Array[(String, String)]
+
+pub fn policy_check(VersioningPolicy, VersionStore) -> Bool
+
+pub fn policy_enforce(VersioningPolicy, VersionStore) -> VersionStore
+
+pub fn rollback_create(VersionStore, String, Double) -> Rollback
+
+pub fn rollback_to(VersionStore, String) -> VersionStore
+
+pub fn snapshot_create_v(Int32, Array[(String, String)], Double) -> Snapshot
+
+pub fn snapshot_restore_v(Snapshot) -> Array[(String, String)]
+
+pub fn tag_create(Array[Tag], String, String, String) -> Array[Tag]
+
+pub fn tag_delete(Array[Tag], String) -> Array[Tag]
+
+pub fn tag_list(Array[Tag]) -> Array[String]
+
+pub fn time_travel_query(TimeTravel, Double) -> Array[Snapshot]
+
+pub fn time_travel_snapshot(TimeTravel, Int32, Array[(String, String)], Double) -> TimeTravel
+
+pub fn version_ancestors(VersionStore, String) -> Array[String]
+
+pub fn version_author(Commit) -> String
+
+pub fn version_checkout(VersionStore, String) -> VersionStore
+
+pub fn version_cleanup(VersionStore) -> VersionStore
+
+pub fn version_commit(VersionStore, String, Double, String) -> VersionStore
+
+pub fn version_compact(VersionStore) -> VersionStore
+
+pub fn version_compare(Commit, Commit) -> Int32
+
+pub fn version_conflict(Commit, Commit) -> Bool
+
+pub fn version_diff(VersionStore, String, String) -> Array[String]
+
+pub fn version_gc(VersionStore) -> VersionStore
+
+pub fn version_history(VersionStore) -> Array[Commit]
+
+pub fn version_log(VersionStore) -> Array[String]
+
+pub fn version_metadata(Commit) -> Array[(String, String)]
+
+pub fn version_resolve(Commit, Commit, String) -> Commit
+
+pub fn version_timestamp(Commit) -> Double
+
+// Errors
+
+// Types and methods
+pub struct Branch {
+  name : String
+  head : String
+  commits : Array[Commit]
+} derive(Eq, @debug.Debug)
+pub fn Branch::equal(Self, Self) -> Bool
+pub fn Branch::not_equal(Self, Self) -> Bool
+pub fn Branch::to_repr(Self) -> @debug.Repr
+
+pub struct Commit {
+  hash : String
+  message : String
+  timestamp : Double
+  author : String
+  parents : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn Commit::equal(Self, Self) -> Bool
+pub fn Commit::not_equal(Self, Self) -> Bool
+pub fn Commit::to_repr(Self) -> @debug.Repr
+
+pub struct DVC {
+  tracked_files : Array[(String, String)]
+  remote : String
+} derive(Eq, @debug.Debug)
+pub fn DVC::equal(Self, Self) -> Bool
+pub fn DVC::not_equal(Self, Self) -> Bool
+pub fn DVC::to_repr(Self) -> @debug.Repr
+
+pub struct Delta {
+  base_version : Int32
+  target_version : Int32
+  changes : Array[(String, String, String)]
+} derive(Eq, @debug.Debug)
+pub fn Delta::equal(Self, Self) -> Bool
+pub fn Delta::not_equal(Self, Self) -> Bool
+pub fn Delta::to_repr(Self) -> @debug.Repr
+
+pub(all) enum MergeStrategy {
+  ThreeWay
+  Union
+  Ours
+  Theirs
+} derive(Eq, @debug.Debug)
+pub fn MergeStrategy::equal(Self, Self) -> Bool
+pub fn MergeStrategy::not_equal(Self, Self) -> Bool
+pub fn MergeStrategy::to_repr(Self) -> @debug.Repr
+
+pub struct Rollback {
+  from_hash : String
+  to_hash : String
+  timestamp : Double
+} derive(Eq, @debug.Debug)
+pub fn Rollback::equal(Self, Self) -> Bool
+pub fn Rollback::not_equal(Self, Self) -> Bool
+pub fn Rollback::to_repr(Self) -> @debug.Repr
+
+pub struct Snapshot {
+  version : Int32
+  content : Array[(String, String)]
+  timestamp : Double
+} derive(Eq, @debug.Debug)
+pub fn Snapshot::equal(Self, Self) -> Bool
+pub fn Snapshot::not_equal(Self, Self) -> Bool
+pub fn Snapshot::to_repr(Self) -> @debug.Repr
+
+pub struct Tag {
+  name : String
+  commit_hash : String
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn Tag::equal(Self, Self) -> Bool
+pub fn Tag::not_equal(Self, Self) -> Bool
+pub fn Tag::to_repr(Self) -> @debug.Repr
+
+pub struct TimeTravel {
+  store : VersionStore
+  snapshots : Array[Snapshot]
+} derive(Eq, @debug.Debug)
+pub fn TimeTravel::equal(Self, Self) -> Bool
+pub fn TimeTravel::not_equal(Self, Self) -> Bool
+pub fn TimeTravel::to_repr(Self) -> @debug.Repr
+
+pub struct VersionStore {
+  commits : Array[Commit]
+  branches : Array[Branch]
+  tags : Array[Tag]
+  snapshots : Array[Snapshot]
+  current_branch : String
+} derive(Eq, @debug.Debug)
+pub fn VersionStore::equal(Self, Self) -> Bool
+pub fn VersionStore::not_equal(Self, Self) -> Bool
+pub fn VersionStore::to_repr(Self) -> @debug.Repr
+
+pub struct VersioningPolicy {
+  max_branches : Int32
+  max_tags : Int32
+  require_message : Bool
+  allow_force_push : Bool
+} derive(Eq, @debug.Debug)
+pub fn VersioningPolicy::equal(Self, Self) -> Bool
+pub fn VersioningPolicy::not_equal(Self, Self) -> Bool
+pub fn VersioningPolicy::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

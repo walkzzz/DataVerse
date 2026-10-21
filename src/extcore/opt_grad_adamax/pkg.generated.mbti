@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/opt_grad_adamax"
+
+// Values
+pub fn opt_grad_adamax_buffer_make(Int32) -> OptgradadamaxBuffer
+
+pub fn opt_grad_adamax_cluster_make(Int32) -> OptgradadamaxCluster
+
+pub fn opt_grad_adamax_cursor_make(Int32) -> OptgradadamaxCursor
+
+pub fn opt_grad_adamax_edge_make(Int32) -> OptgradadamaxEdge
+
+pub fn opt_grad_adamax_frame_make(Int32) -> OptgradadamaxFrame
+
+pub fn opt_grad_adamax_graphn_make(Int32) -> OptgradadamaxGraphN
+
+pub fn opt_grad_adamax_layer_make(Int32) -> OptgradadamaxLayer
+
+pub fn opt_grad_adamax_make_matrix(Int32, Int32, Double) -> OptgradadamaxMatrix
+
+pub fn opt_grad_adamax_make_point(Double, Double) -> OptgradadamaxPoint
+
+pub fn opt_grad_adamax_make_point3(Double, Double, Double) -> OptgradadamaxPoint
+
+pub fn opt_grad_adamax_make_series(Array[Double], String) -> OptgradadamaxSeries
+
+pub fn opt_grad_adamax_make_vector(Array[Double]) -> OptgradadamaxVector
+
+pub fn opt_grad_adamax_matrix_identity(Int32) -> OptgradadamaxMatrix
+
+pub fn opt_grad_adamax_model_make(Int32) -> OptgradadamaxModel
+
+pub fn opt_grad_adamax_node_make(Int32) -> OptgradadamaxNode
+
+pub fn opt_grad_adamax_path_make(Int32) -> OptgradadamaxPath
+
+pub fn opt_grad_adamax_range_make(Int32) -> OptgradadamaxRange
+
+pub fn opt_grad_adamax_slice_make(Int32) -> OptgradadamaxSlice
+
+pub fn opt_grad_adamax_table_make(Int32) -> OptgradadamaxTable
+
+pub fn opt_grad_adamax_vector_zero(Int32) -> OptgradadamaxVector
+
+pub fn opt_grad_adamax_view_make(Int32) -> OptgradadamaxView
+
+// Errors
+
+// Types and methods
+pub(all) struct OptgradadamaxBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamaxBuffer::add(Self, Self) -> Self
+pub fn OptgradadamaxBuffer::copy(Self) -> Self
+pub fn OptgradadamaxBuffer::fill(Self, Double) -> Self
+pub fn OptgradadamaxBuffer::get(Self, Int32) -> Double
+pub fn OptgradadamaxBuffer::len(Self) -> Int32
+pub fn OptgradadamaxBuffer::max(Self) -> Double
+pub fn OptgradadamaxBuffer::mean(Self) -> Double
+pub fn OptgradadamaxBuffer::min(Self) -> Double
+pub fn OptgradadamaxBuffer::scale(Self, Double) -> Self
+pub fn OptgradadamaxBuffer::set(Self, Int32, Double) -> Self
+pub fn OptgradadamaxBuffer::sum(Self) -> Double
+pub fn OptgradadamaxBuffer::to_string(Self) -> String
+
+pub(all) struct OptgradadamaxCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamaxCluster::add(Self, Self) -> Self
+pub fn OptgradadamaxCluster::copy(Self) -> Self
+pub fn OptgradadamaxCluster::fill(Self, Double) -> Self
+pub fn OptgradadamaxCluster::get(Self, Int32) -> Double
+pub fn OptgradadamaxCluster::len(Self) -> Int32
+pub fn OptgradadamaxCluster::max(Self) -> Double
+pub fn OptgradadamaxCluster::mean(Self) -> Double
+pub fn OptgradadamaxCluster::min(Self) -> Double
+pub fn OptgradadamaxCluster::scale(Self, Double) -> Self
+pub fn OptgradadamaxCluster::set(Self, Int32, Double) -> Self
+pub fn OptgradadamaxCluster::sum(Self) -> Double
+pub fn OptgradadamaxCluster::to_string(Self) -> String
+
+pub(all) struct OptgradadamaxCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamaxCursor::add(Self, Self) -> Self
+pub fn OptgradadamaxCursor::copy(Self) -> Self
+pub fn OptgradadamaxCursor::fill(Self, Double) -> Self
+pub fn OptgradadamaxCursor::get(Self, Int32) -> Double
+pub fn OptgradadamaxCursor::len(Self) -> Int32
+pub fn OptgradadamaxCursor::max(Self) -> Double
+pub fn OptgradadamaxCursor::mean(Self) -> Double
+pub fn OptgradadamaxCursor::min(Self) -> Double
+pub fn OptgradadamaxCursor::scale(Self, Double) -> Self
+pub fn OptgradadamaxCursor::set(Self, Int32, Double) -> Self
+pub fn OptgradadamaxCursor::sum(Self) -> Double
+pub fn OptgradadamaxCursor::to_string(Self) -> String
+
+pub(all) struct OptgradadamaxEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamaxEdge::add(Self, Self) -> Self
+pub fn OptgradadamaxEdge::copy(Self) -> Self
+pub fn OptgradadamaxEdge::fill(Self, Double) -> Self
+pub fn OptgradadamaxEdge::get(Self, Int32) -> Double
+pub fn OptgradadamaxEdge::len(Self) -> Int32
+pub fn OptgradadamaxEdge::max(Self) -> Double
+pub fn OptgradadamaxEdge::mean(Self) -> Double
+pub fn OptgradadamaxEdge::min(Self) -> Double
+pub fn OptgradadamaxEdge::scale(Self, Double) -> Self
+pub fn OptgradadamaxEdge::set(Self, Int32, Double) -> Self
+pub fn OptgradadamaxEdge::sum(Self) -> Double
+pub fn OptgradadamaxEdge::to_string(Self) -> String
+
+pub(all) struct OptgradadamaxFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamaxFrame::add(Self, Self) -> Self
+pub fn OptgradadamaxFrame::copy(Self) -> Self
+pub fn OptgradadamaxFrame::fill(Self, Double) -> Self
+pub fn OptgradadamaxFrame::get(Self, Int32) -> Double
+pub fn OptgradadamaxFrame::len(Self) -> Int32
+pub fn OptgradadamaxFrame::max(Self) -> Double
+pub fn OptgradadamaxFrame::mean(Self) -> Double
+pub fn OptgradadamaxFrame::min(Self) -> Double
+pub fn OptgradadamaxFrame::scale(Self, Double) -> Self
+pub fn OptgradadamaxFrame::set(Self, Int32, Double) -> Self
+pub fn OptgradadamaxFrame::sum(Self) -> Double
+pub fn OptgradadamaxFrame::to_string(Self) -> String
+
+pub(all) struct OptgradadamaxGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamaxGraphN::add(Self, Self) -> Self
+pub fn OptgradadamaxGraphN::copy(Self) -> Self
+pub fn OptgradadamaxGraphN::fill(Self, Double) -> Self
+pub fn OptgradadamaxGraphN::get(Self, Int32) -> Double
+pub fn OptgradadamaxGraphN::len(Self) -> Int32
+pub fn OptgradadamaxGraphN::max(Self) -> Double
+pub fn OptgradadamaxGraphN::mean(Self) -> Double
+pub fn OptgradadamaxGraphN::min(Self) -> Double
+pub fn OptgradadamaxGraphN::scale(Self, Double) -> Self
+pub fn OptgradadamaxGraphN::set(Self, Int32, Double) -> Self
+pub fn OptgradadamaxGraphN::sum(Self) -> Double
+pub fn OptgradadamaxGraphN::to_string(Self) -> String
+
+pub(all) struct OptgradadamaxLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamaxLayer::add(Self, Self) -> Self
+pub fn OptgradadamaxLayer::copy(Self) -> Self
+pub fn OptgradadamaxLayer::fill(Self, Double) -> Self
+pub fn OptgradadamaxLayer::get(Self, Int32) -> Double
+pub fn OptgradadamaxLayer::len(Self) -> Int32
+pub fn OptgradadamaxLayer::max(Self) -> Double
+pub fn OptgradadamaxLayer::mean(Self) -> Double
+pub fn OptgradadamaxLayer::min(Self) -> Double
+pub fn OptgradadamaxLayer::scale(Self, Double) -> Self
+pub fn OptgradadamaxLayer::set(Self, Int32, Double) -> Self
+pub fn OptgradadamaxLayer::sum(Self) -> Double
+pub fn OptgradadamaxLayer::to_string(Self) -> String
+
+pub(all) struct OptgradadamaxMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn OptgradadamaxMatrix::add(Self, Self) -> Self
+pub fn OptgradadamaxMatrix::det(Self) -> Double
+pub fn OptgradadamaxMatrix::get(Self, Int32, Int32) -> Double
+pub fn OptgradadamaxMatrix::multiply(Self, Self) -> Self
+pub fn OptgradadamaxMatrix::norm(Self) -> Double
+pub fn OptgradadamaxMatrix::scale(Self, Double) -> Self
+pub fn OptgradadamaxMatrix::to_string(Self) -> String
+pub fn OptgradadamaxMatrix::trace(Self) -> Double
+pub fn OptgradadamaxMatrix::transpose(Self) -> Self
+
+pub(all) struct OptgradadamaxModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamaxModel::add(Self, Self) -> Self
+pub fn OptgradadamaxModel::copy(Self) -> Self
+pub fn OptgradadamaxModel::fill(Self, Double) -> Self
+pub fn OptgradadamaxModel::get(Self, Int32) -> Double
+pub fn OptgradadamaxModel::len(Self) -> Int32
+pub fn OptgradadamaxModel::max(Self) -> Double
+pub fn OptgradadamaxModel::mean(Self) -> Double
+pub fn OptgradadamaxModel::min(Self) -> Double
+pub fn OptgradadamaxModel::scale(Self, Double) -> Self
+pub fn OptgradadamaxModel::set(Self, Int32, Double) -> Self
+pub fn OptgradadamaxModel::sum(Self) -> Double
+pub fn OptgradadamaxModel::to_string(Self) -> String
+
+pub(all) struct OptgradadamaxNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamaxNode::add(Self, Self) -> Self
+pub fn OptgradadamaxNode::copy(Self) -> Self
+pub fn OptgradadamaxNode::fill(Self, Double) -> Self
+pub fn OptgradadamaxNode::get(Self, Int32) -> Double
+pub fn OptgradadamaxNode::len(Self) -> Int32
+pub fn OptgradadamaxNode::max(Self) -> Double
+pub fn OptgradadamaxNode::mean(Self) -> Double
+pub fn OptgradadamaxNode::min(Self) -> Double
+pub fn OptgradadamaxNode::scale(Self, Double) -> Self
+pub fn OptgradadamaxNode::set(Self, Int32, Double) -> Self
+pub fn OptgradadamaxNode::sum(Self) -> Double
+pub fn OptgradadamaxNode::to_string(Self) -> String
+
+pub(all) struct OptgradadamaxPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamaxPath::add(Self, Self) -> Self
+pub fn OptgradadamaxPath::copy(Self) -> Self
+pub fn OptgradadamaxPath::fill(Self, Double) -> Self
+pub fn OptgradadamaxPath::get(Self, Int32) -> Double
+pub fn OptgradadamaxPath::len(Self) -> Int32
+pub fn OptgradadamaxPath::max(Self) -> Double
+pub fn OptgradadamaxPath::mean(Self) -> Double
+pub fn OptgradadamaxPath::min(Self) -> Double
+pub fn OptgradadamaxPath::scale(Self, Double) -> Self
+pub fn OptgradadamaxPath::set(Self, Int32, Double) -> Self
+pub fn OptgradadamaxPath::sum(Self) -> Double
+pub fn OptgradadamaxPath::to_string(Self) -> String
+
+pub(all) struct OptgradadamaxPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn OptgradadamaxPoint::add(Self, Self) -> Self
+pub fn OptgradadamaxPoint::cross(Self, Self) -> Self
+pub fn OptgradadamaxPoint::dist(Self, Self) -> Double
+pub fn OptgradadamaxPoint::dot(Self, Self) -> Double
+pub fn OptgradadamaxPoint::label(Self) -> Int32
+pub fn OptgradadamaxPoint::lerp(Self, Self, Double) -> Self
+pub fn OptgradadamaxPoint::mid(Self, Self) -> Self
+pub fn OptgradadamaxPoint::negate(Self) -> Self
+pub fn OptgradadamaxPoint::norm(Self) -> Double
+pub fn OptgradadamaxPoint::normalize(Self) -> Self
+pub fn OptgradadamaxPoint::scale(Self, Double) -> Self
+pub fn OptgradadamaxPoint::sub(Self, Self) -> Self
+pub fn OptgradadamaxPoint::to_string(Self) -> String
+pub fn OptgradadamaxPoint::x(Self) -> Double
+pub fn OptgradadamaxPoint::y(Self) -> Double
+pub fn OptgradadamaxPoint::z(Self) -> Double
+
+pub(all) struct OptgradadamaxRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamaxRange::add(Self, Self) -> Self
+pub fn OptgradadamaxRange::copy(Self) -> Self
+pub fn OptgradadamaxRange::fill(Self, Double) -> Self
+pub fn OptgradadamaxRange::get(Self, Int32) -> Double
+pub fn OptgradadamaxRange::len(Self) -> Int32
+pub fn OptgradadamaxRange::max(Self) -> Double
+pub fn OptgradadamaxRange::mean(Self) -> Double
+pub fn OptgradadamaxRange::min(Self) -> Double
+pub fn OptgradadamaxRange::scale(Self, Double) -> Self
+pub fn OptgradadamaxRange::set(Self, Int32, Double) -> Self
+pub fn OptgradadamaxRange::sum(Self) -> Double
+pub fn OptgradadamaxRange::to_string(Self) -> String
+
+pub(all) struct OptgradadamaxSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn OptgradadamaxSeries::add(Self, Self) -> Self
+pub fn OptgradadamaxSeries::cumsum(Self) -> Self
+pub fn OptgradadamaxSeries::len(Self) -> Int32
+pub fn OptgradadamaxSeries::max(Self) -> Double
+pub fn OptgradadamaxSeries::mean(Self) -> Double
+pub fn OptgradadamaxSeries::median(Self) -> Double
+pub fn OptgradadamaxSeries::min(Self) -> Double
+pub fn OptgradadamaxSeries::normalize(Self) -> Self
+pub fn OptgradadamaxSeries::range(Self) -> Double
+pub fn OptgradadamaxSeries::scale(Self, Double) -> Self
+pub fn OptgradadamaxSeries::std(Self) -> Double
+pub fn OptgradadamaxSeries::sub(Self, Self) -> Self
+pub fn OptgradadamaxSeries::sum(Self) -> Double
+pub fn OptgradadamaxSeries::to_string(Self) -> String
+pub fn OptgradadamaxSeries::variance(Self) -> Double
+
+pub(all) struct OptgradadamaxSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamaxSlice::add(Self, Self) -> Self
+pub fn OptgradadamaxSlice::copy(Self) -> Self
+pub fn OptgradadamaxSlice::fill(Self, Double) -> Self
+pub fn OptgradadamaxSlice::get(Self, Int32) -> Double
+pub fn OptgradadamaxSlice::len(Self) -> Int32
+pub fn OptgradadamaxSlice::max(Self) -> Double
+pub fn OptgradadamaxSlice::mean(Self) -> Double
+pub fn OptgradadamaxSlice::min(Self) -> Double
+pub fn OptgradadamaxSlice::scale(Self, Double) -> Self
+pub fn OptgradadamaxSlice::set(Self, Int32, Double) -> Self
+pub fn OptgradadamaxSlice::sum(Self) -> Double
+pub fn OptgradadamaxSlice::to_string(Self) -> String
+
+pub(all) struct OptgradadamaxTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamaxTable::add(Self, Self) -> Self
+pub fn OptgradadamaxTable::copy(Self) -> Self
+pub fn OptgradadamaxTable::fill(Self, Double) -> Self
+pub fn OptgradadamaxTable::get(Self, Int32) -> Double
+pub fn OptgradadamaxTable::len(Self) -> Int32
+pub fn OptgradadamaxTable::max(Self) -> Double
+pub fn OptgradadamaxTable::mean(Self) -> Double
+pub fn OptgradadamaxTable::min(Self) -> Double
+pub fn OptgradadamaxTable::scale(Self, Double) -> Self
+pub fn OptgradadamaxTable::set(Self, Int32, Double) -> Self
+pub fn OptgradadamaxTable::sum(Self) -> Double
+pub fn OptgradadamaxTable::to_string(Self) -> String
+
+pub(all) struct OptgradadamaxVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn OptgradadamaxVector::add(Self, Self) -> Self
+pub fn OptgradadamaxVector::dist(Self, Self) -> Double
+pub fn OptgradadamaxVector::dot(Self, Self) -> Double
+pub fn OptgradadamaxVector::norm(Self) -> Double
+pub fn OptgradadamaxVector::normalize(Self) -> Self
+pub fn OptgradadamaxVector::scale(Self, Double) -> Self
+pub fn OptgradadamaxVector::sub(Self, Self) -> Self
+pub fn OptgradadamaxVector::to_string(Self) -> String
+
+pub(all) struct OptgradadamaxView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptgradadamaxView::add(Self, Self) -> Self
+pub fn OptgradadamaxView::copy(Self) -> Self
+pub fn OptgradadamaxView::fill(Self, Double) -> Self
+pub fn OptgradadamaxView::get(Self, Int32) -> Double
+pub fn OptgradadamaxView::len(Self) -> Int32
+pub fn OptgradadamaxView::max(Self) -> Double
+pub fn OptgradadamaxView::mean(Self) -> Double
+pub fn OptgradadamaxView::min(Self) -> Double
+pub fn OptgradadamaxView::scale(Self, Double) -> Self
+pub fn OptgradadamaxView::set(Self, Int32, Double) -> Self
+pub fn OptgradadamaxView::sum(Self) -> Double
+pub fn OptgradadamaxView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

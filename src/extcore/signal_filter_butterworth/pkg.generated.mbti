@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_filter_butterworth"
+
+// Values
+pub fn signal_filter_butterworth_buffer_make(Int32) -> SignalfilterbutterworthBuffer
+
+pub fn signal_filter_butterworth_cluster_make(Int32) -> SignalfilterbutterworthCluster
+
+pub fn signal_filter_butterworth_cursor_make(Int32) -> SignalfilterbutterworthCursor
+
+pub fn signal_filter_butterworth_edge_make(Int32) -> SignalfilterbutterworthEdge
+
+pub fn signal_filter_butterworth_frame_make(Int32) -> SignalfilterbutterworthFrame
+
+pub fn signal_filter_butterworth_graphn_make(Int32) -> SignalfilterbutterworthGraphN
+
+pub fn signal_filter_butterworth_layer_make(Int32) -> SignalfilterbutterworthLayer
+
+pub fn signal_filter_butterworth_make_matrix(Int32, Int32, Double) -> SignalfilterbutterworthMatrix
+
+pub fn signal_filter_butterworth_make_point(Double, Double) -> SignalfilterbutterworthPoint
+
+pub fn signal_filter_butterworth_make_point3(Double, Double, Double) -> SignalfilterbutterworthPoint
+
+pub fn signal_filter_butterworth_make_series(Array[Double], String) -> SignalfilterbutterworthSeries
+
+pub fn signal_filter_butterworth_make_vector(Array[Double]) -> SignalfilterbutterworthVector
+
+pub fn signal_filter_butterworth_matrix_identity(Int32) -> SignalfilterbutterworthMatrix
+
+pub fn signal_filter_butterworth_model_make(Int32) -> SignalfilterbutterworthModel
+
+pub fn signal_filter_butterworth_node_make(Int32) -> SignalfilterbutterworthNode
+
+pub fn signal_filter_butterworth_path_make(Int32) -> SignalfilterbutterworthPath
+
+pub fn signal_filter_butterworth_range_make(Int32) -> SignalfilterbutterworthRange
+
+pub fn signal_filter_butterworth_slice_make(Int32) -> SignalfilterbutterworthSlice
+
+pub fn signal_filter_butterworth_table_make(Int32) -> SignalfilterbutterworthTable
+
+pub fn signal_filter_butterworth_vector_zero(Int32) -> SignalfilterbutterworthVector
+
+pub fn signal_filter_butterworth_view_make(Int32) -> SignalfilterbutterworthView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalfilterbutterworthBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbutterworthBuffer::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthBuffer::copy(Self) -> Self
+pub fn SignalfilterbutterworthBuffer::fill(Self, Double) -> Self
+pub fn SignalfilterbutterworthBuffer::get(Self, Int32) -> Double
+pub fn SignalfilterbutterworthBuffer::len(Self) -> Int32
+pub fn SignalfilterbutterworthBuffer::max(Self) -> Double
+pub fn SignalfilterbutterworthBuffer::mean(Self) -> Double
+pub fn SignalfilterbutterworthBuffer::min(Self) -> Double
+pub fn SignalfilterbutterworthBuffer::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbutterworthBuffer::sum(Self) -> Double
+pub fn SignalfilterbutterworthBuffer::to_string(Self) -> String
+
+pub(all) struct SignalfilterbutterworthCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbutterworthCluster::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthCluster::copy(Self) -> Self
+pub fn SignalfilterbutterworthCluster::fill(Self, Double) -> Self
+pub fn SignalfilterbutterworthCluster::get(Self, Int32) -> Double
+pub fn SignalfilterbutterworthCluster::len(Self) -> Int32
+pub fn SignalfilterbutterworthCluster::max(Self) -> Double
+pub fn SignalfilterbutterworthCluster::mean(Self) -> Double
+pub fn SignalfilterbutterworthCluster::min(Self) -> Double
+pub fn SignalfilterbutterworthCluster::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthCluster::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbutterworthCluster::sum(Self) -> Double
+pub fn SignalfilterbutterworthCluster::to_string(Self) -> String
+
+pub(all) struct SignalfilterbutterworthCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbutterworthCursor::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthCursor::copy(Self) -> Self
+pub fn SignalfilterbutterworthCursor::fill(Self, Double) -> Self
+pub fn SignalfilterbutterworthCursor::get(Self, Int32) -> Double
+pub fn SignalfilterbutterworthCursor::len(Self) -> Int32
+pub fn SignalfilterbutterworthCursor::max(Self) -> Double
+pub fn SignalfilterbutterworthCursor::mean(Self) -> Double
+pub fn SignalfilterbutterworthCursor::min(Self) -> Double
+pub fn SignalfilterbutterworthCursor::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthCursor::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbutterworthCursor::sum(Self) -> Double
+pub fn SignalfilterbutterworthCursor::to_string(Self) -> String
+
+pub(all) struct SignalfilterbutterworthEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbutterworthEdge::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthEdge::copy(Self) -> Self
+pub fn SignalfilterbutterworthEdge::fill(Self, Double) -> Self
+pub fn SignalfilterbutterworthEdge::get(Self, Int32) -> Double
+pub fn SignalfilterbutterworthEdge::len(Self) -> Int32
+pub fn SignalfilterbutterworthEdge::max(Self) -> Double
+pub fn SignalfilterbutterworthEdge::mean(Self) -> Double
+pub fn SignalfilterbutterworthEdge::min(Self) -> Double
+pub fn SignalfilterbutterworthEdge::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthEdge::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbutterworthEdge::sum(Self) -> Double
+pub fn SignalfilterbutterworthEdge::to_string(Self) -> String
+
+pub(all) struct SignalfilterbutterworthFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbutterworthFrame::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthFrame::copy(Self) -> Self
+pub fn SignalfilterbutterworthFrame::fill(Self, Double) -> Self
+pub fn SignalfilterbutterworthFrame::get(Self, Int32) -> Double
+pub fn SignalfilterbutterworthFrame::len(Self) -> Int32
+pub fn SignalfilterbutterworthFrame::max(Self) -> Double
+pub fn SignalfilterbutterworthFrame::mean(Self) -> Double
+pub fn SignalfilterbutterworthFrame::min(Self) -> Double
+pub fn SignalfilterbutterworthFrame::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthFrame::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbutterworthFrame::sum(Self) -> Double
+pub fn SignalfilterbutterworthFrame::to_string(Self) -> String
+
+pub(all) struct SignalfilterbutterworthGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbutterworthGraphN::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthGraphN::copy(Self) -> Self
+pub fn SignalfilterbutterworthGraphN::fill(Self, Double) -> Self
+pub fn SignalfilterbutterworthGraphN::get(Self, Int32) -> Double
+pub fn SignalfilterbutterworthGraphN::len(Self) -> Int32
+pub fn SignalfilterbutterworthGraphN::max(Self) -> Double
+pub fn SignalfilterbutterworthGraphN::mean(Self) -> Double
+pub fn SignalfilterbutterworthGraphN::min(Self) -> Double
+pub fn SignalfilterbutterworthGraphN::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbutterworthGraphN::sum(Self) -> Double
+pub fn SignalfilterbutterworthGraphN::to_string(Self) -> String
+
+pub(all) struct SignalfilterbutterworthLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbutterworthLayer::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthLayer::copy(Self) -> Self
+pub fn SignalfilterbutterworthLayer::fill(Self, Double) -> Self
+pub fn SignalfilterbutterworthLayer::get(Self, Int32) -> Double
+pub fn SignalfilterbutterworthLayer::len(Self) -> Int32
+pub fn SignalfilterbutterworthLayer::max(Self) -> Double
+pub fn SignalfilterbutterworthLayer::mean(Self) -> Double
+pub fn SignalfilterbutterworthLayer::min(Self) -> Double
+pub fn SignalfilterbutterworthLayer::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthLayer::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbutterworthLayer::sum(Self) -> Double
+pub fn SignalfilterbutterworthLayer::to_string(Self) -> String
+
+pub(all) struct SignalfilterbutterworthMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalfilterbutterworthMatrix::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthMatrix::det(Self) -> Double
+pub fn SignalfilterbutterworthMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalfilterbutterworthMatrix::multiply(Self, Self) -> Self
+pub fn SignalfilterbutterworthMatrix::norm(Self) -> Double
+pub fn SignalfilterbutterworthMatrix::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthMatrix::to_string(Self) -> String
+pub fn SignalfilterbutterworthMatrix::trace(Self) -> Double
+pub fn SignalfilterbutterworthMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalfilterbutterworthModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbutterworthModel::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthModel::copy(Self) -> Self
+pub fn SignalfilterbutterworthModel::fill(Self, Double) -> Self
+pub fn SignalfilterbutterworthModel::get(Self, Int32) -> Double
+pub fn SignalfilterbutterworthModel::len(Self) -> Int32
+pub fn SignalfilterbutterworthModel::max(Self) -> Double
+pub fn SignalfilterbutterworthModel::mean(Self) -> Double
+pub fn SignalfilterbutterworthModel::min(Self) -> Double
+pub fn SignalfilterbutterworthModel::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthModel::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbutterworthModel::sum(Self) -> Double
+pub fn SignalfilterbutterworthModel::to_string(Self) -> String
+
+pub(all) struct SignalfilterbutterworthNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbutterworthNode::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthNode::copy(Self) -> Self
+pub fn SignalfilterbutterworthNode::fill(Self, Double) -> Self
+pub fn SignalfilterbutterworthNode::get(Self, Int32) -> Double
+pub fn SignalfilterbutterworthNode::len(Self) -> Int32
+pub fn SignalfilterbutterworthNode::max(Self) -> Double
+pub fn SignalfilterbutterworthNode::mean(Self) -> Double
+pub fn SignalfilterbutterworthNode::min(Self) -> Double
+pub fn SignalfilterbutterworthNode::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthNode::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbutterworthNode::sum(Self) -> Double
+pub fn SignalfilterbutterworthNode::to_string(Self) -> String
+
+pub(all) struct SignalfilterbutterworthPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbutterworthPath::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthPath::copy(Self) -> Self
+pub fn SignalfilterbutterworthPath::fill(Self, Double) -> Self
+pub fn SignalfilterbutterworthPath::get(Self, Int32) -> Double
+pub fn SignalfilterbutterworthPath::len(Self) -> Int32
+pub fn SignalfilterbutterworthPath::max(Self) -> Double
+pub fn SignalfilterbutterworthPath::mean(Self) -> Double
+pub fn SignalfilterbutterworthPath::min(Self) -> Double
+pub fn SignalfilterbutterworthPath::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthPath::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbutterworthPath::sum(Self) -> Double
+pub fn SignalfilterbutterworthPath::to_string(Self) -> String
+
+pub(all) struct SignalfilterbutterworthPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalfilterbutterworthPoint::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthPoint::cross(Self, Self) -> Self
+pub fn SignalfilterbutterworthPoint::dist(Self, Self) -> Double
+pub fn SignalfilterbutterworthPoint::dot(Self, Self) -> Double
+pub fn SignalfilterbutterworthPoint::label(Self) -> Int32
+pub fn SignalfilterbutterworthPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalfilterbutterworthPoint::mid(Self, Self) -> Self
+pub fn SignalfilterbutterworthPoint::negate(Self) -> Self
+pub fn SignalfilterbutterworthPoint::norm(Self) -> Double
+pub fn SignalfilterbutterworthPoint::normalize(Self) -> Self
+pub fn SignalfilterbutterworthPoint::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthPoint::sub(Self, Self) -> Self
+pub fn SignalfilterbutterworthPoint::to_string(Self) -> String
+pub fn SignalfilterbutterworthPoint::x(Self) -> Double
+pub fn SignalfilterbutterworthPoint::y(Self) -> Double
+pub fn SignalfilterbutterworthPoint::z(Self) -> Double
+
+pub(all) struct SignalfilterbutterworthRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbutterworthRange::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthRange::copy(Self) -> Self
+pub fn SignalfilterbutterworthRange::fill(Self, Double) -> Self
+pub fn SignalfilterbutterworthRange::get(Self, Int32) -> Double
+pub fn SignalfilterbutterworthRange::len(Self) -> Int32
+pub fn SignalfilterbutterworthRange::max(Self) -> Double
+pub fn SignalfilterbutterworthRange::mean(Self) -> Double
+pub fn SignalfilterbutterworthRange::min(Self) -> Double
+pub fn SignalfilterbutterworthRange::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthRange::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbutterworthRange::sum(Self) -> Double
+pub fn SignalfilterbutterworthRange::to_string(Self) -> String
+
+pub(all) struct SignalfilterbutterworthSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalfilterbutterworthSeries::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthSeries::cumsum(Self) -> Self
+pub fn SignalfilterbutterworthSeries::len(Self) -> Int32
+pub fn SignalfilterbutterworthSeries::max(Self) -> Double
+pub fn SignalfilterbutterworthSeries::mean(Self) -> Double
+pub fn SignalfilterbutterworthSeries::median(Self) -> Double
+pub fn SignalfilterbutterworthSeries::min(Self) -> Double
+pub fn SignalfilterbutterworthSeries::normalize(Self) -> Self
+pub fn SignalfilterbutterworthSeries::range(Self) -> Double
+pub fn SignalfilterbutterworthSeries::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthSeries::std(Self) -> Double
+pub fn SignalfilterbutterworthSeries::sub(Self, Self) -> Self
+pub fn SignalfilterbutterworthSeries::sum(Self) -> Double
+pub fn SignalfilterbutterworthSeries::to_string(Self) -> String
+pub fn SignalfilterbutterworthSeries::variance(Self) -> Double
+
+pub(all) struct SignalfilterbutterworthSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbutterworthSlice::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthSlice::copy(Self) -> Self
+pub fn SignalfilterbutterworthSlice::fill(Self, Double) -> Self
+pub fn SignalfilterbutterworthSlice::get(Self, Int32) -> Double
+pub fn SignalfilterbutterworthSlice::len(Self) -> Int32
+pub fn SignalfilterbutterworthSlice::max(Self) -> Double
+pub fn SignalfilterbutterworthSlice::mean(Self) -> Double
+pub fn SignalfilterbutterworthSlice::min(Self) -> Double
+pub fn SignalfilterbutterworthSlice::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthSlice::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbutterworthSlice::sum(Self) -> Double
+pub fn SignalfilterbutterworthSlice::to_string(Self) -> String
+
+pub(all) struct SignalfilterbutterworthTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbutterworthTable::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthTable::copy(Self) -> Self
+pub fn SignalfilterbutterworthTable::fill(Self, Double) -> Self
+pub fn SignalfilterbutterworthTable::get(Self, Int32) -> Double
+pub fn SignalfilterbutterworthTable::len(Self) -> Int32
+pub fn SignalfilterbutterworthTable::max(Self) -> Double
+pub fn SignalfilterbutterworthTable::mean(Self) -> Double
+pub fn SignalfilterbutterworthTable::min(Self) -> Double
+pub fn SignalfilterbutterworthTable::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthTable::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbutterworthTable::sum(Self) -> Double
+pub fn SignalfilterbutterworthTable::to_string(Self) -> String
+
+pub(all) struct SignalfilterbutterworthVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalfilterbutterworthVector::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthVector::dist(Self, Self) -> Double
+pub fn SignalfilterbutterworthVector::dot(Self, Self) -> Double
+pub fn SignalfilterbutterworthVector::norm(Self) -> Double
+pub fn SignalfilterbutterworthVector::normalize(Self) -> Self
+pub fn SignalfilterbutterworthVector::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthVector::sub(Self, Self) -> Self
+pub fn SignalfilterbutterworthVector::to_string(Self) -> String
+
+pub(all) struct SignalfilterbutterworthView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterbutterworthView::add(Self, Self) -> Self
+pub fn SignalfilterbutterworthView::copy(Self) -> Self
+pub fn SignalfilterbutterworthView::fill(Self, Double) -> Self
+pub fn SignalfilterbutterworthView::get(Self, Int32) -> Double
+pub fn SignalfilterbutterworthView::len(Self) -> Int32
+pub fn SignalfilterbutterworthView::max(Self) -> Double
+pub fn SignalfilterbutterworthView::mean(Self) -> Double
+pub fn SignalfilterbutterworthView::min(Self) -> Double
+pub fn SignalfilterbutterworthView::scale(Self, Double) -> Self
+pub fn SignalfilterbutterworthView::set(Self, Int32, Double) -> Self
+pub fn SignalfilterbutterworthView::sum(Self) -> Double
+pub fn SignalfilterbutterworthView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

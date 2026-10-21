@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/timeseries_decomp_classical"
+
+// Values
+pub fn timeseries_decomp_classical_buffer_make(Int32) -> TimeseriesdecompclassicalBuffer
+
+pub fn timeseries_decomp_classical_cluster_make(Int32) -> TimeseriesdecompclassicalCluster
+
+pub fn timeseries_decomp_classical_cursor_make(Int32) -> TimeseriesdecompclassicalCursor
+
+pub fn timeseries_decomp_classical_edge_make(Int32) -> TimeseriesdecompclassicalEdge
+
+pub fn timeseries_decomp_classical_frame_make(Int32) -> TimeseriesdecompclassicalFrame
+
+pub fn timeseries_decomp_classical_graphn_make(Int32) -> TimeseriesdecompclassicalGraphN
+
+pub fn timeseries_decomp_classical_layer_make(Int32) -> TimeseriesdecompclassicalLayer
+
+pub fn timeseries_decomp_classical_make_matrix(Int32, Int32, Double) -> TimeseriesdecompclassicalMatrix
+
+pub fn timeseries_decomp_classical_make_point(Double, Double) -> TimeseriesdecompclassicalPoint
+
+pub fn timeseries_decomp_classical_make_point3(Double, Double, Double) -> TimeseriesdecompclassicalPoint
+
+pub fn timeseries_decomp_classical_make_series(Array[Double], String) -> TimeseriesdecompclassicalSeries
+
+pub fn timeseries_decomp_classical_make_vector(Array[Double]) -> TimeseriesdecompclassicalVector
+
+pub fn timeseries_decomp_classical_matrix_identity(Int32) -> TimeseriesdecompclassicalMatrix
+
+pub fn timeseries_decomp_classical_model_make(Int32) -> TimeseriesdecompclassicalModel
+
+pub fn timeseries_decomp_classical_node_make(Int32) -> TimeseriesdecompclassicalNode
+
+pub fn timeseries_decomp_classical_path_make(Int32) -> TimeseriesdecompclassicalPath
+
+pub fn timeseries_decomp_classical_range_make(Int32) -> TimeseriesdecompclassicalRange
+
+pub fn timeseries_decomp_classical_slice_make(Int32) -> TimeseriesdecompclassicalSlice
+
+pub fn timeseries_decomp_classical_table_make(Int32) -> TimeseriesdecompclassicalTable
+
+pub fn timeseries_decomp_classical_vector_zero(Int32) -> TimeseriesdecompclassicalVector
+
+pub fn timeseries_decomp_classical_view_make(Int32) -> TimeseriesdecompclassicalView
+
+// Errors
+
+// Types and methods
+pub(all) struct TimeseriesdecompclassicalBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompclassicalBuffer::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalBuffer::copy(Self) -> Self
+pub fn TimeseriesdecompclassicalBuffer::fill(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalBuffer::get(Self, Int32) -> Double
+pub fn TimeseriesdecompclassicalBuffer::len(Self) -> Int32
+pub fn TimeseriesdecompclassicalBuffer::max(Self) -> Double
+pub fn TimeseriesdecompclassicalBuffer::mean(Self) -> Double
+pub fn TimeseriesdecompclassicalBuffer::min(Self) -> Double
+pub fn TimeseriesdecompclassicalBuffer::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalBuffer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompclassicalBuffer::sum(Self) -> Double
+pub fn TimeseriesdecompclassicalBuffer::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompclassicalCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompclassicalCluster::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalCluster::copy(Self) -> Self
+pub fn TimeseriesdecompclassicalCluster::fill(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalCluster::get(Self, Int32) -> Double
+pub fn TimeseriesdecompclassicalCluster::len(Self) -> Int32
+pub fn TimeseriesdecompclassicalCluster::max(Self) -> Double
+pub fn TimeseriesdecompclassicalCluster::mean(Self) -> Double
+pub fn TimeseriesdecompclassicalCluster::min(Self) -> Double
+pub fn TimeseriesdecompclassicalCluster::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalCluster::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompclassicalCluster::sum(Self) -> Double
+pub fn TimeseriesdecompclassicalCluster::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompclassicalCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompclassicalCursor::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalCursor::copy(Self) -> Self
+pub fn TimeseriesdecompclassicalCursor::fill(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalCursor::get(Self, Int32) -> Double
+pub fn TimeseriesdecompclassicalCursor::len(Self) -> Int32
+pub fn TimeseriesdecompclassicalCursor::max(Self) -> Double
+pub fn TimeseriesdecompclassicalCursor::mean(Self) -> Double
+pub fn TimeseriesdecompclassicalCursor::min(Self) -> Double
+pub fn TimeseriesdecompclassicalCursor::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalCursor::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompclassicalCursor::sum(Self) -> Double
+pub fn TimeseriesdecompclassicalCursor::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompclassicalEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompclassicalEdge::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalEdge::copy(Self) -> Self
+pub fn TimeseriesdecompclassicalEdge::fill(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalEdge::get(Self, Int32) -> Double
+pub fn TimeseriesdecompclassicalEdge::len(Self) -> Int32
+pub fn TimeseriesdecompclassicalEdge::max(Self) -> Double
+pub fn TimeseriesdecompclassicalEdge::mean(Self) -> Double
+pub fn TimeseriesdecompclassicalEdge::min(Self) -> Double
+pub fn TimeseriesdecompclassicalEdge::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalEdge::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompclassicalEdge::sum(Self) -> Double
+pub fn TimeseriesdecompclassicalEdge::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompclassicalFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompclassicalFrame::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalFrame::copy(Self) -> Self
+pub fn TimeseriesdecompclassicalFrame::fill(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalFrame::get(Self, Int32) -> Double
+pub fn TimeseriesdecompclassicalFrame::len(Self) -> Int32
+pub fn TimeseriesdecompclassicalFrame::max(Self) -> Double
+pub fn TimeseriesdecompclassicalFrame::mean(Self) -> Double
+pub fn TimeseriesdecompclassicalFrame::min(Self) -> Double
+pub fn TimeseriesdecompclassicalFrame::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalFrame::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompclassicalFrame::sum(Self) -> Double
+pub fn TimeseriesdecompclassicalFrame::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompclassicalGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompclassicalGraphN::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalGraphN::copy(Self) -> Self
+pub fn TimeseriesdecompclassicalGraphN::fill(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalGraphN::get(Self, Int32) -> Double
+pub fn TimeseriesdecompclassicalGraphN::len(Self) -> Int32
+pub fn TimeseriesdecompclassicalGraphN::max(Self) -> Double
+pub fn TimeseriesdecompclassicalGraphN::mean(Self) -> Double
+pub fn TimeseriesdecompclassicalGraphN::min(Self) -> Double
+pub fn TimeseriesdecompclassicalGraphN::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalGraphN::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompclassicalGraphN::sum(Self) -> Double
+pub fn TimeseriesdecompclassicalGraphN::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompclassicalLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompclassicalLayer::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalLayer::copy(Self) -> Self
+pub fn TimeseriesdecompclassicalLayer::fill(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalLayer::get(Self, Int32) -> Double
+pub fn TimeseriesdecompclassicalLayer::len(Self) -> Int32
+pub fn TimeseriesdecompclassicalLayer::max(Self) -> Double
+pub fn TimeseriesdecompclassicalLayer::mean(Self) -> Double
+pub fn TimeseriesdecompclassicalLayer::min(Self) -> Double
+pub fn TimeseriesdecompclassicalLayer::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalLayer::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompclassicalLayer::sum(Self) -> Double
+pub fn TimeseriesdecompclassicalLayer::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompclassicalMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn TimeseriesdecompclassicalMatrix::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalMatrix::det(Self) -> Double
+pub fn TimeseriesdecompclassicalMatrix::get(Self, Int32, Int32) -> Double
+pub fn TimeseriesdecompclassicalMatrix::multiply(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalMatrix::norm(Self) -> Double
+pub fn TimeseriesdecompclassicalMatrix::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalMatrix::to_string(Self) -> String
+pub fn TimeseriesdecompclassicalMatrix::trace(Self) -> Double
+pub fn TimeseriesdecompclassicalMatrix::transpose(Self) -> Self
+
+pub(all) struct TimeseriesdecompclassicalModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompclassicalModel::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalModel::copy(Self) -> Self
+pub fn TimeseriesdecompclassicalModel::fill(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalModel::get(Self, Int32) -> Double
+pub fn TimeseriesdecompclassicalModel::len(Self) -> Int32
+pub fn TimeseriesdecompclassicalModel::max(Self) -> Double
+pub fn TimeseriesdecompclassicalModel::mean(Self) -> Double
+pub fn TimeseriesdecompclassicalModel::min(Self) -> Double
+pub fn TimeseriesdecompclassicalModel::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalModel::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompclassicalModel::sum(Self) -> Double
+pub fn TimeseriesdecompclassicalModel::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompclassicalNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompclassicalNode::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalNode::copy(Self) -> Self
+pub fn TimeseriesdecompclassicalNode::fill(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalNode::get(Self, Int32) -> Double
+pub fn TimeseriesdecompclassicalNode::len(Self) -> Int32
+pub fn TimeseriesdecompclassicalNode::max(Self) -> Double
+pub fn TimeseriesdecompclassicalNode::mean(Self) -> Double
+pub fn TimeseriesdecompclassicalNode::min(Self) -> Double
+pub fn TimeseriesdecompclassicalNode::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalNode::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompclassicalNode::sum(Self) -> Double
+pub fn TimeseriesdecompclassicalNode::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompclassicalPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompclassicalPath::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalPath::copy(Self) -> Self
+pub fn TimeseriesdecompclassicalPath::fill(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalPath::get(Self, Int32) -> Double
+pub fn TimeseriesdecompclassicalPath::len(Self) -> Int32
+pub fn TimeseriesdecompclassicalPath::max(Self) -> Double
+pub fn TimeseriesdecompclassicalPath::mean(Self) -> Double
+pub fn TimeseriesdecompclassicalPath::min(Self) -> Double
+pub fn TimeseriesdecompclassicalPath::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalPath::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompclassicalPath::sum(Self) -> Double
+pub fn TimeseriesdecompclassicalPath::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompclassicalPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn TimeseriesdecompclassicalPoint::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalPoint::cross(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalPoint::dist(Self, Self) -> Double
+pub fn TimeseriesdecompclassicalPoint::dot(Self, Self) -> Double
+pub fn TimeseriesdecompclassicalPoint::label(Self) -> Int32
+pub fn TimeseriesdecompclassicalPoint::lerp(Self, Self, Double) -> Self
+pub fn TimeseriesdecompclassicalPoint::mid(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalPoint::negate(Self) -> Self
+pub fn TimeseriesdecompclassicalPoint::norm(Self) -> Double
+pub fn TimeseriesdecompclassicalPoint::normalize(Self) -> Self
+pub fn TimeseriesdecompclassicalPoint::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalPoint::sub(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalPoint::to_string(Self) -> String
+pub fn TimeseriesdecompclassicalPoint::x(Self) -> Double
+pub fn TimeseriesdecompclassicalPoint::y(Self) -> Double
+pub fn TimeseriesdecompclassicalPoint::z(Self) -> Double
+
+pub(all) struct TimeseriesdecompclassicalRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompclassicalRange::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalRange::copy(Self) -> Self
+pub fn TimeseriesdecompclassicalRange::fill(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalRange::get(Self, Int32) -> Double
+pub fn TimeseriesdecompclassicalRange::len(Self) -> Int32
+pub fn TimeseriesdecompclassicalRange::max(Self) -> Double
+pub fn TimeseriesdecompclassicalRange::mean(Self) -> Double
+pub fn TimeseriesdecompclassicalRange::min(Self) -> Double
+pub fn TimeseriesdecompclassicalRange::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalRange::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompclassicalRange::sum(Self) -> Double
+pub fn TimeseriesdecompclassicalRange::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompclassicalSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn TimeseriesdecompclassicalSeries::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalSeries::cumsum(Self) -> Self
+pub fn TimeseriesdecompclassicalSeries::len(Self) -> Int32
+pub fn TimeseriesdecompclassicalSeries::max(Self) -> Double
+pub fn TimeseriesdecompclassicalSeries::mean(Self) -> Double
+pub fn TimeseriesdecompclassicalSeries::median(Self) -> Double
+pub fn TimeseriesdecompclassicalSeries::min(Self) -> Double
+pub fn TimeseriesdecompclassicalSeries::normalize(Self) -> Self
+pub fn TimeseriesdecompclassicalSeries::range(Self) -> Double
+pub fn TimeseriesdecompclassicalSeries::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalSeries::std(Self) -> Double
+pub fn TimeseriesdecompclassicalSeries::sub(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalSeries::sum(Self) -> Double
+pub fn TimeseriesdecompclassicalSeries::to_string(Self) -> String
+pub fn TimeseriesdecompclassicalSeries::variance(Self) -> Double
+
+pub(all) struct TimeseriesdecompclassicalSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompclassicalSlice::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalSlice::copy(Self) -> Self
+pub fn TimeseriesdecompclassicalSlice::fill(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalSlice::get(Self, Int32) -> Double
+pub fn TimeseriesdecompclassicalSlice::len(Self) -> Int32
+pub fn TimeseriesdecompclassicalSlice::max(Self) -> Double
+pub fn TimeseriesdecompclassicalSlice::mean(Self) -> Double
+pub fn TimeseriesdecompclassicalSlice::min(Self) -> Double
+pub fn TimeseriesdecompclassicalSlice::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalSlice::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompclassicalSlice::sum(Self) -> Double
+pub fn TimeseriesdecompclassicalSlice::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompclassicalTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompclassicalTable::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalTable::copy(Self) -> Self
+pub fn TimeseriesdecompclassicalTable::fill(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalTable::get(Self, Int32) -> Double
+pub fn TimeseriesdecompclassicalTable::len(Self) -> Int32
+pub fn TimeseriesdecompclassicalTable::max(Self) -> Double
+pub fn TimeseriesdecompclassicalTable::mean(Self) -> Double
+pub fn TimeseriesdecompclassicalTable::min(Self) -> Double
+pub fn TimeseriesdecompclassicalTable::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalTable::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompclassicalTable::sum(Self) -> Double
+pub fn TimeseriesdecompclassicalTable::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompclassicalVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn TimeseriesdecompclassicalVector::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalVector::dist(Self, Self) -> Double
+pub fn TimeseriesdecompclassicalVector::dot(Self, Self) -> Double
+pub fn TimeseriesdecompclassicalVector::norm(Self) -> Double
+pub fn TimeseriesdecompclassicalVector::normalize(Self) -> Self
+pub fn TimeseriesdecompclassicalVector::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalVector::sub(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalVector::to_string(Self) -> String
+
+pub(all) struct TimeseriesdecompclassicalView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn TimeseriesdecompclassicalView::add(Self, Self) -> Self
+pub fn TimeseriesdecompclassicalView::copy(Self) -> Self
+pub fn TimeseriesdecompclassicalView::fill(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalView::get(Self, Int32) -> Double
+pub fn TimeseriesdecompclassicalView::len(Self) -> Int32
+pub fn TimeseriesdecompclassicalView::max(Self) -> Double
+pub fn TimeseriesdecompclassicalView::mean(Self) -> Double
+pub fn TimeseriesdecompclassicalView::min(Self) -> Double
+pub fn TimeseriesdecompclassicalView::scale(Self, Double) -> Self
+pub fn TimeseriesdecompclassicalView::set(Self, Int32, Double) -> Self
+pub fn TimeseriesdecompclassicalView::sum(Self) -> Double
+pub fn TimeseriesdecompclassicalView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

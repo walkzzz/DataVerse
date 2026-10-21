@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_flow_mincut"
+
+// Values
+pub fn graph_flow_mincut_buffer_make(Int32) -> GraphflowmincutBuffer
+
+pub fn graph_flow_mincut_cluster_make(Int32) -> GraphflowmincutCluster
+
+pub fn graph_flow_mincut_cursor_make(Int32) -> GraphflowmincutCursor
+
+pub fn graph_flow_mincut_edge_make(Int32) -> GraphflowmincutEdge
+
+pub fn graph_flow_mincut_frame_make(Int32) -> GraphflowmincutFrame
+
+pub fn graph_flow_mincut_graphn_make(Int32) -> GraphflowmincutGraphN
+
+pub fn graph_flow_mincut_layer_make(Int32) -> GraphflowmincutLayer
+
+pub fn graph_flow_mincut_make_matrix(Int32, Int32, Double) -> GraphflowmincutMatrix
+
+pub fn graph_flow_mincut_make_point(Double, Double) -> GraphflowmincutPoint
+
+pub fn graph_flow_mincut_make_point3(Double, Double, Double) -> GraphflowmincutPoint
+
+pub fn graph_flow_mincut_make_series(Array[Double], String) -> GraphflowmincutSeries
+
+pub fn graph_flow_mincut_make_vector(Array[Double]) -> GraphflowmincutVector
+
+pub fn graph_flow_mincut_matrix_identity(Int32) -> GraphflowmincutMatrix
+
+pub fn graph_flow_mincut_model_make(Int32) -> GraphflowmincutModel
+
+pub fn graph_flow_mincut_node_make(Int32) -> GraphflowmincutNode
+
+pub fn graph_flow_mincut_path_make(Int32) -> GraphflowmincutPath
+
+pub fn graph_flow_mincut_range_make(Int32) -> GraphflowmincutRange
+
+pub fn graph_flow_mincut_slice_make(Int32) -> GraphflowmincutSlice
+
+pub fn graph_flow_mincut_table_make(Int32) -> GraphflowmincutTable
+
+pub fn graph_flow_mincut_vector_zero(Int32) -> GraphflowmincutVector
+
+pub fn graph_flow_mincut_view_make(Int32) -> GraphflowmincutView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphflowmincutBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmincutBuffer::add(Self, Self) -> Self
+pub fn GraphflowmincutBuffer::copy(Self) -> Self
+pub fn GraphflowmincutBuffer::fill(Self, Double) -> Self
+pub fn GraphflowmincutBuffer::get(Self, Int32) -> Double
+pub fn GraphflowmincutBuffer::len(Self) -> Int32
+pub fn GraphflowmincutBuffer::max(Self) -> Double
+pub fn GraphflowmincutBuffer::mean(Self) -> Double
+pub fn GraphflowmincutBuffer::min(Self) -> Double
+pub fn GraphflowmincutBuffer::scale(Self, Double) -> Self
+pub fn GraphflowmincutBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphflowmincutBuffer::sum(Self) -> Double
+pub fn GraphflowmincutBuffer::to_string(Self) -> String
+
+pub(all) struct GraphflowmincutCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmincutCluster::add(Self, Self) -> Self
+pub fn GraphflowmincutCluster::copy(Self) -> Self
+pub fn GraphflowmincutCluster::fill(Self, Double) -> Self
+pub fn GraphflowmincutCluster::get(Self, Int32) -> Double
+pub fn GraphflowmincutCluster::len(Self) -> Int32
+pub fn GraphflowmincutCluster::max(Self) -> Double
+pub fn GraphflowmincutCluster::mean(Self) -> Double
+pub fn GraphflowmincutCluster::min(Self) -> Double
+pub fn GraphflowmincutCluster::scale(Self, Double) -> Self
+pub fn GraphflowmincutCluster::set(Self, Int32, Double) -> Self
+pub fn GraphflowmincutCluster::sum(Self) -> Double
+pub fn GraphflowmincutCluster::to_string(Self) -> String
+
+pub(all) struct GraphflowmincutCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmincutCursor::add(Self, Self) -> Self
+pub fn GraphflowmincutCursor::copy(Self) -> Self
+pub fn GraphflowmincutCursor::fill(Self, Double) -> Self
+pub fn GraphflowmincutCursor::get(Self, Int32) -> Double
+pub fn GraphflowmincutCursor::len(Self) -> Int32
+pub fn GraphflowmincutCursor::max(Self) -> Double
+pub fn GraphflowmincutCursor::mean(Self) -> Double
+pub fn GraphflowmincutCursor::min(Self) -> Double
+pub fn GraphflowmincutCursor::scale(Self, Double) -> Self
+pub fn GraphflowmincutCursor::set(Self, Int32, Double) -> Self
+pub fn GraphflowmincutCursor::sum(Self) -> Double
+pub fn GraphflowmincutCursor::to_string(Self) -> String
+
+pub(all) struct GraphflowmincutEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmincutEdge::add(Self, Self) -> Self
+pub fn GraphflowmincutEdge::copy(Self) -> Self
+pub fn GraphflowmincutEdge::fill(Self, Double) -> Self
+pub fn GraphflowmincutEdge::get(Self, Int32) -> Double
+pub fn GraphflowmincutEdge::len(Self) -> Int32
+pub fn GraphflowmincutEdge::max(Self) -> Double
+pub fn GraphflowmincutEdge::mean(Self) -> Double
+pub fn GraphflowmincutEdge::min(Self) -> Double
+pub fn GraphflowmincutEdge::scale(Self, Double) -> Self
+pub fn GraphflowmincutEdge::set(Self, Int32, Double) -> Self
+pub fn GraphflowmincutEdge::sum(Self) -> Double
+pub fn GraphflowmincutEdge::to_string(Self) -> String
+
+pub(all) struct GraphflowmincutFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmincutFrame::add(Self, Self) -> Self
+pub fn GraphflowmincutFrame::copy(Self) -> Self
+pub fn GraphflowmincutFrame::fill(Self, Double) -> Self
+pub fn GraphflowmincutFrame::get(Self, Int32) -> Double
+pub fn GraphflowmincutFrame::len(Self) -> Int32
+pub fn GraphflowmincutFrame::max(Self) -> Double
+pub fn GraphflowmincutFrame::mean(Self) -> Double
+pub fn GraphflowmincutFrame::min(Self) -> Double
+pub fn GraphflowmincutFrame::scale(Self, Double) -> Self
+pub fn GraphflowmincutFrame::set(Self, Int32, Double) -> Self
+pub fn GraphflowmincutFrame::sum(Self) -> Double
+pub fn GraphflowmincutFrame::to_string(Self) -> String
+
+pub(all) struct GraphflowmincutGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmincutGraphN::add(Self, Self) -> Self
+pub fn GraphflowmincutGraphN::copy(Self) -> Self
+pub fn GraphflowmincutGraphN::fill(Self, Double) -> Self
+pub fn GraphflowmincutGraphN::get(Self, Int32) -> Double
+pub fn GraphflowmincutGraphN::len(Self) -> Int32
+pub fn GraphflowmincutGraphN::max(Self) -> Double
+pub fn GraphflowmincutGraphN::mean(Self) -> Double
+pub fn GraphflowmincutGraphN::min(Self) -> Double
+pub fn GraphflowmincutGraphN::scale(Self, Double) -> Self
+pub fn GraphflowmincutGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphflowmincutGraphN::sum(Self) -> Double
+pub fn GraphflowmincutGraphN::to_string(Self) -> String
+
+pub(all) struct GraphflowmincutLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmincutLayer::add(Self, Self) -> Self
+pub fn GraphflowmincutLayer::copy(Self) -> Self
+pub fn GraphflowmincutLayer::fill(Self, Double) -> Self
+pub fn GraphflowmincutLayer::get(Self, Int32) -> Double
+pub fn GraphflowmincutLayer::len(Self) -> Int32
+pub fn GraphflowmincutLayer::max(Self) -> Double
+pub fn GraphflowmincutLayer::mean(Self) -> Double
+pub fn GraphflowmincutLayer::min(Self) -> Double
+pub fn GraphflowmincutLayer::scale(Self, Double) -> Self
+pub fn GraphflowmincutLayer::set(Self, Int32, Double) -> Self
+pub fn GraphflowmincutLayer::sum(Self) -> Double
+pub fn GraphflowmincutLayer::to_string(Self) -> String
+
+pub(all) struct GraphflowmincutMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphflowmincutMatrix::add(Self, Self) -> Self
+pub fn GraphflowmincutMatrix::det(Self) -> Double
+pub fn GraphflowmincutMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphflowmincutMatrix::multiply(Self, Self) -> Self
+pub fn GraphflowmincutMatrix::norm(Self) -> Double
+pub fn GraphflowmincutMatrix::scale(Self, Double) -> Self
+pub fn GraphflowmincutMatrix::to_string(Self) -> String
+pub fn GraphflowmincutMatrix::trace(Self) -> Double
+pub fn GraphflowmincutMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphflowmincutModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmincutModel::add(Self, Self) -> Self
+pub fn GraphflowmincutModel::copy(Self) -> Self
+pub fn GraphflowmincutModel::fill(Self, Double) -> Self
+pub fn GraphflowmincutModel::get(Self, Int32) -> Double
+pub fn GraphflowmincutModel::len(Self) -> Int32
+pub fn GraphflowmincutModel::max(Self) -> Double
+pub fn GraphflowmincutModel::mean(Self) -> Double
+pub fn GraphflowmincutModel::min(Self) -> Double
+pub fn GraphflowmincutModel::scale(Self, Double) -> Self
+pub fn GraphflowmincutModel::set(Self, Int32, Double) -> Self
+pub fn GraphflowmincutModel::sum(Self) -> Double
+pub fn GraphflowmincutModel::to_string(Self) -> String
+
+pub(all) struct GraphflowmincutNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmincutNode::add(Self, Self) -> Self
+pub fn GraphflowmincutNode::copy(Self) -> Self
+pub fn GraphflowmincutNode::fill(Self, Double) -> Self
+pub fn GraphflowmincutNode::get(Self, Int32) -> Double
+pub fn GraphflowmincutNode::len(Self) -> Int32
+pub fn GraphflowmincutNode::max(Self) -> Double
+pub fn GraphflowmincutNode::mean(Self) -> Double
+pub fn GraphflowmincutNode::min(Self) -> Double
+pub fn GraphflowmincutNode::scale(Self, Double) -> Self
+pub fn GraphflowmincutNode::set(Self, Int32, Double) -> Self
+pub fn GraphflowmincutNode::sum(Self) -> Double
+pub fn GraphflowmincutNode::to_string(Self) -> String
+
+pub(all) struct GraphflowmincutPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmincutPath::add(Self, Self) -> Self
+pub fn GraphflowmincutPath::copy(Self) -> Self
+pub fn GraphflowmincutPath::fill(Self, Double) -> Self
+pub fn GraphflowmincutPath::get(Self, Int32) -> Double
+pub fn GraphflowmincutPath::len(Self) -> Int32
+pub fn GraphflowmincutPath::max(Self) -> Double
+pub fn GraphflowmincutPath::mean(Self) -> Double
+pub fn GraphflowmincutPath::min(Self) -> Double
+pub fn GraphflowmincutPath::scale(Self, Double) -> Self
+pub fn GraphflowmincutPath::set(Self, Int32, Double) -> Self
+pub fn GraphflowmincutPath::sum(Self) -> Double
+pub fn GraphflowmincutPath::to_string(Self) -> String
+
+pub(all) struct GraphflowmincutPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphflowmincutPoint::add(Self, Self) -> Self
+pub fn GraphflowmincutPoint::cross(Self, Self) -> Self
+pub fn GraphflowmincutPoint::dist(Self, Self) -> Double
+pub fn GraphflowmincutPoint::dot(Self, Self) -> Double
+pub fn GraphflowmincutPoint::label(Self) -> Int32
+pub fn GraphflowmincutPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphflowmincutPoint::mid(Self, Self) -> Self
+pub fn GraphflowmincutPoint::negate(Self) -> Self
+pub fn GraphflowmincutPoint::norm(Self) -> Double
+pub fn GraphflowmincutPoint::normalize(Self) -> Self
+pub fn GraphflowmincutPoint::scale(Self, Double) -> Self
+pub fn GraphflowmincutPoint::sub(Self, Self) -> Self
+pub fn GraphflowmincutPoint::to_string(Self) -> String
+pub fn GraphflowmincutPoint::x(Self) -> Double
+pub fn GraphflowmincutPoint::y(Self) -> Double
+pub fn GraphflowmincutPoint::z(Self) -> Double
+
+pub(all) struct GraphflowmincutRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmincutRange::add(Self, Self) -> Self
+pub fn GraphflowmincutRange::copy(Self) -> Self
+pub fn GraphflowmincutRange::fill(Self, Double) -> Self
+pub fn GraphflowmincutRange::get(Self, Int32) -> Double
+pub fn GraphflowmincutRange::len(Self) -> Int32
+pub fn GraphflowmincutRange::max(Self) -> Double
+pub fn GraphflowmincutRange::mean(Self) -> Double
+pub fn GraphflowmincutRange::min(Self) -> Double
+pub fn GraphflowmincutRange::scale(Self, Double) -> Self
+pub fn GraphflowmincutRange::set(Self, Int32, Double) -> Self
+pub fn GraphflowmincutRange::sum(Self) -> Double
+pub fn GraphflowmincutRange::to_string(Self) -> String
+
+pub(all) struct GraphflowmincutSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphflowmincutSeries::add(Self, Self) -> Self
+pub fn GraphflowmincutSeries::cumsum(Self) -> Self
+pub fn GraphflowmincutSeries::len(Self) -> Int32
+pub fn GraphflowmincutSeries::max(Self) -> Double
+pub fn GraphflowmincutSeries::mean(Self) -> Double
+pub fn GraphflowmincutSeries::median(Self) -> Double
+pub fn GraphflowmincutSeries::min(Self) -> Double
+pub fn GraphflowmincutSeries::normalize(Self) -> Self
+pub fn GraphflowmincutSeries::range(Self) -> Double
+pub fn GraphflowmincutSeries::scale(Self, Double) -> Self
+pub fn GraphflowmincutSeries::std(Self) -> Double
+pub fn GraphflowmincutSeries::sub(Self, Self) -> Self
+pub fn GraphflowmincutSeries::sum(Self) -> Double
+pub fn GraphflowmincutSeries::to_string(Self) -> String
+pub fn GraphflowmincutSeries::variance(Self) -> Double
+
+pub(all) struct GraphflowmincutSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmincutSlice::add(Self, Self) -> Self
+pub fn GraphflowmincutSlice::copy(Self) -> Self
+pub fn GraphflowmincutSlice::fill(Self, Double) -> Self
+pub fn GraphflowmincutSlice::get(Self, Int32) -> Double
+pub fn GraphflowmincutSlice::len(Self) -> Int32
+pub fn GraphflowmincutSlice::max(Self) -> Double
+pub fn GraphflowmincutSlice::mean(Self) -> Double
+pub fn GraphflowmincutSlice::min(Self) -> Double
+pub fn GraphflowmincutSlice::scale(Self, Double) -> Self
+pub fn GraphflowmincutSlice::set(Self, Int32, Double) -> Self
+pub fn GraphflowmincutSlice::sum(Self) -> Double
+pub fn GraphflowmincutSlice::to_string(Self) -> String
+
+pub(all) struct GraphflowmincutTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmincutTable::add(Self, Self) -> Self
+pub fn GraphflowmincutTable::copy(Self) -> Self
+pub fn GraphflowmincutTable::fill(Self, Double) -> Self
+pub fn GraphflowmincutTable::get(Self, Int32) -> Double
+pub fn GraphflowmincutTable::len(Self) -> Int32
+pub fn GraphflowmincutTable::max(Self) -> Double
+pub fn GraphflowmincutTable::mean(Self) -> Double
+pub fn GraphflowmincutTable::min(Self) -> Double
+pub fn GraphflowmincutTable::scale(Self, Double) -> Self
+pub fn GraphflowmincutTable::set(Self, Int32, Double) -> Self
+pub fn GraphflowmincutTable::sum(Self) -> Double
+pub fn GraphflowmincutTable::to_string(Self) -> String
+
+pub(all) struct GraphflowmincutVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphflowmincutVector::add(Self, Self) -> Self
+pub fn GraphflowmincutVector::dist(Self, Self) -> Double
+pub fn GraphflowmincutVector::dot(Self, Self) -> Double
+pub fn GraphflowmincutVector::norm(Self) -> Double
+pub fn GraphflowmincutVector::normalize(Self) -> Self
+pub fn GraphflowmincutVector::scale(Self, Double) -> Self
+pub fn GraphflowmincutVector::sub(Self, Self) -> Self
+pub fn GraphflowmincutVector::to_string(Self) -> String
+
+pub(all) struct GraphflowmincutView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowmincutView::add(Self, Self) -> Self
+pub fn GraphflowmincutView::copy(Self) -> Self
+pub fn GraphflowmincutView::fill(Self, Double) -> Self
+pub fn GraphflowmincutView::get(Self, Int32) -> Double
+pub fn GraphflowmincutView::len(Self) -> Int32
+pub fn GraphflowmincutView::max(Self) -> Double
+pub fn GraphflowmincutView::mean(Self) -> Double
+pub fn GraphflowmincutView::min(Self) -> Double
+pub fn GraphflowmincutView::scale(Self, Double) -> Self
+pub fn GraphflowmincutView::set(Self, Int32, Double) -> Self
+pub fn GraphflowmincutView::sum(Self) -> Double
+pub fn GraphflowmincutView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

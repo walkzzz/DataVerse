@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_feature_surf"
+
+// Values
+pub fn image_feature_surf_buffer_make(Int32) -> ImagefeaturesurfBuffer
+
+pub fn image_feature_surf_cluster_make(Int32) -> ImagefeaturesurfCluster
+
+pub fn image_feature_surf_cursor_make(Int32) -> ImagefeaturesurfCursor
+
+pub fn image_feature_surf_edge_make(Int32) -> ImagefeaturesurfEdge
+
+pub fn image_feature_surf_frame_make(Int32) -> ImagefeaturesurfFrame
+
+pub fn image_feature_surf_graphn_make(Int32) -> ImagefeaturesurfGraphN
+
+pub fn image_feature_surf_layer_make(Int32) -> ImagefeaturesurfLayer
+
+pub fn image_feature_surf_make_matrix(Int32, Int32, Double) -> ImagefeaturesurfMatrix
+
+pub fn image_feature_surf_make_point(Double, Double) -> ImagefeaturesurfPoint
+
+pub fn image_feature_surf_make_point3(Double, Double, Double) -> ImagefeaturesurfPoint
+
+pub fn image_feature_surf_make_series(Array[Double], String) -> ImagefeaturesurfSeries
+
+pub fn image_feature_surf_make_vector(Array[Double]) -> ImagefeaturesurfVector
+
+pub fn image_feature_surf_matrix_identity(Int32) -> ImagefeaturesurfMatrix
+
+pub fn image_feature_surf_model_make(Int32) -> ImagefeaturesurfModel
+
+pub fn image_feature_surf_node_make(Int32) -> ImagefeaturesurfNode
+
+pub fn image_feature_surf_path_make(Int32) -> ImagefeaturesurfPath
+
+pub fn image_feature_surf_range_make(Int32) -> ImagefeaturesurfRange
+
+pub fn image_feature_surf_slice_make(Int32) -> ImagefeaturesurfSlice
+
+pub fn image_feature_surf_table_make(Int32) -> ImagefeaturesurfTable
+
+pub fn image_feature_surf_vector_zero(Int32) -> ImagefeaturesurfVector
+
+pub fn image_feature_surf_view_make(Int32) -> ImagefeaturesurfView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagefeaturesurfBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturesurfBuffer::add(Self, Self) -> Self
+pub fn ImagefeaturesurfBuffer::copy(Self) -> Self
+pub fn ImagefeaturesurfBuffer::fill(Self, Double) -> Self
+pub fn ImagefeaturesurfBuffer::get(Self, Int32) -> Double
+pub fn ImagefeaturesurfBuffer::len(Self) -> Int32
+pub fn ImagefeaturesurfBuffer::max(Self) -> Double
+pub fn ImagefeaturesurfBuffer::mean(Self) -> Double
+pub fn ImagefeaturesurfBuffer::min(Self) -> Double
+pub fn ImagefeaturesurfBuffer::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturesurfBuffer::sum(Self) -> Double
+pub fn ImagefeaturesurfBuffer::to_string(Self) -> String
+
+pub(all) struct ImagefeaturesurfCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturesurfCluster::add(Self, Self) -> Self
+pub fn ImagefeaturesurfCluster::copy(Self) -> Self
+pub fn ImagefeaturesurfCluster::fill(Self, Double) -> Self
+pub fn ImagefeaturesurfCluster::get(Self, Int32) -> Double
+pub fn ImagefeaturesurfCluster::len(Self) -> Int32
+pub fn ImagefeaturesurfCluster::max(Self) -> Double
+pub fn ImagefeaturesurfCluster::mean(Self) -> Double
+pub fn ImagefeaturesurfCluster::min(Self) -> Double
+pub fn ImagefeaturesurfCluster::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfCluster::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturesurfCluster::sum(Self) -> Double
+pub fn ImagefeaturesurfCluster::to_string(Self) -> String
+
+pub(all) struct ImagefeaturesurfCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturesurfCursor::add(Self, Self) -> Self
+pub fn ImagefeaturesurfCursor::copy(Self) -> Self
+pub fn ImagefeaturesurfCursor::fill(Self, Double) -> Self
+pub fn ImagefeaturesurfCursor::get(Self, Int32) -> Double
+pub fn ImagefeaturesurfCursor::len(Self) -> Int32
+pub fn ImagefeaturesurfCursor::max(Self) -> Double
+pub fn ImagefeaturesurfCursor::mean(Self) -> Double
+pub fn ImagefeaturesurfCursor::min(Self) -> Double
+pub fn ImagefeaturesurfCursor::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfCursor::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturesurfCursor::sum(Self) -> Double
+pub fn ImagefeaturesurfCursor::to_string(Self) -> String
+
+pub(all) struct ImagefeaturesurfEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturesurfEdge::add(Self, Self) -> Self
+pub fn ImagefeaturesurfEdge::copy(Self) -> Self
+pub fn ImagefeaturesurfEdge::fill(Self, Double) -> Self
+pub fn ImagefeaturesurfEdge::get(Self, Int32) -> Double
+pub fn ImagefeaturesurfEdge::len(Self) -> Int32
+pub fn ImagefeaturesurfEdge::max(Self) -> Double
+pub fn ImagefeaturesurfEdge::mean(Self) -> Double
+pub fn ImagefeaturesurfEdge::min(Self) -> Double
+pub fn ImagefeaturesurfEdge::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfEdge::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturesurfEdge::sum(Self) -> Double
+pub fn ImagefeaturesurfEdge::to_string(Self) -> String
+
+pub(all) struct ImagefeaturesurfFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturesurfFrame::add(Self, Self) -> Self
+pub fn ImagefeaturesurfFrame::copy(Self) -> Self
+pub fn ImagefeaturesurfFrame::fill(Self, Double) -> Self
+pub fn ImagefeaturesurfFrame::get(Self, Int32) -> Double
+pub fn ImagefeaturesurfFrame::len(Self) -> Int32
+pub fn ImagefeaturesurfFrame::max(Self) -> Double
+pub fn ImagefeaturesurfFrame::mean(Self) -> Double
+pub fn ImagefeaturesurfFrame::min(Self) -> Double
+pub fn ImagefeaturesurfFrame::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfFrame::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturesurfFrame::sum(Self) -> Double
+pub fn ImagefeaturesurfFrame::to_string(Self) -> String
+
+pub(all) struct ImagefeaturesurfGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturesurfGraphN::add(Self, Self) -> Self
+pub fn ImagefeaturesurfGraphN::copy(Self) -> Self
+pub fn ImagefeaturesurfGraphN::fill(Self, Double) -> Self
+pub fn ImagefeaturesurfGraphN::get(Self, Int32) -> Double
+pub fn ImagefeaturesurfGraphN::len(Self) -> Int32
+pub fn ImagefeaturesurfGraphN::max(Self) -> Double
+pub fn ImagefeaturesurfGraphN::mean(Self) -> Double
+pub fn ImagefeaturesurfGraphN::min(Self) -> Double
+pub fn ImagefeaturesurfGraphN::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturesurfGraphN::sum(Self) -> Double
+pub fn ImagefeaturesurfGraphN::to_string(Self) -> String
+
+pub(all) struct ImagefeaturesurfLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturesurfLayer::add(Self, Self) -> Self
+pub fn ImagefeaturesurfLayer::copy(Self) -> Self
+pub fn ImagefeaturesurfLayer::fill(Self, Double) -> Self
+pub fn ImagefeaturesurfLayer::get(Self, Int32) -> Double
+pub fn ImagefeaturesurfLayer::len(Self) -> Int32
+pub fn ImagefeaturesurfLayer::max(Self) -> Double
+pub fn ImagefeaturesurfLayer::mean(Self) -> Double
+pub fn ImagefeaturesurfLayer::min(Self) -> Double
+pub fn ImagefeaturesurfLayer::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfLayer::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturesurfLayer::sum(Self) -> Double
+pub fn ImagefeaturesurfLayer::to_string(Self) -> String
+
+pub(all) struct ImagefeaturesurfMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagefeaturesurfMatrix::add(Self, Self) -> Self
+pub fn ImagefeaturesurfMatrix::det(Self) -> Double
+pub fn ImagefeaturesurfMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagefeaturesurfMatrix::multiply(Self, Self) -> Self
+pub fn ImagefeaturesurfMatrix::norm(Self) -> Double
+pub fn ImagefeaturesurfMatrix::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfMatrix::to_string(Self) -> String
+pub fn ImagefeaturesurfMatrix::trace(Self) -> Double
+pub fn ImagefeaturesurfMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagefeaturesurfModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturesurfModel::add(Self, Self) -> Self
+pub fn ImagefeaturesurfModel::copy(Self) -> Self
+pub fn ImagefeaturesurfModel::fill(Self, Double) -> Self
+pub fn ImagefeaturesurfModel::get(Self, Int32) -> Double
+pub fn ImagefeaturesurfModel::len(Self) -> Int32
+pub fn ImagefeaturesurfModel::max(Self) -> Double
+pub fn ImagefeaturesurfModel::mean(Self) -> Double
+pub fn ImagefeaturesurfModel::min(Self) -> Double
+pub fn ImagefeaturesurfModel::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfModel::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturesurfModel::sum(Self) -> Double
+pub fn ImagefeaturesurfModel::to_string(Self) -> String
+
+pub(all) struct ImagefeaturesurfNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturesurfNode::add(Self, Self) -> Self
+pub fn ImagefeaturesurfNode::copy(Self) -> Self
+pub fn ImagefeaturesurfNode::fill(Self, Double) -> Self
+pub fn ImagefeaturesurfNode::get(Self, Int32) -> Double
+pub fn ImagefeaturesurfNode::len(Self) -> Int32
+pub fn ImagefeaturesurfNode::max(Self) -> Double
+pub fn ImagefeaturesurfNode::mean(Self) -> Double
+pub fn ImagefeaturesurfNode::min(Self) -> Double
+pub fn ImagefeaturesurfNode::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfNode::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturesurfNode::sum(Self) -> Double
+pub fn ImagefeaturesurfNode::to_string(Self) -> String
+
+pub(all) struct ImagefeaturesurfPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturesurfPath::add(Self, Self) -> Self
+pub fn ImagefeaturesurfPath::copy(Self) -> Self
+pub fn ImagefeaturesurfPath::fill(Self, Double) -> Self
+pub fn ImagefeaturesurfPath::get(Self, Int32) -> Double
+pub fn ImagefeaturesurfPath::len(Self) -> Int32
+pub fn ImagefeaturesurfPath::max(Self) -> Double
+pub fn ImagefeaturesurfPath::mean(Self) -> Double
+pub fn ImagefeaturesurfPath::min(Self) -> Double
+pub fn ImagefeaturesurfPath::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfPath::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturesurfPath::sum(Self) -> Double
+pub fn ImagefeaturesurfPath::to_string(Self) -> String
+
+pub(all) struct ImagefeaturesurfPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagefeaturesurfPoint::add(Self, Self) -> Self
+pub fn ImagefeaturesurfPoint::cross(Self, Self) -> Self
+pub fn ImagefeaturesurfPoint::dist(Self, Self) -> Double
+pub fn ImagefeaturesurfPoint::dot(Self, Self) -> Double
+pub fn ImagefeaturesurfPoint::label(Self) -> Int32
+pub fn ImagefeaturesurfPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagefeaturesurfPoint::mid(Self, Self) -> Self
+pub fn ImagefeaturesurfPoint::negate(Self) -> Self
+pub fn ImagefeaturesurfPoint::norm(Self) -> Double
+pub fn ImagefeaturesurfPoint::normalize(Self) -> Self
+pub fn ImagefeaturesurfPoint::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfPoint::sub(Self, Self) -> Self
+pub fn ImagefeaturesurfPoint::to_string(Self) -> String
+pub fn ImagefeaturesurfPoint::x(Self) -> Double
+pub fn ImagefeaturesurfPoint::y(Self) -> Double
+pub fn ImagefeaturesurfPoint::z(Self) -> Double
+
+pub(all) struct ImagefeaturesurfRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturesurfRange::add(Self, Self) -> Self
+pub fn ImagefeaturesurfRange::copy(Self) -> Self
+pub fn ImagefeaturesurfRange::fill(Self, Double) -> Self
+pub fn ImagefeaturesurfRange::get(Self, Int32) -> Double
+pub fn ImagefeaturesurfRange::len(Self) -> Int32
+pub fn ImagefeaturesurfRange::max(Self) -> Double
+pub fn ImagefeaturesurfRange::mean(Self) -> Double
+pub fn ImagefeaturesurfRange::min(Self) -> Double
+pub fn ImagefeaturesurfRange::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfRange::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturesurfRange::sum(Self) -> Double
+pub fn ImagefeaturesurfRange::to_string(Self) -> String
+
+pub(all) struct ImagefeaturesurfSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagefeaturesurfSeries::add(Self, Self) -> Self
+pub fn ImagefeaturesurfSeries::cumsum(Self) -> Self
+pub fn ImagefeaturesurfSeries::len(Self) -> Int32
+pub fn ImagefeaturesurfSeries::max(Self) -> Double
+pub fn ImagefeaturesurfSeries::mean(Self) -> Double
+pub fn ImagefeaturesurfSeries::median(Self) -> Double
+pub fn ImagefeaturesurfSeries::min(Self) -> Double
+pub fn ImagefeaturesurfSeries::normalize(Self) -> Self
+pub fn ImagefeaturesurfSeries::range(Self) -> Double
+pub fn ImagefeaturesurfSeries::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfSeries::std(Self) -> Double
+pub fn ImagefeaturesurfSeries::sub(Self, Self) -> Self
+pub fn ImagefeaturesurfSeries::sum(Self) -> Double
+pub fn ImagefeaturesurfSeries::to_string(Self) -> String
+pub fn ImagefeaturesurfSeries::variance(Self) -> Double
+
+pub(all) struct ImagefeaturesurfSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturesurfSlice::add(Self, Self) -> Self
+pub fn ImagefeaturesurfSlice::copy(Self) -> Self
+pub fn ImagefeaturesurfSlice::fill(Self, Double) -> Self
+pub fn ImagefeaturesurfSlice::get(Self, Int32) -> Double
+pub fn ImagefeaturesurfSlice::len(Self) -> Int32
+pub fn ImagefeaturesurfSlice::max(Self) -> Double
+pub fn ImagefeaturesurfSlice::mean(Self) -> Double
+pub fn ImagefeaturesurfSlice::min(Self) -> Double
+pub fn ImagefeaturesurfSlice::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfSlice::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturesurfSlice::sum(Self) -> Double
+pub fn ImagefeaturesurfSlice::to_string(Self) -> String
+
+pub(all) struct ImagefeaturesurfTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturesurfTable::add(Self, Self) -> Self
+pub fn ImagefeaturesurfTable::copy(Self) -> Self
+pub fn ImagefeaturesurfTable::fill(Self, Double) -> Self
+pub fn ImagefeaturesurfTable::get(Self, Int32) -> Double
+pub fn ImagefeaturesurfTable::len(Self) -> Int32
+pub fn ImagefeaturesurfTable::max(Self) -> Double
+pub fn ImagefeaturesurfTable::mean(Self) -> Double
+pub fn ImagefeaturesurfTable::min(Self) -> Double
+pub fn ImagefeaturesurfTable::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfTable::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturesurfTable::sum(Self) -> Double
+pub fn ImagefeaturesurfTable::to_string(Self) -> String
+
+pub(all) struct ImagefeaturesurfVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagefeaturesurfVector::add(Self, Self) -> Self
+pub fn ImagefeaturesurfVector::dist(Self, Self) -> Double
+pub fn ImagefeaturesurfVector::dot(Self, Self) -> Double
+pub fn ImagefeaturesurfVector::norm(Self) -> Double
+pub fn ImagefeaturesurfVector::normalize(Self) -> Self
+pub fn ImagefeaturesurfVector::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfVector::sub(Self, Self) -> Self
+pub fn ImagefeaturesurfVector::to_string(Self) -> String
+
+pub(all) struct ImagefeaturesurfView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturesurfView::add(Self, Self) -> Self
+pub fn ImagefeaturesurfView::copy(Self) -> Self
+pub fn ImagefeaturesurfView::fill(Self, Double) -> Self
+pub fn ImagefeaturesurfView::get(Self, Int32) -> Double
+pub fn ImagefeaturesurfView::len(Self) -> Int32
+pub fn ImagefeaturesurfView::max(Self) -> Double
+pub fn ImagefeaturesurfView::mean(Self) -> Double
+pub fn ImagefeaturesurfView::min(Self) -> Double
+pub fn ImagefeaturesurfView::scale(Self, Double) -> Self
+pub fn ImagefeaturesurfView::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturesurfView::sum(Self) -> Double
+pub fn ImagefeaturesurfView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

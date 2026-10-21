@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_heat_phase"
+
+// Values
+pub fn physics_heat_phase_buffer_make(Int32) -> PhysicsheatphaseBuffer
+
+pub fn physics_heat_phase_cluster_make(Int32) -> PhysicsheatphaseCluster
+
+pub fn physics_heat_phase_cursor_make(Int32) -> PhysicsheatphaseCursor
+
+pub fn physics_heat_phase_edge_make(Int32) -> PhysicsheatphaseEdge
+
+pub fn physics_heat_phase_frame_make(Int32) -> PhysicsheatphaseFrame
+
+pub fn physics_heat_phase_graphn_make(Int32) -> PhysicsheatphaseGraphN
+
+pub fn physics_heat_phase_layer_make(Int32) -> PhysicsheatphaseLayer
+
+pub fn physics_heat_phase_make_matrix(Int32, Int32, Double) -> PhysicsheatphaseMatrix
+
+pub fn physics_heat_phase_make_point(Double, Double) -> PhysicsheatphasePoint
+
+pub fn physics_heat_phase_make_point3(Double, Double, Double) -> PhysicsheatphasePoint
+
+pub fn physics_heat_phase_make_series(Array[Double], String) -> PhysicsheatphaseSeries
+
+pub fn physics_heat_phase_make_vector(Array[Double]) -> PhysicsheatphaseVector
+
+pub fn physics_heat_phase_matrix_identity(Int32) -> PhysicsheatphaseMatrix
+
+pub fn physics_heat_phase_model_make(Int32) -> PhysicsheatphaseModel
+
+pub fn physics_heat_phase_node_make(Int32) -> PhysicsheatphaseNode
+
+pub fn physics_heat_phase_path_make(Int32) -> PhysicsheatphasePath
+
+pub fn physics_heat_phase_range_make(Int32) -> PhysicsheatphaseRange
+
+pub fn physics_heat_phase_slice_make(Int32) -> PhysicsheatphaseSlice
+
+pub fn physics_heat_phase_table_make(Int32) -> PhysicsheatphaseTable
+
+pub fn physics_heat_phase_vector_zero(Int32) -> PhysicsheatphaseVector
+
+pub fn physics_heat_phase_view_make(Int32) -> PhysicsheatphaseView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsheatphaseBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatphaseBuffer::add(Self, Self) -> Self
+pub fn PhysicsheatphaseBuffer::copy(Self) -> Self
+pub fn PhysicsheatphaseBuffer::fill(Self, Double) -> Self
+pub fn PhysicsheatphaseBuffer::get(Self, Int32) -> Double
+pub fn PhysicsheatphaseBuffer::len(Self) -> Int32
+pub fn PhysicsheatphaseBuffer::max(Self) -> Double
+pub fn PhysicsheatphaseBuffer::mean(Self) -> Double
+pub fn PhysicsheatphaseBuffer::min(Self) -> Double
+pub fn PhysicsheatphaseBuffer::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatphaseBuffer::sum(Self) -> Double
+pub fn PhysicsheatphaseBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsheatphaseCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatphaseCluster::add(Self, Self) -> Self
+pub fn PhysicsheatphaseCluster::copy(Self) -> Self
+pub fn PhysicsheatphaseCluster::fill(Self, Double) -> Self
+pub fn PhysicsheatphaseCluster::get(Self, Int32) -> Double
+pub fn PhysicsheatphaseCluster::len(Self) -> Int32
+pub fn PhysicsheatphaseCluster::max(Self) -> Double
+pub fn PhysicsheatphaseCluster::mean(Self) -> Double
+pub fn PhysicsheatphaseCluster::min(Self) -> Double
+pub fn PhysicsheatphaseCluster::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatphaseCluster::sum(Self) -> Double
+pub fn PhysicsheatphaseCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsheatphaseCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatphaseCursor::add(Self, Self) -> Self
+pub fn PhysicsheatphaseCursor::copy(Self) -> Self
+pub fn PhysicsheatphaseCursor::fill(Self, Double) -> Self
+pub fn PhysicsheatphaseCursor::get(Self, Int32) -> Double
+pub fn PhysicsheatphaseCursor::len(Self) -> Int32
+pub fn PhysicsheatphaseCursor::max(Self) -> Double
+pub fn PhysicsheatphaseCursor::mean(Self) -> Double
+pub fn PhysicsheatphaseCursor::min(Self) -> Double
+pub fn PhysicsheatphaseCursor::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatphaseCursor::sum(Self) -> Double
+pub fn PhysicsheatphaseCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsheatphaseEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatphaseEdge::add(Self, Self) -> Self
+pub fn PhysicsheatphaseEdge::copy(Self) -> Self
+pub fn PhysicsheatphaseEdge::fill(Self, Double) -> Self
+pub fn PhysicsheatphaseEdge::get(Self, Int32) -> Double
+pub fn PhysicsheatphaseEdge::len(Self) -> Int32
+pub fn PhysicsheatphaseEdge::max(Self) -> Double
+pub fn PhysicsheatphaseEdge::mean(Self) -> Double
+pub fn PhysicsheatphaseEdge::min(Self) -> Double
+pub fn PhysicsheatphaseEdge::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatphaseEdge::sum(Self) -> Double
+pub fn PhysicsheatphaseEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsheatphaseFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatphaseFrame::add(Self, Self) -> Self
+pub fn PhysicsheatphaseFrame::copy(Self) -> Self
+pub fn PhysicsheatphaseFrame::fill(Self, Double) -> Self
+pub fn PhysicsheatphaseFrame::get(Self, Int32) -> Double
+pub fn PhysicsheatphaseFrame::len(Self) -> Int32
+pub fn PhysicsheatphaseFrame::max(Self) -> Double
+pub fn PhysicsheatphaseFrame::mean(Self) -> Double
+pub fn PhysicsheatphaseFrame::min(Self) -> Double
+pub fn PhysicsheatphaseFrame::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatphaseFrame::sum(Self) -> Double
+pub fn PhysicsheatphaseFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsheatphaseGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatphaseGraphN::add(Self, Self) -> Self
+pub fn PhysicsheatphaseGraphN::copy(Self) -> Self
+pub fn PhysicsheatphaseGraphN::fill(Self, Double) -> Self
+pub fn PhysicsheatphaseGraphN::get(Self, Int32) -> Double
+pub fn PhysicsheatphaseGraphN::len(Self) -> Int32
+pub fn PhysicsheatphaseGraphN::max(Self) -> Double
+pub fn PhysicsheatphaseGraphN::mean(Self) -> Double
+pub fn PhysicsheatphaseGraphN::min(Self) -> Double
+pub fn PhysicsheatphaseGraphN::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatphaseGraphN::sum(Self) -> Double
+pub fn PhysicsheatphaseGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsheatphaseLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatphaseLayer::add(Self, Self) -> Self
+pub fn PhysicsheatphaseLayer::copy(Self) -> Self
+pub fn PhysicsheatphaseLayer::fill(Self, Double) -> Self
+pub fn PhysicsheatphaseLayer::get(Self, Int32) -> Double
+pub fn PhysicsheatphaseLayer::len(Self) -> Int32
+pub fn PhysicsheatphaseLayer::max(Self) -> Double
+pub fn PhysicsheatphaseLayer::mean(Self) -> Double
+pub fn PhysicsheatphaseLayer::min(Self) -> Double
+pub fn PhysicsheatphaseLayer::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatphaseLayer::sum(Self) -> Double
+pub fn PhysicsheatphaseLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsheatphaseMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsheatphaseMatrix::add(Self, Self) -> Self
+pub fn PhysicsheatphaseMatrix::det(Self) -> Double
+pub fn PhysicsheatphaseMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsheatphaseMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsheatphaseMatrix::norm(Self) -> Double
+pub fn PhysicsheatphaseMatrix::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseMatrix::to_string(Self) -> String
+pub fn PhysicsheatphaseMatrix::trace(Self) -> Double
+pub fn PhysicsheatphaseMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsheatphaseModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatphaseModel::add(Self, Self) -> Self
+pub fn PhysicsheatphaseModel::copy(Self) -> Self
+pub fn PhysicsheatphaseModel::fill(Self, Double) -> Self
+pub fn PhysicsheatphaseModel::get(Self, Int32) -> Double
+pub fn PhysicsheatphaseModel::len(Self) -> Int32
+pub fn PhysicsheatphaseModel::max(Self) -> Double
+pub fn PhysicsheatphaseModel::mean(Self) -> Double
+pub fn PhysicsheatphaseModel::min(Self) -> Double
+pub fn PhysicsheatphaseModel::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatphaseModel::sum(Self) -> Double
+pub fn PhysicsheatphaseModel::to_string(Self) -> String
+
+pub(all) struct PhysicsheatphaseNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatphaseNode::add(Self, Self) -> Self
+pub fn PhysicsheatphaseNode::copy(Self) -> Self
+pub fn PhysicsheatphaseNode::fill(Self, Double) -> Self
+pub fn PhysicsheatphaseNode::get(Self, Int32) -> Double
+pub fn PhysicsheatphaseNode::len(Self) -> Int32
+pub fn PhysicsheatphaseNode::max(Self) -> Double
+pub fn PhysicsheatphaseNode::mean(Self) -> Double
+pub fn PhysicsheatphaseNode::min(Self) -> Double
+pub fn PhysicsheatphaseNode::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatphaseNode::sum(Self) -> Double
+pub fn PhysicsheatphaseNode::to_string(Self) -> String
+
+pub(all) struct PhysicsheatphasePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatphasePath::add(Self, Self) -> Self
+pub fn PhysicsheatphasePath::copy(Self) -> Self
+pub fn PhysicsheatphasePath::fill(Self, Double) -> Self
+pub fn PhysicsheatphasePath::get(Self, Int32) -> Double
+pub fn PhysicsheatphasePath::len(Self) -> Int32
+pub fn PhysicsheatphasePath::max(Self) -> Double
+pub fn PhysicsheatphasePath::mean(Self) -> Double
+pub fn PhysicsheatphasePath::min(Self) -> Double
+pub fn PhysicsheatphasePath::scale(Self, Double) -> Self
+pub fn PhysicsheatphasePath::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatphasePath::sum(Self) -> Double
+pub fn PhysicsheatphasePath::to_string(Self) -> String
+
+pub(all) struct PhysicsheatphasePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsheatphasePoint::add(Self, Self) -> Self
+pub fn PhysicsheatphasePoint::cross(Self, Self) -> Self
+pub fn PhysicsheatphasePoint::dist(Self, Self) -> Double
+pub fn PhysicsheatphasePoint::dot(Self, Self) -> Double
+pub fn PhysicsheatphasePoint::label(Self) -> Int32
+pub fn PhysicsheatphasePoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsheatphasePoint::mid(Self, Self) -> Self
+pub fn PhysicsheatphasePoint::negate(Self) -> Self
+pub fn PhysicsheatphasePoint::norm(Self) -> Double
+pub fn PhysicsheatphasePoint::normalize(Self) -> Self
+pub fn PhysicsheatphasePoint::scale(Self, Double) -> Self
+pub fn PhysicsheatphasePoint::sub(Self, Self) -> Self
+pub fn PhysicsheatphasePoint::to_string(Self) -> String
+pub fn PhysicsheatphasePoint::x(Self) -> Double
+pub fn PhysicsheatphasePoint::y(Self) -> Double
+pub fn PhysicsheatphasePoint::z(Self) -> Double
+
+pub(all) struct PhysicsheatphaseRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatphaseRange::add(Self, Self) -> Self
+pub fn PhysicsheatphaseRange::copy(Self) -> Self
+pub fn PhysicsheatphaseRange::fill(Self, Double) -> Self
+pub fn PhysicsheatphaseRange::get(Self, Int32) -> Double
+pub fn PhysicsheatphaseRange::len(Self) -> Int32
+pub fn PhysicsheatphaseRange::max(Self) -> Double
+pub fn PhysicsheatphaseRange::mean(Self) -> Double
+pub fn PhysicsheatphaseRange::min(Self) -> Double
+pub fn PhysicsheatphaseRange::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatphaseRange::sum(Self) -> Double
+pub fn PhysicsheatphaseRange::to_string(Self) -> String
+
+pub(all) struct PhysicsheatphaseSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsheatphaseSeries::add(Self, Self) -> Self
+pub fn PhysicsheatphaseSeries::cumsum(Self) -> Self
+pub fn PhysicsheatphaseSeries::len(Self) -> Int32
+pub fn PhysicsheatphaseSeries::max(Self) -> Double
+pub fn PhysicsheatphaseSeries::mean(Self) -> Double
+pub fn PhysicsheatphaseSeries::median(Self) -> Double
+pub fn PhysicsheatphaseSeries::min(Self) -> Double
+pub fn PhysicsheatphaseSeries::normalize(Self) -> Self
+pub fn PhysicsheatphaseSeries::range(Self) -> Double
+pub fn PhysicsheatphaseSeries::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseSeries::std(Self) -> Double
+pub fn PhysicsheatphaseSeries::sub(Self, Self) -> Self
+pub fn PhysicsheatphaseSeries::sum(Self) -> Double
+pub fn PhysicsheatphaseSeries::to_string(Self) -> String
+pub fn PhysicsheatphaseSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsheatphaseSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatphaseSlice::add(Self, Self) -> Self
+pub fn PhysicsheatphaseSlice::copy(Self) -> Self
+pub fn PhysicsheatphaseSlice::fill(Self, Double) -> Self
+pub fn PhysicsheatphaseSlice::get(Self, Int32) -> Double
+pub fn PhysicsheatphaseSlice::len(Self) -> Int32
+pub fn PhysicsheatphaseSlice::max(Self) -> Double
+pub fn PhysicsheatphaseSlice::mean(Self) -> Double
+pub fn PhysicsheatphaseSlice::min(Self) -> Double
+pub fn PhysicsheatphaseSlice::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatphaseSlice::sum(Self) -> Double
+pub fn PhysicsheatphaseSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsheatphaseTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatphaseTable::add(Self, Self) -> Self
+pub fn PhysicsheatphaseTable::copy(Self) -> Self
+pub fn PhysicsheatphaseTable::fill(Self, Double) -> Self
+pub fn PhysicsheatphaseTable::get(Self, Int32) -> Double
+pub fn PhysicsheatphaseTable::len(Self) -> Int32
+pub fn PhysicsheatphaseTable::max(Self) -> Double
+pub fn PhysicsheatphaseTable::mean(Self) -> Double
+pub fn PhysicsheatphaseTable::min(Self) -> Double
+pub fn PhysicsheatphaseTable::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatphaseTable::sum(Self) -> Double
+pub fn PhysicsheatphaseTable::to_string(Self) -> String
+
+pub(all) struct PhysicsheatphaseVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsheatphaseVector::add(Self, Self) -> Self
+pub fn PhysicsheatphaseVector::dist(Self, Self) -> Double
+pub fn PhysicsheatphaseVector::dot(Self, Self) -> Double
+pub fn PhysicsheatphaseVector::norm(Self) -> Double
+pub fn PhysicsheatphaseVector::normalize(Self) -> Self
+pub fn PhysicsheatphaseVector::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseVector::sub(Self, Self) -> Self
+pub fn PhysicsheatphaseVector::to_string(Self) -> String
+
+pub(all) struct PhysicsheatphaseView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatphaseView::add(Self, Self) -> Self
+pub fn PhysicsheatphaseView::copy(Self) -> Self
+pub fn PhysicsheatphaseView::fill(Self, Double) -> Self
+pub fn PhysicsheatphaseView::get(Self, Int32) -> Double
+pub fn PhysicsheatphaseView::len(Self) -> Int32
+pub fn PhysicsheatphaseView::max(Self) -> Double
+pub fn PhysicsheatphaseView::mean(Self) -> Double
+pub fn PhysicsheatphaseView::min(Self) -> Double
+pub fn PhysicsheatphaseView::scale(Self, Double) -> Self
+pub fn PhysicsheatphaseView::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatphaseView::sum(Self) -> Double
+pub fn PhysicsheatphaseView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

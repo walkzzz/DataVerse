@@ -1,0 +1,216 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/planning"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn a_star_search(String, String, Array[(String, String, Double)], Array[(String, Double)]) -> Array[String]
+
+pub fn allocate_resource_plan(Resource, Int32) -> Resource
+
+pub fn backward_search(Goal, Array[Action], Int32) -> Array[Action]
+
+pub fn check_constraint(Constraint, Double, Double) -> Bool
+
+pub fn critical_path(Plan) -> Array[Int32]
+
+pub fn deallocate_resource(Resource, Int32) -> Resource
+
+pub fn decompose_task(Task, Int32) -> Array[Task]
+
+pub fn evaluate_plan(Plan) -> Double
+
+pub fn forward_search(State, Goal, Array[Action], Int32) -> Array[Action]
+
+pub fn goal_reached(State, Goal) -> Bool
+
+pub fn htn_decompose(HTN, String) -> Array[String]
+
+pub fn htn_plan(HTN, String, Int32) -> Array[String]
+
+pub fn longest_path(DAG, String, String) -> Int32
+
+pub fn make_action(String, String, Array[String], Array[String], Double) -> Action
+
+pub fn make_constraint(String, String, Double) -> Constraint
+
+pub fn make_dag(Array[String], Array[(String, String)]) -> DAG
+
+pub fn make_goal(String, String, Bool) -> Goal
+
+pub fn make_htn(String, Array[HTNMethod]) -> HTN
+
+pub fn make_mdp(String, Array[String], Array[String], Array[(String, String, String, Double)], Array[(String, String, Double)], Double) -> MDP
+
+pub fn make_plan(String, Array[Task], Array[(Int32, Int32)]) -> Plan
+
+pub fn make_policy(String, Array[(String, String)]) -> Policy
+
+pub fn make_resource(String, String, Int32) -> Resource
+
+pub fn make_state(String, Array[String]) -> State
+
+pub fn make_task(Int32, String, String, Int32, Int32) -> Task
+
+pub fn make_timeline(String) -> Timeline
+
+pub fn optimize_plan(Plan) -> Plan
+
+pub fn parallelize_tasks(Plan) -> Array[Array[Task]]
+
+pub fn plan_cost(Plan) -> Double
+
+pub fn plan_duration(Plan) -> Int32
+
+pub fn planning_id() -> String
+
+pub fn policy_iteration(MDP, Int32) -> Policy
+
+pub fn q_learning_step(Array[(String, String, Double)], String, String, Double, String, Array[String], Double, Double) -> Array[(String, String, Double)]
+
+pub fn sarsa_step(Array[(String, String, Double)], String, String, Double, String, String, Double, Double) -> Array[(String, String, Double)]
+
+pub fn satisfy_constraints(Array[Constraint], Array[Double], Array[Double]) -> Bool
+
+pub fn schedule_task_plan(Timeline, Task, Int32) -> Timeline
+
+pub fn serialize_tasks(Plan) -> Array[Task]
+
+pub fn state_transition(State, Action) -> State
+
+pub fn subtasks(Plan, Int32) -> Array[Task]
+
+pub fn task_dependencies(Plan, Int32) -> Array[Int32]
+
+pub fn topological_sort(DAG) -> Array[String]
+
+pub fn value_iteration(MDP, Int32, Double) -> Array[(String, Double)]
+
+// Errors
+
+// Types and methods
+pub struct Action {
+  action_id : String
+  name : String
+  preconditions : Array[String]
+  effects : Array[String]
+  cost : Double
+} derive(Eq, @debug.Debug)
+pub fn Action::equal(Self, Self) -> Bool
+pub fn Action::not_equal(Self, Self) -> Bool
+pub fn Action::to_repr(Self) -> @debug.Repr
+
+pub struct Constraint {
+  constraint_id : String
+  description : String
+  penalty : Double
+} derive(Eq, @debug.Debug)
+pub fn Constraint::equal(Self, Self) -> Bool
+pub fn Constraint::not_equal(Self, Self) -> Bool
+pub fn Constraint::to_repr(Self) -> @debug.Repr
+
+pub struct DAG {
+  nodes : Array[String]
+  edges : Array[(String, String)]
+} derive(Eq, @debug.Debug)
+pub fn DAG::equal(Self, Self) -> Bool
+pub fn DAG::not_equal(Self, Self) -> Bool
+pub fn DAG::to_repr(Self) -> @debug.Repr
+
+pub struct Goal {
+  goal_id : String
+  description : String
+  achieved : Bool
+} derive(Eq, @debug.Debug)
+pub fn Goal::equal(Self, Self) -> Bool
+pub fn Goal::not_equal(Self, Self) -> Bool
+pub fn Goal::to_repr(Self) -> @debug.Repr
+
+pub struct HTN {
+  htn_id : String
+  methods : Array[HTNMethod]
+} derive(Eq, @debug.Debug)
+pub fn HTN::equal(Self, Self) -> Bool
+pub fn HTN::not_equal(Self, Self) -> Bool
+pub fn HTN::to_repr(Self) -> @debug.Repr
+
+pub struct HTNMethod {
+  method_id : String
+  task_name : String
+  subtasks : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn HTNMethod::equal(Self, Self) -> Bool
+pub fn HTNMethod::not_equal(Self, Self) -> Bool
+pub fn HTNMethod::to_repr(Self) -> @debug.Repr
+
+pub struct MDP {
+  mdp_id : String
+  states : Array[String]
+  actions : Array[String]
+  transitions : Array[(String, String, String, Double)]
+  rewards : Array[(String, String, Double)]
+  gamma : Double
+} derive(Eq, @debug.Debug)
+pub fn MDP::equal(Self, Self) -> Bool
+pub fn MDP::not_equal(Self, Self) -> Bool
+pub fn MDP::to_repr(Self) -> @debug.Repr
+
+pub struct Plan {
+  plan_id : String
+  tasks : Array[Task]
+  dependencies : Array[(Int32, Int32)]
+} derive(Eq, @debug.Debug)
+pub fn Plan::equal(Self, Self) -> Bool
+pub fn Plan::not_equal(Self, Self) -> Bool
+pub fn Plan::to_repr(Self) -> @debug.Repr
+
+pub struct Policy {
+  policy_id : String
+  mapping : Array[(String, String)]
+} derive(Eq, @debug.Debug)
+pub fn Policy::equal(Self, Self) -> Bool
+pub fn Policy::not_equal(Self, Self) -> Bool
+pub fn Policy::to_repr(Self) -> @debug.Repr
+
+pub struct Resource {
+  resource_id : String
+  name : String
+  capacity : Int32
+  used : Int32
+} derive(Eq, @debug.Debug)
+pub fn Resource::equal(Self, Self) -> Bool
+pub fn Resource::not_equal(Self, Self) -> Bool
+pub fn Resource::to_repr(Self) -> @debug.Repr
+
+pub struct State {
+  state_id : String
+  facts : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn State::equal(Self, Self) -> Bool
+pub fn State::not_equal(Self, Self) -> Bool
+pub fn State::to_repr(Self) -> @debug.Repr
+
+pub struct Task {
+  task_id : Int32
+  name : String
+  description : String
+  priority : Int32
+  duration : Int32
+} derive(Eq, @debug.Debug)
+pub fn Task::equal(Self, Self) -> Bool
+pub fn Task::not_equal(Self, Self) -> Bool
+pub fn Task::to_repr(Self) -> @debug.Repr
+
+pub struct Timeline {
+  timeline_id : String
+  slots : Array[(Int32, Int32, String)]
+} derive(Eq, @debug.Debug)
+pub fn Timeline::equal(Self, Self) -> Bool
+pub fn Timeline::not_equal(Self, Self) -> Bool
+pub fn Timeline::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

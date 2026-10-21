@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/index_vector"
+
+// Values
+pub fn index_vector_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn index_vector_corr(Array[Double], Array[Double]) -> Double
+
+pub fn index_vector_cov(Array[Double], Array[Double]) -> Double
+
+pub fn index_vector_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_vector_mae(Array[Double], Array[Double]) -> Double
+
+pub fn index_vector_make_labeled_point(Double, Double, Int32) -> Index_vectorPoint
+
+pub fn index_vector_make_matrix(Int32, Int32, Double) -> Index_vectorMatrix
+
+pub fn index_vector_make_point(Double, Double) -> Index_vectorPoint
+
+pub fn index_vector_make_series(Array[Double], String) -> Index_vectorSeries
+
+pub fn index_vector_make_vector(Array[Double]) -> Index_vectorVector
+
+pub fn index_vector_matrix_add(Index_vectorMatrix, Index_vectorMatrix) -> Index_vectorMatrix
+
+pub fn index_vector_matrix_get(Index_vectorMatrix, Int32, Int32) -> Double
+
+pub fn index_vector_matrix_identity(Int32) -> Index_vectorMatrix
+
+pub fn index_vector_matrix_multiply(Index_vectorMatrix, Index_vectorMatrix) -> Index_vectorMatrix
+
+pub fn index_vector_matrix_norm(Index_vectorMatrix) -> Double
+
+pub fn index_vector_matrix_scale(Index_vectorMatrix, Double) -> Index_vectorMatrix
+
+pub fn index_vector_matrix_to_string(Index_vectorMatrix) -> String
+
+pub fn index_vector_matrix_trace(Index_vectorMatrix) -> Double
+
+pub fn index_vector_matrix_transpose(Index_vectorMatrix) -> Index_vectorMatrix
+
+pub fn index_vector_mse(Array[Double], Array[Double]) -> Double
+
+pub fn index_vector_point_add(Index_vectorPoint, Index_vectorPoint) -> Index_vectorPoint
+
+pub fn index_vector_point_dist(Index_vectorPoint, Index_vectorPoint) -> Double
+
+pub fn index_vector_point_dot(Index_vectorPoint, Index_vectorPoint) -> Double
+
+pub fn index_vector_point_label(Index_vectorPoint) -> Int32
+
+pub fn index_vector_point_norm(Index_vectorPoint) -> Double
+
+pub fn index_vector_point_scale(Index_vectorPoint, Double) -> Index_vectorPoint
+
+pub fn index_vector_point_sub(Index_vectorPoint, Index_vectorPoint) -> Index_vectorPoint
+
+pub fn index_vector_point_to_string(Index_vectorPoint) -> String
+
+pub fn index_vector_point_x(Index_vectorPoint) -> Double
+
+pub fn index_vector_point_y(Index_vectorPoint) -> Double
+
+pub fn index_vector_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_vector_r2(Array[Double], Array[Double]) -> Double
+
+pub fn index_vector_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_vector_series_add(Index_vectorSeries, Index_vectorSeries) -> Index_vectorSeries
+
+pub fn index_vector_series_len(Index_vectorSeries) -> Int32
+
+pub fn index_vector_series_max(Index_vectorSeries) -> Double
+
+pub fn index_vector_series_mean(Index_vectorSeries) -> Double
+
+pub fn index_vector_series_min(Index_vectorSeries) -> Double
+
+pub fn index_vector_series_scale(Index_vectorSeries, Double) -> Index_vectorSeries
+
+pub fn index_vector_series_std(Index_vectorSeries) -> Double
+
+pub fn index_vector_series_sum(Index_vectorSeries) -> Double
+
+pub fn index_vector_series_to_string(Index_vectorSeries) -> String
+
+pub fn index_vector_series_var(Index_vectorSeries) -> Double
+
+pub fn index_vector_std(Array[Double]) -> Double
+
+pub fn index_vector_var(Array[Double]) -> Double
+
+pub fn index_vector_vector_add(Index_vectorVector, Index_vectorVector) -> Index_vectorVector
+
+pub fn index_vector_vector_dist(Index_vectorVector, Index_vectorVector) -> Double
+
+pub fn index_vector_vector_dot(Index_vectorVector, Index_vectorVector) -> Double
+
+pub fn index_vector_vector_norm(Index_vectorVector) -> Double
+
+pub fn index_vector_vector_normalize(Index_vectorVector) -> Index_vectorVector
+
+pub fn index_vector_vector_scale(Index_vectorVector, Double) -> Index_vectorVector
+
+pub fn index_vector_vector_sub(Index_vectorVector, Index_vectorVector) -> Index_vectorVector
+
+pub fn index_vector_vector_to_string(Index_vectorVector) -> String
+
+pub fn index_vector_vector_zero(Int32) -> Index_vectorVector
+
+// Errors
+
+// Types and methods
+pub struct Index_vectorMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Index_vectorPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Index_vectorSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Index_vectorVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/doppler"
+
+// Values
+pub fn doppler_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn doppler_corr(Array[Double], Array[Double]) -> Double
+
+pub fn doppler_cov(Array[Double], Array[Double]) -> Double
+
+pub fn doppler_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn doppler_mae(Array[Double], Array[Double]) -> Double
+
+pub fn doppler_make_labeled_point(Double, Double, Int32) -> DopplerPoint
+
+pub fn doppler_make_matrix(Int32, Int32, Double) -> DopplerMatrix
+
+pub fn doppler_make_point(Double, Double) -> DopplerPoint
+
+pub fn doppler_make_series(Array[Double], String) -> DopplerSeries
+
+pub fn doppler_make_vector(Array[Double]) -> DopplerVector
+
+pub fn doppler_matrix_add(DopplerMatrix, DopplerMatrix) -> DopplerMatrix
+
+pub fn doppler_matrix_get(DopplerMatrix, Int32, Int32) -> Double
+
+pub fn doppler_matrix_identity(Int32) -> DopplerMatrix
+
+pub fn doppler_matrix_multiply(DopplerMatrix, DopplerMatrix) -> DopplerMatrix
+
+pub fn doppler_matrix_norm(DopplerMatrix) -> Double
+
+pub fn doppler_matrix_scale(DopplerMatrix, Double) -> DopplerMatrix
+
+pub fn doppler_matrix_to_string(DopplerMatrix) -> String
+
+pub fn doppler_matrix_trace(DopplerMatrix) -> Double
+
+pub fn doppler_matrix_transpose(DopplerMatrix) -> DopplerMatrix
+
+pub fn doppler_mse(Array[Double], Array[Double]) -> Double
+
+pub fn doppler_point_add(DopplerPoint, DopplerPoint) -> DopplerPoint
+
+pub fn doppler_point_dist(DopplerPoint, DopplerPoint) -> Double
+
+pub fn doppler_point_dot(DopplerPoint, DopplerPoint) -> Double
+
+pub fn doppler_point_label(DopplerPoint) -> Int32
+
+pub fn doppler_point_norm(DopplerPoint) -> Double
+
+pub fn doppler_point_scale(DopplerPoint, Double) -> DopplerPoint
+
+pub fn doppler_point_sub(DopplerPoint, DopplerPoint) -> DopplerPoint
+
+pub fn doppler_point_to_string(DopplerPoint) -> String
+
+pub fn doppler_point_x(DopplerPoint) -> Double
+
+pub fn doppler_point_y(DopplerPoint) -> Double
+
+pub fn doppler_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn doppler_r2(Array[Double], Array[Double]) -> Double
+
+pub fn doppler_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn doppler_series_add(DopplerSeries, DopplerSeries) -> DopplerSeries
+
+pub fn doppler_series_len(DopplerSeries) -> Int32
+
+pub fn doppler_series_max(DopplerSeries) -> Double
+
+pub fn doppler_series_mean(DopplerSeries) -> Double
+
+pub fn doppler_series_min(DopplerSeries) -> Double
+
+pub fn doppler_series_scale(DopplerSeries, Double) -> DopplerSeries
+
+pub fn doppler_series_std(DopplerSeries) -> Double
+
+pub fn doppler_series_sum(DopplerSeries) -> Double
+
+pub fn doppler_series_to_string(DopplerSeries) -> String
+
+pub fn doppler_series_var(DopplerSeries) -> Double
+
+pub fn doppler_std(Array[Double]) -> Double
+
+pub fn doppler_var(Array[Double]) -> Double
+
+pub fn doppler_vector_add(DopplerVector, DopplerVector) -> DopplerVector
+
+pub fn doppler_vector_dist(DopplerVector, DopplerVector) -> Double
+
+pub fn doppler_vector_dot(DopplerVector, DopplerVector) -> Double
+
+pub fn doppler_vector_norm(DopplerVector) -> Double
+
+pub fn doppler_vector_normalize(DopplerVector) -> DopplerVector
+
+pub fn doppler_vector_scale(DopplerVector, Double) -> DopplerVector
+
+pub fn doppler_vector_sub(DopplerVector, DopplerVector) -> DopplerVector
+
+pub fn doppler_vector_to_string(DopplerVector) -> String
+
+pub fn doppler_vector_zero(Int32) -> DopplerVector
+
+// Errors
+
+// Types and methods
+pub struct DopplerMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct DopplerPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct DopplerSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct DopplerVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

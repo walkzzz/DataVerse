@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_buffer_triangle"
+
+// Values
+pub fn geo_buffer_triangle_buffer_make(Int32) -> GeobuffertriangleBuffer
+
+pub fn geo_buffer_triangle_cluster_make(Int32) -> GeobuffertriangleCluster
+
+pub fn geo_buffer_triangle_cursor_make(Int32) -> GeobuffertriangleCursor
+
+pub fn geo_buffer_triangle_edge_make(Int32) -> GeobuffertriangleEdge
+
+pub fn geo_buffer_triangle_frame_make(Int32) -> GeobuffertriangleFrame
+
+pub fn geo_buffer_triangle_graphn_make(Int32) -> GeobuffertriangleGraphN
+
+pub fn geo_buffer_triangle_layer_make(Int32) -> GeobuffertriangleLayer
+
+pub fn geo_buffer_triangle_make_matrix(Int32, Int32, Double) -> GeobuffertriangleMatrix
+
+pub fn geo_buffer_triangle_make_point(Double, Double) -> GeobuffertrianglePoint
+
+pub fn geo_buffer_triangle_make_point3(Double, Double, Double) -> GeobuffertrianglePoint
+
+pub fn geo_buffer_triangle_make_series(Array[Double], String) -> GeobuffertriangleSeries
+
+pub fn geo_buffer_triangle_make_vector(Array[Double]) -> GeobuffertriangleVector
+
+pub fn geo_buffer_triangle_matrix_identity(Int32) -> GeobuffertriangleMatrix
+
+pub fn geo_buffer_triangle_model_make(Int32) -> GeobuffertriangleModel
+
+pub fn geo_buffer_triangle_node_make(Int32) -> GeobuffertriangleNode
+
+pub fn geo_buffer_triangle_path_make(Int32) -> GeobuffertrianglePath
+
+pub fn geo_buffer_triangle_range_make(Int32) -> GeobuffertriangleRange
+
+pub fn geo_buffer_triangle_slice_make(Int32) -> GeobuffertriangleSlice
+
+pub fn geo_buffer_triangle_table_make(Int32) -> GeobuffertriangleTable
+
+pub fn geo_buffer_triangle_vector_zero(Int32) -> GeobuffertriangleVector
+
+pub fn geo_buffer_triangle_view_make(Int32) -> GeobuffertriangleView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeobuffertriangleBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffertriangleBuffer::add(Self, Self) -> Self
+pub fn GeobuffertriangleBuffer::copy(Self) -> Self
+pub fn GeobuffertriangleBuffer::fill(Self, Double) -> Self
+pub fn GeobuffertriangleBuffer::get(Self, Int32) -> Double
+pub fn GeobuffertriangleBuffer::len(Self) -> Int32
+pub fn GeobuffertriangleBuffer::max(Self) -> Double
+pub fn GeobuffertriangleBuffer::mean(Self) -> Double
+pub fn GeobuffertriangleBuffer::min(Self) -> Double
+pub fn GeobuffertriangleBuffer::scale(Self, Double) -> Self
+pub fn GeobuffertriangleBuffer::set(Self, Int32, Double) -> Self
+pub fn GeobuffertriangleBuffer::sum(Self) -> Double
+pub fn GeobuffertriangleBuffer::to_string(Self) -> String
+
+pub(all) struct GeobuffertriangleCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffertriangleCluster::add(Self, Self) -> Self
+pub fn GeobuffertriangleCluster::copy(Self) -> Self
+pub fn GeobuffertriangleCluster::fill(Self, Double) -> Self
+pub fn GeobuffertriangleCluster::get(Self, Int32) -> Double
+pub fn GeobuffertriangleCluster::len(Self) -> Int32
+pub fn GeobuffertriangleCluster::max(Self) -> Double
+pub fn GeobuffertriangleCluster::mean(Self) -> Double
+pub fn GeobuffertriangleCluster::min(Self) -> Double
+pub fn GeobuffertriangleCluster::scale(Self, Double) -> Self
+pub fn GeobuffertriangleCluster::set(Self, Int32, Double) -> Self
+pub fn GeobuffertriangleCluster::sum(Self) -> Double
+pub fn GeobuffertriangleCluster::to_string(Self) -> String
+
+pub(all) struct GeobuffertriangleCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffertriangleCursor::add(Self, Self) -> Self
+pub fn GeobuffertriangleCursor::copy(Self) -> Self
+pub fn GeobuffertriangleCursor::fill(Self, Double) -> Self
+pub fn GeobuffertriangleCursor::get(Self, Int32) -> Double
+pub fn GeobuffertriangleCursor::len(Self) -> Int32
+pub fn GeobuffertriangleCursor::max(Self) -> Double
+pub fn GeobuffertriangleCursor::mean(Self) -> Double
+pub fn GeobuffertriangleCursor::min(Self) -> Double
+pub fn GeobuffertriangleCursor::scale(Self, Double) -> Self
+pub fn GeobuffertriangleCursor::set(Self, Int32, Double) -> Self
+pub fn GeobuffertriangleCursor::sum(Self) -> Double
+pub fn GeobuffertriangleCursor::to_string(Self) -> String
+
+pub(all) struct GeobuffertriangleEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffertriangleEdge::add(Self, Self) -> Self
+pub fn GeobuffertriangleEdge::copy(Self) -> Self
+pub fn GeobuffertriangleEdge::fill(Self, Double) -> Self
+pub fn GeobuffertriangleEdge::get(Self, Int32) -> Double
+pub fn GeobuffertriangleEdge::len(Self) -> Int32
+pub fn GeobuffertriangleEdge::max(Self) -> Double
+pub fn GeobuffertriangleEdge::mean(Self) -> Double
+pub fn GeobuffertriangleEdge::min(Self) -> Double
+pub fn GeobuffertriangleEdge::scale(Self, Double) -> Self
+pub fn GeobuffertriangleEdge::set(Self, Int32, Double) -> Self
+pub fn GeobuffertriangleEdge::sum(Self) -> Double
+pub fn GeobuffertriangleEdge::to_string(Self) -> String
+
+pub(all) struct GeobuffertriangleFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffertriangleFrame::add(Self, Self) -> Self
+pub fn GeobuffertriangleFrame::copy(Self) -> Self
+pub fn GeobuffertriangleFrame::fill(Self, Double) -> Self
+pub fn GeobuffertriangleFrame::get(Self, Int32) -> Double
+pub fn GeobuffertriangleFrame::len(Self) -> Int32
+pub fn GeobuffertriangleFrame::max(Self) -> Double
+pub fn GeobuffertriangleFrame::mean(Self) -> Double
+pub fn GeobuffertriangleFrame::min(Self) -> Double
+pub fn GeobuffertriangleFrame::scale(Self, Double) -> Self
+pub fn GeobuffertriangleFrame::set(Self, Int32, Double) -> Self
+pub fn GeobuffertriangleFrame::sum(Self) -> Double
+pub fn GeobuffertriangleFrame::to_string(Self) -> String
+
+pub(all) struct GeobuffertriangleGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffertriangleGraphN::add(Self, Self) -> Self
+pub fn GeobuffertriangleGraphN::copy(Self) -> Self
+pub fn GeobuffertriangleGraphN::fill(Self, Double) -> Self
+pub fn GeobuffertriangleGraphN::get(Self, Int32) -> Double
+pub fn GeobuffertriangleGraphN::len(Self) -> Int32
+pub fn GeobuffertriangleGraphN::max(Self) -> Double
+pub fn GeobuffertriangleGraphN::mean(Self) -> Double
+pub fn GeobuffertriangleGraphN::min(Self) -> Double
+pub fn GeobuffertriangleGraphN::scale(Self, Double) -> Self
+pub fn GeobuffertriangleGraphN::set(Self, Int32, Double) -> Self
+pub fn GeobuffertriangleGraphN::sum(Self) -> Double
+pub fn GeobuffertriangleGraphN::to_string(Self) -> String
+
+pub(all) struct GeobuffertriangleLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffertriangleLayer::add(Self, Self) -> Self
+pub fn GeobuffertriangleLayer::copy(Self) -> Self
+pub fn GeobuffertriangleLayer::fill(Self, Double) -> Self
+pub fn GeobuffertriangleLayer::get(Self, Int32) -> Double
+pub fn GeobuffertriangleLayer::len(Self) -> Int32
+pub fn GeobuffertriangleLayer::max(Self) -> Double
+pub fn GeobuffertriangleLayer::mean(Self) -> Double
+pub fn GeobuffertriangleLayer::min(Self) -> Double
+pub fn GeobuffertriangleLayer::scale(Self, Double) -> Self
+pub fn GeobuffertriangleLayer::set(Self, Int32, Double) -> Self
+pub fn GeobuffertriangleLayer::sum(Self) -> Double
+pub fn GeobuffertriangleLayer::to_string(Self) -> String
+
+pub(all) struct GeobuffertriangleMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeobuffertriangleMatrix::add(Self, Self) -> Self
+pub fn GeobuffertriangleMatrix::det(Self) -> Double
+pub fn GeobuffertriangleMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeobuffertriangleMatrix::multiply(Self, Self) -> Self
+pub fn GeobuffertriangleMatrix::norm(Self) -> Double
+pub fn GeobuffertriangleMatrix::scale(Self, Double) -> Self
+pub fn GeobuffertriangleMatrix::to_string(Self) -> String
+pub fn GeobuffertriangleMatrix::trace(Self) -> Double
+pub fn GeobuffertriangleMatrix::transpose(Self) -> Self
+
+pub(all) struct GeobuffertriangleModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffertriangleModel::add(Self, Self) -> Self
+pub fn GeobuffertriangleModel::copy(Self) -> Self
+pub fn GeobuffertriangleModel::fill(Self, Double) -> Self
+pub fn GeobuffertriangleModel::get(Self, Int32) -> Double
+pub fn GeobuffertriangleModel::len(Self) -> Int32
+pub fn GeobuffertriangleModel::max(Self) -> Double
+pub fn GeobuffertriangleModel::mean(Self) -> Double
+pub fn GeobuffertriangleModel::min(Self) -> Double
+pub fn GeobuffertriangleModel::scale(Self, Double) -> Self
+pub fn GeobuffertriangleModel::set(Self, Int32, Double) -> Self
+pub fn GeobuffertriangleModel::sum(Self) -> Double
+pub fn GeobuffertriangleModel::to_string(Self) -> String
+
+pub(all) struct GeobuffertriangleNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffertriangleNode::add(Self, Self) -> Self
+pub fn GeobuffertriangleNode::copy(Self) -> Self
+pub fn GeobuffertriangleNode::fill(Self, Double) -> Self
+pub fn GeobuffertriangleNode::get(Self, Int32) -> Double
+pub fn GeobuffertriangleNode::len(Self) -> Int32
+pub fn GeobuffertriangleNode::max(Self) -> Double
+pub fn GeobuffertriangleNode::mean(Self) -> Double
+pub fn GeobuffertriangleNode::min(Self) -> Double
+pub fn GeobuffertriangleNode::scale(Self, Double) -> Self
+pub fn GeobuffertriangleNode::set(Self, Int32, Double) -> Self
+pub fn GeobuffertriangleNode::sum(Self) -> Double
+pub fn GeobuffertriangleNode::to_string(Self) -> String
+
+pub(all) struct GeobuffertrianglePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffertrianglePath::add(Self, Self) -> Self
+pub fn GeobuffertrianglePath::copy(Self) -> Self
+pub fn GeobuffertrianglePath::fill(Self, Double) -> Self
+pub fn GeobuffertrianglePath::get(Self, Int32) -> Double
+pub fn GeobuffertrianglePath::len(Self) -> Int32
+pub fn GeobuffertrianglePath::max(Self) -> Double
+pub fn GeobuffertrianglePath::mean(Self) -> Double
+pub fn GeobuffertrianglePath::min(Self) -> Double
+pub fn GeobuffertrianglePath::scale(Self, Double) -> Self
+pub fn GeobuffertrianglePath::set(Self, Int32, Double) -> Self
+pub fn GeobuffertrianglePath::sum(Self) -> Double
+pub fn GeobuffertrianglePath::to_string(Self) -> String
+
+pub(all) struct GeobuffertrianglePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeobuffertrianglePoint::add(Self, Self) -> Self
+pub fn GeobuffertrianglePoint::cross(Self, Self) -> Self
+pub fn GeobuffertrianglePoint::dist(Self, Self) -> Double
+pub fn GeobuffertrianglePoint::dot(Self, Self) -> Double
+pub fn GeobuffertrianglePoint::label(Self) -> Int32
+pub fn GeobuffertrianglePoint::lerp(Self, Self, Double) -> Self
+pub fn GeobuffertrianglePoint::mid(Self, Self) -> Self
+pub fn GeobuffertrianglePoint::negate(Self) -> Self
+pub fn GeobuffertrianglePoint::norm(Self) -> Double
+pub fn GeobuffertrianglePoint::normalize(Self) -> Self
+pub fn GeobuffertrianglePoint::scale(Self, Double) -> Self
+pub fn GeobuffertrianglePoint::sub(Self, Self) -> Self
+pub fn GeobuffertrianglePoint::to_string(Self) -> String
+pub fn GeobuffertrianglePoint::x(Self) -> Double
+pub fn GeobuffertrianglePoint::y(Self) -> Double
+pub fn GeobuffertrianglePoint::z(Self) -> Double
+
+pub(all) struct GeobuffertriangleRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffertriangleRange::add(Self, Self) -> Self
+pub fn GeobuffertriangleRange::copy(Self) -> Self
+pub fn GeobuffertriangleRange::fill(Self, Double) -> Self
+pub fn GeobuffertriangleRange::get(Self, Int32) -> Double
+pub fn GeobuffertriangleRange::len(Self) -> Int32
+pub fn GeobuffertriangleRange::max(Self) -> Double
+pub fn GeobuffertriangleRange::mean(Self) -> Double
+pub fn GeobuffertriangleRange::min(Self) -> Double
+pub fn GeobuffertriangleRange::scale(Self, Double) -> Self
+pub fn GeobuffertriangleRange::set(Self, Int32, Double) -> Self
+pub fn GeobuffertriangleRange::sum(Self) -> Double
+pub fn GeobuffertriangleRange::to_string(Self) -> String
+
+pub(all) struct GeobuffertriangleSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeobuffertriangleSeries::add(Self, Self) -> Self
+pub fn GeobuffertriangleSeries::cumsum(Self) -> Self
+pub fn GeobuffertriangleSeries::len(Self) -> Int32
+pub fn GeobuffertriangleSeries::max(Self) -> Double
+pub fn GeobuffertriangleSeries::mean(Self) -> Double
+pub fn GeobuffertriangleSeries::median(Self) -> Double
+pub fn GeobuffertriangleSeries::min(Self) -> Double
+pub fn GeobuffertriangleSeries::normalize(Self) -> Self
+pub fn GeobuffertriangleSeries::range(Self) -> Double
+pub fn GeobuffertriangleSeries::scale(Self, Double) -> Self
+pub fn GeobuffertriangleSeries::std(Self) -> Double
+pub fn GeobuffertriangleSeries::sub(Self, Self) -> Self
+pub fn GeobuffertriangleSeries::sum(Self) -> Double
+pub fn GeobuffertriangleSeries::to_string(Self) -> String
+pub fn GeobuffertriangleSeries::variance(Self) -> Double
+
+pub(all) struct GeobuffertriangleSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffertriangleSlice::add(Self, Self) -> Self
+pub fn GeobuffertriangleSlice::copy(Self) -> Self
+pub fn GeobuffertriangleSlice::fill(Self, Double) -> Self
+pub fn GeobuffertriangleSlice::get(Self, Int32) -> Double
+pub fn GeobuffertriangleSlice::len(Self) -> Int32
+pub fn GeobuffertriangleSlice::max(Self) -> Double
+pub fn GeobuffertriangleSlice::mean(Self) -> Double
+pub fn GeobuffertriangleSlice::min(Self) -> Double
+pub fn GeobuffertriangleSlice::scale(Self, Double) -> Self
+pub fn GeobuffertriangleSlice::set(Self, Int32, Double) -> Self
+pub fn GeobuffertriangleSlice::sum(Self) -> Double
+pub fn GeobuffertriangleSlice::to_string(Self) -> String
+
+pub(all) struct GeobuffertriangleTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffertriangleTable::add(Self, Self) -> Self
+pub fn GeobuffertriangleTable::copy(Self) -> Self
+pub fn GeobuffertriangleTable::fill(Self, Double) -> Self
+pub fn GeobuffertriangleTable::get(Self, Int32) -> Double
+pub fn GeobuffertriangleTable::len(Self) -> Int32
+pub fn GeobuffertriangleTable::max(Self) -> Double
+pub fn GeobuffertriangleTable::mean(Self) -> Double
+pub fn GeobuffertriangleTable::min(Self) -> Double
+pub fn GeobuffertriangleTable::scale(Self, Double) -> Self
+pub fn GeobuffertriangleTable::set(Self, Int32, Double) -> Self
+pub fn GeobuffertriangleTable::sum(Self) -> Double
+pub fn GeobuffertriangleTable::to_string(Self) -> String
+
+pub(all) struct GeobuffertriangleVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeobuffertriangleVector::add(Self, Self) -> Self
+pub fn GeobuffertriangleVector::dist(Self, Self) -> Double
+pub fn GeobuffertriangleVector::dot(Self, Self) -> Double
+pub fn GeobuffertriangleVector::norm(Self) -> Double
+pub fn GeobuffertriangleVector::normalize(Self) -> Self
+pub fn GeobuffertriangleVector::scale(Self, Double) -> Self
+pub fn GeobuffertriangleVector::sub(Self, Self) -> Self
+pub fn GeobuffertriangleVector::to_string(Self) -> String
+
+pub(all) struct GeobuffertriangleView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffertriangleView::add(Self, Self) -> Self
+pub fn GeobuffertriangleView::copy(Self) -> Self
+pub fn GeobuffertriangleView::fill(Self, Double) -> Self
+pub fn GeobuffertriangleView::get(Self, Int32) -> Double
+pub fn GeobuffertriangleView::len(Self) -> Int32
+pub fn GeobuffertriangleView::max(Self) -> Double
+pub fn GeobuffertriangleView::mean(Self) -> Double
+pub fn GeobuffertriangleView::min(Self) -> Double
+pub fn GeobuffertriangleView::scale(Self, Double) -> Self
+pub fn GeobuffertriangleView::set(Self, Int32, Double) -> Self
+pub fn GeobuffertriangleView::sum(Self) -> Double
+pub fn GeobuffertriangleView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

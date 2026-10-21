@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_cluster_kmeans"
+
+// Values
+pub fn ml_cluster_kmeans_buffer_make(Int32) -> MlclusterkmeansBuffer
+
+pub fn ml_cluster_kmeans_cluster_make(Int32) -> MlclusterkmeansCluster
+
+pub fn ml_cluster_kmeans_cursor_make(Int32) -> MlclusterkmeansCursor
+
+pub fn ml_cluster_kmeans_edge_make(Int32) -> MlclusterkmeansEdge
+
+pub fn ml_cluster_kmeans_frame_make(Int32) -> MlclusterkmeansFrame
+
+pub fn ml_cluster_kmeans_graphn_make(Int32) -> MlclusterkmeansGraphN
+
+pub fn ml_cluster_kmeans_layer_make(Int32) -> MlclusterkmeansLayer
+
+pub fn ml_cluster_kmeans_make_matrix(Int32, Int32, Double) -> MlclusterkmeansMatrix
+
+pub fn ml_cluster_kmeans_make_point(Double, Double) -> MlclusterkmeansPoint
+
+pub fn ml_cluster_kmeans_make_point3(Double, Double, Double) -> MlclusterkmeansPoint
+
+pub fn ml_cluster_kmeans_make_series(Array[Double], String) -> MlclusterkmeansSeries
+
+pub fn ml_cluster_kmeans_make_vector(Array[Double]) -> MlclusterkmeansVector
+
+pub fn ml_cluster_kmeans_matrix_identity(Int32) -> MlclusterkmeansMatrix
+
+pub fn ml_cluster_kmeans_model_make(Int32) -> MlclusterkmeansModel
+
+pub fn ml_cluster_kmeans_node_make(Int32) -> MlclusterkmeansNode
+
+pub fn ml_cluster_kmeans_path_make(Int32) -> MlclusterkmeansPath
+
+pub fn ml_cluster_kmeans_range_make(Int32) -> MlclusterkmeansRange
+
+pub fn ml_cluster_kmeans_slice_make(Int32) -> MlclusterkmeansSlice
+
+pub fn ml_cluster_kmeans_table_make(Int32) -> MlclusterkmeansTable
+
+pub fn ml_cluster_kmeans_vector_zero(Int32) -> MlclusterkmeansVector
+
+pub fn ml_cluster_kmeans_view_make(Int32) -> MlclusterkmeansView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlclusterkmeansBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterkmeansBuffer::add(Self, Self) -> Self
+pub fn MlclusterkmeansBuffer::copy(Self) -> Self
+pub fn MlclusterkmeansBuffer::fill(Self, Double) -> Self
+pub fn MlclusterkmeansBuffer::get(Self, Int32) -> Double
+pub fn MlclusterkmeansBuffer::len(Self) -> Int32
+pub fn MlclusterkmeansBuffer::max(Self) -> Double
+pub fn MlclusterkmeansBuffer::mean(Self) -> Double
+pub fn MlclusterkmeansBuffer::min(Self) -> Double
+pub fn MlclusterkmeansBuffer::scale(Self, Double) -> Self
+pub fn MlclusterkmeansBuffer::set(Self, Int32, Double) -> Self
+pub fn MlclusterkmeansBuffer::sum(Self) -> Double
+pub fn MlclusterkmeansBuffer::to_string(Self) -> String
+
+pub(all) struct MlclusterkmeansCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterkmeansCluster::add(Self, Self) -> Self
+pub fn MlclusterkmeansCluster::copy(Self) -> Self
+pub fn MlclusterkmeansCluster::fill(Self, Double) -> Self
+pub fn MlclusterkmeansCluster::get(Self, Int32) -> Double
+pub fn MlclusterkmeansCluster::len(Self) -> Int32
+pub fn MlclusterkmeansCluster::max(Self) -> Double
+pub fn MlclusterkmeansCluster::mean(Self) -> Double
+pub fn MlclusterkmeansCluster::min(Self) -> Double
+pub fn MlclusterkmeansCluster::scale(Self, Double) -> Self
+pub fn MlclusterkmeansCluster::set(Self, Int32, Double) -> Self
+pub fn MlclusterkmeansCluster::sum(Self) -> Double
+pub fn MlclusterkmeansCluster::to_string(Self) -> String
+
+pub(all) struct MlclusterkmeansCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterkmeansCursor::add(Self, Self) -> Self
+pub fn MlclusterkmeansCursor::copy(Self) -> Self
+pub fn MlclusterkmeansCursor::fill(Self, Double) -> Self
+pub fn MlclusterkmeansCursor::get(Self, Int32) -> Double
+pub fn MlclusterkmeansCursor::len(Self) -> Int32
+pub fn MlclusterkmeansCursor::max(Self) -> Double
+pub fn MlclusterkmeansCursor::mean(Self) -> Double
+pub fn MlclusterkmeansCursor::min(Self) -> Double
+pub fn MlclusterkmeansCursor::scale(Self, Double) -> Self
+pub fn MlclusterkmeansCursor::set(Self, Int32, Double) -> Self
+pub fn MlclusterkmeansCursor::sum(Self) -> Double
+pub fn MlclusterkmeansCursor::to_string(Self) -> String
+
+pub(all) struct MlclusterkmeansEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterkmeansEdge::add(Self, Self) -> Self
+pub fn MlclusterkmeansEdge::copy(Self) -> Self
+pub fn MlclusterkmeansEdge::fill(Self, Double) -> Self
+pub fn MlclusterkmeansEdge::get(Self, Int32) -> Double
+pub fn MlclusterkmeansEdge::len(Self) -> Int32
+pub fn MlclusterkmeansEdge::max(Self) -> Double
+pub fn MlclusterkmeansEdge::mean(Self) -> Double
+pub fn MlclusterkmeansEdge::min(Self) -> Double
+pub fn MlclusterkmeansEdge::scale(Self, Double) -> Self
+pub fn MlclusterkmeansEdge::set(Self, Int32, Double) -> Self
+pub fn MlclusterkmeansEdge::sum(Self) -> Double
+pub fn MlclusterkmeansEdge::to_string(Self) -> String
+
+pub(all) struct MlclusterkmeansFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterkmeansFrame::add(Self, Self) -> Self
+pub fn MlclusterkmeansFrame::copy(Self) -> Self
+pub fn MlclusterkmeansFrame::fill(Self, Double) -> Self
+pub fn MlclusterkmeansFrame::get(Self, Int32) -> Double
+pub fn MlclusterkmeansFrame::len(Self) -> Int32
+pub fn MlclusterkmeansFrame::max(Self) -> Double
+pub fn MlclusterkmeansFrame::mean(Self) -> Double
+pub fn MlclusterkmeansFrame::min(Self) -> Double
+pub fn MlclusterkmeansFrame::scale(Self, Double) -> Self
+pub fn MlclusterkmeansFrame::set(Self, Int32, Double) -> Self
+pub fn MlclusterkmeansFrame::sum(Self) -> Double
+pub fn MlclusterkmeansFrame::to_string(Self) -> String
+
+pub(all) struct MlclusterkmeansGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterkmeansGraphN::add(Self, Self) -> Self
+pub fn MlclusterkmeansGraphN::copy(Self) -> Self
+pub fn MlclusterkmeansGraphN::fill(Self, Double) -> Self
+pub fn MlclusterkmeansGraphN::get(Self, Int32) -> Double
+pub fn MlclusterkmeansGraphN::len(Self) -> Int32
+pub fn MlclusterkmeansGraphN::max(Self) -> Double
+pub fn MlclusterkmeansGraphN::mean(Self) -> Double
+pub fn MlclusterkmeansGraphN::min(Self) -> Double
+pub fn MlclusterkmeansGraphN::scale(Self, Double) -> Self
+pub fn MlclusterkmeansGraphN::set(Self, Int32, Double) -> Self
+pub fn MlclusterkmeansGraphN::sum(Self) -> Double
+pub fn MlclusterkmeansGraphN::to_string(Self) -> String
+
+pub(all) struct MlclusterkmeansLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterkmeansLayer::add(Self, Self) -> Self
+pub fn MlclusterkmeansLayer::copy(Self) -> Self
+pub fn MlclusterkmeansLayer::fill(Self, Double) -> Self
+pub fn MlclusterkmeansLayer::get(Self, Int32) -> Double
+pub fn MlclusterkmeansLayer::len(Self) -> Int32
+pub fn MlclusterkmeansLayer::max(Self) -> Double
+pub fn MlclusterkmeansLayer::mean(Self) -> Double
+pub fn MlclusterkmeansLayer::min(Self) -> Double
+pub fn MlclusterkmeansLayer::scale(Self, Double) -> Self
+pub fn MlclusterkmeansLayer::set(Self, Int32, Double) -> Self
+pub fn MlclusterkmeansLayer::sum(Self) -> Double
+pub fn MlclusterkmeansLayer::to_string(Self) -> String
+
+pub(all) struct MlclusterkmeansMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlclusterkmeansMatrix::add(Self, Self) -> Self
+pub fn MlclusterkmeansMatrix::det(Self) -> Double
+pub fn MlclusterkmeansMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlclusterkmeansMatrix::multiply(Self, Self) -> Self
+pub fn MlclusterkmeansMatrix::norm(Self) -> Double
+pub fn MlclusterkmeansMatrix::scale(Self, Double) -> Self
+pub fn MlclusterkmeansMatrix::to_string(Self) -> String
+pub fn MlclusterkmeansMatrix::trace(Self) -> Double
+pub fn MlclusterkmeansMatrix::transpose(Self) -> Self
+
+pub(all) struct MlclusterkmeansModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterkmeansModel::add(Self, Self) -> Self
+pub fn MlclusterkmeansModel::copy(Self) -> Self
+pub fn MlclusterkmeansModel::fill(Self, Double) -> Self
+pub fn MlclusterkmeansModel::get(Self, Int32) -> Double
+pub fn MlclusterkmeansModel::len(Self) -> Int32
+pub fn MlclusterkmeansModel::max(Self) -> Double
+pub fn MlclusterkmeansModel::mean(Self) -> Double
+pub fn MlclusterkmeansModel::min(Self) -> Double
+pub fn MlclusterkmeansModel::scale(Self, Double) -> Self
+pub fn MlclusterkmeansModel::set(Self, Int32, Double) -> Self
+pub fn MlclusterkmeansModel::sum(Self) -> Double
+pub fn MlclusterkmeansModel::to_string(Self) -> String
+
+pub(all) struct MlclusterkmeansNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterkmeansNode::add(Self, Self) -> Self
+pub fn MlclusterkmeansNode::copy(Self) -> Self
+pub fn MlclusterkmeansNode::fill(Self, Double) -> Self
+pub fn MlclusterkmeansNode::get(Self, Int32) -> Double
+pub fn MlclusterkmeansNode::len(Self) -> Int32
+pub fn MlclusterkmeansNode::max(Self) -> Double
+pub fn MlclusterkmeansNode::mean(Self) -> Double
+pub fn MlclusterkmeansNode::min(Self) -> Double
+pub fn MlclusterkmeansNode::scale(Self, Double) -> Self
+pub fn MlclusterkmeansNode::set(Self, Int32, Double) -> Self
+pub fn MlclusterkmeansNode::sum(Self) -> Double
+pub fn MlclusterkmeansNode::to_string(Self) -> String
+
+pub(all) struct MlclusterkmeansPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterkmeansPath::add(Self, Self) -> Self
+pub fn MlclusterkmeansPath::copy(Self) -> Self
+pub fn MlclusterkmeansPath::fill(Self, Double) -> Self
+pub fn MlclusterkmeansPath::get(Self, Int32) -> Double
+pub fn MlclusterkmeansPath::len(Self) -> Int32
+pub fn MlclusterkmeansPath::max(Self) -> Double
+pub fn MlclusterkmeansPath::mean(Self) -> Double
+pub fn MlclusterkmeansPath::min(Self) -> Double
+pub fn MlclusterkmeansPath::scale(Self, Double) -> Self
+pub fn MlclusterkmeansPath::set(Self, Int32, Double) -> Self
+pub fn MlclusterkmeansPath::sum(Self) -> Double
+pub fn MlclusterkmeansPath::to_string(Self) -> String
+
+pub(all) struct MlclusterkmeansPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlclusterkmeansPoint::add(Self, Self) -> Self
+pub fn MlclusterkmeansPoint::cross(Self, Self) -> Self
+pub fn MlclusterkmeansPoint::dist(Self, Self) -> Double
+pub fn MlclusterkmeansPoint::dot(Self, Self) -> Double
+pub fn MlclusterkmeansPoint::label(Self) -> Int32
+pub fn MlclusterkmeansPoint::lerp(Self, Self, Double) -> Self
+pub fn MlclusterkmeansPoint::mid(Self, Self) -> Self
+pub fn MlclusterkmeansPoint::negate(Self) -> Self
+pub fn MlclusterkmeansPoint::norm(Self) -> Double
+pub fn MlclusterkmeansPoint::normalize(Self) -> Self
+pub fn MlclusterkmeansPoint::scale(Self, Double) -> Self
+pub fn MlclusterkmeansPoint::sub(Self, Self) -> Self
+pub fn MlclusterkmeansPoint::to_string(Self) -> String
+pub fn MlclusterkmeansPoint::x(Self) -> Double
+pub fn MlclusterkmeansPoint::y(Self) -> Double
+pub fn MlclusterkmeansPoint::z(Self) -> Double
+
+pub(all) struct MlclusterkmeansRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterkmeansRange::add(Self, Self) -> Self
+pub fn MlclusterkmeansRange::copy(Self) -> Self
+pub fn MlclusterkmeansRange::fill(Self, Double) -> Self
+pub fn MlclusterkmeansRange::get(Self, Int32) -> Double
+pub fn MlclusterkmeansRange::len(Self) -> Int32
+pub fn MlclusterkmeansRange::max(Self) -> Double
+pub fn MlclusterkmeansRange::mean(Self) -> Double
+pub fn MlclusterkmeansRange::min(Self) -> Double
+pub fn MlclusterkmeansRange::scale(Self, Double) -> Self
+pub fn MlclusterkmeansRange::set(Self, Int32, Double) -> Self
+pub fn MlclusterkmeansRange::sum(Self) -> Double
+pub fn MlclusterkmeansRange::to_string(Self) -> String
+
+pub(all) struct MlclusterkmeansSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlclusterkmeansSeries::add(Self, Self) -> Self
+pub fn MlclusterkmeansSeries::cumsum(Self) -> Self
+pub fn MlclusterkmeansSeries::len(Self) -> Int32
+pub fn MlclusterkmeansSeries::max(Self) -> Double
+pub fn MlclusterkmeansSeries::mean(Self) -> Double
+pub fn MlclusterkmeansSeries::median(Self) -> Double
+pub fn MlclusterkmeansSeries::min(Self) -> Double
+pub fn MlclusterkmeansSeries::normalize(Self) -> Self
+pub fn MlclusterkmeansSeries::range(Self) -> Double
+pub fn MlclusterkmeansSeries::scale(Self, Double) -> Self
+pub fn MlclusterkmeansSeries::std(Self) -> Double
+pub fn MlclusterkmeansSeries::sub(Self, Self) -> Self
+pub fn MlclusterkmeansSeries::sum(Self) -> Double
+pub fn MlclusterkmeansSeries::to_string(Self) -> String
+pub fn MlclusterkmeansSeries::variance(Self) -> Double
+
+pub(all) struct MlclusterkmeansSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterkmeansSlice::add(Self, Self) -> Self
+pub fn MlclusterkmeansSlice::copy(Self) -> Self
+pub fn MlclusterkmeansSlice::fill(Self, Double) -> Self
+pub fn MlclusterkmeansSlice::get(Self, Int32) -> Double
+pub fn MlclusterkmeansSlice::len(Self) -> Int32
+pub fn MlclusterkmeansSlice::max(Self) -> Double
+pub fn MlclusterkmeansSlice::mean(Self) -> Double
+pub fn MlclusterkmeansSlice::min(Self) -> Double
+pub fn MlclusterkmeansSlice::scale(Self, Double) -> Self
+pub fn MlclusterkmeansSlice::set(Self, Int32, Double) -> Self
+pub fn MlclusterkmeansSlice::sum(Self) -> Double
+pub fn MlclusterkmeansSlice::to_string(Self) -> String
+
+pub(all) struct MlclusterkmeansTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterkmeansTable::add(Self, Self) -> Self
+pub fn MlclusterkmeansTable::copy(Self) -> Self
+pub fn MlclusterkmeansTable::fill(Self, Double) -> Self
+pub fn MlclusterkmeansTable::get(Self, Int32) -> Double
+pub fn MlclusterkmeansTable::len(Self) -> Int32
+pub fn MlclusterkmeansTable::max(Self) -> Double
+pub fn MlclusterkmeansTable::mean(Self) -> Double
+pub fn MlclusterkmeansTable::min(Self) -> Double
+pub fn MlclusterkmeansTable::scale(Self, Double) -> Self
+pub fn MlclusterkmeansTable::set(Self, Int32, Double) -> Self
+pub fn MlclusterkmeansTable::sum(Self) -> Double
+pub fn MlclusterkmeansTable::to_string(Self) -> String
+
+pub(all) struct MlclusterkmeansVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlclusterkmeansVector::add(Self, Self) -> Self
+pub fn MlclusterkmeansVector::dist(Self, Self) -> Double
+pub fn MlclusterkmeansVector::dot(Self, Self) -> Double
+pub fn MlclusterkmeansVector::norm(Self) -> Double
+pub fn MlclusterkmeansVector::normalize(Self) -> Self
+pub fn MlclusterkmeansVector::scale(Self, Double) -> Self
+pub fn MlclusterkmeansVector::sub(Self, Self) -> Self
+pub fn MlclusterkmeansVector::to_string(Self) -> String
+
+pub(all) struct MlclusterkmeansView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlclusterkmeansView::add(Self, Self) -> Self
+pub fn MlclusterkmeansView::copy(Self) -> Self
+pub fn MlclusterkmeansView::fill(Self, Double) -> Self
+pub fn MlclusterkmeansView::get(Self, Int32) -> Double
+pub fn MlclusterkmeansView::len(Self) -> Int32
+pub fn MlclusterkmeansView::max(Self) -> Double
+pub fn MlclusterkmeansView::mean(Self) -> Double
+pub fn MlclusterkmeansView::min(Self) -> Double
+pub fn MlclusterkmeansView::scale(Self, Double) -> Self
+pub fn MlclusterkmeansView::set(Self, Int32, Double) -> Self
+pub fn MlclusterkmeansView::sum(Self) -> Double
+pub fn MlclusterkmeansView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

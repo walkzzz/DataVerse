@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/stats_dist_exponential"
+
+// Values
+pub fn stats_dist_exponential_buffer_make(Int32) -> StatsdistexponentialBuffer
+
+pub fn stats_dist_exponential_cluster_make(Int32) -> StatsdistexponentialCluster
+
+pub fn stats_dist_exponential_cursor_make(Int32) -> StatsdistexponentialCursor
+
+pub fn stats_dist_exponential_edge_make(Int32) -> StatsdistexponentialEdge
+
+pub fn stats_dist_exponential_frame_make(Int32) -> StatsdistexponentialFrame
+
+pub fn stats_dist_exponential_graphn_make(Int32) -> StatsdistexponentialGraphN
+
+pub fn stats_dist_exponential_layer_make(Int32) -> StatsdistexponentialLayer
+
+pub fn stats_dist_exponential_make_matrix(Int32, Int32, Double) -> StatsdistexponentialMatrix
+
+pub fn stats_dist_exponential_make_point(Double, Double) -> StatsdistexponentialPoint
+
+pub fn stats_dist_exponential_make_point3(Double, Double, Double) -> StatsdistexponentialPoint
+
+pub fn stats_dist_exponential_make_series(Array[Double], String) -> StatsdistexponentialSeries
+
+pub fn stats_dist_exponential_make_vector(Array[Double]) -> StatsdistexponentialVector
+
+pub fn stats_dist_exponential_matrix_identity(Int32) -> StatsdistexponentialMatrix
+
+pub fn stats_dist_exponential_model_make(Int32) -> StatsdistexponentialModel
+
+pub fn stats_dist_exponential_node_make(Int32) -> StatsdistexponentialNode
+
+pub fn stats_dist_exponential_path_make(Int32) -> StatsdistexponentialPath
+
+pub fn stats_dist_exponential_range_make(Int32) -> StatsdistexponentialRange
+
+pub fn stats_dist_exponential_slice_make(Int32) -> StatsdistexponentialSlice
+
+pub fn stats_dist_exponential_table_make(Int32) -> StatsdistexponentialTable
+
+pub fn stats_dist_exponential_vector_zero(Int32) -> StatsdistexponentialVector
+
+pub fn stats_dist_exponential_view_make(Int32) -> StatsdistexponentialView
+
+// Errors
+
+// Types and methods
+pub(all) struct StatsdistexponentialBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistexponentialBuffer::add(Self, Self) -> Self
+pub fn StatsdistexponentialBuffer::copy(Self) -> Self
+pub fn StatsdistexponentialBuffer::fill(Self, Double) -> Self
+pub fn StatsdistexponentialBuffer::get(Self, Int32) -> Double
+pub fn StatsdistexponentialBuffer::len(Self) -> Int32
+pub fn StatsdistexponentialBuffer::max(Self) -> Double
+pub fn StatsdistexponentialBuffer::mean(Self) -> Double
+pub fn StatsdistexponentialBuffer::min(Self) -> Double
+pub fn StatsdistexponentialBuffer::scale(Self, Double) -> Self
+pub fn StatsdistexponentialBuffer::set(Self, Int32, Double) -> Self
+pub fn StatsdistexponentialBuffer::sum(Self) -> Double
+pub fn StatsdistexponentialBuffer::to_string(Self) -> String
+
+pub(all) struct StatsdistexponentialCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistexponentialCluster::add(Self, Self) -> Self
+pub fn StatsdistexponentialCluster::copy(Self) -> Self
+pub fn StatsdistexponentialCluster::fill(Self, Double) -> Self
+pub fn StatsdistexponentialCluster::get(Self, Int32) -> Double
+pub fn StatsdistexponentialCluster::len(Self) -> Int32
+pub fn StatsdistexponentialCluster::max(Self) -> Double
+pub fn StatsdistexponentialCluster::mean(Self) -> Double
+pub fn StatsdistexponentialCluster::min(Self) -> Double
+pub fn StatsdistexponentialCluster::scale(Self, Double) -> Self
+pub fn StatsdistexponentialCluster::set(Self, Int32, Double) -> Self
+pub fn StatsdistexponentialCluster::sum(Self) -> Double
+pub fn StatsdistexponentialCluster::to_string(Self) -> String
+
+pub(all) struct StatsdistexponentialCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistexponentialCursor::add(Self, Self) -> Self
+pub fn StatsdistexponentialCursor::copy(Self) -> Self
+pub fn StatsdistexponentialCursor::fill(Self, Double) -> Self
+pub fn StatsdistexponentialCursor::get(Self, Int32) -> Double
+pub fn StatsdistexponentialCursor::len(Self) -> Int32
+pub fn StatsdistexponentialCursor::max(Self) -> Double
+pub fn StatsdistexponentialCursor::mean(Self) -> Double
+pub fn StatsdistexponentialCursor::min(Self) -> Double
+pub fn StatsdistexponentialCursor::scale(Self, Double) -> Self
+pub fn StatsdistexponentialCursor::set(Self, Int32, Double) -> Self
+pub fn StatsdistexponentialCursor::sum(Self) -> Double
+pub fn StatsdistexponentialCursor::to_string(Self) -> String
+
+pub(all) struct StatsdistexponentialEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistexponentialEdge::add(Self, Self) -> Self
+pub fn StatsdistexponentialEdge::copy(Self) -> Self
+pub fn StatsdistexponentialEdge::fill(Self, Double) -> Self
+pub fn StatsdistexponentialEdge::get(Self, Int32) -> Double
+pub fn StatsdistexponentialEdge::len(Self) -> Int32
+pub fn StatsdistexponentialEdge::max(Self) -> Double
+pub fn StatsdistexponentialEdge::mean(Self) -> Double
+pub fn StatsdistexponentialEdge::min(Self) -> Double
+pub fn StatsdistexponentialEdge::scale(Self, Double) -> Self
+pub fn StatsdistexponentialEdge::set(Self, Int32, Double) -> Self
+pub fn StatsdistexponentialEdge::sum(Self) -> Double
+pub fn StatsdistexponentialEdge::to_string(Self) -> String
+
+pub(all) struct StatsdistexponentialFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistexponentialFrame::add(Self, Self) -> Self
+pub fn StatsdistexponentialFrame::copy(Self) -> Self
+pub fn StatsdistexponentialFrame::fill(Self, Double) -> Self
+pub fn StatsdistexponentialFrame::get(Self, Int32) -> Double
+pub fn StatsdistexponentialFrame::len(Self) -> Int32
+pub fn StatsdistexponentialFrame::max(Self) -> Double
+pub fn StatsdistexponentialFrame::mean(Self) -> Double
+pub fn StatsdistexponentialFrame::min(Self) -> Double
+pub fn StatsdistexponentialFrame::scale(Self, Double) -> Self
+pub fn StatsdistexponentialFrame::set(Self, Int32, Double) -> Self
+pub fn StatsdistexponentialFrame::sum(Self) -> Double
+pub fn StatsdistexponentialFrame::to_string(Self) -> String
+
+pub(all) struct StatsdistexponentialGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistexponentialGraphN::add(Self, Self) -> Self
+pub fn StatsdistexponentialGraphN::copy(Self) -> Self
+pub fn StatsdistexponentialGraphN::fill(Self, Double) -> Self
+pub fn StatsdistexponentialGraphN::get(Self, Int32) -> Double
+pub fn StatsdistexponentialGraphN::len(Self) -> Int32
+pub fn StatsdistexponentialGraphN::max(Self) -> Double
+pub fn StatsdistexponentialGraphN::mean(Self) -> Double
+pub fn StatsdistexponentialGraphN::min(Self) -> Double
+pub fn StatsdistexponentialGraphN::scale(Self, Double) -> Self
+pub fn StatsdistexponentialGraphN::set(Self, Int32, Double) -> Self
+pub fn StatsdistexponentialGraphN::sum(Self) -> Double
+pub fn StatsdistexponentialGraphN::to_string(Self) -> String
+
+pub(all) struct StatsdistexponentialLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistexponentialLayer::add(Self, Self) -> Self
+pub fn StatsdistexponentialLayer::copy(Self) -> Self
+pub fn StatsdistexponentialLayer::fill(Self, Double) -> Self
+pub fn StatsdistexponentialLayer::get(Self, Int32) -> Double
+pub fn StatsdistexponentialLayer::len(Self) -> Int32
+pub fn StatsdistexponentialLayer::max(Self) -> Double
+pub fn StatsdistexponentialLayer::mean(Self) -> Double
+pub fn StatsdistexponentialLayer::min(Self) -> Double
+pub fn StatsdistexponentialLayer::scale(Self, Double) -> Self
+pub fn StatsdistexponentialLayer::set(Self, Int32, Double) -> Self
+pub fn StatsdistexponentialLayer::sum(Self) -> Double
+pub fn StatsdistexponentialLayer::to_string(Self) -> String
+
+pub(all) struct StatsdistexponentialMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn StatsdistexponentialMatrix::add(Self, Self) -> Self
+pub fn StatsdistexponentialMatrix::det(Self) -> Double
+pub fn StatsdistexponentialMatrix::get(Self, Int32, Int32) -> Double
+pub fn StatsdistexponentialMatrix::multiply(Self, Self) -> Self
+pub fn StatsdistexponentialMatrix::norm(Self) -> Double
+pub fn StatsdistexponentialMatrix::scale(Self, Double) -> Self
+pub fn StatsdistexponentialMatrix::to_string(Self) -> String
+pub fn StatsdistexponentialMatrix::trace(Self) -> Double
+pub fn StatsdistexponentialMatrix::transpose(Self) -> Self
+
+pub(all) struct StatsdistexponentialModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistexponentialModel::add(Self, Self) -> Self
+pub fn StatsdistexponentialModel::copy(Self) -> Self
+pub fn StatsdistexponentialModel::fill(Self, Double) -> Self
+pub fn StatsdistexponentialModel::get(Self, Int32) -> Double
+pub fn StatsdistexponentialModel::len(Self) -> Int32
+pub fn StatsdistexponentialModel::max(Self) -> Double
+pub fn StatsdistexponentialModel::mean(Self) -> Double
+pub fn StatsdistexponentialModel::min(Self) -> Double
+pub fn StatsdistexponentialModel::scale(Self, Double) -> Self
+pub fn StatsdistexponentialModel::set(Self, Int32, Double) -> Self
+pub fn StatsdistexponentialModel::sum(Self) -> Double
+pub fn StatsdistexponentialModel::to_string(Self) -> String
+
+pub(all) struct StatsdistexponentialNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistexponentialNode::add(Self, Self) -> Self
+pub fn StatsdistexponentialNode::copy(Self) -> Self
+pub fn StatsdistexponentialNode::fill(Self, Double) -> Self
+pub fn StatsdistexponentialNode::get(Self, Int32) -> Double
+pub fn StatsdistexponentialNode::len(Self) -> Int32
+pub fn StatsdistexponentialNode::max(Self) -> Double
+pub fn StatsdistexponentialNode::mean(Self) -> Double
+pub fn StatsdistexponentialNode::min(Self) -> Double
+pub fn StatsdistexponentialNode::scale(Self, Double) -> Self
+pub fn StatsdistexponentialNode::set(Self, Int32, Double) -> Self
+pub fn StatsdistexponentialNode::sum(Self) -> Double
+pub fn StatsdistexponentialNode::to_string(Self) -> String
+
+pub(all) struct StatsdistexponentialPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistexponentialPath::add(Self, Self) -> Self
+pub fn StatsdistexponentialPath::copy(Self) -> Self
+pub fn StatsdistexponentialPath::fill(Self, Double) -> Self
+pub fn StatsdistexponentialPath::get(Self, Int32) -> Double
+pub fn StatsdistexponentialPath::len(Self) -> Int32
+pub fn StatsdistexponentialPath::max(Self) -> Double
+pub fn StatsdistexponentialPath::mean(Self) -> Double
+pub fn StatsdistexponentialPath::min(Self) -> Double
+pub fn StatsdistexponentialPath::scale(Self, Double) -> Self
+pub fn StatsdistexponentialPath::set(Self, Int32, Double) -> Self
+pub fn StatsdistexponentialPath::sum(Self) -> Double
+pub fn StatsdistexponentialPath::to_string(Self) -> String
+
+pub(all) struct StatsdistexponentialPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn StatsdistexponentialPoint::add(Self, Self) -> Self
+pub fn StatsdistexponentialPoint::cross(Self, Self) -> Self
+pub fn StatsdistexponentialPoint::dist(Self, Self) -> Double
+pub fn StatsdistexponentialPoint::dot(Self, Self) -> Double
+pub fn StatsdistexponentialPoint::label(Self) -> Int32
+pub fn StatsdistexponentialPoint::lerp(Self, Self, Double) -> Self
+pub fn StatsdistexponentialPoint::mid(Self, Self) -> Self
+pub fn StatsdistexponentialPoint::negate(Self) -> Self
+pub fn StatsdistexponentialPoint::norm(Self) -> Double
+pub fn StatsdistexponentialPoint::normalize(Self) -> Self
+pub fn StatsdistexponentialPoint::scale(Self, Double) -> Self
+pub fn StatsdistexponentialPoint::sub(Self, Self) -> Self
+pub fn StatsdistexponentialPoint::to_string(Self) -> String
+pub fn StatsdistexponentialPoint::x(Self) -> Double
+pub fn StatsdistexponentialPoint::y(Self) -> Double
+pub fn StatsdistexponentialPoint::z(Self) -> Double
+
+pub(all) struct StatsdistexponentialRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistexponentialRange::add(Self, Self) -> Self
+pub fn StatsdistexponentialRange::copy(Self) -> Self
+pub fn StatsdistexponentialRange::fill(Self, Double) -> Self
+pub fn StatsdistexponentialRange::get(Self, Int32) -> Double
+pub fn StatsdistexponentialRange::len(Self) -> Int32
+pub fn StatsdistexponentialRange::max(Self) -> Double
+pub fn StatsdistexponentialRange::mean(Self) -> Double
+pub fn StatsdistexponentialRange::min(Self) -> Double
+pub fn StatsdistexponentialRange::scale(Self, Double) -> Self
+pub fn StatsdistexponentialRange::set(Self, Int32, Double) -> Self
+pub fn StatsdistexponentialRange::sum(Self) -> Double
+pub fn StatsdistexponentialRange::to_string(Self) -> String
+
+pub(all) struct StatsdistexponentialSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn StatsdistexponentialSeries::add(Self, Self) -> Self
+pub fn StatsdistexponentialSeries::cumsum(Self) -> Self
+pub fn StatsdistexponentialSeries::len(Self) -> Int32
+pub fn StatsdistexponentialSeries::max(Self) -> Double
+pub fn StatsdistexponentialSeries::mean(Self) -> Double
+pub fn StatsdistexponentialSeries::median(Self) -> Double
+pub fn StatsdistexponentialSeries::min(Self) -> Double
+pub fn StatsdistexponentialSeries::normalize(Self) -> Self
+pub fn StatsdistexponentialSeries::range(Self) -> Double
+pub fn StatsdistexponentialSeries::scale(Self, Double) -> Self
+pub fn StatsdistexponentialSeries::std(Self) -> Double
+pub fn StatsdistexponentialSeries::sub(Self, Self) -> Self
+pub fn StatsdistexponentialSeries::sum(Self) -> Double
+pub fn StatsdistexponentialSeries::to_string(Self) -> String
+pub fn StatsdistexponentialSeries::variance(Self) -> Double
+
+pub(all) struct StatsdistexponentialSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistexponentialSlice::add(Self, Self) -> Self
+pub fn StatsdistexponentialSlice::copy(Self) -> Self
+pub fn StatsdistexponentialSlice::fill(Self, Double) -> Self
+pub fn StatsdistexponentialSlice::get(Self, Int32) -> Double
+pub fn StatsdistexponentialSlice::len(Self) -> Int32
+pub fn StatsdistexponentialSlice::max(Self) -> Double
+pub fn StatsdistexponentialSlice::mean(Self) -> Double
+pub fn StatsdistexponentialSlice::min(Self) -> Double
+pub fn StatsdistexponentialSlice::scale(Self, Double) -> Self
+pub fn StatsdistexponentialSlice::set(Self, Int32, Double) -> Self
+pub fn StatsdistexponentialSlice::sum(Self) -> Double
+pub fn StatsdistexponentialSlice::to_string(Self) -> String
+
+pub(all) struct StatsdistexponentialTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistexponentialTable::add(Self, Self) -> Self
+pub fn StatsdistexponentialTable::copy(Self) -> Self
+pub fn StatsdistexponentialTable::fill(Self, Double) -> Self
+pub fn StatsdistexponentialTable::get(Self, Int32) -> Double
+pub fn StatsdistexponentialTable::len(Self) -> Int32
+pub fn StatsdistexponentialTable::max(Self) -> Double
+pub fn StatsdistexponentialTable::mean(Self) -> Double
+pub fn StatsdistexponentialTable::min(Self) -> Double
+pub fn StatsdistexponentialTable::scale(Self, Double) -> Self
+pub fn StatsdistexponentialTable::set(Self, Int32, Double) -> Self
+pub fn StatsdistexponentialTable::sum(Self) -> Double
+pub fn StatsdistexponentialTable::to_string(Self) -> String
+
+pub(all) struct StatsdistexponentialVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn StatsdistexponentialVector::add(Self, Self) -> Self
+pub fn StatsdistexponentialVector::dist(Self, Self) -> Double
+pub fn StatsdistexponentialVector::dot(Self, Self) -> Double
+pub fn StatsdistexponentialVector::norm(Self) -> Double
+pub fn StatsdistexponentialVector::normalize(Self) -> Self
+pub fn StatsdistexponentialVector::scale(Self, Double) -> Self
+pub fn StatsdistexponentialVector::sub(Self, Self) -> Self
+pub fn StatsdistexponentialVector::to_string(Self) -> String
+
+pub(all) struct StatsdistexponentialView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistexponentialView::add(Self, Self) -> Self
+pub fn StatsdistexponentialView::copy(Self) -> Self
+pub fn StatsdistexponentialView::fill(Self, Double) -> Self
+pub fn StatsdistexponentialView::get(Self, Int32) -> Double
+pub fn StatsdistexponentialView::len(Self) -> Int32
+pub fn StatsdistexponentialView::max(Self) -> Double
+pub fn StatsdistexponentialView::mean(Self) -> Double
+pub fn StatsdistexponentialView::min(Self) -> Double
+pub fn StatsdistexponentialView::scale(Self, Double) -> Self
+pub fn StatsdistexponentialView::set(Self, Int32, Double) -> Self
+pub fn StatsdistexponentialView::sum(Self) -> Double
+pub fn StatsdistexponentialView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

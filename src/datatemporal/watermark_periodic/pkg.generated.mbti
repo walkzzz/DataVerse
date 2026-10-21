@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/watermark_periodic"
+
+// Values
+pub fn watermark_periodic_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn watermark_periodic_corr(Array[Double], Array[Double]) -> Double
+
+pub fn watermark_periodic_cov(Array[Double], Array[Double]) -> Double
+
+pub fn watermark_periodic_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn watermark_periodic_mae(Array[Double], Array[Double]) -> Double
+
+pub fn watermark_periodic_make_labeled_point(Double, Double, Int32) -> Watermark_periodicPoint
+
+pub fn watermark_periodic_make_matrix(Int32, Int32, Double) -> Watermark_periodicMatrix
+
+pub fn watermark_periodic_make_point(Double, Double) -> Watermark_periodicPoint
+
+pub fn watermark_periodic_make_series(Array[Double], String) -> Watermark_periodicSeries
+
+pub fn watermark_periodic_make_vector(Array[Double]) -> Watermark_periodicVector
+
+pub fn watermark_periodic_matrix_add(Watermark_periodicMatrix, Watermark_periodicMatrix) -> Watermark_periodicMatrix
+
+pub fn watermark_periodic_matrix_get(Watermark_periodicMatrix, Int32, Int32) -> Double
+
+pub fn watermark_periodic_matrix_identity(Int32) -> Watermark_periodicMatrix
+
+pub fn watermark_periodic_matrix_multiply(Watermark_periodicMatrix, Watermark_periodicMatrix) -> Watermark_periodicMatrix
+
+pub fn watermark_periodic_matrix_norm(Watermark_periodicMatrix) -> Double
+
+pub fn watermark_periodic_matrix_scale(Watermark_periodicMatrix, Double) -> Watermark_periodicMatrix
+
+pub fn watermark_periodic_matrix_to_string(Watermark_periodicMatrix) -> String
+
+pub fn watermark_periodic_matrix_trace(Watermark_periodicMatrix) -> Double
+
+pub fn watermark_periodic_matrix_transpose(Watermark_periodicMatrix) -> Watermark_periodicMatrix
+
+pub fn watermark_periodic_mse(Array[Double], Array[Double]) -> Double
+
+pub fn watermark_periodic_point_add(Watermark_periodicPoint, Watermark_periodicPoint) -> Watermark_periodicPoint
+
+pub fn watermark_periodic_point_dist(Watermark_periodicPoint, Watermark_periodicPoint) -> Double
+
+pub fn watermark_periodic_point_dot(Watermark_periodicPoint, Watermark_periodicPoint) -> Double
+
+pub fn watermark_periodic_point_label(Watermark_periodicPoint) -> Int32
+
+pub fn watermark_periodic_point_norm(Watermark_periodicPoint) -> Double
+
+pub fn watermark_periodic_point_scale(Watermark_periodicPoint, Double) -> Watermark_periodicPoint
+
+pub fn watermark_periodic_point_sub(Watermark_periodicPoint, Watermark_periodicPoint) -> Watermark_periodicPoint
+
+pub fn watermark_periodic_point_to_string(Watermark_periodicPoint) -> String
+
+pub fn watermark_periodic_point_x(Watermark_periodicPoint) -> Double
+
+pub fn watermark_periodic_point_y(Watermark_periodicPoint) -> Double
+
+pub fn watermark_periodic_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn watermark_periodic_r2(Array[Double], Array[Double]) -> Double
+
+pub fn watermark_periodic_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn watermark_periodic_series_add(Watermark_periodicSeries, Watermark_periodicSeries) -> Watermark_periodicSeries
+
+pub fn watermark_periodic_series_len(Watermark_periodicSeries) -> Int32
+
+pub fn watermark_periodic_series_max(Watermark_periodicSeries) -> Double
+
+pub fn watermark_periodic_series_mean(Watermark_periodicSeries) -> Double
+
+pub fn watermark_periodic_series_min(Watermark_periodicSeries) -> Double
+
+pub fn watermark_periodic_series_scale(Watermark_periodicSeries, Double) -> Watermark_periodicSeries
+
+pub fn watermark_periodic_series_std(Watermark_periodicSeries) -> Double
+
+pub fn watermark_periodic_series_sum(Watermark_periodicSeries) -> Double
+
+pub fn watermark_periodic_series_to_string(Watermark_periodicSeries) -> String
+
+pub fn watermark_periodic_series_var(Watermark_periodicSeries) -> Double
+
+pub fn watermark_periodic_std(Array[Double]) -> Double
+
+pub fn watermark_periodic_var(Array[Double]) -> Double
+
+pub fn watermark_periodic_vector_add(Watermark_periodicVector, Watermark_periodicVector) -> Watermark_periodicVector
+
+pub fn watermark_periodic_vector_dist(Watermark_periodicVector, Watermark_periodicVector) -> Double
+
+pub fn watermark_periodic_vector_dot(Watermark_periodicVector, Watermark_periodicVector) -> Double
+
+pub fn watermark_periodic_vector_norm(Watermark_periodicVector) -> Double
+
+pub fn watermark_periodic_vector_normalize(Watermark_periodicVector) -> Watermark_periodicVector
+
+pub fn watermark_periodic_vector_scale(Watermark_periodicVector, Double) -> Watermark_periodicVector
+
+pub fn watermark_periodic_vector_sub(Watermark_periodicVector, Watermark_periodicVector) -> Watermark_periodicVector
+
+pub fn watermark_periodic_vector_to_string(Watermark_periodicVector) -> String
+
+pub fn watermark_periodic_vector_zero(Int32) -> Watermark_periodicVector
+
+// Errors
+
+// Types and methods
+pub struct Watermark_periodicMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Watermark_periodicPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Watermark_periodicSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Watermark_periodicVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

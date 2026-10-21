@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_dist_spherical"
+
+// Values
+pub fn geo_dist_spherical_buffer_make(Int32) -> GeodistsphericalBuffer
+
+pub fn geo_dist_spherical_cluster_make(Int32) -> GeodistsphericalCluster
+
+pub fn geo_dist_spherical_cursor_make(Int32) -> GeodistsphericalCursor
+
+pub fn geo_dist_spherical_edge_make(Int32) -> GeodistsphericalEdge
+
+pub fn geo_dist_spherical_frame_make(Int32) -> GeodistsphericalFrame
+
+pub fn geo_dist_spherical_graphn_make(Int32) -> GeodistsphericalGraphN
+
+pub fn geo_dist_spherical_layer_make(Int32) -> GeodistsphericalLayer
+
+pub fn geo_dist_spherical_make_matrix(Int32, Int32, Double) -> GeodistsphericalMatrix
+
+pub fn geo_dist_spherical_make_point(Double, Double) -> GeodistsphericalPoint
+
+pub fn geo_dist_spherical_make_point3(Double, Double, Double) -> GeodistsphericalPoint
+
+pub fn geo_dist_spherical_make_series(Array[Double], String) -> GeodistsphericalSeries
+
+pub fn geo_dist_spherical_make_vector(Array[Double]) -> GeodistsphericalVector
+
+pub fn geo_dist_spherical_matrix_identity(Int32) -> GeodistsphericalMatrix
+
+pub fn geo_dist_spherical_model_make(Int32) -> GeodistsphericalModel
+
+pub fn geo_dist_spherical_node_make(Int32) -> GeodistsphericalNode
+
+pub fn geo_dist_spherical_path_make(Int32) -> GeodistsphericalPath
+
+pub fn geo_dist_spherical_range_make(Int32) -> GeodistsphericalRange
+
+pub fn geo_dist_spherical_slice_make(Int32) -> GeodistsphericalSlice
+
+pub fn geo_dist_spherical_table_make(Int32) -> GeodistsphericalTable
+
+pub fn geo_dist_spherical_vector_zero(Int32) -> GeodistsphericalVector
+
+pub fn geo_dist_spherical_view_make(Int32) -> GeodistsphericalView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeodistsphericalBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistsphericalBuffer::add(Self, Self) -> Self
+pub fn GeodistsphericalBuffer::copy(Self) -> Self
+pub fn GeodistsphericalBuffer::fill(Self, Double) -> Self
+pub fn GeodistsphericalBuffer::get(Self, Int32) -> Double
+pub fn GeodistsphericalBuffer::len(Self) -> Int32
+pub fn GeodistsphericalBuffer::max(Self) -> Double
+pub fn GeodistsphericalBuffer::mean(Self) -> Double
+pub fn GeodistsphericalBuffer::min(Self) -> Double
+pub fn GeodistsphericalBuffer::scale(Self, Double) -> Self
+pub fn GeodistsphericalBuffer::set(Self, Int32, Double) -> Self
+pub fn GeodistsphericalBuffer::sum(Self) -> Double
+pub fn GeodistsphericalBuffer::to_string(Self) -> String
+
+pub(all) struct GeodistsphericalCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistsphericalCluster::add(Self, Self) -> Self
+pub fn GeodistsphericalCluster::copy(Self) -> Self
+pub fn GeodistsphericalCluster::fill(Self, Double) -> Self
+pub fn GeodistsphericalCluster::get(Self, Int32) -> Double
+pub fn GeodistsphericalCluster::len(Self) -> Int32
+pub fn GeodistsphericalCluster::max(Self) -> Double
+pub fn GeodistsphericalCluster::mean(Self) -> Double
+pub fn GeodistsphericalCluster::min(Self) -> Double
+pub fn GeodistsphericalCluster::scale(Self, Double) -> Self
+pub fn GeodistsphericalCluster::set(Self, Int32, Double) -> Self
+pub fn GeodistsphericalCluster::sum(Self) -> Double
+pub fn GeodistsphericalCluster::to_string(Self) -> String
+
+pub(all) struct GeodistsphericalCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistsphericalCursor::add(Self, Self) -> Self
+pub fn GeodistsphericalCursor::copy(Self) -> Self
+pub fn GeodistsphericalCursor::fill(Self, Double) -> Self
+pub fn GeodistsphericalCursor::get(Self, Int32) -> Double
+pub fn GeodistsphericalCursor::len(Self) -> Int32
+pub fn GeodistsphericalCursor::max(Self) -> Double
+pub fn GeodistsphericalCursor::mean(Self) -> Double
+pub fn GeodistsphericalCursor::min(Self) -> Double
+pub fn GeodistsphericalCursor::scale(Self, Double) -> Self
+pub fn GeodistsphericalCursor::set(Self, Int32, Double) -> Self
+pub fn GeodistsphericalCursor::sum(Self) -> Double
+pub fn GeodistsphericalCursor::to_string(Self) -> String
+
+pub(all) struct GeodistsphericalEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistsphericalEdge::add(Self, Self) -> Self
+pub fn GeodistsphericalEdge::copy(Self) -> Self
+pub fn GeodistsphericalEdge::fill(Self, Double) -> Self
+pub fn GeodistsphericalEdge::get(Self, Int32) -> Double
+pub fn GeodistsphericalEdge::len(Self) -> Int32
+pub fn GeodistsphericalEdge::max(Self) -> Double
+pub fn GeodistsphericalEdge::mean(Self) -> Double
+pub fn GeodistsphericalEdge::min(Self) -> Double
+pub fn GeodistsphericalEdge::scale(Self, Double) -> Self
+pub fn GeodistsphericalEdge::set(Self, Int32, Double) -> Self
+pub fn GeodistsphericalEdge::sum(Self) -> Double
+pub fn GeodistsphericalEdge::to_string(Self) -> String
+
+pub(all) struct GeodistsphericalFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistsphericalFrame::add(Self, Self) -> Self
+pub fn GeodistsphericalFrame::copy(Self) -> Self
+pub fn GeodistsphericalFrame::fill(Self, Double) -> Self
+pub fn GeodistsphericalFrame::get(Self, Int32) -> Double
+pub fn GeodistsphericalFrame::len(Self) -> Int32
+pub fn GeodistsphericalFrame::max(Self) -> Double
+pub fn GeodistsphericalFrame::mean(Self) -> Double
+pub fn GeodistsphericalFrame::min(Self) -> Double
+pub fn GeodistsphericalFrame::scale(Self, Double) -> Self
+pub fn GeodistsphericalFrame::set(Self, Int32, Double) -> Self
+pub fn GeodistsphericalFrame::sum(Self) -> Double
+pub fn GeodistsphericalFrame::to_string(Self) -> String
+
+pub(all) struct GeodistsphericalGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistsphericalGraphN::add(Self, Self) -> Self
+pub fn GeodistsphericalGraphN::copy(Self) -> Self
+pub fn GeodistsphericalGraphN::fill(Self, Double) -> Self
+pub fn GeodistsphericalGraphN::get(Self, Int32) -> Double
+pub fn GeodistsphericalGraphN::len(Self) -> Int32
+pub fn GeodistsphericalGraphN::max(Self) -> Double
+pub fn GeodistsphericalGraphN::mean(Self) -> Double
+pub fn GeodistsphericalGraphN::min(Self) -> Double
+pub fn GeodistsphericalGraphN::scale(Self, Double) -> Self
+pub fn GeodistsphericalGraphN::set(Self, Int32, Double) -> Self
+pub fn GeodistsphericalGraphN::sum(Self) -> Double
+pub fn GeodistsphericalGraphN::to_string(Self) -> String
+
+pub(all) struct GeodistsphericalLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistsphericalLayer::add(Self, Self) -> Self
+pub fn GeodistsphericalLayer::copy(Self) -> Self
+pub fn GeodistsphericalLayer::fill(Self, Double) -> Self
+pub fn GeodistsphericalLayer::get(Self, Int32) -> Double
+pub fn GeodistsphericalLayer::len(Self) -> Int32
+pub fn GeodistsphericalLayer::max(Self) -> Double
+pub fn GeodistsphericalLayer::mean(Self) -> Double
+pub fn GeodistsphericalLayer::min(Self) -> Double
+pub fn GeodistsphericalLayer::scale(Self, Double) -> Self
+pub fn GeodistsphericalLayer::set(Self, Int32, Double) -> Self
+pub fn GeodistsphericalLayer::sum(Self) -> Double
+pub fn GeodistsphericalLayer::to_string(Self) -> String
+
+pub(all) struct GeodistsphericalMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeodistsphericalMatrix::add(Self, Self) -> Self
+pub fn GeodistsphericalMatrix::det(Self) -> Double
+pub fn GeodistsphericalMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeodistsphericalMatrix::multiply(Self, Self) -> Self
+pub fn GeodistsphericalMatrix::norm(Self) -> Double
+pub fn GeodistsphericalMatrix::scale(Self, Double) -> Self
+pub fn GeodistsphericalMatrix::to_string(Self) -> String
+pub fn GeodistsphericalMatrix::trace(Self) -> Double
+pub fn GeodistsphericalMatrix::transpose(Self) -> Self
+
+pub(all) struct GeodistsphericalModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistsphericalModel::add(Self, Self) -> Self
+pub fn GeodistsphericalModel::copy(Self) -> Self
+pub fn GeodistsphericalModel::fill(Self, Double) -> Self
+pub fn GeodistsphericalModel::get(Self, Int32) -> Double
+pub fn GeodistsphericalModel::len(Self) -> Int32
+pub fn GeodistsphericalModel::max(Self) -> Double
+pub fn GeodistsphericalModel::mean(Self) -> Double
+pub fn GeodistsphericalModel::min(Self) -> Double
+pub fn GeodistsphericalModel::scale(Self, Double) -> Self
+pub fn GeodistsphericalModel::set(Self, Int32, Double) -> Self
+pub fn GeodistsphericalModel::sum(Self) -> Double
+pub fn GeodistsphericalModel::to_string(Self) -> String
+
+pub(all) struct GeodistsphericalNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistsphericalNode::add(Self, Self) -> Self
+pub fn GeodistsphericalNode::copy(Self) -> Self
+pub fn GeodistsphericalNode::fill(Self, Double) -> Self
+pub fn GeodistsphericalNode::get(Self, Int32) -> Double
+pub fn GeodistsphericalNode::len(Self) -> Int32
+pub fn GeodistsphericalNode::max(Self) -> Double
+pub fn GeodistsphericalNode::mean(Self) -> Double
+pub fn GeodistsphericalNode::min(Self) -> Double
+pub fn GeodistsphericalNode::scale(Self, Double) -> Self
+pub fn GeodistsphericalNode::set(Self, Int32, Double) -> Self
+pub fn GeodistsphericalNode::sum(Self) -> Double
+pub fn GeodistsphericalNode::to_string(Self) -> String
+
+pub(all) struct GeodistsphericalPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistsphericalPath::add(Self, Self) -> Self
+pub fn GeodistsphericalPath::copy(Self) -> Self
+pub fn GeodistsphericalPath::fill(Self, Double) -> Self
+pub fn GeodistsphericalPath::get(Self, Int32) -> Double
+pub fn GeodistsphericalPath::len(Self) -> Int32
+pub fn GeodistsphericalPath::max(Self) -> Double
+pub fn GeodistsphericalPath::mean(Self) -> Double
+pub fn GeodistsphericalPath::min(Self) -> Double
+pub fn GeodistsphericalPath::scale(Self, Double) -> Self
+pub fn GeodistsphericalPath::set(Self, Int32, Double) -> Self
+pub fn GeodistsphericalPath::sum(Self) -> Double
+pub fn GeodistsphericalPath::to_string(Self) -> String
+
+pub(all) struct GeodistsphericalPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeodistsphericalPoint::add(Self, Self) -> Self
+pub fn GeodistsphericalPoint::cross(Self, Self) -> Self
+pub fn GeodistsphericalPoint::dist(Self, Self) -> Double
+pub fn GeodistsphericalPoint::dot(Self, Self) -> Double
+pub fn GeodistsphericalPoint::label(Self) -> Int32
+pub fn GeodistsphericalPoint::lerp(Self, Self, Double) -> Self
+pub fn GeodistsphericalPoint::mid(Self, Self) -> Self
+pub fn GeodistsphericalPoint::negate(Self) -> Self
+pub fn GeodistsphericalPoint::norm(Self) -> Double
+pub fn GeodistsphericalPoint::normalize(Self) -> Self
+pub fn GeodistsphericalPoint::scale(Self, Double) -> Self
+pub fn GeodistsphericalPoint::sub(Self, Self) -> Self
+pub fn GeodistsphericalPoint::to_string(Self) -> String
+pub fn GeodistsphericalPoint::x(Self) -> Double
+pub fn GeodistsphericalPoint::y(Self) -> Double
+pub fn GeodistsphericalPoint::z(Self) -> Double
+
+pub(all) struct GeodistsphericalRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistsphericalRange::add(Self, Self) -> Self
+pub fn GeodistsphericalRange::copy(Self) -> Self
+pub fn GeodistsphericalRange::fill(Self, Double) -> Self
+pub fn GeodistsphericalRange::get(Self, Int32) -> Double
+pub fn GeodistsphericalRange::len(Self) -> Int32
+pub fn GeodistsphericalRange::max(Self) -> Double
+pub fn GeodistsphericalRange::mean(Self) -> Double
+pub fn GeodistsphericalRange::min(Self) -> Double
+pub fn GeodistsphericalRange::scale(Self, Double) -> Self
+pub fn GeodistsphericalRange::set(Self, Int32, Double) -> Self
+pub fn GeodistsphericalRange::sum(Self) -> Double
+pub fn GeodistsphericalRange::to_string(Self) -> String
+
+pub(all) struct GeodistsphericalSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeodistsphericalSeries::add(Self, Self) -> Self
+pub fn GeodistsphericalSeries::cumsum(Self) -> Self
+pub fn GeodistsphericalSeries::len(Self) -> Int32
+pub fn GeodistsphericalSeries::max(Self) -> Double
+pub fn GeodistsphericalSeries::mean(Self) -> Double
+pub fn GeodistsphericalSeries::median(Self) -> Double
+pub fn GeodistsphericalSeries::min(Self) -> Double
+pub fn GeodistsphericalSeries::normalize(Self) -> Self
+pub fn GeodistsphericalSeries::range(Self) -> Double
+pub fn GeodistsphericalSeries::scale(Self, Double) -> Self
+pub fn GeodistsphericalSeries::std(Self) -> Double
+pub fn GeodistsphericalSeries::sub(Self, Self) -> Self
+pub fn GeodistsphericalSeries::sum(Self) -> Double
+pub fn GeodistsphericalSeries::to_string(Self) -> String
+pub fn GeodistsphericalSeries::variance(Self) -> Double
+
+pub(all) struct GeodistsphericalSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistsphericalSlice::add(Self, Self) -> Self
+pub fn GeodistsphericalSlice::copy(Self) -> Self
+pub fn GeodistsphericalSlice::fill(Self, Double) -> Self
+pub fn GeodistsphericalSlice::get(Self, Int32) -> Double
+pub fn GeodistsphericalSlice::len(Self) -> Int32
+pub fn GeodistsphericalSlice::max(Self) -> Double
+pub fn GeodistsphericalSlice::mean(Self) -> Double
+pub fn GeodistsphericalSlice::min(Self) -> Double
+pub fn GeodistsphericalSlice::scale(Self, Double) -> Self
+pub fn GeodistsphericalSlice::set(Self, Int32, Double) -> Self
+pub fn GeodistsphericalSlice::sum(Self) -> Double
+pub fn GeodistsphericalSlice::to_string(Self) -> String
+
+pub(all) struct GeodistsphericalTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistsphericalTable::add(Self, Self) -> Self
+pub fn GeodistsphericalTable::copy(Self) -> Self
+pub fn GeodistsphericalTable::fill(Self, Double) -> Self
+pub fn GeodistsphericalTable::get(Self, Int32) -> Double
+pub fn GeodistsphericalTable::len(Self) -> Int32
+pub fn GeodistsphericalTable::max(Self) -> Double
+pub fn GeodistsphericalTable::mean(Self) -> Double
+pub fn GeodistsphericalTable::min(Self) -> Double
+pub fn GeodistsphericalTable::scale(Self, Double) -> Self
+pub fn GeodistsphericalTable::set(Self, Int32, Double) -> Self
+pub fn GeodistsphericalTable::sum(Self) -> Double
+pub fn GeodistsphericalTable::to_string(Self) -> String
+
+pub(all) struct GeodistsphericalVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeodistsphericalVector::add(Self, Self) -> Self
+pub fn GeodistsphericalVector::dist(Self, Self) -> Double
+pub fn GeodistsphericalVector::dot(Self, Self) -> Double
+pub fn GeodistsphericalVector::norm(Self) -> Double
+pub fn GeodistsphericalVector::normalize(Self) -> Self
+pub fn GeodistsphericalVector::scale(Self, Double) -> Self
+pub fn GeodistsphericalVector::sub(Self, Self) -> Self
+pub fn GeodistsphericalVector::to_string(Self) -> String
+
+pub(all) struct GeodistsphericalView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeodistsphericalView::add(Self, Self) -> Self
+pub fn GeodistsphericalView::copy(Self) -> Self
+pub fn GeodistsphericalView::fill(Self, Double) -> Self
+pub fn GeodistsphericalView::get(Self, Int32) -> Double
+pub fn GeodistsphericalView::len(Self) -> Int32
+pub fn GeodistsphericalView::max(Self) -> Double
+pub fn GeodistsphericalView::mean(Self) -> Double
+pub fn GeodistsphericalView::min(Self) -> Double
+pub fn GeodistsphericalView::scale(Self, Double) -> Self
+pub fn GeodistsphericalView::set(Self, Int32, Double) -> Self
+pub fn GeodistsphericalView::sum(Self) -> Double
+pub fn GeodistsphericalView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

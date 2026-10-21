@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/game_theory"
+
+// Values
+pub fn game_theory_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn game_theory_corr(Array[Double], Array[Double]) -> Double
+
+pub fn game_theory_cov(Array[Double], Array[Double]) -> Double
+
+pub fn game_theory_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn game_theory_mae(Array[Double], Array[Double]) -> Double
+
+pub fn game_theory_make_labeled_point(Double, Double, Int32) -> Game_theoryPoint
+
+pub fn game_theory_make_matrix(Int32, Int32, Double) -> Game_theoryMatrix
+
+pub fn game_theory_make_point(Double, Double) -> Game_theoryPoint
+
+pub fn game_theory_make_series(Array[Double], String) -> Game_theorySeries
+
+pub fn game_theory_make_vector(Array[Double]) -> Game_theoryVector
+
+pub fn game_theory_matrix_add(Game_theoryMatrix, Game_theoryMatrix) -> Game_theoryMatrix
+
+pub fn game_theory_matrix_get(Game_theoryMatrix, Int32, Int32) -> Double
+
+pub fn game_theory_matrix_identity(Int32) -> Game_theoryMatrix
+
+pub fn game_theory_matrix_multiply(Game_theoryMatrix, Game_theoryMatrix) -> Game_theoryMatrix
+
+pub fn game_theory_matrix_norm(Game_theoryMatrix) -> Double
+
+pub fn game_theory_matrix_scale(Game_theoryMatrix, Double) -> Game_theoryMatrix
+
+pub fn game_theory_matrix_to_string(Game_theoryMatrix) -> String
+
+pub fn game_theory_matrix_trace(Game_theoryMatrix) -> Double
+
+pub fn game_theory_matrix_transpose(Game_theoryMatrix) -> Game_theoryMatrix
+
+pub fn game_theory_mse(Array[Double], Array[Double]) -> Double
+
+pub fn game_theory_point_add(Game_theoryPoint, Game_theoryPoint) -> Game_theoryPoint
+
+pub fn game_theory_point_dist(Game_theoryPoint, Game_theoryPoint) -> Double
+
+pub fn game_theory_point_dot(Game_theoryPoint, Game_theoryPoint) -> Double
+
+pub fn game_theory_point_label(Game_theoryPoint) -> Int32
+
+pub fn game_theory_point_norm(Game_theoryPoint) -> Double
+
+pub fn game_theory_point_scale(Game_theoryPoint, Double) -> Game_theoryPoint
+
+pub fn game_theory_point_sub(Game_theoryPoint, Game_theoryPoint) -> Game_theoryPoint
+
+pub fn game_theory_point_to_string(Game_theoryPoint) -> String
+
+pub fn game_theory_point_x(Game_theoryPoint) -> Double
+
+pub fn game_theory_point_y(Game_theoryPoint) -> Double
+
+pub fn game_theory_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn game_theory_r2(Array[Double], Array[Double]) -> Double
+
+pub fn game_theory_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn game_theory_series_add(Game_theorySeries, Game_theorySeries) -> Game_theorySeries
+
+pub fn game_theory_series_len(Game_theorySeries) -> Int32
+
+pub fn game_theory_series_max(Game_theorySeries) -> Double
+
+pub fn game_theory_series_mean(Game_theorySeries) -> Double
+
+pub fn game_theory_series_min(Game_theorySeries) -> Double
+
+pub fn game_theory_series_scale(Game_theorySeries, Double) -> Game_theorySeries
+
+pub fn game_theory_series_std(Game_theorySeries) -> Double
+
+pub fn game_theory_series_sum(Game_theorySeries) -> Double
+
+pub fn game_theory_series_to_string(Game_theorySeries) -> String
+
+pub fn game_theory_series_var(Game_theorySeries) -> Double
+
+pub fn game_theory_std(Array[Double]) -> Double
+
+pub fn game_theory_var(Array[Double]) -> Double
+
+pub fn game_theory_vector_add(Game_theoryVector, Game_theoryVector) -> Game_theoryVector
+
+pub fn game_theory_vector_dist(Game_theoryVector, Game_theoryVector) -> Double
+
+pub fn game_theory_vector_dot(Game_theoryVector, Game_theoryVector) -> Double
+
+pub fn game_theory_vector_norm(Game_theoryVector) -> Double
+
+pub fn game_theory_vector_normalize(Game_theoryVector) -> Game_theoryVector
+
+pub fn game_theory_vector_scale(Game_theoryVector, Double) -> Game_theoryVector
+
+pub fn game_theory_vector_sub(Game_theoryVector, Game_theoryVector) -> Game_theoryVector
+
+pub fn game_theory_vector_to_string(Game_theoryVector) -> String
+
+pub fn game_theory_vector_zero(Int32) -> Game_theoryVector
+
+// Errors
+
+// Types and methods
+pub struct Game_theoryMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Game_theoryPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Game_theorySeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Game_theoryVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

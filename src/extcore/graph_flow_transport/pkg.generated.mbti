@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_flow_transport"
+
+// Values
+pub fn graph_flow_transport_buffer_make(Int32) -> GraphflowtransportBuffer
+
+pub fn graph_flow_transport_cluster_make(Int32) -> GraphflowtransportCluster
+
+pub fn graph_flow_transport_cursor_make(Int32) -> GraphflowtransportCursor
+
+pub fn graph_flow_transport_edge_make(Int32) -> GraphflowtransportEdge
+
+pub fn graph_flow_transport_frame_make(Int32) -> GraphflowtransportFrame
+
+pub fn graph_flow_transport_graphn_make(Int32) -> GraphflowtransportGraphN
+
+pub fn graph_flow_transport_layer_make(Int32) -> GraphflowtransportLayer
+
+pub fn graph_flow_transport_make_matrix(Int32, Int32, Double) -> GraphflowtransportMatrix
+
+pub fn graph_flow_transport_make_point(Double, Double) -> GraphflowtransportPoint
+
+pub fn graph_flow_transport_make_point3(Double, Double, Double) -> GraphflowtransportPoint
+
+pub fn graph_flow_transport_make_series(Array[Double], String) -> GraphflowtransportSeries
+
+pub fn graph_flow_transport_make_vector(Array[Double]) -> GraphflowtransportVector
+
+pub fn graph_flow_transport_matrix_identity(Int32) -> GraphflowtransportMatrix
+
+pub fn graph_flow_transport_model_make(Int32) -> GraphflowtransportModel
+
+pub fn graph_flow_transport_node_make(Int32) -> GraphflowtransportNode
+
+pub fn graph_flow_transport_path_make(Int32) -> GraphflowtransportPath
+
+pub fn graph_flow_transport_range_make(Int32) -> GraphflowtransportRange
+
+pub fn graph_flow_transport_slice_make(Int32) -> GraphflowtransportSlice
+
+pub fn graph_flow_transport_table_make(Int32) -> GraphflowtransportTable
+
+pub fn graph_flow_transport_vector_zero(Int32) -> GraphflowtransportVector
+
+pub fn graph_flow_transport_view_make(Int32) -> GraphflowtransportView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphflowtransportBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowtransportBuffer::add(Self, Self) -> Self
+pub fn GraphflowtransportBuffer::copy(Self) -> Self
+pub fn GraphflowtransportBuffer::fill(Self, Double) -> Self
+pub fn GraphflowtransportBuffer::get(Self, Int32) -> Double
+pub fn GraphflowtransportBuffer::len(Self) -> Int32
+pub fn GraphflowtransportBuffer::max(Self) -> Double
+pub fn GraphflowtransportBuffer::mean(Self) -> Double
+pub fn GraphflowtransportBuffer::min(Self) -> Double
+pub fn GraphflowtransportBuffer::scale(Self, Double) -> Self
+pub fn GraphflowtransportBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphflowtransportBuffer::sum(Self) -> Double
+pub fn GraphflowtransportBuffer::to_string(Self) -> String
+
+pub(all) struct GraphflowtransportCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowtransportCluster::add(Self, Self) -> Self
+pub fn GraphflowtransportCluster::copy(Self) -> Self
+pub fn GraphflowtransportCluster::fill(Self, Double) -> Self
+pub fn GraphflowtransportCluster::get(Self, Int32) -> Double
+pub fn GraphflowtransportCluster::len(Self) -> Int32
+pub fn GraphflowtransportCluster::max(Self) -> Double
+pub fn GraphflowtransportCluster::mean(Self) -> Double
+pub fn GraphflowtransportCluster::min(Self) -> Double
+pub fn GraphflowtransportCluster::scale(Self, Double) -> Self
+pub fn GraphflowtransportCluster::set(Self, Int32, Double) -> Self
+pub fn GraphflowtransportCluster::sum(Self) -> Double
+pub fn GraphflowtransportCluster::to_string(Self) -> String
+
+pub(all) struct GraphflowtransportCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowtransportCursor::add(Self, Self) -> Self
+pub fn GraphflowtransportCursor::copy(Self) -> Self
+pub fn GraphflowtransportCursor::fill(Self, Double) -> Self
+pub fn GraphflowtransportCursor::get(Self, Int32) -> Double
+pub fn GraphflowtransportCursor::len(Self) -> Int32
+pub fn GraphflowtransportCursor::max(Self) -> Double
+pub fn GraphflowtransportCursor::mean(Self) -> Double
+pub fn GraphflowtransportCursor::min(Self) -> Double
+pub fn GraphflowtransportCursor::scale(Self, Double) -> Self
+pub fn GraphflowtransportCursor::set(Self, Int32, Double) -> Self
+pub fn GraphflowtransportCursor::sum(Self) -> Double
+pub fn GraphflowtransportCursor::to_string(Self) -> String
+
+pub(all) struct GraphflowtransportEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowtransportEdge::add(Self, Self) -> Self
+pub fn GraphflowtransportEdge::copy(Self) -> Self
+pub fn GraphflowtransportEdge::fill(Self, Double) -> Self
+pub fn GraphflowtransportEdge::get(Self, Int32) -> Double
+pub fn GraphflowtransportEdge::len(Self) -> Int32
+pub fn GraphflowtransportEdge::max(Self) -> Double
+pub fn GraphflowtransportEdge::mean(Self) -> Double
+pub fn GraphflowtransportEdge::min(Self) -> Double
+pub fn GraphflowtransportEdge::scale(Self, Double) -> Self
+pub fn GraphflowtransportEdge::set(Self, Int32, Double) -> Self
+pub fn GraphflowtransportEdge::sum(Self) -> Double
+pub fn GraphflowtransportEdge::to_string(Self) -> String
+
+pub(all) struct GraphflowtransportFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowtransportFrame::add(Self, Self) -> Self
+pub fn GraphflowtransportFrame::copy(Self) -> Self
+pub fn GraphflowtransportFrame::fill(Self, Double) -> Self
+pub fn GraphflowtransportFrame::get(Self, Int32) -> Double
+pub fn GraphflowtransportFrame::len(Self) -> Int32
+pub fn GraphflowtransportFrame::max(Self) -> Double
+pub fn GraphflowtransportFrame::mean(Self) -> Double
+pub fn GraphflowtransportFrame::min(Self) -> Double
+pub fn GraphflowtransportFrame::scale(Self, Double) -> Self
+pub fn GraphflowtransportFrame::set(Self, Int32, Double) -> Self
+pub fn GraphflowtransportFrame::sum(Self) -> Double
+pub fn GraphflowtransportFrame::to_string(Self) -> String
+
+pub(all) struct GraphflowtransportGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowtransportGraphN::add(Self, Self) -> Self
+pub fn GraphflowtransportGraphN::copy(Self) -> Self
+pub fn GraphflowtransportGraphN::fill(Self, Double) -> Self
+pub fn GraphflowtransportGraphN::get(Self, Int32) -> Double
+pub fn GraphflowtransportGraphN::len(Self) -> Int32
+pub fn GraphflowtransportGraphN::max(Self) -> Double
+pub fn GraphflowtransportGraphN::mean(Self) -> Double
+pub fn GraphflowtransportGraphN::min(Self) -> Double
+pub fn GraphflowtransportGraphN::scale(Self, Double) -> Self
+pub fn GraphflowtransportGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphflowtransportGraphN::sum(Self) -> Double
+pub fn GraphflowtransportGraphN::to_string(Self) -> String
+
+pub(all) struct GraphflowtransportLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowtransportLayer::add(Self, Self) -> Self
+pub fn GraphflowtransportLayer::copy(Self) -> Self
+pub fn GraphflowtransportLayer::fill(Self, Double) -> Self
+pub fn GraphflowtransportLayer::get(Self, Int32) -> Double
+pub fn GraphflowtransportLayer::len(Self) -> Int32
+pub fn GraphflowtransportLayer::max(Self) -> Double
+pub fn GraphflowtransportLayer::mean(Self) -> Double
+pub fn GraphflowtransportLayer::min(Self) -> Double
+pub fn GraphflowtransportLayer::scale(Self, Double) -> Self
+pub fn GraphflowtransportLayer::set(Self, Int32, Double) -> Self
+pub fn GraphflowtransportLayer::sum(Self) -> Double
+pub fn GraphflowtransportLayer::to_string(Self) -> String
+
+pub(all) struct GraphflowtransportMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphflowtransportMatrix::add(Self, Self) -> Self
+pub fn GraphflowtransportMatrix::det(Self) -> Double
+pub fn GraphflowtransportMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphflowtransportMatrix::multiply(Self, Self) -> Self
+pub fn GraphflowtransportMatrix::norm(Self) -> Double
+pub fn GraphflowtransportMatrix::scale(Self, Double) -> Self
+pub fn GraphflowtransportMatrix::to_string(Self) -> String
+pub fn GraphflowtransportMatrix::trace(Self) -> Double
+pub fn GraphflowtransportMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphflowtransportModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowtransportModel::add(Self, Self) -> Self
+pub fn GraphflowtransportModel::copy(Self) -> Self
+pub fn GraphflowtransportModel::fill(Self, Double) -> Self
+pub fn GraphflowtransportModel::get(Self, Int32) -> Double
+pub fn GraphflowtransportModel::len(Self) -> Int32
+pub fn GraphflowtransportModel::max(Self) -> Double
+pub fn GraphflowtransportModel::mean(Self) -> Double
+pub fn GraphflowtransportModel::min(Self) -> Double
+pub fn GraphflowtransportModel::scale(Self, Double) -> Self
+pub fn GraphflowtransportModel::set(Self, Int32, Double) -> Self
+pub fn GraphflowtransportModel::sum(Self) -> Double
+pub fn GraphflowtransportModel::to_string(Self) -> String
+
+pub(all) struct GraphflowtransportNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowtransportNode::add(Self, Self) -> Self
+pub fn GraphflowtransportNode::copy(Self) -> Self
+pub fn GraphflowtransportNode::fill(Self, Double) -> Self
+pub fn GraphflowtransportNode::get(Self, Int32) -> Double
+pub fn GraphflowtransportNode::len(Self) -> Int32
+pub fn GraphflowtransportNode::max(Self) -> Double
+pub fn GraphflowtransportNode::mean(Self) -> Double
+pub fn GraphflowtransportNode::min(Self) -> Double
+pub fn GraphflowtransportNode::scale(Self, Double) -> Self
+pub fn GraphflowtransportNode::set(Self, Int32, Double) -> Self
+pub fn GraphflowtransportNode::sum(Self) -> Double
+pub fn GraphflowtransportNode::to_string(Self) -> String
+
+pub(all) struct GraphflowtransportPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowtransportPath::add(Self, Self) -> Self
+pub fn GraphflowtransportPath::copy(Self) -> Self
+pub fn GraphflowtransportPath::fill(Self, Double) -> Self
+pub fn GraphflowtransportPath::get(Self, Int32) -> Double
+pub fn GraphflowtransportPath::len(Self) -> Int32
+pub fn GraphflowtransportPath::max(Self) -> Double
+pub fn GraphflowtransportPath::mean(Self) -> Double
+pub fn GraphflowtransportPath::min(Self) -> Double
+pub fn GraphflowtransportPath::scale(Self, Double) -> Self
+pub fn GraphflowtransportPath::set(Self, Int32, Double) -> Self
+pub fn GraphflowtransportPath::sum(Self) -> Double
+pub fn GraphflowtransportPath::to_string(Self) -> String
+
+pub(all) struct GraphflowtransportPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphflowtransportPoint::add(Self, Self) -> Self
+pub fn GraphflowtransportPoint::cross(Self, Self) -> Self
+pub fn GraphflowtransportPoint::dist(Self, Self) -> Double
+pub fn GraphflowtransportPoint::dot(Self, Self) -> Double
+pub fn GraphflowtransportPoint::label(Self) -> Int32
+pub fn GraphflowtransportPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphflowtransportPoint::mid(Self, Self) -> Self
+pub fn GraphflowtransportPoint::negate(Self) -> Self
+pub fn GraphflowtransportPoint::norm(Self) -> Double
+pub fn GraphflowtransportPoint::normalize(Self) -> Self
+pub fn GraphflowtransportPoint::scale(Self, Double) -> Self
+pub fn GraphflowtransportPoint::sub(Self, Self) -> Self
+pub fn GraphflowtransportPoint::to_string(Self) -> String
+pub fn GraphflowtransportPoint::x(Self) -> Double
+pub fn GraphflowtransportPoint::y(Self) -> Double
+pub fn GraphflowtransportPoint::z(Self) -> Double
+
+pub(all) struct GraphflowtransportRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowtransportRange::add(Self, Self) -> Self
+pub fn GraphflowtransportRange::copy(Self) -> Self
+pub fn GraphflowtransportRange::fill(Self, Double) -> Self
+pub fn GraphflowtransportRange::get(Self, Int32) -> Double
+pub fn GraphflowtransportRange::len(Self) -> Int32
+pub fn GraphflowtransportRange::max(Self) -> Double
+pub fn GraphflowtransportRange::mean(Self) -> Double
+pub fn GraphflowtransportRange::min(Self) -> Double
+pub fn GraphflowtransportRange::scale(Self, Double) -> Self
+pub fn GraphflowtransportRange::set(Self, Int32, Double) -> Self
+pub fn GraphflowtransportRange::sum(Self) -> Double
+pub fn GraphflowtransportRange::to_string(Self) -> String
+
+pub(all) struct GraphflowtransportSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphflowtransportSeries::add(Self, Self) -> Self
+pub fn GraphflowtransportSeries::cumsum(Self) -> Self
+pub fn GraphflowtransportSeries::len(Self) -> Int32
+pub fn GraphflowtransportSeries::max(Self) -> Double
+pub fn GraphflowtransportSeries::mean(Self) -> Double
+pub fn GraphflowtransportSeries::median(Self) -> Double
+pub fn GraphflowtransportSeries::min(Self) -> Double
+pub fn GraphflowtransportSeries::normalize(Self) -> Self
+pub fn GraphflowtransportSeries::range(Self) -> Double
+pub fn GraphflowtransportSeries::scale(Self, Double) -> Self
+pub fn GraphflowtransportSeries::std(Self) -> Double
+pub fn GraphflowtransportSeries::sub(Self, Self) -> Self
+pub fn GraphflowtransportSeries::sum(Self) -> Double
+pub fn GraphflowtransportSeries::to_string(Self) -> String
+pub fn GraphflowtransportSeries::variance(Self) -> Double
+
+pub(all) struct GraphflowtransportSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowtransportSlice::add(Self, Self) -> Self
+pub fn GraphflowtransportSlice::copy(Self) -> Self
+pub fn GraphflowtransportSlice::fill(Self, Double) -> Self
+pub fn GraphflowtransportSlice::get(Self, Int32) -> Double
+pub fn GraphflowtransportSlice::len(Self) -> Int32
+pub fn GraphflowtransportSlice::max(Self) -> Double
+pub fn GraphflowtransportSlice::mean(Self) -> Double
+pub fn GraphflowtransportSlice::min(Self) -> Double
+pub fn GraphflowtransportSlice::scale(Self, Double) -> Self
+pub fn GraphflowtransportSlice::set(Self, Int32, Double) -> Self
+pub fn GraphflowtransportSlice::sum(Self) -> Double
+pub fn GraphflowtransportSlice::to_string(Self) -> String
+
+pub(all) struct GraphflowtransportTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowtransportTable::add(Self, Self) -> Self
+pub fn GraphflowtransportTable::copy(Self) -> Self
+pub fn GraphflowtransportTable::fill(Self, Double) -> Self
+pub fn GraphflowtransportTable::get(Self, Int32) -> Double
+pub fn GraphflowtransportTable::len(Self) -> Int32
+pub fn GraphflowtransportTable::max(Self) -> Double
+pub fn GraphflowtransportTable::mean(Self) -> Double
+pub fn GraphflowtransportTable::min(Self) -> Double
+pub fn GraphflowtransportTable::scale(Self, Double) -> Self
+pub fn GraphflowtransportTable::set(Self, Int32, Double) -> Self
+pub fn GraphflowtransportTable::sum(Self) -> Double
+pub fn GraphflowtransportTable::to_string(Self) -> String
+
+pub(all) struct GraphflowtransportVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphflowtransportVector::add(Self, Self) -> Self
+pub fn GraphflowtransportVector::dist(Self, Self) -> Double
+pub fn GraphflowtransportVector::dot(Self, Self) -> Double
+pub fn GraphflowtransportVector::norm(Self) -> Double
+pub fn GraphflowtransportVector::normalize(Self) -> Self
+pub fn GraphflowtransportVector::scale(Self, Double) -> Self
+pub fn GraphflowtransportVector::sub(Self, Self) -> Self
+pub fn GraphflowtransportVector::to_string(Self) -> String
+
+pub(all) struct GraphflowtransportView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphflowtransportView::add(Self, Self) -> Self
+pub fn GraphflowtransportView::copy(Self) -> Self
+pub fn GraphflowtransportView::fill(Self, Double) -> Self
+pub fn GraphflowtransportView::get(Self, Int32) -> Double
+pub fn GraphflowtransportView::len(Self) -> Int32
+pub fn GraphflowtransportView::max(Self) -> Double
+pub fn GraphflowtransportView::mean(Self) -> Double
+pub fn GraphflowtransportView::min(Self) -> Double
+pub fn GraphflowtransportView::scale(Self, Double) -> Self
+pub fn GraphflowtransportView::set(Self, Int32, Double) -> Self
+pub fn GraphflowtransportView::sum(Self) -> Double
+pub fn GraphflowtransportView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

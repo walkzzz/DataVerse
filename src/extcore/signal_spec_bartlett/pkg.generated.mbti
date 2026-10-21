@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_spec_bartlett"
+
+// Values
+pub fn signal_spec_bartlett_buffer_make(Int32) -> SignalspecbartlettBuffer
+
+pub fn signal_spec_bartlett_cluster_make(Int32) -> SignalspecbartlettCluster
+
+pub fn signal_spec_bartlett_cursor_make(Int32) -> SignalspecbartlettCursor
+
+pub fn signal_spec_bartlett_edge_make(Int32) -> SignalspecbartlettEdge
+
+pub fn signal_spec_bartlett_frame_make(Int32) -> SignalspecbartlettFrame
+
+pub fn signal_spec_bartlett_graphn_make(Int32) -> SignalspecbartlettGraphN
+
+pub fn signal_spec_bartlett_layer_make(Int32) -> SignalspecbartlettLayer
+
+pub fn signal_spec_bartlett_make_matrix(Int32, Int32, Double) -> SignalspecbartlettMatrix
+
+pub fn signal_spec_bartlett_make_point(Double, Double) -> SignalspecbartlettPoint
+
+pub fn signal_spec_bartlett_make_point3(Double, Double, Double) -> SignalspecbartlettPoint
+
+pub fn signal_spec_bartlett_make_series(Array[Double], String) -> SignalspecbartlettSeries
+
+pub fn signal_spec_bartlett_make_vector(Array[Double]) -> SignalspecbartlettVector
+
+pub fn signal_spec_bartlett_matrix_identity(Int32) -> SignalspecbartlettMatrix
+
+pub fn signal_spec_bartlett_model_make(Int32) -> SignalspecbartlettModel
+
+pub fn signal_spec_bartlett_node_make(Int32) -> SignalspecbartlettNode
+
+pub fn signal_spec_bartlett_path_make(Int32) -> SignalspecbartlettPath
+
+pub fn signal_spec_bartlett_range_make(Int32) -> SignalspecbartlettRange
+
+pub fn signal_spec_bartlett_slice_make(Int32) -> SignalspecbartlettSlice
+
+pub fn signal_spec_bartlett_table_make(Int32) -> SignalspecbartlettTable
+
+pub fn signal_spec_bartlett_vector_zero(Int32) -> SignalspecbartlettVector
+
+pub fn signal_spec_bartlett_view_make(Int32) -> SignalspecbartlettView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalspecbartlettBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecbartlettBuffer::add(Self, Self) -> Self
+pub fn SignalspecbartlettBuffer::copy(Self) -> Self
+pub fn SignalspecbartlettBuffer::fill(Self, Double) -> Self
+pub fn SignalspecbartlettBuffer::get(Self, Int32) -> Double
+pub fn SignalspecbartlettBuffer::len(Self) -> Int32
+pub fn SignalspecbartlettBuffer::max(Self) -> Double
+pub fn SignalspecbartlettBuffer::mean(Self) -> Double
+pub fn SignalspecbartlettBuffer::min(Self) -> Double
+pub fn SignalspecbartlettBuffer::scale(Self, Double) -> Self
+pub fn SignalspecbartlettBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalspecbartlettBuffer::sum(Self) -> Double
+pub fn SignalspecbartlettBuffer::to_string(Self) -> String
+
+pub(all) struct SignalspecbartlettCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecbartlettCluster::add(Self, Self) -> Self
+pub fn SignalspecbartlettCluster::copy(Self) -> Self
+pub fn SignalspecbartlettCluster::fill(Self, Double) -> Self
+pub fn SignalspecbartlettCluster::get(Self, Int32) -> Double
+pub fn SignalspecbartlettCluster::len(Self) -> Int32
+pub fn SignalspecbartlettCluster::max(Self) -> Double
+pub fn SignalspecbartlettCluster::mean(Self) -> Double
+pub fn SignalspecbartlettCluster::min(Self) -> Double
+pub fn SignalspecbartlettCluster::scale(Self, Double) -> Self
+pub fn SignalspecbartlettCluster::set(Self, Int32, Double) -> Self
+pub fn SignalspecbartlettCluster::sum(Self) -> Double
+pub fn SignalspecbartlettCluster::to_string(Self) -> String
+
+pub(all) struct SignalspecbartlettCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecbartlettCursor::add(Self, Self) -> Self
+pub fn SignalspecbartlettCursor::copy(Self) -> Self
+pub fn SignalspecbartlettCursor::fill(Self, Double) -> Self
+pub fn SignalspecbartlettCursor::get(Self, Int32) -> Double
+pub fn SignalspecbartlettCursor::len(Self) -> Int32
+pub fn SignalspecbartlettCursor::max(Self) -> Double
+pub fn SignalspecbartlettCursor::mean(Self) -> Double
+pub fn SignalspecbartlettCursor::min(Self) -> Double
+pub fn SignalspecbartlettCursor::scale(Self, Double) -> Self
+pub fn SignalspecbartlettCursor::set(Self, Int32, Double) -> Self
+pub fn SignalspecbartlettCursor::sum(Self) -> Double
+pub fn SignalspecbartlettCursor::to_string(Self) -> String
+
+pub(all) struct SignalspecbartlettEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecbartlettEdge::add(Self, Self) -> Self
+pub fn SignalspecbartlettEdge::copy(Self) -> Self
+pub fn SignalspecbartlettEdge::fill(Self, Double) -> Self
+pub fn SignalspecbartlettEdge::get(Self, Int32) -> Double
+pub fn SignalspecbartlettEdge::len(Self) -> Int32
+pub fn SignalspecbartlettEdge::max(Self) -> Double
+pub fn SignalspecbartlettEdge::mean(Self) -> Double
+pub fn SignalspecbartlettEdge::min(Self) -> Double
+pub fn SignalspecbartlettEdge::scale(Self, Double) -> Self
+pub fn SignalspecbartlettEdge::set(Self, Int32, Double) -> Self
+pub fn SignalspecbartlettEdge::sum(Self) -> Double
+pub fn SignalspecbartlettEdge::to_string(Self) -> String
+
+pub(all) struct SignalspecbartlettFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecbartlettFrame::add(Self, Self) -> Self
+pub fn SignalspecbartlettFrame::copy(Self) -> Self
+pub fn SignalspecbartlettFrame::fill(Self, Double) -> Self
+pub fn SignalspecbartlettFrame::get(Self, Int32) -> Double
+pub fn SignalspecbartlettFrame::len(Self) -> Int32
+pub fn SignalspecbartlettFrame::max(Self) -> Double
+pub fn SignalspecbartlettFrame::mean(Self) -> Double
+pub fn SignalspecbartlettFrame::min(Self) -> Double
+pub fn SignalspecbartlettFrame::scale(Self, Double) -> Self
+pub fn SignalspecbartlettFrame::set(Self, Int32, Double) -> Self
+pub fn SignalspecbartlettFrame::sum(Self) -> Double
+pub fn SignalspecbartlettFrame::to_string(Self) -> String
+
+pub(all) struct SignalspecbartlettGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecbartlettGraphN::add(Self, Self) -> Self
+pub fn SignalspecbartlettGraphN::copy(Self) -> Self
+pub fn SignalspecbartlettGraphN::fill(Self, Double) -> Self
+pub fn SignalspecbartlettGraphN::get(Self, Int32) -> Double
+pub fn SignalspecbartlettGraphN::len(Self) -> Int32
+pub fn SignalspecbartlettGraphN::max(Self) -> Double
+pub fn SignalspecbartlettGraphN::mean(Self) -> Double
+pub fn SignalspecbartlettGraphN::min(Self) -> Double
+pub fn SignalspecbartlettGraphN::scale(Self, Double) -> Self
+pub fn SignalspecbartlettGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalspecbartlettGraphN::sum(Self) -> Double
+pub fn SignalspecbartlettGraphN::to_string(Self) -> String
+
+pub(all) struct SignalspecbartlettLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecbartlettLayer::add(Self, Self) -> Self
+pub fn SignalspecbartlettLayer::copy(Self) -> Self
+pub fn SignalspecbartlettLayer::fill(Self, Double) -> Self
+pub fn SignalspecbartlettLayer::get(Self, Int32) -> Double
+pub fn SignalspecbartlettLayer::len(Self) -> Int32
+pub fn SignalspecbartlettLayer::max(Self) -> Double
+pub fn SignalspecbartlettLayer::mean(Self) -> Double
+pub fn SignalspecbartlettLayer::min(Self) -> Double
+pub fn SignalspecbartlettLayer::scale(Self, Double) -> Self
+pub fn SignalspecbartlettLayer::set(Self, Int32, Double) -> Self
+pub fn SignalspecbartlettLayer::sum(Self) -> Double
+pub fn SignalspecbartlettLayer::to_string(Self) -> String
+
+pub(all) struct SignalspecbartlettMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalspecbartlettMatrix::add(Self, Self) -> Self
+pub fn SignalspecbartlettMatrix::det(Self) -> Double
+pub fn SignalspecbartlettMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalspecbartlettMatrix::multiply(Self, Self) -> Self
+pub fn SignalspecbartlettMatrix::norm(Self) -> Double
+pub fn SignalspecbartlettMatrix::scale(Self, Double) -> Self
+pub fn SignalspecbartlettMatrix::to_string(Self) -> String
+pub fn SignalspecbartlettMatrix::trace(Self) -> Double
+pub fn SignalspecbartlettMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalspecbartlettModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecbartlettModel::add(Self, Self) -> Self
+pub fn SignalspecbartlettModel::copy(Self) -> Self
+pub fn SignalspecbartlettModel::fill(Self, Double) -> Self
+pub fn SignalspecbartlettModel::get(Self, Int32) -> Double
+pub fn SignalspecbartlettModel::len(Self) -> Int32
+pub fn SignalspecbartlettModel::max(Self) -> Double
+pub fn SignalspecbartlettModel::mean(Self) -> Double
+pub fn SignalspecbartlettModel::min(Self) -> Double
+pub fn SignalspecbartlettModel::scale(Self, Double) -> Self
+pub fn SignalspecbartlettModel::set(Self, Int32, Double) -> Self
+pub fn SignalspecbartlettModel::sum(Self) -> Double
+pub fn SignalspecbartlettModel::to_string(Self) -> String
+
+pub(all) struct SignalspecbartlettNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecbartlettNode::add(Self, Self) -> Self
+pub fn SignalspecbartlettNode::copy(Self) -> Self
+pub fn SignalspecbartlettNode::fill(Self, Double) -> Self
+pub fn SignalspecbartlettNode::get(Self, Int32) -> Double
+pub fn SignalspecbartlettNode::len(Self) -> Int32
+pub fn SignalspecbartlettNode::max(Self) -> Double
+pub fn SignalspecbartlettNode::mean(Self) -> Double
+pub fn SignalspecbartlettNode::min(Self) -> Double
+pub fn SignalspecbartlettNode::scale(Self, Double) -> Self
+pub fn SignalspecbartlettNode::set(Self, Int32, Double) -> Self
+pub fn SignalspecbartlettNode::sum(Self) -> Double
+pub fn SignalspecbartlettNode::to_string(Self) -> String
+
+pub(all) struct SignalspecbartlettPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecbartlettPath::add(Self, Self) -> Self
+pub fn SignalspecbartlettPath::copy(Self) -> Self
+pub fn SignalspecbartlettPath::fill(Self, Double) -> Self
+pub fn SignalspecbartlettPath::get(Self, Int32) -> Double
+pub fn SignalspecbartlettPath::len(Self) -> Int32
+pub fn SignalspecbartlettPath::max(Self) -> Double
+pub fn SignalspecbartlettPath::mean(Self) -> Double
+pub fn SignalspecbartlettPath::min(Self) -> Double
+pub fn SignalspecbartlettPath::scale(Self, Double) -> Self
+pub fn SignalspecbartlettPath::set(Self, Int32, Double) -> Self
+pub fn SignalspecbartlettPath::sum(Self) -> Double
+pub fn SignalspecbartlettPath::to_string(Self) -> String
+
+pub(all) struct SignalspecbartlettPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalspecbartlettPoint::add(Self, Self) -> Self
+pub fn SignalspecbartlettPoint::cross(Self, Self) -> Self
+pub fn SignalspecbartlettPoint::dist(Self, Self) -> Double
+pub fn SignalspecbartlettPoint::dot(Self, Self) -> Double
+pub fn SignalspecbartlettPoint::label(Self) -> Int32
+pub fn SignalspecbartlettPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalspecbartlettPoint::mid(Self, Self) -> Self
+pub fn SignalspecbartlettPoint::negate(Self) -> Self
+pub fn SignalspecbartlettPoint::norm(Self) -> Double
+pub fn SignalspecbartlettPoint::normalize(Self) -> Self
+pub fn SignalspecbartlettPoint::scale(Self, Double) -> Self
+pub fn SignalspecbartlettPoint::sub(Self, Self) -> Self
+pub fn SignalspecbartlettPoint::to_string(Self) -> String
+pub fn SignalspecbartlettPoint::x(Self) -> Double
+pub fn SignalspecbartlettPoint::y(Self) -> Double
+pub fn SignalspecbartlettPoint::z(Self) -> Double
+
+pub(all) struct SignalspecbartlettRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecbartlettRange::add(Self, Self) -> Self
+pub fn SignalspecbartlettRange::copy(Self) -> Self
+pub fn SignalspecbartlettRange::fill(Self, Double) -> Self
+pub fn SignalspecbartlettRange::get(Self, Int32) -> Double
+pub fn SignalspecbartlettRange::len(Self) -> Int32
+pub fn SignalspecbartlettRange::max(Self) -> Double
+pub fn SignalspecbartlettRange::mean(Self) -> Double
+pub fn SignalspecbartlettRange::min(Self) -> Double
+pub fn SignalspecbartlettRange::scale(Self, Double) -> Self
+pub fn SignalspecbartlettRange::set(Self, Int32, Double) -> Self
+pub fn SignalspecbartlettRange::sum(Self) -> Double
+pub fn SignalspecbartlettRange::to_string(Self) -> String
+
+pub(all) struct SignalspecbartlettSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalspecbartlettSeries::add(Self, Self) -> Self
+pub fn SignalspecbartlettSeries::cumsum(Self) -> Self
+pub fn SignalspecbartlettSeries::len(Self) -> Int32
+pub fn SignalspecbartlettSeries::max(Self) -> Double
+pub fn SignalspecbartlettSeries::mean(Self) -> Double
+pub fn SignalspecbartlettSeries::median(Self) -> Double
+pub fn SignalspecbartlettSeries::min(Self) -> Double
+pub fn SignalspecbartlettSeries::normalize(Self) -> Self
+pub fn SignalspecbartlettSeries::range(Self) -> Double
+pub fn SignalspecbartlettSeries::scale(Self, Double) -> Self
+pub fn SignalspecbartlettSeries::std(Self) -> Double
+pub fn SignalspecbartlettSeries::sub(Self, Self) -> Self
+pub fn SignalspecbartlettSeries::sum(Self) -> Double
+pub fn SignalspecbartlettSeries::to_string(Self) -> String
+pub fn SignalspecbartlettSeries::variance(Self) -> Double
+
+pub(all) struct SignalspecbartlettSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecbartlettSlice::add(Self, Self) -> Self
+pub fn SignalspecbartlettSlice::copy(Self) -> Self
+pub fn SignalspecbartlettSlice::fill(Self, Double) -> Self
+pub fn SignalspecbartlettSlice::get(Self, Int32) -> Double
+pub fn SignalspecbartlettSlice::len(Self) -> Int32
+pub fn SignalspecbartlettSlice::max(Self) -> Double
+pub fn SignalspecbartlettSlice::mean(Self) -> Double
+pub fn SignalspecbartlettSlice::min(Self) -> Double
+pub fn SignalspecbartlettSlice::scale(Self, Double) -> Self
+pub fn SignalspecbartlettSlice::set(Self, Int32, Double) -> Self
+pub fn SignalspecbartlettSlice::sum(Self) -> Double
+pub fn SignalspecbartlettSlice::to_string(Self) -> String
+
+pub(all) struct SignalspecbartlettTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecbartlettTable::add(Self, Self) -> Self
+pub fn SignalspecbartlettTable::copy(Self) -> Self
+pub fn SignalspecbartlettTable::fill(Self, Double) -> Self
+pub fn SignalspecbartlettTable::get(Self, Int32) -> Double
+pub fn SignalspecbartlettTable::len(Self) -> Int32
+pub fn SignalspecbartlettTable::max(Self) -> Double
+pub fn SignalspecbartlettTable::mean(Self) -> Double
+pub fn SignalspecbartlettTable::min(Self) -> Double
+pub fn SignalspecbartlettTable::scale(Self, Double) -> Self
+pub fn SignalspecbartlettTable::set(Self, Int32, Double) -> Self
+pub fn SignalspecbartlettTable::sum(Self) -> Double
+pub fn SignalspecbartlettTable::to_string(Self) -> String
+
+pub(all) struct SignalspecbartlettVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalspecbartlettVector::add(Self, Self) -> Self
+pub fn SignalspecbartlettVector::dist(Self, Self) -> Double
+pub fn SignalspecbartlettVector::dot(Self, Self) -> Double
+pub fn SignalspecbartlettVector::norm(Self) -> Double
+pub fn SignalspecbartlettVector::normalize(Self) -> Self
+pub fn SignalspecbartlettVector::scale(Self, Double) -> Self
+pub fn SignalspecbartlettVector::sub(Self, Self) -> Self
+pub fn SignalspecbartlettVector::to_string(Self) -> String
+
+pub(all) struct SignalspecbartlettView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecbartlettView::add(Self, Self) -> Self
+pub fn SignalspecbartlettView::copy(Self) -> Self
+pub fn SignalspecbartlettView::fill(Self, Double) -> Self
+pub fn SignalspecbartlettView::get(Self, Int32) -> Double
+pub fn SignalspecbartlettView::len(Self) -> Int32
+pub fn SignalspecbartlettView::max(Self) -> Double
+pub fn SignalspecbartlettView::mean(Self) -> Double
+pub fn SignalspecbartlettView::min(Self) -> Double
+pub fn SignalspecbartlettView::scale(Self, Double) -> Self
+pub fn SignalspecbartlettView::set(Self, Int32, Double) -> Self
+pub fn SignalspecbartlettView::sum(Self) -> Double
+pub fn SignalspecbartlettView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

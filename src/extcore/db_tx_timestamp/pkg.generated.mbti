@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_tx_timestamp"
+
+// Values
+pub fn db_tx_timestamp_buffer_make(Int32) -> DbtxtimestampBuffer
+
+pub fn db_tx_timestamp_cluster_make(Int32) -> DbtxtimestampCluster
+
+pub fn db_tx_timestamp_cursor_make(Int32) -> DbtxtimestampCursor
+
+pub fn db_tx_timestamp_edge_make(Int32) -> DbtxtimestampEdge
+
+pub fn db_tx_timestamp_frame_make(Int32) -> DbtxtimestampFrame
+
+pub fn db_tx_timestamp_graphn_make(Int32) -> DbtxtimestampGraphN
+
+pub fn db_tx_timestamp_layer_make(Int32) -> DbtxtimestampLayer
+
+pub fn db_tx_timestamp_make_matrix(Int32, Int32, Double) -> DbtxtimestampMatrix
+
+pub fn db_tx_timestamp_make_point(Double, Double) -> DbtxtimestampPoint
+
+pub fn db_tx_timestamp_make_point3(Double, Double, Double) -> DbtxtimestampPoint
+
+pub fn db_tx_timestamp_make_series(Array[Double], String) -> DbtxtimestampSeries
+
+pub fn db_tx_timestamp_make_vector(Array[Double]) -> DbtxtimestampVector
+
+pub fn db_tx_timestamp_matrix_identity(Int32) -> DbtxtimestampMatrix
+
+pub fn db_tx_timestamp_model_make(Int32) -> DbtxtimestampModel
+
+pub fn db_tx_timestamp_node_make(Int32) -> DbtxtimestampNode
+
+pub fn db_tx_timestamp_path_make(Int32) -> DbtxtimestampPath
+
+pub fn db_tx_timestamp_range_make(Int32) -> DbtxtimestampRange
+
+pub fn db_tx_timestamp_slice_make(Int32) -> DbtxtimestampSlice
+
+pub fn db_tx_timestamp_table_make(Int32) -> DbtxtimestampTable
+
+pub fn db_tx_timestamp_vector_zero(Int32) -> DbtxtimestampVector
+
+pub fn db_tx_timestamp_view_make(Int32) -> DbtxtimestampView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbtxtimestampBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxtimestampBuffer::add(Self, Self) -> Self
+pub fn DbtxtimestampBuffer::copy(Self) -> Self
+pub fn DbtxtimestampBuffer::fill(Self, Double) -> Self
+pub fn DbtxtimestampBuffer::get(Self, Int32) -> Double
+pub fn DbtxtimestampBuffer::len(Self) -> Int32
+pub fn DbtxtimestampBuffer::max(Self) -> Double
+pub fn DbtxtimestampBuffer::mean(Self) -> Double
+pub fn DbtxtimestampBuffer::min(Self) -> Double
+pub fn DbtxtimestampBuffer::scale(Self, Double) -> Self
+pub fn DbtxtimestampBuffer::set(Self, Int32, Double) -> Self
+pub fn DbtxtimestampBuffer::sum(Self) -> Double
+pub fn DbtxtimestampBuffer::to_string(Self) -> String
+
+pub(all) struct DbtxtimestampCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxtimestampCluster::add(Self, Self) -> Self
+pub fn DbtxtimestampCluster::copy(Self) -> Self
+pub fn DbtxtimestampCluster::fill(Self, Double) -> Self
+pub fn DbtxtimestampCluster::get(Self, Int32) -> Double
+pub fn DbtxtimestampCluster::len(Self) -> Int32
+pub fn DbtxtimestampCluster::max(Self) -> Double
+pub fn DbtxtimestampCluster::mean(Self) -> Double
+pub fn DbtxtimestampCluster::min(Self) -> Double
+pub fn DbtxtimestampCluster::scale(Self, Double) -> Self
+pub fn DbtxtimestampCluster::set(Self, Int32, Double) -> Self
+pub fn DbtxtimestampCluster::sum(Self) -> Double
+pub fn DbtxtimestampCluster::to_string(Self) -> String
+
+pub(all) struct DbtxtimestampCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxtimestampCursor::add(Self, Self) -> Self
+pub fn DbtxtimestampCursor::copy(Self) -> Self
+pub fn DbtxtimestampCursor::fill(Self, Double) -> Self
+pub fn DbtxtimestampCursor::get(Self, Int32) -> Double
+pub fn DbtxtimestampCursor::len(Self) -> Int32
+pub fn DbtxtimestampCursor::max(Self) -> Double
+pub fn DbtxtimestampCursor::mean(Self) -> Double
+pub fn DbtxtimestampCursor::min(Self) -> Double
+pub fn DbtxtimestampCursor::scale(Self, Double) -> Self
+pub fn DbtxtimestampCursor::set(Self, Int32, Double) -> Self
+pub fn DbtxtimestampCursor::sum(Self) -> Double
+pub fn DbtxtimestampCursor::to_string(Self) -> String
+
+pub(all) struct DbtxtimestampEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxtimestampEdge::add(Self, Self) -> Self
+pub fn DbtxtimestampEdge::copy(Self) -> Self
+pub fn DbtxtimestampEdge::fill(Self, Double) -> Self
+pub fn DbtxtimestampEdge::get(Self, Int32) -> Double
+pub fn DbtxtimestampEdge::len(Self) -> Int32
+pub fn DbtxtimestampEdge::max(Self) -> Double
+pub fn DbtxtimestampEdge::mean(Self) -> Double
+pub fn DbtxtimestampEdge::min(Self) -> Double
+pub fn DbtxtimestampEdge::scale(Self, Double) -> Self
+pub fn DbtxtimestampEdge::set(Self, Int32, Double) -> Self
+pub fn DbtxtimestampEdge::sum(Self) -> Double
+pub fn DbtxtimestampEdge::to_string(Self) -> String
+
+pub(all) struct DbtxtimestampFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxtimestampFrame::add(Self, Self) -> Self
+pub fn DbtxtimestampFrame::copy(Self) -> Self
+pub fn DbtxtimestampFrame::fill(Self, Double) -> Self
+pub fn DbtxtimestampFrame::get(Self, Int32) -> Double
+pub fn DbtxtimestampFrame::len(Self) -> Int32
+pub fn DbtxtimestampFrame::max(Self) -> Double
+pub fn DbtxtimestampFrame::mean(Self) -> Double
+pub fn DbtxtimestampFrame::min(Self) -> Double
+pub fn DbtxtimestampFrame::scale(Self, Double) -> Self
+pub fn DbtxtimestampFrame::set(Self, Int32, Double) -> Self
+pub fn DbtxtimestampFrame::sum(Self) -> Double
+pub fn DbtxtimestampFrame::to_string(Self) -> String
+
+pub(all) struct DbtxtimestampGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxtimestampGraphN::add(Self, Self) -> Self
+pub fn DbtxtimestampGraphN::copy(Self) -> Self
+pub fn DbtxtimestampGraphN::fill(Self, Double) -> Self
+pub fn DbtxtimestampGraphN::get(Self, Int32) -> Double
+pub fn DbtxtimestampGraphN::len(Self) -> Int32
+pub fn DbtxtimestampGraphN::max(Self) -> Double
+pub fn DbtxtimestampGraphN::mean(Self) -> Double
+pub fn DbtxtimestampGraphN::min(Self) -> Double
+pub fn DbtxtimestampGraphN::scale(Self, Double) -> Self
+pub fn DbtxtimestampGraphN::set(Self, Int32, Double) -> Self
+pub fn DbtxtimestampGraphN::sum(Self) -> Double
+pub fn DbtxtimestampGraphN::to_string(Self) -> String
+
+pub(all) struct DbtxtimestampLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxtimestampLayer::add(Self, Self) -> Self
+pub fn DbtxtimestampLayer::copy(Self) -> Self
+pub fn DbtxtimestampLayer::fill(Self, Double) -> Self
+pub fn DbtxtimestampLayer::get(Self, Int32) -> Double
+pub fn DbtxtimestampLayer::len(Self) -> Int32
+pub fn DbtxtimestampLayer::max(Self) -> Double
+pub fn DbtxtimestampLayer::mean(Self) -> Double
+pub fn DbtxtimestampLayer::min(Self) -> Double
+pub fn DbtxtimestampLayer::scale(Self, Double) -> Self
+pub fn DbtxtimestampLayer::set(Self, Int32, Double) -> Self
+pub fn DbtxtimestampLayer::sum(Self) -> Double
+pub fn DbtxtimestampLayer::to_string(Self) -> String
+
+pub(all) struct DbtxtimestampMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbtxtimestampMatrix::add(Self, Self) -> Self
+pub fn DbtxtimestampMatrix::det(Self) -> Double
+pub fn DbtxtimestampMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbtxtimestampMatrix::multiply(Self, Self) -> Self
+pub fn DbtxtimestampMatrix::norm(Self) -> Double
+pub fn DbtxtimestampMatrix::scale(Self, Double) -> Self
+pub fn DbtxtimestampMatrix::to_string(Self) -> String
+pub fn DbtxtimestampMatrix::trace(Self) -> Double
+pub fn DbtxtimestampMatrix::transpose(Self) -> Self
+
+pub(all) struct DbtxtimestampModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxtimestampModel::add(Self, Self) -> Self
+pub fn DbtxtimestampModel::copy(Self) -> Self
+pub fn DbtxtimestampModel::fill(Self, Double) -> Self
+pub fn DbtxtimestampModel::get(Self, Int32) -> Double
+pub fn DbtxtimestampModel::len(Self) -> Int32
+pub fn DbtxtimestampModel::max(Self) -> Double
+pub fn DbtxtimestampModel::mean(Self) -> Double
+pub fn DbtxtimestampModel::min(Self) -> Double
+pub fn DbtxtimestampModel::scale(Self, Double) -> Self
+pub fn DbtxtimestampModel::set(Self, Int32, Double) -> Self
+pub fn DbtxtimestampModel::sum(Self) -> Double
+pub fn DbtxtimestampModel::to_string(Self) -> String
+
+pub(all) struct DbtxtimestampNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxtimestampNode::add(Self, Self) -> Self
+pub fn DbtxtimestampNode::copy(Self) -> Self
+pub fn DbtxtimestampNode::fill(Self, Double) -> Self
+pub fn DbtxtimestampNode::get(Self, Int32) -> Double
+pub fn DbtxtimestampNode::len(Self) -> Int32
+pub fn DbtxtimestampNode::max(Self) -> Double
+pub fn DbtxtimestampNode::mean(Self) -> Double
+pub fn DbtxtimestampNode::min(Self) -> Double
+pub fn DbtxtimestampNode::scale(Self, Double) -> Self
+pub fn DbtxtimestampNode::set(Self, Int32, Double) -> Self
+pub fn DbtxtimestampNode::sum(Self) -> Double
+pub fn DbtxtimestampNode::to_string(Self) -> String
+
+pub(all) struct DbtxtimestampPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxtimestampPath::add(Self, Self) -> Self
+pub fn DbtxtimestampPath::copy(Self) -> Self
+pub fn DbtxtimestampPath::fill(Self, Double) -> Self
+pub fn DbtxtimestampPath::get(Self, Int32) -> Double
+pub fn DbtxtimestampPath::len(Self) -> Int32
+pub fn DbtxtimestampPath::max(Self) -> Double
+pub fn DbtxtimestampPath::mean(Self) -> Double
+pub fn DbtxtimestampPath::min(Self) -> Double
+pub fn DbtxtimestampPath::scale(Self, Double) -> Self
+pub fn DbtxtimestampPath::set(Self, Int32, Double) -> Self
+pub fn DbtxtimestampPath::sum(Self) -> Double
+pub fn DbtxtimestampPath::to_string(Self) -> String
+
+pub(all) struct DbtxtimestampPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbtxtimestampPoint::add(Self, Self) -> Self
+pub fn DbtxtimestampPoint::cross(Self, Self) -> Self
+pub fn DbtxtimestampPoint::dist(Self, Self) -> Double
+pub fn DbtxtimestampPoint::dot(Self, Self) -> Double
+pub fn DbtxtimestampPoint::label(Self) -> Int32
+pub fn DbtxtimestampPoint::lerp(Self, Self, Double) -> Self
+pub fn DbtxtimestampPoint::mid(Self, Self) -> Self
+pub fn DbtxtimestampPoint::negate(Self) -> Self
+pub fn DbtxtimestampPoint::norm(Self) -> Double
+pub fn DbtxtimestampPoint::normalize(Self) -> Self
+pub fn DbtxtimestampPoint::scale(Self, Double) -> Self
+pub fn DbtxtimestampPoint::sub(Self, Self) -> Self
+pub fn DbtxtimestampPoint::to_string(Self) -> String
+pub fn DbtxtimestampPoint::x(Self) -> Double
+pub fn DbtxtimestampPoint::y(Self) -> Double
+pub fn DbtxtimestampPoint::z(Self) -> Double
+
+pub(all) struct DbtxtimestampRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxtimestampRange::add(Self, Self) -> Self
+pub fn DbtxtimestampRange::copy(Self) -> Self
+pub fn DbtxtimestampRange::fill(Self, Double) -> Self
+pub fn DbtxtimestampRange::get(Self, Int32) -> Double
+pub fn DbtxtimestampRange::len(Self) -> Int32
+pub fn DbtxtimestampRange::max(Self) -> Double
+pub fn DbtxtimestampRange::mean(Self) -> Double
+pub fn DbtxtimestampRange::min(Self) -> Double
+pub fn DbtxtimestampRange::scale(Self, Double) -> Self
+pub fn DbtxtimestampRange::set(Self, Int32, Double) -> Self
+pub fn DbtxtimestampRange::sum(Self) -> Double
+pub fn DbtxtimestampRange::to_string(Self) -> String
+
+pub(all) struct DbtxtimestampSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbtxtimestampSeries::add(Self, Self) -> Self
+pub fn DbtxtimestampSeries::cumsum(Self) -> Self
+pub fn DbtxtimestampSeries::len(Self) -> Int32
+pub fn DbtxtimestampSeries::max(Self) -> Double
+pub fn DbtxtimestampSeries::mean(Self) -> Double
+pub fn DbtxtimestampSeries::median(Self) -> Double
+pub fn DbtxtimestampSeries::min(Self) -> Double
+pub fn DbtxtimestampSeries::normalize(Self) -> Self
+pub fn DbtxtimestampSeries::range(Self) -> Double
+pub fn DbtxtimestampSeries::scale(Self, Double) -> Self
+pub fn DbtxtimestampSeries::std(Self) -> Double
+pub fn DbtxtimestampSeries::sub(Self, Self) -> Self
+pub fn DbtxtimestampSeries::sum(Self) -> Double
+pub fn DbtxtimestampSeries::to_string(Self) -> String
+pub fn DbtxtimestampSeries::variance(Self) -> Double
+
+pub(all) struct DbtxtimestampSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxtimestampSlice::add(Self, Self) -> Self
+pub fn DbtxtimestampSlice::copy(Self) -> Self
+pub fn DbtxtimestampSlice::fill(Self, Double) -> Self
+pub fn DbtxtimestampSlice::get(Self, Int32) -> Double
+pub fn DbtxtimestampSlice::len(Self) -> Int32
+pub fn DbtxtimestampSlice::max(Self) -> Double
+pub fn DbtxtimestampSlice::mean(Self) -> Double
+pub fn DbtxtimestampSlice::min(Self) -> Double
+pub fn DbtxtimestampSlice::scale(Self, Double) -> Self
+pub fn DbtxtimestampSlice::set(Self, Int32, Double) -> Self
+pub fn DbtxtimestampSlice::sum(Self) -> Double
+pub fn DbtxtimestampSlice::to_string(Self) -> String
+
+pub(all) struct DbtxtimestampTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxtimestampTable::add(Self, Self) -> Self
+pub fn DbtxtimestampTable::copy(Self) -> Self
+pub fn DbtxtimestampTable::fill(Self, Double) -> Self
+pub fn DbtxtimestampTable::get(Self, Int32) -> Double
+pub fn DbtxtimestampTable::len(Self) -> Int32
+pub fn DbtxtimestampTable::max(Self) -> Double
+pub fn DbtxtimestampTable::mean(Self) -> Double
+pub fn DbtxtimestampTable::min(Self) -> Double
+pub fn DbtxtimestampTable::scale(Self, Double) -> Self
+pub fn DbtxtimestampTable::set(Self, Int32, Double) -> Self
+pub fn DbtxtimestampTable::sum(Self) -> Double
+pub fn DbtxtimestampTable::to_string(Self) -> String
+
+pub(all) struct DbtxtimestampVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbtxtimestampVector::add(Self, Self) -> Self
+pub fn DbtxtimestampVector::dist(Self, Self) -> Double
+pub fn DbtxtimestampVector::dot(Self, Self) -> Double
+pub fn DbtxtimestampVector::norm(Self) -> Double
+pub fn DbtxtimestampVector::normalize(Self) -> Self
+pub fn DbtxtimestampVector::scale(Self, Double) -> Self
+pub fn DbtxtimestampVector::sub(Self, Self) -> Self
+pub fn DbtxtimestampVector::to_string(Self) -> String
+
+pub(all) struct DbtxtimestampView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxtimestampView::add(Self, Self) -> Self
+pub fn DbtxtimestampView::copy(Self) -> Self
+pub fn DbtxtimestampView::fill(Self, Double) -> Self
+pub fn DbtxtimestampView::get(Self, Int32) -> Double
+pub fn DbtxtimestampView::len(Self) -> Int32
+pub fn DbtxtimestampView::max(Self) -> Double
+pub fn DbtxtimestampView::mean(Self) -> Double
+pub fn DbtxtimestampView::min(Self) -> Double
+pub fn DbtxtimestampView::scale(Self, Double) -> Self
+pub fn DbtxtimestampView::set(Self, Int32, Double) -> Self
+pub fn DbtxtimestampView::sum(Self) -> Double
+pub fn DbtxtimestampView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

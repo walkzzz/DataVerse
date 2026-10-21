@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_compare_heap"
+
+// Values
+pub fn sort_compare_heap_buffer_make(Int32) -> SortcompareheapBuffer
+
+pub fn sort_compare_heap_cluster_make(Int32) -> SortcompareheapCluster
+
+pub fn sort_compare_heap_cursor_make(Int32) -> SortcompareheapCursor
+
+pub fn sort_compare_heap_edge_make(Int32) -> SortcompareheapEdge
+
+pub fn sort_compare_heap_frame_make(Int32) -> SortcompareheapFrame
+
+pub fn sort_compare_heap_graphn_make(Int32) -> SortcompareheapGraphN
+
+pub fn sort_compare_heap_layer_make(Int32) -> SortcompareheapLayer
+
+pub fn sort_compare_heap_make_matrix(Int32, Int32, Double) -> SortcompareheapMatrix
+
+pub fn sort_compare_heap_make_point(Double, Double) -> SortcompareheapPoint
+
+pub fn sort_compare_heap_make_point3(Double, Double, Double) -> SortcompareheapPoint
+
+pub fn sort_compare_heap_make_series(Array[Double], String) -> SortcompareheapSeries
+
+pub fn sort_compare_heap_make_vector(Array[Double]) -> SortcompareheapVector
+
+pub fn sort_compare_heap_matrix_identity(Int32) -> SortcompareheapMatrix
+
+pub fn sort_compare_heap_model_make(Int32) -> SortcompareheapModel
+
+pub fn sort_compare_heap_node_make(Int32) -> SortcompareheapNode
+
+pub fn sort_compare_heap_path_make(Int32) -> SortcompareheapPath
+
+pub fn sort_compare_heap_range_make(Int32) -> SortcompareheapRange
+
+pub fn sort_compare_heap_slice_make(Int32) -> SortcompareheapSlice
+
+pub fn sort_compare_heap_table_make(Int32) -> SortcompareheapTable
+
+pub fn sort_compare_heap_vector_zero(Int32) -> SortcompareheapVector
+
+pub fn sort_compare_heap_view_make(Int32) -> SortcompareheapView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortcompareheapBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareheapBuffer::add(Self, Self) -> Self
+pub fn SortcompareheapBuffer::copy(Self) -> Self
+pub fn SortcompareheapBuffer::fill(Self, Double) -> Self
+pub fn SortcompareheapBuffer::get(Self, Int32) -> Double
+pub fn SortcompareheapBuffer::len(Self) -> Int32
+pub fn SortcompareheapBuffer::max(Self) -> Double
+pub fn SortcompareheapBuffer::mean(Self) -> Double
+pub fn SortcompareheapBuffer::min(Self) -> Double
+pub fn SortcompareheapBuffer::scale(Self, Double) -> Self
+pub fn SortcompareheapBuffer::set(Self, Int32, Double) -> Self
+pub fn SortcompareheapBuffer::sum(Self) -> Double
+pub fn SortcompareheapBuffer::to_string(Self) -> String
+
+pub(all) struct SortcompareheapCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareheapCluster::add(Self, Self) -> Self
+pub fn SortcompareheapCluster::copy(Self) -> Self
+pub fn SortcompareheapCluster::fill(Self, Double) -> Self
+pub fn SortcompareheapCluster::get(Self, Int32) -> Double
+pub fn SortcompareheapCluster::len(Self) -> Int32
+pub fn SortcompareheapCluster::max(Self) -> Double
+pub fn SortcompareheapCluster::mean(Self) -> Double
+pub fn SortcompareheapCluster::min(Self) -> Double
+pub fn SortcompareheapCluster::scale(Self, Double) -> Self
+pub fn SortcompareheapCluster::set(Self, Int32, Double) -> Self
+pub fn SortcompareheapCluster::sum(Self) -> Double
+pub fn SortcompareheapCluster::to_string(Self) -> String
+
+pub(all) struct SortcompareheapCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareheapCursor::add(Self, Self) -> Self
+pub fn SortcompareheapCursor::copy(Self) -> Self
+pub fn SortcompareheapCursor::fill(Self, Double) -> Self
+pub fn SortcompareheapCursor::get(Self, Int32) -> Double
+pub fn SortcompareheapCursor::len(Self) -> Int32
+pub fn SortcompareheapCursor::max(Self) -> Double
+pub fn SortcompareheapCursor::mean(Self) -> Double
+pub fn SortcompareheapCursor::min(Self) -> Double
+pub fn SortcompareheapCursor::scale(Self, Double) -> Self
+pub fn SortcompareheapCursor::set(Self, Int32, Double) -> Self
+pub fn SortcompareheapCursor::sum(Self) -> Double
+pub fn SortcompareheapCursor::to_string(Self) -> String
+
+pub(all) struct SortcompareheapEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareheapEdge::add(Self, Self) -> Self
+pub fn SortcompareheapEdge::copy(Self) -> Self
+pub fn SortcompareheapEdge::fill(Self, Double) -> Self
+pub fn SortcompareheapEdge::get(Self, Int32) -> Double
+pub fn SortcompareheapEdge::len(Self) -> Int32
+pub fn SortcompareheapEdge::max(Self) -> Double
+pub fn SortcompareheapEdge::mean(Self) -> Double
+pub fn SortcompareheapEdge::min(Self) -> Double
+pub fn SortcompareheapEdge::scale(Self, Double) -> Self
+pub fn SortcompareheapEdge::set(Self, Int32, Double) -> Self
+pub fn SortcompareheapEdge::sum(Self) -> Double
+pub fn SortcompareheapEdge::to_string(Self) -> String
+
+pub(all) struct SortcompareheapFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareheapFrame::add(Self, Self) -> Self
+pub fn SortcompareheapFrame::copy(Self) -> Self
+pub fn SortcompareheapFrame::fill(Self, Double) -> Self
+pub fn SortcompareheapFrame::get(Self, Int32) -> Double
+pub fn SortcompareheapFrame::len(Self) -> Int32
+pub fn SortcompareheapFrame::max(Self) -> Double
+pub fn SortcompareheapFrame::mean(Self) -> Double
+pub fn SortcompareheapFrame::min(Self) -> Double
+pub fn SortcompareheapFrame::scale(Self, Double) -> Self
+pub fn SortcompareheapFrame::set(Self, Int32, Double) -> Self
+pub fn SortcompareheapFrame::sum(Self) -> Double
+pub fn SortcompareheapFrame::to_string(Self) -> String
+
+pub(all) struct SortcompareheapGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareheapGraphN::add(Self, Self) -> Self
+pub fn SortcompareheapGraphN::copy(Self) -> Self
+pub fn SortcompareheapGraphN::fill(Self, Double) -> Self
+pub fn SortcompareheapGraphN::get(Self, Int32) -> Double
+pub fn SortcompareheapGraphN::len(Self) -> Int32
+pub fn SortcompareheapGraphN::max(Self) -> Double
+pub fn SortcompareheapGraphN::mean(Self) -> Double
+pub fn SortcompareheapGraphN::min(Self) -> Double
+pub fn SortcompareheapGraphN::scale(Self, Double) -> Self
+pub fn SortcompareheapGraphN::set(Self, Int32, Double) -> Self
+pub fn SortcompareheapGraphN::sum(Self) -> Double
+pub fn SortcompareheapGraphN::to_string(Self) -> String
+
+pub(all) struct SortcompareheapLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareheapLayer::add(Self, Self) -> Self
+pub fn SortcompareheapLayer::copy(Self) -> Self
+pub fn SortcompareheapLayer::fill(Self, Double) -> Self
+pub fn SortcompareheapLayer::get(Self, Int32) -> Double
+pub fn SortcompareheapLayer::len(Self) -> Int32
+pub fn SortcompareheapLayer::max(Self) -> Double
+pub fn SortcompareheapLayer::mean(Self) -> Double
+pub fn SortcompareheapLayer::min(Self) -> Double
+pub fn SortcompareheapLayer::scale(Self, Double) -> Self
+pub fn SortcompareheapLayer::set(Self, Int32, Double) -> Self
+pub fn SortcompareheapLayer::sum(Self) -> Double
+pub fn SortcompareheapLayer::to_string(Self) -> String
+
+pub(all) struct SortcompareheapMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortcompareheapMatrix::add(Self, Self) -> Self
+pub fn SortcompareheapMatrix::det(Self) -> Double
+pub fn SortcompareheapMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortcompareheapMatrix::multiply(Self, Self) -> Self
+pub fn SortcompareheapMatrix::norm(Self) -> Double
+pub fn SortcompareheapMatrix::scale(Self, Double) -> Self
+pub fn SortcompareheapMatrix::to_string(Self) -> String
+pub fn SortcompareheapMatrix::trace(Self) -> Double
+pub fn SortcompareheapMatrix::transpose(Self) -> Self
+
+pub(all) struct SortcompareheapModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareheapModel::add(Self, Self) -> Self
+pub fn SortcompareheapModel::copy(Self) -> Self
+pub fn SortcompareheapModel::fill(Self, Double) -> Self
+pub fn SortcompareheapModel::get(Self, Int32) -> Double
+pub fn SortcompareheapModel::len(Self) -> Int32
+pub fn SortcompareheapModel::max(Self) -> Double
+pub fn SortcompareheapModel::mean(Self) -> Double
+pub fn SortcompareheapModel::min(Self) -> Double
+pub fn SortcompareheapModel::scale(Self, Double) -> Self
+pub fn SortcompareheapModel::set(Self, Int32, Double) -> Self
+pub fn SortcompareheapModel::sum(Self) -> Double
+pub fn SortcompareheapModel::to_string(Self) -> String
+
+pub(all) struct SortcompareheapNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareheapNode::add(Self, Self) -> Self
+pub fn SortcompareheapNode::copy(Self) -> Self
+pub fn SortcompareheapNode::fill(Self, Double) -> Self
+pub fn SortcompareheapNode::get(Self, Int32) -> Double
+pub fn SortcompareheapNode::len(Self) -> Int32
+pub fn SortcompareheapNode::max(Self) -> Double
+pub fn SortcompareheapNode::mean(Self) -> Double
+pub fn SortcompareheapNode::min(Self) -> Double
+pub fn SortcompareheapNode::scale(Self, Double) -> Self
+pub fn SortcompareheapNode::set(Self, Int32, Double) -> Self
+pub fn SortcompareheapNode::sum(Self) -> Double
+pub fn SortcompareheapNode::to_string(Self) -> String
+
+pub(all) struct SortcompareheapPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareheapPath::add(Self, Self) -> Self
+pub fn SortcompareheapPath::copy(Self) -> Self
+pub fn SortcompareheapPath::fill(Self, Double) -> Self
+pub fn SortcompareheapPath::get(Self, Int32) -> Double
+pub fn SortcompareheapPath::len(Self) -> Int32
+pub fn SortcompareheapPath::max(Self) -> Double
+pub fn SortcompareheapPath::mean(Self) -> Double
+pub fn SortcompareheapPath::min(Self) -> Double
+pub fn SortcompareheapPath::scale(Self, Double) -> Self
+pub fn SortcompareheapPath::set(Self, Int32, Double) -> Self
+pub fn SortcompareheapPath::sum(Self) -> Double
+pub fn SortcompareheapPath::to_string(Self) -> String
+
+pub(all) struct SortcompareheapPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortcompareheapPoint::add(Self, Self) -> Self
+pub fn SortcompareheapPoint::cross(Self, Self) -> Self
+pub fn SortcompareheapPoint::dist(Self, Self) -> Double
+pub fn SortcompareheapPoint::dot(Self, Self) -> Double
+pub fn SortcompareheapPoint::label(Self) -> Int32
+pub fn SortcompareheapPoint::lerp(Self, Self, Double) -> Self
+pub fn SortcompareheapPoint::mid(Self, Self) -> Self
+pub fn SortcompareheapPoint::negate(Self) -> Self
+pub fn SortcompareheapPoint::norm(Self) -> Double
+pub fn SortcompareheapPoint::normalize(Self) -> Self
+pub fn SortcompareheapPoint::scale(Self, Double) -> Self
+pub fn SortcompareheapPoint::sub(Self, Self) -> Self
+pub fn SortcompareheapPoint::to_string(Self) -> String
+pub fn SortcompareheapPoint::x(Self) -> Double
+pub fn SortcompareheapPoint::y(Self) -> Double
+pub fn SortcompareheapPoint::z(Self) -> Double
+
+pub(all) struct SortcompareheapRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareheapRange::add(Self, Self) -> Self
+pub fn SortcompareheapRange::copy(Self) -> Self
+pub fn SortcompareheapRange::fill(Self, Double) -> Self
+pub fn SortcompareheapRange::get(Self, Int32) -> Double
+pub fn SortcompareheapRange::len(Self) -> Int32
+pub fn SortcompareheapRange::max(Self) -> Double
+pub fn SortcompareheapRange::mean(Self) -> Double
+pub fn SortcompareheapRange::min(Self) -> Double
+pub fn SortcompareheapRange::scale(Self, Double) -> Self
+pub fn SortcompareheapRange::set(Self, Int32, Double) -> Self
+pub fn SortcompareheapRange::sum(Self) -> Double
+pub fn SortcompareheapRange::to_string(Self) -> String
+
+pub(all) struct SortcompareheapSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortcompareheapSeries::add(Self, Self) -> Self
+pub fn SortcompareheapSeries::cumsum(Self) -> Self
+pub fn SortcompareheapSeries::len(Self) -> Int32
+pub fn SortcompareheapSeries::max(Self) -> Double
+pub fn SortcompareheapSeries::mean(Self) -> Double
+pub fn SortcompareheapSeries::median(Self) -> Double
+pub fn SortcompareheapSeries::min(Self) -> Double
+pub fn SortcompareheapSeries::normalize(Self) -> Self
+pub fn SortcompareheapSeries::range(Self) -> Double
+pub fn SortcompareheapSeries::scale(Self, Double) -> Self
+pub fn SortcompareheapSeries::std(Self) -> Double
+pub fn SortcompareheapSeries::sub(Self, Self) -> Self
+pub fn SortcompareheapSeries::sum(Self) -> Double
+pub fn SortcompareheapSeries::to_string(Self) -> String
+pub fn SortcompareheapSeries::variance(Self) -> Double
+
+pub(all) struct SortcompareheapSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareheapSlice::add(Self, Self) -> Self
+pub fn SortcompareheapSlice::copy(Self) -> Self
+pub fn SortcompareheapSlice::fill(Self, Double) -> Self
+pub fn SortcompareheapSlice::get(Self, Int32) -> Double
+pub fn SortcompareheapSlice::len(Self) -> Int32
+pub fn SortcompareheapSlice::max(Self) -> Double
+pub fn SortcompareheapSlice::mean(Self) -> Double
+pub fn SortcompareheapSlice::min(Self) -> Double
+pub fn SortcompareheapSlice::scale(Self, Double) -> Self
+pub fn SortcompareheapSlice::set(Self, Int32, Double) -> Self
+pub fn SortcompareheapSlice::sum(Self) -> Double
+pub fn SortcompareheapSlice::to_string(Self) -> String
+
+pub(all) struct SortcompareheapTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareheapTable::add(Self, Self) -> Self
+pub fn SortcompareheapTable::copy(Self) -> Self
+pub fn SortcompareheapTable::fill(Self, Double) -> Self
+pub fn SortcompareheapTable::get(Self, Int32) -> Double
+pub fn SortcompareheapTable::len(Self) -> Int32
+pub fn SortcompareheapTable::max(Self) -> Double
+pub fn SortcompareheapTable::mean(Self) -> Double
+pub fn SortcompareheapTable::min(Self) -> Double
+pub fn SortcompareheapTable::scale(Self, Double) -> Self
+pub fn SortcompareheapTable::set(Self, Int32, Double) -> Self
+pub fn SortcompareheapTable::sum(Self) -> Double
+pub fn SortcompareheapTable::to_string(Self) -> String
+
+pub(all) struct SortcompareheapVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortcompareheapVector::add(Self, Self) -> Self
+pub fn SortcompareheapVector::dist(Self, Self) -> Double
+pub fn SortcompareheapVector::dot(Self, Self) -> Double
+pub fn SortcompareheapVector::norm(Self) -> Double
+pub fn SortcompareheapVector::normalize(Self) -> Self
+pub fn SortcompareheapVector::scale(Self, Double) -> Self
+pub fn SortcompareheapVector::sub(Self, Self) -> Self
+pub fn SortcompareheapVector::to_string(Self) -> String
+
+pub(all) struct SortcompareheapView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareheapView::add(Self, Self) -> Self
+pub fn SortcompareheapView::copy(Self) -> Self
+pub fn SortcompareheapView::fill(Self, Double) -> Self
+pub fn SortcompareheapView::get(Self, Int32) -> Double
+pub fn SortcompareheapView::len(Self) -> Int32
+pub fn SortcompareheapView::max(Self) -> Double
+pub fn SortcompareheapView::mean(Self) -> Double
+pub fn SortcompareheapView::min(Self) -> Double
+pub fn SortcompareheapView::scale(Self, Double) -> Self
+pub fn SortcompareheapView::set(Self, Int32, Double) -> Self
+pub fn SortcompareheapView::sum(Self) -> Double
+pub fn SortcompareheapView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_tree_spanning"
+
+// Values
+pub fn graph_tree_spanning_buffer_make(Int32) -> GraphtreespanningBuffer
+
+pub fn graph_tree_spanning_cluster_make(Int32) -> GraphtreespanningCluster
+
+pub fn graph_tree_spanning_cursor_make(Int32) -> GraphtreespanningCursor
+
+pub fn graph_tree_spanning_edge_make(Int32) -> GraphtreespanningEdge
+
+pub fn graph_tree_spanning_frame_make(Int32) -> GraphtreespanningFrame
+
+pub fn graph_tree_spanning_graphn_make(Int32) -> GraphtreespanningGraphN
+
+pub fn graph_tree_spanning_layer_make(Int32) -> GraphtreespanningLayer
+
+pub fn graph_tree_spanning_make_matrix(Int32, Int32, Double) -> GraphtreespanningMatrix
+
+pub fn graph_tree_spanning_make_point(Double, Double) -> GraphtreespanningPoint
+
+pub fn graph_tree_spanning_make_point3(Double, Double, Double) -> GraphtreespanningPoint
+
+pub fn graph_tree_spanning_make_series(Array[Double], String) -> GraphtreespanningSeries
+
+pub fn graph_tree_spanning_make_vector(Array[Double]) -> GraphtreespanningVector
+
+pub fn graph_tree_spanning_matrix_identity(Int32) -> GraphtreespanningMatrix
+
+pub fn graph_tree_spanning_model_make(Int32) -> GraphtreespanningModel
+
+pub fn graph_tree_spanning_node_make(Int32) -> GraphtreespanningNode
+
+pub fn graph_tree_spanning_path_make(Int32) -> GraphtreespanningPath
+
+pub fn graph_tree_spanning_range_make(Int32) -> GraphtreespanningRange
+
+pub fn graph_tree_spanning_slice_make(Int32) -> GraphtreespanningSlice
+
+pub fn graph_tree_spanning_table_make(Int32) -> GraphtreespanningTable
+
+pub fn graph_tree_spanning_vector_zero(Int32) -> GraphtreespanningVector
+
+pub fn graph_tree_spanning_view_make(Int32) -> GraphtreespanningView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphtreespanningBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreespanningBuffer::add(Self, Self) -> Self
+pub fn GraphtreespanningBuffer::copy(Self) -> Self
+pub fn GraphtreespanningBuffer::fill(Self, Double) -> Self
+pub fn GraphtreespanningBuffer::get(Self, Int32) -> Double
+pub fn GraphtreespanningBuffer::len(Self) -> Int32
+pub fn GraphtreespanningBuffer::max(Self) -> Double
+pub fn GraphtreespanningBuffer::mean(Self) -> Double
+pub fn GraphtreespanningBuffer::min(Self) -> Double
+pub fn GraphtreespanningBuffer::scale(Self, Double) -> Self
+pub fn GraphtreespanningBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphtreespanningBuffer::sum(Self) -> Double
+pub fn GraphtreespanningBuffer::to_string(Self) -> String
+
+pub(all) struct GraphtreespanningCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreespanningCluster::add(Self, Self) -> Self
+pub fn GraphtreespanningCluster::copy(Self) -> Self
+pub fn GraphtreespanningCluster::fill(Self, Double) -> Self
+pub fn GraphtreespanningCluster::get(Self, Int32) -> Double
+pub fn GraphtreespanningCluster::len(Self) -> Int32
+pub fn GraphtreespanningCluster::max(Self) -> Double
+pub fn GraphtreespanningCluster::mean(Self) -> Double
+pub fn GraphtreespanningCluster::min(Self) -> Double
+pub fn GraphtreespanningCluster::scale(Self, Double) -> Self
+pub fn GraphtreespanningCluster::set(Self, Int32, Double) -> Self
+pub fn GraphtreespanningCluster::sum(Self) -> Double
+pub fn GraphtreespanningCluster::to_string(Self) -> String
+
+pub(all) struct GraphtreespanningCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreespanningCursor::add(Self, Self) -> Self
+pub fn GraphtreespanningCursor::copy(Self) -> Self
+pub fn GraphtreespanningCursor::fill(Self, Double) -> Self
+pub fn GraphtreespanningCursor::get(Self, Int32) -> Double
+pub fn GraphtreespanningCursor::len(Self) -> Int32
+pub fn GraphtreespanningCursor::max(Self) -> Double
+pub fn GraphtreespanningCursor::mean(Self) -> Double
+pub fn GraphtreespanningCursor::min(Self) -> Double
+pub fn GraphtreespanningCursor::scale(Self, Double) -> Self
+pub fn GraphtreespanningCursor::set(Self, Int32, Double) -> Self
+pub fn GraphtreespanningCursor::sum(Self) -> Double
+pub fn GraphtreespanningCursor::to_string(Self) -> String
+
+pub(all) struct GraphtreespanningEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreespanningEdge::add(Self, Self) -> Self
+pub fn GraphtreespanningEdge::copy(Self) -> Self
+pub fn GraphtreespanningEdge::fill(Self, Double) -> Self
+pub fn GraphtreespanningEdge::get(Self, Int32) -> Double
+pub fn GraphtreespanningEdge::len(Self) -> Int32
+pub fn GraphtreespanningEdge::max(Self) -> Double
+pub fn GraphtreespanningEdge::mean(Self) -> Double
+pub fn GraphtreespanningEdge::min(Self) -> Double
+pub fn GraphtreespanningEdge::scale(Self, Double) -> Self
+pub fn GraphtreespanningEdge::set(Self, Int32, Double) -> Self
+pub fn GraphtreespanningEdge::sum(Self) -> Double
+pub fn GraphtreespanningEdge::to_string(Self) -> String
+
+pub(all) struct GraphtreespanningFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreespanningFrame::add(Self, Self) -> Self
+pub fn GraphtreespanningFrame::copy(Self) -> Self
+pub fn GraphtreespanningFrame::fill(Self, Double) -> Self
+pub fn GraphtreespanningFrame::get(Self, Int32) -> Double
+pub fn GraphtreespanningFrame::len(Self) -> Int32
+pub fn GraphtreespanningFrame::max(Self) -> Double
+pub fn GraphtreespanningFrame::mean(Self) -> Double
+pub fn GraphtreespanningFrame::min(Self) -> Double
+pub fn GraphtreespanningFrame::scale(Self, Double) -> Self
+pub fn GraphtreespanningFrame::set(Self, Int32, Double) -> Self
+pub fn GraphtreespanningFrame::sum(Self) -> Double
+pub fn GraphtreespanningFrame::to_string(Self) -> String
+
+pub(all) struct GraphtreespanningGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreespanningGraphN::add(Self, Self) -> Self
+pub fn GraphtreespanningGraphN::copy(Self) -> Self
+pub fn GraphtreespanningGraphN::fill(Self, Double) -> Self
+pub fn GraphtreespanningGraphN::get(Self, Int32) -> Double
+pub fn GraphtreespanningGraphN::len(Self) -> Int32
+pub fn GraphtreespanningGraphN::max(Self) -> Double
+pub fn GraphtreespanningGraphN::mean(Self) -> Double
+pub fn GraphtreespanningGraphN::min(Self) -> Double
+pub fn GraphtreespanningGraphN::scale(Self, Double) -> Self
+pub fn GraphtreespanningGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphtreespanningGraphN::sum(Self) -> Double
+pub fn GraphtreespanningGraphN::to_string(Self) -> String
+
+pub(all) struct GraphtreespanningLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreespanningLayer::add(Self, Self) -> Self
+pub fn GraphtreespanningLayer::copy(Self) -> Self
+pub fn GraphtreespanningLayer::fill(Self, Double) -> Self
+pub fn GraphtreespanningLayer::get(Self, Int32) -> Double
+pub fn GraphtreespanningLayer::len(Self) -> Int32
+pub fn GraphtreespanningLayer::max(Self) -> Double
+pub fn GraphtreespanningLayer::mean(Self) -> Double
+pub fn GraphtreespanningLayer::min(Self) -> Double
+pub fn GraphtreespanningLayer::scale(Self, Double) -> Self
+pub fn GraphtreespanningLayer::set(Self, Int32, Double) -> Self
+pub fn GraphtreespanningLayer::sum(Self) -> Double
+pub fn GraphtreespanningLayer::to_string(Self) -> String
+
+pub(all) struct GraphtreespanningMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphtreespanningMatrix::add(Self, Self) -> Self
+pub fn GraphtreespanningMatrix::det(Self) -> Double
+pub fn GraphtreespanningMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphtreespanningMatrix::multiply(Self, Self) -> Self
+pub fn GraphtreespanningMatrix::norm(Self) -> Double
+pub fn GraphtreespanningMatrix::scale(Self, Double) -> Self
+pub fn GraphtreespanningMatrix::to_string(Self) -> String
+pub fn GraphtreespanningMatrix::trace(Self) -> Double
+pub fn GraphtreespanningMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphtreespanningModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreespanningModel::add(Self, Self) -> Self
+pub fn GraphtreespanningModel::copy(Self) -> Self
+pub fn GraphtreespanningModel::fill(Self, Double) -> Self
+pub fn GraphtreespanningModel::get(Self, Int32) -> Double
+pub fn GraphtreespanningModel::len(Self) -> Int32
+pub fn GraphtreespanningModel::max(Self) -> Double
+pub fn GraphtreespanningModel::mean(Self) -> Double
+pub fn GraphtreespanningModel::min(Self) -> Double
+pub fn GraphtreespanningModel::scale(Self, Double) -> Self
+pub fn GraphtreespanningModel::set(Self, Int32, Double) -> Self
+pub fn GraphtreespanningModel::sum(Self) -> Double
+pub fn GraphtreespanningModel::to_string(Self) -> String
+
+pub(all) struct GraphtreespanningNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreespanningNode::add(Self, Self) -> Self
+pub fn GraphtreespanningNode::copy(Self) -> Self
+pub fn GraphtreespanningNode::fill(Self, Double) -> Self
+pub fn GraphtreespanningNode::get(Self, Int32) -> Double
+pub fn GraphtreespanningNode::len(Self) -> Int32
+pub fn GraphtreespanningNode::max(Self) -> Double
+pub fn GraphtreespanningNode::mean(Self) -> Double
+pub fn GraphtreespanningNode::min(Self) -> Double
+pub fn GraphtreespanningNode::scale(Self, Double) -> Self
+pub fn GraphtreespanningNode::set(Self, Int32, Double) -> Self
+pub fn GraphtreespanningNode::sum(Self) -> Double
+pub fn GraphtreespanningNode::to_string(Self) -> String
+
+pub(all) struct GraphtreespanningPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreespanningPath::add(Self, Self) -> Self
+pub fn GraphtreespanningPath::copy(Self) -> Self
+pub fn GraphtreespanningPath::fill(Self, Double) -> Self
+pub fn GraphtreespanningPath::get(Self, Int32) -> Double
+pub fn GraphtreespanningPath::len(Self) -> Int32
+pub fn GraphtreespanningPath::max(Self) -> Double
+pub fn GraphtreespanningPath::mean(Self) -> Double
+pub fn GraphtreespanningPath::min(Self) -> Double
+pub fn GraphtreespanningPath::scale(Self, Double) -> Self
+pub fn GraphtreespanningPath::set(Self, Int32, Double) -> Self
+pub fn GraphtreespanningPath::sum(Self) -> Double
+pub fn GraphtreespanningPath::to_string(Self) -> String
+
+pub(all) struct GraphtreespanningPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphtreespanningPoint::add(Self, Self) -> Self
+pub fn GraphtreespanningPoint::cross(Self, Self) -> Self
+pub fn GraphtreespanningPoint::dist(Self, Self) -> Double
+pub fn GraphtreespanningPoint::dot(Self, Self) -> Double
+pub fn GraphtreespanningPoint::label(Self) -> Int32
+pub fn GraphtreespanningPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphtreespanningPoint::mid(Self, Self) -> Self
+pub fn GraphtreespanningPoint::negate(Self) -> Self
+pub fn GraphtreespanningPoint::norm(Self) -> Double
+pub fn GraphtreespanningPoint::normalize(Self) -> Self
+pub fn GraphtreespanningPoint::scale(Self, Double) -> Self
+pub fn GraphtreespanningPoint::sub(Self, Self) -> Self
+pub fn GraphtreespanningPoint::to_string(Self) -> String
+pub fn GraphtreespanningPoint::x(Self) -> Double
+pub fn GraphtreespanningPoint::y(Self) -> Double
+pub fn GraphtreespanningPoint::z(Self) -> Double
+
+pub(all) struct GraphtreespanningRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreespanningRange::add(Self, Self) -> Self
+pub fn GraphtreespanningRange::copy(Self) -> Self
+pub fn GraphtreespanningRange::fill(Self, Double) -> Self
+pub fn GraphtreespanningRange::get(Self, Int32) -> Double
+pub fn GraphtreespanningRange::len(Self) -> Int32
+pub fn GraphtreespanningRange::max(Self) -> Double
+pub fn GraphtreespanningRange::mean(Self) -> Double
+pub fn GraphtreespanningRange::min(Self) -> Double
+pub fn GraphtreespanningRange::scale(Self, Double) -> Self
+pub fn GraphtreespanningRange::set(Self, Int32, Double) -> Self
+pub fn GraphtreespanningRange::sum(Self) -> Double
+pub fn GraphtreespanningRange::to_string(Self) -> String
+
+pub(all) struct GraphtreespanningSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphtreespanningSeries::add(Self, Self) -> Self
+pub fn GraphtreespanningSeries::cumsum(Self) -> Self
+pub fn GraphtreespanningSeries::len(Self) -> Int32
+pub fn GraphtreespanningSeries::max(Self) -> Double
+pub fn GraphtreespanningSeries::mean(Self) -> Double
+pub fn GraphtreespanningSeries::median(Self) -> Double
+pub fn GraphtreespanningSeries::min(Self) -> Double
+pub fn GraphtreespanningSeries::normalize(Self) -> Self
+pub fn GraphtreespanningSeries::range(Self) -> Double
+pub fn GraphtreespanningSeries::scale(Self, Double) -> Self
+pub fn GraphtreespanningSeries::std(Self) -> Double
+pub fn GraphtreespanningSeries::sub(Self, Self) -> Self
+pub fn GraphtreespanningSeries::sum(Self) -> Double
+pub fn GraphtreespanningSeries::to_string(Self) -> String
+pub fn GraphtreespanningSeries::variance(Self) -> Double
+
+pub(all) struct GraphtreespanningSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreespanningSlice::add(Self, Self) -> Self
+pub fn GraphtreespanningSlice::copy(Self) -> Self
+pub fn GraphtreespanningSlice::fill(Self, Double) -> Self
+pub fn GraphtreespanningSlice::get(Self, Int32) -> Double
+pub fn GraphtreespanningSlice::len(Self) -> Int32
+pub fn GraphtreespanningSlice::max(Self) -> Double
+pub fn GraphtreespanningSlice::mean(Self) -> Double
+pub fn GraphtreespanningSlice::min(Self) -> Double
+pub fn GraphtreespanningSlice::scale(Self, Double) -> Self
+pub fn GraphtreespanningSlice::set(Self, Int32, Double) -> Self
+pub fn GraphtreespanningSlice::sum(Self) -> Double
+pub fn GraphtreespanningSlice::to_string(Self) -> String
+
+pub(all) struct GraphtreespanningTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreespanningTable::add(Self, Self) -> Self
+pub fn GraphtreespanningTable::copy(Self) -> Self
+pub fn GraphtreespanningTable::fill(Self, Double) -> Self
+pub fn GraphtreespanningTable::get(Self, Int32) -> Double
+pub fn GraphtreespanningTable::len(Self) -> Int32
+pub fn GraphtreespanningTable::max(Self) -> Double
+pub fn GraphtreespanningTable::mean(Self) -> Double
+pub fn GraphtreespanningTable::min(Self) -> Double
+pub fn GraphtreespanningTable::scale(Self, Double) -> Self
+pub fn GraphtreespanningTable::set(Self, Int32, Double) -> Self
+pub fn GraphtreespanningTable::sum(Self) -> Double
+pub fn GraphtreespanningTable::to_string(Self) -> String
+
+pub(all) struct GraphtreespanningVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphtreespanningVector::add(Self, Self) -> Self
+pub fn GraphtreespanningVector::dist(Self, Self) -> Double
+pub fn GraphtreespanningVector::dot(Self, Self) -> Double
+pub fn GraphtreespanningVector::norm(Self) -> Double
+pub fn GraphtreespanningVector::normalize(Self) -> Self
+pub fn GraphtreespanningVector::scale(Self, Double) -> Self
+pub fn GraphtreespanningVector::sub(Self, Self) -> Self
+pub fn GraphtreespanningVector::to_string(Self) -> String
+
+pub(all) struct GraphtreespanningView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreespanningView::add(Self, Self) -> Self
+pub fn GraphtreespanningView::copy(Self) -> Self
+pub fn GraphtreespanningView::fill(Self, Double) -> Self
+pub fn GraphtreespanningView::get(Self, Int32) -> Double
+pub fn GraphtreespanningView::len(Self) -> Int32
+pub fn GraphtreespanningView::max(Self) -> Double
+pub fn GraphtreespanningView::mean(Self) -> Double
+pub fn GraphtreespanningView::min(Self) -> Double
+pub fn GraphtreespanningView::scale(Self, Double) -> Self
+pub fn GraphtreespanningView::set(Self, Int32, Double) -> Self
+pub fn GraphtreespanningView::sum(Self) -> Double
+pub fn GraphtreespanningView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

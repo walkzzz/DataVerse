@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_parse_span"
+
+// Values
+pub fn nlp_parse_span_buffer_make(Int32) -> NlpparsespanBuffer
+
+pub fn nlp_parse_span_cluster_make(Int32) -> NlpparsespanCluster
+
+pub fn nlp_parse_span_cursor_make(Int32) -> NlpparsespanCursor
+
+pub fn nlp_parse_span_edge_make(Int32) -> NlpparsespanEdge
+
+pub fn nlp_parse_span_frame_make(Int32) -> NlpparsespanFrame
+
+pub fn nlp_parse_span_graphn_make(Int32) -> NlpparsespanGraphN
+
+pub fn nlp_parse_span_layer_make(Int32) -> NlpparsespanLayer
+
+pub fn nlp_parse_span_make_matrix(Int32, Int32, Double) -> NlpparsespanMatrix
+
+pub fn nlp_parse_span_make_point(Double, Double) -> NlpparsespanPoint
+
+pub fn nlp_parse_span_make_point3(Double, Double, Double) -> NlpparsespanPoint
+
+pub fn nlp_parse_span_make_series(Array[Double], String) -> NlpparsespanSeries
+
+pub fn nlp_parse_span_make_vector(Array[Double]) -> NlpparsespanVector
+
+pub fn nlp_parse_span_matrix_identity(Int32) -> NlpparsespanMatrix
+
+pub fn nlp_parse_span_model_make(Int32) -> NlpparsespanModel
+
+pub fn nlp_parse_span_node_make(Int32) -> NlpparsespanNode
+
+pub fn nlp_parse_span_path_make(Int32) -> NlpparsespanPath
+
+pub fn nlp_parse_span_range_make(Int32) -> NlpparsespanRange
+
+pub fn nlp_parse_span_slice_make(Int32) -> NlpparsespanSlice
+
+pub fn nlp_parse_span_table_make(Int32) -> NlpparsespanTable
+
+pub fn nlp_parse_span_vector_zero(Int32) -> NlpparsespanVector
+
+pub fn nlp_parse_span_view_make(Int32) -> NlpparsespanView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlpparsespanBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsespanBuffer::add(Self, Self) -> Self
+pub fn NlpparsespanBuffer::copy(Self) -> Self
+pub fn NlpparsespanBuffer::fill(Self, Double) -> Self
+pub fn NlpparsespanBuffer::get(Self, Int32) -> Double
+pub fn NlpparsespanBuffer::len(Self) -> Int32
+pub fn NlpparsespanBuffer::max(Self) -> Double
+pub fn NlpparsespanBuffer::mean(Self) -> Double
+pub fn NlpparsespanBuffer::min(Self) -> Double
+pub fn NlpparsespanBuffer::scale(Self, Double) -> Self
+pub fn NlpparsespanBuffer::set(Self, Int32, Double) -> Self
+pub fn NlpparsespanBuffer::sum(Self) -> Double
+pub fn NlpparsespanBuffer::to_string(Self) -> String
+
+pub(all) struct NlpparsespanCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsespanCluster::add(Self, Self) -> Self
+pub fn NlpparsespanCluster::copy(Self) -> Self
+pub fn NlpparsespanCluster::fill(Self, Double) -> Self
+pub fn NlpparsespanCluster::get(Self, Int32) -> Double
+pub fn NlpparsespanCluster::len(Self) -> Int32
+pub fn NlpparsespanCluster::max(Self) -> Double
+pub fn NlpparsespanCluster::mean(Self) -> Double
+pub fn NlpparsespanCluster::min(Self) -> Double
+pub fn NlpparsespanCluster::scale(Self, Double) -> Self
+pub fn NlpparsespanCluster::set(Self, Int32, Double) -> Self
+pub fn NlpparsespanCluster::sum(Self) -> Double
+pub fn NlpparsespanCluster::to_string(Self) -> String
+
+pub(all) struct NlpparsespanCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsespanCursor::add(Self, Self) -> Self
+pub fn NlpparsespanCursor::copy(Self) -> Self
+pub fn NlpparsespanCursor::fill(Self, Double) -> Self
+pub fn NlpparsespanCursor::get(Self, Int32) -> Double
+pub fn NlpparsespanCursor::len(Self) -> Int32
+pub fn NlpparsespanCursor::max(Self) -> Double
+pub fn NlpparsespanCursor::mean(Self) -> Double
+pub fn NlpparsespanCursor::min(Self) -> Double
+pub fn NlpparsespanCursor::scale(Self, Double) -> Self
+pub fn NlpparsespanCursor::set(Self, Int32, Double) -> Self
+pub fn NlpparsespanCursor::sum(Self) -> Double
+pub fn NlpparsespanCursor::to_string(Self) -> String
+
+pub(all) struct NlpparsespanEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsespanEdge::add(Self, Self) -> Self
+pub fn NlpparsespanEdge::copy(Self) -> Self
+pub fn NlpparsespanEdge::fill(Self, Double) -> Self
+pub fn NlpparsespanEdge::get(Self, Int32) -> Double
+pub fn NlpparsespanEdge::len(Self) -> Int32
+pub fn NlpparsespanEdge::max(Self) -> Double
+pub fn NlpparsespanEdge::mean(Self) -> Double
+pub fn NlpparsespanEdge::min(Self) -> Double
+pub fn NlpparsespanEdge::scale(Self, Double) -> Self
+pub fn NlpparsespanEdge::set(Self, Int32, Double) -> Self
+pub fn NlpparsespanEdge::sum(Self) -> Double
+pub fn NlpparsespanEdge::to_string(Self) -> String
+
+pub(all) struct NlpparsespanFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsespanFrame::add(Self, Self) -> Self
+pub fn NlpparsespanFrame::copy(Self) -> Self
+pub fn NlpparsespanFrame::fill(Self, Double) -> Self
+pub fn NlpparsespanFrame::get(Self, Int32) -> Double
+pub fn NlpparsespanFrame::len(Self) -> Int32
+pub fn NlpparsespanFrame::max(Self) -> Double
+pub fn NlpparsespanFrame::mean(Self) -> Double
+pub fn NlpparsespanFrame::min(Self) -> Double
+pub fn NlpparsespanFrame::scale(Self, Double) -> Self
+pub fn NlpparsespanFrame::set(Self, Int32, Double) -> Self
+pub fn NlpparsespanFrame::sum(Self) -> Double
+pub fn NlpparsespanFrame::to_string(Self) -> String
+
+pub(all) struct NlpparsespanGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsespanGraphN::add(Self, Self) -> Self
+pub fn NlpparsespanGraphN::copy(Self) -> Self
+pub fn NlpparsespanGraphN::fill(Self, Double) -> Self
+pub fn NlpparsespanGraphN::get(Self, Int32) -> Double
+pub fn NlpparsespanGraphN::len(Self) -> Int32
+pub fn NlpparsespanGraphN::max(Self) -> Double
+pub fn NlpparsespanGraphN::mean(Self) -> Double
+pub fn NlpparsespanGraphN::min(Self) -> Double
+pub fn NlpparsespanGraphN::scale(Self, Double) -> Self
+pub fn NlpparsespanGraphN::set(Self, Int32, Double) -> Self
+pub fn NlpparsespanGraphN::sum(Self) -> Double
+pub fn NlpparsespanGraphN::to_string(Self) -> String
+
+pub(all) struct NlpparsespanLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsespanLayer::add(Self, Self) -> Self
+pub fn NlpparsespanLayer::copy(Self) -> Self
+pub fn NlpparsespanLayer::fill(Self, Double) -> Self
+pub fn NlpparsespanLayer::get(Self, Int32) -> Double
+pub fn NlpparsespanLayer::len(Self) -> Int32
+pub fn NlpparsespanLayer::max(Self) -> Double
+pub fn NlpparsespanLayer::mean(Self) -> Double
+pub fn NlpparsespanLayer::min(Self) -> Double
+pub fn NlpparsespanLayer::scale(Self, Double) -> Self
+pub fn NlpparsespanLayer::set(Self, Int32, Double) -> Self
+pub fn NlpparsespanLayer::sum(Self) -> Double
+pub fn NlpparsespanLayer::to_string(Self) -> String
+
+pub(all) struct NlpparsespanMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlpparsespanMatrix::add(Self, Self) -> Self
+pub fn NlpparsespanMatrix::det(Self) -> Double
+pub fn NlpparsespanMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlpparsespanMatrix::multiply(Self, Self) -> Self
+pub fn NlpparsespanMatrix::norm(Self) -> Double
+pub fn NlpparsespanMatrix::scale(Self, Double) -> Self
+pub fn NlpparsespanMatrix::to_string(Self) -> String
+pub fn NlpparsespanMatrix::trace(Self) -> Double
+pub fn NlpparsespanMatrix::transpose(Self) -> Self
+
+pub(all) struct NlpparsespanModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsespanModel::add(Self, Self) -> Self
+pub fn NlpparsespanModel::copy(Self) -> Self
+pub fn NlpparsespanModel::fill(Self, Double) -> Self
+pub fn NlpparsespanModel::get(Self, Int32) -> Double
+pub fn NlpparsespanModel::len(Self) -> Int32
+pub fn NlpparsespanModel::max(Self) -> Double
+pub fn NlpparsespanModel::mean(Self) -> Double
+pub fn NlpparsespanModel::min(Self) -> Double
+pub fn NlpparsespanModel::scale(Self, Double) -> Self
+pub fn NlpparsespanModel::set(Self, Int32, Double) -> Self
+pub fn NlpparsespanModel::sum(Self) -> Double
+pub fn NlpparsespanModel::to_string(Self) -> String
+
+pub(all) struct NlpparsespanNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsespanNode::add(Self, Self) -> Self
+pub fn NlpparsespanNode::copy(Self) -> Self
+pub fn NlpparsespanNode::fill(Self, Double) -> Self
+pub fn NlpparsespanNode::get(Self, Int32) -> Double
+pub fn NlpparsespanNode::len(Self) -> Int32
+pub fn NlpparsespanNode::max(Self) -> Double
+pub fn NlpparsespanNode::mean(Self) -> Double
+pub fn NlpparsespanNode::min(Self) -> Double
+pub fn NlpparsespanNode::scale(Self, Double) -> Self
+pub fn NlpparsespanNode::set(Self, Int32, Double) -> Self
+pub fn NlpparsespanNode::sum(Self) -> Double
+pub fn NlpparsespanNode::to_string(Self) -> String
+
+pub(all) struct NlpparsespanPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsespanPath::add(Self, Self) -> Self
+pub fn NlpparsespanPath::copy(Self) -> Self
+pub fn NlpparsespanPath::fill(Self, Double) -> Self
+pub fn NlpparsespanPath::get(Self, Int32) -> Double
+pub fn NlpparsespanPath::len(Self) -> Int32
+pub fn NlpparsespanPath::max(Self) -> Double
+pub fn NlpparsespanPath::mean(Self) -> Double
+pub fn NlpparsespanPath::min(Self) -> Double
+pub fn NlpparsespanPath::scale(Self, Double) -> Self
+pub fn NlpparsespanPath::set(Self, Int32, Double) -> Self
+pub fn NlpparsespanPath::sum(Self) -> Double
+pub fn NlpparsespanPath::to_string(Self) -> String
+
+pub(all) struct NlpparsespanPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlpparsespanPoint::add(Self, Self) -> Self
+pub fn NlpparsespanPoint::cross(Self, Self) -> Self
+pub fn NlpparsespanPoint::dist(Self, Self) -> Double
+pub fn NlpparsespanPoint::dot(Self, Self) -> Double
+pub fn NlpparsespanPoint::label(Self) -> Int32
+pub fn NlpparsespanPoint::lerp(Self, Self, Double) -> Self
+pub fn NlpparsespanPoint::mid(Self, Self) -> Self
+pub fn NlpparsespanPoint::negate(Self) -> Self
+pub fn NlpparsespanPoint::norm(Self) -> Double
+pub fn NlpparsespanPoint::normalize(Self) -> Self
+pub fn NlpparsespanPoint::scale(Self, Double) -> Self
+pub fn NlpparsespanPoint::sub(Self, Self) -> Self
+pub fn NlpparsespanPoint::to_string(Self) -> String
+pub fn NlpparsespanPoint::x(Self) -> Double
+pub fn NlpparsespanPoint::y(Self) -> Double
+pub fn NlpparsespanPoint::z(Self) -> Double
+
+pub(all) struct NlpparsespanRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsespanRange::add(Self, Self) -> Self
+pub fn NlpparsespanRange::copy(Self) -> Self
+pub fn NlpparsespanRange::fill(Self, Double) -> Self
+pub fn NlpparsespanRange::get(Self, Int32) -> Double
+pub fn NlpparsespanRange::len(Self) -> Int32
+pub fn NlpparsespanRange::max(Self) -> Double
+pub fn NlpparsespanRange::mean(Self) -> Double
+pub fn NlpparsespanRange::min(Self) -> Double
+pub fn NlpparsespanRange::scale(Self, Double) -> Self
+pub fn NlpparsespanRange::set(Self, Int32, Double) -> Self
+pub fn NlpparsespanRange::sum(Self) -> Double
+pub fn NlpparsespanRange::to_string(Self) -> String
+
+pub(all) struct NlpparsespanSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlpparsespanSeries::add(Self, Self) -> Self
+pub fn NlpparsespanSeries::cumsum(Self) -> Self
+pub fn NlpparsespanSeries::len(Self) -> Int32
+pub fn NlpparsespanSeries::max(Self) -> Double
+pub fn NlpparsespanSeries::mean(Self) -> Double
+pub fn NlpparsespanSeries::median(Self) -> Double
+pub fn NlpparsespanSeries::min(Self) -> Double
+pub fn NlpparsespanSeries::normalize(Self) -> Self
+pub fn NlpparsespanSeries::range(Self) -> Double
+pub fn NlpparsespanSeries::scale(Self, Double) -> Self
+pub fn NlpparsespanSeries::std(Self) -> Double
+pub fn NlpparsespanSeries::sub(Self, Self) -> Self
+pub fn NlpparsespanSeries::sum(Self) -> Double
+pub fn NlpparsespanSeries::to_string(Self) -> String
+pub fn NlpparsespanSeries::variance(Self) -> Double
+
+pub(all) struct NlpparsespanSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsespanSlice::add(Self, Self) -> Self
+pub fn NlpparsespanSlice::copy(Self) -> Self
+pub fn NlpparsespanSlice::fill(Self, Double) -> Self
+pub fn NlpparsespanSlice::get(Self, Int32) -> Double
+pub fn NlpparsespanSlice::len(Self) -> Int32
+pub fn NlpparsespanSlice::max(Self) -> Double
+pub fn NlpparsespanSlice::mean(Self) -> Double
+pub fn NlpparsespanSlice::min(Self) -> Double
+pub fn NlpparsespanSlice::scale(Self, Double) -> Self
+pub fn NlpparsespanSlice::set(Self, Int32, Double) -> Self
+pub fn NlpparsespanSlice::sum(Self) -> Double
+pub fn NlpparsespanSlice::to_string(Self) -> String
+
+pub(all) struct NlpparsespanTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsespanTable::add(Self, Self) -> Self
+pub fn NlpparsespanTable::copy(Self) -> Self
+pub fn NlpparsespanTable::fill(Self, Double) -> Self
+pub fn NlpparsespanTable::get(Self, Int32) -> Double
+pub fn NlpparsespanTable::len(Self) -> Int32
+pub fn NlpparsespanTable::max(Self) -> Double
+pub fn NlpparsespanTable::mean(Self) -> Double
+pub fn NlpparsespanTable::min(Self) -> Double
+pub fn NlpparsespanTable::scale(Self, Double) -> Self
+pub fn NlpparsespanTable::set(Self, Int32, Double) -> Self
+pub fn NlpparsespanTable::sum(Self) -> Double
+pub fn NlpparsespanTable::to_string(Self) -> String
+
+pub(all) struct NlpparsespanVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlpparsespanVector::add(Self, Self) -> Self
+pub fn NlpparsespanVector::dist(Self, Self) -> Double
+pub fn NlpparsespanVector::dot(Self, Self) -> Double
+pub fn NlpparsespanVector::norm(Self) -> Double
+pub fn NlpparsespanVector::normalize(Self) -> Self
+pub fn NlpparsespanVector::scale(Self, Double) -> Self
+pub fn NlpparsespanVector::sub(Self, Self) -> Self
+pub fn NlpparsespanVector::to_string(Self) -> String
+
+pub(all) struct NlpparsespanView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparsespanView::add(Self, Self) -> Self
+pub fn NlpparsespanView::copy(Self) -> Self
+pub fn NlpparsespanView::fill(Self, Double) -> Self
+pub fn NlpparsespanView::get(Self, Int32) -> Double
+pub fn NlpparsespanView::len(Self) -> Int32
+pub fn NlpparsespanView::max(Self) -> Double
+pub fn NlpparsespanView::mean(Self) -> Double
+pub fn NlpparsespanView::min(Self) -> Double
+pub fn NlpparsespanView::scale(Self, Double) -> Self
+pub fn NlpparsespanView::set(Self, Int32, Double) -> Self
+pub fn NlpparsespanView::sum(Self) -> Double
+pub fn NlpparsespanView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,167 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/forecasting"
+
+// Values
+pub fn arima_fit(Array[Double], Int32, Int32, Int32) -> ARIMAModel
+
+pub fn arima_forecast(Array[Double], Int32, Int32, Int32, Int32) -> Array[Double]
+
+pub fn arima_predict(ARIMAModel, Array[Double], Int32) -> Array[Double]
+
+pub fn autocorrelation_func(Array[Double], Int32) -> Array[Double]
+
+pub fn backtest(Array[Double], Int32, Int32) -> Array[Double]
+
+pub fn benchmark_forecast(Array[Double], Array[Array[Double]]) -> ForecastBenchmark
+
+pub fn compare_forecasts(Array[Array[Double]], Array[Double]) -> Array[Double]
+
+pub fn confidence_band(Array[Double], Array[Double], Double) -> (Array[Double], Array[Double])
+
+pub fn cross_validation_forecast(Array[Double], Int32) -> Array[Double]
+
+pub fn detect_anomaly_forecast(Array[Double], Array[Double], Double) -> Array[Int32]
+
+pub fn detect_changepoint(Array[Double], Double) -> Array[Int32]
+
+pub fn double_exponential_smoothing(Array[Double], Double, Double) -> Array[Double]
+
+pub fn durbin_watson_test(Array[Double]) -> Double
+
+pub fn ensemble_forecast(Array[Array[Double]]) -> Array[Double]
+
+pub fn expanding_window(Array[Double], Int32, Int32) -> Array[Double]
+
+pub fn exponential_smoothing_forecast(Array[Double], Double) -> Array[Double]
+
+pub fn forecast_accuracy(Array[Double], Array[Double]) -> Double
+
+pub fn forecast_interval(Array[Double], Double, Double) -> (Array[Double], Array[Double])
+
+pub fn forecasting_id() -> String
+
+pub fn grid_search_forecast(Array[Double], Array[Array[Double]]) -> GridSearch
+
+pub fn holt_winters(Array[Double], Double, Double, Double, Int32, Int32) -> Array[Double]
+
+pub fn linear_trend_forecast(Array[Double], Int32) -> Array[Double]
+
+pub fn ljung_box_test(Array[Double], Int32) -> Double
+
+pub fn lstm_forecast_fit(LSTMForecast, Array[Double]) -> LSTMForecast
+
+pub fn lstm_forecast_predict(LSTMForecast, Array[Double], Int32) -> Array[Double]
+
+pub fn make_benchmark(Array[String]) -> ForecastBenchmark
+
+pub fn make_grid_search(Array[Array[Double]]) -> GridSearch
+
+pub fn make_lstm_forecast(Int32, Double) -> LSTMForecast
+
+pub fn make_prophet_forecast(Double, Double) -> ProphetForecast
+
+pub fn make_time_series(Array[Double], Array[Int32]) -> TimeSeries
+
+pub fn mape(Array[Double], Array[Double]) -> Double
+
+pub fn mase(Array[Double], Array[Double]) -> Double
+
+pub fn partial_autocorrelation(Array[Double], Int32) -> Array[Double]
+
+pub fn prediction_interval(Array[Double], Array[Double], Double) -> (Array[Double], Array[Double])
+
+pub fn prophet_fit(Array[Double]) -> ProphetForecast
+
+pub fn prophet_predict(ProphetForecast, Array[Double], Int32) -> Array[Double]
+
+pub fn quadratic_trend_forecast(Array[Double], Int32) -> Array[Double]
+
+pub fn remainder_extract(Array[Double], Int32) -> Array[Double]
+
+pub fn residual_analysis(Array[Double], Array[Double]) -> ResidualAnalysis
+
+pub fn rolling_forecast(Array[Double], Int32, Int32) -> Array[Double]
+
+pub fn seasonal_adjust(Array[Double], Int32) -> Array[Double]
+
+pub fn seasonal_decompose(Array[Double], Int32) -> SeasonalDecomposition
+
+pub fn seasonality_extract(Array[Double], Int32) -> Array[Double]
+
+pub fn select_best_model(Array[Double], Array[Array[Double]]) -> Int32
+
+pub fn simple_moving_average_forecast(Array[Double], Int32) -> Array[Double]
+
+pub fn smape(Array[Double], Array[Double]) -> Double
+
+pub fn trend_extract(Array[Double], Int32) -> Array[Double]
+
+pub fn triple_exponential_smoothing(Array[Double], Double, Double, Double, Int32) -> Array[Double]
+
+pub fn ts_length(TimeSeries) -> Int32
+
+pub fn ts_timestamps(TimeSeries) -> Array[Int32]
+
+pub fn ts_values(TimeSeries) -> Array[Double]
+
+pub fn walk_forward_validation(Array[Double], Int32, Int32) -> Array[Double]
+
+pub fn weighted_ensemble_forecast(Array[Array[Double]], Array[Double]) -> Array[Double]
+
+pub fn weighted_moving_average_forecast(Array[Double], Array[Double]) -> Array[Double]
+
+// Errors
+
+// Types and methods
+pub struct ARIMAModel {
+  p : Int32
+  d : Int32
+  q : Int32
+  phi : Array[Double]
+  theta : Array[Double]
+  residual : Double
+}
+
+pub struct ForecastBenchmark {
+  models : Array[String]
+  scores : Array[Double]
+}
+
+pub struct GridSearch {
+  param_grid : Array[Array[Double]]
+  best_score : Double
+  best_params : Array[Double]
+}
+
+pub struct LSTMForecast {
+  weights : Array[Double]
+  hidden_size : Int32
+  learning_rate : Double
+}
+
+pub struct ProphetForecast {
+  growth : Double
+  seasonality : Double
+  changepoints : Array[Int32]
+}
+
+pub struct ResidualAnalysis {
+  mean : Double
+  variance : Double
+  autocorr : Array[Double]
+}
+
+pub struct SeasonalDecomposition {
+  trend : Array[Double]
+  seasonal : Array[Double]
+  remainder : Array[Double]
+}
+
+pub struct TimeSeries {
+  values : Array[Double]
+  timestamps : Array[Int32]
+}
+
+// Type aliases
+
+// Traits

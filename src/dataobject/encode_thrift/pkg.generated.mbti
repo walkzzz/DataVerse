@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/encode_thrift"
+
+// Values
+pub fn encode_thrift_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn encode_thrift_corr(Array[Double], Array[Double]) -> Double
+
+pub fn encode_thrift_cov(Array[Double], Array[Double]) -> Double
+
+pub fn encode_thrift_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_thrift_mae(Array[Double], Array[Double]) -> Double
+
+pub fn encode_thrift_make_labeled_point(Double, Double, Int32) -> Encode_thriftPoint
+
+pub fn encode_thrift_make_matrix(Int32, Int32, Double) -> Encode_thriftMatrix
+
+pub fn encode_thrift_make_point(Double, Double) -> Encode_thriftPoint
+
+pub fn encode_thrift_make_series(Array[Double], String) -> Encode_thriftSeries
+
+pub fn encode_thrift_make_vector(Array[Double]) -> Encode_thriftVector
+
+pub fn encode_thrift_matrix_add(Encode_thriftMatrix, Encode_thriftMatrix) -> Encode_thriftMatrix
+
+pub fn encode_thrift_matrix_get(Encode_thriftMatrix, Int32, Int32) -> Double
+
+pub fn encode_thrift_matrix_identity(Int32) -> Encode_thriftMatrix
+
+pub fn encode_thrift_matrix_multiply(Encode_thriftMatrix, Encode_thriftMatrix) -> Encode_thriftMatrix
+
+pub fn encode_thrift_matrix_norm(Encode_thriftMatrix) -> Double
+
+pub fn encode_thrift_matrix_scale(Encode_thriftMatrix, Double) -> Encode_thriftMatrix
+
+pub fn encode_thrift_matrix_to_string(Encode_thriftMatrix) -> String
+
+pub fn encode_thrift_matrix_trace(Encode_thriftMatrix) -> Double
+
+pub fn encode_thrift_matrix_transpose(Encode_thriftMatrix) -> Encode_thriftMatrix
+
+pub fn encode_thrift_mse(Array[Double], Array[Double]) -> Double
+
+pub fn encode_thrift_point_add(Encode_thriftPoint, Encode_thriftPoint) -> Encode_thriftPoint
+
+pub fn encode_thrift_point_dist(Encode_thriftPoint, Encode_thriftPoint) -> Double
+
+pub fn encode_thrift_point_dot(Encode_thriftPoint, Encode_thriftPoint) -> Double
+
+pub fn encode_thrift_point_label(Encode_thriftPoint) -> Int32
+
+pub fn encode_thrift_point_norm(Encode_thriftPoint) -> Double
+
+pub fn encode_thrift_point_scale(Encode_thriftPoint, Double) -> Encode_thriftPoint
+
+pub fn encode_thrift_point_sub(Encode_thriftPoint, Encode_thriftPoint) -> Encode_thriftPoint
+
+pub fn encode_thrift_point_to_string(Encode_thriftPoint) -> String
+
+pub fn encode_thrift_point_x(Encode_thriftPoint) -> Double
+
+pub fn encode_thrift_point_y(Encode_thriftPoint) -> Double
+
+pub fn encode_thrift_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_thrift_r2(Array[Double], Array[Double]) -> Double
+
+pub fn encode_thrift_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn encode_thrift_series_add(Encode_thriftSeries, Encode_thriftSeries) -> Encode_thriftSeries
+
+pub fn encode_thrift_series_len(Encode_thriftSeries) -> Int32
+
+pub fn encode_thrift_series_max(Encode_thriftSeries) -> Double
+
+pub fn encode_thrift_series_mean(Encode_thriftSeries) -> Double
+
+pub fn encode_thrift_series_min(Encode_thriftSeries) -> Double
+
+pub fn encode_thrift_series_scale(Encode_thriftSeries, Double) -> Encode_thriftSeries
+
+pub fn encode_thrift_series_std(Encode_thriftSeries) -> Double
+
+pub fn encode_thrift_series_sum(Encode_thriftSeries) -> Double
+
+pub fn encode_thrift_series_to_string(Encode_thriftSeries) -> String
+
+pub fn encode_thrift_series_var(Encode_thriftSeries) -> Double
+
+pub fn encode_thrift_std(Array[Double]) -> Double
+
+pub fn encode_thrift_var(Array[Double]) -> Double
+
+pub fn encode_thrift_vector_add(Encode_thriftVector, Encode_thriftVector) -> Encode_thriftVector
+
+pub fn encode_thrift_vector_dist(Encode_thriftVector, Encode_thriftVector) -> Double
+
+pub fn encode_thrift_vector_dot(Encode_thriftVector, Encode_thriftVector) -> Double
+
+pub fn encode_thrift_vector_norm(Encode_thriftVector) -> Double
+
+pub fn encode_thrift_vector_normalize(Encode_thriftVector) -> Encode_thriftVector
+
+pub fn encode_thrift_vector_scale(Encode_thriftVector, Double) -> Encode_thriftVector
+
+pub fn encode_thrift_vector_sub(Encode_thriftVector, Encode_thriftVector) -> Encode_thriftVector
+
+pub fn encode_thrift_vector_to_string(Encode_thriftVector) -> String
+
+pub fn encode_thrift_vector_zero(Int32) -> Encode_thriftVector
+
+// Errors
+
+// Types and methods
+pub struct Encode_thriftMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Encode_thriftPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Encode_thriftSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Encode_thriftVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

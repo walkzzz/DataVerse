@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/bio_phylo_parsimony"
+
+// Values
+pub fn bio_phylo_parsimony_buffer_make(Int32) -> BiophyloparsimonyBuffer
+
+pub fn bio_phylo_parsimony_cluster_make(Int32) -> BiophyloparsimonyCluster
+
+pub fn bio_phylo_parsimony_cursor_make(Int32) -> BiophyloparsimonyCursor
+
+pub fn bio_phylo_parsimony_edge_make(Int32) -> BiophyloparsimonyEdge
+
+pub fn bio_phylo_parsimony_frame_make(Int32) -> BiophyloparsimonyFrame
+
+pub fn bio_phylo_parsimony_graphn_make(Int32) -> BiophyloparsimonyGraphN
+
+pub fn bio_phylo_parsimony_layer_make(Int32) -> BiophyloparsimonyLayer
+
+pub fn bio_phylo_parsimony_make_matrix(Int32, Int32, Double) -> BiophyloparsimonyMatrix
+
+pub fn bio_phylo_parsimony_make_point(Double, Double) -> BiophyloparsimonyPoint
+
+pub fn bio_phylo_parsimony_make_point3(Double, Double, Double) -> BiophyloparsimonyPoint
+
+pub fn bio_phylo_parsimony_make_series(Array[Double], String) -> BiophyloparsimonySeries
+
+pub fn bio_phylo_parsimony_make_vector(Array[Double]) -> BiophyloparsimonyVector
+
+pub fn bio_phylo_parsimony_matrix_identity(Int32) -> BiophyloparsimonyMatrix
+
+pub fn bio_phylo_parsimony_model_make(Int32) -> BiophyloparsimonyModel
+
+pub fn bio_phylo_parsimony_node_make(Int32) -> BiophyloparsimonyNode
+
+pub fn bio_phylo_parsimony_path_make(Int32) -> BiophyloparsimonyPath
+
+pub fn bio_phylo_parsimony_range_make(Int32) -> BiophyloparsimonyRange
+
+pub fn bio_phylo_parsimony_slice_make(Int32) -> BiophyloparsimonySlice
+
+pub fn bio_phylo_parsimony_table_make(Int32) -> BiophyloparsimonyTable
+
+pub fn bio_phylo_parsimony_vector_zero(Int32) -> BiophyloparsimonyVector
+
+pub fn bio_phylo_parsimony_view_make(Int32) -> BiophyloparsimonyView
+
+// Errors
+
+// Types and methods
+pub(all) struct BiophyloparsimonyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloparsimonyBuffer::add(Self, Self) -> Self
+pub fn BiophyloparsimonyBuffer::copy(Self) -> Self
+pub fn BiophyloparsimonyBuffer::fill(Self, Double) -> Self
+pub fn BiophyloparsimonyBuffer::get(Self, Int32) -> Double
+pub fn BiophyloparsimonyBuffer::len(Self) -> Int32
+pub fn BiophyloparsimonyBuffer::max(Self) -> Double
+pub fn BiophyloparsimonyBuffer::mean(Self) -> Double
+pub fn BiophyloparsimonyBuffer::min(Self) -> Double
+pub fn BiophyloparsimonyBuffer::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyBuffer::set(Self, Int32, Double) -> Self
+pub fn BiophyloparsimonyBuffer::sum(Self) -> Double
+pub fn BiophyloparsimonyBuffer::to_string(Self) -> String
+
+pub(all) struct BiophyloparsimonyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloparsimonyCluster::add(Self, Self) -> Self
+pub fn BiophyloparsimonyCluster::copy(Self) -> Self
+pub fn BiophyloparsimonyCluster::fill(Self, Double) -> Self
+pub fn BiophyloparsimonyCluster::get(Self, Int32) -> Double
+pub fn BiophyloparsimonyCluster::len(Self) -> Int32
+pub fn BiophyloparsimonyCluster::max(Self) -> Double
+pub fn BiophyloparsimonyCluster::mean(Self) -> Double
+pub fn BiophyloparsimonyCluster::min(Self) -> Double
+pub fn BiophyloparsimonyCluster::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyCluster::set(Self, Int32, Double) -> Self
+pub fn BiophyloparsimonyCluster::sum(Self) -> Double
+pub fn BiophyloparsimonyCluster::to_string(Self) -> String
+
+pub(all) struct BiophyloparsimonyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloparsimonyCursor::add(Self, Self) -> Self
+pub fn BiophyloparsimonyCursor::copy(Self) -> Self
+pub fn BiophyloparsimonyCursor::fill(Self, Double) -> Self
+pub fn BiophyloparsimonyCursor::get(Self, Int32) -> Double
+pub fn BiophyloparsimonyCursor::len(Self) -> Int32
+pub fn BiophyloparsimonyCursor::max(Self) -> Double
+pub fn BiophyloparsimonyCursor::mean(Self) -> Double
+pub fn BiophyloparsimonyCursor::min(Self) -> Double
+pub fn BiophyloparsimonyCursor::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyCursor::set(Self, Int32, Double) -> Self
+pub fn BiophyloparsimonyCursor::sum(Self) -> Double
+pub fn BiophyloparsimonyCursor::to_string(Self) -> String
+
+pub(all) struct BiophyloparsimonyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloparsimonyEdge::add(Self, Self) -> Self
+pub fn BiophyloparsimonyEdge::copy(Self) -> Self
+pub fn BiophyloparsimonyEdge::fill(Self, Double) -> Self
+pub fn BiophyloparsimonyEdge::get(Self, Int32) -> Double
+pub fn BiophyloparsimonyEdge::len(Self) -> Int32
+pub fn BiophyloparsimonyEdge::max(Self) -> Double
+pub fn BiophyloparsimonyEdge::mean(Self) -> Double
+pub fn BiophyloparsimonyEdge::min(Self) -> Double
+pub fn BiophyloparsimonyEdge::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyEdge::set(Self, Int32, Double) -> Self
+pub fn BiophyloparsimonyEdge::sum(Self) -> Double
+pub fn BiophyloparsimonyEdge::to_string(Self) -> String
+
+pub(all) struct BiophyloparsimonyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloparsimonyFrame::add(Self, Self) -> Self
+pub fn BiophyloparsimonyFrame::copy(Self) -> Self
+pub fn BiophyloparsimonyFrame::fill(Self, Double) -> Self
+pub fn BiophyloparsimonyFrame::get(Self, Int32) -> Double
+pub fn BiophyloparsimonyFrame::len(Self) -> Int32
+pub fn BiophyloparsimonyFrame::max(Self) -> Double
+pub fn BiophyloparsimonyFrame::mean(Self) -> Double
+pub fn BiophyloparsimonyFrame::min(Self) -> Double
+pub fn BiophyloparsimonyFrame::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyFrame::set(Self, Int32, Double) -> Self
+pub fn BiophyloparsimonyFrame::sum(Self) -> Double
+pub fn BiophyloparsimonyFrame::to_string(Self) -> String
+
+pub(all) struct BiophyloparsimonyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloparsimonyGraphN::add(Self, Self) -> Self
+pub fn BiophyloparsimonyGraphN::copy(Self) -> Self
+pub fn BiophyloparsimonyGraphN::fill(Self, Double) -> Self
+pub fn BiophyloparsimonyGraphN::get(Self, Int32) -> Double
+pub fn BiophyloparsimonyGraphN::len(Self) -> Int32
+pub fn BiophyloparsimonyGraphN::max(Self) -> Double
+pub fn BiophyloparsimonyGraphN::mean(Self) -> Double
+pub fn BiophyloparsimonyGraphN::min(Self) -> Double
+pub fn BiophyloparsimonyGraphN::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyGraphN::set(Self, Int32, Double) -> Self
+pub fn BiophyloparsimonyGraphN::sum(Self) -> Double
+pub fn BiophyloparsimonyGraphN::to_string(Self) -> String
+
+pub(all) struct BiophyloparsimonyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloparsimonyLayer::add(Self, Self) -> Self
+pub fn BiophyloparsimonyLayer::copy(Self) -> Self
+pub fn BiophyloparsimonyLayer::fill(Self, Double) -> Self
+pub fn BiophyloparsimonyLayer::get(Self, Int32) -> Double
+pub fn BiophyloparsimonyLayer::len(Self) -> Int32
+pub fn BiophyloparsimonyLayer::max(Self) -> Double
+pub fn BiophyloparsimonyLayer::mean(Self) -> Double
+pub fn BiophyloparsimonyLayer::min(Self) -> Double
+pub fn BiophyloparsimonyLayer::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyLayer::set(Self, Int32, Double) -> Self
+pub fn BiophyloparsimonyLayer::sum(Self) -> Double
+pub fn BiophyloparsimonyLayer::to_string(Self) -> String
+
+pub(all) struct BiophyloparsimonyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn BiophyloparsimonyMatrix::add(Self, Self) -> Self
+pub fn BiophyloparsimonyMatrix::det(Self) -> Double
+pub fn BiophyloparsimonyMatrix::get(Self, Int32, Int32) -> Double
+pub fn BiophyloparsimonyMatrix::multiply(Self, Self) -> Self
+pub fn BiophyloparsimonyMatrix::norm(Self) -> Double
+pub fn BiophyloparsimonyMatrix::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyMatrix::to_string(Self) -> String
+pub fn BiophyloparsimonyMatrix::trace(Self) -> Double
+pub fn BiophyloparsimonyMatrix::transpose(Self) -> Self
+
+pub(all) struct BiophyloparsimonyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloparsimonyModel::add(Self, Self) -> Self
+pub fn BiophyloparsimonyModel::copy(Self) -> Self
+pub fn BiophyloparsimonyModel::fill(Self, Double) -> Self
+pub fn BiophyloparsimonyModel::get(Self, Int32) -> Double
+pub fn BiophyloparsimonyModel::len(Self) -> Int32
+pub fn BiophyloparsimonyModel::max(Self) -> Double
+pub fn BiophyloparsimonyModel::mean(Self) -> Double
+pub fn BiophyloparsimonyModel::min(Self) -> Double
+pub fn BiophyloparsimonyModel::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyModel::set(Self, Int32, Double) -> Self
+pub fn BiophyloparsimonyModel::sum(Self) -> Double
+pub fn BiophyloparsimonyModel::to_string(Self) -> String
+
+pub(all) struct BiophyloparsimonyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloparsimonyNode::add(Self, Self) -> Self
+pub fn BiophyloparsimonyNode::copy(Self) -> Self
+pub fn BiophyloparsimonyNode::fill(Self, Double) -> Self
+pub fn BiophyloparsimonyNode::get(Self, Int32) -> Double
+pub fn BiophyloparsimonyNode::len(Self) -> Int32
+pub fn BiophyloparsimonyNode::max(Self) -> Double
+pub fn BiophyloparsimonyNode::mean(Self) -> Double
+pub fn BiophyloparsimonyNode::min(Self) -> Double
+pub fn BiophyloparsimonyNode::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyNode::set(Self, Int32, Double) -> Self
+pub fn BiophyloparsimonyNode::sum(Self) -> Double
+pub fn BiophyloparsimonyNode::to_string(Self) -> String
+
+pub(all) struct BiophyloparsimonyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloparsimonyPath::add(Self, Self) -> Self
+pub fn BiophyloparsimonyPath::copy(Self) -> Self
+pub fn BiophyloparsimonyPath::fill(Self, Double) -> Self
+pub fn BiophyloparsimonyPath::get(Self, Int32) -> Double
+pub fn BiophyloparsimonyPath::len(Self) -> Int32
+pub fn BiophyloparsimonyPath::max(Self) -> Double
+pub fn BiophyloparsimonyPath::mean(Self) -> Double
+pub fn BiophyloparsimonyPath::min(Self) -> Double
+pub fn BiophyloparsimonyPath::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyPath::set(Self, Int32, Double) -> Self
+pub fn BiophyloparsimonyPath::sum(Self) -> Double
+pub fn BiophyloparsimonyPath::to_string(Self) -> String
+
+pub(all) struct BiophyloparsimonyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn BiophyloparsimonyPoint::add(Self, Self) -> Self
+pub fn BiophyloparsimonyPoint::cross(Self, Self) -> Self
+pub fn BiophyloparsimonyPoint::dist(Self, Self) -> Double
+pub fn BiophyloparsimonyPoint::dot(Self, Self) -> Double
+pub fn BiophyloparsimonyPoint::label(Self) -> Int32
+pub fn BiophyloparsimonyPoint::lerp(Self, Self, Double) -> Self
+pub fn BiophyloparsimonyPoint::mid(Self, Self) -> Self
+pub fn BiophyloparsimonyPoint::negate(Self) -> Self
+pub fn BiophyloparsimonyPoint::norm(Self) -> Double
+pub fn BiophyloparsimonyPoint::normalize(Self) -> Self
+pub fn BiophyloparsimonyPoint::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyPoint::sub(Self, Self) -> Self
+pub fn BiophyloparsimonyPoint::to_string(Self) -> String
+pub fn BiophyloparsimonyPoint::x(Self) -> Double
+pub fn BiophyloparsimonyPoint::y(Self) -> Double
+pub fn BiophyloparsimonyPoint::z(Self) -> Double
+
+pub(all) struct BiophyloparsimonyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloparsimonyRange::add(Self, Self) -> Self
+pub fn BiophyloparsimonyRange::copy(Self) -> Self
+pub fn BiophyloparsimonyRange::fill(Self, Double) -> Self
+pub fn BiophyloparsimonyRange::get(Self, Int32) -> Double
+pub fn BiophyloparsimonyRange::len(Self) -> Int32
+pub fn BiophyloparsimonyRange::max(Self) -> Double
+pub fn BiophyloparsimonyRange::mean(Self) -> Double
+pub fn BiophyloparsimonyRange::min(Self) -> Double
+pub fn BiophyloparsimonyRange::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyRange::set(Self, Int32, Double) -> Self
+pub fn BiophyloparsimonyRange::sum(Self) -> Double
+pub fn BiophyloparsimonyRange::to_string(Self) -> String
+
+pub(all) struct BiophyloparsimonySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn BiophyloparsimonySeries::add(Self, Self) -> Self
+pub fn BiophyloparsimonySeries::cumsum(Self) -> Self
+pub fn BiophyloparsimonySeries::len(Self) -> Int32
+pub fn BiophyloparsimonySeries::max(Self) -> Double
+pub fn BiophyloparsimonySeries::mean(Self) -> Double
+pub fn BiophyloparsimonySeries::median(Self) -> Double
+pub fn BiophyloparsimonySeries::min(Self) -> Double
+pub fn BiophyloparsimonySeries::normalize(Self) -> Self
+pub fn BiophyloparsimonySeries::range(Self) -> Double
+pub fn BiophyloparsimonySeries::scale(Self, Double) -> Self
+pub fn BiophyloparsimonySeries::std(Self) -> Double
+pub fn BiophyloparsimonySeries::sub(Self, Self) -> Self
+pub fn BiophyloparsimonySeries::sum(Self) -> Double
+pub fn BiophyloparsimonySeries::to_string(Self) -> String
+pub fn BiophyloparsimonySeries::variance(Self) -> Double
+
+pub(all) struct BiophyloparsimonySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloparsimonySlice::add(Self, Self) -> Self
+pub fn BiophyloparsimonySlice::copy(Self) -> Self
+pub fn BiophyloparsimonySlice::fill(Self, Double) -> Self
+pub fn BiophyloparsimonySlice::get(Self, Int32) -> Double
+pub fn BiophyloparsimonySlice::len(Self) -> Int32
+pub fn BiophyloparsimonySlice::max(Self) -> Double
+pub fn BiophyloparsimonySlice::mean(Self) -> Double
+pub fn BiophyloparsimonySlice::min(Self) -> Double
+pub fn BiophyloparsimonySlice::scale(Self, Double) -> Self
+pub fn BiophyloparsimonySlice::set(Self, Int32, Double) -> Self
+pub fn BiophyloparsimonySlice::sum(Self) -> Double
+pub fn BiophyloparsimonySlice::to_string(Self) -> String
+
+pub(all) struct BiophyloparsimonyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloparsimonyTable::add(Self, Self) -> Self
+pub fn BiophyloparsimonyTable::copy(Self) -> Self
+pub fn BiophyloparsimonyTable::fill(Self, Double) -> Self
+pub fn BiophyloparsimonyTable::get(Self, Int32) -> Double
+pub fn BiophyloparsimonyTable::len(Self) -> Int32
+pub fn BiophyloparsimonyTable::max(Self) -> Double
+pub fn BiophyloparsimonyTable::mean(Self) -> Double
+pub fn BiophyloparsimonyTable::min(Self) -> Double
+pub fn BiophyloparsimonyTable::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyTable::set(Self, Int32, Double) -> Self
+pub fn BiophyloparsimonyTable::sum(Self) -> Double
+pub fn BiophyloparsimonyTable::to_string(Self) -> String
+
+pub(all) struct BiophyloparsimonyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn BiophyloparsimonyVector::add(Self, Self) -> Self
+pub fn BiophyloparsimonyVector::dist(Self, Self) -> Double
+pub fn BiophyloparsimonyVector::dot(Self, Self) -> Double
+pub fn BiophyloparsimonyVector::norm(Self) -> Double
+pub fn BiophyloparsimonyVector::normalize(Self) -> Self
+pub fn BiophyloparsimonyVector::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyVector::sub(Self, Self) -> Self
+pub fn BiophyloparsimonyVector::to_string(Self) -> String
+
+pub(all) struct BiophyloparsimonyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiophyloparsimonyView::add(Self, Self) -> Self
+pub fn BiophyloparsimonyView::copy(Self) -> Self
+pub fn BiophyloparsimonyView::fill(Self, Double) -> Self
+pub fn BiophyloparsimonyView::get(Self, Int32) -> Double
+pub fn BiophyloparsimonyView::len(Self) -> Int32
+pub fn BiophyloparsimonyView::max(Self) -> Double
+pub fn BiophyloparsimonyView::mean(Self) -> Double
+pub fn BiophyloparsimonyView::min(Self) -> Double
+pub fn BiophyloparsimonyView::scale(Self, Double) -> Self
+pub fn BiophyloparsimonyView::set(Self, Int32, Double) -> Self
+pub fn BiophyloparsimonyView::sum(Self) -> Double
+pub fn BiophyloparsimonyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

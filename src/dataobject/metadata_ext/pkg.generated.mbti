@@ -1,0 +1,174 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/metadata_ext"
+
+// Values
+pub fn catalog_add_instance(MetadataCatalog, String, MetadataInstance) -> MetadataCatalog
+
+pub fn catalog_get_schema(MetadataCatalog, String) -> MetadataSchema
+
+pub fn catalog_instance_count(MetadataCatalog) -> Int32
+
+pub fn catalog_register_schema(MetadataCatalog, MetadataSchema) -> MetadataCatalog
+
+pub fn catalog_schema_count(MetadataCatalog) -> Int32
+
+pub fn catalog_search(MetadataCatalog, SearchQuery) -> Array[(String, MetadataInstance)]
+
+pub fn catalog_to_string(MetadataCatalog) -> String
+
+pub fn extract_from_json(String) -> MetadataInstance
+
+pub fn extract_from_pairs(Array[(String, String)]) -> MetadataInstance
+
+pub fn field_to_string(MetadataField) -> String
+
+pub fn field_with_default(MetadataField, String) -> MetadataField
+
+pub fn field_with_description(MetadataField, String) -> MetadataField
+
+pub fn field_with_nullable(MetadataField, Bool) -> MetadataField
+
+pub fn field_with_tags(MetadataField, Array[String]) -> MetadataField
+
+pub fn index_add(MetadataIndex, String, MetadataInstance) -> MetadataIndex
+
+pub fn index_get(MetadataIndex, String) -> MetadataInstance
+
+pub fn index_search_by_field(MetadataIndex, String, String) -> Array[String]
+
+pub fn index_size(MetadataIndex) -> Int32
+
+pub fn instance_get(MetadataInstance, String) -> String
+
+pub fn instance_set(MetadataInstance, String, String) -> MetadataInstance
+
+pub fn instance_to_string(MetadataInstance) -> String
+
+pub fn instance_with_source(MetadataInstance, String) -> MetadataInstance
+
+pub fn instance_with_timestamp(MetadataInstance, Int32) -> MetadataInstance
+
+pub fn lineage_add_edge(LineageGraph, LineageEdge) -> LineageGraph
+
+pub fn lineage_add_node(LineageGraph, LineageNode) -> LineageGraph
+
+pub fn lineage_downstream(LineageGraph, String) -> Array[String]
+
+pub fn lineage_path(LineageGraph, String, String) -> Array[String]
+
+pub fn lineage_upstream(LineageGraph, String) -> Array[String]
+
+pub fn make_lineage_edge(String, String, String) -> LineageEdge
+
+pub fn make_lineage_graph() -> LineageGraph
+
+pub fn make_lineage_node(String, String, String) -> LineageNode
+
+pub fn make_metadata_catalog(String) -> MetadataCatalog
+
+pub fn make_metadata_field(String, String) -> MetadataField
+
+pub fn make_metadata_index() -> MetadataIndex
+
+pub fn make_metadata_instance(String, Array[(String, String)]) -> MetadataInstance
+
+pub fn make_metadata_schema(String, Array[MetadataField]) -> MetadataSchema
+
+pub fn make_search_query() -> SearchQuery
+
+pub fn make_validation_result(Bool) -> ValidationResult
+
+pub fn schema_field_count(MetadataSchema) -> Int32
+
+pub fn schema_find_field(MetadataSchema, String) -> Int32
+
+pub fn schema_to_string(MetadataSchema) -> String
+
+pub fn schema_with_owner(MetadataSchema, String) -> MetadataSchema
+
+pub fn schema_with_version(MetadataSchema, String) -> MetadataSchema
+
+pub fn search_add_filter(SearchQuery, String, String) -> SearchQuery
+
+pub fn search_execute(MetadataIndex, SearchQuery) -> Array[(String, MetadataInstance)]
+
+pub fn search_with_limit(SearchQuery, Int32) -> SearchQuery
+
+pub fn search_with_text(SearchQuery, String) -> SearchQuery
+
+pub fn validate_instance(MetadataSchema, MetadataInstance) -> ValidationResult
+
+pub fn validation_add_error(ValidationResult, String) -> ValidationResult
+
+pub fn validation_add_warning(ValidationResult, String) -> ValidationResult
+
+// Errors
+
+// Types and methods
+pub struct LineageEdge {
+  source : String
+  target : String
+  edge_type : String
+}
+
+pub struct LineageGraph {
+  nodes : Array[LineageNode]
+  edges : Array[LineageEdge]
+}
+
+pub struct LineageNode {
+  id : String
+  node_type : String
+  name : String
+}
+
+pub struct MetadataCatalog {
+  schemas : Array[(String, MetadataSchema)]
+  instances : MetadataIndex
+  lineage : LineageGraph
+  description : String
+}
+
+pub struct MetadataField {
+  name : String
+  field_type : String
+  nullable : Bool
+  default_value : String
+  description : String
+  tags : Array[String]
+}
+
+pub struct MetadataIndex {
+  entries : Array[(String, MetadataInstance)]
+  field_index : Array[(String, Array[String])]
+}
+
+pub struct MetadataInstance {
+  schema_name : String
+  values : Array[(String, String)]
+  source : String
+  timestamp : Int32
+}
+
+pub struct MetadataSchema {
+  name : String
+  fields : Array[MetadataField]
+  version : String
+  owner : String
+}
+
+pub struct SearchQuery {
+  field_filters : Array[(String, String)]
+  text_query : String
+  limit : Int32
+}
+
+pub struct ValidationResult {
+  valid : Bool
+  errors : Array[String]
+  warnings : Array[String]
+}
+
+// Type aliases
+
+// Traits

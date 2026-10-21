@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_tree_redblack"
+
+// Values
+pub fn ds_tree_redblack_buffer_make(Int32) -> DstreeredblackBuffer
+
+pub fn ds_tree_redblack_cluster_make(Int32) -> DstreeredblackCluster
+
+pub fn ds_tree_redblack_cursor_make(Int32) -> DstreeredblackCursor
+
+pub fn ds_tree_redblack_edge_make(Int32) -> DstreeredblackEdge
+
+pub fn ds_tree_redblack_frame_make(Int32) -> DstreeredblackFrame
+
+pub fn ds_tree_redblack_graphn_make(Int32) -> DstreeredblackGraphN
+
+pub fn ds_tree_redblack_layer_make(Int32) -> DstreeredblackLayer
+
+pub fn ds_tree_redblack_make_matrix(Int32, Int32, Double) -> DstreeredblackMatrix
+
+pub fn ds_tree_redblack_make_point(Double, Double) -> DstreeredblackPoint
+
+pub fn ds_tree_redblack_make_point3(Double, Double, Double) -> DstreeredblackPoint
+
+pub fn ds_tree_redblack_make_series(Array[Double], String) -> DstreeredblackSeries
+
+pub fn ds_tree_redblack_make_vector(Array[Double]) -> DstreeredblackVector
+
+pub fn ds_tree_redblack_matrix_identity(Int32) -> DstreeredblackMatrix
+
+pub fn ds_tree_redblack_model_make(Int32) -> DstreeredblackModel
+
+pub fn ds_tree_redblack_node_make(Int32) -> DstreeredblackNode
+
+pub fn ds_tree_redblack_path_make(Int32) -> DstreeredblackPath
+
+pub fn ds_tree_redblack_range_make(Int32) -> DstreeredblackRange
+
+pub fn ds_tree_redblack_slice_make(Int32) -> DstreeredblackSlice
+
+pub fn ds_tree_redblack_table_make(Int32) -> DstreeredblackTable
+
+pub fn ds_tree_redblack_vector_zero(Int32) -> DstreeredblackVector
+
+pub fn ds_tree_redblack_view_make(Int32) -> DstreeredblackView
+
+// Errors
+
+// Types and methods
+pub(all) struct DstreeredblackBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreeredblackBuffer::add(Self, Self) -> Self
+pub fn DstreeredblackBuffer::copy(Self) -> Self
+pub fn DstreeredblackBuffer::fill(Self, Double) -> Self
+pub fn DstreeredblackBuffer::get(Self, Int32) -> Double
+pub fn DstreeredblackBuffer::len(Self) -> Int32
+pub fn DstreeredblackBuffer::max(Self) -> Double
+pub fn DstreeredblackBuffer::mean(Self) -> Double
+pub fn DstreeredblackBuffer::min(Self) -> Double
+pub fn DstreeredblackBuffer::scale(Self, Double) -> Self
+pub fn DstreeredblackBuffer::set(Self, Int32, Double) -> Self
+pub fn DstreeredblackBuffer::sum(Self) -> Double
+pub fn DstreeredblackBuffer::to_string(Self) -> String
+
+pub(all) struct DstreeredblackCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreeredblackCluster::add(Self, Self) -> Self
+pub fn DstreeredblackCluster::copy(Self) -> Self
+pub fn DstreeredblackCluster::fill(Self, Double) -> Self
+pub fn DstreeredblackCluster::get(Self, Int32) -> Double
+pub fn DstreeredblackCluster::len(Self) -> Int32
+pub fn DstreeredblackCluster::max(Self) -> Double
+pub fn DstreeredblackCluster::mean(Self) -> Double
+pub fn DstreeredblackCluster::min(Self) -> Double
+pub fn DstreeredblackCluster::scale(Self, Double) -> Self
+pub fn DstreeredblackCluster::set(Self, Int32, Double) -> Self
+pub fn DstreeredblackCluster::sum(Self) -> Double
+pub fn DstreeredblackCluster::to_string(Self) -> String
+
+pub(all) struct DstreeredblackCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreeredblackCursor::add(Self, Self) -> Self
+pub fn DstreeredblackCursor::copy(Self) -> Self
+pub fn DstreeredblackCursor::fill(Self, Double) -> Self
+pub fn DstreeredblackCursor::get(Self, Int32) -> Double
+pub fn DstreeredblackCursor::len(Self) -> Int32
+pub fn DstreeredblackCursor::max(Self) -> Double
+pub fn DstreeredblackCursor::mean(Self) -> Double
+pub fn DstreeredblackCursor::min(Self) -> Double
+pub fn DstreeredblackCursor::scale(Self, Double) -> Self
+pub fn DstreeredblackCursor::set(Self, Int32, Double) -> Self
+pub fn DstreeredblackCursor::sum(Self) -> Double
+pub fn DstreeredblackCursor::to_string(Self) -> String
+
+pub(all) struct DstreeredblackEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreeredblackEdge::add(Self, Self) -> Self
+pub fn DstreeredblackEdge::copy(Self) -> Self
+pub fn DstreeredblackEdge::fill(Self, Double) -> Self
+pub fn DstreeredblackEdge::get(Self, Int32) -> Double
+pub fn DstreeredblackEdge::len(Self) -> Int32
+pub fn DstreeredblackEdge::max(Self) -> Double
+pub fn DstreeredblackEdge::mean(Self) -> Double
+pub fn DstreeredblackEdge::min(Self) -> Double
+pub fn DstreeredblackEdge::scale(Self, Double) -> Self
+pub fn DstreeredblackEdge::set(Self, Int32, Double) -> Self
+pub fn DstreeredblackEdge::sum(Self) -> Double
+pub fn DstreeredblackEdge::to_string(Self) -> String
+
+pub(all) struct DstreeredblackFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreeredblackFrame::add(Self, Self) -> Self
+pub fn DstreeredblackFrame::copy(Self) -> Self
+pub fn DstreeredblackFrame::fill(Self, Double) -> Self
+pub fn DstreeredblackFrame::get(Self, Int32) -> Double
+pub fn DstreeredblackFrame::len(Self) -> Int32
+pub fn DstreeredblackFrame::max(Self) -> Double
+pub fn DstreeredblackFrame::mean(Self) -> Double
+pub fn DstreeredblackFrame::min(Self) -> Double
+pub fn DstreeredblackFrame::scale(Self, Double) -> Self
+pub fn DstreeredblackFrame::set(Self, Int32, Double) -> Self
+pub fn DstreeredblackFrame::sum(Self) -> Double
+pub fn DstreeredblackFrame::to_string(Self) -> String
+
+pub(all) struct DstreeredblackGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreeredblackGraphN::add(Self, Self) -> Self
+pub fn DstreeredblackGraphN::copy(Self) -> Self
+pub fn DstreeredblackGraphN::fill(Self, Double) -> Self
+pub fn DstreeredblackGraphN::get(Self, Int32) -> Double
+pub fn DstreeredblackGraphN::len(Self) -> Int32
+pub fn DstreeredblackGraphN::max(Self) -> Double
+pub fn DstreeredblackGraphN::mean(Self) -> Double
+pub fn DstreeredblackGraphN::min(Self) -> Double
+pub fn DstreeredblackGraphN::scale(Self, Double) -> Self
+pub fn DstreeredblackGraphN::set(Self, Int32, Double) -> Self
+pub fn DstreeredblackGraphN::sum(Self) -> Double
+pub fn DstreeredblackGraphN::to_string(Self) -> String
+
+pub(all) struct DstreeredblackLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreeredblackLayer::add(Self, Self) -> Self
+pub fn DstreeredblackLayer::copy(Self) -> Self
+pub fn DstreeredblackLayer::fill(Self, Double) -> Self
+pub fn DstreeredblackLayer::get(Self, Int32) -> Double
+pub fn DstreeredblackLayer::len(Self) -> Int32
+pub fn DstreeredblackLayer::max(Self) -> Double
+pub fn DstreeredblackLayer::mean(Self) -> Double
+pub fn DstreeredblackLayer::min(Self) -> Double
+pub fn DstreeredblackLayer::scale(Self, Double) -> Self
+pub fn DstreeredblackLayer::set(Self, Int32, Double) -> Self
+pub fn DstreeredblackLayer::sum(Self) -> Double
+pub fn DstreeredblackLayer::to_string(Self) -> String
+
+pub(all) struct DstreeredblackMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DstreeredblackMatrix::add(Self, Self) -> Self
+pub fn DstreeredblackMatrix::det(Self) -> Double
+pub fn DstreeredblackMatrix::get(Self, Int32, Int32) -> Double
+pub fn DstreeredblackMatrix::multiply(Self, Self) -> Self
+pub fn DstreeredblackMatrix::norm(Self) -> Double
+pub fn DstreeredblackMatrix::scale(Self, Double) -> Self
+pub fn DstreeredblackMatrix::to_string(Self) -> String
+pub fn DstreeredblackMatrix::trace(Self) -> Double
+pub fn DstreeredblackMatrix::transpose(Self) -> Self
+
+pub(all) struct DstreeredblackModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreeredblackModel::add(Self, Self) -> Self
+pub fn DstreeredblackModel::copy(Self) -> Self
+pub fn DstreeredblackModel::fill(Self, Double) -> Self
+pub fn DstreeredblackModel::get(Self, Int32) -> Double
+pub fn DstreeredblackModel::len(Self) -> Int32
+pub fn DstreeredblackModel::max(Self) -> Double
+pub fn DstreeredblackModel::mean(Self) -> Double
+pub fn DstreeredblackModel::min(Self) -> Double
+pub fn DstreeredblackModel::scale(Self, Double) -> Self
+pub fn DstreeredblackModel::set(Self, Int32, Double) -> Self
+pub fn DstreeredblackModel::sum(Self) -> Double
+pub fn DstreeredblackModel::to_string(Self) -> String
+
+pub(all) struct DstreeredblackNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreeredblackNode::add(Self, Self) -> Self
+pub fn DstreeredblackNode::copy(Self) -> Self
+pub fn DstreeredblackNode::fill(Self, Double) -> Self
+pub fn DstreeredblackNode::get(Self, Int32) -> Double
+pub fn DstreeredblackNode::len(Self) -> Int32
+pub fn DstreeredblackNode::max(Self) -> Double
+pub fn DstreeredblackNode::mean(Self) -> Double
+pub fn DstreeredblackNode::min(Self) -> Double
+pub fn DstreeredblackNode::scale(Self, Double) -> Self
+pub fn DstreeredblackNode::set(Self, Int32, Double) -> Self
+pub fn DstreeredblackNode::sum(Self) -> Double
+pub fn DstreeredblackNode::to_string(Self) -> String
+
+pub(all) struct DstreeredblackPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreeredblackPath::add(Self, Self) -> Self
+pub fn DstreeredblackPath::copy(Self) -> Self
+pub fn DstreeredblackPath::fill(Self, Double) -> Self
+pub fn DstreeredblackPath::get(Self, Int32) -> Double
+pub fn DstreeredblackPath::len(Self) -> Int32
+pub fn DstreeredblackPath::max(Self) -> Double
+pub fn DstreeredblackPath::mean(Self) -> Double
+pub fn DstreeredblackPath::min(Self) -> Double
+pub fn DstreeredblackPath::scale(Self, Double) -> Self
+pub fn DstreeredblackPath::set(Self, Int32, Double) -> Self
+pub fn DstreeredblackPath::sum(Self) -> Double
+pub fn DstreeredblackPath::to_string(Self) -> String
+
+pub(all) struct DstreeredblackPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DstreeredblackPoint::add(Self, Self) -> Self
+pub fn DstreeredblackPoint::cross(Self, Self) -> Self
+pub fn DstreeredblackPoint::dist(Self, Self) -> Double
+pub fn DstreeredblackPoint::dot(Self, Self) -> Double
+pub fn DstreeredblackPoint::label(Self) -> Int32
+pub fn DstreeredblackPoint::lerp(Self, Self, Double) -> Self
+pub fn DstreeredblackPoint::mid(Self, Self) -> Self
+pub fn DstreeredblackPoint::negate(Self) -> Self
+pub fn DstreeredblackPoint::norm(Self) -> Double
+pub fn DstreeredblackPoint::normalize(Self) -> Self
+pub fn DstreeredblackPoint::scale(Self, Double) -> Self
+pub fn DstreeredblackPoint::sub(Self, Self) -> Self
+pub fn DstreeredblackPoint::to_string(Self) -> String
+pub fn DstreeredblackPoint::x(Self) -> Double
+pub fn DstreeredblackPoint::y(Self) -> Double
+pub fn DstreeredblackPoint::z(Self) -> Double
+
+pub(all) struct DstreeredblackRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreeredblackRange::add(Self, Self) -> Self
+pub fn DstreeredblackRange::copy(Self) -> Self
+pub fn DstreeredblackRange::fill(Self, Double) -> Self
+pub fn DstreeredblackRange::get(Self, Int32) -> Double
+pub fn DstreeredblackRange::len(Self) -> Int32
+pub fn DstreeredblackRange::max(Self) -> Double
+pub fn DstreeredblackRange::mean(Self) -> Double
+pub fn DstreeredblackRange::min(Self) -> Double
+pub fn DstreeredblackRange::scale(Self, Double) -> Self
+pub fn DstreeredblackRange::set(Self, Int32, Double) -> Self
+pub fn DstreeredblackRange::sum(Self) -> Double
+pub fn DstreeredblackRange::to_string(Self) -> String
+
+pub(all) struct DstreeredblackSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DstreeredblackSeries::add(Self, Self) -> Self
+pub fn DstreeredblackSeries::cumsum(Self) -> Self
+pub fn DstreeredblackSeries::len(Self) -> Int32
+pub fn DstreeredblackSeries::max(Self) -> Double
+pub fn DstreeredblackSeries::mean(Self) -> Double
+pub fn DstreeredblackSeries::median(Self) -> Double
+pub fn DstreeredblackSeries::min(Self) -> Double
+pub fn DstreeredblackSeries::normalize(Self) -> Self
+pub fn DstreeredblackSeries::range(Self) -> Double
+pub fn DstreeredblackSeries::scale(Self, Double) -> Self
+pub fn DstreeredblackSeries::std(Self) -> Double
+pub fn DstreeredblackSeries::sub(Self, Self) -> Self
+pub fn DstreeredblackSeries::sum(Self) -> Double
+pub fn DstreeredblackSeries::to_string(Self) -> String
+pub fn DstreeredblackSeries::variance(Self) -> Double
+
+pub(all) struct DstreeredblackSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreeredblackSlice::add(Self, Self) -> Self
+pub fn DstreeredblackSlice::copy(Self) -> Self
+pub fn DstreeredblackSlice::fill(Self, Double) -> Self
+pub fn DstreeredblackSlice::get(Self, Int32) -> Double
+pub fn DstreeredblackSlice::len(Self) -> Int32
+pub fn DstreeredblackSlice::max(Self) -> Double
+pub fn DstreeredblackSlice::mean(Self) -> Double
+pub fn DstreeredblackSlice::min(Self) -> Double
+pub fn DstreeredblackSlice::scale(Self, Double) -> Self
+pub fn DstreeredblackSlice::set(Self, Int32, Double) -> Self
+pub fn DstreeredblackSlice::sum(Self) -> Double
+pub fn DstreeredblackSlice::to_string(Self) -> String
+
+pub(all) struct DstreeredblackTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreeredblackTable::add(Self, Self) -> Self
+pub fn DstreeredblackTable::copy(Self) -> Self
+pub fn DstreeredblackTable::fill(Self, Double) -> Self
+pub fn DstreeredblackTable::get(Self, Int32) -> Double
+pub fn DstreeredblackTable::len(Self) -> Int32
+pub fn DstreeredblackTable::max(Self) -> Double
+pub fn DstreeredblackTable::mean(Self) -> Double
+pub fn DstreeredblackTable::min(Self) -> Double
+pub fn DstreeredblackTable::scale(Self, Double) -> Self
+pub fn DstreeredblackTable::set(Self, Int32, Double) -> Self
+pub fn DstreeredblackTable::sum(Self) -> Double
+pub fn DstreeredblackTable::to_string(Self) -> String
+
+pub(all) struct DstreeredblackVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DstreeredblackVector::add(Self, Self) -> Self
+pub fn DstreeredblackVector::dist(Self, Self) -> Double
+pub fn DstreeredblackVector::dot(Self, Self) -> Double
+pub fn DstreeredblackVector::norm(Self) -> Double
+pub fn DstreeredblackVector::normalize(Self) -> Self
+pub fn DstreeredblackVector::scale(Self, Double) -> Self
+pub fn DstreeredblackVector::sub(Self, Self) -> Self
+pub fn DstreeredblackVector::to_string(Self) -> String
+
+pub(all) struct DstreeredblackView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreeredblackView::add(Self, Self) -> Self
+pub fn DstreeredblackView::copy(Self) -> Self
+pub fn DstreeredblackView::fill(Self, Double) -> Self
+pub fn DstreeredblackView::get(Self, Int32) -> Double
+pub fn DstreeredblackView::len(Self) -> Int32
+pub fn DstreeredblackView::max(Self) -> Double
+pub fn DstreeredblackView::mean(Self) -> Double
+pub fn DstreeredblackView::min(Self) -> Double
+pub fn DstreeredblackView::scale(Self, Double) -> Self
+pub fn DstreeredblackView::set(Self, Int32, Double) -> Self
+pub fn DstreeredblackView::sum(Self) -> Double
+pub fn DstreeredblackView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

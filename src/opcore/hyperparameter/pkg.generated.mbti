@@ -1,0 +1,245 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/hyperparameter"
+
+// Values
+pub fn acquisition_ei(Double, Double, Double) -> Double
+
+pub fn acquisition_pi(Double, Double, Double) -> Double
+
+pub fn acquisition_thompson(GaussianProcess, Array[Double], Double) -> Double
+
+pub fn acquisition_ucb(Double, Double, Double) -> Double
+
+pub fn early_stop_check(EarlyStop, Double, Int32) -> (EarlyStop, Bool)
+
+pub fn early_stop_patience(EarlyStop) -> Int32
+
+pub fn ensemble_best_params(Array[HpTrial], Array[Double]) -> Array[(String, Double)]
+
+pub fn ensemble_top_k(Array[HpTrial], Int32) -> Array[HpTrial]
+
+pub fn gp_acquisition(GaussianProcess, Array[Double], Double, Double) -> AcquisitionResult
+
+pub fn gp_fit(GaussianProcess, Array[Array[Double]], Array[Double]) -> GaussianProcess
+
+pub fn gp_predict(GaussianProcess, Array[Double]) -> (Double, Double)
+
+pub fn hp_cross_validate(HpSpace, (Array[(String, Double)], Int32) -> Double, Array[(String, Double)], Int32) -> Double
+
+pub fn hp_distributed_search(HpSpace, (Array[(String, Double)]) -> Double, Int32, Int32, Int32) -> TrialResult
+
+pub fn hp_load_study(String) -> HpStudy
+
+pub fn hp_nested_cv(HpSpace, (Array[(String, Double)], Int32) -> Double, Int32, Int32, Int32) -> Double
+
+pub fn hp_parallel_search(HpSpace, (Array[(String, Double)]) -> Double, Int32, Int32, Int32) -> TrialResult
+
+pub fn hp_plot_history(Array[HpTrial]) -> String
+
+pub fn hp_plot_optimization(Array[HpTrial]) -> String
+
+pub fn hp_plot_param_importance(Array[HpTrial], Array[String]) -> String
+
+pub fn hp_resume_study(HpStudy, (Array[(String, Double)]) -> Double, Int32) -> HpStudy
+
+pub fn hp_save_study(HpStudy) -> String
+
+pub fn hp_search_annealing(HpSpace, (Array[(String, Double)]) -> Double, Int32, Int32, Double) -> TrialResult
+
+pub fn hp_search_bayesian(HpSpace, (Array[(String, Double)]) -> Double, Int32, Int32) -> TrialResult
+
+pub fn hp_search_grid(HpSpace, (Array[(String, Double)]) -> Double, Int32) -> TrialResult
+
+pub fn hp_search_random(HpSpace, (Array[(String, Double)]) -> Double, Int32, Int32) -> TrialResult
+
+pub fn hp_search_tpe(HpSpace, (Array[(String, Double)]) -> Double, Int32, Int32) -> TrialResult
+
+pub fn hp_time_budget(HpSpace, (Array[(String, Double)]) -> Double, Double, Int32, Double) -> TrialResult
+
+pub fn hyperparameter_id() -> String
+
+pub fn make_early_stop(String, Int32, Double, Int32) -> EarlyStop
+
+pub fn make_gaussian_process(Array[Double], Double) -> GaussianProcess
+
+pub fn make_hp_config(Int32, Double, Int32, Int32, String, String, String, String) -> HpConfig
+
+pub fn make_hp_ensemble(Array[HpTrial], Int32) -> HpEnsemble
+
+pub fn make_hp_optimizer(String, HpSpace, Double) -> HpOptimizer
+
+pub fn make_hp_param(String, String, Double, Double, Array[String], Bool, Double, Double) -> HpParam
+
+pub fn make_hp_pruner(String, Int32, Int32, Int32, Double) -> HpPruner
+
+pub fn make_hp_space(Array[HpParam], Array[String]) -> HpSpace
+
+pub fn make_hp_trial(Int32, Array[(String, Double)], Double, String) -> HpTrial
+
+pub fn make_hp_warm_start(Array[HpTrial], Double) -> HpWarmStart
+
+pub fn make_tpe_optimizer(HpSpace, Double, Int32, Double) -> TpeOptimizer
+
+pub fn optimizer_observe(HpOptimizer, HpTrial) -> HpOptimizer
+
+pub fn optimizer_suggest(HpOptimizer, Int32) -> Array[(String, Double)]
+
+pub fn param_choice(String, Array[String]) -> HpParam
+
+pub fn param_float_range(String, Double, Double, Bool) -> HpParam
+
+pub fn param_int_range(String, Int32, Int32, Bool) -> HpParam
+
+pub fn param_log_uniform(String, Double, Double) -> HpParam
+
+pub fn param_normal(String, Double, Double) -> HpParam
+
+pub fn param_uniform(String, Double, Double) -> HpParam
+
+pub fn pruner_async_successive(HpPruner, Array[HpTrial], Int32) -> Bool
+
+pub fn pruner_hyperband(HpPruner, Array[HpTrial], Int32, Int32) -> Bool
+
+pub fn pruner_median(HpPruner, Array[HpTrial], Int32) -> Bool
+
+pub fn pruner_successive_halving(HpPruner, Array[HpTrial], Int32) -> Bool
+
+pub fn tpe_fit(TpeOptimizer, HpTrial, Double) -> TpeOptimizer
+
+pub fn tpe_sample(TpeOptimizer) -> Array[(String, Double)]
+
+pub fn tpe_weight(TpeOptimizer, Int32, Int32) -> Double
+
+pub fn trial_best(Array[HpTrial], String) -> HpTrial
+
+pub fn trial_evaluate(HpTrial, (Array[(String, Double)]) -> Double) -> HpTrial
+
+pub fn trial_score(HpTrial, String) -> Double
+
+pub fn warm_start_history(HpWarmStart) -> Array[HpTrial]
+
+pub fn warm_start_params(HpWarmStart, HpSpace) -> Array[(String, Double)]
+
+// Errors
+
+// Types and methods
+pub(all) struct AcquisitionResult {
+  x_next : Array[Double]
+  ei : Double
+  pi : Double
+  ucb : Double
+}
+
+pub(all) struct EarlyStop {
+  stop_type : String
+  patience : Int32
+  min_delta : Double
+  best_value : Double
+  wait_count : Int32
+  warmup : Int32
+}
+
+pub(all) struct GaussianProcess {
+  x_train : Array[Array[Double]]
+  y_train : Array[Double]
+  kernel_params : Array[Double]
+  noise : Double
+  alpha : Array[Double]
+  k_inv : Array[Array[Double]]
+}
+
+pub(all) struct HpConfig {
+  n_trials : Int32
+  timeout : Double
+  n_jobs : Int32
+  seed : Int32
+  sampler_type : String
+  pruner_type : String
+  direction : String
+  metric_name : String
+}
+
+pub(all) struct HpEnsemble {
+  top_trials : Array[HpTrial]
+  weights : Array[Double]
+  combined_params : Array[(String, Double)]
+}
+
+pub(all) struct HpOptimizer {
+  optimizer_type : String
+  space : HpSpace
+  history : Array[HpTrial]
+  best_trial : HpTrial
+  rng_state : Double
+}
+
+pub(all) struct HpParam {
+  name : String
+  param_type : String
+  low : Double
+  high : Double
+  choices : Array[String]
+  log_scale : Bool
+  mu : Double
+  sigma : Double
+}
+
+pub(all) struct HpPruner {
+  pruner_type : String
+  n_min_trials : Int32
+  n_startup_trials : Int32
+  interval_steps : Int32
+  reduction_factor : Double
+}
+
+pub(all) struct HpSpace {
+  params : Array[HpParam]
+  constraints : Array[String]
+}
+
+pub(all) struct HpStudy {
+  study_id : String
+  direction : String
+  trials : Array[HpTrial]
+  best_trial : HpTrial
+  pruner : HpPruner
+  sampler : String
+  user_attrs : Array[(String, String)]
+}
+
+pub(all) struct HpTrial {
+  trial_id : Int32
+  params : Array[(String, Double)]
+  value : Double
+  state : String
+  intermediate_values : Array[Double]
+  step : Int32
+}
+
+pub(all) struct HpWarmStart {
+  prior_trials : Array[HpTrial]
+  prior_params : Array[(String, Double)]
+  transfer_weight : Double
+}
+
+pub(all) struct TpeOptimizer {
+  space : HpSpace
+  l_x : Array[Array[Double]]
+  r_x : Array[Array[Double]]
+  l_y : Array[Double]
+  r_y : Array[Double]
+  gamma : Double
+  n_ei_candidates : Int32
+  rng_state : Double
+}
+
+pub(all) struct TrialResult {
+  best_params : Array[(String, Double)]
+  best_value : Double
+  n_trials : Int32
+  trials : Array[HpTrial]
+}
+
+// Type aliases
+
+// Traits

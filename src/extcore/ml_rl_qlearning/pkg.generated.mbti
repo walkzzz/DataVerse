@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_rl_qlearning"
+
+// Values
+pub fn ml_rl_qlearning_buffer_make(Int32) -> MlrlqlearningBuffer
+
+pub fn ml_rl_qlearning_cluster_make(Int32) -> MlrlqlearningCluster
+
+pub fn ml_rl_qlearning_cursor_make(Int32) -> MlrlqlearningCursor
+
+pub fn ml_rl_qlearning_edge_make(Int32) -> MlrlqlearningEdge
+
+pub fn ml_rl_qlearning_frame_make(Int32) -> MlrlqlearningFrame
+
+pub fn ml_rl_qlearning_graphn_make(Int32) -> MlrlqlearningGraphN
+
+pub fn ml_rl_qlearning_layer_make(Int32) -> MlrlqlearningLayer
+
+pub fn ml_rl_qlearning_make_matrix(Int32, Int32, Double) -> MlrlqlearningMatrix
+
+pub fn ml_rl_qlearning_make_point(Double, Double) -> MlrlqlearningPoint
+
+pub fn ml_rl_qlearning_make_point3(Double, Double, Double) -> MlrlqlearningPoint
+
+pub fn ml_rl_qlearning_make_series(Array[Double], String) -> MlrlqlearningSeries
+
+pub fn ml_rl_qlearning_make_vector(Array[Double]) -> MlrlqlearningVector
+
+pub fn ml_rl_qlearning_matrix_identity(Int32) -> MlrlqlearningMatrix
+
+pub fn ml_rl_qlearning_model_make(Int32) -> MlrlqlearningModel
+
+pub fn ml_rl_qlearning_node_make(Int32) -> MlrlqlearningNode
+
+pub fn ml_rl_qlearning_path_make(Int32) -> MlrlqlearningPath
+
+pub fn ml_rl_qlearning_range_make(Int32) -> MlrlqlearningRange
+
+pub fn ml_rl_qlearning_slice_make(Int32) -> MlrlqlearningSlice
+
+pub fn ml_rl_qlearning_table_make(Int32) -> MlrlqlearningTable
+
+pub fn ml_rl_qlearning_vector_zero(Int32) -> MlrlqlearningVector
+
+pub fn ml_rl_qlearning_view_make(Int32) -> MlrlqlearningView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlrlqlearningBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlqlearningBuffer::add(Self, Self) -> Self
+pub fn MlrlqlearningBuffer::copy(Self) -> Self
+pub fn MlrlqlearningBuffer::fill(Self, Double) -> Self
+pub fn MlrlqlearningBuffer::get(Self, Int32) -> Double
+pub fn MlrlqlearningBuffer::len(Self) -> Int32
+pub fn MlrlqlearningBuffer::max(Self) -> Double
+pub fn MlrlqlearningBuffer::mean(Self) -> Double
+pub fn MlrlqlearningBuffer::min(Self) -> Double
+pub fn MlrlqlearningBuffer::scale(Self, Double) -> Self
+pub fn MlrlqlearningBuffer::set(Self, Int32, Double) -> Self
+pub fn MlrlqlearningBuffer::sum(Self) -> Double
+pub fn MlrlqlearningBuffer::to_string(Self) -> String
+
+pub(all) struct MlrlqlearningCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlqlearningCluster::add(Self, Self) -> Self
+pub fn MlrlqlearningCluster::copy(Self) -> Self
+pub fn MlrlqlearningCluster::fill(Self, Double) -> Self
+pub fn MlrlqlearningCluster::get(Self, Int32) -> Double
+pub fn MlrlqlearningCluster::len(Self) -> Int32
+pub fn MlrlqlearningCluster::max(Self) -> Double
+pub fn MlrlqlearningCluster::mean(Self) -> Double
+pub fn MlrlqlearningCluster::min(Self) -> Double
+pub fn MlrlqlearningCluster::scale(Self, Double) -> Self
+pub fn MlrlqlearningCluster::set(Self, Int32, Double) -> Self
+pub fn MlrlqlearningCluster::sum(Self) -> Double
+pub fn MlrlqlearningCluster::to_string(Self) -> String
+
+pub(all) struct MlrlqlearningCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlqlearningCursor::add(Self, Self) -> Self
+pub fn MlrlqlearningCursor::copy(Self) -> Self
+pub fn MlrlqlearningCursor::fill(Self, Double) -> Self
+pub fn MlrlqlearningCursor::get(Self, Int32) -> Double
+pub fn MlrlqlearningCursor::len(Self) -> Int32
+pub fn MlrlqlearningCursor::max(Self) -> Double
+pub fn MlrlqlearningCursor::mean(Self) -> Double
+pub fn MlrlqlearningCursor::min(Self) -> Double
+pub fn MlrlqlearningCursor::scale(Self, Double) -> Self
+pub fn MlrlqlearningCursor::set(Self, Int32, Double) -> Self
+pub fn MlrlqlearningCursor::sum(Self) -> Double
+pub fn MlrlqlearningCursor::to_string(Self) -> String
+
+pub(all) struct MlrlqlearningEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlqlearningEdge::add(Self, Self) -> Self
+pub fn MlrlqlearningEdge::copy(Self) -> Self
+pub fn MlrlqlearningEdge::fill(Self, Double) -> Self
+pub fn MlrlqlearningEdge::get(Self, Int32) -> Double
+pub fn MlrlqlearningEdge::len(Self) -> Int32
+pub fn MlrlqlearningEdge::max(Self) -> Double
+pub fn MlrlqlearningEdge::mean(Self) -> Double
+pub fn MlrlqlearningEdge::min(Self) -> Double
+pub fn MlrlqlearningEdge::scale(Self, Double) -> Self
+pub fn MlrlqlearningEdge::set(Self, Int32, Double) -> Self
+pub fn MlrlqlearningEdge::sum(Self) -> Double
+pub fn MlrlqlearningEdge::to_string(Self) -> String
+
+pub(all) struct MlrlqlearningFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlqlearningFrame::add(Self, Self) -> Self
+pub fn MlrlqlearningFrame::copy(Self) -> Self
+pub fn MlrlqlearningFrame::fill(Self, Double) -> Self
+pub fn MlrlqlearningFrame::get(Self, Int32) -> Double
+pub fn MlrlqlearningFrame::len(Self) -> Int32
+pub fn MlrlqlearningFrame::max(Self) -> Double
+pub fn MlrlqlearningFrame::mean(Self) -> Double
+pub fn MlrlqlearningFrame::min(Self) -> Double
+pub fn MlrlqlearningFrame::scale(Self, Double) -> Self
+pub fn MlrlqlearningFrame::set(Self, Int32, Double) -> Self
+pub fn MlrlqlearningFrame::sum(Self) -> Double
+pub fn MlrlqlearningFrame::to_string(Self) -> String
+
+pub(all) struct MlrlqlearningGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlqlearningGraphN::add(Self, Self) -> Self
+pub fn MlrlqlearningGraphN::copy(Self) -> Self
+pub fn MlrlqlearningGraphN::fill(Self, Double) -> Self
+pub fn MlrlqlearningGraphN::get(Self, Int32) -> Double
+pub fn MlrlqlearningGraphN::len(Self) -> Int32
+pub fn MlrlqlearningGraphN::max(Self) -> Double
+pub fn MlrlqlearningGraphN::mean(Self) -> Double
+pub fn MlrlqlearningGraphN::min(Self) -> Double
+pub fn MlrlqlearningGraphN::scale(Self, Double) -> Self
+pub fn MlrlqlearningGraphN::set(Self, Int32, Double) -> Self
+pub fn MlrlqlearningGraphN::sum(Self) -> Double
+pub fn MlrlqlearningGraphN::to_string(Self) -> String
+
+pub(all) struct MlrlqlearningLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlqlearningLayer::add(Self, Self) -> Self
+pub fn MlrlqlearningLayer::copy(Self) -> Self
+pub fn MlrlqlearningLayer::fill(Self, Double) -> Self
+pub fn MlrlqlearningLayer::get(Self, Int32) -> Double
+pub fn MlrlqlearningLayer::len(Self) -> Int32
+pub fn MlrlqlearningLayer::max(Self) -> Double
+pub fn MlrlqlearningLayer::mean(Self) -> Double
+pub fn MlrlqlearningLayer::min(Self) -> Double
+pub fn MlrlqlearningLayer::scale(Self, Double) -> Self
+pub fn MlrlqlearningLayer::set(Self, Int32, Double) -> Self
+pub fn MlrlqlearningLayer::sum(Self) -> Double
+pub fn MlrlqlearningLayer::to_string(Self) -> String
+
+pub(all) struct MlrlqlearningMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlrlqlearningMatrix::add(Self, Self) -> Self
+pub fn MlrlqlearningMatrix::det(Self) -> Double
+pub fn MlrlqlearningMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlrlqlearningMatrix::multiply(Self, Self) -> Self
+pub fn MlrlqlearningMatrix::norm(Self) -> Double
+pub fn MlrlqlearningMatrix::scale(Self, Double) -> Self
+pub fn MlrlqlearningMatrix::to_string(Self) -> String
+pub fn MlrlqlearningMatrix::trace(Self) -> Double
+pub fn MlrlqlearningMatrix::transpose(Self) -> Self
+
+pub(all) struct MlrlqlearningModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlqlearningModel::add(Self, Self) -> Self
+pub fn MlrlqlearningModel::copy(Self) -> Self
+pub fn MlrlqlearningModel::fill(Self, Double) -> Self
+pub fn MlrlqlearningModel::get(Self, Int32) -> Double
+pub fn MlrlqlearningModel::len(Self) -> Int32
+pub fn MlrlqlearningModel::max(Self) -> Double
+pub fn MlrlqlearningModel::mean(Self) -> Double
+pub fn MlrlqlearningModel::min(Self) -> Double
+pub fn MlrlqlearningModel::scale(Self, Double) -> Self
+pub fn MlrlqlearningModel::set(Self, Int32, Double) -> Self
+pub fn MlrlqlearningModel::sum(Self) -> Double
+pub fn MlrlqlearningModel::to_string(Self) -> String
+
+pub(all) struct MlrlqlearningNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlqlearningNode::add(Self, Self) -> Self
+pub fn MlrlqlearningNode::copy(Self) -> Self
+pub fn MlrlqlearningNode::fill(Self, Double) -> Self
+pub fn MlrlqlearningNode::get(Self, Int32) -> Double
+pub fn MlrlqlearningNode::len(Self) -> Int32
+pub fn MlrlqlearningNode::max(Self) -> Double
+pub fn MlrlqlearningNode::mean(Self) -> Double
+pub fn MlrlqlearningNode::min(Self) -> Double
+pub fn MlrlqlearningNode::scale(Self, Double) -> Self
+pub fn MlrlqlearningNode::set(Self, Int32, Double) -> Self
+pub fn MlrlqlearningNode::sum(Self) -> Double
+pub fn MlrlqlearningNode::to_string(Self) -> String
+
+pub(all) struct MlrlqlearningPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlqlearningPath::add(Self, Self) -> Self
+pub fn MlrlqlearningPath::copy(Self) -> Self
+pub fn MlrlqlearningPath::fill(Self, Double) -> Self
+pub fn MlrlqlearningPath::get(Self, Int32) -> Double
+pub fn MlrlqlearningPath::len(Self) -> Int32
+pub fn MlrlqlearningPath::max(Self) -> Double
+pub fn MlrlqlearningPath::mean(Self) -> Double
+pub fn MlrlqlearningPath::min(Self) -> Double
+pub fn MlrlqlearningPath::scale(Self, Double) -> Self
+pub fn MlrlqlearningPath::set(Self, Int32, Double) -> Self
+pub fn MlrlqlearningPath::sum(Self) -> Double
+pub fn MlrlqlearningPath::to_string(Self) -> String
+
+pub(all) struct MlrlqlearningPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlrlqlearningPoint::add(Self, Self) -> Self
+pub fn MlrlqlearningPoint::cross(Self, Self) -> Self
+pub fn MlrlqlearningPoint::dist(Self, Self) -> Double
+pub fn MlrlqlearningPoint::dot(Self, Self) -> Double
+pub fn MlrlqlearningPoint::label(Self) -> Int32
+pub fn MlrlqlearningPoint::lerp(Self, Self, Double) -> Self
+pub fn MlrlqlearningPoint::mid(Self, Self) -> Self
+pub fn MlrlqlearningPoint::negate(Self) -> Self
+pub fn MlrlqlearningPoint::norm(Self) -> Double
+pub fn MlrlqlearningPoint::normalize(Self) -> Self
+pub fn MlrlqlearningPoint::scale(Self, Double) -> Self
+pub fn MlrlqlearningPoint::sub(Self, Self) -> Self
+pub fn MlrlqlearningPoint::to_string(Self) -> String
+pub fn MlrlqlearningPoint::x(Self) -> Double
+pub fn MlrlqlearningPoint::y(Self) -> Double
+pub fn MlrlqlearningPoint::z(Self) -> Double
+
+pub(all) struct MlrlqlearningRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlqlearningRange::add(Self, Self) -> Self
+pub fn MlrlqlearningRange::copy(Self) -> Self
+pub fn MlrlqlearningRange::fill(Self, Double) -> Self
+pub fn MlrlqlearningRange::get(Self, Int32) -> Double
+pub fn MlrlqlearningRange::len(Self) -> Int32
+pub fn MlrlqlearningRange::max(Self) -> Double
+pub fn MlrlqlearningRange::mean(Self) -> Double
+pub fn MlrlqlearningRange::min(Self) -> Double
+pub fn MlrlqlearningRange::scale(Self, Double) -> Self
+pub fn MlrlqlearningRange::set(Self, Int32, Double) -> Self
+pub fn MlrlqlearningRange::sum(Self) -> Double
+pub fn MlrlqlearningRange::to_string(Self) -> String
+
+pub(all) struct MlrlqlearningSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlrlqlearningSeries::add(Self, Self) -> Self
+pub fn MlrlqlearningSeries::cumsum(Self) -> Self
+pub fn MlrlqlearningSeries::len(Self) -> Int32
+pub fn MlrlqlearningSeries::max(Self) -> Double
+pub fn MlrlqlearningSeries::mean(Self) -> Double
+pub fn MlrlqlearningSeries::median(Self) -> Double
+pub fn MlrlqlearningSeries::min(Self) -> Double
+pub fn MlrlqlearningSeries::normalize(Self) -> Self
+pub fn MlrlqlearningSeries::range(Self) -> Double
+pub fn MlrlqlearningSeries::scale(Self, Double) -> Self
+pub fn MlrlqlearningSeries::std(Self) -> Double
+pub fn MlrlqlearningSeries::sub(Self, Self) -> Self
+pub fn MlrlqlearningSeries::sum(Self) -> Double
+pub fn MlrlqlearningSeries::to_string(Self) -> String
+pub fn MlrlqlearningSeries::variance(Self) -> Double
+
+pub(all) struct MlrlqlearningSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlqlearningSlice::add(Self, Self) -> Self
+pub fn MlrlqlearningSlice::copy(Self) -> Self
+pub fn MlrlqlearningSlice::fill(Self, Double) -> Self
+pub fn MlrlqlearningSlice::get(Self, Int32) -> Double
+pub fn MlrlqlearningSlice::len(Self) -> Int32
+pub fn MlrlqlearningSlice::max(Self) -> Double
+pub fn MlrlqlearningSlice::mean(Self) -> Double
+pub fn MlrlqlearningSlice::min(Self) -> Double
+pub fn MlrlqlearningSlice::scale(Self, Double) -> Self
+pub fn MlrlqlearningSlice::set(Self, Int32, Double) -> Self
+pub fn MlrlqlearningSlice::sum(Self) -> Double
+pub fn MlrlqlearningSlice::to_string(Self) -> String
+
+pub(all) struct MlrlqlearningTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlqlearningTable::add(Self, Self) -> Self
+pub fn MlrlqlearningTable::copy(Self) -> Self
+pub fn MlrlqlearningTable::fill(Self, Double) -> Self
+pub fn MlrlqlearningTable::get(Self, Int32) -> Double
+pub fn MlrlqlearningTable::len(Self) -> Int32
+pub fn MlrlqlearningTable::max(Self) -> Double
+pub fn MlrlqlearningTable::mean(Self) -> Double
+pub fn MlrlqlearningTable::min(Self) -> Double
+pub fn MlrlqlearningTable::scale(Self, Double) -> Self
+pub fn MlrlqlearningTable::set(Self, Int32, Double) -> Self
+pub fn MlrlqlearningTable::sum(Self) -> Double
+pub fn MlrlqlearningTable::to_string(Self) -> String
+
+pub(all) struct MlrlqlearningVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlrlqlearningVector::add(Self, Self) -> Self
+pub fn MlrlqlearningVector::dist(Self, Self) -> Double
+pub fn MlrlqlearningVector::dot(Self, Self) -> Double
+pub fn MlrlqlearningVector::norm(Self) -> Double
+pub fn MlrlqlearningVector::normalize(Self) -> Self
+pub fn MlrlqlearningVector::scale(Self, Double) -> Self
+pub fn MlrlqlearningVector::sub(Self, Self) -> Self
+pub fn MlrlqlearningVector::to_string(Self) -> String
+
+pub(all) struct MlrlqlearningView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrlqlearningView::add(Self, Self) -> Self
+pub fn MlrlqlearningView::copy(Self) -> Self
+pub fn MlrlqlearningView::fill(Self, Double) -> Self
+pub fn MlrlqlearningView::get(Self, Int32) -> Double
+pub fn MlrlqlearningView::len(Self) -> Int32
+pub fn MlrlqlearningView::max(Self) -> Double
+pub fn MlrlqlearningView::mean(Self) -> Double
+pub fn MlrlqlearningView::min(Self) -> Double
+pub fn MlrlqlearningView::scale(Self, Double) -> Self
+pub fn MlrlqlearningView::set(Self, Int32, Double) -> Self
+pub fn MlrlqlearningView::sum(Self) -> Double
+pub fn MlrlqlearningView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

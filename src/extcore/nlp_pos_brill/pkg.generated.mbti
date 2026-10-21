@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_pos_brill"
+
+// Values
+pub fn nlp_pos_brill_buffer_make(Int32) -> NlpposbrillBuffer
+
+pub fn nlp_pos_brill_cluster_make(Int32) -> NlpposbrillCluster
+
+pub fn nlp_pos_brill_cursor_make(Int32) -> NlpposbrillCursor
+
+pub fn nlp_pos_brill_edge_make(Int32) -> NlpposbrillEdge
+
+pub fn nlp_pos_brill_frame_make(Int32) -> NlpposbrillFrame
+
+pub fn nlp_pos_brill_graphn_make(Int32) -> NlpposbrillGraphN
+
+pub fn nlp_pos_brill_layer_make(Int32) -> NlpposbrillLayer
+
+pub fn nlp_pos_brill_make_matrix(Int32, Int32, Double) -> NlpposbrillMatrix
+
+pub fn nlp_pos_brill_make_point(Double, Double) -> NlpposbrillPoint
+
+pub fn nlp_pos_brill_make_point3(Double, Double, Double) -> NlpposbrillPoint
+
+pub fn nlp_pos_brill_make_series(Array[Double], String) -> NlpposbrillSeries
+
+pub fn nlp_pos_brill_make_vector(Array[Double]) -> NlpposbrillVector
+
+pub fn nlp_pos_brill_matrix_identity(Int32) -> NlpposbrillMatrix
+
+pub fn nlp_pos_brill_model_make(Int32) -> NlpposbrillModel
+
+pub fn nlp_pos_brill_node_make(Int32) -> NlpposbrillNode
+
+pub fn nlp_pos_brill_path_make(Int32) -> NlpposbrillPath
+
+pub fn nlp_pos_brill_range_make(Int32) -> NlpposbrillRange
+
+pub fn nlp_pos_brill_slice_make(Int32) -> NlpposbrillSlice
+
+pub fn nlp_pos_brill_table_make(Int32) -> NlpposbrillTable
+
+pub fn nlp_pos_brill_vector_zero(Int32) -> NlpposbrillVector
+
+pub fn nlp_pos_brill_view_make(Int32) -> NlpposbrillView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlpposbrillBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbrillBuffer::add(Self, Self) -> Self
+pub fn NlpposbrillBuffer::copy(Self) -> Self
+pub fn NlpposbrillBuffer::fill(Self, Double) -> Self
+pub fn NlpposbrillBuffer::get(Self, Int32) -> Double
+pub fn NlpposbrillBuffer::len(Self) -> Int32
+pub fn NlpposbrillBuffer::max(Self) -> Double
+pub fn NlpposbrillBuffer::mean(Self) -> Double
+pub fn NlpposbrillBuffer::min(Self) -> Double
+pub fn NlpposbrillBuffer::scale(Self, Double) -> Self
+pub fn NlpposbrillBuffer::set(Self, Int32, Double) -> Self
+pub fn NlpposbrillBuffer::sum(Self) -> Double
+pub fn NlpposbrillBuffer::to_string(Self) -> String
+
+pub(all) struct NlpposbrillCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbrillCluster::add(Self, Self) -> Self
+pub fn NlpposbrillCluster::copy(Self) -> Self
+pub fn NlpposbrillCluster::fill(Self, Double) -> Self
+pub fn NlpposbrillCluster::get(Self, Int32) -> Double
+pub fn NlpposbrillCluster::len(Self) -> Int32
+pub fn NlpposbrillCluster::max(Self) -> Double
+pub fn NlpposbrillCluster::mean(Self) -> Double
+pub fn NlpposbrillCluster::min(Self) -> Double
+pub fn NlpposbrillCluster::scale(Self, Double) -> Self
+pub fn NlpposbrillCluster::set(Self, Int32, Double) -> Self
+pub fn NlpposbrillCluster::sum(Self) -> Double
+pub fn NlpposbrillCluster::to_string(Self) -> String
+
+pub(all) struct NlpposbrillCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbrillCursor::add(Self, Self) -> Self
+pub fn NlpposbrillCursor::copy(Self) -> Self
+pub fn NlpposbrillCursor::fill(Self, Double) -> Self
+pub fn NlpposbrillCursor::get(Self, Int32) -> Double
+pub fn NlpposbrillCursor::len(Self) -> Int32
+pub fn NlpposbrillCursor::max(Self) -> Double
+pub fn NlpposbrillCursor::mean(Self) -> Double
+pub fn NlpposbrillCursor::min(Self) -> Double
+pub fn NlpposbrillCursor::scale(Self, Double) -> Self
+pub fn NlpposbrillCursor::set(Self, Int32, Double) -> Self
+pub fn NlpposbrillCursor::sum(Self) -> Double
+pub fn NlpposbrillCursor::to_string(Self) -> String
+
+pub(all) struct NlpposbrillEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbrillEdge::add(Self, Self) -> Self
+pub fn NlpposbrillEdge::copy(Self) -> Self
+pub fn NlpposbrillEdge::fill(Self, Double) -> Self
+pub fn NlpposbrillEdge::get(Self, Int32) -> Double
+pub fn NlpposbrillEdge::len(Self) -> Int32
+pub fn NlpposbrillEdge::max(Self) -> Double
+pub fn NlpposbrillEdge::mean(Self) -> Double
+pub fn NlpposbrillEdge::min(Self) -> Double
+pub fn NlpposbrillEdge::scale(Self, Double) -> Self
+pub fn NlpposbrillEdge::set(Self, Int32, Double) -> Self
+pub fn NlpposbrillEdge::sum(Self) -> Double
+pub fn NlpposbrillEdge::to_string(Self) -> String
+
+pub(all) struct NlpposbrillFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbrillFrame::add(Self, Self) -> Self
+pub fn NlpposbrillFrame::copy(Self) -> Self
+pub fn NlpposbrillFrame::fill(Self, Double) -> Self
+pub fn NlpposbrillFrame::get(Self, Int32) -> Double
+pub fn NlpposbrillFrame::len(Self) -> Int32
+pub fn NlpposbrillFrame::max(Self) -> Double
+pub fn NlpposbrillFrame::mean(Self) -> Double
+pub fn NlpposbrillFrame::min(Self) -> Double
+pub fn NlpposbrillFrame::scale(Self, Double) -> Self
+pub fn NlpposbrillFrame::set(Self, Int32, Double) -> Self
+pub fn NlpposbrillFrame::sum(Self) -> Double
+pub fn NlpposbrillFrame::to_string(Self) -> String
+
+pub(all) struct NlpposbrillGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbrillGraphN::add(Self, Self) -> Self
+pub fn NlpposbrillGraphN::copy(Self) -> Self
+pub fn NlpposbrillGraphN::fill(Self, Double) -> Self
+pub fn NlpposbrillGraphN::get(Self, Int32) -> Double
+pub fn NlpposbrillGraphN::len(Self) -> Int32
+pub fn NlpposbrillGraphN::max(Self) -> Double
+pub fn NlpposbrillGraphN::mean(Self) -> Double
+pub fn NlpposbrillGraphN::min(Self) -> Double
+pub fn NlpposbrillGraphN::scale(Self, Double) -> Self
+pub fn NlpposbrillGraphN::set(Self, Int32, Double) -> Self
+pub fn NlpposbrillGraphN::sum(Self) -> Double
+pub fn NlpposbrillGraphN::to_string(Self) -> String
+
+pub(all) struct NlpposbrillLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbrillLayer::add(Self, Self) -> Self
+pub fn NlpposbrillLayer::copy(Self) -> Self
+pub fn NlpposbrillLayer::fill(Self, Double) -> Self
+pub fn NlpposbrillLayer::get(Self, Int32) -> Double
+pub fn NlpposbrillLayer::len(Self) -> Int32
+pub fn NlpposbrillLayer::max(Self) -> Double
+pub fn NlpposbrillLayer::mean(Self) -> Double
+pub fn NlpposbrillLayer::min(Self) -> Double
+pub fn NlpposbrillLayer::scale(Self, Double) -> Self
+pub fn NlpposbrillLayer::set(Self, Int32, Double) -> Self
+pub fn NlpposbrillLayer::sum(Self) -> Double
+pub fn NlpposbrillLayer::to_string(Self) -> String
+
+pub(all) struct NlpposbrillMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlpposbrillMatrix::add(Self, Self) -> Self
+pub fn NlpposbrillMatrix::det(Self) -> Double
+pub fn NlpposbrillMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlpposbrillMatrix::multiply(Self, Self) -> Self
+pub fn NlpposbrillMatrix::norm(Self) -> Double
+pub fn NlpposbrillMatrix::scale(Self, Double) -> Self
+pub fn NlpposbrillMatrix::to_string(Self) -> String
+pub fn NlpposbrillMatrix::trace(Self) -> Double
+pub fn NlpposbrillMatrix::transpose(Self) -> Self
+
+pub(all) struct NlpposbrillModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbrillModel::add(Self, Self) -> Self
+pub fn NlpposbrillModel::copy(Self) -> Self
+pub fn NlpposbrillModel::fill(Self, Double) -> Self
+pub fn NlpposbrillModel::get(Self, Int32) -> Double
+pub fn NlpposbrillModel::len(Self) -> Int32
+pub fn NlpposbrillModel::max(Self) -> Double
+pub fn NlpposbrillModel::mean(Self) -> Double
+pub fn NlpposbrillModel::min(Self) -> Double
+pub fn NlpposbrillModel::scale(Self, Double) -> Self
+pub fn NlpposbrillModel::set(Self, Int32, Double) -> Self
+pub fn NlpposbrillModel::sum(Self) -> Double
+pub fn NlpposbrillModel::to_string(Self) -> String
+
+pub(all) struct NlpposbrillNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbrillNode::add(Self, Self) -> Self
+pub fn NlpposbrillNode::copy(Self) -> Self
+pub fn NlpposbrillNode::fill(Self, Double) -> Self
+pub fn NlpposbrillNode::get(Self, Int32) -> Double
+pub fn NlpposbrillNode::len(Self) -> Int32
+pub fn NlpposbrillNode::max(Self) -> Double
+pub fn NlpposbrillNode::mean(Self) -> Double
+pub fn NlpposbrillNode::min(Self) -> Double
+pub fn NlpposbrillNode::scale(Self, Double) -> Self
+pub fn NlpposbrillNode::set(Self, Int32, Double) -> Self
+pub fn NlpposbrillNode::sum(Self) -> Double
+pub fn NlpposbrillNode::to_string(Self) -> String
+
+pub(all) struct NlpposbrillPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbrillPath::add(Self, Self) -> Self
+pub fn NlpposbrillPath::copy(Self) -> Self
+pub fn NlpposbrillPath::fill(Self, Double) -> Self
+pub fn NlpposbrillPath::get(Self, Int32) -> Double
+pub fn NlpposbrillPath::len(Self) -> Int32
+pub fn NlpposbrillPath::max(Self) -> Double
+pub fn NlpposbrillPath::mean(Self) -> Double
+pub fn NlpposbrillPath::min(Self) -> Double
+pub fn NlpposbrillPath::scale(Self, Double) -> Self
+pub fn NlpposbrillPath::set(Self, Int32, Double) -> Self
+pub fn NlpposbrillPath::sum(Self) -> Double
+pub fn NlpposbrillPath::to_string(Self) -> String
+
+pub(all) struct NlpposbrillPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlpposbrillPoint::add(Self, Self) -> Self
+pub fn NlpposbrillPoint::cross(Self, Self) -> Self
+pub fn NlpposbrillPoint::dist(Self, Self) -> Double
+pub fn NlpposbrillPoint::dot(Self, Self) -> Double
+pub fn NlpposbrillPoint::label(Self) -> Int32
+pub fn NlpposbrillPoint::lerp(Self, Self, Double) -> Self
+pub fn NlpposbrillPoint::mid(Self, Self) -> Self
+pub fn NlpposbrillPoint::negate(Self) -> Self
+pub fn NlpposbrillPoint::norm(Self) -> Double
+pub fn NlpposbrillPoint::normalize(Self) -> Self
+pub fn NlpposbrillPoint::scale(Self, Double) -> Self
+pub fn NlpposbrillPoint::sub(Self, Self) -> Self
+pub fn NlpposbrillPoint::to_string(Self) -> String
+pub fn NlpposbrillPoint::x(Self) -> Double
+pub fn NlpposbrillPoint::y(Self) -> Double
+pub fn NlpposbrillPoint::z(Self) -> Double
+
+pub(all) struct NlpposbrillRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbrillRange::add(Self, Self) -> Self
+pub fn NlpposbrillRange::copy(Self) -> Self
+pub fn NlpposbrillRange::fill(Self, Double) -> Self
+pub fn NlpposbrillRange::get(Self, Int32) -> Double
+pub fn NlpposbrillRange::len(Self) -> Int32
+pub fn NlpposbrillRange::max(Self) -> Double
+pub fn NlpposbrillRange::mean(Self) -> Double
+pub fn NlpposbrillRange::min(Self) -> Double
+pub fn NlpposbrillRange::scale(Self, Double) -> Self
+pub fn NlpposbrillRange::set(Self, Int32, Double) -> Self
+pub fn NlpposbrillRange::sum(Self) -> Double
+pub fn NlpposbrillRange::to_string(Self) -> String
+
+pub(all) struct NlpposbrillSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlpposbrillSeries::add(Self, Self) -> Self
+pub fn NlpposbrillSeries::cumsum(Self) -> Self
+pub fn NlpposbrillSeries::len(Self) -> Int32
+pub fn NlpposbrillSeries::max(Self) -> Double
+pub fn NlpposbrillSeries::mean(Self) -> Double
+pub fn NlpposbrillSeries::median(Self) -> Double
+pub fn NlpposbrillSeries::min(Self) -> Double
+pub fn NlpposbrillSeries::normalize(Self) -> Self
+pub fn NlpposbrillSeries::range(Self) -> Double
+pub fn NlpposbrillSeries::scale(Self, Double) -> Self
+pub fn NlpposbrillSeries::std(Self) -> Double
+pub fn NlpposbrillSeries::sub(Self, Self) -> Self
+pub fn NlpposbrillSeries::sum(Self) -> Double
+pub fn NlpposbrillSeries::to_string(Self) -> String
+pub fn NlpposbrillSeries::variance(Self) -> Double
+
+pub(all) struct NlpposbrillSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbrillSlice::add(Self, Self) -> Self
+pub fn NlpposbrillSlice::copy(Self) -> Self
+pub fn NlpposbrillSlice::fill(Self, Double) -> Self
+pub fn NlpposbrillSlice::get(Self, Int32) -> Double
+pub fn NlpposbrillSlice::len(Self) -> Int32
+pub fn NlpposbrillSlice::max(Self) -> Double
+pub fn NlpposbrillSlice::mean(Self) -> Double
+pub fn NlpposbrillSlice::min(Self) -> Double
+pub fn NlpposbrillSlice::scale(Self, Double) -> Self
+pub fn NlpposbrillSlice::set(Self, Int32, Double) -> Self
+pub fn NlpposbrillSlice::sum(Self) -> Double
+pub fn NlpposbrillSlice::to_string(Self) -> String
+
+pub(all) struct NlpposbrillTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbrillTable::add(Self, Self) -> Self
+pub fn NlpposbrillTable::copy(Self) -> Self
+pub fn NlpposbrillTable::fill(Self, Double) -> Self
+pub fn NlpposbrillTable::get(Self, Int32) -> Double
+pub fn NlpposbrillTable::len(Self) -> Int32
+pub fn NlpposbrillTable::max(Self) -> Double
+pub fn NlpposbrillTable::mean(Self) -> Double
+pub fn NlpposbrillTable::min(Self) -> Double
+pub fn NlpposbrillTable::scale(Self, Double) -> Self
+pub fn NlpposbrillTable::set(Self, Int32, Double) -> Self
+pub fn NlpposbrillTable::sum(Self) -> Double
+pub fn NlpposbrillTable::to_string(Self) -> String
+
+pub(all) struct NlpposbrillVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlpposbrillVector::add(Self, Self) -> Self
+pub fn NlpposbrillVector::dist(Self, Self) -> Double
+pub fn NlpposbrillVector::dot(Self, Self) -> Double
+pub fn NlpposbrillVector::norm(Self) -> Double
+pub fn NlpposbrillVector::normalize(Self) -> Self
+pub fn NlpposbrillVector::scale(Self, Double) -> Self
+pub fn NlpposbrillVector::sub(Self, Self) -> Self
+pub fn NlpposbrillVector::to_string(Self) -> String
+
+pub(all) struct NlpposbrillView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpposbrillView::add(Self, Self) -> Self
+pub fn NlpposbrillView::copy(Self) -> Self
+pub fn NlpposbrillView::fill(Self, Double) -> Self
+pub fn NlpposbrillView::get(Self, Int32) -> Double
+pub fn NlpposbrillView::len(Self) -> Int32
+pub fn NlpposbrillView::max(Self) -> Double
+pub fn NlpposbrillView::mean(Self) -> Double
+pub fn NlpposbrillView::min(Self) -> Double
+pub fn NlpposbrillView::scale(Self, Double) -> Self
+pub fn NlpposbrillView::set(Self, Int32, Double) -> Self
+pub fn NlpposbrillView::sum(Self) -> Double
+pub fn NlpposbrillView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

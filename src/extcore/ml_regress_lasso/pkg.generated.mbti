@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_regress_lasso"
+
+// Values
+pub fn ml_regress_lasso_buffer_make(Int32) -> MlregresslassoBuffer
+
+pub fn ml_regress_lasso_cluster_make(Int32) -> MlregresslassoCluster
+
+pub fn ml_regress_lasso_cursor_make(Int32) -> MlregresslassoCursor
+
+pub fn ml_regress_lasso_edge_make(Int32) -> MlregresslassoEdge
+
+pub fn ml_regress_lasso_frame_make(Int32) -> MlregresslassoFrame
+
+pub fn ml_regress_lasso_graphn_make(Int32) -> MlregresslassoGraphN
+
+pub fn ml_regress_lasso_layer_make(Int32) -> MlregresslassoLayer
+
+pub fn ml_regress_lasso_make_matrix(Int32, Int32, Double) -> MlregresslassoMatrix
+
+pub fn ml_regress_lasso_make_point(Double, Double) -> MlregresslassoPoint
+
+pub fn ml_regress_lasso_make_point3(Double, Double, Double) -> MlregresslassoPoint
+
+pub fn ml_regress_lasso_make_series(Array[Double], String) -> MlregresslassoSeries
+
+pub fn ml_regress_lasso_make_vector(Array[Double]) -> MlregresslassoVector
+
+pub fn ml_regress_lasso_matrix_identity(Int32) -> MlregresslassoMatrix
+
+pub fn ml_regress_lasso_model_make(Int32) -> MlregresslassoModel
+
+pub fn ml_regress_lasso_node_make(Int32) -> MlregresslassoNode
+
+pub fn ml_regress_lasso_path_make(Int32) -> MlregresslassoPath
+
+pub fn ml_regress_lasso_range_make(Int32) -> MlregresslassoRange
+
+pub fn ml_regress_lasso_slice_make(Int32) -> MlregresslassoSlice
+
+pub fn ml_regress_lasso_table_make(Int32) -> MlregresslassoTable
+
+pub fn ml_regress_lasso_vector_zero(Int32) -> MlregresslassoVector
+
+pub fn ml_regress_lasso_view_make(Int32) -> MlregresslassoView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlregresslassoBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresslassoBuffer::add(Self, Self) -> Self
+pub fn MlregresslassoBuffer::copy(Self) -> Self
+pub fn MlregresslassoBuffer::fill(Self, Double) -> Self
+pub fn MlregresslassoBuffer::get(Self, Int32) -> Double
+pub fn MlregresslassoBuffer::len(Self) -> Int32
+pub fn MlregresslassoBuffer::max(Self) -> Double
+pub fn MlregresslassoBuffer::mean(Self) -> Double
+pub fn MlregresslassoBuffer::min(Self) -> Double
+pub fn MlregresslassoBuffer::scale(Self, Double) -> Self
+pub fn MlregresslassoBuffer::set(Self, Int32, Double) -> Self
+pub fn MlregresslassoBuffer::sum(Self) -> Double
+pub fn MlregresslassoBuffer::to_string(Self) -> String
+
+pub(all) struct MlregresslassoCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresslassoCluster::add(Self, Self) -> Self
+pub fn MlregresslassoCluster::copy(Self) -> Self
+pub fn MlregresslassoCluster::fill(Self, Double) -> Self
+pub fn MlregresslassoCluster::get(Self, Int32) -> Double
+pub fn MlregresslassoCluster::len(Self) -> Int32
+pub fn MlregresslassoCluster::max(Self) -> Double
+pub fn MlregresslassoCluster::mean(Self) -> Double
+pub fn MlregresslassoCluster::min(Self) -> Double
+pub fn MlregresslassoCluster::scale(Self, Double) -> Self
+pub fn MlregresslassoCluster::set(Self, Int32, Double) -> Self
+pub fn MlregresslassoCluster::sum(Self) -> Double
+pub fn MlregresslassoCluster::to_string(Self) -> String
+
+pub(all) struct MlregresslassoCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresslassoCursor::add(Self, Self) -> Self
+pub fn MlregresslassoCursor::copy(Self) -> Self
+pub fn MlregresslassoCursor::fill(Self, Double) -> Self
+pub fn MlregresslassoCursor::get(Self, Int32) -> Double
+pub fn MlregresslassoCursor::len(Self) -> Int32
+pub fn MlregresslassoCursor::max(Self) -> Double
+pub fn MlregresslassoCursor::mean(Self) -> Double
+pub fn MlregresslassoCursor::min(Self) -> Double
+pub fn MlregresslassoCursor::scale(Self, Double) -> Self
+pub fn MlregresslassoCursor::set(Self, Int32, Double) -> Self
+pub fn MlregresslassoCursor::sum(Self) -> Double
+pub fn MlregresslassoCursor::to_string(Self) -> String
+
+pub(all) struct MlregresslassoEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresslassoEdge::add(Self, Self) -> Self
+pub fn MlregresslassoEdge::copy(Self) -> Self
+pub fn MlregresslassoEdge::fill(Self, Double) -> Self
+pub fn MlregresslassoEdge::get(Self, Int32) -> Double
+pub fn MlregresslassoEdge::len(Self) -> Int32
+pub fn MlregresslassoEdge::max(Self) -> Double
+pub fn MlregresslassoEdge::mean(Self) -> Double
+pub fn MlregresslassoEdge::min(Self) -> Double
+pub fn MlregresslassoEdge::scale(Self, Double) -> Self
+pub fn MlregresslassoEdge::set(Self, Int32, Double) -> Self
+pub fn MlregresslassoEdge::sum(Self) -> Double
+pub fn MlregresslassoEdge::to_string(Self) -> String
+
+pub(all) struct MlregresslassoFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresslassoFrame::add(Self, Self) -> Self
+pub fn MlregresslassoFrame::copy(Self) -> Self
+pub fn MlregresslassoFrame::fill(Self, Double) -> Self
+pub fn MlregresslassoFrame::get(Self, Int32) -> Double
+pub fn MlregresslassoFrame::len(Self) -> Int32
+pub fn MlregresslassoFrame::max(Self) -> Double
+pub fn MlregresslassoFrame::mean(Self) -> Double
+pub fn MlregresslassoFrame::min(Self) -> Double
+pub fn MlregresslassoFrame::scale(Self, Double) -> Self
+pub fn MlregresslassoFrame::set(Self, Int32, Double) -> Self
+pub fn MlregresslassoFrame::sum(Self) -> Double
+pub fn MlregresslassoFrame::to_string(Self) -> String
+
+pub(all) struct MlregresslassoGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresslassoGraphN::add(Self, Self) -> Self
+pub fn MlregresslassoGraphN::copy(Self) -> Self
+pub fn MlregresslassoGraphN::fill(Self, Double) -> Self
+pub fn MlregresslassoGraphN::get(Self, Int32) -> Double
+pub fn MlregresslassoGraphN::len(Self) -> Int32
+pub fn MlregresslassoGraphN::max(Self) -> Double
+pub fn MlregresslassoGraphN::mean(Self) -> Double
+pub fn MlregresslassoGraphN::min(Self) -> Double
+pub fn MlregresslassoGraphN::scale(Self, Double) -> Self
+pub fn MlregresslassoGraphN::set(Self, Int32, Double) -> Self
+pub fn MlregresslassoGraphN::sum(Self) -> Double
+pub fn MlregresslassoGraphN::to_string(Self) -> String
+
+pub(all) struct MlregresslassoLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresslassoLayer::add(Self, Self) -> Self
+pub fn MlregresslassoLayer::copy(Self) -> Self
+pub fn MlregresslassoLayer::fill(Self, Double) -> Self
+pub fn MlregresslassoLayer::get(Self, Int32) -> Double
+pub fn MlregresslassoLayer::len(Self) -> Int32
+pub fn MlregresslassoLayer::max(Self) -> Double
+pub fn MlregresslassoLayer::mean(Self) -> Double
+pub fn MlregresslassoLayer::min(Self) -> Double
+pub fn MlregresslassoLayer::scale(Self, Double) -> Self
+pub fn MlregresslassoLayer::set(Self, Int32, Double) -> Self
+pub fn MlregresslassoLayer::sum(Self) -> Double
+pub fn MlregresslassoLayer::to_string(Self) -> String
+
+pub(all) struct MlregresslassoMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlregresslassoMatrix::add(Self, Self) -> Self
+pub fn MlregresslassoMatrix::det(Self) -> Double
+pub fn MlregresslassoMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlregresslassoMatrix::multiply(Self, Self) -> Self
+pub fn MlregresslassoMatrix::norm(Self) -> Double
+pub fn MlregresslassoMatrix::scale(Self, Double) -> Self
+pub fn MlregresslassoMatrix::to_string(Self) -> String
+pub fn MlregresslassoMatrix::trace(Self) -> Double
+pub fn MlregresslassoMatrix::transpose(Self) -> Self
+
+pub(all) struct MlregresslassoModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresslassoModel::add(Self, Self) -> Self
+pub fn MlregresslassoModel::copy(Self) -> Self
+pub fn MlregresslassoModel::fill(Self, Double) -> Self
+pub fn MlregresslassoModel::get(Self, Int32) -> Double
+pub fn MlregresslassoModel::len(Self) -> Int32
+pub fn MlregresslassoModel::max(Self) -> Double
+pub fn MlregresslassoModel::mean(Self) -> Double
+pub fn MlregresslassoModel::min(Self) -> Double
+pub fn MlregresslassoModel::scale(Self, Double) -> Self
+pub fn MlregresslassoModel::set(Self, Int32, Double) -> Self
+pub fn MlregresslassoModel::sum(Self) -> Double
+pub fn MlregresslassoModel::to_string(Self) -> String
+
+pub(all) struct MlregresslassoNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresslassoNode::add(Self, Self) -> Self
+pub fn MlregresslassoNode::copy(Self) -> Self
+pub fn MlregresslassoNode::fill(Self, Double) -> Self
+pub fn MlregresslassoNode::get(Self, Int32) -> Double
+pub fn MlregresslassoNode::len(Self) -> Int32
+pub fn MlregresslassoNode::max(Self) -> Double
+pub fn MlregresslassoNode::mean(Self) -> Double
+pub fn MlregresslassoNode::min(Self) -> Double
+pub fn MlregresslassoNode::scale(Self, Double) -> Self
+pub fn MlregresslassoNode::set(Self, Int32, Double) -> Self
+pub fn MlregresslassoNode::sum(Self) -> Double
+pub fn MlregresslassoNode::to_string(Self) -> String
+
+pub(all) struct MlregresslassoPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresslassoPath::add(Self, Self) -> Self
+pub fn MlregresslassoPath::copy(Self) -> Self
+pub fn MlregresslassoPath::fill(Self, Double) -> Self
+pub fn MlregresslassoPath::get(Self, Int32) -> Double
+pub fn MlregresslassoPath::len(Self) -> Int32
+pub fn MlregresslassoPath::max(Self) -> Double
+pub fn MlregresslassoPath::mean(Self) -> Double
+pub fn MlregresslassoPath::min(Self) -> Double
+pub fn MlregresslassoPath::scale(Self, Double) -> Self
+pub fn MlregresslassoPath::set(Self, Int32, Double) -> Self
+pub fn MlregresslassoPath::sum(Self) -> Double
+pub fn MlregresslassoPath::to_string(Self) -> String
+
+pub(all) struct MlregresslassoPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlregresslassoPoint::add(Self, Self) -> Self
+pub fn MlregresslassoPoint::cross(Self, Self) -> Self
+pub fn MlregresslassoPoint::dist(Self, Self) -> Double
+pub fn MlregresslassoPoint::dot(Self, Self) -> Double
+pub fn MlregresslassoPoint::label(Self) -> Int32
+pub fn MlregresslassoPoint::lerp(Self, Self, Double) -> Self
+pub fn MlregresslassoPoint::mid(Self, Self) -> Self
+pub fn MlregresslassoPoint::negate(Self) -> Self
+pub fn MlregresslassoPoint::norm(Self) -> Double
+pub fn MlregresslassoPoint::normalize(Self) -> Self
+pub fn MlregresslassoPoint::scale(Self, Double) -> Self
+pub fn MlregresslassoPoint::sub(Self, Self) -> Self
+pub fn MlregresslassoPoint::to_string(Self) -> String
+pub fn MlregresslassoPoint::x(Self) -> Double
+pub fn MlregresslassoPoint::y(Self) -> Double
+pub fn MlregresslassoPoint::z(Self) -> Double
+
+pub(all) struct MlregresslassoRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresslassoRange::add(Self, Self) -> Self
+pub fn MlregresslassoRange::copy(Self) -> Self
+pub fn MlregresslassoRange::fill(Self, Double) -> Self
+pub fn MlregresslassoRange::get(Self, Int32) -> Double
+pub fn MlregresslassoRange::len(Self) -> Int32
+pub fn MlregresslassoRange::max(Self) -> Double
+pub fn MlregresslassoRange::mean(Self) -> Double
+pub fn MlregresslassoRange::min(Self) -> Double
+pub fn MlregresslassoRange::scale(Self, Double) -> Self
+pub fn MlregresslassoRange::set(Self, Int32, Double) -> Self
+pub fn MlregresslassoRange::sum(Self) -> Double
+pub fn MlregresslassoRange::to_string(Self) -> String
+
+pub(all) struct MlregresslassoSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlregresslassoSeries::add(Self, Self) -> Self
+pub fn MlregresslassoSeries::cumsum(Self) -> Self
+pub fn MlregresslassoSeries::len(Self) -> Int32
+pub fn MlregresslassoSeries::max(Self) -> Double
+pub fn MlregresslassoSeries::mean(Self) -> Double
+pub fn MlregresslassoSeries::median(Self) -> Double
+pub fn MlregresslassoSeries::min(Self) -> Double
+pub fn MlregresslassoSeries::normalize(Self) -> Self
+pub fn MlregresslassoSeries::range(Self) -> Double
+pub fn MlregresslassoSeries::scale(Self, Double) -> Self
+pub fn MlregresslassoSeries::std(Self) -> Double
+pub fn MlregresslassoSeries::sub(Self, Self) -> Self
+pub fn MlregresslassoSeries::sum(Self) -> Double
+pub fn MlregresslassoSeries::to_string(Self) -> String
+pub fn MlregresslassoSeries::variance(Self) -> Double
+
+pub(all) struct MlregresslassoSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresslassoSlice::add(Self, Self) -> Self
+pub fn MlregresslassoSlice::copy(Self) -> Self
+pub fn MlregresslassoSlice::fill(Self, Double) -> Self
+pub fn MlregresslassoSlice::get(Self, Int32) -> Double
+pub fn MlregresslassoSlice::len(Self) -> Int32
+pub fn MlregresslassoSlice::max(Self) -> Double
+pub fn MlregresslassoSlice::mean(Self) -> Double
+pub fn MlregresslassoSlice::min(Self) -> Double
+pub fn MlregresslassoSlice::scale(Self, Double) -> Self
+pub fn MlregresslassoSlice::set(Self, Int32, Double) -> Self
+pub fn MlregresslassoSlice::sum(Self) -> Double
+pub fn MlregresslassoSlice::to_string(Self) -> String
+
+pub(all) struct MlregresslassoTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresslassoTable::add(Self, Self) -> Self
+pub fn MlregresslassoTable::copy(Self) -> Self
+pub fn MlregresslassoTable::fill(Self, Double) -> Self
+pub fn MlregresslassoTable::get(Self, Int32) -> Double
+pub fn MlregresslassoTable::len(Self) -> Int32
+pub fn MlregresslassoTable::max(Self) -> Double
+pub fn MlregresslassoTable::mean(Self) -> Double
+pub fn MlregresslassoTable::min(Self) -> Double
+pub fn MlregresslassoTable::scale(Self, Double) -> Self
+pub fn MlregresslassoTable::set(Self, Int32, Double) -> Self
+pub fn MlregresslassoTable::sum(Self) -> Double
+pub fn MlregresslassoTable::to_string(Self) -> String
+
+pub(all) struct MlregresslassoVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlregresslassoVector::add(Self, Self) -> Self
+pub fn MlregresslassoVector::dist(Self, Self) -> Double
+pub fn MlregresslassoVector::dot(Self, Self) -> Double
+pub fn MlregresslassoVector::norm(Self) -> Double
+pub fn MlregresslassoVector::normalize(Self) -> Self
+pub fn MlregresslassoVector::scale(Self, Double) -> Self
+pub fn MlregresslassoVector::sub(Self, Self) -> Self
+pub fn MlregresslassoVector::to_string(Self) -> String
+
+pub(all) struct MlregresslassoView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresslassoView::add(Self, Self) -> Self
+pub fn MlregresslassoView::copy(Self) -> Self
+pub fn MlregresslassoView::fill(Self, Double) -> Self
+pub fn MlregresslassoView::get(Self, Int32) -> Double
+pub fn MlregresslassoView::len(Self) -> Int32
+pub fn MlregresslassoView::max(Self) -> Double
+pub fn MlregresslassoView::mean(Self) -> Double
+pub fn MlregresslassoView::min(Self) -> Double
+pub fn MlregresslassoView::scale(Self, Double) -> Self
+pub fn MlregresslassoView::set(Self, Int32, Double) -> Self
+pub fn MlregresslassoView::sum(Self) -> Double
+pub fn MlregresslassoView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

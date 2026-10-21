@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_exchange_j"
+
+// Values
+pub fn sort_exchange_j_buffer_make(Int32) -> SortexchangejBuffer
+
+pub fn sort_exchange_j_cluster_make(Int32) -> SortexchangejCluster
+
+pub fn sort_exchange_j_cursor_make(Int32) -> SortexchangejCursor
+
+pub fn sort_exchange_j_edge_make(Int32) -> SortexchangejEdge
+
+pub fn sort_exchange_j_frame_make(Int32) -> SortexchangejFrame
+
+pub fn sort_exchange_j_graphn_make(Int32) -> SortexchangejGraphN
+
+pub fn sort_exchange_j_layer_make(Int32) -> SortexchangejLayer
+
+pub fn sort_exchange_j_make_matrix(Int32, Int32, Double) -> SortexchangejMatrix
+
+pub fn sort_exchange_j_make_point(Double, Double) -> SortexchangejPoint
+
+pub fn sort_exchange_j_make_point3(Double, Double, Double) -> SortexchangejPoint
+
+pub fn sort_exchange_j_make_series(Array[Double], String) -> SortexchangejSeries
+
+pub fn sort_exchange_j_make_vector(Array[Double]) -> SortexchangejVector
+
+pub fn sort_exchange_j_matrix_identity(Int32) -> SortexchangejMatrix
+
+pub fn sort_exchange_j_model_make(Int32) -> SortexchangejModel
+
+pub fn sort_exchange_j_node_make(Int32) -> SortexchangejNode
+
+pub fn sort_exchange_j_path_make(Int32) -> SortexchangejPath
+
+pub fn sort_exchange_j_range_make(Int32) -> SortexchangejRange
+
+pub fn sort_exchange_j_slice_make(Int32) -> SortexchangejSlice
+
+pub fn sort_exchange_j_table_make(Int32) -> SortexchangejTable
+
+pub fn sort_exchange_j_vector_zero(Int32) -> SortexchangejVector
+
+pub fn sort_exchange_j_view_make(Int32) -> SortexchangejView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortexchangejBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangejBuffer::add(Self, Self) -> Self
+pub fn SortexchangejBuffer::copy(Self) -> Self
+pub fn SortexchangejBuffer::fill(Self, Double) -> Self
+pub fn SortexchangejBuffer::get(Self, Int32) -> Double
+pub fn SortexchangejBuffer::len(Self) -> Int32
+pub fn SortexchangejBuffer::max(Self) -> Double
+pub fn SortexchangejBuffer::mean(Self) -> Double
+pub fn SortexchangejBuffer::min(Self) -> Double
+pub fn SortexchangejBuffer::scale(Self, Double) -> Self
+pub fn SortexchangejBuffer::set(Self, Int32, Double) -> Self
+pub fn SortexchangejBuffer::sum(Self) -> Double
+pub fn SortexchangejBuffer::to_string(Self) -> String
+
+pub(all) struct SortexchangejCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangejCluster::add(Self, Self) -> Self
+pub fn SortexchangejCluster::copy(Self) -> Self
+pub fn SortexchangejCluster::fill(Self, Double) -> Self
+pub fn SortexchangejCluster::get(Self, Int32) -> Double
+pub fn SortexchangejCluster::len(Self) -> Int32
+pub fn SortexchangejCluster::max(Self) -> Double
+pub fn SortexchangejCluster::mean(Self) -> Double
+pub fn SortexchangejCluster::min(Self) -> Double
+pub fn SortexchangejCluster::scale(Self, Double) -> Self
+pub fn SortexchangejCluster::set(Self, Int32, Double) -> Self
+pub fn SortexchangejCluster::sum(Self) -> Double
+pub fn SortexchangejCluster::to_string(Self) -> String
+
+pub(all) struct SortexchangejCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangejCursor::add(Self, Self) -> Self
+pub fn SortexchangejCursor::copy(Self) -> Self
+pub fn SortexchangejCursor::fill(Self, Double) -> Self
+pub fn SortexchangejCursor::get(Self, Int32) -> Double
+pub fn SortexchangejCursor::len(Self) -> Int32
+pub fn SortexchangejCursor::max(Self) -> Double
+pub fn SortexchangejCursor::mean(Self) -> Double
+pub fn SortexchangejCursor::min(Self) -> Double
+pub fn SortexchangejCursor::scale(Self, Double) -> Self
+pub fn SortexchangejCursor::set(Self, Int32, Double) -> Self
+pub fn SortexchangejCursor::sum(Self) -> Double
+pub fn SortexchangejCursor::to_string(Self) -> String
+
+pub(all) struct SortexchangejEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangejEdge::add(Self, Self) -> Self
+pub fn SortexchangejEdge::copy(Self) -> Self
+pub fn SortexchangejEdge::fill(Self, Double) -> Self
+pub fn SortexchangejEdge::get(Self, Int32) -> Double
+pub fn SortexchangejEdge::len(Self) -> Int32
+pub fn SortexchangejEdge::max(Self) -> Double
+pub fn SortexchangejEdge::mean(Self) -> Double
+pub fn SortexchangejEdge::min(Self) -> Double
+pub fn SortexchangejEdge::scale(Self, Double) -> Self
+pub fn SortexchangejEdge::set(Self, Int32, Double) -> Self
+pub fn SortexchangejEdge::sum(Self) -> Double
+pub fn SortexchangejEdge::to_string(Self) -> String
+
+pub(all) struct SortexchangejFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangejFrame::add(Self, Self) -> Self
+pub fn SortexchangejFrame::copy(Self) -> Self
+pub fn SortexchangejFrame::fill(Self, Double) -> Self
+pub fn SortexchangejFrame::get(Self, Int32) -> Double
+pub fn SortexchangejFrame::len(Self) -> Int32
+pub fn SortexchangejFrame::max(Self) -> Double
+pub fn SortexchangejFrame::mean(Self) -> Double
+pub fn SortexchangejFrame::min(Self) -> Double
+pub fn SortexchangejFrame::scale(Self, Double) -> Self
+pub fn SortexchangejFrame::set(Self, Int32, Double) -> Self
+pub fn SortexchangejFrame::sum(Self) -> Double
+pub fn SortexchangejFrame::to_string(Self) -> String
+
+pub(all) struct SortexchangejGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangejGraphN::add(Self, Self) -> Self
+pub fn SortexchangejGraphN::copy(Self) -> Self
+pub fn SortexchangejGraphN::fill(Self, Double) -> Self
+pub fn SortexchangejGraphN::get(Self, Int32) -> Double
+pub fn SortexchangejGraphN::len(Self) -> Int32
+pub fn SortexchangejGraphN::max(Self) -> Double
+pub fn SortexchangejGraphN::mean(Self) -> Double
+pub fn SortexchangejGraphN::min(Self) -> Double
+pub fn SortexchangejGraphN::scale(Self, Double) -> Self
+pub fn SortexchangejGraphN::set(Self, Int32, Double) -> Self
+pub fn SortexchangejGraphN::sum(Self) -> Double
+pub fn SortexchangejGraphN::to_string(Self) -> String
+
+pub(all) struct SortexchangejLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangejLayer::add(Self, Self) -> Self
+pub fn SortexchangejLayer::copy(Self) -> Self
+pub fn SortexchangejLayer::fill(Self, Double) -> Self
+pub fn SortexchangejLayer::get(Self, Int32) -> Double
+pub fn SortexchangejLayer::len(Self) -> Int32
+pub fn SortexchangejLayer::max(Self) -> Double
+pub fn SortexchangejLayer::mean(Self) -> Double
+pub fn SortexchangejLayer::min(Self) -> Double
+pub fn SortexchangejLayer::scale(Self, Double) -> Self
+pub fn SortexchangejLayer::set(Self, Int32, Double) -> Self
+pub fn SortexchangejLayer::sum(Self) -> Double
+pub fn SortexchangejLayer::to_string(Self) -> String
+
+pub(all) struct SortexchangejMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortexchangejMatrix::add(Self, Self) -> Self
+pub fn SortexchangejMatrix::det(Self) -> Double
+pub fn SortexchangejMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortexchangejMatrix::multiply(Self, Self) -> Self
+pub fn SortexchangejMatrix::norm(Self) -> Double
+pub fn SortexchangejMatrix::scale(Self, Double) -> Self
+pub fn SortexchangejMatrix::to_string(Self) -> String
+pub fn SortexchangejMatrix::trace(Self) -> Double
+pub fn SortexchangejMatrix::transpose(Self) -> Self
+
+pub(all) struct SortexchangejModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangejModel::add(Self, Self) -> Self
+pub fn SortexchangejModel::copy(Self) -> Self
+pub fn SortexchangejModel::fill(Self, Double) -> Self
+pub fn SortexchangejModel::get(Self, Int32) -> Double
+pub fn SortexchangejModel::len(Self) -> Int32
+pub fn SortexchangejModel::max(Self) -> Double
+pub fn SortexchangejModel::mean(Self) -> Double
+pub fn SortexchangejModel::min(Self) -> Double
+pub fn SortexchangejModel::scale(Self, Double) -> Self
+pub fn SortexchangejModel::set(Self, Int32, Double) -> Self
+pub fn SortexchangejModel::sum(Self) -> Double
+pub fn SortexchangejModel::to_string(Self) -> String
+
+pub(all) struct SortexchangejNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangejNode::add(Self, Self) -> Self
+pub fn SortexchangejNode::copy(Self) -> Self
+pub fn SortexchangejNode::fill(Self, Double) -> Self
+pub fn SortexchangejNode::get(Self, Int32) -> Double
+pub fn SortexchangejNode::len(Self) -> Int32
+pub fn SortexchangejNode::max(Self) -> Double
+pub fn SortexchangejNode::mean(Self) -> Double
+pub fn SortexchangejNode::min(Self) -> Double
+pub fn SortexchangejNode::scale(Self, Double) -> Self
+pub fn SortexchangejNode::set(Self, Int32, Double) -> Self
+pub fn SortexchangejNode::sum(Self) -> Double
+pub fn SortexchangejNode::to_string(Self) -> String
+
+pub(all) struct SortexchangejPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangejPath::add(Self, Self) -> Self
+pub fn SortexchangejPath::copy(Self) -> Self
+pub fn SortexchangejPath::fill(Self, Double) -> Self
+pub fn SortexchangejPath::get(Self, Int32) -> Double
+pub fn SortexchangejPath::len(Self) -> Int32
+pub fn SortexchangejPath::max(Self) -> Double
+pub fn SortexchangejPath::mean(Self) -> Double
+pub fn SortexchangejPath::min(Self) -> Double
+pub fn SortexchangejPath::scale(Self, Double) -> Self
+pub fn SortexchangejPath::set(Self, Int32, Double) -> Self
+pub fn SortexchangejPath::sum(Self) -> Double
+pub fn SortexchangejPath::to_string(Self) -> String
+
+pub(all) struct SortexchangejPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortexchangejPoint::add(Self, Self) -> Self
+pub fn SortexchangejPoint::cross(Self, Self) -> Self
+pub fn SortexchangejPoint::dist(Self, Self) -> Double
+pub fn SortexchangejPoint::dot(Self, Self) -> Double
+pub fn SortexchangejPoint::label(Self) -> Int32
+pub fn SortexchangejPoint::lerp(Self, Self, Double) -> Self
+pub fn SortexchangejPoint::mid(Self, Self) -> Self
+pub fn SortexchangejPoint::negate(Self) -> Self
+pub fn SortexchangejPoint::norm(Self) -> Double
+pub fn SortexchangejPoint::normalize(Self) -> Self
+pub fn SortexchangejPoint::scale(Self, Double) -> Self
+pub fn SortexchangejPoint::sub(Self, Self) -> Self
+pub fn SortexchangejPoint::to_string(Self) -> String
+pub fn SortexchangejPoint::x(Self) -> Double
+pub fn SortexchangejPoint::y(Self) -> Double
+pub fn SortexchangejPoint::z(Self) -> Double
+
+pub(all) struct SortexchangejRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangejRange::add(Self, Self) -> Self
+pub fn SortexchangejRange::copy(Self) -> Self
+pub fn SortexchangejRange::fill(Self, Double) -> Self
+pub fn SortexchangejRange::get(Self, Int32) -> Double
+pub fn SortexchangejRange::len(Self) -> Int32
+pub fn SortexchangejRange::max(Self) -> Double
+pub fn SortexchangejRange::mean(Self) -> Double
+pub fn SortexchangejRange::min(Self) -> Double
+pub fn SortexchangejRange::scale(Self, Double) -> Self
+pub fn SortexchangejRange::set(Self, Int32, Double) -> Self
+pub fn SortexchangejRange::sum(Self) -> Double
+pub fn SortexchangejRange::to_string(Self) -> String
+
+pub(all) struct SortexchangejSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortexchangejSeries::add(Self, Self) -> Self
+pub fn SortexchangejSeries::cumsum(Self) -> Self
+pub fn SortexchangejSeries::len(Self) -> Int32
+pub fn SortexchangejSeries::max(Self) -> Double
+pub fn SortexchangejSeries::mean(Self) -> Double
+pub fn SortexchangejSeries::median(Self) -> Double
+pub fn SortexchangejSeries::min(Self) -> Double
+pub fn SortexchangejSeries::normalize(Self) -> Self
+pub fn SortexchangejSeries::range(Self) -> Double
+pub fn SortexchangejSeries::scale(Self, Double) -> Self
+pub fn SortexchangejSeries::std(Self) -> Double
+pub fn SortexchangejSeries::sub(Self, Self) -> Self
+pub fn SortexchangejSeries::sum(Self) -> Double
+pub fn SortexchangejSeries::to_string(Self) -> String
+pub fn SortexchangejSeries::variance(Self) -> Double
+
+pub(all) struct SortexchangejSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangejSlice::add(Self, Self) -> Self
+pub fn SortexchangejSlice::copy(Self) -> Self
+pub fn SortexchangejSlice::fill(Self, Double) -> Self
+pub fn SortexchangejSlice::get(Self, Int32) -> Double
+pub fn SortexchangejSlice::len(Self) -> Int32
+pub fn SortexchangejSlice::max(Self) -> Double
+pub fn SortexchangejSlice::mean(Self) -> Double
+pub fn SortexchangejSlice::min(Self) -> Double
+pub fn SortexchangejSlice::scale(Self, Double) -> Self
+pub fn SortexchangejSlice::set(Self, Int32, Double) -> Self
+pub fn SortexchangejSlice::sum(Self) -> Double
+pub fn SortexchangejSlice::to_string(Self) -> String
+
+pub(all) struct SortexchangejTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangejTable::add(Self, Self) -> Self
+pub fn SortexchangejTable::copy(Self) -> Self
+pub fn SortexchangejTable::fill(Self, Double) -> Self
+pub fn SortexchangejTable::get(Self, Int32) -> Double
+pub fn SortexchangejTable::len(Self) -> Int32
+pub fn SortexchangejTable::max(Self) -> Double
+pub fn SortexchangejTable::mean(Self) -> Double
+pub fn SortexchangejTable::min(Self) -> Double
+pub fn SortexchangejTable::scale(Self, Double) -> Self
+pub fn SortexchangejTable::set(Self, Int32, Double) -> Self
+pub fn SortexchangejTable::sum(Self) -> Double
+pub fn SortexchangejTable::to_string(Self) -> String
+
+pub(all) struct SortexchangejVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortexchangejVector::add(Self, Self) -> Self
+pub fn SortexchangejVector::dist(Self, Self) -> Double
+pub fn SortexchangejVector::dot(Self, Self) -> Double
+pub fn SortexchangejVector::norm(Self) -> Double
+pub fn SortexchangejVector::normalize(Self) -> Self
+pub fn SortexchangejVector::scale(Self, Double) -> Self
+pub fn SortexchangejVector::sub(Self, Self) -> Self
+pub fn SortexchangejVector::to_string(Self) -> String
+
+pub(all) struct SortexchangejView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangejView::add(Self, Self) -> Self
+pub fn SortexchangejView::copy(Self) -> Self
+pub fn SortexchangejView::fill(Self, Double) -> Self
+pub fn SortexchangejView::get(Self, Int32) -> Double
+pub fn SortexchangejView::len(Self) -> Int32
+pub fn SortexchangejView::max(Self) -> Double
+pub fn SortexchangejView::mean(Self) -> Double
+pub fn SortexchangejView::min(Self) -> Double
+pub fn SortexchangejView::scale(Self, Double) -> Self
+pub fn SortexchangejView::set(Self, Int32, Double) -> Self
+pub fn SortexchangejView::sum(Self) -> Double
+pub fn SortexchangejView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

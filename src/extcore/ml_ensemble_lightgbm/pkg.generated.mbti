@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_ensemble_lightgbm"
+
+// Values
+pub fn ml_ensemble_lightgbm_buffer_make(Int32) -> MlensemblelightgbmBuffer
+
+pub fn ml_ensemble_lightgbm_cluster_make(Int32) -> MlensemblelightgbmCluster
+
+pub fn ml_ensemble_lightgbm_cursor_make(Int32) -> MlensemblelightgbmCursor
+
+pub fn ml_ensemble_lightgbm_edge_make(Int32) -> MlensemblelightgbmEdge
+
+pub fn ml_ensemble_lightgbm_frame_make(Int32) -> MlensemblelightgbmFrame
+
+pub fn ml_ensemble_lightgbm_graphn_make(Int32) -> MlensemblelightgbmGraphN
+
+pub fn ml_ensemble_lightgbm_layer_make(Int32) -> MlensemblelightgbmLayer
+
+pub fn ml_ensemble_lightgbm_make_matrix(Int32, Int32, Double) -> MlensemblelightgbmMatrix
+
+pub fn ml_ensemble_lightgbm_make_point(Double, Double) -> MlensemblelightgbmPoint
+
+pub fn ml_ensemble_lightgbm_make_point3(Double, Double, Double) -> MlensemblelightgbmPoint
+
+pub fn ml_ensemble_lightgbm_make_series(Array[Double], String) -> MlensemblelightgbmSeries
+
+pub fn ml_ensemble_lightgbm_make_vector(Array[Double]) -> MlensemblelightgbmVector
+
+pub fn ml_ensemble_lightgbm_matrix_identity(Int32) -> MlensemblelightgbmMatrix
+
+pub fn ml_ensemble_lightgbm_model_make(Int32) -> MlensemblelightgbmModel
+
+pub fn ml_ensemble_lightgbm_node_make(Int32) -> MlensemblelightgbmNode
+
+pub fn ml_ensemble_lightgbm_path_make(Int32) -> MlensemblelightgbmPath
+
+pub fn ml_ensemble_lightgbm_range_make(Int32) -> MlensemblelightgbmRange
+
+pub fn ml_ensemble_lightgbm_slice_make(Int32) -> MlensemblelightgbmSlice
+
+pub fn ml_ensemble_lightgbm_table_make(Int32) -> MlensemblelightgbmTable
+
+pub fn ml_ensemble_lightgbm_vector_zero(Int32) -> MlensemblelightgbmVector
+
+pub fn ml_ensemble_lightgbm_view_make(Int32) -> MlensemblelightgbmView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlensemblelightgbmBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblelightgbmBuffer::add(Self, Self) -> Self
+pub fn MlensemblelightgbmBuffer::copy(Self) -> Self
+pub fn MlensemblelightgbmBuffer::fill(Self, Double) -> Self
+pub fn MlensemblelightgbmBuffer::get(Self, Int32) -> Double
+pub fn MlensemblelightgbmBuffer::len(Self) -> Int32
+pub fn MlensemblelightgbmBuffer::max(Self) -> Double
+pub fn MlensemblelightgbmBuffer::mean(Self) -> Double
+pub fn MlensemblelightgbmBuffer::min(Self) -> Double
+pub fn MlensemblelightgbmBuffer::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmBuffer::set(Self, Int32, Double) -> Self
+pub fn MlensemblelightgbmBuffer::sum(Self) -> Double
+pub fn MlensemblelightgbmBuffer::to_string(Self) -> String
+
+pub(all) struct MlensemblelightgbmCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblelightgbmCluster::add(Self, Self) -> Self
+pub fn MlensemblelightgbmCluster::copy(Self) -> Self
+pub fn MlensemblelightgbmCluster::fill(Self, Double) -> Self
+pub fn MlensemblelightgbmCluster::get(Self, Int32) -> Double
+pub fn MlensemblelightgbmCluster::len(Self) -> Int32
+pub fn MlensemblelightgbmCluster::max(Self) -> Double
+pub fn MlensemblelightgbmCluster::mean(Self) -> Double
+pub fn MlensemblelightgbmCluster::min(Self) -> Double
+pub fn MlensemblelightgbmCluster::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmCluster::set(Self, Int32, Double) -> Self
+pub fn MlensemblelightgbmCluster::sum(Self) -> Double
+pub fn MlensemblelightgbmCluster::to_string(Self) -> String
+
+pub(all) struct MlensemblelightgbmCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblelightgbmCursor::add(Self, Self) -> Self
+pub fn MlensemblelightgbmCursor::copy(Self) -> Self
+pub fn MlensemblelightgbmCursor::fill(Self, Double) -> Self
+pub fn MlensemblelightgbmCursor::get(Self, Int32) -> Double
+pub fn MlensemblelightgbmCursor::len(Self) -> Int32
+pub fn MlensemblelightgbmCursor::max(Self) -> Double
+pub fn MlensemblelightgbmCursor::mean(Self) -> Double
+pub fn MlensemblelightgbmCursor::min(Self) -> Double
+pub fn MlensemblelightgbmCursor::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmCursor::set(Self, Int32, Double) -> Self
+pub fn MlensemblelightgbmCursor::sum(Self) -> Double
+pub fn MlensemblelightgbmCursor::to_string(Self) -> String
+
+pub(all) struct MlensemblelightgbmEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblelightgbmEdge::add(Self, Self) -> Self
+pub fn MlensemblelightgbmEdge::copy(Self) -> Self
+pub fn MlensemblelightgbmEdge::fill(Self, Double) -> Self
+pub fn MlensemblelightgbmEdge::get(Self, Int32) -> Double
+pub fn MlensemblelightgbmEdge::len(Self) -> Int32
+pub fn MlensemblelightgbmEdge::max(Self) -> Double
+pub fn MlensemblelightgbmEdge::mean(Self) -> Double
+pub fn MlensemblelightgbmEdge::min(Self) -> Double
+pub fn MlensemblelightgbmEdge::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmEdge::set(Self, Int32, Double) -> Self
+pub fn MlensemblelightgbmEdge::sum(Self) -> Double
+pub fn MlensemblelightgbmEdge::to_string(Self) -> String
+
+pub(all) struct MlensemblelightgbmFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblelightgbmFrame::add(Self, Self) -> Self
+pub fn MlensemblelightgbmFrame::copy(Self) -> Self
+pub fn MlensemblelightgbmFrame::fill(Self, Double) -> Self
+pub fn MlensemblelightgbmFrame::get(Self, Int32) -> Double
+pub fn MlensemblelightgbmFrame::len(Self) -> Int32
+pub fn MlensemblelightgbmFrame::max(Self) -> Double
+pub fn MlensemblelightgbmFrame::mean(Self) -> Double
+pub fn MlensemblelightgbmFrame::min(Self) -> Double
+pub fn MlensemblelightgbmFrame::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmFrame::set(Self, Int32, Double) -> Self
+pub fn MlensemblelightgbmFrame::sum(Self) -> Double
+pub fn MlensemblelightgbmFrame::to_string(Self) -> String
+
+pub(all) struct MlensemblelightgbmGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblelightgbmGraphN::add(Self, Self) -> Self
+pub fn MlensemblelightgbmGraphN::copy(Self) -> Self
+pub fn MlensemblelightgbmGraphN::fill(Self, Double) -> Self
+pub fn MlensemblelightgbmGraphN::get(Self, Int32) -> Double
+pub fn MlensemblelightgbmGraphN::len(Self) -> Int32
+pub fn MlensemblelightgbmGraphN::max(Self) -> Double
+pub fn MlensemblelightgbmGraphN::mean(Self) -> Double
+pub fn MlensemblelightgbmGraphN::min(Self) -> Double
+pub fn MlensemblelightgbmGraphN::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmGraphN::set(Self, Int32, Double) -> Self
+pub fn MlensemblelightgbmGraphN::sum(Self) -> Double
+pub fn MlensemblelightgbmGraphN::to_string(Self) -> String
+
+pub(all) struct MlensemblelightgbmLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblelightgbmLayer::add(Self, Self) -> Self
+pub fn MlensemblelightgbmLayer::copy(Self) -> Self
+pub fn MlensemblelightgbmLayer::fill(Self, Double) -> Self
+pub fn MlensemblelightgbmLayer::get(Self, Int32) -> Double
+pub fn MlensemblelightgbmLayer::len(Self) -> Int32
+pub fn MlensemblelightgbmLayer::max(Self) -> Double
+pub fn MlensemblelightgbmLayer::mean(Self) -> Double
+pub fn MlensemblelightgbmLayer::min(Self) -> Double
+pub fn MlensemblelightgbmLayer::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmLayer::set(Self, Int32, Double) -> Self
+pub fn MlensemblelightgbmLayer::sum(Self) -> Double
+pub fn MlensemblelightgbmLayer::to_string(Self) -> String
+
+pub(all) struct MlensemblelightgbmMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlensemblelightgbmMatrix::add(Self, Self) -> Self
+pub fn MlensemblelightgbmMatrix::det(Self) -> Double
+pub fn MlensemblelightgbmMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlensemblelightgbmMatrix::multiply(Self, Self) -> Self
+pub fn MlensemblelightgbmMatrix::norm(Self) -> Double
+pub fn MlensemblelightgbmMatrix::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmMatrix::to_string(Self) -> String
+pub fn MlensemblelightgbmMatrix::trace(Self) -> Double
+pub fn MlensemblelightgbmMatrix::transpose(Self) -> Self
+
+pub(all) struct MlensemblelightgbmModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblelightgbmModel::add(Self, Self) -> Self
+pub fn MlensemblelightgbmModel::copy(Self) -> Self
+pub fn MlensemblelightgbmModel::fill(Self, Double) -> Self
+pub fn MlensemblelightgbmModel::get(Self, Int32) -> Double
+pub fn MlensemblelightgbmModel::len(Self) -> Int32
+pub fn MlensemblelightgbmModel::max(Self) -> Double
+pub fn MlensemblelightgbmModel::mean(Self) -> Double
+pub fn MlensemblelightgbmModel::min(Self) -> Double
+pub fn MlensemblelightgbmModel::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmModel::set(Self, Int32, Double) -> Self
+pub fn MlensemblelightgbmModel::sum(Self) -> Double
+pub fn MlensemblelightgbmModel::to_string(Self) -> String
+
+pub(all) struct MlensemblelightgbmNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblelightgbmNode::add(Self, Self) -> Self
+pub fn MlensemblelightgbmNode::copy(Self) -> Self
+pub fn MlensemblelightgbmNode::fill(Self, Double) -> Self
+pub fn MlensemblelightgbmNode::get(Self, Int32) -> Double
+pub fn MlensemblelightgbmNode::len(Self) -> Int32
+pub fn MlensemblelightgbmNode::max(Self) -> Double
+pub fn MlensemblelightgbmNode::mean(Self) -> Double
+pub fn MlensemblelightgbmNode::min(Self) -> Double
+pub fn MlensemblelightgbmNode::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmNode::set(Self, Int32, Double) -> Self
+pub fn MlensemblelightgbmNode::sum(Self) -> Double
+pub fn MlensemblelightgbmNode::to_string(Self) -> String
+
+pub(all) struct MlensemblelightgbmPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblelightgbmPath::add(Self, Self) -> Self
+pub fn MlensemblelightgbmPath::copy(Self) -> Self
+pub fn MlensemblelightgbmPath::fill(Self, Double) -> Self
+pub fn MlensemblelightgbmPath::get(Self, Int32) -> Double
+pub fn MlensemblelightgbmPath::len(Self) -> Int32
+pub fn MlensemblelightgbmPath::max(Self) -> Double
+pub fn MlensemblelightgbmPath::mean(Self) -> Double
+pub fn MlensemblelightgbmPath::min(Self) -> Double
+pub fn MlensemblelightgbmPath::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmPath::set(Self, Int32, Double) -> Self
+pub fn MlensemblelightgbmPath::sum(Self) -> Double
+pub fn MlensemblelightgbmPath::to_string(Self) -> String
+
+pub(all) struct MlensemblelightgbmPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlensemblelightgbmPoint::add(Self, Self) -> Self
+pub fn MlensemblelightgbmPoint::cross(Self, Self) -> Self
+pub fn MlensemblelightgbmPoint::dist(Self, Self) -> Double
+pub fn MlensemblelightgbmPoint::dot(Self, Self) -> Double
+pub fn MlensemblelightgbmPoint::label(Self) -> Int32
+pub fn MlensemblelightgbmPoint::lerp(Self, Self, Double) -> Self
+pub fn MlensemblelightgbmPoint::mid(Self, Self) -> Self
+pub fn MlensemblelightgbmPoint::negate(Self) -> Self
+pub fn MlensemblelightgbmPoint::norm(Self) -> Double
+pub fn MlensemblelightgbmPoint::normalize(Self) -> Self
+pub fn MlensemblelightgbmPoint::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmPoint::sub(Self, Self) -> Self
+pub fn MlensemblelightgbmPoint::to_string(Self) -> String
+pub fn MlensemblelightgbmPoint::x(Self) -> Double
+pub fn MlensemblelightgbmPoint::y(Self) -> Double
+pub fn MlensemblelightgbmPoint::z(Self) -> Double
+
+pub(all) struct MlensemblelightgbmRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblelightgbmRange::add(Self, Self) -> Self
+pub fn MlensemblelightgbmRange::copy(Self) -> Self
+pub fn MlensemblelightgbmRange::fill(Self, Double) -> Self
+pub fn MlensemblelightgbmRange::get(Self, Int32) -> Double
+pub fn MlensemblelightgbmRange::len(Self) -> Int32
+pub fn MlensemblelightgbmRange::max(Self) -> Double
+pub fn MlensemblelightgbmRange::mean(Self) -> Double
+pub fn MlensemblelightgbmRange::min(Self) -> Double
+pub fn MlensemblelightgbmRange::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmRange::set(Self, Int32, Double) -> Self
+pub fn MlensemblelightgbmRange::sum(Self) -> Double
+pub fn MlensemblelightgbmRange::to_string(Self) -> String
+
+pub(all) struct MlensemblelightgbmSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlensemblelightgbmSeries::add(Self, Self) -> Self
+pub fn MlensemblelightgbmSeries::cumsum(Self) -> Self
+pub fn MlensemblelightgbmSeries::len(Self) -> Int32
+pub fn MlensemblelightgbmSeries::max(Self) -> Double
+pub fn MlensemblelightgbmSeries::mean(Self) -> Double
+pub fn MlensemblelightgbmSeries::median(Self) -> Double
+pub fn MlensemblelightgbmSeries::min(Self) -> Double
+pub fn MlensemblelightgbmSeries::normalize(Self) -> Self
+pub fn MlensemblelightgbmSeries::range(Self) -> Double
+pub fn MlensemblelightgbmSeries::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmSeries::std(Self) -> Double
+pub fn MlensemblelightgbmSeries::sub(Self, Self) -> Self
+pub fn MlensemblelightgbmSeries::sum(Self) -> Double
+pub fn MlensemblelightgbmSeries::to_string(Self) -> String
+pub fn MlensemblelightgbmSeries::variance(Self) -> Double
+
+pub(all) struct MlensemblelightgbmSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblelightgbmSlice::add(Self, Self) -> Self
+pub fn MlensemblelightgbmSlice::copy(Self) -> Self
+pub fn MlensemblelightgbmSlice::fill(Self, Double) -> Self
+pub fn MlensemblelightgbmSlice::get(Self, Int32) -> Double
+pub fn MlensemblelightgbmSlice::len(Self) -> Int32
+pub fn MlensemblelightgbmSlice::max(Self) -> Double
+pub fn MlensemblelightgbmSlice::mean(Self) -> Double
+pub fn MlensemblelightgbmSlice::min(Self) -> Double
+pub fn MlensemblelightgbmSlice::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmSlice::set(Self, Int32, Double) -> Self
+pub fn MlensemblelightgbmSlice::sum(Self) -> Double
+pub fn MlensemblelightgbmSlice::to_string(Self) -> String
+
+pub(all) struct MlensemblelightgbmTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblelightgbmTable::add(Self, Self) -> Self
+pub fn MlensemblelightgbmTable::copy(Self) -> Self
+pub fn MlensemblelightgbmTable::fill(Self, Double) -> Self
+pub fn MlensemblelightgbmTable::get(Self, Int32) -> Double
+pub fn MlensemblelightgbmTable::len(Self) -> Int32
+pub fn MlensemblelightgbmTable::max(Self) -> Double
+pub fn MlensemblelightgbmTable::mean(Self) -> Double
+pub fn MlensemblelightgbmTable::min(Self) -> Double
+pub fn MlensemblelightgbmTable::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmTable::set(Self, Int32, Double) -> Self
+pub fn MlensemblelightgbmTable::sum(Self) -> Double
+pub fn MlensemblelightgbmTable::to_string(Self) -> String
+
+pub(all) struct MlensemblelightgbmVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlensemblelightgbmVector::add(Self, Self) -> Self
+pub fn MlensemblelightgbmVector::dist(Self, Self) -> Double
+pub fn MlensemblelightgbmVector::dot(Self, Self) -> Double
+pub fn MlensemblelightgbmVector::norm(Self) -> Double
+pub fn MlensemblelightgbmVector::normalize(Self) -> Self
+pub fn MlensemblelightgbmVector::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmVector::sub(Self, Self) -> Self
+pub fn MlensemblelightgbmVector::to_string(Self) -> String
+
+pub(all) struct MlensemblelightgbmView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblelightgbmView::add(Self, Self) -> Self
+pub fn MlensemblelightgbmView::copy(Self) -> Self
+pub fn MlensemblelightgbmView::fill(Self, Double) -> Self
+pub fn MlensemblelightgbmView::get(Self, Int32) -> Double
+pub fn MlensemblelightgbmView::len(Self) -> Int32
+pub fn MlensemblelightgbmView::max(Self) -> Double
+pub fn MlensemblelightgbmView::mean(Self) -> Double
+pub fn MlensemblelightgbmView::min(Self) -> Double
+pub fn MlensemblelightgbmView::scale(Self, Double) -> Self
+pub fn MlensemblelightgbmView::set(Self, Int32, Double) -> Self
+pub fn MlensemblelightgbmView::sum(Self) -> Double
+pub fn MlensemblelightgbmView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

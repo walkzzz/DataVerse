@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_transform_remap"
+
+// Values
+pub fn image_transform_remap_buffer_make(Int32) -> ImagetransformremapBuffer
+
+pub fn image_transform_remap_cluster_make(Int32) -> ImagetransformremapCluster
+
+pub fn image_transform_remap_cursor_make(Int32) -> ImagetransformremapCursor
+
+pub fn image_transform_remap_edge_make(Int32) -> ImagetransformremapEdge
+
+pub fn image_transform_remap_frame_make(Int32) -> ImagetransformremapFrame
+
+pub fn image_transform_remap_graphn_make(Int32) -> ImagetransformremapGraphN
+
+pub fn image_transform_remap_layer_make(Int32) -> ImagetransformremapLayer
+
+pub fn image_transform_remap_make_matrix(Int32, Int32, Double) -> ImagetransformremapMatrix
+
+pub fn image_transform_remap_make_point(Double, Double) -> ImagetransformremapPoint
+
+pub fn image_transform_remap_make_point3(Double, Double, Double) -> ImagetransformremapPoint
+
+pub fn image_transform_remap_make_series(Array[Double], String) -> ImagetransformremapSeries
+
+pub fn image_transform_remap_make_vector(Array[Double]) -> ImagetransformremapVector
+
+pub fn image_transform_remap_matrix_identity(Int32) -> ImagetransformremapMatrix
+
+pub fn image_transform_remap_model_make(Int32) -> ImagetransformremapModel
+
+pub fn image_transform_remap_node_make(Int32) -> ImagetransformremapNode
+
+pub fn image_transform_remap_path_make(Int32) -> ImagetransformremapPath
+
+pub fn image_transform_remap_range_make(Int32) -> ImagetransformremapRange
+
+pub fn image_transform_remap_slice_make(Int32) -> ImagetransformremapSlice
+
+pub fn image_transform_remap_table_make(Int32) -> ImagetransformremapTable
+
+pub fn image_transform_remap_vector_zero(Int32) -> ImagetransformremapVector
+
+pub fn image_transform_remap_view_make(Int32) -> ImagetransformremapView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagetransformremapBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformremapBuffer::add(Self, Self) -> Self
+pub fn ImagetransformremapBuffer::copy(Self) -> Self
+pub fn ImagetransformremapBuffer::fill(Self, Double) -> Self
+pub fn ImagetransformremapBuffer::get(Self, Int32) -> Double
+pub fn ImagetransformremapBuffer::len(Self) -> Int32
+pub fn ImagetransformremapBuffer::max(Self) -> Double
+pub fn ImagetransformremapBuffer::mean(Self) -> Double
+pub fn ImagetransformremapBuffer::min(Self) -> Double
+pub fn ImagetransformremapBuffer::scale(Self, Double) -> Self
+pub fn ImagetransformremapBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagetransformremapBuffer::sum(Self) -> Double
+pub fn ImagetransformremapBuffer::to_string(Self) -> String
+
+pub(all) struct ImagetransformremapCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformremapCluster::add(Self, Self) -> Self
+pub fn ImagetransformremapCluster::copy(Self) -> Self
+pub fn ImagetransformremapCluster::fill(Self, Double) -> Self
+pub fn ImagetransformremapCluster::get(Self, Int32) -> Double
+pub fn ImagetransformremapCluster::len(Self) -> Int32
+pub fn ImagetransformremapCluster::max(Self) -> Double
+pub fn ImagetransformremapCluster::mean(Self) -> Double
+pub fn ImagetransformremapCluster::min(Self) -> Double
+pub fn ImagetransformremapCluster::scale(Self, Double) -> Self
+pub fn ImagetransformremapCluster::set(Self, Int32, Double) -> Self
+pub fn ImagetransformremapCluster::sum(Self) -> Double
+pub fn ImagetransformremapCluster::to_string(Self) -> String
+
+pub(all) struct ImagetransformremapCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformremapCursor::add(Self, Self) -> Self
+pub fn ImagetransformremapCursor::copy(Self) -> Self
+pub fn ImagetransformremapCursor::fill(Self, Double) -> Self
+pub fn ImagetransformremapCursor::get(Self, Int32) -> Double
+pub fn ImagetransformremapCursor::len(Self) -> Int32
+pub fn ImagetransformremapCursor::max(Self) -> Double
+pub fn ImagetransformremapCursor::mean(Self) -> Double
+pub fn ImagetransformremapCursor::min(Self) -> Double
+pub fn ImagetransformremapCursor::scale(Self, Double) -> Self
+pub fn ImagetransformremapCursor::set(Self, Int32, Double) -> Self
+pub fn ImagetransformremapCursor::sum(Self) -> Double
+pub fn ImagetransformremapCursor::to_string(Self) -> String
+
+pub(all) struct ImagetransformremapEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformremapEdge::add(Self, Self) -> Self
+pub fn ImagetransformremapEdge::copy(Self) -> Self
+pub fn ImagetransformremapEdge::fill(Self, Double) -> Self
+pub fn ImagetransformremapEdge::get(Self, Int32) -> Double
+pub fn ImagetransformremapEdge::len(Self) -> Int32
+pub fn ImagetransformremapEdge::max(Self) -> Double
+pub fn ImagetransformremapEdge::mean(Self) -> Double
+pub fn ImagetransformremapEdge::min(Self) -> Double
+pub fn ImagetransformremapEdge::scale(Self, Double) -> Self
+pub fn ImagetransformremapEdge::set(Self, Int32, Double) -> Self
+pub fn ImagetransformremapEdge::sum(Self) -> Double
+pub fn ImagetransformremapEdge::to_string(Self) -> String
+
+pub(all) struct ImagetransformremapFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformremapFrame::add(Self, Self) -> Self
+pub fn ImagetransformremapFrame::copy(Self) -> Self
+pub fn ImagetransformremapFrame::fill(Self, Double) -> Self
+pub fn ImagetransformremapFrame::get(Self, Int32) -> Double
+pub fn ImagetransformremapFrame::len(Self) -> Int32
+pub fn ImagetransformremapFrame::max(Self) -> Double
+pub fn ImagetransformremapFrame::mean(Self) -> Double
+pub fn ImagetransformremapFrame::min(Self) -> Double
+pub fn ImagetransformremapFrame::scale(Self, Double) -> Self
+pub fn ImagetransformremapFrame::set(Self, Int32, Double) -> Self
+pub fn ImagetransformremapFrame::sum(Self) -> Double
+pub fn ImagetransformremapFrame::to_string(Self) -> String
+
+pub(all) struct ImagetransformremapGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformremapGraphN::add(Self, Self) -> Self
+pub fn ImagetransformremapGraphN::copy(Self) -> Self
+pub fn ImagetransformremapGraphN::fill(Self, Double) -> Self
+pub fn ImagetransformremapGraphN::get(Self, Int32) -> Double
+pub fn ImagetransformremapGraphN::len(Self) -> Int32
+pub fn ImagetransformremapGraphN::max(Self) -> Double
+pub fn ImagetransformremapGraphN::mean(Self) -> Double
+pub fn ImagetransformremapGraphN::min(Self) -> Double
+pub fn ImagetransformremapGraphN::scale(Self, Double) -> Self
+pub fn ImagetransformremapGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagetransformremapGraphN::sum(Self) -> Double
+pub fn ImagetransformremapGraphN::to_string(Self) -> String
+
+pub(all) struct ImagetransformremapLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformremapLayer::add(Self, Self) -> Self
+pub fn ImagetransformremapLayer::copy(Self) -> Self
+pub fn ImagetransformremapLayer::fill(Self, Double) -> Self
+pub fn ImagetransformremapLayer::get(Self, Int32) -> Double
+pub fn ImagetransformremapLayer::len(Self) -> Int32
+pub fn ImagetransformremapLayer::max(Self) -> Double
+pub fn ImagetransformremapLayer::mean(Self) -> Double
+pub fn ImagetransformremapLayer::min(Self) -> Double
+pub fn ImagetransformremapLayer::scale(Self, Double) -> Self
+pub fn ImagetransformremapLayer::set(Self, Int32, Double) -> Self
+pub fn ImagetransformremapLayer::sum(Self) -> Double
+pub fn ImagetransformremapLayer::to_string(Self) -> String
+
+pub(all) struct ImagetransformremapMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagetransformremapMatrix::add(Self, Self) -> Self
+pub fn ImagetransformremapMatrix::det(Self) -> Double
+pub fn ImagetransformremapMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagetransformremapMatrix::multiply(Self, Self) -> Self
+pub fn ImagetransformremapMatrix::norm(Self) -> Double
+pub fn ImagetransformremapMatrix::scale(Self, Double) -> Self
+pub fn ImagetransformremapMatrix::to_string(Self) -> String
+pub fn ImagetransformremapMatrix::trace(Self) -> Double
+pub fn ImagetransformremapMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagetransformremapModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformremapModel::add(Self, Self) -> Self
+pub fn ImagetransformremapModel::copy(Self) -> Self
+pub fn ImagetransformremapModel::fill(Self, Double) -> Self
+pub fn ImagetransformremapModel::get(Self, Int32) -> Double
+pub fn ImagetransformremapModel::len(Self) -> Int32
+pub fn ImagetransformremapModel::max(Self) -> Double
+pub fn ImagetransformremapModel::mean(Self) -> Double
+pub fn ImagetransformremapModel::min(Self) -> Double
+pub fn ImagetransformremapModel::scale(Self, Double) -> Self
+pub fn ImagetransformremapModel::set(Self, Int32, Double) -> Self
+pub fn ImagetransformremapModel::sum(Self) -> Double
+pub fn ImagetransformremapModel::to_string(Self) -> String
+
+pub(all) struct ImagetransformremapNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformremapNode::add(Self, Self) -> Self
+pub fn ImagetransformremapNode::copy(Self) -> Self
+pub fn ImagetransformremapNode::fill(Self, Double) -> Self
+pub fn ImagetransformremapNode::get(Self, Int32) -> Double
+pub fn ImagetransformremapNode::len(Self) -> Int32
+pub fn ImagetransformremapNode::max(Self) -> Double
+pub fn ImagetransformremapNode::mean(Self) -> Double
+pub fn ImagetransformremapNode::min(Self) -> Double
+pub fn ImagetransformremapNode::scale(Self, Double) -> Self
+pub fn ImagetransformremapNode::set(Self, Int32, Double) -> Self
+pub fn ImagetransformremapNode::sum(Self) -> Double
+pub fn ImagetransformremapNode::to_string(Self) -> String
+
+pub(all) struct ImagetransformremapPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformremapPath::add(Self, Self) -> Self
+pub fn ImagetransformremapPath::copy(Self) -> Self
+pub fn ImagetransformremapPath::fill(Self, Double) -> Self
+pub fn ImagetransformremapPath::get(Self, Int32) -> Double
+pub fn ImagetransformremapPath::len(Self) -> Int32
+pub fn ImagetransformremapPath::max(Self) -> Double
+pub fn ImagetransformremapPath::mean(Self) -> Double
+pub fn ImagetransformremapPath::min(Self) -> Double
+pub fn ImagetransformremapPath::scale(Self, Double) -> Self
+pub fn ImagetransformremapPath::set(Self, Int32, Double) -> Self
+pub fn ImagetransformremapPath::sum(Self) -> Double
+pub fn ImagetransformremapPath::to_string(Self) -> String
+
+pub(all) struct ImagetransformremapPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagetransformremapPoint::add(Self, Self) -> Self
+pub fn ImagetransformremapPoint::cross(Self, Self) -> Self
+pub fn ImagetransformremapPoint::dist(Self, Self) -> Double
+pub fn ImagetransformremapPoint::dot(Self, Self) -> Double
+pub fn ImagetransformremapPoint::label(Self) -> Int32
+pub fn ImagetransformremapPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagetransformremapPoint::mid(Self, Self) -> Self
+pub fn ImagetransformremapPoint::negate(Self) -> Self
+pub fn ImagetransformremapPoint::norm(Self) -> Double
+pub fn ImagetransformremapPoint::normalize(Self) -> Self
+pub fn ImagetransformremapPoint::scale(Self, Double) -> Self
+pub fn ImagetransformremapPoint::sub(Self, Self) -> Self
+pub fn ImagetransformremapPoint::to_string(Self) -> String
+pub fn ImagetransformremapPoint::x(Self) -> Double
+pub fn ImagetransformremapPoint::y(Self) -> Double
+pub fn ImagetransformremapPoint::z(Self) -> Double
+
+pub(all) struct ImagetransformremapRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformremapRange::add(Self, Self) -> Self
+pub fn ImagetransformremapRange::copy(Self) -> Self
+pub fn ImagetransformremapRange::fill(Self, Double) -> Self
+pub fn ImagetransformremapRange::get(Self, Int32) -> Double
+pub fn ImagetransformremapRange::len(Self) -> Int32
+pub fn ImagetransformremapRange::max(Self) -> Double
+pub fn ImagetransformremapRange::mean(Self) -> Double
+pub fn ImagetransformremapRange::min(Self) -> Double
+pub fn ImagetransformremapRange::scale(Self, Double) -> Self
+pub fn ImagetransformremapRange::set(Self, Int32, Double) -> Self
+pub fn ImagetransformremapRange::sum(Self) -> Double
+pub fn ImagetransformremapRange::to_string(Self) -> String
+
+pub(all) struct ImagetransformremapSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagetransformremapSeries::add(Self, Self) -> Self
+pub fn ImagetransformremapSeries::cumsum(Self) -> Self
+pub fn ImagetransformremapSeries::len(Self) -> Int32
+pub fn ImagetransformremapSeries::max(Self) -> Double
+pub fn ImagetransformremapSeries::mean(Self) -> Double
+pub fn ImagetransformremapSeries::median(Self) -> Double
+pub fn ImagetransformremapSeries::min(Self) -> Double
+pub fn ImagetransformremapSeries::normalize(Self) -> Self
+pub fn ImagetransformremapSeries::range(Self) -> Double
+pub fn ImagetransformremapSeries::scale(Self, Double) -> Self
+pub fn ImagetransformremapSeries::std(Self) -> Double
+pub fn ImagetransformremapSeries::sub(Self, Self) -> Self
+pub fn ImagetransformremapSeries::sum(Self) -> Double
+pub fn ImagetransformremapSeries::to_string(Self) -> String
+pub fn ImagetransformremapSeries::variance(Self) -> Double
+
+pub(all) struct ImagetransformremapSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformremapSlice::add(Self, Self) -> Self
+pub fn ImagetransformremapSlice::copy(Self) -> Self
+pub fn ImagetransformremapSlice::fill(Self, Double) -> Self
+pub fn ImagetransformremapSlice::get(Self, Int32) -> Double
+pub fn ImagetransformremapSlice::len(Self) -> Int32
+pub fn ImagetransformremapSlice::max(Self) -> Double
+pub fn ImagetransformremapSlice::mean(Self) -> Double
+pub fn ImagetransformremapSlice::min(Self) -> Double
+pub fn ImagetransformremapSlice::scale(Self, Double) -> Self
+pub fn ImagetransformremapSlice::set(Self, Int32, Double) -> Self
+pub fn ImagetransformremapSlice::sum(Self) -> Double
+pub fn ImagetransformremapSlice::to_string(Self) -> String
+
+pub(all) struct ImagetransformremapTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformremapTable::add(Self, Self) -> Self
+pub fn ImagetransformremapTable::copy(Self) -> Self
+pub fn ImagetransformremapTable::fill(Self, Double) -> Self
+pub fn ImagetransformremapTable::get(Self, Int32) -> Double
+pub fn ImagetransformremapTable::len(Self) -> Int32
+pub fn ImagetransformremapTable::max(Self) -> Double
+pub fn ImagetransformremapTable::mean(Self) -> Double
+pub fn ImagetransformremapTable::min(Self) -> Double
+pub fn ImagetransformremapTable::scale(Self, Double) -> Self
+pub fn ImagetransformremapTable::set(Self, Int32, Double) -> Self
+pub fn ImagetransformremapTable::sum(Self) -> Double
+pub fn ImagetransformremapTable::to_string(Self) -> String
+
+pub(all) struct ImagetransformremapVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagetransformremapVector::add(Self, Self) -> Self
+pub fn ImagetransformremapVector::dist(Self, Self) -> Double
+pub fn ImagetransformremapVector::dot(Self, Self) -> Double
+pub fn ImagetransformremapVector::norm(Self) -> Double
+pub fn ImagetransformremapVector::normalize(Self) -> Self
+pub fn ImagetransformremapVector::scale(Self, Double) -> Self
+pub fn ImagetransformremapVector::sub(Self, Self) -> Self
+pub fn ImagetransformremapVector::to_string(Self) -> String
+
+pub(all) struct ImagetransformremapView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagetransformremapView::add(Self, Self) -> Self
+pub fn ImagetransformremapView::copy(Self) -> Self
+pub fn ImagetransformremapView::fill(Self, Double) -> Self
+pub fn ImagetransformremapView::get(Self, Int32) -> Double
+pub fn ImagetransformremapView::len(Self) -> Int32
+pub fn ImagetransformremapView::max(Self) -> Double
+pub fn ImagetransformremapView::mean(Self) -> Double
+pub fn ImagetransformremapView::min(Self) -> Double
+pub fn ImagetransformremapView::scale(Self, Double) -> Self
+pub fn ImagetransformremapView::set(Self, Int32, Double) -> Self
+pub fn ImagetransformremapView::sum(Self) -> Double
+pub fn ImagetransformremapView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

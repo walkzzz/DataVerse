@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_route_isis"
+
+// Values
+pub fn net_route_isis_buffer_make(Int32) -> NetrouteisisBuffer
+
+pub fn net_route_isis_cluster_make(Int32) -> NetrouteisisCluster
+
+pub fn net_route_isis_cursor_make(Int32) -> NetrouteisisCursor
+
+pub fn net_route_isis_edge_make(Int32) -> NetrouteisisEdge
+
+pub fn net_route_isis_frame_make(Int32) -> NetrouteisisFrame
+
+pub fn net_route_isis_graphn_make(Int32) -> NetrouteisisGraphN
+
+pub fn net_route_isis_layer_make(Int32) -> NetrouteisisLayer
+
+pub fn net_route_isis_make_matrix(Int32, Int32, Double) -> NetrouteisisMatrix
+
+pub fn net_route_isis_make_point(Double, Double) -> NetrouteisisPoint
+
+pub fn net_route_isis_make_point3(Double, Double, Double) -> NetrouteisisPoint
+
+pub fn net_route_isis_make_series(Array[Double], String) -> NetrouteisisSeries
+
+pub fn net_route_isis_make_vector(Array[Double]) -> NetrouteisisVector
+
+pub fn net_route_isis_matrix_identity(Int32) -> NetrouteisisMatrix
+
+pub fn net_route_isis_model_make(Int32) -> NetrouteisisModel
+
+pub fn net_route_isis_node_make(Int32) -> NetrouteisisNode
+
+pub fn net_route_isis_path_make(Int32) -> NetrouteisisPath
+
+pub fn net_route_isis_range_make(Int32) -> NetrouteisisRange
+
+pub fn net_route_isis_slice_make(Int32) -> NetrouteisisSlice
+
+pub fn net_route_isis_table_make(Int32) -> NetrouteisisTable
+
+pub fn net_route_isis_vector_zero(Int32) -> NetrouteisisVector
+
+pub fn net_route_isis_view_make(Int32) -> NetrouteisisView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetrouteisisBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteisisBuffer::add(Self, Self) -> Self
+pub fn NetrouteisisBuffer::copy(Self) -> Self
+pub fn NetrouteisisBuffer::fill(Self, Double) -> Self
+pub fn NetrouteisisBuffer::get(Self, Int32) -> Double
+pub fn NetrouteisisBuffer::len(Self) -> Int32
+pub fn NetrouteisisBuffer::max(Self) -> Double
+pub fn NetrouteisisBuffer::mean(Self) -> Double
+pub fn NetrouteisisBuffer::min(Self) -> Double
+pub fn NetrouteisisBuffer::scale(Self, Double) -> Self
+pub fn NetrouteisisBuffer::set(Self, Int32, Double) -> Self
+pub fn NetrouteisisBuffer::sum(Self) -> Double
+pub fn NetrouteisisBuffer::to_string(Self) -> String
+
+pub(all) struct NetrouteisisCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteisisCluster::add(Self, Self) -> Self
+pub fn NetrouteisisCluster::copy(Self) -> Self
+pub fn NetrouteisisCluster::fill(Self, Double) -> Self
+pub fn NetrouteisisCluster::get(Self, Int32) -> Double
+pub fn NetrouteisisCluster::len(Self) -> Int32
+pub fn NetrouteisisCluster::max(Self) -> Double
+pub fn NetrouteisisCluster::mean(Self) -> Double
+pub fn NetrouteisisCluster::min(Self) -> Double
+pub fn NetrouteisisCluster::scale(Self, Double) -> Self
+pub fn NetrouteisisCluster::set(Self, Int32, Double) -> Self
+pub fn NetrouteisisCluster::sum(Self) -> Double
+pub fn NetrouteisisCluster::to_string(Self) -> String
+
+pub(all) struct NetrouteisisCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteisisCursor::add(Self, Self) -> Self
+pub fn NetrouteisisCursor::copy(Self) -> Self
+pub fn NetrouteisisCursor::fill(Self, Double) -> Self
+pub fn NetrouteisisCursor::get(Self, Int32) -> Double
+pub fn NetrouteisisCursor::len(Self) -> Int32
+pub fn NetrouteisisCursor::max(Self) -> Double
+pub fn NetrouteisisCursor::mean(Self) -> Double
+pub fn NetrouteisisCursor::min(Self) -> Double
+pub fn NetrouteisisCursor::scale(Self, Double) -> Self
+pub fn NetrouteisisCursor::set(Self, Int32, Double) -> Self
+pub fn NetrouteisisCursor::sum(Self) -> Double
+pub fn NetrouteisisCursor::to_string(Self) -> String
+
+pub(all) struct NetrouteisisEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteisisEdge::add(Self, Self) -> Self
+pub fn NetrouteisisEdge::copy(Self) -> Self
+pub fn NetrouteisisEdge::fill(Self, Double) -> Self
+pub fn NetrouteisisEdge::get(Self, Int32) -> Double
+pub fn NetrouteisisEdge::len(Self) -> Int32
+pub fn NetrouteisisEdge::max(Self) -> Double
+pub fn NetrouteisisEdge::mean(Self) -> Double
+pub fn NetrouteisisEdge::min(Self) -> Double
+pub fn NetrouteisisEdge::scale(Self, Double) -> Self
+pub fn NetrouteisisEdge::set(Self, Int32, Double) -> Self
+pub fn NetrouteisisEdge::sum(Self) -> Double
+pub fn NetrouteisisEdge::to_string(Self) -> String
+
+pub(all) struct NetrouteisisFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteisisFrame::add(Self, Self) -> Self
+pub fn NetrouteisisFrame::copy(Self) -> Self
+pub fn NetrouteisisFrame::fill(Self, Double) -> Self
+pub fn NetrouteisisFrame::get(Self, Int32) -> Double
+pub fn NetrouteisisFrame::len(Self) -> Int32
+pub fn NetrouteisisFrame::max(Self) -> Double
+pub fn NetrouteisisFrame::mean(Self) -> Double
+pub fn NetrouteisisFrame::min(Self) -> Double
+pub fn NetrouteisisFrame::scale(Self, Double) -> Self
+pub fn NetrouteisisFrame::set(Self, Int32, Double) -> Self
+pub fn NetrouteisisFrame::sum(Self) -> Double
+pub fn NetrouteisisFrame::to_string(Self) -> String
+
+pub(all) struct NetrouteisisGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteisisGraphN::add(Self, Self) -> Self
+pub fn NetrouteisisGraphN::copy(Self) -> Self
+pub fn NetrouteisisGraphN::fill(Self, Double) -> Self
+pub fn NetrouteisisGraphN::get(Self, Int32) -> Double
+pub fn NetrouteisisGraphN::len(Self) -> Int32
+pub fn NetrouteisisGraphN::max(Self) -> Double
+pub fn NetrouteisisGraphN::mean(Self) -> Double
+pub fn NetrouteisisGraphN::min(Self) -> Double
+pub fn NetrouteisisGraphN::scale(Self, Double) -> Self
+pub fn NetrouteisisGraphN::set(Self, Int32, Double) -> Self
+pub fn NetrouteisisGraphN::sum(Self) -> Double
+pub fn NetrouteisisGraphN::to_string(Self) -> String
+
+pub(all) struct NetrouteisisLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteisisLayer::add(Self, Self) -> Self
+pub fn NetrouteisisLayer::copy(Self) -> Self
+pub fn NetrouteisisLayer::fill(Self, Double) -> Self
+pub fn NetrouteisisLayer::get(Self, Int32) -> Double
+pub fn NetrouteisisLayer::len(Self) -> Int32
+pub fn NetrouteisisLayer::max(Self) -> Double
+pub fn NetrouteisisLayer::mean(Self) -> Double
+pub fn NetrouteisisLayer::min(Self) -> Double
+pub fn NetrouteisisLayer::scale(Self, Double) -> Self
+pub fn NetrouteisisLayer::set(Self, Int32, Double) -> Self
+pub fn NetrouteisisLayer::sum(Self) -> Double
+pub fn NetrouteisisLayer::to_string(Self) -> String
+
+pub(all) struct NetrouteisisMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetrouteisisMatrix::add(Self, Self) -> Self
+pub fn NetrouteisisMatrix::det(Self) -> Double
+pub fn NetrouteisisMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetrouteisisMatrix::multiply(Self, Self) -> Self
+pub fn NetrouteisisMatrix::norm(Self) -> Double
+pub fn NetrouteisisMatrix::scale(Self, Double) -> Self
+pub fn NetrouteisisMatrix::to_string(Self) -> String
+pub fn NetrouteisisMatrix::trace(Self) -> Double
+pub fn NetrouteisisMatrix::transpose(Self) -> Self
+
+pub(all) struct NetrouteisisModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteisisModel::add(Self, Self) -> Self
+pub fn NetrouteisisModel::copy(Self) -> Self
+pub fn NetrouteisisModel::fill(Self, Double) -> Self
+pub fn NetrouteisisModel::get(Self, Int32) -> Double
+pub fn NetrouteisisModel::len(Self) -> Int32
+pub fn NetrouteisisModel::max(Self) -> Double
+pub fn NetrouteisisModel::mean(Self) -> Double
+pub fn NetrouteisisModel::min(Self) -> Double
+pub fn NetrouteisisModel::scale(Self, Double) -> Self
+pub fn NetrouteisisModel::set(Self, Int32, Double) -> Self
+pub fn NetrouteisisModel::sum(Self) -> Double
+pub fn NetrouteisisModel::to_string(Self) -> String
+
+pub(all) struct NetrouteisisNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteisisNode::add(Self, Self) -> Self
+pub fn NetrouteisisNode::copy(Self) -> Self
+pub fn NetrouteisisNode::fill(Self, Double) -> Self
+pub fn NetrouteisisNode::get(Self, Int32) -> Double
+pub fn NetrouteisisNode::len(Self) -> Int32
+pub fn NetrouteisisNode::max(Self) -> Double
+pub fn NetrouteisisNode::mean(Self) -> Double
+pub fn NetrouteisisNode::min(Self) -> Double
+pub fn NetrouteisisNode::scale(Self, Double) -> Self
+pub fn NetrouteisisNode::set(Self, Int32, Double) -> Self
+pub fn NetrouteisisNode::sum(Self) -> Double
+pub fn NetrouteisisNode::to_string(Self) -> String
+
+pub(all) struct NetrouteisisPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteisisPath::add(Self, Self) -> Self
+pub fn NetrouteisisPath::copy(Self) -> Self
+pub fn NetrouteisisPath::fill(Self, Double) -> Self
+pub fn NetrouteisisPath::get(Self, Int32) -> Double
+pub fn NetrouteisisPath::len(Self) -> Int32
+pub fn NetrouteisisPath::max(Self) -> Double
+pub fn NetrouteisisPath::mean(Self) -> Double
+pub fn NetrouteisisPath::min(Self) -> Double
+pub fn NetrouteisisPath::scale(Self, Double) -> Self
+pub fn NetrouteisisPath::set(Self, Int32, Double) -> Self
+pub fn NetrouteisisPath::sum(Self) -> Double
+pub fn NetrouteisisPath::to_string(Self) -> String
+
+pub(all) struct NetrouteisisPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetrouteisisPoint::add(Self, Self) -> Self
+pub fn NetrouteisisPoint::cross(Self, Self) -> Self
+pub fn NetrouteisisPoint::dist(Self, Self) -> Double
+pub fn NetrouteisisPoint::dot(Self, Self) -> Double
+pub fn NetrouteisisPoint::label(Self) -> Int32
+pub fn NetrouteisisPoint::lerp(Self, Self, Double) -> Self
+pub fn NetrouteisisPoint::mid(Self, Self) -> Self
+pub fn NetrouteisisPoint::negate(Self) -> Self
+pub fn NetrouteisisPoint::norm(Self) -> Double
+pub fn NetrouteisisPoint::normalize(Self) -> Self
+pub fn NetrouteisisPoint::scale(Self, Double) -> Self
+pub fn NetrouteisisPoint::sub(Self, Self) -> Self
+pub fn NetrouteisisPoint::to_string(Self) -> String
+pub fn NetrouteisisPoint::x(Self) -> Double
+pub fn NetrouteisisPoint::y(Self) -> Double
+pub fn NetrouteisisPoint::z(Self) -> Double
+
+pub(all) struct NetrouteisisRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteisisRange::add(Self, Self) -> Self
+pub fn NetrouteisisRange::copy(Self) -> Self
+pub fn NetrouteisisRange::fill(Self, Double) -> Self
+pub fn NetrouteisisRange::get(Self, Int32) -> Double
+pub fn NetrouteisisRange::len(Self) -> Int32
+pub fn NetrouteisisRange::max(Self) -> Double
+pub fn NetrouteisisRange::mean(Self) -> Double
+pub fn NetrouteisisRange::min(Self) -> Double
+pub fn NetrouteisisRange::scale(Self, Double) -> Self
+pub fn NetrouteisisRange::set(Self, Int32, Double) -> Self
+pub fn NetrouteisisRange::sum(Self) -> Double
+pub fn NetrouteisisRange::to_string(Self) -> String
+
+pub(all) struct NetrouteisisSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetrouteisisSeries::add(Self, Self) -> Self
+pub fn NetrouteisisSeries::cumsum(Self) -> Self
+pub fn NetrouteisisSeries::len(Self) -> Int32
+pub fn NetrouteisisSeries::max(Self) -> Double
+pub fn NetrouteisisSeries::mean(Self) -> Double
+pub fn NetrouteisisSeries::median(Self) -> Double
+pub fn NetrouteisisSeries::min(Self) -> Double
+pub fn NetrouteisisSeries::normalize(Self) -> Self
+pub fn NetrouteisisSeries::range(Self) -> Double
+pub fn NetrouteisisSeries::scale(Self, Double) -> Self
+pub fn NetrouteisisSeries::std(Self) -> Double
+pub fn NetrouteisisSeries::sub(Self, Self) -> Self
+pub fn NetrouteisisSeries::sum(Self) -> Double
+pub fn NetrouteisisSeries::to_string(Self) -> String
+pub fn NetrouteisisSeries::variance(Self) -> Double
+
+pub(all) struct NetrouteisisSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteisisSlice::add(Self, Self) -> Self
+pub fn NetrouteisisSlice::copy(Self) -> Self
+pub fn NetrouteisisSlice::fill(Self, Double) -> Self
+pub fn NetrouteisisSlice::get(Self, Int32) -> Double
+pub fn NetrouteisisSlice::len(Self) -> Int32
+pub fn NetrouteisisSlice::max(Self) -> Double
+pub fn NetrouteisisSlice::mean(Self) -> Double
+pub fn NetrouteisisSlice::min(Self) -> Double
+pub fn NetrouteisisSlice::scale(Self, Double) -> Self
+pub fn NetrouteisisSlice::set(Self, Int32, Double) -> Self
+pub fn NetrouteisisSlice::sum(Self) -> Double
+pub fn NetrouteisisSlice::to_string(Self) -> String
+
+pub(all) struct NetrouteisisTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteisisTable::add(Self, Self) -> Self
+pub fn NetrouteisisTable::copy(Self) -> Self
+pub fn NetrouteisisTable::fill(Self, Double) -> Self
+pub fn NetrouteisisTable::get(Self, Int32) -> Double
+pub fn NetrouteisisTable::len(Self) -> Int32
+pub fn NetrouteisisTable::max(Self) -> Double
+pub fn NetrouteisisTable::mean(Self) -> Double
+pub fn NetrouteisisTable::min(Self) -> Double
+pub fn NetrouteisisTable::scale(Self, Double) -> Self
+pub fn NetrouteisisTable::set(Self, Int32, Double) -> Self
+pub fn NetrouteisisTable::sum(Self) -> Double
+pub fn NetrouteisisTable::to_string(Self) -> String
+
+pub(all) struct NetrouteisisVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetrouteisisVector::add(Self, Self) -> Self
+pub fn NetrouteisisVector::dist(Self, Self) -> Double
+pub fn NetrouteisisVector::dot(Self, Self) -> Double
+pub fn NetrouteisisVector::norm(Self) -> Double
+pub fn NetrouteisisVector::normalize(Self) -> Self
+pub fn NetrouteisisVector::scale(Self, Double) -> Self
+pub fn NetrouteisisVector::sub(Self, Self) -> Self
+pub fn NetrouteisisVector::to_string(Self) -> String
+
+pub(all) struct NetrouteisisView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetrouteisisView::add(Self, Self) -> Self
+pub fn NetrouteisisView::copy(Self) -> Self
+pub fn NetrouteisisView::fill(Self, Double) -> Self
+pub fn NetrouteisisView::get(Self, Int32) -> Double
+pub fn NetrouteisisView::len(Self) -> Int32
+pub fn NetrouteisisView::max(Self) -> Double
+pub fn NetrouteisisView::mean(Self) -> Double
+pub fn NetrouteisisView::min(Self) -> Double
+pub fn NetrouteisisView::scale(Self, Double) -> Self
+pub fn NetrouteisisView::set(Self, Int32, Double) -> Self
+pub fn NetrouteisisView::sum(Self) -> Double
+pub fn NetrouteisisView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_compare_insertion"
+
+// Values
+pub fn sort_compare_insertion_buffer_make(Int32) -> SortcompareinsertionBuffer
+
+pub fn sort_compare_insertion_cluster_make(Int32) -> SortcompareinsertionCluster
+
+pub fn sort_compare_insertion_cursor_make(Int32) -> SortcompareinsertionCursor
+
+pub fn sort_compare_insertion_edge_make(Int32) -> SortcompareinsertionEdge
+
+pub fn sort_compare_insertion_frame_make(Int32) -> SortcompareinsertionFrame
+
+pub fn sort_compare_insertion_graphn_make(Int32) -> SortcompareinsertionGraphN
+
+pub fn sort_compare_insertion_layer_make(Int32) -> SortcompareinsertionLayer
+
+pub fn sort_compare_insertion_make_matrix(Int32, Int32, Double) -> SortcompareinsertionMatrix
+
+pub fn sort_compare_insertion_make_point(Double, Double) -> SortcompareinsertionPoint
+
+pub fn sort_compare_insertion_make_point3(Double, Double, Double) -> SortcompareinsertionPoint
+
+pub fn sort_compare_insertion_make_series(Array[Double], String) -> SortcompareinsertionSeries
+
+pub fn sort_compare_insertion_make_vector(Array[Double]) -> SortcompareinsertionVector
+
+pub fn sort_compare_insertion_matrix_identity(Int32) -> SortcompareinsertionMatrix
+
+pub fn sort_compare_insertion_model_make(Int32) -> SortcompareinsertionModel
+
+pub fn sort_compare_insertion_node_make(Int32) -> SortcompareinsertionNode
+
+pub fn sort_compare_insertion_path_make(Int32) -> SortcompareinsertionPath
+
+pub fn sort_compare_insertion_range_make(Int32) -> SortcompareinsertionRange
+
+pub fn sort_compare_insertion_slice_make(Int32) -> SortcompareinsertionSlice
+
+pub fn sort_compare_insertion_table_make(Int32) -> SortcompareinsertionTable
+
+pub fn sort_compare_insertion_vector_zero(Int32) -> SortcompareinsertionVector
+
+pub fn sort_compare_insertion_view_make(Int32) -> SortcompareinsertionView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortcompareinsertionBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareinsertionBuffer::add(Self, Self) -> Self
+pub fn SortcompareinsertionBuffer::copy(Self) -> Self
+pub fn SortcompareinsertionBuffer::fill(Self, Double) -> Self
+pub fn SortcompareinsertionBuffer::get(Self, Int32) -> Double
+pub fn SortcompareinsertionBuffer::len(Self) -> Int32
+pub fn SortcompareinsertionBuffer::max(Self) -> Double
+pub fn SortcompareinsertionBuffer::mean(Self) -> Double
+pub fn SortcompareinsertionBuffer::min(Self) -> Double
+pub fn SortcompareinsertionBuffer::scale(Self, Double) -> Self
+pub fn SortcompareinsertionBuffer::set(Self, Int32, Double) -> Self
+pub fn SortcompareinsertionBuffer::sum(Self) -> Double
+pub fn SortcompareinsertionBuffer::to_string(Self) -> String
+
+pub(all) struct SortcompareinsertionCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareinsertionCluster::add(Self, Self) -> Self
+pub fn SortcompareinsertionCluster::copy(Self) -> Self
+pub fn SortcompareinsertionCluster::fill(Self, Double) -> Self
+pub fn SortcompareinsertionCluster::get(Self, Int32) -> Double
+pub fn SortcompareinsertionCluster::len(Self) -> Int32
+pub fn SortcompareinsertionCluster::max(Self) -> Double
+pub fn SortcompareinsertionCluster::mean(Self) -> Double
+pub fn SortcompareinsertionCluster::min(Self) -> Double
+pub fn SortcompareinsertionCluster::scale(Self, Double) -> Self
+pub fn SortcompareinsertionCluster::set(Self, Int32, Double) -> Self
+pub fn SortcompareinsertionCluster::sum(Self) -> Double
+pub fn SortcompareinsertionCluster::to_string(Self) -> String
+
+pub(all) struct SortcompareinsertionCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareinsertionCursor::add(Self, Self) -> Self
+pub fn SortcompareinsertionCursor::copy(Self) -> Self
+pub fn SortcompareinsertionCursor::fill(Self, Double) -> Self
+pub fn SortcompareinsertionCursor::get(Self, Int32) -> Double
+pub fn SortcompareinsertionCursor::len(Self) -> Int32
+pub fn SortcompareinsertionCursor::max(Self) -> Double
+pub fn SortcompareinsertionCursor::mean(Self) -> Double
+pub fn SortcompareinsertionCursor::min(Self) -> Double
+pub fn SortcompareinsertionCursor::scale(Self, Double) -> Self
+pub fn SortcompareinsertionCursor::set(Self, Int32, Double) -> Self
+pub fn SortcompareinsertionCursor::sum(Self) -> Double
+pub fn SortcompareinsertionCursor::to_string(Self) -> String
+
+pub(all) struct SortcompareinsertionEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareinsertionEdge::add(Self, Self) -> Self
+pub fn SortcompareinsertionEdge::copy(Self) -> Self
+pub fn SortcompareinsertionEdge::fill(Self, Double) -> Self
+pub fn SortcompareinsertionEdge::get(Self, Int32) -> Double
+pub fn SortcompareinsertionEdge::len(Self) -> Int32
+pub fn SortcompareinsertionEdge::max(Self) -> Double
+pub fn SortcompareinsertionEdge::mean(Self) -> Double
+pub fn SortcompareinsertionEdge::min(Self) -> Double
+pub fn SortcompareinsertionEdge::scale(Self, Double) -> Self
+pub fn SortcompareinsertionEdge::set(Self, Int32, Double) -> Self
+pub fn SortcompareinsertionEdge::sum(Self) -> Double
+pub fn SortcompareinsertionEdge::to_string(Self) -> String
+
+pub(all) struct SortcompareinsertionFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareinsertionFrame::add(Self, Self) -> Self
+pub fn SortcompareinsertionFrame::copy(Self) -> Self
+pub fn SortcompareinsertionFrame::fill(Self, Double) -> Self
+pub fn SortcompareinsertionFrame::get(Self, Int32) -> Double
+pub fn SortcompareinsertionFrame::len(Self) -> Int32
+pub fn SortcompareinsertionFrame::max(Self) -> Double
+pub fn SortcompareinsertionFrame::mean(Self) -> Double
+pub fn SortcompareinsertionFrame::min(Self) -> Double
+pub fn SortcompareinsertionFrame::scale(Self, Double) -> Self
+pub fn SortcompareinsertionFrame::set(Self, Int32, Double) -> Self
+pub fn SortcompareinsertionFrame::sum(Self) -> Double
+pub fn SortcompareinsertionFrame::to_string(Self) -> String
+
+pub(all) struct SortcompareinsertionGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareinsertionGraphN::add(Self, Self) -> Self
+pub fn SortcompareinsertionGraphN::copy(Self) -> Self
+pub fn SortcompareinsertionGraphN::fill(Self, Double) -> Self
+pub fn SortcompareinsertionGraphN::get(Self, Int32) -> Double
+pub fn SortcompareinsertionGraphN::len(Self) -> Int32
+pub fn SortcompareinsertionGraphN::max(Self) -> Double
+pub fn SortcompareinsertionGraphN::mean(Self) -> Double
+pub fn SortcompareinsertionGraphN::min(Self) -> Double
+pub fn SortcompareinsertionGraphN::scale(Self, Double) -> Self
+pub fn SortcompareinsertionGraphN::set(Self, Int32, Double) -> Self
+pub fn SortcompareinsertionGraphN::sum(Self) -> Double
+pub fn SortcompareinsertionGraphN::to_string(Self) -> String
+
+pub(all) struct SortcompareinsertionLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareinsertionLayer::add(Self, Self) -> Self
+pub fn SortcompareinsertionLayer::copy(Self) -> Self
+pub fn SortcompareinsertionLayer::fill(Self, Double) -> Self
+pub fn SortcompareinsertionLayer::get(Self, Int32) -> Double
+pub fn SortcompareinsertionLayer::len(Self) -> Int32
+pub fn SortcompareinsertionLayer::max(Self) -> Double
+pub fn SortcompareinsertionLayer::mean(Self) -> Double
+pub fn SortcompareinsertionLayer::min(Self) -> Double
+pub fn SortcompareinsertionLayer::scale(Self, Double) -> Self
+pub fn SortcompareinsertionLayer::set(Self, Int32, Double) -> Self
+pub fn SortcompareinsertionLayer::sum(Self) -> Double
+pub fn SortcompareinsertionLayer::to_string(Self) -> String
+
+pub(all) struct SortcompareinsertionMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortcompareinsertionMatrix::add(Self, Self) -> Self
+pub fn SortcompareinsertionMatrix::det(Self) -> Double
+pub fn SortcompareinsertionMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortcompareinsertionMatrix::multiply(Self, Self) -> Self
+pub fn SortcompareinsertionMatrix::norm(Self) -> Double
+pub fn SortcompareinsertionMatrix::scale(Self, Double) -> Self
+pub fn SortcompareinsertionMatrix::to_string(Self) -> String
+pub fn SortcompareinsertionMatrix::trace(Self) -> Double
+pub fn SortcompareinsertionMatrix::transpose(Self) -> Self
+
+pub(all) struct SortcompareinsertionModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareinsertionModel::add(Self, Self) -> Self
+pub fn SortcompareinsertionModel::copy(Self) -> Self
+pub fn SortcompareinsertionModel::fill(Self, Double) -> Self
+pub fn SortcompareinsertionModel::get(Self, Int32) -> Double
+pub fn SortcompareinsertionModel::len(Self) -> Int32
+pub fn SortcompareinsertionModel::max(Self) -> Double
+pub fn SortcompareinsertionModel::mean(Self) -> Double
+pub fn SortcompareinsertionModel::min(Self) -> Double
+pub fn SortcompareinsertionModel::scale(Self, Double) -> Self
+pub fn SortcompareinsertionModel::set(Self, Int32, Double) -> Self
+pub fn SortcompareinsertionModel::sum(Self) -> Double
+pub fn SortcompareinsertionModel::to_string(Self) -> String
+
+pub(all) struct SortcompareinsertionNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareinsertionNode::add(Self, Self) -> Self
+pub fn SortcompareinsertionNode::copy(Self) -> Self
+pub fn SortcompareinsertionNode::fill(Self, Double) -> Self
+pub fn SortcompareinsertionNode::get(Self, Int32) -> Double
+pub fn SortcompareinsertionNode::len(Self) -> Int32
+pub fn SortcompareinsertionNode::max(Self) -> Double
+pub fn SortcompareinsertionNode::mean(Self) -> Double
+pub fn SortcompareinsertionNode::min(Self) -> Double
+pub fn SortcompareinsertionNode::scale(Self, Double) -> Self
+pub fn SortcompareinsertionNode::set(Self, Int32, Double) -> Self
+pub fn SortcompareinsertionNode::sum(Self) -> Double
+pub fn SortcompareinsertionNode::to_string(Self) -> String
+
+pub(all) struct SortcompareinsertionPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareinsertionPath::add(Self, Self) -> Self
+pub fn SortcompareinsertionPath::copy(Self) -> Self
+pub fn SortcompareinsertionPath::fill(Self, Double) -> Self
+pub fn SortcompareinsertionPath::get(Self, Int32) -> Double
+pub fn SortcompareinsertionPath::len(Self) -> Int32
+pub fn SortcompareinsertionPath::max(Self) -> Double
+pub fn SortcompareinsertionPath::mean(Self) -> Double
+pub fn SortcompareinsertionPath::min(Self) -> Double
+pub fn SortcompareinsertionPath::scale(Self, Double) -> Self
+pub fn SortcompareinsertionPath::set(Self, Int32, Double) -> Self
+pub fn SortcompareinsertionPath::sum(Self) -> Double
+pub fn SortcompareinsertionPath::to_string(Self) -> String
+
+pub(all) struct SortcompareinsertionPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortcompareinsertionPoint::add(Self, Self) -> Self
+pub fn SortcompareinsertionPoint::cross(Self, Self) -> Self
+pub fn SortcompareinsertionPoint::dist(Self, Self) -> Double
+pub fn SortcompareinsertionPoint::dot(Self, Self) -> Double
+pub fn SortcompareinsertionPoint::label(Self) -> Int32
+pub fn SortcompareinsertionPoint::lerp(Self, Self, Double) -> Self
+pub fn SortcompareinsertionPoint::mid(Self, Self) -> Self
+pub fn SortcompareinsertionPoint::negate(Self) -> Self
+pub fn SortcompareinsertionPoint::norm(Self) -> Double
+pub fn SortcompareinsertionPoint::normalize(Self) -> Self
+pub fn SortcompareinsertionPoint::scale(Self, Double) -> Self
+pub fn SortcompareinsertionPoint::sub(Self, Self) -> Self
+pub fn SortcompareinsertionPoint::to_string(Self) -> String
+pub fn SortcompareinsertionPoint::x(Self) -> Double
+pub fn SortcompareinsertionPoint::y(Self) -> Double
+pub fn SortcompareinsertionPoint::z(Self) -> Double
+
+pub(all) struct SortcompareinsertionRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareinsertionRange::add(Self, Self) -> Self
+pub fn SortcompareinsertionRange::copy(Self) -> Self
+pub fn SortcompareinsertionRange::fill(Self, Double) -> Self
+pub fn SortcompareinsertionRange::get(Self, Int32) -> Double
+pub fn SortcompareinsertionRange::len(Self) -> Int32
+pub fn SortcompareinsertionRange::max(Self) -> Double
+pub fn SortcompareinsertionRange::mean(Self) -> Double
+pub fn SortcompareinsertionRange::min(Self) -> Double
+pub fn SortcompareinsertionRange::scale(Self, Double) -> Self
+pub fn SortcompareinsertionRange::set(Self, Int32, Double) -> Self
+pub fn SortcompareinsertionRange::sum(Self) -> Double
+pub fn SortcompareinsertionRange::to_string(Self) -> String
+
+pub(all) struct SortcompareinsertionSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortcompareinsertionSeries::add(Self, Self) -> Self
+pub fn SortcompareinsertionSeries::cumsum(Self) -> Self
+pub fn SortcompareinsertionSeries::len(Self) -> Int32
+pub fn SortcompareinsertionSeries::max(Self) -> Double
+pub fn SortcompareinsertionSeries::mean(Self) -> Double
+pub fn SortcompareinsertionSeries::median(Self) -> Double
+pub fn SortcompareinsertionSeries::min(Self) -> Double
+pub fn SortcompareinsertionSeries::normalize(Self) -> Self
+pub fn SortcompareinsertionSeries::range(Self) -> Double
+pub fn SortcompareinsertionSeries::scale(Self, Double) -> Self
+pub fn SortcompareinsertionSeries::std(Self) -> Double
+pub fn SortcompareinsertionSeries::sub(Self, Self) -> Self
+pub fn SortcompareinsertionSeries::sum(Self) -> Double
+pub fn SortcompareinsertionSeries::to_string(Self) -> String
+pub fn SortcompareinsertionSeries::variance(Self) -> Double
+
+pub(all) struct SortcompareinsertionSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareinsertionSlice::add(Self, Self) -> Self
+pub fn SortcompareinsertionSlice::copy(Self) -> Self
+pub fn SortcompareinsertionSlice::fill(Self, Double) -> Self
+pub fn SortcompareinsertionSlice::get(Self, Int32) -> Double
+pub fn SortcompareinsertionSlice::len(Self) -> Int32
+pub fn SortcompareinsertionSlice::max(Self) -> Double
+pub fn SortcompareinsertionSlice::mean(Self) -> Double
+pub fn SortcompareinsertionSlice::min(Self) -> Double
+pub fn SortcompareinsertionSlice::scale(Self, Double) -> Self
+pub fn SortcompareinsertionSlice::set(Self, Int32, Double) -> Self
+pub fn SortcompareinsertionSlice::sum(Self) -> Double
+pub fn SortcompareinsertionSlice::to_string(Self) -> String
+
+pub(all) struct SortcompareinsertionTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareinsertionTable::add(Self, Self) -> Self
+pub fn SortcompareinsertionTable::copy(Self) -> Self
+pub fn SortcompareinsertionTable::fill(Self, Double) -> Self
+pub fn SortcompareinsertionTable::get(Self, Int32) -> Double
+pub fn SortcompareinsertionTable::len(Self) -> Int32
+pub fn SortcompareinsertionTable::max(Self) -> Double
+pub fn SortcompareinsertionTable::mean(Self) -> Double
+pub fn SortcompareinsertionTable::min(Self) -> Double
+pub fn SortcompareinsertionTable::scale(Self, Double) -> Self
+pub fn SortcompareinsertionTable::set(Self, Int32, Double) -> Self
+pub fn SortcompareinsertionTable::sum(Self) -> Double
+pub fn SortcompareinsertionTable::to_string(Self) -> String
+
+pub(all) struct SortcompareinsertionVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortcompareinsertionVector::add(Self, Self) -> Self
+pub fn SortcompareinsertionVector::dist(Self, Self) -> Double
+pub fn SortcompareinsertionVector::dot(Self, Self) -> Double
+pub fn SortcompareinsertionVector::norm(Self) -> Double
+pub fn SortcompareinsertionVector::normalize(Self) -> Self
+pub fn SortcompareinsertionVector::scale(Self, Double) -> Self
+pub fn SortcompareinsertionVector::sub(Self, Self) -> Self
+pub fn SortcompareinsertionVector::to_string(Self) -> String
+
+pub(all) struct SortcompareinsertionView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortcompareinsertionView::add(Self, Self) -> Self
+pub fn SortcompareinsertionView::copy(Self) -> Self
+pub fn SortcompareinsertionView::fill(Self, Double) -> Self
+pub fn SortcompareinsertionView::get(Self, Int32) -> Double
+pub fn SortcompareinsertionView::len(Self) -> Int32
+pub fn SortcompareinsertionView::max(Self) -> Double
+pub fn SortcompareinsertionView::mean(Self) -> Double
+pub fn SortcompareinsertionView::min(Self) -> Double
+pub fn SortcompareinsertionView::scale(Self, Double) -> Self
+pub fn SortcompareinsertionView::set(Self, Int32, Double) -> Self
+pub fn SortcompareinsertionView::sum(Self) -> Double
+pub fn SortcompareinsertionView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

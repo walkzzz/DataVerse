@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/opt_meta_nelder"
+
+// Values
+pub fn opt_meta_nelder_buffer_make(Int32) -> OptmetanelderBuffer
+
+pub fn opt_meta_nelder_cluster_make(Int32) -> OptmetanelderCluster
+
+pub fn opt_meta_nelder_cursor_make(Int32) -> OptmetanelderCursor
+
+pub fn opt_meta_nelder_edge_make(Int32) -> OptmetanelderEdge
+
+pub fn opt_meta_nelder_frame_make(Int32) -> OptmetanelderFrame
+
+pub fn opt_meta_nelder_graphn_make(Int32) -> OptmetanelderGraphN
+
+pub fn opt_meta_nelder_layer_make(Int32) -> OptmetanelderLayer
+
+pub fn opt_meta_nelder_make_matrix(Int32, Int32, Double) -> OptmetanelderMatrix
+
+pub fn opt_meta_nelder_make_point(Double, Double) -> OptmetanelderPoint
+
+pub fn opt_meta_nelder_make_point3(Double, Double, Double) -> OptmetanelderPoint
+
+pub fn opt_meta_nelder_make_series(Array[Double], String) -> OptmetanelderSeries
+
+pub fn opt_meta_nelder_make_vector(Array[Double]) -> OptmetanelderVector
+
+pub fn opt_meta_nelder_matrix_identity(Int32) -> OptmetanelderMatrix
+
+pub fn opt_meta_nelder_model_make(Int32) -> OptmetanelderModel
+
+pub fn opt_meta_nelder_node_make(Int32) -> OptmetanelderNode
+
+pub fn opt_meta_nelder_path_make(Int32) -> OptmetanelderPath
+
+pub fn opt_meta_nelder_range_make(Int32) -> OptmetanelderRange
+
+pub fn opt_meta_nelder_slice_make(Int32) -> OptmetanelderSlice
+
+pub fn opt_meta_nelder_table_make(Int32) -> OptmetanelderTable
+
+pub fn opt_meta_nelder_vector_zero(Int32) -> OptmetanelderVector
+
+pub fn opt_meta_nelder_view_make(Int32) -> OptmetanelderView
+
+// Errors
+
+// Types and methods
+pub(all) struct OptmetanelderBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetanelderBuffer::add(Self, Self) -> Self
+pub fn OptmetanelderBuffer::copy(Self) -> Self
+pub fn OptmetanelderBuffer::fill(Self, Double) -> Self
+pub fn OptmetanelderBuffer::get(Self, Int32) -> Double
+pub fn OptmetanelderBuffer::len(Self) -> Int32
+pub fn OptmetanelderBuffer::max(Self) -> Double
+pub fn OptmetanelderBuffer::mean(Self) -> Double
+pub fn OptmetanelderBuffer::min(Self) -> Double
+pub fn OptmetanelderBuffer::scale(Self, Double) -> Self
+pub fn OptmetanelderBuffer::set(Self, Int32, Double) -> Self
+pub fn OptmetanelderBuffer::sum(Self) -> Double
+pub fn OptmetanelderBuffer::to_string(Self) -> String
+
+pub(all) struct OptmetanelderCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetanelderCluster::add(Self, Self) -> Self
+pub fn OptmetanelderCluster::copy(Self) -> Self
+pub fn OptmetanelderCluster::fill(Self, Double) -> Self
+pub fn OptmetanelderCluster::get(Self, Int32) -> Double
+pub fn OptmetanelderCluster::len(Self) -> Int32
+pub fn OptmetanelderCluster::max(Self) -> Double
+pub fn OptmetanelderCluster::mean(Self) -> Double
+pub fn OptmetanelderCluster::min(Self) -> Double
+pub fn OptmetanelderCluster::scale(Self, Double) -> Self
+pub fn OptmetanelderCluster::set(Self, Int32, Double) -> Self
+pub fn OptmetanelderCluster::sum(Self) -> Double
+pub fn OptmetanelderCluster::to_string(Self) -> String
+
+pub(all) struct OptmetanelderCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetanelderCursor::add(Self, Self) -> Self
+pub fn OptmetanelderCursor::copy(Self) -> Self
+pub fn OptmetanelderCursor::fill(Self, Double) -> Self
+pub fn OptmetanelderCursor::get(Self, Int32) -> Double
+pub fn OptmetanelderCursor::len(Self) -> Int32
+pub fn OptmetanelderCursor::max(Self) -> Double
+pub fn OptmetanelderCursor::mean(Self) -> Double
+pub fn OptmetanelderCursor::min(Self) -> Double
+pub fn OptmetanelderCursor::scale(Self, Double) -> Self
+pub fn OptmetanelderCursor::set(Self, Int32, Double) -> Self
+pub fn OptmetanelderCursor::sum(Self) -> Double
+pub fn OptmetanelderCursor::to_string(Self) -> String
+
+pub(all) struct OptmetanelderEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetanelderEdge::add(Self, Self) -> Self
+pub fn OptmetanelderEdge::copy(Self) -> Self
+pub fn OptmetanelderEdge::fill(Self, Double) -> Self
+pub fn OptmetanelderEdge::get(Self, Int32) -> Double
+pub fn OptmetanelderEdge::len(Self) -> Int32
+pub fn OptmetanelderEdge::max(Self) -> Double
+pub fn OptmetanelderEdge::mean(Self) -> Double
+pub fn OptmetanelderEdge::min(Self) -> Double
+pub fn OptmetanelderEdge::scale(Self, Double) -> Self
+pub fn OptmetanelderEdge::set(Self, Int32, Double) -> Self
+pub fn OptmetanelderEdge::sum(Self) -> Double
+pub fn OptmetanelderEdge::to_string(Self) -> String
+
+pub(all) struct OptmetanelderFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetanelderFrame::add(Self, Self) -> Self
+pub fn OptmetanelderFrame::copy(Self) -> Self
+pub fn OptmetanelderFrame::fill(Self, Double) -> Self
+pub fn OptmetanelderFrame::get(Self, Int32) -> Double
+pub fn OptmetanelderFrame::len(Self) -> Int32
+pub fn OptmetanelderFrame::max(Self) -> Double
+pub fn OptmetanelderFrame::mean(Self) -> Double
+pub fn OptmetanelderFrame::min(Self) -> Double
+pub fn OptmetanelderFrame::scale(Self, Double) -> Self
+pub fn OptmetanelderFrame::set(Self, Int32, Double) -> Self
+pub fn OptmetanelderFrame::sum(Self) -> Double
+pub fn OptmetanelderFrame::to_string(Self) -> String
+
+pub(all) struct OptmetanelderGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetanelderGraphN::add(Self, Self) -> Self
+pub fn OptmetanelderGraphN::copy(Self) -> Self
+pub fn OptmetanelderGraphN::fill(Self, Double) -> Self
+pub fn OptmetanelderGraphN::get(Self, Int32) -> Double
+pub fn OptmetanelderGraphN::len(Self) -> Int32
+pub fn OptmetanelderGraphN::max(Self) -> Double
+pub fn OptmetanelderGraphN::mean(Self) -> Double
+pub fn OptmetanelderGraphN::min(Self) -> Double
+pub fn OptmetanelderGraphN::scale(Self, Double) -> Self
+pub fn OptmetanelderGraphN::set(Self, Int32, Double) -> Self
+pub fn OptmetanelderGraphN::sum(Self) -> Double
+pub fn OptmetanelderGraphN::to_string(Self) -> String
+
+pub(all) struct OptmetanelderLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetanelderLayer::add(Self, Self) -> Self
+pub fn OptmetanelderLayer::copy(Self) -> Self
+pub fn OptmetanelderLayer::fill(Self, Double) -> Self
+pub fn OptmetanelderLayer::get(Self, Int32) -> Double
+pub fn OptmetanelderLayer::len(Self) -> Int32
+pub fn OptmetanelderLayer::max(Self) -> Double
+pub fn OptmetanelderLayer::mean(Self) -> Double
+pub fn OptmetanelderLayer::min(Self) -> Double
+pub fn OptmetanelderLayer::scale(Self, Double) -> Self
+pub fn OptmetanelderLayer::set(Self, Int32, Double) -> Self
+pub fn OptmetanelderLayer::sum(Self) -> Double
+pub fn OptmetanelderLayer::to_string(Self) -> String
+
+pub(all) struct OptmetanelderMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn OptmetanelderMatrix::add(Self, Self) -> Self
+pub fn OptmetanelderMatrix::det(Self) -> Double
+pub fn OptmetanelderMatrix::get(Self, Int32, Int32) -> Double
+pub fn OptmetanelderMatrix::multiply(Self, Self) -> Self
+pub fn OptmetanelderMatrix::norm(Self) -> Double
+pub fn OptmetanelderMatrix::scale(Self, Double) -> Self
+pub fn OptmetanelderMatrix::to_string(Self) -> String
+pub fn OptmetanelderMatrix::trace(Self) -> Double
+pub fn OptmetanelderMatrix::transpose(Self) -> Self
+
+pub(all) struct OptmetanelderModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetanelderModel::add(Self, Self) -> Self
+pub fn OptmetanelderModel::copy(Self) -> Self
+pub fn OptmetanelderModel::fill(Self, Double) -> Self
+pub fn OptmetanelderModel::get(Self, Int32) -> Double
+pub fn OptmetanelderModel::len(Self) -> Int32
+pub fn OptmetanelderModel::max(Self) -> Double
+pub fn OptmetanelderModel::mean(Self) -> Double
+pub fn OptmetanelderModel::min(Self) -> Double
+pub fn OptmetanelderModel::scale(Self, Double) -> Self
+pub fn OptmetanelderModel::set(Self, Int32, Double) -> Self
+pub fn OptmetanelderModel::sum(Self) -> Double
+pub fn OptmetanelderModel::to_string(Self) -> String
+
+pub(all) struct OptmetanelderNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetanelderNode::add(Self, Self) -> Self
+pub fn OptmetanelderNode::copy(Self) -> Self
+pub fn OptmetanelderNode::fill(Self, Double) -> Self
+pub fn OptmetanelderNode::get(Self, Int32) -> Double
+pub fn OptmetanelderNode::len(Self) -> Int32
+pub fn OptmetanelderNode::max(Self) -> Double
+pub fn OptmetanelderNode::mean(Self) -> Double
+pub fn OptmetanelderNode::min(Self) -> Double
+pub fn OptmetanelderNode::scale(Self, Double) -> Self
+pub fn OptmetanelderNode::set(Self, Int32, Double) -> Self
+pub fn OptmetanelderNode::sum(Self) -> Double
+pub fn OptmetanelderNode::to_string(Self) -> String
+
+pub(all) struct OptmetanelderPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetanelderPath::add(Self, Self) -> Self
+pub fn OptmetanelderPath::copy(Self) -> Self
+pub fn OptmetanelderPath::fill(Self, Double) -> Self
+pub fn OptmetanelderPath::get(Self, Int32) -> Double
+pub fn OptmetanelderPath::len(Self) -> Int32
+pub fn OptmetanelderPath::max(Self) -> Double
+pub fn OptmetanelderPath::mean(Self) -> Double
+pub fn OptmetanelderPath::min(Self) -> Double
+pub fn OptmetanelderPath::scale(Self, Double) -> Self
+pub fn OptmetanelderPath::set(Self, Int32, Double) -> Self
+pub fn OptmetanelderPath::sum(Self) -> Double
+pub fn OptmetanelderPath::to_string(Self) -> String
+
+pub(all) struct OptmetanelderPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn OptmetanelderPoint::add(Self, Self) -> Self
+pub fn OptmetanelderPoint::cross(Self, Self) -> Self
+pub fn OptmetanelderPoint::dist(Self, Self) -> Double
+pub fn OptmetanelderPoint::dot(Self, Self) -> Double
+pub fn OptmetanelderPoint::label(Self) -> Int32
+pub fn OptmetanelderPoint::lerp(Self, Self, Double) -> Self
+pub fn OptmetanelderPoint::mid(Self, Self) -> Self
+pub fn OptmetanelderPoint::negate(Self) -> Self
+pub fn OptmetanelderPoint::norm(Self) -> Double
+pub fn OptmetanelderPoint::normalize(Self) -> Self
+pub fn OptmetanelderPoint::scale(Self, Double) -> Self
+pub fn OptmetanelderPoint::sub(Self, Self) -> Self
+pub fn OptmetanelderPoint::to_string(Self) -> String
+pub fn OptmetanelderPoint::x(Self) -> Double
+pub fn OptmetanelderPoint::y(Self) -> Double
+pub fn OptmetanelderPoint::z(Self) -> Double
+
+pub(all) struct OptmetanelderRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetanelderRange::add(Self, Self) -> Self
+pub fn OptmetanelderRange::copy(Self) -> Self
+pub fn OptmetanelderRange::fill(Self, Double) -> Self
+pub fn OptmetanelderRange::get(Self, Int32) -> Double
+pub fn OptmetanelderRange::len(Self) -> Int32
+pub fn OptmetanelderRange::max(Self) -> Double
+pub fn OptmetanelderRange::mean(Self) -> Double
+pub fn OptmetanelderRange::min(Self) -> Double
+pub fn OptmetanelderRange::scale(Self, Double) -> Self
+pub fn OptmetanelderRange::set(Self, Int32, Double) -> Self
+pub fn OptmetanelderRange::sum(Self) -> Double
+pub fn OptmetanelderRange::to_string(Self) -> String
+
+pub(all) struct OptmetanelderSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn OptmetanelderSeries::add(Self, Self) -> Self
+pub fn OptmetanelderSeries::cumsum(Self) -> Self
+pub fn OptmetanelderSeries::len(Self) -> Int32
+pub fn OptmetanelderSeries::max(Self) -> Double
+pub fn OptmetanelderSeries::mean(Self) -> Double
+pub fn OptmetanelderSeries::median(Self) -> Double
+pub fn OptmetanelderSeries::min(Self) -> Double
+pub fn OptmetanelderSeries::normalize(Self) -> Self
+pub fn OptmetanelderSeries::range(Self) -> Double
+pub fn OptmetanelderSeries::scale(Self, Double) -> Self
+pub fn OptmetanelderSeries::std(Self) -> Double
+pub fn OptmetanelderSeries::sub(Self, Self) -> Self
+pub fn OptmetanelderSeries::sum(Self) -> Double
+pub fn OptmetanelderSeries::to_string(Self) -> String
+pub fn OptmetanelderSeries::variance(Self) -> Double
+
+pub(all) struct OptmetanelderSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetanelderSlice::add(Self, Self) -> Self
+pub fn OptmetanelderSlice::copy(Self) -> Self
+pub fn OptmetanelderSlice::fill(Self, Double) -> Self
+pub fn OptmetanelderSlice::get(Self, Int32) -> Double
+pub fn OptmetanelderSlice::len(Self) -> Int32
+pub fn OptmetanelderSlice::max(Self) -> Double
+pub fn OptmetanelderSlice::mean(Self) -> Double
+pub fn OptmetanelderSlice::min(Self) -> Double
+pub fn OptmetanelderSlice::scale(Self, Double) -> Self
+pub fn OptmetanelderSlice::set(Self, Int32, Double) -> Self
+pub fn OptmetanelderSlice::sum(Self) -> Double
+pub fn OptmetanelderSlice::to_string(Self) -> String
+
+pub(all) struct OptmetanelderTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetanelderTable::add(Self, Self) -> Self
+pub fn OptmetanelderTable::copy(Self) -> Self
+pub fn OptmetanelderTable::fill(Self, Double) -> Self
+pub fn OptmetanelderTable::get(Self, Int32) -> Double
+pub fn OptmetanelderTable::len(Self) -> Int32
+pub fn OptmetanelderTable::max(Self) -> Double
+pub fn OptmetanelderTable::mean(Self) -> Double
+pub fn OptmetanelderTable::min(Self) -> Double
+pub fn OptmetanelderTable::scale(Self, Double) -> Self
+pub fn OptmetanelderTable::set(Self, Int32, Double) -> Self
+pub fn OptmetanelderTable::sum(Self) -> Double
+pub fn OptmetanelderTable::to_string(Self) -> String
+
+pub(all) struct OptmetanelderVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn OptmetanelderVector::add(Self, Self) -> Self
+pub fn OptmetanelderVector::dist(Self, Self) -> Double
+pub fn OptmetanelderVector::dot(Self, Self) -> Double
+pub fn OptmetanelderVector::norm(Self) -> Double
+pub fn OptmetanelderVector::normalize(Self) -> Self
+pub fn OptmetanelderVector::scale(Self, Double) -> Self
+pub fn OptmetanelderVector::sub(Self, Self) -> Self
+pub fn OptmetanelderVector::to_string(Self) -> String
+
+pub(all) struct OptmetanelderView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetanelderView::add(Self, Self) -> Self
+pub fn OptmetanelderView::copy(Self) -> Self
+pub fn OptmetanelderView::fill(Self, Double) -> Self
+pub fn OptmetanelderView::get(Self, Int32) -> Double
+pub fn OptmetanelderView::len(Self) -> Int32
+pub fn OptmetanelderView::max(Self) -> Double
+pub fn OptmetanelderView::mean(Self) -> Double
+pub fn OptmetanelderView::min(Self) -> Double
+pub fn OptmetanelderView::scale(Self, Double) -> Self
+pub fn OptmetanelderView::set(Self, Int32, Double) -> Self
+pub fn OptmetanelderView::sum(Self) -> Double
+pub fn OptmetanelderView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

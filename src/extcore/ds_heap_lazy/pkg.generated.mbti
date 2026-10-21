@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_heap_lazy"
+
+// Values
+pub fn ds_heap_lazy_buffer_make(Int32) -> DsheaplazyBuffer
+
+pub fn ds_heap_lazy_cluster_make(Int32) -> DsheaplazyCluster
+
+pub fn ds_heap_lazy_cursor_make(Int32) -> DsheaplazyCursor
+
+pub fn ds_heap_lazy_edge_make(Int32) -> DsheaplazyEdge
+
+pub fn ds_heap_lazy_frame_make(Int32) -> DsheaplazyFrame
+
+pub fn ds_heap_lazy_graphn_make(Int32) -> DsheaplazyGraphN
+
+pub fn ds_heap_lazy_layer_make(Int32) -> DsheaplazyLayer
+
+pub fn ds_heap_lazy_make_matrix(Int32, Int32, Double) -> DsheaplazyMatrix
+
+pub fn ds_heap_lazy_make_point(Double, Double) -> DsheaplazyPoint
+
+pub fn ds_heap_lazy_make_point3(Double, Double, Double) -> DsheaplazyPoint
+
+pub fn ds_heap_lazy_make_series(Array[Double], String) -> DsheaplazySeries
+
+pub fn ds_heap_lazy_make_vector(Array[Double]) -> DsheaplazyVector
+
+pub fn ds_heap_lazy_matrix_identity(Int32) -> DsheaplazyMatrix
+
+pub fn ds_heap_lazy_model_make(Int32) -> DsheaplazyModel
+
+pub fn ds_heap_lazy_node_make(Int32) -> DsheaplazyNode
+
+pub fn ds_heap_lazy_path_make(Int32) -> DsheaplazyPath
+
+pub fn ds_heap_lazy_range_make(Int32) -> DsheaplazyRange
+
+pub fn ds_heap_lazy_slice_make(Int32) -> DsheaplazySlice
+
+pub fn ds_heap_lazy_table_make(Int32) -> DsheaplazyTable
+
+pub fn ds_heap_lazy_vector_zero(Int32) -> DsheaplazyVector
+
+pub fn ds_heap_lazy_view_make(Int32) -> DsheaplazyView
+
+// Errors
+
+// Types and methods
+pub(all) struct DsheaplazyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheaplazyBuffer::add(Self, Self) -> Self
+pub fn DsheaplazyBuffer::copy(Self) -> Self
+pub fn DsheaplazyBuffer::fill(Self, Double) -> Self
+pub fn DsheaplazyBuffer::get(Self, Int32) -> Double
+pub fn DsheaplazyBuffer::len(Self) -> Int32
+pub fn DsheaplazyBuffer::max(Self) -> Double
+pub fn DsheaplazyBuffer::mean(Self) -> Double
+pub fn DsheaplazyBuffer::min(Self) -> Double
+pub fn DsheaplazyBuffer::scale(Self, Double) -> Self
+pub fn DsheaplazyBuffer::set(Self, Int32, Double) -> Self
+pub fn DsheaplazyBuffer::sum(Self) -> Double
+pub fn DsheaplazyBuffer::to_string(Self) -> String
+
+pub(all) struct DsheaplazyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheaplazyCluster::add(Self, Self) -> Self
+pub fn DsheaplazyCluster::copy(Self) -> Self
+pub fn DsheaplazyCluster::fill(Self, Double) -> Self
+pub fn DsheaplazyCluster::get(Self, Int32) -> Double
+pub fn DsheaplazyCluster::len(Self) -> Int32
+pub fn DsheaplazyCluster::max(Self) -> Double
+pub fn DsheaplazyCluster::mean(Self) -> Double
+pub fn DsheaplazyCluster::min(Self) -> Double
+pub fn DsheaplazyCluster::scale(Self, Double) -> Self
+pub fn DsheaplazyCluster::set(Self, Int32, Double) -> Self
+pub fn DsheaplazyCluster::sum(Self) -> Double
+pub fn DsheaplazyCluster::to_string(Self) -> String
+
+pub(all) struct DsheaplazyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheaplazyCursor::add(Self, Self) -> Self
+pub fn DsheaplazyCursor::copy(Self) -> Self
+pub fn DsheaplazyCursor::fill(Self, Double) -> Self
+pub fn DsheaplazyCursor::get(Self, Int32) -> Double
+pub fn DsheaplazyCursor::len(Self) -> Int32
+pub fn DsheaplazyCursor::max(Self) -> Double
+pub fn DsheaplazyCursor::mean(Self) -> Double
+pub fn DsheaplazyCursor::min(Self) -> Double
+pub fn DsheaplazyCursor::scale(Self, Double) -> Self
+pub fn DsheaplazyCursor::set(Self, Int32, Double) -> Self
+pub fn DsheaplazyCursor::sum(Self) -> Double
+pub fn DsheaplazyCursor::to_string(Self) -> String
+
+pub(all) struct DsheaplazyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheaplazyEdge::add(Self, Self) -> Self
+pub fn DsheaplazyEdge::copy(Self) -> Self
+pub fn DsheaplazyEdge::fill(Self, Double) -> Self
+pub fn DsheaplazyEdge::get(Self, Int32) -> Double
+pub fn DsheaplazyEdge::len(Self) -> Int32
+pub fn DsheaplazyEdge::max(Self) -> Double
+pub fn DsheaplazyEdge::mean(Self) -> Double
+pub fn DsheaplazyEdge::min(Self) -> Double
+pub fn DsheaplazyEdge::scale(Self, Double) -> Self
+pub fn DsheaplazyEdge::set(Self, Int32, Double) -> Self
+pub fn DsheaplazyEdge::sum(Self) -> Double
+pub fn DsheaplazyEdge::to_string(Self) -> String
+
+pub(all) struct DsheaplazyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheaplazyFrame::add(Self, Self) -> Self
+pub fn DsheaplazyFrame::copy(Self) -> Self
+pub fn DsheaplazyFrame::fill(Self, Double) -> Self
+pub fn DsheaplazyFrame::get(Self, Int32) -> Double
+pub fn DsheaplazyFrame::len(Self) -> Int32
+pub fn DsheaplazyFrame::max(Self) -> Double
+pub fn DsheaplazyFrame::mean(Self) -> Double
+pub fn DsheaplazyFrame::min(Self) -> Double
+pub fn DsheaplazyFrame::scale(Self, Double) -> Self
+pub fn DsheaplazyFrame::set(Self, Int32, Double) -> Self
+pub fn DsheaplazyFrame::sum(Self) -> Double
+pub fn DsheaplazyFrame::to_string(Self) -> String
+
+pub(all) struct DsheaplazyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheaplazyGraphN::add(Self, Self) -> Self
+pub fn DsheaplazyGraphN::copy(Self) -> Self
+pub fn DsheaplazyGraphN::fill(Self, Double) -> Self
+pub fn DsheaplazyGraphN::get(Self, Int32) -> Double
+pub fn DsheaplazyGraphN::len(Self) -> Int32
+pub fn DsheaplazyGraphN::max(Self) -> Double
+pub fn DsheaplazyGraphN::mean(Self) -> Double
+pub fn DsheaplazyGraphN::min(Self) -> Double
+pub fn DsheaplazyGraphN::scale(Self, Double) -> Self
+pub fn DsheaplazyGraphN::set(Self, Int32, Double) -> Self
+pub fn DsheaplazyGraphN::sum(Self) -> Double
+pub fn DsheaplazyGraphN::to_string(Self) -> String
+
+pub(all) struct DsheaplazyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheaplazyLayer::add(Self, Self) -> Self
+pub fn DsheaplazyLayer::copy(Self) -> Self
+pub fn DsheaplazyLayer::fill(Self, Double) -> Self
+pub fn DsheaplazyLayer::get(Self, Int32) -> Double
+pub fn DsheaplazyLayer::len(Self) -> Int32
+pub fn DsheaplazyLayer::max(Self) -> Double
+pub fn DsheaplazyLayer::mean(Self) -> Double
+pub fn DsheaplazyLayer::min(Self) -> Double
+pub fn DsheaplazyLayer::scale(Self, Double) -> Self
+pub fn DsheaplazyLayer::set(Self, Int32, Double) -> Self
+pub fn DsheaplazyLayer::sum(Self) -> Double
+pub fn DsheaplazyLayer::to_string(Self) -> String
+
+pub(all) struct DsheaplazyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DsheaplazyMatrix::add(Self, Self) -> Self
+pub fn DsheaplazyMatrix::det(Self) -> Double
+pub fn DsheaplazyMatrix::get(Self, Int32, Int32) -> Double
+pub fn DsheaplazyMatrix::multiply(Self, Self) -> Self
+pub fn DsheaplazyMatrix::norm(Self) -> Double
+pub fn DsheaplazyMatrix::scale(Self, Double) -> Self
+pub fn DsheaplazyMatrix::to_string(Self) -> String
+pub fn DsheaplazyMatrix::trace(Self) -> Double
+pub fn DsheaplazyMatrix::transpose(Self) -> Self
+
+pub(all) struct DsheaplazyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheaplazyModel::add(Self, Self) -> Self
+pub fn DsheaplazyModel::copy(Self) -> Self
+pub fn DsheaplazyModel::fill(Self, Double) -> Self
+pub fn DsheaplazyModel::get(Self, Int32) -> Double
+pub fn DsheaplazyModel::len(Self) -> Int32
+pub fn DsheaplazyModel::max(Self) -> Double
+pub fn DsheaplazyModel::mean(Self) -> Double
+pub fn DsheaplazyModel::min(Self) -> Double
+pub fn DsheaplazyModel::scale(Self, Double) -> Self
+pub fn DsheaplazyModel::set(Self, Int32, Double) -> Self
+pub fn DsheaplazyModel::sum(Self) -> Double
+pub fn DsheaplazyModel::to_string(Self) -> String
+
+pub(all) struct DsheaplazyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheaplazyNode::add(Self, Self) -> Self
+pub fn DsheaplazyNode::copy(Self) -> Self
+pub fn DsheaplazyNode::fill(Self, Double) -> Self
+pub fn DsheaplazyNode::get(Self, Int32) -> Double
+pub fn DsheaplazyNode::len(Self) -> Int32
+pub fn DsheaplazyNode::max(Self) -> Double
+pub fn DsheaplazyNode::mean(Self) -> Double
+pub fn DsheaplazyNode::min(Self) -> Double
+pub fn DsheaplazyNode::scale(Self, Double) -> Self
+pub fn DsheaplazyNode::set(Self, Int32, Double) -> Self
+pub fn DsheaplazyNode::sum(Self) -> Double
+pub fn DsheaplazyNode::to_string(Self) -> String
+
+pub(all) struct DsheaplazyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheaplazyPath::add(Self, Self) -> Self
+pub fn DsheaplazyPath::copy(Self) -> Self
+pub fn DsheaplazyPath::fill(Self, Double) -> Self
+pub fn DsheaplazyPath::get(Self, Int32) -> Double
+pub fn DsheaplazyPath::len(Self) -> Int32
+pub fn DsheaplazyPath::max(Self) -> Double
+pub fn DsheaplazyPath::mean(Self) -> Double
+pub fn DsheaplazyPath::min(Self) -> Double
+pub fn DsheaplazyPath::scale(Self, Double) -> Self
+pub fn DsheaplazyPath::set(Self, Int32, Double) -> Self
+pub fn DsheaplazyPath::sum(Self) -> Double
+pub fn DsheaplazyPath::to_string(Self) -> String
+
+pub(all) struct DsheaplazyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DsheaplazyPoint::add(Self, Self) -> Self
+pub fn DsheaplazyPoint::cross(Self, Self) -> Self
+pub fn DsheaplazyPoint::dist(Self, Self) -> Double
+pub fn DsheaplazyPoint::dot(Self, Self) -> Double
+pub fn DsheaplazyPoint::label(Self) -> Int32
+pub fn DsheaplazyPoint::lerp(Self, Self, Double) -> Self
+pub fn DsheaplazyPoint::mid(Self, Self) -> Self
+pub fn DsheaplazyPoint::negate(Self) -> Self
+pub fn DsheaplazyPoint::norm(Self) -> Double
+pub fn DsheaplazyPoint::normalize(Self) -> Self
+pub fn DsheaplazyPoint::scale(Self, Double) -> Self
+pub fn DsheaplazyPoint::sub(Self, Self) -> Self
+pub fn DsheaplazyPoint::to_string(Self) -> String
+pub fn DsheaplazyPoint::x(Self) -> Double
+pub fn DsheaplazyPoint::y(Self) -> Double
+pub fn DsheaplazyPoint::z(Self) -> Double
+
+pub(all) struct DsheaplazyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheaplazyRange::add(Self, Self) -> Self
+pub fn DsheaplazyRange::copy(Self) -> Self
+pub fn DsheaplazyRange::fill(Self, Double) -> Self
+pub fn DsheaplazyRange::get(Self, Int32) -> Double
+pub fn DsheaplazyRange::len(Self) -> Int32
+pub fn DsheaplazyRange::max(Self) -> Double
+pub fn DsheaplazyRange::mean(Self) -> Double
+pub fn DsheaplazyRange::min(Self) -> Double
+pub fn DsheaplazyRange::scale(Self, Double) -> Self
+pub fn DsheaplazyRange::set(Self, Int32, Double) -> Self
+pub fn DsheaplazyRange::sum(Self) -> Double
+pub fn DsheaplazyRange::to_string(Self) -> String
+
+pub(all) struct DsheaplazySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DsheaplazySeries::add(Self, Self) -> Self
+pub fn DsheaplazySeries::cumsum(Self) -> Self
+pub fn DsheaplazySeries::len(Self) -> Int32
+pub fn DsheaplazySeries::max(Self) -> Double
+pub fn DsheaplazySeries::mean(Self) -> Double
+pub fn DsheaplazySeries::median(Self) -> Double
+pub fn DsheaplazySeries::min(Self) -> Double
+pub fn DsheaplazySeries::normalize(Self) -> Self
+pub fn DsheaplazySeries::range(Self) -> Double
+pub fn DsheaplazySeries::scale(Self, Double) -> Self
+pub fn DsheaplazySeries::std(Self) -> Double
+pub fn DsheaplazySeries::sub(Self, Self) -> Self
+pub fn DsheaplazySeries::sum(Self) -> Double
+pub fn DsheaplazySeries::to_string(Self) -> String
+pub fn DsheaplazySeries::variance(Self) -> Double
+
+pub(all) struct DsheaplazySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheaplazySlice::add(Self, Self) -> Self
+pub fn DsheaplazySlice::copy(Self) -> Self
+pub fn DsheaplazySlice::fill(Self, Double) -> Self
+pub fn DsheaplazySlice::get(Self, Int32) -> Double
+pub fn DsheaplazySlice::len(Self) -> Int32
+pub fn DsheaplazySlice::max(Self) -> Double
+pub fn DsheaplazySlice::mean(Self) -> Double
+pub fn DsheaplazySlice::min(Self) -> Double
+pub fn DsheaplazySlice::scale(Self, Double) -> Self
+pub fn DsheaplazySlice::set(Self, Int32, Double) -> Self
+pub fn DsheaplazySlice::sum(Self) -> Double
+pub fn DsheaplazySlice::to_string(Self) -> String
+
+pub(all) struct DsheaplazyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheaplazyTable::add(Self, Self) -> Self
+pub fn DsheaplazyTable::copy(Self) -> Self
+pub fn DsheaplazyTable::fill(Self, Double) -> Self
+pub fn DsheaplazyTable::get(Self, Int32) -> Double
+pub fn DsheaplazyTable::len(Self) -> Int32
+pub fn DsheaplazyTable::max(Self) -> Double
+pub fn DsheaplazyTable::mean(Self) -> Double
+pub fn DsheaplazyTable::min(Self) -> Double
+pub fn DsheaplazyTable::scale(Self, Double) -> Self
+pub fn DsheaplazyTable::set(Self, Int32, Double) -> Self
+pub fn DsheaplazyTable::sum(Self) -> Double
+pub fn DsheaplazyTable::to_string(Self) -> String
+
+pub(all) struct DsheaplazyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DsheaplazyVector::add(Self, Self) -> Self
+pub fn DsheaplazyVector::dist(Self, Self) -> Double
+pub fn DsheaplazyVector::dot(Self, Self) -> Double
+pub fn DsheaplazyVector::norm(Self) -> Double
+pub fn DsheaplazyVector::normalize(Self) -> Self
+pub fn DsheaplazyVector::scale(Self, Double) -> Self
+pub fn DsheaplazyVector::sub(Self, Self) -> Self
+pub fn DsheaplazyVector::to_string(Self) -> String
+
+pub(all) struct DsheaplazyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheaplazyView::add(Self, Self) -> Self
+pub fn DsheaplazyView::copy(Self) -> Self
+pub fn DsheaplazyView::fill(Self, Double) -> Self
+pub fn DsheaplazyView::get(Self, Int32) -> Double
+pub fn DsheaplazyView::len(Self) -> Int32
+pub fn DsheaplazyView::max(Self) -> Double
+pub fn DsheaplazyView::mean(Self) -> Double
+pub fn DsheaplazyView::min(Self) -> Double
+pub fn DsheaplazyView::scale(Self, Double) -> Self
+pub fn DsheaplazyView::set(Self, Int32, Double) -> Self
+pub fn DsheaplazyView::sum(Self) -> Double
+pub fn DsheaplazyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

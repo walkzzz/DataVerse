@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/stats_infer_hypothesis"
+
+// Values
+pub fn stats_infer_hypothesis_buffer_make(Int32) -> StatsinferhypothesisBuffer
+
+pub fn stats_infer_hypothesis_cluster_make(Int32) -> StatsinferhypothesisCluster
+
+pub fn stats_infer_hypothesis_cursor_make(Int32) -> StatsinferhypothesisCursor
+
+pub fn stats_infer_hypothesis_edge_make(Int32) -> StatsinferhypothesisEdge
+
+pub fn stats_infer_hypothesis_frame_make(Int32) -> StatsinferhypothesisFrame
+
+pub fn stats_infer_hypothesis_graphn_make(Int32) -> StatsinferhypothesisGraphN
+
+pub fn stats_infer_hypothesis_layer_make(Int32) -> StatsinferhypothesisLayer
+
+pub fn stats_infer_hypothesis_make_matrix(Int32, Int32, Double) -> StatsinferhypothesisMatrix
+
+pub fn stats_infer_hypothesis_make_point(Double, Double) -> StatsinferhypothesisPoint
+
+pub fn stats_infer_hypothesis_make_point3(Double, Double, Double) -> StatsinferhypothesisPoint
+
+pub fn stats_infer_hypothesis_make_series(Array[Double], String) -> StatsinferhypothesisSeries
+
+pub fn stats_infer_hypothesis_make_vector(Array[Double]) -> StatsinferhypothesisVector
+
+pub fn stats_infer_hypothesis_matrix_identity(Int32) -> StatsinferhypothesisMatrix
+
+pub fn stats_infer_hypothesis_model_make(Int32) -> StatsinferhypothesisModel
+
+pub fn stats_infer_hypothesis_node_make(Int32) -> StatsinferhypothesisNode
+
+pub fn stats_infer_hypothesis_path_make(Int32) -> StatsinferhypothesisPath
+
+pub fn stats_infer_hypothesis_range_make(Int32) -> StatsinferhypothesisRange
+
+pub fn stats_infer_hypothesis_slice_make(Int32) -> StatsinferhypothesisSlice
+
+pub fn stats_infer_hypothesis_table_make(Int32) -> StatsinferhypothesisTable
+
+pub fn stats_infer_hypothesis_vector_zero(Int32) -> StatsinferhypothesisVector
+
+pub fn stats_infer_hypothesis_view_make(Int32) -> StatsinferhypothesisView
+
+// Errors
+
+// Types and methods
+pub(all) struct StatsinferhypothesisBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferhypothesisBuffer::add(Self, Self) -> Self
+pub fn StatsinferhypothesisBuffer::copy(Self) -> Self
+pub fn StatsinferhypothesisBuffer::fill(Self, Double) -> Self
+pub fn StatsinferhypothesisBuffer::get(Self, Int32) -> Double
+pub fn StatsinferhypothesisBuffer::len(Self) -> Int32
+pub fn StatsinferhypothesisBuffer::max(Self) -> Double
+pub fn StatsinferhypothesisBuffer::mean(Self) -> Double
+pub fn StatsinferhypothesisBuffer::min(Self) -> Double
+pub fn StatsinferhypothesisBuffer::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisBuffer::set(Self, Int32, Double) -> Self
+pub fn StatsinferhypothesisBuffer::sum(Self) -> Double
+pub fn StatsinferhypothesisBuffer::to_string(Self) -> String
+
+pub(all) struct StatsinferhypothesisCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferhypothesisCluster::add(Self, Self) -> Self
+pub fn StatsinferhypothesisCluster::copy(Self) -> Self
+pub fn StatsinferhypothesisCluster::fill(Self, Double) -> Self
+pub fn StatsinferhypothesisCluster::get(Self, Int32) -> Double
+pub fn StatsinferhypothesisCluster::len(Self) -> Int32
+pub fn StatsinferhypothesisCluster::max(Self) -> Double
+pub fn StatsinferhypothesisCluster::mean(Self) -> Double
+pub fn StatsinferhypothesisCluster::min(Self) -> Double
+pub fn StatsinferhypothesisCluster::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisCluster::set(Self, Int32, Double) -> Self
+pub fn StatsinferhypothesisCluster::sum(Self) -> Double
+pub fn StatsinferhypothesisCluster::to_string(Self) -> String
+
+pub(all) struct StatsinferhypothesisCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferhypothesisCursor::add(Self, Self) -> Self
+pub fn StatsinferhypothesisCursor::copy(Self) -> Self
+pub fn StatsinferhypothesisCursor::fill(Self, Double) -> Self
+pub fn StatsinferhypothesisCursor::get(Self, Int32) -> Double
+pub fn StatsinferhypothesisCursor::len(Self) -> Int32
+pub fn StatsinferhypothesisCursor::max(Self) -> Double
+pub fn StatsinferhypothesisCursor::mean(Self) -> Double
+pub fn StatsinferhypothesisCursor::min(Self) -> Double
+pub fn StatsinferhypothesisCursor::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisCursor::set(Self, Int32, Double) -> Self
+pub fn StatsinferhypothesisCursor::sum(Self) -> Double
+pub fn StatsinferhypothesisCursor::to_string(Self) -> String
+
+pub(all) struct StatsinferhypothesisEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferhypothesisEdge::add(Self, Self) -> Self
+pub fn StatsinferhypothesisEdge::copy(Self) -> Self
+pub fn StatsinferhypothesisEdge::fill(Self, Double) -> Self
+pub fn StatsinferhypothesisEdge::get(Self, Int32) -> Double
+pub fn StatsinferhypothesisEdge::len(Self) -> Int32
+pub fn StatsinferhypothesisEdge::max(Self) -> Double
+pub fn StatsinferhypothesisEdge::mean(Self) -> Double
+pub fn StatsinferhypothesisEdge::min(Self) -> Double
+pub fn StatsinferhypothesisEdge::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisEdge::set(Self, Int32, Double) -> Self
+pub fn StatsinferhypothesisEdge::sum(Self) -> Double
+pub fn StatsinferhypothesisEdge::to_string(Self) -> String
+
+pub(all) struct StatsinferhypothesisFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferhypothesisFrame::add(Self, Self) -> Self
+pub fn StatsinferhypothesisFrame::copy(Self) -> Self
+pub fn StatsinferhypothesisFrame::fill(Self, Double) -> Self
+pub fn StatsinferhypothesisFrame::get(Self, Int32) -> Double
+pub fn StatsinferhypothesisFrame::len(Self) -> Int32
+pub fn StatsinferhypothesisFrame::max(Self) -> Double
+pub fn StatsinferhypothesisFrame::mean(Self) -> Double
+pub fn StatsinferhypothesisFrame::min(Self) -> Double
+pub fn StatsinferhypothesisFrame::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisFrame::set(Self, Int32, Double) -> Self
+pub fn StatsinferhypothesisFrame::sum(Self) -> Double
+pub fn StatsinferhypothesisFrame::to_string(Self) -> String
+
+pub(all) struct StatsinferhypothesisGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferhypothesisGraphN::add(Self, Self) -> Self
+pub fn StatsinferhypothesisGraphN::copy(Self) -> Self
+pub fn StatsinferhypothesisGraphN::fill(Self, Double) -> Self
+pub fn StatsinferhypothesisGraphN::get(Self, Int32) -> Double
+pub fn StatsinferhypothesisGraphN::len(Self) -> Int32
+pub fn StatsinferhypothesisGraphN::max(Self) -> Double
+pub fn StatsinferhypothesisGraphN::mean(Self) -> Double
+pub fn StatsinferhypothesisGraphN::min(Self) -> Double
+pub fn StatsinferhypothesisGraphN::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisGraphN::set(Self, Int32, Double) -> Self
+pub fn StatsinferhypothesisGraphN::sum(Self) -> Double
+pub fn StatsinferhypothesisGraphN::to_string(Self) -> String
+
+pub(all) struct StatsinferhypothesisLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferhypothesisLayer::add(Self, Self) -> Self
+pub fn StatsinferhypothesisLayer::copy(Self) -> Self
+pub fn StatsinferhypothesisLayer::fill(Self, Double) -> Self
+pub fn StatsinferhypothesisLayer::get(Self, Int32) -> Double
+pub fn StatsinferhypothesisLayer::len(Self) -> Int32
+pub fn StatsinferhypothesisLayer::max(Self) -> Double
+pub fn StatsinferhypothesisLayer::mean(Self) -> Double
+pub fn StatsinferhypothesisLayer::min(Self) -> Double
+pub fn StatsinferhypothesisLayer::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisLayer::set(Self, Int32, Double) -> Self
+pub fn StatsinferhypothesisLayer::sum(Self) -> Double
+pub fn StatsinferhypothesisLayer::to_string(Self) -> String
+
+pub(all) struct StatsinferhypothesisMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn StatsinferhypothesisMatrix::add(Self, Self) -> Self
+pub fn StatsinferhypothesisMatrix::det(Self) -> Double
+pub fn StatsinferhypothesisMatrix::get(Self, Int32, Int32) -> Double
+pub fn StatsinferhypothesisMatrix::multiply(Self, Self) -> Self
+pub fn StatsinferhypothesisMatrix::norm(Self) -> Double
+pub fn StatsinferhypothesisMatrix::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisMatrix::to_string(Self) -> String
+pub fn StatsinferhypothesisMatrix::trace(Self) -> Double
+pub fn StatsinferhypothesisMatrix::transpose(Self) -> Self
+
+pub(all) struct StatsinferhypothesisModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferhypothesisModel::add(Self, Self) -> Self
+pub fn StatsinferhypothesisModel::copy(Self) -> Self
+pub fn StatsinferhypothesisModel::fill(Self, Double) -> Self
+pub fn StatsinferhypothesisModel::get(Self, Int32) -> Double
+pub fn StatsinferhypothesisModel::len(Self) -> Int32
+pub fn StatsinferhypothesisModel::max(Self) -> Double
+pub fn StatsinferhypothesisModel::mean(Self) -> Double
+pub fn StatsinferhypothesisModel::min(Self) -> Double
+pub fn StatsinferhypothesisModel::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisModel::set(Self, Int32, Double) -> Self
+pub fn StatsinferhypothesisModel::sum(Self) -> Double
+pub fn StatsinferhypothesisModel::to_string(Self) -> String
+
+pub(all) struct StatsinferhypothesisNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferhypothesisNode::add(Self, Self) -> Self
+pub fn StatsinferhypothesisNode::copy(Self) -> Self
+pub fn StatsinferhypothesisNode::fill(Self, Double) -> Self
+pub fn StatsinferhypothesisNode::get(Self, Int32) -> Double
+pub fn StatsinferhypothesisNode::len(Self) -> Int32
+pub fn StatsinferhypothesisNode::max(Self) -> Double
+pub fn StatsinferhypothesisNode::mean(Self) -> Double
+pub fn StatsinferhypothesisNode::min(Self) -> Double
+pub fn StatsinferhypothesisNode::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisNode::set(Self, Int32, Double) -> Self
+pub fn StatsinferhypothesisNode::sum(Self) -> Double
+pub fn StatsinferhypothesisNode::to_string(Self) -> String
+
+pub(all) struct StatsinferhypothesisPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferhypothesisPath::add(Self, Self) -> Self
+pub fn StatsinferhypothesisPath::copy(Self) -> Self
+pub fn StatsinferhypothesisPath::fill(Self, Double) -> Self
+pub fn StatsinferhypothesisPath::get(Self, Int32) -> Double
+pub fn StatsinferhypothesisPath::len(Self) -> Int32
+pub fn StatsinferhypothesisPath::max(Self) -> Double
+pub fn StatsinferhypothesisPath::mean(Self) -> Double
+pub fn StatsinferhypothesisPath::min(Self) -> Double
+pub fn StatsinferhypothesisPath::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisPath::set(Self, Int32, Double) -> Self
+pub fn StatsinferhypothesisPath::sum(Self) -> Double
+pub fn StatsinferhypothesisPath::to_string(Self) -> String
+
+pub(all) struct StatsinferhypothesisPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn StatsinferhypothesisPoint::add(Self, Self) -> Self
+pub fn StatsinferhypothesisPoint::cross(Self, Self) -> Self
+pub fn StatsinferhypothesisPoint::dist(Self, Self) -> Double
+pub fn StatsinferhypothesisPoint::dot(Self, Self) -> Double
+pub fn StatsinferhypothesisPoint::label(Self) -> Int32
+pub fn StatsinferhypothesisPoint::lerp(Self, Self, Double) -> Self
+pub fn StatsinferhypothesisPoint::mid(Self, Self) -> Self
+pub fn StatsinferhypothesisPoint::negate(Self) -> Self
+pub fn StatsinferhypothesisPoint::norm(Self) -> Double
+pub fn StatsinferhypothesisPoint::normalize(Self) -> Self
+pub fn StatsinferhypothesisPoint::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisPoint::sub(Self, Self) -> Self
+pub fn StatsinferhypothesisPoint::to_string(Self) -> String
+pub fn StatsinferhypothesisPoint::x(Self) -> Double
+pub fn StatsinferhypothesisPoint::y(Self) -> Double
+pub fn StatsinferhypothesisPoint::z(Self) -> Double
+
+pub(all) struct StatsinferhypothesisRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferhypothesisRange::add(Self, Self) -> Self
+pub fn StatsinferhypothesisRange::copy(Self) -> Self
+pub fn StatsinferhypothesisRange::fill(Self, Double) -> Self
+pub fn StatsinferhypothesisRange::get(Self, Int32) -> Double
+pub fn StatsinferhypothesisRange::len(Self) -> Int32
+pub fn StatsinferhypothesisRange::max(Self) -> Double
+pub fn StatsinferhypothesisRange::mean(Self) -> Double
+pub fn StatsinferhypothesisRange::min(Self) -> Double
+pub fn StatsinferhypothesisRange::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisRange::set(Self, Int32, Double) -> Self
+pub fn StatsinferhypothesisRange::sum(Self) -> Double
+pub fn StatsinferhypothesisRange::to_string(Self) -> String
+
+pub(all) struct StatsinferhypothesisSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn StatsinferhypothesisSeries::add(Self, Self) -> Self
+pub fn StatsinferhypothesisSeries::cumsum(Self) -> Self
+pub fn StatsinferhypothesisSeries::len(Self) -> Int32
+pub fn StatsinferhypothesisSeries::max(Self) -> Double
+pub fn StatsinferhypothesisSeries::mean(Self) -> Double
+pub fn StatsinferhypothesisSeries::median(Self) -> Double
+pub fn StatsinferhypothesisSeries::min(Self) -> Double
+pub fn StatsinferhypothesisSeries::normalize(Self) -> Self
+pub fn StatsinferhypothesisSeries::range(Self) -> Double
+pub fn StatsinferhypothesisSeries::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisSeries::std(Self) -> Double
+pub fn StatsinferhypothesisSeries::sub(Self, Self) -> Self
+pub fn StatsinferhypothesisSeries::sum(Self) -> Double
+pub fn StatsinferhypothesisSeries::to_string(Self) -> String
+pub fn StatsinferhypothesisSeries::variance(Self) -> Double
+
+pub(all) struct StatsinferhypothesisSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferhypothesisSlice::add(Self, Self) -> Self
+pub fn StatsinferhypothesisSlice::copy(Self) -> Self
+pub fn StatsinferhypothesisSlice::fill(Self, Double) -> Self
+pub fn StatsinferhypothesisSlice::get(Self, Int32) -> Double
+pub fn StatsinferhypothesisSlice::len(Self) -> Int32
+pub fn StatsinferhypothesisSlice::max(Self) -> Double
+pub fn StatsinferhypothesisSlice::mean(Self) -> Double
+pub fn StatsinferhypothesisSlice::min(Self) -> Double
+pub fn StatsinferhypothesisSlice::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisSlice::set(Self, Int32, Double) -> Self
+pub fn StatsinferhypothesisSlice::sum(Self) -> Double
+pub fn StatsinferhypothesisSlice::to_string(Self) -> String
+
+pub(all) struct StatsinferhypothesisTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferhypothesisTable::add(Self, Self) -> Self
+pub fn StatsinferhypothesisTable::copy(Self) -> Self
+pub fn StatsinferhypothesisTable::fill(Self, Double) -> Self
+pub fn StatsinferhypothesisTable::get(Self, Int32) -> Double
+pub fn StatsinferhypothesisTable::len(Self) -> Int32
+pub fn StatsinferhypothesisTable::max(Self) -> Double
+pub fn StatsinferhypothesisTable::mean(Self) -> Double
+pub fn StatsinferhypothesisTable::min(Self) -> Double
+pub fn StatsinferhypothesisTable::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisTable::set(Self, Int32, Double) -> Self
+pub fn StatsinferhypothesisTable::sum(Self) -> Double
+pub fn StatsinferhypothesisTable::to_string(Self) -> String
+
+pub(all) struct StatsinferhypothesisVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn StatsinferhypothesisVector::add(Self, Self) -> Self
+pub fn StatsinferhypothesisVector::dist(Self, Self) -> Double
+pub fn StatsinferhypothesisVector::dot(Self, Self) -> Double
+pub fn StatsinferhypothesisVector::norm(Self) -> Double
+pub fn StatsinferhypothesisVector::normalize(Self) -> Self
+pub fn StatsinferhypothesisVector::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisVector::sub(Self, Self) -> Self
+pub fn StatsinferhypothesisVector::to_string(Self) -> String
+
+pub(all) struct StatsinferhypothesisView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsinferhypothesisView::add(Self, Self) -> Self
+pub fn StatsinferhypothesisView::copy(Self) -> Self
+pub fn StatsinferhypothesisView::fill(Self, Double) -> Self
+pub fn StatsinferhypothesisView::get(Self, Int32) -> Double
+pub fn StatsinferhypothesisView::len(Self) -> Int32
+pub fn StatsinferhypothesisView::max(Self) -> Double
+pub fn StatsinferhypothesisView::mean(Self) -> Double
+pub fn StatsinferhypothesisView::min(Self) -> Double
+pub fn StatsinferhypothesisView::scale(Self, Double) -> Self
+pub fn StatsinferhypothesisView::set(Self, Int32, Double) -> Self
+pub fn StatsinferhypothesisView::sum(Self) -> Double
+pub fn StatsinferhypothesisView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

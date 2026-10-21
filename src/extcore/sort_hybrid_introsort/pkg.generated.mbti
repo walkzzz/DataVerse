@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_hybrid_introsort"
+
+// Values
+pub fn sort_hybrid_introsort_buffer_make(Int32) -> SorthybridintrosortBuffer
+
+pub fn sort_hybrid_introsort_cluster_make(Int32) -> SorthybridintrosortCluster
+
+pub fn sort_hybrid_introsort_cursor_make(Int32) -> SorthybridintrosortCursor
+
+pub fn sort_hybrid_introsort_edge_make(Int32) -> SorthybridintrosortEdge
+
+pub fn sort_hybrid_introsort_frame_make(Int32) -> SorthybridintrosortFrame
+
+pub fn sort_hybrid_introsort_graphn_make(Int32) -> SorthybridintrosortGraphN
+
+pub fn sort_hybrid_introsort_layer_make(Int32) -> SorthybridintrosortLayer
+
+pub fn sort_hybrid_introsort_make_matrix(Int32, Int32, Double) -> SorthybridintrosortMatrix
+
+pub fn sort_hybrid_introsort_make_point(Double, Double) -> SorthybridintrosortPoint
+
+pub fn sort_hybrid_introsort_make_point3(Double, Double, Double) -> SorthybridintrosortPoint
+
+pub fn sort_hybrid_introsort_make_series(Array[Double], String) -> SorthybridintrosortSeries
+
+pub fn sort_hybrid_introsort_make_vector(Array[Double]) -> SorthybridintrosortVector
+
+pub fn sort_hybrid_introsort_matrix_identity(Int32) -> SorthybridintrosortMatrix
+
+pub fn sort_hybrid_introsort_model_make(Int32) -> SorthybridintrosortModel
+
+pub fn sort_hybrid_introsort_node_make(Int32) -> SorthybridintrosortNode
+
+pub fn sort_hybrid_introsort_path_make(Int32) -> SorthybridintrosortPath
+
+pub fn sort_hybrid_introsort_range_make(Int32) -> SorthybridintrosortRange
+
+pub fn sort_hybrid_introsort_slice_make(Int32) -> SorthybridintrosortSlice
+
+pub fn sort_hybrid_introsort_table_make(Int32) -> SorthybridintrosortTable
+
+pub fn sort_hybrid_introsort_vector_zero(Int32) -> SorthybridintrosortVector
+
+pub fn sort_hybrid_introsort_view_make(Int32) -> SorthybridintrosortView
+
+// Errors
+
+// Types and methods
+pub(all) struct SorthybridintrosortBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridintrosortBuffer::add(Self, Self) -> Self
+pub fn SorthybridintrosortBuffer::copy(Self) -> Self
+pub fn SorthybridintrosortBuffer::fill(Self, Double) -> Self
+pub fn SorthybridintrosortBuffer::get(Self, Int32) -> Double
+pub fn SorthybridintrosortBuffer::len(Self) -> Int32
+pub fn SorthybridintrosortBuffer::max(Self) -> Double
+pub fn SorthybridintrosortBuffer::mean(Self) -> Double
+pub fn SorthybridintrosortBuffer::min(Self) -> Double
+pub fn SorthybridintrosortBuffer::scale(Self, Double) -> Self
+pub fn SorthybridintrosortBuffer::set(Self, Int32, Double) -> Self
+pub fn SorthybridintrosortBuffer::sum(Self) -> Double
+pub fn SorthybridintrosortBuffer::to_string(Self) -> String
+
+pub(all) struct SorthybridintrosortCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridintrosortCluster::add(Self, Self) -> Self
+pub fn SorthybridintrosortCluster::copy(Self) -> Self
+pub fn SorthybridintrosortCluster::fill(Self, Double) -> Self
+pub fn SorthybridintrosortCluster::get(Self, Int32) -> Double
+pub fn SorthybridintrosortCluster::len(Self) -> Int32
+pub fn SorthybridintrosortCluster::max(Self) -> Double
+pub fn SorthybridintrosortCluster::mean(Self) -> Double
+pub fn SorthybridintrosortCluster::min(Self) -> Double
+pub fn SorthybridintrosortCluster::scale(Self, Double) -> Self
+pub fn SorthybridintrosortCluster::set(Self, Int32, Double) -> Self
+pub fn SorthybridintrosortCluster::sum(Self) -> Double
+pub fn SorthybridintrosortCluster::to_string(Self) -> String
+
+pub(all) struct SorthybridintrosortCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridintrosortCursor::add(Self, Self) -> Self
+pub fn SorthybridintrosortCursor::copy(Self) -> Self
+pub fn SorthybridintrosortCursor::fill(Self, Double) -> Self
+pub fn SorthybridintrosortCursor::get(Self, Int32) -> Double
+pub fn SorthybridintrosortCursor::len(Self) -> Int32
+pub fn SorthybridintrosortCursor::max(Self) -> Double
+pub fn SorthybridintrosortCursor::mean(Self) -> Double
+pub fn SorthybridintrosortCursor::min(Self) -> Double
+pub fn SorthybridintrosortCursor::scale(Self, Double) -> Self
+pub fn SorthybridintrosortCursor::set(Self, Int32, Double) -> Self
+pub fn SorthybridintrosortCursor::sum(Self) -> Double
+pub fn SorthybridintrosortCursor::to_string(Self) -> String
+
+pub(all) struct SorthybridintrosortEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridintrosortEdge::add(Self, Self) -> Self
+pub fn SorthybridintrosortEdge::copy(Self) -> Self
+pub fn SorthybridintrosortEdge::fill(Self, Double) -> Self
+pub fn SorthybridintrosortEdge::get(Self, Int32) -> Double
+pub fn SorthybridintrosortEdge::len(Self) -> Int32
+pub fn SorthybridintrosortEdge::max(Self) -> Double
+pub fn SorthybridintrosortEdge::mean(Self) -> Double
+pub fn SorthybridintrosortEdge::min(Self) -> Double
+pub fn SorthybridintrosortEdge::scale(Self, Double) -> Self
+pub fn SorthybridintrosortEdge::set(Self, Int32, Double) -> Self
+pub fn SorthybridintrosortEdge::sum(Self) -> Double
+pub fn SorthybridintrosortEdge::to_string(Self) -> String
+
+pub(all) struct SorthybridintrosortFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridintrosortFrame::add(Self, Self) -> Self
+pub fn SorthybridintrosortFrame::copy(Self) -> Self
+pub fn SorthybridintrosortFrame::fill(Self, Double) -> Self
+pub fn SorthybridintrosortFrame::get(Self, Int32) -> Double
+pub fn SorthybridintrosortFrame::len(Self) -> Int32
+pub fn SorthybridintrosortFrame::max(Self) -> Double
+pub fn SorthybridintrosortFrame::mean(Self) -> Double
+pub fn SorthybridintrosortFrame::min(Self) -> Double
+pub fn SorthybridintrosortFrame::scale(Self, Double) -> Self
+pub fn SorthybridintrosortFrame::set(Self, Int32, Double) -> Self
+pub fn SorthybridintrosortFrame::sum(Self) -> Double
+pub fn SorthybridintrosortFrame::to_string(Self) -> String
+
+pub(all) struct SorthybridintrosortGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridintrosortGraphN::add(Self, Self) -> Self
+pub fn SorthybridintrosortGraphN::copy(Self) -> Self
+pub fn SorthybridintrosortGraphN::fill(Self, Double) -> Self
+pub fn SorthybridintrosortGraphN::get(Self, Int32) -> Double
+pub fn SorthybridintrosortGraphN::len(Self) -> Int32
+pub fn SorthybridintrosortGraphN::max(Self) -> Double
+pub fn SorthybridintrosortGraphN::mean(Self) -> Double
+pub fn SorthybridintrosortGraphN::min(Self) -> Double
+pub fn SorthybridintrosortGraphN::scale(Self, Double) -> Self
+pub fn SorthybridintrosortGraphN::set(Self, Int32, Double) -> Self
+pub fn SorthybridintrosortGraphN::sum(Self) -> Double
+pub fn SorthybridintrosortGraphN::to_string(Self) -> String
+
+pub(all) struct SorthybridintrosortLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridintrosortLayer::add(Self, Self) -> Self
+pub fn SorthybridintrosortLayer::copy(Self) -> Self
+pub fn SorthybridintrosortLayer::fill(Self, Double) -> Self
+pub fn SorthybridintrosortLayer::get(Self, Int32) -> Double
+pub fn SorthybridintrosortLayer::len(Self) -> Int32
+pub fn SorthybridintrosortLayer::max(Self) -> Double
+pub fn SorthybridintrosortLayer::mean(Self) -> Double
+pub fn SorthybridintrosortLayer::min(Self) -> Double
+pub fn SorthybridintrosortLayer::scale(Self, Double) -> Self
+pub fn SorthybridintrosortLayer::set(Self, Int32, Double) -> Self
+pub fn SorthybridintrosortLayer::sum(Self) -> Double
+pub fn SorthybridintrosortLayer::to_string(Self) -> String
+
+pub(all) struct SorthybridintrosortMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SorthybridintrosortMatrix::add(Self, Self) -> Self
+pub fn SorthybridintrosortMatrix::det(Self) -> Double
+pub fn SorthybridintrosortMatrix::get(Self, Int32, Int32) -> Double
+pub fn SorthybridintrosortMatrix::multiply(Self, Self) -> Self
+pub fn SorthybridintrosortMatrix::norm(Self) -> Double
+pub fn SorthybridintrosortMatrix::scale(Self, Double) -> Self
+pub fn SorthybridintrosortMatrix::to_string(Self) -> String
+pub fn SorthybridintrosortMatrix::trace(Self) -> Double
+pub fn SorthybridintrosortMatrix::transpose(Self) -> Self
+
+pub(all) struct SorthybridintrosortModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridintrosortModel::add(Self, Self) -> Self
+pub fn SorthybridintrosortModel::copy(Self) -> Self
+pub fn SorthybridintrosortModel::fill(Self, Double) -> Self
+pub fn SorthybridintrosortModel::get(Self, Int32) -> Double
+pub fn SorthybridintrosortModel::len(Self) -> Int32
+pub fn SorthybridintrosortModel::max(Self) -> Double
+pub fn SorthybridintrosortModel::mean(Self) -> Double
+pub fn SorthybridintrosortModel::min(Self) -> Double
+pub fn SorthybridintrosortModel::scale(Self, Double) -> Self
+pub fn SorthybridintrosortModel::set(Self, Int32, Double) -> Self
+pub fn SorthybridintrosortModel::sum(Self) -> Double
+pub fn SorthybridintrosortModel::to_string(Self) -> String
+
+pub(all) struct SorthybridintrosortNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridintrosortNode::add(Self, Self) -> Self
+pub fn SorthybridintrosortNode::copy(Self) -> Self
+pub fn SorthybridintrosortNode::fill(Self, Double) -> Self
+pub fn SorthybridintrosortNode::get(Self, Int32) -> Double
+pub fn SorthybridintrosortNode::len(Self) -> Int32
+pub fn SorthybridintrosortNode::max(Self) -> Double
+pub fn SorthybridintrosortNode::mean(Self) -> Double
+pub fn SorthybridintrosortNode::min(Self) -> Double
+pub fn SorthybridintrosortNode::scale(Self, Double) -> Self
+pub fn SorthybridintrosortNode::set(Self, Int32, Double) -> Self
+pub fn SorthybridintrosortNode::sum(Self) -> Double
+pub fn SorthybridintrosortNode::to_string(Self) -> String
+
+pub(all) struct SorthybridintrosortPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridintrosortPath::add(Self, Self) -> Self
+pub fn SorthybridintrosortPath::copy(Self) -> Self
+pub fn SorthybridintrosortPath::fill(Self, Double) -> Self
+pub fn SorthybridintrosortPath::get(Self, Int32) -> Double
+pub fn SorthybridintrosortPath::len(Self) -> Int32
+pub fn SorthybridintrosortPath::max(Self) -> Double
+pub fn SorthybridintrosortPath::mean(Self) -> Double
+pub fn SorthybridintrosortPath::min(Self) -> Double
+pub fn SorthybridintrosortPath::scale(Self, Double) -> Self
+pub fn SorthybridintrosortPath::set(Self, Int32, Double) -> Self
+pub fn SorthybridintrosortPath::sum(Self) -> Double
+pub fn SorthybridintrosortPath::to_string(Self) -> String
+
+pub(all) struct SorthybridintrosortPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SorthybridintrosortPoint::add(Self, Self) -> Self
+pub fn SorthybridintrosortPoint::cross(Self, Self) -> Self
+pub fn SorthybridintrosortPoint::dist(Self, Self) -> Double
+pub fn SorthybridintrosortPoint::dot(Self, Self) -> Double
+pub fn SorthybridintrosortPoint::label(Self) -> Int32
+pub fn SorthybridintrosortPoint::lerp(Self, Self, Double) -> Self
+pub fn SorthybridintrosortPoint::mid(Self, Self) -> Self
+pub fn SorthybridintrosortPoint::negate(Self) -> Self
+pub fn SorthybridintrosortPoint::norm(Self) -> Double
+pub fn SorthybridintrosortPoint::normalize(Self) -> Self
+pub fn SorthybridintrosortPoint::scale(Self, Double) -> Self
+pub fn SorthybridintrosortPoint::sub(Self, Self) -> Self
+pub fn SorthybridintrosortPoint::to_string(Self) -> String
+pub fn SorthybridintrosortPoint::x(Self) -> Double
+pub fn SorthybridintrosortPoint::y(Self) -> Double
+pub fn SorthybridintrosortPoint::z(Self) -> Double
+
+pub(all) struct SorthybridintrosortRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridintrosortRange::add(Self, Self) -> Self
+pub fn SorthybridintrosortRange::copy(Self) -> Self
+pub fn SorthybridintrosortRange::fill(Self, Double) -> Self
+pub fn SorthybridintrosortRange::get(Self, Int32) -> Double
+pub fn SorthybridintrosortRange::len(Self) -> Int32
+pub fn SorthybridintrosortRange::max(Self) -> Double
+pub fn SorthybridintrosortRange::mean(Self) -> Double
+pub fn SorthybridintrosortRange::min(Self) -> Double
+pub fn SorthybridintrosortRange::scale(Self, Double) -> Self
+pub fn SorthybridintrosortRange::set(Self, Int32, Double) -> Self
+pub fn SorthybridintrosortRange::sum(Self) -> Double
+pub fn SorthybridintrosortRange::to_string(Self) -> String
+
+pub(all) struct SorthybridintrosortSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SorthybridintrosortSeries::add(Self, Self) -> Self
+pub fn SorthybridintrosortSeries::cumsum(Self) -> Self
+pub fn SorthybridintrosortSeries::len(Self) -> Int32
+pub fn SorthybridintrosortSeries::max(Self) -> Double
+pub fn SorthybridintrosortSeries::mean(Self) -> Double
+pub fn SorthybridintrosortSeries::median(Self) -> Double
+pub fn SorthybridintrosortSeries::min(Self) -> Double
+pub fn SorthybridintrosortSeries::normalize(Self) -> Self
+pub fn SorthybridintrosortSeries::range(Self) -> Double
+pub fn SorthybridintrosortSeries::scale(Self, Double) -> Self
+pub fn SorthybridintrosortSeries::std(Self) -> Double
+pub fn SorthybridintrosortSeries::sub(Self, Self) -> Self
+pub fn SorthybridintrosortSeries::sum(Self) -> Double
+pub fn SorthybridintrosortSeries::to_string(Self) -> String
+pub fn SorthybridintrosortSeries::variance(Self) -> Double
+
+pub(all) struct SorthybridintrosortSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridintrosortSlice::add(Self, Self) -> Self
+pub fn SorthybridintrosortSlice::copy(Self) -> Self
+pub fn SorthybridintrosortSlice::fill(Self, Double) -> Self
+pub fn SorthybridintrosortSlice::get(Self, Int32) -> Double
+pub fn SorthybridintrosortSlice::len(Self) -> Int32
+pub fn SorthybridintrosortSlice::max(Self) -> Double
+pub fn SorthybridintrosortSlice::mean(Self) -> Double
+pub fn SorthybridintrosortSlice::min(Self) -> Double
+pub fn SorthybridintrosortSlice::scale(Self, Double) -> Self
+pub fn SorthybridintrosortSlice::set(Self, Int32, Double) -> Self
+pub fn SorthybridintrosortSlice::sum(Self) -> Double
+pub fn SorthybridintrosortSlice::to_string(Self) -> String
+
+pub(all) struct SorthybridintrosortTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridintrosortTable::add(Self, Self) -> Self
+pub fn SorthybridintrosortTable::copy(Self) -> Self
+pub fn SorthybridintrosortTable::fill(Self, Double) -> Self
+pub fn SorthybridintrosortTable::get(Self, Int32) -> Double
+pub fn SorthybridintrosortTable::len(Self) -> Int32
+pub fn SorthybridintrosortTable::max(Self) -> Double
+pub fn SorthybridintrosortTable::mean(Self) -> Double
+pub fn SorthybridintrosortTable::min(Self) -> Double
+pub fn SorthybridintrosortTable::scale(Self, Double) -> Self
+pub fn SorthybridintrosortTable::set(Self, Int32, Double) -> Self
+pub fn SorthybridintrosortTable::sum(Self) -> Double
+pub fn SorthybridintrosortTable::to_string(Self) -> String
+
+pub(all) struct SorthybridintrosortVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SorthybridintrosortVector::add(Self, Self) -> Self
+pub fn SorthybridintrosortVector::dist(Self, Self) -> Double
+pub fn SorthybridintrosortVector::dot(Self, Self) -> Double
+pub fn SorthybridintrosortVector::norm(Self) -> Double
+pub fn SorthybridintrosortVector::normalize(Self) -> Self
+pub fn SorthybridintrosortVector::scale(Self, Double) -> Self
+pub fn SorthybridintrosortVector::sub(Self, Self) -> Self
+pub fn SorthybridintrosortVector::to_string(Self) -> String
+
+pub(all) struct SorthybridintrosortView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SorthybridintrosortView::add(Self, Self) -> Self
+pub fn SorthybridintrosortView::copy(Self) -> Self
+pub fn SorthybridintrosortView::fill(Self, Double) -> Self
+pub fn SorthybridintrosortView::get(Self, Int32) -> Double
+pub fn SorthybridintrosortView::len(Self) -> Int32
+pub fn SorthybridintrosortView::max(Self) -> Double
+pub fn SorthybridintrosortView::mean(Self) -> Double
+pub fn SorthybridintrosortView::min(Self) -> Double
+pub fn SorthybridintrosortView::scale(Self, Double) -> Self
+pub fn SorthybridintrosortView::set(Self, Int32, Double) -> Self
+pub fn SorthybridintrosortView::sum(Self) -> Double
+pub fn SorthybridintrosortView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

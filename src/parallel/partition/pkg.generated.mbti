@@ -1,0 +1,53 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/parallel/partition"
+
+// Values
+pub fn hash_partition(Array[String], Int32) -> Array[PartitionResult]
+
+pub fn hash_value(String) -> Int32
+
+pub fn make_partition_config(Int32, PartitionStrategy, String) -> PartitionConfig
+
+pub fn make_partition_result(Int32, Array[String], PartitionStrategy) -> PartitionResult
+
+pub fn max_partition_size(Array[PartitionResult]) -> Int32
+
+pub fn partition_balance(Array[PartitionResult]) -> Double
+
+pub fn partition_count(PartitionResult) -> Int32
+
+pub fn partition_id() -> String
+
+pub fn range_partition(Array[String], Array[String]) -> Array[PartitionResult]
+
+pub fn round_robin_partition(Array[String], Int32) -> Array[PartitionResult]
+
+pub fn strategy_name(PartitionStrategy) -> String
+
+pub fn total_items(Array[PartitionResult]) -> Int32
+
+// Errors
+
+// Types and methods
+pub struct PartitionConfig {
+  num_partitions : Int32
+  strategy : PartitionStrategy
+  key_column : String
+}
+
+pub struct PartitionResult {
+  partition_id : Int32
+  items : Array[String]
+  strategy : PartitionStrategy
+}
+
+pub(all) enum PartitionStrategy {
+  HashPartition
+  RangePartition
+  RoundRobinPartition
+  KeyPartition
+}
+
+// Type aliases
+
+// Traits

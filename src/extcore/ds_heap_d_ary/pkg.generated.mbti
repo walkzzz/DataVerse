@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_heap_d_ary"
+
+// Values
+pub fn ds_heap_d_ary_buffer_make(Int32) -> DsheapdaryBuffer
+
+pub fn ds_heap_d_ary_cluster_make(Int32) -> DsheapdaryCluster
+
+pub fn ds_heap_d_ary_cursor_make(Int32) -> DsheapdaryCursor
+
+pub fn ds_heap_d_ary_edge_make(Int32) -> DsheapdaryEdge
+
+pub fn ds_heap_d_ary_frame_make(Int32) -> DsheapdaryFrame
+
+pub fn ds_heap_d_ary_graphn_make(Int32) -> DsheapdaryGraphN
+
+pub fn ds_heap_d_ary_layer_make(Int32) -> DsheapdaryLayer
+
+pub fn ds_heap_d_ary_make_matrix(Int32, Int32, Double) -> DsheapdaryMatrix
+
+pub fn ds_heap_d_ary_make_point(Double, Double) -> DsheapdaryPoint
+
+pub fn ds_heap_d_ary_make_point3(Double, Double, Double) -> DsheapdaryPoint
+
+pub fn ds_heap_d_ary_make_series(Array[Double], String) -> DsheapdarySeries
+
+pub fn ds_heap_d_ary_make_vector(Array[Double]) -> DsheapdaryVector
+
+pub fn ds_heap_d_ary_matrix_identity(Int32) -> DsheapdaryMatrix
+
+pub fn ds_heap_d_ary_model_make(Int32) -> DsheapdaryModel
+
+pub fn ds_heap_d_ary_node_make(Int32) -> DsheapdaryNode
+
+pub fn ds_heap_d_ary_path_make(Int32) -> DsheapdaryPath
+
+pub fn ds_heap_d_ary_range_make(Int32) -> DsheapdaryRange
+
+pub fn ds_heap_d_ary_slice_make(Int32) -> DsheapdarySlice
+
+pub fn ds_heap_d_ary_table_make(Int32) -> DsheapdaryTable
+
+pub fn ds_heap_d_ary_vector_zero(Int32) -> DsheapdaryVector
+
+pub fn ds_heap_d_ary_view_make(Int32) -> DsheapdaryView
+
+// Errors
+
+// Types and methods
+pub(all) struct DsheapdaryBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapdaryBuffer::add(Self, Self) -> Self
+pub fn DsheapdaryBuffer::copy(Self) -> Self
+pub fn DsheapdaryBuffer::fill(Self, Double) -> Self
+pub fn DsheapdaryBuffer::get(Self, Int32) -> Double
+pub fn DsheapdaryBuffer::len(Self) -> Int32
+pub fn DsheapdaryBuffer::max(Self) -> Double
+pub fn DsheapdaryBuffer::mean(Self) -> Double
+pub fn DsheapdaryBuffer::min(Self) -> Double
+pub fn DsheapdaryBuffer::scale(Self, Double) -> Self
+pub fn DsheapdaryBuffer::set(Self, Int32, Double) -> Self
+pub fn DsheapdaryBuffer::sum(Self) -> Double
+pub fn DsheapdaryBuffer::to_string(Self) -> String
+
+pub(all) struct DsheapdaryCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapdaryCluster::add(Self, Self) -> Self
+pub fn DsheapdaryCluster::copy(Self) -> Self
+pub fn DsheapdaryCluster::fill(Self, Double) -> Self
+pub fn DsheapdaryCluster::get(Self, Int32) -> Double
+pub fn DsheapdaryCluster::len(Self) -> Int32
+pub fn DsheapdaryCluster::max(Self) -> Double
+pub fn DsheapdaryCluster::mean(Self) -> Double
+pub fn DsheapdaryCluster::min(Self) -> Double
+pub fn DsheapdaryCluster::scale(Self, Double) -> Self
+pub fn DsheapdaryCluster::set(Self, Int32, Double) -> Self
+pub fn DsheapdaryCluster::sum(Self) -> Double
+pub fn DsheapdaryCluster::to_string(Self) -> String
+
+pub(all) struct DsheapdaryCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapdaryCursor::add(Self, Self) -> Self
+pub fn DsheapdaryCursor::copy(Self) -> Self
+pub fn DsheapdaryCursor::fill(Self, Double) -> Self
+pub fn DsheapdaryCursor::get(Self, Int32) -> Double
+pub fn DsheapdaryCursor::len(Self) -> Int32
+pub fn DsheapdaryCursor::max(Self) -> Double
+pub fn DsheapdaryCursor::mean(Self) -> Double
+pub fn DsheapdaryCursor::min(Self) -> Double
+pub fn DsheapdaryCursor::scale(Self, Double) -> Self
+pub fn DsheapdaryCursor::set(Self, Int32, Double) -> Self
+pub fn DsheapdaryCursor::sum(Self) -> Double
+pub fn DsheapdaryCursor::to_string(Self) -> String
+
+pub(all) struct DsheapdaryEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapdaryEdge::add(Self, Self) -> Self
+pub fn DsheapdaryEdge::copy(Self) -> Self
+pub fn DsheapdaryEdge::fill(Self, Double) -> Self
+pub fn DsheapdaryEdge::get(Self, Int32) -> Double
+pub fn DsheapdaryEdge::len(Self) -> Int32
+pub fn DsheapdaryEdge::max(Self) -> Double
+pub fn DsheapdaryEdge::mean(Self) -> Double
+pub fn DsheapdaryEdge::min(Self) -> Double
+pub fn DsheapdaryEdge::scale(Self, Double) -> Self
+pub fn DsheapdaryEdge::set(Self, Int32, Double) -> Self
+pub fn DsheapdaryEdge::sum(Self) -> Double
+pub fn DsheapdaryEdge::to_string(Self) -> String
+
+pub(all) struct DsheapdaryFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapdaryFrame::add(Self, Self) -> Self
+pub fn DsheapdaryFrame::copy(Self) -> Self
+pub fn DsheapdaryFrame::fill(Self, Double) -> Self
+pub fn DsheapdaryFrame::get(Self, Int32) -> Double
+pub fn DsheapdaryFrame::len(Self) -> Int32
+pub fn DsheapdaryFrame::max(Self) -> Double
+pub fn DsheapdaryFrame::mean(Self) -> Double
+pub fn DsheapdaryFrame::min(Self) -> Double
+pub fn DsheapdaryFrame::scale(Self, Double) -> Self
+pub fn DsheapdaryFrame::set(Self, Int32, Double) -> Self
+pub fn DsheapdaryFrame::sum(Self) -> Double
+pub fn DsheapdaryFrame::to_string(Self) -> String
+
+pub(all) struct DsheapdaryGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapdaryGraphN::add(Self, Self) -> Self
+pub fn DsheapdaryGraphN::copy(Self) -> Self
+pub fn DsheapdaryGraphN::fill(Self, Double) -> Self
+pub fn DsheapdaryGraphN::get(Self, Int32) -> Double
+pub fn DsheapdaryGraphN::len(Self) -> Int32
+pub fn DsheapdaryGraphN::max(Self) -> Double
+pub fn DsheapdaryGraphN::mean(Self) -> Double
+pub fn DsheapdaryGraphN::min(Self) -> Double
+pub fn DsheapdaryGraphN::scale(Self, Double) -> Self
+pub fn DsheapdaryGraphN::set(Self, Int32, Double) -> Self
+pub fn DsheapdaryGraphN::sum(Self) -> Double
+pub fn DsheapdaryGraphN::to_string(Self) -> String
+
+pub(all) struct DsheapdaryLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapdaryLayer::add(Self, Self) -> Self
+pub fn DsheapdaryLayer::copy(Self) -> Self
+pub fn DsheapdaryLayer::fill(Self, Double) -> Self
+pub fn DsheapdaryLayer::get(Self, Int32) -> Double
+pub fn DsheapdaryLayer::len(Self) -> Int32
+pub fn DsheapdaryLayer::max(Self) -> Double
+pub fn DsheapdaryLayer::mean(Self) -> Double
+pub fn DsheapdaryLayer::min(Self) -> Double
+pub fn DsheapdaryLayer::scale(Self, Double) -> Self
+pub fn DsheapdaryLayer::set(Self, Int32, Double) -> Self
+pub fn DsheapdaryLayer::sum(Self) -> Double
+pub fn DsheapdaryLayer::to_string(Self) -> String
+
+pub(all) struct DsheapdaryMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DsheapdaryMatrix::add(Self, Self) -> Self
+pub fn DsheapdaryMatrix::det(Self) -> Double
+pub fn DsheapdaryMatrix::get(Self, Int32, Int32) -> Double
+pub fn DsheapdaryMatrix::multiply(Self, Self) -> Self
+pub fn DsheapdaryMatrix::norm(Self) -> Double
+pub fn DsheapdaryMatrix::scale(Self, Double) -> Self
+pub fn DsheapdaryMatrix::to_string(Self) -> String
+pub fn DsheapdaryMatrix::trace(Self) -> Double
+pub fn DsheapdaryMatrix::transpose(Self) -> Self
+
+pub(all) struct DsheapdaryModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapdaryModel::add(Self, Self) -> Self
+pub fn DsheapdaryModel::copy(Self) -> Self
+pub fn DsheapdaryModel::fill(Self, Double) -> Self
+pub fn DsheapdaryModel::get(Self, Int32) -> Double
+pub fn DsheapdaryModel::len(Self) -> Int32
+pub fn DsheapdaryModel::max(Self) -> Double
+pub fn DsheapdaryModel::mean(Self) -> Double
+pub fn DsheapdaryModel::min(Self) -> Double
+pub fn DsheapdaryModel::scale(Self, Double) -> Self
+pub fn DsheapdaryModel::set(Self, Int32, Double) -> Self
+pub fn DsheapdaryModel::sum(Self) -> Double
+pub fn DsheapdaryModel::to_string(Self) -> String
+
+pub(all) struct DsheapdaryNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapdaryNode::add(Self, Self) -> Self
+pub fn DsheapdaryNode::copy(Self) -> Self
+pub fn DsheapdaryNode::fill(Self, Double) -> Self
+pub fn DsheapdaryNode::get(Self, Int32) -> Double
+pub fn DsheapdaryNode::len(Self) -> Int32
+pub fn DsheapdaryNode::max(Self) -> Double
+pub fn DsheapdaryNode::mean(Self) -> Double
+pub fn DsheapdaryNode::min(Self) -> Double
+pub fn DsheapdaryNode::scale(Self, Double) -> Self
+pub fn DsheapdaryNode::set(Self, Int32, Double) -> Self
+pub fn DsheapdaryNode::sum(Self) -> Double
+pub fn DsheapdaryNode::to_string(Self) -> String
+
+pub(all) struct DsheapdaryPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapdaryPath::add(Self, Self) -> Self
+pub fn DsheapdaryPath::copy(Self) -> Self
+pub fn DsheapdaryPath::fill(Self, Double) -> Self
+pub fn DsheapdaryPath::get(Self, Int32) -> Double
+pub fn DsheapdaryPath::len(Self) -> Int32
+pub fn DsheapdaryPath::max(Self) -> Double
+pub fn DsheapdaryPath::mean(Self) -> Double
+pub fn DsheapdaryPath::min(Self) -> Double
+pub fn DsheapdaryPath::scale(Self, Double) -> Self
+pub fn DsheapdaryPath::set(Self, Int32, Double) -> Self
+pub fn DsheapdaryPath::sum(Self) -> Double
+pub fn DsheapdaryPath::to_string(Self) -> String
+
+pub(all) struct DsheapdaryPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DsheapdaryPoint::add(Self, Self) -> Self
+pub fn DsheapdaryPoint::cross(Self, Self) -> Self
+pub fn DsheapdaryPoint::dist(Self, Self) -> Double
+pub fn DsheapdaryPoint::dot(Self, Self) -> Double
+pub fn DsheapdaryPoint::label(Self) -> Int32
+pub fn DsheapdaryPoint::lerp(Self, Self, Double) -> Self
+pub fn DsheapdaryPoint::mid(Self, Self) -> Self
+pub fn DsheapdaryPoint::negate(Self) -> Self
+pub fn DsheapdaryPoint::norm(Self) -> Double
+pub fn DsheapdaryPoint::normalize(Self) -> Self
+pub fn DsheapdaryPoint::scale(Self, Double) -> Self
+pub fn DsheapdaryPoint::sub(Self, Self) -> Self
+pub fn DsheapdaryPoint::to_string(Self) -> String
+pub fn DsheapdaryPoint::x(Self) -> Double
+pub fn DsheapdaryPoint::y(Self) -> Double
+pub fn DsheapdaryPoint::z(Self) -> Double
+
+pub(all) struct DsheapdaryRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapdaryRange::add(Self, Self) -> Self
+pub fn DsheapdaryRange::copy(Self) -> Self
+pub fn DsheapdaryRange::fill(Self, Double) -> Self
+pub fn DsheapdaryRange::get(Self, Int32) -> Double
+pub fn DsheapdaryRange::len(Self) -> Int32
+pub fn DsheapdaryRange::max(Self) -> Double
+pub fn DsheapdaryRange::mean(Self) -> Double
+pub fn DsheapdaryRange::min(Self) -> Double
+pub fn DsheapdaryRange::scale(Self, Double) -> Self
+pub fn DsheapdaryRange::set(Self, Int32, Double) -> Self
+pub fn DsheapdaryRange::sum(Self) -> Double
+pub fn DsheapdaryRange::to_string(Self) -> String
+
+pub(all) struct DsheapdarySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DsheapdarySeries::add(Self, Self) -> Self
+pub fn DsheapdarySeries::cumsum(Self) -> Self
+pub fn DsheapdarySeries::len(Self) -> Int32
+pub fn DsheapdarySeries::max(Self) -> Double
+pub fn DsheapdarySeries::mean(Self) -> Double
+pub fn DsheapdarySeries::median(Self) -> Double
+pub fn DsheapdarySeries::min(Self) -> Double
+pub fn DsheapdarySeries::normalize(Self) -> Self
+pub fn DsheapdarySeries::range(Self) -> Double
+pub fn DsheapdarySeries::scale(Self, Double) -> Self
+pub fn DsheapdarySeries::std(Self) -> Double
+pub fn DsheapdarySeries::sub(Self, Self) -> Self
+pub fn DsheapdarySeries::sum(Self) -> Double
+pub fn DsheapdarySeries::to_string(Self) -> String
+pub fn DsheapdarySeries::variance(Self) -> Double
+
+pub(all) struct DsheapdarySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapdarySlice::add(Self, Self) -> Self
+pub fn DsheapdarySlice::copy(Self) -> Self
+pub fn DsheapdarySlice::fill(Self, Double) -> Self
+pub fn DsheapdarySlice::get(Self, Int32) -> Double
+pub fn DsheapdarySlice::len(Self) -> Int32
+pub fn DsheapdarySlice::max(Self) -> Double
+pub fn DsheapdarySlice::mean(Self) -> Double
+pub fn DsheapdarySlice::min(Self) -> Double
+pub fn DsheapdarySlice::scale(Self, Double) -> Self
+pub fn DsheapdarySlice::set(Self, Int32, Double) -> Self
+pub fn DsheapdarySlice::sum(Self) -> Double
+pub fn DsheapdarySlice::to_string(Self) -> String
+
+pub(all) struct DsheapdaryTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapdaryTable::add(Self, Self) -> Self
+pub fn DsheapdaryTable::copy(Self) -> Self
+pub fn DsheapdaryTable::fill(Self, Double) -> Self
+pub fn DsheapdaryTable::get(Self, Int32) -> Double
+pub fn DsheapdaryTable::len(Self) -> Int32
+pub fn DsheapdaryTable::max(Self) -> Double
+pub fn DsheapdaryTable::mean(Self) -> Double
+pub fn DsheapdaryTable::min(Self) -> Double
+pub fn DsheapdaryTable::scale(Self, Double) -> Self
+pub fn DsheapdaryTable::set(Self, Int32, Double) -> Self
+pub fn DsheapdaryTable::sum(Self) -> Double
+pub fn DsheapdaryTable::to_string(Self) -> String
+
+pub(all) struct DsheapdaryVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DsheapdaryVector::add(Self, Self) -> Self
+pub fn DsheapdaryVector::dist(Self, Self) -> Double
+pub fn DsheapdaryVector::dot(Self, Self) -> Double
+pub fn DsheapdaryVector::norm(Self) -> Double
+pub fn DsheapdaryVector::normalize(Self) -> Self
+pub fn DsheapdaryVector::scale(Self, Double) -> Self
+pub fn DsheapdaryVector::sub(Self, Self) -> Self
+pub fn DsheapdaryVector::to_string(Self) -> String
+
+pub(all) struct DsheapdaryView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DsheapdaryView::add(Self, Self) -> Self
+pub fn DsheapdaryView::copy(Self) -> Self
+pub fn DsheapdaryView::fill(Self, Double) -> Self
+pub fn DsheapdaryView::get(Self, Int32) -> Double
+pub fn DsheapdaryView::len(Self) -> Int32
+pub fn DsheapdaryView::max(Self) -> Double
+pub fn DsheapdaryView::mean(Self) -> Double
+pub fn DsheapdaryView::min(Self) -> Double
+pub fn DsheapdaryView::scale(Self, Double) -> Self
+pub fn DsheapdaryView::set(Self, Int32, Double) -> Self
+pub fn DsheapdaryView::sum(Self) -> Double
+pub fn DsheapdaryView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

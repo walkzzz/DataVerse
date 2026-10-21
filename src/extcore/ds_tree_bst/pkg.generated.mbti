@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_tree_bst"
+
+// Values
+pub fn ds_tree_bst_buffer_make(Int32) -> DstreebstBuffer
+
+pub fn ds_tree_bst_cluster_make(Int32) -> DstreebstCluster
+
+pub fn ds_tree_bst_cursor_make(Int32) -> DstreebstCursor
+
+pub fn ds_tree_bst_edge_make(Int32) -> DstreebstEdge
+
+pub fn ds_tree_bst_frame_make(Int32) -> DstreebstFrame
+
+pub fn ds_tree_bst_graphn_make(Int32) -> DstreebstGraphN
+
+pub fn ds_tree_bst_layer_make(Int32) -> DstreebstLayer
+
+pub fn ds_tree_bst_make_matrix(Int32, Int32, Double) -> DstreebstMatrix
+
+pub fn ds_tree_bst_make_point(Double, Double) -> DstreebstPoint
+
+pub fn ds_tree_bst_make_point3(Double, Double, Double) -> DstreebstPoint
+
+pub fn ds_tree_bst_make_series(Array[Double], String) -> DstreebstSeries
+
+pub fn ds_tree_bst_make_vector(Array[Double]) -> DstreebstVector
+
+pub fn ds_tree_bst_matrix_identity(Int32) -> DstreebstMatrix
+
+pub fn ds_tree_bst_model_make(Int32) -> DstreebstModel
+
+pub fn ds_tree_bst_node_make(Int32) -> DstreebstNode
+
+pub fn ds_tree_bst_path_make(Int32) -> DstreebstPath
+
+pub fn ds_tree_bst_range_make(Int32) -> DstreebstRange
+
+pub fn ds_tree_bst_slice_make(Int32) -> DstreebstSlice
+
+pub fn ds_tree_bst_table_make(Int32) -> DstreebstTable
+
+pub fn ds_tree_bst_vector_zero(Int32) -> DstreebstVector
+
+pub fn ds_tree_bst_view_make(Int32) -> DstreebstView
+
+// Errors
+
+// Types and methods
+pub(all) struct DstreebstBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebstBuffer::add(Self, Self) -> Self
+pub fn DstreebstBuffer::copy(Self) -> Self
+pub fn DstreebstBuffer::fill(Self, Double) -> Self
+pub fn DstreebstBuffer::get(Self, Int32) -> Double
+pub fn DstreebstBuffer::len(Self) -> Int32
+pub fn DstreebstBuffer::max(Self) -> Double
+pub fn DstreebstBuffer::mean(Self) -> Double
+pub fn DstreebstBuffer::min(Self) -> Double
+pub fn DstreebstBuffer::scale(Self, Double) -> Self
+pub fn DstreebstBuffer::set(Self, Int32, Double) -> Self
+pub fn DstreebstBuffer::sum(Self) -> Double
+pub fn DstreebstBuffer::to_string(Self) -> String
+
+pub(all) struct DstreebstCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebstCluster::add(Self, Self) -> Self
+pub fn DstreebstCluster::copy(Self) -> Self
+pub fn DstreebstCluster::fill(Self, Double) -> Self
+pub fn DstreebstCluster::get(Self, Int32) -> Double
+pub fn DstreebstCluster::len(Self) -> Int32
+pub fn DstreebstCluster::max(Self) -> Double
+pub fn DstreebstCluster::mean(Self) -> Double
+pub fn DstreebstCluster::min(Self) -> Double
+pub fn DstreebstCluster::scale(Self, Double) -> Self
+pub fn DstreebstCluster::set(Self, Int32, Double) -> Self
+pub fn DstreebstCluster::sum(Self) -> Double
+pub fn DstreebstCluster::to_string(Self) -> String
+
+pub(all) struct DstreebstCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebstCursor::add(Self, Self) -> Self
+pub fn DstreebstCursor::copy(Self) -> Self
+pub fn DstreebstCursor::fill(Self, Double) -> Self
+pub fn DstreebstCursor::get(Self, Int32) -> Double
+pub fn DstreebstCursor::len(Self) -> Int32
+pub fn DstreebstCursor::max(Self) -> Double
+pub fn DstreebstCursor::mean(Self) -> Double
+pub fn DstreebstCursor::min(Self) -> Double
+pub fn DstreebstCursor::scale(Self, Double) -> Self
+pub fn DstreebstCursor::set(Self, Int32, Double) -> Self
+pub fn DstreebstCursor::sum(Self) -> Double
+pub fn DstreebstCursor::to_string(Self) -> String
+
+pub(all) struct DstreebstEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebstEdge::add(Self, Self) -> Self
+pub fn DstreebstEdge::copy(Self) -> Self
+pub fn DstreebstEdge::fill(Self, Double) -> Self
+pub fn DstreebstEdge::get(Self, Int32) -> Double
+pub fn DstreebstEdge::len(Self) -> Int32
+pub fn DstreebstEdge::max(Self) -> Double
+pub fn DstreebstEdge::mean(Self) -> Double
+pub fn DstreebstEdge::min(Self) -> Double
+pub fn DstreebstEdge::scale(Self, Double) -> Self
+pub fn DstreebstEdge::set(Self, Int32, Double) -> Self
+pub fn DstreebstEdge::sum(Self) -> Double
+pub fn DstreebstEdge::to_string(Self) -> String
+
+pub(all) struct DstreebstFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebstFrame::add(Self, Self) -> Self
+pub fn DstreebstFrame::copy(Self) -> Self
+pub fn DstreebstFrame::fill(Self, Double) -> Self
+pub fn DstreebstFrame::get(Self, Int32) -> Double
+pub fn DstreebstFrame::len(Self) -> Int32
+pub fn DstreebstFrame::max(Self) -> Double
+pub fn DstreebstFrame::mean(Self) -> Double
+pub fn DstreebstFrame::min(Self) -> Double
+pub fn DstreebstFrame::scale(Self, Double) -> Self
+pub fn DstreebstFrame::set(Self, Int32, Double) -> Self
+pub fn DstreebstFrame::sum(Self) -> Double
+pub fn DstreebstFrame::to_string(Self) -> String
+
+pub(all) struct DstreebstGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebstGraphN::add(Self, Self) -> Self
+pub fn DstreebstGraphN::copy(Self) -> Self
+pub fn DstreebstGraphN::fill(Self, Double) -> Self
+pub fn DstreebstGraphN::get(Self, Int32) -> Double
+pub fn DstreebstGraphN::len(Self) -> Int32
+pub fn DstreebstGraphN::max(Self) -> Double
+pub fn DstreebstGraphN::mean(Self) -> Double
+pub fn DstreebstGraphN::min(Self) -> Double
+pub fn DstreebstGraphN::scale(Self, Double) -> Self
+pub fn DstreebstGraphN::set(Self, Int32, Double) -> Self
+pub fn DstreebstGraphN::sum(Self) -> Double
+pub fn DstreebstGraphN::to_string(Self) -> String
+
+pub(all) struct DstreebstLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebstLayer::add(Self, Self) -> Self
+pub fn DstreebstLayer::copy(Self) -> Self
+pub fn DstreebstLayer::fill(Self, Double) -> Self
+pub fn DstreebstLayer::get(Self, Int32) -> Double
+pub fn DstreebstLayer::len(Self) -> Int32
+pub fn DstreebstLayer::max(Self) -> Double
+pub fn DstreebstLayer::mean(Self) -> Double
+pub fn DstreebstLayer::min(Self) -> Double
+pub fn DstreebstLayer::scale(Self, Double) -> Self
+pub fn DstreebstLayer::set(Self, Int32, Double) -> Self
+pub fn DstreebstLayer::sum(Self) -> Double
+pub fn DstreebstLayer::to_string(Self) -> String
+
+pub(all) struct DstreebstMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DstreebstMatrix::add(Self, Self) -> Self
+pub fn DstreebstMatrix::det(Self) -> Double
+pub fn DstreebstMatrix::get(Self, Int32, Int32) -> Double
+pub fn DstreebstMatrix::multiply(Self, Self) -> Self
+pub fn DstreebstMatrix::norm(Self) -> Double
+pub fn DstreebstMatrix::scale(Self, Double) -> Self
+pub fn DstreebstMatrix::to_string(Self) -> String
+pub fn DstreebstMatrix::trace(Self) -> Double
+pub fn DstreebstMatrix::transpose(Self) -> Self
+
+pub(all) struct DstreebstModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebstModel::add(Self, Self) -> Self
+pub fn DstreebstModel::copy(Self) -> Self
+pub fn DstreebstModel::fill(Self, Double) -> Self
+pub fn DstreebstModel::get(Self, Int32) -> Double
+pub fn DstreebstModel::len(Self) -> Int32
+pub fn DstreebstModel::max(Self) -> Double
+pub fn DstreebstModel::mean(Self) -> Double
+pub fn DstreebstModel::min(Self) -> Double
+pub fn DstreebstModel::scale(Self, Double) -> Self
+pub fn DstreebstModel::set(Self, Int32, Double) -> Self
+pub fn DstreebstModel::sum(Self) -> Double
+pub fn DstreebstModel::to_string(Self) -> String
+
+pub(all) struct DstreebstNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebstNode::add(Self, Self) -> Self
+pub fn DstreebstNode::copy(Self) -> Self
+pub fn DstreebstNode::fill(Self, Double) -> Self
+pub fn DstreebstNode::get(Self, Int32) -> Double
+pub fn DstreebstNode::len(Self) -> Int32
+pub fn DstreebstNode::max(Self) -> Double
+pub fn DstreebstNode::mean(Self) -> Double
+pub fn DstreebstNode::min(Self) -> Double
+pub fn DstreebstNode::scale(Self, Double) -> Self
+pub fn DstreebstNode::set(Self, Int32, Double) -> Self
+pub fn DstreebstNode::sum(Self) -> Double
+pub fn DstreebstNode::to_string(Self) -> String
+
+pub(all) struct DstreebstPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebstPath::add(Self, Self) -> Self
+pub fn DstreebstPath::copy(Self) -> Self
+pub fn DstreebstPath::fill(Self, Double) -> Self
+pub fn DstreebstPath::get(Self, Int32) -> Double
+pub fn DstreebstPath::len(Self) -> Int32
+pub fn DstreebstPath::max(Self) -> Double
+pub fn DstreebstPath::mean(Self) -> Double
+pub fn DstreebstPath::min(Self) -> Double
+pub fn DstreebstPath::scale(Self, Double) -> Self
+pub fn DstreebstPath::set(Self, Int32, Double) -> Self
+pub fn DstreebstPath::sum(Self) -> Double
+pub fn DstreebstPath::to_string(Self) -> String
+
+pub(all) struct DstreebstPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DstreebstPoint::add(Self, Self) -> Self
+pub fn DstreebstPoint::cross(Self, Self) -> Self
+pub fn DstreebstPoint::dist(Self, Self) -> Double
+pub fn DstreebstPoint::dot(Self, Self) -> Double
+pub fn DstreebstPoint::label(Self) -> Int32
+pub fn DstreebstPoint::lerp(Self, Self, Double) -> Self
+pub fn DstreebstPoint::mid(Self, Self) -> Self
+pub fn DstreebstPoint::negate(Self) -> Self
+pub fn DstreebstPoint::norm(Self) -> Double
+pub fn DstreebstPoint::normalize(Self) -> Self
+pub fn DstreebstPoint::scale(Self, Double) -> Self
+pub fn DstreebstPoint::sub(Self, Self) -> Self
+pub fn DstreebstPoint::to_string(Self) -> String
+pub fn DstreebstPoint::x(Self) -> Double
+pub fn DstreebstPoint::y(Self) -> Double
+pub fn DstreebstPoint::z(Self) -> Double
+
+pub(all) struct DstreebstRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebstRange::add(Self, Self) -> Self
+pub fn DstreebstRange::copy(Self) -> Self
+pub fn DstreebstRange::fill(Self, Double) -> Self
+pub fn DstreebstRange::get(Self, Int32) -> Double
+pub fn DstreebstRange::len(Self) -> Int32
+pub fn DstreebstRange::max(Self) -> Double
+pub fn DstreebstRange::mean(Self) -> Double
+pub fn DstreebstRange::min(Self) -> Double
+pub fn DstreebstRange::scale(Self, Double) -> Self
+pub fn DstreebstRange::set(Self, Int32, Double) -> Self
+pub fn DstreebstRange::sum(Self) -> Double
+pub fn DstreebstRange::to_string(Self) -> String
+
+pub(all) struct DstreebstSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DstreebstSeries::add(Self, Self) -> Self
+pub fn DstreebstSeries::cumsum(Self) -> Self
+pub fn DstreebstSeries::len(Self) -> Int32
+pub fn DstreebstSeries::max(Self) -> Double
+pub fn DstreebstSeries::mean(Self) -> Double
+pub fn DstreebstSeries::median(Self) -> Double
+pub fn DstreebstSeries::min(Self) -> Double
+pub fn DstreebstSeries::normalize(Self) -> Self
+pub fn DstreebstSeries::range(Self) -> Double
+pub fn DstreebstSeries::scale(Self, Double) -> Self
+pub fn DstreebstSeries::std(Self) -> Double
+pub fn DstreebstSeries::sub(Self, Self) -> Self
+pub fn DstreebstSeries::sum(Self) -> Double
+pub fn DstreebstSeries::to_string(Self) -> String
+pub fn DstreebstSeries::variance(Self) -> Double
+
+pub(all) struct DstreebstSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebstSlice::add(Self, Self) -> Self
+pub fn DstreebstSlice::copy(Self) -> Self
+pub fn DstreebstSlice::fill(Self, Double) -> Self
+pub fn DstreebstSlice::get(Self, Int32) -> Double
+pub fn DstreebstSlice::len(Self) -> Int32
+pub fn DstreebstSlice::max(Self) -> Double
+pub fn DstreebstSlice::mean(Self) -> Double
+pub fn DstreebstSlice::min(Self) -> Double
+pub fn DstreebstSlice::scale(Self, Double) -> Self
+pub fn DstreebstSlice::set(Self, Int32, Double) -> Self
+pub fn DstreebstSlice::sum(Self) -> Double
+pub fn DstreebstSlice::to_string(Self) -> String
+
+pub(all) struct DstreebstTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebstTable::add(Self, Self) -> Self
+pub fn DstreebstTable::copy(Self) -> Self
+pub fn DstreebstTable::fill(Self, Double) -> Self
+pub fn DstreebstTable::get(Self, Int32) -> Double
+pub fn DstreebstTable::len(Self) -> Int32
+pub fn DstreebstTable::max(Self) -> Double
+pub fn DstreebstTable::mean(Self) -> Double
+pub fn DstreebstTable::min(Self) -> Double
+pub fn DstreebstTable::scale(Self, Double) -> Self
+pub fn DstreebstTable::set(Self, Int32, Double) -> Self
+pub fn DstreebstTable::sum(Self) -> Double
+pub fn DstreebstTable::to_string(Self) -> String
+
+pub(all) struct DstreebstVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DstreebstVector::add(Self, Self) -> Self
+pub fn DstreebstVector::dist(Self, Self) -> Double
+pub fn DstreebstVector::dot(Self, Self) -> Double
+pub fn DstreebstVector::norm(Self) -> Double
+pub fn DstreebstVector::normalize(Self) -> Self
+pub fn DstreebstVector::scale(Self, Double) -> Self
+pub fn DstreebstVector::sub(Self, Self) -> Self
+pub fn DstreebstVector::to_string(Self) -> String
+
+pub(all) struct DstreebstView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreebstView::add(Self, Self) -> Self
+pub fn DstreebstView::copy(Self) -> Self
+pub fn DstreebstView::fill(Self, Double) -> Self
+pub fn DstreebstView::get(Self, Int32) -> Double
+pub fn DstreebstView::len(Self) -> Int32
+pub fn DstreebstView::max(Self) -> Double
+pub fn DstreebstView::mean(Self) -> Double
+pub fn DstreebstView::min(Self) -> Double
+pub fn DstreebstView::scale(Self, Double) -> Self
+pub fn DstreebstView::set(Self, Int32, Double) -> Self
+pub fn DstreebstView::sum(Self) -> Double
+pub fn DstreebstView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

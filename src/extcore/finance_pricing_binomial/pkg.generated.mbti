@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/finance_pricing_binomial"
+
+// Values
+pub fn finance_pricing_binomial_buffer_make(Int32) -> FinancepricingbinomialBuffer
+
+pub fn finance_pricing_binomial_cluster_make(Int32) -> FinancepricingbinomialCluster
+
+pub fn finance_pricing_binomial_cursor_make(Int32) -> FinancepricingbinomialCursor
+
+pub fn finance_pricing_binomial_edge_make(Int32) -> FinancepricingbinomialEdge
+
+pub fn finance_pricing_binomial_frame_make(Int32) -> FinancepricingbinomialFrame
+
+pub fn finance_pricing_binomial_graphn_make(Int32) -> FinancepricingbinomialGraphN
+
+pub fn finance_pricing_binomial_layer_make(Int32) -> FinancepricingbinomialLayer
+
+pub fn finance_pricing_binomial_make_matrix(Int32, Int32, Double) -> FinancepricingbinomialMatrix
+
+pub fn finance_pricing_binomial_make_point(Double, Double) -> FinancepricingbinomialPoint
+
+pub fn finance_pricing_binomial_make_point3(Double, Double, Double) -> FinancepricingbinomialPoint
+
+pub fn finance_pricing_binomial_make_series(Array[Double], String) -> FinancepricingbinomialSeries
+
+pub fn finance_pricing_binomial_make_vector(Array[Double]) -> FinancepricingbinomialVector
+
+pub fn finance_pricing_binomial_matrix_identity(Int32) -> FinancepricingbinomialMatrix
+
+pub fn finance_pricing_binomial_model_make(Int32) -> FinancepricingbinomialModel
+
+pub fn finance_pricing_binomial_node_make(Int32) -> FinancepricingbinomialNode
+
+pub fn finance_pricing_binomial_path_make(Int32) -> FinancepricingbinomialPath
+
+pub fn finance_pricing_binomial_range_make(Int32) -> FinancepricingbinomialRange
+
+pub fn finance_pricing_binomial_slice_make(Int32) -> FinancepricingbinomialSlice
+
+pub fn finance_pricing_binomial_table_make(Int32) -> FinancepricingbinomialTable
+
+pub fn finance_pricing_binomial_vector_zero(Int32) -> FinancepricingbinomialVector
+
+pub fn finance_pricing_binomial_view_make(Int32) -> FinancepricingbinomialView
+
+// Errors
+
+// Types and methods
+pub(all) struct FinancepricingbinomialBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbinomialBuffer::add(Self, Self) -> Self
+pub fn FinancepricingbinomialBuffer::copy(Self) -> Self
+pub fn FinancepricingbinomialBuffer::fill(Self, Double) -> Self
+pub fn FinancepricingbinomialBuffer::get(Self, Int32) -> Double
+pub fn FinancepricingbinomialBuffer::len(Self) -> Int32
+pub fn FinancepricingbinomialBuffer::max(Self) -> Double
+pub fn FinancepricingbinomialBuffer::mean(Self) -> Double
+pub fn FinancepricingbinomialBuffer::min(Self) -> Double
+pub fn FinancepricingbinomialBuffer::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialBuffer::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbinomialBuffer::sum(Self) -> Double
+pub fn FinancepricingbinomialBuffer::to_string(Self) -> String
+
+pub(all) struct FinancepricingbinomialCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbinomialCluster::add(Self, Self) -> Self
+pub fn FinancepricingbinomialCluster::copy(Self) -> Self
+pub fn FinancepricingbinomialCluster::fill(Self, Double) -> Self
+pub fn FinancepricingbinomialCluster::get(Self, Int32) -> Double
+pub fn FinancepricingbinomialCluster::len(Self) -> Int32
+pub fn FinancepricingbinomialCluster::max(Self) -> Double
+pub fn FinancepricingbinomialCluster::mean(Self) -> Double
+pub fn FinancepricingbinomialCluster::min(Self) -> Double
+pub fn FinancepricingbinomialCluster::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialCluster::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbinomialCluster::sum(Self) -> Double
+pub fn FinancepricingbinomialCluster::to_string(Self) -> String
+
+pub(all) struct FinancepricingbinomialCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbinomialCursor::add(Self, Self) -> Self
+pub fn FinancepricingbinomialCursor::copy(Self) -> Self
+pub fn FinancepricingbinomialCursor::fill(Self, Double) -> Self
+pub fn FinancepricingbinomialCursor::get(Self, Int32) -> Double
+pub fn FinancepricingbinomialCursor::len(Self) -> Int32
+pub fn FinancepricingbinomialCursor::max(Self) -> Double
+pub fn FinancepricingbinomialCursor::mean(Self) -> Double
+pub fn FinancepricingbinomialCursor::min(Self) -> Double
+pub fn FinancepricingbinomialCursor::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialCursor::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbinomialCursor::sum(Self) -> Double
+pub fn FinancepricingbinomialCursor::to_string(Self) -> String
+
+pub(all) struct FinancepricingbinomialEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbinomialEdge::add(Self, Self) -> Self
+pub fn FinancepricingbinomialEdge::copy(Self) -> Self
+pub fn FinancepricingbinomialEdge::fill(Self, Double) -> Self
+pub fn FinancepricingbinomialEdge::get(Self, Int32) -> Double
+pub fn FinancepricingbinomialEdge::len(Self) -> Int32
+pub fn FinancepricingbinomialEdge::max(Self) -> Double
+pub fn FinancepricingbinomialEdge::mean(Self) -> Double
+pub fn FinancepricingbinomialEdge::min(Self) -> Double
+pub fn FinancepricingbinomialEdge::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialEdge::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbinomialEdge::sum(Self) -> Double
+pub fn FinancepricingbinomialEdge::to_string(Self) -> String
+
+pub(all) struct FinancepricingbinomialFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbinomialFrame::add(Self, Self) -> Self
+pub fn FinancepricingbinomialFrame::copy(Self) -> Self
+pub fn FinancepricingbinomialFrame::fill(Self, Double) -> Self
+pub fn FinancepricingbinomialFrame::get(Self, Int32) -> Double
+pub fn FinancepricingbinomialFrame::len(Self) -> Int32
+pub fn FinancepricingbinomialFrame::max(Self) -> Double
+pub fn FinancepricingbinomialFrame::mean(Self) -> Double
+pub fn FinancepricingbinomialFrame::min(Self) -> Double
+pub fn FinancepricingbinomialFrame::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialFrame::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbinomialFrame::sum(Self) -> Double
+pub fn FinancepricingbinomialFrame::to_string(Self) -> String
+
+pub(all) struct FinancepricingbinomialGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbinomialGraphN::add(Self, Self) -> Self
+pub fn FinancepricingbinomialGraphN::copy(Self) -> Self
+pub fn FinancepricingbinomialGraphN::fill(Self, Double) -> Self
+pub fn FinancepricingbinomialGraphN::get(Self, Int32) -> Double
+pub fn FinancepricingbinomialGraphN::len(Self) -> Int32
+pub fn FinancepricingbinomialGraphN::max(Self) -> Double
+pub fn FinancepricingbinomialGraphN::mean(Self) -> Double
+pub fn FinancepricingbinomialGraphN::min(Self) -> Double
+pub fn FinancepricingbinomialGraphN::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialGraphN::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbinomialGraphN::sum(Self) -> Double
+pub fn FinancepricingbinomialGraphN::to_string(Self) -> String
+
+pub(all) struct FinancepricingbinomialLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbinomialLayer::add(Self, Self) -> Self
+pub fn FinancepricingbinomialLayer::copy(Self) -> Self
+pub fn FinancepricingbinomialLayer::fill(Self, Double) -> Self
+pub fn FinancepricingbinomialLayer::get(Self, Int32) -> Double
+pub fn FinancepricingbinomialLayer::len(Self) -> Int32
+pub fn FinancepricingbinomialLayer::max(Self) -> Double
+pub fn FinancepricingbinomialLayer::mean(Self) -> Double
+pub fn FinancepricingbinomialLayer::min(Self) -> Double
+pub fn FinancepricingbinomialLayer::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialLayer::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbinomialLayer::sum(Self) -> Double
+pub fn FinancepricingbinomialLayer::to_string(Self) -> String
+
+pub(all) struct FinancepricingbinomialMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn FinancepricingbinomialMatrix::add(Self, Self) -> Self
+pub fn FinancepricingbinomialMatrix::det(Self) -> Double
+pub fn FinancepricingbinomialMatrix::get(Self, Int32, Int32) -> Double
+pub fn FinancepricingbinomialMatrix::multiply(Self, Self) -> Self
+pub fn FinancepricingbinomialMatrix::norm(Self) -> Double
+pub fn FinancepricingbinomialMatrix::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialMatrix::to_string(Self) -> String
+pub fn FinancepricingbinomialMatrix::trace(Self) -> Double
+pub fn FinancepricingbinomialMatrix::transpose(Self) -> Self
+
+pub(all) struct FinancepricingbinomialModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbinomialModel::add(Self, Self) -> Self
+pub fn FinancepricingbinomialModel::copy(Self) -> Self
+pub fn FinancepricingbinomialModel::fill(Self, Double) -> Self
+pub fn FinancepricingbinomialModel::get(Self, Int32) -> Double
+pub fn FinancepricingbinomialModel::len(Self) -> Int32
+pub fn FinancepricingbinomialModel::max(Self) -> Double
+pub fn FinancepricingbinomialModel::mean(Self) -> Double
+pub fn FinancepricingbinomialModel::min(Self) -> Double
+pub fn FinancepricingbinomialModel::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialModel::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbinomialModel::sum(Self) -> Double
+pub fn FinancepricingbinomialModel::to_string(Self) -> String
+
+pub(all) struct FinancepricingbinomialNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbinomialNode::add(Self, Self) -> Self
+pub fn FinancepricingbinomialNode::copy(Self) -> Self
+pub fn FinancepricingbinomialNode::fill(Self, Double) -> Self
+pub fn FinancepricingbinomialNode::get(Self, Int32) -> Double
+pub fn FinancepricingbinomialNode::len(Self) -> Int32
+pub fn FinancepricingbinomialNode::max(Self) -> Double
+pub fn FinancepricingbinomialNode::mean(Self) -> Double
+pub fn FinancepricingbinomialNode::min(Self) -> Double
+pub fn FinancepricingbinomialNode::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialNode::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbinomialNode::sum(Self) -> Double
+pub fn FinancepricingbinomialNode::to_string(Self) -> String
+
+pub(all) struct FinancepricingbinomialPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbinomialPath::add(Self, Self) -> Self
+pub fn FinancepricingbinomialPath::copy(Self) -> Self
+pub fn FinancepricingbinomialPath::fill(Self, Double) -> Self
+pub fn FinancepricingbinomialPath::get(Self, Int32) -> Double
+pub fn FinancepricingbinomialPath::len(Self) -> Int32
+pub fn FinancepricingbinomialPath::max(Self) -> Double
+pub fn FinancepricingbinomialPath::mean(Self) -> Double
+pub fn FinancepricingbinomialPath::min(Self) -> Double
+pub fn FinancepricingbinomialPath::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialPath::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbinomialPath::sum(Self) -> Double
+pub fn FinancepricingbinomialPath::to_string(Self) -> String
+
+pub(all) struct FinancepricingbinomialPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn FinancepricingbinomialPoint::add(Self, Self) -> Self
+pub fn FinancepricingbinomialPoint::cross(Self, Self) -> Self
+pub fn FinancepricingbinomialPoint::dist(Self, Self) -> Double
+pub fn FinancepricingbinomialPoint::dot(Self, Self) -> Double
+pub fn FinancepricingbinomialPoint::label(Self) -> Int32
+pub fn FinancepricingbinomialPoint::lerp(Self, Self, Double) -> Self
+pub fn FinancepricingbinomialPoint::mid(Self, Self) -> Self
+pub fn FinancepricingbinomialPoint::negate(Self) -> Self
+pub fn FinancepricingbinomialPoint::norm(Self) -> Double
+pub fn FinancepricingbinomialPoint::normalize(Self) -> Self
+pub fn FinancepricingbinomialPoint::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialPoint::sub(Self, Self) -> Self
+pub fn FinancepricingbinomialPoint::to_string(Self) -> String
+pub fn FinancepricingbinomialPoint::x(Self) -> Double
+pub fn FinancepricingbinomialPoint::y(Self) -> Double
+pub fn FinancepricingbinomialPoint::z(Self) -> Double
+
+pub(all) struct FinancepricingbinomialRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbinomialRange::add(Self, Self) -> Self
+pub fn FinancepricingbinomialRange::copy(Self) -> Self
+pub fn FinancepricingbinomialRange::fill(Self, Double) -> Self
+pub fn FinancepricingbinomialRange::get(Self, Int32) -> Double
+pub fn FinancepricingbinomialRange::len(Self) -> Int32
+pub fn FinancepricingbinomialRange::max(Self) -> Double
+pub fn FinancepricingbinomialRange::mean(Self) -> Double
+pub fn FinancepricingbinomialRange::min(Self) -> Double
+pub fn FinancepricingbinomialRange::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialRange::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbinomialRange::sum(Self) -> Double
+pub fn FinancepricingbinomialRange::to_string(Self) -> String
+
+pub(all) struct FinancepricingbinomialSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn FinancepricingbinomialSeries::add(Self, Self) -> Self
+pub fn FinancepricingbinomialSeries::cumsum(Self) -> Self
+pub fn FinancepricingbinomialSeries::len(Self) -> Int32
+pub fn FinancepricingbinomialSeries::max(Self) -> Double
+pub fn FinancepricingbinomialSeries::mean(Self) -> Double
+pub fn FinancepricingbinomialSeries::median(Self) -> Double
+pub fn FinancepricingbinomialSeries::min(Self) -> Double
+pub fn FinancepricingbinomialSeries::normalize(Self) -> Self
+pub fn FinancepricingbinomialSeries::range(Self) -> Double
+pub fn FinancepricingbinomialSeries::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialSeries::std(Self) -> Double
+pub fn FinancepricingbinomialSeries::sub(Self, Self) -> Self
+pub fn FinancepricingbinomialSeries::sum(Self) -> Double
+pub fn FinancepricingbinomialSeries::to_string(Self) -> String
+pub fn FinancepricingbinomialSeries::variance(Self) -> Double
+
+pub(all) struct FinancepricingbinomialSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbinomialSlice::add(Self, Self) -> Self
+pub fn FinancepricingbinomialSlice::copy(Self) -> Self
+pub fn FinancepricingbinomialSlice::fill(Self, Double) -> Self
+pub fn FinancepricingbinomialSlice::get(Self, Int32) -> Double
+pub fn FinancepricingbinomialSlice::len(Self) -> Int32
+pub fn FinancepricingbinomialSlice::max(Self) -> Double
+pub fn FinancepricingbinomialSlice::mean(Self) -> Double
+pub fn FinancepricingbinomialSlice::min(Self) -> Double
+pub fn FinancepricingbinomialSlice::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialSlice::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbinomialSlice::sum(Self) -> Double
+pub fn FinancepricingbinomialSlice::to_string(Self) -> String
+
+pub(all) struct FinancepricingbinomialTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbinomialTable::add(Self, Self) -> Self
+pub fn FinancepricingbinomialTable::copy(Self) -> Self
+pub fn FinancepricingbinomialTable::fill(Self, Double) -> Self
+pub fn FinancepricingbinomialTable::get(Self, Int32) -> Double
+pub fn FinancepricingbinomialTable::len(Self) -> Int32
+pub fn FinancepricingbinomialTable::max(Self) -> Double
+pub fn FinancepricingbinomialTable::mean(Self) -> Double
+pub fn FinancepricingbinomialTable::min(Self) -> Double
+pub fn FinancepricingbinomialTable::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialTable::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbinomialTable::sum(Self) -> Double
+pub fn FinancepricingbinomialTable::to_string(Self) -> String
+
+pub(all) struct FinancepricingbinomialVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn FinancepricingbinomialVector::add(Self, Self) -> Self
+pub fn FinancepricingbinomialVector::dist(Self, Self) -> Double
+pub fn FinancepricingbinomialVector::dot(Self, Self) -> Double
+pub fn FinancepricingbinomialVector::norm(Self) -> Double
+pub fn FinancepricingbinomialVector::normalize(Self) -> Self
+pub fn FinancepricingbinomialVector::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialVector::sub(Self, Self) -> Self
+pub fn FinancepricingbinomialVector::to_string(Self) -> String
+
+pub(all) struct FinancepricingbinomialView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinancepricingbinomialView::add(Self, Self) -> Self
+pub fn FinancepricingbinomialView::copy(Self) -> Self
+pub fn FinancepricingbinomialView::fill(Self, Double) -> Self
+pub fn FinancepricingbinomialView::get(Self, Int32) -> Double
+pub fn FinancepricingbinomialView::len(Self) -> Int32
+pub fn FinancepricingbinomialView::max(Self) -> Double
+pub fn FinancepricingbinomialView::mean(Self) -> Double
+pub fn FinancepricingbinomialView::min(Self) -> Double
+pub fn FinancepricingbinomialView::scale(Self, Double) -> Self
+pub fn FinancepricingbinomialView::set(Self, Int32, Double) -> Self
+pub fn FinancepricingbinomialView::sum(Self) -> Double
+pub fn FinancepricingbinomialView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

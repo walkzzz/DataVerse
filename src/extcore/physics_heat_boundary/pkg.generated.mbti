@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_heat_boundary"
+
+// Values
+pub fn physics_heat_boundary_buffer_make(Int32) -> PhysicsheatboundaryBuffer
+
+pub fn physics_heat_boundary_cluster_make(Int32) -> PhysicsheatboundaryCluster
+
+pub fn physics_heat_boundary_cursor_make(Int32) -> PhysicsheatboundaryCursor
+
+pub fn physics_heat_boundary_edge_make(Int32) -> PhysicsheatboundaryEdge
+
+pub fn physics_heat_boundary_frame_make(Int32) -> PhysicsheatboundaryFrame
+
+pub fn physics_heat_boundary_graphn_make(Int32) -> PhysicsheatboundaryGraphN
+
+pub fn physics_heat_boundary_layer_make(Int32) -> PhysicsheatboundaryLayer
+
+pub fn physics_heat_boundary_make_matrix(Int32, Int32, Double) -> PhysicsheatboundaryMatrix
+
+pub fn physics_heat_boundary_make_point(Double, Double) -> PhysicsheatboundaryPoint
+
+pub fn physics_heat_boundary_make_point3(Double, Double, Double) -> PhysicsheatboundaryPoint
+
+pub fn physics_heat_boundary_make_series(Array[Double], String) -> PhysicsheatboundarySeries
+
+pub fn physics_heat_boundary_make_vector(Array[Double]) -> PhysicsheatboundaryVector
+
+pub fn physics_heat_boundary_matrix_identity(Int32) -> PhysicsheatboundaryMatrix
+
+pub fn physics_heat_boundary_model_make(Int32) -> PhysicsheatboundaryModel
+
+pub fn physics_heat_boundary_node_make(Int32) -> PhysicsheatboundaryNode
+
+pub fn physics_heat_boundary_path_make(Int32) -> PhysicsheatboundaryPath
+
+pub fn physics_heat_boundary_range_make(Int32) -> PhysicsheatboundaryRange
+
+pub fn physics_heat_boundary_slice_make(Int32) -> PhysicsheatboundarySlice
+
+pub fn physics_heat_boundary_table_make(Int32) -> PhysicsheatboundaryTable
+
+pub fn physics_heat_boundary_vector_zero(Int32) -> PhysicsheatboundaryVector
+
+pub fn physics_heat_boundary_view_make(Int32) -> PhysicsheatboundaryView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsheatboundaryBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatboundaryBuffer::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryBuffer::copy(Self) -> Self
+pub fn PhysicsheatboundaryBuffer::fill(Self, Double) -> Self
+pub fn PhysicsheatboundaryBuffer::get(Self, Int32) -> Double
+pub fn PhysicsheatboundaryBuffer::len(Self) -> Int32
+pub fn PhysicsheatboundaryBuffer::max(Self) -> Double
+pub fn PhysicsheatboundaryBuffer::mean(Self) -> Double
+pub fn PhysicsheatboundaryBuffer::min(Self) -> Double
+pub fn PhysicsheatboundaryBuffer::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatboundaryBuffer::sum(Self) -> Double
+pub fn PhysicsheatboundaryBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsheatboundaryCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatboundaryCluster::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryCluster::copy(Self) -> Self
+pub fn PhysicsheatboundaryCluster::fill(Self, Double) -> Self
+pub fn PhysicsheatboundaryCluster::get(Self, Int32) -> Double
+pub fn PhysicsheatboundaryCluster::len(Self) -> Int32
+pub fn PhysicsheatboundaryCluster::max(Self) -> Double
+pub fn PhysicsheatboundaryCluster::mean(Self) -> Double
+pub fn PhysicsheatboundaryCluster::min(Self) -> Double
+pub fn PhysicsheatboundaryCluster::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatboundaryCluster::sum(Self) -> Double
+pub fn PhysicsheatboundaryCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsheatboundaryCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatboundaryCursor::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryCursor::copy(Self) -> Self
+pub fn PhysicsheatboundaryCursor::fill(Self, Double) -> Self
+pub fn PhysicsheatboundaryCursor::get(Self, Int32) -> Double
+pub fn PhysicsheatboundaryCursor::len(Self) -> Int32
+pub fn PhysicsheatboundaryCursor::max(Self) -> Double
+pub fn PhysicsheatboundaryCursor::mean(Self) -> Double
+pub fn PhysicsheatboundaryCursor::min(Self) -> Double
+pub fn PhysicsheatboundaryCursor::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatboundaryCursor::sum(Self) -> Double
+pub fn PhysicsheatboundaryCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsheatboundaryEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatboundaryEdge::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryEdge::copy(Self) -> Self
+pub fn PhysicsheatboundaryEdge::fill(Self, Double) -> Self
+pub fn PhysicsheatboundaryEdge::get(Self, Int32) -> Double
+pub fn PhysicsheatboundaryEdge::len(Self) -> Int32
+pub fn PhysicsheatboundaryEdge::max(Self) -> Double
+pub fn PhysicsheatboundaryEdge::mean(Self) -> Double
+pub fn PhysicsheatboundaryEdge::min(Self) -> Double
+pub fn PhysicsheatboundaryEdge::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatboundaryEdge::sum(Self) -> Double
+pub fn PhysicsheatboundaryEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsheatboundaryFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatboundaryFrame::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryFrame::copy(Self) -> Self
+pub fn PhysicsheatboundaryFrame::fill(Self, Double) -> Self
+pub fn PhysicsheatboundaryFrame::get(Self, Int32) -> Double
+pub fn PhysicsheatboundaryFrame::len(Self) -> Int32
+pub fn PhysicsheatboundaryFrame::max(Self) -> Double
+pub fn PhysicsheatboundaryFrame::mean(Self) -> Double
+pub fn PhysicsheatboundaryFrame::min(Self) -> Double
+pub fn PhysicsheatboundaryFrame::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatboundaryFrame::sum(Self) -> Double
+pub fn PhysicsheatboundaryFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsheatboundaryGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatboundaryGraphN::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryGraphN::copy(Self) -> Self
+pub fn PhysicsheatboundaryGraphN::fill(Self, Double) -> Self
+pub fn PhysicsheatboundaryGraphN::get(Self, Int32) -> Double
+pub fn PhysicsheatboundaryGraphN::len(Self) -> Int32
+pub fn PhysicsheatboundaryGraphN::max(Self) -> Double
+pub fn PhysicsheatboundaryGraphN::mean(Self) -> Double
+pub fn PhysicsheatboundaryGraphN::min(Self) -> Double
+pub fn PhysicsheatboundaryGraphN::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatboundaryGraphN::sum(Self) -> Double
+pub fn PhysicsheatboundaryGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsheatboundaryLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatboundaryLayer::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryLayer::copy(Self) -> Self
+pub fn PhysicsheatboundaryLayer::fill(Self, Double) -> Self
+pub fn PhysicsheatboundaryLayer::get(Self, Int32) -> Double
+pub fn PhysicsheatboundaryLayer::len(Self) -> Int32
+pub fn PhysicsheatboundaryLayer::max(Self) -> Double
+pub fn PhysicsheatboundaryLayer::mean(Self) -> Double
+pub fn PhysicsheatboundaryLayer::min(Self) -> Double
+pub fn PhysicsheatboundaryLayer::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatboundaryLayer::sum(Self) -> Double
+pub fn PhysicsheatboundaryLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsheatboundaryMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsheatboundaryMatrix::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryMatrix::det(Self) -> Double
+pub fn PhysicsheatboundaryMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsheatboundaryMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsheatboundaryMatrix::norm(Self) -> Double
+pub fn PhysicsheatboundaryMatrix::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryMatrix::to_string(Self) -> String
+pub fn PhysicsheatboundaryMatrix::trace(Self) -> Double
+pub fn PhysicsheatboundaryMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsheatboundaryModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatboundaryModel::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryModel::copy(Self) -> Self
+pub fn PhysicsheatboundaryModel::fill(Self, Double) -> Self
+pub fn PhysicsheatboundaryModel::get(Self, Int32) -> Double
+pub fn PhysicsheatboundaryModel::len(Self) -> Int32
+pub fn PhysicsheatboundaryModel::max(Self) -> Double
+pub fn PhysicsheatboundaryModel::mean(Self) -> Double
+pub fn PhysicsheatboundaryModel::min(Self) -> Double
+pub fn PhysicsheatboundaryModel::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatboundaryModel::sum(Self) -> Double
+pub fn PhysicsheatboundaryModel::to_string(Self) -> String
+
+pub(all) struct PhysicsheatboundaryNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatboundaryNode::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryNode::copy(Self) -> Self
+pub fn PhysicsheatboundaryNode::fill(Self, Double) -> Self
+pub fn PhysicsheatboundaryNode::get(Self, Int32) -> Double
+pub fn PhysicsheatboundaryNode::len(Self) -> Int32
+pub fn PhysicsheatboundaryNode::max(Self) -> Double
+pub fn PhysicsheatboundaryNode::mean(Self) -> Double
+pub fn PhysicsheatboundaryNode::min(Self) -> Double
+pub fn PhysicsheatboundaryNode::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatboundaryNode::sum(Self) -> Double
+pub fn PhysicsheatboundaryNode::to_string(Self) -> String
+
+pub(all) struct PhysicsheatboundaryPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatboundaryPath::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryPath::copy(Self) -> Self
+pub fn PhysicsheatboundaryPath::fill(Self, Double) -> Self
+pub fn PhysicsheatboundaryPath::get(Self, Int32) -> Double
+pub fn PhysicsheatboundaryPath::len(Self) -> Int32
+pub fn PhysicsheatboundaryPath::max(Self) -> Double
+pub fn PhysicsheatboundaryPath::mean(Self) -> Double
+pub fn PhysicsheatboundaryPath::min(Self) -> Double
+pub fn PhysicsheatboundaryPath::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatboundaryPath::sum(Self) -> Double
+pub fn PhysicsheatboundaryPath::to_string(Self) -> String
+
+pub(all) struct PhysicsheatboundaryPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsheatboundaryPoint::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryPoint::cross(Self, Self) -> Self
+pub fn PhysicsheatboundaryPoint::dist(Self, Self) -> Double
+pub fn PhysicsheatboundaryPoint::dot(Self, Self) -> Double
+pub fn PhysicsheatboundaryPoint::label(Self) -> Int32
+pub fn PhysicsheatboundaryPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsheatboundaryPoint::mid(Self, Self) -> Self
+pub fn PhysicsheatboundaryPoint::negate(Self) -> Self
+pub fn PhysicsheatboundaryPoint::norm(Self) -> Double
+pub fn PhysicsheatboundaryPoint::normalize(Self) -> Self
+pub fn PhysicsheatboundaryPoint::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryPoint::sub(Self, Self) -> Self
+pub fn PhysicsheatboundaryPoint::to_string(Self) -> String
+pub fn PhysicsheatboundaryPoint::x(Self) -> Double
+pub fn PhysicsheatboundaryPoint::y(Self) -> Double
+pub fn PhysicsheatboundaryPoint::z(Self) -> Double
+
+pub(all) struct PhysicsheatboundaryRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatboundaryRange::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryRange::copy(Self) -> Self
+pub fn PhysicsheatboundaryRange::fill(Self, Double) -> Self
+pub fn PhysicsheatboundaryRange::get(Self, Int32) -> Double
+pub fn PhysicsheatboundaryRange::len(Self) -> Int32
+pub fn PhysicsheatboundaryRange::max(Self) -> Double
+pub fn PhysicsheatboundaryRange::mean(Self) -> Double
+pub fn PhysicsheatboundaryRange::min(Self) -> Double
+pub fn PhysicsheatboundaryRange::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatboundaryRange::sum(Self) -> Double
+pub fn PhysicsheatboundaryRange::to_string(Self) -> String
+
+pub(all) struct PhysicsheatboundarySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsheatboundarySeries::add(Self, Self) -> Self
+pub fn PhysicsheatboundarySeries::cumsum(Self) -> Self
+pub fn PhysicsheatboundarySeries::len(Self) -> Int32
+pub fn PhysicsheatboundarySeries::max(Self) -> Double
+pub fn PhysicsheatboundarySeries::mean(Self) -> Double
+pub fn PhysicsheatboundarySeries::median(Self) -> Double
+pub fn PhysicsheatboundarySeries::min(Self) -> Double
+pub fn PhysicsheatboundarySeries::normalize(Self) -> Self
+pub fn PhysicsheatboundarySeries::range(Self) -> Double
+pub fn PhysicsheatboundarySeries::scale(Self, Double) -> Self
+pub fn PhysicsheatboundarySeries::std(Self) -> Double
+pub fn PhysicsheatboundarySeries::sub(Self, Self) -> Self
+pub fn PhysicsheatboundarySeries::sum(Self) -> Double
+pub fn PhysicsheatboundarySeries::to_string(Self) -> String
+pub fn PhysicsheatboundarySeries::variance(Self) -> Double
+
+pub(all) struct PhysicsheatboundarySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatboundarySlice::add(Self, Self) -> Self
+pub fn PhysicsheatboundarySlice::copy(Self) -> Self
+pub fn PhysicsheatboundarySlice::fill(Self, Double) -> Self
+pub fn PhysicsheatboundarySlice::get(Self, Int32) -> Double
+pub fn PhysicsheatboundarySlice::len(Self) -> Int32
+pub fn PhysicsheatboundarySlice::max(Self) -> Double
+pub fn PhysicsheatboundarySlice::mean(Self) -> Double
+pub fn PhysicsheatboundarySlice::min(Self) -> Double
+pub fn PhysicsheatboundarySlice::scale(Self, Double) -> Self
+pub fn PhysicsheatboundarySlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatboundarySlice::sum(Self) -> Double
+pub fn PhysicsheatboundarySlice::to_string(Self) -> String
+
+pub(all) struct PhysicsheatboundaryTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatboundaryTable::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryTable::copy(Self) -> Self
+pub fn PhysicsheatboundaryTable::fill(Self, Double) -> Self
+pub fn PhysicsheatboundaryTable::get(Self, Int32) -> Double
+pub fn PhysicsheatboundaryTable::len(Self) -> Int32
+pub fn PhysicsheatboundaryTable::max(Self) -> Double
+pub fn PhysicsheatboundaryTable::mean(Self) -> Double
+pub fn PhysicsheatboundaryTable::min(Self) -> Double
+pub fn PhysicsheatboundaryTable::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatboundaryTable::sum(Self) -> Double
+pub fn PhysicsheatboundaryTable::to_string(Self) -> String
+
+pub(all) struct PhysicsheatboundaryVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsheatboundaryVector::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryVector::dist(Self, Self) -> Double
+pub fn PhysicsheatboundaryVector::dot(Self, Self) -> Double
+pub fn PhysicsheatboundaryVector::norm(Self) -> Double
+pub fn PhysicsheatboundaryVector::normalize(Self) -> Self
+pub fn PhysicsheatboundaryVector::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryVector::sub(Self, Self) -> Self
+pub fn PhysicsheatboundaryVector::to_string(Self) -> String
+
+pub(all) struct PhysicsheatboundaryView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsheatboundaryView::add(Self, Self) -> Self
+pub fn PhysicsheatboundaryView::copy(Self) -> Self
+pub fn PhysicsheatboundaryView::fill(Self, Double) -> Self
+pub fn PhysicsheatboundaryView::get(Self, Int32) -> Double
+pub fn PhysicsheatboundaryView::len(Self) -> Int32
+pub fn PhysicsheatboundaryView::max(Self) -> Double
+pub fn PhysicsheatboundaryView::mean(Self) -> Double
+pub fn PhysicsheatboundaryView::min(Self) -> Double
+pub fn PhysicsheatboundaryView::scale(Self, Double) -> Self
+pub fn PhysicsheatboundaryView::set(Self, Int32, Double) -> Self
+pub fn PhysicsheatboundaryView::sum(Self) -> Double
+pub fn PhysicsheatboundaryView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

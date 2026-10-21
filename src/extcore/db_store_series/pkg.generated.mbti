@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_store_series"
+
+// Values
+pub fn db_store_series_buffer_make(Int32) -> DbstoreseriesBuffer
+
+pub fn db_store_series_cluster_make(Int32) -> DbstoreseriesCluster
+
+pub fn db_store_series_cursor_make(Int32) -> DbstoreseriesCursor
+
+pub fn db_store_series_edge_make(Int32) -> DbstoreseriesEdge
+
+pub fn db_store_series_frame_make(Int32) -> DbstoreseriesFrame
+
+pub fn db_store_series_graphn_make(Int32) -> DbstoreseriesGraphN
+
+pub fn db_store_series_layer_make(Int32) -> DbstoreseriesLayer
+
+pub fn db_store_series_make_matrix(Int32, Int32, Double) -> DbstoreseriesMatrix
+
+pub fn db_store_series_make_point(Double, Double) -> DbstoreseriesPoint
+
+pub fn db_store_series_make_point3(Double, Double, Double) -> DbstoreseriesPoint
+
+pub fn db_store_series_make_series(Array[Double], String) -> DbstoreseriesSeries
+
+pub fn db_store_series_make_vector(Array[Double]) -> DbstoreseriesVector
+
+pub fn db_store_series_matrix_identity(Int32) -> DbstoreseriesMatrix
+
+pub fn db_store_series_model_make(Int32) -> DbstoreseriesModel
+
+pub fn db_store_series_node_make(Int32) -> DbstoreseriesNode
+
+pub fn db_store_series_path_make(Int32) -> DbstoreseriesPath
+
+pub fn db_store_series_range_make(Int32) -> DbstoreseriesRange
+
+pub fn db_store_series_slice_make(Int32) -> DbstoreseriesSlice
+
+pub fn db_store_series_table_make(Int32) -> DbstoreseriesTable
+
+pub fn db_store_series_vector_zero(Int32) -> DbstoreseriesVector
+
+pub fn db_store_series_view_make(Int32) -> DbstoreseriesView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbstoreseriesBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoreseriesBuffer::add(Self, Self) -> Self
+pub fn DbstoreseriesBuffer::copy(Self) -> Self
+pub fn DbstoreseriesBuffer::fill(Self, Double) -> Self
+pub fn DbstoreseriesBuffer::get(Self, Int32) -> Double
+pub fn DbstoreseriesBuffer::len(Self) -> Int32
+pub fn DbstoreseriesBuffer::max(Self) -> Double
+pub fn DbstoreseriesBuffer::mean(Self) -> Double
+pub fn DbstoreseriesBuffer::min(Self) -> Double
+pub fn DbstoreseriesBuffer::scale(Self, Double) -> Self
+pub fn DbstoreseriesBuffer::set(Self, Int32, Double) -> Self
+pub fn DbstoreseriesBuffer::sum(Self) -> Double
+pub fn DbstoreseriesBuffer::to_string(Self) -> String
+
+pub(all) struct DbstoreseriesCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoreseriesCluster::add(Self, Self) -> Self
+pub fn DbstoreseriesCluster::copy(Self) -> Self
+pub fn DbstoreseriesCluster::fill(Self, Double) -> Self
+pub fn DbstoreseriesCluster::get(Self, Int32) -> Double
+pub fn DbstoreseriesCluster::len(Self) -> Int32
+pub fn DbstoreseriesCluster::max(Self) -> Double
+pub fn DbstoreseriesCluster::mean(Self) -> Double
+pub fn DbstoreseriesCluster::min(Self) -> Double
+pub fn DbstoreseriesCluster::scale(Self, Double) -> Self
+pub fn DbstoreseriesCluster::set(Self, Int32, Double) -> Self
+pub fn DbstoreseriesCluster::sum(Self) -> Double
+pub fn DbstoreseriesCluster::to_string(Self) -> String
+
+pub(all) struct DbstoreseriesCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoreseriesCursor::add(Self, Self) -> Self
+pub fn DbstoreseriesCursor::copy(Self) -> Self
+pub fn DbstoreseriesCursor::fill(Self, Double) -> Self
+pub fn DbstoreseriesCursor::get(Self, Int32) -> Double
+pub fn DbstoreseriesCursor::len(Self) -> Int32
+pub fn DbstoreseriesCursor::max(Self) -> Double
+pub fn DbstoreseriesCursor::mean(Self) -> Double
+pub fn DbstoreseriesCursor::min(Self) -> Double
+pub fn DbstoreseriesCursor::scale(Self, Double) -> Self
+pub fn DbstoreseriesCursor::set(Self, Int32, Double) -> Self
+pub fn DbstoreseriesCursor::sum(Self) -> Double
+pub fn DbstoreseriesCursor::to_string(Self) -> String
+
+pub(all) struct DbstoreseriesEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoreseriesEdge::add(Self, Self) -> Self
+pub fn DbstoreseriesEdge::copy(Self) -> Self
+pub fn DbstoreseriesEdge::fill(Self, Double) -> Self
+pub fn DbstoreseriesEdge::get(Self, Int32) -> Double
+pub fn DbstoreseriesEdge::len(Self) -> Int32
+pub fn DbstoreseriesEdge::max(Self) -> Double
+pub fn DbstoreseriesEdge::mean(Self) -> Double
+pub fn DbstoreseriesEdge::min(Self) -> Double
+pub fn DbstoreseriesEdge::scale(Self, Double) -> Self
+pub fn DbstoreseriesEdge::set(Self, Int32, Double) -> Self
+pub fn DbstoreseriesEdge::sum(Self) -> Double
+pub fn DbstoreseriesEdge::to_string(Self) -> String
+
+pub(all) struct DbstoreseriesFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoreseriesFrame::add(Self, Self) -> Self
+pub fn DbstoreseriesFrame::copy(Self) -> Self
+pub fn DbstoreseriesFrame::fill(Self, Double) -> Self
+pub fn DbstoreseriesFrame::get(Self, Int32) -> Double
+pub fn DbstoreseriesFrame::len(Self) -> Int32
+pub fn DbstoreseriesFrame::max(Self) -> Double
+pub fn DbstoreseriesFrame::mean(Self) -> Double
+pub fn DbstoreseriesFrame::min(Self) -> Double
+pub fn DbstoreseriesFrame::scale(Self, Double) -> Self
+pub fn DbstoreseriesFrame::set(Self, Int32, Double) -> Self
+pub fn DbstoreseriesFrame::sum(Self) -> Double
+pub fn DbstoreseriesFrame::to_string(Self) -> String
+
+pub(all) struct DbstoreseriesGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoreseriesGraphN::add(Self, Self) -> Self
+pub fn DbstoreseriesGraphN::copy(Self) -> Self
+pub fn DbstoreseriesGraphN::fill(Self, Double) -> Self
+pub fn DbstoreseriesGraphN::get(Self, Int32) -> Double
+pub fn DbstoreseriesGraphN::len(Self) -> Int32
+pub fn DbstoreseriesGraphN::max(Self) -> Double
+pub fn DbstoreseriesGraphN::mean(Self) -> Double
+pub fn DbstoreseriesGraphN::min(Self) -> Double
+pub fn DbstoreseriesGraphN::scale(Self, Double) -> Self
+pub fn DbstoreseriesGraphN::set(Self, Int32, Double) -> Self
+pub fn DbstoreseriesGraphN::sum(Self) -> Double
+pub fn DbstoreseriesGraphN::to_string(Self) -> String
+
+pub(all) struct DbstoreseriesLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoreseriesLayer::add(Self, Self) -> Self
+pub fn DbstoreseriesLayer::copy(Self) -> Self
+pub fn DbstoreseriesLayer::fill(Self, Double) -> Self
+pub fn DbstoreseriesLayer::get(Self, Int32) -> Double
+pub fn DbstoreseriesLayer::len(Self) -> Int32
+pub fn DbstoreseriesLayer::max(Self) -> Double
+pub fn DbstoreseriesLayer::mean(Self) -> Double
+pub fn DbstoreseriesLayer::min(Self) -> Double
+pub fn DbstoreseriesLayer::scale(Self, Double) -> Self
+pub fn DbstoreseriesLayer::set(Self, Int32, Double) -> Self
+pub fn DbstoreseriesLayer::sum(Self) -> Double
+pub fn DbstoreseriesLayer::to_string(Self) -> String
+
+pub(all) struct DbstoreseriesMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbstoreseriesMatrix::add(Self, Self) -> Self
+pub fn DbstoreseriesMatrix::det(Self) -> Double
+pub fn DbstoreseriesMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbstoreseriesMatrix::multiply(Self, Self) -> Self
+pub fn DbstoreseriesMatrix::norm(Self) -> Double
+pub fn DbstoreseriesMatrix::scale(Self, Double) -> Self
+pub fn DbstoreseriesMatrix::to_string(Self) -> String
+pub fn DbstoreseriesMatrix::trace(Self) -> Double
+pub fn DbstoreseriesMatrix::transpose(Self) -> Self
+
+pub(all) struct DbstoreseriesModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoreseriesModel::add(Self, Self) -> Self
+pub fn DbstoreseriesModel::copy(Self) -> Self
+pub fn DbstoreseriesModel::fill(Self, Double) -> Self
+pub fn DbstoreseriesModel::get(Self, Int32) -> Double
+pub fn DbstoreseriesModel::len(Self) -> Int32
+pub fn DbstoreseriesModel::max(Self) -> Double
+pub fn DbstoreseriesModel::mean(Self) -> Double
+pub fn DbstoreseriesModel::min(Self) -> Double
+pub fn DbstoreseriesModel::scale(Self, Double) -> Self
+pub fn DbstoreseriesModel::set(Self, Int32, Double) -> Self
+pub fn DbstoreseriesModel::sum(Self) -> Double
+pub fn DbstoreseriesModel::to_string(Self) -> String
+
+pub(all) struct DbstoreseriesNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoreseriesNode::add(Self, Self) -> Self
+pub fn DbstoreseriesNode::copy(Self) -> Self
+pub fn DbstoreseriesNode::fill(Self, Double) -> Self
+pub fn DbstoreseriesNode::get(Self, Int32) -> Double
+pub fn DbstoreseriesNode::len(Self) -> Int32
+pub fn DbstoreseriesNode::max(Self) -> Double
+pub fn DbstoreseriesNode::mean(Self) -> Double
+pub fn DbstoreseriesNode::min(Self) -> Double
+pub fn DbstoreseriesNode::scale(Self, Double) -> Self
+pub fn DbstoreseriesNode::set(Self, Int32, Double) -> Self
+pub fn DbstoreseriesNode::sum(Self) -> Double
+pub fn DbstoreseriesNode::to_string(Self) -> String
+
+pub(all) struct DbstoreseriesPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoreseriesPath::add(Self, Self) -> Self
+pub fn DbstoreseriesPath::copy(Self) -> Self
+pub fn DbstoreseriesPath::fill(Self, Double) -> Self
+pub fn DbstoreseriesPath::get(Self, Int32) -> Double
+pub fn DbstoreseriesPath::len(Self) -> Int32
+pub fn DbstoreseriesPath::max(Self) -> Double
+pub fn DbstoreseriesPath::mean(Self) -> Double
+pub fn DbstoreseriesPath::min(Self) -> Double
+pub fn DbstoreseriesPath::scale(Self, Double) -> Self
+pub fn DbstoreseriesPath::set(Self, Int32, Double) -> Self
+pub fn DbstoreseriesPath::sum(Self) -> Double
+pub fn DbstoreseriesPath::to_string(Self) -> String
+
+pub(all) struct DbstoreseriesPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbstoreseriesPoint::add(Self, Self) -> Self
+pub fn DbstoreseriesPoint::cross(Self, Self) -> Self
+pub fn DbstoreseriesPoint::dist(Self, Self) -> Double
+pub fn DbstoreseriesPoint::dot(Self, Self) -> Double
+pub fn DbstoreseriesPoint::label(Self) -> Int32
+pub fn DbstoreseriesPoint::lerp(Self, Self, Double) -> Self
+pub fn DbstoreseriesPoint::mid(Self, Self) -> Self
+pub fn DbstoreseriesPoint::negate(Self) -> Self
+pub fn DbstoreseriesPoint::norm(Self) -> Double
+pub fn DbstoreseriesPoint::normalize(Self) -> Self
+pub fn DbstoreseriesPoint::scale(Self, Double) -> Self
+pub fn DbstoreseriesPoint::sub(Self, Self) -> Self
+pub fn DbstoreseriesPoint::to_string(Self) -> String
+pub fn DbstoreseriesPoint::x(Self) -> Double
+pub fn DbstoreseriesPoint::y(Self) -> Double
+pub fn DbstoreseriesPoint::z(Self) -> Double
+
+pub(all) struct DbstoreseriesRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoreseriesRange::add(Self, Self) -> Self
+pub fn DbstoreseriesRange::copy(Self) -> Self
+pub fn DbstoreseriesRange::fill(Self, Double) -> Self
+pub fn DbstoreseriesRange::get(Self, Int32) -> Double
+pub fn DbstoreseriesRange::len(Self) -> Int32
+pub fn DbstoreseriesRange::max(Self) -> Double
+pub fn DbstoreseriesRange::mean(Self) -> Double
+pub fn DbstoreseriesRange::min(Self) -> Double
+pub fn DbstoreseriesRange::scale(Self, Double) -> Self
+pub fn DbstoreseriesRange::set(Self, Int32, Double) -> Self
+pub fn DbstoreseriesRange::sum(Self) -> Double
+pub fn DbstoreseriesRange::to_string(Self) -> String
+
+pub(all) struct DbstoreseriesSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbstoreseriesSeries::add(Self, Self) -> Self
+pub fn DbstoreseriesSeries::cumsum(Self) -> Self
+pub fn DbstoreseriesSeries::len(Self) -> Int32
+pub fn DbstoreseriesSeries::max(Self) -> Double
+pub fn DbstoreseriesSeries::mean(Self) -> Double
+pub fn DbstoreseriesSeries::median(Self) -> Double
+pub fn DbstoreseriesSeries::min(Self) -> Double
+pub fn DbstoreseriesSeries::normalize(Self) -> Self
+pub fn DbstoreseriesSeries::range(Self) -> Double
+pub fn DbstoreseriesSeries::scale(Self, Double) -> Self
+pub fn DbstoreseriesSeries::std(Self) -> Double
+pub fn DbstoreseriesSeries::sub(Self, Self) -> Self
+pub fn DbstoreseriesSeries::sum(Self) -> Double
+pub fn DbstoreseriesSeries::to_string(Self) -> String
+pub fn DbstoreseriesSeries::variance(Self) -> Double
+
+pub(all) struct DbstoreseriesSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoreseriesSlice::add(Self, Self) -> Self
+pub fn DbstoreseriesSlice::copy(Self) -> Self
+pub fn DbstoreseriesSlice::fill(Self, Double) -> Self
+pub fn DbstoreseriesSlice::get(Self, Int32) -> Double
+pub fn DbstoreseriesSlice::len(Self) -> Int32
+pub fn DbstoreseriesSlice::max(Self) -> Double
+pub fn DbstoreseriesSlice::mean(Self) -> Double
+pub fn DbstoreseriesSlice::min(Self) -> Double
+pub fn DbstoreseriesSlice::scale(Self, Double) -> Self
+pub fn DbstoreseriesSlice::set(Self, Int32, Double) -> Self
+pub fn DbstoreseriesSlice::sum(Self) -> Double
+pub fn DbstoreseriesSlice::to_string(Self) -> String
+
+pub(all) struct DbstoreseriesTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoreseriesTable::add(Self, Self) -> Self
+pub fn DbstoreseriesTable::copy(Self) -> Self
+pub fn DbstoreseriesTable::fill(Self, Double) -> Self
+pub fn DbstoreseriesTable::get(Self, Int32) -> Double
+pub fn DbstoreseriesTable::len(Self) -> Int32
+pub fn DbstoreseriesTable::max(Self) -> Double
+pub fn DbstoreseriesTable::mean(Self) -> Double
+pub fn DbstoreseriesTable::min(Self) -> Double
+pub fn DbstoreseriesTable::scale(Self, Double) -> Self
+pub fn DbstoreseriesTable::set(Self, Int32, Double) -> Self
+pub fn DbstoreseriesTable::sum(Self) -> Double
+pub fn DbstoreseriesTable::to_string(Self) -> String
+
+pub(all) struct DbstoreseriesVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbstoreseriesVector::add(Self, Self) -> Self
+pub fn DbstoreseriesVector::dist(Self, Self) -> Double
+pub fn DbstoreseriesVector::dot(Self, Self) -> Double
+pub fn DbstoreseriesVector::norm(Self) -> Double
+pub fn DbstoreseriesVector::normalize(Self) -> Self
+pub fn DbstoreseriesVector::scale(Self, Double) -> Self
+pub fn DbstoreseriesVector::sub(Self, Self) -> Self
+pub fn DbstoreseriesVector::to_string(Self) -> String
+
+pub(all) struct DbstoreseriesView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoreseriesView::add(Self, Self) -> Self
+pub fn DbstoreseriesView::copy(Self) -> Self
+pub fn DbstoreseriesView::fill(Self, Double) -> Self
+pub fn DbstoreseriesView::get(Self, Int32) -> Double
+pub fn DbstoreseriesView::len(Self) -> Int32
+pub fn DbstoreseriesView::max(Self) -> Double
+pub fn DbstoreseriesView::mean(Self) -> Double
+pub fn DbstoreseriesView::min(Self) -> Double
+pub fn DbstoreseriesView::scale(Self, Double) -> Self
+pub fn DbstoreseriesView::set(Self, Int32, Double) -> Self
+pub fn DbstoreseriesView::sum(Self) -> Double
+pub fn DbstoreseriesView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

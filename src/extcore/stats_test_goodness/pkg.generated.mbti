@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/stats_test_goodness"
+
+// Values
+pub fn stats_test_goodness_buffer_make(Int32) -> StatstestgoodnessBuffer
+
+pub fn stats_test_goodness_cluster_make(Int32) -> StatstestgoodnessCluster
+
+pub fn stats_test_goodness_cursor_make(Int32) -> StatstestgoodnessCursor
+
+pub fn stats_test_goodness_edge_make(Int32) -> StatstestgoodnessEdge
+
+pub fn stats_test_goodness_frame_make(Int32) -> StatstestgoodnessFrame
+
+pub fn stats_test_goodness_graphn_make(Int32) -> StatstestgoodnessGraphN
+
+pub fn stats_test_goodness_layer_make(Int32) -> StatstestgoodnessLayer
+
+pub fn stats_test_goodness_make_matrix(Int32, Int32, Double) -> StatstestgoodnessMatrix
+
+pub fn stats_test_goodness_make_point(Double, Double) -> StatstestgoodnessPoint
+
+pub fn stats_test_goodness_make_point3(Double, Double, Double) -> StatstestgoodnessPoint
+
+pub fn stats_test_goodness_make_series(Array[Double], String) -> StatstestgoodnessSeries
+
+pub fn stats_test_goodness_make_vector(Array[Double]) -> StatstestgoodnessVector
+
+pub fn stats_test_goodness_matrix_identity(Int32) -> StatstestgoodnessMatrix
+
+pub fn stats_test_goodness_model_make(Int32) -> StatstestgoodnessModel
+
+pub fn stats_test_goodness_node_make(Int32) -> StatstestgoodnessNode
+
+pub fn stats_test_goodness_path_make(Int32) -> StatstestgoodnessPath
+
+pub fn stats_test_goodness_range_make(Int32) -> StatstestgoodnessRange
+
+pub fn stats_test_goodness_slice_make(Int32) -> StatstestgoodnessSlice
+
+pub fn stats_test_goodness_table_make(Int32) -> StatstestgoodnessTable
+
+pub fn stats_test_goodness_vector_zero(Int32) -> StatstestgoodnessVector
+
+pub fn stats_test_goodness_view_make(Int32) -> StatstestgoodnessView
+
+// Errors
+
+// Types and methods
+pub(all) struct StatstestgoodnessBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestgoodnessBuffer::add(Self, Self) -> Self
+pub fn StatstestgoodnessBuffer::copy(Self) -> Self
+pub fn StatstestgoodnessBuffer::fill(Self, Double) -> Self
+pub fn StatstestgoodnessBuffer::get(Self, Int32) -> Double
+pub fn StatstestgoodnessBuffer::len(Self) -> Int32
+pub fn StatstestgoodnessBuffer::max(Self) -> Double
+pub fn StatstestgoodnessBuffer::mean(Self) -> Double
+pub fn StatstestgoodnessBuffer::min(Self) -> Double
+pub fn StatstestgoodnessBuffer::scale(Self, Double) -> Self
+pub fn StatstestgoodnessBuffer::set(Self, Int32, Double) -> Self
+pub fn StatstestgoodnessBuffer::sum(Self) -> Double
+pub fn StatstestgoodnessBuffer::to_string(Self) -> String
+
+pub(all) struct StatstestgoodnessCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestgoodnessCluster::add(Self, Self) -> Self
+pub fn StatstestgoodnessCluster::copy(Self) -> Self
+pub fn StatstestgoodnessCluster::fill(Self, Double) -> Self
+pub fn StatstestgoodnessCluster::get(Self, Int32) -> Double
+pub fn StatstestgoodnessCluster::len(Self) -> Int32
+pub fn StatstestgoodnessCluster::max(Self) -> Double
+pub fn StatstestgoodnessCluster::mean(Self) -> Double
+pub fn StatstestgoodnessCluster::min(Self) -> Double
+pub fn StatstestgoodnessCluster::scale(Self, Double) -> Self
+pub fn StatstestgoodnessCluster::set(Self, Int32, Double) -> Self
+pub fn StatstestgoodnessCluster::sum(Self) -> Double
+pub fn StatstestgoodnessCluster::to_string(Self) -> String
+
+pub(all) struct StatstestgoodnessCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestgoodnessCursor::add(Self, Self) -> Self
+pub fn StatstestgoodnessCursor::copy(Self) -> Self
+pub fn StatstestgoodnessCursor::fill(Self, Double) -> Self
+pub fn StatstestgoodnessCursor::get(Self, Int32) -> Double
+pub fn StatstestgoodnessCursor::len(Self) -> Int32
+pub fn StatstestgoodnessCursor::max(Self) -> Double
+pub fn StatstestgoodnessCursor::mean(Self) -> Double
+pub fn StatstestgoodnessCursor::min(Self) -> Double
+pub fn StatstestgoodnessCursor::scale(Self, Double) -> Self
+pub fn StatstestgoodnessCursor::set(Self, Int32, Double) -> Self
+pub fn StatstestgoodnessCursor::sum(Self) -> Double
+pub fn StatstestgoodnessCursor::to_string(Self) -> String
+
+pub(all) struct StatstestgoodnessEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestgoodnessEdge::add(Self, Self) -> Self
+pub fn StatstestgoodnessEdge::copy(Self) -> Self
+pub fn StatstestgoodnessEdge::fill(Self, Double) -> Self
+pub fn StatstestgoodnessEdge::get(Self, Int32) -> Double
+pub fn StatstestgoodnessEdge::len(Self) -> Int32
+pub fn StatstestgoodnessEdge::max(Self) -> Double
+pub fn StatstestgoodnessEdge::mean(Self) -> Double
+pub fn StatstestgoodnessEdge::min(Self) -> Double
+pub fn StatstestgoodnessEdge::scale(Self, Double) -> Self
+pub fn StatstestgoodnessEdge::set(Self, Int32, Double) -> Self
+pub fn StatstestgoodnessEdge::sum(Self) -> Double
+pub fn StatstestgoodnessEdge::to_string(Self) -> String
+
+pub(all) struct StatstestgoodnessFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestgoodnessFrame::add(Self, Self) -> Self
+pub fn StatstestgoodnessFrame::copy(Self) -> Self
+pub fn StatstestgoodnessFrame::fill(Self, Double) -> Self
+pub fn StatstestgoodnessFrame::get(Self, Int32) -> Double
+pub fn StatstestgoodnessFrame::len(Self) -> Int32
+pub fn StatstestgoodnessFrame::max(Self) -> Double
+pub fn StatstestgoodnessFrame::mean(Self) -> Double
+pub fn StatstestgoodnessFrame::min(Self) -> Double
+pub fn StatstestgoodnessFrame::scale(Self, Double) -> Self
+pub fn StatstestgoodnessFrame::set(Self, Int32, Double) -> Self
+pub fn StatstestgoodnessFrame::sum(Self) -> Double
+pub fn StatstestgoodnessFrame::to_string(Self) -> String
+
+pub(all) struct StatstestgoodnessGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestgoodnessGraphN::add(Self, Self) -> Self
+pub fn StatstestgoodnessGraphN::copy(Self) -> Self
+pub fn StatstestgoodnessGraphN::fill(Self, Double) -> Self
+pub fn StatstestgoodnessGraphN::get(Self, Int32) -> Double
+pub fn StatstestgoodnessGraphN::len(Self) -> Int32
+pub fn StatstestgoodnessGraphN::max(Self) -> Double
+pub fn StatstestgoodnessGraphN::mean(Self) -> Double
+pub fn StatstestgoodnessGraphN::min(Self) -> Double
+pub fn StatstestgoodnessGraphN::scale(Self, Double) -> Self
+pub fn StatstestgoodnessGraphN::set(Self, Int32, Double) -> Self
+pub fn StatstestgoodnessGraphN::sum(Self) -> Double
+pub fn StatstestgoodnessGraphN::to_string(Self) -> String
+
+pub(all) struct StatstestgoodnessLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestgoodnessLayer::add(Self, Self) -> Self
+pub fn StatstestgoodnessLayer::copy(Self) -> Self
+pub fn StatstestgoodnessLayer::fill(Self, Double) -> Self
+pub fn StatstestgoodnessLayer::get(Self, Int32) -> Double
+pub fn StatstestgoodnessLayer::len(Self) -> Int32
+pub fn StatstestgoodnessLayer::max(Self) -> Double
+pub fn StatstestgoodnessLayer::mean(Self) -> Double
+pub fn StatstestgoodnessLayer::min(Self) -> Double
+pub fn StatstestgoodnessLayer::scale(Self, Double) -> Self
+pub fn StatstestgoodnessLayer::set(Self, Int32, Double) -> Self
+pub fn StatstestgoodnessLayer::sum(Self) -> Double
+pub fn StatstestgoodnessLayer::to_string(Self) -> String
+
+pub(all) struct StatstestgoodnessMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn StatstestgoodnessMatrix::add(Self, Self) -> Self
+pub fn StatstestgoodnessMatrix::det(Self) -> Double
+pub fn StatstestgoodnessMatrix::get(Self, Int32, Int32) -> Double
+pub fn StatstestgoodnessMatrix::multiply(Self, Self) -> Self
+pub fn StatstestgoodnessMatrix::norm(Self) -> Double
+pub fn StatstestgoodnessMatrix::scale(Self, Double) -> Self
+pub fn StatstestgoodnessMatrix::to_string(Self) -> String
+pub fn StatstestgoodnessMatrix::trace(Self) -> Double
+pub fn StatstestgoodnessMatrix::transpose(Self) -> Self
+
+pub(all) struct StatstestgoodnessModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestgoodnessModel::add(Self, Self) -> Self
+pub fn StatstestgoodnessModel::copy(Self) -> Self
+pub fn StatstestgoodnessModel::fill(Self, Double) -> Self
+pub fn StatstestgoodnessModel::get(Self, Int32) -> Double
+pub fn StatstestgoodnessModel::len(Self) -> Int32
+pub fn StatstestgoodnessModel::max(Self) -> Double
+pub fn StatstestgoodnessModel::mean(Self) -> Double
+pub fn StatstestgoodnessModel::min(Self) -> Double
+pub fn StatstestgoodnessModel::scale(Self, Double) -> Self
+pub fn StatstestgoodnessModel::set(Self, Int32, Double) -> Self
+pub fn StatstestgoodnessModel::sum(Self) -> Double
+pub fn StatstestgoodnessModel::to_string(Self) -> String
+
+pub(all) struct StatstestgoodnessNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestgoodnessNode::add(Self, Self) -> Self
+pub fn StatstestgoodnessNode::copy(Self) -> Self
+pub fn StatstestgoodnessNode::fill(Self, Double) -> Self
+pub fn StatstestgoodnessNode::get(Self, Int32) -> Double
+pub fn StatstestgoodnessNode::len(Self) -> Int32
+pub fn StatstestgoodnessNode::max(Self) -> Double
+pub fn StatstestgoodnessNode::mean(Self) -> Double
+pub fn StatstestgoodnessNode::min(Self) -> Double
+pub fn StatstestgoodnessNode::scale(Self, Double) -> Self
+pub fn StatstestgoodnessNode::set(Self, Int32, Double) -> Self
+pub fn StatstestgoodnessNode::sum(Self) -> Double
+pub fn StatstestgoodnessNode::to_string(Self) -> String
+
+pub(all) struct StatstestgoodnessPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestgoodnessPath::add(Self, Self) -> Self
+pub fn StatstestgoodnessPath::copy(Self) -> Self
+pub fn StatstestgoodnessPath::fill(Self, Double) -> Self
+pub fn StatstestgoodnessPath::get(Self, Int32) -> Double
+pub fn StatstestgoodnessPath::len(Self) -> Int32
+pub fn StatstestgoodnessPath::max(Self) -> Double
+pub fn StatstestgoodnessPath::mean(Self) -> Double
+pub fn StatstestgoodnessPath::min(Self) -> Double
+pub fn StatstestgoodnessPath::scale(Self, Double) -> Self
+pub fn StatstestgoodnessPath::set(Self, Int32, Double) -> Self
+pub fn StatstestgoodnessPath::sum(Self) -> Double
+pub fn StatstestgoodnessPath::to_string(Self) -> String
+
+pub(all) struct StatstestgoodnessPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn StatstestgoodnessPoint::add(Self, Self) -> Self
+pub fn StatstestgoodnessPoint::cross(Self, Self) -> Self
+pub fn StatstestgoodnessPoint::dist(Self, Self) -> Double
+pub fn StatstestgoodnessPoint::dot(Self, Self) -> Double
+pub fn StatstestgoodnessPoint::label(Self) -> Int32
+pub fn StatstestgoodnessPoint::lerp(Self, Self, Double) -> Self
+pub fn StatstestgoodnessPoint::mid(Self, Self) -> Self
+pub fn StatstestgoodnessPoint::negate(Self) -> Self
+pub fn StatstestgoodnessPoint::norm(Self) -> Double
+pub fn StatstestgoodnessPoint::normalize(Self) -> Self
+pub fn StatstestgoodnessPoint::scale(Self, Double) -> Self
+pub fn StatstestgoodnessPoint::sub(Self, Self) -> Self
+pub fn StatstestgoodnessPoint::to_string(Self) -> String
+pub fn StatstestgoodnessPoint::x(Self) -> Double
+pub fn StatstestgoodnessPoint::y(Self) -> Double
+pub fn StatstestgoodnessPoint::z(Self) -> Double
+
+pub(all) struct StatstestgoodnessRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestgoodnessRange::add(Self, Self) -> Self
+pub fn StatstestgoodnessRange::copy(Self) -> Self
+pub fn StatstestgoodnessRange::fill(Self, Double) -> Self
+pub fn StatstestgoodnessRange::get(Self, Int32) -> Double
+pub fn StatstestgoodnessRange::len(Self) -> Int32
+pub fn StatstestgoodnessRange::max(Self) -> Double
+pub fn StatstestgoodnessRange::mean(Self) -> Double
+pub fn StatstestgoodnessRange::min(Self) -> Double
+pub fn StatstestgoodnessRange::scale(Self, Double) -> Self
+pub fn StatstestgoodnessRange::set(Self, Int32, Double) -> Self
+pub fn StatstestgoodnessRange::sum(Self) -> Double
+pub fn StatstestgoodnessRange::to_string(Self) -> String
+
+pub(all) struct StatstestgoodnessSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn StatstestgoodnessSeries::add(Self, Self) -> Self
+pub fn StatstestgoodnessSeries::cumsum(Self) -> Self
+pub fn StatstestgoodnessSeries::len(Self) -> Int32
+pub fn StatstestgoodnessSeries::max(Self) -> Double
+pub fn StatstestgoodnessSeries::mean(Self) -> Double
+pub fn StatstestgoodnessSeries::median(Self) -> Double
+pub fn StatstestgoodnessSeries::min(Self) -> Double
+pub fn StatstestgoodnessSeries::normalize(Self) -> Self
+pub fn StatstestgoodnessSeries::range(Self) -> Double
+pub fn StatstestgoodnessSeries::scale(Self, Double) -> Self
+pub fn StatstestgoodnessSeries::std(Self) -> Double
+pub fn StatstestgoodnessSeries::sub(Self, Self) -> Self
+pub fn StatstestgoodnessSeries::sum(Self) -> Double
+pub fn StatstestgoodnessSeries::to_string(Self) -> String
+pub fn StatstestgoodnessSeries::variance(Self) -> Double
+
+pub(all) struct StatstestgoodnessSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestgoodnessSlice::add(Self, Self) -> Self
+pub fn StatstestgoodnessSlice::copy(Self) -> Self
+pub fn StatstestgoodnessSlice::fill(Self, Double) -> Self
+pub fn StatstestgoodnessSlice::get(Self, Int32) -> Double
+pub fn StatstestgoodnessSlice::len(Self) -> Int32
+pub fn StatstestgoodnessSlice::max(Self) -> Double
+pub fn StatstestgoodnessSlice::mean(Self) -> Double
+pub fn StatstestgoodnessSlice::min(Self) -> Double
+pub fn StatstestgoodnessSlice::scale(Self, Double) -> Self
+pub fn StatstestgoodnessSlice::set(Self, Int32, Double) -> Self
+pub fn StatstestgoodnessSlice::sum(Self) -> Double
+pub fn StatstestgoodnessSlice::to_string(Self) -> String
+
+pub(all) struct StatstestgoodnessTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestgoodnessTable::add(Self, Self) -> Self
+pub fn StatstestgoodnessTable::copy(Self) -> Self
+pub fn StatstestgoodnessTable::fill(Self, Double) -> Self
+pub fn StatstestgoodnessTable::get(Self, Int32) -> Double
+pub fn StatstestgoodnessTable::len(Self) -> Int32
+pub fn StatstestgoodnessTable::max(Self) -> Double
+pub fn StatstestgoodnessTable::mean(Self) -> Double
+pub fn StatstestgoodnessTable::min(Self) -> Double
+pub fn StatstestgoodnessTable::scale(Self, Double) -> Self
+pub fn StatstestgoodnessTable::set(Self, Int32, Double) -> Self
+pub fn StatstestgoodnessTable::sum(Self) -> Double
+pub fn StatstestgoodnessTable::to_string(Self) -> String
+
+pub(all) struct StatstestgoodnessVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn StatstestgoodnessVector::add(Self, Self) -> Self
+pub fn StatstestgoodnessVector::dist(Self, Self) -> Double
+pub fn StatstestgoodnessVector::dot(Self, Self) -> Double
+pub fn StatstestgoodnessVector::norm(Self) -> Double
+pub fn StatstestgoodnessVector::normalize(Self) -> Self
+pub fn StatstestgoodnessVector::scale(Self, Double) -> Self
+pub fn StatstestgoodnessVector::sub(Self, Self) -> Self
+pub fn StatstestgoodnessVector::to_string(Self) -> String
+
+pub(all) struct StatstestgoodnessView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatstestgoodnessView::add(Self, Self) -> Self
+pub fn StatstestgoodnessView::copy(Self) -> Self
+pub fn StatstestgoodnessView::fill(Self, Double) -> Self
+pub fn StatstestgoodnessView::get(Self, Int32) -> Double
+pub fn StatstestgoodnessView::len(Self) -> Int32
+pub fn StatstestgoodnessView::max(Self) -> Double
+pub fn StatstestgoodnessView::mean(Self) -> Double
+pub fn StatstestgoodnessView::min(Self) -> Double
+pub fn StatstestgoodnessView::scale(Self, Double) -> Self
+pub fn StatstestgoodnessView::set(Self, Int32, Double) -> Self
+pub fn StatstestgoodnessView::sum(Self) -> Double
+pub fn StatstestgoodnessView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

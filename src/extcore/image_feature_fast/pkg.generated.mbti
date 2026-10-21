@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_feature_fast"
+
+// Values
+pub fn image_feature_fast_buffer_make(Int32) -> ImagefeaturefastBuffer
+
+pub fn image_feature_fast_cluster_make(Int32) -> ImagefeaturefastCluster
+
+pub fn image_feature_fast_cursor_make(Int32) -> ImagefeaturefastCursor
+
+pub fn image_feature_fast_edge_make(Int32) -> ImagefeaturefastEdge
+
+pub fn image_feature_fast_frame_make(Int32) -> ImagefeaturefastFrame
+
+pub fn image_feature_fast_graphn_make(Int32) -> ImagefeaturefastGraphN
+
+pub fn image_feature_fast_layer_make(Int32) -> ImagefeaturefastLayer
+
+pub fn image_feature_fast_make_matrix(Int32, Int32, Double) -> ImagefeaturefastMatrix
+
+pub fn image_feature_fast_make_point(Double, Double) -> ImagefeaturefastPoint
+
+pub fn image_feature_fast_make_point3(Double, Double, Double) -> ImagefeaturefastPoint
+
+pub fn image_feature_fast_make_series(Array[Double], String) -> ImagefeaturefastSeries
+
+pub fn image_feature_fast_make_vector(Array[Double]) -> ImagefeaturefastVector
+
+pub fn image_feature_fast_matrix_identity(Int32) -> ImagefeaturefastMatrix
+
+pub fn image_feature_fast_model_make(Int32) -> ImagefeaturefastModel
+
+pub fn image_feature_fast_node_make(Int32) -> ImagefeaturefastNode
+
+pub fn image_feature_fast_path_make(Int32) -> ImagefeaturefastPath
+
+pub fn image_feature_fast_range_make(Int32) -> ImagefeaturefastRange
+
+pub fn image_feature_fast_slice_make(Int32) -> ImagefeaturefastSlice
+
+pub fn image_feature_fast_table_make(Int32) -> ImagefeaturefastTable
+
+pub fn image_feature_fast_vector_zero(Int32) -> ImagefeaturefastVector
+
+pub fn image_feature_fast_view_make(Int32) -> ImagefeaturefastView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagefeaturefastBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturefastBuffer::add(Self, Self) -> Self
+pub fn ImagefeaturefastBuffer::copy(Self) -> Self
+pub fn ImagefeaturefastBuffer::fill(Self, Double) -> Self
+pub fn ImagefeaturefastBuffer::get(Self, Int32) -> Double
+pub fn ImagefeaturefastBuffer::len(Self) -> Int32
+pub fn ImagefeaturefastBuffer::max(Self) -> Double
+pub fn ImagefeaturefastBuffer::mean(Self) -> Double
+pub fn ImagefeaturefastBuffer::min(Self) -> Double
+pub fn ImagefeaturefastBuffer::scale(Self, Double) -> Self
+pub fn ImagefeaturefastBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturefastBuffer::sum(Self) -> Double
+pub fn ImagefeaturefastBuffer::to_string(Self) -> String
+
+pub(all) struct ImagefeaturefastCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturefastCluster::add(Self, Self) -> Self
+pub fn ImagefeaturefastCluster::copy(Self) -> Self
+pub fn ImagefeaturefastCluster::fill(Self, Double) -> Self
+pub fn ImagefeaturefastCluster::get(Self, Int32) -> Double
+pub fn ImagefeaturefastCluster::len(Self) -> Int32
+pub fn ImagefeaturefastCluster::max(Self) -> Double
+pub fn ImagefeaturefastCluster::mean(Self) -> Double
+pub fn ImagefeaturefastCluster::min(Self) -> Double
+pub fn ImagefeaturefastCluster::scale(Self, Double) -> Self
+pub fn ImagefeaturefastCluster::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturefastCluster::sum(Self) -> Double
+pub fn ImagefeaturefastCluster::to_string(Self) -> String
+
+pub(all) struct ImagefeaturefastCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturefastCursor::add(Self, Self) -> Self
+pub fn ImagefeaturefastCursor::copy(Self) -> Self
+pub fn ImagefeaturefastCursor::fill(Self, Double) -> Self
+pub fn ImagefeaturefastCursor::get(Self, Int32) -> Double
+pub fn ImagefeaturefastCursor::len(Self) -> Int32
+pub fn ImagefeaturefastCursor::max(Self) -> Double
+pub fn ImagefeaturefastCursor::mean(Self) -> Double
+pub fn ImagefeaturefastCursor::min(Self) -> Double
+pub fn ImagefeaturefastCursor::scale(Self, Double) -> Self
+pub fn ImagefeaturefastCursor::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturefastCursor::sum(Self) -> Double
+pub fn ImagefeaturefastCursor::to_string(Self) -> String
+
+pub(all) struct ImagefeaturefastEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturefastEdge::add(Self, Self) -> Self
+pub fn ImagefeaturefastEdge::copy(Self) -> Self
+pub fn ImagefeaturefastEdge::fill(Self, Double) -> Self
+pub fn ImagefeaturefastEdge::get(Self, Int32) -> Double
+pub fn ImagefeaturefastEdge::len(Self) -> Int32
+pub fn ImagefeaturefastEdge::max(Self) -> Double
+pub fn ImagefeaturefastEdge::mean(Self) -> Double
+pub fn ImagefeaturefastEdge::min(Self) -> Double
+pub fn ImagefeaturefastEdge::scale(Self, Double) -> Self
+pub fn ImagefeaturefastEdge::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturefastEdge::sum(Self) -> Double
+pub fn ImagefeaturefastEdge::to_string(Self) -> String
+
+pub(all) struct ImagefeaturefastFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturefastFrame::add(Self, Self) -> Self
+pub fn ImagefeaturefastFrame::copy(Self) -> Self
+pub fn ImagefeaturefastFrame::fill(Self, Double) -> Self
+pub fn ImagefeaturefastFrame::get(Self, Int32) -> Double
+pub fn ImagefeaturefastFrame::len(Self) -> Int32
+pub fn ImagefeaturefastFrame::max(Self) -> Double
+pub fn ImagefeaturefastFrame::mean(Self) -> Double
+pub fn ImagefeaturefastFrame::min(Self) -> Double
+pub fn ImagefeaturefastFrame::scale(Self, Double) -> Self
+pub fn ImagefeaturefastFrame::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturefastFrame::sum(Self) -> Double
+pub fn ImagefeaturefastFrame::to_string(Self) -> String
+
+pub(all) struct ImagefeaturefastGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturefastGraphN::add(Self, Self) -> Self
+pub fn ImagefeaturefastGraphN::copy(Self) -> Self
+pub fn ImagefeaturefastGraphN::fill(Self, Double) -> Self
+pub fn ImagefeaturefastGraphN::get(Self, Int32) -> Double
+pub fn ImagefeaturefastGraphN::len(Self) -> Int32
+pub fn ImagefeaturefastGraphN::max(Self) -> Double
+pub fn ImagefeaturefastGraphN::mean(Self) -> Double
+pub fn ImagefeaturefastGraphN::min(Self) -> Double
+pub fn ImagefeaturefastGraphN::scale(Self, Double) -> Self
+pub fn ImagefeaturefastGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturefastGraphN::sum(Self) -> Double
+pub fn ImagefeaturefastGraphN::to_string(Self) -> String
+
+pub(all) struct ImagefeaturefastLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturefastLayer::add(Self, Self) -> Self
+pub fn ImagefeaturefastLayer::copy(Self) -> Self
+pub fn ImagefeaturefastLayer::fill(Self, Double) -> Self
+pub fn ImagefeaturefastLayer::get(Self, Int32) -> Double
+pub fn ImagefeaturefastLayer::len(Self) -> Int32
+pub fn ImagefeaturefastLayer::max(Self) -> Double
+pub fn ImagefeaturefastLayer::mean(Self) -> Double
+pub fn ImagefeaturefastLayer::min(Self) -> Double
+pub fn ImagefeaturefastLayer::scale(Self, Double) -> Self
+pub fn ImagefeaturefastLayer::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturefastLayer::sum(Self) -> Double
+pub fn ImagefeaturefastLayer::to_string(Self) -> String
+
+pub(all) struct ImagefeaturefastMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagefeaturefastMatrix::add(Self, Self) -> Self
+pub fn ImagefeaturefastMatrix::det(Self) -> Double
+pub fn ImagefeaturefastMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagefeaturefastMatrix::multiply(Self, Self) -> Self
+pub fn ImagefeaturefastMatrix::norm(Self) -> Double
+pub fn ImagefeaturefastMatrix::scale(Self, Double) -> Self
+pub fn ImagefeaturefastMatrix::to_string(Self) -> String
+pub fn ImagefeaturefastMatrix::trace(Self) -> Double
+pub fn ImagefeaturefastMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagefeaturefastModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturefastModel::add(Self, Self) -> Self
+pub fn ImagefeaturefastModel::copy(Self) -> Self
+pub fn ImagefeaturefastModel::fill(Self, Double) -> Self
+pub fn ImagefeaturefastModel::get(Self, Int32) -> Double
+pub fn ImagefeaturefastModel::len(Self) -> Int32
+pub fn ImagefeaturefastModel::max(Self) -> Double
+pub fn ImagefeaturefastModel::mean(Self) -> Double
+pub fn ImagefeaturefastModel::min(Self) -> Double
+pub fn ImagefeaturefastModel::scale(Self, Double) -> Self
+pub fn ImagefeaturefastModel::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturefastModel::sum(Self) -> Double
+pub fn ImagefeaturefastModel::to_string(Self) -> String
+
+pub(all) struct ImagefeaturefastNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturefastNode::add(Self, Self) -> Self
+pub fn ImagefeaturefastNode::copy(Self) -> Self
+pub fn ImagefeaturefastNode::fill(Self, Double) -> Self
+pub fn ImagefeaturefastNode::get(Self, Int32) -> Double
+pub fn ImagefeaturefastNode::len(Self) -> Int32
+pub fn ImagefeaturefastNode::max(Self) -> Double
+pub fn ImagefeaturefastNode::mean(Self) -> Double
+pub fn ImagefeaturefastNode::min(Self) -> Double
+pub fn ImagefeaturefastNode::scale(Self, Double) -> Self
+pub fn ImagefeaturefastNode::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturefastNode::sum(Self) -> Double
+pub fn ImagefeaturefastNode::to_string(Self) -> String
+
+pub(all) struct ImagefeaturefastPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturefastPath::add(Self, Self) -> Self
+pub fn ImagefeaturefastPath::copy(Self) -> Self
+pub fn ImagefeaturefastPath::fill(Self, Double) -> Self
+pub fn ImagefeaturefastPath::get(Self, Int32) -> Double
+pub fn ImagefeaturefastPath::len(Self) -> Int32
+pub fn ImagefeaturefastPath::max(Self) -> Double
+pub fn ImagefeaturefastPath::mean(Self) -> Double
+pub fn ImagefeaturefastPath::min(Self) -> Double
+pub fn ImagefeaturefastPath::scale(Self, Double) -> Self
+pub fn ImagefeaturefastPath::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturefastPath::sum(Self) -> Double
+pub fn ImagefeaturefastPath::to_string(Self) -> String
+
+pub(all) struct ImagefeaturefastPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagefeaturefastPoint::add(Self, Self) -> Self
+pub fn ImagefeaturefastPoint::cross(Self, Self) -> Self
+pub fn ImagefeaturefastPoint::dist(Self, Self) -> Double
+pub fn ImagefeaturefastPoint::dot(Self, Self) -> Double
+pub fn ImagefeaturefastPoint::label(Self) -> Int32
+pub fn ImagefeaturefastPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagefeaturefastPoint::mid(Self, Self) -> Self
+pub fn ImagefeaturefastPoint::negate(Self) -> Self
+pub fn ImagefeaturefastPoint::norm(Self) -> Double
+pub fn ImagefeaturefastPoint::normalize(Self) -> Self
+pub fn ImagefeaturefastPoint::scale(Self, Double) -> Self
+pub fn ImagefeaturefastPoint::sub(Self, Self) -> Self
+pub fn ImagefeaturefastPoint::to_string(Self) -> String
+pub fn ImagefeaturefastPoint::x(Self) -> Double
+pub fn ImagefeaturefastPoint::y(Self) -> Double
+pub fn ImagefeaturefastPoint::z(Self) -> Double
+
+pub(all) struct ImagefeaturefastRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturefastRange::add(Self, Self) -> Self
+pub fn ImagefeaturefastRange::copy(Self) -> Self
+pub fn ImagefeaturefastRange::fill(Self, Double) -> Self
+pub fn ImagefeaturefastRange::get(Self, Int32) -> Double
+pub fn ImagefeaturefastRange::len(Self) -> Int32
+pub fn ImagefeaturefastRange::max(Self) -> Double
+pub fn ImagefeaturefastRange::mean(Self) -> Double
+pub fn ImagefeaturefastRange::min(Self) -> Double
+pub fn ImagefeaturefastRange::scale(Self, Double) -> Self
+pub fn ImagefeaturefastRange::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturefastRange::sum(Self) -> Double
+pub fn ImagefeaturefastRange::to_string(Self) -> String
+
+pub(all) struct ImagefeaturefastSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagefeaturefastSeries::add(Self, Self) -> Self
+pub fn ImagefeaturefastSeries::cumsum(Self) -> Self
+pub fn ImagefeaturefastSeries::len(Self) -> Int32
+pub fn ImagefeaturefastSeries::max(Self) -> Double
+pub fn ImagefeaturefastSeries::mean(Self) -> Double
+pub fn ImagefeaturefastSeries::median(Self) -> Double
+pub fn ImagefeaturefastSeries::min(Self) -> Double
+pub fn ImagefeaturefastSeries::normalize(Self) -> Self
+pub fn ImagefeaturefastSeries::range(Self) -> Double
+pub fn ImagefeaturefastSeries::scale(Self, Double) -> Self
+pub fn ImagefeaturefastSeries::std(Self) -> Double
+pub fn ImagefeaturefastSeries::sub(Self, Self) -> Self
+pub fn ImagefeaturefastSeries::sum(Self) -> Double
+pub fn ImagefeaturefastSeries::to_string(Self) -> String
+pub fn ImagefeaturefastSeries::variance(Self) -> Double
+
+pub(all) struct ImagefeaturefastSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturefastSlice::add(Self, Self) -> Self
+pub fn ImagefeaturefastSlice::copy(Self) -> Self
+pub fn ImagefeaturefastSlice::fill(Self, Double) -> Self
+pub fn ImagefeaturefastSlice::get(Self, Int32) -> Double
+pub fn ImagefeaturefastSlice::len(Self) -> Int32
+pub fn ImagefeaturefastSlice::max(Self) -> Double
+pub fn ImagefeaturefastSlice::mean(Self) -> Double
+pub fn ImagefeaturefastSlice::min(Self) -> Double
+pub fn ImagefeaturefastSlice::scale(Self, Double) -> Self
+pub fn ImagefeaturefastSlice::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturefastSlice::sum(Self) -> Double
+pub fn ImagefeaturefastSlice::to_string(Self) -> String
+
+pub(all) struct ImagefeaturefastTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturefastTable::add(Self, Self) -> Self
+pub fn ImagefeaturefastTable::copy(Self) -> Self
+pub fn ImagefeaturefastTable::fill(Self, Double) -> Self
+pub fn ImagefeaturefastTable::get(Self, Int32) -> Double
+pub fn ImagefeaturefastTable::len(Self) -> Int32
+pub fn ImagefeaturefastTable::max(Self) -> Double
+pub fn ImagefeaturefastTable::mean(Self) -> Double
+pub fn ImagefeaturefastTable::min(Self) -> Double
+pub fn ImagefeaturefastTable::scale(Self, Double) -> Self
+pub fn ImagefeaturefastTable::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturefastTable::sum(Self) -> Double
+pub fn ImagefeaturefastTable::to_string(Self) -> String
+
+pub(all) struct ImagefeaturefastVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagefeaturefastVector::add(Self, Self) -> Self
+pub fn ImagefeaturefastVector::dist(Self, Self) -> Double
+pub fn ImagefeaturefastVector::dot(Self, Self) -> Double
+pub fn ImagefeaturefastVector::norm(Self) -> Double
+pub fn ImagefeaturefastVector::normalize(Self) -> Self
+pub fn ImagefeaturefastVector::scale(Self, Double) -> Self
+pub fn ImagefeaturefastVector::sub(Self, Self) -> Self
+pub fn ImagefeaturefastVector::to_string(Self) -> String
+
+pub(all) struct ImagefeaturefastView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefeaturefastView::add(Self, Self) -> Self
+pub fn ImagefeaturefastView::copy(Self) -> Self
+pub fn ImagefeaturefastView::fill(Self, Double) -> Self
+pub fn ImagefeaturefastView::get(Self, Int32) -> Double
+pub fn ImagefeaturefastView::len(Self) -> Int32
+pub fn ImagefeaturefastView::max(Self) -> Double
+pub fn ImagefeaturefastView::mean(Self) -> Double
+pub fn ImagefeaturefastView::min(Self) -> Double
+pub fn ImagefeaturefastView::scale(Self, Double) -> Self
+pub fn ImagefeaturefastView::set(Self, Int32, Double) -> Self
+pub fn ImagefeaturefastView::sum(Self) -> Double
+pub fn ImagefeaturefastView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_parse_early"
+
+// Values
+pub fn nlp_parse_early_buffer_make(Int32) -> NlpparseearlyBuffer
+
+pub fn nlp_parse_early_cluster_make(Int32) -> NlpparseearlyCluster
+
+pub fn nlp_parse_early_cursor_make(Int32) -> NlpparseearlyCursor
+
+pub fn nlp_parse_early_edge_make(Int32) -> NlpparseearlyEdge
+
+pub fn nlp_parse_early_frame_make(Int32) -> NlpparseearlyFrame
+
+pub fn nlp_parse_early_graphn_make(Int32) -> NlpparseearlyGraphN
+
+pub fn nlp_parse_early_layer_make(Int32) -> NlpparseearlyLayer
+
+pub fn nlp_parse_early_make_matrix(Int32, Int32, Double) -> NlpparseearlyMatrix
+
+pub fn nlp_parse_early_make_point(Double, Double) -> NlpparseearlyPoint
+
+pub fn nlp_parse_early_make_point3(Double, Double, Double) -> NlpparseearlyPoint
+
+pub fn nlp_parse_early_make_series(Array[Double], String) -> NlpparseearlySeries
+
+pub fn nlp_parse_early_make_vector(Array[Double]) -> NlpparseearlyVector
+
+pub fn nlp_parse_early_matrix_identity(Int32) -> NlpparseearlyMatrix
+
+pub fn nlp_parse_early_model_make(Int32) -> NlpparseearlyModel
+
+pub fn nlp_parse_early_node_make(Int32) -> NlpparseearlyNode
+
+pub fn nlp_parse_early_path_make(Int32) -> NlpparseearlyPath
+
+pub fn nlp_parse_early_range_make(Int32) -> NlpparseearlyRange
+
+pub fn nlp_parse_early_slice_make(Int32) -> NlpparseearlySlice
+
+pub fn nlp_parse_early_table_make(Int32) -> NlpparseearlyTable
+
+pub fn nlp_parse_early_vector_zero(Int32) -> NlpparseearlyVector
+
+pub fn nlp_parse_early_view_make(Int32) -> NlpparseearlyView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlpparseearlyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseearlyBuffer::add(Self, Self) -> Self
+pub fn NlpparseearlyBuffer::copy(Self) -> Self
+pub fn NlpparseearlyBuffer::fill(Self, Double) -> Self
+pub fn NlpparseearlyBuffer::get(Self, Int32) -> Double
+pub fn NlpparseearlyBuffer::len(Self) -> Int32
+pub fn NlpparseearlyBuffer::max(Self) -> Double
+pub fn NlpparseearlyBuffer::mean(Self) -> Double
+pub fn NlpparseearlyBuffer::min(Self) -> Double
+pub fn NlpparseearlyBuffer::scale(Self, Double) -> Self
+pub fn NlpparseearlyBuffer::set(Self, Int32, Double) -> Self
+pub fn NlpparseearlyBuffer::sum(Self) -> Double
+pub fn NlpparseearlyBuffer::to_string(Self) -> String
+
+pub(all) struct NlpparseearlyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseearlyCluster::add(Self, Self) -> Self
+pub fn NlpparseearlyCluster::copy(Self) -> Self
+pub fn NlpparseearlyCluster::fill(Self, Double) -> Self
+pub fn NlpparseearlyCluster::get(Self, Int32) -> Double
+pub fn NlpparseearlyCluster::len(Self) -> Int32
+pub fn NlpparseearlyCluster::max(Self) -> Double
+pub fn NlpparseearlyCluster::mean(Self) -> Double
+pub fn NlpparseearlyCluster::min(Self) -> Double
+pub fn NlpparseearlyCluster::scale(Self, Double) -> Self
+pub fn NlpparseearlyCluster::set(Self, Int32, Double) -> Self
+pub fn NlpparseearlyCluster::sum(Self) -> Double
+pub fn NlpparseearlyCluster::to_string(Self) -> String
+
+pub(all) struct NlpparseearlyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseearlyCursor::add(Self, Self) -> Self
+pub fn NlpparseearlyCursor::copy(Self) -> Self
+pub fn NlpparseearlyCursor::fill(Self, Double) -> Self
+pub fn NlpparseearlyCursor::get(Self, Int32) -> Double
+pub fn NlpparseearlyCursor::len(Self) -> Int32
+pub fn NlpparseearlyCursor::max(Self) -> Double
+pub fn NlpparseearlyCursor::mean(Self) -> Double
+pub fn NlpparseearlyCursor::min(Self) -> Double
+pub fn NlpparseearlyCursor::scale(Self, Double) -> Self
+pub fn NlpparseearlyCursor::set(Self, Int32, Double) -> Self
+pub fn NlpparseearlyCursor::sum(Self) -> Double
+pub fn NlpparseearlyCursor::to_string(Self) -> String
+
+pub(all) struct NlpparseearlyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseearlyEdge::add(Self, Self) -> Self
+pub fn NlpparseearlyEdge::copy(Self) -> Self
+pub fn NlpparseearlyEdge::fill(Self, Double) -> Self
+pub fn NlpparseearlyEdge::get(Self, Int32) -> Double
+pub fn NlpparseearlyEdge::len(Self) -> Int32
+pub fn NlpparseearlyEdge::max(Self) -> Double
+pub fn NlpparseearlyEdge::mean(Self) -> Double
+pub fn NlpparseearlyEdge::min(Self) -> Double
+pub fn NlpparseearlyEdge::scale(Self, Double) -> Self
+pub fn NlpparseearlyEdge::set(Self, Int32, Double) -> Self
+pub fn NlpparseearlyEdge::sum(Self) -> Double
+pub fn NlpparseearlyEdge::to_string(Self) -> String
+
+pub(all) struct NlpparseearlyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseearlyFrame::add(Self, Self) -> Self
+pub fn NlpparseearlyFrame::copy(Self) -> Self
+pub fn NlpparseearlyFrame::fill(Self, Double) -> Self
+pub fn NlpparseearlyFrame::get(Self, Int32) -> Double
+pub fn NlpparseearlyFrame::len(Self) -> Int32
+pub fn NlpparseearlyFrame::max(Self) -> Double
+pub fn NlpparseearlyFrame::mean(Self) -> Double
+pub fn NlpparseearlyFrame::min(Self) -> Double
+pub fn NlpparseearlyFrame::scale(Self, Double) -> Self
+pub fn NlpparseearlyFrame::set(Self, Int32, Double) -> Self
+pub fn NlpparseearlyFrame::sum(Self) -> Double
+pub fn NlpparseearlyFrame::to_string(Self) -> String
+
+pub(all) struct NlpparseearlyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseearlyGraphN::add(Self, Self) -> Self
+pub fn NlpparseearlyGraphN::copy(Self) -> Self
+pub fn NlpparseearlyGraphN::fill(Self, Double) -> Self
+pub fn NlpparseearlyGraphN::get(Self, Int32) -> Double
+pub fn NlpparseearlyGraphN::len(Self) -> Int32
+pub fn NlpparseearlyGraphN::max(Self) -> Double
+pub fn NlpparseearlyGraphN::mean(Self) -> Double
+pub fn NlpparseearlyGraphN::min(Self) -> Double
+pub fn NlpparseearlyGraphN::scale(Self, Double) -> Self
+pub fn NlpparseearlyGraphN::set(Self, Int32, Double) -> Self
+pub fn NlpparseearlyGraphN::sum(Self) -> Double
+pub fn NlpparseearlyGraphN::to_string(Self) -> String
+
+pub(all) struct NlpparseearlyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseearlyLayer::add(Self, Self) -> Self
+pub fn NlpparseearlyLayer::copy(Self) -> Self
+pub fn NlpparseearlyLayer::fill(Self, Double) -> Self
+pub fn NlpparseearlyLayer::get(Self, Int32) -> Double
+pub fn NlpparseearlyLayer::len(Self) -> Int32
+pub fn NlpparseearlyLayer::max(Self) -> Double
+pub fn NlpparseearlyLayer::mean(Self) -> Double
+pub fn NlpparseearlyLayer::min(Self) -> Double
+pub fn NlpparseearlyLayer::scale(Self, Double) -> Self
+pub fn NlpparseearlyLayer::set(Self, Int32, Double) -> Self
+pub fn NlpparseearlyLayer::sum(Self) -> Double
+pub fn NlpparseearlyLayer::to_string(Self) -> String
+
+pub(all) struct NlpparseearlyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlpparseearlyMatrix::add(Self, Self) -> Self
+pub fn NlpparseearlyMatrix::det(Self) -> Double
+pub fn NlpparseearlyMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlpparseearlyMatrix::multiply(Self, Self) -> Self
+pub fn NlpparseearlyMatrix::norm(Self) -> Double
+pub fn NlpparseearlyMatrix::scale(Self, Double) -> Self
+pub fn NlpparseearlyMatrix::to_string(Self) -> String
+pub fn NlpparseearlyMatrix::trace(Self) -> Double
+pub fn NlpparseearlyMatrix::transpose(Self) -> Self
+
+pub(all) struct NlpparseearlyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseearlyModel::add(Self, Self) -> Self
+pub fn NlpparseearlyModel::copy(Self) -> Self
+pub fn NlpparseearlyModel::fill(Self, Double) -> Self
+pub fn NlpparseearlyModel::get(Self, Int32) -> Double
+pub fn NlpparseearlyModel::len(Self) -> Int32
+pub fn NlpparseearlyModel::max(Self) -> Double
+pub fn NlpparseearlyModel::mean(Self) -> Double
+pub fn NlpparseearlyModel::min(Self) -> Double
+pub fn NlpparseearlyModel::scale(Self, Double) -> Self
+pub fn NlpparseearlyModel::set(Self, Int32, Double) -> Self
+pub fn NlpparseearlyModel::sum(Self) -> Double
+pub fn NlpparseearlyModel::to_string(Self) -> String
+
+pub(all) struct NlpparseearlyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseearlyNode::add(Self, Self) -> Self
+pub fn NlpparseearlyNode::copy(Self) -> Self
+pub fn NlpparseearlyNode::fill(Self, Double) -> Self
+pub fn NlpparseearlyNode::get(Self, Int32) -> Double
+pub fn NlpparseearlyNode::len(Self) -> Int32
+pub fn NlpparseearlyNode::max(Self) -> Double
+pub fn NlpparseearlyNode::mean(Self) -> Double
+pub fn NlpparseearlyNode::min(Self) -> Double
+pub fn NlpparseearlyNode::scale(Self, Double) -> Self
+pub fn NlpparseearlyNode::set(Self, Int32, Double) -> Self
+pub fn NlpparseearlyNode::sum(Self) -> Double
+pub fn NlpparseearlyNode::to_string(Self) -> String
+
+pub(all) struct NlpparseearlyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseearlyPath::add(Self, Self) -> Self
+pub fn NlpparseearlyPath::copy(Self) -> Self
+pub fn NlpparseearlyPath::fill(Self, Double) -> Self
+pub fn NlpparseearlyPath::get(Self, Int32) -> Double
+pub fn NlpparseearlyPath::len(Self) -> Int32
+pub fn NlpparseearlyPath::max(Self) -> Double
+pub fn NlpparseearlyPath::mean(Self) -> Double
+pub fn NlpparseearlyPath::min(Self) -> Double
+pub fn NlpparseearlyPath::scale(Self, Double) -> Self
+pub fn NlpparseearlyPath::set(Self, Int32, Double) -> Self
+pub fn NlpparseearlyPath::sum(Self) -> Double
+pub fn NlpparseearlyPath::to_string(Self) -> String
+
+pub(all) struct NlpparseearlyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlpparseearlyPoint::add(Self, Self) -> Self
+pub fn NlpparseearlyPoint::cross(Self, Self) -> Self
+pub fn NlpparseearlyPoint::dist(Self, Self) -> Double
+pub fn NlpparseearlyPoint::dot(Self, Self) -> Double
+pub fn NlpparseearlyPoint::label(Self) -> Int32
+pub fn NlpparseearlyPoint::lerp(Self, Self, Double) -> Self
+pub fn NlpparseearlyPoint::mid(Self, Self) -> Self
+pub fn NlpparseearlyPoint::negate(Self) -> Self
+pub fn NlpparseearlyPoint::norm(Self) -> Double
+pub fn NlpparseearlyPoint::normalize(Self) -> Self
+pub fn NlpparseearlyPoint::scale(Self, Double) -> Self
+pub fn NlpparseearlyPoint::sub(Self, Self) -> Self
+pub fn NlpparseearlyPoint::to_string(Self) -> String
+pub fn NlpparseearlyPoint::x(Self) -> Double
+pub fn NlpparseearlyPoint::y(Self) -> Double
+pub fn NlpparseearlyPoint::z(Self) -> Double
+
+pub(all) struct NlpparseearlyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseearlyRange::add(Self, Self) -> Self
+pub fn NlpparseearlyRange::copy(Self) -> Self
+pub fn NlpparseearlyRange::fill(Self, Double) -> Self
+pub fn NlpparseearlyRange::get(Self, Int32) -> Double
+pub fn NlpparseearlyRange::len(Self) -> Int32
+pub fn NlpparseearlyRange::max(Self) -> Double
+pub fn NlpparseearlyRange::mean(Self) -> Double
+pub fn NlpparseearlyRange::min(Self) -> Double
+pub fn NlpparseearlyRange::scale(Self, Double) -> Self
+pub fn NlpparseearlyRange::set(Self, Int32, Double) -> Self
+pub fn NlpparseearlyRange::sum(Self) -> Double
+pub fn NlpparseearlyRange::to_string(Self) -> String
+
+pub(all) struct NlpparseearlySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlpparseearlySeries::add(Self, Self) -> Self
+pub fn NlpparseearlySeries::cumsum(Self) -> Self
+pub fn NlpparseearlySeries::len(Self) -> Int32
+pub fn NlpparseearlySeries::max(Self) -> Double
+pub fn NlpparseearlySeries::mean(Self) -> Double
+pub fn NlpparseearlySeries::median(Self) -> Double
+pub fn NlpparseearlySeries::min(Self) -> Double
+pub fn NlpparseearlySeries::normalize(Self) -> Self
+pub fn NlpparseearlySeries::range(Self) -> Double
+pub fn NlpparseearlySeries::scale(Self, Double) -> Self
+pub fn NlpparseearlySeries::std(Self) -> Double
+pub fn NlpparseearlySeries::sub(Self, Self) -> Self
+pub fn NlpparseearlySeries::sum(Self) -> Double
+pub fn NlpparseearlySeries::to_string(Self) -> String
+pub fn NlpparseearlySeries::variance(Self) -> Double
+
+pub(all) struct NlpparseearlySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseearlySlice::add(Self, Self) -> Self
+pub fn NlpparseearlySlice::copy(Self) -> Self
+pub fn NlpparseearlySlice::fill(Self, Double) -> Self
+pub fn NlpparseearlySlice::get(Self, Int32) -> Double
+pub fn NlpparseearlySlice::len(Self) -> Int32
+pub fn NlpparseearlySlice::max(Self) -> Double
+pub fn NlpparseearlySlice::mean(Self) -> Double
+pub fn NlpparseearlySlice::min(Self) -> Double
+pub fn NlpparseearlySlice::scale(Self, Double) -> Self
+pub fn NlpparseearlySlice::set(Self, Int32, Double) -> Self
+pub fn NlpparseearlySlice::sum(Self) -> Double
+pub fn NlpparseearlySlice::to_string(Self) -> String
+
+pub(all) struct NlpparseearlyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseearlyTable::add(Self, Self) -> Self
+pub fn NlpparseearlyTable::copy(Self) -> Self
+pub fn NlpparseearlyTable::fill(Self, Double) -> Self
+pub fn NlpparseearlyTable::get(Self, Int32) -> Double
+pub fn NlpparseearlyTable::len(Self) -> Int32
+pub fn NlpparseearlyTable::max(Self) -> Double
+pub fn NlpparseearlyTable::mean(Self) -> Double
+pub fn NlpparseearlyTable::min(Self) -> Double
+pub fn NlpparseearlyTable::scale(Self, Double) -> Self
+pub fn NlpparseearlyTable::set(Self, Int32, Double) -> Self
+pub fn NlpparseearlyTable::sum(Self) -> Double
+pub fn NlpparseearlyTable::to_string(Self) -> String
+
+pub(all) struct NlpparseearlyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlpparseearlyVector::add(Self, Self) -> Self
+pub fn NlpparseearlyVector::dist(Self, Self) -> Double
+pub fn NlpparseearlyVector::dot(Self, Self) -> Double
+pub fn NlpparseearlyVector::norm(Self) -> Double
+pub fn NlpparseearlyVector::normalize(Self) -> Self
+pub fn NlpparseearlyVector::scale(Self, Double) -> Self
+pub fn NlpparseearlyVector::sub(Self, Self) -> Self
+pub fn NlpparseearlyVector::to_string(Self) -> String
+
+pub(all) struct NlpparseearlyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlpparseearlyView::add(Self, Self) -> Self
+pub fn NlpparseearlyView::copy(Self) -> Self
+pub fn NlpparseearlyView::fill(Self, Double) -> Self
+pub fn NlpparseearlyView::get(Self, Int32) -> Double
+pub fn NlpparseearlyView::len(Self) -> Int32
+pub fn NlpparseearlyView::max(Self) -> Double
+pub fn NlpparseearlyView::mean(Self) -> Double
+pub fn NlpparseearlyView::min(Self) -> Double
+pub fn NlpparseearlyView::scale(Self, Double) -> Self
+pub fn NlpparseearlyView::set(Self, Int32, Double) -> Self
+pub fn NlpparseearlyView::sum(Self) -> Double
+pub fn NlpparseearlyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

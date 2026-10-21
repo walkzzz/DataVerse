@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/seq_analysis"
+
+// Values
+pub fn seq_analysis_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn seq_analysis_corr(Array[Double], Array[Double]) -> Double
+
+pub fn seq_analysis_cov(Array[Double], Array[Double]) -> Double
+
+pub fn seq_analysis_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn seq_analysis_mae(Array[Double], Array[Double]) -> Double
+
+pub fn seq_analysis_make_labeled_point(Double, Double, Int32) -> Seq_analysisPoint
+
+pub fn seq_analysis_make_matrix(Int32, Int32, Double) -> Seq_analysisMatrix
+
+pub fn seq_analysis_make_point(Double, Double) -> Seq_analysisPoint
+
+pub fn seq_analysis_make_series(Array[Double], String) -> Seq_analysisSeries
+
+pub fn seq_analysis_make_vector(Array[Double]) -> Seq_analysisVector
+
+pub fn seq_analysis_matrix_add(Seq_analysisMatrix, Seq_analysisMatrix) -> Seq_analysisMatrix
+
+pub fn seq_analysis_matrix_get(Seq_analysisMatrix, Int32, Int32) -> Double
+
+pub fn seq_analysis_matrix_identity(Int32) -> Seq_analysisMatrix
+
+pub fn seq_analysis_matrix_multiply(Seq_analysisMatrix, Seq_analysisMatrix) -> Seq_analysisMatrix
+
+pub fn seq_analysis_matrix_norm(Seq_analysisMatrix) -> Double
+
+pub fn seq_analysis_matrix_scale(Seq_analysisMatrix, Double) -> Seq_analysisMatrix
+
+pub fn seq_analysis_matrix_to_string(Seq_analysisMatrix) -> String
+
+pub fn seq_analysis_matrix_trace(Seq_analysisMatrix) -> Double
+
+pub fn seq_analysis_matrix_transpose(Seq_analysisMatrix) -> Seq_analysisMatrix
+
+pub fn seq_analysis_mse(Array[Double], Array[Double]) -> Double
+
+pub fn seq_analysis_point_add(Seq_analysisPoint, Seq_analysisPoint) -> Seq_analysisPoint
+
+pub fn seq_analysis_point_dist(Seq_analysisPoint, Seq_analysisPoint) -> Double
+
+pub fn seq_analysis_point_dot(Seq_analysisPoint, Seq_analysisPoint) -> Double
+
+pub fn seq_analysis_point_label(Seq_analysisPoint) -> Int32
+
+pub fn seq_analysis_point_norm(Seq_analysisPoint) -> Double
+
+pub fn seq_analysis_point_scale(Seq_analysisPoint, Double) -> Seq_analysisPoint
+
+pub fn seq_analysis_point_sub(Seq_analysisPoint, Seq_analysisPoint) -> Seq_analysisPoint
+
+pub fn seq_analysis_point_to_string(Seq_analysisPoint) -> String
+
+pub fn seq_analysis_point_x(Seq_analysisPoint) -> Double
+
+pub fn seq_analysis_point_y(Seq_analysisPoint) -> Double
+
+pub fn seq_analysis_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn seq_analysis_r2(Array[Double], Array[Double]) -> Double
+
+pub fn seq_analysis_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn seq_analysis_series_add(Seq_analysisSeries, Seq_analysisSeries) -> Seq_analysisSeries
+
+pub fn seq_analysis_series_len(Seq_analysisSeries) -> Int32
+
+pub fn seq_analysis_series_max(Seq_analysisSeries) -> Double
+
+pub fn seq_analysis_series_mean(Seq_analysisSeries) -> Double
+
+pub fn seq_analysis_series_min(Seq_analysisSeries) -> Double
+
+pub fn seq_analysis_series_scale(Seq_analysisSeries, Double) -> Seq_analysisSeries
+
+pub fn seq_analysis_series_std(Seq_analysisSeries) -> Double
+
+pub fn seq_analysis_series_sum(Seq_analysisSeries) -> Double
+
+pub fn seq_analysis_series_to_string(Seq_analysisSeries) -> String
+
+pub fn seq_analysis_series_var(Seq_analysisSeries) -> Double
+
+pub fn seq_analysis_std(Array[Double]) -> Double
+
+pub fn seq_analysis_var(Array[Double]) -> Double
+
+pub fn seq_analysis_vector_add(Seq_analysisVector, Seq_analysisVector) -> Seq_analysisVector
+
+pub fn seq_analysis_vector_dist(Seq_analysisVector, Seq_analysisVector) -> Double
+
+pub fn seq_analysis_vector_dot(Seq_analysisVector, Seq_analysisVector) -> Double
+
+pub fn seq_analysis_vector_norm(Seq_analysisVector) -> Double
+
+pub fn seq_analysis_vector_normalize(Seq_analysisVector) -> Seq_analysisVector
+
+pub fn seq_analysis_vector_scale(Seq_analysisVector, Double) -> Seq_analysisVector
+
+pub fn seq_analysis_vector_sub(Seq_analysisVector, Seq_analysisVector) -> Seq_analysisVector
+
+pub fn seq_analysis_vector_to_string(Seq_analysisVector) -> String
+
+pub fn seq_analysis_vector_zero(Int32) -> Seq_analysisVector
+
+// Errors
+
+// Types and methods
+pub struct Seq_analysisMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Seq_analysisPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Seq_analysisSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Seq_analysisVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

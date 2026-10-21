@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/finance_portfolio_rebalancing"
+
+// Values
+pub fn finance_portfolio_rebalancing_buffer_make(Int32) -> FinanceportfoliorebalancingBuffer
+
+pub fn finance_portfolio_rebalancing_cluster_make(Int32) -> FinanceportfoliorebalancingCluster
+
+pub fn finance_portfolio_rebalancing_cursor_make(Int32) -> FinanceportfoliorebalancingCursor
+
+pub fn finance_portfolio_rebalancing_edge_make(Int32) -> FinanceportfoliorebalancingEdge
+
+pub fn finance_portfolio_rebalancing_frame_make(Int32) -> FinanceportfoliorebalancingFrame
+
+pub fn finance_portfolio_rebalancing_graphn_make(Int32) -> FinanceportfoliorebalancingGraphN
+
+pub fn finance_portfolio_rebalancing_layer_make(Int32) -> FinanceportfoliorebalancingLayer
+
+pub fn finance_portfolio_rebalancing_make_matrix(Int32, Int32, Double) -> FinanceportfoliorebalancingMatrix
+
+pub fn finance_portfolio_rebalancing_make_point(Double, Double) -> FinanceportfoliorebalancingPoint
+
+pub fn finance_portfolio_rebalancing_make_point3(Double, Double, Double) -> FinanceportfoliorebalancingPoint
+
+pub fn finance_portfolio_rebalancing_make_series(Array[Double], String) -> FinanceportfoliorebalancingSeries
+
+pub fn finance_portfolio_rebalancing_make_vector(Array[Double]) -> FinanceportfoliorebalancingVector
+
+pub fn finance_portfolio_rebalancing_matrix_identity(Int32) -> FinanceportfoliorebalancingMatrix
+
+pub fn finance_portfolio_rebalancing_model_make(Int32) -> FinanceportfoliorebalancingModel
+
+pub fn finance_portfolio_rebalancing_node_make(Int32) -> FinanceportfoliorebalancingNode
+
+pub fn finance_portfolio_rebalancing_path_make(Int32) -> FinanceportfoliorebalancingPath
+
+pub fn finance_portfolio_rebalancing_range_make(Int32) -> FinanceportfoliorebalancingRange
+
+pub fn finance_portfolio_rebalancing_slice_make(Int32) -> FinanceportfoliorebalancingSlice
+
+pub fn finance_portfolio_rebalancing_table_make(Int32) -> FinanceportfoliorebalancingTable
+
+pub fn finance_portfolio_rebalancing_vector_zero(Int32) -> FinanceportfoliorebalancingVector
+
+pub fn finance_portfolio_rebalancing_view_make(Int32) -> FinanceportfoliorebalancingView
+
+// Errors
+
+// Types and methods
+pub(all) struct FinanceportfoliorebalancingBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceportfoliorebalancingBuffer::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingBuffer::copy(Self) -> Self
+pub fn FinanceportfoliorebalancingBuffer::fill(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingBuffer::get(Self, Int32) -> Double
+pub fn FinanceportfoliorebalancingBuffer::len(Self) -> Int32
+pub fn FinanceportfoliorebalancingBuffer::max(Self) -> Double
+pub fn FinanceportfoliorebalancingBuffer::mean(Self) -> Double
+pub fn FinanceportfoliorebalancingBuffer::min(Self) -> Double
+pub fn FinanceportfoliorebalancingBuffer::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingBuffer::set(Self, Int32, Double) -> Self
+pub fn FinanceportfoliorebalancingBuffer::sum(Self) -> Double
+pub fn FinanceportfoliorebalancingBuffer::to_string(Self) -> String
+
+pub(all) struct FinanceportfoliorebalancingCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceportfoliorebalancingCluster::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingCluster::copy(Self) -> Self
+pub fn FinanceportfoliorebalancingCluster::fill(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingCluster::get(Self, Int32) -> Double
+pub fn FinanceportfoliorebalancingCluster::len(Self) -> Int32
+pub fn FinanceportfoliorebalancingCluster::max(Self) -> Double
+pub fn FinanceportfoliorebalancingCluster::mean(Self) -> Double
+pub fn FinanceportfoliorebalancingCluster::min(Self) -> Double
+pub fn FinanceportfoliorebalancingCluster::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingCluster::set(Self, Int32, Double) -> Self
+pub fn FinanceportfoliorebalancingCluster::sum(Self) -> Double
+pub fn FinanceportfoliorebalancingCluster::to_string(Self) -> String
+
+pub(all) struct FinanceportfoliorebalancingCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceportfoliorebalancingCursor::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingCursor::copy(Self) -> Self
+pub fn FinanceportfoliorebalancingCursor::fill(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingCursor::get(Self, Int32) -> Double
+pub fn FinanceportfoliorebalancingCursor::len(Self) -> Int32
+pub fn FinanceportfoliorebalancingCursor::max(Self) -> Double
+pub fn FinanceportfoliorebalancingCursor::mean(Self) -> Double
+pub fn FinanceportfoliorebalancingCursor::min(Self) -> Double
+pub fn FinanceportfoliorebalancingCursor::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingCursor::set(Self, Int32, Double) -> Self
+pub fn FinanceportfoliorebalancingCursor::sum(Self) -> Double
+pub fn FinanceportfoliorebalancingCursor::to_string(Self) -> String
+
+pub(all) struct FinanceportfoliorebalancingEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceportfoliorebalancingEdge::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingEdge::copy(Self) -> Self
+pub fn FinanceportfoliorebalancingEdge::fill(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingEdge::get(Self, Int32) -> Double
+pub fn FinanceportfoliorebalancingEdge::len(Self) -> Int32
+pub fn FinanceportfoliorebalancingEdge::max(Self) -> Double
+pub fn FinanceportfoliorebalancingEdge::mean(Self) -> Double
+pub fn FinanceportfoliorebalancingEdge::min(Self) -> Double
+pub fn FinanceportfoliorebalancingEdge::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingEdge::set(Self, Int32, Double) -> Self
+pub fn FinanceportfoliorebalancingEdge::sum(Self) -> Double
+pub fn FinanceportfoliorebalancingEdge::to_string(Self) -> String
+
+pub(all) struct FinanceportfoliorebalancingFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceportfoliorebalancingFrame::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingFrame::copy(Self) -> Self
+pub fn FinanceportfoliorebalancingFrame::fill(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingFrame::get(Self, Int32) -> Double
+pub fn FinanceportfoliorebalancingFrame::len(Self) -> Int32
+pub fn FinanceportfoliorebalancingFrame::max(Self) -> Double
+pub fn FinanceportfoliorebalancingFrame::mean(Self) -> Double
+pub fn FinanceportfoliorebalancingFrame::min(Self) -> Double
+pub fn FinanceportfoliorebalancingFrame::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingFrame::set(Self, Int32, Double) -> Self
+pub fn FinanceportfoliorebalancingFrame::sum(Self) -> Double
+pub fn FinanceportfoliorebalancingFrame::to_string(Self) -> String
+
+pub(all) struct FinanceportfoliorebalancingGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceportfoliorebalancingGraphN::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingGraphN::copy(Self) -> Self
+pub fn FinanceportfoliorebalancingGraphN::fill(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingGraphN::get(Self, Int32) -> Double
+pub fn FinanceportfoliorebalancingGraphN::len(Self) -> Int32
+pub fn FinanceportfoliorebalancingGraphN::max(Self) -> Double
+pub fn FinanceportfoliorebalancingGraphN::mean(Self) -> Double
+pub fn FinanceportfoliorebalancingGraphN::min(Self) -> Double
+pub fn FinanceportfoliorebalancingGraphN::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingGraphN::set(Self, Int32, Double) -> Self
+pub fn FinanceportfoliorebalancingGraphN::sum(Self) -> Double
+pub fn FinanceportfoliorebalancingGraphN::to_string(Self) -> String
+
+pub(all) struct FinanceportfoliorebalancingLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceportfoliorebalancingLayer::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingLayer::copy(Self) -> Self
+pub fn FinanceportfoliorebalancingLayer::fill(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingLayer::get(Self, Int32) -> Double
+pub fn FinanceportfoliorebalancingLayer::len(Self) -> Int32
+pub fn FinanceportfoliorebalancingLayer::max(Self) -> Double
+pub fn FinanceportfoliorebalancingLayer::mean(Self) -> Double
+pub fn FinanceportfoliorebalancingLayer::min(Self) -> Double
+pub fn FinanceportfoliorebalancingLayer::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingLayer::set(Self, Int32, Double) -> Self
+pub fn FinanceportfoliorebalancingLayer::sum(Self) -> Double
+pub fn FinanceportfoliorebalancingLayer::to_string(Self) -> String
+
+pub(all) struct FinanceportfoliorebalancingMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn FinanceportfoliorebalancingMatrix::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingMatrix::det(Self) -> Double
+pub fn FinanceportfoliorebalancingMatrix::get(Self, Int32, Int32) -> Double
+pub fn FinanceportfoliorebalancingMatrix::multiply(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingMatrix::norm(Self) -> Double
+pub fn FinanceportfoliorebalancingMatrix::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingMatrix::to_string(Self) -> String
+pub fn FinanceportfoliorebalancingMatrix::trace(Self) -> Double
+pub fn FinanceportfoliorebalancingMatrix::transpose(Self) -> Self
+
+pub(all) struct FinanceportfoliorebalancingModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceportfoliorebalancingModel::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingModel::copy(Self) -> Self
+pub fn FinanceportfoliorebalancingModel::fill(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingModel::get(Self, Int32) -> Double
+pub fn FinanceportfoliorebalancingModel::len(Self) -> Int32
+pub fn FinanceportfoliorebalancingModel::max(Self) -> Double
+pub fn FinanceportfoliorebalancingModel::mean(Self) -> Double
+pub fn FinanceportfoliorebalancingModel::min(Self) -> Double
+pub fn FinanceportfoliorebalancingModel::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingModel::set(Self, Int32, Double) -> Self
+pub fn FinanceportfoliorebalancingModel::sum(Self) -> Double
+pub fn FinanceportfoliorebalancingModel::to_string(Self) -> String
+
+pub(all) struct FinanceportfoliorebalancingNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceportfoliorebalancingNode::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingNode::copy(Self) -> Self
+pub fn FinanceportfoliorebalancingNode::fill(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingNode::get(Self, Int32) -> Double
+pub fn FinanceportfoliorebalancingNode::len(Self) -> Int32
+pub fn FinanceportfoliorebalancingNode::max(Self) -> Double
+pub fn FinanceportfoliorebalancingNode::mean(Self) -> Double
+pub fn FinanceportfoliorebalancingNode::min(Self) -> Double
+pub fn FinanceportfoliorebalancingNode::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingNode::set(Self, Int32, Double) -> Self
+pub fn FinanceportfoliorebalancingNode::sum(Self) -> Double
+pub fn FinanceportfoliorebalancingNode::to_string(Self) -> String
+
+pub(all) struct FinanceportfoliorebalancingPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceportfoliorebalancingPath::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingPath::copy(Self) -> Self
+pub fn FinanceportfoliorebalancingPath::fill(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingPath::get(Self, Int32) -> Double
+pub fn FinanceportfoliorebalancingPath::len(Self) -> Int32
+pub fn FinanceportfoliorebalancingPath::max(Self) -> Double
+pub fn FinanceportfoliorebalancingPath::mean(Self) -> Double
+pub fn FinanceportfoliorebalancingPath::min(Self) -> Double
+pub fn FinanceportfoliorebalancingPath::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingPath::set(Self, Int32, Double) -> Self
+pub fn FinanceportfoliorebalancingPath::sum(Self) -> Double
+pub fn FinanceportfoliorebalancingPath::to_string(Self) -> String
+
+pub(all) struct FinanceportfoliorebalancingPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn FinanceportfoliorebalancingPoint::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingPoint::cross(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingPoint::dist(Self, Self) -> Double
+pub fn FinanceportfoliorebalancingPoint::dot(Self, Self) -> Double
+pub fn FinanceportfoliorebalancingPoint::label(Self) -> Int32
+pub fn FinanceportfoliorebalancingPoint::lerp(Self, Self, Double) -> Self
+pub fn FinanceportfoliorebalancingPoint::mid(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingPoint::negate(Self) -> Self
+pub fn FinanceportfoliorebalancingPoint::norm(Self) -> Double
+pub fn FinanceportfoliorebalancingPoint::normalize(Self) -> Self
+pub fn FinanceportfoliorebalancingPoint::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingPoint::sub(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingPoint::to_string(Self) -> String
+pub fn FinanceportfoliorebalancingPoint::x(Self) -> Double
+pub fn FinanceportfoliorebalancingPoint::y(Self) -> Double
+pub fn FinanceportfoliorebalancingPoint::z(Self) -> Double
+
+pub(all) struct FinanceportfoliorebalancingRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceportfoliorebalancingRange::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingRange::copy(Self) -> Self
+pub fn FinanceportfoliorebalancingRange::fill(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingRange::get(Self, Int32) -> Double
+pub fn FinanceportfoliorebalancingRange::len(Self) -> Int32
+pub fn FinanceportfoliorebalancingRange::max(Self) -> Double
+pub fn FinanceportfoliorebalancingRange::mean(Self) -> Double
+pub fn FinanceportfoliorebalancingRange::min(Self) -> Double
+pub fn FinanceportfoliorebalancingRange::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingRange::set(Self, Int32, Double) -> Self
+pub fn FinanceportfoliorebalancingRange::sum(Self) -> Double
+pub fn FinanceportfoliorebalancingRange::to_string(Self) -> String
+
+pub(all) struct FinanceportfoliorebalancingSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn FinanceportfoliorebalancingSeries::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingSeries::cumsum(Self) -> Self
+pub fn FinanceportfoliorebalancingSeries::len(Self) -> Int32
+pub fn FinanceportfoliorebalancingSeries::max(Self) -> Double
+pub fn FinanceportfoliorebalancingSeries::mean(Self) -> Double
+pub fn FinanceportfoliorebalancingSeries::median(Self) -> Double
+pub fn FinanceportfoliorebalancingSeries::min(Self) -> Double
+pub fn FinanceportfoliorebalancingSeries::normalize(Self) -> Self
+pub fn FinanceportfoliorebalancingSeries::range(Self) -> Double
+pub fn FinanceportfoliorebalancingSeries::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingSeries::std(Self) -> Double
+pub fn FinanceportfoliorebalancingSeries::sub(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingSeries::sum(Self) -> Double
+pub fn FinanceportfoliorebalancingSeries::to_string(Self) -> String
+pub fn FinanceportfoliorebalancingSeries::variance(Self) -> Double
+
+pub(all) struct FinanceportfoliorebalancingSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceportfoliorebalancingSlice::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingSlice::copy(Self) -> Self
+pub fn FinanceportfoliorebalancingSlice::fill(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingSlice::get(Self, Int32) -> Double
+pub fn FinanceportfoliorebalancingSlice::len(Self) -> Int32
+pub fn FinanceportfoliorebalancingSlice::max(Self) -> Double
+pub fn FinanceportfoliorebalancingSlice::mean(Self) -> Double
+pub fn FinanceportfoliorebalancingSlice::min(Self) -> Double
+pub fn FinanceportfoliorebalancingSlice::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingSlice::set(Self, Int32, Double) -> Self
+pub fn FinanceportfoliorebalancingSlice::sum(Self) -> Double
+pub fn FinanceportfoliorebalancingSlice::to_string(Self) -> String
+
+pub(all) struct FinanceportfoliorebalancingTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceportfoliorebalancingTable::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingTable::copy(Self) -> Self
+pub fn FinanceportfoliorebalancingTable::fill(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingTable::get(Self, Int32) -> Double
+pub fn FinanceportfoliorebalancingTable::len(Self) -> Int32
+pub fn FinanceportfoliorebalancingTable::max(Self) -> Double
+pub fn FinanceportfoliorebalancingTable::mean(Self) -> Double
+pub fn FinanceportfoliorebalancingTable::min(Self) -> Double
+pub fn FinanceportfoliorebalancingTable::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingTable::set(Self, Int32, Double) -> Self
+pub fn FinanceportfoliorebalancingTable::sum(Self) -> Double
+pub fn FinanceportfoliorebalancingTable::to_string(Self) -> String
+
+pub(all) struct FinanceportfoliorebalancingVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn FinanceportfoliorebalancingVector::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingVector::dist(Self, Self) -> Double
+pub fn FinanceportfoliorebalancingVector::dot(Self, Self) -> Double
+pub fn FinanceportfoliorebalancingVector::norm(Self) -> Double
+pub fn FinanceportfoliorebalancingVector::normalize(Self) -> Self
+pub fn FinanceportfoliorebalancingVector::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingVector::sub(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingVector::to_string(Self) -> String
+
+pub(all) struct FinanceportfoliorebalancingView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn FinanceportfoliorebalancingView::add(Self, Self) -> Self
+pub fn FinanceportfoliorebalancingView::copy(Self) -> Self
+pub fn FinanceportfoliorebalancingView::fill(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingView::get(Self, Int32) -> Double
+pub fn FinanceportfoliorebalancingView::len(Self) -> Int32
+pub fn FinanceportfoliorebalancingView::max(Self) -> Double
+pub fn FinanceportfoliorebalancingView::mean(Self) -> Double
+pub fn FinanceportfoliorebalancingView::min(Self) -> Double
+pub fn FinanceportfoliorebalancingView::scale(Self, Double) -> Self
+pub fn FinanceportfoliorebalancingView::set(Self, Int32, Double) -> Self
+pub fn FinanceportfoliorebalancingView::sum(Self) -> Double
+pub fn FinanceportfoliorebalancingView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

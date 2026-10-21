@@ -1,0 +1,65 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/dl_losses"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn bce_loss(Array[Double], Array[Double]) -> Double
+
+pub fn contrastive_loss(Array[Double], Array[Double], Double, Double) -> Double
+
+pub fn cosine_embedding_loss(Array[Double], Array[Double], Double, Double) -> Double
+
+pub fn cross_entropy_loss(Array[Double], Array[Double]) -> Double
+
+pub fn dice_loss(Array[Double], Array[Double]) -> Double
+
+pub fn dl_losses_id() -> String
+
+pub fn focal_loss(Array[Double], Array[Double], Double, Double) -> Double
+
+pub fn hinge_loss(Array[Double], Array[Double]) -> Double
+
+pub fn huber_loss(Array[Double], Array[Double], Double) -> Double
+
+pub fn kl_div_loss(Array[Double], Array[Double]) -> Double
+
+pub fn label_smoothing_loss(Array[Double], Int32, Double) -> Double
+
+pub fn log_cosh_loss(Array[Double], Array[Double]) -> Double
+
+pub fn loss_name(LossKind) -> String
+
+pub fn loss_value(LossKind, Array[Double], Array[Double]) -> Double
+
+pub fn margin_ranking_loss(Double, Double, Double, Double) -> Double
+
+pub fn mse_loss(Array[Double], Array[Double]) -> Double
+
+pub fn nll_loss(Array[Double], Int32) -> Double
+
+pub fn smooth_l1_loss(Array[Double], Array[Double], Double) -> Double
+
+pub fn soft_margin_loss(Double, Double) -> Double
+
+pub fn triplet_loss(Array[Double], Array[Double], Array[Double], Double) -> Double
+
+pub fn tversky_loss(Array[Double], Array[Double], Double, Double) -> Double
+
+// Errors
+
+// Types and methods
+pub(all) enum LossKind {
+  MSE
+  CrossEntropy
+  Hinge
+} derive(Eq, @debug.Debug)
+pub fn LossKind::equal(Self, Self) -> Bool
+pub fn LossKind::not_equal(Self, Self) -> Bool
+pub fn LossKind::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

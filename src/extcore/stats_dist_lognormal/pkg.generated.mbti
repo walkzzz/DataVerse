@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/stats_dist_lognormal"
+
+// Values
+pub fn stats_dist_lognormal_buffer_make(Int32) -> StatsdistlognormalBuffer
+
+pub fn stats_dist_lognormal_cluster_make(Int32) -> StatsdistlognormalCluster
+
+pub fn stats_dist_lognormal_cursor_make(Int32) -> StatsdistlognormalCursor
+
+pub fn stats_dist_lognormal_edge_make(Int32) -> StatsdistlognormalEdge
+
+pub fn stats_dist_lognormal_frame_make(Int32) -> StatsdistlognormalFrame
+
+pub fn stats_dist_lognormal_graphn_make(Int32) -> StatsdistlognormalGraphN
+
+pub fn stats_dist_lognormal_layer_make(Int32) -> StatsdistlognormalLayer
+
+pub fn stats_dist_lognormal_make_matrix(Int32, Int32, Double) -> StatsdistlognormalMatrix
+
+pub fn stats_dist_lognormal_make_point(Double, Double) -> StatsdistlognormalPoint
+
+pub fn stats_dist_lognormal_make_point3(Double, Double, Double) -> StatsdistlognormalPoint
+
+pub fn stats_dist_lognormal_make_series(Array[Double], String) -> StatsdistlognormalSeries
+
+pub fn stats_dist_lognormal_make_vector(Array[Double]) -> StatsdistlognormalVector
+
+pub fn stats_dist_lognormal_matrix_identity(Int32) -> StatsdistlognormalMatrix
+
+pub fn stats_dist_lognormal_model_make(Int32) -> StatsdistlognormalModel
+
+pub fn stats_dist_lognormal_node_make(Int32) -> StatsdistlognormalNode
+
+pub fn stats_dist_lognormal_path_make(Int32) -> StatsdistlognormalPath
+
+pub fn stats_dist_lognormal_range_make(Int32) -> StatsdistlognormalRange
+
+pub fn stats_dist_lognormal_slice_make(Int32) -> StatsdistlognormalSlice
+
+pub fn stats_dist_lognormal_table_make(Int32) -> StatsdistlognormalTable
+
+pub fn stats_dist_lognormal_vector_zero(Int32) -> StatsdistlognormalVector
+
+pub fn stats_dist_lognormal_view_make(Int32) -> StatsdistlognormalView
+
+// Errors
+
+// Types and methods
+pub(all) struct StatsdistlognormalBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistlognormalBuffer::add(Self, Self) -> Self
+pub fn StatsdistlognormalBuffer::copy(Self) -> Self
+pub fn StatsdistlognormalBuffer::fill(Self, Double) -> Self
+pub fn StatsdistlognormalBuffer::get(Self, Int32) -> Double
+pub fn StatsdistlognormalBuffer::len(Self) -> Int32
+pub fn StatsdistlognormalBuffer::max(Self) -> Double
+pub fn StatsdistlognormalBuffer::mean(Self) -> Double
+pub fn StatsdistlognormalBuffer::min(Self) -> Double
+pub fn StatsdistlognormalBuffer::scale(Self, Double) -> Self
+pub fn StatsdistlognormalBuffer::set(Self, Int32, Double) -> Self
+pub fn StatsdistlognormalBuffer::sum(Self) -> Double
+pub fn StatsdistlognormalBuffer::to_string(Self) -> String
+
+pub(all) struct StatsdistlognormalCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistlognormalCluster::add(Self, Self) -> Self
+pub fn StatsdistlognormalCluster::copy(Self) -> Self
+pub fn StatsdistlognormalCluster::fill(Self, Double) -> Self
+pub fn StatsdistlognormalCluster::get(Self, Int32) -> Double
+pub fn StatsdistlognormalCluster::len(Self) -> Int32
+pub fn StatsdistlognormalCluster::max(Self) -> Double
+pub fn StatsdistlognormalCluster::mean(Self) -> Double
+pub fn StatsdistlognormalCluster::min(Self) -> Double
+pub fn StatsdistlognormalCluster::scale(Self, Double) -> Self
+pub fn StatsdistlognormalCluster::set(Self, Int32, Double) -> Self
+pub fn StatsdistlognormalCluster::sum(Self) -> Double
+pub fn StatsdistlognormalCluster::to_string(Self) -> String
+
+pub(all) struct StatsdistlognormalCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistlognormalCursor::add(Self, Self) -> Self
+pub fn StatsdistlognormalCursor::copy(Self) -> Self
+pub fn StatsdistlognormalCursor::fill(Self, Double) -> Self
+pub fn StatsdistlognormalCursor::get(Self, Int32) -> Double
+pub fn StatsdistlognormalCursor::len(Self) -> Int32
+pub fn StatsdistlognormalCursor::max(Self) -> Double
+pub fn StatsdistlognormalCursor::mean(Self) -> Double
+pub fn StatsdistlognormalCursor::min(Self) -> Double
+pub fn StatsdistlognormalCursor::scale(Self, Double) -> Self
+pub fn StatsdistlognormalCursor::set(Self, Int32, Double) -> Self
+pub fn StatsdistlognormalCursor::sum(Self) -> Double
+pub fn StatsdistlognormalCursor::to_string(Self) -> String
+
+pub(all) struct StatsdistlognormalEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistlognormalEdge::add(Self, Self) -> Self
+pub fn StatsdistlognormalEdge::copy(Self) -> Self
+pub fn StatsdistlognormalEdge::fill(Self, Double) -> Self
+pub fn StatsdistlognormalEdge::get(Self, Int32) -> Double
+pub fn StatsdistlognormalEdge::len(Self) -> Int32
+pub fn StatsdistlognormalEdge::max(Self) -> Double
+pub fn StatsdistlognormalEdge::mean(Self) -> Double
+pub fn StatsdistlognormalEdge::min(Self) -> Double
+pub fn StatsdistlognormalEdge::scale(Self, Double) -> Self
+pub fn StatsdistlognormalEdge::set(Self, Int32, Double) -> Self
+pub fn StatsdistlognormalEdge::sum(Self) -> Double
+pub fn StatsdistlognormalEdge::to_string(Self) -> String
+
+pub(all) struct StatsdistlognormalFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistlognormalFrame::add(Self, Self) -> Self
+pub fn StatsdistlognormalFrame::copy(Self) -> Self
+pub fn StatsdistlognormalFrame::fill(Self, Double) -> Self
+pub fn StatsdistlognormalFrame::get(Self, Int32) -> Double
+pub fn StatsdistlognormalFrame::len(Self) -> Int32
+pub fn StatsdistlognormalFrame::max(Self) -> Double
+pub fn StatsdistlognormalFrame::mean(Self) -> Double
+pub fn StatsdistlognormalFrame::min(Self) -> Double
+pub fn StatsdistlognormalFrame::scale(Self, Double) -> Self
+pub fn StatsdistlognormalFrame::set(Self, Int32, Double) -> Self
+pub fn StatsdistlognormalFrame::sum(Self) -> Double
+pub fn StatsdistlognormalFrame::to_string(Self) -> String
+
+pub(all) struct StatsdistlognormalGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistlognormalGraphN::add(Self, Self) -> Self
+pub fn StatsdistlognormalGraphN::copy(Self) -> Self
+pub fn StatsdistlognormalGraphN::fill(Self, Double) -> Self
+pub fn StatsdistlognormalGraphN::get(Self, Int32) -> Double
+pub fn StatsdistlognormalGraphN::len(Self) -> Int32
+pub fn StatsdistlognormalGraphN::max(Self) -> Double
+pub fn StatsdistlognormalGraphN::mean(Self) -> Double
+pub fn StatsdistlognormalGraphN::min(Self) -> Double
+pub fn StatsdistlognormalGraphN::scale(Self, Double) -> Self
+pub fn StatsdistlognormalGraphN::set(Self, Int32, Double) -> Self
+pub fn StatsdistlognormalGraphN::sum(Self) -> Double
+pub fn StatsdistlognormalGraphN::to_string(Self) -> String
+
+pub(all) struct StatsdistlognormalLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistlognormalLayer::add(Self, Self) -> Self
+pub fn StatsdistlognormalLayer::copy(Self) -> Self
+pub fn StatsdistlognormalLayer::fill(Self, Double) -> Self
+pub fn StatsdistlognormalLayer::get(Self, Int32) -> Double
+pub fn StatsdistlognormalLayer::len(Self) -> Int32
+pub fn StatsdistlognormalLayer::max(Self) -> Double
+pub fn StatsdistlognormalLayer::mean(Self) -> Double
+pub fn StatsdistlognormalLayer::min(Self) -> Double
+pub fn StatsdistlognormalLayer::scale(Self, Double) -> Self
+pub fn StatsdistlognormalLayer::set(Self, Int32, Double) -> Self
+pub fn StatsdistlognormalLayer::sum(Self) -> Double
+pub fn StatsdistlognormalLayer::to_string(Self) -> String
+
+pub(all) struct StatsdistlognormalMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn StatsdistlognormalMatrix::add(Self, Self) -> Self
+pub fn StatsdistlognormalMatrix::det(Self) -> Double
+pub fn StatsdistlognormalMatrix::get(Self, Int32, Int32) -> Double
+pub fn StatsdistlognormalMatrix::multiply(Self, Self) -> Self
+pub fn StatsdistlognormalMatrix::norm(Self) -> Double
+pub fn StatsdistlognormalMatrix::scale(Self, Double) -> Self
+pub fn StatsdistlognormalMatrix::to_string(Self) -> String
+pub fn StatsdistlognormalMatrix::trace(Self) -> Double
+pub fn StatsdistlognormalMatrix::transpose(Self) -> Self
+
+pub(all) struct StatsdistlognormalModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistlognormalModel::add(Self, Self) -> Self
+pub fn StatsdistlognormalModel::copy(Self) -> Self
+pub fn StatsdistlognormalModel::fill(Self, Double) -> Self
+pub fn StatsdistlognormalModel::get(Self, Int32) -> Double
+pub fn StatsdistlognormalModel::len(Self) -> Int32
+pub fn StatsdistlognormalModel::max(Self) -> Double
+pub fn StatsdistlognormalModel::mean(Self) -> Double
+pub fn StatsdistlognormalModel::min(Self) -> Double
+pub fn StatsdistlognormalModel::scale(Self, Double) -> Self
+pub fn StatsdistlognormalModel::set(Self, Int32, Double) -> Self
+pub fn StatsdistlognormalModel::sum(Self) -> Double
+pub fn StatsdistlognormalModel::to_string(Self) -> String
+
+pub(all) struct StatsdistlognormalNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistlognormalNode::add(Self, Self) -> Self
+pub fn StatsdistlognormalNode::copy(Self) -> Self
+pub fn StatsdistlognormalNode::fill(Self, Double) -> Self
+pub fn StatsdistlognormalNode::get(Self, Int32) -> Double
+pub fn StatsdistlognormalNode::len(Self) -> Int32
+pub fn StatsdistlognormalNode::max(Self) -> Double
+pub fn StatsdistlognormalNode::mean(Self) -> Double
+pub fn StatsdistlognormalNode::min(Self) -> Double
+pub fn StatsdistlognormalNode::scale(Self, Double) -> Self
+pub fn StatsdistlognormalNode::set(Self, Int32, Double) -> Self
+pub fn StatsdistlognormalNode::sum(Self) -> Double
+pub fn StatsdistlognormalNode::to_string(Self) -> String
+
+pub(all) struct StatsdistlognormalPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistlognormalPath::add(Self, Self) -> Self
+pub fn StatsdistlognormalPath::copy(Self) -> Self
+pub fn StatsdistlognormalPath::fill(Self, Double) -> Self
+pub fn StatsdistlognormalPath::get(Self, Int32) -> Double
+pub fn StatsdistlognormalPath::len(Self) -> Int32
+pub fn StatsdistlognormalPath::max(Self) -> Double
+pub fn StatsdistlognormalPath::mean(Self) -> Double
+pub fn StatsdistlognormalPath::min(Self) -> Double
+pub fn StatsdistlognormalPath::scale(Self, Double) -> Self
+pub fn StatsdistlognormalPath::set(Self, Int32, Double) -> Self
+pub fn StatsdistlognormalPath::sum(Self) -> Double
+pub fn StatsdistlognormalPath::to_string(Self) -> String
+
+pub(all) struct StatsdistlognormalPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn StatsdistlognormalPoint::add(Self, Self) -> Self
+pub fn StatsdistlognormalPoint::cross(Self, Self) -> Self
+pub fn StatsdistlognormalPoint::dist(Self, Self) -> Double
+pub fn StatsdistlognormalPoint::dot(Self, Self) -> Double
+pub fn StatsdistlognormalPoint::label(Self) -> Int32
+pub fn StatsdistlognormalPoint::lerp(Self, Self, Double) -> Self
+pub fn StatsdistlognormalPoint::mid(Self, Self) -> Self
+pub fn StatsdistlognormalPoint::negate(Self) -> Self
+pub fn StatsdistlognormalPoint::norm(Self) -> Double
+pub fn StatsdistlognormalPoint::normalize(Self) -> Self
+pub fn StatsdistlognormalPoint::scale(Self, Double) -> Self
+pub fn StatsdistlognormalPoint::sub(Self, Self) -> Self
+pub fn StatsdistlognormalPoint::to_string(Self) -> String
+pub fn StatsdistlognormalPoint::x(Self) -> Double
+pub fn StatsdistlognormalPoint::y(Self) -> Double
+pub fn StatsdistlognormalPoint::z(Self) -> Double
+
+pub(all) struct StatsdistlognormalRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistlognormalRange::add(Self, Self) -> Self
+pub fn StatsdistlognormalRange::copy(Self) -> Self
+pub fn StatsdistlognormalRange::fill(Self, Double) -> Self
+pub fn StatsdistlognormalRange::get(Self, Int32) -> Double
+pub fn StatsdistlognormalRange::len(Self) -> Int32
+pub fn StatsdistlognormalRange::max(Self) -> Double
+pub fn StatsdistlognormalRange::mean(Self) -> Double
+pub fn StatsdistlognormalRange::min(Self) -> Double
+pub fn StatsdistlognormalRange::scale(Self, Double) -> Self
+pub fn StatsdistlognormalRange::set(Self, Int32, Double) -> Self
+pub fn StatsdistlognormalRange::sum(Self) -> Double
+pub fn StatsdistlognormalRange::to_string(Self) -> String
+
+pub(all) struct StatsdistlognormalSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn StatsdistlognormalSeries::add(Self, Self) -> Self
+pub fn StatsdistlognormalSeries::cumsum(Self) -> Self
+pub fn StatsdistlognormalSeries::len(Self) -> Int32
+pub fn StatsdistlognormalSeries::max(Self) -> Double
+pub fn StatsdistlognormalSeries::mean(Self) -> Double
+pub fn StatsdistlognormalSeries::median(Self) -> Double
+pub fn StatsdistlognormalSeries::min(Self) -> Double
+pub fn StatsdistlognormalSeries::normalize(Self) -> Self
+pub fn StatsdistlognormalSeries::range(Self) -> Double
+pub fn StatsdistlognormalSeries::scale(Self, Double) -> Self
+pub fn StatsdistlognormalSeries::std(Self) -> Double
+pub fn StatsdistlognormalSeries::sub(Self, Self) -> Self
+pub fn StatsdistlognormalSeries::sum(Self) -> Double
+pub fn StatsdistlognormalSeries::to_string(Self) -> String
+pub fn StatsdistlognormalSeries::variance(Self) -> Double
+
+pub(all) struct StatsdistlognormalSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistlognormalSlice::add(Self, Self) -> Self
+pub fn StatsdistlognormalSlice::copy(Self) -> Self
+pub fn StatsdistlognormalSlice::fill(Self, Double) -> Self
+pub fn StatsdistlognormalSlice::get(Self, Int32) -> Double
+pub fn StatsdistlognormalSlice::len(Self) -> Int32
+pub fn StatsdistlognormalSlice::max(Self) -> Double
+pub fn StatsdistlognormalSlice::mean(Self) -> Double
+pub fn StatsdistlognormalSlice::min(Self) -> Double
+pub fn StatsdistlognormalSlice::scale(Self, Double) -> Self
+pub fn StatsdistlognormalSlice::set(Self, Int32, Double) -> Self
+pub fn StatsdistlognormalSlice::sum(Self) -> Double
+pub fn StatsdistlognormalSlice::to_string(Self) -> String
+
+pub(all) struct StatsdistlognormalTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistlognormalTable::add(Self, Self) -> Self
+pub fn StatsdistlognormalTable::copy(Self) -> Self
+pub fn StatsdistlognormalTable::fill(Self, Double) -> Self
+pub fn StatsdistlognormalTable::get(Self, Int32) -> Double
+pub fn StatsdistlognormalTable::len(Self) -> Int32
+pub fn StatsdistlognormalTable::max(Self) -> Double
+pub fn StatsdistlognormalTable::mean(Self) -> Double
+pub fn StatsdistlognormalTable::min(Self) -> Double
+pub fn StatsdistlognormalTable::scale(Self, Double) -> Self
+pub fn StatsdistlognormalTable::set(Self, Int32, Double) -> Self
+pub fn StatsdistlognormalTable::sum(Self) -> Double
+pub fn StatsdistlognormalTable::to_string(Self) -> String
+
+pub(all) struct StatsdistlognormalVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn StatsdistlognormalVector::add(Self, Self) -> Self
+pub fn StatsdistlognormalVector::dist(Self, Self) -> Double
+pub fn StatsdistlognormalVector::dot(Self, Self) -> Double
+pub fn StatsdistlognormalVector::norm(Self) -> Double
+pub fn StatsdistlognormalVector::normalize(Self) -> Self
+pub fn StatsdistlognormalVector::scale(Self, Double) -> Self
+pub fn StatsdistlognormalVector::sub(Self, Self) -> Self
+pub fn StatsdistlognormalVector::to_string(Self) -> String
+
+pub(all) struct StatsdistlognormalView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistlognormalView::add(Self, Self) -> Self
+pub fn StatsdistlognormalView::copy(Self) -> Self
+pub fn StatsdistlognormalView::fill(Self, Double) -> Self
+pub fn StatsdistlognormalView::get(Self, Int32) -> Double
+pub fn StatsdistlognormalView::len(Self) -> Int32
+pub fn StatsdistlognormalView::max(Self) -> Double
+pub fn StatsdistlognormalView::mean(Self) -> Double
+pub fn StatsdistlognormalView::min(Self) -> Double
+pub fn StatsdistlognormalView::scale(Self, Double) -> Self
+pub fn StatsdistlognormalView::set(Self, Int32, Double) -> Self
+pub fn StatsdistlognormalView::sum(Self) -> Double
+pub fn StatsdistlognormalView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

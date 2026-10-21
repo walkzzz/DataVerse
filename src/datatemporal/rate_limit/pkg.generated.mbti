@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/rate_limit"
+
+// Values
+pub fn rate_limit_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn rate_limit_corr(Array[Double], Array[Double]) -> Double
+
+pub fn rate_limit_cov(Array[Double], Array[Double]) -> Double
+
+pub fn rate_limit_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn rate_limit_mae(Array[Double], Array[Double]) -> Double
+
+pub fn rate_limit_make_labeled_point(Double, Double, Int32) -> Rate_limitPoint
+
+pub fn rate_limit_make_matrix(Int32, Int32, Double) -> Rate_limitMatrix
+
+pub fn rate_limit_make_point(Double, Double) -> Rate_limitPoint
+
+pub fn rate_limit_make_series(Array[Double], String) -> Rate_limitSeries
+
+pub fn rate_limit_make_vector(Array[Double]) -> Rate_limitVector
+
+pub fn rate_limit_matrix_add(Rate_limitMatrix, Rate_limitMatrix) -> Rate_limitMatrix
+
+pub fn rate_limit_matrix_get(Rate_limitMatrix, Int32, Int32) -> Double
+
+pub fn rate_limit_matrix_identity(Int32) -> Rate_limitMatrix
+
+pub fn rate_limit_matrix_multiply(Rate_limitMatrix, Rate_limitMatrix) -> Rate_limitMatrix
+
+pub fn rate_limit_matrix_norm(Rate_limitMatrix) -> Double
+
+pub fn rate_limit_matrix_scale(Rate_limitMatrix, Double) -> Rate_limitMatrix
+
+pub fn rate_limit_matrix_to_string(Rate_limitMatrix) -> String
+
+pub fn rate_limit_matrix_trace(Rate_limitMatrix) -> Double
+
+pub fn rate_limit_matrix_transpose(Rate_limitMatrix) -> Rate_limitMatrix
+
+pub fn rate_limit_mse(Array[Double], Array[Double]) -> Double
+
+pub fn rate_limit_point_add(Rate_limitPoint, Rate_limitPoint) -> Rate_limitPoint
+
+pub fn rate_limit_point_dist(Rate_limitPoint, Rate_limitPoint) -> Double
+
+pub fn rate_limit_point_dot(Rate_limitPoint, Rate_limitPoint) -> Double
+
+pub fn rate_limit_point_label(Rate_limitPoint) -> Int32
+
+pub fn rate_limit_point_norm(Rate_limitPoint) -> Double
+
+pub fn rate_limit_point_scale(Rate_limitPoint, Double) -> Rate_limitPoint
+
+pub fn rate_limit_point_sub(Rate_limitPoint, Rate_limitPoint) -> Rate_limitPoint
+
+pub fn rate_limit_point_to_string(Rate_limitPoint) -> String
+
+pub fn rate_limit_point_x(Rate_limitPoint) -> Double
+
+pub fn rate_limit_point_y(Rate_limitPoint) -> Double
+
+pub fn rate_limit_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn rate_limit_r2(Array[Double], Array[Double]) -> Double
+
+pub fn rate_limit_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn rate_limit_series_add(Rate_limitSeries, Rate_limitSeries) -> Rate_limitSeries
+
+pub fn rate_limit_series_len(Rate_limitSeries) -> Int32
+
+pub fn rate_limit_series_max(Rate_limitSeries) -> Double
+
+pub fn rate_limit_series_mean(Rate_limitSeries) -> Double
+
+pub fn rate_limit_series_min(Rate_limitSeries) -> Double
+
+pub fn rate_limit_series_scale(Rate_limitSeries, Double) -> Rate_limitSeries
+
+pub fn rate_limit_series_std(Rate_limitSeries) -> Double
+
+pub fn rate_limit_series_sum(Rate_limitSeries) -> Double
+
+pub fn rate_limit_series_to_string(Rate_limitSeries) -> String
+
+pub fn rate_limit_series_var(Rate_limitSeries) -> Double
+
+pub fn rate_limit_std(Array[Double]) -> Double
+
+pub fn rate_limit_var(Array[Double]) -> Double
+
+pub fn rate_limit_vector_add(Rate_limitVector, Rate_limitVector) -> Rate_limitVector
+
+pub fn rate_limit_vector_dist(Rate_limitVector, Rate_limitVector) -> Double
+
+pub fn rate_limit_vector_dot(Rate_limitVector, Rate_limitVector) -> Double
+
+pub fn rate_limit_vector_norm(Rate_limitVector) -> Double
+
+pub fn rate_limit_vector_normalize(Rate_limitVector) -> Rate_limitVector
+
+pub fn rate_limit_vector_scale(Rate_limitVector, Double) -> Rate_limitVector
+
+pub fn rate_limit_vector_sub(Rate_limitVector, Rate_limitVector) -> Rate_limitVector
+
+pub fn rate_limit_vector_to_string(Rate_limitVector) -> String
+
+pub fn rate_limit_vector_zero(Int32) -> Rate_limitVector
+
+// Errors
+
+// Types and methods
+pub struct Rate_limitMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Rate_limitPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Rate_limitSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Rate_limitVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

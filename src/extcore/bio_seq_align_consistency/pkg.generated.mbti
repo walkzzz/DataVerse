@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/bio_seq_align_consistency"
+
+// Values
+pub fn bio_seq_align_consistency_buffer_make(Int32) -> BioseqalignconsistencyBuffer
+
+pub fn bio_seq_align_consistency_cluster_make(Int32) -> BioseqalignconsistencyCluster
+
+pub fn bio_seq_align_consistency_cursor_make(Int32) -> BioseqalignconsistencyCursor
+
+pub fn bio_seq_align_consistency_edge_make(Int32) -> BioseqalignconsistencyEdge
+
+pub fn bio_seq_align_consistency_frame_make(Int32) -> BioseqalignconsistencyFrame
+
+pub fn bio_seq_align_consistency_graphn_make(Int32) -> BioseqalignconsistencyGraphN
+
+pub fn bio_seq_align_consistency_layer_make(Int32) -> BioseqalignconsistencyLayer
+
+pub fn bio_seq_align_consistency_make_matrix(Int32, Int32, Double) -> BioseqalignconsistencyMatrix
+
+pub fn bio_seq_align_consistency_make_point(Double, Double) -> BioseqalignconsistencyPoint
+
+pub fn bio_seq_align_consistency_make_point3(Double, Double, Double) -> BioseqalignconsistencyPoint
+
+pub fn bio_seq_align_consistency_make_series(Array[Double], String) -> BioseqalignconsistencySeries
+
+pub fn bio_seq_align_consistency_make_vector(Array[Double]) -> BioseqalignconsistencyVector
+
+pub fn bio_seq_align_consistency_matrix_identity(Int32) -> BioseqalignconsistencyMatrix
+
+pub fn bio_seq_align_consistency_model_make(Int32) -> BioseqalignconsistencyModel
+
+pub fn bio_seq_align_consistency_node_make(Int32) -> BioseqalignconsistencyNode
+
+pub fn bio_seq_align_consistency_path_make(Int32) -> BioseqalignconsistencyPath
+
+pub fn bio_seq_align_consistency_range_make(Int32) -> BioseqalignconsistencyRange
+
+pub fn bio_seq_align_consistency_slice_make(Int32) -> BioseqalignconsistencySlice
+
+pub fn bio_seq_align_consistency_table_make(Int32) -> BioseqalignconsistencyTable
+
+pub fn bio_seq_align_consistency_vector_zero(Int32) -> BioseqalignconsistencyVector
+
+pub fn bio_seq_align_consistency_view_make(Int32) -> BioseqalignconsistencyView
+
+// Errors
+
+// Types and methods
+pub(all) struct BioseqalignconsistencyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignconsistencyBuffer::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyBuffer::copy(Self) -> Self
+pub fn BioseqalignconsistencyBuffer::fill(Self, Double) -> Self
+pub fn BioseqalignconsistencyBuffer::get(Self, Int32) -> Double
+pub fn BioseqalignconsistencyBuffer::len(Self) -> Int32
+pub fn BioseqalignconsistencyBuffer::max(Self) -> Double
+pub fn BioseqalignconsistencyBuffer::mean(Self) -> Double
+pub fn BioseqalignconsistencyBuffer::min(Self) -> Double
+pub fn BioseqalignconsistencyBuffer::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyBuffer::set(Self, Int32, Double) -> Self
+pub fn BioseqalignconsistencyBuffer::sum(Self) -> Double
+pub fn BioseqalignconsistencyBuffer::to_string(Self) -> String
+
+pub(all) struct BioseqalignconsistencyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignconsistencyCluster::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyCluster::copy(Self) -> Self
+pub fn BioseqalignconsistencyCluster::fill(Self, Double) -> Self
+pub fn BioseqalignconsistencyCluster::get(Self, Int32) -> Double
+pub fn BioseqalignconsistencyCluster::len(Self) -> Int32
+pub fn BioseqalignconsistencyCluster::max(Self) -> Double
+pub fn BioseqalignconsistencyCluster::mean(Self) -> Double
+pub fn BioseqalignconsistencyCluster::min(Self) -> Double
+pub fn BioseqalignconsistencyCluster::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyCluster::set(Self, Int32, Double) -> Self
+pub fn BioseqalignconsistencyCluster::sum(Self) -> Double
+pub fn BioseqalignconsistencyCluster::to_string(Self) -> String
+
+pub(all) struct BioseqalignconsistencyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignconsistencyCursor::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyCursor::copy(Self) -> Self
+pub fn BioseqalignconsistencyCursor::fill(Self, Double) -> Self
+pub fn BioseqalignconsistencyCursor::get(Self, Int32) -> Double
+pub fn BioseqalignconsistencyCursor::len(Self) -> Int32
+pub fn BioseqalignconsistencyCursor::max(Self) -> Double
+pub fn BioseqalignconsistencyCursor::mean(Self) -> Double
+pub fn BioseqalignconsistencyCursor::min(Self) -> Double
+pub fn BioseqalignconsistencyCursor::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyCursor::set(Self, Int32, Double) -> Self
+pub fn BioseqalignconsistencyCursor::sum(Self) -> Double
+pub fn BioseqalignconsistencyCursor::to_string(Self) -> String
+
+pub(all) struct BioseqalignconsistencyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignconsistencyEdge::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyEdge::copy(Self) -> Self
+pub fn BioseqalignconsistencyEdge::fill(Self, Double) -> Self
+pub fn BioseqalignconsistencyEdge::get(Self, Int32) -> Double
+pub fn BioseqalignconsistencyEdge::len(Self) -> Int32
+pub fn BioseqalignconsistencyEdge::max(Self) -> Double
+pub fn BioseqalignconsistencyEdge::mean(Self) -> Double
+pub fn BioseqalignconsistencyEdge::min(Self) -> Double
+pub fn BioseqalignconsistencyEdge::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyEdge::set(Self, Int32, Double) -> Self
+pub fn BioseqalignconsistencyEdge::sum(Self) -> Double
+pub fn BioseqalignconsistencyEdge::to_string(Self) -> String
+
+pub(all) struct BioseqalignconsistencyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignconsistencyFrame::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyFrame::copy(Self) -> Self
+pub fn BioseqalignconsistencyFrame::fill(Self, Double) -> Self
+pub fn BioseqalignconsistencyFrame::get(Self, Int32) -> Double
+pub fn BioseqalignconsistencyFrame::len(Self) -> Int32
+pub fn BioseqalignconsistencyFrame::max(Self) -> Double
+pub fn BioseqalignconsistencyFrame::mean(Self) -> Double
+pub fn BioseqalignconsistencyFrame::min(Self) -> Double
+pub fn BioseqalignconsistencyFrame::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyFrame::set(Self, Int32, Double) -> Self
+pub fn BioseqalignconsistencyFrame::sum(Self) -> Double
+pub fn BioseqalignconsistencyFrame::to_string(Self) -> String
+
+pub(all) struct BioseqalignconsistencyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignconsistencyGraphN::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyGraphN::copy(Self) -> Self
+pub fn BioseqalignconsistencyGraphN::fill(Self, Double) -> Self
+pub fn BioseqalignconsistencyGraphN::get(Self, Int32) -> Double
+pub fn BioseqalignconsistencyGraphN::len(Self) -> Int32
+pub fn BioseqalignconsistencyGraphN::max(Self) -> Double
+pub fn BioseqalignconsistencyGraphN::mean(Self) -> Double
+pub fn BioseqalignconsistencyGraphN::min(Self) -> Double
+pub fn BioseqalignconsistencyGraphN::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyGraphN::set(Self, Int32, Double) -> Self
+pub fn BioseqalignconsistencyGraphN::sum(Self) -> Double
+pub fn BioseqalignconsistencyGraphN::to_string(Self) -> String
+
+pub(all) struct BioseqalignconsistencyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignconsistencyLayer::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyLayer::copy(Self) -> Self
+pub fn BioseqalignconsistencyLayer::fill(Self, Double) -> Self
+pub fn BioseqalignconsistencyLayer::get(Self, Int32) -> Double
+pub fn BioseqalignconsistencyLayer::len(Self) -> Int32
+pub fn BioseqalignconsistencyLayer::max(Self) -> Double
+pub fn BioseqalignconsistencyLayer::mean(Self) -> Double
+pub fn BioseqalignconsistencyLayer::min(Self) -> Double
+pub fn BioseqalignconsistencyLayer::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyLayer::set(Self, Int32, Double) -> Self
+pub fn BioseqalignconsistencyLayer::sum(Self) -> Double
+pub fn BioseqalignconsistencyLayer::to_string(Self) -> String
+
+pub(all) struct BioseqalignconsistencyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn BioseqalignconsistencyMatrix::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyMatrix::det(Self) -> Double
+pub fn BioseqalignconsistencyMatrix::get(Self, Int32, Int32) -> Double
+pub fn BioseqalignconsistencyMatrix::multiply(Self, Self) -> Self
+pub fn BioseqalignconsistencyMatrix::norm(Self) -> Double
+pub fn BioseqalignconsistencyMatrix::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyMatrix::to_string(Self) -> String
+pub fn BioseqalignconsistencyMatrix::trace(Self) -> Double
+pub fn BioseqalignconsistencyMatrix::transpose(Self) -> Self
+
+pub(all) struct BioseqalignconsistencyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignconsistencyModel::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyModel::copy(Self) -> Self
+pub fn BioseqalignconsistencyModel::fill(Self, Double) -> Self
+pub fn BioseqalignconsistencyModel::get(Self, Int32) -> Double
+pub fn BioseqalignconsistencyModel::len(Self) -> Int32
+pub fn BioseqalignconsistencyModel::max(Self) -> Double
+pub fn BioseqalignconsistencyModel::mean(Self) -> Double
+pub fn BioseqalignconsistencyModel::min(Self) -> Double
+pub fn BioseqalignconsistencyModel::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyModel::set(Self, Int32, Double) -> Self
+pub fn BioseqalignconsistencyModel::sum(Self) -> Double
+pub fn BioseqalignconsistencyModel::to_string(Self) -> String
+
+pub(all) struct BioseqalignconsistencyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignconsistencyNode::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyNode::copy(Self) -> Self
+pub fn BioseqalignconsistencyNode::fill(Self, Double) -> Self
+pub fn BioseqalignconsistencyNode::get(Self, Int32) -> Double
+pub fn BioseqalignconsistencyNode::len(Self) -> Int32
+pub fn BioseqalignconsistencyNode::max(Self) -> Double
+pub fn BioseqalignconsistencyNode::mean(Self) -> Double
+pub fn BioseqalignconsistencyNode::min(Self) -> Double
+pub fn BioseqalignconsistencyNode::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyNode::set(Self, Int32, Double) -> Self
+pub fn BioseqalignconsistencyNode::sum(Self) -> Double
+pub fn BioseqalignconsistencyNode::to_string(Self) -> String
+
+pub(all) struct BioseqalignconsistencyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignconsistencyPath::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyPath::copy(Self) -> Self
+pub fn BioseqalignconsistencyPath::fill(Self, Double) -> Self
+pub fn BioseqalignconsistencyPath::get(Self, Int32) -> Double
+pub fn BioseqalignconsistencyPath::len(Self) -> Int32
+pub fn BioseqalignconsistencyPath::max(Self) -> Double
+pub fn BioseqalignconsistencyPath::mean(Self) -> Double
+pub fn BioseqalignconsistencyPath::min(Self) -> Double
+pub fn BioseqalignconsistencyPath::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyPath::set(Self, Int32, Double) -> Self
+pub fn BioseqalignconsistencyPath::sum(Self) -> Double
+pub fn BioseqalignconsistencyPath::to_string(Self) -> String
+
+pub(all) struct BioseqalignconsistencyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn BioseqalignconsistencyPoint::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyPoint::cross(Self, Self) -> Self
+pub fn BioseqalignconsistencyPoint::dist(Self, Self) -> Double
+pub fn BioseqalignconsistencyPoint::dot(Self, Self) -> Double
+pub fn BioseqalignconsistencyPoint::label(Self) -> Int32
+pub fn BioseqalignconsistencyPoint::lerp(Self, Self, Double) -> Self
+pub fn BioseqalignconsistencyPoint::mid(Self, Self) -> Self
+pub fn BioseqalignconsistencyPoint::negate(Self) -> Self
+pub fn BioseqalignconsistencyPoint::norm(Self) -> Double
+pub fn BioseqalignconsistencyPoint::normalize(Self) -> Self
+pub fn BioseqalignconsistencyPoint::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyPoint::sub(Self, Self) -> Self
+pub fn BioseqalignconsistencyPoint::to_string(Self) -> String
+pub fn BioseqalignconsistencyPoint::x(Self) -> Double
+pub fn BioseqalignconsistencyPoint::y(Self) -> Double
+pub fn BioseqalignconsistencyPoint::z(Self) -> Double
+
+pub(all) struct BioseqalignconsistencyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignconsistencyRange::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyRange::copy(Self) -> Self
+pub fn BioseqalignconsistencyRange::fill(Self, Double) -> Self
+pub fn BioseqalignconsistencyRange::get(Self, Int32) -> Double
+pub fn BioseqalignconsistencyRange::len(Self) -> Int32
+pub fn BioseqalignconsistencyRange::max(Self) -> Double
+pub fn BioseqalignconsistencyRange::mean(Self) -> Double
+pub fn BioseqalignconsistencyRange::min(Self) -> Double
+pub fn BioseqalignconsistencyRange::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyRange::set(Self, Int32, Double) -> Self
+pub fn BioseqalignconsistencyRange::sum(Self) -> Double
+pub fn BioseqalignconsistencyRange::to_string(Self) -> String
+
+pub(all) struct BioseqalignconsistencySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn BioseqalignconsistencySeries::add(Self, Self) -> Self
+pub fn BioseqalignconsistencySeries::cumsum(Self) -> Self
+pub fn BioseqalignconsistencySeries::len(Self) -> Int32
+pub fn BioseqalignconsistencySeries::max(Self) -> Double
+pub fn BioseqalignconsistencySeries::mean(Self) -> Double
+pub fn BioseqalignconsistencySeries::median(Self) -> Double
+pub fn BioseqalignconsistencySeries::min(Self) -> Double
+pub fn BioseqalignconsistencySeries::normalize(Self) -> Self
+pub fn BioseqalignconsistencySeries::range(Self) -> Double
+pub fn BioseqalignconsistencySeries::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencySeries::std(Self) -> Double
+pub fn BioseqalignconsistencySeries::sub(Self, Self) -> Self
+pub fn BioseqalignconsistencySeries::sum(Self) -> Double
+pub fn BioseqalignconsistencySeries::to_string(Self) -> String
+pub fn BioseqalignconsistencySeries::variance(Self) -> Double
+
+pub(all) struct BioseqalignconsistencySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignconsistencySlice::add(Self, Self) -> Self
+pub fn BioseqalignconsistencySlice::copy(Self) -> Self
+pub fn BioseqalignconsistencySlice::fill(Self, Double) -> Self
+pub fn BioseqalignconsistencySlice::get(Self, Int32) -> Double
+pub fn BioseqalignconsistencySlice::len(Self) -> Int32
+pub fn BioseqalignconsistencySlice::max(Self) -> Double
+pub fn BioseqalignconsistencySlice::mean(Self) -> Double
+pub fn BioseqalignconsistencySlice::min(Self) -> Double
+pub fn BioseqalignconsistencySlice::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencySlice::set(Self, Int32, Double) -> Self
+pub fn BioseqalignconsistencySlice::sum(Self) -> Double
+pub fn BioseqalignconsistencySlice::to_string(Self) -> String
+
+pub(all) struct BioseqalignconsistencyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignconsistencyTable::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyTable::copy(Self) -> Self
+pub fn BioseqalignconsistencyTable::fill(Self, Double) -> Self
+pub fn BioseqalignconsistencyTable::get(Self, Int32) -> Double
+pub fn BioseqalignconsistencyTable::len(Self) -> Int32
+pub fn BioseqalignconsistencyTable::max(Self) -> Double
+pub fn BioseqalignconsistencyTable::mean(Self) -> Double
+pub fn BioseqalignconsistencyTable::min(Self) -> Double
+pub fn BioseqalignconsistencyTable::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyTable::set(Self, Int32, Double) -> Self
+pub fn BioseqalignconsistencyTable::sum(Self) -> Double
+pub fn BioseqalignconsistencyTable::to_string(Self) -> String
+
+pub(all) struct BioseqalignconsistencyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn BioseqalignconsistencyVector::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyVector::dist(Self, Self) -> Double
+pub fn BioseqalignconsistencyVector::dot(Self, Self) -> Double
+pub fn BioseqalignconsistencyVector::norm(Self) -> Double
+pub fn BioseqalignconsistencyVector::normalize(Self) -> Self
+pub fn BioseqalignconsistencyVector::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyVector::sub(Self, Self) -> Self
+pub fn BioseqalignconsistencyVector::to_string(Self) -> String
+
+pub(all) struct BioseqalignconsistencyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignconsistencyView::add(Self, Self) -> Self
+pub fn BioseqalignconsistencyView::copy(Self) -> Self
+pub fn BioseqalignconsistencyView::fill(Self, Double) -> Self
+pub fn BioseqalignconsistencyView::get(Self, Int32) -> Double
+pub fn BioseqalignconsistencyView::len(Self) -> Int32
+pub fn BioseqalignconsistencyView::max(Self) -> Double
+pub fn BioseqalignconsistencyView::mean(Self) -> Double
+pub fn BioseqalignconsistencyView::min(Self) -> Double
+pub fn BioseqalignconsistencyView::scale(Self, Double) -> Self
+pub fn BioseqalignconsistencyView::set(Self, Int32, Double) -> Self
+pub fn BioseqalignconsistencyView::sum(Self) -> Double
+pub fn BioseqalignconsistencyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

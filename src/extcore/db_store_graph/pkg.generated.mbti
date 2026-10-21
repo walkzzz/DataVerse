@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_store_graph"
+
+// Values
+pub fn db_store_graph_buffer_make(Int32) -> DbstoregraphBuffer
+
+pub fn db_store_graph_cluster_make(Int32) -> DbstoregraphCluster
+
+pub fn db_store_graph_cursor_make(Int32) -> DbstoregraphCursor
+
+pub fn db_store_graph_edge_make(Int32) -> DbstoregraphEdge
+
+pub fn db_store_graph_frame_make(Int32) -> DbstoregraphFrame
+
+pub fn db_store_graph_graphn_make(Int32) -> DbstoregraphGraphN
+
+pub fn db_store_graph_layer_make(Int32) -> DbstoregraphLayer
+
+pub fn db_store_graph_make_matrix(Int32, Int32, Double) -> DbstoregraphMatrix
+
+pub fn db_store_graph_make_point(Double, Double) -> DbstoregraphPoint
+
+pub fn db_store_graph_make_point3(Double, Double, Double) -> DbstoregraphPoint
+
+pub fn db_store_graph_make_series(Array[Double], String) -> DbstoregraphSeries
+
+pub fn db_store_graph_make_vector(Array[Double]) -> DbstoregraphVector
+
+pub fn db_store_graph_matrix_identity(Int32) -> DbstoregraphMatrix
+
+pub fn db_store_graph_model_make(Int32) -> DbstoregraphModel
+
+pub fn db_store_graph_node_make(Int32) -> DbstoregraphNode
+
+pub fn db_store_graph_path_make(Int32) -> DbstoregraphPath
+
+pub fn db_store_graph_range_make(Int32) -> DbstoregraphRange
+
+pub fn db_store_graph_slice_make(Int32) -> DbstoregraphSlice
+
+pub fn db_store_graph_table_make(Int32) -> DbstoregraphTable
+
+pub fn db_store_graph_vector_zero(Int32) -> DbstoregraphVector
+
+pub fn db_store_graph_view_make(Int32) -> DbstoregraphView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbstoregraphBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoregraphBuffer::add(Self, Self) -> Self
+pub fn DbstoregraphBuffer::copy(Self) -> Self
+pub fn DbstoregraphBuffer::fill(Self, Double) -> Self
+pub fn DbstoregraphBuffer::get(Self, Int32) -> Double
+pub fn DbstoregraphBuffer::len(Self) -> Int32
+pub fn DbstoregraphBuffer::max(Self) -> Double
+pub fn DbstoregraphBuffer::mean(Self) -> Double
+pub fn DbstoregraphBuffer::min(Self) -> Double
+pub fn DbstoregraphBuffer::scale(Self, Double) -> Self
+pub fn DbstoregraphBuffer::set(Self, Int32, Double) -> Self
+pub fn DbstoregraphBuffer::sum(Self) -> Double
+pub fn DbstoregraphBuffer::to_string(Self) -> String
+
+pub(all) struct DbstoregraphCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoregraphCluster::add(Self, Self) -> Self
+pub fn DbstoregraphCluster::copy(Self) -> Self
+pub fn DbstoregraphCluster::fill(Self, Double) -> Self
+pub fn DbstoregraphCluster::get(Self, Int32) -> Double
+pub fn DbstoregraphCluster::len(Self) -> Int32
+pub fn DbstoregraphCluster::max(Self) -> Double
+pub fn DbstoregraphCluster::mean(Self) -> Double
+pub fn DbstoregraphCluster::min(Self) -> Double
+pub fn DbstoregraphCluster::scale(Self, Double) -> Self
+pub fn DbstoregraphCluster::set(Self, Int32, Double) -> Self
+pub fn DbstoregraphCluster::sum(Self) -> Double
+pub fn DbstoregraphCluster::to_string(Self) -> String
+
+pub(all) struct DbstoregraphCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoregraphCursor::add(Self, Self) -> Self
+pub fn DbstoregraphCursor::copy(Self) -> Self
+pub fn DbstoregraphCursor::fill(Self, Double) -> Self
+pub fn DbstoregraphCursor::get(Self, Int32) -> Double
+pub fn DbstoregraphCursor::len(Self) -> Int32
+pub fn DbstoregraphCursor::max(Self) -> Double
+pub fn DbstoregraphCursor::mean(Self) -> Double
+pub fn DbstoregraphCursor::min(Self) -> Double
+pub fn DbstoregraphCursor::scale(Self, Double) -> Self
+pub fn DbstoregraphCursor::set(Self, Int32, Double) -> Self
+pub fn DbstoregraphCursor::sum(Self) -> Double
+pub fn DbstoregraphCursor::to_string(Self) -> String
+
+pub(all) struct DbstoregraphEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoregraphEdge::add(Self, Self) -> Self
+pub fn DbstoregraphEdge::copy(Self) -> Self
+pub fn DbstoregraphEdge::fill(Self, Double) -> Self
+pub fn DbstoregraphEdge::get(Self, Int32) -> Double
+pub fn DbstoregraphEdge::len(Self) -> Int32
+pub fn DbstoregraphEdge::max(Self) -> Double
+pub fn DbstoregraphEdge::mean(Self) -> Double
+pub fn DbstoregraphEdge::min(Self) -> Double
+pub fn DbstoregraphEdge::scale(Self, Double) -> Self
+pub fn DbstoregraphEdge::set(Self, Int32, Double) -> Self
+pub fn DbstoregraphEdge::sum(Self) -> Double
+pub fn DbstoregraphEdge::to_string(Self) -> String
+
+pub(all) struct DbstoregraphFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoregraphFrame::add(Self, Self) -> Self
+pub fn DbstoregraphFrame::copy(Self) -> Self
+pub fn DbstoregraphFrame::fill(Self, Double) -> Self
+pub fn DbstoregraphFrame::get(Self, Int32) -> Double
+pub fn DbstoregraphFrame::len(Self) -> Int32
+pub fn DbstoregraphFrame::max(Self) -> Double
+pub fn DbstoregraphFrame::mean(Self) -> Double
+pub fn DbstoregraphFrame::min(Self) -> Double
+pub fn DbstoregraphFrame::scale(Self, Double) -> Self
+pub fn DbstoregraphFrame::set(Self, Int32, Double) -> Self
+pub fn DbstoregraphFrame::sum(Self) -> Double
+pub fn DbstoregraphFrame::to_string(Self) -> String
+
+pub(all) struct DbstoregraphGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoregraphGraphN::add(Self, Self) -> Self
+pub fn DbstoregraphGraphN::copy(Self) -> Self
+pub fn DbstoregraphGraphN::fill(Self, Double) -> Self
+pub fn DbstoregraphGraphN::get(Self, Int32) -> Double
+pub fn DbstoregraphGraphN::len(Self) -> Int32
+pub fn DbstoregraphGraphN::max(Self) -> Double
+pub fn DbstoregraphGraphN::mean(Self) -> Double
+pub fn DbstoregraphGraphN::min(Self) -> Double
+pub fn DbstoregraphGraphN::scale(Self, Double) -> Self
+pub fn DbstoregraphGraphN::set(Self, Int32, Double) -> Self
+pub fn DbstoregraphGraphN::sum(Self) -> Double
+pub fn DbstoregraphGraphN::to_string(Self) -> String
+
+pub(all) struct DbstoregraphLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoregraphLayer::add(Self, Self) -> Self
+pub fn DbstoregraphLayer::copy(Self) -> Self
+pub fn DbstoregraphLayer::fill(Self, Double) -> Self
+pub fn DbstoregraphLayer::get(Self, Int32) -> Double
+pub fn DbstoregraphLayer::len(Self) -> Int32
+pub fn DbstoregraphLayer::max(Self) -> Double
+pub fn DbstoregraphLayer::mean(Self) -> Double
+pub fn DbstoregraphLayer::min(Self) -> Double
+pub fn DbstoregraphLayer::scale(Self, Double) -> Self
+pub fn DbstoregraphLayer::set(Self, Int32, Double) -> Self
+pub fn DbstoregraphLayer::sum(Self) -> Double
+pub fn DbstoregraphLayer::to_string(Self) -> String
+
+pub(all) struct DbstoregraphMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbstoregraphMatrix::add(Self, Self) -> Self
+pub fn DbstoregraphMatrix::det(Self) -> Double
+pub fn DbstoregraphMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbstoregraphMatrix::multiply(Self, Self) -> Self
+pub fn DbstoregraphMatrix::norm(Self) -> Double
+pub fn DbstoregraphMatrix::scale(Self, Double) -> Self
+pub fn DbstoregraphMatrix::to_string(Self) -> String
+pub fn DbstoregraphMatrix::trace(Self) -> Double
+pub fn DbstoregraphMatrix::transpose(Self) -> Self
+
+pub(all) struct DbstoregraphModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoregraphModel::add(Self, Self) -> Self
+pub fn DbstoregraphModel::copy(Self) -> Self
+pub fn DbstoregraphModel::fill(Self, Double) -> Self
+pub fn DbstoregraphModel::get(Self, Int32) -> Double
+pub fn DbstoregraphModel::len(Self) -> Int32
+pub fn DbstoregraphModel::max(Self) -> Double
+pub fn DbstoregraphModel::mean(Self) -> Double
+pub fn DbstoregraphModel::min(Self) -> Double
+pub fn DbstoregraphModel::scale(Self, Double) -> Self
+pub fn DbstoregraphModel::set(Self, Int32, Double) -> Self
+pub fn DbstoregraphModel::sum(Self) -> Double
+pub fn DbstoregraphModel::to_string(Self) -> String
+
+pub(all) struct DbstoregraphNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoregraphNode::add(Self, Self) -> Self
+pub fn DbstoregraphNode::copy(Self) -> Self
+pub fn DbstoregraphNode::fill(Self, Double) -> Self
+pub fn DbstoregraphNode::get(Self, Int32) -> Double
+pub fn DbstoregraphNode::len(Self) -> Int32
+pub fn DbstoregraphNode::max(Self) -> Double
+pub fn DbstoregraphNode::mean(Self) -> Double
+pub fn DbstoregraphNode::min(Self) -> Double
+pub fn DbstoregraphNode::scale(Self, Double) -> Self
+pub fn DbstoregraphNode::set(Self, Int32, Double) -> Self
+pub fn DbstoregraphNode::sum(Self) -> Double
+pub fn DbstoregraphNode::to_string(Self) -> String
+
+pub(all) struct DbstoregraphPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoregraphPath::add(Self, Self) -> Self
+pub fn DbstoregraphPath::copy(Self) -> Self
+pub fn DbstoregraphPath::fill(Self, Double) -> Self
+pub fn DbstoregraphPath::get(Self, Int32) -> Double
+pub fn DbstoregraphPath::len(Self) -> Int32
+pub fn DbstoregraphPath::max(Self) -> Double
+pub fn DbstoregraphPath::mean(Self) -> Double
+pub fn DbstoregraphPath::min(Self) -> Double
+pub fn DbstoregraphPath::scale(Self, Double) -> Self
+pub fn DbstoregraphPath::set(Self, Int32, Double) -> Self
+pub fn DbstoregraphPath::sum(Self) -> Double
+pub fn DbstoregraphPath::to_string(Self) -> String
+
+pub(all) struct DbstoregraphPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbstoregraphPoint::add(Self, Self) -> Self
+pub fn DbstoregraphPoint::cross(Self, Self) -> Self
+pub fn DbstoregraphPoint::dist(Self, Self) -> Double
+pub fn DbstoregraphPoint::dot(Self, Self) -> Double
+pub fn DbstoregraphPoint::label(Self) -> Int32
+pub fn DbstoregraphPoint::lerp(Self, Self, Double) -> Self
+pub fn DbstoregraphPoint::mid(Self, Self) -> Self
+pub fn DbstoregraphPoint::negate(Self) -> Self
+pub fn DbstoregraphPoint::norm(Self) -> Double
+pub fn DbstoregraphPoint::normalize(Self) -> Self
+pub fn DbstoregraphPoint::scale(Self, Double) -> Self
+pub fn DbstoregraphPoint::sub(Self, Self) -> Self
+pub fn DbstoregraphPoint::to_string(Self) -> String
+pub fn DbstoregraphPoint::x(Self) -> Double
+pub fn DbstoregraphPoint::y(Self) -> Double
+pub fn DbstoregraphPoint::z(Self) -> Double
+
+pub(all) struct DbstoregraphRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoregraphRange::add(Self, Self) -> Self
+pub fn DbstoregraphRange::copy(Self) -> Self
+pub fn DbstoregraphRange::fill(Self, Double) -> Self
+pub fn DbstoregraphRange::get(Self, Int32) -> Double
+pub fn DbstoregraphRange::len(Self) -> Int32
+pub fn DbstoregraphRange::max(Self) -> Double
+pub fn DbstoregraphRange::mean(Self) -> Double
+pub fn DbstoregraphRange::min(Self) -> Double
+pub fn DbstoregraphRange::scale(Self, Double) -> Self
+pub fn DbstoregraphRange::set(Self, Int32, Double) -> Self
+pub fn DbstoregraphRange::sum(Self) -> Double
+pub fn DbstoregraphRange::to_string(Self) -> String
+
+pub(all) struct DbstoregraphSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbstoregraphSeries::add(Self, Self) -> Self
+pub fn DbstoregraphSeries::cumsum(Self) -> Self
+pub fn DbstoregraphSeries::len(Self) -> Int32
+pub fn DbstoregraphSeries::max(Self) -> Double
+pub fn DbstoregraphSeries::mean(Self) -> Double
+pub fn DbstoregraphSeries::median(Self) -> Double
+pub fn DbstoregraphSeries::min(Self) -> Double
+pub fn DbstoregraphSeries::normalize(Self) -> Self
+pub fn DbstoregraphSeries::range(Self) -> Double
+pub fn DbstoregraphSeries::scale(Self, Double) -> Self
+pub fn DbstoregraphSeries::std(Self) -> Double
+pub fn DbstoregraphSeries::sub(Self, Self) -> Self
+pub fn DbstoregraphSeries::sum(Self) -> Double
+pub fn DbstoregraphSeries::to_string(Self) -> String
+pub fn DbstoregraphSeries::variance(Self) -> Double
+
+pub(all) struct DbstoregraphSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoregraphSlice::add(Self, Self) -> Self
+pub fn DbstoregraphSlice::copy(Self) -> Self
+pub fn DbstoregraphSlice::fill(Self, Double) -> Self
+pub fn DbstoregraphSlice::get(Self, Int32) -> Double
+pub fn DbstoregraphSlice::len(Self) -> Int32
+pub fn DbstoregraphSlice::max(Self) -> Double
+pub fn DbstoregraphSlice::mean(Self) -> Double
+pub fn DbstoregraphSlice::min(Self) -> Double
+pub fn DbstoregraphSlice::scale(Self, Double) -> Self
+pub fn DbstoregraphSlice::set(Self, Int32, Double) -> Self
+pub fn DbstoregraphSlice::sum(Self) -> Double
+pub fn DbstoregraphSlice::to_string(Self) -> String
+
+pub(all) struct DbstoregraphTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoregraphTable::add(Self, Self) -> Self
+pub fn DbstoregraphTable::copy(Self) -> Self
+pub fn DbstoregraphTable::fill(Self, Double) -> Self
+pub fn DbstoregraphTable::get(Self, Int32) -> Double
+pub fn DbstoregraphTable::len(Self) -> Int32
+pub fn DbstoregraphTable::max(Self) -> Double
+pub fn DbstoregraphTable::mean(Self) -> Double
+pub fn DbstoregraphTable::min(Self) -> Double
+pub fn DbstoregraphTable::scale(Self, Double) -> Self
+pub fn DbstoregraphTable::set(Self, Int32, Double) -> Self
+pub fn DbstoregraphTable::sum(Self) -> Double
+pub fn DbstoregraphTable::to_string(Self) -> String
+
+pub(all) struct DbstoregraphVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbstoregraphVector::add(Self, Self) -> Self
+pub fn DbstoregraphVector::dist(Self, Self) -> Double
+pub fn DbstoregraphVector::dot(Self, Self) -> Double
+pub fn DbstoregraphVector::norm(Self) -> Double
+pub fn DbstoregraphVector::normalize(Self) -> Self
+pub fn DbstoregraphVector::scale(Self, Double) -> Self
+pub fn DbstoregraphVector::sub(Self, Self) -> Self
+pub fn DbstoregraphVector::to_string(Self) -> String
+
+pub(all) struct DbstoregraphView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstoregraphView::add(Self, Self) -> Self
+pub fn DbstoregraphView::copy(Self) -> Self
+pub fn DbstoregraphView::fill(Self, Double) -> Self
+pub fn DbstoregraphView::get(Self, Int32) -> Double
+pub fn DbstoregraphView::len(Self) -> Int32
+pub fn DbstoregraphView::max(Self) -> Double
+pub fn DbstoregraphView::mean(Self) -> Double
+pub fn DbstoregraphView::min(Self) -> Double
+pub fn DbstoregraphView::scale(Self, Double) -> Self
+pub fn DbstoregraphView::set(Self, Int32, Double) -> Self
+pub fn DbstoregraphView::sum(Self) -> Double
+pub fn DbstoregraphView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/nsga2"
+
+// Values
+pub fn nsga2_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn nsga2_corr(Array[Double], Array[Double]) -> Double
+
+pub fn nsga2_cov(Array[Double], Array[Double]) -> Double
+
+pub fn nsga2_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn nsga2_mae(Array[Double], Array[Double]) -> Double
+
+pub fn nsga2_make_labeled_point(Double, Double, Int32) -> Nsga2Point
+
+pub fn nsga2_make_matrix(Int32, Int32, Double) -> Nsga2Matrix
+
+pub fn nsga2_make_point(Double, Double) -> Nsga2Point
+
+pub fn nsga2_make_series(Array[Double], String) -> Nsga2Series
+
+pub fn nsga2_make_vector(Array[Double]) -> Nsga2Vector
+
+pub fn nsga2_matrix_add(Nsga2Matrix, Nsga2Matrix) -> Nsga2Matrix
+
+pub fn nsga2_matrix_get(Nsga2Matrix, Int32, Int32) -> Double
+
+pub fn nsga2_matrix_identity(Int32) -> Nsga2Matrix
+
+pub fn nsga2_matrix_multiply(Nsga2Matrix, Nsga2Matrix) -> Nsga2Matrix
+
+pub fn nsga2_matrix_norm(Nsga2Matrix) -> Double
+
+pub fn nsga2_matrix_scale(Nsga2Matrix, Double) -> Nsga2Matrix
+
+pub fn nsga2_matrix_to_string(Nsga2Matrix) -> String
+
+pub fn nsga2_matrix_trace(Nsga2Matrix) -> Double
+
+pub fn nsga2_matrix_transpose(Nsga2Matrix) -> Nsga2Matrix
+
+pub fn nsga2_mse(Array[Double], Array[Double]) -> Double
+
+pub fn nsga2_point_add(Nsga2Point, Nsga2Point) -> Nsga2Point
+
+pub fn nsga2_point_dist(Nsga2Point, Nsga2Point) -> Double
+
+pub fn nsga2_point_dot(Nsga2Point, Nsga2Point) -> Double
+
+pub fn nsga2_point_label(Nsga2Point) -> Int32
+
+pub fn nsga2_point_norm(Nsga2Point) -> Double
+
+pub fn nsga2_point_scale(Nsga2Point, Double) -> Nsga2Point
+
+pub fn nsga2_point_sub(Nsga2Point, Nsga2Point) -> Nsga2Point
+
+pub fn nsga2_point_to_string(Nsga2Point) -> String
+
+pub fn nsga2_point_x(Nsga2Point) -> Double
+
+pub fn nsga2_point_y(Nsga2Point) -> Double
+
+pub fn nsga2_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn nsga2_r2(Array[Double], Array[Double]) -> Double
+
+pub fn nsga2_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn nsga2_series_add(Nsga2Series, Nsga2Series) -> Nsga2Series
+
+pub fn nsga2_series_len(Nsga2Series) -> Int32
+
+pub fn nsga2_series_max(Nsga2Series) -> Double
+
+pub fn nsga2_series_mean(Nsga2Series) -> Double
+
+pub fn nsga2_series_min(Nsga2Series) -> Double
+
+pub fn nsga2_series_scale(Nsga2Series, Double) -> Nsga2Series
+
+pub fn nsga2_series_std(Nsga2Series) -> Double
+
+pub fn nsga2_series_sum(Nsga2Series) -> Double
+
+pub fn nsga2_series_to_string(Nsga2Series) -> String
+
+pub fn nsga2_series_var(Nsga2Series) -> Double
+
+pub fn nsga2_std(Array[Double]) -> Double
+
+pub fn nsga2_var(Array[Double]) -> Double
+
+pub fn nsga2_vector_add(Nsga2Vector, Nsga2Vector) -> Nsga2Vector
+
+pub fn nsga2_vector_dist(Nsga2Vector, Nsga2Vector) -> Double
+
+pub fn nsga2_vector_dot(Nsga2Vector, Nsga2Vector) -> Double
+
+pub fn nsga2_vector_norm(Nsga2Vector) -> Double
+
+pub fn nsga2_vector_normalize(Nsga2Vector) -> Nsga2Vector
+
+pub fn nsga2_vector_scale(Nsga2Vector, Double) -> Nsga2Vector
+
+pub fn nsga2_vector_sub(Nsga2Vector, Nsga2Vector) -> Nsga2Vector
+
+pub fn nsga2_vector_to_string(Nsga2Vector) -> String
+
+pub fn nsga2_vector_zero(Int32) -> Nsga2Vector
+
+// Errors
+
+// Types and methods
+pub struct Nsga2Matrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Nsga2Point {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Nsga2Series {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Nsga2Vector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/tensor_store"
+
+// Values
+pub fn tensor_store_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn tensor_store_corr(Array[Double], Array[Double]) -> Double
+
+pub fn tensor_store_cov(Array[Double], Array[Double]) -> Double
+
+pub fn tensor_store_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn tensor_store_mae(Array[Double], Array[Double]) -> Double
+
+pub fn tensor_store_make_labeled_point(Double, Double, Int32) -> Tensor_storePoint
+
+pub fn tensor_store_make_matrix(Int32, Int32, Double) -> Tensor_storeMatrix
+
+pub fn tensor_store_make_point(Double, Double) -> Tensor_storePoint
+
+pub fn tensor_store_make_series(Array[Double], String) -> Tensor_storeSeries
+
+pub fn tensor_store_make_vector(Array[Double]) -> Tensor_storeVector
+
+pub fn tensor_store_matrix_add(Tensor_storeMatrix, Tensor_storeMatrix) -> Tensor_storeMatrix
+
+pub fn tensor_store_matrix_get(Tensor_storeMatrix, Int32, Int32) -> Double
+
+pub fn tensor_store_matrix_identity(Int32) -> Tensor_storeMatrix
+
+pub fn tensor_store_matrix_multiply(Tensor_storeMatrix, Tensor_storeMatrix) -> Tensor_storeMatrix
+
+pub fn tensor_store_matrix_norm(Tensor_storeMatrix) -> Double
+
+pub fn tensor_store_matrix_scale(Tensor_storeMatrix, Double) -> Tensor_storeMatrix
+
+pub fn tensor_store_matrix_to_string(Tensor_storeMatrix) -> String
+
+pub fn tensor_store_matrix_trace(Tensor_storeMatrix) -> Double
+
+pub fn tensor_store_matrix_transpose(Tensor_storeMatrix) -> Tensor_storeMatrix
+
+pub fn tensor_store_mse(Array[Double], Array[Double]) -> Double
+
+pub fn tensor_store_point_add(Tensor_storePoint, Tensor_storePoint) -> Tensor_storePoint
+
+pub fn tensor_store_point_dist(Tensor_storePoint, Tensor_storePoint) -> Double
+
+pub fn tensor_store_point_dot(Tensor_storePoint, Tensor_storePoint) -> Double
+
+pub fn tensor_store_point_label(Tensor_storePoint) -> Int32
+
+pub fn tensor_store_point_norm(Tensor_storePoint) -> Double
+
+pub fn tensor_store_point_scale(Tensor_storePoint, Double) -> Tensor_storePoint
+
+pub fn tensor_store_point_sub(Tensor_storePoint, Tensor_storePoint) -> Tensor_storePoint
+
+pub fn tensor_store_point_to_string(Tensor_storePoint) -> String
+
+pub fn tensor_store_point_x(Tensor_storePoint) -> Double
+
+pub fn tensor_store_point_y(Tensor_storePoint) -> Double
+
+pub fn tensor_store_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn tensor_store_r2(Array[Double], Array[Double]) -> Double
+
+pub fn tensor_store_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn tensor_store_series_add(Tensor_storeSeries, Tensor_storeSeries) -> Tensor_storeSeries
+
+pub fn tensor_store_series_len(Tensor_storeSeries) -> Int32
+
+pub fn tensor_store_series_max(Tensor_storeSeries) -> Double
+
+pub fn tensor_store_series_mean(Tensor_storeSeries) -> Double
+
+pub fn tensor_store_series_min(Tensor_storeSeries) -> Double
+
+pub fn tensor_store_series_scale(Tensor_storeSeries, Double) -> Tensor_storeSeries
+
+pub fn tensor_store_series_std(Tensor_storeSeries) -> Double
+
+pub fn tensor_store_series_sum(Tensor_storeSeries) -> Double
+
+pub fn tensor_store_series_to_string(Tensor_storeSeries) -> String
+
+pub fn tensor_store_series_var(Tensor_storeSeries) -> Double
+
+pub fn tensor_store_std(Array[Double]) -> Double
+
+pub fn tensor_store_var(Array[Double]) -> Double
+
+pub fn tensor_store_vector_add(Tensor_storeVector, Tensor_storeVector) -> Tensor_storeVector
+
+pub fn tensor_store_vector_dist(Tensor_storeVector, Tensor_storeVector) -> Double
+
+pub fn tensor_store_vector_dot(Tensor_storeVector, Tensor_storeVector) -> Double
+
+pub fn tensor_store_vector_norm(Tensor_storeVector) -> Double
+
+pub fn tensor_store_vector_normalize(Tensor_storeVector) -> Tensor_storeVector
+
+pub fn tensor_store_vector_scale(Tensor_storeVector, Double) -> Tensor_storeVector
+
+pub fn tensor_store_vector_sub(Tensor_storeVector, Tensor_storeVector) -> Tensor_storeVector
+
+pub fn tensor_store_vector_to_string(Tensor_storeVector) -> String
+
+pub fn tensor_store_vector_zero(Int32) -> Tensor_storeVector
+
+// Errors
+
+// Types and methods
+pub struct Tensor_storeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Tensor_storePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Tensor_storeSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Tensor_storeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

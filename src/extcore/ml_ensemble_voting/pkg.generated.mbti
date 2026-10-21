@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_ensemble_voting"
+
+// Values
+pub fn ml_ensemble_voting_buffer_make(Int32) -> MlensemblevotingBuffer
+
+pub fn ml_ensemble_voting_cluster_make(Int32) -> MlensemblevotingCluster
+
+pub fn ml_ensemble_voting_cursor_make(Int32) -> MlensemblevotingCursor
+
+pub fn ml_ensemble_voting_edge_make(Int32) -> MlensemblevotingEdge
+
+pub fn ml_ensemble_voting_frame_make(Int32) -> MlensemblevotingFrame
+
+pub fn ml_ensemble_voting_graphn_make(Int32) -> MlensemblevotingGraphN
+
+pub fn ml_ensemble_voting_layer_make(Int32) -> MlensemblevotingLayer
+
+pub fn ml_ensemble_voting_make_matrix(Int32, Int32, Double) -> MlensemblevotingMatrix
+
+pub fn ml_ensemble_voting_make_point(Double, Double) -> MlensemblevotingPoint
+
+pub fn ml_ensemble_voting_make_point3(Double, Double, Double) -> MlensemblevotingPoint
+
+pub fn ml_ensemble_voting_make_series(Array[Double], String) -> MlensemblevotingSeries
+
+pub fn ml_ensemble_voting_make_vector(Array[Double]) -> MlensemblevotingVector
+
+pub fn ml_ensemble_voting_matrix_identity(Int32) -> MlensemblevotingMatrix
+
+pub fn ml_ensemble_voting_model_make(Int32) -> MlensemblevotingModel
+
+pub fn ml_ensemble_voting_node_make(Int32) -> MlensemblevotingNode
+
+pub fn ml_ensemble_voting_path_make(Int32) -> MlensemblevotingPath
+
+pub fn ml_ensemble_voting_range_make(Int32) -> MlensemblevotingRange
+
+pub fn ml_ensemble_voting_slice_make(Int32) -> MlensemblevotingSlice
+
+pub fn ml_ensemble_voting_table_make(Int32) -> MlensemblevotingTable
+
+pub fn ml_ensemble_voting_vector_zero(Int32) -> MlensemblevotingVector
+
+pub fn ml_ensemble_voting_view_make(Int32) -> MlensemblevotingView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlensemblevotingBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblevotingBuffer::add(Self, Self) -> Self
+pub fn MlensemblevotingBuffer::copy(Self) -> Self
+pub fn MlensemblevotingBuffer::fill(Self, Double) -> Self
+pub fn MlensemblevotingBuffer::get(Self, Int32) -> Double
+pub fn MlensemblevotingBuffer::len(Self) -> Int32
+pub fn MlensemblevotingBuffer::max(Self) -> Double
+pub fn MlensemblevotingBuffer::mean(Self) -> Double
+pub fn MlensemblevotingBuffer::min(Self) -> Double
+pub fn MlensemblevotingBuffer::scale(Self, Double) -> Self
+pub fn MlensemblevotingBuffer::set(Self, Int32, Double) -> Self
+pub fn MlensemblevotingBuffer::sum(Self) -> Double
+pub fn MlensemblevotingBuffer::to_string(Self) -> String
+
+pub(all) struct MlensemblevotingCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblevotingCluster::add(Self, Self) -> Self
+pub fn MlensemblevotingCluster::copy(Self) -> Self
+pub fn MlensemblevotingCluster::fill(Self, Double) -> Self
+pub fn MlensemblevotingCluster::get(Self, Int32) -> Double
+pub fn MlensemblevotingCluster::len(Self) -> Int32
+pub fn MlensemblevotingCluster::max(Self) -> Double
+pub fn MlensemblevotingCluster::mean(Self) -> Double
+pub fn MlensemblevotingCluster::min(Self) -> Double
+pub fn MlensemblevotingCluster::scale(Self, Double) -> Self
+pub fn MlensemblevotingCluster::set(Self, Int32, Double) -> Self
+pub fn MlensemblevotingCluster::sum(Self) -> Double
+pub fn MlensemblevotingCluster::to_string(Self) -> String
+
+pub(all) struct MlensemblevotingCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblevotingCursor::add(Self, Self) -> Self
+pub fn MlensemblevotingCursor::copy(Self) -> Self
+pub fn MlensemblevotingCursor::fill(Self, Double) -> Self
+pub fn MlensemblevotingCursor::get(Self, Int32) -> Double
+pub fn MlensemblevotingCursor::len(Self) -> Int32
+pub fn MlensemblevotingCursor::max(Self) -> Double
+pub fn MlensemblevotingCursor::mean(Self) -> Double
+pub fn MlensemblevotingCursor::min(Self) -> Double
+pub fn MlensemblevotingCursor::scale(Self, Double) -> Self
+pub fn MlensemblevotingCursor::set(Self, Int32, Double) -> Self
+pub fn MlensemblevotingCursor::sum(Self) -> Double
+pub fn MlensemblevotingCursor::to_string(Self) -> String
+
+pub(all) struct MlensemblevotingEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblevotingEdge::add(Self, Self) -> Self
+pub fn MlensemblevotingEdge::copy(Self) -> Self
+pub fn MlensemblevotingEdge::fill(Self, Double) -> Self
+pub fn MlensemblevotingEdge::get(Self, Int32) -> Double
+pub fn MlensemblevotingEdge::len(Self) -> Int32
+pub fn MlensemblevotingEdge::max(Self) -> Double
+pub fn MlensemblevotingEdge::mean(Self) -> Double
+pub fn MlensemblevotingEdge::min(Self) -> Double
+pub fn MlensemblevotingEdge::scale(Self, Double) -> Self
+pub fn MlensemblevotingEdge::set(Self, Int32, Double) -> Self
+pub fn MlensemblevotingEdge::sum(Self) -> Double
+pub fn MlensemblevotingEdge::to_string(Self) -> String
+
+pub(all) struct MlensemblevotingFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblevotingFrame::add(Self, Self) -> Self
+pub fn MlensemblevotingFrame::copy(Self) -> Self
+pub fn MlensemblevotingFrame::fill(Self, Double) -> Self
+pub fn MlensemblevotingFrame::get(Self, Int32) -> Double
+pub fn MlensemblevotingFrame::len(Self) -> Int32
+pub fn MlensemblevotingFrame::max(Self) -> Double
+pub fn MlensemblevotingFrame::mean(Self) -> Double
+pub fn MlensemblevotingFrame::min(Self) -> Double
+pub fn MlensemblevotingFrame::scale(Self, Double) -> Self
+pub fn MlensemblevotingFrame::set(Self, Int32, Double) -> Self
+pub fn MlensemblevotingFrame::sum(Self) -> Double
+pub fn MlensemblevotingFrame::to_string(Self) -> String
+
+pub(all) struct MlensemblevotingGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblevotingGraphN::add(Self, Self) -> Self
+pub fn MlensemblevotingGraphN::copy(Self) -> Self
+pub fn MlensemblevotingGraphN::fill(Self, Double) -> Self
+pub fn MlensemblevotingGraphN::get(Self, Int32) -> Double
+pub fn MlensemblevotingGraphN::len(Self) -> Int32
+pub fn MlensemblevotingGraphN::max(Self) -> Double
+pub fn MlensemblevotingGraphN::mean(Self) -> Double
+pub fn MlensemblevotingGraphN::min(Self) -> Double
+pub fn MlensemblevotingGraphN::scale(Self, Double) -> Self
+pub fn MlensemblevotingGraphN::set(Self, Int32, Double) -> Self
+pub fn MlensemblevotingGraphN::sum(Self) -> Double
+pub fn MlensemblevotingGraphN::to_string(Self) -> String
+
+pub(all) struct MlensemblevotingLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblevotingLayer::add(Self, Self) -> Self
+pub fn MlensemblevotingLayer::copy(Self) -> Self
+pub fn MlensemblevotingLayer::fill(Self, Double) -> Self
+pub fn MlensemblevotingLayer::get(Self, Int32) -> Double
+pub fn MlensemblevotingLayer::len(Self) -> Int32
+pub fn MlensemblevotingLayer::max(Self) -> Double
+pub fn MlensemblevotingLayer::mean(Self) -> Double
+pub fn MlensemblevotingLayer::min(Self) -> Double
+pub fn MlensemblevotingLayer::scale(Self, Double) -> Self
+pub fn MlensemblevotingLayer::set(Self, Int32, Double) -> Self
+pub fn MlensemblevotingLayer::sum(Self) -> Double
+pub fn MlensemblevotingLayer::to_string(Self) -> String
+
+pub(all) struct MlensemblevotingMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlensemblevotingMatrix::add(Self, Self) -> Self
+pub fn MlensemblevotingMatrix::det(Self) -> Double
+pub fn MlensemblevotingMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlensemblevotingMatrix::multiply(Self, Self) -> Self
+pub fn MlensemblevotingMatrix::norm(Self) -> Double
+pub fn MlensemblevotingMatrix::scale(Self, Double) -> Self
+pub fn MlensemblevotingMatrix::to_string(Self) -> String
+pub fn MlensemblevotingMatrix::trace(Self) -> Double
+pub fn MlensemblevotingMatrix::transpose(Self) -> Self
+
+pub(all) struct MlensemblevotingModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblevotingModel::add(Self, Self) -> Self
+pub fn MlensemblevotingModel::copy(Self) -> Self
+pub fn MlensemblevotingModel::fill(Self, Double) -> Self
+pub fn MlensemblevotingModel::get(Self, Int32) -> Double
+pub fn MlensemblevotingModel::len(Self) -> Int32
+pub fn MlensemblevotingModel::max(Self) -> Double
+pub fn MlensemblevotingModel::mean(Self) -> Double
+pub fn MlensemblevotingModel::min(Self) -> Double
+pub fn MlensemblevotingModel::scale(Self, Double) -> Self
+pub fn MlensemblevotingModel::set(Self, Int32, Double) -> Self
+pub fn MlensemblevotingModel::sum(Self) -> Double
+pub fn MlensemblevotingModel::to_string(Self) -> String
+
+pub(all) struct MlensemblevotingNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblevotingNode::add(Self, Self) -> Self
+pub fn MlensemblevotingNode::copy(Self) -> Self
+pub fn MlensemblevotingNode::fill(Self, Double) -> Self
+pub fn MlensemblevotingNode::get(Self, Int32) -> Double
+pub fn MlensemblevotingNode::len(Self) -> Int32
+pub fn MlensemblevotingNode::max(Self) -> Double
+pub fn MlensemblevotingNode::mean(Self) -> Double
+pub fn MlensemblevotingNode::min(Self) -> Double
+pub fn MlensemblevotingNode::scale(Self, Double) -> Self
+pub fn MlensemblevotingNode::set(Self, Int32, Double) -> Self
+pub fn MlensemblevotingNode::sum(Self) -> Double
+pub fn MlensemblevotingNode::to_string(Self) -> String
+
+pub(all) struct MlensemblevotingPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblevotingPath::add(Self, Self) -> Self
+pub fn MlensemblevotingPath::copy(Self) -> Self
+pub fn MlensemblevotingPath::fill(Self, Double) -> Self
+pub fn MlensemblevotingPath::get(Self, Int32) -> Double
+pub fn MlensemblevotingPath::len(Self) -> Int32
+pub fn MlensemblevotingPath::max(Self) -> Double
+pub fn MlensemblevotingPath::mean(Self) -> Double
+pub fn MlensemblevotingPath::min(Self) -> Double
+pub fn MlensemblevotingPath::scale(Self, Double) -> Self
+pub fn MlensemblevotingPath::set(Self, Int32, Double) -> Self
+pub fn MlensemblevotingPath::sum(Self) -> Double
+pub fn MlensemblevotingPath::to_string(Self) -> String
+
+pub(all) struct MlensemblevotingPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlensemblevotingPoint::add(Self, Self) -> Self
+pub fn MlensemblevotingPoint::cross(Self, Self) -> Self
+pub fn MlensemblevotingPoint::dist(Self, Self) -> Double
+pub fn MlensemblevotingPoint::dot(Self, Self) -> Double
+pub fn MlensemblevotingPoint::label(Self) -> Int32
+pub fn MlensemblevotingPoint::lerp(Self, Self, Double) -> Self
+pub fn MlensemblevotingPoint::mid(Self, Self) -> Self
+pub fn MlensemblevotingPoint::negate(Self) -> Self
+pub fn MlensemblevotingPoint::norm(Self) -> Double
+pub fn MlensemblevotingPoint::normalize(Self) -> Self
+pub fn MlensemblevotingPoint::scale(Self, Double) -> Self
+pub fn MlensemblevotingPoint::sub(Self, Self) -> Self
+pub fn MlensemblevotingPoint::to_string(Self) -> String
+pub fn MlensemblevotingPoint::x(Self) -> Double
+pub fn MlensemblevotingPoint::y(Self) -> Double
+pub fn MlensemblevotingPoint::z(Self) -> Double
+
+pub(all) struct MlensemblevotingRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblevotingRange::add(Self, Self) -> Self
+pub fn MlensemblevotingRange::copy(Self) -> Self
+pub fn MlensemblevotingRange::fill(Self, Double) -> Self
+pub fn MlensemblevotingRange::get(Self, Int32) -> Double
+pub fn MlensemblevotingRange::len(Self) -> Int32
+pub fn MlensemblevotingRange::max(Self) -> Double
+pub fn MlensemblevotingRange::mean(Self) -> Double
+pub fn MlensemblevotingRange::min(Self) -> Double
+pub fn MlensemblevotingRange::scale(Self, Double) -> Self
+pub fn MlensemblevotingRange::set(Self, Int32, Double) -> Self
+pub fn MlensemblevotingRange::sum(Self) -> Double
+pub fn MlensemblevotingRange::to_string(Self) -> String
+
+pub(all) struct MlensemblevotingSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlensemblevotingSeries::add(Self, Self) -> Self
+pub fn MlensemblevotingSeries::cumsum(Self) -> Self
+pub fn MlensemblevotingSeries::len(Self) -> Int32
+pub fn MlensemblevotingSeries::max(Self) -> Double
+pub fn MlensemblevotingSeries::mean(Self) -> Double
+pub fn MlensemblevotingSeries::median(Self) -> Double
+pub fn MlensemblevotingSeries::min(Self) -> Double
+pub fn MlensemblevotingSeries::normalize(Self) -> Self
+pub fn MlensemblevotingSeries::range(Self) -> Double
+pub fn MlensemblevotingSeries::scale(Self, Double) -> Self
+pub fn MlensemblevotingSeries::std(Self) -> Double
+pub fn MlensemblevotingSeries::sub(Self, Self) -> Self
+pub fn MlensemblevotingSeries::sum(Self) -> Double
+pub fn MlensemblevotingSeries::to_string(Self) -> String
+pub fn MlensemblevotingSeries::variance(Self) -> Double
+
+pub(all) struct MlensemblevotingSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblevotingSlice::add(Self, Self) -> Self
+pub fn MlensemblevotingSlice::copy(Self) -> Self
+pub fn MlensemblevotingSlice::fill(Self, Double) -> Self
+pub fn MlensemblevotingSlice::get(Self, Int32) -> Double
+pub fn MlensemblevotingSlice::len(Self) -> Int32
+pub fn MlensemblevotingSlice::max(Self) -> Double
+pub fn MlensemblevotingSlice::mean(Self) -> Double
+pub fn MlensemblevotingSlice::min(Self) -> Double
+pub fn MlensemblevotingSlice::scale(Self, Double) -> Self
+pub fn MlensemblevotingSlice::set(Self, Int32, Double) -> Self
+pub fn MlensemblevotingSlice::sum(Self) -> Double
+pub fn MlensemblevotingSlice::to_string(Self) -> String
+
+pub(all) struct MlensemblevotingTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblevotingTable::add(Self, Self) -> Self
+pub fn MlensemblevotingTable::copy(Self) -> Self
+pub fn MlensemblevotingTable::fill(Self, Double) -> Self
+pub fn MlensemblevotingTable::get(Self, Int32) -> Double
+pub fn MlensemblevotingTable::len(Self) -> Int32
+pub fn MlensemblevotingTable::max(Self) -> Double
+pub fn MlensemblevotingTable::mean(Self) -> Double
+pub fn MlensemblevotingTable::min(Self) -> Double
+pub fn MlensemblevotingTable::scale(Self, Double) -> Self
+pub fn MlensemblevotingTable::set(Self, Int32, Double) -> Self
+pub fn MlensemblevotingTable::sum(Self) -> Double
+pub fn MlensemblevotingTable::to_string(Self) -> String
+
+pub(all) struct MlensemblevotingVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlensemblevotingVector::add(Self, Self) -> Self
+pub fn MlensemblevotingVector::dist(Self, Self) -> Double
+pub fn MlensemblevotingVector::dot(Self, Self) -> Double
+pub fn MlensemblevotingVector::norm(Self) -> Double
+pub fn MlensemblevotingVector::normalize(Self) -> Self
+pub fn MlensemblevotingVector::scale(Self, Double) -> Self
+pub fn MlensemblevotingVector::sub(Self, Self) -> Self
+pub fn MlensemblevotingVector::to_string(Self) -> String
+
+pub(all) struct MlensemblevotingView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlensemblevotingView::add(Self, Self) -> Self
+pub fn MlensemblevotingView::copy(Self) -> Self
+pub fn MlensemblevotingView::fill(Self, Double) -> Self
+pub fn MlensemblevotingView::get(Self, Int32) -> Double
+pub fn MlensemblevotingView::len(Self) -> Int32
+pub fn MlensemblevotingView::max(Self) -> Double
+pub fn MlensemblevotingView::mean(Self) -> Double
+pub fn MlensemblevotingView::min(Self) -> Double
+pub fn MlensemblevotingView::scale(Self, Double) -> Self
+pub fn MlensemblevotingView::set(Self, Int32, Double) -> Self
+pub fn MlensemblevotingView::sum(Self) -> Double
+pub fn MlensemblevotingView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/chem_mol_repr_cif"
+
+// Values
+pub fn chem_mol_repr_cif_buffer_make(Int32) -> ChemmolreprcifBuffer
+
+pub fn chem_mol_repr_cif_cluster_make(Int32) -> ChemmolreprcifCluster
+
+pub fn chem_mol_repr_cif_cursor_make(Int32) -> ChemmolreprcifCursor
+
+pub fn chem_mol_repr_cif_edge_make(Int32) -> ChemmolreprcifEdge
+
+pub fn chem_mol_repr_cif_frame_make(Int32) -> ChemmolreprcifFrame
+
+pub fn chem_mol_repr_cif_graphn_make(Int32) -> ChemmolreprcifGraphN
+
+pub fn chem_mol_repr_cif_layer_make(Int32) -> ChemmolreprcifLayer
+
+pub fn chem_mol_repr_cif_make_matrix(Int32, Int32, Double) -> ChemmolreprcifMatrix
+
+pub fn chem_mol_repr_cif_make_point(Double, Double) -> ChemmolreprcifPoint
+
+pub fn chem_mol_repr_cif_make_point3(Double, Double, Double) -> ChemmolreprcifPoint
+
+pub fn chem_mol_repr_cif_make_series(Array[Double], String) -> ChemmolreprcifSeries
+
+pub fn chem_mol_repr_cif_make_vector(Array[Double]) -> ChemmolreprcifVector
+
+pub fn chem_mol_repr_cif_matrix_identity(Int32) -> ChemmolreprcifMatrix
+
+pub fn chem_mol_repr_cif_model_make(Int32) -> ChemmolreprcifModel
+
+pub fn chem_mol_repr_cif_node_make(Int32) -> ChemmolreprcifNode
+
+pub fn chem_mol_repr_cif_path_make(Int32) -> ChemmolreprcifPath
+
+pub fn chem_mol_repr_cif_range_make(Int32) -> ChemmolreprcifRange
+
+pub fn chem_mol_repr_cif_slice_make(Int32) -> ChemmolreprcifSlice
+
+pub fn chem_mol_repr_cif_table_make(Int32) -> ChemmolreprcifTable
+
+pub fn chem_mol_repr_cif_vector_zero(Int32) -> ChemmolreprcifVector
+
+pub fn chem_mol_repr_cif_view_make(Int32) -> ChemmolreprcifView
+
+// Errors
+
+// Types and methods
+pub(all) struct ChemmolreprcifBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcifBuffer::add(Self, Self) -> Self
+pub fn ChemmolreprcifBuffer::copy(Self) -> Self
+pub fn ChemmolreprcifBuffer::fill(Self, Double) -> Self
+pub fn ChemmolreprcifBuffer::get(Self, Int32) -> Double
+pub fn ChemmolreprcifBuffer::len(Self) -> Int32
+pub fn ChemmolreprcifBuffer::max(Self) -> Double
+pub fn ChemmolreprcifBuffer::mean(Self) -> Double
+pub fn ChemmolreprcifBuffer::min(Self) -> Double
+pub fn ChemmolreprcifBuffer::scale(Self, Double) -> Self
+pub fn ChemmolreprcifBuffer::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcifBuffer::sum(Self) -> Double
+pub fn ChemmolreprcifBuffer::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcifCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcifCluster::add(Self, Self) -> Self
+pub fn ChemmolreprcifCluster::copy(Self) -> Self
+pub fn ChemmolreprcifCluster::fill(Self, Double) -> Self
+pub fn ChemmolreprcifCluster::get(Self, Int32) -> Double
+pub fn ChemmolreprcifCluster::len(Self) -> Int32
+pub fn ChemmolreprcifCluster::max(Self) -> Double
+pub fn ChemmolreprcifCluster::mean(Self) -> Double
+pub fn ChemmolreprcifCluster::min(Self) -> Double
+pub fn ChemmolreprcifCluster::scale(Self, Double) -> Self
+pub fn ChemmolreprcifCluster::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcifCluster::sum(Self) -> Double
+pub fn ChemmolreprcifCluster::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcifCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcifCursor::add(Self, Self) -> Self
+pub fn ChemmolreprcifCursor::copy(Self) -> Self
+pub fn ChemmolreprcifCursor::fill(Self, Double) -> Self
+pub fn ChemmolreprcifCursor::get(Self, Int32) -> Double
+pub fn ChemmolreprcifCursor::len(Self) -> Int32
+pub fn ChemmolreprcifCursor::max(Self) -> Double
+pub fn ChemmolreprcifCursor::mean(Self) -> Double
+pub fn ChemmolreprcifCursor::min(Self) -> Double
+pub fn ChemmolreprcifCursor::scale(Self, Double) -> Self
+pub fn ChemmolreprcifCursor::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcifCursor::sum(Self) -> Double
+pub fn ChemmolreprcifCursor::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcifEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcifEdge::add(Self, Self) -> Self
+pub fn ChemmolreprcifEdge::copy(Self) -> Self
+pub fn ChemmolreprcifEdge::fill(Self, Double) -> Self
+pub fn ChemmolreprcifEdge::get(Self, Int32) -> Double
+pub fn ChemmolreprcifEdge::len(Self) -> Int32
+pub fn ChemmolreprcifEdge::max(Self) -> Double
+pub fn ChemmolreprcifEdge::mean(Self) -> Double
+pub fn ChemmolreprcifEdge::min(Self) -> Double
+pub fn ChemmolreprcifEdge::scale(Self, Double) -> Self
+pub fn ChemmolreprcifEdge::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcifEdge::sum(Self) -> Double
+pub fn ChemmolreprcifEdge::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcifFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcifFrame::add(Self, Self) -> Self
+pub fn ChemmolreprcifFrame::copy(Self) -> Self
+pub fn ChemmolreprcifFrame::fill(Self, Double) -> Self
+pub fn ChemmolreprcifFrame::get(Self, Int32) -> Double
+pub fn ChemmolreprcifFrame::len(Self) -> Int32
+pub fn ChemmolreprcifFrame::max(Self) -> Double
+pub fn ChemmolreprcifFrame::mean(Self) -> Double
+pub fn ChemmolreprcifFrame::min(Self) -> Double
+pub fn ChemmolreprcifFrame::scale(Self, Double) -> Self
+pub fn ChemmolreprcifFrame::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcifFrame::sum(Self) -> Double
+pub fn ChemmolreprcifFrame::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcifGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcifGraphN::add(Self, Self) -> Self
+pub fn ChemmolreprcifGraphN::copy(Self) -> Self
+pub fn ChemmolreprcifGraphN::fill(Self, Double) -> Self
+pub fn ChemmolreprcifGraphN::get(Self, Int32) -> Double
+pub fn ChemmolreprcifGraphN::len(Self) -> Int32
+pub fn ChemmolreprcifGraphN::max(Self) -> Double
+pub fn ChemmolreprcifGraphN::mean(Self) -> Double
+pub fn ChemmolreprcifGraphN::min(Self) -> Double
+pub fn ChemmolreprcifGraphN::scale(Self, Double) -> Self
+pub fn ChemmolreprcifGraphN::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcifGraphN::sum(Self) -> Double
+pub fn ChemmolreprcifGraphN::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcifLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcifLayer::add(Self, Self) -> Self
+pub fn ChemmolreprcifLayer::copy(Self) -> Self
+pub fn ChemmolreprcifLayer::fill(Self, Double) -> Self
+pub fn ChemmolreprcifLayer::get(Self, Int32) -> Double
+pub fn ChemmolreprcifLayer::len(Self) -> Int32
+pub fn ChemmolreprcifLayer::max(Self) -> Double
+pub fn ChemmolreprcifLayer::mean(Self) -> Double
+pub fn ChemmolreprcifLayer::min(Self) -> Double
+pub fn ChemmolreprcifLayer::scale(Self, Double) -> Self
+pub fn ChemmolreprcifLayer::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcifLayer::sum(Self) -> Double
+pub fn ChemmolreprcifLayer::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcifMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ChemmolreprcifMatrix::add(Self, Self) -> Self
+pub fn ChemmolreprcifMatrix::det(Self) -> Double
+pub fn ChemmolreprcifMatrix::get(Self, Int32, Int32) -> Double
+pub fn ChemmolreprcifMatrix::multiply(Self, Self) -> Self
+pub fn ChemmolreprcifMatrix::norm(Self) -> Double
+pub fn ChemmolreprcifMatrix::scale(Self, Double) -> Self
+pub fn ChemmolreprcifMatrix::to_string(Self) -> String
+pub fn ChemmolreprcifMatrix::trace(Self) -> Double
+pub fn ChemmolreprcifMatrix::transpose(Self) -> Self
+
+pub(all) struct ChemmolreprcifModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcifModel::add(Self, Self) -> Self
+pub fn ChemmolreprcifModel::copy(Self) -> Self
+pub fn ChemmolreprcifModel::fill(Self, Double) -> Self
+pub fn ChemmolreprcifModel::get(Self, Int32) -> Double
+pub fn ChemmolreprcifModel::len(Self) -> Int32
+pub fn ChemmolreprcifModel::max(Self) -> Double
+pub fn ChemmolreprcifModel::mean(Self) -> Double
+pub fn ChemmolreprcifModel::min(Self) -> Double
+pub fn ChemmolreprcifModel::scale(Self, Double) -> Self
+pub fn ChemmolreprcifModel::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcifModel::sum(Self) -> Double
+pub fn ChemmolreprcifModel::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcifNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcifNode::add(Self, Self) -> Self
+pub fn ChemmolreprcifNode::copy(Self) -> Self
+pub fn ChemmolreprcifNode::fill(Self, Double) -> Self
+pub fn ChemmolreprcifNode::get(Self, Int32) -> Double
+pub fn ChemmolreprcifNode::len(Self) -> Int32
+pub fn ChemmolreprcifNode::max(Self) -> Double
+pub fn ChemmolreprcifNode::mean(Self) -> Double
+pub fn ChemmolreprcifNode::min(Self) -> Double
+pub fn ChemmolreprcifNode::scale(Self, Double) -> Self
+pub fn ChemmolreprcifNode::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcifNode::sum(Self) -> Double
+pub fn ChemmolreprcifNode::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcifPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcifPath::add(Self, Self) -> Self
+pub fn ChemmolreprcifPath::copy(Self) -> Self
+pub fn ChemmolreprcifPath::fill(Self, Double) -> Self
+pub fn ChemmolreprcifPath::get(Self, Int32) -> Double
+pub fn ChemmolreprcifPath::len(Self) -> Int32
+pub fn ChemmolreprcifPath::max(Self) -> Double
+pub fn ChemmolreprcifPath::mean(Self) -> Double
+pub fn ChemmolreprcifPath::min(Self) -> Double
+pub fn ChemmolreprcifPath::scale(Self, Double) -> Self
+pub fn ChemmolreprcifPath::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcifPath::sum(Self) -> Double
+pub fn ChemmolreprcifPath::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcifPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ChemmolreprcifPoint::add(Self, Self) -> Self
+pub fn ChemmolreprcifPoint::cross(Self, Self) -> Self
+pub fn ChemmolreprcifPoint::dist(Self, Self) -> Double
+pub fn ChemmolreprcifPoint::dot(Self, Self) -> Double
+pub fn ChemmolreprcifPoint::label(Self) -> Int32
+pub fn ChemmolreprcifPoint::lerp(Self, Self, Double) -> Self
+pub fn ChemmolreprcifPoint::mid(Self, Self) -> Self
+pub fn ChemmolreprcifPoint::negate(Self) -> Self
+pub fn ChemmolreprcifPoint::norm(Self) -> Double
+pub fn ChemmolreprcifPoint::normalize(Self) -> Self
+pub fn ChemmolreprcifPoint::scale(Self, Double) -> Self
+pub fn ChemmolreprcifPoint::sub(Self, Self) -> Self
+pub fn ChemmolreprcifPoint::to_string(Self) -> String
+pub fn ChemmolreprcifPoint::x(Self) -> Double
+pub fn ChemmolreprcifPoint::y(Self) -> Double
+pub fn ChemmolreprcifPoint::z(Self) -> Double
+
+pub(all) struct ChemmolreprcifRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcifRange::add(Self, Self) -> Self
+pub fn ChemmolreprcifRange::copy(Self) -> Self
+pub fn ChemmolreprcifRange::fill(Self, Double) -> Self
+pub fn ChemmolreprcifRange::get(Self, Int32) -> Double
+pub fn ChemmolreprcifRange::len(Self) -> Int32
+pub fn ChemmolreprcifRange::max(Self) -> Double
+pub fn ChemmolreprcifRange::mean(Self) -> Double
+pub fn ChemmolreprcifRange::min(Self) -> Double
+pub fn ChemmolreprcifRange::scale(Self, Double) -> Self
+pub fn ChemmolreprcifRange::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcifRange::sum(Self) -> Double
+pub fn ChemmolreprcifRange::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcifSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ChemmolreprcifSeries::add(Self, Self) -> Self
+pub fn ChemmolreprcifSeries::cumsum(Self) -> Self
+pub fn ChemmolreprcifSeries::len(Self) -> Int32
+pub fn ChemmolreprcifSeries::max(Self) -> Double
+pub fn ChemmolreprcifSeries::mean(Self) -> Double
+pub fn ChemmolreprcifSeries::median(Self) -> Double
+pub fn ChemmolreprcifSeries::min(Self) -> Double
+pub fn ChemmolreprcifSeries::normalize(Self) -> Self
+pub fn ChemmolreprcifSeries::range(Self) -> Double
+pub fn ChemmolreprcifSeries::scale(Self, Double) -> Self
+pub fn ChemmolreprcifSeries::std(Self) -> Double
+pub fn ChemmolreprcifSeries::sub(Self, Self) -> Self
+pub fn ChemmolreprcifSeries::sum(Self) -> Double
+pub fn ChemmolreprcifSeries::to_string(Self) -> String
+pub fn ChemmolreprcifSeries::variance(Self) -> Double
+
+pub(all) struct ChemmolreprcifSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcifSlice::add(Self, Self) -> Self
+pub fn ChemmolreprcifSlice::copy(Self) -> Self
+pub fn ChemmolreprcifSlice::fill(Self, Double) -> Self
+pub fn ChemmolreprcifSlice::get(Self, Int32) -> Double
+pub fn ChemmolreprcifSlice::len(Self) -> Int32
+pub fn ChemmolreprcifSlice::max(Self) -> Double
+pub fn ChemmolreprcifSlice::mean(Self) -> Double
+pub fn ChemmolreprcifSlice::min(Self) -> Double
+pub fn ChemmolreprcifSlice::scale(Self, Double) -> Self
+pub fn ChemmolreprcifSlice::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcifSlice::sum(Self) -> Double
+pub fn ChemmolreprcifSlice::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcifTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcifTable::add(Self, Self) -> Self
+pub fn ChemmolreprcifTable::copy(Self) -> Self
+pub fn ChemmolreprcifTable::fill(Self, Double) -> Self
+pub fn ChemmolreprcifTable::get(Self, Int32) -> Double
+pub fn ChemmolreprcifTable::len(Self) -> Int32
+pub fn ChemmolreprcifTable::max(Self) -> Double
+pub fn ChemmolreprcifTable::mean(Self) -> Double
+pub fn ChemmolreprcifTable::min(Self) -> Double
+pub fn ChemmolreprcifTable::scale(Self, Double) -> Self
+pub fn ChemmolreprcifTable::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcifTable::sum(Self) -> Double
+pub fn ChemmolreprcifTable::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcifVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ChemmolreprcifVector::add(Self, Self) -> Self
+pub fn ChemmolreprcifVector::dist(Self, Self) -> Double
+pub fn ChemmolreprcifVector::dot(Self, Self) -> Double
+pub fn ChemmolreprcifVector::norm(Self) -> Double
+pub fn ChemmolreprcifVector::normalize(Self) -> Self
+pub fn ChemmolreprcifVector::scale(Self, Double) -> Self
+pub fn ChemmolreprcifVector::sub(Self, Self) -> Self
+pub fn ChemmolreprcifVector::to_string(Self) -> String
+
+pub(all) struct ChemmolreprcifView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemmolreprcifView::add(Self, Self) -> Self
+pub fn ChemmolreprcifView::copy(Self) -> Self
+pub fn ChemmolreprcifView::fill(Self, Double) -> Self
+pub fn ChemmolreprcifView::get(Self, Int32) -> Double
+pub fn ChemmolreprcifView::len(Self) -> Int32
+pub fn ChemmolreprcifView::max(Self) -> Double
+pub fn ChemmolreprcifView::mean(Self) -> Double
+pub fn ChemmolreprcifView::min(Self) -> Double
+pub fn ChemmolreprcifView::scale(Self, Double) -> Self
+pub fn ChemmolreprcifView::set(Self, Int32, Double) -> Self
+pub fn ChemmolreprcifView::sum(Self) -> Double
+pub fn ChemmolreprcifView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

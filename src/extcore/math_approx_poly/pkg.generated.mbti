@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_approx_poly"
+
+// Values
+pub fn math_approx_poly_buffer_make(Int32) -> MathapproxpolyBuffer
+
+pub fn math_approx_poly_cluster_make(Int32) -> MathapproxpolyCluster
+
+pub fn math_approx_poly_cursor_make(Int32) -> MathapproxpolyCursor
+
+pub fn math_approx_poly_edge_make(Int32) -> MathapproxpolyEdge
+
+pub fn math_approx_poly_frame_make(Int32) -> MathapproxpolyFrame
+
+pub fn math_approx_poly_graphn_make(Int32) -> MathapproxpolyGraphN
+
+pub fn math_approx_poly_layer_make(Int32) -> MathapproxpolyLayer
+
+pub fn math_approx_poly_make_matrix(Int32, Int32, Double) -> MathapproxpolyMatrix
+
+pub fn math_approx_poly_make_point(Double, Double) -> MathapproxpolyPoint
+
+pub fn math_approx_poly_make_point3(Double, Double, Double) -> MathapproxpolyPoint
+
+pub fn math_approx_poly_make_series(Array[Double], String) -> MathapproxpolySeries
+
+pub fn math_approx_poly_make_vector(Array[Double]) -> MathapproxpolyVector
+
+pub fn math_approx_poly_matrix_identity(Int32) -> MathapproxpolyMatrix
+
+pub fn math_approx_poly_model_make(Int32) -> MathapproxpolyModel
+
+pub fn math_approx_poly_node_make(Int32) -> MathapproxpolyNode
+
+pub fn math_approx_poly_path_make(Int32) -> MathapproxpolyPath
+
+pub fn math_approx_poly_range_make(Int32) -> MathapproxpolyRange
+
+pub fn math_approx_poly_slice_make(Int32) -> MathapproxpolySlice
+
+pub fn math_approx_poly_table_make(Int32) -> MathapproxpolyTable
+
+pub fn math_approx_poly_vector_zero(Int32) -> MathapproxpolyVector
+
+pub fn math_approx_poly_view_make(Int32) -> MathapproxpolyView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathapproxpolyBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpolyBuffer::add(Self, Self) -> Self
+pub fn MathapproxpolyBuffer::copy(Self) -> Self
+pub fn MathapproxpolyBuffer::fill(Self, Double) -> Self
+pub fn MathapproxpolyBuffer::get(Self, Int32) -> Double
+pub fn MathapproxpolyBuffer::len(Self) -> Int32
+pub fn MathapproxpolyBuffer::max(Self) -> Double
+pub fn MathapproxpolyBuffer::mean(Self) -> Double
+pub fn MathapproxpolyBuffer::min(Self) -> Double
+pub fn MathapproxpolyBuffer::scale(Self, Double) -> Self
+pub fn MathapproxpolyBuffer::set(Self, Int32, Double) -> Self
+pub fn MathapproxpolyBuffer::sum(Self) -> Double
+pub fn MathapproxpolyBuffer::to_string(Self) -> String
+
+pub(all) struct MathapproxpolyCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpolyCluster::add(Self, Self) -> Self
+pub fn MathapproxpolyCluster::copy(Self) -> Self
+pub fn MathapproxpolyCluster::fill(Self, Double) -> Self
+pub fn MathapproxpolyCluster::get(Self, Int32) -> Double
+pub fn MathapproxpolyCluster::len(Self) -> Int32
+pub fn MathapproxpolyCluster::max(Self) -> Double
+pub fn MathapproxpolyCluster::mean(Self) -> Double
+pub fn MathapproxpolyCluster::min(Self) -> Double
+pub fn MathapproxpolyCluster::scale(Self, Double) -> Self
+pub fn MathapproxpolyCluster::set(Self, Int32, Double) -> Self
+pub fn MathapproxpolyCluster::sum(Self) -> Double
+pub fn MathapproxpolyCluster::to_string(Self) -> String
+
+pub(all) struct MathapproxpolyCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpolyCursor::add(Self, Self) -> Self
+pub fn MathapproxpolyCursor::copy(Self) -> Self
+pub fn MathapproxpolyCursor::fill(Self, Double) -> Self
+pub fn MathapproxpolyCursor::get(Self, Int32) -> Double
+pub fn MathapproxpolyCursor::len(Self) -> Int32
+pub fn MathapproxpolyCursor::max(Self) -> Double
+pub fn MathapproxpolyCursor::mean(Self) -> Double
+pub fn MathapproxpolyCursor::min(Self) -> Double
+pub fn MathapproxpolyCursor::scale(Self, Double) -> Self
+pub fn MathapproxpolyCursor::set(Self, Int32, Double) -> Self
+pub fn MathapproxpolyCursor::sum(Self) -> Double
+pub fn MathapproxpolyCursor::to_string(Self) -> String
+
+pub(all) struct MathapproxpolyEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpolyEdge::add(Self, Self) -> Self
+pub fn MathapproxpolyEdge::copy(Self) -> Self
+pub fn MathapproxpolyEdge::fill(Self, Double) -> Self
+pub fn MathapproxpolyEdge::get(Self, Int32) -> Double
+pub fn MathapproxpolyEdge::len(Self) -> Int32
+pub fn MathapproxpolyEdge::max(Self) -> Double
+pub fn MathapproxpolyEdge::mean(Self) -> Double
+pub fn MathapproxpolyEdge::min(Self) -> Double
+pub fn MathapproxpolyEdge::scale(Self, Double) -> Self
+pub fn MathapproxpolyEdge::set(Self, Int32, Double) -> Self
+pub fn MathapproxpolyEdge::sum(Self) -> Double
+pub fn MathapproxpolyEdge::to_string(Self) -> String
+
+pub(all) struct MathapproxpolyFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpolyFrame::add(Self, Self) -> Self
+pub fn MathapproxpolyFrame::copy(Self) -> Self
+pub fn MathapproxpolyFrame::fill(Self, Double) -> Self
+pub fn MathapproxpolyFrame::get(Self, Int32) -> Double
+pub fn MathapproxpolyFrame::len(Self) -> Int32
+pub fn MathapproxpolyFrame::max(Self) -> Double
+pub fn MathapproxpolyFrame::mean(Self) -> Double
+pub fn MathapproxpolyFrame::min(Self) -> Double
+pub fn MathapproxpolyFrame::scale(Self, Double) -> Self
+pub fn MathapproxpolyFrame::set(Self, Int32, Double) -> Self
+pub fn MathapproxpolyFrame::sum(Self) -> Double
+pub fn MathapproxpolyFrame::to_string(Self) -> String
+
+pub(all) struct MathapproxpolyGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpolyGraphN::add(Self, Self) -> Self
+pub fn MathapproxpolyGraphN::copy(Self) -> Self
+pub fn MathapproxpolyGraphN::fill(Self, Double) -> Self
+pub fn MathapproxpolyGraphN::get(Self, Int32) -> Double
+pub fn MathapproxpolyGraphN::len(Self) -> Int32
+pub fn MathapproxpolyGraphN::max(Self) -> Double
+pub fn MathapproxpolyGraphN::mean(Self) -> Double
+pub fn MathapproxpolyGraphN::min(Self) -> Double
+pub fn MathapproxpolyGraphN::scale(Self, Double) -> Self
+pub fn MathapproxpolyGraphN::set(Self, Int32, Double) -> Self
+pub fn MathapproxpolyGraphN::sum(Self) -> Double
+pub fn MathapproxpolyGraphN::to_string(Self) -> String
+
+pub(all) struct MathapproxpolyLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpolyLayer::add(Self, Self) -> Self
+pub fn MathapproxpolyLayer::copy(Self) -> Self
+pub fn MathapproxpolyLayer::fill(Self, Double) -> Self
+pub fn MathapproxpolyLayer::get(Self, Int32) -> Double
+pub fn MathapproxpolyLayer::len(Self) -> Int32
+pub fn MathapproxpolyLayer::max(Self) -> Double
+pub fn MathapproxpolyLayer::mean(Self) -> Double
+pub fn MathapproxpolyLayer::min(Self) -> Double
+pub fn MathapproxpolyLayer::scale(Self, Double) -> Self
+pub fn MathapproxpolyLayer::set(Self, Int32, Double) -> Self
+pub fn MathapproxpolyLayer::sum(Self) -> Double
+pub fn MathapproxpolyLayer::to_string(Self) -> String
+
+pub(all) struct MathapproxpolyMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathapproxpolyMatrix::add(Self, Self) -> Self
+pub fn MathapproxpolyMatrix::det(Self) -> Double
+pub fn MathapproxpolyMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathapproxpolyMatrix::multiply(Self, Self) -> Self
+pub fn MathapproxpolyMatrix::norm(Self) -> Double
+pub fn MathapproxpolyMatrix::scale(Self, Double) -> Self
+pub fn MathapproxpolyMatrix::to_string(Self) -> String
+pub fn MathapproxpolyMatrix::trace(Self) -> Double
+pub fn MathapproxpolyMatrix::transpose(Self) -> Self
+
+pub(all) struct MathapproxpolyModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpolyModel::add(Self, Self) -> Self
+pub fn MathapproxpolyModel::copy(Self) -> Self
+pub fn MathapproxpolyModel::fill(Self, Double) -> Self
+pub fn MathapproxpolyModel::get(Self, Int32) -> Double
+pub fn MathapproxpolyModel::len(Self) -> Int32
+pub fn MathapproxpolyModel::max(Self) -> Double
+pub fn MathapproxpolyModel::mean(Self) -> Double
+pub fn MathapproxpolyModel::min(Self) -> Double
+pub fn MathapproxpolyModel::scale(Self, Double) -> Self
+pub fn MathapproxpolyModel::set(Self, Int32, Double) -> Self
+pub fn MathapproxpolyModel::sum(Self) -> Double
+pub fn MathapproxpolyModel::to_string(Self) -> String
+
+pub(all) struct MathapproxpolyNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpolyNode::add(Self, Self) -> Self
+pub fn MathapproxpolyNode::copy(Self) -> Self
+pub fn MathapproxpolyNode::fill(Self, Double) -> Self
+pub fn MathapproxpolyNode::get(Self, Int32) -> Double
+pub fn MathapproxpolyNode::len(Self) -> Int32
+pub fn MathapproxpolyNode::max(Self) -> Double
+pub fn MathapproxpolyNode::mean(Self) -> Double
+pub fn MathapproxpolyNode::min(Self) -> Double
+pub fn MathapproxpolyNode::scale(Self, Double) -> Self
+pub fn MathapproxpolyNode::set(Self, Int32, Double) -> Self
+pub fn MathapproxpolyNode::sum(Self) -> Double
+pub fn MathapproxpolyNode::to_string(Self) -> String
+
+pub(all) struct MathapproxpolyPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpolyPath::add(Self, Self) -> Self
+pub fn MathapproxpolyPath::copy(Self) -> Self
+pub fn MathapproxpolyPath::fill(Self, Double) -> Self
+pub fn MathapproxpolyPath::get(Self, Int32) -> Double
+pub fn MathapproxpolyPath::len(Self) -> Int32
+pub fn MathapproxpolyPath::max(Self) -> Double
+pub fn MathapproxpolyPath::mean(Self) -> Double
+pub fn MathapproxpolyPath::min(Self) -> Double
+pub fn MathapproxpolyPath::scale(Self, Double) -> Self
+pub fn MathapproxpolyPath::set(Self, Int32, Double) -> Self
+pub fn MathapproxpolyPath::sum(Self) -> Double
+pub fn MathapproxpolyPath::to_string(Self) -> String
+
+pub(all) struct MathapproxpolyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathapproxpolyPoint::add(Self, Self) -> Self
+pub fn MathapproxpolyPoint::cross(Self, Self) -> Self
+pub fn MathapproxpolyPoint::dist(Self, Self) -> Double
+pub fn MathapproxpolyPoint::dot(Self, Self) -> Double
+pub fn MathapproxpolyPoint::label(Self) -> Int32
+pub fn MathapproxpolyPoint::lerp(Self, Self, Double) -> Self
+pub fn MathapproxpolyPoint::mid(Self, Self) -> Self
+pub fn MathapproxpolyPoint::negate(Self) -> Self
+pub fn MathapproxpolyPoint::norm(Self) -> Double
+pub fn MathapproxpolyPoint::normalize(Self) -> Self
+pub fn MathapproxpolyPoint::scale(Self, Double) -> Self
+pub fn MathapproxpolyPoint::sub(Self, Self) -> Self
+pub fn MathapproxpolyPoint::to_string(Self) -> String
+pub fn MathapproxpolyPoint::x(Self) -> Double
+pub fn MathapproxpolyPoint::y(Self) -> Double
+pub fn MathapproxpolyPoint::z(Self) -> Double
+
+pub(all) struct MathapproxpolyRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpolyRange::add(Self, Self) -> Self
+pub fn MathapproxpolyRange::copy(Self) -> Self
+pub fn MathapproxpolyRange::fill(Self, Double) -> Self
+pub fn MathapproxpolyRange::get(Self, Int32) -> Double
+pub fn MathapproxpolyRange::len(Self) -> Int32
+pub fn MathapproxpolyRange::max(Self) -> Double
+pub fn MathapproxpolyRange::mean(Self) -> Double
+pub fn MathapproxpolyRange::min(Self) -> Double
+pub fn MathapproxpolyRange::scale(Self, Double) -> Self
+pub fn MathapproxpolyRange::set(Self, Int32, Double) -> Self
+pub fn MathapproxpolyRange::sum(Self) -> Double
+pub fn MathapproxpolyRange::to_string(Self) -> String
+
+pub(all) struct MathapproxpolySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathapproxpolySeries::add(Self, Self) -> Self
+pub fn MathapproxpolySeries::cumsum(Self) -> Self
+pub fn MathapproxpolySeries::len(Self) -> Int32
+pub fn MathapproxpolySeries::max(Self) -> Double
+pub fn MathapproxpolySeries::mean(Self) -> Double
+pub fn MathapproxpolySeries::median(Self) -> Double
+pub fn MathapproxpolySeries::min(Self) -> Double
+pub fn MathapproxpolySeries::normalize(Self) -> Self
+pub fn MathapproxpolySeries::range(Self) -> Double
+pub fn MathapproxpolySeries::scale(Self, Double) -> Self
+pub fn MathapproxpolySeries::std(Self) -> Double
+pub fn MathapproxpolySeries::sub(Self, Self) -> Self
+pub fn MathapproxpolySeries::sum(Self) -> Double
+pub fn MathapproxpolySeries::to_string(Self) -> String
+pub fn MathapproxpolySeries::variance(Self) -> Double
+
+pub(all) struct MathapproxpolySlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpolySlice::add(Self, Self) -> Self
+pub fn MathapproxpolySlice::copy(Self) -> Self
+pub fn MathapproxpolySlice::fill(Self, Double) -> Self
+pub fn MathapproxpolySlice::get(Self, Int32) -> Double
+pub fn MathapproxpolySlice::len(Self) -> Int32
+pub fn MathapproxpolySlice::max(Self) -> Double
+pub fn MathapproxpolySlice::mean(Self) -> Double
+pub fn MathapproxpolySlice::min(Self) -> Double
+pub fn MathapproxpolySlice::scale(Self, Double) -> Self
+pub fn MathapproxpolySlice::set(Self, Int32, Double) -> Self
+pub fn MathapproxpolySlice::sum(Self) -> Double
+pub fn MathapproxpolySlice::to_string(Self) -> String
+
+pub(all) struct MathapproxpolyTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpolyTable::add(Self, Self) -> Self
+pub fn MathapproxpolyTable::copy(Self) -> Self
+pub fn MathapproxpolyTable::fill(Self, Double) -> Self
+pub fn MathapproxpolyTable::get(Self, Int32) -> Double
+pub fn MathapproxpolyTable::len(Self) -> Int32
+pub fn MathapproxpolyTable::max(Self) -> Double
+pub fn MathapproxpolyTable::mean(Self) -> Double
+pub fn MathapproxpolyTable::min(Self) -> Double
+pub fn MathapproxpolyTable::scale(Self, Double) -> Self
+pub fn MathapproxpolyTable::set(Self, Int32, Double) -> Self
+pub fn MathapproxpolyTable::sum(Self) -> Double
+pub fn MathapproxpolyTable::to_string(Self) -> String
+
+pub(all) struct MathapproxpolyVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathapproxpolyVector::add(Self, Self) -> Self
+pub fn MathapproxpolyVector::dist(Self, Self) -> Double
+pub fn MathapproxpolyVector::dot(Self, Self) -> Double
+pub fn MathapproxpolyVector::norm(Self) -> Double
+pub fn MathapproxpolyVector::normalize(Self) -> Self
+pub fn MathapproxpolyVector::scale(Self, Double) -> Self
+pub fn MathapproxpolyVector::sub(Self, Self) -> Self
+pub fn MathapproxpolyVector::to_string(Self) -> String
+
+pub(all) struct MathapproxpolyView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxpolyView::add(Self, Self) -> Self
+pub fn MathapproxpolyView::copy(Self) -> Self
+pub fn MathapproxpolyView::fill(Self, Double) -> Self
+pub fn MathapproxpolyView::get(Self, Int32) -> Double
+pub fn MathapproxpolyView::len(Self) -> Int32
+pub fn MathapproxpolyView::max(Self) -> Double
+pub fn MathapproxpolyView::mean(Self) -> Double
+pub fn MathapproxpolyView::min(Self) -> Double
+pub fn MathapproxpolyView::scale(Self, Double) -> Self
+pub fn MathapproxpolyView::set(Self, Int32, Double) -> Self
+pub fn MathapproxpolyView::sum(Self) -> Double
+pub fn MathapproxpolyView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

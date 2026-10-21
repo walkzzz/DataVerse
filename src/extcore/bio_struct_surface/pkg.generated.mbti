@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/bio_struct_surface"
+
+// Values
+pub fn bio_struct_surface_buffer_make(Int32) -> BiostructsurfaceBuffer
+
+pub fn bio_struct_surface_cluster_make(Int32) -> BiostructsurfaceCluster
+
+pub fn bio_struct_surface_cursor_make(Int32) -> BiostructsurfaceCursor
+
+pub fn bio_struct_surface_edge_make(Int32) -> BiostructsurfaceEdge
+
+pub fn bio_struct_surface_frame_make(Int32) -> BiostructsurfaceFrame
+
+pub fn bio_struct_surface_graphn_make(Int32) -> BiostructsurfaceGraphN
+
+pub fn bio_struct_surface_layer_make(Int32) -> BiostructsurfaceLayer
+
+pub fn bio_struct_surface_make_matrix(Int32, Int32, Double) -> BiostructsurfaceMatrix
+
+pub fn bio_struct_surface_make_point(Double, Double) -> BiostructsurfacePoint
+
+pub fn bio_struct_surface_make_point3(Double, Double, Double) -> BiostructsurfacePoint
+
+pub fn bio_struct_surface_make_series(Array[Double], String) -> BiostructsurfaceSeries
+
+pub fn bio_struct_surface_make_vector(Array[Double]) -> BiostructsurfaceVector
+
+pub fn bio_struct_surface_matrix_identity(Int32) -> BiostructsurfaceMatrix
+
+pub fn bio_struct_surface_model_make(Int32) -> BiostructsurfaceModel
+
+pub fn bio_struct_surface_node_make(Int32) -> BiostructsurfaceNode
+
+pub fn bio_struct_surface_path_make(Int32) -> BiostructsurfacePath
+
+pub fn bio_struct_surface_range_make(Int32) -> BiostructsurfaceRange
+
+pub fn bio_struct_surface_slice_make(Int32) -> BiostructsurfaceSlice
+
+pub fn bio_struct_surface_table_make(Int32) -> BiostructsurfaceTable
+
+pub fn bio_struct_surface_vector_zero(Int32) -> BiostructsurfaceVector
+
+pub fn bio_struct_surface_view_make(Int32) -> BiostructsurfaceView
+
+// Errors
+
+// Types and methods
+pub(all) struct BiostructsurfaceBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructsurfaceBuffer::add(Self, Self) -> Self
+pub fn BiostructsurfaceBuffer::copy(Self) -> Self
+pub fn BiostructsurfaceBuffer::fill(Self, Double) -> Self
+pub fn BiostructsurfaceBuffer::get(Self, Int32) -> Double
+pub fn BiostructsurfaceBuffer::len(Self) -> Int32
+pub fn BiostructsurfaceBuffer::max(Self) -> Double
+pub fn BiostructsurfaceBuffer::mean(Self) -> Double
+pub fn BiostructsurfaceBuffer::min(Self) -> Double
+pub fn BiostructsurfaceBuffer::scale(Self, Double) -> Self
+pub fn BiostructsurfaceBuffer::set(Self, Int32, Double) -> Self
+pub fn BiostructsurfaceBuffer::sum(Self) -> Double
+pub fn BiostructsurfaceBuffer::to_string(Self) -> String
+
+pub(all) struct BiostructsurfaceCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructsurfaceCluster::add(Self, Self) -> Self
+pub fn BiostructsurfaceCluster::copy(Self) -> Self
+pub fn BiostructsurfaceCluster::fill(Self, Double) -> Self
+pub fn BiostructsurfaceCluster::get(Self, Int32) -> Double
+pub fn BiostructsurfaceCluster::len(Self) -> Int32
+pub fn BiostructsurfaceCluster::max(Self) -> Double
+pub fn BiostructsurfaceCluster::mean(Self) -> Double
+pub fn BiostructsurfaceCluster::min(Self) -> Double
+pub fn BiostructsurfaceCluster::scale(Self, Double) -> Self
+pub fn BiostructsurfaceCluster::set(Self, Int32, Double) -> Self
+pub fn BiostructsurfaceCluster::sum(Self) -> Double
+pub fn BiostructsurfaceCluster::to_string(Self) -> String
+
+pub(all) struct BiostructsurfaceCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructsurfaceCursor::add(Self, Self) -> Self
+pub fn BiostructsurfaceCursor::copy(Self) -> Self
+pub fn BiostructsurfaceCursor::fill(Self, Double) -> Self
+pub fn BiostructsurfaceCursor::get(Self, Int32) -> Double
+pub fn BiostructsurfaceCursor::len(Self) -> Int32
+pub fn BiostructsurfaceCursor::max(Self) -> Double
+pub fn BiostructsurfaceCursor::mean(Self) -> Double
+pub fn BiostructsurfaceCursor::min(Self) -> Double
+pub fn BiostructsurfaceCursor::scale(Self, Double) -> Self
+pub fn BiostructsurfaceCursor::set(Self, Int32, Double) -> Self
+pub fn BiostructsurfaceCursor::sum(Self) -> Double
+pub fn BiostructsurfaceCursor::to_string(Self) -> String
+
+pub(all) struct BiostructsurfaceEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructsurfaceEdge::add(Self, Self) -> Self
+pub fn BiostructsurfaceEdge::copy(Self) -> Self
+pub fn BiostructsurfaceEdge::fill(Self, Double) -> Self
+pub fn BiostructsurfaceEdge::get(Self, Int32) -> Double
+pub fn BiostructsurfaceEdge::len(Self) -> Int32
+pub fn BiostructsurfaceEdge::max(Self) -> Double
+pub fn BiostructsurfaceEdge::mean(Self) -> Double
+pub fn BiostructsurfaceEdge::min(Self) -> Double
+pub fn BiostructsurfaceEdge::scale(Self, Double) -> Self
+pub fn BiostructsurfaceEdge::set(Self, Int32, Double) -> Self
+pub fn BiostructsurfaceEdge::sum(Self) -> Double
+pub fn BiostructsurfaceEdge::to_string(Self) -> String
+
+pub(all) struct BiostructsurfaceFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructsurfaceFrame::add(Self, Self) -> Self
+pub fn BiostructsurfaceFrame::copy(Self) -> Self
+pub fn BiostructsurfaceFrame::fill(Self, Double) -> Self
+pub fn BiostructsurfaceFrame::get(Self, Int32) -> Double
+pub fn BiostructsurfaceFrame::len(Self) -> Int32
+pub fn BiostructsurfaceFrame::max(Self) -> Double
+pub fn BiostructsurfaceFrame::mean(Self) -> Double
+pub fn BiostructsurfaceFrame::min(Self) -> Double
+pub fn BiostructsurfaceFrame::scale(Self, Double) -> Self
+pub fn BiostructsurfaceFrame::set(Self, Int32, Double) -> Self
+pub fn BiostructsurfaceFrame::sum(Self) -> Double
+pub fn BiostructsurfaceFrame::to_string(Self) -> String
+
+pub(all) struct BiostructsurfaceGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructsurfaceGraphN::add(Self, Self) -> Self
+pub fn BiostructsurfaceGraphN::copy(Self) -> Self
+pub fn BiostructsurfaceGraphN::fill(Self, Double) -> Self
+pub fn BiostructsurfaceGraphN::get(Self, Int32) -> Double
+pub fn BiostructsurfaceGraphN::len(Self) -> Int32
+pub fn BiostructsurfaceGraphN::max(Self) -> Double
+pub fn BiostructsurfaceGraphN::mean(Self) -> Double
+pub fn BiostructsurfaceGraphN::min(Self) -> Double
+pub fn BiostructsurfaceGraphN::scale(Self, Double) -> Self
+pub fn BiostructsurfaceGraphN::set(Self, Int32, Double) -> Self
+pub fn BiostructsurfaceGraphN::sum(Self) -> Double
+pub fn BiostructsurfaceGraphN::to_string(Self) -> String
+
+pub(all) struct BiostructsurfaceLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructsurfaceLayer::add(Self, Self) -> Self
+pub fn BiostructsurfaceLayer::copy(Self) -> Self
+pub fn BiostructsurfaceLayer::fill(Self, Double) -> Self
+pub fn BiostructsurfaceLayer::get(Self, Int32) -> Double
+pub fn BiostructsurfaceLayer::len(Self) -> Int32
+pub fn BiostructsurfaceLayer::max(Self) -> Double
+pub fn BiostructsurfaceLayer::mean(Self) -> Double
+pub fn BiostructsurfaceLayer::min(Self) -> Double
+pub fn BiostructsurfaceLayer::scale(Self, Double) -> Self
+pub fn BiostructsurfaceLayer::set(Self, Int32, Double) -> Self
+pub fn BiostructsurfaceLayer::sum(Self) -> Double
+pub fn BiostructsurfaceLayer::to_string(Self) -> String
+
+pub(all) struct BiostructsurfaceMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn BiostructsurfaceMatrix::add(Self, Self) -> Self
+pub fn BiostructsurfaceMatrix::det(Self) -> Double
+pub fn BiostructsurfaceMatrix::get(Self, Int32, Int32) -> Double
+pub fn BiostructsurfaceMatrix::multiply(Self, Self) -> Self
+pub fn BiostructsurfaceMatrix::norm(Self) -> Double
+pub fn BiostructsurfaceMatrix::scale(Self, Double) -> Self
+pub fn BiostructsurfaceMatrix::to_string(Self) -> String
+pub fn BiostructsurfaceMatrix::trace(Self) -> Double
+pub fn BiostructsurfaceMatrix::transpose(Self) -> Self
+
+pub(all) struct BiostructsurfaceModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructsurfaceModel::add(Self, Self) -> Self
+pub fn BiostructsurfaceModel::copy(Self) -> Self
+pub fn BiostructsurfaceModel::fill(Self, Double) -> Self
+pub fn BiostructsurfaceModel::get(Self, Int32) -> Double
+pub fn BiostructsurfaceModel::len(Self) -> Int32
+pub fn BiostructsurfaceModel::max(Self) -> Double
+pub fn BiostructsurfaceModel::mean(Self) -> Double
+pub fn BiostructsurfaceModel::min(Self) -> Double
+pub fn BiostructsurfaceModel::scale(Self, Double) -> Self
+pub fn BiostructsurfaceModel::set(Self, Int32, Double) -> Self
+pub fn BiostructsurfaceModel::sum(Self) -> Double
+pub fn BiostructsurfaceModel::to_string(Self) -> String
+
+pub(all) struct BiostructsurfaceNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructsurfaceNode::add(Self, Self) -> Self
+pub fn BiostructsurfaceNode::copy(Self) -> Self
+pub fn BiostructsurfaceNode::fill(Self, Double) -> Self
+pub fn BiostructsurfaceNode::get(Self, Int32) -> Double
+pub fn BiostructsurfaceNode::len(Self) -> Int32
+pub fn BiostructsurfaceNode::max(Self) -> Double
+pub fn BiostructsurfaceNode::mean(Self) -> Double
+pub fn BiostructsurfaceNode::min(Self) -> Double
+pub fn BiostructsurfaceNode::scale(Self, Double) -> Self
+pub fn BiostructsurfaceNode::set(Self, Int32, Double) -> Self
+pub fn BiostructsurfaceNode::sum(Self) -> Double
+pub fn BiostructsurfaceNode::to_string(Self) -> String
+
+pub(all) struct BiostructsurfacePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructsurfacePath::add(Self, Self) -> Self
+pub fn BiostructsurfacePath::copy(Self) -> Self
+pub fn BiostructsurfacePath::fill(Self, Double) -> Self
+pub fn BiostructsurfacePath::get(Self, Int32) -> Double
+pub fn BiostructsurfacePath::len(Self) -> Int32
+pub fn BiostructsurfacePath::max(Self) -> Double
+pub fn BiostructsurfacePath::mean(Self) -> Double
+pub fn BiostructsurfacePath::min(Self) -> Double
+pub fn BiostructsurfacePath::scale(Self, Double) -> Self
+pub fn BiostructsurfacePath::set(Self, Int32, Double) -> Self
+pub fn BiostructsurfacePath::sum(Self) -> Double
+pub fn BiostructsurfacePath::to_string(Self) -> String
+
+pub(all) struct BiostructsurfacePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn BiostructsurfacePoint::add(Self, Self) -> Self
+pub fn BiostructsurfacePoint::cross(Self, Self) -> Self
+pub fn BiostructsurfacePoint::dist(Self, Self) -> Double
+pub fn BiostructsurfacePoint::dot(Self, Self) -> Double
+pub fn BiostructsurfacePoint::label(Self) -> Int32
+pub fn BiostructsurfacePoint::lerp(Self, Self, Double) -> Self
+pub fn BiostructsurfacePoint::mid(Self, Self) -> Self
+pub fn BiostructsurfacePoint::negate(Self) -> Self
+pub fn BiostructsurfacePoint::norm(Self) -> Double
+pub fn BiostructsurfacePoint::normalize(Self) -> Self
+pub fn BiostructsurfacePoint::scale(Self, Double) -> Self
+pub fn BiostructsurfacePoint::sub(Self, Self) -> Self
+pub fn BiostructsurfacePoint::to_string(Self) -> String
+pub fn BiostructsurfacePoint::x(Self) -> Double
+pub fn BiostructsurfacePoint::y(Self) -> Double
+pub fn BiostructsurfacePoint::z(Self) -> Double
+
+pub(all) struct BiostructsurfaceRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructsurfaceRange::add(Self, Self) -> Self
+pub fn BiostructsurfaceRange::copy(Self) -> Self
+pub fn BiostructsurfaceRange::fill(Self, Double) -> Self
+pub fn BiostructsurfaceRange::get(Self, Int32) -> Double
+pub fn BiostructsurfaceRange::len(Self) -> Int32
+pub fn BiostructsurfaceRange::max(Self) -> Double
+pub fn BiostructsurfaceRange::mean(Self) -> Double
+pub fn BiostructsurfaceRange::min(Self) -> Double
+pub fn BiostructsurfaceRange::scale(Self, Double) -> Self
+pub fn BiostructsurfaceRange::set(Self, Int32, Double) -> Self
+pub fn BiostructsurfaceRange::sum(Self) -> Double
+pub fn BiostructsurfaceRange::to_string(Self) -> String
+
+pub(all) struct BiostructsurfaceSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn BiostructsurfaceSeries::add(Self, Self) -> Self
+pub fn BiostructsurfaceSeries::cumsum(Self) -> Self
+pub fn BiostructsurfaceSeries::len(Self) -> Int32
+pub fn BiostructsurfaceSeries::max(Self) -> Double
+pub fn BiostructsurfaceSeries::mean(Self) -> Double
+pub fn BiostructsurfaceSeries::median(Self) -> Double
+pub fn BiostructsurfaceSeries::min(Self) -> Double
+pub fn BiostructsurfaceSeries::normalize(Self) -> Self
+pub fn BiostructsurfaceSeries::range(Self) -> Double
+pub fn BiostructsurfaceSeries::scale(Self, Double) -> Self
+pub fn BiostructsurfaceSeries::std(Self) -> Double
+pub fn BiostructsurfaceSeries::sub(Self, Self) -> Self
+pub fn BiostructsurfaceSeries::sum(Self) -> Double
+pub fn BiostructsurfaceSeries::to_string(Self) -> String
+pub fn BiostructsurfaceSeries::variance(Self) -> Double
+
+pub(all) struct BiostructsurfaceSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructsurfaceSlice::add(Self, Self) -> Self
+pub fn BiostructsurfaceSlice::copy(Self) -> Self
+pub fn BiostructsurfaceSlice::fill(Self, Double) -> Self
+pub fn BiostructsurfaceSlice::get(Self, Int32) -> Double
+pub fn BiostructsurfaceSlice::len(Self) -> Int32
+pub fn BiostructsurfaceSlice::max(Self) -> Double
+pub fn BiostructsurfaceSlice::mean(Self) -> Double
+pub fn BiostructsurfaceSlice::min(Self) -> Double
+pub fn BiostructsurfaceSlice::scale(Self, Double) -> Self
+pub fn BiostructsurfaceSlice::set(Self, Int32, Double) -> Self
+pub fn BiostructsurfaceSlice::sum(Self) -> Double
+pub fn BiostructsurfaceSlice::to_string(Self) -> String
+
+pub(all) struct BiostructsurfaceTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructsurfaceTable::add(Self, Self) -> Self
+pub fn BiostructsurfaceTable::copy(Self) -> Self
+pub fn BiostructsurfaceTable::fill(Self, Double) -> Self
+pub fn BiostructsurfaceTable::get(Self, Int32) -> Double
+pub fn BiostructsurfaceTable::len(Self) -> Int32
+pub fn BiostructsurfaceTable::max(Self) -> Double
+pub fn BiostructsurfaceTable::mean(Self) -> Double
+pub fn BiostructsurfaceTable::min(Self) -> Double
+pub fn BiostructsurfaceTable::scale(Self, Double) -> Self
+pub fn BiostructsurfaceTable::set(Self, Int32, Double) -> Self
+pub fn BiostructsurfaceTable::sum(Self) -> Double
+pub fn BiostructsurfaceTable::to_string(Self) -> String
+
+pub(all) struct BiostructsurfaceVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn BiostructsurfaceVector::add(Self, Self) -> Self
+pub fn BiostructsurfaceVector::dist(Self, Self) -> Double
+pub fn BiostructsurfaceVector::dot(Self, Self) -> Double
+pub fn BiostructsurfaceVector::norm(Self) -> Double
+pub fn BiostructsurfaceVector::normalize(Self) -> Self
+pub fn BiostructsurfaceVector::scale(Self, Double) -> Self
+pub fn BiostructsurfaceVector::sub(Self, Self) -> Self
+pub fn BiostructsurfaceVector::to_string(Self) -> String
+
+pub(all) struct BiostructsurfaceView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BiostructsurfaceView::add(Self, Self) -> Self
+pub fn BiostructsurfaceView::copy(Self) -> Self
+pub fn BiostructsurfaceView::fill(Self, Double) -> Self
+pub fn BiostructsurfaceView::get(Self, Int32) -> Double
+pub fn BiostructsurfaceView::len(Self) -> Int32
+pub fn BiostructsurfaceView::max(Self) -> Double
+pub fn BiostructsurfaceView::mean(Self) -> Double
+pub fn BiostructsurfaceView::min(Self) -> Double
+pub fn BiostructsurfaceView::scale(Self, Double) -> Self
+pub fn BiostructsurfaceView::set(Self, Int32, Double) -> Self
+pub fn BiostructsurfaceView::sum(Self) -> Double
+pub fn BiostructsurfaceView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

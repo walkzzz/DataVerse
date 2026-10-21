@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_tx_saga"
+
+// Values
+pub fn db_tx_saga_buffer_make(Int32) -> DbtxsagaBuffer
+
+pub fn db_tx_saga_cluster_make(Int32) -> DbtxsagaCluster
+
+pub fn db_tx_saga_cursor_make(Int32) -> DbtxsagaCursor
+
+pub fn db_tx_saga_edge_make(Int32) -> DbtxsagaEdge
+
+pub fn db_tx_saga_frame_make(Int32) -> DbtxsagaFrame
+
+pub fn db_tx_saga_graphn_make(Int32) -> DbtxsagaGraphN
+
+pub fn db_tx_saga_layer_make(Int32) -> DbtxsagaLayer
+
+pub fn db_tx_saga_make_matrix(Int32, Int32, Double) -> DbtxsagaMatrix
+
+pub fn db_tx_saga_make_point(Double, Double) -> DbtxsagaPoint
+
+pub fn db_tx_saga_make_point3(Double, Double, Double) -> DbtxsagaPoint
+
+pub fn db_tx_saga_make_series(Array[Double], String) -> DbtxsagaSeries
+
+pub fn db_tx_saga_make_vector(Array[Double]) -> DbtxsagaVector
+
+pub fn db_tx_saga_matrix_identity(Int32) -> DbtxsagaMatrix
+
+pub fn db_tx_saga_model_make(Int32) -> DbtxsagaModel
+
+pub fn db_tx_saga_node_make(Int32) -> DbtxsagaNode
+
+pub fn db_tx_saga_path_make(Int32) -> DbtxsagaPath
+
+pub fn db_tx_saga_range_make(Int32) -> DbtxsagaRange
+
+pub fn db_tx_saga_slice_make(Int32) -> DbtxsagaSlice
+
+pub fn db_tx_saga_table_make(Int32) -> DbtxsagaTable
+
+pub fn db_tx_saga_vector_zero(Int32) -> DbtxsagaVector
+
+pub fn db_tx_saga_view_make(Int32) -> DbtxsagaView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbtxsagaBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxsagaBuffer::add(Self, Self) -> Self
+pub fn DbtxsagaBuffer::copy(Self) -> Self
+pub fn DbtxsagaBuffer::fill(Self, Double) -> Self
+pub fn DbtxsagaBuffer::get(Self, Int32) -> Double
+pub fn DbtxsagaBuffer::len(Self) -> Int32
+pub fn DbtxsagaBuffer::max(Self) -> Double
+pub fn DbtxsagaBuffer::mean(Self) -> Double
+pub fn DbtxsagaBuffer::min(Self) -> Double
+pub fn DbtxsagaBuffer::scale(Self, Double) -> Self
+pub fn DbtxsagaBuffer::set(Self, Int32, Double) -> Self
+pub fn DbtxsagaBuffer::sum(Self) -> Double
+pub fn DbtxsagaBuffer::to_string(Self) -> String
+
+pub(all) struct DbtxsagaCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxsagaCluster::add(Self, Self) -> Self
+pub fn DbtxsagaCluster::copy(Self) -> Self
+pub fn DbtxsagaCluster::fill(Self, Double) -> Self
+pub fn DbtxsagaCluster::get(Self, Int32) -> Double
+pub fn DbtxsagaCluster::len(Self) -> Int32
+pub fn DbtxsagaCluster::max(Self) -> Double
+pub fn DbtxsagaCluster::mean(Self) -> Double
+pub fn DbtxsagaCluster::min(Self) -> Double
+pub fn DbtxsagaCluster::scale(Self, Double) -> Self
+pub fn DbtxsagaCluster::set(Self, Int32, Double) -> Self
+pub fn DbtxsagaCluster::sum(Self) -> Double
+pub fn DbtxsagaCluster::to_string(Self) -> String
+
+pub(all) struct DbtxsagaCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxsagaCursor::add(Self, Self) -> Self
+pub fn DbtxsagaCursor::copy(Self) -> Self
+pub fn DbtxsagaCursor::fill(Self, Double) -> Self
+pub fn DbtxsagaCursor::get(Self, Int32) -> Double
+pub fn DbtxsagaCursor::len(Self) -> Int32
+pub fn DbtxsagaCursor::max(Self) -> Double
+pub fn DbtxsagaCursor::mean(Self) -> Double
+pub fn DbtxsagaCursor::min(Self) -> Double
+pub fn DbtxsagaCursor::scale(Self, Double) -> Self
+pub fn DbtxsagaCursor::set(Self, Int32, Double) -> Self
+pub fn DbtxsagaCursor::sum(Self) -> Double
+pub fn DbtxsagaCursor::to_string(Self) -> String
+
+pub(all) struct DbtxsagaEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxsagaEdge::add(Self, Self) -> Self
+pub fn DbtxsagaEdge::copy(Self) -> Self
+pub fn DbtxsagaEdge::fill(Self, Double) -> Self
+pub fn DbtxsagaEdge::get(Self, Int32) -> Double
+pub fn DbtxsagaEdge::len(Self) -> Int32
+pub fn DbtxsagaEdge::max(Self) -> Double
+pub fn DbtxsagaEdge::mean(Self) -> Double
+pub fn DbtxsagaEdge::min(Self) -> Double
+pub fn DbtxsagaEdge::scale(Self, Double) -> Self
+pub fn DbtxsagaEdge::set(Self, Int32, Double) -> Self
+pub fn DbtxsagaEdge::sum(Self) -> Double
+pub fn DbtxsagaEdge::to_string(Self) -> String
+
+pub(all) struct DbtxsagaFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxsagaFrame::add(Self, Self) -> Self
+pub fn DbtxsagaFrame::copy(Self) -> Self
+pub fn DbtxsagaFrame::fill(Self, Double) -> Self
+pub fn DbtxsagaFrame::get(Self, Int32) -> Double
+pub fn DbtxsagaFrame::len(Self) -> Int32
+pub fn DbtxsagaFrame::max(Self) -> Double
+pub fn DbtxsagaFrame::mean(Self) -> Double
+pub fn DbtxsagaFrame::min(Self) -> Double
+pub fn DbtxsagaFrame::scale(Self, Double) -> Self
+pub fn DbtxsagaFrame::set(Self, Int32, Double) -> Self
+pub fn DbtxsagaFrame::sum(Self) -> Double
+pub fn DbtxsagaFrame::to_string(Self) -> String
+
+pub(all) struct DbtxsagaGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxsagaGraphN::add(Self, Self) -> Self
+pub fn DbtxsagaGraphN::copy(Self) -> Self
+pub fn DbtxsagaGraphN::fill(Self, Double) -> Self
+pub fn DbtxsagaGraphN::get(Self, Int32) -> Double
+pub fn DbtxsagaGraphN::len(Self) -> Int32
+pub fn DbtxsagaGraphN::max(Self) -> Double
+pub fn DbtxsagaGraphN::mean(Self) -> Double
+pub fn DbtxsagaGraphN::min(Self) -> Double
+pub fn DbtxsagaGraphN::scale(Self, Double) -> Self
+pub fn DbtxsagaGraphN::set(Self, Int32, Double) -> Self
+pub fn DbtxsagaGraphN::sum(Self) -> Double
+pub fn DbtxsagaGraphN::to_string(Self) -> String
+
+pub(all) struct DbtxsagaLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxsagaLayer::add(Self, Self) -> Self
+pub fn DbtxsagaLayer::copy(Self) -> Self
+pub fn DbtxsagaLayer::fill(Self, Double) -> Self
+pub fn DbtxsagaLayer::get(Self, Int32) -> Double
+pub fn DbtxsagaLayer::len(Self) -> Int32
+pub fn DbtxsagaLayer::max(Self) -> Double
+pub fn DbtxsagaLayer::mean(Self) -> Double
+pub fn DbtxsagaLayer::min(Self) -> Double
+pub fn DbtxsagaLayer::scale(Self, Double) -> Self
+pub fn DbtxsagaLayer::set(Self, Int32, Double) -> Self
+pub fn DbtxsagaLayer::sum(Self) -> Double
+pub fn DbtxsagaLayer::to_string(Self) -> String
+
+pub(all) struct DbtxsagaMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbtxsagaMatrix::add(Self, Self) -> Self
+pub fn DbtxsagaMatrix::det(Self) -> Double
+pub fn DbtxsagaMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbtxsagaMatrix::multiply(Self, Self) -> Self
+pub fn DbtxsagaMatrix::norm(Self) -> Double
+pub fn DbtxsagaMatrix::scale(Self, Double) -> Self
+pub fn DbtxsagaMatrix::to_string(Self) -> String
+pub fn DbtxsagaMatrix::trace(Self) -> Double
+pub fn DbtxsagaMatrix::transpose(Self) -> Self
+
+pub(all) struct DbtxsagaModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxsagaModel::add(Self, Self) -> Self
+pub fn DbtxsagaModel::copy(Self) -> Self
+pub fn DbtxsagaModel::fill(Self, Double) -> Self
+pub fn DbtxsagaModel::get(Self, Int32) -> Double
+pub fn DbtxsagaModel::len(Self) -> Int32
+pub fn DbtxsagaModel::max(Self) -> Double
+pub fn DbtxsagaModel::mean(Self) -> Double
+pub fn DbtxsagaModel::min(Self) -> Double
+pub fn DbtxsagaModel::scale(Self, Double) -> Self
+pub fn DbtxsagaModel::set(Self, Int32, Double) -> Self
+pub fn DbtxsagaModel::sum(Self) -> Double
+pub fn DbtxsagaModel::to_string(Self) -> String
+
+pub(all) struct DbtxsagaNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxsagaNode::add(Self, Self) -> Self
+pub fn DbtxsagaNode::copy(Self) -> Self
+pub fn DbtxsagaNode::fill(Self, Double) -> Self
+pub fn DbtxsagaNode::get(Self, Int32) -> Double
+pub fn DbtxsagaNode::len(Self) -> Int32
+pub fn DbtxsagaNode::max(Self) -> Double
+pub fn DbtxsagaNode::mean(Self) -> Double
+pub fn DbtxsagaNode::min(Self) -> Double
+pub fn DbtxsagaNode::scale(Self, Double) -> Self
+pub fn DbtxsagaNode::set(Self, Int32, Double) -> Self
+pub fn DbtxsagaNode::sum(Self) -> Double
+pub fn DbtxsagaNode::to_string(Self) -> String
+
+pub(all) struct DbtxsagaPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxsagaPath::add(Self, Self) -> Self
+pub fn DbtxsagaPath::copy(Self) -> Self
+pub fn DbtxsagaPath::fill(Self, Double) -> Self
+pub fn DbtxsagaPath::get(Self, Int32) -> Double
+pub fn DbtxsagaPath::len(Self) -> Int32
+pub fn DbtxsagaPath::max(Self) -> Double
+pub fn DbtxsagaPath::mean(Self) -> Double
+pub fn DbtxsagaPath::min(Self) -> Double
+pub fn DbtxsagaPath::scale(Self, Double) -> Self
+pub fn DbtxsagaPath::set(Self, Int32, Double) -> Self
+pub fn DbtxsagaPath::sum(Self) -> Double
+pub fn DbtxsagaPath::to_string(Self) -> String
+
+pub(all) struct DbtxsagaPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbtxsagaPoint::add(Self, Self) -> Self
+pub fn DbtxsagaPoint::cross(Self, Self) -> Self
+pub fn DbtxsagaPoint::dist(Self, Self) -> Double
+pub fn DbtxsagaPoint::dot(Self, Self) -> Double
+pub fn DbtxsagaPoint::label(Self) -> Int32
+pub fn DbtxsagaPoint::lerp(Self, Self, Double) -> Self
+pub fn DbtxsagaPoint::mid(Self, Self) -> Self
+pub fn DbtxsagaPoint::negate(Self) -> Self
+pub fn DbtxsagaPoint::norm(Self) -> Double
+pub fn DbtxsagaPoint::normalize(Self) -> Self
+pub fn DbtxsagaPoint::scale(Self, Double) -> Self
+pub fn DbtxsagaPoint::sub(Self, Self) -> Self
+pub fn DbtxsagaPoint::to_string(Self) -> String
+pub fn DbtxsagaPoint::x(Self) -> Double
+pub fn DbtxsagaPoint::y(Self) -> Double
+pub fn DbtxsagaPoint::z(Self) -> Double
+
+pub(all) struct DbtxsagaRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxsagaRange::add(Self, Self) -> Self
+pub fn DbtxsagaRange::copy(Self) -> Self
+pub fn DbtxsagaRange::fill(Self, Double) -> Self
+pub fn DbtxsagaRange::get(Self, Int32) -> Double
+pub fn DbtxsagaRange::len(Self) -> Int32
+pub fn DbtxsagaRange::max(Self) -> Double
+pub fn DbtxsagaRange::mean(Self) -> Double
+pub fn DbtxsagaRange::min(Self) -> Double
+pub fn DbtxsagaRange::scale(Self, Double) -> Self
+pub fn DbtxsagaRange::set(Self, Int32, Double) -> Self
+pub fn DbtxsagaRange::sum(Self) -> Double
+pub fn DbtxsagaRange::to_string(Self) -> String
+
+pub(all) struct DbtxsagaSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbtxsagaSeries::add(Self, Self) -> Self
+pub fn DbtxsagaSeries::cumsum(Self) -> Self
+pub fn DbtxsagaSeries::len(Self) -> Int32
+pub fn DbtxsagaSeries::max(Self) -> Double
+pub fn DbtxsagaSeries::mean(Self) -> Double
+pub fn DbtxsagaSeries::median(Self) -> Double
+pub fn DbtxsagaSeries::min(Self) -> Double
+pub fn DbtxsagaSeries::normalize(Self) -> Self
+pub fn DbtxsagaSeries::range(Self) -> Double
+pub fn DbtxsagaSeries::scale(Self, Double) -> Self
+pub fn DbtxsagaSeries::std(Self) -> Double
+pub fn DbtxsagaSeries::sub(Self, Self) -> Self
+pub fn DbtxsagaSeries::sum(Self) -> Double
+pub fn DbtxsagaSeries::to_string(Self) -> String
+pub fn DbtxsagaSeries::variance(Self) -> Double
+
+pub(all) struct DbtxsagaSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxsagaSlice::add(Self, Self) -> Self
+pub fn DbtxsagaSlice::copy(Self) -> Self
+pub fn DbtxsagaSlice::fill(Self, Double) -> Self
+pub fn DbtxsagaSlice::get(Self, Int32) -> Double
+pub fn DbtxsagaSlice::len(Self) -> Int32
+pub fn DbtxsagaSlice::max(Self) -> Double
+pub fn DbtxsagaSlice::mean(Self) -> Double
+pub fn DbtxsagaSlice::min(Self) -> Double
+pub fn DbtxsagaSlice::scale(Self, Double) -> Self
+pub fn DbtxsagaSlice::set(Self, Int32, Double) -> Self
+pub fn DbtxsagaSlice::sum(Self) -> Double
+pub fn DbtxsagaSlice::to_string(Self) -> String
+
+pub(all) struct DbtxsagaTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxsagaTable::add(Self, Self) -> Self
+pub fn DbtxsagaTable::copy(Self) -> Self
+pub fn DbtxsagaTable::fill(Self, Double) -> Self
+pub fn DbtxsagaTable::get(Self, Int32) -> Double
+pub fn DbtxsagaTable::len(Self) -> Int32
+pub fn DbtxsagaTable::max(Self) -> Double
+pub fn DbtxsagaTable::mean(Self) -> Double
+pub fn DbtxsagaTable::min(Self) -> Double
+pub fn DbtxsagaTable::scale(Self, Double) -> Self
+pub fn DbtxsagaTable::set(Self, Int32, Double) -> Self
+pub fn DbtxsagaTable::sum(Self) -> Double
+pub fn DbtxsagaTable::to_string(Self) -> String
+
+pub(all) struct DbtxsagaVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbtxsagaVector::add(Self, Self) -> Self
+pub fn DbtxsagaVector::dist(Self, Self) -> Double
+pub fn DbtxsagaVector::dot(Self, Self) -> Double
+pub fn DbtxsagaVector::norm(Self) -> Double
+pub fn DbtxsagaVector::normalize(Self) -> Self
+pub fn DbtxsagaVector::scale(Self, Double) -> Self
+pub fn DbtxsagaVector::sub(Self, Self) -> Self
+pub fn DbtxsagaVector::to_string(Self) -> String
+
+pub(all) struct DbtxsagaView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxsagaView::add(Self, Self) -> Self
+pub fn DbtxsagaView::copy(Self) -> Self
+pub fn DbtxsagaView::fill(Self, Double) -> Self
+pub fn DbtxsagaView::get(Self, Int32) -> Double
+pub fn DbtxsagaView::len(Self) -> Int32
+pub fn DbtxsagaView::max(Self) -> Double
+pub fn DbtxsagaView::mean(Self) -> Double
+pub fn DbtxsagaView::min(Self) -> Double
+pub fn DbtxsagaView::scale(Self, Double) -> Self
+pub fn DbtxsagaView::set(Self, Int32, Double) -> Self
+pub fn DbtxsagaView::sum(Self) -> Double
+pub fn DbtxsagaView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

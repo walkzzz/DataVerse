@@ -1,0 +1,283 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/meta_learning"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn anil_head_only(ANILConfig, Learner, MetaBatch) -> Learner
+
+pub fn anil_step(ANILConfig, Learner, Task) -> Learner
+
+pub fn context_adapt(ContextNet, Array[Array[Double]], Array[Double]) -> Array[Double]
+
+pub fn context_encode(ContextNet, Array[Array[Double]]) -> Array[Double]
+
+pub fn few_shot_predict(Learner, Array[Array[Double]]) -> Array[Double]
+
+pub fn few_shot_predict_eval(Learner, Array[Array[Double]], Array[Double]) -> Double
+
+pub fn few_shot_train(Learner, Array[Array[Double]], Array[Double], Double, Int32) -> Learner
+
+pub fn fomaml_approx(FOMAMLConfig, Learner, MetaBatch) -> Learner
+
+pub fn fomaml_step(FOMAMLConfig, Learner, Task) -> Learner
+
+pub fn hyper_net_forward(HyperNet, Array[Double]) -> Array[Double]
+
+pub fn hyper_net_weights(HyperNet, Array[Double]) -> Array[Double]
+
+pub fn learner_adapt(Learner, Task, Double, Int32) -> Learner
+
+pub fn learner_predict(Learner, Array[Double]) -> Double
+
+pub fn make_anil(Double, Double, Int32, Int32, Int32) -> ANILConfig
+
+pub fn make_context_net(Int32, Int32, Int32) -> ContextNet
+
+pub fn make_fomaml(Double, Double, Int32, Int32, Int32) -> FOMAMLConfig
+
+pub fn make_hyper_net(Int32, Int32, Int32, Int32) -> HyperNet
+
+pub fn make_learner(Int32, Int32) -> Learner
+
+pub fn make_maml(Double, Double, Int32, Int32, Int32) -> MAMLConfig
+
+pub fn make_matching_net(Int32, Int32, Int32, Int32) -> MatchingNetConfig
+
+pub fn make_meta_batch(Array[Task], Int32) -> MetaBatch
+
+pub fn make_meta_optimizer(Double, Double, Int32) -> MetaOptimizer
+
+pub fn make_meta_sgd(Double, Double, Int32, Int32, Int32) -> MetaSGDConfig
+
+pub fn make_prototypical(Int32, Int32, String, Int32) -> PrototypicalConfig
+
+pub fn make_relation_net(Int32, Int32, Int32, Int32) -> RelationNetConfig
+
+pub fn make_reptile(Double, Double, Int32, Int32, Int32) -> ReptileConfig
+
+pub fn make_snail(Int32, Int32, Int32, Int32, Int32) -> SNAILConfig
+
+pub fn make_task_distribution(Int32, Int32, Int32, Int32) -> TaskDistribution
+
+pub fn maml_inner_step(MAMLConfig, Learner, Task) -> Learner
+
+pub fn maml_meta_loss(MAMLConfig, Learner, MetaBatch) -> Double
+
+pub fn maml_outer_step(MAMLConfig, Learner, MetaBatch) -> Learner
+
+pub fn matching_attention(MatchingNetConfig, Array[Array[Double]], Array[Double]) -> Array[Double]
+
+pub fn matching_forward(MatchingNetConfig, Array[Array[Double]], Array[Int32], Array[Double]) -> Int32
+
+pub fn meta_learning_id() -> String
+
+pub fn meta_lr(MetaOptimizer) -> Double
+
+pub fn meta_optimize(MetaOptimizer, Array[Double], Array[Double]) -> (Array[Double], MetaOptimizer)
+
+pub fn meta_sgd_adapt(MetaSGDConfig, Learner, Array[Double], Task) -> (Learner, Array[Double])
+
+pub fn meta_sgd_step(MetaSGDConfig, Learner, Array[Double], Task) -> Learner
+
+pub fn meta_test(MAMLConfig, Learner, MetaBatch) -> Double
+
+pub fn meta_train(MAMLConfig, Learner, MetaBatch, Int32) -> Learner
+
+pub fn meta_validate(MAMLConfig, Learner, MetaBatch) -> Double
+
+pub fn proto_classify(PrototypicalConfig, Array[Array[Double]], Array[Double]) -> Int32
+
+pub fn proto_distance(PrototypicalConfig, Array[Double], Array[Double]) -> Double
+
+pub fn proto_means(PrototypicalConfig, Array[Array[Double]], Array[Int32]) -> Array[Array[Double]]
+
+pub fn relation_forward(RelationNetConfig, Array[Array[Double]], Array[Int32], Array[Double]) -> Int32
+
+pub fn relation_score(RelationNetConfig, Array[Double], Array[Double]) -> Double
+
+pub fn reptile_inner_step(ReptileConfig, Learner, Task) -> Learner
+
+pub fn reptile_outer_step(ReptileConfig, Learner, MetaBatch) -> Learner
+
+pub fn sample_task(TaskDistribution, Int32) -> Task
+
+pub fn sample_tasks(TaskDistribution, Int32) -> Array[Task]
+
+pub fn snail_causal_conv(SNAILConfig, Array[Array[Double]], Int32) -> Array[Array[Double]]
+
+pub fn snail_forward(SNAILConfig, Array[Array[Double]]) -> Array[Double]
+
+pub fn task_batch(TaskDistribution, Int32) -> MetaBatch
+
+pub fn task_loss(Learner, Array[Array[Double]], Array[Double]) -> Double
+
+// Errors
+
+// Types and methods
+pub struct ANILConfig {
+  inner_lr : Double
+  outer_lr : Double
+  num_inner_steps : Int32
+  meta_batch_size : Int32
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn ANILConfig::equal(Self, Self) -> Bool
+pub fn ANILConfig::not_equal(Self, Self) -> Bool
+pub fn ANILConfig::to_repr(Self) -> @debug.Repr
+
+pub struct ContextNet {
+  input_dim : Int32
+  context_dim : Int32
+  weights : Array[Array[Double]]
+} derive(Eq, @debug.Debug)
+pub fn ContextNet::equal(Self, Self) -> Bool
+pub fn ContextNet::not_equal(Self, Self) -> Bool
+pub fn ContextNet::to_repr(Self) -> @debug.Repr
+
+pub struct FOMAMLConfig {
+  inner_lr : Double
+  outer_lr : Double
+  num_inner_steps : Int32
+  meta_batch_size : Int32
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn FOMAMLConfig::equal(Self, Self) -> Bool
+pub fn FOMAMLConfig::not_equal(Self, Self) -> Bool
+pub fn FOMAMLConfig::to_repr(Self) -> @debug.Repr
+
+pub struct HyperNet {
+  input_dim : Int32
+  output_dim : Int32
+  hidden_dim : Int32
+  weights : Array[Array[Double]]
+} derive(Eq, @debug.Debug)
+pub fn HyperNet::equal(Self, Self) -> Bool
+pub fn HyperNet::not_equal(Self, Self) -> Bool
+pub fn HyperNet::to_repr(Self) -> @debug.Repr
+
+pub struct Learner {
+  weights : Array[Double]
+  bias : Double
+  input_dim : Int32
+} derive(Eq, @debug.Debug)
+pub fn Learner::equal(Self, Self) -> Bool
+pub fn Learner::not_equal(Self, Self) -> Bool
+pub fn Learner::to_repr(Self) -> @debug.Repr
+
+pub struct MAMLConfig {
+  inner_lr : Double
+  outer_lr : Double
+  num_inner_steps : Int32
+  meta_batch_size : Int32
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn MAMLConfig::equal(Self, Self) -> Bool
+pub fn MAMLConfig::not_equal(Self, Self) -> Bool
+pub fn MAMLConfig::to_repr(Self) -> @debug.Repr
+
+pub struct MatchingNetConfig {
+  input_dim : Int32
+  embedding_dim : Int32
+  num_classes : Int32
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn MatchingNetConfig::equal(Self, Self) -> Bool
+pub fn MatchingNetConfig::not_equal(Self, Self) -> Bool
+pub fn MatchingNetConfig::to_repr(Self) -> @debug.Repr
+
+pub struct MetaBatch {
+  tasks : Array[Task]
+  batch_size : Int32
+} derive(Eq, @debug.Debug)
+pub fn MetaBatch::equal(Self, Self) -> Bool
+pub fn MetaBatch::not_equal(Self, Self) -> Bool
+pub fn MetaBatch::to_repr(Self) -> @debug.Repr
+
+pub struct MetaOptimizer {
+  meta_lr : Double
+  momentum : Double
+  velocity : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn MetaOptimizer::equal(Self, Self) -> Bool
+pub fn MetaOptimizer::not_equal(Self, Self) -> Bool
+pub fn MetaOptimizer::to_repr(Self) -> @debug.Repr
+
+pub struct MetaSGDConfig {
+  alpha : Double
+  beta : Double
+  num_inner_steps : Int32
+  meta_batch_size : Int32
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn MetaSGDConfig::equal(Self, Self) -> Bool
+pub fn MetaSGDConfig::not_equal(Self, Self) -> Bool
+pub fn MetaSGDConfig::to_repr(Self) -> @debug.Repr
+
+pub struct PrototypicalConfig {
+  input_dim : Int32
+  num_classes : Int32
+  distance_metric : String
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn PrototypicalConfig::equal(Self, Self) -> Bool
+pub fn PrototypicalConfig::not_equal(Self, Self) -> Bool
+pub fn PrototypicalConfig::to_repr(Self) -> @debug.Repr
+
+pub struct RelationNetConfig {
+  input_dim : Int32
+  hidden_dim : Int32
+  num_classes : Int32
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn RelationNetConfig::equal(Self, Self) -> Bool
+pub fn RelationNetConfig::not_equal(Self, Self) -> Bool
+pub fn RelationNetConfig::to_repr(Self) -> @debug.Repr
+
+pub struct ReptileConfig {
+  inner_lr : Double
+  outer_lr : Double
+  num_inner_steps : Int32
+  meta_batch_size : Int32
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn ReptileConfig::equal(Self, Self) -> Bool
+pub fn ReptileConfig::not_equal(Self, Self) -> Bool
+pub fn ReptileConfig::to_repr(Self) -> @debug.Repr
+
+pub struct SNAILConfig {
+  input_dim : Int32
+  hidden_dim : Int32
+  num_layers : Int32
+  seq_len : Int32
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn SNAILConfig::equal(Self, Self) -> Bool
+pub fn SNAILConfig::not_equal(Self, Self) -> Bool
+pub fn SNAILConfig::to_repr(Self) -> @debug.Repr
+
+pub struct Task {
+  train_x : Array[Array[Double]]
+  train_y : Array[Double]
+  test_x : Array[Array[Double]]
+  test_y : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn Task::equal(Self, Self) -> Bool
+pub fn Task::not_equal(Self, Self) -> Bool
+pub fn Task::to_repr(Self) -> @debug.Repr
+
+pub struct TaskDistribution {
+  input_dim : Int32
+  output_dim : Int32
+  num_tasks : Int32
+  seed : Int32
+} derive(Eq, @debug.Debug)
+pub fn TaskDistribution::equal(Self, Self) -> Bool
+pub fn TaskDistribution::not_equal(Self, Self) -> Bool
+pub fn TaskDistribution::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_proto_http"
+
+// Values
+pub fn net_proto_http_buffer_make(Int32) -> NetprotohttpBuffer
+
+pub fn net_proto_http_cluster_make(Int32) -> NetprotohttpCluster
+
+pub fn net_proto_http_cursor_make(Int32) -> NetprotohttpCursor
+
+pub fn net_proto_http_edge_make(Int32) -> NetprotohttpEdge
+
+pub fn net_proto_http_frame_make(Int32) -> NetprotohttpFrame
+
+pub fn net_proto_http_graphn_make(Int32) -> NetprotohttpGraphN
+
+pub fn net_proto_http_layer_make(Int32) -> NetprotohttpLayer
+
+pub fn net_proto_http_make_matrix(Int32, Int32, Double) -> NetprotohttpMatrix
+
+pub fn net_proto_http_make_point(Double, Double) -> NetprotohttpPoint
+
+pub fn net_proto_http_make_point3(Double, Double, Double) -> NetprotohttpPoint
+
+pub fn net_proto_http_make_series(Array[Double], String) -> NetprotohttpSeries
+
+pub fn net_proto_http_make_vector(Array[Double]) -> NetprotohttpVector
+
+pub fn net_proto_http_matrix_identity(Int32) -> NetprotohttpMatrix
+
+pub fn net_proto_http_model_make(Int32) -> NetprotohttpModel
+
+pub fn net_proto_http_node_make(Int32) -> NetprotohttpNode
+
+pub fn net_proto_http_path_make(Int32) -> NetprotohttpPath
+
+pub fn net_proto_http_range_make(Int32) -> NetprotohttpRange
+
+pub fn net_proto_http_slice_make(Int32) -> NetprotohttpSlice
+
+pub fn net_proto_http_table_make(Int32) -> NetprotohttpTable
+
+pub fn net_proto_http_vector_zero(Int32) -> NetprotohttpVector
+
+pub fn net_proto_http_view_make(Int32) -> NetprotohttpView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetprotohttpBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpBuffer::add(Self, Self) -> Self
+pub fn NetprotohttpBuffer::copy(Self) -> Self
+pub fn NetprotohttpBuffer::fill(Self, Double) -> Self
+pub fn NetprotohttpBuffer::get(Self, Int32) -> Double
+pub fn NetprotohttpBuffer::len(Self) -> Int32
+pub fn NetprotohttpBuffer::max(Self) -> Double
+pub fn NetprotohttpBuffer::mean(Self) -> Double
+pub fn NetprotohttpBuffer::min(Self) -> Double
+pub fn NetprotohttpBuffer::scale(Self, Double) -> Self
+pub fn NetprotohttpBuffer::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpBuffer::sum(Self) -> Double
+pub fn NetprotohttpBuffer::to_string(Self) -> String
+
+pub(all) struct NetprotohttpCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpCluster::add(Self, Self) -> Self
+pub fn NetprotohttpCluster::copy(Self) -> Self
+pub fn NetprotohttpCluster::fill(Self, Double) -> Self
+pub fn NetprotohttpCluster::get(Self, Int32) -> Double
+pub fn NetprotohttpCluster::len(Self) -> Int32
+pub fn NetprotohttpCluster::max(Self) -> Double
+pub fn NetprotohttpCluster::mean(Self) -> Double
+pub fn NetprotohttpCluster::min(Self) -> Double
+pub fn NetprotohttpCluster::scale(Self, Double) -> Self
+pub fn NetprotohttpCluster::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpCluster::sum(Self) -> Double
+pub fn NetprotohttpCluster::to_string(Self) -> String
+
+pub(all) struct NetprotohttpCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpCursor::add(Self, Self) -> Self
+pub fn NetprotohttpCursor::copy(Self) -> Self
+pub fn NetprotohttpCursor::fill(Self, Double) -> Self
+pub fn NetprotohttpCursor::get(Self, Int32) -> Double
+pub fn NetprotohttpCursor::len(Self) -> Int32
+pub fn NetprotohttpCursor::max(Self) -> Double
+pub fn NetprotohttpCursor::mean(Self) -> Double
+pub fn NetprotohttpCursor::min(Self) -> Double
+pub fn NetprotohttpCursor::scale(Self, Double) -> Self
+pub fn NetprotohttpCursor::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpCursor::sum(Self) -> Double
+pub fn NetprotohttpCursor::to_string(Self) -> String
+
+pub(all) struct NetprotohttpEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpEdge::add(Self, Self) -> Self
+pub fn NetprotohttpEdge::copy(Self) -> Self
+pub fn NetprotohttpEdge::fill(Self, Double) -> Self
+pub fn NetprotohttpEdge::get(Self, Int32) -> Double
+pub fn NetprotohttpEdge::len(Self) -> Int32
+pub fn NetprotohttpEdge::max(Self) -> Double
+pub fn NetprotohttpEdge::mean(Self) -> Double
+pub fn NetprotohttpEdge::min(Self) -> Double
+pub fn NetprotohttpEdge::scale(Self, Double) -> Self
+pub fn NetprotohttpEdge::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpEdge::sum(Self) -> Double
+pub fn NetprotohttpEdge::to_string(Self) -> String
+
+pub(all) struct NetprotohttpFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpFrame::add(Self, Self) -> Self
+pub fn NetprotohttpFrame::copy(Self) -> Self
+pub fn NetprotohttpFrame::fill(Self, Double) -> Self
+pub fn NetprotohttpFrame::get(Self, Int32) -> Double
+pub fn NetprotohttpFrame::len(Self) -> Int32
+pub fn NetprotohttpFrame::max(Self) -> Double
+pub fn NetprotohttpFrame::mean(Self) -> Double
+pub fn NetprotohttpFrame::min(Self) -> Double
+pub fn NetprotohttpFrame::scale(Self, Double) -> Self
+pub fn NetprotohttpFrame::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpFrame::sum(Self) -> Double
+pub fn NetprotohttpFrame::to_string(Self) -> String
+
+pub(all) struct NetprotohttpGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpGraphN::add(Self, Self) -> Self
+pub fn NetprotohttpGraphN::copy(Self) -> Self
+pub fn NetprotohttpGraphN::fill(Self, Double) -> Self
+pub fn NetprotohttpGraphN::get(Self, Int32) -> Double
+pub fn NetprotohttpGraphN::len(Self) -> Int32
+pub fn NetprotohttpGraphN::max(Self) -> Double
+pub fn NetprotohttpGraphN::mean(Self) -> Double
+pub fn NetprotohttpGraphN::min(Self) -> Double
+pub fn NetprotohttpGraphN::scale(Self, Double) -> Self
+pub fn NetprotohttpGraphN::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpGraphN::sum(Self) -> Double
+pub fn NetprotohttpGraphN::to_string(Self) -> String
+
+pub(all) struct NetprotohttpLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpLayer::add(Self, Self) -> Self
+pub fn NetprotohttpLayer::copy(Self) -> Self
+pub fn NetprotohttpLayer::fill(Self, Double) -> Self
+pub fn NetprotohttpLayer::get(Self, Int32) -> Double
+pub fn NetprotohttpLayer::len(Self) -> Int32
+pub fn NetprotohttpLayer::max(Self) -> Double
+pub fn NetprotohttpLayer::mean(Self) -> Double
+pub fn NetprotohttpLayer::min(Self) -> Double
+pub fn NetprotohttpLayer::scale(Self, Double) -> Self
+pub fn NetprotohttpLayer::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpLayer::sum(Self) -> Double
+pub fn NetprotohttpLayer::to_string(Self) -> String
+
+pub(all) struct NetprotohttpMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetprotohttpMatrix::add(Self, Self) -> Self
+pub fn NetprotohttpMatrix::det(Self) -> Double
+pub fn NetprotohttpMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetprotohttpMatrix::multiply(Self, Self) -> Self
+pub fn NetprotohttpMatrix::norm(Self) -> Double
+pub fn NetprotohttpMatrix::scale(Self, Double) -> Self
+pub fn NetprotohttpMatrix::to_string(Self) -> String
+pub fn NetprotohttpMatrix::trace(Self) -> Double
+pub fn NetprotohttpMatrix::transpose(Self) -> Self
+
+pub(all) struct NetprotohttpModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpModel::add(Self, Self) -> Self
+pub fn NetprotohttpModel::copy(Self) -> Self
+pub fn NetprotohttpModel::fill(Self, Double) -> Self
+pub fn NetprotohttpModel::get(Self, Int32) -> Double
+pub fn NetprotohttpModel::len(Self) -> Int32
+pub fn NetprotohttpModel::max(Self) -> Double
+pub fn NetprotohttpModel::mean(Self) -> Double
+pub fn NetprotohttpModel::min(Self) -> Double
+pub fn NetprotohttpModel::scale(Self, Double) -> Self
+pub fn NetprotohttpModel::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpModel::sum(Self) -> Double
+pub fn NetprotohttpModel::to_string(Self) -> String
+
+pub(all) struct NetprotohttpNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpNode::add(Self, Self) -> Self
+pub fn NetprotohttpNode::copy(Self) -> Self
+pub fn NetprotohttpNode::fill(Self, Double) -> Self
+pub fn NetprotohttpNode::get(Self, Int32) -> Double
+pub fn NetprotohttpNode::len(Self) -> Int32
+pub fn NetprotohttpNode::max(Self) -> Double
+pub fn NetprotohttpNode::mean(Self) -> Double
+pub fn NetprotohttpNode::min(Self) -> Double
+pub fn NetprotohttpNode::scale(Self, Double) -> Self
+pub fn NetprotohttpNode::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpNode::sum(Self) -> Double
+pub fn NetprotohttpNode::to_string(Self) -> String
+
+pub(all) struct NetprotohttpPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpPath::add(Self, Self) -> Self
+pub fn NetprotohttpPath::copy(Self) -> Self
+pub fn NetprotohttpPath::fill(Self, Double) -> Self
+pub fn NetprotohttpPath::get(Self, Int32) -> Double
+pub fn NetprotohttpPath::len(Self) -> Int32
+pub fn NetprotohttpPath::max(Self) -> Double
+pub fn NetprotohttpPath::mean(Self) -> Double
+pub fn NetprotohttpPath::min(Self) -> Double
+pub fn NetprotohttpPath::scale(Self, Double) -> Self
+pub fn NetprotohttpPath::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpPath::sum(Self) -> Double
+pub fn NetprotohttpPath::to_string(Self) -> String
+
+pub(all) struct NetprotohttpPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetprotohttpPoint::add(Self, Self) -> Self
+pub fn NetprotohttpPoint::cross(Self, Self) -> Self
+pub fn NetprotohttpPoint::dist(Self, Self) -> Double
+pub fn NetprotohttpPoint::dot(Self, Self) -> Double
+pub fn NetprotohttpPoint::label(Self) -> Int32
+pub fn NetprotohttpPoint::lerp(Self, Self, Double) -> Self
+pub fn NetprotohttpPoint::mid(Self, Self) -> Self
+pub fn NetprotohttpPoint::negate(Self) -> Self
+pub fn NetprotohttpPoint::norm(Self) -> Double
+pub fn NetprotohttpPoint::normalize(Self) -> Self
+pub fn NetprotohttpPoint::scale(Self, Double) -> Self
+pub fn NetprotohttpPoint::sub(Self, Self) -> Self
+pub fn NetprotohttpPoint::to_string(Self) -> String
+pub fn NetprotohttpPoint::x(Self) -> Double
+pub fn NetprotohttpPoint::y(Self) -> Double
+pub fn NetprotohttpPoint::z(Self) -> Double
+
+pub(all) struct NetprotohttpRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpRange::add(Self, Self) -> Self
+pub fn NetprotohttpRange::copy(Self) -> Self
+pub fn NetprotohttpRange::fill(Self, Double) -> Self
+pub fn NetprotohttpRange::get(Self, Int32) -> Double
+pub fn NetprotohttpRange::len(Self) -> Int32
+pub fn NetprotohttpRange::max(Self) -> Double
+pub fn NetprotohttpRange::mean(Self) -> Double
+pub fn NetprotohttpRange::min(Self) -> Double
+pub fn NetprotohttpRange::scale(Self, Double) -> Self
+pub fn NetprotohttpRange::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpRange::sum(Self) -> Double
+pub fn NetprotohttpRange::to_string(Self) -> String
+
+pub(all) struct NetprotohttpSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetprotohttpSeries::add(Self, Self) -> Self
+pub fn NetprotohttpSeries::cumsum(Self) -> Self
+pub fn NetprotohttpSeries::len(Self) -> Int32
+pub fn NetprotohttpSeries::max(Self) -> Double
+pub fn NetprotohttpSeries::mean(Self) -> Double
+pub fn NetprotohttpSeries::median(Self) -> Double
+pub fn NetprotohttpSeries::min(Self) -> Double
+pub fn NetprotohttpSeries::normalize(Self) -> Self
+pub fn NetprotohttpSeries::range(Self) -> Double
+pub fn NetprotohttpSeries::scale(Self, Double) -> Self
+pub fn NetprotohttpSeries::std(Self) -> Double
+pub fn NetprotohttpSeries::sub(Self, Self) -> Self
+pub fn NetprotohttpSeries::sum(Self) -> Double
+pub fn NetprotohttpSeries::to_string(Self) -> String
+pub fn NetprotohttpSeries::variance(Self) -> Double
+
+pub(all) struct NetprotohttpSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpSlice::add(Self, Self) -> Self
+pub fn NetprotohttpSlice::copy(Self) -> Self
+pub fn NetprotohttpSlice::fill(Self, Double) -> Self
+pub fn NetprotohttpSlice::get(Self, Int32) -> Double
+pub fn NetprotohttpSlice::len(Self) -> Int32
+pub fn NetprotohttpSlice::max(Self) -> Double
+pub fn NetprotohttpSlice::mean(Self) -> Double
+pub fn NetprotohttpSlice::min(Self) -> Double
+pub fn NetprotohttpSlice::scale(Self, Double) -> Self
+pub fn NetprotohttpSlice::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpSlice::sum(Self) -> Double
+pub fn NetprotohttpSlice::to_string(Self) -> String
+
+pub(all) struct NetprotohttpTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpTable::add(Self, Self) -> Self
+pub fn NetprotohttpTable::copy(Self) -> Self
+pub fn NetprotohttpTable::fill(Self, Double) -> Self
+pub fn NetprotohttpTable::get(Self, Int32) -> Double
+pub fn NetprotohttpTable::len(Self) -> Int32
+pub fn NetprotohttpTable::max(Self) -> Double
+pub fn NetprotohttpTable::mean(Self) -> Double
+pub fn NetprotohttpTable::min(Self) -> Double
+pub fn NetprotohttpTable::scale(Self, Double) -> Self
+pub fn NetprotohttpTable::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpTable::sum(Self) -> Double
+pub fn NetprotohttpTable::to_string(Self) -> String
+
+pub(all) struct NetprotohttpVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetprotohttpVector::add(Self, Self) -> Self
+pub fn NetprotohttpVector::dist(Self, Self) -> Double
+pub fn NetprotohttpVector::dot(Self, Self) -> Double
+pub fn NetprotohttpVector::norm(Self) -> Double
+pub fn NetprotohttpVector::normalize(Self) -> Self
+pub fn NetprotohttpVector::scale(Self, Double) -> Self
+pub fn NetprotohttpVector::sub(Self, Self) -> Self
+pub fn NetprotohttpVector::to_string(Self) -> String
+
+pub(all) struct NetprotohttpView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetprotohttpView::add(Self, Self) -> Self
+pub fn NetprotohttpView::copy(Self) -> Self
+pub fn NetprotohttpView::fill(Self, Double) -> Self
+pub fn NetprotohttpView::get(Self, Int32) -> Double
+pub fn NetprotohttpView::len(Self) -> Int32
+pub fn NetprotohttpView::max(Self) -> Double
+pub fn NetprotohttpView::mean(Self) -> Double
+pub fn NetprotohttpView::min(Self) -> Double
+pub fn NetprotohttpView::scale(Self, Double) -> Self
+pub fn NetprotohttpView::set(Self, Int32, Double) -> Self
+pub fn NetprotohttpView::sum(Self) -> Double
+pub fn NetprotohttpView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

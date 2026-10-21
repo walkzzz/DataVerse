@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_flow_policing"
+
+// Values
+pub fn net_flow_policing_buffer_make(Int32) -> NetflowpolicingBuffer
+
+pub fn net_flow_policing_cluster_make(Int32) -> NetflowpolicingCluster
+
+pub fn net_flow_policing_cursor_make(Int32) -> NetflowpolicingCursor
+
+pub fn net_flow_policing_edge_make(Int32) -> NetflowpolicingEdge
+
+pub fn net_flow_policing_frame_make(Int32) -> NetflowpolicingFrame
+
+pub fn net_flow_policing_graphn_make(Int32) -> NetflowpolicingGraphN
+
+pub fn net_flow_policing_layer_make(Int32) -> NetflowpolicingLayer
+
+pub fn net_flow_policing_make_matrix(Int32, Int32, Double) -> NetflowpolicingMatrix
+
+pub fn net_flow_policing_make_point(Double, Double) -> NetflowpolicingPoint
+
+pub fn net_flow_policing_make_point3(Double, Double, Double) -> NetflowpolicingPoint
+
+pub fn net_flow_policing_make_series(Array[Double], String) -> NetflowpolicingSeries
+
+pub fn net_flow_policing_make_vector(Array[Double]) -> NetflowpolicingVector
+
+pub fn net_flow_policing_matrix_identity(Int32) -> NetflowpolicingMatrix
+
+pub fn net_flow_policing_model_make(Int32) -> NetflowpolicingModel
+
+pub fn net_flow_policing_node_make(Int32) -> NetflowpolicingNode
+
+pub fn net_flow_policing_path_make(Int32) -> NetflowpolicingPath
+
+pub fn net_flow_policing_range_make(Int32) -> NetflowpolicingRange
+
+pub fn net_flow_policing_slice_make(Int32) -> NetflowpolicingSlice
+
+pub fn net_flow_policing_table_make(Int32) -> NetflowpolicingTable
+
+pub fn net_flow_policing_vector_zero(Int32) -> NetflowpolicingVector
+
+pub fn net_flow_policing_view_make(Int32) -> NetflowpolicingView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetflowpolicingBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowpolicingBuffer::add(Self, Self) -> Self
+pub fn NetflowpolicingBuffer::copy(Self) -> Self
+pub fn NetflowpolicingBuffer::fill(Self, Double) -> Self
+pub fn NetflowpolicingBuffer::get(Self, Int32) -> Double
+pub fn NetflowpolicingBuffer::len(Self) -> Int32
+pub fn NetflowpolicingBuffer::max(Self) -> Double
+pub fn NetflowpolicingBuffer::mean(Self) -> Double
+pub fn NetflowpolicingBuffer::min(Self) -> Double
+pub fn NetflowpolicingBuffer::scale(Self, Double) -> Self
+pub fn NetflowpolicingBuffer::set(Self, Int32, Double) -> Self
+pub fn NetflowpolicingBuffer::sum(Self) -> Double
+pub fn NetflowpolicingBuffer::to_string(Self) -> String
+
+pub(all) struct NetflowpolicingCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowpolicingCluster::add(Self, Self) -> Self
+pub fn NetflowpolicingCluster::copy(Self) -> Self
+pub fn NetflowpolicingCluster::fill(Self, Double) -> Self
+pub fn NetflowpolicingCluster::get(Self, Int32) -> Double
+pub fn NetflowpolicingCluster::len(Self) -> Int32
+pub fn NetflowpolicingCluster::max(Self) -> Double
+pub fn NetflowpolicingCluster::mean(Self) -> Double
+pub fn NetflowpolicingCluster::min(Self) -> Double
+pub fn NetflowpolicingCluster::scale(Self, Double) -> Self
+pub fn NetflowpolicingCluster::set(Self, Int32, Double) -> Self
+pub fn NetflowpolicingCluster::sum(Self) -> Double
+pub fn NetflowpolicingCluster::to_string(Self) -> String
+
+pub(all) struct NetflowpolicingCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowpolicingCursor::add(Self, Self) -> Self
+pub fn NetflowpolicingCursor::copy(Self) -> Self
+pub fn NetflowpolicingCursor::fill(Self, Double) -> Self
+pub fn NetflowpolicingCursor::get(Self, Int32) -> Double
+pub fn NetflowpolicingCursor::len(Self) -> Int32
+pub fn NetflowpolicingCursor::max(Self) -> Double
+pub fn NetflowpolicingCursor::mean(Self) -> Double
+pub fn NetflowpolicingCursor::min(Self) -> Double
+pub fn NetflowpolicingCursor::scale(Self, Double) -> Self
+pub fn NetflowpolicingCursor::set(Self, Int32, Double) -> Self
+pub fn NetflowpolicingCursor::sum(Self) -> Double
+pub fn NetflowpolicingCursor::to_string(Self) -> String
+
+pub(all) struct NetflowpolicingEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowpolicingEdge::add(Self, Self) -> Self
+pub fn NetflowpolicingEdge::copy(Self) -> Self
+pub fn NetflowpolicingEdge::fill(Self, Double) -> Self
+pub fn NetflowpolicingEdge::get(Self, Int32) -> Double
+pub fn NetflowpolicingEdge::len(Self) -> Int32
+pub fn NetflowpolicingEdge::max(Self) -> Double
+pub fn NetflowpolicingEdge::mean(Self) -> Double
+pub fn NetflowpolicingEdge::min(Self) -> Double
+pub fn NetflowpolicingEdge::scale(Self, Double) -> Self
+pub fn NetflowpolicingEdge::set(Self, Int32, Double) -> Self
+pub fn NetflowpolicingEdge::sum(Self) -> Double
+pub fn NetflowpolicingEdge::to_string(Self) -> String
+
+pub(all) struct NetflowpolicingFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowpolicingFrame::add(Self, Self) -> Self
+pub fn NetflowpolicingFrame::copy(Self) -> Self
+pub fn NetflowpolicingFrame::fill(Self, Double) -> Self
+pub fn NetflowpolicingFrame::get(Self, Int32) -> Double
+pub fn NetflowpolicingFrame::len(Self) -> Int32
+pub fn NetflowpolicingFrame::max(Self) -> Double
+pub fn NetflowpolicingFrame::mean(Self) -> Double
+pub fn NetflowpolicingFrame::min(Self) -> Double
+pub fn NetflowpolicingFrame::scale(Self, Double) -> Self
+pub fn NetflowpolicingFrame::set(Self, Int32, Double) -> Self
+pub fn NetflowpolicingFrame::sum(Self) -> Double
+pub fn NetflowpolicingFrame::to_string(Self) -> String
+
+pub(all) struct NetflowpolicingGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowpolicingGraphN::add(Self, Self) -> Self
+pub fn NetflowpolicingGraphN::copy(Self) -> Self
+pub fn NetflowpolicingGraphN::fill(Self, Double) -> Self
+pub fn NetflowpolicingGraphN::get(Self, Int32) -> Double
+pub fn NetflowpolicingGraphN::len(Self) -> Int32
+pub fn NetflowpolicingGraphN::max(Self) -> Double
+pub fn NetflowpolicingGraphN::mean(Self) -> Double
+pub fn NetflowpolicingGraphN::min(Self) -> Double
+pub fn NetflowpolicingGraphN::scale(Self, Double) -> Self
+pub fn NetflowpolicingGraphN::set(Self, Int32, Double) -> Self
+pub fn NetflowpolicingGraphN::sum(Self) -> Double
+pub fn NetflowpolicingGraphN::to_string(Self) -> String
+
+pub(all) struct NetflowpolicingLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowpolicingLayer::add(Self, Self) -> Self
+pub fn NetflowpolicingLayer::copy(Self) -> Self
+pub fn NetflowpolicingLayer::fill(Self, Double) -> Self
+pub fn NetflowpolicingLayer::get(Self, Int32) -> Double
+pub fn NetflowpolicingLayer::len(Self) -> Int32
+pub fn NetflowpolicingLayer::max(Self) -> Double
+pub fn NetflowpolicingLayer::mean(Self) -> Double
+pub fn NetflowpolicingLayer::min(Self) -> Double
+pub fn NetflowpolicingLayer::scale(Self, Double) -> Self
+pub fn NetflowpolicingLayer::set(Self, Int32, Double) -> Self
+pub fn NetflowpolicingLayer::sum(Self) -> Double
+pub fn NetflowpolicingLayer::to_string(Self) -> String
+
+pub(all) struct NetflowpolicingMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetflowpolicingMatrix::add(Self, Self) -> Self
+pub fn NetflowpolicingMatrix::det(Self) -> Double
+pub fn NetflowpolicingMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetflowpolicingMatrix::multiply(Self, Self) -> Self
+pub fn NetflowpolicingMatrix::norm(Self) -> Double
+pub fn NetflowpolicingMatrix::scale(Self, Double) -> Self
+pub fn NetflowpolicingMatrix::to_string(Self) -> String
+pub fn NetflowpolicingMatrix::trace(Self) -> Double
+pub fn NetflowpolicingMatrix::transpose(Self) -> Self
+
+pub(all) struct NetflowpolicingModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowpolicingModel::add(Self, Self) -> Self
+pub fn NetflowpolicingModel::copy(Self) -> Self
+pub fn NetflowpolicingModel::fill(Self, Double) -> Self
+pub fn NetflowpolicingModel::get(Self, Int32) -> Double
+pub fn NetflowpolicingModel::len(Self) -> Int32
+pub fn NetflowpolicingModel::max(Self) -> Double
+pub fn NetflowpolicingModel::mean(Self) -> Double
+pub fn NetflowpolicingModel::min(Self) -> Double
+pub fn NetflowpolicingModel::scale(Self, Double) -> Self
+pub fn NetflowpolicingModel::set(Self, Int32, Double) -> Self
+pub fn NetflowpolicingModel::sum(Self) -> Double
+pub fn NetflowpolicingModel::to_string(Self) -> String
+
+pub(all) struct NetflowpolicingNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowpolicingNode::add(Self, Self) -> Self
+pub fn NetflowpolicingNode::copy(Self) -> Self
+pub fn NetflowpolicingNode::fill(Self, Double) -> Self
+pub fn NetflowpolicingNode::get(Self, Int32) -> Double
+pub fn NetflowpolicingNode::len(Self) -> Int32
+pub fn NetflowpolicingNode::max(Self) -> Double
+pub fn NetflowpolicingNode::mean(Self) -> Double
+pub fn NetflowpolicingNode::min(Self) -> Double
+pub fn NetflowpolicingNode::scale(Self, Double) -> Self
+pub fn NetflowpolicingNode::set(Self, Int32, Double) -> Self
+pub fn NetflowpolicingNode::sum(Self) -> Double
+pub fn NetflowpolicingNode::to_string(Self) -> String
+
+pub(all) struct NetflowpolicingPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowpolicingPath::add(Self, Self) -> Self
+pub fn NetflowpolicingPath::copy(Self) -> Self
+pub fn NetflowpolicingPath::fill(Self, Double) -> Self
+pub fn NetflowpolicingPath::get(Self, Int32) -> Double
+pub fn NetflowpolicingPath::len(Self) -> Int32
+pub fn NetflowpolicingPath::max(Self) -> Double
+pub fn NetflowpolicingPath::mean(Self) -> Double
+pub fn NetflowpolicingPath::min(Self) -> Double
+pub fn NetflowpolicingPath::scale(Self, Double) -> Self
+pub fn NetflowpolicingPath::set(Self, Int32, Double) -> Self
+pub fn NetflowpolicingPath::sum(Self) -> Double
+pub fn NetflowpolicingPath::to_string(Self) -> String
+
+pub(all) struct NetflowpolicingPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetflowpolicingPoint::add(Self, Self) -> Self
+pub fn NetflowpolicingPoint::cross(Self, Self) -> Self
+pub fn NetflowpolicingPoint::dist(Self, Self) -> Double
+pub fn NetflowpolicingPoint::dot(Self, Self) -> Double
+pub fn NetflowpolicingPoint::label(Self) -> Int32
+pub fn NetflowpolicingPoint::lerp(Self, Self, Double) -> Self
+pub fn NetflowpolicingPoint::mid(Self, Self) -> Self
+pub fn NetflowpolicingPoint::negate(Self) -> Self
+pub fn NetflowpolicingPoint::norm(Self) -> Double
+pub fn NetflowpolicingPoint::normalize(Self) -> Self
+pub fn NetflowpolicingPoint::scale(Self, Double) -> Self
+pub fn NetflowpolicingPoint::sub(Self, Self) -> Self
+pub fn NetflowpolicingPoint::to_string(Self) -> String
+pub fn NetflowpolicingPoint::x(Self) -> Double
+pub fn NetflowpolicingPoint::y(Self) -> Double
+pub fn NetflowpolicingPoint::z(Self) -> Double
+
+pub(all) struct NetflowpolicingRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowpolicingRange::add(Self, Self) -> Self
+pub fn NetflowpolicingRange::copy(Self) -> Self
+pub fn NetflowpolicingRange::fill(Self, Double) -> Self
+pub fn NetflowpolicingRange::get(Self, Int32) -> Double
+pub fn NetflowpolicingRange::len(Self) -> Int32
+pub fn NetflowpolicingRange::max(Self) -> Double
+pub fn NetflowpolicingRange::mean(Self) -> Double
+pub fn NetflowpolicingRange::min(Self) -> Double
+pub fn NetflowpolicingRange::scale(Self, Double) -> Self
+pub fn NetflowpolicingRange::set(Self, Int32, Double) -> Self
+pub fn NetflowpolicingRange::sum(Self) -> Double
+pub fn NetflowpolicingRange::to_string(Self) -> String
+
+pub(all) struct NetflowpolicingSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetflowpolicingSeries::add(Self, Self) -> Self
+pub fn NetflowpolicingSeries::cumsum(Self) -> Self
+pub fn NetflowpolicingSeries::len(Self) -> Int32
+pub fn NetflowpolicingSeries::max(Self) -> Double
+pub fn NetflowpolicingSeries::mean(Self) -> Double
+pub fn NetflowpolicingSeries::median(Self) -> Double
+pub fn NetflowpolicingSeries::min(Self) -> Double
+pub fn NetflowpolicingSeries::normalize(Self) -> Self
+pub fn NetflowpolicingSeries::range(Self) -> Double
+pub fn NetflowpolicingSeries::scale(Self, Double) -> Self
+pub fn NetflowpolicingSeries::std(Self) -> Double
+pub fn NetflowpolicingSeries::sub(Self, Self) -> Self
+pub fn NetflowpolicingSeries::sum(Self) -> Double
+pub fn NetflowpolicingSeries::to_string(Self) -> String
+pub fn NetflowpolicingSeries::variance(Self) -> Double
+
+pub(all) struct NetflowpolicingSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowpolicingSlice::add(Self, Self) -> Self
+pub fn NetflowpolicingSlice::copy(Self) -> Self
+pub fn NetflowpolicingSlice::fill(Self, Double) -> Self
+pub fn NetflowpolicingSlice::get(Self, Int32) -> Double
+pub fn NetflowpolicingSlice::len(Self) -> Int32
+pub fn NetflowpolicingSlice::max(Self) -> Double
+pub fn NetflowpolicingSlice::mean(Self) -> Double
+pub fn NetflowpolicingSlice::min(Self) -> Double
+pub fn NetflowpolicingSlice::scale(Self, Double) -> Self
+pub fn NetflowpolicingSlice::set(Self, Int32, Double) -> Self
+pub fn NetflowpolicingSlice::sum(Self) -> Double
+pub fn NetflowpolicingSlice::to_string(Self) -> String
+
+pub(all) struct NetflowpolicingTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowpolicingTable::add(Self, Self) -> Self
+pub fn NetflowpolicingTable::copy(Self) -> Self
+pub fn NetflowpolicingTable::fill(Self, Double) -> Self
+pub fn NetflowpolicingTable::get(Self, Int32) -> Double
+pub fn NetflowpolicingTable::len(Self) -> Int32
+pub fn NetflowpolicingTable::max(Self) -> Double
+pub fn NetflowpolicingTable::mean(Self) -> Double
+pub fn NetflowpolicingTable::min(Self) -> Double
+pub fn NetflowpolicingTable::scale(Self, Double) -> Self
+pub fn NetflowpolicingTable::set(Self, Int32, Double) -> Self
+pub fn NetflowpolicingTable::sum(Self) -> Double
+pub fn NetflowpolicingTable::to_string(Self) -> String
+
+pub(all) struct NetflowpolicingVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetflowpolicingVector::add(Self, Self) -> Self
+pub fn NetflowpolicingVector::dist(Self, Self) -> Double
+pub fn NetflowpolicingVector::dot(Self, Self) -> Double
+pub fn NetflowpolicingVector::norm(Self) -> Double
+pub fn NetflowpolicingVector::normalize(Self) -> Self
+pub fn NetflowpolicingVector::scale(Self, Double) -> Self
+pub fn NetflowpolicingVector::sub(Self, Self) -> Self
+pub fn NetflowpolicingVector::to_string(Self) -> String
+
+pub(all) struct NetflowpolicingView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetflowpolicingView::add(Self, Self) -> Self
+pub fn NetflowpolicingView::copy(Self) -> Self
+pub fn NetflowpolicingView::fill(Self, Double) -> Self
+pub fn NetflowpolicingView::get(Self, Int32) -> Double
+pub fn NetflowpolicingView::len(Self) -> Int32
+pub fn NetflowpolicingView::max(Self) -> Double
+pub fn NetflowpolicingView::mean(Self) -> Double
+pub fn NetflowpolicingView::min(Self) -> Double
+pub fn NetflowpolicingView::scale(Self, Double) -> Self
+pub fn NetflowpolicingView::set(Self, Int32, Double) -> Self
+pub fn NetflowpolicingView::sum(Self) -> Double
+pub fn NetflowpolicingView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

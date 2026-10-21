@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/stats_desc_univariate"
+
+// Values
+pub fn stats_desc_univariate_buffer_make(Int32) -> StatsdescunivariateBuffer
+
+pub fn stats_desc_univariate_cluster_make(Int32) -> StatsdescunivariateCluster
+
+pub fn stats_desc_univariate_cursor_make(Int32) -> StatsdescunivariateCursor
+
+pub fn stats_desc_univariate_edge_make(Int32) -> StatsdescunivariateEdge
+
+pub fn stats_desc_univariate_frame_make(Int32) -> StatsdescunivariateFrame
+
+pub fn stats_desc_univariate_graphn_make(Int32) -> StatsdescunivariateGraphN
+
+pub fn stats_desc_univariate_layer_make(Int32) -> StatsdescunivariateLayer
+
+pub fn stats_desc_univariate_make_matrix(Int32, Int32, Double) -> StatsdescunivariateMatrix
+
+pub fn stats_desc_univariate_make_point(Double, Double) -> StatsdescunivariatePoint
+
+pub fn stats_desc_univariate_make_point3(Double, Double, Double) -> StatsdescunivariatePoint
+
+pub fn stats_desc_univariate_make_series(Array[Double], String) -> StatsdescunivariateSeries
+
+pub fn stats_desc_univariate_make_vector(Array[Double]) -> StatsdescunivariateVector
+
+pub fn stats_desc_univariate_matrix_identity(Int32) -> StatsdescunivariateMatrix
+
+pub fn stats_desc_univariate_model_make(Int32) -> StatsdescunivariateModel
+
+pub fn stats_desc_univariate_node_make(Int32) -> StatsdescunivariateNode
+
+pub fn stats_desc_univariate_path_make(Int32) -> StatsdescunivariatePath
+
+pub fn stats_desc_univariate_range_make(Int32) -> StatsdescunivariateRange
+
+pub fn stats_desc_univariate_slice_make(Int32) -> StatsdescunivariateSlice
+
+pub fn stats_desc_univariate_table_make(Int32) -> StatsdescunivariateTable
+
+pub fn stats_desc_univariate_vector_zero(Int32) -> StatsdescunivariateVector
+
+pub fn stats_desc_univariate_view_make(Int32) -> StatsdescunivariateView
+
+// Errors
+
+// Types and methods
+pub(all) struct StatsdescunivariateBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescunivariateBuffer::add(Self, Self) -> Self
+pub fn StatsdescunivariateBuffer::copy(Self) -> Self
+pub fn StatsdescunivariateBuffer::fill(Self, Double) -> Self
+pub fn StatsdescunivariateBuffer::get(Self, Int32) -> Double
+pub fn StatsdescunivariateBuffer::len(Self) -> Int32
+pub fn StatsdescunivariateBuffer::max(Self) -> Double
+pub fn StatsdescunivariateBuffer::mean(Self) -> Double
+pub fn StatsdescunivariateBuffer::min(Self) -> Double
+pub fn StatsdescunivariateBuffer::scale(Self, Double) -> Self
+pub fn StatsdescunivariateBuffer::set(Self, Int32, Double) -> Self
+pub fn StatsdescunivariateBuffer::sum(Self) -> Double
+pub fn StatsdescunivariateBuffer::to_string(Self) -> String
+
+pub(all) struct StatsdescunivariateCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescunivariateCluster::add(Self, Self) -> Self
+pub fn StatsdescunivariateCluster::copy(Self) -> Self
+pub fn StatsdescunivariateCluster::fill(Self, Double) -> Self
+pub fn StatsdescunivariateCluster::get(Self, Int32) -> Double
+pub fn StatsdescunivariateCluster::len(Self) -> Int32
+pub fn StatsdescunivariateCluster::max(Self) -> Double
+pub fn StatsdescunivariateCluster::mean(Self) -> Double
+pub fn StatsdescunivariateCluster::min(Self) -> Double
+pub fn StatsdescunivariateCluster::scale(Self, Double) -> Self
+pub fn StatsdescunivariateCluster::set(Self, Int32, Double) -> Self
+pub fn StatsdescunivariateCluster::sum(Self) -> Double
+pub fn StatsdescunivariateCluster::to_string(Self) -> String
+
+pub(all) struct StatsdescunivariateCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescunivariateCursor::add(Self, Self) -> Self
+pub fn StatsdescunivariateCursor::copy(Self) -> Self
+pub fn StatsdescunivariateCursor::fill(Self, Double) -> Self
+pub fn StatsdescunivariateCursor::get(Self, Int32) -> Double
+pub fn StatsdescunivariateCursor::len(Self) -> Int32
+pub fn StatsdescunivariateCursor::max(Self) -> Double
+pub fn StatsdescunivariateCursor::mean(Self) -> Double
+pub fn StatsdescunivariateCursor::min(Self) -> Double
+pub fn StatsdescunivariateCursor::scale(Self, Double) -> Self
+pub fn StatsdescunivariateCursor::set(Self, Int32, Double) -> Self
+pub fn StatsdescunivariateCursor::sum(Self) -> Double
+pub fn StatsdescunivariateCursor::to_string(Self) -> String
+
+pub(all) struct StatsdescunivariateEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescunivariateEdge::add(Self, Self) -> Self
+pub fn StatsdescunivariateEdge::copy(Self) -> Self
+pub fn StatsdescunivariateEdge::fill(Self, Double) -> Self
+pub fn StatsdescunivariateEdge::get(Self, Int32) -> Double
+pub fn StatsdescunivariateEdge::len(Self) -> Int32
+pub fn StatsdescunivariateEdge::max(Self) -> Double
+pub fn StatsdescunivariateEdge::mean(Self) -> Double
+pub fn StatsdescunivariateEdge::min(Self) -> Double
+pub fn StatsdescunivariateEdge::scale(Self, Double) -> Self
+pub fn StatsdescunivariateEdge::set(Self, Int32, Double) -> Self
+pub fn StatsdescunivariateEdge::sum(Self) -> Double
+pub fn StatsdescunivariateEdge::to_string(Self) -> String
+
+pub(all) struct StatsdescunivariateFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescunivariateFrame::add(Self, Self) -> Self
+pub fn StatsdescunivariateFrame::copy(Self) -> Self
+pub fn StatsdescunivariateFrame::fill(Self, Double) -> Self
+pub fn StatsdescunivariateFrame::get(Self, Int32) -> Double
+pub fn StatsdescunivariateFrame::len(Self) -> Int32
+pub fn StatsdescunivariateFrame::max(Self) -> Double
+pub fn StatsdescunivariateFrame::mean(Self) -> Double
+pub fn StatsdescunivariateFrame::min(Self) -> Double
+pub fn StatsdescunivariateFrame::scale(Self, Double) -> Self
+pub fn StatsdescunivariateFrame::set(Self, Int32, Double) -> Self
+pub fn StatsdescunivariateFrame::sum(Self) -> Double
+pub fn StatsdescunivariateFrame::to_string(Self) -> String
+
+pub(all) struct StatsdescunivariateGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescunivariateGraphN::add(Self, Self) -> Self
+pub fn StatsdescunivariateGraphN::copy(Self) -> Self
+pub fn StatsdescunivariateGraphN::fill(Self, Double) -> Self
+pub fn StatsdescunivariateGraphN::get(Self, Int32) -> Double
+pub fn StatsdescunivariateGraphN::len(Self) -> Int32
+pub fn StatsdescunivariateGraphN::max(Self) -> Double
+pub fn StatsdescunivariateGraphN::mean(Self) -> Double
+pub fn StatsdescunivariateGraphN::min(Self) -> Double
+pub fn StatsdescunivariateGraphN::scale(Self, Double) -> Self
+pub fn StatsdescunivariateGraphN::set(Self, Int32, Double) -> Self
+pub fn StatsdescunivariateGraphN::sum(Self) -> Double
+pub fn StatsdescunivariateGraphN::to_string(Self) -> String
+
+pub(all) struct StatsdescunivariateLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescunivariateLayer::add(Self, Self) -> Self
+pub fn StatsdescunivariateLayer::copy(Self) -> Self
+pub fn StatsdescunivariateLayer::fill(Self, Double) -> Self
+pub fn StatsdescunivariateLayer::get(Self, Int32) -> Double
+pub fn StatsdescunivariateLayer::len(Self) -> Int32
+pub fn StatsdescunivariateLayer::max(Self) -> Double
+pub fn StatsdescunivariateLayer::mean(Self) -> Double
+pub fn StatsdescunivariateLayer::min(Self) -> Double
+pub fn StatsdescunivariateLayer::scale(Self, Double) -> Self
+pub fn StatsdescunivariateLayer::set(Self, Int32, Double) -> Self
+pub fn StatsdescunivariateLayer::sum(Self) -> Double
+pub fn StatsdescunivariateLayer::to_string(Self) -> String
+
+pub(all) struct StatsdescunivariateMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn StatsdescunivariateMatrix::add(Self, Self) -> Self
+pub fn StatsdescunivariateMatrix::det(Self) -> Double
+pub fn StatsdescunivariateMatrix::get(Self, Int32, Int32) -> Double
+pub fn StatsdescunivariateMatrix::multiply(Self, Self) -> Self
+pub fn StatsdescunivariateMatrix::norm(Self) -> Double
+pub fn StatsdescunivariateMatrix::scale(Self, Double) -> Self
+pub fn StatsdescunivariateMatrix::to_string(Self) -> String
+pub fn StatsdescunivariateMatrix::trace(Self) -> Double
+pub fn StatsdescunivariateMatrix::transpose(Self) -> Self
+
+pub(all) struct StatsdescunivariateModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescunivariateModel::add(Self, Self) -> Self
+pub fn StatsdescunivariateModel::copy(Self) -> Self
+pub fn StatsdescunivariateModel::fill(Self, Double) -> Self
+pub fn StatsdescunivariateModel::get(Self, Int32) -> Double
+pub fn StatsdescunivariateModel::len(Self) -> Int32
+pub fn StatsdescunivariateModel::max(Self) -> Double
+pub fn StatsdescunivariateModel::mean(Self) -> Double
+pub fn StatsdescunivariateModel::min(Self) -> Double
+pub fn StatsdescunivariateModel::scale(Self, Double) -> Self
+pub fn StatsdescunivariateModel::set(Self, Int32, Double) -> Self
+pub fn StatsdescunivariateModel::sum(Self) -> Double
+pub fn StatsdescunivariateModel::to_string(Self) -> String
+
+pub(all) struct StatsdescunivariateNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescunivariateNode::add(Self, Self) -> Self
+pub fn StatsdescunivariateNode::copy(Self) -> Self
+pub fn StatsdescunivariateNode::fill(Self, Double) -> Self
+pub fn StatsdescunivariateNode::get(Self, Int32) -> Double
+pub fn StatsdescunivariateNode::len(Self) -> Int32
+pub fn StatsdescunivariateNode::max(Self) -> Double
+pub fn StatsdescunivariateNode::mean(Self) -> Double
+pub fn StatsdescunivariateNode::min(Self) -> Double
+pub fn StatsdescunivariateNode::scale(Self, Double) -> Self
+pub fn StatsdescunivariateNode::set(Self, Int32, Double) -> Self
+pub fn StatsdescunivariateNode::sum(Self) -> Double
+pub fn StatsdescunivariateNode::to_string(Self) -> String
+
+pub(all) struct StatsdescunivariatePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescunivariatePath::add(Self, Self) -> Self
+pub fn StatsdescunivariatePath::copy(Self) -> Self
+pub fn StatsdescunivariatePath::fill(Self, Double) -> Self
+pub fn StatsdescunivariatePath::get(Self, Int32) -> Double
+pub fn StatsdescunivariatePath::len(Self) -> Int32
+pub fn StatsdescunivariatePath::max(Self) -> Double
+pub fn StatsdescunivariatePath::mean(Self) -> Double
+pub fn StatsdescunivariatePath::min(Self) -> Double
+pub fn StatsdescunivariatePath::scale(Self, Double) -> Self
+pub fn StatsdescunivariatePath::set(Self, Int32, Double) -> Self
+pub fn StatsdescunivariatePath::sum(Self) -> Double
+pub fn StatsdescunivariatePath::to_string(Self) -> String
+
+pub(all) struct StatsdescunivariatePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn StatsdescunivariatePoint::add(Self, Self) -> Self
+pub fn StatsdescunivariatePoint::cross(Self, Self) -> Self
+pub fn StatsdescunivariatePoint::dist(Self, Self) -> Double
+pub fn StatsdescunivariatePoint::dot(Self, Self) -> Double
+pub fn StatsdescunivariatePoint::label(Self) -> Int32
+pub fn StatsdescunivariatePoint::lerp(Self, Self, Double) -> Self
+pub fn StatsdescunivariatePoint::mid(Self, Self) -> Self
+pub fn StatsdescunivariatePoint::negate(Self) -> Self
+pub fn StatsdescunivariatePoint::norm(Self) -> Double
+pub fn StatsdescunivariatePoint::normalize(Self) -> Self
+pub fn StatsdescunivariatePoint::scale(Self, Double) -> Self
+pub fn StatsdescunivariatePoint::sub(Self, Self) -> Self
+pub fn StatsdescunivariatePoint::to_string(Self) -> String
+pub fn StatsdescunivariatePoint::x(Self) -> Double
+pub fn StatsdescunivariatePoint::y(Self) -> Double
+pub fn StatsdescunivariatePoint::z(Self) -> Double
+
+pub(all) struct StatsdescunivariateRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescunivariateRange::add(Self, Self) -> Self
+pub fn StatsdescunivariateRange::copy(Self) -> Self
+pub fn StatsdescunivariateRange::fill(Self, Double) -> Self
+pub fn StatsdescunivariateRange::get(Self, Int32) -> Double
+pub fn StatsdescunivariateRange::len(Self) -> Int32
+pub fn StatsdescunivariateRange::max(Self) -> Double
+pub fn StatsdescunivariateRange::mean(Self) -> Double
+pub fn StatsdescunivariateRange::min(Self) -> Double
+pub fn StatsdescunivariateRange::scale(Self, Double) -> Self
+pub fn StatsdescunivariateRange::set(Self, Int32, Double) -> Self
+pub fn StatsdescunivariateRange::sum(Self) -> Double
+pub fn StatsdescunivariateRange::to_string(Self) -> String
+
+pub(all) struct StatsdescunivariateSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn StatsdescunivariateSeries::add(Self, Self) -> Self
+pub fn StatsdescunivariateSeries::cumsum(Self) -> Self
+pub fn StatsdescunivariateSeries::len(Self) -> Int32
+pub fn StatsdescunivariateSeries::max(Self) -> Double
+pub fn StatsdescunivariateSeries::mean(Self) -> Double
+pub fn StatsdescunivariateSeries::median(Self) -> Double
+pub fn StatsdescunivariateSeries::min(Self) -> Double
+pub fn StatsdescunivariateSeries::normalize(Self) -> Self
+pub fn StatsdescunivariateSeries::range(Self) -> Double
+pub fn StatsdescunivariateSeries::scale(Self, Double) -> Self
+pub fn StatsdescunivariateSeries::std(Self) -> Double
+pub fn StatsdescunivariateSeries::sub(Self, Self) -> Self
+pub fn StatsdescunivariateSeries::sum(Self) -> Double
+pub fn StatsdescunivariateSeries::to_string(Self) -> String
+pub fn StatsdescunivariateSeries::variance(Self) -> Double
+
+pub(all) struct StatsdescunivariateSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescunivariateSlice::add(Self, Self) -> Self
+pub fn StatsdescunivariateSlice::copy(Self) -> Self
+pub fn StatsdescunivariateSlice::fill(Self, Double) -> Self
+pub fn StatsdescunivariateSlice::get(Self, Int32) -> Double
+pub fn StatsdescunivariateSlice::len(Self) -> Int32
+pub fn StatsdescunivariateSlice::max(Self) -> Double
+pub fn StatsdescunivariateSlice::mean(Self) -> Double
+pub fn StatsdescunivariateSlice::min(Self) -> Double
+pub fn StatsdescunivariateSlice::scale(Self, Double) -> Self
+pub fn StatsdescunivariateSlice::set(Self, Int32, Double) -> Self
+pub fn StatsdescunivariateSlice::sum(Self) -> Double
+pub fn StatsdescunivariateSlice::to_string(Self) -> String
+
+pub(all) struct StatsdescunivariateTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescunivariateTable::add(Self, Self) -> Self
+pub fn StatsdescunivariateTable::copy(Self) -> Self
+pub fn StatsdescunivariateTable::fill(Self, Double) -> Self
+pub fn StatsdescunivariateTable::get(Self, Int32) -> Double
+pub fn StatsdescunivariateTable::len(Self) -> Int32
+pub fn StatsdescunivariateTable::max(Self) -> Double
+pub fn StatsdescunivariateTable::mean(Self) -> Double
+pub fn StatsdescunivariateTable::min(Self) -> Double
+pub fn StatsdescunivariateTable::scale(Self, Double) -> Self
+pub fn StatsdescunivariateTable::set(Self, Int32, Double) -> Self
+pub fn StatsdescunivariateTable::sum(Self) -> Double
+pub fn StatsdescunivariateTable::to_string(Self) -> String
+
+pub(all) struct StatsdescunivariateVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn StatsdescunivariateVector::add(Self, Self) -> Self
+pub fn StatsdescunivariateVector::dist(Self, Self) -> Double
+pub fn StatsdescunivariateVector::dot(Self, Self) -> Double
+pub fn StatsdescunivariateVector::norm(Self) -> Double
+pub fn StatsdescunivariateVector::normalize(Self) -> Self
+pub fn StatsdescunivariateVector::scale(Self, Double) -> Self
+pub fn StatsdescunivariateVector::sub(Self, Self) -> Self
+pub fn StatsdescunivariateVector::to_string(Self) -> String
+
+pub(all) struct StatsdescunivariateView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdescunivariateView::add(Self, Self) -> Self
+pub fn StatsdescunivariateView::copy(Self) -> Self
+pub fn StatsdescunivariateView::fill(Self, Double) -> Self
+pub fn StatsdescunivariateView::get(Self, Int32) -> Double
+pub fn StatsdescunivariateView::len(Self) -> Int32
+pub fn StatsdescunivariateView::max(Self) -> Double
+pub fn StatsdescunivariateView::mean(Self) -> Double
+pub fn StatsdescunivariateView::min(Self) -> Double
+pub fn StatsdescunivariateView::scale(Self, Double) -> Self
+pub fn StatsdescunivariateView::set(Self, Int32, Double) -> Self
+pub fn StatsdescunivariateView::sum(Self) -> Double
+pub fn StatsdescunivariateView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

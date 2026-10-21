@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/chem_desc_geometric"
+
+// Values
+pub fn chem_desc_geometric_buffer_make(Int32) -> ChemdescgeometricBuffer
+
+pub fn chem_desc_geometric_cluster_make(Int32) -> ChemdescgeometricCluster
+
+pub fn chem_desc_geometric_cursor_make(Int32) -> ChemdescgeometricCursor
+
+pub fn chem_desc_geometric_edge_make(Int32) -> ChemdescgeometricEdge
+
+pub fn chem_desc_geometric_frame_make(Int32) -> ChemdescgeometricFrame
+
+pub fn chem_desc_geometric_graphn_make(Int32) -> ChemdescgeometricGraphN
+
+pub fn chem_desc_geometric_layer_make(Int32) -> ChemdescgeometricLayer
+
+pub fn chem_desc_geometric_make_matrix(Int32, Int32, Double) -> ChemdescgeometricMatrix
+
+pub fn chem_desc_geometric_make_point(Double, Double) -> ChemdescgeometricPoint
+
+pub fn chem_desc_geometric_make_point3(Double, Double, Double) -> ChemdescgeometricPoint
+
+pub fn chem_desc_geometric_make_series(Array[Double], String) -> ChemdescgeometricSeries
+
+pub fn chem_desc_geometric_make_vector(Array[Double]) -> ChemdescgeometricVector
+
+pub fn chem_desc_geometric_matrix_identity(Int32) -> ChemdescgeometricMatrix
+
+pub fn chem_desc_geometric_model_make(Int32) -> ChemdescgeometricModel
+
+pub fn chem_desc_geometric_node_make(Int32) -> ChemdescgeometricNode
+
+pub fn chem_desc_geometric_path_make(Int32) -> ChemdescgeometricPath
+
+pub fn chem_desc_geometric_range_make(Int32) -> ChemdescgeometricRange
+
+pub fn chem_desc_geometric_slice_make(Int32) -> ChemdescgeometricSlice
+
+pub fn chem_desc_geometric_table_make(Int32) -> ChemdescgeometricTable
+
+pub fn chem_desc_geometric_vector_zero(Int32) -> ChemdescgeometricVector
+
+pub fn chem_desc_geometric_view_make(Int32) -> ChemdescgeometricView
+
+// Errors
+
+// Types and methods
+pub(all) struct ChemdescgeometricBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescgeometricBuffer::add(Self, Self) -> Self
+pub fn ChemdescgeometricBuffer::copy(Self) -> Self
+pub fn ChemdescgeometricBuffer::fill(Self, Double) -> Self
+pub fn ChemdescgeometricBuffer::get(Self, Int32) -> Double
+pub fn ChemdescgeometricBuffer::len(Self) -> Int32
+pub fn ChemdescgeometricBuffer::max(Self) -> Double
+pub fn ChemdescgeometricBuffer::mean(Self) -> Double
+pub fn ChemdescgeometricBuffer::min(Self) -> Double
+pub fn ChemdescgeometricBuffer::scale(Self, Double) -> Self
+pub fn ChemdescgeometricBuffer::set(Self, Int32, Double) -> Self
+pub fn ChemdescgeometricBuffer::sum(Self) -> Double
+pub fn ChemdescgeometricBuffer::to_string(Self) -> String
+
+pub(all) struct ChemdescgeometricCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescgeometricCluster::add(Self, Self) -> Self
+pub fn ChemdescgeometricCluster::copy(Self) -> Self
+pub fn ChemdescgeometricCluster::fill(Self, Double) -> Self
+pub fn ChemdescgeometricCluster::get(Self, Int32) -> Double
+pub fn ChemdescgeometricCluster::len(Self) -> Int32
+pub fn ChemdescgeometricCluster::max(Self) -> Double
+pub fn ChemdescgeometricCluster::mean(Self) -> Double
+pub fn ChemdescgeometricCluster::min(Self) -> Double
+pub fn ChemdescgeometricCluster::scale(Self, Double) -> Self
+pub fn ChemdescgeometricCluster::set(Self, Int32, Double) -> Self
+pub fn ChemdescgeometricCluster::sum(Self) -> Double
+pub fn ChemdescgeometricCluster::to_string(Self) -> String
+
+pub(all) struct ChemdescgeometricCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescgeometricCursor::add(Self, Self) -> Self
+pub fn ChemdescgeometricCursor::copy(Self) -> Self
+pub fn ChemdescgeometricCursor::fill(Self, Double) -> Self
+pub fn ChemdescgeometricCursor::get(Self, Int32) -> Double
+pub fn ChemdescgeometricCursor::len(Self) -> Int32
+pub fn ChemdescgeometricCursor::max(Self) -> Double
+pub fn ChemdescgeometricCursor::mean(Self) -> Double
+pub fn ChemdescgeometricCursor::min(Self) -> Double
+pub fn ChemdescgeometricCursor::scale(Self, Double) -> Self
+pub fn ChemdescgeometricCursor::set(Self, Int32, Double) -> Self
+pub fn ChemdescgeometricCursor::sum(Self) -> Double
+pub fn ChemdescgeometricCursor::to_string(Self) -> String
+
+pub(all) struct ChemdescgeometricEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescgeometricEdge::add(Self, Self) -> Self
+pub fn ChemdescgeometricEdge::copy(Self) -> Self
+pub fn ChemdescgeometricEdge::fill(Self, Double) -> Self
+pub fn ChemdescgeometricEdge::get(Self, Int32) -> Double
+pub fn ChemdescgeometricEdge::len(Self) -> Int32
+pub fn ChemdescgeometricEdge::max(Self) -> Double
+pub fn ChemdescgeometricEdge::mean(Self) -> Double
+pub fn ChemdescgeometricEdge::min(Self) -> Double
+pub fn ChemdescgeometricEdge::scale(Self, Double) -> Self
+pub fn ChemdescgeometricEdge::set(Self, Int32, Double) -> Self
+pub fn ChemdescgeometricEdge::sum(Self) -> Double
+pub fn ChemdescgeometricEdge::to_string(Self) -> String
+
+pub(all) struct ChemdescgeometricFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescgeometricFrame::add(Self, Self) -> Self
+pub fn ChemdescgeometricFrame::copy(Self) -> Self
+pub fn ChemdescgeometricFrame::fill(Self, Double) -> Self
+pub fn ChemdescgeometricFrame::get(Self, Int32) -> Double
+pub fn ChemdescgeometricFrame::len(Self) -> Int32
+pub fn ChemdescgeometricFrame::max(Self) -> Double
+pub fn ChemdescgeometricFrame::mean(Self) -> Double
+pub fn ChemdescgeometricFrame::min(Self) -> Double
+pub fn ChemdescgeometricFrame::scale(Self, Double) -> Self
+pub fn ChemdescgeometricFrame::set(Self, Int32, Double) -> Self
+pub fn ChemdescgeometricFrame::sum(Self) -> Double
+pub fn ChemdescgeometricFrame::to_string(Self) -> String
+
+pub(all) struct ChemdescgeometricGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescgeometricGraphN::add(Self, Self) -> Self
+pub fn ChemdescgeometricGraphN::copy(Self) -> Self
+pub fn ChemdescgeometricGraphN::fill(Self, Double) -> Self
+pub fn ChemdescgeometricGraphN::get(Self, Int32) -> Double
+pub fn ChemdescgeometricGraphN::len(Self) -> Int32
+pub fn ChemdescgeometricGraphN::max(Self) -> Double
+pub fn ChemdescgeometricGraphN::mean(Self) -> Double
+pub fn ChemdescgeometricGraphN::min(Self) -> Double
+pub fn ChemdescgeometricGraphN::scale(Self, Double) -> Self
+pub fn ChemdescgeometricGraphN::set(Self, Int32, Double) -> Self
+pub fn ChemdescgeometricGraphN::sum(Self) -> Double
+pub fn ChemdescgeometricGraphN::to_string(Self) -> String
+
+pub(all) struct ChemdescgeometricLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescgeometricLayer::add(Self, Self) -> Self
+pub fn ChemdescgeometricLayer::copy(Self) -> Self
+pub fn ChemdescgeometricLayer::fill(Self, Double) -> Self
+pub fn ChemdescgeometricLayer::get(Self, Int32) -> Double
+pub fn ChemdescgeometricLayer::len(Self) -> Int32
+pub fn ChemdescgeometricLayer::max(Self) -> Double
+pub fn ChemdescgeometricLayer::mean(Self) -> Double
+pub fn ChemdescgeometricLayer::min(Self) -> Double
+pub fn ChemdescgeometricLayer::scale(Self, Double) -> Self
+pub fn ChemdescgeometricLayer::set(Self, Int32, Double) -> Self
+pub fn ChemdescgeometricLayer::sum(Self) -> Double
+pub fn ChemdescgeometricLayer::to_string(Self) -> String
+
+pub(all) struct ChemdescgeometricMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ChemdescgeometricMatrix::add(Self, Self) -> Self
+pub fn ChemdescgeometricMatrix::det(Self) -> Double
+pub fn ChemdescgeometricMatrix::get(Self, Int32, Int32) -> Double
+pub fn ChemdescgeometricMatrix::multiply(Self, Self) -> Self
+pub fn ChemdescgeometricMatrix::norm(Self) -> Double
+pub fn ChemdescgeometricMatrix::scale(Self, Double) -> Self
+pub fn ChemdescgeometricMatrix::to_string(Self) -> String
+pub fn ChemdescgeometricMatrix::trace(Self) -> Double
+pub fn ChemdescgeometricMatrix::transpose(Self) -> Self
+
+pub(all) struct ChemdescgeometricModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescgeometricModel::add(Self, Self) -> Self
+pub fn ChemdescgeometricModel::copy(Self) -> Self
+pub fn ChemdescgeometricModel::fill(Self, Double) -> Self
+pub fn ChemdescgeometricModel::get(Self, Int32) -> Double
+pub fn ChemdescgeometricModel::len(Self) -> Int32
+pub fn ChemdescgeometricModel::max(Self) -> Double
+pub fn ChemdescgeometricModel::mean(Self) -> Double
+pub fn ChemdescgeometricModel::min(Self) -> Double
+pub fn ChemdescgeometricModel::scale(Self, Double) -> Self
+pub fn ChemdescgeometricModel::set(Self, Int32, Double) -> Self
+pub fn ChemdescgeometricModel::sum(Self) -> Double
+pub fn ChemdescgeometricModel::to_string(Self) -> String
+
+pub(all) struct ChemdescgeometricNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescgeometricNode::add(Self, Self) -> Self
+pub fn ChemdescgeometricNode::copy(Self) -> Self
+pub fn ChemdescgeometricNode::fill(Self, Double) -> Self
+pub fn ChemdescgeometricNode::get(Self, Int32) -> Double
+pub fn ChemdescgeometricNode::len(Self) -> Int32
+pub fn ChemdescgeometricNode::max(Self) -> Double
+pub fn ChemdescgeometricNode::mean(Self) -> Double
+pub fn ChemdescgeometricNode::min(Self) -> Double
+pub fn ChemdescgeometricNode::scale(Self, Double) -> Self
+pub fn ChemdescgeometricNode::set(Self, Int32, Double) -> Self
+pub fn ChemdescgeometricNode::sum(Self) -> Double
+pub fn ChemdescgeometricNode::to_string(Self) -> String
+
+pub(all) struct ChemdescgeometricPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescgeometricPath::add(Self, Self) -> Self
+pub fn ChemdescgeometricPath::copy(Self) -> Self
+pub fn ChemdescgeometricPath::fill(Self, Double) -> Self
+pub fn ChemdescgeometricPath::get(Self, Int32) -> Double
+pub fn ChemdescgeometricPath::len(Self) -> Int32
+pub fn ChemdescgeometricPath::max(Self) -> Double
+pub fn ChemdescgeometricPath::mean(Self) -> Double
+pub fn ChemdescgeometricPath::min(Self) -> Double
+pub fn ChemdescgeometricPath::scale(Self, Double) -> Self
+pub fn ChemdescgeometricPath::set(Self, Int32, Double) -> Self
+pub fn ChemdescgeometricPath::sum(Self) -> Double
+pub fn ChemdescgeometricPath::to_string(Self) -> String
+
+pub(all) struct ChemdescgeometricPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ChemdescgeometricPoint::add(Self, Self) -> Self
+pub fn ChemdescgeometricPoint::cross(Self, Self) -> Self
+pub fn ChemdescgeometricPoint::dist(Self, Self) -> Double
+pub fn ChemdescgeometricPoint::dot(Self, Self) -> Double
+pub fn ChemdescgeometricPoint::label(Self) -> Int32
+pub fn ChemdescgeometricPoint::lerp(Self, Self, Double) -> Self
+pub fn ChemdescgeometricPoint::mid(Self, Self) -> Self
+pub fn ChemdescgeometricPoint::negate(Self) -> Self
+pub fn ChemdescgeometricPoint::norm(Self) -> Double
+pub fn ChemdescgeometricPoint::normalize(Self) -> Self
+pub fn ChemdescgeometricPoint::scale(Self, Double) -> Self
+pub fn ChemdescgeometricPoint::sub(Self, Self) -> Self
+pub fn ChemdescgeometricPoint::to_string(Self) -> String
+pub fn ChemdescgeometricPoint::x(Self) -> Double
+pub fn ChemdescgeometricPoint::y(Self) -> Double
+pub fn ChemdescgeometricPoint::z(Self) -> Double
+
+pub(all) struct ChemdescgeometricRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescgeometricRange::add(Self, Self) -> Self
+pub fn ChemdescgeometricRange::copy(Self) -> Self
+pub fn ChemdescgeometricRange::fill(Self, Double) -> Self
+pub fn ChemdescgeometricRange::get(Self, Int32) -> Double
+pub fn ChemdescgeometricRange::len(Self) -> Int32
+pub fn ChemdescgeometricRange::max(Self) -> Double
+pub fn ChemdescgeometricRange::mean(Self) -> Double
+pub fn ChemdescgeometricRange::min(Self) -> Double
+pub fn ChemdescgeometricRange::scale(Self, Double) -> Self
+pub fn ChemdescgeometricRange::set(Self, Int32, Double) -> Self
+pub fn ChemdescgeometricRange::sum(Self) -> Double
+pub fn ChemdescgeometricRange::to_string(Self) -> String
+
+pub(all) struct ChemdescgeometricSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ChemdescgeometricSeries::add(Self, Self) -> Self
+pub fn ChemdescgeometricSeries::cumsum(Self) -> Self
+pub fn ChemdescgeometricSeries::len(Self) -> Int32
+pub fn ChemdescgeometricSeries::max(Self) -> Double
+pub fn ChemdescgeometricSeries::mean(Self) -> Double
+pub fn ChemdescgeometricSeries::median(Self) -> Double
+pub fn ChemdescgeometricSeries::min(Self) -> Double
+pub fn ChemdescgeometricSeries::normalize(Self) -> Self
+pub fn ChemdescgeometricSeries::range(Self) -> Double
+pub fn ChemdescgeometricSeries::scale(Self, Double) -> Self
+pub fn ChemdescgeometricSeries::std(Self) -> Double
+pub fn ChemdescgeometricSeries::sub(Self, Self) -> Self
+pub fn ChemdescgeometricSeries::sum(Self) -> Double
+pub fn ChemdescgeometricSeries::to_string(Self) -> String
+pub fn ChemdescgeometricSeries::variance(Self) -> Double
+
+pub(all) struct ChemdescgeometricSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescgeometricSlice::add(Self, Self) -> Self
+pub fn ChemdescgeometricSlice::copy(Self) -> Self
+pub fn ChemdescgeometricSlice::fill(Self, Double) -> Self
+pub fn ChemdescgeometricSlice::get(Self, Int32) -> Double
+pub fn ChemdescgeometricSlice::len(Self) -> Int32
+pub fn ChemdescgeometricSlice::max(Self) -> Double
+pub fn ChemdescgeometricSlice::mean(Self) -> Double
+pub fn ChemdescgeometricSlice::min(Self) -> Double
+pub fn ChemdescgeometricSlice::scale(Self, Double) -> Self
+pub fn ChemdescgeometricSlice::set(Self, Int32, Double) -> Self
+pub fn ChemdescgeometricSlice::sum(Self) -> Double
+pub fn ChemdescgeometricSlice::to_string(Self) -> String
+
+pub(all) struct ChemdescgeometricTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescgeometricTable::add(Self, Self) -> Self
+pub fn ChemdescgeometricTable::copy(Self) -> Self
+pub fn ChemdescgeometricTable::fill(Self, Double) -> Self
+pub fn ChemdescgeometricTable::get(Self, Int32) -> Double
+pub fn ChemdescgeometricTable::len(Self) -> Int32
+pub fn ChemdescgeometricTable::max(Self) -> Double
+pub fn ChemdescgeometricTable::mean(Self) -> Double
+pub fn ChemdescgeometricTable::min(Self) -> Double
+pub fn ChemdescgeometricTable::scale(Self, Double) -> Self
+pub fn ChemdescgeometricTable::set(Self, Int32, Double) -> Self
+pub fn ChemdescgeometricTable::sum(Self) -> Double
+pub fn ChemdescgeometricTable::to_string(Self) -> String
+
+pub(all) struct ChemdescgeometricVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ChemdescgeometricVector::add(Self, Self) -> Self
+pub fn ChemdescgeometricVector::dist(Self, Self) -> Double
+pub fn ChemdescgeometricVector::dot(Self, Self) -> Double
+pub fn ChemdescgeometricVector::norm(Self) -> Double
+pub fn ChemdescgeometricVector::normalize(Self) -> Self
+pub fn ChemdescgeometricVector::scale(Self, Double) -> Self
+pub fn ChemdescgeometricVector::sub(Self, Self) -> Self
+pub fn ChemdescgeometricVector::to_string(Self) -> String
+
+pub(all) struct ChemdescgeometricView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemdescgeometricView::add(Self, Self) -> Self
+pub fn ChemdescgeometricView::copy(Self) -> Self
+pub fn ChemdescgeometricView::fill(Self, Double) -> Self
+pub fn ChemdescgeometricView::get(Self, Int32) -> Double
+pub fn ChemdescgeometricView::len(Self) -> Int32
+pub fn ChemdescgeometricView::max(Self) -> Double
+pub fn ChemdescgeometricView::mean(Self) -> Double
+pub fn ChemdescgeometricView::min(Self) -> Double
+pub fn ChemdescgeometricView::scale(Self, Double) -> Self
+pub fn ChemdescgeometricView::set(Self, Int32, Double) -> Self
+pub fn ChemdescgeometricView::sum(Self) -> Double
+pub fn ChemdescgeometricView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

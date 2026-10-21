@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/logit_boost"
+
+// Values
+pub fn logit_boost_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn logit_boost_corr(Array[Double], Array[Double]) -> Double
+
+pub fn logit_boost_cov(Array[Double], Array[Double]) -> Double
+
+pub fn logit_boost_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn logit_boost_mae(Array[Double], Array[Double]) -> Double
+
+pub fn logit_boost_make_labeled_point(Double, Double, Int32) -> Logit_boostPoint
+
+pub fn logit_boost_make_matrix(Int32, Int32, Double) -> Logit_boostMatrix
+
+pub fn logit_boost_make_point(Double, Double) -> Logit_boostPoint
+
+pub fn logit_boost_make_series(Array[Double], String) -> Logit_boostSeries
+
+pub fn logit_boost_make_vector(Array[Double]) -> Logit_boostVector
+
+pub fn logit_boost_matrix_add(Logit_boostMatrix, Logit_boostMatrix) -> Logit_boostMatrix
+
+pub fn logit_boost_matrix_get(Logit_boostMatrix, Int32, Int32) -> Double
+
+pub fn logit_boost_matrix_identity(Int32) -> Logit_boostMatrix
+
+pub fn logit_boost_matrix_multiply(Logit_boostMatrix, Logit_boostMatrix) -> Logit_boostMatrix
+
+pub fn logit_boost_matrix_norm(Logit_boostMatrix) -> Double
+
+pub fn logit_boost_matrix_scale(Logit_boostMatrix, Double) -> Logit_boostMatrix
+
+pub fn logit_boost_matrix_to_string(Logit_boostMatrix) -> String
+
+pub fn logit_boost_matrix_trace(Logit_boostMatrix) -> Double
+
+pub fn logit_boost_matrix_transpose(Logit_boostMatrix) -> Logit_boostMatrix
+
+pub fn logit_boost_mse(Array[Double], Array[Double]) -> Double
+
+pub fn logit_boost_point_add(Logit_boostPoint, Logit_boostPoint) -> Logit_boostPoint
+
+pub fn logit_boost_point_dist(Logit_boostPoint, Logit_boostPoint) -> Double
+
+pub fn logit_boost_point_dot(Logit_boostPoint, Logit_boostPoint) -> Double
+
+pub fn logit_boost_point_label(Logit_boostPoint) -> Int32
+
+pub fn logit_boost_point_norm(Logit_boostPoint) -> Double
+
+pub fn logit_boost_point_scale(Logit_boostPoint, Double) -> Logit_boostPoint
+
+pub fn logit_boost_point_sub(Logit_boostPoint, Logit_boostPoint) -> Logit_boostPoint
+
+pub fn logit_boost_point_to_string(Logit_boostPoint) -> String
+
+pub fn logit_boost_point_x(Logit_boostPoint) -> Double
+
+pub fn logit_boost_point_y(Logit_boostPoint) -> Double
+
+pub fn logit_boost_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn logit_boost_r2(Array[Double], Array[Double]) -> Double
+
+pub fn logit_boost_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn logit_boost_series_add(Logit_boostSeries, Logit_boostSeries) -> Logit_boostSeries
+
+pub fn logit_boost_series_len(Logit_boostSeries) -> Int32
+
+pub fn logit_boost_series_max(Logit_boostSeries) -> Double
+
+pub fn logit_boost_series_mean(Logit_boostSeries) -> Double
+
+pub fn logit_boost_series_min(Logit_boostSeries) -> Double
+
+pub fn logit_boost_series_scale(Logit_boostSeries, Double) -> Logit_boostSeries
+
+pub fn logit_boost_series_std(Logit_boostSeries) -> Double
+
+pub fn logit_boost_series_sum(Logit_boostSeries) -> Double
+
+pub fn logit_boost_series_to_string(Logit_boostSeries) -> String
+
+pub fn logit_boost_series_var(Logit_boostSeries) -> Double
+
+pub fn logit_boost_std(Array[Double]) -> Double
+
+pub fn logit_boost_var(Array[Double]) -> Double
+
+pub fn logit_boost_vector_add(Logit_boostVector, Logit_boostVector) -> Logit_boostVector
+
+pub fn logit_boost_vector_dist(Logit_boostVector, Logit_boostVector) -> Double
+
+pub fn logit_boost_vector_dot(Logit_boostVector, Logit_boostVector) -> Double
+
+pub fn logit_boost_vector_norm(Logit_boostVector) -> Double
+
+pub fn logit_boost_vector_normalize(Logit_boostVector) -> Logit_boostVector
+
+pub fn logit_boost_vector_scale(Logit_boostVector, Double) -> Logit_boostVector
+
+pub fn logit_boost_vector_sub(Logit_boostVector, Logit_boostVector) -> Logit_boostVector
+
+pub fn logit_boost_vector_to_string(Logit_boostVector) -> String
+
+pub fn logit_boost_vector_zero(Int32) -> Logit_boostVector
+
+// Errors
+
+// Types and methods
+pub struct Logit_boostMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Logit_boostPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Logit_boostSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Logit_boostVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/sort_exchange_smooth"
+
+// Values
+pub fn sort_exchange_smooth_buffer_make(Int32) -> SortexchangesmoothBuffer
+
+pub fn sort_exchange_smooth_cluster_make(Int32) -> SortexchangesmoothCluster
+
+pub fn sort_exchange_smooth_cursor_make(Int32) -> SortexchangesmoothCursor
+
+pub fn sort_exchange_smooth_edge_make(Int32) -> SortexchangesmoothEdge
+
+pub fn sort_exchange_smooth_frame_make(Int32) -> SortexchangesmoothFrame
+
+pub fn sort_exchange_smooth_graphn_make(Int32) -> SortexchangesmoothGraphN
+
+pub fn sort_exchange_smooth_layer_make(Int32) -> SortexchangesmoothLayer
+
+pub fn sort_exchange_smooth_make_matrix(Int32, Int32, Double) -> SortexchangesmoothMatrix
+
+pub fn sort_exchange_smooth_make_point(Double, Double) -> SortexchangesmoothPoint
+
+pub fn sort_exchange_smooth_make_point3(Double, Double, Double) -> SortexchangesmoothPoint
+
+pub fn sort_exchange_smooth_make_series(Array[Double], String) -> SortexchangesmoothSeries
+
+pub fn sort_exchange_smooth_make_vector(Array[Double]) -> SortexchangesmoothVector
+
+pub fn sort_exchange_smooth_matrix_identity(Int32) -> SortexchangesmoothMatrix
+
+pub fn sort_exchange_smooth_model_make(Int32) -> SortexchangesmoothModel
+
+pub fn sort_exchange_smooth_node_make(Int32) -> SortexchangesmoothNode
+
+pub fn sort_exchange_smooth_path_make(Int32) -> SortexchangesmoothPath
+
+pub fn sort_exchange_smooth_range_make(Int32) -> SortexchangesmoothRange
+
+pub fn sort_exchange_smooth_slice_make(Int32) -> SortexchangesmoothSlice
+
+pub fn sort_exchange_smooth_table_make(Int32) -> SortexchangesmoothTable
+
+pub fn sort_exchange_smooth_vector_zero(Int32) -> SortexchangesmoothVector
+
+pub fn sort_exchange_smooth_view_make(Int32) -> SortexchangesmoothView
+
+// Errors
+
+// Types and methods
+pub(all) struct SortexchangesmoothBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangesmoothBuffer::add(Self, Self) -> Self
+pub fn SortexchangesmoothBuffer::copy(Self) -> Self
+pub fn SortexchangesmoothBuffer::fill(Self, Double) -> Self
+pub fn SortexchangesmoothBuffer::get(Self, Int32) -> Double
+pub fn SortexchangesmoothBuffer::len(Self) -> Int32
+pub fn SortexchangesmoothBuffer::max(Self) -> Double
+pub fn SortexchangesmoothBuffer::mean(Self) -> Double
+pub fn SortexchangesmoothBuffer::min(Self) -> Double
+pub fn SortexchangesmoothBuffer::scale(Self, Double) -> Self
+pub fn SortexchangesmoothBuffer::set(Self, Int32, Double) -> Self
+pub fn SortexchangesmoothBuffer::sum(Self) -> Double
+pub fn SortexchangesmoothBuffer::to_string(Self) -> String
+
+pub(all) struct SortexchangesmoothCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangesmoothCluster::add(Self, Self) -> Self
+pub fn SortexchangesmoothCluster::copy(Self) -> Self
+pub fn SortexchangesmoothCluster::fill(Self, Double) -> Self
+pub fn SortexchangesmoothCluster::get(Self, Int32) -> Double
+pub fn SortexchangesmoothCluster::len(Self) -> Int32
+pub fn SortexchangesmoothCluster::max(Self) -> Double
+pub fn SortexchangesmoothCluster::mean(Self) -> Double
+pub fn SortexchangesmoothCluster::min(Self) -> Double
+pub fn SortexchangesmoothCluster::scale(Self, Double) -> Self
+pub fn SortexchangesmoothCluster::set(Self, Int32, Double) -> Self
+pub fn SortexchangesmoothCluster::sum(Self) -> Double
+pub fn SortexchangesmoothCluster::to_string(Self) -> String
+
+pub(all) struct SortexchangesmoothCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangesmoothCursor::add(Self, Self) -> Self
+pub fn SortexchangesmoothCursor::copy(Self) -> Self
+pub fn SortexchangesmoothCursor::fill(Self, Double) -> Self
+pub fn SortexchangesmoothCursor::get(Self, Int32) -> Double
+pub fn SortexchangesmoothCursor::len(Self) -> Int32
+pub fn SortexchangesmoothCursor::max(Self) -> Double
+pub fn SortexchangesmoothCursor::mean(Self) -> Double
+pub fn SortexchangesmoothCursor::min(Self) -> Double
+pub fn SortexchangesmoothCursor::scale(Self, Double) -> Self
+pub fn SortexchangesmoothCursor::set(Self, Int32, Double) -> Self
+pub fn SortexchangesmoothCursor::sum(Self) -> Double
+pub fn SortexchangesmoothCursor::to_string(Self) -> String
+
+pub(all) struct SortexchangesmoothEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangesmoothEdge::add(Self, Self) -> Self
+pub fn SortexchangesmoothEdge::copy(Self) -> Self
+pub fn SortexchangesmoothEdge::fill(Self, Double) -> Self
+pub fn SortexchangesmoothEdge::get(Self, Int32) -> Double
+pub fn SortexchangesmoothEdge::len(Self) -> Int32
+pub fn SortexchangesmoothEdge::max(Self) -> Double
+pub fn SortexchangesmoothEdge::mean(Self) -> Double
+pub fn SortexchangesmoothEdge::min(Self) -> Double
+pub fn SortexchangesmoothEdge::scale(Self, Double) -> Self
+pub fn SortexchangesmoothEdge::set(Self, Int32, Double) -> Self
+pub fn SortexchangesmoothEdge::sum(Self) -> Double
+pub fn SortexchangesmoothEdge::to_string(Self) -> String
+
+pub(all) struct SortexchangesmoothFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangesmoothFrame::add(Self, Self) -> Self
+pub fn SortexchangesmoothFrame::copy(Self) -> Self
+pub fn SortexchangesmoothFrame::fill(Self, Double) -> Self
+pub fn SortexchangesmoothFrame::get(Self, Int32) -> Double
+pub fn SortexchangesmoothFrame::len(Self) -> Int32
+pub fn SortexchangesmoothFrame::max(Self) -> Double
+pub fn SortexchangesmoothFrame::mean(Self) -> Double
+pub fn SortexchangesmoothFrame::min(Self) -> Double
+pub fn SortexchangesmoothFrame::scale(Self, Double) -> Self
+pub fn SortexchangesmoothFrame::set(Self, Int32, Double) -> Self
+pub fn SortexchangesmoothFrame::sum(Self) -> Double
+pub fn SortexchangesmoothFrame::to_string(Self) -> String
+
+pub(all) struct SortexchangesmoothGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangesmoothGraphN::add(Self, Self) -> Self
+pub fn SortexchangesmoothGraphN::copy(Self) -> Self
+pub fn SortexchangesmoothGraphN::fill(Self, Double) -> Self
+pub fn SortexchangesmoothGraphN::get(Self, Int32) -> Double
+pub fn SortexchangesmoothGraphN::len(Self) -> Int32
+pub fn SortexchangesmoothGraphN::max(Self) -> Double
+pub fn SortexchangesmoothGraphN::mean(Self) -> Double
+pub fn SortexchangesmoothGraphN::min(Self) -> Double
+pub fn SortexchangesmoothGraphN::scale(Self, Double) -> Self
+pub fn SortexchangesmoothGraphN::set(Self, Int32, Double) -> Self
+pub fn SortexchangesmoothGraphN::sum(Self) -> Double
+pub fn SortexchangesmoothGraphN::to_string(Self) -> String
+
+pub(all) struct SortexchangesmoothLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangesmoothLayer::add(Self, Self) -> Self
+pub fn SortexchangesmoothLayer::copy(Self) -> Self
+pub fn SortexchangesmoothLayer::fill(Self, Double) -> Self
+pub fn SortexchangesmoothLayer::get(Self, Int32) -> Double
+pub fn SortexchangesmoothLayer::len(Self) -> Int32
+pub fn SortexchangesmoothLayer::max(Self) -> Double
+pub fn SortexchangesmoothLayer::mean(Self) -> Double
+pub fn SortexchangesmoothLayer::min(Self) -> Double
+pub fn SortexchangesmoothLayer::scale(Self, Double) -> Self
+pub fn SortexchangesmoothLayer::set(Self, Int32, Double) -> Self
+pub fn SortexchangesmoothLayer::sum(Self) -> Double
+pub fn SortexchangesmoothLayer::to_string(Self) -> String
+
+pub(all) struct SortexchangesmoothMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SortexchangesmoothMatrix::add(Self, Self) -> Self
+pub fn SortexchangesmoothMatrix::det(Self) -> Double
+pub fn SortexchangesmoothMatrix::get(Self, Int32, Int32) -> Double
+pub fn SortexchangesmoothMatrix::multiply(Self, Self) -> Self
+pub fn SortexchangesmoothMatrix::norm(Self) -> Double
+pub fn SortexchangesmoothMatrix::scale(Self, Double) -> Self
+pub fn SortexchangesmoothMatrix::to_string(Self) -> String
+pub fn SortexchangesmoothMatrix::trace(Self) -> Double
+pub fn SortexchangesmoothMatrix::transpose(Self) -> Self
+
+pub(all) struct SortexchangesmoothModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangesmoothModel::add(Self, Self) -> Self
+pub fn SortexchangesmoothModel::copy(Self) -> Self
+pub fn SortexchangesmoothModel::fill(Self, Double) -> Self
+pub fn SortexchangesmoothModel::get(Self, Int32) -> Double
+pub fn SortexchangesmoothModel::len(Self) -> Int32
+pub fn SortexchangesmoothModel::max(Self) -> Double
+pub fn SortexchangesmoothModel::mean(Self) -> Double
+pub fn SortexchangesmoothModel::min(Self) -> Double
+pub fn SortexchangesmoothModel::scale(Self, Double) -> Self
+pub fn SortexchangesmoothModel::set(Self, Int32, Double) -> Self
+pub fn SortexchangesmoothModel::sum(Self) -> Double
+pub fn SortexchangesmoothModel::to_string(Self) -> String
+
+pub(all) struct SortexchangesmoothNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangesmoothNode::add(Self, Self) -> Self
+pub fn SortexchangesmoothNode::copy(Self) -> Self
+pub fn SortexchangesmoothNode::fill(Self, Double) -> Self
+pub fn SortexchangesmoothNode::get(Self, Int32) -> Double
+pub fn SortexchangesmoothNode::len(Self) -> Int32
+pub fn SortexchangesmoothNode::max(Self) -> Double
+pub fn SortexchangesmoothNode::mean(Self) -> Double
+pub fn SortexchangesmoothNode::min(Self) -> Double
+pub fn SortexchangesmoothNode::scale(Self, Double) -> Self
+pub fn SortexchangesmoothNode::set(Self, Int32, Double) -> Self
+pub fn SortexchangesmoothNode::sum(Self) -> Double
+pub fn SortexchangesmoothNode::to_string(Self) -> String
+
+pub(all) struct SortexchangesmoothPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangesmoothPath::add(Self, Self) -> Self
+pub fn SortexchangesmoothPath::copy(Self) -> Self
+pub fn SortexchangesmoothPath::fill(Self, Double) -> Self
+pub fn SortexchangesmoothPath::get(Self, Int32) -> Double
+pub fn SortexchangesmoothPath::len(Self) -> Int32
+pub fn SortexchangesmoothPath::max(Self) -> Double
+pub fn SortexchangesmoothPath::mean(Self) -> Double
+pub fn SortexchangesmoothPath::min(Self) -> Double
+pub fn SortexchangesmoothPath::scale(Self, Double) -> Self
+pub fn SortexchangesmoothPath::set(Self, Int32, Double) -> Self
+pub fn SortexchangesmoothPath::sum(Self) -> Double
+pub fn SortexchangesmoothPath::to_string(Self) -> String
+
+pub(all) struct SortexchangesmoothPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SortexchangesmoothPoint::add(Self, Self) -> Self
+pub fn SortexchangesmoothPoint::cross(Self, Self) -> Self
+pub fn SortexchangesmoothPoint::dist(Self, Self) -> Double
+pub fn SortexchangesmoothPoint::dot(Self, Self) -> Double
+pub fn SortexchangesmoothPoint::label(Self) -> Int32
+pub fn SortexchangesmoothPoint::lerp(Self, Self, Double) -> Self
+pub fn SortexchangesmoothPoint::mid(Self, Self) -> Self
+pub fn SortexchangesmoothPoint::negate(Self) -> Self
+pub fn SortexchangesmoothPoint::norm(Self) -> Double
+pub fn SortexchangesmoothPoint::normalize(Self) -> Self
+pub fn SortexchangesmoothPoint::scale(Self, Double) -> Self
+pub fn SortexchangesmoothPoint::sub(Self, Self) -> Self
+pub fn SortexchangesmoothPoint::to_string(Self) -> String
+pub fn SortexchangesmoothPoint::x(Self) -> Double
+pub fn SortexchangesmoothPoint::y(Self) -> Double
+pub fn SortexchangesmoothPoint::z(Self) -> Double
+
+pub(all) struct SortexchangesmoothRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangesmoothRange::add(Self, Self) -> Self
+pub fn SortexchangesmoothRange::copy(Self) -> Self
+pub fn SortexchangesmoothRange::fill(Self, Double) -> Self
+pub fn SortexchangesmoothRange::get(Self, Int32) -> Double
+pub fn SortexchangesmoothRange::len(Self) -> Int32
+pub fn SortexchangesmoothRange::max(Self) -> Double
+pub fn SortexchangesmoothRange::mean(Self) -> Double
+pub fn SortexchangesmoothRange::min(Self) -> Double
+pub fn SortexchangesmoothRange::scale(Self, Double) -> Self
+pub fn SortexchangesmoothRange::set(Self, Int32, Double) -> Self
+pub fn SortexchangesmoothRange::sum(Self) -> Double
+pub fn SortexchangesmoothRange::to_string(Self) -> String
+
+pub(all) struct SortexchangesmoothSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SortexchangesmoothSeries::add(Self, Self) -> Self
+pub fn SortexchangesmoothSeries::cumsum(Self) -> Self
+pub fn SortexchangesmoothSeries::len(Self) -> Int32
+pub fn SortexchangesmoothSeries::max(Self) -> Double
+pub fn SortexchangesmoothSeries::mean(Self) -> Double
+pub fn SortexchangesmoothSeries::median(Self) -> Double
+pub fn SortexchangesmoothSeries::min(Self) -> Double
+pub fn SortexchangesmoothSeries::normalize(Self) -> Self
+pub fn SortexchangesmoothSeries::range(Self) -> Double
+pub fn SortexchangesmoothSeries::scale(Self, Double) -> Self
+pub fn SortexchangesmoothSeries::std(Self) -> Double
+pub fn SortexchangesmoothSeries::sub(Self, Self) -> Self
+pub fn SortexchangesmoothSeries::sum(Self) -> Double
+pub fn SortexchangesmoothSeries::to_string(Self) -> String
+pub fn SortexchangesmoothSeries::variance(Self) -> Double
+
+pub(all) struct SortexchangesmoothSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangesmoothSlice::add(Self, Self) -> Self
+pub fn SortexchangesmoothSlice::copy(Self) -> Self
+pub fn SortexchangesmoothSlice::fill(Self, Double) -> Self
+pub fn SortexchangesmoothSlice::get(Self, Int32) -> Double
+pub fn SortexchangesmoothSlice::len(Self) -> Int32
+pub fn SortexchangesmoothSlice::max(Self) -> Double
+pub fn SortexchangesmoothSlice::mean(Self) -> Double
+pub fn SortexchangesmoothSlice::min(Self) -> Double
+pub fn SortexchangesmoothSlice::scale(Self, Double) -> Self
+pub fn SortexchangesmoothSlice::set(Self, Int32, Double) -> Self
+pub fn SortexchangesmoothSlice::sum(Self) -> Double
+pub fn SortexchangesmoothSlice::to_string(Self) -> String
+
+pub(all) struct SortexchangesmoothTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangesmoothTable::add(Self, Self) -> Self
+pub fn SortexchangesmoothTable::copy(Self) -> Self
+pub fn SortexchangesmoothTable::fill(Self, Double) -> Self
+pub fn SortexchangesmoothTable::get(Self, Int32) -> Double
+pub fn SortexchangesmoothTable::len(Self) -> Int32
+pub fn SortexchangesmoothTable::max(Self) -> Double
+pub fn SortexchangesmoothTable::mean(Self) -> Double
+pub fn SortexchangesmoothTable::min(Self) -> Double
+pub fn SortexchangesmoothTable::scale(Self, Double) -> Self
+pub fn SortexchangesmoothTable::set(Self, Int32, Double) -> Self
+pub fn SortexchangesmoothTable::sum(Self) -> Double
+pub fn SortexchangesmoothTable::to_string(Self) -> String
+
+pub(all) struct SortexchangesmoothVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SortexchangesmoothVector::add(Self, Self) -> Self
+pub fn SortexchangesmoothVector::dist(Self, Self) -> Double
+pub fn SortexchangesmoothVector::dot(Self, Self) -> Double
+pub fn SortexchangesmoothVector::norm(Self) -> Double
+pub fn SortexchangesmoothVector::normalize(Self) -> Self
+pub fn SortexchangesmoothVector::scale(Self, Double) -> Self
+pub fn SortexchangesmoothVector::sub(Self, Self) -> Self
+pub fn SortexchangesmoothVector::to_string(Self) -> String
+
+pub(all) struct SortexchangesmoothView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SortexchangesmoothView::add(Self, Self) -> Self
+pub fn SortexchangesmoothView::copy(Self) -> Self
+pub fn SortexchangesmoothView::fill(Self, Double) -> Self
+pub fn SortexchangesmoothView::get(Self, Int32) -> Double
+pub fn SortexchangesmoothView::len(Self) -> Int32
+pub fn SortexchangesmoothView::max(Self) -> Double
+pub fn SortexchangesmoothView::mean(Self) -> Double
+pub fn SortexchangesmoothView::min(Self) -> Double
+pub fn SortexchangesmoothView::scale(Self, Double) -> Self
+pub fn SortexchangesmoothView::set(Self, Int32, Double) -> Self
+pub fn SortexchangesmoothView::sum(Self) -> Double
+pub fn SortexchangesmoothView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

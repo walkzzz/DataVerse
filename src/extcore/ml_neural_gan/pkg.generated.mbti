@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_neural_gan"
+
+// Values
+pub fn ml_neural_gan_buffer_make(Int32) -> MlneuralganBuffer
+
+pub fn ml_neural_gan_cluster_make(Int32) -> MlneuralganCluster
+
+pub fn ml_neural_gan_cursor_make(Int32) -> MlneuralganCursor
+
+pub fn ml_neural_gan_edge_make(Int32) -> MlneuralganEdge
+
+pub fn ml_neural_gan_frame_make(Int32) -> MlneuralganFrame
+
+pub fn ml_neural_gan_graphn_make(Int32) -> MlneuralganGraphN
+
+pub fn ml_neural_gan_layer_make(Int32) -> MlneuralganLayer
+
+pub fn ml_neural_gan_make_matrix(Int32, Int32, Double) -> MlneuralganMatrix
+
+pub fn ml_neural_gan_make_point(Double, Double) -> MlneuralganPoint
+
+pub fn ml_neural_gan_make_point3(Double, Double, Double) -> MlneuralganPoint
+
+pub fn ml_neural_gan_make_series(Array[Double], String) -> MlneuralganSeries
+
+pub fn ml_neural_gan_make_vector(Array[Double]) -> MlneuralganVector
+
+pub fn ml_neural_gan_matrix_identity(Int32) -> MlneuralganMatrix
+
+pub fn ml_neural_gan_model_make(Int32) -> MlneuralganModel
+
+pub fn ml_neural_gan_node_make(Int32) -> MlneuralganNode
+
+pub fn ml_neural_gan_path_make(Int32) -> MlneuralganPath
+
+pub fn ml_neural_gan_range_make(Int32) -> MlneuralganRange
+
+pub fn ml_neural_gan_slice_make(Int32) -> MlneuralganSlice
+
+pub fn ml_neural_gan_table_make(Int32) -> MlneuralganTable
+
+pub fn ml_neural_gan_vector_zero(Int32) -> MlneuralganVector
+
+pub fn ml_neural_gan_view_make(Int32) -> MlneuralganView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlneuralganBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralganBuffer::add(Self, Self) -> Self
+pub fn MlneuralganBuffer::copy(Self) -> Self
+pub fn MlneuralganBuffer::fill(Self, Double) -> Self
+pub fn MlneuralganBuffer::get(Self, Int32) -> Double
+pub fn MlneuralganBuffer::len(Self) -> Int32
+pub fn MlneuralganBuffer::max(Self) -> Double
+pub fn MlneuralganBuffer::mean(Self) -> Double
+pub fn MlneuralganBuffer::min(Self) -> Double
+pub fn MlneuralganBuffer::scale(Self, Double) -> Self
+pub fn MlneuralganBuffer::set(Self, Int32, Double) -> Self
+pub fn MlneuralganBuffer::sum(Self) -> Double
+pub fn MlneuralganBuffer::to_string(Self) -> String
+
+pub(all) struct MlneuralganCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralganCluster::add(Self, Self) -> Self
+pub fn MlneuralganCluster::copy(Self) -> Self
+pub fn MlneuralganCluster::fill(Self, Double) -> Self
+pub fn MlneuralganCluster::get(Self, Int32) -> Double
+pub fn MlneuralganCluster::len(Self) -> Int32
+pub fn MlneuralganCluster::max(Self) -> Double
+pub fn MlneuralganCluster::mean(Self) -> Double
+pub fn MlneuralganCluster::min(Self) -> Double
+pub fn MlneuralganCluster::scale(Self, Double) -> Self
+pub fn MlneuralganCluster::set(Self, Int32, Double) -> Self
+pub fn MlneuralganCluster::sum(Self) -> Double
+pub fn MlneuralganCluster::to_string(Self) -> String
+
+pub(all) struct MlneuralganCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralganCursor::add(Self, Self) -> Self
+pub fn MlneuralganCursor::copy(Self) -> Self
+pub fn MlneuralganCursor::fill(Self, Double) -> Self
+pub fn MlneuralganCursor::get(Self, Int32) -> Double
+pub fn MlneuralganCursor::len(Self) -> Int32
+pub fn MlneuralganCursor::max(Self) -> Double
+pub fn MlneuralganCursor::mean(Self) -> Double
+pub fn MlneuralganCursor::min(Self) -> Double
+pub fn MlneuralganCursor::scale(Self, Double) -> Self
+pub fn MlneuralganCursor::set(Self, Int32, Double) -> Self
+pub fn MlneuralganCursor::sum(Self) -> Double
+pub fn MlneuralganCursor::to_string(Self) -> String
+
+pub(all) struct MlneuralganEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralganEdge::add(Self, Self) -> Self
+pub fn MlneuralganEdge::copy(Self) -> Self
+pub fn MlneuralganEdge::fill(Self, Double) -> Self
+pub fn MlneuralganEdge::get(Self, Int32) -> Double
+pub fn MlneuralganEdge::len(Self) -> Int32
+pub fn MlneuralganEdge::max(Self) -> Double
+pub fn MlneuralganEdge::mean(Self) -> Double
+pub fn MlneuralganEdge::min(Self) -> Double
+pub fn MlneuralganEdge::scale(Self, Double) -> Self
+pub fn MlneuralganEdge::set(Self, Int32, Double) -> Self
+pub fn MlneuralganEdge::sum(Self) -> Double
+pub fn MlneuralganEdge::to_string(Self) -> String
+
+pub(all) struct MlneuralganFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralganFrame::add(Self, Self) -> Self
+pub fn MlneuralganFrame::copy(Self) -> Self
+pub fn MlneuralganFrame::fill(Self, Double) -> Self
+pub fn MlneuralganFrame::get(Self, Int32) -> Double
+pub fn MlneuralganFrame::len(Self) -> Int32
+pub fn MlneuralganFrame::max(Self) -> Double
+pub fn MlneuralganFrame::mean(Self) -> Double
+pub fn MlneuralganFrame::min(Self) -> Double
+pub fn MlneuralganFrame::scale(Self, Double) -> Self
+pub fn MlneuralganFrame::set(Self, Int32, Double) -> Self
+pub fn MlneuralganFrame::sum(Self) -> Double
+pub fn MlneuralganFrame::to_string(Self) -> String
+
+pub(all) struct MlneuralganGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralganGraphN::add(Self, Self) -> Self
+pub fn MlneuralganGraphN::copy(Self) -> Self
+pub fn MlneuralganGraphN::fill(Self, Double) -> Self
+pub fn MlneuralganGraphN::get(Self, Int32) -> Double
+pub fn MlneuralganGraphN::len(Self) -> Int32
+pub fn MlneuralganGraphN::max(Self) -> Double
+pub fn MlneuralganGraphN::mean(Self) -> Double
+pub fn MlneuralganGraphN::min(Self) -> Double
+pub fn MlneuralganGraphN::scale(Self, Double) -> Self
+pub fn MlneuralganGraphN::set(Self, Int32, Double) -> Self
+pub fn MlneuralganGraphN::sum(Self) -> Double
+pub fn MlneuralganGraphN::to_string(Self) -> String
+
+pub(all) struct MlneuralganLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralganLayer::add(Self, Self) -> Self
+pub fn MlneuralganLayer::copy(Self) -> Self
+pub fn MlneuralganLayer::fill(Self, Double) -> Self
+pub fn MlneuralganLayer::get(Self, Int32) -> Double
+pub fn MlneuralganLayer::len(Self) -> Int32
+pub fn MlneuralganLayer::max(Self) -> Double
+pub fn MlneuralganLayer::mean(Self) -> Double
+pub fn MlneuralganLayer::min(Self) -> Double
+pub fn MlneuralganLayer::scale(Self, Double) -> Self
+pub fn MlneuralganLayer::set(Self, Int32, Double) -> Self
+pub fn MlneuralganLayer::sum(Self) -> Double
+pub fn MlneuralganLayer::to_string(Self) -> String
+
+pub(all) struct MlneuralganMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlneuralganMatrix::add(Self, Self) -> Self
+pub fn MlneuralganMatrix::det(Self) -> Double
+pub fn MlneuralganMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlneuralganMatrix::multiply(Self, Self) -> Self
+pub fn MlneuralganMatrix::norm(Self) -> Double
+pub fn MlneuralganMatrix::scale(Self, Double) -> Self
+pub fn MlneuralganMatrix::to_string(Self) -> String
+pub fn MlneuralganMatrix::trace(Self) -> Double
+pub fn MlneuralganMatrix::transpose(Self) -> Self
+
+pub(all) struct MlneuralganModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralganModel::add(Self, Self) -> Self
+pub fn MlneuralganModel::copy(Self) -> Self
+pub fn MlneuralganModel::fill(Self, Double) -> Self
+pub fn MlneuralganModel::get(Self, Int32) -> Double
+pub fn MlneuralganModel::len(Self) -> Int32
+pub fn MlneuralganModel::max(Self) -> Double
+pub fn MlneuralganModel::mean(Self) -> Double
+pub fn MlneuralganModel::min(Self) -> Double
+pub fn MlneuralganModel::scale(Self, Double) -> Self
+pub fn MlneuralganModel::set(Self, Int32, Double) -> Self
+pub fn MlneuralganModel::sum(Self) -> Double
+pub fn MlneuralganModel::to_string(Self) -> String
+
+pub(all) struct MlneuralganNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralganNode::add(Self, Self) -> Self
+pub fn MlneuralganNode::copy(Self) -> Self
+pub fn MlneuralganNode::fill(Self, Double) -> Self
+pub fn MlneuralganNode::get(Self, Int32) -> Double
+pub fn MlneuralganNode::len(Self) -> Int32
+pub fn MlneuralganNode::max(Self) -> Double
+pub fn MlneuralganNode::mean(Self) -> Double
+pub fn MlneuralganNode::min(Self) -> Double
+pub fn MlneuralganNode::scale(Self, Double) -> Self
+pub fn MlneuralganNode::set(Self, Int32, Double) -> Self
+pub fn MlneuralganNode::sum(Self) -> Double
+pub fn MlneuralganNode::to_string(Self) -> String
+
+pub(all) struct MlneuralganPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralganPath::add(Self, Self) -> Self
+pub fn MlneuralganPath::copy(Self) -> Self
+pub fn MlneuralganPath::fill(Self, Double) -> Self
+pub fn MlneuralganPath::get(Self, Int32) -> Double
+pub fn MlneuralganPath::len(Self) -> Int32
+pub fn MlneuralganPath::max(Self) -> Double
+pub fn MlneuralganPath::mean(Self) -> Double
+pub fn MlneuralganPath::min(Self) -> Double
+pub fn MlneuralganPath::scale(Self, Double) -> Self
+pub fn MlneuralganPath::set(Self, Int32, Double) -> Self
+pub fn MlneuralganPath::sum(Self) -> Double
+pub fn MlneuralganPath::to_string(Self) -> String
+
+pub(all) struct MlneuralganPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlneuralganPoint::add(Self, Self) -> Self
+pub fn MlneuralganPoint::cross(Self, Self) -> Self
+pub fn MlneuralganPoint::dist(Self, Self) -> Double
+pub fn MlneuralganPoint::dot(Self, Self) -> Double
+pub fn MlneuralganPoint::label(Self) -> Int32
+pub fn MlneuralganPoint::lerp(Self, Self, Double) -> Self
+pub fn MlneuralganPoint::mid(Self, Self) -> Self
+pub fn MlneuralganPoint::negate(Self) -> Self
+pub fn MlneuralganPoint::norm(Self) -> Double
+pub fn MlneuralganPoint::normalize(Self) -> Self
+pub fn MlneuralganPoint::scale(Self, Double) -> Self
+pub fn MlneuralganPoint::sub(Self, Self) -> Self
+pub fn MlneuralganPoint::to_string(Self) -> String
+pub fn MlneuralganPoint::x(Self) -> Double
+pub fn MlneuralganPoint::y(Self) -> Double
+pub fn MlneuralganPoint::z(Self) -> Double
+
+pub(all) struct MlneuralganRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralganRange::add(Self, Self) -> Self
+pub fn MlneuralganRange::copy(Self) -> Self
+pub fn MlneuralganRange::fill(Self, Double) -> Self
+pub fn MlneuralganRange::get(Self, Int32) -> Double
+pub fn MlneuralganRange::len(Self) -> Int32
+pub fn MlneuralganRange::max(Self) -> Double
+pub fn MlneuralganRange::mean(Self) -> Double
+pub fn MlneuralganRange::min(Self) -> Double
+pub fn MlneuralganRange::scale(Self, Double) -> Self
+pub fn MlneuralganRange::set(Self, Int32, Double) -> Self
+pub fn MlneuralganRange::sum(Self) -> Double
+pub fn MlneuralganRange::to_string(Self) -> String
+
+pub(all) struct MlneuralganSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlneuralganSeries::add(Self, Self) -> Self
+pub fn MlneuralganSeries::cumsum(Self) -> Self
+pub fn MlneuralganSeries::len(Self) -> Int32
+pub fn MlneuralganSeries::max(Self) -> Double
+pub fn MlneuralganSeries::mean(Self) -> Double
+pub fn MlneuralganSeries::median(Self) -> Double
+pub fn MlneuralganSeries::min(Self) -> Double
+pub fn MlneuralganSeries::normalize(Self) -> Self
+pub fn MlneuralganSeries::range(Self) -> Double
+pub fn MlneuralganSeries::scale(Self, Double) -> Self
+pub fn MlneuralganSeries::std(Self) -> Double
+pub fn MlneuralganSeries::sub(Self, Self) -> Self
+pub fn MlneuralganSeries::sum(Self) -> Double
+pub fn MlneuralganSeries::to_string(Self) -> String
+pub fn MlneuralganSeries::variance(Self) -> Double
+
+pub(all) struct MlneuralganSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralganSlice::add(Self, Self) -> Self
+pub fn MlneuralganSlice::copy(Self) -> Self
+pub fn MlneuralganSlice::fill(Self, Double) -> Self
+pub fn MlneuralganSlice::get(Self, Int32) -> Double
+pub fn MlneuralganSlice::len(Self) -> Int32
+pub fn MlneuralganSlice::max(Self) -> Double
+pub fn MlneuralganSlice::mean(Self) -> Double
+pub fn MlneuralganSlice::min(Self) -> Double
+pub fn MlneuralganSlice::scale(Self, Double) -> Self
+pub fn MlneuralganSlice::set(Self, Int32, Double) -> Self
+pub fn MlneuralganSlice::sum(Self) -> Double
+pub fn MlneuralganSlice::to_string(Self) -> String
+
+pub(all) struct MlneuralganTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralganTable::add(Self, Self) -> Self
+pub fn MlneuralganTable::copy(Self) -> Self
+pub fn MlneuralganTable::fill(Self, Double) -> Self
+pub fn MlneuralganTable::get(Self, Int32) -> Double
+pub fn MlneuralganTable::len(Self) -> Int32
+pub fn MlneuralganTable::max(Self) -> Double
+pub fn MlneuralganTable::mean(Self) -> Double
+pub fn MlneuralganTable::min(Self) -> Double
+pub fn MlneuralganTable::scale(Self, Double) -> Self
+pub fn MlneuralganTable::set(Self, Int32, Double) -> Self
+pub fn MlneuralganTable::sum(Self) -> Double
+pub fn MlneuralganTable::to_string(Self) -> String
+
+pub(all) struct MlneuralganVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlneuralganVector::add(Self, Self) -> Self
+pub fn MlneuralganVector::dist(Self, Self) -> Double
+pub fn MlneuralganVector::dot(Self, Self) -> Double
+pub fn MlneuralganVector::norm(Self) -> Double
+pub fn MlneuralganVector::normalize(Self) -> Self
+pub fn MlneuralganVector::scale(Self, Double) -> Self
+pub fn MlneuralganVector::sub(Self, Self) -> Self
+pub fn MlneuralganVector::to_string(Self) -> String
+
+pub(all) struct MlneuralganView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlneuralganView::add(Self, Self) -> Self
+pub fn MlneuralganView::copy(Self) -> Self
+pub fn MlneuralganView::fill(Self, Double) -> Self
+pub fn MlneuralganView::get(Self, Int32) -> Double
+pub fn MlneuralganView::len(Self) -> Int32
+pub fn MlneuralganView::max(Self) -> Double
+pub fn MlneuralganView::mean(Self) -> Double
+pub fn MlneuralganView::min(Self) -> Double
+pub fn MlneuralganView::scale(Self, Double) -> Self
+pub fn MlneuralganView::set(Self, Int32, Double) -> Self
+pub fn MlneuralganView::sum(Self) -> Double
+pub fn MlneuralganView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

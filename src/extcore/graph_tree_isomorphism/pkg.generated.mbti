@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_tree_isomorphism"
+
+// Values
+pub fn graph_tree_isomorphism_buffer_make(Int32) -> GraphtreeisomorphismBuffer
+
+pub fn graph_tree_isomorphism_cluster_make(Int32) -> GraphtreeisomorphismCluster
+
+pub fn graph_tree_isomorphism_cursor_make(Int32) -> GraphtreeisomorphismCursor
+
+pub fn graph_tree_isomorphism_edge_make(Int32) -> GraphtreeisomorphismEdge
+
+pub fn graph_tree_isomorphism_frame_make(Int32) -> GraphtreeisomorphismFrame
+
+pub fn graph_tree_isomorphism_graphn_make(Int32) -> GraphtreeisomorphismGraphN
+
+pub fn graph_tree_isomorphism_layer_make(Int32) -> GraphtreeisomorphismLayer
+
+pub fn graph_tree_isomorphism_make_matrix(Int32, Int32, Double) -> GraphtreeisomorphismMatrix
+
+pub fn graph_tree_isomorphism_make_point(Double, Double) -> GraphtreeisomorphismPoint
+
+pub fn graph_tree_isomorphism_make_point3(Double, Double, Double) -> GraphtreeisomorphismPoint
+
+pub fn graph_tree_isomorphism_make_series(Array[Double], String) -> GraphtreeisomorphismSeries
+
+pub fn graph_tree_isomorphism_make_vector(Array[Double]) -> GraphtreeisomorphismVector
+
+pub fn graph_tree_isomorphism_matrix_identity(Int32) -> GraphtreeisomorphismMatrix
+
+pub fn graph_tree_isomorphism_model_make(Int32) -> GraphtreeisomorphismModel
+
+pub fn graph_tree_isomorphism_node_make(Int32) -> GraphtreeisomorphismNode
+
+pub fn graph_tree_isomorphism_path_make(Int32) -> GraphtreeisomorphismPath
+
+pub fn graph_tree_isomorphism_range_make(Int32) -> GraphtreeisomorphismRange
+
+pub fn graph_tree_isomorphism_slice_make(Int32) -> GraphtreeisomorphismSlice
+
+pub fn graph_tree_isomorphism_table_make(Int32) -> GraphtreeisomorphismTable
+
+pub fn graph_tree_isomorphism_vector_zero(Int32) -> GraphtreeisomorphismVector
+
+pub fn graph_tree_isomorphism_view_make(Int32) -> GraphtreeisomorphismView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphtreeisomorphismBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreeisomorphismBuffer::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismBuffer::copy(Self) -> Self
+pub fn GraphtreeisomorphismBuffer::fill(Self, Double) -> Self
+pub fn GraphtreeisomorphismBuffer::get(Self, Int32) -> Double
+pub fn GraphtreeisomorphismBuffer::len(Self) -> Int32
+pub fn GraphtreeisomorphismBuffer::max(Self) -> Double
+pub fn GraphtreeisomorphismBuffer::mean(Self) -> Double
+pub fn GraphtreeisomorphismBuffer::min(Self) -> Double
+pub fn GraphtreeisomorphismBuffer::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphtreeisomorphismBuffer::sum(Self) -> Double
+pub fn GraphtreeisomorphismBuffer::to_string(Self) -> String
+
+pub(all) struct GraphtreeisomorphismCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreeisomorphismCluster::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismCluster::copy(Self) -> Self
+pub fn GraphtreeisomorphismCluster::fill(Self, Double) -> Self
+pub fn GraphtreeisomorphismCluster::get(Self, Int32) -> Double
+pub fn GraphtreeisomorphismCluster::len(Self) -> Int32
+pub fn GraphtreeisomorphismCluster::max(Self) -> Double
+pub fn GraphtreeisomorphismCluster::mean(Self) -> Double
+pub fn GraphtreeisomorphismCluster::min(Self) -> Double
+pub fn GraphtreeisomorphismCluster::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismCluster::set(Self, Int32, Double) -> Self
+pub fn GraphtreeisomorphismCluster::sum(Self) -> Double
+pub fn GraphtreeisomorphismCluster::to_string(Self) -> String
+
+pub(all) struct GraphtreeisomorphismCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreeisomorphismCursor::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismCursor::copy(Self) -> Self
+pub fn GraphtreeisomorphismCursor::fill(Self, Double) -> Self
+pub fn GraphtreeisomorphismCursor::get(Self, Int32) -> Double
+pub fn GraphtreeisomorphismCursor::len(Self) -> Int32
+pub fn GraphtreeisomorphismCursor::max(Self) -> Double
+pub fn GraphtreeisomorphismCursor::mean(Self) -> Double
+pub fn GraphtreeisomorphismCursor::min(Self) -> Double
+pub fn GraphtreeisomorphismCursor::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismCursor::set(Self, Int32, Double) -> Self
+pub fn GraphtreeisomorphismCursor::sum(Self) -> Double
+pub fn GraphtreeisomorphismCursor::to_string(Self) -> String
+
+pub(all) struct GraphtreeisomorphismEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreeisomorphismEdge::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismEdge::copy(Self) -> Self
+pub fn GraphtreeisomorphismEdge::fill(Self, Double) -> Self
+pub fn GraphtreeisomorphismEdge::get(Self, Int32) -> Double
+pub fn GraphtreeisomorphismEdge::len(Self) -> Int32
+pub fn GraphtreeisomorphismEdge::max(Self) -> Double
+pub fn GraphtreeisomorphismEdge::mean(Self) -> Double
+pub fn GraphtreeisomorphismEdge::min(Self) -> Double
+pub fn GraphtreeisomorphismEdge::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismEdge::set(Self, Int32, Double) -> Self
+pub fn GraphtreeisomorphismEdge::sum(Self) -> Double
+pub fn GraphtreeisomorphismEdge::to_string(Self) -> String
+
+pub(all) struct GraphtreeisomorphismFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreeisomorphismFrame::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismFrame::copy(Self) -> Self
+pub fn GraphtreeisomorphismFrame::fill(Self, Double) -> Self
+pub fn GraphtreeisomorphismFrame::get(Self, Int32) -> Double
+pub fn GraphtreeisomorphismFrame::len(Self) -> Int32
+pub fn GraphtreeisomorphismFrame::max(Self) -> Double
+pub fn GraphtreeisomorphismFrame::mean(Self) -> Double
+pub fn GraphtreeisomorphismFrame::min(Self) -> Double
+pub fn GraphtreeisomorphismFrame::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismFrame::set(Self, Int32, Double) -> Self
+pub fn GraphtreeisomorphismFrame::sum(Self) -> Double
+pub fn GraphtreeisomorphismFrame::to_string(Self) -> String
+
+pub(all) struct GraphtreeisomorphismGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreeisomorphismGraphN::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismGraphN::copy(Self) -> Self
+pub fn GraphtreeisomorphismGraphN::fill(Self, Double) -> Self
+pub fn GraphtreeisomorphismGraphN::get(Self, Int32) -> Double
+pub fn GraphtreeisomorphismGraphN::len(Self) -> Int32
+pub fn GraphtreeisomorphismGraphN::max(Self) -> Double
+pub fn GraphtreeisomorphismGraphN::mean(Self) -> Double
+pub fn GraphtreeisomorphismGraphN::min(Self) -> Double
+pub fn GraphtreeisomorphismGraphN::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphtreeisomorphismGraphN::sum(Self) -> Double
+pub fn GraphtreeisomorphismGraphN::to_string(Self) -> String
+
+pub(all) struct GraphtreeisomorphismLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreeisomorphismLayer::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismLayer::copy(Self) -> Self
+pub fn GraphtreeisomorphismLayer::fill(Self, Double) -> Self
+pub fn GraphtreeisomorphismLayer::get(Self, Int32) -> Double
+pub fn GraphtreeisomorphismLayer::len(Self) -> Int32
+pub fn GraphtreeisomorphismLayer::max(Self) -> Double
+pub fn GraphtreeisomorphismLayer::mean(Self) -> Double
+pub fn GraphtreeisomorphismLayer::min(Self) -> Double
+pub fn GraphtreeisomorphismLayer::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismLayer::set(Self, Int32, Double) -> Self
+pub fn GraphtreeisomorphismLayer::sum(Self) -> Double
+pub fn GraphtreeisomorphismLayer::to_string(Self) -> String
+
+pub(all) struct GraphtreeisomorphismMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphtreeisomorphismMatrix::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismMatrix::det(Self) -> Double
+pub fn GraphtreeisomorphismMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphtreeisomorphismMatrix::multiply(Self, Self) -> Self
+pub fn GraphtreeisomorphismMatrix::norm(Self) -> Double
+pub fn GraphtreeisomorphismMatrix::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismMatrix::to_string(Self) -> String
+pub fn GraphtreeisomorphismMatrix::trace(Self) -> Double
+pub fn GraphtreeisomorphismMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphtreeisomorphismModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreeisomorphismModel::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismModel::copy(Self) -> Self
+pub fn GraphtreeisomorphismModel::fill(Self, Double) -> Self
+pub fn GraphtreeisomorphismModel::get(Self, Int32) -> Double
+pub fn GraphtreeisomorphismModel::len(Self) -> Int32
+pub fn GraphtreeisomorphismModel::max(Self) -> Double
+pub fn GraphtreeisomorphismModel::mean(Self) -> Double
+pub fn GraphtreeisomorphismModel::min(Self) -> Double
+pub fn GraphtreeisomorphismModel::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismModel::set(Self, Int32, Double) -> Self
+pub fn GraphtreeisomorphismModel::sum(Self) -> Double
+pub fn GraphtreeisomorphismModel::to_string(Self) -> String
+
+pub(all) struct GraphtreeisomorphismNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreeisomorphismNode::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismNode::copy(Self) -> Self
+pub fn GraphtreeisomorphismNode::fill(Self, Double) -> Self
+pub fn GraphtreeisomorphismNode::get(Self, Int32) -> Double
+pub fn GraphtreeisomorphismNode::len(Self) -> Int32
+pub fn GraphtreeisomorphismNode::max(Self) -> Double
+pub fn GraphtreeisomorphismNode::mean(Self) -> Double
+pub fn GraphtreeisomorphismNode::min(Self) -> Double
+pub fn GraphtreeisomorphismNode::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismNode::set(Self, Int32, Double) -> Self
+pub fn GraphtreeisomorphismNode::sum(Self) -> Double
+pub fn GraphtreeisomorphismNode::to_string(Self) -> String
+
+pub(all) struct GraphtreeisomorphismPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreeisomorphismPath::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismPath::copy(Self) -> Self
+pub fn GraphtreeisomorphismPath::fill(Self, Double) -> Self
+pub fn GraphtreeisomorphismPath::get(Self, Int32) -> Double
+pub fn GraphtreeisomorphismPath::len(Self) -> Int32
+pub fn GraphtreeisomorphismPath::max(Self) -> Double
+pub fn GraphtreeisomorphismPath::mean(Self) -> Double
+pub fn GraphtreeisomorphismPath::min(Self) -> Double
+pub fn GraphtreeisomorphismPath::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismPath::set(Self, Int32, Double) -> Self
+pub fn GraphtreeisomorphismPath::sum(Self) -> Double
+pub fn GraphtreeisomorphismPath::to_string(Self) -> String
+
+pub(all) struct GraphtreeisomorphismPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphtreeisomorphismPoint::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismPoint::cross(Self, Self) -> Self
+pub fn GraphtreeisomorphismPoint::dist(Self, Self) -> Double
+pub fn GraphtreeisomorphismPoint::dot(Self, Self) -> Double
+pub fn GraphtreeisomorphismPoint::label(Self) -> Int32
+pub fn GraphtreeisomorphismPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphtreeisomorphismPoint::mid(Self, Self) -> Self
+pub fn GraphtreeisomorphismPoint::negate(Self) -> Self
+pub fn GraphtreeisomorphismPoint::norm(Self) -> Double
+pub fn GraphtreeisomorphismPoint::normalize(Self) -> Self
+pub fn GraphtreeisomorphismPoint::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismPoint::sub(Self, Self) -> Self
+pub fn GraphtreeisomorphismPoint::to_string(Self) -> String
+pub fn GraphtreeisomorphismPoint::x(Self) -> Double
+pub fn GraphtreeisomorphismPoint::y(Self) -> Double
+pub fn GraphtreeisomorphismPoint::z(Self) -> Double
+
+pub(all) struct GraphtreeisomorphismRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreeisomorphismRange::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismRange::copy(Self) -> Self
+pub fn GraphtreeisomorphismRange::fill(Self, Double) -> Self
+pub fn GraphtreeisomorphismRange::get(Self, Int32) -> Double
+pub fn GraphtreeisomorphismRange::len(Self) -> Int32
+pub fn GraphtreeisomorphismRange::max(Self) -> Double
+pub fn GraphtreeisomorphismRange::mean(Self) -> Double
+pub fn GraphtreeisomorphismRange::min(Self) -> Double
+pub fn GraphtreeisomorphismRange::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismRange::set(Self, Int32, Double) -> Self
+pub fn GraphtreeisomorphismRange::sum(Self) -> Double
+pub fn GraphtreeisomorphismRange::to_string(Self) -> String
+
+pub(all) struct GraphtreeisomorphismSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphtreeisomorphismSeries::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismSeries::cumsum(Self) -> Self
+pub fn GraphtreeisomorphismSeries::len(Self) -> Int32
+pub fn GraphtreeisomorphismSeries::max(Self) -> Double
+pub fn GraphtreeisomorphismSeries::mean(Self) -> Double
+pub fn GraphtreeisomorphismSeries::median(Self) -> Double
+pub fn GraphtreeisomorphismSeries::min(Self) -> Double
+pub fn GraphtreeisomorphismSeries::normalize(Self) -> Self
+pub fn GraphtreeisomorphismSeries::range(Self) -> Double
+pub fn GraphtreeisomorphismSeries::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismSeries::std(Self) -> Double
+pub fn GraphtreeisomorphismSeries::sub(Self, Self) -> Self
+pub fn GraphtreeisomorphismSeries::sum(Self) -> Double
+pub fn GraphtreeisomorphismSeries::to_string(Self) -> String
+pub fn GraphtreeisomorphismSeries::variance(Self) -> Double
+
+pub(all) struct GraphtreeisomorphismSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreeisomorphismSlice::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismSlice::copy(Self) -> Self
+pub fn GraphtreeisomorphismSlice::fill(Self, Double) -> Self
+pub fn GraphtreeisomorphismSlice::get(Self, Int32) -> Double
+pub fn GraphtreeisomorphismSlice::len(Self) -> Int32
+pub fn GraphtreeisomorphismSlice::max(Self) -> Double
+pub fn GraphtreeisomorphismSlice::mean(Self) -> Double
+pub fn GraphtreeisomorphismSlice::min(Self) -> Double
+pub fn GraphtreeisomorphismSlice::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismSlice::set(Self, Int32, Double) -> Self
+pub fn GraphtreeisomorphismSlice::sum(Self) -> Double
+pub fn GraphtreeisomorphismSlice::to_string(Self) -> String
+
+pub(all) struct GraphtreeisomorphismTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreeisomorphismTable::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismTable::copy(Self) -> Self
+pub fn GraphtreeisomorphismTable::fill(Self, Double) -> Self
+pub fn GraphtreeisomorphismTable::get(Self, Int32) -> Double
+pub fn GraphtreeisomorphismTable::len(Self) -> Int32
+pub fn GraphtreeisomorphismTable::max(Self) -> Double
+pub fn GraphtreeisomorphismTable::mean(Self) -> Double
+pub fn GraphtreeisomorphismTable::min(Self) -> Double
+pub fn GraphtreeisomorphismTable::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismTable::set(Self, Int32, Double) -> Self
+pub fn GraphtreeisomorphismTable::sum(Self) -> Double
+pub fn GraphtreeisomorphismTable::to_string(Self) -> String
+
+pub(all) struct GraphtreeisomorphismVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphtreeisomorphismVector::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismVector::dist(Self, Self) -> Double
+pub fn GraphtreeisomorphismVector::dot(Self, Self) -> Double
+pub fn GraphtreeisomorphismVector::norm(Self) -> Double
+pub fn GraphtreeisomorphismVector::normalize(Self) -> Self
+pub fn GraphtreeisomorphismVector::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismVector::sub(Self, Self) -> Self
+pub fn GraphtreeisomorphismVector::to_string(Self) -> String
+
+pub(all) struct GraphtreeisomorphismView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphtreeisomorphismView::add(Self, Self) -> Self
+pub fn GraphtreeisomorphismView::copy(Self) -> Self
+pub fn GraphtreeisomorphismView::fill(Self, Double) -> Self
+pub fn GraphtreeisomorphismView::get(Self, Int32) -> Double
+pub fn GraphtreeisomorphismView::len(Self) -> Int32
+pub fn GraphtreeisomorphismView::max(Self) -> Double
+pub fn GraphtreeisomorphismView::mean(Self) -> Double
+pub fn GraphtreeisomorphismView::min(Self) -> Double
+pub fn GraphtreeisomorphismView::scale(Self, Double) -> Self
+pub fn GraphtreeisomorphismView::set(Self, Int32, Double) -> Self
+pub fn GraphtreeisomorphismView::sum(Self) -> Double
+pub fn GraphtreeisomorphismView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

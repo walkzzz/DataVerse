@@ -1,0 +1,21 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datair"
+
+// Values
+pub fn datair_id() -> String
+
+pub fn ir_core_id() -> String
+
+pub fn ir_entity_id() -> String
+
+pub fn ir_kind_count() -> Int32
+
+pub fn ir_operator_id() -> String
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

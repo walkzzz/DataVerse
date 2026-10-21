@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_regress_cox"
+
+// Values
+pub fn ml_regress_cox_buffer_make(Int32) -> MlregresscoxBuffer
+
+pub fn ml_regress_cox_cluster_make(Int32) -> MlregresscoxCluster
+
+pub fn ml_regress_cox_cursor_make(Int32) -> MlregresscoxCursor
+
+pub fn ml_regress_cox_edge_make(Int32) -> MlregresscoxEdge
+
+pub fn ml_regress_cox_frame_make(Int32) -> MlregresscoxFrame
+
+pub fn ml_regress_cox_graphn_make(Int32) -> MlregresscoxGraphN
+
+pub fn ml_regress_cox_layer_make(Int32) -> MlregresscoxLayer
+
+pub fn ml_regress_cox_make_matrix(Int32, Int32, Double) -> MlregresscoxMatrix
+
+pub fn ml_regress_cox_make_point(Double, Double) -> MlregresscoxPoint
+
+pub fn ml_regress_cox_make_point3(Double, Double, Double) -> MlregresscoxPoint
+
+pub fn ml_regress_cox_make_series(Array[Double], String) -> MlregresscoxSeries
+
+pub fn ml_regress_cox_make_vector(Array[Double]) -> MlregresscoxVector
+
+pub fn ml_regress_cox_matrix_identity(Int32) -> MlregresscoxMatrix
+
+pub fn ml_regress_cox_model_make(Int32) -> MlregresscoxModel
+
+pub fn ml_regress_cox_node_make(Int32) -> MlregresscoxNode
+
+pub fn ml_regress_cox_path_make(Int32) -> MlregresscoxPath
+
+pub fn ml_regress_cox_range_make(Int32) -> MlregresscoxRange
+
+pub fn ml_regress_cox_slice_make(Int32) -> MlregresscoxSlice
+
+pub fn ml_regress_cox_table_make(Int32) -> MlregresscoxTable
+
+pub fn ml_regress_cox_vector_zero(Int32) -> MlregresscoxVector
+
+pub fn ml_regress_cox_view_make(Int32) -> MlregresscoxView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlregresscoxBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresscoxBuffer::add(Self, Self) -> Self
+pub fn MlregresscoxBuffer::copy(Self) -> Self
+pub fn MlregresscoxBuffer::fill(Self, Double) -> Self
+pub fn MlregresscoxBuffer::get(Self, Int32) -> Double
+pub fn MlregresscoxBuffer::len(Self) -> Int32
+pub fn MlregresscoxBuffer::max(Self) -> Double
+pub fn MlregresscoxBuffer::mean(Self) -> Double
+pub fn MlregresscoxBuffer::min(Self) -> Double
+pub fn MlregresscoxBuffer::scale(Self, Double) -> Self
+pub fn MlregresscoxBuffer::set(Self, Int32, Double) -> Self
+pub fn MlregresscoxBuffer::sum(Self) -> Double
+pub fn MlregresscoxBuffer::to_string(Self) -> String
+
+pub(all) struct MlregresscoxCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresscoxCluster::add(Self, Self) -> Self
+pub fn MlregresscoxCluster::copy(Self) -> Self
+pub fn MlregresscoxCluster::fill(Self, Double) -> Self
+pub fn MlregresscoxCluster::get(Self, Int32) -> Double
+pub fn MlregresscoxCluster::len(Self) -> Int32
+pub fn MlregresscoxCluster::max(Self) -> Double
+pub fn MlregresscoxCluster::mean(Self) -> Double
+pub fn MlregresscoxCluster::min(Self) -> Double
+pub fn MlregresscoxCluster::scale(Self, Double) -> Self
+pub fn MlregresscoxCluster::set(Self, Int32, Double) -> Self
+pub fn MlregresscoxCluster::sum(Self) -> Double
+pub fn MlregresscoxCluster::to_string(Self) -> String
+
+pub(all) struct MlregresscoxCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresscoxCursor::add(Self, Self) -> Self
+pub fn MlregresscoxCursor::copy(Self) -> Self
+pub fn MlregresscoxCursor::fill(Self, Double) -> Self
+pub fn MlregresscoxCursor::get(Self, Int32) -> Double
+pub fn MlregresscoxCursor::len(Self) -> Int32
+pub fn MlregresscoxCursor::max(Self) -> Double
+pub fn MlregresscoxCursor::mean(Self) -> Double
+pub fn MlregresscoxCursor::min(Self) -> Double
+pub fn MlregresscoxCursor::scale(Self, Double) -> Self
+pub fn MlregresscoxCursor::set(Self, Int32, Double) -> Self
+pub fn MlregresscoxCursor::sum(Self) -> Double
+pub fn MlregresscoxCursor::to_string(Self) -> String
+
+pub(all) struct MlregresscoxEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresscoxEdge::add(Self, Self) -> Self
+pub fn MlregresscoxEdge::copy(Self) -> Self
+pub fn MlregresscoxEdge::fill(Self, Double) -> Self
+pub fn MlregresscoxEdge::get(Self, Int32) -> Double
+pub fn MlregresscoxEdge::len(Self) -> Int32
+pub fn MlregresscoxEdge::max(Self) -> Double
+pub fn MlregresscoxEdge::mean(Self) -> Double
+pub fn MlregresscoxEdge::min(Self) -> Double
+pub fn MlregresscoxEdge::scale(Self, Double) -> Self
+pub fn MlregresscoxEdge::set(Self, Int32, Double) -> Self
+pub fn MlregresscoxEdge::sum(Self) -> Double
+pub fn MlregresscoxEdge::to_string(Self) -> String
+
+pub(all) struct MlregresscoxFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresscoxFrame::add(Self, Self) -> Self
+pub fn MlregresscoxFrame::copy(Self) -> Self
+pub fn MlregresscoxFrame::fill(Self, Double) -> Self
+pub fn MlregresscoxFrame::get(Self, Int32) -> Double
+pub fn MlregresscoxFrame::len(Self) -> Int32
+pub fn MlregresscoxFrame::max(Self) -> Double
+pub fn MlregresscoxFrame::mean(Self) -> Double
+pub fn MlregresscoxFrame::min(Self) -> Double
+pub fn MlregresscoxFrame::scale(Self, Double) -> Self
+pub fn MlregresscoxFrame::set(Self, Int32, Double) -> Self
+pub fn MlregresscoxFrame::sum(Self) -> Double
+pub fn MlregresscoxFrame::to_string(Self) -> String
+
+pub(all) struct MlregresscoxGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresscoxGraphN::add(Self, Self) -> Self
+pub fn MlregresscoxGraphN::copy(Self) -> Self
+pub fn MlregresscoxGraphN::fill(Self, Double) -> Self
+pub fn MlregresscoxGraphN::get(Self, Int32) -> Double
+pub fn MlregresscoxGraphN::len(Self) -> Int32
+pub fn MlregresscoxGraphN::max(Self) -> Double
+pub fn MlregresscoxGraphN::mean(Self) -> Double
+pub fn MlregresscoxGraphN::min(Self) -> Double
+pub fn MlregresscoxGraphN::scale(Self, Double) -> Self
+pub fn MlregresscoxGraphN::set(Self, Int32, Double) -> Self
+pub fn MlregresscoxGraphN::sum(Self) -> Double
+pub fn MlregresscoxGraphN::to_string(Self) -> String
+
+pub(all) struct MlregresscoxLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresscoxLayer::add(Self, Self) -> Self
+pub fn MlregresscoxLayer::copy(Self) -> Self
+pub fn MlregresscoxLayer::fill(Self, Double) -> Self
+pub fn MlregresscoxLayer::get(Self, Int32) -> Double
+pub fn MlregresscoxLayer::len(Self) -> Int32
+pub fn MlregresscoxLayer::max(Self) -> Double
+pub fn MlregresscoxLayer::mean(Self) -> Double
+pub fn MlregresscoxLayer::min(Self) -> Double
+pub fn MlregresscoxLayer::scale(Self, Double) -> Self
+pub fn MlregresscoxLayer::set(Self, Int32, Double) -> Self
+pub fn MlregresscoxLayer::sum(Self) -> Double
+pub fn MlregresscoxLayer::to_string(Self) -> String
+
+pub(all) struct MlregresscoxMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlregresscoxMatrix::add(Self, Self) -> Self
+pub fn MlregresscoxMatrix::det(Self) -> Double
+pub fn MlregresscoxMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlregresscoxMatrix::multiply(Self, Self) -> Self
+pub fn MlregresscoxMatrix::norm(Self) -> Double
+pub fn MlregresscoxMatrix::scale(Self, Double) -> Self
+pub fn MlregresscoxMatrix::to_string(Self) -> String
+pub fn MlregresscoxMatrix::trace(Self) -> Double
+pub fn MlregresscoxMatrix::transpose(Self) -> Self
+
+pub(all) struct MlregresscoxModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresscoxModel::add(Self, Self) -> Self
+pub fn MlregresscoxModel::copy(Self) -> Self
+pub fn MlregresscoxModel::fill(Self, Double) -> Self
+pub fn MlregresscoxModel::get(Self, Int32) -> Double
+pub fn MlregresscoxModel::len(Self) -> Int32
+pub fn MlregresscoxModel::max(Self) -> Double
+pub fn MlregresscoxModel::mean(Self) -> Double
+pub fn MlregresscoxModel::min(Self) -> Double
+pub fn MlregresscoxModel::scale(Self, Double) -> Self
+pub fn MlregresscoxModel::set(Self, Int32, Double) -> Self
+pub fn MlregresscoxModel::sum(Self) -> Double
+pub fn MlregresscoxModel::to_string(Self) -> String
+
+pub(all) struct MlregresscoxNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresscoxNode::add(Self, Self) -> Self
+pub fn MlregresscoxNode::copy(Self) -> Self
+pub fn MlregresscoxNode::fill(Self, Double) -> Self
+pub fn MlregresscoxNode::get(Self, Int32) -> Double
+pub fn MlregresscoxNode::len(Self) -> Int32
+pub fn MlregresscoxNode::max(Self) -> Double
+pub fn MlregresscoxNode::mean(Self) -> Double
+pub fn MlregresscoxNode::min(Self) -> Double
+pub fn MlregresscoxNode::scale(Self, Double) -> Self
+pub fn MlregresscoxNode::set(Self, Int32, Double) -> Self
+pub fn MlregresscoxNode::sum(Self) -> Double
+pub fn MlregresscoxNode::to_string(Self) -> String
+
+pub(all) struct MlregresscoxPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresscoxPath::add(Self, Self) -> Self
+pub fn MlregresscoxPath::copy(Self) -> Self
+pub fn MlregresscoxPath::fill(Self, Double) -> Self
+pub fn MlregresscoxPath::get(Self, Int32) -> Double
+pub fn MlregresscoxPath::len(Self) -> Int32
+pub fn MlregresscoxPath::max(Self) -> Double
+pub fn MlregresscoxPath::mean(Self) -> Double
+pub fn MlregresscoxPath::min(Self) -> Double
+pub fn MlregresscoxPath::scale(Self, Double) -> Self
+pub fn MlregresscoxPath::set(Self, Int32, Double) -> Self
+pub fn MlregresscoxPath::sum(Self) -> Double
+pub fn MlregresscoxPath::to_string(Self) -> String
+
+pub(all) struct MlregresscoxPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlregresscoxPoint::add(Self, Self) -> Self
+pub fn MlregresscoxPoint::cross(Self, Self) -> Self
+pub fn MlregresscoxPoint::dist(Self, Self) -> Double
+pub fn MlregresscoxPoint::dot(Self, Self) -> Double
+pub fn MlregresscoxPoint::label(Self) -> Int32
+pub fn MlregresscoxPoint::lerp(Self, Self, Double) -> Self
+pub fn MlregresscoxPoint::mid(Self, Self) -> Self
+pub fn MlregresscoxPoint::negate(Self) -> Self
+pub fn MlregresscoxPoint::norm(Self) -> Double
+pub fn MlregresscoxPoint::normalize(Self) -> Self
+pub fn MlregresscoxPoint::scale(Self, Double) -> Self
+pub fn MlregresscoxPoint::sub(Self, Self) -> Self
+pub fn MlregresscoxPoint::to_string(Self) -> String
+pub fn MlregresscoxPoint::x(Self) -> Double
+pub fn MlregresscoxPoint::y(Self) -> Double
+pub fn MlregresscoxPoint::z(Self) -> Double
+
+pub(all) struct MlregresscoxRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresscoxRange::add(Self, Self) -> Self
+pub fn MlregresscoxRange::copy(Self) -> Self
+pub fn MlregresscoxRange::fill(Self, Double) -> Self
+pub fn MlregresscoxRange::get(Self, Int32) -> Double
+pub fn MlregresscoxRange::len(Self) -> Int32
+pub fn MlregresscoxRange::max(Self) -> Double
+pub fn MlregresscoxRange::mean(Self) -> Double
+pub fn MlregresscoxRange::min(Self) -> Double
+pub fn MlregresscoxRange::scale(Self, Double) -> Self
+pub fn MlregresscoxRange::set(Self, Int32, Double) -> Self
+pub fn MlregresscoxRange::sum(Self) -> Double
+pub fn MlregresscoxRange::to_string(Self) -> String
+
+pub(all) struct MlregresscoxSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlregresscoxSeries::add(Self, Self) -> Self
+pub fn MlregresscoxSeries::cumsum(Self) -> Self
+pub fn MlregresscoxSeries::len(Self) -> Int32
+pub fn MlregresscoxSeries::max(Self) -> Double
+pub fn MlregresscoxSeries::mean(Self) -> Double
+pub fn MlregresscoxSeries::median(Self) -> Double
+pub fn MlregresscoxSeries::min(Self) -> Double
+pub fn MlregresscoxSeries::normalize(Self) -> Self
+pub fn MlregresscoxSeries::range(Self) -> Double
+pub fn MlregresscoxSeries::scale(Self, Double) -> Self
+pub fn MlregresscoxSeries::std(Self) -> Double
+pub fn MlregresscoxSeries::sub(Self, Self) -> Self
+pub fn MlregresscoxSeries::sum(Self) -> Double
+pub fn MlregresscoxSeries::to_string(Self) -> String
+pub fn MlregresscoxSeries::variance(Self) -> Double
+
+pub(all) struct MlregresscoxSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresscoxSlice::add(Self, Self) -> Self
+pub fn MlregresscoxSlice::copy(Self) -> Self
+pub fn MlregresscoxSlice::fill(Self, Double) -> Self
+pub fn MlregresscoxSlice::get(Self, Int32) -> Double
+pub fn MlregresscoxSlice::len(Self) -> Int32
+pub fn MlregresscoxSlice::max(Self) -> Double
+pub fn MlregresscoxSlice::mean(Self) -> Double
+pub fn MlregresscoxSlice::min(Self) -> Double
+pub fn MlregresscoxSlice::scale(Self, Double) -> Self
+pub fn MlregresscoxSlice::set(Self, Int32, Double) -> Self
+pub fn MlregresscoxSlice::sum(Self) -> Double
+pub fn MlregresscoxSlice::to_string(Self) -> String
+
+pub(all) struct MlregresscoxTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresscoxTable::add(Self, Self) -> Self
+pub fn MlregresscoxTable::copy(Self) -> Self
+pub fn MlregresscoxTable::fill(Self, Double) -> Self
+pub fn MlregresscoxTable::get(Self, Int32) -> Double
+pub fn MlregresscoxTable::len(Self) -> Int32
+pub fn MlregresscoxTable::max(Self) -> Double
+pub fn MlregresscoxTable::mean(Self) -> Double
+pub fn MlregresscoxTable::min(Self) -> Double
+pub fn MlregresscoxTable::scale(Self, Double) -> Self
+pub fn MlregresscoxTable::set(Self, Int32, Double) -> Self
+pub fn MlregresscoxTable::sum(Self) -> Double
+pub fn MlregresscoxTable::to_string(Self) -> String
+
+pub(all) struct MlregresscoxVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlregresscoxVector::add(Self, Self) -> Self
+pub fn MlregresscoxVector::dist(Self, Self) -> Double
+pub fn MlregresscoxVector::dot(Self, Self) -> Double
+pub fn MlregresscoxVector::norm(Self) -> Double
+pub fn MlregresscoxVector::normalize(Self) -> Self
+pub fn MlregresscoxVector::scale(Self, Double) -> Self
+pub fn MlregresscoxVector::sub(Self, Self) -> Self
+pub fn MlregresscoxVector::to_string(Self) -> String
+
+pub(all) struct MlregresscoxView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlregresscoxView::add(Self, Self) -> Self
+pub fn MlregresscoxView::copy(Self) -> Self
+pub fn MlregresscoxView::fill(Self, Double) -> Self
+pub fn MlregresscoxView::get(Self, Int32) -> Double
+pub fn MlregresscoxView::len(Self) -> Int32
+pub fn MlregresscoxView::max(Self) -> Double
+pub fn MlregresscoxView::mean(Self) -> Double
+pub fn MlregresscoxView::min(Self) -> Double
+pub fn MlregresscoxView::scale(Self, Double) -> Self
+pub fn MlregresscoxView::set(Self, Int32, Double) -> Self
+pub fn MlregresscoxView::sum(Self) -> Double
+pub fn MlregresscoxView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/stats_dist_weibull"
+
+// Values
+pub fn stats_dist_weibull_buffer_make(Int32) -> StatsdistweibullBuffer
+
+pub fn stats_dist_weibull_cluster_make(Int32) -> StatsdistweibullCluster
+
+pub fn stats_dist_weibull_cursor_make(Int32) -> StatsdistweibullCursor
+
+pub fn stats_dist_weibull_edge_make(Int32) -> StatsdistweibullEdge
+
+pub fn stats_dist_weibull_frame_make(Int32) -> StatsdistweibullFrame
+
+pub fn stats_dist_weibull_graphn_make(Int32) -> StatsdistweibullGraphN
+
+pub fn stats_dist_weibull_layer_make(Int32) -> StatsdistweibullLayer
+
+pub fn stats_dist_weibull_make_matrix(Int32, Int32, Double) -> StatsdistweibullMatrix
+
+pub fn stats_dist_weibull_make_point(Double, Double) -> StatsdistweibullPoint
+
+pub fn stats_dist_weibull_make_point3(Double, Double, Double) -> StatsdistweibullPoint
+
+pub fn stats_dist_weibull_make_series(Array[Double], String) -> StatsdistweibullSeries
+
+pub fn stats_dist_weibull_make_vector(Array[Double]) -> StatsdistweibullVector
+
+pub fn stats_dist_weibull_matrix_identity(Int32) -> StatsdistweibullMatrix
+
+pub fn stats_dist_weibull_model_make(Int32) -> StatsdistweibullModel
+
+pub fn stats_dist_weibull_node_make(Int32) -> StatsdistweibullNode
+
+pub fn stats_dist_weibull_path_make(Int32) -> StatsdistweibullPath
+
+pub fn stats_dist_weibull_range_make(Int32) -> StatsdistweibullRange
+
+pub fn stats_dist_weibull_slice_make(Int32) -> StatsdistweibullSlice
+
+pub fn stats_dist_weibull_table_make(Int32) -> StatsdistweibullTable
+
+pub fn stats_dist_weibull_vector_zero(Int32) -> StatsdistweibullVector
+
+pub fn stats_dist_weibull_view_make(Int32) -> StatsdistweibullView
+
+// Errors
+
+// Types and methods
+pub(all) struct StatsdistweibullBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistweibullBuffer::add(Self, Self) -> Self
+pub fn StatsdistweibullBuffer::copy(Self) -> Self
+pub fn StatsdistweibullBuffer::fill(Self, Double) -> Self
+pub fn StatsdistweibullBuffer::get(Self, Int32) -> Double
+pub fn StatsdistweibullBuffer::len(Self) -> Int32
+pub fn StatsdistweibullBuffer::max(Self) -> Double
+pub fn StatsdistweibullBuffer::mean(Self) -> Double
+pub fn StatsdistweibullBuffer::min(Self) -> Double
+pub fn StatsdistweibullBuffer::scale(Self, Double) -> Self
+pub fn StatsdistweibullBuffer::set(Self, Int32, Double) -> Self
+pub fn StatsdistweibullBuffer::sum(Self) -> Double
+pub fn StatsdistweibullBuffer::to_string(Self) -> String
+
+pub(all) struct StatsdistweibullCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistweibullCluster::add(Self, Self) -> Self
+pub fn StatsdistweibullCluster::copy(Self) -> Self
+pub fn StatsdistweibullCluster::fill(Self, Double) -> Self
+pub fn StatsdistweibullCluster::get(Self, Int32) -> Double
+pub fn StatsdistweibullCluster::len(Self) -> Int32
+pub fn StatsdistweibullCluster::max(Self) -> Double
+pub fn StatsdistweibullCluster::mean(Self) -> Double
+pub fn StatsdistweibullCluster::min(Self) -> Double
+pub fn StatsdistweibullCluster::scale(Self, Double) -> Self
+pub fn StatsdistweibullCluster::set(Self, Int32, Double) -> Self
+pub fn StatsdistweibullCluster::sum(Self) -> Double
+pub fn StatsdistweibullCluster::to_string(Self) -> String
+
+pub(all) struct StatsdistweibullCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistweibullCursor::add(Self, Self) -> Self
+pub fn StatsdistweibullCursor::copy(Self) -> Self
+pub fn StatsdistweibullCursor::fill(Self, Double) -> Self
+pub fn StatsdistweibullCursor::get(Self, Int32) -> Double
+pub fn StatsdistweibullCursor::len(Self) -> Int32
+pub fn StatsdistweibullCursor::max(Self) -> Double
+pub fn StatsdistweibullCursor::mean(Self) -> Double
+pub fn StatsdistweibullCursor::min(Self) -> Double
+pub fn StatsdistweibullCursor::scale(Self, Double) -> Self
+pub fn StatsdistweibullCursor::set(Self, Int32, Double) -> Self
+pub fn StatsdistweibullCursor::sum(Self) -> Double
+pub fn StatsdistweibullCursor::to_string(Self) -> String
+
+pub(all) struct StatsdistweibullEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistweibullEdge::add(Self, Self) -> Self
+pub fn StatsdistweibullEdge::copy(Self) -> Self
+pub fn StatsdistweibullEdge::fill(Self, Double) -> Self
+pub fn StatsdistweibullEdge::get(Self, Int32) -> Double
+pub fn StatsdistweibullEdge::len(Self) -> Int32
+pub fn StatsdistweibullEdge::max(Self) -> Double
+pub fn StatsdistweibullEdge::mean(Self) -> Double
+pub fn StatsdistweibullEdge::min(Self) -> Double
+pub fn StatsdistweibullEdge::scale(Self, Double) -> Self
+pub fn StatsdistweibullEdge::set(Self, Int32, Double) -> Self
+pub fn StatsdistweibullEdge::sum(Self) -> Double
+pub fn StatsdistweibullEdge::to_string(Self) -> String
+
+pub(all) struct StatsdistweibullFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistweibullFrame::add(Self, Self) -> Self
+pub fn StatsdistweibullFrame::copy(Self) -> Self
+pub fn StatsdistweibullFrame::fill(Self, Double) -> Self
+pub fn StatsdistweibullFrame::get(Self, Int32) -> Double
+pub fn StatsdistweibullFrame::len(Self) -> Int32
+pub fn StatsdistweibullFrame::max(Self) -> Double
+pub fn StatsdistweibullFrame::mean(Self) -> Double
+pub fn StatsdistweibullFrame::min(Self) -> Double
+pub fn StatsdistweibullFrame::scale(Self, Double) -> Self
+pub fn StatsdistweibullFrame::set(Self, Int32, Double) -> Self
+pub fn StatsdistweibullFrame::sum(Self) -> Double
+pub fn StatsdistweibullFrame::to_string(Self) -> String
+
+pub(all) struct StatsdistweibullGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistweibullGraphN::add(Self, Self) -> Self
+pub fn StatsdistweibullGraphN::copy(Self) -> Self
+pub fn StatsdistweibullGraphN::fill(Self, Double) -> Self
+pub fn StatsdistweibullGraphN::get(Self, Int32) -> Double
+pub fn StatsdistweibullGraphN::len(Self) -> Int32
+pub fn StatsdistweibullGraphN::max(Self) -> Double
+pub fn StatsdistweibullGraphN::mean(Self) -> Double
+pub fn StatsdistweibullGraphN::min(Self) -> Double
+pub fn StatsdistweibullGraphN::scale(Self, Double) -> Self
+pub fn StatsdistweibullGraphN::set(Self, Int32, Double) -> Self
+pub fn StatsdistweibullGraphN::sum(Self) -> Double
+pub fn StatsdistweibullGraphN::to_string(Self) -> String
+
+pub(all) struct StatsdistweibullLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistweibullLayer::add(Self, Self) -> Self
+pub fn StatsdistweibullLayer::copy(Self) -> Self
+pub fn StatsdistweibullLayer::fill(Self, Double) -> Self
+pub fn StatsdistweibullLayer::get(Self, Int32) -> Double
+pub fn StatsdistweibullLayer::len(Self) -> Int32
+pub fn StatsdistweibullLayer::max(Self) -> Double
+pub fn StatsdistweibullLayer::mean(Self) -> Double
+pub fn StatsdistweibullLayer::min(Self) -> Double
+pub fn StatsdistweibullLayer::scale(Self, Double) -> Self
+pub fn StatsdistweibullLayer::set(Self, Int32, Double) -> Self
+pub fn StatsdistweibullLayer::sum(Self) -> Double
+pub fn StatsdistweibullLayer::to_string(Self) -> String
+
+pub(all) struct StatsdistweibullMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn StatsdistweibullMatrix::add(Self, Self) -> Self
+pub fn StatsdistweibullMatrix::det(Self) -> Double
+pub fn StatsdistweibullMatrix::get(Self, Int32, Int32) -> Double
+pub fn StatsdistweibullMatrix::multiply(Self, Self) -> Self
+pub fn StatsdistweibullMatrix::norm(Self) -> Double
+pub fn StatsdistweibullMatrix::scale(Self, Double) -> Self
+pub fn StatsdistweibullMatrix::to_string(Self) -> String
+pub fn StatsdistweibullMatrix::trace(Self) -> Double
+pub fn StatsdistweibullMatrix::transpose(Self) -> Self
+
+pub(all) struct StatsdistweibullModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistweibullModel::add(Self, Self) -> Self
+pub fn StatsdistweibullModel::copy(Self) -> Self
+pub fn StatsdistweibullModel::fill(Self, Double) -> Self
+pub fn StatsdistweibullModel::get(Self, Int32) -> Double
+pub fn StatsdistweibullModel::len(Self) -> Int32
+pub fn StatsdistweibullModel::max(Self) -> Double
+pub fn StatsdistweibullModel::mean(Self) -> Double
+pub fn StatsdistweibullModel::min(Self) -> Double
+pub fn StatsdistweibullModel::scale(Self, Double) -> Self
+pub fn StatsdistweibullModel::set(Self, Int32, Double) -> Self
+pub fn StatsdistweibullModel::sum(Self) -> Double
+pub fn StatsdistweibullModel::to_string(Self) -> String
+
+pub(all) struct StatsdistweibullNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistweibullNode::add(Self, Self) -> Self
+pub fn StatsdistweibullNode::copy(Self) -> Self
+pub fn StatsdistweibullNode::fill(Self, Double) -> Self
+pub fn StatsdistweibullNode::get(Self, Int32) -> Double
+pub fn StatsdistweibullNode::len(Self) -> Int32
+pub fn StatsdistweibullNode::max(Self) -> Double
+pub fn StatsdistweibullNode::mean(Self) -> Double
+pub fn StatsdistweibullNode::min(Self) -> Double
+pub fn StatsdistweibullNode::scale(Self, Double) -> Self
+pub fn StatsdistweibullNode::set(Self, Int32, Double) -> Self
+pub fn StatsdistweibullNode::sum(Self) -> Double
+pub fn StatsdistweibullNode::to_string(Self) -> String
+
+pub(all) struct StatsdistweibullPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistweibullPath::add(Self, Self) -> Self
+pub fn StatsdistweibullPath::copy(Self) -> Self
+pub fn StatsdistweibullPath::fill(Self, Double) -> Self
+pub fn StatsdistweibullPath::get(Self, Int32) -> Double
+pub fn StatsdistweibullPath::len(Self) -> Int32
+pub fn StatsdistweibullPath::max(Self) -> Double
+pub fn StatsdistweibullPath::mean(Self) -> Double
+pub fn StatsdistweibullPath::min(Self) -> Double
+pub fn StatsdistweibullPath::scale(Self, Double) -> Self
+pub fn StatsdistweibullPath::set(Self, Int32, Double) -> Self
+pub fn StatsdistweibullPath::sum(Self) -> Double
+pub fn StatsdistweibullPath::to_string(Self) -> String
+
+pub(all) struct StatsdistweibullPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn StatsdistweibullPoint::add(Self, Self) -> Self
+pub fn StatsdistweibullPoint::cross(Self, Self) -> Self
+pub fn StatsdistweibullPoint::dist(Self, Self) -> Double
+pub fn StatsdistweibullPoint::dot(Self, Self) -> Double
+pub fn StatsdistweibullPoint::label(Self) -> Int32
+pub fn StatsdistweibullPoint::lerp(Self, Self, Double) -> Self
+pub fn StatsdistweibullPoint::mid(Self, Self) -> Self
+pub fn StatsdistweibullPoint::negate(Self) -> Self
+pub fn StatsdistweibullPoint::norm(Self) -> Double
+pub fn StatsdistweibullPoint::normalize(Self) -> Self
+pub fn StatsdistweibullPoint::scale(Self, Double) -> Self
+pub fn StatsdistweibullPoint::sub(Self, Self) -> Self
+pub fn StatsdistweibullPoint::to_string(Self) -> String
+pub fn StatsdistweibullPoint::x(Self) -> Double
+pub fn StatsdistweibullPoint::y(Self) -> Double
+pub fn StatsdistweibullPoint::z(Self) -> Double
+
+pub(all) struct StatsdistweibullRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistweibullRange::add(Self, Self) -> Self
+pub fn StatsdistweibullRange::copy(Self) -> Self
+pub fn StatsdistweibullRange::fill(Self, Double) -> Self
+pub fn StatsdistweibullRange::get(Self, Int32) -> Double
+pub fn StatsdistweibullRange::len(Self) -> Int32
+pub fn StatsdistweibullRange::max(Self) -> Double
+pub fn StatsdistweibullRange::mean(Self) -> Double
+pub fn StatsdistweibullRange::min(Self) -> Double
+pub fn StatsdistweibullRange::scale(Self, Double) -> Self
+pub fn StatsdistweibullRange::set(Self, Int32, Double) -> Self
+pub fn StatsdistweibullRange::sum(Self) -> Double
+pub fn StatsdistweibullRange::to_string(Self) -> String
+
+pub(all) struct StatsdistweibullSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn StatsdistweibullSeries::add(Self, Self) -> Self
+pub fn StatsdistweibullSeries::cumsum(Self) -> Self
+pub fn StatsdistweibullSeries::len(Self) -> Int32
+pub fn StatsdistweibullSeries::max(Self) -> Double
+pub fn StatsdistweibullSeries::mean(Self) -> Double
+pub fn StatsdistweibullSeries::median(Self) -> Double
+pub fn StatsdistweibullSeries::min(Self) -> Double
+pub fn StatsdistweibullSeries::normalize(Self) -> Self
+pub fn StatsdistweibullSeries::range(Self) -> Double
+pub fn StatsdistweibullSeries::scale(Self, Double) -> Self
+pub fn StatsdistweibullSeries::std(Self) -> Double
+pub fn StatsdistweibullSeries::sub(Self, Self) -> Self
+pub fn StatsdistweibullSeries::sum(Self) -> Double
+pub fn StatsdistweibullSeries::to_string(Self) -> String
+pub fn StatsdistweibullSeries::variance(Self) -> Double
+
+pub(all) struct StatsdistweibullSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistweibullSlice::add(Self, Self) -> Self
+pub fn StatsdistweibullSlice::copy(Self) -> Self
+pub fn StatsdistweibullSlice::fill(Self, Double) -> Self
+pub fn StatsdistweibullSlice::get(Self, Int32) -> Double
+pub fn StatsdistweibullSlice::len(Self) -> Int32
+pub fn StatsdistweibullSlice::max(Self) -> Double
+pub fn StatsdistweibullSlice::mean(Self) -> Double
+pub fn StatsdistweibullSlice::min(Self) -> Double
+pub fn StatsdistweibullSlice::scale(Self, Double) -> Self
+pub fn StatsdistweibullSlice::set(Self, Int32, Double) -> Self
+pub fn StatsdistweibullSlice::sum(Self) -> Double
+pub fn StatsdistweibullSlice::to_string(Self) -> String
+
+pub(all) struct StatsdistweibullTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistweibullTable::add(Self, Self) -> Self
+pub fn StatsdistweibullTable::copy(Self) -> Self
+pub fn StatsdistweibullTable::fill(Self, Double) -> Self
+pub fn StatsdistweibullTable::get(Self, Int32) -> Double
+pub fn StatsdistweibullTable::len(Self) -> Int32
+pub fn StatsdistweibullTable::max(Self) -> Double
+pub fn StatsdistweibullTable::mean(Self) -> Double
+pub fn StatsdistweibullTable::min(Self) -> Double
+pub fn StatsdistweibullTable::scale(Self, Double) -> Self
+pub fn StatsdistweibullTable::set(Self, Int32, Double) -> Self
+pub fn StatsdistweibullTable::sum(Self) -> Double
+pub fn StatsdistweibullTable::to_string(Self) -> String
+
+pub(all) struct StatsdistweibullVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn StatsdistweibullVector::add(Self, Self) -> Self
+pub fn StatsdistweibullVector::dist(Self, Self) -> Double
+pub fn StatsdistweibullVector::dot(Self, Self) -> Double
+pub fn StatsdistweibullVector::norm(Self) -> Double
+pub fn StatsdistweibullVector::normalize(Self) -> Self
+pub fn StatsdistweibullVector::scale(Self, Double) -> Self
+pub fn StatsdistweibullVector::sub(Self, Self) -> Self
+pub fn StatsdistweibullVector::to_string(Self) -> String
+
+pub(all) struct StatsdistweibullView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn StatsdistweibullView::add(Self, Self) -> Self
+pub fn StatsdistweibullView::copy(Self) -> Self
+pub fn StatsdistweibullView::fill(Self, Double) -> Self
+pub fn StatsdistweibullView::get(Self, Int32) -> Double
+pub fn StatsdistweibullView::len(Self) -> Int32
+pub fn StatsdistweibullView::max(Self) -> Double
+pub fn StatsdistweibullView::mean(Self) -> Double
+pub fn StatsdistweibullView::min(Self) -> Double
+pub fn StatsdistweibullView::scale(Self, Double) -> Self
+pub fn StatsdistweibullView::set(Self, Int32, Double) -> Self
+pub fn StatsdistweibullView::sum(Self) -> Double
+pub fn StatsdistweibullView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

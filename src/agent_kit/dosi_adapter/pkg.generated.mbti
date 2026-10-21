@@ -1,0 +1,32 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/dosi_adapter"
+
+import {
+  "dataverse/dosi",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn dosi_adapter_id() -> String
+
+pub fn empty_query_result() -> QueryResult
+
+pub fn plan_pipeline(@dosi.DOSIIndex, Array[String]) -> Array[String]
+
+pub fn query_dosi(@dosi.DOSIIndex, String) -> QueryResult
+
+// Errors
+
+// Types and methods
+pub struct QueryResult {
+  paths : Array[String]
+  summaries : Array[String]
+  total_matches : Int32
+} derive(Eq, @debug.Debug)
+pub fn QueryResult::equal(Self, Self) -> Bool
+pub fn QueryResult::not_equal(Self, Self) -> Bool
+pub fn QueryResult::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

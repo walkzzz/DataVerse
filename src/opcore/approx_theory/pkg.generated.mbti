@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/approx_theory"
+
+// Values
+pub fn approx_theory_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn approx_theory_corr(Array[Double], Array[Double]) -> Double
+
+pub fn approx_theory_cov(Array[Double], Array[Double]) -> Double
+
+pub fn approx_theory_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn approx_theory_mae(Array[Double], Array[Double]) -> Double
+
+pub fn approx_theory_make_labeled_point(Double, Double, Int32) -> Approx_theoryPoint
+
+pub fn approx_theory_make_matrix(Int32, Int32, Double) -> Approx_theoryMatrix
+
+pub fn approx_theory_make_point(Double, Double) -> Approx_theoryPoint
+
+pub fn approx_theory_make_series(Array[Double], String) -> Approx_theorySeries
+
+pub fn approx_theory_make_vector(Array[Double]) -> Approx_theoryVector
+
+pub fn approx_theory_matrix_add(Approx_theoryMatrix, Approx_theoryMatrix) -> Approx_theoryMatrix
+
+pub fn approx_theory_matrix_get(Approx_theoryMatrix, Int32, Int32) -> Double
+
+pub fn approx_theory_matrix_identity(Int32) -> Approx_theoryMatrix
+
+pub fn approx_theory_matrix_multiply(Approx_theoryMatrix, Approx_theoryMatrix) -> Approx_theoryMatrix
+
+pub fn approx_theory_matrix_norm(Approx_theoryMatrix) -> Double
+
+pub fn approx_theory_matrix_scale(Approx_theoryMatrix, Double) -> Approx_theoryMatrix
+
+pub fn approx_theory_matrix_to_string(Approx_theoryMatrix) -> String
+
+pub fn approx_theory_matrix_trace(Approx_theoryMatrix) -> Double
+
+pub fn approx_theory_matrix_transpose(Approx_theoryMatrix) -> Approx_theoryMatrix
+
+pub fn approx_theory_mse(Array[Double], Array[Double]) -> Double
+
+pub fn approx_theory_point_add(Approx_theoryPoint, Approx_theoryPoint) -> Approx_theoryPoint
+
+pub fn approx_theory_point_dist(Approx_theoryPoint, Approx_theoryPoint) -> Double
+
+pub fn approx_theory_point_dot(Approx_theoryPoint, Approx_theoryPoint) -> Double
+
+pub fn approx_theory_point_label(Approx_theoryPoint) -> Int32
+
+pub fn approx_theory_point_norm(Approx_theoryPoint) -> Double
+
+pub fn approx_theory_point_scale(Approx_theoryPoint, Double) -> Approx_theoryPoint
+
+pub fn approx_theory_point_sub(Approx_theoryPoint, Approx_theoryPoint) -> Approx_theoryPoint
+
+pub fn approx_theory_point_to_string(Approx_theoryPoint) -> String
+
+pub fn approx_theory_point_x(Approx_theoryPoint) -> Double
+
+pub fn approx_theory_point_y(Approx_theoryPoint) -> Double
+
+pub fn approx_theory_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn approx_theory_r2(Array[Double], Array[Double]) -> Double
+
+pub fn approx_theory_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn approx_theory_series_add(Approx_theorySeries, Approx_theorySeries) -> Approx_theorySeries
+
+pub fn approx_theory_series_len(Approx_theorySeries) -> Int32
+
+pub fn approx_theory_series_max(Approx_theorySeries) -> Double
+
+pub fn approx_theory_series_mean(Approx_theorySeries) -> Double
+
+pub fn approx_theory_series_min(Approx_theorySeries) -> Double
+
+pub fn approx_theory_series_scale(Approx_theorySeries, Double) -> Approx_theorySeries
+
+pub fn approx_theory_series_std(Approx_theorySeries) -> Double
+
+pub fn approx_theory_series_sum(Approx_theorySeries) -> Double
+
+pub fn approx_theory_series_to_string(Approx_theorySeries) -> String
+
+pub fn approx_theory_series_var(Approx_theorySeries) -> Double
+
+pub fn approx_theory_std(Array[Double]) -> Double
+
+pub fn approx_theory_var(Array[Double]) -> Double
+
+pub fn approx_theory_vector_add(Approx_theoryVector, Approx_theoryVector) -> Approx_theoryVector
+
+pub fn approx_theory_vector_dist(Approx_theoryVector, Approx_theoryVector) -> Double
+
+pub fn approx_theory_vector_dot(Approx_theoryVector, Approx_theoryVector) -> Double
+
+pub fn approx_theory_vector_norm(Approx_theoryVector) -> Double
+
+pub fn approx_theory_vector_normalize(Approx_theoryVector) -> Approx_theoryVector
+
+pub fn approx_theory_vector_scale(Approx_theoryVector, Double) -> Approx_theoryVector
+
+pub fn approx_theory_vector_sub(Approx_theoryVector, Approx_theoryVector) -> Approx_theoryVector
+
+pub fn approx_theory_vector_to_string(Approx_theoryVector) -> String
+
+pub fn approx_theory_vector_zero(Int32) -> Approx_theoryVector
+
+// Errors
+
+// Types and methods
+pub struct Approx_theoryMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Approx_theoryPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Approx_theorySeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Approx_theoryVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

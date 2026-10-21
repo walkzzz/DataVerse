@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_search_floyd"
+
+// Values
+pub fn graph_search_floyd_buffer_make(Int32) -> GraphsearchfloydBuffer
+
+pub fn graph_search_floyd_cluster_make(Int32) -> GraphsearchfloydCluster
+
+pub fn graph_search_floyd_cursor_make(Int32) -> GraphsearchfloydCursor
+
+pub fn graph_search_floyd_edge_make(Int32) -> GraphsearchfloydEdge
+
+pub fn graph_search_floyd_frame_make(Int32) -> GraphsearchfloydFrame
+
+pub fn graph_search_floyd_graphn_make(Int32) -> GraphsearchfloydGraphN
+
+pub fn graph_search_floyd_layer_make(Int32) -> GraphsearchfloydLayer
+
+pub fn graph_search_floyd_make_matrix(Int32, Int32, Double) -> GraphsearchfloydMatrix
+
+pub fn graph_search_floyd_make_point(Double, Double) -> GraphsearchfloydPoint
+
+pub fn graph_search_floyd_make_point3(Double, Double, Double) -> GraphsearchfloydPoint
+
+pub fn graph_search_floyd_make_series(Array[Double], String) -> GraphsearchfloydSeries
+
+pub fn graph_search_floyd_make_vector(Array[Double]) -> GraphsearchfloydVector
+
+pub fn graph_search_floyd_matrix_identity(Int32) -> GraphsearchfloydMatrix
+
+pub fn graph_search_floyd_model_make(Int32) -> GraphsearchfloydModel
+
+pub fn graph_search_floyd_node_make(Int32) -> GraphsearchfloydNode
+
+pub fn graph_search_floyd_path_make(Int32) -> GraphsearchfloydPath
+
+pub fn graph_search_floyd_range_make(Int32) -> GraphsearchfloydRange
+
+pub fn graph_search_floyd_slice_make(Int32) -> GraphsearchfloydSlice
+
+pub fn graph_search_floyd_table_make(Int32) -> GraphsearchfloydTable
+
+pub fn graph_search_floyd_vector_zero(Int32) -> GraphsearchfloydVector
+
+pub fn graph_search_floyd_view_make(Int32) -> GraphsearchfloydView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphsearchfloydBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchfloydBuffer::add(Self, Self) -> Self
+pub fn GraphsearchfloydBuffer::copy(Self) -> Self
+pub fn GraphsearchfloydBuffer::fill(Self, Double) -> Self
+pub fn GraphsearchfloydBuffer::get(Self, Int32) -> Double
+pub fn GraphsearchfloydBuffer::len(Self) -> Int32
+pub fn GraphsearchfloydBuffer::max(Self) -> Double
+pub fn GraphsearchfloydBuffer::mean(Self) -> Double
+pub fn GraphsearchfloydBuffer::min(Self) -> Double
+pub fn GraphsearchfloydBuffer::scale(Self, Double) -> Self
+pub fn GraphsearchfloydBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphsearchfloydBuffer::sum(Self) -> Double
+pub fn GraphsearchfloydBuffer::to_string(Self) -> String
+
+pub(all) struct GraphsearchfloydCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchfloydCluster::add(Self, Self) -> Self
+pub fn GraphsearchfloydCluster::copy(Self) -> Self
+pub fn GraphsearchfloydCluster::fill(Self, Double) -> Self
+pub fn GraphsearchfloydCluster::get(Self, Int32) -> Double
+pub fn GraphsearchfloydCluster::len(Self) -> Int32
+pub fn GraphsearchfloydCluster::max(Self) -> Double
+pub fn GraphsearchfloydCluster::mean(Self) -> Double
+pub fn GraphsearchfloydCluster::min(Self) -> Double
+pub fn GraphsearchfloydCluster::scale(Self, Double) -> Self
+pub fn GraphsearchfloydCluster::set(Self, Int32, Double) -> Self
+pub fn GraphsearchfloydCluster::sum(Self) -> Double
+pub fn GraphsearchfloydCluster::to_string(Self) -> String
+
+pub(all) struct GraphsearchfloydCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchfloydCursor::add(Self, Self) -> Self
+pub fn GraphsearchfloydCursor::copy(Self) -> Self
+pub fn GraphsearchfloydCursor::fill(Self, Double) -> Self
+pub fn GraphsearchfloydCursor::get(Self, Int32) -> Double
+pub fn GraphsearchfloydCursor::len(Self) -> Int32
+pub fn GraphsearchfloydCursor::max(Self) -> Double
+pub fn GraphsearchfloydCursor::mean(Self) -> Double
+pub fn GraphsearchfloydCursor::min(Self) -> Double
+pub fn GraphsearchfloydCursor::scale(Self, Double) -> Self
+pub fn GraphsearchfloydCursor::set(Self, Int32, Double) -> Self
+pub fn GraphsearchfloydCursor::sum(Self) -> Double
+pub fn GraphsearchfloydCursor::to_string(Self) -> String
+
+pub(all) struct GraphsearchfloydEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchfloydEdge::add(Self, Self) -> Self
+pub fn GraphsearchfloydEdge::copy(Self) -> Self
+pub fn GraphsearchfloydEdge::fill(Self, Double) -> Self
+pub fn GraphsearchfloydEdge::get(Self, Int32) -> Double
+pub fn GraphsearchfloydEdge::len(Self) -> Int32
+pub fn GraphsearchfloydEdge::max(Self) -> Double
+pub fn GraphsearchfloydEdge::mean(Self) -> Double
+pub fn GraphsearchfloydEdge::min(Self) -> Double
+pub fn GraphsearchfloydEdge::scale(Self, Double) -> Self
+pub fn GraphsearchfloydEdge::set(Self, Int32, Double) -> Self
+pub fn GraphsearchfloydEdge::sum(Self) -> Double
+pub fn GraphsearchfloydEdge::to_string(Self) -> String
+
+pub(all) struct GraphsearchfloydFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchfloydFrame::add(Self, Self) -> Self
+pub fn GraphsearchfloydFrame::copy(Self) -> Self
+pub fn GraphsearchfloydFrame::fill(Self, Double) -> Self
+pub fn GraphsearchfloydFrame::get(Self, Int32) -> Double
+pub fn GraphsearchfloydFrame::len(Self) -> Int32
+pub fn GraphsearchfloydFrame::max(Self) -> Double
+pub fn GraphsearchfloydFrame::mean(Self) -> Double
+pub fn GraphsearchfloydFrame::min(Self) -> Double
+pub fn GraphsearchfloydFrame::scale(Self, Double) -> Self
+pub fn GraphsearchfloydFrame::set(Self, Int32, Double) -> Self
+pub fn GraphsearchfloydFrame::sum(Self) -> Double
+pub fn GraphsearchfloydFrame::to_string(Self) -> String
+
+pub(all) struct GraphsearchfloydGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchfloydGraphN::add(Self, Self) -> Self
+pub fn GraphsearchfloydGraphN::copy(Self) -> Self
+pub fn GraphsearchfloydGraphN::fill(Self, Double) -> Self
+pub fn GraphsearchfloydGraphN::get(Self, Int32) -> Double
+pub fn GraphsearchfloydGraphN::len(Self) -> Int32
+pub fn GraphsearchfloydGraphN::max(Self) -> Double
+pub fn GraphsearchfloydGraphN::mean(Self) -> Double
+pub fn GraphsearchfloydGraphN::min(Self) -> Double
+pub fn GraphsearchfloydGraphN::scale(Self, Double) -> Self
+pub fn GraphsearchfloydGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphsearchfloydGraphN::sum(Self) -> Double
+pub fn GraphsearchfloydGraphN::to_string(Self) -> String
+
+pub(all) struct GraphsearchfloydLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchfloydLayer::add(Self, Self) -> Self
+pub fn GraphsearchfloydLayer::copy(Self) -> Self
+pub fn GraphsearchfloydLayer::fill(Self, Double) -> Self
+pub fn GraphsearchfloydLayer::get(Self, Int32) -> Double
+pub fn GraphsearchfloydLayer::len(Self) -> Int32
+pub fn GraphsearchfloydLayer::max(Self) -> Double
+pub fn GraphsearchfloydLayer::mean(Self) -> Double
+pub fn GraphsearchfloydLayer::min(Self) -> Double
+pub fn GraphsearchfloydLayer::scale(Self, Double) -> Self
+pub fn GraphsearchfloydLayer::set(Self, Int32, Double) -> Self
+pub fn GraphsearchfloydLayer::sum(Self) -> Double
+pub fn GraphsearchfloydLayer::to_string(Self) -> String
+
+pub(all) struct GraphsearchfloydMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphsearchfloydMatrix::add(Self, Self) -> Self
+pub fn GraphsearchfloydMatrix::det(Self) -> Double
+pub fn GraphsearchfloydMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphsearchfloydMatrix::multiply(Self, Self) -> Self
+pub fn GraphsearchfloydMatrix::norm(Self) -> Double
+pub fn GraphsearchfloydMatrix::scale(Self, Double) -> Self
+pub fn GraphsearchfloydMatrix::to_string(Self) -> String
+pub fn GraphsearchfloydMatrix::trace(Self) -> Double
+pub fn GraphsearchfloydMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphsearchfloydModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchfloydModel::add(Self, Self) -> Self
+pub fn GraphsearchfloydModel::copy(Self) -> Self
+pub fn GraphsearchfloydModel::fill(Self, Double) -> Self
+pub fn GraphsearchfloydModel::get(Self, Int32) -> Double
+pub fn GraphsearchfloydModel::len(Self) -> Int32
+pub fn GraphsearchfloydModel::max(Self) -> Double
+pub fn GraphsearchfloydModel::mean(Self) -> Double
+pub fn GraphsearchfloydModel::min(Self) -> Double
+pub fn GraphsearchfloydModel::scale(Self, Double) -> Self
+pub fn GraphsearchfloydModel::set(Self, Int32, Double) -> Self
+pub fn GraphsearchfloydModel::sum(Self) -> Double
+pub fn GraphsearchfloydModel::to_string(Self) -> String
+
+pub(all) struct GraphsearchfloydNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchfloydNode::add(Self, Self) -> Self
+pub fn GraphsearchfloydNode::copy(Self) -> Self
+pub fn GraphsearchfloydNode::fill(Self, Double) -> Self
+pub fn GraphsearchfloydNode::get(Self, Int32) -> Double
+pub fn GraphsearchfloydNode::len(Self) -> Int32
+pub fn GraphsearchfloydNode::max(Self) -> Double
+pub fn GraphsearchfloydNode::mean(Self) -> Double
+pub fn GraphsearchfloydNode::min(Self) -> Double
+pub fn GraphsearchfloydNode::scale(Self, Double) -> Self
+pub fn GraphsearchfloydNode::set(Self, Int32, Double) -> Self
+pub fn GraphsearchfloydNode::sum(Self) -> Double
+pub fn GraphsearchfloydNode::to_string(Self) -> String
+
+pub(all) struct GraphsearchfloydPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchfloydPath::add(Self, Self) -> Self
+pub fn GraphsearchfloydPath::copy(Self) -> Self
+pub fn GraphsearchfloydPath::fill(Self, Double) -> Self
+pub fn GraphsearchfloydPath::get(Self, Int32) -> Double
+pub fn GraphsearchfloydPath::len(Self) -> Int32
+pub fn GraphsearchfloydPath::max(Self) -> Double
+pub fn GraphsearchfloydPath::mean(Self) -> Double
+pub fn GraphsearchfloydPath::min(Self) -> Double
+pub fn GraphsearchfloydPath::scale(Self, Double) -> Self
+pub fn GraphsearchfloydPath::set(Self, Int32, Double) -> Self
+pub fn GraphsearchfloydPath::sum(Self) -> Double
+pub fn GraphsearchfloydPath::to_string(Self) -> String
+
+pub(all) struct GraphsearchfloydPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphsearchfloydPoint::add(Self, Self) -> Self
+pub fn GraphsearchfloydPoint::cross(Self, Self) -> Self
+pub fn GraphsearchfloydPoint::dist(Self, Self) -> Double
+pub fn GraphsearchfloydPoint::dot(Self, Self) -> Double
+pub fn GraphsearchfloydPoint::label(Self) -> Int32
+pub fn GraphsearchfloydPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphsearchfloydPoint::mid(Self, Self) -> Self
+pub fn GraphsearchfloydPoint::negate(Self) -> Self
+pub fn GraphsearchfloydPoint::norm(Self) -> Double
+pub fn GraphsearchfloydPoint::normalize(Self) -> Self
+pub fn GraphsearchfloydPoint::scale(Self, Double) -> Self
+pub fn GraphsearchfloydPoint::sub(Self, Self) -> Self
+pub fn GraphsearchfloydPoint::to_string(Self) -> String
+pub fn GraphsearchfloydPoint::x(Self) -> Double
+pub fn GraphsearchfloydPoint::y(Self) -> Double
+pub fn GraphsearchfloydPoint::z(Self) -> Double
+
+pub(all) struct GraphsearchfloydRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchfloydRange::add(Self, Self) -> Self
+pub fn GraphsearchfloydRange::copy(Self) -> Self
+pub fn GraphsearchfloydRange::fill(Self, Double) -> Self
+pub fn GraphsearchfloydRange::get(Self, Int32) -> Double
+pub fn GraphsearchfloydRange::len(Self) -> Int32
+pub fn GraphsearchfloydRange::max(Self) -> Double
+pub fn GraphsearchfloydRange::mean(Self) -> Double
+pub fn GraphsearchfloydRange::min(Self) -> Double
+pub fn GraphsearchfloydRange::scale(Self, Double) -> Self
+pub fn GraphsearchfloydRange::set(Self, Int32, Double) -> Self
+pub fn GraphsearchfloydRange::sum(Self) -> Double
+pub fn GraphsearchfloydRange::to_string(Self) -> String
+
+pub(all) struct GraphsearchfloydSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphsearchfloydSeries::add(Self, Self) -> Self
+pub fn GraphsearchfloydSeries::cumsum(Self) -> Self
+pub fn GraphsearchfloydSeries::len(Self) -> Int32
+pub fn GraphsearchfloydSeries::max(Self) -> Double
+pub fn GraphsearchfloydSeries::mean(Self) -> Double
+pub fn GraphsearchfloydSeries::median(Self) -> Double
+pub fn GraphsearchfloydSeries::min(Self) -> Double
+pub fn GraphsearchfloydSeries::normalize(Self) -> Self
+pub fn GraphsearchfloydSeries::range(Self) -> Double
+pub fn GraphsearchfloydSeries::scale(Self, Double) -> Self
+pub fn GraphsearchfloydSeries::std(Self) -> Double
+pub fn GraphsearchfloydSeries::sub(Self, Self) -> Self
+pub fn GraphsearchfloydSeries::sum(Self) -> Double
+pub fn GraphsearchfloydSeries::to_string(Self) -> String
+pub fn GraphsearchfloydSeries::variance(Self) -> Double
+
+pub(all) struct GraphsearchfloydSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchfloydSlice::add(Self, Self) -> Self
+pub fn GraphsearchfloydSlice::copy(Self) -> Self
+pub fn GraphsearchfloydSlice::fill(Self, Double) -> Self
+pub fn GraphsearchfloydSlice::get(Self, Int32) -> Double
+pub fn GraphsearchfloydSlice::len(Self) -> Int32
+pub fn GraphsearchfloydSlice::max(Self) -> Double
+pub fn GraphsearchfloydSlice::mean(Self) -> Double
+pub fn GraphsearchfloydSlice::min(Self) -> Double
+pub fn GraphsearchfloydSlice::scale(Self, Double) -> Self
+pub fn GraphsearchfloydSlice::set(Self, Int32, Double) -> Self
+pub fn GraphsearchfloydSlice::sum(Self) -> Double
+pub fn GraphsearchfloydSlice::to_string(Self) -> String
+
+pub(all) struct GraphsearchfloydTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchfloydTable::add(Self, Self) -> Self
+pub fn GraphsearchfloydTable::copy(Self) -> Self
+pub fn GraphsearchfloydTable::fill(Self, Double) -> Self
+pub fn GraphsearchfloydTable::get(Self, Int32) -> Double
+pub fn GraphsearchfloydTable::len(Self) -> Int32
+pub fn GraphsearchfloydTable::max(Self) -> Double
+pub fn GraphsearchfloydTable::mean(Self) -> Double
+pub fn GraphsearchfloydTable::min(Self) -> Double
+pub fn GraphsearchfloydTable::scale(Self, Double) -> Self
+pub fn GraphsearchfloydTable::set(Self, Int32, Double) -> Self
+pub fn GraphsearchfloydTable::sum(Self) -> Double
+pub fn GraphsearchfloydTable::to_string(Self) -> String
+
+pub(all) struct GraphsearchfloydVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphsearchfloydVector::add(Self, Self) -> Self
+pub fn GraphsearchfloydVector::dist(Self, Self) -> Double
+pub fn GraphsearchfloydVector::dot(Self, Self) -> Double
+pub fn GraphsearchfloydVector::norm(Self) -> Double
+pub fn GraphsearchfloydVector::normalize(Self) -> Self
+pub fn GraphsearchfloydVector::scale(Self, Double) -> Self
+pub fn GraphsearchfloydVector::sub(Self, Self) -> Self
+pub fn GraphsearchfloydVector::to_string(Self) -> String
+
+pub(all) struct GraphsearchfloydView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphsearchfloydView::add(Self, Self) -> Self
+pub fn GraphsearchfloydView::copy(Self) -> Self
+pub fn GraphsearchfloydView::fill(Self, Double) -> Self
+pub fn GraphsearchfloydView::get(Self, Int32) -> Double
+pub fn GraphsearchfloydView::len(Self) -> Int32
+pub fn GraphsearchfloydView::max(Self) -> Double
+pub fn GraphsearchfloydView::mean(Self) -> Double
+pub fn GraphsearchfloydView::min(Self) -> Double
+pub fn GraphsearchfloydView::scale(Self, Double) -> Self
+pub fn GraphsearchfloydView::set(Self, Int32, Double) -> Self
+pub fn GraphsearchfloydView::sum(Self) -> Double
+pub fn GraphsearchfloydView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

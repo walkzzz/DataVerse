@@ -1,0 +1,261 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/data_quality_monitor"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn alert_escalate(DQAlert) -> DQAlert
+
+pub fn alert_notify(DQAlert) -> DQAlert
+
+pub fn alert_trigger(String, AlertLevel, String, Double) -> DQAlert
+
+pub fn comparison_cross(String, Double, Double) -> DQComparison
+
+pub fn comparison_historical(Array[DQMetric], String, Double) -> DQComparison
+
+pub fn dashboard_render(DQDashboard) -> String
+
+pub fn dashboard_update(DQDashboard, Array[DQMetric], Array[DQAlert], Double) -> DQDashboard
+
+pub fn data_quality_monitor_id() -> String
+
+pub fn dq_grade(Double) -> QualityGrade
+
+pub fn dq_score(DQMonitor) -> Double
+
+pub fn dq_status(DQMonitor) -> String
+
+pub fn dq_summary(DQMonitor) -> String
+
+pub fn drift_detect(Array[Double], Array[Double], Double) -> Bool
+
+pub fn drift_measure(Array[Double], Array[Double]) -> Double
+
+pub fn drift_significance(Array[Double], Array[Double]) -> Double
+
+pub fn make_dq_alert(String, AlertLevel, String, Double) -> DQAlert
+
+pub fn make_dq_comparison(String, Double, Double) -> DQComparison
+
+pub fn make_dq_dashboard(String) -> DQDashboard
+
+pub fn make_dq_drift(String, Array[Double], Array[Double], Double) -> DQDrift
+
+pub fn make_dq_metric(String, Double, Double) -> DQMetric
+
+pub fn make_dq_monitor(String) -> DQMonitor
+
+pub fn make_dq_regression(String, Double, Double, Double) -> DQRegression
+
+pub fn make_dq_remediation(String, String, Int32) -> DQRemediation
+
+pub fn make_dq_report(String, String, Double) -> DQReport
+
+pub fn make_dq_rule(String, RuleDimension, Double, DQThreshold) -> DQRule
+
+pub fn make_dq_schedule(String, Double) -> DQSchedule
+
+pub fn make_dq_threshold(Double, Double, Double) -> DQThreshold
+
+pub fn make_dq_trend(String, Array[Double]) -> DQTrend
+
+pub fn metric_compute(DQRule, Array[Double], Double) -> DQMetric
+
+pub fn metric_history(Array[DQMetric], String) -> Array[DQMetric]
+
+pub fn metric_track(Array[DQMetric], DQMetric) -> Array[DQMetric]
+
+pub fn monitor_check(DQMonitor, Array[Double], Double) -> DQMonitor
+
+pub fn monitor_start(DQMonitor, Double) -> DQMonitor
+
+pub fn monitor_stop(DQMonitor) -> DQMonitor
+
+pub fn regression_baseline(Array[DQMetric], String) -> Double
+
+pub fn regression_check(Double, Double, Double) -> Bool
+
+pub fn remediation_apply(DQRemediation) -> DQRemediation
+
+pub fn remediation_suggest(String, RuleDimension) -> DQRemediation
+
+pub fn report_distribute(DQReport) -> String
+
+pub fn report_generate(DQMonitor, Double) -> DQReport
+
+pub fn report_schedule(DQReport, DQSchedule) -> DQSchedule
+
+pub fn rule_accuracy(String, Double) -> DQRule
+
+pub fn rule_completeness(String, Double) -> DQRule
+
+pub fn rule_consistency(String, Double) -> DQRule
+
+pub fn rule_timeliness(String, Double) -> DQRule
+
+pub fn rule_uniqueness(String, Double) -> DQRule
+
+pub fn rule_validity(String, Double) -> DQRule
+
+pub fn schedule_custom(String, Double) -> DQSchedule
+
+pub fn schedule_daily(String) -> DQSchedule
+
+pub fn schedule_hourly(String) -> DQSchedule
+
+pub fn threshold_alert(DQThreshold, Double, String, Double) -> DQAlert
+
+pub fn threshold_check(DQThreshold, Double) -> Bool
+
+pub fn trend_analyze(String, Array[Double]) -> DQTrend
+
+pub fn trend_detect(Array[Double]) -> String
+
+pub fn trend_forecast(Array[Double], Int32) -> Array[Double]
+
+// Errors
+
+// Types and methods
+pub(all) enum AlertLevel {
+  AlertInfo
+  AlertWarning
+  AlertCritical
+} derive(Eq, @debug.Debug)
+pub fn AlertLevel::equal(Self, Self) -> Bool
+pub fn AlertLevel::not_equal(Self, Self) -> Bool
+pub fn AlertLevel::to_repr(Self) -> @debug.Repr
+
+pub struct DQAlert {
+  rule_name : String
+  level : AlertLevel
+  message : String
+  timestamp : Double
+  acknowledged : Bool
+}
+
+pub struct DQComparison {
+  name : String
+  historical : Double
+  current : Double
+  delta : Double
+}
+
+pub struct DQDashboard {
+  title : String
+  metrics : Array[DQMetric]
+  alerts : Array[DQAlert]
+  updated_at : Double
+}
+
+pub struct DQDrift {
+  name : String
+  baseline_mean : Double
+  current_mean : Double
+  drift_score : Double
+  significant : Bool
+}
+
+pub struct DQMetric {
+  rule_name : String
+  value : Double
+  timestamp : Double
+  passed : Bool
+}
+
+pub struct DQMonitor {
+  name : String
+  status : MonitorStatus
+  rules : Array[DQRule]
+  metrics : Array[DQMetric]
+  history : Array[DQMetric]
+  started_at : Double
+}
+
+pub struct DQRegression {
+  name : String
+  baseline : Double
+  current : Double
+  regressed : Bool
+}
+
+pub struct DQRemediation {
+  rule_name : String
+  suggestion : String
+  priority : Int32
+  applied : Bool
+}
+
+pub struct DQReport {
+  title : String
+  monitor_name : String
+  metrics : Array[DQMetric]
+  alerts : Array[DQAlert]
+  generated_at : Double
+}
+
+pub struct DQRule {
+  name : String
+  dimension : RuleDimension
+  weight : Double
+  threshold : DQThreshold
+}
+
+pub struct DQSchedule {
+  name : String
+  interval : Double
+  next_run : Double
+  enabled : Bool
+}
+
+pub struct DQThreshold {
+  min_value : Double
+  max_value : Double
+  warn_value : Double
+}
+
+pub struct DQTrend {
+  name : String
+  values : Array[Double]
+  direction : String
+  slope : Double
+}
+
+pub(all) enum MonitorStatus {
+  MonitorIdle
+  MonitorRunning
+  MonitorStopped
+  MonitorError
+} derive(Eq, @debug.Debug)
+pub fn MonitorStatus::equal(Self, Self) -> Bool
+pub fn MonitorStatus::not_equal(Self, Self) -> Bool
+pub fn MonitorStatus::to_repr(Self) -> @debug.Repr
+
+pub(all) enum QualityGrade {
+  GradeA
+  GradeB
+  GradeC
+  GradeD
+  GradeF
+} derive(Eq, @debug.Debug)
+pub fn QualityGrade::equal(Self, Self) -> Bool
+pub fn QualityGrade::not_equal(Self, Self) -> Bool
+pub fn QualityGrade::to_repr(Self) -> @debug.Repr
+
+pub(all) enum RuleDimension {
+  RuleCompleteness
+  RuleUniqueness
+  RuleValidity
+  RuleConsistency
+  RuleAccuracy
+  RuleTimeliness
+} derive(Eq, @debug.Debug)
+pub fn RuleDimension::equal(Self, Self) -> Bool
+pub fn RuleDimension::not_equal(Self, Self) -> Bool
+pub fn RuleDimension::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

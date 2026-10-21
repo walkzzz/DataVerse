@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/obstacle_avoid"
+
+// Values
+pub fn obstacle_avoid_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn obstacle_avoid_corr(Array[Double], Array[Double]) -> Double
+
+pub fn obstacle_avoid_cov(Array[Double], Array[Double]) -> Double
+
+pub fn obstacle_avoid_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn obstacle_avoid_mae(Array[Double], Array[Double]) -> Double
+
+pub fn obstacle_avoid_make_labeled_point(Double, Double, Int32) -> Obstacle_avoidPoint
+
+pub fn obstacle_avoid_make_matrix(Int32, Int32, Double) -> Obstacle_avoidMatrix
+
+pub fn obstacle_avoid_make_point(Double, Double) -> Obstacle_avoidPoint
+
+pub fn obstacle_avoid_make_series(Array[Double], String) -> Obstacle_avoidSeries
+
+pub fn obstacle_avoid_make_vector(Array[Double]) -> Obstacle_avoidVector
+
+pub fn obstacle_avoid_matrix_add(Obstacle_avoidMatrix, Obstacle_avoidMatrix) -> Obstacle_avoidMatrix
+
+pub fn obstacle_avoid_matrix_get(Obstacle_avoidMatrix, Int32, Int32) -> Double
+
+pub fn obstacle_avoid_matrix_identity(Int32) -> Obstacle_avoidMatrix
+
+pub fn obstacle_avoid_matrix_multiply(Obstacle_avoidMatrix, Obstacle_avoidMatrix) -> Obstacle_avoidMatrix
+
+pub fn obstacle_avoid_matrix_norm(Obstacle_avoidMatrix) -> Double
+
+pub fn obstacle_avoid_matrix_scale(Obstacle_avoidMatrix, Double) -> Obstacle_avoidMatrix
+
+pub fn obstacle_avoid_matrix_to_string(Obstacle_avoidMatrix) -> String
+
+pub fn obstacle_avoid_matrix_trace(Obstacle_avoidMatrix) -> Double
+
+pub fn obstacle_avoid_matrix_transpose(Obstacle_avoidMatrix) -> Obstacle_avoidMatrix
+
+pub fn obstacle_avoid_mse(Array[Double], Array[Double]) -> Double
+
+pub fn obstacle_avoid_point_add(Obstacle_avoidPoint, Obstacle_avoidPoint) -> Obstacle_avoidPoint
+
+pub fn obstacle_avoid_point_dist(Obstacle_avoidPoint, Obstacle_avoidPoint) -> Double
+
+pub fn obstacle_avoid_point_dot(Obstacle_avoidPoint, Obstacle_avoidPoint) -> Double
+
+pub fn obstacle_avoid_point_label(Obstacle_avoidPoint) -> Int32
+
+pub fn obstacle_avoid_point_norm(Obstacle_avoidPoint) -> Double
+
+pub fn obstacle_avoid_point_scale(Obstacle_avoidPoint, Double) -> Obstacle_avoidPoint
+
+pub fn obstacle_avoid_point_sub(Obstacle_avoidPoint, Obstacle_avoidPoint) -> Obstacle_avoidPoint
+
+pub fn obstacle_avoid_point_to_string(Obstacle_avoidPoint) -> String
+
+pub fn obstacle_avoid_point_x(Obstacle_avoidPoint) -> Double
+
+pub fn obstacle_avoid_point_y(Obstacle_avoidPoint) -> Double
+
+pub fn obstacle_avoid_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn obstacle_avoid_r2(Array[Double], Array[Double]) -> Double
+
+pub fn obstacle_avoid_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn obstacle_avoid_series_add(Obstacle_avoidSeries, Obstacle_avoidSeries) -> Obstacle_avoidSeries
+
+pub fn obstacle_avoid_series_len(Obstacle_avoidSeries) -> Int32
+
+pub fn obstacle_avoid_series_max(Obstacle_avoidSeries) -> Double
+
+pub fn obstacle_avoid_series_mean(Obstacle_avoidSeries) -> Double
+
+pub fn obstacle_avoid_series_min(Obstacle_avoidSeries) -> Double
+
+pub fn obstacle_avoid_series_scale(Obstacle_avoidSeries, Double) -> Obstacle_avoidSeries
+
+pub fn obstacle_avoid_series_std(Obstacle_avoidSeries) -> Double
+
+pub fn obstacle_avoid_series_sum(Obstacle_avoidSeries) -> Double
+
+pub fn obstacle_avoid_series_to_string(Obstacle_avoidSeries) -> String
+
+pub fn obstacle_avoid_series_var(Obstacle_avoidSeries) -> Double
+
+pub fn obstacle_avoid_std(Array[Double]) -> Double
+
+pub fn obstacle_avoid_var(Array[Double]) -> Double
+
+pub fn obstacle_avoid_vector_add(Obstacle_avoidVector, Obstacle_avoidVector) -> Obstacle_avoidVector
+
+pub fn obstacle_avoid_vector_dist(Obstacle_avoidVector, Obstacle_avoidVector) -> Double
+
+pub fn obstacle_avoid_vector_dot(Obstacle_avoidVector, Obstacle_avoidVector) -> Double
+
+pub fn obstacle_avoid_vector_norm(Obstacle_avoidVector) -> Double
+
+pub fn obstacle_avoid_vector_normalize(Obstacle_avoidVector) -> Obstacle_avoidVector
+
+pub fn obstacle_avoid_vector_scale(Obstacle_avoidVector, Double) -> Obstacle_avoidVector
+
+pub fn obstacle_avoid_vector_sub(Obstacle_avoidVector, Obstacle_avoidVector) -> Obstacle_avoidVector
+
+pub fn obstacle_avoid_vector_to_string(Obstacle_avoidVector) -> String
+
+pub fn obstacle_avoid_vector_zero(Int32) -> Obstacle_avoidVector
+
+// Errors
+
+// Types and methods
+pub struct Obstacle_avoidMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Obstacle_avoidPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Obstacle_avoidSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Obstacle_avoidVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

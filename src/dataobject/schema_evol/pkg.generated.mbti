@@ -1,0 +1,263 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/schema_evol"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn action_to_string(EvolutionAction) -> String
+
+pub fn add_field(Schema, Field) -> Schema
+
+pub fn breaking_changes(Schema, Schema) -> Int32
+
+pub fn cast_value(String, FieldType) -> String
+
+pub fn change_field_type(Schema, String, FieldType) -> Schema
+
+pub fn check_constraint_schema(Schema, Array[String]) -> Bool
+
+pub fn check_foreign_key(Schema, Schema, String) -> Bool
+
+pub fn check_index(Schema, Array[String]) -> Bool
+
+pub fn check_nullable(Schema, String) -> Bool
+
+pub fn check_unique(Schema) -> Bool
+
+pub fn commit_evolution(Schema) -> EvolutionResult
+
+pub fn compatibility_score(Schema, Schema) -> Double
+
+pub fn compatibility_to_string(Compatibility) -> String
+
+pub fn contract_schema(Schema, Array[String]) -> Schema
+
+pub fn copy_schema(Schema, Int32) -> Schema
+
+pub fn default_value_count(Schema) -> Int32
+
+pub fn diff_schemas(Schema, Schema) -> Schema
+
+pub fn diff_summary(SchemaDiff) -> String
+
+pub fn empty_schema() -> Schema
+
+pub fn evolution_plan_summary(EvolutionPlan) -> String
+
+pub fn evolve_schema(Schema, EvolutionAction, Field) -> Schema
+
+pub fn execute_evolution(Schema, EvolutionPlan) -> EvolutionResult
+
+pub fn expand_schema(Schema, Array[Field]) -> Schema
+
+pub fn field_exists(Schema, String) -> Bool
+
+pub fn field_full_eq(Field, Field) -> Bool
+
+pub fn field_name_eq(Field, Field) -> Bool
+
+pub fn field_names(Schema) -> Array[String]
+
+pub fn field_type_to_string(FieldType) -> String
+
+pub fn field_types(Schema) -> Array[FieldType]
+
+pub fn find_field_index(Array[Field], String) -> Int32
+
+pub fn get_field_default(Schema, String) -> String??
+
+pub fn get_field_type(Schema, String) -> FieldType?
+
+pub fn handle_extra_field(Schema, Array[(String, String)]) -> Array[(String, String)]
+
+pub fn handle_missing_field(Schema, Array[(String, String)], String) -> String
+
+pub fn handle_type_mismatch(Schema, Array[(String, String)]) -> Array[(String, String)]
+
+pub fn intersect_schemas(Schema, Schema) -> Schema
+
+pub fn is_compatible(Schema, Schema) -> Compatibility
+
+pub fn make_evolution_plan(Schema, Schema) -> EvolutionPlan
+
+pub fn make_field(String, FieldType, Bool, String?) -> Field
+
+pub fn make_field_optional(Schema, String) -> Schema
+
+pub fn make_field_required(Schema, String) -> Schema
+
+pub fn make_schema_v1(Array[Field]) -> Schema
+
+pub fn make_schema_v2(Array[Field]) -> Schema
+
+pub fn merge_schemas(Schema, Schema) -> Schema
+
+pub fn migrate_data(Schema, Schema, Array[(String, String)]) -> Array[(String, String)]
+
+pub fn migration_risk(Schema, Schema) -> MigrationRiskLevel
+
+pub fn migration_summary(Migration) -> String
+
+pub fn non_breaking_changes(Schema, Schema) -> Int32
+
+pub fn optional_field(String, FieldType) -> Field
+
+pub fn optional_field_count(Schema) -> Int32
+
+pub fn remove_field(Schema, String) -> Schema
+
+pub fn rename_field(Schema, String, String) -> Schema
+
+pub fn required_field(String, FieldType) -> Field
+
+pub fn required_field_count(Schema) -> Int32
+
+pub fn risk_to_string(MigrationRiskLevel) -> String
+
+pub fn rollback_evolution(Schema, Schema) -> EvolutionResult
+
+pub fn schema_backward_compat(Schema, Schema) -> Bool
+
+pub fn schema_diff(Schema, Schema) -> SchemaDiff
+
+pub fn schema_equal(Schema, Schema) -> Bool
+
+pub fn schema_evol_id() -> String
+
+pub fn schema_field_count(Schema) -> Int32
+
+pub fn schema_forward_compat(Schema, Schema) -> Bool
+
+pub fn schema_from_json(Int32, Array[String], Array[String]) -> Schema
+
+pub fn schema_full_compat(Schema, Schema) -> Bool
+
+pub fn schema_is_empty(Schema) -> Bool
+
+pub fn schema_migration(Schema, Schema) -> Migration
+
+pub fn schema_summary(Schema) -> String
+
+pub fn schema_to_ddl(Schema, String) -> String
+
+pub fn schema_to_json(Schema) -> String
+
+pub fn schema_version(Schema) -> Int32
+
+pub fn set_default_value(Schema, String, String) -> Schema
+
+pub fn string_to_field_type(String) -> FieldType
+
+pub fn transform_data(Array[(String, String)], (String, String) -> String) -> Array[(String, String)]
+
+pub fn validate_migration(Migration) -> Bool
+
+pub fn validate_record(Schema, Array[(String, String)]) -> Bool
+
+pub fn validate_schema(Schema) -> Bool
+
+// Errors
+
+// Types and methods
+pub(all) enum Compatibility {
+  Full
+  Backward
+  Forward
+  None
+} derive(Eq, @debug.Debug)
+pub fn Compatibility::equal(Self, Self) -> Bool
+pub fn Compatibility::not_equal(Self, Self) -> Bool
+pub fn Compatibility::to_repr(Self) -> @debug.Repr
+
+pub(all) enum EvolutionAction {
+  AddField
+  RemoveField
+  RenameField
+  ChangeType
+  MakeOptional
+  MakeRequired
+} derive(Eq, @debug.Debug)
+pub fn EvolutionAction::equal(Self, Self) -> Bool
+pub fn EvolutionAction::not_equal(Self, Self) -> Bool
+pub fn EvolutionAction::to_repr(Self) -> @debug.Repr
+
+pub struct EvolutionPlan {
+  steps : Array[(EvolutionAction, String)]
+  risk : MigrationRiskLevel
+} derive(Eq, @debug.Debug)
+pub fn EvolutionPlan::equal(Self, Self) -> Bool
+pub fn EvolutionPlan::not_equal(Self, Self) -> Bool
+pub fn EvolutionPlan::to_repr(Self) -> @debug.Repr
+
+pub struct EvolutionResult {
+  success : Bool
+  new_schema : Schema
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn EvolutionResult::equal(Self, Self) -> Bool
+pub fn EvolutionResult::not_equal(Self, Self) -> Bool
+pub fn EvolutionResult::to_repr(Self) -> @debug.Repr
+
+pub struct Field {
+  name : String
+  field_type : FieldType
+  nullable : Bool
+  default_value : String?
+} derive(Eq, @debug.Debug)
+pub fn Field::equal(Self, Self) -> Bool
+pub fn Field::not_equal(Self, Self) -> Bool
+pub fn Field::to_repr(Self) -> @debug.Repr
+
+pub(all) enum FieldType {
+  Text
+  Integer
+  Float
+  Boolean
+  Nested
+  Date
+} derive(Eq, @debug.Debug)
+pub fn FieldType::equal(Self, Self) -> Bool
+pub fn FieldType::not_equal(Self, Self) -> Bool
+pub fn FieldType::to_repr(Self) -> @debug.Repr
+
+pub struct Migration {
+  from_version : Int32
+  to_version : Int32
+  diff : SchemaDiff
+} derive(Eq, @debug.Debug)
+pub fn Migration::equal(Self, Self) -> Bool
+pub fn Migration::not_equal(Self, Self) -> Bool
+pub fn Migration::to_repr(Self) -> @debug.Repr
+
+pub(all) enum MigrationRiskLevel {
+  Low
+  Medium
+  High
+  Critical
+} derive(Eq, @debug.Debug)
+pub fn MigrationRiskLevel::equal(Self, Self) -> Bool
+pub fn MigrationRiskLevel::not_equal(Self, Self) -> Bool
+pub fn MigrationRiskLevel::to_repr(Self) -> @debug.Repr
+
+pub struct Schema {
+  version : Int32
+  fields : Array[Field]
+} derive(Eq, @debug.Debug)
+pub fn Schema::equal(Self, Self) -> Bool
+pub fn Schema::not_equal(Self, Self) -> Bool
+pub fn Schema::to_repr(Self) -> @debug.Repr
+
+pub struct SchemaDiff {
+  added : Array[Field]
+  removed : Array[Field]
+  modified : Array[Field]
+} derive(Eq, @debug.Debug)
+pub fn SchemaDiff::equal(Self, Self) -> Bool
+pub fn SchemaDiff::not_equal(Self, Self) -> Bool
+pub fn SchemaDiff::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

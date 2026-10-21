@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_approx_chebyshev"
+
+// Values
+pub fn math_approx_chebyshev_buffer_make(Int32) -> MathapproxchebyshevBuffer
+
+pub fn math_approx_chebyshev_cluster_make(Int32) -> MathapproxchebyshevCluster
+
+pub fn math_approx_chebyshev_cursor_make(Int32) -> MathapproxchebyshevCursor
+
+pub fn math_approx_chebyshev_edge_make(Int32) -> MathapproxchebyshevEdge
+
+pub fn math_approx_chebyshev_frame_make(Int32) -> MathapproxchebyshevFrame
+
+pub fn math_approx_chebyshev_graphn_make(Int32) -> MathapproxchebyshevGraphN
+
+pub fn math_approx_chebyshev_layer_make(Int32) -> MathapproxchebyshevLayer
+
+pub fn math_approx_chebyshev_make_matrix(Int32, Int32, Double) -> MathapproxchebyshevMatrix
+
+pub fn math_approx_chebyshev_make_point(Double, Double) -> MathapproxchebyshevPoint
+
+pub fn math_approx_chebyshev_make_point3(Double, Double, Double) -> MathapproxchebyshevPoint
+
+pub fn math_approx_chebyshev_make_series(Array[Double], String) -> MathapproxchebyshevSeries
+
+pub fn math_approx_chebyshev_make_vector(Array[Double]) -> MathapproxchebyshevVector
+
+pub fn math_approx_chebyshev_matrix_identity(Int32) -> MathapproxchebyshevMatrix
+
+pub fn math_approx_chebyshev_model_make(Int32) -> MathapproxchebyshevModel
+
+pub fn math_approx_chebyshev_node_make(Int32) -> MathapproxchebyshevNode
+
+pub fn math_approx_chebyshev_path_make(Int32) -> MathapproxchebyshevPath
+
+pub fn math_approx_chebyshev_range_make(Int32) -> MathapproxchebyshevRange
+
+pub fn math_approx_chebyshev_slice_make(Int32) -> MathapproxchebyshevSlice
+
+pub fn math_approx_chebyshev_table_make(Int32) -> MathapproxchebyshevTable
+
+pub fn math_approx_chebyshev_vector_zero(Int32) -> MathapproxchebyshevVector
+
+pub fn math_approx_chebyshev_view_make(Int32) -> MathapproxchebyshevView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathapproxchebyshevBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxchebyshevBuffer::add(Self, Self) -> Self
+pub fn MathapproxchebyshevBuffer::copy(Self) -> Self
+pub fn MathapproxchebyshevBuffer::fill(Self, Double) -> Self
+pub fn MathapproxchebyshevBuffer::get(Self, Int32) -> Double
+pub fn MathapproxchebyshevBuffer::len(Self) -> Int32
+pub fn MathapproxchebyshevBuffer::max(Self) -> Double
+pub fn MathapproxchebyshevBuffer::mean(Self) -> Double
+pub fn MathapproxchebyshevBuffer::min(Self) -> Double
+pub fn MathapproxchebyshevBuffer::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevBuffer::set(Self, Int32, Double) -> Self
+pub fn MathapproxchebyshevBuffer::sum(Self) -> Double
+pub fn MathapproxchebyshevBuffer::to_string(Self) -> String
+
+pub(all) struct MathapproxchebyshevCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxchebyshevCluster::add(Self, Self) -> Self
+pub fn MathapproxchebyshevCluster::copy(Self) -> Self
+pub fn MathapproxchebyshevCluster::fill(Self, Double) -> Self
+pub fn MathapproxchebyshevCluster::get(Self, Int32) -> Double
+pub fn MathapproxchebyshevCluster::len(Self) -> Int32
+pub fn MathapproxchebyshevCluster::max(Self) -> Double
+pub fn MathapproxchebyshevCluster::mean(Self) -> Double
+pub fn MathapproxchebyshevCluster::min(Self) -> Double
+pub fn MathapproxchebyshevCluster::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevCluster::set(Self, Int32, Double) -> Self
+pub fn MathapproxchebyshevCluster::sum(Self) -> Double
+pub fn MathapproxchebyshevCluster::to_string(Self) -> String
+
+pub(all) struct MathapproxchebyshevCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxchebyshevCursor::add(Self, Self) -> Self
+pub fn MathapproxchebyshevCursor::copy(Self) -> Self
+pub fn MathapproxchebyshevCursor::fill(Self, Double) -> Self
+pub fn MathapproxchebyshevCursor::get(Self, Int32) -> Double
+pub fn MathapproxchebyshevCursor::len(Self) -> Int32
+pub fn MathapproxchebyshevCursor::max(Self) -> Double
+pub fn MathapproxchebyshevCursor::mean(Self) -> Double
+pub fn MathapproxchebyshevCursor::min(Self) -> Double
+pub fn MathapproxchebyshevCursor::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevCursor::set(Self, Int32, Double) -> Self
+pub fn MathapproxchebyshevCursor::sum(Self) -> Double
+pub fn MathapproxchebyshevCursor::to_string(Self) -> String
+
+pub(all) struct MathapproxchebyshevEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxchebyshevEdge::add(Self, Self) -> Self
+pub fn MathapproxchebyshevEdge::copy(Self) -> Self
+pub fn MathapproxchebyshevEdge::fill(Self, Double) -> Self
+pub fn MathapproxchebyshevEdge::get(Self, Int32) -> Double
+pub fn MathapproxchebyshevEdge::len(Self) -> Int32
+pub fn MathapproxchebyshevEdge::max(Self) -> Double
+pub fn MathapproxchebyshevEdge::mean(Self) -> Double
+pub fn MathapproxchebyshevEdge::min(Self) -> Double
+pub fn MathapproxchebyshevEdge::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevEdge::set(Self, Int32, Double) -> Self
+pub fn MathapproxchebyshevEdge::sum(Self) -> Double
+pub fn MathapproxchebyshevEdge::to_string(Self) -> String
+
+pub(all) struct MathapproxchebyshevFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxchebyshevFrame::add(Self, Self) -> Self
+pub fn MathapproxchebyshevFrame::copy(Self) -> Self
+pub fn MathapproxchebyshevFrame::fill(Self, Double) -> Self
+pub fn MathapproxchebyshevFrame::get(Self, Int32) -> Double
+pub fn MathapproxchebyshevFrame::len(Self) -> Int32
+pub fn MathapproxchebyshevFrame::max(Self) -> Double
+pub fn MathapproxchebyshevFrame::mean(Self) -> Double
+pub fn MathapproxchebyshevFrame::min(Self) -> Double
+pub fn MathapproxchebyshevFrame::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevFrame::set(Self, Int32, Double) -> Self
+pub fn MathapproxchebyshevFrame::sum(Self) -> Double
+pub fn MathapproxchebyshevFrame::to_string(Self) -> String
+
+pub(all) struct MathapproxchebyshevGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxchebyshevGraphN::add(Self, Self) -> Self
+pub fn MathapproxchebyshevGraphN::copy(Self) -> Self
+pub fn MathapproxchebyshevGraphN::fill(Self, Double) -> Self
+pub fn MathapproxchebyshevGraphN::get(Self, Int32) -> Double
+pub fn MathapproxchebyshevGraphN::len(Self) -> Int32
+pub fn MathapproxchebyshevGraphN::max(Self) -> Double
+pub fn MathapproxchebyshevGraphN::mean(Self) -> Double
+pub fn MathapproxchebyshevGraphN::min(Self) -> Double
+pub fn MathapproxchebyshevGraphN::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevGraphN::set(Self, Int32, Double) -> Self
+pub fn MathapproxchebyshevGraphN::sum(Self) -> Double
+pub fn MathapproxchebyshevGraphN::to_string(Self) -> String
+
+pub(all) struct MathapproxchebyshevLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxchebyshevLayer::add(Self, Self) -> Self
+pub fn MathapproxchebyshevLayer::copy(Self) -> Self
+pub fn MathapproxchebyshevLayer::fill(Self, Double) -> Self
+pub fn MathapproxchebyshevLayer::get(Self, Int32) -> Double
+pub fn MathapproxchebyshevLayer::len(Self) -> Int32
+pub fn MathapproxchebyshevLayer::max(Self) -> Double
+pub fn MathapproxchebyshevLayer::mean(Self) -> Double
+pub fn MathapproxchebyshevLayer::min(Self) -> Double
+pub fn MathapproxchebyshevLayer::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevLayer::set(Self, Int32, Double) -> Self
+pub fn MathapproxchebyshevLayer::sum(Self) -> Double
+pub fn MathapproxchebyshevLayer::to_string(Self) -> String
+
+pub(all) struct MathapproxchebyshevMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathapproxchebyshevMatrix::add(Self, Self) -> Self
+pub fn MathapproxchebyshevMatrix::det(Self) -> Double
+pub fn MathapproxchebyshevMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathapproxchebyshevMatrix::multiply(Self, Self) -> Self
+pub fn MathapproxchebyshevMatrix::norm(Self) -> Double
+pub fn MathapproxchebyshevMatrix::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevMatrix::to_string(Self) -> String
+pub fn MathapproxchebyshevMatrix::trace(Self) -> Double
+pub fn MathapproxchebyshevMatrix::transpose(Self) -> Self
+
+pub(all) struct MathapproxchebyshevModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxchebyshevModel::add(Self, Self) -> Self
+pub fn MathapproxchebyshevModel::copy(Self) -> Self
+pub fn MathapproxchebyshevModel::fill(Self, Double) -> Self
+pub fn MathapproxchebyshevModel::get(Self, Int32) -> Double
+pub fn MathapproxchebyshevModel::len(Self) -> Int32
+pub fn MathapproxchebyshevModel::max(Self) -> Double
+pub fn MathapproxchebyshevModel::mean(Self) -> Double
+pub fn MathapproxchebyshevModel::min(Self) -> Double
+pub fn MathapproxchebyshevModel::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevModel::set(Self, Int32, Double) -> Self
+pub fn MathapproxchebyshevModel::sum(Self) -> Double
+pub fn MathapproxchebyshevModel::to_string(Self) -> String
+
+pub(all) struct MathapproxchebyshevNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxchebyshevNode::add(Self, Self) -> Self
+pub fn MathapproxchebyshevNode::copy(Self) -> Self
+pub fn MathapproxchebyshevNode::fill(Self, Double) -> Self
+pub fn MathapproxchebyshevNode::get(Self, Int32) -> Double
+pub fn MathapproxchebyshevNode::len(Self) -> Int32
+pub fn MathapproxchebyshevNode::max(Self) -> Double
+pub fn MathapproxchebyshevNode::mean(Self) -> Double
+pub fn MathapproxchebyshevNode::min(Self) -> Double
+pub fn MathapproxchebyshevNode::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevNode::set(Self, Int32, Double) -> Self
+pub fn MathapproxchebyshevNode::sum(Self) -> Double
+pub fn MathapproxchebyshevNode::to_string(Self) -> String
+
+pub(all) struct MathapproxchebyshevPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxchebyshevPath::add(Self, Self) -> Self
+pub fn MathapproxchebyshevPath::copy(Self) -> Self
+pub fn MathapproxchebyshevPath::fill(Self, Double) -> Self
+pub fn MathapproxchebyshevPath::get(Self, Int32) -> Double
+pub fn MathapproxchebyshevPath::len(Self) -> Int32
+pub fn MathapproxchebyshevPath::max(Self) -> Double
+pub fn MathapproxchebyshevPath::mean(Self) -> Double
+pub fn MathapproxchebyshevPath::min(Self) -> Double
+pub fn MathapproxchebyshevPath::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevPath::set(Self, Int32, Double) -> Self
+pub fn MathapproxchebyshevPath::sum(Self) -> Double
+pub fn MathapproxchebyshevPath::to_string(Self) -> String
+
+pub(all) struct MathapproxchebyshevPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathapproxchebyshevPoint::add(Self, Self) -> Self
+pub fn MathapproxchebyshevPoint::cross(Self, Self) -> Self
+pub fn MathapproxchebyshevPoint::dist(Self, Self) -> Double
+pub fn MathapproxchebyshevPoint::dot(Self, Self) -> Double
+pub fn MathapproxchebyshevPoint::label(Self) -> Int32
+pub fn MathapproxchebyshevPoint::lerp(Self, Self, Double) -> Self
+pub fn MathapproxchebyshevPoint::mid(Self, Self) -> Self
+pub fn MathapproxchebyshevPoint::negate(Self) -> Self
+pub fn MathapproxchebyshevPoint::norm(Self) -> Double
+pub fn MathapproxchebyshevPoint::normalize(Self) -> Self
+pub fn MathapproxchebyshevPoint::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevPoint::sub(Self, Self) -> Self
+pub fn MathapproxchebyshevPoint::to_string(Self) -> String
+pub fn MathapproxchebyshevPoint::x(Self) -> Double
+pub fn MathapproxchebyshevPoint::y(Self) -> Double
+pub fn MathapproxchebyshevPoint::z(Self) -> Double
+
+pub(all) struct MathapproxchebyshevRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxchebyshevRange::add(Self, Self) -> Self
+pub fn MathapproxchebyshevRange::copy(Self) -> Self
+pub fn MathapproxchebyshevRange::fill(Self, Double) -> Self
+pub fn MathapproxchebyshevRange::get(Self, Int32) -> Double
+pub fn MathapproxchebyshevRange::len(Self) -> Int32
+pub fn MathapproxchebyshevRange::max(Self) -> Double
+pub fn MathapproxchebyshevRange::mean(Self) -> Double
+pub fn MathapproxchebyshevRange::min(Self) -> Double
+pub fn MathapproxchebyshevRange::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevRange::set(Self, Int32, Double) -> Self
+pub fn MathapproxchebyshevRange::sum(Self) -> Double
+pub fn MathapproxchebyshevRange::to_string(Self) -> String
+
+pub(all) struct MathapproxchebyshevSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathapproxchebyshevSeries::add(Self, Self) -> Self
+pub fn MathapproxchebyshevSeries::cumsum(Self) -> Self
+pub fn MathapproxchebyshevSeries::len(Self) -> Int32
+pub fn MathapproxchebyshevSeries::max(Self) -> Double
+pub fn MathapproxchebyshevSeries::mean(Self) -> Double
+pub fn MathapproxchebyshevSeries::median(Self) -> Double
+pub fn MathapproxchebyshevSeries::min(Self) -> Double
+pub fn MathapproxchebyshevSeries::normalize(Self) -> Self
+pub fn MathapproxchebyshevSeries::range(Self) -> Double
+pub fn MathapproxchebyshevSeries::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevSeries::std(Self) -> Double
+pub fn MathapproxchebyshevSeries::sub(Self, Self) -> Self
+pub fn MathapproxchebyshevSeries::sum(Self) -> Double
+pub fn MathapproxchebyshevSeries::to_string(Self) -> String
+pub fn MathapproxchebyshevSeries::variance(Self) -> Double
+
+pub(all) struct MathapproxchebyshevSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxchebyshevSlice::add(Self, Self) -> Self
+pub fn MathapproxchebyshevSlice::copy(Self) -> Self
+pub fn MathapproxchebyshevSlice::fill(Self, Double) -> Self
+pub fn MathapproxchebyshevSlice::get(Self, Int32) -> Double
+pub fn MathapproxchebyshevSlice::len(Self) -> Int32
+pub fn MathapproxchebyshevSlice::max(Self) -> Double
+pub fn MathapproxchebyshevSlice::mean(Self) -> Double
+pub fn MathapproxchebyshevSlice::min(Self) -> Double
+pub fn MathapproxchebyshevSlice::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevSlice::set(Self, Int32, Double) -> Self
+pub fn MathapproxchebyshevSlice::sum(Self) -> Double
+pub fn MathapproxchebyshevSlice::to_string(Self) -> String
+
+pub(all) struct MathapproxchebyshevTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxchebyshevTable::add(Self, Self) -> Self
+pub fn MathapproxchebyshevTable::copy(Self) -> Self
+pub fn MathapproxchebyshevTable::fill(Self, Double) -> Self
+pub fn MathapproxchebyshevTable::get(Self, Int32) -> Double
+pub fn MathapproxchebyshevTable::len(Self) -> Int32
+pub fn MathapproxchebyshevTable::max(Self) -> Double
+pub fn MathapproxchebyshevTable::mean(Self) -> Double
+pub fn MathapproxchebyshevTable::min(Self) -> Double
+pub fn MathapproxchebyshevTable::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevTable::set(Self, Int32, Double) -> Self
+pub fn MathapproxchebyshevTable::sum(Self) -> Double
+pub fn MathapproxchebyshevTable::to_string(Self) -> String
+
+pub(all) struct MathapproxchebyshevVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathapproxchebyshevVector::add(Self, Self) -> Self
+pub fn MathapproxchebyshevVector::dist(Self, Self) -> Double
+pub fn MathapproxchebyshevVector::dot(Self, Self) -> Double
+pub fn MathapproxchebyshevVector::norm(Self) -> Double
+pub fn MathapproxchebyshevVector::normalize(Self) -> Self
+pub fn MathapproxchebyshevVector::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevVector::sub(Self, Self) -> Self
+pub fn MathapproxchebyshevVector::to_string(Self) -> String
+
+pub(all) struct MathapproxchebyshevView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxchebyshevView::add(Self, Self) -> Self
+pub fn MathapproxchebyshevView::copy(Self) -> Self
+pub fn MathapproxchebyshevView::fill(Self, Double) -> Self
+pub fn MathapproxchebyshevView::get(Self, Int32) -> Double
+pub fn MathapproxchebyshevView::len(Self) -> Int32
+pub fn MathapproxchebyshevView::max(Self) -> Double
+pub fn MathapproxchebyshevView::mean(Self) -> Double
+pub fn MathapproxchebyshevView::min(Self) -> Double
+pub fn MathapproxchebyshevView::scale(Self, Double) -> Self
+pub fn MathapproxchebyshevView::set(Self, Int32, Double) -> Self
+pub fn MathapproxchebyshevView::sum(Self) -> Double
+pub fn MathapproxchebyshevView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

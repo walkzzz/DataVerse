@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/graph_connect_strong"
+
+// Values
+pub fn graph_connect_strong_buffer_make(Int32) -> GraphconnectstrongBuffer
+
+pub fn graph_connect_strong_cluster_make(Int32) -> GraphconnectstrongCluster
+
+pub fn graph_connect_strong_cursor_make(Int32) -> GraphconnectstrongCursor
+
+pub fn graph_connect_strong_edge_make(Int32) -> GraphconnectstrongEdge
+
+pub fn graph_connect_strong_frame_make(Int32) -> GraphconnectstrongFrame
+
+pub fn graph_connect_strong_graphn_make(Int32) -> GraphconnectstrongGraphN
+
+pub fn graph_connect_strong_layer_make(Int32) -> GraphconnectstrongLayer
+
+pub fn graph_connect_strong_make_matrix(Int32, Int32, Double) -> GraphconnectstrongMatrix
+
+pub fn graph_connect_strong_make_point(Double, Double) -> GraphconnectstrongPoint
+
+pub fn graph_connect_strong_make_point3(Double, Double, Double) -> GraphconnectstrongPoint
+
+pub fn graph_connect_strong_make_series(Array[Double], String) -> GraphconnectstrongSeries
+
+pub fn graph_connect_strong_make_vector(Array[Double]) -> GraphconnectstrongVector
+
+pub fn graph_connect_strong_matrix_identity(Int32) -> GraphconnectstrongMatrix
+
+pub fn graph_connect_strong_model_make(Int32) -> GraphconnectstrongModel
+
+pub fn graph_connect_strong_node_make(Int32) -> GraphconnectstrongNode
+
+pub fn graph_connect_strong_path_make(Int32) -> GraphconnectstrongPath
+
+pub fn graph_connect_strong_range_make(Int32) -> GraphconnectstrongRange
+
+pub fn graph_connect_strong_slice_make(Int32) -> GraphconnectstrongSlice
+
+pub fn graph_connect_strong_table_make(Int32) -> GraphconnectstrongTable
+
+pub fn graph_connect_strong_vector_zero(Int32) -> GraphconnectstrongVector
+
+pub fn graph_connect_strong_view_make(Int32) -> GraphconnectstrongView
+
+// Errors
+
+// Types and methods
+pub(all) struct GraphconnectstrongBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectstrongBuffer::add(Self, Self) -> Self
+pub fn GraphconnectstrongBuffer::copy(Self) -> Self
+pub fn GraphconnectstrongBuffer::fill(Self, Double) -> Self
+pub fn GraphconnectstrongBuffer::get(Self, Int32) -> Double
+pub fn GraphconnectstrongBuffer::len(Self) -> Int32
+pub fn GraphconnectstrongBuffer::max(Self) -> Double
+pub fn GraphconnectstrongBuffer::mean(Self) -> Double
+pub fn GraphconnectstrongBuffer::min(Self) -> Double
+pub fn GraphconnectstrongBuffer::scale(Self, Double) -> Self
+pub fn GraphconnectstrongBuffer::set(Self, Int32, Double) -> Self
+pub fn GraphconnectstrongBuffer::sum(Self) -> Double
+pub fn GraphconnectstrongBuffer::to_string(Self) -> String
+
+pub(all) struct GraphconnectstrongCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectstrongCluster::add(Self, Self) -> Self
+pub fn GraphconnectstrongCluster::copy(Self) -> Self
+pub fn GraphconnectstrongCluster::fill(Self, Double) -> Self
+pub fn GraphconnectstrongCluster::get(Self, Int32) -> Double
+pub fn GraphconnectstrongCluster::len(Self) -> Int32
+pub fn GraphconnectstrongCluster::max(Self) -> Double
+pub fn GraphconnectstrongCluster::mean(Self) -> Double
+pub fn GraphconnectstrongCluster::min(Self) -> Double
+pub fn GraphconnectstrongCluster::scale(Self, Double) -> Self
+pub fn GraphconnectstrongCluster::set(Self, Int32, Double) -> Self
+pub fn GraphconnectstrongCluster::sum(Self) -> Double
+pub fn GraphconnectstrongCluster::to_string(Self) -> String
+
+pub(all) struct GraphconnectstrongCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectstrongCursor::add(Self, Self) -> Self
+pub fn GraphconnectstrongCursor::copy(Self) -> Self
+pub fn GraphconnectstrongCursor::fill(Self, Double) -> Self
+pub fn GraphconnectstrongCursor::get(Self, Int32) -> Double
+pub fn GraphconnectstrongCursor::len(Self) -> Int32
+pub fn GraphconnectstrongCursor::max(Self) -> Double
+pub fn GraphconnectstrongCursor::mean(Self) -> Double
+pub fn GraphconnectstrongCursor::min(Self) -> Double
+pub fn GraphconnectstrongCursor::scale(Self, Double) -> Self
+pub fn GraphconnectstrongCursor::set(Self, Int32, Double) -> Self
+pub fn GraphconnectstrongCursor::sum(Self) -> Double
+pub fn GraphconnectstrongCursor::to_string(Self) -> String
+
+pub(all) struct GraphconnectstrongEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectstrongEdge::add(Self, Self) -> Self
+pub fn GraphconnectstrongEdge::copy(Self) -> Self
+pub fn GraphconnectstrongEdge::fill(Self, Double) -> Self
+pub fn GraphconnectstrongEdge::get(Self, Int32) -> Double
+pub fn GraphconnectstrongEdge::len(Self) -> Int32
+pub fn GraphconnectstrongEdge::max(Self) -> Double
+pub fn GraphconnectstrongEdge::mean(Self) -> Double
+pub fn GraphconnectstrongEdge::min(Self) -> Double
+pub fn GraphconnectstrongEdge::scale(Self, Double) -> Self
+pub fn GraphconnectstrongEdge::set(Self, Int32, Double) -> Self
+pub fn GraphconnectstrongEdge::sum(Self) -> Double
+pub fn GraphconnectstrongEdge::to_string(Self) -> String
+
+pub(all) struct GraphconnectstrongFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectstrongFrame::add(Self, Self) -> Self
+pub fn GraphconnectstrongFrame::copy(Self) -> Self
+pub fn GraphconnectstrongFrame::fill(Self, Double) -> Self
+pub fn GraphconnectstrongFrame::get(Self, Int32) -> Double
+pub fn GraphconnectstrongFrame::len(Self) -> Int32
+pub fn GraphconnectstrongFrame::max(Self) -> Double
+pub fn GraphconnectstrongFrame::mean(Self) -> Double
+pub fn GraphconnectstrongFrame::min(Self) -> Double
+pub fn GraphconnectstrongFrame::scale(Self, Double) -> Self
+pub fn GraphconnectstrongFrame::set(Self, Int32, Double) -> Self
+pub fn GraphconnectstrongFrame::sum(Self) -> Double
+pub fn GraphconnectstrongFrame::to_string(Self) -> String
+
+pub(all) struct GraphconnectstrongGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectstrongGraphN::add(Self, Self) -> Self
+pub fn GraphconnectstrongGraphN::copy(Self) -> Self
+pub fn GraphconnectstrongGraphN::fill(Self, Double) -> Self
+pub fn GraphconnectstrongGraphN::get(Self, Int32) -> Double
+pub fn GraphconnectstrongGraphN::len(Self) -> Int32
+pub fn GraphconnectstrongGraphN::max(Self) -> Double
+pub fn GraphconnectstrongGraphN::mean(Self) -> Double
+pub fn GraphconnectstrongGraphN::min(Self) -> Double
+pub fn GraphconnectstrongGraphN::scale(Self, Double) -> Self
+pub fn GraphconnectstrongGraphN::set(Self, Int32, Double) -> Self
+pub fn GraphconnectstrongGraphN::sum(Self) -> Double
+pub fn GraphconnectstrongGraphN::to_string(Self) -> String
+
+pub(all) struct GraphconnectstrongLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectstrongLayer::add(Self, Self) -> Self
+pub fn GraphconnectstrongLayer::copy(Self) -> Self
+pub fn GraphconnectstrongLayer::fill(Self, Double) -> Self
+pub fn GraphconnectstrongLayer::get(Self, Int32) -> Double
+pub fn GraphconnectstrongLayer::len(Self) -> Int32
+pub fn GraphconnectstrongLayer::max(Self) -> Double
+pub fn GraphconnectstrongLayer::mean(Self) -> Double
+pub fn GraphconnectstrongLayer::min(Self) -> Double
+pub fn GraphconnectstrongLayer::scale(Self, Double) -> Self
+pub fn GraphconnectstrongLayer::set(Self, Int32, Double) -> Self
+pub fn GraphconnectstrongLayer::sum(Self) -> Double
+pub fn GraphconnectstrongLayer::to_string(Self) -> String
+
+pub(all) struct GraphconnectstrongMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GraphconnectstrongMatrix::add(Self, Self) -> Self
+pub fn GraphconnectstrongMatrix::det(Self) -> Double
+pub fn GraphconnectstrongMatrix::get(Self, Int32, Int32) -> Double
+pub fn GraphconnectstrongMatrix::multiply(Self, Self) -> Self
+pub fn GraphconnectstrongMatrix::norm(Self) -> Double
+pub fn GraphconnectstrongMatrix::scale(Self, Double) -> Self
+pub fn GraphconnectstrongMatrix::to_string(Self) -> String
+pub fn GraphconnectstrongMatrix::trace(Self) -> Double
+pub fn GraphconnectstrongMatrix::transpose(Self) -> Self
+
+pub(all) struct GraphconnectstrongModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectstrongModel::add(Self, Self) -> Self
+pub fn GraphconnectstrongModel::copy(Self) -> Self
+pub fn GraphconnectstrongModel::fill(Self, Double) -> Self
+pub fn GraphconnectstrongModel::get(Self, Int32) -> Double
+pub fn GraphconnectstrongModel::len(Self) -> Int32
+pub fn GraphconnectstrongModel::max(Self) -> Double
+pub fn GraphconnectstrongModel::mean(Self) -> Double
+pub fn GraphconnectstrongModel::min(Self) -> Double
+pub fn GraphconnectstrongModel::scale(Self, Double) -> Self
+pub fn GraphconnectstrongModel::set(Self, Int32, Double) -> Self
+pub fn GraphconnectstrongModel::sum(Self) -> Double
+pub fn GraphconnectstrongModel::to_string(Self) -> String
+
+pub(all) struct GraphconnectstrongNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectstrongNode::add(Self, Self) -> Self
+pub fn GraphconnectstrongNode::copy(Self) -> Self
+pub fn GraphconnectstrongNode::fill(Self, Double) -> Self
+pub fn GraphconnectstrongNode::get(Self, Int32) -> Double
+pub fn GraphconnectstrongNode::len(Self) -> Int32
+pub fn GraphconnectstrongNode::max(Self) -> Double
+pub fn GraphconnectstrongNode::mean(Self) -> Double
+pub fn GraphconnectstrongNode::min(Self) -> Double
+pub fn GraphconnectstrongNode::scale(Self, Double) -> Self
+pub fn GraphconnectstrongNode::set(Self, Int32, Double) -> Self
+pub fn GraphconnectstrongNode::sum(Self) -> Double
+pub fn GraphconnectstrongNode::to_string(Self) -> String
+
+pub(all) struct GraphconnectstrongPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectstrongPath::add(Self, Self) -> Self
+pub fn GraphconnectstrongPath::copy(Self) -> Self
+pub fn GraphconnectstrongPath::fill(Self, Double) -> Self
+pub fn GraphconnectstrongPath::get(Self, Int32) -> Double
+pub fn GraphconnectstrongPath::len(Self) -> Int32
+pub fn GraphconnectstrongPath::max(Self) -> Double
+pub fn GraphconnectstrongPath::mean(Self) -> Double
+pub fn GraphconnectstrongPath::min(Self) -> Double
+pub fn GraphconnectstrongPath::scale(Self, Double) -> Self
+pub fn GraphconnectstrongPath::set(Self, Int32, Double) -> Self
+pub fn GraphconnectstrongPath::sum(Self) -> Double
+pub fn GraphconnectstrongPath::to_string(Self) -> String
+
+pub(all) struct GraphconnectstrongPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GraphconnectstrongPoint::add(Self, Self) -> Self
+pub fn GraphconnectstrongPoint::cross(Self, Self) -> Self
+pub fn GraphconnectstrongPoint::dist(Self, Self) -> Double
+pub fn GraphconnectstrongPoint::dot(Self, Self) -> Double
+pub fn GraphconnectstrongPoint::label(Self) -> Int32
+pub fn GraphconnectstrongPoint::lerp(Self, Self, Double) -> Self
+pub fn GraphconnectstrongPoint::mid(Self, Self) -> Self
+pub fn GraphconnectstrongPoint::negate(Self) -> Self
+pub fn GraphconnectstrongPoint::norm(Self) -> Double
+pub fn GraphconnectstrongPoint::normalize(Self) -> Self
+pub fn GraphconnectstrongPoint::scale(Self, Double) -> Self
+pub fn GraphconnectstrongPoint::sub(Self, Self) -> Self
+pub fn GraphconnectstrongPoint::to_string(Self) -> String
+pub fn GraphconnectstrongPoint::x(Self) -> Double
+pub fn GraphconnectstrongPoint::y(Self) -> Double
+pub fn GraphconnectstrongPoint::z(Self) -> Double
+
+pub(all) struct GraphconnectstrongRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectstrongRange::add(Self, Self) -> Self
+pub fn GraphconnectstrongRange::copy(Self) -> Self
+pub fn GraphconnectstrongRange::fill(Self, Double) -> Self
+pub fn GraphconnectstrongRange::get(Self, Int32) -> Double
+pub fn GraphconnectstrongRange::len(Self) -> Int32
+pub fn GraphconnectstrongRange::max(Self) -> Double
+pub fn GraphconnectstrongRange::mean(Self) -> Double
+pub fn GraphconnectstrongRange::min(Self) -> Double
+pub fn GraphconnectstrongRange::scale(Self, Double) -> Self
+pub fn GraphconnectstrongRange::set(Self, Int32, Double) -> Self
+pub fn GraphconnectstrongRange::sum(Self) -> Double
+pub fn GraphconnectstrongRange::to_string(Self) -> String
+
+pub(all) struct GraphconnectstrongSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GraphconnectstrongSeries::add(Self, Self) -> Self
+pub fn GraphconnectstrongSeries::cumsum(Self) -> Self
+pub fn GraphconnectstrongSeries::len(Self) -> Int32
+pub fn GraphconnectstrongSeries::max(Self) -> Double
+pub fn GraphconnectstrongSeries::mean(Self) -> Double
+pub fn GraphconnectstrongSeries::median(Self) -> Double
+pub fn GraphconnectstrongSeries::min(Self) -> Double
+pub fn GraphconnectstrongSeries::normalize(Self) -> Self
+pub fn GraphconnectstrongSeries::range(Self) -> Double
+pub fn GraphconnectstrongSeries::scale(Self, Double) -> Self
+pub fn GraphconnectstrongSeries::std(Self) -> Double
+pub fn GraphconnectstrongSeries::sub(Self, Self) -> Self
+pub fn GraphconnectstrongSeries::sum(Self) -> Double
+pub fn GraphconnectstrongSeries::to_string(Self) -> String
+pub fn GraphconnectstrongSeries::variance(Self) -> Double
+
+pub(all) struct GraphconnectstrongSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectstrongSlice::add(Self, Self) -> Self
+pub fn GraphconnectstrongSlice::copy(Self) -> Self
+pub fn GraphconnectstrongSlice::fill(Self, Double) -> Self
+pub fn GraphconnectstrongSlice::get(Self, Int32) -> Double
+pub fn GraphconnectstrongSlice::len(Self) -> Int32
+pub fn GraphconnectstrongSlice::max(Self) -> Double
+pub fn GraphconnectstrongSlice::mean(Self) -> Double
+pub fn GraphconnectstrongSlice::min(Self) -> Double
+pub fn GraphconnectstrongSlice::scale(Self, Double) -> Self
+pub fn GraphconnectstrongSlice::set(Self, Int32, Double) -> Self
+pub fn GraphconnectstrongSlice::sum(Self) -> Double
+pub fn GraphconnectstrongSlice::to_string(Self) -> String
+
+pub(all) struct GraphconnectstrongTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectstrongTable::add(Self, Self) -> Self
+pub fn GraphconnectstrongTable::copy(Self) -> Self
+pub fn GraphconnectstrongTable::fill(Self, Double) -> Self
+pub fn GraphconnectstrongTable::get(Self, Int32) -> Double
+pub fn GraphconnectstrongTable::len(Self) -> Int32
+pub fn GraphconnectstrongTable::max(Self) -> Double
+pub fn GraphconnectstrongTable::mean(Self) -> Double
+pub fn GraphconnectstrongTable::min(Self) -> Double
+pub fn GraphconnectstrongTable::scale(Self, Double) -> Self
+pub fn GraphconnectstrongTable::set(Self, Int32, Double) -> Self
+pub fn GraphconnectstrongTable::sum(Self) -> Double
+pub fn GraphconnectstrongTable::to_string(Self) -> String
+
+pub(all) struct GraphconnectstrongVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GraphconnectstrongVector::add(Self, Self) -> Self
+pub fn GraphconnectstrongVector::dist(Self, Self) -> Double
+pub fn GraphconnectstrongVector::dot(Self, Self) -> Double
+pub fn GraphconnectstrongVector::norm(Self) -> Double
+pub fn GraphconnectstrongVector::normalize(Self) -> Self
+pub fn GraphconnectstrongVector::scale(Self, Double) -> Self
+pub fn GraphconnectstrongVector::sub(Self, Self) -> Self
+pub fn GraphconnectstrongVector::to_string(Self) -> String
+
+pub(all) struct GraphconnectstrongView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GraphconnectstrongView::add(Self, Self) -> Self
+pub fn GraphconnectstrongView::copy(Self) -> Self
+pub fn GraphconnectstrongView::fill(Self, Double) -> Self
+pub fn GraphconnectstrongView::get(Self, Int32) -> Double
+pub fn GraphconnectstrongView::len(Self) -> Int32
+pub fn GraphconnectstrongView::max(Self) -> Double
+pub fn GraphconnectstrongView::mean(Self) -> Double
+pub fn GraphconnectstrongView::min(Self) -> Double
+pub fn GraphconnectstrongView::scale(Self, Double) -> Self
+pub fn GraphconnectstrongView::set(Self, Int32, Double) -> Self
+pub fn GraphconnectstrongView::sum(Self) -> Double
+pub fn GraphconnectstrongView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

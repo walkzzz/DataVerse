@@ -1,0 +1,68 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/window"
+
+// Values
+pub fn apply_windows(Array[TimeEvent], Array[TimeWindow], (Array[TimeEvent], TimeWindow) -> Double) -> Array[Double]
+
+pub fn event_in_window(TimeEvent, TimeWindow) -> Bool
+
+pub fn events_in_window(Array[TimeEvent], TimeWindow) -> Array[TimeEvent]
+
+pub fn make_event(Double, Double, String) -> TimeEvent
+
+pub fn make_window(Double, Double, WindowType, Double, Double) -> TimeWindow
+
+pub fn session_windows(Array[TimeEvent], Double) -> Array[TimeWindow]
+
+pub fn sliding_avg(Array[TimeEvent], Double, Double, Double, Double) -> Array[Double]
+
+pub fn sliding_windows(Double, Double, Double, Double) -> Array[TimeWindow]
+
+pub fn sort_events_by_time(Array[TimeEvent]) -> Array[TimeEvent]
+
+pub fn tumbling_sum(Array[TimeEvent], Double, Double, Double) -> Array[Double]
+
+pub fn tumbling_windows(Double, Double, Double) -> Array[TimeWindow]
+
+pub fn window_avg(Array[TimeEvent], TimeWindow) -> Double
+
+pub fn window_count(Array[TimeEvent], TimeWindow) -> Int32
+
+pub fn window_duration(TimeWindow) -> Double
+
+pub fn window_group_by_key(Array[TimeEvent], TimeWindow) -> Array[(String, Array[TimeEvent])]
+
+pub fn window_id() -> String
+
+pub fn window_max(Array[TimeEvent], TimeWindow) -> Double
+
+pub fn window_min(Array[TimeEvent], TimeWindow) -> Double
+
+pub fn window_sum(Array[TimeEvent], TimeWindow) -> Double
+
+// Errors
+
+// Types and methods
+pub struct TimeEvent {
+  timestamp : Double
+  value : Double
+  key : String
+}
+
+pub struct TimeWindow {
+  start : Double
+  end : Double
+  window_type : WindowType
+  size : Double
+  slide : Double
+}
+
+pub(all) enum WindowType {
+  Sliding
+  Tumbling
+  Session
+}
+
+// Type aliases
+
+// Traits

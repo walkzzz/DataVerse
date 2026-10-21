@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_store_col"
+
+// Values
+pub fn db_store_col_buffer_make(Int32) -> DbstorecolBuffer
+
+pub fn db_store_col_cluster_make(Int32) -> DbstorecolCluster
+
+pub fn db_store_col_cursor_make(Int32) -> DbstorecolCursor
+
+pub fn db_store_col_edge_make(Int32) -> DbstorecolEdge
+
+pub fn db_store_col_frame_make(Int32) -> DbstorecolFrame
+
+pub fn db_store_col_graphn_make(Int32) -> DbstorecolGraphN
+
+pub fn db_store_col_layer_make(Int32) -> DbstorecolLayer
+
+pub fn db_store_col_make_matrix(Int32, Int32, Double) -> DbstorecolMatrix
+
+pub fn db_store_col_make_point(Double, Double) -> DbstorecolPoint
+
+pub fn db_store_col_make_point3(Double, Double, Double) -> DbstorecolPoint
+
+pub fn db_store_col_make_series(Array[Double], String) -> DbstorecolSeries
+
+pub fn db_store_col_make_vector(Array[Double]) -> DbstorecolVector
+
+pub fn db_store_col_matrix_identity(Int32) -> DbstorecolMatrix
+
+pub fn db_store_col_model_make(Int32) -> DbstorecolModel
+
+pub fn db_store_col_node_make(Int32) -> DbstorecolNode
+
+pub fn db_store_col_path_make(Int32) -> DbstorecolPath
+
+pub fn db_store_col_range_make(Int32) -> DbstorecolRange
+
+pub fn db_store_col_slice_make(Int32) -> DbstorecolSlice
+
+pub fn db_store_col_table_make(Int32) -> DbstorecolTable
+
+pub fn db_store_col_vector_zero(Int32) -> DbstorecolVector
+
+pub fn db_store_col_view_make(Int32) -> DbstorecolView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbstorecolBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorecolBuffer::add(Self, Self) -> Self
+pub fn DbstorecolBuffer::copy(Self) -> Self
+pub fn DbstorecolBuffer::fill(Self, Double) -> Self
+pub fn DbstorecolBuffer::get(Self, Int32) -> Double
+pub fn DbstorecolBuffer::len(Self) -> Int32
+pub fn DbstorecolBuffer::max(Self) -> Double
+pub fn DbstorecolBuffer::mean(Self) -> Double
+pub fn DbstorecolBuffer::min(Self) -> Double
+pub fn DbstorecolBuffer::scale(Self, Double) -> Self
+pub fn DbstorecolBuffer::set(Self, Int32, Double) -> Self
+pub fn DbstorecolBuffer::sum(Self) -> Double
+pub fn DbstorecolBuffer::to_string(Self) -> String
+
+pub(all) struct DbstorecolCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorecolCluster::add(Self, Self) -> Self
+pub fn DbstorecolCluster::copy(Self) -> Self
+pub fn DbstorecolCluster::fill(Self, Double) -> Self
+pub fn DbstorecolCluster::get(Self, Int32) -> Double
+pub fn DbstorecolCluster::len(Self) -> Int32
+pub fn DbstorecolCluster::max(Self) -> Double
+pub fn DbstorecolCluster::mean(Self) -> Double
+pub fn DbstorecolCluster::min(Self) -> Double
+pub fn DbstorecolCluster::scale(Self, Double) -> Self
+pub fn DbstorecolCluster::set(Self, Int32, Double) -> Self
+pub fn DbstorecolCluster::sum(Self) -> Double
+pub fn DbstorecolCluster::to_string(Self) -> String
+
+pub(all) struct DbstorecolCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorecolCursor::add(Self, Self) -> Self
+pub fn DbstorecolCursor::copy(Self) -> Self
+pub fn DbstorecolCursor::fill(Self, Double) -> Self
+pub fn DbstorecolCursor::get(Self, Int32) -> Double
+pub fn DbstorecolCursor::len(Self) -> Int32
+pub fn DbstorecolCursor::max(Self) -> Double
+pub fn DbstorecolCursor::mean(Self) -> Double
+pub fn DbstorecolCursor::min(Self) -> Double
+pub fn DbstorecolCursor::scale(Self, Double) -> Self
+pub fn DbstorecolCursor::set(Self, Int32, Double) -> Self
+pub fn DbstorecolCursor::sum(Self) -> Double
+pub fn DbstorecolCursor::to_string(Self) -> String
+
+pub(all) struct DbstorecolEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorecolEdge::add(Self, Self) -> Self
+pub fn DbstorecolEdge::copy(Self) -> Self
+pub fn DbstorecolEdge::fill(Self, Double) -> Self
+pub fn DbstorecolEdge::get(Self, Int32) -> Double
+pub fn DbstorecolEdge::len(Self) -> Int32
+pub fn DbstorecolEdge::max(Self) -> Double
+pub fn DbstorecolEdge::mean(Self) -> Double
+pub fn DbstorecolEdge::min(Self) -> Double
+pub fn DbstorecolEdge::scale(Self, Double) -> Self
+pub fn DbstorecolEdge::set(Self, Int32, Double) -> Self
+pub fn DbstorecolEdge::sum(Self) -> Double
+pub fn DbstorecolEdge::to_string(Self) -> String
+
+pub(all) struct DbstorecolFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorecolFrame::add(Self, Self) -> Self
+pub fn DbstorecolFrame::copy(Self) -> Self
+pub fn DbstorecolFrame::fill(Self, Double) -> Self
+pub fn DbstorecolFrame::get(Self, Int32) -> Double
+pub fn DbstorecolFrame::len(Self) -> Int32
+pub fn DbstorecolFrame::max(Self) -> Double
+pub fn DbstorecolFrame::mean(Self) -> Double
+pub fn DbstorecolFrame::min(Self) -> Double
+pub fn DbstorecolFrame::scale(Self, Double) -> Self
+pub fn DbstorecolFrame::set(Self, Int32, Double) -> Self
+pub fn DbstorecolFrame::sum(Self) -> Double
+pub fn DbstorecolFrame::to_string(Self) -> String
+
+pub(all) struct DbstorecolGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorecolGraphN::add(Self, Self) -> Self
+pub fn DbstorecolGraphN::copy(Self) -> Self
+pub fn DbstorecolGraphN::fill(Self, Double) -> Self
+pub fn DbstorecolGraphN::get(Self, Int32) -> Double
+pub fn DbstorecolGraphN::len(Self) -> Int32
+pub fn DbstorecolGraphN::max(Self) -> Double
+pub fn DbstorecolGraphN::mean(Self) -> Double
+pub fn DbstorecolGraphN::min(Self) -> Double
+pub fn DbstorecolGraphN::scale(Self, Double) -> Self
+pub fn DbstorecolGraphN::set(Self, Int32, Double) -> Self
+pub fn DbstorecolGraphN::sum(Self) -> Double
+pub fn DbstorecolGraphN::to_string(Self) -> String
+
+pub(all) struct DbstorecolLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorecolLayer::add(Self, Self) -> Self
+pub fn DbstorecolLayer::copy(Self) -> Self
+pub fn DbstorecolLayer::fill(Self, Double) -> Self
+pub fn DbstorecolLayer::get(Self, Int32) -> Double
+pub fn DbstorecolLayer::len(Self) -> Int32
+pub fn DbstorecolLayer::max(Self) -> Double
+pub fn DbstorecolLayer::mean(Self) -> Double
+pub fn DbstorecolLayer::min(Self) -> Double
+pub fn DbstorecolLayer::scale(Self, Double) -> Self
+pub fn DbstorecolLayer::set(Self, Int32, Double) -> Self
+pub fn DbstorecolLayer::sum(Self) -> Double
+pub fn DbstorecolLayer::to_string(Self) -> String
+
+pub(all) struct DbstorecolMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbstorecolMatrix::add(Self, Self) -> Self
+pub fn DbstorecolMatrix::det(Self) -> Double
+pub fn DbstorecolMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbstorecolMatrix::multiply(Self, Self) -> Self
+pub fn DbstorecolMatrix::norm(Self) -> Double
+pub fn DbstorecolMatrix::scale(Self, Double) -> Self
+pub fn DbstorecolMatrix::to_string(Self) -> String
+pub fn DbstorecolMatrix::trace(Self) -> Double
+pub fn DbstorecolMatrix::transpose(Self) -> Self
+
+pub(all) struct DbstorecolModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorecolModel::add(Self, Self) -> Self
+pub fn DbstorecolModel::copy(Self) -> Self
+pub fn DbstorecolModel::fill(Self, Double) -> Self
+pub fn DbstorecolModel::get(Self, Int32) -> Double
+pub fn DbstorecolModel::len(Self) -> Int32
+pub fn DbstorecolModel::max(Self) -> Double
+pub fn DbstorecolModel::mean(Self) -> Double
+pub fn DbstorecolModel::min(Self) -> Double
+pub fn DbstorecolModel::scale(Self, Double) -> Self
+pub fn DbstorecolModel::set(Self, Int32, Double) -> Self
+pub fn DbstorecolModel::sum(Self) -> Double
+pub fn DbstorecolModel::to_string(Self) -> String
+
+pub(all) struct DbstorecolNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorecolNode::add(Self, Self) -> Self
+pub fn DbstorecolNode::copy(Self) -> Self
+pub fn DbstorecolNode::fill(Self, Double) -> Self
+pub fn DbstorecolNode::get(Self, Int32) -> Double
+pub fn DbstorecolNode::len(Self) -> Int32
+pub fn DbstorecolNode::max(Self) -> Double
+pub fn DbstorecolNode::mean(Self) -> Double
+pub fn DbstorecolNode::min(Self) -> Double
+pub fn DbstorecolNode::scale(Self, Double) -> Self
+pub fn DbstorecolNode::set(Self, Int32, Double) -> Self
+pub fn DbstorecolNode::sum(Self) -> Double
+pub fn DbstorecolNode::to_string(Self) -> String
+
+pub(all) struct DbstorecolPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorecolPath::add(Self, Self) -> Self
+pub fn DbstorecolPath::copy(Self) -> Self
+pub fn DbstorecolPath::fill(Self, Double) -> Self
+pub fn DbstorecolPath::get(Self, Int32) -> Double
+pub fn DbstorecolPath::len(Self) -> Int32
+pub fn DbstorecolPath::max(Self) -> Double
+pub fn DbstorecolPath::mean(Self) -> Double
+pub fn DbstorecolPath::min(Self) -> Double
+pub fn DbstorecolPath::scale(Self, Double) -> Self
+pub fn DbstorecolPath::set(Self, Int32, Double) -> Self
+pub fn DbstorecolPath::sum(Self) -> Double
+pub fn DbstorecolPath::to_string(Self) -> String
+
+pub(all) struct DbstorecolPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbstorecolPoint::add(Self, Self) -> Self
+pub fn DbstorecolPoint::cross(Self, Self) -> Self
+pub fn DbstorecolPoint::dist(Self, Self) -> Double
+pub fn DbstorecolPoint::dot(Self, Self) -> Double
+pub fn DbstorecolPoint::label(Self) -> Int32
+pub fn DbstorecolPoint::lerp(Self, Self, Double) -> Self
+pub fn DbstorecolPoint::mid(Self, Self) -> Self
+pub fn DbstorecolPoint::negate(Self) -> Self
+pub fn DbstorecolPoint::norm(Self) -> Double
+pub fn DbstorecolPoint::normalize(Self) -> Self
+pub fn DbstorecolPoint::scale(Self, Double) -> Self
+pub fn DbstorecolPoint::sub(Self, Self) -> Self
+pub fn DbstorecolPoint::to_string(Self) -> String
+pub fn DbstorecolPoint::x(Self) -> Double
+pub fn DbstorecolPoint::y(Self) -> Double
+pub fn DbstorecolPoint::z(Self) -> Double
+
+pub(all) struct DbstorecolRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorecolRange::add(Self, Self) -> Self
+pub fn DbstorecolRange::copy(Self) -> Self
+pub fn DbstorecolRange::fill(Self, Double) -> Self
+pub fn DbstorecolRange::get(Self, Int32) -> Double
+pub fn DbstorecolRange::len(Self) -> Int32
+pub fn DbstorecolRange::max(Self) -> Double
+pub fn DbstorecolRange::mean(Self) -> Double
+pub fn DbstorecolRange::min(Self) -> Double
+pub fn DbstorecolRange::scale(Self, Double) -> Self
+pub fn DbstorecolRange::set(Self, Int32, Double) -> Self
+pub fn DbstorecolRange::sum(Self) -> Double
+pub fn DbstorecolRange::to_string(Self) -> String
+
+pub(all) struct DbstorecolSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbstorecolSeries::add(Self, Self) -> Self
+pub fn DbstorecolSeries::cumsum(Self) -> Self
+pub fn DbstorecolSeries::len(Self) -> Int32
+pub fn DbstorecolSeries::max(Self) -> Double
+pub fn DbstorecolSeries::mean(Self) -> Double
+pub fn DbstorecolSeries::median(Self) -> Double
+pub fn DbstorecolSeries::min(Self) -> Double
+pub fn DbstorecolSeries::normalize(Self) -> Self
+pub fn DbstorecolSeries::range(Self) -> Double
+pub fn DbstorecolSeries::scale(Self, Double) -> Self
+pub fn DbstorecolSeries::std(Self) -> Double
+pub fn DbstorecolSeries::sub(Self, Self) -> Self
+pub fn DbstorecolSeries::sum(Self) -> Double
+pub fn DbstorecolSeries::to_string(Self) -> String
+pub fn DbstorecolSeries::variance(Self) -> Double
+
+pub(all) struct DbstorecolSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorecolSlice::add(Self, Self) -> Self
+pub fn DbstorecolSlice::copy(Self) -> Self
+pub fn DbstorecolSlice::fill(Self, Double) -> Self
+pub fn DbstorecolSlice::get(Self, Int32) -> Double
+pub fn DbstorecolSlice::len(Self) -> Int32
+pub fn DbstorecolSlice::max(Self) -> Double
+pub fn DbstorecolSlice::mean(Self) -> Double
+pub fn DbstorecolSlice::min(Self) -> Double
+pub fn DbstorecolSlice::scale(Self, Double) -> Self
+pub fn DbstorecolSlice::set(Self, Int32, Double) -> Self
+pub fn DbstorecolSlice::sum(Self) -> Double
+pub fn DbstorecolSlice::to_string(Self) -> String
+
+pub(all) struct DbstorecolTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorecolTable::add(Self, Self) -> Self
+pub fn DbstorecolTable::copy(Self) -> Self
+pub fn DbstorecolTable::fill(Self, Double) -> Self
+pub fn DbstorecolTable::get(Self, Int32) -> Double
+pub fn DbstorecolTable::len(Self) -> Int32
+pub fn DbstorecolTable::max(Self) -> Double
+pub fn DbstorecolTable::mean(Self) -> Double
+pub fn DbstorecolTable::min(Self) -> Double
+pub fn DbstorecolTable::scale(Self, Double) -> Self
+pub fn DbstorecolTable::set(Self, Int32, Double) -> Self
+pub fn DbstorecolTable::sum(Self) -> Double
+pub fn DbstorecolTable::to_string(Self) -> String
+
+pub(all) struct DbstorecolVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbstorecolVector::add(Self, Self) -> Self
+pub fn DbstorecolVector::dist(Self, Self) -> Double
+pub fn DbstorecolVector::dot(Self, Self) -> Double
+pub fn DbstorecolVector::norm(Self) -> Double
+pub fn DbstorecolVector::normalize(Self) -> Self
+pub fn DbstorecolVector::scale(Self, Double) -> Self
+pub fn DbstorecolVector::sub(Self, Self) -> Self
+pub fn DbstorecolVector::to_string(Self) -> String
+
+pub(all) struct DbstorecolView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorecolView::add(Self, Self) -> Self
+pub fn DbstorecolView::copy(Self) -> Self
+pub fn DbstorecolView::fill(Self, Double) -> Self
+pub fn DbstorecolView::get(Self, Int32) -> Double
+pub fn DbstorecolView::len(Self) -> Int32
+pub fn DbstorecolView::max(Self) -> Double
+pub fn DbstorecolView::mean(Self) -> Double
+pub fn DbstorecolView::min(Self) -> Double
+pub fn DbstorecolView::scale(Self, Double) -> Self
+pub fn DbstorecolView::set(Self, Int32, Double) -> Self
+pub fn DbstorecolView::sum(Self) -> Double
+pub fn DbstorecolView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

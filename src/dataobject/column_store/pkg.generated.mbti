@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/column_store"
+
+// Values
+pub fn column_store_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn column_store_corr(Array[Double], Array[Double]) -> Double
+
+pub fn column_store_cov(Array[Double], Array[Double]) -> Double
+
+pub fn column_store_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn column_store_mae(Array[Double], Array[Double]) -> Double
+
+pub fn column_store_make_labeled_point(Double, Double, Int32) -> Column_storePoint
+
+pub fn column_store_make_matrix(Int32, Int32, Double) -> Column_storeMatrix
+
+pub fn column_store_make_point(Double, Double) -> Column_storePoint
+
+pub fn column_store_make_series(Array[Double], String) -> Column_storeSeries
+
+pub fn column_store_make_vector(Array[Double]) -> Column_storeVector
+
+pub fn column_store_matrix_add(Column_storeMatrix, Column_storeMatrix) -> Column_storeMatrix
+
+pub fn column_store_matrix_get(Column_storeMatrix, Int32, Int32) -> Double
+
+pub fn column_store_matrix_identity(Int32) -> Column_storeMatrix
+
+pub fn column_store_matrix_multiply(Column_storeMatrix, Column_storeMatrix) -> Column_storeMatrix
+
+pub fn column_store_matrix_norm(Column_storeMatrix) -> Double
+
+pub fn column_store_matrix_scale(Column_storeMatrix, Double) -> Column_storeMatrix
+
+pub fn column_store_matrix_to_string(Column_storeMatrix) -> String
+
+pub fn column_store_matrix_trace(Column_storeMatrix) -> Double
+
+pub fn column_store_matrix_transpose(Column_storeMatrix) -> Column_storeMatrix
+
+pub fn column_store_mse(Array[Double], Array[Double]) -> Double
+
+pub fn column_store_point_add(Column_storePoint, Column_storePoint) -> Column_storePoint
+
+pub fn column_store_point_dist(Column_storePoint, Column_storePoint) -> Double
+
+pub fn column_store_point_dot(Column_storePoint, Column_storePoint) -> Double
+
+pub fn column_store_point_label(Column_storePoint) -> Int32
+
+pub fn column_store_point_norm(Column_storePoint) -> Double
+
+pub fn column_store_point_scale(Column_storePoint, Double) -> Column_storePoint
+
+pub fn column_store_point_sub(Column_storePoint, Column_storePoint) -> Column_storePoint
+
+pub fn column_store_point_to_string(Column_storePoint) -> String
+
+pub fn column_store_point_x(Column_storePoint) -> Double
+
+pub fn column_store_point_y(Column_storePoint) -> Double
+
+pub fn column_store_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn column_store_r2(Array[Double], Array[Double]) -> Double
+
+pub fn column_store_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn column_store_series_add(Column_storeSeries, Column_storeSeries) -> Column_storeSeries
+
+pub fn column_store_series_len(Column_storeSeries) -> Int32
+
+pub fn column_store_series_max(Column_storeSeries) -> Double
+
+pub fn column_store_series_mean(Column_storeSeries) -> Double
+
+pub fn column_store_series_min(Column_storeSeries) -> Double
+
+pub fn column_store_series_scale(Column_storeSeries, Double) -> Column_storeSeries
+
+pub fn column_store_series_std(Column_storeSeries) -> Double
+
+pub fn column_store_series_sum(Column_storeSeries) -> Double
+
+pub fn column_store_series_to_string(Column_storeSeries) -> String
+
+pub fn column_store_series_var(Column_storeSeries) -> Double
+
+pub fn column_store_std(Array[Double]) -> Double
+
+pub fn column_store_var(Array[Double]) -> Double
+
+pub fn column_store_vector_add(Column_storeVector, Column_storeVector) -> Column_storeVector
+
+pub fn column_store_vector_dist(Column_storeVector, Column_storeVector) -> Double
+
+pub fn column_store_vector_dot(Column_storeVector, Column_storeVector) -> Double
+
+pub fn column_store_vector_norm(Column_storeVector) -> Double
+
+pub fn column_store_vector_normalize(Column_storeVector) -> Column_storeVector
+
+pub fn column_store_vector_scale(Column_storeVector, Double) -> Column_storeVector
+
+pub fn column_store_vector_sub(Column_storeVector, Column_storeVector) -> Column_storeVector
+
+pub fn column_store_vector_to_string(Column_storeVector) -> String
+
+pub fn column_store_vector_zero(Int32) -> Column_storeVector
+
+// Errors
+
+// Types and methods
+pub struct Column_storeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Column_storePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Column_storeSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Column_storeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

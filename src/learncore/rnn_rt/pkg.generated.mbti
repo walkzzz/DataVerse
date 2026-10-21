@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/rnn_rt"
+
+// Values
+pub fn rnn_rt_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn rnn_rt_corr(Array[Double], Array[Double]) -> Double
+
+pub fn rnn_rt_cov(Array[Double], Array[Double]) -> Double
+
+pub fn rnn_rt_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn rnn_rt_mae(Array[Double], Array[Double]) -> Double
+
+pub fn rnn_rt_make_labeled_point(Double, Double, Int32) -> Rnn_rtPoint
+
+pub fn rnn_rt_make_matrix(Int32, Int32, Double) -> Rnn_rtMatrix
+
+pub fn rnn_rt_make_point(Double, Double) -> Rnn_rtPoint
+
+pub fn rnn_rt_make_series(Array[Double], String) -> Rnn_rtSeries
+
+pub fn rnn_rt_make_vector(Array[Double]) -> Rnn_rtVector
+
+pub fn rnn_rt_matrix_add(Rnn_rtMatrix, Rnn_rtMatrix) -> Rnn_rtMatrix
+
+pub fn rnn_rt_matrix_get(Rnn_rtMatrix, Int32, Int32) -> Double
+
+pub fn rnn_rt_matrix_identity(Int32) -> Rnn_rtMatrix
+
+pub fn rnn_rt_matrix_multiply(Rnn_rtMatrix, Rnn_rtMatrix) -> Rnn_rtMatrix
+
+pub fn rnn_rt_matrix_norm(Rnn_rtMatrix) -> Double
+
+pub fn rnn_rt_matrix_scale(Rnn_rtMatrix, Double) -> Rnn_rtMatrix
+
+pub fn rnn_rt_matrix_to_string(Rnn_rtMatrix) -> String
+
+pub fn rnn_rt_matrix_trace(Rnn_rtMatrix) -> Double
+
+pub fn rnn_rt_matrix_transpose(Rnn_rtMatrix) -> Rnn_rtMatrix
+
+pub fn rnn_rt_mse(Array[Double], Array[Double]) -> Double
+
+pub fn rnn_rt_point_add(Rnn_rtPoint, Rnn_rtPoint) -> Rnn_rtPoint
+
+pub fn rnn_rt_point_dist(Rnn_rtPoint, Rnn_rtPoint) -> Double
+
+pub fn rnn_rt_point_dot(Rnn_rtPoint, Rnn_rtPoint) -> Double
+
+pub fn rnn_rt_point_label(Rnn_rtPoint) -> Int32
+
+pub fn rnn_rt_point_norm(Rnn_rtPoint) -> Double
+
+pub fn rnn_rt_point_scale(Rnn_rtPoint, Double) -> Rnn_rtPoint
+
+pub fn rnn_rt_point_sub(Rnn_rtPoint, Rnn_rtPoint) -> Rnn_rtPoint
+
+pub fn rnn_rt_point_to_string(Rnn_rtPoint) -> String
+
+pub fn rnn_rt_point_x(Rnn_rtPoint) -> Double
+
+pub fn rnn_rt_point_y(Rnn_rtPoint) -> Double
+
+pub fn rnn_rt_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn rnn_rt_r2(Array[Double], Array[Double]) -> Double
+
+pub fn rnn_rt_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn rnn_rt_series_add(Rnn_rtSeries, Rnn_rtSeries) -> Rnn_rtSeries
+
+pub fn rnn_rt_series_len(Rnn_rtSeries) -> Int32
+
+pub fn rnn_rt_series_max(Rnn_rtSeries) -> Double
+
+pub fn rnn_rt_series_mean(Rnn_rtSeries) -> Double
+
+pub fn rnn_rt_series_min(Rnn_rtSeries) -> Double
+
+pub fn rnn_rt_series_scale(Rnn_rtSeries, Double) -> Rnn_rtSeries
+
+pub fn rnn_rt_series_std(Rnn_rtSeries) -> Double
+
+pub fn rnn_rt_series_sum(Rnn_rtSeries) -> Double
+
+pub fn rnn_rt_series_to_string(Rnn_rtSeries) -> String
+
+pub fn rnn_rt_series_var(Rnn_rtSeries) -> Double
+
+pub fn rnn_rt_std(Array[Double]) -> Double
+
+pub fn rnn_rt_var(Array[Double]) -> Double
+
+pub fn rnn_rt_vector_add(Rnn_rtVector, Rnn_rtVector) -> Rnn_rtVector
+
+pub fn rnn_rt_vector_dist(Rnn_rtVector, Rnn_rtVector) -> Double
+
+pub fn rnn_rt_vector_dot(Rnn_rtVector, Rnn_rtVector) -> Double
+
+pub fn rnn_rt_vector_norm(Rnn_rtVector) -> Double
+
+pub fn rnn_rt_vector_normalize(Rnn_rtVector) -> Rnn_rtVector
+
+pub fn rnn_rt_vector_scale(Rnn_rtVector, Double) -> Rnn_rtVector
+
+pub fn rnn_rt_vector_sub(Rnn_rtVector, Rnn_rtVector) -> Rnn_rtVector
+
+pub fn rnn_rt_vector_to_string(Rnn_rtVector) -> String
+
+pub fn rnn_rt_vector_zero(Int32) -> Rnn_rtVector
+
+// Errors
+
+// Types and methods
+pub struct Rnn_rtMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Rnn_rtPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Rnn_rtSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Rnn_rtVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

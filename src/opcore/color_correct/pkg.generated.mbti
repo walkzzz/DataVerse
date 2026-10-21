@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/color_correct"
+
+// Values
+pub fn color_correct_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn color_correct_corr(Array[Double], Array[Double]) -> Double
+
+pub fn color_correct_cov(Array[Double], Array[Double]) -> Double
+
+pub fn color_correct_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn color_correct_mae(Array[Double], Array[Double]) -> Double
+
+pub fn color_correct_make_labeled_point(Double, Double, Int32) -> Color_correctPoint
+
+pub fn color_correct_make_matrix(Int32, Int32, Double) -> Color_correctMatrix
+
+pub fn color_correct_make_point(Double, Double) -> Color_correctPoint
+
+pub fn color_correct_make_series(Array[Double], String) -> Color_correctSeries
+
+pub fn color_correct_make_vector(Array[Double]) -> Color_correctVector
+
+pub fn color_correct_matrix_add(Color_correctMatrix, Color_correctMatrix) -> Color_correctMatrix
+
+pub fn color_correct_matrix_get(Color_correctMatrix, Int32, Int32) -> Double
+
+pub fn color_correct_matrix_identity(Int32) -> Color_correctMatrix
+
+pub fn color_correct_matrix_multiply(Color_correctMatrix, Color_correctMatrix) -> Color_correctMatrix
+
+pub fn color_correct_matrix_norm(Color_correctMatrix) -> Double
+
+pub fn color_correct_matrix_scale(Color_correctMatrix, Double) -> Color_correctMatrix
+
+pub fn color_correct_matrix_to_string(Color_correctMatrix) -> String
+
+pub fn color_correct_matrix_trace(Color_correctMatrix) -> Double
+
+pub fn color_correct_matrix_transpose(Color_correctMatrix) -> Color_correctMatrix
+
+pub fn color_correct_mse(Array[Double], Array[Double]) -> Double
+
+pub fn color_correct_point_add(Color_correctPoint, Color_correctPoint) -> Color_correctPoint
+
+pub fn color_correct_point_dist(Color_correctPoint, Color_correctPoint) -> Double
+
+pub fn color_correct_point_dot(Color_correctPoint, Color_correctPoint) -> Double
+
+pub fn color_correct_point_label(Color_correctPoint) -> Int32
+
+pub fn color_correct_point_norm(Color_correctPoint) -> Double
+
+pub fn color_correct_point_scale(Color_correctPoint, Double) -> Color_correctPoint
+
+pub fn color_correct_point_sub(Color_correctPoint, Color_correctPoint) -> Color_correctPoint
+
+pub fn color_correct_point_to_string(Color_correctPoint) -> String
+
+pub fn color_correct_point_x(Color_correctPoint) -> Double
+
+pub fn color_correct_point_y(Color_correctPoint) -> Double
+
+pub fn color_correct_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn color_correct_r2(Array[Double], Array[Double]) -> Double
+
+pub fn color_correct_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn color_correct_series_add(Color_correctSeries, Color_correctSeries) -> Color_correctSeries
+
+pub fn color_correct_series_len(Color_correctSeries) -> Int32
+
+pub fn color_correct_series_max(Color_correctSeries) -> Double
+
+pub fn color_correct_series_mean(Color_correctSeries) -> Double
+
+pub fn color_correct_series_min(Color_correctSeries) -> Double
+
+pub fn color_correct_series_scale(Color_correctSeries, Double) -> Color_correctSeries
+
+pub fn color_correct_series_std(Color_correctSeries) -> Double
+
+pub fn color_correct_series_sum(Color_correctSeries) -> Double
+
+pub fn color_correct_series_to_string(Color_correctSeries) -> String
+
+pub fn color_correct_series_var(Color_correctSeries) -> Double
+
+pub fn color_correct_std(Array[Double]) -> Double
+
+pub fn color_correct_var(Array[Double]) -> Double
+
+pub fn color_correct_vector_add(Color_correctVector, Color_correctVector) -> Color_correctVector
+
+pub fn color_correct_vector_dist(Color_correctVector, Color_correctVector) -> Double
+
+pub fn color_correct_vector_dot(Color_correctVector, Color_correctVector) -> Double
+
+pub fn color_correct_vector_norm(Color_correctVector) -> Double
+
+pub fn color_correct_vector_normalize(Color_correctVector) -> Color_correctVector
+
+pub fn color_correct_vector_scale(Color_correctVector, Double) -> Color_correctVector
+
+pub fn color_correct_vector_sub(Color_correctVector, Color_correctVector) -> Color_correctVector
+
+pub fn color_correct_vector_to_string(Color_correctVector) -> String
+
+pub fn color_correct_vector_zero(Int32) -> Color_correctVector
+
+// Errors
+
+// Types and methods
+pub struct Color_correctMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Color_correctPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Color_correctSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Color_correctVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

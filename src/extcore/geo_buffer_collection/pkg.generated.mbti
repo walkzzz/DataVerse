@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/geo_buffer_collection"
+
+// Values
+pub fn geo_buffer_collection_buffer_make(Int32) -> GeobuffercollectionBuffer
+
+pub fn geo_buffer_collection_cluster_make(Int32) -> GeobuffercollectionCluster
+
+pub fn geo_buffer_collection_cursor_make(Int32) -> GeobuffercollectionCursor
+
+pub fn geo_buffer_collection_edge_make(Int32) -> GeobuffercollectionEdge
+
+pub fn geo_buffer_collection_frame_make(Int32) -> GeobuffercollectionFrame
+
+pub fn geo_buffer_collection_graphn_make(Int32) -> GeobuffercollectionGraphN
+
+pub fn geo_buffer_collection_layer_make(Int32) -> GeobuffercollectionLayer
+
+pub fn geo_buffer_collection_make_matrix(Int32, Int32, Double) -> GeobuffercollectionMatrix
+
+pub fn geo_buffer_collection_make_point(Double, Double) -> GeobuffercollectionPoint
+
+pub fn geo_buffer_collection_make_point3(Double, Double, Double) -> GeobuffercollectionPoint
+
+pub fn geo_buffer_collection_make_series(Array[Double], String) -> GeobuffercollectionSeries
+
+pub fn geo_buffer_collection_make_vector(Array[Double]) -> GeobuffercollectionVector
+
+pub fn geo_buffer_collection_matrix_identity(Int32) -> GeobuffercollectionMatrix
+
+pub fn geo_buffer_collection_model_make(Int32) -> GeobuffercollectionModel
+
+pub fn geo_buffer_collection_node_make(Int32) -> GeobuffercollectionNode
+
+pub fn geo_buffer_collection_path_make(Int32) -> GeobuffercollectionPath
+
+pub fn geo_buffer_collection_range_make(Int32) -> GeobuffercollectionRange
+
+pub fn geo_buffer_collection_slice_make(Int32) -> GeobuffercollectionSlice
+
+pub fn geo_buffer_collection_table_make(Int32) -> GeobuffercollectionTable
+
+pub fn geo_buffer_collection_vector_zero(Int32) -> GeobuffercollectionVector
+
+pub fn geo_buffer_collection_view_make(Int32) -> GeobuffercollectionView
+
+// Errors
+
+// Types and methods
+pub(all) struct GeobuffercollectionBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffercollectionBuffer::add(Self, Self) -> Self
+pub fn GeobuffercollectionBuffer::copy(Self) -> Self
+pub fn GeobuffercollectionBuffer::fill(Self, Double) -> Self
+pub fn GeobuffercollectionBuffer::get(Self, Int32) -> Double
+pub fn GeobuffercollectionBuffer::len(Self) -> Int32
+pub fn GeobuffercollectionBuffer::max(Self) -> Double
+pub fn GeobuffercollectionBuffer::mean(Self) -> Double
+pub fn GeobuffercollectionBuffer::min(Self) -> Double
+pub fn GeobuffercollectionBuffer::scale(Self, Double) -> Self
+pub fn GeobuffercollectionBuffer::set(Self, Int32, Double) -> Self
+pub fn GeobuffercollectionBuffer::sum(Self) -> Double
+pub fn GeobuffercollectionBuffer::to_string(Self) -> String
+
+pub(all) struct GeobuffercollectionCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffercollectionCluster::add(Self, Self) -> Self
+pub fn GeobuffercollectionCluster::copy(Self) -> Self
+pub fn GeobuffercollectionCluster::fill(Self, Double) -> Self
+pub fn GeobuffercollectionCluster::get(Self, Int32) -> Double
+pub fn GeobuffercollectionCluster::len(Self) -> Int32
+pub fn GeobuffercollectionCluster::max(Self) -> Double
+pub fn GeobuffercollectionCluster::mean(Self) -> Double
+pub fn GeobuffercollectionCluster::min(Self) -> Double
+pub fn GeobuffercollectionCluster::scale(Self, Double) -> Self
+pub fn GeobuffercollectionCluster::set(Self, Int32, Double) -> Self
+pub fn GeobuffercollectionCluster::sum(Self) -> Double
+pub fn GeobuffercollectionCluster::to_string(Self) -> String
+
+pub(all) struct GeobuffercollectionCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffercollectionCursor::add(Self, Self) -> Self
+pub fn GeobuffercollectionCursor::copy(Self) -> Self
+pub fn GeobuffercollectionCursor::fill(Self, Double) -> Self
+pub fn GeobuffercollectionCursor::get(Self, Int32) -> Double
+pub fn GeobuffercollectionCursor::len(Self) -> Int32
+pub fn GeobuffercollectionCursor::max(Self) -> Double
+pub fn GeobuffercollectionCursor::mean(Self) -> Double
+pub fn GeobuffercollectionCursor::min(Self) -> Double
+pub fn GeobuffercollectionCursor::scale(Self, Double) -> Self
+pub fn GeobuffercollectionCursor::set(Self, Int32, Double) -> Self
+pub fn GeobuffercollectionCursor::sum(Self) -> Double
+pub fn GeobuffercollectionCursor::to_string(Self) -> String
+
+pub(all) struct GeobuffercollectionEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffercollectionEdge::add(Self, Self) -> Self
+pub fn GeobuffercollectionEdge::copy(Self) -> Self
+pub fn GeobuffercollectionEdge::fill(Self, Double) -> Self
+pub fn GeobuffercollectionEdge::get(Self, Int32) -> Double
+pub fn GeobuffercollectionEdge::len(Self) -> Int32
+pub fn GeobuffercollectionEdge::max(Self) -> Double
+pub fn GeobuffercollectionEdge::mean(Self) -> Double
+pub fn GeobuffercollectionEdge::min(Self) -> Double
+pub fn GeobuffercollectionEdge::scale(Self, Double) -> Self
+pub fn GeobuffercollectionEdge::set(Self, Int32, Double) -> Self
+pub fn GeobuffercollectionEdge::sum(Self) -> Double
+pub fn GeobuffercollectionEdge::to_string(Self) -> String
+
+pub(all) struct GeobuffercollectionFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffercollectionFrame::add(Self, Self) -> Self
+pub fn GeobuffercollectionFrame::copy(Self) -> Self
+pub fn GeobuffercollectionFrame::fill(Self, Double) -> Self
+pub fn GeobuffercollectionFrame::get(Self, Int32) -> Double
+pub fn GeobuffercollectionFrame::len(Self) -> Int32
+pub fn GeobuffercollectionFrame::max(Self) -> Double
+pub fn GeobuffercollectionFrame::mean(Self) -> Double
+pub fn GeobuffercollectionFrame::min(Self) -> Double
+pub fn GeobuffercollectionFrame::scale(Self, Double) -> Self
+pub fn GeobuffercollectionFrame::set(Self, Int32, Double) -> Self
+pub fn GeobuffercollectionFrame::sum(Self) -> Double
+pub fn GeobuffercollectionFrame::to_string(Self) -> String
+
+pub(all) struct GeobuffercollectionGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffercollectionGraphN::add(Self, Self) -> Self
+pub fn GeobuffercollectionGraphN::copy(Self) -> Self
+pub fn GeobuffercollectionGraphN::fill(Self, Double) -> Self
+pub fn GeobuffercollectionGraphN::get(Self, Int32) -> Double
+pub fn GeobuffercollectionGraphN::len(Self) -> Int32
+pub fn GeobuffercollectionGraphN::max(Self) -> Double
+pub fn GeobuffercollectionGraphN::mean(Self) -> Double
+pub fn GeobuffercollectionGraphN::min(Self) -> Double
+pub fn GeobuffercollectionGraphN::scale(Self, Double) -> Self
+pub fn GeobuffercollectionGraphN::set(Self, Int32, Double) -> Self
+pub fn GeobuffercollectionGraphN::sum(Self) -> Double
+pub fn GeobuffercollectionGraphN::to_string(Self) -> String
+
+pub(all) struct GeobuffercollectionLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffercollectionLayer::add(Self, Self) -> Self
+pub fn GeobuffercollectionLayer::copy(Self) -> Self
+pub fn GeobuffercollectionLayer::fill(Self, Double) -> Self
+pub fn GeobuffercollectionLayer::get(Self, Int32) -> Double
+pub fn GeobuffercollectionLayer::len(Self) -> Int32
+pub fn GeobuffercollectionLayer::max(Self) -> Double
+pub fn GeobuffercollectionLayer::mean(Self) -> Double
+pub fn GeobuffercollectionLayer::min(Self) -> Double
+pub fn GeobuffercollectionLayer::scale(Self, Double) -> Self
+pub fn GeobuffercollectionLayer::set(Self, Int32, Double) -> Self
+pub fn GeobuffercollectionLayer::sum(Self) -> Double
+pub fn GeobuffercollectionLayer::to_string(Self) -> String
+
+pub(all) struct GeobuffercollectionMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn GeobuffercollectionMatrix::add(Self, Self) -> Self
+pub fn GeobuffercollectionMatrix::det(Self) -> Double
+pub fn GeobuffercollectionMatrix::get(Self, Int32, Int32) -> Double
+pub fn GeobuffercollectionMatrix::multiply(Self, Self) -> Self
+pub fn GeobuffercollectionMatrix::norm(Self) -> Double
+pub fn GeobuffercollectionMatrix::scale(Self, Double) -> Self
+pub fn GeobuffercollectionMatrix::to_string(Self) -> String
+pub fn GeobuffercollectionMatrix::trace(Self) -> Double
+pub fn GeobuffercollectionMatrix::transpose(Self) -> Self
+
+pub(all) struct GeobuffercollectionModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffercollectionModel::add(Self, Self) -> Self
+pub fn GeobuffercollectionModel::copy(Self) -> Self
+pub fn GeobuffercollectionModel::fill(Self, Double) -> Self
+pub fn GeobuffercollectionModel::get(Self, Int32) -> Double
+pub fn GeobuffercollectionModel::len(Self) -> Int32
+pub fn GeobuffercollectionModel::max(Self) -> Double
+pub fn GeobuffercollectionModel::mean(Self) -> Double
+pub fn GeobuffercollectionModel::min(Self) -> Double
+pub fn GeobuffercollectionModel::scale(Self, Double) -> Self
+pub fn GeobuffercollectionModel::set(Self, Int32, Double) -> Self
+pub fn GeobuffercollectionModel::sum(Self) -> Double
+pub fn GeobuffercollectionModel::to_string(Self) -> String
+
+pub(all) struct GeobuffercollectionNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffercollectionNode::add(Self, Self) -> Self
+pub fn GeobuffercollectionNode::copy(Self) -> Self
+pub fn GeobuffercollectionNode::fill(Self, Double) -> Self
+pub fn GeobuffercollectionNode::get(Self, Int32) -> Double
+pub fn GeobuffercollectionNode::len(Self) -> Int32
+pub fn GeobuffercollectionNode::max(Self) -> Double
+pub fn GeobuffercollectionNode::mean(Self) -> Double
+pub fn GeobuffercollectionNode::min(Self) -> Double
+pub fn GeobuffercollectionNode::scale(Self, Double) -> Self
+pub fn GeobuffercollectionNode::set(Self, Int32, Double) -> Self
+pub fn GeobuffercollectionNode::sum(Self) -> Double
+pub fn GeobuffercollectionNode::to_string(Self) -> String
+
+pub(all) struct GeobuffercollectionPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffercollectionPath::add(Self, Self) -> Self
+pub fn GeobuffercollectionPath::copy(Self) -> Self
+pub fn GeobuffercollectionPath::fill(Self, Double) -> Self
+pub fn GeobuffercollectionPath::get(Self, Int32) -> Double
+pub fn GeobuffercollectionPath::len(Self) -> Int32
+pub fn GeobuffercollectionPath::max(Self) -> Double
+pub fn GeobuffercollectionPath::mean(Self) -> Double
+pub fn GeobuffercollectionPath::min(Self) -> Double
+pub fn GeobuffercollectionPath::scale(Self, Double) -> Self
+pub fn GeobuffercollectionPath::set(Self, Int32, Double) -> Self
+pub fn GeobuffercollectionPath::sum(Self) -> Double
+pub fn GeobuffercollectionPath::to_string(Self) -> String
+
+pub(all) struct GeobuffercollectionPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn GeobuffercollectionPoint::add(Self, Self) -> Self
+pub fn GeobuffercollectionPoint::cross(Self, Self) -> Self
+pub fn GeobuffercollectionPoint::dist(Self, Self) -> Double
+pub fn GeobuffercollectionPoint::dot(Self, Self) -> Double
+pub fn GeobuffercollectionPoint::label(Self) -> Int32
+pub fn GeobuffercollectionPoint::lerp(Self, Self, Double) -> Self
+pub fn GeobuffercollectionPoint::mid(Self, Self) -> Self
+pub fn GeobuffercollectionPoint::negate(Self) -> Self
+pub fn GeobuffercollectionPoint::norm(Self) -> Double
+pub fn GeobuffercollectionPoint::normalize(Self) -> Self
+pub fn GeobuffercollectionPoint::scale(Self, Double) -> Self
+pub fn GeobuffercollectionPoint::sub(Self, Self) -> Self
+pub fn GeobuffercollectionPoint::to_string(Self) -> String
+pub fn GeobuffercollectionPoint::x(Self) -> Double
+pub fn GeobuffercollectionPoint::y(Self) -> Double
+pub fn GeobuffercollectionPoint::z(Self) -> Double
+
+pub(all) struct GeobuffercollectionRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffercollectionRange::add(Self, Self) -> Self
+pub fn GeobuffercollectionRange::copy(Self) -> Self
+pub fn GeobuffercollectionRange::fill(Self, Double) -> Self
+pub fn GeobuffercollectionRange::get(Self, Int32) -> Double
+pub fn GeobuffercollectionRange::len(Self) -> Int32
+pub fn GeobuffercollectionRange::max(Self) -> Double
+pub fn GeobuffercollectionRange::mean(Self) -> Double
+pub fn GeobuffercollectionRange::min(Self) -> Double
+pub fn GeobuffercollectionRange::scale(Self, Double) -> Self
+pub fn GeobuffercollectionRange::set(Self, Int32, Double) -> Self
+pub fn GeobuffercollectionRange::sum(Self) -> Double
+pub fn GeobuffercollectionRange::to_string(Self) -> String
+
+pub(all) struct GeobuffercollectionSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn GeobuffercollectionSeries::add(Self, Self) -> Self
+pub fn GeobuffercollectionSeries::cumsum(Self) -> Self
+pub fn GeobuffercollectionSeries::len(Self) -> Int32
+pub fn GeobuffercollectionSeries::max(Self) -> Double
+pub fn GeobuffercollectionSeries::mean(Self) -> Double
+pub fn GeobuffercollectionSeries::median(Self) -> Double
+pub fn GeobuffercollectionSeries::min(Self) -> Double
+pub fn GeobuffercollectionSeries::normalize(Self) -> Self
+pub fn GeobuffercollectionSeries::range(Self) -> Double
+pub fn GeobuffercollectionSeries::scale(Self, Double) -> Self
+pub fn GeobuffercollectionSeries::std(Self) -> Double
+pub fn GeobuffercollectionSeries::sub(Self, Self) -> Self
+pub fn GeobuffercollectionSeries::sum(Self) -> Double
+pub fn GeobuffercollectionSeries::to_string(Self) -> String
+pub fn GeobuffercollectionSeries::variance(Self) -> Double
+
+pub(all) struct GeobuffercollectionSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffercollectionSlice::add(Self, Self) -> Self
+pub fn GeobuffercollectionSlice::copy(Self) -> Self
+pub fn GeobuffercollectionSlice::fill(Self, Double) -> Self
+pub fn GeobuffercollectionSlice::get(Self, Int32) -> Double
+pub fn GeobuffercollectionSlice::len(Self) -> Int32
+pub fn GeobuffercollectionSlice::max(Self) -> Double
+pub fn GeobuffercollectionSlice::mean(Self) -> Double
+pub fn GeobuffercollectionSlice::min(Self) -> Double
+pub fn GeobuffercollectionSlice::scale(Self, Double) -> Self
+pub fn GeobuffercollectionSlice::set(Self, Int32, Double) -> Self
+pub fn GeobuffercollectionSlice::sum(Self) -> Double
+pub fn GeobuffercollectionSlice::to_string(Self) -> String
+
+pub(all) struct GeobuffercollectionTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffercollectionTable::add(Self, Self) -> Self
+pub fn GeobuffercollectionTable::copy(Self) -> Self
+pub fn GeobuffercollectionTable::fill(Self, Double) -> Self
+pub fn GeobuffercollectionTable::get(Self, Int32) -> Double
+pub fn GeobuffercollectionTable::len(Self) -> Int32
+pub fn GeobuffercollectionTable::max(Self) -> Double
+pub fn GeobuffercollectionTable::mean(Self) -> Double
+pub fn GeobuffercollectionTable::min(Self) -> Double
+pub fn GeobuffercollectionTable::scale(Self, Double) -> Self
+pub fn GeobuffercollectionTable::set(Self, Int32, Double) -> Self
+pub fn GeobuffercollectionTable::sum(Self) -> Double
+pub fn GeobuffercollectionTable::to_string(Self) -> String
+
+pub(all) struct GeobuffercollectionVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn GeobuffercollectionVector::add(Self, Self) -> Self
+pub fn GeobuffercollectionVector::dist(Self, Self) -> Double
+pub fn GeobuffercollectionVector::dot(Self, Self) -> Double
+pub fn GeobuffercollectionVector::norm(Self) -> Double
+pub fn GeobuffercollectionVector::normalize(Self) -> Self
+pub fn GeobuffercollectionVector::scale(Self, Double) -> Self
+pub fn GeobuffercollectionVector::sub(Self, Self) -> Self
+pub fn GeobuffercollectionVector::to_string(Self) -> String
+
+pub(all) struct GeobuffercollectionView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn GeobuffercollectionView::add(Self, Self) -> Self
+pub fn GeobuffercollectionView::copy(Self) -> Self
+pub fn GeobuffercollectionView::fill(Self, Double) -> Self
+pub fn GeobuffercollectionView::get(Self, Int32) -> Double
+pub fn GeobuffercollectionView::len(Self) -> Int32
+pub fn GeobuffercollectionView::max(Self) -> Double
+pub fn GeobuffercollectionView::mean(Self) -> Double
+pub fn GeobuffercollectionView::min(Self) -> Double
+pub fn GeobuffercollectionView::scale(Self, Double) -> Self
+pub fn GeobuffercollectionView::set(Self, Int32, Double) -> Self
+pub fn GeobuffercollectionView::sum(Self) -> Double
+pub fn GeobuffercollectionView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

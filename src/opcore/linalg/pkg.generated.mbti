@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/linalg"
+
+// Values
+pub fn linalg_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn linalg_corr(Array[Double], Array[Double]) -> Double
+
+pub fn linalg_cov(Array[Double], Array[Double]) -> Double
+
+pub fn linalg_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn linalg_mae(Array[Double], Array[Double]) -> Double
+
+pub fn linalg_make_labeled_point(Double, Double, Int32) -> LinalgPoint
+
+pub fn linalg_make_matrix(Int32, Int32, Double) -> LinalgMatrix
+
+pub fn linalg_make_point(Double, Double) -> LinalgPoint
+
+pub fn linalg_make_series(Array[Double], String) -> LinalgSeries
+
+pub fn linalg_make_vector(Array[Double]) -> LinalgVector
+
+pub fn linalg_matrix_add(LinalgMatrix, LinalgMatrix) -> LinalgMatrix
+
+pub fn linalg_matrix_get(LinalgMatrix, Int32, Int32) -> Double
+
+pub fn linalg_matrix_identity(Int32) -> LinalgMatrix
+
+pub fn linalg_matrix_multiply(LinalgMatrix, LinalgMatrix) -> LinalgMatrix
+
+pub fn linalg_matrix_norm(LinalgMatrix) -> Double
+
+pub fn linalg_matrix_scale(LinalgMatrix, Double) -> LinalgMatrix
+
+pub fn linalg_matrix_to_string(LinalgMatrix) -> String
+
+pub fn linalg_matrix_trace(LinalgMatrix) -> Double
+
+pub fn linalg_matrix_transpose(LinalgMatrix) -> LinalgMatrix
+
+pub fn linalg_mse(Array[Double], Array[Double]) -> Double
+
+pub fn linalg_point_add(LinalgPoint, LinalgPoint) -> LinalgPoint
+
+pub fn linalg_point_dist(LinalgPoint, LinalgPoint) -> Double
+
+pub fn linalg_point_dot(LinalgPoint, LinalgPoint) -> Double
+
+pub fn linalg_point_label(LinalgPoint) -> Int32
+
+pub fn linalg_point_norm(LinalgPoint) -> Double
+
+pub fn linalg_point_scale(LinalgPoint, Double) -> LinalgPoint
+
+pub fn linalg_point_sub(LinalgPoint, LinalgPoint) -> LinalgPoint
+
+pub fn linalg_point_to_string(LinalgPoint) -> String
+
+pub fn linalg_point_x(LinalgPoint) -> Double
+
+pub fn linalg_point_y(LinalgPoint) -> Double
+
+pub fn linalg_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn linalg_r2(Array[Double], Array[Double]) -> Double
+
+pub fn linalg_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn linalg_series_add(LinalgSeries, LinalgSeries) -> LinalgSeries
+
+pub fn linalg_series_len(LinalgSeries) -> Int32
+
+pub fn linalg_series_max(LinalgSeries) -> Double
+
+pub fn linalg_series_mean(LinalgSeries) -> Double
+
+pub fn linalg_series_min(LinalgSeries) -> Double
+
+pub fn linalg_series_scale(LinalgSeries, Double) -> LinalgSeries
+
+pub fn linalg_series_std(LinalgSeries) -> Double
+
+pub fn linalg_series_sum(LinalgSeries) -> Double
+
+pub fn linalg_series_to_string(LinalgSeries) -> String
+
+pub fn linalg_series_var(LinalgSeries) -> Double
+
+pub fn linalg_std(Array[Double]) -> Double
+
+pub fn linalg_var(Array[Double]) -> Double
+
+pub fn linalg_vector_add(LinalgVector, LinalgVector) -> LinalgVector
+
+pub fn linalg_vector_dist(LinalgVector, LinalgVector) -> Double
+
+pub fn linalg_vector_dot(LinalgVector, LinalgVector) -> Double
+
+pub fn linalg_vector_norm(LinalgVector) -> Double
+
+pub fn linalg_vector_normalize(LinalgVector) -> LinalgVector
+
+pub fn linalg_vector_scale(LinalgVector, Double) -> LinalgVector
+
+pub fn linalg_vector_sub(LinalgVector, LinalgVector) -> LinalgVector
+
+pub fn linalg_vector_to_string(LinalgVector) -> String
+
+pub fn linalg_vector_zero(Int32) -> LinalgVector
+
+// Errors
+
+// Types and methods
+pub struct LinalgMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct LinalgPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct LinalgSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct LinalgVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

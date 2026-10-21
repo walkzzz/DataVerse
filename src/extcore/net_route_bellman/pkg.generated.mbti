@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_route_bellman"
+
+// Values
+pub fn net_route_bellman_buffer_make(Int32) -> NetroutebellmanBuffer
+
+pub fn net_route_bellman_cluster_make(Int32) -> NetroutebellmanCluster
+
+pub fn net_route_bellman_cursor_make(Int32) -> NetroutebellmanCursor
+
+pub fn net_route_bellman_edge_make(Int32) -> NetroutebellmanEdge
+
+pub fn net_route_bellman_frame_make(Int32) -> NetroutebellmanFrame
+
+pub fn net_route_bellman_graphn_make(Int32) -> NetroutebellmanGraphN
+
+pub fn net_route_bellman_layer_make(Int32) -> NetroutebellmanLayer
+
+pub fn net_route_bellman_make_matrix(Int32, Int32, Double) -> NetroutebellmanMatrix
+
+pub fn net_route_bellman_make_point(Double, Double) -> NetroutebellmanPoint
+
+pub fn net_route_bellman_make_point3(Double, Double, Double) -> NetroutebellmanPoint
+
+pub fn net_route_bellman_make_series(Array[Double], String) -> NetroutebellmanSeries
+
+pub fn net_route_bellman_make_vector(Array[Double]) -> NetroutebellmanVector
+
+pub fn net_route_bellman_matrix_identity(Int32) -> NetroutebellmanMatrix
+
+pub fn net_route_bellman_model_make(Int32) -> NetroutebellmanModel
+
+pub fn net_route_bellman_node_make(Int32) -> NetroutebellmanNode
+
+pub fn net_route_bellman_path_make(Int32) -> NetroutebellmanPath
+
+pub fn net_route_bellman_range_make(Int32) -> NetroutebellmanRange
+
+pub fn net_route_bellman_slice_make(Int32) -> NetroutebellmanSlice
+
+pub fn net_route_bellman_table_make(Int32) -> NetroutebellmanTable
+
+pub fn net_route_bellman_vector_zero(Int32) -> NetroutebellmanVector
+
+pub fn net_route_bellman_view_make(Int32) -> NetroutebellmanView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetroutebellmanBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebellmanBuffer::add(Self, Self) -> Self
+pub fn NetroutebellmanBuffer::copy(Self) -> Self
+pub fn NetroutebellmanBuffer::fill(Self, Double) -> Self
+pub fn NetroutebellmanBuffer::get(Self, Int32) -> Double
+pub fn NetroutebellmanBuffer::len(Self) -> Int32
+pub fn NetroutebellmanBuffer::max(Self) -> Double
+pub fn NetroutebellmanBuffer::mean(Self) -> Double
+pub fn NetroutebellmanBuffer::min(Self) -> Double
+pub fn NetroutebellmanBuffer::scale(Self, Double) -> Self
+pub fn NetroutebellmanBuffer::set(Self, Int32, Double) -> Self
+pub fn NetroutebellmanBuffer::sum(Self) -> Double
+pub fn NetroutebellmanBuffer::to_string(Self) -> String
+
+pub(all) struct NetroutebellmanCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebellmanCluster::add(Self, Self) -> Self
+pub fn NetroutebellmanCluster::copy(Self) -> Self
+pub fn NetroutebellmanCluster::fill(Self, Double) -> Self
+pub fn NetroutebellmanCluster::get(Self, Int32) -> Double
+pub fn NetroutebellmanCluster::len(Self) -> Int32
+pub fn NetroutebellmanCluster::max(Self) -> Double
+pub fn NetroutebellmanCluster::mean(Self) -> Double
+pub fn NetroutebellmanCluster::min(Self) -> Double
+pub fn NetroutebellmanCluster::scale(Self, Double) -> Self
+pub fn NetroutebellmanCluster::set(Self, Int32, Double) -> Self
+pub fn NetroutebellmanCluster::sum(Self) -> Double
+pub fn NetroutebellmanCluster::to_string(Self) -> String
+
+pub(all) struct NetroutebellmanCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebellmanCursor::add(Self, Self) -> Self
+pub fn NetroutebellmanCursor::copy(Self) -> Self
+pub fn NetroutebellmanCursor::fill(Self, Double) -> Self
+pub fn NetroutebellmanCursor::get(Self, Int32) -> Double
+pub fn NetroutebellmanCursor::len(Self) -> Int32
+pub fn NetroutebellmanCursor::max(Self) -> Double
+pub fn NetroutebellmanCursor::mean(Self) -> Double
+pub fn NetroutebellmanCursor::min(Self) -> Double
+pub fn NetroutebellmanCursor::scale(Self, Double) -> Self
+pub fn NetroutebellmanCursor::set(Self, Int32, Double) -> Self
+pub fn NetroutebellmanCursor::sum(Self) -> Double
+pub fn NetroutebellmanCursor::to_string(Self) -> String
+
+pub(all) struct NetroutebellmanEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebellmanEdge::add(Self, Self) -> Self
+pub fn NetroutebellmanEdge::copy(Self) -> Self
+pub fn NetroutebellmanEdge::fill(Self, Double) -> Self
+pub fn NetroutebellmanEdge::get(Self, Int32) -> Double
+pub fn NetroutebellmanEdge::len(Self) -> Int32
+pub fn NetroutebellmanEdge::max(Self) -> Double
+pub fn NetroutebellmanEdge::mean(Self) -> Double
+pub fn NetroutebellmanEdge::min(Self) -> Double
+pub fn NetroutebellmanEdge::scale(Self, Double) -> Self
+pub fn NetroutebellmanEdge::set(Self, Int32, Double) -> Self
+pub fn NetroutebellmanEdge::sum(Self) -> Double
+pub fn NetroutebellmanEdge::to_string(Self) -> String
+
+pub(all) struct NetroutebellmanFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebellmanFrame::add(Self, Self) -> Self
+pub fn NetroutebellmanFrame::copy(Self) -> Self
+pub fn NetroutebellmanFrame::fill(Self, Double) -> Self
+pub fn NetroutebellmanFrame::get(Self, Int32) -> Double
+pub fn NetroutebellmanFrame::len(Self) -> Int32
+pub fn NetroutebellmanFrame::max(Self) -> Double
+pub fn NetroutebellmanFrame::mean(Self) -> Double
+pub fn NetroutebellmanFrame::min(Self) -> Double
+pub fn NetroutebellmanFrame::scale(Self, Double) -> Self
+pub fn NetroutebellmanFrame::set(Self, Int32, Double) -> Self
+pub fn NetroutebellmanFrame::sum(Self) -> Double
+pub fn NetroutebellmanFrame::to_string(Self) -> String
+
+pub(all) struct NetroutebellmanGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebellmanGraphN::add(Self, Self) -> Self
+pub fn NetroutebellmanGraphN::copy(Self) -> Self
+pub fn NetroutebellmanGraphN::fill(Self, Double) -> Self
+pub fn NetroutebellmanGraphN::get(Self, Int32) -> Double
+pub fn NetroutebellmanGraphN::len(Self) -> Int32
+pub fn NetroutebellmanGraphN::max(Self) -> Double
+pub fn NetroutebellmanGraphN::mean(Self) -> Double
+pub fn NetroutebellmanGraphN::min(Self) -> Double
+pub fn NetroutebellmanGraphN::scale(Self, Double) -> Self
+pub fn NetroutebellmanGraphN::set(Self, Int32, Double) -> Self
+pub fn NetroutebellmanGraphN::sum(Self) -> Double
+pub fn NetroutebellmanGraphN::to_string(Self) -> String
+
+pub(all) struct NetroutebellmanLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebellmanLayer::add(Self, Self) -> Self
+pub fn NetroutebellmanLayer::copy(Self) -> Self
+pub fn NetroutebellmanLayer::fill(Self, Double) -> Self
+pub fn NetroutebellmanLayer::get(Self, Int32) -> Double
+pub fn NetroutebellmanLayer::len(Self) -> Int32
+pub fn NetroutebellmanLayer::max(Self) -> Double
+pub fn NetroutebellmanLayer::mean(Self) -> Double
+pub fn NetroutebellmanLayer::min(Self) -> Double
+pub fn NetroutebellmanLayer::scale(Self, Double) -> Self
+pub fn NetroutebellmanLayer::set(Self, Int32, Double) -> Self
+pub fn NetroutebellmanLayer::sum(Self) -> Double
+pub fn NetroutebellmanLayer::to_string(Self) -> String
+
+pub(all) struct NetroutebellmanMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetroutebellmanMatrix::add(Self, Self) -> Self
+pub fn NetroutebellmanMatrix::det(Self) -> Double
+pub fn NetroutebellmanMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetroutebellmanMatrix::multiply(Self, Self) -> Self
+pub fn NetroutebellmanMatrix::norm(Self) -> Double
+pub fn NetroutebellmanMatrix::scale(Self, Double) -> Self
+pub fn NetroutebellmanMatrix::to_string(Self) -> String
+pub fn NetroutebellmanMatrix::trace(Self) -> Double
+pub fn NetroutebellmanMatrix::transpose(Self) -> Self
+
+pub(all) struct NetroutebellmanModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebellmanModel::add(Self, Self) -> Self
+pub fn NetroutebellmanModel::copy(Self) -> Self
+pub fn NetroutebellmanModel::fill(Self, Double) -> Self
+pub fn NetroutebellmanModel::get(Self, Int32) -> Double
+pub fn NetroutebellmanModel::len(Self) -> Int32
+pub fn NetroutebellmanModel::max(Self) -> Double
+pub fn NetroutebellmanModel::mean(Self) -> Double
+pub fn NetroutebellmanModel::min(Self) -> Double
+pub fn NetroutebellmanModel::scale(Self, Double) -> Self
+pub fn NetroutebellmanModel::set(Self, Int32, Double) -> Self
+pub fn NetroutebellmanModel::sum(Self) -> Double
+pub fn NetroutebellmanModel::to_string(Self) -> String
+
+pub(all) struct NetroutebellmanNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebellmanNode::add(Self, Self) -> Self
+pub fn NetroutebellmanNode::copy(Self) -> Self
+pub fn NetroutebellmanNode::fill(Self, Double) -> Self
+pub fn NetroutebellmanNode::get(Self, Int32) -> Double
+pub fn NetroutebellmanNode::len(Self) -> Int32
+pub fn NetroutebellmanNode::max(Self) -> Double
+pub fn NetroutebellmanNode::mean(Self) -> Double
+pub fn NetroutebellmanNode::min(Self) -> Double
+pub fn NetroutebellmanNode::scale(Self, Double) -> Self
+pub fn NetroutebellmanNode::set(Self, Int32, Double) -> Self
+pub fn NetroutebellmanNode::sum(Self) -> Double
+pub fn NetroutebellmanNode::to_string(Self) -> String
+
+pub(all) struct NetroutebellmanPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebellmanPath::add(Self, Self) -> Self
+pub fn NetroutebellmanPath::copy(Self) -> Self
+pub fn NetroutebellmanPath::fill(Self, Double) -> Self
+pub fn NetroutebellmanPath::get(Self, Int32) -> Double
+pub fn NetroutebellmanPath::len(Self) -> Int32
+pub fn NetroutebellmanPath::max(Self) -> Double
+pub fn NetroutebellmanPath::mean(Self) -> Double
+pub fn NetroutebellmanPath::min(Self) -> Double
+pub fn NetroutebellmanPath::scale(Self, Double) -> Self
+pub fn NetroutebellmanPath::set(Self, Int32, Double) -> Self
+pub fn NetroutebellmanPath::sum(Self) -> Double
+pub fn NetroutebellmanPath::to_string(Self) -> String
+
+pub(all) struct NetroutebellmanPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetroutebellmanPoint::add(Self, Self) -> Self
+pub fn NetroutebellmanPoint::cross(Self, Self) -> Self
+pub fn NetroutebellmanPoint::dist(Self, Self) -> Double
+pub fn NetroutebellmanPoint::dot(Self, Self) -> Double
+pub fn NetroutebellmanPoint::label(Self) -> Int32
+pub fn NetroutebellmanPoint::lerp(Self, Self, Double) -> Self
+pub fn NetroutebellmanPoint::mid(Self, Self) -> Self
+pub fn NetroutebellmanPoint::negate(Self) -> Self
+pub fn NetroutebellmanPoint::norm(Self) -> Double
+pub fn NetroutebellmanPoint::normalize(Self) -> Self
+pub fn NetroutebellmanPoint::scale(Self, Double) -> Self
+pub fn NetroutebellmanPoint::sub(Self, Self) -> Self
+pub fn NetroutebellmanPoint::to_string(Self) -> String
+pub fn NetroutebellmanPoint::x(Self) -> Double
+pub fn NetroutebellmanPoint::y(Self) -> Double
+pub fn NetroutebellmanPoint::z(Self) -> Double
+
+pub(all) struct NetroutebellmanRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebellmanRange::add(Self, Self) -> Self
+pub fn NetroutebellmanRange::copy(Self) -> Self
+pub fn NetroutebellmanRange::fill(Self, Double) -> Self
+pub fn NetroutebellmanRange::get(Self, Int32) -> Double
+pub fn NetroutebellmanRange::len(Self) -> Int32
+pub fn NetroutebellmanRange::max(Self) -> Double
+pub fn NetroutebellmanRange::mean(Self) -> Double
+pub fn NetroutebellmanRange::min(Self) -> Double
+pub fn NetroutebellmanRange::scale(Self, Double) -> Self
+pub fn NetroutebellmanRange::set(Self, Int32, Double) -> Self
+pub fn NetroutebellmanRange::sum(Self) -> Double
+pub fn NetroutebellmanRange::to_string(Self) -> String
+
+pub(all) struct NetroutebellmanSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetroutebellmanSeries::add(Self, Self) -> Self
+pub fn NetroutebellmanSeries::cumsum(Self) -> Self
+pub fn NetroutebellmanSeries::len(Self) -> Int32
+pub fn NetroutebellmanSeries::max(Self) -> Double
+pub fn NetroutebellmanSeries::mean(Self) -> Double
+pub fn NetroutebellmanSeries::median(Self) -> Double
+pub fn NetroutebellmanSeries::min(Self) -> Double
+pub fn NetroutebellmanSeries::normalize(Self) -> Self
+pub fn NetroutebellmanSeries::range(Self) -> Double
+pub fn NetroutebellmanSeries::scale(Self, Double) -> Self
+pub fn NetroutebellmanSeries::std(Self) -> Double
+pub fn NetroutebellmanSeries::sub(Self, Self) -> Self
+pub fn NetroutebellmanSeries::sum(Self) -> Double
+pub fn NetroutebellmanSeries::to_string(Self) -> String
+pub fn NetroutebellmanSeries::variance(Self) -> Double
+
+pub(all) struct NetroutebellmanSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebellmanSlice::add(Self, Self) -> Self
+pub fn NetroutebellmanSlice::copy(Self) -> Self
+pub fn NetroutebellmanSlice::fill(Self, Double) -> Self
+pub fn NetroutebellmanSlice::get(Self, Int32) -> Double
+pub fn NetroutebellmanSlice::len(Self) -> Int32
+pub fn NetroutebellmanSlice::max(Self) -> Double
+pub fn NetroutebellmanSlice::mean(Self) -> Double
+pub fn NetroutebellmanSlice::min(Self) -> Double
+pub fn NetroutebellmanSlice::scale(Self, Double) -> Self
+pub fn NetroutebellmanSlice::set(Self, Int32, Double) -> Self
+pub fn NetroutebellmanSlice::sum(Self) -> Double
+pub fn NetroutebellmanSlice::to_string(Self) -> String
+
+pub(all) struct NetroutebellmanTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebellmanTable::add(Self, Self) -> Self
+pub fn NetroutebellmanTable::copy(Self) -> Self
+pub fn NetroutebellmanTable::fill(Self, Double) -> Self
+pub fn NetroutebellmanTable::get(Self, Int32) -> Double
+pub fn NetroutebellmanTable::len(Self) -> Int32
+pub fn NetroutebellmanTable::max(Self) -> Double
+pub fn NetroutebellmanTable::mean(Self) -> Double
+pub fn NetroutebellmanTable::min(Self) -> Double
+pub fn NetroutebellmanTable::scale(Self, Double) -> Self
+pub fn NetroutebellmanTable::set(Self, Int32, Double) -> Self
+pub fn NetroutebellmanTable::sum(Self) -> Double
+pub fn NetroutebellmanTable::to_string(Self) -> String
+
+pub(all) struct NetroutebellmanVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetroutebellmanVector::add(Self, Self) -> Self
+pub fn NetroutebellmanVector::dist(Self, Self) -> Double
+pub fn NetroutebellmanVector::dot(Self, Self) -> Double
+pub fn NetroutebellmanVector::norm(Self) -> Double
+pub fn NetroutebellmanVector::normalize(Self) -> Self
+pub fn NetroutebellmanVector::scale(Self, Double) -> Self
+pub fn NetroutebellmanVector::sub(Self, Self) -> Self
+pub fn NetroutebellmanVector::to_string(Self) -> String
+
+pub(all) struct NetroutebellmanView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetroutebellmanView::add(Self, Self) -> Self
+pub fn NetroutebellmanView::copy(Self) -> Self
+pub fn NetroutebellmanView::fill(Self, Double) -> Self
+pub fn NetroutebellmanView::get(Self, Int32) -> Double
+pub fn NetroutebellmanView::len(Self) -> Int32
+pub fn NetroutebellmanView::max(Self) -> Double
+pub fn NetroutebellmanView::mean(Self) -> Double
+pub fn NetroutebellmanView::min(Self) -> Double
+pub fn NetroutebellmanView::scale(Self, Double) -> Self
+pub fn NetroutebellmanView::set(Self, Int32, Double) -> Self
+pub fn NetroutebellmanView::sum(Self) -> Double
+pub fn NetroutebellmanView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

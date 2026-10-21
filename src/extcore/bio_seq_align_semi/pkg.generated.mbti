@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/bio_seq_align_semi"
+
+// Values
+pub fn bio_seq_align_semi_buffer_make(Int32) -> BioseqalignsemiBuffer
+
+pub fn bio_seq_align_semi_cluster_make(Int32) -> BioseqalignsemiCluster
+
+pub fn bio_seq_align_semi_cursor_make(Int32) -> BioseqalignsemiCursor
+
+pub fn bio_seq_align_semi_edge_make(Int32) -> BioseqalignsemiEdge
+
+pub fn bio_seq_align_semi_frame_make(Int32) -> BioseqalignsemiFrame
+
+pub fn bio_seq_align_semi_graphn_make(Int32) -> BioseqalignsemiGraphN
+
+pub fn bio_seq_align_semi_layer_make(Int32) -> BioseqalignsemiLayer
+
+pub fn bio_seq_align_semi_make_matrix(Int32, Int32, Double) -> BioseqalignsemiMatrix
+
+pub fn bio_seq_align_semi_make_point(Double, Double) -> BioseqalignsemiPoint
+
+pub fn bio_seq_align_semi_make_point3(Double, Double, Double) -> BioseqalignsemiPoint
+
+pub fn bio_seq_align_semi_make_series(Array[Double], String) -> BioseqalignsemiSeries
+
+pub fn bio_seq_align_semi_make_vector(Array[Double]) -> BioseqalignsemiVector
+
+pub fn bio_seq_align_semi_matrix_identity(Int32) -> BioseqalignsemiMatrix
+
+pub fn bio_seq_align_semi_model_make(Int32) -> BioseqalignsemiModel
+
+pub fn bio_seq_align_semi_node_make(Int32) -> BioseqalignsemiNode
+
+pub fn bio_seq_align_semi_path_make(Int32) -> BioseqalignsemiPath
+
+pub fn bio_seq_align_semi_range_make(Int32) -> BioseqalignsemiRange
+
+pub fn bio_seq_align_semi_slice_make(Int32) -> BioseqalignsemiSlice
+
+pub fn bio_seq_align_semi_table_make(Int32) -> BioseqalignsemiTable
+
+pub fn bio_seq_align_semi_vector_zero(Int32) -> BioseqalignsemiVector
+
+pub fn bio_seq_align_semi_view_make(Int32) -> BioseqalignsemiView
+
+// Errors
+
+// Types and methods
+pub(all) struct BioseqalignsemiBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignsemiBuffer::add(Self, Self) -> Self
+pub fn BioseqalignsemiBuffer::copy(Self) -> Self
+pub fn BioseqalignsemiBuffer::fill(Self, Double) -> Self
+pub fn BioseqalignsemiBuffer::get(Self, Int32) -> Double
+pub fn BioseqalignsemiBuffer::len(Self) -> Int32
+pub fn BioseqalignsemiBuffer::max(Self) -> Double
+pub fn BioseqalignsemiBuffer::mean(Self) -> Double
+pub fn BioseqalignsemiBuffer::min(Self) -> Double
+pub fn BioseqalignsemiBuffer::scale(Self, Double) -> Self
+pub fn BioseqalignsemiBuffer::set(Self, Int32, Double) -> Self
+pub fn BioseqalignsemiBuffer::sum(Self) -> Double
+pub fn BioseqalignsemiBuffer::to_string(Self) -> String
+
+pub(all) struct BioseqalignsemiCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignsemiCluster::add(Self, Self) -> Self
+pub fn BioseqalignsemiCluster::copy(Self) -> Self
+pub fn BioseqalignsemiCluster::fill(Self, Double) -> Self
+pub fn BioseqalignsemiCluster::get(Self, Int32) -> Double
+pub fn BioseqalignsemiCluster::len(Self) -> Int32
+pub fn BioseqalignsemiCluster::max(Self) -> Double
+pub fn BioseqalignsemiCluster::mean(Self) -> Double
+pub fn BioseqalignsemiCluster::min(Self) -> Double
+pub fn BioseqalignsemiCluster::scale(Self, Double) -> Self
+pub fn BioseqalignsemiCluster::set(Self, Int32, Double) -> Self
+pub fn BioseqalignsemiCluster::sum(Self) -> Double
+pub fn BioseqalignsemiCluster::to_string(Self) -> String
+
+pub(all) struct BioseqalignsemiCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignsemiCursor::add(Self, Self) -> Self
+pub fn BioseqalignsemiCursor::copy(Self) -> Self
+pub fn BioseqalignsemiCursor::fill(Self, Double) -> Self
+pub fn BioseqalignsemiCursor::get(Self, Int32) -> Double
+pub fn BioseqalignsemiCursor::len(Self) -> Int32
+pub fn BioseqalignsemiCursor::max(Self) -> Double
+pub fn BioseqalignsemiCursor::mean(Self) -> Double
+pub fn BioseqalignsemiCursor::min(Self) -> Double
+pub fn BioseqalignsemiCursor::scale(Self, Double) -> Self
+pub fn BioseqalignsemiCursor::set(Self, Int32, Double) -> Self
+pub fn BioseqalignsemiCursor::sum(Self) -> Double
+pub fn BioseqalignsemiCursor::to_string(Self) -> String
+
+pub(all) struct BioseqalignsemiEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignsemiEdge::add(Self, Self) -> Self
+pub fn BioseqalignsemiEdge::copy(Self) -> Self
+pub fn BioseqalignsemiEdge::fill(Self, Double) -> Self
+pub fn BioseqalignsemiEdge::get(Self, Int32) -> Double
+pub fn BioseqalignsemiEdge::len(Self) -> Int32
+pub fn BioseqalignsemiEdge::max(Self) -> Double
+pub fn BioseqalignsemiEdge::mean(Self) -> Double
+pub fn BioseqalignsemiEdge::min(Self) -> Double
+pub fn BioseqalignsemiEdge::scale(Self, Double) -> Self
+pub fn BioseqalignsemiEdge::set(Self, Int32, Double) -> Self
+pub fn BioseqalignsemiEdge::sum(Self) -> Double
+pub fn BioseqalignsemiEdge::to_string(Self) -> String
+
+pub(all) struct BioseqalignsemiFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignsemiFrame::add(Self, Self) -> Self
+pub fn BioseqalignsemiFrame::copy(Self) -> Self
+pub fn BioseqalignsemiFrame::fill(Self, Double) -> Self
+pub fn BioseqalignsemiFrame::get(Self, Int32) -> Double
+pub fn BioseqalignsemiFrame::len(Self) -> Int32
+pub fn BioseqalignsemiFrame::max(Self) -> Double
+pub fn BioseqalignsemiFrame::mean(Self) -> Double
+pub fn BioseqalignsemiFrame::min(Self) -> Double
+pub fn BioseqalignsemiFrame::scale(Self, Double) -> Self
+pub fn BioseqalignsemiFrame::set(Self, Int32, Double) -> Self
+pub fn BioseqalignsemiFrame::sum(Self) -> Double
+pub fn BioseqalignsemiFrame::to_string(Self) -> String
+
+pub(all) struct BioseqalignsemiGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignsemiGraphN::add(Self, Self) -> Self
+pub fn BioseqalignsemiGraphN::copy(Self) -> Self
+pub fn BioseqalignsemiGraphN::fill(Self, Double) -> Self
+pub fn BioseqalignsemiGraphN::get(Self, Int32) -> Double
+pub fn BioseqalignsemiGraphN::len(Self) -> Int32
+pub fn BioseqalignsemiGraphN::max(Self) -> Double
+pub fn BioseqalignsemiGraphN::mean(Self) -> Double
+pub fn BioseqalignsemiGraphN::min(Self) -> Double
+pub fn BioseqalignsemiGraphN::scale(Self, Double) -> Self
+pub fn BioseqalignsemiGraphN::set(Self, Int32, Double) -> Self
+pub fn BioseqalignsemiGraphN::sum(Self) -> Double
+pub fn BioseqalignsemiGraphN::to_string(Self) -> String
+
+pub(all) struct BioseqalignsemiLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignsemiLayer::add(Self, Self) -> Self
+pub fn BioseqalignsemiLayer::copy(Self) -> Self
+pub fn BioseqalignsemiLayer::fill(Self, Double) -> Self
+pub fn BioseqalignsemiLayer::get(Self, Int32) -> Double
+pub fn BioseqalignsemiLayer::len(Self) -> Int32
+pub fn BioseqalignsemiLayer::max(Self) -> Double
+pub fn BioseqalignsemiLayer::mean(Self) -> Double
+pub fn BioseqalignsemiLayer::min(Self) -> Double
+pub fn BioseqalignsemiLayer::scale(Self, Double) -> Self
+pub fn BioseqalignsemiLayer::set(Self, Int32, Double) -> Self
+pub fn BioseqalignsemiLayer::sum(Self) -> Double
+pub fn BioseqalignsemiLayer::to_string(Self) -> String
+
+pub(all) struct BioseqalignsemiMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn BioseqalignsemiMatrix::add(Self, Self) -> Self
+pub fn BioseqalignsemiMatrix::det(Self) -> Double
+pub fn BioseqalignsemiMatrix::get(Self, Int32, Int32) -> Double
+pub fn BioseqalignsemiMatrix::multiply(Self, Self) -> Self
+pub fn BioseqalignsemiMatrix::norm(Self) -> Double
+pub fn BioseqalignsemiMatrix::scale(Self, Double) -> Self
+pub fn BioseqalignsemiMatrix::to_string(Self) -> String
+pub fn BioseqalignsemiMatrix::trace(Self) -> Double
+pub fn BioseqalignsemiMatrix::transpose(Self) -> Self
+
+pub(all) struct BioseqalignsemiModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignsemiModel::add(Self, Self) -> Self
+pub fn BioseqalignsemiModel::copy(Self) -> Self
+pub fn BioseqalignsemiModel::fill(Self, Double) -> Self
+pub fn BioseqalignsemiModel::get(Self, Int32) -> Double
+pub fn BioseqalignsemiModel::len(Self) -> Int32
+pub fn BioseqalignsemiModel::max(Self) -> Double
+pub fn BioseqalignsemiModel::mean(Self) -> Double
+pub fn BioseqalignsemiModel::min(Self) -> Double
+pub fn BioseqalignsemiModel::scale(Self, Double) -> Self
+pub fn BioseqalignsemiModel::set(Self, Int32, Double) -> Self
+pub fn BioseqalignsemiModel::sum(Self) -> Double
+pub fn BioseqalignsemiModel::to_string(Self) -> String
+
+pub(all) struct BioseqalignsemiNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignsemiNode::add(Self, Self) -> Self
+pub fn BioseqalignsemiNode::copy(Self) -> Self
+pub fn BioseqalignsemiNode::fill(Self, Double) -> Self
+pub fn BioseqalignsemiNode::get(Self, Int32) -> Double
+pub fn BioseqalignsemiNode::len(Self) -> Int32
+pub fn BioseqalignsemiNode::max(Self) -> Double
+pub fn BioseqalignsemiNode::mean(Self) -> Double
+pub fn BioseqalignsemiNode::min(Self) -> Double
+pub fn BioseqalignsemiNode::scale(Self, Double) -> Self
+pub fn BioseqalignsemiNode::set(Self, Int32, Double) -> Self
+pub fn BioseqalignsemiNode::sum(Self) -> Double
+pub fn BioseqalignsemiNode::to_string(Self) -> String
+
+pub(all) struct BioseqalignsemiPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignsemiPath::add(Self, Self) -> Self
+pub fn BioseqalignsemiPath::copy(Self) -> Self
+pub fn BioseqalignsemiPath::fill(Self, Double) -> Self
+pub fn BioseqalignsemiPath::get(Self, Int32) -> Double
+pub fn BioseqalignsemiPath::len(Self) -> Int32
+pub fn BioseqalignsemiPath::max(Self) -> Double
+pub fn BioseqalignsemiPath::mean(Self) -> Double
+pub fn BioseqalignsemiPath::min(Self) -> Double
+pub fn BioseqalignsemiPath::scale(Self, Double) -> Self
+pub fn BioseqalignsemiPath::set(Self, Int32, Double) -> Self
+pub fn BioseqalignsemiPath::sum(Self) -> Double
+pub fn BioseqalignsemiPath::to_string(Self) -> String
+
+pub(all) struct BioseqalignsemiPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn BioseqalignsemiPoint::add(Self, Self) -> Self
+pub fn BioseqalignsemiPoint::cross(Self, Self) -> Self
+pub fn BioseqalignsemiPoint::dist(Self, Self) -> Double
+pub fn BioseqalignsemiPoint::dot(Self, Self) -> Double
+pub fn BioseqalignsemiPoint::label(Self) -> Int32
+pub fn BioseqalignsemiPoint::lerp(Self, Self, Double) -> Self
+pub fn BioseqalignsemiPoint::mid(Self, Self) -> Self
+pub fn BioseqalignsemiPoint::negate(Self) -> Self
+pub fn BioseqalignsemiPoint::norm(Self) -> Double
+pub fn BioseqalignsemiPoint::normalize(Self) -> Self
+pub fn BioseqalignsemiPoint::scale(Self, Double) -> Self
+pub fn BioseqalignsemiPoint::sub(Self, Self) -> Self
+pub fn BioseqalignsemiPoint::to_string(Self) -> String
+pub fn BioseqalignsemiPoint::x(Self) -> Double
+pub fn BioseqalignsemiPoint::y(Self) -> Double
+pub fn BioseqalignsemiPoint::z(Self) -> Double
+
+pub(all) struct BioseqalignsemiRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignsemiRange::add(Self, Self) -> Self
+pub fn BioseqalignsemiRange::copy(Self) -> Self
+pub fn BioseqalignsemiRange::fill(Self, Double) -> Self
+pub fn BioseqalignsemiRange::get(Self, Int32) -> Double
+pub fn BioseqalignsemiRange::len(Self) -> Int32
+pub fn BioseqalignsemiRange::max(Self) -> Double
+pub fn BioseqalignsemiRange::mean(Self) -> Double
+pub fn BioseqalignsemiRange::min(Self) -> Double
+pub fn BioseqalignsemiRange::scale(Self, Double) -> Self
+pub fn BioseqalignsemiRange::set(Self, Int32, Double) -> Self
+pub fn BioseqalignsemiRange::sum(Self) -> Double
+pub fn BioseqalignsemiRange::to_string(Self) -> String
+
+pub(all) struct BioseqalignsemiSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn BioseqalignsemiSeries::add(Self, Self) -> Self
+pub fn BioseqalignsemiSeries::cumsum(Self) -> Self
+pub fn BioseqalignsemiSeries::len(Self) -> Int32
+pub fn BioseqalignsemiSeries::max(Self) -> Double
+pub fn BioseqalignsemiSeries::mean(Self) -> Double
+pub fn BioseqalignsemiSeries::median(Self) -> Double
+pub fn BioseqalignsemiSeries::min(Self) -> Double
+pub fn BioseqalignsemiSeries::normalize(Self) -> Self
+pub fn BioseqalignsemiSeries::range(Self) -> Double
+pub fn BioseqalignsemiSeries::scale(Self, Double) -> Self
+pub fn BioseqalignsemiSeries::std(Self) -> Double
+pub fn BioseqalignsemiSeries::sub(Self, Self) -> Self
+pub fn BioseqalignsemiSeries::sum(Self) -> Double
+pub fn BioseqalignsemiSeries::to_string(Self) -> String
+pub fn BioseqalignsemiSeries::variance(Self) -> Double
+
+pub(all) struct BioseqalignsemiSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignsemiSlice::add(Self, Self) -> Self
+pub fn BioseqalignsemiSlice::copy(Self) -> Self
+pub fn BioseqalignsemiSlice::fill(Self, Double) -> Self
+pub fn BioseqalignsemiSlice::get(Self, Int32) -> Double
+pub fn BioseqalignsemiSlice::len(Self) -> Int32
+pub fn BioseqalignsemiSlice::max(Self) -> Double
+pub fn BioseqalignsemiSlice::mean(Self) -> Double
+pub fn BioseqalignsemiSlice::min(Self) -> Double
+pub fn BioseqalignsemiSlice::scale(Self, Double) -> Self
+pub fn BioseqalignsemiSlice::set(Self, Int32, Double) -> Self
+pub fn BioseqalignsemiSlice::sum(Self) -> Double
+pub fn BioseqalignsemiSlice::to_string(Self) -> String
+
+pub(all) struct BioseqalignsemiTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignsemiTable::add(Self, Self) -> Self
+pub fn BioseqalignsemiTable::copy(Self) -> Self
+pub fn BioseqalignsemiTable::fill(Self, Double) -> Self
+pub fn BioseqalignsemiTable::get(Self, Int32) -> Double
+pub fn BioseqalignsemiTable::len(Self) -> Int32
+pub fn BioseqalignsemiTable::max(Self) -> Double
+pub fn BioseqalignsemiTable::mean(Self) -> Double
+pub fn BioseqalignsemiTable::min(Self) -> Double
+pub fn BioseqalignsemiTable::scale(Self, Double) -> Self
+pub fn BioseqalignsemiTable::set(Self, Int32, Double) -> Self
+pub fn BioseqalignsemiTable::sum(Self) -> Double
+pub fn BioseqalignsemiTable::to_string(Self) -> String
+
+pub(all) struct BioseqalignsemiVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn BioseqalignsemiVector::add(Self, Self) -> Self
+pub fn BioseqalignsemiVector::dist(Self, Self) -> Double
+pub fn BioseqalignsemiVector::dot(Self, Self) -> Double
+pub fn BioseqalignsemiVector::norm(Self) -> Double
+pub fn BioseqalignsemiVector::normalize(Self) -> Self
+pub fn BioseqalignsemiVector::scale(Self, Double) -> Self
+pub fn BioseqalignsemiVector::sub(Self, Self) -> Self
+pub fn BioseqalignsemiVector::to_string(Self) -> String
+
+pub(all) struct BioseqalignsemiView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqalignsemiView::add(Self, Self) -> Self
+pub fn BioseqalignsemiView::copy(Self) -> Self
+pub fn BioseqalignsemiView::fill(Self, Double) -> Self
+pub fn BioseqalignsemiView::get(Self, Int32) -> Double
+pub fn BioseqalignsemiView::len(Self) -> Int32
+pub fn BioseqalignsemiView::max(Self) -> Double
+pub fn BioseqalignsemiView::mean(Self) -> Double
+pub fn BioseqalignsemiView::min(Self) -> Double
+pub fn BioseqalignsemiView::scale(Self, Double) -> Self
+pub fn BioseqalignsemiView::set(Self, Int32, Double) -> Self
+pub fn BioseqalignsemiView::sum(Self) -> Double
+pub fn BioseqalignsemiView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

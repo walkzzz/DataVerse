@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_approx_wavelet"
+
+// Values
+pub fn math_approx_wavelet_buffer_make(Int32) -> MathapproxwaveletBuffer
+
+pub fn math_approx_wavelet_cluster_make(Int32) -> MathapproxwaveletCluster
+
+pub fn math_approx_wavelet_cursor_make(Int32) -> MathapproxwaveletCursor
+
+pub fn math_approx_wavelet_edge_make(Int32) -> MathapproxwaveletEdge
+
+pub fn math_approx_wavelet_frame_make(Int32) -> MathapproxwaveletFrame
+
+pub fn math_approx_wavelet_graphn_make(Int32) -> MathapproxwaveletGraphN
+
+pub fn math_approx_wavelet_layer_make(Int32) -> MathapproxwaveletLayer
+
+pub fn math_approx_wavelet_make_matrix(Int32, Int32, Double) -> MathapproxwaveletMatrix
+
+pub fn math_approx_wavelet_make_point(Double, Double) -> MathapproxwaveletPoint
+
+pub fn math_approx_wavelet_make_point3(Double, Double, Double) -> MathapproxwaveletPoint
+
+pub fn math_approx_wavelet_make_series(Array[Double], String) -> MathapproxwaveletSeries
+
+pub fn math_approx_wavelet_make_vector(Array[Double]) -> MathapproxwaveletVector
+
+pub fn math_approx_wavelet_matrix_identity(Int32) -> MathapproxwaveletMatrix
+
+pub fn math_approx_wavelet_model_make(Int32) -> MathapproxwaveletModel
+
+pub fn math_approx_wavelet_node_make(Int32) -> MathapproxwaveletNode
+
+pub fn math_approx_wavelet_path_make(Int32) -> MathapproxwaveletPath
+
+pub fn math_approx_wavelet_range_make(Int32) -> MathapproxwaveletRange
+
+pub fn math_approx_wavelet_slice_make(Int32) -> MathapproxwaveletSlice
+
+pub fn math_approx_wavelet_table_make(Int32) -> MathapproxwaveletTable
+
+pub fn math_approx_wavelet_vector_zero(Int32) -> MathapproxwaveletVector
+
+pub fn math_approx_wavelet_view_make(Int32) -> MathapproxwaveletView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathapproxwaveletBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxwaveletBuffer::add(Self, Self) -> Self
+pub fn MathapproxwaveletBuffer::copy(Self) -> Self
+pub fn MathapproxwaveletBuffer::fill(Self, Double) -> Self
+pub fn MathapproxwaveletBuffer::get(Self, Int32) -> Double
+pub fn MathapproxwaveletBuffer::len(Self) -> Int32
+pub fn MathapproxwaveletBuffer::max(Self) -> Double
+pub fn MathapproxwaveletBuffer::mean(Self) -> Double
+pub fn MathapproxwaveletBuffer::min(Self) -> Double
+pub fn MathapproxwaveletBuffer::scale(Self, Double) -> Self
+pub fn MathapproxwaveletBuffer::set(Self, Int32, Double) -> Self
+pub fn MathapproxwaveletBuffer::sum(Self) -> Double
+pub fn MathapproxwaveletBuffer::to_string(Self) -> String
+
+pub(all) struct MathapproxwaveletCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxwaveletCluster::add(Self, Self) -> Self
+pub fn MathapproxwaveletCluster::copy(Self) -> Self
+pub fn MathapproxwaveletCluster::fill(Self, Double) -> Self
+pub fn MathapproxwaveletCluster::get(Self, Int32) -> Double
+pub fn MathapproxwaveletCluster::len(Self) -> Int32
+pub fn MathapproxwaveletCluster::max(Self) -> Double
+pub fn MathapproxwaveletCluster::mean(Self) -> Double
+pub fn MathapproxwaveletCluster::min(Self) -> Double
+pub fn MathapproxwaveletCluster::scale(Self, Double) -> Self
+pub fn MathapproxwaveletCluster::set(Self, Int32, Double) -> Self
+pub fn MathapproxwaveletCluster::sum(Self) -> Double
+pub fn MathapproxwaveletCluster::to_string(Self) -> String
+
+pub(all) struct MathapproxwaveletCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxwaveletCursor::add(Self, Self) -> Self
+pub fn MathapproxwaveletCursor::copy(Self) -> Self
+pub fn MathapproxwaveletCursor::fill(Self, Double) -> Self
+pub fn MathapproxwaveletCursor::get(Self, Int32) -> Double
+pub fn MathapproxwaveletCursor::len(Self) -> Int32
+pub fn MathapproxwaveletCursor::max(Self) -> Double
+pub fn MathapproxwaveletCursor::mean(Self) -> Double
+pub fn MathapproxwaveletCursor::min(Self) -> Double
+pub fn MathapproxwaveletCursor::scale(Self, Double) -> Self
+pub fn MathapproxwaveletCursor::set(Self, Int32, Double) -> Self
+pub fn MathapproxwaveletCursor::sum(Self) -> Double
+pub fn MathapproxwaveletCursor::to_string(Self) -> String
+
+pub(all) struct MathapproxwaveletEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxwaveletEdge::add(Self, Self) -> Self
+pub fn MathapproxwaveletEdge::copy(Self) -> Self
+pub fn MathapproxwaveletEdge::fill(Self, Double) -> Self
+pub fn MathapproxwaveletEdge::get(Self, Int32) -> Double
+pub fn MathapproxwaveletEdge::len(Self) -> Int32
+pub fn MathapproxwaveletEdge::max(Self) -> Double
+pub fn MathapproxwaveletEdge::mean(Self) -> Double
+pub fn MathapproxwaveletEdge::min(Self) -> Double
+pub fn MathapproxwaveletEdge::scale(Self, Double) -> Self
+pub fn MathapproxwaveletEdge::set(Self, Int32, Double) -> Self
+pub fn MathapproxwaveletEdge::sum(Self) -> Double
+pub fn MathapproxwaveletEdge::to_string(Self) -> String
+
+pub(all) struct MathapproxwaveletFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxwaveletFrame::add(Self, Self) -> Self
+pub fn MathapproxwaveletFrame::copy(Self) -> Self
+pub fn MathapproxwaveletFrame::fill(Self, Double) -> Self
+pub fn MathapproxwaveletFrame::get(Self, Int32) -> Double
+pub fn MathapproxwaveletFrame::len(Self) -> Int32
+pub fn MathapproxwaveletFrame::max(Self) -> Double
+pub fn MathapproxwaveletFrame::mean(Self) -> Double
+pub fn MathapproxwaveletFrame::min(Self) -> Double
+pub fn MathapproxwaveletFrame::scale(Self, Double) -> Self
+pub fn MathapproxwaveletFrame::set(Self, Int32, Double) -> Self
+pub fn MathapproxwaveletFrame::sum(Self) -> Double
+pub fn MathapproxwaveletFrame::to_string(Self) -> String
+
+pub(all) struct MathapproxwaveletGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxwaveletGraphN::add(Self, Self) -> Self
+pub fn MathapproxwaveletGraphN::copy(Self) -> Self
+pub fn MathapproxwaveletGraphN::fill(Self, Double) -> Self
+pub fn MathapproxwaveletGraphN::get(Self, Int32) -> Double
+pub fn MathapproxwaveletGraphN::len(Self) -> Int32
+pub fn MathapproxwaveletGraphN::max(Self) -> Double
+pub fn MathapproxwaveletGraphN::mean(Self) -> Double
+pub fn MathapproxwaveletGraphN::min(Self) -> Double
+pub fn MathapproxwaveletGraphN::scale(Self, Double) -> Self
+pub fn MathapproxwaveletGraphN::set(Self, Int32, Double) -> Self
+pub fn MathapproxwaveletGraphN::sum(Self) -> Double
+pub fn MathapproxwaveletGraphN::to_string(Self) -> String
+
+pub(all) struct MathapproxwaveletLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxwaveletLayer::add(Self, Self) -> Self
+pub fn MathapproxwaveletLayer::copy(Self) -> Self
+pub fn MathapproxwaveletLayer::fill(Self, Double) -> Self
+pub fn MathapproxwaveletLayer::get(Self, Int32) -> Double
+pub fn MathapproxwaveletLayer::len(Self) -> Int32
+pub fn MathapproxwaveletLayer::max(Self) -> Double
+pub fn MathapproxwaveletLayer::mean(Self) -> Double
+pub fn MathapproxwaveletLayer::min(Self) -> Double
+pub fn MathapproxwaveletLayer::scale(Self, Double) -> Self
+pub fn MathapproxwaveletLayer::set(Self, Int32, Double) -> Self
+pub fn MathapproxwaveletLayer::sum(Self) -> Double
+pub fn MathapproxwaveletLayer::to_string(Self) -> String
+
+pub(all) struct MathapproxwaveletMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathapproxwaveletMatrix::add(Self, Self) -> Self
+pub fn MathapproxwaveletMatrix::det(Self) -> Double
+pub fn MathapproxwaveletMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathapproxwaveletMatrix::multiply(Self, Self) -> Self
+pub fn MathapproxwaveletMatrix::norm(Self) -> Double
+pub fn MathapproxwaveletMatrix::scale(Self, Double) -> Self
+pub fn MathapproxwaveletMatrix::to_string(Self) -> String
+pub fn MathapproxwaveletMatrix::trace(Self) -> Double
+pub fn MathapproxwaveletMatrix::transpose(Self) -> Self
+
+pub(all) struct MathapproxwaveletModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxwaveletModel::add(Self, Self) -> Self
+pub fn MathapproxwaveletModel::copy(Self) -> Self
+pub fn MathapproxwaveletModel::fill(Self, Double) -> Self
+pub fn MathapproxwaveletModel::get(Self, Int32) -> Double
+pub fn MathapproxwaveletModel::len(Self) -> Int32
+pub fn MathapproxwaveletModel::max(Self) -> Double
+pub fn MathapproxwaveletModel::mean(Self) -> Double
+pub fn MathapproxwaveletModel::min(Self) -> Double
+pub fn MathapproxwaveletModel::scale(Self, Double) -> Self
+pub fn MathapproxwaveletModel::set(Self, Int32, Double) -> Self
+pub fn MathapproxwaveletModel::sum(Self) -> Double
+pub fn MathapproxwaveletModel::to_string(Self) -> String
+
+pub(all) struct MathapproxwaveletNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxwaveletNode::add(Self, Self) -> Self
+pub fn MathapproxwaveletNode::copy(Self) -> Self
+pub fn MathapproxwaveletNode::fill(Self, Double) -> Self
+pub fn MathapproxwaveletNode::get(Self, Int32) -> Double
+pub fn MathapproxwaveletNode::len(Self) -> Int32
+pub fn MathapproxwaveletNode::max(Self) -> Double
+pub fn MathapproxwaveletNode::mean(Self) -> Double
+pub fn MathapproxwaveletNode::min(Self) -> Double
+pub fn MathapproxwaveletNode::scale(Self, Double) -> Self
+pub fn MathapproxwaveletNode::set(Self, Int32, Double) -> Self
+pub fn MathapproxwaveletNode::sum(Self) -> Double
+pub fn MathapproxwaveletNode::to_string(Self) -> String
+
+pub(all) struct MathapproxwaveletPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxwaveletPath::add(Self, Self) -> Self
+pub fn MathapproxwaveletPath::copy(Self) -> Self
+pub fn MathapproxwaveletPath::fill(Self, Double) -> Self
+pub fn MathapproxwaveletPath::get(Self, Int32) -> Double
+pub fn MathapproxwaveletPath::len(Self) -> Int32
+pub fn MathapproxwaveletPath::max(Self) -> Double
+pub fn MathapproxwaveletPath::mean(Self) -> Double
+pub fn MathapproxwaveletPath::min(Self) -> Double
+pub fn MathapproxwaveletPath::scale(Self, Double) -> Self
+pub fn MathapproxwaveletPath::set(Self, Int32, Double) -> Self
+pub fn MathapproxwaveletPath::sum(Self) -> Double
+pub fn MathapproxwaveletPath::to_string(Self) -> String
+
+pub(all) struct MathapproxwaveletPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathapproxwaveletPoint::add(Self, Self) -> Self
+pub fn MathapproxwaveletPoint::cross(Self, Self) -> Self
+pub fn MathapproxwaveletPoint::dist(Self, Self) -> Double
+pub fn MathapproxwaveletPoint::dot(Self, Self) -> Double
+pub fn MathapproxwaveletPoint::label(Self) -> Int32
+pub fn MathapproxwaveletPoint::lerp(Self, Self, Double) -> Self
+pub fn MathapproxwaveletPoint::mid(Self, Self) -> Self
+pub fn MathapproxwaveletPoint::negate(Self) -> Self
+pub fn MathapproxwaveletPoint::norm(Self) -> Double
+pub fn MathapproxwaveletPoint::normalize(Self) -> Self
+pub fn MathapproxwaveletPoint::scale(Self, Double) -> Self
+pub fn MathapproxwaveletPoint::sub(Self, Self) -> Self
+pub fn MathapproxwaveletPoint::to_string(Self) -> String
+pub fn MathapproxwaveletPoint::x(Self) -> Double
+pub fn MathapproxwaveletPoint::y(Self) -> Double
+pub fn MathapproxwaveletPoint::z(Self) -> Double
+
+pub(all) struct MathapproxwaveletRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxwaveletRange::add(Self, Self) -> Self
+pub fn MathapproxwaveletRange::copy(Self) -> Self
+pub fn MathapproxwaveletRange::fill(Self, Double) -> Self
+pub fn MathapproxwaveletRange::get(Self, Int32) -> Double
+pub fn MathapproxwaveletRange::len(Self) -> Int32
+pub fn MathapproxwaveletRange::max(Self) -> Double
+pub fn MathapproxwaveletRange::mean(Self) -> Double
+pub fn MathapproxwaveletRange::min(Self) -> Double
+pub fn MathapproxwaveletRange::scale(Self, Double) -> Self
+pub fn MathapproxwaveletRange::set(Self, Int32, Double) -> Self
+pub fn MathapproxwaveletRange::sum(Self) -> Double
+pub fn MathapproxwaveletRange::to_string(Self) -> String
+
+pub(all) struct MathapproxwaveletSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathapproxwaveletSeries::add(Self, Self) -> Self
+pub fn MathapproxwaveletSeries::cumsum(Self) -> Self
+pub fn MathapproxwaveletSeries::len(Self) -> Int32
+pub fn MathapproxwaveletSeries::max(Self) -> Double
+pub fn MathapproxwaveletSeries::mean(Self) -> Double
+pub fn MathapproxwaveletSeries::median(Self) -> Double
+pub fn MathapproxwaveletSeries::min(Self) -> Double
+pub fn MathapproxwaveletSeries::normalize(Self) -> Self
+pub fn MathapproxwaveletSeries::range(Self) -> Double
+pub fn MathapproxwaveletSeries::scale(Self, Double) -> Self
+pub fn MathapproxwaveletSeries::std(Self) -> Double
+pub fn MathapproxwaveletSeries::sub(Self, Self) -> Self
+pub fn MathapproxwaveletSeries::sum(Self) -> Double
+pub fn MathapproxwaveletSeries::to_string(Self) -> String
+pub fn MathapproxwaveletSeries::variance(Self) -> Double
+
+pub(all) struct MathapproxwaveletSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxwaveletSlice::add(Self, Self) -> Self
+pub fn MathapproxwaveletSlice::copy(Self) -> Self
+pub fn MathapproxwaveletSlice::fill(Self, Double) -> Self
+pub fn MathapproxwaveletSlice::get(Self, Int32) -> Double
+pub fn MathapproxwaveletSlice::len(Self) -> Int32
+pub fn MathapproxwaveletSlice::max(Self) -> Double
+pub fn MathapproxwaveletSlice::mean(Self) -> Double
+pub fn MathapproxwaveletSlice::min(Self) -> Double
+pub fn MathapproxwaveletSlice::scale(Self, Double) -> Self
+pub fn MathapproxwaveletSlice::set(Self, Int32, Double) -> Self
+pub fn MathapproxwaveletSlice::sum(Self) -> Double
+pub fn MathapproxwaveletSlice::to_string(Self) -> String
+
+pub(all) struct MathapproxwaveletTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxwaveletTable::add(Self, Self) -> Self
+pub fn MathapproxwaveletTable::copy(Self) -> Self
+pub fn MathapproxwaveletTable::fill(Self, Double) -> Self
+pub fn MathapproxwaveletTable::get(Self, Int32) -> Double
+pub fn MathapproxwaveletTable::len(Self) -> Int32
+pub fn MathapproxwaveletTable::max(Self) -> Double
+pub fn MathapproxwaveletTable::mean(Self) -> Double
+pub fn MathapproxwaveletTable::min(Self) -> Double
+pub fn MathapproxwaveletTable::scale(Self, Double) -> Self
+pub fn MathapproxwaveletTable::set(Self, Int32, Double) -> Self
+pub fn MathapproxwaveletTable::sum(Self) -> Double
+pub fn MathapproxwaveletTable::to_string(Self) -> String
+
+pub(all) struct MathapproxwaveletVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathapproxwaveletVector::add(Self, Self) -> Self
+pub fn MathapproxwaveletVector::dist(Self, Self) -> Double
+pub fn MathapproxwaveletVector::dot(Self, Self) -> Double
+pub fn MathapproxwaveletVector::norm(Self) -> Double
+pub fn MathapproxwaveletVector::normalize(Self) -> Self
+pub fn MathapproxwaveletVector::scale(Self, Double) -> Self
+pub fn MathapproxwaveletVector::sub(Self, Self) -> Self
+pub fn MathapproxwaveletVector::to_string(Self) -> String
+
+pub(all) struct MathapproxwaveletView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxwaveletView::add(Self, Self) -> Self
+pub fn MathapproxwaveletView::copy(Self) -> Self
+pub fn MathapproxwaveletView::fill(Self, Double) -> Self
+pub fn MathapproxwaveletView::get(Self, Int32) -> Double
+pub fn MathapproxwaveletView::len(Self) -> Int32
+pub fn MathapproxwaveletView::max(Self) -> Double
+pub fn MathapproxwaveletView::mean(Self) -> Double
+pub fn MathapproxwaveletView::min(Self) -> Double
+pub fn MathapproxwaveletView::scale(Self, Double) -> Self
+pub fn MathapproxwaveletView::set(Self, Int32, Double) -> Self
+pub fn MathapproxwaveletView::sum(Self) -> Double
+pub fn MathapproxwaveletView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

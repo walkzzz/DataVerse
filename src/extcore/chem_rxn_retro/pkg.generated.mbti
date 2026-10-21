@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/chem_rxn_retro"
+
+// Values
+pub fn chem_rxn_retro_buffer_make(Int32) -> ChemrxnretroBuffer
+
+pub fn chem_rxn_retro_cluster_make(Int32) -> ChemrxnretroCluster
+
+pub fn chem_rxn_retro_cursor_make(Int32) -> ChemrxnretroCursor
+
+pub fn chem_rxn_retro_edge_make(Int32) -> ChemrxnretroEdge
+
+pub fn chem_rxn_retro_frame_make(Int32) -> ChemrxnretroFrame
+
+pub fn chem_rxn_retro_graphn_make(Int32) -> ChemrxnretroGraphN
+
+pub fn chem_rxn_retro_layer_make(Int32) -> ChemrxnretroLayer
+
+pub fn chem_rxn_retro_make_matrix(Int32, Int32, Double) -> ChemrxnretroMatrix
+
+pub fn chem_rxn_retro_make_point(Double, Double) -> ChemrxnretroPoint
+
+pub fn chem_rxn_retro_make_point3(Double, Double, Double) -> ChemrxnretroPoint
+
+pub fn chem_rxn_retro_make_series(Array[Double], String) -> ChemrxnretroSeries
+
+pub fn chem_rxn_retro_make_vector(Array[Double]) -> ChemrxnretroVector
+
+pub fn chem_rxn_retro_matrix_identity(Int32) -> ChemrxnretroMatrix
+
+pub fn chem_rxn_retro_model_make(Int32) -> ChemrxnretroModel
+
+pub fn chem_rxn_retro_node_make(Int32) -> ChemrxnretroNode
+
+pub fn chem_rxn_retro_path_make(Int32) -> ChemrxnretroPath
+
+pub fn chem_rxn_retro_range_make(Int32) -> ChemrxnretroRange
+
+pub fn chem_rxn_retro_slice_make(Int32) -> ChemrxnretroSlice
+
+pub fn chem_rxn_retro_table_make(Int32) -> ChemrxnretroTable
+
+pub fn chem_rxn_retro_vector_zero(Int32) -> ChemrxnretroVector
+
+pub fn chem_rxn_retro_view_make(Int32) -> ChemrxnretroView
+
+// Errors
+
+// Types and methods
+pub(all) struct ChemrxnretroBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnretroBuffer::add(Self, Self) -> Self
+pub fn ChemrxnretroBuffer::copy(Self) -> Self
+pub fn ChemrxnretroBuffer::fill(Self, Double) -> Self
+pub fn ChemrxnretroBuffer::get(Self, Int32) -> Double
+pub fn ChemrxnretroBuffer::len(Self) -> Int32
+pub fn ChemrxnretroBuffer::max(Self) -> Double
+pub fn ChemrxnretroBuffer::mean(Self) -> Double
+pub fn ChemrxnretroBuffer::min(Self) -> Double
+pub fn ChemrxnretroBuffer::scale(Self, Double) -> Self
+pub fn ChemrxnretroBuffer::set(Self, Int32, Double) -> Self
+pub fn ChemrxnretroBuffer::sum(Self) -> Double
+pub fn ChemrxnretroBuffer::to_string(Self) -> String
+
+pub(all) struct ChemrxnretroCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnretroCluster::add(Self, Self) -> Self
+pub fn ChemrxnretroCluster::copy(Self) -> Self
+pub fn ChemrxnretroCluster::fill(Self, Double) -> Self
+pub fn ChemrxnretroCluster::get(Self, Int32) -> Double
+pub fn ChemrxnretroCluster::len(Self) -> Int32
+pub fn ChemrxnretroCluster::max(Self) -> Double
+pub fn ChemrxnretroCluster::mean(Self) -> Double
+pub fn ChemrxnretroCluster::min(Self) -> Double
+pub fn ChemrxnretroCluster::scale(Self, Double) -> Self
+pub fn ChemrxnretroCluster::set(Self, Int32, Double) -> Self
+pub fn ChemrxnretroCluster::sum(Self) -> Double
+pub fn ChemrxnretroCluster::to_string(Self) -> String
+
+pub(all) struct ChemrxnretroCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnretroCursor::add(Self, Self) -> Self
+pub fn ChemrxnretroCursor::copy(Self) -> Self
+pub fn ChemrxnretroCursor::fill(Self, Double) -> Self
+pub fn ChemrxnretroCursor::get(Self, Int32) -> Double
+pub fn ChemrxnretroCursor::len(Self) -> Int32
+pub fn ChemrxnretroCursor::max(Self) -> Double
+pub fn ChemrxnretroCursor::mean(Self) -> Double
+pub fn ChemrxnretroCursor::min(Self) -> Double
+pub fn ChemrxnretroCursor::scale(Self, Double) -> Self
+pub fn ChemrxnretroCursor::set(Self, Int32, Double) -> Self
+pub fn ChemrxnretroCursor::sum(Self) -> Double
+pub fn ChemrxnretroCursor::to_string(Self) -> String
+
+pub(all) struct ChemrxnretroEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnretroEdge::add(Self, Self) -> Self
+pub fn ChemrxnretroEdge::copy(Self) -> Self
+pub fn ChemrxnretroEdge::fill(Self, Double) -> Self
+pub fn ChemrxnretroEdge::get(Self, Int32) -> Double
+pub fn ChemrxnretroEdge::len(Self) -> Int32
+pub fn ChemrxnretroEdge::max(Self) -> Double
+pub fn ChemrxnretroEdge::mean(Self) -> Double
+pub fn ChemrxnretroEdge::min(Self) -> Double
+pub fn ChemrxnretroEdge::scale(Self, Double) -> Self
+pub fn ChemrxnretroEdge::set(Self, Int32, Double) -> Self
+pub fn ChemrxnretroEdge::sum(Self) -> Double
+pub fn ChemrxnretroEdge::to_string(Self) -> String
+
+pub(all) struct ChemrxnretroFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnretroFrame::add(Self, Self) -> Self
+pub fn ChemrxnretroFrame::copy(Self) -> Self
+pub fn ChemrxnretroFrame::fill(Self, Double) -> Self
+pub fn ChemrxnretroFrame::get(Self, Int32) -> Double
+pub fn ChemrxnretroFrame::len(Self) -> Int32
+pub fn ChemrxnretroFrame::max(Self) -> Double
+pub fn ChemrxnretroFrame::mean(Self) -> Double
+pub fn ChemrxnretroFrame::min(Self) -> Double
+pub fn ChemrxnretroFrame::scale(Self, Double) -> Self
+pub fn ChemrxnretroFrame::set(Self, Int32, Double) -> Self
+pub fn ChemrxnretroFrame::sum(Self) -> Double
+pub fn ChemrxnretroFrame::to_string(Self) -> String
+
+pub(all) struct ChemrxnretroGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnretroGraphN::add(Self, Self) -> Self
+pub fn ChemrxnretroGraphN::copy(Self) -> Self
+pub fn ChemrxnretroGraphN::fill(Self, Double) -> Self
+pub fn ChemrxnretroGraphN::get(Self, Int32) -> Double
+pub fn ChemrxnretroGraphN::len(Self) -> Int32
+pub fn ChemrxnretroGraphN::max(Self) -> Double
+pub fn ChemrxnretroGraphN::mean(Self) -> Double
+pub fn ChemrxnretroGraphN::min(Self) -> Double
+pub fn ChemrxnretroGraphN::scale(Self, Double) -> Self
+pub fn ChemrxnretroGraphN::set(Self, Int32, Double) -> Self
+pub fn ChemrxnretroGraphN::sum(Self) -> Double
+pub fn ChemrxnretroGraphN::to_string(Self) -> String
+
+pub(all) struct ChemrxnretroLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnretroLayer::add(Self, Self) -> Self
+pub fn ChemrxnretroLayer::copy(Self) -> Self
+pub fn ChemrxnretroLayer::fill(Self, Double) -> Self
+pub fn ChemrxnretroLayer::get(Self, Int32) -> Double
+pub fn ChemrxnretroLayer::len(Self) -> Int32
+pub fn ChemrxnretroLayer::max(Self) -> Double
+pub fn ChemrxnretroLayer::mean(Self) -> Double
+pub fn ChemrxnretroLayer::min(Self) -> Double
+pub fn ChemrxnretroLayer::scale(Self, Double) -> Self
+pub fn ChemrxnretroLayer::set(Self, Int32, Double) -> Self
+pub fn ChemrxnretroLayer::sum(Self) -> Double
+pub fn ChemrxnretroLayer::to_string(Self) -> String
+
+pub(all) struct ChemrxnretroMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ChemrxnretroMatrix::add(Self, Self) -> Self
+pub fn ChemrxnretroMatrix::det(Self) -> Double
+pub fn ChemrxnretroMatrix::get(Self, Int32, Int32) -> Double
+pub fn ChemrxnretroMatrix::multiply(Self, Self) -> Self
+pub fn ChemrxnretroMatrix::norm(Self) -> Double
+pub fn ChemrxnretroMatrix::scale(Self, Double) -> Self
+pub fn ChemrxnretroMatrix::to_string(Self) -> String
+pub fn ChemrxnretroMatrix::trace(Self) -> Double
+pub fn ChemrxnretroMatrix::transpose(Self) -> Self
+
+pub(all) struct ChemrxnretroModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnretroModel::add(Self, Self) -> Self
+pub fn ChemrxnretroModel::copy(Self) -> Self
+pub fn ChemrxnretroModel::fill(Self, Double) -> Self
+pub fn ChemrxnretroModel::get(Self, Int32) -> Double
+pub fn ChemrxnretroModel::len(Self) -> Int32
+pub fn ChemrxnretroModel::max(Self) -> Double
+pub fn ChemrxnretroModel::mean(Self) -> Double
+pub fn ChemrxnretroModel::min(Self) -> Double
+pub fn ChemrxnretroModel::scale(Self, Double) -> Self
+pub fn ChemrxnretroModel::set(Self, Int32, Double) -> Self
+pub fn ChemrxnretroModel::sum(Self) -> Double
+pub fn ChemrxnretroModel::to_string(Self) -> String
+
+pub(all) struct ChemrxnretroNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnretroNode::add(Self, Self) -> Self
+pub fn ChemrxnretroNode::copy(Self) -> Self
+pub fn ChemrxnretroNode::fill(Self, Double) -> Self
+pub fn ChemrxnretroNode::get(Self, Int32) -> Double
+pub fn ChemrxnretroNode::len(Self) -> Int32
+pub fn ChemrxnretroNode::max(Self) -> Double
+pub fn ChemrxnretroNode::mean(Self) -> Double
+pub fn ChemrxnretroNode::min(Self) -> Double
+pub fn ChemrxnretroNode::scale(Self, Double) -> Self
+pub fn ChemrxnretroNode::set(Self, Int32, Double) -> Self
+pub fn ChemrxnretroNode::sum(Self) -> Double
+pub fn ChemrxnretroNode::to_string(Self) -> String
+
+pub(all) struct ChemrxnretroPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnretroPath::add(Self, Self) -> Self
+pub fn ChemrxnretroPath::copy(Self) -> Self
+pub fn ChemrxnretroPath::fill(Self, Double) -> Self
+pub fn ChemrxnretroPath::get(Self, Int32) -> Double
+pub fn ChemrxnretroPath::len(Self) -> Int32
+pub fn ChemrxnretroPath::max(Self) -> Double
+pub fn ChemrxnretroPath::mean(Self) -> Double
+pub fn ChemrxnretroPath::min(Self) -> Double
+pub fn ChemrxnretroPath::scale(Self, Double) -> Self
+pub fn ChemrxnretroPath::set(Self, Int32, Double) -> Self
+pub fn ChemrxnretroPath::sum(Self) -> Double
+pub fn ChemrxnretroPath::to_string(Self) -> String
+
+pub(all) struct ChemrxnretroPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ChemrxnretroPoint::add(Self, Self) -> Self
+pub fn ChemrxnretroPoint::cross(Self, Self) -> Self
+pub fn ChemrxnretroPoint::dist(Self, Self) -> Double
+pub fn ChemrxnretroPoint::dot(Self, Self) -> Double
+pub fn ChemrxnretroPoint::label(Self) -> Int32
+pub fn ChemrxnretroPoint::lerp(Self, Self, Double) -> Self
+pub fn ChemrxnretroPoint::mid(Self, Self) -> Self
+pub fn ChemrxnretroPoint::negate(Self) -> Self
+pub fn ChemrxnretroPoint::norm(Self) -> Double
+pub fn ChemrxnretroPoint::normalize(Self) -> Self
+pub fn ChemrxnretroPoint::scale(Self, Double) -> Self
+pub fn ChemrxnretroPoint::sub(Self, Self) -> Self
+pub fn ChemrxnretroPoint::to_string(Self) -> String
+pub fn ChemrxnretroPoint::x(Self) -> Double
+pub fn ChemrxnretroPoint::y(Self) -> Double
+pub fn ChemrxnretroPoint::z(Self) -> Double
+
+pub(all) struct ChemrxnretroRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnretroRange::add(Self, Self) -> Self
+pub fn ChemrxnretroRange::copy(Self) -> Self
+pub fn ChemrxnretroRange::fill(Self, Double) -> Self
+pub fn ChemrxnretroRange::get(Self, Int32) -> Double
+pub fn ChemrxnretroRange::len(Self) -> Int32
+pub fn ChemrxnretroRange::max(Self) -> Double
+pub fn ChemrxnretroRange::mean(Self) -> Double
+pub fn ChemrxnretroRange::min(Self) -> Double
+pub fn ChemrxnretroRange::scale(Self, Double) -> Self
+pub fn ChemrxnretroRange::set(Self, Int32, Double) -> Self
+pub fn ChemrxnretroRange::sum(Self) -> Double
+pub fn ChemrxnretroRange::to_string(Self) -> String
+
+pub(all) struct ChemrxnretroSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ChemrxnretroSeries::add(Self, Self) -> Self
+pub fn ChemrxnretroSeries::cumsum(Self) -> Self
+pub fn ChemrxnretroSeries::len(Self) -> Int32
+pub fn ChemrxnretroSeries::max(Self) -> Double
+pub fn ChemrxnretroSeries::mean(Self) -> Double
+pub fn ChemrxnretroSeries::median(Self) -> Double
+pub fn ChemrxnretroSeries::min(Self) -> Double
+pub fn ChemrxnretroSeries::normalize(Self) -> Self
+pub fn ChemrxnretroSeries::range(Self) -> Double
+pub fn ChemrxnretroSeries::scale(Self, Double) -> Self
+pub fn ChemrxnretroSeries::std(Self) -> Double
+pub fn ChemrxnretroSeries::sub(Self, Self) -> Self
+pub fn ChemrxnretroSeries::sum(Self) -> Double
+pub fn ChemrxnretroSeries::to_string(Self) -> String
+pub fn ChemrxnretroSeries::variance(Self) -> Double
+
+pub(all) struct ChemrxnretroSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnretroSlice::add(Self, Self) -> Self
+pub fn ChemrxnretroSlice::copy(Self) -> Self
+pub fn ChemrxnretroSlice::fill(Self, Double) -> Self
+pub fn ChemrxnretroSlice::get(Self, Int32) -> Double
+pub fn ChemrxnretroSlice::len(Self) -> Int32
+pub fn ChemrxnretroSlice::max(Self) -> Double
+pub fn ChemrxnretroSlice::mean(Self) -> Double
+pub fn ChemrxnretroSlice::min(Self) -> Double
+pub fn ChemrxnretroSlice::scale(Self, Double) -> Self
+pub fn ChemrxnretroSlice::set(Self, Int32, Double) -> Self
+pub fn ChemrxnretroSlice::sum(Self) -> Double
+pub fn ChemrxnretroSlice::to_string(Self) -> String
+
+pub(all) struct ChemrxnretroTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnretroTable::add(Self, Self) -> Self
+pub fn ChemrxnretroTable::copy(Self) -> Self
+pub fn ChemrxnretroTable::fill(Self, Double) -> Self
+pub fn ChemrxnretroTable::get(Self, Int32) -> Double
+pub fn ChemrxnretroTable::len(Self) -> Int32
+pub fn ChemrxnretroTable::max(Self) -> Double
+pub fn ChemrxnretroTable::mean(Self) -> Double
+pub fn ChemrxnretroTable::min(Self) -> Double
+pub fn ChemrxnretroTable::scale(Self, Double) -> Self
+pub fn ChemrxnretroTable::set(Self, Int32, Double) -> Self
+pub fn ChemrxnretroTable::sum(Self) -> Double
+pub fn ChemrxnretroTable::to_string(Self) -> String
+
+pub(all) struct ChemrxnretroVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ChemrxnretroVector::add(Self, Self) -> Self
+pub fn ChemrxnretroVector::dist(Self, Self) -> Double
+pub fn ChemrxnretroVector::dot(Self, Self) -> Double
+pub fn ChemrxnretroVector::norm(Self) -> Double
+pub fn ChemrxnretroVector::normalize(Self) -> Self
+pub fn ChemrxnretroVector::scale(Self, Double) -> Self
+pub fn ChemrxnretroVector::sub(Self, Self) -> Self
+pub fn ChemrxnretroVector::to_string(Self) -> String
+
+pub(all) struct ChemrxnretroView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ChemrxnretroView::add(Self, Self) -> Self
+pub fn ChemrxnretroView::copy(Self) -> Self
+pub fn ChemrxnretroView::fill(Self, Double) -> Self
+pub fn ChemrxnretroView::get(Self, Int32) -> Double
+pub fn ChemrxnretroView::len(Self) -> Int32
+pub fn ChemrxnretroView::max(Self) -> Double
+pub fn ChemrxnretroView::mean(Self) -> Double
+pub fn ChemrxnretroView::min(Self) -> Double
+pub fn ChemrxnretroView::scale(Self, Double) -> Self
+pub fn ChemrxnretroView::set(Self, Int32, Double) -> Self
+pub fn ChemrxnretroView::sum(Self) -> Double
+pub fn ChemrxnretroView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

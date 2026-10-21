@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_approx_minimax"
+
+// Values
+pub fn math_approx_minimax_buffer_make(Int32) -> MathapproxminimaxBuffer
+
+pub fn math_approx_minimax_cluster_make(Int32) -> MathapproxminimaxCluster
+
+pub fn math_approx_minimax_cursor_make(Int32) -> MathapproxminimaxCursor
+
+pub fn math_approx_minimax_edge_make(Int32) -> MathapproxminimaxEdge
+
+pub fn math_approx_minimax_frame_make(Int32) -> MathapproxminimaxFrame
+
+pub fn math_approx_minimax_graphn_make(Int32) -> MathapproxminimaxGraphN
+
+pub fn math_approx_minimax_layer_make(Int32) -> MathapproxminimaxLayer
+
+pub fn math_approx_minimax_make_matrix(Int32, Int32, Double) -> MathapproxminimaxMatrix
+
+pub fn math_approx_minimax_make_point(Double, Double) -> MathapproxminimaxPoint
+
+pub fn math_approx_minimax_make_point3(Double, Double, Double) -> MathapproxminimaxPoint
+
+pub fn math_approx_minimax_make_series(Array[Double], String) -> MathapproxminimaxSeries
+
+pub fn math_approx_minimax_make_vector(Array[Double]) -> MathapproxminimaxVector
+
+pub fn math_approx_minimax_matrix_identity(Int32) -> MathapproxminimaxMatrix
+
+pub fn math_approx_minimax_model_make(Int32) -> MathapproxminimaxModel
+
+pub fn math_approx_minimax_node_make(Int32) -> MathapproxminimaxNode
+
+pub fn math_approx_minimax_path_make(Int32) -> MathapproxminimaxPath
+
+pub fn math_approx_minimax_range_make(Int32) -> MathapproxminimaxRange
+
+pub fn math_approx_minimax_slice_make(Int32) -> MathapproxminimaxSlice
+
+pub fn math_approx_minimax_table_make(Int32) -> MathapproxminimaxTable
+
+pub fn math_approx_minimax_vector_zero(Int32) -> MathapproxminimaxVector
+
+pub fn math_approx_minimax_view_make(Int32) -> MathapproxminimaxView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathapproxminimaxBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxminimaxBuffer::add(Self, Self) -> Self
+pub fn MathapproxminimaxBuffer::copy(Self) -> Self
+pub fn MathapproxminimaxBuffer::fill(Self, Double) -> Self
+pub fn MathapproxminimaxBuffer::get(Self, Int32) -> Double
+pub fn MathapproxminimaxBuffer::len(Self) -> Int32
+pub fn MathapproxminimaxBuffer::max(Self) -> Double
+pub fn MathapproxminimaxBuffer::mean(Self) -> Double
+pub fn MathapproxminimaxBuffer::min(Self) -> Double
+pub fn MathapproxminimaxBuffer::scale(Self, Double) -> Self
+pub fn MathapproxminimaxBuffer::set(Self, Int32, Double) -> Self
+pub fn MathapproxminimaxBuffer::sum(Self) -> Double
+pub fn MathapproxminimaxBuffer::to_string(Self) -> String
+
+pub(all) struct MathapproxminimaxCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxminimaxCluster::add(Self, Self) -> Self
+pub fn MathapproxminimaxCluster::copy(Self) -> Self
+pub fn MathapproxminimaxCluster::fill(Self, Double) -> Self
+pub fn MathapproxminimaxCluster::get(Self, Int32) -> Double
+pub fn MathapproxminimaxCluster::len(Self) -> Int32
+pub fn MathapproxminimaxCluster::max(Self) -> Double
+pub fn MathapproxminimaxCluster::mean(Self) -> Double
+pub fn MathapproxminimaxCluster::min(Self) -> Double
+pub fn MathapproxminimaxCluster::scale(Self, Double) -> Self
+pub fn MathapproxminimaxCluster::set(Self, Int32, Double) -> Self
+pub fn MathapproxminimaxCluster::sum(Self) -> Double
+pub fn MathapproxminimaxCluster::to_string(Self) -> String
+
+pub(all) struct MathapproxminimaxCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxminimaxCursor::add(Self, Self) -> Self
+pub fn MathapproxminimaxCursor::copy(Self) -> Self
+pub fn MathapproxminimaxCursor::fill(Self, Double) -> Self
+pub fn MathapproxminimaxCursor::get(Self, Int32) -> Double
+pub fn MathapproxminimaxCursor::len(Self) -> Int32
+pub fn MathapproxminimaxCursor::max(Self) -> Double
+pub fn MathapproxminimaxCursor::mean(Self) -> Double
+pub fn MathapproxminimaxCursor::min(Self) -> Double
+pub fn MathapproxminimaxCursor::scale(Self, Double) -> Self
+pub fn MathapproxminimaxCursor::set(Self, Int32, Double) -> Self
+pub fn MathapproxminimaxCursor::sum(Self) -> Double
+pub fn MathapproxminimaxCursor::to_string(Self) -> String
+
+pub(all) struct MathapproxminimaxEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxminimaxEdge::add(Self, Self) -> Self
+pub fn MathapproxminimaxEdge::copy(Self) -> Self
+pub fn MathapproxminimaxEdge::fill(Self, Double) -> Self
+pub fn MathapproxminimaxEdge::get(Self, Int32) -> Double
+pub fn MathapproxminimaxEdge::len(Self) -> Int32
+pub fn MathapproxminimaxEdge::max(Self) -> Double
+pub fn MathapproxminimaxEdge::mean(Self) -> Double
+pub fn MathapproxminimaxEdge::min(Self) -> Double
+pub fn MathapproxminimaxEdge::scale(Self, Double) -> Self
+pub fn MathapproxminimaxEdge::set(Self, Int32, Double) -> Self
+pub fn MathapproxminimaxEdge::sum(Self) -> Double
+pub fn MathapproxminimaxEdge::to_string(Self) -> String
+
+pub(all) struct MathapproxminimaxFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxminimaxFrame::add(Self, Self) -> Self
+pub fn MathapproxminimaxFrame::copy(Self) -> Self
+pub fn MathapproxminimaxFrame::fill(Self, Double) -> Self
+pub fn MathapproxminimaxFrame::get(Self, Int32) -> Double
+pub fn MathapproxminimaxFrame::len(Self) -> Int32
+pub fn MathapproxminimaxFrame::max(Self) -> Double
+pub fn MathapproxminimaxFrame::mean(Self) -> Double
+pub fn MathapproxminimaxFrame::min(Self) -> Double
+pub fn MathapproxminimaxFrame::scale(Self, Double) -> Self
+pub fn MathapproxminimaxFrame::set(Self, Int32, Double) -> Self
+pub fn MathapproxminimaxFrame::sum(Self) -> Double
+pub fn MathapproxminimaxFrame::to_string(Self) -> String
+
+pub(all) struct MathapproxminimaxGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxminimaxGraphN::add(Self, Self) -> Self
+pub fn MathapproxminimaxGraphN::copy(Self) -> Self
+pub fn MathapproxminimaxGraphN::fill(Self, Double) -> Self
+pub fn MathapproxminimaxGraphN::get(Self, Int32) -> Double
+pub fn MathapproxminimaxGraphN::len(Self) -> Int32
+pub fn MathapproxminimaxGraphN::max(Self) -> Double
+pub fn MathapproxminimaxGraphN::mean(Self) -> Double
+pub fn MathapproxminimaxGraphN::min(Self) -> Double
+pub fn MathapproxminimaxGraphN::scale(Self, Double) -> Self
+pub fn MathapproxminimaxGraphN::set(Self, Int32, Double) -> Self
+pub fn MathapproxminimaxGraphN::sum(Self) -> Double
+pub fn MathapproxminimaxGraphN::to_string(Self) -> String
+
+pub(all) struct MathapproxminimaxLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxminimaxLayer::add(Self, Self) -> Self
+pub fn MathapproxminimaxLayer::copy(Self) -> Self
+pub fn MathapproxminimaxLayer::fill(Self, Double) -> Self
+pub fn MathapproxminimaxLayer::get(Self, Int32) -> Double
+pub fn MathapproxminimaxLayer::len(Self) -> Int32
+pub fn MathapproxminimaxLayer::max(Self) -> Double
+pub fn MathapproxminimaxLayer::mean(Self) -> Double
+pub fn MathapproxminimaxLayer::min(Self) -> Double
+pub fn MathapproxminimaxLayer::scale(Self, Double) -> Self
+pub fn MathapproxminimaxLayer::set(Self, Int32, Double) -> Self
+pub fn MathapproxminimaxLayer::sum(Self) -> Double
+pub fn MathapproxminimaxLayer::to_string(Self) -> String
+
+pub(all) struct MathapproxminimaxMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathapproxminimaxMatrix::add(Self, Self) -> Self
+pub fn MathapproxminimaxMatrix::det(Self) -> Double
+pub fn MathapproxminimaxMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathapproxminimaxMatrix::multiply(Self, Self) -> Self
+pub fn MathapproxminimaxMatrix::norm(Self) -> Double
+pub fn MathapproxminimaxMatrix::scale(Self, Double) -> Self
+pub fn MathapproxminimaxMatrix::to_string(Self) -> String
+pub fn MathapproxminimaxMatrix::trace(Self) -> Double
+pub fn MathapproxminimaxMatrix::transpose(Self) -> Self
+
+pub(all) struct MathapproxminimaxModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxminimaxModel::add(Self, Self) -> Self
+pub fn MathapproxminimaxModel::copy(Self) -> Self
+pub fn MathapproxminimaxModel::fill(Self, Double) -> Self
+pub fn MathapproxminimaxModel::get(Self, Int32) -> Double
+pub fn MathapproxminimaxModel::len(Self) -> Int32
+pub fn MathapproxminimaxModel::max(Self) -> Double
+pub fn MathapproxminimaxModel::mean(Self) -> Double
+pub fn MathapproxminimaxModel::min(Self) -> Double
+pub fn MathapproxminimaxModel::scale(Self, Double) -> Self
+pub fn MathapproxminimaxModel::set(Self, Int32, Double) -> Self
+pub fn MathapproxminimaxModel::sum(Self) -> Double
+pub fn MathapproxminimaxModel::to_string(Self) -> String
+
+pub(all) struct MathapproxminimaxNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxminimaxNode::add(Self, Self) -> Self
+pub fn MathapproxminimaxNode::copy(Self) -> Self
+pub fn MathapproxminimaxNode::fill(Self, Double) -> Self
+pub fn MathapproxminimaxNode::get(Self, Int32) -> Double
+pub fn MathapproxminimaxNode::len(Self) -> Int32
+pub fn MathapproxminimaxNode::max(Self) -> Double
+pub fn MathapproxminimaxNode::mean(Self) -> Double
+pub fn MathapproxminimaxNode::min(Self) -> Double
+pub fn MathapproxminimaxNode::scale(Self, Double) -> Self
+pub fn MathapproxminimaxNode::set(Self, Int32, Double) -> Self
+pub fn MathapproxminimaxNode::sum(Self) -> Double
+pub fn MathapproxminimaxNode::to_string(Self) -> String
+
+pub(all) struct MathapproxminimaxPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxminimaxPath::add(Self, Self) -> Self
+pub fn MathapproxminimaxPath::copy(Self) -> Self
+pub fn MathapproxminimaxPath::fill(Self, Double) -> Self
+pub fn MathapproxminimaxPath::get(Self, Int32) -> Double
+pub fn MathapproxminimaxPath::len(Self) -> Int32
+pub fn MathapproxminimaxPath::max(Self) -> Double
+pub fn MathapproxminimaxPath::mean(Self) -> Double
+pub fn MathapproxminimaxPath::min(Self) -> Double
+pub fn MathapproxminimaxPath::scale(Self, Double) -> Self
+pub fn MathapproxminimaxPath::set(Self, Int32, Double) -> Self
+pub fn MathapproxminimaxPath::sum(Self) -> Double
+pub fn MathapproxminimaxPath::to_string(Self) -> String
+
+pub(all) struct MathapproxminimaxPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathapproxminimaxPoint::add(Self, Self) -> Self
+pub fn MathapproxminimaxPoint::cross(Self, Self) -> Self
+pub fn MathapproxminimaxPoint::dist(Self, Self) -> Double
+pub fn MathapproxminimaxPoint::dot(Self, Self) -> Double
+pub fn MathapproxminimaxPoint::label(Self) -> Int32
+pub fn MathapproxminimaxPoint::lerp(Self, Self, Double) -> Self
+pub fn MathapproxminimaxPoint::mid(Self, Self) -> Self
+pub fn MathapproxminimaxPoint::negate(Self) -> Self
+pub fn MathapproxminimaxPoint::norm(Self) -> Double
+pub fn MathapproxminimaxPoint::normalize(Self) -> Self
+pub fn MathapproxminimaxPoint::scale(Self, Double) -> Self
+pub fn MathapproxminimaxPoint::sub(Self, Self) -> Self
+pub fn MathapproxminimaxPoint::to_string(Self) -> String
+pub fn MathapproxminimaxPoint::x(Self) -> Double
+pub fn MathapproxminimaxPoint::y(Self) -> Double
+pub fn MathapproxminimaxPoint::z(Self) -> Double
+
+pub(all) struct MathapproxminimaxRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxminimaxRange::add(Self, Self) -> Self
+pub fn MathapproxminimaxRange::copy(Self) -> Self
+pub fn MathapproxminimaxRange::fill(Self, Double) -> Self
+pub fn MathapproxminimaxRange::get(Self, Int32) -> Double
+pub fn MathapproxminimaxRange::len(Self) -> Int32
+pub fn MathapproxminimaxRange::max(Self) -> Double
+pub fn MathapproxminimaxRange::mean(Self) -> Double
+pub fn MathapproxminimaxRange::min(Self) -> Double
+pub fn MathapproxminimaxRange::scale(Self, Double) -> Self
+pub fn MathapproxminimaxRange::set(Self, Int32, Double) -> Self
+pub fn MathapproxminimaxRange::sum(Self) -> Double
+pub fn MathapproxminimaxRange::to_string(Self) -> String
+
+pub(all) struct MathapproxminimaxSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathapproxminimaxSeries::add(Self, Self) -> Self
+pub fn MathapproxminimaxSeries::cumsum(Self) -> Self
+pub fn MathapproxminimaxSeries::len(Self) -> Int32
+pub fn MathapproxminimaxSeries::max(Self) -> Double
+pub fn MathapproxminimaxSeries::mean(Self) -> Double
+pub fn MathapproxminimaxSeries::median(Self) -> Double
+pub fn MathapproxminimaxSeries::min(Self) -> Double
+pub fn MathapproxminimaxSeries::normalize(Self) -> Self
+pub fn MathapproxminimaxSeries::range(Self) -> Double
+pub fn MathapproxminimaxSeries::scale(Self, Double) -> Self
+pub fn MathapproxminimaxSeries::std(Self) -> Double
+pub fn MathapproxminimaxSeries::sub(Self, Self) -> Self
+pub fn MathapproxminimaxSeries::sum(Self) -> Double
+pub fn MathapproxminimaxSeries::to_string(Self) -> String
+pub fn MathapproxminimaxSeries::variance(Self) -> Double
+
+pub(all) struct MathapproxminimaxSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxminimaxSlice::add(Self, Self) -> Self
+pub fn MathapproxminimaxSlice::copy(Self) -> Self
+pub fn MathapproxminimaxSlice::fill(Self, Double) -> Self
+pub fn MathapproxminimaxSlice::get(Self, Int32) -> Double
+pub fn MathapproxminimaxSlice::len(Self) -> Int32
+pub fn MathapproxminimaxSlice::max(Self) -> Double
+pub fn MathapproxminimaxSlice::mean(Self) -> Double
+pub fn MathapproxminimaxSlice::min(Self) -> Double
+pub fn MathapproxminimaxSlice::scale(Self, Double) -> Self
+pub fn MathapproxminimaxSlice::set(Self, Int32, Double) -> Self
+pub fn MathapproxminimaxSlice::sum(Self) -> Double
+pub fn MathapproxminimaxSlice::to_string(Self) -> String
+
+pub(all) struct MathapproxminimaxTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxminimaxTable::add(Self, Self) -> Self
+pub fn MathapproxminimaxTable::copy(Self) -> Self
+pub fn MathapproxminimaxTable::fill(Self, Double) -> Self
+pub fn MathapproxminimaxTable::get(Self, Int32) -> Double
+pub fn MathapproxminimaxTable::len(Self) -> Int32
+pub fn MathapproxminimaxTable::max(Self) -> Double
+pub fn MathapproxminimaxTable::mean(Self) -> Double
+pub fn MathapproxminimaxTable::min(Self) -> Double
+pub fn MathapproxminimaxTable::scale(Self, Double) -> Self
+pub fn MathapproxminimaxTable::set(Self, Int32, Double) -> Self
+pub fn MathapproxminimaxTable::sum(Self) -> Double
+pub fn MathapproxminimaxTable::to_string(Self) -> String
+
+pub(all) struct MathapproxminimaxVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathapproxminimaxVector::add(Self, Self) -> Self
+pub fn MathapproxminimaxVector::dist(Self, Self) -> Double
+pub fn MathapproxminimaxVector::dot(Self, Self) -> Double
+pub fn MathapproxminimaxVector::norm(Self) -> Double
+pub fn MathapproxminimaxVector::normalize(Self) -> Self
+pub fn MathapproxminimaxVector::scale(Self, Double) -> Self
+pub fn MathapproxminimaxVector::sub(Self, Self) -> Self
+pub fn MathapproxminimaxVector::to_string(Self) -> String
+
+pub(all) struct MathapproxminimaxView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathapproxminimaxView::add(Self, Self) -> Self
+pub fn MathapproxminimaxView::copy(Self) -> Self
+pub fn MathapproxminimaxView::fill(Self, Double) -> Self
+pub fn MathapproxminimaxView::get(Self, Int32) -> Double
+pub fn MathapproxminimaxView::len(Self) -> Int32
+pub fn MathapproxminimaxView::max(Self) -> Double
+pub fn MathapproxminimaxView::mean(Self) -> Double
+pub fn MathapproxminimaxView::min(Self) -> Double
+pub fn MathapproxminimaxView::scale(Self, Double) -> Self
+pub fn MathapproxminimaxView::set(Self, Int32, Double) -> Self
+pub fn MathapproxminimaxView::sum(Self) -> Double
+pub fn MathapproxminimaxView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_index_lsm"
+
+// Values
+pub fn db_index_lsm_buffer_make(Int32) -> DbindexlsmBuffer
+
+pub fn db_index_lsm_cluster_make(Int32) -> DbindexlsmCluster
+
+pub fn db_index_lsm_cursor_make(Int32) -> DbindexlsmCursor
+
+pub fn db_index_lsm_edge_make(Int32) -> DbindexlsmEdge
+
+pub fn db_index_lsm_frame_make(Int32) -> DbindexlsmFrame
+
+pub fn db_index_lsm_graphn_make(Int32) -> DbindexlsmGraphN
+
+pub fn db_index_lsm_layer_make(Int32) -> DbindexlsmLayer
+
+pub fn db_index_lsm_make_matrix(Int32, Int32, Double) -> DbindexlsmMatrix
+
+pub fn db_index_lsm_make_point(Double, Double) -> DbindexlsmPoint
+
+pub fn db_index_lsm_make_point3(Double, Double, Double) -> DbindexlsmPoint
+
+pub fn db_index_lsm_make_series(Array[Double], String) -> DbindexlsmSeries
+
+pub fn db_index_lsm_make_vector(Array[Double]) -> DbindexlsmVector
+
+pub fn db_index_lsm_matrix_identity(Int32) -> DbindexlsmMatrix
+
+pub fn db_index_lsm_model_make(Int32) -> DbindexlsmModel
+
+pub fn db_index_lsm_node_make(Int32) -> DbindexlsmNode
+
+pub fn db_index_lsm_path_make(Int32) -> DbindexlsmPath
+
+pub fn db_index_lsm_range_make(Int32) -> DbindexlsmRange
+
+pub fn db_index_lsm_slice_make(Int32) -> DbindexlsmSlice
+
+pub fn db_index_lsm_table_make(Int32) -> DbindexlsmTable
+
+pub fn db_index_lsm_vector_zero(Int32) -> DbindexlsmVector
+
+pub fn db_index_lsm_view_make(Int32) -> DbindexlsmView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbindexlsmBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexlsmBuffer::add(Self, Self) -> Self
+pub fn DbindexlsmBuffer::copy(Self) -> Self
+pub fn DbindexlsmBuffer::fill(Self, Double) -> Self
+pub fn DbindexlsmBuffer::get(Self, Int32) -> Double
+pub fn DbindexlsmBuffer::len(Self) -> Int32
+pub fn DbindexlsmBuffer::max(Self) -> Double
+pub fn DbindexlsmBuffer::mean(Self) -> Double
+pub fn DbindexlsmBuffer::min(Self) -> Double
+pub fn DbindexlsmBuffer::scale(Self, Double) -> Self
+pub fn DbindexlsmBuffer::set(Self, Int32, Double) -> Self
+pub fn DbindexlsmBuffer::sum(Self) -> Double
+pub fn DbindexlsmBuffer::to_string(Self) -> String
+
+pub(all) struct DbindexlsmCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexlsmCluster::add(Self, Self) -> Self
+pub fn DbindexlsmCluster::copy(Self) -> Self
+pub fn DbindexlsmCluster::fill(Self, Double) -> Self
+pub fn DbindexlsmCluster::get(Self, Int32) -> Double
+pub fn DbindexlsmCluster::len(Self) -> Int32
+pub fn DbindexlsmCluster::max(Self) -> Double
+pub fn DbindexlsmCluster::mean(Self) -> Double
+pub fn DbindexlsmCluster::min(Self) -> Double
+pub fn DbindexlsmCluster::scale(Self, Double) -> Self
+pub fn DbindexlsmCluster::set(Self, Int32, Double) -> Self
+pub fn DbindexlsmCluster::sum(Self) -> Double
+pub fn DbindexlsmCluster::to_string(Self) -> String
+
+pub(all) struct DbindexlsmCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexlsmCursor::add(Self, Self) -> Self
+pub fn DbindexlsmCursor::copy(Self) -> Self
+pub fn DbindexlsmCursor::fill(Self, Double) -> Self
+pub fn DbindexlsmCursor::get(Self, Int32) -> Double
+pub fn DbindexlsmCursor::len(Self) -> Int32
+pub fn DbindexlsmCursor::max(Self) -> Double
+pub fn DbindexlsmCursor::mean(Self) -> Double
+pub fn DbindexlsmCursor::min(Self) -> Double
+pub fn DbindexlsmCursor::scale(Self, Double) -> Self
+pub fn DbindexlsmCursor::set(Self, Int32, Double) -> Self
+pub fn DbindexlsmCursor::sum(Self) -> Double
+pub fn DbindexlsmCursor::to_string(Self) -> String
+
+pub(all) struct DbindexlsmEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexlsmEdge::add(Self, Self) -> Self
+pub fn DbindexlsmEdge::copy(Self) -> Self
+pub fn DbindexlsmEdge::fill(Self, Double) -> Self
+pub fn DbindexlsmEdge::get(Self, Int32) -> Double
+pub fn DbindexlsmEdge::len(Self) -> Int32
+pub fn DbindexlsmEdge::max(Self) -> Double
+pub fn DbindexlsmEdge::mean(Self) -> Double
+pub fn DbindexlsmEdge::min(Self) -> Double
+pub fn DbindexlsmEdge::scale(Self, Double) -> Self
+pub fn DbindexlsmEdge::set(Self, Int32, Double) -> Self
+pub fn DbindexlsmEdge::sum(Self) -> Double
+pub fn DbindexlsmEdge::to_string(Self) -> String
+
+pub(all) struct DbindexlsmFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexlsmFrame::add(Self, Self) -> Self
+pub fn DbindexlsmFrame::copy(Self) -> Self
+pub fn DbindexlsmFrame::fill(Self, Double) -> Self
+pub fn DbindexlsmFrame::get(Self, Int32) -> Double
+pub fn DbindexlsmFrame::len(Self) -> Int32
+pub fn DbindexlsmFrame::max(Self) -> Double
+pub fn DbindexlsmFrame::mean(Self) -> Double
+pub fn DbindexlsmFrame::min(Self) -> Double
+pub fn DbindexlsmFrame::scale(Self, Double) -> Self
+pub fn DbindexlsmFrame::set(Self, Int32, Double) -> Self
+pub fn DbindexlsmFrame::sum(Self) -> Double
+pub fn DbindexlsmFrame::to_string(Self) -> String
+
+pub(all) struct DbindexlsmGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexlsmGraphN::add(Self, Self) -> Self
+pub fn DbindexlsmGraphN::copy(Self) -> Self
+pub fn DbindexlsmGraphN::fill(Self, Double) -> Self
+pub fn DbindexlsmGraphN::get(Self, Int32) -> Double
+pub fn DbindexlsmGraphN::len(Self) -> Int32
+pub fn DbindexlsmGraphN::max(Self) -> Double
+pub fn DbindexlsmGraphN::mean(Self) -> Double
+pub fn DbindexlsmGraphN::min(Self) -> Double
+pub fn DbindexlsmGraphN::scale(Self, Double) -> Self
+pub fn DbindexlsmGraphN::set(Self, Int32, Double) -> Self
+pub fn DbindexlsmGraphN::sum(Self) -> Double
+pub fn DbindexlsmGraphN::to_string(Self) -> String
+
+pub(all) struct DbindexlsmLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexlsmLayer::add(Self, Self) -> Self
+pub fn DbindexlsmLayer::copy(Self) -> Self
+pub fn DbindexlsmLayer::fill(Self, Double) -> Self
+pub fn DbindexlsmLayer::get(Self, Int32) -> Double
+pub fn DbindexlsmLayer::len(Self) -> Int32
+pub fn DbindexlsmLayer::max(Self) -> Double
+pub fn DbindexlsmLayer::mean(Self) -> Double
+pub fn DbindexlsmLayer::min(Self) -> Double
+pub fn DbindexlsmLayer::scale(Self, Double) -> Self
+pub fn DbindexlsmLayer::set(Self, Int32, Double) -> Self
+pub fn DbindexlsmLayer::sum(Self) -> Double
+pub fn DbindexlsmLayer::to_string(Self) -> String
+
+pub(all) struct DbindexlsmMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbindexlsmMatrix::add(Self, Self) -> Self
+pub fn DbindexlsmMatrix::det(Self) -> Double
+pub fn DbindexlsmMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbindexlsmMatrix::multiply(Self, Self) -> Self
+pub fn DbindexlsmMatrix::norm(Self) -> Double
+pub fn DbindexlsmMatrix::scale(Self, Double) -> Self
+pub fn DbindexlsmMatrix::to_string(Self) -> String
+pub fn DbindexlsmMatrix::trace(Self) -> Double
+pub fn DbindexlsmMatrix::transpose(Self) -> Self
+
+pub(all) struct DbindexlsmModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexlsmModel::add(Self, Self) -> Self
+pub fn DbindexlsmModel::copy(Self) -> Self
+pub fn DbindexlsmModel::fill(Self, Double) -> Self
+pub fn DbindexlsmModel::get(Self, Int32) -> Double
+pub fn DbindexlsmModel::len(Self) -> Int32
+pub fn DbindexlsmModel::max(Self) -> Double
+pub fn DbindexlsmModel::mean(Self) -> Double
+pub fn DbindexlsmModel::min(Self) -> Double
+pub fn DbindexlsmModel::scale(Self, Double) -> Self
+pub fn DbindexlsmModel::set(Self, Int32, Double) -> Self
+pub fn DbindexlsmModel::sum(Self) -> Double
+pub fn DbindexlsmModel::to_string(Self) -> String
+
+pub(all) struct DbindexlsmNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexlsmNode::add(Self, Self) -> Self
+pub fn DbindexlsmNode::copy(Self) -> Self
+pub fn DbindexlsmNode::fill(Self, Double) -> Self
+pub fn DbindexlsmNode::get(Self, Int32) -> Double
+pub fn DbindexlsmNode::len(Self) -> Int32
+pub fn DbindexlsmNode::max(Self) -> Double
+pub fn DbindexlsmNode::mean(Self) -> Double
+pub fn DbindexlsmNode::min(Self) -> Double
+pub fn DbindexlsmNode::scale(Self, Double) -> Self
+pub fn DbindexlsmNode::set(Self, Int32, Double) -> Self
+pub fn DbindexlsmNode::sum(Self) -> Double
+pub fn DbindexlsmNode::to_string(Self) -> String
+
+pub(all) struct DbindexlsmPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexlsmPath::add(Self, Self) -> Self
+pub fn DbindexlsmPath::copy(Self) -> Self
+pub fn DbindexlsmPath::fill(Self, Double) -> Self
+pub fn DbindexlsmPath::get(Self, Int32) -> Double
+pub fn DbindexlsmPath::len(Self) -> Int32
+pub fn DbindexlsmPath::max(Self) -> Double
+pub fn DbindexlsmPath::mean(Self) -> Double
+pub fn DbindexlsmPath::min(Self) -> Double
+pub fn DbindexlsmPath::scale(Self, Double) -> Self
+pub fn DbindexlsmPath::set(Self, Int32, Double) -> Self
+pub fn DbindexlsmPath::sum(Self) -> Double
+pub fn DbindexlsmPath::to_string(Self) -> String
+
+pub(all) struct DbindexlsmPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbindexlsmPoint::add(Self, Self) -> Self
+pub fn DbindexlsmPoint::cross(Self, Self) -> Self
+pub fn DbindexlsmPoint::dist(Self, Self) -> Double
+pub fn DbindexlsmPoint::dot(Self, Self) -> Double
+pub fn DbindexlsmPoint::label(Self) -> Int32
+pub fn DbindexlsmPoint::lerp(Self, Self, Double) -> Self
+pub fn DbindexlsmPoint::mid(Self, Self) -> Self
+pub fn DbindexlsmPoint::negate(Self) -> Self
+pub fn DbindexlsmPoint::norm(Self) -> Double
+pub fn DbindexlsmPoint::normalize(Self) -> Self
+pub fn DbindexlsmPoint::scale(Self, Double) -> Self
+pub fn DbindexlsmPoint::sub(Self, Self) -> Self
+pub fn DbindexlsmPoint::to_string(Self) -> String
+pub fn DbindexlsmPoint::x(Self) -> Double
+pub fn DbindexlsmPoint::y(Self) -> Double
+pub fn DbindexlsmPoint::z(Self) -> Double
+
+pub(all) struct DbindexlsmRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexlsmRange::add(Self, Self) -> Self
+pub fn DbindexlsmRange::copy(Self) -> Self
+pub fn DbindexlsmRange::fill(Self, Double) -> Self
+pub fn DbindexlsmRange::get(Self, Int32) -> Double
+pub fn DbindexlsmRange::len(Self) -> Int32
+pub fn DbindexlsmRange::max(Self) -> Double
+pub fn DbindexlsmRange::mean(Self) -> Double
+pub fn DbindexlsmRange::min(Self) -> Double
+pub fn DbindexlsmRange::scale(Self, Double) -> Self
+pub fn DbindexlsmRange::set(Self, Int32, Double) -> Self
+pub fn DbindexlsmRange::sum(Self) -> Double
+pub fn DbindexlsmRange::to_string(Self) -> String
+
+pub(all) struct DbindexlsmSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbindexlsmSeries::add(Self, Self) -> Self
+pub fn DbindexlsmSeries::cumsum(Self) -> Self
+pub fn DbindexlsmSeries::len(Self) -> Int32
+pub fn DbindexlsmSeries::max(Self) -> Double
+pub fn DbindexlsmSeries::mean(Self) -> Double
+pub fn DbindexlsmSeries::median(Self) -> Double
+pub fn DbindexlsmSeries::min(Self) -> Double
+pub fn DbindexlsmSeries::normalize(Self) -> Self
+pub fn DbindexlsmSeries::range(Self) -> Double
+pub fn DbindexlsmSeries::scale(Self, Double) -> Self
+pub fn DbindexlsmSeries::std(Self) -> Double
+pub fn DbindexlsmSeries::sub(Self, Self) -> Self
+pub fn DbindexlsmSeries::sum(Self) -> Double
+pub fn DbindexlsmSeries::to_string(Self) -> String
+pub fn DbindexlsmSeries::variance(Self) -> Double
+
+pub(all) struct DbindexlsmSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexlsmSlice::add(Self, Self) -> Self
+pub fn DbindexlsmSlice::copy(Self) -> Self
+pub fn DbindexlsmSlice::fill(Self, Double) -> Self
+pub fn DbindexlsmSlice::get(Self, Int32) -> Double
+pub fn DbindexlsmSlice::len(Self) -> Int32
+pub fn DbindexlsmSlice::max(Self) -> Double
+pub fn DbindexlsmSlice::mean(Self) -> Double
+pub fn DbindexlsmSlice::min(Self) -> Double
+pub fn DbindexlsmSlice::scale(Self, Double) -> Self
+pub fn DbindexlsmSlice::set(Self, Int32, Double) -> Self
+pub fn DbindexlsmSlice::sum(Self) -> Double
+pub fn DbindexlsmSlice::to_string(Self) -> String
+
+pub(all) struct DbindexlsmTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexlsmTable::add(Self, Self) -> Self
+pub fn DbindexlsmTable::copy(Self) -> Self
+pub fn DbindexlsmTable::fill(Self, Double) -> Self
+pub fn DbindexlsmTable::get(Self, Int32) -> Double
+pub fn DbindexlsmTable::len(Self) -> Int32
+pub fn DbindexlsmTable::max(Self) -> Double
+pub fn DbindexlsmTable::mean(Self) -> Double
+pub fn DbindexlsmTable::min(Self) -> Double
+pub fn DbindexlsmTable::scale(Self, Double) -> Self
+pub fn DbindexlsmTable::set(Self, Int32, Double) -> Self
+pub fn DbindexlsmTable::sum(Self) -> Double
+pub fn DbindexlsmTable::to_string(Self) -> String
+
+pub(all) struct DbindexlsmVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbindexlsmVector::add(Self, Self) -> Self
+pub fn DbindexlsmVector::dist(Self, Self) -> Double
+pub fn DbindexlsmVector::dot(Self, Self) -> Double
+pub fn DbindexlsmVector::norm(Self) -> Double
+pub fn DbindexlsmVector::normalize(Self) -> Self
+pub fn DbindexlsmVector::scale(Self, Double) -> Self
+pub fn DbindexlsmVector::sub(Self, Self) -> Self
+pub fn DbindexlsmVector::to_string(Self) -> String
+
+pub(all) struct DbindexlsmView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbindexlsmView::add(Self, Self) -> Self
+pub fn DbindexlsmView::copy(Self) -> Self
+pub fn DbindexlsmView::fill(Self, Double) -> Self
+pub fn DbindexlsmView::get(Self, Int32) -> Double
+pub fn DbindexlsmView::len(Self) -> Int32
+pub fn DbindexlsmView::max(Self) -> Double
+pub fn DbindexlsmView::mean(Self) -> Double
+pub fn DbindexlsmView::min(Self) -> Double
+pub fn DbindexlsmView::scale(Self, Double) -> Self
+pub fn DbindexlsmView::set(Self, Int32, Double) -> Self
+pub fn DbindexlsmView::sum(Self) -> Double
+pub fn DbindexlsmView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

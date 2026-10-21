@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/bio_seq_assembly_string"
+
+// Values
+pub fn bio_seq_assembly_string_buffer_make(Int32) -> BioseqassemblystringBuffer
+
+pub fn bio_seq_assembly_string_cluster_make(Int32) -> BioseqassemblystringCluster
+
+pub fn bio_seq_assembly_string_cursor_make(Int32) -> BioseqassemblystringCursor
+
+pub fn bio_seq_assembly_string_edge_make(Int32) -> BioseqassemblystringEdge
+
+pub fn bio_seq_assembly_string_frame_make(Int32) -> BioseqassemblystringFrame
+
+pub fn bio_seq_assembly_string_graphn_make(Int32) -> BioseqassemblystringGraphN
+
+pub fn bio_seq_assembly_string_layer_make(Int32) -> BioseqassemblystringLayer
+
+pub fn bio_seq_assembly_string_make_matrix(Int32, Int32, Double) -> BioseqassemblystringMatrix
+
+pub fn bio_seq_assembly_string_make_point(Double, Double) -> BioseqassemblystringPoint
+
+pub fn bio_seq_assembly_string_make_point3(Double, Double, Double) -> BioseqassemblystringPoint
+
+pub fn bio_seq_assembly_string_make_series(Array[Double], String) -> BioseqassemblystringSeries
+
+pub fn bio_seq_assembly_string_make_vector(Array[Double]) -> BioseqassemblystringVector
+
+pub fn bio_seq_assembly_string_matrix_identity(Int32) -> BioseqassemblystringMatrix
+
+pub fn bio_seq_assembly_string_model_make(Int32) -> BioseqassemblystringModel
+
+pub fn bio_seq_assembly_string_node_make(Int32) -> BioseqassemblystringNode
+
+pub fn bio_seq_assembly_string_path_make(Int32) -> BioseqassemblystringPath
+
+pub fn bio_seq_assembly_string_range_make(Int32) -> BioseqassemblystringRange
+
+pub fn bio_seq_assembly_string_slice_make(Int32) -> BioseqassemblystringSlice
+
+pub fn bio_seq_assembly_string_table_make(Int32) -> BioseqassemblystringTable
+
+pub fn bio_seq_assembly_string_vector_zero(Int32) -> BioseqassemblystringVector
+
+pub fn bio_seq_assembly_string_view_make(Int32) -> BioseqassemblystringView
+
+// Errors
+
+// Types and methods
+pub(all) struct BioseqassemblystringBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblystringBuffer::add(Self, Self) -> Self
+pub fn BioseqassemblystringBuffer::copy(Self) -> Self
+pub fn BioseqassemblystringBuffer::fill(Self, Double) -> Self
+pub fn BioseqassemblystringBuffer::get(Self, Int32) -> Double
+pub fn BioseqassemblystringBuffer::len(Self) -> Int32
+pub fn BioseqassemblystringBuffer::max(Self) -> Double
+pub fn BioseqassemblystringBuffer::mean(Self) -> Double
+pub fn BioseqassemblystringBuffer::min(Self) -> Double
+pub fn BioseqassemblystringBuffer::scale(Self, Double) -> Self
+pub fn BioseqassemblystringBuffer::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblystringBuffer::sum(Self) -> Double
+pub fn BioseqassemblystringBuffer::to_string(Self) -> String
+
+pub(all) struct BioseqassemblystringCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblystringCluster::add(Self, Self) -> Self
+pub fn BioseqassemblystringCluster::copy(Self) -> Self
+pub fn BioseqassemblystringCluster::fill(Self, Double) -> Self
+pub fn BioseqassemblystringCluster::get(Self, Int32) -> Double
+pub fn BioseqassemblystringCluster::len(Self) -> Int32
+pub fn BioseqassemblystringCluster::max(Self) -> Double
+pub fn BioseqassemblystringCluster::mean(Self) -> Double
+pub fn BioseqassemblystringCluster::min(Self) -> Double
+pub fn BioseqassemblystringCluster::scale(Self, Double) -> Self
+pub fn BioseqassemblystringCluster::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblystringCluster::sum(Self) -> Double
+pub fn BioseqassemblystringCluster::to_string(Self) -> String
+
+pub(all) struct BioseqassemblystringCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblystringCursor::add(Self, Self) -> Self
+pub fn BioseqassemblystringCursor::copy(Self) -> Self
+pub fn BioseqassemblystringCursor::fill(Self, Double) -> Self
+pub fn BioseqassemblystringCursor::get(Self, Int32) -> Double
+pub fn BioseqassemblystringCursor::len(Self) -> Int32
+pub fn BioseqassemblystringCursor::max(Self) -> Double
+pub fn BioseqassemblystringCursor::mean(Self) -> Double
+pub fn BioseqassemblystringCursor::min(Self) -> Double
+pub fn BioseqassemblystringCursor::scale(Self, Double) -> Self
+pub fn BioseqassemblystringCursor::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblystringCursor::sum(Self) -> Double
+pub fn BioseqassemblystringCursor::to_string(Self) -> String
+
+pub(all) struct BioseqassemblystringEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblystringEdge::add(Self, Self) -> Self
+pub fn BioseqassemblystringEdge::copy(Self) -> Self
+pub fn BioseqassemblystringEdge::fill(Self, Double) -> Self
+pub fn BioseqassemblystringEdge::get(Self, Int32) -> Double
+pub fn BioseqassemblystringEdge::len(Self) -> Int32
+pub fn BioseqassemblystringEdge::max(Self) -> Double
+pub fn BioseqassemblystringEdge::mean(Self) -> Double
+pub fn BioseqassemblystringEdge::min(Self) -> Double
+pub fn BioseqassemblystringEdge::scale(Self, Double) -> Self
+pub fn BioseqassemblystringEdge::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblystringEdge::sum(Self) -> Double
+pub fn BioseqassemblystringEdge::to_string(Self) -> String
+
+pub(all) struct BioseqassemblystringFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblystringFrame::add(Self, Self) -> Self
+pub fn BioseqassemblystringFrame::copy(Self) -> Self
+pub fn BioseqassemblystringFrame::fill(Self, Double) -> Self
+pub fn BioseqassemblystringFrame::get(Self, Int32) -> Double
+pub fn BioseqassemblystringFrame::len(Self) -> Int32
+pub fn BioseqassemblystringFrame::max(Self) -> Double
+pub fn BioseqassemblystringFrame::mean(Self) -> Double
+pub fn BioseqassemblystringFrame::min(Self) -> Double
+pub fn BioseqassemblystringFrame::scale(Self, Double) -> Self
+pub fn BioseqassemblystringFrame::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblystringFrame::sum(Self) -> Double
+pub fn BioseqassemblystringFrame::to_string(Self) -> String
+
+pub(all) struct BioseqassemblystringGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblystringGraphN::add(Self, Self) -> Self
+pub fn BioseqassemblystringGraphN::copy(Self) -> Self
+pub fn BioseqassemblystringGraphN::fill(Self, Double) -> Self
+pub fn BioseqassemblystringGraphN::get(Self, Int32) -> Double
+pub fn BioseqassemblystringGraphN::len(Self) -> Int32
+pub fn BioseqassemblystringGraphN::max(Self) -> Double
+pub fn BioseqassemblystringGraphN::mean(Self) -> Double
+pub fn BioseqassemblystringGraphN::min(Self) -> Double
+pub fn BioseqassemblystringGraphN::scale(Self, Double) -> Self
+pub fn BioseqassemblystringGraphN::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblystringGraphN::sum(Self) -> Double
+pub fn BioseqassemblystringGraphN::to_string(Self) -> String
+
+pub(all) struct BioseqassemblystringLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblystringLayer::add(Self, Self) -> Self
+pub fn BioseqassemblystringLayer::copy(Self) -> Self
+pub fn BioseqassemblystringLayer::fill(Self, Double) -> Self
+pub fn BioseqassemblystringLayer::get(Self, Int32) -> Double
+pub fn BioseqassemblystringLayer::len(Self) -> Int32
+pub fn BioseqassemblystringLayer::max(Self) -> Double
+pub fn BioseqassemblystringLayer::mean(Self) -> Double
+pub fn BioseqassemblystringLayer::min(Self) -> Double
+pub fn BioseqassemblystringLayer::scale(Self, Double) -> Self
+pub fn BioseqassemblystringLayer::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblystringLayer::sum(Self) -> Double
+pub fn BioseqassemblystringLayer::to_string(Self) -> String
+
+pub(all) struct BioseqassemblystringMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn BioseqassemblystringMatrix::add(Self, Self) -> Self
+pub fn BioseqassemblystringMatrix::det(Self) -> Double
+pub fn BioseqassemblystringMatrix::get(Self, Int32, Int32) -> Double
+pub fn BioseqassemblystringMatrix::multiply(Self, Self) -> Self
+pub fn BioseqassemblystringMatrix::norm(Self) -> Double
+pub fn BioseqassemblystringMatrix::scale(Self, Double) -> Self
+pub fn BioseqassemblystringMatrix::to_string(Self) -> String
+pub fn BioseqassemblystringMatrix::trace(Self) -> Double
+pub fn BioseqassemblystringMatrix::transpose(Self) -> Self
+
+pub(all) struct BioseqassemblystringModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblystringModel::add(Self, Self) -> Self
+pub fn BioseqassemblystringModel::copy(Self) -> Self
+pub fn BioseqassemblystringModel::fill(Self, Double) -> Self
+pub fn BioseqassemblystringModel::get(Self, Int32) -> Double
+pub fn BioseqassemblystringModel::len(Self) -> Int32
+pub fn BioseqassemblystringModel::max(Self) -> Double
+pub fn BioseqassemblystringModel::mean(Self) -> Double
+pub fn BioseqassemblystringModel::min(Self) -> Double
+pub fn BioseqassemblystringModel::scale(Self, Double) -> Self
+pub fn BioseqassemblystringModel::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblystringModel::sum(Self) -> Double
+pub fn BioseqassemblystringModel::to_string(Self) -> String
+
+pub(all) struct BioseqassemblystringNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblystringNode::add(Self, Self) -> Self
+pub fn BioseqassemblystringNode::copy(Self) -> Self
+pub fn BioseqassemblystringNode::fill(Self, Double) -> Self
+pub fn BioseqassemblystringNode::get(Self, Int32) -> Double
+pub fn BioseqassemblystringNode::len(Self) -> Int32
+pub fn BioseqassemblystringNode::max(Self) -> Double
+pub fn BioseqassemblystringNode::mean(Self) -> Double
+pub fn BioseqassemblystringNode::min(Self) -> Double
+pub fn BioseqassemblystringNode::scale(Self, Double) -> Self
+pub fn BioseqassemblystringNode::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblystringNode::sum(Self) -> Double
+pub fn BioseqassemblystringNode::to_string(Self) -> String
+
+pub(all) struct BioseqassemblystringPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblystringPath::add(Self, Self) -> Self
+pub fn BioseqassemblystringPath::copy(Self) -> Self
+pub fn BioseqassemblystringPath::fill(Self, Double) -> Self
+pub fn BioseqassemblystringPath::get(Self, Int32) -> Double
+pub fn BioseqassemblystringPath::len(Self) -> Int32
+pub fn BioseqassemblystringPath::max(Self) -> Double
+pub fn BioseqassemblystringPath::mean(Self) -> Double
+pub fn BioseqassemblystringPath::min(Self) -> Double
+pub fn BioseqassemblystringPath::scale(Self, Double) -> Self
+pub fn BioseqassemblystringPath::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblystringPath::sum(Self) -> Double
+pub fn BioseqassemblystringPath::to_string(Self) -> String
+
+pub(all) struct BioseqassemblystringPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn BioseqassemblystringPoint::add(Self, Self) -> Self
+pub fn BioseqassemblystringPoint::cross(Self, Self) -> Self
+pub fn BioseqassemblystringPoint::dist(Self, Self) -> Double
+pub fn BioseqassemblystringPoint::dot(Self, Self) -> Double
+pub fn BioseqassemblystringPoint::label(Self) -> Int32
+pub fn BioseqassemblystringPoint::lerp(Self, Self, Double) -> Self
+pub fn BioseqassemblystringPoint::mid(Self, Self) -> Self
+pub fn BioseqassemblystringPoint::negate(Self) -> Self
+pub fn BioseqassemblystringPoint::norm(Self) -> Double
+pub fn BioseqassemblystringPoint::normalize(Self) -> Self
+pub fn BioseqassemblystringPoint::scale(Self, Double) -> Self
+pub fn BioseqassemblystringPoint::sub(Self, Self) -> Self
+pub fn BioseqassemblystringPoint::to_string(Self) -> String
+pub fn BioseqassemblystringPoint::x(Self) -> Double
+pub fn BioseqassemblystringPoint::y(Self) -> Double
+pub fn BioseqassemblystringPoint::z(Self) -> Double
+
+pub(all) struct BioseqassemblystringRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblystringRange::add(Self, Self) -> Self
+pub fn BioseqassemblystringRange::copy(Self) -> Self
+pub fn BioseqassemblystringRange::fill(Self, Double) -> Self
+pub fn BioseqassemblystringRange::get(Self, Int32) -> Double
+pub fn BioseqassemblystringRange::len(Self) -> Int32
+pub fn BioseqassemblystringRange::max(Self) -> Double
+pub fn BioseqassemblystringRange::mean(Self) -> Double
+pub fn BioseqassemblystringRange::min(Self) -> Double
+pub fn BioseqassemblystringRange::scale(Self, Double) -> Self
+pub fn BioseqassemblystringRange::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblystringRange::sum(Self) -> Double
+pub fn BioseqassemblystringRange::to_string(Self) -> String
+
+pub(all) struct BioseqassemblystringSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn BioseqassemblystringSeries::add(Self, Self) -> Self
+pub fn BioseqassemblystringSeries::cumsum(Self) -> Self
+pub fn BioseqassemblystringSeries::len(Self) -> Int32
+pub fn BioseqassemblystringSeries::max(Self) -> Double
+pub fn BioseqassemblystringSeries::mean(Self) -> Double
+pub fn BioseqassemblystringSeries::median(Self) -> Double
+pub fn BioseqassemblystringSeries::min(Self) -> Double
+pub fn BioseqassemblystringSeries::normalize(Self) -> Self
+pub fn BioseqassemblystringSeries::range(Self) -> Double
+pub fn BioseqassemblystringSeries::scale(Self, Double) -> Self
+pub fn BioseqassemblystringSeries::std(Self) -> Double
+pub fn BioseqassemblystringSeries::sub(Self, Self) -> Self
+pub fn BioseqassemblystringSeries::sum(Self) -> Double
+pub fn BioseqassemblystringSeries::to_string(Self) -> String
+pub fn BioseqassemblystringSeries::variance(Self) -> Double
+
+pub(all) struct BioseqassemblystringSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblystringSlice::add(Self, Self) -> Self
+pub fn BioseqassemblystringSlice::copy(Self) -> Self
+pub fn BioseqassemblystringSlice::fill(Self, Double) -> Self
+pub fn BioseqassemblystringSlice::get(Self, Int32) -> Double
+pub fn BioseqassemblystringSlice::len(Self) -> Int32
+pub fn BioseqassemblystringSlice::max(Self) -> Double
+pub fn BioseqassemblystringSlice::mean(Self) -> Double
+pub fn BioseqassemblystringSlice::min(Self) -> Double
+pub fn BioseqassemblystringSlice::scale(Self, Double) -> Self
+pub fn BioseqassemblystringSlice::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblystringSlice::sum(Self) -> Double
+pub fn BioseqassemblystringSlice::to_string(Self) -> String
+
+pub(all) struct BioseqassemblystringTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblystringTable::add(Self, Self) -> Self
+pub fn BioseqassemblystringTable::copy(Self) -> Self
+pub fn BioseqassemblystringTable::fill(Self, Double) -> Self
+pub fn BioseqassemblystringTable::get(Self, Int32) -> Double
+pub fn BioseqassemblystringTable::len(Self) -> Int32
+pub fn BioseqassemblystringTable::max(Self) -> Double
+pub fn BioseqassemblystringTable::mean(Self) -> Double
+pub fn BioseqassemblystringTable::min(Self) -> Double
+pub fn BioseqassemblystringTable::scale(Self, Double) -> Self
+pub fn BioseqassemblystringTable::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblystringTable::sum(Self) -> Double
+pub fn BioseqassemblystringTable::to_string(Self) -> String
+
+pub(all) struct BioseqassemblystringVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn BioseqassemblystringVector::add(Self, Self) -> Self
+pub fn BioseqassemblystringVector::dist(Self, Self) -> Double
+pub fn BioseqassemblystringVector::dot(Self, Self) -> Double
+pub fn BioseqassemblystringVector::norm(Self) -> Double
+pub fn BioseqassemblystringVector::normalize(Self) -> Self
+pub fn BioseqassemblystringVector::scale(Self, Double) -> Self
+pub fn BioseqassemblystringVector::sub(Self, Self) -> Self
+pub fn BioseqassemblystringVector::to_string(Self) -> String
+
+pub(all) struct BioseqassemblystringView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn BioseqassemblystringView::add(Self, Self) -> Self
+pub fn BioseqassemblystringView::copy(Self) -> Self
+pub fn BioseqassemblystringView::fill(Self, Double) -> Self
+pub fn BioseqassemblystringView::get(Self, Int32) -> Double
+pub fn BioseqassemblystringView::len(Self) -> Int32
+pub fn BioseqassemblystringView::max(Self) -> Double
+pub fn BioseqassemblystringView::mean(Self) -> Double
+pub fn BioseqassemblystringView::min(Self) -> Double
+pub fn BioseqassemblystringView::scale(Self, Double) -> Self
+pub fn BioseqassemblystringView::set(Self, Int32, Double) -> Self
+pub fn BioseqassemblystringView::sum(Self) -> Double
+pub fn BioseqassemblystringView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

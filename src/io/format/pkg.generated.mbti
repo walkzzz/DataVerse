@@ -1,0 +1,61 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/io/format"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn column_count(Table) -> Int32
+
+pub fn column_index(Table, String) -> Int32?
+
+pub fn column_values(Table, Int32) -> Array[String]
+
+pub fn format_id() -> String
+
+pub fn infer_column_type(Array[String]) -> DataType
+
+pub fn infer_type(String) -> DataType
+
+pub fn make_column(String, DataType, Bool) -> ColumnDef
+
+pub fn make_row(Array[String]) -> Row
+
+pub fn make_table(Array[ColumnDef], Array[Row]) -> Table
+
+pub fn row_count(Table) -> Int32
+
+pub fn transpose_table(Table) -> Table
+
+pub fn type_name(DataType) -> String
+
+// Errors
+
+// Types and methods
+pub struct ColumnDef {
+  name : String
+  data_type : DataType
+  nullable : Bool
+}
+
+pub(all) enum DataType {
+  StringType
+  IntType
+  FloatType
+  BoolType
+  NullType
+} derive(Eq, @debug.Debug)
+
+pub struct Row {
+  values : Array[String]
+}
+
+pub struct Table {
+  columns : Array[ColumnDef]
+  rows : Array[Row]
+}
+
+// Type aliases
+
+// Traits

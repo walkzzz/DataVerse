@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/opt_meta_pso"
+
+// Values
+pub fn opt_meta_pso_buffer_make(Int32) -> OptmetapsoBuffer
+
+pub fn opt_meta_pso_cluster_make(Int32) -> OptmetapsoCluster
+
+pub fn opt_meta_pso_cursor_make(Int32) -> OptmetapsoCursor
+
+pub fn opt_meta_pso_edge_make(Int32) -> OptmetapsoEdge
+
+pub fn opt_meta_pso_frame_make(Int32) -> OptmetapsoFrame
+
+pub fn opt_meta_pso_graphn_make(Int32) -> OptmetapsoGraphN
+
+pub fn opt_meta_pso_layer_make(Int32) -> OptmetapsoLayer
+
+pub fn opt_meta_pso_make_matrix(Int32, Int32, Double) -> OptmetapsoMatrix
+
+pub fn opt_meta_pso_make_point(Double, Double) -> OptmetapsoPoint
+
+pub fn opt_meta_pso_make_point3(Double, Double, Double) -> OptmetapsoPoint
+
+pub fn opt_meta_pso_make_series(Array[Double], String) -> OptmetapsoSeries
+
+pub fn opt_meta_pso_make_vector(Array[Double]) -> OptmetapsoVector
+
+pub fn opt_meta_pso_matrix_identity(Int32) -> OptmetapsoMatrix
+
+pub fn opt_meta_pso_model_make(Int32) -> OptmetapsoModel
+
+pub fn opt_meta_pso_node_make(Int32) -> OptmetapsoNode
+
+pub fn opt_meta_pso_path_make(Int32) -> OptmetapsoPath
+
+pub fn opt_meta_pso_range_make(Int32) -> OptmetapsoRange
+
+pub fn opt_meta_pso_slice_make(Int32) -> OptmetapsoSlice
+
+pub fn opt_meta_pso_table_make(Int32) -> OptmetapsoTable
+
+pub fn opt_meta_pso_vector_zero(Int32) -> OptmetapsoVector
+
+pub fn opt_meta_pso_view_make(Int32) -> OptmetapsoView
+
+// Errors
+
+// Types and methods
+pub(all) struct OptmetapsoBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetapsoBuffer::add(Self, Self) -> Self
+pub fn OptmetapsoBuffer::copy(Self) -> Self
+pub fn OptmetapsoBuffer::fill(Self, Double) -> Self
+pub fn OptmetapsoBuffer::get(Self, Int32) -> Double
+pub fn OptmetapsoBuffer::len(Self) -> Int32
+pub fn OptmetapsoBuffer::max(Self) -> Double
+pub fn OptmetapsoBuffer::mean(Self) -> Double
+pub fn OptmetapsoBuffer::min(Self) -> Double
+pub fn OptmetapsoBuffer::scale(Self, Double) -> Self
+pub fn OptmetapsoBuffer::set(Self, Int32, Double) -> Self
+pub fn OptmetapsoBuffer::sum(Self) -> Double
+pub fn OptmetapsoBuffer::to_string(Self) -> String
+
+pub(all) struct OptmetapsoCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetapsoCluster::add(Self, Self) -> Self
+pub fn OptmetapsoCluster::copy(Self) -> Self
+pub fn OptmetapsoCluster::fill(Self, Double) -> Self
+pub fn OptmetapsoCluster::get(Self, Int32) -> Double
+pub fn OptmetapsoCluster::len(Self) -> Int32
+pub fn OptmetapsoCluster::max(Self) -> Double
+pub fn OptmetapsoCluster::mean(Self) -> Double
+pub fn OptmetapsoCluster::min(Self) -> Double
+pub fn OptmetapsoCluster::scale(Self, Double) -> Self
+pub fn OptmetapsoCluster::set(Self, Int32, Double) -> Self
+pub fn OptmetapsoCluster::sum(Self) -> Double
+pub fn OptmetapsoCluster::to_string(Self) -> String
+
+pub(all) struct OptmetapsoCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetapsoCursor::add(Self, Self) -> Self
+pub fn OptmetapsoCursor::copy(Self) -> Self
+pub fn OptmetapsoCursor::fill(Self, Double) -> Self
+pub fn OptmetapsoCursor::get(Self, Int32) -> Double
+pub fn OptmetapsoCursor::len(Self) -> Int32
+pub fn OptmetapsoCursor::max(Self) -> Double
+pub fn OptmetapsoCursor::mean(Self) -> Double
+pub fn OptmetapsoCursor::min(Self) -> Double
+pub fn OptmetapsoCursor::scale(Self, Double) -> Self
+pub fn OptmetapsoCursor::set(Self, Int32, Double) -> Self
+pub fn OptmetapsoCursor::sum(Self) -> Double
+pub fn OptmetapsoCursor::to_string(Self) -> String
+
+pub(all) struct OptmetapsoEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetapsoEdge::add(Self, Self) -> Self
+pub fn OptmetapsoEdge::copy(Self) -> Self
+pub fn OptmetapsoEdge::fill(Self, Double) -> Self
+pub fn OptmetapsoEdge::get(Self, Int32) -> Double
+pub fn OptmetapsoEdge::len(Self) -> Int32
+pub fn OptmetapsoEdge::max(Self) -> Double
+pub fn OptmetapsoEdge::mean(Self) -> Double
+pub fn OptmetapsoEdge::min(Self) -> Double
+pub fn OptmetapsoEdge::scale(Self, Double) -> Self
+pub fn OptmetapsoEdge::set(Self, Int32, Double) -> Self
+pub fn OptmetapsoEdge::sum(Self) -> Double
+pub fn OptmetapsoEdge::to_string(Self) -> String
+
+pub(all) struct OptmetapsoFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetapsoFrame::add(Self, Self) -> Self
+pub fn OptmetapsoFrame::copy(Self) -> Self
+pub fn OptmetapsoFrame::fill(Self, Double) -> Self
+pub fn OptmetapsoFrame::get(Self, Int32) -> Double
+pub fn OptmetapsoFrame::len(Self) -> Int32
+pub fn OptmetapsoFrame::max(Self) -> Double
+pub fn OptmetapsoFrame::mean(Self) -> Double
+pub fn OptmetapsoFrame::min(Self) -> Double
+pub fn OptmetapsoFrame::scale(Self, Double) -> Self
+pub fn OptmetapsoFrame::set(Self, Int32, Double) -> Self
+pub fn OptmetapsoFrame::sum(Self) -> Double
+pub fn OptmetapsoFrame::to_string(Self) -> String
+
+pub(all) struct OptmetapsoGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetapsoGraphN::add(Self, Self) -> Self
+pub fn OptmetapsoGraphN::copy(Self) -> Self
+pub fn OptmetapsoGraphN::fill(Self, Double) -> Self
+pub fn OptmetapsoGraphN::get(Self, Int32) -> Double
+pub fn OptmetapsoGraphN::len(Self) -> Int32
+pub fn OptmetapsoGraphN::max(Self) -> Double
+pub fn OptmetapsoGraphN::mean(Self) -> Double
+pub fn OptmetapsoGraphN::min(Self) -> Double
+pub fn OptmetapsoGraphN::scale(Self, Double) -> Self
+pub fn OptmetapsoGraphN::set(Self, Int32, Double) -> Self
+pub fn OptmetapsoGraphN::sum(Self) -> Double
+pub fn OptmetapsoGraphN::to_string(Self) -> String
+
+pub(all) struct OptmetapsoLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetapsoLayer::add(Self, Self) -> Self
+pub fn OptmetapsoLayer::copy(Self) -> Self
+pub fn OptmetapsoLayer::fill(Self, Double) -> Self
+pub fn OptmetapsoLayer::get(Self, Int32) -> Double
+pub fn OptmetapsoLayer::len(Self) -> Int32
+pub fn OptmetapsoLayer::max(Self) -> Double
+pub fn OptmetapsoLayer::mean(Self) -> Double
+pub fn OptmetapsoLayer::min(Self) -> Double
+pub fn OptmetapsoLayer::scale(Self, Double) -> Self
+pub fn OptmetapsoLayer::set(Self, Int32, Double) -> Self
+pub fn OptmetapsoLayer::sum(Self) -> Double
+pub fn OptmetapsoLayer::to_string(Self) -> String
+
+pub(all) struct OptmetapsoMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn OptmetapsoMatrix::add(Self, Self) -> Self
+pub fn OptmetapsoMatrix::det(Self) -> Double
+pub fn OptmetapsoMatrix::get(Self, Int32, Int32) -> Double
+pub fn OptmetapsoMatrix::multiply(Self, Self) -> Self
+pub fn OptmetapsoMatrix::norm(Self) -> Double
+pub fn OptmetapsoMatrix::scale(Self, Double) -> Self
+pub fn OptmetapsoMatrix::to_string(Self) -> String
+pub fn OptmetapsoMatrix::trace(Self) -> Double
+pub fn OptmetapsoMatrix::transpose(Self) -> Self
+
+pub(all) struct OptmetapsoModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetapsoModel::add(Self, Self) -> Self
+pub fn OptmetapsoModel::copy(Self) -> Self
+pub fn OptmetapsoModel::fill(Self, Double) -> Self
+pub fn OptmetapsoModel::get(Self, Int32) -> Double
+pub fn OptmetapsoModel::len(Self) -> Int32
+pub fn OptmetapsoModel::max(Self) -> Double
+pub fn OptmetapsoModel::mean(Self) -> Double
+pub fn OptmetapsoModel::min(Self) -> Double
+pub fn OptmetapsoModel::scale(Self, Double) -> Self
+pub fn OptmetapsoModel::set(Self, Int32, Double) -> Self
+pub fn OptmetapsoModel::sum(Self) -> Double
+pub fn OptmetapsoModel::to_string(Self) -> String
+
+pub(all) struct OptmetapsoNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetapsoNode::add(Self, Self) -> Self
+pub fn OptmetapsoNode::copy(Self) -> Self
+pub fn OptmetapsoNode::fill(Self, Double) -> Self
+pub fn OptmetapsoNode::get(Self, Int32) -> Double
+pub fn OptmetapsoNode::len(Self) -> Int32
+pub fn OptmetapsoNode::max(Self) -> Double
+pub fn OptmetapsoNode::mean(Self) -> Double
+pub fn OptmetapsoNode::min(Self) -> Double
+pub fn OptmetapsoNode::scale(Self, Double) -> Self
+pub fn OptmetapsoNode::set(Self, Int32, Double) -> Self
+pub fn OptmetapsoNode::sum(Self) -> Double
+pub fn OptmetapsoNode::to_string(Self) -> String
+
+pub(all) struct OptmetapsoPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetapsoPath::add(Self, Self) -> Self
+pub fn OptmetapsoPath::copy(Self) -> Self
+pub fn OptmetapsoPath::fill(Self, Double) -> Self
+pub fn OptmetapsoPath::get(Self, Int32) -> Double
+pub fn OptmetapsoPath::len(Self) -> Int32
+pub fn OptmetapsoPath::max(Self) -> Double
+pub fn OptmetapsoPath::mean(Self) -> Double
+pub fn OptmetapsoPath::min(Self) -> Double
+pub fn OptmetapsoPath::scale(Self, Double) -> Self
+pub fn OptmetapsoPath::set(Self, Int32, Double) -> Self
+pub fn OptmetapsoPath::sum(Self) -> Double
+pub fn OptmetapsoPath::to_string(Self) -> String
+
+pub(all) struct OptmetapsoPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn OptmetapsoPoint::add(Self, Self) -> Self
+pub fn OptmetapsoPoint::cross(Self, Self) -> Self
+pub fn OptmetapsoPoint::dist(Self, Self) -> Double
+pub fn OptmetapsoPoint::dot(Self, Self) -> Double
+pub fn OptmetapsoPoint::label(Self) -> Int32
+pub fn OptmetapsoPoint::lerp(Self, Self, Double) -> Self
+pub fn OptmetapsoPoint::mid(Self, Self) -> Self
+pub fn OptmetapsoPoint::negate(Self) -> Self
+pub fn OptmetapsoPoint::norm(Self) -> Double
+pub fn OptmetapsoPoint::normalize(Self) -> Self
+pub fn OptmetapsoPoint::scale(Self, Double) -> Self
+pub fn OptmetapsoPoint::sub(Self, Self) -> Self
+pub fn OptmetapsoPoint::to_string(Self) -> String
+pub fn OptmetapsoPoint::x(Self) -> Double
+pub fn OptmetapsoPoint::y(Self) -> Double
+pub fn OptmetapsoPoint::z(Self) -> Double
+
+pub(all) struct OptmetapsoRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetapsoRange::add(Self, Self) -> Self
+pub fn OptmetapsoRange::copy(Self) -> Self
+pub fn OptmetapsoRange::fill(Self, Double) -> Self
+pub fn OptmetapsoRange::get(Self, Int32) -> Double
+pub fn OptmetapsoRange::len(Self) -> Int32
+pub fn OptmetapsoRange::max(Self) -> Double
+pub fn OptmetapsoRange::mean(Self) -> Double
+pub fn OptmetapsoRange::min(Self) -> Double
+pub fn OptmetapsoRange::scale(Self, Double) -> Self
+pub fn OptmetapsoRange::set(Self, Int32, Double) -> Self
+pub fn OptmetapsoRange::sum(Self) -> Double
+pub fn OptmetapsoRange::to_string(Self) -> String
+
+pub(all) struct OptmetapsoSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn OptmetapsoSeries::add(Self, Self) -> Self
+pub fn OptmetapsoSeries::cumsum(Self) -> Self
+pub fn OptmetapsoSeries::len(Self) -> Int32
+pub fn OptmetapsoSeries::max(Self) -> Double
+pub fn OptmetapsoSeries::mean(Self) -> Double
+pub fn OptmetapsoSeries::median(Self) -> Double
+pub fn OptmetapsoSeries::min(Self) -> Double
+pub fn OptmetapsoSeries::normalize(Self) -> Self
+pub fn OptmetapsoSeries::range(Self) -> Double
+pub fn OptmetapsoSeries::scale(Self, Double) -> Self
+pub fn OptmetapsoSeries::std(Self) -> Double
+pub fn OptmetapsoSeries::sub(Self, Self) -> Self
+pub fn OptmetapsoSeries::sum(Self) -> Double
+pub fn OptmetapsoSeries::to_string(Self) -> String
+pub fn OptmetapsoSeries::variance(Self) -> Double
+
+pub(all) struct OptmetapsoSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetapsoSlice::add(Self, Self) -> Self
+pub fn OptmetapsoSlice::copy(Self) -> Self
+pub fn OptmetapsoSlice::fill(Self, Double) -> Self
+pub fn OptmetapsoSlice::get(Self, Int32) -> Double
+pub fn OptmetapsoSlice::len(Self) -> Int32
+pub fn OptmetapsoSlice::max(Self) -> Double
+pub fn OptmetapsoSlice::mean(Self) -> Double
+pub fn OptmetapsoSlice::min(Self) -> Double
+pub fn OptmetapsoSlice::scale(Self, Double) -> Self
+pub fn OptmetapsoSlice::set(Self, Int32, Double) -> Self
+pub fn OptmetapsoSlice::sum(Self) -> Double
+pub fn OptmetapsoSlice::to_string(Self) -> String
+
+pub(all) struct OptmetapsoTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetapsoTable::add(Self, Self) -> Self
+pub fn OptmetapsoTable::copy(Self) -> Self
+pub fn OptmetapsoTable::fill(Self, Double) -> Self
+pub fn OptmetapsoTable::get(Self, Int32) -> Double
+pub fn OptmetapsoTable::len(Self) -> Int32
+pub fn OptmetapsoTable::max(Self) -> Double
+pub fn OptmetapsoTable::mean(Self) -> Double
+pub fn OptmetapsoTable::min(Self) -> Double
+pub fn OptmetapsoTable::scale(Self, Double) -> Self
+pub fn OptmetapsoTable::set(Self, Int32, Double) -> Self
+pub fn OptmetapsoTable::sum(Self) -> Double
+pub fn OptmetapsoTable::to_string(Self) -> String
+
+pub(all) struct OptmetapsoVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn OptmetapsoVector::add(Self, Self) -> Self
+pub fn OptmetapsoVector::dist(Self, Self) -> Double
+pub fn OptmetapsoVector::dot(Self, Self) -> Double
+pub fn OptmetapsoVector::norm(Self) -> Double
+pub fn OptmetapsoVector::normalize(Self) -> Self
+pub fn OptmetapsoVector::scale(Self, Double) -> Self
+pub fn OptmetapsoVector::sub(Self, Self) -> Self
+pub fn OptmetapsoVector::to_string(Self) -> String
+
+pub(all) struct OptmetapsoView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn OptmetapsoView::add(Self, Self) -> Self
+pub fn OptmetapsoView::copy(Self) -> Self
+pub fn OptmetapsoView::fill(Self, Double) -> Self
+pub fn OptmetapsoView::get(Self, Int32) -> Double
+pub fn OptmetapsoView::len(Self) -> Int32
+pub fn OptmetapsoView::max(Self) -> Double
+pub fn OptmetapsoView::mean(Self) -> Double
+pub fn OptmetapsoView::min(Self) -> Double
+pub fn OptmetapsoView::scale(Self, Double) -> Self
+pub fn OptmetapsoView::set(Self, Int32, Double) -> Self
+pub fn OptmetapsoView::sum(Self) -> Double
+pub fn OptmetapsoView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

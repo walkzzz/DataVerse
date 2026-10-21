@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_store_matrix"
+
+// Values
+pub fn db_store_matrix_buffer_make(Int32) -> DbstorematrixBuffer
+
+pub fn db_store_matrix_cluster_make(Int32) -> DbstorematrixCluster
+
+pub fn db_store_matrix_cursor_make(Int32) -> DbstorematrixCursor
+
+pub fn db_store_matrix_edge_make(Int32) -> DbstorematrixEdge
+
+pub fn db_store_matrix_frame_make(Int32) -> DbstorematrixFrame
+
+pub fn db_store_matrix_graphn_make(Int32) -> DbstorematrixGraphN
+
+pub fn db_store_matrix_layer_make(Int32) -> DbstorematrixLayer
+
+pub fn db_store_matrix_make_matrix(Int32, Int32, Double) -> DbstorematrixMatrix
+
+pub fn db_store_matrix_make_point(Double, Double) -> DbstorematrixPoint
+
+pub fn db_store_matrix_make_point3(Double, Double, Double) -> DbstorematrixPoint
+
+pub fn db_store_matrix_make_series(Array[Double], String) -> DbstorematrixSeries
+
+pub fn db_store_matrix_make_vector(Array[Double]) -> DbstorematrixVector
+
+pub fn db_store_matrix_matrix_identity(Int32) -> DbstorematrixMatrix
+
+pub fn db_store_matrix_model_make(Int32) -> DbstorematrixModel
+
+pub fn db_store_matrix_node_make(Int32) -> DbstorematrixNode
+
+pub fn db_store_matrix_path_make(Int32) -> DbstorematrixPath
+
+pub fn db_store_matrix_range_make(Int32) -> DbstorematrixRange
+
+pub fn db_store_matrix_slice_make(Int32) -> DbstorematrixSlice
+
+pub fn db_store_matrix_table_make(Int32) -> DbstorematrixTable
+
+pub fn db_store_matrix_vector_zero(Int32) -> DbstorematrixVector
+
+pub fn db_store_matrix_view_make(Int32) -> DbstorematrixView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbstorematrixBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorematrixBuffer::add(Self, Self) -> Self
+pub fn DbstorematrixBuffer::copy(Self) -> Self
+pub fn DbstorematrixBuffer::fill(Self, Double) -> Self
+pub fn DbstorematrixBuffer::get(Self, Int32) -> Double
+pub fn DbstorematrixBuffer::len(Self) -> Int32
+pub fn DbstorematrixBuffer::max(Self) -> Double
+pub fn DbstorematrixBuffer::mean(Self) -> Double
+pub fn DbstorematrixBuffer::min(Self) -> Double
+pub fn DbstorematrixBuffer::scale(Self, Double) -> Self
+pub fn DbstorematrixBuffer::set(Self, Int32, Double) -> Self
+pub fn DbstorematrixBuffer::sum(Self) -> Double
+pub fn DbstorematrixBuffer::to_string(Self) -> String
+
+pub(all) struct DbstorematrixCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorematrixCluster::add(Self, Self) -> Self
+pub fn DbstorematrixCluster::copy(Self) -> Self
+pub fn DbstorematrixCluster::fill(Self, Double) -> Self
+pub fn DbstorematrixCluster::get(Self, Int32) -> Double
+pub fn DbstorematrixCluster::len(Self) -> Int32
+pub fn DbstorematrixCluster::max(Self) -> Double
+pub fn DbstorematrixCluster::mean(Self) -> Double
+pub fn DbstorematrixCluster::min(Self) -> Double
+pub fn DbstorematrixCluster::scale(Self, Double) -> Self
+pub fn DbstorematrixCluster::set(Self, Int32, Double) -> Self
+pub fn DbstorematrixCluster::sum(Self) -> Double
+pub fn DbstorematrixCluster::to_string(Self) -> String
+
+pub(all) struct DbstorematrixCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorematrixCursor::add(Self, Self) -> Self
+pub fn DbstorematrixCursor::copy(Self) -> Self
+pub fn DbstorematrixCursor::fill(Self, Double) -> Self
+pub fn DbstorematrixCursor::get(Self, Int32) -> Double
+pub fn DbstorematrixCursor::len(Self) -> Int32
+pub fn DbstorematrixCursor::max(Self) -> Double
+pub fn DbstorematrixCursor::mean(Self) -> Double
+pub fn DbstorematrixCursor::min(Self) -> Double
+pub fn DbstorematrixCursor::scale(Self, Double) -> Self
+pub fn DbstorematrixCursor::set(Self, Int32, Double) -> Self
+pub fn DbstorematrixCursor::sum(Self) -> Double
+pub fn DbstorematrixCursor::to_string(Self) -> String
+
+pub(all) struct DbstorematrixEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorematrixEdge::add(Self, Self) -> Self
+pub fn DbstorematrixEdge::copy(Self) -> Self
+pub fn DbstorematrixEdge::fill(Self, Double) -> Self
+pub fn DbstorematrixEdge::get(Self, Int32) -> Double
+pub fn DbstorematrixEdge::len(Self) -> Int32
+pub fn DbstorematrixEdge::max(Self) -> Double
+pub fn DbstorematrixEdge::mean(Self) -> Double
+pub fn DbstorematrixEdge::min(Self) -> Double
+pub fn DbstorematrixEdge::scale(Self, Double) -> Self
+pub fn DbstorematrixEdge::set(Self, Int32, Double) -> Self
+pub fn DbstorematrixEdge::sum(Self) -> Double
+pub fn DbstorematrixEdge::to_string(Self) -> String
+
+pub(all) struct DbstorematrixFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorematrixFrame::add(Self, Self) -> Self
+pub fn DbstorematrixFrame::copy(Self) -> Self
+pub fn DbstorematrixFrame::fill(Self, Double) -> Self
+pub fn DbstorematrixFrame::get(Self, Int32) -> Double
+pub fn DbstorematrixFrame::len(Self) -> Int32
+pub fn DbstorematrixFrame::max(Self) -> Double
+pub fn DbstorematrixFrame::mean(Self) -> Double
+pub fn DbstorematrixFrame::min(Self) -> Double
+pub fn DbstorematrixFrame::scale(Self, Double) -> Self
+pub fn DbstorematrixFrame::set(Self, Int32, Double) -> Self
+pub fn DbstorematrixFrame::sum(Self) -> Double
+pub fn DbstorematrixFrame::to_string(Self) -> String
+
+pub(all) struct DbstorematrixGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorematrixGraphN::add(Self, Self) -> Self
+pub fn DbstorematrixGraphN::copy(Self) -> Self
+pub fn DbstorematrixGraphN::fill(Self, Double) -> Self
+pub fn DbstorematrixGraphN::get(Self, Int32) -> Double
+pub fn DbstorematrixGraphN::len(Self) -> Int32
+pub fn DbstorematrixGraphN::max(Self) -> Double
+pub fn DbstorematrixGraphN::mean(Self) -> Double
+pub fn DbstorematrixGraphN::min(Self) -> Double
+pub fn DbstorematrixGraphN::scale(Self, Double) -> Self
+pub fn DbstorematrixGraphN::set(Self, Int32, Double) -> Self
+pub fn DbstorematrixGraphN::sum(Self) -> Double
+pub fn DbstorematrixGraphN::to_string(Self) -> String
+
+pub(all) struct DbstorematrixLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorematrixLayer::add(Self, Self) -> Self
+pub fn DbstorematrixLayer::copy(Self) -> Self
+pub fn DbstorematrixLayer::fill(Self, Double) -> Self
+pub fn DbstorematrixLayer::get(Self, Int32) -> Double
+pub fn DbstorematrixLayer::len(Self) -> Int32
+pub fn DbstorematrixLayer::max(Self) -> Double
+pub fn DbstorematrixLayer::mean(Self) -> Double
+pub fn DbstorematrixLayer::min(Self) -> Double
+pub fn DbstorematrixLayer::scale(Self, Double) -> Self
+pub fn DbstorematrixLayer::set(Self, Int32, Double) -> Self
+pub fn DbstorematrixLayer::sum(Self) -> Double
+pub fn DbstorematrixLayer::to_string(Self) -> String
+
+pub(all) struct DbstorematrixMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbstorematrixMatrix::add(Self, Self) -> Self
+pub fn DbstorematrixMatrix::det(Self) -> Double
+pub fn DbstorematrixMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbstorematrixMatrix::multiply(Self, Self) -> Self
+pub fn DbstorematrixMatrix::norm(Self) -> Double
+pub fn DbstorematrixMatrix::scale(Self, Double) -> Self
+pub fn DbstorematrixMatrix::to_string(Self) -> String
+pub fn DbstorematrixMatrix::trace(Self) -> Double
+pub fn DbstorematrixMatrix::transpose(Self) -> Self
+
+pub(all) struct DbstorematrixModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorematrixModel::add(Self, Self) -> Self
+pub fn DbstorematrixModel::copy(Self) -> Self
+pub fn DbstorematrixModel::fill(Self, Double) -> Self
+pub fn DbstorematrixModel::get(Self, Int32) -> Double
+pub fn DbstorematrixModel::len(Self) -> Int32
+pub fn DbstorematrixModel::max(Self) -> Double
+pub fn DbstorematrixModel::mean(Self) -> Double
+pub fn DbstorematrixModel::min(Self) -> Double
+pub fn DbstorematrixModel::scale(Self, Double) -> Self
+pub fn DbstorematrixModel::set(Self, Int32, Double) -> Self
+pub fn DbstorematrixModel::sum(Self) -> Double
+pub fn DbstorematrixModel::to_string(Self) -> String
+
+pub(all) struct DbstorematrixNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorematrixNode::add(Self, Self) -> Self
+pub fn DbstorematrixNode::copy(Self) -> Self
+pub fn DbstorematrixNode::fill(Self, Double) -> Self
+pub fn DbstorematrixNode::get(Self, Int32) -> Double
+pub fn DbstorematrixNode::len(Self) -> Int32
+pub fn DbstorematrixNode::max(Self) -> Double
+pub fn DbstorematrixNode::mean(Self) -> Double
+pub fn DbstorematrixNode::min(Self) -> Double
+pub fn DbstorematrixNode::scale(Self, Double) -> Self
+pub fn DbstorematrixNode::set(Self, Int32, Double) -> Self
+pub fn DbstorematrixNode::sum(Self) -> Double
+pub fn DbstorematrixNode::to_string(Self) -> String
+
+pub(all) struct DbstorematrixPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorematrixPath::add(Self, Self) -> Self
+pub fn DbstorematrixPath::copy(Self) -> Self
+pub fn DbstorematrixPath::fill(Self, Double) -> Self
+pub fn DbstorematrixPath::get(Self, Int32) -> Double
+pub fn DbstorematrixPath::len(Self) -> Int32
+pub fn DbstorematrixPath::max(Self) -> Double
+pub fn DbstorematrixPath::mean(Self) -> Double
+pub fn DbstorematrixPath::min(Self) -> Double
+pub fn DbstorematrixPath::scale(Self, Double) -> Self
+pub fn DbstorematrixPath::set(Self, Int32, Double) -> Self
+pub fn DbstorematrixPath::sum(Self) -> Double
+pub fn DbstorematrixPath::to_string(Self) -> String
+
+pub(all) struct DbstorematrixPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbstorematrixPoint::add(Self, Self) -> Self
+pub fn DbstorematrixPoint::cross(Self, Self) -> Self
+pub fn DbstorematrixPoint::dist(Self, Self) -> Double
+pub fn DbstorematrixPoint::dot(Self, Self) -> Double
+pub fn DbstorematrixPoint::label(Self) -> Int32
+pub fn DbstorematrixPoint::lerp(Self, Self, Double) -> Self
+pub fn DbstorematrixPoint::mid(Self, Self) -> Self
+pub fn DbstorematrixPoint::negate(Self) -> Self
+pub fn DbstorematrixPoint::norm(Self) -> Double
+pub fn DbstorematrixPoint::normalize(Self) -> Self
+pub fn DbstorematrixPoint::scale(Self, Double) -> Self
+pub fn DbstorematrixPoint::sub(Self, Self) -> Self
+pub fn DbstorematrixPoint::to_string(Self) -> String
+pub fn DbstorematrixPoint::x(Self) -> Double
+pub fn DbstorematrixPoint::y(Self) -> Double
+pub fn DbstorematrixPoint::z(Self) -> Double
+
+pub(all) struct DbstorematrixRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorematrixRange::add(Self, Self) -> Self
+pub fn DbstorematrixRange::copy(Self) -> Self
+pub fn DbstorematrixRange::fill(Self, Double) -> Self
+pub fn DbstorematrixRange::get(Self, Int32) -> Double
+pub fn DbstorematrixRange::len(Self) -> Int32
+pub fn DbstorematrixRange::max(Self) -> Double
+pub fn DbstorematrixRange::mean(Self) -> Double
+pub fn DbstorematrixRange::min(Self) -> Double
+pub fn DbstorematrixRange::scale(Self, Double) -> Self
+pub fn DbstorematrixRange::set(Self, Int32, Double) -> Self
+pub fn DbstorematrixRange::sum(Self) -> Double
+pub fn DbstorematrixRange::to_string(Self) -> String
+
+pub(all) struct DbstorematrixSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbstorematrixSeries::add(Self, Self) -> Self
+pub fn DbstorematrixSeries::cumsum(Self) -> Self
+pub fn DbstorematrixSeries::len(Self) -> Int32
+pub fn DbstorematrixSeries::max(Self) -> Double
+pub fn DbstorematrixSeries::mean(Self) -> Double
+pub fn DbstorematrixSeries::median(Self) -> Double
+pub fn DbstorematrixSeries::min(Self) -> Double
+pub fn DbstorematrixSeries::normalize(Self) -> Self
+pub fn DbstorematrixSeries::range(Self) -> Double
+pub fn DbstorematrixSeries::scale(Self, Double) -> Self
+pub fn DbstorematrixSeries::std(Self) -> Double
+pub fn DbstorematrixSeries::sub(Self, Self) -> Self
+pub fn DbstorematrixSeries::sum(Self) -> Double
+pub fn DbstorematrixSeries::to_string(Self) -> String
+pub fn DbstorematrixSeries::variance(Self) -> Double
+
+pub(all) struct DbstorematrixSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorematrixSlice::add(Self, Self) -> Self
+pub fn DbstorematrixSlice::copy(Self) -> Self
+pub fn DbstorematrixSlice::fill(Self, Double) -> Self
+pub fn DbstorematrixSlice::get(Self, Int32) -> Double
+pub fn DbstorematrixSlice::len(Self) -> Int32
+pub fn DbstorematrixSlice::max(Self) -> Double
+pub fn DbstorematrixSlice::mean(Self) -> Double
+pub fn DbstorematrixSlice::min(Self) -> Double
+pub fn DbstorematrixSlice::scale(Self, Double) -> Self
+pub fn DbstorematrixSlice::set(Self, Int32, Double) -> Self
+pub fn DbstorematrixSlice::sum(Self) -> Double
+pub fn DbstorematrixSlice::to_string(Self) -> String
+
+pub(all) struct DbstorematrixTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorematrixTable::add(Self, Self) -> Self
+pub fn DbstorematrixTable::copy(Self) -> Self
+pub fn DbstorematrixTable::fill(Self, Double) -> Self
+pub fn DbstorematrixTable::get(Self, Int32) -> Double
+pub fn DbstorematrixTable::len(Self) -> Int32
+pub fn DbstorematrixTable::max(Self) -> Double
+pub fn DbstorematrixTable::mean(Self) -> Double
+pub fn DbstorematrixTable::min(Self) -> Double
+pub fn DbstorematrixTable::scale(Self, Double) -> Self
+pub fn DbstorematrixTable::set(Self, Int32, Double) -> Self
+pub fn DbstorematrixTable::sum(Self) -> Double
+pub fn DbstorematrixTable::to_string(Self) -> String
+
+pub(all) struct DbstorematrixVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbstorematrixVector::add(Self, Self) -> Self
+pub fn DbstorematrixVector::dist(Self, Self) -> Double
+pub fn DbstorematrixVector::dot(Self, Self) -> Double
+pub fn DbstorematrixVector::norm(Self) -> Double
+pub fn DbstorematrixVector::normalize(Self) -> Self
+pub fn DbstorematrixVector::scale(Self, Double) -> Self
+pub fn DbstorematrixVector::sub(Self, Self) -> Self
+pub fn DbstorematrixVector::to_string(Self) -> String
+
+pub(all) struct DbstorematrixView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbstorematrixView::add(Self, Self) -> Self
+pub fn DbstorematrixView::copy(Self) -> Self
+pub fn DbstorematrixView::fill(Self, Double) -> Self
+pub fn DbstorematrixView::get(Self, Int32) -> Double
+pub fn DbstorematrixView::len(Self) -> Int32
+pub fn DbstorematrixView::max(Self) -> Double
+pub fn DbstorematrixView::mean(Self) -> Double
+pub fn DbstorematrixView::min(Self) -> Double
+pub fn DbstorematrixView::scale(Self, Double) -> Self
+pub fn DbstorematrixView::set(Self, Int32, Double) -> Self
+pub fn DbstorematrixView::sum(Self) -> Double
+pub fn DbstorematrixView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

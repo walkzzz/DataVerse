@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_rl_dqn"
+
+// Values
+pub fn ml_rl_dqn_buffer_make(Int32) -> MlrldqnBuffer
+
+pub fn ml_rl_dqn_cluster_make(Int32) -> MlrldqnCluster
+
+pub fn ml_rl_dqn_cursor_make(Int32) -> MlrldqnCursor
+
+pub fn ml_rl_dqn_edge_make(Int32) -> MlrldqnEdge
+
+pub fn ml_rl_dqn_frame_make(Int32) -> MlrldqnFrame
+
+pub fn ml_rl_dqn_graphn_make(Int32) -> MlrldqnGraphN
+
+pub fn ml_rl_dqn_layer_make(Int32) -> MlrldqnLayer
+
+pub fn ml_rl_dqn_make_matrix(Int32, Int32, Double) -> MlrldqnMatrix
+
+pub fn ml_rl_dqn_make_point(Double, Double) -> MlrldqnPoint
+
+pub fn ml_rl_dqn_make_point3(Double, Double, Double) -> MlrldqnPoint
+
+pub fn ml_rl_dqn_make_series(Array[Double], String) -> MlrldqnSeries
+
+pub fn ml_rl_dqn_make_vector(Array[Double]) -> MlrldqnVector
+
+pub fn ml_rl_dqn_matrix_identity(Int32) -> MlrldqnMatrix
+
+pub fn ml_rl_dqn_model_make(Int32) -> MlrldqnModel
+
+pub fn ml_rl_dqn_node_make(Int32) -> MlrldqnNode
+
+pub fn ml_rl_dqn_path_make(Int32) -> MlrldqnPath
+
+pub fn ml_rl_dqn_range_make(Int32) -> MlrldqnRange
+
+pub fn ml_rl_dqn_slice_make(Int32) -> MlrldqnSlice
+
+pub fn ml_rl_dqn_table_make(Int32) -> MlrldqnTable
+
+pub fn ml_rl_dqn_vector_zero(Int32) -> MlrldqnVector
+
+pub fn ml_rl_dqn_view_make(Int32) -> MlrldqnView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlrldqnBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrldqnBuffer::add(Self, Self) -> Self
+pub fn MlrldqnBuffer::copy(Self) -> Self
+pub fn MlrldqnBuffer::fill(Self, Double) -> Self
+pub fn MlrldqnBuffer::get(Self, Int32) -> Double
+pub fn MlrldqnBuffer::len(Self) -> Int32
+pub fn MlrldqnBuffer::max(Self) -> Double
+pub fn MlrldqnBuffer::mean(Self) -> Double
+pub fn MlrldqnBuffer::min(Self) -> Double
+pub fn MlrldqnBuffer::scale(Self, Double) -> Self
+pub fn MlrldqnBuffer::set(Self, Int32, Double) -> Self
+pub fn MlrldqnBuffer::sum(Self) -> Double
+pub fn MlrldqnBuffer::to_string(Self) -> String
+
+pub(all) struct MlrldqnCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrldqnCluster::add(Self, Self) -> Self
+pub fn MlrldqnCluster::copy(Self) -> Self
+pub fn MlrldqnCluster::fill(Self, Double) -> Self
+pub fn MlrldqnCluster::get(Self, Int32) -> Double
+pub fn MlrldqnCluster::len(Self) -> Int32
+pub fn MlrldqnCluster::max(Self) -> Double
+pub fn MlrldqnCluster::mean(Self) -> Double
+pub fn MlrldqnCluster::min(Self) -> Double
+pub fn MlrldqnCluster::scale(Self, Double) -> Self
+pub fn MlrldqnCluster::set(Self, Int32, Double) -> Self
+pub fn MlrldqnCluster::sum(Self) -> Double
+pub fn MlrldqnCluster::to_string(Self) -> String
+
+pub(all) struct MlrldqnCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrldqnCursor::add(Self, Self) -> Self
+pub fn MlrldqnCursor::copy(Self) -> Self
+pub fn MlrldqnCursor::fill(Self, Double) -> Self
+pub fn MlrldqnCursor::get(Self, Int32) -> Double
+pub fn MlrldqnCursor::len(Self) -> Int32
+pub fn MlrldqnCursor::max(Self) -> Double
+pub fn MlrldqnCursor::mean(Self) -> Double
+pub fn MlrldqnCursor::min(Self) -> Double
+pub fn MlrldqnCursor::scale(Self, Double) -> Self
+pub fn MlrldqnCursor::set(Self, Int32, Double) -> Self
+pub fn MlrldqnCursor::sum(Self) -> Double
+pub fn MlrldqnCursor::to_string(Self) -> String
+
+pub(all) struct MlrldqnEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrldqnEdge::add(Self, Self) -> Self
+pub fn MlrldqnEdge::copy(Self) -> Self
+pub fn MlrldqnEdge::fill(Self, Double) -> Self
+pub fn MlrldqnEdge::get(Self, Int32) -> Double
+pub fn MlrldqnEdge::len(Self) -> Int32
+pub fn MlrldqnEdge::max(Self) -> Double
+pub fn MlrldqnEdge::mean(Self) -> Double
+pub fn MlrldqnEdge::min(Self) -> Double
+pub fn MlrldqnEdge::scale(Self, Double) -> Self
+pub fn MlrldqnEdge::set(Self, Int32, Double) -> Self
+pub fn MlrldqnEdge::sum(Self) -> Double
+pub fn MlrldqnEdge::to_string(Self) -> String
+
+pub(all) struct MlrldqnFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrldqnFrame::add(Self, Self) -> Self
+pub fn MlrldqnFrame::copy(Self) -> Self
+pub fn MlrldqnFrame::fill(Self, Double) -> Self
+pub fn MlrldqnFrame::get(Self, Int32) -> Double
+pub fn MlrldqnFrame::len(Self) -> Int32
+pub fn MlrldqnFrame::max(Self) -> Double
+pub fn MlrldqnFrame::mean(Self) -> Double
+pub fn MlrldqnFrame::min(Self) -> Double
+pub fn MlrldqnFrame::scale(Self, Double) -> Self
+pub fn MlrldqnFrame::set(Self, Int32, Double) -> Self
+pub fn MlrldqnFrame::sum(Self) -> Double
+pub fn MlrldqnFrame::to_string(Self) -> String
+
+pub(all) struct MlrldqnGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrldqnGraphN::add(Self, Self) -> Self
+pub fn MlrldqnGraphN::copy(Self) -> Self
+pub fn MlrldqnGraphN::fill(Self, Double) -> Self
+pub fn MlrldqnGraphN::get(Self, Int32) -> Double
+pub fn MlrldqnGraphN::len(Self) -> Int32
+pub fn MlrldqnGraphN::max(Self) -> Double
+pub fn MlrldqnGraphN::mean(Self) -> Double
+pub fn MlrldqnGraphN::min(Self) -> Double
+pub fn MlrldqnGraphN::scale(Self, Double) -> Self
+pub fn MlrldqnGraphN::set(Self, Int32, Double) -> Self
+pub fn MlrldqnGraphN::sum(Self) -> Double
+pub fn MlrldqnGraphN::to_string(Self) -> String
+
+pub(all) struct MlrldqnLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrldqnLayer::add(Self, Self) -> Self
+pub fn MlrldqnLayer::copy(Self) -> Self
+pub fn MlrldqnLayer::fill(Self, Double) -> Self
+pub fn MlrldqnLayer::get(Self, Int32) -> Double
+pub fn MlrldqnLayer::len(Self) -> Int32
+pub fn MlrldqnLayer::max(Self) -> Double
+pub fn MlrldqnLayer::mean(Self) -> Double
+pub fn MlrldqnLayer::min(Self) -> Double
+pub fn MlrldqnLayer::scale(Self, Double) -> Self
+pub fn MlrldqnLayer::set(Self, Int32, Double) -> Self
+pub fn MlrldqnLayer::sum(Self) -> Double
+pub fn MlrldqnLayer::to_string(Self) -> String
+
+pub(all) struct MlrldqnMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlrldqnMatrix::add(Self, Self) -> Self
+pub fn MlrldqnMatrix::det(Self) -> Double
+pub fn MlrldqnMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlrldqnMatrix::multiply(Self, Self) -> Self
+pub fn MlrldqnMatrix::norm(Self) -> Double
+pub fn MlrldqnMatrix::scale(Self, Double) -> Self
+pub fn MlrldqnMatrix::to_string(Self) -> String
+pub fn MlrldqnMatrix::trace(Self) -> Double
+pub fn MlrldqnMatrix::transpose(Self) -> Self
+
+pub(all) struct MlrldqnModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrldqnModel::add(Self, Self) -> Self
+pub fn MlrldqnModel::copy(Self) -> Self
+pub fn MlrldqnModel::fill(Self, Double) -> Self
+pub fn MlrldqnModel::get(Self, Int32) -> Double
+pub fn MlrldqnModel::len(Self) -> Int32
+pub fn MlrldqnModel::max(Self) -> Double
+pub fn MlrldqnModel::mean(Self) -> Double
+pub fn MlrldqnModel::min(Self) -> Double
+pub fn MlrldqnModel::scale(Self, Double) -> Self
+pub fn MlrldqnModel::set(Self, Int32, Double) -> Self
+pub fn MlrldqnModel::sum(Self) -> Double
+pub fn MlrldqnModel::to_string(Self) -> String
+
+pub(all) struct MlrldqnNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrldqnNode::add(Self, Self) -> Self
+pub fn MlrldqnNode::copy(Self) -> Self
+pub fn MlrldqnNode::fill(Self, Double) -> Self
+pub fn MlrldqnNode::get(Self, Int32) -> Double
+pub fn MlrldqnNode::len(Self) -> Int32
+pub fn MlrldqnNode::max(Self) -> Double
+pub fn MlrldqnNode::mean(Self) -> Double
+pub fn MlrldqnNode::min(Self) -> Double
+pub fn MlrldqnNode::scale(Self, Double) -> Self
+pub fn MlrldqnNode::set(Self, Int32, Double) -> Self
+pub fn MlrldqnNode::sum(Self) -> Double
+pub fn MlrldqnNode::to_string(Self) -> String
+
+pub(all) struct MlrldqnPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrldqnPath::add(Self, Self) -> Self
+pub fn MlrldqnPath::copy(Self) -> Self
+pub fn MlrldqnPath::fill(Self, Double) -> Self
+pub fn MlrldqnPath::get(Self, Int32) -> Double
+pub fn MlrldqnPath::len(Self) -> Int32
+pub fn MlrldqnPath::max(Self) -> Double
+pub fn MlrldqnPath::mean(Self) -> Double
+pub fn MlrldqnPath::min(Self) -> Double
+pub fn MlrldqnPath::scale(Self, Double) -> Self
+pub fn MlrldqnPath::set(Self, Int32, Double) -> Self
+pub fn MlrldqnPath::sum(Self) -> Double
+pub fn MlrldqnPath::to_string(Self) -> String
+
+pub(all) struct MlrldqnPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlrldqnPoint::add(Self, Self) -> Self
+pub fn MlrldqnPoint::cross(Self, Self) -> Self
+pub fn MlrldqnPoint::dist(Self, Self) -> Double
+pub fn MlrldqnPoint::dot(Self, Self) -> Double
+pub fn MlrldqnPoint::label(Self) -> Int32
+pub fn MlrldqnPoint::lerp(Self, Self, Double) -> Self
+pub fn MlrldqnPoint::mid(Self, Self) -> Self
+pub fn MlrldqnPoint::negate(Self) -> Self
+pub fn MlrldqnPoint::norm(Self) -> Double
+pub fn MlrldqnPoint::normalize(Self) -> Self
+pub fn MlrldqnPoint::scale(Self, Double) -> Self
+pub fn MlrldqnPoint::sub(Self, Self) -> Self
+pub fn MlrldqnPoint::to_string(Self) -> String
+pub fn MlrldqnPoint::x(Self) -> Double
+pub fn MlrldqnPoint::y(Self) -> Double
+pub fn MlrldqnPoint::z(Self) -> Double
+
+pub(all) struct MlrldqnRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrldqnRange::add(Self, Self) -> Self
+pub fn MlrldqnRange::copy(Self) -> Self
+pub fn MlrldqnRange::fill(Self, Double) -> Self
+pub fn MlrldqnRange::get(Self, Int32) -> Double
+pub fn MlrldqnRange::len(Self) -> Int32
+pub fn MlrldqnRange::max(Self) -> Double
+pub fn MlrldqnRange::mean(Self) -> Double
+pub fn MlrldqnRange::min(Self) -> Double
+pub fn MlrldqnRange::scale(Self, Double) -> Self
+pub fn MlrldqnRange::set(Self, Int32, Double) -> Self
+pub fn MlrldqnRange::sum(Self) -> Double
+pub fn MlrldqnRange::to_string(Self) -> String
+
+pub(all) struct MlrldqnSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlrldqnSeries::add(Self, Self) -> Self
+pub fn MlrldqnSeries::cumsum(Self) -> Self
+pub fn MlrldqnSeries::len(Self) -> Int32
+pub fn MlrldqnSeries::max(Self) -> Double
+pub fn MlrldqnSeries::mean(Self) -> Double
+pub fn MlrldqnSeries::median(Self) -> Double
+pub fn MlrldqnSeries::min(Self) -> Double
+pub fn MlrldqnSeries::normalize(Self) -> Self
+pub fn MlrldqnSeries::range(Self) -> Double
+pub fn MlrldqnSeries::scale(Self, Double) -> Self
+pub fn MlrldqnSeries::std(Self) -> Double
+pub fn MlrldqnSeries::sub(Self, Self) -> Self
+pub fn MlrldqnSeries::sum(Self) -> Double
+pub fn MlrldqnSeries::to_string(Self) -> String
+pub fn MlrldqnSeries::variance(Self) -> Double
+
+pub(all) struct MlrldqnSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrldqnSlice::add(Self, Self) -> Self
+pub fn MlrldqnSlice::copy(Self) -> Self
+pub fn MlrldqnSlice::fill(Self, Double) -> Self
+pub fn MlrldqnSlice::get(Self, Int32) -> Double
+pub fn MlrldqnSlice::len(Self) -> Int32
+pub fn MlrldqnSlice::max(Self) -> Double
+pub fn MlrldqnSlice::mean(Self) -> Double
+pub fn MlrldqnSlice::min(Self) -> Double
+pub fn MlrldqnSlice::scale(Self, Double) -> Self
+pub fn MlrldqnSlice::set(Self, Int32, Double) -> Self
+pub fn MlrldqnSlice::sum(Self) -> Double
+pub fn MlrldqnSlice::to_string(Self) -> String
+
+pub(all) struct MlrldqnTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrldqnTable::add(Self, Self) -> Self
+pub fn MlrldqnTable::copy(Self) -> Self
+pub fn MlrldqnTable::fill(Self, Double) -> Self
+pub fn MlrldqnTable::get(Self, Int32) -> Double
+pub fn MlrldqnTable::len(Self) -> Int32
+pub fn MlrldqnTable::max(Self) -> Double
+pub fn MlrldqnTable::mean(Self) -> Double
+pub fn MlrldqnTable::min(Self) -> Double
+pub fn MlrldqnTable::scale(Self, Double) -> Self
+pub fn MlrldqnTable::set(Self, Int32, Double) -> Self
+pub fn MlrldqnTable::sum(Self) -> Double
+pub fn MlrldqnTable::to_string(Self) -> String
+
+pub(all) struct MlrldqnVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlrldqnVector::add(Self, Self) -> Self
+pub fn MlrldqnVector::dist(Self, Self) -> Double
+pub fn MlrldqnVector::dot(Self, Self) -> Double
+pub fn MlrldqnVector::norm(Self) -> Double
+pub fn MlrldqnVector::normalize(Self) -> Self
+pub fn MlrldqnVector::scale(Self, Double) -> Self
+pub fn MlrldqnVector::sub(Self, Self) -> Self
+pub fn MlrldqnVector::to_string(Self) -> String
+
+pub(all) struct MlrldqnView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlrldqnView::add(Self, Self) -> Self
+pub fn MlrldqnView::copy(Self) -> Self
+pub fn MlrldqnView::fill(Self, Double) -> Self
+pub fn MlrldqnView::get(Self, Int32) -> Double
+pub fn MlrldqnView::len(Self) -> Int32
+pub fn MlrldqnView::max(Self) -> Double
+pub fn MlrldqnView::mean(Self) -> Double
+pub fn MlrldqnView::min(Self) -> Double
+pub fn MlrldqnView::scale(Self, Double) -> Self
+pub fn MlrldqnView::set(Self, Int32, Double) -> Self
+pub fn MlrldqnView::sum(Self) -> Double
+pub fn MlrldqnView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

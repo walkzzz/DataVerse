@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_transform_hilbert"
+
+// Values
+pub fn signal_transform_hilbert_buffer_make(Int32) -> SignaltransformhilbertBuffer
+
+pub fn signal_transform_hilbert_cluster_make(Int32) -> SignaltransformhilbertCluster
+
+pub fn signal_transform_hilbert_cursor_make(Int32) -> SignaltransformhilbertCursor
+
+pub fn signal_transform_hilbert_edge_make(Int32) -> SignaltransformhilbertEdge
+
+pub fn signal_transform_hilbert_frame_make(Int32) -> SignaltransformhilbertFrame
+
+pub fn signal_transform_hilbert_graphn_make(Int32) -> SignaltransformhilbertGraphN
+
+pub fn signal_transform_hilbert_layer_make(Int32) -> SignaltransformhilbertLayer
+
+pub fn signal_transform_hilbert_make_matrix(Int32, Int32, Double) -> SignaltransformhilbertMatrix
+
+pub fn signal_transform_hilbert_make_point(Double, Double) -> SignaltransformhilbertPoint
+
+pub fn signal_transform_hilbert_make_point3(Double, Double, Double) -> SignaltransformhilbertPoint
+
+pub fn signal_transform_hilbert_make_series(Array[Double], String) -> SignaltransformhilbertSeries
+
+pub fn signal_transform_hilbert_make_vector(Array[Double]) -> SignaltransformhilbertVector
+
+pub fn signal_transform_hilbert_matrix_identity(Int32) -> SignaltransformhilbertMatrix
+
+pub fn signal_transform_hilbert_model_make(Int32) -> SignaltransformhilbertModel
+
+pub fn signal_transform_hilbert_node_make(Int32) -> SignaltransformhilbertNode
+
+pub fn signal_transform_hilbert_path_make(Int32) -> SignaltransformhilbertPath
+
+pub fn signal_transform_hilbert_range_make(Int32) -> SignaltransformhilbertRange
+
+pub fn signal_transform_hilbert_slice_make(Int32) -> SignaltransformhilbertSlice
+
+pub fn signal_transform_hilbert_table_make(Int32) -> SignaltransformhilbertTable
+
+pub fn signal_transform_hilbert_vector_zero(Int32) -> SignaltransformhilbertVector
+
+pub fn signal_transform_hilbert_view_make(Int32) -> SignaltransformhilbertView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignaltransformhilbertBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformhilbertBuffer::add(Self, Self) -> Self
+pub fn SignaltransformhilbertBuffer::copy(Self) -> Self
+pub fn SignaltransformhilbertBuffer::fill(Self, Double) -> Self
+pub fn SignaltransformhilbertBuffer::get(Self, Int32) -> Double
+pub fn SignaltransformhilbertBuffer::len(Self) -> Int32
+pub fn SignaltransformhilbertBuffer::max(Self) -> Double
+pub fn SignaltransformhilbertBuffer::mean(Self) -> Double
+pub fn SignaltransformhilbertBuffer::min(Self) -> Double
+pub fn SignaltransformhilbertBuffer::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertBuffer::set(Self, Int32, Double) -> Self
+pub fn SignaltransformhilbertBuffer::sum(Self) -> Double
+pub fn SignaltransformhilbertBuffer::to_string(Self) -> String
+
+pub(all) struct SignaltransformhilbertCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformhilbertCluster::add(Self, Self) -> Self
+pub fn SignaltransformhilbertCluster::copy(Self) -> Self
+pub fn SignaltransformhilbertCluster::fill(Self, Double) -> Self
+pub fn SignaltransformhilbertCluster::get(Self, Int32) -> Double
+pub fn SignaltransformhilbertCluster::len(Self) -> Int32
+pub fn SignaltransformhilbertCluster::max(Self) -> Double
+pub fn SignaltransformhilbertCluster::mean(Self) -> Double
+pub fn SignaltransformhilbertCluster::min(Self) -> Double
+pub fn SignaltransformhilbertCluster::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertCluster::set(Self, Int32, Double) -> Self
+pub fn SignaltransformhilbertCluster::sum(Self) -> Double
+pub fn SignaltransformhilbertCluster::to_string(Self) -> String
+
+pub(all) struct SignaltransformhilbertCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformhilbertCursor::add(Self, Self) -> Self
+pub fn SignaltransformhilbertCursor::copy(Self) -> Self
+pub fn SignaltransformhilbertCursor::fill(Self, Double) -> Self
+pub fn SignaltransformhilbertCursor::get(Self, Int32) -> Double
+pub fn SignaltransformhilbertCursor::len(Self) -> Int32
+pub fn SignaltransformhilbertCursor::max(Self) -> Double
+pub fn SignaltransformhilbertCursor::mean(Self) -> Double
+pub fn SignaltransformhilbertCursor::min(Self) -> Double
+pub fn SignaltransformhilbertCursor::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertCursor::set(Self, Int32, Double) -> Self
+pub fn SignaltransformhilbertCursor::sum(Self) -> Double
+pub fn SignaltransformhilbertCursor::to_string(Self) -> String
+
+pub(all) struct SignaltransformhilbertEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformhilbertEdge::add(Self, Self) -> Self
+pub fn SignaltransformhilbertEdge::copy(Self) -> Self
+pub fn SignaltransformhilbertEdge::fill(Self, Double) -> Self
+pub fn SignaltransformhilbertEdge::get(Self, Int32) -> Double
+pub fn SignaltransformhilbertEdge::len(Self) -> Int32
+pub fn SignaltransformhilbertEdge::max(Self) -> Double
+pub fn SignaltransformhilbertEdge::mean(Self) -> Double
+pub fn SignaltransformhilbertEdge::min(Self) -> Double
+pub fn SignaltransformhilbertEdge::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertEdge::set(Self, Int32, Double) -> Self
+pub fn SignaltransformhilbertEdge::sum(Self) -> Double
+pub fn SignaltransformhilbertEdge::to_string(Self) -> String
+
+pub(all) struct SignaltransformhilbertFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformhilbertFrame::add(Self, Self) -> Self
+pub fn SignaltransformhilbertFrame::copy(Self) -> Self
+pub fn SignaltransformhilbertFrame::fill(Self, Double) -> Self
+pub fn SignaltransformhilbertFrame::get(Self, Int32) -> Double
+pub fn SignaltransformhilbertFrame::len(Self) -> Int32
+pub fn SignaltransformhilbertFrame::max(Self) -> Double
+pub fn SignaltransformhilbertFrame::mean(Self) -> Double
+pub fn SignaltransformhilbertFrame::min(Self) -> Double
+pub fn SignaltransformhilbertFrame::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertFrame::set(Self, Int32, Double) -> Self
+pub fn SignaltransformhilbertFrame::sum(Self) -> Double
+pub fn SignaltransformhilbertFrame::to_string(Self) -> String
+
+pub(all) struct SignaltransformhilbertGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformhilbertGraphN::add(Self, Self) -> Self
+pub fn SignaltransformhilbertGraphN::copy(Self) -> Self
+pub fn SignaltransformhilbertGraphN::fill(Self, Double) -> Self
+pub fn SignaltransformhilbertGraphN::get(Self, Int32) -> Double
+pub fn SignaltransformhilbertGraphN::len(Self) -> Int32
+pub fn SignaltransformhilbertGraphN::max(Self) -> Double
+pub fn SignaltransformhilbertGraphN::mean(Self) -> Double
+pub fn SignaltransformhilbertGraphN::min(Self) -> Double
+pub fn SignaltransformhilbertGraphN::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertGraphN::set(Self, Int32, Double) -> Self
+pub fn SignaltransformhilbertGraphN::sum(Self) -> Double
+pub fn SignaltransformhilbertGraphN::to_string(Self) -> String
+
+pub(all) struct SignaltransformhilbertLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformhilbertLayer::add(Self, Self) -> Self
+pub fn SignaltransformhilbertLayer::copy(Self) -> Self
+pub fn SignaltransformhilbertLayer::fill(Self, Double) -> Self
+pub fn SignaltransformhilbertLayer::get(Self, Int32) -> Double
+pub fn SignaltransformhilbertLayer::len(Self) -> Int32
+pub fn SignaltransformhilbertLayer::max(Self) -> Double
+pub fn SignaltransformhilbertLayer::mean(Self) -> Double
+pub fn SignaltransformhilbertLayer::min(Self) -> Double
+pub fn SignaltransformhilbertLayer::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertLayer::set(Self, Int32, Double) -> Self
+pub fn SignaltransformhilbertLayer::sum(Self) -> Double
+pub fn SignaltransformhilbertLayer::to_string(Self) -> String
+
+pub(all) struct SignaltransformhilbertMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignaltransformhilbertMatrix::add(Self, Self) -> Self
+pub fn SignaltransformhilbertMatrix::det(Self) -> Double
+pub fn SignaltransformhilbertMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignaltransformhilbertMatrix::multiply(Self, Self) -> Self
+pub fn SignaltransformhilbertMatrix::norm(Self) -> Double
+pub fn SignaltransformhilbertMatrix::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertMatrix::to_string(Self) -> String
+pub fn SignaltransformhilbertMatrix::trace(Self) -> Double
+pub fn SignaltransformhilbertMatrix::transpose(Self) -> Self
+
+pub(all) struct SignaltransformhilbertModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformhilbertModel::add(Self, Self) -> Self
+pub fn SignaltransformhilbertModel::copy(Self) -> Self
+pub fn SignaltransformhilbertModel::fill(Self, Double) -> Self
+pub fn SignaltransformhilbertModel::get(Self, Int32) -> Double
+pub fn SignaltransformhilbertModel::len(Self) -> Int32
+pub fn SignaltransformhilbertModel::max(Self) -> Double
+pub fn SignaltransformhilbertModel::mean(Self) -> Double
+pub fn SignaltransformhilbertModel::min(Self) -> Double
+pub fn SignaltransformhilbertModel::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertModel::set(Self, Int32, Double) -> Self
+pub fn SignaltransformhilbertModel::sum(Self) -> Double
+pub fn SignaltransformhilbertModel::to_string(Self) -> String
+
+pub(all) struct SignaltransformhilbertNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformhilbertNode::add(Self, Self) -> Self
+pub fn SignaltransformhilbertNode::copy(Self) -> Self
+pub fn SignaltransformhilbertNode::fill(Self, Double) -> Self
+pub fn SignaltransformhilbertNode::get(Self, Int32) -> Double
+pub fn SignaltransformhilbertNode::len(Self) -> Int32
+pub fn SignaltransformhilbertNode::max(Self) -> Double
+pub fn SignaltransformhilbertNode::mean(Self) -> Double
+pub fn SignaltransformhilbertNode::min(Self) -> Double
+pub fn SignaltransformhilbertNode::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertNode::set(Self, Int32, Double) -> Self
+pub fn SignaltransformhilbertNode::sum(Self) -> Double
+pub fn SignaltransformhilbertNode::to_string(Self) -> String
+
+pub(all) struct SignaltransformhilbertPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformhilbertPath::add(Self, Self) -> Self
+pub fn SignaltransformhilbertPath::copy(Self) -> Self
+pub fn SignaltransformhilbertPath::fill(Self, Double) -> Self
+pub fn SignaltransformhilbertPath::get(Self, Int32) -> Double
+pub fn SignaltransformhilbertPath::len(Self) -> Int32
+pub fn SignaltransformhilbertPath::max(Self) -> Double
+pub fn SignaltransformhilbertPath::mean(Self) -> Double
+pub fn SignaltransformhilbertPath::min(Self) -> Double
+pub fn SignaltransformhilbertPath::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertPath::set(Self, Int32, Double) -> Self
+pub fn SignaltransformhilbertPath::sum(Self) -> Double
+pub fn SignaltransformhilbertPath::to_string(Self) -> String
+
+pub(all) struct SignaltransformhilbertPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignaltransformhilbertPoint::add(Self, Self) -> Self
+pub fn SignaltransformhilbertPoint::cross(Self, Self) -> Self
+pub fn SignaltransformhilbertPoint::dist(Self, Self) -> Double
+pub fn SignaltransformhilbertPoint::dot(Self, Self) -> Double
+pub fn SignaltransformhilbertPoint::label(Self) -> Int32
+pub fn SignaltransformhilbertPoint::lerp(Self, Self, Double) -> Self
+pub fn SignaltransformhilbertPoint::mid(Self, Self) -> Self
+pub fn SignaltransformhilbertPoint::negate(Self) -> Self
+pub fn SignaltransformhilbertPoint::norm(Self) -> Double
+pub fn SignaltransformhilbertPoint::normalize(Self) -> Self
+pub fn SignaltransformhilbertPoint::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertPoint::sub(Self, Self) -> Self
+pub fn SignaltransformhilbertPoint::to_string(Self) -> String
+pub fn SignaltransformhilbertPoint::x(Self) -> Double
+pub fn SignaltransformhilbertPoint::y(Self) -> Double
+pub fn SignaltransformhilbertPoint::z(Self) -> Double
+
+pub(all) struct SignaltransformhilbertRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformhilbertRange::add(Self, Self) -> Self
+pub fn SignaltransformhilbertRange::copy(Self) -> Self
+pub fn SignaltransformhilbertRange::fill(Self, Double) -> Self
+pub fn SignaltransformhilbertRange::get(Self, Int32) -> Double
+pub fn SignaltransformhilbertRange::len(Self) -> Int32
+pub fn SignaltransformhilbertRange::max(Self) -> Double
+pub fn SignaltransformhilbertRange::mean(Self) -> Double
+pub fn SignaltransformhilbertRange::min(Self) -> Double
+pub fn SignaltransformhilbertRange::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertRange::set(Self, Int32, Double) -> Self
+pub fn SignaltransformhilbertRange::sum(Self) -> Double
+pub fn SignaltransformhilbertRange::to_string(Self) -> String
+
+pub(all) struct SignaltransformhilbertSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignaltransformhilbertSeries::add(Self, Self) -> Self
+pub fn SignaltransformhilbertSeries::cumsum(Self) -> Self
+pub fn SignaltransformhilbertSeries::len(Self) -> Int32
+pub fn SignaltransformhilbertSeries::max(Self) -> Double
+pub fn SignaltransformhilbertSeries::mean(Self) -> Double
+pub fn SignaltransformhilbertSeries::median(Self) -> Double
+pub fn SignaltransformhilbertSeries::min(Self) -> Double
+pub fn SignaltransformhilbertSeries::normalize(Self) -> Self
+pub fn SignaltransformhilbertSeries::range(Self) -> Double
+pub fn SignaltransformhilbertSeries::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertSeries::std(Self) -> Double
+pub fn SignaltransformhilbertSeries::sub(Self, Self) -> Self
+pub fn SignaltransformhilbertSeries::sum(Self) -> Double
+pub fn SignaltransformhilbertSeries::to_string(Self) -> String
+pub fn SignaltransformhilbertSeries::variance(Self) -> Double
+
+pub(all) struct SignaltransformhilbertSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformhilbertSlice::add(Self, Self) -> Self
+pub fn SignaltransformhilbertSlice::copy(Self) -> Self
+pub fn SignaltransformhilbertSlice::fill(Self, Double) -> Self
+pub fn SignaltransformhilbertSlice::get(Self, Int32) -> Double
+pub fn SignaltransformhilbertSlice::len(Self) -> Int32
+pub fn SignaltransformhilbertSlice::max(Self) -> Double
+pub fn SignaltransformhilbertSlice::mean(Self) -> Double
+pub fn SignaltransformhilbertSlice::min(Self) -> Double
+pub fn SignaltransformhilbertSlice::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertSlice::set(Self, Int32, Double) -> Self
+pub fn SignaltransformhilbertSlice::sum(Self) -> Double
+pub fn SignaltransformhilbertSlice::to_string(Self) -> String
+
+pub(all) struct SignaltransformhilbertTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformhilbertTable::add(Self, Self) -> Self
+pub fn SignaltransformhilbertTable::copy(Self) -> Self
+pub fn SignaltransformhilbertTable::fill(Self, Double) -> Self
+pub fn SignaltransformhilbertTable::get(Self, Int32) -> Double
+pub fn SignaltransformhilbertTable::len(Self) -> Int32
+pub fn SignaltransformhilbertTable::max(Self) -> Double
+pub fn SignaltransformhilbertTable::mean(Self) -> Double
+pub fn SignaltransformhilbertTable::min(Self) -> Double
+pub fn SignaltransformhilbertTable::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertTable::set(Self, Int32, Double) -> Self
+pub fn SignaltransformhilbertTable::sum(Self) -> Double
+pub fn SignaltransformhilbertTable::to_string(Self) -> String
+
+pub(all) struct SignaltransformhilbertVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignaltransformhilbertVector::add(Self, Self) -> Self
+pub fn SignaltransformhilbertVector::dist(Self, Self) -> Double
+pub fn SignaltransformhilbertVector::dot(Self, Self) -> Double
+pub fn SignaltransformhilbertVector::norm(Self) -> Double
+pub fn SignaltransformhilbertVector::normalize(Self) -> Self
+pub fn SignaltransformhilbertVector::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertVector::sub(Self, Self) -> Self
+pub fn SignaltransformhilbertVector::to_string(Self) -> String
+
+pub(all) struct SignaltransformhilbertView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignaltransformhilbertView::add(Self, Self) -> Self
+pub fn SignaltransformhilbertView::copy(Self) -> Self
+pub fn SignaltransformhilbertView::fill(Self, Double) -> Self
+pub fn SignaltransformhilbertView::get(Self, Int32) -> Double
+pub fn SignaltransformhilbertView::len(Self) -> Int32
+pub fn SignaltransformhilbertView::max(Self) -> Double
+pub fn SignaltransformhilbertView::mean(Self) -> Double
+pub fn SignaltransformhilbertView::min(Self) -> Double
+pub fn SignaltransformhilbertView::scale(Self, Double) -> Self
+pub fn SignaltransformhilbertView::set(Self, Int32, Double) -> Self
+pub fn SignaltransformhilbertView::sum(Self) -> Double
+pub fn SignaltransformhilbertView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

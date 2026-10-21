@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/db_tx_lock"
+
+// Values
+pub fn db_tx_lock_buffer_make(Int32) -> DbtxlockBuffer
+
+pub fn db_tx_lock_cluster_make(Int32) -> DbtxlockCluster
+
+pub fn db_tx_lock_cursor_make(Int32) -> DbtxlockCursor
+
+pub fn db_tx_lock_edge_make(Int32) -> DbtxlockEdge
+
+pub fn db_tx_lock_frame_make(Int32) -> DbtxlockFrame
+
+pub fn db_tx_lock_graphn_make(Int32) -> DbtxlockGraphN
+
+pub fn db_tx_lock_layer_make(Int32) -> DbtxlockLayer
+
+pub fn db_tx_lock_make_matrix(Int32, Int32, Double) -> DbtxlockMatrix
+
+pub fn db_tx_lock_make_point(Double, Double) -> DbtxlockPoint
+
+pub fn db_tx_lock_make_point3(Double, Double, Double) -> DbtxlockPoint
+
+pub fn db_tx_lock_make_series(Array[Double], String) -> DbtxlockSeries
+
+pub fn db_tx_lock_make_vector(Array[Double]) -> DbtxlockVector
+
+pub fn db_tx_lock_matrix_identity(Int32) -> DbtxlockMatrix
+
+pub fn db_tx_lock_model_make(Int32) -> DbtxlockModel
+
+pub fn db_tx_lock_node_make(Int32) -> DbtxlockNode
+
+pub fn db_tx_lock_path_make(Int32) -> DbtxlockPath
+
+pub fn db_tx_lock_range_make(Int32) -> DbtxlockRange
+
+pub fn db_tx_lock_slice_make(Int32) -> DbtxlockSlice
+
+pub fn db_tx_lock_table_make(Int32) -> DbtxlockTable
+
+pub fn db_tx_lock_vector_zero(Int32) -> DbtxlockVector
+
+pub fn db_tx_lock_view_make(Int32) -> DbtxlockView
+
+// Errors
+
+// Types and methods
+pub(all) struct DbtxlockBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxlockBuffer::add(Self, Self) -> Self
+pub fn DbtxlockBuffer::copy(Self) -> Self
+pub fn DbtxlockBuffer::fill(Self, Double) -> Self
+pub fn DbtxlockBuffer::get(Self, Int32) -> Double
+pub fn DbtxlockBuffer::len(Self) -> Int32
+pub fn DbtxlockBuffer::max(Self) -> Double
+pub fn DbtxlockBuffer::mean(Self) -> Double
+pub fn DbtxlockBuffer::min(Self) -> Double
+pub fn DbtxlockBuffer::scale(Self, Double) -> Self
+pub fn DbtxlockBuffer::set(Self, Int32, Double) -> Self
+pub fn DbtxlockBuffer::sum(Self) -> Double
+pub fn DbtxlockBuffer::to_string(Self) -> String
+
+pub(all) struct DbtxlockCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxlockCluster::add(Self, Self) -> Self
+pub fn DbtxlockCluster::copy(Self) -> Self
+pub fn DbtxlockCluster::fill(Self, Double) -> Self
+pub fn DbtxlockCluster::get(Self, Int32) -> Double
+pub fn DbtxlockCluster::len(Self) -> Int32
+pub fn DbtxlockCluster::max(Self) -> Double
+pub fn DbtxlockCluster::mean(Self) -> Double
+pub fn DbtxlockCluster::min(Self) -> Double
+pub fn DbtxlockCluster::scale(Self, Double) -> Self
+pub fn DbtxlockCluster::set(Self, Int32, Double) -> Self
+pub fn DbtxlockCluster::sum(Self) -> Double
+pub fn DbtxlockCluster::to_string(Self) -> String
+
+pub(all) struct DbtxlockCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxlockCursor::add(Self, Self) -> Self
+pub fn DbtxlockCursor::copy(Self) -> Self
+pub fn DbtxlockCursor::fill(Self, Double) -> Self
+pub fn DbtxlockCursor::get(Self, Int32) -> Double
+pub fn DbtxlockCursor::len(Self) -> Int32
+pub fn DbtxlockCursor::max(Self) -> Double
+pub fn DbtxlockCursor::mean(Self) -> Double
+pub fn DbtxlockCursor::min(Self) -> Double
+pub fn DbtxlockCursor::scale(Self, Double) -> Self
+pub fn DbtxlockCursor::set(Self, Int32, Double) -> Self
+pub fn DbtxlockCursor::sum(Self) -> Double
+pub fn DbtxlockCursor::to_string(Self) -> String
+
+pub(all) struct DbtxlockEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxlockEdge::add(Self, Self) -> Self
+pub fn DbtxlockEdge::copy(Self) -> Self
+pub fn DbtxlockEdge::fill(Self, Double) -> Self
+pub fn DbtxlockEdge::get(Self, Int32) -> Double
+pub fn DbtxlockEdge::len(Self) -> Int32
+pub fn DbtxlockEdge::max(Self) -> Double
+pub fn DbtxlockEdge::mean(Self) -> Double
+pub fn DbtxlockEdge::min(Self) -> Double
+pub fn DbtxlockEdge::scale(Self, Double) -> Self
+pub fn DbtxlockEdge::set(Self, Int32, Double) -> Self
+pub fn DbtxlockEdge::sum(Self) -> Double
+pub fn DbtxlockEdge::to_string(Self) -> String
+
+pub(all) struct DbtxlockFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxlockFrame::add(Self, Self) -> Self
+pub fn DbtxlockFrame::copy(Self) -> Self
+pub fn DbtxlockFrame::fill(Self, Double) -> Self
+pub fn DbtxlockFrame::get(Self, Int32) -> Double
+pub fn DbtxlockFrame::len(Self) -> Int32
+pub fn DbtxlockFrame::max(Self) -> Double
+pub fn DbtxlockFrame::mean(Self) -> Double
+pub fn DbtxlockFrame::min(Self) -> Double
+pub fn DbtxlockFrame::scale(Self, Double) -> Self
+pub fn DbtxlockFrame::set(Self, Int32, Double) -> Self
+pub fn DbtxlockFrame::sum(Self) -> Double
+pub fn DbtxlockFrame::to_string(Self) -> String
+
+pub(all) struct DbtxlockGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxlockGraphN::add(Self, Self) -> Self
+pub fn DbtxlockGraphN::copy(Self) -> Self
+pub fn DbtxlockGraphN::fill(Self, Double) -> Self
+pub fn DbtxlockGraphN::get(Self, Int32) -> Double
+pub fn DbtxlockGraphN::len(Self) -> Int32
+pub fn DbtxlockGraphN::max(Self) -> Double
+pub fn DbtxlockGraphN::mean(Self) -> Double
+pub fn DbtxlockGraphN::min(Self) -> Double
+pub fn DbtxlockGraphN::scale(Self, Double) -> Self
+pub fn DbtxlockGraphN::set(Self, Int32, Double) -> Self
+pub fn DbtxlockGraphN::sum(Self) -> Double
+pub fn DbtxlockGraphN::to_string(Self) -> String
+
+pub(all) struct DbtxlockLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxlockLayer::add(Self, Self) -> Self
+pub fn DbtxlockLayer::copy(Self) -> Self
+pub fn DbtxlockLayer::fill(Self, Double) -> Self
+pub fn DbtxlockLayer::get(Self, Int32) -> Double
+pub fn DbtxlockLayer::len(Self) -> Int32
+pub fn DbtxlockLayer::max(Self) -> Double
+pub fn DbtxlockLayer::mean(Self) -> Double
+pub fn DbtxlockLayer::min(Self) -> Double
+pub fn DbtxlockLayer::scale(Self, Double) -> Self
+pub fn DbtxlockLayer::set(Self, Int32, Double) -> Self
+pub fn DbtxlockLayer::sum(Self) -> Double
+pub fn DbtxlockLayer::to_string(Self) -> String
+
+pub(all) struct DbtxlockMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DbtxlockMatrix::add(Self, Self) -> Self
+pub fn DbtxlockMatrix::det(Self) -> Double
+pub fn DbtxlockMatrix::get(Self, Int32, Int32) -> Double
+pub fn DbtxlockMatrix::multiply(Self, Self) -> Self
+pub fn DbtxlockMatrix::norm(Self) -> Double
+pub fn DbtxlockMatrix::scale(Self, Double) -> Self
+pub fn DbtxlockMatrix::to_string(Self) -> String
+pub fn DbtxlockMatrix::trace(Self) -> Double
+pub fn DbtxlockMatrix::transpose(Self) -> Self
+
+pub(all) struct DbtxlockModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxlockModel::add(Self, Self) -> Self
+pub fn DbtxlockModel::copy(Self) -> Self
+pub fn DbtxlockModel::fill(Self, Double) -> Self
+pub fn DbtxlockModel::get(Self, Int32) -> Double
+pub fn DbtxlockModel::len(Self) -> Int32
+pub fn DbtxlockModel::max(Self) -> Double
+pub fn DbtxlockModel::mean(Self) -> Double
+pub fn DbtxlockModel::min(Self) -> Double
+pub fn DbtxlockModel::scale(Self, Double) -> Self
+pub fn DbtxlockModel::set(Self, Int32, Double) -> Self
+pub fn DbtxlockModel::sum(Self) -> Double
+pub fn DbtxlockModel::to_string(Self) -> String
+
+pub(all) struct DbtxlockNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxlockNode::add(Self, Self) -> Self
+pub fn DbtxlockNode::copy(Self) -> Self
+pub fn DbtxlockNode::fill(Self, Double) -> Self
+pub fn DbtxlockNode::get(Self, Int32) -> Double
+pub fn DbtxlockNode::len(Self) -> Int32
+pub fn DbtxlockNode::max(Self) -> Double
+pub fn DbtxlockNode::mean(Self) -> Double
+pub fn DbtxlockNode::min(Self) -> Double
+pub fn DbtxlockNode::scale(Self, Double) -> Self
+pub fn DbtxlockNode::set(Self, Int32, Double) -> Self
+pub fn DbtxlockNode::sum(Self) -> Double
+pub fn DbtxlockNode::to_string(Self) -> String
+
+pub(all) struct DbtxlockPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxlockPath::add(Self, Self) -> Self
+pub fn DbtxlockPath::copy(Self) -> Self
+pub fn DbtxlockPath::fill(Self, Double) -> Self
+pub fn DbtxlockPath::get(Self, Int32) -> Double
+pub fn DbtxlockPath::len(Self) -> Int32
+pub fn DbtxlockPath::max(Self) -> Double
+pub fn DbtxlockPath::mean(Self) -> Double
+pub fn DbtxlockPath::min(Self) -> Double
+pub fn DbtxlockPath::scale(Self, Double) -> Self
+pub fn DbtxlockPath::set(Self, Int32, Double) -> Self
+pub fn DbtxlockPath::sum(Self) -> Double
+pub fn DbtxlockPath::to_string(Self) -> String
+
+pub(all) struct DbtxlockPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DbtxlockPoint::add(Self, Self) -> Self
+pub fn DbtxlockPoint::cross(Self, Self) -> Self
+pub fn DbtxlockPoint::dist(Self, Self) -> Double
+pub fn DbtxlockPoint::dot(Self, Self) -> Double
+pub fn DbtxlockPoint::label(Self) -> Int32
+pub fn DbtxlockPoint::lerp(Self, Self, Double) -> Self
+pub fn DbtxlockPoint::mid(Self, Self) -> Self
+pub fn DbtxlockPoint::negate(Self) -> Self
+pub fn DbtxlockPoint::norm(Self) -> Double
+pub fn DbtxlockPoint::normalize(Self) -> Self
+pub fn DbtxlockPoint::scale(Self, Double) -> Self
+pub fn DbtxlockPoint::sub(Self, Self) -> Self
+pub fn DbtxlockPoint::to_string(Self) -> String
+pub fn DbtxlockPoint::x(Self) -> Double
+pub fn DbtxlockPoint::y(Self) -> Double
+pub fn DbtxlockPoint::z(Self) -> Double
+
+pub(all) struct DbtxlockRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxlockRange::add(Self, Self) -> Self
+pub fn DbtxlockRange::copy(Self) -> Self
+pub fn DbtxlockRange::fill(Self, Double) -> Self
+pub fn DbtxlockRange::get(Self, Int32) -> Double
+pub fn DbtxlockRange::len(Self) -> Int32
+pub fn DbtxlockRange::max(Self) -> Double
+pub fn DbtxlockRange::mean(Self) -> Double
+pub fn DbtxlockRange::min(Self) -> Double
+pub fn DbtxlockRange::scale(Self, Double) -> Self
+pub fn DbtxlockRange::set(Self, Int32, Double) -> Self
+pub fn DbtxlockRange::sum(Self) -> Double
+pub fn DbtxlockRange::to_string(Self) -> String
+
+pub(all) struct DbtxlockSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DbtxlockSeries::add(Self, Self) -> Self
+pub fn DbtxlockSeries::cumsum(Self) -> Self
+pub fn DbtxlockSeries::len(Self) -> Int32
+pub fn DbtxlockSeries::max(Self) -> Double
+pub fn DbtxlockSeries::mean(Self) -> Double
+pub fn DbtxlockSeries::median(Self) -> Double
+pub fn DbtxlockSeries::min(Self) -> Double
+pub fn DbtxlockSeries::normalize(Self) -> Self
+pub fn DbtxlockSeries::range(Self) -> Double
+pub fn DbtxlockSeries::scale(Self, Double) -> Self
+pub fn DbtxlockSeries::std(Self) -> Double
+pub fn DbtxlockSeries::sub(Self, Self) -> Self
+pub fn DbtxlockSeries::sum(Self) -> Double
+pub fn DbtxlockSeries::to_string(Self) -> String
+pub fn DbtxlockSeries::variance(Self) -> Double
+
+pub(all) struct DbtxlockSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxlockSlice::add(Self, Self) -> Self
+pub fn DbtxlockSlice::copy(Self) -> Self
+pub fn DbtxlockSlice::fill(Self, Double) -> Self
+pub fn DbtxlockSlice::get(Self, Int32) -> Double
+pub fn DbtxlockSlice::len(Self) -> Int32
+pub fn DbtxlockSlice::max(Self) -> Double
+pub fn DbtxlockSlice::mean(Self) -> Double
+pub fn DbtxlockSlice::min(Self) -> Double
+pub fn DbtxlockSlice::scale(Self, Double) -> Self
+pub fn DbtxlockSlice::set(Self, Int32, Double) -> Self
+pub fn DbtxlockSlice::sum(Self) -> Double
+pub fn DbtxlockSlice::to_string(Self) -> String
+
+pub(all) struct DbtxlockTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxlockTable::add(Self, Self) -> Self
+pub fn DbtxlockTable::copy(Self) -> Self
+pub fn DbtxlockTable::fill(Self, Double) -> Self
+pub fn DbtxlockTable::get(Self, Int32) -> Double
+pub fn DbtxlockTable::len(Self) -> Int32
+pub fn DbtxlockTable::max(Self) -> Double
+pub fn DbtxlockTable::mean(Self) -> Double
+pub fn DbtxlockTable::min(Self) -> Double
+pub fn DbtxlockTable::scale(Self, Double) -> Self
+pub fn DbtxlockTable::set(Self, Int32, Double) -> Self
+pub fn DbtxlockTable::sum(Self) -> Double
+pub fn DbtxlockTable::to_string(Self) -> String
+
+pub(all) struct DbtxlockVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DbtxlockVector::add(Self, Self) -> Self
+pub fn DbtxlockVector::dist(Self, Self) -> Double
+pub fn DbtxlockVector::dot(Self, Self) -> Double
+pub fn DbtxlockVector::norm(Self) -> Double
+pub fn DbtxlockVector::normalize(Self) -> Self
+pub fn DbtxlockVector::scale(Self, Double) -> Self
+pub fn DbtxlockVector::sub(Self, Self) -> Self
+pub fn DbtxlockVector::to_string(Self) -> String
+
+pub(all) struct DbtxlockView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DbtxlockView::add(Self, Self) -> Self
+pub fn DbtxlockView::copy(Self) -> Self
+pub fn DbtxlockView::fill(Self, Double) -> Self
+pub fn DbtxlockView::get(Self, Int32) -> Double
+pub fn DbtxlockView::len(Self) -> Int32
+pub fn DbtxlockView::max(Self) -> Double
+pub fn DbtxlockView::mean(Self) -> Double
+pub fn DbtxlockView::min(Self) -> Double
+pub fn DbtxlockView::scale(Self, Double) -> Self
+pub fn DbtxlockView::set(Self, Int32, Double) -> Self
+pub fn DbtxlockView::sum(Self) -> Double
+pub fn DbtxlockView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

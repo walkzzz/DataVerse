@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/image_stitch"
+
+// Values
+pub fn image_stitch_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn image_stitch_corr(Array[Double], Array[Double]) -> Double
+
+pub fn image_stitch_cov(Array[Double], Array[Double]) -> Double
+
+pub fn image_stitch_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn image_stitch_mae(Array[Double], Array[Double]) -> Double
+
+pub fn image_stitch_make_labeled_point(Double, Double, Int32) -> Image_stitchPoint
+
+pub fn image_stitch_make_matrix(Int32, Int32, Double) -> Image_stitchMatrix
+
+pub fn image_stitch_make_point(Double, Double) -> Image_stitchPoint
+
+pub fn image_stitch_make_series(Array[Double], String) -> Image_stitchSeries
+
+pub fn image_stitch_make_vector(Array[Double]) -> Image_stitchVector
+
+pub fn image_stitch_matrix_add(Image_stitchMatrix, Image_stitchMatrix) -> Image_stitchMatrix
+
+pub fn image_stitch_matrix_get(Image_stitchMatrix, Int32, Int32) -> Double
+
+pub fn image_stitch_matrix_identity(Int32) -> Image_stitchMatrix
+
+pub fn image_stitch_matrix_multiply(Image_stitchMatrix, Image_stitchMatrix) -> Image_stitchMatrix
+
+pub fn image_stitch_matrix_norm(Image_stitchMatrix) -> Double
+
+pub fn image_stitch_matrix_scale(Image_stitchMatrix, Double) -> Image_stitchMatrix
+
+pub fn image_stitch_matrix_to_string(Image_stitchMatrix) -> String
+
+pub fn image_stitch_matrix_trace(Image_stitchMatrix) -> Double
+
+pub fn image_stitch_matrix_transpose(Image_stitchMatrix) -> Image_stitchMatrix
+
+pub fn image_stitch_mse(Array[Double], Array[Double]) -> Double
+
+pub fn image_stitch_point_add(Image_stitchPoint, Image_stitchPoint) -> Image_stitchPoint
+
+pub fn image_stitch_point_dist(Image_stitchPoint, Image_stitchPoint) -> Double
+
+pub fn image_stitch_point_dot(Image_stitchPoint, Image_stitchPoint) -> Double
+
+pub fn image_stitch_point_label(Image_stitchPoint) -> Int32
+
+pub fn image_stitch_point_norm(Image_stitchPoint) -> Double
+
+pub fn image_stitch_point_scale(Image_stitchPoint, Double) -> Image_stitchPoint
+
+pub fn image_stitch_point_sub(Image_stitchPoint, Image_stitchPoint) -> Image_stitchPoint
+
+pub fn image_stitch_point_to_string(Image_stitchPoint) -> String
+
+pub fn image_stitch_point_x(Image_stitchPoint) -> Double
+
+pub fn image_stitch_point_y(Image_stitchPoint) -> Double
+
+pub fn image_stitch_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn image_stitch_r2(Array[Double], Array[Double]) -> Double
+
+pub fn image_stitch_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn image_stitch_series_add(Image_stitchSeries, Image_stitchSeries) -> Image_stitchSeries
+
+pub fn image_stitch_series_len(Image_stitchSeries) -> Int32
+
+pub fn image_stitch_series_max(Image_stitchSeries) -> Double
+
+pub fn image_stitch_series_mean(Image_stitchSeries) -> Double
+
+pub fn image_stitch_series_min(Image_stitchSeries) -> Double
+
+pub fn image_stitch_series_scale(Image_stitchSeries, Double) -> Image_stitchSeries
+
+pub fn image_stitch_series_std(Image_stitchSeries) -> Double
+
+pub fn image_stitch_series_sum(Image_stitchSeries) -> Double
+
+pub fn image_stitch_series_to_string(Image_stitchSeries) -> String
+
+pub fn image_stitch_series_var(Image_stitchSeries) -> Double
+
+pub fn image_stitch_std(Array[Double]) -> Double
+
+pub fn image_stitch_var(Array[Double]) -> Double
+
+pub fn image_stitch_vector_add(Image_stitchVector, Image_stitchVector) -> Image_stitchVector
+
+pub fn image_stitch_vector_dist(Image_stitchVector, Image_stitchVector) -> Double
+
+pub fn image_stitch_vector_dot(Image_stitchVector, Image_stitchVector) -> Double
+
+pub fn image_stitch_vector_norm(Image_stitchVector) -> Double
+
+pub fn image_stitch_vector_normalize(Image_stitchVector) -> Image_stitchVector
+
+pub fn image_stitch_vector_scale(Image_stitchVector, Double) -> Image_stitchVector
+
+pub fn image_stitch_vector_sub(Image_stitchVector, Image_stitchVector) -> Image_stitchVector
+
+pub fn image_stitch_vector_to_string(Image_stitchVector) -> String
+
+pub fn image_stitch_vector_zero(Int32) -> Image_stitchVector
+
+// Errors
+
+// Types and methods
+pub struct Image_stitchMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Image_stitchPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Image_stitchSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Image_stitchVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

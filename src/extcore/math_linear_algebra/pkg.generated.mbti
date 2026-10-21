@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_linear_algebra"
+
+// Values
+pub fn math_linear_algebra_buffer_make(Int32) -> MathlinearalgebraBuffer
+
+pub fn math_linear_algebra_cluster_make(Int32) -> MathlinearalgebraCluster
+
+pub fn math_linear_algebra_cursor_make(Int32) -> MathlinearalgebraCursor
+
+pub fn math_linear_algebra_edge_make(Int32) -> MathlinearalgebraEdge
+
+pub fn math_linear_algebra_frame_make(Int32) -> MathlinearalgebraFrame
+
+pub fn math_linear_algebra_graphn_make(Int32) -> MathlinearalgebraGraphN
+
+pub fn math_linear_algebra_layer_make(Int32) -> MathlinearalgebraLayer
+
+pub fn math_linear_algebra_make_matrix(Int32, Int32, Double) -> MathlinearalgebraMatrix
+
+pub fn math_linear_algebra_make_point(Double, Double) -> MathlinearalgebraPoint
+
+pub fn math_linear_algebra_make_point3(Double, Double, Double) -> MathlinearalgebraPoint
+
+pub fn math_linear_algebra_make_series(Array[Double], String) -> MathlinearalgebraSeries
+
+pub fn math_linear_algebra_make_vector(Array[Double]) -> MathlinearalgebraVector
+
+pub fn math_linear_algebra_matrix_identity(Int32) -> MathlinearalgebraMatrix
+
+pub fn math_linear_algebra_model_make(Int32) -> MathlinearalgebraModel
+
+pub fn math_linear_algebra_node_make(Int32) -> MathlinearalgebraNode
+
+pub fn math_linear_algebra_path_make(Int32) -> MathlinearalgebraPath
+
+pub fn math_linear_algebra_range_make(Int32) -> MathlinearalgebraRange
+
+pub fn math_linear_algebra_slice_make(Int32) -> MathlinearalgebraSlice
+
+pub fn math_linear_algebra_table_make(Int32) -> MathlinearalgebraTable
+
+pub fn math_linear_algebra_vector_zero(Int32) -> MathlinearalgebraVector
+
+pub fn math_linear_algebra_view_make(Int32) -> MathlinearalgebraView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathlinearalgebraBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearalgebraBuffer::add(Self, Self) -> Self
+pub fn MathlinearalgebraBuffer::copy(Self) -> Self
+pub fn MathlinearalgebraBuffer::fill(Self, Double) -> Self
+pub fn MathlinearalgebraBuffer::get(Self, Int32) -> Double
+pub fn MathlinearalgebraBuffer::len(Self) -> Int32
+pub fn MathlinearalgebraBuffer::max(Self) -> Double
+pub fn MathlinearalgebraBuffer::mean(Self) -> Double
+pub fn MathlinearalgebraBuffer::min(Self) -> Double
+pub fn MathlinearalgebraBuffer::scale(Self, Double) -> Self
+pub fn MathlinearalgebraBuffer::set(Self, Int32, Double) -> Self
+pub fn MathlinearalgebraBuffer::sum(Self) -> Double
+pub fn MathlinearalgebraBuffer::to_string(Self) -> String
+
+pub(all) struct MathlinearalgebraCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearalgebraCluster::add(Self, Self) -> Self
+pub fn MathlinearalgebraCluster::copy(Self) -> Self
+pub fn MathlinearalgebraCluster::fill(Self, Double) -> Self
+pub fn MathlinearalgebraCluster::get(Self, Int32) -> Double
+pub fn MathlinearalgebraCluster::len(Self) -> Int32
+pub fn MathlinearalgebraCluster::max(Self) -> Double
+pub fn MathlinearalgebraCluster::mean(Self) -> Double
+pub fn MathlinearalgebraCluster::min(Self) -> Double
+pub fn MathlinearalgebraCluster::scale(Self, Double) -> Self
+pub fn MathlinearalgebraCluster::set(Self, Int32, Double) -> Self
+pub fn MathlinearalgebraCluster::sum(Self) -> Double
+pub fn MathlinearalgebraCluster::to_string(Self) -> String
+
+pub(all) struct MathlinearalgebraCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearalgebraCursor::add(Self, Self) -> Self
+pub fn MathlinearalgebraCursor::copy(Self) -> Self
+pub fn MathlinearalgebraCursor::fill(Self, Double) -> Self
+pub fn MathlinearalgebraCursor::get(Self, Int32) -> Double
+pub fn MathlinearalgebraCursor::len(Self) -> Int32
+pub fn MathlinearalgebraCursor::max(Self) -> Double
+pub fn MathlinearalgebraCursor::mean(Self) -> Double
+pub fn MathlinearalgebraCursor::min(Self) -> Double
+pub fn MathlinearalgebraCursor::scale(Self, Double) -> Self
+pub fn MathlinearalgebraCursor::set(Self, Int32, Double) -> Self
+pub fn MathlinearalgebraCursor::sum(Self) -> Double
+pub fn MathlinearalgebraCursor::to_string(Self) -> String
+
+pub(all) struct MathlinearalgebraEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearalgebraEdge::add(Self, Self) -> Self
+pub fn MathlinearalgebraEdge::copy(Self) -> Self
+pub fn MathlinearalgebraEdge::fill(Self, Double) -> Self
+pub fn MathlinearalgebraEdge::get(Self, Int32) -> Double
+pub fn MathlinearalgebraEdge::len(Self) -> Int32
+pub fn MathlinearalgebraEdge::max(Self) -> Double
+pub fn MathlinearalgebraEdge::mean(Self) -> Double
+pub fn MathlinearalgebraEdge::min(Self) -> Double
+pub fn MathlinearalgebraEdge::scale(Self, Double) -> Self
+pub fn MathlinearalgebraEdge::set(Self, Int32, Double) -> Self
+pub fn MathlinearalgebraEdge::sum(Self) -> Double
+pub fn MathlinearalgebraEdge::to_string(Self) -> String
+
+pub(all) struct MathlinearalgebraFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearalgebraFrame::add(Self, Self) -> Self
+pub fn MathlinearalgebraFrame::copy(Self) -> Self
+pub fn MathlinearalgebraFrame::fill(Self, Double) -> Self
+pub fn MathlinearalgebraFrame::get(Self, Int32) -> Double
+pub fn MathlinearalgebraFrame::len(Self) -> Int32
+pub fn MathlinearalgebraFrame::max(Self) -> Double
+pub fn MathlinearalgebraFrame::mean(Self) -> Double
+pub fn MathlinearalgebraFrame::min(Self) -> Double
+pub fn MathlinearalgebraFrame::scale(Self, Double) -> Self
+pub fn MathlinearalgebraFrame::set(Self, Int32, Double) -> Self
+pub fn MathlinearalgebraFrame::sum(Self) -> Double
+pub fn MathlinearalgebraFrame::to_string(Self) -> String
+
+pub(all) struct MathlinearalgebraGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearalgebraGraphN::add(Self, Self) -> Self
+pub fn MathlinearalgebraGraphN::copy(Self) -> Self
+pub fn MathlinearalgebraGraphN::fill(Self, Double) -> Self
+pub fn MathlinearalgebraGraphN::get(Self, Int32) -> Double
+pub fn MathlinearalgebraGraphN::len(Self) -> Int32
+pub fn MathlinearalgebraGraphN::max(Self) -> Double
+pub fn MathlinearalgebraGraphN::mean(Self) -> Double
+pub fn MathlinearalgebraGraphN::min(Self) -> Double
+pub fn MathlinearalgebraGraphN::scale(Self, Double) -> Self
+pub fn MathlinearalgebraGraphN::set(Self, Int32, Double) -> Self
+pub fn MathlinearalgebraGraphN::sum(Self) -> Double
+pub fn MathlinearalgebraGraphN::to_string(Self) -> String
+
+pub(all) struct MathlinearalgebraLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearalgebraLayer::add(Self, Self) -> Self
+pub fn MathlinearalgebraLayer::copy(Self) -> Self
+pub fn MathlinearalgebraLayer::fill(Self, Double) -> Self
+pub fn MathlinearalgebraLayer::get(Self, Int32) -> Double
+pub fn MathlinearalgebraLayer::len(Self) -> Int32
+pub fn MathlinearalgebraLayer::max(Self) -> Double
+pub fn MathlinearalgebraLayer::mean(Self) -> Double
+pub fn MathlinearalgebraLayer::min(Self) -> Double
+pub fn MathlinearalgebraLayer::scale(Self, Double) -> Self
+pub fn MathlinearalgebraLayer::set(Self, Int32, Double) -> Self
+pub fn MathlinearalgebraLayer::sum(Self) -> Double
+pub fn MathlinearalgebraLayer::to_string(Self) -> String
+
+pub(all) struct MathlinearalgebraMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathlinearalgebraMatrix::add(Self, Self) -> Self
+pub fn MathlinearalgebraMatrix::det(Self) -> Double
+pub fn MathlinearalgebraMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathlinearalgebraMatrix::multiply(Self, Self) -> Self
+pub fn MathlinearalgebraMatrix::norm(Self) -> Double
+pub fn MathlinearalgebraMatrix::scale(Self, Double) -> Self
+pub fn MathlinearalgebraMatrix::to_string(Self) -> String
+pub fn MathlinearalgebraMatrix::trace(Self) -> Double
+pub fn MathlinearalgebraMatrix::transpose(Self) -> Self
+
+pub(all) struct MathlinearalgebraModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearalgebraModel::add(Self, Self) -> Self
+pub fn MathlinearalgebraModel::copy(Self) -> Self
+pub fn MathlinearalgebraModel::fill(Self, Double) -> Self
+pub fn MathlinearalgebraModel::get(Self, Int32) -> Double
+pub fn MathlinearalgebraModel::len(Self) -> Int32
+pub fn MathlinearalgebraModel::max(Self) -> Double
+pub fn MathlinearalgebraModel::mean(Self) -> Double
+pub fn MathlinearalgebraModel::min(Self) -> Double
+pub fn MathlinearalgebraModel::scale(Self, Double) -> Self
+pub fn MathlinearalgebraModel::set(Self, Int32, Double) -> Self
+pub fn MathlinearalgebraModel::sum(Self) -> Double
+pub fn MathlinearalgebraModel::to_string(Self) -> String
+
+pub(all) struct MathlinearalgebraNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearalgebraNode::add(Self, Self) -> Self
+pub fn MathlinearalgebraNode::copy(Self) -> Self
+pub fn MathlinearalgebraNode::fill(Self, Double) -> Self
+pub fn MathlinearalgebraNode::get(Self, Int32) -> Double
+pub fn MathlinearalgebraNode::len(Self) -> Int32
+pub fn MathlinearalgebraNode::max(Self) -> Double
+pub fn MathlinearalgebraNode::mean(Self) -> Double
+pub fn MathlinearalgebraNode::min(Self) -> Double
+pub fn MathlinearalgebraNode::scale(Self, Double) -> Self
+pub fn MathlinearalgebraNode::set(Self, Int32, Double) -> Self
+pub fn MathlinearalgebraNode::sum(Self) -> Double
+pub fn MathlinearalgebraNode::to_string(Self) -> String
+
+pub(all) struct MathlinearalgebraPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearalgebraPath::add(Self, Self) -> Self
+pub fn MathlinearalgebraPath::copy(Self) -> Self
+pub fn MathlinearalgebraPath::fill(Self, Double) -> Self
+pub fn MathlinearalgebraPath::get(Self, Int32) -> Double
+pub fn MathlinearalgebraPath::len(Self) -> Int32
+pub fn MathlinearalgebraPath::max(Self) -> Double
+pub fn MathlinearalgebraPath::mean(Self) -> Double
+pub fn MathlinearalgebraPath::min(Self) -> Double
+pub fn MathlinearalgebraPath::scale(Self, Double) -> Self
+pub fn MathlinearalgebraPath::set(Self, Int32, Double) -> Self
+pub fn MathlinearalgebraPath::sum(Self) -> Double
+pub fn MathlinearalgebraPath::to_string(Self) -> String
+
+pub(all) struct MathlinearalgebraPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathlinearalgebraPoint::add(Self, Self) -> Self
+pub fn MathlinearalgebraPoint::cross(Self, Self) -> Self
+pub fn MathlinearalgebraPoint::dist(Self, Self) -> Double
+pub fn MathlinearalgebraPoint::dot(Self, Self) -> Double
+pub fn MathlinearalgebraPoint::label(Self) -> Int32
+pub fn MathlinearalgebraPoint::lerp(Self, Self, Double) -> Self
+pub fn MathlinearalgebraPoint::mid(Self, Self) -> Self
+pub fn MathlinearalgebraPoint::negate(Self) -> Self
+pub fn MathlinearalgebraPoint::norm(Self) -> Double
+pub fn MathlinearalgebraPoint::normalize(Self) -> Self
+pub fn MathlinearalgebraPoint::scale(Self, Double) -> Self
+pub fn MathlinearalgebraPoint::sub(Self, Self) -> Self
+pub fn MathlinearalgebraPoint::to_string(Self) -> String
+pub fn MathlinearalgebraPoint::x(Self) -> Double
+pub fn MathlinearalgebraPoint::y(Self) -> Double
+pub fn MathlinearalgebraPoint::z(Self) -> Double
+
+pub(all) struct MathlinearalgebraRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearalgebraRange::add(Self, Self) -> Self
+pub fn MathlinearalgebraRange::copy(Self) -> Self
+pub fn MathlinearalgebraRange::fill(Self, Double) -> Self
+pub fn MathlinearalgebraRange::get(Self, Int32) -> Double
+pub fn MathlinearalgebraRange::len(Self) -> Int32
+pub fn MathlinearalgebraRange::max(Self) -> Double
+pub fn MathlinearalgebraRange::mean(Self) -> Double
+pub fn MathlinearalgebraRange::min(Self) -> Double
+pub fn MathlinearalgebraRange::scale(Self, Double) -> Self
+pub fn MathlinearalgebraRange::set(Self, Int32, Double) -> Self
+pub fn MathlinearalgebraRange::sum(Self) -> Double
+pub fn MathlinearalgebraRange::to_string(Self) -> String
+
+pub(all) struct MathlinearalgebraSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathlinearalgebraSeries::add(Self, Self) -> Self
+pub fn MathlinearalgebraSeries::cumsum(Self) -> Self
+pub fn MathlinearalgebraSeries::len(Self) -> Int32
+pub fn MathlinearalgebraSeries::max(Self) -> Double
+pub fn MathlinearalgebraSeries::mean(Self) -> Double
+pub fn MathlinearalgebraSeries::median(Self) -> Double
+pub fn MathlinearalgebraSeries::min(Self) -> Double
+pub fn MathlinearalgebraSeries::normalize(Self) -> Self
+pub fn MathlinearalgebraSeries::range(Self) -> Double
+pub fn MathlinearalgebraSeries::scale(Self, Double) -> Self
+pub fn MathlinearalgebraSeries::std(Self) -> Double
+pub fn MathlinearalgebraSeries::sub(Self, Self) -> Self
+pub fn MathlinearalgebraSeries::sum(Self) -> Double
+pub fn MathlinearalgebraSeries::to_string(Self) -> String
+pub fn MathlinearalgebraSeries::variance(Self) -> Double
+
+pub(all) struct MathlinearalgebraSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearalgebraSlice::add(Self, Self) -> Self
+pub fn MathlinearalgebraSlice::copy(Self) -> Self
+pub fn MathlinearalgebraSlice::fill(Self, Double) -> Self
+pub fn MathlinearalgebraSlice::get(Self, Int32) -> Double
+pub fn MathlinearalgebraSlice::len(Self) -> Int32
+pub fn MathlinearalgebraSlice::max(Self) -> Double
+pub fn MathlinearalgebraSlice::mean(Self) -> Double
+pub fn MathlinearalgebraSlice::min(Self) -> Double
+pub fn MathlinearalgebraSlice::scale(Self, Double) -> Self
+pub fn MathlinearalgebraSlice::set(Self, Int32, Double) -> Self
+pub fn MathlinearalgebraSlice::sum(Self) -> Double
+pub fn MathlinearalgebraSlice::to_string(Self) -> String
+
+pub(all) struct MathlinearalgebraTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearalgebraTable::add(Self, Self) -> Self
+pub fn MathlinearalgebraTable::copy(Self) -> Self
+pub fn MathlinearalgebraTable::fill(Self, Double) -> Self
+pub fn MathlinearalgebraTable::get(Self, Int32) -> Double
+pub fn MathlinearalgebraTable::len(Self) -> Int32
+pub fn MathlinearalgebraTable::max(Self) -> Double
+pub fn MathlinearalgebraTable::mean(Self) -> Double
+pub fn MathlinearalgebraTable::min(Self) -> Double
+pub fn MathlinearalgebraTable::scale(Self, Double) -> Self
+pub fn MathlinearalgebraTable::set(Self, Int32, Double) -> Self
+pub fn MathlinearalgebraTable::sum(Self) -> Double
+pub fn MathlinearalgebraTable::to_string(Self) -> String
+
+pub(all) struct MathlinearalgebraVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathlinearalgebraVector::add(Self, Self) -> Self
+pub fn MathlinearalgebraVector::dist(Self, Self) -> Double
+pub fn MathlinearalgebraVector::dot(Self, Self) -> Double
+pub fn MathlinearalgebraVector::norm(Self) -> Double
+pub fn MathlinearalgebraVector::normalize(Self) -> Self
+pub fn MathlinearalgebraVector::scale(Self, Double) -> Self
+pub fn MathlinearalgebraVector::sub(Self, Self) -> Self
+pub fn MathlinearalgebraVector::to_string(Self) -> String
+
+pub(all) struct MathlinearalgebraView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathlinearalgebraView::add(Self, Self) -> Self
+pub fn MathlinearalgebraView::copy(Self) -> Self
+pub fn MathlinearalgebraView::fill(Self, Double) -> Self
+pub fn MathlinearalgebraView::get(Self, Int32) -> Double
+pub fn MathlinearalgebraView::len(Self) -> Int32
+pub fn MathlinearalgebraView::max(Self) -> Double
+pub fn MathlinearalgebraView::mean(Self) -> Double
+pub fn MathlinearalgebraView::min(Self) -> Double
+pub fn MathlinearalgebraView::scale(Self, Double) -> Self
+pub fn MathlinearalgebraView::set(Self, Int32, Double) -> Self
+pub fn MathlinearalgebraView::sum(Self) -> Double
+pub fn MathlinearalgebraView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

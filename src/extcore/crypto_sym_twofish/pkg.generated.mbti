@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/crypto_sym_twofish"
+
+// Values
+pub fn crypto_sym_twofish_buffer_make(Int32) -> CryptosymtwofishBuffer
+
+pub fn crypto_sym_twofish_cluster_make(Int32) -> CryptosymtwofishCluster
+
+pub fn crypto_sym_twofish_cursor_make(Int32) -> CryptosymtwofishCursor
+
+pub fn crypto_sym_twofish_edge_make(Int32) -> CryptosymtwofishEdge
+
+pub fn crypto_sym_twofish_frame_make(Int32) -> CryptosymtwofishFrame
+
+pub fn crypto_sym_twofish_graphn_make(Int32) -> CryptosymtwofishGraphN
+
+pub fn crypto_sym_twofish_layer_make(Int32) -> CryptosymtwofishLayer
+
+pub fn crypto_sym_twofish_make_matrix(Int32, Int32, Double) -> CryptosymtwofishMatrix
+
+pub fn crypto_sym_twofish_make_point(Double, Double) -> CryptosymtwofishPoint
+
+pub fn crypto_sym_twofish_make_point3(Double, Double, Double) -> CryptosymtwofishPoint
+
+pub fn crypto_sym_twofish_make_series(Array[Double], String) -> CryptosymtwofishSeries
+
+pub fn crypto_sym_twofish_make_vector(Array[Double]) -> CryptosymtwofishVector
+
+pub fn crypto_sym_twofish_matrix_identity(Int32) -> CryptosymtwofishMatrix
+
+pub fn crypto_sym_twofish_model_make(Int32) -> CryptosymtwofishModel
+
+pub fn crypto_sym_twofish_node_make(Int32) -> CryptosymtwofishNode
+
+pub fn crypto_sym_twofish_path_make(Int32) -> CryptosymtwofishPath
+
+pub fn crypto_sym_twofish_range_make(Int32) -> CryptosymtwofishRange
+
+pub fn crypto_sym_twofish_slice_make(Int32) -> CryptosymtwofishSlice
+
+pub fn crypto_sym_twofish_table_make(Int32) -> CryptosymtwofishTable
+
+pub fn crypto_sym_twofish_vector_zero(Int32) -> CryptosymtwofishVector
+
+pub fn crypto_sym_twofish_view_make(Int32) -> CryptosymtwofishView
+
+// Errors
+
+// Types and methods
+pub(all) struct CryptosymtwofishBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymtwofishBuffer::add(Self, Self) -> Self
+pub fn CryptosymtwofishBuffer::copy(Self) -> Self
+pub fn CryptosymtwofishBuffer::fill(Self, Double) -> Self
+pub fn CryptosymtwofishBuffer::get(Self, Int32) -> Double
+pub fn CryptosymtwofishBuffer::len(Self) -> Int32
+pub fn CryptosymtwofishBuffer::max(Self) -> Double
+pub fn CryptosymtwofishBuffer::mean(Self) -> Double
+pub fn CryptosymtwofishBuffer::min(Self) -> Double
+pub fn CryptosymtwofishBuffer::scale(Self, Double) -> Self
+pub fn CryptosymtwofishBuffer::set(Self, Int32, Double) -> Self
+pub fn CryptosymtwofishBuffer::sum(Self) -> Double
+pub fn CryptosymtwofishBuffer::to_string(Self) -> String
+
+pub(all) struct CryptosymtwofishCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymtwofishCluster::add(Self, Self) -> Self
+pub fn CryptosymtwofishCluster::copy(Self) -> Self
+pub fn CryptosymtwofishCluster::fill(Self, Double) -> Self
+pub fn CryptosymtwofishCluster::get(Self, Int32) -> Double
+pub fn CryptosymtwofishCluster::len(Self) -> Int32
+pub fn CryptosymtwofishCluster::max(Self) -> Double
+pub fn CryptosymtwofishCluster::mean(Self) -> Double
+pub fn CryptosymtwofishCluster::min(Self) -> Double
+pub fn CryptosymtwofishCluster::scale(Self, Double) -> Self
+pub fn CryptosymtwofishCluster::set(Self, Int32, Double) -> Self
+pub fn CryptosymtwofishCluster::sum(Self) -> Double
+pub fn CryptosymtwofishCluster::to_string(Self) -> String
+
+pub(all) struct CryptosymtwofishCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymtwofishCursor::add(Self, Self) -> Self
+pub fn CryptosymtwofishCursor::copy(Self) -> Self
+pub fn CryptosymtwofishCursor::fill(Self, Double) -> Self
+pub fn CryptosymtwofishCursor::get(Self, Int32) -> Double
+pub fn CryptosymtwofishCursor::len(Self) -> Int32
+pub fn CryptosymtwofishCursor::max(Self) -> Double
+pub fn CryptosymtwofishCursor::mean(Self) -> Double
+pub fn CryptosymtwofishCursor::min(Self) -> Double
+pub fn CryptosymtwofishCursor::scale(Self, Double) -> Self
+pub fn CryptosymtwofishCursor::set(Self, Int32, Double) -> Self
+pub fn CryptosymtwofishCursor::sum(Self) -> Double
+pub fn CryptosymtwofishCursor::to_string(Self) -> String
+
+pub(all) struct CryptosymtwofishEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymtwofishEdge::add(Self, Self) -> Self
+pub fn CryptosymtwofishEdge::copy(Self) -> Self
+pub fn CryptosymtwofishEdge::fill(Self, Double) -> Self
+pub fn CryptosymtwofishEdge::get(Self, Int32) -> Double
+pub fn CryptosymtwofishEdge::len(Self) -> Int32
+pub fn CryptosymtwofishEdge::max(Self) -> Double
+pub fn CryptosymtwofishEdge::mean(Self) -> Double
+pub fn CryptosymtwofishEdge::min(Self) -> Double
+pub fn CryptosymtwofishEdge::scale(Self, Double) -> Self
+pub fn CryptosymtwofishEdge::set(Self, Int32, Double) -> Self
+pub fn CryptosymtwofishEdge::sum(Self) -> Double
+pub fn CryptosymtwofishEdge::to_string(Self) -> String
+
+pub(all) struct CryptosymtwofishFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymtwofishFrame::add(Self, Self) -> Self
+pub fn CryptosymtwofishFrame::copy(Self) -> Self
+pub fn CryptosymtwofishFrame::fill(Self, Double) -> Self
+pub fn CryptosymtwofishFrame::get(Self, Int32) -> Double
+pub fn CryptosymtwofishFrame::len(Self) -> Int32
+pub fn CryptosymtwofishFrame::max(Self) -> Double
+pub fn CryptosymtwofishFrame::mean(Self) -> Double
+pub fn CryptosymtwofishFrame::min(Self) -> Double
+pub fn CryptosymtwofishFrame::scale(Self, Double) -> Self
+pub fn CryptosymtwofishFrame::set(Self, Int32, Double) -> Self
+pub fn CryptosymtwofishFrame::sum(Self) -> Double
+pub fn CryptosymtwofishFrame::to_string(Self) -> String
+
+pub(all) struct CryptosymtwofishGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymtwofishGraphN::add(Self, Self) -> Self
+pub fn CryptosymtwofishGraphN::copy(Self) -> Self
+pub fn CryptosymtwofishGraphN::fill(Self, Double) -> Self
+pub fn CryptosymtwofishGraphN::get(Self, Int32) -> Double
+pub fn CryptosymtwofishGraphN::len(Self) -> Int32
+pub fn CryptosymtwofishGraphN::max(Self) -> Double
+pub fn CryptosymtwofishGraphN::mean(Self) -> Double
+pub fn CryptosymtwofishGraphN::min(Self) -> Double
+pub fn CryptosymtwofishGraphN::scale(Self, Double) -> Self
+pub fn CryptosymtwofishGraphN::set(Self, Int32, Double) -> Self
+pub fn CryptosymtwofishGraphN::sum(Self) -> Double
+pub fn CryptosymtwofishGraphN::to_string(Self) -> String
+
+pub(all) struct CryptosymtwofishLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymtwofishLayer::add(Self, Self) -> Self
+pub fn CryptosymtwofishLayer::copy(Self) -> Self
+pub fn CryptosymtwofishLayer::fill(Self, Double) -> Self
+pub fn CryptosymtwofishLayer::get(Self, Int32) -> Double
+pub fn CryptosymtwofishLayer::len(Self) -> Int32
+pub fn CryptosymtwofishLayer::max(Self) -> Double
+pub fn CryptosymtwofishLayer::mean(Self) -> Double
+pub fn CryptosymtwofishLayer::min(Self) -> Double
+pub fn CryptosymtwofishLayer::scale(Self, Double) -> Self
+pub fn CryptosymtwofishLayer::set(Self, Int32, Double) -> Self
+pub fn CryptosymtwofishLayer::sum(Self) -> Double
+pub fn CryptosymtwofishLayer::to_string(Self) -> String
+
+pub(all) struct CryptosymtwofishMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn CryptosymtwofishMatrix::add(Self, Self) -> Self
+pub fn CryptosymtwofishMatrix::det(Self) -> Double
+pub fn CryptosymtwofishMatrix::get(Self, Int32, Int32) -> Double
+pub fn CryptosymtwofishMatrix::multiply(Self, Self) -> Self
+pub fn CryptosymtwofishMatrix::norm(Self) -> Double
+pub fn CryptosymtwofishMatrix::scale(Self, Double) -> Self
+pub fn CryptosymtwofishMatrix::to_string(Self) -> String
+pub fn CryptosymtwofishMatrix::trace(Self) -> Double
+pub fn CryptosymtwofishMatrix::transpose(Self) -> Self
+
+pub(all) struct CryptosymtwofishModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymtwofishModel::add(Self, Self) -> Self
+pub fn CryptosymtwofishModel::copy(Self) -> Self
+pub fn CryptosymtwofishModel::fill(Self, Double) -> Self
+pub fn CryptosymtwofishModel::get(Self, Int32) -> Double
+pub fn CryptosymtwofishModel::len(Self) -> Int32
+pub fn CryptosymtwofishModel::max(Self) -> Double
+pub fn CryptosymtwofishModel::mean(Self) -> Double
+pub fn CryptosymtwofishModel::min(Self) -> Double
+pub fn CryptosymtwofishModel::scale(Self, Double) -> Self
+pub fn CryptosymtwofishModel::set(Self, Int32, Double) -> Self
+pub fn CryptosymtwofishModel::sum(Self) -> Double
+pub fn CryptosymtwofishModel::to_string(Self) -> String
+
+pub(all) struct CryptosymtwofishNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymtwofishNode::add(Self, Self) -> Self
+pub fn CryptosymtwofishNode::copy(Self) -> Self
+pub fn CryptosymtwofishNode::fill(Self, Double) -> Self
+pub fn CryptosymtwofishNode::get(Self, Int32) -> Double
+pub fn CryptosymtwofishNode::len(Self) -> Int32
+pub fn CryptosymtwofishNode::max(Self) -> Double
+pub fn CryptosymtwofishNode::mean(Self) -> Double
+pub fn CryptosymtwofishNode::min(Self) -> Double
+pub fn CryptosymtwofishNode::scale(Self, Double) -> Self
+pub fn CryptosymtwofishNode::set(Self, Int32, Double) -> Self
+pub fn CryptosymtwofishNode::sum(Self) -> Double
+pub fn CryptosymtwofishNode::to_string(Self) -> String
+
+pub(all) struct CryptosymtwofishPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymtwofishPath::add(Self, Self) -> Self
+pub fn CryptosymtwofishPath::copy(Self) -> Self
+pub fn CryptosymtwofishPath::fill(Self, Double) -> Self
+pub fn CryptosymtwofishPath::get(Self, Int32) -> Double
+pub fn CryptosymtwofishPath::len(Self) -> Int32
+pub fn CryptosymtwofishPath::max(Self) -> Double
+pub fn CryptosymtwofishPath::mean(Self) -> Double
+pub fn CryptosymtwofishPath::min(Self) -> Double
+pub fn CryptosymtwofishPath::scale(Self, Double) -> Self
+pub fn CryptosymtwofishPath::set(Self, Int32, Double) -> Self
+pub fn CryptosymtwofishPath::sum(Self) -> Double
+pub fn CryptosymtwofishPath::to_string(Self) -> String
+
+pub(all) struct CryptosymtwofishPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn CryptosymtwofishPoint::add(Self, Self) -> Self
+pub fn CryptosymtwofishPoint::cross(Self, Self) -> Self
+pub fn CryptosymtwofishPoint::dist(Self, Self) -> Double
+pub fn CryptosymtwofishPoint::dot(Self, Self) -> Double
+pub fn CryptosymtwofishPoint::label(Self) -> Int32
+pub fn CryptosymtwofishPoint::lerp(Self, Self, Double) -> Self
+pub fn CryptosymtwofishPoint::mid(Self, Self) -> Self
+pub fn CryptosymtwofishPoint::negate(Self) -> Self
+pub fn CryptosymtwofishPoint::norm(Self) -> Double
+pub fn CryptosymtwofishPoint::normalize(Self) -> Self
+pub fn CryptosymtwofishPoint::scale(Self, Double) -> Self
+pub fn CryptosymtwofishPoint::sub(Self, Self) -> Self
+pub fn CryptosymtwofishPoint::to_string(Self) -> String
+pub fn CryptosymtwofishPoint::x(Self) -> Double
+pub fn CryptosymtwofishPoint::y(Self) -> Double
+pub fn CryptosymtwofishPoint::z(Self) -> Double
+
+pub(all) struct CryptosymtwofishRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymtwofishRange::add(Self, Self) -> Self
+pub fn CryptosymtwofishRange::copy(Self) -> Self
+pub fn CryptosymtwofishRange::fill(Self, Double) -> Self
+pub fn CryptosymtwofishRange::get(Self, Int32) -> Double
+pub fn CryptosymtwofishRange::len(Self) -> Int32
+pub fn CryptosymtwofishRange::max(Self) -> Double
+pub fn CryptosymtwofishRange::mean(Self) -> Double
+pub fn CryptosymtwofishRange::min(Self) -> Double
+pub fn CryptosymtwofishRange::scale(Self, Double) -> Self
+pub fn CryptosymtwofishRange::set(Self, Int32, Double) -> Self
+pub fn CryptosymtwofishRange::sum(Self) -> Double
+pub fn CryptosymtwofishRange::to_string(Self) -> String
+
+pub(all) struct CryptosymtwofishSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn CryptosymtwofishSeries::add(Self, Self) -> Self
+pub fn CryptosymtwofishSeries::cumsum(Self) -> Self
+pub fn CryptosymtwofishSeries::len(Self) -> Int32
+pub fn CryptosymtwofishSeries::max(Self) -> Double
+pub fn CryptosymtwofishSeries::mean(Self) -> Double
+pub fn CryptosymtwofishSeries::median(Self) -> Double
+pub fn CryptosymtwofishSeries::min(Self) -> Double
+pub fn CryptosymtwofishSeries::normalize(Self) -> Self
+pub fn CryptosymtwofishSeries::range(Self) -> Double
+pub fn CryptosymtwofishSeries::scale(Self, Double) -> Self
+pub fn CryptosymtwofishSeries::std(Self) -> Double
+pub fn CryptosymtwofishSeries::sub(Self, Self) -> Self
+pub fn CryptosymtwofishSeries::sum(Self) -> Double
+pub fn CryptosymtwofishSeries::to_string(Self) -> String
+pub fn CryptosymtwofishSeries::variance(Self) -> Double
+
+pub(all) struct CryptosymtwofishSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymtwofishSlice::add(Self, Self) -> Self
+pub fn CryptosymtwofishSlice::copy(Self) -> Self
+pub fn CryptosymtwofishSlice::fill(Self, Double) -> Self
+pub fn CryptosymtwofishSlice::get(Self, Int32) -> Double
+pub fn CryptosymtwofishSlice::len(Self) -> Int32
+pub fn CryptosymtwofishSlice::max(Self) -> Double
+pub fn CryptosymtwofishSlice::mean(Self) -> Double
+pub fn CryptosymtwofishSlice::min(Self) -> Double
+pub fn CryptosymtwofishSlice::scale(Self, Double) -> Self
+pub fn CryptosymtwofishSlice::set(Self, Int32, Double) -> Self
+pub fn CryptosymtwofishSlice::sum(Self) -> Double
+pub fn CryptosymtwofishSlice::to_string(Self) -> String
+
+pub(all) struct CryptosymtwofishTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymtwofishTable::add(Self, Self) -> Self
+pub fn CryptosymtwofishTable::copy(Self) -> Self
+pub fn CryptosymtwofishTable::fill(Self, Double) -> Self
+pub fn CryptosymtwofishTable::get(Self, Int32) -> Double
+pub fn CryptosymtwofishTable::len(Self) -> Int32
+pub fn CryptosymtwofishTable::max(Self) -> Double
+pub fn CryptosymtwofishTable::mean(Self) -> Double
+pub fn CryptosymtwofishTable::min(Self) -> Double
+pub fn CryptosymtwofishTable::scale(Self, Double) -> Self
+pub fn CryptosymtwofishTable::set(Self, Int32, Double) -> Self
+pub fn CryptosymtwofishTable::sum(Self) -> Double
+pub fn CryptosymtwofishTable::to_string(Self) -> String
+
+pub(all) struct CryptosymtwofishVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn CryptosymtwofishVector::add(Self, Self) -> Self
+pub fn CryptosymtwofishVector::dist(Self, Self) -> Double
+pub fn CryptosymtwofishVector::dot(Self, Self) -> Double
+pub fn CryptosymtwofishVector::norm(Self) -> Double
+pub fn CryptosymtwofishVector::normalize(Self) -> Self
+pub fn CryptosymtwofishVector::scale(Self, Double) -> Self
+pub fn CryptosymtwofishVector::sub(Self, Self) -> Self
+pub fn CryptosymtwofishVector::to_string(Self) -> String
+
+pub(all) struct CryptosymtwofishView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn CryptosymtwofishView::add(Self, Self) -> Self
+pub fn CryptosymtwofishView::copy(Self) -> Self
+pub fn CryptosymtwofishView::fill(Self, Double) -> Self
+pub fn CryptosymtwofishView::get(Self, Int32) -> Double
+pub fn CryptosymtwofishView::len(Self) -> Int32
+pub fn CryptosymtwofishView::max(Self) -> Double
+pub fn CryptosymtwofishView::mean(Self) -> Double
+pub fn CryptosymtwofishView::min(Self) -> Double
+pub fn CryptosymtwofishView::scale(Self, Double) -> Self
+pub fn CryptosymtwofishView::set(Self, Int32, Double) -> Self
+pub fn CryptosymtwofishView::sum(Self) -> Double
+pub fn CryptosymtwofishView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

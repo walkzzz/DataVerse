@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_filter_mean"
+
+// Values
+pub fn image_filter_mean_buffer_make(Int32) -> ImagefiltermeanBuffer
+
+pub fn image_filter_mean_cluster_make(Int32) -> ImagefiltermeanCluster
+
+pub fn image_filter_mean_cursor_make(Int32) -> ImagefiltermeanCursor
+
+pub fn image_filter_mean_edge_make(Int32) -> ImagefiltermeanEdge
+
+pub fn image_filter_mean_frame_make(Int32) -> ImagefiltermeanFrame
+
+pub fn image_filter_mean_graphn_make(Int32) -> ImagefiltermeanGraphN
+
+pub fn image_filter_mean_layer_make(Int32) -> ImagefiltermeanLayer
+
+pub fn image_filter_mean_make_matrix(Int32, Int32, Double) -> ImagefiltermeanMatrix
+
+pub fn image_filter_mean_make_point(Double, Double) -> ImagefiltermeanPoint
+
+pub fn image_filter_mean_make_point3(Double, Double, Double) -> ImagefiltermeanPoint
+
+pub fn image_filter_mean_make_series(Array[Double], String) -> ImagefiltermeanSeries
+
+pub fn image_filter_mean_make_vector(Array[Double]) -> ImagefiltermeanVector
+
+pub fn image_filter_mean_matrix_identity(Int32) -> ImagefiltermeanMatrix
+
+pub fn image_filter_mean_model_make(Int32) -> ImagefiltermeanModel
+
+pub fn image_filter_mean_node_make(Int32) -> ImagefiltermeanNode
+
+pub fn image_filter_mean_path_make(Int32) -> ImagefiltermeanPath
+
+pub fn image_filter_mean_range_make(Int32) -> ImagefiltermeanRange
+
+pub fn image_filter_mean_slice_make(Int32) -> ImagefiltermeanSlice
+
+pub fn image_filter_mean_table_make(Int32) -> ImagefiltermeanTable
+
+pub fn image_filter_mean_vector_zero(Int32) -> ImagefiltermeanVector
+
+pub fn image_filter_mean_view_make(Int32) -> ImagefiltermeanView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagefiltermeanBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermeanBuffer::add(Self, Self) -> Self
+pub fn ImagefiltermeanBuffer::copy(Self) -> Self
+pub fn ImagefiltermeanBuffer::fill(Self, Double) -> Self
+pub fn ImagefiltermeanBuffer::get(Self, Int32) -> Double
+pub fn ImagefiltermeanBuffer::len(Self) -> Int32
+pub fn ImagefiltermeanBuffer::max(Self) -> Double
+pub fn ImagefiltermeanBuffer::mean(Self) -> Double
+pub fn ImagefiltermeanBuffer::min(Self) -> Double
+pub fn ImagefiltermeanBuffer::scale(Self, Double) -> Self
+pub fn ImagefiltermeanBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermeanBuffer::sum(Self) -> Double
+pub fn ImagefiltermeanBuffer::to_string(Self) -> String
+
+pub(all) struct ImagefiltermeanCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermeanCluster::add(Self, Self) -> Self
+pub fn ImagefiltermeanCluster::copy(Self) -> Self
+pub fn ImagefiltermeanCluster::fill(Self, Double) -> Self
+pub fn ImagefiltermeanCluster::get(Self, Int32) -> Double
+pub fn ImagefiltermeanCluster::len(Self) -> Int32
+pub fn ImagefiltermeanCluster::max(Self) -> Double
+pub fn ImagefiltermeanCluster::mean(Self) -> Double
+pub fn ImagefiltermeanCluster::min(Self) -> Double
+pub fn ImagefiltermeanCluster::scale(Self, Double) -> Self
+pub fn ImagefiltermeanCluster::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermeanCluster::sum(Self) -> Double
+pub fn ImagefiltermeanCluster::to_string(Self) -> String
+
+pub(all) struct ImagefiltermeanCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermeanCursor::add(Self, Self) -> Self
+pub fn ImagefiltermeanCursor::copy(Self) -> Self
+pub fn ImagefiltermeanCursor::fill(Self, Double) -> Self
+pub fn ImagefiltermeanCursor::get(Self, Int32) -> Double
+pub fn ImagefiltermeanCursor::len(Self) -> Int32
+pub fn ImagefiltermeanCursor::max(Self) -> Double
+pub fn ImagefiltermeanCursor::mean(Self) -> Double
+pub fn ImagefiltermeanCursor::min(Self) -> Double
+pub fn ImagefiltermeanCursor::scale(Self, Double) -> Self
+pub fn ImagefiltermeanCursor::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermeanCursor::sum(Self) -> Double
+pub fn ImagefiltermeanCursor::to_string(Self) -> String
+
+pub(all) struct ImagefiltermeanEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermeanEdge::add(Self, Self) -> Self
+pub fn ImagefiltermeanEdge::copy(Self) -> Self
+pub fn ImagefiltermeanEdge::fill(Self, Double) -> Self
+pub fn ImagefiltermeanEdge::get(Self, Int32) -> Double
+pub fn ImagefiltermeanEdge::len(Self) -> Int32
+pub fn ImagefiltermeanEdge::max(Self) -> Double
+pub fn ImagefiltermeanEdge::mean(Self) -> Double
+pub fn ImagefiltermeanEdge::min(Self) -> Double
+pub fn ImagefiltermeanEdge::scale(Self, Double) -> Self
+pub fn ImagefiltermeanEdge::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermeanEdge::sum(Self) -> Double
+pub fn ImagefiltermeanEdge::to_string(Self) -> String
+
+pub(all) struct ImagefiltermeanFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermeanFrame::add(Self, Self) -> Self
+pub fn ImagefiltermeanFrame::copy(Self) -> Self
+pub fn ImagefiltermeanFrame::fill(Self, Double) -> Self
+pub fn ImagefiltermeanFrame::get(Self, Int32) -> Double
+pub fn ImagefiltermeanFrame::len(Self) -> Int32
+pub fn ImagefiltermeanFrame::max(Self) -> Double
+pub fn ImagefiltermeanFrame::mean(Self) -> Double
+pub fn ImagefiltermeanFrame::min(Self) -> Double
+pub fn ImagefiltermeanFrame::scale(Self, Double) -> Self
+pub fn ImagefiltermeanFrame::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermeanFrame::sum(Self) -> Double
+pub fn ImagefiltermeanFrame::to_string(Self) -> String
+
+pub(all) struct ImagefiltermeanGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermeanGraphN::add(Self, Self) -> Self
+pub fn ImagefiltermeanGraphN::copy(Self) -> Self
+pub fn ImagefiltermeanGraphN::fill(Self, Double) -> Self
+pub fn ImagefiltermeanGraphN::get(Self, Int32) -> Double
+pub fn ImagefiltermeanGraphN::len(Self) -> Int32
+pub fn ImagefiltermeanGraphN::max(Self) -> Double
+pub fn ImagefiltermeanGraphN::mean(Self) -> Double
+pub fn ImagefiltermeanGraphN::min(Self) -> Double
+pub fn ImagefiltermeanGraphN::scale(Self, Double) -> Self
+pub fn ImagefiltermeanGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermeanGraphN::sum(Self) -> Double
+pub fn ImagefiltermeanGraphN::to_string(Self) -> String
+
+pub(all) struct ImagefiltermeanLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermeanLayer::add(Self, Self) -> Self
+pub fn ImagefiltermeanLayer::copy(Self) -> Self
+pub fn ImagefiltermeanLayer::fill(Self, Double) -> Self
+pub fn ImagefiltermeanLayer::get(Self, Int32) -> Double
+pub fn ImagefiltermeanLayer::len(Self) -> Int32
+pub fn ImagefiltermeanLayer::max(Self) -> Double
+pub fn ImagefiltermeanLayer::mean(Self) -> Double
+pub fn ImagefiltermeanLayer::min(Self) -> Double
+pub fn ImagefiltermeanLayer::scale(Self, Double) -> Self
+pub fn ImagefiltermeanLayer::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermeanLayer::sum(Self) -> Double
+pub fn ImagefiltermeanLayer::to_string(Self) -> String
+
+pub(all) struct ImagefiltermeanMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagefiltermeanMatrix::add(Self, Self) -> Self
+pub fn ImagefiltermeanMatrix::det(Self) -> Double
+pub fn ImagefiltermeanMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagefiltermeanMatrix::multiply(Self, Self) -> Self
+pub fn ImagefiltermeanMatrix::norm(Self) -> Double
+pub fn ImagefiltermeanMatrix::scale(Self, Double) -> Self
+pub fn ImagefiltermeanMatrix::to_string(Self) -> String
+pub fn ImagefiltermeanMatrix::trace(Self) -> Double
+pub fn ImagefiltermeanMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagefiltermeanModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermeanModel::add(Self, Self) -> Self
+pub fn ImagefiltermeanModel::copy(Self) -> Self
+pub fn ImagefiltermeanModel::fill(Self, Double) -> Self
+pub fn ImagefiltermeanModel::get(Self, Int32) -> Double
+pub fn ImagefiltermeanModel::len(Self) -> Int32
+pub fn ImagefiltermeanModel::max(Self) -> Double
+pub fn ImagefiltermeanModel::mean(Self) -> Double
+pub fn ImagefiltermeanModel::min(Self) -> Double
+pub fn ImagefiltermeanModel::scale(Self, Double) -> Self
+pub fn ImagefiltermeanModel::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermeanModel::sum(Self) -> Double
+pub fn ImagefiltermeanModel::to_string(Self) -> String
+
+pub(all) struct ImagefiltermeanNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermeanNode::add(Self, Self) -> Self
+pub fn ImagefiltermeanNode::copy(Self) -> Self
+pub fn ImagefiltermeanNode::fill(Self, Double) -> Self
+pub fn ImagefiltermeanNode::get(Self, Int32) -> Double
+pub fn ImagefiltermeanNode::len(Self) -> Int32
+pub fn ImagefiltermeanNode::max(Self) -> Double
+pub fn ImagefiltermeanNode::mean(Self) -> Double
+pub fn ImagefiltermeanNode::min(Self) -> Double
+pub fn ImagefiltermeanNode::scale(Self, Double) -> Self
+pub fn ImagefiltermeanNode::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermeanNode::sum(Self) -> Double
+pub fn ImagefiltermeanNode::to_string(Self) -> String
+
+pub(all) struct ImagefiltermeanPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermeanPath::add(Self, Self) -> Self
+pub fn ImagefiltermeanPath::copy(Self) -> Self
+pub fn ImagefiltermeanPath::fill(Self, Double) -> Self
+pub fn ImagefiltermeanPath::get(Self, Int32) -> Double
+pub fn ImagefiltermeanPath::len(Self) -> Int32
+pub fn ImagefiltermeanPath::max(Self) -> Double
+pub fn ImagefiltermeanPath::mean(Self) -> Double
+pub fn ImagefiltermeanPath::min(Self) -> Double
+pub fn ImagefiltermeanPath::scale(Self, Double) -> Self
+pub fn ImagefiltermeanPath::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermeanPath::sum(Self) -> Double
+pub fn ImagefiltermeanPath::to_string(Self) -> String
+
+pub(all) struct ImagefiltermeanPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagefiltermeanPoint::add(Self, Self) -> Self
+pub fn ImagefiltermeanPoint::cross(Self, Self) -> Self
+pub fn ImagefiltermeanPoint::dist(Self, Self) -> Double
+pub fn ImagefiltermeanPoint::dot(Self, Self) -> Double
+pub fn ImagefiltermeanPoint::label(Self) -> Int32
+pub fn ImagefiltermeanPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagefiltermeanPoint::mid(Self, Self) -> Self
+pub fn ImagefiltermeanPoint::negate(Self) -> Self
+pub fn ImagefiltermeanPoint::norm(Self) -> Double
+pub fn ImagefiltermeanPoint::normalize(Self) -> Self
+pub fn ImagefiltermeanPoint::scale(Self, Double) -> Self
+pub fn ImagefiltermeanPoint::sub(Self, Self) -> Self
+pub fn ImagefiltermeanPoint::to_string(Self) -> String
+pub fn ImagefiltermeanPoint::x(Self) -> Double
+pub fn ImagefiltermeanPoint::y(Self) -> Double
+pub fn ImagefiltermeanPoint::z(Self) -> Double
+
+pub(all) struct ImagefiltermeanRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermeanRange::add(Self, Self) -> Self
+pub fn ImagefiltermeanRange::copy(Self) -> Self
+pub fn ImagefiltermeanRange::fill(Self, Double) -> Self
+pub fn ImagefiltermeanRange::get(Self, Int32) -> Double
+pub fn ImagefiltermeanRange::len(Self) -> Int32
+pub fn ImagefiltermeanRange::max(Self) -> Double
+pub fn ImagefiltermeanRange::mean(Self) -> Double
+pub fn ImagefiltermeanRange::min(Self) -> Double
+pub fn ImagefiltermeanRange::scale(Self, Double) -> Self
+pub fn ImagefiltermeanRange::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermeanRange::sum(Self) -> Double
+pub fn ImagefiltermeanRange::to_string(Self) -> String
+
+pub(all) struct ImagefiltermeanSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagefiltermeanSeries::add(Self, Self) -> Self
+pub fn ImagefiltermeanSeries::cumsum(Self) -> Self
+pub fn ImagefiltermeanSeries::len(Self) -> Int32
+pub fn ImagefiltermeanSeries::max(Self) -> Double
+pub fn ImagefiltermeanSeries::mean(Self) -> Double
+pub fn ImagefiltermeanSeries::median(Self) -> Double
+pub fn ImagefiltermeanSeries::min(Self) -> Double
+pub fn ImagefiltermeanSeries::normalize(Self) -> Self
+pub fn ImagefiltermeanSeries::range(Self) -> Double
+pub fn ImagefiltermeanSeries::scale(Self, Double) -> Self
+pub fn ImagefiltermeanSeries::std(Self) -> Double
+pub fn ImagefiltermeanSeries::sub(Self, Self) -> Self
+pub fn ImagefiltermeanSeries::sum(Self) -> Double
+pub fn ImagefiltermeanSeries::to_string(Self) -> String
+pub fn ImagefiltermeanSeries::variance(Self) -> Double
+
+pub(all) struct ImagefiltermeanSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermeanSlice::add(Self, Self) -> Self
+pub fn ImagefiltermeanSlice::copy(Self) -> Self
+pub fn ImagefiltermeanSlice::fill(Self, Double) -> Self
+pub fn ImagefiltermeanSlice::get(Self, Int32) -> Double
+pub fn ImagefiltermeanSlice::len(Self) -> Int32
+pub fn ImagefiltermeanSlice::max(Self) -> Double
+pub fn ImagefiltermeanSlice::mean(Self) -> Double
+pub fn ImagefiltermeanSlice::min(Self) -> Double
+pub fn ImagefiltermeanSlice::scale(Self, Double) -> Self
+pub fn ImagefiltermeanSlice::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermeanSlice::sum(Self) -> Double
+pub fn ImagefiltermeanSlice::to_string(Self) -> String
+
+pub(all) struct ImagefiltermeanTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermeanTable::add(Self, Self) -> Self
+pub fn ImagefiltermeanTable::copy(Self) -> Self
+pub fn ImagefiltermeanTable::fill(Self, Double) -> Self
+pub fn ImagefiltermeanTable::get(Self, Int32) -> Double
+pub fn ImagefiltermeanTable::len(Self) -> Int32
+pub fn ImagefiltermeanTable::max(Self) -> Double
+pub fn ImagefiltermeanTable::mean(Self) -> Double
+pub fn ImagefiltermeanTable::min(Self) -> Double
+pub fn ImagefiltermeanTable::scale(Self, Double) -> Self
+pub fn ImagefiltermeanTable::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermeanTable::sum(Self) -> Double
+pub fn ImagefiltermeanTable::to_string(Self) -> String
+
+pub(all) struct ImagefiltermeanVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagefiltermeanVector::add(Self, Self) -> Self
+pub fn ImagefiltermeanVector::dist(Self, Self) -> Double
+pub fn ImagefiltermeanVector::dot(Self, Self) -> Double
+pub fn ImagefiltermeanVector::norm(Self) -> Double
+pub fn ImagefiltermeanVector::normalize(Self) -> Self
+pub fn ImagefiltermeanVector::scale(Self, Double) -> Self
+pub fn ImagefiltermeanVector::sub(Self, Self) -> Self
+pub fn ImagefiltermeanVector::to_string(Self) -> String
+
+pub(all) struct ImagefiltermeanView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagefiltermeanView::add(Self, Self) -> Self
+pub fn ImagefiltermeanView::copy(Self) -> Self
+pub fn ImagefiltermeanView::fill(Self, Double) -> Self
+pub fn ImagefiltermeanView::get(Self, Int32) -> Double
+pub fn ImagefiltermeanView::len(Self) -> Int32
+pub fn ImagefiltermeanView::max(Self) -> Double
+pub fn ImagefiltermeanView::mean(Self) -> Double
+pub fn ImagefiltermeanView::min(Self) -> Double
+pub fn ImagefiltermeanView::scale(Self, Double) -> Self
+pub fn ImagefiltermeanView::set(Self, Int32, Double) -> Self
+pub fn ImagefiltermeanView::sum(Self) -> Double
+pub fn ImagefiltermeanView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

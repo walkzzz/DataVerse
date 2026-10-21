@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_filter_fir"
+
+// Values
+pub fn signal_filter_fir_buffer_make(Int32) -> SignalfilterfirBuffer
+
+pub fn signal_filter_fir_cluster_make(Int32) -> SignalfilterfirCluster
+
+pub fn signal_filter_fir_cursor_make(Int32) -> SignalfilterfirCursor
+
+pub fn signal_filter_fir_edge_make(Int32) -> SignalfilterfirEdge
+
+pub fn signal_filter_fir_frame_make(Int32) -> SignalfilterfirFrame
+
+pub fn signal_filter_fir_graphn_make(Int32) -> SignalfilterfirGraphN
+
+pub fn signal_filter_fir_layer_make(Int32) -> SignalfilterfirLayer
+
+pub fn signal_filter_fir_make_matrix(Int32, Int32, Double) -> SignalfilterfirMatrix
+
+pub fn signal_filter_fir_make_point(Double, Double) -> SignalfilterfirPoint
+
+pub fn signal_filter_fir_make_point3(Double, Double, Double) -> SignalfilterfirPoint
+
+pub fn signal_filter_fir_make_series(Array[Double], String) -> SignalfilterfirSeries
+
+pub fn signal_filter_fir_make_vector(Array[Double]) -> SignalfilterfirVector
+
+pub fn signal_filter_fir_matrix_identity(Int32) -> SignalfilterfirMatrix
+
+pub fn signal_filter_fir_model_make(Int32) -> SignalfilterfirModel
+
+pub fn signal_filter_fir_node_make(Int32) -> SignalfilterfirNode
+
+pub fn signal_filter_fir_path_make(Int32) -> SignalfilterfirPath
+
+pub fn signal_filter_fir_range_make(Int32) -> SignalfilterfirRange
+
+pub fn signal_filter_fir_slice_make(Int32) -> SignalfilterfirSlice
+
+pub fn signal_filter_fir_table_make(Int32) -> SignalfilterfirTable
+
+pub fn signal_filter_fir_vector_zero(Int32) -> SignalfilterfirVector
+
+pub fn signal_filter_fir_view_make(Int32) -> SignalfilterfirView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalfilterfirBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterfirBuffer::add(Self, Self) -> Self
+pub fn SignalfilterfirBuffer::copy(Self) -> Self
+pub fn SignalfilterfirBuffer::fill(Self, Double) -> Self
+pub fn SignalfilterfirBuffer::get(Self, Int32) -> Double
+pub fn SignalfilterfirBuffer::len(Self) -> Int32
+pub fn SignalfilterfirBuffer::max(Self) -> Double
+pub fn SignalfilterfirBuffer::mean(Self) -> Double
+pub fn SignalfilterfirBuffer::min(Self) -> Double
+pub fn SignalfilterfirBuffer::scale(Self, Double) -> Self
+pub fn SignalfilterfirBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalfilterfirBuffer::sum(Self) -> Double
+pub fn SignalfilterfirBuffer::to_string(Self) -> String
+
+pub(all) struct SignalfilterfirCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterfirCluster::add(Self, Self) -> Self
+pub fn SignalfilterfirCluster::copy(Self) -> Self
+pub fn SignalfilterfirCluster::fill(Self, Double) -> Self
+pub fn SignalfilterfirCluster::get(Self, Int32) -> Double
+pub fn SignalfilterfirCluster::len(Self) -> Int32
+pub fn SignalfilterfirCluster::max(Self) -> Double
+pub fn SignalfilterfirCluster::mean(Self) -> Double
+pub fn SignalfilterfirCluster::min(Self) -> Double
+pub fn SignalfilterfirCluster::scale(Self, Double) -> Self
+pub fn SignalfilterfirCluster::set(Self, Int32, Double) -> Self
+pub fn SignalfilterfirCluster::sum(Self) -> Double
+pub fn SignalfilterfirCluster::to_string(Self) -> String
+
+pub(all) struct SignalfilterfirCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterfirCursor::add(Self, Self) -> Self
+pub fn SignalfilterfirCursor::copy(Self) -> Self
+pub fn SignalfilterfirCursor::fill(Self, Double) -> Self
+pub fn SignalfilterfirCursor::get(Self, Int32) -> Double
+pub fn SignalfilterfirCursor::len(Self) -> Int32
+pub fn SignalfilterfirCursor::max(Self) -> Double
+pub fn SignalfilterfirCursor::mean(Self) -> Double
+pub fn SignalfilterfirCursor::min(Self) -> Double
+pub fn SignalfilterfirCursor::scale(Self, Double) -> Self
+pub fn SignalfilterfirCursor::set(Self, Int32, Double) -> Self
+pub fn SignalfilterfirCursor::sum(Self) -> Double
+pub fn SignalfilterfirCursor::to_string(Self) -> String
+
+pub(all) struct SignalfilterfirEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterfirEdge::add(Self, Self) -> Self
+pub fn SignalfilterfirEdge::copy(Self) -> Self
+pub fn SignalfilterfirEdge::fill(Self, Double) -> Self
+pub fn SignalfilterfirEdge::get(Self, Int32) -> Double
+pub fn SignalfilterfirEdge::len(Self) -> Int32
+pub fn SignalfilterfirEdge::max(Self) -> Double
+pub fn SignalfilterfirEdge::mean(Self) -> Double
+pub fn SignalfilterfirEdge::min(Self) -> Double
+pub fn SignalfilterfirEdge::scale(Self, Double) -> Self
+pub fn SignalfilterfirEdge::set(Self, Int32, Double) -> Self
+pub fn SignalfilterfirEdge::sum(Self) -> Double
+pub fn SignalfilterfirEdge::to_string(Self) -> String
+
+pub(all) struct SignalfilterfirFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterfirFrame::add(Self, Self) -> Self
+pub fn SignalfilterfirFrame::copy(Self) -> Self
+pub fn SignalfilterfirFrame::fill(Self, Double) -> Self
+pub fn SignalfilterfirFrame::get(Self, Int32) -> Double
+pub fn SignalfilterfirFrame::len(Self) -> Int32
+pub fn SignalfilterfirFrame::max(Self) -> Double
+pub fn SignalfilterfirFrame::mean(Self) -> Double
+pub fn SignalfilterfirFrame::min(Self) -> Double
+pub fn SignalfilterfirFrame::scale(Self, Double) -> Self
+pub fn SignalfilterfirFrame::set(Self, Int32, Double) -> Self
+pub fn SignalfilterfirFrame::sum(Self) -> Double
+pub fn SignalfilterfirFrame::to_string(Self) -> String
+
+pub(all) struct SignalfilterfirGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterfirGraphN::add(Self, Self) -> Self
+pub fn SignalfilterfirGraphN::copy(Self) -> Self
+pub fn SignalfilterfirGraphN::fill(Self, Double) -> Self
+pub fn SignalfilterfirGraphN::get(Self, Int32) -> Double
+pub fn SignalfilterfirGraphN::len(Self) -> Int32
+pub fn SignalfilterfirGraphN::max(Self) -> Double
+pub fn SignalfilterfirGraphN::mean(Self) -> Double
+pub fn SignalfilterfirGraphN::min(Self) -> Double
+pub fn SignalfilterfirGraphN::scale(Self, Double) -> Self
+pub fn SignalfilterfirGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalfilterfirGraphN::sum(Self) -> Double
+pub fn SignalfilterfirGraphN::to_string(Self) -> String
+
+pub(all) struct SignalfilterfirLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterfirLayer::add(Self, Self) -> Self
+pub fn SignalfilterfirLayer::copy(Self) -> Self
+pub fn SignalfilterfirLayer::fill(Self, Double) -> Self
+pub fn SignalfilterfirLayer::get(Self, Int32) -> Double
+pub fn SignalfilterfirLayer::len(Self) -> Int32
+pub fn SignalfilterfirLayer::max(Self) -> Double
+pub fn SignalfilterfirLayer::mean(Self) -> Double
+pub fn SignalfilterfirLayer::min(Self) -> Double
+pub fn SignalfilterfirLayer::scale(Self, Double) -> Self
+pub fn SignalfilterfirLayer::set(Self, Int32, Double) -> Self
+pub fn SignalfilterfirLayer::sum(Self) -> Double
+pub fn SignalfilterfirLayer::to_string(Self) -> String
+
+pub(all) struct SignalfilterfirMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalfilterfirMatrix::add(Self, Self) -> Self
+pub fn SignalfilterfirMatrix::det(Self) -> Double
+pub fn SignalfilterfirMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalfilterfirMatrix::multiply(Self, Self) -> Self
+pub fn SignalfilterfirMatrix::norm(Self) -> Double
+pub fn SignalfilterfirMatrix::scale(Self, Double) -> Self
+pub fn SignalfilterfirMatrix::to_string(Self) -> String
+pub fn SignalfilterfirMatrix::trace(Self) -> Double
+pub fn SignalfilterfirMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalfilterfirModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterfirModel::add(Self, Self) -> Self
+pub fn SignalfilterfirModel::copy(Self) -> Self
+pub fn SignalfilterfirModel::fill(Self, Double) -> Self
+pub fn SignalfilterfirModel::get(Self, Int32) -> Double
+pub fn SignalfilterfirModel::len(Self) -> Int32
+pub fn SignalfilterfirModel::max(Self) -> Double
+pub fn SignalfilterfirModel::mean(Self) -> Double
+pub fn SignalfilterfirModel::min(Self) -> Double
+pub fn SignalfilterfirModel::scale(Self, Double) -> Self
+pub fn SignalfilterfirModel::set(Self, Int32, Double) -> Self
+pub fn SignalfilterfirModel::sum(Self) -> Double
+pub fn SignalfilterfirModel::to_string(Self) -> String
+
+pub(all) struct SignalfilterfirNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterfirNode::add(Self, Self) -> Self
+pub fn SignalfilterfirNode::copy(Self) -> Self
+pub fn SignalfilterfirNode::fill(Self, Double) -> Self
+pub fn SignalfilterfirNode::get(Self, Int32) -> Double
+pub fn SignalfilterfirNode::len(Self) -> Int32
+pub fn SignalfilterfirNode::max(Self) -> Double
+pub fn SignalfilterfirNode::mean(Self) -> Double
+pub fn SignalfilterfirNode::min(Self) -> Double
+pub fn SignalfilterfirNode::scale(Self, Double) -> Self
+pub fn SignalfilterfirNode::set(Self, Int32, Double) -> Self
+pub fn SignalfilterfirNode::sum(Self) -> Double
+pub fn SignalfilterfirNode::to_string(Self) -> String
+
+pub(all) struct SignalfilterfirPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterfirPath::add(Self, Self) -> Self
+pub fn SignalfilterfirPath::copy(Self) -> Self
+pub fn SignalfilterfirPath::fill(Self, Double) -> Self
+pub fn SignalfilterfirPath::get(Self, Int32) -> Double
+pub fn SignalfilterfirPath::len(Self) -> Int32
+pub fn SignalfilterfirPath::max(Self) -> Double
+pub fn SignalfilterfirPath::mean(Self) -> Double
+pub fn SignalfilterfirPath::min(Self) -> Double
+pub fn SignalfilterfirPath::scale(Self, Double) -> Self
+pub fn SignalfilterfirPath::set(Self, Int32, Double) -> Self
+pub fn SignalfilterfirPath::sum(Self) -> Double
+pub fn SignalfilterfirPath::to_string(Self) -> String
+
+pub(all) struct SignalfilterfirPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalfilterfirPoint::add(Self, Self) -> Self
+pub fn SignalfilterfirPoint::cross(Self, Self) -> Self
+pub fn SignalfilterfirPoint::dist(Self, Self) -> Double
+pub fn SignalfilterfirPoint::dot(Self, Self) -> Double
+pub fn SignalfilterfirPoint::label(Self) -> Int32
+pub fn SignalfilterfirPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalfilterfirPoint::mid(Self, Self) -> Self
+pub fn SignalfilterfirPoint::negate(Self) -> Self
+pub fn SignalfilterfirPoint::norm(Self) -> Double
+pub fn SignalfilterfirPoint::normalize(Self) -> Self
+pub fn SignalfilterfirPoint::scale(Self, Double) -> Self
+pub fn SignalfilterfirPoint::sub(Self, Self) -> Self
+pub fn SignalfilterfirPoint::to_string(Self) -> String
+pub fn SignalfilterfirPoint::x(Self) -> Double
+pub fn SignalfilterfirPoint::y(Self) -> Double
+pub fn SignalfilterfirPoint::z(Self) -> Double
+
+pub(all) struct SignalfilterfirRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterfirRange::add(Self, Self) -> Self
+pub fn SignalfilterfirRange::copy(Self) -> Self
+pub fn SignalfilterfirRange::fill(Self, Double) -> Self
+pub fn SignalfilterfirRange::get(Self, Int32) -> Double
+pub fn SignalfilterfirRange::len(Self) -> Int32
+pub fn SignalfilterfirRange::max(Self) -> Double
+pub fn SignalfilterfirRange::mean(Self) -> Double
+pub fn SignalfilterfirRange::min(Self) -> Double
+pub fn SignalfilterfirRange::scale(Self, Double) -> Self
+pub fn SignalfilterfirRange::set(Self, Int32, Double) -> Self
+pub fn SignalfilterfirRange::sum(Self) -> Double
+pub fn SignalfilterfirRange::to_string(Self) -> String
+
+pub(all) struct SignalfilterfirSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalfilterfirSeries::add(Self, Self) -> Self
+pub fn SignalfilterfirSeries::cumsum(Self) -> Self
+pub fn SignalfilterfirSeries::len(Self) -> Int32
+pub fn SignalfilterfirSeries::max(Self) -> Double
+pub fn SignalfilterfirSeries::mean(Self) -> Double
+pub fn SignalfilterfirSeries::median(Self) -> Double
+pub fn SignalfilterfirSeries::min(Self) -> Double
+pub fn SignalfilterfirSeries::normalize(Self) -> Self
+pub fn SignalfilterfirSeries::range(Self) -> Double
+pub fn SignalfilterfirSeries::scale(Self, Double) -> Self
+pub fn SignalfilterfirSeries::std(Self) -> Double
+pub fn SignalfilterfirSeries::sub(Self, Self) -> Self
+pub fn SignalfilterfirSeries::sum(Self) -> Double
+pub fn SignalfilterfirSeries::to_string(Self) -> String
+pub fn SignalfilterfirSeries::variance(Self) -> Double
+
+pub(all) struct SignalfilterfirSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterfirSlice::add(Self, Self) -> Self
+pub fn SignalfilterfirSlice::copy(Self) -> Self
+pub fn SignalfilterfirSlice::fill(Self, Double) -> Self
+pub fn SignalfilterfirSlice::get(Self, Int32) -> Double
+pub fn SignalfilterfirSlice::len(Self) -> Int32
+pub fn SignalfilterfirSlice::max(Self) -> Double
+pub fn SignalfilterfirSlice::mean(Self) -> Double
+pub fn SignalfilterfirSlice::min(Self) -> Double
+pub fn SignalfilterfirSlice::scale(Self, Double) -> Self
+pub fn SignalfilterfirSlice::set(Self, Int32, Double) -> Self
+pub fn SignalfilterfirSlice::sum(Self) -> Double
+pub fn SignalfilterfirSlice::to_string(Self) -> String
+
+pub(all) struct SignalfilterfirTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterfirTable::add(Self, Self) -> Self
+pub fn SignalfilterfirTable::copy(Self) -> Self
+pub fn SignalfilterfirTable::fill(Self, Double) -> Self
+pub fn SignalfilterfirTable::get(Self, Int32) -> Double
+pub fn SignalfilterfirTable::len(Self) -> Int32
+pub fn SignalfilterfirTable::max(Self) -> Double
+pub fn SignalfilterfirTable::mean(Self) -> Double
+pub fn SignalfilterfirTable::min(Self) -> Double
+pub fn SignalfilterfirTable::scale(Self, Double) -> Self
+pub fn SignalfilterfirTable::set(Self, Int32, Double) -> Self
+pub fn SignalfilterfirTable::sum(Self) -> Double
+pub fn SignalfilterfirTable::to_string(Self) -> String
+
+pub(all) struct SignalfilterfirVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalfilterfirVector::add(Self, Self) -> Self
+pub fn SignalfilterfirVector::dist(Self, Self) -> Double
+pub fn SignalfilterfirVector::dot(Self, Self) -> Double
+pub fn SignalfilterfirVector::norm(Self) -> Double
+pub fn SignalfilterfirVector::normalize(Self) -> Self
+pub fn SignalfilterfirVector::scale(Self, Double) -> Self
+pub fn SignalfilterfirVector::sub(Self, Self) -> Self
+pub fn SignalfilterfirVector::to_string(Self) -> String
+
+pub(all) struct SignalfilterfirView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalfilterfirView::add(Self, Self) -> Self
+pub fn SignalfilterfirView::copy(Self) -> Self
+pub fn SignalfilterfirView::fill(Self, Double) -> Self
+pub fn SignalfilterfirView::get(Self, Int32) -> Double
+pub fn SignalfilterfirView::len(Self) -> Int32
+pub fn SignalfilterfirView::max(Self) -> Double
+pub fn SignalfilterfirView::mean(Self) -> Double
+pub fn SignalfilterfirView::min(Self) -> Double
+pub fn SignalfilterfirView::scale(Self, Double) -> Self
+pub fn SignalfilterfirView::set(Self, Int32, Double) -> Self
+pub fn SignalfilterfirView::sum(Self) -> Double
+pub fn SignalfilterfirView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

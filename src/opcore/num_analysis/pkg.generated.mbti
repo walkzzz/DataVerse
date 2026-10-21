@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/num_analysis"
+
+// Values
+pub fn num_analysis_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn num_analysis_corr(Array[Double], Array[Double]) -> Double
+
+pub fn num_analysis_cov(Array[Double], Array[Double]) -> Double
+
+pub fn num_analysis_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn num_analysis_mae(Array[Double], Array[Double]) -> Double
+
+pub fn num_analysis_make_labeled_point(Double, Double, Int32) -> Num_analysisPoint
+
+pub fn num_analysis_make_matrix(Int32, Int32, Double) -> Num_analysisMatrix
+
+pub fn num_analysis_make_point(Double, Double) -> Num_analysisPoint
+
+pub fn num_analysis_make_series(Array[Double], String) -> Num_analysisSeries
+
+pub fn num_analysis_make_vector(Array[Double]) -> Num_analysisVector
+
+pub fn num_analysis_matrix_add(Num_analysisMatrix, Num_analysisMatrix) -> Num_analysisMatrix
+
+pub fn num_analysis_matrix_get(Num_analysisMatrix, Int32, Int32) -> Double
+
+pub fn num_analysis_matrix_identity(Int32) -> Num_analysisMatrix
+
+pub fn num_analysis_matrix_multiply(Num_analysisMatrix, Num_analysisMatrix) -> Num_analysisMatrix
+
+pub fn num_analysis_matrix_norm(Num_analysisMatrix) -> Double
+
+pub fn num_analysis_matrix_scale(Num_analysisMatrix, Double) -> Num_analysisMatrix
+
+pub fn num_analysis_matrix_to_string(Num_analysisMatrix) -> String
+
+pub fn num_analysis_matrix_trace(Num_analysisMatrix) -> Double
+
+pub fn num_analysis_matrix_transpose(Num_analysisMatrix) -> Num_analysisMatrix
+
+pub fn num_analysis_mse(Array[Double], Array[Double]) -> Double
+
+pub fn num_analysis_point_add(Num_analysisPoint, Num_analysisPoint) -> Num_analysisPoint
+
+pub fn num_analysis_point_dist(Num_analysisPoint, Num_analysisPoint) -> Double
+
+pub fn num_analysis_point_dot(Num_analysisPoint, Num_analysisPoint) -> Double
+
+pub fn num_analysis_point_label(Num_analysisPoint) -> Int32
+
+pub fn num_analysis_point_norm(Num_analysisPoint) -> Double
+
+pub fn num_analysis_point_scale(Num_analysisPoint, Double) -> Num_analysisPoint
+
+pub fn num_analysis_point_sub(Num_analysisPoint, Num_analysisPoint) -> Num_analysisPoint
+
+pub fn num_analysis_point_to_string(Num_analysisPoint) -> String
+
+pub fn num_analysis_point_x(Num_analysisPoint) -> Double
+
+pub fn num_analysis_point_y(Num_analysisPoint) -> Double
+
+pub fn num_analysis_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn num_analysis_r2(Array[Double], Array[Double]) -> Double
+
+pub fn num_analysis_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn num_analysis_series_add(Num_analysisSeries, Num_analysisSeries) -> Num_analysisSeries
+
+pub fn num_analysis_series_len(Num_analysisSeries) -> Int32
+
+pub fn num_analysis_series_max(Num_analysisSeries) -> Double
+
+pub fn num_analysis_series_mean(Num_analysisSeries) -> Double
+
+pub fn num_analysis_series_min(Num_analysisSeries) -> Double
+
+pub fn num_analysis_series_scale(Num_analysisSeries, Double) -> Num_analysisSeries
+
+pub fn num_analysis_series_std(Num_analysisSeries) -> Double
+
+pub fn num_analysis_series_sum(Num_analysisSeries) -> Double
+
+pub fn num_analysis_series_to_string(Num_analysisSeries) -> String
+
+pub fn num_analysis_series_var(Num_analysisSeries) -> Double
+
+pub fn num_analysis_std(Array[Double]) -> Double
+
+pub fn num_analysis_var(Array[Double]) -> Double
+
+pub fn num_analysis_vector_add(Num_analysisVector, Num_analysisVector) -> Num_analysisVector
+
+pub fn num_analysis_vector_dist(Num_analysisVector, Num_analysisVector) -> Double
+
+pub fn num_analysis_vector_dot(Num_analysisVector, Num_analysisVector) -> Double
+
+pub fn num_analysis_vector_norm(Num_analysisVector) -> Double
+
+pub fn num_analysis_vector_normalize(Num_analysisVector) -> Num_analysisVector
+
+pub fn num_analysis_vector_scale(Num_analysisVector, Double) -> Num_analysisVector
+
+pub fn num_analysis_vector_sub(Num_analysisVector, Num_analysisVector) -> Num_analysisVector
+
+pub fn num_analysis_vector_to_string(Num_analysisVector) -> String
+
+pub fn num_analysis_vector_zero(Int32) -> Num_analysisVector
+
+// Errors
+
+// Types and methods
+pub struct Num_analysisMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Num_analysisPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Num_analysisSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Num_analysisVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

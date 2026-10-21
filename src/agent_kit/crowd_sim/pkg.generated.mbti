@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/agent_kit/crowd_sim"
+
+// Values
+pub fn crowd_sim_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn crowd_sim_corr(Array[Double], Array[Double]) -> Double
+
+pub fn crowd_sim_cov(Array[Double], Array[Double]) -> Double
+
+pub fn crowd_sim_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn crowd_sim_mae(Array[Double], Array[Double]) -> Double
+
+pub fn crowd_sim_make_labeled_point(Double, Double, Int32) -> Crowd_simPoint
+
+pub fn crowd_sim_make_matrix(Int32, Int32, Double) -> Crowd_simMatrix
+
+pub fn crowd_sim_make_point(Double, Double) -> Crowd_simPoint
+
+pub fn crowd_sim_make_series(Array[Double], String) -> Crowd_simSeries
+
+pub fn crowd_sim_make_vector(Array[Double]) -> Crowd_simVector
+
+pub fn crowd_sim_matrix_add(Crowd_simMatrix, Crowd_simMatrix) -> Crowd_simMatrix
+
+pub fn crowd_sim_matrix_get(Crowd_simMatrix, Int32, Int32) -> Double
+
+pub fn crowd_sim_matrix_identity(Int32) -> Crowd_simMatrix
+
+pub fn crowd_sim_matrix_multiply(Crowd_simMatrix, Crowd_simMatrix) -> Crowd_simMatrix
+
+pub fn crowd_sim_matrix_norm(Crowd_simMatrix) -> Double
+
+pub fn crowd_sim_matrix_scale(Crowd_simMatrix, Double) -> Crowd_simMatrix
+
+pub fn crowd_sim_matrix_to_string(Crowd_simMatrix) -> String
+
+pub fn crowd_sim_matrix_trace(Crowd_simMatrix) -> Double
+
+pub fn crowd_sim_matrix_transpose(Crowd_simMatrix) -> Crowd_simMatrix
+
+pub fn crowd_sim_mse(Array[Double], Array[Double]) -> Double
+
+pub fn crowd_sim_point_add(Crowd_simPoint, Crowd_simPoint) -> Crowd_simPoint
+
+pub fn crowd_sim_point_dist(Crowd_simPoint, Crowd_simPoint) -> Double
+
+pub fn crowd_sim_point_dot(Crowd_simPoint, Crowd_simPoint) -> Double
+
+pub fn crowd_sim_point_label(Crowd_simPoint) -> Int32
+
+pub fn crowd_sim_point_norm(Crowd_simPoint) -> Double
+
+pub fn crowd_sim_point_scale(Crowd_simPoint, Double) -> Crowd_simPoint
+
+pub fn crowd_sim_point_sub(Crowd_simPoint, Crowd_simPoint) -> Crowd_simPoint
+
+pub fn crowd_sim_point_to_string(Crowd_simPoint) -> String
+
+pub fn crowd_sim_point_x(Crowd_simPoint) -> Double
+
+pub fn crowd_sim_point_y(Crowd_simPoint) -> Double
+
+pub fn crowd_sim_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn crowd_sim_r2(Array[Double], Array[Double]) -> Double
+
+pub fn crowd_sim_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn crowd_sim_series_add(Crowd_simSeries, Crowd_simSeries) -> Crowd_simSeries
+
+pub fn crowd_sim_series_len(Crowd_simSeries) -> Int32
+
+pub fn crowd_sim_series_max(Crowd_simSeries) -> Double
+
+pub fn crowd_sim_series_mean(Crowd_simSeries) -> Double
+
+pub fn crowd_sim_series_min(Crowd_simSeries) -> Double
+
+pub fn crowd_sim_series_scale(Crowd_simSeries, Double) -> Crowd_simSeries
+
+pub fn crowd_sim_series_std(Crowd_simSeries) -> Double
+
+pub fn crowd_sim_series_sum(Crowd_simSeries) -> Double
+
+pub fn crowd_sim_series_to_string(Crowd_simSeries) -> String
+
+pub fn crowd_sim_series_var(Crowd_simSeries) -> Double
+
+pub fn crowd_sim_std(Array[Double]) -> Double
+
+pub fn crowd_sim_var(Array[Double]) -> Double
+
+pub fn crowd_sim_vector_add(Crowd_simVector, Crowd_simVector) -> Crowd_simVector
+
+pub fn crowd_sim_vector_dist(Crowd_simVector, Crowd_simVector) -> Double
+
+pub fn crowd_sim_vector_dot(Crowd_simVector, Crowd_simVector) -> Double
+
+pub fn crowd_sim_vector_norm(Crowd_simVector) -> Double
+
+pub fn crowd_sim_vector_normalize(Crowd_simVector) -> Crowd_simVector
+
+pub fn crowd_sim_vector_scale(Crowd_simVector, Double) -> Crowd_simVector
+
+pub fn crowd_sim_vector_sub(Crowd_simVector, Crowd_simVector) -> Crowd_simVector
+
+pub fn crowd_sim_vector_to_string(Crowd_simVector) -> String
+
+pub fn crowd_sim_vector_zero(Int32) -> Crowd_simVector
+
+// Errors
+
+// Types and methods
+pub struct Crowd_simMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Crowd_simPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Crowd_simSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Crowd_simVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

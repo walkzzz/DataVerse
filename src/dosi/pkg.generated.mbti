@@ -1,0 +1,63 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dosi"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn builder_id() -> String
+
+pub fn dosi_id() -> String
+
+pub fn router_id() -> String
+
+// Errors
+
+// Types and methods
+pub struct DOSIEntry {
+  symbolic : SymbolicEntry
+  semantic : SemanticEntry
+} derive(Eq, @debug.Debug)
+pub fn DOSIEntry::equal(Self, Self) -> Bool
+pub fn DOSIEntry::new(SymbolicEntry, SemanticEntry) -> Self
+pub fn DOSIEntry::not_equal(Self, Self) -> Bool
+pub fn DOSIEntry::to_repr(Self) -> @debug.Repr
+
+pub struct DOSIIndex {
+  entries : Array[DOSIEntry]
+} derive(Eq, @debug.Debug)
+pub fn DOSIIndex::add(Self, DOSIEntry) -> Self
+pub fn DOSIIndex::empty() -> Self
+pub fn DOSIIndex::entries(Self) -> Array[DOSIEntry]
+pub fn DOSIIndex::equal(Self, Self) -> Bool
+pub fn DOSIIndex::from_entries(Array[DOSIEntry]) -> Self
+pub fn DOSIIndex::not_equal(Self, Self) -> Bool
+pub fn DOSIIndex::remove_by_path(Self, String) -> Self
+pub fn DOSIIndex::size(Self) -> Int32
+pub fn DOSIIndex::to_repr(Self) -> @debug.Repr
+
+pub struct SemanticEntry {
+  summary : String
+  params : Array[String]
+  contract : String
+} derive(Eq, @debug.Debug)
+pub fn SemanticEntry::equal(Self, Self) -> Bool
+pub fn SemanticEntry::new(String, Array[String], String) -> Self
+pub fn SemanticEntry::not_equal(Self, Self) -> Bool
+pub fn SemanticEntry::to_repr(Self) -> @debug.Repr
+
+pub struct SymbolicEntry {
+  path : String
+  category : String
+  modality : String
+  dependencies : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn SymbolicEntry::equal(Self, Self) -> Bool
+pub fn SymbolicEntry::new(String, String, String, Array[String]) -> Self
+pub fn SymbolicEntry::not_equal(Self, Self) -> Bool
+pub fn SymbolicEntry::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

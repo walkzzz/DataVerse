@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/physics_em_magnetostatic"
+
+// Values
+pub fn physics_em_magnetostatic_buffer_make(Int32) -> PhysicsemmagnetostaticBuffer
+
+pub fn physics_em_magnetostatic_cluster_make(Int32) -> PhysicsemmagnetostaticCluster
+
+pub fn physics_em_magnetostatic_cursor_make(Int32) -> PhysicsemmagnetostaticCursor
+
+pub fn physics_em_magnetostatic_edge_make(Int32) -> PhysicsemmagnetostaticEdge
+
+pub fn physics_em_magnetostatic_frame_make(Int32) -> PhysicsemmagnetostaticFrame
+
+pub fn physics_em_magnetostatic_graphn_make(Int32) -> PhysicsemmagnetostaticGraphN
+
+pub fn physics_em_magnetostatic_layer_make(Int32) -> PhysicsemmagnetostaticLayer
+
+pub fn physics_em_magnetostatic_make_matrix(Int32, Int32, Double) -> PhysicsemmagnetostaticMatrix
+
+pub fn physics_em_magnetostatic_make_point(Double, Double) -> PhysicsemmagnetostaticPoint
+
+pub fn physics_em_magnetostatic_make_point3(Double, Double, Double) -> PhysicsemmagnetostaticPoint
+
+pub fn physics_em_magnetostatic_make_series(Array[Double], String) -> PhysicsemmagnetostaticSeries
+
+pub fn physics_em_magnetostatic_make_vector(Array[Double]) -> PhysicsemmagnetostaticVector
+
+pub fn physics_em_magnetostatic_matrix_identity(Int32) -> PhysicsemmagnetostaticMatrix
+
+pub fn physics_em_magnetostatic_model_make(Int32) -> PhysicsemmagnetostaticModel
+
+pub fn physics_em_magnetostatic_node_make(Int32) -> PhysicsemmagnetostaticNode
+
+pub fn physics_em_magnetostatic_path_make(Int32) -> PhysicsemmagnetostaticPath
+
+pub fn physics_em_magnetostatic_range_make(Int32) -> PhysicsemmagnetostaticRange
+
+pub fn physics_em_magnetostatic_slice_make(Int32) -> PhysicsemmagnetostaticSlice
+
+pub fn physics_em_magnetostatic_table_make(Int32) -> PhysicsemmagnetostaticTable
+
+pub fn physics_em_magnetostatic_vector_zero(Int32) -> PhysicsemmagnetostaticVector
+
+pub fn physics_em_magnetostatic_view_make(Int32) -> PhysicsemmagnetostaticView
+
+// Errors
+
+// Types and methods
+pub(all) struct PhysicsemmagnetostaticBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemmagnetostaticBuffer::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticBuffer::copy(Self) -> Self
+pub fn PhysicsemmagnetostaticBuffer::fill(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticBuffer::get(Self, Int32) -> Double
+pub fn PhysicsemmagnetostaticBuffer::len(Self) -> Int32
+pub fn PhysicsemmagnetostaticBuffer::max(Self) -> Double
+pub fn PhysicsemmagnetostaticBuffer::mean(Self) -> Double
+pub fn PhysicsemmagnetostaticBuffer::min(Self) -> Double
+pub fn PhysicsemmagnetostaticBuffer::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticBuffer::set(Self, Int32, Double) -> Self
+pub fn PhysicsemmagnetostaticBuffer::sum(Self) -> Double
+pub fn PhysicsemmagnetostaticBuffer::to_string(Self) -> String
+
+pub(all) struct PhysicsemmagnetostaticCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemmagnetostaticCluster::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticCluster::copy(Self) -> Self
+pub fn PhysicsemmagnetostaticCluster::fill(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticCluster::get(Self, Int32) -> Double
+pub fn PhysicsemmagnetostaticCluster::len(Self) -> Int32
+pub fn PhysicsemmagnetostaticCluster::max(Self) -> Double
+pub fn PhysicsemmagnetostaticCluster::mean(Self) -> Double
+pub fn PhysicsemmagnetostaticCluster::min(Self) -> Double
+pub fn PhysicsemmagnetostaticCluster::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticCluster::set(Self, Int32, Double) -> Self
+pub fn PhysicsemmagnetostaticCluster::sum(Self) -> Double
+pub fn PhysicsemmagnetostaticCluster::to_string(Self) -> String
+
+pub(all) struct PhysicsemmagnetostaticCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemmagnetostaticCursor::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticCursor::copy(Self) -> Self
+pub fn PhysicsemmagnetostaticCursor::fill(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticCursor::get(Self, Int32) -> Double
+pub fn PhysicsemmagnetostaticCursor::len(Self) -> Int32
+pub fn PhysicsemmagnetostaticCursor::max(Self) -> Double
+pub fn PhysicsemmagnetostaticCursor::mean(Self) -> Double
+pub fn PhysicsemmagnetostaticCursor::min(Self) -> Double
+pub fn PhysicsemmagnetostaticCursor::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticCursor::set(Self, Int32, Double) -> Self
+pub fn PhysicsemmagnetostaticCursor::sum(Self) -> Double
+pub fn PhysicsemmagnetostaticCursor::to_string(Self) -> String
+
+pub(all) struct PhysicsemmagnetostaticEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemmagnetostaticEdge::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticEdge::copy(Self) -> Self
+pub fn PhysicsemmagnetostaticEdge::fill(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticEdge::get(Self, Int32) -> Double
+pub fn PhysicsemmagnetostaticEdge::len(Self) -> Int32
+pub fn PhysicsemmagnetostaticEdge::max(Self) -> Double
+pub fn PhysicsemmagnetostaticEdge::mean(Self) -> Double
+pub fn PhysicsemmagnetostaticEdge::min(Self) -> Double
+pub fn PhysicsemmagnetostaticEdge::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticEdge::set(Self, Int32, Double) -> Self
+pub fn PhysicsemmagnetostaticEdge::sum(Self) -> Double
+pub fn PhysicsemmagnetostaticEdge::to_string(Self) -> String
+
+pub(all) struct PhysicsemmagnetostaticFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemmagnetostaticFrame::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticFrame::copy(Self) -> Self
+pub fn PhysicsemmagnetostaticFrame::fill(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticFrame::get(Self, Int32) -> Double
+pub fn PhysicsemmagnetostaticFrame::len(Self) -> Int32
+pub fn PhysicsemmagnetostaticFrame::max(Self) -> Double
+pub fn PhysicsemmagnetostaticFrame::mean(Self) -> Double
+pub fn PhysicsemmagnetostaticFrame::min(Self) -> Double
+pub fn PhysicsemmagnetostaticFrame::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticFrame::set(Self, Int32, Double) -> Self
+pub fn PhysicsemmagnetostaticFrame::sum(Self) -> Double
+pub fn PhysicsemmagnetostaticFrame::to_string(Self) -> String
+
+pub(all) struct PhysicsemmagnetostaticGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemmagnetostaticGraphN::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticGraphN::copy(Self) -> Self
+pub fn PhysicsemmagnetostaticGraphN::fill(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticGraphN::get(Self, Int32) -> Double
+pub fn PhysicsemmagnetostaticGraphN::len(Self) -> Int32
+pub fn PhysicsemmagnetostaticGraphN::max(Self) -> Double
+pub fn PhysicsemmagnetostaticGraphN::mean(Self) -> Double
+pub fn PhysicsemmagnetostaticGraphN::min(Self) -> Double
+pub fn PhysicsemmagnetostaticGraphN::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticGraphN::set(Self, Int32, Double) -> Self
+pub fn PhysicsemmagnetostaticGraphN::sum(Self) -> Double
+pub fn PhysicsemmagnetostaticGraphN::to_string(Self) -> String
+
+pub(all) struct PhysicsemmagnetostaticLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemmagnetostaticLayer::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticLayer::copy(Self) -> Self
+pub fn PhysicsemmagnetostaticLayer::fill(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticLayer::get(Self, Int32) -> Double
+pub fn PhysicsemmagnetostaticLayer::len(Self) -> Int32
+pub fn PhysicsemmagnetostaticLayer::max(Self) -> Double
+pub fn PhysicsemmagnetostaticLayer::mean(Self) -> Double
+pub fn PhysicsemmagnetostaticLayer::min(Self) -> Double
+pub fn PhysicsemmagnetostaticLayer::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticLayer::set(Self, Int32, Double) -> Self
+pub fn PhysicsemmagnetostaticLayer::sum(Self) -> Double
+pub fn PhysicsemmagnetostaticLayer::to_string(Self) -> String
+
+pub(all) struct PhysicsemmagnetostaticMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn PhysicsemmagnetostaticMatrix::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticMatrix::det(Self) -> Double
+pub fn PhysicsemmagnetostaticMatrix::get(Self, Int32, Int32) -> Double
+pub fn PhysicsemmagnetostaticMatrix::multiply(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticMatrix::norm(Self) -> Double
+pub fn PhysicsemmagnetostaticMatrix::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticMatrix::to_string(Self) -> String
+pub fn PhysicsemmagnetostaticMatrix::trace(Self) -> Double
+pub fn PhysicsemmagnetostaticMatrix::transpose(Self) -> Self
+
+pub(all) struct PhysicsemmagnetostaticModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemmagnetostaticModel::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticModel::copy(Self) -> Self
+pub fn PhysicsemmagnetostaticModel::fill(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticModel::get(Self, Int32) -> Double
+pub fn PhysicsemmagnetostaticModel::len(Self) -> Int32
+pub fn PhysicsemmagnetostaticModel::max(Self) -> Double
+pub fn PhysicsemmagnetostaticModel::mean(Self) -> Double
+pub fn PhysicsemmagnetostaticModel::min(Self) -> Double
+pub fn PhysicsemmagnetostaticModel::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticModel::set(Self, Int32, Double) -> Self
+pub fn PhysicsemmagnetostaticModel::sum(Self) -> Double
+pub fn PhysicsemmagnetostaticModel::to_string(Self) -> String
+
+pub(all) struct PhysicsemmagnetostaticNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemmagnetostaticNode::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticNode::copy(Self) -> Self
+pub fn PhysicsemmagnetostaticNode::fill(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticNode::get(Self, Int32) -> Double
+pub fn PhysicsemmagnetostaticNode::len(Self) -> Int32
+pub fn PhysicsemmagnetostaticNode::max(Self) -> Double
+pub fn PhysicsemmagnetostaticNode::mean(Self) -> Double
+pub fn PhysicsemmagnetostaticNode::min(Self) -> Double
+pub fn PhysicsemmagnetostaticNode::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticNode::set(Self, Int32, Double) -> Self
+pub fn PhysicsemmagnetostaticNode::sum(Self) -> Double
+pub fn PhysicsemmagnetostaticNode::to_string(Self) -> String
+
+pub(all) struct PhysicsemmagnetostaticPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemmagnetostaticPath::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticPath::copy(Self) -> Self
+pub fn PhysicsemmagnetostaticPath::fill(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticPath::get(Self, Int32) -> Double
+pub fn PhysicsemmagnetostaticPath::len(Self) -> Int32
+pub fn PhysicsemmagnetostaticPath::max(Self) -> Double
+pub fn PhysicsemmagnetostaticPath::mean(Self) -> Double
+pub fn PhysicsemmagnetostaticPath::min(Self) -> Double
+pub fn PhysicsemmagnetostaticPath::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticPath::set(Self, Int32, Double) -> Self
+pub fn PhysicsemmagnetostaticPath::sum(Self) -> Double
+pub fn PhysicsemmagnetostaticPath::to_string(Self) -> String
+
+pub(all) struct PhysicsemmagnetostaticPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn PhysicsemmagnetostaticPoint::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticPoint::cross(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticPoint::dist(Self, Self) -> Double
+pub fn PhysicsemmagnetostaticPoint::dot(Self, Self) -> Double
+pub fn PhysicsemmagnetostaticPoint::label(Self) -> Int32
+pub fn PhysicsemmagnetostaticPoint::lerp(Self, Self, Double) -> Self
+pub fn PhysicsemmagnetostaticPoint::mid(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticPoint::negate(Self) -> Self
+pub fn PhysicsemmagnetostaticPoint::norm(Self) -> Double
+pub fn PhysicsemmagnetostaticPoint::normalize(Self) -> Self
+pub fn PhysicsemmagnetostaticPoint::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticPoint::sub(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticPoint::to_string(Self) -> String
+pub fn PhysicsemmagnetostaticPoint::x(Self) -> Double
+pub fn PhysicsemmagnetostaticPoint::y(Self) -> Double
+pub fn PhysicsemmagnetostaticPoint::z(Self) -> Double
+
+pub(all) struct PhysicsemmagnetostaticRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemmagnetostaticRange::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticRange::copy(Self) -> Self
+pub fn PhysicsemmagnetostaticRange::fill(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticRange::get(Self, Int32) -> Double
+pub fn PhysicsemmagnetostaticRange::len(Self) -> Int32
+pub fn PhysicsemmagnetostaticRange::max(Self) -> Double
+pub fn PhysicsemmagnetostaticRange::mean(Self) -> Double
+pub fn PhysicsemmagnetostaticRange::min(Self) -> Double
+pub fn PhysicsemmagnetostaticRange::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticRange::set(Self, Int32, Double) -> Self
+pub fn PhysicsemmagnetostaticRange::sum(Self) -> Double
+pub fn PhysicsemmagnetostaticRange::to_string(Self) -> String
+
+pub(all) struct PhysicsemmagnetostaticSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn PhysicsemmagnetostaticSeries::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticSeries::cumsum(Self) -> Self
+pub fn PhysicsemmagnetostaticSeries::len(Self) -> Int32
+pub fn PhysicsemmagnetostaticSeries::max(Self) -> Double
+pub fn PhysicsemmagnetostaticSeries::mean(Self) -> Double
+pub fn PhysicsemmagnetostaticSeries::median(Self) -> Double
+pub fn PhysicsemmagnetostaticSeries::min(Self) -> Double
+pub fn PhysicsemmagnetostaticSeries::normalize(Self) -> Self
+pub fn PhysicsemmagnetostaticSeries::range(Self) -> Double
+pub fn PhysicsemmagnetostaticSeries::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticSeries::std(Self) -> Double
+pub fn PhysicsemmagnetostaticSeries::sub(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticSeries::sum(Self) -> Double
+pub fn PhysicsemmagnetostaticSeries::to_string(Self) -> String
+pub fn PhysicsemmagnetostaticSeries::variance(Self) -> Double
+
+pub(all) struct PhysicsemmagnetostaticSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemmagnetostaticSlice::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticSlice::copy(Self) -> Self
+pub fn PhysicsemmagnetostaticSlice::fill(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticSlice::get(Self, Int32) -> Double
+pub fn PhysicsemmagnetostaticSlice::len(Self) -> Int32
+pub fn PhysicsemmagnetostaticSlice::max(Self) -> Double
+pub fn PhysicsemmagnetostaticSlice::mean(Self) -> Double
+pub fn PhysicsemmagnetostaticSlice::min(Self) -> Double
+pub fn PhysicsemmagnetostaticSlice::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticSlice::set(Self, Int32, Double) -> Self
+pub fn PhysicsemmagnetostaticSlice::sum(Self) -> Double
+pub fn PhysicsemmagnetostaticSlice::to_string(Self) -> String
+
+pub(all) struct PhysicsemmagnetostaticTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemmagnetostaticTable::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticTable::copy(Self) -> Self
+pub fn PhysicsemmagnetostaticTable::fill(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticTable::get(Self, Int32) -> Double
+pub fn PhysicsemmagnetostaticTable::len(Self) -> Int32
+pub fn PhysicsemmagnetostaticTable::max(Self) -> Double
+pub fn PhysicsemmagnetostaticTable::mean(Self) -> Double
+pub fn PhysicsemmagnetostaticTable::min(Self) -> Double
+pub fn PhysicsemmagnetostaticTable::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticTable::set(Self, Int32, Double) -> Self
+pub fn PhysicsemmagnetostaticTable::sum(Self) -> Double
+pub fn PhysicsemmagnetostaticTable::to_string(Self) -> String
+
+pub(all) struct PhysicsemmagnetostaticVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn PhysicsemmagnetostaticVector::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticVector::dist(Self, Self) -> Double
+pub fn PhysicsemmagnetostaticVector::dot(Self, Self) -> Double
+pub fn PhysicsemmagnetostaticVector::norm(Self) -> Double
+pub fn PhysicsemmagnetostaticVector::normalize(Self) -> Self
+pub fn PhysicsemmagnetostaticVector::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticVector::sub(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticVector::to_string(Self) -> String
+
+pub(all) struct PhysicsemmagnetostaticView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn PhysicsemmagnetostaticView::add(Self, Self) -> Self
+pub fn PhysicsemmagnetostaticView::copy(Self) -> Self
+pub fn PhysicsemmagnetostaticView::fill(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticView::get(Self, Int32) -> Double
+pub fn PhysicsemmagnetostaticView::len(Self) -> Int32
+pub fn PhysicsemmagnetostaticView::max(Self) -> Double
+pub fn PhysicsemmagnetostaticView::mean(Self) -> Double
+pub fn PhysicsemmagnetostaticView::min(Self) -> Double
+pub fn PhysicsemmagnetostaticView::scale(Self, Double) -> Self
+pub fn PhysicsemmagnetostaticView::set(Self, Int32, Double) -> Self
+pub fn PhysicsemmagnetostaticView::sum(Self) -> Double
+pub fn PhysicsemmagnetostaticView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

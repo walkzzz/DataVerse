@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_special_legendre"
+
+// Values
+pub fn math_special_legendre_buffer_make(Int32) -> MathspeciallegendreBuffer
+
+pub fn math_special_legendre_cluster_make(Int32) -> MathspeciallegendreCluster
+
+pub fn math_special_legendre_cursor_make(Int32) -> MathspeciallegendreCursor
+
+pub fn math_special_legendre_edge_make(Int32) -> MathspeciallegendreEdge
+
+pub fn math_special_legendre_frame_make(Int32) -> MathspeciallegendreFrame
+
+pub fn math_special_legendre_graphn_make(Int32) -> MathspeciallegendreGraphN
+
+pub fn math_special_legendre_layer_make(Int32) -> MathspeciallegendreLayer
+
+pub fn math_special_legendre_make_matrix(Int32, Int32, Double) -> MathspeciallegendreMatrix
+
+pub fn math_special_legendre_make_point(Double, Double) -> MathspeciallegendrePoint
+
+pub fn math_special_legendre_make_point3(Double, Double, Double) -> MathspeciallegendrePoint
+
+pub fn math_special_legendre_make_series(Array[Double], String) -> MathspeciallegendreSeries
+
+pub fn math_special_legendre_make_vector(Array[Double]) -> MathspeciallegendreVector
+
+pub fn math_special_legendre_matrix_identity(Int32) -> MathspeciallegendreMatrix
+
+pub fn math_special_legendre_model_make(Int32) -> MathspeciallegendreModel
+
+pub fn math_special_legendre_node_make(Int32) -> MathspeciallegendreNode
+
+pub fn math_special_legendre_path_make(Int32) -> MathspeciallegendrePath
+
+pub fn math_special_legendre_range_make(Int32) -> MathspeciallegendreRange
+
+pub fn math_special_legendre_slice_make(Int32) -> MathspeciallegendreSlice
+
+pub fn math_special_legendre_table_make(Int32) -> MathspeciallegendreTable
+
+pub fn math_special_legendre_vector_zero(Int32) -> MathspeciallegendreVector
+
+pub fn math_special_legendre_view_make(Int32) -> MathspeciallegendreView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathspeciallegendreBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspeciallegendreBuffer::add(Self, Self) -> Self
+pub fn MathspeciallegendreBuffer::copy(Self) -> Self
+pub fn MathspeciallegendreBuffer::fill(Self, Double) -> Self
+pub fn MathspeciallegendreBuffer::get(Self, Int32) -> Double
+pub fn MathspeciallegendreBuffer::len(Self) -> Int32
+pub fn MathspeciallegendreBuffer::max(Self) -> Double
+pub fn MathspeciallegendreBuffer::mean(Self) -> Double
+pub fn MathspeciallegendreBuffer::min(Self) -> Double
+pub fn MathspeciallegendreBuffer::scale(Self, Double) -> Self
+pub fn MathspeciallegendreBuffer::set(Self, Int32, Double) -> Self
+pub fn MathspeciallegendreBuffer::sum(Self) -> Double
+pub fn MathspeciallegendreBuffer::to_string(Self) -> String
+
+pub(all) struct MathspeciallegendreCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspeciallegendreCluster::add(Self, Self) -> Self
+pub fn MathspeciallegendreCluster::copy(Self) -> Self
+pub fn MathspeciallegendreCluster::fill(Self, Double) -> Self
+pub fn MathspeciallegendreCluster::get(Self, Int32) -> Double
+pub fn MathspeciallegendreCluster::len(Self) -> Int32
+pub fn MathspeciallegendreCluster::max(Self) -> Double
+pub fn MathspeciallegendreCluster::mean(Self) -> Double
+pub fn MathspeciallegendreCluster::min(Self) -> Double
+pub fn MathspeciallegendreCluster::scale(Self, Double) -> Self
+pub fn MathspeciallegendreCluster::set(Self, Int32, Double) -> Self
+pub fn MathspeciallegendreCluster::sum(Self) -> Double
+pub fn MathspeciallegendreCluster::to_string(Self) -> String
+
+pub(all) struct MathspeciallegendreCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspeciallegendreCursor::add(Self, Self) -> Self
+pub fn MathspeciallegendreCursor::copy(Self) -> Self
+pub fn MathspeciallegendreCursor::fill(Self, Double) -> Self
+pub fn MathspeciallegendreCursor::get(Self, Int32) -> Double
+pub fn MathspeciallegendreCursor::len(Self) -> Int32
+pub fn MathspeciallegendreCursor::max(Self) -> Double
+pub fn MathspeciallegendreCursor::mean(Self) -> Double
+pub fn MathspeciallegendreCursor::min(Self) -> Double
+pub fn MathspeciallegendreCursor::scale(Self, Double) -> Self
+pub fn MathspeciallegendreCursor::set(Self, Int32, Double) -> Self
+pub fn MathspeciallegendreCursor::sum(Self) -> Double
+pub fn MathspeciallegendreCursor::to_string(Self) -> String
+
+pub(all) struct MathspeciallegendreEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspeciallegendreEdge::add(Self, Self) -> Self
+pub fn MathspeciallegendreEdge::copy(Self) -> Self
+pub fn MathspeciallegendreEdge::fill(Self, Double) -> Self
+pub fn MathspeciallegendreEdge::get(Self, Int32) -> Double
+pub fn MathspeciallegendreEdge::len(Self) -> Int32
+pub fn MathspeciallegendreEdge::max(Self) -> Double
+pub fn MathspeciallegendreEdge::mean(Self) -> Double
+pub fn MathspeciallegendreEdge::min(Self) -> Double
+pub fn MathspeciallegendreEdge::scale(Self, Double) -> Self
+pub fn MathspeciallegendreEdge::set(Self, Int32, Double) -> Self
+pub fn MathspeciallegendreEdge::sum(Self) -> Double
+pub fn MathspeciallegendreEdge::to_string(Self) -> String
+
+pub(all) struct MathspeciallegendreFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspeciallegendreFrame::add(Self, Self) -> Self
+pub fn MathspeciallegendreFrame::copy(Self) -> Self
+pub fn MathspeciallegendreFrame::fill(Self, Double) -> Self
+pub fn MathspeciallegendreFrame::get(Self, Int32) -> Double
+pub fn MathspeciallegendreFrame::len(Self) -> Int32
+pub fn MathspeciallegendreFrame::max(Self) -> Double
+pub fn MathspeciallegendreFrame::mean(Self) -> Double
+pub fn MathspeciallegendreFrame::min(Self) -> Double
+pub fn MathspeciallegendreFrame::scale(Self, Double) -> Self
+pub fn MathspeciallegendreFrame::set(Self, Int32, Double) -> Self
+pub fn MathspeciallegendreFrame::sum(Self) -> Double
+pub fn MathspeciallegendreFrame::to_string(Self) -> String
+
+pub(all) struct MathspeciallegendreGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspeciallegendreGraphN::add(Self, Self) -> Self
+pub fn MathspeciallegendreGraphN::copy(Self) -> Self
+pub fn MathspeciallegendreGraphN::fill(Self, Double) -> Self
+pub fn MathspeciallegendreGraphN::get(Self, Int32) -> Double
+pub fn MathspeciallegendreGraphN::len(Self) -> Int32
+pub fn MathspeciallegendreGraphN::max(Self) -> Double
+pub fn MathspeciallegendreGraphN::mean(Self) -> Double
+pub fn MathspeciallegendreGraphN::min(Self) -> Double
+pub fn MathspeciallegendreGraphN::scale(Self, Double) -> Self
+pub fn MathspeciallegendreGraphN::set(Self, Int32, Double) -> Self
+pub fn MathspeciallegendreGraphN::sum(Self) -> Double
+pub fn MathspeciallegendreGraphN::to_string(Self) -> String
+
+pub(all) struct MathspeciallegendreLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspeciallegendreLayer::add(Self, Self) -> Self
+pub fn MathspeciallegendreLayer::copy(Self) -> Self
+pub fn MathspeciallegendreLayer::fill(Self, Double) -> Self
+pub fn MathspeciallegendreLayer::get(Self, Int32) -> Double
+pub fn MathspeciallegendreLayer::len(Self) -> Int32
+pub fn MathspeciallegendreLayer::max(Self) -> Double
+pub fn MathspeciallegendreLayer::mean(Self) -> Double
+pub fn MathspeciallegendreLayer::min(Self) -> Double
+pub fn MathspeciallegendreLayer::scale(Self, Double) -> Self
+pub fn MathspeciallegendreLayer::set(Self, Int32, Double) -> Self
+pub fn MathspeciallegendreLayer::sum(Self) -> Double
+pub fn MathspeciallegendreLayer::to_string(Self) -> String
+
+pub(all) struct MathspeciallegendreMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathspeciallegendreMatrix::add(Self, Self) -> Self
+pub fn MathspeciallegendreMatrix::det(Self) -> Double
+pub fn MathspeciallegendreMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathspeciallegendreMatrix::multiply(Self, Self) -> Self
+pub fn MathspeciallegendreMatrix::norm(Self) -> Double
+pub fn MathspeciallegendreMatrix::scale(Self, Double) -> Self
+pub fn MathspeciallegendreMatrix::to_string(Self) -> String
+pub fn MathspeciallegendreMatrix::trace(Self) -> Double
+pub fn MathspeciallegendreMatrix::transpose(Self) -> Self
+
+pub(all) struct MathspeciallegendreModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspeciallegendreModel::add(Self, Self) -> Self
+pub fn MathspeciallegendreModel::copy(Self) -> Self
+pub fn MathspeciallegendreModel::fill(Self, Double) -> Self
+pub fn MathspeciallegendreModel::get(Self, Int32) -> Double
+pub fn MathspeciallegendreModel::len(Self) -> Int32
+pub fn MathspeciallegendreModel::max(Self) -> Double
+pub fn MathspeciallegendreModel::mean(Self) -> Double
+pub fn MathspeciallegendreModel::min(Self) -> Double
+pub fn MathspeciallegendreModel::scale(Self, Double) -> Self
+pub fn MathspeciallegendreModel::set(Self, Int32, Double) -> Self
+pub fn MathspeciallegendreModel::sum(Self) -> Double
+pub fn MathspeciallegendreModel::to_string(Self) -> String
+
+pub(all) struct MathspeciallegendreNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspeciallegendreNode::add(Self, Self) -> Self
+pub fn MathspeciallegendreNode::copy(Self) -> Self
+pub fn MathspeciallegendreNode::fill(Self, Double) -> Self
+pub fn MathspeciallegendreNode::get(Self, Int32) -> Double
+pub fn MathspeciallegendreNode::len(Self) -> Int32
+pub fn MathspeciallegendreNode::max(Self) -> Double
+pub fn MathspeciallegendreNode::mean(Self) -> Double
+pub fn MathspeciallegendreNode::min(Self) -> Double
+pub fn MathspeciallegendreNode::scale(Self, Double) -> Self
+pub fn MathspeciallegendreNode::set(Self, Int32, Double) -> Self
+pub fn MathspeciallegendreNode::sum(Self) -> Double
+pub fn MathspeciallegendreNode::to_string(Self) -> String
+
+pub(all) struct MathspeciallegendrePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspeciallegendrePath::add(Self, Self) -> Self
+pub fn MathspeciallegendrePath::copy(Self) -> Self
+pub fn MathspeciallegendrePath::fill(Self, Double) -> Self
+pub fn MathspeciallegendrePath::get(Self, Int32) -> Double
+pub fn MathspeciallegendrePath::len(Self) -> Int32
+pub fn MathspeciallegendrePath::max(Self) -> Double
+pub fn MathspeciallegendrePath::mean(Self) -> Double
+pub fn MathspeciallegendrePath::min(Self) -> Double
+pub fn MathspeciallegendrePath::scale(Self, Double) -> Self
+pub fn MathspeciallegendrePath::set(Self, Int32, Double) -> Self
+pub fn MathspeciallegendrePath::sum(Self) -> Double
+pub fn MathspeciallegendrePath::to_string(Self) -> String
+
+pub(all) struct MathspeciallegendrePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathspeciallegendrePoint::add(Self, Self) -> Self
+pub fn MathspeciallegendrePoint::cross(Self, Self) -> Self
+pub fn MathspeciallegendrePoint::dist(Self, Self) -> Double
+pub fn MathspeciallegendrePoint::dot(Self, Self) -> Double
+pub fn MathspeciallegendrePoint::label(Self) -> Int32
+pub fn MathspeciallegendrePoint::lerp(Self, Self, Double) -> Self
+pub fn MathspeciallegendrePoint::mid(Self, Self) -> Self
+pub fn MathspeciallegendrePoint::negate(Self) -> Self
+pub fn MathspeciallegendrePoint::norm(Self) -> Double
+pub fn MathspeciallegendrePoint::normalize(Self) -> Self
+pub fn MathspeciallegendrePoint::scale(Self, Double) -> Self
+pub fn MathspeciallegendrePoint::sub(Self, Self) -> Self
+pub fn MathspeciallegendrePoint::to_string(Self) -> String
+pub fn MathspeciallegendrePoint::x(Self) -> Double
+pub fn MathspeciallegendrePoint::y(Self) -> Double
+pub fn MathspeciallegendrePoint::z(Self) -> Double
+
+pub(all) struct MathspeciallegendreRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspeciallegendreRange::add(Self, Self) -> Self
+pub fn MathspeciallegendreRange::copy(Self) -> Self
+pub fn MathspeciallegendreRange::fill(Self, Double) -> Self
+pub fn MathspeciallegendreRange::get(Self, Int32) -> Double
+pub fn MathspeciallegendreRange::len(Self) -> Int32
+pub fn MathspeciallegendreRange::max(Self) -> Double
+pub fn MathspeciallegendreRange::mean(Self) -> Double
+pub fn MathspeciallegendreRange::min(Self) -> Double
+pub fn MathspeciallegendreRange::scale(Self, Double) -> Self
+pub fn MathspeciallegendreRange::set(Self, Int32, Double) -> Self
+pub fn MathspeciallegendreRange::sum(Self) -> Double
+pub fn MathspeciallegendreRange::to_string(Self) -> String
+
+pub(all) struct MathspeciallegendreSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathspeciallegendreSeries::add(Self, Self) -> Self
+pub fn MathspeciallegendreSeries::cumsum(Self) -> Self
+pub fn MathspeciallegendreSeries::len(Self) -> Int32
+pub fn MathspeciallegendreSeries::max(Self) -> Double
+pub fn MathspeciallegendreSeries::mean(Self) -> Double
+pub fn MathspeciallegendreSeries::median(Self) -> Double
+pub fn MathspeciallegendreSeries::min(Self) -> Double
+pub fn MathspeciallegendreSeries::normalize(Self) -> Self
+pub fn MathspeciallegendreSeries::range(Self) -> Double
+pub fn MathspeciallegendreSeries::scale(Self, Double) -> Self
+pub fn MathspeciallegendreSeries::std(Self) -> Double
+pub fn MathspeciallegendreSeries::sub(Self, Self) -> Self
+pub fn MathspeciallegendreSeries::sum(Self) -> Double
+pub fn MathspeciallegendreSeries::to_string(Self) -> String
+pub fn MathspeciallegendreSeries::variance(Self) -> Double
+
+pub(all) struct MathspeciallegendreSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspeciallegendreSlice::add(Self, Self) -> Self
+pub fn MathspeciallegendreSlice::copy(Self) -> Self
+pub fn MathspeciallegendreSlice::fill(Self, Double) -> Self
+pub fn MathspeciallegendreSlice::get(Self, Int32) -> Double
+pub fn MathspeciallegendreSlice::len(Self) -> Int32
+pub fn MathspeciallegendreSlice::max(Self) -> Double
+pub fn MathspeciallegendreSlice::mean(Self) -> Double
+pub fn MathspeciallegendreSlice::min(Self) -> Double
+pub fn MathspeciallegendreSlice::scale(Self, Double) -> Self
+pub fn MathspeciallegendreSlice::set(Self, Int32, Double) -> Self
+pub fn MathspeciallegendreSlice::sum(Self) -> Double
+pub fn MathspeciallegendreSlice::to_string(Self) -> String
+
+pub(all) struct MathspeciallegendreTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspeciallegendreTable::add(Self, Self) -> Self
+pub fn MathspeciallegendreTable::copy(Self) -> Self
+pub fn MathspeciallegendreTable::fill(Self, Double) -> Self
+pub fn MathspeciallegendreTable::get(Self, Int32) -> Double
+pub fn MathspeciallegendreTable::len(Self) -> Int32
+pub fn MathspeciallegendreTable::max(Self) -> Double
+pub fn MathspeciallegendreTable::mean(Self) -> Double
+pub fn MathspeciallegendreTable::min(Self) -> Double
+pub fn MathspeciallegendreTable::scale(Self, Double) -> Self
+pub fn MathspeciallegendreTable::set(Self, Int32, Double) -> Self
+pub fn MathspeciallegendreTable::sum(Self) -> Double
+pub fn MathspeciallegendreTable::to_string(Self) -> String
+
+pub(all) struct MathspeciallegendreVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathspeciallegendreVector::add(Self, Self) -> Self
+pub fn MathspeciallegendreVector::dist(Self, Self) -> Double
+pub fn MathspeciallegendreVector::dot(Self, Self) -> Double
+pub fn MathspeciallegendreVector::norm(Self) -> Double
+pub fn MathspeciallegendreVector::normalize(Self) -> Self
+pub fn MathspeciallegendreVector::scale(Self, Double) -> Self
+pub fn MathspeciallegendreVector::sub(Self, Self) -> Self
+pub fn MathspeciallegendreVector::to_string(Self) -> String
+
+pub(all) struct MathspeciallegendreView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathspeciallegendreView::add(Self, Self) -> Self
+pub fn MathspeciallegendreView::copy(Self) -> Self
+pub fn MathspeciallegendreView::fill(Self, Double) -> Self
+pub fn MathspeciallegendreView::get(Self, Int32) -> Double
+pub fn MathspeciallegendreView::len(Self) -> Int32
+pub fn MathspeciallegendreView::max(Self) -> Double
+pub fn MathspeciallegendreView::mean(Self) -> Double
+pub fn MathspeciallegendreView::min(Self) -> Double
+pub fn MathspeciallegendreView::scale(Self, Double) -> Self
+pub fn MathspeciallegendreView::set(Self, Int32, Double) -> Self
+pub fn MathspeciallegendreView::sum(Self) -> Double
+pub fn MathspeciallegendreView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

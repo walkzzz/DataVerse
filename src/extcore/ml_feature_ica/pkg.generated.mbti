@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ml_feature_ica"
+
+// Values
+pub fn ml_feature_ica_buffer_make(Int32) -> MlfeatureicaBuffer
+
+pub fn ml_feature_ica_cluster_make(Int32) -> MlfeatureicaCluster
+
+pub fn ml_feature_ica_cursor_make(Int32) -> MlfeatureicaCursor
+
+pub fn ml_feature_ica_edge_make(Int32) -> MlfeatureicaEdge
+
+pub fn ml_feature_ica_frame_make(Int32) -> MlfeatureicaFrame
+
+pub fn ml_feature_ica_graphn_make(Int32) -> MlfeatureicaGraphN
+
+pub fn ml_feature_ica_layer_make(Int32) -> MlfeatureicaLayer
+
+pub fn ml_feature_ica_make_matrix(Int32, Int32, Double) -> MlfeatureicaMatrix
+
+pub fn ml_feature_ica_make_point(Double, Double) -> MlfeatureicaPoint
+
+pub fn ml_feature_ica_make_point3(Double, Double, Double) -> MlfeatureicaPoint
+
+pub fn ml_feature_ica_make_series(Array[Double], String) -> MlfeatureicaSeries
+
+pub fn ml_feature_ica_make_vector(Array[Double]) -> MlfeatureicaVector
+
+pub fn ml_feature_ica_matrix_identity(Int32) -> MlfeatureicaMatrix
+
+pub fn ml_feature_ica_model_make(Int32) -> MlfeatureicaModel
+
+pub fn ml_feature_ica_node_make(Int32) -> MlfeatureicaNode
+
+pub fn ml_feature_ica_path_make(Int32) -> MlfeatureicaPath
+
+pub fn ml_feature_ica_range_make(Int32) -> MlfeatureicaRange
+
+pub fn ml_feature_ica_slice_make(Int32) -> MlfeatureicaSlice
+
+pub fn ml_feature_ica_table_make(Int32) -> MlfeatureicaTable
+
+pub fn ml_feature_ica_vector_zero(Int32) -> MlfeatureicaVector
+
+pub fn ml_feature_ica_view_make(Int32) -> MlfeatureicaView
+
+// Errors
+
+// Types and methods
+pub(all) struct MlfeatureicaBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureicaBuffer::add(Self, Self) -> Self
+pub fn MlfeatureicaBuffer::copy(Self) -> Self
+pub fn MlfeatureicaBuffer::fill(Self, Double) -> Self
+pub fn MlfeatureicaBuffer::get(Self, Int32) -> Double
+pub fn MlfeatureicaBuffer::len(Self) -> Int32
+pub fn MlfeatureicaBuffer::max(Self) -> Double
+pub fn MlfeatureicaBuffer::mean(Self) -> Double
+pub fn MlfeatureicaBuffer::min(Self) -> Double
+pub fn MlfeatureicaBuffer::scale(Self, Double) -> Self
+pub fn MlfeatureicaBuffer::set(Self, Int32, Double) -> Self
+pub fn MlfeatureicaBuffer::sum(Self) -> Double
+pub fn MlfeatureicaBuffer::to_string(Self) -> String
+
+pub(all) struct MlfeatureicaCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureicaCluster::add(Self, Self) -> Self
+pub fn MlfeatureicaCluster::copy(Self) -> Self
+pub fn MlfeatureicaCluster::fill(Self, Double) -> Self
+pub fn MlfeatureicaCluster::get(Self, Int32) -> Double
+pub fn MlfeatureicaCluster::len(Self) -> Int32
+pub fn MlfeatureicaCluster::max(Self) -> Double
+pub fn MlfeatureicaCluster::mean(Self) -> Double
+pub fn MlfeatureicaCluster::min(Self) -> Double
+pub fn MlfeatureicaCluster::scale(Self, Double) -> Self
+pub fn MlfeatureicaCluster::set(Self, Int32, Double) -> Self
+pub fn MlfeatureicaCluster::sum(Self) -> Double
+pub fn MlfeatureicaCluster::to_string(Self) -> String
+
+pub(all) struct MlfeatureicaCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureicaCursor::add(Self, Self) -> Self
+pub fn MlfeatureicaCursor::copy(Self) -> Self
+pub fn MlfeatureicaCursor::fill(Self, Double) -> Self
+pub fn MlfeatureicaCursor::get(Self, Int32) -> Double
+pub fn MlfeatureicaCursor::len(Self) -> Int32
+pub fn MlfeatureicaCursor::max(Self) -> Double
+pub fn MlfeatureicaCursor::mean(Self) -> Double
+pub fn MlfeatureicaCursor::min(Self) -> Double
+pub fn MlfeatureicaCursor::scale(Self, Double) -> Self
+pub fn MlfeatureicaCursor::set(Self, Int32, Double) -> Self
+pub fn MlfeatureicaCursor::sum(Self) -> Double
+pub fn MlfeatureicaCursor::to_string(Self) -> String
+
+pub(all) struct MlfeatureicaEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureicaEdge::add(Self, Self) -> Self
+pub fn MlfeatureicaEdge::copy(Self) -> Self
+pub fn MlfeatureicaEdge::fill(Self, Double) -> Self
+pub fn MlfeatureicaEdge::get(Self, Int32) -> Double
+pub fn MlfeatureicaEdge::len(Self) -> Int32
+pub fn MlfeatureicaEdge::max(Self) -> Double
+pub fn MlfeatureicaEdge::mean(Self) -> Double
+pub fn MlfeatureicaEdge::min(Self) -> Double
+pub fn MlfeatureicaEdge::scale(Self, Double) -> Self
+pub fn MlfeatureicaEdge::set(Self, Int32, Double) -> Self
+pub fn MlfeatureicaEdge::sum(Self) -> Double
+pub fn MlfeatureicaEdge::to_string(Self) -> String
+
+pub(all) struct MlfeatureicaFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureicaFrame::add(Self, Self) -> Self
+pub fn MlfeatureicaFrame::copy(Self) -> Self
+pub fn MlfeatureicaFrame::fill(Self, Double) -> Self
+pub fn MlfeatureicaFrame::get(Self, Int32) -> Double
+pub fn MlfeatureicaFrame::len(Self) -> Int32
+pub fn MlfeatureicaFrame::max(Self) -> Double
+pub fn MlfeatureicaFrame::mean(Self) -> Double
+pub fn MlfeatureicaFrame::min(Self) -> Double
+pub fn MlfeatureicaFrame::scale(Self, Double) -> Self
+pub fn MlfeatureicaFrame::set(Self, Int32, Double) -> Self
+pub fn MlfeatureicaFrame::sum(Self) -> Double
+pub fn MlfeatureicaFrame::to_string(Self) -> String
+
+pub(all) struct MlfeatureicaGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureicaGraphN::add(Self, Self) -> Self
+pub fn MlfeatureicaGraphN::copy(Self) -> Self
+pub fn MlfeatureicaGraphN::fill(Self, Double) -> Self
+pub fn MlfeatureicaGraphN::get(Self, Int32) -> Double
+pub fn MlfeatureicaGraphN::len(Self) -> Int32
+pub fn MlfeatureicaGraphN::max(Self) -> Double
+pub fn MlfeatureicaGraphN::mean(Self) -> Double
+pub fn MlfeatureicaGraphN::min(Self) -> Double
+pub fn MlfeatureicaGraphN::scale(Self, Double) -> Self
+pub fn MlfeatureicaGraphN::set(Self, Int32, Double) -> Self
+pub fn MlfeatureicaGraphN::sum(Self) -> Double
+pub fn MlfeatureicaGraphN::to_string(Self) -> String
+
+pub(all) struct MlfeatureicaLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureicaLayer::add(Self, Self) -> Self
+pub fn MlfeatureicaLayer::copy(Self) -> Self
+pub fn MlfeatureicaLayer::fill(Self, Double) -> Self
+pub fn MlfeatureicaLayer::get(Self, Int32) -> Double
+pub fn MlfeatureicaLayer::len(Self) -> Int32
+pub fn MlfeatureicaLayer::max(Self) -> Double
+pub fn MlfeatureicaLayer::mean(Self) -> Double
+pub fn MlfeatureicaLayer::min(Self) -> Double
+pub fn MlfeatureicaLayer::scale(Self, Double) -> Self
+pub fn MlfeatureicaLayer::set(Self, Int32, Double) -> Self
+pub fn MlfeatureicaLayer::sum(Self) -> Double
+pub fn MlfeatureicaLayer::to_string(Self) -> String
+
+pub(all) struct MlfeatureicaMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MlfeatureicaMatrix::add(Self, Self) -> Self
+pub fn MlfeatureicaMatrix::det(Self) -> Double
+pub fn MlfeatureicaMatrix::get(Self, Int32, Int32) -> Double
+pub fn MlfeatureicaMatrix::multiply(Self, Self) -> Self
+pub fn MlfeatureicaMatrix::norm(Self) -> Double
+pub fn MlfeatureicaMatrix::scale(Self, Double) -> Self
+pub fn MlfeatureicaMatrix::to_string(Self) -> String
+pub fn MlfeatureicaMatrix::trace(Self) -> Double
+pub fn MlfeatureicaMatrix::transpose(Self) -> Self
+
+pub(all) struct MlfeatureicaModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureicaModel::add(Self, Self) -> Self
+pub fn MlfeatureicaModel::copy(Self) -> Self
+pub fn MlfeatureicaModel::fill(Self, Double) -> Self
+pub fn MlfeatureicaModel::get(Self, Int32) -> Double
+pub fn MlfeatureicaModel::len(Self) -> Int32
+pub fn MlfeatureicaModel::max(Self) -> Double
+pub fn MlfeatureicaModel::mean(Self) -> Double
+pub fn MlfeatureicaModel::min(Self) -> Double
+pub fn MlfeatureicaModel::scale(Self, Double) -> Self
+pub fn MlfeatureicaModel::set(Self, Int32, Double) -> Self
+pub fn MlfeatureicaModel::sum(Self) -> Double
+pub fn MlfeatureicaModel::to_string(Self) -> String
+
+pub(all) struct MlfeatureicaNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureicaNode::add(Self, Self) -> Self
+pub fn MlfeatureicaNode::copy(Self) -> Self
+pub fn MlfeatureicaNode::fill(Self, Double) -> Self
+pub fn MlfeatureicaNode::get(Self, Int32) -> Double
+pub fn MlfeatureicaNode::len(Self) -> Int32
+pub fn MlfeatureicaNode::max(Self) -> Double
+pub fn MlfeatureicaNode::mean(Self) -> Double
+pub fn MlfeatureicaNode::min(Self) -> Double
+pub fn MlfeatureicaNode::scale(Self, Double) -> Self
+pub fn MlfeatureicaNode::set(Self, Int32, Double) -> Self
+pub fn MlfeatureicaNode::sum(Self) -> Double
+pub fn MlfeatureicaNode::to_string(Self) -> String
+
+pub(all) struct MlfeatureicaPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureicaPath::add(Self, Self) -> Self
+pub fn MlfeatureicaPath::copy(Self) -> Self
+pub fn MlfeatureicaPath::fill(Self, Double) -> Self
+pub fn MlfeatureicaPath::get(Self, Int32) -> Double
+pub fn MlfeatureicaPath::len(Self) -> Int32
+pub fn MlfeatureicaPath::max(Self) -> Double
+pub fn MlfeatureicaPath::mean(Self) -> Double
+pub fn MlfeatureicaPath::min(Self) -> Double
+pub fn MlfeatureicaPath::scale(Self, Double) -> Self
+pub fn MlfeatureicaPath::set(Self, Int32, Double) -> Self
+pub fn MlfeatureicaPath::sum(Self) -> Double
+pub fn MlfeatureicaPath::to_string(Self) -> String
+
+pub(all) struct MlfeatureicaPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MlfeatureicaPoint::add(Self, Self) -> Self
+pub fn MlfeatureicaPoint::cross(Self, Self) -> Self
+pub fn MlfeatureicaPoint::dist(Self, Self) -> Double
+pub fn MlfeatureicaPoint::dot(Self, Self) -> Double
+pub fn MlfeatureicaPoint::label(Self) -> Int32
+pub fn MlfeatureicaPoint::lerp(Self, Self, Double) -> Self
+pub fn MlfeatureicaPoint::mid(Self, Self) -> Self
+pub fn MlfeatureicaPoint::negate(Self) -> Self
+pub fn MlfeatureicaPoint::norm(Self) -> Double
+pub fn MlfeatureicaPoint::normalize(Self) -> Self
+pub fn MlfeatureicaPoint::scale(Self, Double) -> Self
+pub fn MlfeatureicaPoint::sub(Self, Self) -> Self
+pub fn MlfeatureicaPoint::to_string(Self) -> String
+pub fn MlfeatureicaPoint::x(Self) -> Double
+pub fn MlfeatureicaPoint::y(Self) -> Double
+pub fn MlfeatureicaPoint::z(Self) -> Double
+
+pub(all) struct MlfeatureicaRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureicaRange::add(Self, Self) -> Self
+pub fn MlfeatureicaRange::copy(Self) -> Self
+pub fn MlfeatureicaRange::fill(Self, Double) -> Self
+pub fn MlfeatureicaRange::get(Self, Int32) -> Double
+pub fn MlfeatureicaRange::len(Self) -> Int32
+pub fn MlfeatureicaRange::max(Self) -> Double
+pub fn MlfeatureicaRange::mean(Self) -> Double
+pub fn MlfeatureicaRange::min(Self) -> Double
+pub fn MlfeatureicaRange::scale(Self, Double) -> Self
+pub fn MlfeatureicaRange::set(Self, Int32, Double) -> Self
+pub fn MlfeatureicaRange::sum(Self) -> Double
+pub fn MlfeatureicaRange::to_string(Self) -> String
+
+pub(all) struct MlfeatureicaSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MlfeatureicaSeries::add(Self, Self) -> Self
+pub fn MlfeatureicaSeries::cumsum(Self) -> Self
+pub fn MlfeatureicaSeries::len(Self) -> Int32
+pub fn MlfeatureicaSeries::max(Self) -> Double
+pub fn MlfeatureicaSeries::mean(Self) -> Double
+pub fn MlfeatureicaSeries::median(Self) -> Double
+pub fn MlfeatureicaSeries::min(Self) -> Double
+pub fn MlfeatureicaSeries::normalize(Self) -> Self
+pub fn MlfeatureicaSeries::range(Self) -> Double
+pub fn MlfeatureicaSeries::scale(Self, Double) -> Self
+pub fn MlfeatureicaSeries::std(Self) -> Double
+pub fn MlfeatureicaSeries::sub(Self, Self) -> Self
+pub fn MlfeatureicaSeries::sum(Self) -> Double
+pub fn MlfeatureicaSeries::to_string(Self) -> String
+pub fn MlfeatureicaSeries::variance(Self) -> Double
+
+pub(all) struct MlfeatureicaSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureicaSlice::add(Self, Self) -> Self
+pub fn MlfeatureicaSlice::copy(Self) -> Self
+pub fn MlfeatureicaSlice::fill(Self, Double) -> Self
+pub fn MlfeatureicaSlice::get(Self, Int32) -> Double
+pub fn MlfeatureicaSlice::len(Self) -> Int32
+pub fn MlfeatureicaSlice::max(Self) -> Double
+pub fn MlfeatureicaSlice::mean(Self) -> Double
+pub fn MlfeatureicaSlice::min(Self) -> Double
+pub fn MlfeatureicaSlice::scale(Self, Double) -> Self
+pub fn MlfeatureicaSlice::set(Self, Int32, Double) -> Self
+pub fn MlfeatureicaSlice::sum(Self) -> Double
+pub fn MlfeatureicaSlice::to_string(Self) -> String
+
+pub(all) struct MlfeatureicaTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureicaTable::add(Self, Self) -> Self
+pub fn MlfeatureicaTable::copy(Self) -> Self
+pub fn MlfeatureicaTable::fill(Self, Double) -> Self
+pub fn MlfeatureicaTable::get(Self, Int32) -> Double
+pub fn MlfeatureicaTable::len(Self) -> Int32
+pub fn MlfeatureicaTable::max(Self) -> Double
+pub fn MlfeatureicaTable::mean(Self) -> Double
+pub fn MlfeatureicaTable::min(Self) -> Double
+pub fn MlfeatureicaTable::scale(Self, Double) -> Self
+pub fn MlfeatureicaTable::set(Self, Int32, Double) -> Self
+pub fn MlfeatureicaTable::sum(Self) -> Double
+pub fn MlfeatureicaTable::to_string(Self) -> String
+
+pub(all) struct MlfeatureicaVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MlfeatureicaVector::add(Self, Self) -> Self
+pub fn MlfeatureicaVector::dist(Self, Self) -> Double
+pub fn MlfeatureicaVector::dot(Self, Self) -> Double
+pub fn MlfeatureicaVector::norm(Self) -> Double
+pub fn MlfeatureicaVector::normalize(Self) -> Self
+pub fn MlfeatureicaVector::scale(Self, Double) -> Self
+pub fn MlfeatureicaVector::sub(Self, Self) -> Self
+pub fn MlfeatureicaVector::to_string(Self) -> String
+
+pub(all) struct MlfeatureicaView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MlfeatureicaView::add(Self, Self) -> Self
+pub fn MlfeatureicaView::copy(Self) -> Self
+pub fn MlfeatureicaView::fill(Self, Double) -> Self
+pub fn MlfeatureicaView::get(Self, Int32) -> Double
+pub fn MlfeatureicaView::len(Self) -> Int32
+pub fn MlfeatureicaView::max(Self) -> Double
+pub fn MlfeatureicaView::mean(Self) -> Double
+pub fn MlfeatureicaView::min(Self) -> Double
+pub fn MlfeatureicaView::scale(Self, Double) -> Self
+pub fn MlfeatureicaView::set(Self, Int32, Double) -> Self
+pub fn MlfeatureicaView::sum(Self) -> Double
+pub fn MlfeatureicaView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

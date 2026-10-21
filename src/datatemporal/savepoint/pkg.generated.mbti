@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/savepoint"
+
+// Values
+pub fn savepoint_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn savepoint_corr(Array[Double], Array[Double]) -> Double
+
+pub fn savepoint_cov(Array[Double], Array[Double]) -> Double
+
+pub fn savepoint_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn savepoint_mae(Array[Double], Array[Double]) -> Double
+
+pub fn savepoint_make_labeled_point(Double, Double, Int32) -> SavepointPoint
+
+pub fn savepoint_make_matrix(Int32, Int32, Double) -> SavepointMatrix
+
+pub fn savepoint_make_point(Double, Double) -> SavepointPoint
+
+pub fn savepoint_make_series(Array[Double], String) -> SavepointSeries
+
+pub fn savepoint_make_vector(Array[Double]) -> SavepointVector
+
+pub fn savepoint_matrix_add(SavepointMatrix, SavepointMatrix) -> SavepointMatrix
+
+pub fn savepoint_matrix_get(SavepointMatrix, Int32, Int32) -> Double
+
+pub fn savepoint_matrix_identity(Int32) -> SavepointMatrix
+
+pub fn savepoint_matrix_multiply(SavepointMatrix, SavepointMatrix) -> SavepointMatrix
+
+pub fn savepoint_matrix_norm(SavepointMatrix) -> Double
+
+pub fn savepoint_matrix_scale(SavepointMatrix, Double) -> SavepointMatrix
+
+pub fn savepoint_matrix_to_string(SavepointMatrix) -> String
+
+pub fn savepoint_matrix_trace(SavepointMatrix) -> Double
+
+pub fn savepoint_matrix_transpose(SavepointMatrix) -> SavepointMatrix
+
+pub fn savepoint_mse(Array[Double], Array[Double]) -> Double
+
+pub fn savepoint_point_add(SavepointPoint, SavepointPoint) -> SavepointPoint
+
+pub fn savepoint_point_dist(SavepointPoint, SavepointPoint) -> Double
+
+pub fn savepoint_point_dot(SavepointPoint, SavepointPoint) -> Double
+
+pub fn savepoint_point_label(SavepointPoint) -> Int32
+
+pub fn savepoint_point_norm(SavepointPoint) -> Double
+
+pub fn savepoint_point_scale(SavepointPoint, Double) -> SavepointPoint
+
+pub fn savepoint_point_sub(SavepointPoint, SavepointPoint) -> SavepointPoint
+
+pub fn savepoint_point_to_string(SavepointPoint) -> String
+
+pub fn savepoint_point_x(SavepointPoint) -> Double
+
+pub fn savepoint_point_y(SavepointPoint) -> Double
+
+pub fn savepoint_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn savepoint_r2(Array[Double], Array[Double]) -> Double
+
+pub fn savepoint_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn savepoint_series_add(SavepointSeries, SavepointSeries) -> SavepointSeries
+
+pub fn savepoint_series_len(SavepointSeries) -> Int32
+
+pub fn savepoint_series_max(SavepointSeries) -> Double
+
+pub fn savepoint_series_mean(SavepointSeries) -> Double
+
+pub fn savepoint_series_min(SavepointSeries) -> Double
+
+pub fn savepoint_series_scale(SavepointSeries, Double) -> SavepointSeries
+
+pub fn savepoint_series_std(SavepointSeries) -> Double
+
+pub fn savepoint_series_sum(SavepointSeries) -> Double
+
+pub fn savepoint_series_to_string(SavepointSeries) -> String
+
+pub fn savepoint_series_var(SavepointSeries) -> Double
+
+pub fn savepoint_std(Array[Double]) -> Double
+
+pub fn savepoint_var(Array[Double]) -> Double
+
+pub fn savepoint_vector_add(SavepointVector, SavepointVector) -> SavepointVector
+
+pub fn savepoint_vector_dist(SavepointVector, SavepointVector) -> Double
+
+pub fn savepoint_vector_dot(SavepointVector, SavepointVector) -> Double
+
+pub fn savepoint_vector_norm(SavepointVector) -> Double
+
+pub fn savepoint_vector_normalize(SavepointVector) -> SavepointVector
+
+pub fn savepoint_vector_scale(SavepointVector, Double) -> SavepointVector
+
+pub fn savepoint_vector_sub(SavepointVector, SavepointVector) -> SavepointVector
+
+pub fn savepoint_vector_to_string(SavepointVector) -> String
+
+pub fn savepoint_vector_zero(Int32) -> SavepointVector
+
+// Errors
+
+// Types and methods
+pub struct SavepointMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct SavepointPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct SavepointSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct SavepointVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

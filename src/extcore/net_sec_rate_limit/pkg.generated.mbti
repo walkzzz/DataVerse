@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/net_sec_rate_limit"
+
+// Values
+pub fn net_sec_rate_limit_buffer_make(Int32) -> NetsecratelimitBuffer
+
+pub fn net_sec_rate_limit_cluster_make(Int32) -> NetsecratelimitCluster
+
+pub fn net_sec_rate_limit_cursor_make(Int32) -> NetsecratelimitCursor
+
+pub fn net_sec_rate_limit_edge_make(Int32) -> NetsecratelimitEdge
+
+pub fn net_sec_rate_limit_frame_make(Int32) -> NetsecratelimitFrame
+
+pub fn net_sec_rate_limit_graphn_make(Int32) -> NetsecratelimitGraphN
+
+pub fn net_sec_rate_limit_layer_make(Int32) -> NetsecratelimitLayer
+
+pub fn net_sec_rate_limit_make_matrix(Int32, Int32, Double) -> NetsecratelimitMatrix
+
+pub fn net_sec_rate_limit_make_point(Double, Double) -> NetsecratelimitPoint
+
+pub fn net_sec_rate_limit_make_point3(Double, Double, Double) -> NetsecratelimitPoint
+
+pub fn net_sec_rate_limit_make_series(Array[Double], String) -> NetsecratelimitSeries
+
+pub fn net_sec_rate_limit_make_vector(Array[Double]) -> NetsecratelimitVector
+
+pub fn net_sec_rate_limit_matrix_identity(Int32) -> NetsecratelimitMatrix
+
+pub fn net_sec_rate_limit_model_make(Int32) -> NetsecratelimitModel
+
+pub fn net_sec_rate_limit_node_make(Int32) -> NetsecratelimitNode
+
+pub fn net_sec_rate_limit_path_make(Int32) -> NetsecratelimitPath
+
+pub fn net_sec_rate_limit_range_make(Int32) -> NetsecratelimitRange
+
+pub fn net_sec_rate_limit_slice_make(Int32) -> NetsecratelimitSlice
+
+pub fn net_sec_rate_limit_table_make(Int32) -> NetsecratelimitTable
+
+pub fn net_sec_rate_limit_vector_zero(Int32) -> NetsecratelimitVector
+
+pub fn net_sec_rate_limit_view_make(Int32) -> NetsecratelimitView
+
+// Errors
+
+// Types and methods
+pub(all) struct NetsecratelimitBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecratelimitBuffer::add(Self, Self) -> Self
+pub fn NetsecratelimitBuffer::copy(Self) -> Self
+pub fn NetsecratelimitBuffer::fill(Self, Double) -> Self
+pub fn NetsecratelimitBuffer::get(Self, Int32) -> Double
+pub fn NetsecratelimitBuffer::len(Self) -> Int32
+pub fn NetsecratelimitBuffer::max(Self) -> Double
+pub fn NetsecratelimitBuffer::mean(Self) -> Double
+pub fn NetsecratelimitBuffer::min(Self) -> Double
+pub fn NetsecratelimitBuffer::scale(Self, Double) -> Self
+pub fn NetsecratelimitBuffer::set(Self, Int32, Double) -> Self
+pub fn NetsecratelimitBuffer::sum(Self) -> Double
+pub fn NetsecratelimitBuffer::to_string(Self) -> String
+
+pub(all) struct NetsecratelimitCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecratelimitCluster::add(Self, Self) -> Self
+pub fn NetsecratelimitCluster::copy(Self) -> Self
+pub fn NetsecratelimitCluster::fill(Self, Double) -> Self
+pub fn NetsecratelimitCluster::get(Self, Int32) -> Double
+pub fn NetsecratelimitCluster::len(Self) -> Int32
+pub fn NetsecratelimitCluster::max(Self) -> Double
+pub fn NetsecratelimitCluster::mean(Self) -> Double
+pub fn NetsecratelimitCluster::min(Self) -> Double
+pub fn NetsecratelimitCluster::scale(Self, Double) -> Self
+pub fn NetsecratelimitCluster::set(Self, Int32, Double) -> Self
+pub fn NetsecratelimitCluster::sum(Self) -> Double
+pub fn NetsecratelimitCluster::to_string(Self) -> String
+
+pub(all) struct NetsecratelimitCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecratelimitCursor::add(Self, Self) -> Self
+pub fn NetsecratelimitCursor::copy(Self) -> Self
+pub fn NetsecratelimitCursor::fill(Self, Double) -> Self
+pub fn NetsecratelimitCursor::get(Self, Int32) -> Double
+pub fn NetsecratelimitCursor::len(Self) -> Int32
+pub fn NetsecratelimitCursor::max(Self) -> Double
+pub fn NetsecratelimitCursor::mean(Self) -> Double
+pub fn NetsecratelimitCursor::min(Self) -> Double
+pub fn NetsecratelimitCursor::scale(Self, Double) -> Self
+pub fn NetsecratelimitCursor::set(Self, Int32, Double) -> Self
+pub fn NetsecratelimitCursor::sum(Self) -> Double
+pub fn NetsecratelimitCursor::to_string(Self) -> String
+
+pub(all) struct NetsecratelimitEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecratelimitEdge::add(Self, Self) -> Self
+pub fn NetsecratelimitEdge::copy(Self) -> Self
+pub fn NetsecratelimitEdge::fill(Self, Double) -> Self
+pub fn NetsecratelimitEdge::get(Self, Int32) -> Double
+pub fn NetsecratelimitEdge::len(Self) -> Int32
+pub fn NetsecratelimitEdge::max(Self) -> Double
+pub fn NetsecratelimitEdge::mean(Self) -> Double
+pub fn NetsecratelimitEdge::min(Self) -> Double
+pub fn NetsecratelimitEdge::scale(Self, Double) -> Self
+pub fn NetsecratelimitEdge::set(Self, Int32, Double) -> Self
+pub fn NetsecratelimitEdge::sum(Self) -> Double
+pub fn NetsecratelimitEdge::to_string(Self) -> String
+
+pub(all) struct NetsecratelimitFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecratelimitFrame::add(Self, Self) -> Self
+pub fn NetsecratelimitFrame::copy(Self) -> Self
+pub fn NetsecratelimitFrame::fill(Self, Double) -> Self
+pub fn NetsecratelimitFrame::get(Self, Int32) -> Double
+pub fn NetsecratelimitFrame::len(Self) -> Int32
+pub fn NetsecratelimitFrame::max(Self) -> Double
+pub fn NetsecratelimitFrame::mean(Self) -> Double
+pub fn NetsecratelimitFrame::min(Self) -> Double
+pub fn NetsecratelimitFrame::scale(Self, Double) -> Self
+pub fn NetsecratelimitFrame::set(Self, Int32, Double) -> Self
+pub fn NetsecratelimitFrame::sum(Self) -> Double
+pub fn NetsecratelimitFrame::to_string(Self) -> String
+
+pub(all) struct NetsecratelimitGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecratelimitGraphN::add(Self, Self) -> Self
+pub fn NetsecratelimitGraphN::copy(Self) -> Self
+pub fn NetsecratelimitGraphN::fill(Self, Double) -> Self
+pub fn NetsecratelimitGraphN::get(Self, Int32) -> Double
+pub fn NetsecratelimitGraphN::len(Self) -> Int32
+pub fn NetsecratelimitGraphN::max(Self) -> Double
+pub fn NetsecratelimitGraphN::mean(Self) -> Double
+pub fn NetsecratelimitGraphN::min(Self) -> Double
+pub fn NetsecratelimitGraphN::scale(Self, Double) -> Self
+pub fn NetsecratelimitGraphN::set(Self, Int32, Double) -> Self
+pub fn NetsecratelimitGraphN::sum(Self) -> Double
+pub fn NetsecratelimitGraphN::to_string(Self) -> String
+
+pub(all) struct NetsecratelimitLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecratelimitLayer::add(Self, Self) -> Self
+pub fn NetsecratelimitLayer::copy(Self) -> Self
+pub fn NetsecratelimitLayer::fill(Self, Double) -> Self
+pub fn NetsecratelimitLayer::get(Self, Int32) -> Double
+pub fn NetsecratelimitLayer::len(Self) -> Int32
+pub fn NetsecratelimitLayer::max(Self) -> Double
+pub fn NetsecratelimitLayer::mean(Self) -> Double
+pub fn NetsecratelimitLayer::min(Self) -> Double
+pub fn NetsecratelimitLayer::scale(Self, Double) -> Self
+pub fn NetsecratelimitLayer::set(Self, Int32, Double) -> Self
+pub fn NetsecratelimitLayer::sum(Self) -> Double
+pub fn NetsecratelimitLayer::to_string(Self) -> String
+
+pub(all) struct NetsecratelimitMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NetsecratelimitMatrix::add(Self, Self) -> Self
+pub fn NetsecratelimitMatrix::det(Self) -> Double
+pub fn NetsecratelimitMatrix::get(Self, Int32, Int32) -> Double
+pub fn NetsecratelimitMatrix::multiply(Self, Self) -> Self
+pub fn NetsecratelimitMatrix::norm(Self) -> Double
+pub fn NetsecratelimitMatrix::scale(Self, Double) -> Self
+pub fn NetsecratelimitMatrix::to_string(Self) -> String
+pub fn NetsecratelimitMatrix::trace(Self) -> Double
+pub fn NetsecratelimitMatrix::transpose(Self) -> Self
+
+pub(all) struct NetsecratelimitModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecratelimitModel::add(Self, Self) -> Self
+pub fn NetsecratelimitModel::copy(Self) -> Self
+pub fn NetsecratelimitModel::fill(Self, Double) -> Self
+pub fn NetsecratelimitModel::get(Self, Int32) -> Double
+pub fn NetsecratelimitModel::len(Self) -> Int32
+pub fn NetsecratelimitModel::max(Self) -> Double
+pub fn NetsecratelimitModel::mean(Self) -> Double
+pub fn NetsecratelimitModel::min(Self) -> Double
+pub fn NetsecratelimitModel::scale(Self, Double) -> Self
+pub fn NetsecratelimitModel::set(Self, Int32, Double) -> Self
+pub fn NetsecratelimitModel::sum(Self) -> Double
+pub fn NetsecratelimitModel::to_string(Self) -> String
+
+pub(all) struct NetsecratelimitNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecratelimitNode::add(Self, Self) -> Self
+pub fn NetsecratelimitNode::copy(Self) -> Self
+pub fn NetsecratelimitNode::fill(Self, Double) -> Self
+pub fn NetsecratelimitNode::get(Self, Int32) -> Double
+pub fn NetsecratelimitNode::len(Self) -> Int32
+pub fn NetsecratelimitNode::max(Self) -> Double
+pub fn NetsecratelimitNode::mean(Self) -> Double
+pub fn NetsecratelimitNode::min(Self) -> Double
+pub fn NetsecratelimitNode::scale(Self, Double) -> Self
+pub fn NetsecratelimitNode::set(Self, Int32, Double) -> Self
+pub fn NetsecratelimitNode::sum(Self) -> Double
+pub fn NetsecratelimitNode::to_string(Self) -> String
+
+pub(all) struct NetsecratelimitPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecratelimitPath::add(Self, Self) -> Self
+pub fn NetsecratelimitPath::copy(Self) -> Self
+pub fn NetsecratelimitPath::fill(Self, Double) -> Self
+pub fn NetsecratelimitPath::get(Self, Int32) -> Double
+pub fn NetsecratelimitPath::len(Self) -> Int32
+pub fn NetsecratelimitPath::max(Self) -> Double
+pub fn NetsecratelimitPath::mean(Self) -> Double
+pub fn NetsecratelimitPath::min(Self) -> Double
+pub fn NetsecratelimitPath::scale(Self, Double) -> Self
+pub fn NetsecratelimitPath::set(Self, Int32, Double) -> Self
+pub fn NetsecratelimitPath::sum(Self) -> Double
+pub fn NetsecratelimitPath::to_string(Self) -> String
+
+pub(all) struct NetsecratelimitPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NetsecratelimitPoint::add(Self, Self) -> Self
+pub fn NetsecratelimitPoint::cross(Self, Self) -> Self
+pub fn NetsecratelimitPoint::dist(Self, Self) -> Double
+pub fn NetsecratelimitPoint::dot(Self, Self) -> Double
+pub fn NetsecratelimitPoint::label(Self) -> Int32
+pub fn NetsecratelimitPoint::lerp(Self, Self, Double) -> Self
+pub fn NetsecratelimitPoint::mid(Self, Self) -> Self
+pub fn NetsecratelimitPoint::negate(Self) -> Self
+pub fn NetsecratelimitPoint::norm(Self) -> Double
+pub fn NetsecratelimitPoint::normalize(Self) -> Self
+pub fn NetsecratelimitPoint::scale(Self, Double) -> Self
+pub fn NetsecratelimitPoint::sub(Self, Self) -> Self
+pub fn NetsecratelimitPoint::to_string(Self) -> String
+pub fn NetsecratelimitPoint::x(Self) -> Double
+pub fn NetsecratelimitPoint::y(Self) -> Double
+pub fn NetsecratelimitPoint::z(Self) -> Double
+
+pub(all) struct NetsecratelimitRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecratelimitRange::add(Self, Self) -> Self
+pub fn NetsecratelimitRange::copy(Self) -> Self
+pub fn NetsecratelimitRange::fill(Self, Double) -> Self
+pub fn NetsecratelimitRange::get(Self, Int32) -> Double
+pub fn NetsecratelimitRange::len(Self) -> Int32
+pub fn NetsecratelimitRange::max(Self) -> Double
+pub fn NetsecratelimitRange::mean(Self) -> Double
+pub fn NetsecratelimitRange::min(Self) -> Double
+pub fn NetsecratelimitRange::scale(Self, Double) -> Self
+pub fn NetsecratelimitRange::set(Self, Int32, Double) -> Self
+pub fn NetsecratelimitRange::sum(Self) -> Double
+pub fn NetsecratelimitRange::to_string(Self) -> String
+
+pub(all) struct NetsecratelimitSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NetsecratelimitSeries::add(Self, Self) -> Self
+pub fn NetsecratelimitSeries::cumsum(Self) -> Self
+pub fn NetsecratelimitSeries::len(Self) -> Int32
+pub fn NetsecratelimitSeries::max(Self) -> Double
+pub fn NetsecratelimitSeries::mean(Self) -> Double
+pub fn NetsecratelimitSeries::median(Self) -> Double
+pub fn NetsecratelimitSeries::min(Self) -> Double
+pub fn NetsecratelimitSeries::normalize(Self) -> Self
+pub fn NetsecratelimitSeries::range(Self) -> Double
+pub fn NetsecratelimitSeries::scale(Self, Double) -> Self
+pub fn NetsecratelimitSeries::std(Self) -> Double
+pub fn NetsecratelimitSeries::sub(Self, Self) -> Self
+pub fn NetsecratelimitSeries::sum(Self) -> Double
+pub fn NetsecratelimitSeries::to_string(Self) -> String
+pub fn NetsecratelimitSeries::variance(Self) -> Double
+
+pub(all) struct NetsecratelimitSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecratelimitSlice::add(Self, Self) -> Self
+pub fn NetsecratelimitSlice::copy(Self) -> Self
+pub fn NetsecratelimitSlice::fill(Self, Double) -> Self
+pub fn NetsecratelimitSlice::get(Self, Int32) -> Double
+pub fn NetsecratelimitSlice::len(Self) -> Int32
+pub fn NetsecratelimitSlice::max(Self) -> Double
+pub fn NetsecratelimitSlice::mean(Self) -> Double
+pub fn NetsecratelimitSlice::min(Self) -> Double
+pub fn NetsecratelimitSlice::scale(Self, Double) -> Self
+pub fn NetsecratelimitSlice::set(Self, Int32, Double) -> Self
+pub fn NetsecratelimitSlice::sum(Self) -> Double
+pub fn NetsecratelimitSlice::to_string(Self) -> String
+
+pub(all) struct NetsecratelimitTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecratelimitTable::add(Self, Self) -> Self
+pub fn NetsecratelimitTable::copy(Self) -> Self
+pub fn NetsecratelimitTable::fill(Self, Double) -> Self
+pub fn NetsecratelimitTable::get(Self, Int32) -> Double
+pub fn NetsecratelimitTable::len(Self) -> Int32
+pub fn NetsecratelimitTable::max(Self) -> Double
+pub fn NetsecratelimitTable::mean(Self) -> Double
+pub fn NetsecratelimitTable::min(Self) -> Double
+pub fn NetsecratelimitTable::scale(Self, Double) -> Self
+pub fn NetsecratelimitTable::set(Self, Int32, Double) -> Self
+pub fn NetsecratelimitTable::sum(Self) -> Double
+pub fn NetsecratelimitTable::to_string(Self) -> String
+
+pub(all) struct NetsecratelimitVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NetsecratelimitVector::add(Self, Self) -> Self
+pub fn NetsecratelimitVector::dist(Self, Self) -> Double
+pub fn NetsecratelimitVector::dot(Self, Self) -> Double
+pub fn NetsecratelimitVector::norm(Self) -> Double
+pub fn NetsecratelimitVector::normalize(Self) -> Self
+pub fn NetsecratelimitVector::scale(Self, Double) -> Self
+pub fn NetsecratelimitVector::sub(Self, Self) -> Self
+pub fn NetsecratelimitVector::to_string(Self) -> String
+
+pub(all) struct NetsecratelimitView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NetsecratelimitView::add(Self, Self) -> Self
+pub fn NetsecratelimitView::copy(Self) -> Self
+pub fn NetsecratelimitView::fill(Self, Double) -> Self
+pub fn NetsecratelimitView::get(Self, Int32) -> Double
+pub fn NetsecratelimitView::len(Self) -> Int32
+pub fn NetsecratelimitView::max(Self) -> Double
+pub fn NetsecratelimitView::mean(Self) -> Double
+pub fn NetsecratelimitView::min(Self) -> Double
+pub fn NetsecratelimitView::scale(Self, Double) -> Self
+pub fn NetsecratelimitView::set(Self, Int32, Double) -> Self
+pub fn NetsecratelimitView::sum(Self) -> Double
+pub fn NetsecratelimitView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

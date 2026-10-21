@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_spec_covariance"
+
+// Values
+pub fn signal_spec_covariance_buffer_make(Int32) -> SignalspeccovarianceBuffer
+
+pub fn signal_spec_covariance_cluster_make(Int32) -> SignalspeccovarianceCluster
+
+pub fn signal_spec_covariance_cursor_make(Int32) -> SignalspeccovarianceCursor
+
+pub fn signal_spec_covariance_edge_make(Int32) -> SignalspeccovarianceEdge
+
+pub fn signal_spec_covariance_frame_make(Int32) -> SignalspeccovarianceFrame
+
+pub fn signal_spec_covariance_graphn_make(Int32) -> SignalspeccovarianceGraphN
+
+pub fn signal_spec_covariance_layer_make(Int32) -> SignalspeccovarianceLayer
+
+pub fn signal_spec_covariance_make_matrix(Int32, Int32, Double) -> SignalspeccovarianceMatrix
+
+pub fn signal_spec_covariance_make_point(Double, Double) -> SignalspeccovariancePoint
+
+pub fn signal_spec_covariance_make_point3(Double, Double, Double) -> SignalspeccovariancePoint
+
+pub fn signal_spec_covariance_make_series(Array[Double], String) -> SignalspeccovarianceSeries
+
+pub fn signal_spec_covariance_make_vector(Array[Double]) -> SignalspeccovarianceVector
+
+pub fn signal_spec_covariance_matrix_identity(Int32) -> SignalspeccovarianceMatrix
+
+pub fn signal_spec_covariance_model_make(Int32) -> SignalspeccovarianceModel
+
+pub fn signal_spec_covariance_node_make(Int32) -> SignalspeccovarianceNode
+
+pub fn signal_spec_covariance_path_make(Int32) -> SignalspeccovariancePath
+
+pub fn signal_spec_covariance_range_make(Int32) -> SignalspeccovarianceRange
+
+pub fn signal_spec_covariance_slice_make(Int32) -> SignalspeccovarianceSlice
+
+pub fn signal_spec_covariance_table_make(Int32) -> SignalspeccovarianceTable
+
+pub fn signal_spec_covariance_vector_zero(Int32) -> SignalspeccovarianceVector
+
+pub fn signal_spec_covariance_view_make(Int32) -> SignalspeccovarianceView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalspeccovarianceBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspeccovarianceBuffer::add(Self, Self) -> Self
+pub fn SignalspeccovarianceBuffer::copy(Self) -> Self
+pub fn SignalspeccovarianceBuffer::fill(Self, Double) -> Self
+pub fn SignalspeccovarianceBuffer::get(Self, Int32) -> Double
+pub fn SignalspeccovarianceBuffer::len(Self) -> Int32
+pub fn SignalspeccovarianceBuffer::max(Self) -> Double
+pub fn SignalspeccovarianceBuffer::mean(Self) -> Double
+pub fn SignalspeccovarianceBuffer::min(Self) -> Double
+pub fn SignalspeccovarianceBuffer::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalspeccovarianceBuffer::sum(Self) -> Double
+pub fn SignalspeccovarianceBuffer::to_string(Self) -> String
+
+pub(all) struct SignalspeccovarianceCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspeccovarianceCluster::add(Self, Self) -> Self
+pub fn SignalspeccovarianceCluster::copy(Self) -> Self
+pub fn SignalspeccovarianceCluster::fill(Self, Double) -> Self
+pub fn SignalspeccovarianceCluster::get(Self, Int32) -> Double
+pub fn SignalspeccovarianceCluster::len(Self) -> Int32
+pub fn SignalspeccovarianceCluster::max(Self) -> Double
+pub fn SignalspeccovarianceCluster::mean(Self) -> Double
+pub fn SignalspeccovarianceCluster::min(Self) -> Double
+pub fn SignalspeccovarianceCluster::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceCluster::set(Self, Int32, Double) -> Self
+pub fn SignalspeccovarianceCluster::sum(Self) -> Double
+pub fn SignalspeccovarianceCluster::to_string(Self) -> String
+
+pub(all) struct SignalspeccovarianceCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspeccovarianceCursor::add(Self, Self) -> Self
+pub fn SignalspeccovarianceCursor::copy(Self) -> Self
+pub fn SignalspeccovarianceCursor::fill(Self, Double) -> Self
+pub fn SignalspeccovarianceCursor::get(Self, Int32) -> Double
+pub fn SignalspeccovarianceCursor::len(Self) -> Int32
+pub fn SignalspeccovarianceCursor::max(Self) -> Double
+pub fn SignalspeccovarianceCursor::mean(Self) -> Double
+pub fn SignalspeccovarianceCursor::min(Self) -> Double
+pub fn SignalspeccovarianceCursor::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceCursor::set(Self, Int32, Double) -> Self
+pub fn SignalspeccovarianceCursor::sum(Self) -> Double
+pub fn SignalspeccovarianceCursor::to_string(Self) -> String
+
+pub(all) struct SignalspeccovarianceEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspeccovarianceEdge::add(Self, Self) -> Self
+pub fn SignalspeccovarianceEdge::copy(Self) -> Self
+pub fn SignalspeccovarianceEdge::fill(Self, Double) -> Self
+pub fn SignalspeccovarianceEdge::get(Self, Int32) -> Double
+pub fn SignalspeccovarianceEdge::len(Self) -> Int32
+pub fn SignalspeccovarianceEdge::max(Self) -> Double
+pub fn SignalspeccovarianceEdge::mean(Self) -> Double
+pub fn SignalspeccovarianceEdge::min(Self) -> Double
+pub fn SignalspeccovarianceEdge::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceEdge::set(Self, Int32, Double) -> Self
+pub fn SignalspeccovarianceEdge::sum(Self) -> Double
+pub fn SignalspeccovarianceEdge::to_string(Self) -> String
+
+pub(all) struct SignalspeccovarianceFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspeccovarianceFrame::add(Self, Self) -> Self
+pub fn SignalspeccovarianceFrame::copy(Self) -> Self
+pub fn SignalspeccovarianceFrame::fill(Self, Double) -> Self
+pub fn SignalspeccovarianceFrame::get(Self, Int32) -> Double
+pub fn SignalspeccovarianceFrame::len(Self) -> Int32
+pub fn SignalspeccovarianceFrame::max(Self) -> Double
+pub fn SignalspeccovarianceFrame::mean(Self) -> Double
+pub fn SignalspeccovarianceFrame::min(Self) -> Double
+pub fn SignalspeccovarianceFrame::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceFrame::set(Self, Int32, Double) -> Self
+pub fn SignalspeccovarianceFrame::sum(Self) -> Double
+pub fn SignalspeccovarianceFrame::to_string(Self) -> String
+
+pub(all) struct SignalspeccovarianceGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspeccovarianceGraphN::add(Self, Self) -> Self
+pub fn SignalspeccovarianceGraphN::copy(Self) -> Self
+pub fn SignalspeccovarianceGraphN::fill(Self, Double) -> Self
+pub fn SignalspeccovarianceGraphN::get(Self, Int32) -> Double
+pub fn SignalspeccovarianceGraphN::len(Self) -> Int32
+pub fn SignalspeccovarianceGraphN::max(Self) -> Double
+pub fn SignalspeccovarianceGraphN::mean(Self) -> Double
+pub fn SignalspeccovarianceGraphN::min(Self) -> Double
+pub fn SignalspeccovarianceGraphN::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalspeccovarianceGraphN::sum(Self) -> Double
+pub fn SignalspeccovarianceGraphN::to_string(Self) -> String
+
+pub(all) struct SignalspeccovarianceLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspeccovarianceLayer::add(Self, Self) -> Self
+pub fn SignalspeccovarianceLayer::copy(Self) -> Self
+pub fn SignalspeccovarianceLayer::fill(Self, Double) -> Self
+pub fn SignalspeccovarianceLayer::get(Self, Int32) -> Double
+pub fn SignalspeccovarianceLayer::len(Self) -> Int32
+pub fn SignalspeccovarianceLayer::max(Self) -> Double
+pub fn SignalspeccovarianceLayer::mean(Self) -> Double
+pub fn SignalspeccovarianceLayer::min(Self) -> Double
+pub fn SignalspeccovarianceLayer::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceLayer::set(Self, Int32, Double) -> Self
+pub fn SignalspeccovarianceLayer::sum(Self) -> Double
+pub fn SignalspeccovarianceLayer::to_string(Self) -> String
+
+pub(all) struct SignalspeccovarianceMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalspeccovarianceMatrix::add(Self, Self) -> Self
+pub fn SignalspeccovarianceMatrix::det(Self) -> Double
+pub fn SignalspeccovarianceMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalspeccovarianceMatrix::multiply(Self, Self) -> Self
+pub fn SignalspeccovarianceMatrix::norm(Self) -> Double
+pub fn SignalspeccovarianceMatrix::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceMatrix::to_string(Self) -> String
+pub fn SignalspeccovarianceMatrix::trace(Self) -> Double
+pub fn SignalspeccovarianceMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalspeccovarianceModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspeccovarianceModel::add(Self, Self) -> Self
+pub fn SignalspeccovarianceModel::copy(Self) -> Self
+pub fn SignalspeccovarianceModel::fill(Self, Double) -> Self
+pub fn SignalspeccovarianceModel::get(Self, Int32) -> Double
+pub fn SignalspeccovarianceModel::len(Self) -> Int32
+pub fn SignalspeccovarianceModel::max(Self) -> Double
+pub fn SignalspeccovarianceModel::mean(Self) -> Double
+pub fn SignalspeccovarianceModel::min(Self) -> Double
+pub fn SignalspeccovarianceModel::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceModel::set(Self, Int32, Double) -> Self
+pub fn SignalspeccovarianceModel::sum(Self) -> Double
+pub fn SignalspeccovarianceModel::to_string(Self) -> String
+
+pub(all) struct SignalspeccovarianceNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspeccovarianceNode::add(Self, Self) -> Self
+pub fn SignalspeccovarianceNode::copy(Self) -> Self
+pub fn SignalspeccovarianceNode::fill(Self, Double) -> Self
+pub fn SignalspeccovarianceNode::get(Self, Int32) -> Double
+pub fn SignalspeccovarianceNode::len(Self) -> Int32
+pub fn SignalspeccovarianceNode::max(Self) -> Double
+pub fn SignalspeccovarianceNode::mean(Self) -> Double
+pub fn SignalspeccovarianceNode::min(Self) -> Double
+pub fn SignalspeccovarianceNode::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceNode::set(Self, Int32, Double) -> Self
+pub fn SignalspeccovarianceNode::sum(Self) -> Double
+pub fn SignalspeccovarianceNode::to_string(Self) -> String
+
+pub(all) struct SignalspeccovariancePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspeccovariancePath::add(Self, Self) -> Self
+pub fn SignalspeccovariancePath::copy(Self) -> Self
+pub fn SignalspeccovariancePath::fill(Self, Double) -> Self
+pub fn SignalspeccovariancePath::get(Self, Int32) -> Double
+pub fn SignalspeccovariancePath::len(Self) -> Int32
+pub fn SignalspeccovariancePath::max(Self) -> Double
+pub fn SignalspeccovariancePath::mean(Self) -> Double
+pub fn SignalspeccovariancePath::min(Self) -> Double
+pub fn SignalspeccovariancePath::scale(Self, Double) -> Self
+pub fn SignalspeccovariancePath::set(Self, Int32, Double) -> Self
+pub fn SignalspeccovariancePath::sum(Self) -> Double
+pub fn SignalspeccovariancePath::to_string(Self) -> String
+
+pub(all) struct SignalspeccovariancePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalspeccovariancePoint::add(Self, Self) -> Self
+pub fn SignalspeccovariancePoint::cross(Self, Self) -> Self
+pub fn SignalspeccovariancePoint::dist(Self, Self) -> Double
+pub fn SignalspeccovariancePoint::dot(Self, Self) -> Double
+pub fn SignalspeccovariancePoint::label(Self) -> Int32
+pub fn SignalspeccovariancePoint::lerp(Self, Self, Double) -> Self
+pub fn SignalspeccovariancePoint::mid(Self, Self) -> Self
+pub fn SignalspeccovariancePoint::negate(Self) -> Self
+pub fn SignalspeccovariancePoint::norm(Self) -> Double
+pub fn SignalspeccovariancePoint::normalize(Self) -> Self
+pub fn SignalspeccovariancePoint::scale(Self, Double) -> Self
+pub fn SignalspeccovariancePoint::sub(Self, Self) -> Self
+pub fn SignalspeccovariancePoint::to_string(Self) -> String
+pub fn SignalspeccovariancePoint::x(Self) -> Double
+pub fn SignalspeccovariancePoint::y(Self) -> Double
+pub fn SignalspeccovariancePoint::z(Self) -> Double
+
+pub(all) struct SignalspeccovarianceRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspeccovarianceRange::add(Self, Self) -> Self
+pub fn SignalspeccovarianceRange::copy(Self) -> Self
+pub fn SignalspeccovarianceRange::fill(Self, Double) -> Self
+pub fn SignalspeccovarianceRange::get(Self, Int32) -> Double
+pub fn SignalspeccovarianceRange::len(Self) -> Int32
+pub fn SignalspeccovarianceRange::max(Self) -> Double
+pub fn SignalspeccovarianceRange::mean(Self) -> Double
+pub fn SignalspeccovarianceRange::min(Self) -> Double
+pub fn SignalspeccovarianceRange::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceRange::set(Self, Int32, Double) -> Self
+pub fn SignalspeccovarianceRange::sum(Self) -> Double
+pub fn SignalspeccovarianceRange::to_string(Self) -> String
+
+pub(all) struct SignalspeccovarianceSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalspeccovarianceSeries::add(Self, Self) -> Self
+pub fn SignalspeccovarianceSeries::cumsum(Self) -> Self
+pub fn SignalspeccovarianceSeries::len(Self) -> Int32
+pub fn SignalspeccovarianceSeries::max(Self) -> Double
+pub fn SignalspeccovarianceSeries::mean(Self) -> Double
+pub fn SignalspeccovarianceSeries::median(Self) -> Double
+pub fn SignalspeccovarianceSeries::min(Self) -> Double
+pub fn SignalspeccovarianceSeries::normalize(Self) -> Self
+pub fn SignalspeccovarianceSeries::range(Self) -> Double
+pub fn SignalspeccovarianceSeries::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceSeries::std(Self) -> Double
+pub fn SignalspeccovarianceSeries::sub(Self, Self) -> Self
+pub fn SignalspeccovarianceSeries::sum(Self) -> Double
+pub fn SignalspeccovarianceSeries::to_string(Self) -> String
+pub fn SignalspeccovarianceSeries::variance(Self) -> Double
+
+pub(all) struct SignalspeccovarianceSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspeccovarianceSlice::add(Self, Self) -> Self
+pub fn SignalspeccovarianceSlice::copy(Self) -> Self
+pub fn SignalspeccovarianceSlice::fill(Self, Double) -> Self
+pub fn SignalspeccovarianceSlice::get(Self, Int32) -> Double
+pub fn SignalspeccovarianceSlice::len(Self) -> Int32
+pub fn SignalspeccovarianceSlice::max(Self) -> Double
+pub fn SignalspeccovarianceSlice::mean(Self) -> Double
+pub fn SignalspeccovarianceSlice::min(Self) -> Double
+pub fn SignalspeccovarianceSlice::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceSlice::set(Self, Int32, Double) -> Self
+pub fn SignalspeccovarianceSlice::sum(Self) -> Double
+pub fn SignalspeccovarianceSlice::to_string(Self) -> String
+
+pub(all) struct SignalspeccovarianceTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspeccovarianceTable::add(Self, Self) -> Self
+pub fn SignalspeccovarianceTable::copy(Self) -> Self
+pub fn SignalspeccovarianceTable::fill(Self, Double) -> Self
+pub fn SignalspeccovarianceTable::get(Self, Int32) -> Double
+pub fn SignalspeccovarianceTable::len(Self) -> Int32
+pub fn SignalspeccovarianceTable::max(Self) -> Double
+pub fn SignalspeccovarianceTable::mean(Self) -> Double
+pub fn SignalspeccovarianceTable::min(Self) -> Double
+pub fn SignalspeccovarianceTable::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceTable::set(Self, Int32, Double) -> Self
+pub fn SignalspeccovarianceTable::sum(Self) -> Double
+pub fn SignalspeccovarianceTable::to_string(Self) -> String
+
+pub(all) struct SignalspeccovarianceVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalspeccovarianceVector::add(Self, Self) -> Self
+pub fn SignalspeccovarianceVector::dist(Self, Self) -> Double
+pub fn SignalspeccovarianceVector::dot(Self, Self) -> Double
+pub fn SignalspeccovarianceVector::norm(Self) -> Double
+pub fn SignalspeccovarianceVector::normalize(Self) -> Self
+pub fn SignalspeccovarianceVector::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceVector::sub(Self, Self) -> Self
+pub fn SignalspeccovarianceVector::to_string(Self) -> String
+
+pub(all) struct SignalspeccovarianceView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspeccovarianceView::add(Self, Self) -> Self
+pub fn SignalspeccovarianceView::copy(Self) -> Self
+pub fn SignalspeccovarianceView::fill(Self, Double) -> Self
+pub fn SignalspeccovarianceView::get(Self, Int32) -> Double
+pub fn SignalspeccovarianceView::len(Self) -> Int32
+pub fn SignalspeccovarianceView::max(Self) -> Double
+pub fn SignalspeccovarianceView::mean(Self) -> Double
+pub fn SignalspeccovarianceView::min(Self) -> Double
+pub fn SignalspeccovarianceView::scale(Self, Double) -> Self
+pub fn SignalspeccovarianceView::set(Self, Int32, Double) -> Self
+pub fn SignalspeccovarianceView::sum(Self) -> Double
+pub fn SignalspeccovarianceView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

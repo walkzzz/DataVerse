@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/de_ea"
+
+// Values
+pub fn de_ea_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn de_ea_corr(Array[Double], Array[Double]) -> Double
+
+pub fn de_ea_cov(Array[Double], Array[Double]) -> Double
+
+pub fn de_ea_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn de_ea_mae(Array[Double], Array[Double]) -> Double
+
+pub fn de_ea_make_labeled_point(Double, Double, Int32) -> De_eaPoint
+
+pub fn de_ea_make_matrix(Int32, Int32, Double) -> De_eaMatrix
+
+pub fn de_ea_make_point(Double, Double) -> De_eaPoint
+
+pub fn de_ea_make_series(Array[Double], String) -> De_eaSeries
+
+pub fn de_ea_make_vector(Array[Double]) -> De_eaVector
+
+pub fn de_ea_matrix_add(De_eaMatrix, De_eaMatrix) -> De_eaMatrix
+
+pub fn de_ea_matrix_get(De_eaMatrix, Int32, Int32) -> Double
+
+pub fn de_ea_matrix_identity(Int32) -> De_eaMatrix
+
+pub fn de_ea_matrix_multiply(De_eaMatrix, De_eaMatrix) -> De_eaMatrix
+
+pub fn de_ea_matrix_norm(De_eaMatrix) -> Double
+
+pub fn de_ea_matrix_scale(De_eaMatrix, Double) -> De_eaMatrix
+
+pub fn de_ea_matrix_to_string(De_eaMatrix) -> String
+
+pub fn de_ea_matrix_trace(De_eaMatrix) -> Double
+
+pub fn de_ea_matrix_transpose(De_eaMatrix) -> De_eaMatrix
+
+pub fn de_ea_mse(Array[Double], Array[Double]) -> Double
+
+pub fn de_ea_point_add(De_eaPoint, De_eaPoint) -> De_eaPoint
+
+pub fn de_ea_point_dist(De_eaPoint, De_eaPoint) -> Double
+
+pub fn de_ea_point_dot(De_eaPoint, De_eaPoint) -> Double
+
+pub fn de_ea_point_label(De_eaPoint) -> Int32
+
+pub fn de_ea_point_norm(De_eaPoint) -> Double
+
+pub fn de_ea_point_scale(De_eaPoint, Double) -> De_eaPoint
+
+pub fn de_ea_point_sub(De_eaPoint, De_eaPoint) -> De_eaPoint
+
+pub fn de_ea_point_to_string(De_eaPoint) -> String
+
+pub fn de_ea_point_x(De_eaPoint) -> Double
+
+pub fn de_ea_point_y(De_eaPoint) -> Double
+
+pub fn de_ea_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn de_ea_r2(Array[Double], Array[Double]) -> Double
+
+pub fn de_ea_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn de_ea_series_add(De_eaSeries, De_eaSeries) -> De_eaSeries
+
+pub fn de_ea_series_len(De_eaSeries) -> Int32
+
+pub fn de_ea_series_max(De_eaSeries) -> Double
+
+pub fn de_ea_series_mean(De_eaSeries) -> Double
+
+pub fn de_ea_series_min(De_eaSeries) -> Double
+
+pub fn de_ea_series_scale(De_eaSeries, Double) -> De_eaSeries
+
+pub fn de_ea_series_std(De_eaSeries) -> Double
+
+pub fn de_ea_series_sum(De_eaSeries) -> Double
+
+pub fn de_ea_series_to_string(De_eaSeries) -> String
+
+pub fn de_ea_series_var(De_eaSeries) -> Double
+
+pub fn de_ea_std(Array[Double]) -> Double
+
+pub fn de_ea_var(Array[Double]) -> Double
+
+pub fn de_ea_vector_add(De_eaVector, De_eaVector) -> De_eaVector
+
+pub fn de_ea_vector_dist(De_eaVector, De_eaVector) -> Double
+
+pub fn de_ea_vector_dot(De_eaVector, De_eaVector) -> Double
+
+pub fn de_ea_vector_norm(De_eaVector) -> Double
+
+pub fn de_ea_vector_normalize(De_eaVector) -> De_eaVector
+
+pub fn de_ea_vector_scale(De_eaVector, Double) -> De_eaVector
+
+pub fn de_ea_vector_sub(De_eaVector, De_eaVector) -> De_eaVector
+
+pub fn de_ea_vector_to_string(De_eaVector) -> String
+
+pub fn de_ea_vector_zero(Int32) -> De_eaVector
+
+// Errors
+
+// Types and methods
+pub struct De_eaMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct De_eaPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct De_eaSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct De_eaVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,70 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/groundwater"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn darcy_flow(GroundwaterConfig) -> DarcyFlowResult
+
+pub fn darcy_velocity(GroundwaterConfig) -> Double
+
+pub fn groundwater_config_summary(GroundwaterConfig) -> String
+
+pub fn groundwater_flow_direction(GroundwaterConfig) -> Double
+
+pub fn groundwater_head_gradient(GroundwaterConfig) -> Double
+
+pub fn groundwater_stats(GroundwaterConfig) -> (Double, Double, Double)
+
+pub fn make_darcy_flow_result(Double, Double, Double, Double) -> DarcyFlowResult
+
+pub fn make_groundwater_config(Double, Double, Double, Double) -> GroundwaterConfig
+
+pub fn make_particle_track_result(Array[(Double, Double)], Double, Double, Int32) -> ParticleTrackResult
+
+pub fn particle_track(GroundwaterConfig, Double, Double, Double, Int32) -> ParticleTrackResult
+
+pub fn particle_track_summary(ParticleTrackResult) -> String
+
+pub fn porous_puff(Double, Double, Double, Double) -> Double
+
+pub fn porous_puff_grid(Array[Array[Double]], Double, Double, Double) -> Array[Array[Double]]
+
+// Errors
+
+// Types and methods
+pub struct DarcyFlowResult {
+  flow_x : Double
+  flow_y : Double
+  velocity : Double
+  head_gradient : Double
+} derive(Eq, @debug.Debug)
+pub fn DarcyFlowResult::equal(Self, Self) -> Bool
+pub fn DarcyFlowResult::not_equal(Self, Self) -> Bool
+pub fn DarcyFlowResult::to_repr(Self) -> @debug.Repr
+
+pub struct GroundwaterConfig {
+  porosity : Double
+  conductivity : Double
+  gradient_x : Double
+  gradient_y : Double
+} derive(Eq, @debug.Debug)
+pub fn GroundwaterConfig::equal(Self, Self) -> Bool
+pub fn GroundwaterConfig::not_equal(Self, Self) -> Bool
+pub fn GroundwaterConfig::to_repr(Self) -> @debug.Repr
+
+pub struct ParticleTrackResult {
+  path : Array[(Double, Double)]
+  total_distance : Double
+  total_time : Double
+  steps : Int32
+} derive(Eq, @debug.Debug)
+pub fn ParticleTrackResult::equal(Self, Self) -> Bool
+pub fn ParticleTrackResult::not_equal(Self, Self) -> Bool
+pub fn ParticleTrackResult::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

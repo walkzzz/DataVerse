@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/image_morph_hit_miss"
+
+// Values
+pub fn image_morph_hit_miss_buffer_make(Int32) -> ImagemorphhitmissBuffer
+
+pub fn image_morph_hit_miss_cluster_make(Int32) -> ImagemorphhitmissCluster
+
+pub fn image_morph_hit_miss_cursor_make(Int32) -> ImagemorphhitmissCursor
+
+pub fn image_morph_hit_miss_edge_make(Int32) -> ImagemorphhitmissEdge
+
+pub fn image_morph_hit_miss_frame_make(Int32) -> ImagemorphhitmissFrame
+
+pub fn image_morph_hit_miss_graphn_make(Int32) -> ImagemorphhitmissGraphN
+
+pub fn image_morph_hit_miss_layer_make(Int32) -> ImagemorphhitmissLayer
+
+pub fn image_morph_hit_miss_make_matrix(Int32, Int32, Double) -> ImagemorphhitmissMatrix
+
+pub fn image_morph_hit_miss_make_point(Double, Double) -> ImagemorphhitmissPoint
+
+pub fn image_morph_hit_miss_make_point3(Double, Double, Double) -> ImagemorphhitmissPoint
+
+pub fn image_morph_hit_miss_make_series(Array[Double], String) -> ImagemorphhitmissSeries
+
+pub fn image_morph_hit_miss_make_vector(Array[Double]) -> ImagemorphhitmissVector
+
+pub fn image_morph_hit_miss_matrix_identity(Int32) -> ImagemorphhitmissMatrix
+
+pub fn image_morph_hit_miss_model_make(Int32) -> ImagemorphhitmissModel
+
+pub fn image_morph_hit_miss_node_make(Int32) -> ImagemorphhitmissNode
+
+pub fn image_morph_hit_miss_path_make(Int32) -> ImagemorphhitmissPath
+
+pub fn image_morph_hit_miss_range_make(Int32) -> ImagemorphhitmissRange
+
+pub fn image_morph_hit_miss_slice_make(Int32) -> ImagemorphhitmissSlice
+
+pub fn image_morph_hit_miss_table_make(Int32) -> ImagemorphhitmissTable
+
+pub fn image_morph_hit_miss_vector_zero(Int32) -> ImagemorphhitmissVector
+
+pub fn image_morph_hit_miss_view_make(Int32) -> ImagemorphhitmissView
+
+// Errors
+
+// Types and methods
+pub(all) struct ImagemorphhitmissBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphhitmissBuffer::add(Self, Self) -> Self
+pub fn ImagemorphhitmissBuffer::copy(Self) -> Self
+pub fn ImagemorphhitmissBuffer::fill(Self, Double) -> Self
+pub fn ImagemorphhitmissBuffer::get(Self, Int32) -> Double
+pub fn ImagemorphhitmissBuffer::len(Self) -> Int32
+pub fn ImagemorphhitmissBuffer::max(Self) -> Double
+pub fn ImagemorphhitmissBuffer::mean(Self) -> Double
+pub fn ImagemorphhitmissBuffer::min(Self) -> Double
+pub fn ImagemorphhitmissBuffer::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissBuffer::set(Self, Int32, Double) -> Self
+pub fn ImagemorphhitmissBuffer::sum(Self) -> Double
+pub fn ImagemorphhitmissBuffer::to_string(Self) -> String
+
+pub(all) struct ImagemorphhitmissCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphhitmissCluster::add(Self, Self) -> Self
+pub fn ImagemorphhitmissCluster::copy(Self) -> Self
+pub fn ImagemorphhitmissCluster::fill(Self, Double) -> Self
+pub fn ImagemorphhitmissCluster::get(Self, Int32) -> Double
+pub fn ImagemorphhitmissCluster::len(Self) -> Int32
+pub fn ImagemorphhitmissCluster::max(Self) -> Double
+pub fn ImagemorphhitmissCluster::mean(Self) -> Double
+pub fn ImagemorphhitmissCluster::min(Self) -> Double
+pub fn ImagemorphhitmissCluster::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissCluster::set(Self, Int32, Double) -> Self
+pub fn ImagemorphhitmissCluster::sum(Self) -> Double
+pub fn ImagemorphhitmissCluster::to_string(Self) -> String
+
+pub(all) struct ImagemorphhitmissCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphhitmissCursor::add(Self, Self) -> Self
+pub fn ImagemorphhitmissCursor::copy(Self) -> Self
+pub fn ImagemorphhitmissCursor::fill(Self, Double) -> Self
+pub fn ImagemorphhitmissCursor::get(Self, Int32) -> Double
+pub fn ImagemorphhitmissCursor::len(Self) -> Int32
+pub fn ImagemorphhitmissCursor::max(Self) -> Double
+pub fn ImagemorphhitmissCursor::mean(Self) -> Double
+pub fn ImagemorphhitmissCursor::min(Self) -> Double
+pub fn ImagemorphhitmissCursor::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissCursor::set(Self, Int32, Double) -> Self
+pub fn ImagemorphhitmissCursor::sum(Self) -> Double
+pub fn ImagemorphhitmissCursor::to_string(Self) -> String
+
+pub(all) struct ImagemorphhitmissEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphhitmissEdge::add(Self, Self) -> Self
+pub fn ImagemorphhitmissEdge::copy(Self) -> Self
+pub fn ImagemorphhitmissEdge::fill(Self, Double) -> Self
+pub fn ImagemorphhitmissEdge::get(Self, Int32) -> Double
+pub fn ImagemorphhitmissEdge::len(Self) -> Int32
+pub fn ImagemorphhitmissEdge::max(Self) -> Double
+pub fn ImagemorphhitmissEdge::mean(Self) -> Double
+pub fn ImagemorphhitmissEdge::min(Self) -> Double
+pub fn ImagemorphhitmissEdge::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissEdge::set(Self, Int32, Double) -> Self
+pub fn ImagemorphhitmissEdge::sum(Self) -> Double
+pub fn ImagemorphhitmissEdge::to_string(Self) -> String
+
+pub(all) struct ImagemorphhitmissFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphhitmissFrame::add(Self, Self) -> Self
+pub fn ImagemorphhitmissFrame::copy(Self) -> Self
+pub fn ImagemorphhitmissFrame::fill(Self, Double) -> Self
+pub fn ImagemorphhitmissFrame::get(Self, Int32) -> Double
+pub fn ImagemorphhitmissFrame::len(Self) -> Int32
+pub fn ImagemorphhitmissFrame::max(Self) -> Double
+pub fn ImagemorphhitmissFrame::mean(Self) -> Double
+pub fn ImagemorphhitmissFrame::min(Self) -> Double
+pub fn ImagemorphhitmissFrame::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissFrame::set(Self, Int32, Double) -> Self
+pub fn ImagemorphhitmissFrame::sum(Self) -> Double
+pub fn ImagemorphhitmissFrame::to_string(Self) -> String
+
+pub(all) struct ImagemorphhitmissGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphhitmissGraphN::add(Self, Self) -> Self
+pub fn ImagemorphhitmissGraphN::copy(Self) -> Self
+pub fn ImagemorphhitmissGraphN::fill(Self, Double) -> Self
+pub fn ImagemorphhitmissGraphN::get(Self, Int32) -> Double
+pub fn ImagemorphhitmissGraphN::len(Self) -> Int32
+pub fn ImagemorphhitmissGraphN::max(Self) -> Double
+pub fn ImagemorphhitmissGraphN::mean(Self) -> Double
+pub fn ImagemorphhitmissGraphN::min(Self) -> Double
+pub fn ImagemorphhitmissGraphN::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissGraphN::set(Self, Int32, Double) -> Self
+pub fn ImagemorphhitmissGraphN::sum(Self) -> Double
+pub fn ImagemorphhitmissGraphN::to_string(Self) -> String
+
+pub(all) struct ImagemorphhitmissLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphhitmissLayer::add(Self, Self) -> Self
+pub fn ImagemorphhitmissLayer::copy(Self) -> Self
+pub fn ImagemorphhitmissLayer::fill(Self, Double) -> Self
+pub fn ImagemorphhitmissLayer::get(Self, Int32) -> Double
+pub fn ImagemorphhitmissLayer::len(Self) -> Int32
+pub fn ImagemorphhitmissLayer::max(Self) -> Double
+pub fn ImagemorphhitmissLayer::mean(Self) -> Double
+pub fn ImagemorphhitmissLayer::min(Self) -> Double
+pub fn ImagemorphhitmissLayer::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissLayer::set(Self, Int32, Double) -> Self
+pub fn ImagemorphhitmissLayer::sum(Self) -> Double
+pub fn ImagemorphhitmissLayer::to_string(Self) -> String
+
+pub(all) struct ImagemorphhitmissMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn ImagemorphhitmissMatrix::add(Self, Self) -> Self
+pub fn ImagemorphhitmissMatrix::det(Self) -> Double
+pub fn ImagemorphhitmissMatrix::get(Self, Int32, Int32) -> Double
+pub fn ImagemorphhitmissMatrix::multiply(Self, Self) -> Self
+pub fn ImagemorphhitmissMatrix::norm(Self) -> Double
+pub fn ImagemorphhitmissMatrix::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissMatrix::to_string(Self) -> String
+pub fn ImagemorphhitmissMatrix::trace(Self) -> Double
+pub fn ImagemorphhitmissMatrix::transpose(Self) -> Self
+
+pub(all) struct ImagemorphhitmissModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphhitmissModel::add(Self, Self) -> Self
+pub fn ImagemorphhitmissModel::copy(Self) -> Self
+pub fn ImagemorphhitmissModel::fill(Self, Double) -> Self
+pub fn ImagemorphhitmissModel::get(Self, Int32) -> Double
+pub fn ImagemorphhitmissModel::len(Self) -> Int32
+pub fn ImagemorphhitmissModel::max(Self) -> Double
+pub fn ImagemorphhitmissModel::mean(Self) -> Double
+pub fn ImagemorphhitmissModel::min(Self) -> Double
+pub fn ImagemorphhitmissModel::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissModel::set(Self, Int32, Double) -> Self
+pub fn ImagemorphhitmissModel::sum(Self) -> Double
+pub fn ImagemorphhitmissModel::to_string(Self) -> String
+
+pub(all) struct ImagemorphhitmissNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphhitmissNode::add(Self, Self) -> Self
+pub fn ImagemorphhitmissNode::copy(Self) -> Self
+pub fn ImagemorphhitmissNode::fill(Self, Double) -> Self
+pub fn ImagemorphhitmissNode::get(Self, Int32) -> Double
+pub fn ImagemorphhitmissNode::len(Self) -> Int32
+pub fn ImagemorphhitmissNode::max(Self) -> Double
+pub fn ImagemorphhitmissNode::mean(Self) -> Double
+pub fn ImagemorphhitmissNode::min(Self) -> Double
+pub fn ImagemorphhitmissNode::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissNode::set(Self, Int32, Double) -> Self
+pub fn ImagemorphhitmissNode::sum(Self) -> Double
+pub fn ImagemorphhitmissNode::to_string(Self) -> String
+
+pub(all) struct ImagemorphhitmissPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphhitmissPath::add(Self, Self) -> Self
+pub fn ImagemorphhitmissPath::copy(Self) -> Self
+pub fn ImagemorphhitmissPath::fill(Self, Double) -> Self
+pub fn ImagemorphhitmissPath::get(Self, Int32) -> Double
+pub fn ImagemorphhitmissPath::len(Self) -> Int32
+pub fn ImagemorphhitmissPath::max(Self) -> Double
+pub fn ImagemorphhitmissPath::mean(Self) -> Double
+pub fn ImagemorphhitmissPath::min(Self) -> Double
+pub fn ImagemorphhitmissPath::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissPath::set(Self, Int32, Double) -> Self
+pub fn ImagemorphhitmissPath::sum(Self) -> Double
+pub fn ImagemorphhitmissPath::to_string(Self) -> String
+
+pub(all) struct ImagemorphhitmissPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn ImagemorphhitmissPoint::add(Self, Self) -> Self
+pub fn ImagemorphhitmissPoint::cross(Self, Self) -> Self
+pub fn ImagemorphhitmissPoint::dist(Self, Self) -> Double
+pub fn ImagemorphhitmissPoint::dot(Self, Self) -> Double
+pub fn ImagemorphhitmissPoint::label(Self) -> Int32
+pub fn ImagemorphhitmissPoint::lerp(Self, Self, Double) -> Self
+pub fn ImagemorphhitmissPoint::mid(Self, Self) -> Self
+pub fn ImagemorphhitmissPoint::negate(Self) -> Self
+pub fn ImagemorphhitmissPoint::norm(Self) -> Double
+pub fn ImagemorphhitmissPoint::normalize(Self) -> Self
+pub fn ImagemorphhitmissPoint::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissPoint::sub(Self, Self) -> Self
+pub fn ImagemorphhitmissPoint::to_string(Self) -> String
+pub fn ImagemorphhitmissPoint::x(Self) -> Double
+pub fn ImagemorphhitmissPoint::y(Self) -> Double
+pub fn ImagemorphhitmissPoint::z(Self) -> Double
+
+pub(all) struct ImagemorphhitmissRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphhitmissRange::add(Self, Self) -> Self
+pub fn ImagemorphhitmissRange::copy(Self) -> Self
+pub fn ImagemorphhitmissRange::fill(Self, Double) -> Self
+pub fn ImagemorphhitmissRange::get(Self, Int32) -> Double
+pub fn ImagemorphhitmissRange::len(Self) -> Int32
+pub fn ImagemorphhitmissRange::max(Self) -> Double
+pub fn ImagemorphhitmissRange::mean(Self) -> Double
+pub fn ImagemorphhitmissRange::min(Self) -> Double
+pub fn ImagemorphhitmissRange::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissRange::set(Self, Int32, Double) -> Self
+pub fn ImagemorphhitmissRange::sum(Self) -> Double
+pub fn ImagemorphhitmissRange::to_string(Self) -> String
+
+pub(all) struct ImagemorphhitmissSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn ImagemorphhitmissSeries::add(Self, Self) -> Self
+pub fn ImagemorphhitmissSeries::cumsum(Self) -> Self
+pub fn ImagemorphhitmissSeries::len(Self) -> Int32
+pub fn ImagemorphhitmissSeries::max(Self) -> Double
+pub fn ImagemorphhitmissSeries::mean(Self) -> Double
+pub fn ImagemorphhitmissSeries::median(Self) -> Double
+pub fn ImagemorphhitmissSeries::min(Self) -> Double
+pub fn ImagemorphhitmissSeries::normalize(Self) -> Self
+pub fn ImagemorphhitmissSeries::range(Self) -> Double
+pub fn ImagemorphhitmissSeries::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissSeries::std(Self) -> Double
+pub fn ImagemorphhitmissSeries::sub(Self, Self) -> Self
+pub fn ImagemorphhitmissSeries::sum(Self) -> Double
+pub fn ImagemorphhitmissSeries::to_string(Self) -> String
+pub fn ImagemorphhitmissSeries::variance(Self) -> Double
+
+pub(all) struct ImagemorphhitmissSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphhitmissSlice::add(Self, Self) -> Self
+pub fn ImagemorphhitmissSlice::copy(Self) -> Self
+pub fn ImagemorphhitmissSlice::fill(Self, Double) -> Self
+pub fn ImagemorphhitmissSlice::get(Self, Int32) -> Double
+pub fn ImagemorphhitmissSlice::len(Self) -> Int32
+pub fn ImagemorphhitmissSlice::max(Self) -> Double
+pub fn ImagemorphhitmissSlice::mean(Self) -> Double
+pub fn ImagemorphhitmissSlice::min(Self) -> Double
+pub fn ImagemorphhitmissSlice::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissSlice::set(Self, Int32, Double) -> Self
+pub fn ImagemorphhitmissSlice::sum(Self) -> Double
+pub fn ImagemorphhitmissSlice::to_string(Self) -> String
+
+pub(all) struct ImagemorphhitmissTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphhitmissTable::add(Self, Self) -> Self
+pub fn ImagemorphhitmissTable::copy(Self) -> Self
+pub fn ImagemorphhitmissTable::fill(Self, Double) -> Self
+pub fn ImagemorphhitmissTable::get(Self, Int32) -> Double
+pub fn ImagemorphhitmissTable::len(Self) -> Int32
+pub fn ImagemorphhitmissTable::max(Self) -> Double
+pub fn ImagemorphhitmissTable::mean(Self) -> Double
+pub fn ImagemorphhitmissTable::min(Self) -> Double
+pub fn ImagemorphhitmissTable::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissTable::set(Self, Int32, Double) -> Self
+pub fn ImagemorphhitmissTable::sum(Self) -> Double
+pub fn ImagemorphhitmissTable::to_string(Self) -> String
+
+pub(all) struct ImagemorphhitmissVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn ImagemorphhitmissVector::add(Self, Self) -> Self
+pub fn ImagemorphhitmissVector::dist(Self, Self) -> Double
+pub fn ImagemorphhitmissVector::dot(Self, Self) -> Double
+pub fn ImagemorphhitmissVector::norm(Self) -> Double
+pub fn ImagemorphhitmissVector::normalize(Self) -> Self
+pub fn ImagemorphhitmissVector::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissVector::sub(Self, Self) -> Self
+pub fn ImagemorphhitmissVector::to_string(Self) -> String
+
+pub(all) struct ImagemorphhitmissView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn ImagemorphhitmissView::add(Self, Self) -> Self
+pub fn ImagemorphhitmissView::copy(Self) -> Self
+pub fn ImagemorphhitmissView::fill(Self, Double) -> Self
+pub fn ImagemorphhitmissView::get(Self, Int32) -> Double
+pub fn ImagemorphhitmissView::len(Self) -> Int32
+pub fn ImagemorphhitmissView::max(Self) -> Double
+pub fn ImagemorphhitmissView::mean(Self) -> Double
+pub fn ImagemorphhitmissView::min(Self) -> Double
+pub fn ImagemorphhitmissView::scale(Self, Double) -> Self
+pub fn ImagemorphhitmissView::set(Self, Int32, Double) -> Self
+pub fn ImagemorphhitmissView::sum(Self) -> Double
+pub fn ImagemorphhitmissView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

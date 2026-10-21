@@ -1,0 +1,64 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore"
+
+import {
+  "dataverse/dataobject",
+  "dataverse/kernel",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn category_name(OperatorCategory) -> String
+
+pub fn make_operator(String, OperatorCategory, @dataobject.Modality, @kernel.ExecMode, Bool) -> Operator
+
+pub fn make_result(@dataobject.DataObject, @dataobject.Lineage, Array[(String, Double)]) -> OperatorResult
+
+pub fn opcore_id() -> String
+
+// Errors
+
+// Types and methods
+pub struct Operator {
+  name : String
+  category : OperatorCategory
+  modality : @dataobject.Modality
+  determinism : @kernel.ExecMode
+  reversible : Bool
+} derive(Eq, @debug.Debug)
+pub fn Operator::equal(Self, Self) -> Bool
+pub fn Operator::not_equal(Self, Self) -> Bool
+pub fn Operator::to_repr(Self) -> @debug.Repr
+
+pub(all) enum OperatorCategory {
+  Ingest
+  Normalize
+  Clean
+  Dedup
+  Filter
+  Quality
+  Transform
+  Annotate
+  Select
+  Mix
+  Pack
+  Eval
+  Lineage
+  Safety
+} derive(Eq, @debug.Debug)
+pub fn OperatorCategory::equal(Self, Self) -> Bool
+pub fn OperatorCategory::not_equal(Self, Self) -> Bool
+pub fn OperatorCategory::to_repr(Self) -> @debug.Repr
+
+pub struct OperatorResult {
+  output : @dataobject.DataObject
+  lineage : @dataobject.Lineage
+  metrics : Array[(String, Double)]
+} derive(Eq, @debug.Debug)
+pub fn OperatorResult::equal(Self, Self) -> Bool
+pub fn OperatorResult::not_equal(Self, Self) -> Bool
+pub fn OperatorResult::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

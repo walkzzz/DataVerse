@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_svd"
+
+// Values
+pub fn math_svd_buffer_make(Int32) -> MathsvdBuffer
+
+pub fn math_svd_cluster_make(Int32) -> MathsvdCluster
+
+pub fn math_svd_cursor_make(Int32) -> MathsvdCursor
+
+pub fn math_svd_edge_make(Int32) -> MathsvdEdge
+
+pub fn math_svd_frame_make(Int32) -> MathsvdFrame
+
+pub fn math_svd_graphn_make(Int32) -> MathsvdGraphN
+
+pub fn math_svd_layer_make(Int32) -> MathsvdLayer
+
+pub fn math_svd_make_matrix(Int32, Int32, Double) -> MathsvdMatrix
+
+pub fn math_svd_make_point(Double, Double) -> MathsvdPoint
+
+pub fn math_svd_make_point3(Double, Double, Double) -> MathsvdPoint
+
+pub fn math_svd_make_series(Array[Double], String) -> MathsvdSeries
+
+pub fn math_svd_make_vector(Array[Double]) -> MathsvdVector
+
+pub fn math_svd_matrix_identity(Int32) -> MathsvdMatrix
+
+pub fn math_svd_model_make(Int32) -> MathsvdModel
+
+pub fn math_svd_node_make(Int32) -> MathsvdNode
+
+pub fn math_svd_path_make(Int32) -> MathsvdPath
+
+pub fn math_svd_range_make(Int32) -> MathsvdRange
+
+pub fn math_svd_slice_make(Int32) -> MathsvdSlice
+
+pub fn math_svd_table_make(Int32) -> MathsvdTable
+
+pub fn math_svd_vector_zero(Int32) -> MathsvdVector
+
+pub fn math_svd_view_make(Int32) -> MathsvdView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathsvdBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsvdBuffer::add(Self, Self) -> Self
+pub fn MathsvdBuffer::copy(Self) -> Self
+pub fn MathsvdBuffer::fill(Self, Double) -> Self
+pub fn MathsvdBuffer::get(Self, Int32) -> Double
+pub fn MathsvdBuffer::len(Self) -> Int32
+pub fn MathsvdBuffer::max(Self) -> Double
+pub fn MathsvdBuffer::mean(Self) -> Double
+pub fn MathsvdBuffer::min(Self) -> Double
+pub fn MathsvdBuffer::scale(Self, Double) -> Self
+pub fn MathsvdBuffer::set(Self, Int32, Double) -> Self
+pub fn MathsvdBuffer::sum(Self) -> Double
+pub fn MathsvdBuffer::to_string(Self) -> String
+
+pub(all) struct MathsvdCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsvdCluster::add(Self, Self) -> Self
+pub fn MathsvdCluster::copy(Self) -> Self
+pub fn MathsvdCluster::fill(Self, Double) -> Self
+pub fn MathsvdCluster::get(Self, Int32) -> Double
+pub fn MathsvdCluster::len(Self) -> Int32
+pub fn MathsvdCluster::max(Self) -> Double
+pub fn MathsvdCluster::mean(Self) -> Double
+pub fn MathsvdCluster::min(Self) -> Double
+pub fn MathsvdCluster::scale(Self, Double) -> Self
+pub fn MathsvdCluster::set(Self, Int32, Double) -> Self
+pub fn MathsvdCluster::sum(Self) -> Double
+pub fn MathsvdCluster::to_string(Self) -> String
+
+pub(all) struct MathsvdCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsvdCursor::add(Self, Self) -> Self
+pub fn MathsvdCursor::copy(Self) -> Self
+pub fn MathsvdCursor::fill(Self, Double) -> Self
+pub fn MathsvdCursor::get(Self, Int32) -> Double
+pub fn MathsvdCursor::len(Self) -> Int32
+pub fn MathsvdCursor::max(Self) -> Double
+pub fn MathsvdCursor::mean(Self) -> Double
+pub fn MathsvdCursor::min(Self) -> Double
+pub fn MathsvdCursor::scale(Self, Double) -> Self
+pub fn MathsvdCursor::set(Self, Int32, Double) -> Self
+pub fn MathsvdCursor::sum(Self) -> Double
+pub fn MathsvdCursor::to_string(Self) -> String
+
+pub(all) struct MathsvdEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsvdEdge::add(Self, Self) -> Self
+pub fn MathsvdEdge::copy(Self) -> Self
+pub fn MathsvdEdge::fill(Self, Double) -> Self
+pub fn MathsvdEdge::get(Self, Int32) -> Double
+pub fn MathsvdEdge::len(Self) -> Int32
+pub fn MathsvdEdge::max(Self) -> Double
+pub fn MathsvdEdge::mean(Self) -> Double
+pub fn MathsvdEdge::min(Self) -> Double
+pub fn MathsvdEdge::scale(Self, Double) -> Self
+pub fn MathsvdEdge::set(Self, Int32, Double) -> Self
+pub fn MathsvdEdge::sum(Self) -> Double
+pub fn MathsvdEdge::to_string(Self) -> String
+
+pub(all) struct MathsvdFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsvdFrame::add(Self, Self) -> Self
+pub fn MathsvdFrame::copy(Self) -> Self
+pub fn MathsvdFrame::fill(Self, Double) -> Self
+pub fn MathsvdFrame::get(Self, Int32) -> Double
+pub fn MathsvdFrame::len(Self) -> Int32
+pub fn MathsvdFrame::max(Self) -> Double
+pub fn MathsvdFrame::mean(Self) -> Double
+pub fn MathsvdFrame::min(Self) -> Double
+pub fn MathsvdFrame::scale(Self, Double) -> Self
+pub fn MathsvdFrame::set(Self, Int32, Double) -> Self
+pub fn MathsvdFrame::sum(Self) -> Double
+pub fn MathsvdFrame::to_string(Self) -> String
+
+pub(all) struct MathsvdGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsvdGraphN::add(Self, Self) -> Self
+pub fn MathsvdGraphN::copy(Self) -> Self
+pub fn MathsvdGraphN::fill(Self, Double) -> Self
+pub fn MathsvdGraphN::get(Self, Int32) -> Double
+pub fn MathsvdGraphN::len(Self) -> Int32
+pub fn MathsvdGraphN::max(Self) -> Double
+pub fn MathsvdGraphN::mean(Self) -> Double
+pub fn MathsvdGraphN::min(Self) -> Double
+pub fn MathsvdGraphN::scale(Self, Double) -> Self
+pub fn MathsvdGraphN::set(Self, Int32, Double) -> Self
+pub fn MathsvdGraphN::sum(Self) -> Double
+pub fn MathsvdGraphN::to_string(Self) -> String
+
+pub(all) struct MathsvdLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsvdLayer::add(Self, Self) -> Self
+pub fn MathsvdLayer::copy(Self) -> Self
+pub fn MathsvdLayer::fill(Self, Double) -> Self
+pub fn MathsvdLayer::get(Self, Int32) -> Double
+pub fn MathsvdLayer::len(Self) -> Int32
+pub fn MathsvdLayer::max(Self) -> Double
+pub fn MathsvdLayer::mean(Self) -> Double
+pub fn MathsvdLayer::min(Self) -> Double
+pub fn MathsvdLayer::scale(Self, Double) -> Self
+pub fn MathsvdLayer::set(Self, Int32, Double) -> Self
+pub fn MathsvdLayer::sum(Self) -> Double
+pub fn MathsvdLayer::to_string(Self) -> String
+
+pub(all) struct MathsvdMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathsvdMatrix::add(Self, Self) -> Self
+pub fn MathsvdMatrix::det(Self) -> Double
+pub fn MathsvdMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathsvdMatrix::multiply(Self, Self) -> Self
+pub fn MathsvdMatrix::norm(Self) -> Double
+pub fn MathsvdMatrix::scale(Self, Double) -> Self
+pub fn MathsvdMatrix::to_string(Self) -> String
+pub fn MathsvdMatrix::trace(Self) -> Double
+pub fn MathsvdMatrix::transpose(Self) -> Self
+
+pub(all) struct MathsvdModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsvdModel::add(Self, Self) -> Self
+pub fn MathsvdModel::copy(Self) -> Self
+pub fn MathsvdModel::fill(Self, Double) -> Self
+pub fn MathsvdModel::get(Self, Int32) -> Double
+pub fn MathsvdModel::len(Self) -> Int32
+pub fn MathsvdModel::max(Self) -> Double
+pub fn MathsvdModel::mean(Self) -> Double
+pub fn MathsvdModel::min(Self) -> Double
+pub fn MathsvdModel::scale(Self, Double) -> Self
+pub fn MathsvdModel::set(Self, Int32, Double) -> Self
+pub fn MathsvdModel::sum(Self) -> Double
+pub fn MathsvdModel::to_string(Self) -> String
+
+pub(all) struct MathsvdNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsvdNode::add(Self, Self) -> Self
+pub fn MathsvdNode::copy(Self) -> Self
+pub fn MathsvdNode::fill(Self, Double) -> Self
+pub fn MathsvdNode::get(Self, Int32) -> Double
+pub fn MathsvdNode::len(Self) -> Int32
+pub fn MathsvdNode::max(Self) -> Double
+pub fn MathsvdNode::mean(Self) -> Double
+pub fn MathsvdNode::min(Self) -> Double
+pub fn MathsvdNode::scale(Self, Double) -> Self
+pub fn MathsvdNode::set(Self, Int32, Double) -> Self
+pub fn MathsvdNode::sum(Self) -> Double
+pub fn MathsvdNode::to_string(Self) -> String
+
+pub(all) struct MathsvdPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsvdPath::add(Self, Self) -> Self
+pub fn MathsvdPath::copy(Self) -> Self
+pub fn MathsvdPath::fill(Self, Double) -> Self
+pub fn MathsvdPath::get(Self, Int32) -> Double
+pub fn MathsvdPath::len(Self) -> Int32
+pub fn MathsvdPath::max(Self) -> Double
+pub fn MathsvdPath::mean(Self) -> Double
+pub fn MathsvdPath::min(Self) -> Double
+pub fn MathsvdPath::scale(Self, Double) -> Self
+pub fn MathsvdPath::set(Self, Int32, Double) -> Self
+pub fn MathsvdPath::sum(Self) -> Double
+pub fn MathsvdPath::to_string(Self) -> String
+
+pub(all) struct MathsvdPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathsvdPoint::add(Self, Self) -> Self
+pub fn MathsvdPoint::cross(Self, Self) -> Self
+pub fn MathsvdPoint::dist(Self, Self) -> Double
+pub fn MathsvdPoint::dot(Self, Self) -> Double
+pub fn MathsvdPoint::label(Self) -> Int32
+pub fn MathsvdPoint::lerp(Self, Self, Double) -> Self
+pub fn MathsvdPoint::mid(Self, Self) -> Self
+pub fn MathsvdPoint::negate(Self) -> Self
+pub fn MathsvdPoint::norm(Self) -> Double
+pub fn MathsvdPoint::normalize(Self) -> Self
+pub fn MathsvdPoint::scale(Self, Double) -> Self
+pub fn MathsvdPoint::sub(Self, Self) -> Self
+pub fn MathsvdPoint::to_string(Self) -> String
+pub fn MathsvdPoint::x(Self) -> Double
+pub fn MathsvdPoint::y(Self) -> Double
+pub fn MathsvdPoint::z(Self) -> Double
+
+pub(all) struct MathsvdRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsvdRange::add(Self, Self) -> Self
+pub fn MathsvdRange::copy(Self) -> Self
+pub fn MathsvdRange::fill(Self, Double) -> Self
+pub fn MathsvdRange::get(Self, Int32) -> Double
+pub fn MathsvdRange::len(Self) -> Int32
+pub fn MathsvdRange::max(Self) -> Double
+pub fn MathsvdRange::mean(Self) -> Double
+pub fn MathsvdRange::min(Self) -> Double
+pub fn MathsvdRange::scale(Self, Double) -> Self
+pub fn MathsvdRange::set(Self, Int32, Double) -> Self
+pub fn MathsvdRange::sum(Self) -> Double
+pub fn MathsvdRange::to_string(Self) -> String
+
+pub(all) struct MathsvdSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathsvdSeries::add(Self, Self) -> Self
+pub fn MathsvdSeries::cumsum(Self) -> Self
+pub fn MathsvdSeries::len(Self) -> Int32
+pub fn MathsvdSeries::max(Self) -> Double
+pub fn MathsvdSeries::mean(Self) -> Double
+pub fn MathsvdSeries::median(Self) -> Double
+pub fn MathsvdSeries::min(Self) -> Double
+pub fn MathsvdSeries::normalize(Self) -> Self
+pub fn MathsvdSeries::range(Self) -> Double
+pub fn MathsvdSeries::scale(Self, Double) -> Self
+pub fn MathsvdSeries::std(Self) -> Double
+pub fn MathsvdSeries::sub(Self, Self) -> Self
+pub fn MathsvdSeries::sum(Self) -> Double
+pub fn MathsvdSeries::to_string(Self) -> String
+pub fn MathsvdSeries::variance(Self) -> Double
+
+pub(all) struct MathsvdSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsvdSlice::add(Self, Self) -> Self
+pub fn MathsvdSlice::copy(Self) -> Self
+pub fn MathsvdSlice::fill(Self, Double) -> Self
+pub fn MathsvdSlice::get(Self, Int32) -> Double
+pub fn MathsvdSlice::len(Self) -> Int32
+pub fn MathsvdSlice::max(Self) -> Double
+pub fn MathsvdSlice::mean(Self) -> Double
+pub fn MathsvdSlice::min(Self) -> Double
+pub fn MathsvdSlice::scale(Self, Double) -> Self
+pub fn MathsvdSlice::set(Self, Int32, Double) -> Self
+pub fn MathsvdSlice::sum(Self) -> Double
+pub fn MathsvdSlice::to_string(Self) -> String
+
+pub(all) struct MathsvdTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsvdTable::add(Self, Self) -> Self
+pub fn MathsvdTable::copy(Self) -> Self
+pub fn MathsvdTable::fill(Self, Double) -> Self
+pub fn MathsvdTable::get(Self, Int32) -> Double
+pub fn MathsvdTable::len(Self) -> Int32
+pub fn MathsvdTable::max(Self) -> Double
+pub fn MathsvdTable::mean(Self) -> Double
+pub fn MathsvdTable::min(Self) -> Double
+pub fn MathsvdTable::scale(Self, Double) -> Self
+pub fn MathsvdTable::set(Self, Int32, Double) -> Self
+pub fn MathsvdTable::sum(Self) -> Double
+pub fn MathsvdTable::to_string(Self) -> String
+
+pub(all) struct MathsvdVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathsvdVector::add(Self, Self) -> Self
+pub fn MathsvdVector::dist(Self, Self) -> Double
+pub fn MathsvdVector::dot(Self, Self) -> Double
+pub fn MathsvdVector::norm(Self) -> Double
+pub fn MathsvdVector::normalize(Self) -> Self
+pub fn MathsvdVector::scale(Self, Double) -> Self
+pub fn MathsvdVector::sub(Self, Self) -> Self
+pub fn MathsvdVector::to_string(Self) -> String
+
+pub(all) struct MathsvdView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathsvdView::add(Self, Self) -> Self
+pub fn MathsvdView::copy(Self) -> Self
+pub fn MathsvdView::fill(Self, Double) -> Self
+pub fn MathsvdView::get(Self, Int32) -> Double
+pub fn MathsvdView::len(Self) -> Int32
+pub fn MathsvdView::max(Self) -> Double
+pub fn MathsvdView::mean(Self) -> Double
+pub fn MathsvdView::min(Self) -> Double
+pub fn MathsvdView::scale(Self, Double) -> Self
+pub fn MathsvdView::set(Self, Int32, Double) -> Self
+pub fn MathsvdView::sum(Self) -> Double
+pub fn MathsvdView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

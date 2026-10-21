@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/ds_tree_trie"
+
+// Values
+pub fn ds_tree_trie_buffer_make(Int32) -> DstreetrieBuffer
+
+pub fn ds_tree_trie_cluster_make(Int32) -> DstreetrieCluster
+
+pub fn ds_tree_trie_cursor_make(Int32) -> DstreetrieCursor
+
+pub fn ds_tree_trie_edge_make(Int32) -> DstreetrieEdge
+
+pub fn ds_tree_trie_frame_make(Int32) -> DstreetrieFrame
+
+pub fn ds_tree_trie_graphn_make(Int32) -> DstreetrieGraphN
+
+pub fn ds_tree_trie_layer_make(Int32) -> DstreetrieLayer
+
+pub fn ds_tree_trie_make_matrix(Int32, Int32, Double) -> DstreetrieMatrix
+
+pub fn ds_tree_trie_make_point(Double, Double) -> DstreetriePoint
+
+pub fn ds_tree_trie_make_point3(Double, Double, Double) -> DstreetriePoint
+
+pub fn ds_tree_trie_make_series(Array[Double], String) -> DstreetrieSeries
+
+pub fn ds_tree_trie_make_vector(Array[Double]) -> DstreetrieVector
+
+pub fn ds_tree_trie_matrix_identity(Int32) -> DstreetrieMatrix
+
+pub fn ds_tree_trie_model_make(Int32) -> DstreetrieModel
+
+pub fn ds_tree_trie_node_make(Int32) -> DstreetrieNode
+
+pub fn ds_tree_trie_path_make(Int32) -> DstreetriePath
+
+pub fn ds_tree_trie_range_make(Int32) -> DstreetrieRange
+
+pub fn ds_tree_trie_slice_make(Int32) -> DstreetrieSlice
+
+pub fn ds_tree_trie_table_make(Int32) -> DstreetrieTable
+
+pub fn ds_tree_trie_vector_zero(Int32) -> DstreetrieVector
+
+pub fn ds_tree_trie_view_make(Int32) -> DstreetrieView
+
+// Errors
+
+// Types and methods
+pub(all) struct DstreetrieBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreetrieBuffer::add(Self, Self) -> Self
+pub fn DstreetrieBuffer::copy(Self) -> Self
+pub fn DstreetrieBuffer::fill(Self, Double) -> Self
+pub fn DstreetrieBuffer::get(Self, Int32) -> Double
+pub fn DstreetrieBuffer::len(Self) -> Int32
+pub fn DstreetrieBuffer::max(Self) -> Double
+pub fn DstreetrieBuffer::mean(Self) -> Double
+pub fn DstreetrieBuffer::min(Self) -> Double
+pub fn DstreetrieBuffer::scale(Self, Double) -> Self
+pub fn DstreetrieBuffer::set(Self, Int32, Double) -> Self
+pub fn DstreetrieBuffer::sum(Self) -> Double
+pub fn DstreetrieBuffer::to_string(Self) -> String
+
+pub(all) struct DstreetrieCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreetrieCluster::add(Self, Self) -> Self
+pub fn DstreetrieCluster::copy(Self) -> Self
+pub fn DstreetrieCluster::fill(Self, Double) -> Self
+pub fn DstreetrieCluster::get(Self, Int32) -> Double
+pub fn DstreetrieCluster::len(Self) -> Int32
+pub fn DstreetrieCluster::max(Self) -> Double
+pub fn DstreetrieCluster::mean(Self) -> Double
+pub fn DstreetrieCluster::min(Self) -> Double
+pub fn DstreetrieCluster::scale(Self, Double) -> Self
+pub fn DstreetrieCluster::set(Self, Int32, Double) -> Self
+pub fn DstreetrieCluster::sum(Self) -> Double
+pub fn DstreetrieCluster::to_string(Self) -> String
+
+pub(all) struct DstreetrieCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreetrieCursor::add(Self, Self) -> Self
+pub fn DstreetrieCursor::copy(Self) -> Self
+pub fn DstreetrieCursor::fill(Self, Double) -> Self
+pub fn DstreetrieCursor::get(Self, Int32) -> Double
+pub fn DstreetrieCursor::len(Self) -> Int32
+pub fn DstreetrieCursor::max(Self) -> Double
+pub fn DstreetrieCursor::mean(Self) -> Double
+pub fn DstreetrieCursor::min(Self) -> Double
+pub fn DstreetrieCursor::scale(Self, Double) -> Self
+pub fn DstreetrieCursor::set(Self, Int32, Double) -> Self
+pub fn DstreetrieCursor::sum(Self) -> Double
+pub fn DstreetrieCursor::to_string(Self) -> String
+
+pub(all) struct DstreetrieEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreetrieEdge::add(Self, Self) -> Self
+pub fn DstreetrieEdge::copy(Self) -> Self
+pub fn DstreetrieEdge::fill(Self, Double) -> Self
+pub fn DstreetrieEdge::get(Self, Int32) -> Double
+pub fn DstreetrieEdge::len(Self) -> Int32
+pub fn DstreetrieEdge::max(Self) -> Double
+pub fn DstreetrieEdge::mean(Self) -> Double
+pub fn DstreetrieEdge::min(Self) -> Double
+pub fn DstreetrieEdge::scale(Self, Double) -> Self
+pub fn DstreetrieEdge::set(Self, Int32, Double) -> Self
+pub fn DstreetrieEdge::sum(Self) -> Double
+pub fn DstreetrieEdge::to_string(Self) -> String
+
+pub(all) struct DstreetrieFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreetrieFrame::add(Self, Self) -> Self
+pub fn DstreetrieFrame::copy(Self) -> Self
+pub fn DstreetrieFrame::fill(Self, Double) -> Self
+pub fn DstreetrieFrame::get(Self, Int32) -> Double
+pub fn DstreetrieFrame::len(Self) -> Int32
+pub fn DstreetrieFrame::max(Self) -> Double
+pub fn DstreetrieFrame::mean(Self) -> Double
+pub fn DstreetrieFrame::min(Self) -> Double
+pub fn DstreetrieFrame::scale(Self, Double) -> Self
+pub fn DstreetrieFrame::set(Self, Int32, Double) -> Self
+pub fn DstreetrieFrame::sum(Self) -> Double
+pub fn DstreetrieFrame::to_string(Self) -> String
+
+pub(all) struct DstreetrieGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreetrieGraphN::add(Self, Self) -> Self
+pub fn DstreetrieGraphN::copy(Self) -> Self
+pub fn DstreetrieGraphN::fill(Self, Double) -> Self
+pub fn DstreetrieGraphN::get(Self, Int32) -> Double
+pub fn DstreetrieGraphN::len(Self) -> Int32
+pub fn DstreetrieGraphN::max(Self) -> Double
+pub fn DstreetrieGraphN::mean(Self) -> Double
+pub fn DstreetrieGraphN::min(Self) -> Double
+pub fn DstreetrieGraphN::scale(Self, Double) -> Self
+pub fn DstreetrieGraphN::set(Self, Int32, Double) -> Self
+pub fn DstreetrieGraphN::sum(Self) -> Double
+pub fn DstreetrieGraphN::to_string(Self) -> String
+
+pub(all) struct DstreetrieLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreetrieLayer::add(Self, Self) -> Self
+pub fn DstreetrieLayer::copy(Self) -> Self
+pub fn DstreetrieLayer::fill(Self, Double) -> Self
+pub fn DstreetrieLayer::get(Self, Int32) -> Double
+pub fn DstreetrieLayer::len(Self) -> Int32
+pub fn DstreetrieLayer::max(Self) -> Double
+pub fn DstreetrieLayer::mean(Self) -> Double
+pub fn DstreetrieLayer::min(Self) -> Double
+pub fn DstreetrieLayer::scale(Self, Double) -> Self
+pub fn DstreetrieLayer::set(Self, Int32, Double) -> Self
+pub fn DstreetrieLayer::sum(Self) -> Double
+pub fn DstreetrieLayer::to_string(Self) -> String
+
+pub(all) struct DstreetrieMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn DstreetrieMatrix::add(Self, Self) -> Self
+pub fn DstreetrieMatrix::det(Self) -> Double
+pub fn DstreetrieMatrix::get(Self, Int32, Int32) -> Double
+pub fn DstreetrieMatrix::multiply(Self, Self) -> Self
+pub fn DstreetrieMatrix::norm(Self) -> Double
+pub fn DstreetrieMatrix::scale(Self, Double) -> Self
+pub fn DstreetrieMatrix::to_string(Self) -> String
+pub fn DstreetrieMatrix::trace(Self) -> Double
+pub fn DstreetrieMatrix::transpose(Self) -> Self
+
+pub(all) struct DstreetrieModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreetrieModel::add(Self, Self) -> Self
+pub fn DstreetrieModel::copy(Self) -> Self
+pub fn DstreetrieModel::fill(Self, Double) -> Self
+pub fn DstreetrieModel::get(Self, Int32) -> Double
+pub fn DstreetrieModel::len(Self) -> Int32
+pub fn DstreetrieModel::max(Self) -> Double
+pub fn DstreetrieModel::mean(Self) -> Double
+pub fn DstreetrieModel::min(Self) -> Double
+pub fn DstreetrieModel::scale(Self, Double) -> Self
+pub fn DstreetrieModel::set(Self, Int32, Double) -> Self
+pub fn DstreetrieModel::sum(Self) -> Double
+pub fn DstreetrieModel::to_string(Self) -> String
+
+pub(all) struct DstreetrieNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreetrieNode::add(Self, Self) -> Self
+pub fn DstreetrieNode::copy(Self) -> Self
+pub fn DstreetrieNode::fill(Self, Double) -> Self
+pub fn DstreetrieNode::get(Self, Int32) -> Double
+pub fn DstreetrieNode::len(Self) -> Int32
+pub fn DstreetrieNode::max(Self) -> Double
+pub fn DstreetrieNode::mean(Self) -> Double
+pub fn DstreetrieNode::min(Self) -> Double
+pub fn DstreetrieNode::scale(Self, Double) -> Self
+pub fn DstreetrieNode::set(Self, Int32, Double) -> Self
+pub fn DstreetrieNode::sum(Self) -> Double
+pub fn DstreetrieNode::to_string(Self) -> String
+
+pub(all) struct DstreetriePath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreetriePath::add(Self, Self) -> Self
+pub fn DstreetriePath::copy(Self) -> Self
+pub fn DstreetriePath::fill(Self, Double) -> Self
+pub fn DstreetriePath::get(Self, Int32) -> Double
+pub fn DstreetriePath::len(Self) -> Int32
+pub fn DstreetriePath::max(Self) -> Double
+pub fn DstreetriePath::mean(Self) -> Double
+pub fn DstreetriePath::min(Self) -> Double
+pub fn DstreetriePath::scale(Self, Double) -> Self
+pub fn DstreetriePath::set(Self, Int32, Double) -> Self
+pub fn DstreetriePath::sum(Self) -> Double
+pub fn DstreetriePath::to_string(Self) -> String
+
+pub(all) struct DstreetriePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn DstreetriePoint::add(Self, Self) -> Self
+pub fn DstreetriePoint::cross(Self, Self) -> Self
+pub fn DstreetriePoint::dist(Self, Self) -> Double
+pub fn DstreetriePoint::dot(Self, Self) -> Double
+pub fn DstreetriePoint::label(Self) -> Int32
+pub fn DstreetriePoint::lerp(Self, Self, Double) -> Self
+pub fn DstreetriePoint::mid(Self, Self) -> Self
+pub fn DstreetriePoint::negate(Self) -> Self
+pub fn DstreetriePoint::norm(Self) -> Double
+pub fn DstreetriePoint::normalize(Self) -> Self
+pub fn DstreetriePoint::scale(Self, Double) -> Self
+pub fn DstreetriePoint::sub(Self, Self) -> Self
+pub fn DstreetriePoint::to_string(Self) -> String
+pub fn DstreetriePoint::x(Self) -> Double
+pub fn DstreetriePoint::y(Self) -> Double
+pub fn DstreetriePoint::z(Self) -> Double
+
+pub(all) struct DstreetrieRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreetrieRange::add(Self, Self) -> Self
+pub fn DstreetrieRange::copy(Self) -> Self
+pub fn DstreetrieRange::fill(Self, Double) -> Self
+pub fn DstreetrieRange::get(Self, Int32) -> Double
+pub fn DstreetrieRange::len(Self) -> Int32
+pub fn DstreetrieRange::max(Self) -> Double
+pub fn DstreetrieRange::mean(Self) -> Double
+pub fn DstreetrieRange::min(Self) -> Double
+pub fn DstreetrieRange::scale(Self, Double) -> Self
+pub fn DstreetrieRange::set(Self, Int32, Double) -> Self
+pub fn DstreetrieRange::sum(Self) -> Double
+pub fn DstreetrieRange::to_string(Self) -> String
+
+pub(all) struct DstreetrieSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn DstreetrieSeries::add(Self, Self) -> Self
+pub fn DstreetrieSeries::cumsum(Self) -> Self
+pub fn DstreetrieSeries::len(Self) -> Int32
+pub fn DstreetrieSeries::max(Self) -> Double
+pub fn DstreetrieSeries::mean(Self) -> Double
+pub fn DstreetrieSeries::median(Self) -> Double
+pub fn DstreetrieSeries::min(Self) -> Double
+pub fn DstreetrieSeries::normalize(Self) -> Self
+pub fn DstreetrieSeries::range(Self) -> Double
+pub fn DstreetrieSeries::scale(Self, Double) -> Self
+pub fn DstreetrieSeries::std(Self) -> Double
+pub fn DstreetrieSeries::sub(Self, Self) -> Self
+pub fn DstreetrieSeries::sum(Self) -> Double
+pub fn DstreetrieSeries::to_string(Self) -> String
+pub fn DstreetrieSeries::variance(Self) -> Double
+
+pub(all) struct DstreetrieSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreetrieSlice::add(Self, Self) -> Self
+pub fn DstreetrieSlice::copy(Self) -> Self
+pub fn DstreetrieSlice::fill(Self, Double) -> Self
+pub fn DstreetrieSlice::get(Self, Int32) -> Double
+pub fn DstreetrieSlice::len(Self) -> Int32
+pub fn DstreetrieSlice::max(Self) -> Double
+pub fn DstreetrieSlice::mean(Self) -> Double
+pub fn DstreetrieSlice::min(Self) -> Double
+pub fn DstreetrieSlice::scale(Self, Double) -> Self
+pub fn DstreetrieSlice::set(Self, Int32, Double) -> Self
+pub fn DstreetrieSlice::sum(Self) -> Double
+pub fn DstreetrieSlice::to_string(Self) -> String
+
+pub(all) struct DstreetrieTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreetrieTable::add(Self, Self) -> Self
+pub fn DstreetrieTable::copy(Self) -> Self
+pub fn DstreetrieTable::fill(Self, Double) -> Self
+pub fn DstreetrieTable::get(Self, Int32) -> Double
+pub fn DstreetrieTable::len(Self) -> Int32
+pub fn DstreetrieTable::max(Self) -> Double
+pub fn DstreetrieTable::mean(Self) -> Double
+pub fn DstreetrieTable::min(Self) -> Double
+pub fn DstreetrieTable::scale(Self, Double) -> Self
+pub fn DstreetrieTable::set(Self, Int32, Double) -> Self
+pub fn DstreetrieTable::sum(Self) -> Double
+pub fn DstreetrieTable::to_string(Self) -> String
+
+pub(all) struct DstreetrieVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn DstreetrieVector::add(Self, Self) -> Self
+pub fn DstreetrieVector::dist(Self, Self) -> Double
+pub fn DstreetrieVector::dot(Self, Self) -> Double
+pub fn DstreetrieVector::norm(Self) -> Double
+pub fn DstreetrieVector::normalize(Self) -> Self
+pub fn DstreetrieVector::scale(Self, Double) -> Self
+pub fn DstreetrieVector::sub(Self, Self) -> Self
+pub fn DstreetrieVector::to_string(Self) -> String
+
+pub(all) struct DstreetrieView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn DstreetrieView::add(Self, Self) -> Self
+pub fn DstreetrieView::copy(Self) -> Self
+pub fn DstreetrieView::fill(Self, Double) -> Self
+pub fn DstreetrieView::get(Self, Int32) -> Double
+pub fn DstreetrieView::len(Self) -> Int32
+pub fn DstreetrieView::max(Self) -> Double
+pub fn DstreetrieView::mean(Self) -> Double
+pub fn DstreetrieView::min(Self) -> Double
+pub fn DstreetrieView::scale(Self, Double) -> Self
+pub fn DstreetrieView::set(Self, Int32, Double) -> Self
+pub fn DstreetrieView::sum(Self) -> Double
+pub fn DstreetrieView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

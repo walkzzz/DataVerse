@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/math_numerical_integ"
+
+// Values
+pub fn math_numerical_integ_buffer_make(Int32) -> MathnumericalintegBuffer
+
+pub fn math_numerical_integ_cluster_make(Int32) -> MathnumericalintegCluster
+
+pub fn math_numerical_integ_cursor_make(Int32) -> MathnumericalintegCursor
+
+pub fn math_numerical_integ_edge_make(Int32) -> MathnumericalintegEdge
+
+pub fn math_numerical_integ_frame_make(Int32) -> MathnumericalintegFrame
+
+pub fn math_numerical_integ_graphn_make(Int32) -> MathnumericalintegGraphN
+
+pub fn math_numerical_integ_layer_make(Int32) -> MathnumericalintegLayer
+
+pub fn math_numerical_integ_make_matrix(Int32, Int32, Double) -> MathnumericalintegMatrix
+
+pub fn math_numerical_integ_make_point(Double, Double) -> MathnumericalintegPoint
+
+pub fn math_numerical_integ_make_point3(Double, Double, Double) -> MathnumericalintegPoint
+
+pub fn math_numerical_integ_make_series(Array[Double], String) -> MathnumericalintegSeries
+
+pub fn math_numerical_integ_make_vector(Array[Double]) -> MathnumericalintegVector
+
+pub fn math_numerical_integ_matrix_identity(Int32) -> MathnumericalintegMatrix
+
+pub fn math_numerical_integ_model_make(Int32) -> MathnumericalintegModel
+
+pub fn math_numerical_integ_node_make(Int32) -> MathnumericalintegNode
+
+pub fn math_numerical_integ_path_make(Int32) -> MathnumericalintegPath
+
+pub fn math_numerical_integ_range_make(Int32) -> MathnumericalintegRange
+
+pub fn math_numerical_integ_slice_make(Int32) -> MathnumericalintegSlice
+
+pub fn math_numerical_integ_table_make(Int32) -> MathnumericalintegTable
+
+pub fn math_numerical_integ_vector_zero(Int32) -> MathnumericalintegVector
+
+pub fn math_numerical_integ_view_make(Int32) -> MathnumericalintegView
+
+// Errors
+
+// Types and methods
+pub(all) struct MathnumericalintegBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathnumericalintegBuffer::add(Self, Self) -> Self
+pub fn MathnumericalintegBuffer::copy(Self) -> Self
+pub fn MathnumericalintegBuffer::fill(Self, Double) -> Self
+pub fn MathnumericalintegBuffer::get(Self, Int32) -> Double
+pub fn MathnumericalintegBuffer::len(Self) -> Int32
+pub fn MathnumericalintegBuffer::max(Self) -> Double
+pub fn MathnumericalintegBuffer::mean(Self) -> Double
+pub fn MathnumericalintegBuffer::min(Self) -> Double
+pub fn MathnumericalintegBuffer::scale(Self, Double) -> Self
+pub fn MathnumericalintegBuffer::set(Self, Int32, Double) -> Self
+pub fn MathnumericalintegBuffer::sum(Self) -> Double
+pub fn MathnumericalintegBuffer::to_string(Self) -> String
+
+pub(all) struct MathnumericalintegCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathnumericalintegCluster::add(Self, Self) -> Self
+pub fn MathnumericalintegCluster::copy(Self) -> Self
+pub fn MathnumericalintegCluster::fill(Self, Double) -> Self
+pub fn MathnumericalintegCluster::get(Self, Int32) -> Double
+pub fn MathnumericalintegCluster::len(Self) -> Int32
+pub fn MathnumericalintegCluster::max(Self) -> Double
+pub fn MathnumericalintegCluster::mean(Self) -> Double
+pub fn MathnumericalintegCluster::min(Self) -> Double
+pub fn MathnumericalintegCluster::scale(Self, Double) -> Self
+pub fn MathnumericalintegCluster::set(Self, Int32, Double) -> Self
+pub fn MathnumericalintegCluster::sum(Self) -> Double
+pub fn MathnumericalintegCluster::to_string(Self) -> String
+
+pub(all) struct MathnumericalintegCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathnumericalintegCursor::add(Self, Self) -> Self
+pub fn MathnumericalintegCursor::copy(Self) -> Self
+pub fn MathnumericalintegCursor::fill(Self, Double) -> Self
+pub fn MathnumericalintegCursor::get(Self, Int32) -> Double
+pub fn MathnumericalintegCursor::len(Self) -> Int32
+pub fn MathnumericalintegCursor::max(Self) -> Double
+pub fn MathnumericalintegCursor::mean(Self) -> Double
+pub fn MathnumericalintegCursor::min(Self) -> Double
+pub fn MathnumericalintegCursor::scale(Self, Double) -> Self
+pub fn MathnumericalintegCursor::set(Self, Int32, Double) -> Self
+pub fn MathnumericalintegCursor::sum(Self) -> Double
+pub fn MathnumericalintegCursor::to_string(Self) -> String
+
+pub(all) struct MathnumericalintegEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathnumericalintegEdge::add(Self, Self) -> Self
+pub fn MathnumericalintegEdge::copy(Self) -> Self
+pub fn MathnumericalintegEdge::fill(Self, Double) -> Self
+pub fn MathnumericalintegEdge::get(Self, Int32) -> Double
+pub fn MathnumericalintegEdge::len(Self) -> Int32
+pub fn MathnumericalintegEdge::max(Self) -> Double
+pub fn MathnumericalintegEdge::mean(Self) -> Double
+pub fn MathnumericalintegEdge::min(Self) -> Double
+pub fn MathnumericalintegEdge::scale(Self, Double) -> Self
+pub fn MathnumericalintegEdge::set(Self, Int32, Double) -> Self
+pub fn MathnumericalintegEdge::sum(Self) -> Double
+pub fn MathnumericalintegEdge::to_string(Self) -> String
+
+pub(all) struct MathnumericalintegFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathnumericalintegFrame::add(Self, Self) -> Self
+pub fn MathnumericalintegFrame::copy(Self) -> Self
+pub fn MathnumericalintegFrame::fill(Self, Double) -> Self
+pub fn MathnumericalintegFrame::get(Self, Int32) -> Double
+pub fn MathnumericalintegFrame::len(Self) -> Int32
+pub fn MathnumericalintegFrame::max(Self) -> Double
+pub fn MathnumericalintegFrame::mean(Self) -> Double
+pub fn MathnumericalintegFrame::min(Self) -> Double
+pub fn MathnumericalintegFrame::scale(Self, Double) -> Self
+pub fn MathnumericalintegFrame::set(Self, Int32, Double) -> Self
+pub fn MathnumericalintegFrame::sum(Self) -> Double
+pub fn MathnumericalintegFrame::to_string(Self) -> String
+
+pub(all) struct MathnumericalintegGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathnumericalintegGraphN::add(Self, Self) -> Self
+pub fn MathnumericalintegGraphN::copy(Self) -> Self
+pub fn MathnumericalintegGraphN::fill(Self, Double) -> Self
+pub fn MathnumericalintegGraphN::get(Self, Int32) -> Double
+pub fn MathnumericalintegGraphN::len(Self) -> Int32
+pub fn MathnumericalintegGraphN::max(Self) -> Double
+pub fn MathnumericalintegGraphN::mean(Self) -> Double
+pub fn MathnumericalintegGraphN::min(Self) -> Double
+pub fn MathnumericalintegGraphN::scale(Self, Double) -> Self
+pub fn MathnumericalintegGraphN::set(Self, Int32, Double) -> Self
+pub fn MathnumericalintegGraphN::sum(Self) -> Double
+pub fn MathnumericalintegGraphN::to_string(Self) -> String
+
+pub(all) struct MathnumericalintegLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathnumericalintegLayer::add(Self, Self) -> Self
+pub fn MathnumericalintegLayer::copy(Self) -> Self
+pub fn MathnumericalintegLayer::fill(Self, Double) -> Self
+pub fn MathnumericalintegLayer::get(Self, Int32) -> Double
+pub fn MathnumericalintegLayer::len(Self) -> Int32
+pub fn MathnumericalintegLayer::max(Self) -> Double
+pub fn MathnumericalintegLayer::mean(Self) -> Double
+pub fn MathnumericalintegLayer::min(Self) -> Double
+pub fn MathnumericalintegLayer::scale(Self, Double) -> Self
+pub fn MathnumericalintegLayer::set(Self, Int32, Double) -> Self
+pub fn MathnumericalintegLayer::sum(Self) -> Double
+pub fn MathnumericalintegLayer::to_string(Self) -> String
+
+pub(all) struct MathnumericalintegMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn MathnumericalintegMatrix::add(Self, Self) -> Self
+pub fn MathnumericalintegMatrix::det(Self) -> Double
+pub fn MathnumericalintegMatrix::get(Self, Int32, Int32) -> Double
+pub fn MathnumericalintegMatrix::multiply(Self, Self) -> Self
+pub fn MathnumericalintegMatrix::norm(Self) -> Double
+pub fn MathnumericalintegMatrix::scale(Self, Double) -> Self
+pub fn MathnumericalintegMatrix::to_string(Self) -> String
+pub fn MathnumericalintegMatrix::trace(Self) -> Double
+pub fn MathnumericalintegMatrix::transpose(Self) -> Self
+
+pub(all) struct MathnumericalintegModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathnumericalintegModel::add(Self, Self) -> Self
+pub fn MathnumericalintegModel::copy(Self) -> Self
+pub fn MathnumericalintegModel::fill(Self, Double) -> Self
+pub fn MathnumericalintegModel::get(Self, Int32) -> Double
+pub fn MathnumericalintegModel::len(Self) -> Int32
+pub fn MathnumericalintegModel::max(Self) -> Double
+pub fn MathnumericalintegModel::mean(Self) -> Double
+pub fn MathnumericalintegModel::min(Self) -> Double
+pub fn MathnumericalintegModel::scale(Self, Double) -> Self
+pub fn MathnumericalintegModel::set(Self, Int32, Double) -> Self
+pub fn MathnumericalintegModel::sum(Self) -> Double
+pub fn MathnumericalintegModel::to_string(Self) -> String
+
+pub(all) struct MathnumericalintegNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathnumericalintegNode::add(Self, Self) -> Self
+pub fn MathnumericalintegNode::copy(Self) -> Self
+pub fn MathnumericalintegNode::fill(Self, Double) -> Self
+pub fn MathnumericalintegNode::get(Self, Int32) -> Double
+pub fn MathnumericalintegNode::len(Self) -> Int32
+pub fn MathnumericalintegNode::max(Self) -> Double
+pub fn MathnumericalintegNode::mean(Self) -> Double
+pub fn MathnumericalintegNode::min(Self) -> Double
+pub fn MathnumericalintegNode::scale(Self, Double) -> Self
+pub fn MathnumericalintegNode::set(Self, Int32, Double) -> Self
+pub fn MathnumericalintegNode::sum(Self) -> Double
+pub fn MathnumericalintegNode::to_string(Self) -> String
+
+pub(all) struct MathnumericalintegPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathnumericalintegPath::add(Self, Self) -> Self
+pub fn MathnumericalintegPath::copy(Self) -> Self
+pub fn MathnumericalintegPath::fill(Self, Double) -> Self
+pub fn MathnumericalintegPath::get(Self, Int32) -> Double
+pub fn MathnumericalintegPath::len(Self) -> Int32
+pub fn MathnumericalintegPath::max(Self) -> Double
+pub fn MathnumericalintegPath::mean(Self) -> Double
+pub fn MathnumericalintegPath::min(Self) -> Double
+pub fn MathnumericalintegPath::scale(Self, Double) -> Self
+pub fn MathnumericalintegPath::set(Self, Int32, Double) -> Self
+pub fn MathnumericalintegPath::sum(Self) -> Double
+pub fn MathnumericalintegPath::to_string(Self) -> String
+
+pub(all) struct MathnumericalintegPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn MathnumericalintegPoint::add(Self, Self) -> Self
+pub fn MathnumericalintegPoint::cross(Self, Self) -> Self
+pub fn MathnumericalintegPoint::dist(Self, Self) -> Double
+pub fn MathnumericalintegPoint::dot(Self, Self) -> Double
+pub fn MathnumericalintegPoint::label(Self) -> Int32
+pub fn MathnumericalintegPoint::lerp(Self, Self, Double) -> Self
+pub fn MathnumericalintegPoint::mid(Self, Self) -> Self
+pub fn MathnumericalintegPoint::negate(Self) -> Self
+pub fn MathnumericalintegPoint::norm(Self) -> Double
+pub fn MathnumericalintegPoint::normalize(Self) -> Self
+pub fn MathnumericalintegPoint::scale(Self, Double) -> Self
+pub fn MathnumericalintegPoint::sub(Self, Self) -> Self
+pub fn MathnumericalintegPoint::to_string(Self) -> String
+pub fn MathnumericalintegPoint::x(Self) -> Double
+pub fn MathnumericalintegPoint::y(Self) -> Double
+pub fn MathnumericalintegPoint::z(Self) -> Double
+
+pub(all) struct MathnumericalintegRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathnumericalintegRange::add(Self, Self) -> Self
+pub fn MathnumericalintegRange::copy(Self) -> Self
+pub fn MathnumericalintegRange::fill(Self, Double) -> Self
+pub fn MathnumericalintegRange::get(Self, Int32) -> Double
+pub fn MathnumericalintegRange::len(Self) -> Int32
+pub fn MathnumericalintegRange::max(Self) -> Double
+pub fn MathnumericalintegRange::mean(Self) -> Double
+pub fn MathnumericalintegRange::min(Self) -> Double
+pub fn MathnumericalintegRange::scale(Self, Double) -> Self
+pub fn MathnumericalintegRange::set(Self, Int32, Double) -> Self
+pub fn MathnumericalintegRange::sum(Self) -> Double
+pub fn MathnumericalintegRange::to_string(Self) -> String
+
+pub(all) struct MathnumericalintegSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn MathnumericalintegSeries::add(Self, Self) -> Self
+pub fn MathnumericalintegSeries::cumsum(Self) -> Self
+pub fn MathnumericalintegSeries::len(Self) -> Int32
+pub fn MathnumericalintegSeries::max(Self) -> Double
+pub fn MathnumericalintegSeries::mean(Self) -> Double
+pub fn MathnumericalintegSeries::median(Self) -> Double
+pub fn MathnumericalintegSeries::min(Self) -> Double
+pub fn MathnumericalintegSeries::normalize(Self) -> Self
+pub fn MathnumericalintegSeries::range(Self) -> Double
+pub fn MathnumericalintegSeries::scale(Self, Double) -> Self
+pub fn MathnumericalintegSeries::std(Self) -> Double
+pub fn MathnumericalintegSeries::sub(Self, Self) -> Self
+pub fn MathnumericalintegSeries::sum(Self) -> Double
+pub fn MathnumericalintegSeries::to_string(Self) -> String
+pub fn MathnumericalintegSeries::variance(Self) -> Double
+
+pub(all) struct MathnumericalintegSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathnumericalintegSlice::add(Self, Self) -> Self
+pub fn MathnumericalintegSlice::copy(Self) -> Self
+pub fn MathnumericalintegSlice::fill(Self, Double) -> Self
+pub fn MathnumericalintegSlice::get(Self, Int32) -> Double
+pub fn MathnumericalintegSlice::len(Self) -> Int32
+pub fn MathnumericalintegSlice::max(Self) -> Double
+pub fn MathnumericalintegSlice::mean(Self) -> Double
+pub fn MathnumericalintegSlice::min(Self) -> Double
+pub fn MathnumericalintegSlice::scale(Self, Double) -> Self
+pub fn MathnumericalintegSlice::set(Self, Int32, Double) -> Self
+pub fn MathnumericalintegSlice::sum(Self) -> Double
+pub fn MathnumericalintegSlice::to_string(Self) -> String
+
+pub(all) struct MathnumericalintegTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathnumericalintegTable::add(Self, Self) -> Self
+pub fn MathnumericalintegTable::copy(Self) -> Self
+pub fn MathnumericalintegTable::fill(Self, Double) -> Self
+pub fn MathnumericalintegTable::get(Self, Int32) -> Double
+pub fn MathnumericalintegTable::len(Self) -> Int32
+pub fn MathnumericalintegTable::max(Self) -> Double
+pub fn MathnumericalintegTable::mean(Self) -> Double
+pub fn MathnumericalintegTable::min(Self) -> Double
+pub fn MathnumericalintegTable::scale(Self, Double) -> Self
+pub fn MathnumericalintegTable::set(Self, Int32, Double) -> Self
+pub fn MathnumericalintegTable::sum(Self) -> Double
+pub fn MathnumericalintegTable::to_string(Self) -> String
+
+pub(all) struct MathnumericalintegVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn MathnumericalintegVector::add(Self, Self) -> Self
+pub fn MathnumericalintegVector::dist(Self, Self) -> Double
+pub fn MathnumericalintegVector::dot(Self, Self) -> Double
+pub fn MathnumericalintegVector::norm(Self) -> Double
+pub fn MathnumericalintegVector::normalize(Self) -> Self
+pub fn MathnumericalintegVector::scale(Self, Double) -> Self
+pub fn MathnumericalintegVector::sub(Self, Self) -> Self
+pub fn MathnumericalintegVector::to_string(Self) -> String
+
+pub(all) struct MathnumericalintegView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn MathnumericalintegView::add(Self, Self) -> Self
+pub fn MathnumericalintegView::copy(Self) -> Self
+pub fn MathnumericalintegView::fill(Self, Double) -> Self
+pub fn MathnumericalintegView::get(Self, Int32) -> Double
+pub fn MathnumericalintegView::len(Self) -> Int32
+pub fn MathnumericalintegView::max(Self) -> Double
+pub fn MathnumericalintegView::mean(Self) -> Double
+pub fn MathnumericalintegView::min(Self) -> Double
+pub fn MathnumericalintegView::scale(Self, Double) -> Self
+pub fn MathnumericalintegView::set(Self, Int32, Double) -> Self
+pub fn MathnumericalintegView::sum(Self) -> Double
+pub fn MathnumericalintegView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

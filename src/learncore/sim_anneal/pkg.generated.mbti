@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/learncore/sim_anneal"
+
+// Values
+pub fn sim_anneal_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn sim_anneal_corr(Array[Double], Array[Double]) -> Double
+
+pub fn sim_anneal_cov(Array[Double], Array[Double]) -> Double
+
+pub fn sim_anneal_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn sim_anneal_mae(Array[Double], Array[Double]) -> Double
+
+pub fn sim_anneal_make_labeled_point(Double, Double, Int32) -> Sim_annealPoint
+
+pub fn sim_anneal_make_matrix(Int32, Int32, Double) -> Sim_annealMatrix
+
+pub fn sim_anneal_make_point(Double, Double) -> Sim_annealPoint
+
+pub fn sim_anneal_make_series(Array[Double], String) -> Sim_annealSeries
+
+pub fn sim_anneal_make_vector(Array[Double]) -> Sim_annealVector
+
+pub fn sim_anneal_matrix_add(Sim_annealMatrix, Sim_annealMatrix) -> Sim_annealMatrix
+
+pub fn sim_anneal_matrix_get(Sim_annealMatrix, Int32, Int32) -> Double
+
+pub fn sim_anneal_matrix_identity(Int32) -> Sim_annealMatrix
+
+pub fn sim_anneal_matrix_multiply(Sim_annealMatrix, Sim_annealMatrix) -> Sim_annealMatrix
+
+pub fn sim_anneal_matrix_norm(Sim_annealMatrix) -> Double
+
+pub fn sim_anneal_matrix_scale(Sim_annealMatrix, Double) -> Sim_annealMatrix
+
+pub fn sim_anneal_matrix_to_string(Sim_annealMatrix) -> String
+
+pub fn sim_anneal_matrix_trace(Sim_annealMatrix) -> Double
+
+pub fn sim_anneal_matrix_transpose(Sim_annealMatrix) -> Sim_annealMatrix
+
+pub fn sim_anneal_mse(Array[Double], Array[Double]) -> Double
+
+pub fn sim_anneal_point_add(Sim_annealPoint, Sim_annealPoint) -> Sim_annealPoint
+
+pub fn sim_anneal_point_dist(Sim_annealPoint, Sim_annealPoint) -> Double
+
+pub fn sim_anneal_point_dot(Sim_annealPoint, Sim_annealPoint) -> Double
+
+pub fn sim_anneal_point_label(Sim_annealPoint) -> Int32
+
+pub fn sim_anneal_point_norm(Sim_annealPoint) -> Double
+
+pub fn sim_anneal_point_scale(Sim_annealPoint, Double) -> Sim_annealPoint
+
+pub fn sim_anneal_point_sub(Sim_annealPoint, Sim_annealPoint) -> Sim_annealPoint
+
+pub fn sim_anneal_point_to_string(Sim_annealPoint) -> String
+
+pub fn sim_anneal_point_x(Sim_annealPoint) -> Double
+
+pub fn sim_anneal_point_y(Sim_annealPoint) -> Double
+
+pub fn sim_anneal_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn sim_anneal_r2(Array[Double], Array[Double]) -> Double
+
+pub fn sim_anneal_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn sim_anneal_series_add(Sim_annealSeries, Sim_annealSeries) -> Sim_annealSeries
+
+pub fn sim_anneal_series_len(Sim_annealSeries) -> Int32
+
+pub fn sim_anneal_series_max(Sim_annealSeries) -> Double
+
+pub fn sim_anneal_series_mean(Sim_annealSeries) -> Double
+
+pub fn sim_anneal_series_min(Sim_annealSeries) -> Double
+
+pub fn sim_anneal_series_scale(Sim_annealSeries, Double) -> Sim_annealSeries
+
+pub fn sim_anneal_series_std(Sim_annealSeries) -> Double
+
+pub fn sim_anneal_series_sum(Sim_annealSeries) -> Double
+
+pub fn sim_anneal_series_to_string(Sim_annealSeries) -> String
+
+pub fn sim_anneal_series_var(Sim_annealSeries) -> Double
+
+pub fn sim_anneal_std(Array[Double]) -> Double
+
+pub fn sim_anneal_var(Array[Double]) -> Double
+
+pub fn sim_anneal_vector_add(Sim_annealVector, Sim_annealVector) -> Sim_annealVector
+
+pub fn sim_anneal_vector_dist(Sim_annealVector, Sim_annealVector) -> Double
+
+pub fn sim_anneal_vector_dot(Sim_annealVector, Sim_annealVector) -> Double
+
+pub fn sim_anneal_vector_norm(Sim_annealVector) -> Double
+
+pub fn sim_anneal_vector_normalize(Sim_annealVector) -> Sim_annealVector
+
+pub fn sim_anneal_vector_scale(Sim_annealVector, Double) -> Sim_annealVector
+
+pub fn sim_anneal_vector_sub(Sim_annealVector, Sim_annealVector) -> Sim_annealVector
+
+pub fn sim_anneal_vector_to_string(Sim_annealVector) -> String
+
+pub fn sim_anneal_vector_zero(Int32) -> Sim_annealVector
+
+// Errors
+
+// Types and methods
+pub struct Sim_annealMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Sim_annealPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Sim_annealSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Sim_annealVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

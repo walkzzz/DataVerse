@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/signal_spec_min_norm"
+
+// Values
+pub fn signal_spec_min_norm_buffer_make(Int32) -> SignalspecminnormBuffer
+
+pub fn signal_spec_min_norm_cluster_make(Int32) -> SignalspecminnormCluster
+
+pub fn signal_spec_min_norm_cursor_make(Int32) -> SignalspecminnormCursor
+
+pub fn signal_spec_min_norm_edge_make(Int32) -> SignalspecminnormEdge
+
+pub fn signal_spec_min_norm_frame_make(Int32) -> SignalspecminnormFrame
+
+pub fn signal_spec_min_norm_graphn_make(Int32) -> SignalspecminnormGraphN
+
+pub fn signal_spec_min_norm_layer_make(Int32) -> SignalspecminnormLayer
+
+pub fn signal_spec_min_norm_make_matrix(Int32, Int32, Double) -> SignalspecminnormMatrix
+
+pub fn signal_spec_min_norm_make_point(Double, Double) -> SignalspecminnormPoint
+
+pub fn signal_spec_min_norm_make_point3(Double, Double, Double) -> SignalspecminnormPoint
+
+pub fn signal_spec_min_norm_make_series(Array[Double], String) -> SignalspecminnormSeries
+
+pub fn signal_spec_min_norm_make_vector(Array[Double]) -> SignalspecminnormVector
+
+pub fn signal_spec_min_norm_matrix_identity(Int32) -> SignalspecminnormMatrix
+
+pub fn signal_spec_min_norm_model_make(Int32) -> SignalspecminnormModel
+
+pub fn signal_spec_min_norm_node_make(Int32) -> SignalspecminnormNode
+
+pub fn signal_spec_min_norm_path_make(Int32) -> SignalspecminnormPath
+
+pub fn signal_spec_min_norm_range_make(Int32) -> SignalspecminnormRange
+
+pub fn signal_spec_min_norm_slice_make(Int32) -> SignalspecminnormSlice
+
+pub fn signal_spec_min_norm_table_make(Int32) -> SignalspecminnormTable
+
+pub fn signal_spec_min_norm_vector_zero(Int32) -> SignalspecminnormVector
+
+pub fn signal_spec_min_norm_view_make(Int32) -> SignalspecminnormView
+
+// Errors
+
+// Types and methods
+pub(all) struct SignalspecminnormBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecminnormBuffer::add(Self, Self) -> Self
+pub fn SignalspecminnormBuffer::copy(Self) -> Self
+pub fn SignalspecminnormBuffer::fill(Self, Double) -> Self
+pub fn SignalspecminnormBuffer::get(Self, Int32) -> Double
+pub fn SignalspecminnormBuffer::len(Self) -> Int32
+pub fn SignalspecminnormBuffer::max(Self) -> Double
+pub fn SignalspecminnormBuffer::mean(Self) -> Double
+pub fn SignalspecminnormBuffer::min(Self) -> Double
+pub fn SignalspecminnormBuffer::scale(Self, Double) -> Self
+pub fn SignalspecminnormBuffer::set(Self, Int32, Double) -> Self
+pub fn SignalspecminnormBuffer::sum(Self) -> Double
+pub fn SignalspecminnormBuffer::to_string(Self) -> String
+
+pub(all) struct SignalspecminnormCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecminnormCluster::add(Self, Self) -> Self
+pub fn SignalspecminnormCluster::copy(Self) -> Self
+pub fn SignalspecminnormCluster::fill(Self, Double) -> Self
+pub fn SignalspecminnormCluster::get(Self, Int32) -> Double
+pub fn SignalspecminnormCluster::len(Self) -> Int32
+pub fn SignalspecminnormCluster::max(Self) -> Double
+pub fn SignalspecminnormCluster::mean(Self) -> Double
+pub fn SignalspecminnormCluster::min(Self) -> Double
+pub fn SignalspecminnormCluster::scale(Self, Double) -> Self
+pub fn SignalspecminnormCluster::set(Self, Int32, Double) -> Self
+pub fn SignalspecminnormCluster::sum(Self) -> Double
+pub fn SignalspecminnormCluster::to_string(Self) -> String
+
+pub(all) struct SignalspecminnormCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecminnormCursor::add(Self, Self) -> Self
+pub fn SignalspecminnormCursor::copy(Self) -> Self
+pub fn SignalspecminnormCursor::fill(Self, Double) -> Self
+pub fn SignalspecminnormCursor::get(Self, Int32) -> Double
+pub fn SignalspecminnormCursor::len(Self) -> Int32
+pub fn SignalspecminnormCursor::max(Self) -> Double
+pub fn SignalspecminnormCursor::mean(Self) -> Double
+pub fn SignalspecminnormCursor::min(Self) -> Double
+pub fn SignalspecminnormCursor::scale(Self, Double) -> Self
+pub fn SignalspecminnormCursor::set(Self, Int32, Double) -> Self
+pub fn SignalspecminnormCursor::sum(Self) -> Double
+pub fn SignalspecminnormCursor::to_string(Self) -> String
+
+pub(all) struct SignalspecminnormEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecminnormEdge::add(Self, Self) -> Self
+pub fn SignalspecminnormEdge::copy(Self) -> Self
+pub fn SignalspecminnormEdge::fill(Self, Double) -> Self
+pub fn SignalspecminnormEdge::get(Self, Int32) -> Double
+pub fn SignalspecminnormEdge::len(Self) -> Int32
+pub fn SignalspecminnormEdge::max(Self) -> Double
+pub fn SignalspecminnormEdge::mean(Self) -> Double
+pub fn SignalspecminnormEdge::min(Self) -> Double
+pub fn SignalspecminnormEdge::scale(Self, Double) -> Self
+pub fn SignalspecminnormEdge::set(Self, Int32, Double) -> Self
+pub fn SignalspecminnormEdge::sum(Self) -> Double
+pub fn SignalspecminnormEdge::to_string(Self) -> String
+
+pub(all) struct SignalspecminnormFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecminnormFrame::add(Self, Self) -> Self
+pub fn SignalspecminnormFrame::copy(Self) -> Self
+pub fn SignalspecminnormFrame::fill(Self, Double) -> Self
+pub fn SignalspecminnormFrame::get(Self, Int32) -> Double
+pub fn SignalspecminnormFrame::len(Self) -> Int32
+pub fn SignalspecminnormFrame::max(Self) -> Double
+pub fn SignalspecminnormFrame::mean(Self) -> Double
+pub fn SignalspecminnormFrame::min(Self) -> Double
+pub fn SignalspecminnormFrame::scale(Self, Double) -> Self
+pub fn SignalspecminnormFrame::set(Self, Int32, Double) -> Self
+pub fn SignalspecminnormFrame::sum(Self) -> Double
+pub fn SignalspecminnormFrame::to_string(Self) -> String
+
+pub(all) struct SignalspecminnormGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecminnormGraphN::add(Self, Self) -> Self
+pub fn SignalspecminnormGraphN::copy(Self) -> Self
+pub fn SignalspecminnormGraphN::fill(Self, Double) -> Self
+pub fn SignalspecminnormGraphN::get(Self, Int32) -> Double
+pub fn SignalspecminnormGraphN::len(Self) -> Int32
+pub fn SignalspecminnormGraphN::max(Self) -> Double
+pub fn SignalspecminnormGraphN::mean(Self) -> Double
+pub fn SignalspecminnormGraphN::min(Self) -> Double
+pub fn SignalspecminnormGraphN::scale(Self, Double) -> Self
+pub fn SignalspecminnormGraphN::set(Self, Int32, Double) -> Self
+pub fn SignalspecminnormGraphN::sum(Self) -> Double
+pub fn SignalspecminnormGraphN::to_string(Self) -> String
+
+pub(all) struct SignalspecminnormLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecminnormLayer::add(Self, Self) -> Self
+pub fn SignalspecminnormLayer::copy(Self) -> Self
+pub fn SignalspecminnormLayer::fill(Self, Double) -> Self
+pub fn SignalspecminnormLayer::get(Self, Int32) -> Double
+pub fn SignalspecminnormLayer::len(Self) -> Int32
+pub fn SignalspecminnormLayer::max(Self) -> Double
+pub fn SignalspecminnormLayer::mean(Self) -> Double
+pub fn SignalspecminnormLayer::min(Self) -> Double
+pub fn SignalspecminnormLayer::scale(Self, Double) -> Self
+pub fn SignalspecminnormLayer::set(Self, Int32, Double) -> Self
+pub fn SignalspecminnormLayer::sum(Self) -> Double
+pub fn SignalspecminnormLayer::to_string(Self) -> String
+
+pub(all) struct SignalspecminnormMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn SignalspecminnormMatrix::add(Self, Self) -> Self
+pub fn SignalspecminnormMatrix::det(Self) -> Double
+pub fn SignalspecminnormMatrix::get(Self, Int32, Int32) -> Double
+pub fn SignalspecminnormMatrix::multiply(Self, Self) -> Self
+pub fn SignalspecminnormMatrix::norm(Self) -> Double
+pub fn SignalspecminnormMatrix::scale(Self, Double) -> Self
+pub fn SignalspecminnormMatrix::to_string(Self) -> String
+pub fn SignalspecminnormMatrix::trace(Self) -> Double
+pub fn SignalspecminnormMatrix::transpose(Self) -> Self
+
+pub(all) struct SignalspecminnormModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecminnormModel::add(Self, Self) -> Self
+pub fn SignalspecminnormModel::copy(Self) -> Self
+pub fn SignalspecminnormModel::fill(Self, Double) -> Self
+pub fn SignalspecminnormModel::get(Self, Int32) -> Double
+pub fn SignalspecminnormModel::len(Self) -> Int32
+pub fn SignalspecminnormModel::max(Self) -> Double
+pub fn SignalspecminnormModel::mean(Self) -> Double
+pub fn SignalspecminnormModel::min(Self) -> Double
+pub fn SignalspecminnormModel::scale(Self, Double) -> Self
+pub fn SignalspecminnormModel::set(Self, Int32, Double) -> Self
+pub fn SignalspecminnormModel::sum(Self) -> Double
+pub fn SignalspecminnormModel::to_string(Self) -> String
+
+pub(all) struct SignalspecminnormNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecminnormNode::add(Self, Self) -> Self
+pub fn SignalspecminnormNode::copy(Self) -> Self
+pub fn SignalspecminnormNode::fill(Self, Double) -> Self
+pub fn SignalspecminnormNode::get(Self, Int32) -> Double
+pub fn SignalspecminnormNode::len(Self) -> Int32
+pub fn SignalspecminnormNode::max(Self) -> Double
+pub fn SignalspecminnormNode::mean(Self) -> Double
+pub fn SignalspecminnormNode::min(Self) -> Double
+pub fn SignalspecminnormNode::scale(Self, Double) -> Self
+pub fn SignalspecminnormNode::set(Self, Int32, Double) -> Self
+pub fn SignalspecminnormNode::sum(Self) -> Double
+pub fn SignalspecminnormNode::to_string(Self) -> String
+
+pub(all) struct SignalspecminnormPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecminnormPath::add(Self, Self) -> Self
+pub fn SignalspecminnormPath::copy(Self) -> Self
+pub fn SignalspecminnormPath::fill(Self, Double) -> Self
+pub fn SignalspecminnormPath::get(Self, Int32) -> Double
+pub fn SignalspecminnormPath::len(Self) -> Int32
+pub fn SignalspecminnormPath::max(Self) -> Double
+pub fn SignalspecminnormPath::mean(Self) -> Double
+pub fn SignalspecminnormPath::min(Self) -> Double
+pub fn SignalspecminnormPath::scale(Self, Double) -> Self
+pub fn SignalspecminnormPath::set(Self, Int32, Double) -> Self
+pub fn SignalspecminnormPath::sum(Self) -> Double
+pub fn SignalspecminnormPath::to_string(Self) -> String
+
+pub(all) struct SignalspecminnormPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn SignalspecminnormPoint::add(Self, Self) -> Self
+pub fn SignalspecminnormPoint::cross(Self, Self) -> Self
+pub fn SignalspecminnormPoint::dist(Self, Self) -> Double
+pub fn SignalspecminnormPoint::dot(Self, Self) -> Double
+pub fn SignalspecminnormPoint::label(Self) -> Int32
+pub fn SignalspecminnormPoint::lerp(Self, Self, Double) -> Self
+pub fn SignalspecminnormPoint::mid(Self, Self) -> Self
+pub fn SignalspecminnormPoint::negate(Self) -> Self
+pub fn SignalspecminnormPoint::norm(Self) -> Double
+pub fn SignalspecminnormPoint::normalize(Self) -> Self
+pub fn SignalspecminnormPoint::scale(Self, Double) -> Self
+pub fn SignalspecminnormPoint::sub(Self, Self) -> Self
+pub fn SignalspecminnormPoint::to_string(Self) -> String
+pub fn SignalspecminnormPoint::x(Self) -> Double
+pub fn SignalspecminnormPoint::y(Self) -> Double
+pub fn SignalspecminnormPoint::z(Self) -> Double
+
+pub(all) struct SignalspecminnormRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecminnormRange::add(Self, Self) -> Self
+pub fn SignalspecminnormRange::copy(Self) -> Self
+pub fn SignalspecminnormRange::fill(Self, Double) -> Self
+pub fn SignalspecminnormRange::get(Self, Int32) -> Double
+pub fn SignalspecminnormRange::len(Self) -> Int32
+pub fn SignalspecminnormRange::max(Self) -> Double
+pub fn SignalspecminnormRange::mean(Self) -> Double
+pub fn SignalspecminnormRange::min(Self) -> Double
+pub fn SignalspecminnormRange::scale(Self, Double) -> Self
+pub fn SignalspecminnormRange::set(Self, Int32, Double) -> Self
+pub fn SignalspecminnormRange::sum(Self) -> Double
+pub fn SignalspecminnormRange::to_string(Self) -> String
+
+pub(all) struct SignalspecminnormSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn SignalspecminnormSeries::add(Self, Self) -> Self
+pub fn SignalspecminnormSeries::cumsum(Self) -> Self
+pub fn SignalspecminnormSeries::len(Self) -> Int32
+pub fn SignalspecminnormSeries::max(Self) -> Double
+pub fn SignalspecminnormSeries::mean(Self) -> Double
+pub fn SignalspecminnormSeries::median(Self) -> Double
+pub fn SignalspecminnormSeries::min(Self) -> Double
+pub fn SignalspecminnormSeries::normalize(Self) -> Self
+pub fn SignalspecminnormSeries::range(Self) -> Double
+pub fn SignalspecminnormSeries::scale(Self, Double) -> Self
+pub fn SignalspecminnormSeries::std(Self) -> Double
+pub fn SignalspecminnormSeries::sub(Self, Self) -> Self
+pub fn SignalspecminnormSeries::sum(Self) -> Double
+pub fn SignalspecminnormSeries::to_string(Self) -> String
+pub fn SignalspecminnormSeries::variance(Self) -> Double
+
+pub(all) struct SignalspecminnormSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecminnormSlice::add(Self, Self) -> Self
+pub fn SignalspecminnormSlice::copy(Self) -> Self
+pub fn SignalspecminnormSlice::fill(Self, Double) -> Self
+pub fn SignalspecminnormSlice::get(Self, Int32) -> Double
+pub fn SignalspecminnormSlice::len(Self) -> Int32
+pub fn SignalspecminnormSlice::max(Self) -> Double
+pub fn SignalspecminnormSlice::mean(Self) -> Double
+pub fn SignalspecminnormSlice::min(Self) -> Double
+pub fn SignalspecminnormSlice::scale(Self, Double) -> Self
+pub fn SignalspecminnormSlice::set(Self, Int32, Double) -> Self
+pub fn SignalspecminnormSlice::sum(Self) -> Double
+pub fn SignalspecminnormSlice::to_string(Self) -> String
+
+pub(all) struct SignalspecminnormTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecminnormTable::add(Self, Self) -> Self
+pub fn SignalspecminnormTable::copy(Self) -> Self
+pub fn SignalspecminnormTable::fill(Self, Double) -> Self
+pub fn SignalspecminnormTable::get(Self, Int32) -> Double
+pub fn SignalspecminnormTable::len(Self) -> Int32
+pub fn SignalspecminnormTable::max(Self) -> Double
+pub fn SignalspecminnormTable::mean(Self) -> Double
+pub fn SignalspecminnormTable::min(Self) -> Double
+pub fn SignalspecminnormTable::scale(Self, Double) -> Self
+pub fn SignalspecminnormTable::set(Self, Int32, Double) -> Self
+pub fn SignalspecminnormTable::sum(Self) -> Double
+pub fn SignalspecminnormTable::to_string(Self) -> String
+
+pub(all) struct SignalspecminnormVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn SignalspecminnormVector::add(Self, Self) -> Self
+pub fn SignalspecminnormVector::dist(Self, Self) -> Double
+pub fn SignalspecminnormVector::dot(Self, Self) -> Double
+pub fn SignalspecminnormVector::norm(Self) -> Double
+pub fn SignalspecminnormVector::normalize(Self) -> Self
+pub fn SignalspecminnormVector::scale(Self, Double) -> Self
+pub fn SignalspecminnormVector::sub(Self, Self) -> Self
+pub fn SignalspecminnormVector::to_string(Self) -> String
+
+pub(all) struct SignalspecminnormView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn SignalspecminnormView::add(Self, Self) -> Self
+pub fn SignalspecminnormView::copy(Self) -> Self
+pub fn SignalspecminnormView::fill(Self, Double) -> Self
+pub fn SignalspecminnormView::get(Self, Int32) -> Double
+pub fn SignalspecminnormView::len(Self) -> Int32
+pub fn SignalspecminnormView::max(Self) -> Double
+pub fn SignalspecminnormView::mean(Self) -> Double
+pub fn SignalspecminnormView::min(Self) -> Double
+pub fn SignalspecminnormView::scale(Self, Double) -> Self
+pub fn SignalspecminnormView::set(Self, Int32, Double) -> Self
+pub fn SignalspecminnormView::sum(Self) -> Double
+pub fn SignalspecminnormView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

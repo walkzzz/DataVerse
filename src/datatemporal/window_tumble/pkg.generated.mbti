@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/datatemporal/window_tumble"
+
+// Values
+pub fn window_tumble_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn window_tumble_corr(Array[Double], Array[Double]) -> Double
+
+pub fn window_tumble_cov(Array[Double], Array[Double]) -> Double
+
+pub fn window_tumble_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn window_tumble_mae(Array[Double], Array[Double]) -> Double
+
+pub fn window_tumble_make_labeled_point(Double, Double, Int32) -> Window_tumblePoint
+
+pub fn window_tumble_make_matrix(Int32, Int32, Double) -> Window_tumbleMatrix
+
+pub fn window_tumble_make_point(Double, Double) -> Window_tumblePoint
+
+pub fn window_tumble_make_series(Array[Double], String) -> Window_tumbleSeries
+
+pub fn window_tumble_make_vector(Array[Double]) -> Window_tumbleVector
+
+pub fn window_tumble_matrix_add(Window_tumbleMatrix, Window_tumbleMatrix) -> Window_tumbleMatrix
+
+pub fn window_tumble_matrix_get(Window_tumbleMatrix, Int32, Int32) -> Double
+
+pub fn window_tumble_matrix_identity(Int32) -> Window_tumbleMatrix
+
+pub fn window_tumble_matrix_multiply(Window_tumbleMatrix, Window_tumbleMatrix) -> Window_tumbleMatrix
+
+pub fn window_tumble_matrix_norm(Window_tumbleMatrix) -> Double
+
+pub fn window_tumble_matrix_scale(Window_tumbleMatrix, Double) -> Window_tumbleMatrix
+
+pub fn window_tumble_matrix_to_string(Window_tumbleMatrix) -> String
+
+pub fn window_tumble_matrix_trace(Window_tumbleMatrix) -> Double
+
+pub fn window_tumble_matrix_transpose(Window_tumbleMatrix) -> Window_tumbleMatrix
+
+pub fn window_tumble_mse(Array[Double], Array[Double]) -> Double
+
+pub fn window_tumble_point_add(Window_tumblePoint, Window_tumblePoint) -> Window_tumblePoint
+
+pub fn window_tumble_point_dist(Window_tumblePoint, Window_tumblePoint) -> Double
+
+pub fn window_tumble_point_dot(Window_tumblePoint, Window_tumblePoint) -> Double
+
+pub fn window_tumble_point_label(Window_tumblePoint) -> Int32
+
+pub fn window_tumble_point_norm(Window_tumblePoint) -> Double
+
+pub fn window_tumble_point_scale(Window_tumblePoint, Double) -> Window_tumblePoint
+
+pub fn window_tumble_point_sub(Window_tumblePoint, Window_tumblePoint) -> Window_tumblePoint
+
+pub fn window_tumble_point_to_string(Window_tumblePoint) -> String
+
+pub fn window_tumble_point_x(Window_tumblePoint) -> Double
+
+pub fn window_tumble_point_y(Window_tumblePoint) -> Double
+
+pub fn window_tumble_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn window_tumble_r2(Array[Double], Array[Double]) -> Double
+
+pub fn window_tumble_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn window_tumble_series_add(Window_tumbleSeries, Window_tumbleSeries) -> Window_tumbleSeries
+
+pub fn window_tumble_series_len(Window_tumbleSeries) -> Int32
+
+pub fn window_tumble_series_max(Window_tumbleSeries) -> Double
+
+pub fn window_tumble_series_mean(Window_tumbleSeries) -> Double
+
+pub fn window_tumble_series_min(Window_tumbleSeries) -> Double
+
+pub fn window_tumble_series_scale(Window_tumbleSeries, Double) -> Window_tumbleSeries
+
+pub fn window_tumble_series_std(Window_tumbleSeries) -> Double
+
+pub fn window_tumble_series_sum(Window_tumbleSeries) -> Double
+
+pub fn window_tumble_series_to_string(Window_tumbleSeries) -> String
+
+pub fn window_tumble_series_var(Window_tumbleSeries) -> Double
+
+pub fn window_tumble_std(Array[Double]) -> Double
+
+pub fn window_tumble_var(Array[Double]) -> Double
+
+pub fn window_tumble_vector_add(Window_tumbleVector, Window_tumbleVector) -> Window_tumbleVector
+
+pub fn window_tumble_vector_dist(Window_tumbleVector, Window_tumbleVector) -> Double
+
+pub fn window_tumble_vector_dot(Window_tumbleVector, Window_tumbleVector) -> Double
+
+pub fn window_tumble_vector_norm(Window_tumbleVector) -> Double
+
+pub fn window_tumble_vector_normalize(Window_tumbleVector) -> Window_tumbleVector
+
+pub fn window_tumble_vector_scale(Window_tumbleVector, Double) -> Window_tumbleVector
+
+pub fn window_tumble_vector_sub(Window_tumbleVector, Window_tumbleVector) -> Window_tumbleVector
+
+pub fn window_tumble_vector_to_string(Window_tumbleVector) -> String
+
+pub fn window_tumble_vector_zero(Int32) -> Window_tumbleVector
+
+// Errors
+
+// Types and methods
+pub struct Window_tumbleMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Window_tumblePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Window_tumbleSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Window_tumbleVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

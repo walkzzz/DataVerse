@@ -1,0 +1,376 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/extcore/nlp_tokenize_morph"
+
+// Values
+pub fn nlp_tokenize_morph_buffer_make(Int32) -> NlptokenizemorphBuffer
+
+pub fn nlp_tokenize_morph_cluster_make(Int32) -> NlptokenizemorphCluster
+
+pub fn nlp_tokenize_morph_cursor_make(Int32) -> NlptokenizemorphCursor
+
+pub fn nlp_tokenize_morph_edge_make(Int32) -> NlptokenizemorphEdge
+
+pub fn nlp_tokenize_morph_frame_make(Int32) -> NlptokenizemorphFrame
+
+pub fn nlp_tokenize_morph_graphn_make(Int32) -> NlptokenizemorphGraphN
+
+pub fn nlp_tokenize_morph_layer_make(Int32) -> NlptokenizemorphLayer
+
+pub fn nlp_tokenize_morph_make_matrix(Int32, Int32, Double) -> NlptokenizemorphMatrix
+
+pub fn nlp_tokenize_morph_make_point(Double, Double) -> NlptokenizemorphPoint
+
+pub fn nlp_tokenize_morph_make_point3(Double, Double, Double) -> NlptokenizemorphPoint
+
+pub fn nlp_tokenize_morph_make_series(Array[Double], String) -> NlptokenizemorphSeries
+
+pub fn nlp_tokenize_morph_make_vector(Array[Double]) -> NlptokenizemorphVector
+
+pub fn nlp_tokenize_morph_matrix_identity(Int32) -> NlptokenizemorphMatrix
+
+pub fn nlp_tokenize_morph_model_make(Int32) -> NlptokenizemorphModel
+
+pub fn nlp_tokenize_morph_node_make(Int32) -> NlptokenizemorphNode
+
+pub fn nlp_tokenize_morph_path_make(Int32) -> NlptokenizemorphPath
+
+pub fn nlp_tokenize_morph_range_make(Int32) -> NlptokenizemorphRange
+
+pub fn nlp_tokenize_morph_slice_make(Int32) -> NlptokenizemorphSlice
+
+pub fn nlp_tokenize_morph_table_make(Int32) -> NlptokenizemorphTable
+
+pub fn nlp_tokenize_morph_vector_zero(Int32) -> NlptokenizemorphVector
+
+pub fn nlp_tokenize_morph_view_make(Int32) -> NlptokenizemorphView
+
+// Errors
+
+// Types and methods
+pub(all) struct NlptokenizemorphBuffer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizemorphBuffer::add(Self, Self) -> Self
+pub fn NlptokenizemorphBuffer::copy(Self) -> Self
+pub fn NlptokenizemorphBuffer::fill(Self, Double) -> Self
+pub fn NlptokenizemorphBuffer::get(Self, Int32) -> Double
+pub fn NlptokenizemorphBuffer::len(Self) -> Int32
+pub fn NlptokenizemorphBuffer::max(Self) -> Double
+pub fn NlptokenizemorphBuffer::mean(Self) -> Double
+pub fn NlptokenizemorphBuffer::min(Self) -> Double
+pub fn NlptokenizemorphBuffer::scale(Self, Double) -> Self
+pub fn NlptokenizemorphBuffer::set(Self, Int32, Double) -> Self
+pub fn NlptokenizemorphBuffer::sum(Self) -> Double
+pub fn NlptokenizemorphBuffer::to_string(Self) -> String
+
+pub(all) struct NlptokenizemorphCluster {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizemorphCluster::add(Self, Self) -> Self
+pub fn NlptokenizemorphCluster::copy(Self) -> Self
+pub fn NlptokenizemorphCluster::fill(Self, Double) -> Self
+pub fn NlptokenizemorphCluster::get(Self, Int32) -> Double
+pub fn NlptokenizemorphCluster::len(Self) -> Int32
+pub fn NlptokenizemorphCluster::max(Self) -> Double
+pub fn NlptokenizemorphCluster::mean(Self) -> Double
+pub fn NlptokenizemorphCluster::min(Self) -> Double
+pub fn NlptokenizemorphCluster::scale(Self, Double) -> Self
+pub fn NlptokenizemorphCluster::set(Self, Int32, Double) -> Self
+pub fn NlptokenizemorphCluster::sum(Self) -> Double
+pub fn NlptokenizemorphCluster::to_string(Self) -> String
+
+pub(all) struct NlptokenizemorphCursor {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizemorphCursor::add(Self, Self) -> Self
+pub fn NlptokenizemorphCursor::copy(Self) -> Self
+pub fn NlptokenizemorphCursor::fill(Self, Double) -> Self
+pub fn NlptokenizemorphCursor::get(Self, Int32) -> Double
+pub fn NlptokenizemorphCursor::len(Self) -> Int32
+pub fn NlptokenizemorphCursor::max(Self) -> Double
+pub fn NlptokenizemorphCursor::mean(Self) -> Double
+pub fn NlptokenizemorphCursor::min(Self) -> Double
+pub fn NlptokenizemorphCursor::scale(Self, Double) -> Self
+pub fn NlptokenizemorphCursor::set(Self, Int32, Double) -> Self
+pub fn NlptokenizemorphCursor::sum(Self) -> Double
+pub fn NlptokenizemorphCursor::to_string(Self) -> String
+
+pub(all) struct NlptokenizemorphEdge {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizemorphEdge::add(Self, Self) -> Self
+pub fn NlptokenizemorphEdge::copy(Self) -> Self
+pub fn NlptokenizemorphEdge::fill(Self, Double) -> Self
+pub fn NlptokenizemorphEdge::get(Self, Int32) -> Double
+pub fn NlptokenizemorphEdge::len(Self) -> Int32
+pub fn NlptokenizemorphEdge::max(Self) -> Double
+pub fn NlptokenizemorphEdge::mean(Self) -> Double
+pub fn NlptokenizemorphEdge::min(Self) -> Double
+pub fn NlptokenizemorphEdge::scale(Self, Double) -> Self
+pub fn NlptokenizemorphEdge::set(Self, Int32, Double) -> Self
+pub fn NlptokenizemorphEdge::sum(Self) -> Double
+pub fn NlptokenizemorphEdge::to_string(Self) -> String
+
+pub(all) struct NlptokenizemorphFrame {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizemorphFrame::add(Self, Self) -> Self
+pub fn NlptokenizemorphFrame::copy(Self) -> Self
+pub fn NlptokenizemorphFrame::fill(Self, Double) -> Self
+pub fn NlptokenizemorphFrame::get(Self, Int32) -> Double
+pub fn NlptokenizemorphFrame::len(Self) -> Int32
+pub fn NlptokenizemorphFrame::max(Self) -> Double
+pub fn NlptokenizemorphFrame::mean(Self) -> Double
+pub fn NlptokenizemorphFrame::min(Self) -> Double
+pub fn NlptokenizemorphFrame::scale(Self, Double) -> Self
+pub fn NlptokenizemorphFrame::set(Self, Int32, Double) -> Self
+pub fn NlptokenizemorphFrame::sum(Self) -> Double
+pub fn NlptokenizemorphFrame::to_string(Self) -> String
+
+pub(all) struct NlptokenizemorphGraphN {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizemorphGraphN::add(Self, Self) -> Self
+pub fn NlptokenizemorphGraphN::copy(Self) -> Self
+pub fn NlptokenizemorphGraphN::fill(Self, Double) -> Self
+pub fn NlptokenizemorphGraphN::get(Self, Int32) -> Double
+pub fn NlptokenizemorphGraphN::len(Self) -> Int32
+pub fn NlptokenizemorphGraphN::max(Self) -> Double
+pub fn NlptokenizemorphGraphN::mean(Self) -> Double
+pub fn NlptokenizemorphGraphN::min(Self) -> Double
+pub fn NlptokenizemorphGraphN::scale(Self, Double) -> Self
+pub fn NlptokenizemorphGraphN::set(Self, Int32, Double) -> Self
+pub fn NlptokenizemorphGraphN::sum(Self) -> Double
+pub fn NlptokenizemorphGraphN::to_string(Self) -> String
+
+pub(all) struct NlptokenizemorphLayer {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizemorphLayer::add(Self, Self) -> Self
+pub fn NlptokenizemorphLayer::copy(Self) -> Self
+pub fn NlptokenizemorphLayer::fill(Self, Double) -> Self
+pub fn NlptokenizemorphLayer::get(Self, Int32) -> Double
+pub fn NlptokenizemorphLayer::len(Self) -> Int32
+pub fn NlptokenizemorphLayer::max(Self) -> Double
+pub fn NlptokenizemorphLayer::mean(Self) -> Double
+pub fn NlptokenizemorphLayer::min(Self) -> Double
+pub fn NlptokenizemorphLayer::scale(Self, Double) -> Self
+pub fn NlptokenizemorphLayer::set(Self, Int32, Double) -> Self
+pub fn NlptokenizemorphLayer::sum(Self) -> Double
+pub fn NlptokenizemorphLayer::to_string(Self) -> String
+
+pub(all) struct NlptokenizemorphMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+pub fn NlptokenizemorphMatrix::add(Self, Self) -> Self
+pub fn NlptokenizemorphMatrix::det(Self) -> Double
+pub fn NlptokenizemorphMatrix::get(Self, Int32, Int32) -> Double
+pub fn NlptokenizemorphMatrix::multiply(Self, Self) -> Self
+pub fn NlptokenizemorphMatrix::norm(Self) -> Double
+pub fn NlptokenizemorphMatrix::scale(Self, Double) -> Self
+pub fn NlptokenizemorphMatrix::to_string(Self) -> String
+pub fn NlptokenizemorphMatrix::trace(Self) -> Double
+pub fn NlptokenizemorphMatrix::transpose(Self) -> Self
+
+pub(all) struct NlptokenizemorphModel {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizemorphModel::add(Self, Self) -> Self
+pub fn NlptokenizemorphModel::copy(Self) -> Self
+pub fn NlptokenizemorphModel::fill(Self, Double) -> Self
+pub fn NlptokenizemorphModel::get(Self, Int32) -> Double
+pub fn NlptokenizemorphModel::len(Self) -> Int32
+pub fn NlptokenizemorphModel::max(Self) -> Double
+pub fn NlptokenizemorphModel::mean(Self) -> Double
+pub fn NlptokenizemorphModel::min(Self) -> Double
+pub fn NlptokenizemorphModel::scale(Self, Double) -> Self
+pub fn NlptokenizemorphModel::set(Self, Int32, Double) -> Self
+pub fn NlptokenizemorphModel::sum(Self) -> Double
+pub fn NlptokenizemorphModel::to_string(Self) -> String
+
+pub(all) struct NlptokenizemorphNode {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizemorphNode::add(Self, Self) -> Self
+pub fn NlptokenizemorphNode::copy(Self) -> Self
+pub fn NlptokenizemorphNode::fill(Self, Double) -> Self
+pub fn NlptokenizemorphNode::get(Self, Int32) -> Double
+pub fn NlptokenizemorphNode::len(Self) -> Int32
+pub fn NlptokenizemorphNode::max(Self) -> Double
+pub fn NlptokenizemorphNode::mean(Self) -> Double
+pub fn NlptokenizemorphNode::min(Self) -> Double
+pub fn NlptokenizemorphNode::scale(Self, Double) -> Self
+pub fn NlptokenizemorphNode::set(Self, Int32, Double) -> Self
+pub fn NlptokenizemorphNode::sum(Self) -> Double
+pub fn NlptokenizemorphNode::to_string(Self) -> String
+
+pub(all) struct NlptokenizemorphPath {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizemorphPath::add(Self, Self) -> Self
+pub fn NlptokenizemorphPath::copy(Self) -> Self
+pub fn NlptokenizemorphPath::fill(Self, Double) -> Self
+pub fn NlptokenizemorphPath::get(Self, Int32) -> Double
+pub fn NlptokenizemorphPath::len(Self) -> Int32
+pub fn NlptokenizemorphPath::max(Self) -> Double
+pub fn NlptokenizemorphPath::mean(Self) -> Double
+pub fn NlptokenizemorphPath::min(Self) -> Double
+pub fn NlptokenizemorphPath::scale(Self, Double) -> Self
+pub fn NlptokenizemorphPath::set(Self, Int32, Double) -> Self
+pub fn NlptokenizemorphPath::sum(Self) -> Double
+pub fn NlptokenizemorphPath::to_string(Self) -> String
+
+pub(all) struct NlptokenizemorphPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int32
+}
+pub fn NlptokenizemorphPoint::add(Self, Self) -> Self
+pub fn NlptokenizemorphPoint::cross(Self, Self) -> Self
+pub fn NlptokenizemorphPoint::dist(Self, Self) -> Double
+pub fn NlptokenizemorphPoint::dot(Self, Self) -> Double
+pub fn NlptokenizemorphPoint::label(Self) -> Int32
+pub fn NlptokenizemorphPoint::lerp(Self, Self, Double) -> Self
+pub fn NlptokenizemorphPoint::mid(Self, Self) -> Self
+pub fn NlptokenizemorphPoint::negate(Self) -> Self
+pub fn NlptokenizemorphPoint::norm(Self) -> Double
+pub fn NlptokenizemorphPoint::normalize(Self) -> Self
+pub fn NlptokenizemorphPoint::scale(Self, Double) -> Self
+pub fn NlptokenizemorphPoint::sub(Self, Self) -> Self
+pub fn NlptokenizemorphPoint::to_string(Self) -> String
+pub fn NlptokenizemorphPoint::x(Self) -> Double
+pub fn NlptokenizemorphPoint::y(Self) -> Double
+pub fn NlptokenizemorphPoint::z(Self) -> Double
+
+pub(all) struct NlptokenizemorphRange {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizemorphRange::add(Self, Self) -> Self
+pub fn NlptokenizemorphRange::copy(Self) -> Self
+pub fn NlptokenizemorphRange::fill(Self, Double) -> Self
+pub fn NlptokenizemorphRange::get(Self, Int32) -> Double
+pub fn NlptokenizemorphRange::len(Self) -> Int32
+pub fn NlptokenizemorphRange::max(Self) -> Double
+pub fn NlptokenizemorphRange::mean(Self) -> Double
+pub fn NlptokenizemorphRange::min(Self) -> Double
+pub fn NlptokenizemorphRange::scale(Self, Double) -> Self
+pub fn NlptokenizemorphRange::set(Self, Int32, Double) -> Self
+pub fn NlptokenizemorphRange::sum(Self) -> Double
+pub fn NlptokenizemorphRange::to_string(Self) -> String
+
+pub(all) struct NlptokenizemorphSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+pub fn NlptokenizemorphSeries::add(Self, Self) -> Self
+pub fn NlptokenizemorphSeries::cumsum(Self) -> Self
+pub fn NlptokenizemorphSeries::len(Self) -> Int32
+pub fn NlptokenizemorphSeries::max(Self) -> Double
+pub fn NlptokenizemorphSeries::mean(Self) -> Double
+pub fn NlptokenizemorphSeries::median(Self) -> Double
+pub fn NlptokenizemorphSeries::min(Self) -> Double
+pub fn NlptokenizemorphSeries::normalize(Self) -> Self
+pub fn NlptokenizemorphSeries::range(Self) -> Double
+pub fn NlptokenizemorphSeries::scale(Self, Double) -> Self
+pub fn NlptokenizemorphSeries::std(Self) -> Double
+pub fn NlptokenizemorphSeries::sub(Self, Self) -> Self
+pub fn NlptokenizemorphSeries::sum(Self) -> Double
+pub fn NlptokenizemorphSeries::to_string(Self) -> String
+pub fn NlptokenizemorphSeries::variance(Self) -> Double
+
+pub(all) struct NlptokenizemorphSlice {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizemorphSlice::add(Self, Self) -> Self
+pub fn NlptokenizemorphSlice::copy(Self) -> Self
+pub fn NlptokenizemorphSlice::fill(Self, Double) -> Self
+pub fn NlptokenizemorphSlice::get(Self, Int32) -> Double
+pub fn NlptokenizemorphSlice::len(Self) -> Int32
+pub fn NlptokenizemorphSlice::max(Self) -> Double
+pub fn NlptokenizemorphSlice::mean(Self) -> Double
+pub fn NlptokenizemorphSlice::min(Self) -> Double
+pub fn NlptokenizemorphSlice::scale(Self, Double) -> Self
+pub fn NlptokenizemorphSlice::set(Self, Int32, Double) -> Self
+pub fn NlptokenizemorphSlice::sum(Self) -> Double
+pub fn NlptokenizemorphSlice::to_string(Self) -> String
+
+pub(all) struct NlptokenizemorphTable {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizemorphTable::add(Self, Self) -> Self
+pub fn NlptokenizemorphTable::copy(Self) -> Self
+pub fn NlptokenizemorphTable::fill(Self, Double) -> Self
+pub fn NlptokenizemorphTable::get(Self, Int32) -> Double
+pub fn NlptokenizemorphTable::len(Self) -> Int32
+pub fn NlptokenizemorphTable::max(Self) -> Double
+pub fn NlptokenizemorphTable::mean(Self) -> Double
+pub fn NlptokenizemorphTable::min(Self) -> Double
+pub fn NlptokenizemorphTable::scale(Self, Double) -> Self
+pub fn NlptokenizemorphTable::set(Self, Int32, Double) -> Self
+pub fn NlptokenizemorphTable::sum(Self) -> Double
+pub fn NlptokenizemorphTable::to_string(Self) -> String
+
+pub(all) struct NlptokenizemorphVector {
+  comps : Array[Double]
+  dim : Int32
+}
+pub fn NlptokenizemorphVector::add(Self, Self) -> Self
+pub fn NlptokenizemorphVector::dist(Self, Self) -> Double
+pub fn NlptokenizemorphVector::dot(Self, Self) -> Double
+pub fn NlptokenizemorphVector::norm(Self) -> Double
+pub fn NlptokenizemorphVector::normalize(Self) -> Self
+pub fn NlptokenizemorphVector::scale(Self, Double) -> Self
+pub fn NlptokenizemorphVector::sub(Self, Self) -> Self
+pub fn NlptokenizemorphVector::to_string(Self) -> String
+
+pub(all) struct NlptokenizemorphView {
+  data : Array[Double]
+  size : Int32
+  tag : Int32
+}
+pub fn NlptokenizemorphView::add(Self, Self) -> Self
+pub fn NlptokenizemorphView::copy(Self) -> Self
+pub fn NlptokenizemorphView::fill(Self, Double) -> Self
+pub fn NlptokenizemorphView::get(Self, Int32) -> Double
+pub fn NlptokenizemorphView::len(Self) -> Int32
+pub fn NlptokenizemorphView::max(Self) -> Double
+pub fn NlptokenizemorphView::mean(Self) -> Double
+pub fn NlptokenizemorphView::min(Self) -> Double
+pub fn NlptokenizemorphView::scale(Self, Double) -> Self
+pub fn NlptokenizemorphView::set(Self, Int32, Double) -> Self
+pub fn NlptokenizemorphView::sum(Self) -> Double
+pub fn NlptokenizemorphView::to_string(Self) -> String
+
+// Type aliases
+
+// Traits

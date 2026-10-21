@@ -1,0 +1,140 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/dataobject/index_rtree"
+
+// Values
+pub fn index_rtree_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn index_rtree_corr(Array[Double], Array[Double]) -> Double
+
+pub fn index_rtree_cov(Array[Double], Array[Double]) -> Double
+
+pub fn index_rtree_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_rtree_mae(Array[Double], Array[Double]) -> Double
+
+pub fn index_rtree_make_labeled_point(Double, Double, Int32) -> Index_rtreePoint
+
+pub fn index_rtree_make_matrix(Int32, Int32, Double) -> Index_rtreeMatrix
+
+pub fn index_rtree_make_point(Double, Double) -> Index_rtreePoint
+
+pub fn index_rtree_make_series(Array[Double], String) -> Index_rtreeSeries
+
+pub fn index_rtree_make_vector(Array[Double]) -> Index_rtreeVector
+
+pub fn index_rtree_matrix_add(Index_rtreeMatrix, Index_rtreeMatrix) -> Index_rtreeMatrix
+
+pub fn index_rtree_matrix_get(Index_rtreeMatrix, Int32, Int32) -> Double
+
+pub fn index_rtree_matrix_identity(Int32) -> Index_rtreeMatrix
+
+pub fn index_rtree_matrix_multiply(Index_rtreeMatrix, Index_rtreeMatrix) -> Index_rtreeMatrix
+
+pub fn index_rtree_matrix_norm(Index_rtreeMatrix) -> Double
+
+pub fn index_rtree_matrix_scale(Index_rtreeMatrix, Double) -> Index_rtreeMatrix
+
+pub fn index_rtree_matrix_to_string(Index_rtreeMatrix) -> String
+
+pub fn index_rtree_matrix_trace(Index_rtreeMatrix) -> Double
+
+pub fn index_rtree_matrix_transpose(Index_rtreeMatrix) -> Index_rtreeMatrix
+
+pub fn index_rtree_mse(Array[Double], Array[Double]) -> Double
+
+pub fn index_rtree_point_add(Index_rtreePoint, Index_rtreePoint) -> Index_rtreePoint
+
+pub fn index_rtree_point_dist(Index_rtreePoint, Index_rtreePoint) -> Double
+
+pub fn index_rtree_point_dot(Index_rtreePoint, Index_rtreePoint) -> Double
+
+pub fn index_rtree_point_label(Index_rtreePoint) -> Int32
+
+pub fn index_rtree_point_norm(Index_rtreePoint) -> Double
+
+pub fn index_rtree_point_scale(Index_rtreePoint, Double) -> Index_rtreePoint
+
+pub fn index_rtree_point_sub(Index_rtreePoint, Index_rtreePoint) -> Index_rtreePoint
+
+pub fn index_rtree_point_to_string(Index_rtreePoint) -> String
+
+pub fn index_rtree_point_x(Index_rtreePoint) -> Double
+
+pub fn index_rtree_point_y(Index_rtreePoint) -> Double
+
+pub fn index_rtree_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_rtree_r2(Array[Double], Array[Double]) -> Double
+
+pub fn index_rtree_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn index_rtree_series_add(Index_rtreeSeries, Index_rtreeSeries) -> Index_rtreeSeries
+
+pub fn index_rtree_series_len(Index_rtreeSeries) -> Int32
+
+pub fn index_rtree_series_max(Index_rtreeSeries) -> Double
+
+pub fn index_rtree_series_mean(Index_rtreeSeries) -> Double
+
+pub fn index_rtree_series_min(Index_rtreeSeries) -> Double
+
+pub fn index_rtree_series_scale(Index_rtreeSeries, Double) -> Index_rtreeSeries
+
+pub fn index_rtree_series_std(Index_rtreeSeries) -> Double
+
+pub fn index_rtree_series_sum(Index_rtreeSeries) -> Double
+
+pub fn index_rtree_series_to_string(Index_rtreeSeries) -> String
+
+pub fn index_rtree_series_var(Index_rtreeSeries) -> Double
+
+pub fn index_rtree_std(Array[Double]) -> Double
+
+pub fn index_rtree_var(Array[Double]) -> Double
+
+pub fn index_rtree_vector_add(Index_rtreeVector, Index_rtreeVector) -> Index_rtreeVector
+
+pub fn index_rtree_vector_dist(Index_rtreeVector, Index_rtreeVector) -> Double
+
+pub fn index_rtree_vector_dot(Index_rtreeVector, Index_rtreeVector) -> Double
+
+pub fn index_rtree_vector_norm(Index_rtreeVector) -> Double
+
+pub fn index_rtree_vector_normalize(Index_rtreeVector) -> Index_rtreeVector
+
+pub fn index_rtree_vector_scale(Index_rtreeVector, Double) -> Index_rtreeVector
+
+pub fn index_rtree_vector_sub(Index_rtreeVector, Index_rtreeVector) -> Index_rtreeVector
+
+pub fn index_rtree_vector_to_string(Index_rtreeVector) -> String
+
+pub fn index_rtree_vector_zero(Int32) -> Index_rtreeVector
+
+// Errors
+
+// Types and methods
+pub struct Index_rtreeMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Index_rtreePoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Index_rtreeSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Index_rtreeVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+// Type aliases
+
+// Traits

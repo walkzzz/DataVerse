@@ -1,0 +1,21 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "dataverse/opcore/lineage_op"
+
+import {
+  "dataverse/dataobject",
+}
+
+// Values
+pub fn attach_lineage(@dataobject.DataObject, String) -> (@dataobject.DataObject, @dataobject.Lineage)
+
+pub fn lineage_op_id() -> String
+
+pub fn make_op_lineage(String, @dataobject.DataObject, String) -> @dataobject.Lineage
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

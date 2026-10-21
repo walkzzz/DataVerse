@@ -51,7 +51,16 @@ README 中英文，美化，默认中文；每个子包也要 README.md。
 ### R13 — Warning 治理 ⭐ 新增
 每次迭代完成后都要进行 **warning 治理**：运行 `moon check` / `moon test`，对所有 warning 逐一处理（修复或显式抑制），目标 0 warning。
 
-**已知可接受噪声**（trait extend 系统）：`extend T with Trait::{method}` 声明的方法若通过 `Trait::method(t, ...)` 调用而非 `t.method(...)`，会报 "Unused function"。这是 MoonBit trait 系统固有噪声，记录但不阻塞。
+**已知可接受噪声**（旧代码 agent_kit/learncore/opcore 等，语义包 0 warning）：
+- **[0001] unused function**（42个）：旧代码私有函数未被调用，trait extend 噪声
+- **[0002] unused variable**（40个）：函数参数/struct 字段未使用
+- **[0009] struct never constructed**（21个）：旧代码 struct 未被构造
+- **[0029] unused package**（19个）：moon.pkg 导入未使用
+- **[0020] deprecated API**（11个）：`pow`→`@math.pow`、`substring`→`str[:]`、Option to_string
+- **[0060] unused struct update**（10个）：`..s` spread 无效（删除不安全）
+- **[0079] derive**（2个）：`derive(Eq, Debug)` implicit_impl_as_method
+
+以上噪声来自旧代码（Phase 0-12），语义包（Phase 22+）0 warning。记录但不阻塞当前迭代。
 
 ### R14 — 占位 todo 检查 ⭐ 新增
 所有的占位 todo 项，每次迭代后都要检查是否具备条件完成。若依赖已满足且资源就绪，立即推进；否则标注阻塞原因。

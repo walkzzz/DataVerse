@@ -130,38 +130,6 @@ pub struct ProfileCompare {
 ///===
 /// 辅助数学函数 / Helper math (private)
 
-fn prof_ln(x : Double) -> Double {
-  if x <= 0.0 {
-    return -PROF_LARGE_DOUBLE
-  }
-  if x == 1.0 {
-    return 0.0
-  }
-  let mut y = x
-  let mut m = 0
-  let e_euler = 2.718281828459045
-  while y > 2.0 {
-    y = y / e_euler
-    m = m + 1
-  }
-  while y < 0.5 {
-    y = y * e_euler
-    m = m - 1
-  }
-  let t = (y - 1.0) / (y + 1.0)
-  let mut result = 0.0
-  let mut t_pow = t
-  for k in 0..<80 {
-    let term = t_pow / (2 * k + 1).to_double()
-    result = result + term
-    t_pow = t_pow * t * t
-    if @_common.abs(term) < PROF_EPS {
-      break
-    }
-  }
-  result * 2.0 + m.to_double()
-}
-
 ///===
 /// 构造 / Constructors
 
@@ -571,7 +539,7 @@ pub fn profile_mutual_info(a : Array[Double], b : Array[Double], bins : Int) -> 
         let p_ij = c_ij.to_double() / n.to_double()
         let p_i = ha.bin_counts[i].to_double() / n.to_double()
         let p_j = hb.bin_counts[j].to_double() / n.to_double()
-        mi = mi + p_ij * (prof_ln(p_ij) - prof_ln(p_i) - prof_ln(p_j))
+        mi = mi + p_ij * (@math.ln(p_ij) - @math.ln(p_i) - @math.ln(p_j))
       }
     }
   }
@@ -655,7 +623,7 @@ pub fn profile_entropy(values : Array[Double]) -> Double {
   let mut h = 0.0
   for i in 0..<counts.length() {
     let p = counts[i].to_double() / n.to_double()
-    h = h - p * prof_ln(p)
+    h = h - p * @math.ln(p)
   }
   h
 }

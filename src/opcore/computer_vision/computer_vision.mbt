@@ -96,33 +96,6 @@ fn cv_cos(x : Double) -> Double {
   cv_sin(x + 1.5707963267948966)
 }
 
-/// 内部指数 / Internal exp.
-fn cv_exp(x : Double) -> Double {
-  let mut term = 1.0
-  let mut sum = 1.0
-  for n in 1..<24 {
-    term = term * x / n.to_double()
-    sum = sum + term
-  }
-  sum
-}
-
-/// 内部对数 / Internal ln.
-fn cv_ln(x : Double) -> Double {
-  if x <= 0.0 {
-    return -999.0
-  }
-  let mut result = 0.0
-  let t = (x - 1.0) / (x + 1.0)
-  let t2 = t * t
-  let mut term = t
-  for k in 0..<50 {
-    result = result + term / (2 * k + 1).to_double()
-    term = term * t2
-  }
-  2.0 * result
-}
-
 /// 内部最大值 / Internal max.
 fn cv_max(a : Double, b : Double) -> Double {
   if a > b {
@@ -420,7 +393,7 @@ fn cv_gauss(x : Double, sigma : Double) -> Double {
     return 0.0
   }
   let s2 = sigma * sigma
-  cv_exp(-x * x / (2.0 * s2)) / @_common.sqrt(6.283185307179586 * s2)
+  @math.exp(-x * x / (2.0 * s2)) / @_common.sqrt(6.283185307179586 * s2)
 }
 
 /// 高斯模糊 / Gaussian blur.
@@ -549,8 +522,8 @@ pub fn cv_bilateral_filter(img : CVImage, ksize : Int, sigma_space : Double, sig
         for dy in -half..=half {
           for dx in -half..=half {
             let v = cv_pixel(img, x + dx, y + dy, c)
-            let ws = cv_exp(-(dx * dx + dy * dy).to_double() / (2.0 * sigma_space * sigma_space))
-            let wc = cv_exp(-(v - center) * (v - center) / (2.0 * sigma_color * sigma_color))
+            let ws = @math.exp(-(dx * dx + dy * dy).to_double() / (2.0 * sigma_space * sigma_space))
+            let wc = @math.exp(-(v - center) * (v - center) / (2.0 * sigma_color * sigma_color))
             let w = ws * wc
             acc = acc + v * w
             wsum = wsum + w
@@ -1633,7 +1606,7 @@ pub fn cv_psnr(img1 : CVImage, img2 : CVImage) -> Double {
   if mse == 0.0 {
     return 999.0
   }
-  10.0 * cv_ln(255.0 * 255.0 / mse) / 2.302585092994046
+  10.0 * @math.ln(255.0 * 255.0 / mse) / 2.302585092994046
 }
 
 /// SSIM / Structural similarity index.

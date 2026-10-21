@@ -1,4 +1,5 @@
 // agent_kit/safety_ai
 import {
+  "moonbitlang/core/math",
   "dataverse/extcore/_common",
 }

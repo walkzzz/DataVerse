@@ -15,69 +15,6 @@ const TA_E_EULER : Double = 2.718281828459045
 // 辅助数学函数 / Helper math functions (private)
 // ============================================================
 
-fn ta_exp(x : Double) -> Double {
-  if x > 700.0 {
-    return TA_LARGE_DOUBLE
-  }
-  if x < -700.0 {
-    return 0.0
-  }
-  let mut n = 0
-  let mut y = x
-  while y > 0.5 {
-    y = y / 2.0
-    n = n + 1
-  }
-  while y < -0.5 {
-    y = y / 2.0
-    n = n + 1
-  }
-  let mut result = 1.0
-  let mut term = 1.0
-  for i in 1..<40 {
-    term = term * y / i.to_double()
-    result = result + term
-    if @_common.abs(term) < 0.0000000000000001 {
-      break
-    }
-  }
-  for _ in 0..<n {
-    result = result * result
-  }
-  result
-}
-
-fn ta_ln(x : Double) -> Double {
-  if x <= 0.0 {
-    return -TA_LARGE_DOUBLE
-  }
-  if x == 1.0 {
-    return 0.0
-  }
-  let mut m = 0
-  let mut y = x
-  while y > 2.0 {
-    y = y / TA_E_EULER
-    m = m + 1
-  }
-  while y < 0.5 {
-    y = y * TA_E_EULER
-    m = m - 1
-  }
-  let t = (y - 1.0) / (y + 1.0)
-  let mut result = 0.0
-  let mut t_pow = t
-  for k in 0..<80 {
-    let term = t_pow / (2 * k + 1).to_double()
-    result = result + term
-    t_pow = t_pow * t * t
-    if @_common.abs(term) < 0.0000000000000001 {
-      break
-    }
-  }
-  result * 2.0 + m.to_double()
-}
-
 fn ta_pow(base : Double, exp : Double) -> Double {
   if base < 0.0 {
     let rounded = exp.to_int().to_double()
@@ -97,7 +34,7 @@ fn ta_pow(base : Double, exp : Double) -> Double {
   } else if base == 0.0 {
     if exp > 0.0 { 0.0 } else { TA_LARGE_DOUBLE }
   } else {
-    ta_exp(exp * ta_ln(base))
+    @math.exp(exp * @math.ln(base))
   }
 }
 
@@ -475,7 +412,7 @@ pub fn tf_idf(term : String, doc : String, corpus : Array[String]) -> Double {
   if df == 0 || n == 0 {
     return 0.0
   }
-  let idf = ta_ln(n.to_double() / df.to_double()) + 1.0
+  let idf = @math.ln(n.to_double() / df.to_double()) + 1.0
   tf * idf
 }
 
@@ -923,13 +860,13 @@ pub fn perplexity(model : LanguageModel, text : Array[String]) -> Double {
       count.to_double() / model.total.to_double()
     }
     if prob > 0.0 {
-      log_sum = log_sum + ta_ln(prob)
+      log_sum = log_sum + @math.ln(prob)
     } else {
-      log_sum = log_sum + ta_ln(0.0000001)
+      log_sum = log_sum + @math.ln(0.0000001)
     }
   }
   let avg = log_sum / len.to_double()
-  ta_exp(-avg)
+  @math.exp(-avg)
 }
 
 // ============================================================
@@ -1091,7 +1028,7 @@ pub fn make_topic_model(corpus : Array[String], k : Int) -> TopicModel {
       for c in 0..<chars.length() {
         hash = hash + chars[c].to_int().to_double() * ta_pow(2.0, ((c + 1) % 7).to_double())
       }
-      let val = @_common.abs(ta_ln(1.0 + @_common.abs(hash + t.to_double() * 3.7))) / 10.0
+      let val = @_common.abs(@math.ln(1.0 + @_common.abs(hash + t.to_double() * 3.7))) / 10.0
       dist.push(val)
     }
     let mut sum = 0.0
@@ -1259,7 +1196,7 @@ pub fn word_embedding_simple(word : String) -> Array[Double] {
       let shift = (i + d) % dim
       v = v + chars[i].to_int().to_double() * ta_pow(2.0, shift.to_double() / 4.0)
     }
-    result.push(ta_ln(1.0 + @_common.abs(v)) / 10.0)
+    result.push(@math.ln(1.0 + @_common.abs(v)) / 10.0)
   }
   result
 }

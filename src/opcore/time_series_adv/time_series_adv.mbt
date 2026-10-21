@@ -11,38 +11,6 @@
 
 const TSA_LARGE : Double = 999999999999999.0
 
-fn tsa_exp(x : Double) -> Double {
-  if x > 700.0 {
-    return TSA_LARGE
-  }
-  if x < -700.0 {
-    return 0.0
-  }
-  let mut n = 0
-  let mut y = x
-  while y > 0.5 {
-    y = y / 2.0
-    n = n + 1
-  }
-  while y < -0.5 {
-    y = y / 2.0
-    n = n + 1
-  }
-  let mut result = 1.0
-  let mut term = 1.0
-  for i in 1..<40 {
-    term = term * y / i.to_double()
-    result = result + term
-    if @_common.abs(term) < 0.0000000000000001 {
-      break
-    }
-  }
-  for _ in 0..<n {
-    result = result * result
-  }
-  result
-}
-
 fn tsa_variance(arr : Array[Double]) -> Double {
   let n = arr.length()
   if n == 0 {
@@ -745,7 +713,7 @@ pub fn ts_particle_filter(
     for p in 0..<n_particles {
       particles[p] = particles[p] + (values[t] - particles[p]) * 0.1
       let diff = values[t] - particles[p]
-      weights[p] = tsa_exp(-0.5 * diff * diff)
+      weights[p] = @math.exp(-0.5 * diff * diff)
       est = est + particles[p] * weights[p]
     }
     let mut wsum = 0.0

@@ -16,22 +16,6 @@
 ///===
 /// 数学辅助 / Math helpers
 
-fn sa_exp(x : Double) -> Double {
-  if x > 20.0 {
-    485165195.4
-  } else if x < -20.0 {
-    0.0
-  } else {
-    let mut result = 1.0
-    let mut term = 1.0
-    for i in 1..<50 {
-      term = term * x / i.to_double()
-      result = result + term
-    }
-    result
-  }
-}
-
 fn sa_log(x : Double) -> Double {
   if x <= 0.0 {
     -1000.0
@@ -49,7 +33,7 @@ fn sa_log(x : Double) -> Double {
 }
 
 fn sa_sigmoid(x : Double) -> Double {
-  1.0 / (1.0 + sa_exp(-x))
+  1.0 / (1.0 + @math.exp(-x))
 }
 
 fn sa_lcg_next(state : Int) -> Int {

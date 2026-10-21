@@ -26,22 +26,6 @@ pub struct EdgeConfig {
 pub extend EdgeConfig with Eq::{equal, not_equal}
 pub extend EdgeConfig with Debug::{to_repr}
 
-fn edge_exp(x : Double) -> Double {
-  if x > 50.0 {
-    return 5184705528587072.0
-  }
-  if x < -50.0 {
-    return 0.0
-  }
-  let mut term = 1.0
-  let mut sum = 1.0
-  for n in 1..<30 {
-    term = term * x / n.to_double()
-    sum = sum + term
-  }
-  sum
-}
-
 fn edge_atan2(y : Double, x : Double) -> Double {
   let pi = 3.141592653589793
   if x > 0.0 {
@@ -297,7 +281,7 @@ pub fn edge_laplacian_gaussian(img : EdgeImage, sigma : Double) -> EdgeImage {
   for dy in -radius..=radius {
     for dx in -radius..=radius {
       let r2 = (dx * dx + dy * dy).to_double()
-      let v = (r2 / s2 - 2.0) * edge_exp(-r2 / (2.0 * s2)) / (s2 * 3.141592653589793)
+      let v = (r2 / s2 - 2.0) * @math.exp(-r2 / (2.0 * s2)) / (s2 * 3.141592653589793)
       kernel.push(v)
     }
   }
@@ -332,7 +316,7 @@ pub fn canny_gaussian(img : EdgeImage, sigma : Double) -> EdgeImage {
   for dy in -radius..=radius {
     for dx in -radius..=radius {
       let r2 = (dx * dx + dy * dy).to_double()
-      let v = edge_exp(-r2 / (2.0 * s2))
+      let v = @math.exp(-r2 / (2.0 * s2))
       kernel.push(v)
       ksum = ksum + v
     }

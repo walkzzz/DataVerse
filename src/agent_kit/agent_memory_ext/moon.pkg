@@ -1,4 +1,5 @@
 // agent_kit/agent_memory_ext
 import {
+  "moonbitlang/core/math",
   "dataverse/extcore/_common",
 }

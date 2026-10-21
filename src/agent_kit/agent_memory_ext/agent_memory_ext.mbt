@@ -136,25 +136,6 @@ pub struct MemoryCache {
 ///===
 /// 辅助数学 / Helper math (private)
 
-fn mem_exp(x : Double) -> Double {
-  if x > 700.0 {
-    return MEM_LARGE_DOUBLE
-  }
-  if x < -700.0 {
-    return 0.0
-  }
-  let mut result = 1.0
-  let mut term = 1.0
-  for i in 1..<40 {
-    term = term * x / i.to_double()
-    result = result + term
-    if @_common.abs(term) < MEM_EPS {
-      break
-    }
-  }
-  result
-}
-
 fn mem_cosine_sim(a : Array[Double], b : Array[Double]) -> Double {
   let len = if a.length() < b.length() { a.length() } else { b.length() }
   if len == 0 {
@@ -591,13 +572,13 @@ pub fn consolidate_long(mc : MemoryConsolidation, items : Array[MemoryItem]) -> 
 
 /// 衰减遗忘 / Decay forgetting.
 pub fn forget_decay(mf : MemoryForgetting, item : MemoryItem, elapsed : Double) -> MemoryItem {
-  let decay = mem_exp(-mf.decay_rate * elapsed)
+  let decay = @math.exp(-mf.decay_rate * elapsed)
   { ..item, decay_factor: item.decay_factor * decay, importance: item.importance * decay }
 }
 
 /// 间隔遗忘 / Spaced repetition.
 pub fn forget_spaced(mf : MemoryForgetting, item : MemoryItem, interval : Double) -> MemoryItem {
-  let boost = mem_exp(mf.repetition_boost * interval)
+  let boost = @math.exp(mf.repetition_boost * interval)
   { ..item, importance: item.importance * boost, access_count: item.access_count + 1 }
 }
 

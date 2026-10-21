@@ -1,4 +1,5 @@
 // dataobject/data_profiling
 import {
+  "moonbitlang/core/math",
   "dataverse/extcore/_common",
 }

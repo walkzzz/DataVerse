@@ -1,4 +1,5 @@
 // opcore/audio_proc_adv
 import {
+  "moonbitlang/core/math",
   "dataverse/extcore/_common",
 }

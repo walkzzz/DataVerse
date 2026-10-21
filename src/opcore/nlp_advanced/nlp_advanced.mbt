@@ -23,69 +23,6 @@ const NLP_LARGE : Double = 999999999999999.0
 // 辅助数学函数 / Helper math functions (private)
 // ============================================================
 
-fn nlp_exp(x : Double) -> Double {
-  if x > 700.0 {
-    return NLP_LARGE
-  }
-  if x < -700.0 {
-    return 0.0
-  }
-  let mut n = 0
-  let mut y = x
-  while y > 0.5 {
-    y = y / 2.0
-    n = n + 1
-  }
-  while y < -0.5 {
-    y = y / 2.0
-    n = n + 1
-  }
-  let mut result = 1.0
-  let mut term = 1.0
-  for i in 1..<40 {
-    term = term * y / i.to_double()
-    result = result + term
-    if @_common.abs(term) < 0.0000000000000001 {
-      break
-    }
-  }
-  for _ in 0..<n {
-    result = result * result
-  }
-  result
-}
-
-fn nlp_ln(x : Double) -> Double {
-  if x <= 0.0 {
-    return -NLP_LARGE
-  }
-  if x == 1.0 {
-    return 0.0
-  }
-  let mut m = 0
-  let mut y = x
-  while y > 2.0 {
-    y = y / NLP_E
-    m = m + 1
-  }
-  while y < 0.5 {
-    y = y * NLP_E
-    m = m - 1
-  }
-  let t = (y - 1.0) / (y + 1.0)
-  let mut result = 0.0
-  let mut t_pow = t
-  for k in 0..<80 {
-    let term = t_pow / (2 * k + 1).to_double()
-    result = result + term
-    t_pow = t_pow * t * t
-    if @_common.abs(term) < 0.0000000000000001 {
-      break
-    }
-  }
-  result * 2.0 + m.to_double()
-}
-
 // ============================================================
 // 类型定义 / Type definitions
 // ============================================================
@@ -926,7 +863,7 @@ pub fn lm_score(lm : LanguageModel, tokens : Array[Int]) -> Double {
   for i in 0..<n {
     let _t = tokens[i]
     let p = 1.0 / lm.vocab_size.to_double()
-    score = score + nlp_ln(p)
+    score = score + @math.ln(p)
   }
   score
 }
@@ -939,7 +876,7 @@ pub fn lm_perplexity(lm : LanguageModel, tokens : Array[Int]) -> Double {
   }
   let score = lm_score(lm, tokens)
   let avg = score / n.to_double()
-  nlp_exp(-avg)
+  @math.exp(-avg)
 }
 
 // ============================================================

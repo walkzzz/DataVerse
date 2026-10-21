@@ -44,42 +44,11 @@ pub(all) enum SegMethod {
   MaskRCNN
 }
 
-fn seg_exp(x : Double) -> Double {
-  if x > 50.0 {
-    return 5184705528587072.0
-  }
-  if x < -50.0 {
-    return 0.0
-  }
-  let mut term = 1.0
-  let mut sum = 1.0
-  for n in 1..<30 {
-    term = term * x / n.to_double()
-    sum = sum + term
-  }
-  sum
-}
-
-fn seg_ln(x : Double) -> Double {
-  if x <= 0.0 {
-    return -999.0
-  }
-  let mut result = 0.0
-  let t = (x - 1.0) / (x + 1.0)
-  let t2 = t * t
-  let mut term = t
-  for k in 0..<50 {
-    result = result + term / (2 * k + 1).to_double()
-    term = term * t2
-  }
-  2.0 * result
-}
-
 fn seg_pow(base : Double, exp : Double) -> Double {
   if base <= 0.0 {
     return 0.0
   }
-  seg_exp(exp * seg_ln(base))
+  @math.exp(exp * @math.ln(base))
 }
 
 fn seg_empty(w : Int, h : Int) -> SegImage {
@@ -580,7 +549,7 @@ pub fn seg_mean_shift(img : SegImage, bandwidth : Double) -> SegImage {
           for dx in -2..=2 {
             let nv = seg_pixel(img, x + dx, y + dy)
             let diff = (nv - mode) / bandwidth
-            let w = seg_exp(-diff * diff / 2.0)
+            let w = @math.exp(-diff * diff / 2.0)
             num = num + nv * w
             den = den + w
           }
@@ -746,7 +715,7 @@ pub fn seg_random_walker(img : SegImage, seeds : Array[(Int, Int, Int)]) -> SegI
               continue
             }
             let nidx = ny * img.width + nx
-            let w = seg_exp(-@_common.abs(seg_pixel(img, x, y) - seg_pixel(img, nx, ny)) / 32.0)
+            let w = @math.exp(-@_common.abs(seg_pixel(img, x, y) - seg_pixel(img, nx, ny)) / 32.0)
             sum = sum + labels[nidx] * w
             count = count + 1
           }
@@ -832,7 +801,7 @@ pub fn seg_crf(img : SegImage, labels : Int, max_iter : Int) -> SegImage {
             let nv = seg_pixel(out, x + dx, y + dy)
             let pv = seg_pixel(img, x + dx, y + dy)
             let cv = seg_pixel(img, x, y)
-            let w = seg_exp(-@_common.abs(cv - pv) / 32.0)
+            let w = @math.exp(-@_common.abs(cv - pv) / 32.0)
             sum = sum + nv * w
             count = count + w
           }

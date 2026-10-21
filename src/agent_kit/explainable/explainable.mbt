@@ -13,22 +13,6 @@
 ///===
 /// 数学辅助 / Math helpers
 
-fn xa_exp(x : Double) -> Double {
-  if x > 20.0 {
-    485165195.4
-  } else if x < -20.0 {
-    0.0
-  } else {
-    let mut result = 1.0
-    let mut term = 1.0
-    for i in 1..<50 {
-      term = term * x / i.to_double()
-      result = result + term
-    }
-    result
-  }
-}
-
 fn xa_lcg_next(state : Int) -> Int {
   let a = 1103515245
   let c = 12345
@@ -162,7 +146,7 @@ pub fn lime_fit_local(
     let (r, ns) = xa_rand(state)
     state = ns
     let d = r * config.kernel_width
-    weights.push(xa_exp(-d * d / (config.kernel_width * config.kernel_width)))
+    weights.push(@math.exp(-d * d / (config.kernel_width * config.kernel_width)))
   }
   let coefs : Array[Double] = []
   for j in 0..<n {
@@ -458,7 +442,7 @@ pub fn attention_weights(config : AttentionVizConfig, raw_scores : Array[Array[D
     }
     let mut s = 0.0
     for j in 0..<cols {
-      let e = xa_exp(raw_scores[i][j] - max_v)
+      let e = @math.exp(raw_scores[i][j] - max_v)
       row.push(e)
       s = s + e
     }

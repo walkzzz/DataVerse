@@ -71,33 +71,6 @@ fn ap_cos(x : Double) -> Double {
   ap_sin(x + 1.5707963267948966)
 }
 
-/// 内部指数 / Internal exp.
-fn ap_exp(x : Double) -> Double {
-  let mut term = 1.0
-  let mut sum = 1.0
-  for n in 1..<24 {
-    term = term * x / n.to_double()
-    sum = sum + term
-  }
-  sum
-}
-
-/// 内部对数 / Internal ln.
-fn ap_ln(x : Double) -> Double {
-  if x <= 0.0 {
-    return -999.0
-  }
-  let mut result = 0.0
-  let t = (x - 1.0) / (x + 1.0)
-  let t2 = t * t
-  let mut term = t
-  for k in 0..<50 {
-    result = result + term / (2 * k + 1).to_double()
-    term = term * t2
-  }
-  2.0 * result
-}
-
 /// 内部最大 / Internal max.
 fn ap_max(a : Double, b : Double) -> Double {
   if a > b {
@@ -317,7 +290,7 @@ pub fn audio_mel_spectrogram(audio : AudioAdv, frame_size : Int, hop_size : Int,
       for k in 0..<frame.length() {
         sum = sum + filterbank[m * frame.length() + k] * frame[k]
       }
-      mel.push(ap_ln(sum + 0.000001))
+      mel.push(@math.ln(sum + 0.000001))
     }
     result.push(mel)
   }
@@ -363,12 +336,12 @@ pub fn audio_mel_filterbank(num_mels : Int, num_bins : Int, sample_rate : Int) -
   let fb : Array[Double] = []
   let fmin = 80.0
   let fmax = sample_rate.to_double() / 2.0
-  let mel_min = 1127.0 * ap_ln(1.0 + fmin / 700.0)
-  let mel_max = 1127.0 * ap_ln(1.0 + fmax / 700.0)
+  let mel_min = 1127.0 * @math.ln(1.0 + fmin / 700.0)
+  let mel_max = 1127.0 * @math.ln(1.0 + fmax / 700.0)
   let mel_points : Array[Double] = []
   for m in 0..=num_mels {
     let mel = mel_min + (mel_max - mel_min) * m.to_double() / num_mels.to_double()
-    let freq = 700.0 * (ap_exp(mel / 1127.0) - 1.0)
+    let freq = 700.0 * (@math.exp(mel / 1127.0) - 1.0)
     mel_points.push(freq)
   }
   for m in 1..=num_mels {
@@ -599,7 +572,7 @@ pub fn audio_equalizer(audio : AudioAdv, freq : Double, gain : Double) -> AudioA
   ignore(freq)
   let out : Array[Double] = []
   for i in 0..<audio.samples.length() {
-    out.push(audio.samples[i] * ap_exp(gain / 20.0 * 2.302585092994046))
+    out.push(audio.samples[i] * @math.exp(gain / 20.0 * 2.302585092994046))
   }
   { samples: out, sample_rate: audio.sample_rate, channels: audio.channels }
 }
@@ -607,8 +580,8 @@ pub fn audio_equalizer(audio : AudioAdv, freq : Double, gain : Double) -> AudioA
 /// 低搁架 / Low shelf filter.
 pub fn audio_lowshelf(audio : AudioAdv, cutoff : Double, gain : Double) -> AudioAdv {
   let out : Array[Double] = []
-  let alpha = ap_exp(-6.283185307179586 * cutoff / audio.sample_rate.to_double())
-  let g = ap_exp(gain / 20.0 * 2.302585092994046)
+  let alpha = @math.exp(-6.283185307179586 * cutoff / audio.sample_rate.to_double())
+  let g = @math.exp(gain / 20.0 * 2.302585092994046)
   let mut prev = 0.0
   for i in 0..<audio.samples.length() {
     let v = audio.samples[i] * g + prev * alpha
@@ -621,8 +594,8 @@ pub fn audio_lowshelf(audio : AudioAdv, cutoff : Double, gain : Double) -> Audio
 /// 高搁架 / High shelf filter.
 pub fn audio_highshelf(audio : AudioAdv, cutoff : Double, gain : Double) -> AudioAdv {
   let out : Array[Double] = []
-  let alpha = ap_exp(-6.283185307179586 * cutoff / audio.sample_rate.to_double())
-  let g = ap_exp(gain / 20.0 * 2.302585092994046)
+  let alpha = @math.exp(-6.283185307179586 * cutoff / audio.sample_rate.to_double())
+  let g = @math.exp(gain / 20.0 * 2.302585092994046)
   let mut prev = 0.0
   for i in 0..<audio.samples.length() {
     let low = audio.samples[i] * alpha + prev * (1.0 - alpha)

@@ -1,4 +1,5 @@
 // opcore/time_series_adv
 import {
+  "moonbitlang/core/math",
   "dataverse/extcore/_common",
 }

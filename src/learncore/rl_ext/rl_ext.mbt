@@ -9,31 +9,6 @@
 ///===
 /// 内部数学辅助 / Internal math helpers
 
-fn rl_exp_helper(x : Double) -> Double {
-  let mut term = 1.0
-  let mut sum = 1.0
-  for i in 1..<20 {
-    term = term * x / i.to_double()
-    sum = sum + term
-  }
-  sum
-}
-
-fn rl_ln_helper(x : Double) -> Double {
-  if x <= 0.0 {
-    return 0.0
-  }
-  let mut y = (x - 1.0) / (x + 1.0)
-  let mut sum = 0.0
-  let y2 = y * y
-  for i in 0..<50 {
-    let k = (2 * i + 1).to_double()
-    sum = sum + y / k
-    y = y * y2
-  }
-  2.0 * sum
-}
-
 fn rl_abs_diff(x : Double) -> Double {
   if x < 0.0 { -x } else { x }
 }
@@ -160,7 +135,7 @@ pub fn policy_softmax(logits : Array[Double]) -> Array[Double] {
   let exps : Array[Double] = []
   let mut total = 0.0
   for i in 0..<n {
-    let e = rl_exp_helper(logits[i] - max_logit)
+    let e = @math.exp(logits[i] - max_logit)
     exps.push(e)
     total = total + e
   }
@@ -362,7 +337,7 @@ pub fn reinforce_loss(
   if prob <= 0.0 {
     return 0.0
   }
-  -rl_ln_helper(prob) * reward
+  -@math.ln(prob) * reward
 }
 
 ///===

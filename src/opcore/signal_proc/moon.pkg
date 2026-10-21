@@ -1,5 +1,3 @@
 // opcore/signal_proc 信号处理 / Signal Processing
 // S12.2 新建：滤波/变换/频谱/卷积 +40 fn
-import {
-  "dataverse/extcore/_common",
-}
+

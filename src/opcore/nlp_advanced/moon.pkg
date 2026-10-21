@@ -1,5 +1,5 @@
 // opcore/nlp_advanced
 import {
   "moonbitlang/core/math",
-  "dataverse/extcore/_common",
+
 }

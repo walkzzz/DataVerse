@@ -1,7 +1,4 @@
 import {
-  "dataverse/kernel",
-  "dataverse/opcore",
-  "dataverse/dataobject",
   "dataverse/extcore/_common",
 }
 

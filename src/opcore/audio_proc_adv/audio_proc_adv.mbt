@@ -116,17 +116,6 @@ fn ap_min(a : Double, b : Double) -> Double {
   }
 }
 
-/// 内部限幅 / Internal clamp.
-fn ap_clamp(v : Double, lo : Double, hi : Double) -> Double {
-  if v < lo {
-    lo
-  } else if v > hi {
-    hi
-  } else {
-    v
-  }
-}
-
 /// 归一化 / Normalize (peak).
 pub fn audio_normalize_adv(audio : AudioAdv) -> AudioAdv {
   let mut max_abs = 0.0
@@ -585,7 +574,7 @@ pub fn audio_expander(audio : AudioAdv, threshold : Double, ratio : Double) -> A
 pub fn audio_limiter(audio : AudioAdv, threshold : Double) -> AudioAdv {
   let out : Array[Double] = []
   for i in 0..<audio.samples.length() {
-    out.push(ap_clamp(audio.samples[i], -threshold, threshold))
+    out.push(@_common.clamp(audio.samples[i], -threshold, threshold))
   }
   { samples: out, sample_rate: audio.sample_rate, channels: audio.channels }
 }

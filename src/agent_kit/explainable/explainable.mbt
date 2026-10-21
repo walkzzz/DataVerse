@@ -29,18 +29,6 @@ fn xa_exp(x : Double) -> Double {
   }
 }
 
-fn xa_mean(arr : Array[Double]) -> Double {
-  if arr.length() == 0 {
-    0.0
-  } else {
-    let mut s = 0.0
-    for i in 0..<arr.length() {
-      s = s + arr[i]
-    }
-    s / arr.length().to_double()
-  }
-}
-
 fn xa_lcg_next(state : Int) -> Int {
   let a = 1103515245
   let c = 12345
@@ -1524,7 +1512,7 @@ pub fn ale_1d(
     cum = cum + local_effects[g]
     ale.push(cum)
   }
-  let m = xa_mean(ale)
+  let m = @_common.mean(ale)
   for g in 0..<ale.length() {
     ale[g] = ale[g] - m
   }

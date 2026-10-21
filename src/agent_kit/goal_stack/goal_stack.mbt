@@ -262,19 +262,10 @@ pub fn goal_stack_vector_to_string(v : Goal_stackVector) -> String {
   if v.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn goal_stack_mean(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut sum = 0.0
-    for i in 0..<n { sum = sum + data[i] }
-    sum / n.to_double()
-  }
-}
-
 pub fn goal_stack_var(data : Array[Double]) -> Double {
   let n = data.length()
   if n == 0 { 0.0 } else {
-    let m = goal_stack_mean(data)
+    let m = @_common.mean(data)
     let mut sum = 0.0
     for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
     sum / n.to_double()
@@ -286,7 +277,7 @@ pub fn goal_stack_std(data : Array[Double]) -> Double { @_common.sqrt(goal_stack
 pub fn goal_stack_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
   if n == 0 { 0.0 } else {
-    let ma = goal_stack_mean(a); let mb = goal_stack_mean(b)
+    let ma = @_common.mean(a); let mb = @_common.mean(b)
     let mut sum = 0.0
     for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
     sum / n.to_double()
@@ -328,7 +319,7 @@ pub fn goal_stack_mae(pred : Array[Double], labels : Array[Double]) -> Double {
 pub fn goal_stack_r2(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
-    let lm = goal_stack_mean(labels)
+    let lm = @_common.mean(labels)
     let mut ss_res = 0.0; let mut ss_tot = 0.0
     for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
     if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }

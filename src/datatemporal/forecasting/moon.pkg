@@ -1,1 +1,4 @@
 // datatemporal/forecasting
+import {
+  "dataverse/extcore/_common",
+}

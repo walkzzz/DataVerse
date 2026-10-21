@@ -13,18 +13,6 @@ fn fc_abs_val(x : Double) -> Double {
   if x < 0.0 { -x } else { x }
 }
 
-fn fc_mean(arr : Array[Double]) -> Double {
-  let n = arr.length()
-  if n == 0 {
-    return 0.0
-  }
-  let mut sum = 0.0
-  for i in 0..<n {
-    sum = sum + arr[i]
-  }
-  sum / n.to_double()
-}
-
 ///===
 /// Time Series
 
@@ -322,7 +310,7 @@ pub fn quadratic_trend_forecast(
     return []
   }
   let linear_pred = linear_trend_forecast(values, horizon)
-  let mean_val = fc_mean(values)
+  let mean_val = @_common.mean(values)
   let result : Array[Double] = []
   for h in 0..<horizon {
     let adjustment = (h.to_double() * h.to_double()) * 0.001 * mean_val
@@ -385,7 +373,7 @@ pub fn autocorrelation_func(
   if n == 0 || max_lag <= 0 {
     return []
   }
-  let mean = fc_mean(values)
+  let mean = @_common.mean(values)
   let mut variance = 0.0
   for i in 0..<n {
     let d = values[i] - mean
@@ -454,7 +442,7 @@ pub fn lstm_forecast_fit(
   if n == 0 {
     return model
   }
-  let mean_val = fc_mean(values)
+  let mean_val = @_common.mean(values)
   let new_weights : Array[Double] = Array::make(model.hidden_size, 0.0)
   for i in 0..<model.hidden_size {
     if i < n {
@@ -476,7 +464,7 @@ pub fn lstm_forecast_predict(
     return []
   }
   let last_val = values[n - 1]
-  let mean_val = fc_mean(values)
+  let mean_val = @_common.mean(values)
   let result : Array[Double] = []
   for h in 0..<horizon {
     let mut pred = last_val
@@ -514,7 +502,7 @@ pub fn prophet_fit(
     return make_prophet_forecast(0.0, 0.0)
   }
   let growth = (values[n - 1] - values[0]) / n.to_double()
-  let mean_val = fc_mean(values)
+  let mean_val = @_common.mean(values)
   let seasonality = mean_val * 0.1
   { growth, seasonality, changepoints: [] }
 }
@@ -722,7 +710,7 @@ pub fn residual_analysis(
   for i in 0..<n {
     residuals.push(actual[i] - predicted[i])
   }
-  let mean = fc_mean(residuals)
+  let mean = @_common.mean(residuals)
   let mut variance = 0.0
   for i in 0..<n {
     let d = residuals[i] - mean
@@ -1018,7 +1006,7 @@ pub fn prediction_interval(
   residuals : Array[Double],
   z_value : Double
 ) -> (Array[Double], Array[Double]) {
-  let std = fc_mean(residuals)
+  let std = @_common.mean(residuals)
   let mut variance = 0.0
   let n = residuals.length()
   for i in 0..<n {

@@ -43,24 +43,12 @@ fn tsa_exp(x : Double) -> Double {
   result
 }
 
-fn tsa_mean(arr : Array[Double]) -> Double {
-  let n = arr.length()
-  if n == 0 {
-    return 0.0
-  }
-  let mut sum = 0.0
-  for i in 0..<n {
-    sum = sum + arr[i]
-  }
-  sum / n.to_double()
-}
-
 fn tsa_variance(arr : Array[Double]) -> Double {
   let n = arr.length()
   if n == 0 {
     return 0.0
   }
-  let m = tsa_mean(arr)
+  let m = @_common.mean(arr)
   let mut sum = 0.0
   for i in 0..<n {
     let d = arr[i] - m
@@ -232,7 +220,7 @@ pub fn ts_acf(
   if n == 0 {
     return []
   }
-  let m = tsa_mean(values)
+  let m = @_common.mean(values)
   let mut var0 = 0.0
   for i in 0..<n {
     let d = values[i] - m
@@ -282,8 +270,8 @@ pub fn ts_ccf(
   if n == 0 {
     return []
   }
-  let mx = tsa_mean(x)
-  let my = tsa_mean(y)
+  let mx = @_common.mean(x)
+  let my = @_common.mean(y)
   let result : Array[Double] = []
   for lag in 0..=max_lag {
     let mut cov = 0.0
@@ -324,7 +312,7 @@ pub fn ts_kpss_test(values : Array[Double]) -> Double {
   if n < 2 {
     return 0.0
   }
-  let m = tsa_mean(values)
+  let m = @_common.mean(values)
   let mut s = 0.0
   let mut stat = 0.0
   for i in 0..<n {
@@ -346,7 +334,7 @@ pub fn ts_pp_test(values : Array[Double]) -> Double {
   }
   let adf = ts_adf_test(values)
   let mut gamma0 = 0.0
-  let m = tsa_mean(values)
+  let m = @_common.mean(values)
   for i in 0..<n {
     let d = values[i] - m
     gamma0 = gamma0 + d * d
@@ -458,7 +446,7 @@ pub fn ts_ma_model(
   if q == 0 || horizon <= 0 {
     return []
   }
-  let m = tsa_mean(values)
+  let m = @_common.mean(values)
   let result : Array[Double] = []
   for _ in 0..<horizon {
     result.push(m)
@@ -478,7 +466,7 @@ pub fn ts_arma_model(
   let result : Array[Double] = []
   for i in 0..<horizon {
     if i < ar_pred.length() && i < ma_pred.length() {
-      result.push(ar_pred[i] + ma_pred[i] - tsa_mean(values))
+      result.push(ar_pred[i] + ma_pred[i] - @_common.mean(values))
     } else {
       result.push(0.0)
     }
@@ -781,7 +769,7 @@ pub fn ts_mcmc_sampling(
   if n_samples <= 0 || target.length() == 0 {
     return []
   }
-  let m = tsa_mean(target)
+  let m = @_common.mean(target)
   let std = @_common.sqrt(tsa_variance(target))
   if std == 0.0 {
     return Array::make(n_samples, m)
@@ -848,7 +836,7 @@ pub fn ts_fft_filter(
   if n == 0 {
     return []
   }
-  let m = tsa_mean(values)
+  let m = @_common.mean(values)
   let result : Array[Double] = []
   for i in 0..<n {
     let freq_idx = i.to_double() / n.to_double()
@@ -868,7 +856,7 @@ pub fn ts_bandpass_filter(
   if n == 0 {
     return []
   }
-  let m = tsa_mean(values)
+  let m = @_common.mean(values)
   let result : Array[Double] = []
   for i in 0..<n {
     let freq_idx = i.to_double() / n.to_double()
@@ -908,7 +896,7 @@ pub fn ts_change_point(
     for j in i..<n {
       right.push(values[j])
     }
-    let diff = @_common.abs(tsa_mean(left) - tsa_mean(right))
+    let diff = @_common.abs(@_common.mean(left) - @_common.mean(right))
     if diff > threshold {
       result.push(i)
     }
@@ -992,7 +980,7 @@ pub fn ts_anomaly_score(
         segment.push(values[j])
       }
     }
-    let m = tsa_mean(segment)
+    let m = @_common.mean(segment)
     let std = @_common.sqrt(tsa_variance(segment))
     if std > 0.0 {
       result.push(@_common.abs(values[i] - m) / std)
@@ -1191,7 +1179,7 @@ pub fn ts_feature_extract(values : Array[Double]) -> Array[Double] {
   if n == 0 {
     return []
   }
-  let m = tsa_mean(values)
+  let m = @_common.mean(values)
   let v = tsa_variance(values)
   let mut min_val = values[0]
   let mut max_val = values[0]

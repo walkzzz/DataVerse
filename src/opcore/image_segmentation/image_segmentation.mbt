@@ -82,16 +82,6 @@ fn seg_pow(base : Double, exp : Double) -> Double {
   seg_exp(exp * seg_ln(base))
 }
 
-fn seg_clamp(v : Double, lo : Double, hi : Double) -> Double {
-  if v < lo {
-    lo
-  } else if v > hi {
-    hi
-  } else {
-    v
-  }
-}
-
 fn seg_empty(w : Int, h : Int) -> SegImage {
   let n = w * h
   let data : Array[Double] = []
@@ -190,7 +180,7 @@ pub fn seg_otsu(img : SegImage) -> SegImage {
   for y in 0..<img.height {
     for x in 0..<img.width {
       let v = seg_pixel(img, x, y)
-      let bin = seg_clamp(v, 0.0, 255.0).to_int()
+      let bin = @_common.clamp(v, 0.0, 255.0).to_int()
       if bin >= 0 && bin < 256 {
         hist[bin] = hist[bin] + 1
       }
@@ -266,7 +256,7 @@ pub fn seg_watershed(img : SegImage) -> SegImage {
   for y in 0..<img.height {
     for x in 0..<img.width {
       let v = seg_pixel(img, x, y)
-      let bin = seg_clamp(v, 0.0, 255.0).to_int()
+      let bin = @_common.clamp(v, 0.0, 255.0).to_int()
       if bin >= 0 && bin < 256 {
         levels[bin].push((x, y))
       }

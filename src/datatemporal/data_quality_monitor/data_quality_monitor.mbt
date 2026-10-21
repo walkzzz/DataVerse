@@ -222,8 +222,8 @@ pub fn make_dq_trend(name : String, values : Array[Double]) -> DQTrend {
 
 /// 构造漂移 / Create DQ drift.
 pub fn make_dq_drift(name : String, baseline : Array[Double], current : Array[Double], threshold : Double) -> DQDrift {
-  let bm = dq_mean(baseline)
-  let cm = dq_mean(current)
+  let bm = @_common.mean(baseline)
+  let cm = @_common.mean(current)
   let score = @_common.abs(cm - bm)
   { name: name, baseline_mean: bm, current_mean: cm, drift_score: score, significant: score > threshold }
 }
@@ -533,37 +533,25 @@ fn dq_trend_slope(values : Array[Double]) -> Double {
   }
 }
 
-fn dq_mean(values : Array[Double]) -> Double {
-  let n = values.length()
-  if n == 0 {
-    return 0.0
-  }
-  let mut s = 0.0
-  for i in 0..<n {
-    s = s + values[i]
-  }
-  s / n.to_double()
-}
-
 ///===
 /// 漂移 / Drift
 
 /// 漂移检测 / Detect drift.
 pub fn drift_detect(baseline : Array[Double], current : Array[Double], threshold : Double) -> Bool {
-  let bm = dq_mean(baseline)
-  let cm = dq_mean(current)
+  let bm = @_common.mean(baseline)
+  let cm = @_common.mean(current)
   @_common.abs(cm - bm) > threshold
 }
 
 /// 漂移度量 / Measure drift.
 pub fn drift_measure(baseline : Array[Double], current : Array[Double]) -> Double {
-  @_common.abs(dq_mean(current) - dq_mean(baseline))
+  @_common.abs(@_common.mean(current) - @_common.mean(baseline))
 }
 
 /// 漂移显著性 / Drift significance.
 pub fn drift_significance(baseline : Array[Double], current : Array[Double]) -> Double {
-  let bm = dq_mean(baseline)
-  let cm = dq_mean(current)
+  let bm = @_common.mean(baseline)
+  let cm = @_common.mean(current)
   let n = baseline.length()
   if n == 0 {
     return 0.0

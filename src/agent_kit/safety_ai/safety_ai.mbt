@@ -52,18 +52,6 @@ fn sa_sigmoid(x : Double) -> Double {
   1.0 / (1.0 + sa_exp(-x))
 }
 
-fn sa_mean(arr : Array[Double]) -> Double {
-  if arr.length() == 0 {
-    0.0
-  } else {
-    let mut s = 0.0
-    for i in 0..<arr.length() {
-      s = s + arr[i]
-    }
-    s / arr.length().to_double()
-  }
-}
-
 fn sa_lcg_next(state : Int) -> Int {
   let a = 1103515245
   let c = 12345
@@ -400,7 +388,7 @@ pub fn bias_score(detector : BiasDetector, predictions : Array[Double], groups :
   let mut min_mean = 1000000.0
   for g in 0..<num_groups {
     if group_preds[g].length() > 0 {
-      let m = sa_mean(group_preds[g])
+      let m = @_common.mean(group_preds[g])
       if m > max_mean {
         max_mean = m
       }
@@ -637,7 +625,7 @@ pub fn monitor_alert(monitor : SafetyMonitor) -> (Bool, Double) {
   if monitor.history.length() == 0 {
     return (false, 0.0)
   }
-  let m = sa_mean(monitor.history)
+  let m = @_common.mean(monitor.history)
   (m > monitor.alert_threshold, m)
 }
 

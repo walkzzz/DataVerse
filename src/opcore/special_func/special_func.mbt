@@ -262,19 +262,10 @@ pub fn special_func_vector_to_string(v : Special_funcVector) -> String {
   if v.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn special_func_mean(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut sum = 0.0
-    for i in 0..<n { sum = sum + data[i] }
-    sum / n.to_double()
-  }
-}
-
 pub fn special_func_var(data : Array[Double]) -> Double {
   let n = data.length()
   if n == 0 { 0.0 } else {
-    let m = special_func_mean(data)
+    let m = @_common.mean(data)
     let mut sum = 0.0
     for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
     sum / n.to_double()
@@ -286,7 +277,7 @@ pub fn special_func_std(data : Array[Double]) -> Double { @_common.sqrt(special_
 pub fn special_func_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
   if n == 0 { 0.0 } else {
-    let ma = special_func_mean(a); let mb = special_func_mean(b)
+    let ma = @_common.mean(a); let mb = @_common.mean(b)
     let mut sum = 0.0
     for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
     sum / n.to_double()
@@ -328,7 +319,7 @@ pub fn special_func_mae(pred : Array[Double], labels : Array[Double]) -> Double 
 pub fn special_func_r2(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
-    let lm = special_func_mean(labels)
+    let lm = @_common.mean(labels)
     let mut ss_res = 0.0; let mut ss_tot = 0.0
     for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
     if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }

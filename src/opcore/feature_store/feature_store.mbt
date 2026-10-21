@@ -22,18 +22,6 @@ fn fs_contains(arr : Array[String], v : String) -> Bool {
   false
 }
 
-fn fs_mean(arr : Array[Double]) -> Double {
-  let n = arr.length()
-  if n == 0 {
-    return 0.0
-  }
-  let mut sum = 0.0
-  for i in 0..<n {
-    sum = sum + arr[i]
-  }
-  sum / n.to_double()
-}
-
 ///===
 /// FeatureDef / 特征定义
 
@@ -407,7 +395,7 @@ pub fn pipeline_compute(
   for i in 0..<pipeline.steps.length() {
     let step = pipeline.steps[i]
     if step == "normalize" {
-      let m = fs_mean(result)
+      let m = @_common.mean(result)
       let new_result : Array[Double] = []
       for j in 0..<result.length() {
         new_result.push(result[j] - m)
@@ -432,7 +420,7 @@ pub fn feature_stats_store(values : Array[Double]) -> (Double, Double, Double, D
   if n == 0 {
     return (0.0, 0.0, 0.0, 0.0)
   }
-  let mean = fs_mean(values)
+  let mean = @_common.mean(values)
   let mut sum_sq = 0.0
   let mut mn = values[0]
   let mut mx = values[0]
@@ -475,8 +463,8 @@ pub fn feature_drift_store(
   if n == 0 || n != actual.length() {
     return 0.0
   }
-  let exp_mean = fs_mean(expected)
-  let act_mean = fs_mean(actual)
+  let exp_mean = @_common.mean(expected)
+  let act_mean = @_common.mean(actual)
   if exp_mean == 0.0 {
     return @_common.abs(act_mean)
   }

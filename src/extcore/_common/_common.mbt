@@ -102,8 +102,8 @@ pub fn mean(data : Array[Double]) -> Double {
 /// 求和
 pub fn sum(data : Array[Double]) -> Double {
   let mut total = 0.0
-  for i in 0..<data.length() {
-    total = total + data[i]
+  for x in data {
+    total = total + x
   }
   total
 }
@@ -116,8 +116,8 @@ pub fn variance(data : Array[Double]) -> Double {
     _ => {
       let m = mean(data)
       let mut total = 0.0
-      for i in 0..<n {
-        let d = data[i] - m
+      for x in data {
+        let d = x - m
         total = total + d * d
       }
       total / n.to_double()
@@ -531,14 +531,13 @@ pub fn fibonacci(n : Int) -> Int {
 
 /// 最小值
 pub fn min(data : Array[Double]) -> Double {
-  let n = data.length()
-  match n {
+  match data.length() {
     0 => 0.0
     _ => {
       let mut m = data[0]
-      for i in 1..<n {
-        if data[i] < m {
-          m = data[i]
+      for x in data {
+        if x < m {
+          m = x
         }
       }
       m
@@ -548,14 +547,13 @@ pub fn min(data : Array[Double]) -> Double {
 
 /// 最大值
 pub fn max(data : Array[Double]) -> Double {
-  let n = data.length()
-  match n {
+  match data.length() {
     0 => 0.0
     _ => {
       let mut m = data[0]
-      for i in 1..<n {
-        if data[i] > m {
-          m = data[i]
+      for x in data {
+        if x > m {
+          m = x
         }
       }
       m

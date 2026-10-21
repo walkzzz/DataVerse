@@ -255,3 +255,64 @@ test "proof_lcm_multiple" {
   assert_true(l % 6 == 0)
   assert_true(l == 12)
 }
+test "proof_accuracy_perfect" {
+  let acc = @_common.accuracy([1, 2, 3], [1, 2, 3])
+  assert_true(acc > 0.99)
+}
+
+test "proof_accuracy_zero" {
+  let acc = @_common.accuracy([1, 2, 3], [4, 5, 6])
+  assert_true(acc < 0.01)
+}
+
+test "proof_mse_zero_perfect" {
+  let m = @_common.mse([1.0, 2.0, 3.0], [1.0, 2.0, 3.0])
+  assert_true(m < 0.001)
+}
+
+test "proof_rmse_nonneg" {
+  let r = @_common.rmse([1.0, 2.0], [3.0, 4.0])
+  assert_true(r > 0.0)
+}
+
+test "proof_mae_nonneg" {
+  let m = @_common.mae([1.0, 2.0], [3.0, 4.0])
+  assert_true(m > 0.0)
+}
+
+test "proof_r2_perfect" {
+  let r = @_common.r2([1.0, 2.0, 3.0], [1.0, 2.0, 3.0])
+  assert_true(r > 0.99)
+}
+
+test "proof_corr_self" {
+  let c = @_common.corr([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0])
+  assert_true(c > 0.99)
+}
+
+test "proof_corr_negated" {
+  let c = @_common.corr([1.0, 2.0, 3.0, 4.0], [-1.0, -2.0, -3.0, -4.0])
+  assert_true(c < -0.99)
+}
+
+test "proof_normalize_range" {
+  let n = @_common.normalize([1.0, 2.0, 3.0, 4.0, 5.0])
+  assert_true(n[0] < 0.001)
+  assert_true(n[4] > 0.99)
+}
+
+test "proof_cumsum_last" {
+  let c = @_common.cumsum([1.0, 2.0, 3.0, 4.0])
+  assert_true(c[3] > 9.99 && c[3] < 10.01)
+}
+
+test "proof_reverse_length" {
+  let r = @_common.reverse([1.0, 2.0, 3.0])
+  assert_true(r.length() == 3)
+  assert_true(r[0] > 2.99 && r[2] < 1.01)
+}
+
+test "proof_concat_length" {
+  let c = @_common.concat([1.0, 2.0], [3.0, 4.0, 5.0])
+  assert_true(c.length() == 5)
+}

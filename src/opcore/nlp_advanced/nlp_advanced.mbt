@@ -932,7 +932,7 @@ pub fn lm_score(lm : LanguageModel, tokens : Array[Int]) -> Double {
   }
   let mut score = 0.0
   for i in 0..<n {
-    let t = tokens[i]
+    let _t = tokens[i]
     let p = 1.0 / lm.vocab_size.to_double()
     score = score + nlp_ln(p)
   }

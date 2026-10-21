@@ -9,9 +9,6 @@
 ///===
 /// 内部数学辅助 / Internal math helpers
 
-const TSA_PI : Double = 3.141592653589793
-const TSA_2PI : Double = 6.283185307179586
-const TSA_E : Double = 2.718281828459045
 const TSA_LARGE : Double = 999999999999999.0
 
 fn tsa_sqrt(x : Double) -> Double {

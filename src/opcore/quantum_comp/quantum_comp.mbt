@@ -467,7 +467,7 @@ pub fn entanglement_entropy(state : QubitState) -> Double {
 }
 
 /// 约化密度矩阵迹
-pub fn partial_trace(state : QubitState, keep : Array[Int]) -> Double {
+pub fn partial_trace(state : QubitState, _keep : Array[Int]) -> Double {
   let n = array_length(state.amplitudes)
   let mut trace = 0.0
   for i in 0..<n {

@@ -418,7 +418,7 @@ pub fn coordinate(
 
 /// 协商 / Negotiate.
 pub fn negotiate(
-  protocol : CoordinationProtocol,
+  _protocol : CoordinationProtocol,
   proposal_a : String,
   proposal_b : String,
 ) -> String {

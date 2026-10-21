@@ -8,8 +8,6 @@
 ///
 /// Monitor / rule / threshold / metric / dashboard / alert / schedule / trend / drift / regression.
 
-const DQ_LARGE_DOUBLE : Double = 999999999999999.0
-const DQ_EPS : Double = 0.0000000000000001
 
 /// 监控状态 / Monitor status.
 pub(all) enum MonitorStatus {

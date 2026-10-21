@@ -1499,7 +1499,7 @@ pub fn make_gan(generator_dim : Int, discriminator_dim : Int, noise_dim : Int) -
 }
 
 /// GAN 判别器 / GAN discriminator.
-pub fn gan_discriminator(input : Array[Double], meta : GANMeta) -> Double {
+pub fn gan_discriminator(input : Array[Double], _meta : GANMeta) -> Double {
   let n = input.length()
   if n == 0 {
     0.0

@@ -301,7 +301,7 @@ pub fn index_add(index : MetadataIndex, id : String, inst : MetadataInstance) ->
   { entries: new_entries, field_index: new_field_index }
 }
 
-fn update_field_index(field_index : Array[(String, Array[String])], field_name : String, value : String, id : String) -> Array[(String, Array[String])] {
+fn update_field_index(field_index : Array[(String, Array[String])], field_name : String, _value : String, id : String) -> Array[(String, Array[String])] {
   let mut new_index = []
   let mut found = false
   for i in 0..<array_length(field_index) {

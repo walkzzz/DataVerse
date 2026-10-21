@@ -694,7 +694,7 @@ pub fn make_arc_face(margin : Double, scale : Double) -> ArcFaceConfig {
 pub fn arc_face_loss(
   embedding : Array[Double],
   weight : Array[Double],
-  label : Int,
+  _label : Int,
   margin : Double,
   scale : Double
 ) -> Double {
@@ -715,7 +715,7 @@ pub fn arc_face_loss(
 pub fn arc_face_margin(
   embedding : Array[Double],
   weight : Array[Double],
-  label : Int,
+  _label : Int,
   margin : Double
 ) -> Double {
   let n_emb = norm(embedding)
@@ -739,7 +739,7 @@ pub fn make_cos_face(margin : Double, scale : Double) -> CosFaceConfig {
 pub fn cos_face_loss(
   embedding : Array[Double],
   weight : Array[Double],
-  label : Int,
+  _label : Int,
   margin : Double,
   scale : Double
 ) -> Double {
@@ -769,7 +769,7 @@ pub fn make_sphere_face(margin : Double, scale : Double) -> SphereFaceConfig {
 pub fn sphere_face_loss(
   embedding : Array[Double],
   weight : Array[Double],
-  label : Int,
+  _label : Int,
   margin : Double,
   scale : Double
 ) -> Double {
@@ -794,7 +794,7 @@ pub fn make_ada_face(margin : Double, scale : Double, h : Double) -> AdaFaceConf
 pub fn ada_face_loss(
   embedding : Array[Double],
   weight : Array[Double],
-  label : Int,
+  _label : Int,
   margin : Double,
   scale : Double,
   h : Double

@@ -616,7 +616,7 @@ pub fn kafka_consume(
 
 /// Kafka 生产 / Produce to kafka (simulated).
 pub fn kafka_produce(
-  source : KafkaSource,
+  _source : KafkaSource,
   records : Array[String]
 ) -> Int {
   records.length()
@@ -656,7 +656,7 @@ pub fn file_stream_read(
 
 /// 文件流写 / Write file stream (simulated).
 pub fn file_stream_write(
-  source : FileSource,
+  _source : FileSource,
   lines : Array[String]
 ) -> Int {
   lines.length()

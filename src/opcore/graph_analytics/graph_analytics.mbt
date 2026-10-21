@@ -9,7 +9,6 @@
 /// Construction / traversal / centrality / community / graph algorithms.
 
 const GA_LARGE_DOUBLE : Double = 999999999999999.0
-const GA_E_EULER : Double = 2.718281828459045
 
 // ============================================================
 // 辅助数学函数 / Helper math functions (private)

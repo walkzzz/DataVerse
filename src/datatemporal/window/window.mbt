@@ -255,7 +255,7 @@ pub fn window_group_by_key(
   events : Array[TimeEvent],
   w : TimeWindow,
 ) -> Array[(String, Array[TimeEvent])] {
-  let keys : Array[String] = []
+  let _keys : Array[String] = []
   let groups : Array[(String, Array[TimeEvent])] = []
   for i in 0..<events.length() {
     if event_in_window(events[i], w) {

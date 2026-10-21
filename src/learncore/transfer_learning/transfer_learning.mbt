@@ -289,7 +289,7 @@ pub fn freeze_layers(model : PretrainedModel, layer_indices : Array[Int]) -> Pre
 }
 
 /// 解冻层 / Unfreeze layers.
-pub fn unfreeze_layers(model : PretrainedModel, layer_indices : Array[Int]) -> PretrainedModel {
+pub fn unfreeze_layers(model : PretrainedModel, _layer_indices : Array[Int]) -> PretrainedModel {
   model
 }
 
@@ -614,7 +614,7 @@ pub fn progressive_grow(model : ProgressiveModel) -> ProgressiveModel {
 }
 
 /// 渐进式迁移 / Progressive transfer.
-pub fn progressive_transfer(model : ProgressiveModel, new_data : Array[Array[Double]]) -> ProgressiveModel {
+pub fn progressive_transfer(model : ProgressiveModel, _new_data : Array[Array[Double]]) -> ProgressiveModel {
   progressive_grow(model)
 }
 
@@ -747,7 +747,7 @@ pub fn adapter_forward(adapter : AdapterModule, input : Array[Double]) -> Array[
 }
 
 /// Adapter 训练 / Adapter train.
-pub fn adapter_train(adapter : AdapterModule, input : Array[Double], grad : Array[Double], lr : Double) -> AdapterModule {
+pub fn adapter_train(adapter : AdapterModule, _input : Array[Double], grad : Array[Double], lr : Double) -> AdapterModule {
   let down : Array[Array[Double]] = Array::make(adapter.bottleneck_dim, Array::make(adapter.input_dim, 0.0))
   let up : Array[Array[Double]] = Array::make(adapter.input_dim, Array::make(adapter.bottleneck_dim, 0.0))
   for i in 0..<adapter.bottleneck_dim {
@@ -814,7 +814,7 @@ pub fn lora_forward(lora : LoRAModule, input : Array[Double]) -> Array[Double] {
 }
 
 /// LoRA 训练 / LoRA train.
-pub fn lora_train(lora : LoRAModule, input : Array[Double], grad : Array[Double], lr : Double) -> LoRAModule {
+pub fn lora_train(lora : LoRAModule, _input : Array[Double], grad : Array[Double], lr : Double) -> LoRAModule {
   let a : Array[Array[Double]] = Array::make(lora.rank, Array::make(lora.input_dim, 0.0))
   let b : Array[Array[Double]] = Array::make(lora.input_dim, Array::make(lora.rank, 0.0))
   for i in 0..<lora.rank {

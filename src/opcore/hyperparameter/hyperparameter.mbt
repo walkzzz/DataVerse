@@ -1043,7 +1043,7 @@ pub fn hp_load_study(data : String) -> HpStudy {
 /// 恢复研究 / Resume study.
 pub fn hp_resume_study(
   study : HpStudy,
-  objective : (Array[(String, Double)]) -> Double,
+  _objective : (Array[(String, Double)]) -> Double,
   n_additional : Int
 ) -> HpStudy {
   let trials : Array[HpTrial] = []
@@ -1132,7 +1132,7 @@ pub fn ensemble_top_k(
 
 /// 交叉验证 / Cross validate.
 pub fn hp_cross_validate(
-  space : HpSpace,
+  _space : HpSpace,
   objective : (Array[(String, Double)], Int) -> Double,
   params : Array[(String, Double)],
   n_folds : Int

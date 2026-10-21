@@ -344,7 +344,7 @@ pub fn add_causal_edge(model : CausalModel, cause : String, effect : String) -> 
 }
 
 /// do 操作：干预 / Do intervention.
-pub fn do_intervention(model : CausalModel, variable : String, value : Double) -> CausalModel {
+pub fn do_intervention(model : CausalModel, variable : String, _value : Double) -> CausalModel {
   let new_edges : Array[(String, String)] = []
   for i = 0; i < model.edges.length(); i = i + 1 {
     if model.edges[i].1 != variable {

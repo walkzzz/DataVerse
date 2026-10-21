@@ -1,0 +1,11 @@
+import {
+  "dataverse/extcore/_common",
+  "dataverse/extcore/math_linear_algebra",
+  "dataverse/extcore/stats_dist_normal",
+  "dataverse/extcore/ml_cluster_kmeans",
+  "dataverse/kernel",
+  "dataverse/opcore",
+  "dataverse/dataobject",
+}
+
+pkgtype(kind: "executable")

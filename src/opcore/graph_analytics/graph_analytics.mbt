@@ -31,9 +31,6 @@ fn ga_sqrt(x : Double) -> Double {
   guess
 }
 
-fn ga_abs(x : Double) -> Double {
-  if x < 0.0 { -x } else { x }
-}
 
 // ============================================================
 // 类型定义 / Type definitions

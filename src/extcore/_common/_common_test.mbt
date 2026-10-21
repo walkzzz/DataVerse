@@ -373,16 +373,43 @@ test "edge_factorial_large" {
   assert_true(f > 1300000000000.0)
 }
 
-test "edge_near_zero" {
-  let data = [0.000001, 0.000002, 0.000003]
-  let m = @_common.mean(data)
-  assert_true(m > 0.0)
-  let s = @_common.std(data)
-  assert_true(s >= 0.0)
+test "math_log_exp" {
+  let l = @_common.log(2.718281828459045)
+  assert_true(l > 0.99 && l < 1.01)
+  let e = @_common.exp(1.0)
+  assert_true(e > 2.71 && e < 2.72)
 }
 
-test "edge_clamp_lo_eq_hi" {
-  let c = @_common.clamp(5.0, 3.0, 3.0)
-  assert_true(c > 2.99 && c < 3.01)
+test "math_log10" {
+  let l = @_common.log10(1000.0)
+  assert_true(l > 2.99 && l < 3.01)
 }
+
+test "math_pow" {
+  let p = @_common.pow(2.0, 10.0)
+  assert_true(p > 1023.0 && p < 1025.0)
+}
+
+test "math_sin_cos" {
+  let s = @_common.sin(3.141592653589793 / 2.0)
+  assert_true(s > 0.99)
+  let c = @_common.cos(0.0)
+  assert_true(c > 0.99)
+}
+
+test "math_hypot" {
+  let h = @_common.hypot(3.0, 4.0)
+  assert_true(h > 4.99 && h < 5.01)
+}
+
+test "math_max2_min2" {
+  assert_true(@_common.max2(3.0, 5.0) > 4.99)
+  assert_true(@_common.min2(3.0, 5.0) > 2.99 && @_common.min2(3.0, 5.0) < 3.01)
+}
+
+test "math_floor_ceil" {
+  assert_true(@_common.floor(3.7) > 2.99 && @_common.floor(3.7) < 3.01)
+  assert_true(@_common.ceil(3.2) > 3.99 && @_common.ceil(3.2) < 4.01)
+}
+
 

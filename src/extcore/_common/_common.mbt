@@ -689,3 +689,82 @@ pub fn sub_arr(a : Array[Double], b : Array[Double]) -> Array[Double] {
 pub fn fill_arr(n : Int, v : Double) -> Array[Double] {
   Array::make(n, v)
 }
+// ============================================================================
+// 数学函数（委托 @math）
+// ============================================================================
+
+/// 自然对数
+pub fn log(x : Double) -> Double {
+  match x {
+    x if x <= 0.0 => 0.0
+    _ => @math.ln(x)
+  }
+}
+
+/// 以10为底的对数
+pub fn log10(x : Double) -> Double {
+  match x {
+    x if x <= 0.0 => 0.0
+    _ => @math.ln(x) / @math.ln(10.0)
+  }
+}
+
+/// 指数函数
+pub fn exp(x : Double) -> Double {
+  @math.exp(x)
+}
+
+/// 幂函数
+pub fn pow(base : Double, exp : Double) -> Double {
+  @math.pow(base, exp)
+}
+
+/// 正弦
+pub fn sin(x : Double) -> Double {
+  @math.sin(x)
+}
+
+/// 余弦
+pub fn cos(x : Double) -> Double {
+  @math.cos(x)
+}
+
+/// 正切
+pub fn tan(x : Double) -> Double {
+  @math.tan(x)
+}
+
+/// 反正切（双参数）
+pub fn atan2(y : Double, x : Double) -> Double {
+  @math.atan2(y, x)
+}
+
+/// 直角斜边 sqrt(x² + y²)
+pub fn hypot(x : Double, y : Double) -> Double {
+  sqrt(x * x + y * y)
+}
+
+/// 二元最大值
+pub fn max2(a : Double, b : Double) -> Double {
+  if a > b { a } else { b }
+}
+
+/// 二元最小值
+pub fn min2(a : Double, b : Double) -> Double {
+  if a < b { a } else { b }
+}
+
+/// 向下取整
+pub fn floor(x : Double) -> Double {
+  @math.floor(x)
+}
+
+/// 向上取整
+pub fn ceil(x : Double) -> Double {
+  @math.ceil(x)
+}
+
+/// 弧度转角度（已有 deg_to_rad，补充 rad_to_deg 的逆）
+pub fn deg(x : Double) -> Double {
+  x * 180.0 / 3.141592653589793
+}

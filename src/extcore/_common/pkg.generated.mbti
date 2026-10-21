@@ -10,6 +10,10 @@ pub fn add_arr(Array[Double], Array[Double]) -> Array[Double]
 
 pub fn approx_eq(Double, Double) -> Bool
 
+pub fn atan2(Double, Double) -> Double
+
+pub fn ceil(Double) -> Double
+
 pub fn clamp(Double, Double, Double) -> Double
 
 pub fn clip(Array[Double], Double, Double) -> Array[Double]
@@ -20,13 +24,19 @@ pub fn copy_arr(Array[Double]) -> Array[Double]
 
 pub fn corr(Array[Double], Array[Double]) -> Double
 
+pub fn cos(Double) -> Double
+
 pub fn cov(Array[Double], Array[Double]) -> Double
 
 pub fn cumsum(Array[Double]) -> Array[Double]
 
 pub fn dbl(Double) -> String
 
+pub fn deg(Double) -> Double
+
 pub fn deg_to_rad(Double) -> Double
+
+pub fn exp(Double) -> Double
 
 pub fn f1(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -36,7 +46,11 @@ pub fn fibonacci(Int32) -> Int32
 
 pub fn fill_arr(Int32, Double) -> Array[Double]
 
+pub fn floor(Double) -> Double
+
 pub fn gcd(Int32, Int32) -> Int32
+
+pub fn hypot(Double, Double) -> Double
 
 pub fn is_prime(Int32) -> Bool
 
@@ -44,9 +58,15 @@ pub fn lcm(Int32, Int32) -> Int32
 
 pub fn lerp(Double, Double, Double) -> Double
 
+pub fn log(Double) -> Double
+
+pub fn log10(Double) -> Double
+
 pub fn mae(Array[Double], Array[Double]) -> Double
 
 pub fn max(Array[Double]) -> Double
+
+pub fn max2(Double, Double) -> Double
 
 pub fn mean(Array[Double]) -> Double
 
@@ -54,9 +74,13 @@ pub fn median(Array[Double]) -> Double
 
 pub fn min(Array[Double]) -> Double
 
+pub fn min2(Double, Double) -> Double
+
 pub fn mse(Array[Double], Array[Double]) -> Double
 
 pub fn normalize(Array[Double]) -> Array[Double]
+
+pub fn pow(Double, Double) -> Double
 
 pub fn precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -72,6 +96,8 @@ pub fn rmse(Array[Double], Array[Double]) -> Double
 
 pub fn scale_arr(Array[Double], Double) -> Array[Double]
 
+pub fn sin(Double) -> Double
+
 pub fn sort(Array[Double]) -> Array[Double]
 
 pub fn sort_desc(Array[Double]) -> Array[Double]
@@ -85,6 +111,8 @@ pub fn std(Array[Double]) -> Double
 pub fn sub_arr(Array[Double], Array[Double]) -> Array[Double]
 
 pub fn sum(Array[Double]) -> Double
+
+pub fn tan(Double) -> Double
 
 pub fn variance(Array[Double]) -> Double
 

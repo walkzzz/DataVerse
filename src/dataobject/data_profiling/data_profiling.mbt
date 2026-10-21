@@ -89,7 +89,7 @@ pub struct AnomalyProfile {
   outlier_indices : Array[Int]
   outlier_count : Int
   outlier_ratio : Double
-  method : String
+  method_ : String
 }
 
 /// 漂移结果 / Drift result.
@@ -607,7 +607,7 @@ pub fn profile_mutual_info(a : Array[Double], b : Array[Double], bins : Int) -> 
 ///===
 /// 异常 / 漂移 / Outlier / Drift
 
-/// 异常值 / Outlier detection (z-score method).
+/// 异常值 / Outlier detection (z-score method_).
 pub fn profile_outlier(values : Array[Double], threshold : Double) -> Array[Int] {
   let n = values.length()
   if n == 0 {
@@ -633,7 +633,7 @@ pub fn profile_anomaly_profile(values : Array[Double], threshold : Double) -> An
   let outliers = profile_outlier(values, threshold)
   let n = values.length()
   let ratio = if n == 0 { 0.0 } else { outliers.length().to_double() / n.to_double() }
-  { outlier_indices: outliers, outlier_count: outliers.length(), outlier_ratio: ratio, method: "zscore" }
+  { outlier_indices: outliers, outlier_count: outliers.length(), outlier_ratio: ratio, method_: "zscore" }
 }
 
 /// 漂移剖析 / Drift profile.

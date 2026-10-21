@@ -125,7 +125,7 @@ fn nlp_tanh(x : Double) -> Double {
 // 类型定义 / Type definitions
 // ============================================================
 
-/// 分词方法 / Tokenization method.
+/// 分词方法 / Tokenization method_.
 pub(all) enum TokenizeMethod {
   BpeMethod
   WordpieceMethod
@@ -138,7 +138,7 @@ pub extend TokenizeMethod with Debug::{to_repr}
 
 /// 分词器 / Tokenizer.
 pub struct Tokenizer {
-  method : TokenizeMethod
+  method_ : TokenizeMethod
   vocab_size : Int
   unk_token : String
 } derive(Debug, Eq)
@@ -324,9 +324,9 @@ pub extend SentimentResult with Debug::{to_repr}
 // ============================================================
 
 /// 构造分词器 / Build tokenizer.
-pub fn make_tokenizer(method : TokenizeMethod, vocab_size : Int) -> Tokenizer {
+pub fn make_tokenizer(method_ : TokenizeMethod, vocab_size : Int) -> Tokenizer {
   let vs = if vocab_size <= 0 { 30000 } else { vocab_size }
-  { method, vocab_size: vs, unk_token: "[UNK]" }
+  { method_, vocab_size: vs, unk_token: "[UNK]" }
 }
 
 /// BPE 分词 / BPE tokenize.

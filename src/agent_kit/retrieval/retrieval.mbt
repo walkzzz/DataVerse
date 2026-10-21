@@ -6,7 +6,7 @@
 ///
 /// # Retrieval augmentation operators
 
-/// 检索方法 / Retrieval method.
+/// 检索方法 / Retrieval method_.
 pub(all) enum RetrievalMethod {
   VectorSearch
   KeywordSearch
@@ -26,7 +26,7 @@ pub(all) struct Document {
 /// 检索结果 / Retrieval result.
 pub struct RetrievalResult {
   document : Document
-  method : RetrievalMethod
+  method_ : RetrievalMethod
   rank : Int
 }
 
@@ -41,8 +41,8 @@ pub fn make_document(
 }
 
 /// 构造检索结果 / Create retrieval result.
-pub fn make_retrieval_result(document : Document, method : RetrievalMethod, rank : Int) -> RetrievalResult {
-  { document: document, method: method, rank: rank }
+pub fn make_retrieval_result(document : Document, method_ : RetrievalMethod, rank : Int) -> RetrievalResult {
+  { document: document, method_: method_, rank: rank }
 }
 
 ///===
@@ -209,8 +209,8 @@ pub fn deduplicate_results(results : Array[RetrievalResult]) -> Array[RetrievalR
 ///===
 /// 方法名称 / Method name
 
-pub fn method_name(method : RetrievalMethod) -> String {
-  match method {
+pub fn method_name(method_ : RetrievalMethod) -> String {
+  match method_ {
     VectorSearch => "vector"
     KeywordSearch => "keyword"
     HybridSearch => "hybrid"

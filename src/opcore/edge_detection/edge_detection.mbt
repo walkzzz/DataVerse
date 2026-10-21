@@ -16,7 +16,7 @@ pub extend EdgeImage with Debug::{to_repr}
 
 /// 边缘配置 / Edge config.
 pub struct EdgeConfig {
-  method : Int
+  method_ : Int
   low_threshold : Double
   high_threshold : Double
   sigma : Double
@@ -833,13 +833,13 @@ pub fn edge_strength(edges : EdgeImage) -> Double {
 
 /// 构造边缘配置 / Build edge config.
 pub fn make_edge_config(
-  method : Int,
+  method_ : Int,
   low_threshold : Double,
   high_threshold : Double,
   sigma : Double,
   kernel_size : Int
 ) -> EdgeConfig {
-  { method, low_threshold, high_threshold, sigma, kernel_size }
+  { method_, low_threshold, high_threshold, sigma, kernel_size }
 }
 
 /// 全边缘检测 / Detect all edges.

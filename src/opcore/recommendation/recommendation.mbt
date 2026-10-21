@@ -374,8 +374,8 @@ pub fn item_based_cf(matrix : RatingMatrix, user_id : Int, item_id : Int, k : In
 }
 
 /// 预测评分 / Predict rating.
-pub fn predict_rating(matrix : RatingMatrix, user_id : Int, item_id : Int, method : Int) -> Double {
-  if method == 0 {
+pub fn predict_rating(matrix : RatingMatrix, user_id : Int, item_id : Int, method_ : Int) -> Double {
+  if method_ == 0 {
     user_based_cf(matrix, user_id, item_id, 10)
   } else {
     item_based_cf(matrix, user_id, item_id, 10)

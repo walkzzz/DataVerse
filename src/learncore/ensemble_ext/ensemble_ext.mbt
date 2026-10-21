@@ -65,7 +65,7 @@ pub struct EnsembleConfig {
   name : String
   n_models : Int
   weights : Array[Double]
-  method : String
+  method_ : String
 } derive(Debug, Eq)
 
 pub extend EnsembleConfig with Eq::{equal, not_equal}
@@ -478,9 +478,9 @@ pub fn stacking_predict(
 pub fn meta_learner_predict(
   base_predictions : Array[Array[Double]],
   meta_weights : Array[Double],
-  method : String
+  method_ : String
 ) -> Array[Double] {
-  if method == "linear" {
+  if method_ == "linear" {
     stacking_predict(base_predictions, meta_weights)
   } else {
     let n_models = base_predictions.length()
@@ -881,9 +881,9 @@ pub fn make_ensemble_config(
   name : String,
   n_models : Int,
   weights : Array[Double],
-  method : String
+  method_ : String
 ) -> EnsembleConfig {
-  EnsembleConfig::{name, n_models, weights, method}
+  EnsembleConfig::{name, n_models, weights, method_}
 }
 
 /// 验证集成配置 / Ensemble validate.

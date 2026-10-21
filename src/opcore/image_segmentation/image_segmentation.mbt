@@ -16,7 +16,7 @@ pub extend SegImage with Debug::{to_repr}
 
 /// 分割配置 / Segmentation config.
 pub struct SegConfig {
-  method : Int
+  method_ : Int
   threshold : Double
   num_clusters : Int
   max_iter : Int
@@ -26,7 +26,7 @@ pub struct SegConfig {
 pub extend SegConfig with Eq::{equal, not_equal}
 pub extend SegConfig with Debug::{to_repr}
 
-/// 分割方法枚举 / Segmentation method enum.
+/// 分割方法枚举 / Segmentation method_ enum.
 pub(all) enum SegMethod {
   Threshold
   Otsu
@@ -1300,38 +1300,38 @@ pub fn seg_contour_smooth(contour : Array[(Double, Double)]) -> Array[(Double, D
 
 /// 构造分割配置 / Build segmentation config.
 pub fn make_seg_config(
-  method : Int,
+  method_ : Int,
   threshold : Double,
   num_clusters : Int,
   max_iter : Int,
   tolerance : Double
 ) -> SegConfig {
-  { method, threshold, num_clusters, max_iter, tolerance }
+  { method_, threshold, num_clusters, max_iter, tolerance }
 }
 
 /// 分割预测 / Segmentation predict.
 pub fn seg_predict(img : SegImage, config : SegConfig) -> SegImage {
-  if config.method == 0 {
+  if config.method_ == 0 {
     seg_threshold(img, config.threshold)
-  } else if config.method == 1 {
+  } else if config.method_ == 1 {
     seg_otsu(img)
-  } else if config.method == 2 {
+  } else if config.method_ == 2 {
     seg_adaptive(img, 15, 5.0)
-  } else if config.method == 3 {
+  } else if config.method_ == 3 {
     seg_watershed(img)
-  } else if config.method == 4 {
+  } else if config.method_ == 4 {
     seg_kmeans(img, config.num_clusters, config.max_iter)
-  } else if config.method == 5 {
+  } else if config.method_ == 5 {
     seg_fuzzy_cmeans(img, config.num_clusters, 2.0, config.max_iter)
-  } else if config.method == 6 {
+  } else if config.method_ == 6 {
     seg_slic_superpixels(img, config.num_clusters, 10.0)
-  } else if config.method == 7 {
+  } else if config.method_ == 7 {
     seg_mean_shift(img, config.tolerance)
-  } else if config.method == 8 {
+  } else if config.method_ == 8 {
     seg_unet_simple(img)
-  } else if config.method == 9 {
+  } else if config.method_ == 9 {
     seg_fcn_simple(img)
-  } else if config.method == 10 {
+  } else if config.method_ == 10 {
     seg_mask_rcnn_simple(img)
   } else {
     seg_threshold(img, config.threshold)

@@ -531,7 +531,7 @@ pub fn conv2d_backward(grad_output : Array[Array[Double]], kernel : Array[Array[
     let w = grad_output[0].length()
     let k = meta.kernel_size
     let result : Array[Array[Double]] = []
-    for i in 0..<(h * meta.stride + k) {
+    for _ in 0..<(h * meta.stride + k) {
       let row : Array[Double] = Array::make(w * meta.stride + k, 0.0)
       result.push(row)
     }

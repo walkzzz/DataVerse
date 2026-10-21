@@ -278,7 +278,7 @@ pub fn arima_predict(model : ARIMAModel, values : Array[Double], horizon : Int) 
   }
   let result : Array[Double] = []
   let last_value = values[n - 1]
-  for h in 0..<horizon {
+  for _ in 0..<horizon {
     let mut pred = last_value
     for i in 0..<model.phi.length() {
       let idx = n - 1 - i

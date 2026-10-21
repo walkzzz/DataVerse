@@ -564,7 +564,7 @@ pub fn hpo_parallel(
   let per_job = (n_trials + n_jobs - 1) / n_jobs
   let all_trials : Array[ModelCandidate] = []
   let mut best = hpo.best_model
-  for j in 0..<n_jobs {
+  for _ in 0..<n_jobs {
     let sub = hpo_run(hpo, eval_fn, per_job)
     for t in sub.trials { all_trials.push(t) }
     if sub.best_model.score > best.score { best = sub.best_model }

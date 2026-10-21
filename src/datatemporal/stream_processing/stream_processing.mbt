@@ -331,7 +331,7 @@ pub fn join_inner(left : Array[StreamEvent], right : Array[StreamEvent]) -> Arra
 pub fn join_outer(left : Array[StreamEvent], right : Array[StreamEvent]) -> Array[(StreamEvent?, StreamEvent?)] {
   let result : Array[(StreamEvent?, StreamEvent?)] = []
   let right_matched : Array[Bool] = []
-  for j in 0..<right.length() {
+  for _ in 0..<right.length() {
     right_matched.push(false)
   }
   for i in 0..<left.length() {

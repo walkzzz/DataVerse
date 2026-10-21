@@ -136,7 +136,7 @@ fn kg_sqrt(x : Double) -> Double {
     return 0.0
   }
   let mut guess = x
-  for i in 0..<100 {
+  for _ in 0..<100 {
     guess = 0.5 * (guess + x / guess)
   }
   guess

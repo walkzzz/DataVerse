@@ -71,7 +71,7 @@ fn sqrt_(x : Double) -> Double {
   if x == 0.0 { return 0.0 }
   let mut guess = x / 2.0
   if guess == 0.0 { guess = 1.0 }
-  for i in 0..<50 {
+  for _ in 0..<50 {
     guess = (guess + x / guess) / 2.0
   }
   guess

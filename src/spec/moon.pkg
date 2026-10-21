@@ -89,7 +89,6 @@ import {
   "dataverse/opcore/graph_analytics",
   "dataverse/opcore/recommendation",
   "dataverse/learncore/deep_learning",
-  "dataverse/learncore/rl_ext",
   "dataverse/datatemporal/forecasting",
   "dataverse/opcore/compression",
   "dataverse/opcore/encryption",

@@ -4,6 +4,28 @@
 
 ## [0.1.0-dev] - 2026-10-21
 
+### Workspace + MoonBit 惯用法 + Proof 测试
+
+**新增 / Added**
+- 创建 `moon.work` workspace，6 个独立子项目：
+  - `apps/cli` — CLI 工具（cmd/main 可执行）
+  - `apps/bench` — 基准测试工具
+  - `apps/proof` — 证明验证工具（11 个断言）
+  - `apps/extcore` — 语义包探索工具
+  - `apps/info` — 项目信息工具
+- 23 个 proof-style 属性测试（sqrt/sort/mean/variance/factorial/gcd/fibonacci/clamp/abs/lcm/accuracy/mse/rmse/mae/r2/corr/normalize/cumsum/reverse/concat）
+
+**重构 / Refactored**
+- `_common` 用 MoonBit 参考文档惯用法改进：
+  - `for x in data` 代替 `for i in 0..<n`（sum/variance/min/max）
+  - `guard` 语法代替 `match n { 0 => ...; _ => ... }`（mean/min/max/variance/median）
+
+**统计 / Stats**
+- 测试：1580 → 1603（+23）
+- workspace 成员：6
+- moon check：0 errors, 71 warnings
+- moon test：1603 passed
+
 ### 全面重构 — 旧代码辅助函数委托 @_common/@math
 
 **重构 / Refactored**

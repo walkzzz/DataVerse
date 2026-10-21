@@ -174,7 +174,7 @@ pub fn make_frequency_table(data : Array[Int]) -> Array[FreqEntry] {
         found = true
       }
     }
-    if not(found) {
+    if !(found) {
       symbols.push(s)
       counts.push(1)
     }
@@ -513,7 +513,7 @@ pub fn lzw_decode(codes : Array[Int]) -> Array[Int] {
         found = true
       }
     }
-    if not(found) {
+    if !(found) {
       for m in 0..<prev.length() {
         entry.push(prev[m])
       }
@@ -704,13 +704,13 @@ pub fn decompress_string(s : String) -> String {
     i = i + 1
   }
   current_count = num
-  if not(in_value) {
+  if !(in_value) {
     entries.push(RleEntry::{value: current_value, count: current_count})
   }
   let decoded = rle_decode(entries)
   let mut result = ""
   for j in 0..<decoded.length() {
-    result = result + String::from_array([Char::from_int(decoded[j])])
+    result = result + String::from_array([Int::unsafe_to_char(decoded[j])])
   }
   result
 }
@@ -755,7 +755,7 @@ pub fn read_bits(bit_string : String, n_bits : Int) -> (Int, String) {
   }
   let mut remaining = ""
   for i in n_bits..<bit_string.length() {
-    remaining = remaining + String::from_array([Char::from_int(bit_string[i].to_int())])
+    remaining = remaining + String::from_array([Int::unsafe_to_char(bit_string[i].to_int())])
   }
   (value, remaining)
 }

@@ -530,7 +530,7 @@ pub fn usage_analytics(usage : DataUsage) -> Array[(String, Double)] {
         found = true
       }
     }
-    if not(found) {
+    if !(found) {
       users.push(u)
       totals.push(usage.records[i].2)
     }

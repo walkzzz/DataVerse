@@ -410,7 +410,7 @@ pub fn capitalize(s : String) -> String {
   let result : Array[Char] = []
   let first = chars[0]
   if first >= 'a' && first <= 'z' {
-    result.push(Char::from_int(first.to_int() - 32))
+    result.push(Int::unsafe_to_char(first.to_int() - 32))
   } else {
     result.push(first)
   }
@@ -1153,7 +1153,7 @@ pub fn make_topic_model(corpus : Array[String], k : Int) -> TopicModel {
 pub fn topic_distribution(model : TopicModel, doc : String) -> Array[Double] {
   let words = tokenize(doc.to_lower())
   let result : Array[Double] = []
-  for t in 0..<model.k {
+  for _ in 0..<model.k {
     result.push(0.0)
   }
   let mut total = 0.0

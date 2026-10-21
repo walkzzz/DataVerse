@@ -225,7 +225,7 @@ pub fn aes_decrypt_simple(data : Array[Int], key : Array[Int]) -> Array[Int] {
   }
   for i in 0..<data.length() {
     let k = key[i % kl]
-    result.push(((data[i] - 17 % 256) % 256 + 256) % 256 ^ k)
+    result.push((((data[i] - 17 % 256) % 256 + 256) % 256) ^ k)
   }
   result
 }
@@ -402,7 +402,7 @@ pub fn hash_insert(table : Array[HashEntry], key : String, value : Int) -> Array
       new_table.push(table[i])
     }
   }
-  if not(found) {
+  if !(found) {
     new_table.push(HashEntry::{key, value})
   }
   new_table
@@ -417,7 +417,7 @@ pub fn base64_encode_enc(data : Array[Int]) -> String {
   let base64_str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
   let chars : Array[Char] = []
   for i in 0..<base64_str.length() {
-    chars.push(Char::from_int(base64_str[i].to_int()))
+    chars.push(Int::unsafe_to_char(base64_str[i].to_int()))
   }
   let mut result = ""
   let n = data.length()
@@ -499,7 +499,7 @@ pub fn hex_encode_enc(data : Array[Int]) -> String {
   let hex_str = "0123456789abcdef"
   let hex_chars : Array[Char] = []
   for i in 0..<hex_str.length() {
-    hex_chars.push(Char::from_int(hex_str[i].to_int()))
+    hex_chars.push(Int::unsafe_to_char(hex_str[i].to_int()))
   }
   let mut result = ""
   for i in 0..<data.length() {
@@ -623,7 +623,7 @@ pub fn decrypt_file_meta(encrypted : Array[Int], key : Array[Int]) -> FileMeta {
   let mut name = ""
   let mut i = 0
   while i < data.length() && data[i] != 0 {
-    name = name + String::from_array([Char::from_int(data[i])])
+    name = name + String::from_array([Int::unsafe_to_char(data[i])])
     i = i + 1
   }
   i = i + 1

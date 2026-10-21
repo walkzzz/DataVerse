@@ -173,7 +173,7 @@ pub fn window_max(events : Array[TimeEvent], w : TimeWindow) -> Double {
   let mut found = false
   for i in 0..<events.length() {
     if event_in_window(events[i], w) {
-      if not(found) || events[i].value > max_val {
+      if !(found) || events[i].value > max_val {
         max_val = events[i].value
         found = true
       }
@@ -188,7 +188,7 @@ pub fn window_min(events : Array[TimeEvent], w : TimeWindow) -> Double {
   let mut found = false
   for i in 0..<events.length() {
     if event_in_window(events[i], w) {
-      if not(found) || events[i].value < min_val {
+      if !(found) || events[i].value < min_val {
         min_val = events[i].value
         found = true
       }
@@ -267,7 +267,7 @@ pub fn window_group_by_key(
           found = true
         }
       }
-      if not(found) {
+      if !(found) {
         groups.push((k, [events[i]]))
       }
     }

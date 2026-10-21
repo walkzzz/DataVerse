@@ -358,7 +358,7 @@ pub fn notify(
   sub : Subscription,
   event : Event
 ) -> Bool {
-  if not(sub.active) {
+  if !(sub.active) {
     return false
   }
   for i in 0..<sub.event_types.length() {
@@ -466,7 +466,7 @@ pub fn cqrs_command_side(
   cmd : Command,
   timestamp : Int
 ) -> Cqrs {
-  if not(command_validate(cmd)) {
+  if !(command_validate(cmd)) {
     return cqrs
   }
   let event = command_execute(cmd, timestamp)
@@ -531,7 +531,7 @@ pub fn event_dedup(events : Array[Event]) -> Array[Event] {
         break
       }
     }
-    if not(found) {
+    if !(found) {
       seen.push(events[i].id)
       result.push(events[i])
     }

@@ -377,7 +377,7 @@ fn qsort_helper(arr : Array[Double], lo : Int, hi : Int) -> Unit {
     let mut i = lo - 1
     let mut j = hi + 1
     let mut done = false
-    while not(done) {
+    while !(done) {
       i = i + 1
       while arr[i] < pivot {
         i = i + 1

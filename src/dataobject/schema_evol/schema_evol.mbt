@@ -248,7 +248,7 @@ pub fn schema_diff(from : Schema, to : Schema) -> SchemaDiff {
     let idx = find_field_index(from.fields, f.name)
     if idx == -1 {
       added.push(f)
-    } else if not(field_full_eq(from.fields[idx], f)) {
+    } else if !(field_full_eq(from.fields[idx], f)) {
       modified.push(f)
     }
   }
@@ -273,7 +273,7 @@ pub fn schema_backward_compat(old : Schema, new : Schema) -> Bool {
   let na = d.added.length()
   for i in 0..<na {
     let f = d.added[i]
-    if not(f.nullable) && f.default_value is None {
+    if !(f.nullable) && f.default_value is None {
       return false
     }
   }
@@ -283,7 +283,7 @@ pub fn schema_backward_compat(old : Schema, new : Schema) -> Bool {
     let idx = find_field_index(old.fields, f.name)
     if idx >= 0 {
       let of = old.fields[idx]
-      if not(f.nullable) && of.nullable {
+      if !(f.nullable) && of.nullable {
         return false
       }
     }
@@ -303,7 +303,7 @@ pub fn schema_forward_compat(old : Schema, new : Schema) -> Bool {
     let idx = find_field_index(old.fields, f.name)
     if idx >= 0 {
       let of = old.fields[idx]
-      if f.nullable && not(of.nullable) {
+      if f.nullable && !(of.nullable) {
         return false
       }
     }
@@ -472,7 +472,7 @@ pub fn validate_record(s : Schema, record : Array[(String, String)]) -> Bool {
       return false
     }
     let f = s.fields[idx]
-    if val.length() == 0 && not(f.nullable) {
+    if val.length() == 0 && !(f.nullable) {
       return false
     }
   }
@@ -487,7 +487,7 @@ pub fn validate_migration(m : Migration) -> Bool {
   let na = m.diff.added.length()
   for i in 0..<na {
     let f = m.diff.added[i]
-    if not(f.nullable) && f.default_value is None {
+    if !(f.nullable) && f.default_value is None {
       return false
     }
   }
@@ -530,7 +530,7 @@ pub fn check_foreign_key(s : Schema, ref_schema : Schema, field_name : String) -
 pub fn check_index(s : Schema, index_fields : Array[String]) -> Bool {
   let n = index_fields.length()
   for i in 0..<n {
-    if not(field_exists(s, index_fields[i])) {
+    if !(field_exists(s, index_fields[i])) {
       return false
     }
   }
@@ -541,7 +541,7 @@ pub fn check_index(s : Schema, index_fields : Array[String]) -> Bool {
 pub fn check_constraint_schema(s : Schema, constraints : Array[String]) -> Bool {
   let nc = constraints.length()
   for i in 0..<nc {
-    if not(field_exists(s, constraints[i])) {
+    if !(field_exists(s, constraints[i])) {
       return false
     }
   }
@@ -588,7 +588,7 @@ pub fn schema_to_ddl(s : Schema, table_name : String) -> String {
   for i in 0..<n {
     let f = s.fields[i]
     result = result + f.name + " " + field_type_to_string(f.field_type)
-    if not(f.nullable) {
+    if !(f.nullable) {
       result = result + " NOT NULL"
     }
     match f.default_value {
@@ -666,7 +666,7 @@ pub fn migrate_data(
         break
       }
     }
-    if not(found) {
+    if !(found) {
       let old_idx = find_field_index(old.fields, f.name)
       match f.default_value {
         Some(v) => result.push((f.name, v))
@@ -703,7 +703,7 @@ pub fn cast_value(value : String, target_type : FieldType) -> String {
       for i in 0..<n {
         let c = value[i]
         if c < '0' || c > '9' {
-          if not(i == 0 && (c == '-' || c == '+')) {
+          if !(i == 0 && (c == '-' || c == '+')) {
             all_digit = false
             break
           }
@@ -727,7 +727,7 @@ pub fn cast_value(value : String, target_type : FieldType) -> String {
             valid = false
             break
           }
-        } else if (c < '0' || c > '9') && not(i == 0 && (c == '-' || c == '+')) {
+        } else if (c < '0' || c > '9') && !(i == 0 && (c == '-' || c == '+')) {
           valid = false
           break
         }
@@ -975,7 +975,7 @@ pub fn breaking_changes(old : Schema, new : Schema) -> Int {
     let idx = find_field_index(old.fields, f.name)
     if idx >= 0 {
       let of = old.fields[idx]
-      if not(f.nullable) && of.nullable {
+      if !(f.nullable) && of.nullable {
         count = count + 1
       }
       if f.field_type != of.field_type {
@@ -986,7 +986,7 @@ pub fn breaking_changes(old : Schema, new : Schema) -> Int {
   let na = d.added.length()
   for i in 0..<na {
     let f = d.added[i]
-    if not(f.nullable) && f.default_value is None {
+    if !(f.nullable) && f.default_value is None {
       count = count + 1
     }
   }
@@ -1010,7 +1010,7 @@ pub fn non_breaking_changes(old : Schema, new : Schema) -> Int {
     let idx = find_field_index(old.fields, f.name)
     if idx >= 0 {
       let of = old.fields[idx]
-      if f.nullable && not(of.nullable) {
+      if f.nullable && !(of.nullable) {
         count = count + 1
       }
     }
@@ -1047,7 +1047,7 @@ pub fn schema_equal(a : Schema, b : Schema) -> Bool {
   }
   let n = a.fields.length()
   for i in 0..<n {
-    if not(field_full_eq(a.fields[i], b.fields[i])) {
+    if !(field_full_eq(a.fields[i], b.fields[i])) {
       return false
     }
   }
@@ -1094,7 +1094,7 @@ pub fn required_field_count(s : Schema) -> Int {
   let mut count = 0
   let n = s.fields.length()
   for i in 0..<n {
-    if not(s.fields[i].nullable) {
+    if !(s.fields[i].nullable) {
       count = count + 1
     }
   }

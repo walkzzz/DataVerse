@@ -118,7 +118,7 @@ pub fn process_stream(
   processor : StreamProcessor,
   data : Array[Double]
 ) -> Array[Double] {
-  if not(processor.active) {
+  if !(processor.active) {
     return []
   }
   let result : Array[Double] = []

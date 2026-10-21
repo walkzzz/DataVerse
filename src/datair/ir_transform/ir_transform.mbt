@@ -139,7 +139,7 @@ pub fn mark_dead(nodes : Array[IRNode], index : Int) -> Array[IRNode] {
 pub fn eliminate_dead(nodes : Array[IRNode]) -> Array[IRNode] {
   let result : Array[IRNode] = []
   for i in 0..<nodes.length() {
-    if not(nodes[i].is_dead) {
+    if !(nodes[i].is_dead) {
       result.push(nodes[i])
     }
   }
@@ -150,7 +150,7 @@ pub fn eliminate_dead(nodes : Array[IRNode]) -> Array[IRNode] {
 pub fn count_live_nodes(nodes : Array[IRNode]) -> Int {
   let mut count = 0
   for i in 0..<nodes.length() {
-    if not(nodes[i].is_dead) {
+    if !(nodes[i].is_dead) {
       count = count + 1
     }
   }

@@ -401,7 +401,7 @@ pub fn shortest_path(g : Graph, start : Int, end : Int) -> Array[Int] {
   let n = g.vertices.length()
   let dist : Array[Int] = []
   let prev : Array[Int] = []
-  for i in 0..<n {
+  for _ in 0..<n {
     dist.push(-1)
     prev.push(-1)
   }
@@ -710,12 +710,12 @@ pub fn pagerank(g : Graph, iterations : Int, damping : Double) -> Array[Double] 
   if n == 0 {
     return result
   }
-  for i in 0..<n {
+  for _ in 0..<n {
     result.push(1.0 / n.to_double())
   }
   for _ in 0..<iterations {
     let new_pr : Array[Double] = []
-    for i in 0..<n {
+    for _ in 0..<n {
       new_pr.push((1.0 - damping) / n.to_double())
     }
     for i in 0..<n {
@@ -762,7 +762,7 @@ pub fn centrality_degree(g : Graph) -> Array[Double] {
 pub fn centrality_betweenness(g : Graph) -> Array[Double] {
   let n = g.vertices.length()
   let result : Array[Double] = []
-  for i in 0..<n {
+  for _ in 0..<n {
     result.push(0.0)
   }
   for s in 0..<n {
@@ -817,12 +817,12 @@ pub fn centrality_eigenvector(g : Graph, iterations : Int) -> Array[Double] {
   if n == 0 {
     return result
   }
-  for i in 0..<n {
+  for _ in 0..<n {
     result.push(1.0)
   }
   for _ in 0..<iterations {
     let new_val : Array[Double] = []
-    for i in 0..<n {
+    for _ in 0..<n {
       new_val.push(0.0)
     }
     for i in 0..<n {
@@ -1435,9 +1435,9 @@ pub fn is_isomorphic_simple(g1 : Graph, g2 : Graph) -> Bool {
 pub fn adjacency_matrix(g : Graph) -> Array[Array[Double]] {
   let n = g.vertices.length()
   let result : Array[Array[Double]] = []
-  for i in 0..<n {
+  for _ in 0..<n {
     let row : Array[Double] = []
-    for j in 0..<n {
+    for _ in 0..<n {
       row.push(0.0)
     }
     result.push(row)
@@ -1469,9 +1469,9 @@ pub fn incidence_matrix(g : Graph) -> Array[Array[Int]] {
   let n = g.vertices.length()
   let m = g.edges.length()
   let result : Array[Array[Int]] = []
-  for i in 0..<n {
+  for _ in 0..<n {
     let row : Array[Int] = []
-    for j in 0..<m {
+    for _ in 0..<m {
       row.push(0)
     }
     result.push(row)

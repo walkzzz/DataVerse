@@ -166,7 +166,7 @@ pub fn morph_erode_adv(img : MorphImage, se : StructElement) -> MorphImage {
       let mut found = false
       for sy in 0..<se.height {
         for sx in 0..<se.width {
-          if not(se.data[sy * se.width + sx]) {
+          if !(se.data[sy * se.width + sx]) {
             continue
           }
           let v = morph_pixel(img, x + sx - half_w, y + sy - half_h)
@@ -194,7 +194,7 @@ pub fn morph_dilate_adv(img : MorphImage, se : StructElement) -> MorphImage {
       let mut max_v = 0.0
       for sy in 0..<se.height {
         for sx in 0..<se.width {
-          if not(se.data[sy * se.width + sx]) {
+          if !(se.data[sy * se.width + sx]) {
             continue
           }
           let v = morph_pixel(img, x + sx - half_w, y + sy - half_h)
@@ -326,7 +326,7 @@ pub fn morph_skeleton(img : MorphImage) -> MorphImage {
       }
     }
     temp = eroded
-    if not(has_diff) {
+    if !(has_diff) {
       break
     }
   }
@@ -598,7 +598,7 @@ pub fn morph_max_tree(img : MorphImage) -> Array[(Double, Int)] {
           found = true
         }
       }
-      if not(found) {
+      if !(found) {
         levels.push(v)
       }
     }
@@ -630,7 +630,7 @@ pub fn morph_min_tree(img : MorphImage) -> Array[(Double, Int)] {
           found = true
         }
       }
-      if not(found) {
+      if !(found) {
         levels.push(v)
       }
     }
@@ -789,7 +789,7 @@ pub fn morph_fill_holes_morph(img : MorphImage) -> MorphImage {
   for y in 0..<img.height {
     for x in 0..<img.width {
       let idx = y * img.width + x
-      if not(visited[idx]) && morph_pixel(img, x, y) == 0.0 {
+      if !(visited[idx]) && morph_pixel(img, x, y) == 0.0 {
         morph_set_pixel(out, x, y, 255.0)
       }
     }

@@ -279,7 +279,7 @@ pub fn boosting_train(
     predictions.push(pred)
     let mut err = 0.0
     for i in 0..<n {
-      if pred[i] < 0.5 && labels[i] == 1 || pred[i] >= 0.5 && labels[i] == 0 {
+      if (pred[i] < 0.5 && labels[i] == 1) || (pred[i] >= 0.5 && labels[i] == 0) {
         err = err + weights[i]
       }
     }
@@ -532,7 +532,7 @@ pub fn voting_hard(predictions : Array[Array[Int]]) -> Array[Int] {
             found = true
           }
         }
-        if not(found) {
+        if !(found) {
           votes.push((pred, 1))
         }
       }
@@ -993,7 +993,7 @@ pub fn ensemble_load(s : String) -> EnsembleModel {
       parts.push(current)
       current = ""
     } else {
-      current = current + String::from_array([Char::from_int(c)])
+      current = current + String::from_array([Int::unsafe_to_char(c)])
     }
   }
   parts.push(current)
@@ -1021,7 +1021,7 @@ pub fn ensemble_load(s : String) -> EnsembleModel {
         weights.push(parse_double_simple(wnum))
         wnum = ""
       } else {
-        wnum = wnum + String::from_array([Char::from_int(c)])
+        wnum = wnum + String::from_array([Int::unsafe_to_char(c)])
       }
     }
     if weight_str.length() > 0 {

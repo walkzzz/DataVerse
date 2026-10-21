@@ -198,7 +198,7 @@ pub fn deduplicate_results(results : Array[RetrievalResult]) -> Array[RetrievalR
         found = true
       }
     }
-    if not(found) {
+    if !(found) {
       seen.push(results[i].document.id)
       result.push(results[i])
     }

@@ -602,7 +602,7 @@ pub fn maxpool_backward(grad_output : Array[Array[Double]], input : Array[Array[
   } else {
     let w = input[0].length()
     let result : Array[Array[Double]] = []
-    for i in 0..<h {
+    for _ in 0..<h {
       result.push(Array::make(w, 0.0))
     }
     let out_h = grad_output.length()
@@ -685,7 +685,7 @@ pub fn avgpool_backward(grad_output : Array[Array[Double]], input : Array[Array[
   } else {
     let w = input[0].length()
     let result : Array[Array[Double]] = []
-    for i in 0..<h {
+    for _ in 0..<h {
       result.push(Array::make(w, 0.0))
     }
     let k_area = (meta.kernel_size * meta.kernel_size).to_double()
@@ -838,7 +838,7 @@ pub fn make_dropout(rate : Double, training : Bool) -> DropoutMeta {
 
 /// Dropout 前向 / Dropout forward.
 pub fn dropout_forward(input : Array[Double], meta : DropoutMeta) -> Array[Double] {
-  if not(meta.training) || meta.rate <= 0.0 || meta.rate >= 1.0 {
+  if !(meta.training) || meta.rate <= 0.0 || meta.rate >= 1.0 {
     input
   } else {
     let period = (1.0 / meta.rate).to_int()

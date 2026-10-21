@@ -143,7 +143,7 @@ pub fn clear_short_term(store : MemoryStore) -> MemoryStore {
       ShortTerm => true
       _ => false
     }
-    if not(is_short) {
+    if !(is_short) {
       new_entries.push(store.entries[i])
     }
   }

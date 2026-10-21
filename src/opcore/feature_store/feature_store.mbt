@@ -293,7 +293,7 @@ pub fn fs_online_write(
       new_data.push(store.online_data[i])
     }
   }
-  if not(found) {
+  if !(found) {
     new_data.push((key, values))
   }
   {
@@ -332,7 +332,7 @@ pub fn fs_offline_write(
       new_data.push(store.offline_data[i])
     }
   }
-  if not(found) {
+  if !(found) {
     new_data.push((key, values))
   }
   {
@@ -380,7 +380,7 @@ pub fn fs_join_features(
     seen.push(left[i].0)
   }
   for i in 0..<right.length() {
-    if not(fs_contains(seen, right[i].0)) {
+    if !(fs_contains(seen, right[i].0)) {
       result.push(right[i])
     }
   }
@@ -843,7 +843,7 @@ pub fn index_update(
       new_values.push(index.values[i])
     }
   }
-  if not(found) {
+  if !(found) {
     new_keys.push(key)
     new_values.push(value)
   }

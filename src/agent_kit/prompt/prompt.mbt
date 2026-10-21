@@ -163,7 +163,7 @@ pub fn extract_variables(template : String) -> Array[String] {
       in_var = false
       current = ""
     } else if in_var {
-      current = current + Char::from_int(code).to_string()
+      current = current + Int::unsafe_to_char(code).to_string()
     }
   }
   vars

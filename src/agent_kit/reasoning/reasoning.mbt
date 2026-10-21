@@ -146,7 +146,7 @@ pub fn modus_ponens(rule : Rule, fact : Fact) -> Fact? {
 
 /// 否定后件：P->Q, ¬Q ⊢ ¬P / Modus tollens.
 pub fn modus_tollens(rule : Rule, fact : Fact) -> Fact? {
-  if rule.conclusion == fact.proposition && not(fact.truth_value) {
+  if rule.conclusion == fact.proposition && !(fact.truth_value) {
     Some(make_fact("mt_" + fact.fact_id, rule.premise, false, rule.confidence * fact.confidence))
   } else {
     None
@@ -180,7 +180,7 @@ pub fn forward_chaining(kb : KnowledgeBase, max_iter : Int) -> Array[Fact] {
                 exists = true
               }
             }
-            if not(exists) {
+            if !(exists) {
               result.push(new_fact)
               changed = true
             }
@@ -263,7 +263,7 @@ pub fn resolution(clause1 : Array[String], clause2 : Array[String]) -> Array[Str
             exists = true
           }
         }
-        if not(exists) {
+        if !(exists) {
           result.push(l)
         }
       }
@@ -321,7 +321,7 @@ pub fn compose_substitution(s1 : Substitution, s2 : Substitution) -> Substitutio
         exists = true
       }
     }
-    if not(exists) {
+    if !(exists) {
       result.push((v, s2.bindings[j].1))
     }
   }
@@ -443,7 +443,7 @@ pub fn instrumental_variable(model : CausalModel, instrument : String, treatment
       z_to_y = true
     }
   }
-  if z_to_x && x_to_y && not(z_to_y) {
+  if z_to_x && x_to_y && !(z_to_y) {
     1.0
   } else {
     0.0
@@ -476,7 +476,7 @@ pub fn evaluate_argument(arg : Argument) -> Double {
 pub fn argument_validity(arg : Argument) -> Bool {
   let mut all_true = true
   for i = 0; i < arg.premises.length(); i = i + 1 {
-    if not(arg.premises[i].truth_value) {
+    if !(arg.premises[i].truth_value) {
       all_true = false
     }
   }
@@ -594,7 +594,7 @@ pub fn revise_belief(kb : KnowledgeBase, belief : Fact) -> KnowledgeBase {
       new_beliefs.push(kb.beliefs[i])
     }
   }
-  if not(found) {
+  if !(found) {
     new_beliefs.push(belief)
   }
   { ..kb, beliefs: new_beliefs }

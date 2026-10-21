@@ -257,13 +257,13 @@ pub fn make_knowledge_graph(triples : Array[KGTriple]) -> KnowledgeGraph {
   let mut entities = []
   let mut relations = []
   for i in 0..<array_length(triples) {
-    if not(array_contains_str(entities, triples[i].subject)) {
+    if !(array_contains_str(entities, triples[i].subject)) {
       entities = array_append_str(entities, [triples[i].subject])
     }
-    if not(array_contains_str(entities, triples[i].object)) {
+    if !(array_contains_str(entities, triples[i].object)) {
       entities = array_append_str(entities, [triples[i].object])
     }
-    if not(array_contains_str(relations, triples[i].relation)) {
+    if !(array_contains_str(relations, triples[i].relation)) {
       relations = array_append_str(relations, [triples[i].relation])
     }
   }
@@ -401,17 +401,17 @@ pub fn merge_rules(rules : Array[ExtractedRule]) -> Array[ExtractedRule] {
   let mut merged = []
   let used = Array::make(array_length(rules), false)
   for i in 0..<array_length(rules) {
-    if not(used[i]) {
+    if !(used[i]) {
       used[i] = true
       let mut combined_conds = rules[i].conditions
       let mut total_support = rules[i].support
       let mut conf_sum = rules[i].confidence
       let mut conf_count = 1
       for j in (i + 1)..<array_length(rules) {
-        if not(used[j]) && rules[j].conclusion == rules[i].conclusion {
+        if !(used[j]) && rules[j].conclusion == rules[i].conclusion {
           used[j] = true
           for k in 0..<array_length(rules[j].conditions) {
-            if not(array_contains_str(combined_conds, rules[j].conditions[k])) {
+            if !(array_contains_str(combined_conds, rules[j].conditions[k])) {
               combined_conds = array_append_str(combined_conds, [rules[j].conditions[k]])
             }
           }
@@ -458,7 +458,7 @@ pub fn forward_chain(reasoner : NSReasoner, max_steps : Int) -> Array[Predicate]
             found = true
           }
         }
-        if not(found) {
+        if !(found) {
           all_satisfied = false
         }
       }
@@ -469,7 +469,7 @@ pub fn forward_chain(reasoner : NSReasoner, max_steps : Int) -> Array[Predicate]
             already = true
           }
         }
-        if not(already) {
+        if !(already) {
           derived = array_append_pred(derived, [rule.head])
           changed = true
         }

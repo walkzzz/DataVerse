@@ -131,12 +131,12 @@ fn merge_slots(old : Array[Slot], new : Array[Slot]) -> Array[Slot] {
         found = true
       }
     }
-    if not(found) {
+    if !(found) {
       result = array_append_slot(result, [old[i]])
     }
   }
   for j in 0..<array_length(new) {
-    if not(used[j]) {
+    if !(used[j]) {
       result = array_append_slot(result, [new[j]])
     }
   }
@@ -146,7 +146,7 @@ fn merge_slots(old : Array[Slot], new : Array[Slot]) -> Array[Slot] {
 /// 检查所有必需槽位是否填充
 fn check_all_required(slots : Array[Slot]) -> Bool {
   for i in 0..<array_length(slots) {
-    if slots[i].required && not(slot_is_filled(slots[i])) {
+    if slots[i].required && !(slot_is_filled(slots[i])) {
       return false
     }
   }
@@ -246,7 +246,7 @@ pub fn fill_slots(filler : SlotFiller, text : String, required_slots : Array[Slo
         found = true
       }
     }
-    if not(found) && required_slots[i].required {
+    if !(found) && required_slots[i].required {
       filled = array_append_slot(filled, [required_slot(required_slots[i].name)])
     }
   }
@@ -257,7 +257,7 @@ pub fn fill_slots(filler : SlotFiller, text : String, required_slots : Array[Slo
 pub fn missing_slots(slots : Array[Slot]) -> Array[String] {
   let mut missing = []
   for i in 0..<array_length(slots) {
-    if slots[i].required && not(slot_is_filled(slots[i])) {
+    if slots[i].required && !(slot_is_filled(slots[i])) {
       missing = array_append_str(missing, [slots[i].name])
     }
   }
@@ -399,7 +399,7 @@ pub fn set_preference(ctx : DialogueContext, key : String, value : String) -> Di
       new_prefs = array_append_pair(new_prefs, [ctx.preferences[i]])
     }
   }
-  if not(found) {
+  if !(found) {
     new_prefs = array_append_pair(new_prefs, [(key, value)])
   }
   { user_id: ctx.user_id, session_id: ctx.session_id, preferences: new_prefs, memory: ctx.memory, max_memory: ctx.max_memory }
@@ -520,9 +520,9 @@ fn to_lower(s : String) -> String {
   for i in 0..<string_length(s) {
     let c = s[i]
     if c >= 65 && c <= 90 {
-      result = result + String::from_array([Char::from_int(c.to_int() + 32)])
+      result = result + String::from_array([Int::unsafe_to_char(c.to_int() + 32)])
     } else {
-      result = result + String::from_array([Char::from_int(c.to_int())])
+      result = result + String::from_array([Int::unsafe_to_char(c.to_int())])
     }
   }
   result

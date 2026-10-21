@@ -609,7 +609,7 @@ pub fn meta_predict_performance(
   learner : MetaLearner,
   model_name : String
 ) -> Double {
-  if not(learner.trained) { return 0.5 }
+  if !(learner.trained) { return 0.5 }
   let mut sum = 0.0
   let mut cnt = 0
   for mp in learner.model_performances {
@@ -677,7 +677,7 @@ pub fn select_diverse(
     for i in 0..<sorted.length() {
       let mut in_set = false
       for j in 0..<r.length() { if sorted[i].name == r[j].name { in_set = true } }
-      if not(in_set) {
+      if !(in_set) {
         let d = abs_(sorted[i].score - sorted[last].score)
         let div_bonus = selector.diversity_weight * d
         if div_bonus > max_dist { max_dist = div_bonus; next_idx = i }

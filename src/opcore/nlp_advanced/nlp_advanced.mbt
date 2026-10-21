@@ -426,7 +426,7 @@ pub fn make_vocab(tokens : Array[String]) -> Vocab {
         break
       }
     }
-    if not(found) {
+    if !(found) {
       seen.push(t)
       token_to_id.push((t, seen.length() - 1))
     }

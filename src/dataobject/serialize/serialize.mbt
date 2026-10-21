@@ -52,16 +52,16 @@ pub fn make_serialize_result(
 
 /// JSON 转义 / Escape JSON string.
 pub fn json_escape(s : String) -> String {
-  let bs = String::from_array([Char::from_int(92)])
-  let bs2 = String::from_array([Char::from_int(92), Char::from_int(92)])
+  let bs = String::from_array([Int::unsafe_to_char(92)])
+  let bs2 = String::from_array([Int::unsafe_to_char(92), Int::unsafe_to_char(92)])
   let q = "\""
-  let eq = String::from_array([Char::from_int(92), '"'])
+  let eq = String::from_array([Int::unsafe_to_char(92), '"'])
   let n = "\n"
-  let en = String::from_array([Char::from_int(92), 'n'])
+  let en = String::from_array([Int::unsafe_to_char(92), 'n'])
   let r = "\r"
-  let er = String::from_array([Char::from_int(92), 'r'])
+  let er = String::from_array([Int::unsafe_to_char(92), 'r'])
   let t = "\t"
-  let et = String::from_array([Char::from_int(92), 't'])
+  let et = String::from_array([Int::unsafe_to_char(92), 't'])
   s.replace(old=bs, new=bs2)
    .replace(old=q, new=eq)
    .replace(old=n, new=en)
@@ -345,11 +345,11 @@ pub fn base64_encode(data : String) -> String {
 
 fn b64_digit_char(d : Int) -> Char {
   if d < 26 {
-    Char::from_int(d + 65)
+    Int::unsafe_to_char(d + 65)
   } else if d < 52 {
-    Char::from_int(d + 71)
+    Int::unsafe_to_char(d + 71)
   } else if d < 62 {
-    Char::from_int(d - 4)
+    Int::unsafe_to_char(d - 4)
   } else if d == 62 {
     '+'
   } else {
@@ -371,9 +371,9 @@ pub fn hex_encode(data : String) -> String {
 
 fn hex_digit_char(d : Int) -> Char {
   if d < 10 {
-    Char::from_int(d + 48)
+    Int::unsafe_to_char(d + 48)
   } else {
-    Char::from_int(d + 87)
+    Int::unsafe_to_char(d + 87)
   }
 }
 

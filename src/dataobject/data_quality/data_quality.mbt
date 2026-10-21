@@ -95,7 +95,7 @@ pub fn uniqueness(values : Array[String]) -> Double {
         break
       }
     }
-    if not(found) {
+    if !(found) {
       seen.push(values[i])
     }
   }
@@ -218,7 +218,7 @@ pub fn distinct_count(values : Array[String]) -> Int {
         break
       }
     }
-    if not(found) {
+    if !(found) {
       seen.push(values[i])
     }
   }
@@ -265,7 +265,7 @@ pub fn pattern_check(values : Array[String], pattern : String) -> Array[Int] {
   }
   let result : Array[Int] = []
   for i in 0..<n {
-    if not(values[i].contains(pattern)) {
+    if !(values[i].contains(pattern)) {
       result.push(i)
     }
   }
@@ -519,7 +519,7 @@ pub fn column_profile(name : String, values : Array[Double]) -> ColumnProfile {
         break
       }
     }
-    if not(found) {
+    if !(found) {
       seen.push(values[i])
     }
   }

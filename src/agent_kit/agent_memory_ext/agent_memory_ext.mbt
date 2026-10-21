@@ -673,7 +673,7 @@ pub fn associate_spread(ma : MemoryAssociation, start_id : String, max_hops : In
             break
           }
         }
-        if not(already) {
+        if !(already) {
           visited.push(target)
           result.push(target)
           frontier.push((target, hops + 1))
@@ -744,7 +744,7 @@ pub fn index_update_mem(mi : MemoryIndex, id : String, idx : Int) -> MemoryIndex
       break
     }
   }
-  if not(found) {
+  if !(found) {
     new_entries.push((id, idx))
   }
   { ..mi, entries: new_entries }

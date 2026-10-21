@@ -92,7 +92,7 @@ pub fn validate_arguments(tool : ToolDef, args : Array[(String, String)]) -> Boo
           found = true
         }
       }
-      if not(found) {
+      if !(found) {
         return false
       }
     }

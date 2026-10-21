@@ -728,7 +728,7 @@ pub fn cv_contours(img : CVImage) -> Array[Array[(Int, Int)]] {
   for y in 0..<gray.height {
     for x in 0..<gray.width {
       let idx = y * gray.width + x
-      if cv_pixel(gray, x, y, 0) > 128.0 && not(visited[idx]) {
+      if cv_pixel(gray, x, y, 0) > 128.0 && !(visited[idx]) {
         let contour : Array[(Int, Int)] = []
         cv_trace_contour(gray, x, y, visited, contour)
         if contour.length() > 0 {
@@ -1155,7 +1155,7 @@ pub fn cv_connected_components(img : CVImage, connectivity : Int) -> CVImage {
   for y in 0..<gray.height {
     for x in 0..<gray.width {
       let idx = y * gray.width + x
-      if not(visited[idx]) && cv_pixel(gray, x, y, 0) > 0.0 {
+      if !(visited[idx]) && cv_pixel(gray, x, y, 0) > 0.0 {
         cv_flood_fill(gray, x, y, label, visited, out, connectivity)
         label = label + 1.0
       }

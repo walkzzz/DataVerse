@@ -242,7 +242,7 @@ pub fn forward_search(initial : State, goal : Goal, actions : Array[Action], max
   let result : Array[Action] = []
   let mut current = initial
   let mut depth = 0
-  while not(goal_reached(current, goal)) && depth < max_depth {
+  while !(goal_reached(current, goal)) && depth < max_depth {
     let mut applied = false
     for i = 0; i < actions.length(); i = i + 1 {
       let a = actions[i]
@@ -254,7 +254,7 @@ pub fn forward_search(initial : State, goal : Goal, actions : Array[Action], max
             found = true
           }
         }
-        if not(found) {
+        if !(found) {
           pre_ok = false
         }
       }
@@ -264,7 +264,7 @@ pub fn forward_search(initial : State, goal : Goal, actions : Array[Action], max
         applied = true
       }
     }
-    if not(applied) {
+    if !(applied) {
       return result
     }
     depth = depth + 1
@@ -384,7 +384,7 @@ pub fn satisfy_constraints(constraints : Array[Constraint], values : Array[Doubl
     return false
   }
   for i = 0; i < n; i = i + 1 {
-    if not(check_constraint(constraints[i], values[i], limits[i])) {
+    if !(check_constraint(constraints[i], values[i], limits[i])) {
       return false
     }
   }
@@ -452,7 +452,7 @@ pub fn critical_path(plan : Plan) -> Array[Int] {
 
   let mut done = false
   let mut loop_guard2 = 0
-  while not(done) && loop_guard2 < n {
+  while !(done) && loop_guard2 < n {
     done = true
     loop_guard2 = loop_guard2 + 1
     for j = 0; j < plan.dependencies.length(); j = j + 1 {
@@ -503,7 +503,7 @@ pub fn topological_sort(dag : DAG) -> Array[String] {
   while remaining > 0 && loop_guard < n * n + 1 {
     loop_guard = loop_guard + 1
     for i = 0; i < n; i = i + 1 {
-      if not(visited[i]) {
+      if !(visited[i]) {
         let mut all_deps_visited = true
         for j = 0; j < dag.edges.length(); j = j + 1 {
           if dag.edges[j].1 == dag.nodes[i] {
@@ -513,7 +513,7 @@ pub fn topological_sort(dag : DAG) -> Array[String] {
                 dep_visited = true
               }
             }
-            if not(dep_visited) {
+            if !(dep_visited) {
               all_deps_visited = false
             }
           }
@@ -842,7 +842,7 @@ pub fn parallelize_tasks(plan : Plan) -> Array[Array[Task]] {
     loop_guard = loop_guard + 1
     let batch : Array[Task] = []
     for i = 0; i < n; i = i + 1 {
-      if not(scheduled[i]) {
+      if !(scheduled[i]) {
         let mut deps_ok = true
         for j = 0; j < plan.dependencies.length(); j = j + 1 {
           if plan.dependencies[j].1 == plan.tasks[i].task_id {
@@ -852,7 +852,7 @@ pub fn parallelize_tasks(plan : Plan) -> Array[Array[Task]] {
                 dep_done = true
               }
             }
-            if not(dep_done) {
+            if !(dep_done) {
               deps_ok = false
             }
           }

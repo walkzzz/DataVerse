@@ -149,7 +149,7 @@ pub fn sqrt_(x : Double) -> Double {
   }
   let mut i = 0
   let mut done = false
-  while i < 100 && not(done) {
+  while i < 100 && !(done) {
     let next = 0.5 * (guess + x / guess)
     let diff = next - guess
     if diff < 0.000000000000001 && diff > -0.000000000000001 {

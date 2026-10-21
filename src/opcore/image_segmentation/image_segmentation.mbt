@@ -327,7 +327,7 @@ pub fn seg_watershed(img : SegImage) -> SegImage {
           }
           let nv = seg_pixel(out, x + dx, y + dy)
           if nv > 0.0 {
-            if not(has_label) {
+            if !(has_label) {
               min_neighbor = nv
               has_label = true
             } else {
@@ -675,7 +675,7 @@ pub fn seg_level_set(img : SegImage, init_phi : SegImage, max_iter : Int) -> Seg
         }
       }
     }
-    if not(changed) {
+    if !(changed) {
       break
     }
   }
@@ -815,7 +815,7 @@ pub fn seg_random_walker(img : SegImage, seeds : Array[(Int, Int, Int)]) -> SegI
       }
       labels[i] = new_labels[i]
     }
-    if not(changed) {
+    if !(changed) {
       break
     }
   }
@@ -1127,7 +1127,7 @@ pub fn seg_evaluate_boundary(pred : SegImage, gt : SegImage, tolerance : Double)
             }
           }
         }
-        if not(matched) {
+        if !(matched) {
           fn_ = fn_ + 1.0
         }
       }
@@ -1203,7 +1203,7 @@ pub fn seg_fill_holes(mask : SegImage) -> SegImage {
   for y in 0..<mask.height {
     for x in 0..<mask.width {
       let idx = y * mask.width + x
-      if not(visited[idx]) && seg_pixel(mask, x, y) == 0.0 {
+      if !(visited[idx]) && seg_pixel(mask, x, y) == 0.0 {
         seg_set_pixel(out, x, y, 255.0)
       }
     }

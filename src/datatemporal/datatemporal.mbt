@@ -65,7 +65,7 @@ pub fn intervals_overlap(a : TimeInterval, b : TimeInterval) -> Bool {
 
 /// 重叠长度 / Overlap duration.
 pub fn overlap_duration(a : TimeInterval, b : TimeInterval) -> Double {
-  if not(intervals_overlap(a, b)) {
+  if !(intervals_overlap(a, b)) {
     return 0.0
   }
   let overlap_start = if a.start > b.start { a.start } else { b.start }

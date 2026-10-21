@@ -1155,7 +1155,7 @@ test "spec: threshold binary output" {
 ///|
 /// 性质 101：json_escape 双引号转义
 test "spec: json_escape quote" {
-  let bs = String::from_array([Char::from_int(92)])
+  let bs = String::from_array([Int::unsafe_to_char(92)])
   let q_in = "a" + "\"" + "b"
   let q_out = "a" + bs + "\"" + "b"
   assert_eq(@serialize.json_escape(q_in), q_out)

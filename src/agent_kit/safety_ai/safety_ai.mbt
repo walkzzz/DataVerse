@@ -304,7 +304,7 @@ pub fn redact_pii(detector : PIIDetector, text : String) -> String {
         redacted = true
       }
     }
-    if not(redacted) {
+    if !(redacted) {
       result = result + text[i].to_string()
       i = i + 1
     }
@@ -336,7 +336,7 @@ pub fn mask_pii(detector : PIIDetector, text : String) -> String {
         masked = true
       }
     }
-    if not(masked) {
+    if !(masked) {
       result = result + text[i].to_string()
       i = i + 1
     }
@@ -945,7 +945,7 @@ pub fn protect_model(detector : ModelStealing, new_queries : Array[Array[Double]
   for i in 0..<new_queries.length() {
     updated_history.push(new_queries[i])
   }
-  ({ ..detector, query_history: updated_history }, not(is_stealing))
+  ({ ..detector, query_history: updated_history }, !(is_stealing))
 }
 
 ///===

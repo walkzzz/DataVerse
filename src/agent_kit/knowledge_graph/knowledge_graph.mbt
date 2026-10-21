@@ -352,12 +352,12 @@ pub fn kg_neighbors(kg : KnowledgeGraph, entity_id : String) -> Array[String] {
   let result : Array[String] = []
   for i in 0..<kg.triples.length() {
     if kg.triples[i].subject == entity_id {
-      if not(contains_str(result, kg.triples[i].object)) {
+      if !(contains_str(result, kg.triples[i].object)) {
         result.push(kg.triples[i].object)
       }
     }
     if kg.triples[i].object == entity_id {
-      if not(contains_str(result, kg.triples[i].subject)) {
+      if !(contains_str(result, kg.triples[i].subject)) {
         result.push(kg.triples[i].subject)
       }
     }
@@ -396,7 +396,7 @@ fn kg_paths_dfs(
   for i in 0..<kg.triples.length() {
     if kg.triples[i].subject == current {
       let next = kg.triples[i].object
-      if not(contains_str(path, next)) {
+      if !(contains_str(path, next)) {
         let new_path = path.copy()
         new_path.push(next)
         kg_paths_dfs(kg, next, end_, depth - 1, new_path, result)
@@ -644,7 +644,7 @@ pub fn kg_infer(
         if new_triples[i].predicate == rules[j].0 {
           let s = new_triples[i].subject
           let o = new_triples[i].object
-          if not(triple_exists(new_triples, s, rules[j].1, o)) {
+          if !(triple_exists(new_triples, s, rules[j].1, o)) {
             new_triples.push({ subject: s, predicate: rules[j].1, object: o })
             changed = true
           }
@@ -669,7 +669,7 @@ pub fn kg_consistent(kg : KnowledgeGraph) -> Bool {
       if kg.triples[i].subject == kg.triples[j].subject && kg.triples[i].predicate == kg.triples[j].predicate && kg.triples[i].object != kg.triples[j].object {
         let mut has_neg = false
         for k in 0..<kg.relations.length() {
-          if kg.relations[k].relation_id == kg.triples[i].predicate && not(kg.relations[k].symmetric) {
+          if kg.relations[k].relation_id == kg.triples[i].predicate && !(kg.relations[k].symmetric) {
             has_neg = true
           }
         }
@@ -701,7 +701,7 @@ pub fn kg_transitive_closure(
           if new_triples[j].predicate == predicate && new_triples[i].object == new_triples[j].subject {
             let s = new_triples[i].subject
             let o = new_triples[j].object
-            if not(triple_exists(new_triples, s, predicate, o)) {
+            if !(triple_exists(new_triples, s, predicate, o)) {
               new_triples.push({ subject: s, predicate, object: o })
               changed = true
             }
@@ -721,7 +721,7 @@ pub fn kg_reflexive_closure(
   let new_triples = kg.triples.copy()
   for i in 0..<kg.entities.length() {
     let eid = kg.entities[i].entity_id
-    if not(triple_exists(new_triples, eid, predicate, eid)) {
+    if !(triple_exists(new_triples, eid, predicate, eid)) {
       new_triples.push({ subject: eid, predicate, object: eid })
     }
   }
@@ -738,7 +738,7 @@ pub fn kg_symmetric_closure(
     if kg.triples[i].predicate == predicate {
       let s = kg.triples[i].object
       let o = kg.triples[i].subject
-      if not(triple_exists(new_triples, s, predicate, o)) {
+      if !(triple_exists(new_triples, s, predicate, o)) {
         new_triples.push({ subject: s, predicate, object: o })
       }
     }
@@ -1058,7 +1058,7 @@ pub fn kg_completion(
         let t = emb.entity_embeddings[j].0
         match kg_predict_relation(emb, h, t) {
           Some(r) => {
-            if not(triple_exists(kg.triples, h, r, t)) {
+            if !(triple_exists(kg.triples, h, r, t)) {
               result.push({ subject: h, predicate: r, object: t })
             }
           }
@@ -1084,7 +1084,7 @@ pub fn kg_missing_links(
           let h = kg.entities[i].entity_id
           let t = kg.entities[j].entity_id
           let r = kg.relations[k].relation_id
-          if not(triple_exists(kg.triples, h, r, t)) {
+          if !(triple_exists(kg.triples, h, r, t)) {
             count = count + 1
             if count.to_double() <= threshold {
               result.push({ subject: h, predicate: r, object: t })
@@ -1154,7 +1154,7 @@ pub fn kg_validate_schema(kg : KnowledgeGraph, schema : Schema) -> Bool {
         if schema.relation_constraints.length() == 0 {
           valid = true
         }
-        if not(valid) {
+        if !(valid) {
           return false
         }
       }

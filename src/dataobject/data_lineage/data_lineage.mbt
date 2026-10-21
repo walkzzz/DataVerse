@@ -206,17 +206,17 @@ pub fn lineage_trace(
   path.push(current)
   visited.push(current)
   let mut found = current == target
-  while not(found) {
+  while !(found) {
     let mut next = ""
     let mut has_next = false
     for i in 0..<graph.edges.length() {
-      if graph.edges[i].source == current && not(dl_contains(visited, graph.edges[i].target)) {
+      if graph.edges[i].source == current && !(dl_contains(visited, graph.edges[i].target)) {
         next = graph.edges[i].target
         has_next = true
         break
       }
     }
-    if not(has_next) {
+    if !(has_next) {
       return []
     }
     current = next
@@ -233,7 +233,7 @@ pub fn lineage_trace(
 pub fn lineage_upstream(graph : LineageGraph, node_id : String) -> Array[String] {
   let result : Array[String] = []
   for i in 0..<graph.edges.length() {
-    if graph.edges[i].target == node_id && not(dl_contains(result, graph.edges[i].source)) {
+    if graph.edges[i].target == node_id && !(dl_contains(result, graph.edges[i].source)) {
       result.push(graph.edges[i].source)
     }
   }
@@ -244,7 +244,7 @@ pub fn lineage_upstream(graph : LineageGraph, node_id : String) -> Array[String]
 pub fn lineage_downstream(graph : LineageGraph, node_id : String) -> Array[String] {
   let result : Array[String] = []
   for i in 0..<graph.edges.length() {
-    if graph.edges[i].source == node_id && not(dl_contains(result, graph.edges[i].target)) {
+    if graph.edges[i].source == node_id && !(dl_contains(result, graph.edges[i].target)) {
       result.push(graph.edges[i].target)
     }
   }
@@ -261,7 +261,7 @@ pub fn lineage_impact(graph : LineageGraph, node_id : String) -> Array[String] {
     ignore(queue.remove(0))
     let downstream = lineage_downstream(graph, current)
     for i in 0..<downstream.length() {
-      if not(dl_contains(visited, downstream[i])) {
+      if !(dl_contains(visited, downstream[i])) {
         visited.push(downstream[i])
         result.push(downstream[i])
         queue.push(downstream[i])
@@ -281,7 +281,7 @@ pub fn lineage_dependencies(graph : LineageGraph, node_id : String) -> Array[Str
     ignore(queue.remove(0))
     let upstream = lineage_upstream(graph, current)
     for i in 0..<upstream.length() {
-      if not(dl_contains(visited, upstream[i])) {
+      if !(dl_contains(visited, upstream[i])) {
         visited.push(upstream[i])
         result.push(upstream[i])
         queue.push(upstream[i])
@@ -432,7 +432,7 @@ pub fn lineage_report(graph : LineageGraph) -> String {
         break
       }
     }
-    if not(found) {
+    if !(found) {
       type_count.push((nt, 1))
     }
   }
@@ -566,7 +566,7 @@ pub fn lineage_validate(graph : LineageGraph) -> Bool {
         has_target = true
       }
     }
-    if not(has_source) || not(has_target) {
+    if !(has_source) || !(has_target) {
       return false
     }
   }
@@ -690,7 +690,7 @@ pub fn lineage_compress(graph : LineageGraph) -> LineageGraph {
         break
       }
     }
-    if not(dup) {
+    if !(dup) {
       new_nodes.push(graph.nodes[i])
     }
   }
@@ -703,7 +703,7 @@ pub fn lineage_compress(graph : LineageGraph) -> LineageGraph {
         break
       }
     }
-    if not(dup) {
+    if !(dup) {
       new_edges.push(graph.edges[i])
     }
   }
@@ -762,7 +762,7 @@ pub fn lineage_shortest_path(
         found = true
         break
       }
-      if not(dl_contains(visited, next)) {
+      if !(dl_contains(visited, next)) {
         visited.push(next)
         parent.push((next, current))
         queue.push(next)
@@ -772,7 +772,7 @@ pub fn lineage_shortest_path(
       break
     }
   }
-  if not(found) {
+  if !(found) {
     return []
   }
   let path : Array[String] = [target]
@@ -799,7 +799,7 @@ pub fn lineage_has_cycle(graph : LineageGraph) -> Bool {
   let visited = Array::make(n, false)
   let rec_stack = Array::make(n, false)
   for i in 0..<n {
-    if not(visited[i]) {
+    if !(visited[i]) {
       let node_id = graph.nodes[i].id
       let mut has_cycle = false
       let stack : Array[(Int, String)] = [(i, node_id)]
@@ -808,7 +808,7 @@ pub fn lineage_has_cycle(graph : LineageGraph) -> Bool {
         ignore(stack.remove(stack.length() - 1))
         if rec_stack[idx] {
           rec_stack[idx] = false
-        } else if not(visited[idx]) {
+        } else if !(visited[idx]) {
           visited[idx] = true
           rec_stack[idx] = true
           stack.push((idx, nid))
@@ -818,7 +818,7 @@ pub fn lineage_has_cycle(graph : LineageGraph) -> Bool {
                 if graph.nodes[k].id == graph.edges[j].target {
                   if rec_stack[k] {
                     has_cycle = true
-                  } else if not(visited[k]) {
+                  } else if !(visited[k]) {
                     stack.push((k, graph.nodes[k].id))
                   }
                   break
@@ -849,7 +849,7 @@ pub fn lineage_depth(graph : LineageGraph, node_id : String) -> Int {
     }
     let downstream = lineage_downstream(graph, current)
     for i in 0..<downstream.length() {
-      if not(dl_contains(visited, downstream[i])) {
+      if !(dl_contains(visited, downstream[i])) {
         visited.push(downstream[i])
         queue.push((downstream[i], depth + 1))
       }
@@ -922,14 +922,14 @@ pub fn lineage_topo_sort(graph : LineageGraph) -> Array[String] {
   while progress {
     progress = false
     for i in 0..<n {
-      if not(visited[i]) && in_degree[i] == 0 {
+      if !(visited[i]) && in_degree[i] == 0 {
         visited[i] = true
         result.push(graph.nodes[i].id)
         let nid = graph.nodes[i].id
         for j in 0..<graph.edges.length() {
           if graph.edges[j].source == nid {
             for k in 0..<n {
-              if graph.nodes[k].id == graph.edges[j].target && not(visited[k]) {
+              if graph.nodes[k].id == graph.edges[j].target && !(visited[k]) {
                 in_degree[k] = in_degree[k] - 1
               }
             }

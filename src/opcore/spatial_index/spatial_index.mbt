@@ -276,7 +276,7 @@ pub fn bbox_contains(b : BBox, p : SIPoint) -> Bool {
 
 /// 包围盒相交 / Two bboxes intersect.
 pub fn bbox_intersects(a : BBox, b : BBox) -> Bool {
-  not(a.max_x < b.min_x || a.min_x > b.max_x || a.max_y < b.min_y || a.min_y > b.max_y)
+  !(a.max_x < b.min_x || a.min_x > b.max_x || a.max_y < b.min_y || a.min_y > b.max_y)
 }
 
 /// 包围盒并集 / Union of two bboxes.
@@ -620,7 +620,7 @@ pub fn geohash_encode(gh : GeoHash, lon : Double, lat : Double) -> String {
         hi_lat = mid
       }
     }
-    even = not(even)
+    even = !(even)
     bit = bit + 1
     if bit == 5 {
       result = result + alphabet[ch].to_string()
@@ -669,7 +669,7 @@ pub fn geohash_decode(gh : GeoHash, hash : String) -> (Double, Double) {
           hi_lat = mid
         }
       }
-      even = not(even)
+      even = !(even)
     }
   }
   ((lo_lon + hi_lon) / 2.0, (lo_lat + hi_lat) / 2.0)

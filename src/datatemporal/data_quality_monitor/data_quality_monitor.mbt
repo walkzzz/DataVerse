@@ -292,7 +292,7 @@ pub fn monitor_check(monitor : DQMonitor, values : Array[Double], timestamp : Do
     MonitorRunning => true
     _ => false
   }
-  if not(running) {
+  if !(running) {
     return monitor
   }
   let new_metrics : Array[DQMetric] = []
@@ -367,7 +367,7 @@ fn dq_compute_rule_value(rule : DQRule, values : Array[Double]) -> Double {
             break
           }
         }
-        if not(found) {
+        if !(found) {
           seen.push(values[i])
         }
       }
@@ -671,7 +671,7 @@ pub fn remediation_apply(remediation : DQRemediation) -> DQRemediation {
 pub fn report_generate(monitor : DQMonitor, generated_at : Double) -> DQReport {
   let alerts : Array[DQAlert] = []
   for i in 0..<monitor.metrics.length() {
-    if not(monitor.metrics[i].passed) {
+    if !(monitor.metrics[i].passed) {
       alerts.push(make_dq_alert(monitor.metrics[i].rule_name, AlertWarning, "rule failed: " + monitor.metrics[i].value.to_string(), monitor.metrics[i].timestamp))
     }
   }

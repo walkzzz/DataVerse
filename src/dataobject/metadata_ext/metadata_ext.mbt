@@ -153,7 +153,7 @@ pub fn instance_set(inst : MetadataInstance, field_name : String, value : String
       new_values = array_append_pair(new_values, [inst.values[i]])
     }
   }
-  if not(found) {
+  if !(found) {
     new_values = array_append_pair(new_values, [(field_name, value)])
   }
   { schema_name: inst.schema_name, values: new_values, source: inst.source, timestamp: inst.timestamp }
@@ -201,12 +201,12 @@ pub fn validate_instance(schema : MetadataSchema, inst : MetadataInstance) -> Va
   for i in 0..<array_length(schema.fields) {
     let field = schema.fields[i]
     let value = instance_get(inst, field.name)
-    if value == "" && not(field.nullable) && field.default_value == "" {
+    if value == "" && !(field.nullable) && field.default_value == "" {
       result = validation_add_error(result, "Missing required field: " + field.name)
     }
     if value != "" {
       let type_valid = validate_type(value, field.field_type)
-      if not(type_valid) {
+      if !(type_valid) {
         result = validation_add_error(result, "Type mismatch for field " + field.name + ": expected " + field.field_type)
       }
     }
@@ -312,7 +312,7 @@ fn update_field_index(field_index : Array[(String, Array[String])], field_name :
       new_index = array_append_pair2(new_index, [field_index[i]])
     }
   }
-  if not(found) {
+  if !(found) {
     new_index = array_append_pair2(new_index, [(field_name, [id])])
   }
   new_index
@@ -391,7 +391,7 @@ pub fn search_execute(index : MetadataIndex, query : SearchQuery) -> Array[(Stri
     }
     if matches && query.text_query != "" {
       let inst_str = instance_to_string(inst)
-      if not(string_contains(inst_str, query.text_query)) {
+      if !(string_contains(inst_str, query.text_query)) {
         matches = false
       }
     }
@@ -460,7 +460,7 @@ pub fn lineage_upstream(graph : LineageGraph, node_id : String) -> Array[String]
   while array_length(queue) > 0 {
     let current = queue[0]
     ignore(queue.remove(0))
-    if not(array_contains_str(visited, current)) {
+    if !(array_contains_str(visited, current)) {
       visited = array_append_str(visited, [current])
       for i in 0..<array_length(graph.edges) {
         if graph.edges[i].target == current {
@@ -481,7 +481,7 @@ pub fn lineage_downstream(graph : LineageGraph, node_id : String) -> Array[Strin
   while array_length(queue) > 0 {
     let current = queue[0]
     ignore(queue.remove(0))
-    if not(array_contains_str(visited, current)) {
+    if !(array_contains_str(visited, current)) {
       visited = array_append_str(visited, [current])
       for i in 0..<array_length(graph.edges) {
         if graph.edges[i].source == current {
@@ -500,10 +500,10 @@ pub fn lineage_path(graph : LineageGraph, source : String, target : String) -> A
   let mut current = source
   let mut visited = [source]
   let mut found = false
-  while not(found) && current != target {
+  while !(found) && current != target {
     let mut next = ""
     for i in 0..<array_length(graph.edges) {
-      if graph.edges[i].source == current && not(array_contains_str(visited, graph.edges[i].target)) {
+      if graph.edges[i].source == current && !(array_contains_str(visited, graph.edges[i].target)) {
         next = graph.edges[i].target
         visited = array_append_str(visited, [next])
         path = array_append_str(path, [next])
@@ -608,7 +608,7 @@ fn parse_simple_json(json : String) -> Array[(String, String)] {
       let mut key = ""
       i = i + 1
       while i < n && json[i] != 34 {
-        key = key + String::from_array([Char::from_int(json[i].to_int())])
+        key = key + String::from_array([Int::unsafe_to_char(json[i].to_int())])
         i = i + 1
       }
       i = i + 1
@@ -619,7 +619,7 @@ fn parse_simple_json(json : String) -> Array[(String, String)] {
         let mut value = ""
         i = i + 1
         while i < n && json[i] != 34 {
-          value = value + String::from_array([Char::from_int(json[i].to_int())])
+          value = value + String::from_array([Int::unsafe_to_char(json[i].to_int())])
           i = i + 1
         }
         pairs = array_append_pair(pairs, [(key, value)])

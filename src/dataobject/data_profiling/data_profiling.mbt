@@ -431,7 +431,7 @@ pub fn profile_distinct_count(values : Array[Double]) -> Int {
         break
       }
     }
-    if not(found) {
+    if !(found) {
       seen.push(values[i])
     }
   }
@@ -795,15 +795,15 @@ pub fn profile_format_detect(values : Array[String]) -> String {
     let mut is_num = true
     for j in 0..<v.length() {
       let c = v[j]
-      if not((c >= '0' && c <= '9') || c == '.' || c == '-' || c == '+') {
+      if !((c >= '0' && c <= '9') || c == '.' || c == '-' || c == '+') {
         is_num = false
         break
       }
     }
-    if not(is_num) {
+    if !(is_num) {
       all_numeric = false
     }
-    if not(v.contains("-") || v.contains("/")) {
+    if !(v.contains("-") || v.contains("/")) {
       all_date = false
     }
     if v.length() == 0 {
@@ -923,7 +923,7 @@ pub fn profile_categorical(name : String, values : Array[String]) -> ColumnProfi
         break
       }
     }
-    if not(found) {
+    if !(found) {
       distinct.push(values[i])
     }
   }

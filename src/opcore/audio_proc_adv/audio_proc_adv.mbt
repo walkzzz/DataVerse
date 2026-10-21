@@ -884,7 +884,7 @@ pub fn audio_nmf(matrix : Array[Array[Double]], num_components : Int, iterations
   }
   let n = matrix[0].length()
   let w : Array[Array[Double]] = []
-  for i in 0..<m {
+  for _ in 0..<m {
     let row : Array[Double] = []
     for _ in 0..<num_components {
       row.push(0.5)

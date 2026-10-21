@@ -1093,7 +1093,7 @@ pub fn tree_feature_importance(config : DecisionTreeExplainConfig) -> Array[Doub
   }
   for i in 0..<config.nodes.length() {
     let node = config.nodes[i]
-    if not(node.is_leaf) && node.feature < n {
+    if !(node.is_leaf) && node.feature < n {
       let left = if node.left < config.nodes.length() { config.nodes[node.left].value } else { 0.0 }
       let right = if node.right < config.nodes.length() { config.nodes[node.right].value } else { 0.0 }
       importances[node.feature] = importances[node.feature] + xa_abs(left - right)
@@ -1209,7 +1209,7 @@ pub fn rule_simplify(rules : Array[Rule]) -> Array[Rule] {
         }
       }
     }
-    if not(dup) {
+    if !(dup) {
       simplified.push(rules[i])
     }
   }

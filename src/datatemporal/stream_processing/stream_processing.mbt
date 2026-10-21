@@ -80,7 +80,7 @@ pub fn dag_validate(dag : StreamDag) -> Bool {
         to_found = true
       }
     }
-    if not(from_found) || not(to_found) {
+    if !(from_found) || !(to_found) {
       ok = false
     }
   }
@@ -129,7 +129,7 @@ pub fn source_connect(conn : SourceConnector) -> SourceConnector {
 
 /// 读取源 / Read source.
 pub fn source_read(conn : SourceConnector, events : Array[StreamEvent]) -> Array[StreamEvent] {
-  if not(conn.connected) {
+  if !(conn.connected) {
     []
   } else {
     events
@@ -164,7 +164,7 @@ pub fn sink_connect(conn : SinkConnector) -> SinkConnector {
 
 /// 写入汇 / Write sink.
 pub fn sink_write(conn : SinkConnector, events : Array[StreamEvent]) -> SinkConnector {
-  if not(conn.connected) {
+  if !(conn.connected) {
     conn
   } else {
     { ..conn, written: conn.written + events.length() }
@@ -343,12 +343,12 @@ pub fn join_outer(left : Array[StreamEvent], right : Array[StreamEvent]) -> Arra
         matched = true
       }
     }
-    if not(matched) {
+    if !(matched) {
       result.push((Some(left[i]), None))
     }
   }
   for j in 0..<right.length() {
-    if not(right_matched[j]) {
+    if !(right_matched[j]) {
       result.push((None, Some(right[j])))
     }
   }
@@ -430,7 +430,7 @@ pub fn state_update(op : StatefulOp, key : String, value : Double) -> StatefulOp
       new_state.push(op.state[i])
     }
   }
-  if not(found) {
+  if !(found) {
     new_state.push((key, value))
   }
   { state: new_state }
@@ -599,7 +599,7 @@ pub fn dedup_sp(events : Array[StreamEvent]) -> Array[StreamEvent] {
         dup = true
       }
     }
-    if not(dup) {
+    if !(dup) {
       result.push(events[i])
     }
   }

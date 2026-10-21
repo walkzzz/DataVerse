@@ -228,7 +228,7 @@ pub fn delta_apply(
   }
   for i in 0..<delta.changes.length() {
     let (ck, op, cv) = delta.changes[i]
-    if op == "add" && not(dv_contains(applied_keys, ck)) {
+    if op == "add" && !(dv_contains(applied_keys, ck)) {
       result.push((ck, cv))
     }
   }
@@ -414,7 +414,7 @@ pub fn version_ancestors(store : VersionStore, hash : String) -> Array[String] {
       if store.commits[i].hash == current {
         for j in 0..<store.commits[i].parents.length() {
           let p = store.commits[i].parents[j]
-          if not(dv_contains(visited, p)) {
+          if !(dv_contains(visited, p)) {
             result.push(p)
             queue.push(p)
           }
@@ -454,7 +454,7 @@ pub fn version_conflict(a : Commit, b : Commit) -> Bool {
       break
     }
   }
-  not(shared) && a.hash != b.hash
+  !(shared) && a.hash != b.hash
 }
 
 /// 版本解决 / Resolve version conflict.
@@ -522,7 +522,7 @@ pub fn merge_three_way(
   }
   for i in 0..<theirs.length() {
     let (k, v) = theirs[i]
-    if not(dv_contains(seen, k)) {
+    if !(dv_contains(seen, k)) {
       result.push((k, v))
     }
   }
@@ -542,7 +542,7 @@ pub fn merge_union(
     seen.push(ours[i].0)
   }
   for i in 0..<theirs.length() {
-    if not(dv_contains(seen, theirs[i].0)) {
+    if !(dv_contains(seen, theirs[i].0)) {
       result.push(theirs[i])
     }
   }
@@ -698,7 +698,7 @@ pub fn version_compact(store : VersionStore) -> VersionStore {
         break
       }
     }
-    if not(dup) {
+    if !(dup) {
       new_commits.push(store.commits[i])
     }
   }

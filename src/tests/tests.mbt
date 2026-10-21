@@ -9699,7 +9699,7 @@ test "serialize_make_result" {
 }
 
 test "serialize_json_escape" {
-  let bs = String::from_array([Char::from_int(92)])
+  let bs = String::from_array([Int::unsafe_to_char(92)])
   assert_eq(@serialize.json_escape("hello"), "hello")
   let q_in = "a" + "\"" + "b"
   let q_out = "a" + bs + "\"" + "b"
@@ -10135,7 +10135,7 @@ test "scheduler_resource" {
   let r1 = @scheduler.allocate_resource(r, 40.0)
   assert_true(r1.is_some())
   let r2 = @scheduler.allocate_resource(r, 150.0)
-  assert_true(r2.is_none())
+  assert_true(r2 is None)
 }
 
 test "scheduler_utilization" {

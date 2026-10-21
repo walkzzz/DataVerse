@@ -443,7 +443,7 @@ pub fn make_auction(
 
 /// 拍卖出价 / Auction bid.
 pub fn auction_bid(auction : Auction, bidder : String, amount : Double) -> Auction {
-  if not(auction.active) || amount < auction.reserved_price {
+  if !(auction.active) || amount < auction.reserved_price {
     return auction
   }
   let new_bids = auction.bids.copy()
@@ -503,7 +503,7 @@ pub fn contract_sign(contract : Contract, party : String) -> Contract {
       party_exists = true
     }
   }
-  if not(party_exists) {
+  if !(party_exists) {
     return contract
   }
   let new_signed = contract.signed.copy()
@@ -522,7 +522,7 @@ pub fn contract_verify(contract : Contract) -> Bool {
 
 /// 执行合约 / Execute contract.
 pub fn contract_execute(contract : Contract) -> String {
-  if not(contract_verify(contract)) {
+  if !(contract_verify(contract)) {
     "contract_not_ready"
   } else {
     "execute:" + contract.terms
@@ -600,7 +600,7 @@ pub fn write_shared(
       new_data.push(state.data[i])
     }
   }
-  if not(found) {
+  if !(found) {
     new_data.push((key, value))
   }
   { ..state, data: new_data, version: state.version + 1 }
@@ -700,7 +700,7 @@ pub fn blackboard_write(
       new_entries.push(bb.entries[i])
     }
   }
-  if not(found) {
+  if !(found) {
     new_entries.push((key, value, confidence))
   }
   { ..bb, entries: new_entries }
@@ -752,7 +752,7 @@ pub fn market_clear(market : Market) -> Market {
         matched = true
       }
     }
-    if not(matched) {
+    if !(matched) {
       new_bids.push(market.bids[i])
     }
   }
@@ -763,7 +763,7 @@ pub fn market_clear(market : Market) -> Market {
         matched = true
       }
     }
-    if not(matched) {
+    if !(matched) {
       new_asks.push(market.asks[j])
     }
   }
@@ -863,10 +863,10 @@ pub fn hierarchical_delegate(
       target_found = true
     }
   }
-  if not(agent_found) {
+  if !(agent_found) {
     new_levels.push((agent, 0))
   }
-  if not(target_found) {
+  if !(target_found) {
     new_levels.push((target, 1))
   }
   { ..hierarchy, levels: new_levels, parent_map: new_parent }
@@ -941,7 +941,7 @@ pub fn swarm_behavior(
       found = true
     }
   }
-  if not(found) {
+  if !(found) {
     new_agents.push(agent)
     new_positions.push((agent, new_pos.0, new_pos.1))
   }
@@ -1037,7 +1037,7 @@ pub fn env_act(
       new_state.push(env.state[i])
     }
   }
-  if not(found) {
+  if !(found) {
     new_state.push((key, value))
   }
   let bonus = if action == "reward" { 1.0 } else { 0.0 }

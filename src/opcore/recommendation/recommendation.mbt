@@ -838,7 +838,7 @@ pub fn coverage(recommended_lists : Array[Array[Int]], num_total_items : Int) ->
             found = true
           }
         }
-        if not(found) {
+        if !(found) {
           unique.push(item)
         }
       }
@@ -910,7 +910,7 @@ pub fn serendipity(recommended : Array[Int], relevant : Array[Int], expected : A
           is_exp = true
         }
       }
-      if is_rel && not(is_exp) {
+      if is_rel && !(is_exp) {
         sum = sum + 1.0
       }
     }
@@ -941,7 +941,7 @@ pub fn session_based_rec(session : Session, item_co_occurrence : Array[Array[Int
         in_session = true
       }
     }
-    if not(in_session) && s > 0.0 {
+    if !(in_session) && s > 0.0 {
       scores.push((j, s))
     }
   }

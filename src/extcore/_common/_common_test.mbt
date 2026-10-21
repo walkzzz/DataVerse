@@ -159,13 +159,13 @@ test "common_robustness_fibonacci" {
 }
 
 test "common_robustness_is_prime" {
-  assert_true(not(@_common.is_prime(-1)))
-  assert_true(not(@_common.is_prime(0)))
-  assert_true(not(@_common.is_prime(1)))
+  assert_true(!(@_common.is_prime(-1)))
+  assert_true(!(@_common.is_prime(0)))
+  assert_true(!(@_common.is_prime(1)))
   assert_true(@_common.is_prime(2))
   assert_true(@_common.is_prime(3))
   assert_true(@_common.is_prime(7))
-  assert_true(not(@_common.is_prime(8)))
+  assert_true(!(@_common.is_prime(8)))
   assert_true(@_common.is_prime(97))
 }
 

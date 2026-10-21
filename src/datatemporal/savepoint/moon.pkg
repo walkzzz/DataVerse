@@ -1,2 +1,5 @@
 // datatemporal/savepoint datatemporal/savepoint
 // S13.222 new
+import {
+  "dataverse/extcore/_common",
+}

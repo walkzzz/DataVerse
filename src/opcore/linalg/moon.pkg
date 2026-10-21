@@ -1,2 +1,5 @@
 // opcore/linalg opcore/linalg
 // S13.1 new
+import {
+  "dataverse/extcore/_common",
+}

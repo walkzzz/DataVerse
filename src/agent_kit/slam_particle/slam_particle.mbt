@@ -25,7 +25,7 @@ pub fn slam_particle_point_label(p : Slam_particlePoint) -> Int { p.label }
 pub fn slam_particle_point_dist(a : Slam_particlePoint, b : Slam_particlePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  slam_particle_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn slam_particle_point_add(a : Slam_particlePoint, b : Slam_particlePoint) -> Slam_particlePoint {
@@ -45,7 +45,7 @@ pub fn slam_particle_point_dot(a : Slam_particlePoint, b : Slam_particlePoint) -
 }
 
 pub fn slam_particle_point_norm(pt : Slam_particlePoint) -> Double {
-  slam_particle_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn slam_particle_point_to_string(pt : Slam_particlePoint) -> String {
@@ -102,7 +102,7 @@ pub fn slam_particle_series_var(s : Slam_particleSeries) -> Double {
   }
 }
 
-pub fn slam_particle_series_std(s : Slam_particleSeries) -> Double { slam_particle_sqrt(slam_particle_series_var(s)) }
+pub fn slam_particle_series_std(s : Slam_particleSeries) -> Double { @_common.sqrt(slam_particle_series_var(s)) }
 
 pub fn slam_particle_series_scale(s : Slam_particleSeries, f : Double) -> Slam_particleSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn slam_particle_matrix_trace(m : Slam_particleMatrix) -> Double {
 pub fn slam_particle_matrix_norm(m : Slam_particleMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  slam_particle_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn slam_particle_matrix_to_string(m : Slam_particleMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn slam_particle_vector_dot(a : Slam_particleVector, b : Slam_particleVector
   sum
 }
 
-pub fn slam_particle_vector_norm(v : Slam_particleVector) -> Double { slam_particle_sqrt(slam_particle_vector_dot(v, v)) }
+pub fn slam_particle_vector_norm(v : Slam_particleVector) -> Double { @_common.sqrt(slam_particle_vector_dot(v, v)) }
 
 pub fn slam_particle_vector_normalize(v : Slam_particleVector) -> Slam_particleVector {
   let n = slam_particle_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn slam_particle_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn slam_particle_std(data : Array[Double]) -> Double { slam_particle_sqrt(slam_particle_var(data)) }
+pub fn slam_particle_std(data : Array[Double]) -> Double { @_common.sqrt(slam_particle_var(data)) }
 
 pub fn slam_particle_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn slam_particle_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + slam_particle_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn slam_particle_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = slam_particle_precision(pred, labels, pos); let r = slam_particle_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn slam_particle_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn slam_particle_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn slam_particle_dbl(x : Double) -> String {
   let i = if x >= 0.0 { slam_particle_int(x) } else { -slam_particle_int(-x) }

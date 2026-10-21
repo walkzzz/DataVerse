@@ -25,7 +25,7 @@ pub fn coding_theory_point_label(p : Coding_theoryPoint) -> Int { p.label }
 pub fn coding_theory_point_dist(a : Coding_theoryPoint, b : Coding_theoryPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  coding_theory_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn coding_theory_point_add(a : Coding_theoryPoint, b : Coding_theoryPoint) -> Coding_theoryPoint {
@@ -45,7 +45,7 @@ pub fn coding_theory_point_dot(a : Coding_theoryPoint, b : Coding_theoryPoint) -
 }
 
 pub fn coding_theory_point_norm(pt : Coding_theoryPoint) -> Double {
-  coding_theory_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn coding_theory_point_to_string(pt : Coding_theoryPoint) -> String {
@@ -102,7 +102,7 @@ pub fn coding_theory_series_var(s : Coding_theorySeries) -> Double {
   }
 }
 
-pub fn coding_theory_series_std(s : Coding_theorySeries) -> Double { coding_theory_sqrt(coding_theory_series_var(s)) }
+pub fn coding_theory_series_std(s : Coding_theorySeries) -> Double { @_common.sqrt(coding_theory_series_var(s)) }
 
 pub fn coding_theory_series_scale(s : Coding_theorySeries, f : Double) -> Coding_theorySeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn coding_theory_matrix_trace(m : Coding_theoryMatrix) -> Double {
 pub fn coding_theory_matrix_norm(m : Coding_theoryMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  coding_theory_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn coding_theory_matrix_to_string(m : Coding_theoryMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn coding_theory_vector_dot(a : Coding_theoryVector, b : Coding_theoryVector
   sum
 }
 
-pub fn coding_theory_vector_norm(v : Coding_theoryVector) -> Double { coding_theory_sqrt(coding_theory_vector_dot(v, v)) }
+pub fn coding_theory_vector_norm(v : Coding_theoryVector) -> Double { @_common.sqrt(coding_theory_vector_dot(v, v)) }
 
 pub fn coding_theory_vector_normalize(v : Coding_theoryVector) -> Coding_theoryVector {
   let n = coding_theory_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn coding_theory_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn coding_theory_std(data : Array[Double]) -> Double { coding_theory_sqrt(coding_theory_var(data)) }
+pub fn coding_theory_std(data : Array[Double]) -> Double { @_common.sqrt(coding_theory_var(data)) }
 
 pub fn coding_theory_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn coding_theory_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + coding_theory_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn coding_theory_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = coding_theory_precision(pred, labels, pos); let r = coding_theory_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn coding_theory_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn coding_theory_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn coding_theory_dbl(x : Double) -> String {
   let i = if x >= 0.0 { coding_theory_int(x) } else { -coding_theory_int(-x) }

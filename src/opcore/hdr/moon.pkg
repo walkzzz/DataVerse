@@ -1,2 +1,5 @@
 // opcore/hdr opcore/hdr
 // S13.50 new
+import {
+  "dataverse/extcore/_common",
+}

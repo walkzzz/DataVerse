@@ -25,7 +25,7 @@ pub fn doppler_point_label(p : DopplerPoint) -> Int { p.label }
 pub fn doppler_point_dist(a : DopplerPoint, b : DopplerPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  doppler_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn doppler_point_add(a : DopplerPoint, b : DopplerPoint) -> DopplerPoint {
@@ -45,7 +45,7 @@ pub fn doppler_point_dot(a : DopplerPoint, b : DopplerPoint) -> Double {
 }
 
 pub fn doppler_point_norm(pt : DopplerPoint) -> Double {
-  doppler_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn doppler_point_to_string(pt : DopplerPoint) -> String {
@@ -102,7 +102,7 @@ pub fn doppler_series_var(s : DopplerSeries) -> Double {
   }
 }
 
-pub fn doppler_series_std(s : DopplerSeries) -> Double { doppler_sqrt(doppler_series_var(s)) }
+pub fn doppler_series_std(s : DopplerSeries) -> Double { @_common.sqrt(doppler_series_var(s)) }
 
 pub fn doppler_series_scale(s : DopplerSeries, f : Double) -> DopplerSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn doppler_matrix_trace(m : DopplerMatrix) -> Double {
 pub fn doppler_matrix_norm(m : DopplerMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  doppler_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn doppler_matrix_to_string(m : DopplerMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn doppler_vector_dot(a : DopplerVector, b : DopplerVector) -> Double {
   sum
 }
 
-pub fn doppler_vector_norm(v : DopplerVector) -> Double { doppler_sqrt(doppler_vector_dot(v, v)) }
+pub fn doppler_vector_norm(v : DopplerVector) -> Double { @_common.sqrt(doppler_vector_dot(v, v)) }
 
 pub fn doppler_vector_normalize(v : DopplerVector) -> DopplerVector {
   let n = doppler_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn doppler_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn doppler_std(data : Array[Double]) -> Double { doppler_sqrt(doppler_var(data)) }
+pub fn doppler_std(data : Array[Double]) -> Double { @_common.sqrt(doppler_var(data)) }
 
 pub fn doppler_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn doppler_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + doppler_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn doppler_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = doppler_precision(pred, labels, pos); let r = doppler_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn doppler_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn doppler_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn doppler_dbl(x : Double) -> String {
   let i = if x >= 0.0 { doppler_int(x) } else { -doppler_int(-x) }

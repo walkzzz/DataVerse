@@ -25,7 +25,7 @@ pub fn transformer_rt_point_label(p : Transformer_rtPoint) -> Int { p.label }
 pub fn transformer_rt_point_dist(a : Transformer_rtPoint, b : Transformer_rtPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  transformer_rt_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn transformer_rt_point_add(a : Transformer_rtPoint, b : Transformer_rtPoint) -> Transformer_rtPoint {
@@ -45,7 +45,7 @@ pub fn transformer_rt_point_dot(a : Transformer_rtPoint, b : Transformer_rtPoint
 }
 
 pub fn transformer_rt_point_norm(pt : Transformer_rtPoint) -> Double {
-  transformer_rt_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn transformer_rt_point_to_string(pt : Transformer_rtPoint) -> String {
@@ -102,7 +102,7 @@ pub fn transformer_rt_series_var(s : Transformer_rtSeries) -> Double {
   }
 }
 
-pub fn transformer_rt_series_std(s : Transformer_rtSeries) -> Double { transformer_rt_sqrt(transformer_rt_series_var(s)) }
+pub fn transformer_rt_series_std(s : Transformer_rtSeries) -> Double { @_common.sqrt(transformer_rt_series_var(s)) }
 
 pub fn transformer_rt_series_scale(s : Transformer_rtSeries, f : Double) -> Transformer_rtSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn transformer_rt_matrix_trace(m : Transformer_rtMatrix) -> Double {
 pub fn transformer_rt_matrix_norm(m : Transformer_rtMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  transformer_rt_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn transformer_rt_matrix_to_string(m : Transformer_rtMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn transformer_rt_vector_dot(a : Transformer_rtVector, b : Transformer_rtVec
   sum
 }
 
-pub fn transformer_rt_vector_norm(v : Transformer_rtVector) -> Double { transformer_rt_sqrt(transformer_rt_vector_dot(v, v)) }
+pub fn transformer_rt_vector_norm(v : Transformer_rtVector) -> Double { @_common.sqrt(transformer_rt_vector_dot(v, v)) }
 
 pub fn transformer_rt_vector_normalize(v : Transformer_rtVector) -> Transformer_rtVector {
   let n = transformer_rt_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn transformer_rt_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn transformer_rt_std(data : Array[Double]) -> Double { transformer_rt_sqrt(transformer_rt_var(data)) }
+pub fn transformer_rt_std(data : Array[Double]) -> Double { @_common.sqrt(transformer_rt_var(data)) }
 
 pub fn transformer_rt_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn transformer_rt_mae(pred : Array[Double], labels : Array[Double]) -> Doubl
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + transformer_rt_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn transformer_rt_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> D
   let p_ = transformer_rt_precision(pred, labels, pos); let r = transformer_rt_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn transformer_rt_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn transformer_rt_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn transformer_rt_dbl(x : Double) -> String {
   let i = if x >= 0.0 { transformer_rt_int(x) } else { -transformer_rt_int(-x) }

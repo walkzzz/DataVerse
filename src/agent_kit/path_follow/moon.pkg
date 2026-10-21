@@ -1,2 +1,5 @@
 // agent_kit/path_follow agent_kit/path_follow
 // S13.146 new
+import {
+  "dataverse/extcore/_common",
+}

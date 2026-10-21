@@ -25,7 +25,7 @@ pub fn encode_thrift_point_label(p : Encode_thriftPoint) -> Int { p.label }
 pub fn encode_thrift_point_dist(a : Encode_thriftPoint, b : Encode_thriftPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  encode_thrift_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn encode_thrift_point_add(a : Encode_thriftPoint, b : Encode_thriftPoint) -> Encode_thriftPoint {
@@ -45,7 +45,7 @@ pub fn encode_thrift_point_dot(a : Encode_thriftPoint, b : Encode_thriftPoint) -
 }
 
 pub fn encode_thrift_point_norm(pt : Encode_thriftPoint) -> Double {
-  encode_thrift_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn encode_thrift_point_to_string(pt : Encode_thriftPoint) -> String {
@@ -102,7 +102,7 @@ pub fn encode_thrift_series_var(s : Encode_thriftSeries) -> Double {
   }
 }
 
-pub fn encode_thrift_series_std(s : Encode_thriftSeries) -> Double { encode_thrift_sqrt(encode_thrift_series_var(s)) }
+pub fn encode_thrift_series_std(s : Encode_thriftSeries) -> Double { @_common.sqrt(encode_thrift_series_var(s)) }
 
 pub fn encode_thrift_series_scale(s : Encode_thriftSeries, f : Double) -> Encode_thriftSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn encode_thrift_matrix_trace(m : Encode_thriftMatrix) -> Double {
 pub fn encode_thrift_matrix_norm(m : Encode_thriftMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  encode_thrift_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn encode_thrift_matrix_to_string(m : Encode_thriftMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn encode_thrift_vector_dot(a : Encode_thriftVector, b : Encode_thriftVector
   sum
 }
 
-pub fn encode_thrift_vector_norm(v : Encode_thriftVector) -> Double { encode_thrift_sqrt(encode_thrift_vector_dot(v, v)) }
+pub fn encode_thrift_vector_norm(v : Encode_thriftVector) -> Double { @_common.sqrt(encode_thrift_vector_dot(v, v)) }
 
 pub fn encode_thrift_vector_normalize(v : Encode_thriftVector) -> Encode_thriftVector {
   let n = encode_thrift_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn encode_thrift_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn encode_thrift_std(data : Array[Double]) -> Double { encode_thrift_sqrt(encode_thrift_var(data)) }
+pub fn encode_thrift_std(data : Array[Double]) -> Double { @_common.sqrt(encode_thrift_var(data)) }
 
 pub fn encode_thrift_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn encode_thrift_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + encode_thrift_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn encode_thrift_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = encode_thrift_precision(pred, labels, pos); let r = encode_thrift_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn encode_thrift_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn encode_thrift_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn encode_thrift_dbl(x : Double) -> String {
   let i = if x >= 0.0 { encode_thrift_int(x) } else { -encode_thrift_int(-x) }

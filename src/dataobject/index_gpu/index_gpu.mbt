@@ -25,7 +25,7 @@ pub fn index_gpu_point_label(p : Index_gpuPoint) -> Int { p.label }
 pub fn index_gpu_point_dist(a : Index_gpuPoint, b : Index_gpuPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  index_gpu_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn index_gpu_point_add(a : Index_gpuPoint, b : Index_gpuPoint) -> Index_gpuPoint {
@@ -45,7 +45,7 @@ pub fn index_gpu_point_dot(a : Index_gpuPoint, b : Index_gpuPoint) -> Double {
 }
 
 pub fn index_gpu_point_norm(pt : Index_gpuPoint) -> Double {
-  index_gpu_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn index_gpu_point_to_string(pt : Index_gpuPoint) -> String {
@@ -102,7 +102,7 @@ pub fn index_gpu_series_var(s : Index_gpuSeries) -> Double {
   }
 }
 
-pub fn index_gpu_series_std(s : Index_gpuSeries) -> Double { index_gpu_sqrt(index_gpu_series_var(s)) }
+pub fn index_gpu_series_std(s : Index_gpuSeries) -> Double { @_common.sqrt(index_gpu_series_var(s)) }
 
 pub fn index_gpu_series_scale(s : Index_gpuSeries, f : Double) -> Index_gpuSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn index_gpu_matrix_trace(m : Index_gpuMatrix) -> Double {
 pub fn index_gpu_matrix_norm(m : Index_gpuMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  index_gpu_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn index_gpu_matrix_to_string(m : Index_gpuMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn index_gpu_vector_dot(a : Index_gpuVector, b : Index_gpuVector) -> Double 
   sum
 }
 
-pub fn index_gpu_vector_norm(v : Index_gpuVector) -> Double { index_gpu_sqrt(index_gpu_vector_dot(v, v)) }
+pub fn index_gpu_vector_norm(v : Index_gpuVector) -> Double { @_common.sqrt(index_gpu_vector_dot(v, v)) }
 
 pub fn index_gpu_vector_normalize(v : Index_gpuVector) -> Index_gpuVector {
   let n = index_gpu_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn index_gpu_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn index_gpu_std(data : Array[Double]) -> Double { index_gpu_sqrt(index_gpu_var(data)) }
+pub fn index_gpu_std(data : Array[Double]) -> Double { @_common.sqrt(index_gpu_var(data)) }
 
 pub fn index_gpu_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn index_gpu_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + index_gpu_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn index_gpu_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double
   let p_ = index_gpu_precision(pred, labels, pos); let r = index_gpu_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn index_gpu_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn index_gpu_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn index_gpu_dbl(x : Double) -> String {
   let i = if x >= 0.0 { index_gpu_int(x) } else { -index_gpu_int(-x) }

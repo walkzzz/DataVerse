@@ -1,2 +1,5 @@
 // dataobject/encode_toml dataobject/encode_toml
 // S13.202 new
+import {
+  "dataverse/extcore/_common",
+}

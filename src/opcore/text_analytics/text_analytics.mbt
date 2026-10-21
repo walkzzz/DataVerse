@@ -15,31 +15,6 @@ const TA_E_EULER : Double = 2.718281828459045
 // 辅助数学函数 / Helper math functions (private)
 // ============================================================
 
-fn ta_sqrt(x : Double) -> Double {
-  if x < 0.0 {
-    return 0.0
-  }
-  if x == 0.0 {
-    return 0.0
-  }
-  let mut guess = x / 2.0
-  if guess == 0.0 {
-    guess = 1.0
-  }
-  for _ in 0..<60 {
-    guess = (guess + x / guess) / 2.0
-  }
-  guess
-}
-
-fn ta_abs(x : Double) -> Double {
-  if x < 0.0 {
-    -x
-  } else {
-    x
-  }
-}
-
 fn ta_exp(x : Double) -> Double {
   if x > 700.0 {
     return TA_LARGE_DOUBLE
@@ -62,7 +37,7 @@ fn ta_exp(x : Double) -> Double {
   for i in 1..<40 {
     term = term * y / i.to_double()
     result = result + term
-    if ta_abs(term) < 0.0000000000000001 {
+    if @_common.abs(term) < 0.0000000000000001 {
       break
     }
   }
@@ -96,7 +71,7 @@ fn ta_ln(x : Double) -> Double {
     let term = t_pow / (2 * k + 1).to_double()
     result = result + term
     t_pow = t_pow * t * t
-    if ta_abs(term) < 0.0000000000000001 {
+    if @_common.abs(term) < 0.0000000000000001 {
       break
     }
   }
@@ -659,7 +634,7 @@ pub fn cosine_text_similarity(s1 : String, s2 : String) -> Double {
   if norm1 == 0.0 || norm2 == 0.0 {
     return 0.0
   }
-  dot / (ta_sqrt(norm1) * ta_sqrt(norm2))
+  dot / (@_common.sqrt(norm1) * @_common.sqrt(norm2))
 }
 
 /// Jaro 距离 / Jaro similarity.
@@ -1116,7 +1091,7 @@ pub fn make_topic_model(corpus : Array[String], k : Int) -> TopicModel {
       for c in 0..<chars.length() {
         hash = hash + chars[c].to_int().to_double() * ta_pow(2.0, ((c + 1) % 7).to_double())
       }
-      let val = ta_abs(ta_ln(1.0 + ta_abs(hash + t.to_double() * 3.7))) / 10.0
+      let val = @_common.abs(ta_ln(1.0 + @_common.abs(hash + t.to_double() * 3.7))) / 10.0
       dist.push(val)
     }
     let mut sum = 0.0
@@ -1284,7 +1259,7 @@ pub fn word_embedding_simple(word : String) -> Array[Double] {
       let shift = (i + d) % dim
       v = v + chars[i].to_int().to_double() * ta_pow(2.0, shift.to_double() / 4.0)
     }
-    result.push(ta_ln(1.0 + ta_abs(v)) / 10.0)
+    result.push(ta_ln(1.0 + @_common.abs(v)) / 10.0)
   }
   result
 }
@@ -1330,7 +1305,7 @@ pub fn similarity_embedding(e1 : Array[Double], e2 : Array[Double]) -> Double {
   if n1 == 0.0 || n2 == 0.0 {
     return 0.0
   }
-  dot / (ta_sqrt(n1) * ta_sqrt(n2))
+  dot / (@_common.sqrt(n1) * @_common.sqrt(n2))
 }
 
 // ============================================================

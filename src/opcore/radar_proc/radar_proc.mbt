@@ -25,7 +25,7 @@ pub fn radar_proc_point_label(p : Radar_procPoint) -> Int { p.label }
 pub fn radar_proc_point_dist(a : Radar_procPoint, b : Radar_procPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  radar_proc_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn radar_proc_point_add(a : Radar_procPoint, b : Radar_procPoint) -> Radar_procPoint {
@@ -45,7 +45,7 @@ pub fn radar_proc_point_dot(a : Radar_procPoint, b : Radar_procPoint) -> Double 
 }
 
 pub fn radar_proc_point_norm(pt : Radar_procPoint) -> Double {
-  radar_proc_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn radar_proc_point_to_string(pt : Radar_procPoint) -> String {
@@ -102,7 +102,7 @@ pub fn radar_proc_series_var(s : Radar_procSeries) -> Double {
   }
 }
 
-pub fn radar_proc_series_std(s : Radar_procSeries) -> Double { radar_proc_sqrt(radar_proc_series_var(s)) }
+pub fn radar_proc_series_std(s : Radar_procSeries) -> Double { @_common.sqrt(radar_proc_series_var(s)) }
 
 pub fn radar_proc_series_scale(s : Radar_procSeries, f : Double) -> Radar_procSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn radar_proc_matrix_trace(m : Radar_procMatrix) -> Double {
 pub fn radar_proc_matrix_norm(m : Radar_procMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  radar_proc_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn radar_proc_matrix_to_string(m : Radar_procMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn radar_proc_vector_dot(a : Radar_procVector, b : Radar_procVector) -> Doub
   sum
 }
 
-pub fn radar_proc_vector_norm(v : Radar_procVector) -> Double { radar_proc_sqrt(radar_proc_vector_dot(v, v)) }
+pub fn radar_proc_vector_norm(v : Radar_procVector) -> Double { @_common.sqrt(radar_proc_vector_dot(v, v)) }
 
 pub fn radar_proc_vector_normalize(v : Radar_procVector) -> Radar_procVector {
   let n = radar_proc_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn radar_proc_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn radar_proc_std(data : Array[Double]) -> Double { radar_proc_sqrt(radar_proc_var(data)) }
+pub fn radar_proc_std(data : Array[Double]) -> Double { @_common.sqrt(radar_proc_var(data)) }
 
 pub fn radar_proc_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn radar_proc_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + radar_proc_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn radar_proc_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = radar_proc_precision(pred, labels, pos); let r = radar_proc_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn radar_proc_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn radar_proc_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn radar_proc_dbl(x : Double) -> String {
   let i = if x >= 0.0 { radar_proc_int(x) } else { -radar_proc_int(-x) }

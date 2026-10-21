@@ -25,7 +25,7 @@ pub fn window_tumble_point_label(p : Window_tumblePoint) -> Int { p.label }
 pub fn window_tumble_point_dist(a : Window_tumblePoint, b : Window_tumblePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  window_tumble_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn window_tumble_point_add(a : Window_tumblePoint, b : Window_tumblePoint) -> Window_tumblePoint {
@@ -45,7 +45,7 @@ pub fn window_tumble_point_dot(a : Window_tumblePoint, b : Window_tumblePoint) -
 }
 
 pub fn window_tumble_point_norm(pt : Window_tumblePoint) -> Double {
-  window_tumble_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn window_tumble_point_to_string(pt : Window_tumblePoint) -> String {
@@ -102,7 +102,7 @@ pub fn window_tumble_series_var(s : Window_tumbleSeries) -> Double {
   }
 }
 
-pub fn window_tumble_series_std(s : Window_tumbleSeries) -> Double { window_tumble_sqrt(window_tumble_series_var(s)) }
+pub fn window_tumble_series_std(s : Window_tumbleSeries) -> Double { @_common.sqrt(window_tumble_series_var(s)) }
 
 pub fn window_tumble_series_scale(s : Window_tumbleSeries, f : Double) -> Window_tumbleSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn window_tumble_matrix_trace(m : Window_tumbleMatrix) -> Double {
 pub fn window_tumble_matrix_norm(m : Window_tumbleMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  window_tumble_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn window_tumble_matrix_to_string(m : Window_tumbleMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn window_tumble_vector_dot(a : Window_tumbleVector, b : Window_tumbleVector
   sum
 }
 
-pub fn window_tumble_vector_norm(v : Window_tumbleVector) -> Double { window_tumble_sqrt(window_tumble_vector_dot(v, v)) }
+pub fn window_tumble_vector_norm(v : Window_tumbleVector) -> Double { @_common.sqrt(window_tumble_vector_dot(v, v)) }
 
 pub fn window_tumble_vector_normalize(v : Window_tumbleVector) -> Window_tumbleVector {
   let n = window_tumble_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn window_tumble_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn window_tumble_std(data : Array[Double]) -> Double { window_tumble_sqrt(window_tumble_var(data)) }
+pub fn window_tumble_std(data : Array[Double]) -> Double { @_common.sqrt(window_tumble_var(data)) }
 
 pub fn window_tumble_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn window_tumble_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + window_tumble_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn window_tumble_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = window_tumble_precision(pred, labels, pos); let r = window_tumble_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn window_tumble_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn window_tumble_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn window_tumble_dbl(x : Double) -> String {
   let i = if x >= 0.0 { window_tumble_int(x) } else { -window_tumble_int(-x) }

@@ -25,7 +25,7 @@ pub fn circuit_break_point_label(p : Circuit_breakPoint) -> Int { p.label }
 pub fn circuit_break_point_dist(a : Circuit_breakPoint, b : Circuit_breakPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  circuit_break_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn circuit_break_point_add(a : Circuit_breakPoint, b : Circuit_breakPoint) -> Circuit_breakPoint {
@@ -45,7 +45,7 @@ pub fn circuit_break_point_dot(a : Circuit_breakPoint, b : Circuit_breakPoint) -
 }
 
 pub fn circuit_break_point_norm(pt : Circuit_breakPoint) -> Double {
-  circuit_break_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn circuit_break_point_to_string(pt : Circuit_breakPoint) -> String {
@@ -102,7 +102,7 @@ pub fn circuit_break_series_var(s : Circuit_breakSeries) -> Double {
   }
 }
 
-pub fn circuit_break_series_std(s : Circuit_breakSeries) -> Double { circuit_break_sqrt(circuit_break_series_var(s)) }
+pub fn circuit_break_series_std(s : Circuit_breakSeries) -> Double { @_common.sqrt(circuit_break_series_var(s)) }
 
 pub fn circuit_break_series_scale(s : Circuit_breakSeries, f : Double) -> Circuit_breakSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn circuit_break_matrix_trace(m : Circuit_breakMatrix) -> Double {
 pub fn circuit_break_matrix_norm(m : Circuit_breakMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  circuit_break_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn circuit_break_matrix_to_string(m : Circuit_breakMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn circuit_break_vector_dot(a : Circuit_breakVector, b : Circuit_breakVector
   sum
 }
 
-pub fn circuit_break_vector_norm(v : Circuit_breakVector) -> Double { circuit_break_sqrt(circuit_break_vector_dot(v, v)) }
+pub fn circuit_break_vector_norm(v : Circuit_breakVector) -> Double { @_common.sqrt(circuit_break_vector_dot(v, v)) }
 
 pub fn circuit_break_vector_normalize(v : Circuit_breakVector) -> Circuit_breakVector {
   let n = circuit_break_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn circuit_break_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn circuit_break_std(data : Array[Double]) -> Double { circuit_break_sqrt(circuit_break_var(data)) }
+pub fn circuit_break_std(data : Array[Double]) -> Double { @_common.sqrt(circuit_break_var(data)) }
 
 pub fn circuit_break_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn circuit_break_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + circuit_break_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn circuit_break_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = circuit_break_precision(pred, labels, pos); let r = circuit_break_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn circuit_break_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn circuit_break_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn circuit_break_dbl(x : Double) -> String {
   let i = if x >= 0.0 { circuit_break_int(x) } else { -circuit_break_int(-x) }

@@ -25,7 +25,7 @@ pub fn pso_swarm_point_label(p : Pso_swarmPoint) -> Int { p.label }
 pub fn pso_swarm_point_dist(a : Pso_swarmPoint, b : Pso_swarmPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  pso_swarm_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn pso_swarm_point_add(a : Pso_swarmPoint, b : Pso_swarmPoint) -> Pso_swarmPoint {
@@ -45,7 +45,7 @@ pub fn pso_swarm_point_dot(a : Pso_swarmPoint, b : Pso_swarmPoint) -> Double {
 }
 
 pub fn pso_swarm_point_norm(pt : Pso_swarmPoint) -> Double {
-  pso_swarm_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn pso_swarm_point_to_string(pt : Pso_swarmPoint) -> String {
@@ -102,7 +102,7 @@ pub fn pso_swarm_series_var(s : Pso_swarmSeries) -> Double {
   }
 }
 
-pub fn pso_swarm_series_std(s : Pso_swarmSeries) -> Double { pso_swarm_sqrt(pso_swarm_series_var(s)) }
+pub fn pso_swarm_series_std(s : Pso_swarmSeries) -> Double { @_common.sqrt(pso_swarm_series_var(s)) }
 
 pub fn pso_swarm_series_scale(s : Pso_swarmSeries, f : Double) -> Pso_swarmSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn pso_swarm_matrix_trace(m : Pso_swarmMatrix) -> Double {
 pub fn pso_swarm_matrix_norm(m : Pso_swarmMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  pso_swarm_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn pso_swarm_matrix_to_string(m : Pso_swarmMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn pso_swarm_vector_dot(a : Pso_swarmVector, b : Pso_swarmVector) -> Double 
   sum
 }
 
-pub fn pso_swarm_vector_norm(v : Pso_swarmVector) -> Double { pso_swarm_sqrt(pso_swarm_vector_dot(v, v)) }
+pub fn pso_swarm_vector_norm(v : Pso_swarmVector) -> Double { @_common.sqrt(pso_swarm_vector_dot(v, v)) }
 
 pub fn pso_swarm_vector_normalize(v : Pso_swarmVector) -> Pso_swarmVector {
   let n = pso_swarm_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn pso_swarm_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn pso_swarm_std(data : Array[Double]) -> Double { pso_swarm_sqrt(pso_swarm_var(data)) }
+pub fn pso_swarm_std(data : Array[Double]) -> Double { @_common.sqrt(pso_swarm_var(data)) }
 
 pub fn pso_swarm_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn pso_swarm_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + pso_swarm_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn pso_swarm_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double
   let p_ = pso_swarm_precision(pred, labels, pos); let r = pso_swarm_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn pso_swarm_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn pso_swarm_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn pso_swarm_dbl(x : Double) -> String {
   let i = if x >= 0.0 { pso_swarm_int(x) } else { -pso_swarm_int(-x) }

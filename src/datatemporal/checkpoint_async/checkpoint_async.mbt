@@ -25,7 +25,7 @@ pub fn checkpoint_async_point_label(p : Checkpoint_asyncPoint) -> Int { p.label 
 pub fn checkpoint_async_point_dist(a : Checkpoint_asyncPoint, b : Checkpoint_asyncPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  checkpoint_async_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn checkpoint_async_point_add(a : Checkpoint_asyncPoint, b : Checkpoint_asyncPoint) -> Checkpoint_asyncPoint {
@@ -45,7 +45,7 @@ pub fn checkpoint_async_point_dot(a : Checkpoint_asyncPoint, b : Checkpoint_asyn
 }
 
 pub fn checkpoint_async_point_norm(pt : Checkpoint_asyncPoint) -> Double {
-  checkpoint_async_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn checkpoint_async_point_to_string(pt : Checkpoint_asyncPoint) -> String {
@@ -102,7 +102,7 @@ pub fn checkpoint_async_series_var(s : Checkpoint_asyncSeries) -> Double {
   }
 }
 
-pub fn checkpoint_async_series_std(s : Checkpoint_asyncSeries) -> Double { checkpoint_async_sqrt(checkpoint_async_series_var(s)) }
+pub fn checkpoint_async_series_std(s : Checkpoint_asyncSeries) -> Double { @_common.sqrt(checkpoint_async_series_var(s)) }
 
 pub fn checkpoint_async_series_scale(s : Checkpoint_asyncSeries, f : Double) -> Checkpoint_asyncSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn checkpoint_async_matrix_trace(m : Checkpoint_asyncMatrix) -> Double {
 pub fn checkpoint_async_matrix_norm(m : Checkpoint_asyncMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  checkpoint_async_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn checkpoint_async_matrix_to_string(m : Checkpoint_asyncMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn checkpoint_async_vector_dot(a : Checkpoint_asyncVector, b : Checkpoint_as
   sum
 }
 
-pub fn checkpoint_async_vector_norm(v : Checkpoint_asyncVector) -> Double { checkpoint_async_sqrt(checkpoint_async_vector_dot(v, v)) }
+pub fn checkpoint_async_vector_norm(v : Checkpoint_asyncVector) -> Double { @_common.sqrt(checkpoint_async_vector_dot(v, v)) }
 
 pub fn checkpoint_async_vector_normalize(v : Checkpoint_asyncVector) -> Checkpoint_asyncVector {
   let n = checkpoint_async_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn checkpoint_async_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn checkpoint_async_std(data : Array[Double]) -> Double { checkpoint_async_sqrt(checkpoint_async_var(data)) }
+pub fn checkpoint_async_std(data : Array[Double]) -> Double { @_common.sqrt(checkpoint_async_var(data)) }
 
 pub fn checkpoint_async_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn checkpoint_async_mae(pred : Array[Double], labels : Array[Double]) -> Dou
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + checkpoint_async_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn checkpoint_async_f1(pred : Array[Int], labels : Array[Int], pos : Int) ->
   let p_ = checkpoint_async_precision(pred, labels, pos); let r = checkpoint_async_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn checkpoint_async_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn checkpoint_async_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn checkpoint_async_dbl(x : Double) -> String {
   let i = if x >= 0.0 { checkpoint_async_int(x) } else { -checkpoint_async_int(-x) }

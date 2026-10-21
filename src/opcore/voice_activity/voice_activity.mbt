@@ -25,7 +25,7 @@ pub fn voice_activity_point_label(p : Voice_activityPoint) -> Int { p.label }
 pub fn voice_activity_point_dist(a : Voice_activityPoint, b : Voice_activityPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  voice_activity_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn voice_activity_point_add(a : Voice_activityPoint, b : Voice_activityPoint) -> Voice_activityPoint {
@@ -45,7 +45,7 @@ pub fn voice_activity_point_dot(a : Voice_activityPoint, b : Voice_activityPoint
 }
 
 pub fn voice_activity_point_norm(pt : Voice_activityPoint) -> Double {
-  voice_activity_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn voice_activity_point_to_string(pt : Voice_activityPoint) -> String {
@@ -102,7 +102,7 @@ pub fn voice_activity_series_var(s : Voice_activitySeries) -> Double {
   }
 }
 
-pub fn voice_activity_series_std(s : Voice_activitySeries) -> Double { voice_activity_sqrt(voice_activity_series_var(s)) }
+pub fn voice_activity_series_std(s : Voice_activitySeries) -> Double { @_common.sqrt(voice_activity_series_var(s)) }
 
 pub fn voice_activity_series_scale(s : Voice_activitySeries, f : Double) -> Voice_activitySeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn voice_activity_matrix_trace(m : Voice_activityMatrix) -> Double {
 pub fn voice_activity_matrix_norm(m : Voice_activityMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  voice_activity_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn voice_activity_matrix_to_string(m : Voice_activityMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn voice_activity_vector_dot(a : Voice_activityVector, b : Voice_activityVec
   sum
 }
 
-pub fn voice_activity_vector_norm(v : Voice_activityVector) -> Double { voice_activity_sqrt(voice_activity_vector_dot(v, v)) }
+pub fn voice_activity_vector_norm(v : Voice_activityVector) -> Double { @_common.sqrt(voice_activity_vector_dot(v, v)) }
 
 pub fn voice_activity_vector_normalize(v : Voice_activityVector) -> Voice_activityVector {
   let n = voice_activity_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn voice_activity_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn voice_activity_std(data : Array[Double]) -> Double { voice_activity_sqrt(voice_activity_var(data)) }
+pub fn voice_activity_std(data : Array[Double]) -> Double { @_common.sqrt(voice_activity_var(data)) }
 
 pub fn voice_activity_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn voice_activity_mae(pred : Array[Double], labels : Array[Double]) -> Doubl
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + voice_activity_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn voice_activity_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> D
   let p_ = voice_activity_precision(pred, labels, pos); let r = voice_activity_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn voice_activity_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn voice_activity_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn voice_activity_dbl(x : Double) -> String {
   let i = if x >= 0.0 { voice_activity_int(x) } else { -voice_activity_int(-x) }

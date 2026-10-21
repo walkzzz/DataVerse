@@ -25,7 +25,7 @@ pub fn super_res_point_label(p : Super_resPoint) -> Int { p.label }
 pub fn super_res_point_dist(a : Super_resPoint, b : Super_resPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  super_res_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn super_res_point_add(a : Super_resPoint, b : Super_resPoint) -> Super_resPoint {
@@ -45,7 +45,7 @@ pub fn super_res_point_dot(a : Super_resPoint, b : Super_resPoint) -> Double {
 }
 
 pub fn super_res_point_norm(pt : Super_resPoint) -> Double {
-  super_res_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn super_res_point_to_string(pt : Super_resPoint) -> String {
@@ -102,7 +102,7 @@ pub fn super_res_series_var(s : Super_resSeries) -> Double {
   }
 }
 
-pub fn super_res_series_std(s : Super_resSeries) -> Double { super_res_sqrt(super_res_series_var(s)) }
+pub fn super_res_series_std(s : Super_resSeries) -> Double { @_common.sqrt(super_res_series_var(s)) }
 
 pub fn super_res_series_scale(s : Super_resSeries, f : Double) -> Super_resSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn super_res_matrix_trace(m : Super_resMatrix) -> Double {
 pub fn super_res_matrix_norm(m : Super_resMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  super_res_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn super_res_matrix_to_string(m : Super_resMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn super_res_vector_dot(a : Super_resVector, b : Super_resVector) -> Double 
   sum
 }
 
-pub fn super_res_vector_norm(v : Super_resVector) -> Double { super_res_sqrt(super_res_vector_dot(v, v)) }
+pub fn super_res_vector_norm(v : Super_resVector) -> Double { @_common.sqrt(super_res_vector_dot(v, v)) }
 
 pub fn super_res_vector_normalize(v : Super_resVector) -> Super_resVector {
   let n = super_res_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn super_res_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn super_res_std(data : Array[Double]) -> Double { super_res_sqrt(super_res_var(data)) }
+pub fn super_res_std(data : Array[Double]) -> Double { @_common.sqrt(super_res_var(data)) }
 
 pub fn super_res_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn super_res_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + super_res_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn super_res_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double
   let p_ = super_res_precision(pred, labels, pos); let r = super_res_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn super_res_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn super_res_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn super_res_dbl(x : Double) -> String {
   let i = if x >= 0.0 { super_res_int(x) } else { -super_res_int(-x) }

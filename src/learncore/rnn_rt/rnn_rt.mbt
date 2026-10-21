@@ -25,7 +25,7 @@ pub fn rnn_rt_point_label(p : Rnn_rtPoint) -> Int { p.label }
 pub fn rnn_rt_point_dist(a : Rnn_rtPoint, b : Rnn_rtPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  rnn_rt_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn rnn_rt_point_add(a : Rnn_rtPoint, b : Rnn_rtPoint) -> Rnn_rtPoint {
@@ -45,7 +45,7 @@ pub fn rnn_rt_point_dot(a : Rnn_rtPoint, b : Rnn_rtPoint) -> Double {
 }
 
 pub fn rnn_rt_point_norm(pt : Rnn_rtPoint) -> Double {
-  rnn_rt_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn rnn_rt_point_to_string(pt : Rnn_rtPoint) -> String {
@@ -102,7 +102,7 @@ pub fn rnn_rt_series_var(s : Rnn_rtSeries) -> Double {
   }
 }
 
-pub fn rnn_rt_series_std(s : Rnn_rtSeries) -> Double { rnn_rt_sqrt(rnn_rt_series_var(s)) }
+pub fn rnn_rt_series_std(s : Rnn_rtSeries) -> Double { @_common.sqrt(rnn_rt_series_var(s)) }
 
 pub fn rnn_rt_series_scale(s : Rnn_rtSeries, f : Double) -> Rnn_rtSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn rnn_rt_matrix_trace(m : Rnn_rtMatrix) -> Double {
 pub fn rnn_rt_matrix_norm(m : Rnn_rtMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  rnn_rt_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn rnn_rt_matrix_to_string(m : Rnn_rtMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn rnn_rt_vector_dot(a : Rnn_rtVector, b : Rnn_rtVector) -> Double {
   sum
 }
 
-pub fn rnn_rt_vector_norm(v : Rnn_rtVector) -> Double { rnn_rt_sqrt(rnn_rt_vector_dot(v, v)) }
+pub fn rnn_rt_vector_norm(v : Rnn_rtVector) -> Double { @_common.sqrt(rnn_rt_vector_dot(v, v)) }
 
 pub fn rnn_rt_vector_normalize(v : Rnn_rtVector) -> Rnn_rtVector {
   let n = rnn_rt_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn rnn_rt_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn rnn_rt_std(data : Array[Double]) -> Double { rnn_rt_sqrt(rnn_rt_var(data)) }
+pub fn rnn_rt_std(data : Array[Double]) -> Double { @_common.sqrt(rnn_rt_var(data)) }
 
 pub fn rnn_rt_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn rnn_rt_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + rnn_rt_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn rnn_rt_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = rnn_rt_precision(pred, labels, pos); let r = rnn_rt_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn rnn_rt_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn rnn_rt_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn rnn_rt_dbl(x : Double) -> String {
   let i = if x >= 0.0 { rnn_rt_int(x) } else { -rnn_rt_int(-x) }

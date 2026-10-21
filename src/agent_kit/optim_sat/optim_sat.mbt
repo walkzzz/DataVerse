@@ -25,7 +25,7 @@ pub fn optim_sat_point_label(p : Optim_satPoint) -> Int { p.label }
 pub fn optim_sat_point_dist(a : Optim_satPoint, b : Optim_satPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  optim_sat_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn optim_sat_point_add(a : Optim_satPoint, b : Optim_satPoint) -> Optim_satPoint {
@@ -45,7 +45,7 @@ pub fn optim_sat_point_dot(a : Optim_satPoint, b : Optim_satPoint) -> Double {
 }
 
 pub fn optim_sat_point_norm(pt : Optim_satPoint) -> Double {
-  optim_sat_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn optim_sat_point_to_string(pt : Optim_satPoint) -> String {
@@ -102,7 +102,7 @@ pub fn optim_sat_series_var(s : Optim_satSeries) -> Double {
   }
 }
 
-pub fn optim_sat_series_std(s : Optim_satSeries) -> Double { optim_sat_sqrt(optim_sat_series_var(s)) }
+pub fn optim_sat_series_std(s : Optim_satSeries) -> Double { @_common.sqrt(optim_sat_series_var(s)) }
 
 pub fn optim_sat_series_scale(s : Optim_satSeries, f : Double) -> Optim_satSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn optim_sat_matrix_trace(m : Optim_satMatrix) -> Double {
 pub fn optim_sat_matrix_norm(m : Optim_satMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  optim_sat_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn optim_sat_matrix_to_string(m : Optim_satMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn optim_sat_vector_dot(a : Optim_satVector, b : Optim_satVector) -> Double 
   sum
 }
 
-pub fn optim_sat_vector_norm(v : Optim_satVector) -> Double { optim_sat_sqrt(optim_sat_vector_dot(v, v)) }
+pub fn optim_sat_vector_norm(v : Optim_satVector) -> Double { @_common.sqrt(optim_sat_vector_dot(v, v)) }
 
 pub fn optim_sat_vector_normalize(v : Optim_satVector) -> Optim_satVector {
   let n = optim_sat_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn optim_sat_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn optim_sat_std(data : Array[Double]) -> Double { optim_sat_sqrt(optim_sat_var(data)) }
+pub fn optim_sat_std(data : Array[Double]) -> Double { @_common.sqrt(optim_sat_var(data)) }
 
 pub fn optim_sat_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn optim_sat_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + optim_sat_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn optim_sat_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double
   let p_ = optim_sat_precision(pred, labels, pos); let r = optim_sat_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn optim_sat_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn optim_sat_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn optim_sat_dbl(x : Double) -> String {
   let i = if x >= 0.0 { optim_sat_int(x) } else { -optim_sat_int(-x) }

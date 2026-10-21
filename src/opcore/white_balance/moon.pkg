@@ -1,2 +1,5 @@
 // opcore/white_balance opcore/white_balance
 // S13.54 new
+import {
+  "dataverse/extcore/_common",
+}

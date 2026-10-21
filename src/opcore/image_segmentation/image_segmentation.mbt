@@ -44,24 +44,6 @@ pub(all) enum SegMethod {
   MaskRCNN
 }
 
-fn seg_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    return 0.0
-  }
-  let mut guess = x
-  if guess > 1.0 {
-    guess = guess / 2.0
-  }
-  let mut prev = 0.0
-  let mut iter = 0
-  while (guess - prev).abs() > 0.0000001 && iter < 60 {
-    prev = guess
-    guess = (guess + x / guess) / 2.0
-    iter = iter + 1
-  }
-  guess
-}
-
 fn seg_exp(x : Double) -> Double {
   if x > 50.0 {
     return 5184705528587072.0
@@ -98,14 +80,6 @@ fn seg_pow(base : Double, exp : Double) -> Double {
     return 0.0
   }
   seg_exp(exp * seg_ln(base))
-}
-
-fn seg_abs(x : Double) -> Double {
-  if x < 0.0 {
-    -x
-  } else {
-    x
-  }
 }
 
 fn seg_clamp(v : Double, lo : Double, hi : Double) -> Double {
@@ -375,7 +349,7 @@ pub fn seg_region_growing(
           continue
         }
         let nv = seg_pixel(img, nx, ny)
-        if seg_abs(nv - seed_val) <= threshold {
+        if @_common.abs(nv - seed_val) <= threshold {
           visited[nidx] = true
           seg_set_pixel(out, nx, ny, 255.0)
           queue.push((nx, ny))
@@ -398,7 +372,7 @@ pub fn seg_region_merge(img : SegImage, threshold : Double) -> SegImage {
       for x in 0..<(out.width - 1) {
         let v1 = seg_pixel(out, x, y)
         let v2 = seg_pixel(out, x + 1, y)
-        if seg_abs(v1 - v2) < threshold {
+        if @_common.abs(v1 - v2) < threshold {
           let avg = (v1 + v2) / 2.0
           seg_set_pixel(out, x, y, avg)
           seg_set_pixel(out, x + 1, y, avg)
@@ -484,13 +458,13 @@ pub fn seg_fuzzy_cmeans(img : SegImage, c : Int, m : Double, max_iter : Int) -> 
         }
         seg_set_pixel(out, x, y, best.to_double())
         for ci in 0..<c {
-          let d = seg_abs(v - centroids[ci])
+          let d = @_common.abs(v - centroids[ci])
           if d < 0.0001 {
             membership[pidx * c + ci] = 1.0
           } else {
             let mut u = 0.0
             for cj in 0..<c {
-              let dj = seg_abs(v - centroids[cj])
+              let dj = @_common.abs(v - centroids[cj])
               if dj < 0.0001 {
                 u = u + 0.0
               } else {
@@ -521,7 +495,7 @@ pub fn seg_slic_superpixels(img : SegImage, k : Int, m : Double) -> SegImage {
     return seg_empty(img.width, img.height)
   }
   let n = img.width * img.height
-  let s = seg_sqrt(n.to_double() / k.to_double()).to_int()
+  let s = @_common.sqrt(n.to_double() / k.to_double()).to_int()
   if s <= 0 {
     return seg_kmeans(img, k, 10)
   }
@@ -584,7 +558,7 @@ pub fn seg_graph_cut(
   for y in 0..<img.height {
     for x in 0..<img.width {
       let v = seg_pixel(img, x, y)
-      if seg_abs(v - fg_mean) < seg_abs(v - bg_mean) {
+      if @_common.abs(v - fg_mean) < @_common.abs(v - bg_mean) {
         seg_set_pixel(out, x, y, 255.0)
       }
     }
@@ -623,7 +597,7 @@ pub fn seg_mean_shift(img : SegImage, bandwidth : Double) -> SegImage {
         }
         if den > 0.0 {
           let new_mode = num / den
-          if seg_abs(new_mode - mode) < 0.1 {
+          if @_common.abs(new_mode - mode) < 0.1 {
             mode = new_mode
             break
           }
@@ -649,12 +623,12 @@ pub fn seg_level_set(img : SegImage, init_phi : SegImage, max_iter : Int) -> Seg
       for x in 0..<phi.width {
         let dx = (seg_pixel(phi, x + 1, y) - seg_pixel(phi, x - 1, y)) / 2.0
         let dy = (seg_pixel(phi, x, y + 1) - seg_pixel(phi, x, y - 1)) / 2.0
-        let mag = seg_sqrt(dx * dx + dy * dy)
+        let mag = @_common.sqrt(dx * dx + dy * dy)
         let force = 128.0 - seg_pixel(img, x, y)
         let update = force * mag * 0.01
         let old = seg_pixel(phi, x, y)
         seg_set_pixel(phi, x, y, old + update)
-        if seg_abs(update) > 0.01 {
+        if @_common.abs(update) > 0.01 {
           changed = true
         }
       }
@@ -782,7 +756,7 @@ pub fn seg_random_walker(img : SegImage, seeds : Array[(Int, Int, Int)]) -> SegI
               continue
             }
             let nidx = ny * img.width + nx
-            let w = seg_exp(-seg_abs(seg_pixel(img, x, y) - seg_pixel(img, nx, ny)) / 32.0)
+            let w = seg_exp(-@_common.abs(seg_pixel(img, x, y) - seg_pixel(img, nx, ny)) / 32.0)
             sum = sum + labels[nidx] * w
             count = count + 1
           }
@@ -794,7 +768,7 @@ pub fn seg_random_walker(img : SegImage, seeds : Array[(Int, Int, Int)]) -> SegI
     }
     let mut changed = false
     for i in 0..<n {
-      if seg_abs(labels[i] - new_labels[i]) > 0.01 {
+      if @_common.abs(labels[i] - new_labels[i]) > 0.01 {
         changed = true
       }
       labels[i] = new_labels[i]
@@ -868,7 +842,7 @@ pub fn seg_crf(img : SegImage, labels : Int, max_iter : Int) -> SegImage {
             let nv = seg_pixel(out, x + dx, y + dy)
             let pv = seg_pixel(img, x + dx, y + dy)
             let cv = seg_pixel(img, x, y)
-            let w = seg_exp(-seg_abs(cv - pv) / 32.0)
+            let w = seg_exp(-@_common.abs(cv - pv) / 32.0)
             sum = sum + nv * w
             count = count + w
           }
@@ -1479,7 +1453,7 @@ pub fn seg_split_regions(img : SegImage, threshold : Double) -> SegImage {
     for x in 0..<(img.width - 1) {
       let v1 = seg_pixel(img, x, y)
       let v2 = seg_pixel(img, x + 1, y)
-      if seg_abs(v1 - v2) > threshold {
+      if @_common.abs(v1 - v2) > threshold {
         seg_set_pixel(out, x, y, 255.0)
         seg_set_pixel(out, x + 1, y, 255.0)
       }

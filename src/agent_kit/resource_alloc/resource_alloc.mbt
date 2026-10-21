@@ -25,7 +25,7 @@ pub fn resource_alloc_point_label(p : Resource_allocPoint) -> Int { p.label }
 pub fn resource_alloc_point_dist(a : Resource_allocPoint, b : Resource_allocPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  resource_alloc_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn resource_alloc_point_add(a : Resource_allocPoint, b : Resource_allocPoint) -> Resource_allocPoint {
@@ -45,7 +45,7 @@ pub fn resource_alloc_point_dot(a : Resource_allocPoint, b : Resource_allocPoint
 }
 
 pub fn resource_alloc_point_norm(pt : Resource_allocPoint) -> Double {
-  resource_alloc_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn resource_alloc_point_to_string(pt : Resource_allocPoint) -> String {
@@ -102,7 +102,7 @@ pub fn resource_alloc_series_var(s : Resource_allocSeries) -> Double {
   }
 }
 
-pub fn resource_alloc_series_std(s : Resource_allocSeries) -> Double { resource_alloc_sqrt(resource_alloc_series_var(s)) }
+pub fn resource_alloc_series_std(s : Resource_allocSeries) -> Double { @_common.sqrt(resource_alloc_series_var(s)) }
 
 pub fn resource_alloc_series_scale(s : Resource_allocSeries, f : Double) -> Resource_allocSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn resource_alloc_matrix_trace(m : Resource_allocMatrix) -> Double {
 pub fn resource_alloc_matrix_norm(m : Resource_allocMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  resource_alloc_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn resource_alloc_matrix_to_string(m : Resource_allocMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn resource_alloc_vector_dot(a : Resource_allocVector, b : Resource_allocVec
   sum
 }
 
-pub fn resource_alloc_vector_norm(v : Resource_allocVector) -> Double { resource_alloc_sqrt(resource_alloc_vector_dot(v, v)) }
+pub fn resource_alloc_vector_norm(v : Resource_allocVector) -> Double { @_common.sqrt(resource_alloc_vector_dot(v, v)) }
 
 pub fn resource_alloc_vector_normalize(v : Resource_allocVector) -> Resource_allocVector {
   let n = resource_alloc_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn resource_alloc_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn resource_alloc_std(data : Array[Double]) -> Double { resource_alloc_sqrt(resource_alloc_var(data)) }
+pub fn resource_alloc_std(data : Array[Double]) -> Double { @_common.sqrt(resource_alloc_var(data)) }
 
 pub fn resource_alloc_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn resource_alloc_mae(pred : Array[Double], labels : Array[Double]) -> Doubl
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + resource_alloc_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn resource_alloc_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> D
   let p_ = resource_alloc_precision(pred, labels, pos); let r = resource_alloc_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn resource_alloc_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn resource_alloc_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn resource_alloc_dbl(x : Double) -> String {
   let i = if x >= 0.0 { resource_alloc_int(x) } else { -resource_alloc_int(-x) }

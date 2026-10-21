@@ -1,2 +1,5 @@
 // agent_kit/game_sim agent_kit/game_sim
 // S13.139 new
+import {
+  "dataverse/extcore/_common",
+}

@@ -25,7 +25,7 @@ pub fn ocsvm_point_label(p : OcsvmPoint) -> Int { p.label }
 pub fn ocsvm_point_dist(a : OcsvmPoint, b : OcsvmPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  ocsvm_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn ocsvm_point_add(a : OcsvmPoint, b : OcsvmPoint) -> OcsvmPoint {
@@ -45,7 +45,7 @@ pub fn ocsvm_point_dot(a : OcsvmPoint, b : OcsvmPoint) -> Double {
 }
 
 pub fn ocsvm_point_norm(pt : OcsvmPoint) -> Double {
-  ocsvm_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn ocsvm_point_to_string(pt : OcsvmPoint) -> String {
@@ -102,7 +102,7 @@ pub fn ocsvm_series_var(s : OcsvmSeries) -> Double {
   }
 }
 
-pub fn ocsvm_series_std(s : OcsvmSeries) -> Double { ocsvm_sqrt(ocsvm_series_var(s)) }
+pub fn ocsvm_series_std(s : OcsvmSeries) -> Double { @_common.sqrt(ocsvm_series_var(s)) }
 
 pub fn ocsvm_series_scale(s : OcsvmSeries, f : Double) -> OcsvmSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn ocsvm_matrix_trace(m : OcsvmMatrix) -> Double {
 pub fn ocsvm_matrix_norm(m : OcsvmMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  ocsvm_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn ocsvm_matrix_to_string(m : OcsvmMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn ocsvm_vector_dot(a : OcsvmVector, b : OcsvmVector) -> Double {
   sum
 }
 
-pub fn ocsvm_vector_norm(v : OcsvmVector) -> Double { ocsvm_sqrt(ocsvm_vector_dot(v, v)) }
+pub fn ocsvm_vector_norm(v : OcsvmVector) -> Double { @_common.sqrt(ocsvm_vector_dot(v, v)) }
 
 pub fn ocsvm_vector_normalize(v : OcsvmVector) -> OcsvmVector {
   let n = ocsvm_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn ocsvm_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn ocsvm_std(data : Array[Double]) -> Double { ocsvm_sqrt(ocsvm_var(data)) }
+pub fn ocsvm_std(data : Array[Double]) -> Double { @_common.sqrt(ocsvm_var(data)) }
 
 pub fn ocsvm_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn ocsvm_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + ocsvm_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn ocsvm_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = ocsvm_precision(pred, labels, pos); let r = ocsvm_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn ocsvm_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn ocsvm_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn ocsvm_dbl(x : Double) -> String {
   let i = if x >= 0.0 { ocsvm_int(x) } else { -ocsvm_int(-x) }

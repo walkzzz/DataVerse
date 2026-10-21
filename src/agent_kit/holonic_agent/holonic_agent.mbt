@@ -25,7 +25,7 @@ pub fn holonic_agent_point_label(p : Holonic_agentPoint) -> Int { p.label }
 pub fn holonic_agent_point_dist(a : Holonic_agentPoint, b : Holonic_agentPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  holonic_agent_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn holonic_agent_point_add(a : Holonic_agentPoint, b : Holonic_agentPoint) -> Holonic_agentPoint {
@@ -45,7 +45,7 @@ pub fn holonic_agent_point_dot(a : Holonic_agentPoint, b : Holonic_agentPoint) -
 }
 
 pub fn holonic_agent_point_norm(pt : Holonic_agentPoint) -> Double {
-  holonic_agent_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn holonic_agent_point_to_string(pt : Holonic_agentPoint) -> String {
@@ -102,7 +102,7 @@ pub fn holonic_agent_series_var(s : Holonic_agentSeries) -> Double {
   }
 }
 
-pub fn holonic_agent_series_std(s : Holonic_agentSeries) -> Double { holonic_agent_sqrt(holonic_agent_series_var(s)) }
+pub fn holonic_agent_series_std(s : Holonic_agentSeries) -> Double { @_common.sqrt(holonic_agent_series_var(s)) }
 
 pub fn holonic_agent_series_scale(s : Holonic_agentSeries, f : Double) -> Holonic_agentSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn holonic_agent_matrix_trace(m : Holonic_agentMatrix) -> Double {
 pub fn holonic_agent_matrix_norm(m : Holonic_agentMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  holonic_agent_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn holonic_agent_matrix_to_string(m : Holonic_agentMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn holonic_agent_vector_dot(a : Holonic_agentVector, b : Holonic_agentVector
   sum
 }
 
-pub fn holonic_agent_vector_norm(v : Holonic_agentVector) -> Double { holonic_agent_sqrt(holonic_agent_vector_dot(v, v)) }
+pub fn holonic_agent_vector_norm(v : Holonic_agentVector) -> Double { @_common.sqrt(holonic_agent_vector_dot(v, v)) }
 
 pub fn holonic_agent_vector_normalize(v : Holonic_agentVector) -> Holonic_agentVector {
   let n = holonic_agent_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn holonic_agent_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn holonic_agent_std(data : Array[Double]) -> Double { holonic_agent_sqrt(holonic_agent_var(data)) }
+pub fn holonic_agent_std(data : Array[Double]) -> Double { @_common.sqrt(holonic_agent_var(data)) }
 
 pub fn holonic_agent_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn holonic_agent_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + holonic_agent_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn holonic_agent_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = holonic_agent_precision(pred, labels, pos); let r = holonic_agent_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn holonic_agent_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn holonic_agent_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn holonic_agent_dbl(x : Double) -> String {
   let i = if x >= 0.0 { holonic_agent_int(x) } else { -holonic_agent_int(-x) }

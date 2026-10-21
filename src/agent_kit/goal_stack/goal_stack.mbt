@@ -25,7 +25,7 @@ pub fn goal_stack_point_label(p : Goal_stackPoint) -> Int { p.label }
 pub fn goal_stack_point_dist(a : Goal_stackPoint, b : Goal_stackPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  goal_stack_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn goal_stack_point_add(a : Goal_stackPoint, b : Goal_stackPoint) -> Goal_stackPoint {
@@ -45,7 +45,7 @@ pub fn goal_stack_point_dot(a : Goal_stackPoint, b : Goal_stackPoint) -> Double 
 }
 
 pub fn goal_stack_point_norm(pt : Goal_stackPoint) -> Double {
-  goal_stack_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn goal_stack_point_to_string(pt : Goal_stackPoint) -> String {
@@ -102,7 +102,7 @@ pub fn goal_stack_series_var(s : Goal_stackSeries) -> Double {
   }
 }
 
-pub fn goal_stack_series_std(s : Goal_stackSeries) -> Double { goal_stack_sqrt(goal_stack_series_var(s)) }
+pub fn goal_stack_series_std(s : Goal_stackSeries) -> Double { @_common.sqrt(goal_stack_series_var(s)) }
 
 pub fn goal_stack_series_scale(s : Goal_stackSeries, f : Double) -> Goal_stackSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn goal_stack_matrix_trace(m : Goal_stackMatrix) -> Double {
 pub fn goal_stack_matrix_norm(m : Goal_stackMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  goal_stack_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn goal_stack_matrix_to_string(m : Goal_stackMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn goal_stack_vector_dot(a : Goal_stackVector, b : Goal_stackVector) -> Doub
   sum
 }
 
-pub fn goal_stack_vector_norm(v : Goal_stackVector) -> Double { goal_stack_sqrt(goal_stack_vector_dot(v, v)) }
+pub fn goal_stack_vector_norm(v : Goal_stackVector) -> Double { @_common.sqrt(goal_stack_vector_dot(v, v)) }
 
 pub fn goal_stack_vector_normalize(v : Goal_stackVector) -> Goal_stackVector {
   let n = goal_stack_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn goal_stack_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn goal_stack_std(data : Array[Double]) -> Double { goal_stack_sqrt(goal_stack_var(data)) }
+pub fn goal_stack_std(data : Array[Double]) -> Double { @_common.sqrt(goal_stack_var(data)) }
 
 pub fn goal_stack_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn goal_stack_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + goal_stack_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn goal_stack_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = goal_stack_precision(pred, labels, pos); let r = goal_stack_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn goal_stack_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn goal_stack_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn goal_stack_dbl(x : Double) -> String {
   let i = if x >= 0.0 { goal_stack_int(x) } else { -goal_stack_int(-x) }

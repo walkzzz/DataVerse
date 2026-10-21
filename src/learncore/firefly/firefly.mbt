@@ -25,7 +25,7 @@ pub fn firefly_point_label(p : FireflyPoint) -> Int { p.label }
 pub fn firefly_point_dist(a : FireflyPoint, b : FireflyPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  firefly_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn firefly_point_add(a : FireflyPoint, b : FireflyPoint) -> FireflyPoint {
@@ -45,7 +45,7 @@ pub fn firefly_point_dot(a : FireflyPoint, b : FireflyPoint) -> Double {
 }
 
 pub fn firefly_point_norm(pt : FireflyPoint) -> Double {
-  firefly_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn firefly_point_to_string(pt : FireflyPoint) -> String {
@@ -102,7 +102,7 @@ pub fn firefly_series_var(s : FireflySeries) -> Double {
   }
 }
 
-pub fn firefly_series_std(s : FireflySeries) -> Double { firefly_sqrt(firefly_series_var(s)) }
+pub fn firefly_series_std(s : FireflySeries) -> Double { @_common.sqrt(firefly_series_var(s)) }
 
 pub fn firefly_series_scale(s : FireflySeries, f : Double) -> FireflySeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn firefly_matrix_trace(m : FireflyMatrix) -> Double {
 pub fn firefly_matrix_norm(m : FireflyMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  firefly_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn firefly_matrix_to_string(m : FireflyMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn firefly_vector_dot(a : FireflyVector, b : FireflyVector) -> Double {
   sum
 }
 
-pub fn firefly_vector_norm(v : FireflyVector) -> Double { firefly_sqrt(firefly_vector_dot(v, v)) }
+pub fn firefly_vector_norm(v : FireflyVector) -> Double { @_common.sqrt(firefly_vector_dot(v, v)) }
 
 pub fn firefly_vector_normalize(v : FireflyVector) -> FireflyVector {
   let n = firefly_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn firefly_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn firefly_std(data : Array[Double]) -> Double { firefly_sqrt(firefly_var(data)) }
+pub fn firefly_std(data : Array[Double]) -> Double { @_common.sqrt(firefly_var(data)) }
 
 pub fn firefly_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn firefly_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + firefly_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn firefly_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = firefly_precision(pred, labels, pos); let r = firefly_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn firefly_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn firefly_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn firefly_dbl(x : Double) -> String {
   let i = if x >= 0.0 { firefly_int(x) } else { -firefly_int(-x) }

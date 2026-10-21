@@ -25,7 +25,7 @@ pub fn game_theory_point_label(p : Game_theoryPoint) -> Int { p.label }
 pub fn game_theory_point_dist(a : Game_theoryPoint, b : Game_theoryPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  game_theory_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn game_theory_point_add(a : Game_theoryPoint, b : Game_theoryPoint) -> Game_theoryPoint {
@@ -45,7 +45,7 @@ pub fn game_theory_point_dot(a : Game_theoryPoint, b : Game_theoryPoint) -> Doub
 }
 
 pub fn game_theory_point_norm(pt : Game_theoryPoint) -> Double {
-  game_theory_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn game_theory_point_to_string(pt : Game_theoryPoint) -> String {
@@ -102,7 +102,7 @@ pub fn game_theory_series_var(s : Game_theorySeries) -> Double {
   }
 }
 
-pub fn game_theory_series_std(s : Game_theorySeries) -> Double { game_theory_sqrt(game_theory_series_var(s)) }
+pub fn game_theory_series_std(s : Game_theorySeries) -> Double { @_common.sqrt(game_theory_series_var(s)) }
 
 pub fn game_theory_series_scale(s : Game_theorySeries, f : Double) -> Game_theorySeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn game_theory_matrix_trace(m : Game_theoryMatrix) -> Double {
 pub fn game_theory_matrix_norm(m : Game_theoryMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  game_theory_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn game_theory_matrix_to_string(m : Game_theoryMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn game_theory_vector_dot(a : Game_theoryVector, b : Game_theoryVector) -> D
   sum
 }
 
-pub fn game_theory_vector_norm(v : Game_theoryVector) -> Double { game_theory_sqrt(game_theory_vector_dot(v, v)) }
+pub fn game_theory_vector_norm(v : Game_theoryVector) -> Double { @_common.sqrt(game_theory_vector_dot(v, v)) }
 
 pub fn game_theory_vector_normalize(v : Game_theoryVector) -> Game_theoryVector {
   let n = game_theory_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn game_theory_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn game_theory_std(data : Array[Double]) -> Double { game_theory_sqrt(game_theory_var(data)) }
+pub fn game_theory_std(data : Array[Double]) -> Double { @_common.sqrt(game_theory_var(data)) }
 
 pub fn game_theory_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn game_theory_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + game_theory_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn game_theory_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = game_theory_precision(pred, labels, pos); let r = game_theory_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn game_theory_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn game_theory_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn game_theory_dbl(x : Double) -> String {
   let i = if x >= 0.0 { game_theory_int(x) } else { -game_theory_int(-x) }

@@ -25,7 +25,7 @@ pub fn autoencoder_rt_point_label(p : Autoencoder_rtPoint) -> Int { p.label }
 pub fn autoencoder_rt_point_dist(a : Autoencoder_rtPoint, b : Autoencoder_rtPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  autoencoder_rt_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn autoencoder_rt_point_add(a : Autoencoder_rtPoint, b : Autoencoder_rtPoint) -> Autoencoder_rtPoint {
@@ -45,7 +45,7 @@ pub fn autoencoder_rt_point_dot(a : Autoencoder_rtPoint, b : Autoencoder_rtPoint
 }
 
 pub fn autoencoder_rt_point_norm(pt : Autoencoder_rtPoint) -> Double {
-  autoencoder_rt_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn autoencoder_rt_point_to_string(pt : Autoencoder_rtPoint) -> String {
@@ -102,7 +102,7 @@ pub fn autoencoder_rt_series_var(s : Autoencoder_rtSeries) -> Double {
   }
 }
 
-pub fn autoencoder_rt_series_std(s : Autoencoder_rtSeries) -> Double { autoencoder_rt_sqrt(autoencoder_rt_series_var(s)) }
+pub fn autoencoder_rt_series_std(s : Autoencoder_rtSeries) -> Double { @_common.sqrt(autoencoder_rt_series_var(s)) }
 
 pub fn autoencoder_rt_series_scale(s : Autoencoder_rtSeries, f : Double) -> Autoencoder_rtSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn autoencoder_rt_matrix_trace(m : Autoencoder_rtMatrix) -> Double {
 pub fn autoencoder_rt_matrix_norm(m : Autoencoder_rtMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  autoencoder_rt_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn autoencoder_rt_matrix_to_string(m : Autoencoder_rtMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn autoencoder_rt_vector_dot(a : Autoencoder_rtVector, b : Autoencoder_rtVec
   sum
 }
 
-pub fn autoencoder_rt_vector_norm(v : Autoencoder_rtVector) -> Double { autoencoder_rt_sqrt(autoencoder_rt_vector_dot(v, v)) }
+pub fn autoencoder_rt_vector_norm(v : Autoencoder_rtVector) -> Double { @_common.sqrt(autoencoder_rt_vector_dot(v, v)) }
 
 pub fn autoencoder_rt_vector_normalize(v : Autoencoder_rtVector) -> Autoencoder_rtVector {
   let n = autoencoder_rt_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn autoencoder_rt_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn autoencoder_rt_std(data : Array[Double]) -> Double { autoencoder_rt_sqrt(autoencoder_rt_var(data)) }
+pub fn autoencoder_rt_std(data : Array[Double]) -> Double { @_common.sqrt(autoencoder_rt_var(data)) }
 
 pub fn autoencoder_rt_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn autoencoder_rt_mae(pred : Array[Double], labels : Array[Double]) -> Doubl
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + autoencoder_rt_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn autoencoder_rt_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> D
   let p_ = autoencoder_rt_precision(pred, labels, pos); let r = autoencoder_rt_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn autoencoder_rt_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn autoencoder_rt_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn autoencoder_rt_dbl(x : Double) -> String {
   let i = if x >= 0.0 { autoencoder_rt_int(x) } else { -autoencoder_rt_int(-x) }

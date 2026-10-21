@@ -25,7 +25,7 @@ pub fn flower_poll_point_label(p : Flower_pollPoint) -> Int { p.label }
 pub fn flower_poll_point_dist(a : Flower_pollPoint, b : Flower_pollPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  flower_poll_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn flower_poll_point_add(a : Flower_pollPoint, b : Flower_pollPoint) -> Flower_pollPoint {
@@ -45,7 +45,7 @@ pub fn flower_poll_point_dot(a : Flower_pollPoint, b : Flower_pollPoint) -> Doub
 }
 
 pub fn flower_poll_point_norm(pt : Flower_pollPoint) -> Double {
-  flower_poll_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn flower_poll_point_to_string(pt : Flower_pollPoint) -> String {
@@ -102,7 +102,7 @@ pub fn flower_poll_series_var(s : Flower_pollSeries) -> Double {
   }
 }
 
-pub fn flower_poll_series_std(s : Flower_pollSeries) -> Double { flower_poll_sqrt(flower_poll_series_var(s)) }
+pub fn flower_poll_series_std(s : Flower_pollSeries) -> Double { @_common.sqrt(flower_poll_series_var(s)) }
 
 pub fn flower_poll_series_scale(s : Flower_pollSeries, f : Double) -> Flower_pollSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn flower_poll_matrix_trace(m : Flower_pollMatrix) -> Double {
 pub fn flower_poll_matrix_norm(m : Flower_pollMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  flower_poll_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn flower_poll_matrix_to_string(m : Flower_pollMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn flower_poll_vector_dot(a : Flower_pollVector, b : Flower_pollVector) -> D
   sum
 }
 
-pub fn flower_poll_vector_norm(v : Flower_pollVector) -> Double { flower_poll_sqrt(flower_poll_vector_dot(v, v)) }
+pub fn flower_poll_vector_norm(v : Flower_pollVector) -> Double { @_common.sqrt(flower_poll_vector_dot(v, v)) }
 
 pub fn flower_poll_vector_normalize(v : Flower_pollVector) -> Flower_pollVector {
   let n = flower_poll_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn flower_poll_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn flower_poll_std(data : Array[Double]) -> Double { flower_poll_sqrt(flower_poll_var(data)) }
+pub fn flower_poll_std(data : Array[Double]) -> Double { @_common.sqrt(flower_poll_var(data)) }
 
 pub fn flower_poll_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn flower_poll_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + flower_poll_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn flower_poll_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = flower_poll_precision(pred, labels, pos); let r = flower_poll_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn flower_poll_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn flower_poll_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn flower_poll_dbl(x : Double) -> String {
   let i = if x >= 0.0 { flower_poll_int(x) } else { -flower_poll_int(-x) }

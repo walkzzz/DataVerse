@@ -25,7 +25,7 @@ pub fn backpressure_point_label(p : BackpressurePoint) -> Int { p.label }
 pub fn backpressure_point_dist(a : BackpressurePoint, b : BackpressurePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  backpressure_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn backpressure_point_add(a : BackpressurePoint, b : BackpressurePoint) -> BackpressurePoint {
@@ -45,7 +45,7 @@ pub fn backpressure_point_dot(a : BackpressurePoint, b : BackpressurePoint) -> D
 }
 
 pub fn backpressure_point_norm(pt : BackpressurePoint) -> Double {
-  backpressure_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn backpressure_point_to_string(pt : BackpressurePoint) -> String {
@@ -102,7 +102,7 @@ pub fn backpressure_series_var(s : BackpressureSeries) -> Double {
   }
 }
 
-pub fn backpressure_series_std(s : BackpressureSeries) -> Double { backpressure_sqrt(backpressure_series_var(s)) }
+pub fn backpressure_series_std(s : BackpressureSeries) -> Double { @_common.sqrt(backpressure_series_var(s)) }
 
 pub fn backpressure_series_scale(s : BackpressureSeries, f : Double) -> BackpressureSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn backpressure_matrix_trace(m : BackpressureMatrix) -> Double {
 pub fn backpressure_matrix_norm(m : BackpressureMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  backpressure_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn backpressure_matrix_to_string(m : BackpressureMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn backpressure_vector_dot(a : BackpressureVector, b : BackpressureVector) -
   sum
 }
 
-pub fn backpressure_vector_norm(v : BackpressureVector) -> Double { backpressure_sqrt(backpressure_vector_dot(v, v)) }
+pub fn backpressure_vector_norm(v : BackpressureVector) -> Double { @_common.sqrt(backpressure_vector_dot(v, v)) }
 
 pub fn backpressure_vector_normalize(v : BackpressureVector) -> BackpressureVector {
   let n = backpressure_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn backpressure_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn backpressure_std(data : Array[Double]) -> Double { backpressure_sqrt(backpressure_var(data)) }
+pub fn backpressure_std(data : Array[Double]) -> Double { @_common.sqrt(backpressure_var(data)) }
 
 pub fn backpressure_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn backpressure_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + backpressure_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn backpressure_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = backpressure_precision(pred, labels, pos); let r = backpressure_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn backpressure_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn backpressure_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn backpressure_dbl(x : Double) -> String {
   let i = if x >= 0.0 { backpressure_int(x) } else { -backpressure_int(-x) }

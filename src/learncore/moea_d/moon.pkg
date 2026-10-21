@@ -1,2 +1,5 @@
 // learncore/moea_d learncore/moea_d
 // S13.84 new
+import {
+  "dataverse/extcore/_common",
+}

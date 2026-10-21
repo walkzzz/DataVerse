@@ -1,2 +1,5 @@
 // datatemporal/window_slide datatemporal/window_slide
 // S13.208 new
+import {
+  "dataverse/extcore/_common",
+}

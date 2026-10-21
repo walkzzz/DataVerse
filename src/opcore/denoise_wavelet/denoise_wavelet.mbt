@@ -25,7 +25,7 @@ pub fn denoise_wavelet_point_label(p : Denoise_waveletPoint) -> Int { p.label }
 pub fn denoise_wavelet_point_dist(a : Denoise_waveletPoint, b : Denoise_waveletPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  denoise_wavelet_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn denoise_wavelet_point_add(a : Denoise_waveletPoint, b : Denoise_waveletPoint) -> Denoise_waveletPoint {
@@ -45,7 +45,7 @@ pub fn denoise_wavelet_point_dot(a : Denoise_waveletPoint, b : Denoise_waveletPo
 }
 
 pub fn denoise_wavelet_point_norm(pt : Denoise_waveletPoint) -> Double {
-  denoise_wavelet_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn denoise_wavelet_point_to_string(pt : Denoise_waveletPoint) -> String {
@@ -102,7 +102,7 @@ pub fn denoise_wavelet_series_var(s : Denoise_waveletSeries) -> Double {
   }
 }
 
-pub fn denoise_wavelet_series_std(s : Denoise_waveletSeries) -> Double { denoise_wavelet_sqrt(denoise_wavelet_series_var(s)) }
+pub fn denoise_wavelet_series_std(s : Denoise_waveletSeries) -> Double { @_common.sqrt(denoise_wavelet_series_var(s)) }
 
 pub fn denoise_wavelet_series_scale(s : Denoise_waveletSeries, f : Double) -> Denoise_waveletSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn denoise_wavelet_matrix_trace(m : Denoise_waveletMatrix) -> Double {
 pub fn denoise_wavelet_matrix_norm(m : Denoise_waveletMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  denoise_wavelet_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn denoise_wavelet_matrix_to_string(m : Denoise_waveletMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn denoise_wavelet_vector_dot(a : Denoise_waveletVector, b : Denoise_wavelet
   sum
 }
 
-pub fn denoise_wavelet_vector_norm(v : Denoise_waveletVector) -> Double { denoise_wavelet_sqrt(denoise_wavelet_vector_dot(v, v)) }
+pub fn denoise_wavelet_vector_norm(v : Denoise_waveletVector) -> Double { @_common.sqrt(denoise_wavelet_vector_dot(v, v)) }
 
 pub fn denoise_wavelet_vector_normalize(v : Denoise_waveletVector) -> Denoise_waveletVector {
   let n = denoise_wavelet_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn denoise_wavelet_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn denoise_wavelet_std(data : Array[Double]) -> Double { denoise_wavelet_sqrt(denoise_wavelet_var(data)) }
+pub fn denoise_wavelet_std(data : Array[Double]) -> Double { @_common.sqrt(denoise_wavelet_var(data)) }
 
 pub fn denoise_wavelet_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn denoise_wavelet_mae(pred : Array[Double], labels : Array[Double]) -> Doub
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + denoise_wavelet_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn denoise_wavelet_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> 
   let p_ = denoise_wavelet_precision(pred, labels, pos); let r = denoise_wavelet_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn denoise_wavelet_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn denoise_wavelet_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn denoise_wavelet_dbl(x : Double) -> String {
   let i = if x >= 0.0 { denoise_wavelet_int(x) } else { -denoise_wavelet_int(-x) }

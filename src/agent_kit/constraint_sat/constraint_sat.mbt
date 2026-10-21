@@ -25,7 +25,7 @@ pub fn constraint_sat_point_label(p : Constraint_satPoint) -> Int { p.label }
 pub fn constraint_sat_point_dist(a : Constraint_satPoint, b : Constraint_satPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  constraint_sat_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn constraint_sat_point_add(a : Constraint_satPoint, b : Constraint_satPoint) -> Constraint_satPoint {
@@ -45,7 +45,7 @@ pub fn constraint_sat_point_dot(a : Constraint_satPoint, b : Constraint_satPoint
 }
 
 pub fn constraint_sat_point_norm(pt : Constraint_satPoint) -> Double {
-  constraint_sat_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn constraint_sat_point_to_string(pt : Constraint_satPoint) -> String {
@@ -102,7 +102,7 @@ pub fn constraint_sat_series_var(s : Constraint_satSeries) -> Double {
   }
 }
 
-pub fn constraint_sat_series_std(s : Constraint_satSeries) -> Double { constraint_sat_sqrt(constraint_sat_series_var(s)) }
+pub fn constraint_sat_series_std(s : Constraint_satSeries) -> Double { @_common.sqrt(constraint_sat_series_var(s)) }
 
 pub fn constraint_sat_series_scale(s : Constraint_satSeries, f : Double) -> Constraint_satSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn constraint_sat_matrix_trace(m : Constraint_satMatrix) -> Double {
 pub fn constraint_sat_matrix_norm(m : Constraint_satMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  constraint_sat_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn constraint_sat_matrix_to_string(m : Constraint_satMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn constraint_sat_vector_dot(a : Constraint_satVector, b : Constraint_satVec
   sum
 }
 
-pub fn constraint_sat_vector_norm(v : Constraint_satVector) -> Double { constraint_sat_sqrt(constraint_sat_vector_dot(v, v)) }
+pub fn constraint_sat_vector_norm(v : Constraint_satVector) -> Double { @_common.sqrt(constraint_sat_vector_dot(v, v)) }
 
 pub fn constraint_sat_vector_normalize(v : Constraint_satVector) -> Constraint_satVector {
   let n = constraint_sat_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn constraint_sat_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn constraint_sat_std(data : Array[Double]) -> Double { constraint_sat_sqrt(constraint_sat_var(data)) }
+pub fn constraint_sat_std(data : Array[Double]) -> Double { @_common.sqrt(constraint_sat_var(data)) }
 
 pub fn constraint_sat_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn constraint_sat_mae(pred : Array[Double], labels : Array[Double]) -> Doubl
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + constraint_sat_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn constraint_sat_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> D
   let p_ = constraint_sat_precision(pred, labels, pos); let r = constraint_sat_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn constraint_sat_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn constraint_sat_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn constraint_sat_dbl(x : Double) -> String {
   let i = if x >= 0.0 { constraint_sat_int(x) } else { -constraint_sat_int(-x) }

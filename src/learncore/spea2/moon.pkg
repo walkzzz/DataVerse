@@ -1,2 +1,5 @@
 // learncore/spea2 learncore/spea2
 // S13.85 new
+import {
+  "dataverse/extcore/_common",
+}

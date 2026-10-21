@@ -25,7 +25,7 @@ pub fn bee_alg_point_label(p : Bee_algPoint) -> Int { p.label }
 pub fn bee_alg_point_dist(a : Bee_algPoint, b : Bee_algPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  bee_alg_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn bee_alg_point_add(a : Bee_algPoint, b : Bee_algPoint) -> Bee_algPoint {
@@ -45,7 +45,7 @@ pub fn bee_alg_point_dot(a : Bee_algPoint, b : Bee_algPoint) -> Double {
 }
 
 pub fn bee_alg_point_norm(pt : Bee_algPoint) -> Double {
-  bee_alg_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn bee_alg_point_to_string(pt : Bee_algPoint) -> String {
@@ -102,7 +102,7 @@ pub fn bee_alg_series_var(s : Bee_algSeries) -> Double {
   }
 }
 
-pub fn bee_alg_series_std(s : Bee_algSeries) -> Double { bee_alg_sqrt(bee_alg_series_var(s)) }
+pub fn bee_alg_series_std(s : Bee_algSeries) -> Double { @_common.sqrt(bee_alg_series_var(s)) }
 
 pub fn bee_alg_series_scale(s : Bee_algSeries, f : Double) -> Bee_algSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn bee_alg_matrix_trace(m : Bee_algMatrix) -> Double {
 pub fn bee_alg_matrix_norm(m : Bee_algMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  bee_alg_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn bee_alg_matrix_to_string(m : Bee_algMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn bee_alg_vector_dot(a : Bee_algVector, b : Bee_algVector) -> Double {
   sum
 }
 
-pub fn bee_alg_vector_norm(v : Bee_algVector) -> Double { bee_alg_sqrt(bee_alg_vector_dot(v, v)) }
+pub fn bee_alg_vector_norm(v : Bee_algVector) -> Double { @_common.sqrt(bee_alg_vector_dot(v, v)) }
 
 pub fn bee_alg_vector_normalize(v : Bee_algVector) -> Bee_algVector {
   let n = bee_alg_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn bee_alg_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn bee_alg_std(data : Array[Double]) -> Double { bee_alg_sqrt(bee_alg_var(data)) }
+pub fn bee_alg_std(data : Array[Double]) -> Double { @_common.sqrt(bee_alg_var(data)) }
 
 pub fn bee_alg_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn bee_alg_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + bee_alg_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn bee_alg_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = bee_alg_precision(pred, labels, pos); let r = bee_alg_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn bee_alg_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn bee_alg_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn bee_alg_dbl(x : Double) -> String {
   let i = if x >= 0.0 { bee_alg_int(x) } else { -bee_alg_int(-x) }

@@ -25,7 +25,7 @@ pub fn bagging_rt_point_label(p : Bagging_rtPoint) -> Int { p.label }
 pub fn bagging_rt_point_dist(a : Bagging_rtPoint, b : Bagging_rtPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  bagging_rt_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn bagging_rt_point_add(a : Bagging_rtPoint, b : Bagging_rtPoint) -> Bagging_rtPoint {
@@ -45,7 +45,7 @@ pub fn bagging_rt_point_dot(a : Bagging_rtPoint, b : Bagging_rtPoint) -> Double 
 }
 
 pub fn bagging_rt_point_norm(pt : Bagging_rtPoint) -> Double {
-  bagging_rt_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn bagging_rt_point_to_string(pt : Bagging_rtPoint) -> String {
@@ -102,7 +102,7 @@ pub fn bagging_rt_series_var(s : Bagging_rtSeries) -> Double {
   }
 }
 
-pub fn bagging_rt_series_std(s : Bagging_rtSeries) -> Double { bagging_rt_sqrt(bagging_rt_series_var(s)) }
+pub fn bagging_rt_series_std(s : Bagging_rtSeries) -> Double { @_common.sqrt(bagging_rt_series_var(s)) }
 
 pub fn bagging_rt_series_scale(s : Bagging_rtSeries, f : Double) -> Bagging_rtSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn bagging_rt_matrix_trace(m : Bagging_rtMatrix) -> Double {
 pub fn bagging_rt_matrix_norm(m : Bagging_rtMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  bagging_rt_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn bagging_rt_matrix_to_string(m : Bagging_rtMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn bagging_rt_vector_dot(a : Bagging_rtVector, b : Bagging_rtVector) -> Doub
   sum
 }
 
-pub fn bagging_rt_vector_norm(v : Bagging_rtVector) -> Double { bagging_rt_sqrt(bagging_rt_vector_dot(v, v)) }
+pub fn bagging_rt_vector_norm(v : Bagging_rtVector) -> Double { @_common.sqrt(bagging_rt_vector_dot(v, v)) }
 
 pub fn bagging_rt_vector_normalize(v : Bagging_rtVector) -> Bagging_rtVector {
   let n = bagging_rt_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn bagging_rt_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn bagging_rt_std(data : Array[Double]) -> Double { bagging_rt_sqrt(bagging_rt_var(data)) }
+pub fn bagging_rt_std(data : Array[Double]) -> Double { @_common.sqrt(bagging_rt_var(data)) }
 
 pub fn bagging_rt_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn bagging_rt_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + bagging_rt_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn bagging_rt_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = bagging_rt_precision(pred, labels, pos); let r = bagging_rt_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn bagging_rt_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn bagging_rt_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn bagging_rt_dbl(x : Double) -> String {
   let i = if x >= 0.0 { bagging_rt_int(x) } else { -bagging_rt_int(-x) }

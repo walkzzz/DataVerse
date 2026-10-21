@@ -25,7 +25,7 @@ pub fn knn_reg_point_label(p : Knn_regPoint) -> Int { p.label }
 pub fn knn_reg_point_dist(a : Knn_regPoint, b : Knn_regPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  knn_reg_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn knn_reg_point_add(a : Knn_regPoint, b : Knn_regPoint) -> Knn_regPoint {
@@ -45,7 +45,7 @@ pub fn knn_reg_point_dot(a : Knn_regPoint, b : Knn_regPoint) -> Double {
 }
 
 pub fn knn_reg_point_norm(pt : Knn_regPoint) -> Double {
-  knn_reg_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn knn_reg_point_to_string(pt : Knn_regPoint) -> String {
@@ -102,7 +102,7 @@ pub fn knn_reg_series_var(s : Knn_regSeries) -> Double {
   }
 }
 
-pub fn knn_reg_series_std(s : Knn_regSeries) -> Double { knn_reg_sqrt(knn_reg_series_var(s)) }
+pub fn knn_reg_series_std(s : Knn_regSeries) -> Double { @_common.sqrt(knn_reg_series_var(s)) }
 
 pub fn knn_reg_series_scale(s : Knn_regSeries, f : Double) -> Knn_regSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn knn_reg_matrix_trace(m : Knn_regMatrix) -> Double {
 pub fn knn_reg_matrix_norm(m : Knn_regMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  knn_reg_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn knn_reg_matrix_to_string(m : Knn_regMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn knn_reg_vector_dot(a : Knn_regVector, b : Knn_regVector) -> Double {
   sum
 }
 
-pub fn knn_reg_vector_norm(v : Knn_regVector) -> Double { knn_reg_sqrt(knn_reg_vector_dot(v, v)) }
+pub fn knn_reg_vector_norm(v : Knn_regVector) -> Double { @_common.sqrt(knn_reg_vector_dot(v, v)) }
 
 pub fn knn_reg_vector_normalize(v : Knn_regVector) -> Knn_regVector {
   let n = knn_reg_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn knn_reg_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn knn_reg_std(data : Array[Double]) -> Double { knn_reg_sqrt(knn_reg_var(data)) }
+pub fn knn_reg_std(data : Array[Double]) -> Double { @_common.sqrt(knn_reg_var(data)) }
 
 pub fn knn_reg_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn knn_reg_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + knn_reg_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn knn_reg_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = knn_reg_precision(pred, labels, pos); let r = knn_reg_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn knn_reg_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn knn_reg_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn knn_reg_dbl(x : Double) -> String {
   let i = if x >= 0.0 { knn_reg_int(x) } else { -knn_reg_int(-x) }

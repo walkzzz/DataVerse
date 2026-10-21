@@ -25,7 +25,7 @@ pub fn watermark_punct_point_label(p : Watermark_punctPoint) -> Int { p.label }
 pub fn watermark_punct_point_dist(a : Watermark_punctPoint, b : Watermark_punctPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  watermark_punct_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn watermark_punct_point_add(a : Watermark_punctPoint, b : Watermark_punctPoint) -> Watermark_punctPoint {
@@ -45,7 +45,7 @@ pub fn watermark_punct_point_dot(a : Watermark_punctPoint, b : Watermark_punctPo
 }
 
 pub fn watermark_punct_point_norm(pt : Watermark_punctPoint) -> Double {
-  watermark_punct_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn watermark_punct_point_to_string(pt : Watermark_punctPoint) -> String {
@@ -102,7 +102,7 @@ pub fn watermark_punct_series_var(s : Watermark_punctSeries) -> Double {
   }
 }
 
-pub fn watermark_punct_series_std(s : Watermark_punctSeries) -> Double { watermark_punct_sqrt(watermark_punct_series_var(s)) }
+pub fn watermark_punct_series_std(s : Watermark_punctSeries) -> Double { @_common.sqrt(watermark_punct_series_var(s)) }
 
 pub fn watermark_punct_series_scale(s : Watermark_punctSeries, f : Double) -> Watermark_punctSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn watermark_punct_matrix_trace(m : Watermark_punctMatrix) -> Double {
 pub fn watermark_punct_matrix_norm(m : Watermark_punctMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  watermark_punct_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn watermark_punct_matrix_to_string(m : Watermark_punctMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn watermark_punct_vector_dot(a : Watermark_punctVector, b : Watermark_punct
   sum
 }
 
-pub fn watermark_punct_vector_norm(v : Watermark_punctVector) -> Double { watermark_punct_sqrt(watermark_punct_vector_dot(v, v)) }
+pub fn watermark_punct_vector_norm(v : Watermark_punctVector) -> Double { @_common.sqrt(watermark_punct_vector_dot(v, v)) }
 
 pub fn watermark_punct_vector_normalize(v : Watermark_punctVector) -> Watermark_punctVector {
   let n = watermark_punct_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn watermark_punct_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn watermark_punct_std(data : Array[Double]) -> Double { watermark_punct_sqrt(watermark_punct_var(data)) }
+pub fn watermark_punct_std(data : Array[Double]) -> Double { @_common.sqrt(watermark_punct_var(data)) }
 
 pub fn watermark_punct_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn watermark_punct_mae(pred : Array[Double], labels : Array[Double]) -> Doub
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + watermark_punct_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn watermark_punct_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> 
   let p_ = watermark_punct_precision(pred, labels, pos); let r = watermark_punct_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn watermark_punct_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn watermark_punct_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn watermark_punct_dbl(x : Double) -> String {
   let i = if x >= 0.0 { watermark_punct_int(x) } else { -watermark_punct_int(-x) }

@@ -25,7 +25,7 @@ pub fn window_time_point_label(p : Window_timePoint) -> Int { p.label }
 pub fn window_time_point_dist(a : Window_timePoint, b : Window_timePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  window_time_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn window_time_point_add(a : Window_timePoint, b : Window_timePoint) -> Window_timePoint {
@@ -45,7 +45,7 @@ pub fn window_time_point_dot(a : Window_timePoint, b : Window_timePoint) -> Doub
 }
 
 pub fn window_time_point_norm(pt : Window_timePoint) -> Double {
-  window_time_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn window_time_point_to_string(pt : Window_timePoint) -> String {
@@ -102,7 +102,7 @@ pub fn window_time_series_var(s : Window_timeSeries) -> Double {
   }
 }
 
-pub fn window_time_series_std(s : Window_timeSeries) -> Double { window_time_sqrt(window_time_series_var(s)) }
+pub fn window_time_series_std(s : Window_timeSeries) -> Double { @_common.sqrt(window_time_series_var(s)) }
 
 pub fn window_time_series_scale(s : Window_timeSeries, f : Double) -> Window_timeSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn window_time_matrix_trace(m : Window_timeMatrix) -> Double {
 pub fn window_time_matrix_norm(m : Window_timeMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  window_time_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn window_time_matrix_to_string(m : Window_timeMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn window_time_vector_dot(a : Window_timeVector, b : Window_timeVector) -> D
   sum
 }
 
-pub fn window_time_vector_norm(v : Window_timeVector) -> Double { window_time_sqrt(window_time_vector_dot(v, v)) }
+pub fn window_time_vector_norm(v : Window_timeVector) -> Double { @_common.sqrt(window_time_vector_dot(v, v)) }
 
 pub fn window_time_vector_normalize(v : Window_timeVector) -> Window_timeVector {
   let n = window_time_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn window_time_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn window_time_std(data : Array[Double]) -> Double { window_time_sqrt(window_time_var(data)) }
+pub fn window_time_std(data : Array[Double]) -> Double { @_common.sqrt(window_time_var(data)) }
 
 pub fn window_time_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn window_time_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + window_time_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn window_time_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = window_time_precision(pred, labels, pos); let r = window_time_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn window_time_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn window_time_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn window_time_dbl(x : Double) -> String {
   let i = if x >= 0.0 { window_time_int(x) } else { -window_time_int(-x) }

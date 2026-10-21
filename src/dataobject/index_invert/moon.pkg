@@ -1,2 +1,5 @@
 // dataobject/index_invert dataobject/index_invert
 // S13.188 new
+import {
+  "dataverse/extcore/_common",
+}

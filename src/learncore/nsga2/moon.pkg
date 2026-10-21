@@ -1,2 +1,5 @@
 // learncore/nsga2 learncore/nsga2
 // S13.83 new
+import {
+  "dataverse/extcore/_common",
+}

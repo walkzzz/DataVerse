@@ -25,7 +25,7 @@ pub fn approx_theory_point_label(p : Approx_theoryPoint) -> Int { p.label }
 pub fn approx_theory_point_dist(a : Approx_theoryPoint, b : Approx_theoryPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  approx_theory_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn approx_theory_point_add(a : Approx_theoryPoint, b : Approx_theoryPoint) -> Approx_theoryPoint {
@@ -45,7 +45,7 @@ pub fn approx_theory_point_dot(a : Approx_theoryPoint, b : Approx_theoryPoint) -
 }
 
 pub fn approx_theory_point_norm(pt : Approx_theoryPoint) -> Double {
-  approx_theory_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn approx_theory_point_to_string(pt : Approx_theoryPoint) -> String {
@@ -102,7 +102,7 @@ pub fn approx_theory_series_var(s : Approx_theorySeries) -> Double {
   }
 }
 
-pub fn approx_theory_series_std(s : Approx_theorySeries) -> Double { approx_theory_sqrt(approx_theory_series_var(s)) }
+pub fn approx_theory_series_std(s : Approx_theorySeries) -> Double { @_common.sqrt(approx_theory_series_var(s)) }
 
 pub fn approx_theory_series_scale(s : Approx_theorySeries, f : Double) -> Approx_theorySeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn approx_theory_matrix_trace(m : Approx_theoryMatrix) -> Double {
 pub fn approx_theory_matrix_norm(m : Approx_theoryMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  approx_theory_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn approx_theory_matrix_to_string(m : Approx_theoryMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn approx_theory_vector_dot(a : Approx_theoryVector, b : Approx_theoryVector
   sum
 }
 
-pub fn approx_theory_vector_norm(v : Approx_theoryVector) -> Double { approx_theory_sqrt(approx_theory_vector_dot(v, v)) }
+pub fn approx_theory_vector_norm(v : Approx_theoryVector) -> Double { @_common.sqrt(approx_theory_vector_dot(v, v)) }
 
 pub fn approx_theory_vector_normalize(v : Approx_theoryVector) -> Approx_theoryVector {
   let n = approx_theory_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn approx_theory_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn approx_theory_std(data : Array[Double]) -> Double { approx_theory_sqrt(approx_theory_var(data)) }
+pub fn approx_theory_std(data : Array[Double]) -> Double { @_common.sqrt(approx_theory_var(data)) }
 
 pub fn approx_theory_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn approx_theory_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + approx_theory_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn approx_theory_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = approx_theory_precision(pred, labels, pos); let r = approx_theory_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn approx_theory_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn approx_theory_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn approx_theory_dbl(x : Double) -> String {
   let i = if x >= 0.0 { approx_theory_int(x) } else { -approx_theory_int(-x) }

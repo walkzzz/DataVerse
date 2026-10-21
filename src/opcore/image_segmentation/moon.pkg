@@ -1,1 +1,4 @@
 // opcore/image_segmentation
+import {
+  "dataverse/extcore/_common",
+}

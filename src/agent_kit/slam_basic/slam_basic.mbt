@@ -25,7 +25,7 @@ pub fn slam_basic_point_label(p : Slam_basicPoint) -> Int { p.label }
 pub fn slam_basic_point_dist(a : Slam_basicPoint, b : Slam_basicPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  slam_basic_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn slam_basic_point_add(a : Slam_basicPoint, b : Slam_basicPoint) -> Slam_basicPoint {
@@ -45,7 +45,7 @@ pub fn slam_basic_point_dot(a : Slam_basicPoint, b : Slam_basicPoint) -> Double 
 }
 
 pub fn slam_basic_point_norm(pt : Slam_basicPoint) -> Double {
-  slam_basic_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn slam_basic_point_to_string(pt : Slam_basicPoint) -> String {
@@ -102,7 +102,7 @@ pub fn slam_basic_series_var(s : Slam_basicSeries) -> Double {
   }
 }
 
-pub fn slam_basic_series_std(s : Slam_basicSeries) -> Double { slam_basic_sqrt(slam_basic_series_var(s)) }
+pub fn slam_basic_series_std(s : Slam_basicSeries) -> Double { @_common.sqrt(slam_basic_series_var(s)) }
 
 pub fn slam_basic_series_scale(s : Slam_basicSeries, f : Double) -> Slam_basicSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn slam_basic_matrix_trace(m : Slam_basicMatrix) -> Double {
 pub fn slam_basic_matrix_norm(m : Slam_basicMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  slam_basic_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn slam_basic_matrix_to_string(m : Slam_basicMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn slam_basic_vector_dot(a : Slam_basicVector, b : Slam_basicVector) -> Doub
   sum
 }
 
-pub fn slam_basic_vector_norm(v : Slam_basicVector) -> Double { slam_basic_sqrt(slam_basic_vector_dot(v, v)) }
+pub fn slam_basic_vector_norm(v : Slam_basicVector) -> Double { @_common.sqrt(slam_basic_vector_dot(v, v)) }
 
 pub fn slam_basic_vector_normalize(v : Slam_basicVector) -> Slam_basicVector {
   let n = slam_basic_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn slam_basic_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn slam_basic_std(data : Array[Double]) -> Double { slam_basic_sqrt(slam_basic_var(data)) }
+pub fn slam_basic_std(data : Array[Double]) -> Double { @_common.sqrt(slam_basic_var(data)) }
 
 pub fn slam_basic_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn slam_basic_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + slam_basic_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn slam_basic_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = slam_basic_precision(pred, labels, pos); let r = slam_basic_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn slam_basic_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn slam_basic_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn slam_basic_dbl(x : Double) -> String {
   let i = if x >= 0.0 { slam_basic_int(x) } else { -slam_basic_int(-x) }

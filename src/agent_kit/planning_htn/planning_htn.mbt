@@ -25,7 +25,7 @@ pub fn planning_htn_point_label(p : Planning_htnPoint) -> Int { p.label }
 pub fn planning_htn_point_dist(a : Planning_htnPoint, b : Planning_htnPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  planning_htn_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn planning_htn_point_add(a : Planning_htnPoint, b : Planning_htnPoint) -> Planning_htnPoint {
@@ -45,7 +45,7 @@ pub fn planning_htn_point_dot(a : Planning_htnPoint, b : Planning_htnPoint) -> D
 }
 
 pub fn planning_htn_point_norm(pt : Planning_htnPoint) -> Double {
-  planning_htn_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn planning_htn_point_to_string(pt : Planning_htnPoint) -> String {
@@ -102,7 +102,7 @@ pub fn planning_htn_series_var(s : Planning_htnSeries) -> Double {
   }
 }
 
-pub fn planning_htn_series_std(s : Planning_htnSeries) -> Double { planning_htn_sqrt(planning_htn_series_var(s)) }
+pub fn planning_htn_series_std(s : Planning_htnSeries) -> Double { @_common.sqrt(planning_htn_series_var(s)) }
 
 pub fn planning_htn_series_scale(s : Planning_htnSeries, f : Double) -> Planning_htnSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn planning_htn_matrix_trace(m : Planning_htnMatrix) -> Double {
 pub fn planning_htn_matrix_norm(m : Planning_htnMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  planning_htn_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn planning_htn_matrix_to_string(m : Planning_htnMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn planning_htn_vector_dot(a : Planning_htnVector, b : Planning_htnVector) -
   sum
 }
 
-pub fn planning_htn_vector_norm(v : Planning_htnVector) -> Double { planning_htn_sqrt(planning_htn_vector_dot(v, v)) }
+pub fn planning_htn_vector_norm(v : Planning_htnVector) -> Double { @_common.sqrt(planning_htn_vector_dot(v, v)) }
 
 pub fn planning_htn_vector_normalize(v : Planning_htnVector) -> Planning_htnVector {
   let n = planning_htn_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn planning_htn_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn planning_htn_std(data : Array[Double]) -> Double { planning_htn_sqrt(planning_htn_var(data)) }
+pub fn planning_htn_std(data : Array[Double]) -> Double { @_common.sqrt(planning_htn_var(data)) }
 
 pub fn planning_htn_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn planning_htn_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + planning_htn_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn planning_htn_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = planning_htn_precision(pred, labels, pos); let r = planning_htn_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn planning_htn_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn planning_htn_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn planning_htn_dbl(x : Double) -> String {
   let i = if x >= 0.0 { planning_htn_int(x) } else { -planning_htn_int(-x) }

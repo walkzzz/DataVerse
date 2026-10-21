@@ -25,7 +25,7 @@ pub fn encode_csv_point_label(p : Encode_csvPoint) -> Int { p.label }
 pub fn encode_csv_point_dist(a : Encode_csvPoint, b : Encode_csvPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  encode_csv_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn encode_csv_point_add(a : Encode_csvPoint, b : Encode_csvPoint) -> Encode_csvPoint {
@@ -45,7 +45,7 @@ pub fn encode_csv_point_dot(a : Encode_csvPoint, b : Encode_csvPoint) -> Double 
 }
 
 pub fn encode_csv_point_norm(pt : Encode_csvPoint) -> Double {
-  encode_csv_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn encode_csv_point_to_string(pt : Encode_csvPoint) -> String {
@@ -102,7 +102,7 @@ pub fn encode_csv_series_var(s : Encode_csvSeries) -> Double {
   }
 }
 
-pub fn encode_csv_series_std(s : Encode_csvSeries) -> Double { encode_csv_sqrt(encode_csv_series_var(s)) }
+pub fn encode_csv_series_std(s : Encode_csvSeries) -> Double { @_common.sqrt(encode_csv_series_var(s)) }
 
 pub fn encode_csv_series_scale(s : Encode_csvSeries, f : Double) -> Encode_csvSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn encode_csv_matrix_trace(m : Encode_csvMatrix) -> Double {
 pub fn encode_csv_matrix_norm(m : Encode_csvMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  encode_csv_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn encode_csv_matrix_to_string(m : Encode_csvMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn encode_csv_vector_dot(a : Encode_csvVector, b : Encode_csvVector) -> Doub
   sum
 }
 
-pub fn encode_csv_vector_norm(v : Encode_csvVector) -> Double { encode_csv_sqrt(encode_csv_vector_dot(v, v)) }
+pub fn encode_csv_vector_norm(v : Encode_csvVector) -> Double { @_common.sqrt(encode_csv_vector_dot(v, v)) }
 
 pub fn encode_csv_vector_normalize(v : Encode_csvVector) -> Encode_csvVector {
   let n = encode_csv_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn encode_csv_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn encode_csv_std(data : Array[Double]) -> Double { encode_csv_sqrt(encode_csv_var(data)) }
+pub fn encode_csv_std(data : Array[Double]) -> Double { @_common.sqrt(encode_csv_var(data)) }
 
 pub fn encode_csv_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn encode_csv_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + encode_csv_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn encode_csv_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = encode_csv_precision(pred, labels, pos); let r = encode_csv_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn encode_csv_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn encode_csv_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn encode_csv_dbl(x : Double) -> String {
   let i = if x >= 0.0 { encode_csv_int(x) } else { -encode_csv_int(-x) }

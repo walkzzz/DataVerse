@@ -25,7 +25,7 @@ pub fn logit_boost_point_label(p : Logit_boostPoint) -> Int { p.label }
 pub fn logit_boost_point_dist(a : Logit_boostPoint, b : Logit_boostPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  logit_boost_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn logit_boost_point_add(a : Logit_boostPoint, b : Logit_boostPoint) -> Logit_boostPoint {
@@ -45,7 +45,7 @@ pub fn logit_boost_point_dot(a : Logit_boostPoint, b : Logit_boostPoint) -> Doub
 }
 
 pub fn logit_boost_point_norm(pt : Logit_boostPoint) -> Double {
-  logit_boost_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn logit_boost_point_to_string(pt : Logit_boostPoint) -> String {
@@ -102,7 +102,7 @@ pub fn logit_boost_series_var(s : Logit_boostSeries) -> Double {
   }
 }
 
-pub fn logit_boost_series_std(s : Logit_boostSeries) -> Double { logit_boost_sqrt(logit_boost_series_var(s)) }
+pub fn logit_boost_series_std(s : Logit_boostSeries) -> Double { @_common.sqrt(logit_boost_series_var(s)) }
 
 pub fn logit_boost_series_scale(s : Logit_boostSeries, f : Double) -> Logit_boostSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn logit_boost_matrix_trace(m : Logit_boostMatrix) -> Double {
 pub fn logit_boost_matrix_norm(m : Logit_boostMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  logit_boost_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn logit_boost_matrix_to_string(m : Logit_boostMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn logit_boost_vector_dot(a : Logit_boostVector, b : Logit_boostVector) -> D
   sum
 }
 
-pub fn logit_boost_vector_norm(v : Logit_boostVector) -> Double { logit_boost_sqrt(logit_boost_vector_dot(v, v)) }
+pub fn logit_boost_vector_norm(v : Logit_boostVector) -> Double { @_common.sqrt(logit_boost_vector_dot(v, v)) }
 
 pub fn logit_boost_vector_normalize(v : Logit_boostVector) -> Logit_boostVector {
   let n = logit_boost_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn logit_boost_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn logit_boost_std(data : Array[Double]) -> Double { logit_boost_sqrt(logit_boost_var(data)) }
+pub fn logit_boost_std(data : Array[Double]) -> Double { @_common.sqrt(logit_boost_var(data)) }
 
 pub fn logit_boost_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn logit_boost_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + logit_boost_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn logit_boost_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = logit_boost_precision(pred, labels, pos); let r = logit_boost_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn logit_boost_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn logit_boost_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn logit_boost_dbl(x : Double) -> String {
   let i = if x >= 0.0 { logit_boost_int(x) } else { -logit_boost_int(-x) }

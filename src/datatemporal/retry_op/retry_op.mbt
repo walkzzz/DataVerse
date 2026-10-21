@@ -25,7 +25,7 @@ pub fn retry_op_point_label(p : Retry_opPoint) -> Int { p.label }
 pub fn retry_op_point_dist(a : Retry_opPoint, b : Retry_opPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  retry_op_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn retry_op_point_add(a : Retry_opPoint, b : Retry_opPoint) -> Retry_opPoint {
@@ -45,7 +45,7 @@ pub fn retry_op_point_dot(a : Retry_opPoint, b : Retry_opPoint) -> Double {
 }
 
 pub fn retry_op_point_norm(pt : Retry_opPoint) -> Double {
-  retry_op_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn retry_op_point_to_string(pt : Retry_opPoint) -> String {
@@ -102,7 +102,7 @@ pub fn retry_op_series_var(s : Retry_opSeries) -> Double {
   }
 }
 
-pub fn retry_op_series_std(s : Retry_opSeries) -> Double { retry_op_sqrt(retry_op_series_var(s)) }
+pub fn retry_op_series_std(s : Retry_opSeries) -> Double { @_common.sqrt(retry_op_series_var(s)) }
 
 pub fn retry_op_series_scale(s : Retry_opSeries, f : Double) -> Retry_opSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn retry_op_matrix_trace(m : Retry_opMatrix) -> Double {
 pub fn retry_op_matrix_norm(m : Retry_opMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  retry_op_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn retry_op_matrix_to_string(m : Retry_opMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn retry_op_vector_dot(a : Retry_opVector, b : Retry_opVector) -> Double {
   sum
 }
 
-pub fn retry_op_vector_norm(v : Retry_opVector) -> Double { retry_op_sqrt(retry_op_vector_dot(v, v)) }
+pub fn retry_op_vector_norm(v : Retry_opVector) -> Double { @_common.sqrt(retry_op_vector_dot(v, v)) }
 
 pub fn retry_op_vector_normalize(v : Retry_opVector) -> Retry_opVector {
   let n = retry_op_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn retry_op_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn retry_op_std(data : Array[Double]) -> Double { retry_op_sqrt(retry_op_var(data)) }
+pub fn retry_op_std(data : Array[Double]) -> Double { @_common.sqrt(retry_op_var(data)) }
 
 pub fn retry_op_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn retry_op_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + retry_op_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn retry_op_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double 
   let p_ = retry_op_precision(pred, labels, pos); let r = retry_op_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn retry_op_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn retry_op_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn retry_op_dbl(x : Double) -> String {
   let i = if x >= 0.0 { retry_op_int(x) } else { -retry_op_int(-x) }

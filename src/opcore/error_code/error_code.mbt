@@ -25,7 +25,7 @@ pub fn error_code_point_label(p : Error_codePoint) -> Int { p.label }
 pub fn error_code_point_dist(a : Error_codePoint, b : Error_codePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  error_code_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn error_code_point_add(a : Error_codePoint, b : Error_codePoint) -> Error_codePoint {
@@ -45,7 +45,7 @@ pub fn error_code_point_dot(a : Error_codePoint, b : Error_codePoint) -> Double 
 }
 
 pub fn error_code_point_norm(pt : Error_codePoint) -> Double {
-  error_code_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn error_code_point_to_string(pt : Error_codePoint) -> String {
@@ -102,7 +102,7 @@ pub fn error_code_series_var(s : Error_codeSeries) -> Double {
   }
 }
 
-pub fn error_code_series_std(s : Error_codeSeries) -> Double { error_code_sqrt(error_code_series_var(s)) }
+pub fn error_code_series_std(s : Error_codeSeries) -> Double { @_common.sqrt(error_code_series_var(s)) }
 
 pub fn error_code_series_scale(s : Error_codeSeries, f : Double) -> Error_codeSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn error_code_matrix_trace(m : Error_codeMatrix) -> Double {
 pub fn error_code_matrix_norm(m : Error_codeMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  error_code_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn error_code_matrix_to_string(m : Error_codeMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn error_code_vector_dot(a : Error_codeVector, b : Error_codeVector) -> Doub
   sum
 }
 
-pub fn error_code_vector_norm(v : Error_codeVector) -> Double { error_code_sqrt(error_code_vector_dot(v, v)) }
+pub fn error_code_vector_norm(v : Error_codeVector) -> Double { @_common.sqrt(error_code_vector_dot(v, v)) }
 
 pub fn error_code_vector_normalize(v : Error_codeVector) -> Error_codeVector {
   let n = error_code_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn error_code_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn error_code_std(data : Array[Double]) -> Double { error_code_sqrt(error_code_var(data)) }
+pub fn error_code_std(data : Array[Double]) -> Double { @_common.sqrt(error_code_var(data)) }
 
 pub fn error_code_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn error_code_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + error_code_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn error_code_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = error_code_precision(pred, labels, pos); let r = error_code_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn error_code_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn error_code_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn error_code_dbl(x : Double) -> String {
   let i = if x >= 0.0 { error_code_int(x) } else { -error_code_int(-x) }

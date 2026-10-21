@@ -25,7 +25,7 @@ pub fn cuckoo_point_label(p : CuckooPoint) -> Int { p.label }
 pub fn cuckoo_point_dist(a : CuckooPoint, b : CuckooPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  cuckoo_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn cuckoo_point_add(a : CuckooPoint, b : CuckooPoint) -> CuckooPoint {
@@ -45,7 +45,7 @@ pub fn cuckoo_point_dot(a : CuckooPoint, b : CuckooPoint) -> Double {
 }
 
 pub fn cuckoo_point_norm(pt : CuckooPoint) -> Double {
-  cuckoo_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn cuckoo_point_to_string(pt : CuckooPoint) -> String {
@@ -102,7 +102,7 @@ pub fn cuckoo_series_var(s : CuckooSeries) -> Double {
   }
 }
 
-pub fn cuckoo_series_std(s : CuckooSeries) -> Double { cuckoo_sqrt(cuckoo_series_var(s)) }
+pub fn cuckoo_series_std(s : CuckooSeries) -> Double { @_common.sqrt(cuckoo_series_var(s)) }
 
 pub fn cuckoo_series_scale(s : CuckooSeries, f : Double) -> CuckooSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn cuckoo_matrix_trace(m : CuckooMatrix) -> Double {
 pub fn cuckoo_matrix_norm(m : CuckooMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  cuckoo_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn cuckoo_matrix_to_string(m : CuckooMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn cuckoo_vector_dot(a : CuckooVector, b : CuckooVector) -> Double {
   sum
 }
 
-pub fn cuckoo_vector_norm(v : CuckooVector) -> Double { cuckoo_sqrt(cuckoo_vector_dot(v, v)) }
+pub fn cuckoo_vector_norm(v : CuckooVector) -> Double { @_common.sqrt(cuckoo_vector_dot(v, v)) }
 
 pub fn cuckoo_vector_normalize(v : CuckooVector) -> CuckooVector {
   let n = cuckoo_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn cuckoo_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn cuckoo_std(data : Array[Double]) -> Double { cuckoo_sqrt(cuckoo_var(data)) }
+pub fn cuckoo_std(data : Array[Double]) -> Double { @_common.sqrt(cuckoo_var(data)) }
 
 pub fn cuckoo_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn cuckoo_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + cuckoo_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn cuckoo_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = cuckoo_precision(pred, labels, pos); let r = cuckoo_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn cuckoo_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn cuckoo_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn cuckoo_dbl(x : Double) -> String {
   let i = if x >= 0.0 { cuckoo_int(x) } else { -cuckoo_int(-x) }

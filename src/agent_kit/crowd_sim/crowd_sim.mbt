@@ -25,7 +25,7 @@ pub fn crowd_sim_point_label(p : Crowd_simPoint) -> Int { p.label }
 pub fn crowd_sim_point_dist(a : Crowd_simPoint, b : Crowd_simPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  crowd_sim_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn crowd_sim_point_add(a : Crowd_simPoint, b : Crowd_simPoint) -> Crowd_simPoint {
@@ -45,7 +45,7 @@ pub fn crowd_sim_point_dot(a : Crowd_simPoint, b : Crowd_simPoint) -> Double {
 }
 
 pub fn crowd_sim_point_norm(pt : Crowd_simPoint) -> Double {
-  crowd_sim_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn crowd_sim_point_to_string(pt : Crowd_simPoint) -> String {
@@ -102,7 +102,7 @@ pub fn crowd_sim_series_var(s : Crowd_simSeries) -> Double {
   }
 }
 
-pub fn crowd_sim_series_std(s : Crowd_simSeries) -> Double { crowd_sim_sqrt(crowd_sim_series_var(s)) }
+pub fn crowd_sim_series_std(s : Crowd_simSeries) -> Double { @_common.sqrt(crowd_sim_series_var(s)) }
 
 pub fn crowd_sim_series_scale(s : Crowd_simSeries, f : Double) -> Crowd_simSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn crowd_sim_matrix_trace(m : Crowd_simMatrix) -> Double {
 pub fn crowd_sim_matrix_norm(m : Crowd_simMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  crowd_sim_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn crowd_sim_matrix_to_string(m : Crowd_simMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn crowd_sim_vector_dot(a : Crowd_simVector, b : Crowd_simVector) -> Double 
   sum
 }
 
-pub fn crowd_sim_vector_norm(v : Crowd_simVector) -> Double { crowd_sim_sqrt(crowd_sim_vector_dot(v, v)) }
+pub fn crowd_sim_vector_norm(v : Crowd_simVector) -> Double { @_common.sqrt(crowd_sim_vector_dot(v, v)) }
 
 pub fn crowd_sim_vector_normalize(v : Crowd_simVector) -> Crowd_simVector {
   let n = crowd_sim_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn crowd_sim_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn crowd_sim_std(data : Array[Double]) -> Double { crowd_sim_sqrt(crowd_sim_var(data)) }
+pub fn crowd_sim_std(data : Array[Double]) -> Double { @_common.sqrt(crowd_sim_var(data)) }
 
 pub fn crowd_sim_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn crowd_sim_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + crowd_sim_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn crowd_sim_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double
   let p_ = crowd_sim_precision(pred, labels, pos); let r = crowd_sim_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn crowd_sim_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn crowd_sim_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn crowd_sim_dbl(x : Double) -> String {
   let i = if x >= 0.0 { crowd_sim_int(x) } else { -crowd_sim_int(-x) }

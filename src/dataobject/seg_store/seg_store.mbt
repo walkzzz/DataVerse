@@ -25,7 +25,7 @@ pub fn seg_store_point_label(p : Seg_storePoint) -> Int { p.label }
 pub fn seg_store_point_dist(a : Seg_storePoint, b : Seg_storePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  seg_store_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn seg_store_point_add(a : Seg_storePoint, b : Seg_storePoint) -> Seg_storePoint {
@@ -45,7 +45,7 @@ pub fn seg_store_point_dot(a : Seg_storePoint, b : Seg_storePoint) -> Double {
 }
 
 pub fn seg_store_point_norm(pt : Seg_storePoint) -> Double {
-  seg_store_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn seg_store_point_to_string(pt : Seg_storePoint) -> String {
@@ -102,7 +102,7 @@ pub fn seg_store_series_var(s : Seg_storeSeries) -> Double {
   }
 }
 
-pub fn seg_store_series_std(s : Seg_storeSeries) -> Double { seg_store_sqrt(seg_store_series_var(s)) }
+pub fn seg_store_series_std(s : Seg_storeSeries) -> Double { @_common.sqrt(seg_store_series_var(s)) }
 
 pub fn seg_store_series_scale(s : Seg_storeSeries, f : Double) -> Seg_storeSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn seg_store_matrix_trace(m : Seg_storeMatrix) -> Double {
 pub fn seg_store_matrix_norm(m : Seg_storeMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  seg_store_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn seg_store_matrix_to_string(m : Seg_storeMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn seg_store_vector_dot(a : Seg_storeVector, b : Seg_storeVector) -> Double 
   sum
 }
 
-pub fn seg_store_vector_norm(v : Seg_storeVector) -> Double { seg_store_sqrt(seg_store_vector_dot(v, v)) }
+pub fn seg_store_vector_norm(v : Seg_storeVector) -> Double { @_common.sqrt(seg_store_vector_dot(v, v)) }
 
 pub fn seg_store_vector_normalize(v : Seg_storeVector) -> Seg_storeVector {
   let n = seg_store_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn seg_store_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn seg_store_std(data : Array[Double]) -> Double { seg_store_sqrt(seg_store_var(data)) }
+pub fn seg_store_std(data : Array[Double]) -> Double { @_common.sqrt(seg_store_var(data)) }
 
 pub fn seg_store_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn seg_store_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + seg_store_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn seg_store_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double
   let p_ = seg_store_precision(pred, labels, pos); let r = seg_store_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn seg_store_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn seg_store_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn seg_store_dbl(x : Double) -> String {
   let i = if x >= 0.0 { seg_store_int(x) } else { -seg_store_int(-x) }

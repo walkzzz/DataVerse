@@ -25,7 +25,7 @@ pub fn index_rtree_point_label(p : Index_rtreePoint) -> Int { p.label }
 pub fn index_rtree_point_dist(a : Index_rtreePoint, b : Index_rtreePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  index_rtree_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn index_rtree_point_add(a : Index_rtreePoint, b : Index_rtreePoint) -> Index_rtreePoint {
@@ -45,7 +45,7 @@ pub fn index_rtree_point_dot(a : Index_rtreePoint, b : Index_rtreePoint) -> Doub
 }
 
 pub fn index_rtree_point_norm(pt : Index_rtreePoint) -> Double {
-  index_rtree_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn index_rtree_point_to_string(pt : Index_rtreePoint) -> String {
@@ -102,7 +102,7 @@ pub fn index_rtree_series_var(s : Index_rtreeSeries) -> Double {
   }
 }
 
-pub fn index_rtree_series_std(s : Index_rtreeSeries) -> Double { index_rtree_sqrt(index_rtree_series_var(s)) }
+pub fn index_rtree_series_std(s : Index_rtreeSeries) -> Double { @_common.sqrt(index_rtree_series_var(s)) }
 
 pub fn index_rtree_series_scale(s : Index_rtreeSeries, f : Double) -> Index_rtreeSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn index_rtree_matrix_trace(m : Index_rtreeMatrix) -> Double {
 pub fn index_rtree_matrix_norm(m : Index_rtreeMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  index_rtree_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn index_rtree_matrix_to_string(m : Index_rtreeMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn index_rtree_vector_dot(a : Index_rtreeVector, b : Index_rtreeVector) -> D
   sum
 }
 
-pub fn index_rtree_vector_norm(v : Index_rtreeVector) -> Double { index_rtree_sqrt(index_rtree_vector_dot(v, v)) }
+pub fn index_rtree_vector_norm(v : Index_rtreeVector) -> Double { @_common.sqrt(index_rtree_vector_dot(v, v)) }
 
 pub fn index_rtree_vector_normalize(v : Index_rtreeVector) -> Index_rtreeVector {
   let n = index_rtree_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn index_rtree_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn index_rtree_std(data : Array[Double]) -> Double { index_rtree_sqrt(index_rtree_var(data)) }
+pub fn index_rtree_std(data : Array[Double]) -> Double { @_common.sqrt(index_rtree_var(data)) }
 
 pub fn index_rtree_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn index_rtree_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + index_rtree_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn index_rtree_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = index_rtree_precision(pred, labels, pos); let r = index_rtree_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn index_rtree_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn index_rtree_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn index_rtree_dbl(x : Double) -> String {
   let i = if x >= 0.0 { index_rtree_int(x) } else { -index_rtree_int(-x) }

@@ -1,2 +1,5 @@
 // dataobject/kv_store dataobject/kv_store
 // S13.169 new
+import {
+  "dataverse/extcore/_common",
+}

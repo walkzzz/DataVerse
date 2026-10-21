@@ -1,2 +1,5 @@
 // dataobject/index_gpu dataobject/index_gpu
 // S13.189 new
+import {
+  "dataverse/extcore/_common",
+}

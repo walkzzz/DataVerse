@@ -25,7 +25,7 @@ pub fn z_transform_point_label(p : Z_transformPoint) -> Int { p.label }
 pub fn z_transform_point_dist(a : Z_transformPoint, b : Z_transformPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  z_transform_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn z_transform_point_add(a : Z_transformPoint, b : Z_transformPoint) -> Z_transformPoint {
@@ -45,7 +45,7 @@ pub fn z_transform_point_dot(a : Z_transformPoint, b : Z_transformPoint) -> Doub
 }
 
 pub fn z_transform_point_norm(pt : Z_transformPoint) -> Double {
-  z_transform_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn z_transform_point_to_string(pt : Z_transformPoint) -> String {
@@ -102,7 +102,7 @@ pub fn z_transform_series_var(s : Z_transformSeries) -> Double {
   }
 }
 
-pub fn z_transform_series_std(s : Z_transformSeries) -> Double { z_transform_sqrt(z_transform_series_var(s)) }
+pub fn z_transform_series_std(s : Z_transformSeries) -> Double { @_common.sqrt(z_transform_series_var(s)) }
 
 pub fn z_transform_series_scale(s : Z_transformSeries, f : Double) -> Z_transformSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn z_transform_matrix_trace(m : Z_transformMatrix) -> Double {
 pub fn z_transform_matrix_norm(m : Z_transformMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  z_transform_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn z_transform_matrix_to_string(m : Z_transformMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn z_transform_vector_dot(a : Z_transformVector, b : Z_transformVector) -> D
   sum
 }
 
-pub fn z_transform_vector_norm(v : Z_transformVector) -> Double { z_transform_sqrt(z_transform_vector_dot(v, v)) }
+pub fn z_transform_vector_norm(v : Z_transformVector) -> Double { @_common.sqrt(z_transform_vector_dot(v, v)) }
 
 pub fn z_transform_vector_normalize(v : Z_transformVector) -> Z_transformVector {
   let n = z_transform_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn z_transform_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn z_transform_std(data : Array[Double]) -> Double { z_transform_sqrt(z_transform_var(data)) }
+pub fn z_transform_std(data : Array[Double]) -> Double { @_common.sqrt(z_transform_var(data)) }
 
 pub fn z_transform_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn z_transform_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + z_transform_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn z_transform_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = z_transform_precision(pred, labels, pos); let r = z_transform_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn z_transform_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn z_transform_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn z_transform_dbl(x : Double) -> String {
   let i = if x >= 0.0 { z_transform_int(x) } else { -z_transform_int(-x) }

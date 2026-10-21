@@ -1,2 +1,5 @@
 // datatemporal/pipe_buf datatemporal/pipe_buf
 // S13.233 new
+import {
+  "dataverse/extcore/_common",
+}

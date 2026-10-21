@@ -25,7 +25,7 @@ pub fn encode_parquet_point_label(p : Encode_parquetPoint) -> Int { p.label }
 pub fn encode_parquet_point_dist(a : Encode_parquetPoint, b : Encode_parquetPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  encode_parquet_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn encode_parquet_point_add(a : Encode_parquetPoint, b : Encode_parquetPoint) -> Encode_parquetPoint {
@@ -45,7 +45,7 @@ pub fn encode_parquet_point_dot(a : Encode_parquetPoint, b : Encode_parquetPoint
 }
 
 pub fn encode_parquet_point_norm(pt : Encode_parquetPoint) -> Double {
-  encode_parquet_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn encode_parquet_point_to_string(pt : Encode_parquetPoint) -> String {
@@ -102,7 +102,7 @@ pub fn encode_parquet_series_var(s : Encode_parquetSeries) -> Double {
   }
 }
 
-pub fn encode_parquet_series_std(s : Encode_parquetSeries) -> Double { encode_parquet_sqrt(encode_parquet_series_var(s)) }
+pub fn encode_parquet_series_std(s : Encode_parquetSeries) -> Double { @_common.sqrt(encode_parquet_series_var(s)) }
 
 pub fn encode_parquet_series_scale(s : Encode_parquetSeries, f : Double) -> Encode_parquetSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn encode_parquet_matrix_trace(m : Encode_parquetMatrix) -> Double {
 pub fn encode_parquet_matrix_norm(m : Encode_parquetMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  encode_parquet_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn encode_parquet_matrix_to_string(m : Encode_parquetMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn encode_parquet_vector_dot(a : Encode_parquetVector, b : Encode_parquetVec
   sum
 }
 
-pub fn encode_parquet_vector_norm(v : Encode_parquetVector) -> Double { encode_parquet_sqrt(encode_parquet_vector_dot(v, v)) }
+pub fn encode_parquet_vector_norm(v : Encode_parquetVector) -> Double { @_common.sqrt(encode_parquet_vector_dot(v, v)) }
 
 pub fn encode_parquet_vector_normalize(v : Encode_parquetVector) -> Encode_parquetVector {
   let n = encode_parquet_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn encode_parquet_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn encode_parquet_std(data : Array[Double]) -> Double { encode_parquet_sqrt(encode_parquet_var(data)) }
+pub fn encode_parquet_std(data : Array[Double]) -> Double { @_common.sqrt(encode_parquet_var(data)) }
 
 pub fn encode_parquet_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn encode_parquet_mae(pred : Array[Double], labels : Array[Double]) -> Doubl
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + encode_parquet_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn encode_parquet_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> D
   let p_ = encode_parquet_precision(pred, labels, pos); let r = encode_parquet_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn encode_parquet_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn encode_parquet_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn encode_parquet_dbl(x : Double) -> String {
   let i = if x >= 0.0 { encode_parquet_int(x) } else { -encode_parquet_int(-x) }

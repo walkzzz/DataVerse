@@ -70,14 +70,6 @@ fn morph_min(a : Double, b : Double) -> Double {
   }
 }
 
-fn morph_abs(x : Double) -> Double {
-  if x < 0.0 {
-    -x
-  } else {
-    x
-  }
-}
-
 /// 构造形态学图像 / Build morphology image.
 pub fn make_morph_image(width : Int, height : Int, data : Array[Double]) -> MorphImage {
   { width, height, data }
@@ -650,7 +642,7 @@ pub fn morph_granulometry(img : MorphImage, max_size : Int) -> Array[Double] {
     let mut diff = 0.0
     for y in 0..<img.height {
       for x in 0..<img.width {
-        diff = diff + morph_abs(morph_pixel(prev, x, y) - morph_pixel(opened, x, y))
+        diff = diff + @_common.abs(morph_pixel(prev, x, y) - morph_pixel(opened, x, y))
       }
     }
     result.push(diff)

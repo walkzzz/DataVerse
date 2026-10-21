@@ -25,7 +25,7 @@ pub fn fourier_analysis_point_label(p : Fourier_analysisPoint) -> Int { p.label 
 pub fn fourier_analysis_point_dist(a : Fourier_analysisPoint, b : Fourier_analysisPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  fourier_analysis_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn fourier_analysis_point_add(a : Fourier_analysisPoint, b : Fourier_analysisPoint) -> Fourier_analysisPoint {
@@ -45,7 +45,7 @@ pub fn fourier_analysis_point_dot(a : Fourier_analysisPoint, b : Fourier_analysi
 }
 
 pub fn fourier_analysis_point_norm(pt : Fourier_analysisPoint) -> Double {
-  fourier_analysis_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn fourier_analysis_point_to_string(pt : Fourier_analysisPoint) -> String {
@@ -102,7 +102,7 @@ pub fn fourier_analysis_series_var(s : Fourier_analysisSeries) -> Double {
   }
 }
 
-pub fn fourier_analysis_series_std(s : Fourier_analysisSeries) -> Double { fourier_analysis_sqrt(fourier_analysis_series_var(s)) }
+pub fn fourier_analysis_series_std(s : Fourier_analysisSeries) -> Double { @_common.sqrt(fourier_analysis_series_var(s)) }
 
 pub fn fourier_analysis_series_scale(s : Fourier_analysisSeries, f : Double) -> Fourier_analysisSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn fourier_analysis_matrix_trace(m : Fourier_analysisMatrix) -> Double {
 pub fn fourier_analysis_matrix_norm(m : Fourier_analysisMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  fourier_analysis_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn fourier_analysis_matrix_to_string(m : Fourier_analysisMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn fourier_analysis_vector_dot(a : Fourier_analysisVector, b : Fourier_analy
   sum
 }
 
-pub fn fourier_analysis_vector_norm(v : Fourier_analysisVector) -> Double { fourier_analysis_sqrt(fourier_analysis_vector_dot(v, v)) }
+pub fn fourier_analysis_vector_norm(v : Fourier_analysisVector) -> Double { @_common.sqrt(fourier_analysis_vector_dot(v, v)) }
 
 pub fn fourier_analysis_vector_normalize(v : Fourier_analysisVector) -> Fourier_analysisVector {
   let n = fourier_analysis_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn fourier_analysis_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn fourier_analysis_std(data : Array[Double]) -> Double { fourier_analysis_sqrt(fourier_analysis_var(data)) }
+pub fn fourier_analysis_std(data : Array[Double]) -> Double { @_common.sqrt(fourier_analysis_var(data)) }
 
 pub fn fourier_analysis_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn fourier_analysis_mae(pred : Array[Double], labels : Array[Double]) -> Dou
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + fourier_analysis_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn fourier_analysis_f1(pred : Array[Int], labels : Array[Int], pos : Int) ->
   let p_ = fourier_analysis_precision(pred, labels, pos); let r = fourier_analysis_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn fourier_analysis_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn fourier_analysis_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn fourier_analysis_dbl(x : Double) -> String {
   let i = if x >= 0.0 { fourier_analysis_int(x) } else { -fourier_analysis_int(-x) }

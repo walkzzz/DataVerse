@@ -1,2 +1,5 @@
 // agent_kit/sat_solver agent_kit/sat_solver
 // S13.161 new
+import {
+  "dataverse/extcore/_common",
+}

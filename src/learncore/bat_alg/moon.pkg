@@ -1,2 +1,5 @@
 // learncore/bat_alg learncore/bat_alg
 // S13.75 new
+import {
+  "dataverse/extcore/_common",
+}

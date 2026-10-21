@@ -25,7 +25,7 @@ pub fn model_check_point_label(p : Model_checkPoint) -> Int { p.label }
 pub fn model_check_point_dist(a : Model_checkPoint, b : Model_checkPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  model_check_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn model_check_point_add(a : Model_checkPoint, b : Model_checkPoint) -> Model_checkPoint {
@@ -45,7 +45,7 @@ pub fn model_check_point_dot(a : Model_checkPoint, b : Model_checkPoint) -> Doub
 }
 
 pub fn model_check_point_norm(pt : Model_checkPoint) -> Double {
-  model_check_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn model_check_point_to_string(pt : Model_checkPoint) -> String {
@@ -102,7 +102,7 @@ pub fn model_check_series_var(s : Model_checkSeries) -> Double {
   }
 }
 
-pub fn model_check_series_std(s : Model_checkSeries) -> Double { model_check_sqrt(model_check_series_var(s)) }
+pub fn model_check_series_std(s : Model_checkSeries) -> Double { @_common.sqrt(model_check_series_var(s)) }
 
 pub fn model_check_series_scale(s : Model_checkSeries, f : Double) -> Model_checkSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn model_check_matrix_trace(m : Model_checkMatrix) -> Double {
 pub fn model_check_matrix_norm(m : Model_checkMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  model_check_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn model_check_matrix_to_string(m : Model_checkMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn model_check_vector_dot(a : Model_checkVector, b : Model_checkVector) -> D
   sum
 }
 
-pub fn model_check_vector_norm(v : Model_checkVector) -> Double { model_check_sqrt(model_check_vector_dot(v, v)) }
+pub fn model_check_vector_norm(v : Model_checkVector) -> Double { @_common.sqrt(model_check_vector_dot(v, v)) }
 
 pub fn model_check_vector_normalize(v : Model_checkVector) -> Model_checkVector {
   let n = model_check_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn model_check_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn model_check_std(data : Array[Double]) -> Double { model_check_sqrt(model_check_var(data)) }
+pub fn model_check_std(data : Array[Double]) -> Double { @_common.sqrt(model_check_var(data)) }
 
 pub fn model_check_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn model_check_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + model_check_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn model_check_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = model_check_precision(pred, labels, pos); let r = model_check_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn model_check_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn model_check_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn model_check_dbl(x : Double) -> String {
   let i = if x >= 0.0 { model_check_int(x) } else { -model_check_int(-x) }

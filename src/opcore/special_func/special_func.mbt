@@ -25,7 +25,7 @@ pub fn special_func_point_label(p : Special_funcPoint) -> Int { p.label }
 pub fn special_func_point_dist(a : Special_funcPoint, b : Special_funcPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  special_func_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn special_func_point_add(a : Special_funcPoint, b : Special_funcPoint) -> Special_funcPoint {
@@ -45,7 +45,7 @@ pub fn special_func_point_dot(a : Special_funcPoint, b : Special_funcPoint) -> D
 }
 
 pub fn special_func_point_norm(pt : Special_funcPoint) -> Double {
-  special_func_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn special_func_point_to_string(pt : Special_funcPoint) -> String {
@@ -102,7 +102,7 @@ pub fn special_func_series_var(s : Special_funcSeries) -> Double {
   }
 }
 
-pub fn special_func_series_std(s : Special_funcSeries) -> Double { special_func_sqrt(special_func_series_var(s)) }
+pub fn special_func_series_std(s : Special_funcSeries) -> Double { @_common.sqrt(special_func_series_var(s)) }
 
 pub fn special_func_series_scale(s : Special_funcSeries, f : Double) -> Special_funcSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn special_func_matrix_trace(m : Special_funcMatrix) -> Double {
 pub fn special_func_matrix_norm(m : Special_funcMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  special_func_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn special_func_matrix_to_string(m : Special_funcMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn special_func_vector_dot(a : Special_funcVector, b : Special_funcVector) -
   sum
 }
 
-pub fn special_func_vector_norm(v : Special_funcVector) -> Double { special_func_sqrt(special_func_vector_dot(v, v)) }
+pub fn special_func_vector_norm(v : Special_funcVector) -> Double { @_common.sqrt(special_func_vector_dot(v, v)) }
 
 pub fn special_func_vector_normalize(v : Special_funcVector) -> Special_funcVector {
   let n = special_func_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn special_func_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn special_func_std(data : Array[Double]) -> Double { special_func_sqrt(special_func_var(data)) }
+pub fn special_func_std(data : Array[Double]) -> Double { @_common.sqrt(special_func_var(data)) }
 
 pub fn special_func_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn special_func_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + special_func_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn special_func_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = special_func_precision(pred, labels, pos); let r = special_func_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn special_func_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn special_func_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn special_func_dbl(x : Double) -> String {
   let i = if x >= 0.0 { special_func_int(x) } else { -special_func_int(-x) }

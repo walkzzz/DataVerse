@@ -25,7 +25,7 @@ pub fn emotion_model_point_label(p : Emotion_modelPoint) -> Int { p.label }
 pub fn emotion_model_point_dist(a : Emotion_modelPoint, b : Emotion_modelPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  emotion_model_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn emotion_model_point_add(a : Emotion_modelPoint, b : Emotion_modelPoint) -> Emotion_modelPoint {
@@ -45,7 +45,7 @@ pub fn emotion_model_point_dot(a : Emotion_modelPoint, b : Emotion_modelPoint) -
 }
 
 pub fn emotion_model_point_norm(pt : Emotion_modelPoint) -> Double {
-  emotion_model_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn emotion_model_point_to_string(pt : Emotion_modelPoint) -> String {
@@ -102,7 +102,7 @@ pub fn emotion_model_series_var(s : Emotion_modelSeries) -> Double {
   }
 }
 
-pub fn emotion_model_series_std(s : Emotion_modelSeries) -> Double { emotion_model_sqrt(emotion_model_series_var(s)) }
+pub fn emotion_model_series_std(s : Emotion_modelSeries) -> Double { @_common.sqrt(emotion_model_series_var(s)) }
 
 pub fn emotion_model_series_scale(s : Emotion_modelSeries, f : Double) -> Emotion_modelSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn emotion_model_matrix_trace(m : Emotion_modelMatrix) -> Double {
 pub fn emotion_model_matrix_norm(m : Emotion_modelMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  emotion_model_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn emotion_model_matrix_to_string(m : Emotion_modelMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn emotion_model_vector_dot(a : Emotion_modelVector, b : Emotion_modelVector
   sum
 }
 
-pub fn emotion_model_vector_norm(v : Emotion_modelVector) -> Double { emotion_model_sqrt(emotion_model_vector_dot(v, v)) }
+pub fn emotion_model_vector_norm(v : Emotion_modelVector) -> Double { @_common.sqrt(emotion_model_vector_dot(v, v)) }
 
 pub fn emotion_model_vector_normalize(v : Emotion_modelVector) -> Emotion_modelVector {
   let n = emotion_model_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn emotion_model_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn emotion_model_std(data : Array[Double]) -> Double { emotion_model_sqrt(emotion_model_var(data)) }
+pub fn emotion_model_std(data : Array[Double]) -> Double { @_common.sqrt(emotion_model_var(data)) }
 
 pub fn emotion_model_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn emotion_model_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + emotion_model_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn emotion_model_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = emotion_model_precision(pred, labels, pos); let r = emotion_model_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn emotion_model_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn emotion_model_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn emotion_model_dbl(x : Double) -> String {
   let i = if x >= 0.0 { emotion_model_int(x) } else { -emotion_model_int(-x) }

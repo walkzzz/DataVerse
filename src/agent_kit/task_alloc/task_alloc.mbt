@@ -25,7 +25,7 @@ pub fn task_alloc_point_label(p : Task_allocPoint) -> Int { p.label }
 pub fn task_alloc_point_dist(a : Task_allocPoint, b : Task_allocPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  task_alloc_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn task_alloc_point_add(a : Task_allocPoint, b : Task_allocPoint) -> Task_allocPoint {
@@ -45,7 +45,7 @@ pub fn task_alloc_point_dot(a : Task_allocPoint, b : Task_allocPoint) -> Double 
 }
 
 pub fn task_alloc_point_norm(pt : Task_allocPoint) -> Double {
-  task_alloc_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn task_alloc_point_to_string(pt : Task_allocPoint) -> String {
@@ -102,7 +102,7 @@ pub fn task_alloc_series_var(s : Task_allocSeries) -> Double {
   }
 }
 
-pub fn task_alloc_series_std(s : Task_allocSeries) -> Double { task_alloc_sqrt(task_alloc_series_var(s)) }
+pub fn task_alloc_series_std(s : Task_allocSeries) -> Double { @_common.sqrt(task_alloc_series_var(s)) }
 
 pub fn task_alloc_series_scale(s : Task_allocSeries, f : Double) -> Task_allocSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn task_alloc_matrix_trace(m : Task_allocMatrix) -> Double {
 pub fn task_alloc_matrix_norm(m : Task_allocMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  task_alloc_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn task_alloc_matrix_to_string(m : Task_allocMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn task_alloc_vector_dot(a : Task_allocVector, b : Task_allocVector) -> Doub
   sum
 }
 
-pub fn task_alloc_vector_norm(v : Task_allocVector) -> Double { task_alloc_sqrt(task_alloc_vector_dot(v, v)) }
+pub fn task_alloc_vector_norm(v : Task_allocVector) -> Double { @_common.sqrt(task_alloc_vector_dot(v, v)) }
 
 pub fn task_alloc_vector_normalize(v : Task_allocVector) -> Task_allocVector {
   let n = task_alloc_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn task_alloc_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn task_alloc_std(data : Array[Double]) -> Double { task_alloc_sqrt(task_alloc_var(data)) }
+pub fn task_alloc_std(data : Array[Double]) -> Double { @_common.sqrt(task_alloc_var(data)) }
 
 pub fn task_alloc_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn task_alloc_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + task_alloc_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn task_alloc_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = task_alloc_precision(pred, labels, pos); let r = task_alloc_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn task_alloc_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn task_alloc_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn task_alloc_dbl(x : Double) -> String {
   let i = if x >= 0.0 { task_alloc_int(x) } else { -task_alloc_int(-x) }

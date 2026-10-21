@@ -1,2 +1,5 @@
 // learncore/rnn_rt learncore/rnn_rt
 // S13.111 new
+import {
+  "dataverse/extcore/_common",
+}

@@ -1,2 +1,5 @@
 // agent_kit/constraint_sat agent_kit/constraint_sat
 // S13.163 new
+import {
+  "dataverse/extcore/_common",
+}

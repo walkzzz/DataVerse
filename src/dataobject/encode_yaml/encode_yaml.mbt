@@ -25,7 +25,7 @@ pub fn encode_yaml_point_label(p : Encode_yamlPoint) -> Int { p.label }
 pub fn encode_yaml_point_dist(a : Encode_yamlPoint, b : Encode_yamlPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  encode_yaml_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn encode_yaml_point_add(a : Encode_yamlPoint, b : Encode_yamlPoint) -> Encode_yamlPoint {
@@ -45,7 +45,7 @@ pub fn encode_yaml_point_dot(a : Encode_yamlPoint, b : Encode_yamlPoint) -> Doub
 }
 
 pub fn encode_yaml_point_norm(pt : Encode_yamlPoint) -> Double {
-  encode_yaml_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn encode_yaml_point_to_string(pt : Encode_yamlPoint) -> String {
@@ -102,7 +102,7 @@ pub fn encode_yaml_series_var(s : Encode_yamlSeries) -> Double {
   }
 }
 
-pub fn encode_yaml_series_std(s : Encode_yamlSeries) -> Double { encode_yaml_sqrt(encode_yaml_series_var(s)) }
+pub fn encode_yaml_series_std(s : Encode_yamlSeries) -> Double { @_common.sqrt(encode_yaml_series_var(s)) }
 
 pub fn encode_yaml_series_scale(s : Encode_yamlSeries, f : Double) -> Encode_yamlSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn encode_yaml_matrix_trace(m : Encode_yamlMatrix) -> Double {
 pub fn encode_yaml_matrix_norm(m : Encode_yamlMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  encode_yaml_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn encode_yaml_matrix_to_string(m : Encode_yamlMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn encode_yaml_vector_dot(a : Encode_yamlVector, b : Encode_yamlVector) -> D
   sum
 }
 
-pub fn encode_yaml_vector_norm(v : Encode_yamlVector) -> Double { encode_yaml_sqrt(encode_yaml_vector_dot(v, v)) }
+pub fn encode_yaml_vector_norm(v : Encode_yamlVector) -> Double { @_common.sqrt(encode_yaml_vector_dot(v, v)) }
 
 pub fn encode_yaml_vector_normalize(v : Encode_yamlVector) -> Encode_yamlVector {
   let n = encode_yaml_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn encode_yaml_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn encode_yaml_std(data : Array[Double]) -> Double { encode_yaml_sqrt(encode_yaml_var(data)) }
+pub fn encode_yaml_std(data : Array[Double]) -> Double { @_common.sqrt(encode_yaml_var(data)) }
 
 pub fn encode_yaml_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn encode_yaml_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + encode_yaml_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn encode_yaml_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = encode_yaml_precision(pred, labels, pos); let r = encode_yaml_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn encode_yaml_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn encode_yaml_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn encode_yaml_dbl(x : Double) -> String {
   let i = if x >= 0.0 { encode_yaml_int(x) } else { -encode_yaml_int(-x) }

@@ -25,7 +25,7 @@ pub fn index_btree_point_label(p : Index_btreePoint) -> Int { p.label }
 pub fn index_btree_point_dist(a : Index_btreePoint, b : Index_btreePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  index_btree_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn index_btree_point_add(a : Index_btreePoint, b : Index_btreePoint) -> Index_btreePoint {
@@ -45,7 +45,7 @@ pub fn index_btree_point_dot(a : Index_btreePoint, b : Index_btreePoint) -> Doub
 }
 
 pub fn index_btree_point_norm(pt : Index_btreePoint) -> Double {
-  index_btree_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn index_btree_point_to_string(pt : Index_btreePoint) -> String {
@@ -102,7 +102,7 @@ pub fn index_btree_series_var(s : Index_btreeSeries) -> Double {
   }
 }
 
-pub fn index_btree_series_std(s : Index_btreeSeries) -> Double { index_btree_sqrt(index_btree_series_var(s)) }
+pub fn index_btree_series_std(s : Index_btreeSeries) -> Double { @_common.sqrt(index_btree_series_var(s)) }
 
 pub fn index_btree_series_scale(s : Index_btreeSeries, f : Double) -> Index_btreeSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn index_btree_matrix_trace(m : Index_btreeMatrix) -> Double {
 pub fn index_btree_matrix_norm(m : Index_btreeMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  index_btree_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn index_btree_matrix_to_string(m : Index_btreeMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn index_btree_vector_dot(a : Index_btreeVector, b : Index_btreeVector) -> D
   sum
 }
 
-pub fn index_btree_vector_norm(v : Index_btreeVector) -> Double { index_btree_sqrt(index_btree_vector_dot(v, v)) }
+pub fn index_btree_vector_norm(v : Index_btreeVector) -> Double { @_common.sqrt(index_btree_vector_dot(v, v)) }
 
 pub fn index_btree_vector_normalize(v : Index_btreeVector) -> Index_btreeVector {
   let n = index_btree_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn index_btree_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn index_btree_std(data : Array[Double]) -> Double { index_btree_sqrt(index_btree_var(data)) }
+pub fn index_btree_std(data : Array[Double]) -> Double { @_common.sqrt(index_btree_var(data)) }
 
 pub fn index_btree_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn index_btree_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + index_btree_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn index_btree_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = index_btree_precision(pred, labels, pos); let r = index_btree_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn index_btree_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn index_btree_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn index_btree_dbl(x : Double) -> String {
   let i = if x >= 0.0 { index_btree_int(x) } else { -index_btree_int(-x) }

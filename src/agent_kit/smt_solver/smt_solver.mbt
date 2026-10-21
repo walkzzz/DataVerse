@@ -25,7 +25,7 @@ pub fn smt_solver_point_label(p : Smt_solverPoint) -> Int { p.label }
 pub fn smt_solver_point_dist(a : Smt_solverPoint, b : Smt_solverPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  smt_solver_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn smt_solver_point_add(a : Smt_solverPoint, b : Smt_solverPoint) -> Smt_solverPoint {
@@ -45,7 +45,7 @@ pub fn smt_solver_point_dot(a : Smt_solverPoint, b : Smt_solverPoint) -> Double 
 }
 
 pub fn smt_solver_point_norm(pt : Smt_solverPoint) -> Double {
-  smt_solver_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn smt_solver_point_to_string(pt : Smt_solverPoint) -> String {
@@ -102,7 +102,7 @@ pub fn smt_solver_series_var(s : Smt_solverSeries) -> Double {
   }
 }
 
-pub fn smt_solver_series_std(s : Smt_solverSeries) -> Double { smt_solver_sqrt(smt_solver_series_var(s)) }
+pub fn smt_solver_series_std(s : Smt_solverSeries) -> Double { @_common.sqrt(smt_solver_series_var(s)) }
 
 pub fn smt_solver_series_scale(s : Smt_solverSeries, f : Double) -> Smt_solverSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn smt_solver_matrix_trace(m : Smt_solverMatrix) -> Double {
 pub fn smt_solver_matrix_norm(m : Smt_solverMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  smt_solver_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn smt_solver_matrix_to_string(m : Smt_solverMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn smt_solver_vector_dot(a : Smt_solverVector, b : Smt_solverVector) -> Doub
   sum
 }
 
-pub fn smt_solver_vector_norm(v : Smt_solverVector) -> Double { smt_solver_sqrt(smt_solver_vector_dot(v, v)) }
+pub fn smt_solver_vector_norm(v : Smt_solverVector) -> Double { @_common.sqrt(smt_solver_vector_dot(v, v)) }
 
 pub fn smt_solver_vector_normalize(v : Smt_solverVector) -> Smt_solverVector {
   let n = smt_solver_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn smt_solver_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn smt_solver_std(data : Array[Double]) -> Double { smt_solver_sqrt(smt_solver_var(data)) }
+pub fn smt_solver_std(data : Array[Double]) -> Double { @_common.sqrt(smt_solver_var(data)) }
 
 pub fn smt_solver_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn smt_solver_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + smt_solver_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn smt_solver_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = smt_solver_precision(pred, labels, pos); let r = smt_solver_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn smt_solver_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn smt_solver_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn smt_solver_dbl(x : Double) -> String {
   let i = if x >= 0.0 { smt_solver_int(x) } else { -smt_solver_int(-x) }

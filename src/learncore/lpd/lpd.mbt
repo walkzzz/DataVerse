@@ -25,7 +25,7 @@ pub fn lpd_point_label(p : LpdPoint) -> Int { p.label }
 pub fn lpd_point_dist(a : LpdPoint, b : LpdPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  lpd_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn lpd_point_add(a : LpdPoint, b : LpdPoint) -> LpdPoint {
@@ -45,7 +45,7 @@ pub fn lpd_point_dot(a : LpdPoint, b : LpdPoint) -> Double {
 }
 
 pub fn lpd_point_norm(pt : LpdPoint) -> Double {
-  lpd_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn lpd_point_to_string(pt : LpdPoint) -> String {
@@ -102,7 +102,7 @@ pub fn lpd_series_var(s : LpdSeries) -> Double {
   }
 }
 
-pub fn lpd_series_std(s : LpdSeries) -> Double { lpd_sqrt(lpd_series_var(s)) }
+pub fn lpd_series_std(s : LpdSeries) -> Double { @_common.sqrt(lpd_series_var(s)) }
 
 pub fn lpd_series_scale(s : LpdSeries, f : Double) -> LpdSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn lpd_matrix_trace(m : LpdMatrix) -> Double {
 pub fn lpd_matrix_norm(m : LpdMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  lpd_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn lpd_matrix_to_string(m : LpdMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn lpd_vector_dot(a : LpdVector, b : LpdVector) -> Double {
   sum
 }
 
-pub fn lpd_vector_norm(v : LpdVector) -> Double { lpd_sqrt(lpd_vector_dot(v, v)) }
+pub fn lpd_vector_norm(v : LpdVector) -> Double { @_common.sqrt(lpd_vector_dot(v, v)) }
 
 pub fn lpd_vector_normalize(v : LpdVector) -> LpdVector {
   let n = lpd_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn lpd_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn lpd_std(data : Array[Double]) -> Double { lpd_sqrt(lpd_var(data)) }
+pub fn lpd_std(data : Array[Double]) -> Double { @_common.sqrt(lpd_var(data)) }
 
 pub fn lpd_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn lpd_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + lpd_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn lpd_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = lpd_precision(pred, labels, pos); let r = lpd_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn lpd_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn lpd_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn lpd_dbl(x : Double) -> String {
   let i = if x >= 0.0 { lpd_int(x) } else { -lpd_int(-x) }

@@ -25,7 +25,7 @@ pub fn linalg_point_label(p : LinalgPoint) -> Int { p.label }
 pub fn linalg_point_dist(a : LinalgPoint, b : LinalgPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  linalg_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn linalg_point_add(a : LinalgPoint, b : LinalgPoint) -> LinalgPoint {
@@ -45,7 +45,7 @@ pub fn linalg_point_dot(a : LinalgPoint, b : LinalgPoint) -> Double {
 }
 
 pub fn linalg_point_norm(pt : LinalgPoint) -> Double {
-  linalg_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn linalg_point_to_string(pt : LinalgPoint) -> String {
@@ -102,7 +102,7 @@ pub fn linalg_series_var(s : LinalgSeries) -> Double {
   }
 }
 
-pub fn linalg_series_std(s : LinalgSeries) -> Double { linalg_sqrt(linalg_series_var(s)) }
+pub fn linalg_series_std(s : LinalgSeries) -> Double { @_common.sqrt(linalg_series_var(s)) }
 
 pub fn linalg_series_scale(s : LinalgSeries, f : Double) -> LinalgSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn linalg_matrix_trace(m : LinalgMatrix) -> Double {
 pub fn linalg_matrix_norm(m : LinalgMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  linalg_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn linalg_matrix_to_string(m : LinalgMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn linalg_vector_dot(a : LinalgVector, b : LinalgVector) -> Double {
   sum
 }
 
-pub fn linalg_vector_norm(v : LinalgVector) -> Double { linalg_sqrt(linalg_vector_dot(v, v)) }
+pub fn linalg_vector_norm(v : LinalgVector) -> Double { @_common.sqrt(linalg_vector_dot(v, v)) }
 
 pub fn linalg_vector_normalize(v : LinalgVector) -> LinalgVector {
   let n = linalg_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn linalg_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn linalg_std(data : Array[Double]) -> Double { linalg_sqrt(linalg_var(data)) }
+pub fn linalg_std(data : Array[Double]) -> Double { @_common.sqrt(linalg_var(data)) }
 
 pub fn linalg_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn linalg_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + linalg_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn linalg_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = linalg_precision(pred, labels, pos); let r = linalg_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn linalg_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn linalg_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn linalg_dbl(x : Double) -> String {
   let i = if x >= 0.0 { linalg_int(x) } else { -linalg_int(-x) }

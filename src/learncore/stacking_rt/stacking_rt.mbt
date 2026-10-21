@@ -25,7 +25,7 @@ pub fn stacking_rt_point_label(p : Stacking_rtPoint) -> Int { p.label }
 pub fn stacking_rt_point_dist(a : Stacking_rtPoint, b : Stacking_rtPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  stacking_rt_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn stacking_rt_point_add(a : Stacking_rtPoint, b : Stacking_rtPoint) -> Stacking_rtPoint {
@@ -45,7 +45,7 @@ pub fn stacking_rt_point_dot(a : Stacking_rtPoint, b : Stacking_rtPoint) -> Doub
 }
 
 pub fn stacking_rt_point_norm(pt : Stacking_rtPoint) -> Double {
-  stacking_rt_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn stacking_rt_point_to_string(pt : Stacking_rtPoint) -> String {
@@ -102,7 +102,7 @@ pub fn stacking_rt_series_var(s : Stacking_rtSeries) -> Double {
   }
 }
 
-pub fn stacking_rt_series_std(s : Stacking_rtSeries) -> Double { stacking_rt_sqrt(stacking_rt_series_var(s)) }
+pub fn stacking_rt_series_std(s : Stacking_rtSeries) -> Double { @_common.sqrt(stacking_rt_series_var(s)) }
 
 pub fn stacking_rt_series_scale(s : Stacking_rtSeries, f : Double) -> Stacking_rtSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn stacking_rt_matrix_trace(m : Stacking_rtMatrix) -> Double {
 pub fn stacking_rt_matrix_norm(m : Stacking_rtMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  stacking_rt_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn stacking_rt_matrix_to_string(m : Stacking_rtMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn stacking_rt_vector_dot(a : Stacking_rtVector, b : Stacking_rtVector) -> D
   sum
 }
 
-pub fn stacking_rt_vector_norm(v : Stacking_rtVector) -> Double { stacking_rt_sqrt(stacking_rt_vector_dot(v, v)) }
+pub fn stacking_rt_vector_norm(v : Stacking_rtVector) -> Double { @_common.sqrt(stacking_rt_vector_dot(v, v)) }
 
 pub fn stacking_rt_vector_normalize(v : Stacking_rtVector) -> Stacking_rtVector {
   let n = stacking_rt_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn stacking_rt_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn stacking_rt_std(data : Array[Double]) -> Double { stacking_rt_sqrt(stacking_rt_var(data)) }
+pub fn stacking_rt_std(data : Array[Double]) -> Double { @_common.sqrt(stacking_rt_var(data)) }
 
 pub fn stacking_rt_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn stacking_rt_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + stacking_rt_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn stacking_rt_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = stacking_rt_precision(pred, labels, pos); let r = stacking_rt_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn stacking_rt_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn stacking_rt_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn stacking_rt_dbl(x : Double) -> String {
   let i = if x >= 0.0 { stacking_rt_int(x) } else { -stacking_rt_int(-x) }

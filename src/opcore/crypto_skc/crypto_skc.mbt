@@ -25,7 +25,7 @@ pub fn crypto_skc_point_label(p : Crypto_skcPoint) -> Int { p.label }
 pub fn crypto_skc_point_dist(a : Crypto_skcPoint, b : Crypto_skcPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  crypto_skc_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn crypto_skc_point_add(a : Crypto_skcPoint, b : Crypto_skcPoint) -> Crypto_skcPoint {
@@ -45,7 +45,7 @@ pub fn crypto_skc_point_dot(a : Crypto_skcPoint, b : Crypto_skcPoint) -> Double 
 }
 
 pub fn crypto_skc_point_norm(pt : Crypto_skcPoint) -> Double {
-  crypto_skc_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn crypto_skc_point_to_string(pt : Crypto_skcPoint) -> String {
@@ -102,7 +102,7 @@ pub fn crypto_skc_series_var(s : Crypto_skcSeries) -> Double {
   }
 }
 
-pub fn crypto_skc_series_std(s : Crypto_skcSeries) -> Double { crypto_skc_sqrt(crypto_skc_series_var(s)) }
+pub fn crypto_skc_series_std(s : Crypto_skcSeries) -> Double { @_common.sqrt(crypto_skc_series_var(s)) }
 
 pub fn crypto_skc_series_scale(s : Crypto_skcSeries, f : Double) -> Crypto_skcSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn crypto_skc_matrix_trace(m : Crypto_skcMatrix) -> Double {
 pub fn crypto_skc_matrix_norm(m : Crypto_skcMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  crypto_skc_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn crypto_skc_matrix_to_string(m : Crypto_skcMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn crypto_skc_vector_dot(a : Crypto_skcVector, b : Crypto_skcVector) -> Doub
   sum
 }
 
-pub fn crypto_skc_vector_norm(v : Crypto_skcVector) -> Double { crypto_skc_sqrt(crypto_skc_vector_dot(v, v)) }
+pub fn crypto_skc_vector_norm(v : Crypto_skcVector) -> Double { @_common.sqrt(crypto_skc_vector_dot(v, v)) }
 
 pub fn crypto_skc_vector_normalize(v : Crypto_skcVector) -> Crypto_skcVector {
   let n = crypto_skc_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn crypto_skc_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn crypto_skc_std(data : Array[Double]) -> Double { crypto_skc_sqrt(crypto_skc_var(data)) }
+pub fn crypto_skc_std(data : Array[Double]) -> Double { @_common.sqrt(crypto_skc_var(data)) }
 
 pub fn crypto_skc_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn crypto_skc_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + crypto_skc_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn crypto_skc_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = crypto_skc_precision(pred, labels, pos); let r = crypto_skc_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn crypto_skc_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn crypto_skc_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn crypto_skc_dbl(x : Double) -> String {
   let i = if x >= 0.0 { crypto_skc_int(x) } else { -crypto_skc_int(-x) }

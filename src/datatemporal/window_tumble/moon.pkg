@@ -1,2 +1,5 @@
 // datatemporal/window_tumble datatemporal/window_tumble
 // S13.207 new
+import {
+  "dataverse/extcore/_common",
+}

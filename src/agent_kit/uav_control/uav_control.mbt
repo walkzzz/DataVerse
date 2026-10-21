@@ -25,7 +25,7 @@ pub fn uav_control_point_label(p : Uav_controlPoint) -> Int { p.label }
 pub fn uav_control_point_dist(a : Uav_controlPoint, b : Uav_controlPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  uav_control_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn uav_control_point_add(a : Uav_controlPoint, b : Uav_controlPoint) -> Uav_controlPoint {
@@ -45,7 +45,7 @@ pub fn uav_control_point_dot(a : Uav_controlPoint, b : Uav_controlPoint) -> Doub
 }
 
 pub fn uav_control_point_norm(pt : Uav_controlPoint) -> Double {
-  uav_control_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn uav_control_point_to_string(pt : Uav_controlPoint) -> String {
@@ -102,7 +102,7 @@ pub fn uav_control_series_var(s : Uav_controlSeries) -> Double {
   }
 }
 
-pub fn uav_control_series_std(s : Uav_controlSeries) -> Double { uav_control_sqrt(uav_control_series_var(s)) }
+pub fn uav_control_series_std(s : Uav_controlSeries) -> Double { @_common.sqrt(uav_control_series_var(s)) }
 
 pub fn uav_control_series_scale(s : Uav_controlSeries, f : Double) -> Uav_controlSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn uav_control_matrix_trace(m : Uav_controlMatrix) -> Double {
 pub fn uav_control_matrix_norm(m : Uav_controlMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  uav_control_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn uav_control_matrix_to_string(m : Uav_controlMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn uav_control_vector_dot(a : Uav_controlVector, b : Uav_controlVector) -> D
   sum
 }
 
-pub fn uav_control_vector_norm(v : Uav_controlVector) -> Double { uav_control_sqrt(uav_control_vector_dot(v, v)) }
+pub fn uav_control_vector_norm(v : Uav_controlVector) -> Double { @_common.sqrt(uav_control_vector_dot(v, v)) }
 
 pub fn uav_control_vector_normalize(v : Uav_controlVector) -> Uav_controlVector {
   let n = uav_control_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn uav_control_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn uav_control_std(data : Array[Double]) -> Double { uav_control_sqrt(uav_control_var(data)) }
+pub fn uav_control_std(data : Array[Double]) -> Double { @_common.sqrt(uav_control_var(data)) }
 
 pub fn uav_control_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn uav_control_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + uav_control_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn uav_control_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = uav_control_precision(pred, labels, pos); let r = uav_control_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn uav_control_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn uav_control_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn uav_control_dbl(x : Double) -> String {
   let i = if x >= 0.0 { uav_control_int(x) } else { -uav_control_int(-x) }

@@ -25,7 +25,7 @@ pub fn echo_cancel_point_label(p : Echo_cancelPoint) -> Int { p.label }
 pub fn echo_cancel_point_dist(a : Echo_cancelPoint, b : Echo_cancelPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  echo_cancel_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn echo_cancel_point_add(a : Echo_cancelPoint, b : Echo_cancelPoint) -> Echo_cancelPoint {
@@ -45,7 +45,7 @@ pub fn echo_cancel_point_dot(a : Echo_cancelPoint, b : Echo_cancelPoint) -> Doub
 }
 
 pub fn echo_cancel_point_norm(pt : Echo_cancelPoint) -> Double {
-  echo_cancel_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn echo_cancel_point_to_string(pt : Echo_cancelPoint) -> String {
@@ -102,7 +102,7 @@ pub fn echo_cancel_series_var(s : Echo_cancelSeries) -> Double {
   }
 }
 
-pub fn echo_cancel_series_std(s : Echo_cancelSeries) -> Double { echo_cancel_sqrt(echo_cancel_series_var(s)) }
+pub fn echo_cancel_series_std(s : Echo_cancelSeries) -> Double { @_common.sqrt(echo_cancel_series_var(s)) }
 
 pub fn echo_cancel_series_scale(s : Echo_cancelSeries, f : Double) -> Echo_cancelSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn echo_cancel_matrix_trace(m : Echo_cancelMatrix) -> Double {
 pub fn echo_cancel_matrix_norm(m : Echo_cancelMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  echo_cancel_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn echo_cancel_matrix_to_string(m : Echo_cancelMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn echo_cancel_vector_dot(a : Echo_cancelVector, b : Echo_cancelVector) -> D
   sum
 }
 
-pub fn echo_cancel_vector_norm(v : Echo_cancelVector) -> Double { echo_cancel_sqrt(echo_cancel_vector_dot(v, v)) }
+pub fn echo_cancel_vector_norm(v : Echo_cancelVector) -> Double { @_common.sqrt(echo_cancel_vector_dot(v, v)) }
 
 pub fn echo_cancel_vector_normalize(v : Echo_cancelVector) -> Echo_cancelVector {
   let n = echo_cancel_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn echo_cancel_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn echo_cancel_std(data : Array[Double]) -> Double { echo_cancel_sqrt(echo_cancel_var(data)) }
+pub fn echo_cancel_std(data : Array[Double]) -> Double { @_common.sqrt(echo_cancel_var(data)) }
 
 pub fn echo_cancel_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn echo_cancel_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + echo_cancel_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn echo_cancel_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = echo_cancel_precision(pred, labels, pos); let r = echo_cancel_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn echo_cancel_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn echo_cancel_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn echo_cancel_dbl(x : Double) -> String {
   let i = if x >= 0.0 { echo_cancel_int(x) } else { -echo_cancel_int(-x) }

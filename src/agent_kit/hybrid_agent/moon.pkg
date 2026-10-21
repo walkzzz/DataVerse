@@ -1,2 +1,5 @@
 // agent_kit/hybrid_agent agent_kit/hybrid_agent
 // S13.125 new
+import {
+  "dataverse/extcore/_common",
+}

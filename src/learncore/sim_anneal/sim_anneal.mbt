@@ -25,7 +25,7 @@ pub fn sim_anneal_point_label(p : Sim_annealPoint) -> Int { p.label }
 pub fn sim_anneal_point_dist(a : Sim_annealPoint, b : Sim_annealPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  sim_anneal_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn sim_anneal_point_add(a : Sim_annealPoint, b : Sim_annealPoint) -> Sim_annealPoint {
@@ -45,7 +45,7 @@ pub fn sim_anneal_point_dot(a : Sim_annealPoint, b : Sim_annealPoint) -> Double 
 }
 
 pub fn sim_anneal_point_norm(pt : Sim_annealPoint) -> Double {
-  sim_anneal_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn sim_anneal_point_to_string(pt : Sim_annealPoint) -> String {
@@ -102,7 +102,7 @@ pub fn sim_anneal_series_var(s : Sim_annealSeries) -> Double {
   }
 }
 
-pub fn sim_anneal_series_std(s : Sim_annealSeries) -> Double { sim_anneal_sqrt(sim_anneal_series_var(s)) }
+pub fn sim_anneal_series_std(s : Sim_annealSeries) -> Double { @_common.sqrt(sim_anneal_series_var(s)) }
 
 pub fn sim_anneal_series_scale(s : Sim_annealSeries, f : Double) -> Sim_annealSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn sim_anneal_matrix_trace(m : Sim_annealMatrix) -> Double {
 pub fn sim_anneal_matrix_norm(m : Sim_annealMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  sim_anneal_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn sim_anneal_matrix_to_string(m : Sim_annealMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn sim_anneal_vector_dot(a : Sim_annealVector, b : Sim_annealVector) -> Doub
   sum
 }
 
-pub fn sim_anneal_vector_norm(v : Sim_annealVector) -> Double { sim_anneal_sqrt(sim_anneal_vector_dot(v, v)) }
+pub fn sim_anneal_vector_norm(v : Sim_annealVector) -> Double { @_common.sqrt(sim_anneal_vector_dot(v, v)) }
 
 pub fn sim_anneal_vector_normalize(v : Sim_annealVector) -> Sim_annealVector {
   let n = sim_anneal_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn sim_anneal_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn sim_anneal_std(data : Array[Double]) -> Double { sim_anneal_sqrt(sim_anneal_var(data)) }
+pub fn sim_anneal_std(data : Array[Double]) -> Double { @_common.sqrt(sim_anneal_var(data)) }
 
 pub fn sim_anneal_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn sim_anneal_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + sim_anneal_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn sim_anneal_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = sim_anneal_precision(pred, labels, pos); let r = sim_anneal_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn sim_anneal_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn sim_anneal_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn sim_anneal_dbl(x : Double) -> String {
   let i = if x >= 0.0 { sim_anneal_int(x) } else { -sim_anneal_int(-x) }

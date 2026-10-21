@@ -25,7 +25,7 @@ pub fn color_space_point_label(p : Color_spacePoint) -> Int { p.label }
 pub fn color_space_point_dist(a : Color_spacePoint, b : Color_spacePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  color_space_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn color_space_point_add(a : Color_spacePoint, b : Color_spacePoint) -> Color_spacePoint {
@@ -45,7 +45,7 @@ pub fn color_space_point_dot(a : Color_spacePoint, b : Color_spacePoint) -> Doub
 }
 
 pub fn color_space_point_norm(pt : Color_spacePoint) -> Double {
-  color_space_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn color_space_point_to_string(pt : Color_spacePoint) -> String {
@@ -102,7 +102,7 @@ pub fn color_space_series_var(s : Color_spaceSeries) -> Double {
   }
 }
 
-pub fn color_space_series_std(s : Color_spaceSeries) -> Double { color_space_sqrt(color_space_series_var(s)) }
+pub fn color_space_series_std(s : Color_spaceSeries) -> Double { @_common.sqrt(color_space_series_var(s)) }
 
 pub fn color_space_series_scale(s : Color_spaceSeries, f : Double) -> Color_spaceSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn color_space_matrix_trace(m : Color_spaceMatrix) -> Double {
 pub fn color_space_matrix_norm(m : Color_spaceMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  color_space_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn color_space_matrix_to_string(m : Color_spaceMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn color_space_vector_dot(a : Color_spaceVector, b : Color_spaceVector) -> D
   sum
 }
 
-pub fn color_space_vector_norm(v : Color_spaceVector) -> Double { color_space_sqrt(color_space_vector_dot(v, v)) }
+pub fn color_space_vector_norm(v : Color_spaceVector) -> Double { @_common.sqrt(color_space_vector_dot(v, v)) }
 
 pub fn color_space_vector_normalize(v : Color_spaceVector) -> Color_spaceVector {
   let n = color_space_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn color_space_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn color_space_std(data : Array[Double]) -> Double { color_space_sqrt(color_space_var(data)) }
+pub fn color_space_std(data : Array[Double]) -> Double { @_common.sqrt(color_space_var(data)) }
 
 pub fn color_space_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn color_space_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + color_space_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn color_space_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = color_space_precision(pred, labels, pos); let r = color_space_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn color_space_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn color_space_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn color_space_dbl(x : Double) -> String {
   let i = if x >= 0.0 { color_space_int(x) } else { -color_space_int(-x) }

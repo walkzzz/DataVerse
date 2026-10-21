@@ -25,7 +25,7 @@ pub fn rate_limit_point_label(p : Rate_limitPoint) -> Int { p.label }
 pub fn rate_limit_point_dist(a : Rate_limitPoint, b : Rate_limitPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  rate_limit_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn rate_limit_point_add(a : Rate_limitPoint, b : Rate_limitPoint) -> Rate_limitPoint {
@@ -45,7 +45,7 @@ pub fn rate_limit_point_dot(a : Rate_limitPoint, b : Rate_limitPoint) -> Double 
 }
 
 pub fn rate_limit_point_norm(pt : Rate_limitPoint) -> Double {
-  rate_limit_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn rate_limit_point_to_string(pt : Rate_limitPoint) -> String {
@@ -102,7 +102,7 @@ pub fn rate_limit_series_var(s : Rate_limitSeries) -> Double {
   }
 }
 
-pub fn rate_limit_series_std(s : Rate_limitSeries) -> Double { rate_limit_sqrt(rate_limit_series_var(s)) }
+pub fn rate_limit_series_std(s : Rate_limitSeries) -> Double { @_common.sqrt(rate_limit_series_var(s)) }
 
 pub fn rate_limit_series_scale(s : Rate_limitSeries, f : Double) -> Rate_limitSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn rate_limit_matrix_trace(m : Rate_limitMatrix) -> Double {
 pub fn rate_limit_matrix_norm(m : Rate_limitMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  rate_limit_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn rate_limit_matrix_to_string(m : Rate_limitMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn rate_limit_vector_dot(a : Rate_limitVector, b : Rate_limitVector) -> Doub
   sum
 }
 
-pub fn rate_limit_vector_norm(v : Rate_limitVector) -> Double { rate_limit_sqrt(rate_limit_vector_dot(v, v)) }
+pub fn rate_limit_vector_norm(v : Rate_limitVector) -> Double { @_common.sqrt(rate_limit_vector_dot(v, v)) }
 
 pub fn rate_limit_vector_normalize(v : Rate_limitVector) -> Rate_limitVector {
   let n = rate_limit_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn rate_limit_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn rate_limit_std(data : Array[Double]) -> Double { rate_limit_sqrt(rate_limit_var(data)) }
+pub fn rate_limit_std(data : Array[Double]) -> Double { @_common.sqrt(rate_limit_var(data)) }
 
 pub fn rate_limit_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn rate_limit_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + rate_limit_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn rate_limit_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = rate_limit_precision(pred, labels, pos); let r = rate_limit_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn rate_limit_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn rate_limit_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn rate_limit_dbl(x : Double) -> String {
   let i = if x >= 0.0 { rate_limit_int(x) } else { -rate_limit_int(-x) }

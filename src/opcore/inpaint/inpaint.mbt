@@ -25,7 +25,7 @@ pub fn inpaint_point_label(p : InpaintPoint) -> Int { p.label }
 pub fn inpaint_point_dist(a : InpaintPoint, b : InpaintPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  inpaint_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn inpaint_point_add(a : InpaintPoint, b : InpaintPoint) -> InpaintPoint {
@@ -45,7 +45,7 @@ pub fn inpaint_point_dot(a : InpaintPoint, b : InpaintPoint) -> Double {
 }
 
 pub fn inpaint_point_norm(pt : InpaintPoint) -> Double {
-  inpaint_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn inpaint_point_to_string(pt : InpaintPoint) -> String {
@@ -102,7 +102,7 @@ pub fn inpaint_series_var(s : InpaintSeries) -> Double {
   }
 }
 
-pub fn inpaint_series_std(s : InpaintSeries) -> Double { inpaint_sqrt(inpaint_series_var(s)) }
+pub fn inpaint_series_std(s : InpaintSeries) -> Double { @_common.sqrt(inpaint_series_var(s)) }
 
 pub fn inpaint_series_scale(s : InpaintSeries, f : Double) -> InpaintSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn inpaint_matrix_trace(m : InpaintMatrix) -> Double {
 pub fn inpaint_matrix_norm(m : InpaintMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  inpaint_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn inpaint_matrix_to_string(m : InpaintMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn inpaint_vector_dot(a : InpaintVector, b : InpaintVector) -> Double {
   sum
 }
 
-pub fn inpaint_vector_norm(v : InpaintVector) -> Double { inpaint_sqrt(inpaint_vector_dot(v, v)) }
+pub fn inpaint_vector_norm(v : InpaintVector) -> Double { @_common.sqrt(inpaint_vector_dot(v, v)) }
 
 pub fn inpaint_vector_normalize(v : InpaintVector) -> InpaintVector {
   let n = inpaint_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn inpaint_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn inpaint_std(data : Array[Double]) -> Double { inpaint_sqrt(inpaint_var(data)) }
+pub fn inpaint_std(data : Array[Double]) -> Double { @_common.sqrt(inpaint_var(data)) }
 
 pub fn inpaint_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn inpaint_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + inpaint_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn inpaint_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = inpaint_precision(pred, labels, pos); let r = inpaint_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn inpaint_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn inpaint_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn inpaint_dbl(x : Double) -> String {
   let i = if x >= 0.0 { inpaint_int(x) } else { -inpaint_int(-x) }

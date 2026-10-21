@@ -1,2 +1,5 @@
 // opcore/wavelet_dwt opcore/wavelet_dwt
 // S13.12 new
+import {
+  "dataverse/extcore/_common",
+}

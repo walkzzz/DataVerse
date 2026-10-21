@@ -25,7 +25,7 @@ pub fn obstacle_avoid_point_label(p : Obstacle_avoidPoint) -> Int { p.label }
 pub fn obstacle_avoid_point_dist(a : Obstacle_avoidPoint, b : Obstacle_avoidPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  obstacle_avoid_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn obstacle_avoid_point_add(a : Obstacle_avoidPoint, b : Obstacle_avoidPoint) -> Obstacle_avoidPoint {
@@ -45,7 +45,7 @@ pub fn obstacle_avoid_point_dot(a : Obstacle_avoidPoint, b : Obstacle_avoidPoint
 }
 
 pub fn obstacle_avoid_point_norm(pt : Obstacle_avoidPoint) -> Double {
-  obstacle_avoid_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn obstacle_avoid_point_to_string(pt : Obstacle_avoidPoint) -> String {
@@ -102,7 +102,7 @@ pub fn obstacle_avoid_series_var(s : Obstacle_avoidSeries) -> Double {
   }
 }
 
-pub fn obstacle_avoid_series_std(s : Obstacle_avoidSeries) -> Double { obstacle_avoid_sqrt(obstacle_avoid_series_var(s)) }
+pub fn obstacle_avoid_series_std(s : Obstacle_avoidSeries) -> Double { @_common.sqrt(obstacle_avoid_series_var(s)) }
 
 pub fn obstacle_avoid_series_scale(s : Obstacle_avoidSeries, f : Double) -> Obstacle_avoidSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn obstacle_avoid_matrix_trace(m : Obstacle_avoidMatrix) -> Double {
 pub fn obstacle_avoid_matrix_norm(m : Obstacle_avoidMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  obstacle_avoid_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn obstacle_avoid_matrix_to_string(m : Obstacle_avoidMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn obstacle_avoid_vector_dot(a : Obstacle_avoidVector, b : Obstacle_avoidVec
   sum
 }
 
-pub fn obstacle_avoid_vector_norm(v : Obstacle_avoidVector) -> Double { obstacle_avoid_sqrt(obstacle_avoid_vector_dot(v, v)) }
+pub fn obstacle_avoid_vector_norm(v : Obstacle_avoidVector) -> Double { @_common.sqrt(obstacle_avoid_vector_dot(v, v)) }
 
 pub fn obstacle_avoid_vector_normalize(v : Obstacle_avoidVector) -> Obstacle_avoidVector {
   let n = obstacle_avoid_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn obstacle_avoid_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn obstacle_avoid_std(data : Array[Double]) -> Double { obstacle_avoid_sqrt(obstacle_avoid_var(data)) }
+pub fn obstacle_avoid_std(data : Array[Double]) -> Double { @_common.sqrt(obstacle_avoid_var(data)) }
 
 pub fn obstacle_avoid_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn obstacle_avoid_mae(pred : Array[Double], labels : Array[Double]) -> Doubl
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + obstacle_avoid_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn obstacle_avoid_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> D
   let p_ = obstacle_avoid_precision(pred, labels, pos); let r = obstacle_avoid_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn obstacle_avoid_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn obstacle_avoid_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn obstacle_avoid_dbl(x : Double) -> String {
   let i = if x >= 0.0 { obstacle_avoid_int(x) } else { -obstacle_avoid_int(-x) }

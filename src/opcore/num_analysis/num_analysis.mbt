@@ -25,7 +25,7 @@ pub fn num_analysis_point_label(p : Num_analysisPoint) -> Int { p.label }
 pub fn num_analysis_point_dist(a : Num_analysisPoint, b : Num_analysisPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  num_analysis_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn num_analysis_point_add(a : Num_analysisPoint, b : Num_analysisPoint) -> Num_analysisPoint {
@@ -45,7 +45,7 @@ pub fn num_analysis_point_dot(a : Num_analysisPoint, b : Num_analysisPoint) -> D
 }
 
 pub fn num_analysis_point_norm(pt : Num_analysisPoint) -> Double {
-  num_analysis_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn num_analysis_point_to_string(pt : Num_analysisPoint) -> String {
@@ -102,7 +102,7 @@ pub fn num_analysis_series_var(s : Num_analysisSeries) -> Double {
   }
 }
 
-pub fn num_analysis_series_std(s : Num_analysisSeries) -> Double { num_analysis_sqrt(num_analysis_series_var(s)) }
+pub fn num_analysis_series_std(s : Num_analysisSeries) -> Double { @_common.sqrt(num_analysis_series_var(s)) }
 
 pub fn num_analysis_series_scale(s : Num_analysisSeries, f : Double) -> Num_analysisSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn num_analysis_matrix_trace(m : Num_analysisMatrix) -> Double {
 pub fn num_analysis_matrix_norm(m : Num_analysisMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  num_analysis_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn num_analysis_matrix_to_string(m : Num_analysisMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn num_analysis_vector_dot(a : Num_analysisVector, b : Num_analysisVector) -
   sum
 }
 
-pub fn num_analysis_vector_norm(v : Num_analysisVector) -> Double { num_analysis_sqrt(num_analysis_vector_dot(v, v)) }
+pub fn num_analysis_vector_norm(v : Num_analysisVector) -> Double { @_common.sqrt(num_analysis_vector_dot(v, v)) }
 
 pub fn num_analysis_vector_normalize(v : Num_analysisVector) -> Num_analysisVector {
   let n = num_analysis_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn num_analysis_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn num_analysis_std(data : Array[Double]) -> Double { num_analysis_sqrt(num_analysis_var(data)) }
+pub fn num_analysis_std(data : Array[Double]) -> Double { @_common.sqrt(num_analysis_var(data)) }
 
 pub fn num_analysis_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn num_analysis_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + num_analysis_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn num_analysis_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = num_analysis_precision(pred, labels, pos); let r = num_analysis_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn num_analysis_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn num_analysis_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn num_analysis_dbl(x : Double) -> String {
   let i = if x >= 0.0 { num_analysis_int(x) } else { -num_analysis_int(-x) }

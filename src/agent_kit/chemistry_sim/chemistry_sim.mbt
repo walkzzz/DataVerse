@@ -25,7 +25,7 @@ pub fn chemistry_sim_point_label(p : Chemistry_simPoint) -> Int { p.label }
 pub fn chemistry_sim_point_dist(a : Chemistry_simPoint, b : Chemistry_simPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  chemistry_sim_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn chemistry_sim_point_add(a : Chemistry_simPoint, b : Chemistry_simPoint) -> Chemistry_simPoint {
@@ -45,7 +45,7 @@ pub fn chemistry_sim_point_dot(a : Chemistry_simPoint, b : Chemistry_simPoint) -
 }
 
 pub fn chemistry_sim_point_norm(pt : Chemistry_simPoint) -> Double {
-  chemistry_sim_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn chemistry_sim_point_to_string(pt : Chemistry_simPoint) -> String {
@@ -102,7 +102,7 @@ pub fn chemistry_sim_series_var(s : Chemistry_simSeries) -> Double {
   }
 }
 
-pub fn chemistry_sim_series_std(s : Chemistry_simSeries) -> Double { chemistry_sim_sqrt(chemistry_sim_series_var(s)) }
+pub fn chemistry_sim_series_std(s : Chemistry_simSeries) -> Double { @_common.sqrt(chemistry_sim_series_var(s)) }
 
 pub fn chemistry_sim_series_scale(s : Chemistry_simSeries, f : Double) -> Chemistry_simSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn chemistry_sim_matrix_trace(m : Chemistry_simMatrix) -> Double {
 pub fn chemistry_sim_matrix_norm(m : Chemistry_simMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  chemistry_sim_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn chemistry_sim_matrix_to_string(m : Chemistry_simMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn chemistry_sim_vector_dot(a : Chemistry_simVector, b : Chemistry_simVector
   sum
 }
 
-pub fn chemistry_sim_vector_norm(v : Chemistry_simVector) -> Double { chemistry_sim_sqrt(chemistry_sim_vector_dot(v, v)) }
+pub fn chemistry_sim_vector_norm(v : Chemistry_simVector) -> Double { @_common.sqrt(chemistry_sim_vector_dot(v, v)) }
 
 pub fn chemistry_sim_vector_normalize(v : Chemistry_simVector) -> Chemistry_simVector {
   let n = chemistry_sim_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn chemistry_sim_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn chemistry_sim_std(data : Array[Double]) -> Double { chemistry_sim_sqrt(chemistry_sim_var(data)) }
+pub fn chemistry_sim_std(data : Array[Double]) -> Double { @_common.sqrt(chemistry_sim_var(data)) }
 
 pub fn chemistry_sim_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn chemistry_sim_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + chemistry_sim_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn chemistry_sim_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = chemistry_sim_precision(pred, labels, pos); let r = chemistry_sim_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn chemistry_sim_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn chemistry_sim_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn chemistry_sim_dbl(x : Double) -> String {
   let i = if x >= 0.0 { chemistry_sim_int(x) } else { -chemistry_sim_int(-x) }

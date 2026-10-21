@@ -25,7 +25,7 @@ pub fn watermark_periodic_point_label(p : Watermark_periodicPoint) -> Int { p.la
 pub fn watermark_periodic_point_dist(a : Watermark_periodicPoint, b : Watermark_periodicPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  watermark_periodic_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn watermark_periodic_point_add(a : Watermark_periodicPoint, b : Watermark_periodicPoint) -> Watermark_periodicPoint {
@@ -45,7 +45,7 @@ pub fn watermark_periodic_point_dot(a : Watermark_periodicPoint, b : Watermark_p
 }
 
 pub fn watermark_periodic_point_norm(pt : Watermark_periodicPoint) -> Double {
-  watermark_periodic_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn watermark_periodic_point_to_string(pt : Watermark_periodicPoint) -> String {
@@ -102,7 +102,7 @@ pub fn watermark_periodic_series_var(s : Watermark_periodicSeries) -> Double {
   }
 }
 
-pub fn watermark_periodic_series_std(s : Watermark_periodicSeries) -> Double { watermark_periodic_sqrt(watermark_periodic_series_var(s)) }
+pub fn watermark_periodic_series_std(s : Watermark_periodicSeries) -> Double { @_common.sqrt(watermark_periodic_series_var(s)) }
 
 pub fn watermark_periodic_series_scale(s : Watermark_periodicSeries, f : Double) -> Watermark_periodicSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn watermark_periodic_matrix_trace(m : Watermark_periodicMatrix) -> Double {
 pub fn watermark_periodic_matrix_norm(m : Watermark_periodicMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  watermark_periodic_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn watermark_periodic_matrix_to_string(m : Watermark_periodicMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn watermark_periodic_vector_dot(a : Watermark_periodicVector, b : Watermark
   sum
 }
 
-pub fn watermark_periodic_vector_norm(v : Watermark_periodicVector) -> Double { watermark_periodic_sqrt(watermark_periodic_vector_dot(v, v)) }
+pub fn watermark_periodic_vector_norm(v : Watermark_periodicVector) -> Double { @_common.sqrt(watermark_periodic_vector_dot(v, v)) }
 
 pub fn watermark_periodic_vector_normalize(v : Watermark_periodicVector) -> Watermark_periodicVector {
   let n = watermark_periodic_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn watermark_periodic_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn watermark_periodic_std(data : Array[Double]) -> Double { watermark_periodic_sqrt(watermark_periodic_var(data)) }
+pub fn watermark_periodic_std(data : Array[Double]) -> Double { @_common.sqrt(watermark_periodic_var(data)) }
 
 pub fn watermark_periodic_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn watermark_periodic_mae(pred : Array[Double], labels : Array[Double]) -> D
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + watermark_periodic_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn watermark_periodic_f1(pred : Array[Int], labels : Array[Int], pos : Int) 
   let p_ = watermark_periodic_precision(pred, labels, pos); let r = watermark_periodic_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn watermark_periodic_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn watermark_periodic_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn watermark_periodic_dbl(x : Double) -> String {
   let i = if x >= 0.0 { watermark_periodic_int(x) } else { -watermark_periodic_int(-x) }

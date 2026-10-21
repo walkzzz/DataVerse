@@ -1,2 +1,5 @@
 // learncore/gan_rt learncore/gan_rt
 // S13.117 new
+import {
+  "dataverse/extcore/_common",
+}

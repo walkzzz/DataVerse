@@ -25,7 +25,7 @@ pub fn pitch_detect_point_label(p : Pitch_detectPoint) -> Int { p.label }
 pub fn pitch_detect_point_dist(a : Pitch_detectPoint, b : Pitch_detectPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  pitch_detect_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn pitch_detect_point_add(a : Pitch_detectPoint, b : Pitch_detectPoint) -> Pitch_detectPoint {
@@ -45,7 +45,7 @@ pub fn pitch_detect_point_dot(a : Pitch_detectPoint, b : Pitch_detectPoint) -> D
 }
 
 pub fn pitch_detect_point_norm(pt : Pitch_detectPoint) -> Double {
-  pitch_detect_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn pitch_detect_point_to_string(pt : Pitch_detectPoint) -> String {
@@ -102,7 +102,7 @@ pub fn pitch_detect_series_var(s : Pitch_detectSeries) -> Double {
   }
 }
 
-pub fn pitch_detect_series_std(s : Pitch_detectSeries) -> Double { pitch_detect_sqrt(pitch_detect_series_var(s)) }
+pub fn pitch_detect_series_std(s : Pitch_detectSeries) -> Double { @_common.sqrt(pitch_detect_series_var(s)) }
 
 pub fn pitch_detect_series_scale(s : Pitch_detectSeries, f : Double) -> Pitch_detectSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn pitch_detect_matrix_trace(m : Pitch_detectMatrix) -> Double {
 pub fn pitch_detect_matrix_norm(m : Pitch_detectMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  pitch_detect_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn pitch_detect_matrix_to_string(m : Pitch_detectMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn pitch_detect_vector_dot(a : Pitch_detectVector, b : Pitch_detectVector) -
   sum
 }
 
-pub fn pitch_detect_vector_norm(v : Pitch_detectVector) -> Double { pitch_detect_sqrt(pitch_detect_vector_dot(v, v)) }
+pub fn pitch_detect_vector_norm(v : Pitch_detectVector) -> Double { @_common.sqrt(pitch_detect_vector_dot(v, v)) }
 
 pub fn pitch_detect_vector_normalize(v : Pitch_detectVector) -> Pitch_detectVector {
   let n = pitch_detect_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn pitch_detect_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn pitch_detect_std(data : Array[Double]) -> Double { pitch_detect_sqrt(pitch_detect_var(data)) }
+pub fn pitch_detect_std(data : Array[Double]) -> Double { @_common.sqrt(pitch_detect_var(data)) }
 
 pub fn pitch_detect_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn pitch_detect_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + pitch_detect_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn pitch_detect_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = pitch_detect_precision(pred, labels, pos); let r = pitch_detect_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn pitch_detect_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn pitch_detect_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn pitch_detect_dbl(x : Double) -> String {
   let i = if x >= 0.0 { pitch_detect_int(x) } else { -pitch_detect_int(-x) }

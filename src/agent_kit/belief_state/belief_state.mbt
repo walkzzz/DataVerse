@@ -25,7 +25,7 @@ pub fn belief_state_point_label(p : Belief_statePoint) -> Int { p.label }
 pub fn belief_state_point_dist(a : Belief_statePoint, b : Belief_statePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  belief_state_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn belief_state_point_add(a : Belief_statePoint, b : Belief_statePoint) -> Belief_statePoint {
@@ -45,7 +45,7 @@ pub fn belief_state_point_dot(a : Belief_statePoint, b : Belief_statePoint) -> D
 }
 
 pub fn belief_state_point_norm(pt : Belief_statePoint) -> Double {
-  belief_state_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn belief_state_point_to_string(pt : Belief_statePoint) -> String {
@@ -102,7 +102,7 @@ pub fn belief_state_series_var(s : Belief_stateSeries) -> Double {
   }
 }
 
-pub fn belief_state_series_std(s : Belief_stateSeries) -> Double { belief_state_sqrt(belief_state_series_var(s)) }
+pub fn belief_state_series_std(s : Belief_stateSeries) -> Double { @_common.sqrt(belief_state_series_var(s)) }
 
 pub fn belief_state_series_scale(s : Belief_stateSeries, f : Double) -> Belief_stateSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn belief_state_matrix_trace(m : Belief_stateMatrix) -> Double {
 pub fn belief_state_matrix_norm(m : Belief_stateMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  belief_state_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn belief_state_matrix_to_string(m : Belief_stateMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn belief_state_vector_dot(a : Belief_stateVector, b : Belief_stateVector) -
   sum
 }
 
-pub fn belief_state_vector_norm(v : Belief_stateVector) -> Double { belief_state_sqrt(belief_state_vector_dot(v, v)) }
+pub fn belief_state_vector_norm(v : Belief_stateVector) -> Double { @_common.sqrt(belief_state_vector_dot(v, v)) }
 
 pub fn belief_state_vector_normalize(v : Belief_stateVector) -> Belief_stateVector {
   let n = belief_state_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn belief_state_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn belief_state_std(data : Array[Double]) -> Double { belief_state_sqrt(belief_state_var(data)) }
+pub fn belief_state_std(data : Array[Double]) -> Double { @_common.sqrt(belief_state_var(data)) }
 
 pub fn belief_state_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn belief_state_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + belief_state_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn belief_state_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = belief_state_precision(pred, labels, pos); let r = belief_state_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn belief_state_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn belief_state_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn belief_state_dbl(x : Double) -> String {
   let i = if x >= 0.0 { belief_state_int(x) } else { -belief_state_int(-x) }

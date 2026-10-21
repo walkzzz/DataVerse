@@ -1,2 +1,5 @@
 // dataobject/encode_orc dataobject/encode_orc
 // S13.205 new
+import {
+  "dataverse/extcore/_common",
+}

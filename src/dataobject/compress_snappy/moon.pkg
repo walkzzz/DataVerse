@@ -1,2 +1,5 @@
 // dataobject/compress_snappy dataobject/compress_snappy
 // S13.193 new
+import {
+  "dataverse/extcore/_common",
+}

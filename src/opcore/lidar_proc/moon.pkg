@@ -1,2 +1,5 @@
 // opcore/lidar_proc opcore/lidar_proc
 // S13.45 new
+import {
+  "dataverse/extcore/_common",
+}

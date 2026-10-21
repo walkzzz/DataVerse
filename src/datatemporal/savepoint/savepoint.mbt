@@ -25,7 +25,7 @@ pub fn savepoint_point_label(p : SavepointPoint) -> Int { p.label }
 pub fn savepoint_point_dist(a : SavepointPoint, b : SavepointPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  savepoint_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn savepoint_point_add(a : SavepointPoint, b : SavepointPoint) -> SavepointPoint {
@@ -45,7 +45,7 @@ pub fn savepoint_point_dot(a : SavepointPoint, b : SavepointPoint) -> Double {
 }
 
 pub fn savepoint_point_norm(pt : SavepointPoint) -> Double {
-  savepoint_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn savepoint_point_to_string(pt : SavepointPoint) -> String {
@@ -102,7 +102,7 @@ pub fn savepoint_series_var(s : SavepointSeries) -> Double {
   }
 }
 
-pub fn savepoint_series_std(s : SavepointSeries) -> Double { savepoint_sqrt(savepoint_series_var(s)) }
+pub fn savepoint_series_std(s : SavepointSeries) -> Double { @_common.sqrt(savepoint_series_var(s)) }
 
 pub fn savepoint_series_scale(s : SavepointSeries, f : Double) -> SavepointSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn savepoint_matrix_trace(m : SavepointMatrix) -> Double {
 pub fn savepoint_matrix_norm(m : SavepointMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  savepoint_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn savepoint_matrix_to_string(m : SavepointMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn savepoint_vector_dot(a : SavepointVector, b : SavepointVector) -> Double 
   sum
 }
 
-pub fn savepoint_vector_norm(v : SavepointVector) -> Double { savepoint_sqrt(savepoint_vector_dot(v, v)) }
+pub fn savepoint_vector_norm(v : SavepointVector) -> Double { @_common.sqrt(savepoint_vector_dot(v, v)) }
 
 pub fn savepoint_vector_normalize(v : SavepointVector) -> SavepointVector {
   let n = savepoint_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn savepoint_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn savepoint_std(data : Array[Double]) -> Double { savepoint_sqrt(savepoint_var(data)) }
+pub fn savepoint_std(data : Array[Double]) -> Double { @_common.sqrt(savepoint_var(data)) }
 
 pub fn savepoint_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn savepoint_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + savepoint_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn savepoint_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double
   let p_ = savepoint_precision(pred, labels, pos); let r = savepoint_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn savepoint_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn savepoint_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn savepoint_dbl(x : Double) -> String {
   let i = if x >= 0.0 { savepoint_int(x) } else { -savepoint_int(-x) }

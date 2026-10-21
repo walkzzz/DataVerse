@@ -1,2 +1,5 @@
 // opcore/homomorphic opcore/homomorphic
 // S13.35 new
+import {
+  "dataverse/extcore/_common",
+}

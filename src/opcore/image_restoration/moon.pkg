@@ -1,2 +1,5 @@
 // opcore/image_restoration opcore/image_restoration
 // S13.46 new
+import {
+  "dataverse/extcore/_common",
+}

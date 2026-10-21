@@ -25,7 +25,7 @@ pub fn hdr_point_label(p : HdrPoint) -> Int { p.label }
 pub fn hdr_point_dist(a : HdrPoint, b : HdrPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  hdr_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn hdr_point_add(a : HdrPoint, b : HdrPoint) -> HdrPoint {
@@ -45,7 +45,7 @@ pub fn hdr_point_dot(a : HdrPoint, b : HdrPoint) -> Double {
 }
 
 pub fn hdr_point_norm(pt : HdrPoint) -> Double {
-  hdr_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn hdr_point_to_string(pt : HdrPoint) -> String {
@@ -102,7 +102,7 @@ pub fn hdr_series_var(s : HdrSeries) -> Double {
   }
 }
 
-pub fn hdr_series_std(s : HdrSeries) -> Double { hdr_sqrt(hdr_series_var(s)) }
+pub fn hdr_series_std(s : HdrSeries) -> Double { @_common.sqrt(hdr_series_var(s)) }
 
 pub fn hdr_series_scale(s : HdrSeries, f : Double) -> HdrSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn hdr_matrix_trace(m : HdrMatrix) -> Double {
 pub fn hdr_matrix_norm(m : HdrMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  hdr_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn hdr_matrix_to_string(m : HdrMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn hdr_vector_dot(a : HdrVector, b : HdrVector) -> Double {
   sum
 }
 
-pub fn hdr_vector_norm(v : HdrVector) -> Double { hdr_sqrt(hdr_vector_dot(v, v)) }
+pub fn hdr_vector_norm(v : HdrVector) -> Double { @_common.sqrt(hdr_vector_dot(v, v)) }
 
 pub fn hdr_vector_normalize(v : HdrVector) -> HdrVector {
   let n = hdr_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn hdr_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn hdr_std(data : Array[Double]) -> Double { hdr_sqrt(hdr_var(data)) }
+pub fn hdr_std(data : Array[Double]) -> Double { @_common.sqrt(hdr_var(data)) }
 
 pub fn hdr_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn hdr_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + hdr_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn hdr_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = hdr_precision(pred, labels, pos); let r = hdr_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn hdr_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn hdr_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn hdr_dbl(x : Double) -> String {
   let i = if x >= 0.0 { hdr_int(x) } else { -hdr_int(-x) }

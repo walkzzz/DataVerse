@@ -25,7 +25,7 @@ pub fn encode_avro_point_label(p : Encode_avroPoint) -> Int { p.label }
 pub fn encode_avro_point_dist(a : Encode_avroPoint, b : Encode_avroPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  encode_avro_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn encode_avro_point_add(a : Encode_avroPoint, b : Encode_avroPoint) -> Encode_avroPoint {
@@ -45,7 +45,7 @@ pub fn encode_avro_point_dot(a : Encode_avroPoint, b : Encode_avroPoint) -> Doub
 }
 
 pub fn encode_avro_point_norm(pt : Encode_avroPoint) -> Double {
-  encode_avro_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn encode_avro_point_to_string(pt : Encode_avroPoint) -> String {
@@ -102,7 +102,7 @@ pub fn encode_avro_series_var(s : Encode_avroSeries) -> Double {
   }
 }
 
-pub fn encode_avro_series_std(s : Encode_avroSeries) -> Double { encode_avro_sqrt(encode_avro_series_var(s)) }
+pub fn encode_avro_series_std(s : Encode_avroSeries) -> Double { @_common.sqrt(encode_avro_series_var(s)) }
 
 pub fn encode_avro_series_scale(s : Encode_avroSeries, f : Double) -> Encode_avroSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn encode_avro_matrix_trace(m : Encode_avroMatrix) -> Double {
 pub fn encode_avro_matrix_norm(m : Encode_avroMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  encode_avro_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn encode_avro_matrix_to_string(m : Encode_avroMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn encode_avro_vector_dot(a : Encode_avroVector, b : Encode_avroVector) -> D
   sum
 }
 
-pub fn encode_avro_vector_norm(v : Encode_avroVector) -> Double { encode_avro_sqrt(encode_avro_vector_dot(v, v)) }
+pub fn encode_avro_vector_norm(v : Encode_avroVector) -> Double { @_common.sqrt(encode_avro_vector_dot(v, v)) }
 
 pub fn encode_avro_vector_normalize(v : Encode_avroVector) -> Encode_avroVector {
   let n = encode_avro_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn encode_avro_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn encode_avro_std(data : Array[Double]) -> Double { encode_avro_sqrt(encode_avro_var(data)) }
+pub fn encode_avro_std(data : Array[Double]) -> Double { @_common.sqrt(encode_avro_var(data)) }
 
 pub fn encode_avro_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn encode_avro_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + encode_avro_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn encode_avro_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = encode_avro_precision(pred, labels, pos); let r = encode_avro_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn encode_avro_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn encode_avro_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn encode_avro_dbl(x : Double) -> String {
   let i = if x >= 0.0 { encode_avro_int(x) } else { -encode_avro_int(-x) }

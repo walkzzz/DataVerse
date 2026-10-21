@@ -25,7 +25,7 @@ pub fn source_loc_point_label(p : Source_locPoint) -> Int { p.label }
 pub fn source_loc_point_dist(a : Source_locPoint, b : Source_locPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  source_loc_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn source_loc_point_add(a : Source_locPoint, b : Source_locPoint) -> Source_locPoint {
@@ -45,7 +45,7 @@ pub fn source_loc_point_dot(a : Source_locPoint, b : Source_locPoint) -> Double 
 }
 
 pub fn source_loc_point_norm(pt : Source_locPoint) -> Double {
-  source_loc_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn source_loc_point_to_string(pt : Source_locPoint) -> String {
@@ -102,7 +102,7 @@ pub fn source_loc_series_var(s : Source_locSeries) -> Double {
   }
 }
 
-pub fn source_loc_series_std(s : Source_locSeries) -> Double { source_loc_sqrt(source_loc_series_var(s)) }
+pub fn source_loc_series_std(s : Source_locSeries) -> Double { @_common.sqrt(source_loc_series_var(s)) }
 
 pub fn source_loc_series_scale(s : Source_locSeries, f : Double) -> Source_locSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn source_loc_matrix_trace(m : Source_locMatrix) -> Double {
 pub fn source_loc_matrix_norm(m : Source_locMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  source_loc_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn source_loc_matrix_to_string(m : Source_locMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn source_loc_vector_dot(a : Source_locVector, b : Source_locVector) -> Doub
   sum
 }
 
-pub fn source_loc_vector_norm(v : Source_locVector) -> Double { source_loc_sqrt(source_loc_vector_dot(v, v)) }
+pub fn source_loc_vector_norm(v : Source_locVector) -> Double { @_common.sqrt(source_loc_vector_dot(v, v)) }
 
 pub fn source_loc_vector_normalize(v : Source_locVector) -> Source_locVector {
   let n = source_loc_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn source_loc_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn source_loc_std(data : Array[Double]) -> Double { source_loc_sqrt(source_loc_var(data)) }
+pub fn source_loc_std(data : Array[Double]) -> Double { @_common.sqrt(source_loc_var(data)) }
 
 pub fn source_loc_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn source_loc_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + source_loc_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn source_loc_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = source_loc_precision(pred, labels, pos); let r = source_loc_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn source_loc_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn source_loc_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn source_loc_dbl(x : Double) -> String {
   let i = if x >= 0.0 { source_loc_int(x) } else { -source_loc_int(-x) }

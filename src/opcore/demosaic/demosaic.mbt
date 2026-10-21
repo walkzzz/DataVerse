@@ -25,7 +25,7 @@ pub fn demosaic_point_label(p : DemosaicPoint) -> Int { p.label }
 pub fn demosaic_point_dist(a : DemosaicPoint, b : DemosaicPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  demosaic_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn demosaic_point_add(a : DemosaicPoint, b : DemosaicPoint) -> DemosaicPoint {
@@ -45,7 +45,7 @@ pub fn demosaic_point_dot(a : DemosaicPoint, b : DemosaicPoint) -> Double {
 }
 
 pub fn demosaic_point_norm(pt : DemosaicPoint) -> Double {
-  demosaic_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn demosaic_point_to_string(pt : DemosaicPoint) -> String {
@@ -102,7 +102,7 @@ pub fn demosaic_series_var(s : DemosaicSeries) -> Double {
   }
 }
 
-pub fn demosaic_series_std(s : DemosaicSeries) -> Double { demosaic_sqrt(demosaic_series_var(s)) }
+pub fn demosaic_series_std(s : DemosaicSeries) -> Double { @_common.sqrt(demosaic_series_var(s)) }
 
 pub fn demosaic_series_scale(s : DemosaicSeries, f : Double) -> DemosaicSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn demosaic_matrix_trace(m : DemosaicMatrix) -> Double {
 pub fn demosaic_matrix_norm(m : DemosaicMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  demosaic_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn demosaic_matrix_to_string(m : DemosaicMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn demosaic_vector_dot(a : DemosaicVector, b : DemosaicVector) -> Double {
   sum
 }
 
-pub fn demosaic_vector_norm(v : DemosaicVector) -> Double { demosaic_sqrt(demosaic_vector_dot(v, v)) }
+pub fn demosaic_vector_norm(v : DemosaicVector) -> Double { @_common.sqrt(demosaic_vector_dot(v, v)) }
 
 pub fn demosaic_vector_normalize(v : DemosaicVector) -> DemosaicVector {
   let n = demosaic_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn demosaic_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn demosaic_std(data : Array[Double]) -> Double { demosaic_sqrt(demosaic_var(data)) }
+pub fn demosaic_std(data : Array[Double]) -> Double { @_common.sqrt(demosaic_var(data)) }
 
 pub fn demosaic_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn demosaic_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + demosaic_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn demosaic_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double 
   let p_ = demosaic_precision(pred, labels, pos); let r = demosaic_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn demosaic_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn demosaic_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn demosaic_dbl(x : Double) -> String {
   let i = if x >= 0.0 { demosaic_int(x) } else { -demosaic_int(-x) }

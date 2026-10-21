@@ -96,25 +96,6 @@ fn cv_cos(x : Double) -> Double {
   cv_sin(x + 1.5707963267948966)
 }
 
-/// 内部平方根 / Internal square root.
-fn cv_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    return 0.0
-  }
-  let mut guess = x
-  if guess > 1.0 {
-    guess = guess / 2.0
-  }
-  let mut prev = 0.0
-  let mut iter = 0
-  while (guess - prev).abs() > 0.0000001 && iter < 60 {
-    prev = guess
-    guess = (guess + x / guess) / 2.0
-    iter = iter + 1
-  }
-  guess
-}
-
 /// 内部指数 / Internal exp.
 fn cv_exp(x : Double) -> Double {
   let mut term = 1.0
@@ -140,15 +121,6 @@ fn cv_ln(x : Double) -> Double {
     term = term * t2
   }
   2.0 * result
-}
-
-/// 内部绝对值 / Internal abs.
-fn cv_abs(x : Double) -> Double {
-  if x < 0.0 {
-    -x
-  } else {
-    x
-  }
 }
 
 /// 内部最大值 / Internal max.
@@ -270,7 +242,7 @@ pub fn cv_resize_bicubic(img : CVImage, new_w : Int, new_h : Int) -> CVImage {
 /// 内部三次卷积权重 / Internal cubic weight.
 fn cv_cubic_weight(t : Double) -> Double {
   let a = -0.5
-  let at = cv_abs(t)
+  let at = @_common.abs(t)
   if at < 1.0 {
     (a + 2.0) * at * at * at - (a + 3.0) * at * at + 1.0
   } else if at < 2.0 {
@@ -448,7 +420,7 @@ fn cv_gauss(x : Double, sigma : Double) -> Double {
     return 0.0
   }
   let s2 = sigma * sigma
-  cv_exp(-x * x / (2.0 * s2)) / cv_sqrt(6.283185307179586 * s2)
+  cv_exp(-x * x / (2.0 * s2)) / @_common.sqrt(6.283185307179586 * s2)
 }
 
 /// 高斯模糊 / Gaussian blur.
@@ -606,7 +578,7 @@ pub fn cv_sobel(img : CVImage, dx : Int, dy : Int, ksize : Int) -> CVImage {
       if dy > 0 {
         gy = cv_pixel(gray, x, y + 1, 0) - cv_pixel(gray, x, y - 1, 0)
       }
-      let v = cv_sqrt(gx * gx + gy * gy)
+      let v = @_common.sqrt(gx * gx + gy * gy)
       ignore(half)
       cv_set_pixel(out, x, y, 0, v)
     }
@@ -637,7 +609,7 @@ pub fn cv_canny(img : CVImage, low : Double, high : Double) -> CVImage {
   let out = cv_empty(gray.width, gray.height, 1)
   for y in 0..<gray.height {
     for x in 0..<gray.width {
-      let mag = cv_sqrt(cv_pixel(gx, x, y, 0) * cv_pixel(gx, x, y, 0) + cv_pixel(gy, x, y, 0) * cv_pixel(gy, x, y, 0))
+      let mag = @_common.sqrt(cv_pixel(gx, x, y, 0) * cv_pixel(gx, x, y, 0) + cv_pixel(gy, x, y, 0) * cv_pixel(gy, x, y, 0))
       cv_set_pixel(out, x, y, 0, if mag > high { 255.0 } else if mag > low { 128.0 } else { 0.0 })
     }
   }
@@ -649,7 +621,7 @@ pub fn cv_hough_lines(img : CVImage, threshold : Double) -> Array[(Double, Doubl
   let gray = if img.channels == 1 { img } else { cv_grayscale(img) }
   let result : Array[(Double, Double)] = []
   let num_theta = 180
-  let max_rho = cv_sqrt(gray.width.to_double() * gray.width.to_double() + gray.height.to_double() * gray.height.to_double())
+  let max_rho = @_common.sqrt(gray.width.to_double() * gray.width.to_double() + gray.height.to_double() * gray.height.to_double())
   let num_rho = (max_rho * 2.0).to_int() + 1
   let accum : Array[Int] = []
   for _ in 0..<(num_rho * num_theta) {
@@ -803,7 +775,7 @@ pub fn cv_contour_area(contour : Array[(Int, Int)]) -> Double {
     let (x2, y2) = contour[(i + 1) % n]
     sum = sum + (x1.to_double() * y2.to_double() - x2.to_double() * y1.to_double())
   }
-  cv_abs(sum) / 2.0
+  @_common.abs(sum) / 2.0
 }
 
 /// 外接矩形 / Bounding rect (returns (x, y, w, h)).
@@ -859,7 +831,7 @@ pub fn cv_fit_ellipse(contour : Array[(Int, Int)]) -> (Double, Double, Double, D
   let mut min_r = 999999.0
   for pt in contour {
     let (x, y) = pt
-    let d = cv_sqrt((x.to_double() - cx) * (x.to_double() - cx) + (y.to_double() - cy) * (y.to_double() - cy))
+    let d = @_common.sqrt((x.to_double() - cx) * (x.to_double() - cx) + (y.to_double() - cy) * (y.to_double() - cy))
     if d > max_r {
       max_r = d
     }
@@ -921,7 +893,7 @@ pub fn cv_get_affine(
   let (dx1, dy1) = dst[1]
   let (dx2, dy2) = dst[2]
   let det = sx0 * (sy1 - sy2) - sx1 * (sy0 - sy2) + sx2 * (sy0 - sy1)
-  if cv_abs(det) < 0.000001 {
+  if @_common.abs(det) < 0.000001 {
     return m
   }
   m[0] = (dx0 * (sy1 - sy2) - dx1 * (sy0 - sy2) + dx2 * (sy0 - sy1)) / det
@@ -974,7 +946,7 @@ pub fn cv_template_match(img : CVImage, tmpl : CVImage, mode : Int) -> (Int, Int
             } else if mode == 1 {
               score = score + a * b
             } else {
-              score = score + cv_abs(a - b)
+              score = score + @_common.abs(a - b)
             }
           }
         }
@@ -1018,7 +990,7 @@ pub fn cv_correlation_match(img : CVImage, tmpl : CVImage) -> Double {
       }
     }
   }
-  let denom = cv_sqrt(img_e * tmpl_e)
+  let denom = @_common.sqrt(img_e * tmpl_e)
   if denom == 0.0 {
     return 0.0
   }
@@ -1380,7 +1352,7 @@ pub fn cv_ransac(
       let (qx, qy) = points2[k]
       let ex = (px - x1) * du / (if dx == 0.0 { 0.000001 } else { dx }) - (qx - u1)
       let ey = (py - y1) * dv / (if dy == 0.0 { 0.000001 } else { dy }) - (qy - v1)
-      if cv_sqrt(ex * ex + ey * ey) < threshold {
+      if @_common.sqrt(ex * ex + ey * ey) < threshold {
         inliers = inliers + 1
       }
     }
@@ -1403,7 +1375,7 @@ pub fn cv_stereo_disparity(left : CVImage, right : CVImage, max_disparity : Int)
       for d in 0..=max_disparity {
         let mut sad = 0.0
         for dx in -2..=2 {
-          sad = sad + cv_abs(cv_pixel(lg, x + dx, y, 0) - cv_pixel(rg, x + dx - d, y, 0))
+          sad = sad + @_common.abs(cv_pixel(lg, x + dx, y, 0) - cv_pixel(rg, x + dx - d, y, 0))
         }
         if sad < best_sad {
           best_sad = sad
@@ -1519,7 +1491,7 @@ pub fn cv_object_detect_hog(img : CVImage) -> Array[(Int, Int, Int, Int)] {
   let mut mag_sum = 0.0
   for y in 0..<gray.height {
     for x in 0..<gray.width {
-      mag_sum = mag_sum + cv_sqrt(cv_pixel(gx, x, y, 0) * cv_pixel(gx, x, y, 0) + cv_pixel(gy, x, y, 0) * cv_pixel(gy, x, y, 0))
+      mag_sum = mag_sum + @_common.sqrt(cv_pixel(gx, x, y, 0) * cv_pixel(gx, x, y, 0) + cv_pixel(gy, x, y, 0) * cv_pixel(gy, x, y, 0))
     }
   }
   if mag_sum > 1000.0 {

@@ -25,7 +25,7 @@ pub fn lidar_proc_point_label(p : Lidar_procPoint) -> Int { p.label }
 pub fn lidar_proc_point_dist(a : Lidar_procPoint, b : Lidar_procPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  lidar_proc_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn lidar_proc_point_add(a : Lidar_procPoint, b : Lidar_procPoint) -> Lidar_procPoint {
@@ -45,7 +45,7 @@ pub fn lidar_proc_point_dot(a : Lidar_procPoint, b : Lidar_procPoint) -> Double 
 }
 
 pub fn lidar_proc_point_norm(pt : Lidar_procPoint) -> Double {
-  lidar_proc_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn lidar_proc_point_to_string(pt : Lidar_procPoint) -> String {
@@ -102,7 +102,7 @@ pub fn lidar_proc_series_var(s : Lidar_procSeries) -> Double {
   }
 }
 
-pub fn lidar_proc_series_std(s : Lidar_procSeries) -> Double { lidar_proc_sqrt(lidar_proc_series_var(s)) }
+pub fn lidar_proc_series_std(s : Lidar_procSeries) -> Double { @_common.sqrt(lidar_proc_series_var(s)) }
 
 pub fn lidar_proc_series_scale(s : Lidar_procSeries, f : Double) -> Lidar_procSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn lidar_proc_matrix_trace(m : Lidar_procMatrix) -> Double {
 pub fn lidar_proc_matrix_norm(m : Lidar_procMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  lidar_proc_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn lidar_proc_matrix_to_string(m : Lidar_procMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn lidar_proc_vector_dot(a : Lidar_procVector, b : Lidar_procVector) -> Doub
   sum
 }
 
-pub fn lidar_proc_vector_norm(v : Lidar_procVector) -> Double { lidar_proc_sqrt(lidar_proc_vector_dot(v, v)) }
+pub fn lidar_proc_vector_norm(v : Lidar_procVector) -> Double { @_common.sqrt(lidar_proc_vector_dot(v, v)) }
 
 pub fn lidar_proc_vector_normalize(v : Lidar_procVector) -> Lidar_procVector {
   let n = lidar_proc_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn lidar_proc_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn lidar_proc_std(data : Array[Double]) -> Double { lidar_proc_sqrt(lidar_proc_var(data)) }
+pub fn lidar_proc_std(data : Array[Double]) -> Double { @_common.sqrt(lidar_proc_var(data)) }
 
 pub fn lidar_proc_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn lidar_proc_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + lidar_proc_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn lidar_proc_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = lidar_proc_precision(pred, labels, pos); let r = lidar_proc_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn lidar_proc_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn lidar_proc_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn lidar_proc_dbl(x : Double) -> String {
   let i = if x >= 0.0 { lidar_proc_int(x) } else { -lidar_proc_int(-x) }

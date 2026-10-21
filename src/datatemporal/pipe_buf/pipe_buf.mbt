@@ -25,7 +25,7 @@ pub fn pipe_buf_point_label(p : Pipe_bufPoint) -> Int { p.label }
 pub fn pipe_buf_point_dist(a : Pipe_bufPoint, b : Pipe_bufPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  pipe_buf_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn pipe_buf_point_add(a : Pipe_bufPoint, b : Pipe_bufPoint) -> Pipe_bufPoint {
@@ -45,7 +45,7 @@ pub fn pipe_buf_point_dot(a : Pipe_bufPoint, b : Pipe_bufPoint) -> Double {
 }
 
 pub fn pipe_buf_point_norm(pt : Pipe_bufPoint) -> Double {
-  pipe_buf_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn pipe_buf_point_to_string(pt : Pipe_bufPoint) -> String {
@@ -102,7 +102,7 @@ pub fn pipe_buf_series_var(s : Pipe_bufSeries) -> Double {
   }
 }
 
-pub fn pipe_buf_series_std(s : Pipe_bufSeries) -> Double { pipe_buf_sqrt(pipe_buf_series_var(s)) }
+pub fn pipe_buf_series_std(s : Pipe_bufSeries) -> Double { @_common.sqrt(pipe_buf_series_var(s)) }
 
 pub fn pipe_buf_series_scale(s : Pipe_bufSeries, f : Double) -> Pipe_bufSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn pipe_buf_matrix_trace(m : Pipe_bufMatrix) -> Double {
 pub fn pipe_buf_matrix_norm(m : Pipe_bufMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  pipe_buf_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn pipe_buf_matrix_to_string(m : Pipe_bufMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn pipe_buf_vector_dot(a : Pipe_bufVector, b : Pipe_bufVector) -> Double {
   sum
 }
 
-pub fn pipe_buf_vector_norm(v : Pipe_bufVector) -> Double { pipe_buf_sqrt(pipe_buf_vector_dot(v, v)) }
+pub fn pipe_buf_vector_norm(v : Pipe_bufVector) -> Double { @_common.sqrt(pipe_buf_vector_dot(v, v)) }
 
 pub fn pipe_buf_vector_normalize(v : Pipe_bufVector) -> Pipe_bufVector {
   let n = pipe_buf_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn pipe_buf_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn pipe_buf_std(data : Array[Double]) -> Double { pipe_buf_sqrt(pipe_buf_var(data)) }
+pub fn pipe_buf_std(data : Array[Double]) -> Double { @_common.sqrt(pipe_buf_var(data)) }
 
 pub fn pipe_buf_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn pipe_buf_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + pipe_buf_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn pipe_buf_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double 
   let p_ = pipe_buf_precision(pred, labels, pos); let r = pipe_buf_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn pipe_buf_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn pipe_buf_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn pipe_buf_dbl(x : Double) -> String {
   let i = if x >= 0.0 { pipe_buf_int(x) } else { -pipe_buf_int(-x) }

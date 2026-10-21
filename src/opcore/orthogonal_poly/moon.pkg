@@ -1,2 +1,5 @@
 // opcore/orthogonal_poly opcore/orthogonal_poly
 // S13.7 new
+import {
+  "dataverse/extcore/_common",
+}

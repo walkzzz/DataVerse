@@ -1,2 +1,5 @@
 // dataobject/table_store dataobject/table_store
 // S13.177 new
+import {
+  "dataverse/extcore/_common",
+}

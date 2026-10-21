@@ -25,7 +25,7 @@ pub fn memetic_point_label(p : MemeticPoint) -> Int { p.label }
 pub fn memetic_point_dist(a : MemeticPoint, b : MemeticPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  memetic_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn memetic_point_add(a : MemeticPoint, b : MemeticPoint) -> MemeticPoint {
@@ -45,7 +45,7 @@ pub fn memetic_point_dot(a : MemeticPoint, b : MemeticPoint) -> Double {
 }
 
 pub fn memetic_point_norm(pt : MemeticPoint) -> Double {
-  memetic_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn memetic_point_to_string(pt : MemeticPoint) -> String {
@@ -102,7 +102,7 @@ pub fn memetic_series_var(s : MemeticSeries) -> Double {
   }
 }
 
-pub fn memetic_series_std(s : MemeticSeries) -> Double { memetic_sqrt(memetic_series_var(s)) }
+pub fn memetic_series_std(s : MemeticSeries) -> Double { @_common.sqrt(memetic_series_var(s)) }
 
 pub fn memetic_series_scale(s : MemeticSeries, f : Double) -> MemeticSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn memetic_matrix_trace(m : MemeticMatrix) -> Double {
 pub fn memetic_matrix_norm(m : MemeticMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  memetic_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn memetic_matrix_to_string(m : MemeticMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn memetic_vector_dot(a : MemeticVector, b : MemeticVector) -> Double {
   sum
 }
 
-pub fn memetic_vector_norm(v : MemeticVector) -> Double { memetic_sqrt(memetic_vector_dot(v, v)) }
+pub fn memetic_vector_norm(v : MemeticVector) -> Double { @_common.sqrt(memetic_vector_dot(v, v)) }
 
 pub fn memetic_vector_normalize(v : MemeticVector) -> MemeticVector {
   let n = memetic_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn memetic_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn memetic_std(data : Array[Double]) -> Double { memetic_sqrt(memetic_var(data)) }
+pub fn memetic_std(data : Array[Double]) -> Double { @_common.sqrt(memetic_var(data)) }
 
 pub fn memetic_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn memetic_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + memetic_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn memetic_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = memetic_precision(pred, labels, pos); let r = memetic_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn memetic_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn memetic_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn memetic_dbl(x : Double) -> String {
   let i = if x >= 0.0 { memetic_int(x) } else { -memetic_int(-x) }

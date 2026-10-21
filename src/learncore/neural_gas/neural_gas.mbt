@@ -25,7 +25,7 @@ pub fn neural_gas_point_label(p : Neural_gasPoint) -> Int { p.label }
 pub fn neural_gas_point_dist(a : Neural_gasPoint, b : Neural_gasPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  neural_gas_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn neural_gas_point_add(a : Neural_gasPoint, b : Neural_gasPoint) -> Neural_gasPoint {
@@ -45,7 +45,7 @@ pub fn neural_gas_point_dot(a : Neural_gasPoint, b : Neural_gasPoint) -> Double 
 }
 
 pub fn neural_gas_point_norm(pt : Neural_gasPoint) -> Double {
-  neural_gas_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn neural_gas_point_to_string(pt : Neural_gasPoint) -> String {
@@ -102,7 +102,7 @@ pub fn neural_gas_series_var(s : Neural_gasSeries) -> Double {
   }
 }
 
-pub fn neural_gas_series_std(s : Neural_gasSeries) -> Double { neural_gas_sqrt(neural_gas_series_var(s)) }
+pub fn neural_gas_series_std(s : Neural_gasSeries) -> Double { @_common.sqrt(neural_gas_series_var(s)) }
 
 pub fn neural_gas_series_scale(s : Neural_gasSeries, f : Double) -> Neural_gasSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn neural_gas_matrix_trace(m : Neural_gasMatrix) -> Double {
 pub fn neural_gas_matrix_norm(m : Neural_gasMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  neural_gas_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn neural_gas_matrix_to_string(m : Neural_gasMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn neural_gas_vector_dot(a : Neural_gasVector, b : Neural_gasVector) -> Doub
   sum
 }
 
-pub fn neural_gas_vector_norm(v : Neural_gasVector) -> Double { neural_gas_sqrt(neural_gas_vector_dot(v, v)) }
+pub fn neural_gas_vector_norm(v : Neural_gasVector) -> Double { @_common.sqrt(neural_gas_vector_dot(v, v)) }
 
 pub fn neural_gas_vector_normalize(v : Neural_gasVector) -> Neural_gasVector {
   let n = neural_gas_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn neural_gas_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn neural_gas_std(data : Array[Double]) -> Double { neural_gas_sqrt(neural_gas_var(data)) }
+pub fn neural_gas_std(data : Array[Double]) -> Double { @_common.sqrt(neural_gas_var(data)) }
 
 pub fn neural_gas_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn neural_gas_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + neural_gas_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn neural_gas_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = neural_gas_precision(pred, labels, pos); let r = neural_gas_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn neural_gas_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn neural_gas_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn neural_gas_dbl(x : Double) -> String {
   let i = if x >= 0.0 { neural_gas_int(x) } else { -neural_gas_int(-x) }

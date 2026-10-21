@@ -1,2 +1,5 @@
 // dataobject/index_vector dataobject/index_vector
 // S13.190 new
+import {
+  "dataverse/extcore/_common",
+}

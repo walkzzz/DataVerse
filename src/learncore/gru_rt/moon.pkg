@@ -1,2 +1,5 @@
 // learncore/gru_rt learncore/gru_rt
 // S13.113 new
+import {
+  "dataverse/extcore/_common",
+}

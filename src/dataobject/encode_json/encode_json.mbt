@@ -25,7 +25,7 @@ pub fn encode_json_point_label(p : Encode_jsonPoint) -> Int { p.label }
 pub fn encode_json_point_dist(a : Encode_jsonPoint, b : Encode_jsonPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  encode_json_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn encode_json_point_add(a : Encode_jsonPoint, b : Encode_jsonPoint) -> Encode_jsonPoint {
@@ -45,7 +45,7 @@ pub fn encode_json_point_dot(a : Encode_jsonPoint, b : Encode_jsonPoint) -> Doub
 }
 
 pub fn encode_json_point_norm(pt : Encode_jsonPoint) -> Double {
-  encode_json_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn encode_json_point_to_string(pt : Encode_jsonPoint) -> String {
@@ -102,7 +102,7 @@ pub fn encode_json_series_var(s : Encode_jsonSeries) -> Double {
   }
 }
 
-pub fn encode_json_series_std(s : Encode_jsonSeries) -> Double { encode_json_sqrt(encode_json_series_var(s)) }
+pub fn encode_json_series_std(s : Encode_jsonSeries) -> Double { @_common.sqrt(encode_json_series_var(s)) }
 
 pub fn encode_json_series_scale(s : Encode_jsonSeries, f : Double) -> Encode_jsonSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn encode_json_matrix_trace(m : Encode_jsonMatrix) -> Double {
 pub fn encode_json_matrix_norm(m : Encode_jsonMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  encode_json_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn encode_json_matrix_to_string(m : Encode_jsonMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn encode_json_vector_dot(a : Encode_jsonVector, b : Encode_jsonVector) -> D
   sum
 }
 
-pub fn encode_json_vector_norm(v : Encode_jsonVector) -> Double { encode_json_sqrt(encode_json_vector_dot(v, v)) }
+pub fn encode_json_vector_norm(v : Encode_jsonVector) -> Double { @_common.sqrt(encode_json_vector_dot(v, v)) }
 
 pub fn encode_json_vector_normalize(v : Encode_jsonVector) -> Encode_jsonVector {
   let n = encode_json_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn encode_json_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn encode_json_std(data : Array[Double]) -> Double { encode_json_sqrt(encode_json_var(data)) }
+pub fn encode_json_std(data : Array[Double]) -> Double { @_common.sqrt(encode_json_var(data)) }
 
 pub fn encode_json_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn encode_json_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + encode_json_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn encode_json_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = encode_json_precision(pred, labels, pos); let r = encode_json_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn encode_json_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn encode_json_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn encode_json_dbl(x : Double) -> String {
   let i = if x >= 0.0 { encode_json_int(x) } else { -encode_json_int(-x) }

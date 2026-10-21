@@ -25,7 +25,7 @@ pub fn compress_zstd_point_label(p : Compress_zstdPoint) -> Int { p.label }
 pub fn compress_zstd_point_dist(a : Compress_zstdPoint, b : Compress_zstdPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  compress_zstd_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn compress_zstd_point_add(a : Compress_zstdPoint, b : Compress_zstdPoint) -> Compress_zstdPoint {
@@ -45,7 +45,7 @@ pub fn compress_zstd_point_dot(a : Compress_zstdPoint, b : Compress_zstdPoint) -
 }
 
 pub fn compress_zstd_point_norm(pt : Compress_zstdPoint) -> Double {
-  compress_zstd_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn compress_zstd_point_to_string(pt : Compress_zstdPoint) -> String {
@@ -102,7 +102,7 @@ pub fn compress_zstd_series_var(s : Compress_zstdSeries) -> Double {
   }
 }
 
-pub fn compress_zstd_series_std(s : Compress_zstdSeries) -> Double { compress_zstd_sqrt(compress_zstd_series_var(s)) }
+pub fn compress_zstd_series_std(s : Compress_zstdSeries) -> Double { @_common.sqrt(compress_zstd_series_var(s)) }
 
 pub fn compress_zstd_series_scale(s : Compress_zstdSeries, f : Double) -> Compress_zstdSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn compress_zstd_matrix_trace(m : Compress_zstdMatrix) -> Double {
 pub fn compress_zstd_matrix_norm(m : Compress_zstdMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  compress_zstd_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn compress_zstd_matrix_to_string(m : Compress_zstdMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn compress_zstd_vector_dot(a : Compress_zstdVector, b : Compress_zstdVector
   sum
 }
 
-pub fn compress_zstd_vector_norm(v : Compress_zstdVector) -> Double { compress_zstd_sqrt(compress_zstd_vector_dot(v, v)) }
+pub fn compress_zstd_vector_norm(v : Compress_zstdVector) -> Double { @_common.sqrt(compress_zstd_vector_dot(v, v)) }
 
 pub fn compress_zstd_vector_normalize(v : Compress_zstdVector) -> Compress_zstdVector {
   let n = compress_zstd_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn compress_zstd_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn compress_zstd_std(data : Array[Double]) -> Double { compress_zstd_sqrt(compress_zstd_var(data)) }
+pub fn compress_zstd_std(data : Array[Double]) -> Double { @_common.sqrt(compress_zstd_var(data)) }
 
 pub fn compress_zstd_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn compress_zstd_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + compress_zstd_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn compress_zstd_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = compress_zstd_precision(pred, labels, pos); let r = compress_zstd_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn compress_zstd_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn compress_zstd_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn compress_zstd_dbl(x : Double) -> String {
   let i = if x >= 0.0 { compress_zstd_int(x) } else { -compress_zstd_int(-x) }

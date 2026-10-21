@@ -25,7 +25,7 @@ pub fn moea_d_point_label(p : Moea_dPoint) -> Int { p.label }
 pub fn moea_d_point_dist(a : Moea_dPoint, b : Moea_dPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  moea_d_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn moea_d_point_add(a : Moea_dPoint, b : Moea_dPoint) -> Moea_dPoint {
@@ -45,7 +45,7 @@ pub fn moea_d_point_dot(a : Moea_dPoint, b : Moea_dPoint) -> Double {
 }
 
 pub fn moea_d_point_norm(pt : Moea_dPoint) -> Double {
-  moea_d_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn moea_d_point_to_string(pt : Moea_dPoint) -> String {
@@ -102,7 +102,7 @@ pub fn moea_d_series_var(s : Moea_dSeries) -> Double {
   }
 }
 
-pub fn moea_d_series_std(s : Moea_dSeries) -> Double { moea_d_sqrt(moea_d_series_var(s)) }
+pub fn moea_d_series_std(s : Moea_dSeries) -> Double { @_common.sqrt(moea_d_series_var(s)) }
 
 pub fn moea_d_series_scale(s : Moea_dSeries, f : Double) -> Moea_dSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn moea_d_matrix_trace(m : Moea_dMatrix) -> Double {
 pub fn moea_d_matrix_norm(m : Moea_dMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  moea_d_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn moea_d_matrix_to_string(m : Moea_dMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn moea_d_vector_dot(a : Moea_dVector, b : Moea_dVector) -> Double {
   sum
 }
 
-pub fn moea_d_vector_norm(v : Moea_dVector) -> Double { moea_d_sqrt(moea_d_vector_dot(v, v)) }
+pub fn moea_d_vector_norm(v : Moea_dVector) -> Double { @_common.sqrt(moea_d_vector_dot(v, v)) }
 
 pub fn moea_d_vector_normalize(v : Moea_dVector) -> Moea_dVector {
   let n = moea_d_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn moea_d_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn moea_d_std(data : Array[Double]) -> Double { moea_d_sqrt(moea_d_var(data)) }
+pub fn moea_d_std(data : Array[Double]) -> Double { @_common.sqrt(moea_d_var(data)) }
 
 pub fn moea_d_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn moea_d_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + moea_d_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn moea_d_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = moea_d_precision(pred, labels, pos); let r = moea_d_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn moea_d_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn moea_d_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn moea_d_dbl(x : Double) -> String {
   let i = if x >= 0.0 { moea_d_int(x) } else { -moea_d_int(-x) }

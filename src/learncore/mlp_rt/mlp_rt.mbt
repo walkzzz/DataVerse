@@ -25,7 +25,7 @@ pub fn mlp_rt_point_label(p : Mlp_rtPoint) -> Int { p.label }
 pub fn mlp_rt_point_dist(a : Mlp_rtPoint, b : Mlp_rtPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  mlp_rt_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn mlp_rt_point_add(a : Mlp_rtPoint, b : Mlp_rtPoint) -> Mlp_rtPoint {
@@ -45,7 +45,7 @@ pub fn mlp_rt_point_dot(a : Mlp_rtPoint, b : Mlp_rtPoint) -> Double {
 }
 
 pub fn mlp_rt_point_norm(pt : Mlp_rtPoint) -> Double {
-  mlp_rt_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn mlp_rt_point_to_string(pt : Mlp_rtPoint) -> String {
@@ -102,7 +102,7 @@ pub fn mlp_rt_series_var(s : Mlp_rtSeries) -> Double {
   }
 }
 
-pub fn mlp_rt_series_std(s : Mlp_rtSeries) -> Double { mlp_rt_sqrt(mlp_rt_series_var(s)) }
+pub fn mlp_rt_series_std(s : Mlp_rtSeries) -> Double { @_common.sqrt(mlp_rt_series_var(s)) }
 
 pub fn mlp_rt_series_scale(s : Mlp_rtSeries, f : Double) -> Mlp_rtSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn mlp_rt_matrix_trace(m : Mlp_rtMatrix) -> Double {
 pub fn mlp_rt_matrix_norm(m : Mlp_rtMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  mlp_rt_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn mlp_rt_matrix_to_string(m : Mlp_rtMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn mlp_rt_vector_dot(a : Mlp_rtVector, b : Mlp_rtVector) -> Double {
   sum
 }
 
-pub fn mlp_rt_vector_norm(v : Mlp_rtVector) -> Double { mlp_rt_sqrt(mlp_rt_vector_dot(v, v)) }
+pub fn mlp_rt_vector_norm(v : Mlp_rtVector) -> Double { @_common.sqrt(mlp_rt_vector_dot(v, v)) }
 
 pub fn mlp_rt_vector_normalize(v : Mlp_rtVector) -> Mlp_rtVector {
   let n = mlp_rt_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn mlp_rt_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn mlp_rt_std(data : Array[Double]) -> Double { mlp_rt_sqrt(mlp_rt_var(data)) }
+pub fn mlp_rt_std(data : Array[Double]) -> Double { @_common.sqrt(mlp_rt_var(data)) }
 
 pub fn mlp_rt_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn mlp_rt_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + mlp_rt_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn mlp_rt_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = mlp_rt_precision(pred, labels, pos); let r = mlp_rt_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn mlp_rt_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn mlp_rt_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn mlp_rt_dbl(x : Double) -> String {
   let i = if x >= 0.0 { mlp_rt_int(x) } else { -mlp_rt_int(-x) }

@@ -130,28 +130,6 @@ pub struct ProfileCompare {
 ///===
 /// 辅助数学函数 / Helper math (private)
 
-fn prof_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    return 0.0
-  }
-  let mut guess = x / 2.0
-  if guess == 0.0 {
-    guess = 1.0
-  }
-  for _ in 0..<60 {
-    guess = (guess + x / guess) / 2.0
-  }
-  guess
-}
-
-fn prof_abs(x : Double) -> Double {
-  if x < 0.0 {
-    -x
-  } else {
-    x
-  }
-}
-
 fn prof_ln(x : Double) -> Double {
   if x <= 0.0 {
     return -PROF_LARGE_DOUBLE
@@ -177,7 +155,7 @@ fn prof_ln(x : Double) -> Double {
     let term = t_pow / (2 * k + 1).to_double()
     result = result + term
     t_pow = t_pow * t * t
-    if prof_abs(term) < PROF_EPS {
+    if @_common.abs(term) < PROF_EPS {
       break
     }
   }
@@ -336,7 +314,7 @@ pub fn profile_median_p(values : Array[Double]) -> Double {
 
 /// 标准差 / Standard deviation (population).
 pub fn profile_std_p(values : Array[Double]) -> Double {
-  prof_sqrt(profile_var_p(values))
+  @_common.sqrt(profile_var_p(values))
 }
 
 /// 方差 / Variance (population).
@@ -531,7 +509,7 @@ pub fn profile_correlation(a : Array[Double], b : Array[Double]) -> Double {
     va = va + da * da
     vb = vb + db * db
   }
-  let denom = prof_sqrt(va * vb)
+  let denom = @_common.sqrt(va * vb)
   if denom == 0.0 {
     0.0
   } else {
@@ -620,7 +598,7 @@ pub fn profile_outlier(values : Array[Double], threshold : Double) -> Array[Int]
   }
   let result : Array[Int] = []
   for i in 0..<n {
-    let z = prof_abs((values[i] - m) / std)
+    let z = @_common.abs((values[i] - m) / std)
     if z > threshold {
       result.push(i)
     }
@@ -642,8 +620,8 @@ pub fn profile_drift(base : Array[Double], target : Array[Double], threshold : D
   let mt = profile_mean_p(target)
   let sb = profile_std_p(base)
   let st = profile_std_p(target)
-  let mean_diff = prof_abs(mt - mb)
-  let std_diff = prof_abs(st - sb)
+  let mean_diff = @_common.abs(mt - mb)
+  let std_diff = @_common.abs(st - sb)
   let drift = mean_diff + std_diff
   { drift_score: drift, is_drifted: drift > threshold, threshold: threshold }
 }
@@ -1005,9 +983,9 @@ pub fn profile_visualize(values : Array[Double], bin_count : Int) -> String {
 /// 比较 / Profile compare.
 pub fn profile_compare(base : Array[Double], target : Array[Double]) -> ProfileCompare {
   let diff_count = if base.length() > target.length() { base.length() - target.length() } else { target.length() - base.length() }
-  let diff_mean = prof_abs(profile_mean_p(base) - profile_mean_p(target))
-  let diff_std = prof_abs(profile_std_p(base) - profile_std_p(target))
-  let diff_quality = prof_abs(profile_quality_score(base) - profile_quality_score(target))
+  let diff_mean = @_common.abs(profile_mean_p(base) - profile_mean_p(target))
+  let diff_std = @_common.abs(profile_std_p(base) - profile_std_p(target))
+  let diff_quality = @_common.abs(profile_quality_score(base) - profile_quality_score(target))
   { base_name: "base", target_name: "target", diff_count: diff_count, diff_mean: diff_mean, diff_std: diff_std, diff_quality: diff_quality }
 }
 

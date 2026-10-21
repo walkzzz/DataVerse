@@ -25,7 +25,7 @@ pub fn fuzzy_art_point_label(p : Fuzzy_artPoint) -> Int { p.label }
 pub fn fuzzy_art_point_dist(a : Fuzzy_artPoint, b : Fuzzy_artPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  fuzzy_art_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn fuzzy_art_point_add(a : Fuzzy_artPoint, b : Fuzzy_artPoint) -> Fuzzy_artPoint {
@@ -45,7 +45,7 @@ pub fn fuzzy_art_point_dot(a : Fuzzy_artPoint, b : Fuzzy_artPoint) -> Double {
 }
 
 pub fn fuzzy_art_point_norm(pt : Fuzzy_artPoint) -> Double {
-  fuzzy_art_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn fuzzy_art_point_to_string(pt : Fuzzy_artPoint) -> String {
@@ -102,7 +102,7 @@ pub fn fuzzy_art_series_var(s : Fuzzy_artSeries) -> Double {
   }
 }
 
-pub fn fuzzy_art_series_std(s : Fuzzy_artSeries) -> Double { fuzzy_art_sqrt(fuzzy_art_series_var(s)) }
+pub fn fuzzy_art_series_std(s : Fuzzy_artSeries) -> Double { @_common.sqrt(fuzzy_art_series_var(s)) }
 
 pub fn fuzzy_art_series_scale(s : Fuzzy_artSeries, f : Double) -> Fuzzy_artSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn fuzzy_art_matrix_trace(m : Fuzzy_artMatrix) -> Double {
 pub fn fuzzy_art_matrix_norm(m : Fuzzy_artMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  fuzzy_art_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn fuzzy_art_matrix_to_string(m : Fuzzy_artMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn fuzzy_art_vector_dot(a : Fuzzy_artVector, b : Fuzzy_artVector) -> Double 
   sum
 }
 
-pub fn fuzzy_art_vector_norm(v : Fuzzy_artVector) -> Double { fuzzy_art_sqrt(fuzzy_art_vector_dot(v, v)) }
+pub fn fuzzy_art_vector_norm(v : Fuzzy_artVector) -> Double { @_common.sqrt(fuzzy_art_vector_dot(v, v)) }
 
 pub fn fuzzy_art_vector_normalize(v : Fuzzy_artVector) -> Fuzzy_artVector {
   let n = fuzzy_art_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn fuzzy_art_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn fuzzy_art_std(data : Array[Double]) -> Double { fuzzy_art_sqrt(fuzzy_art_var(data)) }
+pub fn fuzzy_art_std(data : Array[Double]) -> Double { @_common.sqrt(fuzzy_art_var(data)) }
 
 pub fn fuzzy_art_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn fuzzy_art_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + fuzzy_art_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn fuzzy_art_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double
   let p_ = fuzzy_art_precision(pred, labels, pos); let r = fuzzy_art_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn fuzzy_art_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn fuzzy_art_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn fuzzy_art_dbl(x : Double) -> String {
   let i = if x >= 0.0 { fuzzy_art_int(x) } else { -fuzzy_art_int(-x) }

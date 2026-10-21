@@ -13,24 +13,6 @@ fn fs_min(a : Double, b : Double) -> Double {
   if a < b { a } else { b }
 }
 
-fn fs_abs(x : Double) -> Double {
-  if x < 0.0 { -x } else { x }
-}
-
-fn fs_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    return 0.0
-  }
-  let mut guess = x / 2.0
-  if guess == 0.0 {
-    guess = 1.0
-  }
-  for _ in 0..<60 {
-    guess = (guess + x / guess) / 2.0
-  }
-  guess
-}
-
 fn fs_contains(arr : Array[String], v : String) -> Bool {
   for i in 0..<arr.length() {
     if arr[i] == v {
@@ -465,7 +447,7 @@ pub fn feature_stats_store(values : Array[Double]) -> (Double, Double, Double, D
     }
   }
   let variance = sum_sq / n.to_double()
-  let std = fs_sqrt(variance)
+  let std = @_common.sqrt(variance)
   (mean, std, mn, mx)
 }
 
@@ -496,9 +478,9 @@ pub fn feature_drift_store(
   let exp_mean = fs_mean(expected)
   let act_mean = fs_mean(actual)
   if exp_mean == 0.0 {
-    return fs_abs(act_mean)
+    return @_common.abs(act_mean)
   }
-  fs_abs((act_mean - exp_mean) / exp_mean)
+  @_common.abs((act_mean - exp_mean) / exp_mean)
 }
 
 ///===
@@ -528,7 +510,7 @@ pub fn monitor_drift(
   monitor : FeatureMonitor,
   drift_value : Double
 ) -> FeatureMonitor {
-  if fs_abs(drift_value) > monitor.drift_threshold {
+  if @_common.abs(drift_value) > monitor.drift_threshold {
     { feature_name: monitor.feature_name, drift_threshold: monitor.drift_threshold, quality_threshold: monitor.quality_threshold, alerts: monitor.alerts + ["drift:" + drift_value.to_string()] }
   } else {
     monitor
@@ -584,7 +566,7 @@ pub fn transform_apply(t : FeatureTransform, value : Double) -> Double {
       0.0
     }
   } else if t.transform_type == "abs" {
-    fs_abs(value)
+    @_common.abs(value)
   } else {
     value
   }
@@ -690,7 +672,7 @@ pub fn embedding_search(
       norm_a = norm_a + query[j] * query[j]
       norm_b = norm_b + v[j] * v[j]
     }
-    let denom = fs_sqrt(norm_a) * fs_sqrt(norm_b)
+    let denom = @_common.sqrt(norm_a) * @_common.sqrt(norm_b)
     let score = if denom > 0.0 { dot / denom } else { 0.0 }
     scores.push((k, score))
   }

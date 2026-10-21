@@ -25,7 +25,7 @@ pub fn temporal_logic_point_label(p : Temporal_logicPoint) -> Int { p.label }
 pub fn temporal_logic_point_dist(a : Temporal_logicPoint, b : Temporal_logicPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  temporal_logic_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn temporal_logic_point_add(a : Temporal_logicPoint, b : Temporal_logicPoint) -> Temporal_logicPoint {
@@ -45,7 +45,7 @@ pub fn temporal_logic_point_dot(a : Temporal_logicPoint, b : Temporal_logicPoint
 }
 
 pub fn temporal_logic_point_norm(pt : Temporal_logicPoint) -> Double {
-  temporal_logic_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn temporal_logic_point_to_string(pt : Temporal_logicPoint) -> String {
@@ -102,7 +102,7 @@ pub fn temporal_logic_series_var(s : Temporal_logicSeries) -> Double {
   }
 }
 
-pub fn temporal_logic_series_std(s : Temporal_logicSeries) -> Double { temporal_logic_sqrt(temporal_logic_series_var(s)) }
+pub fn temporal_logic_series_std(s : Temporal_logicSeries) -> Double { @_common.sqrt(temporal_logic_series_var(s)) }
 
 pub fn temporal_logic_series_scale(s : Temporal_logicSeries, f : Double) -> Temporal_logicSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn temporal_logic_matrix_trace(m : Temporal_logicMatrix) -> Double {
 pub fn temporal_logic_matrix_norm(m : Temporal_logicMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  temporal_logic_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn temporal_logic_matrix_to_string(m : Temporal_logicMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn temporal_logic_vector_dot(a : Temporal_logicVector, b : Temporal_logicVec
   sum
 }
 
-pub fn temporal_logic_vector_norm(v : Temporal_logicVector) -> Double { temporal_logic_sqrt(temporal_logic_vector_dot(v, v)) }
+pub fn temporal_logic_vector_norm(v : Temporal_logicVector) -> Double { @_common.sqrt(temporal_logic_vector_dot(v, v)) }
 
 pub fn temporal_logic_vector_normalize(v : Temporal_logicVector) -> Temporal_logicVector {
   let n = temporal_logic_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn temporal_logic_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn temporal_logic_std(data : Array[Double]) -> Double { temporal_logic_sqrt(temporal_logic_var(data)) }
+pub fn temporal_logic_std(data : Array[Double]) -> Double { @_common.sqrt(temporal_logic_var(data)) }
 
 pub fn temporal_logic_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn temporal_logic_mae(pred : Array[Double], labels : Array[Double]) -> Doubl
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + temporal_logic_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn temporal_logic_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> D
   let p_ = temporal_logic_precision(pred, labels, pos); let r = temporal_logic_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn temporal_logic_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn temporal_logic_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn temporal_logic_dbl(x : Double) -> String {
   let i = if x >= 0.0 { temporal_logic_int(x) } else { -temporal_logic_int(-x) }

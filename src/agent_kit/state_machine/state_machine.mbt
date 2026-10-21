@@ -25,7 +25,7 @@ pub fn state_machine_point_label(p : State_machinePoint) -> Int { p.label }
 pub fn state_machine_point_dist(a : State_machinePoint, b : State_machinePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  state_machine_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn state_machine_point_add(a : State_machinePoint, b : State_machinePoint) -> State_machinePoint {
@@ -45,7 +45,7 @@ pub fn state_machine_point_dot(a : State_machinePoint, b : State_machinePoint) -
 }
 
 pub fn state_machine_point_norm(pt : State_machinePoint) -> Double {
-  state_machine_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn state_machine_point_to_string(pt : State_machinePoint) -> String {
@@ -102,7 +102,7 @@ pub fn state_machine_series_var(s : State_machineSeries) -> Double {
   }
 }
 
-pub fn state_machine_series_std(s : State_machineSeries) -> Double { state_machine_sqrt(state_machine_series_var(s)) }
+pub fn state_machine_series_std(s : State_machineSeries) -> Double { @_common.sqrt(state_machine_series_var(s)) }
 
 pub fn state_machine_series_scale(s : State_machineSeries, f : Double) -> State_machineSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn state_machine_matrix_trace(m : State_machineMatrix) -> Double {
 pub fn state_machine_matrix_norm(m : State_machineMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  state_machine_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn state_machine_matrix_to_string(m : State_machineMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn state_machine_vector_dot(a : State_machineVector, b : State_machineVector
   sum
 }
 
-pub fn state_machine_vector_norm(v : State_machineVector) -> Double { state_machine_sqrt(state_machine_vector_dot(v, v)) }
+pub fn state_machine_vector_norm(v : State_machineVector) -> Double { @_common.sqrt(state_machine_vector_dot(v, v)) }
 
 pub fn state_machine_vector_normalize(v : State_machineVector) -> State_machineVector {
   let n = state_machine_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn state_machine_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn state_machine_std(data : Array[Double]) -> Double { state_machine_sqrt(state_machine_var(data)) }
+pub fn state_machine_std(data : Array[Double]) -> Double { @_common.sqrt(state_machine_var(data)) }
 
 pub fn state_machine_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn state_machine_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + state_machine_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn state_machine_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = state_machine_precision(pred, labels, pos); let r = state_machine_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn state_machine_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn state_machine_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn state_machine_dbl(x : Double) -> String {
   let i = if x >= 0.0 { state_machine_int(x) } else { -state_machine_int(-x) }

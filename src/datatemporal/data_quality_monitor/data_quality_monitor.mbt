@@ -8,7 +8,6 @@
 ///
 /// Monitor / rule / threshold / metric / dashboard / alert / schedule / trend / drift / regression.
 
-
 /// 监控状态 / Monitor status.
 pub(all) enum MonitorStatus {
   MonitorIdle
@@ -166,28 +165,6 @@ pub struct DQReport {
 ///===
 /// 辅助数学 / Helper math (private)
 
-fn dq_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    return 0.0
-  }
-  let mut guess = x / 2.0
-  if guess == 0.0 {
-    guess = 1.0
-  }
-  for _ in 0..<60 {
-    guess = (guess + x / guess) / 2.0
-  }
-  guess
-}
-
-fn dq_abs(x : Double) -> Double {
-  if x < 0.0 {
-    -x
-  } else {
-    x
-  }
-}
-
 ///===
 /// 构造 / Constructors
 
@@ -247,13 +224,13 @@ pub fn make_dq_trend(name : String, values : Array[Double]) -> DQTrend {
 pub fn make_dq_drift(name : String, baseline : Array[Double], current : Array[Double], threshold : Double) -> DQDrift {
   let bm = dq_mean(baseline)
   let cm = dq_mean(current)
-  let score = dq_abs(cm - bm)
+  let score = @_common.abs(cm - bm)
   { name: name, baseline_mean: bm, current_mean: cm, drift_score: score, significant: score > threshold }
 }
 
 /// 构造回归 / Create DQ regression.
 pub fn make_dq_regression(name : String, baseline : Double, current : Double, tolerance : Double) -> DQRegression {
-  { name: name, baseline: baseline, current: current, regressed: dq_abs(current - baseline) > tolerance }
+  { name: name, baseline: baseline, current: current, regressed: @_common.abs(current - baseline) > tolerance }
 }
 
 /// 构造比较 / Create DQ comparison.
@@ -575,12 +552,12 @@ fn dq_mean(values : Array[Double]) -> Double {
 pub fn drift_detect(baseline : Array[Double], current : Array[Double], threshold : Double) -> Bool {
   let bm = dq_mean(baseline)
   let cm = dq_mean(current)
-  dq_abs(cm - bm) > threshold
+  @_common.abs(cm - bm) > threshold
 }
 
 /// 漂移度量 / Measure drift.
 pub fn drift_measure(baseline : Array[Double], current : Array[Double]) -> Double {
-  dq_abs(dq_mean(current) - dq_mean(baseline))
+  @_common.abs(dq_mean(current) - dq_mean(baseline))
 }
 
 /// 漂移显著性 / Drift significance.
@@ -597,11 +574,11 @@ pub fn drift_significance(baseline : Array[Double], current : Array[Double]) -> 
     var_sum = var_sum + d * d
   }
   let variance = var_sum / n.to_double()
-  let std = dq_sqrt(variance)
+  let std = @_common.sqrt(variance)
   if std == 0.0 {
     0.0
   } else {
-    dq_abs(cm - bm) / std
+    @_common.abs(cm - bm) / std
   }
 }
 
@@ -610,7 +587,7 @@ pub fn drift_significance(baseline : Array[Double], current : Array[Double]) -> 
 
 /// 回归检查 / Regression check.
 pub fn regression_check(baseline : Double, current : Double, tolerance : Double) -> Bool {
-  dq_abs(current - baseline) > tolerance
+  @_common.abs(current - baseline) > tolerance
 }
 
 /// 回归基线 / Regression baseline (compute baseline from history).

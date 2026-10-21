@@ -1,2 +1,5 @@
 // agent_kit/task_alloc agent_kit/task_alloc
 // S13.152 new
+import {
+  "dataverse/extcore/_common",
+}

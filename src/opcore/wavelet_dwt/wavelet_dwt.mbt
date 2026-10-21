@@ -25,7 +25,7 @@ pub fn wavelet_dwt_point_label(p : Wavelet_dwtPoint) -> Int { p.label }
 pub fn wavelet_dwt_point_dist(a : Wavelet_dwtPoint, b : Wavelet_dwtPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  wavelet_dwt_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn wavelet_dwt_point_add(a : Wavelet_dwtPoint, b : Wavelet_dwtPoint) -> Wavelet_dwtPoint {
@@ -45,7 +45,7 @@ pub fn wavelet_dwt_point_dot(a : Wavelet_dwtPoint, b : Wavelet_dwtPoint) -> Doub
 }
 
 pub fn wavelet_dwt_point_norm(pt : Wavelet_dwtPoint) -> Double {
-  wavelet_dwt_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn wavelet_dwt_point_to_string(pt : Wavelet_dwtPoint) -> String {
@@ -102,7 +102,7 @@ pub fn wavelet_dwt_series_var(s : Wavelet_dwtSeries) -> Double {
   }
 }
 
-pub fn wavelet_dwt_series_std(s : Wavelet_dwtSeries) -> Double { wavelet_dwt_sqrt(wavelet_dwt_series_var(s)) }
+pub fn wavelet_dwt_series_std(s : Wavelet_dwtSeries) -> Double { @_common.sqrt(wavelet_dwt_series_var(s)) }
 
 pub fn wavelet_dwt_series_scale(s : Wavelet_dwtSeries, f : Double) -> Wavelet_dwtSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn wavelet_dwt_matrix_trace(m : Wavelet_dwtMatrix) -> Double {
 pub fn wavelet_dwt_matrix_norm(m : Wavelet_dwtMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  wavelet_dwt_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn wavelet_dwt_matrix_to_string(m : Wavelet_dwtMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn wavelet_dwt_vector_dot(a : Wavelet_dwtVector, b : Wavelet_dwtVector) -> D
   sum
 }
 
-pub fn wavelet_dwt_vector_norm(v : Wavelet_dwtVector) -> Double { wavelet_dwt_sqrt(wavelet_dwt_vector_dot(v, v)) }
+pub fn wavelet_dwt_vector_norm(v : Wavelet_dwtVector) -> Double { @_common.sqrt(wavelet_dwt_vector_dot(v, v)) }
 
 pub fn wavelet_dwt_vector_normalize(v : Wavelet_dwtVector) -> Wavelet_dwtVector {
   let n = wavelet_dwt_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn wavelet_dwt_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn wavelet_dwt_std(data : Array[Double]) -> Double { wavelet_dwt_sqrt(wavelet_dwt_var(data)) }
+pub fn wavelet_dwt_std(data : Array[Double]) -> Double { @_common.sqrt(wavelet_dwt_var(data)) }
 
 pub fn wavelet_dwt_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn wavelet_dwt_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + wavelet_dwt_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn wavelet_dwt_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = wavelet_dwt_precision(pred, labels, pos); let r = wavelet_dwt_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn wavelet_dwt_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn wavelet_dwt_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn wavelet_dwt_dbl(x : Double) -> String {
   let i = if x >= 0.0 { wavelet_dwt_int(x) } else { -wavelet_dwt_int(-x) }

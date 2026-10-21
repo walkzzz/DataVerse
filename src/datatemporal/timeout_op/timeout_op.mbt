@@ -25,7 +25,7 @@ pub fn timeout_op_point_label(p : Timeout_opPoint) -> Int { p.label }
 pub fn timeout_op_point_dist(a : Timeout_opPoint, b : Timeout_opPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  timeout_op_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn timeout_op_point_add(a : Timeout_opPoint, b : Timeout_opPoint) -> Timeout_opPoint {
@@ -45,7 +45,7 @@ pub fn timeout_op_point_dot(a : Timeout_opPoint, b : Timeout_opPoint) -> Double 
 }
 
 pub fn timeout_op_point_norm(pt : Timeout_opPoint) -> Double {
-  timeout_op_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn timeout_op_point_to_string(pt : Timeout_opPoint) -> String {
@@ -102,7 +102,7 @@ pub fn timeout_op_series_var(s : Timeout_opSeries) -> Double {
   }
 }
 
-pub fn timeout_op_series_std(s : Timeout_opSeries) -> Double { timeout_op_sqrt(timeout_op_series_var(s)) }
+pub fn timeout_op_series_std(s : Timeout_opSeries) -> Double { @_common.sqrt(timeout_op_series_var(s)) }
 
 pub fn timeout_op_series_scale(s : Timeout_opSeries, f : Double) -> Timeout_opSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn timeout_op_matrix_trace(m : Timeout_opMatrix) -> Double {
 pub fn timeout_op_matrix_norm(m : Timeout_opMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  timeout_op_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn timeout_op_matrix_to_string(m : Timeout_opMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn timeout_op_vector_dot(a : Timeout_opVector, b : Timeout_opVector) -> Doub
   sum
 }
 
-pub fn timeout_op_vector_norm(v : Timeout_opVector) -> Double { timeout_op_sqrt(timeout_op_vector_dot(v, v)) }
+pub fn timeout_op_vector_norm(v : Timeout_opVector) -> Double { @_common.sqrt(timeout_op_vector_dot(v, v)) }
 
 pub fn timeout_op_vector_normalize(v : Timeout_opVector) -> Timeout_opVector {
   let n = timeout_op_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn timeout_op_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn timeout_op_std(data : Array[Double]) -> Double { timeout_op_sqrt(timeout_op_var(data)) }
+pub fn timeout_op_std(data : Array[Double]) -> Double { @_common.sqrt(timeout_op_var(data)) }
 
 pub fn timeout_op_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn timeout_op_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + timeout_op_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn timeout_op_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = timeout_op_precision(pred, labels, pos); let r = timeout_op_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn timeout_op_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn timeout_op_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn timeout_op_dbl(x : Double) -> String {
   let i = if x >= 0.0 { timeout_op_int(x) } else { -timeout_op_int(-x) }

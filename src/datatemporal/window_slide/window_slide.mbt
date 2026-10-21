@@ -25,7 +25,7 @@ pub fn window_slide_point_label(p : Window_slidePoint) -> Int { p.label }
 pub fn window_slide_point_dist(a : Window_slidePoint, b : Window_slidePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  window_slide_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn window_slide_point_add(a : Window_slidePoint, b : Window_slidePoint) -> Window_slidePoint {
@@ -45,7 +45,7 @@ pub fn window_slide_point_dot(a : Window_slidePoint, b : Window_slidePoint) -> D
 }
 
 pub fn window_slide_point_norm(pt : Window_slidePoint) -> Double {
-  window_slide_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn window_slide_point_to_string(pt : Window_slidePoint) -> String {
@@ -102,7 +102,7 @@ pub fn window_slide_series_var(s : Window_slideSeries) -> Double {
   }
 }
 
-pub fn window_slide_series_std(s : Window_slideSeries) -> Double { window_slide_sqrt(window_slide_series_var(s)) }
+pub fn window_slide_series_std(s : Window_slideSeries) -> Double { @_common.sqrt(window_slide_series_var(s)) }
 
 pub fn window_slide_series_scale(s : Window_slideSeries, f : Double) -> Window_slideSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn window_slide_matrix_trace(m : Window_slideMatrix) -> Double {
 pub fn window_slide_matrix_norm(m : Window_slideMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  window_slide_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn window_slide_matrix_to_string(m : Window_slideMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn window_slide_vector_dot(a : Window_slideVector, b : Window_slideVector) -
   sum
 }
 
-pub fn window_slide_vector_norm(v : Window_slideVector) -> Double { window_slide_sqrt(window_slide_vector_dot(v, v)) }
+pub fn window_slide_vector_norm(v : Window_slideVector) -> Double { @_common.sqrt(window_slide_vector_dot(v, v)) }
 
 pub fn window_slide_vector_normalize(v : Window_slideVector) -> Window_slideVector {
   let n = window_slide_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn window_slide_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn window_slide_std(data : Array[Double]) -> Double { window_slide_sqrt(window_slide_var(data)) }
+pub fn window_slide_std(data : Array[Double]) -> Double { @_common.sqrt(window_slide_var(data)) }
 
 pub fn window_slide_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn window_slide_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + window_slide_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn window_slide_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = window_slide_precision(pred, labels, pos); let r = window_slide_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn window_slide_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn window_slide_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn window_slide_dbl(x : Double) -> String {
   let i = if x >= 0.0 { window_slide_int(x) } else { -window_slide_int(-x) }

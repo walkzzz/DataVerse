@@ -25,7 +25,7 @@ pub fn gaussian_proc_point_label(p : Gaussian_procPoint) -> Int { p.label }
 pub fn gaussian_proc_point_dist(a : Gaussian_procPoint, b : Gaussian_procPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  gaussian_proc_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn gaussian_proc_point_add(a : Gaussian_procPoint, b : Gaussian_procPoint) -> Gaussian_procPoint {
@@ -45,7 +45,7 @@ pub fn gaussian_proc_point_dot(a : Gaussian_procPoint, b : Gaussian_procPoint) -
 }
 
 pub fn gaussian_proc_point_norm(pt : Gaussian_procPoint) -> Double {
-  gaussian_proc_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn gaussian_proc_point_to_string(pt : Gaussian_procPoint) -> String {
@@ -102,7 +102,7 @@ pub fn gaussian_proc_series_var(s : Gaussian_procSeries) -> Double {
   }
 }
 
-pub fn gaussian_proc_series_std(s : Gaussian_procSeries) -> Double { gaussian_proc_sqrt(gaussian_proc_series_var(s)) }
+pub fn gaussian_proc_series_std(s : Gaussian_procSeries) -> Double { @_common.sqrt(gaussian_proc_series_var(s)) }
 
 pub fn gaussian_proc_series_scale(s : Gaussian_procSeries, f : Double) -> Gaussian_procSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn gaussian_proc_matrix_trace(m : Gaussian_procMatrix) -> Double {
 pub fn gaussian_proc_matrix_norm(m : Gaussian_procMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  gaussian_proc_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn gaussian_proc_matrix_to_string(m : Gaussian_procMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn gaussian_proc_vector_dot(a : Gaussian_procVector, b : Gaussian_procVector
   sum
 }
 
-pub fn gaussian_proc_vector_norm(v : Gaussian_procVector) -> Double { gaussian_proc_sqrt(gaussian_proc_vector_dot(v, v)) }
+pub fn gaussian_proc_vector_norm(v : Gaussian_procVector) -> Double { @_common.sqrt(gaussian_proc_vector_dot(v, v)) }
 
 pub fn gaussian_proc_vector_normalize(v : Gaussian_procVector) -> Gaussian_procVector {
   let n = gaussian_proc_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn gaussian_proc_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn gaussian_proc_std(data : Array[Double]) -> Double { gaussian_proc_sqrt(gaussian_proc_var(data)) }
+pub fn gaussian_proc_std(data : Array[Double]) -> Double { @_common.sqrt(gaussian_proc_var(data)) }
 
 pub fn gaussian_proc_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn gaussian_proc_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + gaussian_proc_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn gaussian_proc_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = gaussian_proc_precision(pred, labels, pos); let r = gaussian_proc_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn gaussian_proc_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn gaussian_proc_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn gaussian_proc_dbl(x : Double) -> String {
   let i = if x >= 0.0 { gaussian_proc_int(x) } else { -gaussian_proc_int(-x) }

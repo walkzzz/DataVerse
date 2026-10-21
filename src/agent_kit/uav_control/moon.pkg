@@ -1,2 +1,5 @@
 // agent_kit/uav_control agent_kit/uav_control
 // S13.144 new
+import {
+  "dataverse/extcore/_common",
+}

@@ -25,7 +25,7 @@ pub fn autocorr_point_label(p : AutocorrPoint) -> Int { p.label }
 pub fn autocorr_point_dist(a : AutocorrPoint, b : AutocorrPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  autocorr_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn autocorr_point_add(a : AutocorrPoint, b : AutocorrPoint) -> AutocorrPoint {
@@ -45,7 +45,7 @@ pub fn autocorr_point_dot(a : AutocorrPoint, b : AutocorrPoint) -> Double {
 }
 
 pub fn autocorr_point_norm(pt : AutocorrPoint) -> Double {
-  autocorr_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn autocorr_point_to_string(pt : AutocorrPoint) -> String {
@@ -102,7 +102,7 @@ pub fn autocorr_series_var(s : AutocorrSeries) -> Double {
   }
 }
 
-pub fn autocorr_series_std(s : AutocorrSeries) -> Double { autocorr_sqrt(autocorr_series_var(s)) }
+pub fn autocorr_series_std(s : AutocorrSeries) -> Double { @_common.sqrt(autocorr_series_var(s)) }
 
 pub fn autocorr_series_scale(s : AutocorrSeries, f : Double) -> AutocorrSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn autocorr_matrix_trace(m : AutocorrMatrix) -> Double {
 pub fn autocorr_matrix_norm(m : AutocorrMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  autocorr_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn autocorr_matrix_to_string(m : AutocorrMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn autocorr_vector_dot(a : AutocorrVector, b : AutocorrVector) -> Double {
   sum
 }
 
-pub fn autocorr_vector_norm(v : AutocorrVector) -> Double { autocorr_sqrt(autocorr_vector_dot(v, v)) }
+pub fn autocorr_vector_norm(v : AutocorrVector) -> Double { @_common.sqrt(autocorr_vector_dot(v, v)) }
 
 pub fn autocorr_vector_normalize(v : AutocorrVector) -> AutocorrVector {
   let n = autocorr_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn autocorr_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn autocorr_std(data : Array[Double]) -> Double { autocorr_sqrt(autocorr_var(data)) }
+pub fn autocorr_std(data : Array[Double]) -> Double { @_common.sqrt(autocorr_var(data)) }
 
 pub fn autocorr_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn autocorr_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + autocorr_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn autocorr_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double 
   let p_ = autocorr_precision(pred, labels, pos); let r = autocorr_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn autocorr_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn autocorr_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn autocorr_dbl(x : Double) -> String {
   let i = if x >= 0.0 { autocorr_int(x) } else { -autocorr_int(-x) }

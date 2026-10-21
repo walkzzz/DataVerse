@@ -25,7 +25,7 @@ pub fn noise_reduce_point_label(p : Noise_reducePoint) -> Int { p.label }
 pub fn noise_reduce_point_dist(a : Noise_reducePoint, b : Noise_reducePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  noise_reduce_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn noise_reduce_point_add(a : Noise_reducePoint, b : Noise_reducePoint) -> Noise_reducePoint {
@@ -45,7 +45,7 @@ pub fn noise_reduce_point_dot(a : Noise_reducePoint, b : Noise_reducePoint) -> D
 }
 
 pub fn noise_reduce_point_norm(pt : Noise_reducePoint) -> Double {
-  noise_reduce_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn noise_reduce_point_to_string(pt : Noise_reducePoint) -> String {
@@ -102,7 +102,7 @@ pub fn noise_reduce_series_var(s : Noise_reduceSeries) -> Double {
   }
 }
 
-pub fn noise_reduce_series_std(s : Noise_reduceSeries) -> Double { noise_reduce_sqrt(noise_reduce_series_var(s)) }
+pub fn noise_reduce_series_std(s : Noise_reduceSeries) -> Double { @_common.sqrt(noise_reduce_series_var(s)) }
 
 pub fn noise_reduce_series_scale(s : Noise_reduceSeries, f : Double) -> Noise_reduceSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn noise_reduce_matrix_trace(m : Noise_reduceMatrix) -> Double {
 pub fn noise_reduce_matrix_norm(m : Noise_reduceMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  noise_reduce_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn noise_reduce_matrix_to_string(m : Noise_reduceMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn noise_reduce_vector_dot(a : Noise_reduceVector, b : Noise_reduceVector) -
   sum
 }
 
-pub fn noise_reduce_vector_norm(v : Noise_reduceVector) -> Double { noise_reduce_sqrt(noise_reduce_vector_dot(v, v)) }
+pub fn noise_reduce_vector_norm(v : Noise_reduceVector) -> Double { @_common.sqrt(noise_reduce_vector_dot(v, v)) }
 
 pub fn noise_reduce_vector_normalize(v : Noise_reduceVector) -> Noise_reduceVector {
   let n = noise_reduce_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn noise_reduce_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn noise_reduce_std(data : Array[Double]) -> Double { noise_reduce_sqrt(noise_reduce_var(data)) }
+pub fn noise_reduce_std(data : Array[Double]) -> Double { @_common.sqrt(noise_reduce_var(data)) }
 
 pub fn noise_reduce_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn noise_reduce_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + noise_reduce_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn noise_reduce_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = noise_reduce_precision(pred, labels, pos); let r = noise_reduce_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn noise_reduce_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn noise_reduce_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn noise_reduce_dbl(x : Double) -> String {
   let i = if x >= 0.0 { noise_reduce_int(x) } else { -noise_reduce_int(-x) }

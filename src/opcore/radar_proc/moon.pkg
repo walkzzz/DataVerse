@@ -1,2 +1,5 @@
 // opcore/radar_proc opcore/radar_proc
 // S13.43 new
+import {
+  "dataverse/extcore/_common",
+}

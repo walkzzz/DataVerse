@@ -25,7 +25,7 @@ pub fn queue_buf_point_label(p : Queue_bufPoint) -> Int { p.label }
 pub fn queue_buf_point_dist(a : Queue_bufPoint, b : Queue_bufPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  queue_buf_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn queue_buf_point_add(a : Queue_bufPoint, b : Queue_bufPoint) -> Queue_bufPoint {
@@ -45,7 +45,7 @@ pub fn queue_buf_point_dot(a : Queue_bufPoint, b : Queue_bufPoint) -> Double {
 }
 
 pub fn queue_buf_point_norm(pt : Queue_bufPoint) -> Double {
-  queue_buf_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn queue_buf_point_to_string(pt : Queue_bufPoint) -> String {
@@ -102,7 +102,7 @@ pub fn queue_buf_series_var(s : Queue_bufSeries) -> Double {
   }
 }
 
-pub fn queue_buf_series_std(s : Queue_bufSeries) -> Double { queue_buf_sqrt(queue_buf_series_var(s)) }
+pub fn queue_buf_series_std(s : Queue_bufSeries) -> Double { @_common.sqrt(queue_buf_series_var(s)) }
 
 pub fn queue_buf_series_scale(s : Queue_bufSeries, f : Double) -> Queue_bufSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn queue_buf_matrix_trace(m : Queue_bufMatrix) -> Double {
 pub fn queue_buf_matrix_norm(m : Queue_bufMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  queue_buf_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn queue_buf_matrix_to_string(m : Queue_bufMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn queue_buf_vector_dot(a : Queue_bufVector, b : Queue_bufVector) -> Double 
   sum
 }
 
-pub fn queue_buf_vector_norm(v : Queue_bufVector) -> Double { queue_buf_sqrt(queue_buf_vector_dot(v, v)) }
+pub fn queue_buf_vector_norm(v : Queue_bufVector) -> Double { @_common.sqrt(queue_buf_vector_dot(v, v)) }
 
 pub fn queue_buf_vector_normalize(v : Queue_bufVector) -> Queue_bufVector {
   let n = queue_buf_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn queue_buf_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn queue_buf_std(data : Array[Double]) -> Double { queue_buf_sqrt(queue_buf_var(data)) }
+pub fn queue_buf_std(data : Array[Double]) -> Double { @_common.sqrt(queue_buf_var(data)) }
 
 pub fn queue_buf_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn queue_buf_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + queue_buf_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn queue_buf_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double
   let p_ = queue_buf_precision(pred, labels, pos); let r = queue_buf_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn queue_buf_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn queue_buf_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn queue_buf_dbl(x : Double) -> String {
   let i = if x >= 0.0 { queue_buf_int(x) } else { -queue_buf_int(-x) }

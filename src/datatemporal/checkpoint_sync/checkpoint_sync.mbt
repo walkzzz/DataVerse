@@ -25,7 +25,7 @@ pub fn checkpoint_sync_point_label(p : Checkpoint_syncPoint) -> Int { p.label }
 pub fn checkpoint_sync_point_dist(a : Checkpoint_syncPoint, b : Checkpoint_syncPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  checkpoint_sync_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn checkpoint_sync_point_add(a : Checkpoint_syncPoint, b : Checkpoint_syncPoint) -> Checkpoint_syncPoint {
@@ -45,7 +45,7 @@ pub fn checkpoint_sync_point_dot(a : Checkpoint_syncPoint, b : Checkpoint_syncPo
 }
 
 pub fn checkpoint_sync_point_norm(pt : Checkpoint_syncPoint) -> Double {
-  checkpoint_sync_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn checkpoint_sync_point_to_string(pt : Checkpoint_syncPoint) -> String {
@@ -102,7 +102,7 @@ pub fn checkpoint_sync_series_var(s : Checkpoint_syncSeries) -> Double {
   }
 }
 
-pub fn checkpoint_sync_series_std(s : Checkpoint_syncSeries) -> Double { checkpoint_sync_sqrt(checkpoint_sync_series_var(s)) }
+pub fn checkpoint_sync_series_std(s : Checkpoint_syncSeries) -> Double { @_common.sqrt(checkpoint_sync_series_var(s)) }
 
 pub fn checkpoint_sync_series_scale(s : Checkpoint_syncSeries, f : Double) -> Checkpoint_syncSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn checkpoint_sync_matrix_trace(m : Checkpoint_syncMatrix) -> Double {
 pub fn checkpoint_sync_matrix_norm(m : Checkpoint_syncMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  checkpoint_sync_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn checkpoint_sync_matrix_to_string(m : Checkpoint_syncMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn checkpoint_sync_vector_dot(a : Checkpoint_syncVector, b : Checkpoint_sync
   sum
 }
 
-pub fn checkpoint_sync_vector_norm(v : Checkpoint_syncVector) -> Double { checkpoint_sync_sqrt(checkpoint_sync_vector_dot(v, v)) }
+pub fn checkpoint_sync_vector_norm(v : Checkpoint_syncVector) -> Double { @_common.sqrt(checkpoint_sync_vector_dot(v, v)) }
 
 pub fn checkpoint_sync_vector_normalize(v : Checkpoint_syncVector) -> Checkpoint_syncVector {
   let n = checkpoint_sync_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn checkpoint_sync_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn checkpoint_sync_std(data : Array[Double]) -> Double { checkpoint_sync_sqrt(checkpoint_sync_var(data)) }
+pub fn checkpoint_sync_std(data : Array[Double]) -> Double { @_common.sqrt(checkpoint_sync_var(data)) }
 
 pub fn checkpoint_sync_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn checkpoint_sync_mae(pred : Array[Double], labels : Array[Double]) -> Doub
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + checkpoint_sync_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn checkpoint_sync_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> 
   let p_ = checkpoint_sync_precision(pred, labels, pos); let r = checkpoint_sync_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn checkpoint_sync_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn checkpoint_sync_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn checkpoint_sync_dbl(x : Double) -> String {
   let i = if x >= 0.0 { checkpoint_sync_int(x) } else { -checkpoint_sync_int(-x) }

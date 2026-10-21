@@ -25,7 +25,7 @@ pub fn tone_map_point_label(p : Tone_mapPoint) -> Int { p.label }
 pub fn tone_map_point_dist(a : Tone_mapPoint, b : Tone_mapPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  tone_map_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn tone_map_point_add(a : Tone_mapPoint, b : Tone_mapPoint) -> Tone_mapPoint {
@@ -45,7 +45,7 @@ pub fn tone_map_point_dot(a : Tone_mapPoint, b : Tone_mapPoint) -> Double {
 }
 
 pub fn tone_map_point_norm(pt : Tone_mapPoint) -> Double {
-  tone_map_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn tone_map_point_to_string(pt : Tone_mapPoint) -> String {
@@ -102,7 +102,7 @@ pub fn tone_map_series_var(s : Tone_mapSeries) -> Double {
   }
 }
 
-pub fn tone_map_series_std(s : Tone_mapSeries) -> Double { tone_map_sqrt(tone_map_series_var(s)) }
+pub fn tone_map_series_std(s : Tone_mapSeries) -> Double { @_common.sqrt(tone_map_series_var(s)) }
 
 pub fn tone_map_series_scale(s : Tone_mapSeries, f : Double) -> Tone_mapSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn tone_map_matrix_trace(m : Tone_mapMatrix) -> Double {
 pub fn tone_map_matrix_norm(m : Tone_mapMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  tone_map_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn tone_map_matrix_to_string(m : Tone_mapMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn tone_map_vector_dot(a : Tone_mapVector, b : Tone_mapVector) -> Double {
   sum
 }
 
-pub fn tone_map_vector_norm(v : Tone_mapVector) -> Double { tone_map_sqrt(tone_map_vector_dot(v, v)) }
+pub fn tone_map_vector_norm(v : Tone_mapVector) -> Double { @_common.sqrt(tone_map_vector_dot(v, v)) }
 
 pub fn tone_map_vector_normalize(v : Tone_mapVector) -> Tone_mapVector {
   let n = tone_map_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn tone_map_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn tone_map_std(data : Array[Double]) -> Double { tone_map_sqrt(tone_map_var(data)) }
+pub fn tone_map_std(data : Array[Double]) -> Double { @_common.sqrt(tone_map_var(data)) }
 
 pub fn tone_map_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn tone_map_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + tone_map_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn tone_map_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double 
   let p_ = tone_map_precision(pred, labels, pos); let r = tone_map_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn tone_map_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn tone_map_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn tone_map_dbl(x : Double) -> String {
   let i = if x >= 0.0 { tone_map_int(x) } else { -tone_map_int(-x) }

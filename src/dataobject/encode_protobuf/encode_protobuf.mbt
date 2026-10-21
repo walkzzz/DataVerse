@@ -25,7 +25,7 @@ pub fn encode_protobuf_point_label(p : Encode_protobufPoint) -> Int { p.label }
 pub fn encode_protobuf_point_dist(a : Encode_protobufPoint, b : Encode_protobufPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  encode_protobuf_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn encode_protobuf_point_add(a : Encode_protobufPoint, b : Encode_protobufPoint) -> Encode_protobufPoint {
@@ -45,7 +45,7 @@ pub fn encode_protobuf_point_dot(a : Encode_protobufPoint, b : Encode_protobufPo
 }
 
 pub fn encode_protobuf_point_norm(pt : Encode_protobufPoint) -> Double {
-  encode_protobuf_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn encode_protobuf_point_to_string(pt : Encode_protobufPoint) -> String {
@@ -102,7 +102,7 @@ pub fn encode_protobuf_series_var(s : Encode_protobufSeries) -> Double {
   }
 }
 
-pub fn encode_protobuf_series_std(s : Encode_protobufSeries) -> Double { encode_protobuf_sqrt(encode_protobuf_series_var(s)) }
+pub fn encode_protobuf_series_std(s : Encode_protobufSeries) -> Double { @_common.sqrt(encode_protobuf_series_var(s)) }
 
 pub fn encode_protobuf_series_scale(s : Encode_protobufSeries, f : Double) -> Encode_protobufSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn encode_protobuf_matrix_trace(m : Encode_protobufMatrix) -> Double {
 pub fn encode_protobuf_matrix_norm(m : Encode_protobufMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  encode_protobuf_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn encode_protobuf_matrix_to_string(m : Encode_protobufMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn encode_protobuf_vector_dot(a : Encode_protobufVector, b : Encode_protobuf
   sum
 }
 
-pub fn encode_protobuf_vector_norm(v : Encode_protobufVector) -> Double { encode_protobuf_sqrt(encode_protobuf_vector_dot(v, v)) }
+pub fn encode_protobuf_vector_norm(v : Encode_protobufVector) -> Double { @_common.sqrt(encode_protobuf_vector_dot(v, v)) }
 
 pub fn encode_protobuf_vector_normalize(v : Encode_protobufVector) -> Encode_protobufVector {
   let n = encode_protobuf_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn encode_protobuf_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn encode_protobuf_std(data : Array[Double]) -> Double { encode_protobuf_sqrt(encode_protobuf_var(data)) }
+pub fn encode_protobuf_std(data : Array[Double]) -> Double { @_common.sqrt(encode_protobuf_var(data)) }
 
 pub fn encode_protobuf_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn encode_protobuf_mae(pred : Array[Double], labels : Array[Double]) -> Doub
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + encode_protobuf_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn encode_protobuf_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> 
   let p_ = encode_protobuf_precision(pred, labels, pos); let r = encode_protobuf_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn encode_protobuf_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn encode_protobuf_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn encode_protobuf_dbl(x : Double) -> String {
   let i = if x >= 0.0 { encode_protobuf_int(x) } else { -encode_protobuf_int(-x) }

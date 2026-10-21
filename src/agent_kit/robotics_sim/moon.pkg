@@ -1,2 +1,5 @@
 // agent_kit/robotics_sim agent_kit/robotics_sim
 // S13.143 new
+import {
+  "dataverse/extcore/_common",
+}

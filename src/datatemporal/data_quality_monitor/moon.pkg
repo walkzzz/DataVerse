@@ -1,1 +1,4 @@
 // datatemporal/data_quality_monitor
+import {
+  "dataverse/extcore/_common",
+}

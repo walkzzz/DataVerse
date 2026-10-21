@@ -1,2 +1,5 @@
 // dataobject/graph_store dataobject/graph_store
 // S13.167 new
+import {
+  "dataverse/extcore/_common",
+}

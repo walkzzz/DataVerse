@@ -25,7 +25,7 @@ pub fn petri_net_point_label(p : Petri_netPoint) -> Int { p.label }
 pub fn petri_net_point_dist(a : Petri_netPoint, b : Petri_netPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  petri_net_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn petri_net_point_add(a : Petri_netPoint, b : Petri_netPoint) -> Petri_netPoint {
@@ -45,7 +45,7 @@ pub fn petri_net_point_dot(a : Petri_netPoint, b : Petri_netPoint) -> Double {
 }
 
 pub fn petri_net_point_norm(pt : Petri_netPoint) -> Double {
-  petri_net_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn petri_net_point_to_string(pt : Petri_netPoint) -> String {
@@ -102,7 +102,7 @@ pub fn petri_net_series_var(s : Petri_netSeries) -> Double {
   }
 }
 
-pub fn petri_net_series_std(s : Petri_netSeries) -> Double { petri_net_sqrt(petri_net_series_var(s)) }
+pub fn petri_net_series_std(s : Petri_netSeries) -> Double { @_common.sqrt(petri_net_series_var(s)) }
 
 pub fn petri_net_series_scale(s : Petri_netSeries, f : Double) -> Petri_netSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn petri_net_matrix_trace(m : Petri_netMatrix) -> Double {
 pub fn petri_net_matrix_norm(m : Petri_netMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  petri_net_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn petri_net_matrix_to_string(m : Petri_netMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn petri_net_vector_dot(a : Petri_netVector, b : Petri_netVector) -> Double 
   sum
 }
 
-pub fn petri_net_vector_norm(v : Petri_netVector) -> Double { petri_net_sqrt(petri_net_vector_dot(v, v)) }
+pub fn petri_net_vector_norm(v : Petri_netVector) -> Double { @_common.sqrt(petri_net_vector_dot(v, v)) }
 
 pub fn petri_net_vector_normalize(v : Petri_netVector) -> Petri_netVector {
   let n = petri_net_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn petri_net_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn petri_net_std(data : Array[Double]) -> Double { petri_net_sqrt(petri_net_var(data)) }
+pub fn petri_net_std(data : Array[Double]) -> Double { @_common.sqrt(petri_net_var(data)) }
 
 pub fn petri_net_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn petri_net_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + petri_net_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn petri_net_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double
   let p_ = petri_net_precision(pred, labels, pos); let r = petri_net_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn petri_net_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn petri_net_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn petri_net_dbl(x : Double) -> String {
   let i = if x >= 0.0 { petri_net_int(x) } else { -petri_net_int(-x) }

@@ -1,2 +1,5 @@
 // datatemporal/circuit_break datatemporal/circuit_break
 // S13.226 new
+import {
+  "dataverse/extcore/_common",
+}

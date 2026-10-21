@@ -1,2 +1,5 @@
 // datatemporal/restore_op datatemporal/restore_op
 // S13.223 new
+import {
+  "dataverse/extcore/_common",
+}

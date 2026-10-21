@@ -25,7 +25,7 @@ pub fn elm_point_label(p : ElmPoint) -> Int { p.label }
 pub fn elm_point_dist(a : ElmPoint, b : ElmPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  elm_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn elm_point_add(a : ElmPoint, b : ElmPoint) -> ElmPoint {
@@ -45,7 +45,7 @@ pub fn elm_point_dot(a : ElmPoint, b : ElmPoint) -> Double {
 }
 
 pub fn elm_point_norm(pt : ElmPoint) -> Double {
-  elm_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn elm_point_to_string(pt : ElmPoint) -> String {
@@ -102,7 +102,7 @@ pub fn elm_series_var(s : ElmSeries) -> Double {
   }
 }
 
-pub fn elm_series_std(s : ElmSeries) -> Double { elm_sqrt(elm_series_var(s)) }
+pub fn elm_series_std(s : ElmSeries) -> Double { @_common.sqrt(elm_series_var(s)) }
 
 pub fn elm_series_scale(s : ElmSeries, f : Double) -> ElmSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn elm_matrix_trace(m : ElmMatrix) -> Double {
 pub fn elm_matrix_norm(m : ElmMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  elm_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn elm_matrix_to_string(m : ElmMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn elm_vector_dot(a : ElmVector, b : ElmVector) -> Double {
   sum
 }
 
-pub fn elm_vector_norm(v : ElmVector) -> Double { elm_sqrt(elm_vector_dot(v, v)) }
+pub fn elm_vector_norm(v : ElmVector) -> Double { @_common.sqrt(elm_vector_dot(v, v)) }
 
 pub fn elm_vector_normalize(v : ElmVector) -> ElmVector {
   let n = elm_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn elm_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn elm_std(data : Array[Double]) -> Double { elm_sqrt(elm_var(data)) }
+pub fn elm_std(data : Array[Double]) -> Double { @_common.sqrt(elm_var(data)) }
 
 pub fn elm_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn elm_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + elm_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn elm_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = elm_precision(pred, labels, pos); let r = elm_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn elm_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn elm_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn elm_dbl(x : Double) -> String {
   let i = if x >= 0.0 { elm_int(x) } else { -elm_int(-x) }

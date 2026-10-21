@@ -25,7 +25,7 @@ pub fn image_restoration_point_label(p : Image_restorationPoint) -> Int { p.labe
 pub fn image_restoration_point_dist(a : Image_restorationPoint, b : Image_restorationPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  image_restoration_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn image_restoration_point_add(a : Image_restorationPoint, b : Image_restorationPoint) -> Image_restorationPoint {
@@ -45,7 +45,7 @@ pub fn image_restoration_point_dot(a : Image_restorationPoint, b : Image_restora
 }
 
 pub fn image_restoration_point_norm(pt : Image_restorationPoint) -> Double {
-  image_restoration_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn image_restoration_point_to_string(pt : Image_restorationPoint) -> String {
@@ -102,7 +102,7 @@ pub fn image_restoration_series_var(s : Image_restorationSeries) -> Double {
   }
 }
 
-pub fn image_restoration_series_std(s : Image_restorationSeries) -> Double { image_restoration_sqrt(image_restoration_series_var(s)) }
+pub fn image_restoration_series_std(s : Image_restorationSeries) -> Double { @_common.sqrt(image_restoration_series_var(s)) }
 
 pub fn image_restoration_series_scale(s : Image_restorationSeries, f : Double) -> Image_restorationSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn image_restoration_matrix_trace(m : Image_restorationMatrix) -> Double {
 pub fn image_restoration_matrix_norm(m : Image_restorationMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  image_restoration_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn image_restoration_matrix_to_string(m : Image_restorationMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn image_restoration_vector_dot(a : Image_restorationVector, b : Image_resto
   sum
 }
 
-pub fn image_restoration_vector_norm(v : Image_restorationVector) -> Double { image_restoration_sqrt(image_restoration_vector_dot(v, v)) }
+pub fn image_restoration_vector_norm(v : Image_restorationVector) -> Double { @_common.sqrt(image_restoration_vector_dot(v, v)) }
 
 pub fn image_restoration_vector_normalize(v : Image_restorationVector) -> Image_restorationVector {
   let n = image_restoration_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn image_restoration_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn image_restoration_std(data : Array[Double]) -> Double { image_restoration_sqrt(image_restoration_var(data)) }
+pub fn image_restoration_std(data : Array[Double]) -> Double { @_common.sqrt(image_restoration_var(data)) }
 
 pub fn image_restoration_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn image_restoration_mae(pred : Array[Double], labels : Array[Double]) -> Do
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + image_restoration_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn image_restoration_f1(pred : Array[Int], labels : Array[Int], pos : Int) -
   let p_ = image_restoration_precision(pred, labels, pos); let r = image_restoration_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn image_restoration_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn image_restoration_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn image_restoration_dbl(x : Double) -> String {
   let i = if x >= 0.0 { image_restoration_int(x) } else { -image_restoration_int(-x) }

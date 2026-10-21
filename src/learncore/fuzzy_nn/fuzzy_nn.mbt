@@ -25,7 +25,7 @@ pub fn fuzzy_nn_point_label(p : Fuzzy_nnPoint) -> Int { p.label }
 pub fn fuzzy_nn_point_dist(a : Fuzzy_nnPoint, b : Fuzzy_nnPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  fuzzy_nn_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn fuzzy_nn_point_add(a : Fuzzy_nnPoint, b : Fuzzy_nnPoint) -> Fuzzy_nnPoint {
@@ -45,7 +45,7 @@ pub fn fuzzy_nn_point_dot(a : Fuzzy_nnPoint, b : Fuzzy_nnPoint) -> Double {
 }
 
 pub fn fuzzy_nn_point_norm(pt : Fuzzy_nnPoint) -> Double {
-  fuzzy_nn_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn fuzzy_nn_point_to_string(pt : Fuzzy_nnPoint) -> String {
@@ -102,7 +102,7 @@ pub fn fuzzy_nn_series_var(s : Fuzzy_nnSeries) -> Double {
   }
 }
 
-pub fn fuzzy_nn_series_std(s : Fuzzy_nnSeries) -> Double { fuzzy_nn_sqrt(fuzzy_nn_series_var(s)) }
+pub fn fuzzy_nn_series_std(s : Fuzzy_nnSeries) -> Double { @_common.sqrt(fuzzy_nn_series_var(s)) }
 
 pub fn fuzzy_nn_series_scale(s : Fuzzy_nnSeries, f : Double) -> Fuzzy_nnSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn fuzzy_nn_matrix_trace(m : Fuzzy_nnMatrix) -> Double {
 pub fn fuzzy_nn_matrix_norm(m : Fuzzy_nnMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  fuzzy_nn_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn fuzzy_nn_matrix_to_string(m : Fuzzy_nnMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn fuzzy_nn_vector_dot(a : Fuzzy_nnVector, b : Fuzzy_nnVector) -> Double {
   sum
 }
 
-pub fn fuzzy_nn_vector_norm(v : Fuzzy_nnVector) -> Double { fuzzy_nn_sqrt(fuzzy_nn_vector_dot(v, v)) }
+pub fn fuzzy_nn_vector_norm(v : Fuzzy_nnVector) -> Double { @_common.sqrt(fuzzy_nn_vector_dot(v, v)) }
 
 pub fn fuzzy_nn_vector_normalize(v : Fuzzy_nnVector) -> Fuzzy_nnVector {
   let n = fuzzy_nn_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn fuzzy_nn_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn fuzzy_nn_std(data : Array[Double]) -> Double { fuzzy_nn_sqrt(fuzzy_nn_var(data)) }
+pub fn fuzzy_nn_std(data : Array[Double]) -> Double { @_common.sqrt(fuzzy_nn_var(data)) }
 
 pub fn fuzzy_nn_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn fuzzy_nn_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + fuzzy_nn_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn fuzzy_nn_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double 
   let p_ = fuzzy_nn_precision(pred, labels, pos); let r = fuzzy_nn_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn fuzzy_nn_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn fuzzy_nn_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn fuzzy_nn_dbl(x : Double) -> String {
   let i = if x >= 0.0 { fuzzy_nn_int(x) } else { -fuzzy_nn_int(-x) }

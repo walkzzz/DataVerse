@@ -1,2 +1,5 @@
 // opcore/image_registration opcore/image_registration
 // S13.47 new
+import {
+  "dataverse/extcore/_common",
+}

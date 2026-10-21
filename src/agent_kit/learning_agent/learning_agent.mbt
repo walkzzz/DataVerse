@@ -25,7 +25,7 @@ pub fn learning_agent_point_label(p : Learning_agentPoint) -> Int { p.label }
 pub fn learning_agent_point_dist(a : Learning_agentPoint, b : Learning_agentPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  learning_agent_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn learning_agent_point_add(a : Learning_agentPoint, b : Learning_agentPoint) -> Learning_agentPoint {
@@ -45,7 +45,7 @@ pub fn learning_agent_point_dot(a : Learning_agentPoint, b : Learning_agentPoint
 }
 
 pub fn learning_agent_point_norm(pt : Learning_agentPoint) -> Double {
-  learning_agent_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn learning_agent_point_to_string(pt : Learning_agentPoint) -> String {
@@ -102,7 +102,7 @@ pub fn learning_agent_series_var(s : Learning_agentSeries) -> Double {
   }
 }
 
-pub fn learning_agent_series_std(s : Learning_agentSeries) -> Double { learning_agent_sqrt(learning_agent_series_var(s)) }
+pub fn learning_agent_series_std(s : Learning_agentSeries) -> Double { @_common.sqrt(learning_agent_series_var(s)) }
 
 pub fn learning_agent_series_scale(s : Learning_agentSeries, f : Double) -> Learning_agentSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn learning_agent_matrix_trace(m : Learning_agentMatrix) -> Double {
 pub fn learning_agent_matrix_norm(m : Learning_agentMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  learning_agent_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn learning_agent_matrix_to_string(m : Learning_agentMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn learning_agent_vector_dot(a : Learning_agentVector, b : Learning_agentVec
   sum
 }
 
-pub fn learning_agent_vector_norm(v : Learning_agentVector) -> Double { learning_agent_sqrt(learning_agent_vector_dot(v, v)) }
+pub fn learning_agent_vector_norm(v : Learning_agentVector) -> Double { @_common.sqrt(learning_agent_vector_dot(v, v)) }
 
 pub fn learning_agent_vector_normalize(v : Learning_agentVector) -> Learning_agentVector {
   let n = learning_agent_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn learning_agent_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn learning_agent_std(data : Array[Double]) -> Double { learning_agent_sqrt(learning_agent_var(data)) }
+pub fn learning_agent_std(data : Array[Double]) -> Double { @_common.sqrt(learning_agent_var(data)) }
 
 pub fn learning_agent_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn learning_agent_mae(pred : Array[Double], labels : Array[Double]) -> Doubl
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + learning_agent_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn learning_agent_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> D
   let p_ = learning_agent_precision(pred, labels, pos); let r = learning_agent_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn learning_agent_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn learning_agent_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn learning_agent_dbl(x : Double) -> String {
   let i = if x >= 0.0 { learning_agent_int(x) } else { -learning_agent_int(-x) }

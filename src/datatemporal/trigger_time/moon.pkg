@@ -1,2 +1,5 @@
 // datatemporal/trigger_time datatemporal/trigger_time
 // S13.214 new
+import {
+  "dataverse/extcore/_common",
+}

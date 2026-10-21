@@ -1,2 +1,5 @@
 // learncore/prototype learncore/prototype
 // S13.101 new
+import {
+  "dataverse/extcore/_common",
+}

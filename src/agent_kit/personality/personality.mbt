@@ -25,7 +25,7 @@ pub fn personality_point_label(p : PersonalityPoint) -> Int { p.label }
 pub fn personality_point_dist(a : PersonalityPoint, b : PersonalityPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  personality_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn personality_point_add(a : PersonalityPoint, b : PersonalityPoint) -> PersonalityPoint {
@@ -45,7 +45,7 @@ pub fn personality_point_dot(a : PersonalityPoint, b : PersonalityPoint) -> Doub
 }
 
 pub fn personality_point_norm(pt : PersonalityPoint) -> Double {
-  personality_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn personality_point_to_string(pt : PersonalityPoint) -> String {
@@ -102,7 +102,7 @@ pub fn personality_series_var(s : PersonalitySeries) -> Double {
   }
 }
 
-pub fn personality_series_std(s : PersonalitySeries) -> Double { personality_sqrt(personality_series_var(s)) }
+pub fn personality_series_std(s : PersonalitySeries) -> Double { @_common.sqrt(personality_series_var(s)) }
 
 pub fn personality_series_scale(s : PersonalitySeries, f : Double) -> PersonalitySeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn personality_matrix_trace(m : PersonalityMatrix) -> Double {
 pub fn personality_matrix_norm(m : PersonalityMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  personality_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn personality_matrix_to_string(m : PersonalityMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn personality_vector_dot(a : PersonalityVector, b : PersonalityVector) -> D
   sum
 }
 
-pub fn personality_vector_norm(v : PersonalityVector) -> Double { personality_sqrt(personality_vector_dot(v, v)) }
+pub fn personality_vector_norm(v : PersonalityVector) -> Double { @_common.sqrt(personality_vector_dot(v, v)) }
 
 pub fn personality_vector_normalize(v : PersonalityVector) -> PersonalityVector {
   let n = personality_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn personality_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn personality_std(data : Array[Double]) -> Double { personality_sqrt(personality_var(data)) }
+pub fn personality_std(data : Array[Double]) -> Double { @_common.sqrt(personality_var(data)) }
 
 pub fn personality_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn personality_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + personality_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn personality_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = personality_precision(pred, labels, pos); let r = personality_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn personality_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn personality_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn personality_dbl(x : Double) -> String {
   let i = if x >= 0.0 { personality_int(x) } else { -personality_int(-x) }

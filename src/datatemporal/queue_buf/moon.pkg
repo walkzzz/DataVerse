@@ -1,2 +1,5 @@
 // datatemporal/queue_buf datatemporal/queue_buf
 // S13.232 new
+import {
+  "dataverse/extcore/_common",
+}

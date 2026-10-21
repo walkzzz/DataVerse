@@ -25,7 +25,7 @@ pub fn spea2_point_label(p : Spea2Point) -> Int { p.label }
 pub fn spea2_point_dist(a : Spea2Point, b : Spea2Point) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  spea2_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn spea2_point_add(a : Spea2Point, b : Spea2Point) -> Spea2Point {
@@ -45,7 +45,7 @@ pub fn spea2_point_dot(a : Spea2Point, b : Spea2Point) -> Double {
 }
 
 pub fn spea2_point_norm(pt : Spea2Point) -> Double {
-  spea2_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn spea2_point_to_string(pt : Spea2Point) -> String {
@@ -102,7 +102,7 @@ pub fn spea2_series_var(s : Spea2Series) -> Double {
   }
 }
 
-pub fn spea2_series_std(s : Spea2Series) -> Double { spea2_sqrt(spea2_series_var(s)) }
+pub fn spea2_series_std(s : Spea2Series) -> Double { @_common.sqrt(spea2_series_var(s)) }
 
 pub fn spea2_series_scale(s : Spea2Series, f : Double) -> Spea2Series {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn spea2_matrix_trace(m : Spea2Matrix) -> Double {
 pub fn spea2_matrix_norm(m : Spea2Matrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  spea2_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn spea2_matrix_to_string(m : Spea2Matrix) -> String {
@@ -244,7 +244,7 @@ pub fn spea2_vector_dot(a : Spea2Vector, b : Spea2Vector) -> Double {
   sum
 }
 
-pub fn spea2_vector_norm(v : Spea2Vector) -> Double { spea2_sqrt(spea2_vector_dot(v, v)) }
+pub fn spea2_vector_norm(v : Spea2Vector) -> Double { @_common.sqrt(spea2_vector_dot(v, v)) }
 
 pub fn spea2_vector_normalize(v : Spea2Vector) -> Spea2Vector {
   let n = spea2_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn spea2_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn spea2_std(data : Array[Double]) -> Double { spea2_sqrt(spea2_var(data)) }
+pub fn spea2_std(data : Array[Double]) -> Double { @_common.sqrt(spea2_var(data)) }
 
 pub fn spea2_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn spea2_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + spea2_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn spea2_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = spea2_precision(pred, labels, pos); let r = spea2_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn spea2_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn spea2_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn spea2_dbl(x : Double) -> String {
   let i = if x >= 0.0 { spea2_int(x) } else { -spea2_int(-x) }

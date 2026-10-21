@@ -131,17 +131,6 @@ pub extend KGFederation with Debug::{to_repr}
 ///===
 /// 辅助函数 / Helpers
 
-fn kg_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    return 0.0
-  }
-  let mut guess = x
-  for _ in 0..<100 {
-    guess = 0.5 * (guess + x / guess)
-  }
-  guess
-}
-
 fn kg_cos(x : Double) -> Double {
   let mut result = 1.0
   let mut term = 1.0
@@ -192,7 +181,7 @@ fn vector_norm(a : Array[Double]) -> Double {
   for i in 0..<a.length() {
     sum = sum + a[i] * a[i]
   }
-  kg_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 fn contains_str(arr : Array[String], val : String) -> Bool {

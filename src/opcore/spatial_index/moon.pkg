@@ -1,1 +1,4 @@
 // opcore/spatial_index
+import {
+  "dataverse/extcore/_common",
+}

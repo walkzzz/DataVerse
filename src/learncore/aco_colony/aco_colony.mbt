@@ -25,7 +25,7 @@ pub fn aco_colony_point_label(p : Aco_colonyPoint) -> Int { p.label }
 pub fn aco_colony_point_dist(a : Aco_colonyPoint, b : Aco_colonyPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  aco_colony_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn aco_colony_point_add(a : Aco_colonyPoint, b : Aco_colonyPoint) -> Aco_colonyPoint {
@@ -45,7 +45,7 @@ pub fn aco_colony_point_dot(a : Aco_colonyPoint, b : Aco_colonyPoint) -> Double 
 }
 
 pub fn aco_colony_point_norm(pt : Aco_colonyPoint) -> Double {
-  aco_colony_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn aco_colony_point_to_string(pt : Aco_colonyPoint) -> String {
@@ -102,7 +102,7 @@ pub fn aco_colony_series_var(s : Aco_colonySeries) -> Double {
   }
 }
 
-pub fn aco_colony_series_std(s : Aco_colonySeries) -> Double { aco_colony_sqrt(aco_colony_series_var(s)) }
+pub fn aco_colony_series_std(s : Aco_colonySeries) -> Double { @_common.sqrt(aco_colony_series_var(s)) }
 
 pub fn aco_colony_series_scale(s : Aco_colonySeries, f : Double) -> Aco_colonySeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn aco_colony_matrix_trace(m : Aco_colonyMatrix) -> Double {
 pub fn aco_colony_matrix_norm(m : Aco_colonyMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  aco_colony_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn aco_colony_matrix_to_string(m : Aco_colonyMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn aco_colony_vector_dot(a : Aco_colonyVector, b : Aco_colonyVector) -> Doub
   sum
 }
 
-pub fn aco_colony_vector_norm(v : Aco_colonyVector) -> Double { aco_colony_sqrt(aco_colony_vector_dot(v, v)) }
+pub fn aco_colony_vector_norm(v : Aco_colonyVector) -> Double { @_common.sqrt(aco_colony_vector_dot(v, v)) }
 
 pub fn aco_colony_vector_normalize(v : Aco_colonyVector) -> Aco_colonyVector {
   let n = aco_colony_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn aco_colony_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn aco_colony_std(data : Array[Double]) -> Double { aco_colony_sqrt(aco_colony_var(data)) }
+pub fn aco_colony_std(data : Array[Double]) -> Double { @_common.sqrt(aco_colony_var(data)) }
 
 pub fn aco_colony_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn aco_colony_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + aco_colony_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn aco_colony_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = aco_colony_precision(pred, labels, pos); let r = aco_colony_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn aco_colony_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn aco_colony_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn aco_colony_dbl(x : Double) -> String {
   let i = if x >= 0.0 { aco_colony_int(x) } else { -aco_colony_int(-x) }

@@ -26,24 +26,6 @@ pub struct EdgeConfig {
 pub extend EdgeConfig with Eq::{equal, not_equal}
 pub extend EdgeConfig with Debug::{to_repr}
 
-fn edge_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    return 0.0
-  }
-  let mut guess = x
-  if guess > 1.0 {
-    guess = guess / 2.0
-  }
-  let mut prev = 0.0
-  let mut iter = 0
-  while (guess - prev).abs() > 0.0000001 && iter < 60 {
-    prev = guess
-    guess = (guess + x / guess) / 2.0
-    iter = iter + 1
-  }
-  guess
-}
-
 fn edge_exp(x : Double) -> Double {
   if x > 50.0 {
     return 5184705528587072.0
@@ -97,14 +79,6 @@ fn edge_atan(x : Double) -> Double {
     }
   }
   result
-}
-
-fn edge_abs(x : Double) -> Double {
-  if x < 0.0 {
-    -x
-  } else {
-    x
-  }
 }
 
 fn edge_empty(w : Int, h : Int) -> EdgeImage {
@@ -187,7 +161,7 @@ pub fn edge_sobel_magnitude(img : EdgeImage) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      let mag = edge_sqrt(edge_pixel(gx, x, y) * edge_pixel(gx, x, y) + edge_pixel(gy, x, y) * edge_pixel(gy, x, y))
+      let mag = @_common.sqrt(edge_pixel(gx, x, y) * edge_pixel(gx, x, y) + edge_pixel(gy, x, y) * edge_pixel(gy, x, y))
       edge_set_pixel(out, x, y, mag)
     }
   }
@@ -239,7 +213,7 @@ pub fn edge_prewitt_magnitude(img : EdgeImage) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      let mag = edge_sqrt(edge_pixel(gx, x, y) * edge_pixel(gx, x, y) + edge_pixel(gy, x, y) * edge_pixel(gy, x, y))
+      let mag = @_common.sqrt(edge_pixel(gx, x, y) * edge_pixel(gx, x, y) + edge_pixel(gy, x, y) * edge_pixel(gy, x, y))
       edge_set_pixel(out, x, y, mag)
     }
   }
@@ -277,7 +251,7 @@ pub fn edge_roberts_magnitude(img : EdgeImage) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      let mag = edge_sqrt(edge_pixel(gx, x, y) * edge_pixel(gx, x, y) + edge_pixel(gy, x, y) * edge_pixel(gy, x, y))
+      let mag = @_common.sqrt(edge_pixel(gx, x, y) * edge_pixel(gx, x, y) + edge_pixel(gy, x, y) * edge_pixel(gy, x, y))
       edge_set_pixel(out, x, y, mag)
     }
   }
@@ -386,7 +360,7 @@ pub fn canny_gradient(img : EdgeImage) -> (EdgeImage, EdgeImage) {
   let dir = edge_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      let m = edge_sqrt(edge_pixel(gx, x, y) * edge_pixel(gx, x, y) + edge_pixel(gy, x, y) * edge_pixel(gy, x, y))
+      let m = @_common.sqrt(edge_pixel(gx, x, y) * edge_pixel(gx, x, y) + edge_pixel(gy, x, y) * edge_pixel(gy, x, y))
       edge_set_pixel(mag, x, y, m)
       let d = edge_atan2(edge_pixel(gy, x, y), edge_pixel(gx, x, y))
       edge_set_pixel(dir, x, y, d)
@@ -587,12 +561,12 @@ pub fn edge_zero_crossing(img : EdgeImage) -> EdgeImage {
       let vr = edge_pixel(img, x + 1, y)
       let vd = edge_pixel(img, x, y + 1)
       if (v > 0.0 && vr < 0.0) || (v < 0.0 && vr > 0.0) {
-        if edge_abs(v) + edge_abs(vr) > 1.0 {
+        if @_common.abs(v) + @_common.abs(vr) > 1.0 {
           edge_set_pixel(out, x, y, 255.0)
         }
       }
       if (v > 0.0 && vd < 0.0) || (v < 0.0 && vd > 0.0) {
-        if edge_abs(v) + edge_abs(vd) > 1.0 {
+        if @_common.abs(v) + @_common.abs(vd) > 1.0 {
           edge_set_pixel(out, x, y, 255.0)
         }
       }
@@ -634,7 +608,7 @@ pub fn edge_phase_congruency(img : EdgeImage) -> EdgeImage {
     for x in 0..<img.width {
       let a = edge_pixel(gx, x, y)
       let b = edge_pixel(gy, x, y)
-      let mag = edge_sqrt(a * a + b * b)
+      let mag = @_common.sqrt(a * a + b * b)
       let mut sum_even = 0.0
       let mut sum_odd = 0.0
       for dy in -1..=1 {
@@ -646,7 +620,7 @@ pub fn edge_phase_congruency(img : EdgeImage) -> EdgeImage {
           }
         }
       }
-      let energy = edge_sqrt(sum_even * sum_even + sum_odd * sum_odd)
+      let energy = @_common.sqrt(sum_even * sum_even + sum_odd * sum_odd)
       let pc = if energy > 0.0 { mag / energy } else { 0.0 }
       edge_set_pixel(out, x, y, pc * 255.0)
     }
@@ -663,9 +637,9 @@ pub fn edge_monogenic(img : EdgeImage) -> EdgeImage {
     for x in 0..<img.width {
       let a = edge_pixel(gx, x, y)
       let b = edge_pixel(gy, x, y)
-      let mag = edge_sqrt(a * a + b * b)
+      let mag = @_common.sqrt(a * a + b * b)
       let phase = edge_atan2(b, a)
-      let pc = mag * edge_abs(edge_cos(phase))
+      let pc = mag * @_common.abs(edge_cos(phase))
       edge_set_pixel(out, x, y, pc)
     }
   }
@@ -725,7 +699,7 @@ pub fn edge_quality(edges : EdgeImage, img : EdgeImage) -> Double {
       if edge_pixel(edges, x, y) > 0.0 {
         let gx = edge_pixel(img, x + 1, y) - edge_pixel(img, x - 1, y)
         let gy = edge_pixel(img, x, y + 1) - edge_pixel(img, x, y - 1)
-        let g = edge_sqrt(gx * gx + gy * gy)
+        let g = @_common.sqrt(gx * gx + gy * gy)
         sum = sum + g
         count = count + 1.0
       }

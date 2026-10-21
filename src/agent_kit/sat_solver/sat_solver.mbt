@@ -25,7 +25,7 @@ pub fn sat_solver_point_label(p : Sat_solverPoint) -> Int { p.label }
 pub fn sat_solver_point_dist(a : Sat_solverPoint, b : Sat_solverPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  sat_solver_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn sat_solver_point_add(a : Sat_solverPoint, b : Sat_solverPoint) -> Sat_solverPoint {
@@ -45,7 +45,7 @@ pub fn sat_solver_point_dot(a : Sat_solverPoint, b : Sat_solverPoint) -> Double 
 }
 
 pub fn sat_solver_point_norm(pt : Sat_solverPoint) -> Double {
-  sat_solver_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn sat_solver_point_to_string(pt : Sat_solverPoint) -> String {
@@ -102,7 +102,7 @@ pub fn sat_solver_series_var(s : Sat_solverSeries) -> Double {
   }
 }
 
-pub fn sat_solver_series_std(s : Sat_solverSeries) -> Double { sat_solver_sqrt(sat_solver_series_var(s)) }
+pub fn sat_solver_series_std(s : Sat_solverSeries) -> Double { @_common.sqrt(sat_solver_series_var(s)) }
 
 pub fn sat_solver_series_scale(s : Sat_solverSeries, f : Double) -> Sat_solverSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn sat_solver_matrix_trace(m : Sat_solverMatrix) -> Double {
 pub fn sat_solver_matrix_norm(m : Sat_solverMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  sat_solver_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn sat_solver_matrix_to_string(m : Sat_solverMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn sat_solver_vector_dot(a : Sat_solverVector, b : Sat_solverVector) -> Doub
   sum
 }
 
-pub fn sat_solver_vector_norm(v : Sat_solverVector) -> Double { sat_solver_sqrt(sat_solver_vector_dot(v, v)) }
+pub fn sat_solver_vector_norm(v : Sat_solverVector) -> Double { @_common.sqrt(sat_solver_vector_dot(v, v)) }
 
 pub fn sat_solver_vector_normalize(v : Sat_solverVector) -> Sat_solverVector {
   let n = sat_solver_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn sat_solver_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn sat_solver_std(data : Array[Double]) -> Double { sat_solver_sqrt(sat_solver_var(data)) }
+pub fn sat_solver_std(data : Array[Double]) -> Double { @_common.sqrt(sat_solver_var(data)) }
 
 pub fn sat_solver_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn sat_solver_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + sat_solver_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn sat_solver_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = sat_solver_precision(pred, labels, pos); let r = sat_solver_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn sat_solver_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn sat_solver_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn sat_solver_dbl(x : Double) -> String {
   let i = if x >= 0.0 { sat_solver_int(x) } else { -sat_solver_int(-x) }

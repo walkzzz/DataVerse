@@ -25,7 +25,7 @@ pub fn param_model_point_label(p : Param_modelPoint) -> Int { p.label }
 pub fn param_model_point_dist(a : Param_modelPoint, b : Param_modelPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  param_model_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn param_model_point_add(a : Param_modelPoint, b : Param_modelPoint) -> Param_modelPoint {
@@ -45,7 +45,7 @@ pub fn param_model_point_dot(a : Param_modelPoint, b : Param_modelPoint) -> Doub
 }
 
 pub fn param_model_point_norm(pt : Param_modelPoint) -> Double {
-  param_model_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn param_model_point_to_string(pt : Param_modelPoint) -> String {
@@ -102,7 +102,7 @@ pub fn param_model_series_var(s : Param_modelSeries) -> Double {
   }
 }
 
-pub fn param_model_series_std(s : Param_modelSeries) -> Double { param_model_sqrt(param_model_series_var(s)) }
+pub fn param_model_series_std(s : Param_modelSeries) -> Double { @_common.sqrt(param_model_series_var(s)) }
 
 pub fn param_model_series_scale(s : Param_modelSeries, f : Double) -> Param_modelSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn param_model_matrix_trace(m : Param_modelMatrix) -> Double {
 pub fn param_model_matrix_norm(m : Param_modelMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  param_model_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn param_model_matrix_to_string(m : Param_modelMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn param_model_vector_dot(a : Param_modelVector, b : Param_modelVector) -> D
   sum
 }
 
-pub fn param_model_vector_norm(v : Param_modelVector) -> Double { param_model_sqrt(param_model_vector_dot(v, v)) }
+pub fn param_model_vector_norm(v : Param_modelVector) -> Double { @_common.sqrt(param_model_vector_dot(v, v)) }
 
 pub fn param_model_vector_normalize(v : Param_modelVector) -> Param_modelVector {
   let n = param_model_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn param_model_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn param_model_std(data : Array[Double]) -> Double { param_model_sqrt(param_model_var(data)) }
+pub fn param_model_std(data : Array[Double]) -> Double { @_common.sqrt(param_model_var(data)) }
 
 pub fn param_model_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn param_model_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + param_model_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn param_model_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = param_model_precision(pred, labels, pos); let r = param_model_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn param_model_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn param_model_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn param_model_dbl(x : Double) -> String {
   let i = if x >= 0.0 { param_model_int(x) } else { -param_model_int(-x) }

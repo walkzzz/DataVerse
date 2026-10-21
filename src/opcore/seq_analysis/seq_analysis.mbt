@@ -25,7 +25,7 @@ pub fn seq_analysis_point_label(p : Seq_analysisPoint) -> Int { p.label }
 pub fn seq_analysis_point_dist(a : Seq_analysisPoint, b : Seq_analysisPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  seq_analysis_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn seq_analysis_point_add(a : Seq_analysisPoint, b : Seq_analysisPoint) -> Seq_analysisPoint {
@@ -45,7 +45,7 @@ pub fn seq_analysis_point_dot(a : Seq_analysisPoint, b : Seq_analysisPoint) -> D
 }
 
 pub fn seq_analysis_point_norm(pt : Seq_analysisPoint) -> Double {
-  seq_analysis_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn seq_analysis_point_to_string(pt : Seq_analysisPoint) -> String {
@@ -102,7 +102,7 @@ pub fn seq_analysis_series_var(s : Seq_analysisSeries) -> Double {
   }
 }
 
-pub fn seq_analysis_series_std(s : Seq_analysisSeries) -> Double { seq_analysis_sqrt(seq_analysis_series_var(s)) }
+pub fn seq_analysis_series_std(s : Seq_analysisSeries) -> Double { @_common.sqrt(seq_analysis_series_var(s)) }
 
 pub fn seq_analysis_series_scale(s : Seq_analysisSeries, f : Double) -> Seq_analysisSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn seq_analysis_matrix_trace(m : Seq_analysisMatrix) -> Double {
 pub fn seq_analysis_matrix_norm(m : Seq_analysisMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  seq_analysis_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn seq_analysis_matrix_to_string(m : Seq_analysisMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn seq_analysis_vector_dot(a : Seq_analysisVector, b : Seq_analysisVector) -
   sum
 }
 
-pub fn seq_analysis_vector_norm(v : Seq_analysisVector) -> Double { seq_analysis_sqrt(seq_analysis_vector_dot(v, v)) }
+pub fn seq_analysis_vector_norm(v : Seq_analysisVector) -> Double { @_common.sqrt(seq_analysis_vector_dot(v, v)) }
 
 pub fn seq_analysis_vector_normalize(v : Seq_analysisVector) -> Seq_analysisVector {
   let n = seq_analysis_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn seq_analysis_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn seq_analysis_std(data : Array[Double]) -> Double { seq_analysis_sqrt(seq_analysis_var(data)) }
+pub fn seq_analysis_std(data : Array[Double]) -> Double { @_common.sqrt(seq_analysis_var(data)) }
 
 pub fn seq_analysis_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn seq_analysis_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + seq_analysis_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn seq_analysis_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = seq_analysis_precision(pred, labels, pos); let r = seq_analysis_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn seq_analysis_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn seq_analysis_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn seq_analysis_dbl(x : Double) -> String {
   let i = if x >= 0.0 { seq_analysis_int(x) } else { -seq_analysis_int(-x) }

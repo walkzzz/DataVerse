@@ -25,7 +25,7 @@ pub fn wolf_pack_point_label(p : Wolf_packPoint) -> Int { p.label }
 pub fn wolf_pack_point_dist(a : Wolf_packPoint, b : Wolf_packPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  wolf_pack_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn wolf_pack_point_add(a : Wolf_packPoint, b : Wolf_packPoint) -> Wolf_packPoint {
@@ -45,7 +45,7 @@ pub fn wolf_pack_point_dot(a : Wolf_packPoint, b : Wolf_packPoint) -> Double {
 }
 
 pub fn wolf_pack_point_norm(pt : Wolf_packPoint) -> Double {
-  wolf_pack_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn wolf_pack_point_to_string(pt : Wolf_packPoint) -> String {
@@ -102,7 +102,7 @@ pub fn wolf_pack_series_var(s : Wolf_packSeries) -> Double {
   }
 }
 
-pub fn wolf_pack_series_std(s : Wolf_packSeries) -> Double { wolf_pack_sqrt(wolf_pack_series_var(s)) }
+pub fn wolf_pack_series_std(s : Wolf_packSeries) -> Double { @_common.sqrt(wolf_pack_series_var(s)) }
 
 pub fn wolf_pack_series_scale(s : Wolf_packSeries, f : Double) -> Wolf_packSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn wolf_pack_matrix_trace(m : Wolf_packMatrix) -> Double {
 pub fn wolf_pack_matrix_norm(m : Wolf_packMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  wolf_pack_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn wolf_pack_matrix_to_string(m : Wolf_packMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn wolf_pack_vector_dot(a : Wolf_packVector, b : Wolf_packVector) -> Double 
   sum
 }
 
-pub fn wolf_pack_vector_norm(v : Wolf_packVector) -> Double { wolf_pack_sqrt(wolf_pack_vector_dot(v, v)) }
+pub fn wolf_pack_vector_norm(v : Wolf_packVector) -> Double { @_common.sqrt(wolf_pack_vector_dot(v, v)) }
 
 pub fn wolf_pack_vector_normalize(v : Wolf_packVector) -> Wolf_packVector {
   let n = wolf_pack_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn wolf_pack_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn wolf_pack_std(data : Array[Double]) -> Double { wolf_pack_sqrt(wolf_pack_var(data)) }
+pub fn wolf_pack_std(data : Array[Double]) -> Double { @_common.sqrt(wolf_pack_var(data)) }
 
 pub fn wolf_pack_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn wolf_pack_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + wolf_pack_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn wolf_pack_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double
   let p_ = wolf_pack_precision(pred, labels, pos); let r = wolf_pack_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn wolf_pack_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn wolf_pack_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn wolf_pack_dbl(x : Double) -> String {
   let i = if x >= 0.0 { wolf_pack_int(x) } else { -wolf_pack_int(-x) }

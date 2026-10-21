@@ -1,2 +1,5 @@
 // opcore/tone_map opcore/tone_map
 // S13.51 new
+import {
+  "dataverse/extcore/_common",
+}

@@ -25,7 +25,7 @@ pub fn block_store_point_label(p : Block_storePoint) -> Int { p.label }
 pub fn block_store_point_dist(a : Block_storePoint, b : Block_storePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  block_store_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn block_store_point_add(a : Block_storePoint, b : Block_storePoint) -> Block_storePoint {
@@ -45,7 +45,7 @@ pub fn block_store_point_dot(a : Block_storePoint, b : Block_storePoint) -> Doub
 }
 
 pub fn block_store_point_norm(pt : Block_storePoint) -> Double {
-  block_store_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn block_store_point_to_string(pt : Block_storePoint) -> String {
@@ -102,7 +102,7 @@ pub fn block_store_series_var(s : Block_storeSeries) -> Double {
   }
 }
 
-pub fn block_store_series_std(s : Block_storeSeries) -> Double { block_store_sqrt(block_store_series_var(s)) }
+pub fn block_store_series_std(s : Block_storeSeries) -> Double { @_common.sqrt(block_store_series_var(s)) }
 
 pub fn block_store_series_scale(s : Block_storeSeries, f : Double) -> Block_storeSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn block_store_matrix_trace(m : Block_storeMatrix) -> Double {
 pub fn block_store_matrix_norm(m : Block_storeMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  block_store_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn block_store_matrix_to_string(m : Block_storeMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn block_store_vector_dot(a : Block_storeVector, b : Block_storeVector) -> D
   sum
 }
 
-pub fn block_store_vector_norm(v : Block_storeVector) -> Double { block_store_sqrt(block_store_vector_dot(v, v)) }
+pub fn block_store_vector_norm(v : Block_storeVector) -> Double { @_common.sqrt(block_store_vector_dot(v, v)) }
 
 pub fn block_store_vector_normalize(v : Block_storeVector) -> Block_storeVector {
   let n = block_store_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn block_store_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn block_store_std(data : Array[Double]) -> Double { block_store_sqrt(block_store_var(data)) }
+pub fn block_store_std(data : Array[Double]) -> Double { @_common.sqrt(block_store_var(data)) }
 
 pub fn block_store_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn block_store_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + block_store_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn block_store_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = block_store_precision(pred, labels, pos); let r = block_store_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn block_store_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn block_store_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn block_store_dbl(x : Double) -> String {
   let i = if x >= 0.0 { block_store_int(x) } else { -block_store_int(-x) }

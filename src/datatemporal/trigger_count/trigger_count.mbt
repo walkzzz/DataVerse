@@ -25,7 +25,7 @@ pub fn trigger_count_point_label(p : Trigger_countPoint) -> Int { p.label }
 pub fn trigger_count_point_dist(a : Trigger_countPoint, b : Trigger_countPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  trigger_count_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn trigger_count_point_add(a : Trigger_countPoint, b : Trigger_countPoint) -> Trigger_countPoint {
@@ -45,7 +45,7 @@ pub fn trigger_count_point_dot(a : Trigger_countPoint, b : Trigger_countPoint) -
 }
 
 pub fn trigger_count_point_norm(pt : Trigger_countPoint) -> Double {
-  trigger_count_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn trigger_count_point_to_string(pt : Trigger_countPoint) -> String {
@@ -102,7 +102,7 @@ pub fn trigger_count_series_var(s : Trigger_countSeries) -> Double {
   }
 }
 
-pub fn trigger_count_series_std(s : Trigger_countSeries) -> Double { trigger_count_sqrt(trigger_count_series_var(s)) }
+pub fn trigger_count_series_std(s : Trigger_countSeries) -> Double { @_common.sqrt(trigger_count_series_var(s)) }
 
 pub fn trigger_count_series_scale(s : Trigger_countSeries, f : Double) -> Trigger_countSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn trigger_count_matrix_trace(m : Trigger_countMatrix) -> Double {
 pub fn trigger_count_matrix_norm(m : Trigger_countMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  trigger_count_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn trigger_count_matrix_to_string(m : Trigger_countMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn trigger_count_vector_dot(a : Trigger_countVector, b : Trigger_countVector
   sum
 }
 
-pub fn trigger_count_vector_norm(v : Trigger_countVector) -> Double { trigger_count_sqrt(trigger_count_vector_dot(v, v)) }
+pub fn trigger_count_vector_norm(v : Trigger_countVector) -> Double { @_common.sqrt(trigger_count_vector_dot(v, v)) }
 
 pub fn trigger_count_vector_normalize(v : Trigger_countVector) -> Trigger_countVector {
   let n = trigger_count_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn trigger_count_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn trigger_count_std(data : Array[Double]) -> Double { trigger_count_sqrt(trigger_count_var(data)) }
+pub fn trigger_count_std(data : Array[Double]) -> Double { @_common.sqrt(trigger_count_var(data)) }
 
 pub fn trigger_count_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn trigger_count_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + trigger_count_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn trigger_count_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = trigger_count_precision(pred, labels, pos); let r = trigger_count_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn trigger_count_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn trigger_count_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn trigger_count_dbl(x : Double) -> String {
   let i = if x >= 0.0 { trigger_count_int(x) } else { -trigger_count_int(-x) }

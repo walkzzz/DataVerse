@@ -1,2 +1,5 @@
 // agent_kit/obstacle_avoid agent_kit/obstacle_avoid
 // S13.147 new
+import {
+  "dataverse/extcore/_common",
+}

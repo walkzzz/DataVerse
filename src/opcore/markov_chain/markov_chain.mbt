@@ -25,7 +25,7 @@ pub fn markov_chain_point_label(p : Markov_chainPoint) -> Int { p.label }
 pub fn markov_chain_point_dist(a : Markov_chainPoint, b : Markov_chainPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  markov_chain_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn markov_chain_point_add(a : Markov_chainPoint, b : Markov_chainPoint) -> Markov_chainPoint {
@@ -45,7 +45,7 @@ pub fn markov_chain_point_dot(a : Markov_chainPoint, b : Markov_chainPoint) -> D
 }
 
 pub fn markov_chain_point_norm(pt : Markov_chainPoint) -> Double {
-  markov_chain_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn markov_chain_point_to_string(pt : Markov_chainPoint) -> String {
@@ -102,7 +102,7 @@ pub fn markov_chain_series_var(s : Markov_chainSeries) -> Double {
   }
 }
 
-pub fn markov_chain_series_std(s : Markov_chainSeries) -> Double { markov_chain_sqrt(markov_chain_series_var(s)) }
+pub fn markov_chain_series_std(s : Markov_chainSeries) -> Double { @_common.sqrt(markov_chain_series_var(s)) }
 
 pub fn markov_chain_series_scale(s : Markov_chainSeries, f : Double) -> Markov_chainSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn markov_chain_matrix_trace(m : Markov_chainMatrix) -> Double {
 pub fn markov_chain_matrix_norm(m : Markov_chainMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  markov_chain_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn markov_chain_matrix_to_string(m : Markov_chainMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn markov_chain_vector_dot(a : Markov_chainVector, b : Markov_chainVector) -
   sum
 }
 
-pub fn markov_chain_vector_norm(v : Markov_chainVector) -> Double { markov_chain_sqrt(markov_chain_vector_dot(v, v)) }
+pub fn markov_chain_vector_norm(v : Markov_chainVector) -> Double { @_common.sqrt(markov_chain_vector_dot(v, v)) }
 
 pub fn markov_chain_vector_normalize(v : Markov_chainVector) -> Markov_chainVector {
   let n = markov_chain_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn markov_chain_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn markov_chain_std(data : Array[Double]) -> Double { markov_chain_sqrt(markov_chain_var(data)) }
+pub fn markov_chain_std(data : Array[Double]) -> Double { @_common.sqrt(markov_chain_var(data)) }
 
 pub fn markov_chain_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn markov_chain_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + markov_chain_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn markov_chain_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = markov_chain_precision(pred, labels, pos); let r = markov_chain_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn markov_chain_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn markov_chain_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn markov_chain_dbl(x : Double) -> String {
   let i = if x >= 0.0 { markov_chain_int(x) } else { -markov_chain_int(-x) }

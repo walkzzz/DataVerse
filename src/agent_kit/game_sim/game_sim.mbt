@@ -25,7 +25,7 @@ pub fn game_sim_point_label(p : Game_simPoint) -> Int { p.label }
 pub fn game_sim_point_dist(a : Game_simPoint, b : Game_simPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  game_sim_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn game_sim_point_add(a : Game_simPoint, b : Game_simPoint) -> Game_simPoint {
@@ -45,7 +45,7 @@ pub fn game_sim_point_dot(a : Game_simPoint, b : Game_simPoint) -> Double {
 }
 
 pub fn game_sim_point_norm(pt : Game_simPoint) -> Double {
-  game_sim_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn game_sim_point_to_string(pt : Game_simPoint) -> String {
@@ -102,7 +102,7 @@ pub fn game_sim_series_var(s : Game_simSeries) -> Double {
   }
 }
 
-pub fn game_sim_series_std(s : Game_simSeries) -> Double { game_sim_sqrt(game_sim_series_var(s)) }
+pub fn game_sim_series_std(s : Game_simSeries) -> Double { @_common.sqrt(game_sim_series_var(s)) }
 
 pub fn game_sim_series_scale(s : Game_simSeries, f : Double) -> Game_simSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn game_sim_matrix_trace(m : Game_simMatrix) -> Double {
 pub fn game_sim_matrix_norm(m : Game_simMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  game_sim_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn game_sim_matrix_to_string(m : Game_simMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn game_sim_vector_dot(a : Game_simVector, b : Game_simVector) -> Double {
   sum
 }
 
-pub fn game_sim_vector_norm(v : Game_simVector) -> Double { game_sim_sqrt(game_sim_vector_dot(v, v)) }
+pub fn game_sim_vector_norm(v : Game_simVector) -> Double { @_common.sqrt(game_sim_vector_dot(v, v)) }
 
 pub fn game_sim_vector_normalize(v : Game_simVector) -> Game_simVector {
   let n = game_sim_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn game_sim_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn game_sim_std(data : Array[Double]) -> Double { game_sim_sqrt(game_sim_var(data)) }
+pub fn game_sim_std(data : Array[Double]) -> Double { @_common.sqrt(game_sim_var(data)) }
 
 pub fn game_sim_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn game_sim_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + game_sim_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn game_sim_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double 
   let p_ = game_sim_precision(pred, labels, pos); let r = game_sim_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn game_sim_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn game_sim_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn game_sim_dbl(x : Double) -> String {
   let i = if x >= 0.0 { game_sim_int(x) } else { -game_sim_int(-x) }

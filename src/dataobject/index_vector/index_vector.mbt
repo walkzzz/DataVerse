@@ -25,7 +25,7 @@ pub fn index_vector_point_label(p : Index_vectorPoint) -> Int { p.label }
 pub fn index_vector_point_dist(a : Index_vectorPoint, b : Index_vectorPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  index_vector_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn index_vector_point_add(a : Index_vectorPoint, b : Index_vectorPoint) -> Index_vectorPoint {
@@ -45,7 +45,7 @@ pub fn index_vector_point_dot(a : Index_vectorPoint, b : Index_vectorPoint) -> D
 }
 
 pub fn index_vector_point_norm(pt : Index_vectorPoint) -> Double {
-  index_vector_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn index_vector_point_to_string(pt : Index_vectorPoint) -> String {
@@ -102,7 +102,7 @@ pub fn index_vector_series_var(s : Index_vectorSeries) -> Double {
   }
 }
 
-pub fn index_vector_series_std(s : Index_vectorSeries) -> Double { index_vector_sqrt(index_vector_series_var(s)) }
+pub fn index_vector_series_std(s : Index_vectorSeries) -> Double { @_common.sqrt(index_vector_series_var(s)) }
 
 pub fn index_vector_series_scale(s : Index_vectorSeries, f : Double) -> Index_vectorSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn index_vector_matrix_trace(m : Index_vectorMatrix) -> Double {
 pub fn index_vector_matrix_norm(m : Index_vectorMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  index_vector_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn index_vector_matrix_to_string(m : Index_vectorMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn index_vector_vector_dot(a : Index_vectorVector, b : Index_vectorVector) -
   sum
 }
 
-pub fn index_vector_vector_norm(v : Index_vectorVector) -> Double { index_vector_sqrt(index_vector_vector_dot(v, v)) }
+pub fn index_vector_vector_norm(v : Index_vectorVector) -> Double { @_common.sqrt(index_vector_vector_dot(v, v)) }
 
 pub fn index_vector_vector_normalize(v : Index_vectorVector) -> Index_vectorVector {
   let n = index_vector_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn index_vector_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn index_vector_std(data : Array[Double]) -> Double { index_vector_sqrt(index_vector_var(data)) }
+pub fn index_vector_std(data : Array[Double]) -> Double { @_common.sqrt(index_vector_var(data)) }
 
 pub fn index_vector_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn index_vector_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + index_vector_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn index_vector_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = index_vector_precision(pred, labels, pos); let r = index_vector_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn index_vector_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn index_vector_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn index_vector_dbl(x : Double) -> String {
   let i = if x >= 0.0 { index_vector_int(x) } else { -index_vector_int(-x) }

@@ -25,7 +25,7 @@ pub fn denoise_nl_point_label(p : Denoise_nlPoint) -> Int { p.label }
 pub fn denoise_nl_point_dist(a : Denoise_nlPoint, b : Denoise_nlPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  denoise_nl_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn denoise_nl_point_add(a : Denoise_nlPoint, b : Denoise_nlPoint) -> Denoise_nlPoint {
@@ -45,7 +45,7 @@ pub fn denoise_nl_point_dot(a : Denoise_nlPoint, b : Denoise_nlPoint) -> Double 
 }
 
 pub fn denoise_nl_point_norm(pt : Denoise_nlPoint) -> Double {
-  denoise_nl_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn denoise_nl_point_to_string(pt : Denoise_nlPoint) -> String {
@@ -102,7 +102,7 @@ pub fn denoise_nl_series_var(s : Denoise_nlSeries) -> Double {
   }
 }
 
-pub fn denoise_nl_series_std(s : Denoise_nlSeries) -> Double { denoise_nl_sqrt(denoise_nl_series_var(s)) }
+pub fn denoise_nl_series_std(s : Denoise_nlSeries) -> Double { @_common.sqrt(denoise_nl_series_var(s)) }
 
 pub fn denoise_nl_series_scale(s : Denoise_nlSeries, f : Double) -> Denoise_nlSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn denoise_nl_matrix_trace(m : Denoise_nlMatrix) -> Double {
 pub fn denoise_nl_matrix_norm(m : Denoise_nlMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  denoise_nl_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn denoise_nl_matrix_to_string(m : Denoise_nlMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn denoise_nl_vector_dot(a : Denoise_nlVector, b : Denoise_nlVector) -> Doub
   sum
 }
 
-pub fn denoise_nl_vector_norm(v : Denoise_nlVector) -> Double { denoise_nl_sqrt(denoise_nl_vector_dot(v, v)) }
+pub fn denoise_nl_vector_norm(v : Denoise_nlVector) -> Double { @_common.sqrt(denoise_nl_vector_dot(v, v)) }
 
 pub fn denoise_nl_vector_normalize(v : Denoise_nlVector) -> Denoise_nlVector {
   let n = denoise_nl_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn denoise_nl_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn denoise_nl_std(data : Array[Double]) -> Double { denoise_nl_sqrt(denoise_nl_var(data)) }
+pub fn denoise_nl_std(data : Array[Double]) -> Double { @_common.sqrt(denoise_nl_var(data)) }
 
 pub fn denoise_nl_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn denoise_nl_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + denoise_nl_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn denoise_nl_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = denoise_nl_precision(pred, labels, pos); let r = denoise_nl_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn denoise_nl_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn denoise_nl_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn denoise_nl_dbl(x : Double) -> String {
   let i = if x >= 0.0 { denoise_nl_int(x) } else { -denoise_nl_int(-x) }

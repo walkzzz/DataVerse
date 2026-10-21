@@ -1,2 +1,5 @@
 // dataobject/index_hash dataobject/index_hash
 // S13.184 new
+import {
+  "dataverse/extcore/_common",
+}

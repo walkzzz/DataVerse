@@ -25,7 +25,7 @@ pub fn trigger_early_point_label(p : Trigger_earlyPoint) -> Int { p.label }
 pub fn trigger_early_point_dist(a : Trigger_earlyPoint, b : Trigger_earlyPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  trigger_early_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn trigger_early_point_add(a : Trigger_earlyPoint, b : Trigger_earlyPoint) -> Trigger_earlyPoint {
@@ -45,7 +45,7 @@ pub fn trigger_early_point_dot(a : Trigger_earlyPoint, b : Trigger_earlyPoint) -
 }
 
 pub fn trigger_early_point_norm(pt : Trigger_earlyPoint) -> Double {
-  trigger_early_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn trigger_early_point_to_string(pt : Trigger_earlyPoint) -> String {
@@ -102,7 +102,7 @@ pub fn trigger_early_series_var(s : Trigger_earlySeries) -> Double {
   }
 }
 
-pub fn trigger_early_series_std(s : Trigger_earlySeries) -> Double { trigger_early_sqrt(trigger_early_series_var(s)) }
+pub fn trigger_early_series_std(s : Trigger_earlySeries) -> Double { @_common.sqrt(trigger_early_series_var(s)) }
 
 pub fn trigger_early_series_scale(s : Trigger_earlySeries, f : Double) -> Trigger_earlySeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn trigger_early_matrix_trace(m : Trigger_earlyMatrix) -> Double {
 pub fn trigger_early_matrix_norm(m : Trigger_earlyMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  trigger_early_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn trigger_early_matrix_to_string(m : Trigger_earlyMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn trigger_early_vector_dot(a : Trigger_earlyVector, b : Trigger_earlyVector
   sum
 }
 
-pub fn trigger_early_vector_norm(v : Trigger_earlyVector) -> Double { trigger_early_sqrt(trigger_early_vector_dot(v, v)) }
+pub fn trigger_early_vector_norm(v : Trigger_earlyVector) -> Double { @_common.sqrt(trigger_early_vector_dot(v, v)) }
 
 pub fn trigger_early_vector_normalize(v : Trigger_earlyVector) -> Trigger_earlyVector {
   let n = trigger_early_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn trigger_early_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn trigger_early_std(data : Array[Double]) -> Double { trigger_early_sqrt(trigger_early_var(data)) }
+pub fn trigger_early_std(data : Array[Double]) -> Double { @_common.sqrt(trigger_early_var(data)) }
 
 pub fn trigger_early_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn trigger_early_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + trigger_early_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn trigger_early_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = trigger_early_precision(pred, labels, pos); let r = trigger_early_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn trigger_early_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn trigger_early_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn trigger_early_dbl(x : Double) -> String {
   let i = if x >= 0.0 { trigger_early_int(x) } else { -trigger_early_int(-x) }

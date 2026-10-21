@@ -25,7 +25,7 @@ pub fn svdd_point_label(p : SvddPoint) -> Int { p.label }
 pub fn svdd_point_dist(a : SvddPoint, b : SvddPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  svdd_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn svdd_point_add(a : SvddPoint, b : SvddPoint) -> SvddPoint {
@@ -45,7 +45,7 @@ pub fn svdd_point_dot(a : SvddPoint, b : SvddPoint) -> Double {
 }
 
 pub fn svdd_point_norm(pt : SvddPoint) -> Double {
-  svdd_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn svdd_point_to_string(pt : SvddPoint) -> String {
@@ -102,7 +102,7 @@ pub fn svdd_series_var(s : SvddSeries) -> Double {
   }
 }
 
-pub fn svdd_series_std(s : SvddSeries) -> Double { svdd_sqrt(svdd_series_var(s)) }
+pub fn svdd_series_std(s : SvddSeries) -> Double { @_common.sqrt(svdd_series_var(s)) }
 
 pub fn svdd_series_scale(s : SvddSeries, f : Double) -> SvddSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn svdd_matrix_trace(m : SvddMatrix) -> Double {
 pub fn svdd_matrix_norm(m : SvddMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  svdd_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn svdd_matrix_to_string(m : SvddMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn svdd_vector_dot(a : SvddVector, b : SvddVector) -> Double {
   sum
 }
 
-pub fn svdd_vector_norm(v : SvddVector) -> Double { svdd_sqrt(svdd_vector_dot(v, v)) }
+pub fn svdd_vector_norm(v : SvddVector) -> Double { @_common.sqrt(svdd_vector_dot(v, v)) }
 
 pub fn svdd_vector_normalize(v : SvddVector) -> SvddVector {
   let n = svdd_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn svdd_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn svdd_std(data : Array[Double]) -> Double { svdd_sqrt(svdd_var(data)) }
+pub fn svdd_std(data : Array[Double]) -> Double { @_common.sqrt(svdd_var(data)) }
 
 pub fn svdd_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn svdd_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + svdd_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn svdd_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = svdd_precision(pred, labels, pos); let r = svdd_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn svdd_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn svdd_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn svdd_dbl(x : Double) -> String {
   let i = if x >= 0.0 { svdd_int(x) } else { -svdd_int(-x) }

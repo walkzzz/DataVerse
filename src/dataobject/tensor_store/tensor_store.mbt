@@ -25,7 +25,7 @@ pub fn tensor_store_point_label(p : Tensor_storePoint) -> Int { p.label }
 pub fn tensor_store_point_dist(a : Tensor_storePoint, b : Tensor_storePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  tensor_store_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn tensor_store_point_add(a : Tensor_storePoint, b : Tensor_storePoint) -> Tensor_storePoint {
@@ -45,7 +45,7 @@ pub fn tensor_store_point_dot(a : Tensor_storePoint, b : Tensor_storePoint) -> D
 }
 
 pub fn tensor_store_point_norm(pt : Tensor_storePoint) -> Double {
-  tensor_store_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn tensor_store_point_to_string(pt : Tensor_storePoint) -> String {
@@ -102,7 +102,7 @@ pub fn tensor_store_series_var(s : Tensor_storeSeries) -> Double {
   }
 }
 
-pub fn tensor_store_series_std(s : Tensor_storeSeries) -> Double { tensor_store_sqrt(tensor_store_series_var(s)) }
+pub fn tensor_store_series_std(s : Tensor_storeSeries) -> Double { @_common.sqrt(tensor_store_series_var(s)) }
 
 pub fn tensor_store_series_scale(s : Tensor_storeSeries, f : Double) -> Tensor_storeSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn tensor_store_matrix_trace(m : Tensor_storeMatrix) -> Double {
 pub fn tensor_store_matrix_norm(m : Tensor_storeMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  tensor_store_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn tensor_store_matrix_to_string(m : Tensor_storeMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn tensor_store_vector_dot(a : Tensor_storeVector, b : Tensor_storeVector) -
   sum
 }
 
-pub fn tensor_store_vector_norm(v : Tensor_storeVector) -> Double { tensor_store_sqrt(tensor_store_vector_dot(v, v)) }
+pub fn tensor_store_vector_norm(v : Tensor_storeVector) -> Double { @_common.sqrt(tensor_store_vector_dot(v, v)) }
 
 pub fn tensor_store_vector_normalize(v : Tensor_storeVector) -> Tensor_storeVector {
   let n = tensor_store_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn tensor_store_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn tensor_store_std(data : Array[Double]) -> Double { tensor_store_sqrt(tensor_store_var(data)) }
+pub fn tensor_store_std(data : Array[Double]) -> Double { @_common.sqrt(tensor_store_var(data)) }
 
 pub fn tensor_store_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn tensor_store_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + tensor_store_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn tensor_store_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = tensor_store_precision(pred, labels, pos); let r = tensor_store_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn tensor_store_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn tensor_store_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn tensor_store_dbl(x : Double) -> String {
   let i = if x >= 0.0 { tensor_store_int(x) } else { -tensor_store_int(-x) }

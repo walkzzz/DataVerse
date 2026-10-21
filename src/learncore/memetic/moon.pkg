@@ -1,2 +1,5 @@
 // learncore/memetic learncore/memetic
 // S13.82 new
+import {
+  "dataverse/extcore/_common",
+}

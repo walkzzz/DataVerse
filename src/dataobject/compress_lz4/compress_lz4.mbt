@@ -25,7 +25,7 @@ pub fn compress_lz4_point_label(p : Compress_lz4Point) -> Int { p.label }
 pub fn compress_lz4_point_dist(a : Compress_lz4Point, b : Compress_lz4Point) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  compress_lz4_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn compress_lz4_point_add(a : Compress_lz4Point, b : Compress_lz4Point) -> Compress_lz4Point {
@@ -45,7 +45,7 @@ pub fn compress_lz4_point_dot(a : Compress_lz4Point, b : Compress_lz4Point) -> D
 }
 
 pub fn compress_lz4_point_norm(pt : Compress_lz4Point) -> Double {
-  compress_lz4_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn compress_lz4_point_to_string(pt : Compress_lz4Point) -> String {
@@ -102,7 +102,7 @@ pub fn compress_lz4_series_var(s : Compress_lz4Series) -> Double {
   }
 }
 
-pub fn compress_lz4_series_std(s : Compress_lz4Series) -> Double { compress_lz4_sqrt(compress_lz4_series_var(s)) }
+pub fn compress_lz4_series_std(s : Compress_lz4Series) -> Double { @_common.sqrt(compress_lz4_series_var(s)) }
 
 pub fn compress_lz4_series_scale(s : Compress_lz4Series, f : Double) -> Compress_lz4Series {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn compress_lz4_matrix_trace(m : Compress_lz4Matrix) -> Double {
 pub fn compress_lz4_matrix_norm(m : Compress_lz4Matrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  compress_lz4_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn compress_lz4_matrix_to_string(m : Compress_lz4Matrix) -> String {
@@ -244,7 +244,7 @@ pub fn compress_lz4_vector_dot(a : Compress_lz4Vector, b : Compress_lz4Vector) -
   sum
 }
 
-pub fn compress_lz4_vector_norm(v : Compress_lz4Vector) -> Double { compress_lz4_sqrt(compress_lz4_vector_dot(v, v)) }
+pub fn compress_lz4_vector_norm(v : Compress_lz4Vector) -> Double { @_common.sqrt(compress_lz4_vector_dot(v, v)) }
 
 pub fn compress_lz4_vector_normalize(v : Compress_lz4Vector) -> Compress_lz4Vector {
   let n = compress_lz4_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn compress_lz4_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn compress_lz4_std(data : Array[Double]) -> Double { compress_lz4_sqrt(compress_lz4_var(data)) }
+pub fn compress_lz4_std(data : Array[Double]) -> Double { @_common.sqrt(compress_lz4_var(data)) }
 
 pub fn compress_lz4_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn compress_lz4_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + compress_lz4_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn compress_lz4_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = compress_lz4_precision(pred, labels, pos); let r = compress_lz4_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn compress_lz4_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn compress_lz4_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn compress_lz4_dbl(x : Double) -> String {
   let i = if x >= 0.0 { compress_lz4_int(x) } else { -compress_lz4_int(-x) }

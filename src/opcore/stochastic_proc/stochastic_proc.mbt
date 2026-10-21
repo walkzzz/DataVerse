@@ -25,7 +25,7 @@ pub fn stochastic_proc_point_label(p : Stochastic_procPoint) -> Int { p.label }
 pub fn stochastic_proc_point_dist(a : Stochastic_procPoint, b : Stochastic_procPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  stochastic_proc_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn stochastic_proc_point_add(a : Stochastic_procPoint, b : Stochastic_procPoint) -> Stochastic_procPoint {
@@ -45,7 +45,7 @@ pub fn stochastic_proc_point_dot(a : Stochastic_procPoint, b : Stochastic_procPo
 }
 
 pub fn stochastic_proc_point_norm(pt : Stochastic_procPoint) -> Double {
-  stochastic_proc_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn stochastic_proc_point_to_string(pt : Stochastic_procPoint) -> String {
@@ -102,7 +102,7 @@ pub fn stochastic_proc_series_var(s : Stochastic_procSeries) -> Double {
   }
 }
 
-pub fn stochastic_proc_series_std(s : Stochastic_procSeries) -> Double { stochastic_proc_sqrt(stochastic_proc_series_var(s)) }
+pub fn stochastic_proc_series_std(s : Stochastic_procSeries) -> Double { @_common.sqrt(stochastic_proc_series_var(s)) }
 
 pub fn stochastic_proc_series_scale(s : Stochastic_procSeries, f : Double) -> Stochastic_procSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn stochastic_proc_matrix_trace(m : Stochastic_procMatrix) -> Double {
 pub fn stochastic_proc_matrix_norm(m : Stochastic_procMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  stochastic_proc_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn stochastic_proc_matrix_to_string(m : Stochastic_procMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn stochastic_proc_vector_dot(a : Stochastic_procVector, b : Stochastic_proc
   sum
 }
 
-pub fn stochastic_proc_vector_norm(v : Stochastic_procVector) -> Double { stochastic_proc_sqrt(stochastic_proc_vector_dot(v, v)) }
+pub fn stochastic_proc_vector_norm(v : Stochastic_procVector) -> Double { @_common.sqrt(stochastic_proc_vector_dot(v, v)) }
 
 pub fn stochastic_proc_vector_normalize(v : Stochastic_procVector) -> Stochastic_procVector {
   let n = stochastic_proc_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn stochastic_proc_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn stochastic_proc_std(data : Array[Double]) -> Double { stochastic_proc_sqrt(stochastic_proc_var(data)) }
+pub fn stochastic_proc_std(data : Array[Double]) -> Double { @_common.sqrt(stochastic_proc_var(data)) }
 
 pub fn stochastic_proc_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn stochastic_proc_mae(pred : Array[Double], labels : Array[Double]) -> Doub
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + stochastic_proc_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn stochastic_proc_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> 
   let p_ = stochastic_proc_precision(pred, labels, pos); let r = stochastic_proc_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn stochastic_proc_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn stochastic_proc_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn stochastic_proc_dbl(x : Double) -> String {
   let i = if x >= 0.0 { stochastic_proc_int(x) } else { -stochastic_proc_int(-x) }

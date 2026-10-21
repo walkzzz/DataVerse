@@ -25,7 +25,7 @@ pub fn adaboost_point_label(p : AdaboostPoint) -> Int { p.label }
 pub fn adaboost_point_dist(a : AdaboostPoint, b : AdaboostPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  adaboost_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn adaboost_point_add(a : AdaboostPoint, b : AdaboostPoint) -> AdaboostPoint {
@@ -45,7 +45,7 @@ pub fn adaboost_point_dot(a : AdaboostPoint, b : AdaboostPoint) -> Double {
 }
 
 pub fn adaboost_point_norm(pt : AdaboostPoint) -> Double {
-  adaboost_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn adaboost_point_to_string(pt : AdaboostPoint) -> String {
@@ -102,7 +102,7 @@ pub fn adaboost_series_var(s : AdaboostSeries) -> Double {
   }
 }
 
-pub fn adaboost_series_std(s : AdaboostSeries) -> Double { adaboost_sqrt(adaboost_series_var(s)) }
+pub fn adaboost_series_std(s : AdaboostSeries) -> Double { @_common.sqrt(adaboost_series_var(s)) }
 
 pub fn adaboost_series_scale(s : AdaboostSeries, f : Double) -> AdaboostSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn adaboost_matrix_trace(m : AdaboostMatrix) -> Double {
 pub fn adaboost_matrix_norm(m : AdaboostMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  adaboost_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn adaboost_matrix_to_string(m : AdaboostMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn adaboost_vector_dot(a : AdaboostVector, b : AdaboostVector) -> Double {
   sum
 }
 
-pub fn adaboost_vector_norm(v : AdaboostVector) -> Double { adaboost_sqrt(adaboost_vector_dot(v, v)) }
+pub fn adaboost_vector_norm(v : AdaboostVector) -> Double { @_common.sqrt(adaboost_vector_dot(v, v)) }
 
 pub fn adaboost_vector_normalize(v : AdaboostVector) -> AdaboostVector {
   let n = adaboost_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn adaboost_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn adaboost_std(data : Array[Double]) -> Double { adaboost_sqrt(adaboost_var(data)) }
+pub fn adaboost_std(data : Array[Double]) -> Double { @_common.sqrt(adaboost_var(data)) }
 
 pub fn adaboost_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn adaboost_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + adaboost_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn adaboost_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double 
   let p_ = adaboost_precision(pred, labels, pos); let r = adaboost_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn adaboost_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn adaboost_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn adaboost_dbl(x : Double) -> String {
   let i = if x >= 0.0 { adaboost_int(x) } else { -adaboost_int(-x) }

@@ -1,2 +1,5 @@
 // dataobject/column_store dataobject/column_store
 // S13.178 new
+import {
+  "dataverse/extcore/_common",
+}

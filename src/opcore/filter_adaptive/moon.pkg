@@ -1,2 +1,5 @@
 // opcore/filter_adaptive opcore/filter_adaptive
 // S13.16 new
+import {
+  "dataverse/extcore/_common",
+}

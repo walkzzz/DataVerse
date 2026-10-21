@@ -25,7 +25,7 @@ pub fn orthogonal_poly_point_label(p : Orthogonal_polyPoint) -> Int { p.label }
 pub fn orthogonal_poly_point_dist(a : Orthogonal_polyPoint, b : Orthogonal_polyPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  orthogonal_poly_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn orthogonal_poly_point_add(a : Orthogonal_polyPoint, b : Orthogonal_polyPoint) -> Orthogonal_polyPoint {
@@ -45,7 +45,7 @@ pub fn orthogonal_poly_point_dot(a : Orthogonal_polyPoint, b : Orthogonal_polyPo
 }
 
 pub fn orthogonal_poly_point_norm(pt : Orthogonal_polyPoint) -> Double {
-  orthogonal_poly_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn orthogonal_poly_point_to_string(pt : Orthogonal_polyPoint) -> String {
@@ -102,7 +102,7 @@ pub fn orthogonal_poly_series_var(s : Orthogonal_polySeries) -> Double {
   }
 }
 
-pub fn orthogonal_poly_series_std(s : Orthogonal_polySeries) -> Double { orthogonal_poly_sqrt(orthogonal_poly_series_var(s)) }
+pub fn orthogonal_poly_series_std(s : Orthogonal_polySeries) -> Double { @_common.sqrt(orthogonal_poly_series_var(s)) }
 
 pub fn orthogonal_poly_series_scale(s : Orthogonal_polySeries, f : Double) -> Orthogonal_polySeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn orthogonal_poly_matrix_trace(m : Orthogonal_polyMatrix) -> Double {
 pub fn orthogonal_poly_matrix_norm(m : Orthogonal_polyMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  orthogonal_poly_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn orthogonal_poly_matrix_to_string(m : Orthogonal_polyMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn orthogonal_poly_vector_dot(a : Orthogonal_polyVector, b : Orthogonal_poly
   sum
 }
 
-pub fn orthogonal_poly_vector_norm(v : Orthogonal_polyVector) -> Double { orthogonal_poly_sqrt(orthogonal_poly_vector_dot(v, v)) }
+pub fn orthogonal_poly_vector_norm(v : Orthogonal_polyVector) -> Double { @_common.sqrt(orthogonal_poly_vector_dot(v, v)) }
 
 pub fn orthogonal_poly_vector_normalize(v : Orthogonal_polyVector) -> Orthogonal_polyVector {
   let n = orthogonal_poly_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn orthogonal_poly_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn orthogonal_poly_std(data : Array[Double]) -> Double { orthogonal_poly_sqrt(orthogonal_poly_var(data)) }
+pub fn orthogonal_poly_std(data : Array[Double]) -> Double { @_common.sqrt(orthogonal_poly_var(data)) }
 
 pub fn orthogonal_poly_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn orthogonal_poly_mae(pred : Array[Double], labels : Array[Double]) -> Doub
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + orthogonal_poly_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn orthogonal_poly_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> 
   let p_ = orthogonal_poly_precision(pred, labels, pos); let r = orthogonal_poly_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn orthogonal_poly_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn orthogonal_poly_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn orthogonal_poly_dbl(x : Double) -> String {
   let i = if x >= 0.0 { orthogonal_poly_int(x) } else { -orthogonal_poly_int(-x) }

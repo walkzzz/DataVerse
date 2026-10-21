@@ -25,7 +25,7 @@ pub fn throttle_point_label(p : ThrottlePoint) -> Int { p.label }
 pub fn throttle_point_dist(a : ThrottlePoint, b : ThrottlePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  throttle_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn throttle_point_add(a : ThrottlePoint, b : ThrottlePoint) -> ThrottlePoint {
@@ -45,7 +45,7 @@ pub fn throttle_point_dot(a : ThrottlePoint, b : ThrottlePoint) -> Double {
 }
 
 pub fn throttle_point_norm(pt : ThrottlePoint) -> Double {
-  throttle_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn throttle_point_to_string(pt : ThrottlePoint) -> String {
@@ -102,7 +102,7 @@ pub fn throttle_series_var(s : ThrottleSeries) -> Double {
   }
 }
 
-pub fn throttle_series_std(s : ThrottleSeries) -> Double { throttle_sqrt(throttle_series_var(s)) }
+pub fn throttle_series_std(s : ThrottleSeries) -> Double { @_common.sqrt(throttle_series_var(s)) }
 
 pub fn throttle_series_scale(s : ThrottleSeries, f : Double) -> ThrottleSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn throttle_matrix_trace(m : ThrottleMatrix) -> Double {
 pub fn throttle_matrix_norm(m : ThrottleMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  throttle_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn throttle_matrix_to_string(m : ThrottleMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn throttle_vector_dot(a : ThrottleVector, b : ThrottleVector) -> Double {
   sum
 }
 
-pub fn throttle_vector_norm(v : ThrottleVector) -> Double { throttle_sqrt(throttle_vector_dot(v, v)) }
+pub fn throttle_vector_norm(v : ThrottleVector) -> Double { @_common.sqrt(throttle_vector_dot(v, v)) }
 
 pub fn throttle_vector_normalize(v : ThrottleVector) -> ThrottleVector {
   let n = throttle_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn throttle_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn throttle_std(data : Array[Double]) -> Double { throttle_sqrt(throttle_var(data)) }
+pub fn throttle_std(data : Array[Double]) -> Double { @_common.sqrt(throttle_var(data)) }
 
 pub fn throttle_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn throttle_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + throttle_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn throttle_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double 
   let p_ = throttle_precision(pred, labels, pos); let r = throttle_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn throttle_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn throttle_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn throttle_dbl(x : Double) -> String {
   let i = if x >= 0.0 { throttle_int(x) } else { -throttle_int(-x) }

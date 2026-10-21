@@ -1,1 +1,4 @@
 // opcore/nlp_advanced
+import {
+  "dataverse/extcore/_common",
+}

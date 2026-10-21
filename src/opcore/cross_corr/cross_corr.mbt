@@ -25,7 +25,7 @@ pub fn cross_corr_point_label(p : Cross_corrPoint) -> Int { p.label }
 pub fn cross_corr_point_dist(a : Cross_corrPoint, b : Cross_corrPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  cross_corr_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn cross_corr_point_add(a : Cross_corrPoint, b : Cross_corrPoint) -> Cross_corrPoint {
@@ -45,7 +45,7 @@ pub fn cross_corr_point_dot(a : Cross_corrPoint, b : Cross_corrPoint) -> Double 
 }
 
 pub fn cross_corr_point_norm(pt : Cross_corrPoint) -> Double {
-  cross_corr_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn cross_corr_point_to_string(pt : Cross_corrPoint) -> String {
@@ -102,7 +102,7 @@ pub fn cross_corr_series_var(s : Cross_corrSeries) -> Double {
   }
 }
 
-pub fn cross_corr_series_std(s : Cross_corrSeries) -> Double { cross_corr_sqrt(cross_corr_series_var(s)) }
+pub fn cross_corr_series_std(s : Cross_corrSeries) -> Double { @_common.sqrt(cross_corr_series_var(s)) }
 
 pub fn cross_corr_series_scale(s : Cross_corrSeries, f : Double) -> Cross_corrSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn cross_corr_matrix_trace(m : Cross_corrMatrix) -> Double {
 pub fn cross_corr_matrix_norm(m : Cross_corrMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  cross_corr_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn cross_corr_matrix_to_string(m : Cross_corrMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn cross_corr_vector_dot(a : Cross_corrVector, b : Cross_corrVector) -> Doub
   sum
 }
 
-pub fn cross_corr_vector_norm(v : Cross_corrVector) -> Double { cross_corr_sqrt(cross_corr_vector_dot(v, v)) }
+pub fn cross_corr_vector_norm(v : Cross_corrVector) -> Double { @_common.sqrt(cross_corr_vector_dot(v, v)) }
 
 pub fn cross_corr_vector_normalize(v : Cross_corrVector) -> Cross_corrVector {
   let n = cross_corr_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn cross_corr_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn cross_corr_std(data : Array[Double]) -> Double { cross_corr_sqrt(cross_corr_var(data)) }
+pub fn cross_corr_std(data : Array[Double]) -> Double { @_common.sqrt(cross_corr_var(data)) }
 
 pub fn cross_corr_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn cross_corr_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + cross_corr_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn cross_corr_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = cross_corr_precision(pred, labels, pos); let r = cross_corr_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn cross_corr_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn cross_corr_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn cross_corr_dbl(x : Double) -> String {
   let i = if x >= 0.0 { cross_corr_int(x) } else { -cross_corr_int(-x) }

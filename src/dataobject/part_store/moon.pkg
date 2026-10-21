@@ -1,2 +1,5 @@
 // dataobject/part_store dataobject/part_store
 // S13.182 new
+import {
+  "dataverse/extcore/_common",
+}

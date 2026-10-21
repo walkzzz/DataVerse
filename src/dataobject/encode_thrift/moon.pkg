@@ -1,2 +1,5 @@
 // dataobject/encode_thrift dataobject/encode_thrift
 // S13.197 new
+import {
+  "dataverse/extcore/_common",
+}

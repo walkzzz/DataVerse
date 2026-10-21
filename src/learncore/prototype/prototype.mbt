@@ -25,7 +25,7 @@ pub fn prototype_point_label(p : PrototypePoint) -> Int { p.label }
 pub fn prototype_point_dist(a : PrototypePoint, b : PrototypePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  prototype_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn prototype_point_add(a : PrototypePoint, b : PrototypePoint) -> PrototypePoint {
@@ -45,7 +45,7 @@ pub fn prototype_point_dot(a : PrototypePoint, b : PrototypePoint) -> Double {
 }
 
 pub fn prototype_point_norm(pt : PrototypePoint) -> Double {
-  prototype_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn prototype_point_to_string(pt : PrototypePoint) -> String {
@@ -102,7 +102,7 @@ pub fn prototype_series_var(s : PrototypeSeries) -> Double {
   }
 }
 
-pub fn prototype_series_std(s : PrototypeSeries) -> Double { prototype_sqrt(prototype_series_var(s)) }
+pub fn prototype_series_std(s : PrototypeSeries) -> Double { @_common.sqrt(prototype_series_var(s)) }
 
 pub fn prototype_series_scale(s : PrototypeSeries, f : Double) -> PrototypeSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn prototype_matrix_trace(m : PrototypeMatrix) -> Double {
 pub fn prototype_matrix_norm(m : PrototypeMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  prototype_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn prototype_matrix_to_string(m : PrototypeMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn prototype_vector_dot(a : PrototypeVector, b : PrototypeVector) -> Double 
   sum
 }
 
-pub fn prototype_vector_norm(v : PrototypeVector) -> Double { prototype_sqrt(prototype_vector_dot(v, v)) }
+pub fn prototype_vector_norm(v : PrototypeVector) -> Double { @_common.sqrt(prototype_vector_dot(v, v)) }
 
 pub fn prototype_vector_normalize(v : PrototypeVector) -> PrototypeVector {
   let n = prototype_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn prototype_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn prototype_std(data : Array[Double]) -> Double { prototype_sqrt(prototype_var(data)) }
+pub fn prototype_std(data : Array[Double]) -> Double { @_common.sqrt(prototype_var(data)) }
 
 pub fn prototype_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn prototype_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + prototype_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn prototype_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double
   let p_ = prototype_precision(pred, labels, pos); let r = prototype_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn prototype_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn prototype_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn prototype_dbl(x : Double) -> String {
   let i = if x >= 0.0 { prototype_int(x) } else { -prototype_int(-x) }

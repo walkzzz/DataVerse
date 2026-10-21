@@ -48,22 +48,6 @@ fn sa_log(x : Double) -> Double {
   }
 }
 
-fn sa_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    0.0
-  } else {
-    let mut guess = x
-    for _ in 0..<40 {
-      guess = 0.5 * (guess + x / guess)
-    }
-    guess
-  }
-}
-
-fn sa_abs(x : Double) -> Double {
-  if x < 0.0 { -x } else { x }
-}
-
 fn sa_sigmoid(x : Double) -> Double {
   1.0 / (1.0 + sa_exp(-x))
 }
@@ -429,7 +413,7 @@ pub fn bias_score(detector : BiasDetector, predictions : Array[Double], groups :
   if min_mean > 1000000.0 {
     0.0
   } else {
-    sa_abs(max_mean - min_mean)
+    @_common.abs(max_mean - min_mean)
   }
 }
 
@@ -476,7 +460,7 @@ pub fn adversarial_score(
       state = ns
       perturbed.push(instance[j] + (r - 0.5) * 2.0 * detector.perturbation_size)
     }
-    let change = sa_abs(predict_fn(perturbed) - orig)
+    let change = @_common.abs(predict_fn(perturbed) - orig)
     if change > max_change {
       max_change = change
     }
@@ -742,7 +726,7 @@ pub fn eval_robustness(
       state = ns
       perturbed.push(instance[j] + (r - 0.5) * 2.0 * perturbation_size)
     }
-    let change = sa_abs(predict_fn(perturbed) - orig)
+    let change = @_common.abs(predict_fn(perturbed) - orig)
     if change > max_change {
       max_change = change
     }
@@ -790,7 +774,7 @@ pub fn evaluate_defense(
   for _ in 0..<10 {
     let attacked = simulate_attack(simulator, instance)
     let defended = defense_fn(attacked)
-    total_change = total_change + sa_abs(defended - orig)
+    total_change = total_change + @_common.abs(defended - orig)
   }
   1.0 / (1.0 + total_change / 10.0)
 }
@@ -835,13 +819,13 @@ pub fn detect_poisoning(
       let d = instances[i][j] - feature_means[j]
       s = s + d * d
     }
-    feature_stds.push(sa_sqrt(s / instances.length().to_double()))
+    feature_stds.push(@_common.sqrt(s / instances.length().to_double()))
   }
   for i in 0..<instances.length() {
     let mut max_z = 0.0
     for j in 0..<n {
       if feature_stds[j] > 0.000001 {
-        let z = sa_abs(instances[i][j] - feature_means[j]) / feature_stds[j]
+        let z = @_common.abs(instances[i][j] - feature_means[j]) / feature_stds[j]
         if z > max_z {
           max_z = z
         }
@@ -874,7 +858,7 @@ pub fn poisoning_robustness(
         is_suspicious = true
       }
     }
-    let err = sa_abs(predict_fn(instances[i]) - labels[i])
+    let err = @_common.abs(predict_fn(instances[i]) - labels[i])
     if is_suspicious {
       poisoned_err = poisoned_err + err
     } else {
@@ -885,7 +869,7 @@ pub fn poisoning_robustness(
   if clean_count == 0 {
     0.0
   } else {
-    1.0 / (1.0 + sa_abs(poisoned_err - clean_err / clean_count.to_double()))
+    1.0 / (1.0 + @_common.abs(poisoned_err - clean_err / clean_count.to_double()))
   }
 }
 
@@ -921,7 +905,7 @@ pub fn detect_stealing(detector : ModelStealing, new_queries : Array[Array[Doubl
         if all_queries[i].length() == all_queries[j].length() {
           let mut same = true
           for k in 0..<all_queries[i].length() {
-            if sa_abs(all_queries[i][k] - all_queries[j][k]) > 0.000001 {
+            if @_common.abs(all_queries[i][k] - all_queries[j][k]) > 0.000001 {
               same = false
             }
           }
@@ -974,11 +958,11 @@ pub fn dp_mechanism(mechanism : PrivacyPreserve, value : Double) -> Double {
   if scale < 0.000001 {
     value
   } else if u < 0.0 {
-    value + scale * sa_log(1.0 - 2.0 * sa_abs(u))
+    value + scale * sa_log(1.0 - 2.0 * @_common.abs(u))
   } else if r2 > 0.5 {
-    value + scale * sa_log(1.0 - 2.0 * sa_abs(u))
+    value + scale * sa_log(1.0 - 2.0 * @_common.abs(u))
   } else {
-    value - scale * sa_log(1.0 - 2.0 * sa_abs(u))
+    value - scale * sa_log(1.0 - 2.0 * @_common.abs(u))
   }
 }
 
@@ -1023,7 +1007,7 @@ pub fn demographic_parity(
   let p0 = if group0_cnt > 0 { group0_sum / group0_cnt.to_double() } else { 0.0 }
   let p1 = if group1_cnt > 0 { group1_sum / group1_cnt.to_double() } else { 0.0 }
   let _ = fairness
-  sa_abs(p0 - p1)
+  @_common.abs(p0 - p1)
 }
 
 /// 均等赔率 / Equalized odds.
@@ -1043,7 +1027,7 @@ pub fn equalized_odds(
   let mut g1_fpr_n = 0
   for i in 0..<predictions.length() {
     if groups[i] == 0 {
-      if sa_abs(labels[i] - 1.0) < 0.000001 {
+      if @_common.abs(labels[i] - 1.0) < 0.000001 {
         g0_tpr = g0_tpr + predictions[i]
         g0_tpr_n = g0_tpr_n + 1
       } else {
@@ -1051,7 +1035,7 @@ pub fn equalized_odds(
         g0_fpr_n = g0_fpr_n + 1
       }
     } else {
-      if sa_abs(labels[i] - 1.0) < 0.000001 {
+      if @_common.abs(labels[i] - 1.0) < 0.000001 {
         g1_tpr = g1_tpr + predictions[i]
         g1_tpr_n = g1_tpr_n + 1
       } else {
@@ -1065,7 +1049,7 @@ pub fn equalized_odds(
   let fpr0 = if g0_fpr_n > 0 { g0_fpr / g0_fpr_n.to_double() } else { 0.0 }
   let fpr1 = if g1_fpr_n > 0 { g1_fpr / g1_fpr_n.to_double() } else { 0.0 }
   let _ = fairness
-  sa_abs(tpr0 - tpr1) + sa_abs(fpr0 - fpr1)
+  @_common.abs(tpr0 - tpr1) + @_common.abs(fpr0 - fpr1)
 }
 
 /// 均等机会 / Equal opportunity.
@@ -1080,7 +1064,7 @@ pub fn equal_opportunity(
   let mut g1_tpr = 0.0
   let mut g1_tpr_n = 0
   for i in 0..<predictions.length() {
-    if sa_abs(labels[i] - 1.0) < 0.000001 {
+    if @_common.abs(labels[i] - 1.0) < 0.000001 {
       if groups[i] == 0 {
         g0_tpr = g0_tpr + predictions[i]
         g0_tpr_n = g0_tpr_n + 1
@@ -1093,7 +1077,7 @@ pub fn equal_opportunity(
   let tpr0 = if g0_tpr_n > 0 { g0_tpr / g0_tpr_n.to_double() } else { 0.0 }
   let tpr1 = if g1_tpr_n > 0 { g1_tpr / g1_tpr_n.to_double() } else { 0.0 }
   let _ = fairness
-  sa_abs(tpr0 - tpr1)
+  @_common.abs(tpr0 - tpr1)
 }
 
 ///===

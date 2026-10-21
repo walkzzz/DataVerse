@@ -1,2 +1,5 @@
 // agent_kit/mobile_agent agent_kit/mobile_agent
 // S13.127 new
+import {
+  "dataverse/extcore/_common",
+}

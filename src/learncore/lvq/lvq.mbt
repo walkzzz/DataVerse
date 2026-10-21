@@ -25,7 +25,7 @@ pub fn lvq_point_label(p : LvqPoint) -> Int { p.label }
 pub fn lvq_point_dist(a : LvqPoint, b : LvqPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  lvq_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn lvq_point_add(a : LvqPoint, b : LvqPoint) -> LvqPoint {
@@ -45,7 +45,7 @@ pub fn lvq_point_dot(a : LvqPoint, b : LvqPoint) -> Double {
 }
 
 pub fn lvq_point_norm(pt : LvqPoint) -> Double {
-  lvq_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn lvq_point_to_string(pt : LvqPoint) -> String {
@@ -102,7 +102,7 @@ pub fn lvq_series_var(s : LvqSeries) -> Double {
   }
 }
 
-pub fn lvq_series_std(s : LvqSeries) -> Double { lvq_sqrt(lvq_series_var(s)) }
+pub fn lvq_series_std(s : LvqSeries) -> Double { @_common.sqrt(lvq_series_var(s)) }
 
 pub fn lvq_series_scale(s : LvqSeries, f : Double) -> LvqSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn lvq_matrix_trace(m : LvqMatrix) -> Double {
 pub fn lvq_matrix_norm(m : LvqMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  lvq_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn lvq_matrix_to_string(m : LvqMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn lvq_vector_dot(a : LvqVector, b : LvqVector) -> Double {
   sum
 }
 
-pub fn lvq_vector_norm(v : LvqVector) -> Double { lvq_sqrt(lvq_vector_dot(v, v)) }
+pub fn lvq_vector_norm(v : LvqVector) -> Double { @_common.sqrt(lvq_vector_dot(v, v)) }
 
 pub fn lvq_vector_normalize(v : LvqVector) -> LvqVector {
   let n = lvq_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn lvq_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn lvq_std(data : Array[Double]) -> Double { lvq_sqrt(lvq_var(data)) }
+pub fn lvq_std(data : Array[Double]) -> Double { @_common.sqrt(lvq_var(data)) }
 
 pub fn lvq_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn lvq_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + lvq_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn lvq_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = lvq_precision(pred, labels, pos); let r = lvq_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn lvq_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn lvq_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn lvq_dbl(x : Double) -> String {
   let i = if x >= 0.0 { lvq_int(x) } else { -lvq_int(-x) }

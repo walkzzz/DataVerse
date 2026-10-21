@@ -11,28 +11,6 @@
 
 const TSA_LARGE : Double = 999999999999999.0
 
-fn tsa_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    return 0.0
-  }
-  let mut guess = x / 2.0
-  if guess == 0.0 {
-    guess = 1.0
-  }
-  for _ in 0..<60 {
-    guess = (guess + x / guess) / 2.0
-  }
-  guess
-}
-
-fn tsa_abs(x : Double) -> Double {
-  if x < 0.0 {
-    -x
-  } else {
-    x
-  }
-}
-
 fn tsa_exp(x : Double) -> Double {
   if x > 700.0 {
     return TSA_LARGE
@@ -55,7 +33,7 @@ fn tsa_exp(x : Double) -> Double {
   for i in 1..<40 {
     term = term * y / i.to_double()
     result = result + term
-    if tsa_abs(term) < 0.0000000000000001 {
+    if @_common.abs(term) < 0.0000000000000001 {
       break
     }
   }
@@ -377,7 +355,7 @@ pub fn ts_pp_test(values : Array[Double]) -> Double {
   if gamma0 == 0.0 {
     return 0.0
   }
-  adf * tsa_sqrt(gamma0)
+  adf * @_common.sqrt(gamma0)
 }
 
 ///===
@@ -435,7 +413,7 @@ pub fn ts_cointegration(
   for i in 0..<n {
     residual.push(y[i] - beta * x[i])
   }
-  tsa_abs(ts_adf_test(residual))
+  @_common.abs(ts_adf_test(residual))
 }
 
 ///===
@@ -580,7 +558,7 @@ pub fn ts_garch_model(
   let result : Array[Double] = []
   for _ in 0..<horizon {
     var_prev = omega + alpha * var_prev + beta * var_prev
-    result.push(tsa_sqrt(var_prev))
+    result.push(@_common.sqrt(var_prev))
   }
   result
 }
@@ -611,7 +589,7 @@ pub fn ts_volatility(
     for j in start..=i {
       segment.push(values[j])
     }
-    result.push(tsa_sqrt(tsa_variance(segment)))
+    result.push(@_common.sqrt(tsa_variance(segment)))
   }
   result
 }
@@ -804,7 +782,7 @@ pub fn ts_mcmc_sampling(
     return []
   }
   let m = tsa_mean(target)
-  let std = tsa_sqrt(tsa_variance(target))
+  let std = @_common.sqrt(tsa_variance(target))
   if std == 0.0 {
     return Array::make(n_samples, m)
   }
@@ -812,8 +790,8 @@ pub fn ts_mcmc_sampling(
   let mut current = m
   for i in 0..<n_samples {
     let proposal = current + (i.to_double() - n_samples.to_double() / 2.0) * step_size / n_samples.to_double()
-    let cur_lik = tsa_abs(current - m) / std
-    let prop_lik = tsa_abs(proposal - m) / std
+    let cur_lik = @_common.abs(current - m) / std
+    let prop_lik = @_common.abs(proposal - m) / std
     if prop_lik <= cur_lik {
       current = proposal
     }
@@ -837,8 +815,8 @@ pub fn ts_wavelet_decompose(
   let detail : Array[Double] = []
   let mut i = 0
   while i + 1 < n {
-    approx.push((values[i] + values[i + 1]) / tsa_sqrt(2.0))
-    detail.push((values[i] - values[i + 1]) / tsa_sqrt(2.0))
+    approx.push((values[i] + values[i + 1]) / @_common.sqrt(2.0))
+    detail.push((values[i] - values[i + 1]) / @_common.sqrt(2.0))
     i = i + 2
   }
   (approx, detail)
@@ -852,8 +830,8 @@ pub fn ts_wavelet_reconstruct(
   let n = if approx.length() < detail.length() { approx.length() } else { detail.length() }
   let result : Array[Double] = []
   for i in 0..<n {
-    result.push((approx[i] + detail[i]) / tsa_sqrt(2.0))
-    result.push((approx[i] - detail[i]) / tsa_sqrt(2.0))
+    result.push((approx[i] + detail[i]) / @_common.sqrt(2.0))
+    result.push((approx[i] - detail[i]) / @_common.sqrt(2.0))
   }
   result
 }
@@ -930,7 +908,7 @@ pub fn ts_change_point(
     for j in i..<n {
       right.push(values[j])
     }
-    let diff = tsa_abs(tsa_mean(left) - tsa_mean(right))
+    let diff = @_common.abs(tsa_mean(left) - tsa_mean(right))
     if diff > threshold {
       result.push(i)
     }
@@ -984,7 +962,7 @@ pub fn ts_regime_detect(
       segment.push(values[j])
     }
     let v = tsa_variance(segment)
-    if i > 0 && tsa_abs(v - prev_var) > prev_var * 0.5 {
+    if i > 0 && @_common.abs(v - prev_var) > prev_var * 0.5 {
       result.push(i)
     }
     prev_var = v
@@ -1015,9 +993,9 @@ pub fn ts_anomaly_score(
       }
     }
     let m = tsa_mean(segment)
-    let std = tsa_sqrt(tsa_variance(segment))
+    let std = @_common.sqrt(tsa_variance(segment))
     if std > 0.0 {
-      result.push(tsa_abs(values[i] - m) / std)
+      result.push(@_common.abs(values[i] - m) / std)
     } else {
       result.push(0.0)
     }
@@ -1114,7 +1092,7 @@ pub fn ts_backtest_rolling(
       let actual = values[start + train_size + h]
       err = err + (actual - preds[h]) * (actual - preds[h])
     }
-    result.push(tsa_sqrt(err / horizon.to_double()))
+    result.push(@_common.sqrt(err / horizon.to_double()))
     start = start + horizon
   }
   result
@@ -1144,7 +1122,7 @@ pub fn ts_backtest_expanding(
       let actual = values[train_size + h]
       err = err + (actual - preds[h]) * (actual - preds[h])
     }
-    result.push(tsa_sqrt(err / horizon.to_double()))
+    result.push(@_common.sqrt(err / horizon.to_double()))
     train_size = train_size + horizon
   }
   result
@@ -1177,7 +1155,7 @@ pub fn ts_cross_validate_ts(
     let preds = forecast_fn(train, 1)
     if preds.length() > 0 {
       let actual = values[train_size]
-      result.push(tsa_abs(actual - preds[0]))
+      result.push(@_common.abs(actual - preds[0]))
     }
   }
   result
@@ -1225,7 +1203,7 @@ pub fn ts_feature_extract(values : Array[Double]) -> Array[Double] {
       max_val = values[i]
     }
   }
-  [m, tsa_sqrt(v), min_val, max_val, max_val - min_val]
+  [m, @_common.sqrt(v), min_val, max_val, max_val - min_val]
 }
 
 /// 特征矩阵 / Build feature matrix.
@@ -1259,7 +1237,7 @@ pub fn ts_similarity(
     nx = nx + x[i] * x[i]
     ny = ny + y[i] * y[i]
   }
-  let denom = tsa_sqrt(nx) * tsa_sqrt(ny)
+  let denom = @_common.sqrt(nx) * @_common.sqrt(ny)
   if denom == 0.0 {
     return 0.0
   }
@@ -1291,7 +1269,7 @@ pub fn ts_distance_dtw(
       dp[i][j] = cost + min_v
     }
   }
-  tsa_sqrt(dp[n][m])
+  @_common.sqrt(dp[n][m])
 }
 
 /// 欧氏距离 / Euclidean distance.
@@ -1305,7 +1283,7 @@ pub fn ts_distance_euclidean(
     let d = x[i] - y[i]
     sum = sum + d * d
   }
-  tsa_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 ///===

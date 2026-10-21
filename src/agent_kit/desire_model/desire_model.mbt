@@ -25,7 +25,7 @@ pub fn desire_model_point_label(p : Desire_modelPoint) -> Int { p.label }
 pub fn desire_model_point_dist(a : Desire_modelPoint, b : Desire_modelPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  desire_model_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn desire_model_point_add(a : Desire_modelPoint, b : Desire_modelPoint) -> Desire_modelPoint {
@@ -45,7 +45,7 @@ pub fn desire_model_point_dot(a : Desire_modelPoint, b : Desire_modelPoint) -> D
 }
 
 pub fn desire_model_point_norm(pt : Desire_modelPoint) -> Double {
-  desire_model_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn desire_model_point_to_string(pt : Desire_modelPoint) -> String {
@@ -102,7 +102,7 @@ pub fn desire_model_series_var(s : Desire_modelSeries) -> Double {
   }
 }
 
-pub fn desire_model_series_std(s : Desire_modelSeries) -> Double { desire_model_sqrt(desire_model_series_var(s)) }
+pub fn desire_model_series_std(s : Desire_modelSeries) -> Double { @_common.sqrt(desire_model_series_var(s)) }
 
 pub fn desire_model_series_scale(s : Desire_modelSeries, f : Double) -> Desire_modelSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn desire_model_matrix_trace(m : Desire_modelMatrix) -> Double {
 pub fn desire_model_matrix_norm(m : Desire_modelMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  desire_model_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn desire_model_matrix_to_string(m : Desire_modelMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn desire_model_vector_dot(a : Desire_modelVector, b : Desire_modelVector) -
   sum
 }
 
-pub fn desire_model_vector_norm(v : Desire_modelVector) -> Double { desire_model_sqrt(desire_model_vector_dot(v, v)) }
+pub fn desire_model_vector_norm(v : Desire_modelVector) -> Double { @_common.sqrt(desire_model_vector_dot(v, v)) }
 
 pub fn desire_model_vector_normalize(v : Desire_modelVector) -> Desire_modelVector {
   let n = desire_model_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn desire_model_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn desire_model_std(data : Array[Double]) -> Double { desire_model_sqrt(desire_model_var(data)) }
+pub fn desire_model_std(data : Array[Double]) -> Double { @_common.sqrt(desire_model_var(data)) }
 
 pub fn desire_model_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn desire_model_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + desire_model_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn desire_model_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = desire_model_precision(pred, labels, pos); let r = desire_model_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn desire_model_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn desire_model_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn desire_model_dbl(x : Double) -> String {
   let i = if x >= 0.0 { desire_model_int(x) } else { -desire_model_int(-x) }

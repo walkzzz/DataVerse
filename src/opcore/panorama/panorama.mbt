@@ -25,7 +25,7 @@ pub fn panorama_point_label(p : PanoramaPoint) -> Int { p.label }
 pub fn panorama_point_dist(a : PanoramaPoint, b : PanoramaPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  panorama_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn panorama_point_add(a : PanoramaPoint, b : PanoramaPoint) -> PanoramaPoint {
@@ -45,7 +45,7 @@ pub fn panorama_point_dot(a : PanoramaPoint, b : PanoramaPoint) -> Double {
 }
 
 pub fn panorama_point_norm(pt : PanoramaPoint) -> Double {
-  panorama_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn panorama_point_to_string(pt : PanoramaPoint) -> String {
@@ -102,7 +102,7 @@ pub fn panorama_series_var(s : PanoramaSeries) -> Double {
   }
 }
 
-pub fn panorama_series_std(s : PanoramaSeries) -> Double { panorama_sqrt(panorama_series_var(s)) }
+pub fn panorama_series_std(s : PanoramaSeries) -> Double { @_common.sqrt(panorama_series_var(s)) }
 
 pub fn panorama_series_scale(s : PanoramaSeries, f : Double) -> PanoramaSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn panorama_matrix_trace(m : PanoramaMatrix) -> Double {
 pub fn panorama_matrix_norm(m : PanoramaMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  panorama_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn panorama_matrix_to_string(m : PanoramaMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn panorama_vector_dot(a : PanoramaVector, b : PanoramaVector) -> Double {
   sum
 }
 
-pub fn panorama_vector_norm(v : PanoramaVector) -> Double { panorama_sqrt(panorama_vector_dot(v, v)) }
+pub fn panorama_vector_norm(v : PanoramaVector) -> Double { @_common.sqrt(panorama_vector_dot(v, v)) }
 
 pub fn panorama_vector_normalize(v : PanoramaVector) -> PanoramaVector {
   let n = panorama_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn panorama_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn panorama_std(data : Array[Double]) -> Double { panorama_sqrt(panorama_var(data)) }
+pub fn panorama_std(data : Array[Double]) -> Double { @_common.sqrt(panorama_var(data)) }
 
 pub fn panorama_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn panorama_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + panorama_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn panorama_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double 
   let p_ = panorama_precision(pred, labels, pos); let r = panorama_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn panorama_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn panorama_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn panorama_dbl(x : Double) -> String {
   let i = if x >= 0.0 { panorama_int(x) } else { -panorama_int(-x) }

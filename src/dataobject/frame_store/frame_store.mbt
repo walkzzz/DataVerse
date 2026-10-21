@@ -25,7 +25,7 @@ pub fn frame_store_point_label(p : Frame_storePoint) -> Int { p.label }
 pub fn frame_store_point_dist(a : Frame_storePoint, b : Frame_storePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  frame_store_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn frame_store_point_add(a : Frame_storePoint, b : Frame_storePoint) -> Frame_storePoint {
@@ -45,7 +45,7 @@ pub fn frame_store_point_dot(a : Frame_storePoint, b : Frame_storePoint) -> Doub
 }
 
 pub fn frame_store_point_norm(pt : Frame_storePoint) -> Double {
-  frame_store_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn frame_store_point_to_string(pt : Frame_storePoint) -> String {
@@ -102,7 +102,7 @@ pub fn frame_store_series_var(s : Frame_storeSeries) -> Double {
   }
 }
 
-pub fn frame_store_series_std(s : Frame_storeSeries) -> Double { frame_store_sqrt(frame_store_series_var(s)) }
+pub fn frame_store_series_std(s : Frame_storeSeries) -> Double { @_common.sqrt(frame_store_series_var(s)) }
 
 pub fn frame_store_series_scale(s : Frame_storeSeries, f : Double) -> Frame_storeSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn frame_store_matrix_trace(m : Frame_storeMatrix) -> Double {
 pub fn frame_store_matrix_norm(m : Frame_storeMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  frame_store_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn frame_store_matrix_to_string(m : Frame_storeMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn frame_store_vector_dot(a : Frame_storeVector, b : Frame_storeVector) -> D
   sum
 }
 
-pub fn frame_store_vector_norm(v : Frame_storeVector) -> Double { frame_store_sqrt(frame_store_vector_dot(v, v)) }
+pub fn frame_store_vector_norm(v : Frame_storeVector) -> Double { @_common.sqrt(frame_store_vector_dot(v, v)) }
 
 pub fn frame_store_vector_normalize(v : Frame_storeVector) -> Frame_storeVector {
   let n = frame_store_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn frame_store_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn frame_store_std(data : Array[Double]) -> Double { frame_store_sqrt(frame_store_var(data)) }
+pub fn frame_store_std(data : Array[Double]) -> Double { @_common.sqrt(frame_store_var(data)) }
 
 pub fn frame_store_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn frame_store_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + frame_store_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn frame_store_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = frame_store_precision(pred, labels, pos); let r = frame_store_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn frame_store_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn frame_store_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn frame_store_dbl(x : Double) -> String {
   let i = if x >= 0.0 { frame_store_int(x) } else { -frame_store_int(-x) }

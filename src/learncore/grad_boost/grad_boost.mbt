@@ -25,7 +25,7 @@ pub fn grad_boost_point_label(p : Grad_boostPoint) -> Int { p.label }
 pub fn grad_boost_point_dist(a : Grad_boostPoint, b : Grad_boostPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  grad_boost_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn grad_boost_point_add(a : Grad_boostPoint, b : Grad_boostPoint) -> Grad_boostPoint {
@@ -45,7 +45,7 @@ pub fn grad_boost_point_dot(a : Grad_boostPoint, b : Grad_boostPoint) -> Double 
 }
 
 pub fn grad_boost_point_norm(pt : Grad_boostPoint) -> Double {
-  grad_boost_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn grad_boost_point_to_string(pt : Grad_boostPoint) -> String {
@@ -102,7 +102,7 @@ pub fn grad_boost_series_var(s : Grad_boostSeries) -> Double {
   }
 }
 
-pub fn grad_boost_series_std(s : Grad_boostSeries) -> Double { grad_boost_sqrt(grad_boost_series_var(s)) }
+pub fn grad_boost_series_std(s : Grad_boostSeries) -> Double { @_common.sqrt(grad_boost_series_var(s)) }
 
 pub fn grad_boost_series_scale(s : Grad_boostSeries, f : Double) -> Grad_boostSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn grad_boost_matrix_trace(m : Grad_boostMatrix) -> Double {
 pub fn grad_boost_matrix_norm(m : Grad_boostMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  grad_boost_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn grad_boost_matrix_to_string(m : Grad_boostMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn grad_boost_vector_dot(a : Grad_boostVector, b : Grad_boostVector) -> Doub
   sum
 }
 
-pub fn grad_boost_vector_norm(v : Grad_boostVector) -> Double { grad_boost_sqrt(grad_boost_vector_dot(v, v)) }
+pub fn grad_boost_vector_norm(v : Grad_boostVector) -> Double { @_common.sqrt(grad_boost_vector_dot(v, v)) }
 
 pub fn grad_boost_vector_normalize(v : Grad_boostVector) -> Grad_boostVector {
   let n = grad_boost_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn grad_boost_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn grad_boost_std(data : Array[Double]) -> Double { grad_boost_sqrt(grad_boost_var(data)) }
+pub fn grad_boost_std(data : Array[Double]) -> Double { @_common.sqrt(grad_boost_var(data)) }
 
 pub fn grad_boost_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn grad_boost_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + grad_boost_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn grad_boost_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = grad_boost_precision(pred, labels, pos); let r = grad_boost_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn grad_boost_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn grad_boost_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn grad_boost_dbl(x : Double) -> String {
   let i = if x >= 0.0 { grad_boost_int(x) } else { -grad_boost_int(-x) }

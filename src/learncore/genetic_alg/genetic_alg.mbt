@@ -25,7 +25,7 @@ pub fn genetic_alg_point_label(p : Genetic_algPoint) -> Int { p.label }
 pub fn genetic_alg_point_dist(a : Genetic_algPoint, b : Genetic_algPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  genetic_alg_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn genetic_alg_point_add(a : Genetic_algPoint, b : Genetic_algPoint) -> Genetic_algPoint {
@@ -45,7 +45,7 @@ pub fn genetic_alg_point_dot(a : Genetic_algPoint, b : Genetic_algPoint) -> Doub
 }
 
 pub fn genetic_alg_point_norm(pt : Genetic_algPoint) -> Double {
-  genetic_alg_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn genetic_alg_point_to_string(pt : Genetic_algPoint) -> String {
@@ -102,7 +102,7 @@ pub fn genetic_alg_series_var(s : Genetic_algSeries) -> Double {
   }
 }
 
-pub fn genetic_alg_series_std(s : Genetic_algSeries) -> Double { genetic_alg_sqrt(genetic_alg_series_var(s)) }
+pub fn genetic_alg_series_std(s : Genetic_algSeries) -> Double { @_common.sqrt(genetic_alg_series_var(s)) }
 
 pub fn genetic_alg_series_scale(s : Genetic_algSeries, f : Double) -> Genetic_algSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn genetic_alg_matrix_trace(m : Genetic_algMatrix) -> Double {
 pub fn genetic_alg_matrix_norm(m : Genetic_algMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  genetic_alg_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn genetic_alg_matrix_to_string(m : Genetic_algMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn genetic_alg_vector_dot(a : Genetic_algVector, b : Genetic_algVector) -> D
   sum
 }
 
-pub fn genetic_alg_vector_norm(v : Genetic_algVector) -> Double { genetic_alg_sqrt(genetic_alg_vector_dot(v, v)) }
+pub fn genetic_alg_vector_norm(v : Genetic_algVector) -> Double { @_common.sqrt(genetic_alg_vector_dot(v, v)) }
 
 pub fn genetic_alg_vector_normalize(v : Genetic_algVector) -> Genetic_algVector {
   let n = genetic_alg_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn genetic_alg_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn genetic_alg_std(data : Array[Double]) -> Double { genetic_alg_sqrt(genetic_alg_var(data)) }
+pub fn genetic_alg_std(data : Array[Double]) -> Double { @_common.sqrt(genetic_alg_var(data)) }
 
 pub fn genetic_alg_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn genetic_alg_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + genetic_alg_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn genetic_alg_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = genetic_alg_precision(pred, labels, pos); let r = genetic_alg_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn genetic_alg_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn genetic_alg_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn genetic_alg_dbl(x : Double) -> String {
   let i = if x >= 0.0 { genetic_alg_int(x) } else { -genetic_alg_int(-x) }

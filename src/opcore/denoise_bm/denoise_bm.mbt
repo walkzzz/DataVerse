@@ -25,7 +25,7 @@ pub fn denoise_bm_point_label(p : Denoise_bmPoint) -> Int { p.label }
 pub fn denoise_bm_point_dist(a : Denoise_bmPoint, b : Denoise_bmPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  denoise_bm_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn denoise_bm_point_add(a : Denoise_bmPoint, b : Denoise_bmPoint) -> Denoise_bmPoint {
@@ -45,7 +45,7 @@ pub fn denoise_bm_point_dot(a : Denoise_bmPoint, b : Denoise_bmPoint) -> Double 
 }
 
 pub fn denoise_bm_point_norm(pt : Denoise_bmPoint) -> Double {
-  denoise_bm_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn denoise_bm_point_to_string(pt : Denoise_bmPoint) -> String {
@@ -102,7 +102,7 @@ pub fn denoise_bm_series_var(s : Denoise_bmSeries) -> Double {
   }
 }
 
-pub fn denoise_bm_series_std(s : Denoise_bmSeries) -> Double { denoise_bm_sqrt(denoise_bm_series_var(s)) }
+pub fn denoise_bm_series_std(s : Denoise_bmSeries) -> Double { @_common.sqrt(denoise_bm_series_var(s)) }
 
 pub fn denoise_bm_series_scale(s : Denoise_bmSeries, f : Double) -> Denoise_bmSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn denoise_bm_matrix_trace(m : Denoise_bmMatrix) -> Double {
 pub fn denoise_bm_matrix_norm(m : Denoise_bmMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  denoise_bm_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn denoise_bm_matrix_to_string(m : Denoise_bmMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn denoise_bm_vector_dot(a : Denoise_bmVector, b : Denoise_bmVector) -> Doub
   sum
 }
 
-pub fn denoise_bm_vector_norm(v : Denoise_bmVector) -> Double { denoise_bm_sqrt(denoise_bm_vector_dot(v, v)) }
+pub fn denoise_bm_vector_norm(v : Denoise_bmVector) -> Double { @_common.sqrt(denoise_bm_vector_dot(v, v)) }
 
 pub fn denoise_bm_vector_normalize(v : Denoise_bmVector) -> Denoise_bmVector {
   let n = denoise_bm_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn denoise_bm_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn denoise_bm_std(data : Array[Double]) -> Double { denoise_bm_sqrt(denoise_bm_var(data)) }
+pub fn denoise_bm_std(data : Array[Double]) -> Double { @_common.sqrt(denoise_bm_var(data)) }
 
 pub fn denoise_bm_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn denoise_bm_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + denoise_bm_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn denoise_bm_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = denoise_bm_precision(pred, labels, pos); let r = denoise_bm_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn denoise_bm_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn denoise_bm_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn denoise_bm_dbl(x : Double) -> String {
   let i = if x >= 0.0 { denoise_bm_int(x) } else { -denoise_bm_int(-x) }

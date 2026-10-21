@@ -13,33 +13,9 @@
 // 常量 / Constants
 // ============================================================
 
-
 // ============================================================
 // 辅助数学函数 / Helper math functions (private)
 // ============================================================
-
-fn si_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    0.0
-  } else {
-    let mut guess = x / 2.0
-    if guess == 0.0 {
-      guess = 1.0
-    }
-    for _ in 0..<60 {
-      guess = (guess + x / guess) / 2.0
-    }
-    guess
-  }
-}
-
-fn si_abs(x : Double) -> Double {
-  if x < 0.0 {
-    -x
-  } else {
-    x
-  }
-}
 
 // ============================================================
 // 类型定义 / Type definitions
@@ -236,7 +212,7 @@ pub fn bbox_area(b : BBox) -> Double {
 
 /// 包围盒扩展 / Expand bbox by margin.
 pub fn bbox_expand(b : BBox, margin : Double) -> BBox {
-  let m = si_abs(margin)
+  let m = @_common.abs(margin)
   { min_x: b.min_x - m, min_y: b.min_y - m, max_x: b.max_x + m, max_y: b.max_y + m }
 }
 
@@ -257,7 +233,7 @@ pub fn point_in_bbox(p : SIPoint, b : BBox) -> Bool {
 
 /// 点距离 / Euclidean point distance.
 pub fn point_distance(a : SIPoint, b : SIPoint) -> Double {
-  si_sqrt(point_distance_sq(a, b))
+  @_common.sqrt(point_distance_sq(a, b))
 }
 
 /// 点距离平方 / Squared point distance.
@@ -416,7 +392,7 @@ pub fn kdtree_nearest(tree : KDTree, query : SIPoint) -> NNResult? {
       best_idx = i
     }
   }
-  Some({ entry: tree.entries[best_idx], distance: si_sqrt(best_d2) })
+  Some({ entry: tree.entries[best_idx], distance: @_common.sqrt(best_d2) })
 }
 
 /// KDTree K 近邻 / K nearest neighbors.
@@ -443,7 +419,7 @@ pub fn kdtree_knn(tree : KDTree, query : SIPoint, k : Int) -> Array[NNResult] {
   let result : Array[NNResult] = []
   for i in 0..<kk {
     let (idx, d2) = pairs[i]
-    result.push({ entry: tree.entries[idx], distance: si_sqrt(d2) })
+    result.push({ entry: tree.entries[idx], distance: @_common.sqrt(d2) })
   }
   result
 }
@@ -467,7 +443,7 @@ pub fn nearest_neighbor(entries : Array[SIEntry], query : SIPoint) -> NNResult? 
       best_idx = i
     }
   }
-  Some({ entry: entries[best_idx], distance: si_sqrt(best_d2) })
+  Some({ entry: entries[best_idx], distance: @_common.sqrt(best_d2) })
 }
 
 /// K 近邻搜索 / KNN search.
@@ -492,7 +468,7 @@ pub fn knn_search(entries : Array[SIEntry], query : SIPoint, k : Int) -> Array[N
   let result : Array[NNResult] = []
   for i in 0..<kk {
     let (idx, d2) = pairs[i]
-    result.push({ entry: entries[idx], distance: si_sqrt(d2) })
+    result.push({ entry: entries[idx], distance: @_common.sqrt(d2) })
   }
   result
 }

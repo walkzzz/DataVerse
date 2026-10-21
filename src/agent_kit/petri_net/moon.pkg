@@ -1,2 +1,5 @@
 // agent_kit/petri_net agent_kit/petri_net
 // S13.157 new
+import {
+  "dataverse/extcore/_common",
+}

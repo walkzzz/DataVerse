@@ -25,7 +25,7 @@ pub fn restore_op_point_label(p : Restore_opPoint) -> Int { p.label }
 pub fn restore_op_point_dist(a : Restore_opPoint, b : Restore_opPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  restore_op_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn restore_op_point_add(a : Restore_opPoint, b : Restore_opPoint) -> Restore_opPoint {
@@ -45,7 +45,7 @@ pub fn restore_op_point_dot(a : Restore_opPoint, b : Restore_opPoint) -> Double 
 }
 
 pub fn restore_op_point_norm(pt : Restore_opPoint) -> Double {
-  restore_op_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn restore_op_point_to_string(pt : Restore_opPoint) -> String {
@@ -102,7 +102,7 @@ pub fn restore_op_series_var(s : Restore_opSeries) -> Double {
   }
 }
 
-pub fn restore_op_series_std(s : Restore_opSeries) -> Double { restore_op_sqrt(restore_op_series_var(s)) }
+pub fn restore_op_series_std(s : Restore_opSeries) -> Double { @_common.sqrt(restore_op_series_var(s)) }
 
 pub fn restore_op_series_scale(s : Restore_opSeries, f : Double) -> Restore_opSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn restore_op_matrix_trace(m : Restore_opMatrix) -> Double {
 pub fn restore_op_matrix_norm(m : Restore_opMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  restore_op_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn restore_op_matrix_to_string(m : Restore_opMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn restore_op_vector_dot(a : Restore_opVector, b : Restore_opVector) -> Doub
   sum
 }
 
-pub fn restore_op_vector_norm(v : Restore_opVector) -> Double { restore_op_sqrt(restore_op_vector_dot(v, v)) }
+pub fn restore_op_vector_norm(v : Restore_opVector) -> Double { @_common.sqrt(restore_op_vector_dot(v, v)) }
 
 pub fn restore_op_vector_normalize(v : Restore_opVector) -> Restore_opVector {
   let n = restore_op_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn restore_op_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn restore_op_std(data : Array[Double]) -> Double { restore_op_sqrt(restore_op_var(data)) }
+pub fn restore_op_std(data : Array[Double]) -> Double { @_common.sqrt(restore_op_var(data)) }
 
 pub fn restore_op_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn restore_op_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + restore_op_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn restore_op_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = restore_op_precision(pred, labels, pos); let r = restore_op_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn restore_op_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn restore_op_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn restore_op_dbl(x : Double) -> String {
   let i = if x >= 0.0 { restore_op_int(x) } else { -restore_op_int(-x) }

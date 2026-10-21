@@ -25,7 +25,7 @@ pub fn compress_snappy_point_label(p : Compress_snappyPoint) -> Int { p.label }
 pub fn compress_snappy_point_dist(a : Compress_snappyPoint, b : Compress_snappyPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  compress_snappy_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn compress_snappy_point_add(a : Compress_snappyPoint, b : Compress_snappyPoint) -> Compress_snappyPoint {
@@ -45,7 +45,7 @@ pub fn compress_snappy_point_dot(a : Compress_snappyPoint, b : Compress_snappyPo
 }
 
 pub fn compress_snappy_point_norm(pt : Compress_snappyPoint) -> Double {
-  compress_snappy_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn compress_snappy_point_to_string(pt : Compress_snappyPoint) -> String {
@@ -102,7 +102,7 @@ pub fn compress_snappy_series_var(s : Compress_snappySeries) -> Double {
   }
 }
 
-pub fn compress_snappy_series_std(s : Compress_snappySeries) -> Double { compress_snappy_sqrt(compress_snappy_series_var(s)) }
+pub fn compress_snappy_series_std(s : Compress_snappySeries) -> Double { @_common.sqrt(compress_snappy_series_var(s)) }
 
 pub fn compress_snappy_series_scale(s : Compress_snappySeries, f : Double) -> Compress_snappySeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn compress_snappy_matrix_trace(m : Compress_snappyMatrix) -> Double {
 pub fn compress_snappy_matrix_norm(m : Compress_snappyMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  compress_snappy_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn compress_snappy_matrix_to_string(m : Compress_snappyMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn compress_snappy_vector_dot(a : Compress_snappyVector, b : Compress_snappy
   sum
 }
 
-pub fn compress_snappy_vector_norm(v : Compress_snappyVector) -> Double { compress_snappy_sqrt(compress_snappy_vector_dot(v, v)) }
+pub fn compress_snappy_vector_norm(v : Compress_snappyVector) -> Double { @_common.sqrt(compress_snappy_vector_dot(v, v)) }
 
 pub fn compress_snappy_vector_normalize(v : Compress_snappyVector) -> Compress_snappyVector {
   let n = compress_snappy_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn compress_snappy_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn compress_snappy_std(data : Array[Double]) -> Double { compress_snappy_sqrt(compress_snappy_var(data)) }
+pub fn compress_snappy_std(data : Array[Double]) -> Double { @_common.sqrt(compress_snappy_var(data)) }
 
 pub fn compress_snappy_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn compress_snappy_mae(pred : Array[Double], labels : Array[Double]) -> Doub
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + compress_snappy_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn compress_snappy_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> 
   let p_ = compress_snappy_precision(pred, labels, pos); let r = compress_snappy_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn compress_snappy_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn compress_snappy_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn compress_snappy_dbl(x : Double) -> String {
   let i = if x >= 0.0 { compress_snappy_int(x) } else { -compress_snappy_int(-x) }

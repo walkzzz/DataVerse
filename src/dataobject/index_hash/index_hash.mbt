@@ -25,7 +25,7 @@ pub fn index_hash_point_label(p : Index_hashPoint) -> Int { p.label }
 pub fn index_hash_point_dist(a : Index_hashPoint, b : Index_hashPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  index_hash_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn index_hash_point_add(a : Index_hashPoint, b : Index_hashPoint) -> Index_hashPoint {
@@ -45,7 +45,7 @@ pub fn index_hash_point_dot(a : Index_hashPoint, b : Index_hashPoint) -> Double 
 }
 
 pub fn index_hash_point_norm(pt : Index_hashPoint) -> Double {
-  index_hash_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn index_hash_point_to_string(pt : Index_hashPoint) -> String {
@@ -102,7 +102,7 @@ pub fn index_hash_series_var(s : Index_hashSeries) -> Double {
   }
 }
 
-pub fn index_hash_series_std(s : Index_hashSeries) -> Double { index_hash_sqrt(index_hash_series_var(s)) }
+pub fn index_hash_series_std(s : Index_hashSeries) -> Double { @_common.sqrt(index_hash_series_var(s)) }
 
 pub fn index_hash_series_scale(s : Index_hashSeries, f : Double) -> Index_hashSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn index_hash_matrix_trace(m : Index_hashMatrix) -> Double {
 pub fn index_hash_matrix_norm(m : Index_hashMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  index_hash_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn index_hash_matrix_to_string(m : Index_hashMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn index_hash_vector_dot(a : Index_hashVector, b : Index_hashVector) -> Doub
   sum
 }
 
-pub fn index_hash_vector_norm(v : Index_hashVector) -> Double { index_hash_sqrt(index_hash_vector_dot(v, v)) }
+pub fn index_hash_vector_norm(v : Index_hashVector) -> Double { @_common.sqrt(index_hash_vector_dot(v, v)) }
 
 pub fn index_hash_vector_normalize(v : Index_hashVector) -> Index_hashVector {
   let n = index_hash_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn index_hash_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn index_hash_std(data : Array[Double]) -> Double { index_hash_sqrt(index_hash_var(data)) }
+pub fn index_hash_std(data : Array[Double]) -> Double { @_common.sqrt(index_hash_var(data)) }
 
 pub fn index_hash_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn index_hash_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + index_hash_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn index_hash_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = index_hash_precision(pred, labels, pos); let r = index_hash_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn index_hash_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn index_hash_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn index_hash_dbl(x : Double) -> String {
   let i = if x >= 0.0 { index_hash_int(x) } else { -index_hash_int(-x) }

@@ -1,2 +1,5 @@
 // dataobject/compress_zstd dataobject/compress_zstd
 // S13.192 new
+import {
+  "dataverse/extcore/_common",
+}

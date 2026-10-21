@@ -25,7 +25,7 @@ pub fn series_analysis_point_label(p : Series_analysisPoint) -> Int { p.label }
 pub fn series_analysis_point_dist(a : Series_analysisPoint, b : Series_analysisPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  series_analysis_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn series_analysis_point_add(a : Series_analysisPoint, b : Series_analysisPoint) -> Series_analysisPoint {
@@ -45,7 +45,7 @@ pub fn series_analysis_point_dot(a : Series_analysisPoint, b : Series_analysisPo
 }
 
 pub fn series_analysis_point_norm(pt : Series_analysisPoint) -> Double {
-  series_analysis_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn series_analysis_point_to_string(pt : Series_analysisPoint) -> String {
@@ -102,7 +102,7 @@ pub fn series_analysis_series_var(s : Series_analysisSeries) -> Double {
   }
 }
 
-pub fn series_analysis_series_std(s : Series_analysisSeries) -> Double { series_analysis_sqrt(series_analysis_series_var(s)) }
+pub fn series_analysis_series_std(s : Series_analysisSeries) -> Double { @_common.sqrt(series_analysis_series_var(s)) }
 
 pub fn series_analysis_series_scale(s : Series_analysisSeries, f : Double) -> Series_analysisSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn series_analysis_matrix_trace(m : Series_analysisMatrix) -> Double {
 pub fn series_analysis_matrix_norm(m : Series_analysisMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  series_analysis_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn series_analysis_matrix_to_string(m : Series_analysisMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn series_analysis_vector_dot(a : Series_analysisVector, b : Series_analysis
   sum
 }
 
-pub fn series_analysis_vector_norm(v : Series_analysisVector) -> Double { series_analysis_sqrt(series_analysis_vector_dot(v, v)) }
+pub fn series_analysis_vector_norm(v : Series_analysisVector) -> Double { @_common.sqrt(series_analysis_vector_dot(v, v)) }
 
 pub fn series_analysis_vector_normalize(v : Series_analysisVector) -> Series_analysisVector {
   let n = series_analysis_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn series_analysis_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn series_analysis_std(data : Array[Double]) -> Double { series_analysis_sqrt(series_analysis_var(data)) }
+pub fn series_analysis_std(data : Array[Double]) -> Double { @_common.sqrt(series_analysis_var(data)) }
 
 pub fn series_analysis_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn series_analysis_mae(pred : Array[Double], labels : Array[Double]) -> Doub
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + series_analysis_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn series_analysis_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> 
   let p_ = series_analysis_precision(pred, labels, pos); let r = series_analysis_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn series_analysis_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn series_analysis_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn series_analysis_dbl(x : Double) -> String {
   let i = if x >= 0.0 { series_analysis_int(x) } else { -series_analysis_int(-x) }

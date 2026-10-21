@@ -25,7 +25,7 @@ pub fn window_session_point_label(p : Window_sessionPoint) -> Int { p.label }
 pub fn window_session_point_dist(a : Window_sessionPoint, b : Window_sessionPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  window_session_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn window_session_point_add(a : Window_sessionPoint, b : Window_sessionPoint) -> Window_sessionPoint {
@@ -45,7 +45,7 @@ pub fn window_session_point_dot(a : Window_sessionPoint, b : Window_sessionPoint
 }
 
 pub fn window_session_point_norm(pt : Window_sessionPoint) -> Double {
-  window_session_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn window_session_point_to_string(pt : Window_sessionPoint) -> String {
@@ -102,7 +102,7 @@ pub fn window_session_series_var(s : Window_sessionSeries) -> Double {
   }
 }
 
-pub fn window_session_series_std(s : Window_sessionSeries) -> Double { window_session_sqrt(window_session_series_var(s)) }
+pub fn window_session_series_std(s : Window_sessionSeries) -> Double { @_common.sqrt(window_session_series_var(s)) }
 
 pub fn window_session_series_scale(s : Window_sessionSeries, f : Double) -> Window_sessionSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn window_session_matrix_trace(m : Window_sessionMatrix) -> Double {
 pub fn window_session_matrix_norm(m : Window_sessionMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  window_session_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn window_session_matrix_to_string(m : Window_sessionMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn window_session_vector_dot(a : Window_sessionVector, b : Window_sessionVec
   sum
 }
 
-pub fn window_session_vector_norm(v : Window_sessionVector) -> Double { window_session_sqrt(window_session_vector_dot(v, v)) }
+pub fn window_session_vector_norm(v : Window_sessionVector) -> Double { @_common.sqrt(window_session_vector_dot(v, v)) }
 
 pub fn window_session_vector_normalize(v : Window_sessionVector) -> Window_sessionVector {
   let n = window_session_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn window_session_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn window_session_std(data : Array[Double]) -> Double { window_session_sqrt(window_session_var(data)) }
+pub fn window_session_std(data : Array[Double]) -> Double { @_common.sqrt(window_session_var(data)) }
 
 pub fn window_session_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn window_session_mae(pred : Array[Double], labels : Array[Double]) -> Doubl
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + window_session_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn window_session_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> D
   let p_ = window_session_precision(pred, labels, pos); let r = window_session_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn window_session_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn window_session_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn window_session_dbl(x : Double) -> String {
   let i = if x >= 0.0 { window_session_int(x) } else { -window_session_int(-x) }

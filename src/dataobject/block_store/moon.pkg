@@ -1,2 +1,5 @@
 // dataobject/block_store dataobject/block_store
 // S13.180 new
+import {
+  "dataverse/extcore/_common",
+}

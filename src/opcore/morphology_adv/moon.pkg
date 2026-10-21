@@ -1,1 +1,4 @@
 // opcore/morphology_adv
+import {
+  "dataverse/extcore/_common",
+}

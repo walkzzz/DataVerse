@@ -25,7 +25,7 @@ pub fn vae_rt_point_label(p : Vae_rtPoint) -> Int { p.label }
 pub fn vae_rt_point_dist(a : Vae_rtPoint, b : Vae_rtPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  vae_rt_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn vae_rt_point_add(a : Vae_rtPoint, b : Vae_rtPoint) -> Vae_rtPoint {
@@ -45,7 +45,7 @@ pub fn vae_rt_point_dot(a : Vae_rtPoint, b : Vae_rtPoint) -> Double {
 }
 
 pub fn vae_rt_point_norm(pt : Vae_rtPoint) -> Double {
-  vae_rt_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn vae_rt_point_to_string(pt : Vae_rtPoint) -> String {
@@ -102,7 +102,7 @@ pub fn vae_rt_series_var(s : Vae_rtSeries) -> Double {
   }
 }
 
-pub fn vae_rt_series_std(s : Vae_rtSeries) -> Double { vae_rt_sqrt(vae_rt_series_var(s)) }
+pub fn vae_rt_series_std(s : Vae_rtSeries) -> Double { @_common.sqrt(vae_rt_series_var(s)) }
 
 pub fn vae_rt_series_scale(s : Vae_rtSeries, f : Double) -> Vae_rtSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn vae_rt_matrix_trace(m : Vae_rtMatrix) -> Double {
 pub fn vae_rt_matrix_norm(m : Vae_rtMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  vae_rt_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn vae_rt_matrix_to_string(m : Vae_rtMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn vae_rt_vector_dot(a : Vae_rtVector, b : Vae_rtVector) -> Double {
   sum
 }
 
-pub fn vae_rt_vector_norm(v : Vae_rtVector) -> Double { vae_rt_sqrt(vae_rt_vector_dot(v, v)) }
+pub fn vae_rt_vector_norm(v : Vae_rtVector) -> Double { @_common.sqrt(vae_rt_vector_dot(v, v)) }
 
 pub fn vae_rt_vector_normalize(v : Vae_rtVector) -> Vae_rtVector {
   let n = vae_rt_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn vae_rt_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn vae_rt_std(data : Array[Double]) -> Double { vae_rt_sqrt(vae_rt_var(data)) }
+pub fn vae_rt_std(data : Array[Double]) -> Double { @_common.sqrt(vae_rt_var(data)) }
 
 pub fn vae_rt_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn vae_rt_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + vae_rt_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn vae_rt_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = vae_rt_precision(pred, labels, pos); let r = vae_rt_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn vae_rt_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn vae_rt_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn vae_rt_dbl(x : Double) -> String {
   let i = if x >= 0.0 { vae_rt_int(x) } else { -vae_rt_int(-x) }

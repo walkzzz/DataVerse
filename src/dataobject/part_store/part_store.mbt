@@ -25,7 +25,7 @@ pub fn part_store_point_label(p : Part_storePoint) -> Int { p.label }
 pub fn part_store_point_dist(a : Part_storePoint, b : Part_storePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  part_store_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn part_store_point_add(a : Part_storePoint, b : Part_storePoint) -> Part_storePoint {
@@ -45,7 +45,7 @@ pub fn part_store_point_dot(a : Part_storePoint, b : Part_storePoint) -> Double 
 }
 
 pub fn part_store_point_norm(pt : Part_storePoint) -> Double {
-  part_store_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn part_store_point_to_string(pt : Part_storePoint) -> String {
@@ -102,7 +102,7 @@ pub fn part_store_series_var(s : Part_storeSeries) -> Double {
   }
 }
 
-pub fn part_store_series_std(s : Part_storeSeries) -> Double { part_store_sqrt(part_store_series_var(s)) }
+pub fn part_store_series_std(s : Part_storeSeries) -> Double { @_common.sqrt(part_store_series_var(s)) }
 
 pub fn part_store_series_scale(s : Part_storeSeries, f : Double) -> Part_storeSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn part_store_matrix_trace(m : Part_storeMatrix) -> Double {
 pub fn part_store_matrix_norm(m : Part_storeMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  part_store_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn part_store_matrix_to_string(m : Part_storeMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn part_store_vector_dot(a : Part_storeVector, b : Part_storeVector) -> Doub
   sum
 }
 
-pub fn part_store_vector_norm(v : Part_storeVector) -> Double { part_store_sqrt(part_store_vector_dot(v, v)) }
+pub fn part_store_vector_norm(v : Part_storeVector) -> Double { @_common.sqrt(part_store_vector_dot(v, v)) }
 
 pub fn part_store_vector_normalize(v : Part_storeVector) -> Part_storeVector {
   let n = part_store_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn part_store_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn part_store_std(data : Array[Double]) -> Double { part_store_sqrt(part_store_var(data)) }
+pub fn part_store_std(data : Array[Double]) -> Double { @_common.sqrt(part_store_var(data)) }
 
 pub fn part_store_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn part_store_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + part_store_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn part_store_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = part_store_precision(pred, labels, pos); let r = part_store_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn part_store_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn part_store_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn part_store_dbl(x : Double) -> String {
   let i = if x >= 0.0 { part_store_int(x) } else { -part_store_int(-x) }

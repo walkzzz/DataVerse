@@ -25,7 +25,7 @@ pub fn de_ea_point_label(p : De_eaPoint) -> Int { p.label }
 pub fn de_ea_point_dist(a : De_eaPoint, b : De_eaPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  de_ea_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn de_ea_point_add(a : De_eaPoint, b : De_eaPoint) -> De_eaPoint {
@@ -45,7 +45,7 @@ pub fn de_ea_point_dot(a : De_eaPoint, b : De_eaPoint) -> Double {
 }
 
 pub fn de_ea_point_norm(pt : De_eaPoint) -> Double {
-  de_ea_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn de_ea_point_to_string(pt : De_eaPoint) -> String {
@@ -102,7 +102,7 @@ pub fn de_ea_series_var(s : De_eaSeries) -> Double {
   }
 }
 
-pub fn de_ea_series_std(s : De_eaSeries) -> Double { de_ea_sqrt(de_ea_series_var(s)) }
+pub fn de_ea_series_std(s : De_eaSeries) -> Double { @_common.sqrt(de_ea_series_var(s)) }
 
 pub fn de_ea_series_scale(s : De_eaSeries, f : Double) -> De_eaSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn de_ea_matrix_trace(m : De_eaMatrix) -> Double {
 pub fn de_ea_matrix_norm(m : De_eaMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  de_ea_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn de_ea_matrix_to_string(m : De_eaMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn de_ea_vector_dot(a : De_eaVector, b : De_eaVector) -> Double {
   sum
 }
 
-pub fn de_ea_vector_norm(v : De_eaVector) -> Double { de_ea_sqrt(de_ea_vector_dot(v, v)) }
+pub fn de_ea_vector_norm(v : De_eaVector) -> Double { @_common.sqrt(de_ea_vector_dot(v, v)) }
 
 pub fn de_ea_vector_normalize(v : De_eaVector) -> De_eaVector {
   let n = de_ea_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn de_ea_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn de_ea_std(data : Array[Double]) -> Double { de_ea_sqrt(de_ea_var(data)) }
+pub fn de_ea_std(data : Array[Double]) -> Double { @_common.sqrt(de_ea_var(data)) }
 
 pub fn de_ea_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn de_ea_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + de_ea_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn de_ea_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = de_ea_precision(pred, labels, pos); let r = de_ea_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn de_ea_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn de_ea_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn de_ea_dbl(x : Double) -> String {
   let i = if x >= 0.0 { de_ea_int(x) } else { -de_ea_int(-x) }

@@ -25,7 +25,7 @@ pub fn auto_drive_point_label(p : Auto_drivePoint) -> Int { p.label }
 pub fn auto_drive_point_dist(a : Auto_drivePoint, b : Auto_drivePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  auto_drive_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn auto_drive_point_add(a : Auto_drivePoint, b : Auto_drivePoint) -> Auto_drivePoint {
@@ -45,7 +45,7 @@ pub fn auto_drive_point_dot(a : Auto_drivePoint, b : Auto_drivePoint) -> Double 
 }
 
 pub fn auto_drive_point_norm(pt : Auto_drivePoint) -> Double {
-  auto_drive_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn auto_drive_point_to_string(pt : Auto_drivePoint) -> String {
@@ -102,7 +102,7 @@ pub fn auto_drive_series_var(s : Auto_driveSeries) -> Double {
   }
 }
 
-pub fn auto_drive_series_std(s : Auto_driveSeries) -> Double { auto_drive_sqrt(auto_drive_series_var(s)) }
+pub fn auto_drive_series_std(s : Auto_driveSeries) -> Double { @_common.sqrt(auto_drive_series_var(s)) }
 
 pub fn auto_drive_series_scale(s : Auto_driveSeries, f : Double) -> Auto_driveSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn auto_drive_matrix_trace(m : Auto_driveMatrix) -> Double {
 pub fn auto_drive_matrix_norm(m : Auto_driveMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  auto_drive_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn auto_drive_matrix_to_string(m : Auto_driveMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn auto_drive_vector_dot(a : Auto_driveVector, b : Auto_driveVector) -> Doub
   sum
 }
 
-pub fn auto_drive_vector_norm(v : Auto_driveVector) -> Double { auto_drive_sqrt(auto_drive_vector_dot(v, v)) }
+pub fn auto_drive_vector_norm(v : Auto_driveVector) -> Double { @_common.sqrt(auto_drive_vector_dot(v, v)) }
 
 pub fn auto_drive_vector_normalize(v : Auto_driveVector) -> Auto_driveVector {
   let n = auto_drive_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn auto_drive_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn auto_drive_std(data : Array[Double]) -> Double { auto_drive_sqrt(auto_drive_var(data)) }
+pub fn auto_drive_std(data : Array[Double]) -> Double { @_common.sqrt(auto_drive_var(data)) }
 
 pub fn auto_drive_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn auto_drive_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + auto_drive_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn auto_drive_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = auto_drive_precision(pred, labels, pos); let r = auto_drive_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn auto_drive_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn auto_drive_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn auto_drive_dbl(x : Double) -> String {
   let i = if x >= 0.0 { auto_drive_int(x) } else { -auto_drive_int(-x) }

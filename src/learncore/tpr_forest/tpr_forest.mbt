@@ -25,7 +25,7 @@ pub fn tpr_forest_point_label(p : Tpr_forestPoint) -> Int { p.label }
 pub fn tpr_forest_point_dist(a : Tpr_forestPoint, b : Tpr_forestPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  tpr_forest_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn tpr_forest_point_add(a : Tpr_forestPoint, b : Tpr_forestPoint) -> Tpr_forestPoint {
@@ -45,7 +45,7 @@ pub fn tpr_forest_point_dot(a : Tpr_forestPoint, b : Tpr_forestPoint) -> Double 
 }
 
 pub fn tpr_forest_point_norm(pt : Tpr_forestPoint) -> Double {
-  tpr_forest_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn tpr_forest_point_to_string(pt : Tpr_forestPoint) -> String {
@@ -102,7 +102,7 @@ pub fn tpr_forest_series_var(s : Tpr_forestSeries) -> Double {
   }
 }
 
-pub fn tpr_forest_series_std(s : Tpr_forestSeries) -> Double { tpr_forest_sqrt(tpr_forest_series_var(s)) }
+pub fn tpr_forest_series_std(s : Tpr_forestSeries) -> Double { @_common.sqrt(tpr_forest_series_var(s)) }
 
 pub fn tpr_forest_series_scale(s : Tpr_forestSeries, f : Double) -> Tpr_forestSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn tpr_forest_matrix_trace(m : Tpr_forestMatrix) -> Double {
 pub fn tpr_forest_matrix_norm(m : Tpr_forestMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  tpr_forest_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn tpr_forest_matrix_to_string(m : Tpr_forestMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn tpr_forest_vector_dot(a : Tpr_forestVector, b : Tpr_forestVector) -> Doub
   sum
 }
 
-pub fn tpr_forest_vector_norm(v : Tpr_forestVector) -> Double { tpr_forest_sqrt(tpr_forest_vector_dot(v, v)) }
+pub fn tpr_forest_vector_norm(v : Tpr_forestVector) -> Double { @_common.sqrt(tpr_forest_vector_dot(v, v)) }
 
 pub fn tpr_forest_vector_normalize(v : Tpr_forestVector) -> Tpr_forestVector {
   let n = tpr_forest_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn tpr_forest_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn tpr_forest_std(data : Array[Double]) -> Double { tpr_forest_sqrt(tpr_forest_var(data)) }
+pub fn tpr_forest_std(data : Array[Double]) -> Double { @_common.sqrt(tpr_forest_var(data)) }
 
 pub fn tpr_forest_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn tpr_forest_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + tpr_forest_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn tpr_forest_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = tpr_forest_precision(pred, labels, pos); let r = tpr_forest_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn tpr_forest_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn tpr_forest_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn tpr_forest_dbl(x : Double) -> String {
   let i = if x >= 0.0 { tpr_forest_int(x) } else { -tpr_forest_int(-x) }

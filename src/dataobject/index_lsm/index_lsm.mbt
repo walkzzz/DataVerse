@@ -25,7 +25,7 @@ pub fn index_lsm_point_label(p : Index_lsmPoint) -> Int { p.label }
 pub fn index_lsm_point_dist(a : Index_lsmPoint, b : Index_lsmPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  index_lsm_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn index_lsm_point_add(a : Index_lsmPoint, b : Index_lsmPoint) -> Index_lsmPoint {
@@ -45,7 +45,7 @@ pub fn index_lsm_point_dot(a : Index_lsmPoint, b : Index_lsmPoint) -> Double {
 }
 
 pub fn index_lsm_point_norm(pt : Index_lsmPoint) -> Double {
-  index_lsm_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn index_lsm_point_to_string(pt : Index_lsmPoint) -> String {
@@ -102,7 +102,7 @@ pub fn index_lsm_series_var(s : Index_lsmSeries) -> Double {
   }
 }
 
-pub fn index_lsm_series_std(s : Index_lsmSeries) -> Double { index_lsm_sqrt(index_lsm_series_var(s)) }
+pub fn index_lsm_series_std(s : Index_lsmSeries) -> Double { @_common.sqrt(index_lsm_series_var(s)) }
 
 pub fn index_lsm_series_scale(s : Index_lsmSeries, f : Double) -> Index_lsmSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn index_lsm_matrix_trace(m : Index_lsmMatrix) -> Double {
 pub fn index_lsm_matrix_norm(m : Index_lsmMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  index_lsm_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn index_lsm_matrix_to_string(m : Index_lsmMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn index_lsm_vector_dot(a : Index_lsmVector, b : Index_lsmVector) -> Double 
   sum
 }
 
-pub fn index_lsm_vector_norm(v : Index_lsmVector) -> Double { index_lsm_sqrt(index_lsm_vector_dot(v, v)) }
+pub fn index_lsm_vector_norm(v : Index_lsmVector) -> Double { @_common.sqrt(index_lsm_vector_dot(v, v)) }
 
 pub fn index_lsm_vector_normalize(v : Index_lsmVector) -> Index_lsmVector {
   let n = index_lsm_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn index_lsm_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn index_lsm_std(data : Array[Double]) -> Double { index_lsm_sqrt(index_lsm_var(data)) }
+pub fn index_lsm_std(data : Array[Double]) -> Double { @_common.sqrt(index_lsm_var(data)) }
 
 pub fn index_lsm_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn index_lsm_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + index_lsm_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn index_lsm_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double
   let p_ = index_lsm_precision(pred, labels, pos); let r = index_lsm_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn index_lsm_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn index_lsm_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn index_lsm_dbl(x : Double) -> String {
   let i = if x >= 0.0 { index_lsm_int(x) } else { -index_lsm_int(-x) }

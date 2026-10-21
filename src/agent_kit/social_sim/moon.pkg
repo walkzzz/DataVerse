@@ -1,2 +1,5 @@
 // agent_kit/social_sim agent_kit/social_sim
 // S13.133 new
+import {
+  "dataverse/extcore/_common",
+}

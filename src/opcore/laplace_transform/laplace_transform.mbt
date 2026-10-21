@@ -25,7 +25,7 @@ pub fn laplace_transform_point_label(p : Laplace_transformPoint) -> Int { p.labe
 pub fn laplace_transform_point_dist(a : Laplace_transformPoint, b : Laplace_transformPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  laplace_transform_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn laplace_transform_point_add(a : Laplace_transformPoint, b : Laplace_transformPoint) -> Laplace_transformPoint {
@@ -45,7 +45,7 @@ pub fn laplace_transform_point_dot(a : Laplace_transformPoint, b : Laplace_trans
 }
 
 pub fn laplace_transform_point_norm(pt : Laplace_transformPoint) -> Double {
-  laplace_transform_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn laplace_transform_point_to_string(pt : Laplace_transformPoint) -> String {
@@ -102,7 +102,7 @@ pub fn laplace_transform_series_var(s : Laplace_transformSeries) -> Double {
   }
 }
 
-pub fn laplace_transform_series_std(s : Laplace_transformSeries) -> Double { laplace_transform_sqrt(laplace_transform_series_var(s)) }
+pub fn laplace_transform_series_std(s : Laplace_transformSeries) -> Double { @_common.sqrt(laplace_transform_series_var(s)) }
 
 pub fn laplace_transform_series_scale(s : Laplace_transformSeries, f : Double) -> Laplace_transformSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn laplace_transform_matrix_trace(m : Laplace_transformMatrix) -> Double {
 pub fn laplace_transform_matrix_norm(m : Laplace_transformMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  laplace_transform_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn laplace_transform_matrix_to_string(m : Laplace_transformMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn laplace_transform_vector_dot(a : Laplace_transformVector, b : Laplace_tra
   sum
 }
 
-pub fn laplace_transform_vector_norm(v : Laplace_transformVector) -> Double { laplace_transform_sqrt(laplace_transform_vector_dot(v, v)) }
+pub fn laplace_transform_vector_norm(v : Laplace_transformVector) -> Double { @_common.sqrt(laplace_transform_vector_dot(v, v)) }
 
 pub fn laplace_transform_vector_normalize(v : Laplace_transformVector) -> Laplace_transformVector {
   let n = laplace_transform_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn laplace_transform_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn laplace_transform_std(data : Array[Double]) -> Double { laplace_transform_sqrt(laplace_transform_var(data)) }
+pub fn laplace_transform_std(data : Array[Double]) -> Double { @_common.sqrt(laplace_transform_var(data)) }
 
 pub fn laplace_transform_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn laplace_transform_mae(pred : Array[Double], labels : Array[Double]) -> Do
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + laplace_transform_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn laplace_transform_f1(pred : Array[Int], labels : Array[Int], pos : Int) -
   let p_ = laplace_transform_precision(pred, labels, pos); let r = laplace_transform_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn laplace_transform_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn laplace_transform_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn laplace_transform_dbl(x : Double) -> String {
   let i = if x >= 0.0 { laplace_transform_int(x) } else { -laplace_transform_int(-x) }

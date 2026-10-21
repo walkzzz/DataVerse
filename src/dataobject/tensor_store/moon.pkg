@@ -1,2 +1,5 @@
 // dataobject/tensor_store dataobject/tensor_store
 // S13.173 new
+import {
+  "dataverse/extcore/_common",
+}

@@ -136,28 +136,6 @@ pub struct MemoryCache {
 ///===
 /// 辅助数学 / Helper math (private)
 
-fn mem_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    return 0.0
-  }
-  let mut guess = x / 2.0
-  if guess == 0.0 {
-    guess = 1.0
-  }
-  for _ in 0..<60 {
-    guess = (guess + x / guess) / 2.0
-  }
-  guess
-}
-
-fn mem_abs(x : Double) -> Double {
-  if x < 0.0 {
-    -x
-  } else {
-    x
-  }
-}
-
 fn mem_exp(x : Double) -> Double {
   if x > 700.0 {
     return MEM_LARGE_DOUBLE
@@ -170,7 +148,7 @@ fn mem_exp(x : Double) -> Double {
   for i in 1..<40 {
     term = term * x / i.to_double()
     result = result + term
-    if mem_abs(term) < MEM_EPS {
+    if @_common.abs(term) < MEM_EPS {
       break
     }
   }
@@ -190,7 +168,7 @@ fn mem_cosine_sim(a : Array[Double], b : Array[Double]) -> Double {
     na = na + a[i] * a[i]
     nb = nb + b[i] * b[i]
   }
-  let denom = mem_sqrt(na) * mem_sqrt(nb)
+  let denom = @_common.sqrt(na) * @_common.sqrt(nb)
   if denom == 0.0 {
     0.0
   } else {

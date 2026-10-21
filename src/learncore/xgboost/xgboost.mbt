@@ -25,7 +25,7 @@ pub fn xgboost_point_label(p : XgboostPoint) -> Int { p.label }
 pub fn xgboost_point_dist(a : XgboostPoint, b : XgboostPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  xgboost_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn xgboost_point_add(a : XgboostPoint, b : XgboostPoint) -> XgboostPoint {
@@ -45,7 +45,7 @@ pub fn xgboost_point_dot(a : XgboostPoint, b : XgboostPoint) -> Double {
 }
 
 pub fn xgboost_point_norm(pt : XgboostPoint) -> Double {
-  xgboost_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn xgboost_point_to_string(pt : XgboostPoint) -> String {
@@ -102,7 +102,7 @@ pub fn xgboost_series_var(s : XgboostSeries) -> Double {
   }
 }
 
-pub fn xgboost_series_std(s : XgboostSeries) -> Double { xgboost_sqrt(xgboost_series_var(s)) }
+pub fn xgboost_series_std(s : XgboostSeries) -> Double { @_common.sqrt(xgboost_series_var(s)) }
 
 pub fn xgboost_series_scale(s : XgboostSeries, f : Double) -> XgboostSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn xgboost_matrix_trace(m : XgboostMatrix) -> Double {
 pub fn xgboost_matrix_norm(m : XgboostMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  xgboost_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn xgboost_matrix_to_string(m : XgboostMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn xgboost_vector_dot(a : XgboostVector, b : XgboostVector) -> Double {
   sum
 }
 
-pub fn xgboost_vector_norm(v : XgboostVector) -> Double { xgboost_sqrt(xgboost_vector_dot(v, v)) }
+pub fn xgboost_vector_norm(v : XgboostVector) -> Double { @_common.sqrt(xgboost_vector_dot(v, v)) }
 
 pub fn xgboost_vector_normalize(v : XgboostVector) -> XgboostVector {
   let n = xgboost_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn xgboost_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn xgboost_std(data : Array[Double]) -> Double { xgboost_sqrt(xgboost_var(data)) }
+pub fn xgboost_std(data : Array[Double]) -> Double { @_common.sqrt(xgboost_var(data)) }
 
 pub fn xgboost_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn xgboost_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + xgboost_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn xgboost_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = xgboost_precision(pred, labels, pos); let r = xgboost_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn xgboost_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn xgboost_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn xgboost_dbl(x : Double) -> String {
   let i = if x >= 0.0 { xgboost_int(x) } else { -xgboost_int(-x) }

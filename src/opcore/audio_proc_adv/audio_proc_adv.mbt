@@ -71,25 +71,6 @@ fn ap_cos(x : Double) -> Double {
   ap_sin(x + 1.5707963267948966)
 }
 
-/// 内部平方根 / Internal square root.
-fn ap_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    return 0.0
-  }
-  let mut guess = x
-  if guess > 1.0 {
-    guess = guess / 2.0
-  }
-  let mut prev = 0.0
-  let mut iter = 0
-  while (guess - prev).abs() > 0.0000001 && iter < 60 {
-    prev = guess
-    guess = (guess + x / guess) / 2.0
-    iter = iter + 1
-  }
-  guess
-}
-
 /// 内部指数 / Internal exp.
 fn ap_exp(x : Double) -> Double {
   let mut term = 1.0
@@ -115,15 +96,6 @@ fn ap_ln(x : Double) -> Double {
     term = term * t2
   }
   2.0 * result
-}
-
-/// 内部绝对值 / Internal abs.
-fn ap_abs(x : Double) -> Double {
-  if x < 0.0 {
-    -x
-  } else {
-    x
-  }
 }
 
 /// 内部最大 / Internal max.
@@ -159,7 +131,7 @@ fn ap_clamp(v : Double, lo : Double, hi : Double) -> Double {
 pub fn audio_normalize_adv(audio : AudioAdv) -> AudioAdv {
   let mut max_abs = 0.0
   for i in 0..<audio.samples.length() {
-    let a = ap_abs(audio.samples[i])
+    let a = @_common.abs(audio.samples[i])
     if a > max_abs {
       max_abs = a
     }
@@ -191,7 +163,7 @@ pub fn audio_standardize(audio : AudioAdv) -> AudioAdv {
     var_sum = var_sum + d * d
   }
   let variance = var_sum / n.to_double()
-  let std = ap_sqrt(variance)
+  let std = @_common.sqrt(variance)
   if std == 0.0 {
     return audio
   }
@@ -323,7 +295,7 @@ pub fn audio_stft(audio : AudioAdv, frame_size : Int, hop_size : Int) -> Array[A
         real = real + windowed[t] * ap_cos(angle)
         imag = imag + windowed[t] * ap_sin(angle)
       }
-      mag.push(ap_sqrt(real * real + imag * imag))
+      mag.push(@_common.sqrt(real * real + imag * imag))
     }
     result.push(mag)
   }
@@ -388,7 +360,7 @@ pub fn audio_filterbank(num_filters : Int, num_bins : Int) -> Array[Double] {
   for m in 0..<num_filters {
     for k in 0..<num_bins {
       let center = m.to_double() * num_bins.to_double() / num_filters.to_double()
-      let dist = ap_abs(k.to_double() - center)
+      let dist = @_common.abs(k.to_double() - center)
       let width = num_bins.to_double() / num_filters.to_double()
       let v = if dist < width { 1.0 - dist / width } else { 0.0 }
       fb.push(v)
@@ -439,7 +411,7 @@ pub fn audio_dct_coefficients(num_ceps : Int, num_mels : Int) -> Array[Double] {
   let dct : Array[Double] = []
   for c in 0..<num_ceps {
     for m in 0..<num_mels {
-      let v = ap_cos(3.141592653589793 * c.to_double() * (2 * m + 1).to_double() / (2.0 * num_mels.to_double())) * ap_sqrt(2.0 / num_mels.to_double())
+      let v = ap_cos(3.141592653589793 * c.to_double() * (2 * m + 1).to_double() / (2.0 * num_mels.to_double())) * @_common.sqrt(2.0 / num_mels.to_double())
       dct.push(v)
     }
   }
@@ -524,11 +496,11 @@ pub fn audio_noise_reduce(audio : AudioAdv, noise_level : Double) -> AudioAdv {
   let out : Array[Double] = []
   for i in 0..<audio.samples.length() {
     let v = audio.samples[i]
-    if ap_abs(v) < noise_level {
+    if @_common.abs(v) < noise_level {
       out.push(0.0)
     } else {
       let sign = if v < 0.0 { -1.0 } else { 1.0 }
-      out.push(sign * (ap_abs(v) - noise_level))
+      out.push(sign * (@_common.abs(v) - noise_level))
     }
   }
   { samples: out, sample_rate: audio.sample_rate, channels: audio.channels }
@@ -541,7 +513,7 @@ pub fn audio_spectral_subtract(audio : AudioAdv, noise : AudioAdv) -> AudioAdv {
   for i in 0..<n {
     let s = audio.samples[i]
     let nz = if i < noise.samples.length() { noise.samples[i] } else { 0.0 }
-    let mag = ap_abs(s) - ap_abs(nz)
+    let mag = @_common.abs(s) - @_common.abs(nz)
     let sign = if s < 0.0 { -1.0 } else { 1.0 }
     out.push(sign * ap_max(mag, 0.0))
   }
@@ -578,7 +550,7 @@ pub fn audio_compressor(audio : AudioAdv, threshold : Double, ratio : Double, at
   let out : Array[Double] = []
   for i in 0..<audio.samples.length() {
     let v = audio.samples[i]
-    let abs_v = ap_abs(v)
+    let abs_v = @_common.abs(v)
     if abs_v > threshold {
       let excess = abs_v - threshold
       let reduced = excess / ratio
@@ -597,7 +569,7 @@ pub fn audio_expander(audio : AudioAdv, threshold : Double, ratio : Double) -> A
   let out : Array[Double] = []
   for i in 0..<audio.samples.length() {
     let v = audio.samples[i]
-    let abs_v = ap_abs(v)
+    let abs_v = @_common.abs(v)
     if abs_v < threshold {
       let scaled = abs_v * ratio
       let sign = if v < 0.0 { -1.0 } else { 1.0 }
@@ -624,7 +596,7 @@ pub fn audio_gate(audio : AudioAdv, threshold : Double, hold : Int) -> AudioAdv 
   let out : Array[Double] = []
   for i in 0..<audio.samples.length() {
     let v = audio.samples[i]
-    if ap_abs(v) < threshold {
+    if @_common.abs(v) < threshold {
       out.push(0.0)
     } else {
       out.push(v)
@@ -1005,7 +977,7 @@ pub fn audio_dtw_audio(audio1 : AudioAdv, audio2 : AudioAdv) -> Double {
   }
   for i in 1..=n {
     for j in 1..=m {
-      let cost = ap_abs(audio1.samples[i - 1] - audio2.samples[j - 1])
+      let cost = @_common.abs(audio1.samples[i - 1] - audio2.samples[j - 1])
       dp[i][j] = cost + ap_min(ap_min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1])
     }
   }
@@ -1078,7 +1050,7 @@ pub fn audio_concat(audio1 : AudioAdv, audio2 : AudioAdv) -> AudioAdv {
 pub fn audio_silence_remove(audio : AudioAdv, threshold : Double) -> AudioAdv {
   let out : Array[Double] = []
   for i in 0..<audio.samples.length() {
-    if ap_abs(audio.samples[i]) > threshold {
+    if @_common.abs(audio.samples[i]) > threshold {
       out.push(audio.samples[i])
     }
   }
@@ -1089,11 +1061,11 @@ pub fn audio_silence_remove(audio : AudioAdv, threshold : Double) -> AudioAdv {
 pub fn audio_trim(audio : AudioAdv, threshold : Double) -> AudioAdv {
   let n = audio.samples.length()
   let mut start = 0
-  while start < n && ap_abs(audio.samples[start]) < threshold {
+  while start < n && @_common.abs(audio.samples[start]) < threshold {
     start = start + 1
   }
   let mut end = n - 1
-  while end > start && ap_abs(audio.samples[end]) < threshold {
+  while end > start && @_common.abs(audio.samples[end]) < threshold {
     end = end - 1
   }
   let out : Array[Double] = []

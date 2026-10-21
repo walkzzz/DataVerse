@@ -25,7 +25,7 @@ pub fn beamforming_point_label(p : BeamformingPoint) -> Int { p.label }
 pub fn beamforming_point_dist(a : BeamformingPoint, b : BeamformingPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  beamforming_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn beamforming_point_add(a : BeamformingPoint, b : BeamformingPoint) -> BeamformingPoint {
@@ -45,7 +45,7 @@ pub fn beamforming_point_dot(a : BeamformingPoint, b : BeamformingPoint) -> Doub
 }
 
 pub fn beamforming_point_norm(pt : BeamformingPoint) -> Double {
-  beamforming_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn beamforming_point_to_string(pt : BeamformingPoint) -> String {
@@ -102,7 +102,7 @@ pub fn beamforming_series_var(s : BeamformingSeries) -> Double {
   }
 }
 
-pub fn beamforming_series_std(s : BeamformingSeries) -> Double { beamforming_sqrt(beamforming_series_var(s)) }
+pub fn beamforming_series_std(s : BeamformingSeries) -> Double { @_common.sqrt(beamforming_series_var(s)) }
 
 pub fn beamforming_series_scale(s : BeamformingSeries, f : Double) -> BeamformingSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn beamforming_matrix_trace(m : BeamformingMatrix) -> Double {
 pub fn beamforming_matrix_norm(m : BeamformingMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  beamforming_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn beamforming_matrix_to_string(m : BeamformingMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn beamforming_vector_dot(a : BeamformingVector, b : BeamformingVector) -> D
   sum
 }
 
-pub fn beamforming_vector_norm(v : BeamformingVector) -> Double { beamforming_sqrt(beamforming_vector_dot(v, v)) }
+pub fn beamforming_vector_norm(v : BeamformingVector) -> Double { @_common.sqrt(beamforming_vector_dot(v, v)) }
 
 pub fn beamforming_vector_normalize(v : BeamformingVector) -> BeamformingVector {
   let n = beamforming_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn beamforming_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn beamforming_std(data : Array[Double]) -> Double { beamforming_sqrt(beamforming_var(data)) }
+pub fn beamforming_std(data : Array[Double]) -> Double { @_common.sqrt(beamforming_var(data)) }
 
 pub fn beamforming_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn beamforming_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + beamforming_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn beamforming_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = beamforming_precision(pred, labels, pos); let r = beamforming_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn beamforming_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn beamforming_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn beamforming_dbl(x : Double) -> String {
   let i = if x >= 0.0 { beamforming_int(x) } else { -beamforming_int(-x) }

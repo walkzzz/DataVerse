@@ -25,7 +25,7 @@ pub fn workflow_eng_point_label(p : Workflow_engPoint) -> Int { p.label }
 pub fn workflow_eng_point_dist(a : Workflow_engPoint, b : Workflow_engPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  workflow_eng_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn workflow_eng_point_add(a : Workflow_engPoint, b : Workflow_engPoint) -> Workflow_engPoint {
@@ -45,7 +45,7 @@ pub fn workflow_eng_point_dot(a : Workflow_engPoint, b : Workflow_engPoint) -> D
 }
 
 pub fn workflow_eng_point_norm(pt : Workflow_engPoint) -> Double {
-  workflow_eng_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn workflow_eng_point_to_string(pt : Workflow_engPoint) -> String {
@@ -102,7 +102,7 @@ pub fn workflow_eng_series_var(s : Workflow_engSeries) -> Double {
   }
 }
 
-pub fn workflow_eng_series_std(s : Workflow_engSeries) -> Double { workflow_eng_sqrt(workflow_eng_series_var(s)) }
+pub fn workflow_eng_series_std(s : Workflow_engSeries) -> Double { @_common.sqrt(workflow_eng_series_var(s)) }
 
 pub fn workflow_eng_series_scale(s : Workflow_engSeries, f : Double) -> Workflow_engSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn workflow_eng_matrix_trace(m : Workflow_engMatrix) -> Double {
 pub fn workflow_eng_matrix_norm(m : Workflow_engMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  workflow_eng_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn workflow_eng_matrix_to_string(m : Workflow_engMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn workflow_eng_vector_dot(a : Workflow_engVector, b : Workflow_engVector) -
   sum
 }
 
-pub fn workflow_eng_vector_norm(v : Workflow_engVector) -> Double { workflow_eng_sqrt(workflow_eng_vector_dot(v, v)) }
+pub fn workflow_eng_vector_norm(v : Workflow_engVector) -> Double { @_common.sqrt(workflow_eng_vector_dot(v, v)) }
 
 pub fn workflow_eng_vector_normalize(v : Workflow_engVector) -> Workflow_engVector {
   let n = workflow_eng_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn workflow_eng_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn workflow_eng_std(data : Array[Double]) -> Double { workflow_eng_sqrt(workflow_eng_var(data)) }
+pub fn workflow_eng_std(data : Array[Double]) -> Double { @_common.sqrt(workflow_eng_var(data)) }
 
 pub fn workflow_eng_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn workflow_eng_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + workflow_eng_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn workflow_eng_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = workflow_eng_precision(pred, labels, pos); let r = workflow_eng_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn workflow_eng_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn workflow_eng_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn workflow_eng_dbl(x : Double) -> String {
   let i = if x >= 0.0 { workflow_eng_int(x) } else { -workflow_eng_int(-x) }

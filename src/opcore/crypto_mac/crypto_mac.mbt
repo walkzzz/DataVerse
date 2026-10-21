@@ -25,7 +25,7 @@ pub fn crypto_mac_point_label(p : Crypto_macPoint) -> Int { p.label }
 pub fn crypto_mac_point_dist(a : Crypto_macPoint, b : Crypto_macPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  crypto_mac_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn crypto_mac_point_add(a : Crypto_macPoint, b : Crypto_macPoint) -> Crypto_macPoint {
@@ -45,7 +45,7 @@ pub fn crypto_mac_point_dot(a : Crypto_macPoint, b : Crypto_macPoint) -> Double 
 }
 
 pub fn crypto_mac_point_norm(pt : Crypto_macPoint) -> Double {
-  crypto_mac_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn crypto_mac_point_to_string(pt : Crypto_macPoint) -> String {
@@ -102,7 +102,7 @@ pub fn crypto_mac_series_var(s : Crypto_macSeries) -> Double {
   }
 }
 
-pub fn crypto_mac_series_std(s : Crypto_macSeries) -> Double { crypto_mac_sqrt(crypto_mac_series_var(s)) }
+pub fn crypto_mac_series_std(s : Crypto_macSeries) -> Double { @_common.sqrt(crypto_mac_series_var(s)) }
 
 pub fn crypto_mac_series_scale(s : Crypto_macSeries, f : Double) -> Crypto_macSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn crypto_mac_matrix_trace(m : Crypto_macMatrix) -> Double {
 pub fn crypto_mac_matrix_norm(m : Crypto_macMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  crypto_mac_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn crypto_mac_matrix_to_string(m : Crypto_macMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn crypto_mac_vector_dot(a : Crypto_macVector, b : Crypto_macVector) -> Doub
   sum
 }
 
-pub fn crypto_mac_vector_norm(v : Crypto_macVector) -> Double { crypto_mac_sqrt(crypto_mac_vector_dot(v, v)) }
+pub fn crypto_mac_vector_norm(v : Crypto_macVector) -> Double { @_common.sqrt(crypto_mac_vector_dot(v, v)) }
 
 pub fn crypto_mac_vector_normalize(v : Crypto_macVector) -> Crypto_macVector {
   let n = crypto_mac_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn crypto_mac_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn crypto_mac_std(data : Array[Double]) -> Double { crypto_mac_sqrt(crypto_mac_var(data)) }
+pub fn crypto_mac_std(data : Array[Double]) -> Double { @_common.sqrt(crypto_mac_var(data)) }
 
 pub fn crypto_mac_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn crypto_mac_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + crypto_mac_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn crypto_mac_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = crypto_mac_precision(pred, labels, pos); let r = crypto_mac_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn crypto_mac_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn crypto_mac_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn crypto_mac_dbl(x : Double) -> String {
   let i = if x >= 0.0 { crypto_mac_int(x) } else { -crypto_mac_int(-x) }

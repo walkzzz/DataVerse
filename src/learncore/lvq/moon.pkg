@@ -1,2 +1,5 @@
 // learncore/lvq learncore/lvq
 // S13.102 new
+import {
+  "dataverse/extcore/_common",
+}

@@ -25,7 +25,7 @@ pub fn physics_sim_point_label(p : Physics_simPoint) -> Int { p.label }
 pub fn physics_sim_point_dist(a : Physics_simPoint, b : Physics_simPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  physics_sim_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn physics_sim_point_add(a : Physics_simPoint, b : Physics_simPoint) -> Physics_simPoint {
@@ -45,7 +45,7 @@ pub fn physics_sim_point_dot(a : Physics_simPoint, b : Physics_simPoint) -> Doub
 }
 
 pub fn physics_sim_point_norm(pt : Physics_simPoint) -> Double {
-  physics_sim_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn physics_sim_point_to_string(pt : Physics_simPoint) -> String {
@@ -102,7 +102,7 @@ pub fn physics_sim_series_var(s : Physics_simSeries) -> Double {
   }
 }
 
-pub fn physics_sim_series_std(s : Physics_simSeries) -> Double { physics_sim_sqrt(physics_sim_series_var(s)) }
+pub fn physics_sim_series_std(s : Physics_simSeries) -> Double { @_common.sqrt(physics_sim_series_var(s)) }
 
 pub fn physics_sim_series_scale(s : Physics_simSeries, f : Double) -> Physics_simSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn physics_sim_matrix_trace(m : Physics_simMatrix) -> Double {
 pub fn physics_sim_matrix_norm(m : Physics_simMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  physics_sim_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn physics_sim_matrix_to_string(m : Physics_simMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn physics_sim_vector_dot(a : Physics_simVector, b : Physics_simVector) -> D
   sum
 }
 
-pub fn physics_sim_vector_norm(v : Physics_simVector) -> Double { physics_sim_sqrt(physics_sim_vector_dot(v, v)) }
+pub fn physics_sim_vector_norm(v : Physics_simVector) -> Double { @_common.sqrt(physics_sim_vector_dot(v, v)) }
 
 pub fn physics_sim_vector_normalize(v : Physics_simVector) -> Physics_simVector {
   let n = physics_sim_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn physics_sim_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn physics_sim_std(data : Array[Double]) -> Double { physics_sim_sqrt(physics_sim_var(data)) }
+pub fn physics_sim_std(data : Array[Double]) -> Double { @_common.sqrt(physics_sim_var(data)) }
 
 pub fn physics_sim_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn physics_sim_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + physics_sim_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn physics_sim_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = physics_sim_precision(pred, labels, pos); let r = physics_sim_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn physics_sim_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn physics_sim_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn physics_sim_dbl(x : Double) -> String {
   let i = if x >= 0.0 { physics_sim_int(x) } else { -physics_sim_int(-x) }

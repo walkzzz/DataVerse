@@ -25,7 +25,7 @@ pub fn time_store_point_label(p : Time_storePoint) -> Int { p.label }
 pub fn time_store_point_dist(a : Time_storePoint, b : Time_storePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  time_store_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn time_store_point_add(a : Time_storePoint, b : Time_storePoint) -> Time_storePoint {
@@ -45,7 +45,7 @@ pub fn time_store_point_dot(a : Time_storePoint, b : Time_storePoint) -> Double 
 }
 
 pub fn time_store_point_norm(pt : Time_storePoint) -> Double {
-  time_store_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn time_store_point_to_string(pt : Time_storePoint) -> String {
@@ -102,7 +102,7 @@ pub fn time_store_series_var(s : Time_storeSeries) -> Double {
   }
 }
 
-pub fn time_store_series_std(s : Time_storeSeries) -> Double { time_store_sqrt(time_store_series_var(s)) }
+pub fn time_store_series_std(s : Time_storeSeries) -> Double { @_common.sqrt(time_store_series_var(s)) }
 
 pub fn time_store_series_scale(s : Time_storeSeries, f : Double) -> Time_storeSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn time_store_matrix_trace(m : Time_storeMatrix) -> Double {
 pub fn time_store_matrix_norm(m : Time_storeMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  time_store_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn time_store_matrix_to_string(m : Time_storeMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn time_store_vector_dot(a : Time_storeVector, b : Time_storeVector) -> Doub
   sum
 }
 
-pub fn time_store_vector_norm(v : Time_storeVector) -> Double { time_store_sqrt(time_store_vector_dot(v, v)) }
+pub fn time_store_vector_norm(v : Time_storeVector) -> Double { @_common.sqrt(time_store_vector_dot(v, v)) }
 
 pub fn time_store_vector_normalize(v : Time_storeVector) -> Time_storeVector {
   let n = time_store_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn time_store_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn time_store_std(data : Array[Double]) -> Double { time_store_sqrt(time_store_var(data)) }
+pub fn time_store_std(data : Array[Double]) -> Double { @_common.sqrt(time_store_var(data)) }
 
 pub fn time_store_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn time_store_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + time_store_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn time_store_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = time_store_precision(pred, labels, pos); let r = time_store_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn time_store_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn time_store_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn time_store_dbl(x : Double) -> String {
   let i = if x >= 0.0 { time_store_int(x) } else { -time_store_int(-x) }

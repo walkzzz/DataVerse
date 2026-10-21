@@ -1,2 +1,5 @@
 // dataobject/encode_arrow dataobject/encode_arrow
 // S13.206 new
+import {
+  "dataverse/extcore/_common",
+}

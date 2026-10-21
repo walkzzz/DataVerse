@@ -25,7 +25,7 @@ pub fn tabu_search_point_label(p : Tabu_searchPoint) -> Int { p.label }
 pub fn tabu_search_point_dist(a : Tabu_searchPoint, b : Tabu_searchPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  tabu_search_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn tabu_search_point_add(a : Tabu_searchPoint, b : Tabu_searchPoint) -> Tabu_searchPoint {
@@ -45,7 +45,7 @@ pub fn tabu_search_point_dot(a : Tabu_searchPoint, b : Tabu_searchPoint) -> Doub
 }
 
 pub fn tabu_search_point_norm(pt : Tabu_searchPoint) -> Double {
-  tabu_search_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn tabu_search_point_to_string(pt : Tabu_searchPoint) -> String {
@@ -102,7 +102,7 @@ pub fn tabu_search_series_var(s : Tabu_searchSeries) -> Double {
   }
 }
 
-pub fn tabu_search_series_std(s : Tabu_searchSeries) -> Double { tabu_search_sqrt(tabu_search_series_var(s)) }
+pub fn tabu_search_series_std(s : Tabu_searchSeries) -> Double { @_common.sqrt(tabu_search_series_var(s)) }
 
 pub fn tabu_search_series_scale(s : Tabu_searchSeries, f : Double) -> Tabu_searchSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn tabu_search_matrix_trace(m : Tabu_searchMatrix) -> Double {
 pub fn tabu_search_matrix_norm(m : Tabu_searchMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  tabu_search_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn tabu_search_matrix_to_string(m : Tabu_searchMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn tabu_search_vector_dot(a : Tabu_searchVector, b : Tabu_searchVector) -> D
   sum
 }
 
-pub fn tabu_search_vector_norm(v : Tabu_searchVector) -> Double { tabu_search_sqrt(tabu_search_vector_dot(v, v)) }
+pub fn tabu_search_vector_norm(v : Tabu_searchVector) -> Double { @_common.sqrt(tabu_search_vector_dot(v, v)) }
 
 pub fn tabu_search_vector_normalize(v : Tabu_searchVector) -> Tabu_searchVector {
   let n = tabu_search_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn tabu_search_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn tabu_search_std(data : Array[Double]) -> Double { tabu_search_sqrt(tabu_search_var(data)) }
+pub fn tabu_search_std(data : Array[Double]) -> Double { @_common.sqrt(tabu_search_var(data)) }
 
 pub fn tabu_search_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn tabu_search_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + tabu_search_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn tabu_search_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = tabu_search_precision(pred, labels, pos); let r = tabu_search_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn tabu_search_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn tabu_search_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn tabu_search_dbl(x : Double) -> String {
   let i = if x >= 0.0 { tabu_search_int(x) } else { -tabu_search_int(-x) }

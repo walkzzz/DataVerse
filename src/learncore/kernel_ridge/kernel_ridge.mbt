@@ -25,7 +25,7 @@ pub fn kernel_ridge_point_label(p : Kernel_ridgePoint) -> Int { p.label }
 pub fn kernel_ridge_point_dist(a : Kernel_ridgePoint, b : Kernel_ridgePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  kernel_ridge_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn kernel_ridge_point_add(a : Kernel_ridgePoint, b : Kernel_ridgePoint) -> Kernel_ridgePoint {
@@ -45,7 +45,7 @@ pub fn kernel_ridge_point_dot(a : Kernel_ridgePoint, b : Kernel_ridgePoint) -> D
 }
 
 pub fn kernel_ridge_point_norm(pt : Kernel_ridgePoint) -> Double {
-  kernel_ridge_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn kernel_ridge_point_to_string(pt : Kernel_ridgePoint) -> String {
@@ -102,7 +102,7 @@ pub fn kernel_ridge_series_var(s : Kernel_ridgeSeries) -> Double {
   }
 }
 
-pub fn kernel_ridge_series_std(s : Kernel_ridgeSeries) -> Double { kernel_ridge_sqrt(kernel_ridge_series_var(s)) }
+pub fn kernel_ridge_series_std(s : Kernel_ridgeSeries) -> Double { @_common.sqrt(kernel_ridge_series_var(s)) }
 
 pub fn kernel_ridge_series_scale(s : Kernel_ridgeSeries, f : Double) -> Kernel_ridgeSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn kernel_ridge_matrix_trace(m : Kernel_ridgeMatrix) -> Double {
 pub fn kernel_ridge_matrix_norm(m : Kernel_ridgeMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  kernel_ridge_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn kernel_ridge_matrix_to_string(m : Kernel_ridgeMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn kernel_ridge_vector_dot(a : Kernel_ridgeVector, b : Kernel_ridgeVector) -
   sum
 }
 
-pub fn kernel_ridge_vector_norm(v : Kernel_ridgeVector) -> Double { kernel_ridge_sqrt(kernel_ridge_vector_dot(v, v)) }
+pub fn kernel_ridge_vector_norm(v : Kernel_ridgeVector) -> Double { @_common.sqrt(kernel_ridge_vector_dot(v, v)) }
 
 pub fn kernel_ridge_vector_normalize(v : Kernel_ridgeVector) -> Kernel_ridgeVector {
   let n = kernel_ridge_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn kernel_ridge_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn kernel_ridge_std(data : Array[Double]) -> Double { kernel_ridge_sqrt(kernel_ridge_var(data)) }
+pub fn kernel_ridge_std(data : Array[Double]) -> Double { @_common.sqrt(kernel_ridge_var(data)) }
 
 pub fn kernel_ridge_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn kernel_ridge_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + kernel_ridge_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn kernel_ridge_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = kernel_ridge_precision(pred, labels, pos); let r = kernel_ridge_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn kernel_ridge_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn kernel_ridge_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn kernel_ridge_dbl(x : Double) -> String {
   let i = if x >= 0.0 { kernel_ridge_int(x) } else { -kernel_ridge_int(-x) }

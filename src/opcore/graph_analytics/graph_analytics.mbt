@@ -14,24 +14,6 @@ const GA_LARGE_DOUBLE : Double = 999999999999999.0
 // 辅助数学函数 / Helper math functions (private)
 // ============================================================
 
-fn ga_sqrt(x : Double) -> Double {
-  if x < 0.0 {
-    return 0.0
-  }
-  if x == 0.0 {
-    return 0.0
-  }
-  let mut guess = x / 2.0
-  if guess == 0.0 {
-    guess = 1.0
-  }
-  for _ in 0..<60 {
-    guess = (guess + x / guess) / 2.0
-  }
-  guess
-}
-
-
 // ============================================================
 // 类型定义 / Type definitions
 // ============================================================
@@ -742,7 +724,7 @@ pub fn centrality_eigenvector(g : Graph, iterations : Int) -> Array[Double] {
     for i in 0..<n {
       norm = norm + new_val[i] * new_val[i]
     }
-    norm = ga_sqrt(norm)
+    norm = @_common.sqrt(norm)
     if norm > 0.0 {
       for i in 0..<n {
         result[i] = new_val[i] / norm

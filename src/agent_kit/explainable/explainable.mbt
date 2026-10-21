@@ -29,22 +29,6 @@ fn xa_exp(x : Double) -> Double {
   }
 }
 
-fn xa_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    0.0
-  } else {
-    let mut guess = x
-    for _ in 0..<40 {
-      guess = 0.5 * (guess + x / guess)
-    }
-    guess
-  }
-}
-
-fn xa_abs(x : Double) -> Double {
-  if x < 0.0 { -x } else { x }
-}
-
 fn xa_mean(arr : Array[Double]) -> Double {
   if arr.length() == 0 {
     0.0
@@ -200,7 +184,7 @@ pub fn lime_fit_local(
       num = num + weights[i] * instance[j] * predictions[i]
       den = den + weights[i] * instance[j] * instance[j]
     }
-    if xa_abs(den) < 0.000001 {
+    if @_common.abs(den) < 0.000001 {
       coefs.push(0.0)
     } else {
       coefs.push(num / den)
@@ -567,7 +551,7 @@ pub fn permutation_importance(
     let d = predict_fn(instances[i]) - labels[i]
     base_err = base_err + d * d
   }
-  base_err = xa_sqrt(base_err / instances.length().to_double())
+  base_err = @_common.sqrt(base_err / instances.length().to_double())
   let importances : Array[Double] = []
   let mut state = config.seed
   for j in 0..<n {
@@ -596,7 +580,7 @@ pub fn permutation_importance(
         let d = predict_fn(permuted[i]) - labels[i]
         err = err + d * d
       }
-      err = xa_sqrt(err / permuted.length().to_double())
+      err = @_common.sqrt(err / permuted.length().to_double())
       sum_imp = sum_imp + (err - base_err)
     }
     importances.push(sum_imp / config.num_repeats.to_double())
@@ -820,13 +804,13 @@ pub fn anchors_precision(
     let mut ok = true
     for a in 0..<anchor.length() {
       let (idx, val) = anchor[a]
-      if idx < instances[i].length() && xa_abs(instances[i][idx] - val) > 0.000001 {
+      if idx < instances[i].length() && @_common.abs(instances[i][idx] - val) > 0.000001 {
         ok = false
       }
     }
     if ok {
       covered = covered + 1
-      if xa_abs(predict_fn(instances[i]) - target) < 0.000001 {
+      if @_common.abs(predict_fn(instances[i]) - target) < 0.000001 {
         correct = correct + 1
       }
     }
@@ -914,7 +898,7 @@ pub fn cf_distance(instance : Array[Double], counterfactual : Array[Double]) -> 
     let d = instance[i] - counterfactual[i]
     s = s + d * d
   }
-  xa_sqrt(s)
+  @_common.sqrt(s)
 }
 
 /// 反事实查找 / Counterfactual find.
@@ -949,7 +933,7 @@ pub fn cf_find(
       }
     }
     let dist = cf_distance(instance, candidate)
-    if dist < best_dist && xa_abs(predict_fn(candidate) - target) < 0.01 {
+    if dist < best_dist && @_common.abs(predict_fn(candidate) - target) < 0.01 {
       best_dist = dist
       best = candidate
     }
@@ -1030,7 +1014,7 @@ pub fn tree_rules(config : DecisionTreeExplainConfig, path : Array[Int]) -> Stri
       let name = if node.feature < config.feature_names.length() { config.feature_names[node.feature] } else { "f" + node.feature.to_string() }
       if i < path.length() - 1 {
         let next = config.nodes[path[i + 1]]
-        if next.feature == node.feature && xa_abs(next.threshold - node.threshold) < 0.000001 {
+        if next.feature == node.feature && @_common.abs(next.threshold - node.threshold) < 0.000001 {
           result = result + name + " <= " + node.threshold.to_string()
         } else {
           result = result + name + " > " + node.threshold.to_string()
@@ -1056,7 +1040,7 @@ pub fn tree_feature_importance(config : DecisionTreeExplainConfig) -> Array[Doub
     if !(node.is_leaf) && node.feature < n {
       let left = if node.left < config.nodes.length() { config.nodes[node.left].value } else { 0.0 }
       let right = if node.right < config.nodes.length() { config.nodes[node.right].value } else { 0.0 }
-      importances[node.feature] = importances[node.feature] + xa_abs(left - right)
+      importances[node.feature] = importances[node.feature] + @_common.abs(left - right)
     }
   }
   let mut total = 0.0
@@ -1124,7 +1108,7 @@ pub fn rule_extract(
     for i in 0..<instances.length() {
       let matches = if le { instances[i][feat] <= thresh } else { instances[i][feat] > thresh }
       if matches {
-        if xa_abs(labels[i] - 1.0) < 0.000001 {
+        if @_common.abs(labels[i] - 1.0) < 0.000001 {
           pos = pos + 1
         } else {
           neg = neg + 1
@@ -1159,7 +1143,7 @@ pub fn rule_simplify(rules : Array[Rule]) -> Array[Rule] {
           for k in 0..<rules[i].conditions.length() {
             let (f1, t1, l1) = rules[i].conditions[k]
             let (f2, t2, l2) = simplified[j].conditions[k]
-            if f1 != f2 || xa_abs(t1 - t2) > 0.000001 || l1 != l2 {
+            if f1 != f2 || @_common.abs(t1 - t2) > 0.000001 || l1 != l2 {
               same = false
             }
           }
@@ -1206,7 +1190,7 @@ pub fn surrogate_fit(
       num = num + instances[i][j] * predictions[i]
       den = den + instances[i][j] * instances[i][j]
     }
-    if xa_abs(den) < 0.000001 {
+    if @_common.abs(den) < 0.000001 {
       coefs.push(0.0)
     } else {
       coefs.push(num / den)
@@ -1280,7 +1264,7 @@ pub fn xai_evaluate(
   let orig = predict_fn(instance)
   let mut sum_imp = 0.0
   for i in 0..<explanation.contributions.length() {
-    sum_imp = sum_imp + xa_abs(explanation.contributions[i].contribution)
+    sum_imp = sum_imp + @_common.abs(explanation.contributions[i].contribution)
   }
   let mut s = 0.0
   for i in 0..<instance.length() {
@@ -1289,12 +1273,12 @@ pub fn xai_evaluate(
       p.push(instance[k])
     }
     p[i] = 0.0
-    s = s + xa_abs(orig - predict_fn(p))
+    s = s + @_common.abs(orig - predict_fn(p))
   }
   if s < 0.000001 {
     1.0
   } else {
-    1.0 - xa_abs(sum_imp - s) / s
+    1.0 - @_common.abs(sum_imp - s) / s
   }
 }
 
@@ -1339,14 +1323,14 @@ pub fn explanation_visualize(explanation : Explanation) -> String {
   result = result + "+--------------------------------------+\n"
   let mut max_imp = 0.0
   for i in 0..<explanation.contributions.length() {
-    let a = xa_abs(explanation.contributions[i].contribution)
+    let a = @_common.abs(explanation.contributions[i].contribution)
     if a > max_imp {
       max_imp = a
     }
   }
   for i in 0..<explanation.contributions.length() {
     let c = explanation.contributions[i]
-    let a = xa_abs(c.contribution)
+    let a = @_common.abs(c.contribution)
     let bar_len = if max_imp > 0.0 { (a / max_imp * 30.0).to_int() } else { 0 }
     let mut bar = ""
     for _ in 0..<bar_len {
@@ -1369,8 +1353,8 @@ fn xa_sort_desc_idx(contributions : Array[FeatureContribution], n : Int) -> Arra
   }
   for i in 0..<n {
     for j in (i + 1)..<n {
-      let ai = if i < contributions.length() { xa_abs(contributions[i].contribution) } else { 0.0 }
-      let aj = if j < contributions.length() { xa_abs(contributions[j].contribution) } else { 0.0 }
+      let ai = if i < contributions.length() { @_common.abs(contributions[i].contribution) } else { 0.0 }
+      let aj = if j < contributions.length() { @_common.abs(contributions[j].contribution) } else { 0.0 }
       if aj > ai {
         let tmp = sorted_idx[i]
         sorted_idx[i] = sorted_idx[j]
@@ -1399,7 +1383,7 @@ pub fn faithfulness_eval(
   for k in 0..<n {
     cur[sorted_idx[k]] = 0.0
     let cur_pred = predict_fn(cur)
-    auc = auc + xa_abs(prev_pred - cur_pred)
+    auc = auc + @_common.abs(prev_pred - cur_pred)
     prev_pred = cur_pred
   }
   if n == 0 {
@@ -1431,7 +1415,7 @@ pub fn monotonicity_eval(
     let before = predict_fn(cur)
     cur[sorted_idx[k]] = 0.0
     let after = predict_fn(cur)
-    let drop = xa_abs(before - after)
+    let drop = @_common.abs(before - after)
     if k > 0 {
       total = total + 1
       if drop <= prev_drop + 0.000001 {
@@ -1459,8 +1443,8 @@ pub fn completeness_eval(explanation : Explanation, instance : Array[Double], pr
   for i in 0..<explanation.contributions.length() {
     sum_contrib = sum_contrib + explanation.contributions[i].contribution
   }
-  let diff = xa_abs((orig - base_pred) - sum_contrib)
-  let denom = xa_abs(orig - base_pred)
+  let diff = @_common.abs((orig - base_pred) - sum_contrib)
+  let denom = @_common.abs(orig - base_pred)
   if denom < 0.000001 {
     1.0
   } else {

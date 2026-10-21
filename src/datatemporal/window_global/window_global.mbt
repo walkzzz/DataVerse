@@ -25,7 +25,7 @@ pub fn window_global_point_label(p : Window_globalPoint) -> Int { p.label }
 pub fn window_global_point_dist(a : Window_globalPoint, b : Window_globalPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  window_global_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn window_global_point_add(a : Window_globalPoint, b : Window_globalPoint) -> Window_globalPoint {
@@ -45,7 +45,7 @@ pub fn window_global_point_dot(a : Window_globalPoint, b : Window_globalPoint) -
 }
 
 pub fn window_global_point_norm(pt : Window_globalPoint) -> Double {
-  window_global_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn window_global_point_to_string(pt : Window_globalPoint) -> String {
@@ -102,7 +102,7 @@ pub fn window_global_series_var(s : Window_globalSeries) -> Double {
   }
 }
 
-pub fn window_global_series_std(s : Window_globalSeries) -> Double { window_global_sqrt(window_global_series_var(s)) }
+pub fn window_global_series_std(s : Window_globalSeries) -> Double { @_common.sqrt(window_global_series_var(s)) }
 
 pub fn window_global_series_scale(s : Window_globalSeries, f : Double) -> Window_globalSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn window_global_matrix_trace(m : Window_globalMatrix) -> Double {
 pub fn window_global_matrix_norm(m : Window_globalMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  window_global_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn window_global_matrix_to_string(m : Window_globalMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn window_global_vector_dot(a : Window_globalVector, b : Window_globalVector
   sum
 }
 
-pub fn window_global_vector_norm(v : Window_globalVector) -> Double { window_global_sqrt(window_global_vector_dot(v, v)) }
+pub fn window_global_vector_norm(v : Window_globalVector) -> Double { @_common.sqrt(window_global_vector_dot(v, v)) }
 
 pub fn window_global_vector_normalize(v : Window_globalVector) -> Window_globalVector {
   let n = window_global_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn window_global_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn window_global_std(data : Array[Double]) -> Double { window_global_sqrt(window_global_var(data)) }
+pub fn window_global_std(data : Array[Double]) -> Double { @_common.sqrt(window_global_var(data)) }
 
 pub fn window_global_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn window_global_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + window_global_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn window_global_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = window_global_precision(pred, labels, pos); let r = window_global_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn window_global_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn window_global_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn window_global_dbl(x : Double) -> String {
   let i = if x >= 0.0 { window_global_int(x) } else { -window_global_int(-x) }

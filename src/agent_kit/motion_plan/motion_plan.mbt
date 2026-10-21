@@ -25,7 +25,7 @@ pub fn motion_plan_point_label(p : Motion_planPoint) -> Int { p.label }
 pub fn motion_plan_point_dist(a : Motion_planPoint, b : Motion_planPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  motion_plan_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn motion_plan_point_add(a : Motion_planPoint, b : Motion_planPoint) -> Motion_planPoint {
@@ -45,7 +45,7 @@ pub fn motion_plan_point_dot(a : Motion_planPoint, b : Motion_planPoint) -> Doub
 }
 
 pub fn motion_plan_point_norm(pt : Motion_planPoint) -> Double {
-  motion_plan_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn motion_plan_point_to_string(pt : Motion_planPoint) -> String {
@@ -102,7 +102,7 @@ pub fn motion_plan_series_var(s : Motion_planSeries) -> Double {
   }
 }
 
-pub fn motion_plan_series_std(s : Motion_planSeries) -> Double { motion_plan_sqrt(motion_plan_series_var(s)) }
+pub fn motion_plan_series_std(s : Motion_planSeries) -> Double { @_common.sqrt(motion_plan_series_var(s)) }
 
 pub fn motion_plan_series_scale(s : Motion_planSeries, f : Double) -> Motion_planSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn motion_plan_matrix_trace(m : Motion_planMatrix) -> Double {
 pub fn motion_plan_matrix_norm(m : Motion_planMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  motion_plan_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn motion_plan_matrix_to_string(m : Motion_planMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn motion_plan_vector_dot(a : Motion_planVector, b : Motion_planVector) -> D
   sum
 }
 
-pub fn motion_plan_vector_norm(v : Motion_planVector) -> Double { motion_plan_sqrt(motion_plan_vector_dot(v, v)) }
+pub fn motion_plan_vector_norm(v : Motion_planVector) -> Double { @_common.sqrt(motion_plan_vector_dot(v, v)) }
 
 pub fn motion_plan_vector_normalize(v : Motion_planVector) -> Motion_planVector {
   let n = motion_plan_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn motion_plan_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn motion_plan_std(data : Array[Double]) -> Double { motion_plan_sqrt(motion_plan_var(data)) }
+pub fn motion_plan_std(data : Array[Double]) -> Double { @_common.sqrt(motion_plan_var(data)) }
 
 pub fn motion_plan_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn motion_plan_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + motion_plan_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn motion_plan_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = motion_plan_precision(pred, labels, pos); let r = motion_plan_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn motion_plan_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn motion_plan_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn motion_plan_dbl(x : Double) -> String {
   let i = if x >= 0.0 { motion_plan_int(x) } else { -motion_plan_int(-x) }

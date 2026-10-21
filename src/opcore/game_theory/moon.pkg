@@ -1,2 +1,5 @@
 // opcore/game_theory opcore/game_theory
 // S13.22 new
+import {
+  "dataverse/extcore/_common",
+}

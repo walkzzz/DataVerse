@@ -25,7 +25,7 @@ pub fn social_sim_point_label(p : Social_simPoint) -> Int { p.label }
 pub fn social_sim_point_dist(a : Social_simPoint, b : Social_simPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  social_sim_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn social_sim_point_add(a : Social_simPoint, b : Social_simPoint) -> Social_simPoint {
@@ -45,7 +45,7 @@ pub fn social_sim_point_dot(a : Social_simPoint, b : Social_simPoint) -> Double 
 }
 
 pub fn social_sim_point_norm(pt : Social_simPoint) -> Double {
-  social_sim_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn social_sim_point_to_string(pt : Social_simPoint) -> String {
@@ -102,7 +102,7 @@ pub fn social_sim_series_var(s : Social_simSeries) -> Double {
   }
 }
 
-pub fn social_sim_series_std(s : Social_simSeries) -> Double { social_sim_sqrt(social_sim_series_var(s)) }
+pub fn social_sim_series_std(s : Social_simSeries) -> Double { @_common.sqrt(social_sim_series_var(s)) }
 
 pub fn social_sim_series_scale(s : Social_simSeries, f : Double) -> Social_simSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn social_sim_matrix_trace(m : Social_simMatrix) -> Double {
 pub fn social_sim_matrix_norm(m : Social_simMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  social_sim_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn social_sim_matrix_to_string(m : Social_simMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn social_sim_vector_dot(a : Social_simVector, b : Social_simVector) -> Doub
   sum
 }
 
-pub fn social_sim_vector_norm(v : Social_simVector) -> Double { social_sim_sqrt(social_sim_vector_dot(v, v)) }
+pub fn social_sim_vector_norm(v : Social_simVector) -> Double { @_common.sqrt(social_sim_vector_dot(v, v)) }
 
 pub fn social_sim_vector_normalize(v : Social_simVector) -> Social_simVector {
   let n = social_sim_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn social_sim_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn social_sim_std(data : Array[Double]) -> Double { social_sim_sqrt(social_sim_var(data)) }
+pub fn social_sim_std(data : Array[Double]) -> Double { @_common.sqrt(social_sim_var(data)) }
 
 pub fn social_sim_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn social_sim_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + social_sim_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn social_sim_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = social_sim_precision(pred, labels, pos); let r = social_sim_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn social_sim_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn social_sim_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn social_sim_dbl(x : Double) -> String {
   let i = if x >= 0.0 { social_sim_int(x) } else { -social_sim_int(-x) }

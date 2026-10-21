@@ -1,2 +1,5 @@
 // opcore/image_stitch opcore/image_stitch
 // S13.48 new
+import {
+  "dataverse/extcore/_common",
+}

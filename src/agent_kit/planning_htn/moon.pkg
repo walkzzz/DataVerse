@@ -1,2 +1,5 @@
 // agent_kit/planning_htn agent_kit/planning_htn
 // S13.165 new
+import {
+  "dataverse/extcore/_common",
+}

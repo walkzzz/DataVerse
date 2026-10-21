@@ -25,7 +25,7 @@ pub fn theorem_prove_point_label(p : Theorem_provePoint) -> Int { p.label }
 pub fn theorem_prove_point_dist(a : Theorem_provePoint, b : Theorem_provePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  theorem_prove_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn theorem_prove_point_add(a : Theorem_provePoint, b : Theorem_provePoint) -> Theorem_provePoint {
@@ -45,7 +45,7 @@ pub fn theorem_prove_point_dot(a : Theorem_provePoint, b : Theorem_provePoint) -
 }
 
 pub fn theorem_prove_point_norm(pt : Theorem_provePoint) -> Double {
-  theorem_prove_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn theorem_prove_point_to_string(pt : Theorem_provePoint) -> String {
@@ -102,7 +102,7 @@ pub fn theorem_prove_series_var(s : Theorem_proveSeries) -> Double {
   }
 }
 
-pub fn theorem_prove_series_std(s : Theorem_proveSeries) -> Double { theorem_prove_sqrt(theorem_prove_series_var(s)) }
+pub fn theorem_prove_series_std(s : Theorem_proveSeries) -> Double { @_common.sqrt(theorem_prove_series_var(s)) }
 
 pub fn theorem_prove_series_scale(s : Theorem_proveSeries, f : Double) -> Theorem_proveSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn theorem_prove_matrix_trace(m : Theorem_proveMatrix) -> Double {
 pub fn theorem_prove_matrix_norm(m : Theorem_proveMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  theorem_prove_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn theorem_prove_matrix_to_string(m : Theorem_proveMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn theorem_prove_vector_dot(a : Theorem_proveVector, b : Theorem_proveVector
   sum
 }
 
-pub fn theorem_prove_vector_norm(v : Theorem_proveVector) -> Double { theorem_prove_sqrt(theorem_prove_vector_dot(v, v)) }
+pub fn theorem_prove_vector_norm(v : Theorem_proveVector) -> Double { @_common.sqrt(theorem_prove_vector_dot(v, v)) }
 
 pub fn theorem_prove_vector_normalize(v : Theorem_proveVector) -> Theorem_proveVector {
   let n = theorem_prove_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn theorem_prove_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn theorem_prove_std(data : Array[Double]) -> Double { theorem_prove_sqrt(theorem_prove_var(data)) }
+pub fn theorem_prove_std(data : Array[Double]) -> Double { @_common.sqrt(theorem_prove_var(data)) }
 
 pub fn theorem_prove_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn theorem_prove_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + theorem_prove_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn theorem_prove_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = theorem_prove_precision(pred, labels, pos); let r = theorem_prove_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn theorem_prove_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn theorem_prove_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn theorem_prove_dbl(x : Double) -> String {
   let i = if x >= 0.0 { theorem_prove_int(x) } else { -theorem_prove_int(-x) }

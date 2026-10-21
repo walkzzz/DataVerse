@@ -1,2 +1,5 @@
 // dataobject/encode_xml dataobject/encode_xml
 // S13.200 new
+import {
+  "dataverse/extcore/_common",
+}

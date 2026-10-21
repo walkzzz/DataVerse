@@ -1,2 +1,5 @@
 // opcore/markov_chain opcore/markov_chain
 // S13.20 new
+import {
+  "dataverse/extcore/_common",
+}

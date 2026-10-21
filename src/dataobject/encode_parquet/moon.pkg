@@ -1,2 +1,5 @@
 // dataobject/encode_parquet dataobject/encode_parquet
 // S13.204 new
+import {
+  "dataverse/extcore/_common",
+}

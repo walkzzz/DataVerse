@@ -25,7 +25,7 @@ pub fn color_correct_point_label(p : Color_correctPoint) -> Int { p.label }
 pub fn color_correct_point_dist(a : Color_correctPoint, b : Color_correctPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  color_correct_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn color_correct_point_add(a : Color_correctPoint, b : Color_correctPoint) -> Color_correctPoint {
@@ -45,7 +45,7 @@ pub fn color_correct_point_dot(a : Color_correctPoint, b : Color_correctPoint) -
 }
 
 pub fn color_correct_point_norm(pt : Color_correctPoint) -> Double {
-  color_correct_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn color_correct_point_to_string(pt : Color_correctPoint) -> String {
@@ -102,7 +102,7 @@ pub fn color_correct_series_var(s : Color_correctSeries) -> Double {
   }
 }
 
-pub fn color_correct_series_std(s : Color_correctSeries) -> Double { color_correct_sqrt(color_correct_series_var(s)) }
+pub fn color_correct_series_std(s : Color_correctSeries) -> Double { @_common.sqrt(color_correct_series_var(s)) }
 
 pub fn color_correct_series_scale(s : Color_correctSeries, f : Double) -> Color_correctSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn color_correct_matrix_trace(m : Color_correctMatrix) -> Double {
 pub fn color_correct_matrix_norm(m : Color_correctMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  color_correct_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn color_correct_matrix_to_string(m : Color_correctMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn color_correct_vector_dot(a : Color_correctVector, b : Color_correctVector
   sum
 }
 
-pub fn color_correct_vector_norm(v : Color_correctVector) -> Double { color_correct_sqrt(color_correct_vector_dot(v, v)) }
+pub fn color_correct_vector_norm(v : Color_correctVector) -> Double { @_common.sqrt(color_correct_vector_dot(v, v)) }
 
 pub fn color_correct_vector_normalize(v : Color_correctVector) -> Color_correctVector {
   let n = color_correct_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn color_correct_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn color_correct_std(data : Array[Double]) -> Double { color_correct_sqrt(color_correct_var(data)) }
+pub fn color_correct_std(data : Array[Double]) -> Double { @_common.sqrt(color_correct_var(data)) }
 
 pub fn color_correct_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn color_correct_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + color_correct_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn color_correct_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = color_correct_precision(pred, labels, pos); let r = color_correct_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn color_correct_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn color_correct_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn color_correct_dbl(x : Double) -> String {
   let i = if x >= 0.0 { color_correct_int(x) } else { -color_correct_int(-x) }

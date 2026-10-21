@@ -25,7 +25,7 @@ pub fn table_store_point_label(p : Table_storePoint) -> Int { p.label }
 pub fn table_store_point_dist(a : Table_storePoint, b : Table_storePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  table_store_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn table_store_point_add(a : Table_storePoint, b : Table_storePoint) -> Table_storePoint {
@@ -45,7 +45,7 @@ pub fn table_store_point_dot(a : Table_storePoint, b : Table_storePoint) -> Doub
 }
 
 pub fn table_store_point_norm(pt : Table_storePoint) -> Double {
-  table_store_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn table_store_point_to_string(pt : Table_storePoint) -> String {
@@ -102,7 +102,7 @@ pub fn table_store_series_var(s : Table_storeSeries) -> Double {
   }
 }
 
-pub fn table_store_series_std(s : Table_storeSeries) -> Double { table_store_sqrt(table_store_series_var(s)) }
+pub fn table_store_series_std(s : Table_storeSeries) -> Double { @_common.sqrt(table_store_series_var(s)) }
 
 pub fn table_store_series_scale(s : Table_storeSeries, f : Double) -> Table_storeSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn table_store_matrix_trace(m : Table_storeMatrix) -> Double {
 pub fn table_store_matrix_norm(m : Table_storeMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  table_store_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn table_store_matrix_to_string(m : Table_storeMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn table_store_vector_dot(a : Table_storeVector, b : Table_storeVector) -> D
   sum
 }
 
-pub fn table_store_vector_norm(v : Table_storeVector) -> Double { table_store_sqrt(table_store_vector_dot(v, v)) }
+pub fn table_store_vector_norm(v : Table_storeVector) -> Double { @_common.sqrt(table_store_vector_dot(v, v)) }
 
 pub fn table_store_vector_normalize(v : Table_storeVector) -> Table_storeVector {
   let n = table_store_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn table_store_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn table_store_std(data : Array[Double]) -> Double { table_store_sqrt(table_store_var(data)) }
+pub fn table_store_std(data : Array[Double]) -> Double { @_common.sqrt(table_store_var(data)) }
 
 pub fn table_store_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn table_store_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + table_store_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn table_store_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doub
   let p_ = table_store_precision(pred, labels, pos); let r = table_store_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn table_store_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn table_store_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn table_store_dbl(x : Double) -> String {
   let i = if x >= 0.0 { table_store_int(x) } else { -table_store_int(-x) }

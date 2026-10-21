@@ -25,7 +25,7 @@ pub fn filter_fir_point_label(p : Filter_firPoint) -> Int { p.label }
 pub fn filter_fir_point_dist(a : Filter_firPoint, b : Filter_firPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  filter_fir_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn filter_fir_point_add(a : Filter_firPoint, b : Filter_firPoint) -> Filter_firPoint {
@@ -45,7 +45,7 @@ pub fn filter_fir_point_dot(a : Filter_firPoint, b : Filter_firPoint) -> Double 
 }
 
 pub fn filter_fir_point_norm(pt : Filter_firPoint) -> Double {
-  filter_fir_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn filter_fir_point_to_string(pt : Filter_firPoint) -> String {
@@ -102,7 +102,7 @@ pub fn filter_fir_series_var(s : Filter_firSeries) -> Double {
   }
 }
 
-pub fn filter_fir_series_std(s : Filter_firSeries) -> Double { filter_fir_sqrt(filter_fir_series_var(s)) }
+pub fn filter_fir_series_std(s : Filter_firSeries) -> Double { @_common.sqrt(filter_fir_series_var(s)) }
 
 pub fn filter_fir_series_scale(s : Filter_firSeries, f : Double) -> Filter_firSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn filter_fir_matrix_trace(m : Filter_firMatrix) -> Double {
 pub fn filter_fir_matrix_norm(m : Filter_firMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  filter_fir_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn filter_fir_matrix_to_string(m : Filter_firMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn filter_fir_vector_dot(a : Filter_firVector, b : Filter_firVector) -> Doub
   sum
 }
 
-pub fn filter_fir_vector_norm(v : Filter_firVector) -> Double { filter_fir_sqrt(filter_fir_vector_dot(v, v)) }
+pub fn filter_fir_vector_norm(v : Filter_firVector) -> Double { @_common.sqrt(filter_fir_vector_dot(v, v)) }
 
 pub fn filter_fir_vector_normalize(v : Filter_firVector) -> Filter_firVector {
   let n = filter_fir_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn filter_fir_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn filter_fir_std(data : Array[Double]) -> Double { filter_fir_sqrt(filter_fir_var(data)) }
+pub fn filter_fir_std(data : Array[Double]) -> Double { @_common.sqrt(filter_fir_var(data)) }
 
 pub fn filter_fir_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn filter_fir_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + filter_fir_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn filter_fir_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Doubl
   let p_ = filter_fir_precision(pred, labels, pos); let r = filter_fir_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn filter_fir_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn filter_fir_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn filter_fir_dbl(x : Double) -> String {
   let i = if x >= 0.0 { filter_fir_int(x) } else { -filter_fir_int(-x) }

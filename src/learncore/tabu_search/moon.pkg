@@ -1,2 +1,5 @@
 // learncore/tabu_search learncore/tabu_search
 // S13.80 new
+import {
+  "dataverse/extcore/_common",
+}

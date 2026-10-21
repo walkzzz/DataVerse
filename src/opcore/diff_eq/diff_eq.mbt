@@ -25,7 +25,7 @@ pub fn diff_eq_point_label(p : Diff_eqPoint) -> Int { p.label }
 pub fn diff_eq_point_dist(a : Diff_eqPoint, b : Diff_eqPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  diff_eq_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn diff_eq_point_add(a : Diff_eqPoint, b : Diff_eqPoint) -> Diff_eqPoint {
@@ -45,7 +45,7 @@ pub fn diff_eq_point_dot(a : Diff_eqPoint, b : Diff_eqPoint) -> Double {
 }
 
 pub fn diff_eq_point_norm(pt : Diff_eqPoint) -> Double {
-  diff_eq_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn diff_eq_point_to_string(pt : Diff_eqPoint) -> String {
@@ -102,7 +102,7 @@ pub fn diff_eq_series_var(s : Diff_eqSeries) -> Double {
   }
 }
 
-pub fn diff_eq_series_std(s : Diff_eqSeries) -> Double { diff_eq_sqrt(diff_eq_series_var(s)) }
+pub fn diff_eq_series_std(s : Diff_eqSeries) -> Double { @_common.sqrt(diff_eq_series_var(s)) }
 
 pub fn diff_eq_series_scale(s : Diff_eqSeries, f : Double) -> Diff_eqSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn diff_eq_matrix_trace(m : Diff_eqMatrix) -> Double {
 pub fn diff_eq_matrix_norm(m : Diff_eqMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  diff_eq_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn diff_eq_matrix_to_string(m : Diff_eqMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn diff_eq_vector_dot(a : Diff_eqVector, b : Diff_eqVector) -> Double {
   sum
 }
 
-pub fn diff_eq_vector_norm(v : Diff_eqVector) -> Double { diff_eq_sqrt(diff_eq_vector_dot(v, v)) }
+pub fn diff_eq_vector_norm(v : Diff_eqVector) -> Double { @_common.sqrt(diff_eq_vector_dot(v, v)) }
 
 pub fn diff_eq_vector_normalize(v : Diff_eqVector) -> Diff_eqVector {
   let n = diff_eq_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn diff_eq_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn diff_eq_std(data : Array[Double]) -> Double { diff_eq_sqrt(diff_eq_var(data)) }
+pub fn diff_eq_std(data : Array[Double]) -> Double { @_common.sqrt(diff_eq_var(data)) }
 
 pub fn diff_eq_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn diff_eq_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + diff_eq_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn diff_eq_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
   let p_ = diff_eq_precision(pred, labels, pos); let r = diff_eq_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn diff_eq_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn diff_eq_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn diff_eq_dbl(x : Double) -> String {
   let i = if x >= 0.0 { diff_eq_int(x) } else { -diff_eq_int(-x) }

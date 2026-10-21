@@ -25,7 +25,7 @@ pub fn bulkhead_point_label(p : BulkheadPoint) -> Int { p.label }
 pub fn bulkhead_point_dist(a : BulkheadPoint, b : BulkheadPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  bulkhead_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn bulkhead_point_add(a : BulkheadPoint, b : BulkheadPoint) -> BulkheadPoint {
@@ -45,7 +45,7 @@ pub fn bulkhead_point_dot(a : BulkheadPoint, b : BulkheadPoint) -> Double {
 }
 
 pub fn bulkhead_point_norm(pt : BulkheadPoint) -> Double {
-  bulkhead_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn bulkhead_point_to_string(pt : BulkheadPoint) -> String {
@@ -102,7 +102,7 @@ pub fn bulkhead_series_var(s : BulkheadSeries) -> Double {
   }
 }
 
-pub fn bulkhead_series_std(s : BulkheadSeries) -> Double { bulkhead_sqrt(bulkhead_series_var(s)) }
+pub fn bulkhead_series_std(s : BulkheadSeries) -> Double { @_common.sqrt(bulkhead_series_var(s)) }
 
 pub fn bulkhead_series_scale(s : BulkheadSeries, f : Double) -> BulkheadSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn bulkhead_matrix_trace(m : BulkheadMatrix) -> Double {
 pub fn bulkhead_matrix_norm(m : BulkheadMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  bulkhead_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn bulkhead_matrix_to_string(m : BulkheadMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn bulkhead_vector_dot(a : BulkheadVector, b : BulkheadVector) -> Double {
   sum
 }
 
-pub fn bulkhead_vector_norm(v : BulkheadVector) -> Double { bulkhead_sqrt(bulkhead_vector_dot(v, v)) }
+pub fn bulkhead_vector_norm(v : BulkheadVector) -> Double { @_common.sqrt(bulkhead_vector_dot(v, v)) }
 
 pub fn bulkhead_vector_normalize(v : BulkheadVector) -> BulkheadVector {
   let n = bulkhead_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn bulkhead_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn bulkhead_std(data : Array[Double]) -> Double { bulkhead_sqrt(bulkhead_var(data)) }
+pub fn bulkhead_std(data : Array[Double]) -> Double { @_common.sqrt(bulkhead_var(data)) }
 
 pub fn bulkhead_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn bulkhead_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + bulkhead_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn bulkhead_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double 
   let p_ = bulkhead_precision(pred, labels, pos); let r = bulkhead_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn bulkhead_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn bulkhead_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn bulkhead_dbl(x : Double) -> String {
   let i = if x >= 0.0 { bulkhead_int(x) } else { -bulkhead_int(-x) }

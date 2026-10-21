@@ -25,7 +25,7 @@ pub fn diffusion_rt_point_label(p : Diffusion_rtPoint) -> Int { p.label }
 pub fn diffusion_rt_point_dist(a : Diffusion_rtPoint, b : Diffusion_rtPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  diffusion_rt_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn diffusion_rt_point_add(a : Diffusion_rtPoint, b : Diffusion_rtPoint) -> Diffusion_rtPoint {
@@ -45,7 +45,7 @@ pub fn diffusion_rt_point_dot(a : Diffusion_rtPoint, b : Diffusion_rtPoint) -> D
 }
 
 pub fn diffusion_rt_point_norm(pt : Diffusion_rtPoint) -> Double {
-  diffusion_rt_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn diffusion_rt_point_to_string(pt : Diffusion_rtPoint) -> String {
@@ -102,7 +102,7 @@ pub fn diffusion_rt_series_var(s : Diffusion_rtSeries) -> Double {
   }
 }
 
-pub fn diffusion_rt_series_std(s : Diffusion_rtSeries) -> Double { diffusion_rt_sqrt(diffusion_rt_series_var(s)) }
+pub fn diffusion_rt_series_std(s : Diffusion_rtSeries) -> Double { @_common.sqrt(diffusion_rt_series_var(s)) }
 
 pub fn diffusion_rt_series_scale(s : Diffusion_rtSeries, f : Double) -> Diffusion_rtSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn diffusion_rt_matrix_trace(m : Diffusion_rtMatrix) -> Double {
 pub fn diffusion_rt_matrix_norm(m : Diffusion_rtMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  diffusion_rt_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn diffusion_rt_matrix_to_string(m : Diffusion_rtMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn diffusion_rt_vector_dot(a : Diffusion_rtVector, b : Diffusion_rtVector) -
   sum
 }
 
-pub fn diffusion_rt_vector_norm(v : Diffusion_rtVector) -> Double { diffusion_rt_sqrt(diffusion_rt_vector_dot(v, v)) }
+pub fn diffusion_rt_vector_norm(v : Diffusion_rtVector) -> Double { @_common.sqrt(diffusion_rt_vector_dot(v, v)) }
 
 pub fn diffusion_rt_vector_normalize(v : Diffusion_rtVector) -> Diffusion_rtVector {
   let n = diffusion_rt_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn diffusion_rt_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn diffusion_rt_std(data : Array[Double]) -> Double { diffusion_rt_sqrt(diffusion_rt_var(data)) }
+pub fn diffusion_rt_std(data : Array[Double]) -> Double { @_common.sqrt(diffusion_rt_var(data)) }
 
 pub fn diffusion_rt_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn diffusion_rt_mae(pred : Array[Double], labels : Array[Double]) -> Double 
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + diffusion_rt_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn diffusion_rt_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Dou
   let p_ = diffusion_rt_precision(pred, labels, pos); let r = diffusion_rt_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn diffusion_rt_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn diffusion_rt_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn diffusion_rt_dbl(x : Double) -> String {
   let i = if x >= 0.0 { diffusion_rt_int(x) } else { -diffusion_rt_int(-x) }

@@ -23,14 +23,6 @@ const NLP_LARGE : Double = 999999999999999.0
 // 辅助数学函数 / Helper math functions (private)
 // ============================================================
 
-fn nlp_abs(x : Double) -> Double {
-  if x < 0.0 {
-    -x
-  } else {
-    x
-  }
-}
-
 fn nlp_exp(x : Double) -> Double {
   if x > 700.0 {
     return NLP_LARGE
@@ -53,7 +45,7 @@ fn nlp_exp(x : Double) -> Double {
   for i in 1..<40 {
     term = term * y / i.to_double()
     result = result + term
-    if nlp_abs(term) < 0.0000000000000001 {
+    if @_common.abs(term) < 0.0000000000000001 {
       break
     }
   }
@@ -87,7 +79,7 @@ fn nlp_ln(x : Double) -> Double {
     let term = t_pow / (2 * k + 1).to_double()
     result = result + term
     t_pow = t_pow * t * t
-    if nlp_abs(term) < 0.0000000000000001 {
+    if @_common.abs(term) < 0.0000000000000001 {
       break
     }
   }

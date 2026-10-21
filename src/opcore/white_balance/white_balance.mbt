@@ -25,7 +25,7 @@ pub fn white_balance_point_label(p : White_balancePoint) -> Int { p.label }
 pub fn white_balance_point_dist(a : White_balancePoint, b : White_balancePoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  white_balance_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn white_balance_point_add(a : White_balancePoint, b : White_balancePoint) -> White_balancePoint {
@@ -45,7 +45,7 @@ pub fn white_balance_point_dot(a : White_balancePoint, b : White_balancePoint) -
 }
 
 pub fn white_balance_point_norm(pt : White_balancePoint) -> Double {
-  white_balance_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn white_balance_point_to_string(pt : White_balancePoint) -> String {
@@ -102,7 +102,7 @@ pub fn white_balance_series_var(s : White_balanceSeries) -> Double {
   }
 }
 
-pub fn white_balance_series_std(s : White_balanceSeries) -> Double { white_balance_sqrt(white_balance_series_var(s)) }
+pub fn white_balance_series_std(s : White_balanceSeries) -> Double { @_common.sqrt(white_balance_series_var(s)) }
 
 pub fn white_balance_series_scale(s : White_balanceSeries, f : Double) -> White_balanceSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn white_balance_matrix_trace(m : White_balanceMatrix) -> Double {
 pub fn white_balance_matrix_norm(m : White_balanceMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  white_balance_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn white_balance_matrix_to_string(m : White_balanceMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn white_balance_vector_dot(a : White_balanceVector, b : White_balanceVector
   sum
 }
 
-pub fn white_balance_vector_norm(v : White_balanceVector) -> Double { white_balance_sqrt(white_balance_vector_dot(v, v)) }
+pub fn white_balance_vector_norm(v : White_balanceVector) -> Double { @_common.sqrt(white_balance_vector_dot(v, v)) }
 
 pub fn white_balance_vector_normalize(v : White_balanceVector) -> White_balanceVector {
   let n = white_balance_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn white_balance_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn white_balance_std(data : Array[Double]) -> Double { white_balance_sqrt(white_balance_var(data)) }
+pub fn white_balance_std(data : Array[Double]) -> Double { @_common.sqrt(white_balance_var(data)) }
 
 pub fn white_balance_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn white_balance_mae(pred : Array[Double], labels : Array[Double]) -> Double
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + white_balance_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn white_balance_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Do
   let p_ = white_balance_precision(pred, labels, pos); let r = white_balance_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn white_balance_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn white_balance_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn white_balance_dbl(x : Double) -> String {
   let i = if x >= 0.0 { white_balance_int(x) } else { -white_balance_int(-x) }

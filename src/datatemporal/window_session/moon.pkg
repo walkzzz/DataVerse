@@ -1,2 +1,5 @@
 // datatemporal/window_session datatemporal/window_session
 // S13.209 new
+import {
+  "dataverse/extcore/_common",
+}

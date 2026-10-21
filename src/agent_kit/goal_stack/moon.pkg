@@ -1,2 +1,5 @@
 // agent_kit/goal_stack agent_kit/goal_stack
 // S13.119 new
+import {
+  "dataverse/extcore/_common",
+}

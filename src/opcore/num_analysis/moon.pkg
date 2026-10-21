@@ -1,2 +1,5 @@
 // opcore/num_analysis opcore/num_analysis
 // S13.2 new
+import {
+  "dataverse/extcore/_common",
+}

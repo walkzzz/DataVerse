@@ -25,7 +25,7 @@ pub fn load_shed_point_label(p : Load_shedPoint) -> Int { p.label }
 pub fn load_shed_point_dist(a : Load_shedPoint, b : Load_shedPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  load_shed_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn load_shed_point_add(a : Load_shedPoint, b : Load_shedPoint) -> Load_shedPoint {
@@ -45,7 +45,7 @@ pub fn load_shed_point_dot(a : Load_shedPoint, b : Load_shedPoint) -> Double {
 }
 
 pub fn load_shed_point_norm(pt : Load_shedPoint) -> Double {
-  load_shed_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn load_shed_point_to_string(pt : Load_shedPoint) -> String {
@@ -102,7 +102,7 @@ pub fn load_shed_series_var(s : Load_shedSeries) -> Double {
   }
 }
 
-pub fn load_shed_series_std(s : Load_shedSeries) -> Double { load_shed_sqrt(load_shed_series_var(s)) }
+pub fn load_shed_series_std(s : Load_shedSeries) -> Double { @_common.sqrt(load_shed_series_var(s)) }
 
 pub fn load_shed_series_scale(s : Load_shedSeries, f : Double) -> Load_shedSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn load_shed_matrix_trace(m : Load_shedMatrix) -> Double {
 pub fn load_shed_matrix_norm(m : Load_shedMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  load_shed_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn load_shed_matrix_to_string(m : Load_shedMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn load_shed_vector_dot(a : Load_shedVector, b : Load_shedVector) -> Double 
   sum
 }
 
-pub fn load_shed_vector_norm(v : Load_shedVector) -> Double { load_shed_sqrt(load_shed_vector_dot(v, v)) }
+pub fn load_shed_vector_norm(v : Load_shedVector) -> Double { @_common.sqrt(load_shed_vector_dot(v, v)) }
 
 pub fn load_shed_vector_normalize(v : Load_shedVector) -> Load_shedVector {
   let n = load_shed_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn load_shed_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn load_shed_std(data : Array[Double]) -> Double { load_shed_sqrt(load_shed_var(data)) }
+pub fn load_shed_std(data : Array[Double]) -> Double { @_common.sqrt(load_shed_var(data)) }
 
 pub fn load_shed_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn load_shed_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + load_shed_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn load_shed_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double
   let p_ = load_shed_precision(pred, labels, pos); let r = load_shed_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn load_shed_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn load_shed_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn load_shed_dbl(x : Double) -> String {
   let i = if x >= 0.0 { load_shed_int(x) } else { -load_shed_int(-x) }

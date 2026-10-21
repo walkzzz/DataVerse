@@ -25,7 +25,7 @@ pub fn voting_rt_point_label(p : Voting_rtPoint) -> Int { p.label }
 pub fn voting_rt_point_dist(a : Voting_rtPoint, b : Voting_rtPoint) -> Double {
   let dx = a.x - b.x
   let dy = a.y - b.y
-  voting_rt_sqrt(dx * dx + dy * dy)
+  @_common.sqrt(dx * dx + dy * dy)
 }
 
 pub fn voting_rt_point_add(a : Voting_rtPoint, b : Voting_rtPoint) -> Voting_rtPoint {
@@ -45,7 +45,7 @@ pub fn voting_rt_point_dot(a : Voting_rtPoint, b : Voting_rtPoint) -> Double {
 }
 
 pub fn voting_rt_point_norm(pt : Voting_rtPoint) -> Double {
-  voting_rt_sqrt(pt.x * pt.x + pt.y * pt.y)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y)
 }
 
 pub fn voting_rt_point_to_string(pt : Voting_rtPoint) -> String {
@@ -102,7 +102,7 @@ pub fn voting_rt_series_var(s : Voting_rtSeries) -> Double {
   }
 }
 
-pub fn voting_rt_series_std(s : Voting_rtSeries) -> Double { voting_rt_sqrt(voting_rt_series_var(s)) }
+pub fn voting_rt_series_std(s : Voting_rtSeries) -> Double { @_common.sqrt(voting_rt_series_var(s)) }
 
 pub fn voting_rt_series_scale(s : Voting_rtSeries, f : Double) -> Voting_rtSeries {
   let mut result = []
@@ -189,7 +189,7 @@ pub fn voting_rt_matrix_trace(m : Voting_rtMatrix) -> Double {
 pub fn voting_rt_matrix_norm(m : Voting_rtMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  voting_rt_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn voting_rt_matrix_to_string(m : Voting_rtMatrix) -> String {
@@ -244,7 +244,7 @@ pub fn voting_rt_vector_dot(a : Voting_rtVector, b : Voting_rtVector) -> Double 
   sum
 }
 
-pub fn voting_rt_vector_norm(v : Voting_rtVector) -> Double { voting_rt_sqrt(voting_rt_vector_dot(v, v)) }
+pub fn voting_rt_vector_norm(v : Voting_rtVector) -> Double { @_common.sqrt(voting_rt_vector_dot(v, v)) }
 
 pub fn voting_rt_vector_normalize(v : Voting_rtVector) -> Voting_rtVector {
   let n = voting_rt_vector_norm(v)
@@ -281,7 +281,7 @@ pub fn voting_rt_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn voting_rt_std(data : Array[Double]) -> Double { voting_rt_sqrt(voting_rt_var(data)) }
+pub fn voting_rt_std(data : Array[Double]) -> Double { @_common.sqrt(voting_rt_var(data)) }
 
 pub fn voting_rt_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -320,7 +320,7 @@ pub fn voting_rt_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + voting_rt_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -353,17 +353,6 @@ pub fn voting_rt_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double
   let p_ = voting_rt_precision(pred, labels, pos); let r = voting_rt_recall(pred, labels, pos)
   if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
 }
-
-fn voting_rt_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn voting_rt_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn voting_rt_dbl(x : Double) -> String {
   let i = if x >= 0.0 { voting_rt_int(x) } else { -voting_rt_int(-x) }

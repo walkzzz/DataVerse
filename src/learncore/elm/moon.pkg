@@ -1,2 +1,5 @@
 // learncore/elm learncore/elm
 // S13.62 new
+import {
+  "dataverse/extcore/_common",
+}

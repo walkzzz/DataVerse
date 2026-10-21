@@ -1043,8 +1043,8 @@ pub fn adam_step(state : AdamState, gradients : Array[Double]) -> Array[Double] 
     let beta2 = state.beta2
     let eps = state.epsilon
     let t = (state.step_count + 1).to_double()
-    let bc1 = 1.0 - beta1.pow(t)
-    let bc2 = 1.0 - beta2.pow(t)
+    let bc1 = 1.0 - @math.pow(beta1, t)
+    let bc2 = 1.0 - @math.pow(beta2, t)
     let result : Array[Double] = Array::make(n, 0.0)
     for i in 0..<n {
       let g = gradients[i]
@@ -1070,8 +1070,8 @@ pub fn adam_update(state : AdamState, gradients : Array[Double]) -> AdamState {
     let new_v : Array[Double] = Array::make(n, 0.0)
     let new_params : Array[Double] = Array::make(n, 0.0)
     let t = (state.step_count + 1).to_double()
-    let bc1 = 1.0 - beta1.pow(t)
-    let bc2 = 1.0 - beta2.pow(t)
+    let bc1 = 1.0 - @math.pow(beta1, t)
+    let bc2 = 1.0 - @math.pow(beta2, t)
     for i in 0..<n {
       let g = gradients[i]
       new_m[i] = beta1 * state.m[i] + (1.0 - beta1) * g

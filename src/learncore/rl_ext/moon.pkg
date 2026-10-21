@@ -1,1 +1,4 @@
 // learncore/rl_ext
+import {
+  "moonbitlang/core/math",
+}

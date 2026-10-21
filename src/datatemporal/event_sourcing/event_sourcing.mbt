@@ -67,7 +67,7 @@ pub fn event_deserialize(s : String) -> Event {
       parts.push(current)
       current = ""
     } else {
-      current = current + ch.to_int().to_char().to_string()
+      current = current + ch.to_int().unsafe_to_char().to_string()
     }
     i = i + 1
   }

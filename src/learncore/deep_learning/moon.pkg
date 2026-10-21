@@ -1,1 +1,4 @@
 // learncore/deep_learning
+import {
+  "moonbitlang/core/math",
+}

@@ -690,7 +690,7 @@ pub fn associate_spread(ma : MemoryAssociation, start_id : String, max_hops : In
 /// 压缩记忆 / Compress memory (summarize content).
 pub fn compress_mem(mc : MemoryCompression, id : String, content : String) -> MemoryCompression {
   let new_compressed = mc.compressed.copy()
-  let summary = if content.length() > 100 { content.substring(start=0, end=100) } else { content }
+  let summary = if content.length() > 100 { content[:100].to_string() } else { content }
   new_compressed.push((id, summary))
   let ratio = if content.length() == 0 { 0.0 } else { summary.length().to_double() / content.length().to_double() }
   { ..mc, compressed: new_compressed, ratio: ratio }

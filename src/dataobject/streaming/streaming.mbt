@@ -524,7 +524,7 @@ pub fn stream_deserialize(s : String) -> Array[Double] {
       }
       current = ""
     } else {
-      current = current + ch.to_int().to_char().to_string()
+      current = current + ch.to_int().unsafe_to_char().to_string()
     }
     i = i + 1
   }

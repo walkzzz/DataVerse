@@ -773,7 +773,7 @@ pub fn profile_pattern_detect(values : Array[String]) -> String {
         break
       }
     }
-    prefix = prefix.substring(start=0, end=new_len)
+    prefix = prefix[:new_len].to_string()
     if prefix.length() == 0 {
       return ""
     }

@@ -10133,7 +10133,7 @@ test "scheduler_sjf" {
 test "scheduler_resource" {
   let r = @scheduler.make_resource("r1", 100.0)
   let r1 = @scheduler.allocate_resource(r, 40.0)
-  assert_true(r1.is_some())
+  assert_true(r1 is Some(_))
   let r2 = @scheduler.allocate_resource(r, 150.0)
   assert_true(r2 is None)
 }

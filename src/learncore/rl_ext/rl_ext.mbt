@@ -984,7 +984,7 @@ pub fn agent_learn(
 /// Schedules
 
 pub fn epsilon_decay(epsilon : Double, decay_rate : Double, episode : Int) -> Double {
-  let result = epsilon * decay_rate.pow(episode.to_double())
+  let result = epsilon * @math.pow(decay_rate, episode.to_double())
   if result < 0.01 { 0.01 } else { result }
 }
 
@@ -1051,7 +1051,7 @@ pub fn importance_sampling(
   let result : Array[Double] = []
   for i in 0..<n {
     let prob = rl_abs_diff(priorities[i]) / total
-    let weight = (1.0 / (buffer_size_val.to_double() * prob)).pow(beta)
+    let weight = @math.pow(1.0 / (buffer_size_val.to_double() * prob), beta)
     result.push(weight)
   }
   result

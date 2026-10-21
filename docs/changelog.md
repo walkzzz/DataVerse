@@ -2,6 +2,21 @@
 
 所有显著变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/)。
 
+## [0.1.0-dev] - 2026-10-21
+
+### 全面重构 — 旧代码辅助函数委托 @_common/@math
+
+**重构 / Refactored**
+- 旧代码 755 个重复辅助函数委托到 `@_common`/`@math`：
+  - 496 个 sqrt/abs → `@_common.sqrt`/`@_common.abs`（250 文件，1799 调用）
+  - 241 个 mean/clamp → `@_common.mean`/`@_common.clamp`（243 文件，972 调用）
+  - 18 个 exp/ln → `@math.exp`/`@math.ln`（12 文件，42 调用）
+- Warning 治理：506 → 59（-88%）
+  - `not()`→`!()`（183处）、`method`→`method_`（24处）、`pow`→`@math.pow`（6处）
+  - 删除 116 个未使用 moon.pkg 导入、46 个未使用私有函数
+  - `for i in`→`for _ in`（20处）、运算符优先级加括号（3处）
+- 总行数：1,567,408 → 1,001,479（-36.1%）
+
 ## [0.1.0-dev] - 2026-10-20
 
 ### 性能 + 鲁棒性增强

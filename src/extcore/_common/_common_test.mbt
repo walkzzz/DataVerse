@@ -496,3 +496,39 @@ test "math_floor_ceil" {
   assert_true(@_common.floor(3.7) > 2.99 && @_common.floor(3.7) < 3.01)
   assert_true(@_common.ceil(3.2) > 3.99 && @_common.ceil(3.2) < 4.01)
 }
+test "math_atan2" {
+  let a = @_common.atan2(1.0, 1.0)
+  assert_true(a > 0.78 && a < 0.79)
+  let b = @_common.atan2(0.0, 1.0)
+  assert_true(b < 0.001)
+}
+
+test "math_deg_rad_conversion" {
+  let rad = @_common.deg_to_rad(180.0)
+  assert_true(rad > 3.14 && rad < 3.15)
+  let deg = @_common.rad_to_deg(3.141592653589793)
+  assert_true(deg > 179.9 && deg < 180.1)
+}
+
+test "math_exp_properties" {
+  let e0 = @_common.exp(0.0)
+  assert_true(e0 > 0.99 && e0 < 1.01)
+  let e1 = @_common.exp(1.0)
+  assert_true(e1 > 2.71 && e1 < 2.72)
+  let e2 = @_common.exp(-1.0)
+  assert_true(e2 > 0.36 && e2 < 0.37)
+}
+
+test "math_log_exp_inverse" {
+  let x = 5.0
+  let l = @_common.log(x)
+  let e = @_common.exp(l)
+  assert_true(e > 4.99 && e < 5.01)
+}
+
+test "math_trig_identity" {
+  let x = 0.5
+  let s = @_common.sin(x)
+  let c = @_common.cos(x)
+  assert_true(s * s + c * c > 0.99 && s * s + c * c < 1.01)
+}

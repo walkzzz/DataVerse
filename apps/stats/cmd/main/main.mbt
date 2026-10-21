@@ -21,9 +21,9 @@ fn main {
     println("  median   = \{@_common.median(data)}")
     println("  variance = \{@_common.variance(data)}")
     println("  std      = \{@_common.std(data)}")
-    let sorted = @_common.sort(data)
+    let _sorted = @_common.sort(data)
     println("  sorted   = (sorted)")
-    let norm = @_common.normalize(data)
+    let _norm = @_common.normalize(data)
     println("  normalize= (normalized)")
     println("")
   }

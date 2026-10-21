@@ -54,8 +54,8 @@ fn main raise {
   println("")
   println("Verifying statistical properties:")
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
-  let m = @_common.mean(data)
-  let v = @_common.variance(data)
+  let _m = @_common.mean(data)
+  let _v = @_common.variance(data)
   let s = @_common.std(data)
   assert_true(s > 1.41 && s < 1.42)
   println("  [PASS] std == sqrt(variance)  (std=\{s})")

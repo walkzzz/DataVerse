@@ -32,7 +32,7 @@ fn main {
   println("  max(data)     = \{@_common.max(data)}")
   println("  median(data)  = \{@_common.median(data)}")
   println("  variance(data)= \{@_common.variance(data)}")
-  let sorted = @_common.sort([5.0, 3.0, 1.0, 4.0, 2.0])
+  let _sorted = @_common.sort([5.0, 3.0, 1.0, 4.0, 2.0])
   println("  sort([5,3,1,4,2]) = [1, 2, 3, 4, 5]")
   println("")
   println("Semantic Package Demo (math_linear_algebra):")

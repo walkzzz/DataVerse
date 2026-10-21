@@ -107,19 +107,15 @@ pub fn sum(data : Array[Double]) -> Double {
 
 /// 方差
 pub fn variance(data : Array[Double]) -> Double {
+  guard data.length() > 0 else { 0.0 }
   let n = data.length()
-  match n {
-    0 => 0.0
-    _ => {
-      let m = mean(data)
-      let mut total = 0.0
-      for x in data {
-        let d = x - m
-        total = total + d * d
-      }
-      total / n.to_double()
-    }
+  let m = mean(data)
+  let mut total = 0.0
+  for x in data {
+    let d = x - m
+    total = total + d * d
   }
+  total / n.to_double()
 }
 
 /// 标准差
@@ -161,17 +157,13 @@ pub fn corr(a : Array[Double], b : Array[Double]) -> Double {
 
 /// 中位数
 pub fn median(data : Array[Double]) -> Double {
+  guard data.length() > 0 else { 0.0 }
   let n = data.length()
-  match n {
-    0 => 0.0
-    _ => {
-      let sorted = sort(data)
-      if n % 2 == 1 {
-        sorted[n / 2]
-      } else {
-        (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0
-      }
-    }
+  let sorted = sort(data)
+  if n % 2 == 1 {
+    sorted[n / 2]
+  } else {
+    (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0
   }
 }
 

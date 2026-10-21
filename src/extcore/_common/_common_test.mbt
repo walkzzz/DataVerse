@@ -188,3 +188,70 @@ test "common_robustness_sort" {
   let sorted4 = @_common.sort([42.0])
   assert_true(sorted4[0] > 41.99 && sorted4[0] < 42.01)
 }
+test "proof_sqrt_nonneg" {
+  assert_true(@_common.sqrt(0.0) < 0.001)
+  assert_true(@_common.sqrt(1.0) > 0.99)
+  assert_true(@_common.sqrt(100.0) > 9.99)
+  assert_true(@_common.sqrt(0.25) > 0.49 && @_common.sqrt(0.25) < 0.51)
+}
+
+test "proof_sort_nondecreasing" {
+  let sorted = @_common.sort([5.0, 3.0, 1.0, 4.0, 2.0, 8.0, 6.0, 7.0])
+  let end = sorted.length() - 1
+  for i in 0..<end {
+    assert_true(sorted[i] <= sorted[i + 1])
+  }
+}
+
+test "proof_mean_constant" {
+  let m = @_common.mean([7.0, 7.0, 7.0, 7.0])
+  assert_true(m > 6.99 && m < 7.01)
+}
+
+test "proof_variance_constant" {
+  let v = @_common.variance([7.0, 7.0, 7.0, 7.0])
+  assert_true(v < 0.001)
+}
+
+test "proof_sum_empty" {
+  assert_true(@_common.sum([]) < 0.001)
+}
+
+test "proof_factorial_base" {
+  assert_true(@_common.factorial(0) > 0.99 && @_common.factorial(0) < 1.01)
+  assert_true(@_common.factorial(1) > 0.99 && @_common.factorial(1) < 1.01)
+  assert_true(@_common.factorial(10) > 3628799.0 && @_common.factorial(10) < 3628801.0)
+}
+
+test "proof_gcd_divides" {
+  let g = @_common.gcd(12, 18)
+  assert_true(12 % g == 0)
+  assert_true(18 % g == 0)
+  assert_true(g == 6)
+}
+
+test "proof_fibonacci_recurrence" {
+  for n in 2..<20 {
+    assert_true(@_common.fibonacci(n) == @_common.fibonacci(n - 1) + @_common.fibonacci(n - 2))
+  }
+}
+
+test "proof_clamp_bounds" {
+  for x in [-5.0, 0.0, 5.0, 10.0, 15.0] {
+    let c = @_common.clamp(x, 0.0, 10.0)
+    assert_true(c >= 0.0 && c <= 10.0)
+  }
+}
+
+test "proof_abs_nonneg" {
+  assert_true(@_common.abs(-5.0) > 4.99)
+  assert_true(@_common.abs(0.0) < 0.001)
+  assert_true(@_common.abs(5.0) > 4.99)
+}
+
+test "proof_lcm_multiple" {
+  let l = @_common.lcm(4, 6)
+  assert_true(l % 4 == 0)
+  assert_true(l % 6 == 0)
+  assert_true(l == 12)
+}

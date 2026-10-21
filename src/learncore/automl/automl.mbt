@@ -39,13 +39,6 @@ fn rng_(seed : Double) -> Double {
   s - (s / 2147483647.0).to_int().to_double() * 2147483647.0
 }
 
-fn mean_(arr : Array[Double]) -> Double {
-  if arr.length() == 0 { return 0.0 }
-  let mut s = 0.0
-  for v in arr { s = s + v }
-  s / arr.length().to_double()
-}
-
 /// AutoML 配置 / AutoML configuration.
 pub(all) struct AutoMlConfig {
   time_limit : Double

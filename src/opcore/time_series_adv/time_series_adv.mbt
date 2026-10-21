@@ -68,27 +68,6 @@ fn tsa_exp(x : Double) -> Double {
   result
 }
 
-fn tsa_sin(x : Double) -> Double {
-  let mut y = x
-  while y > TSA_PI {
-    y = y - TSA_2PI
-  }
-  while y < -TSA_PI {
-    y = y + TSA_2PI
-  }
-  let mut result = y
-  let mut term = y
-  let y2 = y * y
-  for i in 1..<20 {
-    term = term * y2 / ((2 * i).to_double() * (2 * i + 1).to_double()) * -1.0
-    result = result + term
-    if tsa_abs(term) < 0.0000000000000001 {
-      break
-    }
-  }
-  result
-}
-
 fn tsa_mean(arr : Array[Double]) -> Double {
   let n = arr.length()
   if n == 0 {

@@ -99,29 +99,6 @@ fn ga_ln(x : Double) -> Double {
   result * 2.0 + m.to_double()
 }
 
-fn ga_pow(base : Double, exp : Double) -> Double {
-  if base < 0.0 {
-    let rounded = exp.to_int().to_double()
-    if rounded == exp {
-      let n = exp.to_int()
-      let mut result = 1.0
-      let mut abs_n = if n < 0 { -n } else { n }
-      let b = if n < 0 { 1.0 / base } else { base }
-      while abs_n > 0 {
-        result = result * b
-        abs_n = abs_n - 1
-      }
-      result
-    } else {
-      0.0
-    }
-  } else if base == 0.0 {
-    if exp > 0.0 { 0.0 } else { GA_LARGE_DOUBLE }
-  } else {
-    ga_exp(exp * ga_ln(base))
-  }
-}
-
 // ============================================================
 // 类型定义 / Type definitions
 // ============================================================
@@ -204,19 +181,6 @@ fn ga_contains_int(arr : Array[Int], v : Int) -> Bool {
     }
   }
   false
-}
-
-fn ga_edge_weight(g : Graph, u : Int, v : Int) -> Double {
-  for i in 0..<g.edges.length() {
-    let (a, b, w) = g.edges[i]
-    if a == u && b == v {
-      return w
-    }
-    if !g.directed && a == v && b == u {
-      return w
-    }
-  }
-  0.0
 }
 
 fn ga_bfs_reachable(g : Graph, start : Int) -> Array[Int] {

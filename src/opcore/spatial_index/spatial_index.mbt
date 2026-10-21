@@ -44,69 +44,6 @@ fn si_abs(x : Double) -> Double {
   }
 }
 
-fn si_exp(x : Double) -> Double {
-  if x > 700.0 {
-    return SI_LARGE
-  }
-  if x < -700.0 {
-    return 0.0
-  }
-  let mut n = 0
-  let mut y = x
-  while y > 0.5 {
-    y = y / 2.0
-    n = n + 1
-  }
-  while y < -0.5 {
-    y = y / 2.0
-    n = n + 1
-  }
-  let mut result = 1.0
-  let mut term = 1.0
-  for i in 1..<40 {
-    term = term * y / i.to_double()
-    result = result + term
-    if si_abs(term) < 0.0000000000000001 {
-      break
-    }
-  }
-  for _ in 0..<n {
-    result = result * result
-  }
-  result
-}
-
-fn si_ln(x : Double) -> Double {
-  if x <= 0.0 {
-    return -SI_LARGE
-  }
-  if x == 1.0 {
-    return 0.0
-  }
-  let mut m = 0
-  let mut y = x
-  while y > 2.0 {
-    y = y / SI_E
-    m = m + 1
-  }
-  while y < 0.5 {
-    y = y * SI_E
-    m = m - 1
-  }
-  let t = (y - 1.0) / (y + 1.0)
-  let mut result = 0.0
-  let mut t_pow = t
-  for k in 0..<80 {
-    let term = t_pow / (2 * k + 1).to_double()
-    result = result + term
-    t_pow = t_pow * t * t
-    if si_abs(term) < 0.0000000000000001 {
-      break
-    }
-  }
-  result * 2.0 + m.to_double()
-}
-
 // ============================================================
 // 类型定义 / Type definitions
 // ============================================================

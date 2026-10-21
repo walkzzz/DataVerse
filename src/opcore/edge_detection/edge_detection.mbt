@@ -107,32 +107,6 @@ fn edge_abs(x : Double) -> Double {
   }
 }
 
-fn edge_max(a : Double, b : Double) -> Double {
-  if a > b {
-    a
-  } else {
-    b
-  }
-}
-
-fn edge_min(a : Double, b : Double) -> Double {
-  if a < b {
-    a
-  } else {
-    b
-  }
-}
-
-fn edge_clamp(v : Double, lo : Double, hi : Double) -> Double {
-  if v < lo {
-    lo
-  } else if v > hi {
-    hi
-  } else {
-    v
-  }
-}
-
 fn edge_empty(w : Int, h : Int) -> EdgeImage {
   let n = w * h
   let data : Array[Double] = []

@@ -9,10 +9,6 @@
 ///===
 /// 内部辅助 / Internal helpers
 
-fn fs_max(a : Double, b : Double) -> Double {
-  if a > b { a } else { b }
-}
-
 fn fs_min(a : Double, b : Double) -> Double {
   if a < b { a } else { b }
 }

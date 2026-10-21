@@ -51,10 +51,6 @@ fn sqrt(x : Double) -> Double {
   }
 }
 
-fn abs_d(x : Double) -> Double {
-  if x < 0.0 { -x } else { x }
-}
-
 fn sigmoid(x : Double) -> Double {
   1.0 / (1.0 + exp(-x))
 }

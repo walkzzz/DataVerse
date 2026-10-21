@@ -8,18 +8,6 @@
 ///
 /// Model/pipeline/ensemble/neural search with meta-learning and resource awareness.
 
-fn sqrt_(x : Double) -> Double {
-  if x <= 0.0 { return 0.0 }
-  let mut guess = if x > 1.0 { x / 2.0 } else { 1.0 }
-  for _ in 0..<100 {
-    let next = (guess + x / guess) / 2.0
-    let diff = next - guess
-    if diff < 0.00000001 && diff > -0.00000001 { return next }
-    guess = next
-  }
-  guess
-}
-
 fn abs_(x : Double) -> Double { if x < 0.0 { -x } else { x } }
 
 fn exp_(x : Double) -> Double {
@@ -46,18 +34,9 @@ fn ln_(x : Double) -> Double {
 
 fn max_(a : Double, b : Double) -> Double { if a > b { a } else { b } }
 
-fn min_(a : Double, b : Double) -> Double { if a < b { a } else { b } }
-
 fn rng_(seed : Double) -> Double {
   let s = seed * 1103515245.0 + 12345.0
   s - (s / 2147483647.0).to_int().to_double() * 2147483647.0
-}
-
-fn copy_(x0 : Array[Double]) -> Array[Double] {
-  let n = x0.length()
-  let x : Array[Double] = Array::make(n, 0.0)
-  for i in 0..<n { x[i] = x0[i] }
-  x
 }
 
 fn mean_(arr : Array[Double]) -> Double {
@@ -65,14 +44,6 @@ fn mean_(arr : Array[Double]) -> Double {
   let mut s = 0.0
   for v in arr { s = s + v }
   s / arr.length().to_double()
-}
-
-fn variance_(arr : Array[Double]) -> Double {
-  if arr.length() < 2 { return 0.0 }
-  let m = mean_(arr)
-  let mut s = 0.0
-  for v in arr { let d = v - m; s = s + d * d }
-  s / (arr.length() - 1).to_double()
 }
 
 /// AutoML 配置 / AutoML configuration.

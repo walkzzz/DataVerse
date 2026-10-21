@@ -23,21 +23,6 @@ const NLP_LARGE : Double = 999999999999999.0
 // 辅助数学函数 / Helper math functions (private)
 // ============================================================
 
-fn nlp_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    0.0
-  } else {
-    let mut guess = x / 2.0
-    if guess == 0.0 {
-      guess = 1.0
-    }
-    for _ in 0..<60 {
-      guess = (guess + x / guess) / 2.0
-    }
-    guess
-  }
-}
-
 fn nlp_abs(x : Double) -> Double {
   if x < 0.0 {
     -x
@@ -107,18 +92,6 @@ fn nlp_ln(x : Double) -> Double {
     }
   }
   result * 2.0 + m.to_double()
-}
-
-fn nlp_tanh(x : Double) -> Double {
-  if x > 20.0 {
-    return 1.0
-  }
-  if x < -20.0 {
-    return -1.0
-  }
-  let e1 = nlp_exp(x)
-  let e2 = nlp_exp(-x)
-  (e1 - e2) / (e1 + e2)
 }
 
 // ============================================================

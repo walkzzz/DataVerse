@@ -9,10 +9,6 @@
 ///===
 /// 内部辅助 / Internal helpers
 
-fn dl_max(a : Int, b : Int) -> Int {
-  if a > b { a } else { b }
-}
-
 fn dl_min(a : Int, b : Int) -> Int {
   if a < b { a } else { b }
 }
@@ -33,18 +29,6 @@ fn dl_index_of(arr : Array[String], v : String) -> Int {
     }
   }
   -1
-}
-
-fn dl_join(arr : Array[String], sep : String) -> String {
-  let n = arr.length()
-  if n == 0 {
-    return ""
-  }
-  let mut result = arr[0]
-  for i in 1..<n {
-    result = result + sep + arr[i]
-  }
-  result
 }
 
 ///===

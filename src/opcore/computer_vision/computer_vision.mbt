@@ -169,17 +169,6 @@ fn cv_min(a : Double, b : Double) -> Double {
   }
 }
 
-/// 内部限幅 / Internal clamp.
-fn cv_clamp(v : Double, lo : Double, hi : Double) -> Double {
-  if v < lo {
-    lo
-  } else if v > hi {
-    hi
-  } else {
-    v
-  }
-}
-
 /// 内部空图像 / Internal empty image.
 fn cv_empty(w : Int, h : Int, c : Int) -> CVImage {
   let n = w * h * c

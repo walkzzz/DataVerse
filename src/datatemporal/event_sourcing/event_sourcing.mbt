@@ -24,14 +24,6 @@ fn es_min(a : Int, b : Int) -> Int {
   }
 }
 
-fn es_abs(x : Int) -> Int {
-  if x < 0 {
-    -x
-  } else {
-    x
-  }
-}
-
 ///===
 /// Event
 

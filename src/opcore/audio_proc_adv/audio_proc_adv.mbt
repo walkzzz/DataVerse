@@ -117,11 +117,6 @@ fn ap_ln(x : Double) -> Double {
   2.0 * result
 }
 
-/// 内部 log10 / Internal log10.
-fn ap_log10(x : Double) -> Double {
-  ap_ln(x) / 2.302585092994046
-}
-
 /// 内部绝对值 / Internal abs.
 fn ap_abs(x : Double) -> Double {
   if x < 0.0 {

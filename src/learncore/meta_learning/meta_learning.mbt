@@ -23,22 +23,6 @@ fn exp(x : Double) -> Double {
   }
 }
 
-fn log(x : Double) -> Double {
-  if x <= 0.0 {
-    -1000.0
-  } else {
-    let mut result = 0.0
-    let term = (x - 1.0) / (x + 1.0)
-    let t2 = term * term
-    let mut pow = term
-    for i in 0..<50 {
-      result = result + pow / (2 * i + 1).to_double()
-      pow = pow * t2
-    }
-    2.0 * result
-  }
-}
-
 fn sqrt(x : Double) -> Double {
   if x <= 0.0 {
     0.0
@@ -49,10 +33,6 @@ fn sqrt(x : Double) -> Double {
     }
     guess
   }
-}
-
-fn abs_d(x : Double) -> Double {
-  if x < 0.0 { -x } else { x }
 }
 
 fn sigmoid(x : Double) -> Double {

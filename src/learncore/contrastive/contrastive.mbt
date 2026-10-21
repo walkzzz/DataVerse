@@ -122,30 +122,6 @@ fn acos_d(x : Double) -> Double {
   if neg { 3.141592653589793 - result } else { result }
 }
 
-fn softmax_arr(logits : Array[Double]) -> Array[Double] {
-  let n = logits.length()
-  if n == 0 {
-    []
-  } else {
-    let mut max_val = logits[0]
-    for i in 1..<n {
-      if logits[i] > max_val {
-        max_val = logits[i]
-      }
-    }
-    let exps = logits.map(fn(x) { exp(x - max_val) })
-    let mut total = 0.0
-    for i in 0..<n {
-      total = total + exps[i]
-    }
-    if total == 0.0 {
-      exps
-    } else {
-      exps.map(fn(x) { x / total })
-    }
-  }
-}
-
 pub(all) struct ContrastiveConfig {
   margin : Double
   temperature : Double

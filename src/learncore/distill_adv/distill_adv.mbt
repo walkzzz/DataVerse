@@ -39,22 +39,6 @@ fn log(x : Double) -> Double {
   }
 }
 
-fn sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    0.0
-  } else {
-    let mut guess = x
-    for _ in 0..<50 {
-      guess = 0.5 * (guess + x / guess)
-    }
-    guess
-  }
-}
-
-fn abs_d(x : Double) -> Double {
-  if x < 0.0 { -x } else { x }
-}
-
 fn clamp(x : Double, lo : Double, hi : Double) -> Double {
   if x < lo { lo } else if x > hi { hi } else { x }
 }

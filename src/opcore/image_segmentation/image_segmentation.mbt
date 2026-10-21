@@ -108,22 +108,6 @@ fn seg_abs(x : Double) -> Double {
   }
 }
 
-fn seg_max(a : Double, b : Double) -> Double {
-  if a > b {
-    a
-  } else {
-    b
-  }
-}
-
-fn seg_min(a : Double, b : Double) -> Double {
-  if a < b {
-    a
-  } else {
-    b
-  }
-}
-
 fn seg_clamp(v : Double, lo : Double, hi : Double) -> Double {
   if v < lo {
     lo

@@ -29,22 +29,6 @@ fn xa_exp(x : Double) -> Double {
   }
 }
 
-fn xa_log(x : Double) -> Double {
-  if x <= 0.0 {
-    -1000.0
-  } else {
-    let mut result = 0.0
-    let term = (x - 1.0) / (x + 1.0)
-    let t2 = term * term
-    let mut pow = term
-    for i in 0..<50 {
-      result = result + pow / (2 * i + 1).to_double()
-      pow = pow * t2
-    }
-    2.0 * result
-  }
-}
-
 fn xa_sqrt(x : Double) -> Double {
   if x <= 0.0 {
     0.0
@@ -61,16 +45,6 @@ fn xa_abs(x : Double) -> Double {
   if x < 0.0 { -x } else { x }
 }
 
-fn xa_sigmoid(x : Double) -> Double {
-  1.0 / (1.0 + xa_exp(-x))
-}
-
-fn xa_tanh(x : Double) -> Double {
-  let e1 = xa_exp(x)
-  let e2 = xa_exp(-x)
-  (e1 - e2) / (e1 + e2)
-}
-
 fn xa_mean(arr : Array[Double]) -> Double {
   if arr.length() == 0 {
     0.0
@@ -78,20 +52,6 @@ fn xa_mean(arr : Array[Double]) -> Double {
     let mut s = 0.0
     for i in 0..<arr.length() {
       s = s + arr[i]
-    }
-    s / arr.length().to_double()
-  }
-}
-
-fn xa_variance(arr : Array[Double]) -> Double {
-  if arr.length() < 2 {
-    0.0
-  } else {
-    let m = xa_mean(arr)
-    let mut s = 0.0
-    for i in 0..<arr.length() {
-      let d = arr[i] - m
-      s = s + d * d
     }
     s / arr.length().to_double()
   }

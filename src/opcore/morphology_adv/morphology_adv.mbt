@@ -78,24 +78,6 @@ fn morph_abs(x : Double) -> Double {
   }
 }
 
-fn morph_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    return 0.0
-  }
-  let mut guess = x
-  if guess > 1.0 {
-    guess = guess / 2.0
-  }
-  let mut prev = 0.0
-  let mut iter = 0
-  while (guess - prev).abs() > 0.0000001 && iter < 60 {
-    prev = guess
-    guess = (guess + x / guess) / 2.0
-    iter = iter + 1
-  }
-  guess
-}
-
 /// 构造形态学图像 / Build morphology image.
 pub fn make_morph_image(width : Int, height : Int, data : Array[Double]) -> MorphImage {
   { width, height, data }

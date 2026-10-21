@@ -167,22 +167,6 @@ fn ta_ends_with(s : String, suffix : String) -> Bool {
   true
 }
 
-fn ta_starts_with(s : String, prefix : String) -> Bool {
-  let slen = s.length()
-  let plen = prefix.length()
-  if slen < plen {
-    return false
-  }
-  let s_chars = s.to_array()
-  let p_chars = prefix.to_array()
-  for i in 0..<plen {
-    if s_chars[i] != p_chars[i] {
-      return false
-    }
-  }
-  true
-}
-
 fn ta_substring(s : String, start : Int, length : Int) -> String {
   let chars = s.to_array()
   let slen = chars.length()

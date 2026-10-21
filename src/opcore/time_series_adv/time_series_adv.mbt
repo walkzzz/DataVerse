@@ -89,10 +89,6 @@ fn tsa_sin(x : Double) -> Double {
   result
 }
 
-fn tsa_cos(x : Double) -> Double {
-  tsa_sin(x + TSA_PI / 2.0)
-}
-
 fn tsa_mean(arr : Array[Double]) -> Double {
   let n = arr.length()
   if n == 0 {

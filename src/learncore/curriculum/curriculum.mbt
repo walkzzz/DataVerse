@@ -79,10 +79,6 @@ fn clamp(x : Double, lo : Double, hi : Double) -> Double {
   if x < lo { lo } else if x > hi { hi } else { x }
 }
 
-fn sigmoid(x : Double) -> Double {
-  1.0 / (1.0 + exp(-x))
-}
-
 pub(all) struct Curriculum {
   samples : Array[Int]
   difficulties : Array[Double]

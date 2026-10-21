@@ -10,54 +10,12 @@
 ///===
 /// 内部数学辅助 / Internal math helpers
 
-fn st_sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    return 0.0
-  }
-  let mut guess = x / 2.0
-  if guess == 0.0 {
-    guess = 1.0
-  }
-  for _ in 0..<60 {
-    guess = (guess + x / guess) / 2.0
-  }
-  guess
-}
-
-fn st_abs(x : Double) -> Double {
-  if x < 0.0 {
-    -x
-  } else {
-    x
-  }
-}
-
-fn st_max(a : Double, b : Double) -> Double {
-  if a > b {
-    a
-  } else {
-    b
-  }
-}
-
 fn st_min(a : Double, b : Double) -> Double {
   if a < b {
     a
   } else {
     b
   }
-}
-
-fn st_mean(arr : Array[Double]) -> Double {
-  let n = arr.length()
-  if n == 0 {
-    return 0.0
-  }
-  let mut sum = 0.0
-  for i in 0..<n {
-    sum = sum + arr[i]
-  }
-  sum / n.to_double()
 }
 
 ///===

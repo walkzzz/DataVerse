@@ -316,3 +316,73 @@ test "proof_concat_length" {
   let c = @_common.concat([1.0, 2.0], [3.0, 4.0, 5.0])
   assert_true(c.length() == 5)
 }
+test "edge_empty_arrays" {
+  assert_true(@_common.sum([]) < 0.001)
+  assert_true(@_common.mean([]) < 0.001)
+  assert_true(@_common.variance([]) < 0.001)
+  assert_true(@_common.std([]) < 0.001)
+  assert_true(@_common.min([]) < 0.001)
+  assert_true(@_common.max([]) < 0.001)
+  assert_true(@_common.median([]) < 0.001)
+  assert_true(@_common.sort([]).length() == 0)
+  assert_true(@_common.normalize([]).length() == 0)
+  assert_true(@_common.cumsum([]).length() == 0)
+}
+
+test "edge_single_element" {
+  assert_true(@_common.sum([42.0]) > 41.99)
+  assert_true(@_common.mean([42.0]) > 41.99)
+  assert_true(@_common.variance([42.0]) < 0.001)
+  assert_true(@_common.std([42.0]) < 0.001)
+  assert_true(@_common.min([42.0]) > 41.99)
+  assert_true(@_common.max([42.0]) > 41.99)
+  assert_true(@_common.median([42.0]) > 41.99)
+}
+
+test "edge_negative_numbers" {
+  let data = [-5.0, -3.0, -1.0]
+  assert_true(@_common.sum(data) > -9.01 && @_common.sum(data) < -8.99)
+  assert_true(@_common.mean(data) > -3.01 && @_common.mean(data) < -2.99)
+  assert_true(@_common.min(data) > -5.01 && @_common.min(data) < -4.99)
+  assert_true(@_common.max(data) > -1.01 && @_common.max(data) < -0.99)
+}
+
+test "edge_large_numbers" {
+  let data = [1000000.0, 2000000.0, 3000000.0]
+  let m = @_common.mean(data)
+  assert_true(m > 1999999.0 && m < 2000001.0)
+  let s = @_common.sum(data)
+  assert_true(s > 5999999.0 && s < 6000001.0)
+}
+
+test "edge_near_zero" {
+  let data = [0.000001, 0.000002, 0.000003]
+  let m = @_common.mean(data)
+  assert_true(m > 0.0)
+  let s = @_common.std(data)
+  assert_true(s >= 0.0)
+}
+
+test "edge_clamp_lo_eq_hi" {
+  let c = @_common.clamp(5.0, 3.0, 3.0)
+  assert_true(c > 2.99 && c < 3.01)
+}
+
+test "edge_factorial_large" {
+  let f = @_common.factorial(15)
+  assert_true(f > 1300000000000.0)
+}
+
+test "edge_near_zero" {
+  let data = [0.000001, 0.000002, 0.000003]
+  let m = @_common.mean(data)
+  assert_true(m > 0.0)
+  let s = @_common.std(data)
+  assert_true(s >= 0.0)
+}
+
+test "edge_clamp_lo_eq_hi" {
+  let c = @_common.clamp(5.0, 3.0, 3.0)
+  assert_true(c > 2.99 && c < 3.01)
+}
+

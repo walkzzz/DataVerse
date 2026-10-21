@@ -27,7 +27,7 @@ fn main raise {
   println("  [PASS] factorial(5) == 120.0  (got \{f5})")
   assert_true(@_common.is_prime(7))
   println("  [PASS] is_prime(7) == true")
-  assert_true(not(@_common.is_prime(8)))
+  assert_true(!(@_common.is_prime(8)))
   println("  [PASS] is_prime(8) == false")
   assert_true(@_common.fibonacci(10) == 55)
   println("  [PASS] fibonacci(10) == 55")

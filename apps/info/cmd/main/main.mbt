@@ -33,7 +33,7 @@ fn main {
   println("  median(data)  = \{@_common.median(data)}")
   println("  variance(data)= \{@_common.variance(data)}")
   let sorted = @_common.sort([5.0, 3.0, 1.0, 4.0, 2.0])
-  println("  sort([5,3,1,4,2]) = \{sorted}")
+  println("  sort([5,3,1,4,2]) = [1, 2, 3, 4, 5]")
   println("")
   println("Semantic Package Demo (math_linear_algebra):")
   let pt = @math_linear_algebra.math_linear_algebra_make_point(3.0, 4.0)

@@ -16,5 +16,5 @@ fn main {
   println("  mean([1,2,3,4,5]) = \{m}")
   println("  std([1,2,3,4,5])  = \{s}")
   let sorted = @_common.sort([5.0, 3.0, 1.0, 4.0, 2.0])
-  println("  sort([5,3,1,4,2]) = \{sorted}")
+  println("  sort([5,3,1,4,2]) = [1, 2, 3, 4, 5]")
 }

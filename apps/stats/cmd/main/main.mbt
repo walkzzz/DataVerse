@@ -22,9 +22,9 @@ fn main {
     println("  variance = \{@_common.variance(data)}")
     println("  std      = \{@_common.std(data)}")
     let sorted = @_common.sort(data)
-    println("  sorted   = \{sorted}")
+    println("  sorted   = (sorted)")
     let norm = @_common.normalize(data)
-    println("  normalize= \{norm}")
+    println("  normalize= (normalized)")
     println("")
   }
   println("Cross-dataset analysis:")

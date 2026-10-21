@@ -54,11 +54,10 @@ README 中英文，美化，默认中文；每个子包也要 README.md。
 **已知可接受噪声**（旧代码 agent_kit/learncore/opcore 等，语义包 0 warning）：
 - **[0002] unused variable**（23个）：函数参数/struct 字段未使用
 - **[0009] struct never constructed**（21个）：旧代码 struct 未被构造（可能跨包使用）
-- **[0060] unused struct update**（10个）：`..s` spread 无效（删除不安全）
-- **[0020] deprecated API**（3个）：残留 deprecated 调用
+- **[0060] unused struct update. struct update**（10个）：`..s` spread 无效（删除不安全）
 - **[0079] derive**（2个）：`derive(Eq, Debug)` implicit_impl_as_method
 
-总计 59 个 warnings（从 506 减少 88%），全部来自旧代码（Phase 0-12），语义包（Phase 22+）0 warning。记录但不阻塞当前迭代。
+总计 56 个 warnings（从 506 减少 89%），全部来自旧代码（Phase 0-12），语义包（Phase 22+）0 warning。记录但不阻塞当前迭代。
 
 ### R14 — 占位 todo 检查 ⭐ 新增
 所有的占位 todo 项，每次迭代后都要检查是否具备条件完成。若依赖已满足且资源就绪，立即推进；否则标注阻塞原因。

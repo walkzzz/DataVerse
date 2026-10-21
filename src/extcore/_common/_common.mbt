@@ -92,11 +92,8 @@ pub fn rad_to_deg(rad : Double) -> Double {
 
 /// 均值
 pub fn mean(data : Array[Double]) -> Double {
-  let n = data.length()
-  match n {
-    0 => 0.0
-    _ => sum(data) / n.to_double()
-  }
+  guard data.length() > 0 else { 0.0 }
+  sum(data) / data.length().to_double()
 }
 
 /// 求和
@@ -531,34 +528,26 @@ pub fn fibonacci(n : Int) -> Int {
 
 /// 最小值
 pub fn min(data : Array[Double]) -> Double {
-  match data.length() {
-    0 => 0.0
-    _ => {
-      let mut m = data[0]
-      for x in data {
-        if x < m {
-          m = x
-        }
-      }
-      m
+  guard data.length() > 0 else { 0.0 }
+  let mut m = data[0]
+  for x in data {
+    if x < m {
+      m = x
     }
   }
+  m
 }
 
 /// 最大值
 pub fn max(data : Array[Double]) -> Double {
-  match data.length() {
-    0 => 0.0
-    _ => {
-      let mut m = data[0]
-      for x in data {
-        if x > m {
-          m = x
-        }
-      }
-      m
+  guard data.length() > 0 else { 0.0 }
+  let mut m = data[0]
+  for x in data {
+    if x > m {
+      m = x
     }
   }
+  m
 }
 
 /// 归一化到 [0, 1]

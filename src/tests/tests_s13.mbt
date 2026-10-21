@@ -159,3 +159,66 @@ test "chem_mol_repr_smiles_basic" {
   let mt = @chem_mol_repr_smiles.chem_mol_repr_smiles_matrix_identity(2)
   assert_true(mt.det() == 1.0)
 }
+test "proof_point_add_commutative" {
+  let a = @math_linear_algebra.math_linear_algebra_make_point(3.0, 4.0)
+  let b = @math_linear_algebra.math_linear_algebra_make_point(1.0, 2.0)
+  let ab = a.add(b)
+  let ba = b.add(a)
+  assert_true(ab.x() > 3.99 && ab.x() < 4.01)
+  assert_true(ba.x() > 3.99 && ba.x() < 4.01)
+}
+
+test "proof_point_sub_self" {
+  let a = @math_linear_algebra.math_linear_algebra_make_point(5.0, 7.0)
+  let z = a.sub(a)
+  assert_true(z.x() < 0.01 && z.y() < 0.01)
+}
+
+test "proof_point_norm_nonneg" {
+  let a = @math_linear_algebra.math_linear_algebra_make_point(3.0, 4.0)
+  let n = a.norm()
+  assert_true(n > 4.99 && n < 5.01)
+}
+
+test "proof_series_sum_mean_relation" {
+  let sr = @math_linear_algebra.math_linear_algebra_make_series([1.0, 2.0, 3.0, 4.0, 5.0], "s")
+  let s = sr.sum()
+  let m = sr.mean()
+  let n = sr.len().to_double()
+  assert_true(s > 14.99 && s < 15.01)
+  assert_true(m > 2.99 && m < 3.01)
+  assert_true(s / n > 2.99 && s / n < 3.01)
+}
+
+test "proof_series_min_max_order" {
+  let sr = @math_linear_algebra.math_linear_algebra_make_series([5.0, 3.0, 1.0, 4.0, 2.0], "s")
+  assert_true(sr.min() < 1.01)
+  assert_true(sr.max() > 4.99)
+  assert_true(sr.min() <= sr.max())
+}
+
+test "proof_matrix_identity_trace" {
+  let m3 = @math_linear_algebra.math_linear_algebra_matrix_identity(3)
+  assert_true(m3.trace() > 2.99 && m3.trace() < 3.01)
+  let m5 = @math_linear_algebra.math_linear_algebra_matrix_identity(5)
+  assert_true(m5.trace() > 4.99 && m5.trace() < 5.01)
+}
+
+test "proof_matrix_identity_det" {
+  let m2 = @math_linear_algebra.math_linear_algebra_matrix_identity(2)
+  assert_true(m2.det() > 0.99 && m2.det() < 1.01)
+  let m3 = @math_linear_algebra.math_linear_algebra_matrix_identity(3)
+  assert_true(m3.det() > 0.99 && m3.det() < 1.01)
+}
+
+test "proof_vector_norm_nonneg" {
+  let v = @math_linear_algebra.math_linear_algebra_make_vector([3.0, 4.0])
+  let n = v.norm()
+  assert_true(n > 4.99 && n < 5.01)
+}
+
+test "proof_vector_dot_self" {
+  let v = @math_linear_algebra.math_linear_algebra_make_vector([1.0, 2.0, 3.0])
+  let d = v.dot(v)
+  assert_true(d > 13.99 && d < 14.01)
+}

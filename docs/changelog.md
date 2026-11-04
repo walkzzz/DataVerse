@@ -4,6 +4,27 @@
 
 ## [1.0.0-beta] - 2026-11-04
 
+### 通用数据类型包 + P0 重复分析
+
+**通用类型包 / Common Types Package**
+- 新增 `src/extcore/types/`（types.mbt, 400+ 行）
+- 4 个通用类型: `DvPoint`, `DvSeries`, `DvMatrix`, `DvVector`（`pub` 字段）
+- 43 个通用函数: `dv_make_point`, `dv_point_dist`, `dv_make_series`, `dv_series_mean` 等
+- 为未来新代码提供统一类型基础
+
+**P0 重复分析 / P0 Duplication Analysis**
+- 分析了 942 个重复类型定义（239 Point + 234 Series + 235 Matrix + 234 Vector）
+- 125,247 个引用点，分布在 268 个源文件 + 130 个测试文件
+- 字段结构高度一致: Point `{x, y, label}`, Series `{vals, name}`, Matrix `{data, rows, cols}`, Vector `{comps, dim}`
+- 批量迁移脚本 `_dedup.py` 开发完成，但批量替换产生类型歧义等边界问题
+- **决策**: 保留 types 包作为基础设施，P0 迁移需逐包手动处理
+
+**统计 / Stats**
+- moon check: 0 errors, 4 warnings
+- moon test: 4,132 passed, 0 failed
+
+## [1.0.0-beta] - 2026-11-04
+
 ### 安全函数去重与错误风格统一
 
 **通用 lift 高阶函数 / Lift HOFs**

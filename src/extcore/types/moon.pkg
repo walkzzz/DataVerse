@@ -1,0 +1,6 @@
+// extcore/types 通用数据类型 / Common data types
+// 消除各包重复的 Point/Series/Matrix/Vector 定义
+import {
+  "dataverse/extcore/_common",
+
+}

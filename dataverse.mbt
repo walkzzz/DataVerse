@@ -7150,7 +7150,7 @@ pub using @learncore.meta_learning {
 ///===
 /// S12.26 agent_kit/multi_agent 多智能体
 
-pub using @agent_kit.multi_agent {
+pub using @agent_kit.agents {
  AgentConfig, Message, MessageChannel, Role, RoleAssignment, CoordinationProtocol, Auction, Contract, TaskAllocation, SharedState, Vote, Consensus, Blackboard, MarketOrder, Market, Coalition, Delegation, SupervisionRecord, Hierarchy, Federation, Swarm, Environment, MultiAgentSystem, make_agent_config, make_multi_agent_system, add_agent_to_system, make_message_channel, send_message, receive_message, broadcast, make_role, assign_role, check_role_permission, make_coordination_protocol, coordinate, negotiate, make_auction, auction_bid, auction_allocate, auction_result, make_contract, contract_sign, contract_verify, contract_execute, make_task_allocation, allocate_task, deallocate_task, make_shared_state, read_shared, write_shared, update_shared, make_consensus, consensus_vote, consensus_reach, consensus_result, make_blackboard, blackboard_write, blackboard_read, make_market, market_bid, market_ask, market_clear, make_coalition, form_coalition, coalition_value, make_delegation, delegate_task, accept_delegation, make_supervisor, supervise_agent, intervene, make_hierarchy, hierarchical_delegate, hierarchical_report, make_federation, federate_agents, federated_learn, make_swarm, swarm_behavior, swarm_intelligence, agent_communication, agent_collaboration, agent_competition, make_environment, env_observe, env_act, env_reward_multi, multi_agent_id
 }
 

@@ -1,5 +1,0 @@
-// agent_kit/climate_sim agent_kit/climate_sim
-// S13.138 new
-import {
-  "dataverse/extcore/_common",
-}

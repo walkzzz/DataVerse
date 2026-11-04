@@ -1,5 +1,0 @@
-// agent_kit/crowd_sim agent_kit/crowd_sim
-// S13.134 new
-import {
-  "dataverse/extcore/_common",
-}

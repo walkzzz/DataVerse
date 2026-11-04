@@ -64,6 +64,222 @@ pub fn plan_cost(Plan) -> Double
 
 pub fn plan_duration(Plan) -> Int32
 
+pub fn planning_causal_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn planning_causal_corr(Array[Double], Array[Double]) -> Double
+
+pub fn planning_causal_cov(Array[Double], Array[Double]) -> Double
+
+pub fn planning_causal_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn planning_causal_mae(Array[Double], Array[Double]) -> Double
+
+pub fn planning_causal_make_labeled_point(Double, Double, Int32) -> Planning_causalPoint
+
+pub fn planning_causal_make_matrix(Int32, Int32, Double) -> Planning_causalMatrix
+
+pub fn planning_causal_make_point(Double, Double) -> Planning_causalPoint
+
+pub fn planning_causal_make_series(Array[Double], String) -> Planning_causalSeries
+
+pub fn planning_causal_make_vector(Array[Double]) -> Planning_causalVector
+
+pub fn planning_causal_matrix_add(Planning_causalMatrix, Planning_causalMatrix) -> Planning_causalMatrix
+
+pub fn planning_causal_matrix_get(Planning_causalMatrix, Int32, Int32) -> Double
+
+pub fn planning_causal_matrix_identity(Int32) -> Planning_causalMatrix
+
+pub fn planning_causal_matrix_multiply(Planning_causalMatrix, Planning_causalMatrix) -> Planning_causalMatrix
+
+pub fn planning_causal_matrix_norm(Planning_causalMatrix) -> Double
+
+pub fn planning_causal_matrix_scale(Planning_causalMatrix, Double) -> Planning_causalMatrix
+
+pub fn planning_causal_matrix_to_string(Planning_causalMatrix) -> String
+
+pub fn planning_causal_matrix_trace(Planning_causalMatrix) -> Double
+
+pub fn planning_causal_matrix_transpose(Planning_causalMatrix) -> Planning_causalMatrix
+
+pub fn planning_causal_mse(Array[Double], Array[Double]) -> Double
+
+pub fn planning_causal_point_add(Planning_causalPoint, Planning_causalPoint) -> Planning_causalPoint
+
+pub fn planning_causal_point_dist(Planning_causalPoint, Planning_causalPoint) -> Double
+
+pub fn planning_causal_point_dot(Planning_causalPoint, Planning_causalPoint) -> Double
+
+pub fn planning_causal_point_label(Planning_causalPoint) -> Int32
+
+pub fn planning_causal_point_norm(Planning_causalPoint) -> Double
+
+pub fn planning_causal_point_scale(Planning_causalPoint, Double) -> Planning_causalPoint
+
+pub fn planning_causal_point_sub(Planning_causalPoint, Planning_causalPoint) -> Planning_causalPoint
+
+pub fn planning_causal_point_to_string(Planning_causalPoint) -> String
+
+pub fn planning_causal_point_x(Planning_causalPoint) -> Double
+
+pub fn planning_causal_point_y(Planning_causalPoint) -> Double
+
+pub fn planning_causal_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn planning_causal_r2(Array[Double], Array[Double]) -> Double
+
+pub fn planning_causal_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn planning_causal_series_add(Planning_causalSeries, Planning_causalSeries) -> Planning_causalSeries
+
+pub fn planning_causal_series_len(Planning_causalSeries) -> Int32
+
+pub fn planning_causal_series_max(Planning_causalSeries) -> Double
+
+pub fn planning_causal_series_mean(Planning_causalSeries) -> Double
+
+pub fn planning_causal_series_min(Planning_causalSeries) -> Double
+
+pub fn planning_causal_series_scale(Planning_causalSeries, Double) -> Planning_causalSeries
+
+pub fn planning_causal_series_std(Planning_causalSeries) -> Double
+
+pub fn planning_causal_series_sum(Planning_causalSeries) -> Double
+
+pub fn planning_causal_series_to_string(Planning_causalSeries) -> String
+
+pub fn planning_causal_series_var(Planning_causalSeries) -> Double
+
+pub fn planning_causal_std(Array[Double]) -> Double
+
+pub fn planning_causal_var(Array[Double]) -> Double
+
+pub fn planning_causal_vector_add(Planning_causalVector, Planning_causalVector) -> Planning_causalVector
+
+pub fn planning_causal_vector_dist(Planning_causalVector, Planning_causalVector) -> Double
+
+pub fn planning_causal_vector_dot(Planning_causalVector, Planning_causalVector) -> Double
+
+pub fn planning_causal_vector_norm(Planning_causalVector) -> Double
+
+pub fn planning_causal_vector_normalize(Planning_causalVector) -> Planning_causalVector
+
+pub fn planning_causal_vector_scale(Planning_causalVector, Double) -> Planning_causalVector
+
+pub fn planning_causal_vector_sub(Planning_causalVector, Planning_causalVector) -> Planning_causalVector
+
+pub fn planning_causal_vector_to_string(Planning_causalVector) -> String
+
+pub fn planning_causal_vector_zero(Int32) -> Planning_causalVector
+
+pub fn planning_htn_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn planning_htn_corr(Array[Double], Array[Double]) -> Double
+
+pub fn planning_htn_cov(Array[Double], Array[Double]) -> Double
+
+pub fn planning_htn_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn planning_htn_mae(Array[Double], Array[Double]) -> Double
+
+pub fn planning_htn_make_labeled_point(Double, Double, Int32) -> Planning_htnPoint
+
+pub fn planning_htn_make_matrix(Int32, Int32, Double) -> Planning_htnMatrix
+
+pub fn planning_htn_make_point(Double, Double) -> Planning_htnPoint
+
+pub fn planning_htn_make_series(Array[Double], String) -> Planning_htnSeries
+
+pub fn planning_htn_make_vector(Array[Double]) -> Planning_htnVector
+
+pub fn planning_htn_matrix_add(Planning_htnMatrix, Planning_htnMatrix) -> Planning_htnMatrix
+
+pub fn planning_htn_matrix_get(Planning_htnMatrix, Int32, Int32) -> Double
+
+pub fn planning_htn_matrix_identity(Int32) -> Planning_htnMatrix
+
+pub fn planning_htn_matrix_multiply(Planning_htnMatrix, Planning_htnMatrix) -> Planning_htnMatrix
+
+pub fn planning_htn_matrix_norm(Planning_htnMatrix) -> Double
+
+pub fn planning_htn_matrix_scale(Planning_htnMatrix, Double) -> Planning_htnMatrix
+
+pub fn planning_htn_matrix_to_string(Planning_htnMatrix) -> String
+
+pub fn planning_htn_matrix_trace(Planning_htnMatrix) -> Double
+
+pub fn planning_htn_matrix_transpose(Planning_htnMatrix) -> Planning_htnMatrix
+
+pub fn planning_htn_mse(Array[Double], Array[Double]) -> Double
+
+pub fn planning_htn_point_add(Planning_htnPoint, Planning_htnPoint) -> Planning_htnPoint
+
+pub fn planning_htn_point_dist(Planning_htnPoint, Planning_htnPoint) -> Double
+
+pub fn planning_htn_point_dot(Planning_htnPoint, Planning_htnPoint) -> Double
+
+pub fn planning_htn_point_label(Planning_htnPoint) -> Int32
+
+pub fn planning_htn_point_norm(Planning_htnPoint) -> Double
+
+pub fn planning_htn_point_scale(Planning_htnPoint, Double) -> Planning_htnPoint
+
+pub fn planning_htn_point_sub(Planning_htnPoint, Planning_htnPoint) -> Planning_htnPoint
+
+pub fn planning_htn_point_to_string(Planning_htnPoint) -> String
+
+pub fn planning_htn_point_x(Planning_htnPoint) -> Double
+
+pub fn planning_htn_point_y(Planning_htnPoint) -> Double
+
+pub fn planning_htn_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn planning_htn_r2(Array[Double], Array[Double]) -> Double
+
+pub fn planning_htn_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn planning_htn_series_add(Planning_htnSeries, Planning_htnSeries) -> Planning_htnSeries
+
+pub fn planning_htn_series_len(Planning_htnSeries) -> Int32
+
+pub fn planning_htn_series_max(Planning_htnSeries) -> Double
+
+pub fn planning_htn_series_mean(Planning_htnSeries) -> Double
+
+pub fn planning_htn_series_min(Planning_htnSeries) -> Double
+
+pub fn planning_htn_series_scale(Planning_htnSeries, Double) -> Planning_htnSeries
+
+pub fn planning_htn_series_std(Planning_htnSeries) -> Double
+
+pub fn planning_htn_series_sum(Planning_htnSeries) -> Double
+
+pub fn planning_htn_series_to_string(Planning_htnSeries) -> String
+
+pub fn planning_htn_series_var(Planning_htnSeries) -> Double
+
+pub fn planning_htn_std(Array[Double]) -> Double
+
+pub fn planning_htn_var(Array[Double]) -> Double
+
+pub fn planning_htn_vector_add(Planning_htnVector, Planning_htnVector) -> Planning_htnVector
+
+pub fn planning_htn_vector_dist(Planning_htnVector, Planning_htnVector) -> Double
+
+pub fn planning_htn_vector_dot(Planning_htnVector, Planning_htnVector) -> Double
+
+pub fn planning_htn_vector_norm(Planning_htnVector) -> Double
+
+pub fn planning_htn_vector_normalize(Planning_htnVector) -> Planning_htnVector
+
+pub fn planning_htn_vector_scale(Planning_htnVector, Double) -> Planning_htnVector
+
+pub fn planning_htn_vector_sub(Planning_htnVector, Planning_htnVector) -> Planning_htnVector
+
+pub fn planning_htn_vector_to_string(Planning_htnVector) -> String
+
+pub fn planning_htn_vector_zero(Int32) -> Planning_htnVector
+
 pub fn planning_id() -> String
 
 pub fn policy_iteration(MDP, Int32) -> Policy
@@ -165,6 +381,50 @@ pub struct Plan {
 pub fn Plan::equal(Self, Self) -> Bool
 pub fn Plan::not_equal(Self, Self) -> Bool
 pub fn Plan::to_repr(Self) -> @debug.Repr
+
+pub struct Planning_causalMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Planning_causalPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Planning_causalSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Planning_causalVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
+pub struct Planning_htnMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct Planning_htnPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct Planning_htnSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct Planning_htnVector {
+  comps : Array[Double]
+  dim : Int32
+}
 
 pub struct Policy {
   policy_id : String

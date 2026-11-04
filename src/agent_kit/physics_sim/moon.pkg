@@ -1,5 +1,0 @@
-// agent_kit/physics_sim agent_kit/physics_sim
-// S13.140 new
-import {
-  "dataverse/extcore/_common",
-}

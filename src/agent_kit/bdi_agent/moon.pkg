@@ -1,5 +1,0 @@
-// agent_kit/bdi_agent agent_kit/bdi_agent
-// S13.123 new
-import {
-  "dataverse/extcore/_common",
-}

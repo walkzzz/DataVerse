@@ -12,55 +12,7 @@ pub fn uav_control_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn uav_control_mae(Array[Double], Array[Double]) -> Double
 
-pub fn uav_control_make_labeled_point(Double, Double, Int32) -> Uav_controlPoint
-
-pub fn uav_control_make_matrix(Int32, Int32, Double) -> Uav_controlMatrix
-
-pub fn uav_control_make_point(Double, Double) -> Uav_controlPoint
-
-pub fn uav_control_make_series(Array[Double], String) -> Uav_controlSeries
-
-pub fn uav_control_make_vector(Array[Double]) -> Uav_controlVector
-
-pub fn uav_control_matrix_add(Uav_controlMatrix, Uav_controlMatrix) -> Uav_controlMatrix
-
-pub fn uav_control_matrix_get(Uav_controlMatrix, Int32, Int32) -> Double
-
-pub fn uav_control_matrix_identity(Int32) -> Uav_controlMatrix
-
-pub fn uav_control_matrix_multiply(Uav_controlMatrix, Uav_controlMatrix) -> Uav_controlMatrix
-
-pub fn uav_control_matrix_norm(Uav_controlMatrix) -> Double
-
-pub fn uav_control_matrix_scale(Uav_controlMatrix, Double) -> Uav_controlMatrix
-
-pub fn uav_control_matrix_to_string(Uav_controlMatrix) -> String
-
-pub fn uav_control_matrix_trace(Uav_controlMatrix) -> Double
-
-pub fn uav_control_matrix_transpose(Uav_controlMatrix) -> Uav_controlMatrix
-
 pub fn uav_control_mse(Array[Double], Array[Double]) -> Double
-
-pub fn uav_control_point_add(Uav_controlPoint, Uav_controlPoint) -> Uav_controlPoint
-
-pub fn uav_control_point_dist(Uav_controlPoint, Uav_controlPoint) -> Double
-
-pub fn uav_control_point_dot(Uav_controlPoint, Uav_controlPoint) -> Double
-
-pub fn uav_control_point_label(Uav_controlPoint) -> Int32
-
-pub fn uav_control_point_norm(Uav_controlPoint) -> Double
-
-pub fn uav_control_point_scale(Uav_controlPoint, Double) -> Uav_controlPoint
-
-pub fn uav_control_point_sub(Uav_controlPoint, Uav_controlPoint) -> Uav_controlPoint
-
-pub fn uav_control_point_to_string(Uav_controlPoint) -> String
-
-pub fn uav_control_point_x(Uav_controlPoint) -> Double
-
-pub fn uav_control_point_y(Uav_controlPoint) -> Double
 
 pub fn uav_control_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn uav_control_r2(Array[Double], Array[Double]) -> Double
 
 pub fn uav_control_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn uav_control_series_add(Uav_controlSeries, Uav_controlSeries) -> Uav_controlSeries
-
-pub fn uav_control_series_len(Uav_controlSeries) -> Int32
-
-pub fn uav_control_series_max(Uav_controlSeries) -> Double
-
-pub fn uav_control_series_mean(Uav_controlSeries) -> Double
-
-pub fn uav_control_series_min(Uav_controlSeries) -> Double
-
-pub fn uav_control_series_scale(Uav_controlSeries, Double) -> Uav_controlSeries
-
-pub fn uav_control_series_std(Uav_controlSeries) -> Double
-
-pub fn uav_control_series_sum(Uav_controlSeries) -> Double
-
-pub fn uav_control_series_to_string(Uav_controlSeries) -> String
-
-pub fn uav_control_series_var(Uav_controlSeries) -> Double
-
 pub fn uav_control_std(Array[Double]) -> Double
 
 pub fn uav_control_var(Array[Double]) -> Double
 
-pub fn uav_control_vector_add(Uav_controlVector, Uav_controlVector) -> Uav_controlVector
-
-pub fn uav_control_vector_dist(Uav_controlVector, Uav_controlVector) -> Double
-
-pub fn uav_control_vector_dot(Uav_controlVector, Uav_controlVector) -> Double
-
-pub fn uav_control_vector_norm(Uav_controlVector) -> Double
-
-pub fn uav_control_vector_normalize(Uav_controlVector) -> Uav_controlVector
-
-pub fn uav_control_vector_scale(Uav_controlVector, Double) -> Uav_controlVector
-
-pub fn uav_control_vector_sub(Uav_controlVector, Uav_controlVector) -> Uav_controlVector
-
-pub fn uav_control_vector_to_string(Uav_controlVector) -> String
-
-pub fn uav_control_vector_zero(Int32) -> Uav_controlVector
-
 // Errors
 
 // Types and methods
-pub struct Uav_controlMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Uav_controlPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Uav_controlSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Uav_controlVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

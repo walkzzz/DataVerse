@@ -12,55 +12,7 @@ pub fn frame_store_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn frame_store_mae(Array[Double], Array[Double]) -> Double
 
-pub fn frame_store_make_labeled_point(Double, Double, Int32) -> Frame_storePoint
-
-pub fn frame_store_make_matrix(Int32, Int32, Double) -> Frame_storeMatrix
-
-pub fn frame_store_make_point(Double, Double) -> Frame_storePoint
-
-pub fn frame_store_make_series(Array[Double], String) -> Frame_storeSeries
-
-pub fn frame_store_make_vector(Array[Double]) -> Frame_storeVector
-
-pub fn frame_store_matrix_add(Frame_storeMatrix, Frame_storeMatrix) -> Frame_storeMatrix
-
-pub fn frame_store_matrix_get(Frame_storeMatrix, Int32, Int32) -> Double
-
-pub fn frame_store_matrix_identity(Int32) -> Frame_storeMatrix
-
-pub fn frame_store_matrix_multiply(Frame_storeMatrix, Frame_storeMatrix) -> Frame_storeMatrix
-
-pub fn frame_store_matrix_norm(Frame_storeMatrix) -> Double
-
-pub fn frame_store_matrix_scale(Frame_storeMatrix, Double) -> Frame_storeMatrix
-
-pub fn frame_store_matrix_to_string(Frame_storeMatrix) -> String
-
-pub fn frame_store_matrix_trace(Frame_storeMatrix) -> Double
-
-pub fn frame_store_matrix_transpose(Frame_storeMatrix) -> Frame_storeMatrix
-
 pub fn frame_store_mse(Array[Double], Array[Double]) -> Double
-
-pub fn frame_store_point_add(Frame_storePoint, Frame_storePoint) -> Frame_storePoint
-
-pub fn frame_store_point_dist(Frame_storePoint, Frame_storePoint) -> Double
-
-pub fn frame_store_point_dot(Frame_storePoint, Frame_storePoint) -> Double
-
-pub fn frame_store_point_label(Frame_storePoint) -> Int32
-
-pub fn frame_store_point_norm(Frame_storePoint) -> Double
-
-pub fn frame_store_point_scale(Frame_storePoint, Double) -> Frame_storePoint
-
-pub fn frame_store_point_sub(Frame_storePoint, Frame_storePoint) -> Frame_storePoint
-
-pub fn frame_store_point_to_string(Frame_storePoint) -> String
-
-pub fn frame_store_point_x(Frame_storePoint) -> Double
-
-pub fn frame_store_point_y(Frame_storePoint) -> Double
 
 pub fn frame_store_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn frame_store_r2(Array[Double], Array[Double]) -> Double
 
 pub fn frame_store_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn frame_store_series_add(Frame_storeSeries, Frame_storeSeries) -> Frame_storeSeries
-
-pub fn frame_store_series_len(Frame_storeSeries) -> Int32
-
-pub fn frame_store_series_max(Frame_storeSeries) -> Double
-
-pub fn frame_store_series_mean(Frame_storeSeries) -> Double
-
-pub fn frame_store_series_min(Frame_storeSeries) -> Double
-
-pub fn frame_store_series_scale(Frame_storeSeries, Double) -> Frame_storeSeries
-
-pub fn frame_store_series_std(Frame_storeSeries) -> Double
-
-pub fn frame_store_series_sum(Frame_storeSeries) -> Double
-
-pub fn frame_store_series_to_string(Frame_storeSeries) -> String
-
-pub fn frame_store_series_var(Frame_storeSeries) -> Double
-
 pub fn frame_store_std(Array[Double]) -> Double
 
 pub fn frame_store_var(Array[Double]) -> Double
 
-pub fn frame_store_vector_add(Frame_storeVector, Frame_storeVector) -> Frame_storeVector
-
-pub fn frame_store_vector_dist(Frame_storeVector, Frame_storeVector) -> Double
-
-pub fn frame_store_vector_dot(Frame_storeVector, Frame_storeVector) -> Double
-
-pub fn frame_store_vector_norm(Frame_storeVector) -> Double
-
-pub fn frame_store_vector_normalize(Frame_storeVector) -> Frame_storeVector
-
-pub fn frame_store_vector_scale(Frame_storeVector, Double) -> Frame_storeVector
-
-pub fn frame_store_vector_sub(Frame_storeVector, Frame_storeVector) -> Frame_storeVector
-
-pub fn frame_store_vector_to_string(Frame_storeVector) -> String
-
-pub fn frame_store_vector_zero(Int32) -> Frame_storeVector
-
 // Errors
 
 // Types and methods
-pub struct Frame_storeMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Frame_storePoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Frame_storeSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Frame_storeVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

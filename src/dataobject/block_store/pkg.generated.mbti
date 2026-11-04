@@ -12,55 +12,7 @@ pub fn block_store_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn block_store_mae(Array[Double], Array[Double]) -> Double
 
-pub fn block_store_make_labeled_point(Double, Double, Int32) -> Block_storePoint
-
-pub fn block_store_make_matrix(Int32, Int32, Double) -> Block_storeMatrix
-
-pub fn block_store_make_point(Double, Double) -> Block_storePoint
-
-pub fn block_store_make_series(Array[Double], String) -> Block_storeSeries
-
-pub fn block_store_make_vector(Array[Double]) -> Block_storeVector
-
-pub fn block_store_matrix_add(Block_storeMatrix, Block_storeMatrix) -> Block_storeMatrix
-
-pub fn block_store_matrix_get(Block_storeMatrix, Int32, Int32) -> Double
-
-pub fn block_store_matrix_identity(Int32) -> Block_storeMatrix
-
-pub fn block_store_matrix_multiply(Block_storeMatrix, Block_storeMatrix) -> Block_storeMatrix
-
-pub fn block_store_matrix_norm(Block_storeMatrix) -> Double
-
-pub fn block_store_matrix_scale(Block_storeMatrix, Double) -> Block_storeMatrix
-
-pub fn block_store_matrix_to_string(Block_storeMatrix) -> String
-
-pub fn block_store_matrix_trace(Block_storeMatrix) -> Double
-
-pub fn block_store_matrix_transpose(Block_storeMatrix) -> Block_storeMatrix
-
 pub fn block_store_mse(Array[Double], Array[Double]) -> Double
-
-pub fn block_store_point_add(Block_storePoint, Block_storePoint) -> Block_storePoint
-
-pub fn block_store_point_dist(Block_storePoint, Block_storePoint) -> Double
-
-pub fn block_store_point_dot(Block_storePoint, Block_storePoint) -> Double
-
-pub fn block_store_point_label(Block_storePoint) -> Int32
-
-pub fn block_store_point_norm(Block_storePoint) -> Double
-
-pub fn block_store_point_scale(Block_storePoint, Double) -> Block_storePoint
-
-pub fn block_store_point_sub(Block_storePoint, Block_storePoint) -> Block_storePoint
-
-pub fn block_store_point_to_string(Block_storePoint) -> String
-
-pub fn block_store_point_x(Block_storePoint) -> Double
-
-pub fn block_store_point_y(Block_storePoint) -> Double
 
 pub fn block_store_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn block_store_r2(Array[Double], Array[Double]) -> Double
 
 pub fn block_store_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn block_store_series_add(Block_storeSeries, Block_storeSeries) -> Block_storeSeries
-
-pub fn block_store_series_len(Block_storeSeries) -> Int32
-
-pub fn block_store_series_max(Block_storeSeries) -> Double
-
-pub fn block_store_series_mean(Block_storeSeries) -> Double
-
-pub fn block_store_series_min(Block_storeSeries) -> Double
-
-pub fn block_store_series_scale(Block_storeSeries, Double) -> Block_storeSeries
-
-pub fn block_store_series_std(Block_storeSeries) -> Double
-
-pub fn block_store_series_sum(Block_storeSeries) -> Double
-
-pub fn block_store_series_to_string(Block_storeSeries) -> String
-
-pub fn block_store_series_var(Block_storeSeries) -> Double
-
 pub fn block_store_std(Array[Double]) -> Double
 
 pub fn block_store_var(Array[Double]) -> Double
 
-pub fn block_store_vector_add(Block_storeVector, Block_storeVector) -> Block_storeVector
-
-pub fn block_store_vector_dist(Block_storeVector, Block_storeVector) -> Double
-
-pub fn block_store_vector_dot(Block_storeVector, Block_storeVector) -> Double
-
-pub fn block_store_vector_norm(Block_storeVector) -> Double
-
-pub fn block_store_vector_normalize(Block_storeVector) -> Block_storeVector
-
-pub fn block_store_vector_scale(Block_storeVector, Double) -> Block_storeVector
-
-pub fn block_store_vector_sub(Block_storeVector, Block_storeVector) -> Block_storeVector
-
-pub fn block_store_vector_to_string(Block_storeVector) -> String
-
-pub fn block_store_vector_zero(Int32) -> Block_storeVector
-
 // Errors
 
 // Types and methods
-pub struct Block_storeMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Block_storePoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Block_storeSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Block_storeVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

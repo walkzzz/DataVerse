@@ -2,4 +2,5 @@
 // S13.201 new
 import {
   "dataverse/extcore/_common",
+  "dataverse/extcore/types",
 }

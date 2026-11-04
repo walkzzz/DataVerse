@@ -12,55 +12,7 @@ pub fn kv_store_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn kv_store_mae(Array[Double], Array[Double]) -> Double
 
-pub fn kv_store_make_labeled_point(Double, Double, Int32) -> Kv_storePoint
-
-pub fn kv_store_make_matrix(Int32, Int32, Double) -> Kv_storeMatrix
-
-pub fn kv_store_make_point(Double, Double) -> Kv_storePoint
-
-pub fn kv_store_make_series(Array[Double], String) -> Kv_storeSeries
-
-pub fn kv_store_make_vector(Array[Double]) -> Kv_storeVector
-
-pub fn kv_store_matrix_add(Kv_storeMatrix, Kv_storeMatrix) -> Kv_storeMatrix
-
-pub fn kv_store_matrix_get(Kv_storeMatrix, Int32, Int32) -> Double
-
-pub fn kv_store_matrix_identity(Int32) -> Kv_storeMatrix
-
-pub fn kv_store_matrix_multiply(Kv_storeMatrix, Kv_storeMatrix) -> Kv_storeMatrix
-
-pub fn kv_store_matrix_norm(Kv_storeMatrix) -> Double
-
-pub fn kv_store_matrix_scale(Kv_storeMatrix, Double) -> Kv_storeMatrix
-
-pub fn kv_store_matrix_to_string(Kv_storeMatrix) -> String
-
-pub fn kv_store_matrix_trace(Kv_storeMatrix) -> Double
-
-pub fn kv_store_matrix_transpose(Kv_storeMatrix) -> Kv_storeMatrix
-
 pub fn kv_store_mse(Array[Double], Array[Double]) -> Double
-
-pub fn kv_store_point_add(Kv_storePoint, Kv_storePoint) -> Kv_storePoint
-
-pub fn kv_store_point_dist(Kv_storePoint, Kv_storePoint) -> Double
-
-pub fn kv_store_point_dot(Kv_storePoint, Kv_storePoint) -> Double
-
-pub fn kv_store_point_label(Kv_storePoint) -> Int32
-
-pub fn kv_store_point_norm(Kv_storePoint) -> Double
-
-pub fn kv_store_point_scale(Kv_storePoint, Double) -> Kv_storePoint
-
-pub fn kv_store_point_sub(Kv_storePoint, Kv_storePoint) -> Kv_storePoint
-
-pub fn kv_store_point_to_string(Kv_storePoint) -> String
-
-pub fn kv_store_point_x(Kv_storePoint) -> Double
-
-pub fn kv_store_point_y(Kv_storePoint) -> Double
 
 pub fn kv_store_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn kv_store_r2(Array[Double], Array[Double]) -> Double
 
 pub fn kv_store_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn kv_store_series_add(Kv_storeSeries, Kv_storeSeries) -> Kv_storeSeries
-
-pub fn kv_store_series_len(Kv_storeSeries) -> Int32
-
-pub fn kv_store_series_max(Kv_storeSeries) -> Double
-
-pub fn kv_store_series_mean(Kv_storeSeries) -> Double
-
-pub fn kv_store_series_min(Kv_storeSeries) -> Double
-
-pub fn kv_store_series_scale(Kv_storeSeries, Double) -> Kv_storeSeries
-
-pub fn kv_store_series_std(Kv_storeSeries) -> Double
-
-pub fn kv_store_series_sum(Kv_storeSeries) -> Double
-
-pub fn kv_store_series_to_string(Kv_storeSeries) -> String
-
-pub fn kv_store_series_var(Kv_storeSeries) -> Double
-
 pub fn kv_store_std(Array[Double]) -> Double
 
 pub fn kv_store_var(Array[Double]) -> Double
 
-pub fn kv_store_vector_add(Kv_storeVector, Kv_storeVector) -> Kv_storeVector
-
-pub fn kv_store_vector_dist(Kv_storeVector, Kv_storeVector) -> Double
-
-pub fn kv_store_vector_dot(Kv_storeVector, Kv_storeVector) -> Double
-
-pub fn kv_store_vector_norm(Kv_storeVector) -> Double
-
-pub fn kv_store_vector_normalize(Kv_storeVector) -> Kv_storeVector
-
-pub fn kv_store_vector_scale(Kv_storeVector, Double) -> Kv_storeVector
-
-pub fn kv_store_vector_sub(Kv_storeVector, Kv_storeVector) -> Kv_storeVector
-
-pub fn kv_store_vector_to_string(Kv_storeVector) -> String
-
-pub fn kv_store_vector_zero(Int32) -> Kv_storeVector
-
 // Errors
 
 // Types and methods
-pub struct Kv_storeMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Kv_storePoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Kv_storeSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Kv_storeVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

@@ -12,55 +12,7 @@ pub fn resource_alloc_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn resource_alloc_mae(Array[Double], Array[Double]) -> Double
 
-pub fn resource_alloc_make_labeled_point(Double, Double, Int32) -> Resource_allocPoint
-
-pub fn resource_alloc_make_matrix(Int32, Int32, Double) -> Resource_allocMatrix
-
-pub fn resource_alloc_make_point(Double, Double) -> Resource_allocPoint
-
-pub fn resource_alloc_make_series(Array[Double], String) -> Resource_allocSeries
-
-pub fn resource_alloc_make_vector(Array[Double]) -> Resource_allocVector
-
-pub fn resource_alloc_matrix_add(Resource_allocMatrix, Resource_allocMatrix) -> Resource_allocMatrix
-
-pub fn resource_alloc_matrix_get(Resource_allocMatrix, Int32, Int32) -> Double
-
-pub fn resource_alloc_matrix_identity(Int32) -> Resource_allocMatrix
-
-pub fn resource_alloc_matrix_multiply(Resource_allocMatrix, Resource_allocMatrix) -> Resource_allocMatrix
-
-pub fn resource_alloc_matrix_norm(Resource_allocMatrix) -> Double
-
-pub fn resource_alloc_matrix_scale(Resource_allocMatrix, Double) -> Resource_allocMatrix
-
-pub fn resource_alloc_matrix_to_string(Resource_allocMatrix) -> String
-
-pub fn resource_alloc_matrix_trace(Resource_allocMatrix) -> Double
-
-pub fn resource_alloc_matrix_transpose(Resource_allocMatrix) -> Resource_allocMatrix
-
 pub fn resource_alloc_mse(Array[Double], Array[Double]) -> Double
-
-pub fn resource_alloc_point_add(Resource_allocPoint, Resource_allocPoint) -> Resource_allocPoint
-
-pub fn resource_alloc_point_dist(Resource_allocPoint, Resource_allocPoint) -> Double
-
-pub fn resource_alloc_point_dot(Resource_allocPoint, Resource_allocPoint) -> Double
-
-pub fn resource_alloc_point_label(Resource_allocPoint) -> Int32
-
-pub fn resource_alloc_point_norm(Resource_allocPoint) -> Double
-
-pub fn resource_alloc_point_scale(Resource_allocPoint, Double) -> Resource_allocPoint
-
-pub fn resource_alloc_point_sub(Resource_allocPoint, Resource_allocPoint) -> Resource_allocPoint
-
-pub fn resource_alloc_point_to_string(Resource_allocPoint) -> String
-
-pub fn resource_alloc_point_x(Resource_allocPoint) -> Double
-
-pub fn resource_alloc_point_y(Resource_allocPoint) -> Double
 
 pub fn resource_alloc_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn resource_alloc_r2(Array[Double], Array[Double]) -> Double
 
 pub fn resource_alloc_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn resource_alloc_series_add(Resource_allocSeries, Resource_allocSeries) -> Resource_allocSeries
-
-pub fn resource_alloc_series_len(Resource_allocSeries) -> Int32
-
-pub fn resource_alloc_series_max(Resource_allocSeries) -> Double
-
-pub fn resource_alloc_series_mean(Resource_allocSeries) -> Double
-
-pub fn resource_alloc_series_min(Resource_allocSeries) -> Double
-
-pub fn resource_alloc_series_scale(Resource_allocSeries, Double) -> Resource_allocSeries
-
-pub fn resource_alloc_series_std(Resource_allocSeries) -> Double
-
-pub fn resource_alloc_series_sum(Resource_allocSeries) -> Double
-
-pub fn resource_alloc_series_to_string(Resource_allocSeries) -> String
-
-pub fn resource_alloc_series_var(Resource_allocSeries) -> Double
-
 pub fn resource_alloc_std(Array[Double]) -> Double
 
 pub fn resource_alloc_var(Array[Double]) -> Double
 
-pub fn resource_alloc_vector_add(Resource_allocVector, Resource_allocVector) -> Resource_allocVector
-
-pub fn resource_alloc_vector_dist(Resource_allocVector, Resource_allocVector) -> Double
-
-pub fn resource_alloc_vector_dot(Resource_allocVector, Resource_allocVector) -> Double
-
-pub fn resource_alloc_vector_norm(Resource_allocVector) -> Double
-
-pub fn resource_alloc_vector_normalize(Resource_allocVector) -> Resource_allocVector
-
-pub fn resource_alloc_vector_scale(Resource_allocVector, Double) -> Resource_allocVector
-
-pub fn resource_alloc_vector_sub(Resource_allocVector, Resource_allocVector) -> Resource_allocVector
-
-pub fn resource_alloc_vector_to_string(Resource_allocVector) -> String
-
-pub fn resource_alloc_vector_zero(Int32) -> Resource_allocVector
-
 // Errors
 
 // Types and methods
-pub struct Resource_allocMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Resource_allocPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Resource_allocSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Resource_allocVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

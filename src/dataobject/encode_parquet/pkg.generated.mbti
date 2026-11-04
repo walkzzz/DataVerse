@@ -12,55 +12,7 @@ pub fn encode_parquet_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn encode_parquet_mae(Array[Double], Array[Double]) -> Double
 
-pub fn encode_parquet_make_labeled_point(Double, Double, Int32) -> Encode_parquetPoint
-
-pub fn encode_parquet_make_matrix(Int32, Int32, Double) -> Encode_parquetMatrix
-
-pub fn encode_parquet_make_point(Double, Double) -> Encode_parquetPoint
-
-pub fn encode_parquet_make_series(Array[Double], String) -> Encode_parquetSeries
-
-pub fn encode_parquet_make_vector(Array[Double]) -> Encode_parquetVector
-
-pub fn encode_parquet_matrix_add(Encode_parquetMatrix, Encode_parquetMatrix) -> Encode_parquetMatrix
-
-pub fn encode_parquet_matrix_get(Encode_parquetMatrix, Int32, Int32) -> Double
-
-pub fn encode_parquet_matrix_identity(Int32) -> Encode_parquetMatrix
-
-pub fn encode_parquet_matrix_multiply(Encode_parquetMatrix, Encode_parquetMatrix) -> Encode_parquetMatrix
-
-pub fn encode_parquet_matrix_norm(Encode_parquetMatrix) -> Double
-
-pub fn encode_parquet_matrix_scale(Encode_parquetMatrix, Double) -> Encode_parquetMatrix
-
-pub fn encode_parquet_matrix_to_string(Encode_parquetMatrix) -> String
-
-pub fn encode_parquet_matrix_trace(Encode_parquetMatrix) -> Double
-
-pub fn encode_parquet_matrix_transpose(Encode_parquetMatrix) -> Encode_parquetMatrix
-
 pub fn encode_parquet_mse(Array[Double], Array[Double]) -> Double
-
-pub fn encode_parquet_point_add(Encode_parquetPoint, Encode_parquetPoint) -> Encode_parquetPoint
-
-pub fn encode_parquet_point_dist(Encode_parquetPoint, Encode_parquetPoint) -> Double
-
-pub fn encode_parquet_point_dot(Encode_parquetPoint, Encode_parquetPoint) -> Double
-
-pub fn encode_parquet_point_label(Encode_parquetPoint) -> Int32
-
-pub fn encode_parquet_point_norm(Encode_parquetPoint) -> Double
-
-pub fn encode_parquet_point_scale(Encode_parquetPoint, Double) -> Encode_parquetPoint
-
-pub fn encode_parquet_point_sub(Encode_parquetPoint, Encode_parquetPoint) -> Encode_parquetPoint
-
-pub fn encode_parquet_point_to_string(Encode_parquetPoint) -> String
-
-pub fn encode_parquet_point_x(Encode_parquetPoint) -> Double
-
-pub fn encode_parquet_point_y(Encode_parquetPoint) -> Double
 
 pub fn encode_parquet_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn encode_parquet_r2(Array[Double], Array[Double]) -> Double
 
 pub fn encode_parquet_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn encode_parquet_series_add(Encode_parquetSeries, Encode_parquetSeries) -> Encode_parquetSeries
-
-pub fn encode_parquet_series_len(Encode_parquetSeries) -> Int32
-
-pub fn encode_parquet_series_max(Encode_parquetSeries) -> Double
-
-pub fn encode_parquet_series_mean(Encode_parquetSeries) -> Double
-
-pub fn encode_parquet_series_min(Encode_parquetSeries) -> Double
-
-pub fn encode_parquet_series_scale(Encode_parquetSeries, Double) -> Encode_parquetSeries
-
-pub fn encode_parquet_series_std(Encode_parquetSeries) -> Double
-
-pub fn encode_parquet_series_sum(Encode_parquetSeries) -> Double
-
-pub fn encode_parquet_series_to_string(Encode_parquetSeries) -> String
-
-pub fn encode_parquet_series_var(Encode_parquetSeries) -> Double
-
 pub fn encode_parquet_std(Array[Double]) -> Double
 
 pub fn encode_parquet_var(Array[Double]) -> Double
 
-pub fn encode_parquet_vector_add(Encode_parquetVector, Encode_parquetVector) -> Encode_parquetVector
-
-pub fn encode_parquet_vector_dist(Encode_parquetVector, Encode_parquetVector) -> Double
-
-pub fn encode_parquet_vector_dot(Encode_parquetVector, Encode_parquetVector) -> Double
-
-pub fn encode_parquet_vector_norm(Encode_parquetVector) -> Double
-
-pub fn encode_parquet_vector_normalize(Encode_parquetVector) -> Encode_parquetVector
-
-pub fn encode_parquet_vector_scale(Encode_parquetVector, Double) -> Encode_parquetVector
-
-pub fn encode_parquet_vector_sub(Encode_parquetVector, Encode_parquetVector) -> Encode_parquetVector
-
-pub fn encode_parquet_vector_to_string(Encode_parquetVector) -> String
-
-pub fn encode_parquet_vector_zero(Int32) -> Encode_parquetVector
-
 // Errors
 
 // Types and methods
-pub struct Encode_parquetMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Encode_parquetPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Encode_parquetSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Encode_parquetVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

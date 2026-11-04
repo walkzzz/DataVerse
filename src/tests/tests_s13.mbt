@@ -82,21 +82,21 @@ test "som_basic" {
 
 ///|
 test "goal_stack_basic" {
-  let pt = @goal_stack.goal_stack_make_point(2.0, 3.0)
-  assert_true(@goal_stack.goal_stack_point_x(pt) == 2.0)
-  let sr = @goal_stack.goal_stack_make_series([1.0, 2.0, 3.0, 4.0], "goals")
+  let pt = @types.dv_make_point(2.0, 3.0)
+  assert_true(@types.dv_point_x(pt) == 2.0)
+  let sr = @types.dv_make_series([1.0, 2.0, 3.0, 4.0], "goals")
   assert_true(
-    @goal_stack.goal_stack_series_mean(sr) > 2.4 &&
-    @goal_stack.goal_stack_series_mean(sr) < 2.6,
+    @types.dv_series_mean(sr) > 2.4 &&
+    @types.dv_series_mean(sr) < 2.6,
   )
 }
 
 ///|
 test "belief_state_basic" {
-  let vt = @belief_state.belief_state_make_vector([0.5, 0.5])
+  let vt = @types.dv_make_vector([0.5, 0.5])
   assert_true(
-    @belief_state.belief_state_vector_dot(vt, vt) > 0.49 &&
-    @belief_state.belief_state_vector_dot(vt, vt) < 0.51,
+    @types.dv_vector_dot(vt, vt) > 0.49 &&
+    @types.dv_vector_dot(vt, vt) < 0.51,
   )
 }
 
@@ -108,47 +108,47 @@ test "bdi_agent_basic" {
 
 ///|
 test "graph_store_basic" {
-  let mt = @graph_store.graph_store_make_matrix(2, 2, 1.0)
-  assert_true(@graph_store.graph_store_matrix_get(mt, 0, 0) == 1.0)
-  let tr = @graph_store.graph_store_matrix_trace(mt)
+  let mt = @types.dv_make_matrix(2, 2, 1.0)
+  assert_true(@types.dv_matrix_get(mt, 0, 0) == 1.0)
+  let tr = @types.dv_matrix_trace(mt)
   assert_true(tr == 2.0)
 }
 
 ///|
 test "tree_store_basic" {
-  let pt = @tree_store.tree_store_make_point(5.0, 6.0)
-  let qt = @tree_store.tree_store_make_point(5.0, 6.0)
-  assert_true(@tree_store.tree_store_point_dist(pt, qt) < 0.01)
+  let pt = @types.dv_make_point(5.0, 6.0)
+  let qt = @types.dv_make_point(5.0, 6.0)
+  assert_true(@types.dv_point_dist(pt, qt) < 0.01)
 }
 
 ///|
 test "kv_store_basic" {
-  let sr = @kv_store.kv_store_make_series([100.0, 200.0, 300.0], "kv")
-  assert_true(@kv_store.kv_store_series_min(sr) == 100.0)
-  assert_true(@kv_store.kv_store_series_max(sr) == 300.0)
+  let sr = @types.dv_make_series([100.0, 200.0, 300.0], "kv")
+  assert_true(@types.dv_series_min(sr) == 100.0)
+  assert_true(@types.dv_series_max(sr) == 300.0)
 }
 
 ///|
 test "window_tumble_basic" {
-  let pt = @window.window_tumble_make_point(1.0, 2.0)
-  let scaled = @window.window_tumble_point_scale(pt, 2.0)
-  assert_true(@window.window_tumble_point_x(scaled) == 2.0)
+  let pt = @types.dv_make_point(1.0, 2.0)
+  let scaled = @types.dv_point_scale(pt, 2.0)
+  assert_true(@types.dv_point_x(scaled) == 2.0)
 }
 
 ///|
 test "window_slide_basic" {
-  let sr = @window.window_slide_make_series(
+  let sr = @types.dv_make_series(
     [1.0, 2.0, 3.0, 4.0, 5.0],
     "win",
   )
-  let std = @window.window_slide_series_std(sr)
+  let std = @types.dv_series_std(sr)
   assert_true(std > 1.4 && std < 1.5)
 }
 
 ///|
 test "window_session_basic" {
-  let mt = @window.window_session_matrix_identity(4)
-  assert_true(@window.window_session_matrix_trace(mt) == 4.0)
+  let mt = @types.dv_matrix_identity(4)
+  assert_true(@types.dv_matrix_trace(mt) == 4.0)
 }
 
 ///|

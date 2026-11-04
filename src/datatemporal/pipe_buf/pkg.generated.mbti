@@ -12,55 +12,7 @@ pub fn pipe_buf_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn pipe_buf_mae(Array[Double], Array[Double]) -> Double
 
-pub fn pipe_buf_make_labeled_point(Double, Double, Int32) -> Pipe_bufPoint
-
-pub fn pipe_buf_make_matrix(Int32, Int32, Double) -> Pipe_bufMatrix
-
-pub fn pipe_buf_make_point(Double, Double) -> Pipe_bufPoint
-
-pub fn pipe_buf_make_series(Array[Double], String) -> Pipe_bufSeries
-
-pub fn pipe_buf_make_vector(Array[Double]) -> Pipe_bufVector
-
-pub fn pipe_buf_matrix_add(Pipe_bufMatrix, Pipe_bufMatrix) -> Pipe_bufMatrix
-
-pub fn pipe_buf_matrix_get(Pipe_bufMatrix, Int32, Int32) -> Double
-
-pub fn pipe_buf_matrix_identity(Int32) -> Pipe_bufMatrix
-
-pub fn pipe_buf_matrix_multiply(Pipe_bufMatrix, Pipe_bufMatrix) -> Pipe_bufMatrix
-
-pub fn pipe_buf_matrix_norm(Pipe_bufMatrix) -> Double
-
-pub fn pipe_buf_matrix_scale(Pipe_bufMatrix, Double) -> Pipe_bufMatrix
-
-pub fn pipe_buf_matrix_to_string(Pipe_bufMatrix) -> String
-
-pub fn pipe_buf_matrix_trace(Pipe_bufMatrix) -> Double
-
-pub fn pipe_buf_matrix_transpose(Pipe_bufMatrix) -> Pipe_bufMatrix
-
 pub fn pipe_buf_mse(Array[Double], Array[Double]) -> Double
-
-pub fn pipe_buf_point_add(Pipe_bufPoint, Pipe_bufPoint) -> Pipe_bufPoint
-
-pub fn pipe_buf_point_dist(Pipe_bufPoint, Pipe_bufPoint) -> Double
-
-pub fn pipe_buf_point_dot(Pipe_bufPoint, Pipe_bufPoint) -> Double
-
-pub fn pipe_buf_point_label(Pipe_bufPoint) -> Int32
-
-pub fn pipe_buf_point_norm(Pipe_bufPoint) -> Double
-
-pub fn pipe_buf_point_scale(Pipe_bufPoint, Double) -> Pipe_bufPoint
-
-pub fn pipe_buf_point_sub(Pipe_bufPoint, Pipe_bufPoint) -> Pipe_bufPoint
-
-pub fn pipe_buf_point_to_string(Pipe_bufPoint) -> String
-
-pub fn pipe_buf_point_x(Pipe_bufPoint) -> Double
-
-pub fn pipe_buf_point_y(Pipe_bufPoint) -> Double
 
 pub fn pipe_buf_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn pipe_buf_r2(Array[Double], Array[Double]) -> Double
 
 pub fn pipe_buf_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn pipe_buf_series_add(Pipe_bufSeries, Pipe_bufSeries) -> Pipe_bufSeries
-
-pub fn pipe_buf_series_len(Pipe_bufSeries) -> Int32
-
-pub fn pipe_buf_series_max(Pipe_bufSeries) -> Double
-
-pub fn pipe_buf_series_mean(Pipe_bufSeries) -> Double
-
-pub fn pipe_buf_series_min(Pipe_bufSeries) -> Double
-
-pub fn pipe_buf_series_scale(Pipe_bufSeries, Double) -> Pipe_bufSeries
-
-pub fn pipe_buf_series_std(Pipe_bufSeries) -> Double
-
-pub fn pipe_buf_series_sum(Pipe_bufSeries) -> Double
-
-pub fn pipe_buf_series_to_string(Pipe_bufSeries) -> String
-
-pub fn pipe_buf_series_var(Pipe_bufSeries) -> Double
-
 pub fn pipe_buf_std(Array[Double]) -> Double
 
 pub fn pipe_buf_var(Array[Double]) -> Double
 
-pub fn pipe_buf_vector_add(Pipe_bufVector, Pipe_bufVector) -> Pipe_bufVector
-
-pub fn pipe_buf_vector_dist(Pipe_bufVector, Pipe_bufVector) -> Double
-
-pub fn pipe_buf_vector_dot(Pipe_bufVector, Pipe_bufVector) -> Double
-
-pub fn pipe_buf_vector_norm(Pipe_bufVector) -> Double
-
-pub fn pipe_buf_vector_normalize(Pipe_bufVector) -> Pipe_bufVector
-
-pub fn pipe_buf_vector_scale(Pipe_bufVector, Double) -> Pipe_bufVector
-
-pub fn pipe_buf_vector_sub(Pipe_bufVector, Pipe_bufVector) -> Pipe_bufVector
-
-pub fn pipe_buf_vector_to_string(Pipe_bufVector) -> String
-
-pub fn pipe_buf_vector_zero(Int32) -> Pipe_bufVector
-
 // Errors
 
 // Types and methods
-pub struct Pipe_bufMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Pipe_bufPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Pipe_bufSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Pipe_bufVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

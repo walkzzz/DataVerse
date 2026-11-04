@@ -12,55 +12,7 @@ pub fn series_store_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn series_store_mae(Array[Double], Array[Double]) -> Double
 
-pub fn series_store_make_labeled_point(Double, Double, Int32) -> Series_storePoint
-
-pub fn series_store_make_matrix(Int32, Int32, Double) -> Series_storeMatrix
-
-pub fn series_store_make_point(Double, Double) -> Series_storePoint
-
-pub fn series_store_make_series(Array[Double], String) -> Series_storeSeries
-
-pub fn series_store_make_vector(Array[Double]) -> Series_storeVector
-
-pub fn series_store_matrix_add(Series_storeMatrix, Series_storeMatrix) -> Series_storeMatrix
-
-pub fn series_store_matrix_get(Series_storeMatrix, Int32, Int32) -> Double
-
-pub fn series_store_matrix_identity(Int32) -> Series_storeMatrix
-
-pub fn series_store_matrix_multiply(Series_storeMatrix, Series_storeMatrix) -> Series_storeMatrix
-
-pub fn series_store_matrix_norm(Series_storeMatrix) -> Double
-
-pub fn series_store_matrix_scale(Series_storeMatrix, Double) -> Series_storeMatrix
-
-pub fn series_store_matrix_to_string(Series_storeMatrix) -> String
-
-pub fn series_store_matrix_trace(Series_storeMatrix) -> Double
-
-pub fn series_store_matrix_transpose(Series_storeMatrix) -> Series_storeMatrix
-
 pub fn series_store_mse(Array[Double], Array[Double]) -> Double
-
-pub fn series_store_point_add(Series_storePoint, Series_storePoint) -> Series_storePoint
-
-pub fn series_store_point_dist(Series_storePoint, Series_storePoint) -> Double
-
-pub fn series_store_point_dot(Series_storePoint, Series_storePoint) -> Double
-
-pub fn series_store_point_label(Series_storePoint) -> Int32
-
-pub fn series_store_point_norm(Series_storePoint) -> Double
-
-pub fn series_store_point_scale(Series_storePoint, Double) -> Series_storePoint
-
-pub fn series_store_point_sub(Series_storePoint, Series_storePoint) -> Series_storePoint
-
-pub fn series_store_point_to_string(Series_storePoint) -> String
-
-pub fn series_store_point_x(Series_storePoint) -> Double
-
-pub fn series_store_point_y(Series_storePoint) -> Double
 
 pub fn series_store_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn series_store_r2(Array[Double], Array[Double]) -> Double
 
 pub fn series_store_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn series_store_series_add(Series_storeSeries, Series_storeSeries) -> Series_storeSeries
-
-pub fn series_store_series_len(Series_storeSeries) -> Int32
-
-pub fn series_store_series_max(Series_storeSeries) -> Double
-
-pub fn series_store_series_mean(Series_storeSeries) -> Double
-
-pub fn series_store_series_min(Series_storeSeries) -> Double
-
-pub fn series_store_series_scale(Series_storeSeries, Double) -> Series_storeSeries
-
-pub fn series_store_series_std(Series_storeSeries) -> Double
-
-pub fn series_store_series_sum(Series_storeSeries) -> Double
-
-pub fn series_store_series_to_string(Series_storeSeries) -> String
-
-pub fn series_store_series_var(Series_storeSeries) -> Double
-
 pub fn series_store_std(Array[Double]) -> Double
 
 pub fn series_store_var(Array[Double]) -> Double
 
-pub fn series_store_vector_add(Series_storeVector, Series_storeVector) -> Series_storeVector
-
-pub fn series_store_vector_dist(Series_storeVector, Series_storeVector) -> Double
-
-pub fn series_store_vector_dot(Series_storeVector, Series_storeVector) -> Double
-
-pub fn series_store_vector_norm(Series_storeVector) -> Double
-
-pub fn series_store_vector_normalize(Series_storeVector) -> Series_storeVector
-
-pub fn series_store_vector_scale(Series_storeVector, Double) -> Series_storeVector
-
-pub fn series_store_vector_sub(Series_storeVector, Series_storeVector) -> Series_storeVector
-
-pub fn series_store_vector_to_string(Series_storeVector) -> String
-
-pub fn series_store_vector_zero(Int32) -> Series_storeVector
-
 // Errors
 
 // Types and methods
-pub struct Series_storeMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Series_storePoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Series_storeSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Series_storeVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

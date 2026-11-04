@@ -12,55 +12,7 @@ pub fn index_btree_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn index_btree_mae(Array[Double], Array[Double]) -> Double
 
-pub fn index_btree_make_labeled_point(Double, Double, Int32) -> Index_btreePoint
-
-pub fn index_btree_make_matrix(Int32, Int32, Double) -> Index_btreeMatrix
-
-pub fn index_btree_make_point(Double, Double) -> Index_btreePoint
-
-pub fn index_btree_make_series(Array[Double], String) -> Index_btreeSeries
-
-pub fn index_btree_make_vector(Array[Double]) -> Index_btreeVector
-
-pub fn index_btree_matrix_add(Index_btreeMatrix, Index_btreeMatrix) -> Index_btreeMatrix
-
-pub fn index_btree_matrix_get(Index_btreeMatrix, Int32, Int32) -> Double
-
-pub fn index_btree_matrix_identity(Int32) -> Index_btreeMatrix
-
-pub fn index_btree_matrix_multiply(Index_btreeMatrix, Index_btreeMatrix) -> Index_btreeMatrix
-
-pub fn index_btree_matrix_norm(Index_btreeMatrix) -> Double
-
-pub fn index_btree_matrix_scale(Index_btreeMatrix, Double) -> Index_btreeMatrix
-
-pub fn index_btree_matrix_to_string(Index_btreeMatrix) -> String
-
-pub fn index_btree_matrix_trace(Index_btreeMatrix) -> Double
-
-pub fn index_btree_matrix_transpose(Index_btreeMatrix) -> Index_btreeMatrix
-
 pub fn index_btree_mse(Array[Double], Array[Double]) -> Double
-
-pub fn index_btree_point_add(Index_btreePoint, Index_btreePoint) -> Index_btreePoint
-
-pub fn index_btree_point_dist(Index_btreePoint, Index_btreePoint) -> Double
-
-pub fn index_btree_point_dot(Index_btreePoint, Index_btreePoint) -> Double
-
-pub fn index_btree_point_label(Index_btreePoint) -> Int32
-
-pub fn index_btree_point_norm(Index_btreePoint) -> Double
-
-pub fn index_btree_point_scale(Index_btreePoint, Double) -> Index_btreePoint
-
-pub fn index_btree_point_sub(Index_btreePoint, Index_btreePoint) -> Index_btreePoint
-
-pub fn index_btree_point_to_string(Index_btreePoint) -> String
-
-pub fn index_btree_point_x(Index_btreePoint) -> Double
-
-pub fn index_btree_point_y(Index_btreePoint) -> Double
 
 pub fn index_btree_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn index_btree_r2(Array[Double], Array[Double]) -> Double
 
 pub fn index_btree_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn index_btree_series_add(Index_btreeSeries, Index_btreeSeries) -> Index_btreeSeries
-
-pub fn index_btree_series_len(Index_btreeSeries) -> Int32
-
-pub fn index_btree_series_max(Index_btreeSeries) -> Double
-
-pub fn index_btree_series_mean(Index_btreeSeries) -> Double
-
-pub fn index_btree_series_min(Index_btreeSeries) -> Double
-
-pub fn index_btree_series_scale(Index_btreeSeries, Double) -> Index_btreeSeries
-
-pub fn index_btree_series_std(Index_btreeSeries) -> Double
-
-pub fn index_btree_series_sum(Index_btreeSeries) -> Double
-
-pub fn index_btree_series_to_string(Index_btreeSeries) -> String
-
-pub fn index_btree_series_var(Index_btreeSeries) -> Double
-
 pub fn index_btree_std(Array[Double]) -> Double
 
 pub fn index_btree_var(Array[Double]) -> Double
 
-pub fn index_btree_vector_add(Index_btreeVector, Index_btreeVector) -> Index_btreeVector
-
-pub fn index_btree_vector_dist(Index_btreeVector, Index_btreeVector) -> Double
-
-pub fn index_btree_vector_dot(Index_btreeVector, Index_btreeVector) -> Double
-
-pub fn index_btree_vector_norm(Index_btreeVector) -> Double
-
-pub fn index_btree_vector_normalize(Index_btreeVector) -> Index_btreeVector
-
-pub fn index_btree_vector_scale(Index_btreeVector, Double) -> Index_btreeVector
-
-pub fn index_btree_vector_sub(Index_btreeVector, Index_btreeVector) -> Index_btreeVector
-
-pub fn index_btree_vector_to_string(Index_btreeVector) -> String
-
-pub fn index_btree_vector_zero(Int32) -> Index_btreeVector
-
 // Errors
 
 // Types and methods
-pub struct Index_btreeMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Index_btreePoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Index_btreeSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Index_btreeVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

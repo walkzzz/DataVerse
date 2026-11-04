@@ -12,55 +12,7 @@ pub fn restore_op_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn restore_op_mae(Array[Double], Array[Double]) -> Double
 
-pub fn restore_op_make_labeled_point(Double, Double, Int32) -> Restore_opPoint
-
-pub fn restore_op_make_matrix(Int32, Int32, Double) -> Restore_opMatrix
-
-pub fn restore_op_make_point(Double, Double) -> Restore_opPoint
-
-pub fn restore_op_make_series(Array[Double], String) -> Restore_opSeries
-
-pub fn restore_op_make_vector(Array[Double]) -> Restore_opVector
-
-pub fn restore_op_matrix_add(Restore_opMatrix, Restore_opMatrix) -> Restore_opMatrix
-
-pub fn restore_op_matrix_get(Restore_opMatrix, Int32, Int32) -> Double
-
-pub fn restore_op_matrix_identity(Int32) -> Restore_opMatrix
-
-pub fn restore_op_matrix_multiply(Restore_opMatrix, Restore_opMatrix) -> Restore_opMatrix
-
-pub fn restore_op_matrix_norm(Restore_opMatrix) -> Double
-
-pub fn restore_op_matrix_scale(Restore_opMatrix, Double) -> Restore_opMatrix
-
-pub fn restore_op_matrix_to_string(Restore_opMatrix) -> String
-
-pub fn restore_op_matrix_trace(Restore_opMatrix) -> Double
-
-pub fn restore_op_matrix_transpose(Restore_opMatrix) -> Restore_opMatrix
-
 pub fn restore_op_mse(Array[Double], Array[Double]) -> Double
-
-pub fn restore_op_point_add(Restore_opPoint, Restore_opPoint) -> Restore_opPoint
-
-pub fn restore_op_point_dist(Restore_opPoint, Restore_opPoint) -> Double
-
-pub fn restore_op_point_dot(Restore_opPoint, Restore_opPoint) -> Double
-
-pub fn restore_op_point_label(Restore_opPoint) -> Int32
-
-pub fn restore_op_point_norm(Restore_opPoint) -> Double
-
-pub fn restore_op_point_scale(Restore_opPoint, Double) -> Restore_opPoint
-
-pub fn restore_op_point_sub(Restore_opPoint, Restore_opPoint) -> Restore_opPoint
-
-pub fn restore_op_point_to_string(Restore_opPoint) -> String
-
-pub fn restore_op_point_x(Restore_opPoint) -> Double
-
-pub fn restore_op_point_y(Restore_opPoint) -> Double
 
 pub fn restore_op_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn restore_op_r2(Array[Double], Array[Double]) -> Double
 
 pub fn restore_op_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn restore_op_series_add(Restore_opSeries, Restore_opSeries) -> Restore_opSeries
-
-pub fn restore_op_series_len(Restore_opSeries) -> Int32
-
-pub fn restore_op_series_max(Restore_opSeries) -> Double
-
-pub fn restore_op_series_mean(Restore_opSeries) -> Double
-
-pub fn restore_op_series_min(Restore_opSeries) -> Double
-
-pub fn restore_op_series_scale(Restore_opSeries, Double) -> Restore_opSeries
-
-pub fn restore_op_series_std(Restore_opSeries) -> Double
-
-pub fn restore_op_series_sum(Restore_opSeries) -> Double
-
-pub fn restore_op_series_to_string(Restore_opSeries) -> String
-
-pub fn restore_op_series_var(Restore_opSeries) -> Double
-
 pub fn restore_op_std(Array[Double]) -> Double
 
 pub fn restore_op_var(Array[Double]) -> Double
 
-pub fn restore_op_vector_add(Restore_opVector, Restore_opVector) -> Restore_opVector
-
-pub fn restore_op_vector_dist(Restore_opVector, Restore_opVector) -> Double
-
-pub fn restore_op_vector_dot(Restore_opVector, Restore_opVector) -> Double
-
-pub fn restore_op_vector_norm(Restore_opVector) -> Double
-
-pub fn restore_op_vector_normalize(Restore_opVector) -> Restore_opVector
-
-pub fn restore_op_vector_scale(Restore_opVector, Double) -> Restore_opVector
-
-pub fn restore_op_vector_sub(Restore_opVector, Restore_opVector) -> Restore_opVector
-
-pub fn restore_op_vector_to_string(Restore_opVector) -> String
-
-pub fn restore_op_vector_zero(Int32) -> Restore_opVector
-
 // Errors
 
 // Types and methods
-pub struct Restore_opMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Restore_opPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Restore_opSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Restore_opVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

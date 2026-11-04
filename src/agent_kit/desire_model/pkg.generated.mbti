@@ -12,55 +12,7 @@ pub fn desire_model_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn desire_model_mae(Array[Double], Array[Double]) -> Double
 
-pub fn desire_model_make_labeled_point(Double, Double, Int32) -> Desire_modelPoint
-
-pub fn desire_model_make_matrix(Int32, Int32, Double) -> Desire_modelMatrix
-
-pub fn desire_model_make_point(Double, Double) -> Desire_modelPoint
-
-pub fn desire_model_make_series(Array[Double], String) -> Desire_modelSeries
-
-pub fn desire_model_make_vector(Array[Double]) -> Desire_modelVector
-
-pub fn desire_model_matrix_add(Desire_modelMatrix, Desire_modelMatrix) -> Desire_modelMatrix
-
-pub fn desire_model_matrix_get(Desire_modelMatrix, Int32, Int32) -> Double
-
-pub fn desire_model_matrix_identity(Int32) -> Desire_modelMatrix
-
-pub fn desire_model_matrix_multiply(Desire_modelMatrix, Desire_modelMatrix) -> Desire_modelMatrix
-
-pub fn desire_model_matrix_norm(Desire_modelMatrix) -> Double
-
-pub fn desire_model_matrix_scale(Desire_modelMatrix, Double) -> Desire_modelMatrix
-
-pub fn desire_model_matrix_to_string(Desire_modelMatrix) -> String
-
-pub fn desire_model_matrix_trace(Desire_modelMatrix) -> Double
-
-pub fn desire_model_matrix_transpose(Desire_modelMatrix) -> Desire_modelMatrix
-
 pub fn desire_model_mse(Array[Double], Array[Double]) -> Double
-
-pub fn desire_model_point_add(Desire_modelPoint, Desire_modelPoint) -> Desire_modelPoint
-
-pub fn desire_model_point_dist(Desire_modelPoint, Desire_modelPoint) -> Double
-
-pub fn desire_model_point_dot(Desire_modelPoint, Desire_modelPoint) -> Double
-
-pub fn desire_model_point_label(Desire_modelPoint) -> Int32
-
-pub fn desire_model_point_norm(Desire_modelPoint) -> Double
-
-pub fn desire_model_point_scale(Desire_modelPoint, Double) -> Desire_modelPoint
-
-pub fn desire_model_point_sub(Desire_modelPoint, Desire_modelPoint) -> Desire_modelPoint
-
-pub fn desire_model_point_to_string(Desire_modelPoint) -> String
-
-pub fn desire_model_point_x(Desire_modelPoint) -> Double
-
-pub fn desire_model_point_y(Desire_modelPoint) -> Double
 
 pub fn desire_model_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn desire_model_r2(Array[Double], Array[Double]) -> Double
 
 pub fn desire_model_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn desire_model_series_add(Desire_modelSeries, Desire_modelSeries) -> Desire_modelSeries
-
-pub fn desire_model_series_len(Desire_modelSeries) -> Int32
-
-pub fn desire_model_series_max(Desire_modelSeries) -> Double
-
-pub fn desire_model_series_mean(Desire_modelSeries) -> Double
-
-pub fn desire_model_series_min(Desire_modelSeries) -> Double
-
-pub fn desire_model_series_scale(Desire_modelSeries, Double) -> Desire_modelSeries
-
-pub fn desire_model_series_std(Desire_modelSeries) -> Double
-
-pub fn desire_model_series_sum(Desire_modelSeries) -> Double
-
-pub fn desire_model_series_to_string(Desire_modelSeries) -> String
-
-pub fn desire_model_series_var(Desire_modelSeries) -> Double
-
 pub fn desire_model_std(Array[Double]) -> Double
 
 pub fn desire_model_var(Array[Double]) -> Double
 
-pub fn desire_model_vector_add(Desire_modelVector, Desire_modelVector) -> Desire_modelVector
-
-pub fn desire_model_vector_dist(Desire_modelVector, Desire_modelVector) -> Double
-
-pub fn desire_model_vector_dot(Desire_modelVector, Desire_modelVector) -> Double
-
-pub fn desire_model_vector_norm(Desire_modelVector) -> Double
-
-pub fn desire_model_vector_normalize(Desire_modelVector) -> Desire_modelVector
-
-pub fn desire_model_vector_scale(Desire_modelVector, Double) -> Desire_modelVector
-
-pub fn desire_model_vector_sub(Desire_modelVector, Desire_modelVector) -> Desire_modelVector
-
-pub fn desire_model_vector_to_string(Desire_modelVector) -> String
-
-pub fn desire_model_vector_zero(Int32) -> Desire_modelVector
-
 // Errors
 
 // Types and methods
-pub struct Desire_modelMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Desire_modelPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Desire_modelSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Desire_modelVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

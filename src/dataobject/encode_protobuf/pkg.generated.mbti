@@ -12,55 +12,7 @@ pub fn encode_protobuf_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn encode_protobuf_mae(Array[Double], Array[Double]) -> Double
 
-pub fn encode_protobuf_make_labeled_point(Double, Double, Int32) -> Encode_protobufPoint
-
-pub fn encode_protobuf_make_matrix(Int32, Int32, Double) -> Encode_protobufMatrix
-
-pub fn encode_protobuf_make_point(Double, Double) -> Encode_protobufPoint
-
-pub fn encode_protobuf_make_series(Array[Double], String) -> Encode_protobufSeries
-
-pub fn encode_protobuf_make_vector(Array[Double]) -> Encode_protobufVector
-
-pub fn encode_protobuf_matrix_add(Encode_protobufMatrix, Encode_protobufMatrix) -> Encode_protobufMatrix
-
-pub fn encode_protobuf_matrix_get(Encode_protobufMatrix, Int32, Int32) -> Double
-
-pub fn encode_protobuf_matrix_identity(Int32) -> Encode_protobufMatrix
-
-pub fn encode_protobuf_matrix_multiply(Encode_protobufMatrix, Encode_protobufMatrix) -> Encode_protobufMatrix
-
-pub fn encode_protobuf_matrix_norm(Encode_protobufMatrix) -> Double
-
-pub fn encode_protobuf_matrix_scale(Encode_protobufMatrix, Double) -> Encode_protobufMatrix
-
-pub fn encode_protobuf_matrix_to_string(Encode_protobufMatrix) -> String
-
-pub fn encode_protobuf_matrix_trace(Encode_protobufMatrix) -> Double
-
-pub fn encode_protobuf_matrix_transpose(Encode_protobufMatrix) -> Encode_protobufMatrix
-
 pub fn encode_protobuf_mse(Array[Double], Array[Double]) -> Double
-
-pub fn encode_protobuf_point_add(Encode_protobufPoint, Encode_protobufPoint) -> Encode_protobufPoint
-
-pub fn encode_protobuf_point_dist(Encode_protobufPoint, Encode_protobufPoint) -> Double
-
-pub fn encode_protobuf_point_dot(Encode_protobufPoint, Encode_protobufPoint) -> Double
-
-pub fn encode_protobuf_point_label(Encode_protobufPoint) -> Int32
-
-pub fn encode_protobuf_point_norm(Encode_protobufPoint) -> Double
-
-pub fn encode_protobuf_point_scale(Encode_protobufPoint, Double) -> Encode_protobufPoint
-
-pub fn encode_protobuf_point_sub(Encode_protobufPoint, Encode_protobufPoint) -> Encode_protobufPoint
-
-pub fn encode_protobuf_point_to_string(Encode_protobufPoint) -> String
-
-pub fn encode_protobuf_point_x(Encode_protobufPoint) -> Double
-
-pub fn encode_protobuf_point_y(Encode_protobufPoint) -> Double
 
 pub fn encode_protobuf_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn encode_protobuf_r2(Array[Double], Array[Double]) -> Double
 
 pub fn encode_protobuf_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn encode_protobuf_series_add(Encode_protobufSeries, Encode_protobufSeries) -> Encode_protobufSeries
-
-pub fn encode_protobuf_series_len(Encode_protobufSeries) -> Int32
-
-pub fn encode_protobuf_series_max(Encode_protobufSeries) -> Double
-
-pub fn encode_protobuf_series_mean(Encode_protobufSeries) -> Double
-
-pub fn encode_protobuf_series_min(Encode_protobufSeries) -> Double
-
-pub fn encode_protobuf_series_scale(Encode_protobufSeries, Double) -> Encode_protobufSeries
-
-pub fn encode_protobuf_series_std(Encode_protobufSeries) -> Double
-
-pub fn encode_protobuf_series_sum(Encode_protobufSeries) -> Double
-
-pub fn encode_protobuf_series_to_string(Encode_protobufSeries) -> String
-
-pub fn encode_protobuf_series_var(Encode_protobufSeries) -> Double
-
 pub fn encode_protobuf_std(Array[Double]) -> Double
 
 pub fn encode_protobuf_var(Array[Double]) -> Double
 
-pub fn encode_protobuf_vector_add(Encode_protobufVector, Encode_protobufVector) -> Encode_protobufVector
-
-pub fn encode_protobuf_vector_dist(Encode_protobufVector, Encode_protobufVector) -> Double
-
-pub fn encode_protobuf_vector_dot(Encode_protobufVector, Encode_protobufVector) -> Double
-
-pub fn encode_protobuf_vector_norm(Encode_protobufVector) -> Double
-
-pub fn encode_protobuf_vector_normalize(Encode_protobufVector) -> Encode_protobufVector
-
-pub fn encode_protobuf_vector_scale(Encode_protobufVector, Double) -> Encode_protobufVector
-
-pub fn encode_protobuf_vector_sub(Encode_protobufVector, Encode_protobufVector) -> Encode_protobufVector
-
-pub fn encode_protobuf_vector_to_string(Encode_protobufVector) -> String
-
-pub fn encode_protobuf_vector_zero(Int32) -> Encode_protobufVector
-
 // Errors
 
 // Types and methods
-pub struct Encode_protobufMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Encode_protobufPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Encode_protobufSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Encode_protobufVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

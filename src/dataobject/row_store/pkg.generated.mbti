@@ -12,55 +12,7 @@ pub fn row_store_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn row_store_mae(Array[Double], Array[Double]) -> Double
 
-pub fn row_store_make_labeled_point(Double, Double, Int32) -> Row_storePoint
-
-pub fn row_store_make_matrix(Int32, Int32, Double) -> Row_storeMatrix
-
-pub fn row_store_make_point(Double, Double) -> Row_storePoint
-
-pub fn row_store_make_series(Array[Double], String) -> Row_storeSeries
-
-pub fn row_store_make_vector(Array[Double]) -> Row_storeVector
-
-pub fn row_store_matrix_add(Row_storeMatrix, Row_storeMatrix) -> Row_storeMatrix
-
-pub fn row_store_matrix_get(Row_storeMatrix, Int32, Int32) -> Double
-
-pub fn row_store_matrix_identity(Int32) -> Row_storeMatrix
-
-pub fn row_store_matrix_multiply(Row_storeMatrix, Row_storeMatrix) -> Row_storeMatrix
-
-pub fn row_store_matrix_norm(Row_storeMatrix) -> Double
-
-pub fn row_store_matrix_scale(Row_storeMatrix, Double) -> Row_storeMatrix
-
-pub fn row_store_matrix_to_string(Row_storeMatrix) -> String
-
-pub fn row_store_matrix_trace(Row_storeMatrix) -> Double
-
-pub fn row_store_matrix_transpose(Row_storeMatrix) -> Row_storeMatrix
-
 pub fn row_store_mse(Array[Double], Array[Double]) -> Double
-
-pub fn row_store_point_add(Row_storePoint, Row_storePoint) -> Row_storePoint
-
-pub fn row_store_point_dist(Row_storePoint, Row_storePoint) -> Double
-
-pub fn row_store_point_dot(Row_storePoint, Row_storePoint) -> Double
-
-pub fn row_store_point_label(Row_storePoint) -> Int32
-
-pub fn row_store_point_norm(Row_storePoint) -> Double
-
-pub fn row_store_point_scale(Row_storePoint, Double) -> Row_storePoint
-
-pub fn row_store_point_sub(Row_storePoint, Row_storePoint) -> Row_storePoint
-
-pub fn row_store_point_to_string(Row_storePoint) -> String
-
-pub fn row_store_point_x(Row_storePoint) -> Double
-
-pub fn row_store_point_y(Row_storePoint) -> Double
 
 pub fn row_store_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn row_store_r2(Array[Double], Array[Double]) -> Double
 
 pub fn row_store_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn row_store_series_add(Row_storeSeries, Row_storeSeries) -> Row_storeSeries
-
-pub fn row_store_series_len(Row_storeSeries) -> Int32
-
-pub fn row_store_series_max(Row_storeSeries) -> Double
-
-pub fn row_store_series_mean(Row_storeSeries) -> Double
-
-pub fn row_store_series_min(Row_storeSeries) -> Double
-
-pub fn row_store_series_scale(Row_storeSeries, Double) -> Row_storeSeries
-
-pub fn row_store_series_std(Row_storeSeries) -> Double
-
-pub fn row_store_series_sum(Row_storeSeries) -> Double
-
-pub fn row_store_series_to_string(Row_storeSeries) -> String
-
-pub fn row_store_series_var(Row_storeSeries) -> Double
-
 pub fn row_store_std(Array[Double]) -> Double
 
 pub fn row_store_var(Array[Double]) -> Double
 
-pub fn row_store_vector_add(Row_storeVector, Row_storeVector) -> Row_storeVector
-
-pub fn row_store_vector_dist(Row_storeVector, Row_storeVector) -> Double
-
-pub fn row_store_vector_dot(Row_storeVector, Row_storeVector) -> Double
-
-pub fn row_store_vector_norm(Row_storeVector) -> Double
-
-pub fn row_store_vector_normalize(Row_storeVector) -> Row_storeVector
-
-pub fn row_store_vector_scale(Row_storeVector, Double) -> Row_storeVector
-
-pub fn row_store_vector_sub(Row_storeVector, Row_storeVector) -> Row_storeVector
-
-pub fn row_store_vector_to_string(Row_storeVector) -> String
-
-pub fn row_store_vector_zero(Int32) -> Row_storeVector
-
 // Errors
 
 // Types and methods
-pub struct Row_storeMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Row_storePoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Row_storeSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Row_storeVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

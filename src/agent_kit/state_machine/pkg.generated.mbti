@@ -12,55 +12,7 @@ pub fn state_machine_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn state_machine_mae(Array[Double], Array[Double]) -> Double
 
-pub fn state_machine_make_labeled_point(Double, Double, Int32) -> State_machinePoint
-
-pub fn state_machine_make_matrix(Int32, Int32, Double) -> State_machineMatrix
-
-pub fn state_machine_make_point(Double, Double) -> State_machinePoint
-
-pub fn state_machine_make_series(Array[Double], String) -> State_machineSeries
-
-pub fn state_machine_make_vector(Array[Double]) -> State_machineVector
-
-pub fn state_machine_matrix_add(State_machineMatrix, State_machineMatrix) -> State_machineMatrix
-
-pub fn state_machine_matrix_get(State_machineMatrix, Int32, Int32) -> Double
-
-pub fn state_machine_matrix_identity(Int32) -> State_machineMatrix
-
-pub fn state_machine_matrix_multiply(State_machineMatrix, State_machineMatrix) -> State_machineMatrix
-
-pub fn state_machine_matrix_norm(State_machineMatrix) -> Double
-
-pub fn state_machine_matrix_scale(State_machineMatrix, Double) -> State_machineMatrix
-
-pub fn state_machine_matrix_to_string(State_machineMatrix) -> String
-
-pub fn state_machine_matrix_trace(State_machineMatrix) -> Double
-
-pub fn state_machine_matrix_transpose(State_machineMatrix) -> State_machineMatrix
-
 pub fn state_machine_mse(Array[Double], Array[Double]) -> Double
-
-pub fn state_machine_point_add(State_machinePoint, State_machinePoint) -> State_machinePoint
-
-pub fn state_machine_point_dist(State_machinePoint, State_machinePoint) -> Double
-
-pub fn state_machine_point_dot(State_machinePoint, State_machinePoint) -> Double
-
-pub fn state_machine_point_label(State_machinePoint) -> Int32
-
-pub fn state_machine_point_norm(State_machinePoint) -> Double
-
-pub fn state_machine_point_scale(State_machinePoint, Double) -> State_machinePoint
-
-pub fn state_machine_point_sub(State_machinePoint, State_machinePoint) -> State_machinePoint
-
-pub fn state_machine_point_to_string(State_machinePoint) -> String
-
-pub fn state_machine_point_x(State_machinePoint) -> Double
-
-pub fn state_machine_point_y(State_machinePoint) -> Double
 
 pub fn state_machine_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn state_machine_r2(Array[Double], Array[Double]) -> Double
 
 pub fn state_machine_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn state_machine_series_add(State_machineSeries, State_machineSeries) -> State_machineSeries
-
-pub fn state_machine_series_len(State_machineSeries) -> Int32
-
-pub fn state_machine_series_max(State_machineSeries) -> Double
-
-pub fn state_machine_series_mean(State_machineSeries) -> Double
-
-pub fn state_machine_series_min(State_machineSeries) -> Double
-
-pub fn state_machine_series_scale(State_machineSeries, Double) -> State_machineSeries
-
-pub fn state_machine_series_std(State_machineSeries) -> Double
-
-pub fn state_machine_series_sum(State_machineSeries) -> Double
-
-pub fn state_machine_series_to_string(State_machineSeries) -> String
-
-pub fn state_machine_series_var(State_machineSeries) -> Double
-
 pub fn state_machine_std(Array[Double]) -> Double
 
 pub fn state_machine_var(Array[Double]) -> Double
 
-pub fn state_machine_vector_add(State_machineVector, State_machineVector) -> State_machineVector
-
-pub fn state_machine_vector_dist(State_machineVector, State_machineVector) -> Double
-
-pub fn state_machine_vector_dot(State_machineVector, State_machineVector) -> Double
-
-pub fn state_machine_vector_norm(State_machineVector) -> Double
-
-pub fn state_machine_vector_normalize(State_machineVector) -> State_machineVector
-
-pub fn state_machine_vector_scale(State_machineVector, Double) -> State_machineVector
-
-pub fn state_machine_vector_sub(State_machineVector, State_machineVector) -> State_machineVector
-
-pub fn state_machine_vector_to_string(State_machineVector) -> String
-
-pub fn state_machine_vector_zero(Int32) -> State_machineVector
-
 // Errors
 
 // Types and methods
-pub struct State_machineMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct State_machinePoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct State_machineSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct State_machineVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

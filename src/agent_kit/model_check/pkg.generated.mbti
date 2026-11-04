@@ -12,55 +12,7 @@ pub fn model_check_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn model_check_mae(Array[Double], Array[Double]) -> Double
 
-pub fn model_check_make_labeled_point(Double, Double, Int32) -> Model_checkPoint
-
-pub fn model_check_make_matrix(Int32, Int32, Double) -> Model_checkMatrix
-
-pub fn model_check_make_point(Double, Double) -> Model_checkPoint
-
-pub fn model_check_make_series(Array[Double], String) -> Model_checkSeries
-
-pub fn model_check_make_vector(Array[Double]) -> Model_checkVector
-
-pub fn model_check_matrix_add(Model_checkMatrix, Model_checkMatrix) -> Model_checkMatrix
-
-pub fn model_check_matrix_get(Model_checkMatrix, Int32, Int32) -> Double
-
-pub fn model_check_matrix_identity(Int32) -> Model_checkMatrix
-
-pub fn model_check_matrix_multiply(Model_checkMatrix, Model_checkMatrix) -> Model_checkMatrix
-
-pub fn model_check_matrix_norm(Model_checkMatrix) -> Double
-
-pub fn model_check_matrix_scale(Model_checkMatrix, Double) -> Model_checkMatrix
-
-pub fn model_check_matrix_to_string(Model_checkMatrix) -> String
-
-pub fn model_check_matrix_trace(Model_checkMatrix) -> Double
-
-pub fn model_check_matrix_transpose(Model_checkMatrix) -> Model_checkMatrix
-
 pub fn model_check_mse(Array[Double], Array[Double]) -> Double
-
-pub fn model_check_point_add(Model_checkPoint, Model_checkPoint) -> Model_checkPoint
-
-pub fn model_check_point_dist(Model_checkPoint, Model_checkPoint) -> Double
-
-pub fn model_check_point_dot(Model_checkPoint, Model_checkPoint) -> Double
-
-pub fn model_check_point_label(Model_checkPoint) -> Int32
-
-pub fn model_check_point_norm(Model_checkPoint) -> Double
-
-pub fn model_check_point_scale(Model_checkPoint, Double) -> Model_checkPoint
-
-pub fn model_check_point_sub(Model_checkPoint, Model_checkPoint) -> Model_checkPoint
-
-pub fn model_check_point_to_string(Model_checkPoint) -> String
-
-pub fn model_check_point_x(Model_checkPoint) -> Double
-
-pub fn model_check_point_y(Model_checkPoint) -> Double
 
 pub fn model_check_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn model_check_r2(Array[Double], Array[Double]) -> Double
 
 pub fn model_check_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn model_check_series_add(Model_checkSeries, Model_checkSeries) -> Model_checkSeries
-
-pub fn model_check_series_len(Model_checkSeries) -> Int32
-
-pub fn model_check_series_max(Model_checkSeries) -> Double
-
-pub fn model_check_series_mean(Model_checkSeries) -> Double
-
-pub fn model_check_series_min(Model_checkSeries) -> Double
-
-pub fn model_check_series_scale(Model_checkSeries, Double) -> Model_checkSeries
-
-pub fn model_check_series_std(Model_checkSeries) -> Double
-
-pub fn model_check_series_sum(Model_checkSeries) -> Double
-
-pub fn model_check_series_to_string(Model_checkSeries) -> String
-
-pub fn model_check_series_var(Model_checkSeries) -> Double
-
 pub fn model_check_std(Array[Double]) -> Double
 
 pub fn model_check_var(Array[Double]) -> Double
 
-pub fn model_check_vector_add(Model_checkVector, Model_checkVector) -> Model_checkVector
-
-pub fn model_check_vector_dist(Model_checkVector, Model_checkVector) -> Double
-
-pub fn model_check_vector_dot(Model_checkVector, Model_checkVector) -> Double
-
-pub fn model_check_vector_norm(Model_checkVector) -> Double
-
-pub fn model_check_vector_normalize(Model_checkVector) -> Model_checkVector
-
-pub fn model_check_vector_scale(Model_checkVector, Double) -> Model_checkVector
-
-pub fn model_check_vector_sub(Model_checkVector, Model_checkVector) -> Model_checkVector
-
-pub fn model_check_vector_to_string(Model_checkVector) -> String
-
-pub fn model_check_vector_zero(Int32) -> Model_checkVector
-
 // Errors
 
 // Types and methods
-pub struct Model_checkMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Model_checkPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Model_checkSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Model_checkVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

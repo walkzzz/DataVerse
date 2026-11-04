@@ -12,55 +12,7 @@ pub fn goal_stack_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn goal_stack_mae(Array[Double], Array[Double]) -> Double
 
-pub fn goal_stack_make_labeled_point(Double, Double, Int32) -> Goal_stackPoint
-
-pub fn goal_stack_make_matrix(Int32, Int32, Double) -> Goal_stackMatrix
-
-pub fn goal_stack_make_point(Double, Double) -> Goal_stackPoint
-
-pub fn goal_stack_make_series(Array[Double], String) -> Goal_stackSeries
-
-pub fn goal_stack_make_vector(Array[Double]) -> Goal_stackVector
-
-pub fn goal_stack_matrix_add(Goal_stackMatrix, Goal_stackMatrix) -> Goal_stackMatrix
-
-pub fn goal_stack_matrix_get(Goal_stackMatrix, Int32, Int32) -> Double
-
-pub fn goal_stack_matrix_identity(Int32) -> Goal_stackMatrix
-
-pub fn goal_stack_matrix_multiply(Goal_stackMatrix, Goal_stackMatrix) -> Goal_stackMatrix
-
-pub fn goal_stack_matrix_norm(Goal_stackMatrix) -> Double
-
-pub fn goal_stack_matrix_scale(Goal_stackMatrix, Double) -> Goal_stackMatrix
-
-pub fn goal_stack_matrix_to_string(Goal_stackMatrix) -> String
-
-pub fn goal_stack_matrix_trace(Goal_stackMatrix) -> Double
-
-pub fn goal_stack_matrix_transpose(Goal_stackMatrix) -> Goal_stackMatrix
-
 pub fn goal_stack_mse(Array[Double], Array[Double]) -> Double
-
-pub fn goal_stack_point_add(Goal_stackPoint, Goal_stackPoint) -> Goal_stackPoint
-
-pub fn goal_stack_point_dist(Goal_stackPoint, Goal_stackPoint) -> Double
-
-pub fn goal_stack_point_dot(Goal_stackPoint, Goal_stackPoint) -> Double
-
-pub fn goal_stack_point_label(Goal_stackPoint) -> Int32
-
-pub fn goal_stack_point_norm(Goal_stackPoint) -> Double
-
-pub fn goal_stack_point_scale(Goal_stackPoint, Double) -> Goal_stackPoint
-
-pub fn goal_stack_point_sub(Goal_stackPoint, Goal_stackPoint) -> Goal_stackPoint
-
-pub fn goal_stack_point_to_string(Goal_stackPoint) -> String
-
-pub fn goal_stack_point_x(Goal_stackPoint) -> Double
-
-pub fn goal_stack_point_y(Goal_stackPoint) -> Double
 
 pub fn goal_stack_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn goal_stack_r2(Array[Double], Array[Double]) -> Double
 
 pub fn goal_stack_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn goal_stack_series_add(Goal_stackSeries, Goal_stackSeries) -> Goal_stackSeries
-
-pub fn goal_stack_series_len(Goal_stackSeries) -> Int32
-
-pub fn goal_stack_series_max(Goal_stackSeries) -> Double
-
-pub fn goal_stack_series_mean(Goal_stackSeries) -> Double
-
-pub fn goal_stack_series_min(Goal_stackSeries) -> Double
-
-pub fn goal_stack_series_scale(Goal_stackSeries, Double) -> Goal_stackSeries
-
-pub fn goal_stack_series_std(Goal_stackSeries) -> Double
-
-pub fn goal_stack_series_sum(Goal_stackSeries) -> Double
-
-pub fn goal_stack_series_to_string(Goal_stackSeries) -> String
-
-pub fn goal_stack_series_var(Goal_stackSeries) -> Double
-
 pub fn goal_stack_std(Array[Double]) -> Double
 
 pub fn goal_stack_var(Array[Double]) -> Double
 
-pub fn goal_stack_vector_add(Goal_stackVector, Goal_stackVector) -> Goal_stackVector
-
-pub fn goal_stack_vector_dist(Goal_stackVector, Goal_stackVector) -> Double
-
-pub fn goal_stack_vector_dot(Goal_stackVector, Goal_stackVector) -> Double
-
-pub fn goal_stack_vector_norm(Goal_stackVector) -> Double
-
-pub fn goal_stack_vector_normalize(Goal_stackVector) -> Goal_stackVector
-
-pub fn goal_stack_vector_scale(Goal_stackVector, Double) -> Goal_stackVector
-
-pub fn goal_stack_vector_sub(Goal_stackVector, Goal_stackVector) -> Goal_stackVector
-
-pub fn goal_stack_vector_to_string(Goal_stackVector) -> String
-
-pub fn goal_stack_vector_zero(Int32) -> Goal_stackVector
-
 // Errors
 
 // Types and methods
-pub struct Goal_stackMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Goal_stackPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Goal_stackSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Goal_stackVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

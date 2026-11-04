@@ -12,55 +12,7 @@ pub fn encode_yaml_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn encode_yaml_mae(Array[Double], Array[Double]) -> Double
 
-pub fn encode_yaml_make_labeled_point(Double, Double, Int32) -> Encode_yamlPoint
-
-pub fn encode_yaml_make_matrix(Int32, Int32, Double) -> Encode_yamlMatrix
-
-pub fn encode_yaml_make_point(Double, Double) -> Encode_yamlPoint
-
-pub fn encode_yaml_make_series(Array[Double], String) -> Encode_yamlSeries
-
-pub fn encode_yaml_make_vector(Array[Double]) -> Encode_yamlVector
-
-pub fn encode_yaml_matrix_add(Encode_yamlMatrix, Encode_yamlMatrix) -> Encode_yamlMatrix
-
-pub fn encode_yaml_matrix_get(Encode_yamlMatrix, Int32, Int32) -> Double
-
-pub fn encode_yaml_matrix_identity(Int32) -> Encode_yamlMatrix
-
-pub fn encode_yaml_matrix_multiply(Encode_yamlMatrix, Encode_yamlMatrix) -> Encode_yamlMatrix
-
-pub fn encode_yaml_matrix_norm(Encode_yamlMatrix) -> Double
-
-pub fn encode_yaml_matrix_scale(Encode_yamlMatrix, Double) -> Encode_yamlMatrix
-
-pub fn encode_yaml_matrix_to_string(Encode_yamlMatrix) -> String
-
-pub fn encode_yaml_matrix_trace(Encode_yamlMatrix) -> Double
-
-pub fn encode_yaml_matrix_transpose(Encode_yamlMatrix) -> Encode_yamlMatrix
-
 pub fn encode_yaml_mse(Array[Double], Array[Double]) -> Double
-
-pub fn encode_yaml_point_add(Encode_yamlPoint, Encode_yamlPoint) -> Encode_yamlPoint
-
-pub fn encode_yaml_point_dist(Encode_yamlPoint, Encode_yamlPoint) -> Double
-
-pub fn encode_yaml_point_dot(Encode_yamlPoint, Encode_yamlPoint) -> Double
-
-pub fn encode_yaml_point_label(Encode_yamlPoint) -> Int32
-
-pub fn encode_yaml_point_norm(Encode_yamlPoint) -> Double
-
-pub fn encode_yaml_point_scale(Encode_yamlPoint, Double) -> Encode_yamlPoint
-
-pub fn encode_yaml_point_sub(Encode_yamlPoint, Encode_yamlPoint) -> Encode_yamlPoint
-
-pub fn encode_yaml_point_to_string(Encode_yamlPoint) -> String
-
-pub fn encode_yaml_point_x(Encode_yamlPoint) -> Double
-
-pub fn encode_yaml_point_y(Encode_yamlPoint) -> Double
 
 pub fn encode_yaml_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn encode_yaml_r2(Array[Double], Array[Double]) -> Double
 
 pub fn encode_yaml_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn encode_yaml_series_add(Encode_yamlSeries, Encode_yamlSeries) -> Encode_yamlSeries
-
-pub fn encode_yaml_series_len(Encode_yamlSeries) -> Int32
-
-pub fn encode_yaml_series_max(Encode_yamlSeries) -> Double
-
-pub fn encode_yaml_series_mean(Encode_yamlSeries) -> Double
-
-pub fn encode_yaml_series_min(Encode_yamlSeries) -> Double
-
-pub fn encode_yaml_series_scale(Encode_yamlSeries, Double) -> Encode_yamlSeries
-
-pub fn encode_yaml_series_std(Encode_yamlSeries) -> Double
-
-pub fn encode_yaml_series_sum(Encode_yamlSeries) -> Double
-
-pub fn encode_yaml_series_to_string(Encode_yamlSeries) -> String
-
-pub fn encode_yaml_series_var(Encode_yamlSeries) -> Double
-
 pub fn encode_yaml_std(Array[Double]) -> Double
 
 pub fn encode_yaml_var(Array[Double]) -> Double
 
-pub fn encode_yaml_vector_add(Encode_yamlVector, Encode_yamlVector) -> Encode_yamlVector
-
-pub fn encode_yaml_vector_dist(Encode_yamlVector, Encode_yamlVector) -> Double
-
-pub fn encode_yaml_vector_dot(Encode_yamlVector, Encode_yamlVector) -> Double
-
-pub fn encode_yaml_vector_norm(Encode_yamlVector) -> Double
-
-pub fn encode_yaml_vector_normalize(Encode_yamlVector) -> Encode_yamlVector
-
-pub fn encode_yaml_vector_scale(Encode_yamlVector, Double) -> Encode_yamlVector
-
-pub fn encode_yaml_vector_sub(Encode_yamlVector, Encode_yamlVector) -> Encode_yamlVector
-
-pub fn encode_yaml_vector_to_string(Encode_yamlVector) -> String
-
-pub fn encode_yaml_vector_zero(Int32) -> Encode_yamlVector
-
 // Errors
 
 // Types and methods
-pub struct Encode_yamlMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Encode_yamlPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Encode_yamlSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Encode_yamlVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

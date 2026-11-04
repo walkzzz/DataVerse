@@ -12,55 +12,7 @@ pub fn encode_msgpack_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn encode_msgpack_mae(Array[Double], Array[Double]) -> Double
 
-pub fn encode_msgpack_make_labeled_point(Double, Double, Int32) -> Encode_msgpackPoint
-
-pub fn encode_msgpack_make_matrix(Int32, Int32, Double) -> Encode_msgpackMatrix
-
-pub fn encode_msgpack_make_point(Double, Double) -> Encode_msgpackPoint
-
-pub fn encode_msgpack_make_series(Array[Double], String) -> Encode_msgpackSeries
-
-pub fn encode_msgpack_make_vector(Array[Double]) -> Encode_msgpackVector
-
-pub fn encode_msgpack_matrix_add(Encode_msgpackMatrix, Encode_msgpackMatrix) -> Encode_msgpackMatrix
-
-pub fn encode_msgpack_matrix_get(Encode_msgpackMatrix, Int32, Int32) -> Double
-
-pub fn encode_msgpack_matrix_identity(Int32) -> Encode_msgpackMatrix
-
-pub fn encode_msgpack_matrix_multiply(Encode_msgpackMatrix, Encode_msgpackMatrix) -> Encode_msgpackMatrix
-
-pub fn encode_msgpack_matrix_norm(Encode_msgpackMatrix) -> Double
-
-pub fn encode_msgpack_matrix_scale(Encode_msgpackMatrix, Double) -> Encode_msgpackMatrix
-
-pub fn encode_msgpack_matrix_to_string(Encode_msgpackMatrix) -> String
-
-pub fn encode_msgpack_matrix_trace(Encode_msgpackMatrix) -> Double
-
-pub fn encode_msgpack_matrix_transpose(Encode_msgpackMatrix) -> Encode_msgpackMatrix
-
 pub fn encode_msgpack_mse(Array[Double], Array[Double]) -> Double
-
-pub fn encode_msgpack_point_add(Encode_msgpackPoint, Encode_msgpackPoint) -> Encode_msgpackPoint
-
-pub fn encode_msgpack_point_dist(Encode_msgpackPoint, Encode_msgpackPoint) -> Double
-
-pub fn encode_msgpack_point_dot(Encode_msgpackPoint, Encode_msgpackPoint) -> Double
-
-pub fn encode_msgpack_point_label(Encode_msgpackPoint) -> Int32
-
-pub fn encode_msgpack_point_norm(Encode_msgpackPoint) -> Double
-
-pub fn encode_msgpack_point_scale(Encode_msgpackPoint, Double) -> Encode_msgpackPoint
-
-pub fn encode_msgpack_point_sub(Encode_msgpackPoint, Encode_msgpackPoint) -> Encode_msgpackPoint
-
-pub fn encode_msgpack_point_to_string(Encode_msgpackPoint) -> String
-
-pub fn encode_msgpack_point_x(Encode_msgpackPoint) -> Double
-
-pub fn encode_msgpack_point_y(Encode_msgpackPoint) -> Double
 
 pub fn encode_msgpack_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn encode_msgpack_r2(Array[Double], Array[Double]) -> Double
 
 pub fn encode_msgpack_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn encode_msgpack_series_add(Encode_msgpackSeries, Encode_msgpackSeries) -> Encode_msgpackSeries
-
-pub fn encode_msgpack_series_len(Encode_msgpackSeries) -> Int32
-
-pub fn encode_msgpack_series_max(Encode_msgpackSeries) -> Double
-
-pub fn encode_msgpack_series_mean(Encode_msgpackSeries) -> Double
-
-pub fn encode_msgpack_series_min(Encode_msgpackSeries) -> Double
-
-pub fn encode_msgpack_series_scale(Encode_msgpackSeries, Double) -> Encode_msgpackSeries
-
-pub fn encode_msgpack_series_std(Encode_msgpackSeries) -> Double
-
-pub fn encode_msgpack_series_sum(Encode_msgpackSeries) -> Double
-
-pub fn encode_msgpack_series_to_string(Encode_msgpackSeries) -> String
-
-pub fn encode_msgpack_series_var(Encode_msgpackSeries) -> Double
-
 pub fn encode_msgpack_std(Array[Double]) -> Double
 
 pub fn encode_msgpack_var(Array[Double]) -> Double
 
-pub fn encode_msgpack_vector_add(Encode_msgpackVector, Encode_msgpackVector) -> Encode_msgpackVector
-
-pub fn encode_msgpack_vector_dist(Encode_msgpackVector, Encode_msgpackVector) -> Double
-
-pub fn encode_msgpack_vector_dot(Encode_msgpackVector, Encode_msgpackVector) -> Double
-
-pub fn encode_msgpack_vector_norm(Encode_msgpackVector) -> Double
-
-pub fn encode_msgpack_vector_normalize(Encode_msgpackVector) -> Encode_msgpackVector
-
-pub fn encode_msgpack_vector_scale(Encode_msgpackVector, Double) -> Encode_msgpackVector
-
-pub fn encode_msgpack_vector_sub(Encode_msgpackVector, Encode_msgpackVector) -> Encode_msgpackVector
-
-pub fn encode_msgpack_vector_to_string(Encode_msgpackVector) -> String
-
-pub fn encode_msgpack_vector_zero(Int32) -> Encode_msgpackVector
-
 // Errors
 
 // Types and methods
-pub struct Encode_msgpackMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Encode_msgpackPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Encode_msgpackSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Encode_msgpackVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

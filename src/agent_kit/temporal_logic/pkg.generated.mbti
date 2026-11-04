@@ -12,55 +12,7 @@ pub fn temporal_logic_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn temporal_logic_mae(Array[Double], Array[Double]) -> Double
 
-pub fn temporal_logic_make_labeled_point(Double, Double, Int32) -> Temporal_logicPoint
-
-pub fn temporal_logic_make_matrix(Int32, Int32, Double) -> Temporal_logicMatrix
-
-pub fn temporal_logic_make_point(Double, Double) -> Temporal_logicPoint
-
-pub fn temporal_logic_make_series(Array[Double], String) -> Temporal_logicSeries
-
-pub fn temporal_logic_make_vector(Array[Double]) -> Temporal_logicVector
-
-pub fn temporal_logic_matrix_add(Temporal_logicMatrix, Temporal_logicMatrix) -> Temporal_logicMatrix
-
-pub fn temporal_logic_matrix_get(Temporal_logicMatrix, Int32, Int32) -> Double
-
-pub fn temporal_logic_matrix_identity(Int32) -> Temporal_logicMatrix
-
-pub fn temporal_logic_matrix_multiply(Temporal_logicMatrix, Temporal_logicMatrix) -> Temporal_logicMatrix
-
-pub fn temporal_logic_matrix_norm(Temporal_logicMatrix) -> Double
-
-pub fn temporal_logic_matrix_scale(Temporal_logicMatrix, Double) -> Temporal_logicMatrix
-
-pub fn temporal_logic_matrix_to_string(Temporal_logicMatrix) -> String
-
-pub fn temporal_logic_matrix_trace(Temporal_logicMatrix) -> Double
-
-pub fn temporal_logic_matrix_transpose(Temporal_logicMatrix) -> Temporal_logicMatrix
-
 pub fn temporal_logic_mse(Array[Double], Array[Double]) -> Double
-
-pub fn temporal_logic_point_add(Temporal_logicPoint, Temporal_logicPoint) -> Temporal_logicPoint
-
-pub fn temporal_logic_point_dist(Temporal_logicPoint, Temporal_logicPoint) -> Double
-
-pub fn temporal_logic_point_dot(Temporal_logicPoint, Temporal_logicPoint) -> Double
-
-pub fn temporal_logic_point_label(Temporal_logicPoint) -> Int32
-
-pub fn temporal_logic_point_norm(Temporal_logicPoint) -> Double
-
-pub fn temporal_logic_point_scale(Temporal_logicPoint, Double) -> Temporal_logicPoint
-
-pub fn temporal_logic_point_sub(Temporal_logicPoint, Temporal_logicPoint) -> Temporal_logicPoint
-
-pub fn temporal_logic_point_to_string(Temporal_logicPoint) -> String
-
-pub fn temporal_logic_point_x(Temporal_logicPoint) -> Double
-
-pub fn temporal_logic_point_y(Temporal_logicPoint) -> Double
 
 pub fn temporal_logic_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn temporal_logic_r2(Array[Double], Array[Double]) -> Double
 
 pub fn temporal_logic_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn temporal_logic_series_add(Temporal_logicSeries, Temporal_logicSeries) -> Temporal_logicSeries
-
-pub fn temporal_logic_series_len(Temporal_logicSeries) -> Int32
-
-pub fn temporal_logic_series_max(Temporal_logicSeries) -> Double
-
-pub fn temporal_logic_series_mean(Temporal_logicSeries) -> Double
-
-pub fn temporal_logic_series_min(Temporal_logicSeries) -> Double
-
-pub fn temporal_logic_series_scale(Temporal_logicSeries, Double) -> Temporal_logicSeries
-
-pub fn temporal_logic_series_std(Temporal_logicSeries) -> Double
-
-pub fn temporal_logic_series_sum(Temporal_logicSeries) -> Double
-
-pub fn temporal_logic_series_to_string(Temporal_logicSeries) -> String
-
-pub fn temporal_logic_series_var(Temporal_logicSeries) -> Double
-
 pub fn temporal_logic_std(Array[Double]) -> Double
 
 pub fn temporal_logic_var(Array[Double]) -> Double
 
-pub fn temporal_logic_vector_add(Temporal_logicVector, Temporal_logicVector) -> Temporal_logicVector
-
-pub fn temporal_logic_vector_dist(Temporal_logicVector, Temporal_logicVector) -> Double
-
-pub fn temporal_logic_vector_dot(Temporal_logicVector, Temporal_logicVector) -> Double
-
-pub fn temporal_logic_vector_norm(Temporal_logicVector) -> Double
-
-pub fn temporal_logic_vector_normalize(Temporal_logicVector) -> Temporal_logicVector
-
-pub fn temporal_logic_vector_scale(Temporal_logicVector, Double) -> Temporal_logicVector
-
-pub fn temporal_logic_vector_sub(Temporal_logicVector, Temporal_logicVector) -> Temporal_logicVector
-
-pub fn temporal_logic_vector_to_string(Temporal_logicVector) -> String
-
-pub fn temporal_logic_vector_zero(Int32) -> Temporal_logicVector
-
 // Errors
 
 // Types and methods
-pub struct Temporal_logicMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Temporal_logicPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Temporal_logicSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Temporal_logicVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

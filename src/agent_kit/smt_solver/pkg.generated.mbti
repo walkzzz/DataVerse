@@ -12,55 +12,7 @@ pub fn smt_solver_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn smt_solver_mae(Array[Double], Array[Double]) -> Double
 
-pub fn smt_solver_make_labeled_point(Double, Double, Int32) -> Smt_solverPoint
-
-pub fn smt_solver_make_matrix(Int32, Int32, Double) -> Smt_solverMatrix
-
-pub fn smt_solver_make_point(Double, Double) -> Smt_solverPoint
-
-pub fn smt_solver_make_series(Array[Double], String) -> Smt_solverSeries
-
-pub fn smt_solver_make_vector(Array[Double]) -> Smt_solverVector
-
-pub fn smt_solver_matrix_add(Smt_solverMatrix, Smt_solverMatrix) -> Smt_solverMatrix
-
-pub fn smt_solver_matrix_get(Smt_solverMatrix, Int32, Int32) -> Double
-
-pub fn smt_solver_matrix_identity(Int32) -> Smt_solverMatrix
-
-pub fn smt_solver_matrix_multiply(Smt_solverMatrix, Smt_solverMatrix) -> Smt_solverMatrix
-
-pub fn smt_solver_matrix_norm(Smt_solverMatrix) -> Double
-
-pub fn smt_solver_matrix_scale(Smt_solverMatrix, Double) -> Smt_solverMatrix
-
-pub fn smt_solver_matrix_to_string(Smt_solverMatrix) -> String
-
-pub fn smt_solver_matrix_trace(Smt_solverMatrix) -> Double
-
-pub fn smt_solver_matrix_transpose(Smt_solverMatrix) -> Smt_solverMatrix
-
 pub fn smt_solver_mse(Array[Double], Array[Double]) -> Double
-
-pub fn smt_solver_point_add(Smt_solverPoint, Smt_solverPoint) -> Smt_solverPoint
-
-pub fn smt_solver_point_dist(Smt_solverPoint, Smt_solverPoint) -> Double
-
-pub fn smt_solver_point_dot(Smt_solverPoint, Smt_solverPoint) -> Double
-
-pub fn smt_solver_point_label(Smt_solverPoint) -> Int32
-
-pub fn smt_solver_point_norm(Smt_solverPoint) -> Double
-
-pub fn smt_solver_point_scale(Smt_solverPoint, Double) -> Smt_solverPoint
-
-pub fn smt_solver_point_sub(Smt_solverPoint, Smt_solverPoint) -> Smt_solverPoint
-
-pub fn smt_solver_point_to_string(Smt_solverPoint) -> String
-
-pub fn smt_solver_point_x(Smt_solverPoint) -> Double
-
-pub fn smt_solver_point_y(Smt_solverPoint) -> Double
 
 pub fn smt_solver_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn smt_solver_r2(Array[Double], Array[Double]) -> Double
 
 pub fn smt_solver_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn smt_solver_series_add(Smt_solverSeries, Smt_solverSeries) -> Smt_solverSeries
-
-pub fn smt_solver_series_len(Smt_solverSeries) -> Int32
-
-pub fn smt_solver_series_max(Smt_solverSeries) -> Double
-
-pub fn smt_solver_series_mean(Smt_solverSeries) -> Double
-
-pub fn smt_solver_series_min(Smt_solverSeries) -> Double
-
-pub fn smt_solver_series_scale(Smt_solverSeries, Double) -> Smt_solverSeries
-
-pub fn smt_solver_series_std(Smt_solverSeries) -> Double
-
-pub fn smt_solver_series_sum(Smt_solverSeries) -> Double
-
-pub fn smt_solver_series_to_string(Smt_solverSeries) -> String
-
-pub fn smt_solver_series_var(Smt_solverSeries) -> Double
-
 pub fn smt_solver_std(Array[Double]) -> Double
 
 pub fn smt_solver_var(Array[Double]) -> Double
 
-pub fn smt_solver_vector_add(Smt_solverVector, Smt_solverVector) -> Smt_solverVector
-
-pub fn smt_solver_vector_dist(Smt_solverVector, Smt_solverVector) -> Double
-
-pub fn smt_solver_vector_dot(Smt_solverVector, Smt_solverVector) -> Double
-
-pub fn smt_solver_vector_norm(Smt_solverVector) -> Double
-
-pub fn smt_solver_vector_normalize(Smt_solverVector) -> Smt_solverVector
-
-pub fn smt_solver_vector_scale(Smt_solverVector, Double) -> Smt_solverVector
-
-pub fn smt_solver_vector_sub(Smt_solverVector, Smt_solverVector) -> Smt_solverVector
-
-pub fn smt_solver_vector_to_string(Smt_solverVector) -> String
-
-pub fn smt_solver_vector_zero(Int32) -> Smt_solverVector
-
 // Errors
 
 // Types and methods
-pub struct Smt_solverMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Smt_solverPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Smt_solverSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Smt_solverVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

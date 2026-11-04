@@ -12,55 +12,7 @@ pub fn workflow_eng_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn workflow_eng_mae(Array[Double], Array[Double]) -> Double
 
-pub fn workflow_eng_make_labeled_point(Double, Double, Int32) -> Workflow_engPoint
-
-pub fn workflow_eng_make_matrix(Int32, Int32, Double) -> Workflow_engMatrix
-
-pub fn workflow_eng_make_point(Double, Double) -> Workflow_engPoint
-
-pub fn workflow_eng_make_series(Array[Double], String) -> Workflow_engSeries
-
-pub fn workflow_eng_make_vector(Array[Double]) -> Workflow_engVector
-
-pub fn workflow_eng_matrix_add(Workflow_engMatrix, Workflow_engMatrix) -> Workflow_engMatrix
-
-pub fn workflow_eng_matrix_get(Workflow_engMatrix, Int32, Int32) -> Double
-
-pub fn workflow_eng_matrix_identity(Int32) -> Workflow_engMatrix
-
-pub fn workflow_eng_matrix_multiply(Workflow_engMatrix, Workflow_engMatrix) -> Workflow_engMatrix
-
-pub fn workflow_eng_matrix_norm(Workflow_engMatrix) -> Double
-
-pub fn workflow_eng_matrix_scale(Workflow_engMatrix, Double) -> Workflow_engMatrix
-
-pub fn workflow_eng_matrix_to_string(Workflow_engMatrix) -> String
-
-pub fn workflow_eng_matrix_trace(Workflow_engMatrix) -> Double
-
-pub fn workflow_eng_matrix_transpose(Workflow_engMatrix) -> Workflow_engMatrix
-
 pub fn workflow_eng_mse(Array[Double], Array[Double]) -> Double
-
-pub fn workflow_eng_point_add(Workflow_engPoint, Workflow_engPoint) -> Workflow_engPoint
-
-pub fn workflow_eng_point_dist(Workflow_engPoint, Workflow_engPoint) -> Double
-
-pub fn workflow_eng_point_dot(Workflow_engPoint, Workflow_engPoint) -> Double
-
-pub fn workflow_eng_point_label(Workflow_engPoint) -> Int32
-
-pub fn workflow_eng_point_norm(Workflow_engPoint) -> Double
-
-pub fn workflow_eng_point_scale(Workflow_engPoint, Double) -> Workflow_engPoint
-
-pub fn workflow_eng_point_sub(Workflow_engPoint, Workflow_engPoint) -> Workflow_engPoint
-
-pub fn workflow_eng_point_to_string(Workflow_engPoint) -> String
-
-pub fn workflow_eng_point_x(Workflow_engPoint) -> Double
-
-pub fn workflow_eng_point_y(Workflow_engPoint) -> Double
 
 pub fn workflow_eng_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn workflow_eng_r2(Array[Double], Array[Double]) -> Double
 
 pub fn workflow_eng_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn workflow_eng_series_add(Workflow_engSeries, Workflow_engSeries) -> Workflow_engSeries
-
-pub fn workflow_eng_series_len(Workflow_engSeries) -> Int32
-
-pub fn workflow_eng_series_max(Workflow_engSeries) -> Double
-
-pub fn workflow_eng_series_mean(Workflow_engSeries) -> Double
-
-pub fn workflow_eng_series_min(Workflow_engSeries) -> Double
-
-pub fn workflow_eng_series_scale(Workflow_engSeries, Double) -> Workflow_engSeries
-
-pub fn workflow_eng_series_std(Workflow_engSeries) -> Double
-
-pub fn workflow_eng_series_sum(Workflow_engSeries) -> Double
-
-pub fn workflow_eng_series_to_string(Workflow_engSeries) -> String
-
-pub fn workflow_eng_series_var(Workflow_engSeries) -> Double
-
 pub fn workflow_eng_std(Array[Double]) -> Double
 
 pub fn workflow_eng_var(Array[Double]) -> Double
 
-pub fn workflow_eng_vector_add(Workflow_engVector, Workflow_engVector) -> Workflow_engVector
-
-pub fn workflow_eng_vector_dist(Workflow_engVector, Workflow_engVector) -> Double
-
-pub fn workflow_eng_vector_dot(Workflow_engVector, Workflow_engVector) -> Double
-
-pub fn workflow_eng_vector_norm(Workflow_engVector) -> Double
-
-pub fn workflow_eng_vector_normalize(Workflow_engVector) -> Workflow_engVector
-
-pub fn workflow_eng_vector_scale(Workflow_engVector, Double) -> Workflow_engVector
-
-pub fn workflow_eng_vector_sub(Workflow_engVector, Workflow_engVector) -> Workflow_engVector
-
-pub fn workflow_eng_vector_to_string(Workflow_engVector) -> String
-
-pub fn workflow_eng_vector_zero(Int32) -> Workflow_engVector
-
 // Errors
 
 // Types and methods
-pub struct Workflow_engMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Workflow_engPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Workflow_engSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Workflow_engVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

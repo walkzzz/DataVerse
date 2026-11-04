@@ -2,4 +2,5 @@
 // 合并包：trigger_count + trigger_early + trigger_late + trigger_time + trigger_watermark
 import {
   "dataverse/extcore/_common",
+  "dataverse/extcore/types",
 }

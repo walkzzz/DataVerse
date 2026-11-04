@@ -12,55 +12,7 @@ pub fn encode_toml_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn encode_toml_mae(Array[Double], Array[Double]) -> Double
 
-pub fn encode_toml_make_labeled_point(Double, Double, Int32) -> Encode_tomlPoint
-
-pub fn encode_toml_make_matrix(Int32, Int32, Double) -> Encode_tomlMatrix
-
-pub fn encode_toml_make_point(Double, Double) -> Encode_tomlPoint
-
-pub fn encode_toml_make_series(Array[Double], String) -> Encode_tomlSeries
-
-pub fn encode_toml_make_vector(Array[Double]) -> Encode_tomlVector
-
-pub fn encode_toml_matrix_add(Encode_tomlMatrix, Encode_tomlMatrix) -> Encode_tomlMatrix
-
-pub fn encode_toml_matrix_get(Encode_tomlMatrix, Int32, Int32) -> Double
-
-pub fn encode_toml_matrix_identity(Int32) -> Encode_tomlMatrix
-
-pub fn encode_toml_matrix_multiply(Encode_tomlMatrix, Encode_tomlMatrix) -> Encode_tomlMatrix
-
-pub fn encode_toml_matrix_norm(Encode_tomlMatrix) -> Double
-
-pub fn encode_toml_matrix_scale(Encode_tomlMatrix, Double) -> Encode_tomlMatrix
-
-pub fn encode_toml_matrix_to_string(Encode_tomlMatrix) -> String
-
-pub fn encode_toml_matrix_trace(Encode_tomlMatrix) -> Double
-
-pub fn encode_toml_matrix_transpose(Encode_tomlMatrix) -> Encode_tomlMatrix
-
 pub fn encode_toml_mse(Array[Double], Array[Double]) -> Double
-
-pub fn encode_toml_point_add(Encode_tomlPoint, Encode_tomlPoint) -> Encode_tomlPoint
-
-pub fn encode_toml_point_dist(Encode_tomlPoint, Encode_tomlPoint) -> Double
-
-pub fn encode_toml_point_dot(Encode_tomlPoint, Encode_tomlPoint) -> Double
-
-pub fn encode_toml_point_label(Encode_tomlPoint) -> Int32
-
-pub fn encode_toml_point_norm(Encode_tomlPoint) -> Double
-
-pub fn encode_toml_point_scale(Encode_tomlPoint, Double) -> Encode_tomlPoint
-
-pub fn encode_toml_point_sub(Encode_tomlPoint, Encode_tomlPoint) -> Encode_tomlPoint
-
-pub fn encode_toml_point_to_string(Encode_tomlPoint) -> String
-
-pub fn encode_toml_point_x(Encode_tomlPoint) -> Double
-
-pub fn encode_toml_point_y(Encode_tomlPoint) -> Double
 
 pub fn encode_toml_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn encode_toml_r2(Array[Double], Array[Double]) -> Double
 
 pub fn encode_toml_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn encode_toml_series_add(Encode_tomlSeries, Encode_tomlSeries) -> Encode_tomlSeries
-
-pub fn encode_toml_series_len(Encode_tomlSeries) -> Int32
-
-pub fn encode_toml_series_max(Encode_tomlSeries) -> Double
-
-pub fn encode_toml_series_mean(Encode_tomlSeries) -> Double
-
-pub fn encode_toml_series_min(Encode_tomlSeries) -> Double
-
-pub fn encode_toml_series_scale(Encode_tomlSeries, Double) -> Encode_tomlSeries
-
-pub fn encode_toml_series_std(Encode_tomlSeries) -> Double
-
-pub fn encode_toml_series_sum(Encode_tomlSeries) -> Double
-
-pub fn encode_toml_series_to_string(Encode_tomlSeries) -> String
-
-pub fn encode_toml_series_var(Encode_tomlSeries) -> Double
-
 pub fn encode_toml_std(Array[Double]) -> Double
 
 pub fn encode_toml_var(Array[Double]) -> Double
 
-pub fn encode_toml_vector_add(Encode_tomlVector, Encode_tomlVector) -> Encode_tomlVector
-
-pub fn encode_toml_vector_dist(Encode_tomlVector, Encode_tomlVector) -> Double
-
-pub fn encode_toml_vector_dot(Encode_tomlVector, Encode_tomlVector) -> Double
-
-pub fn encode_toml_vector_norm(Encode_tomlVector) -> Double
-
-pub fn encode_toml_vector_normalize(Encode_tomlVector) -> Encode_tomlVector
-
-pub fn encode_toml_vector_scale(Encode_tomlVector, Double) -> Encode_tomlVector
-
-pub fn encode_toml_vector_sub(Encode_tomlVector, Encode_tomlVector) -> Encode_tomlVector
-
-pub fn encode_toml_vector_to_string(Encode_tomlVector) -> String
-
-pub fn encode_toml_vector_zero(Int32) -> Encode_tomlVector
-
 // Errors
 
 // Types and methods
-pub struct Encode_tomlMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Encode_tomlPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Encode_tomlSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Encode_tomlVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

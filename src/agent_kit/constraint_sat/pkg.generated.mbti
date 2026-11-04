@@ -12,55 +12,7 @@ pub fn constraint_sat_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn constraint_sat_mae(Array[Double], Array[Double]) -> Double
 
-pub fn constraint_sat_make_labeled_point(Double, Double, Int32) -> Constraint_satPoint
-
-pub fn constraint_sat_make_matrix(Int32, Int32, Double) -> Constraint_satMatrix
-
-pub fn constraint_sat_make_point(Double, Double) -> Constraint_satPoint
-
-pub fn constraint_sat_make_series(Array[Double], String) -> Constraint_satSeries
-
-pub fn constraint_sat_make_vector(Array[Double]) -> Constraint_satVector
-
-pub fn constraint_sat_matrix_add(Constraint_satMatrix, Constraint_satMatrix) -> Constraint_satMatrix
-
-pub fn constraint_sat_matrix_get(Constraint_satMatrix, Int32, Int32) -> Double
-
-pub fn constraint_sat_matrix_identity(Int32) -> Constraint_satMatrix
-
-pub fn constraint_sat_matrix_multiply(Constraint_satMatrix, Constraint_satMatrix) -> Constraint_satMatrix
-
-pub fn constraint_sat_matrix_norm(Constraint_satMatrix) -> Double
-
-pub fn constraint_sat_matrix_scale(Constraint_satMatrix, Double) -> Constraint_satMatrix
-
-pub fn constraint_sat_matrix_to_string(Constraint_satMatrix) -> String
-
-pub fn constraint_sat_matrix_trace(Constraint_satMatrix) -> Double
-
-pub fn constraint_sat_matrix_transpose(Constraint_satMatrix) -> Constraint_satMatrix
-
 pub fn constraint_sat_mse(Array[Double], Array[Double]) -> Double
-
-pub fn constraint_sat_point_add(Constraint_satPoint, Constraint_satPoint) -> Constraint_satPoint
-
-pub fn constraint_sat_point_dist(Constraint_satPoint, Constraint_satPoint) -> Double
-
-pub fn constraint_sat_point_dot(Constraint_satPoint, Constraint_satPoint) -> Double
-
-pub fn constraint_sat_point_label(Constraint_satPoint) -> Int32
-
-pub fn constraint_sat_point_norm(Constraint_satPoint) -> Double
-
-pub fn constraint_sat_point_scale(Constraint_satPoint, Double) -> Constraint_satPoint
-
-pub fn constraint_sat_point_sub(Constraint_satPoint, Constraint_satPoint) -> Constraint_satPoint
-
-pub fn constraint_sat_point_to_string(Constraint_satPoint) -> String
-
-pub fn constraint_sat_point_x(Constraint_satPoint) -> Double
-
-pub fn constraint_sat_point_y(Constraint_satPoint) -> Double
 
 pub fn constraint_sat_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn constraint_sat_r2(Array[Double], Array[Double]) -> Double
 
 pub fn constraint_sat_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn constraint_sat_series_add(Constraint_satSeries, Constraint_satSeries) -> Constraint_satSeries
-
-pub fn constraint_sat_series_len(Constraint_satSeries) -> Int32
-
-pub fn constraint_sat_series_max(Constraint_satSeries) -> Double
-
-pub fn constraint_sat_series_mean(Constraint_satSeries) -> Double
-
-pub fn constraint_sat_series_min(Constraint_satSeries) -> Double
-
-pub fn constraint_sat_series_scale(Constraint_satSeries, Double) -> Constraint_satSeries
-
-pub fn constraint_sat_series_std(Constraint_satSeries) -> Double
-
-pub fn constraint_sat_series_sum(Constraint_satSeries) -> Double
-
-pub fn constraint_sat_series_to_string(Constraint_satSeries) -> String
-
-pub fn constraint_sat_series_var(Constraint_satSeries) -> Double
-
 pub fn constraint_sat_std(Array[Double]) -> Double
 
 pub fn constraint_sat_var(Array[Double]) -> Double
 
-pub fn constraint_sat_vector_add(Constraint_satVector, Constraint_satVector) -> Constraint_satVector
-
-pub fn constraint_sat_vector_dist(Constraint_satVector, Constraint_satVector) -> Double
-
-pub fn constraint_sat_vector_dot(Constraint_satVector, Constraint_satVector) -> Double
-
-pub fn constraint_sat_vector_norm(Constraint_satVector) -> Double
-
-pub fn constraint_sat_vector_normalize(Constraint_satVector) -> Constraint_satVector
-
-pub fn constraint_sat_vector_scale(Constraint_satVector, Double) -> Constraint_satVector
-
-pub fn constraint_sat_vector_sub(Constraint_satVector, Constraint_satVector) -> Constraint_satVector
-
-pub fn constraint_sat_vector_to_string(Constraint_satVector) -> String
-
-pub fn constraint_sat_vector_zero(Int32) -> Constraint_satVector
-
 // Errors
 
 // Types and methods
-pub struct Constraint_satMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Constraint_satPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Constraint_satSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Constraint_satVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

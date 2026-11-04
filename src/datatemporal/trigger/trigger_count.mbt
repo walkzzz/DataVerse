@@ -739,3 +739,8 @@ fn trigger_count_push(arr : Array[Double], v : Double) -> Array[Double] {
   result[n] = v
   result
 }
+
+///|
+fn _use_types() -> @types.DvPoint {
+  @types.dv_make_point(0.0, 0.0)
+}

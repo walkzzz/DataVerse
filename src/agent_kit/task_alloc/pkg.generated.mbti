@@ -12,55 +12,7 @@ pub fn task_alloc_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn task_alloc_mae(Array[Double], Array[Double]) -> Double
 
-pub fn task_alloc_make_labeled_point(Double, Double, Int32) -> Task_allocPoint
-
-pub fn task_alloc_make_matrix(Int32, Int32, Double) -> Task_allocMatrix
-
-pub fn task_alloc_make_point(Double, Double) -> Task_allocPoint
-
-pub fn task_alloc_make_series(Array[Double], String) -> Task_allocSeries
-
-pub fn task_alloc_make_vector(Array[Double]) -> Task_allocVector
-
-pub fn task_alloc_matrix_add(Task_allocMatrix, Task_allocMatrix) -> Task_allocMatrix
-
-pub fn task_alloc_matrix_get(Task_allocMatrix, Int32, Int32) -> Double
-
-pub fn task_alloc_matrix_identity(Int32) -> Task_allocMatrix
-
-pub fn task_alloc_matrix_multiply(Task_allocMatrix, Task_allocMatrix) -> Task_allocMatrix
-
-pub fn task_alloc_matrix_norm(Task_allocMatrix) -> Double
-
-pub fn task_alloc_matrix_scale(Task_allocMatrix, Double) -> Task_allocMatrix
-
-pub fn task_alloc_matrix_to_string(Task_allocMatrix) -> String
-
-pub fn task_alloc_matrix_trace(Task_allocMatrix) -> Double
-
-pub fn task_alloc_matrix_transpose(Task_allocMatrix) -> Task_allocMatrix
-
 pub fn task_alloc_mse(Array[Double], Array[Double]) -> Double
-
-pub fn task_alloc_point_add(Task_allocPoint, Task_allocPoint) -> Task_allocPoint
-
-pub fn task_alloc_point_dist(Task_allocPoint, Task_allocPoint) -> Double
-
-pub fn task_alloc_point_dot(Task_allocPoint, Task_allocPoint) -> Double
-
-pub fn task_alloc_point_label(Task_allocPoint) -> Int32
-
-pub fn task_alloc_point_norm(Task_allocPoint) -> Double
-
-pub fn task_alloc_point_scale(Task_allocPoint, Double) -> Task_allocPoint
-
-pub fn task_alloc_point_sub(Task_allocPoint, Task_allocPoint) -> Task_allocPoint
-
-pub fn task_alloc_point_to_string(Task_allocPoint) -> String
-
-pub fn task_alloc_point_x(Task_allocPoint) -> Double
-
-pub fn task_alloc_point_y(Task_allocPoint) -> Double
 
 pub fn task_alloc_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn task_alloc_r2(Array[Double], Array[Double]) -> Double
 
 pub fn task_alloc_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn task_alloc_series_add(Task_allocSeries, Task_allocSeries) -> Task_allocSeries
-
-pub fn task_alloc_series_len(Task_allocSeries) -> Int32
-
-pub fn task_alloc_series_max(Task_allocSeries) -> Double
-
-pub fn task_alloc_series_mean(Task_allocSeries) -> Double
-
-pub fn task_alloc_series_min(Task_allocSeries) -> Double
-
-pub fn task_alloc_series_scale(Task_allocSeries, Double) -> Task_allocSeries
-
-pub fn task_alloc_series_std(Task_allocSeries) -> Double
-
-pub fn task_alloc_series_sum(Task_allocSeries) -> Double
-
-pub fn task_alloc_series_to_string(Task_allocSeries) -> String
-
-pub fn task_alloc_series_var(Task_allocSeries) -> Double
-
 pub fn task_alloc_std(Array[Double]) -> Double
 
 pub fn task_alloc_var(Array[Double]) -> Double
 
-pub fn task_alloc_vector_add(Task_allocVector, Task_allocVector) -> Task_allocVector
-
-pub fn task_alloc_vector_dist(Task_allocVector, Task_allocVector) -> Double
-
-pub fn task_alloc_vector_dot(Task_allocVector, Task_allocVector) -> Double
-
-pub fn task_alloc_vector_norm(Task_allocVector) -> Double
-
-pub fn task_alloc_vector_normalize(Task_allocVector) -> Task_allocVector
-
-pub fn task_alloc_vector_scale(Task_allocVector, Double) -> Task_allocVector
-
-pub fn task_alloc_vector_sub(Task_allocVector, Task_allocVector) -> Task_allocVector
-
-pub fn task_alloc_vector_to_string(Task_allocVector) -> String
-
-pub fn task_alloc_vector_zero(Int32) -> Task_allocVector
-
 // Errors
 
 // Types and methods
-pub struct Task_allocMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Task_allocPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Task_allocSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Task_allocVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

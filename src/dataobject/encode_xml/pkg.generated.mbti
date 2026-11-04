@@ -12,55 +12,7 @@ pub fn encode_xml_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn encode_xml_mae(Array[Double], Array[Double]) -> Double
 
-pub fn encode_xml_make_labeled_point(Double, Double, Int32) -> Encode_xmlPoint
-
-pub fn encode_xml_make_matrix(Int32, Int32, Double) -> Encode_xmlMatrix
-
-pub fn encode_xml_make_point(Double, Double) -> Encode_xmlPoint
-
-pub fn encode_xml_make_series(Array[Double], String) -> Encode_xmlSeries
-
-pub fn encode_xml_make_vector(Array[Double]) -> Encode_xmlVector
-
-pub fn encode_xml_matrix_add(Encode_xmlMatrix, Encode_xmlMatrix) -> Encode_xmlMatrix
-
-pub fn encode_xml_matrix_get(Encode_xmlMatrix, Int32, Int32) -> Double
-
-pub fn encode_xml_matrix_identity(Int32) -> Encode_xmlMatrix
-
-pub fn encode_xml_matrix_multiply(Encode_xmlMatrix, Encode_xmlMatrix) -> Encode_xmlMatrix
-
-pub fn encode_xml_matrix_norm(Encode_xmlMatrix) -> Double
-
-pub fn encode_xml_matrix_scale(Encode_xmlMatrix, Double) -> Encode_xmlMatrix
-
-pub fn encode_xml_matrix_to_string(Encode_xmlMatrix) -> String
-
-pub fn encode_xml_matrix_trace(Encode_xmlMatrix) -> Double
-
-pub fn encode_xml_matrix_transpose(Encode_xmlMatrix) -> Encode_xmlMatrix
-
 pub fn encode_xml_mse(Array[Double], Array[Double]) -> Double
-
-pub fn encode_xml_point_add(Encode_xmlPoint, Encode_xmlPoint) -> Encode_xmlPoint
-
-pub fn encode_xml_point_dist(Encode_xmlPoint, Encode_xmlPoint) -> Double
-
-pub fn encode_xml_point_dot(Encode_xmlPoint, Encode_xmlPoint) -> Double
-
-pub fn encode_xml_point_label(Encode_xmlPoint) -> Int32
-
-pub fn encode_xml_point_norm(Encode_xmlPoint) -> Double
-
-pub fn encode_xml_point_scale(Encode_xmlPoint, Double) -> Encode_xmlPoint
-
-pub fn encode_xml_point_sub(Encode_xmlPoint, Encode_xmlPoint) -> Encode_xmlPoint
-
-pub fn encode_xml_point_to_string(Encode_xmlPoint) -> String
-
-pub fn encode_xml_point_x(Encode_xmlPoint) -> Double
-
-pub fn encode_xml_point_y(Encode_xmlPoint) -> Double
 
 pub fn encode_xml_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -68,72 +20,13 @@ pub fn encode_xml_r2(Array[Double], Array[Double]) -> Double
 
 pub fn encode_xml_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn encode_xml_series_add(Encode_xmlSeries, Encode_xmlSeries) -> Encode_xmlSeries
-
-pub fn encode_xml_series_len(Encode_xmlSeries) -> Int32
-
-pub fn encode_xml_series_max(Encode_xmlSeries) -> Double
-
-pub fn encode_xml_series_mean(Encode_xmlSeries) -> Double
-
-pub fn encode_xml_series_min(Encode_xmlSeries) -> Double
-
-pub fn encode_xml_series_scale(Encode_xmlSeries, Double) -> Encode_xmlSeries
-
-pub fn encode_xml_series_std(Encode_xmlSeries) -> Double
-
-pub fn encode_xml_series_sum(Encode_xmlSeries) -> Double
-
-pub fn encode_xml_series_to_string(Encode_xmlSeries) -> String
-
-pub fn encode_xml_series_var(Encode_xmlSeries) -> Double
-
 pub fn encode_xml_std(Array[Double]) -> Double
 
 pub fn encode_xml_var(Array[Double]) -> Double
 
-pub fn encode_xml_vector_add(Encode_xmlVector, Encode_xmlVector) -> Encode_xmlVector
-
-pub fn encode_xml_vector_dist(Encode_xmlVector, Encode_xmlVector) -> Double
-
-pub fn encode_xml_vector_dot(Encode_xmlVector, Encode_xmlVector) -> Double
-
-pub fn encode_xml_vector_norm(Encode_xmlVector) -> Double
-
-pub fn encode_xml_vector_normalize(Encode_xmlVector) -> Encode_xmlVector
-
-pub fn encode_xml_vector_scale(Encode_xmlVector, Double) -> Encode_xmlVector
-
-pub fn encode_xml_vector_sub(Encode_xmlVector, Encode_xmlVector) -> Encode_xmlVector
-
-pub fn encode_xml_vector_to_string(Encode_xmlVector) -> String
-
-pub fn encode_xml_vector_zero(Int32) -> Encode_xmlVector
-
 // Errors
 
 // Types and methods
-pub struct Encode_xmlMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-
-pub struct Encode_xmlPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-
-pub struct Encode_xmlSeries {
-  vals : Array[Double]
-  name : String
-}
-
-pub struct Encode_xmlVector {
-  comps : Array[Double]
-  dim : Int32
-}
 
 // Type aliases
 

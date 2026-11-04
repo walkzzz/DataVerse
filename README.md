@@ -1,9 +1,9 @@
 # DataVerse 数据算子库
 
-> **版本**：0.1.0-dev (重构+proof+mock+fake+trait+safe_api)  
+> **版本**：1.0.0-beta (生产就绪)  
 > **日期**：2026-11-04  
 > **语言**：MoonBit v0.1.20261020  
-> **状态**：生产就绪评估通过 · 10 逻辑库 · 2026 tests passed · 0 errors · 3 warnings
+> **状态**：生产就绪 · 10 逻辑库 · 4067 tests passed · 0 errors · 3 warnings · 98.5% 包测试覆盖s
 
 **DataVerse** 是一套面向 AI 的**一等数据实体 + 全域数据算法算子引擎**。把数据从"管道里的过客"提升为"一等实体"，把算子从"上层脚本"下沉为"内核原生算子"，所有算子统一编码进 **DataIR**，配套 **DOSI** 符号语义索引管控 AI 上下文。
 
@@ -13,11 +13,11 @@
 |------|------|
 | 源码行数 | ~517,160 行 |
 | MoonBit 文件 | 1,265 个 .mbt 文件 |
-| 测试 | 2,026 passed, 0 failed |
+| 测试 | 4,067 passed, 0 failed · 98.5% 包覆盖（322/327） |
 | 逻辑库 | 10 个（详见 [docs/library_layout.md](./docs/library_layout.md)） |
 | Workspace 成员 | 7 个独立子项目 |
 | `_common` 函数 | 55+ 共享函数 |
-| 安全 API | 52 个 `safe_*` 函数（返回 `Result[T, DataVerseError]`） |
+| 安全 API | 126 个 `safe_*` 函数（返回 `Result[T, DataVerseError]`） |
 | Trait 系统 | 20 个 `pub(open) trait` · 2,913 个 trait 实现 |
 | extcore | 826→92 子包（20 领域，-89%） |
 | opcore | 121→12 子包（-90%） |

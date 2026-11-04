@@ -98,15 +98,79 @@ pub fn reverse(Array[Double]) -> Array[Double]
 
 pub fn rmse(Array[Double], Array[Double]) -> Double
 
+pub fn safe_abs_diff(Double, Double) -> Result[Double, @error.DataVerseError]
+
 pub fn safe_accuracy(Array[Int32], Array[Int32]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_accuracy_rate(Int32, Int32) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_add3(Double, Double, Double) -> Result[Double, @error.DataVerseError]
 
 pub fn safe_add_arr(Array[Double], Array[Double]) -> Result[Array[Double], @error.DataVerseError]
 
+pub fn safe_ape(Double, Double) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_arr_add(Array[Double], Array[Double]) -> Result[Array[Double], @error.DataVerseError]
+
+pub fn safe_arr_all_neg(Array[Double]) -> Result[Bool, @error.DataVerseError]
+
+pub fn safe_arr_all_pos(Array[Double]) -> Result[Bool, @error.DataVerseError]
+
+pub fn safe_arr_count_neg(Array[Double]) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_arr_count_pos(Array[Double]) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_arr_count_zero(Array[Double]) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_arr_dot(Array[Double], Array[Double]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_arr_get(Array[Double], Int32) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_arr_head(Array[Double]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_arr_is_empty(Array[Double]) -> Result[Bool, @error.DataVerseError]
+
+pub fn safe_arr_l1_dist(Array[Double], Array[Double]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_arr_l2_dist(Array[Double], Array[Double]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_arr_len(Array[Double]) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_arr_max(Array[Double]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_arr_mean(Array[Double]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_arr_min(Array[Double]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_arr_mul(Array[Double], Array[Double]) -> Result[Array[Double], @error.DataVerseError]
+
+pub fn safe_arr_offset(Array[Double], Double) -> Result[Array[Double], @error.DataVerseError]
+
+pub fn safe_arr_product(Array[Double]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_arr_range(Array[Double]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_arr_scale(Array[Double], Double) -> Result[Array[Double], @error.DataVerseError]
+
+pub fn safe_arr_std(Array[Double]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_arr_sub(Array[Double], Array[Double]) -> Result[Array[Double], @error.DataVerseError]
+
+pub fn safe_arr_sum(Array[Double]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_arr_tail(Array[Double]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_arr_var(Array[Double]) -> Result[Double, @error.DataVerseError]
+
 pub fn safe_atan2(Double, Double) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_avg2(Double, Double) -> Result[Double, @error.DataVerseError]
 
 pub fn safe_clamp(Double, Double, Double) -> Result[Double, @error.DataVerseError]
 
 pub fn safe_clip(Array[Double], Double, Double) -> Result[Array[Double], @error.DataVerseError]
+
+pub fn safe_comb(Int32, Int32) -> Result[Int32, @error.DataVerseError]
 
 pub fn safe_concat(Array[Double], Array[Double]) -> Result[Array[Double], @error.DataVerseError]
 
@@ -116,7 +180,13 @@ pub fn safe_corr(Array[Double], Array[Double]) -> Result[Double, @error.DataVers
 
 pub fn safe_cov(Array[Double], Array[Double]) -> Result[Double, @error.DataVerseError]
 
+pub fn safe_cube(Double) -> Result[Double, @error.DataVerseError]
+
 pub fn safe_cumsum(Array[Double]) -> Result[Array[Double], @error.DataVerseError]
+
+pub fn safe_dec(Double) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_deg2rad(Double) -> Result[Double, @error.DataVerseError]
 
 pub fn safe_distance(Array[Double], Array[Double]) -> Result[Double, @error.DataVerseError]
 
@@ -124,9 +194,15 @@ pub fn safe_div(Double, Double) -> Result[Double, @error.DataVerseError]
 
 pub fn safe_dot(Array[Double], Array[Double]) -> Result[Double, @error.DataVerseError]
 
+pub fn safe_double_val(Double) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_error_rate(Int32, Int32) -> Result[Double, @error.DataVerseError]
+
 pub fn safe_f1(Array[Int32], Array[Int32], Int32) -> Result[Double, @error.DataVerseError]
 
 pub fn safe_factorial(Int32) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_factorial_small(Int32) -> Result[Int32, @error.DataVerseError]
 
 pub fn safe_fibonacci(Int32) -> Result[Int32, @error.DataVerseError]
 
@@ -134,7 +210,37 @@ pub fn safe_fill_arr(Int32, Double) -> Result[Array[Double], @error.DataVerseErr
 
 pub fn safe_gcd(Int32, Int32) -> Result[Int32, @error.DataVerseError]
 
+pub fn safe_half(Double) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_hypot2(Double, Double) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_inc(Double) -> Result[Double, @error.DataVerseError]
+
 pub fn safe_index(Array[Double], Int32) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_int_abs(Int32) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_int_arr_max(Array[Int32]) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_int_arr_min(Array[Int32]) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_int_arr_product(Array[Int32]) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_int_arr_sum(Array[Int32]) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_int_avg(Int32, Int32) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_int_div(Int32, Int32) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_int_max(Int32, Int32) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_int_min(Int32, Int32) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_int_mod(Int32, Int32) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_int_pow(Int32, Int32) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_int_sign(Int32) -> Result[Int32, @error.DataVerseError]
 
 pub fn safe_is_prime(Int32) -> Result[Bool, @error.DataVerseError]
 
@@ -148,21 +254,37 @@ pub fn safe_log10(Double) -> Result[Double, @error.DataVerseError]
 
 pub fn safe_mae(Array[Double], Array[Double]) -> Result[Double, @error.DataVerseError]
 
+pub fn safe_margin(Double, Double) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_margin_pct(Double, Double) -> Result[Double, @error.DataVerseError]
+
 pub fn safe_max(Array[Double]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_max3(Double, Double, Double) -> Result[Double, @error.DataVerseError]
 
 pub fn safe_mean(Array[Double]) -> Result[Double, @error.DataVerseError]
 
 pub fn safe_median(Array[Double]) -> Result[Double, @error.DataVerseError]
 
+pub fn safe_midval(Double, Double) -> Result[Double, @error.DataVerseError]
+
 pub fn safe_min(Array[Double]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_min3(Double, Double, Double) -> Result[Double, @error.DataVerseError]
 
 pub fn safe_mod(Int32, Int32) -> Result[Int32, @error.DataVerseError]
 
 pub fn safe_mse(Array[Double], Array[Double]) -> Result[Double, @error.DataVerseError]
 
+pub fn safe_mul3(Double, Double, Double) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_neg(Double) -> Result[Double, @error.DataVerseError]
+
 pub fn safe_normalize(Array[Double]) -> Result[Array[Double], @error.DataVerseError]
 
 pub fn safe_percentile(Array[Double], Double) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_perm(Int32, Int32) -> Result[Int32, @error.DataVerseError]
 
 pub fn safe_pow(Double, Double) -> Result[Double, @error.DataVerseError]
 
@@ -170,7 +292,11 @@ pub fn safe_precision(Array[Int32], Array[Int32], Int32) -> Result[Double, @erro
 
 pub fn safe_r2(Array[Double], Array[Double]) -> Result[Double, @error.DataVerseError]
 
+pub fn safe_rad2deg(Double) -> Result[Double, @error.DataVerseError]
+
 pub fn safe_range(Int32) -> Result[Array[Int32], @error.DataVerseError]
+
+pub fn safe_range_val(Double, Double) -> Result[Double, @error.DataVerseError]
 
 pub fn safe_recall(Array[Int32], Array[Int32], Int32) -> Result[Double, @error.DataVerseError]
 
@@ -188,13 +314,35 @@ pub fn safe_sort_desc(Array[Double]) -> Result[Array[Double], @error.DataVerseEr
 
 pub fn safe_sqrt(Double) -> Result[Double, @error.DataVerseError]
 
+pub fn safe_square(Double) -> Result[Double, @error.DataVerseError]
+
 pub fn safe_standardize(Array[Double]) -> Result[Array[Double], @error.DataVerseError]
 
 pub fn safe_std(Array[Double]) -> Result[Double, @error.DataVerseError]
 
+pub fn safe_str_concat(String, String) -> Result[String, @error.DataVerseError]
+
+pub fn safe_str_contains(String, String) -> Result[Bool, @error.DataVerseError]
+
+pub fn safe_str_ends(String, String) -> Result[Bool, @error.DataVerseError]
+
+pub fn safe_str_is_empty(String) -> Result[Bool, @error.DataVerseError]
+
+pub fn safe_str_len(String) -> Result[Int32, @error.DataVerseError]
+
+pub fn safe_str_lower(String) -> Result[String, @error.DataVerseError]
+
+pub fn safe_str_starts(String, String) -> Result[Bool, @error.DataVerseError]
+
+pub fn safe_str_upper(String) -> Result[String, @error.DataVerseError]
+
+pub fn safe_sub3(Double, Double, Double) -> Result[Double, @error.DataVerseError]
+
 pub fn safe_sub_arr(Array[Double], Array[Double]) -> Result[Array[Double], @error.DataVerseError]
 
 pub fn safe_sum(Array[Double]) -> Result[Double, @error.DataVerseError]
+
+pub fn safe_sum_squares(Array[Double]) -> Result[Double, @error.DataVerseError]
 
 pub fn safe_tan(Double) -> Result[Double, @error.DataVerseError]
 

@@ -1,10 +1,10 @@
 name = "dataverse"
 
-version = "0.1.0-dev"
+version = "1.0.0-beta"
 
 readme = "README.md"
 
-repository = ""
+repository = "https://github.com/walkzzz/DataVerse"
 
 license = "Apache-2.0"
 

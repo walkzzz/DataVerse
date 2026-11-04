@@ -2,6 +2,27 @@
 
 所有显著变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/)。
 
+## [1.0.0-beta] - 2026-11-04
+
+### 全面生产就绪完善
+
+**新增 / Added**
+- 316 个包的 smoke test（+2,041 测试），测试包覆盖率 1.8% → 98.5%
+- 74 个新安全 API（safe_batch.mbt）：数学/数组/字符串/统计安全函数
+- 性能基准测试套件（apps/bench）：7 类基准 × 3 规模（1K/10K/100K）
+
+**修复 / Fixed**
+- 版本号 0.1.0-dev → 1.0.0-beta
+- 填写 repository URL
+- 修复 deprecated 语法：starts_with→has_prefix, ends_with→has_suffix, var→let mut
+
+**统计 / Stats**
+- 测试：2,026 → 4,067（+2,041）
+- 安全 API：52 → 126（+74）
+- 测试包覆盖率：1.8% → 98.5%
+- moon check：0 errors, 3 warnings
+- moon test：4,067 passed, 0 failed
+
 ## [0.1.0-dev] - 2026-11-04
 
 ### Checkable + Resettable 批量实现 + Warning 治理 + 测试提升

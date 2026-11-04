@@ -1,0 +1,30 @@
+///|
+/// # Smoke tests - auto-generated
+///
+test "personality_make_labeled_point_smoke" {
+  let _ = @personality.personality_make_labeled_point(1.0, 1.0, 1)
+}
+///|
+test "personality_make_matrix_smoke" {
+  let _ = @personality.personality_make_matrix(1, 1, 1.0)
+}
+///|
+test "personality_make_point_smoke" {
+  let _ = @personality.personality_make_point(1.0, 1.0)
+}
+///|
+test "personality_make_series_smoke" {
+  let _ = @personality.personality_make_series([1.0, 2.0, 3.0], "test")
+}
+///|
+test "personality_make_vector_smoke" {
+  let _ = @personality.personality_make_vector([1.0, 2.0, 3.0])
+}
+///|
+test "personality_matrix_identity_smoke" {
+  let _ = @personality.personality_matrix_identity(1)
+}
+///|
+test "personality_vector_zero_smoke" {
+  let _ = @personality.personality_vector_zero(1)
+}

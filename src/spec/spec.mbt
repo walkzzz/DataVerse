@@ -186,38 +186,38 @@ test "spec: mse non-negativity" {
 /// 性质 13：topo_order 拓扑合法性
 /// ∀ pipeline (DAG): topo_order 中每条边 (u,v) 满足 u 出现在 v 之前
 test "spec: topo_order validity" {
-  let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("a"),
+  let n1 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("a"),
     "op_a",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("b"),
+  let n2 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("b"),
     "op_b",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("c"),
+  let n3 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("c"),
     "op_c",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty()
+  let p = @datair.PipelineIR::empty()
     .add_node(n1)
     .add_node(n2)
     .add_node(n3)
     .add_edge(
-      @ir_pipeline.DAGEdge::new(
-        @ir_core.IRNodeId::new("a"),
-        @ir_core.IRNodeId::new("b"),
+      @datair.DAGEdge::new(
+        @datair.IRNodeId::new("a"),
+        @datair.IRNodeId::new("b"),
       ),
     )
     .add_edge(
-      @ir_pipeline.DAGEdge::new(
-        @ir_core.IRNodeId::new("b"),
-        @ir_core.IRNodeId::new("c"),
+      @datair.DAGEdge::new(
+        @datair.IRNodeId::new("b"),
+        @datair.IRNodeId::new("c"),
       ),
     )
   let order = p.topo_order()
@@ -245,29 +245,29 @@ test "spec: topo_order validity" {
 /// 性质 14：optimize 节点数单调递减
 /// ∀ pipeline: optimize(pipeline).node_count <= pipeline.node_count
 test "spec: optimize node count monotonic" {
-  let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"),
+  let n1 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op1"),
     "identity",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"),
+  let n2 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op2"),
     "normalize",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op3"),
+  let n3 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op3"),
     "normalize",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty()
+  let p = @datair.PipelineIR::empty()
     .add_node(n1)
     .add_node(n2)
     .add_node(n3)
-  let opt = @ir_optimizer.optimize(p)
+  let opt = @datair.optimize(p)
   assert_true(opt.node_count() <= p.node_count())
 }
 
@@ -467,7 +467,7 @@ test "spec: impact_analysis no self" {
 /// apply_batch(idx, []) == idx
 test "spec: apply_batch empty idempotent" {
   let index = @dosi.DOSIIndex::empty()
-  let result = @batch.apply_batch(index, [])
+  let result = @dosi.apply_batch(index, [])
   assert_eq(result, index)
 }
 
@@ -475,9 +475,9 @@ test "spec: apply_batch empty idempotent" {
 /// 性质 30：versioned_index 版本单调性
 /// advance 后 current_version 递增
 test "spec: versioned_index monotone" {
-  let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
+  let vindex = @dosi.make_versioned_index(@dosi.DOSIIndex::empty())
   let v1 = vindex.current_version
-  let vindex2 = @versioned.advance_version(vindex, @dosi.DOSIIndex::empty())
+  let vindex2 = @dosi.advance_version(vindex, @dosi.DOSIIndex::empty())
   let v2 = vindex2.current_version
   assert_true(v2 > v1)
 }
@@ -489,8 +489,8 @@ test "spec: versioned_index monotone" {
 /// 性质 31：read_source 空安全
 /// read_source(cfg, 0) == []
 test "spec: read_source empty safe" {
-  let cfg = @source.file_source("/data/test.json", "json")
-  let result = @source.read_source(cfg, 0)
+  let cfg = @io.file_source("/data/test.json", "json")
+  let result = @io.read_source(cfg, 0)
   assert_eq(result.length(), 0)
 }
 
@@ -498,8 +498,8 @@ test "spec: read_source empty safe" {
 /// 性质 32：write_sink 空安全
 /// write_sink(cfg, []) == 0
 test "spec: write_sink empty safe" {
-  let cfg = @sink.file_sink("/data/out.json", "json")
-  let count = @sink.write_sink(cfg, [])
+  let cfg = @io.file_sink("/data/out.json", "json")
+  let count = @io.write_sink(cfg, [])
   assert_eq(count, 0)
 }
 
@@ -507,13 +507,13 @@ test "spec: write_sink empty safe" {
 /// 性质 33：execute_write 写入守恒
 /// execute_write(cfg, data).written_count == data.length()
 test "spec: execute_write conservation" {
-  let cfg = @sink.file_sink("/data/out.json", "json")
+  let cfg = @io.file_sink("/data/out.json", "json")
   let data = [
     @dataobject.make_dataobject("a", @dataobject.Text, @schema.empty()),
     @dataobject.make_dataobject("b", @dataobject.Text, @schema.empty()),
     @dataobject.make_dataobject("c", @dataobject.Text, @schema.empty()),
   ]
-  let result = @sink.execute_write(cfg, data)
+  let result = @io.execute_write(cfg, data)
   assert_eq(result.written_count, data.length())
 }
 
@@ -572,8 +572,8 @@ test "spec: unregister_plugin safety" {
 /// 性质 38：run_benchmark 零迭代安全
 /// run_benchmark(name, n, cfg{iterations=0}).total_ms == 0
 test "spec: run_benchmark zero iteration safe" {
-  let cfg = @benchmark.make_benchmark_config(0, 0, 1)
-  let result = @benchmark.run_benchmark("test", 100, cfg)
+  let cfg = @governance.make_benchmark_config(0, 0, 1)
+  let result = @governance.run_benchmark("test", 100, cfg)
   assert_eq(result.total_ms, 0)
 }
 
@@ -581,29 +581,29 @@ test "spec: run_benchmark zero iteration safe" {
 /// 性质 39：apply_fusion 融合不增节点
 /// apply_fusion(p).fused_node_count <= apply_fusion(p).original_node_count
 test "spec: apply_fusion non_increasing" {
-  let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"),
+  let n1 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op1"),
     "map1",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"),
+  let n2 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op2"),
     "map2",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op3"),
+  let n3 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op3"),
     "map3",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty()
+  let p = @datair.PipelineIR::empty()
     .add_node(n1)
     .add_node(n2)
     .add_node(n3)
-  let result = @ir_fusion.apply_fusion(p)
+  let result = @datair.apply_fusion(p)
   assert_true(result.fused_node_count <= result.original_node_count)
 }
 
@@ -611,9 +611,9 @@ test "spec: apply_fusion non_increasing" {
 /// 性质 40：add_doc_entry 索引单调性
 /// add_doc_entry 后 total_api 严格递增
 test "spec: add_doc_entry monotone" {
-  let index = @docgen.empty_doc_index()
-  let entry = @docgen.make_doc_entry("m", 10, 5, 8, "desc")
-  let index2 = @docgen.add_doc_entry(index, entry)
+  let index = @governance.empty_doc_index()
+  let entry = @governance.make_doc_entry("m", 10, 5, 8, "desc")
+  let index2 = @governance.add_doc_entry(index, entry)
   assert_true(index2.total_api > index.total_api)
 }
 
@@ -1341,8 +1341,8 @@ test "spec: moving_average length" {
 /// 性质 107：fold_binary_op 加法交换
 test "spec: fold_add commutative" {
   assert_eq(
-    @ir_transform.fold_binary_op("+", 3.0, 5.0),
-    @ir_transform.fold_binary_op("+", 5.0, 3.0),
+    @datair.fold_binary_op("+", 3.0, 5.0),
+    @datair.fold_binary_op("+", 5.0, 3.0),
   )
 }
 
@@ -1367,10 +1367,10 @@ test "spec: round_robin balanced" {
 ///|
 /// 性质 110：infer_type 类型正确
 test "spec: infer_type correct" {
-  assert_eq(@format.infer_type("42"), @format.IntType)
-  assert_eq(@format.infer_type("3.14"), @format.FloatType)
-  assert_eq(@format.infer_type("true"), @format.BoolType)
-  assert_eq(@format.infer_type("hello"), @format.StringType)
+  assert_eq(@io.infer_type("42"), @io.IntType)
+  assert_eq(@io.infer_type("3.14"), @io.FloatType)
+  assert_eq(@io.infer_type("true"), @io.BoolType)
+  assert_eq(@io.infer_type("hello"), @io.StringType)
 }
 
 ///|

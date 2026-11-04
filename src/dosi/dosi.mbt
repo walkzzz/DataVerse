@@ -143,12 +143,6 @@ pub fn dosi_id() -> String {
 
 ///|
 /// builder 子包标识 / builder sub-package id.
-pub fn builder_id() -> String {
-  "dosi/builder"
-}
 
 ///|
 /// router 子包标识 / router sub-package id.
-pub fn router_id() -> String {
-  "dosi/router"
-}

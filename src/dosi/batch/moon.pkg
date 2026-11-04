@@ -1,5 +1,0 @@
-// dosi/batch 批量索引管理 / Batch Index Management
-// S2.8 填充：批量添加/删除/更新
-import {
-  "dataverse/dosi",
-}

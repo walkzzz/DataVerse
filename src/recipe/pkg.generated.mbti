@@ -1,12 +1,75 @@
 // Generated using `moon info`, DON'T EDIT IT
 package "dataverse/recipe"
 
+import {
+  "dataverse/dataobject",
+  "moonbitlang/core/debug",
+}
+
 // Values
+pub fn balance_line(Array[@dataobject.DataObject], Int32) -> Array[@dataobject.DataObject]
+
+pub fn balance_line_id() -> String
+
+pub fn cleaning_line(Array[@dataobject.DataObject]) -> Array[@dataobject.DataObject]
+
+pub fn cleaning_line_id() -> String
+
+pub fn cross_modal_line(Array[@dataobject.DataObject]) -> CrossModalReport
+
+pub fn cross_modal_line_id() -> String
+
+pub fn dedup_line(Array[@dataobject.DataObject]) -> Array[@dataobject.DataObject]
+
+pub fn dedup_line_id() -> String
+
+pub fn empty_eval_report() -> EvalReport
+
+pub fn eval_line(Array[@dataobject.DataObject]) -> EvalReport
+
+pub fn eval_line_id() -> String
+
+pub fn packing_line(Array[@dataobject.DataObject], Int32) -> Array[@dataobject.DataObject]
+
+pub fn packing_line_id() -> String
+
+pub fn quality_line(Array[@dataobject.DataObject], Double, Int32) -> Array[@dataobject.DataObject]
+
+pub fn quality_line_id() -> String
+
 pub fn recipe_id() -> String
 
 // Errors
 
 // Types and methods
+pub struct CrossModalReport {
+  total_count : Int32
+  text_count : Int32
+  image_count : Int32
+  audio_count : Int32
+  video_count : Int32
+  multi_count : Int32
+  consistency_score : Double
+  missing_modalities : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn CrossModalReport::equal(Self, Self) -> Bool
+pub fn CrossModalReport::not_equal(Self, Self) -> Bool
+pub fn CrossModalReport::to_repr(Self) -> @debug.Repr
+
+pub struct EvalReport {
+  total_count : Int32
+  avg_quality : Double
+  min_quality : Double
+  max_quality : Double
+  text_count : Int32
+  image_count : Int32
+  audio_count : Int32
+  video_count : Int32
+  other_count : Int32
+} derive(Eq, @debug.Debug)
+pub fn EvalReport::equal(Self, Self) -> Bool
+pub fn EvalReport::not_equal(Self, Self) -> Bool
+pub fn EvalReport::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 

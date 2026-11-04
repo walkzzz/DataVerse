@@ -1,5 +1,0 @@
-// datatemporal/trigger_watermark datatemporal/trigger_watermark
-// S13.215 new
-import {
-  "dataverse/extcore/_common",
-}

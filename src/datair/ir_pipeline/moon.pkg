@@ -1,6 +1,0 @@
-// datair/ir_pipeline 流水线 IR（DAG）/ Pipeline IR (DAG)
-// S1.4 基礎：DAG 构造 + 拓扑排序
-import {
-  "dataverse/datair/ir_core",
-  "dataverse/datair/ir_operator",
-}

@@ -1,6 +1,0 @@
-// recipe/eval_line 评估流水线 / Evaluation Pipeline
-// S2.5 填充：quality_score → statistics → report
-import {
-  "dataverse/dataobject",
-  "dataverse/opcore/text",
-}

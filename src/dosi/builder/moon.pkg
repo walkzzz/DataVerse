@@ -1,6 +1,0 @@
-// dosi/builder 索引构建器 / Index builder
-// S0.7 填充：为 opcore 三类算子 + DataIR 算子 IR 生成索引条目
-import {
-  "dataverse/dosi",
-  "dataverse/datair/ir_operator",
-}

@@ -1,0 +1,5 @@
+// datatemporal/checkpoint 检查点 / Checkpointing
+// 合并包：checkpoint_async + checkpoint_sync
+import {
+  "dataverse/extcore/_common",
+}

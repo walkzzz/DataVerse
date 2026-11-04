@@ -6649,26 +6649,26 @@ pub using @datatemporal.incremental { incremental_id, IncrementalUpdate, make_in
 pub using @datatemporal.field_lineage { field_lineage_id, FieldDep, FieldLineageGraph, make_field_dep, build_graph, impact_analysis, has_cycle }
 pub using @datatemporal { datatemporal_id }
 pub using @recipe { recipe_id }
-pub using @recipe.cleaning_line { cleaning_line_id, cleaning_line }
-pub using @recipe.dedup_line { dedup_line_id, dedup_line }
-pub using @recipe.quality_line { quality_line_id, quality_line }
-pub using @recipe.balance_line { balance_line_id, balance_line }
-pub using @recipe.packing_line { packing_line_id, packing_line }
-pub using @recipe.eval_line { eval_line_id, EvalReport, eval_line, empty_eval_report }
-pub using @recipe.cross_modal_line { cross_modal_line_id, CrossModalReport, cross_modal_line }
+pub using @recipe { cleaning_line_id, cleaning_line }
+pub using @recipe { dedup_line_id, dedup_line }
+pub using @recipe { quality_line_id, quality_line }
+pub using @recipe { balance_line_id, balance_line }
+pub using @recipe { packing_line_id, packing_line }
+pub using @recipe { eval_line_id, EvalReport, eval_line, empty_eval_report }
+pub using @recipe { cross_modal_line_id, CrossModalReport, cross_modal_line }
 pub using @datair { datair_id, ir_core_id, ir_entity_id, ir_operator_id, ir_kind_count }
-pub using @datair.ir_core { IRNodeId, IRMetadata }
-pub using @datair.ir_entity { EntityType, EntityIR, entity_type_name }
-pub using @datair.ir_operator {
+pub using @datair { IRNodeId, IRMetadata }
+pub using @datair { EntityType, EntityIR, entity_type_name }
+pub using @datair {
   Determinism, IRModality, CostModel, OperatorIR, determinism_name, modality_name,
 }
-pub using @datair.ir_pipeline {
+pub using @datair {
   ir_pipeline_id, DAGEdge, PipelineIR,
 }
-pub using @datair.ir_optimizer {
+pub using @datair {
   ir_optimizer_id, fuse_adjacent_maps, remove_identity, optimize, OptStats, opt_stats,
 }
-pub using @datair.ir_fusion {
+pub using @datair {
   ir_fusion_id, FusionRule, FusionResult, fusion_rule_name, make_fusion_result,
   apply_fusion, fusion_reduction_ratio, fusion_result_uri, iterative_fusion,
 }
@@ -6676,20 +6676,20 @@ pub using @dosi {
   dosi_id, builder_id, router_id,
   SymbolicEntry, SemanticEntry, DOSIEntry, DOSIIndex,
 }
-pub using @dosi.builder { build_opcore_index, build_from_operator_ir, merge }
-pub using @dosi.router {
+pub using @dosi { build_opcore_index, build_from_operator_ir, merge }
+pub using @dosi {
   lookup_by_path, lookup_by_category, lookup_by_modality, lookup_by_prefix,
 }
-pub using @dosi.context_budget {
+pub using @dosi {
   context_budget_id, ContextBudget, make_budget, allocate, is_over_budget, remaining, usage_ratio, compress, with_used,
 }
-pub using @dosi.verifier {
+pub using @dosi {
   verifier_id, VerifyResult, verify_index, check_dependencies, detect_cycles, valid_result,
 }
-pub using @dosi.batch {
+pub using @dosi {
   batch_id, BatchOp, BatchOperation, batch_add, batch_remove, batch_update, apply_batch, batch_op_name,
 }
-pub using @dosi.versioned {
+pub using @dosi {
   versioned_id, VersionedIndex, make_versioned_index, empty_versioned_index, advance_version, get_version, current as current_version, version_count, rollback,
 }
 pub using @agent_kit { agent_kit_id }
@@ -6715,19 +6715,19 @@ pub using @parallel.cpu_parallel {
   make_parallel_plan, compute_parallel_stats, parallel_plan_uri,
 }
 pub using @io { io_id }
-pub using @io.source {
+pub using @io {
   DataSourceType, SourceConfig, SourceMeta, make_source_config, file_source, object_storage_source, in_memory_source,
   source_uri, source_type_name, read_source, make_source_meta, source_meta_uri,
 }
-pub using @io.sink {
+pub using @io {
   DataSinkType, SinkConfig, WriteResult, SinkStats, make_sink_config, file_sink, object_storage_sink, in_memory_sink,
   sink_uri, sink_type_name, write_sink, make_write_result, execute_write, make_sink_stats, sink_stats_uri,
 }
-pub using @governance { governance_id }pub using @governance.benchmark {
+pub using @governance { governance_id }pub using @governance {
   benchmark_id, BenchmarkConfig, BenchmarkResult, BenchmarkSuite, SuiteStats,
   make_benchmark_config, default_benchmark_config, run_benchmark,
   make_benchmark_suite, empty_benchmark_suite, add_result, compute_suite_stats, benchmark_suite_uri,
-}pub using @governance.docgen {
+}pub using @governance {
   docgen_id, DocEntry, DocIndex, make_doc_entry, empty_doc_index, add_doc_entry,
   generate_dataverse_doc_index, doc_entry_to_markdown, doc_index_to_markdown,
   doc_entry_to_html, doc_index_to_html, doc_index_stats,
@@ -6839,7 +6839,7 @@ pub using @datatemporal {
 ///===
 /// S10.3 datair/ir_transform IR 变换
 
-pub using @datair.ir_transform {
+pub using @datair {
   TransformKind, TransformResult, IRNodeKind, IRNode,
   make_node, make_transform_result,
   fold_binary_op, fold_unary_op, parse_constant,
@@ -6852,7 +6852,7 @@ pub using @datair.ir_transform {
 ///===
 /// S10.4 dosi/scheduler 调度策略
 
-pub using @dosi.scheduler {
+pub using @dosi {
   SchedulePolicy, ScheduleTask, ScheduleResult, Resource,
   make_task, make_schedule_result,
   sort_by_priority, schedule_priority,
@@ -6876,7 +6876,7 @@ pub using @parallel.partition {
 ///===
 /// S10.6 io/format 数据格式
 
-pub using @io.format {
+pub using @io {
   DataType, ColumnDef, Row, Table,
   make_column, make_row, make_table,
   infer_type, infer_column_type, transpose_table,

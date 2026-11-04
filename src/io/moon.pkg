@@ -1,2 +1,7 @@
 // io 存储适配 / IO adapters
-// Phase 1+ 填充：对象存储 / 数据湖 / 向量库适配
+// 合并包：format + sink + source
+import {
+  "moonbitlang/core/debug",
+  "dataverse/dataobject",
+  "dataverse/dataobject/schema",
+}

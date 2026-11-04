@@ -2,19 +2,146 @@
 package "dataverse/dosi"
 
 import {
+  "dataverse/datair",
   "moonbitlang/core/debug",
 }
 
 // Values
+pub fn advance_version(VersionedIndex, DOSIIndex) -> VersionedIndex
+
+pub fn allocate(ContextBudget, Int32) -> ContextBudget
+
+pub fn allocate_resource(Resource, Double) -> Resource?
+
+pub fn apply_batch(DOSIIndex, Array[BatchOperation]) -> DOSIIndex
+
+pub fn batch_add(DOSIEntry) -> BatchOperation
+
+pub fn batch_id() -> String
+
+pub fn batch_op_name(BatchOp) -> String
+
+pub fn batch_remove(String) -> BatchOperation
+
+pub fn batch_update(DOSIEntry) -> BatchOperation
+
+pub fn build_from_operator_ir(@datair.OperatorIR) -> DOSIEntry
+
+pub fn build_opcore_index() -> DOSIIndex
+
 pub fn builder_id() -> String
+
+pub fn check_dependencies(DOSIIndex) -> Bool
+
+pub fn compress(ContextBudget) -> ContextBudget
+
+pub fn context_budget_id() -> String
+
+pub fn current(VersionedIndex) -> DOSIIndex
+
+pub fn detect_cycles(DOSIIndex) -> Array[String]
 
 pub fn dosi_id() -> String
 
+pub fn empty_versioned_index() -> VersionedIndex
+
+pub fn get_version(VersionedIndex, Int32) -> DOSIIndex?
+
+pub fn is_over_budget(ContextBudget) -> Bool
+
+pub fn lookup_by_category(DOSIIndex, String) -> Array[DOSIEntry]
+
+pub fn lookup_by_modality(DOSIIndex, String) -> Array[DOSIEntry]
+
+pub fn lookup_by_path(DOSIIndex, String) -> DOSIEntry?
+
+pub fn lookup_by_prefix(DOSIIndex, String) -> Array[DOSIEntry]
+
+pub fn make_budget(Int32) -> ContextBudget
+
+pub fn make_resource(String, Double) -> Resource
+
+pub fn make_schedule_result(String, Double, String, SchedulePolicy) -> ScheduleResult
+
+pub fn make_task(String, Int32, Double, Double, Double) -> ScheduleTask
+
+pub fn make_versioned_index(DOSIIndex) -> VersionedIndex
+
+pub fn merge(DOSIIndex, DOSIIndex) -> DOSIIndex
+
+pub fn policy_name(SchedulePolicy) -> String
+
+pub fn release_resource(Resource, Double) -> Resource
+
+pub fn remaining(ContextBudget) -> Int32
+
+pub fn resource_utilization(Resource) -> Double
+
+pub fn rollback(VersionedIndex, Int32) -> VersionedIndex
+
 pub fn router_id() -> String
+
+pub fn schedule_fifo(Array[ScheduleTask], String, Double) -> Array[ScheduleResult]
+
+pub fn schedule_priority(Array[ScheduleTask], String, Double) -> Array[ScheduleResult]
+
+pub fn schedule_sjf(Array[ScheduleTask], String, Double) -> Array[ScheduleResult]
+
+pub fn scheduler_id() -> String
+
+pub fn sort_by_cost(Array[ScheduleTask]) -> Array[ScheduleTask]
+
+pub fn sort_by_priority(Array[ScheduleTask]) -> Array[ScheduleTask]
+
+pub fn sort_by_submit_time(Array[ScheduleTask]) -> Array[ScheduleTask]
+
+pub fn usage_ratio(ContextBudget) -> Double
+
+pub fn valid_result() -> VerifyResult
+
+pub fn verifier_id() -> String
+
+pub fn verify_index(DOSIIndex) -> VerifyResult
+
+pub fn version_count(VersionedIndex) -> Int32
+
+pub fn versioned_id() -> String
+
+pub fn with_used(ContextBudget, Int32) -> ContextBudget
 
 // Errors
 
 // Types and methods
+pub(all) enum BatchOp {
+  Add
+  Remove
+  Update
+} derive(Eq, @debug.Debug)
+pub fn BatchOp::equal(Self, Self) -> Bool
+pub fn BatchOp::not_equal(Self, Self) -> Bool
+pub fn BatchOp::to_repr(Self) -> @debug.Repr
+
+pub struct BatchOperation {
+  op : BatchOp
+  path : String
+  entry : DOSIEntry?
+} derive(Eq, @debug.Debug)
+pub fn BatchOperation::equal(Self, Self) -> Bool
+pub fn BatchOperation::not_equal(Self, Self) -> Bool
+pub fn BatchOperation::to_repr(Self) -> @debug.Repr
+
+pub struct ContextBudget {
+  total_quota : Int32
+  used : Int32
+  dosi_quota : Int32
+  recall_quota : Int32
+  user_input_quota : Int32
+  output_quota : Int32
+} derive(Eq, @debug.Debug)
+pub fn ContextBudget::equal(Self, Self) -> Bool
+pub fn ContextBudget::not_equal(Self, Self) -> Bool
+pub fn ContextBudget::to_repr(Self) -> @debug.Repr
+
 pub struct DOSIEntry {
   symbolic : SymbolicEntry
   semantic : SemanticEntry
@@ -37,6 +164,35 @@ pub fn DOSIIndex::remove_by_path(Self, String) -> Self
 pub fn DOSIIndex::size(Self) -> Int32
 pub fn DOSIIndex::to_repr(Self) -> @debug.Repr
 
+pub struct Resource {
+  id : String
+  capacity : Double
+  used : Double
+}
+
+pub(all) enum SchedulePolicy {
+  FIFO
+  Priority
+  RoundRobin
+  ShortestJobFirst
+  FairShare
+}
+
+pub struct ScheduleResult {
+  task_id : String
+  start_time : Double
+  assigned_resource : String
+  policy : SchedulePolicy
+}
+
+pub struct ScheduleTask {
+  id : String
+  priority : Int32
+  estimated_cost : Double
+  resource_requirement : Double
+  submit_time : Double
+}
+
 pub struct SemanticEntry {
   summary : String
   params : Array[String]
@@ -57,6 +213,22 @@ pub fn SymbolicEntry::equal(Self, Self) -> Bool
 pub fn SymbolicEntry::new(String, String, String, Array[String]) -> Self
 pub fn SymbolicEntry::not_equal(Self, Self) -> Bool
 pub fn SymbolicEntry::to_repr(Self) -> @debug.Repr
+
+pub struct VerifyResult {
+  valid : Bool
+  issues : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn VerifyResult::equal(Self, Self) -> Bool
+pub fn VerifyResult::not_equal(Self, Self) -> Bool
+pub fn VerifyResult::to_repr(Self) -> @debug.Repr
+
+pub struct VersionedIndex {
+  versions : Array[(Int32, DOSIIndex)]
+  current_version : Int32
+} derive(Eq, @debug.Debug)
+pub fn VersionedIndex::equal(Self, Self) -> Bool
+pub fn VersionedIndex::not_equal(Self, Self) -> Bool
+pub fn VersionedIndex::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 

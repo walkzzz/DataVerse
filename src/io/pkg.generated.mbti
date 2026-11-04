@@ -1,12 +1,179 @@
 // Generated using `moon info`, DON'T EDIT IT
 package "dataverse/io"
 
+import {
+  "dataverse/dataobject",
+  "moonbitlang/core/debug",
+}
+
 // Values
+pub fn column_count(Table) -> Int32
+
+pub fn column_index(Table, String) -> Int32?
+
+pub fn column_values(Table, Int32) -> Array[String]
+
+pub fn execute_write(SinkConfig, Array[@dataobject.DataObject]) -> WriteResult
+
+pub fn file_sink(String, String) -> SinkConfig
+
+pub fn file_source(String, String) -> SourceConfig
+
+pub fn format_id() -> String
+
+pub fn in_memory_sink(String) -> SinkConfig
+
+pub fn in_memory_source(String) -> SourceConfig
+
+pub fn infer_column_type(Array[String]) -> DataType
+
+pub fn infer_type(String) -> DataType
+
 pub fn io_id() -> String
+
+pub fn make_column(String, DataType, Bool) -> ColumnDef
+
+pub fn make_row(Array[String]) -> Row
+
+pub fn make_sink_config(DataSinkType, String, String, String, String, String) -> SinkConfig
+
+pub fn make_sink_stats(SinkConfig, Int32, Int32) -> SinkStats
+
+pub fn make_source_config(DataSourceType, String, String, String, String, String) -> SourceConfig
+
+pub fn make_source_meta(SourceConfig, Int32, Int32) -> SourceMeta
+
+pub fn make_table(Array[ColumnDef], Array[Row]) -> Table
+
+pub fn make_write_result(SinkConfig, Int32, Bool) -> WriteResult
+
+pub fn object_storage_sink(String, String, String, String) -> SinkConfig
+
+pub fn object_storage_source(String, String, String, String) -> SourceConfig
+
+pub fn read_source(SourceConfig, Int32) -> Array[@dataobject.DataObject]
+
+pub fn row_count(Table) -> Int32
+
+pub fn sink_stats_uri(SinkStats) -> String
+
+pub fn sink_type_name(DataSinkType) -> String
+
+pub fn sink_uri(SinkConfig) -> String
+
+pub fn source_meta_uri(SourceMeta) -> String
+
+pub fn source_type_name(DataSourceType) -> String
+
+pub fn source_uri(SourceConfig) -> String
+
+pub fn transpose_table(Table) -> Table
+
+pub fn type_name(DataType) -> String
+
+pub fn write_sink(SinkConfig, Array[@dataobject.DataObject]) -> Int32
 
 // Errors
 
 // Types and methods
+pub struct ColumnDef {
+  name : String
+  data_type : DataType
+  nullable : Bool
+}
+
+pub(all) enum DataSinkType {
+  File
+  ObjectStorage
+  DataLake
+  VectorStore
+  InMemory
+} derive(Eq, @debug.Debug)
+pub fn DataSinkType::equal(Self, Self) -> Bool
+pub fn DataSinkType::not_equal(Self, Self) -> Bool
+pub fn DataSinkType::to_repr(Self) -> @debug.Repr
+
+pub(all) enum DataSourceType {
+  File
+  ObjectStorage
+  DataLake
+  VectorStore
+  InMemory
+} derive(Eq, @debug.Debug)
+pub fn DataSourceType::equal(Self, Self) -> Bool
+pub fn DataSourceType::not_equal(Self, Self) -> Bool
+pub fn DataSourceType::to_repr(Self) -> @debug.Repr
+
+pub(all) enum DataType {
+  StringType
+  IntType
+  FloatType
+  BoolType
+  NullType
+} derive(Eq, @debug.Debug)
+pub fn DataType::equal(Self, Self) -> Bool
+pub fn DataType::not_equal(Self, Self) -> Bool
+pub fn DataType::to_repr(Self) -> @debug.Repr
+
+pub struct Row {
+  values : Array[String]
+}
+
+pub struct SinkConfig {
+  sink_type : DataSinkType
+  path : String
+  endpoint : String
+  bucket : String
+  key : String
+  format : String
+} derive(Eq, @debug.Debug)
+pub fn SinkConfig::equal(Self, Self) -> Bool
+pub fn SinkConfig::not_equal(Self, Self) -> Bool
+pub fn SinkConfig::to_repr(Self) -> @debug.Repr
+
+pub struct SinkStats {
+  config : SinkConfig
+  total_written : Int32
+  total_bytes : Int32
+} derive(Eq, @debug.Debug)
+pub fn SinkStats::equal(Self, Self) -> Bool
+pub fn SinkStats::not_equal(Self, Self) -> Bool
+pub fn SinkStats::to_repr(Self) -> @debug.Repr
+
+pub struct SourceConfig {
+  source_type : DataSourceType
+  path : String
+  endpoint : String
+  bucket : String
+  key : String
+  format : String
+} derive(Eq, @debug.Debug)
+pub fn SourceConfig::equal(Self, Self) -> Bool
+pub fn SourceConfig::not_equal(Self, Self) -> Bool
+pub fn SourceConfig::to_repr(Self) -> @debug.Repr
+
+pub struct SourceMeta {
+  config : SourceConfig
+  item_count : Int32
+  total_size_bytes : Int32
+} derive(Eq, @debug.Debug)
+pub fn SourceMeta::equal(Self, Self) -> Bool
+pub fn SourceMeta::not_equal(Self, Self) -> Bool
+pub fn SourceMeta::to_repr(Self) -> @debug.Repr
+
+pub struct Table {
+  columns : Array[ColumnDef]
+  rows : Array[Row]
+}
+
+pub struct WriteResult {
+  config : SinkConfig
+  written_count : Int32
+  success : Bool
+} derive(Eq, @debug.Debug)
+pub fn WriteResult::equal(Self, Self) -> Bool
+pub fn WriteResult::not_equal(Self, Self) -> Bool
+pub fn WriteResult::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 

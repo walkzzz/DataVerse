@@ -1,5 +1,0 @@
-// datair/ir_entity 实体 IR / Entity IR
-// S0.6 填充：EntityIR（DataObject/Chunk/Embedding/Dataset 的结构与元数据投影）
-import {
-  "dataverse/datair/ir_core",
-}

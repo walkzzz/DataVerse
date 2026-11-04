@@ -1,5 +1,0 @@
-// datatemporal/load_shed datatemporal/load_shed
-// S13.225 new
-import {
-  "dataverse/extcore/_common",
-}

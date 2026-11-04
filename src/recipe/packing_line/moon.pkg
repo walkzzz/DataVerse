@@ -1,5 +1,0 @@
-// recipe/packing_line 打包流水线 / Packing Pipeline
-// S2.5 填充：filter_empty → chunk → collect
-import {
-  "dataverse/dataobject",
-}

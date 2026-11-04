@@ -1,5 +1,0 @@
-// dosi/verifier 索引校验器 / Index Verifier
-// S1.7 基礎：verify_index + check_dependencies + detect_cycles
-import {
-  "dataverse/dosi",
-}

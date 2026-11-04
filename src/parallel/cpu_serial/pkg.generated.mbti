@@ -2,7 +2,7 @@
 package "dataverse/parallel/cpu_serial"
 
 import {
-  "dataverse/datair/ir_pipeline",
+  "dataverse/datair",
   "moonbitlang/core/debug",
 }
 
@@ -13,7 +13,7 @@ pub fn empty_plan() -> ExecutionPlan
 
 pub fn execute(ExecutionPlan, String) -> ExecutionResult
 
-pub fn make_plan(@ir_pipeline.PipelineIR) -> ExecutionPlan
+pub fn make_plan(@datair.PipelineIR) -> ExecutionPlan
 
 pub fn merge_results(ExecutionResult, ExecutionResult) -> ExecutionResult
 

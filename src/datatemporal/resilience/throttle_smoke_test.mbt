@@ -1,0 +1,30 @@
+///|
+/// # Smoke tests - auto-generated
+///
+test "throttle_make_labeled_point_smoke" {
+  let _ = @resilience.throttle_make_labeled_point(1.0, 1.0, 1)
+}
+///|
+test "throttle_make_matrix_smoke" {
+  let _ = @resilience.throttle_make_matrix(1, 1, 1.0)
+}
+///|
+test "throttle_make_point_smoke" {
+  let _ = @resilience.throttle_make_point(1.0, 1.0)
+}
+///|
+test "throttle_make_series_smoke" {
+  let _ = @resilience.throttle_make_series([1.0, 2.0, 3.0], "test")
+}
+///|
+test "throttle_make_vector_smoke" {
+  let _ = @resilience.throttle_make_vector([1.0, 2.0, 3.0])
+}
+///|
+test "throttle_matrix_identity_smoke" {
+  let _ = @resilience.throttle_matrix_identity(1)
+}
+///|
+test "throttle_vector_zero_smoke" {
+  let _ = @resilience.throttle_vector_zero(1)
+}

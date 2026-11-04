@@ -1,6 +1,0 @@
-// recipe/quality_line 质量线 / Quality Pipeline
-// 编排：quality_score 过滤 + topk_by_length 选择
-import {
-  "dataverse/dataobject",
-  "dataverse/opcore/text",
-}

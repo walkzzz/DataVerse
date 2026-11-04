@@ -39,7 +39,7 @@ pub extend ExecutionResult with Debug::{to_repr}
 /// 从 PipelineIR 生成执行计划 / Build execution plan from PipelineIR.
 ///
 /// 按拓扑排序排列算子名。退化安全：空流水线返回空计划；有环返回空计划。
-pub fn make_plan(pipeline : @ir_pipeline.PipelineIR) -> ExecutionPlan {
+pub fn make_plan(pipeline : @datair.PipelineIR) -> ExecutionPlan {
   let order = pipeline.topo_order()
   let steps = []
   for i = 0; i < order.length(); i = i + 1 {

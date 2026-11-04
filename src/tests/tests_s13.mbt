@@ -130,25 +130,25 @@ test "kv_store_basic" {
 
 ///|
 test "window_tumble_basic" {
-  let pt = @window_tumble.window_tumble_make_point(1.0, 2.0)
-  let scaled = @window_tumble.window_tumble_point_scale(pt, 2.0)
-  assert_true(@window_tumble.window_tumble_point_x(scaled) == 2.0)
+  let pt = @window.window_tumble_make_point(1.0, 2.0)
+  let scaled = @window.window_tumble_point_scale(pt, 2.0)
+  assert_true(@window.window_tumble_point_x(scaled) == 2.0)
 }
 
 ///|
 test "window_slide_basic" {
-  let sr = @window_slide.window_slide_make_series(
+  let sr = @window.window_slide_make_series(
     [1.0, 2.0, 3.0, 4.0, 5.0],
     "win",
   )
-  let std = @window_slide.window_slide_series_std(sr)
+  let std = @window.window_slide_series_std(sr)
   assert_true(std > 1.4 && std < 1.5)
 }
 
 ///|
 test "window_session_basic" {
-  let mt = @window_session.window_session_matrix_identity(4)
-  assert_true(@window_session.window_session_matrix_trace(mt) == 4.0)
+  let mt = @window.window_session_matrix_identity(4)
+  assert_true(@window.window_session_matrix_trace(mt) == 4.0)
 }
 
 ///|

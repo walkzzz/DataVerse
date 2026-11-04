@@ -1,0 +1,5 @@
+// datatemporal/resilience 容错机制 / Resilience patterns
+// 合并包：backpressure + bulkhead + circuit_break + load_shed + rate_limit + retry_op + throttle + timeout_op
+import {
+  "dataverse/extcore/_common",
+}

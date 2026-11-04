@@ -1,5 +1,0 @@
-// datatemporal/window_count datatemporal/window_count
-// S13.211 new
-import {
-  "dataverse/extcore/_common",
-}

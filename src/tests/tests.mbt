@@ -398,50 +398,50 @@ test "datair root id and ir_kind_count" {
 
 ///|
 test "ir_core IRNodeId construction and validity" {
-  let id1 = @ir_core.IRNodeId::new("node_001")
+  let id1 = @datair.IRNodeId::new("node_001")
   assert_eq(id1.value, "node_001")
   assert_true(id1.is_valid())
   // 退化数据：空串节点 id 无效
-  let id2 = @ir_core.IRNodeId::new("")
+  let id2 = @datair.IRNodeId::new("")
   assert_false(id2.is_valid())
 }
 
 ///|
 test "ir_core IRMetadata empty and construction" {
-  let e = @ir_core.IRMetadata::empty()
+  let e = @datair.IRMetadata::empty()
   assert_true(e.is_empty())
   assert_eq(e.tag_count(), 0)
-  let m = @ir_core.IRMetadata::new(["clean", "text"], "1.0.0", "src/csv")
+  let m = @datair.IRMetadata::new(["clean", "text"], "1.0.0", "src/csv")
   assert_false(m.is_empty())
   assert_eq(m.tag_count(), 2)
 }
 
 ///|
 test "ir_entity EntityType and entity_type_name" {
-  assert_eq(@ir_entity.entity_type_name(@ir_entity.DataObject), "data_object")
-  assert_eq(@ir_entity.entity_type_name(@ir_entity.Chunk), "chunk")
-  assert_eq(@ir_entity.entity_type_name(@ir_entity.Embedding), "embedding")
-  assert_eq(@ir_entity.entity_type_name(@ir_entity.Dataset), "dataset")
-  assert_true(@ir_entity.DataObject != @ir_entity.Chunk)
+  assert_eq(@datair.entity_type_name(@datair.DataObject), "data_object")
+  assert_eq(@datair.entity_type_name(@datair.Chunk), "chunk")
+  assert_eq(@datair.entity_type_name(@datair.Embedding), "embedding")
+  assert_eq(@datair.entity_type_name(@datair.Dataset), "dataset")
+  assert_true(@datair.DataObject != @datair.Chunk)
 }
 
 ///|
 test "ir_entity EntityIR construction" {
-  let id = @ir_core.IRNodeId::new("ent_001")
-  let m = @ir_core.IRMetadata::new(["text"], "1.0.0", "schema/text_v1")
-  let e = @ir_entity.EntityIR::new(
+  let id = @datair.IRNodeId::new("ent_001")
+  let m = @datair.IRMetadata::new(["text"], "1.0.0", "schema/text_v1")
+  let e = @datair.EntityIR::new(
     id,
-    @ir_entity.DataObject,
+    @datair.DataObject,
     "schema/text_v1",
     1024,
     m,
   )
   assert_eq(e.node_id.value, "ent_001")
-  assert_eq(e.entity_type, @ir_entity.DataObject)
+  assert_eq(e.entity_type, @datair.DataObject)
   assert_eq(e.schema_ref, "schema/text_v1")
   assert_eq(e.size_hint, 1024)
   // 简化构造
-  let s = @ir_entity.EntityIR::simple(id, @ir_entity.Chunk, "schema/chunk_v1")
+  let s = @datair.EntityIR::simple(id, @datair.Chunk, "schema/chunk_v1")
   assert_eq(s.size_hint, 0)
   assert_true(s.metadata.is_empty())
 }
@@ -449,64 +449,64 @@ test "ir_entity EntityIR construction" {
 ///|
 test "ir_operator Determinism and determinism_name" {
   assert_eq(
-    @ir_operator.determinism_name(@ir_operator.Deterministic),
+    @datair.determinism_name(@datair.Deterministic),
     "deterministic",
   )
   assert_eq(
-    @ir_operator.determinism_name(@ir_operator.ApproximateWithSeed(42)),
+    @datair.determinism_name(@datair.ApproximateWithSeed(42)),
     "approximate(seed)",
   )
   assert_eq(
-    @ir_operator.determinism_name(@ir_operator.NonDeterministic),
+    @datair.determinism_name(@datair.NonDeterministic),
     "non-deterministic",
   )
-  assert_true(@ir_operator.Deterministic != @ir_operator.NonDeterministic)
+  assert_true(@datair.Deterministic != @datair.NonDeterministic)
 }
 
 ///|
 test "ir_operator IRModality and modality_name" {
-  assert_eq(@ir_operator.modality_name(@ir_operator.Text), "text")
-  assert_eq(@ir_operator.modality_name(@ir_operator.Image), "image")
-  assert_eq(@ir_operator.modality_name(@ir_operator.Multi), "multi")
-  assert_true(@ir_operator.Text != @ir_operator.Code)
+  assert_eq(@datair.modality_name(@datair.Text), "text")
+  assert_eq(@datair.modality_name(@datair.Image), "image")
+  assert_eq(@datair.modality_name(@datair.Multi), "multi")
+  assert_true(@datair.Text != @datair.Code)
 }
 
 ///|
 test "ir_operator CostModel construction" {
-  let c = @ir_operator.CostModel::new("O(n log n)", "O(n)", 0.7)
+  let c = @datair.CostModel::new("O(n log n)", "O(n)", 0.7)
   assert_eq(c.time_complexity, "O(n log n)")
   assert_eq(c.space_complexity, "O(n)")
   // 浮点比较用行为验证（0.7 在 0.5 之上）
   assert_true(c.estimated_cost > 0.5)
-  let s = @ir_operator.CostModel::simple()
+  let s = @datair.CostModel::simple()
   assert_eq(s.time_complexity, "O(n)")
   assert_eq(s.space_complexity, "O(n)")
 }
 
 ///|
 test "ir_operator OperatorIR construction" {
-  let id = @ir_core.IRNodeId::new("op_001")
-  let m = @ir_core.IRMetadata::new(["clean"], "1.0.0", "opcore/clean")
-  let cm = @ir_operator.CostModel::new("O(n)", "O(1)", 0.2)
-  let op = @ir_operator.OperatorIR::new(
+  let id = @datair.IRNodeId::new("op_001")
+  let m = @datair.IRMetadata::new(["clean"], "1.0.0", "opcore/clean")
+  let cm = @datair.CostModel::new("O(n)", "O(1)", 0.2)
+  let op = @datair.OperatorIR::new(
     id,
     "remove_empty",
     [("min_length", "1")],
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
     cm,
     m,
   )
   assert_eq(op.name, "remove_empty")
   assert_eq(op.param_count(), 1)
-  assert_eq(op.modality, @ir_operator.Text)
-  assert_eq(op.determinism, @ir_operator.Deterministic)
+  assert_eq(op.modality, @datair.Text)
+  assert_eq(op.determinism, @datair.Deterministic)
   // 简化构造
-  let s = @ir_operator.OperatorIR::simple(
+  let s = @datair.OperatorIR::simple(
     id,
     "exact_dedup",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
   assert_eq(s.param_count(), 0)
   assert_true(s.metadata.is_empty())
@@ -515,15 +515,15 @@ test "ir_operator OperatorIR construction" {
 ///|
 test "datair degenerate: empty node id and empty metadata" {
   // 退化数据：空节点 id 安全处理（is_valid 返回 false，不抛异常）
-  let id = @ir_core.IRNodeId::new("")
+  let id = @datair.IRNodeId::new("")
   assert_false(id.is_valid())
-  let e = @ir_entity.EntityIR::simple(id, @ir_entity.DataObject, "")
+  let e = @datair.EntityIR::simple(id, @datair.DataObject, "")
   assert_eq(e.schema_ref, "")
-  let op = @ir_operator.OperatorIR::simple(
+  let op = @datair.OperatorIR::simple(
     id,
     "",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
   assert_eq(op.name, "")
   assert_eq(op.param_count(), 0)
@@ -562,25 +562,25 @@ test "dosi DOSIIndex empty and add" {
 
 ///|
 test "dosi builder build_opcore_index" {
-  let idx = @builder.build_opcore_index()
+  let idx = @dosi.build_opcore_index()
   // S0.7 为 5 个 opcore 算子生成索引条目
   assert_eq(idx.size(), 5)
-  assert_eq(@builder.builder_id(), "dosi/builder")
+  assert_eq(@dosi.builder_id(), "dosi/builder")
 }
 
 ///|
 test "dosi builder build_from_operator_ir" {
-  let id = @ir_core.IRNodeId::new("op_001")
-  let op = @ir_operator.OperatorIR::new(
+  let id = @datair.IRNodeId::new("op_001")
+  let op = @datair.OperatorIR::new(
     id,
     "my_op",
     [("threshold", "0.9"), ("model", "bge")],
-    @ir_operator.Text,
-    @ir_operator.ApproximateWithSeed(42),
-    @ir_operator.CostModel::simple(),
-    @ir_core.IRMetadata::empty(),
+    @datair.Text,
+    @datair.ApproximateWithSeed(42),
+    @datair.CostModel::simple(),
+    @datair.IRMetadata::empty(),
   )
-  let entry = @builder.build_from_operator_ir(op)
+  let entry = @dosi.build_from_operator_ir(op)
   assert_eq(entry.symbolic.path, "datair.operator.my_op")
   assert_eq(entry.symbolic.modality, "text")
   assert_eq(entry.symbolic.dependencies.length(), 2)
@@ -589,55 +589,55 @@ test "dosi builder build_from_operator_ir" {
 
 ///|
 test "dosi builder merge" {
-  let idx1 = @builder.build_opcore_index()
+  let idx1 = @dosi.build_opcore_index()
   let sym = @dosi.SymbolicEntry::new("extra", "custom", "text", [])
   let sem = @dosi.SemanticEntry::new("s", [], "c")
   let idx2 = @dosi.DOSIIndex::empty().add(@dosi.DOSIEntry::new(sym, sem))
-  let merged = @builder.merge(idx1, idx2)
+  let merged = @dosi.merge(idx1, idx2)
   assert_eq(merged.size(), 6)
 }
 
 ///|
 test "dosi router lookup_by_path" {
-  let idx = @builder.build_opcore_index()
-  let found = @router.lookup_by_path(idx, "opcore.clean.remove_empty")
+  let idx = @dosi.build_opcore_index()
+  let found = @dosi.lookup_by_path(idx, "opcore.clean.remove_empty")
   assert_true(found is Some(_))
-  let not_found = @router.lookup_by_path(idx, "nonexistent")
+  let not_found = @dosi.lookup_by_path(idx, "nonexistent")
   assert_true(not_found is None)
-  assert_eq(@router.router_id(), "dosi/router")
+  assert_eq(@dosi.router_id(), "dosi/router")
 }
 
 ///|
 test "dosi router lookup_by_category" {
-  let idx = @builder.build_opcore_index()
-  let clean_ops = @router.lookup_by_category(idx, "clean")
+  let idx = @dosi.build_opcore_index()
+  let clean_ops = @dosi.lookup_by_category(idx, "clean")
   assert_eq(clean_ops.length(), 2)
-  let filter_ops = @router.lookup_by_category(idx, "filter")
+  let filter_ops = @dosi.lookup_by_category(idx, "filter")
   assert_eq(filter_ops.length(), 2)
-  let dedup_ops = @router.lookup_by_category(idx, "dedup")
+  let dedup_ops = @dosi.lookup_by_category(idx, "dedup")
   assert_eq(dedup_ops.length(), 1)
-  let empty = @router.lookup_by_category(idx, "nonexistent")
+  let empty = @dosi.lookup_by_category(idx, "nonexistent")
   assert_eq(empty.length(), 0)
 }
 
 ///|
 test "dosi router lookup_by_modality" {
-  let idx = @builder.build_opcore_index()
-  let text_ops = @router.lookup_by_modality(idx, "text")
+  let idx = @dosi.build_opcore_index()
+  let text_ops = @dosi.lookup_by_modality(idx, "text")
   // 所有 5 个 opcore 算子都是 text 模态
   assert_eq(text_ops.length(), 5)
-  let image_ops = @router.lookup_by_modality(idx, "image")
+  let image_ops = @dosi.lookup_by_modality(idx, "image")
   assert_eq(image_ops.length(), 0)
 }
 
 ///|
 test "dosi router lookup_by_prefix" {
-  let idx = @builder.build_opcore_index()
-  let clean_all = @router.lookup_by_prefix(idx, "opcore.clean.")
+  let idx = @dosi.build_opcore_index()
+  let clean_all = @dosi.lookup_by_prefix(idx, "opcore.clean.")
   assert_eq(clean_all.length(), 2)
-  let filter_all = @router.lookup_by_prefix(idx, "opcore.filter.")
+  let filter_all = @dosi.lookup_by_prefix(idx, "opcore.filter.")
   assert_eq(filter_all.length(), 2)
-  let all = @router.lookup_by_prefix(idx, "opcore.")
+  let all = @dosi.lookup_by_prefix(idx, "opcore.")
   assert_eq(all.length(), 5)
 }
 
@@ -645,10 +645,10 @@ test "dosi router lookup_by_prefix" {
 test "dosi degenerate: empty index lookups" {
   // 退化数据：空索引查询安全返回
   let e = @dosi.DOSIIndex::empty()
-  assert_true(@router.lookup_by_path(e, "x") is None)
-  assert_eq(@router.lookup_by_category(e, "x").length(), 0)
-  assert_eq(@router.lookup_by_modality(e, "x").length(), 0)
-  assert_eq(@router.lookup_by_prefix(e, "x").length(), 0)
+  assert_true(@dosi.lookup_by_path(e, "x") is None)
+  assert_eq(@dosi.lookup_by_category(e, "x").length(), 0)
+  assert_eq(@dosi.lookup_by_modality(e, "x").length(), 0)
+  assert_eq(@dosi.lookup_by_prefix(e, "x").length(), 0)
 }
 
 ///|
@@ -1119,7 +1119,7 @@ test "S1.3 cleaning_line basic" {
   let d1 = @dataobject.make_dataobject("  hello   world  ", @dataobject.Text, s)
   let d2 = @dataobject.make_dataobject("", @dataobject.Text, s)
   let d3 = @dataobject.make_dataobject("  foo  bar  ", @dataobject.Text, s)
-  let result = @cleaning_line.cleaning_line([d1, d2, d3])
+  let result = @recipe.cleaning_line([d1, d2, d3])
   assert_eq(result.length(), 2)
   assert_eq(result[0].content, "hello world")
   assert_eq(result[1].content, "foo bar")
@@ -1127,8 +1127,8 @@ test "S1.3 cleaning_line basic" {
 
 ///|
 test "S1.3 cleaning_line degenerate: empty array" {
-  assert_eq(@cleaning_line.cleaning_line([]).length(), 0)
-  assert_eq(@cleaning_line.cleaning_line_id(), "recipe/cleaning_line")
+  assert_eq(@recipe.cleaning_line([]).length(), 0)
+  assert_eq(@recipe.cleaning_line_id(), "recipe/cleaning_line")
 }
 
 ///|
@@ -1137,14 +1137,14 @@ test "S1.3 dedup_line basic" {
   let d1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
   let d2 = @dataobject.make_dataobject("b", @dataobject.Text, s)
   let d3 = @dataobject.make_dataobject("a", @dataobject.Text, s)
-  let result = @dedup_line.dedup_line([d1, d2, d3])
+  let result = @recipe.dedup_line([d1, d2, d3])
   assert_eq(result.length(), 2)
-  assert_eq(@dedup_line.dedup_line_id(), "recipe/dedup_line")
+  assert_eq(@recipe.dedup_line_id(), "recipe/dedup_line")
 }
 
 ///|
 test "S1.3 dedup_line degenerate: empty array" {
-  assert_eq(@dedup_line.dedup_line([]).length(), 0)
+  assert_eq(@recipe.dedup_line([]).length(), 0)
 }
 
 ///|
@@ -1154,19 +1154,19 @@ test "S1.3 quality_line basic" {
   let d2 = @dataobject.make_dataobject("b".repeat(50), @dataobject.Text, s)
   let d3 = @dataobject.make_dataobject("c".repeat(10), @dataobject.Text, s)
   // min_score=0.5 → 过滤掉质量分 < 0.5 的；k=2 → 取前 2 个
-  let result = @quality_line.quality_line([d1, d2, d3], 0.5, 2)
+  let result = @recipe.quality_line([d1, d2, d3], 0.5, 2)
   // d1 (score=1.0) 和 d2 (score=0.5) 通过过滤
   assert_true(result.length() <= 2)
-  assert_eq(@quality_line.quality_line_id(), "recipe/quality_line")
+  assert_eq(@recipe.quality_line_id(), "recipe/quality_line")
 }
 
 ///|
 test "S1.3 quality_line degenerate: empty array" {
-  assert_eq(@quality_line.quality_line([], 0.5, 10).length(), 0)
+  assert_eq(@recipe.quality_line([], 0.5, 10).length(), 0)
   // k <= 0 返回过滤后全部
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("a".repeat(200), @dataobject.Text, s)
-  assert_eq(@quality_line.quality_line([d], 0.5, 0).length(), 1)
+  assert_eq(@recipe.quality_line([d], 0.5, 0).length(), 1)
 }
 
 ///|
@@ -1177,15 +1177,15 @@ test "S1.3 balance_line basic" {
     @dataobject.make_dataobject("bb", @dataobject.Text, s),
   ]
   let images = [@dataobject.make_dataobject("img1", @dataobject.Image, s)]
-  let result = @balance_line.balance_line(texts + images, 1)
+  let result = @recipe.balance_line(texts + images, 1)
   // 每个模态取 top-1，text 取最长的 "aaa"，image 取 "img1"
   assert_eq(result.length(), 2)
 }
 
 ///|
 test "S1.3 balance_line degenerate: empty array" {
-  assert_eq(@balance_line.balance_line([], 5).length(), 0)
-  assert_eq(@balance_line.balance_line_id(), "recipe/balance_line")
+  assert_eq(@recipe.balance_line([], 5).length(), 0)
+  assert_eq(@recipe.balance_line_id(), "recipe/balance_line")
 }
 
 ///|
@@ -1193,68 +1193,68 @@ test "S1.3 balance_line degenerate: empty array" {
 ///
 /// 架构 §4.6：DAG 构造 + 拓扑排序 + 算子融合 + 恒等消除。
 test "S1.4 ir_pipeline construction" {
-  let p = @ir_pipeline.PipelineIR::empty()
+  let p = @datair.PipelineIR::empty()
   assert_eq(p.node_count(), 0)
   assert_eq(p.edge_count(), 0)
-  let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"),
+  let n1 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op1"),
     "whitespace_normalization",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
   let p1 = p.add_node(n1)
   assert_eq(p1.node_count(), 1)
-  let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"),
+  let n2 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op2"),
     "truncate",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
   let p2 = p1.add_node(n2)
-  let e = @ir_pipeline.DAGEdge::new(
-    @ir_core.IRNodeId::new("op1"),
-    @ir_core.IRNodeId::new("op2"),
+  let e = @datair.DAGEdge::new(
+    @datair.IRNodeId::new("op1"),
+    @datair.IRNodeId::new("op2"),
   )
   let p3 = p2.add_edge(e)
   assert_eq(p3.node_count(), 2)
   assert_eq(p3.edge_count(), 1)
-  assert_eq(@ir_pipeline.ir_pipeline_id(), "datair/ir_pipeline")
+  assert_eq(@datair.ir_pipeline_id(), "datair/ir_pipeline")
 }
 
 ///|
 test "S1.4 ir_pipeline topo_order linear" {
-  let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("a"),
+  let n1 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("a"),
     "op_a",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("b"),
+  let n2 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("b"),
     "op_b",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("c"),
+  let n3 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("c"),
     "op_c",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty()
+  let p = @datair.PipelineIR::empty()
     .add_node(n1)
     .add_node(n2)
     .add_node(n3)
     .add_edge(
-      @ir_pipeline.DAGEdge::new(
-        @ir_core.IRNodeId::new("a"),
-        @ir_core.IRNodeId::new("b"),
+      @datair.DAGEdge::new(
+        @datair.IRNodeId::new("a"),
+        @datair.IRNodeId::new("b"),
       ),
     )
     .add_edge(
-      @ir_pipeline.DAGEdge::new(
-        @ir_core.IRNodeId::new("b"),
-        @ir_core.IRNodeId::new("c"),
+      @datair.DAGEdge::new(
+        @datair.IRNodeId::new("b"),
+        @datair.IRNodeId::new("c"),
       ),
     )
   let order = p.topo_order()
@@ -1266,34 +1266,34 @@ test "S1.4 ir_pipeline topo_order linear" {
 
 ///|
 test "S1.4 ir_pipeline topo_order degenerate: empty and cycle" {
-  let empty = @ir_pipeline.PipelineIR::empty()
+  let empty = @datair.PipelineIR::empty()
   assert_eq(empty.topo_order().length(), 0)
   // 有环：a→b→a
-  let na = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("a"),
+  let na = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("a"),
     "op_a",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let nb = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("b"),
+  let nb = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("b"),
     "op_b",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let cyclic = @ir_pipeline.PipelineIR::empty()
+  let cyclic = @datair.PipelineIR::empty()
     .add_node(na)
     .add_node(nb)
     .add_edge(
-      @ir_pipeline.DAGEdge::new(
-        @ir_core.IRNodeId::new("a"),
-        @ir_core.IRNodeId::new("b"),
+      @datair.DAGEdge::new(
+        @datair.IRNodeId::new("a"),
+        @datair.IRNodeId::new("b"),
       ),
     )
     .add_edge(
-      @ir_pipeline.DAGEdge::new(
-        @ir_core.IRNodeId::new("b"),
-        @ir_core.IRNodeId::new("a"),
+      @datair.DAGEdge::new(
+        @datair.IRNodeId::new("b"),
+        @datair.IRNodeId::new("a"),
       ),
     )
   assert_eq(cyclic.topo_order().length(), 0)
@@ -1301,91 +1301,91 @@ test "S1.4 ir_pipeline topo_order degenerate: empty and cycle" {
 
 ///|
 test "S1.4 ir_optimizer fuse_adjacent_maps" {
-  let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"),
+  let n1 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op1"),
     "whitespace_normalization",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"),
+  let n2 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op2"),
     "whitespace_normalization",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op3"),
+  let n3 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op3"),
     "truncate",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty()
+  let p = @datair.PipelineIR::empty()
     .add_node(n1)
     .add_node(n2)
     .add_node(n3)
-  let fused = @ir_optimizer.fuse_adjacent_maps(p)
+  let fused = @datair.fuse_adjacent_maps(p)
   assert_eq(fused.node_count(), 2)
 }
 
 ///|
 test "S1.4 ir_optimizer remove_identity" {
-  let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"),
+  let n1 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op1"),
     "identity",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"),
+  let n2 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op2"),
     "truncate",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op3"),
+  let n3 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op3"),
     "noop",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty()
+  let p = @datair.PipelineIR::empty()
     .add_node(n1)
     .add_node(n2)
     .add_node(n3)
-  let cleaned = @ir_optimizer.remove_identity(p)
+  let cleaned = @datair.remove_identity(p)
   assert_eq(cleaned.node_count(), 1)
 }
 
 ///|
 test "S1.4 ir_optimizer optimize and stats" {
-  let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"),
+  let n1 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op1"),
     "identity",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"),
+  let n2 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op2"),
     "normalize",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op3"),
+  let n3 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op3"),
     "normalize",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty()
+  let p = @datair.PipelineIR::empty()
     .add_node(n1)
     .add_node(n2)
     .add_node(n3)
-  let opt = @ir_optimizer.optimize(p)
+  let opt = @datair.optimize(p)
   assert_eq(opt.node_count(), 1)
-  let stats = @ir_optimizer.opt_stats(p, opt)
+  let stats = @datair.opt_stats(p, opt)
   assert_eq(stats.original_nodes, 3)
   assert_eq(stats.optimized_nodes, 1)
   assert_eq(stats.removed, 2)
-  assert_eq(@ir_optimizer.ir_optimizer_id(), "datair/ir_optimizer")
+  assert_eq(@datair.ir_optimizer_id(), "datair/ir_optimizer")
 }
 
 ///|
@@ -1495,25 +1495,25 @@ test "S1.5 drift degenerate: empty merge" {
 ///
 /// 执行计划生成 + 串行执行 + 轨迹记录 + 结果合并。
 test "S1.6 cpu_serial make_plan and execute" {
-  let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"),
+  let n1 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op1"),
     "whitespace_normalization",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"),
+  let n2 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op2"),
     "truncate",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty()
+  let p = @datair.PipelineIR::empty()
     .add_node(n1)
     .add_node(n2)
     .add_edge(
-      @ir_pipeline.DAGEdge::new(
-        @ir_core.IRNodeId::new("op1"),
-        @ir_core.IRNodeId::new("op2"),
+      @datair.DAGEdge::new(
+        @datair.IRNodeId::new("op1"),
+        @datair.IRNodeId::new("op2"),
       ),
     )
   let plan = @cpu_serial.make_plan(p)
@@ -1549,31 +1549,31 @@ test "S1.6 cpu_serial merge_results" {
 ///|
 test "S1.6 cpu_serial cyclic pipeline degenerate" {
   // 有环流水线：topo_order 返回空 → make_plan 返回空计划
-  let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("a"),
+  let n1 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("a"),
     "op_a",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("b"),
+  let n2 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("b"),
     "op_b",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let cyclic = @ir_pipeline.PipelineIR::empty()
+  let cyclic = @datair.PipelineIR::empty()
     .add_node(n1)
     .add_node(n2)
     .add_edge(
-      @ir_pipeline.DAGEdge::new(
-        @ir_core.IRNodeId::new("a"),
-        @ir_core.IRNodeId::new("b"),
+      @datair.DAGEdge::new(
+        @datair.IRNodeId::new("a"),
+        @datair.IRNodeId::new("b"),
       ),
     )
     .add_edge(
-      @ir_pipeline.DAGEdge::new(
-        @ir_core.IRNodeId::new("b"),
-        @ir_core.IRNodeId::new("a"),
+      @datair.DAGEdge::new(
+        @datair.IRNodeId::new("b"),
+        @datair.IRNodeId::new("a"),
       ),
     )
   let plan = @cpu_serial.make_plan(cyclic)
@@ -1585,39 +1585,39 @@ test "S1.6 cpu_serial cyclic pipeline degenerate" {
 ///
 /// ContextBudget（配额管理）+ Verifier（索引校验）。
 test "S1.7 context_budget make and allocate" {
-  let budget = @context_budget.make_budget(10000)
+  let budget = @dosi.make_budget(10000)
   assert_eq(budget.total_quota, 10000)
   assert_eq(budget.used, 0)
   assert_eq(budget.dosi_quota, 1000)
   assert_eq(budget.recall_quota, 4000)
-  let b1 = @context_budget.allocate(budget, 3000)
+  let b1 = @dosi.allocate(budget, 3000)
   assert_eq(b1.used, 3000)
-  assert_eq(@context_budget.remaining(b1), 7000)
-  let ratio = @context_budget.usage_ratio(b1)
+  assert_eq(@dosi.remaining(b1), 7000)
+  let ratio = @dosi.usage_ratio(b1)
   assert_true(ratio > 0.29 && ratio < 0.31)
 }
 
 ///|
 test "S1.7 context_budget over budget and compress" {
-  let budget = @context_budget.make_budget(1000)
-  let b1 = @context_budget.allocate(budget, 800)
-  assert_false(@context_budget.is_over_budget(b1))
-  let b2 = @context_budget.allocate(b1, 300)
+  let budget = @dosi.make_budget(1000)
+  let b1 = @dosi.allocate(budget, 800)
+  assert_false(@dosi.is_over_budget(b1))
+  let b2 = @dosi.allocate(b1, 300)
   // 超预算：allocate 不变
   assert_eq(b2.used, 800)
   // 手动构造超预算
-  let over = @context_budget.with_used(b1, 1200)
-  assert_true(@context_budget.is_over_budget(over))
-  let compressed = @context_budget.compress(over)
+  let over = @dosi.with_used(b1, 1200)
+  assert_true(@dosi.is_over_budget(over))
+  let compressed = @dosi.compress(over)
   assert_eq(compressed.used, 800)
-  assert_eq(@context_budget.context_budget_id(), "dosi/context_budget")
+  assert_eq(@dosi.context_budget_id(), "dosi/context_budget")
 }
 
 ///|
 test "S1.7 context_budget degenerate: zero quota" {
-  let budget = @context_budget.make_budget(0)
-  assert_eq(@context_budget.remaining(budget), 0)
-  assert_eq(@context_budget.usage_ratio(budget), 0.0)
+  let budget = @dosi.make_budget(0)
+  assert_eq(@dosi.remaining(budget), 0)
+  assert_eq(@dosi.usage_ratio(budget), 0.0)
 }
 
 ///|
@@ -1631,10 +1631,10 @@ test "S1.7 verifier valid index" {
   let sem2 = @dosi.SemanticEntry::new("dedup ops", [], "in->out")
   let e2 = @dosi.DOSIEntry::new(sym2, sem2)
   let index = @dosi.DOSIIndex::empty().add(e1).add(e2)
-  let result = @verifier.verify_index(index)
+  let result = @dosi.verify_index(index)
   assert_true(result.valid)
   assert_eq(result.issues.length(), 0)
-  assert_true(@verifier.check_dependencies(index))
+  assert_true(@dosi.check_dependencies(index))
 }
 
 ///|
@@ -1645,7 +1645,7 @@ test "S1.7 verifier missing dependency" {
   let sem = @dosi.SemanticEntry::new("x", [], "in->out")
   let e = @dosi.DOSIEntry::new(sym, sem)
   let index = @dosi.DOSIIndex::empty().add(e)
-  let result = @verifier.verify_index(index)
+  let result = @dosi.verify_index(index)
   assert_false(result.valid)
   assert_eq(result.issues.length(), 1)
 }
@@ -1656,18 +1656,18 @@ test "S1.7 verifier detect_cycles" {
   let sem = @dosi.SemanticEntry::new("self dep", [], "in->out")
   let e = @dosi.DOSIEntry::new(sym, sem)
   let index = @dosi.DOSIIndex::empty().add(e)
-  let cycles = @verifier.detect_cycles(index)
+  let cycles = @dosi.detect_cycles(index)
   assert_eq(cycles.length(), 1)
   assert_eq(cycles[0], "opcore/self")
-  assert_eq(@verifier.verifier_id(), "dosi/verifier")
+  assert_eq(@dosi.verifier_id(), "dosi/verifier")
 }
 
 ///|
 test "S1.7 verifier degenerate: empty index" {
   let empty = @dosi.DOSIIndex::empty()
-  let result = @verifier.verify_index(empty)
+  let result = @dosi.verify_index(empty)
   assert_true(result.valid)
-  assert_eq(@verifier.detect_cycles(empty).length(), 0)
+  assert_eq(@dosi.detect_cycles(empty).length(), 0)
 }
 
 ///|
@@ -2563,7 +2563,7 @@ test "S2.5 packing_line basic" {
     @dataobject.Text,
     @schema.empty(),
   )
-  let result = @packing_line.packing_line([d1, d2], 5)
+  let result = @recipe.packing_line([d1, d2], 5)
   assert_eq(result.length(), 5)
 }
 
@@ -2575,7 +2575,7 @@ test "S2.5 packing_line filters empty" {
     @schema.empty(),
   )
   let d2 = @dataobject.empty_dataobject(@dataobject.Text)
-  let result = @packing_line.packing_line([d1, d2], 10)
+  let result = @recipe.packing_line([d1, d2], 10)
   assert_eq(result.length(), 1)
 }
 
@@ -2586,13 +2586,13 @@ test "S2.5 packing_line degenerate: chunk_size <= 0" {
     @dataobject.Text,
     @schema.empty(),
   )
-  let result = @packing_line.packing_line([d1], 0)
+  let result = @recipe.packing_line([d1], 0)
   assert_eq(result.length(), 1)
 }
 
 ///|
 test "S2.5 packing_line degenerate: empty array" {
-  let result = @packing_line.packing_line([], 10)
+  let result = @recipe.packing_line([], 10)
   assert_eq(result.length(), 0)
 }
 
@@ -2603,14 +2603,14 @@ test "S2.5 packing_line preserves modality" {
     @dataobject.Image,
     @schema.empty(),
   )
-  let result = @packing_line.packing_line([d1], 5)
+  let result = @recipe.packing_line([d1], 5)
   assert_eq(result.length(), 3)
   assert_eq(result[0].modality, @dataobject.Image)
 }
 
 ///|
 test "S2.5 packing_line_id" {
-  assert_eq(@packing_line.packing_line_id(), "recipe/packing_line")
+  assert_eq(@recipe.packing_line_id(), "recipe/packing_line")
 }
 
 ///|
@@ -2625,7 +2625,7 @@ test "S2.5 eval_line basic" {
     @dataobject.Text,
     @schema.empty(),
   )
-  let report = @eval_line.eval_line([d1, d2])
+  let report = @recipe.eval_line([d1, d2])
   assert_eq(report.total_count, 2)
   assert_true(report.avg_quality > 0.0)
   assert_true(report.max_quality >= report.min_quality)
@@ -2648,7 +2648,7 @@ test "S2.5 eval_line modality counts" {
     @dataobject.Audio,
     @schema.empty(),
   )
-  let report = @eval_line.eval_line([d1, d2, d3])
+  let report = @recipe.eval_line([d1, d2, d3])
   assert_eq(report.text_count, 1)
   assert_eq(report.image_count, 1)
   assert_eq(report.audio_count, 1)
@@ -2657,13 +2657,13 @@ test "S2.5 eval_line modality counts" {
 
 ///|
 test "S2.5 eval_line degenerate: empty" {
-  let report = @eval_line.eval_line([])
-  assert_eq(report, @eval_line.empty_eval_report())
+  let report = @recipe.eval_line([])
+  assert_eq(report, @recipe.empty_eval_report())
 }
 
 ///|
 test "S2.5 eval_line_id" {
-  assert_eq(@eval_line.eval_line_id(), "recipe/eval_line")
+  assert_eq(@recipe.eval_line_id(), "recipe/eval_line")
 }
 
 ///|
@@ -2678,7 +2678,7 @@ test "S2.5 cross_modal_line basic" {
     @dataobject.Image,
     @schema.empty(),
   )
-  let report = @cross_modal_line.cross_modal_line([d1, d2])
+  let report = @recipe.cross_modal_line([d1, d2])
   assert_eq(report.total_count, 2)
   assert_eq(report.text_count, 1)
   assert_eq(report.image_count, 1)
@@ -2695,14 +2695,14 @@ test "S2.5 cross_modal_line all modalities" {
   let d2 = @dataobject.make_dataobject("i", @dataobject.Image, @schema.empty())
   let d3 = @dataobject.make_dataobject("a", @dataobject.Audio, @schema.empty())
   let d4 = @dataobject.make_dataobject("v", @dataobject.Video, @schema.empty())
-  let report = @cross_modal_line.cross_modal_line([d1, d2, d3, d4])
+  let report = @recipe.cross_modal_line([d1, d2, d3, d4])
   assert_eq(report.consistency_score, 1.0)
   assert_eq(report.missing_modalities.length(), 0)
 }
 
 ///|
 test "S2.5 cross_modal_line degenerate: empty" {
-  let report = @cross_modal_line.cross_modal_line([])
+  let report = @recipe.cross_modal_line([])
   assert_eq(report.total_count, 0)
   assert_eq(report.consistency_score, 0.0)
   assert_eq(report.missing_modalities.length(), 4)
@@ -2715,13 +2715,13 @@ test "S2.5 cross_modal_line missing modalities" {
     @dataobject.Text,
     @schema.empty(),
   )
-  let report = @cross_modal_line.cross_modal_line([d1])
+  let report = @recipe.cross_modal_line([d1])
   assert_eq(report.missing_modalities, ["image", "audio", "video"])
 }
 
 ///|
 test "S2.5 cross_modal_line_id" {
-  assert_eq(@cross_modal_line.cross_modal_line_id(), "recipe/cross_modal_line")
+  assert_eq(@recipe.cross_modal_line_id(), "recipe/cross_modal_line")
 }
 
 // ============================================================
@@ -3019,15 +3019,15 @@ test "S2.8 batch_add basic" {
   let sym = @dosi.SymbolicEntry::new("opcore/clean", "clean", "text", [])
   let sem = @dosi.SemanticEntry::new("clean", [], "in->out")
   let entry = @dosi.DOSIEntry::new(sym, sem)
-  let op = @batch.batch_add(entry)
-  assert_eq(op.op, @batch.Add)
+  let op = @dosi.batch_add(entry)
+  assert_eq(op.op, @dosi.Add)
   assert_eq(op.path, "opcore/clean")
 }
 
 ///|
 test "S2.8 batch_remove basic" {
-  let op = @batch.batch_remove("opcore/clean")
-  assert_eq(op.op, @batch.Remove)
+  let op = @dosi.batch_remove("opcore/clean")
+  assert_eq(op.op, @dosi.Remove)
   assert_eq(op.path, "opcore/clean")
 }
 
@@ -3037,7 +3037,7 @@ test "S2.8 apply_batch add" {
   let sem = @dosi.SemanticEntry::new("clean", [], "in->out")
   let entry = @dosi.DOSIEntry::new(sym, sem)
   let index = @dosi.DOSIIndex::empty()
-  let result = @batch.apply_batch(index, [@batch.batch_add(entry)])
+  let result = @dosi.apply_batch(index, [@dosi.batch_add(entry)])
   assert_eq(result.size(), 1)
 }
 
@@ -3047,7 +3047,7 @@ test "S2.8 apply_batch remove" {
   let sem = @dosi.SemanticEntry::new("clean", [], "in->out")
   let entry = @dosi.DOSIEntry::new(sym, sem)
   let index = @dosi.DOSIIndex::empty().add(entry)
-  let result = @batch.apply_batch(index, [@batch.batch_remove("opcore/clean")])
+  let result = @dosi.apply_batch(index, [@dosi.batch_remove("opcore/clean")])
   assert_eq(result.size(), 0)
 }
 
@@ -3060,7 +3060,7 @@ test "S2.8 apply_batch update" {
   let sem2 = @dosi.SemanticEntry::new("new", [], "in->out")
   let entry2 = @dosi.DOSIEntry::new(sym2, sem2)
   let index = @dosi.DOSIIndex::empty().add(entry1)
-  let result = @batch.apply_batch(index, [@batch.batch_update(entry2)])
+  let result = @dosi.apply_batch(index, [@dosi.batch_update(entry2)])
   assert_eq(result.size(), 1)
   assert_eq(result.entries()[0].semantic.summary, "new")
 }
@@ -3068,41 +3068,41 @@ test "S2.8 apply_batch update" {
 ///|
 test "S2.8 apply_batch degenerate: empty ops" {
   let index = @dosi.DOSIIndex::empty()
-  let result = @batch.apply_batch(index, [])
+  let result = @dosi.apply_batch(index, [])
   assert_eq(result, index)
 }
 
 ///|
 test "S2.8 batch_op_name" {
-  assert_eq(@batch.batch_op_name(@batch.Add), "add")
-  assert_eq(@batch.batch_op_name(@batch.Remove), "remove")
-  assert_eq(@batch.batch_op_name(@batch.Update), "update")
+  assert_eq(@dosi.batch_op_name(@dosi.Add), "add")
+  assert_eq(@dosi.batch_op_name(@dosi.Remove), "remove")
+  assert_eq(@dosi.batch_op_name(@dosi.Update), "update")
 }
 
 ///|
 test "S2.8 batch_id" {
-  assert_eq(@batch.batch_id(), "dosi/batch")
+  assert_eq(@dosi.batch_id(), "dosi/batch")
 }
 
 ///|
 test "S2.8 make_versioned_index" {
-  let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
+  let vindex = @dosi.make_versioned_index(@dosi.DOSIIndex::empty())
   assert_eq(vindex.current_version, 0)
-  assert_eq(@versioned.version_count(vindex), 1)
+  assert_eq(@dosi.version_count(vindex), 1)
 }
 
 ///|
 test "S2.8 advance_version" {
-  let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
-  let vindex2 = @versioned.advance_version(vindex, @dosi.DOSIIndex::empty())
+  let vindex = @dosi.make_versioned_index(@dosi.DOSIIndex::empty())
+  let vindex2 = @dosi.advance_version(vindex, @dosi.DOSIIndex::empty())
   assert_eq(vindex2.current_version, 1)
-  assert_eq(@versioned.version_count(vindex2), 2)
+  assert_eq(@dosi.version_count(vindex2), 2)
 }
 
 ///|
 test "S2.8 get_version existing" {
-  let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
-  let result = @versioned.get_version(vindex, 0)
+  let vindex = @dosi.make_versioned_index(@dosi.DOSIIndex::empty())
+  let result = @dosi.get_version(vindex, 0)
   assert_true(
     match result {
       Some(_) => true
@@ -3113,8 +3113,8 @@ test "S2.8 get_version existing" {
 
 ///|
 test "S2.8 get_version non-existing" {
-  let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
-  let result = @versioned.get_version(vindex, 99)
+  let vindex = @dosi.make_versioned_index(@dosi.DOSIIndex::empty())
+  let result = @dosi.get_version(vindex, 99)
   assert_true(
     match result {
       Some(_) => false
@@ -3125,29 +3125,29 @@ test "S2.8 get_version non-existing" {
 
 ///|
 test "S2.8 current_version" {
-  let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
-  let vindex2 = @versioned.advance_version(vindex, @dosi.DOSIIndex::empty())
-  let curr = @versioned.current(vindex2)
+  let vindex = @dosi.make_versioned_index(@dosi.DOSIIndex::empty())
+  let vindex2 = @dosi.advance_version(vindex, @dosi.DOSIIndex::empty())
+  let curr = @dosi.current(vindex2)
   assert_eq(curr, @dosi.DOSIIndex::empty())
 }
 
 ///|
 test "S2.8 rollback" {
-  let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
-  let vindex2 = @versioned.advance_version(vindex, @dosi.DOSIIndex::empty())
-  let vindex3 = @versioned.rollback(vindex2, 0)
+  let vindex = @dosi.make_versioned_index(@dosi.DOSIIndex::empty())
+  let vindex2 = @dosi.advance_version(vindex, @dosi.DOSIIndex::empty())
+  let vindex3 = @dosi.rollback(vindex2, 0)
   assert_eq(vindex3.current_version, 2)
 }
 
 ///|
 test "S2.8 empty_versioned_index" {
-  let vindex = @versioned.empty_versioned_index()
+  let vindex = @dosi.empty_versioned_index()
   assert_eq(vindex.current_version, 0)
 }
 
 ///|
 test "S2.8 versioned_id" {
-  assert_eq(@versioned.versioned_id(), "dosi/versioned")
+  assert_eq(@dosi.versioned_id(), "dosi/versioned")
 }
 
 // Phase 2 验证：多模态退化场景
@@ -3632,143 +3632,143 @@ test "S2.11 text_similarity degenerate: both empty" {
 
 ///|
 test "S3.1 source_type_name" {
-  assert_eq(@source.source_type_name(@source.File), "file")
-  assert_eq(@source.source_type_name(@source.ObjectStorage), "object_storage")
-  assert_eq(@source.source_type_name(@source.DataLake), "data_lake")
-  assert_eq(@source.source_type_name(@source.VectorStore), "vector_store")
-  assert_eq(@source.source_type_name(@source.InMemory), "in_memory")
+  assert_eq(@io.source_type_name(@io.File), "file")
+  assert_eq(@io.source_type_name(@io.ObjectStorage), "object_storage")
+  assert_eq(@io.source_type_name(@io.DataLake), "data_lake")
+  assert_eq(@io.source_type_name(@io.VectorStore), "vector_store")
+  assert_eq(@io.source_type_name(@io.InMemory), "in_memory")
 }
 
 ///|
 test "S3.1 file_source convenience" {
-  let cfg = @source.file_source("/data/train.json", "json")
-  assert_eq(cfg.source_type, @source.File)
+  let cfg = @io.file_source("/data/train.json", "json")
+  assert_eq(cfg.source_type, @io.File)
   assert_eq(cfg.path, "/data/train.json")
   assert_eq(cfg.format, "json")
 }
 
 ///|
 test "S3.1 object_storage_source convenience" {
-  let cfg = @source.object_storage_source(
+  let cfg = @io.object_storage_source(
     "obs.cn-east-3", "bucket1", "key1", "parquet",
   )
-  assert_eq(cfg.source_type, @source.ObjectStorage)
+  assert_eq(cfg.source_type, @io.ObjectStorage)
   assert_eq(cfg.endpoint, "obs.cn-east-3")
   assert_eq(cfg.bucket, "bucket1")
 }
 
 ///|
 test "S3.1 source_uri file" {
-  let cfg = @source.file_source("/data/train.json", "json")
-  assert_eq(@source.source_uri(cfg), "file:///data/train.json")
+  let cfg = @io.file_source("/data/train.json", "json")
+  assert_eq(@io.source_uri(cfg), "file:///data/train.json")
 }
 
 ///|
 test "S3.1 source_uri object_storage" {
-  let cfg = @source.object_storage_source("endpoint", "bucket", "key", "json")
-  assert_eq(@source.source_uri(cfg), "obs://endpoint/bucket/key")
+  let cfg = @io.object_storage_source("endpoint", "bucket", "key", "json")
+  assert_eq(@io.source_uri(cfg), "obs://endpoint/bucket/key")
 }
 
 ///|
 test "S3.1 source_uri in_memory" {
-  let cfg = @source.in_memory_source("json")
-  assert_eq(@source.source_uri(cfg), "memory://json")
+  let cfg = @io.in_memory_source("json")
+  assert_eq(@io.source_uri(cfg), "memory://json")
 }
 
 ///|
 test "S3.1 read_source basic" {
-  let cfg = @source.file_source("/data/train.json", "json")
-  let data = @source.read_source(cfg, 3)
+  let cfg = @io.file_source("/data/train.json", "json")
+  let data = @io.read_source(cfg, 3)
   assert_eq(data.length(), 3)
   assert_true(data[0].content.length() > 0)
 }
 
 ///|
 test "S3.1 read_source degenerate: zero count" {
-  let cfg = @source.file_source("/data/train.json", "json")
-  let data = @source.read_source(cfg, 0)
+  let cfg = @io.file_source("/data/train.json", "json")
+  let data = @io.read_source(cfg, 0)
   assert_eq(data.length(), 0)
 }
 
 ///|
 test "S3.1 read_source degenerate: negative count" {
-  let cfg = @source.file_source("/data/train.json", "json")
-  let data = @source.read_source(cfg, -1)
+  let cfg = @io.file_source("/data/train.json", "json")
+  let data = @io.read_source(cfg, -1)
   assert_eq(data.length(), 0)
 }
 
 ///|
 test "S3.1 source_meta_uri" {
-  let cfg = @source.file_source("/data/train.json", "json")
-  let meta = @source.make_source_meta(cfg, 100, 4096)
+  let cfg = @io.file_source("/data/train.json", "json")
+  let meta = @io.make_source_meta(cfg, 100, 4096)
   assert_eq(
-    @source.source_meta_uri(meta),
+    @io.source_meta_uri(meta),
     "file:///data/train.json?items=100&size=4096",
   )
 }
 
 ///|
 test "S3.1 sink_type_name" {
-  assert_eq(@sink.sink_type_name(@sink.File), "file")
-  assert_eq(@sink.sink_type_name(@sink.ObjectStorage), "object_storage")
-  assert_eq(@sink.sink_type_name(@sink.InMemory), "in_memory")
+  assert_eq(@io.sink_type_name(@io.File), "file")
+  assert_eq(@io.sink_type_name(@io.ObjectStorage), "object_storage")
+  assert_eq(@io.sink_type_name(@io.InMemory), "in_memory")
 }
 
 ///|
 test "S3.1 file_sink convenience" {
-  let cfg = @sink.file_sink("/data/output.json", "json")
-  assert_eq(cfg.sink_type, @sink.File)
+  let cfg = @io.file_sink("/data/output.json", "json")
+  assert_eq(cfg.sink_type, @io.File)
   assert_eq(cfg.path, "/data/output.json")
 }
 
 ///|
 test "S3.1 sink_uri file" {
-  let cfg = @sink.file_sink("/data/output.json", "json")
-  assert_eq(@sink.sink_uri(cfg), "file:///data/output.json")
+  let cfg = @io.file_sink("/data/output.json", "json")
+  assert_eq(@io.sink_uri(cfg), "file:///data/output.json")
 }
 
 ///|
 test "S3.1 sink_uri object_storage" {
-  let cfg = @sink.object_storage_sink("endpoint", "bucket", "key", "parquet")
-  assert_eq(@sink.sink_uri(cfg), "obs://endpoint/bucket/key")
+  let cfg = @io.object_storage_sink("endpoint", "bucket", "key", "parquet")
+  assert_eq(@io.sink_uri(cfg), "obs://endpoint/bucket/key")
 }
 
 ///|
 test "S3.1 write_sink basic" {
-  let cfg = @sink.file_sink("/data/output.json", "json")
+  let cfg = @io.file_sink("/data/output.json", "json")
   let data = [
     @dataobject.make_dataobject("item1", @dataobject.Text, @schema.empty()),
     @dataobject.make_dataobject("item2", @dataobject.Text, @schema.empty()),
     @dataobject.make_dataobject("item3", @dataobject.Text, @schema.empty()),
   ]
-  let count = @sink.write_sink(cfg, data)
+  let count = @io.write_sink(cfg, data)
   assert_eq(count, 3)
 }
 
 ///|
 test "S3.1 write_sink degenerate: empty array" {
-  let cfg = @sink.file_sink("/data/output.json", "json")
-  let count = @sink.write_sink(cfg, [])
+  let cfg = @io.file_sink("/data/output.json", "json")
+  let count = @io.write_sink(cfg, [])
   assert_eq(count, 0)
 }
 
 ///|
 test "S3.1 execute_write returns result" {
-  let cfg = @sink.file_sink("/data/output.json", "json")
+  let cfg = @io.file_sink("/data/output.json", "json")
   let data = [
     @dataobject.make_dataobject("item1", @dataobject.Text, @schema.empty()),
   ]
-  let result = @sink.execute_write(cfg, data)
+  let result = @io.execute_write(cfg, data)
   assert_eq(result.written_count, 1)
   assert_eq(result.success, true)
 }
 
 ///|
 test "S3.1 sink_stats_uri" {
-  let cfg = @sink.file_sink("/data/output.json", "json")
-  let stats = @sink.make_sink_stats(cfg, 500, 8192)
+  let cfg = @io.file_sink("/data/output.json", "json")
+  let stats = @io.make_sink_stats(cfg, 500, 8192)
   assert_eq(
-    @sink.sink_stats_uri(stats),
+    @io.sink_stats_uri(stats),
     "file:///data/output.json?written=500&bytes=8192",
   )
 }
@@ -4091,15 +4091,15 @@ test "S3.3 plugin_id" {
 
 ///|
 test "S3.4 default_benchmark_config" {
-  let cfg = @benchmark.default_benchmark_config()
+  let cfg = @governance.default_benchmark_config()
   assert_eq(cfg.iterations, 100)
   assert_eq(cfg.warmup, 10)
 }
 
 ///|
 test "S3.4 run_benchmark basic" {
-  let cfg = @benchmark.make_benchmark_config(10, 2, 1)
-  let result = @benchmark.run_benchmark("test", 100, cfg)
+  let cfg = @governance.make_benchmark_config(10, 2, 1)
+  let result = @governance.run_benchmark("test", 100, cfg)
   assert_eq(result.name, "test")
   assert_true(result.total_ms > 0)
   assert_true(result.avg_ms > 0.0)
@@ -4107,19 +4107,19 @@ test "S3.4 run_benchmark basic" {
 
 ///|
 test "S3.4 run_benchmark degenerate: zero iterations" {
-  let cfg = @benchmark.make_benchmark_config(0, 0, 1)
-  let result = @benchmark.run_benchmark("test", 100, cfg)
+  let cfg = @governance.make_benchmark_config(0, 0, 1)
+  let result = @governance.run_benchmark("test", 100, cfg)
   assert_eq(result.total_ms, 0)
   assert_eq(result.avg_ms, 0.0)
 }
 
 ///|
 test "S3.4 benchmark_suite add_result" {
-  let cfg = @benchmark.default_benchmark_config()
-  let r1 = @benchmark.run_benchmark("b1", 100, cfg)
-  let r2 = @benchmark.run_benchmark("b2", 200, cfg)
-  let suite = @benchmark.add_result(
-    @benchmark.add_result(@benchmark.empty_benchmark_suite("suite1"), r1),
+  let cfg = @governance.default_benchmark_config()
+  let r1 = @governance.run_benchmark("b1", 100, cfg)
+  let r2 = @governance.run_benchmark("b2", 200, cfg)
+  let suite = @governance.add_result(
+    @governance.add_result(@governance.empty_benchmark_suite("suite1"), r1),
     r2,
   )
   assert_eq(suite.results.length(), 2)
@@ -4127,81 +4127,81 @@ test "S3.4 benchmark_suite add_result" {
 
 ///|
 test "S3.4 compute_suite_stats" {
-  let cfg = @benchmark.make_benchmark_config(10, 0, 1)
-  let r1 = @benchmark.run_benchmark("b1", 100, cfg)
-  let suite = @benchmark.add_result(
-    @benchmark.empty_benchmark_suite("suite1"),
+  let cfg = @governance.make_benchmark_config(10, 0, 1)
+  let r1 = @governance.run_benchmark("b1", 100, cfg)
+  let suite = @governance.add_result(
+    @governance.empty_benchmark_suite("suite1"),
     r1,
   )
-  let stats = @benchmark.compute_suite_stats(suite)
+  let stats = @governance.compute_suite_stats(suite)
   assert_eq(stats.suite_name, "suite1")
   assert_eq(stats.benchmark_count, 1)
 }
 
 ///|
 test "S3.4 compute_suite_stats empty" {
-  let suite = @benchmark.empty_benchmark_suite("empty")
-  let stats = @benchmark.compute_suite_stats(suite)
+  let suite = @governance.empty_benchmark_suite("empty")
+  let stats = @governance.compute_suite_stats(suite)
   assert_eq(stats.benchmark_count, 0)
   assert_eq(stats.avg_throughput, 0.0)
 }
 
 ///|
 test "S3.4 benchmark_suite_uri" {
-  let suite = @benchmark.empty_benchmark_suite("my_suite")
+  let suite = @governance.empty_benchmark_suite("my_suite")
   assert_eq(
-    @benchmark.benchmark_suite_uri(suite),
+    @governance.benchmark_suite_uri(suite),
     "benchmark://suite/my_suite?count=0",
   )
 }
 
 ///|
 test "S3.4 benchmark_id" {
-  assert_eq(@benchmark.benchmark_id(), "governance/benchmark")
+  assert_eq(@governance.benchmark_id(), "governance/benchmark")
 }
 
 ///|
 test "S3.4 fusion_rule_name" {
-  assert_eq(@ir_fusion.fusion_rule_name(@ir_fusion.MapFusion), "map_fusion")
+  assert_eq(@datair.fusion_rule_name(@datair.MapFusion), "map_fusion")
   assert_eq(
-    @ir_fusion.fusion_rule_name(@ir_fusion.FilterFusion),
+    @datair.fusion_rule_name(@datair.FilterFusion),
     "filter_fusion",
   )
   assert_eq(
-    @ir_fusion.fusion_rule_name(@ir_fusion.IdentityElimination),
+    @datair.fusion_rule_name(@datair.IdentityElimination),
     "identity_elimination",
   )
   assert_eq(
-    @ir_fusion.fusion_rule_name(@ir_fusion.DeadCodeElimination),
+    @datair.fusion_rule_name(@datair.DeadCodeElimination),
     "dead_code_elimination",
   )
 }
 
 ///|
 test "S3.4 apply_fusion basic" {
-  let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"),
+  let n1 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op1"),
     "map1",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"),
+  let n2 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op2"),
     "map2",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op3"),
+  let n3 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op3"),
     "map3",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty()
+  let p = @datair.PipelineIR::empty()
     .add_node(n1)
     .add_node(n2)
     .add_node(n3)
-  let result = @ir_fusion.apply_fusion(p)
+  let result = @datair.apply_fusion(p)
   assert_eq(result.original_node_count, 3)
   assert_true(result.fused_node_count <= result.original_node_count)
   assert_true(result.reduction >= 0)
@@ -4209,80 +4209,80 @@ test "S3.4 apply_fusion basic" {
 
 ///|
 test "S3.4 apply_fusion degenerate: empty pipeline" {
-  let p = @ir_pipeline.PipelineIR::empty()
-  let result = @ir_fusion.apply_fusion(p)
+  let p = @datair.PipelineIR::empty()
+  let result = @datair.apply_fusion(p)
   assert_eq(result.original_node_count, 0)
   assert_eq(result.fused_node_count, 0)
 }
 
 ///|
 test "S3.4 fusion_reduction_ratio" {
-  let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"),
+  let n1 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op1"),
     "map1",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"),
+  let n2 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op2"),
     "map2",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2)
-  let result = @ir_fusion.apply_fusion(p)
-  let ratio = @ir_fusion.fusion_reduction_ratio(result)
+  let p = @datair.PipelineIR::empty().add_node(n1).add_node(n2)
+  let result = @datair.apply_fusion(p)
+  let ratio = @datair.fusion_reduction_ratio(result)
   assert_true(ratio >= 0.0 && ratio <= 1.0)
 }
 
 ///|
 test "S3.4 fusion_result_uri" {
-  let result = @ir_fusion.make_fusion_result(10, 5, [@ir_fusion.MapFusion])
+  let result = @datair.make_fusion_result(10, 5, [@datair.MapFusion])
   assert_eq(
-    @ir_fusion.fusion_result_uri(result),
+    @datair.fusion_result_uri(result),
     "fusion://nodes=10->5;reduction=5",
   )
 }
 
 ///|
 test "S3.4 iterative_fusion" {
-  let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"),
+  let n1 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op1"),
     "map1",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"),
+  let n2 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op2"),
     "map2",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op3"),
+  let n3 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op3"),
     "map3",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let n4 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op4"),
+  let n4 = @datair.OperatorIR::simple(
+    @datair.IRNodeId::new("op4"),
     "map4",
-    @ir_operator.Text,
-    @ir_operator.Deterministic,
+    @datair.Text,
+    @datair.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty()
+  let p = @datair.PipelineIR::empty()
     .add_node(n1)
     .add_node(n2)
     .add_node(n3)
     .add_node(n4)
-  let result = @ir_fusion.iterative_fusion(p, 3)
+  let result = @datair.iterative_fusion(p, 3)
   assert_eq(result.original_node_count, 4)
   assert_true(result.fused_node_count <= result.original_node_count)
 }
 
 ///|
 test "S3.4 ir_fusion_id" {
-  assert_eq(@ir_fusion.ir_fusion_id(), "datair/ir_fusion")
+  assert_eq(@datair.ir_fusion_id(), "datair/ir_fusion")
 }
 // ============================================================
 // S3.5 文档生成测试 / Doc generation tests
@@ -4290,7 +4290,7 @@ test "S3.4 ir_fusion_id" {
 
 ///|
 test "S3.5 empty_doc_index" {
-  let index = @docgen.empty_doc_index()
+  let index = @governance.empty_doc_index()
   assert_eq(index.total_api, 0)
   assert_eq(index.total_types, 0)
   assert_eq(index.total_tests, 0)
@@ -4298,8 +4298,8 @@ test "S3.5 empty_doc_index" {
 
 ///|
 test "S3.5 add_doc_entry" {
-  let entry = @docgen.make_doc_entry("test_mod", 10, 5, 8, "test module")
-  let index = @docgen.add_doc_entry(@docgen.empty_doc_index(), entry)
+  let entry = @governance.make_doc_entry("test_mod", 10, 5, 8, "test module")
+  let index = @governance.add_doc_entry(@governance.empty_doc_index(), entry)
   assert_eq(index.entries.length(), 1)
   assert_eq(index.total_api, 10)
   assert_eq(index.total_types, 5)
@@ -4308,7 +4308,7 @@ test "S3.5 add_doc_entry" {
 
 ///|
 test "S3.5 generate_dataverse_doc_index" {
-  let index = @docgen.generate_dataverse_doc_index()
+  let index = @governance.generate_dataverse_doc_index()
   assert_true(index.entries.length() >= 12)
   assert_true(index.total_api > 0)
   assert_true(index.total_types > 0)
@@ -4316,47 +4316,47 @@ test "S3.5 generate_dataverse_doc_index" {
 
 ///|
 test "S3.5 doc_entry_to_markdown" {
-  let entry = @docgen.make_doc_entry("m1", 10, 5, 8, "desc")
-  let md = @docgen.doc_entry_to_markdown(entry)
+  let entry = @governance.make_doc_entry("m1", 10, 5, 8, "desc")
+  let md = @governance.doc_entry_to_markdown(entry)
   assert_true(md.length() > 0)
   assert_true(md.contains("m1"))
 }
 
 ///|
 test "S3.5 doc_index_to_markdown" {
-  let index = @docgen.generate_dataverse_doc_index()
-  let md = @docgen.doc_index_to_markdown(index)
+  let index = @governance.generate_dataverse_doc_index()
+  let md = @governance.doc_index_to_markdown(index)
   assert_true(md.length() > 0)
   assert_true(md.contains("DataVerse"))
 }
 
 ///|
 test "S3.5 doc_entry_to_html" {
-  let entry = @docgen.make_doc_entry("m1", 10, 5, 8, "desc")
-  let html = @docgen.doc_entry_to_html(entry)
+  let entry = @governance.make_doc_entry("m1", 10, 5, 8, "desc")
+  let html = @governance.doc_entry_to_html(entry)
   assert_true(html.contains("<section>"))
   assert_true(html.contains("m1"))
 }
 
 ///|
 test "S3.5 doc_index_to_html" {
-  let index = @docgen.generate_dataverse_doc_index()
-  let html = @docgen.doc_index_to_html(index)
+  let index = @governance.generate_dataverse_doc_index()
+  let html = @governance.doc_index_to_html(index)
   assert_true(html.contains("<html>"))
   assert_true(html.contains("</html>"))
 }
 
 ///|
 test "S3.5 doc_index_stats" {
-  let index = @docgen.generate_dataverse_doc_index()
-  let stats = @docgen.doc_index_stats(index)
+  let index = @governance.generate_dataverse_doc_index()
+  let stats = @governance.doc_index_stats(index)
   assert_true(stats.contains("modules="))
   assert_true(stats.contains("api="))
 }
 
 ///|
 test "S3.5 docgen_id" {
-  assert_eq(@docgen.docgen_id(), "governance/docgen")
+  assert_eq(@governance.docgen_id(), "governance/docgen")
 }
 // ============================================================
 // S4.1 opcore/proximity 邻近分析测试
@@ -12180,67 +12180,67 @@ test "temporal_lag_timeseries" {
 ///===
 /// S10.3 datair/ir_transform 测试
 test "ir_transform_fold_binary" {
-  assert_eq(@ir_transform.fold_binary_op("+", 1.0, 2.0), Some(3.0))
-  assert_eq(@ir_transform.fold_binary_op("-", 5.0, 3.0), Some(2.0))
-  assert_eq(@ir_transform.fold_binary_op("*", 4.0, 3.0), Some(12.0))
-  assert_eq(@ir_transform.fold_binary_op("/", 10.0, 2.0), Some(5.0))
-  assert_eq(@ir_transform.fold_binary_op("/", 10.0, 0.0), None)
+  assert_eq(@datair.fold_binary_op("+", 1.0, 2.0), Some(3.0))
+  assert_eq(@datair.fold_binary_op("-", 5.0, 3.0), Some(2.0))
+  assert_eq(@datair.fold_binary_op("*", 4.0, 3.0), Some(12.0))
+  assert_eq(@datair.fold_binary_op("/", 10.0, 2.0), Some(5.0))
+  assert_eq(@datair.fold_binary_op("/", 10.0, 0.0), None)
 }
 
 ///|
 test "ir_transform_fold_unary" {
-  assert_eq(@ir_transform.fold_unary_op("-", 5.0), Some(-5.0))
-  assert_eq(@ir_transform.fold_unary_op("abs", -5.0), Some(5.0))
-  assert_eq(@ir_transform.fold_unary_op("abs", 5.0), Some(5.0))
+  assert_eq(@datair.fold_unary_op("-", 5.0), Some(-5.0))
+  assert_eq(@datair.fold_unary_op("abs", -5.0), Some(5.0))
+  assert_eq(@datair.fold_unary_op("abs", 5.0), Some(5.0))
 }
 
 ///|
 test "ir_transform_parse_constant" {
-  assert_eq(@ir_transform.parse_constant("123"), Some(123.0))
-  assert_eq(@ir_transform.parse_constant("-45.6"), Some(-45.6))
-  assert_eq(@ir_transform.parse_constant("abc"), None)
+  assert_eq(@datair.parse_constant("123"), Some(123.0))
+  assert_eq(@datair.parse_constant("-45.6"), Some(-45.6))
+  assert_eq(@datair.parse_constant("abc"), None)
 }
 
 ///|
 test "ir_transform_eliminate_dead" {
   let nodes = [
-    @ir_transform.make_node(@ir_transform.Constant, "1", []),
-    @ir_transform.make_node(@ir_transform.Variable, "x", []),
+    @datair.make_node(@datair.Constant, "1", []),
+    @datair.make_node(@datair.Variable, "x", []),
   ]
-  let marked = @ir_transform.mark_dead(nodes, 1)
-  let live = @ir_transform.eliminate_dead(marked)
+  let marked = @datair.mark_dead(nodes, 1)
+  let live = @datair.eliminate_dead(marked)
   assert_eq(live.length(), 1)
 }
 
 ///|
 test "ir_transform_simplify_add" {
-  assert_eq(@ir_transform.simplify_add("1", "2"), "3")
-  assert_eq(@ir_transform.simplify_add("0", "x"), "x")
-  assert_eq(@ir_transform.simplify_add("x", "0"), "x")
+  assert_eq(@datair.simplify_add("1", "2"), "3")
+  assert_eq(@datair.simplify_add("0", "x"), "x")
+  assert_eq(@datair.simplify_add("x", "0"), "x")
 }
 
 ///|
 test "ir_transform_simplify_mul" {
-  assert_eq(@ir_transform.simplify_mul("2", "3"), "6")
-  assert_eq(@ir_transform.simplify_mul("0", "x"), "0")
-  assert_eq(@ir_transform.simplify_mul("1", "x"), "x")
+  assert_eq(@datair.simplify_mul("2", "3"), "6")
+  assert_eq(@datair.simplify_mul("0", "x"), "0")
+  assert_eq(@datair.simplify_mul("1", "x"), "x")
 }
 
 ///|
 test "ir_transform_name" {
   assert_eq(
-    @ir_transform.transform_name(@ir_transform.ConstantFolding),
+    @datair.transform_name(@datair.ConstantFolding),
     "constant_folding",
   )
   assert_eq(
-    @ir_transform.transform_name(@ir_transform.DeadCodeElimination),
+    @datair.transform_name(@datair.DeadCodeElimination),
     "dead_code_elimination",
   )
 }
 
 ///|
 test "ir_transform_id" {
-  assert_eq(@ir_transform.ir_transform_id(), "datair/ir_transform")
+  assert_eq(@datair.ir_transform_id(), "datair/ir_transform")
 }
 
 ///|
@@ -12248,11 +12248,11 @@ test "ir_transform_id" {
 /// S10.4 dosi/scheduler 测试
 test "scheduler_priority" {
   let tasks = [
-    @scheduler.make_task("a", 1, 10.0, 1.0, 0.0),
-    @scheduler.make_task("b", 3, 20.0, 1.0, 0.0),
-    @scheduler.make_task("c", 2, 15.0, 1.0, 0.0),
+    @dosi.make_task("a", 1, 10.0, 1.0, 0.0),
+    @dosi.make_task("b", 3, 20.0, 1.0, 0.0),
+    @dosi.make_task("c", 2, 15.0, 1.0, 0.0),
   ]
-  let sorted = @scheduler.sort_by_priority(tasks)
+  let sorted = @dosi.sort_by_priority(tasks)
   assert_eq(sorted[0].id, "b")
   assert_eq(sorted[1].id, "c")
   assert_eq(sorted[2].id, "a")
@@ -12261,11 +12261,11 @@ test "scheduler_priority" {
 ///|
 test "scheduler_fifo" {
   let tasks = [
-    @scheduler.make_task("a", 1, 10.0, 1.0, 2.0),
-    @scheduler.make_task("b", 3, 20.0, 1.0, 1.0),
-    @scheduler.make_task("c", 2, 15.0, 1.0, 0.0),
+    @dosi.make_task("a", 1, 10.0, 1.0, 2.0),
+    @dosi.make_task("b", 3, 20.0, 1.0, 1.0),
+    @dosi.make_task("c", 2, 15.0, 1.0, 0.0),
   ]
-  let sorted = @scheduler.sort_by_submit_time(tasks)
+  let sorted = @dosi.sort_by_submit_time(tasks)
   assert_eq(sorted[0].id, "c")
   assert_eq(sorted[1].id, "b")
   assert_eq(sorted[2].id, "a")
@@ -12274,11 +12274,11 @@ test "scheduler_fifo" {
 ///|
 test "scheduler_sjf" {
   let tasks = [
-    @scheduler.make_task("a", 1, 30.0, 1.0, 0.0),
-    @scheduler.make_task("b", 1, 10.0, 1.0, 0.0),
-    @scheduler.make_task("c", 1, 20.0, 1.0, 0.0),
+    @dosi.make_task("a", 1, 30.0, 1.0, 0.0),
+    @dosi.make_task("b", 1, 10.0, 1.0, 0.0),
+    @dosi.make_task("c", 1, 20.0, 1.0, 0.0),
   ]
-  let sorted = @scheduler.sort_by_cost(tasks)
+  let sorted = @dosi.sort_by_cost(tasks)
   assert_eq(sorted[0].id, "b")
   assert_eq(sorted[1].id, "c")
   assert_eq(sorted[2].id, "a")
@@ -12286,33 +12286,33 @@ test "scheduler_sjf" {
 
 ///|
 test "scheduler_resource" {
-  let r = @scheduler.make_resource("r1", 100.0)
-  let r1 = @scheduler.allocate_resource(r, 40.0)
+  let r = @dosi.make_resource("r1", 100.0)
+  let r1 = @dosi.allocate_resource(r, 40.0)
   assert_true(r1 is Some(_))
-  let r2 = @scheduler.allocate_resource(r, 150.0)
+  let r2 = @dosi.allocate_resource(r, 150.0)
   assert_true(r2 is None)
 }
 
 ///|
 test "scheduler_utilization" {
-  let r = @scheduler.make_resource("r1", 100.0)
-  let r1 = @scheduler.allocate_resource(r, 40.0)
+  let r = @dosi.make_resource("r1", 100.0)
+  let r1 = @dosi.allocate_resource(r, 40.0)
   match r1 {
     Some(allocated) =>
-      assert_eq(@scheduler.resource_utilization(allocated), 0.4)
+      assert_eq(@dosi.resource_utilization(allocated), 0.4)
     None => assert_true(false)
   }
 }
 
 ///|
 test "scheduler_policy_name" {
-  assert_eq(@scheduler.policy_name(@scheduler.FIFO), "fifo")
-  assert_eq(@scheduler.policy_name(@scheduler.Priority), "priority")
+  assert_eq(@dosi.policy_name(@dosi.FIFO), "fifo")
+  assert_eq(@dosi.policy_name(@dosi.Priority), "priority")
 }
 
 ///|
 test "scheduler_id" {
-  assert_eq(@scheduler.scheduler_id(), "dosi/scheduler")
+  assert_eq(@dosi.scheduler_id(), "dosi/scheduler")
 }
 
 ///|
@@ -12372,67 +12372,67 @@ test "partition_id" {
 ///===
 /// S10.6 io/format 测试
 test "format_infer_type" {
-  assert_eq(@format.infer_type("123"), @format.IntType)
-  assert_eq(@format.infer_type("45.6"), @format.FloatType)
-  assert_eq(@format.infer_type("true"), @format.BoolType)
-  assert_eq(@format.infer_type("null"), @format.NullType)
-  assert_eq(@format.infer_type("hello"), @format.StringType)
+  assert_eq(@io.infer_type("123"), @io.IntType)
+  assert_eq(@io.infer_type("45.6"), @io.FloatType)
+  assert_eq(@io.infer_type("true"), @io.BoolType)
+  assert_eq(@io.infer_type("null"), @io.NullType)
+  assert_eq(@io.infer_type("hello"), @io.StringType)
 }
 
 ///|
 test "format_infer_column_type" {
-  assert_eq(@format.infer_column_type(["1", "2", "3"]), @format.IntType)
-  assert_eq(@format.infer_column_type(["1.0", "2.5"]), @format.FloatType)
-  assert_eq(@format.infer_column_type(["true", "false"]), @format.BoolType)
-  assert_eq(@format.infer_column_type(["a", "b", "c"]), @format.StringType)
+  assert_eq(@io.infer_column_type(["1", "2", "3"]), @io.IntType)
+  assert_eq(@io.infer_column_type(["1.0", "2.5"]), @io.FloatType)
+  assert_eq(@io.infer_column_type(["true", "false"]), @io.BoolType)
+  assert_eq(@io.infer_column_type(["a", "b", "c"]), @io.StringType)
 }
 
 ///|
 test "format_transpose" {
   let cols = [
-    @format.make_column("a", @format.StringType, false),
-    @format.make_column("b", @format.StringType, false),
+    @io.make_column("a", @io.StringType, false),
+    @io.make_column("b", @io.StringType, false),
   ]
-  let rows = [@format.make_row(["1", "2"]), @format.make_row(["3", "4"])]
-  let table = @format.make_table(cols, rows)
-  let transposed = @format.transpose_table(table)
-  assert_eq(@format.row_count(transposed), 2)
-  assert_eq(@format.column_count(transposed), 2)
+  let rows = [@io.make_row(["1", "2"]), @io.make_row(["3", "4"])]
+  let table = @io.make_table(cols, rows)
+  let transposed = @io.transpose_table(table)
+  assert_eq(@io.row_count(transposed), 2)
+  assert_eq(@io.column_count(transposed), 2)
 }
 
 ///|
 test "format_table_stats" {
   let cols = [
-    @format.make_column("a", @format.IntType, false),
-    @format.make_column("b", @format.StringType, true),
+    @io.make_column("a", @io.IntType, false),
+    @io.make_column("b", @io.StringType, true),
   ]
   let rows = [
-    @format.make_row(["1", "x"]),
-    @format.make_row(["2", "y"]),
-    @format.make_row(["3", "z"]),
+    @io.make_row(["1", "x"]),
+    @io.make_row(["2", "y"]),
+    @io.make_row(["3", "z"]),
   ]
-  let table = @format.make_table(cols, rows)
-  assert_eq(@format.row_count(table), 3)
-  assert_eq(@format.column_count(table), 2)
-  let idx = @format.column_index(table, "b")
+  let table = @io.make_table(cols, rows)
+  assert_eq(@io.row_count(table), 3)
+  assert_eq(@io.column_count(table), 2)
+  let idx = @io.column_index(table, "b")
   assert_eq(idx, Some(1))
-  let vals = @format.column_values(table, 0)
+  let vals = @io.column_values(table, 0)
   assert_eq(vals.length(), 3)
   assert_eq(vals[0], "1")
 }
 
 ///|
 test "format_type_name" {
-  assert_eq(@format.type_name(@format.StringType), "string")
-  assert_eq(@format.type_name(@format.IntType), "int")
-  assert_eq(@format.type_name(@format.FloatType), "float")
-  assert_eq(@format.type_name(@format.BoolType), "bool")
-  assert_eq(@format.type_name(@format.NullType), "null")
+  assert_eq(@io.type_name(@io.StringType), "string")
+  assert_eq(@io.type_name(@io.IntType), "int")
+  assert_eq(@io.type_name(@io.FloatType), "float")
+  assert_eq(@io.type_name(@io.BoolType), "bool")
+  assert_eq(@io.type_name(@io.NullType), "null")
 }
 
 ///|
 test "format_id" {
-  assert_eq(@format.format_id(), "io/format")
+  assert_eq(@io.format_id(), "io/format")
 }
 
 ///|

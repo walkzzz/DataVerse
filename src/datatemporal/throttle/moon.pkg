@@ -1,5 +1,0 @@
-// datatemporal/throttle datatemporal/throttle
-// S13.231 new
-import {
-  "dataverse/extcore/_common",
-}

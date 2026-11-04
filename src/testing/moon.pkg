@@ -1,0 +1,11 @@
+// testing — 测试框架 / Test Frameworks
+// 合并包：fake（退化数据）+ mock（模拟依赖）
+import {
+  "dataverse/opcore/spatial",
+  "dataverse/learncore/ml",
+  "dataverse/learncore/dl",
+  "dataverse/agent_kit/llm",
+  "dataverse/agent_kit/retrieval",
+  "dataverse/agent_kit/memory",
+  "dataverse/agent_kit/tool",
+}

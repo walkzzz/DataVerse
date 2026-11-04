@@ -1,2 +1,0 @@
-// datair/ir_core 基础节点 / IR core: base node + metadata
-// S0.6 填充：IRNodeId + IRMetadata，被 ir_entity/ir_operator 共享

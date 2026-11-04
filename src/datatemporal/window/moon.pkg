@@ -1,2 +1,5 @@
-// datatemporal/window 时间窗口 / Time Window
-// S10.2 新建：滑动/滚动/会话窗口 +20 fn
+// datatemporal/window 窗口计算 / Window computations
+// 合并包：window + window_count + window_global + window_session + window_slide + window_time + window_tumble
+import {
+  "dataverse/extcore/_common",
+}

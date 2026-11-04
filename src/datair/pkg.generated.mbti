@@ -1,20 +1,274 @@
 // Generated using `moon info`, DON'T EDIT IT
 package "dataverse/datair"
 
+import {
+  "moonbitlang/core/debug",
+}
+
 // Values
+pub fn apply_fusion(PipelineIR) -> FusionResult
+
+pub fn count_live_nodes(Array[IRNode]) -> Int32
+
 pub fn datair_id() -> String
+
+pub fn determinism_name(Determinism) -> String
+
+pub fn eliminate_dead(Array[IRNode]) -> Array[IRNode]
+
+pub fn entity_type_name(EntityType) -> String
+
+pub fn fold_binary_op(String, Double, Double) -> Double?
+
+pub fn fold_unary_op(String, Double) -> Double?
+
+pub fn fuse_adjacent_maps(PipelineIR) -> PipelineIR
+
+pub fn fusion_reduction_ratio(FusionResult) -> Double
+
+pub fn fusion_result_uri(FusionResult) -> String
+
+pub fn fusion_rule_name(FusionRule) -> String
 
 pub fn ir_core_id() -> String
 
 pub fn ir_entity_id() -> String
 
+pub fn ir_fusion_id() -> String
+
 pub fn ir_kind_count() -> Int32
 
 pub fn ir_operator_id() -> String
 
+pub fn ir_optimizer_id() -> String
+
+pub fn ir_pipeline_id() -> String
+
+pub fn ir_transform_id() -> String
+
+pub fn iterative_fusion(PipelineIR, Int32) -> FusionResult
+
+pub fn make_fusion_result(Int32, Int32, Array[FusionRule]) -> FusionResult
+
+pub fn make_node(IRNodeKind, String, Array[Int32]) -> IRNode
+
+pub fn make_transform_result(TransformKind, Int32, Int32, Bool, Int32) -> TransformResult
+
+pub fn mark_dead(Array[IRNode], Int32) -> Array[IRNode]
+
+pub fn modality_name(IRModality) -> String
+
+pub fn opt_stats(PipelineIR, PipelineIR) -> OptStats
+
+pub fn optimize(PipelineIR) -> PipelineIR
+
+pub fn parse_constant(String) -> Double?
+
+pub fn remove_identity(PipelineIR) -> PipelineIR
+
+pub fn run_constant_folding(Array[IRNode]) -> TransformResult
+
+pub fn run_dead_code_elimination(Array[IRNode]) -> TransformResult
+
+pub fn simplify_add(String, String) -> String
+
+pub fn simplify_mul(String, String) -> String
+
+pub fn transform_name(TransformKind) -> String
+
 // Errors
 
 // Types and methods
+pub struct CostModel {
+  time_complexity : String
+  space_complexity : String
+  estimated_cost : Double
+} derive(Eq, @debug.Debug)
+pub fn CostModel::equal(Self, Self) -> Bool
+pub fn CostModel::estimated_cost(Self) -> Double
+pub fn CostModel::new(String, String, Double) -> Self
+pub fn CostModel::not_equal(Self, Self) -> Bool
+pub fn CostModel::simple() -> Self
+pub fn CostModel::space_complexity(Self) -> String
+pub fn CostModel::time_complexity(Self) -> String
+pub fn CostModel::to_repr(Self) -> @debug.Repr
+
+pub struct DAGEdge {
+  from : IRNodeId
+  to : IRNodeId
+} derive(Eq, @debug.Debug)
+pub fn DAGEdge::equal(Self, Self) -> Bool
+pub fn DAGEdge::new(IRNodeId, IRNodeId) -> Self
+pub fn DAGEdge::not_equal(Self, Self) -> Bool
+pub fn DAGEdge::to_repr(Self) -> @debug.Repr
+
+pub(all) enum Determinism {
+  Deterministic
+  ApproximateWithSeed(Int32)
+  NonDeterministic
+} derive(Eq, @debug.Debug)
+pub fn Determinism::equal(Self, Self) -> Bool
+pub fn Determinism::not_equal(Self, Self) -> Bool
+pub fn Determinism::to_repr(Self) -> @debug.Repr
+
+pub struct EntityIR {
+  node_id : IRNodeId
+  entity_type : EntityType
+  schema_ref : String
+  size_hint : Int32
+  metadata : IRMetadata
+} derive(Eq, @debug.Debug)
+pub fn EntityIR::entity_type(Self) -> EntityType
+pub fn EntityIR::equal(Self, Self) -> Bool
+pub fn EntityIR::new(IRNodeId, EntityType, String, Int32, IRMetadata) -> Self
+pub fn EntityIR::node_id(Self) -> IRNodeId
+pub fn EntityIR::not_equal(Self, Self) -> Bool
+pub fn EntityIR::schema_ref(Self) -> String
+pub fn EntityIR::simple(IRNodeId, EntityType, String) -> Self
+pub fn EntityIR::size_hint(Self) -> Int32
+pub fn EntityIR::to_repr(Self) -> @debug.Repr
+
+pub(all) enum EntityType {
+  DataObject
+  Chunk
+  Embedding
+  Dataset
+} derive(Eq, @debug.Debug)
+pub fn EntityType::equal(Self, Self) -> Bool
+pub fn EntityType::not_equal(Self, Self) -> Bool
+pub fn EntityType::to_repr(Self) -> @debug.Repr
+
+pub struct FusionResult {
+  original_node_count : Int32
+  fused_node_count : Int32
+  rules_applied : Array[FusionRule]
+  reduction : Int32
+} derive(Eq, @debug.Debug)
+pub fn FusionResult::equal(Self, Self) -> Bool
+pub fn FusionResult::not_equal(Self, Self) -> Bool
+pub fn FusionResult::to_repr(Self) -> @debug.Repr
+
+pub(all) enum FusionRule {
+  MapFusion
+  FilterFusion
+  IdentityElimination
+  DeadCodeElimination
+} derive(Eq, @debug.Debug)
+pub fn FusionRule::equal(Self, Self) -> Bool
+pub fn FusionRule::not_equal(Self, Self) -> Bool
+pub fn FusionRule::to_repr(Self) -> @debug.Repr
+
+pub struct IRMetadata {
+  tags : Array[String]
+  version : String
+  source : String
+} derive(Eq, @debug.Debug)
+pub fn IRMetadata::empty() -> Self
+pub fn IRMetadata::equal(Self, Self) -> Bool
+pub fn IRMetadata::is_empty(Self) -> Bool
+pub fn IRMetadata::new(Array[String], String, String) -> Self
+pub fn IRMetadata::not_equal(Self, Self) -> Bool
+pub fn IRMetadata::tag_count(Self) -> Int32
+pub fn IRMetadata::to_repr(Self) -> @debug.Repr
+
+pub(all) enum IRModality {
+  Text
+  Image
+  Audio
+  Video
+  Table
+  Code
+  Multi
+} derive(Eq, @debug.Debug)
+pub fn IRModality::equal(Self, Self) -> Bool
+pub fn IRModality::not_equal(Self, Self) -> Bool
+pub fn IRModality::to_repr(Self) -> @debug.Repr
+
+pub struct IRNode {
+  kind : IRNodeKind
+  value : String
+  children : Array[Int32]
+  is_dead : Bool
+}
+
+pub struct IRNodeId {
+  value : String
+} derive(Eq, @debug.Debug)
+pub fn IRNodeId::equal(Self, Self) -> Bool
+pub fn IRNodeId::is_valid(Self) -> Bool
+pub fn IRNodeId::new(String) -> Self
+pub fn IRNodeId::not_equal(Self, Self) -> Bool
+pub fn IRNodeId::to_repr(Self) -> @debug.Repr
+pub fn IRNodeId::value(Self) -> String
+
+pub(all) enum IRNodeKind {
+  Constant
+  Variable
+  BinaryOp
+  UnaryOp
+  FunctionCall
+  Branch
+  Loop
+  Return
+}
+
+pub struct OperatorIR {
+  node_id : IRNodeId
+  name : String
+  params : Array[(String, String)]
+  modality : IRModality
+  determinism : Determinism
+  cost_model : CostModel
+  metadata : IRMetadata
+} derive(Eq, @debug.Debug)
+pub fn OperatorIR::equal(Self, Self) -> Bool
+pub fn OperatorIR::name(Self) -> String
+pub fn OperatorIR::new(IRNodeId, String, Array[(String, String)], IRModality, Determinism, CostModel, IRMetadata) -> Self
+pub fn OperatorIR::node_id(Self) -> IRNodeId
+pub fn OperatorIR::not_equal(Self, Self) -> Bool
+pub fn OperatorIR::param_count(Self) -> Int32
+pub fn OperatorIR::simple(IRNodeId, String, IRModality, Determinism) -> Self
+pub fn OperatorIR::to_repr(Self) -> @debug.Repr
+
+pub struct OptStats {
+  original_nodes : Int32
+  optimized_nodes : Int32
+  removed : Int32
+} derive(Eq, @debug.Debug)
+pub fn OptStats::equal(Self, Self) -> Bool
+pub fn OptStats::not_equal(Self, Self) -> Bool
+pub fn OptStats::to_repr(Self) -> @debug.Repr
+
+pub struct PipelineIR {
+  nodes : Array[OperatorIR]
+  edges : Array[DAGEdge]
+} derive(Eq, @debug.Debug)
+pub fn PipelineIR::add_edge(Self, DAGEdge) -> Self
+pub fn PipelineIR::add_node(Self, OperatorIR) -> Self
+pub fn PipelineIR::edge_count(Self) -> Int32
+pub fn PipelineIR::empty() -> Self
+pub fn PipelineIR::equal(Self, Self) -> Bool
+pub fn PipelineIR::new(Array[OperatorIR], Array[DAGEdge]) -> Self
+pub fn PipelineIR::node_count(Self) -> Int32
+pub fn PipelineIR::not_equal(Self, Self) -> Bool
+pub fn PipelineIR::to_repr(Self) -> @debug.Repr
+pub fn PipelineIR::topo_order(Self) -> Array[IRNodeId]
+
+pub(all) enum TransformKind {
+  ConstantFolding
+  DeadCodeElimination
+  ExpressionSimplification
+  InlineExpansion
+  LoopUnrolling
+}
+
+pub struct TransformResult {
+  kind : TransformKind
+  input_nodes : Int32
+  output_nodes : Int32
+  changed : Bool
+  passes : Int32
+}
 
 // Type aliases
 

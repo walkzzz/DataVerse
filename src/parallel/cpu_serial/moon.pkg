@@ -1,5 +1,5 @@
 // parallel/cpu_serial CPU 串行执行后端 / CPU Serial Execution Backend
 // S1.6 基礎：执行计划 + 串行执行 + 轨迹记录
 import {
-  "dataverse/datair/ir_pipeline",
+  "dataverse/datair",
 }

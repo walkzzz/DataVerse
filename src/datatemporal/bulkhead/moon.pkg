@@ -1,5 +1,0 @@
-// datatemporal/bulkhead datatemporal/bulkhead
-// S13.229 new
-import {
-  "dataverse/extcore/_common",
-}

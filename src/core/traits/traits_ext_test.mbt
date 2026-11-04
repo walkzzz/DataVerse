@@ -446,3 +446,75 @@ test "trait_iterable_exhaustion" {
   assert_true(next(arr, 2) == Some(30))
   assert_true(next(arr, 3) == None)
 }
+
+///|
+test "trait_combinator_check_and_reset" {
+  fn check(self : Int) -> Bool { self > 0 }
+  fn reset(_self : Int) -> Int { 0 }
+  let v = 5
+  assert_true(check(v))
+  let r = reset(v)
+  assert_true(check(r) == false)
+}
+
+///|
+test "trait_combinator_display_with_status" {
+  fn display(_self : Int) -> String { "Int" }
+  fn check(self : Int) -> Bool { self > 0 }
+  let v = 42
+  let status = if check(v) { "OK" } else { "INVALID" }
+  let result = display(v) + " [" + status + "]"
+  assert_true(result == "Int [OK]")
+}
+
+///|
+test "trait_combinator_name_with_version" {
+  fn name(_self : Int) -> String { "MyType" }
+  fn version(_self : Int) -> String { "1.0" }
+  let v = 0
+  let result = name(v) + " v" + version(v)
+  assert_true(result == "MyType v1.0")
+}
+
+///|
+test "trait_combinator_double_check" {
+  fn check(self : Int) -> Bool { self > 0 }
+  fn verify(self : Int) -> Bool { check(self) }
+  let v = 42
+  assert_true(verify(v) && check(v))
+  let v2 = -1
+  assert_true(verify(v2) == false)
+}
+
+///|
+test "trait_default_displayable" {
+  fn name(_self : Int) -> String { "Point" }
+  fn describe(self : Int) -> String { "val=" + self.to_string() }
+  let v = 42
+  let display = name(v) + "(" + describe(v) + ")"
+  assert_true(display == "Point(val=42)")
+}
+
+///|
+test "trait_helper_point_describe" {
+  let r = @traits.point_describe(1.5, 2.5)
+  assert_true(r.contains("x=1.5"))
+}
+
+///|
+test "trait_helper_series_describe" {
+  let r = @traits.series_describe(3, "test")
+  assert_true(r == "vals=3, name=test")
+}
+
+///|
+test "trait_helper_matrix_describe" {
+  let r = @traits.matrix_describe(2, 3)
+  assert_true(r == "rows=2, cols=3")
+}
+
+///|
+test "trait_helper_vector_describe" {
+  let r = @traits.vector_describe(5)
+  assert_true(r == "dim=5")
+}

@@ -2003,14 +2003,12 @@ pub fn Color_correctMatrix::check(Self) -> Bool
 pub fn Color_correctMatrix::clone(Self) -> Self
 pub fn Color_correctMatrix::count(Self) -> Int32
 pub fn Color_correctMatrix::describe(Self) -> String
-pub fn Color_correctMatrix::display(Self) -> String
 pub fn Color_correctMatrix::name(Self) -> String
 pub fn Color_correctMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for Color_correctMatrix
 pub impl @traits.Cloneable for Color_correctMatrix
 pub impl @traits.Countable for Color_correctMatrix
 pub impl @traits.Describable for Color_correctMatrix
-pub impl @traits.Displayable for Color_correctMatrix
 pub impl @traits.Named for Color_correctMatrix
 pub impl @traits.Resettable for Color_correctMatrix
 
@@ -2023,14 +2021,12 @@ pub fn Color_correctPoint::check(Self) -> Bool
 pub fn Color_correctPoint::clone(Self) -> Self
 pub fn Color_correctPoint::count(Self) -> Int32
 pub fn Color_correctPoint::describe(Self) -> String
-pub fn Color_correctPoint::display(Self) -> String
 pub fn Color_correctPoint::name(Self) -> String
 pub fn Color_correctPoint::reset(Self) -> Self
 pub impl @traits.Checkable for Color_correctPoint
 pub impl @traits.Cloneable for Color_correctPoint
 pub impl @traits.Countable for Color_correctPoint
 pub impl @traits.Describable for Color_correctPoint
-pub impl @traits.Displayable for Color_correctPoint
 pub impl @traits.Named for Color_correctPoint
 pub impl @traits.Resettable for Color_correctPoint
 
@@ -2042,14 +2038,12 @@ pub fn Color_correctSeries::check(Self) -> Bool
 pub fn Color_correctSeries::clone(Self) -> Self
 pub fn Color_correctSeries::count(Self) -> Int32
 pub fn Color_correctSeries::describe(Self) -> String
-pub fn Color_correctSeries::display(Self) -> String
 pub fn Color_correctSeries::name(Self) -> String
 pub fn Color_correctSeries::reset(Self) -> Self
 pub impl @traits.Checkable for Color_correctSeries
 pub impl @traits.Cloneable for Color_correctSeries
 pub impl @traits.Countable for Color_correctSeries
 pub impl @traits.Describable for Color_correctSeries
-pub impl @traits.Displayable for Color_correctSeries
 pub impl @traits.Named for Color_correctSeries
 pub impl @traits.Resettable for Color_correctSeries
 
@@ -2061,14 +2055,12 @@ pub fn Color_correctVector::check(Self) -> Bool
 pub fn Color_correctVector::clone(Self) -> Self
 pub fn Color_correctVector::count(Self) -> Int32
 pub fn Color_correctVector::describe(Self) -> String
-pub fn Color_correctVector::display(Self) -> String
 pub fn Color_correctVector::name(Self) -> String
 pub fn Color_correctVector::reset(Self) -> Self
 pub impl @traits.Checkable for Color_correctVector
 pub impl @traits.Cloneable for Color_correctVector
 pub impl @traits.Countable for Color_correctVector
 pub impl @traits.Describable for Color_correctVector
-pub impl @traits.Displayable for Color_correctVector
 pub impl @traits.Named for Color_correctVector
 pub impl @traits.Resettable for Color_correctVector
 
@@ -2081,14 +2073,12 @@ pub fn Color_spaceMatrix::check(Self) -> Bool
 pub fn Color_spaceMatrix::clone(Self) -> Self
 pub fn Color_spaceMatrix::count(Self) -> Int32
 pub fn Color_spaceMatrix::describe(Self) -> String
-pub fn Color_spaceMatrix::display(Self) -> String
 pub fn Color_spaceMatrix::name(Self) -> String
 pub fn Color_spaceMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for Color_spaceMatrix
 pub impl @traits.Cloneable for Color_spaceMatrix
 pub impl @traits.Countable for Color_spaceMatrix
 pub impl @traits.Describable for Color_spaceMatrix
-pub impl @traits.Displayable for Color_spaceMatrix
 pub impl @traits.Named for Color_spaceMatrix
 pub impl @traits.Resettable for Color_spaceMatrix
 
@@ -2101,14 +2091,12 @@ pub fn Color_spacePoint::check(Self) -> Bool
 pub fn Color_spacePoint::clone(Self) -> Self
 pub fn Color_spacePoint::count(Self) -> Int32
 pub fn Color_spacePoint::describe(Self) -> String
-pub fn Color_spacePoint::display(Self) -> String
 pub fn Color_spacePoint::name(Self) -> String
 pub fn Color_spacePoint::reset(Self) -> Self
 pub impl @traits.Checkable for Color_spacePoint
 pub impl @traits.Cloneable for Color_spacePoint
 pub impl @traits.Countable for Color_spacePoint
 pub impl @traits.Describable for Color_spacePoint
-pub impl @traits.Displayable for Color_spacePoint
 pub impl @traits.Named for Color_spacePoint
 pub impl @traits.Resettable for Color_spacePoint
 
@@ -2120,14 +2108,12 @@ pub fn Color_spaceSeries::check(Self) -> Bool
 pub fn Color_spaceSeries::clone(Self) -> Self
 pub fn Color_spaceSeries::count(Self) -> Int32
 pub fn Color_spaceSeries::describe(Self) -> String
-pub fn Color_spaceSeries::display(Self) -> String
 pub fn Color_spaceSeries::name(Self) -> String
 pub fn Color_spaceSeries::reset(Self) -> Self
 pub impl @traits.Checkable for Color_spaceSeries
 pub impl @traits.Cloneable for Color_spaceSeries
 pub impl @traits.Countable for Color_spaceSeries
 pub impl @traits.Describable for Color_spaceSeries
-pub impl @traits.Displayable for Color_spaceSeries
 pub impl @traits.Named for Color_spaceSeries
 pub impl @traits.Resettable for Color_spaceSeries
 
@@ -2139,14 +2125,12 @@ pub fn Color_spaceVector::check(Self) -> Bool
 pub fn Color_spaceVector::clone(Self) -> Self
 pub fn Color_spaceVector::count(Self) -> Int32
 pub fn Color_spaceVector::describe(Self) -> String
-pub fn Color_spaceVector::display(Self) -> String
 pub fn Color_spaceVector::name(Self) -> String
 pub fn Color_spaceVector::reset(Self) -> Self
 pub impl @traits.Checkable for Color_spaceVector
 pub impl @traits.Cloneable for Color_spaceVector
 pub impl @traits.Countable for Color_spaceVector
 pub impl @traits.Describable for Color_spaceVector
-pub impl @traits.Displayable for Color_spaceVector
 pub impl @traits.Named for Color_spaceVector
 pub impl @traits.Resettable for Color_spaceVector
 
@@ -2179,14 +2163,12 @@ pub fn DeblurMatrix::check(Self) -> Bool
 pub fn DeblurMatrix::clone(Self) -> Self
 pub fn DeblurMatrix::count(Self) -> Int32
 pub fn DeblurMatrix::describe(Self) -> String
-pub fn DeblurMatrix::display(Self) -> String
 pub fn DeblurMatrix::name(Self) -> String
 pub fn DeblurMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for DeblurMatrix
 pub impl @traits.Cloneable for DeblurMatrix
 pub impl @traits.Countable for DeblurMatrix
 pub impl @traits.Describable for DeblurMatrix
-pub impl @traits.Displayable for DeblurMatrix
 pub impl @traits.Named for DeblurMatrix
 pub impl @traits.Resettable for DeblurMatrix
 
@@ -2199,14 +2181,12 @@ pub fn DeblurPoint::check(Self) -> Bool
 pub fn DeblurPoint::clone(Self) -> Self
 pub fn DeblurPoint::count(Self) -> Int32
 pub fn DeblurPoint::describe(Self) -> String
-pub fn DeblurPoint::display(Self) -> String
 pub fn DeblurPoint::name(Self) -> String
 pub fn DeblurPoint::reset(Self) -> Self
 pub impl @traits.Checkable for DeblurPoint
 pub impl @traits.Cloneable for DeblurPoint
 pub impl @traits.Countable for DeblurPoint
 pub impl @traits.Describable for DeblurPoint
-pub impl @traits.Displayable for DeblurPoint
 pub impl @traits.Named for DeblurPoint
 pub impl @traits.Resettable for DeblurPoint
 
@@ -2218,14 +2198,12 @@ pub fn DeblurSeries::check(Self) -> Bool
 pub fn DeblurSeries::clone(Self) -> Self
 pub fn DeblurSeries::count(Self) -> Int32
 pub fn DeblurSeries::describe(Self) -> String
-pub fn DeblurSeries::display(Self) -> String
 pub fn DeblurSeries::name(Self) -> String
 pub fn DeblurSeries::reset(Self) -> Self
 pub impl @traits.Checkable for DeblurSeries
 pub impl @traits.Cloneable for DeblurSeries
 pub impl @traits.Countable for DeblurSeries
 pub impl @traits.Describable for DeblurSeries
-pub impl @traits.Displayable for DeblurSeries
 pub impl @traits.Named for DeblurSeries
 pub impl @traits.Resettable for DeblurSeries
 
@@ -2237,14 +2215,12 @@ pub fn DeblurVector::check(Self) -> Bool
 pub fn DeblurVector::clone(Self) -> Self
 pub fn DeblurVector::count(Self) -> Int32
 pub fn DeblurVector::describe(Self) -> String
-pub fn DeblurVector::display(Self) -> String
 pub fn DeblurVector::name(Self) -> String
 pub fn DeblurVector::reset(Self) -> Self
 pub impl @traits.Checkable for DeblurVector
 pub impl @traits.Cloneable for DeblurVector
 pub impl @traits.Countable for DeblurVector
 pub impl @traits.Describable for DeblurVector
-pub impl @traits.Displayable for DeblurVector
 pub impl @traits.Named for DeblurVector
 pub impl @traits.Resettable for DeblurVector
 
@@ -2257,14 +2233,12 @@ pub fn DemosaicMatrix::check(Self) -> Bool
 pub fn DemosaicMatrix::clone(Self) -> Self
 pub fn DemosaicMatrix::count(Self) -> Int32
 pub fn DemosaicMatrix::describe(Self) -> String
-pub fn DemosaicMatrix::display(Self) -> String
 pub fn DemosaicMatrix::name(Self) -> String
 pub fn DemosaicMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for DemosaicMatrix
 pub impl @traits.Cloneable for DemosaicMatrix
 pub impl @traits.Countable for DemosaicMatrix
 pub impl @traits.Describable for DemosaicMatrix
-pub impl @traits.Displayable for DemosaicMatrix
 pub impl @traits.Named for DemosaicMatrix
 pub impl @traits.Resettable for DemosaicMatrix
 
@@ -2277,14 +2251,12 @@ pub fn DemosaicPoint::check(Self) -> Bool
 pub fn DemosaicPoint::clone(Self) -> Self
 pub fn DemosaicPoint::count(Self) -> Int32
 pub fn DemosaicPoint::describe(Self) -> String
-pub fn DemosaicPoint::display(Self) -> String
 pub fn DemosaicPoint::name(Self) -> String
 pub fn DemosaicPoint::reset(Self) -> Self
 pub impl @traits.Checkable for DemosaicPoint
 pub impl @traits.Cloneable for DemosaicPoint
 pub impl @traits.Countable for DemosaicPoint
 pub impl @traits.Describable for DemosaicPoint
-pub impl @traits.Displayable for DemosaicPoint
 pub impl @traits.Named for DemosaicPoint
 pub impl @traits.Resettable for DemosaicPoint
 
@@ -2296,14 +2268,12 @@ pub fn DemosaicSeries::check(Self) -> Bool
 pub fn DemosaicSeries::clone(Self) -> Self
 pub fn DemosaicSeries::count(Self) -> Int32
 pub fn DemosaicSeries::describe(Self) -> String
-pub fn DemosaicSeries::display(Self) -> String
 pub fn DemosaicSeries::name(Self) -> String
 pub fn DemosaicSeries::reset(Self) -> Self
 pub impl @traits.Checkable for DemosaicSeries
 pub impl @traits.Cloneable for DemosaicSeries
 pub impl @traits.Countable for DemosaicSeries
 pub impl @traits.Describable for DemosaicSeries
-pub impl @traits.Displayable for DemosaicSeries
 pub impl @traits.Named for DemosaicSeries
 pub impl @traits.Resettable for DemosaicSeries
 
@@ -2315,14 +2285,12 @@ pub fn DemosaicVector::check(Self) -> Bool
 pub fn DemosaicVector::clone(Self) -> Self
 pub fn DemosaicVector::count(Self) -> Int32
 pub fn DemosaicVector::describe(Self) -> String
-pub fn DemosaicVector::display(Self) -> String
 pub fn DemosaicVector::name(Self) -> String
 pub fn DemosaicVector::reset(Self) -> Self
 pub impl @traits.Checkable for DemosaicVector
 pub impl @traits.Cloneable for DemosaicVector
 pub impl @traits.Countable for DemosaicVector
 pub impl @traits.Describable for DemosaicVector
-pub impl @traits.Displayable for DemosaicVector
 pub impl @traits.Named for DemosaicVector
 pub impl @traits.Resettable for DemosaicVector
 
@@ -2386,14 +2354,12 @@ pub fn HdrMatrix::check(Self) -> Bool
 pub fn HdrMatrix::clone(Self) -> Self
 pub fn HdrMatrix::count(Self) -> Int32
 pub fn HdrMatrix::describe(Self) -> String
-pub fn HdrMatrix::display(Self) -> String
 pub fn HdrMatrix::name(Self) -> String
 pub fn HdrMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for HdrMatrix
 pub impl @traits.Cloneable for HdrMatrix
 pub impl @traits.Countable for HdrMatrix
 pub impl @traits.Describable for HdrMatrix
-pub impl @traits.Displayable for HdrMatrix
 pub impl @traits.Named for HdrMatrix
 pub impl @traits.Resettable for HdrMatrix
 
@@ -2406,14 +2372,12 @@ pub fn HdrPoint::check(Self) -> Bool
 pub fn HdrPoint::clone(Self) -> Self
 pub fn HdrPoint::count(Self) -> Int32
 pub fn HdrPoint::describe(Self) -> String
-pub fn HdrPoint::display(Self) -> String
 pub fn HdrPoint::name(Self) -> String
 pub fn HdrPoint::reset(Self) -> Self
 pub impl @traits.Checkable for HdrPoint
 pub impl @traits.Cloneable for HdrPoint
 pub impl @traits.Countable for HdrPoint
 pub impl @traits.Describable for HdrPoint
-pub impl @traits.Displayable for HdrPoint
 pub impl @traits.Named for HdrPoint
 pub impl @traits.Resettable for HdrPoint
 
@@ -2425,14 +2389,12 @@ pub fn HdrSeries::check(Self) -> Bool
 pub fn HdrSeries::clone(Self) -> Self
 pub fn HdrSeries::count(Self) -> Int32
 pub fn HdrSeries::describe(Self) -> String
-pub fn HdrSeries::display(Self) -> String
 pub fn HdrSeries::name(Self) -> String
 pub fn HdrSeries::reset(Self) -> Self
 pub impl @traits.Checkable for HdrSeries
 pub impl @traits.Cloneable for HdrSeries
 pub impl @traits.Countable for HdrSeries
 pub impl @traits.Describable for HdrSeries
-pub impl @traits.Displayable for HdrSeries
 pub impl @traits.Named for HdrSeries
 pub impl @traits.Resettable for HdrSeries
 
@@ -2444,14 +2406,12 @@ pub fn HdrVector::check(Self) -> Bool
 pub fn HdrVector::clone(Self) -> Self
 pub fn HdrVector::count(Self) -> Int32
 pub fn HdrVector::describe(Self) -> String
-pub fn HdrVector::display(Self) -> String
 pub fn HdrVector::name(Self) -> String
 pub fn HdrVector::reset(Self) -> Self
 pub impl @traits.Checkable for HdrVector
 pub impl @traits.Cloneable for HdrVector
 pub impl @traits.Countable for HdrVector
 pub impl @traits.Describable for HdrVector
-pub impl @traits.Displayable for HdrVector
 pub impl @traits.Named for HdrVector
 pub impl @traits.Resettable for HdrVector
 
@@ -2484,14 +2444,12 @@ pub fn Image_registrationMatrix::check(Self) -> Bool
 pub fn Image_registrationMatrix::clone(Self) -> Self
 pub fn Image_registrationMatrix::count(Self) -> Int32
 pub fn Image_registrationMatrix::describe(Self) -> String
-pub fn Image_registrationMatrix::display(Self) -> String
 pub fn Image_registrationMatrix::name(Self) -> String
 pub fn Image_registrationMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for Image_registrationMatrix
 pub impl @traits.Cloneable for Image_registrationMatrix
 pub impl @traits.Countable for Image_registrationMatrix
 pub impl @traits.Describable for Image_registrationMatrix
-pub impl @traits.Displayable for Image_registrationMatrix
 pub impl @traits.Named for Image_registrationMatrix
 pub impl @traits.Resettable for Image_registrationMatrix
 
@@ -2504,14 +2462,12 @@ pub fn Image_registrationPoint::check(Self) -> Bool
 pub fn Image_registrationPoint::clone(Self) -> Self
 pub fn Image_registrationPoint::count(Self) -> Int32
 pub fn Image_registrationPoint::describe(Self) -> String
-pub fn Image_registrationPoint::display(Self) -> String
 pub fn Image_registrationPoint::name(Self) -> String
 pub fn Image_registrationPoint::reset(Self) -> Self
 pub impl @traits.Checkable for Image_registrationPoint
 pub impl @traits.Cloneable for Image_registrationPoint
 pub impl @traits.Countable for Image_registrationPoint
 pub impl @traits.Describable for Image_registrationPoint
-pub impl @traits.Displayable for Image_registrationPoint
 pub impl @traits.Named for Image_registrationPoint
 pub impl @traits.Resettable for Image_registrationPoint
 
@@ -2523,14 +2479,12 @@ pub fn Image_registrationSeries::check(Self) -> Bool
 pub fn Image_registrationSeries::clone(Self) -> Self
 pub fn Image_registrationSeries::count(Self) -> Int32
 pub fn Image_registrationSeries::describe(Self) -> String
-pub fn Image_registrationSeries::display(Self) -> String
 pub fn Image_registrationSeries::name(Self) -> String
 pub fn Image_registrationSeries::reset(Self) -> Self
 pub impl @traits.Checkable for Image_registrationSeries
 pub impl @traits.Cloneable for Image_registrationSeries
 pub impl @traits.Countable for Image_registrationSeries
 pub impl @traits.Describable for Image_registrationSeries
-pub impl @traits.Displayable for Image_registrationSeries
 pub impl @traits.Named for Image_registrationSeries
 pub impl @traits.Resettable for Image_registrationSeries
 
@@ -2542,14 +2496,12 @@ pub fn Image_registrationVector::check(Self) -> Bool
 pub fn Image_registrationVector::clone(Self) -> Self
 pub fn Image_registrationVector::count(Self) -> Int32
 pub fn Image_registrationVector::describe(Self) -> String
-pub fn Image_registrationVector::display(Self) -> String
 pub fn Image_registrationVector::name(Self) -> String
 pub fn Image_registrationVector::reset(Self) -> Self
 pub impl @traits.Checkable for Image_registrationVector
 pub impl @traits.Cloneable for Image_registrationVector
 pub impl @traits.Countable for Image_registrationVector
 pub impl @traits.Describable for Image_registrationVector
-pub impl @traits.Displayable for Image_registrationVector
 pub impl @traits.Named for Image_registrationVector
 pub impl @traits.Resettable for Image_registrationVector
 
@@ -2562,14 +2514,12 @@ pub fn Image_restorationMatrix::check(Self) -> Bool
 pub fn Image_restorationMatrix::clone(Self) -> Self
 pub fn Image_restorationMatrix::count(Self) -> Int32
 pub fn Image_restorationMatrix::describe(Self) -> String
-pub fn Image_restorationMatrix::display(Self) -> String
 pub fn Image_restorationMatrix::name(Self) -> String
 pub fn Image_restorationMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for Image_restorationMatrix
 pub impl @traits.Cloneable for Image_restorationMatrix
 pub impl @traits.Countable for Image_restorationMatrix
 pub impl @traits.Describable for Image_restorationMatrix
-pub impl @traits.Displayable for Image_restorationMatrix
 pub impl @traits.Named for Image_restorationMatrix
 pub impl @traits.Resettable for Image_restorationMatrix
 
@@ -2582,14 +2532,12 @@ pub fn Image_restorationPoint::check(Self) -> Bool
 pub fn Image_restorationPoint::clone(Self) -> Self
 pub fn Image_restorationPoint::count(Self) -> Int32
 pub fn Image_restorationPoint::describe(Self) -> String
-pub fn Image_restorationPoint::display(Self) -> String
 pub fn Image_restorationPoint::name(Self) -> String
 pub fn Image_restorationPoint::reset(Self) -> Self
 pub impl @traits.Checkable for Image_restorationPoint
 pub impl @traits.Cloneable for Image_restorationPoint
 pub impl @traits.Countable for Image_restorationPoint
 pub impl @traits.Describable for Image_restorationPoint
-pub impl @traits.Displayable for Image_restorationPoint
 pub impl @traits.Named for Image_restorationPoint
 pub impl @traits.Resettable for Image_restorationPoint
 
@@ -2601,14 +2549,12 @@ pub fn Image_restorationSeries::check(Self) -> Bool
 pub fn Image_restorationSeries::clone(Self) -> Self
 pub fn Image_restorationSeries::count(Self) -> Int32
 pub fn Image_restorationSeries::describe(Self) -> String
-pub fn Image_restorationSeries::display(Self) -> String
 pub fn Image_restorationSeries::name(Self) -> String
 pub fn Image_restorationSeries::reset(Self) -> Self
 pub impl @traits.Checkable for Image_restorationSeries
 pub impl @traits.Cloneable for Image_restorationSeries
 pub impl @traits.Countable for Image_restorationSeries
 pub impl @traits.Describable for Image_restorationSeries
-pub impl @traits.Displayable for Image_restorationSeries
 pub impl @traits.Named for Image_restorationSeries
 pub impl @traits.Resettable for Image_restorationSeries
 
@@ -2620,14 +2566,12 @@ pub fn Image_restorationVector::check(Self) -> Bool
 pub fn Image_restorationVector::clone(Self) -> Self
 pub fn Image_restorationVector::count(Self) -> Int32
 pub fn Image_restorationVector::describe(Self) -> String
-pub fn Image_restorationVector::display(Self) -> String
 pub fn Image_restorationVector::name(Self) -> String
 pub fn Image_restorationVector::reset(Self) -> Self
 pub impl @traits.Checkable for Image_restorationVector
 pub impl @traits.Cloneable for Image_restorationVector
 pub impl @traits.Countable for Image_restorationVector
 pub impl @traits.Describable for Image_restorationVector
-pub impl @traits.Displayable for Image_restorationVector
 pub impl @traits.Named for Image_restorationVector
 pub impl @traits.Resettable for Image_restorationVector
 
@@ -2640,14 +2584,12 @@ pub fn Image_stitchMatrix::check(Self) -> Bool
 pub fn Image_stitchMatrix::clone(Self) -> Self
 pub fn Image_stitchMatrix::count(Self) -> Int32
 pub fn Image_stitchMatrix::describe(Self) -> String
-pub fn Image_stitchMatrix::display(Self) -> String
 pub fn Image_stitchMatrix::name(Self) -> String
 pub fn Image_stitchMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for Image_stitchMatrix
 pub impl @traits.Cloneable for Image_stitchMatrix
 pub impl @traits.Countable for Image_stitchMatrix
 pub impl @traits.Describable for Image_stitchMatrix
-pub impl @traits.Displayable for Image_stitchMatrix
 pub impl @traits.Named for Image_stitchMatrix
 pub impl @traits.Resettable for Image_stitchMatrix
 
@@ -2660,14 +2602,12 @@ pub fn Image_stitchPoint::check(Self) -> Bool
 pub fn Image_stitchPoint::clone(Self) -> Self
 pub fn Image_stitchPoint::count(Self) -> Int32
 pub fn Image_stitchPoint::describe(Self) -> String
-pub fn Image_stitchPoint::display(Self) -> String
 pub fn Image_stitchPoint::name(Self) -> String
 pub fn Image_stitchPoint::reset(Self) -> Self
 pub impl @traits.Checkable for Image_stitchPoint
 pub impl @traits.Cloneable for Image_stitchPoint
 pub impl @traits.Countable for Image_stitchPoint
 pub impl @traits.Describable for Image_stitchPoint
-pub impl @traits.Displayable for Image_stitchPoint
 pub impl @traits.Named for Image_stitchPoint
 pub impl @traits.Resettable for Image_stitchPoint
 
@@ -2679,14 +2619,12 @@ pub fn Image_stitchSeries::check(Self) -> Bool
 pub fn Image_stitchSeries::clone(Self) -> Self
 pub fn Image_stitchSeries::count(Self) -> Int32
 pub fn Image_stitchSeries::describe(Self) -> String
-pub fn Image_stitchSeries::display(Self) -> String
 pub fn Image_stitchSeries::name(Self) -> String
 pub fn Image_stitchSeries::reset(Self) -> Self
 pub impl @traits.Checkable for Image_stitchSeries
 pub impl @traits.Cloneable for Image_stitchSeries
 pub impl @traits.Countable for Image_stitchSeries
 pub impl @traits.Describable for Image_stitchSeries
-pub impl @traits.Displayable for Image_stitchSeries
 pub impl @traits.Named for Image_stitchSeries
 pub impl @traits.Resettable for Image_stitchSeries
 
@@ -2698,14 +2636,12 @@ pub fn Image_stitchVector::check(Self) -> Bool
 pub fn Image_stitchVector::clone(Self) -> Self
 pub fn Image_stitchVector::count(Self) -> Int32
 pub fn Image_stitchVector::describe(Self) -> String
-pub fn Image_stitchVector::display(Self) -> String
 pub fn Image_stitchVector::name(Self) -> String
 pub fn Image_stitchVector::reset(Self) -> Self
 pub impl @traits.Checkable for Image_stitchVector
 pub impl @traits.Cloneable for Image_stitchVector
 pub impl @traits.Countable for Image_stitchVector
 pub impl @traits.Describable for Image_stitchVector
-pub impl @traits.Displayable for Image_stitchVector
 pub impl @traits.Named for Image_stitchVector
 pub impl @traits.Resettable for Image_stitchVector
 
@@ -2718,14 +2654,12 @@ pub fn InpaintMatrix::check(Self) -> Bool
 pub fn InpaintMatrix::clone(Self) -> Self
 pub fn InpaintMatrix::count(Self) -> Int32
 pub fn InpaintMatrix::describe(Self) -> String
-pub fn InpaintMatrix::display(Self) -> String
 pub fn InpaintMatrix::name(Self) -> String
 pub fn InpaintMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for InpaintMatrix
 pub impl @traits.Cloneable for InpaintMatrix
 pub impl @traits.Countable for InpaintMatrix
 pub impl @traits.Describable for InpaintMatrix
-pub impl @traits.Displayable for InpaintMatrix
 pub impl @traits.Named for InpaintMatrix
 pub impl @traits.Resettable for InpaintMatrix
 
@@ -2738,14 +2672,12 @@ pub fn InpaintPoint::check(Self) -> Bool
 pub fn InpaintPoint::clone(Self) -> Self
 pub fn InpaintPoint::count(Self) -> Int32
 pub fn InpaintPoint::describe(Self) -> String
-pub fn InpaintPoint::display(Self) -> String
 pub fn InpaintPoint::name(Self) -> String
 pub fn InpaintPoint::reset(Self) -> Self
 pub impl @traits.Checkable for InpaintPoint
 pub impl @traits.Cloneable for InpaintPoint
 pub impl @traits.Countable for InpaintPoint
 pub impl @traits.Describable for InpaintPoint
-pub impl @traits.Displayable for InpaintPoint
 pub impl @traits.Named for InpaintPoint
 pub impl @traits.Resettable for InpaintPoint
 
@@ -2757,14 +2689,12 @@ pub fn InpaintSeries::check(Self) -> Bool
 pub fn InpaintSeries::clone(Self) -> Self
 pub fn InpaintSeries::count(Self) -> Int32
 pub fn InpaintSeries::describe(Self) -> String
-pub fn InpaintSeries::display(Self) -> String
 pub fn InpaintSeries::name(Self) -> String
 pub fn InpaintSeries::reset(Self) -> Self
 pub impl @traits.Checkable for InpaintSeries
 pub impl @traits.Cloneable for InpaintSeries
 pub impl @traits.Countable for InpaintSeries
 pub impl @traits.Describable for InpaintSeries
-pub impl @traits.Displayable for InpaintSeries
 pub impl @traits.Named for InpaintSeries
 pub impl @traits.Resettable for InpaintSeries
 
@@ -2776,14 +2706,12 @@ pub fn InpaintVector::check(Self) -> Bool
 pub fn InpaintVector::clone(Self) -> Self
 pub fn InpaintVector::count(Self) -> Int32
 pub fn InpaintVector::describe(Self) -> String
-pub fn InpaintVector::display(Self) -> String
 pub fn InpaintVector::name(Self) -> String
 pub fn InpaintVector::reset(Self) -> Self
 pub impl @traits.Checkable for InpaintVector
 pub impl @traits.Cloneable for InpaintVector
 pub impl @traits.Countable for InpaintVector
 pub impl @traits.Describable for InpaintVector
-pub impl @traits.Displayable for InpaintVector
 pub impl @traits.Named for InpaintVector
 pub impl @traits.Resettable for InpaintVector
 
@@ -2823,14 +2751,12 @@ pub fn PanoramaMatrix::check(Self) -> Bool
 pub fn PanoramaMatrix::clone(Self) -> Self
 pub fn PanoramaMatrix::count(Self) -> Int32
 pub fn PanoramaMatrix::describe(Self) -> String
-pub fn PanoramaMatrix::display(Self) -> String
 pub fn PanoramaMatrix::name(Self) -> String
 pub fn PanoramaMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for PanoramaMatrix
 pub impl @traits.Cloneable for PanoramaMatrix
 pub impl @traits.Countable for PanoramaMatrix
 pub impl @traits.Describable for PanoramaMatrix
-pub impl @traits.Displayable for PanoramaMatrix
 pub impl @traits.Named for PanoramaMatrix
 pub impl @traits.Resettable for PanoramaMatrix
 
@@ -2843,14 +2769,12 @@ pub fn PanoramaPoint::check(Self) -> Bool
 pub fn PanoramaPoint::clone(Self) -> Self
 pub fn PanoramaPoint::count(Self) -> Int32
 pub fn PanoramaPoint::describe(Self) -> String
-pub fn PanoramaPoint::display(Self) -> String
 pub fn PanoramaPoint::name(Self) -> String
 pub fn PanoramaPoint::reset(Self) -> Self
 pub impl @traits.Checkable for PanoramaPoint
 pub impl @traits.Cloneable for PanoramaPoint
 pub impl @traits.Countable for PanoramaPoint
 pub impl @traits.Describable for PanoramaPoint
-pub impl @traits.Displayable for PanoramaPoint
 pub impl @traits.Named for PanoramaPoint
 pub impl @traits.Resettable for PanoramaPoint
 
@@ -2862,14 +2786,12 @@ pub fn PanoramaSeries::check(Self) -> Bool
 pub fn PanoramaSeries::clone(Self) -> Self
 pub fn PanoramaSeries::count(Self) -> Int32
 pub fn PanoramaSeries::describe(Self) -> String
-pub fn PanoramaSeries::display(Self) -> String
 pub fn PanoramaSeries::name(Self) -> String
 pub fn PanoramaSeries::reset(Self) -> Self
 pub impl @traits.Checkable for PanoramaSeries
 pub impl @traits.Cloneable for PanoramaSeries
 pub impl @traits.Countable for PanoramaSeries
 pub impl @traits.Describable for PanoramaSeries
-pub impl @traits.Displayable for PanoramaSeries
 pub impl @traits.Named for PanoramaSeries
 pub impl @traits.Resettable for PanoramaSeries
 
@@ -2881,14 +2803,12 @@ pub fn PanoramaVector::check(Self) -> Bool
 pub fn PanoramaVector::clone(Self) -> Self
 pub fn PanoramaVector::count(Self) -> Int32
 pub fn PanoramaVector::describe(Self) -> String
-pub fn PanoramaVector::display(Self) -> String
 pub fn PanoramaVector::name(Self) -> String
 pub fn PanoramaVector::reset(Self) -> Self
 pub impl @traits.Checkable for PanoramaVector
 pub impl @traits.Cloneable for PanoramaVector
 pub impl @traits.Countable for PanoramaVector
 pub impl @traits.Describable for PanoramaVector
-pub impl @traits.Displayable for PanoramaVector
 pub impl @traits.Named for PanoramaVector
 pub impl @traits.Resettable for PanoramaVector
 
@@ -2964,14 +2884,12 @@ pub fn Super_resMatrix::check(Self) -> Bool
 pub fn Super_resMatrix::clone(Self) -> Self
 pub fn Super_resMatrix::count(Self) -> Int32
 pub fn Super_resMatrix::describe(Self) -> String
-pub fn Super_resMatrix::display(Self) -> String
 pub fn Super_resMatrix::name(Self) -> String
 pub fn Super_resMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for Super_resMatrix
 pub impl @traits.Cloneable for Super_resMatrix
 pub impl @traits.Countable for Super_resMatrix
 pub impl @traits.Describable for Super_resMatrix
-pub impl @traits.Displayable for Super_resMatrix
 pub impl @traits.Named for Super_resMatrix
 pub impl @traits.Resettable for Super_resMatrix
 
@@ -2984,14 +2902,12 @@ pub fn Super_resPoint::check(Self) -> Bool
 pub fn Super_resPoint::clone(Self) -> Self
 pub fn Super_resPoint::count(Self) -> Int32
 pub fn Super_resPoint::describe(Self) -> String
-pub fn Super_resPoint::display(Self) -> String
 pub fn Super_resPoint::name(Self) -> String
 pub fn Super_resPoint::reset(Self) -> Self
 pub impl @traits.Checkable for Super_resPoint
 pub impl @traits.Cloneable for Super_resPoint
 pub impl @traits.Countable for Super_resPoint
 pub impl @traits.Describable for Super_resPoint
-pub impl @traits.Displayable for Super_resPoint
 pub impl @traits.Named for Super_resPoint
 pub impl @traits.Resettable for Super_resPoint
 
@@ -3003,14 +2919,12 @@ pub fn Super_resSeries::check(Self) -> Bool
 pub fn Super_resSeries::clone(Self) -> Self
 pub fn Super_resSeries::count(Self) -> Int32
 pub fn Super_resSeries::describe(Self) -> String
-pub fn Super_resSeries::display(Self) -> String
 pub fn Super_resSeries::name(Self) -> String
 pub fn Super_resSeries::reset(Self) -> Self
 pub impl @traits.Checkable for Super_resSeries
 pub impl @traits.Cloneable for Super_resSeries
 pub impl @traits.Countable for Super_resSeries
 pub impl @traits.Describable for Super_resSeries
-pub impl @traits.Displayable for Super_resSeries
 pub impl @traits.Named for Super_resSeries
 pub impl @traits.Resettable for Super_resSeries
 
@@ -3022,14 +2936,12 @@ pub fn Super_resVector::check(Self) -> Bool
 pub fn Super_resVector::clone(Self) -> Self
 pub fn Super_resVector::count(Self) -> Int32
 pub fn Super_resVector::describe(Self) -> String
-pub fn Super_resVector::display(Self) -> String
 pub fn Super_resVector::name(Self) -> String
 pub fn Super_resVector::reset(Self) -> Self
 pub impl @traits.Checkable for Super_resVector
 pub impl @traits.Cloneable for Super_resVector
 pub impl @traits.Countable for Super_resVector
 pub impl @traits.Describable for Super_resVector
-pub impl @traits.Displayable for Super_resVector
 pub impl @traits.Named for Super_resVector
 pub impl @traits.Resettable for Super_resVector
 
@@ -3042,14 +2954,12 @@ pub fn Tone_mapMatrix::check(Self) -> Bool
 pub fn Tone_mapMatrix::clone(Self) -> Self
 pub fn Tone_mapMatrix::count(Self) -> Int32
 pub fn Tone_mapMatrix::describe(Self) -> String
-pub fn Tone_mapMatrix::display(Self) -> String
 pub fn Tone_mapMatrix::name(Self) -> String
 pub fn Tone_mapMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for Tone_mapMatrix
 pub impl @traits.Cloneable for Tone_mapMatrix
 pub impl @traits.Countable for Tone_mapMatrix
 pub impl @traits.Describable for Tone_mapMatrix
-pub impl @traits.Displayable for Tone_mapMatrix
 pub impl @traits.Named for Tone_mapMatrix
 pub impl @traits.Resettable for Tone_mapMatrix
 
@@ -3062,14 +2972,12 @@ pub fn Tone_mapPoint::check(Self) -> Bool
 pub fn Tone_mapPoint::clone(Self) -> Self
 pub fn Tone_mapPoint::count(Self) -> Int32
 pub fn Tone_mapPoint::describe(Self) -> String
-pub fn Tone_mapPoint::display(Self) -> String
 pub fn Tone_mapPoint::name(Self) -> String
 pub fn Tone_mapPoint::reset(Self) -> Self
 pub impl @traits.Checkable for Tone_mapPoint
 pub impl @traits.Cloneable for Tone_mapPoint
 pub impl @traits.Countable for Tone_mapPoint
 pub impl @traits.Describable for Tone_mapPoint
-pub impl @traits.Displayable for Tone_mapPoint
 pub impl @traits.Named for Tone_mapPoint
 pub impl @traits.Resettable for Tone_mapPoint
 
@@ -3081,14 +2989,12 @@ pub fn Tone_mapSeries::check(Self) -> Bool
 pub fn Tone_mapSeries::clone(Self) -> Self
 pub fn Tone_mapSeries::count(Self) -> Int32
 pub fn Tone_mapSeries::describe(Self) -> String
-pub fn Tone_mapSeries::display(Self) -> String
 pub fn Tone_mapSeries::name(Self) -> String
 pub fn Tone_mapSeries::reset(Self) -> Self
 pub impl @traits.Checkable for Tone_mapSeries
 pub impl @traits.Cloneable for Tone_mapSeries
 pub impl @traits.Countable for Tone_mapSeries
 pub impl @traits.Describable for Tone_mapSeries
-pub impl @traits.Displayable for Tone_mapSeries
 pub impl @traits.Named for Tone_mapSeries
 pub impl @traits.Resettable for Tone_mapSeries
 
@@ -3100,14 +3006,12 @@ pub fn Tone_mapVector::check(Self) -> Bool
 pub fn Tone_mapVector::clone(Self) -> Self
 pub fn Tone_mapVector::count(Self) -> Int32
 pub fn Tone_mapVector::describe(Self) -> String
-pub fn Tone_mapVector::display(Self) -> String
 pub fn Tone_mapVector::name(Self) -> String
 pub fn Tone_mapVector::reset(Self) -> Self
 pub impl @traits.Checkable for Tone_mapVector
 pub impl @traits.Cloneable for Tone_mapVector
 pub impl @traits.Countable for Tone_mapVector
 pub impl @traits.Describable for Tone_mapVector
-pub impl @traits.Displayable for Tone_mapVector
 pub impl @traits.Named for Tone_mapVector
 pub impl @traits.Resettable for Tone_mapVector
 
@@ -3120,14 +3024,12 @@ pub fn White_balanceMatrix::check(Self) -> Bool
 pub fn White_balanceMatrix::clone(Self) -> Self
 pub fn White_balanceMatrix::count(Self) -> Int32
 pub fn White_balanceMatrix::describe(Self) -> String
-pub fn White_balanceMatrix::display(Self) -> String
 pub fn White_balanceMatrix::name(Self) -> String
 pub fn White_balanceMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for White_balanceMatrix
 pub impl @traits.Cloneable for White_balanceMatrix
 pub impl @traits.Countable for White_balanceMatrix
 pub impl @traits.Describable for White_balanceMatrix
-pub impl @traits.Displayable for White_balanceMatrix
 pub impl @traits.Named for White_balanceMatrix
 pub impl @traits.Resettable for White_balanceMatrix
 
@@ -3140,14 +3042,12 @@ pub fn White_balancePoint::check(Self) -> Bool
 pub fn White_balancePoint::clone(Self) -> Self
 pub fn White_balancePoint::count(Self) -> Int32
 pub fn White_balancePoint::describe(Self) -> String
-pub fn White_balancePoint::display(Self) -> String
 pub fn White_balancePoint::name(Self) -> String
 pub fn White_balancePoint::reset(Self) -> Self
 pub impl @traits.Checkable for White_balancePoint
 pub impl @traits.Cloneable for White_balancePoint
 pub impl @traits.Countable for White_balancePoint
 pub impl @traits.Describable for White_balancePoint
-pub impl @traits.Displayable for White_balancePoint
 pub impl @traits.Named for White_balancePoint
 pub impl @traits.Resettable for White_balancePoint
 
@@ -3159,14 +3059,12 @@ pub fn White_balanceSeries::check(Self) -> Bool
 pub fn White_balanceSeries::clone(Self) -> Self
 pub fn White_balanceSeries::count(Self) -> Int32
 pub fn White_balanceSeries::describe(Self) -> String
-pub fn White_balanceSeries::display(Self) -> String
 pub fn White_balanceSeries::name(Self) -> String
 pub fn White_balanceSeries::reset(Self) -> Self
 pub impl @traits.Checkable for White_balanceSeries
 pub impl @traits.Cloneable for White_balanceSeries
 pub impl @traits.Countable for White_balanceSeries
 pub impl @traits.Describable for White_balanceSeries
-pub impl @traits.Displayable for White_balanceSeries
 pub impl @traits.Named for White_balanceSeries
 pub impl @traits.Resettable for White_balanceSeries
 
@@ -3178,14 +3076,12 @@ pub fn White_balanceVector::check(Self) -> Bool
 pub fn White_balanceVector::clone(Self) -> Self
 pub fn White_balanceVector::count(Self) -> Int32
 pub fn White_balanceVector::describe(Self) -> String
-pub fn White_balanceVector::display(Self) -> String
 pub fn White_balanceVector::name(Self) -> String
 pub fn White_balanceVector::reset(Self) -> Self
 pub impl @traits.Checkable for White_balanceVector
 pub impl @traits.Cloneable for White_balanceVector
 pub impl @traits.Countable for White_balanceVector
 pub impl @traits.Describable for White_balanceVector
-pub impl @traits.Displayable for White_balanceVector
 pub impl @traits.Named for White_balanceVector
 pub impl @traits.Resettable for White_balanceVector
 

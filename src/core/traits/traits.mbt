@@ -5,8 +5,9 @@
 /// 所有 trait 允许跨包实现（`pub(open)`）。
 ///
 /// ## trait 层次
-/// - `Verifiable : Checkable`
-/// - `Displayable : Named + Describable`
+/// - `Displayable : Named + Describable`（display 有默认实现）
+/// - `Verifiable : Checkable`（verify 有默认实现）
+/// - `Summarizable : Named + Describable`（summary 有默认实现）
 ///
 /// ## 分类
 /// | 分类 | trait |
@@ -42,8 +43,15 @@ pub(open) trait Versioned {
 
 ///|
 /// 可显示 / Displayable (extends Named + Describable).
+/// 默认实现: `name(self) + "(" + describe(self) + ")"`
 pub(open) trait Displayable : Named + Describable {
-  display(Self) -> String
+  display(Self) -> String = _
+}
+
+///|
+/// Displayable 默认实现
+impl Displayable with display(self) {
+  Named::name(self) + "(" + Describable::describe(self) + ")"
 }
 
 // ============================================================================
@@ -58,8 +66,15 @@ pub(open) trait Checkable {
 
 ///|
 /// 可验证 / Verifiable (extends Checkable).
+/// 默认实现: `verify(self) = check(self)`
 pub(open) trait Verifiable : Checkable {
-  verify(Self) -> Bool
+  verify(Self) -> Bool = _
+}
+
+///|
+/// Verifiable 默认实现
+impl Verifiable with verify(self) {
+  Checkable::check(self)
 }
 
 ///|
@@ -91,9 +106,16 @@ pub(open) trait Countable {
 }
 
 ///|
-/// 可摘要 / Summarizable.
-pub(open) trait Summarizable {
-  summary(Self) -> String
+/// 可摘要 / Summarizable (extends Named + Describable).
+/// 默认实现: `name(self) + ": " + describe(self)`
+pub(open) trait Summarizable : Named + Describable {
+  summary(Self) -> String = _
+}
+
+///|
+/// Summarizable 默认实现
+impl Summarizable with summary(self) {
+  Named::name(self) + ": " + Describable::describe(self)
 }
 
 // ============================================================================
@@ -161,4 +183,137 @@ pub(open) trait Filterable {
 /// 可哈希 / Hashable.
 pub(open) trait Hashable {
   hash(Self) -> Int
+}
+// ============================================================================
+// 通用辅助函数 / Generic Helper Functions
+// ============================================================================
+// 这些函数用于减少各包中 trait 实现的重复代码。
+
+///|
+/// Point 类型通用 describe 辅助函数
+pub fn point_describe(x : Double, y : Double) -> String {
+  "x=" + x.to_string() + ", y=" + y.to_string()
+}
+
+///|
+/// Point 类型通用 display 辅助函数
+pub fn point_display(name : String, x : Double, y : Double) -> String {
+  name + "(x=" + x.to_string() + ", y=" + y.to_string() + ")"
+}
+
+///|
+/// Series 类型通用 describe 辅助函数
+pub fn series_describe(len : Int, name : String) -> String {
+  "vals=" + len.to_string() + ", name=" + name
+}
+
+///|
+/// Series 类型通用 display 辅助函数
+pub fn series_display(type_name : String, len : Int, name : String) -> String {
+  type_name + "(vals=" + len.to_string() + ", name=" + name + ")"
+}
+
+///|
+/// Matrix 类型通用 describe 辅助函数
+pub fn matrix_describe(rows : Int, cols : Int) -> String {
+  "rows=" + rows.to_string() + ", cols=" + cols.to_string()
+}
+
+///|
+/// Matrix 类型通用 display 辅助函数
+pub fn matrix_display(type_name : String, rows : Int, cols : Int) -> String {
+  type_name + "(rows=" + rows.to_string() + ", cols=" + cols.to_string() + ")"
+}
+
+///|
+/// Vector 类型通用 describe 辅助函数
+pub fn vector_describe(dim : Int) -> String {
+  "dim=" + dim.to_string()
+}
+
+///|
+/// Vector 类型通用 display 辅助函数
+pub fn vector_display(type_name : String, dim : Int) -> String {
+  type_name + "(dim=" + dim.to_string() + ")"
+}
+
+///|
+/// 通用 name 辅助函数 — 返回类型名
+pub fn type_name(s : String) -> String {
+  s
+}
+
+// ============================================================================
+// Trait 组合器 / Trait Combinators
+// ============================================================================
+// 这些组合器函数用于组合多个 trait 操作，减少调用处的重复代码。
+
+///|
+/// 检查并重置 / Check and reset if invalid.
+pub fn[T : Checkable + Resettable] check_and_reset(v : T) -> T {
+  if Checkable::check(v) {
+    v
+  } else {
+    Resettable::reset(v)
+  }
+}
+
+///|
+/// 克隆并检查 / Clone and check.
+pub fn[T : Cloneable + Checkable] clone_and_check(v : T) -> Bool {
+  Checkable::check(Cloneable::clone(v))
+}
+
+///|
+/// 显示并检查 / Display and check status.
+pub fn[T : Displayable + Checkable] display_with_status(v : T) -> String {
+  let status = if Checkable::check(v) { "OK" } else { "INVALID" }
+  Displayable::display(v) + " [" + status + "]"
+}
+
+///|
+/// 名称和版本 / Name with version.
+pub fn[T : Named + Versioned] name_with_version(v : T) -> String {
+  Named::name(v) + " v" + Versioned::version(v)
+}
+
+///|
+/// 摘要和检查 / Summary with check status.
+pub fn[T : Summarizable + Checkable] summary_with_check(v : T) -> String {
+  let status = if Checkable::check(v) { "valid" } else { "invalid" }
+  Summarizable::summary(v) + " (" + status + ")"
+}
+
+///|
+/// 序列化和检查 / Serialize with check.
+pub fn[T : Serializable + Checkable] serialize_if_valid(v : T) -> String {
+  if Checkable::check(v) {
+    Serializable::serialize(v)
+  } else {
+    "<invalid>"
+  }
+}
+
+///|
+/// 计数并显示 / Count and display.
+pub fn[T : Countable + Displayable] count_and_display(v : T) -> String {
+  Displayable::display(v) + " count=" + Countable::count(v).to_string()
+}
+
+///|
+/// 度量并显示 / Norm and display.
+pub fn[T : Measurable + Displayable] norm_and_display(v : T) -> String {
+  Displayable::display(v) + " norm=" + Measurable::norm(v).to_string()
+}
+
+///|
+/// 哈希并显示 / Hash and display.
+pub fn[T : Hashable + Displayable] hash_and_display(v : T) -> String {
+  Displayable::display(v) + " hash=" + Hashable::hash(v).to_string()
+}
+
+///|
+/// 双重验证 / Double check (check + verify).
+pub fn[T : Verifiable] double_check(v : T) -> Bool {
+  Verifiable::verify(v) && Checkable::check(v)
 }

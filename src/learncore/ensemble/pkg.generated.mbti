@@ -1118,14 +1118,12 @@ pub fn AdaboostMatrix::check(Self) -> Bool
 pub fn AdaboostMatrix::clone(Self) -> Self
 pub fn AdaboostMatrix::count(Self) -> Int32
 pub fn AdaboostMatrix::describe(Self) -> String
-pub fn AdaboostMatrix::display(Self) -> String
 pub fn AdaboostMatrix::name(Self) -> String
 pub fn AdaboostMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for AdaboostMatrix
 pub impl @traits.Cloneable for AdaboostMatrix
 pub impl @traits.Countable for AdaboostMatrix
 pub impl @traits.Describable for AdaboostMatrix
-pub impl @traits.Displayable for AdaboostMatrix
 pub impl @traits.Named for AdaboostMatrix
 pub impl @traits.Resettable for AdaboostMatrix
 
@@ -1138,14 +1136,12 @@ pub fn AdaboostPoint::check(Self) -> Bool
 pub fn AdaboostPoint::clone(Self) -> Self
 pub fn AdaboostPoint::count(Self) -> Int32
 pub fn AdaboostPoint::describe(Self) -> String
-pub fn AdaboostPoint::display(Self) -> String
 pub fn AdaboostPoint::name(Self) -> String
 pub fn AdaboostPoint::reset(Self) -> Self
 pub impl @traits.Checkable for AdaboostPoint
 pub impl @traits.Cloneable for AdaboostPoint
 pub impl @traits.Countable for AdaboostPoint
 pub impl @traits.Describable for AdaboostPoint
-pub impl @traits.Displayable for AdaboostPoint
 pub impl @traits.Named for AdaboostPoint
 pub impl @traits.Resettable for AdaboostPoint
 
@@ -1157,14 +1153,12 @@ pub fn AdaboostSeries::check(Self) -> Bool
 pub fn AdaboostSeries::clone(Self) -> Self
 pub fn AdaboostSeries::count(Self) -> Int32
 pub fn AdaboostSeries::describe(Self) -> String
-pub fn AdaboostSeries::display(Self) -> String
 pub fn AdaboostSeries::name(Self) -> String
 pub fn AdaboostSeries::reset(Self) -> Self
 pub impl @traits.Checkable for AdaboostSeries
 pub impl @traits.Cloneable for AdaboostSeries
 pub impl @traits.Countable for AdaboostSeries
 pub impl @traits.Describable for AdaboostSeries
-pub impl @traits.Displayable for AdaboostSeries
 pub impl @traits.Named for AdaboostSeries
 pub impl @traits.Resettable for AdaboostSeries
 
@@ -1176,14 +1170,12 @@ pub fn AdaboostVector::check(Self) -> Bool
 pub fn AdaboostVector::clone(Self) -> Self
 pub fn AdaboostVector::count(Self) -> Int32
 pub fn AdaboostVector::describe(Self) -> String
-pub fn AdaboostVector::display(Self) -> String
 pub fn AdaboostVector::name(Self) -> String
 pub fn AdaboostVector::reset(Self) -> Self
 pub impl @traits.Checkable for AdaboostVector
 pub impl @traits.Cloneable for AdaboostVector
 pub impl @traits.Countable for AdaboostVector
 pub impl @traits.Describable for AdaboostVector
-pub impl @traits.Displayable for AdaboostVector
 pub impl @traits.Named for AdaboostVector
 pub impl @traits.Resettable for AdaboostVector
 
@@ -1205,14 +1197,12 @@ pub fn Bagging_rtMatrix::check(Self) -> Bool
 pub fn Bagging_rtMatrix::clone(Self) -> Self
 pub fn Bagging_rtMatrix::count(Self) -> Int32
 pub fn Bagging_rtMatrix::describe(Self) -> String
-pub fn Bagging_rtMatrix::display(Self) -> String
 pub fn Bagging_rtMatrix::name(Self) -> String
 pub fn Bagging_rtMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for Bagging_rtMatrix
 pub impl @traits.Cloneable for Bagging_rtMatrix
 pub impl @traits.Countable for Bagging_rtMatrix
 pub impl @traits.Describable for Bagging_rtMatrix
-pub impl @traits.Displayable for Bagging_rtMatrix
 pub impl @traits.Named for Bagging_rtMatrix
 pub impl @traits.Resettable for Bagging_rtMatrix
 
@@ -1225,14 +1215,12 @@ pub fn Bagging_rtPoint::check(Self) -> Bool
 pub fn Bagging_rtPoint::clone(Self) -> Self
 pub fn Bagging_rtPoint::count(Self) -> Int32
 pub fn Bagging_rtPoint::describe(Self) -> String
-pub fn Bagging_rtPoint::display(Self) -> String
 pub fn Bagging_rtPoint::name(Self) -> String
 pub fn Bagging_rtPoint::reset(Self) -> Self
 pub impl @traits.Checkable for Bagging_rtPoint
 pub impl @traits.Cloneable for Bagging_rtPoint
 pub impl @traits.Countable for Bagging_rtPoint
 pub impl @traits.Describable for Bagging_rtPoint
-pub impl @traits.Displayable for Bagging_rtPoint
 pub impl @traits.Named for Bagging_rtPoint
 pub impl @traits.Resettable for Bagging_rtPoint
 
@@ -1244,14 +1232,12 @@ pub fn Bagging_rtSeries::check(Self) -> Bool
 pub fn Bagging_rtSeries::clone(Self) -> Self
 pub fn Bagging_rtSeries::count(Self) -> Int32
 pub fn Bagging_rtSeries::describe(Self) -> String
-pub fn Bagging_rtSeries::display(Self) -> String
 pub fn Bagging_rtSeries::name(Self) -> String
 pub fn Bagging_rtSeries::reset(Self) -> Self
 pub impl @traits.Checkable for Bagging_rtSeries
 pub impl @traits.Cloneable for Bagging_rtSeries
 pub impl @traits.Countable for Bagging_rtSeries
 pub impl @traits.Describable for Bagging_rtSeries
-pub impl @traits.Displayable for Bagging_rtSeries
 pub impl @traits.Named for Bagging_rtSeries
 pub impl @traits.Resettable for Bagging_rtSeries
 
@@ -1263,14 +1249,12 @@ pub fn Bagging_rtVector::check(Self) -> Bool
 pub fn Bagging_rtVector::clone(Self) -> Self
 pub fn Bagging_rtVector::count(Self) -> Int32
 pub fn Bagging_rtVector::describe(Self) -> String
-pub fn Bagging_rtVector::display(Self) -> String
 pub fn Bagging_rtVector::name(Self) -> String
 pub fn Bagging_rtVector::reset(Self) -> Self
 pub impl @traits.Checkable for Bagging_rtVector
 pub impl @traits.Cloneable for Bagging_rtVector
 pub impl @traits.Countable for Bagging_rtVector
 pub impl @traits.Describable for Bagging_rtVector
-pub impl @traits.Displayable for Bagging_rtVector
 pub impl @traits.Named for Bagging_rtVector
 pub impl @traits.Resettable for Bagging_rtVector
 
@@ -1292,14 +1276,12 @@ pub fn Boosting_rtMatrix::check(Self) -> Bool
 pub fn Boosting_rtMatrix::clone(Self) -> Self
 pub fn Boosting_rtMatrix::count(Self) -> Int32
 pub fn Boosting_rtMatrix::describe(Self) -> String
-pub fn Boosting_rtMatrix::display(Self) -> String
 pub fn Boosting_rtMatrix::name(Self) -> String
 pub fn Boosting_rtMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for Boosting_rtMatrix
 pub impl @traits.Cloneable for Boosting_rtMatrix
 pub impl @traits.Countable for Boosting_rtMatrix
 pub impl @traits.Describable for Boosting_rtMatrix
-pub impl @traits.Displayable for Boosting_rtMatrix
 pub impl @traits.Named for Boosting_rtMatrix
 pub impl @traits.Resettable for Boosting_rtMatrix
 
@@ -1312,14 +1294,12 @@ pub fn Boosting_rtPoint::check(Self) -> Bool
 pub fn Boosting_rtPoint::clone(Self) -> Self
 pub fn Boosting_rtPoint::count(Self) -> Int32
 pub fn Boosting_rtPoint::describe(Self) -> String
-pub fn Boosting_rtPoint::display(Self) -> String
 pub fn Boosting_rtPoint::name(Self) -> String
 pub fn Boosting_rtPoint::reset(Self) -> Self
 pub impl @traits.Checkable for Boosting_rtPoint
 pub impl @traits.Cloneable for Boosting_rtPoint
 pub impl @traits.Countable for Boosting_rtPoint
 pub impl @traits.Describable for Boosting_rtPoint
-pub impl @traits.Displayable for Boosting_rtPoint
 pub impl @traits.Named for Boosting_rtPoint
 pub impl @traits.Resettable for Boosting_rtPoint
 
@@ -1331,14 +1311,12 @@ pub fn Boosting_rtSeries::check(Self) -> Bool
 pub fn Boosting_rtSeries::clone(Self) -> Self
 pub fn Boosting_rtSeries::count(Self) -> Int32
 pub fn Boosting_rtSeries::describe(Self) -> String
-pub fn Boosting_rtSeries::display(Self) -> String
 pub fn Boosting_rtSeries::name(Self) -> String
 pub fn Boosting_rtSeries::reset(Self) -> Self
 pub impl @traits.Checkable for Boosting_rtSeries
 pub impl @traits.Cloneable for Boosting_rtSeries
 pub impl @traits.Countable for Boosting_rtSeries
 pub impl @traits.Describable for Boosting_rtSeries
-pub impl @traits.Displayable for Boosting_rtSeries
 pub impl @traits.Named for Boosting_rtSeries
 pub impl @traits.Resettable for Boosting_rtSeries
 
@@ -1350,14 +1328,12 @@ pub fn Boosting_rtVector::check(Self) -> Bool
 pub fn Boosting_rtVector::clone(Self) -> Self
 pub fn Boosting_rtVector::count(Self) -> Int32
 pub fn Boosting_rtVector::describe(Self) -> String
-pub fn Boosting_rtVector::display(Self) -> String
 pub fn Boosting_rtVector::name(Self) -> String
 pub fn Boosting_rtVector::reset(Self) -> Self
 pub impl @traits.Checkable for Boosting_rtVector
 pub impl @traits.Cloneable for Boosting_rtVector
 pub impl @traits.Countable for Boosting_rtVector
 pub impl @traits.Describable for Boosting_rtVector
-pub impl @traits.Displayable for Boosting_rtVector
 pub impl @traits.Named for Boosting_rtVector
 pub impl @traits.Resettable for Boosting_rtVector
 
@@ -1370,14 +1346,12 @@ pub fn CatboostMatrix::check(Self) -> Bool
 pub fn CatboostMatrix::clone(Self) -> Self
 pub fn CatboostMatrix::count(Self) -> Int32
 pub fn CatboostMatrix::describe(Self) -> String
-pub fn CatboostMatrix::display(Self) -> String
 pub fn CatboostMatrix::name(Self) -> String
 pub fn CatboostMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for CatboostMatrix
 pub impl @traits.Cloneable for CatboostMatrix
 pub impl @traits.Countable for CatboostMatrix
 pub impl @traits.Describable for CatboostMatrix
-pub impl @traits.Displayable for CatboostMatrix
 pub impl @traits.Named for CatboostMatrix
 pub impl @traits.Resettable for CatboostMatrix
 
@@ -1390,14 +1364,12 @@ pub fn CatboostPoint::check(Self) -> Bool
 pub fn CatboostPoint::clone(Self) -> Self
 pub fn CatboostPoint::count(Self) -> Int32
 pub fn CatboostPoint::describe(Self) -> String
-pub fn CatboostPoint::display(Self) -> String
 pub fn CatboostPoint::name(Self) -> String
 pub fn CatboostPoint::reset(Self) -> Self
 pub impl @traits.Checkable for CatboostPoint
 pub impl @traits.Cloneable for CatboostPoint
 pub impl @traits.Countable for CatboostPoint
 pub impl @traits.Describable for CatboostPoint
-pub impl @traits.Displayable for CatboostPoint
 pub impl @traits.Named for CatboostPoint
 pub impl @traits.Resettable for CatboostPoint
 
@@ -1409,14 +1381,12 @@ pub fn CatboostSeries::check(Self) -> Bool
 pub fn CatboostSeries::clone(Self) -> Self
 pub fn CatboostSeries::count(Self) -> Int32
 pub fn CatboostSeries::describe(Self) -> String
-pub fn CatboostSeries::display(Self) -> String
 pub fn CatboostSeries::name(Self) -> String
 pub fn CatboostSeries::reset(Self) -> Self
 pub impl @traits.Checkable for CatboostSeries
 pub impl @traits.Cloneable for CatboostSeries
 pub impl @traits.Countable for CatboostSeries
 pub impl @traits.Describable for CatboostSeries
-pub impl @traits.Displayable for CatboostSeries
 pub impl @traits.Named for CatboostSeries
 pub impl @traits.Resettable for CatboostSeries
 
@@ -1428,14 +1398,12 @@ pub fn CatboostVector::check(Self) -> Bool
 pub fn CatboostVector::clone(Self) -> Self
 pub fn CatboostVector::count(Self) -> Int32
 pub fn CatboostVector::describe(Self) -> String
-pub fn CatboostVector::display(Self) -> String
 pub fn CatboostVector::name(Self) -> String
 pub fn CatboostVector::reset(Self) -> Self
 pub impl @traits.Checkable for CatboostVector
 pub impl @traits.Cloneable for CatboostVector
 pub impl @traits.Countable for CatboostVector
 pub impl @traits.Describable for CatboostVector
-pub impl @traits.Displayable for CatboostVector
 pub impl @traits.Named for CatboostVector
 pub impl @traits.Resettable for CatboostVector
 
@@ -1467,14 +1435,12 @@ pub fn Grad_boostMatrix::check(Self) -> Bool
 pub fn Grad_boostMatrix::clone(Self) -> Self
 pub fn Grad_boostMatrix::count(Self) -> Int32
 pub fn Grad_boostMatrix::describe(Self) -> String
-pub fn Grad_boostMatrix::display(Self) -> String
 pub fn Grad_boostMatrix::name(Self) -> String
 pub fn Grad_boostMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for Grad_boostMatrix
 pub impl @traits.Cloneable for Grad_boostMatrix
 pub impl @traits.Countable for Grad_boostMatrix
 pub impl @traits.Describable for Grad_boostMatrix
-pub impl @traits.Displayable for Grad_boostMatrix
 pub impl @traits.Named for Grad_boostMatrix
 pub impl @traits.Resettable for Grad_boostMatrix
 
@@ -1487,14 +1453,12 @@ pub fn Grad_boostPoint::check(Self) -> Bool
 pub fn Grad_boostPoint::clone(Self) -> Self
 pub fn Grad_boostPoint::count(Self) -> Int32
 pub fn Grad_boostPoint::describe(Self) -> String
-pub fn Grad_boostPoint::display(Self) -> String
 pub fn Grad_boostPoint::name(Self) -> String
 pub fn Grad_boostPoint::reset(Self) -> Self
 pub impl @traits.Checkable for Grad_boostPoint
 pub impl @traits.Cloneable for Grad_boostPoint
 pub impl @traits.Countable for Grad_boostPoint
 pub impl @traits.Describable for Grad_boostPoint
-pub impl @traits.Displayable for Grad_boostPoint
 pub impl @traits.Named for Grad_boostPoint
 pub impl @traits.Resettable for Grad_boostPoint
 
@@ -1506,14 +1470,12 @@ pub fn Grad_boostSeries::check(Self) -> Bool
 pub fn Grad_boostSeries::clone(Self) -> Self
 pub fn Grad_boostSeries::count(Self) -> Int32
 pub fn Grad_boostSeries::describe(Self) -> String
-pub fn Grad_boostSeries::display(Self) -> String
 pub fn Grad_boostSeries::name(Self) -> String
 pub fn Grad_boostSeries::reset(Self) -> Self
 pub impl @traits.Checkable for Grad_boostSeries
 pub impl @traits.Cloneable for Grad_boostSeries
 pub impl @traits.Countable for Grad_boostSeries
 pub impl @traits.Describable for Grad_boostSeries
-pub impl @traits.Displayable for Grad_boostSeries
 pub impl @traits.Named for Grad_boostSeries
 pub impl @traits.Resettable for Grad_boostSeries
 
@@ -1525,14 +1487,12 @@ pub fn Grad_boostVector::check(Self) -> Bool
 pub fn Grad_boostVector::clone(Self) -> Self
 pub fn Grad_boostVector::count(Self) -> Int32
 pub fn Grad_boostVector::describe(Self) -> String
-pub fn Grad_boostVector::display(Self) -> String
 pub fn Grad_boostVector::name(Self) -> String
 pub fn Grad_boostVector::reset(Self) -> Self
 pub impl @traits.Checkable for Grad_boostVector
 pub impl @traits.Cloneable for Grad_boostVector
 pub impl @traits.Countable for Grad_boostVector
 pub impl @traits.Describable for Grad_boostVector
-pub impl @traits.Displayable for Grad_boostVector
 pub impl @traits.Named for Grad_boostVector
 pub impl @traits.Resettable for Grad_boostVector
 
@@ -1545,14 +1505,12 @@ pub fn LightgbmMatrix::check(Self) -> Bool
 pub fn LightgbmMatrix::clone(Self) -> Self
 pub fn LightgbmMatrix::count(Self) -> Int32
 pub fn LightgbmMatrix::describe(Self) -> String
-pub fn LightgbmMatrix::display(Self) -> String
 pub fn LightgbmMatrix::name(Self) -> String
 pub fn LightgbmMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for LightgbmMatrix
 pub impl @traits.Cloneable for LightgbmMatrix
 pub impl @traits.Countable for LightgbmMatrix
 pub impl @traits.Describable for LightgbmMatrix
-pub impl @traits.Displayable for LightgbmMatrix
 pub impl @traits.Named for LightgbmMatrix
 pub impl @traits.Resettable for LightgbmMatrix
 
@@ -1565,14 +1523,12 @@ pub fn LightgbmPoint::check(Self) -> Bool
 pub fn LightgbmPoint::clone(Self) -> Self
 pub fn LightgbmPoint::count(Self) -> Int32
 pub fn LightgbmPoint::describe(Self) -> String
-pub fn LightgbmPoint::display(Self) -> String
 pub fn LightgbmPoint::name(Self) -> String
 pub fn LightgbmPoint::reset(Self) -> Self
 pub impl @traits.Checkable for LightgbmPoint
 pub impl @traits.Cloneable for LightgbmPoint
 pub impl @traits.Countable for LightgbmPoint
 pub impl @traits.Describable for LightgbmPoint
-pub impl @traits.Displayable for LightgbmPoint
 pub impl @traits.Named for LightgbmPoint
 pub impl @traits.Resettable for LightgbmPoint
 
@@ -1584,14 +1540,12 @@ pub fn LightgbmSeries::check(Self) -> Bool
 pub fn LightgbmSeries::clone(Self) -> Self
 pub fn LightgbmSeries::count(Self) -> Int32
 pub fn LightgbmSeries::describe(Self) -> String
-pub fn LightgbmSeries::display(Self) -> String
 pub fn LightgbmSeries::name(Self) -> String
 pub fn LightgbmSeries::reset(Self) -> Self
 pub impl @traits.Checkable for LightgbmSeries
 pub impl @traits.Cloneable for LightgbmSeries
 pub impl @traits.Countable for LightgbmSeries
 pub impl @traits.Describable for LightgbmSeries
-pub impl @traits.Displayable for LightgbmSeries
 pub impl @traits.Named for LightgbmSeries
 pub impl @traits.Resettable for LightgbmSeries
 
@@ -1603,14 +1557,12 @@ pub fn LightgbmVector::check(Self) -> Bool
 pub fn LightgbmVector::clone(Self) -> Self
 pub fn LightgbmVector::count(Self) -> Int32
 pub fn LightgbmVector::describe(Self) -> String
-pub fn LightgbmVector::display(Self) -> String
 pub fn LightgbmVector::name(Self) -> String
 pub fn LightgbmVector::reset(Self) -> Self
 pub impl @traits.Checkable for LightgbmVector
 pub impl @traits.Cloneable for LightgbmVector
 pub impl @traits.Countable for LightgbmVector
 pub impl @traits.Describable for LightgbmVector
-pub impl @traits.Displayable for LightgbmVector
 pub impl @traits.Named for LightgbmVector
 pub impl @traits.Resettable for LightgbmVector
 
@@ -1623,14 +1575,12 @@ pub fn Logit_boostMatrix::check(Self) -> Bool
 pub fn Logit_boostMatrix::clone(Self) -> Self
 pub fn Logit_boostMatrix::count(Self) -> Int32
 pub fn Logit_boostMatrix::describe(Self) -> String
-pub fn Logit_boostMatrix::display(Self) -> String
 pub fn Logit_boostMatrix::name(Self) -> String
 pub fn Logit_boostMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for Logit_boostMatrix
 pub impl @traits.Cloneable for Logit_boostMatrix
 pub impl @traits.Countable for Logit_boostMatrix
 pub impl @traits.Describable for Logit_boostMatrix
-pub impl @traits.Displayable for Logit_boostMatrix
 pub impl @traits.Named for Logit_boostMatrix
 pub impl @traits.Resettable for Logit_boostMatrix
 
@@ -1643,14 +1593,12 @@ pub fn Logit_boostPoint::check(Self) -> Bool
 pub fn Logit_boostPoint::clone(Self) -> Self
 pub fn Logit_boostPoint::count(Self) -> Int32
 pub fn Logit_boostPoint::describe(Self) -> String
-pub fn Logit_boostPoint::display(Self) -> String
 pub fn Logit_boostPoint::name(Self) -> String
 pub fn Logit_boostPoint::reset(Self) -> Self
 pub impl @traits.Checkable for Logit_boostPoint
 pub impl @traits.Cloneable for Logit_boostPoint
 pub impl @traits.Countable for Logit_boostPoint
 pub impl @traits.Describable for Logit_boostPoint
-pub impl @traits.Displayable for Logit_boostPoint
 pub impl @traits.Named for Logit_boostPoint
 pub impl @traits.Resettable for Logit_boostPoint
 
@@ -1662,14 +1610,12 @@ pub fn Logit_boostSeries::check(Self) -> Bool
 pub fn Logit_boostSeries::clone(Self) -> Self
 pub fn Logit_boostSeries::count(Self) -> Int32
 pub fn Logit_boostSeries::describe(Self) -> String
-pub fn Logit_boostSeries::display(Self) -> String
 pub fn Logit_boostSeries::name(Self) -> String
 pub fn Logit_boostSeries::reset(Self) -> Self
 pub impl @traits.Checkable for Logit_boostSeries
 pub impl @traits.Cloneable for Logit_boostSeries
 pub impl @traits.Countable for Logit_boostSeries
 pub impl @traits.Describable for Logit_boostSeries
-pub impl @traits.Displayable for Logit_boostSeries
 pub impl @traits.Named for Logit_boostSeries
 pub impl @traits.Resettable for Logit_boostSeries
 
@@ -1681,14 +1627,12 @@ pub fn Logit_boostVector::check(Self) -> Bool
 pub fn Logit_boostVector::clone(Self) -> Self
 pub fn Logit_boostVector::count(Self) -> Int32
 pub fn Logit_boostVector::describe(Self) -> String
-pub fn Logit_boostVector::display(Self) -> String
 pub fn Logit_boostVector::name(Self) -> String
 pub fn Logit_boostVector::reset(Self) -> Self
 pub impl @traits.Checkable for Logit_boostVector
 pub impl @traits.Cloneable for Logit_boostVector
 pub impl @traits.Countable for Logit_boostVector
 pub impl @traits.Describable for Logit_boostVector
-pub impl @traits.Displayable for Logit_boostVector
 pub impl @traits.Named for Logit_boostVector
 pub impl @traits.Resettable for Logit_boostVector
 
@@ -1719,14 +1663,12 @@ pub fn Tpr_forestMatrix::check(Self) -> Bool
 pub fn Tpr_forestMatrix::clone(Self) -> Self
 pub fn Tpr_forestMatrix::count(Self) -> Int32
 pub fn Tpr_forestMatrix::describe(Self) -> String
-pub fn Tpr_forestMatrix::display(Self) -> String
 pub fn Tpr_forestMatrix::name(Self) -> String
 pub fn Tpr_forestMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for Tpr_forestMatrix
 pub impl @traits.Cloneable for Tpr_forestMatrix
 pub impl @traits.Countable for Tpr_forestMatrix
 pub impl @traits.Describable for Tpr_forestMatrix
-pub impl @traits.Displayable for Tpr_forestMatrix
 pub impl @traits.Named for Tpr_forestMatrix
 pub impl @traits.Resettable for Tpr_forestMatrix
 
@@ -1739,14 +1681,12 @@ pub fn Tpr_forestPoint::check(Self) -> Bool
 pub fn Tpr_forestPoint::clone(Self) -> Self
 pub fn Tpr_forestPoint::count(Self) -> Int32
 pub fn Tpr_forestPoint::describe(Self) -> String
-pub fn Tpr_forestPoint::display(Self) -> String
 pub fn Tpr_forestPoint::name(Self) -> String
 pub fn Tpr_forestPoint::reset(Self) -> Self
 pub impl @traits.Checkable for Tpr_forestPoint
 pub impl @traits.Cloneable for Tpr_forestPoint
 pub impl @traits.Countable for Tpr_forestPoint
 pub impl @traits.Describable for Tpr_forestPoint
-pub impl @traits.Displayable for Tpr_forestPoint
 pub impl @traits.Named for Tpr_forestPoint
 pub impl @traits.Resettable for Tpr_forestPoint
 
@@ -1758,14 +1698,12 @@ pub fn Tpr_forestSeries::check(Self) -> Bool
 pub fn Tpr_forestSeries::clone(Self) -> Self
 pub fn Tpr_forestSeries::count(Self) -> Int32
 pub fn Tpr_forestSeries::describe(Self) -> String
-pub fn Tpr_forestSeries::display(Self) -> String
 pub fn Tpr_forestSeries::name(Self) -> String
 pub fn Tpr_forestSeries::reset(Self) -> Self
 pub impl @traits.Checkable for Tpr_forestSeries
 pub impl @traits.Cloneable for Tpr_forestSeries
 pub impl @traits.Countable for Tpr_forestSeries
 pub impl @traits.Describable for Tpr_forestSeries
-pub impl @traits.Displayable for Tpr_forestSeries
 pub impl @traits.Named for Tpr_forestSeries
 pub impl @traits.Resettable for Tpr_forestSeries
 
@@ -1777,14 +1715,12 @@ pub fn Tpr_forestVector::check(Self) -> Bool
 pub fn Tpr_forestVector::clone(Self) -> Self
 pub fn Tpr_forestVector::count(Self) -> Int32
 pub fn Tpr_forestVector::describe(Self) -> String
-pub fn Tpr_forestVector::display(Self) -> String
 pub fn Tpr_forestVector::name(Self) -> String
 pub fn Tpr_forestVector::reset(Self) -> Self
 pub impl @traits.Checkable for Tpr_forestVector
 pub impl @traits.Cloneable for Tpr_forestVector
 pub impl @traits.Countable for Tpr_forestVector
 pub impl @traits.Describable for Tpr_forestVector
-pub impl @traits.Displayable for Tpr_forestVector
 pub impl @traits.Named for Tpr_forestVector
 pub impl @traits.Resettable for Tpr_forestVector
 
@@ -1816,14 +1752,12 @@ pub fn XgboostMatrix::check(Self) -> Bool
 pub fn XgboostMatrix::clone(Self) -> Self
 pub fn XgboostMatrix::count(Self) -> Int32
 pub fn XgboostMatrix::describe(Self) -> String
-pub fn XgboostMatrix::display(Self) -> String
 pub fn XgboostMatrix::name(Self) -> String
 pub fn XgboostMatrix::reset(Self) -> Self
 pub impl @traits.Checkable for XgboostMatrix
 pub impl @traits.Cloneable for XgboostMatrix
 pub impl @traits.Countable for XgboostMatrix
 pub impl @traits.Describable for XgboostMatrix
-pub impl @traits.Displayable for XgboostMatrix
 pub impl @traits.Named for XgboostMatrix
 pub impl @traits.Resettable for XgboostMatrix
 
@@ -1836,14 +1770,12 @@ pub fn XgboostPoint::check(Self) -> Bool
 pub fn XgboostPoint::clone(Self) -> Self
 pub fn XgboostPoint::count(Self) -> Int32
 pub fn XgboostPoint::describe(Self) -> String
-pub fn XgboostPoint::display(Self) -> String
 pub fn XgboostPoint::name(Self) -> String
 pub fn XgboostPoint::reset(Self) -> Self
 pub impl @traits.Checkable for XgboostPoint
 pub impl @traits.Cloneable for XgboostPoint
 pub impl @traits.Countable for XgboostPoint
 pub impl @traits.Describable for XgboostPoint
-pub impl @traits.Displayable for XgboostPoint
 pub impl @traits.Named for XgboostPoint
 pub impl @traits.Resettable for XgboostPoint
 
@@ -1855,14 +1787,12 @@ pub fn XgboostSeries::check(Self) -> Bool
 pub fn XgboostSeries::clone(Self) -> Self
 pub fn XgboostSeries::count(Self) -> Int32
 pub fn XgboostSeries::describe(Self) -> String
-pub fn XgboostSeries::display(Self) -> String
 pub fn XgboostSeries::name(Self) -> String
 pub fn XgboostSeries::reset(Self) -> Self
 pub impl @traits.Checkable for XgboostSeries
 pub impl @traits.Cloneable for XgboostSeries
 pub impl @traits.Countable for XgboostSeries
 pub impl @traits.Describable for XgboostSeries
-pub impl @traits.Displayable for XgboostSeries
 pub impl @traits.Named for XgboostSeries
 pub impl @traits.Resettable for XgboostSeries
 
@@ -1874,14 +1804,12 @@ pub fn XgboostVector::check(Self) -> Bool
 pub fn XgboostVector::clone(Self) -> Self
 pub fn XgboostVector::count(Self) -> Int32
 pub fn XgboostVector::describe(Self) -> String
-pub fn XgboostVector::display(Self) -> String
 pub fn XgboostVector::name(Self) -> String
 pub fn XgboostVector::reset(Self) -> Self
 pub impl @traits.Checkable for XgboostVector
 pub impl @traits.Cloneable for XgboostVector
 pub impl @traits.Countable for XgboostVector
 pub impl @traits.Describable for XgboostVector
-pub impl @traits.Displayable for XgboostVector
 pub impl @traits.Named for XgboostVector
 pub impl @traits.Resettable for XgboostVector
 

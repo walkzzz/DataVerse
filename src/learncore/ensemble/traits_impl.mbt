@@ -4,11 +4,8 @@
 pub impl @traits.Named for AdaboostMatrix with name(_self) { "AdaboostMatrix" }
 pub extend AdaboostMatrix with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for AdaboostMatrix with describe(self) { "rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() }
+pub impl @traits.Describable for AdaboostMatrix with describe(self) { @traits.matrix_describe(self.rows, self.cols) }
 pub extend AdaboostMatrix with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for AdaboostMatrix with display(self) { "AdaboostMatrix[rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() + "]" }
-pub extend AdaboostMatrix with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for AdaboostMatrix with clone(self) { { data: self.data, rows: self.rows, cols: self.cols, } }
 pub extend AdaboostMatrix with @traits.Cloneable::{clone}
@@ -19,11 +16,8 @@ pub extend AdaboostMatrix with @traits.Countable::{count}
 pub impl @traits.Named for AdaboostPoint with name(_self) { "AdaboostPoint" }
 pub extend AdaboostPoint with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for AdaboostPoint with describe(self) { "x=" + self.x.to_string() + ", y=" + self.y.to_string() }
+pub impl @traits.Describable for AdaboostPoint with describe(self) { @traits.point_describe(self.x, self.y) }
 pub extend AdaboostPoint with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for AdaboostPoint with display(self) { "AdaboostPoint(x=" + self.x.to_string() + ", y=" + self.y.to_string() + ")" }
-pub extend AdaboostPoint with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for AdaboostPoint with clone(self) { { x: self.x, y: self.y, label: self.label, } }
 pub extend AdaboostPoint with @traits.Cloneable::{clone}
@@ -37,9 +31,6 @@ pub extend AdaboostSeries with @traits.Named::{name}
 pub impl @traits.Describable for AdaboostSeries with describe(self) { "len=" + self.vals.length().to_string() }
 pub extend AdaboostSeries with @traits.Describable::{describe}
 ///|
-pub impl @traits.Displayable for AdaboostSeries with display(self) { "AdaboostSeries[len=" + self.vals.length().to_string() + "]" }
-pub extend AdaboostSeries with @traits.Displayable::{display}
-///|
 pub impl @traits.Cloneable for AdaboostSeries with clone(self) { { vals: self.vals, name: self.name, } }
 pub extend AdaboostSeries with @traits.Cloneable::{clone}
 ///|
@@ -49,11 +40,8 @@ pub extend AdaboostSeries with @traits.Countable::{count}
 pub impl @traits.Named for AdaboostVector with name(_self) { "AdaboostVector" }
 pub extend AdaboostVector with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for AdaboostVector with describe(self) { "dim=" + self.dim.to_string() }
+pub impl @traits.Describable for AdaboostVector with describe(self) { @traits.vector_describe(self.dim) }
 pub extend AdaboostVector with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for AdaboostVector with display(self) { "AdaboostVector[dim=" + self.dim.to_string() + "]" }
-pub extend AdaboostVector with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for AdaboostVector with clone(self) { { comps: self.comps, dim: self.dim, } }
 pub extend AdaboostVector with @traits.Cloneable::{clone}
@@ -64,11 +52,8 @@ pub extend AdaboostVector with @traits.Countable::{count}
 pub impl @traits.Named for Bagging_rtMatrix with name(_self) { "Bagging_rtMatrix" }
 pub extend Bagging_rtMatrix with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for Bagging_rtMatrix with describe(self) { "rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() }
+pub impl @traits.Describable for Bagging_rtMatrix with describe(self) { @traits.matrix_describe(self.rows, self.cols) }
 pub extend Bagging_rtMatrix with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for Bagging_rtMatrix with display(self) { "Bagging_rtMatrix[rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() + "]" }
-pub extend Bagging_rtMatrix with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for Bagging_rtMatrix with clone(self) { { data: self.data, rows: self.rows, cols: self.cols, } }
 pub extend Bagging_rtMatrix with @traits.Cloneable::{clone}
@@ -79,11 +64,8 @@ pub extend Bagging_rtMatrix with @traits.Countable::{count}
 pub impl @traits.Named for Bagging_rtPoint with name(_self) { "Bagging_rtPoint" }
 pub extend Bagging_rtPoint with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for Bagging_rtPoint with describe(self) { "x=" + self.x.to_string() + ", y=" + self.y.to_string() }
+pub impl @traits.Describable for Bagging_rtPoint with describe(self) { @traits.point_describe(self.x, self.y) }
 pub extend Bagging_rtPoint with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for Bagging_rtPoint with display(self) { "Bagging_rtPoint(x=" + self.x.to_string() + ", y=" + self.y.to_string() + ")" }
-pub extend Bagging_rtPoint with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for Bagging_rtPoint with clone(self) { { x: self.x, y: self.y, label: self.label, } }
 pub extend Bagging_rtPoint with @traits.Cloneable::{clone}
@@ -97,9 +79,6 @@ pub extend Bagging_rtSeries with @traits.Named::{name}
 pub impl @traits.Describable for Bagging_rtSeries with describe(self) { "len=" + self.vals.length().to_string() }
 pub extend Bagging_rtSeries with @traits.Describable::{describe}
 ///|
-pub impl @traits.Displayable for Bagging_rtSeries with display(self) { "Bagging_rtSeries[len=" + self.vals.length().to_string() + "]" }
-pub extend Bagging_rtSeries with @traits.Displayable::{display}
-///|
 pub impl @traits.Cloneable for Bagging_rtSeries with clone(self) { { vals: self.vals, name: self.name, } }
 pub extend Bagging_rtSeries with @traits.Cloneable::{clone}
 ///|
@@ -109,11 +88,8 @@ pub extend Bagging_rtSeries with @traits.Countable::{count}
 pub impl @traits.Named for Bagging_rtVector with name(_self) { "Bagging_rtVector" }
 pub extend Bagging_rtVector with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for Bagging_rtVector with describe(self) { "dim=" + self.dim.to_string() }
+pub impl @traits.Describable for Bagging_rtVector with describe(self) { @traits.vector_describe(self.dim) }
 pub extend Bagging_rtVector with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for Bagging_rtVector with display(self) { "Bagging_rtVector[dim=" + self.dim.to_string() + "]" }
-pub extend Bagging_rtVector with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for Bagging_rtVector with clone(self) { { comps: self.comps, dim: self.dim, } }
 pub extend Bagging_rtVector with @traits.Cloneable::{clone}
@@ -124,11 +100,8 @@ pub extend Bagging_rtVector with @traits.Countable::{count}
 pub impl @traits.Named for Boosting_rtMatrix with name(_self) { "Boosting_rtMatrix" }
 pub extend Boosting_rtMatrix with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for Boosting_rtMatrix with describe(self) { "rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() }
+pub impl @traits.Describable for Boosting_rtMatrix with describe(self) { @traits.matrix_describe(self.rows, self.cols) }
 pub extend Boosting_rtMatrix with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for Boosting_rtMatrix with display(self) { "Boosting_rtMatrix[rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() + "]" }
-pub extend Boosting_rtMatrix with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for Boosting_rtMatrix with clone(self) { { data: self.data, rows: self.rows, cols: self.cols, } }
 pub extend Boosting_rtMatrix with @traits.Cloneable::{clone}
@@ -139,11 +112,8 @@ pub extend Boosting_rtMatrix with @traits.Countable::{count}
 pub impl @traits.Named for Boosting_rtPoint with name(_self) { "Boosting_rtPoint" }
 pub extend Boosting_rtPoint with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for Boosting_rtPoint with describe(self) { "x=" + self.x.to_string() + ", y=" + self.y.to_string() }
+pub impl @traits.Describable for Boosting_rtPoint with describe(self) { @traits.point_describe(self.x, self.y) }
 pub extend Boosting_rtPoint with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for Boosting_rtPoint with display(self) { "Boosting_rtPoint(x=" + self.x.to_string() + ", y=" + self.y.to_string() + ")" }
-pub extend Boosting_rtPoint with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for Boosting_rtPoint with clone(self) { { x: self.x, y: self.y, label: self.label, } }
 pub extend Boosting_rtPoint with @traits.Cloneable::{clone}
@@ -157,9 +127,6 @@ pub extend Boosting_rtSeries with @traits.Named::{name}
 pub impl @traits.Describable for Boosting_rtSeries with describe(self) { "len=" + self.vals.length().to_string() }
 pub extend Boosting_rtSeries with @traits.Describable::{describe}
 ///|
-pub impl @traits.Displayable for Boosting_rtSeries with display(self) { "Boosting_rtSeries[len=" + self.vals.length().to_string() + "]" }
-pub extend Boosting_rtSeries with @traits.Displayable::{display}
-///|
 pub impl @traits.Cloneable for Boosting_rtSeries with clone(self) { { vals: self.vals, name: self.name, } }
 pub extend Boosting_rtSeries with @traits.Cloneable::{clone}
 ///|
@@ -169,11 +136,8 @@ pub extend Boosting_rtSeries with @traits.Countable::{count}
 pub impl @traits.Named for Boosting_rtVector with name(_self) { "Boosting_rtVector" }
 pub extend Boosting_rtVector with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for Boosting_rtVector with describe(self) { "dim=" + self.dim.to_string() }
+pub impl @traits.Describable for Boosting_rtVector with describe(self) { @traits.vector_describe(self.dim) }
 pub extend Boosting_rtVector with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for Boosting_rtVector with display(self) { "Boosting_rtVector[dim=" + self.dim.to_string() + "]" }
-pub extend Boosting_rtVector with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for Boosting_rtVector with clone(self) { { comps: self.comps, dim: self.dim, } }
 pub extend Boosting_rtVector with @traits.Cloneable::{clone}
@@ -184,11 +148,8 @@ pub extend Boosting_rtVector with @traits.Countable::{count}
 pub impl @traits.Named for CatboostMatrix with name(_self) { "CatboostMatrix" }
 pub extend CatboostMatrix with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for CatboostMatrix with describe(self) { "rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() }
+pub impl @traits.Describable for CatboostMatrix with describe(self) { @traits.matrix_describe(self.rows, self.cols) }
 pub extend CatboostMatrix with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for CatboostMatrix with display(self) { "CatboostMatrix[rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() + "]" }
-pub extend CatboostMatrix with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for CatboostMatrix with clone(self) { { data: self.data, rows: self.rows, cols: self.cols, } }
 pub extend CatboostMatrix with @traits.Cloneable::{clone}
@@ -199,11 +160,8 @@ pub extend CatboostMatrix with @traits.Countable::{count}
 pub impl @traits.Named for CatboostPoint with name(_self) { "CatboostPoint" }
 pub extend CatboostPoint with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for CatboostPoint with describe(self) { "x=" + self.x.to_string() + ", y=" + self.y.to_string() }
+pub impl @traits.Describable for CatboostPoint with describe(self) { @traits.point_describe(self.x, self.y) }
 pub extend CatboostPoint with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for CatboostPoint with display(self) { "CatboostPoint(x=" + self.x.to_string() + ", y=" + self.y.to_string() + ")" }
-pub extend CatboostPoint with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for CatboostPoint with clone(self) { { x: self.x, y: self.y, label: self.label, } }
 pub extend CatboostPoint with @traits.Cloneable::{clone}
@@ -217,9 +175,6 @@ pub extend CatboostSeries with @traits.Named::{name}
 pub impl @traits.Describable for CatboostSeries with describe(self) { "len=" + self.vals.length().to_string() }
 pub extend CatboostSeries with @traits.Describable::{describe}
 ///|
-pub impl @traits.Displayable for CatboostSeries with display(self) { "CatboostSeries[len=" + self.vals.length().to_string() + "]" }
-pub extend CatboostSeries with @traits.Displayable::{display}
-///|
 pub impl @traits.Cloneable for CatboostSeries with clone(self) { { vals: self.vals, name: self.name, } }
 pub extend CatboostSeries with @traits.Cloneable::{clone}
 ///|
@@ -229,11 +184,8 @@ pub extend CatboostSeries with @traits.Countable::{count}
 pub impl @traits.Named for CatboostVector with name(_self) { "CatboostVector" }
 pub extend CatboostVector with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for CatboostVector with describe(self) { "dim=" + self.dim.to_string() }
+pub impl @traits.Describable for CatboostVector with describe(self) { @traits.vector_describe(self.dim) }
 pub extend CatboostVector with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for CatboostVector with display(self) { "CatboostVector[dim=" + self.dim.to_string() + "]" }
-pub extend CatboostVector with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for CatboostVector with clone(self) { { comps: self.comps, dim: self.dim, } }
 pub extend CatboostVector with @traits.Cloneable::{clone}
@@ -244,11 +196,8 @@ pub extend CatboostVector with @traits.Countable::{count}
 pub impl @traits.Named for Grad_boostMatrix with name(_self) { "Grad_boostMatrix" }
 pub extend Grad_boostMatrix with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for Grad_boostMatrix with describe(self) { "rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() }
+pub impl @traits.Describable for Grad_boostMatrix with describe(self) { @traits.matrix_describe(self.rows, self.cols) }
 pub extend Grad_boostMatrix with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for Grad_boostMatrix with display(self) { "Grad_boostMatrix[rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() + "]" }
-pub extend Grad_boostMatrix with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for Grad_boostMatrix with clone(self) { { data: self.data, rows: self.rows, cols: self.cols, } }
 pub extend Grad_boostMatrix with @traits.Cloneable::{clone}
@@ -259,11 +208,8 @@ pub extend Grad_boostMatrix with @traits.Countable::{count}
 pub impl @traits.Named for Grad_boostPoint with name(_self) { "Grad_boostPoint" }
 pub extend Grad_boostPoint with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for Grad_boostPoint with describe(self) { "x=" + self.x.to_string() + ", y=" + self.y.to_string() }
+pub impl @traits.Describable for Grad_boostPoint with describe(self) { @traits.point_describe(self.x, self.y) }
 pub extend Grad_boostPoint with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for Grad_boostPoint with display(self) { "Grad_boostPoint(x=" + self.x.to_string() + ", y=" + self.y.to_string() + ")" }
-pub extend Grad_boostPoint with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for Grad_boostPoint with clone(self) { { x: self.x, y: self.y, label: self.label, } }
 pub extend Grad_boostPoint with @traits.Cloneable::{clone}
@@ -277,9 +223,6 @@ pub extend Grad_boostSeries with @traits.Named::{name}
 pub impl @traits.Describable for Grad_boostSeries with describe(self) { "len=" + self.vals.length().to_string() }
 pub extend Grad_boostSeries with @traits.Describable::{describe}
 ///|
-pub impl @traits.Displayable for Grad_boostSeries with display(self) { "Grad_boostSeries[len=" + self.vals.length().to_string() + "]" }
-pub extend Grad_boostSeries with @traits.Displayable::{display}
-///|
 pub impl @traits.Cloneable for Grad_boostSeries with clone(self) { { vals: self.vals, name: self.name, } }
 pub extend Grad_boostSeries with @traits.Cloneable::{clone}
 ///|
@@ -289,11 +232,8 @@ pub extend Grad_boostSeries with @traits.Countable::{count}
 pub impl @traits.Named for Grad_boostVector with name(_self) { "Grad_boostVector" }
 pub extend Grad_boostVector with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for Grad_boostVector with describe(self) { "dim=" + self.dim.to_string() }
+pub impl @traits.Describable for Grad_boostVector with describe(self) { @traits.vector_describe(self.dim) }
 pub extend Grad_boostVector with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for Grad_boostVector with display(self) { "Grad_boostVector[dim=" + self.dim.to_string() + "]" }
-pub extend Grad_boostVector with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for Grad_boostVector with clone(self) { { comps: self.comps, dim: self.dim, } }
 pub extend Grad_boostVector with @traits.Cloneable::{clone}
@@ -304,11 +244,8 @@ pub extend Grad_boostVector with @traits.Countable::{count}
 pub impl @traits.Named for LightgbmMatrix with name(_self) { "LightgbmMatrix" }
 pub extend LightgbmMatrix with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for LightgbmMatrix with describe(self) { "rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() }
+pub impl @traits.Describable for LightgbmMatrix with describe(self) { @traits.matrix_describe(self.rows, self.cols) }
 pub extend LightgbmMatrix with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for LightgbmMatrix with display(self) { "LightgbmMatrix[rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() + "]" }
-pub extend LightgbmMatrix with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for LightgbmMatrix with clone(self) { { data: self.data, rows: self.rows, cols: self.cols, } }
 pub extend LightgbmMatrix with @traits.Cloneable::{clone}
@@ -319,11 +256,8 @@ pub extend LightgbmMatrix with @traits.Countable::{count}
 pub impl @traits.Named for LightgbmPoint with name(_self) { "LightgbmPoint" }
 pub extend LightgbmPoint with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for LightgbmPoint with describe(self) { "x=" + self.x.to_string() + ", y=" + self.y.to_string() }
+pub impl @traits.Describable for LightgbmPoint with describe(self) { @traits.point_describe(self.x, self.y) }
 pub extend LightgbmPoint with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for LightgbmPoint with display(self) { "LightgbmPoint(x=" + self.x.to_string() + ", y=" + self.y.to_string() + ")" }
-pub extend LightgbmPoint with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for LightgbmPoint with clone(self) { { x: self.x, y: self.y, label: self.label, } }
 pub extend LightgbmPoint with @traits.Cloneable::{clone}
@@ -337,9 +271,6 @@ pub extend LightgbmSeries with @traits.Named::{name}
 pub impl @traits.Describable for LightgbmSeries with describe(self) { "len=" + self.vals.length().to_string() }
 pub extend LightgbmSeries with @traits.Describable::{describe}
 ///|
-pub impl @traits.Displayable for LightgbmSeries with display(self) { "LightgbmSeries[len=" + self.vals.length().to_string() + "]" }
-pub extend LightgbmSeries with @traits.Displayable::{display}
-///|
 pub impl @traits.Cloneable for LightgbmSeries with clone(self) { { vals: self.vals, name: self.name, } }
 pub extend LightgbmSeries with @traits.Cloneable::{clone}
 ///|
@@ -349,11 +280,8 @@ pub extend LightgbmSeries with @traits.Countable::{count}
 pub impl @traits.Named for LightgbmVector with name(_self) { "LightgbmVector" }
 pub extend LightgbmVector with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for LightgbmVector with describe(self) { "dim=" + self.dim.to_string() }
+pub impl @traits.Describable for LightgbmVector with describe(self) { @traits.vector_describe(self.dim) }
 pub extend LightgbmVector with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for LightgbmVector with display(self) { "LightgbmVector[dim=" + self.dim.to_string() + "]" }
-pub extend LightgbmVector with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for LightgbmVector with clone(self) { { comps: self.comps, dim: self.dim, } }
 pub extend LightgbmVector with @traits.Cloneable::{clone}
@@ -364,11 +292,8 @@ pub extend LightgbmVector with @traits.Countable::{count}
 pub impl @traits.Named for Logit_boostMatrix with name(_self) { "Logit_boostMatrix" }
 pub extend Logit_boostMatrix with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for Logit_boostMatrix with describe(self) { "rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() }
+pub impl @traits.Describable for Logit_boostMatrix with describe(self) { @traits.matrix_describe(self.rows, self.cols) }
 pub extend Logit_boostMatrix with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for Logit_boostMatrix with display(self) { "Logit_boostMatrix[rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() + "]" }
-pub extend Logit_boostMatrix with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for Logit_boostMatrix with clone(self) { { data: self.data, rows: self.rows, cols: self.cols, } }
 pub extend Logit_boostMatrix with @traits.Cloneable::{clone}
@@ -379,11 +304,8 @@ pub extend Logit_boostMatrix with @traits.Countable::{count}
 pub impl @traits.Named for Logit_boostPoint with name(_self) { "Logit_boostPoint" }
 pub extend Logit_boostPoint with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for Logit_boostPoint with describe(self) { "x=" + self.x.to_string() + ", y=" + self.y.to_string() }
+pub impl @traits.Describable for Logit_boostPoint with describe(self) { @traits.point_describe(self.x, self.y) }
 pub extend Logit_boostPoint with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for Logit_boostPoint with display(self) { "Logit_boostPoint(x=" + self.x.to_string() + ", y=" + self.y.to_string() + ")" }
-pub extend Logit_boostPoint with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for Logit_boostPoint with clone(self) { { x: self.x, y: self.y, label: self.label, } }
 pub extend Logit_boostPoint with @traits.Cloneable::{clone}
@@ -397,9 +319,6 @@ pub extend Logit_boostSeries with @traits.Named::{name}
 pub impl @traits.Describable for Logit_boostSeries with describe(self) { "len=" + self.vals.length().to_string() }
 pub extend Logit_boostSeries with @traits.Describable::{describe}
 ///|
-pub impl @traits.Displayable for Logit_boostSeries with display(self) { "Logit_boostSeries[len=" + self.vals.length().to_string() + "]" }
-pub extend Logit_boostSeries with @traits.Displayable::{display}
-///|
 pub impl @traits.Cloneable for Logit_boostSeries with clone(self) { { vals: self.vals, name: self.name, } }
 pub extend Logit_boostSeries with @traits.Cloneable::{clone}
 ///|
@@ -409,11 +328,8 @@ pub extend Logit_boostSeries with @traits.Countable::{count}
 pub impl @traits.Named for Logit_boostVector with name(_self) { "Logit_boostVector" }
 pub extend Logit_boostVector with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for Logit_boostVector with describe(self) { "dim=" + self.dim.to_string() }
+pub impl @traits.Describable for Logit_boostVector with describe(self) { @traits.vector_describe(self.dim) }
 pub extend Logit_boostVector with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for Logit_boostVector with display(self) { "Logit_boostVector[dim=" + self.dim.to_string() + "]" }
-pub extend Logit_boostVector with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for Logit_boostVector with clone(self) { { comps: self.comps, dim: self.dim, } }
 pub extend Logit_boostVector with @traits.Cloneable::{clone}
@@ -424,11 +340,8 @@ pub extend Logit_boostVector with @traits.Countable::{count}
 pub impl @traits.Named for Tpr_forestMatrix with name(_self) { "Tpr_forestMatrix" }
 pub extend Tpr_forestMatrix with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for Tpr_forestMatrix with describe(self) { "rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() }
+pub impl @traits.Describable for Tpr_forestMatrix with describe(self) { @traits.matrix_describe(self.rows, self.cols) }
 pub extend Tpr_forestMatrix with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for Tpr_forestMatrix with display(self) { "Tpr_forestMatrix[rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() + "]" }
-pub extend Tpr_forestMatrix with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for Tpr_forestMatrix with clone(self) { { data: self.data, rows: self.rows, cols: self.cols, } }
 pub extend Tpr_forestMatrix with @traits.Cloneable::{clone}
@@ -439,11 +352,8 @@ pub extend Tpr_forestMatrix with @traits.Countable::{count}
 pub impl @traits.Named for Tpr_forestPoint with name(_self) { "Tpr_forestPoint" }
 pub extend Tpr_forestPoint with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for Tpr_forestPoint with describe(self) { "x=" + self.x.to_string() + ", y=" + self.y.to_string() }
+pub impl @traits.Describable for Tpr_forestPoint with describe(self) { @traits.point_describe(self.x, self.y) }
 pub extend Tpr_forestPoint with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for Tpr_forestPoint with display(self) { "Tpr_forestPoint(x=" + self.x.to_string() + ", y=" + self.y.to_string() + ")" }
-pub extend Tpr_forestPoint with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for Tpr_forestPoint with clone(self) { { x: self.x, y: self.y, label: self.label, } }
 pub extend Tpr_forestPoint with @traits.Cloneable::{clone}
@@ -457,9 +367,6 @@ pub extend Tpr_forestSeries with @traits.Named::{name}
 pub impl @traits.Describable for Tpr_forestSeries with describe(self) { "len=" + self.vals.length().to_string() }
 pub extend Tpr_forestSeries with @traits.Describable::{describe}
 ///|
-pub impl @traits.Displayable for Tpr_forestSeries with display(self) { "Tpr_forestSeries[len=" + self.vals.length().to_string() + "]" }
-pub extend Tpr_forestSeries with @traits.Displayable::{display}
-///|
 pub impl @traits.Cloneable for Tpr_forestSeries with clone(self) { { vals: self.vals, name: self.name, } }
 pub extend Tpr_forestSeries with @traits.Cloneable::{clone}
 ///|
@@ -469,11 +376,8 @@ pub extend Tpr_forestSeries with @traits.Countable::{count}
 pub impl @traits.Named for Tpr_forestVector with name(_self) { "Tpr_forestVector" }
 pub extend Tpr_forestVector with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for Tpr_forestVector with describe(self) { "dim=" + self.dim.to_string() }
+pub impl @traits.Describable for Tpr_forestVector with describe(self) { @traits.vector_describe(self.dim) }
 pub extend Tpr_forestVector with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for Tpr_forestVector with display(self) { "Tpr_forestVector[dim=" + self.dim.to_string() + "]" }
-pub extend Tpr_forestVector with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for Tpr_forestVector with clone(self) { { comps: self.comps, dim: self.dim, } }
 pub extend Tpr_forestVector with @traits.Cloneable::{clone}
@@ -484,11 +388,8 @@ pub extend Tpr_forestVector with @traits.Countable::{count}
 pub impl @traits.Named for XgboostMatrix with name(_self) { "XgboostMatrix" }
 pub extend XgboostMatrix with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for XgboostMatrix with describe(self) { "rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() }
+pub impl @traits.Describable for XgboostMatrix with describe(self) { @traits.matrix_describe(self.rows, self.cols) }
 pub extend XgboostMatrix with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for XgboostMatrix with display(self) { "XgboostMatrix[rows=" + self.rows.to_string() + ", cols=" + self.cols.to_string() + "]" }
-pub extend XgboostMatrix with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for XgboostMatrix with clone(self) { { data: self.data, rows: self.rows, cols: self.cols, } }
 pub extend XgboostMatrix with @traits.Cloneable::{clone}
@@ -499,11 +400,8 @@ pub extend XgboostMatrix with @traits.Countable::{count}
 pub impl @traits.Named for XgboostPoint with name(_self) { "XgboostPoint" }
 pub extend XgboostPoint with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for XgboostPoint with describe(self) { "x=" + self.x.to_string() + ", y=" + self.y.to_string() }
+pub impl @traits.Describable for XgboostPoint with describe(self) { @traits.point_describe(self.x, self.y) }
 pub extend XgboostPoint with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for XgboostPoint with display(self) { "XgboostPoint(x=" + self.x.to_string() + ", y=" + self.y.to_string() + ")" }
-pub extend XgboostPoint with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for XgboostPoint with clone(self) { { x: self.x, y: self.y, label: self.label, } }
 pub extend XgboostPoint with @traits.Cloneable::{clone}
@@ -517,9 +415,6 @@ pub extend XgboostSeries with @traits.Named::{name}
 pub impl @traits.Describable for XgboostSeries with describe(self) { "len=" + self.vals.length().to_string() }
 pub extend XgboostSeries with @traits.Describable::{describe}
 ///|
-pub impl @traits.Displayable for XgboostSeries with display(self) { "XgboostSeries[len=" + self.vals.length().to_string() + "]" }
-pub extend XgboostSeries with @traits.Displayable::{display}
-///|
 pub impl @traits.Cloneable for XgboostSeries with clone(self) { { vals: self.vals, name: self.name, } }
 pub extend XgboostSeries with @traits.Cloneable::{clone}
 ///|
@@ -529,11 +424,8 @@ pub extend XgboostSeries with @traits.Countable::{count}
 pub impl @traits.Named for XgboostVector with name(_self) { "XgboostVector" }
 pub extend XgboostVector with @traits.Named::{name}
 ///|
-pub impl @traits.Describable for XgboostVector with describe(self) { "dim=" + self.dim.to_string() }
+pub impl @traits.Describable for XgboostVector with describe(self) { @traits.vector_describe(self.dim) }
 pub extend XgboostVector with @traits.Describable::{describe}
-///|
-pub impl @traits.Displayable for XgboostVector with display(self) { "XgboostVector[dim=" + self.dim.to_string() + "]" }
-pub extend XgboostVector with @traits.Displayable::{display}
 ///|
 pub impl @traits.Cloneable for XgboostVector with clone(self) { { comps: self.comps, dim: self.dim, } }
 pub extend XgboostVector with @traits.Cloneable::{clone}

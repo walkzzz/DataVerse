@@ -11,8 +11,8 @@
 
 | 指标 | 数值 |
 |------|------|
-| 源码行数 | ~517,160 行 |
-| MoonBit 文件 | 1,265 个 .mbt 文件 |
+| 源码行数 | ~510,000 行 |
+| MoonBit 文件 | 1,200 个 .mbt 文件 |
 | 测试 | 4,132 passed, 0 failed · 98.5% 包覆盖（322/327） |
 | 逻辑库 | 10 个（详见 [docs/library_layout.md](./docs/library_layout.md)） |
 | Workspace 成员 | 7 个独立子项目 |

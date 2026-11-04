@@ -1252,3 +1252,40 @@ DataVerse 已完成 ArcGIS Pro 726 工具的 100% 映射，0 待建。
 - 编译: 0 errors, 496 warnings
 - 包数: 825 语义包 + 233 命名包 + 已有包
 - 里程碑: 180 万行 ✅（超过 100 万行目标）
+
+## [1.0.0-beta] - 2026-11-04
+
+### 包管理优化 — 合并小包减少包数量
+
+**合并统计 / Merge Statistics**
+- 包数量: 327 → 259 (-68, -20.8%)
+- 测试: 4,132 passed, 0 failed
+- moon check: 0 errors, 3 warnings
+
+**合并详情 / Merge Details**
+
+| 模块 | 合并前 | 合并后 | 减少 |
+|------|--------|--------|------|
+| datair | 7 子包 | 1 包 | -6 |
+| io | 3 子包 | 1 包 | -2 |
+| governance | 2 子包 | 1 包 | -1 |
+| testing | 2 子包 | 1 包 | -1 |
+| recipe | 7 子包 | 1 包 | -6 |
+| dosi | 7 子包 | 1 包 | -6 |
+| datatemporal/window | 6 子包 | 0 (合并到父包) | -6 |
+| datatemporal/trigger | 5 子包 | 1 新包 | -4 |
+| datatemporal/resilience | 8 子包 | 1 新包 | -7 |
+| datatemporal/checkpoint | 2 子包 | 1 新包 | -1 |
+| datatemporal/watermark | 2 子包 | 1 新包 | -1 |
+| agent_kit/simulation | 11 子包 | 1 新包 | -10 |
+| agent_kit/agents | 9 子包 | 1 新包 | -8 |
+| agent_kit/slam | 3 子包 | 1 新包 | -2 |
+| agent_kit/planning | 2 子包 | 0 (合并到父包) | -2 |
+| **合计** | **68 包** | **15 包** | **-68** |
+
+**优化策略 / Strategy**
+1. 将只有 1 个源文件的小包按主题合并到父包或新主题包
+2. 消除命名冲突的包直接合并，有冲突的跳过
+3. 更新所有 moon.pkg 导入路径和源文件跨包引用
+4. 更新 reexport 文件 (dataverse.mbt) 中的 `pub using` 语句
+5. 去重 moon.pkg 中的重复导入

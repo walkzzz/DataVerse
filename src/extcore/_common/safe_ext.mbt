@@ -6,11 +6,7 @@
 ///|
 /// 安全求和 / Safe sum.
 pub fn safe_sum(arr : Array[Double]) -> Result[Double, @error.DataVerseError] {
-  if arr.length() == 0 {
-    Err(@error.invalid_input("sum of empty array"))
-  } else {
-    Ok(sum(arr))
-  }
+  lift_nonempty(arr, "sum", sum)
 }
 
 ///|
@@ -19,13 +15,7 @@ pub fn safe_cov(
   a : Array[Double],
   b : Array[Double],
 ) -> Result[Double, @error.DataVerseError] {
-  if a.length() == 0 || b.length() == 0 {
-    Err(@error.invalid_input("cov of empty array"))
-  } else if a.length() != b.length() {
-    Err(@error.dimension_mismatch("cov: length mismatch"))
-  } else {
-    Ok(cov(a, b))
-  }
+  lift_same_len(a, b, "cov", cov)
 }
 
 ///|
@@ -34,13 +24,7 @@ pub fn safe_corr(
   a : Array[Double],
   b : Array[Double],
 ) -> Result[Double, @error.DataVerseError] {
-  if a.length() == 0 || b.length() == 0 {
-    Err(@error.invalid_input("corr of empty array"))
-  } else if a.length() != b.length() {
-    Err(@error.dimension_mismatch("corr: length mismatch"))
-  } else {
-    Ok(corr(a, b))
-  }
+  lift_same_len(a, b, "corr", corr)
 }
 
 ///|
@@ -49,13 +33,7 @@ pub fn safe_accuracy(
   pred : Array[Int32],
   labels : Array[Int32],
 ) -> Result[Double, @error.DataVerseError] {
-  if pred.length() == 0 || labels.length() == 0 {
-    Err(@error.invalid_input("accuracy of empty array"))
-  } else if pred.length() != labels.length() {
-    Err(@error.dimension_mismatch("accuracy: length mismatch"))
-  } else {
-    Ok(accuracy(pred, labels))
-  }
+  lift_same_len(pred, labels, "accuracy", accuracy)
 }
 
 ///|
@@ -64,13 +42,7 @@ pub fn safe_mse(
   pred : Array[Double],
   labels : Array[Double],
 ) -> Result[Double, @error.DataVerseError] {
-  if pred.length() == 0 || labels.length() == 0 {
-    Err(@error.invalid_input("mse of empty array"))
-  } else if pred.length() != labels.length() {
-    Err(@error.dimension_mismatch("mse: length mismatch"))
-  } else {
-    Ok(mse(pred, labels))
-  }
+  lift_same_len(pred, labels, "mse", mse)
 }
 
 ///|
@@ -79,13 +51,7 @@ pub fn safe_rmse(
   pred : Array[Double],
   labels : Array[Double],
 ) -> Result[Double, @error.DataVerseError] {
-  if pred.length() == 0 || labels.length() == 0 {
-    Err(@error.invalid_input("rmse of empty array"))
-  } else if pred.length() != labels.length() {
-    Err(@error.dimension_mismatch("rmse: length mismatch"))
-  } else {
-    Ok(rmse(pred, labels))
-  }
+  lift_same_len(pred, labels, "rmse", rmse)
 }
 
 ///|
@@ -94,13 +60,7 @@ pub fn safe_mae(
   pred : Array[Double],
   labels : Array[Double],
 ) -> Result[Double, @error.DataVerseError] {
-  if pred.length() == 0 || labels.length() == 0 {
-    Err(@error.invalid_input("mae of empty array"))
-  } else if pred.length() != labels.length() {
-    Err(@error.dimension_mismatch("mae: length mismatch"))
-  } else {
-    Ok(mae(pred, labels))
-  }
+  lift_same_len(pred, labels, "mae", mae)
 }
 
 ///|
@@ -109,13 +69,7 @@ pub fn safe_r2(
   pred : Array[Double],
   labels : Array[Double],
 ) -> Result[Double, @error.DataVerseError] {
-  if pred.length() == 0 || labels.length() == 0 {
-    Err(@error.invalid_input("r2 of empty array"))
-  } else if pred.length() != labels.length() {
-    Err(@error.dimension_mismatch("r2: length mismatch"))
-  } else {
-    Ok(r2(pred, labels))
-  }
+  lift_same_len(pred, labels, "r2", r2)
 }
 
 ///|
@@ -125,13 +79,7 @@ pub fn safe_precision(
   labels : Array[Int32],
   pos : Int32,
 ) -> Result[Double, @error.DataVerseError] {
-  if pred.length() == 0 || labels.length() == 0 {
-    Err(@error.invalid_input("precision of empty array"))
-  } else if pred.length() != labels.length() {
-    Err(@error.dimension_mismatch("precision: length mismatch"))
-  } else {
-    Ok(precision(pred, labels, pos))
-  }
+  lift_same_len(pred, labels, "precision", (a, b) => precision(a, b, pos))
 }
 
 ///|
@@ -141,13 +89,7 @@ pub fn safe_recall(
   labels : Array[Int32],
   pos : Int32,
 ) -> Result[Double, @error.DataVerseError] {
-  if pred.length() == 0 || labels.length() == 0 {
-    Err(@error.invalid_input("recall of empty array"))
-  } else if pred.length() != labels.length() {
-    Err(@error.dimension_mismatch("recall: length mismatch"))
-  } else {
-    Ok(recall(pred, labels, pos))
-  }
+  lift_same_len(pred, labels, "recall", (a, b) => recall(a, b, pos))
 }
 
 ///|
@@ -157,13 +99,7 @@ pub fn safe_f1(
   labels : Array[Int32],
   pos : Int32,
 ) -> Result[Double, @error.DataVerseError] {
-  if pred.length() == 0 || labels.length() == 0 {
-    Err(@error.invalid_input("f1 of empty array"))
-  } else if pred.length() != labels.length() {
-    Err(@error.dimension_mismatch("f1: length mismatch"))
-  } else {
-    Ok(f1(pred, labels, pos))
-  }
+  lift_same_len(pred, labels, "f1", (a, b) => f1(a, b, pos))
 }
 
 ///|
@@ -291,11 +227,7 @@ pub fn safe_clip(
 pub fn safe_cumsum(
   arr : Array[Double],
 ) -> Result[Array[Double], @error.DataVerseError] {
-  if arr.length() == 0 {
-    Err(@error.invalid_input("cumsum of empty array"))
-  } else {
-    Ok(cumsum(arr))
-  }
+  lift_nonempty(arr, "cumsum", cumsum)
 }
 
 ///|
@@ -303,11 +235,7 @@ pub fn safe_cumsum(
 pub fn safe_reverse(
   arr : Array[Double],
 ) -> Result[Array[Double], @error.DataVerseError] {
-  if arr.length() == 0 {
-    Err(@error.invalid_input("reverse of empty array"))
-  } else {
-    Ok(reverse(arr))
-  }
+  lift_nonempty(arr, "reverse", reverse)
 }
 
 ///|
@@ -328,11 +256,7 @@ pub fn safe_concat(
 pub fn safe_copy_arr(
   arr : Array[Double],
 ) -> Result[Array[Double], @error.DataVerseError] {
-  if arr.length() == 0 {
-    Err(@error.invalid_input("copy of empty array"))
-  } else {
-    Ok(copy_arr(arr))
-  }
+  lift_nonempty(arr, "copy", copy_arr)
 }
 
 ///|
@@ -341,11 +265,7 @@ pub fn safe_scale_arr(
   arr : Array[Double],
   f : Double,
 ) -> Result[Array[Double], @error.DataVerseError] {
-  if arr.length() == 0 {
-    Err(@error.invalid_input("scale of empty array"))
-  } else {
-    Ok(scale_arr(arr, f))
-  }
+  lift_nonempty(arr, "scale", fn(a) { scale_arr(a, f) })
 }
 
 ///|
@@ -434,11 +354,7 @@ pub fn safe_is_prime(n : Int32) -> Result[Bool, @error.DataVerseError] {
 pub fn safe_sort(
   arr : Array[Double],
 ) -> Result[Array[Double], @error.DataVerseError] {
-  if arr.length() == 0 {
-    Err(@error.invalid_input("sort of empty array"))
-  } else {
-    Ok(sort(arr))
-  }
+  lift_nonempty(arr, "sort", sort)
 }
 
 ///|
@@ -446,11 +362,7 @@ pub fn safe_sort(
 pub fn safe_sort_desc(
   arr : Array[Double],
 ) -> Result[Array[Double], @error.DataVerseError] {
-  if arr.length() == 0 {
-    Err(@error.invalid_input("sort_desc of empty array"))
-  } else {
-    Ok(sort_desc(arr))
-  }
+  lift_nonempty(arr, "sort_desc", sort_desc)
 }
 
 ///|

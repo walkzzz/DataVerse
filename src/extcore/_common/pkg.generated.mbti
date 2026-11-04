@@ -18,6 +18,16 @@ pub fn atan2(Double, Double) -> Double
 
 pub fn ceil(Double) -> Double
 
+pub fn[T] check_nonempty(Array[T], String) -> Result[Unit, @error.DataVerseError]
+
+pub fn check_nonneg(Double, String) -> Result[Unit, @error.DataVerseError]
+
+pub fn check_nonzero(Double, String) -> Result[Unit, @error.DataVerseError]
+
+pub fn check_positive(Double, String) -> Result[Unit, @error.DataVerseError]
+
+pub fn[T] check_same_len(Array[T], Array[T], String) -> Result[Unit, @error.DataVerseError]
+
 pub fn clamp(Double, Double, Double) -> Double
 
 pub fn clip(Array[Double], Double, Double) -> Array[Double]
@@ -61,6 +71,14 @@ pub fn is_prime(Int32) -> Bool
 pub fn lcm(Int32, Int32) -> Int32
 
 pub fn lerp(Double, Double, Double) -> Double
+
+pub fn[T, U] lift_nonempty(Array[T], String, (Array[T]) -> U) -> Result[U, @error.DataVerseError]
+
+pub fn[T, U] lift_ok(T, (T) -> U) -> Result[U, @error.DataVerseError]
+
+pub fn[T, S, U] lift_ok2(T, S, (T, S) -> U) -> Result[U, @error.DataVerseError]
+
+pub fn[T, U] lift_same_len(Array[T], Array[T], String, (Array[T], Array[T]) -> U) -> Result[U, @error.DataVerseError]
 
 pub fn log(Double) -> Double
 

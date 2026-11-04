@@ -21,21 +21,13 @@
 ///|
 /// 安全均值 / Safe mean.
 pub fn safe_mean(arr : Array[Double]) -> Result[Double, @error.DataVerseError] {
-  if arr.length() == 0 {
-    Err(@error.invalid_input("mean of empty array"))
-  } else {
-    Ok(mean(arr))
-  }
+  lift_nonempty(arr, "mean", mean)
 }
 
 ///|
 /// 安全标准差 / Safe standard deviation.
 pub fn safe_std(arr : Array[Double]) -> Result[Double, @error.DataVerseError] {
-  if arr.length() == 0 {
-    Err(@error.invalid_input("std of empty array"))
-  } else {
-    Ok(std(arr))
-  }
+  lift_nonempty(arr, "std", std)
 }
 
 ///|
@@ -43,31 +35,19 @@ pub fn safe_std(arr : Array[Double]) -> Result[Double, @error.DataVerseError] {
 pub fn safe_variance(
   arr : Array[Double],
 ) -> Result[Double, @error.DataVerseError] {
-  if arr.length() == 0 {
-    Err(@error.invalid_input("variance of empty array"))
-  } else {
-    Ok(variance(arr))
-  }
+  lift_nonempty(arr, "variance", variance)
 }
 
 ///|
 /// 安全最小值 / Safe min.
 pub fn safe_min(arr : Array[Double]) -> Result[Double, @error.DataVerseError] {
-  if arr.length() == 0 {
-    Err(@error.invalid_input("min of empty array"))
-  } else {
-    Ok(min(arr))
-  }
+  lift_nonempty(arr, "min", min)
 }
 
 ///|
 /// 安全最大值 / Safe max.
 pub fn safe_max(arr : Array[Double]) -> Result[Double, @error.DataVerseError] {
-  if arr.length() == 0 {
-    Err(@error.invalid_input("max of empty array"))
-  } else {
-    Ok(max(arr))
-  }
+  lift_nonempty(arr, "max", max)
 }
 
 ///|
@@ -75,11 +55,7 @@ pub fn safe_max(arr : Array[Double]) -> Result[Double, @error.DataVerseError] {
 pub fn safe_median(
   arr : Array[Double],
 ) -> Result[Double, @error.DataVerseError] {
-  if arr.length() == 0 {
-    Err(@error.invalid_input("median of empty array"))
-  } else {
-    Ok(median(arr))
-  }
+  lift_nonempty(arr, "median", median)
 }
 
 ///|

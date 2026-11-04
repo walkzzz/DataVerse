@@ -4,6 +4,29 @@
 
 ## [1.0.0-beta] - 2026-11-04
 
+### 安全函数去重与错误风格统一
+
+**通用 lift 高阶函数 / Lift HOFs**
+- 新增 `src/extcore/_common/lift.mbt`（137 行）
+- 5 个 check helper: `check_nonempty`, `check_same_len`, `check_nonzero`, `check_nonneg`, `check_positive`
+- 4 个 lift 高阶函数: `lift_nonempty`, `lift_same_len`, `lift_ok`, `lift_ok2`
+
+**安全函数简化 / Safe API Simplification**
+- `safe.mbt`: 6 个函数用 `lift_nonempty` 简化（-25 行）
+- `safe_ext.mbt`: 7 个 `lift_nonempty` + 10 个 `lift_same_len` 简化（-89 行）
+- 消除 23 个重复的空数组/双数组检查模式
+
+**错误风格统一 / Error Style Unification**
+- `safe_batch.mbt` 大写构造函数统一为小写辅助函数
+- `InvalidInput` → `invalid_input`, `OutOfRange` → `out_of_range`, `DimensionMismatch` → `dimension_mismatch`
+
+**统计 / Stats**
+- 净减少重复代码 114 行，新增通用代码 137 行
+- moon check: 0 errors, 3 warnings
+- moon test: 4,132 passed, 0 failed
+
+## [1.0.0-beta] - 2026-11-04
+
 ### 错误处理系统完善
 
 **suberror 具体错误类型 / Suberror Error Types**

@@ -99,7 +99,7 @@ pub fn safe_midval(lo : Double, hi : Double) -> Result[Double, @error.DataVerseE
 /// safe_range_val — 范围宽度
 pub fn safe_range_val(lo : Double, hi : Double) -> Result[Double, @error.DataVerseError] {
   if hi < lo {
-    Err(@error.InvalidInput("hi < lo"))
+    Err(@error.invalid_input("hi < lo"))
   } else {
     Ok(hi - lo)
   }
@@ -157,7 +157,7 @@ pub fn safe_int_avg(a : Int, b : Int) -> Result[Int, @error.DataVerseError] {
 /// safe_int_pow — 整数幂
 pub fn safe_int_pow(base : Int, exp : Int) -> Result[Int, @error.DataVerseError] {
   if exp < 0 {
-    Err(@error.OutOfRange("negative exp"))
+    Err(@error.out_of_range("negative exp"))
   } else {
     let mut r = 1
     for _ in 0..<exp {
@@ -171,7 +171,7 @@ pub fn safe_int_pow(base : Int, exp : Int) -> Result[Int, @error.DataVerseError]
 /// safe_int_mod — 整数取模
 pub fn safe_int_mod(a : Int, b : Int) -> Result[Int, @error.DataVerseError] {
   if b == 0 {
-    Err(@error.InvalidInput("division by zero"))
+    Err(@error.invalid_input("division by zero"))
   } else {
     Ok(a % b)
   }
@@ -181,7 +181,7 @@ pub fn safe_int_mod(a : Int, b : Int) -> Result[Int, @error.DataVerseError] {
 /// safe_int_div — 整数除法
 pub fn safe_int_div(a : Int, b : Int) -> Result[Int, @error.DataVerseError] {
   if b == 0 {
-    Err(@error.InvalidInput("division by zero"))
+    Err(@error.invalid_input("division by zero"))
   } else {
     Ok(a / b)
   }
@@ -191,7 +191,7 @@ pub fn safe_int_div(a : Int, b : Int) -> Result[Int, @error.DataVerseError] {
 /// safe_factorial_small — 小整数阶乘
 pub fn safe_factorial_small(n : Int) -> Result[Int, @error.DataVerseError] {
   if n < 0 || n > 20 {
-    Err(@error.OutOfRange("factorial: 0..20 only"))
+    Err(@error.out_of_range("factorial: 0..20 only"))
   } else {
     let mut r = 1
     for i in 1..=n {
@@ -205,7 +205,7 @@ pub fn safe_factorial_small(n : Int) -> Result[Int, @error.DataVerseError] {
 /// safe_perm — 排列数
 pub fn safe_perm(n : Int, k : Int) -> Result[Int, @error.DataVerseError] {
   if n < 0 || k < 0 || k > n {
-    Err(@error.OutOfRange("invalid perm args"))
+    Err(@error.out_of_range("invalid perm args"))
   } else {
     let mut r = 1
     for i in 0..<k {
@@ -219,7 +219,7 @@ pub fn safe_perm(n : Int, k : Int) -> Result[Int, @error.DataVerseError] {
 /// safe_comb — 组合数
 pub fn safe_comb(n : Int, k : Int) -> Result[Int, @error.DataVerseError] {
   if n < 0 || k < 0 || k > n {
-    Err(@error.OutOfRange("invalid comb args"))
+    Err(@error.out_of_range("invalid comb args"))
   } else {
     let mut r = 1
     for i in 0..<k {
@@ -253,7 +253,7 @@ pub fn safe_arr_product(arr : Array[Double]) -> Result[Double, @error.DataVerseE
 /// safe_arr_min — 数组最小值
 pub fn safe_arr_min(arr : Array[Double]) -> Result[Double, @error.DataVerseError] {
   if arr.length() == 0 {
-    Err(@error.InvalidInput("empty input"))
+    Err(@error.invalid_input("empty input"))
   } else {
     let mut m = arr[0]
     for i in 1..<arr.length() {
@@ -269,7 +269,7 @@ pub fn safe_arr_min(arr : Array[Double]) -> Result[Double, @error.DataVerseError
 /// safe_arr_max — 数组最大值
 pub fn safe_arr_max(arr : Array[Double]) -> Result[Double, @error.DataVerseError] {
   if arr.length() == 0 {
-    Err(@error.InvalidInput("empty input"))
+    Err(@error.invalid_input("empty input"))
   } else {
     let mut m = arr[0]
     for i in 1..<arr.length() {
@@ -285,7 +285,7 @@ pub fn safe_arr_max(arr : Array[Double]) -> Result[Double, @error.DataVerseError
 /// safe_arr_range — 数组极差
 pub fn safe_arr_range(arr : Array[Double]) -> Result[Double, @error.DataVerseError] {
   if arr.length() == 0 {
-    Err(@error.InvalidInput("empty input"))
+    Err(@error.invalid_input("empty input"))
   } else {
     let mut lo = arr[0]
     let mut hi = arr[0]
@@ -387,7 +387,7 @@ pub fn safe_int_arr_sum(arr : Array[Int]) -> Result[Int, @error.DataVerseError] 
 /// safe_int_arr_min — 整数数组最小
 pub fn safe_int_arr_min(arr : Array[Int]) -> Result[Int, @error.DataVerseError] {
   if arr.length() == 0 {
-    Err(@error.InvalidInput("empty input"))
+    Err(@error.invalid_input("empty input"))
   } else {
     let mut m = arr[0]
     for i in 1..<arr.length() {
@@ -403,7 +403,7 @@ pub fn safe_int_arr_min(arr : Array[Int]) -> Result[Int, @error.DataVerseError] 
 /// safe_int_arr_max — 整数数组最大
 pub fn safe_int_arr_max(arr : Array[Int]) -> Result[Int, @error.DataVerseError] {
   if arr.length() == 0 {
-    Err(@error.InvalidInput("empty input"))
+    Err(@error.invalid_input("empty input"))
   } else {
     let mut m = arr[0]
     for i in 1..<arr.length() {
@@ -429,7 +429,7 @@ pub fn safe_int_arr_product(arr : Array[Int]) -> Result[Int, @error.DataVerseErr
 /// safe_arr_get — 安全索引
 pub fn safe_arr_get(arr : Array[Double], idx : Int) -> Result[Double, @error.DataVerseError] {
   if idx < 0 || idx >= arr.length() {
-    Err(@error.OutOfRange("index out of bounds"))
+    Err(@error.out_of_range("index out of bounds"))
   } else {
     Ok(arr[idx])
   }
@@ -439,7 +439,7 @@ pub fn safe_arr_get(arr : Array[Double], idx : Int) -> Result[Double, @error.Dat
 /// safe_arr_head — 首元素
 pub fn safe_arr_head(arr : Array[Double]) -> Result[Double, @error.DataVerseError] {
   if arr.length() == 0 {
-    Err(@error.InvalidInput("empty input"))
+    Err(@error.invalid_input("empty input"))
   } else {
     Ok(arr[0])
   }
@@ -449,7 +449,7 @@ pub fn safe_arr_head(arr : Array[Double]) -> Result[Double, @error.DataVerseErro
 /// safe_arr_tail — 末元素
 pub fn safe_arr_tail(arr : Array[Double]) -> Result[Double, @error.DataVerseError] {
   if arr.length() == 0 {
-    Err(@error.InvalidInput("empty input"))
+    Err(@error.invalid_input("empty input"))
   } else {
     Ok(arr[arr.length() - 1])
   }
@@ -459,7 +459,7 @@ pub fn safe_arr_tail(arr : Array[Double]) -> Result[Double, @error.DataVerseErro
 /// safe_arr_dot — 点积
 pub fn safe_arr_dot(a : Array[Double], b : Array[Double]) -> Result[Double, @error.DataVerseError] {
   if a.length() != b.length() {
-    Err(@error.DimensionMismatch("dimension mismatch"))
+    Err(@error.dimension_mismatch("dimension mismatch"))
   } else {
     let mut s = 0.0
     for i in 0..<a.length() {
@@ -473,7 +473,7 @@ pub fn safe_arr_dot(a : Array[Double], b : Array[Double]) -> Result[Double, @err
 /// safe_arr_l1_dist — L1 距离
 pub fn safe_arr_l1_dist(a : Array[Double], b : Array[Double]) -> Result[Double, @error.DataVerseError] {
   if a.length() != b.length() {
-    Err(@error.DimensionMismatch("dimension mismatch"))
+    Err(@error.dimension_mismatch("dimension mismatch"))
   } else {
     let mut s = 0.0
     for i in 0..<a.length() {
@@ -488,7 +488,7 @@ pub fn safe_arr_l1_dist(a : Array[Double], b : Array[Double]) -> Result[Double, 
 /// safe_arr_l2_dist — L2 距离
 pub fn safe_arr_l2_dist(a : Array[Double], b : Array[Double]) -> Result[Double, @error.DataVerseError] {
   if a.length() != b.length() {
-    Err(@error.DimensionMismatch("dimension mismatch"))
+    Err(@error.dimension_mismatch("dimension mismatch"))
   } else {
     let mut s = 0.0
     for i in 0..<a.length() {
@@ -522,7 +522,7 @@ pub fn safe_arr_offset(arr : Array[Double], c : Double) -> Result[Array[Double],
 /// safe_arr_add — 数组加法
 pub fn safe_arr_add(a : Array[Double], b : Array[Double]) -> Result[Array[Double], @error.DataVerseError] {
   if a.length() != b.length() {
-    Err(@error.DimensionMismatch("dimension mismatch"))
+    Err(@error.dimension_mismatch("dimension mismatch"))
   } else {
     let r = []
     for i in 0..<a.length() {
@@ -536,7 +536,7 @@ pub fn safe_arr_add(a : Array[Double], b : Array[Double]) -> Result[Array[Double
 /// safe_arr_sub — 数组减法
 pub fn safe_arr_sub(a : Array[Double], b : Array[Double]) -> Result[Array[Double], @error.DataVerseError] {
   if a.length() != b.length() {
-    Err(@error.DimensionMismatch("dimension mismatch"))
+    Err(@error.dimension_mismatch("dimension mismatch"))
   } else {
     let r = []
     for i in 0..<a.length() {
@@ -550,7 +550,7 @@ pub fn safe_arr_sub(a : Array[Double], b : Array[Double]) -> Result[Array[Double
 /// safe_arr_mul — 数组逐元素乘
 pub fn safe_arr_mul(a : Array[Double], b : Array[Double]) -> Result[Array[Double], @error.DataVerseError] {
   if a.length() != b.length() {
-    Err(@error.DimensionMismatch("dimension mismatch"))
+    Err(@error.dimension_mismatch("dimension mismatch"))
   } else {
     let r = []
     for i in 0..<a.length() {
@@ -623,7 +623,7 @@ pub fn safe_str_lower(s : String) -> Result[String, @error.DataVerseError] {
 /// safe_arr_mean — 数组均值
 pub fn safe_arr_mean(arr : Array[Double]) -> Result[Double, @error.DataVerseError] {
   if arr.length() == 0 {
-    Err(@error.InvalidInput("empty input"))
+    Err(@error.invalid_input("empty input"))
   } else {
     let mut s = 0.0
     for i in 0..<arr.length() {
@@ -637,7 +637,7 @@ pub fn safe_arr_mean(arr : Array[Double]) -> Result[Double, @error.DataVerseErro
 /// safe_arr_var — 方差
 pub fn safe_arr_var(arr : Array[Double]) -> Result[Double, @error.DataVerseError] {
   if arr.length() == 0 {
-    Err(@error.InvalidInput("empty input"))
+    Err(@error.invalid_input("empty input"))
   } else {
     let mut s = 0.0
     for i in 0..<arr.length() {
@@ -656,7 +656,7 @@ pub fn safe_arr_var(arr : Array[Double]) -> Result[Double, @error.DataVerseError
 /// safe_arr_std — 标准差
 pub fn safe_arr_std(arr : Array[Double]) -> Result[Double, @error.DataVerseError] {
   if arr.length() == 0 {
-    Err(@error.InvalidInput("empty input"))
+    Err(@error.invalid_input("empty input"))
   } else {
     let mut s = 0.0
     for i in 0..<arr.length() {
@@ -675,7 +675,7 @@ pub fn safe_arr_std(arr : Array[Double]) -> Result[Double, @error.DataVerseError
 /// safe_error_rate — 错误率
 pub fn safe_error_rate(errors : Int, total : Int) -> Result[Double, @error.DataVerseError] {
   if total == 0 {
-    Err(@error.InvalidInput("division by zero"))
+    Err(@error.invalid_input("division by zero"))
   } else {
     Ok(errors.to_double() / total.to_double())
   }
@@ -685,7 +685,7 @@ pub fn safe_error_rate(errors : Int, total : Int) -> Result[Double, @error.DataV
 /// safe_accuracy_rate — 准确率
 pub fn safe_accuracy_rate(correct : Int, total : Int) -> Result[Double, @error.DataVerseError] {
   if total == 0 {
-    Err(@error.InvalidInput("division by zero"))
+    Err(@error.invalid_input("division by zero"))
   } else {
     Ok(correct.to_double() / total.to_double())
   }
@@ -701,7 +701,7 @@ pub fn safe_margin(actual : Double, predicted : Double) -> Result[Double, @error
 /// safe_margin_pct — 百分比误差
 pub fn safe_margin_pct(actual : Double, predicted : Double) -> Result[Double, @error.DataVerseError] {
   if actual == 0.0 {
-    Err(@error.InvalidInput("division by zero"))
+    Err(@error.invalid_input("division by zero"))
   } else {
     Ok((actual - predicted) / actual * 100.0)
   }
@@ -711,7 +711,7 @@ pub fn safe_margin_pct(actual : Double, predicted : Double) -> Result[Double, @e
 /// safe_ape — 绝对百分比误差
 pub fn safe_ape(actual : Double, predicted : Double) -> Result[Double, @error.DataVerseError] {
   if actual == 0.0 {
-    Err(@error.InvalidInput("division by zero"))
+    Err(@error.invalid_input("division by zero"))
   } else {
     let d = (actual - predicted) / actual * 100.0
     Ok(if d < 0.0 { -d } else { d })

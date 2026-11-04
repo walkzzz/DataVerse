@@ -9,12 +9,12 @@
 ## 当前状态
 
 - **327 包** · **1,265 源文件** · **517,160 行源码**
-- **212,518 pub fn** · **1,610 pub struct** · **20 pub(open) trait** · **2,913 trait 实现**
-- **4,067 测试** · **94+ proof_assert** · **0 errors** · **3 warnings** · **98.5% 包测试覆盖**
+- **212,518 pub fn** · **1,610 pub struct** · **20 pub(open) trait** · **2,510 trait 实现**
+- **4,132 测试** · **94+ proof_assert** · **0 errors** · **3 warnings** · **98.5% 包测试覆盖**
 - **126 安全 API**（`safe_*` 函数，返回 `Result[T, DataVerseError]`）
 - **7 可执行入口**（cli/bench/demo/proof/stats/extcore/info）
 - **20 领域**（extcore）+ **12 子包**（opcore）+ **11 子包**（learncore）
-- 统一错误处理：`Result[T, DataVerseError]`（6 错误分类）
+- 统一错误处理：`Result[T, DataVerseError]`（6 错误分类）+ suberror/raise/try-catch 机制（5 suberror 类型 + 8 raise 操作 + 4 错误多态 HOF）
 - Trait 系统：20 核心 `pub(open) trait` + 子 trait 层次
 - 工具链：MoonBit v0.1.20261020
 

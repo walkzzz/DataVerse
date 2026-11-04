@@ -4,6 +4,36 @@
 
 ## [1.0.0-beta] - 2026-11-04
 
+### 错误处理系统完善
+
+**suberror 具体错误类型 / Suberror Error Types**
+- 5 个 `suberror` 类型: `InputError`, `RangeError`, `DimError`, `ConvergenceError`, `SupportError`
+- 5 个构造函数: `make_input_error`, `make_range_error`, `make_dim_error`, `make_convergence_error`, `make_support_error`
+
+**raise 核心操作 / Raising Operations**
+- 8 个 `raise` 版本安全操作: `raise_div`, `raise_int_div`, `raise_mod`, `raise_sqrt`, `raise_log`, `raise_arr_get`, `raise_arr_head`, `raise_arr_tail`
+
+**Result ↔ raise 转换 / Conversion**
+- 5 个转换函数: `to_result`, `to_result_input`, `to_result_dim`, `to_result_conv`, `to_result_support`
+- `unwrap_or_raise`, `err_result`
+
+**错误多态高阶函数 / Error-Polymorphic HOFs**
+- 4 个 `raise?` 高阶函数: `map_raise`, `filter_raise`, `fold_raise`, `for_each_raise`
+
+**try/catch 工具 / try/catch Utilities**
+- 3 个捕获工具: `catch_range_default`, `catch_input_default`, `catch_range_log`
+- 5 个 Result 工具: `and_then`, `map_ok`, `recover`, `combine`, `collect_all`
+
+**测试 / Tests**
+- 56 个新错误处理测试（error_raise_test.mbt）
+- 测试: 4,076 → 4,132（+56）
+
+**统计 / Stats**
+- moon check: 0 errors, 3 warnings
+- moon test: 4,132 passed, 0 failed
+
+## [1.0.0-beta] - 2026-11-04
+
 ### Trait 系统和方法系统完善
 
 **trait 默认实现 / Default Implementations**

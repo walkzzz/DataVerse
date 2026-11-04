@@ -1,3 +1,6 @@
 // core/error — 统一错误处理 / Unified Error Handling
 // DataVerseError 统一错误类型，核心 API 返回 Result[T, DataVerseError]
-// 无依赖
+// suberror 具体错误类型 + raise/try-catch 机制
+import {
+  "moonbitlang/core/math",
+}

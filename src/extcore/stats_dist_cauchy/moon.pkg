@@ -1,4 +1,0 @@
-// extcore/stats_dist_cauchy
-import {
-  "dataverse/extcore/_common",
-}

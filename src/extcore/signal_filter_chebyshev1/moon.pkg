@@ -1,4 +1,0 @@
-// extcore/signal_filter_chebyshev1
-import {
-  "dataverse/extcore/_common",
-}

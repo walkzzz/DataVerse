@@ -1,5 +1,0 @@
-// opcore/zonal 区域分析 / Zonal Analysis
-// S4.8：Zonal Statistics / Zonal Geometry（契约 + 模拟实现）
-import {
-  "dataverse/opcore/hydrology",
-}

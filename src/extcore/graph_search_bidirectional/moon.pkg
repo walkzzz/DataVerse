@@ -1,4 +1,0 @@
-// extcore/graph_search_bidirectional
-import {
-  "dataverse/extcore/_common",
-}

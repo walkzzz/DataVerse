@@ -1,4 +1,0 @@
-// extcore/bio_phylo_bootstrap
-import {
-  "dataverse/extcore/_common",
-}

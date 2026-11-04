@@ -1,0 +1,4 @@
+// extcore/graph/connect — graph/connect 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

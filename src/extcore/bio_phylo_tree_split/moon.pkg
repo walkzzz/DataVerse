@@ -1,4 +1,0 @@
-// extcore/bio_phylo_tree_split
-import {
-  "dataverse/extcore/_common",
-}

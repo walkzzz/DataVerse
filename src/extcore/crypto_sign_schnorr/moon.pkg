@@ -1,4 +1,0 @@
-// extcore/crypto_sign_schnorr
-import {
-  "dataverse/extcore/_common",
-}

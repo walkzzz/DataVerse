@@ -1,4 +1,0 @@
-// extcore/geo_dist_great_circle
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,4 +1,0 @@
-// extcore/stats_dist_dirichlet
-import {
-  "dataverse/extcore/_common",
-}

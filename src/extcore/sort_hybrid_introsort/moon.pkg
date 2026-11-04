@@ -1,4 +1,0 @@
-// extcore/sort_hybrid_introsort
-import {
-  "dataverse/extcore/_common",
-}

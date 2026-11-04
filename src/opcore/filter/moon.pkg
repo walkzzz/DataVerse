@@ -1,5 +1,0 @@
-// opcore/filter 过滤算子 / Filter operators
-// S0.4: 长度过滤 + 非空过滤
-import {
-  "dataverse/dataobject",
-}

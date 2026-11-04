@@ -1,4 +1,0 @@
-// extcore/graph_connect_hamilton
-import {
-  "dataverse/extcore/_common",
-}

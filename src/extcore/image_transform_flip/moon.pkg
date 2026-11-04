@@ -1,4 +1,0 @@
-// extcore/image_transform_flip
-import {
-  "dataverse/extcore/_common",
-}

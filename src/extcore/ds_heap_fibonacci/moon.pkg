@@ -1,4 +1,0 @@
-// extcore/ds_heap_fibonacci
-import {
-  "dataverse/extcore/_common",
-}

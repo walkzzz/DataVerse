@@ -64,7 +64,7 @@ pub fn eval_line(arr : Array[@dataobject.DataObject]) -> EvalReport {
     let mut other_c = 0
     for i in 0..<total {
       let d = arr[i]
-      let q = @quality.text_quality_score(d)
+      let q = @text.quality_text_quality_score(d)
       sum_q = sum_q + q
       if q < min_q {
         min_q = q

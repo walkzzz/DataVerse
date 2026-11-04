@@ -1,4 +1,0 @@
-// extcore/stats_infer_confidence
-import {
-  "dataverse/extcore/_common",
-}

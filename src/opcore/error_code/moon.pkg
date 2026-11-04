@@ -1,5 +1,0 @@
-// opcore/error_code opcore/error_code
-// S13.30 new
-import {
-  "dataverse/extcore/_common",
-}

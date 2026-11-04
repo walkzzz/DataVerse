@@ -1,4 +1,0 @@
-// extcore/finance_pricing_barrier
-import {
-  "dataverse/extcore/_common",
-}

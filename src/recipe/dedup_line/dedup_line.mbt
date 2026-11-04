@@ -16,7 +16,7 @@
 pub fn dedup_line(
   arr : Array[@dataobject.DataObject],
 ) -> Array[@dataobject.DataObject] {
-  @dedup.exact_dedup(arr)
+  @text.dedup_exact_dedup(arr)
 }
 
 ///|

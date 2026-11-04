@@ -1,0 +1,4 @@
+// extcore/bio/seq — bio/seq 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

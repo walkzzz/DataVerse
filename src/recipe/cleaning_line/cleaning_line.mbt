@@ -18,8 +18,8 @@ pub fn cleaning_line(
 ) -> Array[@dataobject.DataObject] {
   arr
   .filter(fn(d) { d.content.length() > 0 })
-  .map(fn(d) { @clean.strip_whitespace(d) })
-  .map(fn(d) { @normalize.whitespace_normalization(d) })
+  .map(fn(d) { @text.clean_strip_whitespace(d) })
+  .map(fn(d) { @text.normalize_whitespace_normalization(d) })
 }
 
 ///|

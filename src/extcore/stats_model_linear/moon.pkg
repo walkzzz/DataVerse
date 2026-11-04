@@ -1,4 +1,0 @@
-// extcore/stats_model_linear
-import {
-  "dataverse/extcore/_common",
-}

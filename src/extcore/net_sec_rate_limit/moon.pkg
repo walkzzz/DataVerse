@@ -1,4 +1,0 @@
-// extcore/net_sec_rate_limit
-import {
-  "dataverse/extcore/_common",
-}

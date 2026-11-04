@@ -1,5 +1,0 @@
-// opcore/solar 太阳辐射 / Solar Radiation
-// S5.2：Solar Radiation Area/Point（契约 + 模拟实现）
-import {
-  "dataverse/opcore/hydrology",
-}

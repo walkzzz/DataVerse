@@ -1,4 +1,0 @@
-// extcore/finance_time_mgarch
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,4 +1,0 @@
-// extcore/ml_neural_gan
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,0 +1,5 @@
+// extcore/math/numerical — numerical 算法聚合包
+// 重构自 ode_solver, pde_solver, numerical_diff, numerical_integ, finite_diff, finite_element, boundary_value, initial_value, galerkin, spectral_method
+import {
+  "dataverse/extcore/_common",
+}

@@ -1,4 +1,0 @@
-// extcore/math_ode_solver
-import {
-  "dataverse/extcore/_common",
-}

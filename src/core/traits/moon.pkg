@@ -1,0 +1,3 @@
+// core/traits — 核心 trait 抽象层 / Core Trait Abstractions
+// 20 个 pub(open) trait，覆盖数据科学库统一行为抽象
+// 无依赖，最底层包

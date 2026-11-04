@@ -1,4 +1,0 @@
-// extcore/physics_heat_steady
-import {
-  "dataverse/extcore/_common",
-}

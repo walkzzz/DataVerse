@@ -1,0 +1,5 @@
+// opcore/spatial — 聚合包
+import {
+  "dataverse/dataobject",
+  "dataverse/extcore/_common",
+}

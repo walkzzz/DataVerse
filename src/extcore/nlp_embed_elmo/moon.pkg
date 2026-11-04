@@ -1,4 +1,0 @@
-// extcore/nlp_embed_elmo
-import {
-  "dataverse/extcore/_common",
-}

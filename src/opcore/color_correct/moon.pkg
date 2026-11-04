@@ -1,5 +1,0 @@
-// opcore/color_correct opcore/color_correct
-// S13.53 new
-import {
-  "dataverse/extcore/_common",
-}

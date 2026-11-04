@@ -1,0 +1,5 @@
+// extcore/math/misc — misc 算法聚合包
+// 重构自 quaternion, tensor_calc, eigenvalue
+import {
+  "dataverse/extcore/_common",
+}

@@ -6,43 +6,43 @@
 /// S12.1 opcore/statistics 统计分析测试
 test "opcore/statistics mean" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
-  let m = @statistics.mean(data)
+  let m = @math.statistics_mean(data)
   assert_true(m > 2.99 && m < 3.01)
 }
 
 ///|
 test "opcore/statistics median" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
-  let m = @statistics.median(data)
+  let m = @math.statistics_median(data)
   assert_true(m > 2.99 && m < 3.01)
 }
 
 ///|
 test "opcore/statistics variance" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
-  let v = @statistics.variance(data)
+  let v = @math.statistics_variance(data)
   assert_true(v > 1.99 && v < 2.51)
 }
 
 ///|
 test "opcore/statistics std_dev" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
-  let s = @statistics.std_dev(data)
+  let s = @math.statistics_std_dev(data)
   assert_true(s > 1.4 && s < 1.61)
 }
 
 ///|
 test "opcore/statistics sum" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
-  let s = @statistics.sum(data)
+  let s = @math.statistics_sum(data)
   assert_true(s > 14.99 && s < 15.01)
 }
 
 ///|
 test "opcore/statistics min/max" {
   let data = [3.0, 1.0, 4.0, 1.0, 5.0]
-  let lo = @statistics.min(data)
-  let hi = @statistics.max(data)
+  let lo = @math.statistics_min(data)
+  let hi = @math.statistics_max(data)
   assert_true(lo > 0.99 && lo < 1.01)
   assert_true(hi > 4.99 && hi < 5.01)
 }
@@ -50,14 +50,14 @@ test "opcore/statistics min/max" {
 ///|
 test "opcore/statistics range" {
   let data = [3.0, 1.0, 4.0, 1.0, 5.0]
-  let r = @statistics.range(data)
+  let r = @math.statistics_range(data)
   assert_true(r > 3.99 && r < 4.01)
 }
 
 ///|
 test "opcore/statistics z_score" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
-  let z = @statistics.z_score(3.0, data)
+  let z = @math.statistics_z_score(3.0, data)
   assert_true(z > -0.01 && z < 0.01)
 }
 
@@ -65,88 +65,88 @@ test "opcore/statistics z_score" {
 ///===
 /// S12.56 opcore/quantum_comp 量子计算测试
 test "opcore/quantum_comp complex_add" {
-  let a = @quantum_comp.make_complex(1.0, 2.0)
-  let b = @quantum_comp.make_complex(3.0, 4.0)
-  let c = @quantum_comp.cadd(a, b)
+  let a = @misc.quantum_comp_make_complex(1.0, 2.0)
+  let b = @misc.quantum_comp_make_complex(3.0, 4.0)
+  let c = @misc.quantum_comp_cadd(a, b)
   assert_true(c.re > 3.99 && c.re < 4.01)
   assert_true(c.im > 5.99 && c.im < 6.01)
 }
 
 ///|
 test "opcore/quantum_comp complex_mul" {
-  let a = @quantum_comp.make_complex(1.0, 2.0)
-  let b = @quantum_comp.make_complex(3.0, 4.0)
-  let c = @quantum_comp.cmul(a, b)
+  let a = @misc.quantum_comp_make_complex(1.0, 2.0)
+  let b = @misc.quantum_comp_make_complex(3.0, 4.0)
+  let c = @misc.quantum_comp_cmul(a, b)
   assert_true(c.re > -5.01 && c.re < -4.99)
   assert_true(c.im > 9.99 && c.im < 10.01)
 }
 
 ///|
 test "opcore/quantum_comp complex_abs" {
-  let a = @quantum_comp.make_complex(3.0, 4.0)
-  let abs_val = @quantum_comp.cabs(a)
+  let a = @misc.quantum_comp_make_complex(3.0, 4.0)
+  let abs_val = @misc.quantum_comp_cabs(a)
   assert_true(abs_val > 4.99 && abs_val < 5.01)
 }
 
 ///|
 test "opcore/quantum_comp complex_conj" {
-  let a = @quantum_comp.make_complex(3.0, 4.0)
-  let c = @quantum_comp.cconj(a)
+  let a = @misc.quantum_comp_make_complex(3.0, 4.0)
+  let c = @misc.quantum_comp_cconj(a)
   assert_true(c.re > 2.99 && c.re < 3.01)
   assert_true(c.im > -4.01 && c.im < -3.99)
 }
 
 ///|
 test "opcore/quantum_comp complex_scale" {
-  let a = @quantum_comp.make_complex(3.0, 4.0)
-  let c = @quantum_comp.cscale(a, 2.0)
+  let a = @misc.quantum_comp_make_complex(3.0, 4.0)
+  let c = @misc.quantum_comp_cscale(a, 2.0)
   assert_true(c.re > 5.99 && c.re < 6.01)
   assert_true(c.im > 7.99 && c.im < 8.01)
 }
 
 ///|
 test "opcore/quantum_comp ket0" {
-  let state = @quantum_comp.ket0()
-  let p0 = @quantum_comp.probability(state, 0)
-  let p1 = @quantum_comp.probability(state, 1)
+  let state = @misc.quantum_comp_ket0()
+  let p0 = @misc.quantum_comp_probability(state, 0)
+  let p1 = @misc.quantum_comp_probability(state, 1)
   assert_true(p0 > 0.99 && p0 < 1.01)
   assert_true(p1 > -0.01 && p1 < 0.01)
 }
 
 ///|
 test "opcore/quantum_comp ket1" {
-  let state = @quantum_comp.ket1()
-  let p0 = @quantum_comp.probability(state, 0)
-  let p1 = @quantum_comp.probability(state, 1)
+  let state = @misc.quantum_comp_ket1()
+  let p0 = @misc.quantum_comp_probability(state, 0)
+  let p1 = @misc.quantum_comp_probability(state, 1)
   assert_true(p0 > -0.01 && p0 < 0.01)
   assert_true(p1 > 0.99 && p1 < 1.01)
 }
 
 ///|
 test "opcore/quantum_comp hadamard" {
-  let state = @quantum_comp.ket0()
-  let gate = @quantum_comp.hadamard_gate()
-  let result = @quantum_comp.apply_gate(gate, state)
-  let p0 = @quantum_comp.probability(result, 0)
-  let p1 = @quantum_comp.probability(result, 1)
+  let state = @misc.quantum_comp_ket0()
+  let gate = @misc.quantum_comp_hadamard_gate()
+  let result = @misc.quantum_comp_apply_gate(gate, state)
+  let p0 = @misc.quantum_comp_probability(result, 0)
+  let p1 = @misc.quantum_comp_probability(result, 1)
   assert_true(p0 > 0.49 && p0 < 0.51)
   assert_true(p1 > 0.49 && p1 < 0.51)
 }
 
 ///|
 test "opcore/quantum_comp pauli_x" {
-  let state = @quantum_comp.ket0()
-  let gate = @quantum_comp.pauli_x_gate()
-  let result = @quantum_comp.apply_gate(gate, state)
-  let p1 = @quantum_comp.probability(result, 1)
+  let state = @misc.quantum_comp_ket0()
+  let gate = @misc.quantum_comp_pauli_x_gate()
+  let result = @misc.quantum_comp_apply_gate(gate, state)
+  let p1 = @misc.quantum_comp_probability(result, 1)
   assert_true(p1 > 0.99 && p1 < 1.01)
 }
 
 ///|
 test "opcore/quantum_comp bell_state" {
-  let state = @quantum_comp.bell_state()
-  let p0 = @quantum_comp.probability(state, 0)
-  let p3 = @quantum_comp.probability(state, 3)
+  let state = @misc.quantum_comp_bell_state()
+  let p0 = @misc.quantum_comp_probability(state, 0)
+  let p3 = @misc.quantum_comp_probability(state, 3)
   assert_true(p0 > 0.49 && p0 < 0.51)
   assert_true(p3 > 0.49 && p3 < 0.51)
 }
@@ -155,8 +155,8 @@ test "opcore/quantum_comp bell_state" {
 ///===
 /// S12.57 learncore/neuro_symbolic 神经符号AI测试
 test "learncore/neuro_symbolic make_predicate" {
-  let p = @neuro_symbolic.make_predicate("likes", ["alice", "bob"])
-  let s = @neuro_symbolic.predicate_to_string(p)
+  let p = @lnlp.neuro_symbolic_make_predicate("likes", ["alice", "bob"])
+  let s = @lnlp.neuro_symbolic_predicate_to_string(p)
   assert_true(s.contains("likes"))
   assert_true(s.contains("alice"))
   assert_true(s.contains("bob"))
@@ -164,59 +164,59 @@ test "learncore/neuro_symbolic make_predicate" {
 
 ///|
 test "learncore/neuro_symbolic predicate_eq" {
-  let p1 = @neuro_symbolic.make_predicate("likes", ["alice", "bob"])
-  let p2 = @neuro_symbolic.make_predicate("likes", ["alice", "bob"])
-  let p3 = @neuro_symbolic.make_predicate("knows", ["alice", "bob"])
-  assert_true(@neuro_symbolic.predicate_eq(p1, p2))
-  assert_false(@neuro_symbolic.predicate_eq(p1, p3))
+  let p1 = @lnlp.neuro_symbolic_make_predicate("likes", ["alice", "bob"])
+  let p2 = @lnlp.neuro_symbolic_make_predicate("likes", ["alice", "bob"])
+  let p3 = @lnlp.neuro_symbolic_make_predicate("knows", ["alice", "bob"])
+  assert_true(@lnlp.neuro_symbolic_predicate_eq(p1, p2))
+  assert_false(@lnlp.neuro_symbolic_predicate_eq(p1, p3))
 }
 
 ///|
 test "learncore/neuro_symbolic ltn_and" {
-  let result = @neuro_symbolic.ltn_and([0.8, 0.6, 0.9])
+  let result = @lnlp.neuro_symbolic_ltn_and([0.8, 0.6, 0.9])
   assert_true(result > 0.43 && result < 0.44)
 }
 
 ///|
 test "learncore/neuro_symbolic ltn_or" {
-  let result = @neuro_symbolic.ltn_or([0.3, 0.4])
+  let result = @lnlp.neuro_symbolic_ltn_or([0.3, 0.4])
   assert_true(result > 0.57 && result < 0.59)
 }
 
 ///|
 test "learncore/neuro_symbolic ltn_implies" {
-  let result = @neuro_symbolic.ltn_implies(0.8, 0.6)
+  let result = @lnlp.neuro_symbolic_ltn_implies(0.8, 0.6)
   assert_true(result > 0.67 && result < 0.69)
 }
 
 ///|
 test "learncore/neuro_symbolic ltn_not" {
-  let result = @neuro_symbolic.ltn_not(0.7)
+  let result = @lnlp.neuro_symbolic_ltn_not(0.7)
   assert_true(result > 0.29 && result < 0.31)
 }
 
 ///|
 test "learncore/neuro_symbolic t_norm_product" {
-  let result = @neuro_symbolic.t_norm_product(0.5, 0.6)
+  let result = @lnlp.neuro_symbolic_t_norm_product(0.5, 0.6)
   assert_true(result > 0.29 && result < 0.31)
 }
 
 ///|
 test "learncore/neuro_symbolic t_norm_min" {
-  let result = @neuro_symbolic.t_norm_min(0.5, 0.6)
+  let result = @lnlp.neuro_symbolic_t_norm_min(0.5, 0.6)
   assert_true(result > 0.49 && result < 0.51)
 }
 
 ///|
 test "learncore/neuro_symbolic t_conorm_max" {
-  let result = @neuro_symbolic.t_conorm_max(0.5, 0.6)
+  let result = @lnlp.neuro_symbolic_t_conorm_max(0.5, 0.6)
   assert_true(result > 0.59 && result < 0.61)
 }
 
 ///|
 test "learncore/neuro_symbolic make_triple" {
-  let t = @neuro_symbolic.make_triple("alice", "likes", "bob")
-  let s = @neuro_symbolic.triple_to_string(t)
+  let t = @lnlp.neuro_symbolic_make_triple("alice", "likes", "bob")
+  let s = @lnlp.neuro_symbolic_triple_to_string(t)
   assert_true(s.contains("alice"))
   assert_true(s.contains("likes"))
   assert_true(s.contains("bob"))
@@ -225,11 +225,11 @@ test "learncore/neuro_symbolic make_triple" {
 ///|
 test "learncore/neuro_symbolic kg_query" {
   let triples = [
-    @neuro_symbolic.make_triple("alice", "likes", "bob"),
-    @neuro_symbolic.make_triple("bob", "likes", "charlie"),
+    @lnlp.neuro_symbolic_make_triple("alice", "likes", "bob"),
+    @lnlp.neuro_symbolic_make_triple("bob", "likes", "charlie"),
   ]
-  let kg = @neuro_symbolic.make_knowledge_graph(triples)
-  let results = @neuro_symbolic.kg_query(kg, "alice", "likes")
+  let kg = @lnlp.neuro_symbolic_make_knowledge_graph(triples)
+  let results = @lnlp.neuro_symbolic_kg_query(kg, "alice", "likes")
   assert_eq(results.length(), 1)
   assert_eq(results[0], "bob")
 }

@@ -26,7 +26,7 @@ pub extend ImageMeta with Debug::{to_repr}
 
 ///|
 /// 构造图像元数据 / Build image metadata.
-pub fn make_image_meta(
+pub fn image_make_image_meta(
   width : Int32,
   height : Int32,
   channels : Int32,
@@ -37,13 +37,13 @@ pub fn make_image_meta(
 
 ///|
 /// 空图像元数据（退化安全）/ Empty image metadata (degenerate-safe).
-pub fn empty_image_meta() -> ImageMeta {
+pub fn image_empty_image_meta() -> ImageMeta {
   { width: 0, height: 0, channels: 0, format: "", }
 }
 
 ///|
 /// 图像尺寸 / Image size (width, height).
-pub fn image_size(meta : ImageMeta) -> (Int32, Int32) {
+pub fn image_image_size(meta : ImageMeta) -> (Int32, Int32) {
   (meta.width, meta.height)
 }
 
@@ -51,7 +51,7 @@ pub fn image_size(meta : ImageMeta) -> (Int32, Int32) {
 /// 宽高比 / Aspect ratio (width / height).
 ///
 /// 退化安全：height=0 返回 0.0。
-pub fn aspect_ratio(meta : ImageMeta) -> Double {
+pub fn image_aspect_ratio(meta : ImageMeta) -> Double {
   if meta.height == 0 {
     0.0
   } else {
@@ -64,12 +64,12 @@ pub fn aspect_ratio(meta : ImageMeta) -> Double {
 ///
 /// 判断 aspect_ratio 是否在 [min_ratio, max_ratio] 范围内。
 /// 退化安全：height=0 返回 false。
-pub fn aspect_ratio_filter(
+pub fn image_aspect_ratio_filter(
   meta : ImageMeta,
   min_ratio : Double,
   max_ratio : Double,
 ) -> Bool {
-  let r = aspect_ratio(meta)
+  let r = image_aspect_ratio(meta)
   r >= min_ratio && r <= max_ratio
 }
 
@@ -78,7 +78,7 @@ pub fn aspect_ratio_filter(
 ///
 /// 返回新尺寸的 ImageMeta，channels 和 format 不变。
 /// 退化安全：new_width/new_height 为负时取 0。
-pub fn image_resize(
+pub fn image_image_resize(
   meta : ImageMeta,
   new_width : Int32,
   new_height : Int32,
@@ -93,7 +93,7 @@ pub fn image_resize(
 ///
 /// 从 (x, y) 起裁剪 w×h 区域。返回裁剪后的 ImageMeta。
 /// 退化安全：越界时裁剪到边界，负值取 0。
-pub fn image_crop(
+pub fn image_image_crop(
   meta : ImageMeta,
   x : Int32,
   y : Int32,
@@ -120,7 +120,7 @@ pub fn image_crop(
 
 ///|
 /// 图像元数据转 DataObject / Convert image metadata to DataObject.
-pub fn image_to_dataobject(meta : ImageMeta) -> @dataobject.DataObject {
+pub fn image_image_to_dataobject(meta : ImageMeta) -> @dataobject.DataObject {
   let content = "image:" +
     meta.format.to_string() +
     ":" +
@@ -133,7 +133,7 @@ pub fn image_to_dataobject(meta : ImageMeta) -> @dataobject.DataObject {
 }
 
 ///|
-pub fn image_id() -> String {
+pub fn image_image_id() -> String {
   "opcore/image"
 }
 // ============================================================
@@ -173,7 +173,7 @@ pub extend RotateAngle with Debug::{to_repr}
 ///
 /// 翻转不改变尺寸，返回同尺寸 ImageMeta。
 /// 退化安全：空图像返回空图像。
-pub fn image_flip(meta : ImageMeta, axis : FlipAxis) -> ImageMeta {
+pub fn image_image_flip(meta : ImageMeta, axis : FlipAxis) -> ImageMeta {
   ignore(axis)
   {
     width: meta.width,
@@ -188,7 +188,7 @@ pub fn image_flip(meta : ImageMeta, axis : FlipAxis) -> ImageMeta {
 ///
 /// D90/D270 交换 width 和 height，D180 保持不变。
 /// 退化安全：空图像返回空图像。
-pub fn image_rotate(meta : ImageMeta, angle : RotateAngle) -> ImageMeta {
+pub fn image_image_rotate(meta : ImageMeta, angle : RotateAngle) -> ImageMeta {
   match angle {
     D90 =>
       {
@@ -216,7 +216,7 @@ pub fn image_rotate(meta : ImageMeta, angle : RotateAngle) -> ImageMeta {
 
 ///|
 /// 翻转轴名称 / Flip axis name.
-pub fn flip_axis_name(axis : FlipAxis) -> String {
+pub fn image_flip_axis_name(axis : FlipAxis) -> String {
   match axis {
     Horizontal => "horizontal"
     Vertical => "vertical"
@@ -226,7 +226,7 @@ pub fn flip_axis_name(axis : FlipAxis) -> String {
 
 ///|
 /// 旋转角度名称 / Rotation angle name.
-pub fn rotate_angle_name(angle : RotateAngle) -> String {
+pub fn image_rotate_angle_name(angle : RotateAngle) -> String {
   match angle {
     D90 => "90"
     D180 => "180"
@@ -246,7 +246,7 @@ pub struct GrayImage {
 
 ///|
 /// 构造灰度图像 / Create grayscale image.
-pub fn make_gray_image(
+pub fn image_make_gray_image(
   width : Int32,
   height : Int32,
   pixels : Array[Double],
@@ -256,7 +256,7 @@ pub fn make_gray_image(
 
 ///|
 /// 安全获取像素 / Safe pixel access.
-fn get_pixel(img : GrayImage, row : Int32, col : Int32) -> Double {
+fn image_get_pixel(img : GrayImage, row : Int32, col : Int32) -> Double {
   if row < 0 || row >= img.height || col < 0 || col >= img.width {
     return 0.0
   }
@@ -265,7 +265,7 @@ fn get_pixel(img : GrayImage, row : Int32, col : Int32) -> Double {
 
 ///|
 /// 图像最小值 / Image min pixel value.
-pub fn image_min(img : GrayImage) -> Double {
+pub fn image_image_min(img : GrayImage) -> Double {
   if img.pixels.length() == 0 {
     return 0.0
   }
@@ -280,7 +280,7 @@ pub fn image_min(img : GrayImage) -> Double {
 
 ///|
 /// 图像最大值 / Image max pixel value.
-pub fn image_max(img : GrayImage) -> Double {
+pub fn image_image_max(img : GrayImage) -> Double {
   if img.pixels.length() == 0 {
     return 0.0
   }
@@ -295,7 +295,7 @@ pub fn image_max(img : GrayImage) -> Double {
 
 ///|
 /// 图像均值 / Image mean pixel value.
-pub fn image_mean(img : GrayImage) -> Double {
+pub fn image_image_mean(img : GrayImage) -> Double {
   let n = img.pixels.length()
   if n == 0 {
     return 0.0
@@ -309,12 +309,12 @@ pub fn image_mean(img : GrayImage) -> Double {
 
 ///|
 /// 图像标准差 / Image standard deviation.
-pub fn image_std(img : GrayImage) -> Double {
+pub fn image_image_std(img : GrayImage) -> Double {
   let n = img.pixels.length()
   if n == 0 {
     return 0.0
   }
-  let mean = image_mean(img)
+  let mean = image_image_mean(img)
   let mut variance = 0.0
   for i in 0..<n {
     let diff = img.pixels[i] - mean
@@ -325,7 +325,7 @@ pub fn image_std(img : GrayImage) -> Double {
 
 ///|
 /// 亮度调整 / Adjust brightness.
-pub fn adjust_brightness(img : GrayImage, delta : Double) -> GrayImage {
+pub fn image_adjust_brightness(img : GrayImage, delta : Double) -> GrayImage {
   let result : Array[Double] = []
   for i in 0..<img.pixels.length() {
     let v = img.pixels[i] + delta
@@ -337,8 +337,8 @@ pub fn adjust_brightness(img : GrayImage, delta : Double) -> GrayImage {
 
 ///|
 /// 对比度调整 / Adjust contrast.
-pub fn adjust_contrast(img : GrayImage, factor : Double) -> GrayImage {
-  let mean = image_mean(img)
+pub fn image_adjust_contrast(img : GrayImage, factor : Double) -> GrayImage {
+  let mean = image_image_mean(img)
   let result : Array[Double] = []
   for i in 0..<img.pixels.length() {
     let v = mean + (img.pixels[i] - mean) * factor
@@ -350,11 +350,11 @@ pub fn adjust_contrast(img : GrayImage, factor : Double) -> GrayImage {
 
 ///|
 /// 伽马校正 / Gamma correction.
-pub fn gamma_correction(img : GrayImage, gamma : Double) -> GrayImage {
+pub fn image_gamma_correction(img : GrayImage, gamma : Double) -> GrayImage {
   let result : Array[Double] = []
   for i in 0..<img.pixels.length() {
     let normalized = img.pixels[i] / 255.0
-    let corrected = pow_double(normalized, gamma) * 255.0
+    let corrected = image_pow_double(normalized, gamma) * 255.0
     result.push(corrected)
   }
   { width: img.width, height: img.height, pixels: result, }
@@ -362,17 +362,17 @@ pub fn gamma_correction(img : GrayImage, gamma : Double) -> GrayImage {
 
 ///|
 /// 幂运算 / Power function (for gamma correction).
-fn pow_double(base : Double, exp : Double) -> Double {
+fn image_pow_double(base : Double, exp : Double) -> Double {
   if base <= 0.0 {
     return 0.0
   }
-  let log_base = ln_(base)
-  exp_(exp * log_base)
+  let log_base = image_ln_(base)
+  image_exp_(exp * log_base)
 }
 
 ///|
 /// 自然对数 / Natural log.
-fn ln_(x : Double) -> Double {
+fn image_ln_(x : Double) -> Double {
   if x <= 0.0 {
     return -999999.0
   }
@@ -389,7 +389,7 @@ fn ln_(x : Double) -> Double {
 
 ///|
 /// 指数 / Exponential.
-fn exp_(x : Double) -> Double {
+fn image_exp_(x : Double) -> Double {
   if x > 20.0 {
     return 485165195.4
   }
@@ -407,7 +407,7 @@ fn exp_(x : Double) -> Double {
 
 ///|
 /// 二值化阈值 / Binary threshold.
-pub fn threshold(img : GrayImage, thresh : Double) -> GrayImage {
+pub fn image_threshold(img : GrayImage, thresh : Double) -> GrayImage {
   let result : Array[Double] = []
   for i in 0..<img.pixels.length() {
     if img.pixels[i] >= thresh {
@@ -421,7 +421,7 @@ pub fn threshold(img : GrayImage, thresh : Double) -> GrayImage {
 
 ///|
 /// 直方图 / Histogram (256 bins).
-pub fn histogram(img : GrayImage) -> Array[Int32] {
+pub fn image_histogram(img : GrayImage) -> Array[Int32] {
   let hist : Array[Int32] = Array::make(256, 0)
   for i in 0..<img.pixels.length() {
     let bin = img.pixels[i].to_int()
@@ -433,7 +433,7 @@ pub fn histogram(img : GrayImage) -> Array[Int32] {
 
 ///|
 /// 均值滤波 / Mean filter (3x3).
-pub fn mean_filter(img : GrayImage) -> GrayImage {
+pub fn image_mean_filter(img : GrayImage) -> GrayImage {
   let result : Array[Double] = []
   for r in 0..<img.height {
     for c in 0..<img.width {
@@ -441,7 +441,7 @@ pub fn mean_filter(img : GrayImage) -> GrayImage {
       let mut count = 0
       for dr in -1..<=1 {
         for dc in -1..<=1 {
-          sum = sum + get_pixel(img, r + dr, c + dc)
+          sum = sum + image_get_pixel(img, r + dr, c + dc)
           count = count + 1
         }
       }
@@ -453,14 +453,14 @@ pub fn mean_filter(img : GrayImage) -> GrayImage {
 
 ///|
 /// 中值滤波 / Median filter (3x3).
-pub fn median_filter(img : GrayImage) -> GrayImage {
+pub fn image_median_filter(img : GrayImage) -> GrayImage {
   let result : Array[Double] = []
   for r in 0..<img.height {
     for c in 0..<img.width {
       let vals : Array[Double] = []
       for dr in -1..<=1 {
         for dc in -1..<=1 {
-          vals.push(get_pixel(img, r + dr, c + dc))
+          vals.push(image_get_pixel(img, r + dr, c + dc))
         }
       }
       vals.sort_by(fn(a, b) { if a < b { -1 } else if a > b { 1 } else { 0 } })
@@ -472,16 +472,16 @@ pub fn median_filter(img : GrayImage) -> GrayImage {
 
 ///|
 /// Sobel X 梯度 / Sobel X gradient.
-pub fn sobel_x(img : GrayImage) -> GrayImage {
+pub fn image_sobel_x(img : GrayImage) -> GrayImage {
   let result : Array[Double] = []
   for r in 0..<img.height {
     for c in 0..<img.width {
-      let gx = -get_pixel(img, r - 1, c - 1) +
-        get_pixel(img, r - 1, c + 1) -
-        2.0 * get_pixel(img, r, c - 1) +
-        2.0 * get_pixel(img, r, c + 1) -
-        get_pixel(img, r + 1, c - 1) +
-        get_pixel(img, r + 1, c + 1)
+      let gx = -image_get_pixel(img, r - 1, c - 1) +
+        image_get_pixel(img, r - 1, c + 1) -
+        2.0 * image_get_pixel(img, r, c - 1) +
+        2.0 * image_get_pixel(img, r, c + 1) -
+        image_get_pixel(img, r + 1, c - 1) +
+        image_get_pixel(img, r + 1, c + 1)
       result.push(gx)
     }
   }
@@ -490,16 +490,16 @@ pub fn sobel_x(img : GrayImage) -> GrayImage {
 
 ///|
 /// Sobel Y 梯度 / Sobel Y gradient.
-pub fn sobel_y(img : GrayImage) -> GrayImage {
+pub fn image_sobel_y(img : GrayImage) -> GrayImage {
   let result : Array[Double] = []
   for r in 0..<img.height {
     for c in 0..<img.width {
-      let gy = -get_pixel(img, r - 1, c - 1) -
-        2.0 * get_pixel(img, r - 1, c) -
-        get_pixel(img, r - 1, c + 1) +
-        get_pixel(img, r + 1, c - 1) +
-        2.0 * get_pixel(img, r + 1, c) +
-        get_pixel(img, r + 1, c + 1)
+      let gy = -image_get_pixel(img, r - 1, c - 1) -
+        2.0 * image_get_pixel(img, r - 1, c) -
+        image_get_pixel(img, r - 1, c + 1) +
+        image_get_pixel(img, r + 1, c - 1) +
+        2.0 * image_get_pixel(img, r + 1, c) +
+        image_get_pixel(img, r + 1, c + 1)
       result.push(gy)
     }
   }
@@ -508,9 +508,9 @@ pub fn sobel_y(img : GrayImage) -> GrayImage {
 
 ///|
 /// 边缘强度 / Edge magnitude from Sobel.
-pub fn edge_magnitude(img : GrayImage) -> GrayImage {
-  let gx = sobel_x(img)
-  let gy = sobel_y(img)
+pub fn image_edge_magnitude(img : GrayImage) -> GrayImage {
+  let gx = image_sobel_x(img)
+  let gy = image_sobel_y(img)
   let result : Array[Double] = []
   for i in 0..<img.pixels.length() {
     result.push(
@@ -522,28 +522,28 @@ pub fn edge_magnitude(img : GrayImage) -> GrayImage {
 
 ///|
 /// 下采样 / Downsample (2x).
-pub fn downsample(img : GrayImage) -> GrayImage {
+pub fn image_downsample(img : GrayImage) -> GrayImage {
   let new_w = img.width / 2
   let new_h = img.height / 2
   let result : Array[Double] = []
   for r in 0..<new_h {
     for c in 0..<new_w {
-      result.push(get_pixel(img, r * 2, c * 2))
+      result.push(image_get_pixel(img, r * 2, c * 2))
     }
   }
   { width: new_w, height: new_h, pixels: result, }
 }
 
 ///|
-/// 膨胀 / Morphological dilate (3x3 max filter).
-pub fn dilate(img : GrayImage) -> GrayImage {
+/// 膨胀 / Morphological image_dilate(3x3 max filter).
+pub fn image_dilate(img : GrayImage) -> GrayImage {
   let result : Array[Double] = []
   for r in 0..<img.height {
     for c in 0..<img.width {
       let mut max_val = 0.0
       for dr in -1..<=1 {
         for dc in -1..<=1 {
-          let v = get_pixel(img, r + dr, c + dc)
+          let v = image_get_pixel(img, r + dr, c + dc)
           if v > max_val {
             max_val = v
           }
@@ -556,15 +556,15 @@ pub fn dilate(img : GrayImage) -> GrayImage {
 }
 
 ///|
-/// 腐蚀 / Morphological erode (3x3 min filter).
-pub fn erode(img : GrayImage) -> GrayImage {
+/// 腐蚀 / Morphological image_erode(3x3 min filter).
+pub fn image_erode(img : GrayImage) -> GrayImage {
   let result : Array[Double] = []
   for r in 0..<img.height {
     for c in 0..<img.width {
       let mut min_val = 999999.0
       for dr in -1..<=1 {
         for dc in -1..<=1 {
-          let v = get_pixel(img, r + dr, c + dc)
+          let v = image_get_pixel(img, r + dr, c + dc)
           if v < min_val {
             min_val = v
           }
@@ -578,7 +578,7 @@ pub fn erode(img : GrayImage) -> GrayImage {
 
 ///|
 /// RGB → 灰度 / RGB to grayscale.
-pub fn rgb_to_gray(
+pub fn image_rgb_to_gray(
   width : Int32,
   height : Int32,
   rgb : Array[(Double, Double, Double)],

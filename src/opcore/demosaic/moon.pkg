@@ -1,5 +1,0 @@
-// opcore/demosaic opcore/demosaic
-// S13.55 new
-import {
-  "dataverse/extcore/_common",
-}

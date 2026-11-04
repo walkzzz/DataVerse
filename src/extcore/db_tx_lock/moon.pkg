@@ -1,4 +1,0 @@
-// extcore/db_tx_lock
-import {
-  "dataverse/extcore/_common",
-}

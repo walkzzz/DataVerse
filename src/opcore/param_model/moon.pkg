@@ -1,5 +1,0 @@
-// opcore/param_model opcore/param_model
-// S13.18 new
-import {
-  "dataverse/extcore/_common",
-}

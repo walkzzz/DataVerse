@@ -1,4 +1,0 @@
-// extcore/nlp_pos_transformer
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,0 +1,4 @@
+// extcore/ds/hash — ds/hash 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

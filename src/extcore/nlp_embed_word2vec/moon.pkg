@@ -1,4 +1,0 @@
-// extcore/nlp_embed_word2vec
-import {
-  "dataverse/extcore/_common",
-}

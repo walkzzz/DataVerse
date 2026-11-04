@@ -1,0 +1,4 @@
+// extcore/finance/pricing — finance/pricing 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

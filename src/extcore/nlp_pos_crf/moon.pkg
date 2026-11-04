@@ -1,4 +1,0 @@
-// extcore/nlp_pos_crf
-import {
-  "dataverse/extcore/_common",
-}

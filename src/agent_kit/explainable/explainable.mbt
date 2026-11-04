@@ -1905,3 +1905,9 @@ pub fn ale_explain(
 pub fn explainable_id() -> String {
   "agent_kit/explainable"
 }
+
+///|
+/// 构造测试 / Construction test.
+test "construct: TreeNode" {
+  let _ = TreeNode::{ feature: 0, threshold: 0.0, left: 0, right: 0, value: 0.0, is_leaf: false }
+}

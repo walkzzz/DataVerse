@@ -1,4 +1,0 @@
-// extcore/ds_list_chunked
-import {
-  "dataverse/extcore/_common",
-}

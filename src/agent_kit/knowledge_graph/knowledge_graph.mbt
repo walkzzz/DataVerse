@@ -1348,3 +1348,14 @@ pub fn kg_federate_results(
 pub fn knowledge_graph_id() -> String {
   "agent_kit/knowledge_graph"
 }
+
+///|
+/// 构造测试 / Construction test.
+test "construct: Entity" {
+  let _ = Entity::{ entity_id: "", entity_type: "", attributes: [] }
+}
+///|
+/// 构造测试 / Construction test.
+test "construct: Relation" {
+  let _ = Relation::{ relation_id: "", source_type: "", target_type: "", symmetric: false }
+}

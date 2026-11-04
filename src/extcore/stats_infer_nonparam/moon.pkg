@@ -1,4 +1,0 @@
-// extcore/stats_infer_nonparam
-import {
-  "dataverse/extcore/_common",
-}

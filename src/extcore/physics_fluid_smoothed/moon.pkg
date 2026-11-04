@@ -1,4 +1,0 @@
-// extcore/physics_fluid_smoothed
-import {
-  "dataverse/extcore/_common",
-}

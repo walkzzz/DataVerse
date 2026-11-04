@@ -1,5 +1,0 @@
-// opcore/edge_detection
-import {
-  "moonbitlang/core/math",
-  "dataverse/extcore/_common",
-}

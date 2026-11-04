@@ -1,4 +1,0 @@
-// extcore/db_tx_saga
-import {
-  "dataverse/extcore/_common",
-}

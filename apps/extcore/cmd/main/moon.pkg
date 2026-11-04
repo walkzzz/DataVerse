@@ -1,7 +1,7 @@
 import {
-  "dataverse/extcore/math_linear_algebra",
-  "dataverse/extcore/stats_dist_normal",
-  "dataverse/extcore/ml_cluster_kmeans",
+  "dataverse/extcore/math/linear",
+  "dataverse/extcore/stats/dist",
+  "dataverse/extcore/ml/clustering",
 }
 
 pkgtype(kind: "executable")

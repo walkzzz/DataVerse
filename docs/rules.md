@@ -83,7 +83,7 @@ README 中英文，美化，默认中文；每个子包也要 README.md。
 
 | 要点 | 说明 |
 | --- | --- |
-| 工具链版本 | MoonBit v0.1.20260920 |
+| 工具链版本 | MoonBit v0.1.20261020 |
 | 配置文件 | `moon.mod`（TOML，键 `name`/`source`/`version` 等）/ `moon.pkg`（DSL，`import {}` 声明依赖，`//` 注释） |
 | 科学计数法 | 不支持 `1e-13` 字面量，用 `0.000000000001` |
 | pub enum 跨包 | 构造子跨包不可构造，需提供 `pub fn` 构造函数 |
@@ -190,7 +190,7 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S10.1-S10.7 | 数据基础设施深化（serialize/window/ir_transform/scheduler/partition/format + spec 101-110） | ✅ | — |
 | S11.1-S11.5 | Agent/LLM 集成深化（llm/retrieval/prompt/memory/tool + spec 111-120） | ✅ | — |
 
-**当前测试**：1468 · **形式化证明**：120 · **ArcGIS 映射**：726/726
+**当前测试**：1708 · **形式化证明**：120 · **ArcGIS 映射**：726/726
 
 ---
 

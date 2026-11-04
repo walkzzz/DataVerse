@@ -1,5 +1,0 @@
-// opcore/approx_theory opcore/approx_theory
-// S13.6 new
-import {
-  "dataverse/extcore/_common",
-}

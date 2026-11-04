@@ -1,0 +1,4 @@
+// extcore/nlp/embed — nlp/embed 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

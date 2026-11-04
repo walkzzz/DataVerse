@@ -1,4 +1,0 @@
-// extcore/geo_buffer_ellipse
-import {
-  "dataverse/extcore/_common",
-}

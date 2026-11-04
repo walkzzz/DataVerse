@@ -1,4 +1,0 @@
-// extcore/geo_intersect_rect
-import {
-  "dataverse/extcore/_common",
-}

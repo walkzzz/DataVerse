@@ -1,4 +1,0 @@
-// extcore/ds_heap_binary
-import {
-  "dataverse/extcore/_common",
-}

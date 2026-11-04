@@ -1,4 +1,0 @@
-// extcore/signal_filter_bessel
-import {
-  "dataverse/extcore/_common",
-}

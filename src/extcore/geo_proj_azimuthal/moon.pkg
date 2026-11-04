@@ -1,4 +1,0 @@
-// extcore/geo_proj_azimuthal
-import {
-  "dataverse/extcore/_common",
-}

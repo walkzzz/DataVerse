@@ -1,5 +1,0 @@
-// opcore/registry 算子注册表 / Operator registry
-// S0.4: 注册 + 查询 + 契约校验
-import {
-  "dataverse/opcore",
-}

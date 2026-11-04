@@ -1,4 +1,0 @@
-// extcore/ds_heap_interval
-import {
-  "dataverse/extcore/_common",
-}

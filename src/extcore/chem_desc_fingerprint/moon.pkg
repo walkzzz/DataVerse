@@ -1,4 +1,0 @@
-// extcore/chem_desc_fingerprint
-import {
-  "dataverse/extcore/_common",
-}

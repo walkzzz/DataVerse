@@ -1,4 +1,0 @@
-// extcore/timeseries_decomp_classical
-import {
-  "dataverse/extcore/_common",
-}

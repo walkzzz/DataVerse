@@ -1,4 +1,0 @@
-// extcore/stats_test_goodness
-import {
-  "dataverse/extcore/_common",
-}

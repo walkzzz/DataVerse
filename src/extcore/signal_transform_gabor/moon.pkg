@@ -1,4 +1,0 @@
-// extcore/signal_transform_gabor
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,4 +1,0 @@
-// extcore/ds_tree_fenwick
-import {
-  "dataverse/extcore/_common",
-}

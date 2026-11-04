@@ -1,4 +1,0 @@
-// extcore/db_query_distributed
-import {
-  "dataverse/extcore/_common",
-}

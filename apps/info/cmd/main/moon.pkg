@@ -1,6 +1,6 @@
 import {
   "dataverse/extcore/_common",
-  "dataverse/extcore/math_linear_algebra",
+  "dataverse/extcore/math/linear",
 }
 
 pkgtype(kind: "executable")

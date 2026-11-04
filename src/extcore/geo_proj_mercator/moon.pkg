@@ -1,4 +1,0 @@
-// extcore/geo_proj_mercator
-import {
-  "dataverse/extcore/_common",
-}

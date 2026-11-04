@@ -2,6 +2,5 @@
 // 编排：group_by_modality + 每组 topk_by_length
 import {
   "dataverse/dataobject",
-  "dataverse/opcore/mix",
-  "dataverse/opcore/select",
+  "dataverse/opcore/text",
 }

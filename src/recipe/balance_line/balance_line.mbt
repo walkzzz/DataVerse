@@ -16,10 +16,10 @@ pub fn balance_line(
   arr : Array[@dataobject.DataObject],
   k_per_modality : Int32,
 ) -> Array[@dataobject.DataObject] {
-  let groups = @mix.group_by_modality(arr)
+  let groups = @text.mix_group_by_modality(arr)
   let result = []
   for i = 0; i < groups.length(); i = i + 1 {
-    let topk = @select.topk_by_length(groups[i].1, k_per_modality)
+    let topk = @text.select_topk_by_length(groups[i].1, k_per_modality)
     for j = 0; j < topk.length(); j = j + 1 {
       result.push(topk[j])
     }

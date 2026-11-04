@@ -11,7 +11,7 @@
 
 ///|
 /// 硬投票 / Hard voting (majority vote).
-pub fn hard_voting(predictions : Array[Array[Int32]]) -> Array[Int32] {
+pub fn ensemble_hard_voting(predictions : Array[Array[Int32]]) -> Array[Int32] {
   let n_models = predictions.length()
   if n_models == 0 {
     return []
@@ -50,7 +50,7 @@ pub fn hard_voting(predictions : Array[Array[Int32]]) -> Array[Int32] {
 
 ///|
 /// 软投票 / Soft voting (average probabilities).
-pub fn soft_voting(
+pub fn ensemble_soft_voting(
   probabilities : Array[Array[Array[Double]]],
 ) -> Array[Array[Double]] {
   let n_models = probabilities.length()
@@ -85,7 +85,7 @@ pub fn soft_voting(
 
 ///|
 /// 加权投票 / Weighted voting.
-pub fn weighted_voting(
+pub fn ensemble_weighted_voting(
   predictions : Array[Array[Int32]],
   weights : Array[Double],
 ) -> Array[Int32] {
@@ -131,7 +131,7 @@ pub fn weighted_voting(
 
 ///|
 /// Bootstrap 采样 / Bootstrap sampling (sampling with replacement).
-pub fn bootstrap_sample(
+pub fn ensemble_bootstrap_sample(
   data : Array[Double],
   n_samples : Int32,
 ) -> Array[Double] {
@@ -149,7 +149,7 @@ pub fn bootstrap_sample(
 
 ///|
 /// Bagging 预测 / Bagging prediction (average of base models).
-pub fn bagging_predict(
+pub fn ensemble_bagging_predict(
   base_predictions : Array[Array[Double]],
 ) -> Array[Double] {
   let n_models = base_predictions.length()
@@ -177,7 +177,7 @@ pub fn bagging_predict(
 ///|
 /// AdaBoost 权重更新 / AdaBoost weight update.
 /// w_i <- w_i * exp(alpha * I(y_i != pred_i)) / Z
-pub fn adaboost_update_weights(
+pub fn ensemble_adaboost_update_weights(
   weights : Array[Double],
   predictions : Array[Int32],
   labels : Array[Int32],
@@ -197,7 +197,7 @@ pub fn adaboost_update_weights(
     } else {
       0.0
     }
-    let w = weights[i] * exp_approx(alpha * incorrect)
+    let w = weights[i] * ensemble_exp_approx(alpha * incorrect)
     result.push(w)
     sum = sum + w
   }
@@ -212,17 +212,17 @@ pub fn adaboost_update_weights(
 ///|
 /// AdaBoost alpha 计算 / AdaBoost alpha calculation.
 /// alpha = 0.5 * ln((1 - err) / err)
-pub fn adaboost_alpha(error_rate : Double) -> Double {
+pub fn ensemble_adaboost_alpha(error_rate : Double) -> Double {
   if error_rate <= 0.0 || error_rate >= 1.0 {
     0.0
   } else {
-    0.5 * log_approx((1.0 - error_rate) / error_rate)
+    0.5 * ensemble_log_approx((1.0 - error_rate) / error_rate)
   }
 }
 
 ///|
 /// AdaBoost 误差率 / AdaBoost error rate.
-pub fn adaboost_error_rate(
+pub fn ensemble_adaboost_error_rate(
   weights : Array[Double],
   predictions : Array[Int32],
   labels : Array[Int32],
@@ -251,7 +251,7 @@ pub fn adaboost_error_rate(
 ///|
 /// 梯度提升回归 / Gradient boosting regression step.
 /// F(x) <- F(x) + lr * h(x)
-pub fn gradient_boosting_update(
+pub fn ensemble_gradient_boosting_update(
   current_predictions : Array[Double],
   base_learner_output : Array[Double],
   learning_rate : Double,
@@ -277,7 +277,7 @@ pub fn gradient_boosting_update(
 ///|
 /// 残差计算 / Residual computation.
 /// r_i = y_i - F(x_i)
-pub fn compute_residuals(
+pub fn ensemble_compute_residuals(
   labels : Array[Double],
   predictions : Array[Double],
 ) -> Array[Double] {
@@ -298,7 +298,7 @@ pub fn compute_residuals(
 
 ///|
 /// Stacking 元学习器预测 /531/// Stacking meta-learner prediction.
-pub fn stacking_predict(
+pub fn ensemble_stacking_predict(
   base_predictions : Array[Array[Double]],
   meta_weights : Array[Double],
 ) -> Array[Double] {
@@ -324,23 +324,23 @@ pub fn stacking_predict(
 
 ///|
 /// 随机森林预测 / Random forest prediction (simplified, averages base predictions).
-pub fn random_forest_predict(
+pub fn ensemble_random_forest_predict(
   base_predictions : Array[Array[Double]],
 ) -> Array[Double] {
-  bagging_predict(base_predictions)
+  ensemble_bagging_predict(base_predictions)
 }
 
 ///|
 /// 随机森林分类 / Random forest classification (majority vote).
-pub fn random_forest_classify(
+pub fn ensemble_random_forest_classify(
   base_predictions : Array[Array[Int32]],
 ) -> Array[Int32] {
-  hard_voting(base_predictions)
+  ensemble_hard_voting(base_predictions)
 }
 
 ///|
 /// 特征重要性聚合 / Feature importance aggregation.
-pub fn aggregate_feature_importance(
+pub fn ensemble_aggregate_feature_importance(
   importances : Array[Array[Double]],
 ) -> Array[Double] {
   let n_models = importances.length()
@@ -367,7 +367,7 @@ pub fn aggregate_feature_importance(
 
 ///|
 /// 指数近似 / Exponential approximation.
-fn exp_approx(x : Double) -> Double {
+fn ensemble_exp_approx(x : Double) -> Double {
   if x > 20.0 {
     485165195.4
   } else if x < -20.0 {
@@ -385,7 +385,7 @@ fn exp_approx(x : Double) -> Double {
 
 ///|
 /// 对数近似 / Log approximation.
-fn log_approx(x : Double) -> Double {
+fn ensemble_log_approx(x : Double) -> Double {
   if x <= 0.0 {
     -1000.0
   } else {
@@ -404,6 +404,6 @@ fn log_approx(x : Double) -> Double {
 ///|
 ///===
 /// ID
-pub fn ensemble_id() -> String {
+pub fn ensemble_ensemble_id() -> String {
   "learncore/ensemble"
 }

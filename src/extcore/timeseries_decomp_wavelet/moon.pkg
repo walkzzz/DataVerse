@@ -1,4 +1,0 @@
-// extcore/timeseries_decomp_wavelet
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,4 +1,0 @@
-// extcore/net_flow_policing
-import {
-  "dataverse/extcore/_common",
-}

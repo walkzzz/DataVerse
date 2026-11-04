@@ -7,10 +7,8 @@
 /// # Data profiling
 ///
 /// Column / table / dataset profiling, distribution, outlier, drift, quality score.
-const PROF_LARGE_DOUBLE : Double = 999999999999999.0
 
 ///|
-const PROF_EPS : Double = 0.0000000000000001
 
 ///|
 /// 列类型 / Column kind.
@@ -1107,7 +1105,7 @@ pub fn profile_text(
 
 ///|
 /// 摘要 / Profile summary.
-pub fn profile_summary(name : String, values : Array[Double]) -> ProfileSummary {
+pub fn profile_summary(_ : String, values : Array[Double]) -> ProfileSummary {
   let n = values.length()
   let missing = profile_missing_count(values)
   let unique = profile_distinct_count(values)

@@ -1,5 +1,0 @@
-// learncore/feature 特征工程算子 / Feature Engineering Operators
-// S1.2 基礎：standardize（Z-score）+ normalize_minmax// S6.2 扩展：CentralFeature/MeanCenter/MedianCenter/StandardDistance/DirectionalDistribution
-import {
-  "dataverse/opcore/proximity",
-}

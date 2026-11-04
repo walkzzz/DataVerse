@@ -1,5 +1,0 @@
-// opcore/autocorr opcore/autocorr
-// S13.32 new
-import {
-  "dataverse/extcore/_common",
-}

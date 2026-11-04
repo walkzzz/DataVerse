@@ -1,4 +1,0 @@
-// extcore/timeseries_anomaly_lstm
-import {
-  "dataverse/extcore/_common",
-}

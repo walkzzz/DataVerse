@@ -1,5 +1,0 @@
-// opcore/noise_reduce opcore/noise_reduce
-// S13.39 new
-import {
-  "dataverse/extcore/_common",
-}

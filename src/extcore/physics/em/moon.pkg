@@ -1,0 +1,4 @@
+// extcore/physics/em — physics/em 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

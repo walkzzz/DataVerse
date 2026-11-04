@@ -1,0 +1,4 @@
+// extcore/physics/heat — physics/heat 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

@@ -1,4 +1,0 @@
-// extcore/image_filter_bilateral
-import {
-  "dataverse/extcore/_common",
-}

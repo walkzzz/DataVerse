@@ -1,2 +1,5 @@
-// learncore/ensemble 集成学习算子 / Ensemble Learning Operators
-// S7.7 新建：Bagging/Boosting/Stacking/Voting/RandomForest
+// learncore/ensemble — 聚合包
+import {
+  "dataverse/core/traits",
+  "dataverse/extcore/_common",
+}

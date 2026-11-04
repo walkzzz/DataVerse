@@ -1,4 +1,0 @@
-// extcore/bio_seq_assembly_polish
-import {
-  "dataverse/extcore/_common",
-}

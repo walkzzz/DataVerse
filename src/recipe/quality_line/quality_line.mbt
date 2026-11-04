@@ -19,9 +19,9 @@ pub fn quality_line(
   k : Int32,
 ) -> Array[@dataobject.DataObject] {
   let filtered = arr.filter(fn(d) {
-    @quality.length_quality_score(d) >= min_score
+    @text.quality_length_quality_score(d) >= min_score
   })
-  @select.topk_by_length(filtered, k)
+  @text.select_topk_by_length(filtered, k)
 }
 
 ///|

@@ -12,7 +12,7 @@
 ///|
 /// 移动平均 / Simple Moving Average.
 /// SMA(t) = mean(x[t-window+1], ..., x[t])
-pub fn moving_average(data : Array[Double], window : Int32) -> Array[Double] {
+pub fn timeseries_moving_average(data : Array[Double], window : Int32) -> Array[Double] {
   let n = data.length()
   if n == 0 || window <= 0 {
     return []
@@ -33,7 +33,7 @@ pub fn moving_average(data : Array[Double], window : Int32) -> Array[Double] {
 ///|
 /// 指数平滑 / Exponential Smoothing.
 /// S(t) = alpha * x(t) + (1 - alpha) * S(t-1)
-pub fn exponential_smoothing(
+pub fn timeseries_exponential_smoothing(
   data : Array[Double],
   alpha : Double,
 ) -> Array[Double] {
@@ -52,7 +52,7 @@ pub fn exponential_smoothing(
 ///|
 /// 差分 / Differencing.
 /// d(t) = x(t) - x(t-1)
-pub fn difference(data : Array[Double]) -> Array[Double] {
+pub fn timeseries_difference(data : Array[Double]) -> Array[Double] {
   let n = data.length()
   if n <= 1 {
     return []
@@ -66,10 +66,10 @@ pub fn difference(data : Array[Double]) -> Array[Double] {
 
 ///|
 /// k 阶差分 / k-th order differencing.
-pub fn difference_k(data : Array[Double], k : Int32) -> Array[Double] {
+pub fn timeseries_difference_k(data : Array[Double], k : Int32) -> Array[Double] {
   let mut result = data
   for _i in 0..<k {
-    result = difference(result)
+    result = timeseries_difference(result)
   }
   result
 }
@@ -77,7 +77,7 @@ pub fn difference_k(data : Array[Double], k : Int32) -> Array[Double] {
 ///|
 /// 季节差分 / Seasonal differencing.
 /// d(t) = x(t) - x(t - period)
-pub fn seasonal_difference(
+pub fn timeseries_seasonal_difference(
   data : Array[Double],
   period : Int32,
 ) -> Array[Double] {
@@ -98,7 +98,7 @@ pub fn seasonal_difference(
 ///|
 /// 自相关函数 / Autocorrelation function (ACF).
 /// ACF(k) = Cov(x_t, x_{t-k}) / Var(x)
-pub fn autocorrelation(data : Array[Double], max_lag : Int32) -> Array[Double] {
+pub fn timeseries_autocorrelation(data : Array[Double], max_lag : Int32) -> Array[Double] {
   let n = data.length()
   if n == 0 || max_lag <= 0 {
     return []
@@ -128,12 +128,12 @@ pub fn autocorrelation(data : Array[Double], max_lag : Int32) -> Array[Double] {
 }
 
 ///|
-/// 偏自相关函数 / Partial autocorrelation (PACF, simplified).
-pub fn partial_autocorrelation(
+/// 偏自相关函数 / Partial timeseries_autocorrelation(PACF, simplified).
+pub fn timeseries_partial_autocorrelation(
   data : Array[Double],
   max_lag : Int32,
 ) -> Array[Double] {
-  let acf = autocorrelation(data, max_lag)
+  let acf = timeseries_autocorrelation(data, max_lag)
   if acf.length() == 0 {
     return []
   }
@@ -149,7 +149,7 @@ pub fn partial_autocorrelation(
 ///|
 /// 滞后算子 / Lag operator.
 /// L(x, k)(t) = x(t - k)
-pub fn lag_operator(data : Array[Double], k : Int32) -> Array[Double] {
+pub fn timeseries_lag_operator(data : Array[Double], k : Int32) -> Array[Double] {
   let n = data.length()
   if n == 0 || k <= 0 {
     return data
@@ -176,14 +176,14 @@ pub struct ArimaParams {
 
 ///|
 /// 构造 ARIMA 参数 / Create ARIMA params.
-pub fn make_arima_params(p : Int32, d : Int32, q : Int32) -> ArimaParams {
+pub fn timeseries_make_arima_params(p : Int32, d : Int32, q : Int32) -> ArimaParams {
   { p, d, q, }
 }
 
 ///|
 /// AR 模型预测 / Autoregressive model prediction.
 /// x(t) = c + sum(phi_i * x(t-i))
-pub fn ar_predict(
+pub fn timeseries_ar_predict(
   data : Array[Double],
   phi : Array[Double],
   constant : Double,
@@ -212,7 +212,7 @@ pub fn ar_predict(
 
 ///|
 /// MA 模型预测 / Moving average model prediction (simplified).
-pub fn ma_predict(
+pub fn timeseries_ma_predict(
   data : Array[Double],
   theta : Array[Double],
   steps : Int32,
@@ -239,16 +239,16 @@ pub fn ma_predict(
 
 ///|
 /// ARIMA 预测 / ARIMA prediction (simplified).
-pub fn arima_predict(
+pub fn timeseries_arima_predict(
   data : Array[Double],
   params : ArimaParams,
   phi : Array[Double],
   theta : Array[Double],
   steps : Int32,
 ) -> Array[Double] {
-  let diffed = difference_k(data, params.d)
-  let ar_forecast = ar_predict(diffed, phi, 0.0, steps)
-  let ma_forecast = ma_predict(diffed, theta, steps)
+  let diffed = timeseries_difference_k(data, params.d)
+  let ar_forecast = timeseries_ar_predict(diffed, phi, 0.0, steps)
+  let ma_forecast = timeseries_ma_predict(diffed, theta, steps)
   let result : Array[Double] = []
   for i in 0..<steps {
     if i < ar_forecast.length() && i < ma_forecast.length() {
@@ -277,7 +277,7 @@ pub struct GarchParams {
 
 ///|
 /// 构造 GARCH 参数 / Create GARCH params.
-pub fn make_garch_params(
+pub fn timeseries_make_garch_params(
   p : Int32,
   q : Int32,
   alpha : Array[Double],
@@ -290,7 +290,7 @@ pub fn make_garch_params(
 ///|
 /// GARCH 条件方差预测 / GARCH conditional variance prediction.
 /// sigma^2(t) = omega + sum(alpha_i * r^2(t-i)) + sum(beta_j * sigma^2(t-j))
-pub fn garch_predict(
+pub fn timeseries_garch_predict(
   returns : Array[Double],
   params : GarchParams,
   steps : Int32,
@@ -335,7 +335,7 @@ pub struct SeasonalDecomposeResult {
 ///|
 /// 季节分解 / Seasonal decomposition (simplified additive).
 /// x = trend + seasonal + residual
-pub fn seasonal_decompose(
+pub fn timeseries_seasonal_decompose(
   data : Array[Double],
   period : Int32,
 ) -> SeasonalDecomposeResult {
@@ -343,7 +343,7 @@ pub fn seasonal_decompose(
   if n == 0 || period <= 0 {
     return { trend: [], seasonal: [], residual: [], }
   }
-  let trend = moving_average(data, period)
+  let trend = timeseries_moving_average(data, period)
   let detrended : Array[Double] = []
   for i in 0..<n {
     detrended.push(data[i] - trend[i])
@@ -374,8 +374,8 @@ pub fn seasonal_decompose(
 
 ///|
 /// 季节调整 / Seasonal adjustment.
-pub fn seasonal_adjust(data : Array[Double], period : Int32) -> Array[Double] {
-  let decomp = seasonal_decompose(data, period)
+pub fn timeseries_seasonal_adjust(data : Array[Double], period : Int32) -> Array[Double] {
+  let decomp = timeseries_seasonal_decompose(data, period)
   let result : Array[Double] = []
   for i in 0..<data.length() {
     result.push(data[i] - decomp.seasonal[i])
@@ -397,7 +397,7 @@ pub struct HoltWintersParams {
 
 ///|
 /// 构造 Holt-Winters 参数 / Create Holt-Winters params.
-pub fn make_holt_winters_params(
+pub fn timeseries_make_holt_winters_params(
   alpha : Double,
   beta : Double,
   gamma : Double,
@@ -408,7 +408,7 @@ pub fn make_holt_winters_params(
 
 ///|
 /// Holt-Winters 预测 / Holt-Winters forecasting.
-pub fn holt_winters_forecast(
+pub fn timeseries_holt_winters_forecast(
   data : Array[Double],
   params : HoltWintersParams,
   steps : Int32,
@@ -449,7 +449,7 @@ pub fn holt_winters_forecast(
 
 ///|
 /// Prophet 预测（简化）/ Prophet forecasting (simplified linear trend).
-pub fn prophet_forecast(data : Array[Double], steps : Int32) -> Array[Double] {
+pub fn timeseries_prophet_forecast(data : Array[Double], steps : Int32) -> Array[Double] {
   let n = data.length()
   if n == 0 {
     return []
@@ -491,7 +491,7 @@ pub fn prophet_forecast(data : Array[Double], steps : Int32) -> Array[Double] {
 /// K = P_pred / (P_pred + R)
 /// x_update = x_pred + K * (z - x_pred)
 /// P_update = (1 - K) * P_pred
-pub fn kalman_filter_step(
+pub fn timeseries_kalman_filter_step(
   x_prev : Double,
   p_prev : Double,
   measurement : Double,
@@ -508,7 +508,7 @@ pub fn kalman_filter_step(
 
 ///|
 /// 卡尔曼滤波序列 / Kalman filter sequence.
-pub fn kalman_filter(
+pub fn timeseries_kalman_filter(
   measurements : Array[Double],
   initial_state : Double,
   initial_covariance : Double,
@@ -519,7 +519,7 @@ pub fn kalman_filter(
   let mut x = initial_state
   let mut p = initial_covariance
   for i in 0..<measurements.length() {
-    let (new_x, new_p) = kalman_filter_step(
+    let (new_x, new_p) = timeseries_kalman_filter_step(
       x,
       p,
       measurements[i],
@@ -539,9 +539,9 @@ pub fn kalman_filter(
 ///|
 /// 平稳性检验（简化）/ Stationarity test (simplified, ADF-like).
 /// 返回 True 表示可能平稳。
-pub fn is_stationary(data : Array[Double]) -> Bool {
-  let diffed = difference(data)
-  let acf = autocorrelation(diffed, 5)
+pub fn timeseries_is_stationary(data : Array[Double]) -> Bool {
+  let diffed = timeseries_difference(data)
+  let acf = timeseries_autocorrelation(diffed, 5)
   if acf.length() == 0 {
     return true
   }
@@ -551,8 +551,8 @@ pub fn is_stationary(data : Array[Double]) -> Bool {
 ///|
 /// 白噪声检验（简化）/ White noise test (simplified).
 /// 返回 True 表示可能是白噪声。
-pub fn is_white_noise(data : Array[Double]) -> Bool {
-  let acf = autocorrelation(data, 5)
+pub fn timeseries_is_white_noise(data : Array[Double]) -> Bool {
+  let acf = timeseries_autocorrelation(data, 5)
   if acf.length() <= 1 {
     return true
   }
@@ -570,7 +570,7 @@ pub fn is_white_noise(data : Array[Double]) -> Bool {
 
 ///|
 /// 回测 / Backtest forecast accuracy.
-pub fn backtest(
+pub fn timeseries_backtest(
   data : Array[Double],
   forecast_fn : (Array[Double], Int32) -> Array[Double],
   test_size : Int32,
@@ -597,6 +597,6 @@ pub fn backtest(
 ///|
 ///===
 /// ID
-pub fn timeseries_id() -> String {
+pub fn timeseries_timeseries_id() -> String {
   "learncore/timeseries"
 }

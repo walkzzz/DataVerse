@@ -1,4 +1,0 @@
-// extcore/net_route_policy
-import {
-  "dataverse/extcore/_common",
-}

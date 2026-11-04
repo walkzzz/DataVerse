@@ -1252,3 +1252,14 @@ pub fn env_reward_multi(
 pub fn multi_agent_id() -> String {
   "agent_kit/multi_agent"
 }
+
+///|
+/// 构造测试 / Construction test.
+test "construct: Vote" {
+  let _ = Vote::{ voter: "", proposal: "", support: false, weight: 0.0 }
+}
+///|
+/// 构造测试 / Construction test.
+test "construct: MarketOrder" {
+  let _ = MarketOrder::{ order_id: "", agent_id: "", side: "", price: 0.0, quantity: 0.0 }
+}

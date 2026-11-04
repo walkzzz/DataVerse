@@ -1,4 +1,0 @@
-// extcore/timeseries_tbats
-import {
-  "dataverse/extcore/_common",
-}

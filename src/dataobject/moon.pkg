@@ -3,4 +3,5 @@
 // 依赖方向：dataobject -> schema（DataObject 引用 Schema）；chunk/embedding/record_dataset 独立
 import {
   "dataverse/dataobject/schema",
+  "dataverse/core/traits",
 }

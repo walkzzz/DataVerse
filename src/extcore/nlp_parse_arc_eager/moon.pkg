@@ -1,4 +1,0 @@
-// extcore/nlp_parse_arc_eager
-import {
-  "dataverse/extcore/_common",
-}

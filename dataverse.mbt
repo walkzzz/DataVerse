@@ -7419,3 +7419,23 @@ pub using @dataobject.metadata_ext {
 }
 
 
+///===
+/// core/traits 核心 trait 抽象层 / Core trait abstractions
+
+pub using @traits {
+  Named, Describable, Versioned, Displayable, Checkable, Verifiable, Resettable,
+  Cloneable, Serializable, Countable, Summarizable, Measurable, Ordered,
+  Transformable, Composable, Runnable, Foldable, Mappable, Filterable, Hashable,
+}
+
+
+///===
+/// core/error 统一错误处理 / Unified error handling
+
+pub using @error {
+  DataVerseError, error_code, error_message, error_detail,
+  invalid_input, out_of_range, dimension_mismatch, convergence_failure,
+  not_supported, internal_error, lift_string_result, format_error, is_recoverable,
+}
+
+

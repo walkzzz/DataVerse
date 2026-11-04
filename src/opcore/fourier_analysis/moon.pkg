@@ -1,5 +1,0 @@
-// opcore/fourier_analysis opcore/fourier_analysis
-// S13.9 new
-import {
-  "dataverse/extcore/_common",
-}

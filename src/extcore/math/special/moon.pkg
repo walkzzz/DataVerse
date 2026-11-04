@@ -1,0 +1,5 @@
+// extcore/math/special — special 算法聚合包
+// 重构自 bessel, beta, chebyshev, elliptic, gamma, hermite, hypergeo, laguerre, legendre, zeta
+import {
+  "dataverse/extcore/_common",
+}

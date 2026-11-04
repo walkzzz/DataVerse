@@ -1,0 +1,5 @@
+// extcore/math/approx — approx 算法聚合包
+// 重构自 chebyshev, fourier, interp, least_sq, minimax, pade, poly, rational, spline, wavelet
+import {
+  "dataverse/extcore/_common",
+}

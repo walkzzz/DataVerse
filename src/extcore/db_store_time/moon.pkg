@@ -1,4 +1,0 @@
-// extcore/db_store_time
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,4 +1,0 @@
-// extcore/ds_tree_trie
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,5 +1,0 @@
-// opcore/surface 表面分析 / Surface Analysis
-// S4.4：Slope / Aspect / Hillshade / Contour / Curvature / Viewshed（契约 + 模拟实现）
-import {
-  "dataverse/opcore/hydrology",
-}

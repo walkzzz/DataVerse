@@ -2,6 +2,33 @@
 package "dataverse/cli/cmd/main"
 
 // Values
+pub fn cmd_factorial(Array[Int32]) -> String
+
+pub fn cmd_fibonacci(Array[Int32]) -> String
+
+pub fn cmd_gcd(Array[Int32]) -> String
+
+pub fn cmd_help() -> String
+
+pub fn cmd_isprime(Array[Int32]) -> String
+
+pub fn cmd_mean(Array[Double]) -> String
+
+pub fn cmd_sort(Array[Double]) -> String
+
+pub fn cmd_sqrt(Array[Double]) -> String
+
+pub fn cmd_stats() -> String
+
+pub fn cmd_std(Array[Double]) -> String
+
+pub fn cmd_sum(Array[Double]) -> String
+
+pub fn cmd_version() -> String
+
+pub fn run_command(String, Array[Double]) -> String
+
+pub fn run_int_command(String, Array[Int32]) -> String
 
 // Errors
 

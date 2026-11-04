@@ -1,4 +1,0 @@
-// extcore/bio_seq_assembly_scaffold
-import {
-  "dataverse/extcore/_common",
-}

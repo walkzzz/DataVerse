@@ -1,4 +1,0 @@
-// extcore/ml_regress_isotonic
-import {
-  "dataverse/extcore/_common",
-}

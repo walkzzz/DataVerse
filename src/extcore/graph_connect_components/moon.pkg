@@ -1,4 +1,0 @@
-// extcore/graph_connect_components
-import {
-  "dataverse/extcore/_common",
-}

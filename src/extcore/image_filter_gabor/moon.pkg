@@ -1,4 +1,0 @@
-// extcore/image_filter_gabor
-import {
-  "dataverse/extcore/_common",
-}

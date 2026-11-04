@@ -1,5 +1,0 @@
-// opcore/crypto_sign opcore/crypto_sign
-// S13.26 new
-import {
-  "dataverse/extcore/_common",
-}

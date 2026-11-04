@@ -1,4 +1,0 @@
-// extcore/image_transform_rotate
-import {
-  "dataverse/extcore/_common",
-}

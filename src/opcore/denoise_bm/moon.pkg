@@ -1,5 +1,0 @@
-// opcore/denoise_bm opcore/denoise_bm
-// S13.60 new
-import {
-  "dataverse/extcore/_common",
-}

@@ -10,7 +10,7 @@ pub struct FrameSequence {
 
 ///|
 /// 构造帧序列 / Create frame sequence.
-pub fn make_frame_sequence(
+pub fn video_s9_make_frame_sequence(
   frames : Array[@image.GrayImage],
   fps : Int32,
 ) -> FrameSequence {
@@ -19,19 +19,19 @@ pub fn make_frame_sequence(
 
 ///|
 /// 帧数 / Frame count.
-pub fn frame_count_seq(seq : FrameSequence) -> Int32 {
+pub fn video_s9_frame_count_seq(seq : FrameSequence) -> Int32 {
   seq.frames.length()
 }
 
 ///|
 /// 视频时长（秒）/ Video duration (seconds).
-pub fn video_duration_sec(seq : FrameSequence) -> Double {
+pub fn video_s9_video_duration_sec(seq : FrameSequence) -> Double {
   seq.frames.length().to_double() / seq.fps.to_double()
 }
 
 ///|
 /// 帧差分 / Frame difference (returns difference image between consecutive frames).
-pub fn frame_difference(seq : FrameSequence) -> Array[@image.GrayImage] {
+pub fn video_s9_frame_difference(seq : FrameSequence) -> Array[@image.GrayImage] {
   let result : Array[@image.GrayImage] = []
   if seq.frames.length() <= 1 {
     return result
@@ -45,15 +45,15 @@ pub fn frame_difference(seq : FrameSequence) -> Array[@image.GrayImage] {
       let abs_d = if d < 0.0 { -d } else { d }
       diff_pixels.push(abs_d)
     }
-    result.push(@image.make_gray_image(curr.width, curr.height, diff_pixels))
+    result.push(@image.image_make_gray_image(curr.width, curr.height, diff_pixels))
   }
   result
 }
 
 ///|
 /// 运动强度 / Motion intensity (mean of frame differences).
-pub fn motion_intensity(seq : FrameSequence) -> Double {
-  let diffs = frame_difference(seq)
+pub fn video_s9_motion_intensity(seq : FrameSequence) -> Double {
+  let diffs = video_s9_frame_difference(seq)
   if diffs.length() == 0 {
     return 0.0
   }
@@ -73,11 +73,11 @@ pub fn motion_intensity(seq : FrameSequence) -> Double {
 
 ///|
 /// 关键帧提取 / Keyframe extraction (select frames with highest motion).
-pub fn extract_keyframes(
+pub fn video_s9_extract_keyframes(
   seq : FrameSequence,
   n_keyframes : Int32,
 ) -> Array[Int32] {
-  let diffs = frame_difference(seq)
+  let diffs = video_s9_frame_difference(seq)
   let scores : Array[(Int32, Double)] = []
   for i in 0..<diffs.length() {
     let mut sum = 0.0
@@ -110,9 +110,9 @@ pub fn extract_keyframes(
 
 ///|
 /// 帧均值 / Frame average (temporal average).
-pub fn frame_average(seq : FrameSequence) -> @image.GrayImage {
+pub fn video_s9_frame_average(seq : FrameSequence) -> @image.GrayImage {
   if seq.frames.length() == 0 {
-    return @image.make_gray_image(0, 0, [])
+    return @image.image_make_gray_image(0, 0, [])
   }
   let w = seq.frames[0].width
   let h = seq.frames[0].height
@@ -128,13 +128,13 @@ pub fn frame_average(seq : FrameSequence) -> @image.GrayImage {
   for j in 0..<result.length() {
     result[j] = result[j] / n
   }
-  @image.make_gray_image(w, h, result)
+  @image.image_make_gray_image(w, h, result)
 }
 
 ///|
 /// 视频稳定度 / Video stability (inverse of motion intensity).
-pub fn video_stability(seq : FrameSequence) -> Double {
-  let motion = motion_intensity(seq)
+pub fn video_s9_video_stability(seq : FrameSequence) -> Double {
+  let motion = video_s9_motion_intensity(seq)
   if motion == 0.0 {
     return 1.0
   }

@@ -1,4 +1,0 @@
-// extcore/crypto_sign_threshold
-import {
-  "dataverse/extcore/_common",
-}

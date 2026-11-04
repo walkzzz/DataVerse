@@ -2,6 +2,5 @@
 // 编排：quality_score 过滤 + topk_by_length 选择
 import {
   "dataverse/dataobject",
-  "dataverse/opcore/quality",
-  "dataverse/opcore/select",
+  "dataverse/opcore/text",
 }

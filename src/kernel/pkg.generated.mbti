@@ -2,6 +2,7 @@
 package "dataverse/kernel"
 
 import {
+  "dataverse/core/traits",
   "moonbitlang/core/debug",
 }
 
@@ -25,9 +26,15 @@ pub(all) enum Consistency {
   WindowEquiv
   CacheHitEquiv
 } derive(Eq, @debug.Debug)
+pub fn Consistency::describe(Self) -> String
+pub fn Consistency::display(Self) -> String
 pub fn Consistency::equal(Self, Self) -> Bool
+pub fn Consistency::name(Self) -> String
 pub fn Consistency::not_equal(Self, Self) -> Bool
 pub fn Consistency::to_repr(Self) -> @debug.Repr
+pub impl @traits.Describable for Consistency
+pub impl @traits.Displayable for Consistency
+pub impl @traits.Named for Consistency
 
 pub(all) enum ExecMode {
   Exact
@@ -35,9 +42,17 @@ pub(all) enum ExecMode {
   Streaming
   Cache
 } derive(Eq, @debug.Debug)
+pub fn ExecMode::clone(Self) -> Self
+pub fn ExecMode::describe(Self) -> String
+pub fn ExecMode::display(Self) -> String
 pub fn ExecMode::equal(Self, Self) -> Bool
+pub fn ExecMode::name(Self) -> String
 pub fn ExecMode::not_equal(Self, Self) -> Bool
 pub fn ExecMode::to_repr(Self) -> @debug.Repr
+pub impl @traits.Cloneable for ExecMode
+pub impl @traits.Describable for ExecMode
+pub impl @traits.Displayable for ExecMode
+pub impl @traits.Named for ExecMode
 
 // Type aliases
 

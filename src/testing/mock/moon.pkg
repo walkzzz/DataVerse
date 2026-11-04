@@ -1,0 +1,9 @@
+// testing/mock — MOCK 测试框架 / Mock Test Framework
+// R16 阶段门禁第 3 手段：MOCK（模拟依赖）
+// 为 agent_kit 的 5 个外部依赖缺口提供 trait 抽象 + mock 实现
+import {
+  "dataverse/agent_kit/llm",
+
+  "dataverse/agent_kit/memory",
+  "dataverse/agent_kit/tool",
+}

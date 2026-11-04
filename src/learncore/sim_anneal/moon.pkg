@@ -1,5 +1,0 @@
-// learncore/sim_anneal learncore/sim_anneal
-// S13.81 new
-import {
-  "dataverse/extcore/_common",
-}

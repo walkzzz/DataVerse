@@ -1,4 +1,0 @@
-// extcore/ds_list_skip
-import {
-  "dataverse/extcore/_common",
-}

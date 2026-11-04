@@ -277,7 +277,7 @@ pub fn quality_register(
 ) -> DataQualityCatalog {
   let new_rules = catalog.rules.copy()
   new_rules.push(rule)
-  { ..catalog, rules: new_rules, }
+  { rules: new_rules, }
 }
 
 ///|
@@ -569,7 +569,7 @@ pub fn lineage_track_catalog(
 ) -> DataLineageCatalog {
   let new_nodes = catalog.nodes.copy()
   new_nodes.push(node)
-  { ..catalog, nodes: new_nodes, }
+  { nodes: new_nodes, }
 }
 
 ///|
@@ -614,7 +614,7 @@ pub fn access_grant(
 ) -> DataAccess {
   let new_grants = access.grants.copy()
   new_grants.push((user, resource, permission))
-  { ..access, grants: new_grants, }
+  { grants: new_grants, }
 }
 
 ///|
@@ -631,7 +631,7 @@ pub fn access_revoke(
       new_grants.push(g)
     }
   }
-  { ..access, grants: new_grants, }
+  { grants: new_grants, }
 }
 
 ///|
@@ -677,7 +677,7 @@ pub fn usage_track(
 ) -> DataUsage {
   let new_records = usage.records.copy()
   new_records.push((user, resource, amount))
-  { ..usage, records: new_records, }
+  { records: new_records, }
 }
 
 ///|
@@ -723,4 +723,15 @@ pub fn usage_analytics(usage : DataUsage) -> Array[(String, Double)] {
 /// ID
 pub fn data_catalog_id() -> String {
   "dataobject/data_catalog"
+}
+
+///|
+/// 构造测试 / Construction test.
+test "construct: QualityRule" {
+  let _ = QualityRule::{ id: "", metric: "", threshold: 0.0 }
+}
+///|
+/// 构造测试 / Construction test.
+test "construct: LineageNode" {
+  let _ = LineageNode::{ id: "", parents: [] }
 }

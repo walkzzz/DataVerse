@@ -1,4 +1,0 @@
-// extcore/stats_dist_pareto
-import {
-  "dataverse/extcore/_common",
-}

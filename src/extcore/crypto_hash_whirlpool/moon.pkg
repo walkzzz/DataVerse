@@ -1,4 +1,0 @@
-// extcore/crypto_hash_whirlpool
-import {
-  "dataverse/extcore/_common",
-}

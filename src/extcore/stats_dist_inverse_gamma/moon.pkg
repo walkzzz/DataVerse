@@ -1,4 +1,0 @@
-// extcore/stats_dist_inverse_gamma
-import {
-  "dataverse/extcore/_common",
-}

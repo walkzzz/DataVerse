@@ -1,4 +1,0 @@
-// extcore/stats_dist_exponential
-import {
-  "dataverse/extcore/_common",
-}

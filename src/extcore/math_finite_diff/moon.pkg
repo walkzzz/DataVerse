@@ -1,4 +1,0 @@
-// extcore/math_finite_diff
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,4 +1,0 @@
-// extcore/image_filter_sobel
-import {
-  "dataverse/extcore/_common",
-}

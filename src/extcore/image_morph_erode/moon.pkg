@@ -1,4 +1,0 @@
-// extcore/image_morph_erode
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,4 +1,0 @@
-// extcore/physics_heat_boundary
-import {
-  "dataverse/extcore/_common",
-}

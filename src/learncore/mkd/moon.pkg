@@ -1,5 +1,0 @@
-// learncore/mkd learncore/mkd
-// S13.100 new
-import {
-  "dataverse/extcore/_common",
-}

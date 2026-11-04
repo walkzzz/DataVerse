@@ -1,0 +1,4 @@
+// extcore/opt/convex — opt/convex 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

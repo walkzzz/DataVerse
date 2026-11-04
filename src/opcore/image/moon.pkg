@@ -1,6 +1,8 @@
-// opcore/image 图像算子 / Image Operators
-// S2.1 填充：ImageMeta + image_size + aspect_ratio + image_resize + image_crop
+// opcore/image — 聚合包
 import {
+  "dataverse/core/traits",
   "dataverse/dataobject",
   "dataverse/dataobject/schema",
+  "dataverse/extcore/_common",
+  "moonbitlang/core/math",
 }

@@ -1,5 +1,0 @@
-// opcore/denoise_wavelet opcore/denoise_wavelet
-// S13.61 new
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,5 +1,0 @@
-// learncore/interpolation 插值分析 / Interpolation Analysis
-// S4.7：IDW / Kriging / Spline / Natural Neighbor（契约 + 模拟实现）
-import {
-  "dataverse/opcore/proximity",
-}

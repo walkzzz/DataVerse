@@ -1,4 +1,0 @@
-// extcore/net_proto_http2
-import {
-  "dataverse/extcore/_common",
-}

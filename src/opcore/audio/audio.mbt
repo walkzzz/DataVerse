@@ -26,7 +26,7 @@ pub extend AudioMeta with Debug::{to_repr}
 
 ///|
 /// 构造音频元数据 / Build audio metadata.
-pub fn make_audio_meta(
+pub fn audio_make_audio_meta(
   duration_ms : Int32,
   sample_rate : Int32,
   channels : Int32,
@@ -37,13 +37,13 @@ pub fn make_audio_meta(
 
 ///|
 /// 空音频元数据（退化安全）/ Empty audio metadata (degenerate-safe).
-pub fn empty_audio_meta() -> AudioMeta {
+pub fn audio_empty_audio_meta() -> AudioMeta {
   { duration_ms: 0, sample_rate: 0, channels: 0, format: "", }
 }
 
 ///|
 /// 音频时长（毫秒）/ Audio duration in milliseconds.
-pub fn audio_duration(meta : AudioMeta) -> Int32 {
+pub fn audio_audio_duration(meta : AudioMeta) -> Int32 {
   meta.duration_ms
 }
 
@@ -51,7 +51,7 @@ pub fn audio_duration(meta : AudioMeta) -> Int32 {
 /// 采样率过滤 / Sample rate filter.
 ///
 /// 判断 sample_rate 是否在 [min_sr, max_sr] 范围内。
-pub fn sample_rate_filter(
+pub fn audio_sample_rate_filter(
   meta : AudioMeta,
   min_sr : Int32,
   max_sr : Int32,
@@ -64,7 +64,7 @@ pub fn sample_rate_filter(
 ///
 /// 截取 [start_ms, end_ms] 时间段。返回新 AudioMeta。
 /// 退化安全：越界截断到边界，负值取 0。
-pub fn audio_segment(
+pub fn audio_audio_segment(
   meta : AudioMeta,
   start_ms : Int32,
   end_ms : Int32,
@@ -82,7 +82,7 @@ pub fn audio_segment(
 
 ///|
 /// 音频元数据转 DataObject / Convert audio metadata to DataObject.
-pub fn audio_to_dataobject(meta : AudioMeta) -> @dataobject.DataObject {
+pub fn audio_audio_to_dataobject(meta : AudioMeta) -> @dataobject.DataObject {
   let content = "audio:" +
     meta.format.to_string() +
     ":" +
@@ -94,7 +94,7 @@ pub fn audio_to_dataobject(meta : AudioMeta) -> @dataobject.DataObject {
 }
 
 ///|
-pub fn audio_id() -> String {
+pub fn audio_audio_id() -> String {
   "opcore/audio"
 }
 // ============================================================
@@ -107,7 +107,7 @@ pub fn audio_id() -> String {
 /// 混合两路音频，weight_a 为第一路权重（[0,1]）。
 /// 结果：duration = max(a, b)，sample_rate = a 的（退化时取 b），channels = max(a, b)。
 /// 退化安全：空音频（duration=0）被忽略。
-pub fn audio_mix(
+pub fn audio_audio_mix(
   meta_a : AudioMeta,
   meta_b : AudioMeta,
   weight_a : Double,
@@ -141,7 +141,7 @@ pub fn audio_mix(
 ///
 /// 将时长归一化到 [0, max_ms] 范围，返回归一化后的比例（[0,1]）。
 /// 退化安全：max_ms=0 返回 0.0。
-pub fn audio_normalize_duration(meta : AudioMeta, max_ms : Int32) -> Double {
+pub fn audio_audio_normalize_duration(meta : AudioMeta, max_ms : Int32) -> Double {
   if max_ms == 0 {
     0.0
   } else {

@@ -1,0 +1,4 @@
+// extcore/stats/model — stats/model 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

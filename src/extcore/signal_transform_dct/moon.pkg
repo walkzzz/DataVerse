@@ -1,4 +1,0 @@
-// extcore/signal_transform_dct
-import {
-  "dataverse/extcore/_common",
-}

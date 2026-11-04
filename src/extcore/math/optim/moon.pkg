@@ -1,0 +1,5 @@
+// extcore/math/optim — optim 算法聚合包
+// 重构自 simplex, linear_prog, nonlinear_prog, quadratic_prog, integer_prog, stochastic_prog, opt_convex, opt_nonconvex, kkt_conditions, complementarity
+import {
+  "dataverse/extcore/_common",
+}

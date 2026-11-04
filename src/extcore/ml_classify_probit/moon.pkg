@@ -1,4 +1,0 @@
-// extcore/ml_classify_probit
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,4 +1,0 @@
-// extcore/finance_portfolio_markowitz
-import {
-  "dataverse/extcore/_common",
-}

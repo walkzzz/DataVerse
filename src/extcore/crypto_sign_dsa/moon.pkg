@@ -1,4 +1,0 @@
-// extcore/crypto_sign_dsa
-import {
-  "dataverse/extcore/_common",
-}

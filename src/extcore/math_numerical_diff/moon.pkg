@@ -1,4 +1,0 @@
-// extcore/math_numerical_diff
-import {
-  "dataverse/extcore/_common",
-}

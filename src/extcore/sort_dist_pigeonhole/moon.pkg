@@ -1,4 +1,0 @@
-// extcore/sort_dist_pigeonhole
-import {
-  "dataverse/extcore/_common",
-}

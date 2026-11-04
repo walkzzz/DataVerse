@@ -1,0 +1,6 @@
+// learncore/ml — 聚合包
+import {
+  "dataverse/core/traits",
+  "dataverse/extcore/_common",
+  "dataverse/opcore/spatial",
+}

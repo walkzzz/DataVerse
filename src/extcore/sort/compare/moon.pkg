@@ -1,0 +1,4 @@
+// extcore/sort/compare — sort/compare 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

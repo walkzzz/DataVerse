@@ -1,4 +1,0 @@
-// extcore/timeseries_anomaly_zscore
-import {
-  "dataverse/extcore/_common",
-}

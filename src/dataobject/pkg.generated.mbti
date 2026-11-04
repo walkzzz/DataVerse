@@ -2,6 +2,7 @@
 package "dataverse/dataobject"
 
 import {
+  "dataverse/core/traits",
   "dataverse/dataobject/schema",
   "moonbitlang/core/debug",
 }
@@ -37,9 +38,23 @@ pub struct DataObject {
   metadata : Array[(String, String)]
   lineage : Lineage?
 } derive(Eq, @debug.Debug)
+pub fn DataObject::check(Self) -> Bool
+pub fn DataObject::clone(Self) -> Self
+pub fn DataObject::count(Self) -> Int32
+pub fn DataObject::describe(Self) -> String
+pub fn DataObject::display(Self) -> String
 pub fn DataObject::equal(Self, Self) -> Bool
+pub fn DataObject::name(Self) -> String
 pub fn DataObject::not_equal(Self, Self) -> Bool
+pub fn DataObject::serialize(Self) -> String
 pub fn DataObject::to_repr(Self) -> @debug.Repr
+pub impl @traits.Checkable for DataObject
+pub impl @traits.Cloneable for DataObject
+pub impl @traits.Countable for DataObject
+pub impl @traits.Describable for DataObject
+pub impl @traits.Displayable for DataObject
+pub impl @traits.Named for DataObject
+pub impl @traits.Serializable for DataObject
 
 pub struct Lineage {
   operator_graph : String
@@ -48,9 +63,17 @@ pub struct Lineage {
   params : String
   environment : String
 } derive(Eq, @debug.Debug)
+pub fn Lineage::describe(Self) -> String
+pub fn Lineage::display(Self) -> String
 pub fn Lineage::equal(Self, Self) -> Bool
+pub fn Lineage::name(Self) -> String
 pub fn Lineage::not_equal(Self, Self) -> Bool
+pub fn Lineage::serialize(Self) -> String
 pub fn Lineage::to_repr(Self) -> @debug.Repr
+pub impl @traits.Describable for Lineage
+pub impl @traits.Displayable for Lineage
+pub impl @traits.Named for Lineage
+pub impl @traits.Serializable for Lineage
 
 pub(all) enum Modality {
   Text
@@ -61,18 +84,34 @@ pub(all) enum Modality {
   Code
   Multi
 } derive(Eq, @debug.Debug)
+pub fn Modality::describe(Self) -> String
+pub fn Modality::display(Self) -> String
 pub fn Modality::equal(Self, Self) -> Bool
+pub fn Modality::name(Self) -> String
 pub fn Modality::not_equal(Self, Self) -> Bool
 pub fn Modality::to_repr(Self) -> @debug.Repr
+pub impl @traits.Describable for Modality
+pub impl @traits.Displayable for Modality
+pub impl @traits.Named for Modality
 
 pub struct QualityCard {
   metrics : Array[(String, Double)]
   thresholds : Array[(String, Double)]
   verdict : Bool
 } derive(Eq, @debug.Debug)
+pub fn QualityCard::check(Self) -> Bool
+pub fn QualityCard::describe(Self) -> String
+pub fn QualityCard::display(Self) -> String
 pub fn QualityCard::equal(Self, Self) -> Bool
+pub fn QualityCard::name(Self) -> String
 pub fn QualityCard::not_equal(Self, Self) -> Bool
+pub fn QualityCard::summary(Self) -> String
 pub fn QualityCard::to_repr(Self) -> @debug.Repr
+pub impl @traits.Checkable for QualityCard
+pub impl @traits.Describable for QualityCard
+pub impl @traits.Displayable for QualityCard
+pub impl @traits.Named for QualityCard
+pub impl @traits.Summarizable for QualityCard
 
 // Type aliases
 

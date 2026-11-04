@@ -1,4 +1,0 @@
-// extcore/stats_desc_univariate
-import {
-  "dataverse/extcore/_common",
-}

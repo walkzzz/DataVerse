@@ -1,5 +1,0 @@
-// opcore/semantic 语义算子 / Semantic Operators
-// S2.2 填充：语义质量评分 + 改写算子 + 合成算子（契约 + 模拟实现）
-import {
-  "dataverse/dataobject",
-}

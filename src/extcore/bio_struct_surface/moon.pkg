@@ -1,4 +1,0 @@
-// extcore/bio_struct_surface
-import {
-  "dataverse/extcore/_common",
-}

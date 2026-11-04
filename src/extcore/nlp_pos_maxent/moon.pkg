@@ -1,4 +1,0 @@
-// extcore/nlp_pos_maxent
-import {
-  "dataverse/extcore/_common",
-}

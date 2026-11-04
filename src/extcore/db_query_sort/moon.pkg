@@ -1,4 +1,0 @@
-// extcore/db_query_sort
-import {
-  "dataverse/extcore/_common",
-}

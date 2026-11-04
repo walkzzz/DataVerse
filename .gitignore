@@ -3,11 +3,17 @@ _build/
 target/
 .mooncakes/
 *.mbt.md
+*.mbti
 
 # IDE
 .vscode/
 .idea/
+.codeartsdoer/
 
 # OS
 .DS_Store
 Thumbs.db
+
+# Python
+__pycache__/
+*.pyc

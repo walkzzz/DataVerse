@@ -236,7 +236,7 @@ pub fn run_constant_folding(nodes : Array[IRNode]) -> TransformResult {
           (Some(l), Some(r)) => {
             let folded = fold_binary_op(op, l, r)
             match folded {
-              Some(v) => {
+              Some(_) => {
                 changed = true
                 output_count = output_count
               }

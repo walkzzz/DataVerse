@@ -1,4 +1,0 @@
-// extcore/math_tensor_calc
-import {
-  "dataverse/extcore/_common",
-}

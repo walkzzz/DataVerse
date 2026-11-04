@@ -1,4 +1,0 @@
-// extcore/finance_portfolio_capm
-import {
-  "dataverse/extcore/_common",
-}

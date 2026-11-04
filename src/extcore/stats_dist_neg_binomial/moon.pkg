@@ -1,4 +1,0 @@
-// extcore/stats_dist_neg_binomial
-import {
-  "dataverse/extcore/_common",
-}

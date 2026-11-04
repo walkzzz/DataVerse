@@ -2,5 +2,5 @@
 // 编排：exact_dedup
 import {
   "dataverse/dataobject",
-  "dataverse/opcore/dedup",
+  "dataverse/opcore/text",
 }

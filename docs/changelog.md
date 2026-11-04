@@ -2,6 +2,51 @@
 
 所有显著变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/)。
 
+## [0.1.0-dev] - 2026-11-04
+
+### Checkable + Resettable 批量实现 + Warning 治理 + 测试提升
+
+**新增 / Added**
+- 7 个包的 `traits_impl.mbt` — 为 409 个类型批量实现 Checkable + Resettable trait（+818 个实现）
+  - Checkable: Point→true, Series→vals.length()>0, Matrix→rows>0&&cols>0, Vector→dim>0
+  - Resettable: 所有字段重置为默认值（Double→0.0, Int32→0, String→"", Array→[]）
+- 20 个新 trait 抽象属性测试（traits_ext_test.mbt: checkable/resettable/cloneable/ordered/foldable/mappable/filterable/composable 等）
+
+**修复 / Fixed**
+- Warning 治理：19 → 3（修复 unused_value: check(self)→check(_self)；修复 abs 引用→@_common.abs）
+- 剩余 3 个 unused_package warnings 为 testing/fake/moon.pkg 无法消除
+
+**统计 / Stats**
+- 测试：2,006 → 2,026（+20）
+- trait 实现：2,095 → 2,913（+818）
+- moon check：0 errors, 3 warnings
+- moon test：2,026 passed, 0 failed
+
+## [0.1.0-dev] - 2026-11-04
+
+### Trait 系统批量实现 + 安全 API 扩展 + 测试覆盖提升
+
+**新增 / Added**
+- `src/core/traits/` — 20 个 `pub(open) trait`（Named, Describable, Versioned, Displayable, Checkable, Verifiable, Resettable, Cloneable, Serializable, Countable, Summarizable, Measurable, Ordered, Transformable, Composable, Runnable, Foldable, Mappable, Filterable, Hashable）
+- `src/core/error/` — `pub(all) enum DataVerseError`（6 分类：InvalidInput/OutOfRange/DimensionMismatch/ConvergenceFailure/NotSupported/Internal）+ 12 个辅助函数
+- 7 个包的 `traits_impl.mbt` — 为 409 个 Point/Series/Matrix/Vector 类型批量实现 Named/Describable/Displayable/Cloneable/Countable trait：
+  - opcore/signal: 108 类型 · opcore/image: 52 类型 · opcore/math: 44 类型
+  - learncore/ml: 57 类型 · learncore/evolution: 72 类型 · learncore/dl: 40 类型 · learncore/ensemble: 36 类型
+- `src/extcore/_common/safe_ext.mbt` — 38 个新安全函数（safe_cov, safe_corr, safe_accuracy, safe_mse, safe_rmse, safe_mae, safe_r2, safe_precision, safe_recall, safe_f1, safe_log10, safe_pow, safe_tan, safe_atan2, safe_gcd, safe_lcm, safe_fibonacci, safe_standardize, safe_clip, safe_cumsum, safe_reverse, safe_concat, safe_copy_arr, safe_scale_arr, safe_add_arr, safe_sub_arr, safe_fill_arr, safe_clamp, safe_lerp, safe_is_prime, safe_sort, safe_sort_desc, safe_mod, safe_reciprocal, safe_percentile, safe_range, safe_zscore, safe_dot, safe_distance）
+- `apps/cli/cmd/main/main.mbt` — 生产级命令分发架构（run_command + run_int_command），支持 12 个命令
+- 265 个新测试（safe_ext_test: 38, common_ext_test: 170, error_ext_test: 30, traits_ext_test: 25）
+
+**重构 / Refactored**
+- 修复 signal 包 traits_impl.mbt 中 3 个类型的重复定义（Series_analysisPoint/Matrix/Vector）
+- 修复 Matrix Countable 实现中 `to_int()` 方法不存在问题（Int32 乘法已返回 Int）
+
+**统计 / Stats**
+- 测试：1,741 → 2,006（+265）
+- 安全 API：12 → 52（+38）
+- trait 实现：11 → 2,095（+2,084）
+- moon check：0 errors, 19 warnings
+- moon test：2,006 passed, 0 failed
+
 ## [0.1.0-dev] - 2026-10-21
 
 ### Workspace + MoonBit 惯用法 + Proof 测试 + 数学函数0数学函数扩展

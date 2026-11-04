@@ -1,4 +1,0 @@
-// extcore/nlp_embed_contrastive
-import {
-  "dataverse/extcore/_common",
-}

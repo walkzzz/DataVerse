@@ -2,6 +2,5 @@
 // 编排：remove_empty → strip_whitespace → whitespace_normalization
 import {
   "dataverse/dataobject",
-  "dataverse/opcore/clean",
-  "dataverse/opcore/normalize",
+  "dataverse/opcore/text",
 }

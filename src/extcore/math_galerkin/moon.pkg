@@ -1,4 +1,0 @@
-// extcore/math_galerkin
-import {
-  "dataverse/extcore/_common",
-}

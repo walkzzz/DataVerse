@@ -16,6 +16,9 @@ pub(all) enum DataType {
   NullType
 } derive(Eq, Debug)
 
+pub extend DataType with Eq::{equal, not_equal}
+pub extend DataType with @moonbitlang/core/debug.Debug::{to_repr}
+
 ///|
 /// 列定义 / Column definition.
 pub struct ColumnDef {
@@ -132,7 +135,6 @@ pub fn infer_column_type(values : Array[String]) -> DataType {
   if values.length() == 0 {
     return NullType
   }
-  let mut has_null = false
   let mut has_string = false
   let mut has_float = false
   let mut has_int = false
@@ -140,7 +142,7 @@ pub fn infer_column_type(values : Array[String]) -> DataType {
   for i in 0..<values.length() {
     let t = infer_type(values[i])
     match t {
-      NullType => has_null = true
+      NullType => ()
       StringType => has_string = true
       FloatType => has_float = true
       IntType => has_int = true

@@ -1,4 +1,0 @@
-// extcore/image_feature_blob
-import {
-  "dataverse/extcore/_common",
-}

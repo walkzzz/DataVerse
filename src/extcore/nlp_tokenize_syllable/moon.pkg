@@ -1,4 +1,0 @@
-// extcore/nlp_tokenize_syllable
-import {
-  "dataverse/extcore/_common",
-}

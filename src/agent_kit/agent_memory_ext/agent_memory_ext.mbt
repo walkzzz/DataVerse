@@ -7,10 +7,8 @@
 /// # Agent memory extension
 ///
 /// Vector / graph / episodic / semantic / procedural / working / reflective memory.
-const MEM_LARGE_DOUBLE : Double = 999999999999999.0
 
 ///|
-const MEM_EPS : Double = 0.0000000000000001
 
 ///|
 /// 记忆种类 / Memory kind.
@@ -466,7 +464,7 @@ pub fn graph_query_mem(gm : GraphMemory, node_id : String) -> Array[String] {
 pub fn episode_store(em : EpisodicExt, item : MemoryItem) -> EpisodicExt {
   let new_episodes = em.episodes.copy()
   new_episodes.push(item)
-  { ..em, episodes: new_episodes, current_episode: new_episodes.length() - 1, }
+  { episodes: new_episodes, current_episode: new_episodes.length() - 1, }
 }
 
 ///|
@@ -581,7 +579,7 @@ pub fn procedure_execute(
       }
     }
   }
-  { ..pm, procedures: new_procedures, execution_count: pm.execution_count + 1, }
+  { procedures: new_procedures, execution_count: pm.execution_count + 1, }
 }
 
 ///===
@@ -755,7 +753,7 @@ pub fn associate_link(
 ) -> MemoryAssociation {
   let new_links = ma.links.copy()
   new_links.push((from_id, to_id, weight))
-  { ..ma, links: new_links, }
+  { links: new_links, }
 }
 
 ///|
@@ -831,7 +829,7 @@ pub fn compress_mem(
   } else {
     summary.length().to_double() / content.length().to_double()
   }
-  { ..mc, compressed: new_compressed, ratio, }
+  { compressed: new_compressed, ratio, }
 }
 
 ///|
@@ -857,7 +855,7 @@ pub fn compress_summary(mc : MemoryCompression) -> Double {
 ///|
 /// 构建索引 / Build memory index.
 pub fn index_build_mem(
-  mi : MemoryIndex,
+  _ : MemoryIndex,
   items : Array[MemoryItem],
 ) -> MemoryIndex {
   let entries : Array[(String, Int32)] = []

@@ -1,4 +1,0 @@
-// extcore/ml_neural_rnn
-import {
-  "dataverse/extcore/_common",
-}

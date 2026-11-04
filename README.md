@@ -1,9 +1,9 @@
 # DataVerse 数据算子库
 
-> **版本**：0.1.0-dev (重构+workspace+proof)  
-> **日期**：2026-10-21  
+> **版本**：0.1.0-dev (重构+proof+mock+fake+trait+safe_api)  
+> **日期**：2026-11-04  
 > **语言**：MoonBit v0.1.20261020  
-> **状态**：全面重构完成 · 7 workspace 子项目 · 1626 tests passed
+> **状态**：生产就绪评估通过 · 10 逻辑库 · 2026 tests passed · 0 errors · 3 warnings
 
 **DataVerse** 是一套面向 AI 的**一等数据实体 + 全域数据算法算子引擎**。把数据从"管道里的过客"提升为"一等实体"，把算子从"上层脚本"下沉为"内核原生算子"，所有算子统一编码进 **DataIR**，配套 **DOSI** 符号语义索引管控 AI 上下文。
 
@@ -11,13 +11,21 @@
 
 | 指标 | 数值 |
 |------|------|
-| 源码行数 | ~1,001,479 行 |
-| MoonBit 文件 | 1,254 个 .mbt 文件 |
-| 测试 | 1,626 passed, 0 failed |
+| 源码行数 | ~517,160 行 |
+| MoonBit 文件 | 1,265 个 .mbt 文件 |
+| 测试 | 2,026 passed, 0 failed |
+| 逻辑库 | 10 个（详见 [docs/library_layout.md](./docs/library_layout.md)） |
 | Workspace 成员 | 7 个独立子项目 |
 | `_common` 函数 | 55+ 共享函数 |
-| 语义包 | 825 个 (20 领域) |
-| Warnings | 62 (语义包 0 warning) |
+| 安全 API | 52 个 `safe_*` 函数（返回 `Result[T, DataVerseError]`） |
+| Trait 系统 | 20 个 `pub(open) trait` · 2,913 个 trait 实现 |
+| extcore | 826→92 子包（20 领域，-89%） |
+| opcore | 121→12 子包（-90%） |
+| learncore | 89→11 子包（-88%） |
+| 形式化证明 | 25 个 `proof_assert`（src/proof/） |
+| MOCK 框架 | 5 个 `pub(open) trait` + 9 测试（src/testing/mock/） |
+| FAKE 退化测试 | 16 测试（src/testing/fake/） |
+| 属性测试 | 130 个 proof-carrying（src/spec/） |
 | Errors | 0 |
 
 ## 核心原则 / Core Principles
@@ -49,7 +57,9 @@
 src/
 ├── kernel          # 算子执行内核（exact/approx/streaming/cache）
 ├── dataobject      # 一等数据实体（Schema/Chunk/Embedding/Record/Dataset）
-├── opcore          # 全域算子库（数据 14 类 + 模型/学习 6 类）
+├── extcore         # 扩展核心算法库（20 领域 92 子包）
+├── opcore          # 操作符引擎（12 子包）
+├── learncore       # 学习算法库（11 子包）
 ├── datatemporal    # 数据时空·版本·血缘
 ├── recipe          # 复合数据流水线
 ├── datair          # 全域数据中间表示
@@ -59,22 +69,43 @@ src/
 ├── parallel        # 并行/分布式调度
 ├── io              # 存储适配
 ├── governance      # 元数据/合规/审计
-└── tests           # 跨包测试
+├── proof           # 形式化证明（proof_assert）
+├── testing         # 测试框架（mock + fake）
+├── spec            # 属性测试（130 个 proof-carrying）
+└── tests           # 跨包集成测试（1432 个）
 ```
+
+## 10 逻辑库 / 10 Logical Libraries
+
+详见 [docs/library_layout.md](./docs/library_layout.md)。
+
+| 库 | 包组 | 层 | 依赖 |
+|---|------|-----|------|
+| lib-extcore | extcore | L0 | — |
+| lib-datair | datair | L0 | — |
+| lib-kernel | kernel, governance, self_evolve | L0 | — |
+| lib-dataobject | dataobject, datatemporal, io | L1 | extcore |
+| lib-dosi | dosi, parallel | L2 | datair, dataobject |
+| lib-opcore | opcore | L2 | dataobject, extcore, kernel |
+| lib-agent | agent_kit | L2 | dosi, extcore |
+| lib-learn | learncore, recipe | L3 | extcore, opcore, dataobject |
+| lib-qa | proof, testing | L4 | dataobject, learn, opcore, agent |
+| lib-meta | spec, tests | L4 | 几乎所有 |
 
 ## Roadmap
 
-Phase 0 地基固化期，分 7 个 Sprint。详见 [docs/roadmap.md](./docs/roadmap.md)。
+详见 [docs/roadmap.md](./docs/roadmap.md)。
 
 | Sprint | 内容 | 状态 |
 |--------|------|------|
 | Phase 0-12 | 基础架构 + 100K 行 + 1528 tests | ✅ |
-| Phase 13-22 | 语义包扩展 + 825 包 + 180 万行 | ✅ |
-| 全面重构 | 委托 @_common + 方法链 + 性能优化 | ✅ |
-| Warning 治理 | 506→62 (-88%) | ✅ |
-| Workspace | 7 个独立子项目 (moon.work) | ✅ |
-| MoonBit 惯用法 | for x in / guard / proof 测试 | ✅ |
-| 数学函数扩展 | _common 55+ 函数 (log/exp/sin/cos...) | ✅ |
+| Phase 13-22 | 语义包扩展 + 826 包 + 190 万行 | ✅ |
+| 包结构重构 | extcore 826→92, opcore 121→12, learncore 89→11 | ✅ |
+| 形式化证明 | 25 proof_assert + 130 spec | ✅ |
+| MOCK 框架 | 5 trait + 9 测试 | ✅ |
+| FAKE 退化测试 | 16 测试 | ✅ |
+| 10 逻辑库划分 | 对照 OCaml janestreet/core | ✅ |
+| Warning 治理 | 506→3 (-99.4%) | ✅ |
 
 ## 开发规则 / Development Rules
 
@@ -84,8 +115,10 @@ Phase 0 地基固化期，分 7 个 Sprint。详见 [docs/roadmap.md](./docs/roa
 
 ```bash
 moon check    # 类型检查 (0 errors)
-moon test     # 运行测试 (1626 passed)
+moon test     # 运行测试 (1708 passed)
 moon build    # 构建
+moon fmt      # 格式化
+moon info     # 生成 .mbti API 接口文件
 
 # Workspace 子项目
 moon run apps/cli/cmd/main --target native       # CLI 工具
@@ -95,13 +128,27 @@ moon run apps/info/cmd/main --target native      # 项目信息
 moon run apps/extcore/cmd/main --target native   # 语义包探索
 ```
 
+## 多手段测试 / Multi-Strategy Testing
+
+详见 [docs/arch_test_report.md](./docs/arch_test_report.md)。
+
+| 手段 | 测试数 | 位置 |
+|------|--------|------|
+| 形式化证明 | 25 | src/proof/ |
+| FAKE 退化测试 | 16 | src/testing/fake/ |
+| MOCK 框架 | 9 | src/testing/mock/ |
+| 属性测试 | 130 | src/spec/ |
+| E2E 集成测试 | 1432 | src/tests/ |
+| 单元测试 | 69 | src/extcore/_common/ |
+| theorem_prove | 11 | src/agent_kit/theorem_prove/ |
+
 ## Workspace 结构
 
 ```
 DataVerse/
   moon.work              # workspace 清单
   moon.mod               # 主库 dataverse
-  src/                   # 主库源码 (825 语义包 + 旧代码)
+  src/                   # 主库源码 (10 逻辑库)
   apps/
     cli/                 # CLI 工具 (cmd/main)
     bench/               # 基准测试工具
@@ -109,6 +156,7 @@ DataVerse/
     extcore/             # 语义包探索工具
     info/                # 项目信息工具
     stats/               # 统计分析工具 (5 数据集)
+    demo/                # 演示工具
   tests/                  # 测试目录说明
   examples/              # 示例目录
 ```
@@ -127,4 +175,4 @@ See [DataVerse-数据算子库-ARCHITECTURE.md](./DataVerse-数据算子库-ARCH
 
 ---
 
-> DataVerse v0.1.0-dev | MoonBit v0.1.20261020 | 2026-10-21 | 1626 tests | 7 workspace members
+> DataVerse v0.1.0-dev | MoonBit v0.1.20261020 | 2026-11-04 | 1708 tests | 10 logical libraries

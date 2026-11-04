@@ -1,4 +1,0 @@
-// extcore/finance_portfolio_apt
-import {
-  "dataverse/extcore/_common",
-}

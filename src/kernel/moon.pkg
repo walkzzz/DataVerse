@@ -7,4 +7,5 @@ import {
   "dataverse/kernel/approx",
   "dataverse/kernel/streaming",
   "dataverse/kernel/cache",
+  "dataverse/core/traits",
 }

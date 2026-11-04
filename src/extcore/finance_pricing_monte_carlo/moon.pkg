@@ -1,4 +1,0 @@
-// extcore/finance_pricing_monte_carlo
-import {
-  "dataverse/extcore/_common",
-}

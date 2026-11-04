@@ -1,5 +1,0 @@
-// learncore/lstm_rt learncore/lstm_rt
-// S13.112 new
-import {
-  "dataverse/extcore/_common",
-}

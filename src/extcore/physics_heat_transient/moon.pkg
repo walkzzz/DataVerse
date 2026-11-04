@@ -1,4 +1,0 @@
-// extcore/physics_heat_transient
-import {
-  "dataverse/extcore/_common",
-}

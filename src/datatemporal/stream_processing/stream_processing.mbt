@@ -857,7 +857,7 @@ pub fn schema_register_sp(
 ) -> SchemaRegistry {
   let new_schemas = registry.schemas.copy()
   new_schemas.push(schema)
-  { ..registry, schemas: new_schemas, }
+  { schemas: new_schemas, }
 }
 
 ///|
@@ -891,4 +891,25 @@ pub fn schema_validate_sp(
 /// ID
 pub fn stream_processing_id() -> String {
   "datatemporal/stream_processing"
+}
+
+///|
+/// 构造测试 / Construction test.
+test "construct: DagNode" {
+  let _ = DagNode::{ id: "", op_type: "" }
+}
+///|
+/// 构造测试 / Construction test.
+test "construct: DagEdge" {
+  let _ = DagEdge::{ from: "", to: "" }
+}
+///|
+/// 构造测试 / Construction test.
+test "construct: StreamEvent" {
+  let _ = StreamEvent::{ key: "", value: 0.0, timestamp: 0.0 }
+}
+///|
+/// 构造测试 / Construction test.
+test "construct: SchemaSp" {
+  let _ = SchemaSp::{ id: "", fields: [] }
 }

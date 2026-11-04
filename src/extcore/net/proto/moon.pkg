@@ -1,0 +1,4 @@
+// extcore/net/proto — net/proto 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

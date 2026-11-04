@@ -1,4 +1,0 @@
-// extcore/net_sec_firewall
-import {
-  "dataverse/extcore/_common",
-}

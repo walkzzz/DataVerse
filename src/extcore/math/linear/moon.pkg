@@ -1,0 +1,5 @@
+// extcore/math/linear — linear 算法聚合包
+// 重构自 linear_algebra, lu_decomp, qr_decomp, cholesky, svd, matrix_decomp, sparse_matrix
+import {
+  "dataverse/extcore/_common",
+}

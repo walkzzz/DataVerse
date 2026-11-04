@@ -1,5 +1,0 @@
-// opcore/computer_vision
-import {
-  "moonbitlang/core/math",
-  "dataverse/extcore/_common",
-}

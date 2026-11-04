@@ -1,4 +1,0 @@
-// extcore/net_proto_grpc
-import {
-  "dataverse/extcore/_common",
-}

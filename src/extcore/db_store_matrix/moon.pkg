@@ -1,4 +1,0 @@
-// extcore/db_store_matrix
-import {
-  "dataverse/extcore/_common",
-}

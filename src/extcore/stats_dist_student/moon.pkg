@@ -1,4 +1,0 @@
-// extcore/stats_dist_student
-import {
-  "dataverse/extcore/_common",
-}

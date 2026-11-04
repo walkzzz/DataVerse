@@ -1,4 +1,0 @@
-// extcore/physics_fluid_volume
-import {
-  "dataverse/extcore/_common",
-}

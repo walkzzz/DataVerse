@@ -1,4 +1,0 @@
-// extcore/timeseries_forecast_naive
-import {
-  "dataverse/extcore/_common",
-}

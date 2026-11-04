@@ -1,0 +1,4 @@
+// extcore/crypto/sym — crypto/sym 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

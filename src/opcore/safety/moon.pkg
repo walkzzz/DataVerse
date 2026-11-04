@@ -1,5 +1,0 @@
-// opcore/safety 安全与合规算子 / Safety & Compliance Operators
-// S1.1 填充：mask_digits + mask_email（对标 DJ clean_email_mapper + 脱敏）
-import {
-  "dataverse/dataobject",
-}

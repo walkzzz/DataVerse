@@ -1,4 +1,0 @@
-// extcore/crypto_sym_salsa
-import {
-  "dataverse/extcore/_common",
-}

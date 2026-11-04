@@ -869,3 +869,29 @@ pub fn leaderboard_rank(board : Leaderboard, agent_name : String) -> Int32 {
 pub fn agent_eval_id() -> String {
   "agent_kit/agent_eval"
 }
+
+///|
+/// 构造测试 / Construction test.
+test "construct: TaskResult" {
+  let _ = TaskResult::{ task_id: "", success: false, completion: 0.0, latency_ms: 0.0, cost: 0.0, tokens: 0, api_calls: 0 }
+}
+///|
+/// 构造测试 / Construction test.
+test "construct: HumanEvalItem" {
+  let _ = HumanEvalItem::{ sample_id: 0, output: "", rating: 0 }
+}
+///|
+/// 构造测试 / Construction test.
+test "construct: DialogTurn" {
+  let _ = DialogTurn::{ role: "", content: "", latency: 0.0 }
+}
+///|
+/// 构造测试 / Construction test.
+test "construct: MultiTurnDialog" {
+  let _ = MultiTurnDialog::{ id: "", turns: [] }
+}
+///|
+/// 构造测试 / Construction test.
+test "construct: LeaderboardEntry" {
+  let _ = LeaderboardEntry::{ agent_name: "", score: 0.0, rank: 0 }
+}

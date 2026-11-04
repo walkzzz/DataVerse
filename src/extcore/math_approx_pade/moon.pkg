@@ -1,4 +1,0 @@
-// extcore/math_approx_pade
-import {
-  "dataverse/extcore/_common",
-}

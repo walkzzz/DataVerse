@@ -1,4 +1,0 @@
-// extcore/chem_rxn_thermo
-import {
-  "dataverse/extcore/_common",
-}

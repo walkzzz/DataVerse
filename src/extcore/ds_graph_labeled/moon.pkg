@@ -1,4 +1,0 @@
-// extcore/ds_graph_labeled
-import {
-  "dataverse/extcore/_common",
-}

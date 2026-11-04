@@ -1,4 +1,0 @@
-// extcore/timeseries_forecast_stacking
-import {
-  "dataverse/extcore/_common",
-}

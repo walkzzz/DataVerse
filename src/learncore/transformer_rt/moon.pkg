@@ -1,5 +1,0 @@
-// learncore/transformer_rt learncore/transformer_rt
-// S13.114 new
-import {
-  "dataverse/extcore/_common",
-}

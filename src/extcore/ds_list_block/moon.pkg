@@ -1,4 +1,0 @@
-// extcore/ds_list_block
-import {
-  "dataverse/extcore/_common",
-}

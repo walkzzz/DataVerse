@@ -1,4 +1,0 @@
-// extcore/timeseries_arch
-import {
-  "dataverse/extcore/_common",
-}

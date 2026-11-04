@@ -1,4 +1,0 @@
-// extcore/stats_dist_weibull
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,4 +1,0 @@
-// extcore/finance_pricing_basket
-import {
-  "dataverse/extcore/_common",
-}

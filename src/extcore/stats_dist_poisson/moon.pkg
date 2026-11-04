@@ -1,4 +1,0 @@
-// extcore/stats_dist_poisson
-import {
-  "dataverse/extcore/_common",
-}

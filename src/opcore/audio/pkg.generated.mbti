@@ -7,53 +7,176 @@ import {
 }
 
 // Values
-pub fn audio_duration(AudioMeta) -> Int32
+pub fn audio_audio_duration(AudioMeta) -> Int32
 
-pub fn audio_id() -> String
+pub fn audio_audio_id() -> String
 
-pub fn audio_mix(AudioMeta, AudioMeta, Double) -> AudioMeta
+pub fn audio_audio_mix(AudioMeta, AudioMeta, Double) -> AudioMeta
 
-pub fn audio_normalize_duration(AudioMeta, Int32) -> Double
+pub fn audio_audio_normalize_duration(AudioMeta, Int32) -> Double
 
-pub fn audio_segment(AudioMeta, Int32, Int32) -> AudioMeta
+pub fn audio_audio_segment(AudioMeta, Int32, Int32) -> AudioMeta
 
-pub fn audio_to_dataobject(AudioMeta) -> @dataobject.DataObject
+pub fn audio_audio_to_dataobject(AudioMeta) -> @dataobject.DataObject
 
-pub fn concat_signals(AudioSignal, AudioSignal) -> AudioSignal
+pub fn audio_empty_audio_meta() -> AudioMeta
 
-pub fn decimate_signal(AudioSignal, Int32) -> AudioSignal
+pub fn audio_make_audio_meta(Int32, Int32, Int32, String) -> AudioMeta
 
-pub fn empty_audio_meta() -> AudioMeta
+pub fn audio_proc_adv_audio_align(AudioAdv, AudioAdv) -> Int32
 
-pub fn frame_signal(AudioSignal, Int32, Int32) -> Array[Array[Double]]
+pub fn audio_proc_adv_audio_bandpass(AudioAdv, Double, Double) -> AudioAdv
 
-pub fn is_silent(AudioSignal, Double) -> Bool
+pub fn audio_proc_adv_audio_beat_detect(AudioAdv, Int32) -> Array[Int32]
 
-pub fn magnitude_spectrum(AudioSignal, Int32) -> Array[Double]
+pub fn audio_proc_adv_audio_center(AudioAdv) -> AudioAdv
 
-pub fn make_audio_meta(Int32, Int32, Int32, String) -> AudioMeta
+pub fn audio_proc_adv_audio_change_rate(AudioAdv, Double) -> AudioAdv
 
-pub fn make_audio_signal(Array[Double], Int32) -> AudioSignal
+pub fn audio_proc_adv_audio_chorus(AudioAdv, Int32, Double) -> AudioAdv
 
-pub fn normalize_signal(AudioSignal) -> AudioSignal
+pub fn audio_proc_adv_audio_compressor(AudioAdv, Double, Double, Double, Double) -> AudioAdv
 
-pub fn sample_rate_filter(AudioMeta, Int32, Int32) -> Bool
+pub fn audio_proc_adv_audio_concat(AudioAdv, AudioAdv) -> AudioAdv
 
-pub fn signal_duration(AudioSignal) -> Double
+pub fn audio_proc_adv_audio_cross_corr_audio(AudioAdv, AudioAdv) -> Array[Double]
 
-pub fn signal_energy(AudioSignal) -> Double
+pub fn audio_proc_adv_audio_dct_coefficients(Int32, Int32) -> Array[Double]
 
-pub fn signal_length(AudioSignal) -> Int32
+pub fn audio_proc_adv_audio_de_emphasis(AudioAdv, Double) -> AudioAdv
 
-pub fn signal_rms(AudioSignal) -> Double
+pub fn audio_proc_adv_audio_delay(AudioAdv, Int32, Double) -> AudioAdv
 
-pub fn snr_db(AudioSignal, AudioSignal) -> Double
+pub fn audio_proc_adv_audio_dtw_audio(AudioAdv, AudioAdv) -> Double
 
-pub fn zero_crossing_rate(AudioSignal) -> Double
+pub fn audio_proc_adv_audio_duration(AudioAdv) -> Double
+
+pub fn audio_proc_adv_audio_equalizer(AudioAdv, Double, Double) -> AudioAdv
+
+pub fn audio_proc_adv_audio_expander(AudioAdv, Double, Double) -> AudioAdv
+
+pub fn audio_proc_adv_audio_filterbank(Int32, Int32) -> Array[Double]
+
+pub fn audio_proc_adv_audio_flanger(AudioAdv, Int32, Double, Double) -> AudioAdv
+
+pub fn audio_proc_adv_audio_framing(AudioAdv, Int32, Int32) -> Array[Array[Double]]
+
+pub fn audio_proc_adv_audio_gate(AudioAdv, Double, Int32) -> AudioAdv
+
+pub fn audio_proc_adv_audio_highshelf(AudioAdv, Double, Double) -> AudioAdv
+
+pub fn audio_proc_adv_audio_ica_simple(Array[Array[Double]]) -> Array[Array[Double]]
+
+pub fn audio_proc_adv_audio_istft(Array[Array[Double]], Int32, Int32) -> Array[Double]
+
+pub fn audio_proc_adv_audio_limiter(AudioAdv, Double) -> AudioAdv
+
+pub fn audio_proc_adv_audio_lowshelf(AudioAdv, Double, Double) -> AudioAdv
+
+pub fn audio_proc_adv_audio_mel_filterbank(Int32, Int32, Int32) -> Array[Double]
+
+pub fn audio_proc_adv_audio_mel_spectrogram(AudioAdv, Int32, Int32, Int32) -> Array[Array[Double]]
+
+pub fn audio_proc_adv_audio_mfcc(AudioAdv, Int32, Int32, Int32, Int32) -> Array[Array[Double]]
+
+pub fn audio_proc_adv_audio_mix(AudioAdv, AudioAdv, Double) -> AudioAdv
+
+pub fn audio_proc_adv_audio_nmf(Array[Array[Double]], Int32, Int32) -> Array[Array[Double]]
+
+pub fn audio_proc_adv_audio_noise_reduce(AudioAdv, Double) -> AudioAdv
+
+pub fn audio_proc_adv_audio_normalize_adv(AudioAdv) -> AudioAdv
+
+pub fn audio_proc_adv_audio_num_samples(AudioAdv) -> Int32
+
+pub fn audio_proc_adv_audio_onset_detect(AudioAdv, Int32, Int32) -> Array[Int32]
+
+pub fn audio_proc_adv_audio_overlap_add(Array[Array[Double]], Int32) -> Array[Double]
+
+pub fn audio_proc_adv_audio_pad_audio(AudioAdv, Int32, Double) -> AudioAdv
+
+pub fn audio_proc_adv_audio_pitch_detect(AudioAdv, Int32, Int32) -> Double
+
+pub fn audio_proc_adv_audio_pitch_shift(AudioAdv, Double) -> AudioAdv
+
+pub fn audio_proc_adv_audio_pre_emphasis(AudioAdv, Double) -> AudioAdv
+
+pub fn audio_proc_adv_audio_proc_adv_id() -> String
+
+pub fn audio_proc_adv_audio_resample(AudioAdv, Int32) -> AudioAdv
+
+pub fn audio_proc_adv_audio_reverb_simple(AudioAdv, Double, Int32) -> AudioAdv
+
+pub fn audio_proc_adv_audio_sample_rate(AudioAdv) -> Int32
+
+pub fn audio_proc_adv_audio_silence_remove(AudioAdv, Double) -> AudioAdv
+
+pub fn audio_proc_adv_audio_source_sep(AudioAdv, Int32) -> Array[AudioAdv]
+
+pub fn audio_proc_adv_audio_spectral_subtract(AudioAdv, AudioAdv) -> AudioAdv
+
+pub fn audio_proc_adv_audio_standardize(AudioAdv) -> AudioAdv
+
+pub fn audio_proc_adv_audio_stft(AudioAdv, Int32, Int32) -> Array[Array[Double]]
+
+pub fn audio_proc_adv_audio_tempo_estimate(AudioAdv, Int32) -> Double
+
+pub fn audio_proc_adv_audio_time_stretch(AudioAdv, Double) -> AudioAdv
+
+pub fn audio_proc_adv_audio_trim(AudioAdv, Double) -> AudioAdv
+
+pub fn audio_proc_adv_audio_vad(AudioAdv, Int32, Double) -> Array[Bool]
+
+pub fn audio_proc_adv_audio_vad_energy(AudioAdv, Int32, Double) -> Array[Bool]
+
+pub fn audio_proc_adv_audio_vad_zcr(AudioAdv, Int32, Double) -> Array[Bool]
+
+pub fn audio_proc_adv_audio_wiener_filter(AudioAdv, AudioAdv) -> AudioAdv
+
+pub fn audio_proc_adv_audio_windowing(Array[Double], Int32) -> Array[Double]
+
+pub fn audio_proc_adv_make_audio_adv(Array[Double], Int32, Int32) -> AudioAdv
+
+pub fn audio_s9_concat_signals(AudioSignal, AudioSignal) -> AudioSignal
+
+pub fn audio_s9_decimate_signal(AudioSignal, Int32) -> AudioSignal
+
+pub fn audio_s9_frame_signal(AudioSignal, Int32, Int32) -> Array[Array[Double]]
+
+pub fn audio_s9_is_silent(AudioSignal, Double) -> Bool
+
+pub fn audio_s9_magnitude_spectrum(AudioSignal, Int32) -> Array[Double]
+
+pub fn audio_s9_make_audio_signal(Array[Double], Int32) -> AudioSignal
+
+pub fn audio_s9_normalize_signal(AudioSignal) -> AudioSignal
+
+pub fn audio_s9_signal_duration(AudioSignal) -> Double
+
+pub fn audio_s9_signal_energy(AudioSignal) -> Double
+
+pub fn audio_s9_signal_length(AudioSignal) -> Int32
+
+pub fn audio_s9_signal_rms(AudioSignal) -> Double
+
+pub fn audio_s9_snr_db(AudioSignal, AudioSignal) -> Double
+
+pub fn audio_s9_zero_crossing_rate(AudioSignal) -> Double
+
+pub fn audio_sample_rate_filter(AudioMeta, Int32, Int32) -> Bool
 
 // Errors
 
 // Types and methods
+pub struct AudioAdv {
+  samples : Array[Double]
+  sample_rate : Int32
+  channels : Int32
+} derive(Eq, @debug.Debug)
+pub fn AudioAdv::equal(Self, Self) -> Bool
+pub fn AudioAdv::not_equal(Self, Self) -> Bool
+pub fn AudioAdv::to_repr(Self) -> @debug.Repr
+
 pub struct AudioMeta {
   duration_ms : Int32
   sample_rate : Int32

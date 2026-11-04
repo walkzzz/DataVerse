@@ -1,5 +1,7 @@
 import {
   "dataverse/extcore/_common",
+  "dataverse/core/error",
+
 }
 
 pkgtype(kind: "executable")

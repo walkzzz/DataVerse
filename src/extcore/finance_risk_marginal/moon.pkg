@@ -1,4 +1,0 @@
-// extcore/finance_risk_marginal
-import {
-  "dataverse/extcore/_common",
-}

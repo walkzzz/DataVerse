@@ -1,4 +1,0 @@
-// extcore/net_flow_fairness
-import {
-  "dataverse/extcore/_common",
-}

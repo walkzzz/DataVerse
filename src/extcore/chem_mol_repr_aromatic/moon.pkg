@@ -1,4 +1,0 @@
-// extcore/chem_mol_repr_aromatic
-import {
-  "dataverse/extcore/_common",
-}

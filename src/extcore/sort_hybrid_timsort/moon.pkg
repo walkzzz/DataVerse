@@ -1,4 +1,0 @@
-// extcore/sort_hybrid_timsort
-import {
-  "dataverse/extcore/_common",
-}

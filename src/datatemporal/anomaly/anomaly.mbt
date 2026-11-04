@@ -852,3 +852,9 @@ pub fn anomaly_id() -> String {
     pkg
   }
 }
+
+///|
+/// 构造测试 / Construction test.
+test "construct: AnomalyConfig" {
+  let _ = AnomalyConfig::{ threshold: 0.0, window_size: 0, sensitivity: 0.0 }
+}

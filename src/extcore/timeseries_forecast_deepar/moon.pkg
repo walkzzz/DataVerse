@@ -1,4 +1,0 @@
-// extcore/timeseries_forecast_deepar
-import {
-  "dataverse/extcore/_common",
-}

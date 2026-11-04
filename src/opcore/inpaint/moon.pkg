@@ -1,5 +1,0 @@
-// opcore/inpaint opcore/inpaint
-// S13.58 new
-import {
-  "dataverse/extcore/_common",
-}

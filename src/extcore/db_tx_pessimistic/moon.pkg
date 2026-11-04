@@ -1,4 +1,0 @@
-// extcore/db_tx_pessimistic
-import {
-  "dataverse/extcore/_common",
-}

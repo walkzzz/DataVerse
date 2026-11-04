@@ -1,4 +1,0 @@
-// extcore/opt_convex_trust_region
-import {
-  "dataverse/extcore/_common",
-}

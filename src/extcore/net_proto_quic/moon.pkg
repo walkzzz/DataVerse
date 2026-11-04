@@ -1,4 +1,0 @@
-// extcore/net_proto_quic
-import {
-  "dataverse/extcore/_common",
-}

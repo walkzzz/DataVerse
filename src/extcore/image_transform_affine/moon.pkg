@@ -1,4 +1,0 @@
-// extcore/image_transform_affine
-import {
-  "dataverse/extcore/_common",
-}

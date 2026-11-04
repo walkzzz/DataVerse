@@ -1,4 +1,0 @@
-// extcore/ds_graph_edge_list
-import {
-  "dataverse/extcore/_common",
-}

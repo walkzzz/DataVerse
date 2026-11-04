@@ -1,5 +1,0 @@
-// opcore/image_segmentation
-import {
-  "moonbitlang/core/math",
-  "dataverse/extcore/_common",
-}

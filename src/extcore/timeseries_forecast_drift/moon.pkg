@@ -1,4 +1,0 @@
-// extcore/timeseries_forecast_drift
-import {
-  "dataverse/extcore/_common",
-}

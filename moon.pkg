@@ -79,4 +79,6 @@ import {
   "governance/benchmark",
   "governance/docgen",
   "spec",
+  "core/traits",
+  "core/error",
 }

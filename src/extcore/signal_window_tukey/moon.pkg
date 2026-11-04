@@ -1,4 +1,0 @@
-// extcore/signal_window_tukey
-import {
-  "dataverse/extcore/_common",
-}

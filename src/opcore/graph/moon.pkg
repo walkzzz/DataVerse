@@ -1,0 +1,4 @@
+// opcore/graph — 聚合包
+import {
+  "dataverse/extcore/_common",
+}

@@ -1,6 +1,7 @@
-// opcore/audio 音频算子 / Audio Operators
-// S2.1 填充：AudioMeta + audio_duration + sample_rate_filter + audio_segment
+// opcore/audio — 聚合包
 import {
   "dataverse/dataobject",
   "dataverse/dataobject/schema",
+  "dataverse/extcore/_common",
+  "moonbitlang/core/math",
 }

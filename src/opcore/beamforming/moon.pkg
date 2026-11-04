@@ -1,5 +1,0 @@
-// opcore/beamforming opcore/beamforming
-// S13.40 new
-import {
-  "dataverse/extcore/_common",
-}

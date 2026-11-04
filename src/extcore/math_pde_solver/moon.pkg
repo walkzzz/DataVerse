@@ -1,4 +1,0 @@
-// extcore/math_pde_solver
-import {
-  "dataverse/extcore/_common",
-}

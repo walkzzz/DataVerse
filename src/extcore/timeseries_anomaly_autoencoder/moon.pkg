@@ -1,4 +1,0 @@
-// extcore/timeseries_anomaly_autoencoder
-import {
-  "dataverse/extcore/_common",
-}

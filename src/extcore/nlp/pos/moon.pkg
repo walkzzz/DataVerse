@@ -1,0 +1,4 @@
+// extcore/nlp/pos — nlp/pos 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

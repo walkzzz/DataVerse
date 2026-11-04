@@ -1,4 +1,0 @@
-// extcore/db_index_hash
-import {
-  "dataverse/extcore/_common",
-}

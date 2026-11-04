@@ -1138,3 +1138,9 @@ pub fn data_lineage_id() -> String {
     pkg
   }
 }
+
+///|
+/// 构造测试 / Construction test.
+test "construct: LineageEdge" {
+  let _ = LineageEdge::{ source: "", target: "", edge_type: "" }
+}

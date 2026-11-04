@@ -1,4 +1,0 @@
-// extcore/chem_mol_props_rings
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,4 +1,0 @@
-// extcore/nlp_parse_dependency
-import {
-  "dataverse/extcore/_common",
-}

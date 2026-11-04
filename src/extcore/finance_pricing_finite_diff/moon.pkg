@@ -1,4 +1,0 @@
-// extcore/finance_pricing_finite_diff
-import {
-  "dataverse/extcore/_common",
-}

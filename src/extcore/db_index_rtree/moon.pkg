@@ -1,4 +1,0 @@
-// extcore/db_index_rtree
-import {
-  "dataverse/extcore/_common",
-}

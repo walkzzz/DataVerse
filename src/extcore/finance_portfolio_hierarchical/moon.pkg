@@ -1,4 +1,0 @@
-// extcore/finance_portfolio_hierarchical
-import {
-  "dataverse/extcore/_common",
-}

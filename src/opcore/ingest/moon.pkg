@@ -1,6 +1,0 @@
-// opcore/ingest 摄入与解析算子 / Ingest & Parse Operators
-// S1.1 填充：text_formatter（对标 DJ text_formatter）
-import {
-  "dataverse/dataobject",
-  "dataverse/dataobject/schema",
-}

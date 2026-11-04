@@ -1,0 +1,4 @@
+// extcore/crypto/sign — crypto/sign 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

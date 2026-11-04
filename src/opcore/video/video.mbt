@@ -27,7 +27,7 @@ pub extend VideoMeta with Debug::{to_repr}
 
 ///|
 /// 构造视频元数据 / Build video metadata.
-pub fn make_video_meta(
+pub fn video_make_video_meta(
   duration_ms : Int32,
   fps : Int32,
   width : Int32,
@@ -39,13 +39,13 @@ pub fn make_video_meta(
 
 ///|
 /// 空视频元数据（退化安全）/ Empty video metadata (degenerate-safe).
-pub fn empty_video_meta() -> VideoMeta {
+pub fn video_empty_video_meta() -> VideoMeta {
   { duration_ms: 0, fps: 0, width: 0, height: 0, format: "", }
 }
 
 ///|
 /// 视频时长（毫秒）/ Video duration in milliseconds.
-pub fn video_duration(meta : VideoMeta) -> Int32 {
+pub fn video_video_duration(meta : VideoMeta) -> Int32 {
   meta.duration_ms
 }
 
@@ -54,7 +54,7 @@ pub fn video_duration(meta : VideoMeta) -> Int32 {
 ///
 /// 公式：`duration_ms * fps / 1000`。
 /// 退化安全：fps=0 或 duration_ms=0 返回 0。
-pub fn frame_count(meta : VideoMeta) -> Int32 {
+pub fn video_frame_count(meta : VideoMeta) -> Int32 {
   meta.duration_ms * meta.fps / 1000
 }
 
@@ -63,7 +63,7 @@ pub fn frame_count(meta : VideoMeta) -> Int32 {
 ///
 /// 每 interval_ms 毫秒采样一帧，返回时间戳数组（毫秒）。
 /// 退化安全：interval_ms <= 0 返回空数组。
-pub fn video_sample_frames(
+pub fn video_video_sample_frames(
   meta : VideoMeta,
   interval_ms : Int32,
 ) -> Array[Int32] {
@@ -82,7 +82,7 @@ pub fn video_sample_frames(
 
 ///|
 /// 视频元数据转 DataObject / Convert video metadata to DataObject.
-pub fn video_to_dataobject(meta : VideoMeta) -> @dataobject.DataObject {
+pub fn video_video_to_dataobject(meta : VideoMeta) -> @dataobject.DataObject {
   let content = "video:" +
     meta.format.to_string() +
     ":" +
@@ -97,7 +97,7 @@ pub fn video_to_dataobject(meta : VideoMeta) -> @dataobject.DataObject {
 }
 
 ///|
-pub fn video_id() -> String {
+pub fn video_video_id() -> String {
   "opcore/video"
 }
 // ============================================================
@@ -109,7 +109,7 @@ pub fn video_id() -> String {
 ///
 /// 均匀抽取 count 帧，返回 ImageMeta 数组（每帧 w×h×3 RGB）。
 /// 退化安全：count<=0 返回空数组，duration<=0 返回空数组。
-pub fn video_extract_frames(
+pub fn video_video_extract_frames(
   meta : VideoMeta,
   count : Int32,
 ) -> Array[@image.ImageMeta] {
@@ -121,7 +121,7 @@ pub fn video_extract_frames(
     let mut t = 0
     for i in 0..<count {
       ignore(i)
-      result.push(@image.make_image_meta(meta.width, meta.height, 3, "rgb"))
+      result.push(@image.image_make_image_meta(meta.width, meta.height, 3, "rgb"))
       t = t + step
     }
     ignore(t)
@@ -134,7 +134,7 @@ pub fn video_extract_frames(
 ///
 /// 均匀抽取 count 帧的时间戳（毫秒）。
 /// 退化安全：count<=0 返回空数组。
-pub fn video_frame_timestamps(meta : VideoMeta, count : Int32) -> Array[Int32] {
+pub fn video_video_frame_timestamps(meta : VideoMeta, count : Int32) -> Array[Int32] {
   if count <= 0 || meta.duration_ms <= 0 {
     []
   } else {
@@ -155,7 +155,7 @@ pub fn video_frame_timestamps(meta : VideoMeta, count : Int32) -> Array[Int32] {
 ///
 /// 裁剪 [start_ms, end_ms] 时间段，返回新 VideoMeta。
 /// 退化安全：越界截断到边界，负值取 0。
-pub fn video_trim(
+pub fn video_video_trim(
   meta : VideoMeta,
   start_ms : Int32,
   end_ms : Int32,

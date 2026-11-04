@@ -1,5 +1,0 @@
-// learncore/mlp_rt learncore/mlp_rt
-// S13.109 new
-import {
-  "dataverse/extcore/_common",
-}

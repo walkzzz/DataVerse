@@ -1,0 +1,4 @@
+// extcore/chem/rxn — chem/rxn 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

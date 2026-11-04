@@ -1,4 +1,0 @@
-// extcore/crypto_sym_idea
-import {
-  "dataverse/extcore/_common",
-}

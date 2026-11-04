@@ -1,4 +1,0 @@
-// extcore/net_sec_ips
-import {
-  "dataverse/extcore/_common",
-}

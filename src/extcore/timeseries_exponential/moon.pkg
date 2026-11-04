@@ -1,4 +1,0 @@
-// extcore/timeseries_exponential
-import {
-  "dataverse/extcore/_common",
-}

@@ -36,9 +36,9 @@ fn main {
   println("  sort([5,3,1,4,2]) = [1, 2, 3, 4, 5]")
   println("")
   println("Semantic Package Demo (math_linear_algebra):")
-  let pt = @math_linear_algebra.math_linear_algebra_make_point(3.0, 4.0)
+  let pt = @linear.math_linear_algebra_make_point(3.0, 4.0)
   println("  Point(3,4).norm() = \{pt.norm()}")
-  let sr = @math_linear_algebra.math_linear_algebra_make_series(
+  let sr = @linear.math_linear_algebra_make_series(
     [1.0, 2.0, 3.0],
     "s",
   )

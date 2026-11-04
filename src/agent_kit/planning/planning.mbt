@@ -1097,3 +1097,9 @@ pub fn serialize_tasks(plan : Plan) -> Array[Task] {
 pub fn planning_id() -> String {
   "agent_kit/planning"
 }
+
+///|
+/// 构造测试 / Construction test.
+test "construct: HTNMethod" {
+  let _ = HTNMethod::{ method_id: "", task_name: "", subtasks: [] }
+}

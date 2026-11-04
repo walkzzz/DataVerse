@@ -1,4 +1,0 @@
-// extcore/nlp_pos_brill
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,0 +1,4 @@
+// extcore/physics/fluid — physics/fluid 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

@@ -1,4 +1,0 @@
-// extcore/math_cholesky
-import {
-  "dataverse/extcore/_common",
-}

@@ -1,0 +1,4 @@
+// extcore/net/route — net/route 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

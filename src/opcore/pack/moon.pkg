@@ -1,6 +1,0 @@
-// opcore/pack 打包与序列化算子 / Pack & Serialize Operators
-// S1.1 填充：text_chunk（对标 DJ text_chunk_mapper）
-import {
-  "dataverse/dataobject",
-  "dataverse/dataobject/chunk",
-}

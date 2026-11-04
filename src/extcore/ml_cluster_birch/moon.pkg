@@ -1,4 +1,0 @@
-// extcore/ml_cluster_birch
-import {
-  "dataverse/extcore/_common",
-}

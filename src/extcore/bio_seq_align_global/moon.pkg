@@ -1,4 +1,0 @@
-// extcore/bio_seq_align_global
-import {
-  "dataverse/extcore/_common",
-}

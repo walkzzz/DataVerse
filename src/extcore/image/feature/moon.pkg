@@ -1,0 +1,4 @@
+// extcore/image/feature — image/feature 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

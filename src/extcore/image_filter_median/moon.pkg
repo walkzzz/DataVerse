@@ -1,4 +1,0 @@
-// extcore/image_filter_median
-import {
-  "dataverse/extcore/_common",
-}

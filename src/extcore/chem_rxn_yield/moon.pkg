@@ -1,4 +1,0 @@
-// extcore/chem_rxn_yield
-import {
-  "dataverse/extcore/_common",
-}

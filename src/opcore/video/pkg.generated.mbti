@@ -8,41 +8,41 @@ import {
 }
 
 // Values
-pub fn empty_video_meta() -> VideoMeta
+pub fn video_empty_video_meta() -> VideoMeta
 
-pub fn extract_keyframes(FrameSequence, Int32) -> Array[Int32]
+pub fn video_frame_count(VideoMeta) -> Int32
 
-pub fn frame_average(FrameSequence) -> @image.GrayImage
+pub fn video_make_video_meta(Int32, Int32, Int32, Int32, String) -> VideoMeta
 
-pub fn frame_count(VideoMeta) -> Int32
+pub fn video_s9_extract_keyframes(FrameSequence, Int32) -> Array[Int32]
 
-pub fn frame_count_seq(FrameSequence) -> Int32
+pub fn video_s9_frame_average(FrameSequence) -> @image.GrayImage
 
-pub fn frame_difference(FrameSequence) -> Array[@image.GrayImage]
+pub fn video_s9_frame_count_seq(FrameSequence) -> Int32
 
-pub fn make_frame_sequence(Array[@image.GrayImage], Int32) -> FrameSequence
+pub fn video_s9_frame_difference(FrameSequence) -> Array[@image.GrayImage]
 
-pub fn make_video_meta(Int32, Int32, Int32, Int32, String) -> VideoMeta
+pub fn video_s9_make_frame_sequence(Array[@image.GrayImage], Int32) -> FrameSequence
 
-pub fn motion_intensity(FrameSequence) -> Double
+pub fn video_s9_motion_intensity(FrameSequence) -> Double
 
-pub fn video_duration(VideoMeta) -> Int32
+pub fn video_s9_video_duration_sec(FrameSequence) -> Double
 
-pub fn video_duration_sec(FrameSequence) -> Double
+pub fn video_s9_video_stability(FrameSequence) -> Double
 
-pub fn video_extract_frames(VideoMeta, Int32) -> Array[@image.ImageMeta]
+pub fn video_video_duration(VideoMeta) -> Int32
 
-pub fn video_frame_timestamps(VideoMeta, Int32) -> Array[Int32]
+pub fn video_video_extract_frames(VideoMeta, Int32) -> Array[@image.ImageMeta]
 
-pub fn video_id() -> String
+pub fn video_video_frame_timestamps(VideoMeta, Int32) -> Array[Int32]
 
-pub fn video_sample_frames(VideoMeta, Int32) -> Array[Int32]
+pub fn video_video_id() -> String
 
-pub fn video_stability(FrameSequence) -> Double
+pub fn video_video_sample_frames(VideoMeta, Int32) -> Array[Int32]
 
-pub fn video_to_dataobject(VideoMeta) -> @dataobject.DataObject
+pub fn video_video_to_dataobject(VideoMeta) -> @dataobject.DataObject
 
-pub fn video_trim(VideoMeta, Int32, Int32) -> VideoMeta
+pub fn video_video_trim(VideoMeta, Int32, Int32) -> VideoMeta
 
 // Errors
 

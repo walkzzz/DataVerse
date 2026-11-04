@@ -1,5 +1,0 @@
-// opcore/clean 清洗算子 / Clean operators
-// S0.4: 空记录过滤 + 空白清理
-import {
-  "dataverse/dataobject",
-}

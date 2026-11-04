@@ -1,5 +1,0 @@
-// opcore/proximity 邻近分析 / Proximity Analysis
-// S4.1：Buffer / Thiessen / Near / Point Distance（契约 + 模拟实现）
-import {
-  "dataverse/dataobject",
-}

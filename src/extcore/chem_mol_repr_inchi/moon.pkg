@@ -1,4 +1,0 @@
-// extcore/chem_mol_repr_inchi
-import {
-  "dataverse/extcore/_common",
-}

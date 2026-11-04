@@ -1,0 +1,4 @@
+// extcore/graph/flow — graph/flow 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

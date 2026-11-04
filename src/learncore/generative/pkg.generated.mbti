@@ -6,109 +6,325 @@ import {
 }
 
 // Values
-pub fn autoregressive_loss(AutoregressiveModel, Array[Int32], Array[Int32]) -> Double
+pub fn generative_autoregressive_loss(AutoregressiveModel, Array[Int32], Array[Int32]) -> Double
 
-pub fn autoregressive_sample(AutoregressiveModel, Array[Int32], Int32) -> Array[Int32]
+pub fn generative_autoregressive_sample(AutoregressiveModel, Array[Int32], Int32) -> Array[Int32]
 
-pub fn conditional_generate(GANModel, Array[Double], Array[Double]) -> Array[Double]
+pub fn generative_conditional_generate(GANModel, Array[Double], Array[Double]) -> Array[Double]
 
-pub fn controlled_generate(GANModel, Array[Double], Array[Double]) -> Array[Double]
+pub fn generative_controlled_generate(GANModel, Array[Double], Array[Double]) -> Array[Double]
 
-pub fn diffusion_forward(DiffusionModel, Array[Double], Int32, Int32) -> Array[Double]
+pub fn generative_diffusion_forward(DiffusionModel, Array[Double], Int32, Int32) -> Array[Double]
 
-pub fn diffusion_reverse(DiffusionModel, Array[Double], Int32, Int32) -> Array[Double]
+pub fn generative_diffusion_reverse(DiffusionModel, Array[Double], Int32, Int32) -> Array[Double]
 
-pub fn diffusion_step(DiffusionModel, Array[Double], Int32, Int32) -> Array[Double]
+pub fn generative_diffusion_step(DiffusionModel, Array[Double], Int32, Int32) -> Array[Double]
 
-pub fn discriminator_forward(DiscriminatorNet, Array[Double]) -> Double
+pub fn generative_discriminator_forward(DiscriminatorNet, Array[Double]) -> Double
 
-pub fn discriminator_loss(Double, Double) -> Double
+pub fn generative_discriminator_loss(Double, Double) -> Double
 
-pub fn fid_score_simple(Array[Array[Double]], Array[Array[Double]]) -> Double
+pub fn generative_fid_score_simple(Array[Array[Double]], Array[Array[Double]]) -> Double
 
-pub fn flow_forward(FlowModel, Array[Double]) -> Array[Double]
+pub fn generative_flow_forward(FlowModel, Array[Double]) -> Array[Double]
 
-pub fn flow_inverse(FlowModel, Array[Double]) -> Array[Double]
+pub fn generative_flow_inverse(FlowModel, Array[Double]) -> Array[Double]
 
-pub fn flow_log_prob(FlowModel, Array[Double]) -> Double
+pub fn generative_flow_log_prob(FlowModel, Array[Double]) -> Double
 
-pub fn gan_discriminate(GANModel, Array[Double]) -> Double
+pub fn generative_gan_discriminate(GANModel, Array[Double]) -> Double
 
-pub fn gan_generate(GANModel, Array[Double]) -> Array[Double]
+pub fn generative_gan_generate(GANModel, Array[Double]) -> Array[Double]
 
-pub fn gan_train_step(GANModel, Array[Double], Int32) -> (GANModel, Double)
+pub fn generative_gan_train_step(GANModel, Array[Double], Int32) -> (GANModel, Double)
 
-pub fn generate_id() -> String
+pub fn generative_generate_id() -> String
 
-pub fn generate_image_simple(Int32, Int32, Int32) -> Array[Array[Double]]
+pub fn generative_generate_image_simple(Int32, Int32, Int32) -> Array[Array[Double]]
 
-pub fn generate_sequence(AutoregressiveModel, Array[Int32], Int32) -> Array[Int32]
+pub fn generative_generate_sequence(AutoregressiveModel, Array[Int32], Int32) -> Array[Int32]
 
-pub fn generate_text(TextGANModel, Array[Int32], Int32) -> Array[Int32]
+pub fn generative_generate_text(TextGANModel, Array[Int32], Int32) -> Array[Int32]
 
-pub fn generator_forward(GeneratorNet, Array[Double]) -> Array[Double]
+pub fn generative_generator_forward(GeneratorNet, Array[Double]) -> Array[Double]
 
-pub fn generator_loss(Double) -> Double
+pub fn generative_generator_loss(Double) -> Double
 
-pub fn hmm_generate(HMMGenModel, Int32, Int32) -> (Array[Int32], Array[Int32])
+pub fn generative_hmm_generate(HMMGenModel, Int32, Int32) -> (Array[Int32], Array[Int32])
 
-pub fn hmm_viterbi_gen(HMMGenModel, Array[Int32]) -> Array[Int32]
+pub fn generative_hmm_viterbi_gen(HMMGenModel, Array[Int32]) -> Array[Int32]
 
-pub fn inception_score_simple(Array[Array[Double]], Int32) -> Double
+pub fn generative_inception_score_simple(Array[Array[Double]], Int32) -> Double
 
-pub fn interpolate_latent(Array[Double], Array[Double], Double) -> Array[Double]
+pub fn generative_interpolate_latent(Array[Double], Array[Double], Double) -> Array[Double]
 
-pub fn latent_space_interpolation(Array[Double], Array[Double], Int32) -> Array[Array[Double]]
+pub fn generative_latent_space_interpolation(Array[Double], Array[Double], Int32) -> Array[Array[Double]]
 
-pub fn make_autoregressive(Int32, Int32, Int32, Int32) -> AutoregressiveModel
+pub fn generative_make_autoregressive(Int32, Int32, Int32, Int32) -> AutoregressiveModel
 
-pub fn make_diffusion(Int32, Double, Double, Int32, Int32) -> DiffusionModel
+pub fn generative_make_diffusion(Int32, Double, Double, Int32, Int32) -> DiffusionModel
 
-pub fn make_discriminator_net(Int32, Int32, Int32) -> DiscriminatorNet
+pub fn generative_make_discriminator_net(Int32, Int32, Int32) -> DiscriminatorNet
 
-pub fn make_flow_model(Int32, Int32, Int32) -> FlowModel
+pub fn generative_make_flow_model(Int32, Int32, Int32) -> FlowModel
 
-pub fn make_gan_model(Int32, Int32, Int32, Double, Int32) -> GANModel
+pub fn generative_make_gan_model(Int32, Int32, Int32, Double, Int32) -> GANModel
 
-pub fn make_generator_net(Int32, Int32, Int32, Int32) -> GeneratorNet
+pub fn generative_make_generator_net(Int32, Int32, Int32, Int32) -> GeneratorNet
 
-pub fn make_hmm_gen(Int32, Int32, Array[Array[Double]], Array[Array[Double]], Array[Double], Int32) -> HMMGenModel
+pub fn generative_make_hmm_gen(Int32, Int32, Array[Array[Double]], Array[Array[Double]], Array[Double], Int32) -> HMMGenModel
 
-pub fn make_markov_model(Int32, Array[Array[Double]], Array[Double], Int32) -> MarkovModel
+pub fn generative_make_markov_model(Int32, Array[Array[Double]], Array[Double], Int32) -> MarkovModel
 
-pub fn make_text_gan(Int32, Int32, Int32, Int32) -> TextGANModel
+pub fn generative_make_text_gan(Int32, Int32, Int32, Int32) -> TextGANModel
 
-pub fn make_vae_model(Int32, Int32, Int32, Double, Int32) -> VAEModel
+pub fn generative_make_vae_model(Int32, Int32, Int32, Double, Int32) -> VAEModel
 
-pub fn markov_prob(MarkovModel, Int32, Int32) -> Double
+pub fn generative_markov_prob(MarkovModel, Int32, Int32) -> Double
 
-pub fn markov_sample(MarkovModel, Int32, Int32) -> Array[Int32]
+pub fn generative_markov_sample(MarkovModel, Int32, Int32) -> Array[Int32]
 
-pub fn mode_collapse_check(Array[Array[Double]], Double) -> Bool
+pub fn generative_mode_collapse_check(Array[Array[Double]], Double) -> Bool
 
-pub fn noise_bernoulli(Int32, Double, Int32) -> Array[Double]
+pub fn generative_noise_bernoulli(Int32, Double, Int32) -> Array[Double]
 
-pub fn noise_normal(Int32, Double, Double, Int32) -> Array[Double]
+pub fn generative_noise_normal(Int32, Double, Double, Int32) -> Array[Double]
 
-pub fn noise_uniform(Int32, Double, Double, Int32) -> Array[Double]
+pub fn generative_noise_uniform(Int32, Double, Double, Int32) -> Array[Double]
 
-pub fn sample_categorical(Array[Double], Int32) -> Int32
+pub fn generative_sample_categorical(Array[Double], Int32) -> Int32
 
-pub fn sample_dirichlet(Array[Double], Int32) -> Array[Double]
+pub fn generative_sample_dirichlet(Array[Double], Int32) -> Array[Double]
 
-pub fn sample_multinomial(Array[Double], Int32, Int32) -> Array[Int32]
+pub fn generative_sample_multinomial(Array[Double], Int32, Int32) -> Array[Int32]
 
-pub fn text_gan_discriminate(TextGANModel, Array[Int32]) -> Double
+pub fn generative_text_gan_discriminate(TextGANModel, Array[Int32]) -> Double
 
-pub fn text_gan_generate(TextGANModel, Array[Double]) -> Array[Int32]
+pub fn generative_text_gan_generate(TextGANModel, Array[Double]) -> Array[Int32]
 
-pub fn vae_decode(VAEModel, Array[Double]) -> Array[Double]
+pub fn generative_vae_decode(VAEModel, Array[Double]) -> Array[Double]
 
-pub fn vae_encode(VAEModel, Array[Double]) -> (Array[Double], Array[Double])
+pub fn generative_vae_encode(VAEModel, Array[Double]) -> (Array[Double], Array[Double])
 
-pub fn vae_loss(Array[Double], Array[Double], Array[Double], Array[Double]) -> Double
+pub fn generative_vae_loss(Array[Double], Array[Double], Array[Double], Array[Double]) -> Double
 
-pub fn vae_sample(VAEModel, Array[Double], Array[Double], Int32) -> Array[Double]
+pub fn generative_vae_sample(VAEModel, Array[Double], Array[Double], Int32) -> Array[Double]
+
+pub fn lpd_lpd_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn lpd_lpd_corr(Array[Double], Array[Double]) -> Double
+
+pub fn lpd_lpd_cov(Array[Double], Array[Double]) -> Double
+
+pub fn lpd_lpd_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn lpd_lpd_mae(Array[Double], Array[Double]) -> Double
+
+pub fn lpd_lpd_make_labeled_point(Double, Double, Int32) -> LpdPoint
+
+pub fn lpd_lpd_make_matrix(Int32, Int32, Double) -> LpdMatrix
+
+pub fn lpd_lpd_make_point(Double, Double) -> LpdPoint
+
+pub fn lpd_lpd_make_series(Array[Double], String) -> LpdSeries
+
+pub fn lpd_lpd_make_vector(Array[Double]) -> LpdVector
+
+pub fn lpd_lpd_matrix_add(LpdMatrix, LpdMatrix) -> LpdMatrix
+
+pub fn lpd_lpd_matrix_get(LpdMatrix, Int32, Int32) -> Double
+
+pub fn lpd_lpd_matrix_identity(Int32) -> LpdMatrix
+
+pub fn lpd_lpd_matrix_multiply(LpdMatrix, LpdMatrix) -> LpdMatrix
+
+pub fn lpd_lpd_matrix_norm(LpdMatrix) -> Double
+
+pub fn lpd_lpd_matrix_scale(LpdMatrix, Double) -> LpdMatrix
+
+pub fn lpd_lpd_matrix_to_string(LpdMatrix) -> String
+
+pub fn lpd_lpd_matrix_trace(LpdMatrix) -> Double
+
+pub fn lpd_lpd_matrix_transpose(LpdMatrix) -> LpdMatrix
+
+pub fn lpd_lpd_mse(Array[Double], Array[Double]) -> Double
+
+pub fn lpd_lpd_point_add(LpdPoint, LpdPoint) -> LpdPoint
+
+pub fn lpd_lpd_point_dist(LpdPoint, LpdPoint) -> Double
+
+pub fn lpd_lpd_point_dot(LpdPoint, LpdPoint) -> Double
+
+pub fn lpd_lpd_point_label(LpdPoint) -> Int32
+
+pub fn lpd_lpd_point_norm(LpdPoint) -> Double
+
+pub fn lpd_lpd_point_scale(LpdPoint, Double) -> LpdPoint
+
+pub fn lpd_lpd_point_sub(LpdPoint, LpdPoint) -> LpdPoint
+
+pub fn lpd_lpd_point_to_string(LpdPoint) -> String
+
+pub fn lpd_lpd_point_x(LpdPoint) -> Double
+
+pub fn lpd_lpd_point_y(LpdPoint) -> Double
+
+pub fn lpd_lpd_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn lpd_lpd_r2(Array[Double], Array[Double]) -> Double
+
+pub fn lpd_lpd_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn lpd_lpd_series_add(LpdSeries, LpdSeries) -> LpdSeries
+
+pub fn lpd_lpd_series_len(LpdSeries) -> Int32
+
+pub fn lpd_lpd_series_max(LpdSeries) -> Double
+
+pub fn lpd_lpd_series_mean(LpdSeries) -> Double
+
+pub fn lpd_lpd_series_min(LpdSeries) -> Double
+
+pub fn lpd_lpd_series_scale(LpdSeries, Double) -> LpdSeries
+
+pub fn lpd_lpd_series_std(LpdSeries) -> Double
+
+pub fn lpd_lpd_series_sum(LpdSeries) -> Double
+
+pub fn lpd_lpd_series_to_string(LpdSeries) -> String
+
+pub fn lpd_lpd_series_var(LpdSeries) -> Double
+
+pub fn lpd_lpd_std(Array[Double]) -> Double
+
+pub fn lpd_lpd_var(Array[Double]) -> Double
+
+pub fn lpd_lpd_vector_add(LpdVector, LpdVector) -> LpdVector
+
+pub fn lpd_lpd_vector_dist(LpdVector, LpdVector) -> Double
+
+pub fn lpd_lpd_vector_dot(LpdVector, LpdVector) -> Double
+
+pub fn lpd_lpd_vector_norm(LpdVector) -> Double
+
+pub fn lpd_lpd_vector_normalize(LpdVector) -> LpdVector
+
+pub fn lpd_lpd_vector_scale(LpdVector, Double) -> LpdVector
+
+pub fn lpd_lpd_vector_sub(LpdVector, LpdVector) -> LpdVector
+
+pub fn lpd_lpd_vector_to_string(LpdVector) -> String
+
+pub fn lpd_lpd_vector_zero(Int32) -> LpdVector
+
+pub fn mkd_mkd_accuracy(Array[Int32], Array[Int32]) -> Double
+
+pub fn mkd_mkd_corr(Array[Double], Array[Double]) -> Double
+
+pub fn mkd_mkd_cov(Array[Double], Array[Double]) -> Double
+
+pub fn mkd_mkd_f1(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn mkd_mkd_mae(Array[Double], Array[Double]) -> Double
+
+pub fn mkd_mkd_make_labeled_point(Double, Double, Int32) -> MkdPoint
+
+pub fn mkd_mkd_make_matrix(Int32, Int32, Double) -> MkdMatrix
+
+pub fn mkd_mkd_make_point(Double, Double) -> MkdPoint
+
+pub fn mkd_mkd_make_series(Array[Double], String) -> MkdSeries
+
+pub fn mkd_mkd_make_vector(Array[Double]) -> MkdVector
+
+pub fn mkd_mkd_matrix_add(MkdMatrix, MkdMatrix) -> MkdMatrix
+
+pub fn mkd_mkd_matrix_get(MkdMatrix, Int32, Int32) -> Double
+
+pub fn mkd_mkd_matrix_identity(Int32) -> MkdMatrix
+
+pub fn mkd_mkd_matrix_multiply(MkdMatrix, MkdMatrix) -> MkdMatrix
+
+pub fn mkd_mkd_matrix_norm(MkdMatrix) -> Double
+
+pub fn mkd_mkd_matrix_scale(MkdMatrix, Double) -> MkdMatrix
+
+pub fn mkd_mkd_matrix_to_string(MkdMatrix) -> String
+
+pub fn mkd_mkd_matrix_trace(MkdMatrix) -> Double
+
+pub fn mkd_mkd_matrix_transpose(MkdMatrix) -> MkdMatrix
+
+pub fn mkd_mkd_mse(Array[Double], Array[Double]) -> Double
+
+pub fn mkd_mkd_point_add(MkdPoint, MkdPoint) -> MkdPoint
+
+pub fn mkd_mkd_point_dist(MkdPoint, MkdPoint) -> Double
+
+pub fn mkd_mkd_point_dot(MkdPoint, MkdPoint) -> Double
+
+pub fn mkd_mkd_point_label(MkdPoint) -> Int32
+
+pub fn mkd_mkd_point_norm(MkdPoint) -> Double
+
+pub fn mkd_mkd_point_scale(MkdPoint, Double) -> MkdPoint
+
+pub fn mkd_mkd_point_sub(MkdPoint, MkdPoint) -> MkdPoint
+
+pub fn mkd_mkd_point_to_string(MkdPoint) -> String
+
+pub fn mkd_mkd_point_x(MkdPoint) -> Double
+
+pub fn mkd_mkd_point_y(MkdPoint) -> Double
+
+pub fn mkd_mkd_precision(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn mkd_mkd_r2(Array[Double], Array[Double]) -> Double
+
+pub fn mkd_mkd_recall(Array[Int32], Array[Int32], Int32) -> Double
+
+pub fn mkd_mkd_series_add(MkdSeries, MkdSeries) -> MkdSeries
+
+pub fn mkd_mkd_series_len(MkdSeries) -> Int32
+
+pub fn mkd_mkd_series_max(MkdSeries) -> Double
+
+pub fn mkd_mkd_series_mean(MkdSeries) -> Double
+
+pub fn mkd_mkd_series_min(MkdSeries) -> Double
+
+pub fn mkd_mkd_series_scale(MkdSeries, Double) -> MkdSeries
+
+pub fn mkd_mkd_series_std(MkdSeries) -> Double
+
+pub fn mkd_mkd_series_sum(MkdSeries) -> Double
+
+pub fn mkd_mkd_series_to_string(MkdSeries) -> String
+
+pub fn mkd_mkd_series_var(MkdSeries) -> Double
+
+pub fn mkd_mkd_std(Array[Double]) -> Double
+
+pub fn mkd_mkd_var(Array[Double]) -> Double
+
+pub fn mkd_mkd_vector_add(MkdVector, MkdVector) -> MkdVector
+
+pub fn mkd_mkd_vector_dist(MkdVector, MkdVector) -> Double
+
+pub fn mkd_mkd_vector_dot(MkdVector, MkdVector) -> Double
+
+pub fn mkd_mkd_vector_norm(MkdVector) -> Double
+
+pub fn mkd_mkd_vector_normalize(MkdVector) -> MkdVector
+
+pub fn mkd_mkd_vector_scale(MkdVector, Double) -> MkdVector
+
+pub fn mkd_mkd_vector_sub(MkdVector, MkdVector) -> MkdVector
+
+pub fn mkd_mkd_vector_to_string(MkdVector) -> String
+
+pub fn mkd_mkd_vector_zero(Int32) -> MkdVector
 
 // Errors
 
@@ -187,6 +403,28 @@ pub fn HMMGenModel::equal(Self, Self) -> Bool
 pub fn HMMGenModel::not_equal(Self, Self) -> Bool
 pub fn HMMGenModel::to_repr(Self) -> @debug.Repr
 
+pub struct LpdMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct LpdPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct LpdSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct LpdVector {
+  comps : Array[Double]
+  dim : Int32
+}
+
 pub struct MarkovModel {
   num_states : Int32
   transition : Array[Array[Double]]
@@ -196,6 +434,28 @@ pub struct MarkovModel {
 pub fn MarkovModel::equal(Self, Self) -> Bool
 pub fn MarkovModel::not_equal(Self, Self) -> Bool
 pub fn MarkovModel::to_repr(Self) -> @debug.Repr
+
+pub struct MkdMatrix {
+  data : Array[Array[Double]]
+  rows : Int32
+  cols : Int32
+}
+
+pub struct MkdPoint {
+  x : Double
+  y : Double
+  label : Int32
+}
+
+pub struct MkdSeries {
+  vals : Array[Double]
+  name : String
+}
+
+pub struct MkdVector {
+  comps : Array[Double]
+  dim : Int32
+}
 
 pub struct TextGANModel {
   vocab_size : Int32

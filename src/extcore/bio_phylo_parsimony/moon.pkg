@@ -1,4 +1,0 @@
-// extcore/bio_phylo_parsimony
-import {
-  "dataverse/extcore/_common",
-}

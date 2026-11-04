@@ -1,5 +1,0 @@
-// learncore/cnn_rt learncore/cnn_rt
-// S13.110 new
-import {
-  "dataverse/extcore/_common",
-}

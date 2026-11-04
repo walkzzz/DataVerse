@@ -1,4 +1,0 @@
-// extcore/chem_desc_maccs
-import {
-  "dataverse/extcore/_common",
-}

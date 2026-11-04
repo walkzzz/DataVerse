@@ -1,0 +1,4 @@
+// extcore/graph/color — graph/color 算法聚合包
+import {
+  "dataverse/extcore/_common",
+}

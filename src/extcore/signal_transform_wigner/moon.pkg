@@ -1,4 +1,0 @@
-// extcore/signal_transform_wigner
-import {
-  "dataverse/extcore/_common",
-}

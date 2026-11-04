@@ -1,5 +1,0 @@
-// opcore/voice_activity opcore/voice_activity
-// S13.37 new
-import {
-  "dataverse/extcore/_common",
-}

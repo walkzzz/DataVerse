@@ -1,5 +1,0 @@
-// opcore/integral opcore/integral
-// S13.4 new
-import {
-  "dataverse/extcore/_common",
-}

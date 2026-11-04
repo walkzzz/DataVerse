@@ -1,4 +1,0 @@
-// extcore/chem_rxn_catalyst
-import {
-  "dataverse/extcore/_common",
-}

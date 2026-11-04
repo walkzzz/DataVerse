@@ -46,6 +46,9 @@ pub(all) enum DataType {
   BoolType
   NullType
 } derive(Eq, @debug.Debug)
+pub fn DataType::equal(Self, Self) -> Bool
+pub fn DataType::not_equal(Self, Self) -> Bool
+pub fn DataType::to_repr(Self) -> @debug.Repr
 
 pub struct Row {
   values : Array[String]

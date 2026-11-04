@@ -1,4 +1,0 @@
-// extcore/physics_em_magnetostatic
-import {
-  "dataverse/extcore/_common",
-}

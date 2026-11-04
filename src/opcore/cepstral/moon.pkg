@@ -1,5 +1,0 @@
-// opcore/cepstral opcore/cepstral
-// S13.34 new
-import {
-  "dataverse/extcore/_common",
-}

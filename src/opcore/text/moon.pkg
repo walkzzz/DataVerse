@@ -1,0 +1,9 @@
+// opcore/text — 聚合包
+import {
+  "dataverse/dataobject",
+  "dataverse/dataobject/chunk",
+  "dataverse/dataobject/schema",
+  "dataverse/extcore/_common",
+  "dataverse/opcore",
+  "dataverse/opcore/spatial",
+}

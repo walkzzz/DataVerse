@@ -5,4 +5,5 @@
 import {
   "dataverse/dataobject",
   "dataverse/kernel",
+  "dataverse/core/traits",
 }

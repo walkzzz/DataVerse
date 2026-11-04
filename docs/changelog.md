@@ -4,6 +4,21 @@
 
 ## [1.0.0-beta] - 2026-11-04
 
+### P0 PSVM 类型去重 — 多文件包迁移
+
+**多文件包批量迁移 / Multi-file Package Migration**
+- 迁移 65 个多文件包的 PSVM 类型到通用类型包（排除有 traits_impl 的包）
+- 每个文件独立提取函数前缀，正确处理双前缀（如 `art_model_art_model_`）
+- 删除迁移后未使用的辅助函数（128 个）
+- 更新 `tests_s13.mbt` 中 `agents` 包引用为 `@types.dv_*`
+- **净减少 34,064 行代码**（34837 删除 - 773 插入）
+
+**统计 / Stats**
+- moon check: 0 errors, 16 warnings
+- moon test: 4,132 passed, 0 failed
+
+## [1.0.0-beta] - 2026-11-04
+
 ### P0 PSVM 类型去重 — 单文件包迁移
 
 **通用类型包 / Common Types Package**

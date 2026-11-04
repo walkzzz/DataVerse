@@ -1,5 +1,6 @@
 // agent_kit/agents Agent 架构 / Agent architectures
 // 合并包：bdi/holonic/hybrid/learning/mobile/multi/norm/org_agent
 import {
+  "dataverse/extcore/types",
   "dataverse/extcore/_common",
 }

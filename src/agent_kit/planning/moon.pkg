@@ -1,5 +1,6 @@
 // agent_kit/planning 规划 / Planning
 // 合并包：planning + planning_causal + planning_htn
 import {
+  "dataverse/extcore/types",
   "dataverse/extcore/_common",
 }

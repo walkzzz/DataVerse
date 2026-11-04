@@ -102,8 +102,8 @@ test "belief_state_basic" {
 
 ///|
 test "bdi_agent_basic" {
-  let sr = @agents.bdi_agent_make_series([0.0, 1.0, 0.0, 1.0], "beliefs")
-  assert_true(@agents.bdi_agent_series_sum(sr) == 2.0)
+  let sr = @types.dv_make_series([0.0, 1.0, 0.0, 1.0], "beliefs")
+  assert_true(@types.dv_series_sum(sr) == 2.0)
 }
 
 ///|

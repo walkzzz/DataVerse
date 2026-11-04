@@ -1,5 +1,6 @@
 // opcore/text — 聚合包
 import {
+  "dataverse/extcore/types",
   "dataverse/dataobject",
   "dataverse/dataobject/chunk",
   "dataverse/dataobject/schema",

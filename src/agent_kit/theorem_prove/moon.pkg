@@ -1,5 +1,6 @@
 // agent_kit/theorem_prove agent_kit/theorem_prove
 // S13.160 new
 import {
+  "dataverse/extcore/types",
   "dataverse/extcore/_common",
 }

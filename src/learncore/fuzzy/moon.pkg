@@ -1,4 +1,5 @@
 // learncore/fuzzy — 聚合包
 import {
+  "dataverse/extcore/types",
   "dataverse/extcore/_common",
 }

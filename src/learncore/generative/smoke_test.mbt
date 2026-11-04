@@ -38,5 +38,5 @@ test "generative_make_vae_model_smoke" {
 }
 ///|
 test "lpd_lpd_make_labeled_point_smoke" {
-  let _ = @generative.lpd_lpd_make_labeled_point(1.0, 1.0, 1)
+  let _ = @types.dv_make_labeled_point(1.0, 1.0, 1)
 }

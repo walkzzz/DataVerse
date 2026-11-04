@@ -1,6 +1,7 @@
 // datatemporal/window 窗口计算 / Window computations
 // 合并包：window + window_count + window_global + window_session + window_slide + window_time + window_tumble
 import {
+  "dataverse/extcore/types",
   "dataverse/extcore/_common",
 
 }

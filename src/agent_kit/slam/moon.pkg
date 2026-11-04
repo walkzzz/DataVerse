@@ -1,5 +1,6 @@
 // agent_kit/slam SLAM / Simultaneous Localization and Mapping
 // 合并包：slam_basic + slam_graph + slam_particle
 import {
+  "dataverse/extcore/types",
   "dataverse/extcore/_common",
 }

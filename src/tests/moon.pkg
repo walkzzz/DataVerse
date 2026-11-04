@@ -55,7 +55,7 @@ import {
   "dataverse/opcore/math",
   "dataverse/agent_kit/dialogue",
   "dataverse/dataobject/metadata_ext",
-  "dataverse/agent_kit/agents",
+
   "dataverse/extcore/math/linear",
   "dataverse/extcore/ml/clustering",
   "dataverse/extcore/graph/search",

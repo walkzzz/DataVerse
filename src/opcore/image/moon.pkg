@@ -1,6 +1,6 @@
 // opcore/image — 聚合包
 import {
-  "dataverse/core/traits",
+  "dataverse/extcore/types",
   "dataverse/dataobject",
   "dataverse/dataobject/schema",
   "dataverse/extcore/_common",

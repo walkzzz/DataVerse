@@ -241,9 +241,9 @@ test "proof: layernorm zero_mean" {
 test "proof: adaboost_point construct_observe" {
   let cases = [(1.0, 2.0), (-3.5, 7.2), (0.0, 0.0), (100.0, -200.0)]
   for (x, y) in cases {
-    let p = @ensemble.adaboost_adaboost_make_point(x, y)
-    proof_assert @ensemble.adaboost_adaboost_point_x(p) == x
-    proof_assert @ensemble.adaboost_adaboost_point_y(p) == y
+    let p = @types.dv_make_point(x, y)
+    proof_assert @types.dv_point_x(p) == x
+    proof_assert @types.dv_point_y(p) == y
   }
 }
 
@@ -251,18 +251,18 @@ test "proof: adaboost_point construct_observe" {
 /// 定理 5.2：adaboost Point 距离自反性
 /// ∀ a: dist(a, a) == 0
 test "proof: adaboost_point dist_reflexive" {
-  let a = @ensemble.adaboost_adaboost_make_point(3.5, 7.2)
-  proof_assert @ensemble.adaboost_adaboost_point_dist(a, a) == 0.0
+  let a = @types.dv_make_point(3.5, 7.2)
+  proof_assert @types.dv_point_dist(a, a) == 0.0
 }
 
 ///|
 /// 定理 5.3：adaboost Point 距离对称性
 /// ∀ a, b: dist(a, b) == dist(b, a)
 test "proof: adaboost_point dist_symmetric" {
-  let a = @ensemble.adaboost_adaboost_make_point(1.0, 2.0)
-  let b = @ensemble.adaboost_adaboost_make_point(3.0, 5.0)
-  let d_ab = @ensemble.adaboost_adaboost_point_dist(a, b)
-  let d_ba = @ensemble.adaboost_adaboost_point_dist(b, a)
+  let a = @types.dv_make_point(1.0, 2.0)
+  let b = @types.dv_make_point(3.0, 5.0)
+  let d_ab = @types.dv_point_dist(a, b)
+  let d_ba = @types.dv_point_dist(b, a)
   proof_assert (d_ab - d_ba).abs() < 0.0001
 }
 
@@ -277,9 +277,9 @@ test "proof: adaboost_point dist_symmetric" {
 test "proof: genetic_alg_point construct_observe" {
   let cases = [(1.0, 2.0), (-3.5, 7.2), (0.0, 0.0)]
   for (x, y) in cases {
-    let p = @evolution.genetic_alg_genetic_alg_make_point(x, y)
-    proof_assert @evolution.genetic_alg_genetic_alg_point_x(p) == x
-    proof_assert @evolution.genetic_alg_genetic_alg_point_y(p) == y
+    let p = @types.dv_make_point(x, y)
+    proof_assert @types.dv_point_x(p) == x
+    proof_assert @types.dv_point_y(p) == y
   }
 }
 

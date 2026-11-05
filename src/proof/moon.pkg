@@ -2,10 +2,9 @@
 // R16 阶段门禁第 5 手段：MoonBit 原生 proof_assert 形式化证明
 // 覆盖：度量空间公理 / 幂等性 / 不变量 / 守恒性 / 长度保持
 import {
+  "dataverse/extcore/types",
   "dataverse/opcore/spatial",
   "dataverse/opcore/image",
   "dataverse/learncore/ml",
   "dataverse/learncore/dl",
-  "dataverse/learncore/ensemble",
-  "dataverse/learncore/evolution",
 }

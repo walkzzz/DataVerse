@@ -2,7 +2,6 @@
 package "dataverse/learncore/ensemble"
 
 import {
-  "dataverse/core/traits",
   "moonbitlang/core/debug",
 }
 
@@ -17,55 +16,7 @@ pub fn adaboost_adaboost_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn adaboost_adaboost_mae(Array[Double], Array[Double]) -> Double
 
-pub fn adaboost_adaboost_make_labeled_point(Double, Double, Int32) -> AdaboostPoint
-
-pub fn adaboost_adaboost_make_matrix(Int32, Int32, Double) -> AdaboostMatrix
-
-pub fn adaboost_adaboost_make_point(Double, Double) -> AdaboostPoint
-
-pub fn adaboost_adaboost_make_series(Array[Double], String) -> AdaboostSeries
-
-pub fn adaboost_adaboost_make_vector(Array[Double]) -> AdaboostVector
-
-pub fn adaboost_adaboost_matrix_add(AdaboostMatrix, AdaboostMatrix) -> AdaboostMatrix
-
-pub fn adaboost_adaboost_matrix_get(AdaboostMatrix, Int32, Int32) -> Double
-
-pub fn adaboost_adaboost_matrix_identity(Int32) -> AdaboostMatrix
-
-pub fn adaboost_adaboost_matrix_multiply(AdaboostMatrix, AdaboostMatrix) -> AdaboostMatrix
-
-pub fn adaboost_adaboost_matrix_norm(AdaboostMatrix) -> Double
-
-pub fn adaboost_adaboost_matrix_scale(AdaboostMatrix, Double) -> AdaboostMatrix
-
-pub fn adaboost_adaboost_matrix_to_string(AdaboostMatrix) -> String
-
-pub fn adaboost_adaboost_matrix_trace(AdaboostMatrix) -> Double
-
-pub fn adaboost_adaboost_matrix_transpose(AdaboostMatrix) -> AdaboostMatrix
-
 pub fn adaboost_adaboost_mse(Array[Double], Array[Double]) -> Double
-
-pub fn adaboost_adaboost_point_add(AdaboostPoint, AdaboostPoint) -> AdaboostPoint
-
-pub fn adaboost_adaboost_point_dist(AdaboostPoint, AdaboostPoint) -> Double
-
-pub fn adaboost_adaboost_point_dot(AdaboostPoint, AdaboostPoint) -> Double
-
-pub fn adaboost_adaboost_point_label(AdaboostPoint) -> Int32
-
-pub fn adaboost_adaboost_point_norm(AdaboostPoint) -> Double
-
-pub fn adaboost_adaboost_point_scale(AdaboostPoint, Double) -> AdaboostPoint
-
-pub fn adaboost_adaboost_point_sub(AdaboostPoint, AdaboostPoint) -> AdaboostPoint
-
-pub fn adaboost_adaboost_point_to_string(AdaboostPoint) -> String
-
-pub fn adaboost_adaboost_point_x(AdaboostPoint) -> Double
-
-pub fn adaboost_adaboost_point_y(AdaboostPoint) -> Double
 
 pub fn adaboost_adaboost_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -73,47 +24,9 @@ pub fn adaboost_adaboost_r2(Array[Double], Array[Double]) -> Double
 
 pub fn adaboost_adaboost_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn adaboost_adaboost_series_add(AdaboostSeries, AdaboostSeries) -> AdaboostSeries
-
-pub fn adaboost_adaboost_series_len(AdaboostSeries) -> Int32
-
-pub fn adaboost_adaboost_series_max(AdaboostSeries) -> Double
-
-pub fn adaboost_adaboost_series_mean(AdaboostSeries) -> Double
-
-pub fn adaboost_adaboost_series_min(AdaboostSeries) -> Double
-
-pub fn adaboost_adaboost_series_scale(AdaboostSeries, Double) -> AdaboostSeries
-
-pub fn adaboost_adaboost_series_std(AdaboostSeries) -> Double
-
-pub fn adaboost_adaboost_series_sum(AdaboostSeries) -> Double
-
-pub fn adaboost_adaboost_series_to_string(AdaboostSeries) -> String
-
-pub fn adaboost_adaboost_series_var(AdaboostSeries) -> Double
-
 pub fn adaboost_adaboost_std(Array[Double]) -> Double
 
 pub fn adaboost_adaboost_var(Array[Double]) -> Double
-
-pub fn adaboost_adaboost_vector_add(AdaboostVector, AdaboostVector) -> AdaboostVector
-
-pub fn adaboost_adaboost_vector_dist(AdaboostVector, AdaboostVector) -> Double
-
-pub fn adaboost_adaboost_vector_dot(AdaboostVector, AdaboostVector) -> Double
-
-pub fn adaboost_adaboost_vector_norm(AdaboostVector) -> Double
-
-pub fn adaboost_adaboost_vector_normalize(AdaboostVector) -> AdaboostVector
-
-pub fn adaboost_adaboost_vector_scale(AdaboostVector, Double) -> AdaboostVector
-
-pub fn adaboost_adaboost_vector_sub(AdaboostVector, AdaboostVector) -> AdaboostVector
-
-pub fn adaboost_adaboost_vector_to_string(AdaboostVector) -> String
-
-pub fn adaboost_adaboost_vector_zero(Int32) -> AdaboostVector
 
 pub fn bagging_rt_bagging_rt_accuracy(Array[Int32], Array[Int32]) -> Double
 
@@ -125,55 +38,7 @@ pub fn bagging_rt_bagging_rt_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn bagging_rt_bagging_rt_mae(Array[Double], Array[Double]) -> Double
 
-pub fn bagging_rt_bagging_rt_make_labeled_point(Double, Double, Int32) -> Bagging_rtPoint
-
-pub fn bagging_rt_bagging_rt_make_matrix(Int32, Int32, Double) -> Bagging_rtMatrix
-
-pub fn bagging_rt_bagging_rt_make_point(Double, Double) -> Bagging_rtPoint
-
-pub fn bagging_rt_bagging_rt_make_series(Array[Double], String) -> Bagging_rtSeries
-
-pub fn bagging_rt_bagging_rt_make_vector(Array[Double]) -> Bagging_rtVector
-
-pub fn bagging_rt_bagging_rt_matrix_add(Bagging_rtMatrix, Bagging_rtMatrix) -> Bagging_rtMatrix
-
-pub fn bagging_rt_bagging_rt_matrix_get(Bagging_rtMatrix, Int32, Int32) -> Double
-
-pub fn bagging_rt_bagging_rt_matrix_identity(Int32) -> Bagging_rtMatrix
-
-pub fn bagging_rt_bagging_rt_matrix_multiply(Bagging_rtMatrix, Bagging_rtMatrix) -> Bagging_rtMatrix
-
-pub fn bagging_rt_bagging_rt_matrix_norm(Bagging_rtMatrix) -> Double
-
-pub fn bagging_rt_bagging_rt_matrix_scale(Bagging_rtMatrix, Double) -> Bagging_rtMatrix
-
-pub fn bagging_rt_bagging_rt_matrix_to_string(Bagging_rtMatrix) -> String
-
-pub fn bagging_rt_bagging_rt_matrix_trace(Bagging_rtMatrix) -> Double
-
-pub fn bagging_rt_bagging_rt_matrix_transpose(Bagging_rtMatrix) -> Bagging_rtMatrix
-
 pub fn bagging_rt_bagging_rt_mse(Array[Double], Array[Double]) -> Double
-
-pub fn bagging_rt_bagging_rt_point_add(Bagging_rtPoint, Bagging_rtPoint) -> Bagging_rtPoint
-
-pub fn bagging_rt_bagging_rt_point_dist(Bagging_rtPoint, Bagging_rtPoint) -> Double
-
-pub fn bagging_rt_bagging_rt_point_dot(Bagging_rtPoint, Bagging_rtPoint) -> Double
-
-pub fn bagging_rt_bagging_rt_point_label(Bagging_rtPoint) -> Int32
-
-pub fn bagging_rt_bagging_rt_point_norm(Bagging_rtPoint) -> Double
-
-pub fn bagging_rt_bagging_rt_point_scale(Bagging_rtPoint, Double) -> Bagging_rtPoint
-
-pub fn bagging_rt_bagging_rt_point_sub(Bagging_rtPoint, Bagging_rtPoint) -> Bagging_rtPoint
-
-pub fn bagging_rt_bagging_rt_point_to_string(Bagging_rtPoint) -> String
-
-pub fn bagging_rt_bagging_rt_point_x(Bagging_rtPoint) -> Double
-
-pub fn bagging_rt_bagging_rt_point_y(Bagging_rtPoint) -> Double
 
 pub fn bagging_rt_bagging_rt_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -181,47 +46,9 @@ pub fn bagging_rt_bagging_rt_r2(Array[Double], Array[Double]) -> Double
 
 pub fn bagging_rt_bagging_rt_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn bagging_rt_bagging_rt_series_add(Bagging_rtSeries, Bagging_rtSeries) -> Bagging_rtSeries
-
-pub fn bagging_rt_bagging_rt_series_len(Bagging_rtSeries) -> Int32
-
-pub fn bagging_rt_bagging_rt_series_max(Bagging_rtSeries) -> Double
-
-pub fn bagging_rt_bagging_rt_series_mean(Bagging_rtSeries) -> Double
-
-pub fn bagging_rt_bagging_rt_series_min(Bagging_rtSeries) -> Double
-
-pub fn bagging_rt_bagging_rt_series_scale(Bagging_rtSeries, Double) -> Bagging_rtSeries
-
-pub fn bagging_rt_bagging_rt_series_std(Bagging_rtSeries) -> Double
-
-pub fn bagging_rt_bagging_rt_series_sum(Bagging_rtSeries) -> Double
-
-pub fn bagging_rt_bagging_rt_series_to_string(Bagging_rtSeries) -> String
-
-pub fn bagging_rt_bagging_rt_series_var(Bagging_rtSeries) -> Double
-
 pub fn bagging_rt_bagging_rt_std(Array[Double]) -> Double
 
 pub fn bagging_rt_bagging_rt_var(Array[Double]) -> Double
-
-pub fn bagging_rt_bagging_rt_vector_add(Bagging_rtVector, Bagging_rtVector) -> Bagging_rtVector
-
-pub fn bagging_rt_bagging_rt_vector_dist(Bagging_rtVector, Bagging_rtVector) -> Double
-
-pub fn bagging_rt_bagging_rt_vector_dot(Bagging_rtVector, Bagging_rtVector) -> Double
-
-pub fn bagging_rt_bagging_rt_vector_norm(Bagging_rtVector) -> Double
-
-pub fn bagging_rt_bagging_rt_vector_normalize(Bagging_rtVector) -> Bagging_rtVector
-
-pub fn bagging_rt_bagging_rt_vector_scale(Bagging_rtVector, Double) -> Bagging_rtVector
-
-pub fn bagging_rt_bagging_rt_vector_sub(Bagging_rtVector, Bagging_rtVector) -> Bagging_rtVector
-
-pub fn bagging_rt_bagging_rt_vector_to_string(Bagging_rtVector) -> String
-
-pub fn bagging_rt_bagging_rt_vector_zero(Int32) -> Bagging_rtVector
 
 pub fn boosting_rt_boosting_rt_accuracy(Array[Int32], Array[Int32]) -> Double
 
@@ -233,55 +60,7 @@ pub fn boosting_rt_boosting_rt_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn boosting_rt_boosting_rt_mae(Array[Double], Array[Double]) -> Double
 
-pub fn boosting_rt_boosting_rt_make_labeled_point(Double, Double, Int32) -> Boosting_rtPoint
-
-pub fn boosting_rt_boosting_rt_make_matrix(Int32, Int32, Double) -> Boosting_rtMatrix
-
-pub fn boosting_rt_boosting_rt_make_point(Double, Double) -> Boosting_rtPoint
-
-pub fn boosting_rt_boosting_rt_make_series(Array[Double], String) -> Boosting_rtSeries
-
-pub fn boosting_rt_boosting_rt_make_vector(Array[Double]) -> Boosting_rtVector
-
-pub fn boosting_rt_boosting_rt_matrix_add(Boosting_rtMatrix, Boosting_rtMatrix) -> Boosting_rtMatrix
-
-pub fn boosting_rt_boosting_rt_matrix_get(Boosting_rtMatrix, Int32, Int32) -> Double
-
-pub fn boosting_rt_boosting_rt_matrix_identity(Int32) -> Boosting_rtMatrix
-
-pub fn boosting_rt_boosting_rt_matrix_multiply(Boosting_rtMatrix, Boosting_rtMatrix) -> Boosting_rtMatrix
-
-pub fn boosting_rt_boosting_rt_matrix_norm(Boosting_rtMatrix) -> Double
-
-pub fn boosting_rt_boosting_rt_matrix_scale(Boosting_rtMatrix, Double) -> Boosting_rtMatrix
-
-pub fn boosting_rt_boosting_rt_matrix_to_string(Boosting_rtMatrix) -> String
-
-pub fn boosting_rt_boosting_rt_matrix_trace(Boosting_rtMatrix) -> Double
-
-pub fn boosting_rt_boosting_rt_matrix_transpose(Boosting_rtMatrix) -> Boosting_rtMatrix
-
 pub fn boosting_rt_boosting_rt_mse(Array[Double], Array[Double]) -> Double
-
-pub fn boosting_rt_boosting_rt_point_add(Boosting_rtPoint, Boosting_rtPoint) -> Boosting_rtPoint
-
-pub fn boosting_rt_boosting_rt_point_dist(Boosting_rtPoint, Boosting_rtPoint) -> Double
-
-pub fn boosting_rt_boosting_rt_point_dot(Boosting_rtPoint, Boosting_rtPoint) -> Double
-
-pub fn boosting_rt_boosting_rt_point_label(Boosting_rtPoint) -> Int32
-
-pub fn boosting_rt_boosting_rt_point_norm(Boosting_rtPoint) -> Double
-
-pub fn boosting_rt_boosting_rt_point_scale(Boosting_rtPoint, Double) -> Boosting_rtPoint
-
-pub fn boosting_rt_boosting_rt_point_sub(Boosting_rtPoint, Boosting_rtPoint) -> Boosting_rtPoint
-
-pub fn boosting_rt_boosting_rt_point_to_string(Boosting_rtPoint) -> String
-
-pub fn boosting_rt_boosting_rt_point_x(Boosting_rtPoint) -> Double
-
-pub fn boosting_rt_boosting_rt_point_y(Boosting_rtPoint) -> Double
 
 pub fn boosting_rt_boosting_rt_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -289,47 +68,9 @@ pub fn boosting_rt_boosting_rt_r2(Array[Double], Array[Double]) -> Double
 
 pub fn boosting_rt_boosting_rt_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn boosting_rt_boosting_rt_series_add(Boosting_rtSeries, Boosting_rtSeries) -> Boosting_rtSeries
-
-pub fn boosting_rt_boosting_rt_series_len(Boosting_rtSeries) -> Int32
-
-pub fn boosting_rt_boosting_rt_series_max(Boosting_rtSeries) -> Double
-
-pub fn boosting_rt_boosting_rt_series_mean(Boosting_rtSeries) -> Double
-
-pub fn boosting_rt_boosting_rt_series_min(Boosting_rtSeries) -> Double
-
-pub fn boosting_rt_boosting_rt_series_scale(Boosting_rtSeries, Double) -> Boosting_rtSeries
-
-pub fn boosting_rt_boosting_rt_series_std(Boosting_rtSeries) -> Double
-
-pub fn boosting_rt_boosting_rt_series_sum(Boosting_rtSeries) -> Double
-
-pub fn boosting_rt_boosting_rt_series_to_string(Boosting_rtSeries) -> String
-
-pub fn boosting_rt_boosting_rt_series_var(Boosting_rtSeries) -> Double
-
 pub fn boosting_rt_boosting_rt_std(Array[Double]) -> Double
 
 pub fn boosting_rt_boosting_rt_var(Array[Double]) -> Double
-
-pub fn boosting_rt_boosting_rt_vector_add(Boosting_rtVector, Boosting_rtVector) -> Boosting_rtVector
-
-pub fn boosting_rt_boosting_rt_vector_dist(Boosting_rtVector, Boosting_rtVector) -> Double
-
-pub fn boosting_rt_boosting_rt_vector_dot(Boosting_rtVector, Boosting_rtVector) -> Double
-
-pub fn boosting_rt_boosting_rt_vector_norm(Boosting_rtVector) -> Double
-
-pub fn boosting_rt_boosting_rt_vector_normalize(Boosting_rtVector) -> Boosting_rtVector
-
-pub fn boosting_rt_boosting_rt_vector_scale(Boosting_rtVector, Double) -> Boosting_rtVector
-
-pub fn boosting_rt_boosting_rt_vector_sub(Boosting_rtVector, Boosting_rtVector) -> Boosting_rtVector
-
-pub fn boosting_rt_boosting_rt_vector_to_string(Boosting_rtVector) -> String
-
-pub fn boosting_rt_boosting_rt_vector_zero(Int32) -> Boosting_rtVector
 
 pub fn catboost_catboost_accuracy(Array[Int32], Array[Int32]) -> Double
 
@@ -341,55 +82,7 @@ pub fn catboost_catboost_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn catboost_catboost_mae(Array[Double], Array[Double]) -> Double
 
-pub fn catboost_catboost_make_labeled_point(Double, Double, Int32) -> CatboostPoint
-
-pub fn catboost_catboost_make_matrix(Int32, Int32, Double) -> CatboostMatrix
-
-pub fn catboost_catboost_make_point(Double, Double) -> CatboostPoint
-
-pub fn catboost_catboost_make_series(Array[Double], String) -> CatboostSeries
-
-pub fn catboost_catboost_make_vector(Array[Double]) -> CatboostVector
-
-pub fn catboost_catboost_matrix_add(CatboostMatrix, CatboostMatrix) -> CatboostMatrix
-
-pub fn catboost_catboost_matrix_get(CatboostMatrix, Int32, Int32) -> Double
-
-pub fn catboost_catboost_matrix_identity(Int32) -> CatboostMatrix
-
-pub fn catboost_catboost_matrix_multiply(CatboostMatrix, CatboostMatrix) -> CatboostMatrix
-
-pub fn catboost_catboost_matrix_norm(CatboostMatrix) -> Double
-
-pub fn catboost_catboost_matrix_scale(CatboostMatrix, Double) -> CatboostMatrix
-
-pub fn catboost_catboost_matrix_to_string(CatboostMatrix) -> String
-
-pub fn catboost_catboost_matrix_trace(CatboostMatrix) -> Double
-
-pub fn catboost_catboost_matrix_transpose(CatboostMatrix) -> CatboostMatrix
-
 pub fn catboost_catboost_mse(Array[Double], Array[Double]) -> Double
-
-pub fn catboost_catboost_point_add(CatboostPoint, CatboostPoint) -> CatboostPoint
-
-pub fn catboost_catboost_point_dist(CatboostPoint, CatboostPoint) -> Double
-
-pub fn catboost_catboost_point_dot(CatboostPoint, CatboostPoint) -> Double
-
-pub fn catboost_catboost_point_label(CatboostPoint) -> Int32
-
-pub fn catboost_catboost_point_norm(CatboostPoint) -> Double
-
-pub fn catboost_catboost_point_scale(CatboostPoint, Double) -> CatboostPoint
-
-pub fn catboost_catboost_point_sub(CatboostPoint, CatboostPoint) -> CatboostPoint
-
-pub fn catboost_catboost_point_to_string(CatboostPoint) -> String
-
-pub fn catboost_catboost_point_x(CatboostPoint) -> Double
-
-pub fn catboost_catboost_point_y(CatboostPoint) -> Double
 
 pub fn catboost_catboost_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -397,47 +90,9 @@ pub fn catboost_catboost_r2(Array[Double], Array[Double]) -> Double
 
 pub fn catboost_catboost_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn catboost_catboost_series_add(CatboostSeries, CatboostSeries) -> CatboostSeries
-
-pub fn catboost_catboost_series_len(CatboostSeries) -> Int32
-
-pub fn catboost_catboost_series_max(CatboostSeries) -> Double
-
-pub fn catboost_catboost_series_mean(CatboostSeries) -> Double
-
-pub fn catboost_catboost_series_min(CatboostSeries) -> Double
-
-pub fn catboost_catboost_series_scale(CatboostSeries, Double) -> CatboostSeries
-
-pub fn catboost_catboost_series_std(CatboostSeries) -> Double
-
-pub fn catboost_catboost_series_sum(CatboostSeries) -> Double
-
-pub fn catboost_catboost_series_to_string(CatboostSeries) -> String
-
-pub fn catboost_catboost_series_var(CatboostSeries) -> Double
-
 pub fn catboost_catboost_std(Array[Double]) -> Double
 
 pub fn catboost_catboost_var(Array[Double]) -> Double
-
-pub fn catboost_catboost_vector_add(CatboostVector, CatboostVector) -> CatboostVector
-
-pub fn catboost_catboost_vector_dist(CatboostVector, CatboostVector) -> Double
-
-pub fn catboost_catboost_vector_dot(CatboostVector, CatboostVector) -> Double
-
-pub fn catboost_catboost_vector_norm(CatboostVector) -> Double
-
-pub fn catboost_catboost_vector_normalize(CatboostVector) -> CatboostVector
-
-pub fn catboost_catboost_vector_scale(CatboostVector, Double) -> CatboostVector
-
-pub fn catboost_catboost_vector_sub(CatboostVector, CatboostVector) -> CatboostVector
-
-pub fn catboost_catboost_vector_to_string(CatboostVector) -> String
-
-pub fn catboost_catboost_vector_zero(Int32) -> CatboostVector
 
 pub fn ensemble_adaboost_alpha(Double) -> Double
 
@@ -567,55 +222,7 @@ pub fn grad_boost_grad_boost_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn grad_boost_grad_boost_mae(Array[Double], Array[Double]) -> Double
 
-pub fn grad_boost_grad_boost_make_labeled_point(Double, Double, Int32) -> Grad_boostPoint
-
-pub fn grad_boost_grad_boost_make_matrix(Int32, Int32, Double) -> Grad_boostMatrix
-
-pub fn grad_boost_grad_boost_make_point(Double, Double) -> Grad_boostPoint
-
-pub fn grad_boost_grad_boost_make_series(Array[Double], String) -> Grad_boostSeries
-
-pub fn grad_boost_grad_boost_make_vector(Array[Double]) -> Grad_boostVector
-
-pub fn grad_boost_grad_boost_matrix_add(Grad_boostMatrix, Grad_boostMatrix) -> Grad_boostMatrix
-
-pub fn grad_boost_grad_boost_matrix_get(Grad_boostMatrix, Int32, Int32) -> Double
-
-pub fn grad_boost_grad_boost_matrix_identity(Int32) -> Grad_boostMatrix
-
-pub fn grad_boost_grad_boost_matrix_multiply(Grad_boostMatrix, Grad_boostMatrix) -> Grad_boostMatrix
-
-pub fn grad_boost_grad_boost_matrix_norm(Grad_boostMatrix) -> Double
-
-pub fn grad_boost_grad_boost_matrix_scale(Grad_boostMatrix, Double) -> Grad_boostMatrix
-
-pub fn grad_boost_grad_boost_matrix_to_string(Grad_boostMatrix) -> String
-
-pub fn grad_boost_grad_boost_matrix_trace(Grad_boostMatrix) -> Double
-
-pub fn grad_boost_grad_boost_matrix_transpose(Grad_boostMatrix) -> Grad_boostMatrix
-
 pub fn grad_boost_grad_boost_mse(Array[Double], Array[Double]) -> Double
-
-pub fn grad_boost_grad_boost_point_add(Grad_boostPoint, Grad_boostPoint) -> Grad_boostPoint
-
-pub fn grad_boost_grad_boost_point_dist(Grad_boostPoint, Grad_boostPoint) -> Double
-
-pub fn grad_boost_grad_boost_point_dot(Grad_boostPoint, Grad_boostPoint) -> Double
-
-pub fn grad_boost_grad_boost_point_label(Grad_boostPoint) -> Int32
-
-pub fn grad_boost_grad_boost_point_norm(Grad_boostPoint) -> Double
-
-pub fn grad_boost_grad_boost_point_scale(Grad_boostPoint, Double) -> Grad_boostPoint
-
-pub fn grad_boost_grad_boost_point_sub(Grad_boostPoint, Grad_boostPoint) -> Grad_boostPoint
-
-pub fn grad_boost_grad_boost_point_to_string(Grad_boostPoint) -> String
-
-pub fn grad_boost_grad_boost_point_x(Grad_boostPoint) -> Double
-
-pub fn grad_boost_grad_boost_point_y(Grad_boostPoint) -> Double
 
 pub fn grad_boost_grad_boost_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -623,47 +230,9 @@ pub fn grad_boost_grad_boost_r2(Array[Double], Array[Double]) -> Double
 
 pub fn grad_boost_grad_boost_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn grad_boost_grad_boost_series_add(Grad_boostSeries, Grad_boostSeries) -> Grad_boostSeries
-
-pub fn grad_boost_grad_boost_series_len(Grad_boostSeries) -> Int32
-
-pub fn grad_boost_grad_boost_series_max(Grad_boostSeries) -> Double
-
-pub fn grad_boost_grad_boost_series_mean(Grad_boostSeries) -> Double
-
-pub fn grad_boost_grad_boost_series_min(Grad_boostSeries) -> Double
-
-pub fn grad_boost_grad_boost_series_scale(Grad_boostSeries, Double) -> Grad_boostSeries
-
-pub fn grad_boost_grad_boost_series_std(Grad_boostSeries) -> Double
-
-pub fn grad_boost_grad_boost_series_sum(Grad_boostSeries) -> Double
-
-pub fn grad_boost_grad_boost_series_to_string(Grad_boostSeries) -> String
-
-pub fn grad_boost_grad_boost_series_var(Grad_boostSeries) -> Double
-
 pub fn grad_boost_grad_boost_std(Array[Double]) -> Double
 
 pub fn grad_boost_grad_boost_var(Array[Double]) -> Double
-
-pub fn grad_boost_grad_boost_vector_add(Grad_boostVector, Grad_boostVector) -> Grad_boostVector
-
-pub fn grad_boost_grad_boost_vector_dist(Grad_boostVector, Grad_boostVector) -> Double
-
-pub fn grad_boost_grad_boost_vector_dot(Grad_boostVector, Grad_boostVector) -> Double
-
-pub fn grad_boost_grad_boost_vector_norm(Grad_boostVector) -> Double
-
-pub fn grad_boost_grad_boost_vector_normalize(Grad_boostVector) -> Grad_boostVector
-
-pub fn grad_boost_grad_boost_vector_scale(Grad_boostVector, Double) -> Grad_boostVector
-
-pub fn grad_boost_grad_boost_vector_sub(Grad_boostVector, Grad_boostVector) -> Grad_boostVector
-
-pub fn grad_boost_grad_boost_vector_to_string(Grad_boostVector) -> String
-
-pub fn grad_boost_grad_boost_vector_zero(Int32) -> Grad_boostVector
 
 pub fn lightgbm_lightgbm_accuracy(Array[Int32], Array[Int32]) -> Double
 
@@ -675,55 +244,7 @@ pub fn lightgbm_lightgbm_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn lightgbm_lightgbm_mae(Array[Double], Array[Double]) -> Double
 
-pub fn lightgbm_lightgbm_make_labeled_point(Double, Double, Int32) -> LightgbmPoint
-
-pub fn lightgbm_lightgbm_make_matrix(Int32, Int32, Double) -> LightgbmMatrix
-
-pub fn lightgbm_lightgbm_make_point(Double, Double) -> LightgbmPoint
-
-pub fn lightgbm_lightgbm_make_series(Array[Double], String) -> LightgbmSeries
-
-pub fn lightgbm_lightgbm_make_vector(Array[Double]) -> LightgbmVector
-
-pub fn lightgbm_lightgbm_matrix_add(LightgbmMatrix, LightgbmMatrix) -> LightgbmMatrix
-
-pub fn lightgbm_lightgbm_matrix_get(LightgbmMatrix, Int32, Int32) -> Double
-
-pub fn lightgbm_lightgbm_matrix_identity(Int32) -> LightgbmMatrix
-
-pub fn lightgbm_lightgbm_matrix_multiply(LightgbmMatrix, LightgbmMatrix) -> LightgbmMatrix
-
-pub fn lightgbm_lightgbm_matrix_norm(LightgbmMatrix) -> Double
-
-pub fn lightgbm_lightgbm_matrix_scale(LightgbmMatrix, Double) -> LightgbmMatrix
-
-pub fn lightgbm_lightgbm_matrix_to_string(LightgbmMatrix) -> String
-
-pub fn lightgbm_lightgbm_matrix_trace(LightgbmMatrix) -> Double
-
-pub fn lightgbm_lightgbm_matrix_transpose(LightgbmMatrix) -> LightgbmMatrix
-
 pub fn lightgbm_lightgbm_mse(Array[Double], Array[Double]) -> Double
-
-pub fn lightgbm_lightgbm_point_add(LightgbmPoint, LightgbmPoint) -> LightgbmPoint
-
-pub fn lightgbm_lightgbm_point_dist(LightgbmPoint, LightgbmPoint) -> Double
-
-pub fn lightgbm_lightgbm_point_dot(LightgbmPoint, LightgbmPoint) -> Double
-
-pub fn lightgbm_lightgbm_point_label(LightgbmPoint) -> Int32
-
-pub fn lightgbm_lightgbm_point_norm(LightgbmPoint) -> Double
-
-pub fn lightgbm_lightgbm_point_scale(LightgbmPoint, Double) -> LightgbmPoint
-
-pub fn lightgbm_lightgbm_point_sub(LightgbmPoint, LightgbmPoint) -> LightgbmPoint
-
-pub fn lightgbm_lightgbm_point_to_string(LightgbmPoint) -> String
-
-pub fn lightgbm_lightgbm_point_x(LightgbmPoint) -> Double
-
-pub fn lightgbm_lightgbm_point_y(LightgbmPoint) -> Double
 
 pub fn lightgbm_lightgbm_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -731,47 +252,9 @@ pub fn lightgbm_lightgbm_r2(Array[Double], Array[Double]) -> Double
 
 pub fn lightgbm_lightgbm_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn lightgbm_lightgbm_series_add(LightgbmSeries, LightgbmSeries) -> LightgbmSeries
-
-pub fn lightgbm_lightgbm_series_len(LightgbmSeries) -> Int32
-
-pub fn lightgbm_lightgbm_series_max(LightgbmSeries) -> Double
-
-pub fn lightgbm_lightgbm_series_mean(LightgbmSeries) -> Double
-
-pub fn lightgbm_lightgbm_series_min(LightgbmSeries) -> Double
-
-pub fn lightgbm_lightgbm_series_scale(LightgbmSeries, Double) -> LightgbmSeries
-
-pub fn lightgbm_lightgbm_series_std(LightgbmSeries) -> Double
-
-pub fn lightgbm_lightgbm_series_sum(LightgbmSeries) -> Double
-
-pub fn lightgbm_lightgbm_series_to_string(LightgbmSeries) -> String
-
-pub fn lightgbm_lightgbm_series_var(LightgbmSeries) -> Double
-
 pub fn lightgbm_lightgbm_std(Array[Double]) -> Double
 
 pub fn lightgbm_lightgbm_var(Array[Double]) -> Double
-
-pub fn lightgbm_lightgbm_vector_add(LightgbmVector, LightgbmVector) -> LightgbmVector
-
-pub fn lightgbm_lightgbm_vector_dist(LightgbmVector, LightgbmVector) -> Double
-
-pub fn lightgbm_lightgbm_vector_dot(LightgbmVector, LightgbmVector) -> Double
-
-pub fn lightgbm_lightgbm_vector_norm(LightgbmVector) -> Double
-
-pub fn lightgbm_lightgbm_vector_normalize(LightgbmVector) -> LightgbmVector
-
-pub fn lightgbm_lightgbm_vector_scale(LightgbmVector, Double) -> LightgbmVector
-
-pub fn lightgbm_lightgbm_vector_sub(LightgbmVector, LightgbmVector) -> LightgbmVector
-
-pub fn lightgbm_lightgbm_vector_to_string(LightgbmVector) -> String
-
-pub fn lightgbm_lightgbm_vector_zero(Int32) -> LightgbmVector
 
 pub fn logit_boost_logit_boost_accuracy(Array[Int32], Array[Int32]) -> Double
 
@@ -783,55 +266,7 @@ pub fn logit_boost_logit_boost_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn logit_boost_logit_boost_mae(Array[Double], Array[Double]) -> Double
 
-pub fn logit_boost_logit_boost_make_labeled_point(Double, Double, Int32) -> Logit_boostPoint
-
-pub fn logit_boost_logit_boost_make_matrix(Int32, Int32, Double) -> Logit_boostMatrix
-
-pub fn logit_boost_logit_boost_make_point(Double, Double) -> Logit_boostPoint
-
-pub fn logit_boost_logit_boost_make_series(Array[Double], String) -> Logit_boostSeries
-
-pub fn logit_boost_logit_boost_make_vector(Array[Double]) -> Logit_boostVector
-
-pub fn logit_boost_logit_boost_matrix_add(Logit_boostMatrix, Logit_boostMatrix) -> Logit_boostMatrix
-
-pub fn logit_boost_logit_boost_matrix_get(Logit_boostMatrix, Int32, Int32) -> Double
-
-pub fn logit_boost_logit_boost_matrix_identity(Int32) -> Logit_boostMatrix
-
-pub fn logit_boost_logit_boost_matrix_multiply(Logit_boostMatrix, Logit_boostMatrix) -> Logit_boostMatrix
-
-pub fn logit_boost_logit_boost_matrix_norm(Logit_boostMatrix) -> Double
-
-pub fn logit_boost_logit_boost_matrix_scale(Logit_boostMatrix, Double) -> Logit_boostMatrix
-
-pub fn logit_boost_logit_boost_matrix_to_string(Logit_boostMatrix) -> String
-
-pub fn logit_boost_logit_boost_matrix_trace(Logit_boostMatrix) -> Double
-
-pub fn logit_boost_logit_boost_matrix_transpose(Logit_boostMatrix) -> Logit_boostMatrix
-
 pub fn logit_boost_logit_boost_mse(Array[Double], Array[Double]) -> Double
-
-pub fn logit_boost_logit_boost_point_add(Logit_boostPoint, Logit_boostPoint) -> Logit_boostPoint
-
-pub fn logit_boost_logit_boost_point_dist(Logit_boostPoint, Logit_boostPoint) -> Double
-
-pub fn logit_boost_logit_boost_point_dot(Logit_boostPoint, Logit_boostPoint) -> Double
-
-pub fn logit_boost_logit_boost_point_label(Logit_boostPoint) -> Int32
-
-pub fn logit_boost_logit_boost_point_norm(Logit_boostPoint) -> Double
-
-pub fn logit_boost_logit_boost_point_scale(Logit_boostPoint, Double) -> Logit_boostPoint
-
-pub fn logit_boost_logit_boost_point_sub(Logit_boostPoint, Logit_boostPoint) -> Logit_boostPoint
-
-pub fn logit_boost_logit_boost_point_to_string(Logit_boostPoint) -> String
-
-pub fn logit_boost_logit_boost_point_x(Logit_boostPoint) -> Double
-
-pub fn logit_boost_logit_boost_point_y(Logit_boostPoint) -> Double
 
 pub fn logit_boost_logit_boost_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -839,47 +274,9 @@ pub fn logit_boost_logit_boost_r2(Array[Double], Array[Double]) -> Double
 
 pub fn logit_boost_logit_boost_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn logit_boost_logit_boost_series_add(Logit_boostSeries, Logit_boostSeries) -> Logit_boostSeries
-
-pub fn logit_boost_logit_boost_series_len(Logit_boostSeries) -> Int32
-
-pub fn logit_boost_logit_boost_series_max(Logit_boostSeries) -> Double
-
-pub fn logit_boost_logit_boost_series_mean(Logit_boostSeries) -> Double
-
-pub fn logit_boost_logit_boost_series_min(Logit_boostSeries) -> Double
-
-pub fn logit_boost_logit_boost_series_scale(Logit_boostSeries, Double) -> Logit_boostSeries
-
-pub fn logit_boost_logit_boost_series_std(Logit_boostSeries) -> Double
-
-pub fn logit_boost_logit_boost_series_sum(Logit_boostSeries) -> Double
-
-pub fn logit_boost_logit_boost_series_to_string(Logit_boostSeries) -> String
-
-pub fn logit_boost_logit_boost_series_var(Logit_boostSeries) -> Double
-
 pub fn logit_boost_logit_boost_std(Array[Double]) -> Double
 
 pub fn logit_boost_logit_boost_var(Array[Double]) -> Double
-
-pub fn logit_boost_logit_boost_vector_add(Logit_boostVector, Logit_boostVector) -> Logit_boostVector
-
-pub fn logit_boost_logit_boost_vector_dist(Logit_boostVector, Logit_boostVector) -> Double
-
-pub fn logit_boost_logit_boost_vector_dot(Logit_boostVector, Logit_boostVector) -> Double
-
-pub fn logit_boost_logit_boost_vector_norm(Logit_boostVector) -> Double
-
-pub fn logit_boost_logit_boost_vector_normalize(Logit_boostVector) -> Logit_boostVector
-
-pub fn logit_boost_logit_boost_vector_scale(Logit_boostVector, Double) -> Logit_boostVector
-
-pub fn logit_boost_logit_boost_vector_sub(Logit_boostVector, Logit_boostVector) -> Logit_boostVector
-
-pub fn logit_boost_logit_boost_vector_to_string(Logit_boostVector) -> String
-
-pub fn logit_boost_logit_boost_vector_zero(Int32) -> Logit_boostVector
 
 pub fn tpr_forest_tpr_forest_accuracy(Array[Int32], Array[Int32]) -> Double
 
@@ -891,55 +288,7 @@ pub fn tpr_forest_tpr_forest_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn tpr_forest_tpr_forest_mae(Array[Double], Array[Double]) -> Double
 
-pub fn tpr_forest_tpr_forest_make_labeled_point(Double, Double, Int32) -> Tpr_forestPoint
-
-pub fn tpr_forest_tpr_forest_make_matrix(Int32, Int32, Double) -> Tpr_forestMatrix
-
-pub fn tpr_forest_tpr_forest_make_point(Double, Double) -> Tpr_forestPoint
-
-pub fn tpr_forest_tpr_forest_make_series(Array[Double], String) -> Tpr_forestSeries
-
-pub fn tpr_forest_tpr_forest_make_vector(Array[Double]) -> Tpr_forestVector
-
-pub fn tpr_forest_tpr_forest_matrix_add(Tpr_forestMatrix, Tpr_forestMatrix) -> Tpr_forestMatrix
-
-pub fn tpr_forest_tpr_forest_matrix_get(Tpr_forestMatrix, Int32, Int32) -> Double
-
-pub fn tpr_forest_tpr_forest_matrix_identity(Int32) -> Tpr_forestMatrix
-
-pub fn tpr_forest_tpr_forest_matrix_multiply(Tpr_forestMatrix, Tpr_forestMatrix) -> Tpr_forestMatrix
-
-pub fn tpr_forest_tpr_forest_matrix_norm(Tpr_forestMatrix) -> Double
-
-pub fn tpr_forest_tpr_forest_matrix_scale(Tpr_forestMatrix, Double) -> Tpr_forestMatrix
-
-pub fn tpr_forest_tpr_forest_matrix_to_string(Tpr_forestMatrix) -> String
-
-pub fn tpr_forest_tpr_forest_matrix_trace(Tpr_forestMatrix) -> Double
-
-pub fn tpr_forest_tpr_forest_matrix_transpose(Tpr_forestMatrix) -> Tpr_forestMatrix
-
 pub fn tpr_forest_tpr_forest_mse(Array[Double], Array[Double]) -> Double
-
-pub fn tpr_forest_tpr_forest_point_add(Tpr_forestPoint, Tpr_forestPoint) -> Tpr_forestPoint
-
-pub fn tpr_forest_tpr_forest_point_dist(Tpr_forestPoint, Tpr_forestPoint) -> Double
-
-pub fn tpr_forest_tpr_forest_point_dot(Tpr_forestPoint, Tpr_forestPoint) -> Double
-
-pub fn tpr_forest_tpr_forest_point_label(Tpr_forestPoint) -> Int32
-
-pub fn tpr_forest_tpr_forest_point_norm(Tpr_forestPoint) -> Double
-
-pub fn tpr_forest_tpr_forest_point_scale(Tpr_forestPoint, Double) -> Tpr_forestPoint
-
-pub fn tpr_forest_tpr_forest_point_sub(Tpr_forestPoint, Tpr_forestPoint) -> Tpr_forestPoint
-
-pub fn tpr_forest_tpr_forest_point_to_string(Tpr_forestPoint) -> String
-
-pub fn tpr_forest_tpr_forest_point_x(Tpr_forestPoint) -> Double
-
-pub fn tpr_forest_tpr_forest_point_y(Tpr_forestPoint) -> Double
 
 pub fn tpr_forest_tpr_forest_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -947,47 +296,9 @@ pub fn tpr_forest_tpr_forest_r2(Array[Double], Array[Double]) -> Double
 
 pub fn tpr_forest_tpr_forest_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn tpr_forest_tpr_forest_series_add(Tpr_forestSeries, Tpr_forestSeries) -> Tpr_forestSeries
-
-pub fn tpr_forest_tpr_forest_series_len(Tpr_forestSeries) -> Int32
-
-pub fn tpr_forest_tpr_forest_series_max(Tpr_forestSeries) -> Double
-
-pub fn tpr_forest_tpr_forest_series_mean(Tpr_forestSeries) -> Double
-
-pub fn tpr_forest_tpr_forest_series_min(Tpr_forestSeries) -> Double
-
-pub fn tpr_forest_tpr_forest_series_scale(Tpr_forestSeries, Double) -> Tpr_forestSeries
-
-pub fn tpr_forest_tpr_forest_series_std(Tpr_forestSeries) -> Double
-
-pub fn tpr_forest_tpr_forest_series_sum(Tpr_forestSeries) -> Double
-
-pub fn tpr_forest_tpr_forest_series_to_string(Tpr_forestSeries) -> String
-
-pub fn tpr_forest_tpr_forest_series_var(Tpr_forestSeries) -> Double
-
 pub fn tpr_forest_tpr_forest_std(Array[Double]) -> Double
 
 pub fn tpr_forest_tpr_forest_var(Array[Double]) -> Double
-
-pub fn tpr_forest_tpr_forest_vector_add(Tpr_forestVector, Tpr_forestVector) -> Tpr_forestVector
-
-pub fn tpr_forest_tpr_forest_vector_dist(Tpr_forestVector, Tpr_forestVector) -> Double
-
-pub fn tpr_forest_tpr_forest_vector_dot(Tpr_forestVector, Tpr_forestVector) -> Double
-
-pub fn tpr_forest_tpr_forest_vector_norm(Tpr_forestVector) -> Double
-
-pub fn tpr_forest_tpr_forest_vector_normalize(Tpr_forestVector) -> Tpr_forestVector
-
-pub fn tpr_forest_tpr_forest_vector_scale(Tpr_forestVector, Double) -> Tpr_forestVector
-
-pub fn tpr_forest_tpr_forest_vector_sub(Tpr_forestVector, Tpr_forestVector) -> Tpr_forestVector
-
-pub fn tpr_forest_tpr_forest_vector_to_string(Tpr_forestVector) -> String
-
-pub fn tpr_forest_tpr_forest_vector_zero(Int32) -> Tpr_forestVector
 
 pub fn xgboost_xgboost_accuracy(Array[Int32], Array[Int32]) -> Double
 
@@ -999,55 +310,7 @@ pub fn xgboost_xgboost_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn xgboost_xgboost_mae(Array[Double], Array[Double]) -> Double
 
-pub fn xgboost_xgboost_make_labeled_point(Double, Double, Int32) -> XgboostPoint
-
-pub fn xgboost_xgboost_make_matrix(Int32, Int32, Double) -> XgboostMatrix
-
-pub fn xgboost_xgboost_make_point(Double, Double) -> XgboostPoint
-
-pub fn xgboost_xgboost_make_series(Array[Double], String) -> XgboostSeries
-
-pub fn xgboost_xgboost_make_vector(Array[Double]) -> XgboostVector
-
-pub fn xgboost_xgboost_matrix_add(XgboostMatrix, XgboostMatrix) -> XgboostMatrix
-
-pub fn xgboost_xgboost_matrix_get(XgboostMatrix, Int32, Int32) -> Double
-
-pub fn xgboost_xgboost_matrix_identity(Int32) -> XgboostMatrix
-
-pub fn xgboost_xgboost_matrix_multiply(XgboostMatrix, XgboostMatrix) -> XgboostMatrix
-
-pub fn xgboost_xgboost_matrix_norm(XgboostMatrix) -> Double
-
-pub fn xgboost_xgboost_matrix_scale(XgboostMatrix, Double) -> XgboostMatrix
-
-pub fn xgboost_xgboost_matrix_to_string(XgboostMatrix) -> String
-
-pub fn xgboost_xgboost_matrix_trace(XgboostMatrix) -> Double
-
-pub fn xgboost_xgboost_matrix_transpose(XgboostMatrix) -> XgboostMatrix
-
 pub fn xgboost_xgboost_mse(Array[Double], Array[Double]) -> Double
-
-pub fn xgboost_xgboost_point_add(XgboostPoint, XgboostPoint) -> XgboostPoint
-
-pub fn xgboost_xgboost_point_dist(XgboostPoint, XgboostPoint) -> Double
-
-pub fn xgboost_xgboost_point_dot(XgboostPoint, XgboostPoint) -> Double
-
-pub fn xgboost_xgboost_point_label(XgboostPoint) -> Int32
-
-pub fn xgboost_xgboost_point_norm(XgboostPoint) -> Double
-
-pub fn xgboost_xgboost_point_scale(XgboostPoint, Double) -> XgboostPoint
-
-pub fn xgboost_xgboost_point_sub(XgboostPoint, XgboostPoint) -> XgboostPoint
-
-pub fn xgboost_xgboost_point_to_string(XgboostPoint) -> String
-
-pub fn xgboost_xgboost_point_x(XgboostPoint) -> Double
-
-pub fn xgboost_xgboost_point_y(XgboostPoint) -> Double
 
 pub fn xgboost_xgboost_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -1055,47 +318,9 @@ pub fn xgboost_xgboost_r2(Array[Double], Array[Double]) -> Double
 
 pub fn xgboost_xgboost_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn xgboost_xgboost_series_add(XgboostSeries, XgboostSeries) -> XgboostSeries
-
-pub fn xgboost_xgboost_series_len(XgboostSeries) -> Int32
-
-pub fn xgboost_xgboost_series_max(XgboostSeries) -> Double
-
-pub fn xgboost_xgboost_series_mean(XgboostSeries) -> Double
-
-pub fn xgboost_xgboost_series_min(XgboostSeries) -> Double
-
-pub fn xgboost_xgboost_series_scale(XgboostSeries, Double) -> XgboostSeries
-
-pub fn xgboost_xgboost_series_std(XgboostSeries) -> Double
-
-pub fn xgboost_xgboost_series_sum(XgboostSeries) -> Double
-
-pub fn xgboost_xgboost_series_to_string(XgboostSeries) -> String
-
-pub fn xgboost_xgboost_series_var(XgboostSeries) -> Double
-
 pub fn xgboost_xgboost_std(Array[Double]) -> Double
 
 pub fn xgboost_xgboost_var(Array[Double]) -> Double
-
-pub fn xgboost_xgboost_vector_add(XgboostVector, XgboostVector) -> XgboostVector
-
-pub fn xgboost_xgboost_vector_dist(XgboostVector, XgboostVector) -> Double
-
-pub fn xgboost_xgboost_vector_dot(XgboostVector, XgboostVector) -> Double
-
-pub fn xgboost_xgboost_vector_norm(XgboostVector) -> Double
-
-pub fn xgboost_xgboost_vector_normalize(XgboostVector) -> XgboostVector
-
-pub fn xgboost_xgboost_vector_scale(XgboostVector, Double) -> XgboostVector
-
-pub fn xgboost_xgboost_vector_sub(XgboostVector, XgboostVector) -> XgboostVector
-
-pub fn xgboost_xgboost_vector_to_string(XgboostVector) -> String
-
-pub fn xgboost_xgboost_vector_zero(Int32) -> XgboostVector
 
 // Errors
 
@@ -1109,76 +334,6 @@ pub fn AdaBoostState::equal(Self, Self) -> Bool
 pub fn AdaBoostState::not_equal(Self, Self) -> Bool
 pub fn AdaBoostState::to_repr(Self) -> @debug.Repr
 
-pub struct AdaboostMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn AdaboostMatrix::check(Self) -> Bool
-pub fn AdaboostMatrix::clone(Self) -> Self
-pub fn AdaboostMatrix::count(Self) -> Int32
-pub fn AdaboostMatrix::describe(Self) -> String
-pub fn AdaboostMatrix::name(Self) -> String
-pub fn AdaboostMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for AdaboostMatrix
-pub impl @traits.Cloneable for AdaboostMatrix
-pub impl @traits.Countable for AdaboostMatrix
-pub impl @traits.Describable for AdaboostMatrix
-pub impl @traits.Named for AdaboostMatrix
-pub impl @traits.Resettable for AdaboostMatrix
-
-pub struct AdaboostPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn AdaboostPoint::check(Self) -> Bool
-pub fn AdaboostPoint::clone(Self) -> Self
-pub fn AdaboostPoint::count(Self) -> Int32
-pub fn AdaboostPoint::describe(Self) -> String
-pub fn AdaboostPoint::name(Self) -> String
-pub fn AdaboostPoint::reset(Self) -> Self
-pub impl @traits.Checkable for AdaboostPoint
-pub impl @traits.Cloneable for AdaboostPoint
-pub impl @traits.Countable for AdaboostPoint
-pub impl @traits.Describable for AdaboostPoint
-pub impl @traits.Named for AdaboostPoint
-pub impl @traits.Resettable for AdaboostPoint
-
-pub struct AdaboostSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn AdaboostSeries::check(Self) -> Bool
-pub fn AdaboostSeries::clone(Self) -> Self
-pub fn AdaboostSeries::count(Self) -> Int32
-pub fn AdaboostSeries::describe(Self) -> String
-pub fn AdaboostSeries::name(Self) -> String
-pub fn AdaboostSeries::reset(Self) -> Self
-pub impl @traits.Checkable for AdaboostSeries
-pub impl @traits.Cloneable for AdaboostSeries
-pub impl @traits.Countable for AdaboostSeries
-pub impl @traits.Describable for AdaboostSeries
-pub impl @traits.Named for AdaboostSeries
-pub impl @traits.Resettable for AdaboostSeries
-
-pub struct AdaboostVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn AdaboostVector::check(Self) -> Bool
-pub fn AdaboostVector::clone(Self) -> Self
-pub fn AdaboostVector::count(Self) -> Int32
-pub fn AdaboostVector::describe(Self) -> String
-pub fn AdaboostVector::name(Self) -> String
-pub fn AdaboostVector::reset(Self) -> Self
-pub impl @traits.Checkable for AdaboostVector
-pub impl @traits.Cloneable for AdaboostVector
-pub impl @traits.Countable for AdaboostVector
-pub impl @traits.Describable for AdaboostVector
-pub impl @traits.Named for AdaboostVector
-pub impl @traits.Resettable for AdaboostVector
-
 pub struct BaggingConfig {
   n_estimators : Int32
   sample_ratio : Double
@@ -1188,76 +343,6 @@ pub fn BaggingConfig::equal(Self, Self) -> Bool
 pub fn BaggingConfig::not_equal(Self, Self) -> Bool
 pub fn BaggingConfig::to_repr(Self) -> @debug.Repr
 
-pub struct Bagging_rtMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn Bagging_rtMatrix::check(Self) -> Bool
-pub fn Bagging_rtMatrix::clone(Self) -> Self
-pub fn Bagging_rtMatrix::count(Self) -> Int32
-pub fn Bagging_rtMatrix::describe(Self) -> String
-pub fn Bagging_rtMatrix::name(Self) -> String
-pub fn Bagging_rtMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for Bagging_rtMatrix
-pub impl @traits.Cloneable for Bagging_rtMatrix
-pub impl @traits.Countable for Bagging_rtMatrix
-pub impl @traits.Describable for Bagging_rtMatrix
-pub impl @traits.Named for Bagging_rtMatrix
-pub impl @traits.Resettable for Bagging_rtMatrix
-
-pub struct Bagging_rtPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn Bagging_rtPoint::check(Self) -> Bool
-pub fn Bagging_rtPoint::clone(Self) -> Self
-pub fn Bagging_rtPoint::count(Self) -> Int32
-pub fn Bagging_rtPoint::describe(Self) -> String
-pub fn Bagging_rtPoint::name(Self) -> String
-pub fn Bagging_rtPoint::reset(Self) -> Self
-pub impl @traits.Checkable for Bagging_rtPoint
-pub impl @traits.Cloneable for Bagging_rtPoint
-pub impl @traits.Countable for Bagging_rtPoint
-pub impl @traits.Describable for Bagging_rtPoint
-pub impl @traits.Named for Bagging_rtPoint
-pub impl @traits.Resettable for Bagging_rtPoint
-
-pub struct Bagging_rtSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn Bagging_rtSeries::check(Self) -> Bool
-pub fn Bagging_rtSeries::clone(Self) -> Self
-pub fn Bagging_rtSeries::count(Self) -> Int32
-pub fn Bagging_rtSeries::describe(Self) -> String
-pub fn Bagging_rtSeries::name(Self) -> String
-pub fn Bagging_rtSeries::reset(Self) -> Self
-pub impl @traits.Checkable for Bagging_rtSeries
-pub impl @traits.Cloneable for Bagging_rtSeries
-pub impl @traits.Countable for Bagging_rtSeries
-pub impl @traits.Describable for Bagging_rtSeries
-pub impl @traits.Named for Bagging_rtSeries
-pub impl @traits.Resettable for Bagging_rtSeries
-
-pub struct Bagging_rtVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn Bagging_rtVector::check(Self) -> Bool
-pub fn Bagging_rtVector::clone(Self) -> Self
-pub fn Bagging_rtVector::count(Self) -> Int32
-pub fn Bagging_rtVector::describe(Self) -> String
-pub fn Bagging_rtVector::name(Self) -> String
-pub fn Bagging_rtVector::reset(Self) -> Self
-pub impl @traits.Checkable for Bagging_rtVector
-pub impl @traits.Cloneable for Bagging_rtVector
-pub impl @traits.Countable for Bagging_rtVector
-pub impl @traits.Describable for Bagging_rtVector
-pub impl @traits.Named for Bagging_rtVector
-pub impl @traits.Resettable for Bagging_rtVector
-
 pub struct BoostingConfig {
   n_estimators : Int32
   learning_rate : Double
@@ -1266,146 +351,6 @@ pub struct BoostingConfig {
 pub fn BoostingConfig::equal(Self, Self) -> Bool
 pub fn BoostingConfig::not_equal(Self, Self) -> Bool
 pub fn BoostingConfig::to_repr(Self) -> @debug.Repr
-
-pub struct Boosting_rtMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn Boosting_rtMatrix::check(Self) -> Bool
-pub fn Boosting_rtMatrix::clone(Self) -> Self
-pub fn Boosting_rtMatrix::count(Self) -> Int32
-pub fn Boosting_rtMatrix::describe(Self) -> String
-pub fn Boosting_rtMatrix::name(Self) -> String
-pub fn Boosting_rtMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for Boosting_rtMatrix
-pub impl @traits.Cloneable for Boosting_rtMatrix
-pub impl @traits.Countable for Boosting_rtMatrix
-pub impl @traits.Describable for Boosting_rtMatrix
-pub impl @traits.Named for Boosting_rtMatrix
-pub impl @traits.Resettable for Boosting_rtMatrix
-
-pub struct Boosting_rtPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn Boosting_rtPoint::check(Self) -> Bool
-pub fn Boosting_rtPoint::clone(Self) -> Self
-pub fn Boosting_rtPoint::count(Self) -> Int32
-pub fn Boosting_rtPoint::describe(Self) -> String
-pub fn Boosting_rtPoint::name(Self) -> String
-pub fn Boosting_rtPoint::reset(Self) -> Self
-pub impl @traits.Checkable for Boosting_rtPoint
-pub impl @traits.Cloneable for Boosting_rtPoint
-pub impl @traits.Countable for Boosting_rtPoint
-pub impl @traits.Describable for Boosting_rtPoint
-pub impl @traits.Named for Boosting_rtPoint
-pub impl @traits.Resettable for Boosting_rtPoint
-
-pub struct Boosting_rtSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn Boosting_rtSeries::check(Self) -> Bool
-pub fn Boosting_rtSeries::clone(Self) -> Self
-pub fn Boosting_rtSeries::count(Self) -> Int32
-pub fn Boosting_rtSeries::describe(Self) -> String
-pub fn Boosting_rtSeries::name(Self) -> String
-pub fn Boosting_rtSeries::reset(Self) -> Self
-pub impl @traits.Checkable for Boosting_rtSeries
-pub impl @traits.Cloneable for Boosting_rtSeries
-pub impl @traits.Countable for Boosting_rtSeries
-pub impl @traits.Describable for Boosting_rtSeries
-pub impl @traits.Named for Boosting_rtSeries
-pub impl @traits.Resettable for Boosting_rtSeries
-
-pub struct Boosting_rtVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn Boosting_rtVector::check(Self) -> Bool
-pub fn Boosting_rtVector::clone(Self) -> Self
-pub fn Boosting_rtVector::count(Self) -> Int32
-pub fn Boosting_rtVector::describe(Self) -> String
-pub fn Boosting_rtVector::name(Self) -> String
-pub fn Boosting_rtVector::reset(Self) -> Self
-pub impl @traits.Checkable for Boosting_rtVector
-pub impl @traits.Cloneable for Boosting_rtVector
-pub impl @traits.Countable for Boosting_rtVector
-pub impl @traits.Describable for Boosting_rtVector
-pub impl @traits.Named for Boosting_rtVector
-pub impl @traits.Resettable for Boosting_rtVector
-
-pub struct CatboostMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn CatboostMatrix::check(Self) -> Bool
-pub fn CatboostMatrix::clone(Self) -> Self
-pub fn CatboostMatrix::count(Self) -> Int32
-pub fn CatboostMatrix::describe(Self) -> String
-pub fn CatboostMatrix::name(Self) -> String
-pub fn CatboostMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for CatboostMatrix
-pub impl @traits.Cloneable for CatboostMatrix
-pub impl @traits.Countable for CatboostMatrix
-pub impl @traits.Describable for CatboostMatrix
-pub impl @traits.Named for CatboostMatrix
-pub impl @traits.Resettable for CatboostMatrix
-
-pub struct CatboostPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn CatboostPoint::check(Self) -> Bool
-pub fn CatboostPoint::clone(Self) -> Self
-pub fn CatboostPoint::count(Self) -> Int32
-pub fn CatboostPoint::describe(Self) -> String
-pub fn CatboostPoint::name(Self) -> String
-pub fn CatboostPoint::reset(Self) -> Self
-pub impl @traits.Checkable for CatboostPoint
-pub impl @traits.Cloneable for CatboostPoint
-pub impl @traits.Countable for CatboostPoint
-pub impl @traits.Describable for CatboostPoint
-pub impl @traits.Named for CatboostPoint
-pub impl @traits.Resettable for CatboostPoint
-
-pub struct CatboostSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn CatboostSeries::check(Self) -> Bool
-pub fn CatboostSeries::clone(Self) -> Self
-pub fn CatboostSeries::count(Self) -> Int32
-pub fn CatboostSeries::describe(Self) -> String
-pub fn CatboostSeries::name(Self) -> String
-pub fn CatboostSeries::reset(Self) -> Self
-pub impl @traits.Checkable for CatboostSeries
-pub impl @traits.Cloneable for CatboostSeries
-pub impl @traits.Countable for CatboostSeries
-pub impl @traits.Describable for CatboostSeries
-pub impl @traits.Named for CatboostSeries
-pub impl @traits.Resettable for CatboostSeries
-
-pub struct CatboostVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn CatboostVector::check(Self) -> Bool
-pub fn CatboostVector::clone(Self) -> Self
-pub fn CatboostVector::count(Self) -> Int32
-pub fn CatboostVector::describe(Self) -> String
-pub fn CatboostVector::name(Self) -> String
-pub fn CatboostVector::reset(Self) -> Self
-pub impl @traits.Checkable for CatboostVector
-pub impl @traits.Cloneable for CatboostVector
-pub impl @traits.Countable for CatboostVector
-pub impl @traits.Describable for CatboostVector
-pub impl @traits.Named for CatboostVector
-pub impl @traits.Resettable for CatboostVector
 
 pub struct EnsembleConfig {
   name : String
@@ -1426,216 +371,6 @@ pub fn EnsembleModel::equal(Self, Self) -> Bool
 pub fn EnsembleModel::not_equal(Self, Self) -> Bool
 pub fn EnsembleModel::to_repr(Self) -> @debug.Repr
 
-pub struct Grad_boostMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn Grad_boostMatrix::check(Self) -> Bool
-pub fn Grad_boostMatrix::clone(Self) -> Self
-pub fn Grad_boostMatrix::count(Self) -> Int32
-pub fn Grad_boostMatrix::describe(Self) -> String
-pub fn Grad_boostMatrix::name(Self) -> String
-pub fn Grad_boostMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for Grad_boostMatrix
-pub impl @traits.Cloneable for Grad_boostMatrix
-pub impl @traits.Countable for Grad_boostMatrix
-pub impl @traits.Describable for Grad_boostMatrix
-pub impl @traits.Named for Grad_boostMatrix
-pub impl @traits.Resettable for Grad_boostMatrix
-
-pub struct Grad_boostPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn Grad_boostPoint::check(Self) -> Bool
-pub fn Grad_boostPoint::clone(Self) -> Self
-pub fn Grad_boostPoint::count(Self) -> Int32
-pub fn Grad_boostPoint::describe(Self) -> String
-pub fn Grad_boostPoint::name(Self) -> String
-pub fn Grad_boostPoint::reset(Self) -> Self
-pub impl @traits.Checkable for Grad_boostPoint
-pub impl @traits.Cloneable for Grad_boostPoint
-pub impl @traits.Countable for Grad_boostPoint
-pub impl @traits.Describable for Grad_boostPoint
-pub impl @traits.Named for Grad_boostPoint
-pub impl @traits.Resettable for Grad_boostPoint
-
-pub struct Grad_boostSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn Grad_boostSeries::check(Self) -> Bool
-pub fn Grad_boostSeries::clone(Self) -> Self
-pub fn Grad_boostSeries::count(Self) -> Int32
-pub fn Grad_boostSeries::describe(Self) -> String
-pub fn Grad_boostSeries::name(Self) -> String
-pub fn Grad_boostSeries::reset(Self) -> Self
-pub impl @traits.Checkable for Grad_boostSeries
-pub impl @traits.Cloneable for Grad_boostSeries
-pub impl @traits.Countable for Grad_boostSeries
-pub impl @traits.Describable for Grad_boostSeries
-pub impl @traits.Named for Grad_boostSeries
-pub impl @traits.Resettable for Grad_boostSeries
-
-pub struct Grad_boostVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn Grad_boostVector::check(Self) -> Bool
-pub fn Grad_boostVector::clone(Self) -> Self
-pub fn Grad_boostVector::count(Self) -> Int32
-pub fn Grad_boostVector::describe(Self) -> String
-pub fn Grad_boostVector::name(Self) -> String
-pub fn Grad_boostVector::reset(Self) -> Self
-pub impl @traits.Checkable for Grad_boostVector
-pub impl @traits.Cloneable for Grad_boostVector
-pub impl @traits.Countable for Grad_boostVector
-pub impl @traits.Describable for Grad_boostVector
-pub impl @traits.Named for Grad_boostVector
-pub impl @traits.Resettable for Grad_boostVector
-
-pub struct LightgbmMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn LightgbmMatrix::check(Self) -> Bool
-pub fn LightgbmMatrix::clone(Self) -> Self
-pub fn LightgbmMatrix::count(Self) -> Int32
-pub fn LightgbmMatrix::describe(Self) -> String
-pub fn LightgbmMatrix::name(Self) -> String
-pub fn LightgbmMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for LightgbmMatrix
-pub impl @traits.Cloneable for LightgbmMatrix
-pub impl @traits.Countable for LightgbmMatrix
-pub impl @traits.Describable for LightgbmMatrix
-pub impl @traits.Named for LightgbmMatrix
-pub impl @traits.Resettable for LightgbmMatrix
-
-pub struct LightgbmPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn LightgbmPoint::check(Self) -> Bool
-pub fn LightgbmPoint::clone(Self) -> Self
-pub fn LightgbmPoint::count(Self) -> Int32
-pub fn LightgbmPoint::describe(Self) -> String
-pub fn LightgbmPoint::name(Self) -> String
-pub fn LightgbmPoint::reset(Self) -> Self
-pub impl @traits.Checkable for LightgbmPoint
-pub impl @traits.Cloneable for LightgbmPoint
-pub impl @traits.Countable for LightgbmPoint
-pub impl @traits.Describable for LightgbmPoint
-pub impl @traits.Named for LightgbmPoint
-pub impl @traits.Resettable for LightgbmPoint
-
-pub struct LightgbmSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn LightgbmSeries::check(Self) -> Bool
-pub fn LightgbmSeries::clone(Self) -> Self
-pub fn LightgbmSeries::count(Self) -> Int32
-pub fn LightgbmSeries::describe(Self) -> String
-pub fn LightgbmSeries::name(Self) -> String
-pub fn LightgbmSeries::reset(Self) -> Self
-pub impl @traits.Checkable for LightgbmSeries
-pub impl @traits.Cloneable for LightgbmSeries
-pub impl @traits.Countable for LightgbmSeries
-pub impl @traits.Describable for LightgbmSeries
-pub impl @traits.Named for LightgbmSeries
-pub impl @traits.Resettable for LightgbmSeries
-
-pub struct LightgbmVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn LightgbmVector::check(Self) -> Bool
-pub fn LightgbmVector::clone(Self) -> Self
-pub fn LightgbmVector::count(Self) -> Int32
-pub fn LightgbmVector::describe(Self) -> String
-pub fn LightgbmVector::name(Self) -> String
-pub fn LightgbmVector::reset(Self) -> Self
-pub impl @traits.Checkable for LightgbmVector
-pub impl @traits.Cloneable for LightgbmVector
-pub impl @traits.Countable for LightgbmVector
-pub impl @traits.Describable for LightgbmVector
-pub impl @traits.Named for LightgbmVector
-pub impl @traits.Resettable for LightgbmVector
-
-pub struct Logit_boostMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn Logit_boostMatrix::check(Self) -> Bool
-pub fn Logit_boostMatrix::clone(Self) -> Self
-pub fn Logit_boostMatrix::count(Self) -> Int32
-pub fn Logit_boostMatrix::describe(Self) -> String
-pub fn Logit_boostMatrix::name(Self) -> String
-pub fn Logit_boostMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for Logit_boostMatrix
-pub impl @traits.Cloneable for Logit_boostMatrix
-pub impl @traits.Countable for Logit_boostMatrix
-pub impl @traits.Describable for Logit_boostMatrix
-pub impl @traits.Named for Logit_boostMatrix
-pub impl @traits.Resettable for Logit_boostMatrix
-
-pub struct Logit_boostPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn Logit_boostPoint::check(Self) -> Bool
-pub fn Logit_boostPoint::clone(Self) -> Self
-pub fn Logit_boostPoint::count(Self) -> Int32
-pub fn Logit_boostPoint::describe(Self) -> String
-pub fn Logit_boostPoint::name(Self) -> String
-pub fn Logit_boostPoint::reset(Self) -> Self
-pub impl @traits.Checkable for Logit_boostPoint
-pub impl @traits.Cloneable for Logit_boostPoint
-pub impl @traits.Countable for Logit_boostPoint
-pub impl @traits.Describable for Logit_boostPoint
-pub impl @traits.Named for Logit_boostPoint
-pub impl @traits.Resettable for Logit_boostPoint
-
-pub struct Logit_boostSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn Logit_boostSeries::check(Self) -> Bool
-pub fn Logit_boostSeries::clone(Self) -> Self
-pub fn Logit_boostSeries::count(Self) -> Int32
-pub fn Logit_boostSeries::describe(Self) -> String
-pub fn Logit_boostSeries::name(Self) -> String
-pub fn Logit_boostSeries::reset(Self) -> Self
-pub impl @traits.Checkable for Logit_boostSeries
-pub impl @traits.Cloneable for Logit_boostSeries
-pub impl @traits.Countable for Logit_boostSeries
-pub impl @traits.Describable for Logit_boostSeries
-pub impl @traits.Named for Logit_boostSeries
-pub impl @traits.Resettable for Logit_boostSeries
-
-pub struct Logit_boostVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn Logit_boostVector::check(Self) -> Bool
-pub fn Logit_boostVector::clone(Self) -> Self
-pub fn Logit_boostVector::count(Self) -> Int32
-pub fn Logit_boostVector::describe(Self) -> String
-pub fn Logit_boostVector::name(Self) -> String
-pub fn Logit_boostVector::reset(Self) -> Self
-pub impl @traits.Checkable for Logit_boostVector
-pub impl @traits.Cloneable for Logit_boostVector
-pub impl @traits.Countable for Logit_boostVector
-pub impl @traits.Describable for Logit_boostVector
-pub impl @traits.Named for Logit_boostVector
-pub impl @traits.Resettable for Logit_boostVector
-
 pub struct RandomForestConfig {
   n_estimators : Int32
   max_depth : Int32
@@ -1653,76 +388,6 @@ pub struct StackingConfig {
 pub fn StackingConfig::equal(Self, Self) -> Bool
 pub fn StackingConfig::not_equal(Self, Self) -> Bool
 pub fn StackingConfig::to_repr(Self) -> @debug.Repr
-
-pub struct Tpr_forestMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn Tpr_forestMatrix::check(Self) -> Bool
-pub fn Tpr_forestMatrix::clone(Self) -> Self
-pub fn Tpr_forestMatrix::count(Self) -> Int32
-pub fn Tpr_forestMatrix::describe(Self) -> String
-pub fn Tpr_forestMatrix::name(Self) -> String
-pub fn Tpr_forestMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for Tpr_forestMatrix
-pub impl @traits.Cloneable for Tpr_forestMatrix
-pub impl @traits.Countable for Tpr_forestMatrix
-pub impl @traits.Describable for Tpr_forestMatrix
-pub impl @traits.Named for Tpr_forestMatrix
-pub impl @traits.Resettable for Tpr_forestMatrix
-
-pub struct Tpr_forestPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn Tpr_forestPoint::check(Self) -> Bool
-pub fn Tpr_forestPoint::clone(Self) -> Self
-pub fn Tpr_forestPoint::count(Self) -> Int32
-pub fn Tpr_forestPoint::describe(Self) -> String
-pub fn Tpr_forestPoint::name(Self) -> String
-pub fn Tpr_forestPoint::reset(Self) -> Self
-pub impl @traits.Checkable for Tpr_forestPoint
-pub impl @traits.Cloneable for Tpr_forestPoint
-pub impl @traits.Countable for Tpr_forestPoint
-pub impl @traits.Describable for Tpr_forestPoint
-pub impl @traits.Named for Tpr_forestPoint
-pub impl @traits.Resettable for Tpr_forestPoint
-
-pub struct Tpr_forestSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn Tpr_forestSeries::check(Self) -> Bool
-pub fn Tpr_forestSeries::clone(Self) -> Self
-pub fn Tpr_forestSeries::count(Self) -> Int32
-pub fn Tpr_forestSeries::describe(Self) -> String
-pub fn Tpr_forestSeries::name(Self) -> String
-pub fn Tpr_forestSeries::reset(Self) -> Self
-pub impl @traits.Checkable for Tpr_forestSeries
-pub impl @traits.Cloneable for Tpr_forestSeries
-pub impl @traits.Countable for Tpr_forestSeries
-pub impl @traits.Describable for Tpr_forestSeries
-pub impl @traits.Named for Tpr_forestSeries
-pub impl @traits.Resettable for Tpr_forestSeries
-
-pub struct Tpr_forestVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn Tpr_forestVector::check(Self) -> Bool
-pub fn Tpr_forestVector::clone(Self) -> Self
-pub fn Tpr_forestVector::count(Self) -> Int32
-pub fn Tpr_forestVector::describe(Self) -> String
-pub fn Tpr_forestVector::name(Self) -> String
-pub fn Tpr_forestVector::reset(Self) -> Self
-pub impl @traits.Checkable for Tpr_forestVector
-pub impl @traits.Cloneable for Tpr_forestVector
-pub impl @traits.Countable for Tpr_forestVector
-pub impl @traits.Describable for Tpr_forestVector
-pub impl @traits.Named for Tpr_forestVector
-pub impl @traits.Resettable for Tpr_forestVector
 
 pub struct VotingConfig {
   n_models : Int32
@@ -1742,76 +407,6 @@ pub struct XGBoostConfig {
 pub fn XGBoostConfig::equal(Self, Self) -> Bool
 pub fn XGBoostConfig::not_equal(Self, Self) -> Bool
 pub fn XGBoostConfig::to_repr(Self) -> @debug.Repr
-
-pub struct XgboostMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn XgboostMatrix::check(Self) -> Bool
-pub fn XgboostMatrix::clone(Self) -> Self
-pub fn XgboostMatrix::count(Self) -> Int32
-pub fn XgboostMatrix::describe(Self) -> String
-pub fn XgboostMatrix::name(Self) -> String
-pub fn XgboostMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for XgboostMatrix
-pub impl @traits.Cloneable for XgboostMatrix
-pub impl @traits.Countable for XgboostMatrix
-pub impl @traits.Describable for XgboostMatrix
-pub impl @traits.Named for XgboostMatrix
-pub impl @traits.Resettable for XgboostMatrix
-
-pub struct XgboostPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn XgboostPoint::check(Self) -> Bool
-pub fn XgboostPoint::clone(Self) -> Self
-pub fn XgboostPoint::count(Self) -> Int32
-pub fn XgboostPoint::describe(Self) -> String
-pub fn XgboostPoint::name(Self) -> String
-pub fn XgboostPoint::reset(Self) -> Self
-pub impl @traits.Checkable for XgboostPoint
-pub impl @traits.Cloneable for XgboostPoint
-pub impl @traits.Countable for XgboostPoint
-pub impl @traits.Describable for XgboostPoint
-pub impl @traits.Named for XgboostPoint
-pub impl @traits.Resettable for XgboostPoint
-
-pub struct XgboostSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn XgboostSeries::check(Self) -> Bool
-pub fn XgboostSeries::clone(Self) -> Self
-pub fn XgboostSeries::count(Self) -> Int32
-pub fn XgboostSeries::describe(Self) -> String
-pub fn XgboostSeries::name(Self) -> String
-pub fn XgboostSeries::reset(Self) -> Self
-pub impl @traits.Checkable for XgboostSeries
-pub impl @traits.Cloneable for XgboostSeries
-pub impl @traits.Countable for XgboostSeries
-pub impl @traits.Describable for XgboostSeries
-pub impl @traits.Named for XgboostSeries
-pub impl @traits.Resettable for XgboostSeries
-
-pub struct XgboostVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn XgboostVector::check(Self) -> Bool
-pub fn XgboostVector::clone(Self) -> Self
-pub fn XgboostVector::count(Self) -> Int32
-pub fn XgboostVector::describe(Self) -> String
-pub fn XgboostVector::name(Self) -> String
-pub fn XgboostVector::reset(Self) -> Self
-pub impl @traits.Checkable for XgboostVector
-pub impl @traits.Cloneable for XgboostVector
-pub impl @traits.Countable for XgboostVector
-pub impl @traits.Describable for XgboostVector
-pub impl @traits.Named for XgboostVector
-pub impl @traits.Resettable for XgboostVector
 
 // Type aliases
 

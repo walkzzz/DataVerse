@@ -2,41 +2,41 @@
 /// # Smoke tests - auto-generated
 ///
 test "autoencoder_rt_autoencoder_rt_make_labeled_point_smoke" {
-  let _ = @dl.autoencoder_rt_autoencoder_rt_make_labeled_point(1.0, 1.0, 1)
+  let _ = @types.dv_make_labeled_point(1.0, 1.0, 1)
 }
 ///|
 test "autoencoder_rt_autoencoder_rt_make_matrix_smoke" {
-  let _ = @dl.autoencoder_rt_autoencoder_rt_make_matrix(1, 1, 1.0)
+  let _ = @types.dv_make_matrix(1, 1, 1.0)
 }
 ///|
 test "autoencoder_rt_autoencoder_rt_make_point_smoke" {
-  let _ = @dl.autoencoder_rt_autoencoder_rt_make_point(1.0, 1.0)
+  let _ = @types.dv_make_point(1.0, 1.0)
 }
 ///|
 test "autoencoder_rt_autoencoder_rt_make_series_smoke" {
-  let _ = @dl.autoencoder_rt_autoencoder_rt_make_series([1.0, 2.0, 3.0], "test")
+  let _ = @types.dv_make_series([1.0, 2.0, 3.0], "test")
 }
 ///|
 test "autoencoder_rt_autoencoder_rt_make_vector_smoke" {
-  let _ = @dl.autoencoder_rt_autoencoder_rt_make_vector([1.0, 2.0, 3.0])
+  let _ = @types.dv_make_vector([1.0, 2.0, 3.0])
 }
 ///|
 test "autoencoder_rt_autoencoder_rt_matrix_identity_smoke" {
-  let _ = @dl.autoencoder_rt_autoencoder_rt_matrix_identity(1)
+  let _ = @types.dv_matrix_identity(1)
 }
 ///|
 test "autoencoder_rt_autoencoder_rt_vector_zero_smoke" {
-  let _ = @dl.autoencoder_rt_autoencoder_rt_vector_zero(1)
+  let _ = @types.dv_vector_zero(1)
 }
 ///|
 test "cnn_rt_cnn_rt_make_labeled_point_smoke" {
-  let _ = @dl.cnn_rt_cnn_rt_make_labeled_point(1.0, 1.0, 1)
+  let _ = @types.dv_make_labeled_point(1.0, 1.0, 1)
 }
 ///|
 test "cnn_rt_cnn_rt_make_matrix_smoke" {
-  let _ = @dl.cnn_rt_cnn_rt_make_matrix(1, 1, 1.0)
+  let _ = @types.dv_make_matrix(1, 1, 1.0)
 }
 ///|
 test "cnn_rt_cnn_rt_make_point_smoke" {
-  let _ = @dl.cnn_rt_cnn_rt_make_point(1.0, 1.0)
+  let _ = @types.dv_make_point(1.0, 1.0)
 }

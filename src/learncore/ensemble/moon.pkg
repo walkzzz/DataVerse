@@ -1,5 +1,5 @@
 // learncore/ensemble — 聚合包
 import {
-  "dataverse/core/traits",
+  "dataverse/extcore/types",
   "dataverse/extcore/_common",
 }

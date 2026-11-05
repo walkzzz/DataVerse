@@ -1,37 +1,37 @@
 ///|
 /// S13 tests for new packages
 test "linalg_point_basic" {
-  let pt = @math.linalg_linalg_make_point(3.0, 4.0)
-  assert_true(@math.linalg_linalg_point_x(pt) == 3.0)
-  assert_true(@math.linalg_linalg_point_y(pt) == 4.0)
-  let qt = @math.linalg_linalg_make_point(0.0, 0.0)
-  let dt = @math.linalg_linalg_point_dist(pt, qt)
+  let pt = @types.dv_make_point(3.0, 4.0)
+  assert_true(@types.dv_point_x(pt) == 3.0)
+  assert_true(@types.dv_point_y(pt) == 4.0)
+  let qt = @types.dv_make_point(0.0, 0.0)
+  let dt = @types.dv_point_dist(pt, qt)
   assert_true(dt > 4.9 && dt < 5.1)
 }
 
 ///|
 test "linalg_series_stats" {
-  let sr = @math.linalg_linalg_make_series([1.0, 2.0, 3.0, 4.0, 5.0], "test")
-  assert_true(@math.linalg_linalg_series_len(sr) == 5)
-  let mn = @math.linalg_linalg_series_mean(sr)
+  let sr = @types.dv_make_series([1.0, 2.0, 3.0, 4.0, 5.0], "test")
+  assert_true(@types.dv_series_len(sr) == 5)
+  let mn = @types.dv_series_mean(sr)
   assert_true(mn > 2.9 && mn < 3.1)
 }
 
 ///|
 test "linalg_matrix_ops" {
-  let mt = @math.linalg_linalg_make_matrix(3, 3, 0.0)
-  assert_true(@math.linalg_linalg_matrix_get(mt, 1, 1) == 0.0)
-  let id = @math.linalg_linalg_matrix_identity(3)
-  assert_true(@math.linalg_linalg_matrix_get(id, 0, 0) == 1.0)
-  assert_true(@math.linalg_linalg_matrix_get(id, 0, 1) == 0.0)
+  let mt = @types.dv_make_matrix(3, 3, 0.0)
+  assert_true(@types.dv_matrix_get(mt, 1, 1) == 0.0)
+  let id = @types.dv_matrix_identity(3)
+  assert_true(@types.dv_matrix_get(id, 0, 0) == 1.0)
+  assert_true(@types.dv_matrix_get(id, 0, 1) == 0.0)
 }
 
 ///|
 test "linalg_vector_ops" {
-  let vt = @math.linalg_linalg_make_vector([1.0, 2.0, 3.0])
+  let vt = @types.dv_make_vector([1.0, 2.0, 3.0])
   assert_true(
-    @math.linalg_linalg_vector_dot(vt, vt) > 13.9 &&
-    @math.linalg_linalg_vector_dot(vt, vt) < 14.1,
+    @types.dv_vector_dot(vt, vt) > 13.9 &&
+    @types.dv_vector_dot(vt, vt) < 14.1,
   )
 }
 
@@ -45,39 +45,39 @@ test "linalg_metrics" {
 
 ///|
 test "num_analysis_series" {
-  let sr = @math.num_analysis_num_analysis_make_series([10.0, 20.0, 30.0], "data")
-  assert_true(@math.num_analysis_num_analysis_series_len(sr) == 3)
-  let total = @math.num_analysis_num_analysis_series_sum(sr)
+  let sr = @types.dv_make_series([10.0, 20.0, 30.0], "data")
+  assert_true(@types.dv_series_len(sr) == 3)
+  let total = @types.dv_series_sum(sr)
   assert_true(total > 59.9 && total < 60.1)
 }
 
 ///|
 test "diff_eq_basic" {
-  let sr = @math.diff_eq_diff_eq_make_series([1.0, 4.0, 9.0, 16.0], "vals")
-  let mn = @math.diff_eq_diff_eq_series_mean(sr)
+  let sr = @types.dv_make_series([1.0, 4.0, 9.0, 16.0], "vals")
+  let mn = @types.dv_series_mean(sr)
   assert_true(mn > 7.4 && mn < 7.6)
 }
 
 ///|
 test "elm_basic" {
-  let sr = @ml.elm_elm_make_series([1.0, 2.0, 3.0], "x")
-  assert_true(@ml.elm_elm_series_len(sr) == 3)
-  let mx = @ml.elm_elm_series_max(sr)
+  let sr = @types.dv_make_series([1.0, 2.0, 3.0], "x")
+  assert_true(@types.dv_series_len(sr) == 3)
+  let mx = @types.dv_series_max(sr)
   assert_true(mx == 3.0)
 }
 
 ///|
 test "rbf_net_basic" {
-  let pt = @ml.rbf_net_rbf_net_make_point(1.0, 1.0)
-  let qt = @ml.rbf_net_rbf_net_make_point(4.0, 5.0)
-  let dt = @ml.rbf_net_rbf_net_point_dist(pt, qt)
+  let pt = @types.dv_make_point(1.0, 1.0)
+  let qt = @types.dv_make_point(4.0, 5.0)
+  let dt = @types.dv_point_dist(pt, qt)
   assert_true(dt > 4.9 && dt < 5.1)
 }
 
 ///|
 test "som_basic" {
-  let mt = @ml.som_som_matrix_identity(3)
-  assert_true(@ml.som_som_matrix_trace(mt) == 3.0)
+  let mt = @types.dv_matrix_identity(3)
+  assert_true(@types.dv_matrix_trace(mt) == 3.0)
 }
 
 ///|

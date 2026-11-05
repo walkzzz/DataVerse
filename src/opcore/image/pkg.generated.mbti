@@ -2,7 +2,6 @@
 package "dataverse/opcore/image"
 
 import {
-  "dataverse/core/traits",
   "dataverse/dataobject",
   "moonbitlang/core/debug",
 }
@@ -18,55 +17,7 @@ pub fn color_correct_color_correct_f1(Array[Int32], Array[Int32], Int32) -> Doub
 
 pub fn color_correct_color_correct_mae(Array[Double], Array[Double]) -> Double
 
-pub fn color_correct_color_correct_make_labeled_point(Double, Double, Int32) -> Color_correctPoint
-
-pub fn color_correct_color_correct_make_matrix(Int32, Int32, Double) -> Color_correctMatrix
-
-pub fn color_correct_color_correct_make_point(Double, Double) -> Color_correctPoint
-
-pub fn color_correct_color_correct_make_series(Array[Double], String) -> Color_correctSeries
-
-pub fn color_correct_color_correct_make_vector(Array[Double]) -> Color_correctVector
-
-pub fn color_correct_color_correct_matrix_add(Color_correctMatrix, Color_correctMatrix) -> Color_correctMatrix
-
-pub fn color_correct_color_correct_matrix_get(Color_correctMatrix, Int32, Int32) -> Double
-
-pub fn color_correct_color_correct_matrix_identity(Int32) -> Color_correctMatrix
-
-pub fn color_correct_color_correct_matrix_multiply(Color_correctMatrix, Color_correctMatrix) -> Color_correctMatrix
-
-pub fn color_correct_color_correct_matrix_norm(Color_correctMatrix) -> Double
-
-pub fn color_correct_color_correct_matrix_scale(Color_correctMatrix, Double) -> Color_correctMatrix
-
-pub fn color_correct_color_correct_matrix_to_string(Color_correctMatrix) -> String
-
-pub fn color_correct_color_correct_matrix_trace(Color_correctMatrix) -> Double
-
-pub fn color_correct_color_correct_matrix_transpose(Color_correctMatrix) -> Color_correctMatrix
-
 pub fn color_correct_color_correct_mse(Array[Double], Array[Double]) -> Double
-
-pub fn color_correct_color_correct_point_add(Color_correctPoint, Color_correctPoint) -> Color_correctPoint
-
-pub fn color_correct_color_correct_point_dist(Color_correctPoint, Color_correctPoint) -> Double
-
-pub fn color_correct_color_correct_point_dot(Color_correctPoint, Color_correctPoint) -> Double
-
-pub fn color_correct_color_correct_point_label(Color_correctPoint) -> Int32
-
-pub fn color_correct_color_correct_point_norm(Color_correctPoint) -> Double
-
-pub fn color_correct_color_correct_point_scale(Color_correctPoint, Double) -> Color_correctPoint
-
-pub fn color_correct_color_correct_point_sub(Color_correctPoint, Color_correctPoint) -> Color_correctPoint
-
-pub fn color_correct_color_correct_point_to_string(Color_correctPoint) -> String
-
-pub fn color_correct_color_correct_point_x(Color_correctPoint) -> Double
-
-pub fn color_correct_color_correct_point_y(Color_correctPoint) -> Double
 
 pub fn color_correct_color_correct_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -74,47 +25,9 @@ pub fn color_correct_color_correct_r2(Array[Double], Array[Double]) -> Double
 
 pub fn color_correct_color_correct_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn color_correct_color_correct_series_add(Color_correctSeries, Color_correctSeries) -> Color_correctSeries
-
-pub fn color_correct_color_correct_series_len(Color_correctSeries) -> Int32
-
-pub fn color_correct_color_correct_series_max(Color_correctSeries) -> Double
-
-pub fn color_correct_color_correct_series_mean(Color_correctSeries) -> Double
-
-pub fn color_correct_color_correct_series_min(Color_correctSeries) -> Double
-
-pub fn color_correct_color_correct_series_scale(Color_correctSeries, Double) -> Color_correctSeries
-
-pub fn color_correct_color_correct_series_std(Color_correctSeries) -> Double
-
-pub fn color_correct_color_correct_series_sum(Color_correctSeries) -> Double
-
-pub fn color_correct_color_correct_series_to_string(Color_correctSeries) -> String
-
-pub fn color_correct_color_correct_series_var(Color_correctSeries) -> Double
-
 pub fn color_correct_color_correct_std(Array[Double]) -> Double
 
 pub fn color_correct_color_correct_var(Array[Double]) -> Double
-
-pub fn color_correct_color_correct_vector_add(Color_correctVector, Color_correctVector) -> Color_correctVector
-
-pub fn color_correct_color_correct_vector_dist(Color_correctVector, Color_correctVector) -> Double
-
-pub fn color_correct_color_correct_vector_dot(Color_correctVector, Color_correctVector) -> Double
-
-pub fn color_correct_color_correct_vector_norm(Color_correctVector) -> Double
-
-pub fn color_correct_color_correct_vector_normalize(Color_correctVector) -> Color_correctVector
-
-pub fn color_correct_color_correct_vector_scale(Color_correctVector, Double) -> Color_correctVector
-
-pub fn color_correct_color_correct_vector_sub(Color_correctVector, Color_correctVector) -> Color_correctVector
-
-pub fn color_correct_color_correct_vector_to_string(Color_correctVector) -> String
-
-pub fn color_correct_color_correct_vector_zero(Int32) -> Color_correctVector
 
 pub fn color_space_color_space_accuracy(Array[Int32], Array[Int32]) -> Double
 
@@ -126,55 +39,7 @@ pub fn color_space_color_space_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn color_space_color_space_mae(Array[Double], Array[Double]) -> Double
 
-pub fn color_space_color_space_make_labeled_point(Double, Double, Int32) -> Color_spacePoint
-
-pub fn color_space_color_space_make_matrix(Int32, Int32, Double) -> Color_spaceMatrix
-
-pub fn color_space_color_space_make_point(Double, Double) -> Color_spacePoint
-
-pub fn color_space_color_space_make_series(Array[Double], String) -> Color_spaceSeries
-
-pub fn color_space_color_space_make_vector(Array[Double]) -> Color_spaceVector
-
-pub fn color_space_color_space_matrix_add(Color_spaceMatrix, Color_spaceMatrix) -> Color_spaceMatrix
-
-pub fn color_space_color_space_matrix_get(Color_spaceMatrix, Int32, Int32) -> Double
-
-pub fn color_space_color_space_matrix_identity(Int32) -> Color_spaceMatrix
-
-pub fn color_space_color_space_matrix_multiply(Color_spaceMatrix, Color_spaceMatrix) -> Color_spaceMatrix
-
-pub fn color_space_color_space_matrix_norm(Color_spaceMatrix) -> Double
-
-pub fn color_space_color_space_matrix_scale(Color_spaceMatrix, Double) -> Color_spaceMatrix
-
-pub fn color_space_color_space_matrix_to_string(Color_spaceMatrix) -> String
-
-pub fn color_space_color_space_matrix_trace(Color_spaceMatrix) -> Double
-
-pub fn color_space_color_space_matrix_transpose(Color_spaceMatrix) -> Color_spaceMatrix
-
 pub fn color_space_color_space_mse(Array[Double], Array[Double]) -> Double
-
-pub fn color_space_color_space_point_add(Color_spacePoint, Color_spacePoint) -> Color_spacePoint
-
-pub fn color_space_color_space_point_dist(Color_spacePoint, Color_spacePoint) -> Double
-
-pub fn color_space_color_space_point_dot(Color_spacePoint, Color_spacePoint) -> Double
-
-pub fn color_space_color_space_point_label(Color_spacePoint) -> Int32
-
-pub fn color_space_color_space_point_norm(Color_spacePoint) -> Double
-
-pub fn color_space_color_space_point_scale(Color_spacePoint, Double) -> Color_spacePoint
-
-pub fn color_space_color_space_point_sub(Color_spacePoint, Color_spacePoint) -> Color_spacePoint
-
-pub fn color_space_color_space_point_to_string(Color_spacePoint) -> String
-
-pub fn color_space_color_space_point_x(Color_spacePoint) -> Double
-
-pub fn color_space_color_space_point_y(Color_spacePoint) -> Double
 
 pub fn color_space_color_space_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -182,47 +47,9 @@ pub fn color_space_color_space_r2(Array[Double], Array[Double]) -> Double
 
 pub fn color_space_color_space_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn color_space_color_space_series_add(Color_spaceSeries, Color_spaceSeries) -> Color_spaceSeries
-
-pub fn color_space_color_space_series_len(Color_spaceSeries) -> Int32
-
-pub fn color_space_color_space_series_max(Color_spaceSeries) -> Double
-
-pub fn color_space_color_space_series_mean(Color_spaceSeries) -> Double
-
-pub fn color_space_color_space_series_min(Color_spaceSeries) -> Double
-
-pub fn color_space_color_space_series_scale(Color_spaceSeries, Double) -> Color_spaceSeries
-
-pub fn color_space_color_space_series_std(Color_spaceSeries) -> Double
-
-pub fn color_space_color_space_series_sum(Color_spaceSeries) -> Double
-
-pub fn color_space_color_space_series_to_string(Color_spaceSeries) -> String
-
-pub fn color_space_color_space_series_var(Color_spaceSeries) -> Double
-
 pub fn color_space_color_space_std(Array[Double]) -> Double
 
 pub fn color_space_color_space_var(Array[Double]) -> Double
-
-pub fn color_space_color_space_vector_add(Color_spaceVector, Color_spaceVector) -> Color_spaceVector
-
-pub fn color_space_color_space_vector_dist(Color_spaceVector, Color_spaceVector) -> Double
-
-pub fn color_space_color_space_vector_dot(Color_spaceVector, Color_spaceVector) -> Double
-
-pub fn color_space_color_space_vector_norm(Color_spaceVector) -> Double
-
-pub fn color_space_color_space_vector_normalize(Color_spaceVector) -> Color_spaceVector
-
-pub fn color_space_color_space_vector_scale(Color_spaceVector, Double) -> Color_spaceVector
-
-pub fn color_space_color_space_vector_sub(Color_spaceVector, Color_spaceVector) -> Color_spaceVector
-
-pub fn color_space_color_space_vector_to_string(Color_spaceVector) -> String
-
-pub fn color_space_color_space_vector_zero(Int32) -> Color_spaceVector
 
 pub fn compression_adaptive_compress(Array[Int32]) -> Array[Int32]
 
@@ -464,55 +291,7 @@ pub fn deblur_deblur_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn deblur_deblur_mae(Array[Double], Array[Double]) -> Double
 
-pub fn deblur_deblur_make_labeled_point(Double, Double, Int32) -> DeblurPoint
-
-pub fn deblur_deblur_make_matrix(Int32, Int32, Double) -> DeblurMatrix
-
-pub fn deblur_deblur_make_point(Double, Double) -> DeblurPoint
-
-pub fn deblur_deblur_make_series(Array[Double], String) -> DeblurSeries
-
-pub fn deblur_deblur_make_vector(Array[Double]) -> DeblurVector
-
-pub fn deblur_deblur_matrix_add(DeblurMatrix, DeblurMatrix) -> DeblurMatrix
-
-pub fn deblur_deblur_matrix_get(DeblurMatrix, Int32, Int32) -> Double
-
-pub fn deblur_deblur_matrix_identity(Int32) -> DeblurMatrix
-
-pub fn deblur_deblur_matrix_multiply(DeblurMatrix, DeblurMatrix) -> DeblurMatrix
-
-pub fn deblur_deblur_matrix_norm(DeblurMatrix) -> Double
-
-pub fn deblur_deblur_matrix_scale(DeblurMatrix, Double) -> DeblurMatrix
-
-pub fn deblur_deblur_matrix_to_string(DeblurMatrix) -> String
-
-pub fn deblur_deblur_matrix_trace(DeblurMatrix) -> Double
-
-pub fn deblur_deblur_matrix_transpose(DeblurMatrix) -> DeblurMatrix
-
 pub fn deblur_deblur_mse(Array[Double], Array[Double]) -> Double
-
-pub fn deblur_deblur_point_add(DeblurPoint, DeblurPoint) -> DeblurPoint
-
-pub fn deblur_deblur_point_dist(DeblurPoint, DeblurPoint) -> Double
-
-pub fn deblur_deblur_point_dot(DeblurPoint, DeblurPoint) -> Double
-
-pub fn deblur_deblur_point_label(DeblurPoint) -> Int32
-
-pub fn deblur_deblur_point_norm(DeblurPoint) -> Double
-
-pub fn deblur_deblur_point_scale(DeblurPoint, Double) -> DeblurPoint
-
-pub fn deblur_deblur_point_sub(DeblurPoint, DeblurPoint) -> DeblurPoint
-
-pub fn deblur_deblur_point_to_string(DeblurPoint) -> String
-
-pub fn deblur_deblur_point_x(DeblurPoint) -> Double
-
-pub fn deblur_deblur_point_y(DeblurPoint) -> Double
 
 pub fn deblur_deblur_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -520,47 +299,9 @@ pub fn deblur_deblur_r2(Array[Double], Array[Double]) -> Double
 
 pub fn deblur_deblur_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn deblur_deblur_series_add(DeblurSeries, DeblurSeries) -> DeblurSeries
-
-pub fn deblur_deblur_series_len(DeblurSeries) -> Int32
-
-pub fn deblur_deblur_series_max(DeblurSeries) -> Double
-
-pub fn deblur_deblur_series_mean(DeblurSeries) -> Double
-
-pub fn deblur_deblur_series_min(DeblurSeries) -> Double
-
-pub fn deblur_deblur_series_scale(DeblurSeries, Double) -> DeblurSeries
-
-pub fn deblur_deblur_series_std(DeblurSeries) -> Double
-
-pub fn deblur_deblur_series_sum(DeblurSeries) -> Double
-
-pub fn deblur_deblur_series_to_string(DeblurSeries) -> String
-
-pub fn deblur_deblur_series_var(DeblurSeries) -> Double
-
 pub fn deblur_deblur_std(Array[Double]) -> Double
 
 pub fn deblur_deblur_var(Array[Double]) -> Double
-
-pub fn deblur_deblur_vector_add(DeblurVector, DeblurVector) -> DeblurVector
-
-pub fn deblur_deblur_vector_dist(DeblurVector, DeblurVector) -> Double
-
-pub fn deblur_deblur_vector_dot(DeblurVector, DeblurVector) -> Double
-
-pub fn deblur_deblur_vector_norm(DeblurVector) -> Double
-
-pub fn deblur_deblur_vector_normalize(DeblurVector) -> DeblurVector
-
-pub fn deblur_deblur_vector_scale(DeblurVector, Double) -> DeblurVector
-
-pub fn deblur_deblur_vector_sub(DeblurVector, DeblurVector) -> DeblurVector
-
-pub fn deblur_deblur_vector_to_string(DeblurVector) -> String
-
-pub fn deblur_deblur_vector_zero(Int32) -> DeblurVector
 
 pub fn demosaic_demosaic_accuracy(Array[Int32], Array[Int32]) -> Double
 
@@ -572,55 +313,7 @@ pub fn demosaic_demosaic_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn demosaic_demosaic_mae(Array[Double], Array[Double]) -> Double
 
-pub fn demosaic_demosaic_make_labeled_point(Double, Double, Int32) -> DemosaicPoint
-
-pub fn demosaic_demosaic_make_matrix(Int32, Int32, Double) -> DemosaicMatrix
-
-pub fn demosaic_demosaic_make_point(Double, Double) -> DemosaicPoint
-
-pub fn demosaic_demosaic_make_series(Array[Double], String) -> DemosaicSeries
-
-pub fn demosaic_demosaic_make_vector(Array[Double]) -> DemosaicVector
-
-pub fn demosaic_demosaic_matrix_add(DemosaicMatrix, DemosaicMatrix) -> DemosaicMatrix
-
-pub fn demosaic_demosaic_matrix_get(DemosaicMatrix, Int32, Int32) -> Double
-
-pub fn demosaic_demosaic_matrix_identity(Int32) -> DemosaicMatrix
-
-pub fn demosaic_demosaic_matrix_multiply(DemosaicMatrix, DemosaicMatrix) -> DemosaicMatrix
-
-pub fn demosaic_demosaic_matrix_norm(DemosaicMatrix) -> Double
-
-pub fn demosaic_demosaic_matrix_scale(DemosaicMatrix, Double) -> DemosaicMatrix
-
-pub fn demosaic_demosaic_matrix_to_string(DemosaicMatrix) -> String
-
-pub fn demosaic_demosaic_matrix_trace(DemosaicMatrix) -> Double
-
-pub fn demosaic_demosaic_matrix_transpose(DemosaicMatrix) -> DemosaicMatrix
-
 pub fn demosaic_demosaic_mse(Array[Double], Array[Double]) -> Double
-
-pub fn demosaic_demosaic_point_add(DemosaicPoint, DemosaicPoint) -> DemosaicPoint
-
-pub fn demosaic_demosaic_point_dist(DemosaicPoint, DemosaicPoint) -> Double
-
-pub fn demosaic_demosaic_point_dot(DemosaicPoint, DemosaicPoint) -> Double
-
-pub fn demosaic_demosaic_point_label(DemosaicPoint) -> Int32
-
-pub fn demosaic_demosaic_point_norm(DemosaicPoint) -> Double
-
-pub fn demosaic_demosaic_point_scale(DemosaicPoint, Double) -> DemosaicPoint
-
-pub fn demosaic_demosaic_point_sub(DemosaicPoint, DemosaicPoint) -> DemosaicPoint
-
-pub fn demosaic_demosaic_point_to_string(DemosaicPoint) -> String
-
-pub fn demosaic_demosaic_point_x(DemosaicPoint) -> Double
-
-pub fn demosaic_demosaic_point_y(DemosaicPoint) -> Double
 
 pub fn demosaic_demosaic_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -628,47 +321,9 @@ pub fn demosaic_demosaic_r2(Array[Double], Array[Double]) -> Double
 
 pub fn demosaic_demosaic_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn demosaic_demosaic_series_add(DemosaicSeries, DemosaicSeries) -> DemosaicSeries
-
-pub fn demosaic_demosaic_series_len(DemosaicSeries) -> Int32
-
-pub fn demosaic_demosaic_series_max(DemosaicSeries) -> Double
-
-pub fn demosaic_demosaic_series_mean(DemosaicSeries) -> Double
-
-pub fn demosaic_demosaic_series_min(DemosaicSeries) -> Double
-
-pub fn demosaic_demosaic_series_scale(DemosaicSeries, Double) -> DemosaicSeries
-
-pub fn demosaic_demosaic_series_std(DemosaicSeries) -> Double
-
-pub fn demosaic_demosaic_series_sum(DemosaicSeries) -> Double
-
-pub fn demosaic_demosaic_series_to_string(DemosaicSeries) -> String
-
-pub fn demosaic_demosaic_series_var(DemosaicSeries) -> Double
-
 pub fn demosaic_demosaic_std(Array[Double]) -> Double
 
 pub fn demosaic_demosaic_var(Array[Double]) -> Double
-
-pub fn demosaic_demosaic_vector_add(DemosaicVector, DemosaicVector) -> DemosaicVector
-
-pub fn demosaic_demosaic_vector_dist(DemosaicVector, DemosaicVector) -> Double
-
-pub fn demosaic_demosaic_vector_dot(DemosaicVector, DemosaicVector) -> Double
-
-pub fn demosaic_demosaic_vector_norm(DemosaicVector) -> Double
-
-pub fn demosaic_demosaic_vector_normalize(DemosaicVector) -> DemosaicVector
-
-pub fn demosaic_demosaic_vector_scale(DemosaicVector, Double) -> DemosaicVector
-
-pub fn demosaic_demosaic_vector_sub(DemosaicVector, DemosaicVector) -> DemosaicVector
-
-pub fn demosaic_demosaic_vector_to_string(DemosaicVector) -> String
-
-pub fn demosaic_demosaic_vector_zero(Int32) -> DemosaicVector
 
 pub fn edge_detection_canney_nms(EdgeImage, EdgeImage) -> EdgeImage
 
@@ -768,55 +423,7 @@ pub fn hdr_hdr_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn hdr_hdr_mae(Array[Double], Array[Double]) -> Double
 
-pub fn hdr_hdr_make_labeled_point(Double, Double, Int32) -> HdrPoint
-
-pub fn hdr_hdr_make_matrix(Int32, Int32, Double) -> HdrMatrix
-
-pub fn hdr_hdr_make_point(Double, Double) -> HdrPoint
-
-pub fn hdr_hdr_make_series(Array[Double], String) -> HdrSeries
-
-pub fn hdr_hdr_make_vector(Array[Double]) -> HdrVector
-
-pub fn hdr_hdr_matrix_add(HdrMatrix, HdrMatrix) -> HdrMatrix
-
-pub fn hdr_hdr_matrix_get(HdrMatrix, Int32, Int32) -> Double
-
-pub fn hdr_hdr_matrix_identity(Int32) -> HdrMatrix
-
-pub fn hdr_hdr_matrix_multiply(HdrMatrix, HdrMatrix) -> HdrMatrix
-
-pub fn hdr_hdr_matrix_norm(HdrMatrix) -> Double
-
-pub fn hdr_hdr_matrix_scale(HdrMatrix, Double) -> HdrMatrix
-
-pub fn hdr_hdr_matrix_to_string(HdrMatrix) -> String
-
-pub fn hdr_hdr_matrix_trace(HdrMatrix) -> Double
-
-pub fn hdr_hdr_matrix_transpose(HdrMatrix) -> HdrMatrix
-
 pub fn hdr_hdr_mse(Array[Double], Array[Double]) -> Double
-
-pub fn hdr_hdr_point_add(HdrPoint, HdrPoint) -> HdrPoint
-
-pub fn hdr_hdr_point_dist(HdrPoint, HdrPoint) -> Double
-
-pub fn hdr_hdr_point_dot(HdrPoint, HdrPoint) -> Double
-
-pub fn hdr_hdr_point_label(HdrPoint) -> Int32
-
-pub fn hdr_hdr_point_norm(HdrPoint) -> Double
-
-pub fn hdr_hdr_point_scale(HdrPoint, Double) -> HdrPoint
-
-pub fn hdr_hdr_point_sub(HdrPoint, HdrPoint) -> HdrPoint
-
-pub fn hdr_hdr_point_to_string(HdrPoint) -> String
-
-pub fn hdr_hdr_point_x(HdrPoint) -> Double
-
-pub fn hdr_hdr_point_y(HdrPoint) -> Double
 
 pub fn hdr_hdr_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -824,47 +431,9 @@ pub fn hdr_hdr_r2(Array[Double], Array[Double]) -> Double
 
 pub fn hdr_hdr_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn hdr_hdr_series_add(HdrSeries, HdrSeries) -> HdrSeries
-
-pub fn hdr_hdr_series_len(HdrSeries) -> Int32
-
-pub fn hdr_hdr_series_max(HdrSeries) -> Double
-
-pub fn hdr_hdr_series_mean(HdrSeries) -> Double
-
-pub fn hdr_hdr_series_min(HdrSeries) -> Double
-
-pub fn hdr_hdr_series_scale(HdrSeries, Double) -> HdrSeries
-
-pub fn hdr_hdr_series_std(HdrSeries) -> Double
-
-pub fn hdr_hdr_series_sum(HdrSeries) -> Double
-
-pub fn hdr_hdr_series_to_string(HdrSeries) -> String
-
-pub fn hdr_hdr_series_var(HdrSeries) -> Double
-
 pub fn hdr_hdr_std(Array[Double]) -> Double
 
 pub fn hdr_hdr_var(Array[Double]) -> Double
-
-pub fn hdr_hdr_vector_add(HdrVector, HdrVector) -> HdrVector
-
-pub fn hdr_hdr_vector_dist(HdrVector, HdrVector) -> Double
-
-pub fn hdr_hdr_vector_dot(HdrVector, HdrVector) -> Double
-
-pub fn hdr_hdr_vector_norm(HdrVector) -> Double
-
-pub fn hdr_hdr_vector_normalize(HdrVector) -> HdrVector
-
-pub fn hdr_hdr_vector_scale(HdrVector, Double) -> HdrVector
-
-pub fn hdr_hdr_vector_sub(HdrVector, HdrVector) -> HdrVector
-
-pub fn hdr_hdr_vector_to_string(HdrVector) -> String
-
-pub fn hdr_hdr_vector_zero(Int32) -> HdrVector
 
 pub fn image_adjust_brightness(GrayImage, Double) -> GrayImage
 
@@ -930,55 +499,7 @@ pub fn image_registration_image_registration_f1(Array[Int32], Array[Int32], Int3
 
 pub fn image_registration_image_registration_mae(Array[Double], Array[Double]) -> Double
 
-pub fn image_registration_image_registration_make_labeled_point(Double, Double, Int32) -> Image_registrationPoint
-
-pub fn image_registration_image_registration_make_matrix(Int32, Int32, Double) -> Image_registrationMatrix
-
-pub fn image_registration_image_registration_make_point(Double, Double) -> Image_registrationPoint
-
-pub fn image_registration_image_registration_make_series(Array[Double], String) -> Image_registrationSeries
-
-pub fn image_registration_image_registration_make_vector(Array[Double]) -> Image_registrationVector
-
-pub fn image_registration_image_registration_matrix_add(Image_registrationMatrix, Image_registrationMatrix) -> Image_registrationMatrix
-
-pub fn image_registration_image_registration_matrix_get(Image_registrationMatrix, Int32, Int32) -> Double
-
-pub fn image_registration_image_registration_matrix_identity(Int32) -> Image_registrationMatrix
-
-pub fn image_registration_image_registration_matrix_multiply(Image_registrationMatrix, Image_registrationMatrix) -> Image_registrationMatrix
-
-pub fn image_registration_image_registration_matrix_norm(Image_registrationMatrix) -> Double
-
-pub fn image_registration_image_registration_matrix_scale(Image_registrationMatrix, Double) -> Image_registrationMatrix
-
-pub fn image_registration_image_registration_matrix_to_string(Image_registrationMatrix) -> String
-
-pub fn image_registration_image_registration_matrix_trace(Image_registrationMatrix) -> Double
-
-pub fn image_registration_image_registration_matrix_transpose(Image_registrationMatrix) -> Image_registrationMatrix
-
 pub fn image_registration_image_registration_mse(Array[Double], Array[Double]) -> Double
-
-pub fn image_registration_image_registration_point_add(Image_registrationPoint, Image_registrationPoint) -> Image_registrationPoint
-
-pub fn image_registration_image_registration_point_dist(Image_registrationPoint, Image_registrationPoint) -> Double
-
-pub fn image_registration_image_registration_point_dot(Image_registrationPoint, Image_registrationPoint) -> Double
-
-pub fn image_registration_image_registration_point_label(Image_registrationPoint) -> Int32
-
-pub fn image_registration_image_registration_point_norm(Image_registrationPoint) -> Double
-
-pub fn image_registration_image_registration_point_scale(Image_registrationPoint, Double) -> Image_registrationPoint
-
-pub fn image_registration_image_registration_point_sub(Image_registrationPoint, Image_registrationPoint) -> Image_registrationPoint
-
-pub fn image_registration_image_registration_point_to_string(Image_registrationPoint) -> String
-
-pub fn image_registration_image_registration_point_x(Image_registrationPoint) -> Double
-
-pub fn image_registration_image_registration_point_y(Image_registrationPoint) -> Double
 
 pub fn image_registration_image_registration_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -986,47 +507,9 @@ pub fn image_registration_image_registration_r2(Array[Double], Array[Double]) ->
 
 pub fn image_registration_image_registration_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn image_registration_image_registration_series_add(Image_registrationSeries, Image_registrationSeries) -> Image_registrationSeries
-
-pub fn image_registration_image_registration_series_len(Image_registrationSeries) -> Int32
-
-pub fn image_registration_image_registration_series_max(Image_registrationSeries) -> Double
-
-pub fn image_registration_image_registration_series_mean(Image_registrationSeries) -> Double
-
-pub fn image_registration_image_registration_series_min(Image_registrationSeries) -> Double
-
-pub fn image_registration_image_registration_series_scale(Image_registrationSeries, Double) -> Image_registrationSeries
-
-pub fn image_registration_image_registration_series_std(Image_registrationSeries) -> Double
-
-pub fn image_registration_image_registration_series_sum(Image_registrationSeries) -> Double
-
-pub fn image_registration_image_registration_series_to_string(Image_registrationSeries) -> String
-
-pub fn image_registration_image_registration_series_var(Image_registrationSeries) -> Double
-
 pub fn image_registration_image_registration_std(Array[Double]) -> Double
 
 pub fn image_registration_image_registration_var(Array[Double]) -> Double
-
-pub fn image_registration_image_registration_vector_add(Image_registrationVector, Image_registrationVector) -> Image_registrationVector
-
-pub fn image_registration_image_registration_vector_dist(Image_registrationVector, Image_registrationVector) -> Double
-
-pub fn image_registration_image_registration_vector_dot(Image_registrationVector, Image_registrationVector) -> Double
-
-pub fn image_registration_image_registration_vector_norm(Image_registrationVector) -> Double
-
-pub fn image_registration_image_registration_vector_normalize(Image_registrationVector) -> Image_registrationVector
-
-pub fn image_registration_image_registration_vector_scale(Image_registrationVector, Double) -> Image_registrationVector
-
-pub fn image_registration_image_registration_vector_sub(Image_registrationVector, Image_registrationVector) -> Image_registrationVector
-
-pub fn image_registration_image_registration_vector_to_string(Image_registrationVector) -> String
-
-pub fn image_registration_image_registration_vector_zero(Int32) -> Image_registrationVector
 
 pub fn image_restoration_image_restoration_accuracy(Array[Int32], Array[Int32]) -> Double
 
@@ -1038,55 +521,7 @@ pub fn image_restoration_image_restoration_f1(Array[Int32], Array[Int32], Int32)
 
 pub fn image_restoration_image_restoration_mae(Array[Double], Array[Double]) -> Double
 
-pub fn image_restoration_image_restoration_make_labeled_point(Double, Double, Int32) -> Image_restorationPoint
-
-pub fn image_restoration_image_restoration_make_matrix(Int32, Int32, Double) -> Image_restorationMatrix
-
-pub fn image_restoration_image_restoration_make_point(Double, Double) -> Image_restorationPoint
-
-pub fn image_restoration_image_restoration_make_series(Array[Double], String) -> Image_restorationSeries
-
-pub fn image_restoration_image_restoration_make_vector(Array[Double]) -> Image_restorationVector
-
-pub fn image_restoration_image_restoration_matrix_add(Image_restorationMatrix, Image_restorationMatrix) -> Image_restorationMatrix
-
-pub fn image_restoration_image_restoration_matrix_get(Image_restorationMatrix, Int32, Int32) -> Double
-
-pub fn image_restoration_image_restoration_matrix_identity(Int32) -> Image_restorationMatrix
-
-pub fn image_restoration_image_restoration_matrix_multiply(Image_restorationMatrix, Image_restorationMatrix) -> Image_restorationMatrix
-
-pub fn image_restoration_image_restoration_matrix_norm(Image_restorationMatrix) -> Double
-
-pub fn image_restoration_image_restoration_matrix_scale(Image_restorationMatrix, Double) -> Image_restorationMatrix
-
-pub fn image_restoration_image_restoration_matrix_to_string(Image_restorationMatrix) -> String
-
-pub fn image_restoration_image_restoration_matrix_trace(Image_restorationMatrix) -> Double
-
-pub fn image_restoration_image_restoration_matrix_transpose(Image_restorationMatrix) -> Image_restorationMatrix
-
 pub fn image_restoration_image_restoration_mse(Array[Double], Array[Double]) -> Double
-
-pub fn image_restoration_image_restoration_point_add(Image_restorationPoint, Image_restorationPoint) -> Image_restorationPoint
-
-pub fn image_restoration_image_restoration_point_dist(Image_restorationPoint, Image_restorationPoint) -> Double
-
-pub fn image_restoration_image_restoration_point_dot(Image_restorationPoint, Image_restorationPoint) -> Double
-
-pub fn image_restoration_image_restoration_point_label(Image_restorationPoint) -> Int32
-
-pub fn image_restoration_image_restoration_point_norm(Image_restorationPoint) -> Double
-
-pub fn image_restoration_image_restoration_point_scale(Image_restorationPoint, Double) -> Image_restorationPoint
-
-pub fn image_restoration_image_restoration_point_sub(Image_restorationPoint, Image_restorationPoint) -> Image_restorationPoint
-
-pub fn image_restoration_image_restoration_point_to_string(Image_restorationPoint) -> String
-
-pub fn image_restoration_image_restoration_point_x(Image_restorationPoint) -> Double
-
-pub fn image_restoration_image_restoration_point_y(Image_restorationPoint) -> Double
 
 pub fn image_restoration_image_restoration_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -1094,47 +529,9 @@ pub fn image_restoration_image_restoration_r2(Array[Double], Array[Double]) -> D
 
 pub fn image_restoration_image_restoration_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn image_restoration_image_restoration_series_add(Image_restorationSeries, Image_restorationSeries) -> Image_restorationSeries
-
-pub fn image_restoration_image_restoration_series_len(Image_restorationSeries) -> Int32
-
-pub fn image_restoration_image_restoration_series_max(Image_restorationSeries) -> Double
-
-pub fn image_restoration_image_restoration_series_mean(Image_restorationSeries) -> Double
-
-pub fn image_restoration_image_restoration_series_min(Image_restorationSeries) -> Double
-
-pub fn image_restoration_image_restoration_series_scale(Image_restorationSeries, Double) -> Image_restorationSeries
-
-pub fn image_restoration_image_restoration_series_std(Image_restorationSeries) -> Double
-
-pub fn image_restoration_image_restoration_series_sum(Image_restorationSeries) -> Double
-
-pub fn image_restoration_image_restoration_series_to_string(Image_restorationSeries) -> String
-
-pub fn image_restoration_image_restoration_series_var(Image_restorationSeries) -> Double
-
 pub fn image_restoration_image_restoration_std(Array[Double]) -> Double
 
 pub fn image_restoration_image_restoration_var(Array[Double]) -> Double
-
-pub fn image_restoration_image_restoration_vector_add(Image_restorationVector, Image_restorationVector) -> Image_restorationVector
-
-pub fn image_restoration_image_restoration_vector_dist(Image_restorationVector, Image_restorationVector) -> Double
-
-pub fn image_restoration_image_restoration_vector_dot(Image_restorationVector, Image_restorationVector) -> Double
-
-pub fn image_restoration_image_restoration_vector_norm(Image_restorationVector) -> Double
-
-pub fn image_restoration_image_restoration_vector_normalize(Image_restorationVector) -> Image_restorationVector
-
-pub fn image_restoration_image_restoration_vector_scale(Image_restorationVector, Double) -> Image_restorationVector
-
-pub fn image_restoration_image_restoration_vector_sub(Image_restorationVector, Image_restorationVector) -> Image_restorationVector
-
-pub fn image_restoration_image_restoration_vector_to_string(Image_restorationVector) -> String
-
-pub fn image_restoration_image_restoration_vector_zero(Int32) -> Image_restorationVector
 
 pub fn image_rgb_to_gray(Int32, Int32, Array[(Double, Double, Double)]) -> GrayImage
 
@@ -1252,55 +649,7 @@ pub fn image_stitch_image_stitch_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn image_stitch_image_stitch_mae(Array[Double], Array[Double]) -> Double
 
-pub fn image_stitch_image_stitch_make_labeled_point(Double, Double, Int32) -> Image_stitchPoint
-
-pub fn image_stitch_image_stitch_make_matrix(Int32, Int32, Double) -> Image_stitchMatrix
-
-pub fn image_stitch_image_stitch_make_point(Double, Double) -> Image_stitchPoint
-
-pub fn image_stitch_image_stitch_make_series(Array[Double], String) -> Image_stitchSeries
-
-pub fn image_stitch_image_stitch_make_vector(Array[Double]) -> Image_stitchVector
-
-pub fn image_stitch_image_stitch_matrix_add(Image_stitchMatrix, Image_stitchMatrix) -> Image_stitchMatrix
-
-pub fn image_stitch_image_stitch_matrix_get(Image_stitchMatrix, Int32, Int32) -> Double
-
-pub fn image_stitch_image_stitch_matrix_identity(Int32) -> Image_stitchMatrix
-
-pub fn image_stitch_image_stitch_matrix_multiply(Image_stitchMatrix, Image_stitchMatrix) -> Image_stitchMatrix
-
-pub fn image_stitch_image_stitch_matrix_norm(Image_stitchMatrix) -> Double
-
-pub fn image_stitch_image_stitch_matrix_scale(Image_stitchMatrix, Double) -> Image_stitchMatrix
-
-pub fn image_stitch_image_stitch_matrix_to_string(Image_stitchMatrix) -> String
-
-pub fn image_stitch_image_stitch_matrix_trace(Image_stitchMatrix) -> Double
-
-pub fn image_stitch_image_stitch_matrix_transpose(Image_stitchMatrix) -> Image_stitchMatrix
-
 pub fn image_stitch_image_stitch_mse(Array[Double], Array[Double]) -> Double
-
-pub fn image_stitch_image_stitch_point_add(Image_stitchPoint, Image_stitchPoint) -> Image_stitchPoint
-
-pub fn image_stitch_image_stitch_point_dist(Image_stitchPoint, Image_stitchPoint) -> Double
-
-pub fn image_stitch_image_stitch_point_dot(Image_stitchPoint, Image_stitchPoint) -> Double
-
-pub fn image_stitch_image_stitch_point_label(Image_stitchPoint) -> Int32
-
-pub fn image_stitch_image_stitch_point_norm(Image_stitchPoint) -> Double
-
-pub fn image_stitch_image_stitch_point_scale(Image_stitchPoint, Double) -> Image_stitchPoint
-
-pub fn image_stitch_image_stitch_point_sub(Image_stitchPoint, Image_stitchPoint) -> Image_stitchPoint
-
-pub fn image_stitch_image_stitch_point_to_string(Image_stitchPoint) -> String
-
-pub fn image_stitch_image_stitch_point_x(Image_stitchPoint) -> Double
-
-pub fn image_stitch_image_stitch_point_y(Image_stitchPoint) -> Double
 
 pub fn image_stitch_image_stitch_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -1308,47 +657,9 @@ pub fn image_stitch_image_stitch_r2(Array[Double], Array[Double]) -> Double
 
 pub fn image_stitch_image_stitch_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn image_stitch_image_stitch_series_add(Image_stitchSeries, Image_stitchSeries) -> Image_stitchSeries
-
-pub fn image_stitch_image_stitch_series_len(Image_stitchSeries) -> Int32
-
-pub fn image_stitch_image_stitch_series_max(Image_stitchSeries) -> Double
-
-pub fn image_stitch_image_stitch_series_mean(Image_stitchSeries) -> Double
-
-pub fn image_stitch_image_stitch_series_min(Image_stitchSeries) -> Double
-
-pub fn image_stitch_image_stitch_series_scale(Image_stitchSeries, Double) -> Image_stitchSeries
-
-pub fn image_stitch_image_stitch_series_std(Image_stitchSeries) -> Double
-
-pub fn image_stitch_image_stitch_series_sum(Image_stitchSeries) -> Double
-
-pub fn image_stitch_image_stitch_series_to_string(Image_stitchSeries) -> String
-
-pub fn image_stitch_image_stitch_series_var(Image_stitchSeries) -> Double
-
 pub fn image_stitch_image_stitch_std(Array[Double]) -> Double
 
 pub fn image_stitch_image_stitch_var(Array[Double]) -> Double
-
-pub fn image_stitch_image_stitch_vector_add(Image_stitchVector, Image_stitchVector) -> Image_stitchVector
-
-pub fn image_stitch_image_stitch_vector_dist(Image_stitchVector, Image_stitchVector) -> Double
-
-pub fn image_stitch_image_stitch_vector_dot(Image_stitchVector, Image_stitchVector) -> Double
-
-pub fn image_stitch_image_stitch_vector_norm(Image_stitchVector) -> Double
-
-pub fn image_stitch_image_stitch_vector_normalize(Image_stitchVector) -> Image_stitchVector
-
-pub fn image_stitch_image_stitch_vector_scale(Image_stitchVector, Double) -> Image_stitchVector
-
-pub fn image_stitch_image_stitch_vector_sub(Image_stitchVector, Image_stitchVector) -> Image_stitchVector
-
-pub fn image_stitch_image_stitch_vector_to_string(Image_stitchVector) -> String
-
-pub fn image_stitch_image_stitch_vector_zero(Int32) -> Image_stitchVector
 
 pub fn image_threshold(GrayImage, Double) -> GrayImage
 
@@ -1362,55 +673,7 @@ pub fn inpaint_inpaint_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn inpaint_inpaint_mae(Array[Double], Array[Double]) -> Double
 
-pub fn inpaint_inpaint_make_labeled_point(Double, Double, Int32) -> InpaintPoint
-
-pub fn inpaint_inpaint_make_matrix(Int32, Int32, Double) -> InpaintMatrix
-
-pub fn inpaint_inpaint_make_point(Double, Double) -> InpaintPoint
-
-pub fn inpaint_inpaint_make_series(Array[Double], String) -> InpaintSeries
-
-pub fn inpaint_inpaint_make_vector(Array[Double]) -> InpaintVector
-
-pub fn inpaint_inpaint_matrix_add(InpaintMatrix, InpaintMatrix) -> InpaintMatrix
-
-pub fn inpaint_inpaint_matrix_get(InpaintMatrix, Int32, Int32) -> Double
-
-pub fn inpaint_inpaint_matrix_identity(Int32) -> InpaintMatrix
-
-pub fn inpaint_inpaint_matrix_multiply(InpaintMatrix, InpaintMatrix) -> InpaintMatrix
-
-pub fn inpaint_inpaint_matrix_norm(InpaintMatrix) -> Double
-
-pub fn inpaint_inpaint_matrix_scale(InpaintMatrix, Double) -> InpaintMatrix
-
-pub fn inpaint_inpaint_matrix_to_string(InpaintMatrix) -> String
-
-pub fn inpaint_inpaint_matrix_trace(InpaintMatrix) -> Double
-
-pub fn inpaint_inpaint_matrix_transpose(InpaintMatrix) -> InpaintMatrix
-
 pub fn inpaint_inpaint_mse(Array[Double], Array[Double]) -> Double
-
-pub fn inpaint_inpaint_point_add(InpaintPoint, InpaintPoint) -> InpaintPoint
-
-pub fn inpaint_inpaint_point_dist(InpaintPoint, InpaintPoint) -> Double
-
-pub fn inpaint_inpaint_point_dot(InpaintPoint, InpaintPoint) -> Double
-
-pub fn inpaint_inpaint_point_label(InpaintPoint) -> Int32
-
-pub fn inpaint_inpaint_point_norm(InpaintPoint) -> Double
-
-pub fn inpaint_inpaint_point_scale(InpaintPoint, Double) -> InpaintPoint
-
-pub fn inpaint_inpaint_point_sub(InpaintPoint, InpaintPoint) -> InpaintPoint
-
-pub fn inpaint_inpaint_point_to_string(InpaintPoint) -> String
-
-pub fn inpaint_inpaint_point_x(InpaintPoint) -> Double
-
-pub fn inpaint_inpaint_point_y(InpaintPoint) -> Double
 
 pub fn inpaint_inpaint_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -1418,47 +681,9 @@ pub fn inpaint_inpaint_r2(Array[Double], Array[Double]) -> Double
 
 pub fn inpaint_inpaint_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn inpaint_inpaint_series_add(InpaintSeries, InpaintSeries) -> InpaintSeries
-
-pub fn inpaint_inpaint_series_len(InpaintSeries) -> Int32
-
-pub fn inpaint_inpaint_series_max(InpaintSeries) -> Double
-
-pub fn inpaint_inpaint_series_mean(InpaintSeries) -> Double
-
-pub fn inpaint_inpaint_series_min(InpaintSeries) -> Double
-
-pub fn inpaint_inpaint_series_scale(InpaintSeries, Double) -> InpaintSeries
-
-pub fn inpaint_inpaint_series_std(InpaintSeries) -> Double
-
-pub fn inpaint_inpaint_series_sum(InpaintSeries) -> Double
-
-pub fn inpaint_inpaint_series_to_string(InpaintSeries) -> String
-
-pub fn inpaint_inpaint_series_var(InpaintSeries) -> Double
-
 pub fn inpaint_inpaint_std(Array[Double]) -> Double
 
 pub fn inpaint_inpaint_var(Array[Double]) -> Double
-
-pub fn inpaint_inpaint_vector_add(InpaintVector, InpaintVector) -> InpaintVector
-
-pub fn inpaint_inpaint_vector_dist(InpaintVector, InpaintVector) -> Double
-
-pub fn inpaint_inpaint_vector_dot(InpaintVector, InpaintVector) -> Double
-
-pub fn inpaint_inpaint_vector_norm(InpaintVector) -> Double
-
-pub fn inpaint_inpaint_vector_normalize(InpaintVector) -> InpaintVector
-
-pub fn inpaint_inpaint_vector_scale(InpaintVector, Double) -> InpaintVector
-
-pub fn inpaint_inpaint_vector_sub(InpaintVector, InpaintVector) -> InpaintVector
-
-pub fn inpaint_inpaint_vector_to_string(InpaintVector) -> String
-
-pub fn inpaint_inpaint_vector_zero(Int32) -> InpaintVector
 
 pub fn morphology_adv_make_morph_image(Int32, Int32, Array[Double]) -> MorphImage
 
@@ -1550,55 +775,7 @@ pub fn panorama_panorama_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn panorama_panorama_mae(Array[Double], Array[Double]) -> Double
 
-pub fn panorama_panorama_make_labeled_point(Double, Double, Int32) -> PanoramaPoint
-
-pub fn panorama_panorama_make_matrix(Int32, Int32, Double) -> PanoramaMatrix
-
-pub fn panorama_panorama_make_point(Double, Double) -> PanoramaPoint
-
-pub fn panorama_panorama_make_series(Array[Double], String) -> PanoramaSeries
-
-pub fn panorama_panorama_make_vector(Array[Double]) -> PanoramaVector
-
-pub fn panorama_panorama_matrix_add(PanoramaMatrix, PanoramaMatrix) -> PanoramaMatrix
-
-pub fn panorama_panorama_matrix_get(PanoramaMatrix, Int32, Int32) -> Double
-
-pub fn panorama_panorama_matrix_identity(Int32) -> PanoramaMatrix
-
-pub fn panorama_panorama_matrix_multiply(PanoramaMatrix, PanoramaMatrix) -> PanoramaMatrix
-
-pub fn panorama_panorama_matrix_norm(PanoramaMatrix) -> Double
-
-pub fn panorama_panorama_matrix_scale(PanoramaMatrix, Double) -> PanoramaMatrix
-
-pub fn panorama_panorama_matrix_to_string(PanoramaMatrix) -> String
-
-pub fn panorama_panorama_matrix_trace(PanoramaMatrix) -> Double
-
-pub fn panorama_panorama_matrix_transpose(PanoramaMatrix) -> PanoramaMatrix
-
 pub fn panorama_panorama_mse(Array[Double], Array[Double]) -> Double
-
-pub fn panorama_panorama_point_add(PanoramaPoint, PanoramaPoint) -> PanoramaPoint
-
-pub fn panorama_panorama_point_dist(PanoramaPoint, PanoramaPoint) -> Double
-
-pub fn panorama_panorama_point_dot(PanoramaPoint, PanoramaPoint) -> Double
-
-pub fn panorama_panorama_point_label(PanoramaPoint) -> Int32
-
-pub fn panorama_panorama_point_norm(PanoramaPoint) -> Double
-
-pub fn panorama_panorama_point_scale(PanoramaPoint, Double) -> PanoramaPoint
-
-pub fn panorama_panorama_point_sub(PanoramaPoint, PanoramaPoint) -> PanoramaPoint
-
-pub fn panorama_panorama_point_to_string(PanoramaPoint) -> String
-
-pub fn panorama_panorama_point_x(PanoramaPoint) -> Double
-
-pub fn panorama_panorama_point_y(PanoramaPoint) -> Double
 
 pub fn panorama_panorama_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -1606,47 +783,9 @@ pub fn panorama_panorama_r2(Array[Double], Array[Double]) -> Double
 
 pub fn panorama_panorama_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn panorama_panorama_series_add(PanoramaSeries, PanoramaSeries) -> PanoramaSeries
-
-pub fn panorama_panorama_series_len(PanoramaSeries) -> Int32
-
-pub fn panorama_panorama_series_max(PanoramaSeries) -> Double
-
-pub fn panorama_panorama_series_mean(PanoramaSeries) -> Double
-
-pub fn panorama_panorama_series_min(PanoramaSeries) -> Double
-
-pub fn panorama_panorama_series_scale(PanoramaSeries, Double) -> PanoramaSeries
-
-pub fn panorama_panorama_series_std(PanoramaSeries) -> Double
-
-pub fn panorama_panorama_series_sum(PanoramaSeries) -> Double
-
-pub fn panorama_panorama_series_to_string(PanoramaSeries) -> String
-
-pub fn panorama_panorama_series_var(PanoramaSeries) -> Double
-
 pub fn panorama_panorama_std(Array[Double]) -> Double
 
 pub fn panorama_panorama_var(Array[Double]) -> Double
-
-pub fn panorama_panorama_vector_add(PanoramaVector, PanoramaVector) -> PanoramaVector
-
-pub fn panorama_panorama_vector_dist(PanoramaVector, PanoramaVector) -> Double
-
-pub fn panorama_panorama_vector_dot(PanoramaVector, PanoramaVector) -> Double
-
-pub fn panorama_panorama_vector_norm(PanoramaVector) -> Double
-
-pub fn panorama_panorama_vector_normalize(PanoramaVector) -> PanoramaVector
-
-pub fn panorama_panorama_vector_scale(PanoramaVector, Double) -> PanoramaVector
-
-pub fn panorama_panorama_vector_sub(PanoramaVector, PanoramaVector) -> PanoramaVector
-
-pub fn panorama_panorama_vector_to_string(PanoramaVector) -> String
-
-pub fn panorama_panorama_vector_zero(Int32) -> PanoramaVector
 
 pub fn super_res_super_res_accuracy(Array[Int32], Array[Int32]) -> Double
 
@@ -1658,55 +797,7 @@ pub fn super_res_super_res_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn super_res_super_res_mae(Array[Double], Array[Double]) -> Double
 
-pub fn super_res_super_res_make_labeled_point(Double, Double, Int32) -> Super_resPoint
-
-pub fn super_res_super_res_make_matrix(Int32, Int32, Double) -> Super_resMatrix
-
-pub fn super_res_super_res_make_point(Double, Double) -> Super_resPoint
-
-pub fn super_res_super_res_make_series(Array[Double], String) -> Super_resSeries
-
-pub fn super_res_super_res_make_vector(Array[Double]) -> Super_resVector
-
-pub fn super_res_super_res_matrix_add(Super_resMatrix, Super_resMatrix) -> Super_resMatrix
-
-pub fn super_res_super_res_matrix_get(Super_resMatrix, Int32, Int32) -> Double
-
-pub fn super_res_super_res_matrix_identity(Int32) -> Super_resMatrix
-
-pub fn super_res_super_res_matrix_multiply(Super_resMatrix, Super_resMatrix) -> Super_resMatrix
-
-pub fn super_res_super_res_matrix_norm(Super_resMatrix) -> Double
-
-pub fn super_res_super_res_matrix_scale(Super_resMatrix, Double) -> Super_resMatrix
-
-pub fn super_res_super_res_matrix_to_string(Super_resMatrix) -> String
-
-pub fn super_res_super_res_matrix_trace(Super_resMatrix) -> Double
-
-pub fn super_res_super_res_matrix_transpose(Super_resMatrix) -> Super_resMatrix
-
 pub fn super_res_super_res_mse(Array[Double], Array[Double]) -> Double
-
-pub fn super_res_super_res_point_add(Super_resPoint, Super_resPoint) -> Super_resPoint
-
-pub fn super_res_super_res_point_dist(Super_resPoint, Super_resPoint) -> Double
-
-pub fn super_res_super_res_point_dot(Super_resPoint, Super_resPoint) -> Double
-
-pub fn super_res_super_res_point_label(Super_resPoint) -> Int32
-
-pub fn super_res_super_res_point_norm(Super_resPoint) -> Double
-
-pub fn super_res_super_res_point_scale(Super_resPoint, Double) -> Super_resPoint
-
-pub fn super_res_super_res_point_sub(Super_resPoint, Super_resPoint) -> Super_resPoint
-
-pub fn super_res_super_res_point_to_string(Super_resPoint) -> String
-
-pub fn super_res_super_res_point_x(Super_resPoint) -> Double
-
-pub fn super_res_super_res_point_y(Super_resPoint) -> Double
 
 pub fn super_res_super_res_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -1714,47 +805,9 @@ pub fn super_res_super_res_r2(Array[Double], Array[Double]) -> Double
 
 pub fn super_res_super_res_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn super_res_super_res_series_add(Super_resSeries, Super_resSeries) -> Super_resSeries
-
-pub fn super_res_super_res_series_len(Super_resSeries) -> Int32
-
-pub fn super_res_super_res_series_max(Super_resSeries) -> Double
-
-pub fn super_res_super_res_series_mean(Super_resSeries) -> Double
-
-pub fn super_res_super_res_series_min(Super_resSeries) -> Double
-
-pub fn super_res_super_res_series_scale(Super_resSeries, Double) -> Super_resSeries
-
-pub fn super_res_super_res_series_std(Super_resSeries) -> Double
-
-pub fn super_res_super_res_series_sum(Super_resSeries) -> Double
-
-pub fn super_res_super_res_series_to_string(Super_resSeries) -> String
-
-pub fn super_res_super_res_series_var(Super_resSeries) -> Double
-
 pub fn super_res_super_res_std(Array[Double]) -> Double
 
 pub fn super_res_super_res_var(Array[Double]) -> Double
-
-pub fn super_res_super_res_vector_add(Super_resVector, Super_resVector) -> Super_resVector
-
-pub fn super_res_super_res_vector_dist(Super_resVector, Super_resVector) -> Double
-
-pub fn super_res_super_res_vector_dot(Super_resVector, Super_resVector) -> Double
-
-pub fn super_res_super_res_vector_norm(Super_resVector) -> Double
-
-pub fn super_res_super_res_vector_normalize(Super_resVector) -> Super_resVector
-
-pub fn super_res_super_res_vector_scale(Super_resVector, Double) -> Super_resVector
-
-pub fn super_res_super_res_vector_sub(Super_resVector, Super_resVector) -> Super_resVector
-
-pub fn super_res_super_res_vector_to_string(Super_resVector) -> String
-
-pub fn super_res_super_res_vector_zero(Int32) -> Super_resVector
 
 pub fn tone_map_tone_map_accuracy(Array[Int32], Array[Int32]) -> Double
 
@@ -1766,55 +819,7 @@ pub fn tone_map_tone_map_f1(Array[Int32], Array[Int32], Int32) -> Double
 
 pub fn tone_map_tone_map_mae(Array[Double], Array[Double]) -> Double
 
-pub fn tone_map_tone_map_make_labeled_point(Double, Double, Int32) -> Tone_mapPoint
-
-pub fn tone_map_tone_map_make_matrix(Int32, Int32, Double) -> Tone_mapMatrix
-
-pub fn tone_map_tone_map_make_point(Double, Double) -> Tone_mapPoint
-
-pub fn tone_map_tone_map_make_series(Array[Double], String) -> Tone_mapSeries
-
-pub fn tone_map_tone_map_make_vector(Array[Double]) -> Tone_mapVector
-
-pub fn tone_map_tone_map_matrix_add(Tone_mapMatrix, Tone_mapMatrix) -> Tone_mapMatrix
-
-pub fn tone_map_tone_map_matrix_get(Tone_mapMatrix, Int32, Int32) -> Double
-
-pub fn tone_map_tone_map_matrix_identity(Int32) -> Tone_mapMatrix
-
-pub fn tone_map_tone_map_matrix_multiply(Tone_mapMatrix, Tone_mapMatrix) -> Tone_mapMatrix
-
-pub fn tone_map_tone_map_matrix_norm(Tone_mapMatrix) -> Double
-
-pub fn tone_map_tone_map_matrix_scale(Tone_mapMatrix, Double) -> Tone_mapMatrix
-
-pub fn tone_map_tone_map_matrix_to_string(Tone_mapMatrix) -> String
-
-pub fn tone_map_tone_map_matrix_trace(Tone_mapMatrix) -> Double
-
-pub fn tone_map_tone_map_matrix_transpose(Tone_mapMatrix) -> Tone_mapMatrix
-
 pub fn tone_map_tone_map_mse(Array[Double], Array[Double]) -> Double
-
-pub fn tone_map_tone_map_point_add(Tone_mapPoint, Tone_mapPoint) -> Tone_mapPoint
-
-pub fn tone_map_tone_map_point_dist(Tone_mapPoint, Tone_mapPoint) -> Double
-
-pub fn tone_map_tone_map_point_dot(Tone_mapPoint, Tone_mapPoint) -> Double
-
-pub fn tone_map_tone_map_point_label(Tone_mapPoint) -> Int32
-
-pub fn tone_map_tone_map_point_norm(Tone_mapPoint) -> Double
-
-pub fn tone_map_tone_map_point_scale(Tone_mapPoint, Double) -> Tone_mapPoint
-
-pub fn tone_map_tone_map_point_sub(Tone_mapPoint, Tone_mapPoint) -> Tone_mapPoint
-
-pub fn tone_map_tone_map_point_to_string(Tone_mapPoint) -> String
-
-pub fn tone_map_tone_map_point_x(Tone_mapPoint) -> Double
-
-pub fn tone_map_tone_map_point_y(Tone_mapPoint) -> Double
 
 pub fn tone_map_tone_map_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -1822,47 +827,9 @@ pub fn tone_map_tone_map_r2(Array[Double], Array[Double]) -> Double
 
 pub fn tone_map_tone_map_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn tone_map_tone_map_series_add(Tone_mapSeries, Tone_mapSeries) -> Tone_mapSeries
-
-pub fn tone_map_tone_map_series_len(Tone_mapSeries) -> Int32
-
-pub fn tone_map_tone_map_series_max(Tone_mapSeries) -> Double
-
-pub fn tone_map_tone_map_series_mean(Tone_mapSeries) -> Double
-
-pub fn tone_map_tone_map_series_min(Tone_mapSeries) -> Double
-
-pub fn tone_map_tone_map_series_scale(Tone_mapSeries, Double) -> Tone_mapSeries
-
-pub fn tone_map_tone_map_series_std(Tone_mapSeries) -> Double
-
-pub fn tone_map_tone_map_series_sum(Tone_mapSeries) -> Double
-
-pub fn tone_map_tone_map_series_to_string(Tone_mapSeries) -> String
-
-pub fn tone_map_tone_map_series_var(Tone_mapSeries) -> Double
-
 pub fn tone_map_tone_map_std(Array[Double]) -> Double
 
 pub fn tone_map_tone_map_var(Array[Double]) -> Double
-
-pub fn tone_map_tone_map_vector_add(Tone_mapVector, Tone_mapVector) -> Tone_mapVector
-
-pub fn tone_map_tone_map_vector_dist(Tone_mapVector, Tone_mapVector) -> Double
-
-pub fn tone_map_tone_map_vector_dot(Tone_mapVector, Tone_mapVector) -> Double
-
-pub fn tone_map_tone_map_vector_norm(Tone_mapVector) -> Double
-
-pub fn tone_map_tone_map_vector_normalize(Tone_mapVector) -> Tone_mapVector
-
-pub fn tone_map_tone_map_vector_scale(Tone_mapVector, Double) -> Tone_mapVector
-
-pub fn tone_map_tone_map_vector_sub(Tone_mapVector, Tone_mapVector) -> Tone_mapVector
-
-pub fn tone_map_tone_map_vector_to_string(Tone_mapVector) -> String
-
-pub fn tone_map_tone_map_vector_zero(Int32) -> Tone_mapVector
 
 pub fn white_balance_white_balance_accuracy(Array[Int32], Array[Int32]) -> Double
 
@@ -1874,55 +841,7 @@ pub fn white_balance_white_balance_f1(Array[Int32], Array[Int32], Int32) -> Doub
 
 pub fn white_balance_white_balance_mae(Array[Double], Array[Double]) -> Double
 
-pub fn white_balance_white_balance_make_labeled_point(Double, Double, Int32) -> White_balancePoint
-
-pub fn white_balance_white_balance_make_matrix(Int32, Int32, Double) -> White_balanceMatrix
-
-pub fn white_balance_white_balance_make_point(Double, Double) -> White_balancePoint
-
-pub fn white_balance_white_balance_make_series(Array[Double], String) -> White_balanceSeries
-
-pub fn white_balance_white_balance_make_vector(Array[Double]) -> White_balanceVector
-
-pub fn white_balance_white_balance_matrix_add(White_balanceMatrix, White_balanceMatrix) -> White_balanceMatrix
-
-pub fn white_balance_white_balance_matrix_get(White_balanceMatrix, Int32, Int32) -> Double
-
-pub fn white_balance_white_balance_matrix_identity(Int32) -> White_balanceMatrix
-
-pub fn white_balance_white_balance_matrix_multiply(White_balanceMatrix, White_balanceMatrix) -> White_balanceMatrix
-
-pub fn white_balance_white_balance_matrix_norm(White_balanceMatrix) -> Double
-
-pub fn white_balance_white_balance_matrix_scale(White_balanceMatrix, Double) -> White_balanceMatrix
-
-pub fn white_balance_white_balance_matrix_to_string(White_balanceMatrix) -> String
-
-pub fn white_balance_white_balance_matrix_trace(White_balanceMatrix) -> Double
-
-pub fn white_balance_white_balance_matrix_transpose(White_balanceMatrix) -> White_balanceMatrix
-
 pub fn white_balance_white_balance_mse(Array[Double], Array[Double]) -> Double
-
-pub fn white_balance_white_balance_point_add(White_balancePoint, White_balancePoint) -> White_balancePoint
-
-pub fn white_balance_white_balance_point_dist(White_balancePoint, White_balancePoint) -> Double
-
-pub fn white_balance_white_balance_point_dot(White_balancePoint, White_balancePoint) -> Double
-
-pub fn white_balance_white_balance_point_label(White_balancePoint) -> Int32
-
-pub fn white_balance_white_balance_point_norm(White_balancePoint) -> Double
-
-pub fn white_balance_white_balance_point_scale(White_balancePoint, Double) -> White_balancePoint
-
-pub fn white_balance_white_balance_point_sub(White_balancePoint, White_balancePoint) -> White_balancePoint
-
-pub fn white_balance_white_balance_point_to_string(White_balancePoint) -> String
-
-pub fn white_balance_white_balance_point_x(White_balancePoint) -> Double
-
-pub fn white_balance_white_balance_point_y(White_balancePoint) -> Double
 
 pub fn white_balance_white_balance_precision(Array[Int32], Array[Int32], Int32) -> Double
 
@@ -1930,47 +849,9 @@ pub fn white_balance_white_balance_r2(Array[Double], Array[Double]) -> Double
 
 pub fn white_balance_white_balance_recall(Array[Int32], Array[Int32], Int32) -> Double
 
-pub fn white_balance_white_balance_series_add(White_balanceSeries, White_balanceSeries) -> White_balanceSeries
-
-pub fn white_balance_white_balance_series_len(White_balanceSeries) -> Int32
-
-pub fn white_balance_white_balance_series_max(White_balanceSeries) -> Double
-
-pub fn white_balance_white_balance_series_mean(White_balanceSeries) -> Double
-
-pub fn white_balance_white_balance_series_min(White_balanceSeries) -> Double
-
-pub fn white_balance_white_balance_series_scale(White_balanceSeries, Double) -> White_balanceSeries
-
-pub fn white_balance_white_balance_series_std(White_balanceSeries) -> Double
-
-pub fn white_balance_white_balance_series_sum(White_balanceSeries) -> Double
-
-pub fn white_balance_white_balance_series_to_string(White_balanceSeries) -> String
-
-pub fn white_balance_white_balance_series_var(White_balanceSeries) -> Double
-
 pub fn white_balance_white_balance_std(Array[Double]) -> Double
 
 pub fn white_balance_white_balance_var(Array[Double]) -> Double
-
-pub fn white_balance_white_balance_vector_add(White_balanceVector, White_balanceVector) -> White_balanceVector
-
-pub fn white_balance_white_balance_vector_dist(White_balanceVector, White_balanceVector) -> Double
-
-pub fn white_balance_white_balance_vector_dot(White_balanceVector, White_balanceVector) -> Double
-
-pub fn white_balance_white_balance_vector_norm(White_balanceVector) -> Double
-
-pub fn white_balance_white_balance_vector_normalize(White_balanceVector) -> White_balanceVector
-
-pub fn white_balance_white_balance_vector_scale(White_balanceVector, Double) -> White_balanceVector
-
-pub fn white_balance_white_balance_vector_sub(White_balanceVector, White_balanceVector) -> White_balanceVector
-
-pub fn white_balance_white_balance_vector_to_string(White_balanceVector) -> String
-
-pub fn white_balance_white_balance_vector_zero(Int32) -> White_balanceVector
 
 // Errors
 
@@ -1994,146 +875,6 @@ pub fn CVImage::equal(Self, Self) -> Bool
 pub fn CVImage::not_equal(Self, Self) -> Bool
 pub fn CVImage::to_repr(Self) -> @debug.Repr
 
-pub struct Color_correctMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn Color_correctMatrix::check(Self) -> Bool
-pub fn Color_correctMatrix::clone(Self) -> Self
-pub fn Color_correctMatrix::count(Self) -> Int32
-pub fn Color_correctMatrix::describe(Self) -> String
-pub fn Color_correctMatrix::name(Self) -> String
-pub fn Color_correctMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for Color_correctMatrix
-pub impl @traits.Cloneable for Color_correctMatrix
-pub impl @traits.Countable for Color_correctMatrix
-pub impl @traits.Describable for Color_correctMatrix
-pub impl @traits.Named for Color_correctMatrix
-pub impl @traits.Resettable for Color_correctMatrix
-
-pub struct Color_correctPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn Color_correctPoint::check(Self) -> Bool
-pub fn Color_correctPoint::clone(Self) -> Self
-pub fn Color_correctPoint::count(Self) -> Int32
-pub fn Color_correctPoint::describe(Self) -> String
-pub fn Color_correctPoint::name(Self) -> String
-pub fn Color_correctPoint::reset(Self) -> Self
-pub impl @traits.Checkable for Color_correctPoint
-pub impl @traits.Cloneable for Color_correctPoint
-pub impl @traits.Countable for Color_correctPoint
-pub impl @traits.Describable for Color_correctPoint
-pub impl @traits.Named for Color_correctPoint
-pub impl @traits.Resettable for Color_correctPoint
-
-pub struct Color_correctSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn Color_correctSeries::check(Self) -> Bool
-pub fn Color_correctSeries::clone(Self) -> Self
-pub fn Color_correctSeries::count(Self) -> Int32
-pub fn Color_correctSeries::describe(Self) -> String
-pub fn Color_correctSeries::name(Self) -> String
-pub fn Color_correctSeries::reset(Self) -> Self
-pub impl @traits.Checkable for Color_correctSeries
-pub impl @traits.Cloneable for Color_correctSeries
-pub impl @traits.Countable for Color_correctSeries
-pub impl @traits.Describable for Color_correctSeries
-pub impl @traits.Named for Color_correctSeries
-pub impl @traits.Resettable for Color_correctSeries
-
-pub struct Color_correctVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn Color_correctVector::check(Self) -> Bool
-pub fn Color_correctVector::clone(Self) -> Self
-pub fn Color_correctVector::count(Self) -> Int32
-pub fn Color_correctVector::describe(Self) -> String
-pub fn Color_correctVector::name(Self) -> String
-pub fn Color_correctVector::reset(Self) -> Self
-pub impl @traits.Checkable for Color_correctVector
-pub impl @traits.Cloneable for Color_correctVector
-pub impl @traits.Countable for Color_correctVector
-pub impl @traits.Describable for Color_correctVector
-pub impl @traits.Named for Color_correctVector
-pub impl @traits.Resettable for Color_correctVector
-
-pub struct Color_spaceMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn Color_spaceMatrix::check(Self) -> Bool
-pub fn Color_spaceMatrix::clone(Self) -> Self
-pub fn Color_spaceMatrix::count(Self) -> Int32
-pub fn Color_spaceMatrix::describe(Self) -> String
-pub fn Color_spaceMatrix::name(Self) -> String
-pub fn Color_spaceMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for Color_spaceMatrix
-pub impl @traits.Cloneable for Color_spaceMatrix
-pub impl @traits.Countable for Color_spaceMatrix
-pub impl @traits.Describable for Color_spaceMatrix
-pub impl @traits.Named for Color_spaceMatrix
-pub impl @traits.Resettable for Color_spaceMatrix
-
-pub struct Color_spacePoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn Color_spacePoint::check(Self) -> Bool
-pub fn Color_spacePoint::clone(Self) -> Self
-pub fn Color_spacePoint::count(Self) -> Int32
-pub fn Color_spacePoint::describe(Self) -> String
-pub fn Color_spacePoint::name(Self) -> String
-pub fn Color_spacePoint::reset(Self) -> Self
-pub impl @traits.Checkable for Color_spacePoint
-pub impl @traits.Cloneable for Color_spacePoint
-pub impl @traits.Countable for Color_spacePoint
-pub impl @traits.Describable for Color_spacePoint
-pub impl @traits.Named for Color_spacePoint
-pub impl @traits.Resettable for Color_spacePoint
-
-pub struct Color_spaceSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn Color_spaceSeries::check(Self) -> Bool
-pub fn Color_spaceSeries::clone(Self) -> Self
-pub fn Color_spaceSeries::count(Self) -> Int32
-pub fn Color_spaceSeries::describe(Self) -> String
-pub fn Color_spaceSeries::name(Self) -> String
-pub fn Color_spaceSeries::reset(Self) -> Self
-pub impl @traits.Checkable for Color_spaceSeries
-pub impl @traits.Cloneable for Color_spaceSeries
-pub impl @traits.Countable for Color_spaceSeries
-pub impl @traits.Describable for Color_spaceSeries
-pub impl @traits.Named for Color_spaceSeries
-pub impl @traits.Resettable for Color_spaceSeries
-
-pub struct Color_spaceVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn Color_spaceVector::check(Self) -> Bool
-pub fn Color_spaceVector::clone(Self) -> Self
-pub fn Color_spaceVector::count(Self) -> Int32
-pub fn Color_spaceVector::describe(Self) -> String
-pub fn Color_spaceVector::name(Self) -> String
-pub fn Color_spaceVector::reset(Self) -> Self
-pub impl @traits.Checkable for Color_spaceVector
-pub impl @traits.Cloneable for Color_spaceVector
-pub impl @traits.Countable for Color_spaceVector
-pub impl @traits.Describable for Color_spaceVector
-pub impl @traits.Named for Color_spaceVector
-pub impl @traits.Resettable for Color_spaceVector
-
 pub(all) enum CompressionLevel {
   NoCompression
   Fast
@@ -2153,146 +894,6 @@ pub struct CompressionStats {
 pub fn CompressionStats::equal(Self, Self) -> Bool
 pub fn CompressionStats::not_equal(Self, Self) -> Bool
 pub fn CompressionStats::to_repr(Self) -> @debug.Repr
-
-pub struct DeblurMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn DeblurMatrix::check(Self) -> Bool
-pub fn DeblurMatrix::clone(Self) -> Self
-pub fn DeblurMatrix::count(Self) -> Int32
-pub fn DeblurMatrix::describe(Self) -> String
-pub fn DeblurMatrix::name(Self) -> String
-pub fn DeblurMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for DeblurMatrix
-pub impl @traits.Cloneable for DeblurMatrix
-pub impl @traits.Countable for DeblurMatrix
-pub impl @traits.Describable for DeblurMatrix
-pub impl @traits.Named for DeblurMatrix
-pub impl @traits.Resettable for DeblurMatrix
-
-pub struct DeblurPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn DeblurPoint::check(Self) -> Bool
-pub fn DeblurPoint::clone(Self) -> Self
-pub fn DeblurPoint::count(Self) -> Int32
-pub fn DeblurPoint::describe(Self) -> String
-pub fn DeblurPoint::name(Self) -> String
-pub fn DeblurPoint::reset(Self) -> Self
-pub impl @traits.Checkable for DeblurPoint
-pub impl @traits.Cloneable for DeblurPoint
-pub impl @traits.Countable for DeblurPoint
-pub impl @traits.Describable for DeblurPoint
-pub impl @traits.Named for DeblurPoint
-pub impl @traits.Resettable for DeblurPoint
-
-pub struct DeblurSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn DeblurSeries::check(Self) -> Bool
-pub fn DeblurSeries::clone(Self) -> Self
-pub fn DeblurSeries::count(Self) -> Int32
-pub fn DeblurSeries::describe(Self) -> String
-pub fn DeblurSeries::name(Self) -> String
-pub fn DeblurSeries::reset(Self) -> Self
-pub impl @traits.Checkable for DeblurSeries
-pub impl @traits.Cloneable for DeblurSeries
-pub impl @traits.Countable for DeblurSeries
-pub impl @traits.Describable for DeblurSeries
-pub impl @traits.Named for DeblurSeries
-pub impl @traits.Resettable for DeblurSeries
-
-pub struct DeblurVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn DeblurVector::check(Self) -> Bool
-pub fn DeblurVector::clone(Self) -> Self
-pub fn DeblurVector::count(Self) -> Int32
-pub fn DeblurVector::describe(Self) -> String
-pub fn DeblurVector::name(Self) -> String
-pub fn DeblurVector::reset(Self) -> Self
-pub impl @traits.Checkable for DeblurVector
-pub impl @traits.Cloneable for DeblurVector
-pub impl @traits.Countable for DeblurVector
-pub impl @traits.Describable for DeblurVector
-pub impl @traits.Named for DeblurVector
-pub impl @traits.Resettable for DeblurVector
-
-pub struct DemosaicMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn DemosaicMatrix::check(Self) -> Bool
-pub fn DemosaicMatrix::clone(Self) -> Self
-pub fn DemosaicMatrix::count(Self) -> Int32
-pub fn DemosaicMatrix::describe(Self) -> String
-pub fn DemosaicMatrix::name(Self) -> String
-pub fn DemosaicMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for DemosaicMatrix
-pub impl @traits.Cloneable for DemosaicMatrix
-pub impl @traits.Countable for DemosaicMatrix
-pub impl @traits.Describable for DemosaicMatrix
-pub impl @traits.Named for DemosaicMatrix
-pub impl @traits.Resettable for DemosaicMatrix
-
-pub struct DemosaicPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn DemosaicPoint::check(Self) -> Bool
-pub fn DemosaicPoint::clone(Self) -> Self
-pub fn DemosaicPoint::count(Self) -> Int32
-pub fn DemosaicPoint::describe(Self) -> String
-pub fn DemosaicPoint::name(Self) -> String
-pub fn DemosaicPoint::reset(Self) -> Self
-pub impl @traits.Checkable for DemosaicPoint
-pub impl @traits.Cloneable for DemosaicPoint
-pub impl @traits.Countable for DemosaicPoint
-pub impl @traits.Describable for DemosaicPoint
-pub impl @traits.Named for DemosaicPoint
-pub impl @traits.Resettable for DemosaicPoint
-
-pub struct DemosaicSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn DemosaicSeries::check(Self) -> Bool
-pub fn DemosaicSeries::clone(Self) -> Self
-pub fn DemosaicSeries::count(Self) -> Int32
-pub fn DemosaicSeries::describe(Self) -> String
-pub fn DemosaicSeries::name(Self) -> String
-pub fn DemosaicSeries::reset(Self) -> Self
-pub impl @traits.Checkable for DemosaicSeries
-pub impl @traits.Cloneable for DemosaicSeries
-pub impl @traits.Countable for DemosaicSeries
-pub impl @traits.Describable for DemosaicSeries
-pub impl @traits.Named for DemosaicSeries
-pub impl @traits.Resettable for DemosaicSeries
-
-pub struct DemosaicVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn DemosaicVector::check(Self) -> Bool
-pub fn DemosaicVector::clone(Self) -> Self
-pub fn DemosaicVector::count(Self) -> Int32
-pub fn DemosaicVector::describe(Self) -> String
-pub fn DemosaicVector::name(Self) -> String
-pub fn DemosaicVector::reset(Self) -> Self
-pub impl @traits.Checkable for DemosaicVector
-pub impl @traits.Cloneable for DemosaicVector
-pub impl @traits.Countable for DemosaicVector
-pub impl @traits.Describable for DemosaicVector
-pub impl @traits.Named for DemosaicVector
-pub impl @traits.Resettable for DemosaicVector
 
 pub struct DictEntry {
   index : Int32
@@ -2345,76 +946,6 @@ pub struct GrayImage {
   pixels : Array[Double]
 }
 
-pub struct HdrMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn HdrMatrix::check(Self) -> Bool
-pub fn HdrMatrix::clone(Self) -> Self
-pub fn HdrMatrix::count(Self) -> Int32
-pub fn HdrMatrix::describe(Self) -> String
-pub fn HdrMatrix::name(Self) -> String
-pub fn HdrMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for HdrMatrix
-pub impl @traits.Cloneable for HdrMatrix
-pub impl @traits.Countable for HdrMatrix
-pub impl @traits.Describable for HdrMatrix
-pub impl @traits.Named for HdrMatrix
-pub impl @traits.Resettable for HdrMatrix
-
-pub struct HdrPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn HdrPoint::check(Self) -> Bool
-pub fn HdrPoint::clone(Self) -> Self
-pub fn HdrPoint::count(Self) -> Int32
-pub fn HdrPoint::describe(Self) -> String
-pub fn HdrPoint::name(Self) -> String
-pub fn HdrPoint::reset(Self) -> Self
-pub impl @traits.Checkable for HdrPoint
-pub impl @traits.Cloneable for HdrPoint
-pub impl @traits.Countable for HdrPoint
-pub impl @traits.Describable for HdrPoint
-pub impl @traits.Named for HdrPoint
-pub impl @traits.Resettable for HdrPoint
-
-pub struct HdrSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn HdrSeries::check(Self) -> Bool
-pub fn HdrSeries::clone(Self) -> Self
-pub fn HdrSeries::count(Self) -> Int32
-pub fn HdrSeries::describe(Self) -> String
-pub fn HdrSeries::name(Self) -> String
-pub fn HdrSeries::reset(Self) -> Self
-pub impl @traits.Checkable for HdrSeries
-pub impl @traits.Cloneable for HdrSeries
-pub impl @traits.Countable for HdrSeries
-pub impl @traits.Describable for HdrSeries
-pub impl @traits.Named for HdrSeries
-pub impl @traits.Resettable for HdrSeries
-
-pub struct HdrVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn HdrVector::check(Self) -> Bool
-pub fn HdrVector::clone(Self) -> Self
-pub fn HdrVector::count(Self) -> Int32
-pub fn HdrVector::describe(Self) -> String
-pub fn HdrVector::name(Self) -> String
-pub fn HdrVector::reset(Self) -> Self
-pub impl @traits.Checkable for HdrVector
-pub impl @traits.Cloneable for HdrVector
-pub impl @traits.Countable for HdrVector
-pub impl @traits.Describable for HdrVector
-pub impl @traits.Named for HdrVector
-pub impl @traits.Resettable for HdrVector
-
 pub struct HuffmanNode {
   symbol : Int32
   freq : Int32
@@ -2434,286 +965,6 @@ pub struct ImageMeta {
 pub fn ImageMeta::equal(Self, Self) -> Bool
 pub fn ImageMeta::not_equal(Self, Self) -> Bool
 pub fn ImageMeta::to_repr(Self) -> @debug.Repr
-
-pub struct Image_registrationMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn Image_registrationMatrix::check(Self) -> Bool
-pub fn Image_registrationMatrix::clone(Self) -> Self
-pub fn Image_registrationMatrix::count(Self) -> Int32
-pub fn Image_registrationMatrix::describe(Self) -> String
-pub fn Image_registrationMatrix::name(Self) -> String
-pub fn Image_registrationMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for Image_registrationMatrix
-pub impl @traits.Cloneable for Image_registrationMatrix
-pub impl @traits.Countable for Image_registrationMatrix
-pub impl @traits.Describable for Image_registrationMatrix
-pub impl @traits.Named for Image_registrationMatrix
-pub impl @traits.Resettable for Image_registrationMatrix
-
-pub struct Image_registrationPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn Image_registrationPoint::check(Self) -> Bool
-pub fn Image_registrationPoint::clone(Self) -> Self
-pub fn Image_registrationPoint::count(Self) -> Int32
-pub fn Image_registrationPoint::describe(Self) -> String
-pub fn Image_registrationPoint::name(Self) -> String
-pub fn Image_registrationPoint::reset(Self) -> Self
-pub impl @traits.Checkable for Image_registrationPoint
-pub impl @traits.Cloneable for Image_registrationPoint
-pub impl @traits.Countable for Image_registrationPoint
-pub impl @traits.Describable for Image_registrationPoint
-pub impl @traits.Named for Image_registrationPoint
-pub impl @traits.Resettable for Image_registrationPoint
-
-pub struct Image_registrationSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn Image_registrationSeries::check(Self) -> Bool
-pub fn Image_registrationSeries::clone(Self) -> Self
-pub fn Image_registrationSeries::count(Self) -> Int32
-pub fn Image_registrationSeries::describe(Self) -> String
-pub fn Image_registrationSeries::name(Self) -> String
-pub fn Image_registrationSeries::reset(Self) -> Self
-pub impl @traits.Checkable for Image_registrationSeries
-pub impl @traits.Cloneable for Image_registrationSeries
-pub impl @traits.Countable for Image_registrationSeries
-pub impl @traits.Describable for Image_registrationSeries
-pub impl @traits.Named for Image_registrationSeries
-pub impl @traits.Resettable for Image_registrationSeries
-
-pub struct Image_registrationVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn Image_registrationVector::check(Self) -> Bool
-pub fn Image_registrationVector::clone(Self) -> Self
-pub fn Image_registrationVector::count(Self) -> Int32
-pub fn Image_registrationVector::describe(Self) -> String
-pub fn Image_registrationVector::name(Self) -> String
-pub fn Image_registrationVector::reset(Self) -> Self
-pub impl @traits.Checkable for Image_registrationVector
-pub impl @traits.Cloneable for Image_registrationVector
-pub impl @traits.Countable for Image_registrationVector
-pub impl @traits.Describable for Image_registrationVector
-pub impl @traits.Named for Image_registrationVector
-pub impl @traits.Resettable for Image_registrationVector
-
-pub struct Image_restorationMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn Image_restorationMatrix::check(Self) -> Bool
-pub fn Image_restorationMatrix::clone(Self) -> Self
-pub fn Image_restorationMatrix::count(Self) -> Int32
-pub fn Image_restorationMatrix::describe(Self) -> String
-pub fn Image_restorationMatrix::name(Self) -> String
-pub fn Image_restorationMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for Image_restorationMatrix
-pub impl @traits.Cloneable for Image_restorationMatrix
-pub impl @traits.Countable for Image_restorationMatrix
-pub impl @traits.Describable for Image_restorationMatrix
-pub impl @traits.Named for Image_restorationMatrix
-pub impl @traits.Resettable for Image_restorationMatrix
-
-pub struct Image_restorationPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn Image_restorationPoint::check(Self) -> Bool
-pub fn Image_restorationPoint::clone(Self) -> Self
-pub fn Image_restorationPoint::count(Self) -> Int32
-pub fn Image_restorationPoint::describe(Self) -> String
-pub fn Image_restorationPoint::name(Self) -> String
-pub fn Image_restorationPoint::reset(Self) -> Self
-pub impl @traits.Checkable for Image_restorationPoint
-pub impl @traits.Cloneable for Image_restorationPoint
-pub impl @traits.Countable for Image_restorationPoint
-pub impl @traits.Describable for Image_restorationPoint
-pub impl @traits.Named for Image_restorationPoint
-pub impl @traits.Resettable for Image_restorationPoint
-
-pub struct Image_restorationSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn Image_restorationSeries::check(Self) -> Bool
-pub fn Image_restorationSeries::clone(Self) -> Self
-pub fn Image_restorationSeries::count(Self) -> Int32
-pub fn Image_restorationSeries::describe(Self) -> String
-pub fn Image_restorationSeries::name(Self) -> String
-pub fn Image_restorationSeries::reset(Self) -> Self
-pub impl @traits.Checkable for Image_restorationSeries
-pub impl @traits.Cloneable for Image_restorationSeries
-pub impl @traits.Countable for Image_restorationSeries
-pub impl @traits.Describable for Image_restorationSeries
-pub impl @traits.Named for Image_restorationSeries
-pub impl @traits.Resettable for Image_restorationSeries
-
-pub struct Image_restorationVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn Image_restorationVector::check(Self) -> Bool
-pub fn Image_restorationVector::clone(Self) -> Self
-pub fn Image_restorationVector::count(Self) -> Int32
-pub fn Image_restorationVector::describe(Self) -> String
-pub fn Image_restorationVector::name(Self) -> String
-pub fn Image_restorationVector::reset(Self) -> Self
-pub impl @traits.Checkable for Image_restorationVector
-pub impl @traits.Cloneable for Image_restorationVector
-pub impl @traits.Countable for Image_restorationVector
-pub impl @traits.Describable for Image_restorationVector
-pub impl @traits.Named for Image_restorationVector
-pub impl @traits.Resettable for Image_restorationVector
-
-pub struct Image_stitchMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn Image_stitchMatrix::check(Self) -> Bool
-pub fn Image_stitchMatrix::clone(Self) -> Self
-pub fn Image_stitchMatrix::count(Self) -> Int32
-pub fn Image_stitchMatrix::describe(Self) -> String
-pub fn Image_stitchMatrix::name(Self) -> String
-pub fn Image_stitchMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for Image_stitchMatrix
-pub impl @traits.Cloneable for Image_stitchMatrix
-pub impl @traits.Countable for Image_stitchMatrix
-pub impl @traits.Describable for Image_stitchMatrix
-pub impl @traits.Named for Image_stitchMatrix
-pub impl @traits.Resettable for Image_stitchMatrix
-
-pub struct Image_stitchPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn Image_stitchPoint::check(Self) -> Bool
-pub fn Image_stitchPoint::clone(Self) -> Self
-pub fn Image_stitchPoint::count(Self) -> Int32
-pub fn Image_stitchPoint::describe(Self) -> String
-pub fn Image_stitchPoint::name(Self) -> String
-pub fn Image_stitchPoint::reset(Self) -> Self
-pub impl @traits.Checkable for Image_stitchPoint
-pub impl @traits.Cloneable for Image_stitchPoint
-pub impl @traits.Countable for Image_stitchPoint
-pub impl @traits.Describable for Image_stitchPoint
-pub impl @traits.Named for Image_stitchPoint
-pub impl @traits.Resettable for Image_stitchPoint
-
-pub struct Image_stitchSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn Image_stitchSeries::check(Self) -> Bool
-pub fn Image_stitchSeries::clone(Self) -> Self
-pub fn Image_stitchSeries::count(Self) -> Int32
-pub fn Image_stitchSeries::describe(Self) -> String
-pub fn Image_stitchSeries::name(Self) -> String
-pub fn Image_stitchSeries::reset(Self) -> Self
-pub impl @traits.Checkable for Image_stitchSeries
-pub impl @traits.Cloneable for Image_stitchSeries
-pub impl @traits.Countable for Image_stitchSeries
-pub impl @traits.Describable for Image_stitchSeries
-pub impl @traits.Named for Image_stitchSeries
-pub impl @traits.Resettable for Image_stitchSeries
-
-pub struct Image_stitchVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn Image_stitchVector::check(Self) -> Bool
-pub fn Image_stitchVector::clone(Self) -> Self
-pub fn Image_stitchVector::count(Self) -> Int32
-pub fn Image_stitchVector::describe(Self) -> String
-pub fn Image_stitchVector::name(Self) -> String
-pub fn Image_stitchVector::reset(Self) -> Self
-pub impl @traits.Checkable for Image_stitchVector
-pub impl @traits.Cloneable for Image_stitchVector
-pub impl @traits.Countable for Image_stitchVector
-pub impl @traits.Describable for Image_stitchVector
-pub impl @traits.Named for Image_stitchVector
-pub impl @traits.Resettable for Image_stitchVector
-
-pub struct InpaintMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn InpaintMatrix::check(Self) -> Bool
-pub fn InpaintMatrix::clone(Self) -> Self
-pub fn InpaintMatrix::count(Self) -> Int32
-pub fn InpaintMatrix::describe(Self) -> String
-pub fn InpaintMatrix::name(Self) -> String
-pub fn InpaintMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for InpaintMatrix
-pub impl @traits.Cloneable for InpaintMatrix
-pub impl @traits.Countable for InpaintMatrix
-pub impl @traits.Describable for InpaintMatrix
-pub impl @traits.Named for InpaintMatrix
-pub impl @traits.Resettable for InpaintMatrix
-
-pub struct InpaintPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn InpaintPoint::check(Self) -> Bool
-pub fn InpaintPoint::clone(Self) -> Self
-pub fn InpaintPoint::count(Self) -> Int32
-pub fn InpaintPoint::describe(Self) -> String
-pub fn InpaintPoint::name(Self) -> String
-pub fn InpaintPoint::reset(Self) -> Self
-pub impl @traits.Checkable for InpaintPoint
-pub impl @traits.Cloneable for InpaintPoint
-pub impl @traits.Countable for InpaintPoint
-pub impl @traits.Describable for InpaintPoint
-pub impl @traits.Named for InpaintPoint
-pub impl @traits.Resettable for InpaintPoint
-
-pub struct InpaintSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn InpaintSeries::check(Self) -> Bool
-pub fn InpaintSeries::clone(Self) -> Self
-pub fn InpaintSeries::count(Self) -> Int32
-pub fn InpaintSeries::describe(Self) -> String
-pub fn InpaintSeries::name(Self) -> String
-pub fn InpaintSeries::reset(Self) -> Self
-pub impl @traits.Checkable for InpaintSeries
-pub impl @traits.Cloneable for InpaintSeries
-pub impl @traits.Countable for InpaintSeries
-pub impl @traits.Describable for InpaintSeries
-pub impl @traits.Named for InpaintSeries
-pub impl @traits.Resettable for InpaintSeries
-
-pub struct InpaintVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn InpaintVector::check(Self) -> Bool
-pub fn InpaintVector::clone(Self) -> Self
-pub fn InpaintVector::count(Self) -> Int32
-pub fn InpaintVector::describe(Self) -> String
-pub fn InpaintVector::name(Self) -> String
-pub fn InpaintVector::reset(Self) -> Self
-pub impl @traits.Checkable for InpaintVector
-pub impl @traits.Cloneable for InpaintVector
-pub impl @traits.Countable for InpaintVector
-pub impl @traits.Describable for InpaintVector
-pub impl @traits.Named for InpaintVector
-pub impl @traits.Resettable for InpaintVector
 
 pub struct Lz77Triple {
   offset : Int32
@@ -2741,76 +992,6 @@ pub struct MorphImage {
 pub fn MorphImage::equal(Self, Self) -> Bool
 pub fn MorphImage::not_equal(Self, Self) -> Bool
 pub fn MorphImage::to_repr(Self) -> @debug.Repr
-
-pub struct PanoramaMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn PanoramaMatrix::check(Self) -> Bool
-pub fn PanoramaMatrix::clone(Self) -> Self
-pub fn PanoramaMatrix::count(Self) -> Int32
-pub fn PanoramaMatrix::describe(Self) -> String
-pub fn PanoramaMatrix::name(Self) -> String
-pub fn PanoramaMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for PanoramaMatrix
-pub impl @traits.Cloneable for PanoramaMatrix
-pub impl @traits.Countable for PanoramaMatrix
-pub impl @traits.Describable for PanoramaMatrix
-pub impl @traits.Named for PanoramaMatrix
-pub impl @traits.Resettable for PanoramaMatrix
-
-pub struct PanoramaPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn PanoramaPoint::check(Self) -> Bool
-pub fn PanoramaPoint::clone(Self) -> Self
-pub fn PanoramaPoint::count(Self) -> Int32
-pub fn PanoramaPoint::describe(Self) -> String
-pub fn PanoramaPoint::name(Self) -> String
-pub fn PanoramaPoint::reset(Self) -> Self
-pub impl @traits.Checkable for PanoramaPoint
-pub impl @traits.Cloneable for PanoramaPoint
-pub impl @traits.Countable for PanoramaPoint
-pub impl @traits.Describable for PanoramaPoint
-pub impl @traits.Named for PanoramaPoint
-pub impl @traits.Resettable for PanoramaPoint
-
-pub struct PanoramaSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn PanoramaSeries::check(Self) -> Bool
-pub fn PanoramaSeries::clone(Self) -> Self
-pub fn PanoramaSeries::count(Self) -> Int32
-pub fn PanoramaSeries::describe(Self) -> String
-pub fn PanoramaSeries::name(Self) -> String
-pub fn PanoramaSeries::reset(Self) -> Self
-pub impl @traits.Checkable for PanoramaSeries
-pub impl @traits.Cloneable for PanoramaSeries
-pub impl @traits.Countable for PanoramaSeries
-pub impl @traits.Describable for PanoramaSeries
-pub impl @traits.Named for PanoramaSeries
-pub impl @traits.Resettable for PanoramaSeries
-
-pub struct PanoramaVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn PanoramaVector::check(Self) -> Bool
-pub fn PanoramaVector::clone(Self) -> Self
-pub fn PanoramaVector::count(Self) -> Int32
-pub fn PanoramaVector::describe(Self) -> String
-pub fn PanoramaVector::name(Self) -> String
-pub fn PanoramaVector::reset(Self) -> Self
-pub impl @traits.Checkable for PanoramaVector
-pub impl @traits.Cloneable for PanoramaVector
-pub impl @traits.Countable for PanoramaVector
-pub impl @traits.Describable for PanoramaVector
-pub impl @traits.Named for PanoramaVector
-pub impl @traits.Resettable for PanoramaVector
 
 pub struct RleEntry {
   value : Int32
@@ -2874,216 +1055,6 @@ pub struct StructElement {
 pub fn StructElement::equal(Self, Self) -> Bool
 pub fn StructElement::not_equal(Self, Self) -> Bool
 pub fn StructElement::to_repr(Self) -> @debug.Repr
-
-pub struct Super_resMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn Super_resMatrix::check(Self) -> Bool
-pub fn Super_resMatrix::clone(Self) -> Self
-pub fn Super_resMatrix::count(Self) -> Int32
-pub fn Super_resMatrix::describe(Self) -> String
-pub fn Super_resMatrix::name(Self) -> String
-pub fn Super_resMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for Super_resMatrix
-pub impl @traits.Cloneable for Super_resMatrix
-pub impl @traits.Countable for Super_resMatrix
-pub impl @traits.Describable for Super_resMatrix
-pub impl @traits.Named for Super_resMatrix
-pub impl @traits.Resettable for Super_resMatrix
-
-pub struct Super_resPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn Super_resPoint::check(Self) -> Bool
-pub fn Super_resPoint::clone(Self) -> Self
-pub fn Super_resPoint::count(Self) -> Int32
-pub fn Super_resPoint::describe(Self) -> String
-pub fn Super_resPoint::name(Self) -> String
-pub fn Super_resPoint::reset(Self) -> Self
-pub impl @traits.Checkable for Super_resPoint
-pub impl @traits.Cloneable for Super_resPoint
-pub impl @traits.Countable for Super_resPoint
-pub impl @traits.Describable for Super_resPoint
-pub impl @traits.Named for Super_resPoint
-pub impl @traits.Resettable for Super_resPoint
-
-pub struct Super_resSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn Super_resSeries::check(Self) -> Bool
-pub fn Super_resSeries::clone(Self) -> Self
-pub fn Super_resSeries::count(Self) -> Int32
-pub fn Super_resSeries::describe(Self) -> String
-pub fn Super_resSeries::name(Self) -> String
-pub fn Super_resSeries::reset(Self) -> Self
-pub impl @traits.Checkable for Super_resSeries
-pub impl @traits.Cloneable for Super_resSeries
-pub impl @traits.Countable for Super_resSeries
-pub impl @traits.Describable for Super_resSeries
-pub impl @traits.Named for Super_resSeries
-pub impl @traits.Resettable for Super_resSeries
-
-pub struct Super_resVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn Super_resVector::check(Self) -> Bool
-pub fn Super_resVector::clone(Self) -> Self
-pub fn Super_resVector::count(Self) -> Int32
-pub fn Super_resVector::describe(Self) -> String
-pub fn Super_resVector::name(Self) -> String
-pub fn Super_resVector::reset(Self) -> Self
-pub impl @traits.Checkable for Super_resVector
-pub impl @traits.Cloneable for Super_resVector
-pub impl @traits.Countable for Super_resVector
-pub impl @traits.Describable for Super_resVector
-pub impl @traits.Named for Super_resVector
-pub impl @traits.Resettable for Super_resVector
-
-pub struct Tone_mapMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn Tone_mapMatrix::check(Self) -> Bool
-pub fn Tone_mapMatrix::clone(Self) -> Self
-pub fn Tone_mapMatrix::count(Self) -> Int32
-pub fn Tone_mapMatrix::describe(Self) -> String
-pub fn Tone_mapMatrix::name(Self) -> String
-pub fn Tone_mapMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for Tone_mapMatrix
-pub impl @traits.Cloneable for Tone_mapMatrix
-pub impl @traits.Countable for Tone_mapMatrix
-pub impl @traits.Describable for Tone_mapMatrix
-pub impl @traits.Named for Tone_mapMatrix
-pub impl @traits.Resettable for Tone_mapMatrix
-
-pub struct Tone_mapPoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn Tone_mapPoint::check(Self) -> Bool
-pub fn Tone_mapPoint::clone(Self) -> Self
-pub fn Tone_mapPoint::count(Self) -> Int32
-pub fn Tone_mapPoint::describe(Self) -> String
-pub fn Tone_mapPoint::name(Self) -> String
-pub fn Tone_mapPoint::reset(Self) -> Self
-pub impl @traits.Checkable for Tone_mapPoint
-pub impl @traits.Cloneable for Tone_mapPoint
-pub impl @traits.Countable for Tone_mapPoint
-pub impl @traits.Describable for Tone_mapPoint
-pub impl @traits.Named for Tone_mapPoint
-pub impl @traits.Resettable for Tone_mapPoint
-
-pub struct Tone_mapSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn Tone_mapSeries::check(Self) -> Bool
-pub fn Tone_mapSeries::clone(Self) -> Self
-pub fn Tone_mapSeries::count(Self) -> Int32
-pub fn Tone_mapSeries::describe(Self) -> String
-pub fn Tone_mapSeries::name(Self) -> String
-pub fn Tone_mapSeries::reset(Self) -> Self
-pub impl @traits.Checkable for Tone_mapSeries
-pub impl @traits.Cloneable for Tone_mapSeries
-pub impl @traits.Countable for Tone_mapSeries
-pub impl @traits.Describable for Tone_mapSeries
-pub impl @traits.Named for Tone_mapSeries
-pub impl @traits.Resettable for Tone_mapSeries
-
-pub struct Tone_mapVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn Tone_mapVector::check(Self) -> Bool
-pub fn Tone_mapVector::clone(Self) -> Self
-pub fn Tone_mapVector::count(Self) -> Int32
-pub fn Tone_mapVector::describe(Self) -> String
-pub fn Tone_mapVector::name(Self) -> String
-pub fn Tone_mapVector::reset(Self) -> Self
-pub impl @traits.Checkable for Tone_mapVector
-pub impl @traits.Cloneable for Tone_mapVector
-pub impl @traits.Countable for Tone_mapVector
-pub impl @traits.Describable for Tone_mapVector
-pub impl @traits.Named for Tone_mapVector
-pub impl @traits.Resettable for Tone_mapVector
-
-pub struct White_balanceMatrix {
-  data : Array[Array[Double]]
-  rows : Int32
-  cols : Int32
-}
-pub fn White_balanceMatrix::check(Self) -> Bool
-pub fn White_balanceMatrix::clone(Self) -> Self
-pub fn White_balanceMatrix::count(Self) -> Int32
-pub fn White_balanceMatrix::describe(Self) -> String
-pub fn White_balanceMatrix::name(Self) -> String
-pub fn White_balanceMatrix::reset(Self) -> Self
-pub impl @traits.Checkable for White_balanceMatrix
-pub impl @traits.Cloneable for White_balanceMatrix
-pub impl @traits.Countable for White_balanceMatrix
-pub impl @traits.Describable for White_balanceMatrix
-pub impl @traits.Named for White_balanceMatrix
-pub impl @traits.Resettable for White_balanceMatrix
-
-pub struct White_balancePoint {
-  x : Double
-  y : Double
-  label : Int32
-}
-pub fn White_balancePoint::check(Self) -> Bool
-pub fn White_balancePoint::clone(Self) -> Self
-pub fn White_balancePoint::count(Self) -> Int32
-pub fn White_balancePoint::describe(Self) -> String
-pub fn White_balancePoint::name(Self) -> String
-pub fn White_balancePoint::reset(Self) -> Self
-pub impl @traits.Checkable for White_balancePoint
-pub impl @traits.Cloneable for White_balancePoint
-pub impl @traits.Countable for White_balancePoint
-pub impl @traits.Describable for White_balancePoint
-pub impl @traits.Named for White_balancePoint
-pub impl @traits.Resettable for White_balancePoint
-
-pub struct White_balanceSeries {
-  vals : Array[Double]
-  name : String
-}
-pub fn White_balanceSeries::check(Self) -> Bool
-pub fn White_balanceSeries::clone(Self) -> Self
-pub fn White_balanceSeries::count(Self) -> Int32
-pub fn White_balanceSeries::describe(Self) -> String
-pub fn White_balanceSeries::name(Self) -> String
-pub fn White_balanceSeries::reset(Self) -> Self
-pub impl @traits.Checkable for White_balanceSeries
-pub impl @traits.Cloneable for White_balanceSeries
-pub impl @traits.Countable for White_balanceSeries
-pub impl @traits.Describable for White_balanceSeries
-pub impl @traits.Named for White_balanceSeries
-pub impl @traits.Resettable for White_balanceSeries
-
-pub struct White_balanceVector {
-  comps : Array[Double]
-  dim : Int32
-}
-pub fn White_balanceVector::check(Self) -> Bool
-pub fn White_balanceVector::clone(Self) -> Self
-pub fn White_balanceVector::count(Self) -> Int32
-pub fn White_balanceVector::describe(Self) -> String
-pub fn White_balanceVector::name(Self) -> String
-pub fn White_balanceVector::reset(Self) -> Self
-pub impl @traits.Checkable for White_balanceVector
-pub impl @traits.Cloneable for White_balanceVector
-pub impl @traits.Countable for White_balanceVector
-pub impl @traits.Describable for White_balanceVector
-pub impl @traits.Named for White_balanceVector
-pub impl @traits.Resettable for White_balanceVector
 
 // Type aliases
 

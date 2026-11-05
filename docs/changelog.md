@@ -4,6 +4,25 @@
 
 ## [1.0.0-beta] - 2026-11-04
 
+### P0 PSVM 类型去重 — 有 traits_impl 的包迁移
+
+**Trait 实现包迁移 / Trait Impl Package Migration**
+- 迁移 7 个有 traits_impl 的多文件包（dl/ensemble/evolution/ml/image/math/signal）
+- 删除 traits_impl.mbt 中引用 PSVM 类型的 trait 实现
+- 更新 `proof.mbt` 和 `tests_s13.mbt` 中的跨包引用
+- **净减少 64,433 行代码**（64581 删除 - 148 插入）
+
+**P0 总结 / P0 Summary**
+- 总计迁移 142 个包（70 单文件 + 65 多文件 + 7 有 traits_impl）
+- **总计净减少约 139,791 行代码**
+- 保留 4 个语义不同的 Point 类型（SamplePoint/Point/SIPoint/TopoPoint）
+
+**统计 / Stats**
+- moon check: 0 errors, 23 warnings
+- moon test: 4,132 passed, 0 failed
+
+## [1.0.0-beta] - 2026-11-04
+
 ### P0 PSVM 类型去重 — 多文件包迁移
 
 **多文件包批量迁移 / Multi-file Package Migration**

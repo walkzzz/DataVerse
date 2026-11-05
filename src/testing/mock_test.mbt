@@ -113,6 +113,7 @@ test "mock: persistence empty_load" {
 
 ///|
 /// 测试 MockIntentClassifier 固定意图
+#warnings("-unused_value")
 test "mock: intent_classifier fixed" {
   let classifier = @testing.make_mock_classifier("book_flight")
   let result1 = @testing.IntentClassifier::classify(classifier, "I want to fly to Paris")

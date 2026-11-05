@@ -1,8 +1,11 @@
 // opcore/image — 聚合包
 import {
-  "dataverse/extcore/types",
   "dataverse/dataobject",
   "dataverse/dataobject/schema",
   "dataverse/extcore/_common",
   "moonbitlang/core/math",
 }
+
+import {
+  "dataverse/extcore/types",
+} for "test"

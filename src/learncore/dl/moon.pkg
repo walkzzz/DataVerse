@@ -1,6 +1,9 @@
 // learncore/dl — 聚合包
 import {
-  "dataverse/extcore/types",
   "dataverse/extcore/_common",
   "moonbitlang/core/math",
 }
+
+import {
+  "dataverse/extcore/types",
+} for "test"

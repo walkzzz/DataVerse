@@ -1,6 +1,9 @@
 // datatemporal/watermark 水位线 / Watermarks
 // 合并包：watermark_periodic + watermark_punct
 import {
-  "dataverse/extcore/types",
   "dataverse/extcore/_common",
 }
+
+import {
+  "dataverse/extcore/types",
+} for "test"

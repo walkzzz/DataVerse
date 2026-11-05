@@ -1,6 +1,9 @@
 // agent_kit/simulation 仿真器 / Simulators
 // 合并包：biology/chemistry/climate/crowd/economic/epidemic/game/physics/robotics/social/traffic_sim
 import {
-  "dataverse/extcore/types",
   "dataverse/extcore/_common",
 }
+
+import {
+  "dataverse/extcore/types",
+} for "test"
